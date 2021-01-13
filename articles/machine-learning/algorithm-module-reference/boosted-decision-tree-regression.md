@@ -1,26 +1,28 @@
 ---
 title: 'Boosted Decision Tree Regression (Regression bei verstärktem Entscheidungsbaum): Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Boosted Decision Tree Regression“ (Regression bei verstärktem Entscheidungsbaum) in Azure Machine Learning Service verwenden, um mithilfe von Verstärkung ein Ensemble von Regressionsbäumen zu erstellen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul Boosted Decision Tree Regression in Azure Machine Learning verwenden, um mithilfe von Verstärkung ein Ensemble von Regressionsbäumen zu erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 5f26dfbdd8d3ef094ed380b7bd00ab0169152502
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+author: likebupt
+ms.author: keli19
+ms.date: 08/24/2020
+ms.openlocfilehash: 664943fc5535883b3df77b2795383e5c0586a71c
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208170"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375328"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Modul „Boosted Decision Tree Regression“ (Regression bei verstärktem Entscheidungsbaum)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul, um mithilfe von Verstärkung ein Ensemble von Regressionsbäumen zu erstellen. *Verstärkung* bedeutet, dass jeder Baum von früheren Bäumen abhängig ist. Der Algorithmus lernt durch Anpassung der übrigen, früher trainierten Bäume. Daher führt die Verstärkung in einem Ensemble von Entscheidungsbäumen meist zu höherer Genauigkeit, allerdings mit dem minimalen Risiko einer geringeren Abdeckung.  
+
+Dieses Modul basiert auf dem LightGBM-Algorithmus.
   
 Diese Regressionsmethode entspricht einer überwachten Lernmethode, die folglich ein *bezeichnetes Dataset* erfordert. Die Bezeichnungsspalte muss numerische Werte enthalten.  
 
@@ -29,8 +31,6 @@ Diese Regressionsmethode entspricht einer überwachten Lernmethode, die folglich
 
 Nachdem Sie das Modell definiert haben, trainieren Sie es mit [Train Model](./train-model.md) (Modell trainieren).
 
-> [!TIP]
-> Möchten Sie mehr über die erstellten Bäume erfahren? Nachdem das Modell trainiert wurde, klicken Sie mit der rechten Maustaste auf die Ausgabe des Moduls [Train Model](./train-model.md), und wählen Sie **Visualize** (Visualisieren) aus, um den bei jeder Iteration erstellten Baum anzuzeigen. Sie können Detailinformationen zu den Teilen jedes Baums sowie die Regeln für die einzelnen Knoten anzeigen.  
   
 ## <a name="more-about-boosted-regression-trees"></a>Weitere Informationen zu verstärkten Regressionsbäumen  
 
@@ -52,11 +52,13 @@ Die Gradient Boosting-Methode kann auch für Klassifizierungsprobleme verwendet 
 
 ## <a name="how-to-configure-boosted-decision-tree-regression"></a>Gewusst wie: Konfigurieren von „Boosted Decision Tree Regression“
 
-1.  Fügen Sie das Modul **Boosted Decision Tree** (Verstärkter Entscheidungsbaum) Ihrem Experiment hinzu. Sie finden dieses Modul unter **Machine Learning**, **Initialize** (Initialisieren) in der Kategorie **Regression**. 
+1.  Fügen Sie das Modul **Boosted Decision Tree** Ihrer Pipeline hinzu. Sie finden dieses Modul unter **Machine Learning**, **Initialize** (Initialisieren) in der Kategorie **Regression**. 
   
-2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) festlegen.  
+2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.  
   
-    -   **Single Parameter** (Einzelner Parameter): Wählen Sie diese Option, wenn Sie wissen, wie Sie das Modell konfigurieren möchten, und geben Sie einen bestimmten Satz von Werten als Argumente an.  
+    -   **Single Parameter** (Einzelner Parameter): Wählen Sie diese Option, wenn Sie wissen, wie Sie das Modell konfigurieren möchten, und geben Sie einen bestimmten Satz von Werten als Argumente an. 
+     
+    -   **Parameter Range** (Parameterbereich): Wählen Sie diese Option, wenn Sie nicht sicher sind, welche Parameter am besten geeignet sind, und einen Parametersweep ausführen möchten. Wählen Sie einen Wertebereich aus, über den iteriert werden soll. Anschließend iteriert das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) über alle möglichen Kombinationen der von Ihnen angegebenen Einstellungen, um die Hyperparameter zur Erzielung der optimalen Ergebnisse zu bestimmen.    
    
   
 3. **Maximum number of leaves per tree** (Maximale Anzahl der Blätter pro Baum): Geben Sie die maximale Anzahl von Endknoten (Blättern) an, die in einem Baum erstellt werden können.  
@@ -71,34 +73,38 @@ Die Gradient Boosting-Methode kann auch für Klassifizierungsprobleme verwendet 
 
 6. **Number of trees constructed**: (Anzahl der erstellten Bäume) Geben Sie die Gesamtzahl von Entscheidungsbäumen an, die im Ensemble erstellt werden sollen. Mit einer höheren Anzahl von Entscheidungsbäumen erzielen Sie u. U. eine bessere Abdeckung, allerdings verlängert sich dadurch auch die Trainingsdauer.
 
-    Dieser Wert steuert auch die Anzahl von Bäumen, die bei der Visualisierung des trainierten Modells angezeigt werden. Um einen einzelnen Baum anzuzeigen oder auszugeben, können Sie den Wert auf 1 festlegen. Das bedeutet jedoch, dass nur ein Baum erzeugt wird (der Baum mit dem anfänglichen Parametersatz) und keine weiteren Iterationen erfolgen.
+    Wenn Sie den Wert auf 1 festlegen, wird allerdings nur eine einzelne Struktur (die Struktur mit dem anfänglichen Parametersatz) generiert, und es finden keine weiteren Iterationen statt.
 
 7. **Random number seed** (Zufälliger Startwert): Geben Sie eine optionale, nicht negative ganze Zahl als zufälligen Startwert an. Die Angabe eines Startwerts gewährleistet Reproduzierbarkeit in verschiedenen Ausführungen, die auf den gleichen Daten und Parametern basieren.
 
     Der zufällige Startwert ist standardmäßig auf „0“ festgelegt, was bedeutet, dass der ursprüngliche Startwert von der Systemuhr abgerufen wird.
   
-8. **Allow unknown categorical levels** (Unbekannte Kategorieebenen zulassen): Wählen Sie diese Option, um eine Gruppe für unbekannte Werte in den Trainings- und Validierungssätzen zu erstellen. Wenn Sie diese Option deaktivieren, akzeptiert das Modell nur Werte, die in den Trainingsdaten enthalten sind. Das Modell ist bei bekannten Werten u. U. weniger genau, liefert dafür jedoch bessere Vorhersagen für neue (unbekannte) Werte.
 
-9. Fügen Sie ein Trainingsdataset und eines der Trainingsmodule hinzu:
+9. Trainieren des Modells:
 
-    - Wenn Sie die Option **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie das Modul [Train Model](train-model.md) (Modell trainieren) verwenden.  
+    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie ein mit Tags versehenes Dataset und das Modul [Train Model](train-model.md) (Modell trainieren) verbinden.  
   
+    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Parameter Range** (Parameterbereich) festlegen, verbinden Sie ein markiertes Dataset, und trainieren Sie das Modell mithilfe des Moduls [Tune Model Hyperparameters](tune-model-hyperparameters.md).  
+  
+    > [!NOTE]
+    > 
+    > Wenn Sie einen Parameterbereich an das Modul [Train Model](train-model.md) übergeben, wird nur der Standardwert in der Liste der Einzelparameter verwendet.  
+    > 
+    > Wenn Sie einen einzelnen Satz von Parameterwerten an das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) übergeben und ein Bereich von Einstellungen für jeden Parameter erwartet wird, werden die Werte ignoriert und stattdessen die Standardwerte für den Learner verwendet.  
+    > 
+    > Wenn Sie die Option **Parameter Range** (Parameterbereich) auswählen und einen einzelnen Wert für einen beliebigen Parameter eingeben, wird dieser angegebene einzelne Wert während des gesamten Löschvorgangs verwendet, auch wenn andere Parameter in einem Wertebereich geändert werden.
     
 
-10. Führen Sie das Experiment aus.  
+10. Übermitteln Sie die Pipeline.  
   
 ## <a name="results"></a>Ergebnisse
 
 Nach Abschluss des Trainings:
 
-+ Um den Baum anzuzeigen, der bei jeder Iteration erstellt wurde, klicken Sie mit der rechten Maustaste auf die Ausgabe des Moduls [Train Model](train-model.md), und wählen Sie **Visualize** aus.
-  
-     Klicken Sie auf den Baum, um Detailinformationen zu den Teilen sowie Regeln für die einzelnen Knoten anzuzeigen.  
++ Wenn Sie das Modell zur Bewertung verwenden möchten, verbinden Sie [Train Model](train-model.md) (Modell trainieren) mit [Score Model](./score-model.md) (Modell bewerten), um Werte für neue Eingabebeispiele vorherzusagen.
 
-+ Wenn Sie das Modell zur Bewertung verwenden möchten, verbinden Sie es mit [Score Model](./score-model.md) (Modell bewerten), um Werte für neue Eingabebeispiele vorherzusagen.
-
-+ Um eine Momentaufnahme des trainierten Modells zu speichern, klicken Sie mit der rechten Maustaste auf die Ausgabe **Trained model** (Trainiertes Modell) des Trainingsmoduls, und wählen Sie **Save As** (Speichern unter) aus. Die Kopie des trainierten Modells, das Sie speichern, wird bei nachfolgenden Durchläufen des Experiments nicht aktualisiert.
++ Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Registerkarte **Ausgaben** im rechten Bereich des Moduls **Trained model** (Trainiertes Modell) aus, und klicken Sie dann auf das Symbol für **Dataset registrieren**. Die Kopie des trainierten Modells wird als Modul in der Modulstruktur gespeichert und wird bei aufeinanderfolgenden Durchläufen der Pipeline nicht aktualisiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

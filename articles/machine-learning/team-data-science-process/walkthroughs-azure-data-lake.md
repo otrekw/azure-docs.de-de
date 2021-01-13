@@ -3,20 +3,20 @@ title: 'Analysen mit U-SQL für Azure Data Lake: Team Data Science-Prozess'
 description: Beispiele, in denen die Verwendung von U-SQL in Azure Data Lake für Predictive Analytics beschrieben wird.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b0599317d09a1757b3c86372cb7ed8ea78d4cdd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e5eb0acd2a94f7726fbacefbe6e1022c8cebae2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60804695"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75864178"
 ---
 # <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Exemplarische Vorgehensweisen zu Data Science in Azure Data Lake unter Verwendung von U-SQL
 
@@ -27,11 +27,11 @@ Weitere exemplarische Vorgehensweisen zu Data Science, in denen der Team Data Sc
 
 ## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Vorhersagen von Taxifahrten unter Verwendung von U-SQL mit Azure Data Lake
 
-In der exemplarischen Vorgehensweise [Skalierbare Data Science mit Azure Data Lake: lückenlose exemplarische Vorgehensweise](data-lake-walkthrough.md) wird veranschaulicht, wie Sie Azure Data Lake auf der Grundlage des Taxi-DataSets für New York zur Untersuchung von Daten sowie für binäre Klassifizierungsaufgaben nutzen, um vorherzusagen, ob ein Fahrgast Trinkgeld gibt. 
+In der exemplarischen Vorgehensweise [Skalierbare Data Science mit Azure Data Lake: lückenlose exemplarische Vorgehensweise](data-lake-walkthrough.md) wird veranschaulicht, wie Sie Azure Data Lake zur Untersuchung von Daten sowie für binäre Klassifizierungsaufgaben nutzen.  Bei den Daten handelt es sich um ein Beispiel für das NYC Taxi-Dataset.  Mit der Aufgabe wird vorhergesagt, ob von einem Kunden Trinkgeld bezahlt wird. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Erläuterung der Hauptkomponenten, die den Team Data Science-Prozess bilden, finden Sie unter [Übersicht über den Team Data Science-Prozess](overview.md).
+Eine Übersicht über den Team Data Science-Prozess finden Sie unter [Was ist der Team Data Science-Prozess (TDSP)?](overview.md).
 
-Eine Erläuterung des Team Data Science-Prozesslebenszyklus, mit dem Sie Ihre Data Science-Projekte strukturieren können, finden Sie unter [Team Data Science-Prozesslebenszyklus](lifecycle.md). Im Lebenszyklus sind die gesamten Schritte aufgeführt, die bei Projekten bei der Ausführung normalerweise durchlaufen werden. 
+Informationen zum Lebenszyklus des Team Data Science-Prozesses finden Sie unter [Lebenszyklus des Team Data Science-Prozesses](lifecycle.md). In diesem Lebenszyklus sind die Schritte aufgeführt, die bei Projekten bei der Ausführung normalerweise durchlaufen werden. 

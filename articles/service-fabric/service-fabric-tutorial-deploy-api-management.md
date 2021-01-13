@@ -1,26 +1,15 @@
 ---
-title: Integrieren von API Management in Service Fabric in Azure | Microsoft-Dokumentation
+title: Integrieren von API Management in Service Fabric in Azure
 description: Lernen Sie die ersten Schritte mit Azure API Management und dem Weiterleiten von Datenverkehr an einen Back-End-Dienst in Service Fabric kennen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
-ms.custom: mvc
-ms.openlocfilehash: 470eacee5c71742678497edf48169e14a4073829
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: b89204e2df5c8e79200b780de38d06b1a93c1fa3
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598828"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702190"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integrieren von API Management in Service Fabric in Azure
 
@@ -41,7 +30,7 @@ In diesem Artikel wird beschrieben, wie Sie [Azure API Management](../api-manage
 Vorbereitungen
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) oder die [Azure CLI](/cli/azure/install-azure-cli).
+* Installieren Sie [Azure PowerShell](/powershell/azure/install-az-ps) oder die [Azure CLI](/cli/azure/install-azure-cli).
 * Erstellen Sie einen sicheren [Windows-Cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in einer Netzwerksicherheitsgruppe.
 * Wenn Sie einen Windows-Cluster bereitstellen, richten Sie eine Windows-Entwicklungsumgebung ein. Installieren Sie [Visual Studio 2019](https://www.visualstudio.com) und die Workloads **Azure-Entwicklung**, **ASP.NET und Webentwicklung** und **Plattformübergreifende .NET Core-Entwicklung**.  Richten Sie dann eine [.NET-Entwicklungsumgebung](service-fabric-get-started.md) ein.
 
@@ -162,9 +151,9 @@ Geben Sie zum Hinzufügen eines Vorgangs für eine Front-End-API folgende Werte 
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
-[Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) erstellt eine Back-End-Richtlinie, die alles verbindet. Hier konfigurieren Sie den Back-End-Service Fabric-Dienst, an den Anforderungen weitergeleitet werden. Sie können diese Richtlinie auf alle API-Vorgänge anwenden.  Weitere Informationen finden Sie in der [Übersicht über Richtlinien](/azure/api-management/api-management-howto-policies).
+[Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) erstellt eine Back-End-Richtlinie, die alles verbindet. Hier konfigurieren Sie den Back-End-Service Fabric-Dienst, an den Anforderungen weitergeleitet werden. Sie können diese Richtlinie auf alle API-Vorgänge anwenden.  Weitere Informationen finden Sie in der [Übersicht über Richtlinien](../api-management/api-management-howto-policies.md).
 
-Die [Back-End-Konfiguration für Service Fabric](/azure/api-management/api-management-transformation-policies#SetBackendService) bietet die folgenden Anforderungsrouting-Steuerelemente:
+Die [Back-End-Konfiguration für Service Fabric](../api-management/api-management-transformation-policies.md#SetBackendService) bietet die folgenden Anforderungsrouting-Steuerelemente:
 
 * Dienstinstanzauswahl durch Angabe eines Service Fabric-Dienst-Instanznamens entweder hartcodiert (z.B. `"fabric:/myapp/myservice"`) oder aus der HTTP-Anforderung generiert (z.B. `"fabric:/myapp/users/" + context.Request.MatchedParameters["name"]`).
 * Lösung der Partition durch Generieren eines Partitionsschlüssels mithilfe eines Service Fabric-Partitionierungsschemas.
@@ -191,23 +180,23 @@ Die [Back-End-Konfiguration für Service Fabric](/azure/api-management/api-manag
 </policies>
 ```
 
-Einen vollständigen Satz von Attributen für die Service Fabric-Back-End-Richtlinie finden Sie in der [API Management-Back-End-Dokumentation](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService)
+Einen vollständigen Satz von Attributen für die Service Fabric-Back-End-Richtlinie finden Sie in der [API Management-Back-End-Dokumentation](../api-management/api-management-transformation-policies.md#SetBackendService)
 
 ## <a name="set-parameters-and-deploy-api-management"></a>Festlegen von Parametern und Bereitstellen von API Management
 
 Geben Sie für die Bereitstellung die folgenden leeren Parameter in der Datei *apim.parameters.json* an.
 
-|Parameter|Wert|
+|Parameter|value|
 |---|---|
 |apimInstanceName|sf-apim|
 |apimPublisherEmail|myemail@contosos.com|
-|apimSku|Developer|
+|apimSku|Entwickler|
 |serviceFabricCertificateName|sfclustertutorialgroup320171031144217|
 |certificatePassword|q6D7nN%6ck@6|
 |serviceFabricCertificateThumbprint|C4C1E541AD512B8065280292A8BA6079C3F26F10 |
 |serviceFabricCertificate|&lt;Base64-codierte Zeichenfolge&gt;|
 |url_path|/api/values|
-|clusterHttpManagementEndpoint|https://mysfcluster.southcentralus.cloudapp.azure.com:19080|
+|clusterHttpManagementEndpoint|`https://mysfcluster.southcentralus.cloudapp.azure.com:19080`|
 |inbound_policy|&lt;XML-Zeichenfolge&gt;|
 
 *certificatePassword* und *serviceFabricCertificateThumbprint* müssen mit dem zum Einrichten des Clusters verwendeten Clusterzertifikat übereinstimmen.
@@ -254,9 +243,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateFile "$temp
 
 ```azurecli
 ResourceGroupName="sfclustertutorialgroup"
-az group deployment create --name ApiMgmtNetworkDeployment --resource-group $ResourceGroupName --template-file network-apim.json --parameters @network-apim.parameters.json
+az deployment group create --name ApiMgmtNetworkDeployment --resource-group $ResourceGroupName --template-file network-apim.json --parameters @network-apim.parameters.json
 
-az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGroupName --template-file apim.json --parameters @apim.parameters.json
+az deployment group create --name ApiMgmtDeployment --resource-group $ResourceGroupName --template-file apim.json --parameters @apim.parameters.json
 ```
 
 ## <a name="test-it"></a>Testen
@@ -302,9 +291,9 @@ az group delete --name $ResourceGroupName
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die Verwendung von [API Management](/azure/api-management/import-and-publish).
+Erfahren Sie mehr über die Verwendung von [API Management](../api-management/import-and-publish.md).
 
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 
 [apim-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.json
 [apim-parameters-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.parameters.json

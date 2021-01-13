@@ -1,7 +1,6 @@
 ---
-title: Übersicht über IPv6 für Azure Load Balancer
-titlesuffix: Azure Load Balancer
-description: Erfahren Sie, wie Sie IPv6-Unterstützung für Azure Load Balancer und VMs mit Lastenausgleich bereitstellen.
+title: Übersicht über IPv6 – Azure Load Balancer
+description: Mit diesem Lernpfad beginnen Sie mit der IPv6-Unterstützung für Azure Load Balancer und VMs mit Lastenausgleich.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: b276766d69c187e2268f5896f23e3bd435ed63c3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4061a3dbf4dc92d6d412528115d46edc36d20d5e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274820"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700687"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Übersicht über IPv6 für Azure Load Balancer
 
 
 >[!NOTE] 
->Azure Load Balancer unterstützt zwei unterschiedliche Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Load Balancer Standard (Preview)](load-balancer-standard-overview.md).
+>Dieser Inhalt wurde durch [Übersicht über IPv6 für Azure VNETs](../virtual-network/ipv6-overview.md) abgelöst. Azure empfiehlt, in neuen IPv6-Bereitstellungen die neuen IPv6-Features für virtuelle Azure-Netzwerke zu verwenden.
 
-Load Balancer mit Internetzugriff können mit einer IPv6-Adresse bereitgestellt werden. Zusätzlich zu IPv4-Konnektivität werden dadurch die folgenden Funktionen ermöglicht:
+>[!NOTE]
+>Azure Load Balancer unterstützt zwei unterschiedliche Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Load Balancer Standard (Preview)](./load-balancer-overview.md).
+
+Load Balancer mit Internetzugriff für die SKU „Basic“ können mit einer IPv6-Adresse bereitgestellt werden. Zusätzlich zu IPv4-Konnektivität werden dadurch die folgenden Funktionen ermöglicht:
 
 * Native End-to-End-IPv6-Konnektivität zwischen öffentlichen Internetclients und Azure Virtual Machines (VMs) über den Load Balancer.
 * Native ausgehende End-to-End-IPv6-Konnektivität zwischen VMs und öffentlichen IPv6-fähigen Internetclients.
@@ -77,8 +79,9 @@ Einschränkungen
 * Auf den IPv6-Endpunkt auf der VM kann nicht direkt über das Internet zugegriffen werden. Er befindet sich hinter einem Load Balancer. Nur auf die Ports, die in den Load Balancer-Regeln angegeben sind, kann über IPv6 zugegriffen werden.
 * Das Ändern des Parameters IdleTimeout wird für IPv6 **derzeit nicht unterstützt**. Der Standardwert ist vier Minuten.
 * Das Ändern des Parameters loadDistributionMethod wird für IPv6 **derzeit nicht unterstützt**.
-* Reservierte IPv6-IP-Adressen (wobei IPAllocationMethod = static) werden **derzeit nicht unterstützt**.
+* IPv6 für Load Balancer Basic ist auf eine **dynamische** SKU festgelegt.  IPv6 für Load Balancer Standard ist auf eine **statische** SKU festgelegt.
 * NAT64 (Übersetzung von IPv6 in IPv4) wird nicht unterstützt.
+* Das Anfügen einer sekundären NIC, die sich auf ein IPv6-Subnetz bezieht, an einen Back-End-Pool wird **derzeit nicht unterstützt**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

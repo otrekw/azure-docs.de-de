@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Bime | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Bime konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: bdcf0729-c880-4c95-b739-0f6345b17dd8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52a34c688b7d8e12dac1d76b3e03fb1b50583c6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3bbd18bc7851d4ccffca4f721f6e2aef45ff3c3d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106261"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673717"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Tutorial: Azure Active Directory-Integration mit Bime
 
@@ -31,7 +27,7 @@ Die Integration von Bime in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei Bime angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -67,7 +63,7 @@ Zum Konfigurieren der Integration von Bime in Azure AD müssen Sie Bime aus dem 
 
 4. Geben Sie im Suchfeld **Bime** ein, wählen Sie im Ergebnisbereich **Bime** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Bime in der Ergebnisliste](common/search-new-app.png)
+    ![Bime in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -135,11 +131,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Bime die
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Bime-Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie auf der Symbolleiste auf **Administration** und dann auf **Konto**.
-  
-    ![Admin](./media/bime-tutorial/ic775558.png "Admin")
+
+    ![Screenshot, in dem „Administration“ und „Konto“ ausgewählt sind](./media/bime-tutorial/ic775558.png "Admin")
 
 3. Führen Sie auf der Kontenkonfigurationsseite die folgenden Schritte aus:
-  
+
     ![Einmaliges Anmelden konfigurieren](./media/bime-tutorial/ic775559.png "Einmaliges Anmelden konfigurieren")
 
     a. Aktivieren Sie **Enable SAML authentication**.
@@ -167,13 +163,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -183,7 +179,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste die Option **Bime**aus.
+2. Wählen Sie in der Anwendungsliste die Option **Bime** aus.
 
     ![Bime-Link in der Anwendungsliste](common/all-applications.png)
 
@@ -211,7 +207,7 @@ Damit sich Azure AD-Benutzer bei Bime anmelden können, müssen sie in Bime ber
 
 2. Klicken Sie auf der Symbolleiste auf **Administration** und dann auf **Benutzer**.
 
-    ![Admin](./media/bime-tutorial/ic775561.png "Admin")
+    ![Screenshot, in dem „Administration“ und „Benutzer“ ausgewählt sind](./media/bime-tutorial/ic775561.png "Admin")
 
 3. Klicken Sie unter **Benutzerliste** auf **Neuen Benutzer hinzufügen** („+“).
 
@@ -219,7 +215,7 @@ Damit sich Azure AD-Benutzer bei Bime anmelden können, müssen sie in Bime ber
 
 4. Führen Sie auf der Dialogfeldseite **User Details** die folgenden Schritte aus:
 
-    ![Benutzerdetails](./media/bime-tutorial/ic775563.png "Benutzerdetails")
+    ![User Details (Benutzerdetails)](./media/bime-tutorial/ic775563.png "User Details")
 
     a. Geben Sie im Textfeld **Vorname** den Vornamen des Benutzers ein (z.B. **Britta**).
 
@@ -230,19 +226,18 @@ Damit sich Azure AD-Benutzer bei Bime anmelden können, müssen sie in Bime ber
     d. Klicken Sie auf **Speichern**.
 
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Bime-Benutzerkonten oder mithilfe der von Bime bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von Bime-Benutzerkonten oder mit den APIs von Bime bereitstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Bime“ klicken, sollten Sie automatisch bei der Bime-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Bime“ klicken, sollten Sie automatisch bei der Bime-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

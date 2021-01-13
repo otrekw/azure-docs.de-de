@@ -1,39 +1,32 @@
 ---
 title: Verwenden der Service Map-Lösung in Azure | Microsoft-Dokumentation
 description: Service Map ist eine Lösung in Azure, die Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Informationen zum Bereitstellen von Service Map in Ihrer Umgebung und zur Verwendung der Lösung in einer Vielzahl von Szenarien.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
-ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 07/24/2019
-ms.author: magoedte
-ms.openlocfilehash: 98bf38a6c293f6d339413b5395bb32d74bcb30c0
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: f7268f698dcc26dbe99b517c9dd4584be67c3a82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905716"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448469"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. Mit Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Dienstzuordnung zeigt Verbindungen zwischen Servern, Prozessen, ein- und ausgehende Verbindungslatenz und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
 
-In diesem Artikel werden die Details von Onboarding und Verwendung der Dienstzuordnung beschrieben. Informationen zum Konfigurieren der erforderlichen Komponenten und zu den Voraussetzungen für diese Lösung finden Sie unter [Aktivieren von Azure Monitor für VMs (Vorschauversion): Übersicht](vminsights-enable-overview.md#prerequisites). Zusammenfassend benötigen Sie Folgendes:
+In diesem Artikel werden die Details von Onboarding und Verwendung der Dienstzuordnung beschrieben. Für die Lösung wird Folgendes vorausgesetzt:
 
-* Einen Log Analytics-Arbeitsbereich, um diese Lösung zu aktivieren.
+* Der Log Analytics-Arbeitsbereich befindet sich in einer [unterstützten Region](vminsights-configure-workspace.md#supported-regions).
 
-* Den auf dem Windows-Computer oder Linux-Server installierten Log Analytics-Agent, der für das Senden von Berichten an den Arbeitsbereich konfiguriert ist, mit dem Sie die Lösung aktiviert haben.
+* Den auf dem Windows-Computer oder Linux-Server installierten [Log Analytics-Agent](vminsights-enable-overview.md#agents) ist mit demselben Arbeitsbereich verbunden, mit dem Sie die Lösung aktiviert haben.
 
-* Den auf dem Windows-Computer oder Linux-Server installierten Dependency-Agent.
+* Der [Dependency-Agent](vminsights-enable-overview.md#agents) ist auf dem Windows-Computer oder Linux-Server installiert.
 
 >[!NOTE]
->Wenn Sie Dienstzuordnung bereits bereitgestellt haben, können Sie jetzt auch Ihre Zuordnungen in Azure Monitor für VMs anzeigen, der zusätzliche Funktionen für die Überwachung von VM-Status und -Leistung enthält. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor für VMs](../../azure-monitor/insights/vminsights-overview.md). Informationen zu den Unterschieden zwischen der Dienstzuordnungslösung und dem Zuordnungsfeature von Azure Monitor für VMs finden Sie unter [Wie unterscheidet sich das Zuordnungsfeature von Azure Monitor für VMs von der Dienstzuordnung?](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map) in den häufig gestellten Fragen zu Azure Monitor für VMs.
+>Wenn Sie Dienstzuordnung bereits bereitgestellt haben, können Sie jetzt auch Ihre Zuordnungen in Azure Monitor für VMs anzeigen, der zusätzliche Funktionen für die Überwachung von VM-Status und -Leistung enthält. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor für VMs](./vminsights-overview.md). Informationen zu den Unterschieden zwischen der Dienstzuordnungslösung und dem Zuordnungsfeature von Azure Monitor für VMs finden Sie unter [Wie unterscheidet sich das Zuordnungsfeature von Azure Monitor für VMs von der Dienstzuordnung?](../faq.md#azure-monitor-for-vms) in den häufig gestellten Fragen zu Azure Monitor für VMs.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -42,7 +35,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 ## <a name="enable-service-map"></a>Aktivieren der Dienstzuordnung
 
 1. Aktivieren Sie die Dienstzuordnungslösung über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) oder gemäß dem unter [Hinzufügen von Überwachungslösungen aus dem Lösungskatalog](solutions.md) beschriebenen Prozess.
-1. Installieren Sie den Dependency-Agent auf jedem Computer, von dem Sie Daten abrufen möchten. Entsprechende Informationen finden Sie unter [Installieren des Dependency-Agents unter Windows](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) und [Installieren des Dependency-Agents unter Linux](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux). Der Dependency-Agent kann Verbindungen zu unmittelbaren Nachbarn überwachen, sodass Sie nicht auf jedem Computer einen Agent benötigen.
+1. Installieren Sie den Dependency-Agent auf jedem Computer, von dem Sie Daten abrufen möchten. Entsprechende Informationen finden Sie unter [Installieren des Dependency-Agents unter Windows](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-windows) und [Installieren des Dependency-Agents unter Linux](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-linux). Der Dependency-Agent kann Verbindungen zu unmittelbaren Nachbarn überwachen, sodass Sie nicht auf jedem Computer einen Agent benötigen.
 
 Greifen Sie im Azure-Portal von Ihrem Log Analytics-Arbeitsbereich aus auf die Dienstzuordnung zu, und wählen Sie im linken Bereich die Option **Lösungen** aus.<br><br> ![Option „Lösungen“ im Arbeitsbereich auswählen](./media/service-map/select-solution-from-workspace.png).<br> Wählen Sie in der Liste der Lösungen **ServiceMap(workspaceName)** aus, und klicken Sie in der Lösungsübersichtsseite der Dienstzuordnung auf die Dienstzuordnung-Zusammenfassungskachel.<br><br> ![Dienstzuordnung-Zusammenfassungskachel](./media/service-map/service-map-summary-tile.png).
 
@@ -70,7 +63,7 @@ Service Map erweitert die Nutzung der Bewertung von Systemupdates durch die Anze
 
 ## <a name="mapping-overview"></a>Übersicht über die Zuordnung
 
-Service Map-Agents sammeln Informationen über alle über TCP verbundenen Prozesse auf dem Server, auf dem sie installiert sind, und Informationen zu den eingehenden und ausgehenden Verbindungen für jeden Prozess.
+Dienstzuordnungs-Agents sammeln Informationen über alle über TCP verbundenen Prozesse auf dem Server, auf dem sie installiert sind, und Informationen zu den eingehenden und ausgehenden Verbindungen für jeden Prozess.
 
 In der Liste im linken Bereich können Sie Computer oder Gruppen mit Dienstzuordnung-Agents auswählen, um ihre Abhängigkeiten in einem angegebenen Zeitabschnitt visuell darzustellen. Die Abhängigkeitszuordnungen gelten für einen bestimmten Computer und zeigen alle Computer an, die direkte TCP-Clients oder -Server dieses Computers sind.  Computergruppe ordnet Anzeigesets von Servern und deren Abhängigkeiten zu.
 
@@ -176,7 +169,7 @@ Bestimmte Prozesse haben bestimmte Rollen auf Computern: Webserver, Anwendungsse
 
 Verbindungsfehler werden in Service Map-Zuordnungen für Prozesse und Computer angezeigt. Eine gestrichelte rote Linie zeigt an, dass ein Clientsystem einen Prozess oder Port nicht erreichen kann. Verbindungsfehler werden von jedem System mit einem bereitgestellten Service Map-Agent berichtet, wenn dieses System dasjenige ist, das versucht, die fehlerhafte Verbindung herzustellen. Service Map misst diesen Prozess durch Überwachen der TCP-Sockets, die keine Verbindung herstellen können. Der Fehler kann durch eine Firewall, eine fehlerhafte Konfiguration auf einem Client oder Server oder dadurch verursacht werden, dass ein Remotedienst nicht verfügbar ist.
 
-![Verbindungsfehler](media/service-map/failed-connections.png)
+![Screenshot eines Teils einer Service Map-Zuordnung mit Hervorhebung einer gestrichelten roten Linie, die auf einen Verbindungsfehler zwischen dem „backup.pl“-Prozess und Port 4475 hinweist](media/service-map/failed-connections.png)
 
 Kenntnisse zu Verbindungsfehlern können Ihnen bei der Problembehandlung, der Überprüfung einer Migration, der Sicherheitsanalyse und dem allgemeinen Verständnis der Architektur helfen. Manchmal sind Verbindungsfehler harmlos, häufig weisen sie aber auch direkt auf ein Problem hin, z.B. wenn eine Failoverumgebung plötzlich nicht mehr erreichbar ist oder zwei Anwendungsebenen nach einer Cloudmigration nicht mehr kommunizieren können.
 
@@ -200,7 +193,7 @@ Serverportgruppen sind Felder, die Serverports auf Servern darstellen, die über
 
 Wenn Sie rechts oberhalb eines Servers auf die Auslassungszeichen (...) klicken, wird das Kontextmenü für diesen Server angezeigt.
 
-![Verbindungsfehler](media/service-map/context-menu.png)
+![Screenshot des geöffneten Kontextmenüs für einen Server in Service Map. Das Menü enthält die Optionen „Serverzuordnung laden“ und „Seiteninterne Links anzeigen“.](media/service-map/context-menu.png)
 
 ### <a name="load-server-map"></a>Laden einer Serverzuordnung
 
@@ -226,7 +219,7 @@ Sie können Prozessdetails aus Metadaten des Betriebssystems zu ausgeführten Pr
 
 ![Bereich „Prozesseigenschaften“](media/service-map/process-properties.png)
 
-Der Bereich **Prozessübersicht** bietet zusätzliche Informationen über die Konnektivität eines Prozesses, einschließlich Bindungsports, eingehender und ausgehender Verbindungen sowie Verbindungsfehler.
+Der Bereich **Prozessübersicht** bietet zusätzliche Informationen über die Konnektivität eines Prozesses, einschließlich gebundener Ports, ein- und ausgehender Verbindungen sowie Verbindungsfehler.
 
 ![Bereiche „Prozessübersicht“](media/service-map/process-summary.png)
 
@@ -248,7 +241,7 @@ Service Map ist in die Protokollsuche integriert, um die Anzahl aller verfügbar
 
 ## <a name="service-desk-integration"></a>Integration von Service Desk
 
-Die Integration von Service Map in den ITSM-Connector erfolgt automatisch, wenn beide Lösungen in Ihrem Log Analytics-Arbeitsbereich aktiviert und konfiguriert sind. Die Integration in Service Map wird als „Service Desk“ bezeichnet. Weitere Informationen finden Sie unter [Centrally manage ITSM work items using IT Service Management Connector (Zentrales Verwalten von ITSM-Arbeitselementen mit dem IT Service Management Connector)](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
+Die Integration von Service Map in den ITSM-Connector erfolgt automatisch, wenn beide Lösungen in Ihrem Log Analytics-Arbeitsbereich aktiviert und konfiguriert sind. Die Integration in Service Map wird als „Service Desk“ bezeichnet. Weitere Informationen finden Sie unter [Centrally manage ITSM work items using IT Service Management Connector (Zentrales Verwalten von ITSM-Arbeitselementen mit dem IT Service Management Connector)](../platform/itsmc-overview.md).
 
 Im Bereich **Computer-Service Desk** wird eine Liste aller IT Service Management-Ereignisse für den ausgewählten Server im ausgewählten Zeitraum angezeigt. Der Server zeigt ein Symbol an, wenn es aktuelle Elemente gibt. Diese werden im Bereich „Computer-Service Desk“ angezeigt.
 
@@ -265,7 +258,7 @@ Die Integration von Service Map in die Änderungsnachverfolgung erfolgt automati
 
 Der Bereich für die **Nachverfolgung von Änderungen auf einem Computer** zeigt eine Liste aller Änderungen an, wobei die jüngste Änderung zuerst angezeigt wird. Der Bereich bietet auch einen Link, mit dem Sie die Protokollsuche aufrufen und weitere Details anzeigen können.
 
-![Bereich für die Änderungsnachverfolgung auf einem Computer](media/service-map/change-tracking.png)
+![Screenshot des Bereichs für die Nachverfolgung von Änderungen auf einem Computer in Service Map](media/service-map/change-tracking.png)
 
 Die folgende Abbildung ist eine Detailansicht eines ConfigurationChange-Ereignisses, dass Ihnen möglicherweise angezeigt wird, wenn Sie auf **In Log Analytics anzeigen** klicken.
 
@@ -277,7 +270,7 @@ Im **Computerleistungsbereich** werden Standardleistungsmetriken für den ausgew
 
 ![Computerleistungsbereich](media/service-map/machine-performance.png)
 
-Um Leistungsdaten anzuzeigen, müssen Sie unter Umständen [die entsprechenden Log Analytics-Leistungsindikatoren aktivieren](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Leistungsindikatoren, die Sie aktivieren sollten:
+Um Leistungsdaten anzuzeigen, müssen Sie unter Umständen [die entsprechenden Log Analytics-Leistungsindikatoren aktivieren](../platform/data-sources-performance-counters.md).  Leistungsindikatoren, die Sie aktivieren sollten:
 
 Windows:
 - Processor(*)\\Prozessorzeit (%)
@@ -307,11 +300,11 @@ Die Integration der Dienstzuordnung in die Updateverwaltung erfolgt automatisch,
 
 Im Bereich für **Computerupdates** werden Daten aus der Updateverwaltungslösung für den ausgewählten Server angezeigt. Im Bereich wird ggf. für den ausgewählten Zeitraum eine Zusammenfassung fehlender Updates für den Server angezeigt.
 
-![Bereich für die Änderungsnachverfolgung auf einem Computer](media/service-map/machine-updates.png)
+![Screenshot des Bereichs für Computerupdates in Service Map](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
 
-Die Computer- und Prozessbestandsdaten von Service Map stehen in Log Analytics zur [Suche](../../azure-monitor/log-query/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
+Die Computer- und Prozessbestandsdaten von Service Map stehen in Log Analytics zur [Suche](../log-query/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
 
 Zusätzlich zu den Datensätzen, die beim Starten eines Prozesses oder Computers oder beim Onboarding in Service Map generiert werden, wird pro Stunde ein Datensatz für jeden eindeutigen Computer und jeden eindeutigen Prozess generiert. Die Eigenschaften der Datensätze sind in den folgenden Tabellen aufgeführt. Die Felder und Werte in den ServiceMapComputer_CL-Ereignissen sind Feldern der Computerressource in der ServiceMap ARM-API (Azure Resource Manager) zugeordnet. Die Felder und Werte in den ServiceMapProcess_CL-Ereignissen sind Feldern der Prozessressource in der ServiceMap ARM-API zugeordnet. Das Feld „ResourceName_s“ entspricht dem Namensfeld in der entsprechenden ARM-Ressource. 
 
@@ -327,7 +320,7 @@ Da für einen angegebenen Prozess und Computer in einem angegebenen Zeitraum mö
 
 ### <a name="connections"></a>Verbindungen
 
-Verbindungsmetriken werden in eine neue Tabelle in Log Analytics geschrieben – VMConnection. Diese Tabelle enthält Informationen zu den Verbindungen für einen Computer (eingehend und ausgehend). Verbindungsmetriken werden ebenfalls mit APIs verfügbar gemacht, die die Möglichkeit zum Abrufen einer bestimmten Metrik während eines Zeitfensters bereitstellen.  TCP-Verbindungen, die durch Ausführen von *accept* auf einem lauschenden Socket hergestellt werden, sind eingehend, während solche, die durch Ausführen von *connect* auf einer bestimmten IP- und Portkombination hergestellt werden, ausgehend sind. Die Richtung einer Verbindung wird durch die Direction-Eigenschaft dargestellt, die auf entweder **inbound** oder **outbound** festgelegt werden kann. 
+Verbindungsmetriken werden in eine neue Tabelle in Log Analytics geschrieben – VMConnection. Diese Tabelle enthält Informationen zu den Verbindungen für einen Computer (eingehend und ausgehend). Verbindungsmetriken werden ebenfalls mit APIs verfügbar gemacht, die die Möglichkeit zum Abrufen einer bestimmten Metrik während eines Zeitfensters bereitstellen.  TCP-Verbindungen, die durch Akzeptieren auf einem lauschenden Socket hergestellt werden, sind eingehend, während solche, die durch Herstellen einer Verbindung mit einer bestimmten IP-Adresse und einem Port hergestellt werden, ausgehend sind. Die Richtung einer Verbindung wird durch die Direction-Eigenschaft dargestellt, die auf entweder **inbound** oder **outbound** festgelegt werden kann. 
 
 Die in diesen Tabellen dargestellten Daten wurden aus Daten generiert, die vom Dependency-Agent gemeldet wurden. Jeder Datensatz stellt eine Beobachtung über ein Zeitintervall von einer Minute dar. Die TimeGenerated-Eigenschaft gibt den Anfang des Zeitintervalls an. Jeder Datensatz enthält Informationen zum Identifizieren der jeweiligen Entität – d.h. Verbindung oder Port – sowie der dieser Entität zugeordneten Metriken. Derzeit werden nur Netzwerkaktivitäten gemeldet, die über TCP-over-IPv4 anfallen.
 
@@ -352,7 +345,7 @@ Um dem Einfluss der Gruppierung Rechnung zu tragen, werden Informationen über d
 | `LinksFailed` |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums für ungültig erklärt wurden. Diese Informationen sind derzeit nur für ausgehende Verbindungen verfügbar. |
 | `LinksLive` |Die Anzahl der physischen Netzwerkverbindungen, die am Ende des Berichtszeitraums offen waren|
 
-#### <a name="metrics"></a>metrics
+#### <a name="metrics"></a>Metriken
 
 Über Metriken zur Verbindungsanzahl hinaus sind in den folgenden Eigenschaften des Datensatzes auch Informationen über das Volumen der gesendeten und empfangenen Daten für eine bestimmte logische Verbindung oder einen bestimmten Netzwerkport enthalten:
 
@@ -464,43 +457,43 @@ Datensätze des Typs *ServiceMapProcess_CL* enthalten Bestandsdaten für über T
 
 ### <a name="list-all-known-machines"></a>Auflisten aller bekannten Computer
 
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Auflisten der physischen Arbeitsspeicherkapazität aller verwalteten Computer
 
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Auflisten von Computernamen, DNS, IP und Betriebssystem
 
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Suchen nach allen Prozesse mit "sql" in der Befehlszeile
 
-ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Suchen eines Computers (aktuellster Datensatz) anhand des Ressourcennamens
 
-search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId
+`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Suchen eines Computers (aktuellster Datensatz) anhand der IP-Adresse
 
-search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId
+`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Auflisten aller bekannten Prozesse auf einem angegebenen Computer auf
 
-ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-computers-running-sql"></a>Auflisten aller Computer, auf denen SQL ausgeführt wird
 
-ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
+`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Auflisten aller eindeutigen Produktversionen von „curl“ im eigenen Rechenzentrum
 
-ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s
+`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Erstellen einer Computergruppe mit allen Computern, auf denen CentOS ausgeführt wird
 
-ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
+`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Zusammenfassen der ausgehenden Verbindungen für eine Gruppe von Computern
 
@@ -547,7 +540,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="rest-api"></a>REST-API
 
-Alle Server-, Prozess- und Abhängigkeitsdaten in Service Map stehen über die [Service Map-REST-API](https://docs.microsoft.com/rest/api/servicemap/) zur Verfügung.
+Alle Server-, Prozess- und Abhängigkeitsdaten in Service Map stehen über die [Service Map-REST-API](/rest/api/servicemap/) zur Verfügung.
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnose- und Nutzungsdaten
 
@@ -557,7 +550,7 @@ Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Date
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über [Protokollsuchvorgänge](../../azure-monitor/log-query/log-query-overview.md) in Log Analytics, um Daten abzurufen, die von Service Map gesammelt wurden.
+Erfahren Sie mehr über [Protokollsuchvorgänge](../log-query/log-query-overview.md) in Log Analytics, um Daten abzurufen, die von Service Map gesammelt wurden.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -588,7 +581,7 @@ Die folgende Tabelle enthält Codenummern und Lösungsvorschläge.
 
 Wenn die Installation des Dependency-Agents erfolgreich war, der Computer aber nicht in der Dienstzuordnungslösung angezeigt wird:
 * Wurde der Dependency-Agent erfolgreich installiert? Überprüfen Sie, ob der Dienst installiert wurde und ausgeführt wird.<br><br>
-**Windows:** Suchen Sie nach dem Dienst **Microsoft Dependency-Agent**.
+**Windows**: Suchen Sie nach dem Dienst **Microsoft Dependency-Agent**.
 **Linux:** Suchen Sie nach dem laufenden Prozess **microsoft-dependency-agent**.
 
 * Haben Sie den [Log Analytics-Tarif „Free“](https://azure.microsoft.com/pricing/details/monitor/)? Der kostenlose Plan („Free“) erlaubt bis zu fünf einzelne Dienstzuordnungscomputer. Alle weiteren Computer werden in der Dienstzuordnung nicht angezeigt, selbst wenn die vorherigen fünf keine Daten mehr senden.
@@ -607,6 +600,6 @@ Wenn Ihr Computer in der Dienstzuordnung angezeigt wird, aber keine Prozess- ode
 
 Überprüfen Sie `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) bzw. `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). Die letzten Zeilen der Datei sollten den Grund angeben, warum der Kernel nicht geladen wurde. Beispielsweise, weil der Kernel nicht unterstützt wird, was unter Linux nach der Aktualisierung des Kernels auftreten kann.
 
-## <a name="feedback"></a>Feedback
+## <a name="suggestions"></a>Vorschläge
 
 Haben Sie Feedback für uns zu Service Map oder dieser Dokumentation?  Besuchen Sie unsere [User Voice-Webseite](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), auf der Sie Funktionen vorschlagen oder vorhandene Vorschläge unterstützen können.

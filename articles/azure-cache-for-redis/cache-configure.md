@@ -1,33 +1,25 @@
 ---
-title: Konfigurieren von Azure Cache for Redis | Microsoft-Dokumentation
+title: Konfigurieren von Azure Cache for Redis
 description: Grundlagen der Redis-Standardkonfiguration für Azure Cache for Redis und Informationen zur Konfiguration Ihrer Azure Cache for Redis-Instanzen
-services: cache
-documentationcenter: na
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: d0bf2e1f-6a26-4e62-85ba-d82b35fc5aa6
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 6bf42406c97ccb67251a14a7a963d3da2e01dbb4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2ff97dd30d9b993385f52ea531653a89197f8756
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60554497"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734622"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Konfigurieren von Azure Cache for Redis
 In diesem Thema sind die für Ihre Azure Cache for Redis-Instanzen verfügbaren Konfigurationen beschrieben. Darüber hinaus wird in diesem Thema die standardmäßige Redis-Serverkonfiguration für Azure Cache for Redis-Instanzen behandelt.
 
 > [!NOTE]
 > Weitere Informationen zur Konfiguration und Verwendung von Premium-Cache-Features finden Sie unter [Konfigurieren von Persistenz](cache-how-to-premium-persistence.md), [Konfigurieren von Clustern](cache-how-to-premium-clustering.md) und [Konfigurieren der Virtual Network-Unterstützung](cache-how-to-premium-vnet.md).
-> 
-> 
+>
+>
 
 ## <a name="configure-azure-cache-for-redis-settings"></a>Konfigurieren von Azure Cache for Redis-Einstellungen
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
@@ -48,17 +40,17 @@ Sie können die folgenden Einstellungen über das **Ressourcenmenü** anzeigen u
     * [Erweiterte Einstellungen](#advanced-settings)
     * [Azure Cache for Redis-Ratgeber](#azure-cache-for-redis-advisor)
     * [Skalieren](#scale)
-    * [Redis-Clustergröße](#cluster-size)
-    * [Redis-Datenpersistenz](#redis-data-persistence)
+    * [Clustergröße](#cluster-size)
+    * [Datenpersistenz](#redis-data-persistence)
     * [Planen von Updates](#schedule-updates)
     * [Georeplikation](#geo-replication)
     * [Virtual Network](#virtual-network)
     * [Firewall](#firewall)
-    * [Properties](#properties)
-    * [Sperren](#locks)
+    * [Eigenschaften](#properties)
+    * [Locks](#locks)
     * [Automatisierungsskript](#automation-script)
 * Verwaltung
-    * [Daten importieren](#importexport)
+    * [Importieren von Daten](#importexport)
     * [Daten exportieren](#importexport)
     * [Neustart](#reboot)
 * [Überwachung](#monitoring)
@@ -76,15 +68,15 @@ Sie können die folgenden Einstellungen über das **Ressourcenmenü** anzeigen u
 
 ### <a name="activity-log"></a>Aktivitätsprotokoll
 
-Klicken Sie auf **Aktivitätsprotokoll** , um in Ihrem Cache ausgeführte Aktionen anzuzeigen. Sie können auch filtern, um diese Ansicht zum Einbeziehen anderer Ressourcen zu erweitern. Weitere Informationen zur Arbeit mit Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/resource-group-audit.md). Weitere Informationen zum Überwachen von Azure Cache for Redis-Ereignissen finden Sie unter [Vorgänge und Warnungen](cache-how-to-monitor.md#operations-and-alerts).
+Klicken Sie auf **Aktivitätsprotokoll** , um in Ihrem Cache ausgeführte Aktionen anzuzeigen. Sie können auch filtern, um diese Ansicht zum Einbeziehen anderer Ressourcen zu erweitern. Weitere Informationen zur Arbeit mit Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/management/view-activity-logs.md). Weitere Informationen zum Überwachen von Azure Cache for Redis-Ereignissen finden Sie unter [Vorgänge und Warnungen](cache-how-to-monitor.md#operations-and-alerts).
 
 ### <a name="access-control-iam"></a>Zugriffssteuerung (IAM)
 
-Der Abschnitt **Zugriffssteuerung (IAM)** bietet Unterstützung für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) über das Azure-Portal. Mit dieser Konfiguration können Organisationen ihre Zugriffsverwaltungsanforderungen einfach und präzise erfüllen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../role-based-access-control/role-assignments-portal.md).
+Der Abschnitt **Zugriffssteuerung (IAM)** bietet Unterstützung für die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) über das Azure-Portal. Mit dieser Konfiguration können Organisationen ihre Zugriffsverwaltungsanforderungen einfach und präzise erfüllen. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="tags"></a>`Tags`
 
-Im Abschnitt **Tags** können Sie Ihre Ressourcen organisieren. Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/resource-group-using-tags.md).
+Im Abschnitt **Tags** können Sie Ihre Ressourcen organisieren. Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md).
 
 
 ### <a name="diagnose-and-solve-problems"></a>Diagnose und Problembehandlung
@@ -100,14 +92,14 @@ Der Abschnitt **Einstellungen** ermöglicht den Zugriff auf die folgenden Cachee
 * [Erweiterte Einstellungen](#advanced-settings)
 * [Azure Cache for Redis-Ratgeber](#azure-cache-for-redis-advisor)
 * [Skalieren](#scale)
-* [Redis-Clustergröße](#cluster-size)
-* [Redis-Datenpersistenz](#redis-data-persistence)
+* [Clustergröße](#cluster-size)
+* [Datenpersistenz](#redis-data-persistence)
 * [Planen von Updates](#schedule-updates)
 * [Georeplikation](#geo-replication)
 * [Virtual Network](#virtual-network)
 * [Firewall](#firewall)
-* [Properties](#properties)
-* [Sperren](#locks)
+* [Eigenschaften](#properties)
+* [Locks](#locks)
 * [Automatisierungsskript](#automation-script)
 
 
@@ -125,10 +117,10 @@ Die folgenden Einstellungen werden auf dem Blatt **Erweiterte Einstellungen** ko
 * [Keyspacebenachrichtigungen (Erweiterte Einstellungen)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>Zugriffsports
-Der Zugriff ohne SSL ist für neue Caches standardmäßig deaktiviert. Zum Aktivieren eines nicht SSL-fähigen Ports klicken Sie auf dem Blatt **Erweiterte Einstellungen** bei **Nur Zugriff über SSL zulassen** auf **Nein**, und klicken Sie dann auf **Speichern**.
+TLS-/SSL-fremder Zugriff ist für neue Caches standardmäßig deaktiviert. Klicken Sie zum Aktivieren des TLS-fremden Ports auf dem Blatt **Erweiterte Einstellungen** für **Nur Zugriff über SSL zulassen** auf **Nein** und anschließend auf **Speichern**.
 
 > [!NOTE]
-> SSL-Zugriff auf Azure Cache for Redis unterstützt standardmäßig TLS 1.0. Die unterstützte Mindestversion von TLS kann bei Bedarf bis zu TLS 1.2 erhöht werden, indem Sie das Dropdown **TLS-Mindestversion** auf dem Blatt **Erweiterte Einstellungen** verwenden und dann auf **Speichern** klicken.
+> Für den TLS-Zugriff auf Azure Cache for Redis werden derzeit TLS 1.0, 1.1 und 1.2 unterstützt. Die Versionen 1.0 und 1.1 werden jedoch bald eingestellt.  Weitere Informationen finden Sie auf unserer Seite [Entfernen von TLS 1.0 und 1.1](cache-remove-tls-10-11.md).
 
 ![Azure Cache for Redis: Zugriffsports](./media/cache-configure/redis-cache-access-ports.png)
 
@@ -149,16 +141,16 @@ Mit **Maxmemory policy** wird die Entfernungsrichtlinie für den Cache konfiguri
 
 Weitere Informationen zu `maxmemory`-Richtlinien finden Sie unter [Eviction policies](https://redis.io/topics/lru-cache#eviction-policies) (Entfernungsrichtlinien).
 
-Mit der Einstellung **maxmemory-reserved** wird die Arbeitsspeichermenge in MB konfiguriert, die für andere Prozesse als Cacheprozesse reserviert ist, z.B. die Replikation während eines Failovers. Mit dem Festlegen dieses Werts können Sie dafür sorgen, dass Sie bei wechselnden Auslastungen eine konsistentere Redis-Servererfahrung erzielen. Für Workloads, die mit hohem Schreibaufwand verbunden sind, sollte ein höherer Wert festgelegt werden. Wenn Arbeitsspeicher für Vorgänge dieser Art reserviert ist, ist er nicht für die Speicherung zwischengespeicherter Daten verfügbar.
+Mit der Einstellung **maxmemory-reserved** wird die Arbeitsspeichermenge in MB prot Instanz in einem Cluster konfiguriert, die für andere Prozesse als Cacheprozesse reserviert ist, z. B. die Replikation während eines Failovers. Mit dem Festlegen dieses Werts können Sie dafür sorgen, dass Sie bei wechselnden Auslastungen eine konsistentere Redis-Servererfahrung erzielen. Für Workloads, die mit hohem Schreibaufwand verbunden sind, sollte ein höherer Wert festgelegt werden. Wenn Arbeitsspeicher für Vorgänge dieser Art reserviert ist, ist er nicht für die Speicherung zwischengespeicherter Daten verfügbar.
 
-Mit der Einstellung **maxfragmentationmemory-reserved** wird der Arbeitsspeicher in MB konfiguriert, der für die Speicherfragmentierung reserviert ist. Durch Festlegen dieses Werts können Sie eine konsistentere Redis-Servererfahrung erzielen, wenn der Cache voll bzw. beinahe voll und das Fragmentierungsverhältnis hoch ist. Wenn Arbeitsspeicher für Vorgänge dieser Art reserviert ist, ist er nicht für die Speicherung zwischengespeicherter Daten verfügbar.
+Mit der Einstellung **maxfragmentationmemory-reserved** wird der Arbeitsspeicher in MB pro Instanz in einem Cluster konfiguriert, der für die Speicherfragmentierung reserviert ist. Durch Festlegen dieses Werts können Sie eine konsistentere Redis-Servererfahrung erzielen, wenn der Cache voll bzw. beinahe voll und das Fragmentierungsverhältnis hoch ist. Wenn Arbeitsspeicher für Vorgänge dieser Art reserviert ist, ist er nicht für die Speicherung zwischengespeicherter Daten verfügbar.
 
 Bei der Auswahl eines neuen Speicherreservierungswerts (**maxmemory-reserved** oder **maxfragmentationmemory-reserved**) sollte berücksichtigt werden, wie sich diese Änderung auf einen Cache auswirkt, der bereits mit einer großen Datenmenge ausgeführt wird. Beispiel: Wenn Ihr Cache über eine Kapazität von 53 GB verfügt und 49 GB an Daten enthält, ändern Sie den Reservierungswert in 8 GB, um den maximal verfügbaren Arbeitsspeicher für das System auf 45 GB zu verringern. Wenn entweder der aktuelle Wert für `used_memory` oder der Wert für `used_memory_rss` höher als der neue Grenzwert von 45 GB ist, muss das System Daten entfernen, bis sowohl `used_memory` als auch `used_memory_rss` unter 45 GB liegen. Durch die Entfernung können sich Serverauslastung und Arbeitsspeicherfragmentierung erhöhen. Weitere Informationen zu Cachemetriken, etwa `used_memory` und `used_memory_rss`, finden Sie unter [Verfügbare Metriken und Berichtsintervalle](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 > [!IMPORTANT]
 > Die Einstellungen **maxmemory-reserved** und **maxfragmentationmemory-reserved** sind nur für Standard- und Premium-Caches verfügbar.
-> 
-> 
+>
+>
 
 #### <a name="keyspace-notifications-advanced-settings"></a>Keyspacebenachrichtigungen (Erweiterte Einstellungen)
 Redis-Keyspacebenachrichtigungen werden auf dem Blatt **Erweiterte Einstellungen** konfiguriert. Mit Keyspacebenachrichtigungen können Clients Benachrichtigungen empfangen, wenn bestimmte Ereignisse eintreten.
@@ -167,21 +159,21 @@ Redis-Keyspacebenachrichtigungen werden auf dem Blatt **Erweiterte Einstellungen
 
 > [!IMPORTANT]
 > Keyspacebenachrichtigungen und die Einstellung **notify-keyspace-events** sind nur für Caches vom Typ "Standard" und "Premium" verfügbar.
-> 
-> 
+>
+>
 
 Weitere Informationen finden Sie unter [Redis-Keyspacebenachrichtigungen](https://redis.io/topics/notifications). Beispielcode finden Sie in der Datei [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) im [Hello world-Beispiel](https://github.com/rustd/RedisSamples/tree/master/HelloWorld).
 
 
 <a name="recommendations"></a>
 ## <a name="azure-cache-for-redis-advisor"></a>Azure Cache for Redis-Ratgeber
-Das Blatt **Azure Cache for Redis-Ratgeber** zeigt Empfehlungen für Ihren Cache an. Während des normalen Betriebs werden keine Empfehlungen angezeigt. 
+Das Blatt **Azure Cache for Redis-Ratgeber** zeigt Empfehlungen für Ihren Cache an. Während des normalen Betriebs werden keine Empfehlungen angezeigt.
 
-![Empfehlungen](./media/cache-configure/redis-cache-no-recommendations.png)
+![Screenshot: Anzeige der Empfehlungen.](./media/cache-configure/redis-cache-no-recommendations.png)
 
 Wenn es während des Betriebs Ihres Caches zu Zuständen kommt wie hohe Speicherauslastung, Netzwerkbandbreite oder Serverauslastung, wird auf dem Blatt **Azure Cache for Redis** eine Warnung angezeigt.
 
-![Empfehlungen](./media/cache-configure/redis-cache-recommendations-alert.png)
+![Screenshot: Anzeige der Warnungen im Abschnitt „Azure Cache for Redis“.](./media/cache-configure/redis-cache-recommendations-alert.png)
 
 Weitere Informationen finden Sie auf dem Blatt **Empfehlungen** .
 
@@ -193,12 +185,12 @@ Jeder Tarif hat verschiedene Limits für Clientverbindungen, Speicher und Bandbr
 
 | Azure Cache for Redis-Metrik | Weitere Informationen |
 | --- | --- |
-| Netzwerkbandbreiten-Nutzung |[Cacheleistung – verfügbare Bandbreite](cache-faq.md#cache-performance) |
+| Netzwerkbandbreiten-Nutzung |[Cacheleistung – verfügbare Bandbreite](cache-planning-faq.md#azure-cache-for-redis-performance) |
 | Verbundene Clients |[Standardmäßige Redis-Serverkonfiguration – maxclients](#maxclients) |
 | Serverauslastung |[Nutzungsdiagramme – Arbeitsauslastung des Redis-Servers](cache-how-to-monitor.md#usage-charts) |
-| Speicherauslastung |[Cacheleistung – Größe](cache-faq.md#cache-performance) |
+| Speicherauslastung |[Cacheleistung – Größe](cache-planning-faq.md#azure-cache-for-redis-performance) |
 
-Klicken Sie zum Upgraden Ihres Caches auf **Jetzt aktualisieren**, um den [Tarif](#scale) zu ändern und Ihren Cache zu skalieren. Weitere Informationen zur Tarifauswahl finden Sie unter [Welches Azure Cache for Redis-Angebot und welche Redis Cache-Größe sollte ich verwenden?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+Klicken Sie zum Upgraden Ihres Caches auf **Jetzt aktualisieren**, um den [Tarif](#scale) zu ändern und Ihren Cache zu skalieren. Weitere Informationen zur Tarifauswahl finden Sie unter [Auswählen der richtigen Ebene](cache-overview.md#choosing-the-right-tier).
 
 
 ### <a name="scale"></a>Skalieren
@@ -209,41 +201,36 @@ Klicken Sie auf **Staffelung**, um den Tarif für Ihren Cache anzuzeigen oder zu
 <a name="cluster-size"></a>
 
 ### <a name="redis-cluster-size"></a>Redis-Clustergröße
-Klicken Sie zum Ändern der Clustergröße aus einem ausgeführten Premium-Cache mit aktivierter Clusterunterstützung auf **(PREVIEW) Redis Cluster Size** .
+Klicken Sie zum Ändern der Clustergröße für einen aktiven Premium-Cache mit aktiviertem Clustering auf **Clustergröße**.
 
-> [!NOTE]
-> Beachten Sie, dass sich trotz allgemeiner Verfügbarkeit des Azure Cache for Redis in der Premium-Stufe das Feature Redis-Clustergröße derzeit in der Vorschau befindet.
-> 
-> 
-
-![Redis-Clustergröße](./media/cache-configure/redis-cache-redis-cluster-size.png)
+![Clustergröße](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
 Um die Clustergröße zu ändern, verwenden Sie den Schieberegler, oder geben Sie im Textfeld **Shardanzahl** eine Zahl zwischen 1 und 10 ein, und klicken Sie zum Speichern auf **OK**.
 
 > [!IMPORTANT]
-> Redis-Clustering ist nur für Premium-Caches verfügbar. Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Cache for Redis vom Typ "Premium"](cache-how-to-premium-clustering.md).
-> 
-> 
+> Redis-Clustering ist nur für Premium-Caches verfügbar. Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-clustering.md).
+>
+>
 
 
 ### <a name="redis-data-persistence"></a>Redis-Datenpersistenz
-Klicken Sie auf **Redis-Datenpersistenz** zum Aktivieren, Deaktivieren oder Konfigurieren der Datenpersistenz für den Premium-Cache konfigurieren. Azure Cache for Redis bietet Redis-Persistenz entweder per [RDB-Persistenz](cache-how-to-premium-persistence.md#configure-rdb-persistence) oder per [AOF-Persistenz](cache-how-to-premium-persistence.md#configure-aof-persistence).
+Klicken Sie auf **Datenpersistenz**, um die Datenpersistenz für Ihren Premium-Cache zu aktivieren, zu deaktivieren oder zu konfigurieren. Azure Cache for Redis bietet Redis-Persistenz entweder per RDB-Persistenz oder per AOF-Persistenz.
 
 Weitere Informationen finden Sie unter [Konfigurieren von Persistenz für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-persistence.md).
 
 
 > [!IMPORTANT]
 > Redis-Datenpersistenz ist nur für Premium-Caches verfügbar.
-> 
-> 
+>
+>
 
 ### <a name="schedule-updates"></a>Planen von Updates
-Auf dem Blatt **Updates planen** können Sie ein Wartungsfenster für Redis-Serverupdates für Ihren Cache bestimmen. 
+Auf dem Blatt **Updates planen** können Sie ein Wartungsfenster für Redis-Serverupdates für Ihren Cache bestimmen.
 
 > [!IMPORTANT]
 > Das Wartungsfenster bezieht sich nur auf Redis-Serverupdates und nicht auf Azure-Updates oder Updates des Betriebssystems der virtuellen Computer, die den Cache hosten.
-> 
-> 
+>
+>
 
 ![Planen von Updates](./media/cache-configure/redis-schedule-updates.png)
 
@@ -251,8 +238,8 @@ Aktivieren Sie zum Angeben eines Wartungsfensters die Kontrollkästchen der gew�
 
 > [!IMPORTANT]
 > Die Funktion **Zeitplanaktualisierungen** ist nur für Caches im Premium-Tarif verfügbar. Weitere Informationen und Anweisungen finden Sie unter [Azure Cache for Redis-Verwaltung – Planen von Updates](cache-administration.md#schedule-updates).
-> 
-> 
+>
+>
 
 ### <a name="geo-replication"></a>Georeplikation
 
@@ -260,16 +247,16 @@ Das Blatt **Georeplikation** bietet einen Mechanismus zum Verknüpfen von zwei A
 
 > [!IMPORTANT]
 > Die **Georeplikation** ist nur für Caches im Premium-Tarif verfügbar. Weitere Informationen und Anweisungen finden Sie unter [Konfigurieren der Georeplikation für Azure Cache for Redis](cache-how-to-geo-replication.md).
-> 
-> 
+>
+>
 
 ### <a name="virtual-network"></a>Virtual Network
 Im Abschnitt **Virtuelles Netzwerk** können Sie die Einstellungen des virtuellen Netzwerks für Ihren Cache konfigurieren. Weitere Informationen zum Erstellen eines Premium-Caches mit VNET-Unterstützung sowie zum Aktualisieren der Einstellungen finden Sie unter [Konfigurieren der Unterstützung virtueller Netzwerke für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
-> Einstellungen des virtuellen Netzwerks stehen nur für Premium-Caches zur Verfügung, die während der Erstellung des Caches mit VNET-Unterstützung konfiguriert wurden. 
-> 
-> 
+> Einstellungen des virtuellen Netzwerks stehen nur für Premium-Caches zur Verfügung, die während der Erstellung des Caches mit VNET-Unterstützung konfiguriert wurden.
+>
+>
 
 ### <a name="firewall"></a>Firewall
 
@@ -283,32 +270,32 @@ Sie können Firewallregeln mit einem Start- und End-IP-Adressbereich angeben. We
 
 > [!IMPORTANT]
 > Verbindungen von Azure Cache for Redis-Überwachungssystemen werden immer zugelassen, auch wenn Firewallregeln konfiguriert sind.
-> 
-> 
+>
+>
 
 ### <a name="properties"></a>Eigenschaften
 Klicken Sie auf **Eigenschaften**, um Informationen zu Ihrem Cache anzuzeigen, z.B. den Endpunkt und die Ports des Caches.
 
 ![Azure Cache for Redis-Eigenschaften](./media/cache-configure/redis-cache-properties.png)
 
-### <a name="locks"></a>Sperren
-Im Abschnitt **Sperren** können Sie ein Abonnement, eine Ressourcengruppe oder eine Ressource sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern. Weitere Informationen finden Sie unter [Sperren von Ressourcen mit dem Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-lock-resources.md).
+### <a name="locks"></a>Locks
+Im Abschnitt **Sperren** können Sie ein Abonnement, eine Ressourcengruppe oder eine Ressource sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern. Weitere Informationen finden Sie unter [Sperren von Ressourcen mit dem Azure-Ressourcen-Manager](../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="automation-script"></a>Automatisierungsskript
 
-Klicken Sie auf **Automatisierungsskript**, um für künftige Bereitstellungen eine Vorlage Ihrer bereitgestellten Ressourcen zu erstellen und zu exportieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Bereitstellen von Ressourcen mit einer Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-template-deploy.md).
+Klicken Sie auf **Automatisierungsskript**, um für künftige Bereitstellungen eine Vorlage Ihrer bereitgestellten Ressourcen zu erstellen und zu exportieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Bereitstellen von Ressourcen mit einer Azure Resource Manager-Vorlage](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="administration-settings"></a>Verwaltungseinstellungen
-Mit den Einstellungen im Abschnitt **Verwaltung** können Sie folgende Verwaltungsaufgaben für Ihren Cache durchführen. 
+Mit den Einstellungen im Abschnitt **Verwaltung** können Sie folgende Verwaltungsaufgaben für Ihren Cache durchführen.
 
 ![Verwaltung](./media/cache-configure/redis-cache-administration.png)
 
-* [Daten importieren](#importexport)
+* [Importieren von Daten](#importexport)
 * [Daten exportieren](#importexport)
 * [Neustart](#reboot)
 
 
-### <a name="importexport"></a>Import/Export
+### <a name="importexport"></a>Importieren/Exportieren
 Import/Export ist ein Vorgang der Azure Cache for Redis-Datenverwaltung, bei dem Sie Daten in den Cache importieren oder aus dem Cache exportieren können. Hierzu importieren bzw. exportieren Sie eine Momentaufnahme der Azure Cache for Redis-Datenbank (RDB) aus einem Premium-Cache in ein Seitenblob in einem Azure Storage-Konto. So können Sie zwischen verschiedenen Azure Cache for Redis-Instanzen migrieren oder den Cache vor der Nutzung mit Daten auffüllen.
 
 Die Importfunktion kann verwendet werden, um Redis-kompatible RDB-Dateien von beliebigen Redis-Servern zu importieren, die in einer Cloud oder Umgebung ausgeführt werden, z.B. Redis unter Linux oder Windows oder bei einem Cloudanbieter wie Amazon Web Services und anderen. Das Importieren von Daten ist eine einfache Möglichkeit zum Erstellen eines Cache mit vorab aufgefüllten Daten. Während des Importvorgangs lädt Azure Cache for Redis die RDB-Dateien aus Azure Storage in den Arbeitsspeicher und fügt die Schlüssel anschließend in den Cache ein.
@@ -317,8 +304,8 @@ Mit der Exportfunktion können Sie die in Azure Cache for Redis gespeicherten Da
 
 > [!IMPORTANT]
 > Import/Export ist nur für Caches im Premium-Tarif verfügbar. Weitere Informationen und Anweisungen finden Sie unter [Importieren und Exportieren von Daten in Azure Cache for Redis](cache-how-to-import-export-data.md).
-> 
-> 
+>
+>
 
 ### <a name="reboot"></a>Reboot
 Auf dem Blatt **Neustart** können Sie die Knoten Ihres Caches neu starten. Mit dieser Neustartfunktion können Sie Ihre Anwendung bei einem Ausfall eines Cacheknotens auf Resilienz testen.
@@ -327,19 +314,20 @@ Auf dem Blatt **Neustart** können Sie die Knoten Ihres Caches neu starten. Mit 
 
 Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, können Sie die Shards des Caches auswählen, die neu gestartet werden sollen.
 
-![Reboot](./media/cache-configure/redis-cache-reboot-cluster.png)
+![Screenshot: Auswählen der Shards des Caches, die neu gestartet werden sollen.](./media/cache-configure/redis-cache-reboot-cluster.png)
 
 Zum Neustarten eines oder mehrerer Knoten Ihres Caches wählen Sie die gewünschten Knoten aus und klicken auf **Neustart**. Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, wählen Sie die Shards aus, die neu gestartet werden sollen, und klicken Sie dann auf **Neustart**. Nach einigen Minuten werden die ausgewählten Knoten neu gestartet, die paar Minuten später wieder online sind.
 
 > [!IMPORTANT]
 > Ein Neustart ist nun für alle Tarife verfügbar. Weitere Informationen und Anweisungen finden Sie unter [Azure Cache for Redis-Verwaltung – Neustart](cache-administration.md#reboot).
-> 
-> 
+>
+>
 
 
 ## <a name="monitoring"></a>Überwachung
 
-Im Abschnitt **Überwachung** können Sie die Diagnose und Überwachung für Ihren Azure Cache for Redis konfigurieren. Weitere Informationen zur Azure Cache for Redis-Diagnose und -Überwachung finden Sie unter [Überwachen von Azure Cache for Redis](cache-how-to-monitor.md).
+Im Abschnitt **Überwachung** können Sie die Diagnose und Überwachung für Ihren Azure Cache for Redis konfigurieren.
+Weitere Informationen zur Azure Cache for Redis-Diagnose und -Überwachung finden Sie unter [Überwachen von Azure Cache for Redis](cache-how-to-monitor.md).
 
 ![Diagnose](./media/cache-configure/redis-cache-diagnostics.png)
 
@@ -372,12 +360,12 @@ Die Einstellungen im Abschnitt **Support und Problembehandlung** bieten Optionen
 * [Neue Supportanfrage](#new-support-request)
 
 ### <a name="resource-health"></a>Ressourcenintegrität
-**Ressourcenintegrität** dienen zum Überwachen Ihrer Ressource und informieren Sie darüber, ob sie wie erwartet ausgeführt wird. Weitere Informationen zum Azure Resource Health-Dienst finden Sie in der [Übersicht über Azure Resource Health](../resource-health/resource-health-overview.md).
+**Ressourcenintegrität** dienen zum Überwachen Ihrer Ressource und informieren Sie darüber, ob sie wie erwartet ausgeführt wird. Weitere Informationen zum Azure Resource Health-Dienst finden Sie in der [Übersicht über Azure Resource Health](../service-health/resource-health-overview.md).
 
 > [!NOTE]
-> Die Ressourcenintegrität kann derzeit keine Informationen zur Integrität der in einem virtuellen Netzwerk gehosteten Azure Cache for Redis-Instanzen liefern. Weitere Informationen finden Sie unter [Funktionieren alle Cachefeatures beim Hosten eines Cache in einem VNET?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
-> 
-> 
+> Die Ressourcenintegrität kann derzeit keine Informationen zur Integrität der in einem virtuellen Netzwerk gehosteten Azure Cache for Redis-Instanzen liefern. Weitere Informationen finden Sie unter [Funktionieren alle Cachefeatures beim Hosten eines Cache in einem VNET?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-a-cache-is-hosted-in-a-virtual-network)
+>
+>
 
 ### <a name="new-support-request"></a>Neue Supportanfrage
 Klicken Sie auf **Neue Supportanfrage** , um eine Supportanfrage für Ihren Cache zu erstellen.
@@ -391,12 +379,12 @@ Neue Azure Cache for Redis-Instanzen werden mit den folgenden standardmäßigen 
 
 > [!NOTE]
 > Die Einstellungen in diesem Abschnitt können mit der `StackExchange.Redis.IServer.ConfigSet`-Methode nicht geändert werden. Wenn diese Methode mit einem der Befehle in diesem Abschnitt aufgerufen wird, wird eine Ausnahme ausgelöst, die in etwa wie folgt lautet:  
-> 
+>
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
-> 
+>
 > Alle Werte, die konfigurierbar sind, z.B. **maxmemory-policy**, können über das Azure-Portal oder Befehlszeilenverwaltungstools wie die Azure-Befehlszeilenschnittstelle oder PowerShell konfiguriert werden.
-> 
-> 
+>
+>
 
 | Einstellung | Standardwert | BESCHREIBUNG |
 | --- | --- | --- |
@@ -426,12 +414,12 @@ Neue Azure Cache for Redis-Instanzen werden mit den folgenden standardmäßigen 
   * P4 (53 bis 530 GB) – bis zu 64 Datenbanken
   * Alle Premium-Caches mit aktiviertem Redis-Cluster: Ein Redis-Cluster unterstützt nur die Nutzung der Datenbank 0. Deshalb ist der `databases`-Grenzwert für Premium-Caches mit aktiviertem Redis-Cluster effektiv 1, und der Befehl [Auswählen](https://redis.io/commands/select) ist nicht zulässig. Weitere Informationen finden Sie unter [Muss ich Änderungen an meiner Clientanwendung vornehmen, um Clustering verwenden zu können?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
-Weitere Informationen zu Datenbanken finden Sie unter [Was sind Redis-Datenbanken?](cache-faq.md#what-are-redis-databases)
+Weitere Informationen zu Datenbanken finden Sie unter [Was sind Redis-Datenbanken?](cache-development-faq.md#what-are-redis-databases)
 
 > [!NOTE]
-> Mit den Einstellungen `databases` kann nur bei der Erstellung des Caches konfiguriert und nur mit PowerShell, der Befehlszeilenschnittstelle oder anderen Verwaltungsclients verwendet werden. Ein Beispiel für das Konfigurieren von `databases` bei der Cacheerstellung mithilfe von PowerShell finden Sie unter [New-AzRedisCache](cache-howto-manage-redis-cache-powershell.md#databases).
-> 
-> 
+> Mit den Einstellungen `databases` kann nur bei der Erstellung des Caches konfiguriert und nur mit PowerShell, der Befehlszeilenschnittstelle oder anderen Verwaltungsclients verwendet werden. Ein Beispiel für das Konfigurieren von `databases` bei der Cacheerstellung mithilfe von PowerShell finden Sie unter [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases).
+>
+>
 
 <a name="maxclients"></a>
 <sup>2</sup>`maxclients` ist für jeden Azure Cache for Redis-Tarif unterschiedlich.
@@ -452,26 +440,26 @@ Weitere Informationen zu Datenbanken finden Sie unter [Was sind Redis-Datenbanke
 
 > [!NOTE]
 > Obgleich jede Cachegröße eine *bestimmte* Anzahl von Verbindungen zulässt, fällt für jede Verbindung ein Mehraufwand an. Ein Beispiel für einen solchen Aufwand ist die CPU- und Arbeitsspeicherauslastung aufgrund der TLS-/SSL-Verschlüsselung. Das maximale Verbindungslimit für eine angegebene Cachegröße geht von einem geringfügig ausgelasteten Cache aus. Wenn die Last des Verbindungsaufwands *plus* die Last von Clientvorgängen die Systemkapazität überschreiten, können im Cache Kapazitätsprobleme entstehen, auch wenn Sie das Verbindungslimit für die aktuelle Cachegröße nicht überschritten haben.
-> 
-> 
+>
+>
 
 
 
 ## <a name="redis-commands-not-supported-in-azure-cache-for-redis"></a>Redis-Befehle, die in Azure Cache for Redis nicht unterstützt werden
 > [!IMPORTANT]
 > Da die Konfiguration und Verwaltung von Azure Cache for Redis-Instanzen von Microsoft verwaltet wird, sind die folgenden Befehle deaktiviert. Wenn Sie versuchen, sie aufzurufen, erhalten Sie etwa folgende Fehlermeldung: `"(error) ERR unknown command"`.
-> 
+>
 > * BGREWRITEAOF
 > * BGSAVE
 > * CONFIG
 > * DEBUG
 > * MIGRATE
-> * Speichern
+> * SAVE
 > * SHUTDOWN
 > * SLAVEOF
 > * CLUSTER: Clusterschreibbefehle sind deaktiviert, aber schreibgeschützte Clusterbefehle sind zulässig.
-> 
-> 
+>
+>
 
 Weitere Informationen zu Redis-Befehlen finden Sie unter [https://redis.io/commands](https://redis.io/commands).
 
@@ -481,16 +469,16 @@ Weitere Informationen zu Redis-Befehlen finden Sie unter [https://redis.io/comma
 > [!IMPORTANT]
 > - Die Redis-Konsole kann nicht mit [VNET](cache-how-to-premium-vnet.md) verwendet werden. Wenn der Cache zu einem virtuellen Netzwerk gehört, haben nur Clients in diesem virtuellen Netzwerk Zugriff auf den Cache. Da die Redis-Konsole in Ihrem lokalen Browser ausgeführt wird, der sich außerhalb des VNET befindet, kann sie keine Verbindung mit Ihrem Cache herstellen.
 > - Nicht alle Redis-Befehle werden in Azure Cache for Redis unterstützt. Eine Liste der Redis-Befehle, die für Azure Cache for Redis deaktiviert sind, finden Sie im vorherigen Abschnitt [Redis-Befehle, die in Azure Cache for Redis nicht unterstützt werden](#redis-commands-not-supported-in-azure-cache-for-redis). Weitere Informationen zu Redis-Befehlen finden Sie unter [https://redis.io/commands](https://redis.io/commands).
-> 
-> 
+>
+>
 
 Um auf die Redis-Konsole zuzugreifen, klicken Sie auf dem Blatt **Azure Cache for Redis** auf **Konsole**.
 
-![Redis-Konsole](./media/cache-configure/redis-console-menu.png)
+![Screenshot mit hervorgehobener Schaltfläche „Konsole“.](./media/cache-configure/redis-console-menu.png)
 
 Zum Anwenden von Befehlen auf Ihre Cache-Instanz geben Sie den gewünschten Befehl in der Konsole ein.
 
-![Redis-Konsole](./media/cache-configure/redis-console.png)
+![Screenshot: Redis-Konsole mit Eingabebefehl und Ergebnissen.](./media/cache-configure/redis-console.png)
 
 
 ### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>Verwenden der Redis-Konsole mit einem gruppierten Premium-Cache
@@ -510,12 +498,11 @@ In diesem Beispiel ist Shard 1 der ausgewählte Shard, `myKey` ist jedoch im Sha
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>Verschieben Ihres Caches in ein neues Abonnement
-Sie können Ihren Cache in ein neues Abonnement verschieben, indem Sie auf **Verschieben**klicken.
+Sie können Ihren Cache in ein neues Abonnement verschieben, indem Sie auf **Verschieben** klicken.
 
 ![Verschieben von Azure Cache for Redis](./media/cache-configure/redis-cache-move.png)
 
-Informationen zum Verschieben von Ressourcen zwischen Ressourcengruppen und zwischen Abonnements finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
+Informationen zum Verschieben von Ressourcen zwischen Ressourcengruppen und zwischen Abonnements finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum Verwenden von Redis-Befehlen finden Sie unter [Wie führe ich Redis-Befehle aus?](cache-faq.md#how-can-i-run-redis-commands)
-
+* Weitere Informationen zum Verwenden von Redis-Befehlen finden Sie unter [Wie führe ich Redis-Befehle aus?](cache-development-faq.md#how-can-i-run-redis-commands)

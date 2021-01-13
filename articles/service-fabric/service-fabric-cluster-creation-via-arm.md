@@ -1,36 +1,25 @@
 ---
-title: Erstellen eines Azure Service Fabric-Clusters | Microsoft-Dokumentation
+title: Erstellen eines Azure Service Fabric-Clusters
 description: Hier erfahren Sie, wie mithilfe von Azure Resource Manager ein sicherer Service Fabric-Cluster in Azure eingerichtet wird.  Sie können eine Standardvorlage oder Ihre eigene Clustervorlage zum Erstellen eines Clusters verwenden.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/16/2018
-ms.author: atsenthi
-ms.openlocfilehash: 4a865102cbc33da4140f3e25e4b4926eade8e162
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599973"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008666"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure-Portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure portal](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
 Ein [Azure Service Fabric-Cluster](service-fabric-deploy-anywhere.md) ist eine vernetzte Gruppe von virtuellen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden.  Bei einem Service Fabric-Cluster, der in Azure ausgeführt wird, handelt es sich um eine Azure-Ressource, die mithilfe von Azure Resource Manager bereitgestellt wird. Dieser Artikel beschreibt die Bereitstellung eines sicheren Service Fabric-Clusters in Azure mithilfe von Resource Manager. Sie können dazu eine Standardclustervorlage oder eine benutzerdefinierte Vorlage verwenden.  Wenn Sie noch keine benutzerdefinierte Vorlage haben, erfahren Sie [hier, wie eine erstellt wird](service-fabric-cluster-creation-create-template.md).
 
-Die Clustersicherheit wird bei der Ersteinrichtung des Clusters konfiguriert und kann später nicht geändert werden. Lesen Sie vor dem Einrichten eines Clusters den Artikel [Szenarien für die Clustersicherheit in Service Fabric][service-fabric-cluster-security]. In Azure verwendet Service Fabric das X.509-Zertifikat zum Schützen Ihres Clusters und seiner Endpunkte sowie zum Authentifizieren von Clients und Verschlüsseln von Daten. Azure Active Directory wird ebenfalls empfohlen, um den Zugriff auf Verwaltungsendpunkte zu schützen. Azure AD-Mandanten und -Benutzer müssen vor der Erstellung des Clusters erstellt werden.  Weitere Informationen finden Sie unter [Einrichten der Azure Active Directory-Authentifizierung](service-fabric-cluster-creation-setup-aad.md).
+Die Art der Sicherheit, die zur Sicherung des Clusters ausgewählt wurde (z. B: Windows Identity, X509 usw.) muss für die erste Erstellung des Clusters angegeben werden und kann danach nicht mehr geändert werden. Lesen Sie vor dem Einrichten eines Clusters den Artikel [Szenarien für die Clustersicherheit in Service Fabric][service-fabric-cluster-security]. In Azure verwendet Service Fabric das X.509-Zertifikat zum Schützen Ihres Clusters und seiner Endpunkte sowie zum Authentifizieren von Clients und Verschlüsseln von Daten. Azure Active Directory wird ebenfalls empfohlen, um den Zugriff auf Verwaltungsendpunkte zu schützen. Weitere Informationen finden Sie unter [Einrichten der Azure Active Directory-Authentifizierung](service-fabric-cluster-creation-setup-aad.md).
 
 Wenn Sie einen Produktionscluster für die Ausführung von Produktionsworkloads erstellen, empfehlen wir, davor die [Prüfliste für die Produktionsbereitschaft](service-fabric-production-readiness-checklist.md) durchzulesen.
 
@@ -44,8 +33,8 @@ Verwenden Sie in diesem Artikel die Service Fabric-RM-Powershell- oder Azure CLI
 * [Azure CLI, Version 2.0 und höher][azure-CLI]
 
 Die Referenzdokumentation für die Service Fabric-Module finden Sie hier:
-* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
-* [az SF CLI module](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
+* [Az.ServiceFabric](/powershell/module/az.servicefabric)
+* [az SF CLI module](/cli/azure/sf?view=azure-cli-latest)
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -262,7 +251,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>Verwenden eines Zeigers auf ein Geheimnis in einem Schlüsseltresor
 
-Zur Verwendung eines vorhandenen Schlüsseltresors muss dieser [für die Bereitstellung aktiviert werden](../key-vault/key-vault-manage-with-cli2.md#bkmk_KVperCLI), damit der Compute-Ressourcenanbieter Zertifikate daraus abrufen und ihn auf Clusterknoten installieren kann.
+Zur Verwendung eines vorhandenen Schlüsseltresors muss dieser [für die Bereitstellung aktiviert werden](../key-vault/general/manage-with-cli2.md#bkmk_KVperCLI), damit der Compute-Ressourcenanbieter Zertifikate daraus abrufen und ihn auf Clusterknoten installieren kann.
 
 Bereitstellen des Clusters mithilfe von PowerShell:
 
@@ -273,7 +262,7 @@ $parameterFilePath="c:\mytemplates\mytemplate.json"
 $templateFilePath="c:\mytemplates\mytemplateparm.json"
 $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
-New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretID -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
 Bereitstellen des Clusters mithilfe der Azure CLI:
@@ -282,11 +271,11 @@ Bereitstellen des Clusters mithilfe der Azure CLI:
 declare $resourceGroupName = "testRG"
 declare $parameterFilePath="c:\mytemplates\mytemplate.json"
 declare $templateFilePath="c:\mytemplates\mytemplateparm.json"
-declare $secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
+declare $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
 az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
-    --secret-identifier az $secretID  \
-    --template-file $templateFilePath --parameter-file $parametersFilePath 
+    --secret-identifier $secretID  \
+    --template-file $templateFilePath --parameter-file $parameterFilePath 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

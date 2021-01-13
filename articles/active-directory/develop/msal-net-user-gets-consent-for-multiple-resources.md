@@ -1,28 +1,24 @@
 ---
-title: Abrufen der Zustimmung für mehrere Ressourcen (Microsoft Authentication Library für .NET) | Azure
+title: Erhalten der Einwilligung für verschiedene Ressourcen (MSAL.NET) | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie ein Benutzer mit der Microsoft Authentication Library für .NET (MSAL.NET) die Vorabzustimmung für mehrere Ressourcen abrufen kann.
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ded7a6fc465b4cfc98d26f65195f89de8381ac6
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 6333d935e1a902ba173017f8149c098f44398955
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532390"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88165871"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>Benutzer erhält per MSAL.NET die Zustimmung für mehrere Ressourcen
 Der Microsoft Identity Platform-Endpunkt lässt es nicht zu, dass Sie ein Token für mehrere Ressourcen gleichzeitig abrufen. Wenn Sie die Microsoft Authentication Library für .NET (MSAL.NET) verwenden, darf der Bereichsparameter in der Tokenabrufmethode nur Bereiche für eine einzelne Ressource enthalten. Sie können allerdings vorab mehreren Ressourcen zustimmen, indem Sie mit der Generatormethode `.WithExtraScopeToConsent` zusätzliche Bereiche angeben.

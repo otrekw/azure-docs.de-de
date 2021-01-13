@@ -5,24 +5,24 @@ services: signalr
 author: chenyl
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 11/13/2019
 ms.author: chenyl
-ms.openlocfilehash: 100c7120889f88c1bab3418822835e8d4ece9826
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 84b83c1dd541418c446a89a6f51be668cb41e54e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839298"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562643"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Senden von Ereignissen von Azure SignalR Service an Event Grid
 
 Azure Event Grid ist ein vollständig verwalteter Dienst für das Ereignisrouting, der eine einheitliche Ereignisnutzung mithilfe eines Veröffentlichen/Abonnieren-Modells bereitstellt. In diesem Leitfaden verwenden Sie die Azure CLI, um einen Azure SignalR Service zu erstellen, Verbindungsereignisse zu abonnieren und anschließend eine Beispielwebanwendung für den Empfang der Ereignisse bereitzustellen. Schließlich können Sie eine Verbindung herstellen und trennen und die Ereignisnutzlast in der Beispielanwendung nachvollziehen.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][azure-account] erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Die Azure CLI-Befehle in diesem Artikel sind für die Ausführung in einer **Bash**-Shell formatiert. Wenn Sie eine andere Shell wie PowerShell oder die Eingabeaufforderung verwenden, müssen Sie möglicherweise Zeilenfortsetzungszeichen oder Variablenzuweisungszeilen entsprechend anpassen. In diesem Artikel werden Variablen verwendet, damit die Befehle später nur geringfügig angepasst werden müssen.
+ - Die Azure CLI-Befehle in diesem Artikel sind für die Ausführung in einer **Bash**-Shell formatiert. Wenn Sie eine andere Shell wie PowerShell oder die Eingabeaufforderung verwenden, müssen Sie möglicherweise Zeilenfortsetzungszeichen oder Variablenzuweisungszeilen entsprechend anpassen. In diesem Artikel werden Variablen verwendet, damit die Befehle später nur geringfügig angepasst werden müssen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -80,7 +80,7 @@ Legen Sie zum Bereitstellen der Beispiel-App `SITE_NAME` auf einen eindeutigen N
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
 
-az group deployment create \
+az deployment group create \
     --resource-group $RESOURCE_GROUP_NAME \
     --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
@@ -154,7 +154,7 @@ cd NegotitationServer
 dotnet user-secrets set Azure:SignalR:ConnectionString "<Connection String>"
 dotnet run
 
-# Use a seperate command line
+# Use a separate command line
 # Start a client
 cd SignalRClient
 dotnet run

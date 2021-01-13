@@ -1,19 +1,15 @@
 ---
-title: Sichern mehrerer virtueller Azure-Computer mit PowerShell
+title: 'Tutorial: Sichern mehrerer virtueller Azure-Computer mit PowerShell'
 description: In diesem Tutorial wird erläutert, wie Sie mithilfe von Azure PowerShell mehrere virtuelle Azure-Computer in einem Recovery Services-Tresor sichern.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: tutorial
 ms.date: 03/05/2019
-ms.author: dacurwin
-ms.custom: mvc
-ms.openlocfilehash: 7cbe2cca37ce237409042e40b4a60311aed2446c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 53a5df430a3ea57201ecb19bac68ef9f073beb14
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273990"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90980967"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Sichern virtueller Azure-Computer mit PowerShell
 
@@ -24,37 +20,35 @@ In diesem Tutorial wird beschrieben, wie Sie mithilfe von PowerShell einen [Azur
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Erstellen eines Recovery Services-Tresors und Einrichten des Tresorkontexts.
 > * Definieren einer Sicherungsrichtlinie
 > * Anwenden der Sicherungsrichtlinie zum Schützen mehrerer virtueller Computer
-> * Auslösen eines bedarfsgesteuerten Sicherungsauftrags für die geschützten virtuellen Computer. Bevor Sie einen virtuellen Computer (Virtual Machine, VM) sichern (oder schützen) können, müssen Sie die [Voraussetzungen](backup-azure-arm-vms-prepare.md) schaffen, um Ihre Umgebung auf den Schutz Ihrer VMs vorzubereiten. 
+> * Auslösen eines bedarfsgesteuerten Sicherungsauftrags für die geschützten virtuellen Computer. Bevor Sie einen virtuellen Computer (Virtual Machine, VM) sichern (oder schützen) können, müssen Sie die [Voraussetzungen](backup-azure-arm-vms-prepare.md) schaffen, um Ihre Umgebung auf den Schutz Ihrer VMs vorzubereiten.
 
 > [!IMPORTANT]
 > In diesem Tutorial wird davon ausgegangen, dass Sie bereits eine Ressourcengruppe und einen virtuellen Azure-Computer erstellt haben.
 
-
-## <a name="log-in-and-register"></a>Anmeldung und Registrierung
-
+## <a name="sign-in-and-register"></a>Anmeldung und Registrierung
 
 1. Melden Sie sich mit dem Befehl `Connect-AzAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
     ```powershell
     Connect-AzAccount
     ```
+
 2. Bei der ersten Verwendung von Azure Backup müssen Sie den Azure Recovery Service-Anbieter in Ihrem Abonnement mit [Register-AzResourceProvider](/powershell/module/az.Resources/Register-azResourceProvider) registrieren. Wenn Sie die Registrierung bereits vorgenommen haben, überspringen Sie diesen Schritt.
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
 Ein [Recovery Services-Tresor](backup-azure-recovery-services-vault-overview.md) ist ein logischer Container, in dem Sicherungsdaten für geschützte Ressourcen wie Azure-VMs gespeichert werden. Beim Ausführen eines Sicherungsauftrags wird im Recovery Services-Tresor ein Wiederherstellungspunkt erstellt. Sie können einen dieser Wiederherstellungspunkte dann verwenden, um Daten für einen bestimmten Zeitpunkt wiederherzustellen.
 
-
-- In diesem Tutorial erstellen Sie den Tresor in der Ressourcengruppe und an dem Speicherort, die/den Sie auch für den zu sichernden virtuellen Computer verwendet haben.
-- Azure Backup übernimmt automatisch die Speicherung der gesicherten Daten. Der Tresor verwendet standardmäßig den [georedundanten Speicher (GRS)](../storage/common/storage-redundancy-grs.md). Durch Georedundanz wird sichergestellt, dass die gesicherten Daten in einer sekundären Azure-Region repliziert werden, die Hunderte von Kilometern von der primären Region entfernt ist.
+* In diesem Tutorial erstellen Sie den Tresor in der Ressourcengruppe und an dem Speicherort, die/den Sie auch für den zu sichernden virtuellen Computer verwendet haben.
+* Azure Backup übernimmt automatisch die Speicherung der gesicherten Daten. Der Tresor verwendet standardmäßig den [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). Durch Georedundanz wird sichergestellt, dass die gesicherten Daten in einer sekundären Azure-Region repliziert werden, die Hunderte von Kilometern von der primären Region entfernt ist.
 
 Erstellen Sie den Tresor wie folgt:
 
@@ -63,16 +57,17 @@ Erstellen Sie den Tresor wie folgt:
     ```powershell
     New-AzRecoveryServicesVault -Name myRSvault -ResourceGroupName "myResourceGroup" -Location "EastUS"
     ```
-2. Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das zur Sicherung verwendete Recovery Services-Tresorobjekt in einer Variablen gespeichert werden.
+
+2. Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das Backup Recovery Services-Tresorobjekt in einer Variablen gespeichert werden.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault –Name myRSVault
     ```
-    
+
 3. Legen Sie den Tresorkontext mit [Set-AzRecoveryServicesVaultContext](/powershell/module/az.RecoveryServices/Set-azRecoveryServicesVaultContext) fest.
 
-   - Der Tresorkontext ist der Datentyp, der im Tresor geschützt wird.
-   - Der festgelegte Kontext gilt für alle nachfolgenden Cmdlets.
+   * Der Tresorkontext ist der Datentyp, der im Tresor geschützt wird.
+   * Der festgelegte Kontext gilt für alle nachfolgenden Cmdlets.
 
      ```powershell
      Get-AzRecoveryServicesVault -Name "myRSVault" | Set-AzRecoveryServicesVaultContext
@@ -82,17 +77,17 @@ Erstellen Sie den Tresor wie folgt:
 
 Sicherungen werden gemäß dem in der Sicherungsrichtlinie angegebenen Zeitplan ausgeführt. Wenn Sie einen Recovery Services-Tresor erstellen, enthält er automatisch standardmäßige Schutz- und Aufbewahrungsrichtlinien.
 
-- Die Standardschutzrichtlinie löst täglich zu einem angegebenen Zeitpunkt einen Sicherungsauftrag aus.
-- Die standardmäßige Aufbewahrungsrichtlinie bewahrt den täglichen Wiederherstellungspunkt für 30 Tage auf. 
+* Die Standardschutzrichtlinie löst täglich zu einem angegebenen Zeitpunkt einen Sicherungsauftrag aus.
+* Die standardmäßige Aufbewahrungsrichtlinie bewahrt den täglichen Wiederherstellungspunkt für 30 Tage auf.
 
 In diesem Tutorial führen Sie zum Aktivieren und Sichern des virtuellen Azure-Computers die folgenden Schritte aus:
 
 1. Geben Sie mit [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer) einen Container im Tresor an, der Ihre Sicherungsdaten enthält.
 2. Bei jedem für die Sicherung vorgesehenen virtuellen Computer handelt es sich um ein Element. Zum Starten eines Sicherungsauftrags rufen Sie mit [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) Informationen zum virtuellen Computer ab.
-3. Führen Sie mit dem Cmdlet [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem) eine Ad-hoc-Sicherung aus. 
-    - Beim ersten Sicherungsauftrag wird ein vollständiger Wiederherstellungspunkt erstellt.
-    - Bei jedem Sicherungsauftrag nach der ersten Sicherung werden inkrementelle Wiederherstellungspunkte erstellt.
-    - Inkrementelle Wiederherstellungspunkte sind in Bezug auf die Speicherung und die Dauer effizient, da nur Änderungen übertragen werden, die seit der letzten Sicherung vorgenommen wurden.
+3. Führen Sie mit [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem) eine bedarfsgesteuerte Sicherung aus.
+    * Beim ersten Sicherungsauftrag wird ein vollständiger Wiederherstellungspunkt erstellt.
+    * Bei jedem Sicherungsauftrag nach der ersten Sicherung werden inkrementelle Wiederherstellungspunkte erstellt.
+    * Inkrementelle Wiederherstellungspunkte sind in Bezug auf die Speicherung und die Dauer effizient, da nur Änderungen übertragen werden, die seit der letzten Sicherung vorgenommen wurden.
 
 Sie können die Sicherung wie folgt aktivieren und ausführen:
 
@@ -102,14 +97,13 @@ $item = Get-AzRecoveryServicesBackupItem -Container $namedContainer -WorkloadTyp
 $job = Backup-AzRecoveryServicesBackupItem -Item $item
 ```
 
-## <a name="troubleshooting"></a>Problembehandlung 
+## <a name="troubleshooting"></a>Problembehandlung
 
 Wenn beim Sichern des virtuellen Computers Probleme auftreten, lesen Sie den Artikel [Problembehandlung bei der Sicherung virtueller Azure-Computer](backup-azure-vms-troubleshoot.md).
 
 ### <a name="deleting-a-recovery-services-vault"></a>Löschen eines Recovery Services-Tresors
 
 Wenn Sie einen Tresor löschen müssen, löschen Sie zuerst die Wiederherstellungspunkte im Tresor, und heben Sie dann die Registrierung im Tresor wie folgt auf:
-
 
 ```powershell
 $Cont = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered
@@ -121,6 +115,6 @@ Remove-AzRecoveryServicesVault -Vault $vault1
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Befassen Sie sich](backup-azure-vms-automation.md) mit einer detaillierteren exemplarischen Vorgehensweise für das Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell. 
-- [Verwalten und Überwachen von Azure-VMs](backup-azure-manage-vms.md)
-- [Wiederherstellen virtueller Azure-Computer](backup-azure-arm-restore-vms.md)
+* [Befassen Sie sich](backup-azure-vms-automation.md) mit einer detaillierteren exemplarischen Vorgehensweise für das Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell.
+* [Verwalten und Überwachen von Azure-VMs](backup-azure-manage-vms.md)
+* [Wiederherstellen virtueller Azure-Computer](backup-azure-arm-restore-vms.md)

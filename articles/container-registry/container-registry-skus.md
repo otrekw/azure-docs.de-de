@@ -1,49 +1,40 @@
 ---
-title: Azure Container Registry-SKUs
-description: Vergleich der verschiedenen in Azure Container Registry verfügbaren Dienstebenen.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Registrierungstarife und -funktionen
+description: Erfahren Sie mehr über die Features und Beschränkungen der Diensttarife (SKUs) Basic, Standard und Premium von Azure Container Registry.
 ms.topic: article
-ms.date: 05/06/2019
-ms.author: danlep
-ms.openlocfilehash: bf620178a0c10661126b3e52c7b908ccc9a90d89
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 05/18/2020
+ms.openlocfilehash: e2a5ad52775e9000aa0beb0a926d809da1c5a0e0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68311884"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048473"
 ---
-# <a name="azure-container-registry-skus"></a>Azure Container Registry-SKUs
+# <a name="azure-container-registry-service-tiers"></a>Azure Container Registry-Tarife
 
-Azure Container Registry (ACR) steht in verschiedenen Dienstebenen, sogenannten SKUs, zur Verfügung. Durch diese SKUs können Preise im Voraus eingeschätzt werden. Darüber hinaus bieten sie verschiedene Optionen zur Anpassung an die Kapazität und das Nutzungsverhalten Ihrer privaten Docker-Registrierung in Azure.
+Azure Container Registry steht in verschiedenen Tarifen (auch als SKUs bezeichnet) zur Verfügung. Durch diese Tarife können Preise im Voraus eingeschätzt werden. Darüber hinaus bieten sie verschiedene Optionen zur Anpassung an die Kapazität und das Nutzungsverhalten Ihrer privaten Docker-Registrierung in Azure.
 
-| SKU | Verwaltet | BESCHREIBUNG |
-| --- | :-------: | ----------- |
-| **Basic** | Ja | Ein kostenoptimierter Einstiegspunkt für Entwickler, die sich mit Azure Container Registry vertraut machen. Basic-Registrierungen verfügen über die gleichen Programmfunktionen wie Standard- und Premium-Registrierungen (z.B. Azure Active Directory-[Authentifizierungsintegration](container-registry-authentication.md#individual-login-with-azure-ad), [Löschen von Images][container-registry-delete] und [Webhooks][container-registry-webhook]). Der gebotene Speicher- und Imagedurchsatz ist jedoch für Szenarien mit geringerer Nutzung am besten geeignet. |
-| **Standard** | Ja | Standard-Registrierungen bieten die gleichen Funktionen wie Basic, jedoch höhere Speichergrenzwerte und einen höheren Imagedurchsatz. Standard-Registrierungen erfüllen üblicherweise die Bedürfnisse der meisten Produktionsszenarios. |
-| **Premium** | Ja | Premium-Registrierungen bieten den größten Umfang an Speicher und gleichzeitigen Vorgängen, sodass Szenarien mit großen Volumen möglich sind. Neben einem höheren Imagedurchsatz bietet Premium Funktionen wie die [Georeplikation][container-registry-geo-replication] zum regionsübergreifenden Verwalten einer einzelnen Registrierung, [Inhaltsvertrauensstellung](container-registry-content-trust.md) für das Signieren von Imagetags sowie [Firewalls und virtuelle Netzwerke (Vorschauversion)](container-registry-vnet.md) zum Einschränken des Zugriffs auf die Registrierung. |
-|  Klassisch (*nach April 2019 nicht verfügbar*) | Nein | Diese SKU ermöglichte das erstmalige Release des Azure Container Registry-Diensts in Azure. Klassische Registrierungen werden von einem Speicherkonto unterstützt, das von Azure in Ihrem Abonnement erstellt wird, das dazu führt, dass ACR nur eingeschränkt allgemeine Funktionen wie einen erhöhten Durchsatz oder die Georeplikation bieten kann. |
+| Tarif | BESCHREIBUNG |
+| --- | ----------- |
+| **Grundlegend** | Ein kostenoptimierter Einstiegspunkt für Entwickler, die sich mit Azure Container Registry vertraut machen. Basic-Registrierungen verfügen über die gleichen Programmfunktionen wie Standard- und Premium-Registrierungen (z.B. Azure Active Directory-[Authentifizierungsintegration](container-registry-authentication.md#individual-login-with-azure-ad), [Löschen von Images][container-registry-delete] und [Webhooks][container-registry-webhook]). Der gebotene Speicher- und Imagedurchsatz ist jedoch für Szenarien mit geringerer Nutzung am besten geeignet. |
+| **Standard** | Standard-Registrierungen bieten die gleichen Funktionen wie Basic, jedoch höhere Speichergrenzwerte und einen höheren Imagedurchsatz. Standard-Registrierungen erfüllen üblicherweise die Bedürfnisse der meisten Produktionsszenarios. |
+| **Premium** | Premium-Registrierungen bieten den größten Umfang an Speicher und gleichzeitigen Vorgängen, sodass Szenarien mit großen Volumen möglich sind. Neben einem höheren Imagedurchsatz bietet Premium Funktionen wie [Georeplikation][container-registry-geo-replication] zum regionsübergreifenden Verwalten einer einzelnen Registrierung, [Inhaltsvertrauensstellung](container-registry-content-trust.md) für das Signieren von Imagetags sowie [private Links mit privaten Endpunkten](container-registry-private-link.md) zum Einschränken des Zugriffs auf die Registrierung. |
 
-> [!IMPORTANT]
-> Die SKU „Klassisch“ wird **eingestellt** und ist nach **April 2019** nicht mehr verfügbar. Es wird empfohlen, für alle neuen Registrierungen die SKUs „Basic“, „Standard“ oder „Premium“ zu verwenden. Für alle vorhandenen klassischen Registrierungen muss vor April 2019 ein Upgrade durchgeführt werden. Informationen zum Upgraden finden Sie unter [Durchführen eines Upgrades für eine klassische Registrierung][container-registry-upgrade].
+Die Tarife „Basic“, „Standard“ und „Premium“ bieten alle dieselben programmgesteuerten Funktionen. Sie alle profitieren auch von [Imagespeicher][container-registry-storage], der vollständig von Azure verwaltet wird. Wenn Sie sich für einen Tarif auf höherer Ebene entscheiden, können Sie von einer höheren Leistung und Skalierung profitieren. Wenn mehrere Dienstebenen vorhanden sind, können Sie mit „Basic“ beginnen und dann bei zunehmender Registrierungsnutzung in „Standard“ und „Premium“ konvertieren.
 
-Die SKUs „Basic“, „Standard“ und „Premium“ (zusammen als *verwaltete Registrierungen* bezeichnet) bieten alle dieselben programmgesteuerten Funktionen. Sie alle profitieren auch von [Imagespeicher][container-registry-storage], der vollständig von Azure verwaltet wird. Wenn Sie sich für eine SKU auf höherer Ebene entscheiden, können Sie von einer höheren Leistung und Skalierung profitieren. Wenn mehrere Dienstebenen vorhanden sind, können Sie mit „Basic“ beginnen und dann bei zunehmender Registrierungsnutzung in „Standard“ und „Premium“ konvertieren.
+## <a name="service-tier-features-and-limits"></a>Tariffunktionen und -limits
 
-## <a name="sku-feature-matrix"></a>SKU-Featurematrix
-
-In der folgenden Tabelle werden die Features und Grenzwerte der Dienstebenen „Basic“, „Standard“ und „Premium“ dargestellt.
+Die folgende Tabelle enthält die Features und Registrierungsgrenzwerte der Dienstebenen „Basic“, „Standard“ und „Premium“:
 
 [!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 
-## <a name="changing-skus"></a>Wechseln von SKUs
+## <a name="changing-tiers"></a>Wechseln von Tarifen
 
-Sie können die SKU einer Registrierung mit der Azure CLI oder im Azure-Portal wechseln. Zwischen den verwalteten SKUs können Sie sich frei bewegen, solange die SKU, zu der Sie wechseln, über die erforderliche maximale Speicherkapazität verfügt. Wenn Sie von der klassischen Registrierung zu einer der verwalteten SKUs wechseln, kann dieser Vorgang nicht mehr rückgängig gemacht werden.
+Sie können den Tarif einer Registrierung über die Azure CLI oder im Azure-Portal wechseln. Zwischen den Tarifen können Sie sich frei bewegen, solange der Tarif, zu dem Sie wechseln, über die erforderliche maximale Speicherkapazität verfügt. 
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
-Zwischen SKUs kann mithilfe des Azure CLI-Befehls [az acr update][az-acr-update] gewechselt werden. Gehen Sie beispielsweise wie folgt vor, um zu Premium zu wechseln:
+Zwischen Tarifen kann mithilfe des Azure CLI-Befehls [az acr update][az-acr-update] gewechselt werden. Gehen Sie beispielsweise wie folgt vor, um zu Premium zu wechseln:
 
 ```azurecli
 az acr update --name myregistry --sku Premium
@@ -55,11 +46,9 @@ Klicken Sie im Azure-Portal in der Containerregistrierung **Übersicht** auf **U
 
 ![Aktualisieren der Containerregistrierung-SKU im Azure-Portal][update-registry-sku]
 
-Wenn eine klassische Registrierung vorliegt, ist die Auswahl einer verwalteten SKU im Azure-Portal nicht möglich. Stattdessen müssen Sie zuerst ein [Upgrade][container-registry-upgrade] auf eine verwaltete Registrierung durchführen.
-
 ## <a name="pricing"></a>Preise
 
-Informationen zu Preisen für jede SKU von Azure Container Registry finden Sie unter [Preise von Azure Container Registry][container-registry-pricing].
+Informationen zu Preisen für jeden Tarif von Azure Container Registry finden Sie unter [Preise von Container Registry][container-registry-pricing].
 
 Weitere Informationen zu den Preisen für Datenübertragungen finden Sie unter [Bandbreite: Preisdetails](https://azure.microsoft.com/pricing/details/bandwidth/). 
 
@@ -84,7 +73,6 @@ Unter [ACR UserVoice][container-registry-uservoice] können Sie neue Featurevors
 <!-- LINKS - Internal -->
 [az-acr-update]: /cli/azure/acr#az-acr-update
 [container-registry-geo-replication]: container-registry-geo-replication.md
-[container-registry-upgrade]: container-registry-upgrade.md
 [container-registry-storage]: container-registry-storage.md
 [container-registry-delete]: container-registry-delete.md
 [container-registry-webhook]: container-registry-webhook.md

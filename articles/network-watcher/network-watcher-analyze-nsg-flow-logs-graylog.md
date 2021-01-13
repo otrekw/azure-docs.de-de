@@ -3,24 +3,23 @@ title: Analysieren der Datenflussprotokolle von Azure-Netzwerksicherheitsgruppen
 description: Hier wird erläutert, wie Datenflussprotokolle für Netzwerksicherheitsgruppen in Azure mithilfe von Network Watcher und Graylog verwaltet und analysiert werden.
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
+author: damendo
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
-ms.author: mareat
-ms.openlocfilehash: a5fadcfce154740a79a8764f44f08b21ad18f4d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: damendo
+ms.openlocfilehash: 8b363d90d05e95b017c3a655b57dbabc3712a155
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60625205"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965543"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Verwalten und Analysieren von Datenflussprotokollen für Netzwerksicherheitsgruppen in Azure mithilfe von Network Watcher und Graylog
 
@@ -41,7 +40,7 @@ Datenflussprotokolle von Netzwerksicherheitsgruppen werden mithilfe von Network 
 
 ### <a name="enable-network-security-group-flow-logging"></a>Aktivieren der Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
-Für dieses Szenario müssen Sie die NSG-Datenflussprotokollierung für mindestens eine Netzwerksicherheitsgruppe in Ihrem Konto aktivieren. Eine Anleitung zum Aktivieren von NSG-Datenflussprotokollen finden Sie im Artikel  [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
+Für dieses Szenario müssen Sie die NSG-Datenflussprotokollierung für mindestens eine Netzwerksicherheitsgruppe in Ihrem Konto aktivieren. Eine Anleitung zum Aktivieren von NSG-Datenflussprotokollen finden Sie im Artikel [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
 
 ### <a name="setting-up-graylog"></a>Einrichten von Graylog
 
@@ -54,7 +53,7 @@ Dieses Beispiel verwendet die Graylog-Mindestkonfiguration (d.h. eine einzelne G
 
 Graylog kann in vielerlei Hinsicht je nach Plattform und Vorlieben installiert werden. Eine vollständige Liste der möglichen Installationsmethoden finden Sie in Graylogs offizieller [Dokumentation](https://docs.graylog.org/en/2.2/pages/installation.html). Die Graylog-Serveranwendung wird auf Linux-Verteilungen ausgeführt und hat die folgenden Voraussetzungen:
 
--  Java SE 8 oder höher – [Azul Azure JDK-Dokumentation](https://aka.ms/azure-jdks)
+-  Java SE 8 oder höher – [Azul Azure JDK-Dokumentation](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 -  Elastic Search 2.x (2.1.0 oder höher) – [Elasticsearch-Installationsdokumentation](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
 -  MongoDB 2.4 oder höher – [MongoDB-Installationsdokumentation](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
@@ -75,7 +74,7 @@ Mithilfe von Logstash können Sie die JSON-formatierten Datenflussprotokolle auf
    sudo touch /etc/logstash/conf.d/logstash.conf
    ```
 
-3. Fügen Sie der Datei Folgendes hinzu. Ändern Sie die hervorgehobenen Werte entsprechend Ihrer Speicherkontodetails:
+3. Fügen Sie der Datei folgenden Inhalt hinzu. Ändern Sie die hervorgehobenen Werte entsprechend Ihrer Speicherkontodetails:
 
    ```
     input {
@@ -187,11 +186,11 @@ Nachdem Sie mit Logstash eine Verbindung mit den Datenflussprotokollen hergestel
 
    Stellen Sie sicher, dass Sie die Eingabe an die IP-Adresse binden, auf der Sie Ihren Graylog-Server konfiguriert haben. Die IP-Adresse sollte mit dem **Host**-Feld der UDP-Ausgabe der Logstash-Konfigurationsdatei übereinstimmen. Der Standardport sollte *12201* sein. Stellen Sie sicher, dass der Port dem **Port**-Feld in der UDP-Ausgabe entspricht, die in der Konfigurationsdatei von Logstash festgelegt ist.
 
-   ![Eingaben](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
+   ![Screenshot der Graylog-Eingaben mit Optionen zum Starten und Suchen von Eingaben.](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
    Nachdem Sie die Eingabe starten, sollten Sie eswie in der folgenden Abbildung gezeigt, im Abschnitt **Lokale Eingaben** sehen:
 
-   ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
+   ![Screenshot mit dem Abschnitt „Lokale Eingaben“, der die von Ihnen gestartete Eingabe enthält.](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
    Weitere Informationen zum Graylog-Nachrichteneingaben finden Sie in der [Dokumentation](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs).
 
@@ -201,11 +200,11 @@ Nachdem Sie mit Logstash eine Verbindung mit den Datenflussprotokollen hergestel
 
 Nachdem Ihr Graylog-Server genug Zeit zum Erfassen von Nachrichten hatte, können Sie die Meldungen durchsuchen. Überprüfen Sie auf der Konfigurationsseite **Eingaben** die Nachrichten, die an Ihren Graylog-Server gesendet werden, indem Sie auf die Schaltfläche **Empfangene Nachrichten anzeigen** der erstellten GELF-UDP-Eingabe klicken. Sie werden zu einem Bildschirm weitergeleitet, der der folgenden Abbildung ähnelt: 
 
-![Histogramm](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
+![Screenshot des Graylog-Servers mit Suchergebnis, Histogramm und Meldungen.](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
 Durch Klicken auf den blauen Link „% {Message}“ wird jede Nachricht erweitert, um die Parameter der einzelnen Tupel-Datenflüsse anzuzeigen, wie in der folgenden Abbildung gezeigt:
 
-![Meldungen](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
+![Screenshot mit Meldungsdetails vom Graylog-Server.](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
 
 Standardmäßig sind alle Nachrichtenfelder in der Suche enthalten, wenn Sie kein bestimmtes Nachrichtenfeld für die Suche auswählen. Wenn Sie nach bestimmten Nachrichten suchen (d.h. – Datenflusstupel aus einer bestimmten Quell-IP), können Sie die Graylog-Suchabfragesprache wie [dokumentiert](https://docs.graylog.org/en/2.2/pages/queries.html) verwenden
 
@@ -219,7 +218,7 @@ Nun, da Graylog eingerichtet ist und ausgeführt wird, können Sie einige der Fu
 
 2. Klicken Sie dort auf die grüne **Dashboard erstellen**-Schaltfläche, und füllen Sie das kurze Formular mit dem Titel und der Beschreibung des Dashboards aus. Klicken Sie auf die **Speichern**-Schaltfläche, um das neue Dashboard zu erstellen. Sie sehen ein Dashboard ähnlich dem folgenden Bild:
 
-    ![Dashboards](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
+    ![Screenshot mit Dashboards des Graylog-Servers mit den Optionen zum Erstellen und Bearbeiten von Dashboards.](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
 ### <a name="add-widgets"></a>Hinzufügen von Widgets
 
@@ -247,4 +246,4 @@ Durch die Integration von Network Watcher mit Graylog haben Sie jetzt eine einfa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie unter  [Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md), wie Sie Ihre NSG-Datenflussprotokolle mit Power BI visualisieren.
+Erfahren Sie unter [Visualize network security group flows logs with Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md) (Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI), wie Sie Ihre NSG-Datenflussprotokolle mit Power BI visualisieren.

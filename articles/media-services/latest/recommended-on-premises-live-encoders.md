@@ -6,62 +6,91 @@ keywords: Codierung; Encoder; Medien
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 08/08/2019
-ms.topic: article
+ms.date: 11/10/2020
+ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: 6b9cb325f2bb7419e32efd5bde4705786c5dbeb5
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 88de41ae62e3a81fdb51981afe42135649bf34b4
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934926"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734309"
 ---
-# <a name="recommended-live-streaming-encoders"></a>Empfohlene Livestreaming-Encoder
+# <a name="verified-on-premises-live-streaming-encoders"></a>Überprüfte lokale Livestreamingencoder
 
-In Azure Media Services stellt ein [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) (Kanal) eine Pipeline zum Verarbeiten von Livestreaminginhalten dar. Es gibt zwei Arten, auf die Live-Eingabestreams vom Liveereignis empfangen werden können.
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-* Von einem lokalen Liveencoder wird ein RTMP- oder Smooth Streaming-Datenstrom (fragmentiertes MP4) mit Mehrfachbitrate an das Liveereignis gesendet, das nicht für die Livecodierung mit Media Services aktiviert ist. Die erfassten Streams durchlaufen Liveereignisse ohne weitere Verarbeitung. Diese Methode wird als **Pass-Through-Methode** bezeichnet. Ein Liveencoder kann einen Datenstrom mit Einzelbitrate an einen Pass-Through-Kanal senden. Diese Konfiguration wird nicht empfohlen, da sie kein Adaptive Bitrate Streaming zum Client zulässt.
+In Azure Media Services stellt ein [Liveereignis](/rest/api/media/liveevents) (Kanal) eine Pipeline zum Verarbeiten von Livestreaminginhalten dar. Es gibt zwei Arten, auf die Live-Eingabestreams vom Liveereignis empfangen werden können.
 
-  > [!NOTE]
+* Von einem lokalen Liveencoder wird ein RTMP- oder Smooth Streaming-Datenstrom (fragmentiertes MP4) mit Mehrfachbitrate an das Liveereignis gesendet, das nicht für die Livecodierung mit Media Services aktiviert ist. Die erfassten Streams durchlaufen Liveereignisse ohne weitere Verarbeitung. Diese Methode wird als **Pass-Through-Methode** bezeichnet. Um auf Clientseite ein Streaming mit adaptiver Bitrate zu ermöglichen, sollte der Liveencoder anstelle eines Einzelbitraten-Datenstroms Mehrfachbitraten-Datenströme an ein Pass-Through-Liveereignis senden. 
+
+    Bei Verwendung von Mehrfachbitraten-Datenströmen für das Pass-Through-Liveereignis müssen die Video-GOP-Größe und die Videofragmente unterschiedlicher Bitraten synchronisiert werden, um ein unerwartetes Verhalten bei der Wiedergabe zu vermeiden.
+
+  > [!TIP]
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings.
  
 * Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an das Liveereignis, das zum Ausführen der Livecodierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Liveereignis wird dann eine Livecodierung des Eingabestreams mit Einzelbitrate in einen (adaptiven) Videostream mit Mehrfachbitrate ausgeführt.
 
+In diesem Artikel werden überprüfte lokale Livestreamingencoder behandelt. Die Überprüfung erfolgt durch den Anbieter direkt oder durch den Kunden. Microsoft Azure Media Services selbst führt keine vollständigen Tests oder strenge Überprüfungen der Encoder durch und überprüft auch nicht regelmäßig, ob neue Updates vorhanden sind. Anweisungen zum Überprüfen Ihres lokalen Liveencoders finden Sie unter [Überprüfen Ihres lokalen Encoders](become-on-premises-encoder-partner.md).
+
 Ausführliche Informationen zur Livecodierung mit Media Services finden Sie unter [Livestreaming mit Media Services v3](live-streaming-overview.md).
+
+## <a name="encoder-requirements"></a>Anforderungen für Encoder
+
+Encoder müssen TLS 1.2 unterstützen, wenn HTTPS- oder RTMPS-Protokolle verwendet werden.
 
 ## <a name="live-encoders-that-output-rtmp"></a>Liveencoder mit RTMP-Ausgabe
 
 Media Services empfiehlt die Verwendung eines der nachfolgenden Liveencoder mit RTMP-Ausgabe. Die unterstützten URL-Schemas sind `rtmp://` und `rtmps://`.
 
+Überprüfen Sie beim Streamen per RTMP in den Firewall- und/oder Proxyeinstellungen, ob die ausgehenden TCP-Ports 1935 und 1936 geöffnet sind.<br/><br/>
+Überprüfen Sie beim Streamen per RTMPS in den Firewall- und/oder Proxyeinstellungen, ob die ausgehenden TCP-Ports 2935 und 2936 geöffnet sind.
+
 > [!NOTE]
-> Überprüfen Sie beim Streamen per RTMP in den Firewall- und/oder Proxyeinstellungen, ob die ausgehenden TCP-Ports 1935 und 1936 geöffnet sind.
+> Bei Verwendung der RTMPS-Protokolle müssen die Encoder TLS 1.2 unterstützen.
 
 - Adobe Flash Media Live Encoder 3.2
+- [Antix Digital](http://www.antixdigital.com/) StreamZ Live (zuvor Imagine Communication SelenioFlex Live)
+- [Blackmagic ATEM Mini und ATEM Mini PRO](https://www.blackmagicdesign.com/products/atemmini)
+- [Cambria Live 4.3](https://www.capellasystems.net/products/cambria-live/)
+- Elemental Live (Version 2.14.15 und höher)
+- [Ffmpeg](https://www.ffmpeg.org)
+- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hero 7 und Hero 8
 - Haivision KB
 - Haivision Makito X HEVC
+- [Restream.io](https://restream.io/)
 - OBS Studio
-- Switcher Studio (iOS)
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- [Streamlabs OBS](https://streamlabs.com/)
+- [Switcher Studio (iOS)](https://www.switcherstudio.com/)
+- Telestream Wirecast (Version 13.0.2 oder höher aufgrund der TLS 1.2-Anforderung)
+- Telestream Wirecast S (Es wird nur RTMP unterstützt. Keine RTMPS-Unterstützung aufgrund der erforderlichen Version von TLS 1.2 oder höher.)
 - Teradek Slice 756
-- TriCaster 8000
-- Tricaster Mini HD-4
 - VMIX
 - xStream
 
-## <a name="live-encoders-that-output-fragmented-mp4"></a>Liveencoder mit Ausgabe im fragmentierten MP4-Format
+> [!WARNING]
+> Diese Liste mit Encodern stellt nur eine Empfehlung dar. Microsoft führt keine regelmäßigen Tests oder Überprüfungen von Encodern durch. Von Encoderanbietern oder Open-Source-Projekten bereitgestellte Updates oder Breaking Changes können sich negativ auf die Kompatibilität auswirken. 
+
+## <a name="live-encoders-that-output-fragmented-mp4-smooth-streaming-ingest"></a>Liveencoder mit Ausgabe im fragmentierten MP4-Format (Smooth Streaming-Erfassung)
 
 Media Services empfiehlt den Einsatz eines der nachfolgenden Liveencoder, der Smooth Streaming mit Mehrfachbitrate (fragmentiertes MP4) ausgibt. Die unterstützten URL-Schemas sind `http://` und `https://`.
 
+> [!NOTE]
+> Bei Verwendung von HTTPS-Protokollen müssen Encoder TLS 1.2 unterstützen.
+
 - Ateme TITAN Live
+- [Antix Digital](http://www.antixdigital.com/) StreamZ Live (zuvor Imagine Communication SelenioFlex Live)
 - Cisco Digital Media Encoder 2200
-- Elemental Live
-- Envivio-4Caster C4 Gen III
-- Imagine Communications Selenio MCP3
+- Elemental Live (Version 2.14.15 und höher aufgrund der TLS 1.2-Anforderung)
+- Envivio-4Caster C4 Gen III 
+- [Ffmpeg](https://www.ffmpeg.org)
 - Media Excel Hero Live und Hero 4K (UHD/HEVC)
 
 > [!TIP]
 >  Wenn Sie Liveveranstaltungen in mehreren Sprachen streamen (z.B. eine englische Audiospur und eine spanische Audiospur), können Sie dies mit dem Media Excel Live Encoder erreichen, der so konfiguriert ist, dass er den Livefeed an ein Pass-Through-Liveereignis sendet.
+
+> [!WARNING]
+> Diese Liste mit Encodern stellt nur eine Empfehlung dar. Microsoft führt keine regelmäßigen Tests oder Überprüfungen von Encodern durch. Von Encoderanbietern oder Open-Source-Projekten bereitgestellte Unterstützung oder Fehler können sich negativ auf die Kompatibilität auswirken. 
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurieren von lokalen Liveencodereinstellungen
 
@@ -77,58 +106,21 @@ Damit Inhalte wiedergegeben werden können, müssen sowohl ein Audio- als auch e
 - Zum Bestimmen der erforderlichen Bandbreite müssen die Streamingbitraten verdoppelt werden. Wenngleich nicht bindend, ist diese einfache Regel hilfreich, um Netzwerküberlastungen zu verhindern.
 - Bei der Verwendung softwarebasierter Encoder schließen Sie alle nicht benötigten Programme.
 - Das Ändern der Encoderkonfiguration, nachdem die Pushübertragung begonnen hat, führt zu negativen Auswirkungen auf das Ereignis. Durch Konfigurationsänderungen kann das Ereignis instabil werden. 
+- Testen und überprüfen Sie stets neue Versionen der Encodersoftware, um die Kompatibilität mit Azure Media Services sicherzustellen. Die hier aufgelisteten Encoder werden von Microsoft nicht erneut überprüft. Softwareanbieter überprüfen die Encoder meist direkt und zertifizieren sie selbst.
 - Nehmen Sie sich zum Einrichten Ihres Ereignisses unbedingt ausreichend Zeit. Für Großereignisse empfiehlt es sich, eine Stunde vor dem Ereignis mit dem Setup zu beginnen.
+- Verwenden Sie die H.264-Video- und die AAC-LC-Audiocodecausgabe.
+- Verwenden Sie für den Liveereignistyp, den Sie übertragen, nur die unterstützten Auflösungen und Frameraten (eine Rate von 60 BpS wird beispielsweise derzeit abgelehnt).
+- Stellen Sie sicher, dass eine zeitliche Ausrichtung anhand von Keyframe oder GOP übergreifend über Videoqualitäten hinweg vorliegt.
+- Vergewissern Sie sich, dass jede Videoqualität durch einen eindeutigen Streamnamen gekennzeichnet ist.
+- Verwenden Sie strenge CBR-Codierung, die für eine optimale Leistung bei adaptiver Bitrate empfohlen wird.
 
-## <a name="becoming-an-on-premises-encoder-partner"></a>Partner für lokale Encoder werden
+> [!IMPORTANT]
+> Beobachten Sie die Hardwareressourcen des Computers (CPU, Arbeitsspeicher usw.), da das Hochladen von Fragmenten in die Cloud CPU- und E/A-Vorgänge mit sich bringt. Wenn Sie Einstellungen im Encoder ändern, achten Sie darauf, die Kanäle/Liveereignisse zurückzusetzen, damit die Änderung wirksam wird.
 
-Wenn Sie Azure Media Services-Partner für lokale Encoder werden, unterstützt Media Services Ihr Produkt, indem es Ihren Encoder Unternehmenskunden empfiehlt. Um Partner für lokale Encoder zu werden, müssen Sie die Kompatibilität Ihres lokalen Encoders mit Media Services bestätigen. Führen Sie hierzu die folgenden Überprüfungsschritte aus.
+## <a name="see-also"></a>Weitere Informationen
 
-### <a name="pass-through-live-event-verification"></a>Überprüfung von Pass-Through-Liveereignissen
-
-1. Vergewissern Sie sich in Ihrem Media Services-Konto, dass der **Streamingendpunkt** ausgeführt wird. 
-2. Erstellen und starten Sie das **Pass-Through**-Liveereignis. <br/> Weitere Informationen finden Sie im Abschnitt [LiveEvent-Zustandswerte und Abrechnung](live-event-states-billing.md).
-3. Rufen Sie die Erfassungs-URLs ab, und konfigurieren Sie Ihren lokalen Encoder für die Verwendung der URL, um einen Livedatenstrom mit Mehrfachbitrate an Media Services zu senden.
-4. Rufen Sie die Vorschau-URL ab und verwenden Sie sie, um sich zu vergewissern, dass die Eingabe des Encoders auch tatsächlich empfangen wird.
-5. Erstellen Sie ein neues **Medienobjekt**.
-6. Erstellen Sie eine **Liveausgabe**, und verwenden Sie den Namen des erstellten Medienobjekts.
-7. Erstellen Sie einen **Streaminglocator** mit den integrierten Arten von **Streamingrichtlinien**.
-8. Listen Sie die Pfade auf dem **Streaminglocator** auf, um die zu verwendenden URLs zurückzugeben.
-9. Rufen Sie den Hostnamen für den **Streamingendpunkt** ab, von dem aus Sie streamen möchten.
-10. Kombinieren Sie die URL aus Schritt 8 mit dem Hostnamen aus Schritt 9, um die vollständige URL zu erhalten.
-11. Lassen Sie Ihren Liveencoder ungefähr 10 Minuten lang laufen.
-12. Beenden Sie das Liveereignis. 
-13. Verwenden Sie einen Player wie [Azure Media Player](https://aka.ms/azuremediaplayer), um die archivierten Medienobjekte zu beobachten, um sicherzustellen, dass die Wiedergabe auf allen Qualitätsebenen keine sichtbaren Störungen aufweist. Zum Beobachten und Überprüfen können Sie während der Livesitzung auch die Vorschau-URL verwenden.
-14. Vermerken Sie die Medienobjekt-ID, die veröffentlichte Streaming-URL für das Livearchiv und die Einstellungen sowie die verwendete Version Ihres Liveencoders.
-15. Setzen Sie den Status des Liveereignisses nach dem Erstellen der einzelnen Stichproben zurück.
-16. Wiederholen Sie die Schritte 5 bis 15 für alle Konfigurationen, die von Ihrem Encoder unterstützt werden (mit und ohne Werbesignalisierung oder Untertiteln sowie in verschiedenen Codiergeschwindigkeiten).
-
-### <a name="live-encoding-live-event-verification"></a>Überprüfung von Liveereignissen mit Livecodierung
-
-1. Vergewissern Sie sich in Ihrem Media Services-Konto, dass der **Streamingendpunkt** ausgeführt wird. 
-2. Erstellen und starten Sie ein **Livecodierungs**-Liveereignis. <br/> Weitere Informationen finden Sie im Abschnitt [LiveEvent-Zustandswerte und Abrechnung](live-event-states-billing.md).
-3. Rufen Sie die Erfassungs-URLs ab, und konfigurieren Sie Ihren Encoder so, dass er einen Livedatenstrom mit Einzelbitrate per Push an Media Services überträgt.
-4. Rufen Sie die Vorschau-URL ab und verwenden Sie sie, um sich zu vergewissern, dass die Eingabe des Encoders auch tatsächlich empfangen wird.
-5. Erstellen Sie ein neues **Medienobjekt**.
-6. Erstellen Sie eine **Liveausgabe**, und verwenden Sie den Namen des erstellten Medienobjekts.
-7. Erstellen Sie einen **Streaminglocator** mit den integrierten Arten von **Streamingrichtlinien**.
-8. Listen Sie die Pfade auf dem **Streaminglocator** auf, um die zu verwendenden URLs zurückzugeben.
-9. Rufen Sie den Hostnamen für den **Streamingendpunkt** ab, von dem aus Sie streamen möchten.
-10. Kombinieren Sie die URL aus Schritt 8 mit dem Hostnamen aus Schritt 9, um die vollständige URL zu erhalten.
-11. Lassen Sie Ihren Liveencoder ungefähr 10 Minuten lang laufen.
-12. Beenden Sie das Liveereignis.
-13. Verwenden Sie einen Player wie [Azure Media Player](https://aka.ms/azuremediaplayer), um die archivierten Medienobjekte zu beobachten, um sicherzustellen, dass die Wiedergabe auf allen Qualitätsebenen keine sichtbaren Störungen aufweist. Zum Beobachten und Überprüfen können Sie während der Livesitzung auch die Vorschau-URL verwenden.
-14. Vermerken Sie die Medienobjekt-ID, die veröffentlichte Streaming-URL für das Livearchiv und die Einstellungen sowie die verwendete Version Ihres Liveencoders.
-15. Setzen Sie den Status des Liveereignisses nach dem Erstellen der einzelnen Stichproben zurück.
-16. Wiederholen Sie die Schritte 5 bis 15 für alle Konfigurationen, die von Ihrem Encoder unterstützt werden (mit und ohne Werbesignalisierung oder Untertiteln sowie in verschiedenen Codiergeschwindigkeiten).
-
-### <a name="longevity-verification"></a>Überprüfung der Lebensdauer
-
-Fügen Sie die gleichen Schritte wie bei der [Überprüfung von Pass-Through-Liveereignissen](#pass-through-live-event-verification) mit Ausnahme von Schritt 11 aus. <br/>Lassen Sie Ihren Liveencoder statt für 10 Minuten mindestens eine Woche lang laufen. Verwenden Sie einen Player wie [Azure Media Player](https://aka.ms/azuremediaplayer), um das Livestreaming (oder ein archiviertes Medienobjekt) von Zeit zu Zeit zu beobachten, um sicherzustellen, dass die Wiedergabe keine sichtbaren Störungen aufweist.
-
-### <a name="email-your-recorded-settings"></a>Senden Ihrer aufgezeichneten Einstellungen per E-Mail
-
-Senden Sie schließlich eine E-Mail mit Ihren aufgezeichneten Einstellungen und Livearchivparametern als Benachrichtigung darüber, dass alle automatischen Überprüfungen bestanden wurden, unter amshelp@microsoft.com an Azure Media Services. Schließen Sie auch Ihre Kontaktinformationen für nachfolgende Kontaktaufnahmen ein. Setzen Sie sich bei Fragen zu dieser Vorgehensweise mit dem Azure Media Services-Team in Verbindung.
+[Livestreaming mit Media Services v3](live-streaming-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Livestreaming mit Media Services v3](live-streaming-overview.md)
+[Überprüfen des Encoders](become-on-premises-encoder-partner.md)

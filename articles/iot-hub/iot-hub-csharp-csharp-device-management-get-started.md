@@ -9,12 +9,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 0ab714efc3e9eb0de9d6753854031110e09fe06b
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: 5760c574e64a3b3b4a1df12092cff44374790a90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147834"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89018398"
 ---
 # <a name="get-started-with-device-management-net"></a>Erste Schritte mit der Geräteverwaltung (.NET)
 
@@ -40,7 +41,9 @@ Am Ende dieses Tutorials verfügen Sie über zwei .NET-Konsolen-Apps:
 
 * Ein aktives Azure-Konto. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -200,7 +203,7 @@ Führen Sie zum Erstellen der simulierten Geräte-App die folgenden Schritte aus
            Console.WriteLine("Error in sample: {0}", ex.Message);
        }
 
-       string result = "'Reboot started.'";
+       string result = @"{""result"":""Reboot started.""}";
        return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
    }
    ```

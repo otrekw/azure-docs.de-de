@@ -1,19 +1,18 @@
 ---
 title: Verbinden von Azure Analysis Services mit Power BI | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe von Power BI eine Verbindung mit einem Azure Analysis Services-Server herstellen.
+description: Erfahren Sie, wie Sie mithilfe von Power BI eine Verbindung mit einem Azure Analysis Services-Server herstellen. Nachdem die Verbindung hergestellt ist, können die Benutzer die Modelldaten untersuchen.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: eadba5397655809dc4f3e6d5f9d6c79addde68a6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: ed0f3d379ca961c610958c073c27c6fc9583252b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619286"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500919"
 ---
 # <a name="connect-with-power-bi"></a>Herstellen einer Verbindung mit Power BI
 
@@ -38,6 +37,9 @@ Sobald Sie in Azure einen Server erstellt, und ein tabellarisches Modell bereitg
 
 5. Geben Sie bei der entsprechenden Aufforderung Ihre Anmeldeinformationen ein. 
 
+   > [!NOTE]
+   > Konten mit Einmalkennung (One-Time Passcode, OTP) werden nicht unterstützt. 
+
 6. Erweitern Sie in **Navigator** den Server, wählen Sie das Modell oder die Perspektive aus, mit dem/der Sie eine Verbindung herstellen möchten, und klicken Sie dann auf **Verbinden**. Klicken Sie auf ein Modell oder eine Perspektive, um alle Objekte für diese Ansicht anzuzeigen.
 
     Das Modell wird in Power BI Desktop mit einem leeren Bericht in der Berichtsansicht geöffnet. In der Felderliste werden alle nicht ausgeblendeten Modellobjekte angezeigt. Der Verbindungsstatus wird in der unteren rechten Ecke angezeigt.
@@ -49,5 +51,4 @@ Sobald Sie in Azure einen Server erstellt, und ein tabellarisches Modell bereitg
 
 ## <a name="see-also"></a>Weitere Informationen
 [Herstellen einer Verbindung mit Azure Analysis Services](analysis-services-connect.md)   
-[Clientbibliotheken](analysis-services-data-providers.md)
-
+[Clientbibliotheken](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)

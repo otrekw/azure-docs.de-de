@@ -1,25 +1,18 @@
 ---
-title: Details zur Netzwerkkonfiguration für Microsoft Azure ExpressRoute – App Service
-description: Details zur Netzwerkkonfiguration von App Service-Umgebungen für PowerApps in an eine Microsoft Azure ExpressRoute-Verbindung angeschlossenen virtuellen Netzwerken.
-services: app-service
-documentationcenter: ''
+title: Konfigurieren von Azure ExpressRoute v1
+description: Netzwerkkonfiguration für App Service-Umgebungen für PowerApps mit Microsoft Azure ExpressRoute. Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
 author: stefsch
-manager: nirma
-editor: ''
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: b10bd15538ecca7934a397ca63db1150a0bfc32c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3fa2677f7c71b118ec3f7da717e29d5879ee982b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070037"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88961821"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Details zur Netzwerkkonfiguration für App Service-Umgebungen für PowerApps mit Microsoft Azure ExpressRoute
 
@@ -42,11 +35,11 @@ Eine App Service-Umgebung erfordert für eine ordnungsgemäße Funktionsweise di
 
 * Ausgehende Netzwerkverbindungen mit dem Azure Files-Dienst an Port 445.
 
-* Ausgehende Netzwerkkonnektivität mit Azure SQL-Datenbank-Endpunkten, die sich in der gleichen Region wie die App Service-Umgebung befinden. SQL-Datenbank-Endpunkte können unter der Domäne database.windows.net aufgelöst werden, für die ein Zugriff auf die Ports 1433, 11000-11999 und 14000-14999 erforderlich ist. Weitere Informationen zur Portverwendung von SQL-Datenbank V12 finden Sie unter [Andere Ports als 1433 für ADO.NET 4.5](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
+* Ausgehende Netzwerkkonnektivität mit Azure SQL-Datenbank-Endpunkten, die sich in der gleichen Region wie die App Service-Umgebung befinden. SQL-Datenbank-Endpunkte können unter der Domäne database.windows.net aufgelöst werden, für die ein Zugriff auf die Ports 1433, 11000-11999 und 14000-14999 erforderlich ist. Weitere Informationen zur Portverwendung von SQL-Datenbank V12 finden Sie unter [Andere Ports als 1433 für ADO.NET 4.5](../../azure-sql/database/adonet-v12-develop-direct-route-ports.md).
 
 * Ausgehende Netzwerkkonnektivität zu den Azure-Endpunkten der Verwaltungsebene (klassisches Azure-Bereitstellungsmodell und Azure Resource Manager-Endpunkte). Die Konnektivität zu diesen Endpunkten beinhaltet die Domänen management.core.windows.net und management.azure.com. 
 
-* Ausgehende Netzwerkkonnektivität zu den Domänen ocsp.msocsp.com, mscrl.microsoft.com und crl.microsoft.com. Konnektivität zu diesen Domänen ist zur Unterstützung von SSL-Funktionen erforderlich.
+* Ausgehende Netzwerkkonnektivität zu den Domänen ocsp.msocsp.com, mscrl.microsoft.com und crl.microsoft.com. Konnektivität zu diesen Domänen ist zur Unterstützung von TLS-Funktionen erforderlich.
 
 * Die DNS-Konfiguration für das virtuelle Netzwerk muss alle in diesem Artikel genannten Endpunkte und Domänen auflösen können. Wenn die Endpunkte nicht aufgelöst werden können, schlägt das Erstellen der App Service-Umgebung fehl. Alle vorhandenen App Service-Umgebungen werden als fehlerhaft markiert.
 
@@ -153,15 +146,15 @@ Informationen zum Einstieg in die App Service-Umgebung für PowerApps finden Sie
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/ 
 [ExpressRoute]: https://azure.microsoft.com/services/expressroute/ 
 [requiredports]: app-service-app-service-environment-control-inbound-traffic.md 
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ 
-[UDROverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/ 
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
+[UDROverview]: ../../virtual-network/virtual-networks-udr-overview.md
 <!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ -->
 
-[UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell 
+[UDRHowTo]: ../../virtual-network/tutorial-create-route-table-powershell.md
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md 
 [AzureDownloads]: https://azure.microsoft.com/downloads/ 
 [DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653 
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ 
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md 
 [NewPortal]:  https://portal.azure.com 
 

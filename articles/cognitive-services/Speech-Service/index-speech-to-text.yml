@@ -1,0 +1,78 @@
+### YamlMime:Landing
+title: Dokumentation zur Spracherkennung
+summary: Die Spracherkennung des Speech-Diensts (auch als Sprache-zu-Text bezeichnet) ermöglicht die Echtzeit- und Batch-Transkription von Audiostreams in Text. Bei zusätzlicher Referenztexteingabe ermöglicht sie auch die Echtzeitbewertung der Aussprache und gibt Sprechern Feedback zur Richtigkeit und Flüssigkeit des gesprochenen Texts.
+metadata:
+  title: 'Dokumentation zur Spracherkennung: Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: trevorbye
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 03/19/2020
+  ms.author: trbye
+  ms.openlocfilehash: c4a765c14815015bcf70a4718fe8d189fe0d0c49
+  ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 12/05/2020
+  ms.locfileid: "96620964"
+landingContent:
+- title: Informationen zur Spracherkennung
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist die Echtzeit-Spracherkennung?
+      url: speech-to-text.md
+    - text: Was ist die Batch-Spracherkennung?
+      url: batch-transcription.md
+    - text: Was ist Custom Speech?
+      url: custom-speech-overview.md
+    - text: Verwenden der Speech-Befehlszeilenschnittstelle für Spracherkennung ohne Code
+      url: spx-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Erste Schritte mit der Spracherkennung
+      url: get-started-speech-to-text.md
+- title: Entwickeln mit Spracherkennung
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Auswählen eines Spracherkennungsmodus
+      url: ./get-started-speech-to-text.md
+    - text: Ändern der Ausgangssprache für die Spracherkennung
+      url: how-to-specify-source-language.md
+    - text: Verbessern der Genauigkeit mit Custom Speech
+      url: ./custom-speech-overview.md
+    - text: Verwenden komprimierter Audioeingabeformate
+      url: how-to-use-codec-compressed-audio-input-streams.md
+    - text: Migrieren von v2.0 zu v3.0
+      url: migrate-v2-to-v3.md
+  - linkListType: tutorial
+    links:
+    - text: Verbessern der Genauigkeit mithilfe von Mandantenmodellen
+      url: tutorial-tenant-model.md
+  - linkListType: concept
+    links:
+    - text: Vorbereiten von Daten für Custom Speech
+      url: how-to-custom-speech-test-and-train.md
+    - text: Trainieren eines Modells für Custom Speech
+      url: how-to-custom-speech-train-model.md
+    - text: Erstellen von menschenmarkierten Transkriptionen
+      url: how-to-custom-speech-human-labeled-transcriptions.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sprachunterstützung
+      url: language-support.md#speech-to-text
+    - text: Häufig gestellte Fragen zur Spracherkennung
+      url: faq-stt.md
+    - text: Preise für die Spracherkennung
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

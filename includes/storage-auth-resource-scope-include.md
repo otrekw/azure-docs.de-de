@@ -1,21 +1,19 @@
 ---
 title: include file
-description: include file
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/28/2019
+ms.date: 07/16/2020
 ms.author: tamram
-ms.custom: include file
-ms.openlocfilehash: 518c57bc3327511b70deef143826f2a1b9df8639
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 96d8100f2cffcfb001a693575128ce19e742225d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177761"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87534130"
 ---
-Bevor Sie einem Sicherheitsprinzipal eine RBAC-Rolle zuweisen, legen Sie den Zugriffsbereich fest, den der Sicherheitsprinzipal haben soll. Es hat sich als am besten bewährt, stets nur den kleinstmöglichen Umfang an Zugriffsrechten zu gewähren.
+Bevor Sie einem Sicherheitsprinzipal eine Azure-Rolle zuweisen, legen Sie den Zugriffsbereich fest, den der Sicherheitsprinzipal haben soll. Es hat sich als am besten bewährt, stets nur den kleinstmöglichen Umfang an Zugriffsrechten zu gewähren.
 
 In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff auf Azure-Blob- und -Warteschlangenressourcen einschränken können, beginnend mit dem kleinstmöglichen Umfang:
 
@@ -24,6 +22,6 @@ In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff 
 - **Das Speicherkonto**. Bei diesem Umfang gilt eine Rollenzuweisung für alle Container und deren Blobs oder für alle Warteschlangen und deren Nachrichten.
 - **Die Ressourcengruppe**. Bei diesem Umfang gilt eine Rollenzuweisung für alle Container oder Warteschlangen in allen Speicherkonten der Ressourcengruppe.
 - **Das Abonnement**. Bei diesem Umfang gilt eine Rollenzuweisung für alle Container oder Warteschlangen in allen Speicherkonten in allen Ressourcengruppen des Abonnements.
+- **Eine Verwaltungsgruppe**. Bei diesem Umfang gilt eine Rollenzuweisung für alle Container oder Warteschlangen in allen Speicherkonten in allen Ressourcengruppen und allen Abonnements in der Ressourcengruppe.
 
-> [!IMPORTANT]
-> Wenn Ihr Abonnement einen Azure DataBricks-Namespace enthält, werden Rollen, die im Abonnementumfang zugewiesen wurden, so gesperrt, dass sie keinen Zugriff auf Blob- und Warteschlangendaten gewähren können.
+Weitere Informationen zu Azure-Rollenzuweisungen und zum Umfang finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../articles/role-based-access-control/overview.md).

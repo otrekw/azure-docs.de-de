@@ -1,26 +1,20 @@
 ---
-title: Bereitstellen einer Anwendung in einer Azure-VM-Skalierungsgruppe | Microsoft-Dokumentation
+title: Bereitstellen einer Anwendung in einer Azure-VM-Skalierungsgruppe
 description: Es wird beschrieben, wie Sie Anwendungen auf Instanzen von virtuellen Linux- und Windows-Computern in einer Skalierungsgruppe bereitstellen.
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f8892199-f2e2-4b82-988a-28ca8a7fd1eb
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: management
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: 09145612821cb669e26e3ccb8d15611112eca700
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.reviewer: avverma
+ms.custom: avverma, devx-track-azurepowershell
+ms.openlocfilehash: e7a4ddaf74df6e04c1597b9c106cd458ddebac55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618624"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89079590"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Bereitstellen der App in VM-Skalierungsgruppen
 
@@ -36,8 +30,8 @@ Zum Reduzieren der Konfigurationsverwaltung und der Zeit für die Bereitstellung
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
-## <a name="already-provisioned"></a>Installieren einer App mit der benutzerdefinierten Skripterweiterung
-Die benutzerdefinierte Skripterweiterung lädt Skripts auf Azure-VMs herunter und führt sie aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Skripts können aus Azure Storage oder GitHub heruntergeladen oder dem Azure-Portal zur Laufzeit für die Erweiterung bereitgestellt werden. Weitere Informationen zur Erstellung und Verwendung eines benutzerdefinierten VM-Images mit einer Skalierungsgruppe finden Sie in den folgenden Tutorials:
+## <a name="install-an-app-with-the-custom-script-extension"></a><a name="already-provisioned"></a>Installieren einer App mit der benutzerdefinierten Skripterweiterung
+Die benutzerdefinierte Skripterweiterung lädt Skripts auf Azure-VMs herunter und führt sie aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Skripts können aus Azure Storage oder GitHub heruntergeladen oder dem Azure-Portal zur Laufzeit für die Erweiterung bereitgestellt werden. Weitere Informationen zum Installieren einer App mit einer benutzerdefinierten Skripterweiterung finden Sie in den folgenden Tutorials:
 
 - [Azure-Befehlszeilenschnittstelle](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
@@ -45,9 +39,9 @@ Die benutzerdefinierte Skripterweiterung lädt Skripts auf Azure-VMs herunter un
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Installieren einer App auf einer Windows-VM mit PowerShell DSC
-[PowerShell DSC (Desired State Configuration)](https://msdn.microsoft.com/powershell/dsc/overview) ist eine Verwaltungsplattform zum Definieren der Konfiguration von Zielcomputern. DSC-Konfigurationen definieren, was auf einem Computer installiert und wie der Host konfiguriert werden soll. Eine LCM-Engine (Local Configuration Manager) wird auf jedem Zielknoten ausgeführt, der angeforderte Aktionen auf der Grundlage gepushter Konfigurationen verarbeitet.
+[PowerShell DSC (Desired State Configuration)](/powershell/scripting/dsc/overview/overview) ist eine Verwaltungsplattform zum Definieren der Konfiguration von Zielcomputern. DSC-Konfigurationen definieren, was auf einem Computer installiert und wie der Host konfiguriert werden soll. Eine LCM-Engine (Local Configuration Manager) wird auf jedem Zielknoten ausgeführt, der angeforderte Aktionen auf der Grundlage gepushter Konfigurationen verarbeitet.
 
-Mit der Erweiterung PowerShell DSC können Sie VM-Instanzen in einer Skalierungsgruppe mit PowerShell anpassen. Das folgende Beispiel:
+Mit der Erweiterung PowerShell DSC können Sie VM-Instanzen in einer Skalierungsgruppe mit PowerShell anpassen. Im folgenden Beispiel:
 
 - Weist die VM-Instanzen an, ein DSC-Paket von GitHub herunterzuladen: *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - Die Erweiterung wird so festgelegt, dass ein Installationsskript ausgeführt wird: `configure-http.ps1`
@@ -119,4 +113,4 @@ Wenn Sie ein benutzerdefiniertes VM-Image mit vorinstallierter Anwendung verwend
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Beim Erstellen und Bereitstellen von Anwendungen in Ihren Skalierungsgruppen helfen Ihnen die Informationen unter [Überlegungen zum Entwurf von Skalierungsgruppen](virtual-machine-scale-sets-design-overview.md) weiter. Weitere Informationen zum Verwalten Ihrer Skalierungsgruppe finden Sie unter [Manage a virtual machine scale set with Azure PowerShell](virtual-machine-scale-sets-windows-manage.md) (Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell).
+Beim Erstellen und Bereitstellen von Anwendungen in Ihren Skalierungsgruppen helfen Ihnen die Informationen unter [Überlegungen zum Entwurf von Skalierungsgruppen](virtual-machine-scale-sets-design-overview.md) weiter. Weitere Informationen zum Verwalten Ihrer Skalierungsgruppe finden Sie unter [Manage a virtual machine scale set with Azure PowerShell](./virtual-machine-scale-sets-manage-powershell.md) (Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell).

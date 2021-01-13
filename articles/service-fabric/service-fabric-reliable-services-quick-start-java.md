@@ -1,27 +1,17 @@
 ---
-title: Erstellen Ihres ersten zuverlässigen Azure Service Fabric-Diensts in Java | Microsoft-Dokumentation
-description: Einführung in das Erstellen einer Microsoft Azure Service Fabric-Anwendung mit zustandslosen und zustandsbehafteten Diensten.
-services: service-fabric
-documentationcenter: java
-author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: 7831886f-7ec4-4aef-95c5-b2469a5b7b5d
-ms.service: service-fabric
-ms.devlang: java
+title: Erstellen des ersten Reliable Service in Java
+description: Einführung in das Erstellen einer Microsoft Azure Service Fabric-Anwendung mit zustandslosen und zustandsbehafteten Diensten in Java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/02/2017
-ms.author: suhuruli
-ms.openlocfilehash: 6bf8c632a7513d018745bc74aa0a1db95a39af8b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-javai
+ms.openlocfilehash: f67957d711958febdb01dfad0b3c44a92cb0bcfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130125"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91535235"
 ---
-# <a name="get-started-with-reliable-services"></a>Erste Schritte mit Reliable Services
+# <a name="get-started-with-reliable-services-in-java"></a>Erste Schritte mit Reliable Services in Java
 > [!div class="op_single_selector"]
 > * [C# unter Windows](service-fabric-reliable-services-quick-start.md)
 > * [Java unter Linux](service-fabric-reliable-services-quick-start-java.md)
@@ -199,7 +189,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) ist eine Wörterbuchimplementierung, die Sie nutzen können, um den Zustand im Dienst zuverlässig zu speichern. Mit Service Fabric und Reliable HashMaps können Sie Daten direkt in Ihrem Dienst speichern. Ein externer persistenter Speicher ist nicht erforderlich. Mit Reliable HashMaps kann die Hochverfügbarkeit Ihrer Daten ermöglicht werden. Service Fabric erreicht dies, indem mehrere *Replikate* Ihres Diensts für Sie erstellt und verwaltet werden. Außerdem wird eine API bereitgestellt, mit der die komplexen Verwaltungsanforderungen dieser Replikate und der damit verbundenen Zustandsübergänge beseitigt werden.
+[ReliableHashMap](/java/api/microsoft.servicefabric.data.collections.reliablehashmap) ist eine Wörterbuchimplementierung, die Sie nutzen können, um den Zustand im Dienst zuverlässig zu speichern. Mit Service Fabric und Reliable HashMaps können Sie Daten direkt in Ihrem Dienst speichern. Ein externer persistenter Speicher ist nicht erforderlich. Mit Reliable HashMaps kann die Hochverfügbarkeit Ihrer Daten ermöglicht werden. Service Fabric erreicht dies, indem mehrere *Replikate* Ihres Diensts für Sie erstellt und verwaltet werden. Außerdem wird eine API bereitgestellt, mit der die komplexen Verwaltungsanforderungen dieser Replikate und der damit verbundenen Zustandsübergänge beseitigt werden.
 
 Reliable Collections können mit gewissen Einschränkungen beliebige Java-Typen – einschließlich benutzerdefinierten Typen – speichern:
 
@@ -264,7 +254,7 @@ Bei der Bereitstellung der erstellten Anwendung wird genau wie bei anderen Servi
 
 Parameter für diesen Befehl finden Sie in den erstellten Manifesten im Anwendungspaket.
 
-Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und navigieren Sie zu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) unter [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Erweitern Sie dann den Knoten **Anwendungen**. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
+Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und navigieren Sie unter `http://localhost:19080/Explorer` zu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). Erweitern Sie dann den Knoten **Anwendungen**. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
 
 > [!IMPORTANT]
 > Wenn Sie die Anwendung in einem sicheren Linux-Cluster in Azure bereitstellen möchten, müssen Sie ein Zertifikat konfigurieren, um Ihre Anwendung mit der Service Fabric-Runtime zu überprüfen. Dadurch wird Ihren Reliable Services-Diensten die Kommunikation mit den zugrunde liegenden Service Fabric-Runtime-APIs ermöglicht. Weitere Informationen finden Sie unter [Konfigurieren einer Reliable Services-App zur Ausführung in Linux-Clustern](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  

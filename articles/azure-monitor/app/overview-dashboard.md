@@ -1,23 +1,14 @@
 ---
 title: Azure Application Insights-Übersichtsdashboard | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Anwendungen mit Azure Application Insights und dem Übersichtsdashboard überwachen.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: mbullwin
-ms.openlocfilehash: d1823779f8a8070149811e2349fc9f4281072d38
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 1b0708fa70d3a3ecb406f1d974bb1f2b47e55b40
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497154"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504099"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights-Übersichtsdashboard
 
@@ -33,7 +24,7 @@ Das neue Übersichtsdashboard wird jetzt standardmäßig gestartet:
 
 Die Auswahl des Zeitbereichs wurde zu einer 1-Klick-Oberfläche vereinfacht.
 
-![Zeitbereich](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
+![Uhrzeitbereich](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
 Die Gesamtleistung wurde deutlich erhöht. Mit nur einem Klick haben Sie Zugriff auf beliebte Features wie **Suche** und **Analyse**. Jede KPI-Kachel, die standardmäßig dynamisch aktualisiert wird, bietet Einblick in die entsprechenden Application Insights-Features. Um weitere Informationen über Fehler bei Anforderungen zu erhalten, wählen Sie **Fehler** unter dem Header **Untersuchen** aus:
 
@@ -45,7 +36,7 @@ Im Anwendungsdashboard wird die vorhandene Dashboardtechnologie in Azure genutzt
 
 Wählen Sie oben links die Option _Anwendungsdashboard_, um auf das Standarddashboard zuzugreifen.
 
-![Dashboardansicht](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
+![Screenshot zeigt die markierte Schaltfläche für das Anwendungsdashboard.](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
 Wenn Sie zum ersten Mal auf das Dashboard zugreifen, wird eine Standardansicht gestartet:
 
@@ -62,10 +53,11 @@ Wählen Sie Folgendes, um zurück zur Übersichtsoberfläche zu navigieren:
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn Sie **Kacheleinstellungen konfigurieren** auswählen und einen benutzerdefinierten Zeitbereich über 31 Tagen festlegen, werden im Dashboard keine Daten angezeigt, die über 31 Tage hinausgehen. Dies gilt selbst bei der standardmäßigen Datenaufbewahrung von 90 Tagen. Für dieses Verhalten gibt es derzeit keine Problemumgehung.
+Derzeit gilt für in einem Dashboard angezeigte Daten ein Limit von 30 Tagen. Wenn Sie einen Zeitfilter über 30 Tage hinaus auswählen, oder wenn Sie **Kacheleinstellungen konfigurieren** auswählen und einen benutzerdefinierten Zeitbereich von mehr als 30 Tagen festlegen, werden im Dashboard keine Daten angezeigt, die über 30 Tage hinausgehen. Dies gilt selbst bei der standardmäßigen Datenaufbewahrung von 90 Tagen. Für dieses Verhalten gibt es derzeit keine Problemumgehung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Trichter](../../azure-monitor/app/usage-funnels.md)
-- [Aufbewahrung](../../azure-monitor/app/usage-retention.md)
-- [Benutzerabläufe](../../azure-monitor/app/usage-flows.md)
+- [Trichter](./usage-funnels.md)
+- [Vermerkdauer](./usage-retention.md)
+- [Benutzerabläufe](./usage-flows.md)
+

@@ -1,36 +1,35 @@
 ---
-title: Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis – Azure PowerShell
+title: 'Umleitung auf URL-Pfadbasis mit PowerShell: Azure Application Gateway'
 description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell ein Anwendungsgateway mit Umleitung des Datenverkehrs auf URL-Pfadbasis erstellen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 4/3/2019
+ms.date: 03/19/2020
 ms.author: victorh
-ms.topic: tutorial
-ms.openlocfilehash: 6a73cbe9ef2302a8195f67b645a3e48b7ee6b1f2
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.topic: how-to
+ms.openlocfilehash: a9606bfe8b4719ed4ab3c51fc177f331b754f7a1
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618883"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397054"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis mithilfe von Azure PowerShell
 
-Sie können mit Azure PowerShell [Routingregeln auf URL-Pfadbasis](application-gateway-url-route-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](application-gateway-introduction.md) erstellen. In diesem Tutorial erstellen Sie Back-End-Pools mithilfe von [VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Danach erstellen Sie URL-Routingregeln, die sicherstellen, dass Webdatenverkehr an den richtigen Back-End-Pool umgeleitet wird.
+Sie können mit Azure PowerShell [Routingregeln auf URL-Pfadbasis](./url-route-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](./overview.md) erstellen. In diesem Artikel erstellen Sie Back-End-Pools mithilfe von [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md). Danach erstellen Sie URL-Routingregeln, die sicherstellen, dass Webdatenverkehr an den richtigen Back-End-Pool umgeleitet wird.
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Anwendungsgateways
-> * Hinzufügen der Listener und Routingregeln
-> * Erstellen von VM-Skalierungsgruppen für Back-End-Pools
+* Einrichten des Netzwerks
+* Erstellen eines Anwendungsgateways
+* Hinzufügen der Listener und Routingregeln
+* Erstellen von VM-Skalierungsgruppen für Back-End-Pools
 
 Das folgende Beispiel zeigt Websitedatenverkehr, der von den Ports 8080 und 8081 gesendet und an die gleichen Back-End-Pools geleitet wird:
 
 ![URL-Routingbeispiel](./media/tutorial-url-redirect-powershell/scenario.png)
 
-Sie können für dieses Tutorial auch die [Azure-Befehlszeilenschnittstelle](tutorial-url-redirect-cli.md) verwenden.
+Sie können für dieses Verfahren auch die [Azure-Befehlszeilenschnittstelle](tutorial-url-redirect-cli.md) verwenden, wenn Ihnen dies lieber ist.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -38,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 1.0.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Verfahren mindestens Version 1.0.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -79,9 +78,9 @@ New-AzPublicIpAddress `
 
 In diesem Abschnitt erstellen Sie Ressourcen, die das Anwendungsgateway unterstützen, und schließlich das Anwendungsgateway selbst. Die Ressourcen, die Sie erstellen, umfassen:
 
-- *IP-Konfigurationen und Front-End-Port*: Ordnet das Subnetz, das Sie zuvor erstellt haben, dem Anwendungsgateway zu und weist einen Port für den Zugriff darauf zu.
-- *Standardpool*: Alle Anwendungsgateways müssen mindestens einen Back-End-Pool mit Servern haben.
-- *Standardlistener und Regel*: Der Standardlistener lauscht auf dem Port, der zugewiesen wurde, auf Datenverkehr, und die Standardregel sendet Datenverkehr an den Standardpool.
+- *IP-Konfigurationen und Front-End-Port* : Ordnet das Subnetz, das Sie zuvor erstellt haben, dem Anwendungsgateway zu und weist einen Port für den Zugriff darauf zu.
+- *Standardpool* : Alle Anwendungsgateways müssen mindestens einen Back-End-Pool mit Servern haben.
+- *Standardlistener und Regel* : Der Standardlistener lauscht auf dem Port, der zugewiesen wurde, auf Datenverkehr, und die Standardregel sendet Datenverkehr an den Standardpool.
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Erstellen der IP-Konfigurationen und des Front-End-Ports
 
@@ -129,7 +128,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>Erstellen des Standardlisteners und einer Regel
 
-Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an einen Back-End-Pool weiterleiten kann. In diesem Tutorial erstellen Sie mehrere Listener. Der erste grundlegende Listener erwartet Datenverkehr an der Stamm-URL. Die anderen Listener erwarten Datenverkehr an bestimmten URLs wie z. B. `http://52.168.55.24:8080/images/` oder `http://52.168.55.24:8081/video/`.
+Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an einen Back-End-Pool weiterleiten kann. In diesem Artikel erstellen Sie mehrere Listener. Der erste grundlegende Listener erwartet Datenverkehr an der Stamm-URL. Die anderen Listener erwarten Datenverkehr an bestimmten URLs wie z. B. `http://52.168.55.24:8080/images/` oder `http://52.168.55.24:8081/video/`.
 
 Erstellen Sie einen Listener namens *defaultListener* mit [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener), der zuvor erstellten Front-End-Konfiguration und dem zuvor erstellten Front-End-Port. Für den Listener ist eine Regel erforderlich, damit bekannt ist, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) eine grundlegende Regel namens *rule1*.
 
@@ -391,7 +390,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>Erstellen von VM-Skalierungsgruppen
 
-In diesem Beispiel erstellen Sie drei VM-Skalierungsgruppen, die die drei von Ihnen erstellten Back-End-Pools unterstützen. Die erstellten Skalierungsgruppen werden *myvmss1*, *myvmss2* und *myvmss3* genannt. Jede Skalierungsgruppe enthält zwei VM-Instanzen, auf denen Sie IIS installieren. Sie weisen die Skalierungsgruppe dem Back-End-Pool zu, wenn Sie die IP-Einstellungen konfigurieren.
+In diesem Beispiel erstellen Sie drei VM-Skalierungsgruppen, die die drei von Ihnen erstellten Back-End-Pools unterstützen. Die erstellten Skalierungsgruppen werden *myvmss1* , *myvmss2* und *myvmss3* genannt. Jede Skalierungsgruppe enthält zwei VM-Instanzen, auf denen Sie IIS installieren. Sie weisen die Skalierungsgruppe dem Back-End-Pool zu, wenn Sie die IP-Einstellungen konfigurieren.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -519,4 +518,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erfahren Sie mehr darüber, was Sie mit dem Anwendungsgateway tun können.](application-gateway-introduction.md)
+> [Erfahren Sie mehr darüber, was Sie mit dem Anwendungsgateway tun können.](./overview.md)

@@ -1,24 +1,17 @@
 ---
 title: Containerüberwachungslösung in Azure Monitor | Microsoft-Dokumentation
 description: Mit der Containerüberwachungslösung in Azure Monitor können Sie Ihre Docker- und Windows-Containerhosts an einem zentralen Ort anzeigen und verwalten.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: e1e4b52b-92d5-4bfa-8a09-ff8c6b5a9f78
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 07/22/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 5f48b1b1c8568c4f60d012797634b844a276b1bb
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.date: 07/06/2020
+ms.openlocfilehash: a02ea022bedd92e9deaa0730cc1be051a9d20c88
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951961"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145683"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Containerüberwachungslösung in Azure Monitor
 
@@ -32,13 +25,13 @@ Die Lösung zeigt, welche Container, welches Containerimage und wo Container aus
 
 - Docker Swarm
 - DC/OS
-- kubernetes
+- Kubernetes
 - Service Fabric
 - Red Hat OpenShift
 
 Wenn Sie Container in [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) bereitgestellt haben, empfiehlt es sich, sowohl die [Service Fabric-Lösung](../../service-fabric/service-fabric-diagnostics-oms-setup.md) als auch diese Lösung zu aktivieren, um die Überwachung von Clusterereignissen einzubeziehen. Lesen Sie vor dem Aktivieren der Service Fabric-Lösung den Artikel [Verwenden der Service Fabric-Lösung](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md) durch, um mehr über diese Lösung und deren Verwendung zu erfahren.
 
-Wenn Sie die Leistung Ihrer Workloads überwachen möchten, die in in Azure Kubernetes Service (AKS) gehosteten Kubernetes-Umgebungen bereitgestellt werden, finden Sie die entsprechenden Informationen unter [Überwachen von Azure Kubernetes Service](../../azure-monitor/insights/container-insights-overview.md). Die Überwachung dieser Plattform wird von der Containerüberwachungslösung nicht unterstützt.  
+Wenn Sie die Leistung Ihrer Workloads überwachen möchten, die in in Azure Kubernetes Service (AKS) gehosteten Kubernetes-Umgebungen bereitgestellt werden, finden Sie die entsprechenden Informationen unter [Überwachen von Azure Kubernetes Service](./container-insights-overview.md). Die Überwachung dieser Plattform wird von der Containerüberwachungslösung nicht unterstützt.  
 
 In der folgenden Abbildung sind die Beziehungen zwischen verschiedenen Containerhosts und Agents mit Azure Monitor dargestellt:
 
@@ -52,9 +45,9 @@ Prüfen Sie zunächst anhand der folgenden Informationen, ob die Voraussetzungen
 
 Die folgende Tabelle zeigt die Docker-Orchestrierung und die Unterstützung der Betriebssystemüberwachung von Containerbestand, Leistung und Protokollen mit Azure Monitor:   
 
-| | ACS | Linux | Windows | Container<br>Inventory | Image<br>Inventory | Knoten<br>Inventory | Container<br>Leistung | Container<br>Ereignis | Ereignis<br>Protokoll | Container<br>Protokoll |
+|Docker-Orchestrierung | ACS | Linux | Windows | Container<br>Inventory | Image<br>Inventory | Node<br>Inventory | Container<br>Leistung | Container<br>Ereignis | Ereignis<br>Log | Container<br>Log |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Dienst<br>Fabric | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
@@ -99,11 +92,11 @@ Die folgende Tabelle zeigt die Docker-Orchestrierung und die Unterstützung der 
 
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
-1. Fügen Sie die Containerüberwachungslösung über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) oder mithilfe des unter [Überwachungslösungen in Azure Monitor](../../azure-monitor/insights/solutions.md) beschriebenen Prozesses Ihrem Log Analytics-Arbeitsbereich hinzu.
+1. Fügen Sie die Containerüberwachungslösung über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) oder mithilfe des unter [Überwachungslösungen in Azure Monitor](./solutions.md) beschriebenen Prozesses Ihrem Log Analytics-Arbeitsbereich hinzu.
 
 2. Installieren und verwenden Sie Docker mit einem Log Analytics-Agent. Basierend auf Ihrem Betriebssystem und Docker-Orchestrator können Sie die folgenden Methoden verwenden, um den Agent zu konfigurieren.
    - Für eigenständige Hosts:
-     - Unter unterstützten Linux-Betriebssystemen installieren Sie zunächst Docker und führen es aus. Anschließend installieren und konfigurieren Sie den [Log Analytics-Agent für Linux](../../azure-monitor/learn/quick-collect-linux-computer.md).  
+     - Unter unterstützten Linux-Betriebssystemen installieren Sie zunächst Docker und führen es aus. Anschließend installieren und konfigurieren Sie den [Log Analytics-Agent für Linux](../learn/quick-collect-linux-computer.md).  
      - Unter CoreOS kann der Log Analytics-Agent für Linux nicht ausgeführt werden. Stattdessen führen Sie eine Containerversion des Log Analytics-Agents für Linux aus. Informieren Sie sich über Linux-Containerhosts mit CoreOS oder Azure Government-Linux-Containerhosts mit CoreOS, wenn Sie in Azure Government Cloud mit Containern arbeiten.
      - Installieren Sie unter Windows Server 2016 und Windows 10 die Docker-Engine und den Client, und stellen Sie dann eine Verbindung mit einem Agent her, um Informationen zu sammeln und sie an Azure Monitor zu senden. Wenn Sie über eine Windows-Umgebung verfügen, lesen Sie [Installieren und Konfigurieren von Windows-Containerhosts](#install-and-configure-windows-container-hosts).
    - Für Docker-Orchestrierung mit mehreren Hosts:
@@ -112,22 +105,22 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
        - Siehe [Konfigurieren eines Log Analytics-Linux-Agents für Kubernetes](#configure-a-log-analytics-linux-agent-for-kubernetes)
        - Lesen Sie [Konfigurieren eines Log Analytics-Windows-Agents für Kubernetes](#configure-a-log-analytics-windows-agent-for-kubernetes).
        - Lesen Sie „Verwenden von Helm zum Bereitstellen des Log Analytics-Agents unter Linux Kubernetes“.
-     - Wenn Sie über einen DC/OS-Cluster in Azure Container Service verfügen, finden Sie unter [Überwachen eines Azure Container Service-DC/OS-Clusters mit Log Analytics](../../container-service/dcos-swarm/container-service-monitoring-oms.md) weitere Informationen.
+     - Wenn Sie über einen DC/OS-Cluster in Azure Container Service verfügen, finden Sie unter [Überwachen eines Azure Container Service-DC/OS-Clusters mit Log Analytics](/previous-versions/azure/container-service/dcos-swarm/container-service-monitoring-oms) weitere Informationen.
      - Wenn Sie über eine Umgebung im Docker Swarm-Modus verfügen, finden Sie weitere Informationen unter „Konfigurieren eines Log Analytics-Agents für Docker Swarm“.
      - Wenn Sie über einen Service Fabric-Cluster verfügen, finden Sie weitere Informationen unter [Überwachen von Containern mit Azure Monitor-Protokollen](../../service-fabric/service-fabric-diagnostics-oms-containers.md).
 
-Weitere Informationen zum Installieren und Konfigurieren von Docker-Engines auf Windows-Computern finden Sie im Artikel [Docker-Engine unter Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
+Weitere Informationen zum Installieren und Konfigurieren von Docker-Engines auf Windows-Computern finden Sie im Artikel [Docker-Engine unter Windows](/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 
 > [!IMPORTANT]
-> Docker muss ausgeführt werden, **bevor** Sie den [Log Analytics-Agent für Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) auf Ihren Containerhosts installieren. Wenn Sie den Agent bereits vor der Installation von Docker installiert haben, müssen Sie den Log Analytics-Agent für Linux erneut installieren. Weitere Informationen zu Docker finden Sie auf der [Docker-Website](https://www.docker.com).
+> Docker muss ausgeführt werden, **bevor** Sie den [Log Analytics-Agent für Linux](../learn/quick-collect-linux-computer.md) auf Ihren Containerhosts installieren. Wenn Sie den Agent bereits vor der Installation von Docker installiert haben, müssen Sie den Log Analytics-Agent für Linux erneut installieren. Weitere Informationen zu Docker finden Sie auf der [Docker-Website](https://www.docker.com).
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Installieren und Konfigurieren von Linux-Containerhosts
 
-Verwenden Sie nach dem Installieren von Docker die folgenden Einstellungen für den Containerhost, um den Agent für die Verwendung mit Docker zu konfigurieren. Zunächst benötigen Sie Ihre ID und den Schlüssel für den Log Analytics-Arbeitsbereich. Diese Daten finden Sie im Azure-Portal. Klicken Sie in Ihrem Arbeitsbereich auf **Schnellstart** > **Computer**, um Ihre **Arbeitsbereichs-ID** und Ihren **Primärschlüssel** anzuzeigen.  Kopieren Sie beide Angaben, und fügen Sie sie in den von Ihnen bevorzugten Editor ein.
+Verwenden Sie nach dem Installieren von Docker die folgenden Einstellungen für den Containerhost, um den Agent für die Verwendung mit Docker zu konfigurieren. Zunächst benötigen Sie Ihre ID und den Schlüssel für den Log Analytics-Arbeitsbereich. Diese Daten finden Sie im Azure-Portal. Klicken Sie in Ihrem Arbeitsbereich auf **Schnellstart** > **Computer** , um Ihre **Arbeitsbereichs-ID** und Ihren **Primärschlüssel** anzuzeigen.  Kopieren Sie beide Angaben, und fügen Sie sie in den von Ihnen bevorzugten Editor ein.
 
 **Für alle Linux-Containerhosts mit Ausnahme von CoreOS:**
 
-- Weitere Informationen und Anweisungen zum Installieren des Log Analytics-Agents für Linux finden Sie in der [Übersicht zum Log Analytics-Agent für Linux](../../azure-monitor/platform/log-analytics-agent.md).
+- Weitere Informationen und Anweisungen zum Installieren des Log Analytics-Agents für Linux finden Sie in der [Übersicht zum Log Analytics-Agent für Linux](../platform/log-analytics-agent.md).
 
 **Für alle Linux-Containerhosts mit CoreOS:**
 
@@ -147,7 +140,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 **Wechseln von der Verwendung eines installierten Linux-Agents zu einem in einem Container enthaltenen**
 
-Wenn Sie zuvor den direkt installierten Agent verwendet haben und stattdessen einen Agent verwenden möchten, der in einem Container ausgeführt wird, müssen Sie zunächst den Log Analytics-Agent für Linux entfernen. Informationen zum erfolgreichen Deinstallieren des Agents finden Sie unter [Deinstallieren des Log Analytics-Agents für Linux](../../azure-monitor/learn/quick-collect-linux-computer.md).  
+Wenn Sie zuvor den direkt installierten Agent verwendet haben und stattdessen einen Agent verwenden möchten, der in einem Container ausgeführt wird, müssen Sie zunächst den Log Analytics-Agent für Linux entfernen. Informationen zum erfolgreichen Deinstallieren des Agents finden Sie unter [Deinstallieren des Log Analytics-Agents für Linux](../learn/quick-collect-linux-computer.md).  
 
 #### <a name="configure-a-log-analytics-agent-for-docker-swarm"></a>Konfigurieren eines Log Analytics-Agents für Docker Swarm
 
@@ -192,8 +185,8 @@ Verwenden Sie für Docker Swarm die folgenden Informationen, um die Geheimnisinf
 
 Es gibt drei Möglichkeiten, wie Sie in Red Hat OpenShift den Log Analytics-Agent hinzufügen können, um mit dem Sammeln von Daten für die Containerüberwachung zu beginnen.
 
-* [Installieren des Log Analytics-Agents für Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) direkt auf jedem OpenShift-Knoten  
-* [Aktivieren der Log Analytics-VM-Erweiterung](../../azure-monitor/learn/quick-collect-azurevm.md) auf jedem OpenShift-Knoten in Azure  
+* [Installieren des Log Analytics-Agents für Linux](../learn/quick-collect-linux-computer.md) direkt auf jedem OpenShift-Knoten  
+* [Aktivieren der Log Analytics-VM-Erweiterung](../learn/quick-collect-azurevm.md) auf jedem OpenShift-Knoten in Azure  
 * Installieren des Log Analytics-Agents als OpenShift-Daemongruppe  
 
 In diesem Abschnitt werden die Schritte beschrieben, die zum Installieren des Log Analytics-Agents als OpenShift-Daemongruppe erforderlich sind.  
@@ -259,19 +252,18 @@ Führen Sie die folgenden Schritte aus, wenn Sie Geheimnisse nutzen möchten, um
     Die Ausgabe sollte in etwa wie folgt aussehen:  
 
     ```
-    [ocpadmin@khocp-master-0 ~]$ oc describe ds oms  
-    Name:           oms  
-    Image(s):       microsoft/oms  
-    Selector:       name=omsagent  
-    Node-Selector:  zone=default  
-    Labels:         agentVersion=1.4.0-12  
-                    dockerProviderVersion=10.0.0-25  
-                    name=omsagent  
-    Desired Number of Nodes Scheduled: 3  
-    Current Number of Nodes Scheduled: 3  
-    Number of Nodes Misscheduled: 0  
-    Pods Status:    3 Running / 0 Waiting / 0 Succeeded / 0 Failed  
-    No events.  
+    [ocpadmin@khocp-master-0 ~]$ oc describe secret omsagent-secret  
+    Name:           omsagent-secret  
+    Namespace:      omslogging  
+    Labels:         <none>  
+    Annotations:    <none>  
+
+    Type:   Opaque  
+
+    Data  
+    ====  
+    KEY:    89 bytes  
+    WSID:   37 bytes  
     ```
 
 5. Stellen Sie die YAML-Datei für die Log Analytics-Agent-Daemongruppe bereit, indem Sie Folgendes ausführen:
@@ -285,18 +277,19 @@ Führen Sie die folgenden Schritte aus, wenn Sie Geheimnisse nutzen möchten, um
     Die Ausgabe sollte in etwa wie folgt aussehen:
 
     ```
-    [ocpadmin@khocp-master-0 ~]$ oc describe secret omsagent-secret  
-    Name:           omsagent-secret  
-    Namespace:      omslogging  
-    Labels:         <none>  
-    Annotations:    <none>  
-
-    Type:   Opaque  
-
-     Data  
-     ====  
-     KEY:    89 bytes  
-     WSID:   37 bytes  
+    [ocpadmin@khocp-master-0 ~]$ oc describe ds oms  
+    Name:           oms  
+    Image(s):       microsoft/oms  
+    Selector:       name=omsagent  
+    Node-Selector:  zone=default  
+    Labels:         agentVersion=1.4.0-12  
+                    dockerProviderVersion=10.0.0-25  
+                    name=omsagent  
+    Desired Number of Nodes Scheduled: 3  
+    Current Number of Nodes Scheduled: 3  
+    Number of Nodes Misscheduled: 0  
+    Pods Status:    3 Running / 0 Waiting / 0 Succeeded / 0 Failed  
+    No events.  
     ```
 
 #### <a name="configure-a-log-analytics-linux-agent-for-kubernetes"></a>Konfigurieren eines Log Analytics-Linux-Agents für Kubernetes
@@ -483,12 +476,12 @@ Führen Sie die folgenden Schritte aus, um Helm zum Bereitstellen des Log Analyt
  
     RESOURCES:
     ==> v1/Secret
-    NAME            TYPE    DATA  AGE
-    omsagent-msoms  Opaque  3     17m
+    NAME            TYPE    DATA  AGE
+    omsagent-msoms  Opaque  3     17m
  
     ==> v1beta1/DaemonSet
-    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
-    omsagent-msoms  3        3        3      3           3          <none>         17m
+    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
+    omsagent-msoms  3        3        3      3           3          <none>         17m
     ```
    
     Weitere Informationen finden Sie unter [Containerlösung Helm-Diagramm](https://aka.ms/omscontainerhelm).
@@ -512,19 +505,19 @@ dockerd --register-service -H npipe:// -H 0.0.0.0:2375
 Start-Service docker
 ```
 
-Weitere Informationen zur Docker-Daemon-Konfiguration mit Windows-Containern finden Sie unter [Docker-Engine unter Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
+Weitere Informationen zur Docker-Daemon-Konfiguration mit Windows-Containern finden Sie unter [Docker-Engine unter Windows](/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 
 #### <a name="install-windows-agents"></a>Installieren des Windows-Agents
 
-Um die Überwachung von Windows- und Hyper-V-Containern zu aktivieren, installieren Sie den Microsoft Monitoring Agent (MMA) auf Windows-Computern, bei denen es sich um Containerhosts handelt. Informationen zu Windows-Computern in Ihrer lokalen Umgebung finden Sie unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](../../azure-monitor/platform/agent-windows.md). Verbinden Sie virtuelle Computer in Azure unter Verwendung der [VM-Erweiterung](../../azure-monitor/learn/quick-collect-azurevm.md) mit Azure Monitor.
+Um die Überwachung von Windows- und Hyper-V-Containern zu aktivieren, installieren Sie den Microsoft Monitoring Agent (MMA) auf Windows-Computern, bei denen es sich um Containerhosts handelt. Informationen zu Windows-Computern in Ihrer lokalen Umgebung finden Sie unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](../platform/agent-windows.md). Verbinden Sie virtuelle Computer in Azure unter Verwendung der [VM-Erweiterung](../learn/quick-collect-azurevm.md) mit Azure Monitor.
 
-Sie können Windows-Container überwachen, die unter Service Fabric ausgeführt werden. Allerdings werden derzeit nur [unter Azure ausgeführte virtuelle Computer](../../azure-monitor/learn/quick-collect-azurevm.md) und [Windows-Computer, die in Ihrer lokalen Umgebung ausgeführt werden](../../azure-monitor/platform/agent-windows.md), für Service Fabric unterstützt.
+Sie können Windows-Container überwachen, die unter Service Fabric ausgeführt werden. Allerdings werden derzeit nur [unter Azure ausgeführte virtuelle Computer](../learn/quick-collect-azurevm.md) und [Windows-Computer, die in Ihrer lokalen Umgebung ausgeführt werden](../platform/agent-windows.md), für Service Fabric unterstützt.
 
 Sie können überprüfen, ob die Containerüberwachungslösung für Windows korrekt festgelegt ist. Um zu überprüfen, ob das Management Pack ordnungsgemäß heruntergeladen wurde, suchen Sie nach *ContainerManagement.xxx*. Die Dateien sollten sich im Verzeichnis „C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs“ befinden.
 
 ## <a name="solution-components"></a>Lösungskomponenten
 
-Navigieren Sie im Azure-Portal zum *Lösungskatalog*, und fügen Sie die **Containerüberwachungslösung** hinzu. Wenn Sie Windows-Agents verwenden, wird auf jedem Computer mit einem Agent beim Hinzufügen dieser Lösung das folgende Management Pack installiert. Für das Management Pack ist keine Konfiguration oder Wartung erforderlich.
+Navigieren Sie im Azure-Portal zum *Lösungskatalog* , und fügen Sie die **Containerüberwachungslösung** hinzu. Wenn Sie Windows-Agents verwenden, wird auf jedem Computer mit einem Agent beim Hinzufügen dieser Lösung das folgende Management Pack installiert. Für das Management Pack ist keine Konfiguration oder Wartung erforderlich.
 
 - *ContainerManagement.xxx* wird unter „C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs“ installiert.
 
@@ -534,9 +527,9 @@ Die Containerüberwachungslösung sammelt verschiedene Leistungsmetriken und Pro
 
 Alle drei Minuten werden von den folgenden Agent-Typen Daten gesammelt.
 
-- [Log Analytics-Agent für Linux](../../azure-monitor/learn/quick-collect-linux-computer.md)
-- [Windows-Agent](../../azure-monitor/platform/agent-windows.md)
-- [Log Analytics-VM-Erweiterung](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Log Analytics-Agent für Linux](../learn/quick-collect-linux-computer.md)
+- [Windows-Agent](../platform/agent-windows.md)
+- [Log Analytics-VM-Erweiterung](../learn/quick-collect-azurevm.md)
 
 ### <a name="container-records"></a>Containerdatensätze
 
@@ -554,7 +547,7 @@ Die folgende Tabelle enthält Beispiele für von der Containerüberwachungslösu
 | Containerprozess | `ContainerProcess_CL` | TimeGenerated, Computer, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
 | Kubernetes-Ereignisse | `KubeEvents_CL` | TimeGenerated, Computer, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, Message |
 
-Bezeichnungen, die an *PodLabel*-Datentypen angefügt werden, sind Ihre eigenen benutzerdefinierten Bezeichnungen. Die angefügten PodLabel-Bezeichnungen in der Tabelle stellen Beispiele dar. Deshalb unterscheiden sich `PodLabel_deployment_s`, `PodLabel_deploymentconfig_s`, `PodLabel_docker_registry_s` im Dataset Ihrer Umgebung und ähneln allgemein `PodLabel_yourlabel_s`.
+Bezeichnungen, die an *PodLabel* -Datentypen angefügt werden, sind Ihre eigenen benutzerdefinierten Bezeichnungen. Die angefügten PodLabel-Bezeichnungen in der Tabelle stellen Beispiele dar. Deshalb unterscheiden sich `PodLabel_deployment_s`, `PodLabel_deploymentconfig_s`, `PodLabel_docker_registry_s` im Dataset Ihrer Umgebung und ähneln allgemein `PodLabel_yourlabel_s`.
 
 ## <a name="monitor-containers"></a>Überwachen von Containern
 Nachdem Sie die Lösung im Azure-Portal aktiviert haben, werden auf der Kachel **Container** zusammenfassende Informationen zu den Containerhosts und den auf den Hosts ausgeführten Containern angezeigt.
@@ -581,7 +574,7 @@ Klicken Sie auf die Kachel **Container**. Dort sind die Ansichten wie folgt ange
 
 Jeder Bereich des Dashboards ist eine visuelle Darstellung einer Suche, die über die gesammelten Daten ausgeführt wird.
 
-![Containerdashboard](./media/containers/containers-dash01.png)
+![Screenshot eines Dashboards zum Anzeigen der gesammelten Daten ](./media/containers/containers-dash01.png)
 
 ![Containerdashboard](./media/containers/containers-dash02.png)
 
@@ -597,7 +590,7 @@ Hier können Sie die Suchabfrage bearbeiten, um die für Sie interessanten spezi
 
 ## <a name="troubleshoot-by-finding-a-failed-container"></a>Beheben von Problemen durch das Suchen fehlerhafter Container
 
-Log Analytics kennzeichnet einen Container als **Fehlerhaft**, wenn dieser mit einem anderen Exitcode als null beendet wurde. Im Bereich **Container mit Fehlern** wird eine Übersicht über die Fehler und Ausfälle in der Umgebung angezeigt.
+Log Analytics kennzeichnet einen Container als **Fehlerhaft** , wenn dieser mit einem anderen Exitcode als null beendet wurde. Im Bereich **Container mit Fehlern** wird eine Übersicht über die Fehler und Ausfälle in der Umgebung angezeigt.
 
 ### <a name="to-find-failed-containers"></a>So suchen Sie nach Containern mit Fehlern
 
@@ -606,9 +599,9 @@ Log Analytics kennzeichnet einen Container als **Fehlerhaft**, wenn dieser mit e
 2. Log Analytics wird geöffnet und zeigt den Zustand Ihrer Container an:  
    ![Containerzustand](./media/containers/containers-log-search.png)
 3. Erweitern Sie die Zeile „Fehler“, und klicken Sie auf „+“, um die Kriterien der Abfrage hinzufügen. Kommentieren Sie anschließend die Zeile „Summarize“ in der Abfrage aus.
-   ![Container mit Fehlern](./media/containers/containers-state-failed-select.png)  
+   ![Screenshot der Zeile, die auskommentiert werden sollte](./media/containers/containers-state-failed-select.png)  
 1. Führen Sie die Abfrage aus, und erweitern Sie anschließend eine Zeile in den Ergebnissen, um die Image-ID anzuzeigen.  
-   ![Container mit Fehlern](./media/containers/containers-state-failed.png)  
+   ![Screenshot der Anzeige der Image-ID](./media/containers/containers-state-failed.png)  
 1. Geben Sie Folgendes in die Protokollabfrage ein: `ContainerImageInventory | where ImageID == <ImageID>`, um Details zum Image wie Imagegröße sowie Anzahl der beendeten und fehlerhaften Images anzuzeigen.  
    ![Container mit Fehlern](./media/containers/containers-failed04.png)
 
@@ -625,7 +618,6 @@ Wenn Sie Probleme mit einen bestimmten Fehler beheben möchten, kann es hilfreic
 - **KubeEvents_CL** Verwenden Sie diesen Typ, um die Kubernetes-Ereignisse anzuzeigen.
 - **KubePodInventory_CL** Verwenden Sie diesen Typ, wenn Sie Informationen zur Clusterhierarchie einsehen möchten.
 
-
 ### <a name="to-query-logs-for-container-data"></a>So fragen Sie Containerdaten in Protokollen ab
 
 * Wählen Sie ein Image aus, bei dem kürzlich ein Fehler aufgetreten ist, und suchen Sie die zugehörigen Fehlerprotokolle. Suchen Sie zunächst mit **ContainerInventory** nach dem Namen eines Containers, in dem das Image ausgeführt wird. Suchen Sie beispielsweise nach `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`.  
@@ -635,7 +627,7 @@ Wenn Sie Probleme mit einen bestimmten Fehler beheben möchten, kann es hilfreic
 
 ## <a name="example-log-queries"></a>Beispiele für Protokollabfragen
 
-Es ist oft hilfreich, die Erstellung von Abfragen ausgehend von einem oder zwei Beispielen zu beginnen und diese dann an die eigene Umgebung anzupassen. Als Ausgangspunkt können Sie im Bereich **Beispielabfragen** experimentieren, um komplexere Abfragen zu erstellen.
+Es ist oft hilfreich, die Erstellung von Abfragen ausgehend von einem oder zwei Beispielen zu beginnen und diese dann an die eigene Umgebung anzupassen. Als Ausgangspunkt können Sie mit dem Bereich **BEISPIELABFRAGEN** ganz rechts auf der Lösungsseite experimentieren, um Sie bei der Erstellung erweiterter Abfragen zu unterstützen.
 
 ![Containerabfragen](./media/containers/containers-queries.png)
 
@@ -648,3 +640,4 @@ Nachdem Sie eine Abfrage erstellt haben, die für Sie nützlich ist, speichern S
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Fragen Sie Protokolle ab](../log-query/log-query-overview.md), um detaillierte Containerdatensätze anzuzeigen.
+

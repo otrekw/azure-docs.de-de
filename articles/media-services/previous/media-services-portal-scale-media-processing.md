@@ -14,19 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c840764dc978a8dacb3450c0aca5e5d93284b8a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c637817e88e9258a0f80cf72f737b0deae753002
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61127540"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96012253"
 ---
 # <a name="change-the-reserved-unit-type"></a>Ändern Sie den Typ reservierter Einheiten
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
 > * [Portal](media-services-portal-scale-media-processing.md)
-> * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
-> * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+> * [REST](/rest/api/media/operations/encodingreservedunittype)
+> * [Java](https://github.com/rnrneverdies/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
 > 
@@ -66,4 +69,3 @@ Führen Sie folgende Schritte aus, um den Typ reservierter Einheiten und die Anz
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

@@ -1,28 +1,21 @@
 ---
 title: Lokales Debuggen von PowerShell Azure Functions
-description: Erfahren Sie, wie Sie mithilfe von PowerShell Funktionen entwickeln können.
-services: functions
-documentationcenter: na
+description: Erfahren Sie, wie Sie PowerShell-Funktionen bei lokaler Ausführung debuggen.
 author: tylerleonhardt
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: fc30a2efb21d5b7f3168d9229ec5baf9a7f05eb1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a668024db126c82f96756555aba513b77f7d7366
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706424"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422959"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Lokales Debuggen von PowerShell Azure Functions
 
 Mit Azure Functions können Sie Ihre Funktionen als PowerShell-Skripts entwickeln.
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
 Sie können Ihre PowerShell-Funktionen lokal debuggen, wie Sie es mit jedem PowerShell-Skript machen würden, indem Sie die folgenden Standardentwicklungstools verwenden:
 
@@ -45,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-Diese Funktions-App ähnelt derjenigen, die Sie erhalten, wenn die [Schnellstartanleitung zu PowerShell](functions-create-first-function-powershell.md) durcharbeiten.
+Diese Funktions-App ähnelt derjenigen, die Sie erhalten, wenn die [Schnellstartanleitung zu PowerShell](./create-first-function-vs-code-powershell.md) durcharbeiten.
 
 Der Funktionscode in `run.ps1` ähnelt dem folgenden Skript:
 
@@ -73,6 +66,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 
 Um eine PowerShell-Funktion zu debuggen, muss die Funktion angehalten werden, um den Debugger anzufügen. Das `Wait-Debugger`-Cmdlet hält die Ausführung an und wartet auf den Debugger.
 
+>[!NOTE]
+>Wenn Sie PowerShell 7 verwenden, müssen Sie in Ihrem Code den `Wait-Debugger`-Aufrufe nicht hinzufügen.
+
 Sie müssen lediglich direkt über der `if`-Anweisung einen Aufruf an das Cmdlet `Wait-Debugger` hinzufügen, wie folgt:
 
 ```powershell
@@ -99,10 +95,10 @@ Mit eingefügtem `Wait-Debugger` können Sie nun die Funktionen entweder mit Vis
 Um PowerShell-Funktionen in Visual Studio Code zu debuggen, müssen folgende Komponenten installiert sein:
 
 * [PowerShell-Erweiterung für Visual Studio Code](/powershell/scripting/components/vscode/using-vscode)
-* [Azure Functions-Erweiterung für Visual Studio Code](functions-create-first-function-vs-code.md)
+* [Azure Functions-Erweiterung für Visual Studio Code](./create-first-function-cli-powershell.md)
 * [PowerShell Core 6.2 oder höher](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-Laden Sie nach der Installation dieser Abhängigkeiten ein vorhandenes Projekt für PowerShell-Funktionen, oder [Erstellen Sie Ihr erstes Projekt für PowerShell-Funktionen](functions-create-first-function-powershell.md).
+Laden Sie nach der Installation dieser Abhängigkeiten ein vorhandenes Projekt für PowerShell-Funktionen, oder [Erstellen Sie Ihr erstes Projekt für PowerShell-Funktionen](./create-first-function-vs-code-powershell.md).
 
 >[!NOTE]
 > Sollte Ihr Projekt nicht die erforderlichen Konfigurationsdateien enthalten, werden Sie aufgefordert, sie ihm hinzuzufügen.
@@ -113,7 +109,7 @@ PowerShell Core wird parallel zu Windows PowerShell installiert. Legen Sie Power
 
 1. Drücken Sie F1, um die verfügbaren Befehle anzuzeigen, und suchen Sie dann `Session`.
 
-1. Wählen Sie die Option für **PowerShell: Sitzungsmenü anzeigen** aus.
+1. Wählen Sie die Option für **PowerShell: Menü „Sitzung“ anzeigen**.
 
 1. Wenn die **aktuelle Sitzung** nicht **PowerShell Core 6** entspricht, wählen Sie **Wechseln zu: PowerShell Core 6** aus.
 
@@ -134,6 +130,9 @@ Der Vorgang „Debuggen starten“ führt die folgenden Aufgaben aus:
 * Ausführen von `func extensions install` im Terminal, um alle von Ihrer Funktions-App benötigten Azure Functions-Erweiterungen zu installieren.
 * Ausführen von `func host start` im Terminal, um die Funktions-App im Functions-Host zu starten.
 * Anfügen des PowerShell-Debuggers an den PowerShell-Runspace innerhalb der Functions Runtime.
+
+>[!NOTE]
+> Sie müssen sicherstellen, dass „PSWorkerInProcConcurrencyUpperBound“ auf „1“ festgelegt ist, um eine korrekte Debuggingerfahrung in Visual Studio Code sicherzustellen. Dies ist die Standardoption.
 
 Während Ihre Funktions-App ausgeführt wird, benötigen Sie eine gesonderte PowerShell-Konsole, um die HTTP-ausgelöste Funktion aufzurufen.
 
@@ -246,6 +245,16 @@ Die PowerShell-Erweiterung verwendet `Debug-Runspace`, was wiederum auf der `Bre
 Die Azure Functions Runtime führt ein paar Befehle vor dem tatsächlichen Aufrufen Ihres `run.ps1`-Skripts aus, sodass dies dazu führen kann, dass der Debugger innerhalb von `Microsoft.Azure.Functions.PowerShellWorker.psm1` oder `Microsoft.Azure.Functions.PowerShellWorker.psd1` unterbricht.
 
 Sollte es zu dieser Unterbrechung kommen, führen Sie den Befehl `continue` oder `c` aus, um diesen Breakpoint zu überspringen. Danach halten Sie am erwarteten Breakpoint an.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Wenn beim Debuggen Probleme auftreten, sollten Sie Folgendes überprüfen:
+
+| Prüfen | Aktion |
+|------|------|
+| Führen Sie `func --version` im Terminal aus. Wenn Sie eine Fehlermeldung erhalten, dass `func` nicht gefunden werden kann, fehlen in der lokalen `path`-Variablen möglicherweise Core Tools (func.exe).| [Installieren Sie die Core Tools neu](functions-run-local.md#v2).|  
+| In Visual Studio Code benötigt das Standardterminal Zugriff auf „func.exe“. Stellen Sie sicher, dass Sie kein Standardterminal verwenden, für das Core Tools nicht installiert sind, wie z. B. das Windows-Subsystem für Linux (WSL).  | Legen Sie die Standardshell in Visual Studio Code entweder auf PowerShell 7 (empfohlen) oder Windows PowerShell 5.1 fest.|
+  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

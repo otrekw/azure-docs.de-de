@@ -1,29 +1,24 @@
 ---
-title: Tutorial – Vorbereiten einer Containerregistrierung für Azure Container Instances
+title: 'Tutorial: Vorbereiten der Containerregistrierung für die Imagebereitstellung'
 description: Tutorial für Azure Container Instances (Teil 2 von 3) – Vorbereiten einer Azure-Containerregistrierung und Übertragen eines Images per Pushvorgang
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
-ms.date: 03/21/2018
-ms.author: danlep
-ms.custom: seodec18, mvc
-ms.openlocfilehash: b3c907eacb14ed65410a60fcf22ebe99fd8cc3bb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 12/18/2019
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 2eda960c53fc7ba851ffcfbe96bd8e9a48844910
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325603"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746949"
 ---
-# <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>Tutorial: Bereitstellen einer Azure-Containerregistrierung und Übertragen eines Containerimages per Pushvorgang
+# <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Tutorial: Erstellen einer Azure-Containerregistrierung und Übertragen eines Containerimages per Pushvorgang
 
 Dies ist der zweite Teil eines dreiteiligen Tutorials. In [Teil 1](container-instances-tutorial-prepare-app.md) des Tutorials wurde ein Docker-Containerimage für eine Node.js-Webanwendung erstellt. In diesem Tutorial übertragen Sie das Image per Pushvorgang an die Azure Container Registry-Instanz. Kehren Sie zu [Tutorial 1 – Erstellen von Containerimages](container-instances-tutorial-prepare-app.md) zurück, falls Sie das Containerimage noch nicht erstellt haben.
 
-Azure Container Registry ist Ihre private Docker-Registrierung in Azure. In diesem Tutorial erstellen Sie eine Azure Container Registry-Instanz in Ihrem Abonnement und übertragen anschließend das zuvor erstellte Containerimage per Pushvorgang in die Instanz. Dieser Artikel ist der zweite Teil der Reihe und umfasst Folgendes:
+Azure Container Registry ist Ihre private Docker-Registrierung in Azure. Dieser zweite Teil der Tutorialreihe umfasst Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen einer Azure Container Registry-Instanz
+> * Erstellen einer Azure Container Registry-Instanz mit der Azure-Befehlszeilenschnittstelle
 > * Markieren eines Containerimages für Ihre Azure Container Registry-Instanz
 > * Hochladen des Images in Ihre Registrierung
 
@@ -33,63 +28,7 @@ Im nächsten Artikel (dem letzten Tutorial der Reihe) stellen Sie den Container 
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
-## <a name="create-azure-container-registry"></a>Erstellen einer Azure-Containerregistrierung
-
-Bevor Sie Ihre Containerregistrierung erstellen können, benötigen Sie eine *Ressourcengruppe* für die Bereitstellung. Eine Azure-Ressourcengruppe ist eine logische Sammlung, in der alle Azure-Ressourcen bereitgestellt und verwaltet werden.
-
-Erstellen Sie mit dem Befehl [az group create][az-group-create] eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus* erstellt:
-
-```azurecli
-az group create --name myResourceGroup --location eastus
-```
-
-Erstellen Sie nach der Erstellung der Ressourcengruppe mit dem Befehl [az acr create][az-acr-create] eine Azure-Containerregistrierung. Der Containerregistrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Ersetzen Sie `<acrName>` durch einen eindeutigen Namen für die Registrierung:
-
-```azurecli
-az acr create --resource-group myResourceGroup --name <acrName> --sku Basic --admin-enabled true
-```
-
-Hier ist eine Beispielausgabe für eine neue Azure-Containerregistrierung mit dem Namen *mycontainerregistry082* angegeben (in gekürzter Form):
-
-```console
-$ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic --admin-enabled true
-...
-{
-  "adminUserEnabled": true,
-  "creationDate": "2018-03-16T21:54:47.297875+00:00",
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/mycontainerregistry082",
-  "location": "eastus",
-  "loginServer": "mycontainerregistry082.azurecr.io",
-  "name": "mycontainerregistry082",
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myResourceGroup",
-  "sku": {
-    "name": "Basic",
-    "tier": "Basic"
-  },
-  "status": null,
-  "storageAccount": null,
-  "tags": {},
-  "type": "Microsoft.ContainerRegistry/registries"
-}
-```
-
-Im restlichen Teil dieses Tutorials wird `<acrName>` als Platzhalter für den von Ihnen in diesem Schritt gewählten Namen der Containerregistrierung bezeichnet.
-
-## <a name="log-in-to-container-registry"></a>Anmelden an der Containerregistrierung
-
-Sie müssen sich bei der Azure-Containerregistrierung anmelden, damit Sie Images mithilfe von Push an sie übertragen können. Verwenden Sie den Befehl [az acr login][az-acr-login], um den Vorgang abzuschließen. Geben Sie den eindeutigen Namen an, den Sie beim Erstellen der Containerregistrierung gewählt haben.
-
-```azurecli
-az acr login --name <acrName>
-```
-
-Der Befehl gibt nach Abschluss des Vorgangs `Login Succeeded` zurück:
-
-```console
-$ az acr login --name mycontainerregistry082
-Login Succeeded
-```
+[!INCLUDE [container-instances-create-registry](../../includes/container-instances-create-registry.md)]
 
 ## <a name="tag-container-image"></a>Markieren von Containerimages
 
@@ -103,8 +42,11 @@ az acr show --name <acrName> --query loginServer --output table
 
 Dies sieht beispielsweise wie folgt aus, wenn Ihre Registrierung den Namen *mycontainerregistry082* hat:
 
-```console
-$ az acr show --name mycontainerregistry082 --query loginServer --output table
+```azurecli
+az acr show --name mycontainerregistry082 --query loginServer --output table
+```
+
+```output
 Result
 ------------------------
 mycontainerregistry082.azurecr.io
@@ -124,7 +66,7 @@ REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
 aci-tutorial-app    latest    5c745774dfa9    39 minutes ago    68.1 MB
 ```
 
-Kennzeichnen Sie das Image *aci-tutorial-app* mit dem loginServer-Namen der Containerregistrierung. Fügen Sie außerdem das Tag `:v1` am Ende des Imagenamens hinzu, um die Versionsnummer für das Image anzugeben. Ersetzen Sie `<acrLoginServer>` durch das Ergebnis des zuvor ausgeführten Befehls [az acr show][az-acr-show].
+Kennzeichnen Sie das Image *aci-tutorial-app* mit dem Anmeldeserver der Containerregistrierung. Fügen Sie außerdem das Tag `:v1` am Ende des Imagenamens hinzu, um die Versionsnummer für das Image anzugeben. Ersetzen Sie `<acrLoginServer>` durch das Ergebnis des zuvor ausgeführten Befehls [az acr show][az-acr-show].
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
@@ -169,10 +111,13 @@ Um sicherzustellen, dass sich das gerade übertragene Image wirklich in Ihrer Az
 az acr repository list --name <acrName> --output table
 ```
 
-Beispiel:
+Zum Beispiel:
 
-```console
-$ az acr repository list --name mycontainerregistry082 --output table
+```azurecli
+az acr repository list --name mycontainerregistry082 --output table
+```
+
+```output
 Result
 ----------------
 aci-tutorial-app
@@ -184,10 +129,10 @@ Verwenden Sie den Befehl [az acr repository show-tags][az-acr-repository-show-ta
 az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table
 ```
 
-Eine Ausgabe ähnlich der folgenden sollte angezeigt werden:
+Die Ausgabe sollte etwa folgendermaßen aussehen:
 
 ```console
-$ az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table
+az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table
 Result
 --------
 v1
@@ -198,7 +143,7 @@ v1
 In diesem Tutorial haben Sie eine Azure-Containerregistrierung für die Verwendung mit Azure Container Instances vorbereitet und ein Containerimage mithilfe von Push an die Registrierung übertragen. Die folgenden Schritte wurden durchgeführt:
 
 > [!div class="checklist"]
-> * Bereitstellen einer Azure Container Registry-Instanz
+> * Erstellen einer Azure Container Registry-Instanz mit der Azure-Befehlszeilenschnittstelle
 > * Markieren eines Containerimages für Azure Container Registry
 > * Hochladen eines Images in Azure Container Registry
 

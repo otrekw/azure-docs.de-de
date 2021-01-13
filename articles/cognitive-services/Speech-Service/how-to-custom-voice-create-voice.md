@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer benutzerdefinierten Stimme – Speech Service
+title: Erstellen einer benutzerdefinierten Stimme – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
 description: Wenn Sie zum Hochladen Ihrer Daten bereit sind, navigieren Sie zum Custom Voice-Portal. Erstellen Sie ein Custom Voice-Projekt, oder wählen Sie ein bereits vorhandenes Projekt aus. Das Projekt muss die gleiche Sprache/das gleiche Gebietsschema und die gleichen Geschlechtseigenschaften besitzen wie die Daten, die Sie für Ihr Stimmtraining verwenden möchten.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0fdc58ba54c63ba7dd6b74f56aa91e9c2b3c0936
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3747033fcaf65e0c6da07e9f1bb625771958bb4f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562830"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319060"
 ---
 # <a name="create-a-custom-voice"></a>Erstellen einer benutzerdefinierten Stimme
 
@@ -38,16 +38,16 @@ Jedes hochgeladene Dataset muss den Anforderungen für den ausgewählten Datenty
 > Benutzer mit einem kostenlosen Abonnement (F0) können zwei Datasets gleichzeitig hochladen. Benutzer mit einem Standard-Abonnement (S0) können fünf Datasets gleichzeitig hochladen. Wenn Sie das Limit erreicht wurde, warten Sie, bis der Importvorgang mindestens eines Datasets beendet wurde. Versuchen Sie es anschließend noch mal.
 
 > [!NOTE]
-> Benutzer mit einem kostenlosen Abonnement (F0) können pro Abonnement maximal zehn Datasets (ZIP-Dateien) importieren. Benutzer mit einem Standard-Abonnement (S0) können maximal 500 ZIP-Dateien importieren.
+> Benutzer des kostenlosen Abonnements (F0) können maximal 10 ZIP-Dateien pro Abonnement als Datasets importieren. Bei Benutzern des Standardabonnements (S0) beträgt die Höchstzahl 500.
 
 Datasets werden nach dem Klicken auf „Hochladen“ automatisch überprüft. Bei der Datenüberprüfung werden Format, Größe und Samplingrate der Audiodateien geprüft. Sollten Fehler vorliegen, beheben Sie sie, und übermitteln Sie die Daten erneut. Nach erfolgreicher Initiierung des Datenimports wird in der Datentabelle ein Eintrag für das soeben hochgeladene Dataset angezeigt.
 
 In der folgenden Tabelle werden die Verarbeitungsstatus der importierten Datasets angezeigt:
 
-| Zustand | Bedeutung |
+| State | Bedeutung |
 | ----- | ------- |
 | Verarbeitung | Ihr Dataset wurde empfangen und wird verarbeitet. |
-| Succeeded | Ihr Dataset wurde überprüft und kann nun zur Erstellung eines Stimmmodells verwendet werden. |
+| Erfolgreich | Ihr Dataset wurde überprüft und kann nun zur Erstellung eines Stimmmodells verwendet werden. |
 | Fehler | Beim Verarbeiten Ihres Datasets ist ein Fehler aufgetreten. Dies kann verschiedene Ursachen haben (beispielsweise Dateifehler oder Probleme mit den Daten oder dem Netzwerk). |
 
 Nach Abschluss der Überprüfung wird in der Spalte **Utterances** (Äußerungen) die Gesamtanzahl übereinstimmender Äußerungen für alle Datasets angezeigt. Sollte für den gewählten Audiotyp eine Segmentierung langer Audiodateien erforderlich sein, enthält diese Spalte nur die Äußerungen, die für Sie segmentiert wurden (entweder auf der Grundlage Ihrer Transkripte oder über den Sprachtranskriptionsdienst). Sie können das überprüfte Dataset herunterladen, um die Detailergebnisse der erfolgreich importierten Äußerungen sowie die dazugehörigen Transkripte anzuzeigen. Hinweis: Die Datenverarbeitung für die Segmentierung langer Audiodateien kann über eine Stunde dauern.
@@ -62,7 +62,7 @@ Bei einer niedrigen Aussprachebewertung oder einem geringen SNR-Wert sollten Sie
 
 Nachdem Ihr Dataset überprüft wurde, können Sie damit Ihr benutzerdefiniertes Stimmmodell erstellen.
 
-1.  Navigieren Sie zu **„Sprachsynthese“ > „Custom Voice“ (Benutzerdefinierte Stimme) > „Training“.**
+1.  Navigieren Sie zu **Text-zu-Sprache > Custom Voice > [Projektname] > Training**.
 
 2.  Klicken Sie auf **Modell trainieren**.
 
@@ -78,7 +78,7 @@ Nachdem Ihr Dataset überprüft wurde, können Sie damit Ihr benutzerdefiniertes
     > Doppelte Audionamen werden aus dem Training entfernt. Achten Sie darauf, dass die ausgewählten Datasets in mehreren ZIP-Dateien nicht die gleichen Audionamen enthalten.
 
     > [!TIP]
-    > Verwenden Sie Datasets des gleichen Sprechers, um optimale Ergebnisse zu erzielen. Wenn die für das Training übermittelten Datasets insgesamt weniger als 6.000 unterschiedliche Äußerungen enthalten, wird Ihr Stimmmodell mittels statistischer parametrischer Sprachsynthese trainiert. Wenn die Trainingsdaten insgesamt mehr als 6.000 unterschiedliche Äußerungen enthalten, wird ein Trainingsprozess mit verketteter Sprachsynthese initiiert. Mit der verketteten Sprachsynthese lassen sich in der Regel natürlichere, präzisere Ergebnisse erzielen. [Wenden Sie sich an das Custom Voice-Team](mailto:speechsupport@microsoft.com), wenn Sie ein Modell mit der neuesten neuronalen TTS-Technologie trainieren möchten, um eine digitale Stimme zu generieren, die mit den öffentlich verfügbaren [neuronalen Stimmen](language-support.md#neural-voices) vergleichbar ist.
+    > Verwenden Sie Datasets des gleichen Sprechers, um optimale Ergebnisse zu erzielen. Wenn die für das Training übermittelten Datasets insgesamt weniger als 6.000 unterschiedliche Äußerungen enthalten, wird Ihr Stimmmodell mittels statistischer parametrischer Sprachsynthese trainiert. Wenn die Trainingsdaten insgesamt mehr als 6.000 unterschiedliche Äußerungen enthalten, wird ein Trainingsprozess mit verketteter Sprachsynthese initiiert. Mit der verketteten Sprachsynthese lassen sich in der Regel natürlichere, präzisere Ergebnisse erzielen. [Wenden Sie sich an das Custom Voice-Team](https://go.microsoft.com/fwlink/?linkid=2108737), wenn Sie ein Modell mit der neuesten neuronalen TTS-Technologie trainieren möchten, um eine digitale Stimme zu generieren, die mit den öffentlich verfügbaren [neuronalen Stimmen](language-support.md#neural-voices) vergleichbar ist.
 
 5.  Klicken Sie auf **Trainieren**, um mit der Erstellung Ihres Stimmmodells zu beginnen.
 
@@ -86,10 +86,10 @@ In der Trainingstabelle wird ein neuer Eintrag angezeigt, der diesem neu erstell
 
 Der angezeigte Status gibt Aufschluss über die Konvertierung Ihres Datasets in ein Stimmmodell (wie hier gezeigt).
 
-| Zustand | Bedeutung |
+| State | Bedeutung |
 | ----- | ------- |
 | Verarbeitung | Ihr Stimmmodell wird erstellt. |
-| Succeeded | Ihr Stimmmodell wurde erstellt und kann bereitgestellt werden. |
+| Erfolgreich | Ihr Stimmmodell wurde erstellt und kann bereitgestellt werden. |
 | Fehler | Beim Trainieren Ihres Stimmmodells ist ein Fehler aufgetreten. Dies kann verschiedene Ursachen haben (beispielsweise ein unvorhergesehenes Datenproblem oder ein Netzwerkproblem). |
 
 Die Trainingszeit variiert je nach Umfang der verarbeiteten Audiodaten. In der Regel liegt diese zwischen 30 Minuten bei mehreren Hundert Äußerungen und maximal 40 Stunden im Fall von 20.000 Äußerungen. Nach erfolgreichem Abschluss Ihres Modelltrainings können Sie das Modell testen.
@@ -100,11 +100,13 @@ Die Trainingszeit variiert je nach Umfang der verarbeiteten Audiodaten. In der R
 > [!NOTE]
 > Benutzer mit einem kostenlosen Abonnement (F0) können pro Abonnement maximal zehn Stimmmodelle trainieren. Benutzer mit einem Standard-Abonnement (S0) können maximal 100 Stimmmodelle trainieren.
 
+Wenn Sie die neuronale Stimmtrainingsfunktion verwenden, können Sie auswählen, ob Sie ein Modell trainieren möchten, das für Echtzeitstreamingszenarien optimiert ist, oder ein neuronales HD-Modell, das für die asynchrone [Synthese für langes Audio](long-audio-api.md) optimiert ist.  
+
 ## <a name="test-your-voice-model"></a>Testen Ihres Stimmmodells
 
 Nach der erfolgreichen Erstellung des Voicefonts können Sie ihn vor der Bereitstellung testen.
 
-1.  Navigieren Sie zu **„Sprachsynthese“ > „Custom Voice“ (Benutzerdefinierte Stimme) > „Testen“.**
+1.  Navigieren Sie zu **Text-zu-Sprache > Custom Voice > [Projektname] > Testen**.
 
 2.  Klicken Sie auf **Test hinzufügen**.
 
@@ -115,7 +117,7 @@ Nach der erfolgreichen Erstellung des Voicefonts können Sie ihn vor der Bereits
     > [!NOTE]
     > Die Textsprache muss mit der Sprache des Voicefonts übereinstimmen. Nur erfolgreich trainierte Modelle können getestet werden. In diesem Schritt wird ausschließlich Nur-Text unterstützt.
 
-5.  Klicken Sie auf **Create**.
+5.  Klicken Sie auf **Erstellen**.
 
 Nach Übermittlung Ihrer Testanforderung wird wieder die Testseite angezeigt. In der Tabelle befindet sich nun ein Eintrag für die neue Anforderung und die Statusspalte. Die Sprachsynthese kann einige Minuten in Anspruch nehmen. Wenn in der Statusspalte **Erfolgreich** angezeigt wird, können Sie das Audio wiedergeben oder die Texteingabe (TXT-Datei) und die Audioausgabe (WAV-Datei) herunterladen und die Qualität der WAV-Datei genauer überprüfen.
 
@@ -143,5 +145,6 @@ Der benutzerdefinierte Endpunkt verfügt über dieselben Funktionen wie der Stan
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Aufzeichnen von Sprachbeispielen zum Erstellen einer benutzerdefinierten Stimme](record-custom-voice-samples.md)
+* [Aufzeichnen Aufnehmen Ihrer Sprachbeispiele](record-custom-voice-samples.md)
 * [Text-to-Speech-REST-API](rest-text-to-speech.md)
+* [API für lange Audioinhalte](long-audio-api.md)

@@ -1,53 +1,61 @@
 ---
-title: Erstellen einer Richtlinienzuweisung anhand einer Resource Manager-Vorlage
-description: In diesem Artikel werden die Schritte zum Verwenden einer Resource Manager-Vorlage für die Erstellung einer Richtlinienzuweisung zur Identifizierung von nicht konformen Ressourcen beschrieben.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 03/13/2019
+title: 'Schnellstart: Neue Richtlinienzuweisung mit Vorlagen'
+description: In dieser Schnellstartanleitung erstellen Sie mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Richtlinienzuweisung zum Identifizieren von nicht konformen Ressourcen.
+ms.date: 08/17/2020
 ms.topic: quickstart
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: f31d6197c22be4d66e0610ad7914f541a45ed995
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.custom: subject-armqs
+ms.openlocfilehash: c32f833520a811d47129196ae4d67c92bad7e21f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979570"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89651434"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren von nicht konformen Ressourcen mit einer Resource Manager-Vorlage
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren von nicht konformen Ressourcen mit einer ARM-Vorlage
 
 Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wie Sie den Status Ihrer Ressourcen ermitteln.
-Diese Schnellstartanleitung führt Sie schrittweise durch die Erstellung einer Richtlinienzuweisung zur Identifizierung von virtuellen Computern, die keine verwalteten Datenträger verwenden.
+Diese Schnellstartanleitung führt Sie schrittweise durch die Erstellung einer Richtlinienzuweisung zur Identifizierung von virtuellen Computern, die keine verwalteten Datenträger verwenden. Dazu wird eine ARM-Vorlage (Azure Resource Manager) verwendet. Am Ende dieses Prozesses können Sie erfolgreich virtuelle Computer identifizieren, die keine verwalteten Datenträger verwenden. Sie sind mit der Richtlinienzuweisung _nicht konform_.
 
-Am Ende dieses Prozesses können Sie erfolgreich virtuelle Computer identifizieren, die keine verwalteten Datenträger verwenden. Sie sind mit der Richtlinienzuweisung *nicht konform*.
+[!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
+
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Schaltfläche zum Bereitstellen der ARM-Vorlage zum Zuweisen einer Azure-Richtlinie zu Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-policy-assignment"></a>Erstellen einer Richtlinienzuweisung
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-In dieser Schnellstartanleitung erstellen Sie eine Richtlinienzuweisung und weisen eine integrierte Richtliniendefinition mit dem Namen *Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden* zu. Eine Liste mit einem Teil der verfügbaren integrierten Richtlinien finden Sie unter [Azure Policy-Beispiele](./samples/index.md).
+In dieser Schnellstartanleitung erstellen Sie eine Richtlinienzuweisung und weisen eine integrierte Richtliniendefinition mit dem Namen _Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden_ zu. Eine Liste mit einem Teil der verfügbaren integrierten Richtlinien finden Sie unter [Azure Policy-Beispiele](./samples/index.md).
 
-Es gibt mehrere Methoden zum Erstellen von Richtlinienzuweisungen. In dieser Schnellstartanleitung verwenden Sie eine [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
-Hier ist eine Kopie der Vorlage angegeben:
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
 
-[!code-json[policy-assignment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json":::
+
+In der Vorlage ist die folgende Ressource definiert:
+
+- [Microsoft.Authorization/policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
+
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 > [!NOTE]
-> Der Azure Policy-Dienst ist kostenlos.  Weitere Informationen finden Sie in der [Übersicht über Azure Policy](./overview.md).
+> Der Azure Policy-Dienst ist kostenlos. Weitere Informationen finden Sie in der [Übersicht über Azure Policy](./overview.md).
 
 1. Wählen Sie die folgende Abbildung aus, um sich am Azure-Portal anzumelden und die Vorlage zu öffnen:
 
-   [![Bereitstellen der Policy-Vorlage in Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Schaltfläche zum Bereitstellen der ARM-Vorlage zum Zuweisen einer Azure-Richtlinie zu Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein:
 
-   | NAME | Wert |
+   | Name | Wert |
    |------|-------|
-   | Abonnement | Wählen Sie Ihr Azure-Abonnement. |
-   | Ressourcengruppe | Wählen Sie **Neu erstellen**, geben Sie einen Namen an, und wählen Sie dann **OK**. Im Screenshot lautet der Name der Ressourcengruppe *mypolicyquickstart\<Datum in MMTT>rg*. |
-   | Location | Wählen Sie eine Region aus. Beispiel: **USA, Mitte**. |
-   | Name der Richtlinienzuweisung | Geben Sie einen Namen für die Richtlinienzuweisung an. Bei Bedarf können Sie die Anzeige für die Richtliniendefinitionen verwenden. Beispiel: **Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden**. |
-   | Ressourcengruppenname | Geben Sie den Namen einer Ressourcengruppe an, der Sie die Richtlinie zuweisen möchten. In dieser Schnellstartanleitung verwenden Sie den Standardwert **[resourceGroup().name]** . **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** ist eine Vorlagenfunktion, mit der die Ressourcengruppe abgerufen wird. |
+   | Subscription | Wählen Sie Ihr Azure-Abonnement. |
+   | Resource group | Wählen Sie **Neu erstellen**, geben Sie einen Namen an, und wählen Sie dann **OK**. Im Screenshot lautet der Name der Ressourcengruppe _mypolicyquickstart\<Date in MMDD\>rg_. |
+   | Standort | Wählen Sie eine Region aus. Beispiel: **USA, Mitte**. |
+   | Name der Richtlinienzuweisung | Geben Sie einen Namen für die Richtlinienzuweisung an. Bei Bedarf können Sie die Anzeige für die Richtliniendefinitionen verwenden. Beispiel: _Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden_. |
+   | Ressourcengruppenname | Geben Sie den Namen einer Ressourcengruppe an, der Sie die Richtlinie zuweisen möchten. In dieser Schnellstartanleitung verwenden Sie den Standardwert **[resourceGroup().name]** . **[resourceGroup()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** ist eine Vorlagenfunktion, mit der die Ressourcengruppe abgerufen wird. |
    | Richtliniendefinitions-ID | Geben Sie **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a** an. |
    | Ich stimme den oben genannten Geschäftsbedingungen zu | (Auswählen) |
 
@@ -57,14 +65,14 @@ Einige zusätzliche Ressourcen:
 
 - Weitere Beispielvorlagen finden Sie unter [Azure-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular).
 - Navigieren Sie zur [Azure-Vorlagenreferenz](/azure/templates/microsoft.authorization/allversions), um die Vorlagenreferenz anzuzeigen.
-- Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](/azure/azure-resource-manager/).
-- Informationen zur Bereitstellung auf Abonnementebene finden Sie unter [Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene](../../azure-resource-manager/deploy-to-subscription.md).
+- Informationen zur Entwicklung von ARM-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](../../azure-resource-manager/management/overview.md).
+- Informationen zur Bereitstellung auf Abonnementebene finden Sie unter [Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene](../../azure-resource-manager/templates/deploy-to-subscription.md).
 
-## <a name="identify-non-compliant-resources"></a>Identifizieren nicht konformer Ressourcen
+## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 
-Wählen Sie links auf der Seite die Option **Konformität** aus. Suchen Sie dann die von Ihnen erstellte Richtlinienzuweisung **Überwachen Sie die virtuellen Computer, die nicht verwaltete Datenträger verwenden**.
+Wählen Sie links auf der Seite die Option **Konformität** aus. Suchen Sie dann die von Ihnen erstellte Richtlinienzuweisung _Überwachen Sie die virtuellen Computer, die nicht verwaltete Datenträger verwenden_.
 
-![Übersichtsseite zur Richtlinienkonformität](./media/assign-policy-template/policy-compliance.png)
+:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="Schaltfläche zum Bereitstellen der ARM-Vorlage zum Zuweisen einer Azure-Richtlinie zu Azure" border="false":::
 
 Falls Ressourcen vorhanden sind, die mit dieser neuen Zuweisung nicht konform sind, werden diese unter **Nicht konforme Ressourcen** angezeigt.
 
@@ -74,11 +82,11 @@ Weitere Informationen finden Sie unter [Funktionsweise der Konformität](./how-t
 
 Um die erstellte Zuweisung zu entfernen, gehen Sie folgendermaßen vor:
 
-1. Wählen Sie links auf der Seite „Azure Policy“ **Konformität** (oder **Zuweisungen**), und suchen Sie die von Ihnen erstellte Richtlinienzuweisung **Überwachen Sie die virtuellen Computer, die nicht verwaltete Datenträger verwenden**.
+1. Wählen Sie links auf der Seite „Azure Policy“ **Konformität** (oder **Zuweisungen**), und suchen Sie die von Ihnen erstellte Richtlinienzuweisung _Überwachen Sie die virtuellen Computer, die nicht verwaltete Datenträger verwenden_.
 
-1. Klicken Sie mit der rechten Maustaste auf die Richtlinienzuweisung **Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden**, und wählen Sie **Zuweisung löschen**.
+1. Klicken Sie mit der rechten Maustaste auf die Richtlinienzuweisung _Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden_, und wählen Sie **Zuweisung löschen**.
 
-   ![Löschen einer Zuweisung auf der Übersichtsseite zur Konformität](./media/assign-policy-template/delete-assignment.png)
+   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Schaltfläche zum Bereitstellen der ARM-Vorlage zum Zuweisen einer Azure-Richtlinie zu Azure" border="false":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

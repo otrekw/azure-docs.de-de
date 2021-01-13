@@ -1,42 +1,43 @@
 ---
-title: Pipelines und Aktivitäten in Azure Data Factory | Microsoft-Dokumentation
+title: Pipelines und Aktivitäten in Azure Data Factory
 description: Informationen zu Pipelines und Aktivitäten in Azure Data Factory
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
-ms.reviewer: douglasl
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/12/2018
-ms.openlocfilehash: cb776b28a8c06784a2aa41e42429a3f183254138
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.date: 11/19/2019
+ms.openlocfilehash: ceaced5860976b0fa9f84903804700f778ed9550
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984222"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500076"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-create-pipelines.md)
 > * [Aktuelle Version](concepts-pipelines-activities.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Azure Data Factory und erfahren, wie diese zum Erstellen datengesteuerter lückenloser Workflows für Ihre Datenverschiebungs- und Datenverarbeitungsszenarien genutzt werden können.
 
 ## <a name="overview"></a>Übersicht
-Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Eine Pipeline kann beispielsweise eine Gruppe von Aktivitäten enthalten, die Protokolldaten erfassen und bereinigen. Anschließend wird ein Spark-Auftrag in einem HDInsight-Cluster gestartet, um die Protokolldaten zu analysieren. Der Vorteil hierbei besteht darin, dass Sie mit der Pipeline nicht jede Aktivität einzeln verwalten müssen, sondern dies als Gruppe tun können. Beispielsweise können Sie die Pipeline bereitstellen und planen, anstatt dies für die Aktivitäten jeweils individuell durchzuführen.
+Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Eine Pipeline kann beispielsweise eine Gruppe von Aktivitäten enthalten, die Protokolldaten erfassen und bereinigen, und anschließen einen Zuordnungsdatenfluss starten, um die Protokolldaten zu analysieren. Die Pipeline ermöglicht die Verwaltung der Aktivitäten als Gruppe, anstatt jede Aktivität separat zu verwalten. Die Aktivitäten müssen nicht einzeln bereitgestellt und geplant werden. Stattdessen können Sie die Pipeline bereitstellen und planen.
 
-Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können z.B. mit einer Kopieraktivität Daten aus einer lokalen SQL Server-Instanz in eine Instanz von Azure Blob Storage kopieren. Verwenden Sie dann eine Hive-Aktivität, die ein Hive-Skript auf einen Azure HDInsight-Cluster anwendet, um Daten aus dem Blob Storage zu verarbeiten/transformieren, um Ausgabedaten zu produzieren. Kopieren Sie die Ausgabedaten schließlich mit einer zweiten Kopieraktivität in ein Azure SQL Data Warehouse, auf Basis dessen Business Intelligence-Berichtslösungen (BI) erstellt werden.
+Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können beispielsweise mit einer Kopieraktivität Daten aus einer SQL Server-Instanz in eine Instanz von Azure Blob Storage kopieren. Verwenden Sie anschließend eine Datenfluss- oder Databricks-Notebook-Aktivität, um Daten aus dem Blobspeicher zu verarbeiten und in einen Azure Synapse Analytics-Pool zu transformieren, auf dessen Grundlage Business Intelligence-Berichterstellungslösungen erstellt werden.
 
-Data Factory unterstützt drei Arten von Aktivitäten: [Datenverschiebungsaktivitäten](copy-activity-overview.md), [Datentransformationsaktivitäten](transform-data.md) und [Steuerungsaktivitäten](control-flow-web-activity.md). Eine Aktivität kann über null oder mehr [Eingabedatasets](concepts-datasets-linked-services.md) verfügen und ein oder mehrere [Ausgabedatasets](concepts-datasets-linked-services.md) erstellen. Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität und Dataset in der Data Factory an:
+Data Factory verfügt über drei Gruppen von Aktivitäten: [Datenverschiebungsaktivitäten](copy-activity-overview.md), [Datentransformationsaktivitäten](transform-data.md) und [Steuerungsaktivitäten](#control-flow-activities). Eine Aktivität kann über null oder mehr [Eingabedatasets](concepts-datasets-linked-services.md) verfügen und ein oder mehrere [Ausgabedatasets](concepts-datasets-linked-services.md) erstellen. Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität und Dataset in der Data Factory an:
 
 ![Beziehung zwischen Dataset, Aktivität und Pipeline](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
-Ein Eingabedataset stellt die Eingabe für eine Aktivität in der Pipeline dar, und ein Ausgabedataset stellt die Ausgabe für die Aktivität dar. Datasets bestimmen Daten in verschiedenen Datenspeichern, z.B. Tabellen, Dateien, Ordnern und Dokumenten. Nachdem Sie ein Dataset erstellt haben, können Sie es zusammen mit Aktivitäten in einer Pipeline verwenden. Bei einem Dataset kann es sich beispielsweise um ein Eingabe-/Ausgabedataset einer Kopieraktivität oder einer HDInsightHive-Aktivität handeln. Weitere Informationen über Datasets finden Sie im Artikel [Datasets in Azure Data Factory](concepts-datasets-linked-services.md).
+Ein Eingabedataset entspricht der Eingabe für eine Aktivität in der Pipeline, und ein Ausgabedataset entspricht der Ausgabe für die Aktivität. Datasets bestimmen Daten in verschiedenen Datenspeichern, z.B. Tabellen, Dateien, Ordnern und Dokumenten. Nachdem Sie ein Dataset erstellt haben, können Sie es zusammen mit Aktivitäten in einer Pipeline verwenden. Bei einem Dataset kann es sich beispielsweise um ein Eingabe-/Ausgabedataset einer Kopieraktivität oder einer HDInsightHive-Aktivität handeln. Weitere Informationen über Datasets finden Sie im Artikel [Datasets in Azure Data Factory](concepts-datasets-linked-services.md).
 
 ## <a name="data-movement-activities"></a>Datenverschiebungsaktivitäten
+
 Die Kopieraktivität in Data Factory kopiert die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher. Data Factory unterstützt die in der Tabelle in diesem Abschnitt aufgeführten Datenspeicher. Daten aus beliebigen Quellen können in beliebige Senken geschrieben werden. Klicken Sie auf einen Datenspeicher, um zu erfahren, wie Daten in diesen/aus diesem Speicher kopiert werden.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores.md)]
@@ -48,34 +49,41 @@ Azure Data Factory unterstützt die folgenden Transformationsaktivitäten, die P
 
 Datentransformationsaktivität | Compute-Umgebung
 ---------------------------- | -------------------
+[Datenfluss](control-flow-execute-data-flow-activity.md) | Azure Databricks, verwaltet von Azure Data Factory
+[Azure-Funktion](control-flow-azure-function-activity.md) | Azure-Funktionen
 [Hive](transform-data-using-hadoop-hive.md) | HDInsight [Hadoop]
 [Pig](transform-data-using-hadoop-pig.md) | HDInsight [Hadoop]
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Hadoop-Datenströme](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
-[Machine Learning-Aktivitäten: Batchausführung und Ressourcenaktualisierung](transform-data-using-machine-learning.md) | Azure VM
-[Gespeicherte Prozedur](transform-data-using-stored-procedure.md) | Azure SQL, Azure SQL Data Warehouse oder SQL Server
+[Aktivitäten mit Azure Machine Learning Studio (klassisch): Batchausführung und Ressourcenaktualisierung](transform-data-using-machine-learning.md) | Azure VM
+[Gespeicherte Prozedur](transform-data-using-stored-procedure.md) | Azure SQL, Azure Synapse Analytics oder SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
-[Benutzerdefinierter Code](transform-data-using-dotnet-custom-activity.md) | Azure Batch
+[Benutzerdefinierte Aktivität](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks-Notebook](transform-data-databricks-notebook.md) | Azure Databricks
 [Databricks-JAR-Aktivität](transform-data-databricks-jar.md) | Azure Databricks
 [Databricks-Python-Aktivität](transform-data-databricks-python.md) | Azure Databricks
 
 Weitere Informationen finden Sie im Artikel [Datentransformationsaktivitäten](transform-data.md).
 
-## <a name="control-activities"></a>Steuerungsaktivitäten
+## <a name="control-flow-activities"></a>Ablaufsteuerungsaktivitäten
 Die folgenden Steuerungsablaufaktivitäten werden unterstützt:
 
 Steuerungsaktivität | BESCHREIBUNG
 ---------------- | -----------
-[Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md) | Mit der Aktivität „Pipeline ausführen“ kann eine Data Factory-Pipeline eine andere Pipeline aufrufen.
-[Aktivität „ForEach“](control-flow-for-each-activity.md) | Mit der ForEach-Aktivität wird eine wiederholte Ablaufsteuerung in Ihrer Pipeline definiert. Diese Aktivität wird verwendet, um eine Sammlung zu durchlaufen. Sie führt die angegebenen Aktivitäten in einer Schleife aus. Die Schleifenimplementierung dieser Aktivität ähnelt der Foreach-Schleifenstruktur in Programmiersprachen.
-[Aktivität „Web“](control-flow-web-activity.md) | Die Web-Aktivität kann verwendet werden, um einen benutzerdefinierten REST-Endpunkt aus einer Data Factory-Pipeline aufzurufen. Sie können Datasets und verknüpfte Dienste zur Verwendung und für den Zugriff durch die Aktivität übergeben.
-[Aktivität „Lookup“](control-flow-lookup-activity.md) | Mit der Lookup-Aktivität können Sie einen Datensatz/Tabellennamen/Wert in einer externen Quelle lesen oder suchen. Auf die Ausgabe kann durch nachfolgende Aktivitäten verwiesen werden.
-[Aktivität „Metadaten abrufen“](control-flow-get-metadata-activity.md) | Die Aktivität „Metadaten abrufen“ kann zum Abrufen von Metadaten für alle Daten in Azure Data Factory verwendet werden.
+[Variable anfügen](control-flow-append-variable-activity.md) | Ermöglicht das Hinzufügen eines Werts zu einer vorhandenen Arrayvariablen.
+[Pipeline ausführen](control-flow-execute-pipeline-activity.md) | Mit der Aktivität „Pipeline ausführen“ kann eine Data Factory-Pipeline eine andere Pipeline aufrufen.
+[Filter](control-flow-filter-activity.md) | Ermöglicht das Anwenden eines Filterausdrucks auf ein Eingabearray.
+[ForEach](control-flow-for-each-activity.md) | Mit der ForEach-Aktivität wird eine wiederholte Ablaufsteuerung in Ihrer Pipeline definiert. Diese Aktivität wird verwendet, um eine Sammlung zu durchlaufen. Sie führt die angegebenen Aktivitäten in einer Schleife aus. Die Schleifenimplementierung dieser Aktivität ähnelt der Foreach-Schleifenstruktur in Programmiersprachen.
+[Abrufen von Metadaten](control-flow-get-metadata-activity.md) | Die Aktivität „Metadaten abrufen“ kann zum Abrufen von Metadaten für alle Daten in Azure Data Factory verwendet werden.
+[Aktivität „If Condition“](control-flow-if-condition-activity.md) | „If Condition“ kann zum Einrichten einer Verzweigung für Bedingungen verwendet werden, die als TRUE oder FALSE ausgewertet werden. Die Aktivität „If Condition“ bietet die gleiche Funktionalität wie eine If-Anweisung in Programmiersprachen. Sie wertet eine Aktivitätengruppe aus, wenn die Bedingung als `true` ausgewertet wird, und eine weitere Aktivitätengruppe, wenn die Bedingung als `false.` ausgewertet wird.
+[Lookup-Aktivität](control-flow-lookup-activity.md) | Mit der Lookup-Aktivität können Sie einen Datensatz/Tabellennamen/Wert in einer externen Quelle lesen oder suchen. Auf die Ausgabe kann durch nachfolgende Aktivitäten verwiesen werden.
+[Variable festlegen](control-flow-set-variable-activity.md) | Ermöglicht das Festlegen des Werts einer vorhandenen Variablen.
 [Until-Aktivität](control-flow-until-activity.md) | Es wird eine „Wiederholen bis“-Schleife implementiert, die der Struktur einer Do-Until-Schleife in Programmiersprachen ähnelt. Sie führt eine Reihe von Aktivitäten in einer Schleife aus, bis die der Aktivität zugeordnete Bedingung als „true“ ausgewertet wird. In Data Factory können Sie einen Timeoutwert für die Until-Aktivität angeben.
-[Aktivität „If Condition“](control-flow-if-condition-activity.md) | „If Condition“ kann zum Einrichten einer Verzweigung für Bedingungen verwendet werden, die als TRUE oder FALSE ausgewertet werden. Die Aktivität „If Condition“ bietet die gleiche Funktionalität wie eine If-Anweisung in Programmiersprachen. Sie wertet eine Aktivitätengruppe aus, wenn die Bedingung als `true` ausgewertet wird, und eine weitere Aktivitätengruppe, wenn die Bedingung als `false` ausgewertet wird.
-[Aktivität „Warten“](control-flow-wait-activity.md) | Wenn Sie eine Warteaktivität in einer Pipeline verwenden, wartet die Pipeline den angegebenen Zeitraum, bevor Sie die Ausführung nachfolgender Aktivitäten fortsetzt.
+[Aktivität „Prüfung“](control-flow-validation-activity.md) | Stellt sicher, dass die Ausführung einer Pipeline nur fortgesetzt wird, wenn ein Referenzdataset vorhanden ist, ein bestimmtes Kriterium erfüllt ist oder ein Timeout erreicht wurde.
+[Aktivität „Warten“](control-flow-wait-activity.md) | Wenn Sie eine Warteaktivität in einer Pipeline verwenden, wartet die Pipeline den angegebenen Zeitraum, bevor sie die Ausführung nachfolgender Aktivitäten fortsetzt.
+[Webaktivität](control-flow-web-activity.md) | Die Webaktivität kann verwendet werden, um einen benutzerdefinierten REST-Endpunkt aus einer Data Factory-Pipeline aufzurufen. Sie können Datasets und verknüpfte Dienste zur Verwendung und für den Zugriff durch die Aktivität übergeben.
+[Webhook-Aktivität](control-flow-webhook-activity.md) | Die Webhook-Aktivität ermöglicht das Aufrufen eines Endpunkts und das Übergeben einer Rückruf-URL. Die Pipelineausführung wartet, bis der Rückruf aufgerufen wurde, bevor sie mit der nächsten Aktivität fortfährt.
 
 ## <a name="pipeline-json"></a>Pipeline-JSON
 Eine Pipeline wird wie folgt im JSON-Format definiert:
@@ -90,17 +98,22 @@ Eine Pipeline wird wie folgt im JSON-Format definiert:
         [
         ],
         "parameters": {
-         }
+        },
+        "concurrency": <your max pipeline concurrency>,
+        "annotations": [
+        ]
     }
 }
 ```
 
 Tag | BESCHREIBUNG | type | Erforderlich
 --- | ----------- | ---- | --------
-name | Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 140</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | Zeichenfolge | Ja
-description | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. | Zeichenfolge | Nein
+name | Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 140</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,” \" </li></ul> | String | Ja
+description | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. | String | Nein
 activities | Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Weitere Informationen zum JSON-Element der Aktivitäten finden Sie im Abschnitt [Aktivitäts-JSON](#activity-json). | Array | Ja
 parameters | Im Abschnitt **Parameter** kann mindestens ein Parameter in der Pipeline definiert werden. Dadurch wird die Pipeline flexibel wiederverwendbar. | List | Nein
+concurrency | Die maximal zulässige Anzahl paralleler Ausführungen für die Pipeline. Standardmäßig ist keine Obergrenze festgelegt. Bei Erreichen des Parallelitätslimits werden weitere Pipelineausführungen in die Warteschlange eingereiht, bis andere Pipelineausführungen abgeschlossen sind. | Number | Nein 
+annotations | Eine Liste mit Tags im Zusammenhang mit der Pipeline. | Array | Nein
 
 ## <a name="activity-json"></a>JSON-Definition der Aktivität
 Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Es gibt zwei Haupttypen von Aktivitäten: Ausführungs- und Steuerungsaktivitäten.
@@ -130,12 +143,12 @@ In der folgenden Tabelle werden Eigenschaften in der JSON-Definition der Aktivit
 
 Tag | BESCHREIBUNG | Erforderlich
 --- | ----------- | ---------
-name | Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, die die Aktivität durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 55</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ja</li></ul>
+name | Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, die die Aktivität durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 55</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,” \" | Ja</li></ul>
 description | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. | Ja
-type | Der Typ der Aktivität. Die verschiedenen Aktivitätstypen finden Sie in den Abschnitten [Datenverschiebungsaktivitäten](#data-movement-activities), [Datentransformationsaktivitäten](#data-transformation-activities) und [Steuerungsaktivitäten](#control-activities). | Ja
-linkedServiceName | Name des verknüpften Diensts, der von der Aktivität verwendet wird.<br/><br/>Für eine Aktivität kann es erforderlich sein, den verknüpften Dienst anzugeben, der mit der erforderlichen Computeumgebung verknüpft ist. | „Ja“ für HDInsight-Aktivität, Azure Machine Learning-Aktivität für die Batchbewertung und Aktivität vom Typ „Gespeicherte Prozedur“. <br/><br/>„Nein“ für alle übrigen
+type | Der Typ der Aktivität. Die verschiedenen Aktivitätstypen finden Sie in den Abschnitten [Datenverschiebungsaktivitäten](#data-movement-activities), [Datentransformationsaktivitäten](#data-transformation-activities) und [Steuerungsaktivitäten](#control-flow-activities). | Ja
+linkedServiceName | Name des verknüpften Diensts, der von der Aktivität verwendet wird.<br/><br/>Für eine Aktivität kann es erforderlich sein, den verknüpften Dienst anzugeben, der mit der erforderlichen Computeumgebung verknüpft ist. | „Ja“ für HDInsight-Aktivitäten, Azure Machine Learning Studio-Aktivitäten (klassisch) für die Batchbewertung und Aktivitäten vom Typ „Gespeicherte Prozedur“. <br/><br/>„Nein“ für alle übrigen
 typeProperties | Eigenschaften im Abschnitt „typeProperties“ sind abhängig vom jeweiligen Typ der Aktivität. Um Typeigenschaften für eine Aktivität anzuzeigen, klicken Sie auf die Links zur Aktivität im vorhergehenden Abschnitt. | Nein
-policy | Richtlinien, die das Laufzeitverhalten der Aktivität beeinflussen. Diese Eigenschaft enthält Zeitlimit- und Wiederholungsverhalten. Falls kein Wert angegeben wird, werden die Standardwerte verwendet. Weitere Informationen finden Sie im Abschnitt [Aktivitätsrichtlinie](#activity-policy). | Nein
+policy | Richtlinien, die das Laufzeitverhalten der Aktivität beeinflussen. Diese Eigenschaft enthält ein Zeitlimit- und Wiederholungsverhalten. Falls kein Wert angegeben wird, werden die Standardwerte verwendet. Weitere Informationen finden Sie im Abschnitt [Aktivitätsrichtlinie](#activity-policy). | Nein
 dependsOn | Diese Eigenschaft wird zur Definition von Aktivitätsabhängigkeiten und von Abhängigkeiten zwischen nachfolgenden und vorherigen Aktivitäten verwendet. Weitere Informationen finden Sie im Abschnitt [Aktivitätsabhängigkeit](#activity-dependency). | Nein
 
 ### <a name="activity-policy"></a>Aktivitätsrichtlinie
@@ -174,7 +187,7 @@ JSON-Name | BESCHREIBUNG | Zulässige Werte | Erforderlich
 timeout | Gibt das Zeitlimit für die Ausführung der Aktivität an. | Timespan | Nein. Das Standard-Zeitlimit beträgt 7 Tage.
 retry | Maximale Anzahl der Wiederholungsversuche. | Integer | Nein. Der Standardwert ist 0.
 retryIntervalInSeconds | Verzögerung zwischen den Wiederholungsversuchen in Sekunden. | Integer | Nein. Der Standardwert ist 30 Sekunden.
-secureOutput | Bei Festlegung auf „true“ wird die Ausgabe der Aktivität als sicher betrachtet und von der Überwachung nicht protokolliert. | Boolean | Nein. Die Standardeinstellung ist "false".
+secureOutput | Bei Festlegung auf „true“ wird die Ausgabe der Aktivität als sicher betrachtet und nicht zur Überwachung protokolliert. | Boolean | Nein. Der Standardwert ist "false".
 
 ### <a name="control-activity"></a>Steuerungsaktivität
 Steuerungsaktivitäten besitzen auf oberster Ebene die folgende Struktur:
@@ -195,9 +208,9 @@ Steuerungsaktivitäten besitzen auf oberster Ebene die folgende Struktur:
 
 Tag | BESCHREIBUNG | Erforderlich
 --- | ----------- | --------
-name | Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, die die Aktivität durchführt.<br/><ul><li>Maximale Anzahl von Zeichen: 55</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ja</li><ul>
+name | Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, die die Aktivität durchführt.<br/><ul><li>Maximale Anzahl von Zeichen: 55</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: “.”, “+”, “?”, “/”, “<”,”>”,”*”,” %”,” &”,”:”,” \" | Ja</li><ul>
 description | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. | Ja
-type | Der Typ der Aktivität. Die verschiedenen Aktivitätstypen finden Sie in den Abschnitten [Datenverschiebungsaktivitäten](#data-movement-activities), [Datentransformationsaktivitäten](#data-transformation-activities) und [Steuerungsaktivitäten](#control-activities). | Ja
+type | Der Typ der Aktivität. Die verschiedenen Aktivitätstypen finden Sie in den Abschnitten [Datenverschiebungsaktivitäten](#data-movement-activities), [Datentransformationsaktivitäten](#data-transformation-activities) und [Steuerungsaktivitäten](#control-flow-activities). | Ja
 typeProperties | Eigenschaften im Abschnitt „typeProperties“ sind abhängig vom jeweiligen Typ der Aktivität. Um Typeigenschaften für eine Aktivität anzuzeigen, klicken Sie auf die Links zur Aktivität im vorhergehenden Abschnitt. | Nein
 dependsOn | Diese Eigenschaft wird zur Definition der Aktivitätsabhängigkeit und von Abhängigkeiten zwischen nachfolgenden und vorherigen Aktivitäten verwendet. Weitere Informationen finden Sie im Abschnitt [Aktivitätsabhängigkeit](#activity-dependency). | Nein
 
@@ -255,7 +268,7 @@ Bei einer Pipeline mit Aktivität A -> Aktivität B lauten die möglichen Szenar
 ```
 
 ## <a name="sample-copy-pipeline"></a>Beispiel einer Kopierpipeline
-In der folgenden Beispielpipeline gibt es im Abschnitt **Copy** in the **Aktivitäten** . In diesem Beispiel kopieren Sie mit der [Kopieraktivität](copy-activity-overview.md) Daten aus Azure Blob Storage in eine Azure SQL-Datenbank.
+In der folgenden Beispielpipeline gibt es im Abschnitt **Copy** in the **Aktivitäten** . In diesem Beispiel kopieren Sie mit der [Kopieraktivität](copy-activity-overview.md) Daten aus Azure Blob Storage in eine Datenbank in Azure SQL-Datenbank.
 
 ```json
 {
@@ -345,7 +358,7 @@ In der folgenden Beispielpipeline gibt es im Abschnitt **HDInsightHive** in the 
 Beachten Sie folgende Punkte:
 
 - Der Abschnitt „Activities“ enthält nur eine Aktivität, deren **Typ** auf **HDInsightHive** festgelegt ist.
-- Die Hive-Skriptdatei **partitionweblogs.hql** ist im Azure-Speicherkonto (das durch den scriptLinkedService-Dienst namens „AzureStorageLinkedService“ angegeben ist) und im Skriptordner im Container `adfgetstarted` gespeichert.
+- Die Hive-Skriptdatei **partitionweblogs.hql** ist im Azure Storage-Konto (das durch den scriptLinkedService-Dienst namens „AzureStorageLinkedService“ angegeben ist) und im Skriptordner im Container `adfgetstarted` gespeichert.
 - Der Abschnitt `defines` wird zum Angeben der Laufzeiteinstellungen verwendet, die als Hive-Konfigurationswerte (z.B. $`{hiveconf:inputtable}`, `${hiveconf:partitionedtable}`) an das Hive-Skript übergeben werden.
 
 Der Abschnitt **typeProperties** ist für jede Transformation unterschiedlich. Um weitere Informationen zu Typeigenschaften zu erhalten, die für eine Transformationsaktivität unterstützt werden, klicken Sie bei den [Datentransformationsaktivitäten](#data-transformation-activities) auf die Transformationsaktivität.
@@ -358,11 +371,11 @@ Die vorherigen beiden Beispielpipelines enthalten nur jeweils eine Aktivität. S
 Sie können zwei Aktivitäten mithilfe der [Aktivitätsabhängigkeit](#activity-dependency) verketten, die definiert, wie nachfolgende Aktivitäten von vorherigen Aktivitäten abhängen. Dabei wird bestimmt, bei welcher Bedingung mit der nächsten Aufgabe fortgefahren wird. Eine Aktivität kann mit unterschiedlichen Abhängigkeitsbedingungen von einer oder mehreren vorherigen Aktivitäten abhängen.
 
 ## <a name="scheduling-pipelines"></a>Planen von Pipelines
-Pipelines werden von Triggern geplant. Es gibt verschiedene Arten von Triggern (Planer-Trigger, bei denen Pipelines nach einem Zeitplan ausgelöst werden, sowie manuelle Trigger, bei denen Pipelines bei Bedarf ausgelöst werden). Weitere Informationen zu Triggern finden Sie im Artikel [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md).
+Pipelines werden von Triggern geplant. Es gibt verschiedene Arten von Triggern (Planer-Trigger, bei denen Pipelines nach einem Zeitplan ausgelöst werden, sowie den manuellen Trigger, bei dem Pipelines bei Bedarf ausgelöst werden). Weitere Informationen zu Triggern finden Sie im Artikel [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md).
 
 Damit der Trigger die Ausführung der Pipeline startet, müssen Sie in die Triggerdefinition einen Pipelineverweis auf die jeweilige Pipeline einschließen. Zwischen Pipelines und Triggern besteht eine n:m-Beziehung. Mehrere Trigger können eine einzelne Pipeline starten, und ein einzelner Trigger kann mehrere Pipelines starten. Sobald der Trigger definiert wurde, müssen Sie ihn starten, damit er mit dem Auslösen der Pipeline beginnen kann. Weitere Informationen zu Triggern finden Sie im Artikel [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md).
 
-Angenommen, Sie verfügen über einen Planertrigger „Trigger A“, der die Pipeline „MyCopyPipeline“ starten soll. Definieren Sie den Trigger wie in folgendem Beispiel gezeigt:
+Angenommen, Sie verfügen über einen Planertrigger namens „Trigger A“, der die Pipeline „MyCopyPipeline“ starten soll. Definieren Sie den Trigger wie in folgendem Beispiel gezeigt:
 
 ### <a name="trigger-a-definition"></a>Definition Trigger A
 
@@ -387,8 +400,6 @@ Angenommen, Sie verfügen über einen Planertrigger „Trigger A“, der die Pip
   }
 }
 ```
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Tutorials finden Sie schrittweise Anleitungen zum Erstellen von Pipelines mit Aktivitäten:

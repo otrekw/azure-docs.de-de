@@ -1,28 +1,28 @@
 ---
-title: 'Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen: Azure CLI | Microsoft Docs'
+title: Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen – Azure CLI
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure CLI den Netzwerkzugriff auf Azure-Ressourcen wie Azure Storage und Azure SQL-Datenbank mit VNET-Dienstendpunkten einschränken können.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: e52829723b41f9274251ebe7432aa659251c0da4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 1a1eab081a7c1e83a57ef4735c6eb5248d92defc
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695117"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734105"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit VNET-Dienstendpunkten mithilfe der Azure CLI
 
@@ -35,11 +35,11 @@ VNET-Dienstendpunkte ermöglichen es Ihnen, den Netzwerkzugriff auf einige Azure
 * Bestätigen des Zugriffs auf eine Ressource aus einem Subnetz
 * Bestätigen, dass der Zugriff auf eine Ressource aus einem Subnetz und dem Internet verweigert wird
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart mindestens Azure CLI-Version 2.0.28 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
+- Für diesen Artikel ist mindestens Version 2.0.28 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
@@ -64,7 +64,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>Aktivieren eines Dienstendpunkts 
 
-Sie können Dienstendpunkte nur für Dienste aktivieren, die Dienstendpunkte unterstützen. Zeigen Sie dienstendpunktfähige Dienste, die an einen Azure-Standort verfügbar sind, mit [az network vnet list-endpoint-services](/cli/azure/network/vnet) an. Das folgende Beispiel gibt eine Liste der dienstendpunktfähigen Dienste zurück, die in der Region *eastus* verfügbar sind. Die Liste der zurückgegebenen Dienste wird im Lauf der Zeit länger werden, da immer mehr Azure-Dienste für Dienstendpunkte aktiviert werden.
+Sie können Dienstendpunkte nur für Dienste aktivieren, die Dienstendpunkte unterstützen. Zeigen Sie dienstendpunktfähige Dienste, die an einen Azure-Standort verfügbar sind, mit [az network vnet list-endpoint-services](/cli/azure/network/vnet) an. Im folgenden Beispiel wird eine Liste der dienstendpunktfähigen Dienste zurückgegeben, die in der Region *eastus* verfügbar sind. Die Liste der zurückgegebenen Dienste wird im Lauf der Zeit länger werden, da immer mehr Azure-Dienste für Dienstendpunkte aktiviert werden.
 
 ```azurecli-interactive
 az network vnet list-endpoint-services \
@@ -93,7 +93,7 @@ az network nsg create \
   --name myNsgPrivate
 ```
 
-Ordnen Sie die Netzwerksicherheitsgruppe mit [az network vnet subnet update](/cli/azure/network/vnet/subnet) dem Subnetz *Private* zu. Das folgende Beispiel ordnet die Netzwerksicherheitsgruppe *myNsgPrivate* dem Subnetz *Private* zu:
+Ordnen Sie die Netzwerksicherheitsgruppe mit [az network vnet subnet update](/cli/azure/network/vnet/subnet) dem Subnetz *Private* zu. Im folgenden Beispiel wird die Netzwerksicherheitsgruppe *myNsgPrivate* dem Subnetz *Private* hinzugefügt:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -201,7 +201,7 @@ az storage share create \
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>Verweigern des gesamten Netzwerkzugriffs auf ein Speicherkonto
 
-Standardmäßig akzeptieren Speicherkonten Netzwerkverbindungen von Clients in einem beliebigen Netzwerk. Um den Zugriff auf ausgewählte Netzwerke einzuschränken, ändern Sie die Standardaktion mit [az storage account update](/cli/azure/storage/account) in *Deny* (Verweigern). Nachdem der Netzwerkzugriff verweigert wurde, kann auf das Speicherkonto aus keinem Netzwerk mehr zugegriffen werden.
+Standardmäßig akzeptieren Speicherkonten Netzwerkverbindungen von Clients in allen Netzwerken. Um den Zugriff auf ausgewählte Netzwerke einzuschränken, ändern Sie die Standardaktion mit [az storage account update](/cli/azure/storage/account) in *Deny* (Verweigern). Nachdem der Netzwerkzugriff verweigert wurde, kann auf das Speicherkonto aus keinem Netzwerk mehr zugegriffen werden.
 
 ```azurecli-interactive
 az storage account update \
@@ -272,7 +272,7 @@ Die Erstellung des virtuellen Computers dauert einige Minuten. Nachdem er erstel
 
 ## <a name="confirm-access-to-storage-account"></a>Bestätigen des Zugriffs auf das Speicherkonto
 
-Stellen Sie mit SSH eine Verbindung mit dem virtuellen Computer *MyVmPrivate* her. Ersetzen Sie *\<publicIpAddress* durch die öffentliche IP-Adresse Ihres virtuellen Computers *myVmPrivate*.
+Stellen Sie mit SSH eine Verbindung mit dem virtuellen Computer *MyVmPrivate* her. Ersetzen Sie *\<publicIpAddress>* durch die öffentliche IP-Adresse Ihres virtuellen Computers *MyVmPrivate*.
 
 ```bash 
 ssh <publicIpAddress>
@@ -298,7 +298,7 @@ Bestätigen Sie, dass der virtuelle Computer über keine ausgehende Verbindung m
 ping bing.com -c 4
 ```
 
-Sie erhalten keine Antworten, da die dem Subnetz *Private* zugeordnete Netzwerksicherheitsgruppe keinen ausgehenden Zugriff auf andere öffentliche IP-Adressen als die dem Azure Storage-Dienst zugewiesenen erlaubt.
+Sie erhalten keine Antworten, da die dem Subnetz *Private* zugeordnete Netzwerksicherheitsgruppe keinen ausgehenden Zugriff auf andere öffentliche IP-Adressen als auf die dem Azure Storage-Dienst zugewiesenen Adressen erlaubt.
 
 Beenden Sie die SSH-Sitzung mit dem virtuellen Computer *myVmPrivate*.
 

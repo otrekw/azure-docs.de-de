@@ -1,5 +1,5 @@
 ---
-title: Azure IoT-Geräteverwaltung mit dem Cloud-Explorer für Visual Studio | Microsoft-Dokumentation
+title: Azure IoT-Geräteverwaltung mit dem Visual Studio Cloud-Explorer
 description: Verwenden Sie den Cloud Explorer für Visual Studio für die Geräteverwaltung mit Azure IoT Hub, indem direkte Methoden und gewünschte Eigenschaften von Gerätezwillingen verwendet werden.
 author: shizn
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: e05ba421a4535e6e424e65a1f2271d19f9d9abf4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048696"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "73953181"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Verwenden des Cloud-Explorers für Visual Studio für die Geräteverwaltung mit Azure IoT Hub
 

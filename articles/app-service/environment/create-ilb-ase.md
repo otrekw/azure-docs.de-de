@@ -1,24 +1,18 @@
 ---
-title: Erstellen eines internen Lastenausgleichs mit App Service-Umgebung – Azure
-description: Einzelheiten zum Erstellen und Verwenden einer vom Internet isolierten Azure App Service-Umgebung
-services: app-service
-documentationcenter: na
+title: Erstellen einer ILB-ASE mit ARM
+description: Hier erfahren Sie, wie Sie mit Azure Resource Manager-Vorlagen eine App Service-Umgebung mit einem internen Lastenausgleich (ILB-ASE) erstellen. Isolieren Sie Ihre Apps vollständig vom Internet.
 author: ccompy
-manager: stefsch
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 08/05/2019
+ms.date: 09/16/2020
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 08a18dc115990ad7d44a8b20412e07995c9af390
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 27c9198558a730d0af49077d6f5baa6db4789416
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069504"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009550"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Erstellen und Verwenden einer App Service-Umgebung für internen Lastenausgleich 
 
@@ -31,7 +25,7 @@ In diesem Artikel wird veranschaulicht, wie Sie eine ILB-ASE erstellen. Eine Üb
 
 ## <a name="overview"></a>Übersicht 
 
-Sie können eine ASE mit einem Endpunkt, auf den über das Internet zugegriffen werden kann, oder einer IP-Adresse in Ihrem VNET bereitstellen. Um die IP-Adresse auf eine VNET-Adresse festzulegen, muss die ASE mit einem ILB bereitgestellt werden. Beim Bereitstellen der ASE mit einem ILB müssen Sie den Namen Ihrer ASE angeben. Der Name Ihrer ASE wird im Domänensuffix für die Apps in Ihrer ASE verwendet.  Das Domänensuffix für Ihre ILB-ASE lautet &lt;ASE-Name&gt;.appservicewebsites.net. Apps, die in einer ILB-ASE erstellt werden, werden nicht im öffentlichen DNS abgelegt. 
+Sie können eine ASE mit einem Endpunkt, auf den über das Internet zugegriffen werden kann, oder einer IP-Adresse in Ihrem VNET bereitstellen. Um die IP-Adresse auf eine VNET-Adresse festzulegen, muss die ASE mit einem ILB bereitgestellt werden. Beim Bereitstellen der ASE mit einem ILB müssen Sie den Namen Ihrer ASE angeben. Der Name Ihrer ASE wird im Domänensuffix für die Apps in Ihrer ASE verwendet.  Das Domänensuffix für Ihre ILB-ASE lautet „&lt;ASE-Name&gt;.appserviceenvironment.net“. Apps, die in einer ILB-ASE erstellt werden, werden nicht im öffentlichen DNS abgelegt. 
 
 In früheren Versionen der ILB-ASE mussten Sie ein Domänensuffix und ein Standardzertifikat für HTTPS-Verbindungen bereitstellen. Das Domänensuffix wird bei der Erstellung der ILB-ASE nicht mehr erfasst, ebenso wenig wie das Standardzertifikat. Wenn Sie jetzt eine ILB-ASE erstellen, wird das Standardzertifikat von Microsoft bereitgestellt und vom Browser als vertrauenswürdig eingestuft. Sie können weiterhin benutzerdefinierte Domänennamen für Apps in Ihrer ASE sowie Zertifikate für diese benutzerdefinierten Domänennamen festlegen. 
 
@@ -66,6 +60,9 @@ So erstellen Sie eine ILB-ASE:
 
     ![ASE-Erstellung](media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase.png)
 
+> [!NOTE]
+> Der Name der App Service-Umgebung darf nicht mehr als 37 Zeichen umfassen.
+
 6. Wählen Sie „Netzwerk“.
 
 7. Erstellen oder wählen Sie ein virtuelles Netzwerk aus. Wenn Sie hier ein neues VNET erstellen, wird es mit einem Adressbereich von 192.168.250.0/23 definiert. Zum Erstellen eines VNET mit einem anderen Adressbereich oder in einer anderen Ressourcengruppe als der ASE verwenden Sie das Portal zur Azure Virtual Network-Erstellung. 
@@ -75,6 +72,7 @@ So erstellen Sie eine ILB-ASE:
     ![ASE-Netzwerk][1]
 
 7. Klicken Sie auf **Überprüfen und erstellen** und dann auf **Erstellen**.
+
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>Erstellen einer App in einer ILB-ASE ##
 
@@ -102,14 +100,26 @@ Funktionen und Webaufträge werden auf einer ILB-ASE unterstützt. Damit das Por
 
 ## <a name="dns-configuration"></a>DNS-Konfiguration 
 
-Wenn Sie eine externe VIP verwenden, wird das DNS von Azure verwaltet. Jede in Ihrer ASE erstellte App wird automatisch dem Azure-DNS – einem öffentlichen DNS – hinzugefügt. In einer ILB-ASE müssen Sie einen eigenen DNS verwalten. Das bei einer ILB-ASE verwendete Domänensuffix hängt vom Namen der ASE ab. Das Domänensuffix lautet *&lt;ASE-Name&gt;.appserviceenvironment.net*. Die IP-Adresse für Ihren ILB wird im Portal unter **IP-Adressen** aufgeführt. 
+Wenn Sie eine externe ASE verwenden, werden in ihrer ASE erstellte Apps bei Azure DNS registriert. Damit Ihre Apps öffentlich verfügbar sind, sind keine zusätzlichen Schritte in einer externen ASE erforderlich. In einer ILB-ASE müssen Sie Ihr eigenes DNS verwalten. Sie können dies entweder in Ihrem eigenen DNS-Server oder mit privaten Azure DNS-Zonen erzielen.
 
-So konfigurieren Sie Ihren DNS:
+So konfigurieren Sie DNS in Ihrem eigenen Server mit Ihrer ILB-ASE
 
-- Erstellen Sie eine Zone für *&lt;ASE-Name&gt;.appserviceenvironment.net*.
-- Erstellen Sie einen A-Eintrag in dieser Zone, der * auf die ILB-IP-Adresse verweist. 
-- Erstellen Sie eine Zone namens „scm“ in *&lt;ASE-Name&gt;.appserviceenvironment.net*.
-- Erstellen Sie einen A-Eintrag in der Zone „scm“, der auf die ILB-IP-Adresse verweist.
+1. Erstellen Sie eine Zone für „&lt;ASE-Name&gt;.appserviceenvironment.net“.
+2. Erstellen Sie einen A-Eintrag in dieser Zone, der * auf die ILB-IP-Adresse verweist.
+3. Erstellen Sie einen A-Eintrag in dieser Zone, der @ auf die ILB-IP-Adresse verweist.
+4. Erstellen Sie eine Zone namens „scm“ in „&lt;ASE-Name&gt;.appserviceenvironment.net“.
+5. Erstellen Sie einen A-Eintrag in der Zone „scm“, der * auf die ILB-IP-Adresse verweist.
+
+So konfigurieren Sie DNS in privaten Azure DNS-Zonen
+
+1. Erstellen Sie eine private Azure DNS-Zone namens „&lt;ASE-Name&gt;.appserviceenvironment.net“.
+2. Erstellen Sie einen A-Eintrag in dieser Zone, der * auf die ILB-IP-Adresse verweist.
+3. Erstellen Sie einen A-Eintrag in dieser Zone, der @ auf die ILB-IP-Adresse verweist.
+4. Erstellen Sie einen A-Eintrag in dieser Zone, der *.scm auf die ILB-IP-Adresse verweist.
+
+Die DNS-Einstellungen für Ihr ASE-Standarddomänensuffix schränken Ihre Apps nicht dahingehend ein, dass sie nur über diese Namen zugänglich sind. Sie können einen benutzerdefinierten Domänennamen ohne jegliche Validierung für Ihre Apps in einer ILB-ASE festlegen. Wenn Sie dann eine Zone namens contoso.net erstellen möchten, können Sie dies tun und die Zone auf die ILB-IP-Adresse verweisen lassen. Der benutzerdefinierte Domänenname funktioniert für App-Anforderungen, aber nicht für die SCM-Site. Die SCM-Site ist nur unter „&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net“ verfügbar.
+
+Die Zone namens .&lt;asename&gt;.appserviceenvironment.net ist global eindeutig. Vor Mai 2019 konnten Kunden das Domänensuffix der ILB-ASE angeben. Wenn Sie .contoso.com als Domänensuffix verwenden wollten, konnten Sie dies tun, wobei dies dann die SCM-Site einschloss. Dieses Modell bot Herausforderungen, einschließlich: Verwalten des SSL-Standardzertifikats, fehlendes einmaliges Anmelden (Single Sign-On) bei der SCM-Site und die Anforderung, ein Platzhalterzertifikat zu verwenden. Der Upgradeprozess für das ILB-ASE-Standardzertifikat war außerdem führte außerdem zu Unterbrechungen und Neustarts von Anwendungen. Um diese Probleme zu beheben, wurde das ILB-ASE-Verhalten dahingehend geändert, dass ein Domänensuffix, das auf dem Namen der ASE basiert, zusammen mit einem Suffix, das Microsoft gehört, verwendet wird. Die Änderung des ILB-ASE-Verhaltens wirkt sich nur auf ILB-ASEs aus, die nach Mai 2019 erstellt wurden. Davor vorhandene ILB-ASEs müssen weiterhin das Standardzertifikat der ASE und seine DNS-Konfiguration verwalten.
 
 ## <a name="publish-with-an-ilb-ase"></a>Veröffentlichen mit einer ILB-ASE
 
@@ -148,17 +158,17 @@ Bei ILB-ASEs, die vor Mai 2019 erstellt wurden, mussten Sie das Domänensuffix w
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../overview.md
-[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [customdomain]: ../app-service-web-tutorial-custom-domain.md
-[linuxapp]: ../containers/app-service-linux-intro.md
+[linuxapp]: ../overview.md#app-service-on-linux

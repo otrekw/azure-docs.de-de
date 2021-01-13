@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 748d10b994080b667885e5d0d5f4d688269e86ab
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68728047"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft Threat Modeling Tool-Entschärfungen
@@ -32,7 +32,7 @@ Das Threat Modeling Tool ist ein Kernelement im Microsoft Security Development L
 
 Die Gegenmaßnahmen im Threat Modeling Tool sind gemäß dem Sicherheitsrahmen für Webanwendungen in folgende Kategorien unterteilt:
 
-| Category (Kategorie) | BESCHREIBUNG |
+| Category | BESCHREIBUNG |
 | -------- | ----------- |
 | **[Überwachung und Protokollierung](threat-modeling-tool-auditing-and-logging.md)** | Wer hat was wann gemacht? Überwachung und Protokollierung beziehen sich darauf, wie Ihre Anwendung Sicherheitsereignisse aufzeichnet. |
 | **[Authentifizierung](threat-modeling-tool-authentication.md)** | Wer sind Sie? Authentifizierung ist der Prozess, in dem eine Entität die Identität einer anderen Entität beweist, in der Regel durch Anmeldeinformationen wie Benutzername und Kennwort. |

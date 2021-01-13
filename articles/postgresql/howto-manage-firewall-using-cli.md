@@ -1,18 +1,19 @@
 ---
-title: Erstellen und Verwalten von Firewallregeln in Azure Database for PostgreSQL (Einzelserver) mit der Azure-Befehlszeilenschnittstelle
+title: Verwalten von Firewallregeln – Azure-Befehlszeilenschnittstelle – Azure Database for PostgreSQL (Einzelserver)
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe der Azure CLI-Befehlszeile Firewallregeln in Azure Database for PostgreSQL (Einzelserver) erstellen und verwalten.
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 03b1c215994e4089ad0aed4eac3868b05c564c4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 3a559b8c65ab57b0144b807a3b4cc1faa912d430
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067539"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422738"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Erstellen und Verwalten von Firewallregeln in Azure Database for PostgreSQL (Einzelserver) mit der Azure-Befehlszeilenschnittstelle
 Mithilfe von Firewallregeln auf Serverebene kann der Zugriff auf einen Azure-Datenbank für PostgreSQL-Server über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwaltet werden. Dank praktischer Azure CLI-Befehle können Sie zum Verwalten Ihres Servers Firewallregeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über Firewallregeln für Azure-Datenbank für PostgreSQL finden Sie unter [Firewallregeln für Azure-Datenbank für PostgreSQL-Server](concepts-firewall-rules.md).
@@ -39,8 +40,8 @@ az postgres server firewall-rule list --resource-group myresourcegroup --server-
 ## <a name="create-firewall-rule"></a>Erstellen einer Firewallregel
 Erstellen Sie mit dem Befehl [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) eine neue Firewallregel auf dem Server. 
 
-```
-To allow access to a singular IP address, provide the same address in the `--start-ip-address` and `--end-ip-address`, as in this example, replacing the IP shown here with your specific IP.
+
+Damit nur der Zugriff auf eine einzelne IP-Adresse gewährt wird, geben Sie wie in diesem Beispiel für `--start-ip-address` und `--end-ip-address` dieselbe Adresse an. Ersetzen Sie dabei die hier gezeigte IP-Adresse durch die von Ihnen benötigte IP-Adresse.
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name AllowSingleIpAddress --start-ip-address 13.83.152.1 --end-ip-address 13.83.152.1
 ```

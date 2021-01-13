@@ -1,23 +1,21 @@
 ---
-title: Änderungen an einem WebAPI-Projekt, die vorgenommen werden, wenn Sie eine Verbindung mit Azure AD herstellen
+title: An WebAPI-Projekten vorgenommene Änderungen beim Herstellen einer Verbindung mit Azure AD
 description: Beschreibt, was mit dem WebAPI-Projekt geschieht, wenn Sie mithilfe von Visual Studio eine Verbindung mit Azure AD herstellen.
 author: ghogen
 manager: jillfra
-ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
 ms.workload: azure-vs
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32fc72d22d3f739018df22c315d7a1a3124c8823
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: devx-track-csharp, aaddev, vs-azure
+ms.openlocfilehash: a070bee7a9fa836eeac7c739cf2757295533ad7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851806"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88165361"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Was ist mit dem WebAPI-Projekt passiert (verbundener Visual Studio-Dienst für Azure Active Directory)?
 
@@ -100,13 +98,13 @@ Die folgenden Verweise werden entfernt (nur ASP.NET 4-Projekte, wie in Visual St
 
 ## <a name="code-changes-and-additions"></a>Änderungen und Ergänzungen des Codes
 
-- Das Attribut `[Authorize]` wird `Controllers/ValueController.cs` und allen anderen vorhandenen Controllern hinzugefügt.
+- Das Attribut `[Authorize]` wurde `Controllers/ValueController.cs` und allen anderen vorhandenen Controllern hinzugefügt.
 
 - Ein Authentifizierungsstartklasse `App_Start/Startup.Auth.cs`, die Startlogik für die Azure AD-Authentifizierung enthält, wird hinzugefügt oder entsprechend geändert. Wenn Sie die Option **Verzeichnisdaten lesen** ausgewählt haben, enthält diese Datei auch Code, mit dem ein OAuth-Code empfangen und gegen ein Zugriffstoken ausgetauscht wird.
 
 - (Nur Visual Studio 2015 mit ASP.NET 4-App) `App_Start/IdentityConfig.cs` wird entfernt, und `Controllers/AccountController.cs`, `Models/IdentityModel.cs` und `Providers/ApplicationAuthProvider.cs` werden hinzugefügt.
 
-- Eine Datei `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) oder `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015) wird hinzugefügt. Diese Datei enthält Informationen, mit denen Visual Studio die Hinzufügung des verbundenen Diensts nachverfolgt.
+- Die Datei `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) oder `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015) wurde hinzugefügt. Diese Datei enthält Informationen, mit denen Visual Studio die Hinzufügung des verbundenen Diensts nachverfolgt.
 
 ### <a name="file-backup-visual-studio-2015"></a>Dateisicherung (Visual Studio 2015)
 
@@ -129,5 +127,5 @@ Wenn Sie den verbundenen Dienst hinzufügen, sichert Visual Studio 2015 geänder
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Authentifizierungsszenarien für Azure Active Directory](authentication-scenarios.md)
-- [Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App](quickstart-v1-aspnet-webapp.md)
+- [Authentifizierungsszenarien für Azure Active Directory](./authentication-vs-authorization.md)
+- [Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App](quickstart-v2-aspnet-webapp.md)

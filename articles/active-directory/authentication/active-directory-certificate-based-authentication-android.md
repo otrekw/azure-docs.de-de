@@ -1,22 +1,22 @@
 ---
-title: Zertifikatbasierte Authentifizierung unter Android – Azure Active Directory
+title: 'Azure Active Directory: Zertifikatbasierte Authentifizierung für Android'
 description: In diesem Thema lernen Sie unterstützte Szenarien sowie die Voraussetzungen für die Konfiguration der zertifikatbasierten Authentifizierung in Lösungen mit Android-Geräten kennen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
-ms.date: 01/15/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: how-to
+ms.date: 11/21/2019
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b55b439f61c76d6d0524c1f01ba5fef745187d04
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1001d5524fe99783cda4d5b77bdaceacc6791848
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60416172"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861372"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Zertifikatbasierte Authentifizierung mit Azure Active Directory unter Android
 
@@ -46,7 +46,7 @@ Dieses Feature ist als Vorversion in Office 365 US Government Defense- und Feder
 | Word/Excel/PowerPoint |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
 | Yammer |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
 
-### <a name="implementation-requirements"></a>Implementierungsanforderungen
+### <a name="implementation-requirements"></a>Anforderungen an die Implementierung
 
 Die Betriebssystemversion des Geräts muss Android 5.0 (Lollipop) oder eine höhere Version sein.
 
@@ -64,10 +64,10 @@ Als bewährte Methode sollten Sie die AD FS-Fehlerseiten Ihrer Organisation mit 
 * Voraussetzungen für die Installation von Microsoft Authenticator unter Android
 * Anleitungen zum Abrufen eines Benutzerzertifikats
 
-Weitere Informationen finden Sie unter [Anpassen der AD FS-Anmeldeseiten](https://technet.microsoft.com/library/dn280950.aspx).
+Weitere Informationen finden Sie unter [Anpassen der AD FS-Anmeldeseiten](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn280950(v=ws.11)).
 
-Einige Office-Apps (mit aktivierter moderner Authentifizierung) senden „*prompt=login*“ in der Anforderung an Azure AD. Azure AD übersetzt „*prompt=login*“ in der Anforderung an AD FS standardmäßig in „*wauth=usernamepassworduri*“ (fordert AD FS zum Durchführen der U/P-Authentifizierung auf) und „*wfresh = 0*“ (fordert AD FS auf, den SSO-Status zu ignorieren und eine erneute Authentifizierung durchzuführen). Wenn Sie eine zertifikatbasierte Authentifizierung für diese Apps aktivieren möchten, müssen Sie das Azure AD-Standardverhalten ändern. Legen Sie dazu einfach „*PromptLoginBehavior*“ in den Einstellungen der Verbunddomäne auf „*Deaktiviert*“ fest.
-Für diese Aufgabe können Sie das Cmdlet [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) verwenden:
+Einige Office-Apps (mit aktivierter moderner Authentifizierung) senden *prompt=login* in der Anforderung an Azure AD. Azure AD übersetzt *prompt=login* in der Anforderung an AD FS standardmäßig in *wauth=usernamepassworduri* (fordert ADFS zum Durchführen der U/P-Authentifizierung auf) und *wfresh=0* (fordert ADFS auf, den SSO-Status zu ignorieren und eine erneute Authentifizierung durchzuführen). Wenn Sie eine zertifikatbasierte Authentifizierung für diese Apps aktivieren möchten, müssen Sie das Azure AD-Standardverhalten ändern. Legen Sie dazu einfach '*PromptLoginBehavior*' in den Einstellungen der Verbunddomäne auf '*Deaktiviert*' fest.
+Für diese Aufgabe können Sie das Cmdlet [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings) verwenden:
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
 

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 93f4f74d435cc14130668da102d1246c5fad5872
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67178489"
 ---
-| Begrenzungsbezeichner | Begrenzung | Kommentare |
+| Grenzwertbezeichner | Begrenzung | Kommentare |
 | --- | --- | --- |
 | Maximale Anzahl von Anmeldeinformationen für das Speicherkonto |64 | |
 | Maximale Anzahl von Volumecontainern |64 | |

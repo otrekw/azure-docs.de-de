@@ -1,26 +1,26 @@
 ---
-title: Migrieren von Daten von Amazon S3 zu Azure Data Lake Storage Gen2 mit Azure Data Factory | Microsoft-Dokumentation
+title: Migrieren von Daten aus Amazon S3 zu Azure Data Lake Storage Gen2
 description: Hier erfahren Sie, wie Sie mithilfe einer Lösungsvorlage Daten aus Amazon S3 migrieren, indem Sie eine externe Steuertabelle zum Speichern einer Partitionsliste in AWS S3 mit Azure Data Factory verwenden.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: e4567d79b70fc18622e4a5e927031e9849b96e99
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: e25299c2ce5d31da8f3caa5b02ab8def816b31ee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092475"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91398219"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Migrieren von Daten aus Amazon S3 zu Azure Data Lake Storage Gen2
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Verwenden Sie die Vorlagen, um Petabytes an Daten mit mehreren hundert Millionen Dateien von Amazon S3 zu Azure Data Lake Storage Gen2 zu migrieren. 
 
@@ -35,12 +35,12 @@ Für die Datenmigration müssen in der Regel einmalig historische Daten migriert
 
 ### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>So migrieren Sie mit der Vorlage historische Daten aus Amazon S3 zu Azure Data Lake Storage Gen2
 
-Bei dieser Vorlage (Vorlagenname: migrate historical data from AWS S3 to Azure Data Lake Storage Gen2) wird davon ausgegangen, dass Sie eine Partitionsliste in einer externen Steuertabelle in Azure SQL-Datenbank geschrieben haben. Sie verwendet daher eine *Lookup-Aktivität* zum Abrufen der Partitionsliste aus der externen Steuertabelle, durchläuft jede Partition und kopiert dann mit jedem ADF-Kopierauftrag jeweils eine Partition. Nach Abschluss eines Kopierauftrags wird die Aktivität *Gespeicherte Prozedur* verwendet, um den Status des Kopiervorgangs für jede Partition in der Steuertabelle zu aktualisieren.
+Bei dieser Vorlage (*Vorlagenname: migrate historical data from AWS S3 to Azure Data Lake Storage Gen2*) wird davon ausgegangen, dass Sie eine Partitionsliste in einer externen Steuertabelle in Azure SQL-Datenbank geschrieben haben. Sie verwendet daher eine *Lookup-Aktivität* zum Abrufen der Partitionsliste aus der externen Steuertabelle, durchläuft jede Partition und kopiert dann mit jedem ADF-Kopierauftrag jeweils eine Partition. Nach Abschluss eines Kopierauftrags wird die Aktivität *Gespeicherte Prozedur* verwendet, um den Status des Kopiervorgangs für jede Partition in der Steuertabelle zu aktualisieren.
 
 Die Vorlage enthält fünf Aktivitäten:
 - **Lookup** ruft die Partitionen ab, die noch nicht aus einer externen Steuertabelle in Azure Data Lake Storage Gen2 kopiert wurden. Der Tabellenname lautet *s3_partition_control_table* und die Abfrage zum Laden von Daten aus der Tabelle *"SELECT PartitionPrefix FROM s3_partition_control_table WHERE SuccessOrFailure = 0"* .
 - **ForEach** ruft die Partitionsliste aus der *Lookup-Aktivität* ab und durchläuft jede Partition für die *TriggerCopy-Aktivität*. Sie können einen Wert für *batchCount* festlegen, um mehrere ADF-Kopieraufträge gleichzeitig auszuführen. In dieser Vorlage wurde 2 festgelegt.
-- **ExecutePipeline** führt die Pipeline *CopyFolderPartitionFromS3* aus. Die zusätzliche Pipeline, die dafür sorgt, dass bei jedem Kopierauftrag eine Partition kopiert wird, wird hinzugefügt, um den nicht erfolgreichen Kopierauftrag mühelos erneut ausführen und so die spezifische Partition erneut aus ASW S3 laden zu können. Alle anderen Kopieraufträge, bei denen andere Partitionen geladen werden, werden nicht beeinträchtigt.
+- **ExecutePipeline** führt die Pipeline *CopyFolderPartitionFromS3* aus. Die zusätzliche Pipeline, die dafür sorgt, dass bei jedem Kopierauftrag eine Partition kopiert wird, wird hinzugefügt, um den nicht erfolgreichen Kopierauftrag mühelos erneut ausführen und so die spezifische Partition erneut aus AWS S3 laden zu können. Alle anderen Kopieraufträge, bei denen andere Partitionen geladen werden, werden nicht beeinträchtigt.
 - Mit der **Copy**-Aktivität wird jede Partition aus AWS S3 in Azure Data Lake Storage Gen2 kopiert.
 - **SqlServerStoredProcedure** aktualisiert den Status des Kopiervorgangs für jede Partition in der Steuertabelle.
 
@@ -109,23 +109,23 @@ Die Vorlage enthält zwei Parameter:
 
 3. Wechseln Sie zur Vorlage **Migrate historical data from AWS S3 to Azure Data Lake Storage Gen2**. Geben Sie die Verbindungen mit der externen Steuertabelle, AWS S3 als Datenquellenspeicher und Azure Data Lake Storage Gen2 als Zielspeicher ein. Achten Sie darauf, dass die externe Steuertabelle und die gespeicherte Prozedur auf dieselbe Verbindung verweisen.
 
-    ![Erstellen einer neuen Verbindung](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
+    ![Screenshot: Vorlage „Migrate historical data from AWS S3 to Azure Data Lake Storage Gen2“](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
 4. Klicken Sie auf **Diese Vorlage verwenden**.
 
-    ![„Diese Vorlage verwenden“](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
+    ![Screenshot: Hervorhebung der Schaltfläche „Diese Vorlage verwenden“](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
 5. Im folgenden Beispiel sehen Sie, dass zwei Pipelines und drei Datasets erstellt wurden:
 
-    ![Überprüfen der Pipeline](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
+    ![Screenshot: Zwei Pipelines und drei Datasets, die mithilfe der Vorlage erstellt wurden](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
 6. Klicken Sie auf **Debuggen**, geben Sie die **Parameter** ein, und klicken Sie dann auf **Fertig stellen**.
 
-    ![Auf **Debuggen** klicken](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
+    ![Screenshot, der zeigt, wo Sie „Debuggen“ auswählen und die Parameter eingeben, bevor Sie „Fertig stellen“ auswählen](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
 7. Ihnen werden Ergebnisse angezeigt, die dem folgenden Beispiel ähneln:
 
-    ![Überprüfen des Ergebnisses](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
+    ![Screenshot: Zurückgegebene Ergebnisse](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
 
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>So kopieren Sie mit der Vorlage nur geänderte Dateien aus Amazon S3 in Azure Data Lake Storage Gen2
@@ -192,7 +192,7 @@ Die Vorlage enthält zwei Parameter:
 
 8. Sie können die Ergebnisse aus der Steuertabelle auch mithilfe der Abfrage *"select * from s3_partition_delta_control_table"* überprüfen. Die Ausgabe ähnelt dem folgenden Beispiel:
 
-    ![Überprüfen des Ergebnisses](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
+    ![Screenshot: Ergebnisse aus der Steuertabelle nach dem Ausführen der Abfrage](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
     
 ## <a name="next-steps"></a>Nächste Schritte
 

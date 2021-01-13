@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1ffaefc51121aeb7421d6e49a3c0e58c76d4391e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 263bf1cd2a7e2a37a1c4fae172ce4f66b1e59b5f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61464945"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89265982"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-net"></a>Konfigurieren der Azure Media Services-Telemetrie mit .NET 
+# <a name="configuring-azure-media-services-telemetry-with-net"></a>Konfigurieren der Azure Media Services-Telemetrie mit .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Diese Artikel beschreibt allgemeine Schritte, die Sie zum Konfigurieren der Azure Media Services-Telemetrie (AMS) mit .NET SDK ausführen können. 
 
@@ -30,7 +33,7 @@ Diese Artikel beschreibt allgemeine Schritte, die Sie zum Konfigurieren der Azur
 
 Sie können Telemetriedaten in einer der folgenden Arten verwenden:
 
-- Lesen Sie Daten direkt aus Azure Table Storage (z. B. mithilfe des Speicher-SDK). Eine Beschreibung der Telemetriespeichertabellen finden Sie in [diesem](https://msdn.microsoft.com/library/mt742089.aspx) Artikel unter **Consuming telemetry information** (Nutzung von Telemetrieinformationen).
+- Lesen Sie Daten direkt aus Azure Table Storage (z. B. mithilfe des Speicher-SDK). Eine Beschreibung der Telemetriespeichertabellen finden Sie in [diesem](/previous-versions/azure/mt742089(v=azure.100)) Artikel unter **Consuming telemetry information** (Nutzung von Telemetrieinformationen).
 
 oder
 

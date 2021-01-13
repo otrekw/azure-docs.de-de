@@ -3,19 +3,20 @@ title: Erstellen von Videoüberprüfungen mit .NET – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den schnellen Einstieg in die Verwendung des Content Moderator SDK mit C# erleichtern, um Videoüberprüfungen zu erstellen.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.author: sajagtap
-ms.openlocfilehash: 6ec258bc52513772716fa8fe1078653575c923f3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d9f80de5a18e27de4a9f8e85613e3c2eee6c111c
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882025"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853474"
 ---
 # <a name="create-video-reviews-using-net"></a>Erstellen von Videoüberprüfungen per .NET
 
@@ -86,30 +87,27 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 ```
 
 ### <a name="add-private-properties"></a>Hinzufügen von privaten Eigenschaften
 
-Fügen Sie die folgenden privaten Eigenschaften dem VideoReviews-Namespace (Program-Klasse) hinzu.
+Fügen Sie dem Namespace **VideoReviews** (**Program**-Klasse) die folgenden privaten Eigenschaften hinzu. Aktualisieren Sie die Felder `AzureEndpoint` und `CMSubscriptionKey` mit den Werten Ihrer Endpunkt-URL und Ihres Abonnementschlüssels. Diese finden Sie auf der Registerkarte **Schnellstart** Ihrer Ressource im Azure-Portal.
 
-Ersetzen Sie die Beispielwerte für diese Eigenschaften wie angegeben.
 
 ```csharp
 namespace VideoReviews
 {
     class Program
     {
-        // NOTE: Replace this example location with the location for your Content Moderator account.
+        // NOTE: Enter a valid endpoint URL
         /// <summary>
-        /// The region/location for your Content Moderator account, 
-        /// for example, westus.
+        /// The endpoint URL of your subscription
         /// </summary>
-        private static readonly string AzureRegion = "YOUR CONTENT MODERATOR REGION";
+        private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
-        // NOTE: Replace this example key with a valid subscription key.
+        // NOTE: Enter a valid subscription key.
         /// <summary>
         /// Your Content Moderator subscription key.
         /// </summary>
@@ -126,12 +124,6 @@ namespace VideoReviews
         private const string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
 
         /// <summary>
-        /// The base URL fragment for Content Moderator calls.
-        /// </summary>
-        private static readonly string AzureBaseURL =
-            $"{AzureRegion}.api.cognitive.microsoft.com";
-
-        /// <summary>
         /// The minimum amount of time, in milliseconds, to wait between calls
         /// to the Content Moderator APIs.
         /// </summary>
@@ -140,7 +132,7 @@ namespace VideoReviews
 
 ### <a name="create-content-moderator-client-object"></a>Erstellen des Content Moderator-Clientobjekts
 
-Fügen Sie dem VideoReviews-Namespace (Program-Klasse) die folgende Methodendefinition hinzu.
+Fügen Sie dem Namespace **VideoReviews** (**Program**-Klasse) die folgenden Methodendefinitionen hinzu.
 
 ```csharp
 /// <summary>
@@ -154,7 +146,7 @@ public static ContentModeratorClient NewClient()
 {
     return new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey))
     {
-        Endpoint = AzureBaseURL
+        Endpoint = AzureEndpoint
     };
 }
 ```
@@ -166,7 +158,7 @@ Erstellen Sie mit **ContentModeratorClient.Reviews.CreateVideoReviews** eine Vid
 **CreateVideoReviews** verfügt über die folgenden erforderlichen Parameter:
 1. Eine Zeichenfolge, die einen MIME-Typ enthält. Dieser sollte „application/json“ lauten. 
 1. Ihr Content Moderator-Teamname.
-1. Ein **IList\<CreateVideoReviewsBodyItem>** -Objekt. Jedes **CreateVideoReviewsBodyItem**-Objekt stellt eine Videoüberprüfung dar. In dieser Schnellstartanleitung wird jeweils nur eine Überprüfung erstellt.
+1. Ein **IList\<CreateVideoReviewsBodyItem>**-Objekt. Jedes **CreateVideoReviewsBodyItem**-Objekt stellt eine Videoüberprüfung dar. In dieser Schnellstartanleitung wird jeweils nur eine Überprüfung erstellt.
 
 **CreateVideoReviewsBodyItem** verfügt über mehrere Eigenschaften. Sie legen mindestens die folgenden Eigenschaften fest:
 - **Content**: Die URL des zu überprüfenden Videos.
@@ -224,18 +216,18 @@ Sie fügen einer Videoüberprüfung Videoframes mit **ContentModeratorClient.Rev
 1. Eine Zeichenfolge, die einen MIME-Typ enthält. Dieser sollte „application/json“ lauten.
 1. Ihr Content Moderator-Teamname.
 1. Die von **CreateVideoReviews** zurückgegebene ID für die Videoüberprüfung.
-1. Ein **IList\<VideoFrameBodyItem>** -Objekt. Jedes **VideoFrameBodyItem**-Objekt steht für einen Videoframe.
+1. Ein **IList\<VideoFrameBodyItem>**-Objekt. Jedes **VideoFrameBodyItem**-Objekt steht für einen Videoframe.
 
 **VideoFrameBodyItem** verfügt über die folgenden Eigenschaften:
 - **Timestamp**: Eine Zeichenfolge, die den Zeitpunkt des Videos (in Sekunden) enthält, ab dem der Videoframe beginnt.
 - **FrameImage**: Die URL des Videoframes.
-- **Metadata**. Ein IList\<VideoFrameBodyItemMetadataItem>. **VideoFrameBodyItemMetadataItem** ist ein einfaches Schlüssel-Wert-Paar. Gültige Schlüssel sind:
+- **Metadata**. Ein „IList\<VideoFrameBodyItemMetadataItem>“-Element: **VideoFrameBodyItemMetadataItem** ist ein einfaches Schlüssel-Wert-Paar. Gültige Schlüssel sind:
 - **reviewRecommended**: Ist „true“, wenn eine menschliche Prüfung des Videoframes empfohlen wird.
 - **adultScore**: Ein Wert zwischen 0 und 1, mit dem der Schweregrad des für Erwachsene bestimmten Inhalts im Videoframe angegeben wird.
 - **a**: „true“, wenn das Video nicht jugendfreien Inhalt enthält.
 - **racyScore**: Ein Wert zwischen 0 und 1, mit dem der Schweregrad von anzüglichem Inhalt im Videoframe angegeben wird.
 - **r**: „true“, wenn der Videoframe anzüglichen Inhalt enthält.
-- **ReviewerResultTags**: Ein IList\<VideoFrameBodyItemReviewerResultTagsItem>. **VideoFrameBodyItemReviewerResultTagsItem** ist ein einfaches Schlüssel-Wert-Paar. Eine Anwendung kann diese Tags zum Organisieren von Videoframes nutzen.
+- **ReviewerResultTags**: Ein „IList\<VideoFrameBodyItemReviewerResultTagsItem>“-Element: **VideoFrameBodyItemReviewerResultTagsItem** ist ein einfaches Schlüssel-Wert-Paar. Eine Anwendung kann diese Tags zum Organisieren von Videoframes nutzen.
 
 > [!NOTE]
 > In dieser Schnellstartanleitung werden Zufallswerte für die Eigenschaften **adultScore** und **racyScore** generiert. In einer Produktionsanwendung erhalten Sie diese Werte über den [Videomoderationsdienst](video-moderation-api.md), der unter Azure Media Services bereitgestellt wird.
@@ -557,7 +549,3 @@ Abschließend zeigen Sie die Videoüberprüfung in Ihrem Konto für das Content 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Rufen Sie das [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) und die [Visual Studio-Projektmappe](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dafür sowie andere Content Moderator-Schnellstarts für .NET ab.
-
-Informieren Sie sich über das Hinzufügen der [Transkriptmoderation](video-transcript-moderation-review-tutorial-dotnet.md) zur Videoüberprüfung. 
-
-Sehen Sie sich das ausführliche Tutorial zur Entwicklung einer [vollständigen Lösung für die Videomoderation](video-transcript-moderation-review-tutorial-dotnet.md) an.

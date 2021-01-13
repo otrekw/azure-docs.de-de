@@ -1,25 +1,25 @@
 ---
-title: Kopieren von Daten aus Microsoft Access-Quellen mithilfe von Azure Data Factory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Daten aus Microsoft Access-Quellen mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
+title: Kopieren von Daten aus und in Microsoft Access
+description: Erfahren Sie, wie Daten mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline aus und in Microsoft Access kopiert werden.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.author: jingwang
-ms.openlocfilehash: f01607e6b7dbe5f126d240a51219a6829ff5aaf6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom: seo-lt-2019
+ms.date: 06/28/2020
+ms.openlocfilehash: 00966af4e0fc83015726d86a4c7cb5724ad38633
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090073"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85513368"
 ---
-# <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Kopieren von Daten aus Microsoft Access-Datenspeichern bzw. in Microsoft Access-Datenspeicher mithilfe von Azure Data Factory
+# <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>Kopieren von Daten aus und in Microsoft Access mithilfe von Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Copy-Aktivität in Azure Data Factory verwenden, um Daten aus einem Microsoft Access-Datenspeicher zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -30,7 +30,7 @@ Der Microsoft Access-Connector wird für die folgenden Aktivitäten unterstütz
 - [Kopieraktivität](copy-activity-overview.md) mit [unterstützter Quellen/Senken-Matrix](copy-activity-overview.md)
 - [Lookup-Aktivität](control-flow-lookup-activity.md)
 
-Sie können Daten aus einer Microsoft Access-Quelle in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Sie können Daten aus einer Microsoft Access-Quelle in jeden unterstützten Senkendatenspeicher oder Daten aus jedem unterstützten Quelldatenspeicher in eine Microsoft Access-Senke kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -55,11 +55,11 @@ Die folgenden Eigenschaften werden für den mit Microsoft Access verknüpften Di
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **MicrosoftAccess** | Ja |
-| connectionString | Die ODBC-Verbindungszeichenfolge, ausgenommen des Teils mit den Anmeldeinformationen. Sie können die Verbindungszeichenfolge angeben oder den System-DSN (Data Source Name) verwenden, den Sie auf dem Computer mit der Integration Runtime eingerichtet haben. (Sie müssen nach wie vor den Teil mit den Anmeldeinformationen im verknüpften Dienst entsprechend angeben.)<br>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md).| Ja |
+| connectionString | Die ODBC-Verbindungszeichenfolge, ausgenommen des Teils mit den Anmeldeinformationen. Sie können die Verbindungszeichenfolge angeben oder den System-DSN (Data Source Name) verwenden, den Sie auf dem Computer mit der Integration Runtime eingerichtet haben. (Sie müssen nach wie vor den Teil mit den Anmeldeinformationen im verknüpften Dienst entsprechend angeben.)<br> Sie können auch ein Kennwort in Azure Key Vault speichern und die  `password` -Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie unter  [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md) .| Ja |
 | authenticationType | Typ der Authentifizierung für die Verbindung mit dem Microsoft Access-Datenspeicher.<br/>Zulässige Werte sind: **Standard** und **Anonym**. | Ja |
 | userName | Geben Sie den Benutzernamen an, wenn Sie die Standardauthentifizierung (Basic) verwenden. | Nein |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „userName“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
-| credential | Der zum Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge. Er wird in einem treiberspezifischen Format in Eigenschaft und Wert angegeben. Legen Sie für dieses Feld „SecureString“ fest. | Nein |
+| Anmeldeinformationen (credential) | Der zum Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge. Er wird in einem treiberspezifischen Format in Eigenschaft und Wert angegeben. Legen Sie für dieses Feld „SecureString“ fest. | Nein |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
 
 **Beispiel:**
@@ -68,12 +68,9 @@ Die folgenden Eigenschaften werden für den mit Microsoft Access verknüpften Di
 {
     "name": "MicrosoftAccessLinkedService",
     "properties": {
-        "type": "Microsoft Access",
+        "type": "MicrosoftAccess",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;"
-            },
+            "connectionString": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;",
             "authenticationType": "Basic",
             "userName": "<username>",
             "password": {
@@ -124,12 +121,12 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 ### <a name="microsoft-access-as-source"></a>Microsoft Access als Quelle
 
-Zum Kopieren von Daten aus einem mit Microsoft Access kompatiblen Datenspeicher werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
+Beim Kopieren von Daten aus Microsoft Access werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **MicrosoftAccessSource** | Ja |
-| query | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 
@@ -163,9 +160,51 @@ Zum Kopieren von Daten aus einem mit Microsoft Access kompatiblen Datenspeicher 
 ]
 ```
 
+### <a name="microsoft-access-as-sink"></a>Microsoft Access als Senke
+
+Beim Kopieren von Daten in Microsoft Access werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf Folgendes festgelegt sein: **MicrosoftAccessSink** | Ja |
+| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br/>Zulässige Werte: Zeitraum Beispiel: „00:30:00“ (30 Minuten). |Nein |
+| writeBatchSize |Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht.<br/>Zulässige Werte: Ganze Zahlen (Anzahl der Zeilen). |Nein (Standard ist 0 – automatisch erkannt) |
+| preCopyScript |Geben Sie eine auszuführende SQL-Abfrage für die Kopieraktivität an, ehe Sie bei der jeder Ausführung Daten in Datenspeicher schreiben. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. |Nein |
+
+**Beispiel:**
+
+```json
+"activities":[
+    {
+        "name": "CopyToMicrosoftAccess",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Microsoft Access output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "MicrosoftAccessSink"
+            }
+        }
+    }
+]
+```
+
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 
 Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

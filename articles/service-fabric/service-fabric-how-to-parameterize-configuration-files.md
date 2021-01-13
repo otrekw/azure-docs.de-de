@@ -1,23 +1,14 @@
 ---
-title: Parametrisieren von Konfigurationsdateien in Azure Service Fabric | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Konfigurationsdateien in Service Fabric parametrisieren.
-documentationcenter: .net
-author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
+title: Parametrisieren von Konfigurationsdateien in Azure Service Fabric
+description: Erfahren Sie, wie Sie Konfigurationsdateien in Service Fabric parametrisieren. Dies ist ein nützliches Verfahren zum Verwalten mehrerer Umgebungen.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/09/2018
-ms.author: mikhegn
-ms.openlocfilehash: dad497978de7187177998524db3b2f2ee448c717
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: ca376230c427c47e839b2dee96e8daa83ccedf15
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464779"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576756"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Parametrisieren von Konfigurationsdateien in Service Fabric
 

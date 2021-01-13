@@ -1,25 +1,25 @@
 ---
 title: Asynchrones Aktualisieren von Azure Analysis Services-Modellen | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die asynchrone Aktualisierung mit der REST-API programmieren.
+description: Erfahren Sie, wie Sie die REST-API für Azure Analysis Services verwenden, um die asynchrone Aktualisierung von Modelldaten programmgesteuert auszuführen.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 82e40f756e0d8e0b5627b7c8856bd25fa98adbcb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: references_regions
+ms.openlocfilehash: e9fd20fd42e9fe1eb0e98766798e5c759c974c97
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932297"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013898"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchrones Aktualisieren mit der REST-API
 
 Durch Verwendung einer Programmiersprache, die REST-Aufrufe unterstützt, können Sie asynchrone Datenaktualisierungsvorgänge in Ihren tabellarischen Azure Analysis Services-Modellen durchführen. Dies schließt die Synchronisierung von schreibgeschützten Replikaten für die horizontale Skalierung von Abfragen ein. 
 
-Datenaktualisierungsvorgänge können abhängig von verschiedenen Faktoren, z.B. dem Datenvolumen oder der Optimierungsebene mit Partitionen, einige Zeit in Anspruch nehmen. Diese Vorgänge werden üblicherweise mit vorhandenen Methoden aufgerufen, z.B. unter Verwendung von [TOM](https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (Tabellenobjektmodell), [PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)-Cmdlets oder [TMSL](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (Tabular Model Scripting Language). Diese Methoden können jedoch häufig unzuverlässige HTTP-Verbindungen mit langer Ausführungszeit erfordern.
+Datenaktualisierungsvorgänge können abhängig von verschiedenen Faktoren, z.B. dem Datenvolumen oder der Optimierungsebene mit Partitionen, einige Zeit in Anspruch nehmen. Diese Vorgänge werden üblicherweise mit vorhandenen Methoden aufgerufen, z.B. unter Verwendung von [TOM](/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (Tabellenobjektmodell), [PowerShell](/analysis-services/powershell/analysis-services-powershell-reference)-Cmdlets oder [TMSL](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (Tabular Model Scripting Language). Diese Methoden können jedoch häufig unzuverlässige HTTP-Verbindungen mit langer Ausführungszeit erfordern.
 
 Mithilfe der REST-API für Azure Analysis Services können Datenaktualisierungsvorgänge asynchron ausgeführt werden. Durch Verwendung der REST-API sind keine über Clientanwendungen hergestellten HTTP-Verbindungen mit langer Ausführungszeit erforderlich. Es gibt auch andere integrierte Features für die Zuverlässigkeit, z.B. automatische Wiederholungsversuche und in Batches verarbeitete Commits.
 
@@ -31,7 +31,7 @@ Die Basis-URL weist das folgende Format auf:
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Angenommen, Sie verwenden ein Modell mit dem Namen „AdventureWorks“ auf dem Server „myserver“ in der Azure-Region „USA, Westen“. Der Servername lautet:
+Angenommen, Sie verwenden ein Modell mit dem Namen „AdventureWorks“ auf dem Server „`myserver`“ in der Azure-Region „USA, Westen“. Der Servername lautet:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -57,7 +57,7 @@ Sie können beispielsweise das POST-Verb für die Refreshes-Sammlung verwenden, 
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Alle Aufrufe müssen mit einem gültigen Azure Active Directory-Token (OAuth 2) im Autorisierungsheader authentifiziert werden und die folgenden Anforderungen erfüllen:
 
@@ -98,11 +98,11 @@ Die Text kann wie folgt aussehen:
 
 Es müssen keine Parameter angegeben werden. Es wird jeweils der Standard angewendet.
 
-| NAME             | type  | BESCHREIBUNG  |Standard  |
+| Name             | type  | BESCHREIBUNG  |Standard  |
 |------------------|-------|--------------|---------|
-| `Type`           | Enum  | Der auszuführende Verarbeitungstyp. Die Typen werden an die TMSL-Typen des [refresh-Befehls](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) angepasst: full, clearValues, calculate, dataOnly, automatic und defragment. Der add-Typ wird nicht unterstützt.      |   automatic      |
+| `Type`           | Enum  | Der auszuführende Verarbeitungstyp. Die Typen werden an die TMSL-Typen des [refresh-Befehls](/analysis-services/tmsl/refresh-command-tmsl) angepasst: full, clearValues, calculate, dataOnly, automatic und defragment. Der add-Typ wird nicht unterstützt.      |   automatic      |
 | `CommitMode`     | Enum  | Legt fest, ob für Objekte ein Commit in Batches oder erst nach Abschluss ausgeführt wird. Folgende Modi sind verfügbar: default, transactional, partialBatch.  |  transactional       |
-| `MaxParallelism` | Int   | Dieser Wert legt die maximale Anzahl der Threads fest, für die Verarbeitungsbefehle parallel ausgeführt werden. Dieser Wert wird an die MaxParallelism-Eigenschaft angepasst, die im [Sequence-Befehl](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) (TMSL) oder mit anderen Methoden festgelegt werden kann.       | 10        |
+| `MaxParallelism` | Int   | Dieser Wert legt die maximale Anzahl der Threads fest, für die Verarbeitungsbefehle parallel ausgeführt werden. Dieser Wert wird an die MaxParallelism-Eigenschaft angepasst, die im [Sequence-Befehl](/analysis-services/tmsl/sequence-command-tmsl) (TMSL) oder mit anderen Methoden festgelegt werden kann.       | 10        |
 | `RetryCount`     | Int   | Gibt an, wie oft der Vorgang wiederholt wird, bevor ein Fehler auftritt.      |     0    |
 | `Objects`        | Array | Ein Array von zu verarbeitenden Objekten. Jedes Objekt umfasst Folgendes: „table“ bei Verarbeitung der gesamten Tabelle oder „table“ und „partition“ bei Verarbeitung einer Partition. Wenn keine Objekte angegeben sind, wird das gesamte Modell aktualisiert. |   Verarbeiten des gesamten Modells      |
 
@@ -111,9 +111,20 @@ CommitMode entspricht partialBatch und wird beim anfänglichen Laden umfangreich
 > [!NOTE]
 > Zum Zeitpunkt der Erstellung dieser Dokumentation entspricht die Batchgröße dem MaxParallelism-Wert – dieser Wert kann sich jedoch ändern.
 
+### <a name="status-values"></a>Statuswerte
+
+|Statuswert  |BESCHREIBUNG  |
+|---------|---------|
+|`notStarted`    |   Vorgang noch nicht gestartet.      |
+|`inProgress`     |   Vorgang wird ausgeführt.      |
+|`timedOut`     |    Timeout des Vorgangs basierend auf vom Benutzer angegebenen Timeout.     |
+|`cancelled`     |   Vorgang vom Benutzer oder System abgebrochen.      |
+|`failed`     |   Fehler bei dem Vorgang.      |
+|`succeeded`      |   Vorgang erfolgreich.      |
+
 ## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
 
-Verwenden Sie zum Überprüfen des Status eines Aktualisierungsvorgangs das GET-Verb für die Aktualisierungs-ID. Es folgt ein Beispiel für den Antworttext. Wenn sich der Vorgang in Bearbeitung befindet, wird als Status **inProgress** zurückgegeben.
+Verwenden Sie zum Überprüfen des Status eines Aktualisierungsvorgangs das GET-Verb für die Aktualisierungs-ID. Es folgt ein Beispiel für den Antworttext. Wenn sich der Vorgang in Bearbeitung befindet, wird als Status `inProgress` zurückgegeben.
 
 ```
 {
@@ -148,14 +159,14 @@ Verwenden Sie zum Abrufen einer Liste der Aktualisierungsverlaufsdaten für ein 
 [
     {
         "refreshId": "1344a272-7893-4afa-a4b3-3fb87222fdac",
-        "startTime": "2017-12-09T01:58:04.76",
-        "endTime": "2017-12-09T01:58:12.607",
+        "startTime": "2017-12-07T02:06:57.1838734Z",
+        "endTime": "2017-12-07T02:07:00.4929675Z",
         "status": "succeeded"
     },
     {
         "refreshId": "474fc5a0-3d69-4c5d-adb4-8a846fa5580b",
-        "startTime": "2017-12-07T02:05:48.32",
-        "endTime": "2017-12-07T02:05:54.913",
+        "startTime": "2017-12-07T01:05:54.157324Z",
+        "endTime": "2017-12-07T01:05:57.353371Z",
         "status": "succeeded"
     }
 ]
@@ -198,8 +209,8 @@ C#-Codebeispiel für Ihren Einstieg: [RestApiSample auf GitHub](https://github.c
 
 ### <a name="to-use-the-code-sample"></a>So verwenden Sie das Codebeispiel
 
-1.  Klonen Sie das Repository, oder laden Sie es herunter. Öffnen Sie die RestApiSample-Lösung.
-2.  Suchen Sie die Zeile **client.BaseAddress = …** , und geben Sie Ihre [Basis-URL](#base-url) an.
+1.    Klonen Sie das Repository, oder laden Sie es herunter. Öffnen Sie die RestApiSample-Lösung.
+2.    Suchen Sie die Zeile **client.BaseAddress = …** , und geben Sie Ihre [Basis-URL](#base-url) an.
 
 Das Codebeispiel verwendet die [Dienstprinzipal](#service-principal)-Authentifizierung.
 
@@ -207,14 +218,12 @@ Das Codebeispiel verwendet die [Dienstprinzipal](#service-principal)-Authentifiz
 
 Weitere Informationen zum Einrichten eines Dienstprinzipals und Zuweisen der erforderlichen Berechtigungen in Azure finden Sie unter [Erstellen eines Dienstprinzipals – Azure-Portals](../active-directory/develop/howto-create-service-principal-portal.md) und [Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle](analysis-services-addservprinc-admins.md). Führen Sie nach Abschluss dieser Schritte die folgenden zusätzlichen Schritte aus:
 
-1.  Suchen Sie im Codebeispiel **string authority = …** , und ersetzen Sie **common** durch die Mandanten-ID Ihrer Organisation.
-2.  Fügen Sie eine Auskommentierung ein, bzw. heben Sie die Auskommentierung auf, damit die ClientCredential-Klasse zum Instanziieren des cred-Objekts verwendet wird. Stellen Sie sicher, dass auf die Werte \<App ID> und \<App Key> auf sichere Weise zugegriffen wird, oder verwenden Sie die zertifikatbasierte Authentifizierung für Dienstprinzipale.
-3.  Führen Sie das Beispiel aus.
+1.    Suchen Sie im Codebeispiel nach **string authority = …** , und ersetzen Sie **common** durch die Mandanten-ID Ihrer Organisation.
+2.    Fügen Sie eine Auskommentierung ein, bzw. heben Sie die Auskommentierung auf, damit die ClientCredential-Klasse zum Instanziieren des cred-Objekts verwendet wird. Stellen Sie sicher, dass auf die Werte \<App ID> und \<App Key> auf sichere Weise zugegriffen wird, oder verwenden Sie die zertifikatbasierte Authentifizierung für Dienstprinzipale.
+3.    Führen Sie das Beispiel aus.
 
 
 ## <a name="see-also"></a>Weitere Informationen
 
 [Beispiele](analysis-services-samples.md)   
-[REST-API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
-
-
+[REST-API](/rest/api/analysisservices/servers)

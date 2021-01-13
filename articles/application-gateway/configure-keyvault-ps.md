@@ -1,26 +1,27 @@
 ---
-title: Konfigurieren von SSL-Terminierung mit Key Vault-Zertifikaten mithilfe von Azure PowerShell
-description: Erfahren Sie, wie Sie Azure Application Gateway mit Key Vault für Serverzertifikate integrieren können, die einem HTTPS-fähigen Listener zugeordnet sind.
+title: Konfigurieren von TLS-Terminierung mit Key Vault-Zertifikaten – PowerShell
+titleSuffix: Azure Application Gateway
+description: Erfahren Sie, wie Sie ein Azure PowerShell-Skript verwenden, um Ihren Schlüsseltresor in Ihr Anwendungsgateway für TLS/SSL-Terminierungszertifikate zu integrieren.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 4/22/2019
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: b7408d6169e1cf42bcda8855a19076c739d086dd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: aaaeed9d8d6a2d84fa13f495f581dc1f5fdc19e2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001011"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91323422"
 ---
-# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Konfigurieren von SSL-Terminierung mit Key Vault-Zertifikaten mithilfe von Azure PowerShell
+# <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>Konfigurieren der TLS-Terminierung mit Key Vault-Zertifikaten mithilfe von Azure PowerShell
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) ist ein als Plattform verwalteter Geheimnisspeicher, mit dem Sie Geheimnisse, Schlüssel und SSL-Zertifikate schützen können. Azure Application Gateway unterstützt die Integration mit Key Vault (in öffentlicher Vorschauversion) für Serverzertifikate, die HTTPS-fähigen Listenern zugeordnet sind. Diese Unterstützung ist auf die v2-SKU von Application Gateway beschränkt.
+[Azure Key Vault](../key-vault/general/overview.md) ist ein als Plattform verwalteter Geheimnisspeicher, mit dem Sie Geheimnisse, Schlüssel und TLS/SSL-Zertifikate schützen können. Azure Application Gateway unterstützt die Integration mit Key Vault für Serverzertifikate, die HTTPS-fähigen Listenern zugeordnet sind. Diese Unterstützung ist auf die Application Gateway v2-SKU beschränkt.
 
-Weitere Informationen finden Sie unter [SSL-Terminierung mit Key Vault-Zertifikaten](key-vault-certs.md).
+Weitere Informationen finden Sie unter [TLS-Terminierung mit Key Vault-Zertifikaten](key-vault-certs.md).
 
-In diesem Artikel wird gezeigt, wie ein Azure PowerShell-Skript verwendet wird, um Ihren Schlüsseltresor (Key Vault) mit Ihrem Application Gateway für SSL-Terminierungszertifikate integrieren.
+In diesem Artikel erfahren Sie, wie Sie ein Azure PowerShell-Skript verwenden, um Ihren Schlüsseltresor in Ihr Anwendungsgateway für TLS/SSL-Terminierungszertifikate zu integrieren.
 
 Für diesen Artikel ist das Azure PowerShell-Modul in der Version 1.0.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Um die Befehle in diesem Artikel auszuführen, müssen Sie auch eine Verbindung mit Azure herstellen, indem Sie `Connect-AzAccount` ausführen.
 
@@ -43,9 +44,11 @@ Select-AzSubscription -Subscription <your subscription>
 ```azurepowershell
 $rgname = "KeyVaultTest"
 $location = "East US"
-$kv = "TestKeyVaultAppGw"
+$kv = "<your key vault name>"
 $appgwName = "AppGwKVIntegration"
 ```
+> [!IMPORTANT]
+> Der Name des Schlüsseltresors muss universal eindeutig sein.
 
 ### <a name="create-a-resource-group-and-a-user-managed-identity"></a>Erstellen einer Ressourcengruppe und einer benutzerverwalteten Identität
 
@@ -64,10 +67,13 @@ Set-AzKeyVaultAccessPolicy -VaultName $kv -PermissionsToSecrets get -ObjectId $i
 $policy = New-AzKeyVaultCertificatePolicy -ValidityInMonths 12 `
   -SubjectName "CN=www.contoso11.com" -IssuerName self `
   -RenewAtNumberOfDaysBeforeExpiry 30
+Set-AzKeyVaultAccessPolicy -VaultName $kv -EmailAddress <your email address> -PermissionsToCertificates create,get,list
 $certificate = Add-AzKeyVaultCertificate -VaultName $kv -Name "cert1" -CertificatePolicy $policy
 $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
+> [!NOTE]
+> Das -EnableSoftDelete-Flag muss verwendet werden, damit die TLS-Terminierung ordnungsgemäß funktioniert. Wenn Sie die [Key Vault-Funktion „Vorläufiges Löschen“ über das Portal](../key-vault/general/soft-delete-overview.md#soft-delete-behavior) konfigurieren, muss für den Aufbewahrungszeitraum der Standardwert von 90 Tagen festgelegt werden. Application Gateway unterstützt noch keinen anderen Aufbewahrungszeitraum. 
 
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
@@ -98,7 +104,7 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-the-ssl-certificate-to-your-key-vault"></a>Verknüpfen des SSL-Zertifikats mit Ihrem Schlüsseltresor
+### <a name="point-the-tlsssl-certificate-to-your-key-vault"></a>Verknüpfen des TLS/SSL-Zertifikats mit Ihrem Schlüsseltresor
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
@@ -111,7 +117,7 @@ $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol H
   -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $sslCert01
 $listener02 = New-AzApplicationGatewayHttpListener -Name "listener2" -Protocol Http `
   -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp02
-$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name "setting1" -Port 80 `
+$poolSetting01 = New-AzApplicationGatewayBackendHttpSetting -Name "setting1" -Port 80 `
   -Protocol Http -CookieBasedAffinity Disabled
 $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType basic `
   -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
@@ -140,4 +146,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Weitere Informationen zur SSL-Terminierung](ssl-overview.md)
+[Weitere Informationen zur TLS-Terminierung](ssl-overview.md)

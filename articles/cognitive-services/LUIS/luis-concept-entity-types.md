@@ -1,222 +1,166 @@
 ---
 title: Entitätstypen – LUIS
-titleSuffix: Azure Cognitive Services
-description: 'Entitäten extrahieren Daten aus der Äußerung. Entitätstypen ermöglichen eine vorhersagbare Extraktion von Daten. Es gibt zwei Arten von Entitäten: maschinell erlernte und nicht maschinell erlernte. Es ist wichtig zu wissen, mit welcher Art von Entität Sie in Äußerungen arbeiten.'
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
+description: Eine Entität extrahiert zur Vorhersagelaufzeit Daten aus einer Benutzeräußerung. Ein _optionaler_ sekundärer Zweck besteht darin, die Vorhersage der Absicht oder anderer Entitäten zu verstärken, indem die Entität als Feature verwendet wird.
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/24/2019
-ms.author: diberry
-ms.openlocfilehash: 9919b6d07e874bd306bdba9da2cd3357bedc48f0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/06/2020
+ms.openlocfilehash: 398d18642052726af4d4920443bad515ec0b5bef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564001"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91316561"
 ---
-# <a name="entity-types-and-their-purposes-in-luis"></a>Entitätstypen und ihr Zweck in LUIS
+# <a name="extract-data-with-entities"></a>Extrahieren von Daten mit Entitäten
 
-Entitäten extrahieren Daten aus der Äußerung. Entitätstypen ermöglichen eine vorhersagbare Extraktion von Daten. Es gibt zwei Arten von Entitäten: maschinell erlernte und nicht maschinell erlernte. Es ist wichtig zu wissen, mit welcher Art von Entität Sie in Äußerungen arbeiten. 
+Eine Entität extrahiert zur Vorhersagelaufzeit Daten aus einer Benutzeräußerung. Ein _optionaler_ sekundärer Zweck besteht darin, die Vorhersage der Absicht oder anderer Entitäten zu verstärken, indem die Entität als Feature verwendet wird.
 
-## <a name="entity-compared-to-intent"></a>Entität im Vergleich zu Absichten
+Es gibt mehrere Arten von Entitäten:
 
-Die Entität stellt ein Wort oder einen Ausdruck innerhalb der Äußerung dar, die extrahiert werden soll. Eine Äußerung kann viele Entitäten oder auch überhaupt keine enthalten. Eine Clientanwendung kann es erforderlich machen, dass die Entität ihre Aufgabe erfüllt, oder sie kann sie als Richtlinie für mehrere Auswahlmöglichkeiten verwenden, die dem Benutzer präsentiert werden. 
+* [Durch maschinelles Lernen erworbene Entität:](reference-entity-machine-learned-entity.md) Hierbei handelt es sich um die primäre Entität. Sie sollten Ihr Schema mit diesem Entitätstyp entwerfen, bevor Sie andere Entitäten verwenden.
+* Nicht durch maschinelles Lernen erworbene, als erforderliches [Feature](luis-concept-feature.md) verwendete Entität: für exakte Textübereinstimmungen, Musterübereinstimmungen oder die Erkennung durch vordefinierte Entitäten
+* [Pattern.any](#patternany-entity): zum Extrahieren von Freiformtext (beispielsweise Buchtitel) aus einem [Muster](reference-entity-pattern-any.md)
 
-Eine Entität:
-
-* Stellt eine Klasse dar, einschließlich einer Sammlung ähnlicher Objekte (Orte, Dinge, Personen, Ereignisse oder Konzepte). 
-* Beschreibt Informationen, die für die Absicht relevant sind
-
-
-Eine App zur News-Suche kann beispielsweise Entitäten wie „Thema“, „Quelle“, „Schlüsselwort“ und „Veröffentlichungsdatum“ enthalten, die besonders wichtig für die Suche nach Nachrichten sind. In einer Reisebuchungs-App sind „Ort“, „Datum“, „Airline“, „Reiseklasse“ und „Tickets“ Schlüsselinformationen für die Flugbuchung (relevant für die Absicht „Flug buchen“).
-
-Im Vergleich dazu stellt die Absicht die Vorhersage der gesamten Äußerung dar. 
-
-## <a name="entities-help-with-data-extraction-only"></a>Entitäten dienen nur als Hilfe bei der Datenextraktion
-
-Sie beschriften bzw. kennzeichnen Entitäten nur für die Entitätsextraktion. Die Vorhersage von Absichten wird hierdurch nicht unterstützt.
+Durch maschinelles Lernen erworbene Entitäten verfügen über die größte Auswahl an Optionen für die Datenextraktion. Nicht durch maschinelles Lernen erworbene Entitäten basieren auf einem Textabgleich und werden als [erforderliches Feature](#design-entities-for-decomposition) für eine durch maschinelles Lernen erworbene Entität oder für eine Absicht verwendet.
 
 ## <a name="entities-represent-data"></a>Darstellen von Daten durch Entitäten
 
-Entitäten sind Daten, die Sie aus der Äußerung pullen möchten. Dabei kann es sich um einen Namen, ein Datum, einen Produktnamen oder eine Wortgruppe handeln. 
+Entitäten sind Daten, die Sie aus der Äußerung extrahieren möchten, z. B. Namen, Datumsangaben, Produktnamen oder signifikante Wortgruppen. Eine Äußerung kann viele Entitäten oder auch überhaupt keine enthalten. Eine Clientanwendung benötigt die Daten _eventuell_, um die jeweilige Aufgabe auszuführen.
+
+Entitäten müssen für alle Trainingsäußerungen jeder Absicht eines Modells bezeichnet werden.
+
+ Sie können eigene Entitäten definieren oder vorgefertigte Entitäten verwenden, um für gängige Konzepte, z. B. [datetimeV2](luis-reference-prebuilt-datetimev2.md), [ordinal](luis-reference-prebuilt-ordinal.md), [email](luis-reference-prebuilt-email.md) und [phone number](luis-reference-prebuilt-phonenumber.md), Zeit zu sparen.
 
 |Äußerung|Entität|Daten|
 |--|--|--|
-|Kaufe 3 Tickets nach New York|Vordefinierte Anzahl<br>Location.Destination|3<br>New York|
-|Kaufe ein Ticket von New York nach London am 5. März|Location.Origin<br>Location.Destination<br>Vordefinierte datetimeV2|New York<br>London<br>5\. März 2018|
+|Kaufe 3 Tickets nach New York|Vordefinierte Anzahl<br>Destination|3<br>New York|
 
-## <a name="entities-are-optional-but-highly-recommended"></a>Entitäten sind optional, jedoch dringend empfohlen.
 
-Im Gegensatz zu Absichten sind Entitäten optional. Sie müssen keine Entitäten für sämtliche Konzepte Ihrer App erstellen, sondern lediglich für die, die für Aktionen der Clientanwendung erforderlich sind. 
+### <a name="entities-are-optional-but-recommended"></a>Entitäten sind optional, werden aber empfohlen.
 
-Wenn Ihre Äußerungen keine Details enthalten, die Ihr Bot für das Fortfahren benötigt, müssen Sie diese auch nicht hinzufügen. Sie können sie bei fortschreitender Entwicklung Ihrer App später hinzufügen. 
+[Absichten](luis-concept-intent.md) sind im Gegensatz zu Entitäten erforderlich. Entitäten müssen nicht für jedes Konzept in der App erstellt werden, sondern nur für jene, bei denen die Clientanwendung die Daten benötigt oder bei denen die Entität als Hinweis oder Signal für eine andere Entität oder Absicht fungiert.
 
-Gehen Sie wie folgt vor, wenn Sie nicht sicher sind, wie Sie die Informationen verwenden können: Fügen Sie einige allgemeine vordefinierte Entitäten, z.B. [datetimeV2](luis-reference-prebuilt-datetimev2.md), [ordinal](luis-reference-prebuilt-ordinal.md), [email](luis-reference-prebuilt-email.md) und [phonenumber](luis-reference-prebuilt-phonenumber.md) hinzu.
+Wenn Ihre Anwendung weiterentwickelt wird und sich neue Datenanforderungen ergeben, können Sie Ihrem LUIS-Modell auch später noch weitere geeignete Entitäten hinzufügen.
 
-## <a name="label-for-word-meaning"></a>Bezeichnungen für Wortbedeutungen
+<a name="entity-compared-to-intent"></a>
 
-Wenn die Wortauswahl oder die Anordnung der Wörter identisch ist, sie aber nicht dieselbe Bedeutung haben, sollten Sie sie nicht mit der Entität bezeichnen. 
+## <a name="entity-represents-data-extraction"></a>Entität stellt Datenextraktion dar
 
-In den folgenden Äußerungen ist das Wort `fair` ein Homograph. Die Schreibweise ist identisch, aber die Bedeutung ist eine andere:
+Die Entität stellt ein Datenkonzept _innerhalb der Äußerung_ dar. Eine Absicht klassifiziert die _gesamte Äußerung_.
 
-|Äußerung|
-|--|
-|Welche Arten von Jahrmärkten finden in diesem Sommer in der Region Seattle statt?|
-|Ist die aktuelle Bewertung für die Seattle-Rezension fair?|
+Sehen Sie sich die folgenden vier Äußerungen an:
 
-Wenn Sie mit einer Veranstaltungsentität alle Veranstaltungsdaten suchen möchten, bezeichnen Sie das Wort `fair` in der ersten Äußerung, aber nicht in der zweiten.
+|Äußerung|Vorhergesagte Absicht|Extrahierte Entitäten|Erklärung|
+|--|--|--|--|
+|Hilfe|help|-|Nichts zu extrahieren.|
+|Send something|sendSomething|-|Nichts zu extrahieren. Das Modell verfügt über kein erforderliches Feature, um `something` in diesem Kontext zu extrahieren, und es ist kein Empfänger angegeben.|
+|Send Bob a present|sendSomething|`Bob`, `present`|Das Modell extrahiert `Bob` durch Hinzufügen eines erforderlichen Features der vorgefertigten Entität `personName`. Eine durch maschinelles Lernen erworbene Entität wurde genutzt, um `present` zu extrahieren.|
+|Send Bob a box of chocolates|sendSomething|`Bob`, `box of chocolates`|Die beiden wichtigen Datenelemente `Bob` und `box of chocolates` wurden von durch maschinelles Lernen erworbenen Entitäten extrahiert.|
 
-## <a name="entities-are-shared-across-intents"></a>Wiederverwenden von Entitäten für mehrere Absichten
+## <a name="label-entities-in-all-intents"></a>Entitäten in allen Absichten bezeichnen
 
-Entitäten werden für mehrere Absichten verwendet. Sie gehören nicht zu einer bestimmten Absicht. Absichten und Entitäten können semantisch zugeordnet werden, aber es handelt sich nicht um eine exklusive Beziehung.
+Entitäten extrahieren Daten unabhängig von der vorhergesagten Absicht. Stellen Sie sicher, dass Sie _alle_ Beispieläußerungen in allen Absichten bezeichnen. Die `None`-Absicht mit fehlender Entitätsbezeichnung verursacht Verwirrung, auch wenn es weitaus mehr Trainingsäußerungen für die anderen Absichten gäbe.
 
-In der Äußerung „Buche mir ein Ticket nach Paris“ ist „Paris“ eine Entität, die auf den Ort verweist. Indem die in der Äußerung des Benutzers erwähnten Entitäten erkannt werden, unterstützt LUIS Ihre Clientanwendung beim Auswählen der jeweiligen Aktionen, die zum Erfüllen der Benutzeranforderung durchgeführt werden müssen.
+## <a name="design-entities-for-decomposition"></a>Entwerfen von Entitäten zur Analyse
 
-## <a name="mark-entities-in-none-intent"></a>Kennzeichnen von Entitäten der Absicht „Keine“
+Durch maschinelles Lernen erworbene Entitäten ermöglichen es Ihnen, das App-Schema so zu gestalten, dass sich ein umfangreiches Konzept in untergeordnete Entitäten aufteilen lässt.
 
-Alle Absichten, auch **Keine**, sollten nach Möglichkeit über gekennzeichnete Entitäten verfügen. Auf diese Weise kann LUIS mehr darüber erfahren, wo sich die Entitäten in den Äußerungen befinden und welche Wörter sich um die Entitäten herum befinden. 
+Der Entwurf für die Analyse bietet LUIS eine genauere Aufschlüsselung der Entitäten für Ihre Clientanwendung. Hierdurch kann sich die Clientanwendung auf Geschäftsregeln konzentrieren und die Datenauflösung LUIS überlassen.
 
-## <a name="entity-status-for-predictions"></a>Vorhersagen zum Entitätsstatus
+Eine durch maschinelles Lernen erworbene Entität wird basierend auf dem Kontext ausgelöst, der durch Beispieläußerungen erlernt wird.
 
-Sie werden im LUIS-Portal darüber informiert, wenn die Entität in einer Beispieläußerung entweder von der gekennzeichneten Entität abweicht oder einer anderen Entität zu stark ähnelt und daher nicht eindeutig ist. Dies wird in der Beispieläußerung durch eine rote Unterstreichung angezeigt. 
+[**Durch maschinelles Lernen erworbene Entitäten**](tutorial-machine-learned-entity.md) sind die Extraktoren auf oberster Ebene. Bei untergeordneten Entitäten handelt es sich um untergeordnete Elemente von durch maschinelles Lernen erworbenen Entitäten.
 
-Weitere Informationen finden Sie unter [Vorhersagen zum Entitätsstatus](luis-how-to-add-example-utterances.md#entity-status-predictions). 
+## <a name="effective-machine-learned-entities"></a>Effektive durch maschinelles Lernen erworbene Entitäten
+
+So erstellen Sie durch maschinelles Lernen erworbene Entitäten effektiv:
+
+* Ihre Bezeichnungen sollten für alle Absichten einheitlich sein. Dazu gehören auch Äußerungen, die Sie in der Absicht **None** (Keine) angeben, die diese Entität enthält. Andernfalls kann das Modell die Sequenz nicht effektiv bestimmen.
+* Wenn Sie eine durch maschinelles Lernen erworbene Entität mit untergeordneten Entitäten besitzen, sollten Sie sicherstellen, dass die verschiedenen Reihenfolgen und Varianten der Entität und der untergeordneten Entitäten in dem bezeichneten Äußerungen dargestellt werden. Beispieläußerungen mit Bezeichnungen sollten alle gültigen Formen sowie die Entitäten enthalten, die angezeigt werden, fehlen oder innerhalb der Äußerung neu angeordnet werden.
+* Sie sollten eine Überanpassung der Entitäten an eine feste Gruppe vermeiden. Eine **Überanpassung** tritt auf, wenn das Modell nicht gut generalisiert wird. Dies ist ein gängiges Problem bei Machine Learning-Modellen. Sie impliziert, dass die App mit neuen Daten nicht richtig funktioniert. Daher sollten Sie die bezeichneten Beispieläußerungen variieren, damit die App über die von Ihnen angegebenen Beispiele hinaus generalisiert werden kann. Sie sollten die verschiedenen untergeordneten Entitäten mit ausreichend Änderungen für das Modell variieren, damit das Konzept im Mittelpunkt steht, und nicht nur die gezeigten Beispiele.
+
+## <a name="effective-prebuilt-entities"></a>Effektive vordefinierte Entitäten
+
+Für die Erstellung effektiver Entitäten, die gemeinsame Daten extrahieren, wie sie z. B. von den [vordefinierten Entitäten](luis-reference-prebuilt-entities.md) bereitgestellt werden, empfehlen wir das folgende Verfahren.
+
+Verbessern Sie die Extraktion von Daten, indem Sie Ihre eigenen Daten als Feature in eine Entität einbringen. Auf diese Weise lernen alle zusätzlichen Bezeichnungen in den Daten den Kontext, in dem Personennamen in Ihrer Anwendung existieren.
+
+<a name="composite-entity"></a>
+<a name="list-entity"></a>
+<a name="patternany-entity"></a>
+<a name="prebuilt-entity"></a>
+<a name="regular-expression-entity"></a>
+<a name="simple-entity"></a>
 
 ## <a name="types-of-entities"></a>Typen von Entitäten
 
-LUIS verfügt über viele Arten von Entitäten. Wählen Sie die Entität basierend darauf aus, wie die Daten extrahiert und nach der Extraktion dargestellt werden sollen.
+Eine untergeordnete Entität einer übergeordneten Entität sollte eine durch maschinelles Lernen erworbene Entität sein. Die untergeordnete Entität kann eine nicht durch maschinelles Lernen erworbene Entität als [Feature](luis-concept-feature.md) verwenden.
 
-Entitäten können mit maschinellem Lernen extrahiert werden. So kann LUIS weiterhin lernen, wie die Entität in der Äußerung angezeigt wird. Entitäten können auch ohne maschinelles Lernen extrahiert werden, indem entweder ein Abgleich auf den genauen Text oder anhand eines regulären Ausdrucks durchgeführt wird. Entitäten in Mustern können mit einer gemischten Implementierung extrahiert werden. 
+Wählen Sie die Entität basierend darauf aus, wie die Daten extrahiert und nach der Extraktion dargestellt werden sollen.
 
-Nachdem die Entität extrahiert wurde, können die Entitätsdaten als einzelne Informationseinheit dargestellt oder mit anderen Entitäten kombiniert werden, damit sie eine Informationseinheit bilden, die von der Clientanwendung verwendet werden kann.
+|Entitätstyp|Zweck|
+|--|--|
+|[**Durch maschinelles Lernen erworben**](tutorial-machine-learned-entity.md)|Extrahieren geschachtelter, komplexer Daten, die anhand von beschrifteten Beispielen gelernt wurden |
+|[**Liste**](reference-entity-list.md)|Liste mit Elementen und den zugehörigen Synonymen, die per **genauer Textübereinstimmung** extrahiert werden.|
+|[**Pattern.any**](#patternany-entity)|Entität, bei der das Entitätsende schwierig zu bestimmen ist, da es sich um eine Freiformentität handelt. Nur in [Mustern](luis-concept-patterns.md) verfügbar.|
+|[**Vordefiniert**](luis-reference-prebuilt-entities.md)|Bereits trainierte oder extrahierte spezielle Daten URLs oder E-Mail-Adressen. Einige dieser vordefinierten Entitäten werden im Open-Source-Projekt [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) definiert. Wenn Ihre Kultur oder Entität derzeit nicht unterstützt wird, können Sie sich am Projekt beteiligen.|
+|[**Regulärer Ausdruck**](reference-entity-regular-expression.md)|Verwendet einen regulären Ausdruck für **genaue Textübereinstimmungen**.|
 
-|Durch maschinelles Lernen erworben|Kennzeichnung möglich|Tutorial|Beispiel<br>response|Entitätstyp|Zweck|
-|--|--|--|--|--|--|
-|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Zusammengesetzt**](#composite-entity)|Gruppierung von Entitäten, unabhängig vom Entitätstyp.|
-|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Liste**](#list-entity)|Liste mit Elementen und den zugehörigen Synonymen, die per genauer Textübereinstimmung extrahiert werden.|
-|Gemischt||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Entität, bei der das Entitätsende schwierig zu ermitteln ist.|
-|||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Vordefiniert**](#prebuilt-entity)|Bereits trainiert, um verschiedene Arten von Daten zu extrahieren.|
-|||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Regulärer Ausdruck**](#regular-expression-entity)|Verwendet einen regulären Ausdruck zum Abgleichen von Text.|
-|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Einfach**](#simple-entity)|Enthält ein einzelnes Konzept in einem Wort oder Ausdruck.|
 
-Nur Entitäten, die durch maschinelles Lernen erworben wurden, müssen in den Beispieläußerungen gekennzeichnet werden. Durch maschinelles Lernen erworbene Entitäten funktionieren am besten, wenn sie mithilfe von [Endpunktabfragen](luis-concept-test.md#endpoint-testing) und durch das [Überprüfen der Endpunktäußerungen](luis-how-to-review-endoint-utt.md) getestet werden. 
+## <a name="extraction-versus-resolution"></a>Extraktion und Auflösung im Vergleich
 
-Pattern.any-Entitäten müssen in [Pattern](luis-how-to-model-intent-pattern.md)-Vorlagenbeispielen gekennzeichnet werden, nicht in den Absichtsbenutzerbeispielen. 
+Entitäten extrahieren Daten so, wie sie in der Äußerung dargestellt werden. Entitäten nehmen keine Änderungen an Daten vor oder lösen diese auf. Die Entität gibt keine Auflösung an, wenn es sich bei dem Text um einen gültigen Wert handelt oder nicht.
 
-Für gemischte Entitäten wird eine Kombination aus Methoden für die Entitätserkennung verwendet.
+Es gibt Möglichkeiten, die Auflösung in die Extraktion zu integrieren, jedoch sollten Sie beachten, dass dadurch die Fähigkeit der App eingeschränkt wird, immun gegen Variationen und Fehler zu sein.
 
-## <a name="machine-learned-entities-use-context"></a>Durch maschinelles Lernen erworbene Entitäten nutzen Kontext
+Listenentitäten und Entitäten für reguläre Ausdrücke (Textübereinstimmung) können als [erforderliche Features](luis-concept-feature.md#required-features) für eine untergeordnete Entität verwendet werden, die als Filter für die Extraktion fungiert. Sie sollten dies sorgfältig verwenden, um nicht die Vorhersagen der App zu beeinträchtigen.
 
-Durch maschinelles Lernen erworbene Entitäten lernen über den Kontext der Äußerung. Aus diesem Grund ist die Variation der Platzierung in Beispieläußerungen wichtig. 
+## <a name="extracting-contextually-related-data"></a>Extrahieren von Daten mit Kontextzusammenhang
 
-## <a name="non-machine-learned-entities-dont-use-context"></a>Entitäten, die nicht durch maschinelles Lernen erworben wurden, nutzen den Kontext nicht
+Eine Äußerung kann zwei oder mehr Vorkommen einer Entität enthalten, wobei die Bedeutung der Daten auf dem Kontext in der Äußerung basiert. Ein Beispiel ist eine Äußerung zum Buchen eines Flugs mit zwei geografischen Orten: Abflugs- und Ankunftsort.
 
-Die folgenden, nicht durch maschinelles Lernen erworbenen Entitäten berücksichtigen beim Vergleichen von Entitäten den Kontext einer Äußerung nicht: 
+`Book a flight from Seattle to Cairo`
 
-* [Vordefinierte Entitäten](#prebuilt-entity)
-* [RegEx-Entitäten](#regular-expression-entity)
-* [List-Entitäten](#list-entity) 
+Die beiden Orte müssen so extrahiert werden, dass der Clientanwendung jeweils die Art des Orts bekannt ist, um den Ticketkauf abwickeln zu können.
 
-Diese Entitäten erfordern keine Bezeichnungen oder ein Trainieren des Modells. Nach dem Hinzufügen oder Konfigurieren der Entität, werden die Entitäten extrahiert. Der Nachteil hierbei sind möglicherweise zu viele Übereinstimmungen, die bei einer Berücksichtigung des Kontexts nicht zurückgegeben worden wären. 
+Erstellen Sie zum Extrahieren von Abflug- und Ankunftsort im Rahmen der durch maschinelles Lernen erworbenen Entität für die Ticketbestellung zwei untergeordnete Entitäten. Erstellen Sie für jede der untergeordneten Entitäten ein erforderliches Feature mit „geographyV2“.
 
-Dies tritt bei List-Entitäten in neuen Modellen häufig auf. Sie erstellen und testen Ihr Modell mit einer List-Entität, aber wenn Sie Ihr Modell veröffentlichen und Abfragen vom Endpunkt erhalten, stellen Sie fest, dass das Modell aufgrund des fehlenden Kontexts zu viele Übereinstimmungen findet. 
+<a name="using-component-constraints-to-help-define-entity"></a>
+<a name="using-subentity-constraints-to-help-define-entity"></a>
 
-Wenn Sie Wörter oder Ausdrücke finden und den Kontext berücksichtigen möchten, haben Sie zwei Möglichkeiten. Die erste ist eine einfache Entität zusammen mit einer Begriffsliste. Die Begriffsliste wird nicht für den Abgleich verwendet, sondern hilft stattdessen beim Hervorheben relativ ähnlicher Wörter (Liste austauschbarer Begriffe). Wenn Sie eine genaue Übereinstimmung anstelle von Varianten einer Begriffsliste benötigen, verwenden Sie eine List-Entität mit einer Rolle, die unten beschrieben wird.
+### <a name="using-required-features-to-constrain-entities"></a>Verwenden erforderlicher Features zum Einschränken von Entitäten
 
-### <a name="context-with-non-machine-learned-entities"></a>Kontext bei Entitäten, die nicht durch maschinelles Lernen erworben wurden
-
-Wenn Sie bei Entitäten, die nicht durch maschinelles Lernen erworben wurden, den Kontext berücksichtigen möchten, sollten Sie [Rollen](luis-concept-roles.md) verwenden.
-
-Wenn Sie über eine Entität, die nicht durch maschinelles Lernen erworben wurde, verfügen (z. B. [vordefinierte Entitäten](#prebuilt-entity), [RegEx](#regular-expression-entity)-Entitäten oder [List](#list-entity)-Entitäten), die zu mehr Übereinstimmung als gewünscht führen, sollten Sie eine Entität mit zwei Rollen erstellen. Eine Rolle erfasst, was Sie suchen, und die zweite Rolle erfasst, was Sie nicht suchen. Beide Versionen müssen in Beispieläußerungen bezeichnet werden.  
-
-## <a name="composite-entity"></a>Entität vom Typ „Composite“
-
-Eine [zusammengesetzte Entität](reference-entity-composite.md) besteht aus anderen Entitäten, z. B. vordefinierte Entitäten, einfache Entitäten, Entitäten als reguläre Ausdrücke oder Listenentitäten. Die einzelnen Entitäten bilden zusammen die gesamte Entität. 
-
-## <a name="list-entity"></a>Entität vom Typ „List“
-
-[Listenentitäten](reference-entity-list.md) stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen dar. LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Features **Empfehlen** nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste. Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben. 
+Weitere Informationen zu erforderlichen Features finden Sie [hier](luis-concept-feature.md).
 
 ## <a name="patternany-entity"></a>Entität „Pattern.any“
 
-[Pattern.any](reference-entity-pattern-any.md) ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um zu kennzeichnen, wo die Entität beginnt und endet.  
+Eine Entität vom Typ „Pattern.any“ ist nur in einem [Muster](luis-concept-patterns.md) verfügbar.
 
-## <a name="prebuilt-entity"></a>Vordefinierte Entität
+<a name="if-you-need-more-than-the-maximum-number-of-entities"></a>
+## <a name="exceeding-app-limits-for-entities"></a>Überschreiten von App-Grenzwerten für Entitäten
 
-Bei vordefinierten Entitäten handelt es sich um integrierte Typen, mit denen häufig verwendete Konzepte, z.B. E-Mail, URL und Telefonnummer, dargestellt werden. Vordefinierte Entitätsnamen sind reserviert. [Alle vordefinierten Entitäten](luis-prebuilt-entities.md), die der Anwendung hinzugefügt werden, werden in der Endpunktvorhersage-Abfrage zurückgegeben, wenn sie in der Äußerung enthalten sind. 
+Sollte das [Limit](luis-limits.md#model-limits) nicht ausreichen, wenden Sie sich an den Support. Sammeln Sie dazu ausführliche Informationen über Ihr System, navigieren Sie zur [LUIS](luis-reference-regions.md#luis-website)-Website, und wählen Sie dann **Support** aus. Wenn Ihr Azure-Abonnement Supportdienste umfasst, wenden Sie sich an den [technischen Support von Azure](https://azure.microsoft.com/support/options/).
 
-Diese Entität ist gut geeignet, wenn Folgendes gilt:
+## <a name="entity-prediction-status-and-errors"></a>Status der Entitätsvorhersage und Fehler
 
-* Die Daten stimmen mit einem häufigen Anwendungsfall überein, der von vordefinierten Entitäten für Ihre Sprachkultur unterstützt wird. 
+Im LUIS-Portal sehen Sie, ob die Entität in einer Beispieläußerung eine andere Entitätsvorhersage aufweist als die Entität, die Sie für eine Beispieläußerung ausgewählt haben. Der Unterschied beim Score kommt vom aktuellen trainierten Modell. 
 
-Vordefinierte Entitäten können jederzeit hinzugefügt und entfernt werden.
+:::image type="content" source="./media/luis-concept-entities/portal-entity-prediction-error.png" alt-text="Im LUIS-Portal sehen Sie, ob die Entität in einer Beispieläußerung eine andere Entitätsvorhersage aufweist als die Entität, die Sie für eine Beispieläußerung ausgewählt haben.":::
 
-![Vordefinierte Entität „number“](./media/luis-concept-entities/number-entity.png)
+Der Fehlermeldungstext wird in der Beispieläußerung hervorgehoben, und die Beispieläußerungszeile weist rechts einen Fehlerindikator in Form eines roten Dreiecks auf. 
 
-[Tutorial](luis-tutorial-prebuilt-intents-entities.md)<br>
-[JSON-Beispielantwort für Entität](luis-concept-data-extraction.md#prebuilt-entity-data)
-
-Einige dieser vordefinierten Entitäten werden im Open-Source-Projekt [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) definiert. Wenn Ihre Kultur oder Entität derzeit nicht unterstützt wird, können Sie sich am Projekt beteiligen. 
-
-### <a name="troubleshooting-prebuilt-entities"></a>Problembehandlung bei vordefinierten Entitäten
-
-Wenn anstelle Ihrer benutzerdefinierten Entität eine vordefinierte Entität markiert ist, haben Sie im LUIS-Portal mehrere Optionen zum Beheben dieses Problems.
-
-Die der App hinzugefügten vordefinierten Entitäten werden _immer_ zurückgegeben, auch wenn aus der Äußerung benutzerdefinierte Entitäten für den gleichen Text extrahiert werden. 
-
-#### <a name="change-tagged-entity-in-example-utterance"></a>Ändern der markierten Entität in der Beispieläußerung
-
-Wenn die vordefinierte Entität dem Text oder den Token der benutzerdefinierten Entität entspricht, wählen Sie den Text in der Beispieläußerung aus, und ändern Sie die markierte Äußerung. 
-
-Wenn die vordefinierte Entität mit mehr Text oder Token markiert ist als die benutzerdefinierte Entität, haben Sie zwei Optionen, um dies zu korrigieren:
-
-* [Entfernen der Beispieläußerung](#remove-example-utterance-to-fix-tagging)
-* [Entfernen der vordefinierten Entität](#remove-prebuilt-entity-to-fix-tagging)
-
-#### <a name="remove-example-utterance-to-fix-tagging"></a>Entfernen der Beispieläußerung zur Korrektur der Markierung 
-
-Die erste Option ist das Entfernen der Beispieläußerung. 
-
-1. Löschen Sie die Beispieläußerung.
-1. Trainieren Sie die App erneut. 
-1. Fügen Sie nur das Wort oder den Ausdruck, das bzw. den die vordefinierte Entität markierte Entität darstellt, als vollständige Beispieläußerung ein. Für das Wort oder den Ausdruck ist weiterhin die vordefinierte Entität markiert. 
-1. Wählen Sie auf der Seite **Absicht** die Entität in der Beispieläußerung aus, ändern Sie sie in die benutzerdefinierte Entität, und trainieren Sie die App erneut. Dies sollte verhindern, dass in LUIS genau dieser Text als vordefinierte Entität in Beispieläußerungen markiert wird, in denen dieser Text verwendet wird. 
-1. Fügen Sie die vollständige ursprüngliche Beispieläußerung wieder auf der Seite „Absicht“ hinzu. Die benutzerdefinierte Entität sollte weiterhin anstelle der vordefinierten Entität markiert werden. Wenn die benutzerdefinierte Entität nicht markiert wird, müssen Sie weitere Beispiele für diesen Text in Äußerungen hinzufügen.
-
-#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>Entfernen der vordefinierten Entität zur Korrektur der Markierung
-
-1. Entfernen Sie die vordefinierte Entität aus der App. 
-1. Markieren Sie auf der Seite **Absicht** die benutzerdefinierte Entität in der Beispieläußerung.
-1. Trainieren Sie die App.
-1. Fügen Sie die vordefinierte Entität wieder in die App ein, und trainieren Sie die App. Bei dieser Korrektur wird davon ausgegangen, dass die vordefinierte Entität kein Teil einer zusammengesetzten Entität ist.
-
-## <a name="regular-expression-entity"></a>Entität vom Typ „RegEx“ 
-
-Eine [Entität als regulärer Ausdruck](reference-entity-regular-expression.md) extrahiert eine Entität anhand des regulären Ausdrucks, den Sie bereitstellen.
-
-## <a name="simple-entity"></a>Entität vom Typ „Simple“
-
-Eine [einfache Entität](reference-entity-simple.md) ist ein maschinell erlernter Wert. Dabei kann es sich um ein Wort oder einen Ausdruck handeln.
-## <a name="entity-limits"></a>Grenzwerte für Entitäten
-
-Informieren Sie sich über die [Grenzwerte](luis-boundaries.md#model-boundaries), um zu erfahren, wie viele Entitäten jedes Typs Sie einem Modell hinzufügen können.
-
-## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Wenn mehr als die maximale Anzahl von Entitäten erforderlich ist 
-
-Möglicherweise müssen Sie gemischte Entitäten in Kombination mit Entitätsrollen verwenden.
-
-Zusammengesetzte Entitäten stellen Teile eines Ganzen dar. Die zusammengesetzte Entität PlaneTicketOrder könnte z.B. die untergeordneten Entitäten Airline, Destination, DepartureCity, DepartureDate und PlaneTicketClass enthalten.
-
-LUIS verfügt auch über den Listenentitätstyp, der nicht per maschinellem Lernen erworben wird, sondern es Ihrer LUIS-App ermöglicht, eine feste Liste mit Werten anzugeben. In der Referenz zu [LUIS-Grenzen](luis-boundaries.md) finden Sie Informationen zu den Grenzwerten des Listenentitätstyps. 
-
-Wenn Sie diese Entitäten berücksichtigt haben und trotzdem mehr als den Grenzwert benötigen, wenden Sie sich an den Support. Sammeln Sie dazu ausführliche Informationen über Ihr System, navigieren Sie zur [LUIS](luis-reference-regions.md#luis-website)-Website, und wählen Sie dann **Support** aus. Wenn Ihr Azure-Abonnement Supportdienste umfasst, wenden Sie sich an den [technischen Support von Azure](https://azure.microsoft.com/support/options/). 
+Verwenden Sie diese Informationen, um Entitätsfehler mithilfe einer oder mehrerer der folgenden Maßnahmen zu beheben:
+* Der markierte Text ist falsch bezeichnet. So beheben Sie Fehler, überprüfen, korrigieren und trainieren erneut. 
+* Erstellen eines [Features](luis-concept-feature.md) für die Entität, um die Ermittlung des Konzepts der Entität zu erleichtern
+* Hinzufügen weiterer [Beispieläußerungen](luis-concept-utterance.md) und Beschriften mit der Entität
+* [Überprüfen von Vorschlägen für aktives Lernen](luis-concept-review-endpoint-utterances.md) für Äußerungen, die vom Vorhersageendpunkt empfangen werden und zur Ermittlung des Konzepts der Entität beitragen können
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die Konzepte für gute [Äußerungen](luis-concept-utterance.md). 
+Erfahren Sie mehr über die Konzepte für gute [Äußerungen](luis-concept-utterance.md).
 
 Weitere Informationen zum Hinzufügen von Entitäten zu LUIS-Apps finden Sie unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md).
+
+Siehe [Tutorial: Extrahieren strukturierter Daten aus Benutzeräußerungen mithilfe der durch maschinelles Lernen erworbenen Entitäten in Language Understanding (LUIS)](tutorial-machine-learned-entity.md). Darin wird beschrieben, wie Sie strukturierte Daten mithilfe der durch maschinelles Lernen erworbenen Entität aus einer Äußerung extrahieren.
+

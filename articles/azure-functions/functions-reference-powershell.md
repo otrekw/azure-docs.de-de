@@ -1,34 +1,26 @@
 ---
 title: PowerShell-Entwicklerreferenz für Azure Functions
 description: Erfahren Sie, wie Sie mithilfe von PowerShell Funktionen entwickeln können.
-services: functions
-documentationcenter: na
-author: tylerleonhardt
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: powershell
+author: eamonoreilly
 ms.topic: conceptual
+ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.author: tyleonha
-ms.reviewer: glenga
-ms.openlocfilehash: 36d24e798e73ef336324eedadee1ba3fec4c0e1d
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: af9490433c344c712da55e9b29bf9df364380736
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773029"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422534"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
 Dieser Artikel enthält Informationen zum Schreiben von Funktionen in Azure Functions mithilfe von PowerShell.
 
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
-
 Eine PowerShell-Azure-Funktion (Funktion) wird als ein PowerShell-Skript dargestellt, das durch Auslösen ausgeführt wird. Jedes Funktionsskript verfügt über eine zugehörige Datei `function.json`, in der definiert ist, wie sich die Funktion verhält, also z. B. wie sie ausgelöst wird und welche Ein- und Ausgabeparameter verwendet werden. Weitere Informationen finden Sie im Artikel zu [Triggern und Bindungen](functions-triggers-bindings.md). 
 
 Wie andere Arten von Funktionen akzeptieren PowerShell-Skriptfunktionen Parameter, die den Namen aller Eingabebindungen entsprechen, die in der Datei `function.json` definiert sind. Ein `TriggerMetadata`-Parameter wird ebenfalls übergeben. Dieser enthält zusätzliche Informationen zu dem Trigger, der die Funktion gestartet hat.
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md)gelesen haben. Sie sollten auch den [Schnellstart für Functions und PowerShell](functions-create-first-function-powershell.md) abgeschlossen haben, in dem Sie Ihre erste PowerShell-Funktion erstellen.
+In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md)gelesen haben. Sie sollten auch den [Schnellstart für Functions und PowerShell](./create-first-function-vs-code-powershell.md) abgeschlossen haben, in dem Sie Ihre erste PowerShell-Funktion erstellen.
 
 ## <a name="folder-structure"></a>Ordnerstruktur
 
@@ -59,7 +51,7 @@ PSFunctionApp
 
 Im Stammverzeichnis des Projekts befindet sich eine freigegebene Datei [`host.json`](functions-host-json.md), die zum Konfigurieren der Funktions-App verwendet werden kann. Jede Funktion verfügt über einen Ordner mit einer eigenen Codedatei (PS1-Datei) und Bindungskonfigurationsdatei (`function.json`). Der Name des übergeordneten Verzeichnisses der Datei „function.json“ ist immer der Name Ihrer Funktion.
 
-Bestimmte Bindungen erfordern das Vorhandensein einer Datei mit dem Namen `extensions.csproj`. Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](functions-bindings-register.md#extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
+Bestimmte Bindungen erfordern das Vorhandensein einer Datei mit dem Namen `extensions.csproj`. Die in [Version 2.x](functions-versions.md) oder höher der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](functions-bindings-register.md#extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
 
 PowerShell-Funktions-Apps enthalten möglicherweise optional eine Datei `profile.ps1`, die ausgeführt wird, wenn eine Funktions-App gestartet wird (auch als *[Kaltstart](#cold-start)* bezeichnet). Weitere Informationen finden Sie unter [PowerShell-Profil](#powershell-profile).
 
@@ -82,13 +74,13 @@ Der `TriggerMetadata`-Parameter wird verwendet, um zusätzliche Informationen zu
 $TriggerMetadata.sys
 ```
 
-| Eigenschaft   | Description                                     | type     |
+| Eigenschaft   | BESCHREIBUNG                                     | type     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | Zeitpunkt der Auslösung der Funktion in UTC        | Datetime |
 | MethodName | Der Name der Funktion, die ausgelöst wurde     | Zeichenfolge   |
 | RandGuid   | Eine eindeutige GUID für diese Ausführung der Funktion | Zeichenfolge   |
 
-Jeder Triggertyp verfügt über einen anderen Satz von Metadaten. Die `$TriggerMetadata` für `QueueTrigger` enthalten neben anderen Informationen z. B. Werte für `InsertionTime`, `Id` und `DequeueCount`. Weitere Informationen zu den Metadaten von Warteschlangentriggern finden Sie in der [offiziellen Dokumentation zu Warteschlangentriggern](functions-bindings-storage-queue.md#trigger---message-metadata). Sehen Sie in der Dokumentation zu den von Ihnen verwendeten [Triggern](functions-triggers-bindings.md) nach, welche Informationen in den Metadaten der Trigger enthalten sind.
+Jeder Triggertyp verfügt über einen anderen Satz von Metadaten. Die `$TriggerMetadata` für `QueueTrigger` enthalten neben anderen Informationen z. B. Werte für `InsertionTime`, `Id` und `DequeueCount`. Weitere Informationen zu den Metadaten von Warteschlangentriggern finden Sie in der [offiziellen Dokumentation zu Warteschlangentriggern](functions-bindings-storage-queue-trigger.md#message-metadata). Sehen Sie in der Dokumentation zu den von Ihnen verwendeten [Triggern](functions-triggers-bindings.md) nach, welche Informationen in den Metadaten der Trigger enthalten sind.
 
 ## <a name="bindings"></a>Bindungen
 
@@ -134,9 +126,9 @@ Das Verhalten von `Push-OutputBinding` hängt vom Wert für `-Name` ab:
 
 Im Folgenden sind gültige Parameter für den Aufruf von `Push-OutputBinding` angegeben:
 
-| NAME | type | Position | BESCHREIBUNG |
+| Name | type | Position | BESCHREIBUNG |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | Zeichenfolge | 1 | Der Name der Ausgabebindung, die Sie festlegen möchten |
+| **`-Name`** | String | 1 | Der Name der Ausgabebindung, die Sie festlegen möchten |
 | **`-Value`** | Object | 2 | Der Wert der festzulegenden Ausgabebindung, der vom ByValue-Wert der Pipeline akzeptiert wird. |
 | **`-Clobber`** | SwitchParameter | benannt | (Optional:) Durch die Angabe wird erzwungen, dass der Wert für eine angegebene Ausgabebindung festgelegt werden muss. | 
 
@@ -151,7 +143,7 @@ Die folgenden allgemeinen Parameter werden ebenfalls unterstützt:
 * `PipelineVariable`
 * `OutVariable` 
 
-Weitere Informationen finden Sie unter [About CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216) (Informationen zu CommonParameters).
+Weitere Informationen finden Sie unter [About CommonParameters](/powershell/module/microsoft.powershell.core/about/about_commonparameters) (Informationen zu CommonParameters).
 
 #### <a name="push-outputbinding-example-http-responses"></a>Beispiel für „Push-OutputBinding“: HTTP-Antworten
 
@@ -184,7 +176,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 
 #### <a name="push-outputbinding-example-queue-output-binding"></a>Beispiel für „Push-OutputBinding“: Einreihen von Ausgabebindungen in Warteschlangen
 
-`Push-OutputBinding` dient zum Senden von Daten an Ausgabebindungen, z. B. eine [Azure Queue Storage-Ausgabebindung](functions-bindings-storage-queue.md#output). Im folgenden Beispiel hat die in die Warteschlange geschriebene Nachricht den Wert „output #1“:
+`Push-OutputBinding` dient zum Senden von Daten an Ausgabebindungen, z. B. eine [Azure Queue Storage-Ausgabebindung](functions-bindings-storage-queue-output.md). Im folgenden Beispiel hat die in die Warteschlange geschriebene Nachricht den Wert „output #1“:
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
@@ -241,7 +233,7 @@ Die Protokollierung funktioniert bei PowerShell-Funktionen wie die reguläre Pow
 
 | Protokollierungsebene von Functions | Protokollierungs-Cmdlet |
 | ------------- | -------------- |
-| Error | **`Write-Error`** |
+| Fehler | **`Write-Error`** |
 | Warnung | **`Write-Warning`**  | 
 | Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | Schreibt in die Protokollierung auf _Informationsebene_ |
 | Debuggen | **`Write-Debug`** |
@@ -285,8 +277,8 @@ Alle Trigger und Bindungen werden im Code als echte Datentypen dargestellt:
 
 * Hashtable
 * Zeichenfolge
-* Byte[]
-* int
+* byte[]
+* INT
 * double
 * HttpRequestContext
 * HttpResponseContext
@@ -303,9 +295,9 @@ HTTP- und Webhooktrigger und HTTP-Ausgabebindungen verwenden Request- und Respon
 
 Das Anforderungsobjekt, das an das Skript übergeben wird, ist vom Typ `HttpRequestContext`, der über die folgenden Eigenschaften verfügt:
 
-| Eigenschaft  | Description                                                    | type                      |
+| Eigenschaft  | BESCHREIBUNG                                                    | type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Ein Objekt, das den Hauptteil der Anforderung enthält. `Body` wird basierend auf den Daten in den am besten geeigneten Typ serialisiert. Bei JSON-Daten wird z. B. eine Hashtabelle übergeben. Wenn es sich bei den Daten um eine Zeichenfolge handelt, erfolgt die Übergabe auch als Zeichenfolge. | object |
+| **`Body`**    | Ein Objekt, das den Hauptteil der Anforderung enthält. `Body` wird basierend auf den Daten in den am besten geeigneten Typ serialisiert. Bei JSON-Daten wird z. B. eine Hashtabelle übergeben. Wenn es sich bei den Daten um eine Zeichenfolge handelt, erfolgt die Übergabe auch als Zeichenfolge. | Objekt (object) |
 | **`Headers`** | Ein Wörterbuch mit den Headern der Anforderung.                | Dictionary<string,string><sup>*</sup> |
 | **`Method`** | Die HTTP-Methode der Anforderung.                                | Zeichenfolge                    |
 | **`Params`**  | Ein Objekt, das die Routingparameter der Anforderung enthält. | Dictionary<string,string><sup>*</sup> |
@@ -318,9 +310,9 @@ Das Anforderungsobjekt, das an das Skript übergeben wird, ist vom Typ `HttpRequ
 
 Das Antwortobjekt, das Sie zurücksenden sollten, weist den Typ `HttpResponseContext` auf, der über die folgenden Eigenschaften verfügt:
 
-| Eigenschaft      | Description                                                 | type                      |
+| Eigenschaft      | BESCHREIBUNG                                                 | type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Ein Objekt, das den Hauptteil der Antwort enthält.           | object                    |
+| **`Body`**  | Ein Objekt, das den Hauptteil der Antwort enthält.           | Objekt (object)                    |
 | **`ContentType`** | Einstellungsmöglichkeit für den Inhaltstyp der Antwort | Zeichenfolge                    |
 | **`Headers`** | Ein Objekt, das die Header der Antwort enthält.               | Wörterbuch oder Hashtabelle   |
 | **`StatusCode`**  | Der HTTP-Statuscode der Antwort.                       | Zeichenfolge oder ganze Zahl             |
@@ -383,33 +375,74 @@ param([string] $myBlob)
 
 In PowerShell gibt es das Konzept von PowerShell-Profilen. Wenn Sie nicht mit PowerShell-Profilen vertraut sind, lesen Sie unter [Informationen zu Profilen](/powershell/module/microsoft.powershell.core/about/about_profiles) nach.
 
-Bei PowerShell-Funktionen wird das Profilskript beim Start der Funktions-App ausgeführt. Funktions-Apps starten bei der ersten Bereitstellung und nach einem Leerlauf ([Kaltstart](#cold-start)).
+Bei PowerShell-Funktionen wird das Profilskript einmal pro PowerShell-Workerinstanz in der App bei der ersten Bereitstellung und nach dem Leerlauf ([Kaltstart](#cold-start)) ausgeführt. Wenn die Parallelität durch Festlegen des Werts [PSWorkerInProcConcurrencyUpperBound](#concurrency) aktiviert ist, wird das Profilskript für jeden erstellten Runspace ausgeführt.
 
 Wenn Sie eine Funktions-App mit Tools wie Visual Studio Code und Azure Functions Core Tools erstellen, wird automatisch eine Standarddatei `profile.ps1` erstellt. Das Standardprofil wird im [GitHub-Repository von Core Tools](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) verwaltet und bietet Folgendes:
 
 * Automatische MSI-Authentifizierung in Azure
 * Möglichkeit der Aktivierung des Azure PowerShell-Alias `AzureRM` bei Bedarf
 
-## <a name="powershell-version"></a>PowerShell-Version
+## <a name="powershell-versions"></a>PowerShell-Versionen
 
-Die folgende Tabelle zeigt die jeweilige von den Hauptversionen von Functions Runtime verwendete PowerShell-Version:
+Die folgende Tabelle zeigt die PowerShell-Versionen, die für jede Hauptversion der Functions-Runtime verfügbar sind, sowie die erforderliche .NET-Version:
 
-| Functions-Version | PowerShell-Version                             |
-|-------------------|------------------------------------------------|
-| 1.x               | Windows PowerShell 5.1 (durch Runtime gesperrt) |
-| 2.x               | PowerShell Core 6                              |
+| Functions-Version | PowerShell-Version                               | .NET-Version  | 
+|-------------------|--------------------------------------------------|---------------|
+| 3.x (empfohlen) | PowerShell 7 (empfohlen)<br/>PowerShell Core 6 | .NET Core 3.1<br/>.NET Core 2.1 |
+| 2.x               | PowerShell Core 6                                | .NET Core 2.2 |
 
 Die aktuell von der Runtime verwendete Version sehen Sie in der Ausgabe `$PSVersionTable` einer Funktion.
 
+### <a name="running-local-on-a-specific-version"></a>Lokale Ausführung unter einer bestimmten Version
+
+Wenn Azure Functions lokal ausgeführt wird, verwendet die Runtime standardmäßig PowerShell Core 6. Um stattdessen PowerShell 7 bei lokaler Ausführung zu verwenden, müssen Sie die Einstellung `"FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"` zum Array `Values` in der Datei „local.setting.json“ im Projektstamm hinzufügen. Wenn die Datei „local.settings.json“ lokal unter PowerShell 7 ausgeführt wird, sieht Ihre local.settings.json-Datei wie im folgenden Beispiel aus: 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "powershell",
+    "FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"
+  }
+}
+```
+
+### <a name="changing-the-powershell-version"></a>Ändern der PowerShell-Version
+
+Ihre Funktions-App muss unter Version 3.x ausgeführt werden, um ein Upgrade von PowerShell Core 6 auf PowerShell 7 durchführen zu können. Informationen dazu finden Sie unter [Anzeigen und Aktualisieren der aktuellen Runtimeversion](set-runtime-version.md#view-and-update-the-current-runtime-version).
+
+Verwenden Sie die folgenden Schritte, um die von Ihrer Funktions-App verwendete PowerShell-Version zu ändern. Sie können dies entweder im Azure-Portal oder mithilfe von PowerShell erledigen.
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Funktions-App.
+
+1. Wählen Sie unter **Einstellungen** die Option **Konfiguration** aus. Suchen Sie auf der Registerkarte **Allgemeine Einstellungen** die **PowerShell-Version**. 
+
+    :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="Wählen Sie die von der Funktions-App verwendete PowerShell-Version aus."::: 
+
+1. Wählen Sie die gewünschte **PowerShell Core-Version** und anschließend **Speichern** aus. Wenn Sie vor dem anstehenden Neustart gewarnt werden, wählen Sie **Fortsetzen** aus. Die Funktions-App wird unter der gewählten PowerShell-Version neu gestartet. 
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Führen Sie das folgende Skript aus, um die PowerShell-Version zu ändern: 
+
+```powershell
+Set-AzResource -ResourceId "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<FUNCTION_APP>/config/web" -Properties @{  powerShellVersion  = '<VERSION>' } -Force -UsePatchSemantics
+
+```
+
+Ersetzen Sie `<SUBSCRIPTION_ID>`, `<RESOURCE_GROUP>` und `<FUNCTION_APP>` durch die ID Ihres Azure-Abonnements, den Namen Ihrer Ressourcengruppe bzw. der Funktions-App.  Ersetzen Sie außerdem `<VERSION>` entweder durch `~6` oder `~7`. Sie können den aktualisierten Wert der `powerShellVersion`-Einstellung in `Properties` der zurückgegebenen Hashtabelle überprüfen. 
+
+---
+
+Die Funktions-App startet neu, nachdem die Änderung der Konfiguration vorgenommen wurde.
+
 ## <a name="dependency-management"></a>Verwaltung von Abhängigkeiten
 
-PowerShell-Funktionen unterstützen das Herunterladen und Verwalten von Modulen aus dem [PowerShell-Katalog](https://www.powershellgallery.com) durch den Dienst. Wenn Sie die Datei „host.json“ ändern und die Eigenschaft „managedDependency“ auf „true“ festlegen, wird die Datei „requirements.psd1“ verarbeitet. Die angegebenen Module werden automatisch heruntergeladen und für die Funktion verfügbar gemacht. 
+Azure Functions ermöglicht Ihnen das Nutzen des [PowerShell-Katalogs](https://www.powershellgallery.com) zum Verwalten von Abhängigkeiten. Wenn die Abhängigkeitsverwaltung aktiviert ist, wird die Datei „requirements.psd1“ verwendet, um die benötigten Module automatisch herunterzuladen. Sie aktivieren dieses Verhalten, indem Sie im Stammverzeichnis der Datei [host.json](functions-host-json.md) die `managedDependency`-Eigenschaft auf `true` festlegen (siehe folgendes Beispiel):
 
-Die maximal unterstützte Anzahl von Modulen beträgt derzeit 10. Die unterstützte Syntax ist MajorNumber.* oder eine exakte Modulversion, wie unten gezeigt. Das Azure Az-Modul ist standardmäßig enthalten, wenn eine neue PowerShell-Funktions-App erstellt wird.
-
-Der Sprach-Worker übernimmt alle aktualisierten Module bei einem Neustart.
-
-host.json
 ```json
 {
   "managedDependency": {
@@ -418,7 +451,7 @@ host.json
 }
 ```
 
-requirements.psd1
+Wenn Sie ein neues PowerShell Functions-Projekt erstellen, ist die Abhängigkeitsverwaltung standardmäßig aktiviert, wobei das Azure[`Az`-Modul](/powershell/azure/new-azureps-module-az) enthalten ist. Die maximal unterstützte Anzahl von Modulen beträgt derzeit 10. Die unterstützte Syntax ist _`MajorNumber`_ `.*` oder eine exakte Modulversion, wie im folgenden Beispiel von „requirements.psd1“ gezeigt:
 
 ```powershell
 @{
@@ -427,21 +460,38 @@ requirements.psd1
 }
 ```
 
+Wenn Sie die Datei „requirements.psd1“ aktualisieren, werden aktualisierte Module nach einem Neustart installiert.
+
+> [!NOTE]
+> Bei verwalteten Abhängigkeiten ist zum Herunterladen von Modulen Zugriff auf www.powershellgallery.com erforderlich. Achten Sie bei lokaler Ausführung darauf, dass die Laufzeit auf diese URL zugreifen kann, indem Sie alle erforderlichen Firewallregeln hinzufügen.
+
+> [!NOTE]
+> Verwaltete Abhängigkeiten unterstützen derzeit keine Module, bei denen der Benutzer eine Lizenz akzeptieren muss, entweder durch interaktives Akzeptieren der Lizenz oder durch Bereitstellung des `-AcceptLicense`-Schalters beim Aufruf von `Install-Module`.
+
+Die folgenden Anwendungseinstellungen können verwendet werden, um zu ändern, wie die verwalteten Abhängigkeiten heruntergeladen und installiert werden. Ihr App-Upgrade beginnt innerhalb von `MDMaxBackgroundUpgradePeriod`, und der Upgrade-Prozess wird innerhalb von `MDNewSnapshotCheckPeriod` abgeschlossen.
+
+| Funktions-App-Einstellung              | Standardwert             | BESCHREIBUNG                                         |
+|   -----------------------------   |   -------------------     |  -----------------------------------------------    |
+| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 Tage)     | Jeder PowerShell-Workerprozess löst die Überprüfung auf Modulupgrades im PowerShell-Katalog beim Start des Prozesses und alle `MDMaxBackgroundUpgradePeriod` danach aus. Wenn im PowerShell-Katalog eine neue Modulversion verfügbar ist, wird sie im Dateisystem installiert und PowerShell-Workern zur Verfügung gestellt. Wenn Sie diesen Wert verringern, erhält Ihre Funktions-App schneller eine neuere Modulversion. Dies steigert aber auch den App-Ressourceneinsatz (Netzwerk-E/A, CPU, Speicher). Wenn Sie diesen Wert erhöhen, wird der App-Ressourceneinsatz verringert, aber auch die Bereitstellung neuer Modulversionen für Ihre App verzögert. | 
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 Stunde)       | Nach der Installation neuer Modulversionen im Dateisystem müssen alle PowerShell-Workerprozesse neu gestartet werden. Das Neustarten von PowerShell-Workern wirkt sich auf die Verfügbarkeit der App aus, da dadurch die Ausführung der aktuellen Funktion unterbrochen werden kann. Bis zum Abschluss des Neustarts aller PowerShell-Workerprozesse können Funktionsaufrufe entweder die alte oder neue Modulversion verwenden. Alle PowerShell-Worker werden innerhalb von `MDNewSnapshotCheckPeriod` vollständig neu gestartet. Wenn Sie diesen Wert erhöhen, wird die Häufigkeit von Unterbrechungen verringert, aber es kann auch zu einer Verlängerung des Zeitraums kommen, in dem für Funktionsaufrufe nicht bestimmt werden kann, ob die alte oder die neue Modulversion verwendet wird. |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 Tag)     | Um übermäßige Modulupgrades bei häufigen Workerneustarts zu vermeiden, wird die Überprüfung auf Modulupgrades nicht durchgeführt, wenn ein Worker diese Prüfung bereits innerhalb der letzten `MDMinBackgroundUpgradePeriod` ausgelöst hat. |
+
 Wenn Sie Ihre eigenen benutzerdefinierten Module verwenden möchten, müssen Sie ein wenig anders vorgehen als gewohnt.
 
-Wenn Sie das Modul auf dem lokalen Computer installieren, wird es in einem der global verfügbaren Ordner in Ihrem `$env:PSModulePath` installiert. Da die Funktion in Azure ausgeführt wird, haben Sie keinen Zugriff auf die Module, die auf Ihrem Computer installiert sind. Aus diesem Grund muss sich der `$env:PSModulePath` für eine PowerShell-Funktions-App vom `$env:PSModulePath` eines regulären PowerShell-Skripts unterscheiden.
+Auf Ihrem lokalen Computer wird das Modul in einem der global verfügbaren Ordner in Ihrem `$env:PSModulePath` installiert. Bei Ausführung in Azure haben Sie keinen Zugriff auf die auf Ihrem Computer installierten Module. Aus diesem Grund muss sich der `$env:PSModulePath` für eine PowerShell-Funktions-App vom `$env:PSModulePath` eines regulären PowerShell-Skripts unterscheiden.
 
 In Functions enthält `PSModulePath` zwei Pfade:
 
-* Einen Ordner `Modules` im Stammverzeichnis der Funktions-App
-* Einen Pfad zu einem Ordner `Modules` im PowerShell-Sprachworker
+* Den Ordner `Modules` im Stammverzeichnis Ihrer Funktions-App
+* Einen Pfad zum Ordner `Modules`, der vom PowerShell-Sprachworker gesteuert wird
+
 
 ### <a name="function-app-level-modules-folder"></a>Ordner `Modules` auf Ebene der Funktions-App
 
 Um benutzerdefinierte Module zu verwenden, können Sie die Module, von denen Ihre Funktionen abhängen, im Ordner `Modules` speichern. Module in diesem Ordner stehen in der Functions-Runtime automatisch zur Verfügung. Jede Funktion in der Funktions-App kann diese Module verwenden. 
 
 > [!NOTE]
-> In der Datei „requirements.psd1“ angegebene Module werden automatisch heruntergeladen und in den Pfad eingeschlossen, sodass Sie sie nicht in den Ordner „modules“ einschließen müssen. Diese werden bei Ausführung in der Cloud lokal im Ordner „$env:LOCALAPPDATA/AzureFunctions“ und im Ordner „/data/ManagedDependencies“ gespeichert.
+> In der Datei „requirements.psd1“ angegebene Module werden automatisch heruntergeladen und in den Pfad eingeschlossen, sodass Sie sie nicht in den Ordner „modules“ einschließen müssen. Diese werden bei Ausführung in der Cloud lokal im Ordner `$env:LOCALAPPDATA/AzureFunctions` und im Ordner `/data/ManagedDependencies` gespeichert.
 
 Um dieses benutzerdefinierte Modulfeature nutzen zu können, erstellen Sie den Ordner `Modules` im Stammverzeichnis der Funktions-App. Kopieren Sie die Module, die Sie in Ihren Funktionen verwenden möchten, an diesen Speicherort.
 
@@ -450,7 +500,7 @@ mkdir ./Modules
 Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-Mit dem Ordner „Modules“ sollte Ihre Funktions-App folgende Ordnerstruktur aufweisen:
+Mit dem Ordner `Modules` sollte Ihre Funktions-App folgende Ordnerstruktur aufweisen:
 
 ```
 PSFunctionApp
@@ -477,7 +527,7 @@ Die aktuelle Liste der Module lautet wie folgt:
 * [Microsoft.PowerShell.Archive:](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive) Modul für die Arbeit mit Archiven, z. B. `.zip`, `.nupkg` und anderen
 * **ThreadJob**: Eine threadbasierte Implementierung der PowerShell-Auftrags APIs
 
-Von Functions wird die neueste Version dieser Module verwendet. Um eine bestimmte Version dieser Module zu verwenden, können Sie die betreffende Version in den Ordner `Modules` der Funktions-App einfügen.
+Von Azure Functions wird standardmäßig die neueste Version dieser Module verwendet. Um eine bestimmte Modulversion zu verwenden, legen Sie diese bestimmte Version im Ordner `Modules` Ihrer Funktionsanwendung ab.
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
 
@@ -502,17 +552,22 @@ Standardmäßig kann die PowerShell-Runtime von Functions nur einen Aufruf einer
 * Wenn Sie versuchen, eine große Anzahl von Aufrufen gleichzeitig zu verarbeiten
 * Wenn Ihre Funktionen andere Funktionen innerhalb derselben Funktions-App aufrufen
 
-Sie können dieses Verhalten ändern, indem Sie die folgende Umgebungsvariable auf einen ganzzahligen Wert festlegen:
+Es gibt einige Parallelitätsmodelle, die Sie je nach Art der Workload untersuchen könnten:
 
-```
-PSWorkerInProcConcurrencyUpperBound
-```
+* Erhöhung von ```FUNCTIONS_WORKER_PROCESS_COUNT```. Dadurch können Funktionsaufrufe in mehreren Prozessen innerhalb derselben Instanz behandelt werden, was einen gewissen CPU- und Arbeitsspeicheroverhead mit sich bringt. Im Allgemeinen werden E/A-gebundene Funktionen nicht durch diesen Overhead beeinträchtigt. Bei CPU-gebundenen Funktionen können die Auswirkungen erheblich sein.
+
+* Erhöhen Sie den Einstellungswert ```PSWorkerInProcConcurrencyUpperBound``` für die App. Dies ermöglicht die Erstellung mehrerer Runspaces innerhalb desselben Prozesses, was den CPU- und Arbeitsspeicheroverhead erheblich reduziert.
 
 Sie legen diese Umgebungsvariable in den [App-Einstellungen](functions-app-settings.md) Ihrer Funktions-App fest.
 
+Abhängig von Ihrem Anwendungsfall kann Durable Functions die Skalierbarkeit erheblich verbessern. Weitere Informationen finden Sie unter [Anwendungsmuster von Durable Functions](./durable/durable-functions-overview.md?tabs=powershell#application-patterns).
+
+>[!NOTE]
+> Möglicherweise erhalten Sie die Warnung „Anforderungen werden aufgrund nicht verfügbarer Runspaces in die Warteschlange gestellt“. Beachten Sie, dass dies kein Fehler ist. Die Nachricht teilt Ihnen mit, dass sich Anforderungen in der Warteschlange befinden und diese bearbeitet werden, wenn die vorherigen Anforderungen abgeschlossen sind.
+
 ### <a name="considerations-for-using-concurrency"></a>Überlegungen zur Verwendung von Parallelität
 
-PowerShell ist standardmäßig eine _Singlethread_-Skriptsprache. Parallelität kann jedoch mithilfe mehrerer PowerShell-Runspaces im gleichen Prozess hinzugefügt werden. Die Menge der erstellten Runspaces entspricht der Anwendungseinstellung PSWorkerInProcConcurrencyUpperBound. Der Durchsatz hängt von der im ausgewählten Plan verfügbaren CPU-Anzahl und Arbeitsspeichergröße ab.
+PowerShell ist standardmäßig eine _Singlethread_-Skriptsprache. Parallelität kann jedoch mithilfe mehrerer PowerShell-Runspaces im gleichen Prozess hinzugefügt werden. Die Anzahl der erstellten Runspaces entspricht der Anwendungseinstellung ```PSWorkerInProcConcurrencyUpperBound```. Der Durchsatz hängt von der im ausgewählten Plan verfügbaren CPU-Anzahl und Arbeitsspeichergröße ab.
 
 Azure PowerShell verwendet einige Kontexte und Status auf _Prozessebene_, die Ihnen viel Eingabearbeit ersparen können. Wenn Sie jedoch Parallelität in Ihrer Funktions-App aktivieren und Aktionen aufrufen, die den Zustand ändern, könnte es zu Racebedingungen kommen. Diese Racebedingungen sind schwierig zu debuggen, da ein Aufruf von einem bestimmten Zustand abhängt, während ein anderer Aufruf diesen Zustand ändert.
 

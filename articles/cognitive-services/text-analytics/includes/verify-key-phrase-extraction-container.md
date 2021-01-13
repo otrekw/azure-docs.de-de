@@ -3,18 +3,19 @@ title: Überprüfen der Containerinstanz für die Schlüsselbegriffserkennung
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Containerinstanz für die Schlüsselbegriffserkennung überprüfen.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
-ms.date: 09/12/2019
-ms.author: dapine
-ms.openlocfilehash: 1e2001c1f4cb2da195a3dcd0ca8fe198de8dd264
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 5dca4828a5c1127133461ddf9fc06099fc176b68
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968574"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009914"
 ---
 ### <a name="verify-the-key-phrase-extraction-container-instance"></a>Überprüfen der Containerinstanz für die Schlüsselbegriffserkennung
 

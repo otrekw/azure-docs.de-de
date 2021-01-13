@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Entwurfskonzepte | Microsoft-Dokumentation'
+title: Entwurfskonzepte für Azure AD Connect | Microsoft Docs
 description: In diesem Thema werden bestimmte Aspekte des Implementierungsentwurfs beschrieben.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135738"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89279651"
 ---
-# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Entwurfskonzepte
+# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Designkonzepte
 Hier erfahren Sie, welche Aspekte bei der Planung der Implementierung von Azure AD Connect berücksichtigt werden müssen. Dieses Dokument enthält ausführliche Informationen zu bestimmten Aspekten, und diese Konzepte werden auch in anderen Dokumenten kurz beschrieben.
 
 ## <a name="sourceanchor"></a>sourceAnchor
@@ -165,7 +165,7 @@ Ist das Attribut während der Analyse (Schritt 4) in einem oder in mehreren Obje
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>Auswirkungen auf die AD FS-Konfiguration oder Verbundkonfiguration eines Drittanbieters
 Wenn Sie lokale AD FS-Bereitstellungen mit Azure AD Connect verwalten, ändert Azure AD Connect die Anspruchsregeln automatisch dahingehend, dass dasselbe AD-Attribut für „sourceAnchor“ verwendet wird. Dadurch wird sichergestellt, dass der von AD FS generierte Anspruch „ImmutableID“ den „sourceAnchor“-Werten entspricht, die nach Azure AD exportiert werden.
 
-Wenn Sie AD FS außerhalb von Azure AD Connect verwalten oder Drittanbieter-Verbundserver für die Authentifizierung verwenden, müssen Sie die Anspruchsregeln für den Anspruch „ImmutableID“ manuell aktualisieren, sodass er den nach Azure AD exportierten Werten von „sourceAnchor“ entspricht. Dies wird im Abschnitt [Ändern von AD FS-Anspruchsregeln](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims) des Artikels beschrieben. Nach Abschluss der Installation gibt der Assistent folgende Warnung aus:
+Wenn Sie AD FS außerhalb von Azure AD Connect verwalten oder Drittanbieter-Verbundserver für die Authentifizierung verwenden, müssen Sie die Anspruchsregeln für den Anspruch „ImmutableID“ manuell aktualisieren, sodass er den nach Azure AD exportierten Werten von „sourceAnchor“ entspricht. Dies wird im Abschnitt [Ändern von AD FS-Anspruchsregeln](./how-to-connect-fed-management.md#modclaims) des Artikels beschrieben. Nach Abschluss der Installation gibt der Assistent folgende Warnung aus:
 
 ![Verbundkonfiguration eines Drittanbieters](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
@@ -193,7 +193,7 @@ John ist ein Benutzer in contoso.com. John soll den lokalen UPN „john\@contoso
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>Nicht routingfähige lokale Domänen und UPN für Azure AD
 Einige Unternehmen verfügen über nicht routingfähige Domänen, z.B. „contoso.local“, oder einteilige Domänen, z.B. „contoso“. Sie können eine nicht routingfähige Domäne in Azure AD nicht überprüfen. Azure AD Connect kann Synchronisierungen nur mit einer überprüften Domäne in Azure AD durchführen. Wenn Sie ein Azure AD-Verzeichnis erstellen, wird eine routingfähige Domäne erstellt, die zur Standarddomäne für Ihre Azure AD-Instanz wird, z.B. „contoso.onmicrosoft.com“. Daher ist es notwendig, in einem solchen Szenario alle anderen routingfähigen Domänen zu überprüfen, wenn Sie Synchronisierungen nicht mit der standardmäßigen Domäne „onmicrosoft.com“ durchführen möchten.
 
-Unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory-domains-add-azure-portal.md) finden Sie weitere Informationen zum Hinzufügen und Überprüfen von Domänen.
+Unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../fundamentals/add-custom-domain.md) finden Sie weitere Informationen zum Hinzufügen und Überprüfen von Domänen.
 
 Azure AD Connect erkennt, ob Sie eine nicht routingfähige Domänenumgebung ausführen, und warnt Sie entsprechend davor, nicht mit den Expresseinstellungen fortzufahren. Wenn Sie sich in einer nicht routingfähigen Domäne befinden, ist es wahrscheinlich, dass auch der UPN der Benutzer nicht routingfähige Suffixe aufweist. Wenn Sie beispielsweise „contoso.local“ verwenden, empfiehlt Azure AD Connect die Verwendung von benutzerdefinierten Einstellungen anstatt der Expresseinstellungen. Indem Sie benutzerdefinierte Einstellungen verwenden, können Sie das Attribut angeben, das als UPN für die Anmeldung bei Azure verwendet werden soll, nachdem die Benutzer mit Azure AD synchronisiert wurden.
 

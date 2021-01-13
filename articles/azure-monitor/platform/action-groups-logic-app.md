@@ -2,25 +2,24 @@
 title: Auslösen komplexer Aktionen mit Azure Monitor-Warnungen
 description: Erfahren Sie, wie eine Aktion einer Logik-App zum Verarbeiten von Azure Monitor-Warnungen erstellt wird.
 author: dkamstra
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a33c6f6621e7fc7944bc116b27e5f26de88f77d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f76d28018fdf55314593dabc44ef1e9a1dab9494
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389573"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995096"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Auslösen komplexer Aktionen mit Azure Monitor-Warnungen
 
 Dieser Artikel zeigt Ihnen, wie eine Logik-App eingerichtet und ausgelöst wird, um eine Konversation in Microsoft Teams zu erstellen, wenn eine Warnung ausgelöst wird.
 
 ## <a name="overview"></a>Übersicht
-Wenn eine Azure Monitor-Warnung auslöst wird, wird eine [Aktionsgruppe](../../azure-monitor/platform/action-groups.md) aufgerufen. Aktionsgruppen ermöglichen Ihnen das Auslösen von mindestens einer Aktion, um andere über eine Warnung zu benachrichtigen und diese auch zu beseitigen.
+
+Wenn eine Azure Monitor-Warnung auslöst wird, wird eine [Aktionsgruppe](./action-groups.md) aufgerufen. Aktionsgruppen ermöglichen Ihnen das Auslösen von mindestens einer Aktion, um andere über eine Warnung zu benachrichtigen und diese auch zu beseitigen.
 
 Der allgemeine Vorgang besteht aus den folgenden Schritten:
 
@@ -38,7 +37,7 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
 
 1.  Wählen Sie im Azure-Portal oben links **Ressource erstellen** aus.
 
-2.  Suchen Sie nach  **Logik-App**, wählen Sie diese Option aus, und wählen Sie dann  **Erstellen** aus.
+2.  Suchen Sie nach **Logik-App**, und wählen Sie diese Option und dann **Erstellen** aus.
 
 3.  Geben Sie der Logik-App einen **Namen**, wählen Sie eine **Ressourcengruppe** aus usw.
 
@@ -52,7 +51,7 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
 
 6.  Wählen Sie **Bearbeiten** aus, um den HTTP-Anforderungstrigger zu ändern.
 
-    ![HTTP-Anforderungstrigger ](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP-Anforderungstrigger ")
+    ![HTTP-Anforderungstrigger](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP-Anforderungstrigger")
 
 7.  Wählen Sie **Beispielnutzlast zum Generieren eines Schemas verwenden** aus.
 
@@ -103,15 +102,15 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
 
 10. Wählen Sie **+** **Neuer Schritt** und anschließend **Aktion hinzufügen** aus.
 
-    ![Aktion hinzufügen](media/action-groups-logic-app/add-action.png "Aktion hinzufügen")
+    ![Hinzufügen einer Aktion](media/action-groups-logic-app/add-action.png "Hinzufügen einer Aktion")
 
 11. Suchen Sie nach dem Microsoft Teams-Connector, und wählen ihn aus. Wählen Sie die Aktion **Microsoft Teams: Nachricht veröffentlichen** aus.
 
     ![Microsoft Teams-Aktionen](media/action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams-Aktionen")
 
-12. Konfigurieren Sie die Microsoft Teams-Aktion. Der **Logik-Apps-Designer** fordert Sie zur Authentifizierung mit Ihrem Office 365-Konto auf. Wählen Sie die **Team-ID** und die **Kanal-ID** zum Senden der Nachricht aus.
+12. Konfigurieren Sie die Microsoft Teams-Aktion. Der **Logic Apps Designer** fordert Sie zur Authentifizierung mit Ihrem Geschäfts-, Schul- oder Unikonto auf. Wählen Sie die **Team-ID** und die **Kanal-ID** zum Senden der Nachricht aus.
 
-13. Konfigurieren Sie die Nachricht mithilfe einer Kombination aus statischem Text und Verweisen auf die \<Felder\> im dynamischen Inhalt. Kopieren Sie den folgenden Text, und fügen Sie ihn in das Feld **Nachricht** ein:
+13. Konfigurieren Sie die Nachricht mithilfe einer Kombination aus statischem Text und Verweisen auf die \<fields\> im dynamischen Inhalt. Kopieren Sie den folgenden Text, und fügen Sie ihn in das Feld **Nachricht** ein:
 
     ```text
       Activity Log Alert: <eventSource>
@@ -120,7 +119,7 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
       resourceId: <resourceId>
     ```
 
-    Suchen Sie dann nach den \<Feldern\> mit dynamischen Inhaltstags mit dem gleichen Namen, und ersetzen Sie diese.
+    Suchen Sie dann nach den \<fields\> mit dynamischen Inhaltstags mit dem gleichen Namen, und ersetzen Sie diese.
 
     > [!NOTE]
     > Es gibt zwei dynamische Felder mit dem Namen **Status**. Fügen Sie der Nachricht beide Felder hinzu. Verwenden Sie das Feld im **activityLog**-Eigenschaftenbehälter, und löschen Sie das andere Feld. Wenn Sie Ihren Mauszeiger über dem Feld **Status** positionieren, wird der vollqualifizierte Feldverweis wie im folgenden Screenshot gezeigt angezeigt:
@@ -129,9 +128,9 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
 
 14. Wählen Sie oben im **Logik-Apps-Designer** die Option **Speichern** aus, um Ihre Logik-App zu speichern.
 
-15. Öffnen Sie Ihre vorhandene Aktionsgruppe, und fügen Sie eine Aktion hinzu, um auf die Logik-App zu verweisen. Wenn Sie nicht über eine Aktionsgruppe verfügen, erfahren Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups), wie Sie eine erstellen. Vergessen Sie nicht, Ihre Änderungen zu speichern.
+15. Öffnen Sie Ihre vorhandene Aktionsgruppe, und fügen Sie eine Aktion hinzu, um auf die Logik-App zu verweisen. Wenn Sie nicht über eine Aktionsgruppe verfügen, erfahren Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](./action-groups.md), wie Sie eine erstellen. Vergessen Sie nicht, Ihre Änderungen zu speichern.
 
-    ![Aktionsgruppe aktualisieren](media/action-groups-logic-app/update-action-group.png "Aktionsgruppe aktualisieren")
+    ![Aktualisieren der Aktionsgruppe](media/action-groups-logic-app/update-action-group.png "Aktualisieren der Aktionsgruppe")
 
 Das nächste Mal, wenn Ihre Aktionsgruppe durch eine Warnung aufgerufen wird, wird Ihre Logik-App aufgerufen.
 
@@ -159,23 +158,23 @@ Azure Service Health-Einträge sind ein Teil des Aktivitätsprotokolls. Der Proz
                     "operationName": "Microsoft.ServiceHealth/incident/action",
                     "operationId": "e416ed3c-8874-4ec8-bc6b-54e3c92a24d4",
                     "properties": {
-                        "title": "…",
-                        "service": "…",
+                        "title": "...",
+                        "service": "...",
                         "region": "Global",
-                        "communication": "…",
+                        "communication": "...",
                         "incidentType": "Incident",
-                        "trackingId": "…",
+                        "trackingId": "...",
                         "impactStartTime": "2018-03-22T21:40:00.0000000Z",
                         "impactMitigationTime": "2018-03-22T21:41:00.0000000Z",
                         "impactedServices": "[{"ImpactedRegions"}]",
-                        "defaultLanguageTitle": "…",
-                        "defaultLanguageContent": "…",
+                        "defaultLanguageTitle": "...",
+                        "defaultLanguageContent": "...",
                         "stage": "Active",
                         "communicationId": "11000001466525",
                         "version": "0.1.1"
                     },
                     "status": "Active",
-                    "subscriptionId": "…",
+                    "subscriptionId": "...",
                     "submissionTimestamp": "2018-04-03T22:44:50.8013523+00:00"
                 }
             },
@@ -238,7 +237,7 @@ Der Prozess zum Erstellen einer Metrikwarnung ähnelt abgesehen von ein paar Än
         "status": "Activated",
         "context": {
         "timestamp": "2018-04-09T19:00:07.7461615Z",
-        "id": "…",
+        "id": "...",
         "name": "TEST-VM CPU Utilization",
         "description": "",
         "conditionType": "SingleResourceMultipleMetricCriteria",
@@ -260,12 +259,12 @@ Der Prozess zum Erstellen einer Metrikwarnung ähnelt abgesehen von ein paar Än
             }
             ]
         },
-        "subscriptionId": "…",
+        "subscriptionId": "...",
         "resourceGroupName": "TEST",
         "resourceName": "test-vm",
         "resourceType": "Microsoft.Compute/virtualMachines",
-        "resourceId": "…",
-        "portalLink": "…"
+        "resourceId": "...",
+        "portalLink": "..."
         },
         "properties": {}
     }
@@ -295,7 +294,7 @@ Der Prozess zum Erstellen einer Metrikwarnung ähnelt abgesehen von ein paar Än
 Logic Apps verfügt über verschiedene Connectors, mit denen Sie Aktionen in einer Vielzahl von Anwendungen und Datenbanken auslösen können. Slack, SQL Server, Oracle, Salesforce sind lediglich einige Beispiele. Weitere Informationen zu Connectors finden Sie unter [Logic App-Connectors](../../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verschaffen Sie sich eine [Übersicht über Azure Aktivitätsprotokollwarnungen](../../azure-monitor/platform/alerts-overview.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
-* Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Azure Service Health-Benachrichtigung gesendet wird](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
-* Weitere Informationen zu [Aktionsgruppen](../../azure-monitor/platform/action-groups.md).
+* Verschaffen Sie sich eine [Übersicht über Azure Aktivitätsprotokollwarnungen](./alerts-overview.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
+* Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Azure Service Health-Benachrichtigung gesendet wird](../../service-health/alerts-activity-log-service-notifications-portal.md).
+* Weitere Informationen zu [Aktionsgruppen](./action-groups.md).
 

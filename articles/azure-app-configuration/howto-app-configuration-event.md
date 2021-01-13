@@ -1,28 +1,25 @@
 ---
-title: Tutorial zum Einrichten von Azure App Configuration, um Ereignisse an einen Webendpunkt zu senden | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie Azure App Configuration-Ereignisabonnements einrichten, um Schlüssel-Wert-Änderungsereignisse an einen Webendpunkt zu senden.
+title: Senden von Ereignissen an einen Webendpunkt mithilfe von Azure App Configuration
+description: Erfahren Sie, wie Sie Azure App Configuration-Ereignisabonnements verwenden, um Schlüssel-Wert-Änderungsereignisse an einen Webendpunkt zu senden.
 services: azure-app-configuration
-documentationcenter: ''
-author: jimmyca
-manager: yegu
-editor: ''
+author: AlexandraKemperMS
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.topic: tutorial
-ms.date: 05/30/2019
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: d41ce06279536e3479b96d8d7afedf81624dbc9b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.topic: how-to
+ms.date: 03/04/2020
+ms.author: alkemper
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4e005d2f929fd615080d22e93a102a7cc5c1174a
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326599"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696116"
 ---
-# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Schnellstart: Weiterleiten von Azure App Configuration-Ereignissen an einen Webendpunkt mit der Azure-Befehlszeilenschnittstelle
+# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Weiterleiten von Azure App Configuration-Ereignissen an einen Webendpunkt mit der Azure-Befehlszeilenschnittstelle
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure App Configuration-Ereignisabonnements einrichten, um Schlüssel-Wert-Änderungsereignisse an einen Webendpunkt zu senden. Benutzer von Azure App Configuration können Ereignisse abonnieren, die bei der Änderung von Schlüssel-Wert-Paaren ausgegeben werden. Diese Ereignisse können Webhooks, Azure Functions, Azure Storage-Warteschlangen oder andere Ereignishandler auslösen, die von Azure Event Grid unterstützt werden. Üblicherweise senden Sie Ereignisse an einen Endpunkt, der die Ereignisdaten verarbeitet und entsprechende Aktionen ausführt. Der Einfachheit halber senden Sie die Ereignisse in diesem Artikel allerdings an eine Web-App, die die Nachrichten sammelt und anzeigt.
+In diesem Artikel erfahren Sie, wie Sie Azure App Configuration-Ereignisabonnements einrichten, um Schlüssel-Wert-Änderungsereignisse an einen Webendpunkt zu senden. Benutzer von Azure App Configuration können Ereignisse abonnieren, die bei Schlüssel-Wert-Änderungen ausgegeben werden. Diese Ereignisse können Webhooks, Azure Functions, Azure Storage-Warteschlangen oder andere Ereignishandler auslösen, die von Azure Event Grid unterstützt werden. Üblicherweise senden Sie Ereignisse an einen Endpunkt, der die Ereignisdaten verarbeitet und entsprechende Aktionen ausführt. Der Einfachheit halber senden Sie die Ereignisse in diesem Artikel allerdings an eine Web-App, die die Nachrichten sammelt und anzeigt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,7 +27,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure App Configuration-Er
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden, müssen Sie für diesen Artikel mindestens die Version 2.0.24 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden, müssen Sie für diesen Artikel mindestens die Version 2.0.70 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 Falls Sie nicht Cloud Shell verwenden, müssen Sie sich zuerst mithilfe von `az login` anmelden.
 
@@ -38,7 +35,7 @@ Falls Sie nicht Cloud Shell verwenden, müssen Sie sich zuerst mithilfe von `az 
 
 Event Grid-Themen sind Azure-Ressourcen und müssen in einer Azure-Ressourcengruppe platziert werden. Die Azure-Ressourcengruppe ist eine logische Sammlung, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. 
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `<resource_group_name>` am Standort *westus* erstellt.  Ersetzen Sie `<resource_group_name>` durch einen eindeutigen Namen für Ihre Ressourcengruppe.
 
@@ -46,15 +43,16 @@ Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `<resource_group_
 az group create --name <resource_group_name> --location westus
 ```
 
-## <a name="create-an-app-configuration"></a>Erstellen einer App-Konfiguration
+## <a name="create-an-app-configuration-store"></a>Erstellen eines App Configuration-Speichers
 
-Ersetzen Sie `<appconfig_name>` durch einen eindeutigen Namen für Ihre App-Konfiguration und `<resource_group_name>` durch die zuvor erstellte Ressourcengruppe. Der Name muss eindeutig sein, da er als DNS-Name verwendet wird.
+Ersetzen Sie `<appconfig_name>` durch einen eindeutigen Namen für Ihren Konfigurationsspeicher und `<resource_group_name>` durch die zuvor erstellte Ressourcengruppe. Der Name muss eindeutig sein, da er als DNS-Name verwendet wird.
 
 ```azurecli-interactive
 az appconfig create \
   --name <appconfig_name> \
   --location westus \
-  --resource-group <resource_group_name>
+  --resource-group <resource_group_name> \
+  --sku free
 ```
 
 ## <a name="create-a-message-endpoint"></a>Erstellen eines Nachrichtenendpunkts
@@ -66,7 +64,7 @@ Ersetzen Sie `<your-site-name>` durch einen eindeutigen Namen für Ihre Web-App.
 ```azurecli-interactive
 $sitename=<your-site-name>
 
-az group deployment create \
+az deployment group create \
   --resource-group <resource_group_name> \
   --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
   --parameters siteName=$sitename hostingPlanName=viewerhost
@@ -78,9 +76,9 @@ Die Website sollte angezeigt werden, und es sollten momentan keine Nachrichten v
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-your-app-configuration"></a>Abonnieren Ihrer App-Konfiguration
+## <a name="subscribe-to-your-app-configuration-store"></a>Abonnieren Ihres App Configuration-Speichers
 
-Sie abonnieren ein Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten und wohin sie gesendet werden sollen. Im folgenden Beispiel wird die von Ihnen erstellte App-Konfiguration abonniert. Außerdem wird die URL Ihrer Web-App als Endpunkt für Ereignisbenachrichtigungen übergeben. Ersetzen Sie `<event_subscription_name>` durch einen Namen für Ihr Ereignisabonnement. Verwenden Sie für `<resource_group_name>` und `<appconfig_name>` jeweils den zuvor erstellten Wert.
+Sie abonnieren ein Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten und wohin sie gesendet werden sollen. Im folgenden Beispiel wird die von Ihnen erstellte App Configuration-Instanz abonniert. Außerdem wird die URL Ihrer Web-App als Endpunkt für Ereignisbenachrichtigungen übergeben. Ersetzen Sie `<event_subscription_name>` durch einen Namen für Ihr Ereignisabonnement. Verwenden Sie für `<resource_group_name>` und `<appconfig_name>` jeweils den zuvor erstellten Wert.
 
 Der Endpunkt für Ihre Web-App muss das Suffix `/api/updates/` enthalten.
 
@@ -122,11 +120,10 @@ Sie haben das Ereignis ausgelöst, und Event Grid hat die Nachricht an den Endpu
   "dataVersion": "1",
   "metadataVersion": "1"
 }]
-
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Wenn Sie diese App-Konfiguration und das Ereignisabonnement weiterverwenden möchten, überspringen Sie die Bereinigung der in diesem Artikel erstellten Ressourcen. Führen Sie andernfalls den folgenden Befehl aus, um die in diesem Artikel erstellten Ressourcen zu löschen.
+Wenn Sie diese App Configuration-Instanz und das Ereignisabonnement weiterverwenden möchten, überspringen Sie die Bereinigung der in diesem Artikel erstellten Ressourcen. Führen Sie andernfalls den folgenden Befehl aus, um die in diesem Artikel erstellten Ressourcen zu löschen.
 
 Ersetzen Sie `<resource_group_name>` durch die weiter oben erstellte Ressourcengruppe.
 

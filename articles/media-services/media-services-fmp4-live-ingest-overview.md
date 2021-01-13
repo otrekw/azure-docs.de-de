@@ -1,6 +1,6 @@
 ---
 title: Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services | Microsoft-Dokumentation
-description: Diese Spezifikation beschreibt das Protokoll und Format für die fragmentierte MP4-basierte Livestreamingerfassung für Azure Media Services. Mit Azure Media Services können Sie unter Verwendung von Azure als Cloudplattform in Echtzeit Liveereignisse streamen und Inhalte übertragen. In diesem Dokument werden auch optimale Verfahren zur Erstellung hoch redundanter und stabiler Mechanismen der Echtzeiterfassung beschrieben.
+description: Diese Spezifikation beschreibt das Protokoll und Format für die fragmentierte MP4-basierte Livestreamingerfassung für Azure Media Services. In diesem Dokument werden auch optimale Verfahren zur Erstellung hoch redundanter und stabiler Mechanismen der Echtzeiterfassung beschrieben.
 services: media-services
 documentationcenter: ''
 author: cenkdin
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 4e1d41216f99a86a1b04ada882dcae0ff34b823b
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 7323ae611431e1d91fd1a8471914be388fcc4712
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "69014784"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019510"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services 
 
@@ -39,7 +39,7 @@ In der folgenden schematischen Darstellung ist die allgemeine Architektur des Li
 ![Erfassungsdatenfluss][image1]
 
 ## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. Bitstromformat – ISO 14496-12, fragmentiertes MP4
-Das in diesem Dokument beschriebene Übertragungsformat zur Erfassung des Livestreamings basiert auf [ISO-14496-12]. Eine ausführliche Erläuterung des fragmentierten MP4-Formats und der Erweiterungen für Video-on-Demand-Dateien und die Livestreamingerfassung finden Sie unter [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).
+Das in diesem Dokument beschriebene Übertragungsformat zur Erfassung des Livestreamings basiert auf [ISO-14496-12]. Eine ausführliche Erläuterung des fragmentierten MP4-Formats und der Erweiterungen für Video-on-Demand-Dateien und die Livestreamingerfassung finden Sie unter [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251).
 
 ### <a name="live-ingest-format-definitions"></a>Definitionen für Liveerfassungsformat
 Es folgt eine Liste der speziellen Formatdefinitionen, die für die Echtzeiterfassung in Azure Media Services gelten:
@@ -48,15 +48,15 @@ Es folgt eine Liste der speziellen Formatdefinitionen, die für die Echtzeiterfa
 1. Im Abschnitt 3.3.2 in [1] wird ein optionales Feld mit dem Namen **StreamManifestBox** für die Echtzeiterfassung definiert. Aufgrund der Routinglogik des Azure-Lastenausgleichs ist dieses Kontrollkästchen veraltet. Das Feld SOLLTE bei der Erfassung in Media Services NICHT vorhanden sein. Wenn dieses Feld vorhanden ist, wird es in Media Services ohne Meldung ignoriert.
 1. Das in Abschnitt 3.2.3.2 in [1] definierte Feld **TrackFragmentExtendedHeaderBox** MUSS für jedes Fragment vorhanden sein.
 1. Version 2 von **TrackFragmentExtendedHeaderBox** SOLLTE verwendet werden, um Mediensegmente mit identischen URLs in mehreren Rechenzentren zu generieren. Das Fragmentindexfeld ist ERFORDERLICH für das rechenzentrenübergreifende Failover indexbasierter Streamingformate wie z.B. Apple HLS und indexbasiertes MPEG-DASH. Zum Aktivieren des rechenzentrenübergreifenden Failovers MUSS der Fragmentindex zwischen mehreren Encodern synchronisiert und für jedes folgende Medienfragment jeweils um 1 erhöht werden, auch bei Neustarts und Fehlern der Encoder.
-1. Im Abschnitt 3.3.6 in [1] wird das Feld mit der Bezeichnung **MovieFragmentRandomAccessBox** (**mfra**) definiert, das am Ende der Echtzeiterfassung gesendet werden KANN, um das Ende des Streams (End-of-Stream, EOS) für den Kanal anzugeben. Aufgrund der Erfassungslogik von Media Services ist die Verwendung von EOS (End-of-Stream) veraltet, und das Feld **mfra** für die Echtzeiterfassung SOLLTE NICHT gesendet werden. Wenn es dennoch gesendet wird, wird es in Media Services ohne Meldung ignoriert. Um den Status des Erfassungspunkts zurückzusetzen, empfehlen die Verwendung der [Kanalzurücksetzung](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels). Wir empfehlen auch die Verwendung des [Programmstopps](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs) zum Beenden einer Präsentation und eines Streams.
+1. Im Abschnitt 3.3.6 in [1] wird das Feld mit der Bezeichnung **MovieFragmentRandomAccessBox** (**mfra**) definiert, das am Ende der Echtzeiterfassung gesendet werden KANN, um das Ende des Streams (End-of-Stream, EOS) für den Kanal anzugeben. Aufgrund der Erfassungslogik von Media Services ist die Verwendung von EOS (End-of-Stream) veraltet, und das Feld **mfra** für die Echtzeiterfassung SOLLTE NICHT gesendet werden. Wenn es dennoch gesendet wird, wird es in Media Services ohne Meldung ignoriert. Um den Status des Erfassungspunkts zurückzusetzen, empfehlen die Verwendung der [Kanalzurücksetzung](/rest/api/media/operations/channel#reset_channels). Wir empfehlen auch die Verwendung des [Programmstopps](/rest/api/media/operations/program#stop_programs) zum Beenden einer Präsentation und eines Streams.
 1. Die Dauer der MP4-Fragmente SOLLTE konstant sein, um die Größe der Clientmanifeste zu reduzieren. Eine konstante MP4-Fragmentdauer verbessert auch die Clientdownloadheuristiken durch Verwendung von Wiederholungstags. Die Dauer KANN schwanken, um nicht ganzzahlige Frameraten auszugleichen.
 1. Die Dauer des MP4-Fragments SOLLTE zwischen ca. 2 und 6 Sekunden liegen.
-1. Zeitstempel und Indizes des MP4-Fragments (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` and `fragment_index`) SOLLTEN in aufsteigender Reihenfolge eingehen. Obwohl Fragmente in Media Services dupliziert werden können, sind die Möglichkeiten begrenzt, Fragmente entsprechend der Medienzeitachse neu anzuordnen.
+1. Zeitstempel und Indizes des MP4-Fragments (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` und `fragment_index`) SOLLTEN in aufsteigender Reihenfolge eingehen. Obwohl Fragmente in Media Services dupliziert werden können, sind die Möglichkeiten begrenzt, Fragmente entsprechend der Medienzeitachse neu anzuordnen.
 
 ## <a name="4-protocol-format--http"></a>4. Protokollformat – HTTP
 Bei der auf fragmentiertem ISO-MP4-basierenden Echtzeiterfassung für Media Services wird eine HTTP POST-Standardanforderung mit langer Laufzeit verwendet, um codierte Mediendaten im fragmentierten MP4-Format an den Dienst zu übertragen. Jede HTTP POST-Anforderung sendet einen vollständigen Bitstrom in fragmentiertem MP4 („Stream“), der mit den Headerfeldern (**ftyp**, **Live Server Manifest Box** und **moov**) beginnt und mit einer Sequenz von Fragmenten (Felder **moof** und **mdat**) fortgesetzt wird. Informationen zur URL-Syntax für die HTTP POST-Anforderung finden Sie in Abschnitt 9.2 in [1]. Beispiel für die POST-URL: 
 
-    http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)
+`http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)`
 
 ### <a name="requirements"></a>Requirements (Anforderungen)
 Es folgen die detaillierten Anforderungen:
@@ -70,7 +70,7 @@ Es folgen die detaillierten Anforderungen:
 1. Wenn die HTTP POST-Anforderung endet oder ein Timeout aufgrund eines TCP-Fehlers vor dem Ende des Streams auftritt, MUSS der Encoder eine neue POST-Anforderung mithilfe einer neuen Verbindung ausgeben und die vorausgehenden Anforderungen erfüllen. Der Encoder muss darüber hinaus die vorherigen beiden MP4-Fragmente für jede Spur im Stream neu senden und fortfahren, ohne eine Diskontinuität in der Medienzeitachse auszulösen. Durch das erneute Senden der letzten beiden MP4-Fragmente für jede Spur wird sichergestellt, dass keine Daten verloren gehen. Mit anderen Worten: Wenn ein Stream eine Audio- und eine Videospur enthält und bei der aktuellen POST-Anforderung ein Fehler auftritt, muss der Encoder eine neue Verbindung herstellen und die letzten zwei zuvor erfolgreich gesendeten Fragmente für die Audiospur sowie die letzten zwei zuvor erfolgreich gesendeten Fragmente für die Videospur erneut senden, um sicherzustellen, dass keine Daten verloren gehen. Der Encoder MUSS einen vorausschauenden Puffer der Medienfragmente beibehalten, den er beim Wiederherstellen der Verbindung erneut sendet.
 
 ## <a name="5-timescale"></a>5. Timescale
-Unter [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) wird die Verwendung der Zeitskala für **SmoothStreamingMedia** (Abschnitt 2.2.2.1), **StreamElement** (Abschnitt 2.2.2.3), **StreamFragmentElement** (Abschnitt 2.2.2.6) und **LiveSMIL** (Abschnitt 2.2.7.3.1) beschrieben. Wenn der Zeitskalawert nicht vorhanden ist, wird der Standardwert 10.000.000 (10 MHz) verwendet. Obwohl die Spezifikation des Smooth Streaming-Formats die Verwendung anderer Zeitskalawerte nicht blockiert, verwenden die meisten Encoderimplementierungen diesen Standardwert (10 MHz), um Smooth Streaming-Erfassungsdaten zu generieren. Wegen der Funktion [Azure Media Services Dynamic Packaging](media-services-dynamic-packaging-overview.md) wird empfohlen, 90 kHz als Zeitskala für Videostreams sowie 44,1 kHz oder 48,1 kHz für Audiostreams zu verwenden. Wenn für verschiedene Streams unterschiedliche Zeitskalawerte verwendet werden, MUSS die Zeitskala der Streamebene gesendet werden. Weitere Informationen finden Sie unter [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
+Unter [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) wird die Verwendung der Zeitskala für **SmoothStreamingMedia** (Abschnitt 2.2.2.1), **StreamElement** (Abschnitt 2.2.2.3), **StreamFragmentElement** (Abschnitt 2.2.2.6) und **LiveSMIL** (Abschnitt 2.2.7.3.1) beschrieben. Wenn der Zeitskalawert nicht vorhanden ist, wird der Standardwert 10.000.000 (10 MHz) verwendet. Obwohl die Spezifikation des Smooth Streaming-Formats die Verwendung anderer Zeitskalawerte nicht blockiert, verwenden die meisten Encoderimplementierungen diesen Standardwert (10 MHz), um Smooth Streaming-Erfassungsdaten zu generieren. Wegen der Funktion [Azure Media Services Dynamic Packaging](./previous/media-services-dynamic-packaging-overview.md) wird empfohlen, 90 kHz als Zeitskala für Videostreams sowie 44,1 kHz oder 48,1 kHz für Audiostreams zu verwenden. Wenn für verschiedene Streams unterschiedliche Zeitskalawerte verwendet werden, MUSS die Zeitskala der Streamebene gesendet werden. Weitere Informationen finden Sie unter [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251).     
 
 ## <a name="6-definition-of-stream"></a>6. Definition von „Stream“
 Ein „Stream ist die Basiseinheit für Vorgänge in der Echtzeiterfassung beim Erstellen von Livepräsentationen sowie beim Verarbeiten von Streamingfailovers und Redundanzszenarios. Ein „Stream“ ist definiert als ein eindeutiger fragmentierter MP4-Bitstrom, der eine oder mehrere Spuren enthalten kann. Eine vollständige Livepräsentation kann je nach Konfiguration der Liveencoder einen oder mehrere Streams enthalten. In den folgenden Beispielen werden verschiedene Optionen zum Erstellen einer vollständigen Livepräsentation unter Verwendung eines oder mehrerer Streams veranschaulicht.

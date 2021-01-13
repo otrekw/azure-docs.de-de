@@ -1,20 +1,17 @@
 ---
-title: Hinzufügen von switch-Anweisungen zu Workflows – Azure Logic Apps | Microsoft-Dokumentation
+title: Hinzufügen von switch-Anweisungen zu Workflows
 description: Hier erfahren Sie, wie Sie switch-Anweisungen erstellen, die Workflowaktionen auf der Grundlage bestimmter Werte in Azure Logic Apps steuern.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: 2a3f8ee5cba3110d392555fad78c1cb2513b5d4e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 62f147104cf9e0e1605b02a420cb6d20190361b8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60683135"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89657453"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Erstellen von switch-Anweisungen, die Workflowaktionen auf der Grundlage bestimmter Werte in Azure Logic Apps ausführen
 
@@ -30,7 +27,7 @@ Angenommen, Sie möchten, dass eine Logik-App verschiedene Schritte basierend au
 
 * Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Um dem Beispiel in diesem Artikel zu folgen, [erstellen Sie diese Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) mit einem Outlook.com- oder Office 365 Outlook-Konto.
+* Um dem Beispiel in diesem Artikel zu folgen, [erstellen Sie diese Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) mit einem Outlook.com- bzw. einem Geschäfts-, Schul- oder Unikonto.
 
   1. Beim Hinzufügen der Aktion zum Senden von E-Mail suchen Sie stattdessen diese Aktion, und wählen Sie sie aus: **Genehmigungs-E-Mail senden**.
 
@@ -124,7 +121,7 @@ Da Sie nun eine Logik-App mit einer switch-Anweisung erstellt haben, sehen wir u
 
 ## <a name="get-support"></a>Support
 
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Wenn Sie Featurevorschläge übermitteln oder darüber abstimmen möchten, besuchen Sie die [Website für Azure Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte

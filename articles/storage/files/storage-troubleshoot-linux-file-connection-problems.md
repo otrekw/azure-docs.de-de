@@ -1,24 +1,27 @@
 ---
 title: Beheben von Problemen mit Azure Files unter Linux | Microsoft-Dokumentation
-description: Behandeln von Azure Files-Problemen unter Linux
+description: In diesem Artikel erfahren Sie mehr über die Behandlung von Problemen mit Azure Files unter Linux. Dabei wird auf häufig auftretende Probleme mit Azure Files beim Herstellen einer Verbindung mit Linux-Clients eingegangen, und mögliche Lösungen werden beschrieben.
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 5c501e6c2bc1a30273682352a68565ccc897ff50
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e680ba10c507ef83591b56652ee8e95c4d665dda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699200"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492062"
 ---
-# <a name="troubleshoot-azure-files-problems-in-linux"></a>Behandeln von Azure Files-Problemen unter Linux
+# <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Behandeln von Azure Files-Problemen unter Linux (SMB)
 
 Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Azure Files, wenn Sie eine Verbindung von Linux-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. 
 
-Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) verwenden, um sicherzustellen, dass der Linux-Client die erforderlichen Voraussetzungen erfüllt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der in diesem Artikel erwähnten Symptome. Das Tool hilft Ihnen dabei, Ihre Umgebung optimal einzurichten. Diese Informationen stehen auch in der [Problembehandlung für Azure Files-Freigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) zur Verfügung. Die Problembehandlung unterstützt Sie beim Behandeln von Verbindungs-, Zuordnungs- und Einbindungsproblemen im Zusammenhang mit Azure Files-Freigaben.
+Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) verwenden, um sicherzustellen, dass der Linux-Client die erforderlichen Voraussetzungen erfüllt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der in diesem Artikel erwähnten Symptome. Das Tool hilft Ihnen dabei, Ihre Umgebung optimal einzurichten. Diese Informationen stehen auch in der [Problembehandlung für Azure Files-Freigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) zur Verfügung. Die Problembehandlung unterstützt Sie beim Behandeln von Verbindungs-, Zuordnungs- und Einbindungsproblemen im Zusammenhang mit Azure Files-Freigaben.
+
+> [!IMPORTANT]
+> Der Inhalt dieses Artikels gilt nur für SMB-Freigaben. Weitere Informationen zu NFS-Freigaben finden Sie unter [Behandeln von Problemen mit Azure NFS-Dateifreigaben](storage-troubleshooting-files-nfs.md).
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Verbindungsherstellung mit oder Einbindung von Azure-Dateifreigabe nicht möglich
 
@@ -30,14 +33,14 @@ Häufige Ursachen für dieses Problem:
 
 |   | SMB 2.1 <br>(Einbindungen auf virtuellen Computern innerhalb der gleichen Azure-Region) | SMB 3.0 <br>(Einbindungen aus einer lokalen Region und regionsübergreifend) |
 | --- | :---: | :---: |
-| Ubuntu Server | 14.04+ | 16.04 und höher |
-| RHEL | 7 und höher | 7.5 und höher |
-| CentOS | 7 und höher |  7.5 und höher |
-| Debian | 8 und höher |   |
-| openSUSE | 13.2 und höher | 42.3+ |
-| SUSE Linux Enterprise Server | 12 | 12 SP3 und höher |
+| **Ubuntu Server** | 14.04+ | 16.04 und höher |
+| **RHEL** | 7 und höher | 7.5 und höher |
+| **CentOS** | 7 und höher |  7.5 und höher |
+| **Debian** | 8 und höher |   |
+| **openSUSE** | 13.2 und höher | 42.3+ |
+| **SUSE Linux Enterprise Server** | 12 | 12 SP3 und höher |
 
-- Auf dem Client sind die CIFS-Hilfsprogramme (cfs-utils) nicht installiert.
+- Auf dem Client sind keine CIFS-Hilfsprogramme (cifs-utils) installiert.
 - Die mindestens erforderliche SMB-/CIFS-Version 2.1 ist auf dem Client nicht installiert.
 - Der Client unterstützt die SMB 3.0-Verschlüsselung nicht. Die oben aufgeführte Tabelle enthält eine Liste der Linux-Distributionen, die die lokale und regionsübergreifende Bereitstellung unter Verwendung der Verschlüsselung unterstützen. Bei anderen Distributionen wird mindestens die Kernel-Version 4.11 vorausgesetzt.
 - Sie versuchen, über den TCP-Port 445 eine Verbindung mit einem Speicherkonto herstellen. Dies wird nicht unterstützt.
@@ -46,7 +49,7 @@ Häufige Ursachen für dieses Problem:
 
 ### <a name="solution"></a>Lösung
 
-Verwenden Sie das [Problembehandlungstool für Azure Files-Bereitstellungsfehlern unter Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089), um das Problem zu beheben. Dieses Tool ermöglicht Folgendes:
+Verwenden Sie das [Problembehandlungstool für Azure Files-Bereitstellungsfehlern unter Linux](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux), um das Problem zu beheben. Dieses Tool ermöglicht Folgendes:
 
 * Überprüfen der Clientausführungsumgebung
 * Erkennen der nicht kompatiblen Clientkonfiguration, die zu einem Zugriffsfehler für Azure Files führen würde
@@ -58,14 +61,14 @@ Verwenden Sie das [Problembehandlungstool für Azure Files-Bereitstellungsfehler
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>Ursache 1: Unverschlüsselter Kommunikationskanal
 
-Aus Sicherheitsgründen werden Verbindungen mit Azure-Dateifreigaben blockiert, wenn der Kommunikationskanal nicht verschlüsselt ist und der Verbindungsversuch nicht von dem gleichen Datencenter aus erfolgt, in dem sich die Azure-Dateifreigaben befinden. Unverschlüsselte Verbindungen innerhalb desselben Datencenters können auch blockiert werden, wenn die Einstellung [Sichere Übertragung erforderlich](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für das Speicherkonto aktiviert ist. Ein verschlüsselter Kommunikationskanal wird nur dann bereitgestellt, wenn das Clientbetriebssystem des Benutzers SMB-Verschlüsselung unterstützt.
+Aus Sicherheitsgründen werden Verbindungen mit Azure-Dateifreigaben blockiert, wenn der Kommunikationskanal nicht verschlüsselt ist und der Verbindungsversuch nicht von dem gleichen Datencenter aus erfolgt, in dem sich die Azure-Dateifreigaben befinden. Unverschlüsselte Verbindungen innerhalb desselben Datencenters können auch blockiert werden, wenn die Einstellung [Sichere Übertragung erforderlich](../common/storage-require-secure-transfer.md) für das Speicherkonto aktiviert ist. Ein verschlüsselter Kommunikationskanal wird nur dann bereitgestellt, wenn das Clientbetriebssystem des Benutzers SMB-Verschlüsselung unterstützt.
 
-Weitere Informationen finden Sie unter [Voraussetzungen für das Einbinden einer Azure-Dateifreigabe in Linux und das Paket „cifs-utils“](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux#prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package). 
+Weitere Informationen finden Sie unter [Voraussetzungen für das Einbinden einer Azure-Dateifreigabe in Linux und das Paket „cifs-utils“](storage-how-to-use-files-linux.md#prerequisites). 
 
 ### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
 
 1. Stellen Sie eine Verbindung von einem Client aus her, der SMB-Verschlüsselung unterstützt, oder stellen Sie eine Verbindung von einem virtuellen Computer aus her, der sich im selben Datencenter wie das Azure-Speicherkonto befindet, das für die Azure-Dateifreigabe verwendet wird.
-2. Vergewissern Sie sich, dass die Einstellung [Sichere Übertragung erforderlich](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) im Speicherkonto deaktiviert ist, wenn der Client keine SMB-Verschlüsselung unterstützt.
+2. Vergewissern Sie sich, dass die Einstellung [Sichere Übertragung erforderlich](../common/storage-require-secure-transfer.md) im Speicherkonto deaktiviert ist, wenn der Client keine SMB-Verschlüsselung unterstützt.
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Ursache 2: Virtuelle Netzwerk- oder Firewallregeln sind für das Speicherkonto aktiviert. 
 
@@ -73,38 +76,38 @@ Wenn für das Speicherkonto Regeln für das virtuelle Netzwerk (VNET) und die Fi
 
 ### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
 
-Stellen Sie sicher, dass virtuelle Netzwerk- und Firewallregeln für das Speicherkonto ordnungsgemäß konfiguriert sind. Um zu testen, ob virtuelle Netzwerk- oder Firewallregeln das Problem verursachen, ändern Sie vorübergehend die Einstellung für das Speicherkonto in **Zugriff aus allen Netzwerken zulassen**. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Stellen Sie sicher, dass virtuelle Netzwerk- und Firewallregeln für das Speicherkonto ordnungsgemäß konfiguriert sind. Um zu testen, ob virtuelle Netzwerk- oder Firewallregeln das Problem verursachen, ändern Sie vorübergehend die Einstellung für das Speicherkonto in **Zugriff aus allen Netzwerken zulassen**. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](../common/storage-network-security.md).
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>„[Zugriff verweigert] Datenträgerkontingent überschritten“, wenn Sie versuchen, eine Datei zu öffnen
 
 Unter Linux erhalten Sie eine Fehlermeldung, die wie folgt aussieht:
 
-**\<Dateiname> [Zugriff verweigert] Datenträgerkontingent überschritten**
+**\<filename>[Zugriff verweigert] Datenträgerkontingent überschritten**
 
 ### <a name="cause"></a>Ursache
 
-Sie haben die obere Grenze der gleichzeitig geöffneten Handles erreicht, die für eine Datei zulässig sind.
+Sie haben die obere Grenze der gleichzeitig geöffneten Handles erreicht, die für eine Datei oder ein Verzeichnis zulässig sind.
 
-Für eine einzelne Datei gilt ein Kontingent von 2.000 geöffneten Handles. Wenn Sie über 2.000 geöffnete Handles verfügen, wird eine Fehlermeldung mit dem Hinweis angezeigt, dass das Kontingent erreicht ist.
+Für eine einzelne Datei oder ein einzelnes Verzeichnis gilt ein Kontingent von 2.000 geöffneten Handles. Wenn Sie über 2.000 geöffnete Handles verfügen, wird eine Fehlermeldung mit dem Hinweis angezeigt, dass das Kontingent erreicht ist.
 
 ### <a name="solution"></a>Lösung
 
 Reduzieren Sie die Anzahl der gleichzeitig geöffneten Handles, indem Sie einige Handles schließen und es anschließend erneut versuchen.
 
-Verwenden Sie das PowerShell-Cmdlet [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle), um geöffnete Handles für eine Dateifreigabe, ein Verzeichnis oder eine Datei anzuzeigen.  
+Verwenden Sie das PowerShell-Cmdlet [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle), um geöffnete Handles für eine Dateifreigabe, ein Verzeichnis oder eine Datei anzuzeigen.  
 
-Verwenden Sie das PowerShell-Cmdlet [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle), um geöffnete Handles für eine Dateifreigabe, ein Verzeichnis oder eine Datei zu schließen.
+Verwenden Sie das PowerShell-Cmdlet [Close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle), um geöffnete Handles für eine Dateifreigabe, ein Verzeichnis oder eine Datei zu schließen.
 
 > [!Note]  
-> Die Cmdlets Get-AzStorageFileHandle und Close-AzStorageFileHandle sind im Az PowerShell-Modul, Version 2.4 oder höher, enthalten. Informationen zum Installieren des neuesten Az PowerShell-Moduls finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> Die Cmdlets Get-AzStorageFileHandle und Close-AzStorageFileHandle sind im Az PowerShell-Modul, Version 2.4 oder höher, enthalten. Informationen zum Installieren des neuesten Az PowerShell-Moduls finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Langsames Kopieren von Dateien in und aus Azure Files unter Linux
 
 - Wenn Sie keine bestimmte Anforderung für die Mindest-E/A-Größe haben, empfehlen wir Ihnen für eine optimale Leistung die Verwendung von 1 MiB als E/A-Größe.
 - Verwenden Sie die richtige Kopiermethode:
-    - Verwenden Sie [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) für Übertragungen zwischen zwei Dateifreigaben.
+    - Verwenden Sie [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) für Übertragungen zwischen zwei Dateifreigaben.
     - Durch die Verwendung von „cp“ oder „dd“ mit „parallel“ lässt sich die Kopiergeschwindigkeit ggf. verbessern. Die Anzahl der Threads richtet sich nach Ihrem Anwendungsfall und der Workload. Die folgenden Beispiele verwenden sechs Befehle: 
     - cp-Beispiel (cp verwendet die Standardblockgröße des Dateisystems als Segmentgröße): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
     - dd-Beispiel (mit diesem Befehl wird die Blockgröße explizit auf 1 MiB festgelegt): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
@@ -126,29 +129,28 @@ Einige Linux-Distributionen unterstützen die Verschlüsselungsfeatures in SMB 3
 
 ### <a name="solution"></a>Lösung
 
-Das Verschlüsselungsfeature für SMB 3.0 für Linux wurde im Kernel 4.11 eingeführt. Dieses Feature ermöglicht die Einbindung einer Azure-Dateifreigabe aus der lokalen Umgebung oder aus einer anderen Azure-Region. Diese Funktionalität ist in den Linux-Distributionen enthalten, die unter [Empfohlene Mindestversionen mit entsprechenden Einbindungsmöglichkeiten (SMB 2.1-Version im Vergleich zur SMB 3.0-Version)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) aufgeführt sind. Bei anderen Distributionen wird mindestens die Kernel-Version 4.11 vorausgesetzt.
+Das Verschlüsselungsfeature für SMB 3.0 für Linux wurde im Kernel 4.11 eingeführt. Dieses Feature ermöglicht die Einbindung einer Azure-Dateifreigabe aus der lokalen Umgebung oder aus einer anderen Azure-Region. Einige Linux-Distributionen verfügen möglicherweise über zurückportierte Änderungen vom 4.11-Kernel zu älteren Versionen des Linux-Kernels, die von ihnen verwaltet werden. Um festzustellen, ob Ihre Linux-Version SMB 3.0 mit Verschlüsselung unterstützt, sehen Sie unter [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md) nach. 
 
 Falls Ihr Linux-SMB-Client die Verschlüsselung nicht unterstützt, binden Sie Azure Files mithilfe von SMB 2.1 von einem virtuellen Azure-Linux-Computer aus ein, der sich im gleichen Datencenter befindet wie die Dateifreigabe. Vergewissern Sie sich, dass die Einstellung [Sichere Übertragung erforderlich]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für das Speicherkonto deaktiviert ist. 
 
-<a id="authorizationfailureportal"></a>
-## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>Fehlermeldung „Autorisierungsfehler“ beim Navigieren zu einer Azure-Dateifreigabe im Portal
+<a id="noaaccessfailureportal"></a>
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Fehler „Kein Zugriff“ beim Versuch, auf eine Azure-Dateifreigabe zuzugreifen oder sie zu löschen  
+Wenn Sie versuchen, auf eine Azure-Dateifreigabe im Portal zuzugreifen oder sie zu löschen, wird möglicherweise folgende Fehlermeldung angezeigt:
 
-Wenn Sie zu einer Azure-Dateifreigabe im Portal navigieren, erhalten Sie ggf. den folgenden Fehler:
+Kein Zugriff  
+Fehlercode: 403 
 
-Autorisierungsfehler  
-Sie haben keinen Zugriff.
-
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Ursache 1: Ihr Benutzerkonto besitzt keinen Zugriff auf das Speicherkonto
+### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Ursache 1: Virtuelle Netzwerk- oder Firewallregeln sind für das Speicherkonto aktiviert.
 
 ### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
 
-Navigieren Sie zu dem Speicherkonto, in dem sich die Azure-Dateifreigabe befindet, klicken Sie auf **Zugriffssteuerung (IAM)** , und überprüfen Sie, ob Ihr Benutzerkonto Zugriff auf das Speicherkonto besitzt. Weitere Informationen finden Sie unter [Sichern Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
+Stellen Sie sicher, dass virtuelle Netzwerk- und Firewallregeln für das Speicherkonto ordnungsgemäß konfiguriert sind. Um zu testen, ob virtuelle Netzwerk- oder Firewallregeln das Problem verursachen, ändern Sie vorübergehend die Einstellung für das Speicherkonto in **Zugriff aus allen Netzwerken zulassen**. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](../common/storage-network-security.md).
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Ursache 2: Virtuelle Netzwerk- oder Firewallregeln sind für das Speicherkonto aktiviert.
+### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>Ursache 2: Ihr Benutzerkonto besitzt keinen Zugriff auf das Speicherkonto
 
 ### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
 
-Stellen Sie sicher, dass virtuelle Netzwerk- und Firewallregeln für das Speicherkonto ordnungsgemäß konfiguriert sind. Um zu testen, ob virtuelle Netzwerk- oder Firewallregeln das Problem verursachen, ändern Sie vorübergehend die Einstellung für das Speicherkonto in **Zugriff aus allen Netzwerken zulassen**. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Navigieren Sie zu dem Speicherkonto, in dem sich die Azure-Dateifreigabe befindet, klicken Sie auf **Zugriffssteuerung (IAM)** , und überprüfen Sie, ob Ihr Benutzerkonto Zugriff auf das Speicherkonto besitzt. Weitere Informationen finden Sie unter [Schützen Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (Azure RBAC)](../blobs/security-recommendations.md#data-protection).
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Eine Datei oder ein Verzeichnis in einer Azure-Dateifreigabe kann nicht gelöscht werden
@@ -160,12 +162,12 @@ Dieses Problem tritt in der Regel auf, wenn für die Datei oder das Verzeichnis 
 
 Wenn die SMB-Clients alle geöffneten Handles geschlossen haben und das Problem weiterhin auftritt, führen Sie Folgendes aus:
 
-- Verwenden Sie das PowerShell-Cmdlet [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle), um geöffnete Handles anzuzeigen.
+- Verwenden Sie das PowerShell-Cmdlet [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle), um geöffnete Handles anzuzeigen.
 
-- Verwenden Sie das PowerShell-Cmdlet [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle), um geöffnete Handles zu schließen. 
+- Verwenden Sie das PowerShell-Cmdlet [Close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle), um geöffnete Handles zu schließen. 
 
 > [!Note]  
-> Die Cmdlets Get-AzStorageFileHandle und Close-AzStorageFileHandle sind im Az PowerShell-Modul, Version 2.4 oder höher, enthalten. Informationen zum Installieren des neuesten Az PowerShell-Moduls finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> Die Cmdlets Get-AzStorageFileHandle und Close-AzStorageFileHandle sind im Az PowerShell-Modul, Version 2.4 oder höher, enthalten. Informationen zum Installieren des neuesten Az PowerShell-Moduls finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Langsame Leistung in einer Azure-Dateifreigabe, die in einer Linux-VM bereit gestellt ist
@@ -190,11 +192,11 @@ Sie können auch überprüfen, ob die richtigen Optionen verwendet werden, indem
 //azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)
 ```
 
-Wenn die Optionen **cache=strict** oder **serverino** nicht vorhanden sind, heben Sie die Bereitstellung von Azure Files auf, und stellen Sie sie wieder her, indem Sie den „mount“-Befehl aus der [Dokumentation](../storage-how-to-use-files-linux.md) ausführen. Überprüfen Sie dann erneut, ob der **/etc/fstab**-Eintrag die richtigen Optionen hat.
+Wenn die Optionen **cache=strict** oder **serverino** nicht vorhanden sind, heben Sie die Bereitstellung von Azure Files auf, und stellen Sie sie wieder her, indem Sie den „mount“-Befehl aus der [Dokumentation](./storage-how-to-use-files-linux.md) ausführen. Überprüfen Sie dann erneut, ob der **/etc/fstab**-Eintrag die richtigen Optionen hat.
 
 ### <a name="cause-2-throttling"></a>Ursache 2: Drosselung
 
-Es ist möglich, dass eine Drosselung auftritt und Ihre Anforderungen an eine Warteschlange gesendet werden. Sie können dies anhand der [Azure Storage-Metriken in Azure Monitor](../common/storage-metrics-in-azure-monitor.md) überprüfen.
+Es ist möglich, dass eine Drosselung auftritt und Ihre Anforderungen an eine Warteschlange gesendet werden. Sie können dies anhand der [Azure Storage-Metriken in Azure Monitor](../blobs/monitor-blob-storage.md) überprüfen.
 
 ### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
 
@@ -281,13 +283,47 @@ Dieses Verbindungswiederherstellungs-Problem im Linux-Kernel wurde jetzt im Rahm
 - [CIFS: Fix a possible memory corruption during reconnect (Beheben einer Arbeitsspeicherbeschädigung während der Verbindungswiederherstellung)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS: Fix a possible double locking of mutex during reconnect (Beheben einer möglichen doppelten Sperre des Mutex während der Verbindungswiederherstellung, für Kernel v4.9 und spätere Versionen)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
-Allerdings können diese Änderungen noch nicht zu allen Linux-Distributionen portiert werden. Diesen Fix und andere Fixes zur Verbindungswiederherstellung finden Sie im Abschnitt [Empfohlene Mindestversionen mit entsprechenden Einbindungsmöglichkeiten (SMB 2.1-Version im Vergleich zur SMB 3.0-Version)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) des Artikels [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md). Sie können diese Behebung abrufen, indem Sie ein Upgrade auf eine dieser empfohlenen Kernelversionen vornehmen.
+Allerdings können diese Änderungen noch nicht zu allen Linux-Distributionen portiert werden. Wenn Sie eine gängige Linux-Distribution verwenden, können Sie unter [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md) feststellen, welche Version Ihrer Distribution die erforderlichen Kerneländerungen aufweist.
 
 ### <a name="workaround"></a>Problemumgehung
 
 Sie können dieses Problem umgehen, indem Sie eine ständige Bereitstellung festlegen. Bei einer ständigen Bereitstellung muss der Client auf eine Verbindungsherstellung oder auf eine explizite Unterbrechung warten. Dadurch lassen sich durch Netzwerktimeouts bedingte Fehler verhindern. Diese Problemumgehung kann jedoch endlose Wartevorgänge verursachen. Seien Sie darauf vorbereitet, Verbindungen nach Bedarf zu beenden.
 
 Wenn Sie nicht auf die neuesten Kernelversionen upgraden können, können Sie dieses Problem umgehen, indem Sie eine Datei in der Azure-Dateifreigabe speichern und mindestens alle 30 Sekunden in diese Datei schreiben. Dabei muss es sich um einen Schreibvorgang handeln, wie z.B. die Umschreibung des Erstellungs- oder Änderungsdatums in der Datei. Andernfalls erhalten Sie möglicherweise zwischengespeicherte Ergebnisse, und Ihr Vorgang kann die Verbindungswiederherstellung möglicherweise nicht auslösen.
+
+## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-30"></a>„CIFS VFS: error -22 on ioctl to get interface list“ (Fehler -22 bei IOCTL zum Abrufen der Schnittstellenliste) beim Einbinden einer Azure-Dateifreigabe mithilfe von SMB 3.0
+
+### <a name="cause"></a>Ursache
+Dieser Fehler wird protokolliert, weil Azure Files [SMB Multichannel derzeit nicht unterstützt](/rest/api/storageservices/features-not-supported-by-the-azure-file-service).
+
+### <a name="solution"></a>Lösung
+Dieser Fehler kann ignoriert werden.
+
+
+### <a name="unable-to-access-folders-or-files-which-name-has-a-space-or-a-dot-at-the-end"></a>Kein Zugriff auf Ordner oder Dateien möglich, deren Name ein Leerzeichen oder einen Punkt am Ende hat
+
+Sie können während der Bereitstellung unter Linux nicht auf Ordner oder Dateien der Azure-Dateifreigabe zugreifen. Befehle wie „du“ und „ls“ und/oder Anwendungen von Drittanbietern können während des Zugriffs auf die Freigabe mit dem Fehler „Datei oder Verzeichnis nicht vorhanden“ fehlschlagen. Das Hochladen von Dateien in die genannten Ordner über das Portal ist jedoch möglich.
+
+### <a name="cause"></a>Ursache
+
+Die Ordner oder Dateien wurden von einem System hochgeladen, das die Zeichen am Ende des Namens in ein anderes Zeichen codiert. Dateien, die von einem Macintosh-Computer hochgeladen wurden, haben möglicherweise das Zeichen „0xf028“ oder „0xf029“ anstelle von „0x20“ (Leerzeichen) oder „0x2E“ (Punkt).
+
+### <a name="solution"></a>Lösung
+
+Verwenden Sie die mapchars-Option für die Freigabe, während Sie diese unter Linux bereitstellen: 
+
+nicht:
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+```
+
+sondern:
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino,mapchars
+```
+
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 

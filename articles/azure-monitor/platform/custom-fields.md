@@ -1,33 +1,29 @@
 ---
-title: Benutzerdefinierte Felder in Azure Monitor | Microsoft-Dokumentation
+title: Benutzerdefinierte Felder in Azure Monitor (Vorschauversion) | Microsoft-Dokumentation
 description: Mit dem Azure Monitor-Feature „Benutzerdefinierte Felder“ können Sie auf der Grundlage von Datensätzen in einem Log Analytics-Arbeitsbereich eigene durchsuchbare Felder erstellen, um die Eigenschaften gesammelter Datensätze zu erweitern.  Dieser Artikel beschreibt die Erstellung eines benutzerdefinierten Felds und enthält eine ausführliche exemplarische Vorgehensweise mit einem Beispielereignis.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: jwhit
-editor: tysonn
-ms.assetid: 31572b51-6b57-4945-8208-ecfc3b5304fc
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/23/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: f6b9c21a3d65e75abe11e705eba058b1d1fb17ff
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 08/23/2019
+ms.openlocfilehash: 496dab24f636c97e1c7b27b871e1fded9216277d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012729"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448561"
 ---
-# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Erstellen von benutzerdefinierten Feldern in einem Log Analytics-Arbeitsbereich in Azure Monitor
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Erstellen von benutzerdefinierten Feldern in einem Log Analytics-Arbeitsbereich in Azure Monitor (Vorschauversion)
 
 > [!NOTE]
 > In diesem Artikel wird beschrieben, wie Sie Textdaten in einem Log Analytics-Arbeitsbereich beim Sammeln analysieren können. Es wird empfohlen, Textdaten nach dem Sammeln in einem Abfragefilter zu analysieren, wie es unter [Analysieren von Textdaten in Azure Monitor](../log-query/parse-text.md) beschrieben ist. Dies bietet mehrere Vorteile gegenüber der Verwendung benutzerdefinierter Felder.
 
+> [!IMPORTANT]
+> Benutzerdefinierte Felder erhöhen die Menge an Daten, die im Log Analytics-Arbeitsbereich gesammelt werden, wodurch auch Ihre Kosten steigen können. Ausführliche Informationen finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](manage-cost-storage.md#pricing-model).
+
 Mit dem Feature **Benutzerdefinierte Felder** von Azure Monitor können Sie vorhandene Datensätze in Ihrem Log Analytics-Arbeitsbereich durch eigene durchsuchbare Felder erweitern.  Benutzerdefinierte Felder werden automatisch auf der Grundlage von Daten aufgefüllt, die aus anderen Eigenschaften im gleichen Datensatz extrahiert wurden.
 
-![Übersicht](media/custom-fields/overview.png)
+![Das Diagramm zeigt einen ursprünglichen Datensatz, der einem geänderten Datensatz in einem Log Analytics-Arbeitsbereich zugeordnet ist, wobei der ursprünglichen Eigenschaft im geänderten Datensatz Eigenschaft-Wert-Paare hinzugefügt wurden.](media/custom-fields/overview.png)
 
 Der folgende Beispieldatensatz enthält beispielsweise weitere hilfreiche Daten in der Ereignisbeschreibung. Die Extraktion dieser Daten in eine separate Eigenschaft ermöglicht Aktionen wie Sortieren und Filtern.
 
@@ -85,7 +81,7 @@ Der folgende Abschnitt enthält ein vollständiges Beispiel für die Erstellung 
 
 Wir geben die folgende Abfrage ein, die alle Ereignisse des Dienststeuerungs-Managers mit der Ereignis-ID 7036 zurückgibt. (Dieses Ereignis gibt an, dass ein Dienst gestartet oder beendet wird.)
 
-![Abfragen](media/custom-fields/query.png)
+![Screenshot einer Abfrage für eine Ereignisquelle und ID](media/custom-fields/query.png)
 
 Anschließend wählen wir alle Datensätze mit der Ereignis-ID 7036 aus und erweitern sie.
 
@@ -105,7 +101,7 @@ Wir markieren den Namen des Diensts in der **RenderedDescription**-Eigenschaft u
 
 Wir stellen fest, dass der Dienstname nicht bei allen Datensätzen korrekt ermittelt wird.   In den **Suchergebnissen** sehen wir, dass bei **WMI-Leistungsadapter** ein Teil des Namens nicht ausgewählt wurde.  Die **Zusammenfassung** zeigt, dass ein Datensatz **Modules Installer** anstelle von **Windows Modules Installer** identifiziert hat.  
 
-![Suchergebnisse](media/custom-fields/search-results-01.png)
+![Screenshot mit hervorgehobenen Teilen des Dienstnamens im Bereich „Suchergebnisse“ und einem unter „Zusammenfassung“ hervorgehobenen falschen Dienstnamen](media/custom-fields/search-results-01.png)
 
 Kümmern wir uns zunächst um den Datensatz **WMI Performance Adapter** .  Wir klicken auf das Bearbeitungssymbol und anschließend auf **Modify this highlight**(Diese Markierung ändern).  
 
@@ -117,7 +113,7 @@ Wir erweitern die Markierung um das Wort **WMI** und wiederholen dann den Extrak
 
 Wir sehen, dass Log Analytics auf der Grundlage dieser Informationen nicht nur die Einträge für **WMI-Leistungsadapter**, sondern auch die Einträge für **Windows Modules Installer** korrigiert hat.
 
-![Suchergebnisse](media/custom-fields/search-results-02.png)
+![Screenshot des vollständig hervorgehobenen Dienstnamens im Bereich „Suchergebnisse“ und der unter „Zusammenfassung“ hervorgehobenen richtigen Dienstnamen](media/custom-fields/search-results-02.png)
 
 Wir können jetzt eine Abfrage ausführen, die überprüft, ob **Service_CF** zwar erstellt, aber noch keinen Datensätzen hinzugefügt wurde. Dies liegt daran, dass das benutzerdefinierte Feld für bestehende Datensätze nicht funktioniert, sodass wir warten müssen, bis neue Datensätze gesammelt werden.
 

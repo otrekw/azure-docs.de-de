@@ -8,19 +8,19 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 01/25/2019
-ms.openlocfilehash: 09a3cc5a623be2ee5a9d50204f0902ca9f400a76
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 03/05/2020
+ms.openlocfilehash: 2504245a14eee5308e046148f8073cf34ffa8143
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857384"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "79486077"
 ---
-1. [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](../articles/machine-learning/service/how-to-manage-workspace.md).
+1. [Erstellen Sie einen Azure Machine Learning-Arbeitsbereich](../articles/machine-learning/how-to-manage-workspace.md).
 
 1. Klonen Sie das [GitHub-Repository](https://aka.ms/aml-notebooks).
 
-    ```CLI
+    ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
@@ -34,6 +34,6 @@ ms.locfileid: "68857384"
 
 1. Starten Sie den Notebook-Server aus Ihrem geklonten Verzeichnis.
 
-    ```shell
+    ```bash
     jupyter notebook
     ```

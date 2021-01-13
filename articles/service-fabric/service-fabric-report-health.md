@@ -1,25 +1,17 @@
 ---
-title: Hinzufügen von Service Fabric-Integritätsberichten | Microsoft Docs
+title: Hinzufügen von benutzerdefinierten Service Fabric-Integritätsberichten
 description: Beschreibt, wie benutzerdefinierte Integritätsberichte an Integritätsentitäten von Azure Service Fabric gesendet werden. Enthält Empfehlungen zum Entwerfen und Implementieren hochwertiger Integritätsberichte.
-services: service-fabric
-documentationcenter: .net
-author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: 0a00a7d2-510e-47d0-8aa8-24c851ea847f
-ms.service: service-fabric
-ms.devlang: dotnet
+author: georgewallace
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
-ms.author: oanapl
-ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6df434610a8f595ecca7f16e31f8a302373b02f9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723443"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001863"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Hinzufügen von benutzerdefinierten Service Fabric-Integritätsberichten
 Azure Service Fabric bietet ein [Integritätsmodell](service-fabric-health-introduction.md) , das fehlerhafte Cluster- und Anwendungsbedingungen auf bestimmten Entitäten kennzeichnet. Das Integritätsmodell verwendet **Integritäts-Reporter** (Systemkomponenten und Watchdogs). Das Ziel ist die einfache und schnelle Diagnose und Reparatur. Dienstautoren müssen im Vorfeld an die Integrität denken. Jede Bedingung, die zur Beeinträchtigung der Integrität führen kann, sollte gemeldet werden, insbesondere wenn damit die Ursachen von Problemen ermittelt werden können. Die Integritätsinformationen können Zeit und Aufwand beim Debuggen und Untersuchen einsparen. Besonders deutlich wird der Nutzen, wenn der Dienst im gewünschten Umfang in der Cloud ausgeführt wird (private oder Azure-Cloud).
@@ -47,7 +39,7 @@ Wie bereits erwähnt, kann die Berichterstellung von folgenden Orten aus erfolge
 > 
 > 
 
-Sobald das Design für die Integritätsberichterstellung feststeht, können Integritätsberichte problemlos gesendet werden. Mithilfe von [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) können Sie Berichte zur Integrität erstellen, wenn der Cluster nicht [sicher](service-fabric-cluster-security.md) ist oder der Fabric-Client über Administratorrechte verfügt. Die Berichterstellung kann über die API mit [FabricClient.HealthManager.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), über PowerShell oder über REST erfolgen. Zur Verbesserung der Leistung fassen Konfigurationselemente Berichte zusammen.
+Sobald das Design für die Integritätsberichterstellung feststeht, können Integritätsberichte problemlos gesendet werden. Mithilfe von [FabricClient](/dotnet/api/system.fabric.fabricclient) können Sie Berichte zur Integrität erstellen, wenn der Cluster nicht [sicher](service-fabric-cluster-security.md) ist oder der Fabric-Client über Administratorrechte verfügt. Die Berichterstellung kann über die API mit [FabricClient.HealthManager.ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), über PowerShell oder über REST erfolgen. Zur Verbesserung der Leistung fassen Konfigurationselemente Berichte zusammen.
 
 > [!NOTE]
 > Integritätsberichte sind synchronisiert und repräsentieren nur die auf der Clientseite durchgeführten Überprüfungen. Die Tatsache, dass der Bericht vom Integritätsclient oder von Objekten vom Typ `Partition` oder `CodePackageActivationContext` akzeptiert wird, bedeutet nicht, dass er im Speicher angewendet wird. Er wird asynchron gesendet und möglicherweise mit anderen Berichten zusammengefasst. Bei der Verarbeitung auf dem Server kann trotzdem noch ein Fehler auftreten – etwa aufgrund einer veralteten Sequenznummer oder weil die Entität gelöscht wurde, auf die der Bericht angewendet werden muss.
@@ -67,7 +59,7 @@ Die Integritätsberichte werden über einen Integritätsclient innerhalb des Fab
 > 
 
 Bei der Pufferung auf dem Client wird auf die Eindeutigkeit der Berichte geachtet. Beispiel: Wenn ein bestimmter schlechter Reporter pro Sekunde 100 Berichte für die gleiche Eigenschaft der gleichen Entität sendet, werden die Berichte jeweils durch die letzte Version ersetzt. In der Clientwarteschlange ist höchstens ein solcher Bericht vorhanden. Wenn die Batchverarbeitung konfiguriert ist, wird pro Sendeintervall nur ein Bericht an den Integritäts-Manager gesendet. Dieser Bericht ist der zuletzt hinzugefügte Bericht, der den aktuellen Zustand der Entität angibt.
-Geben Sie Konfigurationsparameter an, wenn `FabricClient` durch Übergabe von [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) mit den gewünschten Werten für integritätsbezogene Einträge erstellt wird.
+Geben Sie Konfigurationsparameter an, wenn `FabricClient` durch Übergabe von [FabricClientSettings](/dotnet/api/system.fabric.fabricclientsettings) mit den gewünschten Werten für integritätsbezogene Einträge erstellt wird.
 
 Im folgenden Beispiel wird ein Fabric-Client erstellt und angegeben, dass die Berichte unmittelbar nach dem Hinzufügen gesendet werden sollen. Bei Zeitüberschreitungen und Fehlern, bei denen Wiederholungsversuche möglich sind, wird alle 40 Sekunden ein Wiederholungsversuch ausgeführt.
 
@@ -81,7 +73,7 @@ var clientSettings = new FabricClientSettings()
 var fabricClient = new FabricClient(clientSettings);
 ```
 
-Es wird empfohlen, die Standardeinstellungen für den Fabric-Client mit der Einstellung von 30 Sekunden für `HealthReportSendInterval` beizubehalten. Diese Einstellung stellt eine optimale Leistung aufgrund der Batchverarbeitung sicher. Verwenden Sie für wichtige Berichte, die so schnell wie möglich gesendet werden müssen, in der [FabricClient.HealthClient.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth)-API `HealthReportSendOptions` mit `true` für „Direkt“. Direkte Berichte umgehen das Batchintervall. Verwenden Sie dieses Flag mit Vorsicht. Die Batchverarbeitung für den Integritätsclient sollte möglichst häufig genutzt werden. Ein direktes Senden ist auch nützlich, wenn der Fabric-Client geschlossen wird (z.B. wenn der Prozess einen ungültigen Zustand ermittelt hat und heruntergefahren werden muss, um Nebeneffekte zu verhindern). Es stellt ein bestmögliches Senden der kumulierte Berichte sicher. Wenn ein Bericht mit dem Flag „Direkt“ hinzugefügt wird, geht der Integritätsclient alle kumulierten Berichte seit dem letzten Sendevorgang in Batchverarbeitung durch.
+Es wird empfohlen, die Standardeinstellungen für den Fabric-Client mit der Einstellung von 30 Sekunden für `HealthReportSendInterval` beizubehalten. Diese Einstellung stellt eine optimale Leistung aufgrund der Batchverarbeitung sicher. Verwenden Sie für wichtige Berichte, die so schnell wie möglich gesendet werden müssen, in der [FabricClient.HealthClient.ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth)-API `HealthReportSendOptions` mit `true` für „Direkt“. Direkte Berichte umgehen das Batchintervall. Verwenden Sie dieses Flag mit Vorsicht. Die Batchverarbeitung für den Integritätsclient sollte möglichst häufig genutzt werden. Ein direktes Senden ist auch nützlich, wenn der Fabric-Client geschlossen wird (z.B. wenn der Prozess einen ungültigen Zustand ermittelt hat und heruntergefahren werden muss, um Nebeneffekte zu verhindern). Es stellt ein bestmögliches Senden der kumulierte Berichte sicher. Wenn ein Bericht mit dem Flag „Direkt“ hinzugefügt wird, geht der Integritätsclient alle kumulierten Berichte seit dem letzten Sendevorgang in Batchverarbeitung durch.
 
 Beim Erstellen einer Verbindung mit einem Cluster über PowerShell können dieselben Parameter angegeben werden. Das folgende Beispiel startet eine Verbindung mit einem lokalen Cluster:
 
@@ -123,12 +115,12 @@ Bei REST werden die Berichte zum Service Fabric-Gateway gesendet, das über eine
 ## <a name="report-from-within-low-privilege-services"></a>Erstellen von Berichten aus Diensten mit niedriger Berechtigung
 Wenn Service Fabric-Dienste keinen Administratorzugriff auf den Cluster haben, können Sie Integritätsberichte für Entitäten aus dem aktuellen Kontext durch `Partition` oder `CodePackageActivationContext` erstellen.
 
-* Verwenden Sie für zustandslose Dienste [IStatelessServicePartition.ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) , um einen Bericht über die aktuelle Dienstinstanz zu erstellen.
-* Verwenden Sie für zustandsbehaftete Dienste [IStatefulServicePartition.ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) , um einen Bericht über das aktuelle Replikat zu erstellen.
-* Verwenden Sie [IServicePartition.ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) , um einen Bericht über die aktuelle Partitionsentität zu erstellen.
-* Verwenden Sie [CodePackageActivationContext.ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) , um einen Bericht über die aktuelle Anwendung zu erstellen.
-* Verwenden Sie [CodePackageActivationContext.ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) , um einen Bericht über die aktuelle Anwendung zu erstellen, die auf dem aktuellen Knoten bereitgestellt wird.
-* Verwenden Sie [CodePackageActivationContext.ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth), um einen Bericht über ein Servicepaket der Anwendung zu erstellen, die auf dem aktuellen Knoten bereitgestellt wird.
+* Verwenden Sie für zustandslose Dienste [IStatelessServicePartition.ReportInstanceHealth](/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) , um einen Bericht über die aktuelle Dienstinstanz zu erstellen.
+* Verwenden Sie für zustandsbehaftete Dienste [IStatefulServicePartition.ReportReplicaHealth](/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) , um einen Bericht über das aktuelle Replikat zu erstellen.
+* Verwenden Sie [IServicePartition.ReportPartitionHealth](/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) , um einen Bericht über die aktuelle Partitionsentität zu erstellen.
+* Verwenden Sie [CodePackageActivationContext.ReportApplicationHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) , um einen Bericht über die aktuelle Anwendung zu erstellen.
+* Verwenden Sie [CodePackageActivationContext.ReportDeployedApplicationHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) , um einen Bericht über die aktuelle Anwendung zu erstellen, die auf dem aktuellen Knoten bereitgestellt wird.
+* Verwenden Sie [CodePackageActivationContext.ReportDeployedServicePackageHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth), um einen Bericht über ein Servicepaket der Anwendung zu erstellen, die auf dem aktuellen Knoten bereitgestellt wird.
 
 > [!NOTE]
 > Intern enthalten `Partition` und `CodePackageActivationContext` einen Integritätsclient, der mit den Standardeinstellungen konfiguriert ist. Wie für den [Integritätsclient](service-fabric-report-health.md#health-client) erläutert, werden Berichte als Batch verarbeitet und per Timer gesendet. Die Objekte sollten aktiv gehalten werden, damit sie den Bericht senden können.
@@ -215,7 +207,7 @@ public static void SendReport(object obj)
 ```
 
 ### <a name="powershell"></a>PowerShell
-Senden Sie Integritätsberichte mit **Send-ServiceFabric*EntityType*HealthReport**.
+Senden Sie Integritätsberichte mit **Send-ServiceFabric *EntityType* HealthReport**.
 
 Das folgende Beispiel zeigt die regelmäßige Berichterstellung für CPU-Werte auf einem Knoten. Die Berichte sollten alle 30 Sekunden gesendet werden, und sie haben eine Gültigkeitsdauer von 2 Minuten. Wenn sie ablaufen, weist der Reporter Probleme auf. Daher wird der Knoten als fehlerhaft bewertet. Wenn der CPU-Wert über einem Schwellenwert liegt, enthält der Bericht als Integritätszustand eine Warnung. Wenn der CPU-Wert länger als die konfigurierte Zeit über dem Schwellenwert bleibt, wird dies als Fehler gemeldet. Andernfalls sendet der Reporter als Integritätszustand „OK“.
 
@@ -299,7 +291,7 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-Senden Sie Integritätsberichte über REST mithilfe von POST-Anforderungen, die an die gewünschte Entität gerichtet sind und die Beschreibung des Integritätsberichts enthalten. Informieren Sie sich über das Senden von REST-basierten [Clusterintegritätsberichten](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) oder [Dienstintegritätsberichten](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service). Alle Entitäten werden unterstützt.
+Senden Sie Integritätsberichte über REST mithilfe von POST-Anforderungen, die an die gewünschte Entität gerichtet sind und die Beschreibung des Integritätsberichts enthalten. Informieren Sie sich über das Senden von REST-basierten [Clusterintegritätsberichten](/rest/api/servicefabric/report-the-health-of-a-cluster) oder [Dienstintegritätsberichten](/rest/api/servicefabric/report-the-health-of-a-service). Alle Entitäten werden unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Basierend auf den Integritätsdaten können Dienstautoren und Cluster- bzw. Anwendungsadministratoren Möglichkeiten für die Nutzung der Informationen erwägen. Sie können beispielsweise Warnungen auf Grundlage des Integritätszustands einrichten, um schwerwiegende Probleme abzufangen, bevor Ausfälle provoziert werden. Administratoren können auch Reparatursysteme einrichten, um Probleme automatisch zu beheben.
@@ -315,4 +307,3 @@ Basierend auf den Integritätsdaten können Dienstautoren und Cluster- bzw. Anwe
 [Lokales Überwachen und Diagnostizieren von Diensten](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
-

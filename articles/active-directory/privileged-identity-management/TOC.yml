@@ -8,17 +8,17 @@
   items:
     - name: Lizenzanforderungen
       href: subscription-requirements.md
-    - name: Nicht verwaltbare Rollen
+    - name: 'Rollen, die nicht mit PIM verwaltet werden können'
       href: pim-roles.md
     - name: Schützen des privilegierten Zugriffs
-      href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+      href: ../roles/security-planning.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
     - name: MFA und PIM
       href: pim-how-to-require-mfa.md
     - name: Übersichtsdashboards
       href: pim-resource-roles-overview-dashboards.md
     - name: E-Mail-Benachrichtigungen
       href: pim-email-notifications.md
-    - name: Microsoft Graph-APIs
+    - name: Microsoft Graph-API und PIM
       href: pim-apis.md
 - name: Anleitungen
   expanded: true
@@ -33,7 +33,7 @@
           href: pim-security-wizard.md
         - name: Ermitteln von Azure-Ressourcen
           href: pim-resource-roles-discover-resources.md
-        - name: Gewähren des Zugriffs für andere Personen zur Verwaltung von PIM
+        - name: Delegieren des Zugriffs an PIM
           href: pim-how-to-give-access-to-pim.md
         - name: Erhöhen der Zugriffsrechte zum Verwalten aller Abonnements
           href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
@@ -45,6 +45,10 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: Verwalten von Azure AD-Rollen
       items:
+        - name: Funktionsübersicht
+          href: azure-ad-roles-features.md
+        - name: PowerShell für Azure AD-Rollen
+          href: powershell-for-azure-ad-roles.md
         - name: Zuweisen von Rollen
           href: pim-how-to-add-role-to-user.md
         - name: Genehmigen von Anforderungen
@@ -65,7 +69,7 @@
               href: azure-ad-custom-roles-configure.md
         - name: Anzeigen des Überwachungsverlaufs
           href: pim-how-to-use-audit-log.md
-    - name: Verwalten von Azure-Ressourcenrollen
+    - name: Verwalten von Azure-Rollen
       items:
         - name: Zuweisen von Rollen
           href: pim-resource-roles-assign-roles.md
@@ -79,10 +83,28 @@
           href: pim-resource-roles-configure-role-settings.md
         - name: Konfigurieren von Warnungen
           href: pim-resource-roles-configure-alerts.md
-        - name: Anzeigen von Aktivitäts- und Überwachungsverlauf
+        - name: Anzeigen des Überwachungsverlaufs
           href: azure-pim-resource-rbac.md
         - name: Verwenden von benutzerdefinierten Rollen
           href: pim-resource-roles-custom-role-policy.md
+    - name: Verwalten von Gruppen mit privilegiertem Zugriff (Vorschau)
+      items:
+        - name: Übersicht über privilegierten Zugriff
+          href: groups-features.md
+        - name: Verwalten von Gruppen
+          href: groups-discover-groups.md
+        - name: Zuweisen eines Mitglieds oder Besitzers
+          href: groups-assign-member-owner.md
+        - name: Genehmigen von Anforderungen
+          href: groups-approval-workflow.md
+        - name: Verlängern oder Erneuern von Zuweisungen
+          href: groups-renew-extend.md
+        - name: Konfigurieren von Rolleneinstellungen
+          href: groups-role-settings.md
+        - name: Anzeigen des Überwachungsverlaufs
+          href: groups-audit.md
+    - name: Troubleshooting für PIM
+      href: pim-troubleshoot.md
     - name: Zugriffsüberprüfungen
       items:
         - name: Azure AD-Rollen
@@ -93,7 +115,7 @@
               href: pim-how-to-perform-security-review.md
             - name: Abschließen einer Zugriffsüberprüfung
               href: pim-how-to-complete-review.md
-        - name: Azure-Ressourcenrollen
+        - name: Azure-Rollen
           items:
             - name: Erstellen einer Zugriffsüberprüfung
               href: pim-resource-roles-start-access-review.md
@@ -101,3 +123,13 @@
               href: pim-resource-roles-perform-access-review.md
             - name: Abschließen einer Zugriffsüberprüfung
               href: pim-resource-roles-complete-access-review.md
+- name: Verweis
+  items:
+    - name: Graph-API
+      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
+    - name: Azure AD-Befehlszeilenschnittstelle
+      href: /cli/azure/ad
+    - name: Azure AD PowerShell für Graph
+      href: /powershell/azure/active-directory/install-adv2?view=azureadps-2.0
+    - name: Azure AD-Diensteinschränkungen
+      href: ../users-groups-roles/directory-service-limits-restrictions.md

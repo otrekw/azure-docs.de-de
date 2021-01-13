@@ -1,25 +1,14 @@
 ---
-title: Sichern eines Azure Service Fabric-Clusters unter Windows mithilfe von Zertifikaten | Microsoft-Dokumentation
+title: Sichern eines Clusters unter Windows mithilfe von Zertifikaten
 description: Sichern Sie die Kommunikation in einem eigenständigen oder lokalen Azure Service Fabric-Cluster sowie zwischen Clients und dem Cluster.
-services: service-fabric
-documentationcenter: .net
-author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: fe0ed74c-9af5-44e9-8d62-faf1849af68c
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/15/2017
-ms.author: dekapur
-ms.openlocfilehash: ee2ce03fccc3e6556f9d261687edb050c8cfa1cc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 34ba457ce0f39705393962d5c5ec8fa11668f413
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60628148"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686122"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Schützen eines eigenständigen Windows-Clusters mithilfe von X.509-Zertifikaten
 In diesem Artikel wird beschrieben, wie Sie die Kommunikation zwischen verschiedenen Knoten eines eigenständigen Windows-Clusters sichern. Außerdem wird beschrieben, wie Sie mithilfe von X.509-Zertifikaten Clients authentifizieren, die sich mit diesem Cluster verbinden. Mit der Authentifizierung wird sichergestellt, dass nur autorisierte Benutzer auf den Cluster und bereitgestellte Anwendungen zugreifen und Verwaltungsaufgaben ausführen können. Die Zertifikatsicherheit sollte auf dem Cluster aktiviert werden, wenn der Cluster erstellt wird.  
@@ -119,7 +108,7 @@ In diesem Abschnitt werden die Zertifikate beschrieben, die Sie zum Schützen de
 
 
 > [!NOTE]
-> Ein [Fingerabdruck](https://en.wikipedia.org/wiki/Public_key_fingerprint) ist die primäre Identität eines Zertifikats. Wie Sie den Fingerabdruck der von Ihnen erstellten Zertifikate ermitteln, erfahren Sie unter [Abrufen des Fingerabdrucks eines Zertifikats](https://msdn.microsoft.com/library/ms734695.aspx).
+> Ein [Fingerabdruck](https://en.wikipedia.org/wiki/Public_key_fingerprint) ist die primäre Identität eines Zertifikats. Wie Sie den Fingerabdruck der von Ihnen erstellten Zertifikate ermitteln, erfahren Sie unter [Abrufen des Fingerabdrucks eines Zertifikats](/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate).
 > 
 > 
 
@@ -129,13 +118,13 @@ In der folgenden Tabelle sind die Zertifikate aufgeführt, die Sie für die Einr
 | --- | --- |
 | ClusterCertificate |Empfohlen für eine Testumgebung. Dieses Zertifikat ist erforderlich, um die Kommunikation zwischen den Knoten in einem Cluster zu schützen. Sie können zwei verschiedene Zertifikate verwenden: ein primäres Zertifikat und ein sekundäres Zertifikat für Upgrades. Legen Sie den Fingerabdruck des primären Zertifikats im Abschnitt „Thumbprint“ und den Fingerabdruck des sekundären Zertifikats in den Variablen unter „ThumbprintSecondary“ fest. |
 | ClusterCertificateCommonNames |Empfohlen für eine Produktionsumgebung. Dieses Zertifikat ist erforderlich, um die Kommunikation zwischen den Knoten in einem Cluster zu schützen. Sie können einen oder zwei allgemeine Clusterzertifikatnamen verwenden. „CertificateIssuerThumbprint“ entspricht dem Fingerabdruck des Zertifikatausstellers dieses Zertifikats. Wenn mehrere Zertifikate mit dem gleichen allgemeinen Namen verwendet werden, können Sie mehrere Fingerabdrücke für Zertifikataussteller angeben.|
-| ClusterCertificateIssuerStores |Empfohlen für eine Produktionsumgebung. Dieses Zertifikat entspricht dem Zertifikataussteller des Clusterzertifikats. Sie können den allgemeinen Ausstellernamen und den entsprechenden Speichername unter diesem Abschnitt angeben, anstatt den Fingerabdruck des Zertifikatausstellers unter „ClusterCertificateCommonNames“ bereitzustellen.  Dies vereinfacht das Rollover von Clusterausstellerzertifikaten. Wenn mehrere Clusterzertifikate verwendet werden, können mehrere Zertifikataussteller angegeben werden. Ein leeres IssuerCommonName-Objekt setzt alle Zertifikate in den entsprechenden Speichern auf die Whitelist, die unter „X509StoreNames“ angegeben sind.|
+| ClusterCertificateIssuerStores |Empfohlen für eine Produktionsumgebung. Dieses Zertifikat entspricht dem Zertifikataussteller des Clusterzertifikats. Sie können den allgemeinen Ausstellernamen und den entsprechenden Speichername unter diesem Abschnitt angeben, anstatt den Fingerabdruck des Zertifikatausstellers unter „ClusterCertificateCommonNames“ bereitzustellen.  Dies vereinfacht das Rollover von Clusterausstellerzertifikaten. Wenn mehrere Clusterzertifikate verwendet werden, können mehrere Zertifikataussteller angegeben werden. Ein leeres IssuerCommonName-Objekt lässt alle Zertifikate in den entsprechenden Speichern zu, die unter „X509StoreNames“ angegeben werden.|
 | ServerCertificate |Empfohlen für eine Testumgebung. Dieses Zertifikat wird dem Client angezeigt, wenn versucht wird, eine Verbindung mit diesem Cluster herzustellen. Der Einfachheit halber können Sie für „ClusterCertificate“ und „ServerCertificate“ dasselbe Zertifikat auswählen. Sie können zwei verschiedene Serverzertifikate verwenden: ein primäres Zertifikat und ein sekundäres Zertifikat für Upgrades. Legen Sie den Fingerabdruck des primären Zertifikats im Abschnitt „Thumbprint“ und den Fingerabdruck des sekundären Zertifikats in den Variablen unter „ThumbprintSecondary“ fest. |
 | ServerCertificateCommonNames |Empfohlen für eine Produktionsumgebung. Dieses Zertifikat wird dem Client angezeigt, wenn versucht wird, eine Verbindung mit diesem Cluster herzustellen. „CertificateIssuerThumbprint“ entspricht dem Fingerabdruck des Zertifikatausstellers dieses Zertifikats. Wenn mehrere Zertifikate mit dem gleichen allgemeinen Namen verwendet werden, können Sie mehrere Fingerabdrücke für Zertifikataussteller angeben. Der Einfachheit halber können Sie für „ClusterCertificateCommonNames“ und „ServerCertificateCommonNames“ dasselbe Zertifikat auswählen. Sie können einen oder zwei allgemeine Serverzertifikatnamen verwenden. |
-| ServerCertificateIssuerStores |Empfohlen für eine Produktionsumgebung. Dieses Zertifikat entspricht dem Zertifikataussteller des Serverzertifikats. Sie können den allgemeinen Ausstellernamen und den entsprechenden Speichername unter diesem Abschnitt angeben, anstatt den Fingerabdruck des Zertifikatausstellers unter „ServerCertificateCommonNames“ bereitzustellen.  Dies vereinfacht das Rollover von Serverausstellerzertifikaten. Wenn mehrere Serverzertifikate verwendet werden, können mehrere Zertifikataussteller angegeben werden. Ein leeres IssuerCommonName-Objekt setzt alle Zertifikate in den entsprechenden Speichern auf die Whitelist, die unter „X509StoreNames“ angegeben sind.|
-| ClientCertificateThumbprints |Installieren Sie diese Zertifikate auf den authentifizierten Clients. Auf den Computern, denen Sie Zugriff auf den Cluster gewähren möchten, können Sie verschiedene Clientzertifikate installieren. Legen Sie den Fingerabdruck eines Zertifikats jeweils in der Variablen „CertificateThumbprint“ fest. Wenn Sie „IsAdmin“ auf *TRUE* festlegen, kann der Client, auf dem dieses Zertifikat installiert ist, Administratorverwaltungsaktivitäten für den Cluster durchführen. Wenn „IsAdmin“ auf *FALSE* festgelegt ist, kann der Client mit diesem Zertifikat Aktionen durchführen, die nur für Benutzerzugriffsrechte (üblicherweise Lesezugriffe) zulässig sind. Weitere Informationen zu Rollen finden Sie unter [Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac). |
-| ClientCertificateCommonNames |Legen Sie den allgemeinen Namen des ersten Clientzertifikats für „CertificateCommonName“ fest. „CertificateIssuerThumbprint“ ist der Fingerabdruck für den Aussteller dieses Zertifikats. Weitere Informationen zu allgemeinen Namen und zum Zertifikataussteller finden Sie unter [Verwenden von Zertifikaten](https://msdn.microsoft.com/library/ms731899.aspx). |
-| ClientCertificateIssuerStores |Empfohlen für eine Produktionsumgebung. Dieses Zertifikat entspricht dem Zertifikataussteller des Clientzertifikats (sowohl Administrator- als auch Nicht-Administratorrollen). Sie können den allgemeinen Ausstellernamen und den entsprechenden Speichername unter diesem Abschnitt angeben, anstatt den Fingerabdruck des Zertifikatausstellers unter „ClientCertificateCommonNames“ bereitzustellen.  Dies vereinfacht das Rollover von Clientausstellerzertifikaten. Wenn mehrere Clientzertifikate verwendet werden, können mehrere Zertifikataussteller angegeben werden. Ein leeres IssuerCommonName-Objekt setzt alle Zertifikate in den entsprechenden Speichern auf die Whitelist, die unter „X509StoreNames“ angegeben sind.|
+| ServerCertificateIssuerStores |Empfohlen für eine Produktionsumgebung. Dieses Zertifikat entspricht dem Zertifikataussteller des Serverzertifikats. Sie können den allgemeinen Ausstellernamen und den entsprechenden Speichername unter diesem Abschnitt angeben, anstatt den Fingerabdruck des Zertifikatausstellers unter „ServerCertificateCommonNames“ bereitzustellen.  Dies vereinfacht das Rollover von Serverausstellerzertifikaten. Wenn mehrere Serverzertifikate verwendet werden, können mehrere Zertifikataussteller angegeben werden. Ein leeres IssuerCommonName-Objekt lässt alle Zertifikate in den entsprechenden Speichern zu, die unter „X509StoreNames“ angegeben werden.|
+| ClientCertificateThumbprints |Installieren Sie diese Zertifikate auf den authentifizierten Clients. Auf den Computern, denen Sie Zugriff auf den Cluster gewähren möchten, können Sie verschiedene Clientzertifikate installieren. Legen Sie den Fingerabdruck eines Zertifikats jeweils in der Variablen „CertificateThumbprint“ fest. Wenn Sie „IsAdmin“ auf *TRUE* festlegen, kann der Client, auf dem dieses Zertifikat installiert ist, Administratorverwaltungsaktivitäten für den Cluster durchführen. Wenn „IsAdmin“ auf *FALSE* festgelegt ist, kann der Client mit diesem Zertifikat Aktionen durchführen, die nur für Benutzerzugriffsrechte (üblicherweise Lesezugriffe) zulässig sind. Weitere Informationen zu Rollen finden Sie unter [Rollenbasierte Service Fabric-Zugriffssteuerung](service-fabric-cluster-security.md#service-fabric-role-based-access-control). |
+| ClientCertificateCommonNames |Legen Sie den allgemeinen Namen des ersten Clientzertifikats für „CertificateCommonName“ fest. „CertificateIssuerThumbprint“ ist der Fingerabdruck für den Aussteller dieses Zertifikats. Weitere Informationen zu allgemeinen Namen und zum Zertifikataussteller finden Sie unter [Verwenden von Zertifikaten](/dotnet/framework/wcf/feature-details/working-with-certificates). |
+| ClientCertificateIssuerStores |Empfohlen für eine Produktionsumgebung. Dieses Zertifikat entspricht dem Zertifikataussteller des Clientzertifikats (sowohl Administrator- als auch Nicht-Administratorrollen). Sie können den allgemeinen Ausstellernamen und den entsprechenden Speichername unter diesem Abschnitt angeben, anstatt den Fingerabdruck des Zertifikatausstellers unter „ClientCertificateCommonNames“ bereitzustellen.  Dies vereinfacht das Rollover von Clientausstellerzertifikaten. Wenn mehrere Clientzertifikate verwendet werden, können mehrere Zertifikataussteller angegeben werden. Ein leeres IssuerCommonName-Objekt lässt alle Zertifikate in den entsprechenden Speichern zu, die unter „X509StoreNames“ angegeben werden.|
 | ReverseProxyCertificate |Empfohlen für eine Testumgebung. Dieses optionale Zertifikat kann zum Schutz des [Reverseproxys](service-fabric-reverseproxy.md) angegeben werden kann. Stellen Sie bei Verwendung dieses Zertifikats sicher, dass „reverseProxyEndpointPort“ unter „nodeTypes“ festgelegt ist. |
 | ReverseProxyCertificateCommonNames |Empfohlen für eine Produktionsumgebung. Dieses optionale Zertifikat kann zum Schutz des [Reverseproxys](service-fabric-reverseproxy.md) angegeben werden kann. Stellen Sie bei Verwendung dieses Zertifikats sicher, dass „reverseProxyEndpointPort“ unter „nodeTypes“ festgelegt ist. |
 
@@ -257,9 +246,21 @@ Bei Verwendung von Zertifikatausstellerspeichern muss kein Konfigurationsupgrade
 ## <a name="acquire-the-x509-certificates"></a>Erwerben der X.509-Zertifikate
 Zum Schutz der Kommunikation zwischen Clustern müssen Sie zuerst X.509-Zertifikate für die Clusterknoten abrufen. Um die Verbindungsherstellung für diesen Cluster auf autorisierte Computer und Benutzer zu beschränken, müssen Sie Zertifikate für die Clientcomputer abrufen und installieren.
 
-Verwenden Sie zum Schutz von Clustern, die Produktionsworkloads ausführen, ein von der [Zertifizierungsstelle](https://en.wikipedia.org/wiki/Certificate_authority) signiertes X.509-Zertifikat. Weitere Informationen zum Abrufen dieser Zertifikate finden Sie unter [Abrufen eines Zertifikats](https://msdn.microsoft.com/library/aa702761.aspx).
+Verwenden Sie zum Schutz von Clustern, die Produktionsworkloads ausführen, ein von der [Zertifizierungsstelle](https://en.wikipedia.org/wiki/Certificate_authority) signiertes X.509-Zertifikat. Weitere Informationen zum Abrufen dieser Zertifikate finden Sie unter [Abrufen eines Zertifikats](/dotnet/framework/wcf/feature-details/how-to-obtain-a-certificate-wcf). 
+
+Es gibt eine Reihe von Eigenschaften, die das Zertifikat besitzen muss, damit es ordnungsgemäß funktioniert:
+
+* Der Anbieter des Zertifikats muss **Microsoft Enhanced RSA and AES Cryptographic Provider** sein.
+
+* Wenn Sie einen RSA-Schlüssel erstellen, stellen Sie sicher, dass der Schlüssel ein **2048-Bit-Schlüssel** ist.
+
+* Die Erweiterung „Key Usage“ hat den Wert **Digital Signature, Key Encipherment (a0)** .
+
+* Die Erweiterung „Enhanced Key Usage“ weist die Werte **Server Authentication** (OID: 1.3.6.1.5.5.7.3.1) und **Client Authentication** (OID: (1.3.6.1.5.5.7.3.2) auf.
 
 Für Testcluster können Sie ein selbstsigniertes Zertifikat verwenden.
+
+Antworten auf weitere Fragen finden Sie unter [häufig gestellte Fragen zu Zertifikaten](./cluster-security-certificate-management.md#troubleshooting-and-frequently-asked-questions).
 
 ## <a name="optional-create-a-self-signed-certificate"></a>Optional: Erstellen eines selbstsignierten Zertifikats
 Ein selbstsigniertes Zertifikat, das ordnungsgemäß geschützt werden kann, können Sie beispielsweise mithilfe des Skripts „CertSetup.ps1“ im Service Fabric SDK-Ordner im Verzeichnis „C:\Programme\Microsoft SDKs\Service Fabric\ClusterSetup\Secure“ erstellen. Bearbeiten Sie diese Datei, um den Standardnamen des Zertifikats zu ändern. Suchen Sie dabei nach dem Wert „CN=ServiceFabricDevClusterCert“. Führen Sie dieses Skript als `.\CertSetup.ps1 -Install` aus.
@@ -318,7 +319,7 @@ Sobald Sie über Zertifikate verfügen, können Sie diese auf den Clusterknoten 
     $cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object -FilterScript { $PSItem.ThumbPrint -eq $pfxThumbPrint; }
    
     # Specify the user, the permissions, and the permission type
-    $permission = "$($serviceAccount)","FullControl","Allow"
+    $permission = "$($serviceAccount)","FullControl","Allow" # "NT AUTHORITY\NetworkService" is the service account
     $accessRule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $permission
    
     # Location of the machine-related keys
@@ -354,7 +355,7 @@ $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $Tru
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-Sie können dann andere PowerShell-Befehle zum Arbeiten mit diesem Cluster ausführen. Führen Sie beispielsweise [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) aus, um eine Liste von Knoten in diesem sicheren Cluster anzuzeigen.
+Sie können dann andere PowerShell-Befehle zum Arbeiten mit diesem Cluster ausführen. Führen Sie beispielsweise [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) aus, um eine Liste von Knoten in diesem sicheren Cluster anzuzeigen.
 
 
 Stellen Sie zum Entfernen des Clusters eine Verbindung mit dem Knoten im Cluster her, in den Sie das Service Fabric-Paket heruntergeladen haben, öffnen Sie eine Befehlszeile, und navigieren Sie zum Paketordner. Führen Sie jetzt den folgenden Befehl aus:
@@ -367,4 +368,3 @@ Stellen Sie zum Entfernen des Clusters eine Verbindung mit dem Knoten im Cluster
 > Eine fehlerhafte Zertifikatkonfiguration kann dazu führen, dass der Cluster während der Bereitstellung nicht gestartet wird. Um Sicherheitsprobleme selbst zu diagnostizieren, sehen Sie in der Ereignisanzeigegruppe **Anwendungs- und Dienstprotokolle** > **Microsoft-Service Fabric** nach.
 > 
 > 
-

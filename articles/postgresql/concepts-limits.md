@@ -1,46 +1,49 @@
 ---
-title: Beschränkungen in Azure Database for PostgreSQL – Einzelserver
+title: Beschränkungen – Azure Database for PostgreSQL – Einzelserver
 description: In diesem Artikel werden die Beschränkungen in Azure Database for PostgreSQL für Einzelserver beschrieben, z. B. die Anzahl der Verbindungen und Optionen für die Speicher-Engine.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4752112acf136d9ffb19a0b7383bc3aff5de5e0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6f48245983898c542197deb7e0b3cd53bd39be33
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448101"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707522"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Beschränkungen in Azure Database for PostgreSQL – Einzelserver
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben. Informationen zu den Tarifen für Ressourcen (Compute, Arbeitsspeicher, Speicher) finden Sie im Artikel [Tarife](concepts-pricing-tiers.md).
 
 
 ## <a name="maximum-connections"></a>Maximale Anzahl der Verbindungen
-Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif und V-Kernen: 
+Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif und virtuellen Kernen, wie unten gezeigt. Das Azure-System benötigt fünf Verbindungen, um den Azure Database for PostgreSQL-Server zu überwachen. 
 
-|**Tarif**| **vCore(s)**| **Max. Anzahl von Verbindungen** |
-|---|---|---|
-|Basic| 1| 50 |
-|Basic| 2| 100 |
-|Allgemeiner Zweck| 2| 150|
-|Allgemeiner Zweck| 4| 250|
-|Allgemeiner Zweck| 8| 480|
-|Allgemeiner Zweck| 16| 950|
-|Allgemeiner Zweck| 32| 1500|
-|Allgemeiner Zweck| 64| 1\.900|
-|Arbeitsspeicheroptimiert| 2| 300|
-|Arbeitsspeicheroptimiert| 4| 500|
-|Arbeitsspeicheroptimiert| 8| 960|
-|Arbeitsspeicheroptimiert| 16| 1\.900|
-|Arbeitsspeicheroptimiert| 32| 1987|
+|**Tarif**| **vCore(s)**| **Max. Anzahl von Verbindungen** | **Max. Benutzerverbindungen** |
+|---|---|---|---|
+|Basic| 1| 55 | 50|
+|Basic| 2| 105 | 100|
+|Universell| 2| 150| 145|
+|Universell| 4| 250| 245|
+|Universell| 8| 480| 475|
+|Universell| 16| 950| 945|
+|Universell| 32| 1500| 1495|
+|Universell| 64| 1.900| 1895|
+|Arbeitsspeicheroptimiert| 2| 300| 295|
+|Arbeitsspeicheroptimiert| 4| 500| 495|
+|Arbeitsspeicheroptimiert| 8| 960| 955|
+|Arbeitsspeicheroptimiert| 16| 1.900| 1895|
+|Arbeitsspeicheroptimiert| 32| 1987| 1982|
 
 Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
 > SCHWERWIEGEND: Es sind bereits zu viele Clients vorhanden.
 
-Das Azure-System benötigt fünf Verbindungen, um den Azure Database for PostgreSQL-Server zu überwachen. 
+> [!IMPORTANT]
+> Für eine optimale Erfahrung empfehlen wir, dass Sie einen Verbindungspooler wie pgBouncer verwenden, um Verbindungen effizient zu verwalten.
+
+Eine PostgreSQL-Verbindung, selbst im Leerlauf, kann ungefähr 10 MB Arbeitsspeicher belegen. Außerdem nimmt das Erstellen neuer Verbindungen Zeit in Anspruch. Die meisten Anwendungen fordern viele kurzlebige Verbindungen an, was diese Situation erschwert. Das Ergebnis sind weniger Ressourcen, die für ihre tatsächliche Workload verfügbar sind, was zu verringerter Leistung führt. Ein Verbindungspooler, der Verbindungen im Leerlauf reduziert und vorhandene Verbindungen wiederverwendet, hilft dabei, dies zu vermeiden. Weitere Informationen finden Sie in unserem [Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717).
 
 ## <a name="functional-limitations"></a>Funktionale Beschränkungen
 ### <a name="scale-operations"></a>Skalierungsvorgänge
@@ -63,6 +66,11 @@ Das Azure-System benötigt fünf Verbindungen, um den Azure Database for Postgre
 
 ### <a name="utf-8-characters-on-windows"></a>UTF-8-Zeichen in Windows
 - In einigen Szenarien werden UTF-8-Zeichen nicht vollständig in Open Source PostgreSQL unter Windows unterstützt, was Azure Database for PostgreSQL beeinträchtigt. Weitere Informationen finden Sie in dem Thread zu [Fehler #15476 im PostgreSQL-Archiv](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html).
+
+### <a name="gss-error"></a>GSS-Fehler
+Falls ein Fehler zu **GSS** angezeigt wird, verwenden Sie wahrscheinlich eine neuere Client-/Treiberversion, die von Azure Postgres Single Server noch nicht vollständig unterstützt wird. Dieser Fehler wirkt sich auf die [JDBC-Treiberversionen 42.2.15 und 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868) aus.
+   - Es ist geplant, das Update bis Ende November fertigzustellen. In der Zwischenzeit ist es ratsam, eine funktionierende Treiberversion zu verwenden.
+   - Alternativ kann die GSS-Anforderung deaktiviert werden.  Verwenden Sie einen Verbindungsparameter wie `gssEncMode=disable`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informationen zu den [verfügbaren Funktionen in jedem Tarif](concepts-pricing-tiers.md)

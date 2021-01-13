@@ -1,26 +1,27 @@
 ---
-title: Ausführen von Deltakopiervorgängen aus einer Datenbank mithilfe einer Steuertabelle mit Azure Data Factory | Microsoft-Dokumentation
+title: Deltakopiervorgänge aus einer Datenbank mithilfe einer Steuertabelle
 description: Hier erfahren Sie, wie Sie eine Lösungsvorlage verwenden, um mit Azure Data Factory nur neue oder aktualisierte Zeilen inkrementell aus einer Datenbank zu kopieren.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: douglasl
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/24/2018
-ms.openlocfilehash: c32592ce539eeb2dec71792e4a6eb31e7d904eff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: seo-lt-2019
+ms.date: 12/09/2020
+ms.openlocfilehash: 3f15ffd6f7ed784cce398d419e013a69c60289d8
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60312432"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921812"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Deltakopiervorgänge aus einer Datenbank mit einer Steuertabelle
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In diesem Artikel wird eine Vorlage zum inkrementellen Laden neuer oder aktualisierter Zeilen aus einer Datenbanktabelle in Azure erläutert, bei der eine externe Steuertabelle verwendet wird, die einen hohen Grenzwert speichert.
 
@@ -39,10 +40,13 @@ Die Vorlage enthält vier Aktivitäten:
 - Die **Kopieraktivität** kopiert nur Änderungen aus der Quelldatenbank in den Zielspeicher. Die Abfrage für das Ermitteln der Änderungen in der Quelldatenbank ähnelt SELECT * FROM Data_Source_Table WHERE TIMESTAMP_Column > “last high-watermark” und TIMESTAMP_Column <= “current high-watermark”.
 - Eine **SqlServerStoredProcedure**-Aktivität, um den aktuellen hohen Grenzwert in eine externe Steuertabelle zu schreiben, damit er beim nächsten Deltakopiervorgang zur Verfügung steht.
 
-Die Vorlage definiert fünf Parameter:
+Die Vorlage definiert die folgenden Parameter:
 - *Data_Source_Table_Name* entspricht der Tabelle aus der Quelldatenbank, aus der Sie Daten laden möchten.
 - *Data_Source_WaterMarkColumn* entspricht dem Spaltennamen in der Quelltabelle, der zum Identifizieren der neuen oder aktualisierten Zeilen verwendet werden kann. Der Typ dieser Spalte ist üblicherweise *datetime*, *int* oder ein ähnlicher Typ.
-- *Data_Destination_Folder_Path* oder *Data_Destination_Table_Name* entsprechen dem Ort, an den die Daten in Ihrem Zielspeicher kopiert werden sollen.
+- *Data_Destination_Container* entspricht dem Stammpfad des Orts, an den die Daten in Ihrem Zielspeicher kopiert werden.
+- *Data_Destination_Directory* entspricht dem Verzeichnispfad unter dem Stammelement des Orts, an den die Daten in Ihrem Zielspeicher kopiert werden.
+- *Data_Destination_Table_Name* entspricht dem Ort, an den die Daten in Ihren Zielspeicher kopiert werden (zutreffend, wenn „Azure Synapse Analytics“ als Datenziel ausgewählt ist).
+- *Data_Destination_Folder_Path* entspricht dem Ort, an den die Daten in Ihren Zielspeicher kopiert werden (zutreffend, wenn "Dateisystem" oder "Azure Data Lake Storage Gen1" als Datenziel ausgewählt ist).
 - *Control_Table_Table_Name* entspricht der externen Steuertabelle, in der der hohe Grenzwert gespeichert werden soll.
 - *Control_Table_Column_Name* entspricht der Spalte in der externen Steuertabelle, in der der hohe Grenzwert gespeichert werden soll.
 
@@ -101,20 +105,18 @@ Die Vorlage definiert fünf Parameter:
     ![Erstellen einer neuen Verbindung mit dem Datenspeicher der Steuertabelle](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
 7. Klicken Sie auf **Diese Vorlage verwenden**.
-
-     ![„Diese Vorlage verwenden“](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
 8. Daraufhin wird die verfügbare Pipeline wie im folgenden Beispiel angezeigt:
+  
+    ![Überprüfen der Pipeline](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-     ![Überprüfen der Pipeline](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
+9. Klicken Sie auf **Gespeicherte Prozedur**. Wählen Sie **[dbo].[update_watermark]** für **Name der gespeicherten Prozedur** aus. Klicken Sie auf **Import parameter** (Importparameter), und wählen Sie **Dynamischen Inhalt hinzufügen** aus.  
 
-9. Klicken Sie auf **Gespeicherte Prozedur**. Wählen Sie **[update_watermark]** für **Name der gespeicherten Prozedur** aus. Klicken Sie auf **Import parameter** (Importparameter), und wählen Sie **Dynamischen Inhalt hinzufügen** aus.  
-
-     ![Festlegen der Aktivität „Gespeicherte Prozedur“](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
+    ![Festlegen der Aktivität „Gespeicherte Prozedur“](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
 10. Schreiben Sie den Inhalt **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** , und klicken Sie dann auf **Fertig stellen**.  
 
-     ![Schreiben des Inhalts für die Parameter der gespeicherten Prozedur](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
+    ![Schreiben des Inhalts für die Parameter der gespeicherten Prozedur](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      
 11. Klicken Sie auf **Debuggen**, geben Sie die **Parameter** ein, und klicken Sie dann auf **Fertig stellen**.
 
@@ -133,13 +135,12 @@ Die Vorlage definiert fünf Parameter:
             INSERT INTO data_source_table
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
+
 14. Klicken Sie auf **Debuggen**, geben Sie die **Parameter** ein, und klicken Sie dann auf **Fertig stellen**, um die Pipeline erneut auszuführen.
 
-    ![Auf **Debuggen** klicken](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    Sie sehen, dass nur neue Zeilen in das Ziel kopiert wurden.
 
-    Wie Sie sehen, wurden nur neue Zeilen in das Ziel kopiert.
-
-15. (Optional:) Wenn Sie SQL Data Warehouse als Zielspeicher für die Daten ausgewählt haben, müssen Sie eine Verbindung mit Azure Blob Storage für den Stagingprozess angeben. Dabei handelt es sich um eine Anforderung von SQL Data Warehouse Polybase. Stellen Sie sicher, dass der Container in Blob Storage bereits erstellt wurde.
+15. (Optional:) Wenn Sie Azure Synapse Analytics als Zielspeicher für die Daten ausgewählt haben, müssen Sie eine Verbindung mit Azure Blob Storage für den Stagingprozess angeben. Dabei handelt es sich um eine Anforderung von Azure Synapse Analytics PolyBase. Die Vorlage generiert einen Containerpfad für Sie. Überprüfen Sie nach Ausführung der Pipeline, ob der Container im Blobspeicher erstellt wurde.
     
     ![Konfigurieren von PolyBase](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     

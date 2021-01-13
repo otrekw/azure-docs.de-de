@@ -1,20 +1,16 @@
 ---
 title: Trigger und Bindungen in Azure Functions
 description: Erfahren Sie, wie Sie Trigger und Bindungen verwenden, um eine Verbindung Ihrer Azure Functions-Funktion mit Onlineereignissen und cloudbasierten Diensten herzustellen.
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 914158ba7cfcc7530120d427c62e69036b3bb156
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: aa0d78d52ec13c91b82e6a8d10720269076f59a1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085088"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353543"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
 
@@ -32,10 +28,10 @@ Betrachten Sie die folgenden Beispiele, wie Sie verschiedene Funktionen implemen
 
 | Beispielszenario | Trigger | Eingabebindung | Ausgabebindung |
 |-------------|---------|---------------|----------------|
-| Eine neue Warteschlangennachricht trifft ein, die eine Funktion ausführt, die das Schreiben in eine andere Warteschlange bewirkt. | Warteschlange<sup>*</sup> | *Keine* | Warteschlange<sup>*</sup> |
-|Ein geplanter Auftrag liest den Inhalt von Blob-Speicher und erstellt ein neues Cosmos DB-Dokument. | Timer | Blob Storage | Cosmos DB |
+| Eine neue Warteschlangennachricht trifft ein, die eine Funktion ausführt, die das Schreiben in eine andere Warteschlange bewirkt. | Warteschlange<sup>*</sup> | *None* | Warteschlange<sup>*</sup> |
+|Ein geplanter Auftrag liest den Inhalt von Blob-Speicher und erstellt ein neues Cosmos DB-Dokument. | Zeitgeber | Blob Storage | Cosmos DB |
 |Das Event Grid wird verwendet, um ein Image aus Blob-Speicher und ein Dokument aus Cosmos DB zu lesen, um eine E-Mail zu senden. | Event Grid | BLOB Storage und Cosmos DB | SendGrid |
-| Ein Webhook, der Microsoft Graph verwendet, um ein Excel-Arbeitsblatt zu aktualisieren. | HTTP | *Keine* | Microsoft Graph |
+| Ein Webhook, der Microsoft Graph verwendet, um ein Excel-Arbeitsblatt zu aktualisieren. | HTTP | *None* | Microsoft Graph |
 
 <sup>\*</sup> Stellt verschiedene Warteschlangen dar
 
@@ -77,11 +73,25 @@ Alle Trigger und Bindungen enthalten eine `direction`-Eigenschaft in der Datei [
 
 Wenn Sie zum Konfigurieren von Triggern und Bindungen [Attribute in einer Klassenbibliothek](functions-dotnet-class-library.md) verwenden, wird die Richtung in einem Attributkonstruktor angegeben oder aus dem Parametertyp abgeleitet.
 
+## <a name="add-bindings-to-a-function"></a>Hinzufügen von Bindungen zu einer Funktion
+
+Sie können Ihre Funktion mit anderen Diensten verbinden, indem Sie Eingabe- oder Ausgabebindungen verwenden. Fügen Sie eine Bindung hinzu, indem Sie Ihrer Funktion ihre spezifischen Definitionen hinzufügen. Informationen zur Vorgehensweise finden Sie unter [Hinzufügen von Bindungen zu einer vorhandenen Funktion in Azure Functions](add-bindings-existing-function.md).  
+
 ## <a name="supported-bindings"></a>Unterstützte Bindungen
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
 Informationen darüber, welche Bindungen sich in der Vorschauversion befinden oder für die Produktion zugelassen sind, finden Sie unter [Unterstützte Sprachen](supported-languages.md).
+
+## <a name="bindings-code-examples"></a>Codebeispiele für Bindungen
+
+Verwenden Sie die folgende Tabelle, um Beispiele für bestimmte Bindungstypen zu finden, die Ihnen zeigen, wie Sie mit Bindungen in Ihren Funktionen arbeiten. Wählen Sie zunächst die Registerkarte „Sprache“ aus, die Ihrem Projekt entspricht. 
+
+[!INCLUDE [functions-bindings-code-example-chooser](../../includes/functions-bindings-code-example-chooser.md)]
+
+## <a name="custom-bindings"></a>Benutzerdefinierte Bindungen
+
+Sie können benutzerdefinierte Eingabe- und Ausgabebindungen erstellen. Bindungen müssen in .NET erstellt werden, können aber von jeder unterstützten Sprache genutzt werden. Weitere Informationen zum Erstellen benutzerdefinierter Bindungen finden Sie unter [Creating custom input and output bindings](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings) (Erstellen benutzerdefinierter Eingabe- und Ausgabebindungen).
 
 ## <a name="resources"></a>Ressourcen
 - [Bindungsausdrücke und Muster](./functions-bindings-expressions-patterns.md)

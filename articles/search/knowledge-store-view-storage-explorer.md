@@ -1,25 +1,23 @@
 ---
-title: 'Anzeigen eines Wissensspeichers mit Storage-Explorer: Azure Search'
-description: Anzeigen und Analysieren eines Azure Search-Wissensspeichers mit dem Storage-Explorer des Azure-Portals
-author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
-ms.author: v-lilei
-ms.openlocfilehash: 9ec93bcd2309bb47b24983260c35726ac24b5e95
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+title: Anzeigen eines Wissensspeichers mit Storage-Explorer
+titleSuffix: Azure Cognitive Search
+description: Anzeigen und Analysieren eines Azure Cognitive Search-Wissensspeichers mit dem Storage-Explorer des Azure-Portals
+manager: nitinme
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 06/30/2020
+ms.openlocfilehash: ba0b02067c032f9038051c169866588ded44af73
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265602"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85566021"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Anzeigen eines Wissensspeichers mit Storage-Explorer
 
-> [!Note]
-> Der Wissensspeicher befindet sich in der Vorschauphase und sollte nicht in der Produktion verwendet werden. Dieses Feature wird durch die [Azure Search-REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Das .NET SDK wird derzeit nicht unterstützt.
->
-In diesem Artikel erfahren Sie, wie Sie mit dem Storage-Explorer im Azure-Portal eine Verbindung mit einem Wissensspeicher herstellen und ihn anschließend erkunden. Informationen zum Erstellen des in dieser exemplarischen Vorgehensweise verwendeten Beispielwissensspeichers finden Sie unter [Erstellen eines Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md).
+In diesem Artikel erfahren Sie anhand eines Beispiels, wie Sie mit dem Storage-Explorer im Azure-Portal eine Verbindung mit einem Wissensspeicher herstellen und ihn anschließend erkunden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,13 +27,13 @@ In diesem Artikel erfahren Sie, wie Sie mit dem Storage-Explorer im Azure-Portal
 
 ## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Anzeigen, Bearbeiten und Abfragen eines Wissensspeichers im Storage-Explorer
 
-1. Öffnen Sie im Azure-Portal das Speicherkonto, das Sie zum Erstellen des Wissensspeichers verwendet haben.
+1. [Öffnen Sie das Speicherkonto](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/), das Sie zum Erstellen des Wissensspeichers verwendet haben, im Azure-Portal.
 
 1. Klicken Sie im linken Navigationsbereich des Speicherkontos auf **Storage-Explorer**.
 
 1. Erweitern Sie die Liste **TABELLEN**, um eine Liste der Azure-Tabellenprojektionen anzuzeigen, die erstellt wurden, als Sie den Assistenten zum **Importieren von Daten** für Ihre Beispieldaten zu Hotelrezensionen ausgeführt haben.
 
-Wählen Sie eine beliebige Tabelle zum Anzeigen der erweiterten Daten aus, einschließlich der Stimmungswerte für Schlüsselbegriffe, der Breiten- und Längengraddaten und mehr.
+Wählen Sie eine beliebige Tabelle aus, um die angereicherten Daten, einschließlich Schlüsselbegriffen und Stimmungspunktzahlen, anzuzeigen.
 
    ![Anzeigen von Tabellen im Storage-Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Anzeigen von Tabellen im Storage-Explorer")
 
@@ -47,7 +45,7 @@ Klicken Sie zum Ausführen von Abfragen in der Befehlsleiste auf **Abfrage**, un
 
    ![Abfragen einer Tabelle im Storage-Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "Abfragen einer Tabelle im Storage-Explorer")
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
@@ -57,12 +55,8 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im folgenden Artikel erfahren Sie, wie Sie diesen Wissensspeicher mit Power BI verbinden:
+Verbinden Sie diesen Wissensspeicher zur detaillierteren Analyse mit Power BI, oder fahren Sie mit Code fort, und erstellen Sie mit der REST-API und Postman einen anderen Wissensspeicher.
 
 > [!div class="nextstepaction"]
-> [Herstellen einer Verbindung mit Power BI](knowledge-store-connect-power-bi.md)
-
-Informationen zum Erstellen eines Wissensspeichers mithilfe der REST-APIs und Postman finden Sie im folgenden Artikel.  
-
-> [!div class="nextstepaction"]
-> [Erstellen von Wissensspeichern in REST](knowledge-store-howto.md)
+> [Verbinden mit Power BI](knowledge-store-connect-power-bi.md)
+> [Erstellen eines Wissensspeichers in REST](knowledge-store-create-rest.md)

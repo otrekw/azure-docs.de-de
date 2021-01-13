@@ -1,26 +1,19 @@
 ---
-title: Verschieben von Dateien für Azure-Linux-VMs per SCP | Microsoft-Dokumentation
+title: Verschieben von Dateien für Azure-Linux-VMs per SCP
 description: Es wird beschrieben, wie Sie Dateien mit SCP und einem SSH-Schlüsselpaar auf sichere Weise auf eine bzw. von einer Linux-VM in Azure verschieben.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
-ms.tgt_pltfrm: vm-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 56b264b61976607a3afdaa7a6ec7dc5da2091aba
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: f56118750fc980c249c88b796728f4ecb2641a88
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173942"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86510955"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Verschieben von Dateien für eine Linux-VM per SCP
 
@@ -72,8 +65,8 @@ Mit dem folgenden Befehl werden Dateien im Verzeichnis */home/azureuser/logs/* a
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-Mit dem CLI-Flag `-r` wird SCP angewiesen, die Dateien und Verzeichnisse rekursiv von dem Punkt des Verzeichnisses zu kopieren, der im Befehl angegeben ist.  Beachten Sie auch, dass die Befehlszeilensyntax dem Kopierbefehl `cp` ähnelt.
+Mit dem Flag `-r` wird SCP angewiesen, die Dateien und Verzeichnisse rekursiv von dem Punkt des Verzeichnisses zu kopieren, der im Befehl angegeben ist.  Beachten Sie auch, dass die Befehlszeilensyntax dem Kopierbefehl `cp` ähnelt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwalten von Benutzern, SSH und Überprüfen oder Reparieren von Datenträgern auf Azure-Linux-VMs mit der VMAccess-Erweiterung](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Verwalten von Benutzern, SSH und Überprüfen oder Reparieren von Datenträgern auf Azure-Linux-VMs mit der VMAccess-Erweiterung](../extensions/vmaccess.md?toc=/azure/virtual-machines/linux/toc.json)

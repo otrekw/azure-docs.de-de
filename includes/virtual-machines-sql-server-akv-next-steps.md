@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 22f16a7382cb0fe1f3fe2a6ef5e7c00a6989623c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6195b949cc71043dfa7a12bdece7a311dbde5e21
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178041"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563891"
 ---
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -17,15 +17,15 @@ Nach dem Aktivieren der Azure-Schlüsseltresor-Integration können Sie die SQL S
 
 Es gibt verschiedene Arten der Verschlüsselung, die Sie nutzen können:
 
-* [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
-* [Verschlüsselte Sicherungen](https://msdn.microsoft.com/library/dn449489.aspx)
-* [Column Level Encryption (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
+* [Transparente Datenverschlüsselung (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption)
+* [Verschlüsselte Sicherungen](/sql/relational-databases/backup-restore/backup-encryption)
+* [Column Level Encryption (CLE)](/sql/t-sql/functions/cryptographic-functions-transact-sql)
 
 Die folgenden Transact-SQL-Skripts enthalten Beispiele für jeden dieser Bereiche.
 
 ### <a name="prerequisites-for-examples"></a>Erforderliche Komponenten für Beispiele
 
-Jedes Beispiel basiert auf diesen beiden erforderlichen Komponenten: einem asymmetrischen Schlüssel aus Ihrem Schlüsseltresor mit dem Namen **CONTOSO_KEY** und Anmeldeinformationen, die mit der Funktion für die Azure-Schlüsseltresor-Integration erstellt wurden und den Namen **Azure_EKM_TDE_cred** haben. Die folgenden Transact-SQL-Befehle richten diese erforderlichen Komponenten für die Ausführung der Beispiele ein:
+Jedes Beispiel basiert auf diesen beiden erforderlichen Komponenten: einem asymmetrischen Schlüssel aus Ihrem Schlüsseltresor mit dem Namen **CONTOSO_KEY** und Anmeldeinformationen, die mit der Funktion für die Azure-Schlüsseltresor-Integration erstellt wurden und den Namen **Azure_EKM_cred** haben. Die folgenden Transact-SQL-Befehle richten diese erforderlichen Komponenten für die Ausführung der Beispiele ein:
 
 ``` sql
 USE master;
@@ -33,7 +33,7 @@ GO
 
 --create credential
 --The <<SECRET>> here requires the <Application ID> (without hyphens) and <Secret> to be passed together without a space between them.
-CREATE CREDENTIAL sysadmin_ekm_cred
+CREATE CREDENTIAL Azure_EKM_cred
     WITH IDENTITY = 'keytestvault', --keyvault
     SECRET = '<<SECRET>>'
 FOR CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov;
@@ -41,7 +41,7 @@ FOR CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov;
 
 --Map the credential to a SQL login that has sysadmin permissions. This allows the SQL login to access the key vault when creating the asymmetric key in the next step.
 ALTER LOGIN [SQL_Login]
-ADD CREDENTIAL sysadmin_ekm_cred;
+ADD CREDENTIAL Azure_EKM_cred;
 
 
 CREATE ASYMMETRIC KEY CONTOSO_KEY
@@ -50,7 +50,7 @@ WITH PROVIDER_KEY_NAME = 'KeyName_in_KeyVault',  --The key name here requires th
 CREATION_DISPOSITION = OPEN_EXISTING;
 ```
 
-### <a name="transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE)
+### <a name="transparent-data-encryption-tde"></a>TDE (Transparent Data Encryption)
 
 1. Erstellen Sie eine SQL Server-Anmeldung, die von der Datenbank-Engine für TDE verwendet werden kann, und fügen Sie die Anmeldeinformationen hinzu.
 
@@ -89,7 +89,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="encrypted-backups"></a>Verschlüsselte Sicherungen
 
-1. Erstellen Sie eine SQL Server-Anmeldung, die von der Datenbank-Engine für die Verschlüsselung von Sicherungen verwendet werden kann, und fügen Sie die Anmeldeinformationen hinzu.
+1. Erstellen Sie eine SQL Server-Anmeldung, die von der Datenbank-Engine zum Verschlüsseln von Sicherungen verwendet wird, und fügen Sie die Anmeldeinformationen hinzu.
 
    ``` sql
    USE master;
@@ -144,6 +144,6 @@ CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-Weitere Informationen zur Verwendung dieser Verschlüsselungsfunktionen finden Sie unter [Verwenden der erweiterbaren Schlüsselverwaltung mit SQL Server-Verschlüsselungsfunktionen](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
+Weitere Informationen zur Verwendung dieser Verschlüsselungsfunktionen finden Sie unter [Verwenden der erweiterbaren Schlüsselverwaltung mit SQL Server-Verschlüsselungsfunktionen](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server#UsesOfEKM).
 
-Beachten Sie, dass bei den Schritten in diesem Artikel davon ausgegangen wird, dass bei Ihnen SQL Server bereits auf einem virtuellen Azure-Computer ausgeführt wird. Ist dies nicht der Fall, helfen Ihnen die Informationen unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) weiter. Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie in der [Übersicht zu SQL Server auf virtuellen Azure-Computern](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Beachten Sie, dass bei den Schritten in diesem Artikel davon ausgegangen wird, dass bei Ihnen SQL Server bereits auf einem virtuellen Azure-Computer ausgeführt wird. Ist dies nicht der Fall, helfen Ihnen die Informationen unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md) weiter. Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie in der [Übersicht zu SQL Server auf virtuellen Azure-Computern](../articles/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).

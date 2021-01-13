@@ -1,36 +1,23 @@
 ---
-author: IEvangelist
-ms.author: dapine
+author: aahill
+ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/5/2019
-ms.openlocfilehash: 993b0e8cc5b1ec482b2f6041dfc970dc7e7409dd
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.date: 08/31/2020
+ms.openlocfilehash: 1c374429ca910afeb9972841204bd3e51dcc8306
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229325"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90888328"
 ---
-Füllen Sie das [Formular zum Anfordern von Cognitive Services-Containern für maschinelles Sehen](https://aka.ms/VisionContainersPreview) aus und senden Sie es anschließend, um Zugriff auf den Container anzufordern. Im Formular müssen Sie Informationen über Sie selbst, Ihr Unternehmen und das Benutzerszenario eintragen, für das Sie den Container verwenden möchten. Nach der Übermittlung des Formulars wird es vom Azure Cognitive Services-Team überprüft, um sicherzustellen, dass Sie die Kriterien für den Zugriff auf die private Containerregistrierung erfüllen.
+Im Formular müssen Sie Informationen über Sie selbst, Ihr Unternehmen und das Benutzerszenario eintragen, für das Sie den Container verwenden möchten. Das Azure Cognitive Services-Team überprüft das Formular nach der Übermittlung und sendet Ihnen eine E-Mail mit der Entscheidung.
 
 > [!IMPORTANT]
-> Sie müssen im Formular eine E-Mail-Adresse verwenden, die entweder einem Microsoft-Konto (MSA) oder einem Azure Active Directory-Konto (Azure AD) zugeordnet ist.
+> * Im Formular müssen Sie eine E-Mail-Adresse angeben, die einer Azure-Abonnement-ID zugeordnet ist.
+> * Die Azure-Ressource, die Sie zum Ausführen des Containers verwenden, muss mit der genehmigten Azure-Abonnement-ID erstellt worden sein. 
+> * Überprüfen Sie Ihre E-Mail-Adresse (Posteingang und Junk-Ordner) auf Updates zum Status Ihrer Anwendung von Microsoft.
 
-Wenn Ihre Anforderung genehmigt wurde, erhalten Sie eine E-Mail mit Anweisungen zum Abrufen Ihrer Anmeldeinformationen und zum Zugreifen auf die private Containerregistrierung.
+Nach der Genehmigung können Sie den Container ausführen, nachdem Sie ihn aus Microsoft Container Registry (MCR) heruntergeladen haben (weiter unten in diesem Artikel beschrieben). 
 
-## <a name="log-in-to-the-private-container-registry"></a>Anmelden bei der privaten Containerregistrierung
-
-Es gibt verschiedene Möglichkeiten, sich bei der privaten Containerregistrierung für Cognitive Services-Container zu authentifizieren. Es wird empfohlen, die Befehlszeilenmethode mithilfe der [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) zu verwenden.
-
-Verwenden Sie den Befehl [docker login](https://docs.docker.com/engine/reference/commandline/login/) wie im folgenden Beispiel gezeigt, um sich bei der privaten Containerregistrierung für Cognitive Services-Container (`containerpreview.azurecr.io`) anzumelden. Ersetzen Sie *\<username\>* durch den Benutzernamen und *\<password\>* durch das Kennwort. Diese Anmeldeinformationen wurden Ihnen vom Azure Cognitive Services-Team bereitgestellt.
-
-```
-docker login containerpreview.azurecr.io -u <username> -p <password>
-```
-
-Wenn Sie Ihre Anmeldeinformationen in einer Textdatei gesichert haben, können Sie den Inhalt dieser Textdatei mit dem Befehl `docker login` verketten. Verwenden Sie den Befehl `cat` wie im folgenden Beispiel. Ersetzen Sie *\<passwordFile\>* durch den Pfad und Namen der Textdatei, die das Kennwort enthält. Ersetzen Sie den *\<Benutzernamen\>* durch den in Ihren Anmeldeinformationen angegebenen Benutzernamen.
-
-```
-cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin
-```
-
+Sie können den Container nicht ausführen, wenn Ihr Azure-Abonnement nicht genehmigt wurde.

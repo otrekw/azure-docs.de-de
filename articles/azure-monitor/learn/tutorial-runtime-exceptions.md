@@ -1,21 +1,18 @@
 ---
 title: Diagnostizieren von Laufzeitausnahmen mit Azure Application Insights | Microsoft-Dokumentation
 description: Tutorial zum Suchen und Diagnostizieren von Laufzeitausnahmen in Ihrer Anwendung mithilfe von Azure Application Insights
-services: application-insights
-keywords: ''
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 19455998ca13b9abf48bb1cb3856e38b5c47ef52
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 057b211179c6932d4214e6118e3fa97b95145ba0
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595604"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926630"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Suchen und Diagnostizieren von Laufzeitausnahmen mit Azure Application Insights
 
@@ -34,12 +31,12 @@ Azure Application Insights erfasst Telemetriedaten Ihrer Anwendung, um Laufzeita
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- [Installieren Sie Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
+- Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
     - ASP.NET und Webentwicklung
     - Azure-Entwicklung
 - Laden Sie den [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) herunter, und installieren Sie diesen.
-- Aktivieren Sie [Debugmomentaufnahmen von Ausnahmen in .NET-Apps](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger).
-- Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../../azure-monitor/app/asp-net.md). 
+- Aktivieren Sie [Debugmomentaufnahmen von Ausnahmen in .NET-Apps](../app/snapshot-debugger.md).
+- Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../app/asp-net.md). 
 - Das Tutorial verfolgt die Identifikation einer Ausnahme in Ihrer Anwendung, ändern Sie also den Code in Ihrer Entwicklungs- oder Testumgebung, um eine Ausnahme zu generieren. 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
@@ -66,7 +63,7 @@ Application Insights erfasst alle Fehler in Ihrer Anwendung und ermöglicht Ihne
 
     ![Beispiele für Anforderungsfehler](media/tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. Die Details des Anforderungsfehlers enthalten ein Gantt-Diagramm, dem Sie entnehmen können, dass bei dieser Transaktion zwei Abhängigkeitsfehler aufgetreten sind, die über 50 Prozent der Gesamtdauer der Transaktion ausgemacht haben. Auf dieser Oberfläche werden alle Telemetriedaten für die Komponenten einer verteilten Anwendung dargestellt, die mit dieser Vorgangs-ID zusammenhängen. Weitere Informationen zu der neuen Oberfläche finden Sie [hier](../../azure-monitor/app/transaction-diagnostics.md). Sie können auf beliebige Elemente klicken, um auf der rechten Seite entsprechende Details anzuzeigen. 
+6. Die Details des Anforderungsfehlers enthalten ein Gantt-Diagramm, dem Sie entnehmen können, dass bei dieser Transaktion zwei Abhängigkeitsfehler aufgetreten sind, die über 50 Prozent der Gesamtdauer der Transaktion ausgemacht haben. Auf dieser Oberfläche werden alle Telemetriedaten für die Komponenten einer verteilten Anwendung dargestellt, die mit dieser Vorgangs-ID zusammenhängen. [Weitere Informationen zur neuen Oberfläche](../app/transaction-diagnostics.md) Sie können auf beliebige Elemente klicken, um auf der rechten Seite entsprechende Details anzuzeigen. 
 
     ![Details zu Anforderungen mit Fehlern](media/tutorial-runtime-exceptions/failed-request-details.png)
 
@@ -84,7 +81,7 @@ Der Momentaufnahmedebugger erfasst Momentaufnahmen der häufigsten Ausnahmen in 
 
 3. Der erste Aufruf mit gültigen Werten ist **ValidZipCode**, und wir können sehen, dass eine Postleitzahl mit Buchstaben angegeben wurde, die nicht in eine ganze Zahl übersetzt werden können.  Dies scheint der Fehler im Code zu sein, der behoben werden muss.
 
-    ![Momentaufnahme debuggen](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
+    ![Screenshot: Fehler im Code, der behoben werden muss    ](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
 4. Dann haben Sie die Option, diese Momentaufnahme in Visual Studio herunterzuladen, wo wir den tatsächlichen Code finden, der korrigiert werden muss. Zu diesem Zweck klicken Sie auf **Momentaufnahme herunterladen**.
 5. Die Momentaufnahme wird in Visual Studio geladen.
@@ -100,7 +97,7 @@ Alle von Application Insights gesammelten Daten werden in Azure Log Analytics ge
 
     ![Code](media/tutorial-runtime-exceptions/codelens.png)
 
-1. Klicken Sie auf **Auswirkungen analysieren**, um Application Insights Analytics zu öffnen.  Die Analyse enthält mehrere Abfragen, die Details über Anforderungsfehler bereitstellen, z.B. betroffene Benutzer, Browser und Regionen.<br><br>![Analyse](media/tutorial-runtime-exceptions/analytics.png)<br>
+1. Klicken Sie auf **Auswirkungen analysieren**, um Application Insights Analytics zu öffnen.  Die Analyse enthält mehrere Abfragen, die Details über Anforderungsfehler bereitstellen, z.B. betroffene Benutzer, Browser und Regionen.<br><br>![Screenshot des Application Insights-Fensters mit mehreren Abfragen](media/tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>Arbeitselement hinzufügen
 Wenn Sie Application Insights mit einem Nachverfolgungssystem wie Azure DevOps oder GitHub verbinden, können Sie direkt in Application Insights ein Arbeitselement erstellen.
@@ -115,4 +112,5 @@ Wenn Sie Application Insights mit einem Nachverfolgungssystem wie Azure DevOps o
 Nachdem Sie sich nun mit dem Identifizieren von Laufzeitausnahmen vertraut gemacht haben, können Sie mit dem nächsten Tutorial fortfahren. Dort erfahren Sie, wie Leistungsprobleme identifiziert und diagnostiziert werden.
 
 > [!div class="nextstepaction"]
-> [Identifizieren von Leistungsproblemen](../../azure-monitor/learn/tutorial-performance.md)
+> [Identifizieren von Leistungsproblemen](./tutorial-performance.md)
+

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e0fa85b8a90ea57d9b81bd2eeaa6d080b7582acd
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 4e7774d2cd100931f92ff80066ebea4463c6f65c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945279"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532651"
 ---
 # <a name="detect-color-schemes-in-images"></a>Erkennen von Farbschemas auf Bildern
 
@@ -56,7 +56,7 @@ Die folgende Tabelle enthält die zurückgegebenen Vorder-, Hintergrund- und Bil
 
 | Image | Vorherrschende Farben |
 |-------|-----------------|
-|![Eine weiße Blume vor einem grünen Hintergrund](./Images/flower.png)| Vordergrund: Schwarz<br/>Hintergrund: Weiß<br/>Farben: Schwarz, Weiß, Grün|
+|![Eine weiße Blume vor einem grünen Hintergrund](./Images/flower.png)| Vordergrund: Schwarz<br/>Hintergrund: White<br/>Farben: Schwarz, Weiß, Grün|
 ![Ein Zug, der durch einen Bahnhof fährt](./Images/train_station.png) | Vordergrund: Schwarz<br/>Hintergrund: Schwarz<br/>Farben: Schwarz |
 
 ### <a name="accent-color-examples"></a>Beispiele für Akzentfarben
@@ -78,6 +78,8 @@ Die folgende Tabelle enthält die Schwarzweiß-Auswertung von maschinellem Sehen
 |![Ein Schwarzweißbild von Gebäuden in Manhattan](./Images/bw_buildings.png) | true |
 |![Ein blaues Haus mit Vorgarten](./Images/house_yard.png) | false |
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="use-the-api"></a>Verwenden der API
 
-Erfahren Sie mehr über Konzepte zum [Erkennen von Bildtypen](concept-detecting-image-types.md).
+Die Funktion zur Erkennung von Farbschemas ist Teil der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)-API. Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Beziehen Sie `Color` in den Abfrageparameter **visualFeatures** ein. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge auf den Inhalt im Abschnitt `"color"`.
+
+* [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

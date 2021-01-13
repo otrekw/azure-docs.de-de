@@ -4,14 +4,14 @@ description: In diesem Artikel wird beschrieben, wie Sie die Abfragezeit mithilf
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: ac1dc43a2b89bc1cc748947ec08e6ada87edbfcb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f1fa0affb821b00d4f5529841533e854e634377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65066964"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86116181"
 ---
 # <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>Optimieren der Abfragezeit mithilfe der Strategie für TOAST-Tabellenspeicher 
 In diesem Artikel wird beschrieben, wie Sie die Abfragezeit mithilfe der Strategie für TOAST-Tabellenspeicher optimieren.

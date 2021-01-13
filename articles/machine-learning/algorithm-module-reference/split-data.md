@@ -1,117 +1,157 @@
 ---
 title: 'Split Data (Daten aufteilen): Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Split Data“ (Daten aufteilen) in Azure Machine Learning Service verwenden, um ein Dataset in zwei verschiedene Sätze aufzuteilen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul „Split Data“ (Daten aufteilen) in Azure Machine Learning verwenden, um ein Dataset in zwei verschiedene Sätze aufzuteilen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 31612e10e7978e94f1ed467b5ffbecde40910ef9
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 10/22/2019
+ms.openlocfilehash: a4c93b12ad654e54a7f3c7ee0e75507d5cb45e90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128465"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90907812"
 ---
 # <a name="split-data-module"></a>Modul „Split Data“ (Daten aufteilen)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
-Verwenden Sie dieses Modul, um ein Dataset in zwei verschiedene Sätze aufzuteilen.
+Mit dem Modul „Split Data“ können Sie ein Dataset in zwei unterschiedliche Sätze unterteilen.
 
-Dieses Modul ist besonders hilfreich, wenn Sie Daten in Trainings- und Testsätze aufteilen müssen. Sie können außerdem anpassen, wie die Daten aufgeteilt werden sollen. Einige Optionen unterstützen die zufällige Anordnung von Daten, andere sind auf einen bestimmten Daten- oder Modelltyp zugeschnitten.
+Dieses Modul ist hilfreich, wenn Sie Daten in Trainings- und Testsätze aufteilen müssen. Sie können außerdem anpassen, wie die Daten aufgeteilt werden sollen. Einige Optionen unterstützen die zufällige Anordnung von Daten. Andere sind auf einen bestimmten Daten- oder Modelltyp zugeschnitten.
 
-## <a name="how-to-configure"></a>Vorgehensweise zur Konfiguration
+## <a name="configure-the-module"></a>Konfigurieren des Moduls
 
 > [!TIP]
-> Informieren Sie sich vor der Wahl des Aufteilungsmodus über alle Optionen, um den benötigten Aufteilungstyp zu ermitteln.
-> Wenn Sie den Aufteilungsmodus ändern, können alle anderen Optionen zurückgesetzt werden.
+> Bevor Sie den Aufteilungsmodus auswählen, informieren Sie sich über alle Optionen, um den benötigten Aufteilungstyp zu ermitteln.
+> Wenn Sie den Aufteilungsmodus ändern, werden möglicherweise alle anderen Optionen zurückgesetzt.
 
-1. Fügen Sie das Modul **Split Data** Ihrem Experiment in der Oberfläche hinzu. Sie finden dieses Modul unter **Data Transformation** (Datentransformation) in der Kategorie **Sample and Split** (Stichprobe entnehmen und aufteilen).
+1. Fügen Sie das Modul **Split Data** zu Ihrer Pipeline im Designer hinzu. Sie finden dieses Modul unter **Data Transformation** (Datentransformation) in der Kategorie **Sample and Split** (Stichprobe entnehmen und aufteilen).
 
-2. **Splitting mode** (Aufteilungsmodus): Wählen Sie je nach Datentyp und gewünschter Aufteilung einen der folgenden Modi. Jeder Aufteilungsmodus verfügt über unterschiedliche Optionen. Klicken Sie auf die folgenden Themen, um ausführliche Anweisungen und Beispiele zu erhalten. 
+1. **Splitting mode** (Aufteilungsmodus): Wählen Sie je nach Datentyp und gewünschter Aufteilung einen der folgenden Modi aus. Jeder Aufteilungsmodus verfügt über unterschiedliche Optionen.
 
-    - **Split Rows** (Zeilen aufteilen): Verwenden Sie diese Option, wenn Sie Daten einfach in zwei Teile aufteilen möchten. Sie können angeben, wie viel Prozent Daten jeweils in einem Teil enthalten sein sollen. Die Standardeinstellung beträgt „50:50“.
+   - **Split Rows** (Zeilen aufteilen): Verwenden Sie diese Option, wenn Sie Daten einfach in zwei Teile aufteilen möchten. Sie können angeben, wie viel Prozent der Daten jeweils in einem Teil enthalten sein sollen. Die Standardaufteilung der Daten ist 50:50.
 
-        Sie können Zeilen für die einzelnen Gruppen auch nach dem Zufallsprinzip auswählen und geschichtete Stichproben verwenden. Bei geschichteten Stichproben müssen Sie eine einzelne Datenspalte auswählen, für die Werte gleichmäßig auf zwei Ergebnisdatasets aufgeteilt werden sollen.  
+     Sie können Zeilen für die einzelnen Gruppen auch nach dem Zufallsprinzip auswählen und geschichtete Stichproben verwenden. Bei geschichteten Stichproben müssen Sie eine einzelne Datenspalte auswählen, für die Werte gleichmäßig auf zwei Ergebnisdatasets aufgeteilt werden sollen.  
 
-    - **Regular Expression Split** (Nach regulärem Ausdruck aufteilen) Wählen Sie diese Option, wenn Sie Ihr Dataset danach aufteilen möchten, ob ein Wert in einer einzelnen Spalte enthalten ist.
+   - **Regular Expression Split** (Nach regulärem Ausdruck aufteilen): Wählen Sie diese Option, wenn Sie Ihr Dataset danach aufteilen möchten, ob ein Wert in einer einzelnen Spalte enthalten ist.
 
-        Bei Stimmungsanalysen können Sie beispielsweise überprüfen, ob ein bestimmter Produktname in einem Textfeld enthalten ist. Anschließend können Sie das Dataset in Zeilen aufteilen, die den gewünschten Produktnamen enthalten bzw. nicht enthalten.
+     Bei Stimmungsanalysen können Sie beispielsweise überprüfen, ob ein bestimmter Produktname in einem Textfeld enthalten ist. Anschließend können Sie das Dataset in Zeilen aufteilen, die den gewünschten Produktnamen enthalten, und Zeilen, die den gewünschten Produktnamen nicht enthalten.
 
-    - **Relative Expression Split** (Nach relativem Ausdruck aufteilen):  Verwenden Sie diese Option, wenn Sie eine Bedingung auf eine Ziffernspalte anwenden möchten. Die Ziffer kann für ein Datums-/Uhrzeitfeld, eine Spalte mit Alters- oder Währungsangaben oder sogar für einen Prozentsatz stehen. Beispielsweise ist es möglich, das Dataset nach den Kosten der einzelnen Posten zu unterteilen, Personen nach Alter zu gruppieren oder Daten nach einem Kalenderdatum aufzuteilen.
+   - **Relative Expression Split** (Nach relativem Ausdruck aufteilen): Verwenden Sie diese Option, wenn Sie eine Bedingung auf eine Ziffernspalte anwenden möchten. Die Ziffer kann für ein Datums-/Uhrzeitfeld, eine Spalte mit Alters- oder Währungsangaben oder sogar für einen Prozentsatz stehen. Beispielsweise ist es möglich, das Dataset basierend auf den Kosten der einzelnen Posten zu unterteilen, Personen nach Alter zu gruppieren oder Daten nach einem Kalenderdatum aufzuteilen.
 
 ### <a name="split-rows"></a>Aufteilen von Zeilen
-1.  Fügen Sie das Modul [Split Data](./split-data.md) Ihrem Experiment in der Oberfläche hinzu, und verbinden Sie das aufzuteilende Dataset.
+
+1. Fügen Sie das Modul [Split Data](./split-data.md) zu Ihrer Pipeline im Designer hinzu, und verbinden Sie das aufzuteilende Dataset.
   
-2.  Wählen Sie für **Splitting mode** (Aufteilungsmodus) die Option **Split rows** (Zeilen aufteilen) aus. 
+1. Wählen Sie für **Splitting mode** (Aufteilungsmodus) die Option **Split rows** (Zeilen aufteilen) aus. 
 
-3.  **Fraction of rows in the first output dataset** (Anteil der Zeilen im ersten Ausgabedataset). Ermitteln Sie anhand dieser Option, wie viele Zeilen der ersten (linken) Ausgabe zugeordnet werden. Alle weiteren Zeilen werden der zweiten (rechten) Ausgabe zugewiesen.
+1. **Fraction of rows in the first output dataset** (Anteil der Zeilen im ersten Ausgabedataset): Ermitteln Sie anhand dieser Option, wie viele Zeilen der ersten (linken) Ausgabe zugeordnet werden. Alle weiteren Zeilen werden der zweiten (rechten) Ausgabe zugewiesen.
 
-    Das Verhältnis stellt den Prozentsatz der Zeilen dar, die an das erste Ausgabedataset gesendet werden, sodass Sie eine Dezimalzahl zwischen 0 und 1 eingeben müssen.
+   Das Verhältnis stellt den Prozentsatz der Zeilen dar, die an das erste Ausgabedataset gesendet werden, sodass Sie eine Dezimalzahl zwischen 0 und 1 eingeben müssen.
      
-     Wenn Sie z. B. 0,75 als Wert eingeben, wird das Dataset im Verhältnis 75:25 aufgeteilt. Dabei werden 75 % der Zeilen an das erste Ausgabedataset und 25 % an das zweite Ausgabedataset gesendet.
+   Wenn Sie z. B. **0,75** als Wert eingeben, wird das Dataset im Verhältnis 75:25 unterteilt. Bei dieser Aufteilung werden 75 Prozent der Zeilen an das erste Ausgabedataset gesendet. Die übrigen 25 Prozent werden an das zweite Ausgabedataset gesendet.
   
-4. Wählen Sie die Option **Randomized split** (Zufällige Aufteilung), wenn Daten den beiden Gruppen nach dem Zufallsprinzip zugewiesen werden sollen. Dies ist die bevorzugte Option bei der Erstellung von Trainings-und Testdatasets.
+1. Wählen Sie die Option **Randomized split** (Zufällige Aufteilung), wenn Daten den beiden Gruppen nach dem Zufallsprinzip zugewiesen werden sollen. Dies ist die bevorzugte Option bei der Erstellung von Trainings- und Testdatasets.
 
-5.  **Random Seed** (Zufälliger Startwert): Geben Sie einen nicht negativen ganzzahligen Wert ein, um die pseudozufällige Sequenz der zu verwendenden Instanzen zu initialisieren. Dieser standardmäßige Startwert wird in allen Modulen verwendet, die Zufallszahlen generieren. 
+1. **Random Seed** (Zufälliger Startwert): Geben Sie einen nicht negativen ganzzahligen Wert ein, mit dem die pseudozufällige Sequenz der zu verwendenden Instanzen starten soll. Dieser standardmäßige Startwert wird in allen Modulen verwendet, die Zufallszahlen generieren. 
 
-     Die Angabe eines Startwerts führt dazu, dass die Ergebnisse grundsätzlich reproduzierbar sind. Wenn Sie die Ergebnisse eines Aufteilungsvorgangs wiederholen müssen, muss auch ein Startwert für den Zufallszahlengenerator angegeben werden. Andernfalls wird der zufällige Startwert standardmäßig auf „0“ festgelegt, was bedeutet, dass der ursprüngliche Startwert von der Systemuhr abgerufen wird. Daher kann die Verteilung der Daten bei einer neuen Aufteilung geringfügig abweichen. 
+   Die Angabe eines Startwerts führt dazu, dass die Ergebnisse reproduzierbar sind. Wenn Sie die Ergebnisse eines Aufteilungsvorgangs wiederholen müssen, muss auch ein Startwert für den Zufallszahlengenerator angegeben werden. Andernfalls wird der zufällige Startwert standardmäßig auf **0** festgelegt, was bedeutet, dass der ursprüngliche Startwert von der Systemuhr abgerufen wird. Daher kann die Verteilung der Daten bei einer neuen Aufteilung geringfügig abweichen. 
 
-6. **Stratified split** (Geschichtete Aufteilung): Legen Sie diese Option auf **True** fest, um sicherzustellen, dass die beiden Ausgabedatasets eine repräsentative Stichprobe der Werte aus der *Schichtspalte* oder *Schichtungsschlüsselspalte* enthalten. 
+1. **Stratified split** (Geschichtete Aufteilung): Legen Sie diese Option auf **True** fest, um sicherzustellen, dass die beiden Ausgabedatasets eine repräsentative Stichprobe der Werte aus der *Schichtspalte* oder *Schichtungsschlüsselspalte* enthalten. 
 
-    Bei geschichteten Stichproben werden die Daten unterteilt, sodass jedes Ausgabedataset annähernd den gleichen Prozentsatz der einzelnen Zielwerte aufweist. Sie können z. B. sicherstellen, dass Ihre Trainings- und Testsätze im Hinblick auf das Ergebnis oder eine andere Spalte (z. B. Geschlecht) ungefähr ausgeglichen sind.
+   Bei geschichteten Stichproben werden die Daten unterteilt, sodass jedes Ausgabedataset annähernd den gleichen Prozentsatz der einzelnen Zielwerte aufweist. Sie können z. B. sicherstellen, dass Ihre Trainings- und Testsätze im Hinblick auf das Ergebnis oder eine andere Spalte (z. B. Geschlecht) ungefähr ausgeglichen sind.
 
-7. Führen Sie das Experiment aus.
+1. Übermitteln Sie die Pipeline.
 
 
-## <a name="regular-expression-split"></a>Aufteilung nach regulären Ausdrücken
+## <a name="select-a-regular-expression"></a>Auswählen eines regulären Ausdrucks
 
-1.  Fügen Sie das Modul [Split Data](./split-data.md) Ihrem Experiment hinzu, und verbinden Sie es als Eingabe mit dem aufzuteilenden Dataset.  
+1. Fügen Sie das Modul [Split Data](./split-data.md) Ihrer Pipeline hinzu, und verbinden Sie es als Eingabe mit dem aufzuteilenden Dataset.  
   
-2.  Wählen Sie für **Splitting mode** (Aufteilungsmodus) die Option **Regular expression split** (Nach regulärem Ausdruck aufteilen) aus.
+1. Wählen Sie für **Splitting mode** (Aufteilungsmodus) die Option **Regular expression split** (Nach regulärem Ausdruck aufteilen) aus.
 
-3. Geben Sie im Feld **Regular expression** (Regulärer Ausdruck) einen gültigen, regulären Ausdruck ein. 
+1. Geben Sie im Feld **Regular expression** (Regulärer Ausdruck) einen gültigen, regulären Ausdruck ein. 
   
-   Der reguläre Ausdruck sollte der Syntax für reguläre Python-Ausdrücke folgen.
+   Der reguläre Ausdruck sollte der Python-Syntax für reguläre Ausdrücke folgen.
 
+1. Übermitteln Sie die Pipeline.
 
-4. Führen Sie das Experiment aus.
+   Basierend auf dem angegebenen regulären Ausdruck wird das Dataset in zwei Sätze von Zeilen unterteilt: Zeilen mit Werten, die mit dem Ausdruck übereinstimmen, und alle übrigen Zeilen. 
 
-    Basierend auf dem angegebenen regulären Ausdruck wird das Dataset in zwei Sätze von Zeilen unterteilt: Zeilen mit Werten, die mit dem Ausdruck übereinstimmen, und alle übrigen Zeilen. 
+Die folgenden Beispiele zeigen, wie ein Dataset mithilfe der Option **Regulärer Ausdruck** geteilt werden kann. 
 
-## <a name="relative-expression-split"></a>Aufteilen nach relativen Ausdrücken
+### <a name="single-whole-word"></a>Einzelnes ganzes Wort 
 
-1. Fügen Sie das Modul [Split Data](./split-data.md) Ihrem Experiment hinzu, und verbinden Sie es als Eingabe mit dem aufzuteilenden Dataset.
+In diesem Beispiel werden in das erste Dataset alle Zeilen eingefügt, die den Text `Gryphon` in der Spalte `Text` enthalten. Die anderen Zeilen werden in die zweite Ausgabe von **Split Data** (Daten aufteilen) eingefügt.
+
+```text
+    \"Text" Gryphon  
+```
+
+### <a name="substring"></a>TEILZEICHENFOLGE
+
+In diesem Beispiel wird nach der angegebenen Zeichenfolge an einer beliebigen Position innerhalb der zweiten Spalte des Datasets gesucht. Die Position ist hier durch den Indexwert 1 gekennzeichnet. Bei der Übereinstimmung muss die Groß-/Kleinschreibung beachtet werden.
+
+```text
+(\1) ^[a-f]
+```
+
+Das erste Ergebnisdataset enthält jede Zeile, in der die Indexspalte mit einem der folgenden Buchstaben beginnt: `a`, `b`, `c`, `d`, `e`, `f`. Alle anderen Zeilen werden zur zweiten Ausgabe weitergeleitet.
+
+## <a name="select-a-relative-expression"></a>Auswählen eines relativen Ausdrucks
+
+1. Fügen Sie das Modul [Split Data](./split-data.md) Ihrer Pipeline hinzu, und verbinden Sie es als Eingabe mit dem aufzuteilenden Dataset.
   
-2. Wählen Sie für **Splitting mode** (Aufteilungsmodus) die Option **Relative expression split** (Nach relativem Ausdruck aufteilen) aus.
+1. Wählen Sie für **Splitting mode** (Aufteilungsmodus) die Option **Relative Expression** (Relativer Ausdruck) aus.
   
-3. Geben Sie im Textfeld **Relational expression** (Relationaler Ausdruck) einen Ausdruck ein, durch den ein Vergleichsvorgang für eine einzelne Spalte durchgeführt wird:
+1. Geben Sie im Feld **Relational expression** (Relationaler Ausdruck) einen Ausdruck ein, durch den ein Vergleichsvorgang für eine einzelne Spalte durchgeführt wird.
 
+   Für die **numerische Spalte**:
+   - Die Spalte enthält Ziffern jedes numerischen Datentyps einschließlich der Datums- und Uhrzeitdatentypen.
+   - Im Ausdruck kann auf maximal einen Spaltennamen verwiesen werden.
+   - Verwenden Sie für die UND-Verknüpfung das kaufmännische Und-Zeichen `&`. Verwenden Sie für die ODER-Verknüpfung den senkrechten Strich `|`.
+   - Folgende Operatoren werden unterstützt: `<`, `>`, `<=`, `>=`, `==`, `!=`.
+   - Vorgänge können nicht mithilfe von `(` und `)` gruppiert werden.
+   
+   Für die **Zeichenfolgenspalte**:
+   - Folgende Operatoren werden unterstützt: `==`, `!=`.
 
- - Numerische Spalte:
-    - Die Spalte enthält Ziffern jedes numerischen Datentyps einschließlich der Datums-/Uhrzeitdatentypen.
+1. Übermitteln Sie die Pipeline.
 
-    - Im Ausdruck kann auf maximal einen Spaltennamen verwiesen werden.
+   Durch den Ausdruck wird das Dataset in zwei Sätzen von Zeilen unterteilt: Zeilen mit Werten, die die Bedingung erfüllen, und alle übrigen Zeilen.
 
-    - Verwenden Sie das kaufmännische Und-Zeichen (&) für den AND-Vorgang und den senkrechten Strich (|) für den OR-Vorgang.
+Die folgenden Beispiele zeigen, wie ein Dataset mithilfe der Option **Relativer Ausdruck** im Modul **Split Data** (Daten aufteilen) geteilt werden kann.  
 
-    - Folgende Operatoren werden unterstützt: `<`, `>`, `<=`, `>=`, `==`, `!=`
+### <a name="calendar-year"></a>Kalenderjahr
 
-    - Vorgänge können nicht mithilfe von `(` und `)` gruppiert werden.
+Ein gängiges Szenario ist das Aufteilen eines Datasets nach Jahren. Der folgende Ausdruck wählt alle Zeilen aus, in denen die Werte in der Spalte `Year` größer sind als `2010`.
 
- - Zeichenfolgenspalte: 
-    - Folgende Operatoren werden unterstützt: `==`, `!=`
+```text
+\"Year" > 2010
+```
 
+Der Datumsausdruck muss alle Datumskomponenten berücksichtigen, die in der Datenspalte enthalten sind. Das Format der Datumsangaben in der Datenspalte muss konsistent sein. 
 
+In einer Datumsspalte mit dem Format `mmddyyyy` sollte der Ausdruck z. B. etwa wie folgt lauten:
 
-4. Führen Sie das Experiment aus.
+```text
+\"Date" > 1/1/2010
+```
 
-    Durch den Ausdruck wird das Dataset in zwei Sätzen von Zeilen unterteilt: Zeilen mit Werten, die die Bedingung erfüllen, und alle übrigen Zeilen.
+### <a name="column-index"></a>Spaltenindex
+
+Der folgende Ausdruck veranschaulicht die Verwendung des Spaltenindexes, um alle Zeilen in der ersten Spalte des Datasets auszuwählen, die Werte kleiner gleich 30, jedoch ungleich 20 enthalten.
+
+```text
+(\0)<=30 & !=20
+```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

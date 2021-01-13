@@ -1,30 +1,19 @@
 ---
-title: Erstellen einer .NET-App unter Service Fabric in Azure | Microsoft-Dokumentation
+title: Erstellen einer .NET-App unter Service Fabric in Azure
 description: In diesem Tutorial erfahren Sie, wie Sie eine Anwendung mit einem ASP.NET Core-Front-End und einem zustandsbehafteten zuverlässigen Dienst-Back-End erstellen und in einem Cluster bereitstellen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
-ms.custom: mvc
-ms.openlocfilehash: b5acee47a13e0faa538c5d8464835297088d03e8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.custom: mvc, devx-track-js, devx-track-csharp
+ms.openlocfilehash: a783f5338dbc7ce0832b346492490525da332e39
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598914"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96297116"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Tutorial: Erstellen und Bereitstellen einer Anwendung mit einem ASP.NET Core-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst
 
-Dieses Tutorial ist der erste Teil einer Serie.  Hier erfahren Sie, wie Sie eine Azure Service Fabric-Anwendung mit einem ASP.NET Core-Web-API-Front-End und einem zustandsbehafteten Back-End-Dienst zum Speichern Ihrer Daten erstellen. Am Ende verfügen Sie über eine Abstimmungsanwendung mit einem ASP.NET Core-Web-Front-End, mit der Abstimmungsergebnisse im Cluster in einem zustandsbehafteten Back-End-Dienst gespeichert werden. Wenn Sie die Abstimmungsanwendung nicht manuell erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) und mit [Durchlaufen der Beispielanwendung für die Abstimmung](#walkthrough_anchor) fortfahren.  Wenn Sie möchten, können Sie sich auch eine [schrittweise Videoanleitung](https://channel9.msdn.com/Events/Connect/2017/E100) zu diesem Tutorial ansehen.
+Dieses Tutorial ist der erste Teil einer Serie.  Hier erfahren Sie, wie Sie eine Azure Service Fabric-Anwendung mit einem ASP.NET Core-Web-API-Front-End und einem zustandsbehafteten Back-End-Dienst zum Speichern Ihrer Daten erstellen. Am Ende verfügen Sie über eine Abstimmungsanwendung mit einem ASP.NET Core-Web-Front-End, mit der Abstimmungsergebnisse im Cluster in einem zustandsbehafteten Back-End-Dienst gespeichert werden. Für diese Tutorialreihe ist ein Windows-Entwicklungscomputer erforderlich. Wenn Sie die Abstimmungsanwendung nicht manuell erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) und mit [Durchlaufen der Beispielanwendung für die Abstimmung](#walkthrough_anchor) fortfahren.  Wenn Sie möchten, können Sie sich auch eine [schrittweise Videoanleitung](https://channel9.msdn.com/Events/Connect/2017/E100) zu diesem Tutorial ansehen.
 
 ![AngularJS- + ASP.NET-API-Front-End, Herstellen einer Verbindung mit einem zustandsbehafteten Dienst in Service Fabric](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
@@ -52,7 +41,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>Erstellen eines ASP.NET-Web-API-Diensts als zuverlässigen Dienst
 
-Erstellen Sie mithilfe von ASP.NET Core zunächst das Web-Front-End der Abstimmungsanwendung. ASP.NET Core ist ein einfaches, plattformübergreifendes Webentwicklungsframework, das Sie zur Erstellung von modernen Benutzeroberflächen und Web-APIs verwenden können. Damit Sie die Integration von ASP.NET Core mit Service Fabric vollständig verstehen, wird dringend empfohlen, den Artikel [ASP.NET Core in Service Fabric-Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md) zu lesen. Für einen schnellen Einstieg reicht es jedoch, wenn Sie vorerst nur diesem Tutorial folgen. Weitere Informationen zu ASP.NET Core finden Sie in der [ASP.NET Core-Dokumentation](https://docs.microsoft.com/aspnet/core/).
+Erstellen Sie mithilfe von ASP.NET Core zunächst das Web-Front-End der Abstimmungsanwendung. ASP.NET Core ist ein einfaches, plattformübergreifendes Webentwicklungsframework, das Sie zur Erstellung von modernen Benutzeroberflächen und Web-APIs verwenden können. Damit Sie die Integration von ASP.NET Core mit Service Fabric vollständig verstehen, wird dringend empfohlen, den Artikel [ASP.NET Core in Service Fabric-Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md) zu lesen. Für einen schnellen Einstieg reicht es jedoch, wenn Sie vorerst nur diesem Tutorial folgen. Weitere Informationen zu ASP.NET Core finden Sie in der [ASP.NET Core-Dokumentation](/aspnet/core/).
 
 1. Starten Sie Visual Studio als **Administrator**.
 
@@ -158,17 +147,17 @@ app.controller('VotingAppController', ['$rootScope', '$scope', '$http', '$timeou
                 </div>
                 <div class="row top-buffer" ng-repeat="vote in votes.data">
                     <div class="col-xs-8">
-                        <button class="btn btn-success text-left btn-block" ng-click="add(vote.key)">
+                        <button class="btn btn-success text-left btn-block" ng-click="add(vote.Key)">
                             <span class="pull-left">
-                                {{vote.key}}
+                                {{vote.Key}}
                             </span>
                             <span class="badge pull-right">
-                                {{vote.value}} Votes
+                                {{vote.Value}} Votes
                             </span>
                         </button>
                     </div>
                     <div class="col-xs-4">
-                        <button class="btn btn-danger pull-right btn-block" ng-click="remove(vote.key)">
+                        <button class="btn btn-danger pull-right btn-block" ng-click="remove(vote.Key)">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             Remove
                         </button>
@@ -180,7 +169,7 @@ app.controller('VotingAppController', ['$rootScope', '$scope', '$http', '$timeou
 </div>
 ```
 
-### <a name="update-the-layoutcshtml-file"></a>Aktualisieren der Datei „_Layout.cshtml“
+### <a name="update-the-_layoutcshtml-file"></a>Aktualisieren der Datei „_Layout.cshtml“
 
 Öffnen Sie die Datei **Views/Shared/_Layout.cshtml** (das Standardlayout für die ASP.NET-App).  Ersetzen Sie den Inhalt durch Folgendes, und speichern Sie anschließend Ihre Änderungen:
 

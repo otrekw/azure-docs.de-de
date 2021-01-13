@@ -1,21 +1,18 @@
 ---
-title: Ausnahmebehandlungs- und Fehlerprotokollierungsszenario – Azure Logic Apps | Microsoft-Dokumentation
-description: Hier wird ein Anwendungsfall aus der Praxis zur erweiterten Ausnahmebehandlung und Fehlerprotokollierung in Azure Logic Apps beschrieben.
+title: Ausnahmebehandlungs- und Fehlerprotokollierungsszenario
+description: Anwendungsfall und Szenario aus der Praxis zur erweiterten Ausnahmebehandlung und Fehlerprotokollierung in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: hedidin
-ms.author: estfan
-ms.reviewer: LADocs
-ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: ec01f738ee4943659de1b49ab8d52218e6a8fb79
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385461"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000350"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Szenario: Ausnahmebehandlung und Fehlerprotokollierung für Logik-Apps
 
@@ -28,7 +25,7 @@ In diesem Szenario erfahren Sie, wie Sie eine Logik-App erweitern, um die Unters
 
 Der Anwendungsfall für dieses Szenario basiert auf folgender Situation: 
 
-Wir wurden von einem bekannten Unternehmen aus dem Gesundheitswesen damit beauftragt, eine Azure-Lösung für ein Patientenportal mit Microsoft Dynamics CRM Online zu entwickeln. Das Unternehmen benötigte eine Lösung, mit der sich Termindatensätze zwischen dem Dynamics CRM Online-Patientenportal und Salesforce austauschen lassen. Für alle Patientendatensätze sollte die Norm [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) verwendet werden.
+Wir wurden von einem bekannten Unternehmen aus dem Gesundheitswesen damit beauftragt, eine Azure-Lösung für ein Patientenportal mit Microsoft Dynamics CRM Online zu entwickeln. Das Unternehmen benötigte eine Lösung, mit der sich Termindatensätze zwischen dem Dynamics CRM Online-Patientenportal und Salesforce austauschen lassen. Für alle Patientendatensätze sollte die Norm [HL7 FHIR](https://www.hl7.org/implement/standards/fhir/) verwendet werden.
 
 Das Projekt musste zwei wesentliche Anforderungen erfüllen:  
 
@@ -40,9 +37,9 @@ Das Projekt musste zwei wesentliche Anforderungen erfüllen:
 
 ## <a name="how-we-solved-the-problem"></a>Lösung des Problems
 
-Als Repository für die Protokoll- und Fehlerdatensätze haben wir [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") gewählt (Cosmos DB verweist auf Datensätze als Dokumente). Da Azure Logic Apps über eine Standardvorlage für alle Antworten verfügt, mussten wir kein benutzerdefiniertes Schema erstellen. Wir konnten sowohl für Fehler- als auch für Protokolldatensätze eine API-App zum **Einfügen** und **Abfragen** erstellen. Außerdem konnten wir jeweils ein Schema in der API-App definieren.  
+Als Repository für die Protokoll- und Fehlerdatensätze haben wir [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") gewählt. (In Cosmos DB werden Datensätze als Dokumente bezeichnet.) Da Azure Logic Apps über eine Standardvorlage für alle Antworten verfügt, mussten wir kein benutzerdefiniertes Schema erstellen. Wir konnten sowohl für Fehler- als auch für Protokolldatensätze eine API-App zum **Einfügen** und **Abfragen** erstellen. Außerdem konnten wir jeweils ein Schema in der API-App definieren.  
 
-Eine weitere Anforderung war die endgültige Löschung von Datensätzen nach einem bestimmten Datum. Cosmos DB verfügt über eine Eigenschaft namens [Gültigkeitsdauer](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Gültigkeitsdauer"), mit der wir einen Wert für **Gültigkeitsdauer** für die einzelnen Datensätze oder Sammlungen festlegen konnten. Dadurch müssen Datensätze in Cosmos DB nicht mehr manuell gelöscht werden.
+Eine weitere Anforderung war die endgültige Löschung von Datensätzen nach einem bestimmten Datum. Cosmos DB verfügt über eine Eigenschaft namens [Gültigkeitsdauer](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Gültigkeitsdauer") (Time-To-Live, TTL), mit der wir einen Wert vom Typ **Gültigkeitsdauer** für die einzelnen Datensätze oder Sammlungen festlegen konnten. Dadurch müssen Datensätze in Cosmos DB nicht mehr manuell gelöscht werden.
 
 > [!IMPORTANT]
 > Zur Durchführung dieses Tutorials müssen Sie eine Cosmos DB-Datenbank und zwei Sammlungen (Protokollierung und Fehler) erstellen.
@@ -106,15 +103,15 @@ Wir müssen die Quelle (Anforderung) des Patientendatensatzes aus dem Dynamics C
 
    **Protokolleintrag einfügen**
 
-   ![Protokolleintrag einfügen](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
+   ![Screenshot: Logik-App-Designer mit den Konfigurationseinstellungen für InsertLogEntry](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
    **Fehlereintrag einfügen**
 
-   ![Protokolleintrag einfügen](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
+   ![Screenshot: Logik-App-Designer mit den Konfigurationseinstellungen für CreateErrorRecord](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
    **Auf Fehler bei der Datensatzerstellung überprüfen**
 
-   ![Bedingung](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![Screenshot: Bildschirm „CreateErrorRecord“ im Logik-App-Designer mit den Feldern zum Erstellen eines Fehlereintrags](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>Logik-App-Quellcode
 
@@ -402,7 +399,7 @@ Mit unserer Lösung haben wir den Funktionsumfang von [Azure Cosmos DB](https://
 Sie können eine MVC-Web-App erstellen, mit der die Fehlerdatensätze aus Cosmos DB angezeigt werden können. In der aktuellen Version sind die Vorgänge **Liste**, **Details**, **Bearbeiten** und **Löschen** enthalten.
 
 > [!NOTE]
-> Bearbeitungsvorgang: Cosmos DB ersetzt das gesamte Dokument. Die Datensätze, die in der **Listen** und in der **Detailansicht** angezeigt werden, sind lediglich Beispiele. Es handelt sich nicht um echte Datensätze mit Patiententerminen.
+> Beim Bearbeitungsvorgang ersetzt Cosmos DB das gesamte Dokument. Die Datensätze, die in der **Listen** und in der **Detailansicht** angezeigt werden, sind lediglich Beispiele. Es handelt sich nicht um echte Datensätze mit Patiententerminen.
 
 Im Anschluss finden Sie Beispiele für unsere MVC-App-Details, die auf der Grundlage des zuvor beschriebenen Konzepts erstellt wurden.
 
@@ -479,10 +476,10 @@ Mit dem Ausdruck im obigen Codebeispiel wird geprüft, ob *Create_NewPatientReco
 
 ### <a name="source-code"></a>Quellcode
 
-Den Quellcode für die API-Anwendung zur Logik-App-Ausnahmeverwaltung finden Sie in [diesem GitHub-Repository](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Ausnahmeverwaltungs-API für Logik-App")können Sie sich ein allgemeines Video zu diesem Projekt ansehen.
+Den Quellcode für die API-Anwendung zur Logik-App-Ausnahmeverwaltung finden Sie in [diesem GitHub-Repository](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Ausnahmeverwaltungs-API der Logik-App").
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Anzeigen weiterer Logik-App-Beispiele und -Szenarien](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [Informationen zur Überwachung von Logik-Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [Überwachen von Logik-Apps](../logic-apps/monitor-logic-apps.md)
 * [Automatisieren der Logik-App-Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

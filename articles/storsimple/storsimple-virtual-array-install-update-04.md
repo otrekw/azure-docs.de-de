@@ -1,6 +1,6 @@
 ---
 title: Installieren von Updates in StorSimple Virtual Array | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie die Webbenutzeroberfläche der StorSimple Virtual Array-Lösung verwenden, um Updates und Hotfixes über das Azure-Portal anzuwenden.
+description: Hier wird beschrieben, wie Sie die Webbenutzeroberfläche der StorSimple Virtual Array-Lösung verwenden, um Update 0.4 über das Azure-Portal und die Hotfixmethode anzuwenden.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: b67fcb82bdcc94d7faeceedb7420a869e6578cad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc458f91a9b67ddd54e706575d29b8fc8618a2f7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61436390"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534295"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>Installieren von Update 0.4 für Ihre StorSimple Virtual Array-Lösung
 
@@ -76,26 +76,26 @@ Verwenden Sie diese Methode zum Installieren von Updates auf einem Gerät, auf d
 
 1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung** > **Softwareupdate**.
    
-    ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update/update1m.png)
+    ![Der Screenshot zeigt die im Menü „Wartung“ ausgewählte Option „Softwareupdate“.](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. Geben Sie in **Updatedateipfad**den Dateinamen für das Update oder den Hotfix ein. Sie können auch zur Installationsdatei des Updates oder Hotfixes navigieren, sofern sie auf einer Netzwerkfreigabe abgelegt wurde. Klicken Sie auf **Anwenden**.
+2. Geben Sie in **Updatedateipfad** den Dateinamen für das Update oder den Hotfix ein. Sie können auch zur Installationsdatei des Updates oder Hotfixes navigieren, sofern sie auf einer Netzwerkfreigabe abgelegt wurde. Klicken Sie auf **Anwenden**.
    
-    ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update/update2m.png)
+    ![Der Screenshot zeigt auf der Seite „Softwareupdate“ das Textfeld „Updatedateipfad“.](./media/storsimple-virtual-array-install-update/update2m.png)
 
 3. Es wird eine Warnung angezeigt. Da es sich hierbei um ein Gerät mit einem Einzelknoten handelt, wird das Gerät neu gestartet, und es kommt zu Ausfallzeit. Klicken Sie auf das Häkchensymbol.
    
-   ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update/update3m.png)
+   ![Der Screenshot zeigt ein Dialogfeld mit einer Warnung zur Ausfallzeit.](./media/storsimple-virtual-array-install-update/update3m.png)
 
 4. Das Update wird gestartet. Nachdem das Gerät erfolgreich aktualisiert wurde, wird es neu gestartet. Auf die lokale Benutzeroberfläche kann währenddessen nicht zugegriffen werden.
    
-    ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update/update5m.png)
+    ![Der Screenshot zeigt eine Erfolgsmeldung für das Update.](./media/storsimple-virtual-array-install-update/update5m.png)
 
 5. Nach dem Neustart wird die Seite **Anmelden** angezeigt. Um sicherzustellen, dass die Gerätesoftware aktualisiert wurde, wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung** >  **Softwareupdate**. Die angezeigte Softwareversion sollte **10.0.0.0.0.10289.0** für Update 0.4 lauten.
    
    > [!NOTE]
    > Die Softwareversionen werden in der lokalen Webbenutzeroberfläche und im Azure-Portal etwas unterschiedlich angegeben. Beispiel: Die lokale Webbenutzeroberfläche gibt **10.0.0.0.0.10289** an, und das Azure-Portal **10.0.10289.0**, obwohl es sich um die gleiche Version handelt.
    
-    ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update/update6m.png)
+    ![Der Screenshot zeigt die Seite „Softwareupdate“ mit der aktuellen Softwareversion.](./media/storsimple-virtual-array-install-update/update6m.png)
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 

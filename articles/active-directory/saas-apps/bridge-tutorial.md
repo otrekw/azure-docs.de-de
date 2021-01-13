@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Bridge | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Bridge konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3dbb6499-80c1-4d00-a0b4-e0ad5522cf0f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e4104d3ec129ec3ab03edfe4ff32f9e55386af4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3221063469315b2324c5039a46db622109826aa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105994"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673610"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>Tutorial: Azure Active Directory-Integration mit Bridge
 
@@ -31,7 +27,7 @@ Die Integration von Bridge in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Bridge anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -67,7 +63,7 @@ Zum Konfigurieren der Integration von Bridge in Azure AD müssen Sie Bridge aus 
 
 4. Geben Sie im Suchfeld **Bridge** ein, wählen Sie im Ergebnisbereich **Bridge** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Bridge in der Ergebnisliste](common/search-new-app.png)
+    ![Bridge in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -147,13 +143,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -163,7 +159,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste den Eintrag **Bridge**aus.
+2. Wählen Sie in der Anwendungsliste den Eintrag **Bridge** aus.
 
     ![Bridge-Link in der Anwendungsliste](common/all-applications.png)
 
@@ -183,18 +179,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-bridge-test-user"></a>Erstellen eines Bridge-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Bridge einen Benutzer namens Britta Simon. Wenden Sie sich an das  [Bridge-Supportteam](https://community.bridgeapp.com/community/help), um die Benutzer auf der Bridge-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Bridge einen Benutzer namens Britta Simon. Wenden Sie sich an das [Bridge-Supportteam](https://community.bridgeapp.com/community/help), um die Benutzer auf der Bridge-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Bridge“ klicken, sollten Sie automatisch bei der Bridge-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Bridge“ klicken, sollten Sie automatisch bei der Bridge-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

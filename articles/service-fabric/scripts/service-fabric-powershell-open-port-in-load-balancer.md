@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Öffnen eines Anwendungsports im Lastenausgleich | Microsoft-Dokumentation
+title: Öffnen eines Anwendungsports im Lastenausgleich in PowerShell
 description: Azure PowerShell-Skriptbeispiel – Öffnen eines Ports im Azure-Lastenausgleichsmodul für eine Service Fabric-Anwendung.
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 05/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 8e6a0b7f273df96cff5cc9ce1081ddc59eb49382
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 4be9944a53aaf0c697d55ff567dee7f2fbb3ed85
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035537"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87038085"
 ---
 # <a name="open-an-application-port-in-the-azure-load-balancer"></a>Öffnen eines Anwendungsports im Azure-Lastenausgleichsmodul
 
@@ -48,6 +48,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche PowerShell-Beispiele für Azure Service Fabric finden Sie unter [Azure PowerShell-Beispiele](../service-fabric-powershell-samples.md).

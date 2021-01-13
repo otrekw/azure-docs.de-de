@@ -1,10 +1,10 @@
 ---
-title: Azure PowerShell-Beispiele für virtuelle Netzwerke | Microsoft-Dokumentation
-description: Azure PowerShell-Beispiele für virtuelle Netzwerke.
+title: Azure PowerShell-Beispiele für virtuelle Netzwerke
+description: Hier erfahren Sie mehr über Azure PowerShell-Beispiele zum Verwalten virtueller Netzwerke. Dazu gehört u. a. ein Beispiel zum Erstellen eines virtuellen Netzwerks für Anwendungen mit mehreren Ebenen.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 418a72eb9a8f98bca24c863b2f953bfe720979e6
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: b3107d521fb79e3ea6cfe190abd2ec3fb7859cb3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249047"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87288232"
 ---
 # <a name="azure-powershell-samples-for-virtual-network"></a>Azure PowerShell-Beispiele für virtuelle Netzwerke
 
 Die folgende Tabelle enthält Links zu Azure PowerShell-Skripts:
 
-| | |
+| Skript | BESCHREIBUNG |
 |----|----|
 | [Erstellen eines virtuellen Netzwerks für Anwendungen mit mehreren Ebenen](./scripts/virtual-network-powershell-sample-multi-tier-application.md) | Erstellt ein virtuelles Netzwerk mit Front-End- und Back-End-Subnetzen. Der Datenverkehr am Front-End-Subnetz ist auf HTTP beschränkt, während der Datenverkehr zum Back-End-Subnetz auf SQL und Port 1433 beschränkt ist. |
 | [Herstellen einer Peerverbindung zwischen zwei virtuellen Netzwerken](./scripts/virtual-network-powershell-sample-peer-two-virtual-networks.md) | Erstellt zwei virtuelle Netzwerke in derselben Region und stellt eine Verbindung zwischen diesen her. |

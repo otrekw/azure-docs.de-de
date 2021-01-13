@@ -1,34 +1,34 @@
 ---
-title: Diagnostizieren von Problemen mit dem Netzwerkrouting eines virtuellen Computers – Azure PowerShell | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie Probleme mit dem Netzwerkrouting eines virtuellen Computers mit der Funktion „Nächster Hop“ von Azure Network Watcher diagnostizieren.
+title: Diagnostizieren von Problemen mit dem Netzwerkrouting einer VM – Azure PowerShell
+titleSuffix: Azure Network Watcher
+description: In diesem Artikel erfahren Sie, wie Sie ein Netzwerkroutingproblem eines virtuellen Computers mit der Funktion „Nächster Hop“ von Azure Network Watcher diagnostizieren.
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 08d273ce6e6ecb1b10d3c39a0954d430a3cb674a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 362157f023f7ed4d2da81962acd32e2da968193e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730754"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84738786"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Diagnostizieren von Problemen mit dem Netzwerkrouting eines virtuellen Computers – Azure PowerShell
 
-In diesem Artikel stellen Sie einen virtuellen Computer (Virtual Machine, VM) bereit und überprüfen dann die Kommunikation für eine IP-Adresse und URL. Sie ermitteln die Ursache eines Kommunikationsfehlers und wie Sie ihn beheben können.
+In diesem Artikel stellen Sie einen virtuellen Computer (Virtual Machine, VM) bereit und überprüfen dann die Kommunikation mit einer IP-Adresse und URL. Sie ermitteln die Ursache eines Kommunikationsfehlers und wie Sie ihn beheben können.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -96,7 +96,7 @@ Get-AzNetworkWatcherNextHop `
 
 Nach wenigen Sekunden informiert Sie die Ausgabe darüber, dass **NextHopType** **Internet** und die **RouteTableId** **Systemroute** ist. Durch dieses Ergebnis wissen Sie, dass eine gültige Route zum Ziel besteht.
 
-Testen Sie die ausgehende Kommunikation des virtuellen Computers für 172.31.0.100:
+Testen Sie die ausgehende Kommunikation des virtuellen Computers mit 172.31.0.100:
 
 ```azurepowershell-interactive
 Get-AzNetworkWatcherNextHop `

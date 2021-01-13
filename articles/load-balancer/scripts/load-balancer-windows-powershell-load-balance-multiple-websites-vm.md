@@ -1,32 +1,27 @@
 ---
-title: 'PowerShell-Beispiel: Lastenausgleich für mehrere Websites mit Azure PowerShell | Microsoft-Dokumentation'
+title: 'Lastenausgleich für mehrere Websites: Azure PowerShell – Azure Load Balancer'
 description: Dieses Azure PowerShell-Skriptbeispiel zeigt, wie Sie einen Lastausgleich für mehrere Websites auf dem gleichen virtuellen Computer vornehmen.
-services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
-manager: jeconnoc
-editor: tysonn
-tags: ''
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 098d300efc0b151d07b087959750a209c392872f
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3a260887b169c8feecd304996ea57d1aec46aedc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273611"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696556"
 ---
 # <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Azure PowerShell-Skriptbeispiel: Lastenausgleich für mehrere Websites
 
 Dieses Azure PowerShell-Skriptbeispiel erstellt ein virtuelles Netzwerk mit zwei virtuellen Computern, die einer Verfügbarkeitsgruppe angehören. Ein Load Balancer leitet Datenverkehr für zwei separate IP-Adressen an die beiden virtuellen Computer. Nach der Ausführung des Skripts können Sie Webserversoftware auf den virtuellen Computern bereitstellen und mehrere Websites (jede mit eigener IP-Adresse) hosten.
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,6 +63,6 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/overview).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Netzwerk-PowerShell-Skriptbeispiele finden Sie unter [Azure-Dokumentation für Netzwerke – Übersicht](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

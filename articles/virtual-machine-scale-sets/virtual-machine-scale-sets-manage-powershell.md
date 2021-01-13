@@ -1,26 +1,20 @@
 ---
-title: Verwalten von VM-Skalierungsgruppen mit Azure PowerShell | Microsoft-Dokumentation
+title: Verwalten von Virtual Machine Scale Sets mit Azure PowerShell
 description: Informationen zu gängigen Azure PowerShell-Cmdlets für die Verwaltung von VM-Skalierungsgruppen (etwa zum Starten und Beenden einer Instanz oder zum Ändern der Kapazität der Skalierungsgruppe).
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d35fa77a-de96-4ccd-a332-eb181d1f4273
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: management
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: a6474320fd8b1545d61320cd43e155ab077ba310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: mimckitt
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: eee4dd7fae872f6b3ddd01f60aba732edc170766
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683530"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570584"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell
 
@@ -51,6 +45,15 @@ Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möc
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
 ```
 
+Sie können auch ausführliche *instanceView*-Informationen für alle Instanzen in einem API-Befehl abrufen, um die API-Einschränkung bei großen Installationen zu vermeiden.
+
+```powershell
+Get-AzVmssVM -InstanceView -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
+```
+
+```rest
+GET "https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSSName>/virtualMachines?api-version=2019-03-01&%24expand=instanceView"
+```
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>Ändern der Kapazität einer Skalierungsgruppe
 Die obigen Befehle dienen zum Anzeigen von Informationen zu Ihrer Skalierungsgruppe und zu den VM-Instanzen. Wenn Sie die Anzahl von Instanzen in der Skalierungsgruppe erhöhen oder verringern möchten, können Sie die Kapazität ändern. Die Skalierungsgruppe erstellt oder entfernt automatisch die erforderliche Anzahl von virtuellen Computern und konfiguriert die virtuellen Computer anschließend für den Empfang von Anwendungsdatenverkehr.

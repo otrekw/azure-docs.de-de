@@ -3,8 +3,8 @@ title: Verwalten von Verbundzertifikaten in Azure AD | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie das Ablaufdatum für Verbundzertifikate anpassen und Zertifikate erneuern, die in Kürze ablaufen.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 416e72f7e9e8622f044f7bb6430fbb36010b164e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 87190e9a7aa3c3a26b77220dd0332d65c640bc2e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701967"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658994"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory
 
@@ -111,4 +111,4 @@ Wenn ein Zertifikat in Kürze abläuft, können Sie es mithilfe eines Verfahrens
 - [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](../saas-apps/tutorial-list.md)
 - [Anwendungsverwaltung mit Azure Active Directory](what-is-application-management.md)
 - [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](what-is-single-sign-on.md)
-- [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md)
+- [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](./debug-saml-sso-issues.md)

@@ -1,25 +1,17 @@
 ---
-title: Überwachen von StorSimple-Geräten der Serie 8000 | Microsoft-Dokumentation
+title: Überwachen von Geräten der StorSimple 8000-Serie
 description: Beschreibt, wie Sie den StorSimple-Geräte-Manager-Dienst verwenden, um E/A-Leistung und Kapazitätsauslastung zu überwachen.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 602514df69977891167f341db0ab20913bcacc9f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: de4cae90f2cc1223271672d9fc5ba5b42e4409e4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634561"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962432"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Überwachen von StorSimple-Geräten
 
@@ -85,7 +77,7 @@ Wenn Sie Update 3 oder höher ausführen, können Sie die Kapazitätsauslastung 
 
 Sie können auf jedes der Volumes in der Liste klicken, um die entsprechende Nutzung anzuzeigen.
 
-![Kapazitätsauslastung des Primärspeichers für alle lokalen Volumes](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
+![Kapazitätsauslastung des Primärspeichers für alle lokalen Volumes 2](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
 
 ### <a name="cloud-storage-usage"></a>Cloudspeicherauslastung
 In diesen Diagrammen ist die Menge des verwendeten Cloudspeichers dargestellt. Diese Daten sind dedupliziert und komprimiert. Diese Datenmenge umfasst Cloudmomentaufnahmen, die möglicherweise Daten enthalten, die in keinem Primärvolume reflektiert und aus Gründen der Legacy oder im Rahmen einer vorgeschriebenen Aufbewahrung gespeichert werden. Sie können die Auslastungszahlen des Primär- und Cloudspeichers vergleichen, um einen Eindruck der Datenreduzierungsrate zu erhalten, wenngleich das Ergebnis des Vergleichs nicht ganz exakt ist.
@@ -147,6 +139,5 @@ Wenn Sie sich das Diagramm zum Durchsatz der Schnittstelle Data 1 ansehen, einer
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie, wie Sie [das Dashboard für den StorSimple-Geräte-Manager-Dienst verwenden](storsimple-device-dashboard.md).
-* Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple-Geräte-Manager-Diensts verwalten](storsimple-manager-service-administration.md).
-
+* Erfahren Sie, wie Sie [das Dashboard für den StorSimple-Geräte-Manager-Dienst verwenden](./storsimple-8000-device-dashboard.md).
+* Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple-Geräte-Manager-Diensts verwalten](./storsimple-8000-manager-service-administration.md).

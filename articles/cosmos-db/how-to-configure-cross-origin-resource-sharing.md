@@ -3,21 +3,26 @@ title: Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resou
 description: Dieser Artikel beschreibt das Konfigurieren der Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) in Azure Cosmos DB im Azure-Portal und über Azure Resource Manager-Vorlagen.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/23/2019
+ms.subservice: cosmosdb-sql
+ms.topic: how-to
+ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 1269c4c2405e9b906b63c8a29c0de1ac217da1d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eba49ff45ba9ab1f5cfaa1d75973d656ac32ca6a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241888"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339894"
 ---
-# <a name="configure-cross-origin-resource-sharing-cors"></a>Konfigurieren der Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS) 
+# <a name="configure-cross-origin-resource-sharing-cors"></a>Konfigurieren der Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-CORS (Cross Origin Resource Sharing; Ressourcenfreigabe zwischen verschiedenen Ursprüngen) ist eine HTTP-Funktion, die einer Webanwendung, die in einer Domäne ausgeführt wird, den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. In Webbrowser ist eine Sicherheitseinschränkung implementiert, die als „Same Origin Policy“ bekannt ist und verhindert, dass eine Webseite APIs in einer anderen Domäne aufruft. CORS bietet jedoch eine sichere Möglichkeit, um der Ursprungsdomäne das Aufrufen von APIs in einer anderen Domäne zu erlauben. Die Kern-SQL-API in Azure Cosmos DB unterstützt jetzt über den Header „AllowedOrigins“ die Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS). Nachdem Sie die CORS-Unterstützung für Ihr Azure Cosmos-Konto aktiviert haben, werden nur authentifizierte Anforderungen ausgewertet, um festzustellen, ob sie entsprechend den angegebenen Regeln zulässig sind.
+CORS (Cross Origin Resource Sharing; Ressourcenfreigabe zwischen verschiedenen Ursprüngen) ist eine HTTP-Funktion, die einer Webanwendung, die in einer Domäne ausgeführt wird, den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. In Webbrowser ist eine Sicherheitseinschränkung implementiert, die als „Same Origin Policy“ bekannt ist und verhindert, dass eine Webseite APIs in einer anderen Domäne aufruft. CORS bietet jedoch eine sichere Methode, um der Ursprungsdomäne den Aufruf von APIs in einer anderen Domäne zu erlauben. Die Core-API (SQL) in Azure Cosmos DB unterstützt jetzt CORS (Cross-Origin Resource Sharing, Ressourcenfreigabe zwischen verschiedenen Ursprüngen) mithilfe des Headers „allowedOrigins“. Nachdem Sie die CORS-Unterstützung für Ihr Azure Cosmos-Konto aktiviert haben, werden nur authentifizierte Anforderungen ausgewertet, um festzustellen, ob sie entsprechend den angegebenen Regeln zulässig sind.
 
-Sie können die CORS-Einstellung im Azure-Portal oder über eine Azure Resource Manager-Vorlage konfigurieren. Die Kern-SQL-API in Azure Cosmos DB unterstützt eine JavaScript-Bibliothek, die sowohl mit Node.js als auch in browsergestützten Umgebungen verwendet werden kann. Diese Bibliothek kann nun bei Verwendung des Gateway-Modus die Vorteile der CORS-Unterstützung nutzen. Um dieses Feature zu verwenden, ist clientseitig keine Konfiguration erforderlich. Mit der CORS-Unterstützung können Ressourcen in einem Browser über die [JavaScript-Bibliothek](https://www.npmjs.com/package/@azure/cosmos) oder direkt über die [REST-API](https://docs.microsoft.com/rest/api/cosmos-db/) direkt auf Azure Cosmos DB zugreifen. Das vereinfacht die Vorgänge. 
+Sie können die CORS-Einstellung im Azure-Portal oder über eine Azure Resource Manager-Vorlage konfigurieren. Für Cosmos-Konten, die die Core-API (SQL) verwenden, unterstützt Azure Cosmos DB eine JavaScript-Bibliothek, die sowohl mit Node.js als auch in browsergestützten Umgebungen verwendet werden kann. Diese Bibliothek kann nun bei Verwendung des Gateway-Modus die Vorteile der CORS-Unterstützung nutzen. Um dieses Feature zu verwenden, ist clientseitig keine Konfiguration erforderlich. Mit der CORS-Unterstützung können Ressourcen in einem Browser über die [JavaScript-Bibliothek](https://www.npmjs.com/package/@azure/cosmos) oder direkt über die [REST-API](/rest/api/cosmos-db/) direkt auf Azure Cosmos DB zugreifen. Das vereinfacht die Vorgänge.
+
+> [!NOTE]
+> Die CORS-Unterstützung steht nur für die Azure Cosmos DB-Core-API (SQL) zur Verfügung und wird auch nur dort unterstützt. Sie trifft nicht auf die Azure Cosmos DB-APIs für Cassandra, Gremlin oder MongoDB zu, da diese Protokolle kein HTTP für die Kommunikation zwischen Client und Server verwenden.
 
 ## <a name="enable-cors-support-from-azure-portal"></a>Aktivieren der CORS-Unterstützung im Azure-Portal
 
@@ -29,49 +34,30 @@ Führen Sie die folgenden Schritte aus, um CORS im Azure-Portal zu aktivieren:
 
    > [!NOTE]
    > Derzeit können Sie Platzhalter nicht in Domänennamen verwenden. Das Format `https://*.mydomain.net` beispielsweise wird noch nicht unterstützt. 
-   
-   ![Aktivieren von CORS im Azure-Portal](./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png)
- 
+
+   :::image type="content" source="./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png" alt-text="Aktivieren von CORS im Azure-Portal":::
+
 ## <a name="enable-cors-support-from-resource-manager-template"></a>Aktivieren der CORS-Unterstützung über eine Azure Resource Manager-Vorlage
 
 Zum Aktivieren von CORS mithilfe einer Azure Resource Manager-Vorlage fügen Sie einer beliebigen vorhandenen Vorlage den Abschnitt „cors“ mit der Eigenschaft „allowedOrigins“ hinzu. Das folgende JSON-Beispiel zeigt eine Vorlage, die ein neues Azure Cosmos-Konto erstellt, bei dem CORS aktiviert ist.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {},
-    "resources": [
-        {
-            "name": "test",
-            "type": "Microsoft.DocumentDB/databaseAccounts",
-            "apiVersion": "2015-04-08",
-            "location": "East US 2",
-            "properties": {
-                "databaseAccountOfferType": "Standard",
-                "consistencyPolicy": {
-                    "defaultConsistencyLevel": "Session",
-                    "maxIntervalInSeconds": 5,
-                    "maxStalenessPrefix": 100
-                },
-                "locations": [
-                    {
-                        "id": "test-eastus2",
-                        "failoverPriority": 0,
-                        "locationName": "East US 2"
-                    }
-                ],
-                "cors": [
-                    {
-                        "allowedOrigins": "*"
-                    }
-                ]
-            },
-            "dependsOn": [
-            ]
-        }
+  "type": "Microsoft.DocumentDB/databaseAccounts",
+  "name": "[variables('accountName')]",
+  "apiVersion": "2019-08-01",
+  "location": "[parameters('location')]",
+  "kind": "GlobalDocumentDB",
+  "properties": {
+    "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+    "locations": "[variables('locations')]",
+    "databaseAccountOfferType": "Standard",
+    "cors": [
+      {
+        "allowedOrigins": "*"
+      }
     ]
+  }
 }
 ```
 
@@ -106,5 +92,3 @@ Weitere Informationen zu anderen Möglichkeiten zum Schutz Ihres Azure Cosmos-Ko
 * [Konfigurieren einer Firewall für Azure Cosmos DB](how-to-configure-firewall.md)
 
 * [Konfigurieren des VNET- und subnetzbasierten Zugriffs für Ihr Azure Cosmos DB-Konto](how-to-configure-vnet-service-endpoint.md)
-    
-

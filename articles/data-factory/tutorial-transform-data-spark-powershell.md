@@ -1,24 +1,26 @@
 ---
-title: Transformieren von Daten mithilfe von Spark in Azure Data Factory | Microsoft-Dokumentation
+title: 'Transformieren von Daten mit Spark in Azure Data Factory '
 description: Dieses Tutorial bietet Schrittanleitungen zum Transformieren von Daten mithilfe einer Spark-Aktivität in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 7c7b2b75bdf8aa2be0ea9dd2b60453c2480fc1d2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+manager: anandsub
+ms.openlocfilehash: bef80cdeab32d14aeaae350adda869a8ea7b05c7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813435"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81409085"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Transformieren von Daten in der Cloud mithilfe einer Spark-Aktivität in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 In diesem Tutorial verwenden Sie Azure PowerShell, um eine Data Factory-Pipeline zu erstellen, die Daten mithilfe einer Spark-Aktivität und einem bedarfsgesteuerten verknüpften HDInsight-Dienst transformiert. In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
@@ -91,10 +93,7 @@ Erstellen Sie in Ihrem bevorzugten Editor eine JSON-Datei, kopieren Sie die folg
     "properties": {
       "type": "AzureStorage",
       "typeProperties": {
-        "connectionString": {
-          "value": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>",
-          "type": "SecureString"
-        }
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>"
       }
     }
 }
@@ -252,7 +251,7 @@ Sie haben in JSON-Dateien Definitionen für einen verknüpften Dienst und eine P
     
 ## <a name="start-and-monitor-a-pipeline-run"></a>Starten und Überwachen einer Pipelineausführung  
 
-1. Starten Sie eine Pipelineausführung. Die ID der Pipelineausführung wird für die zukünftige Überwachung ebenfalls erfasst.
+1. Starten einer Pipelineausführung Die ID der Pipelineausführung wird für die zukünftige Überwachung ebenfalls erfasst.
 
     ```powershell
     $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName  
@@ -333,7 +332,7 @@ Sie haben in JSON-Dateien Definitionen für einen verknüpften Dienst und eine P
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Die Pipeline in diesem Beispiel kopiert Daten in einem Azure Blob Storage von einem Speicherort in einen anderen. Es wurde Folgendes vermittelt: 
+Die Pipeline in diesem Beispiel kopiert Daten in einem Azure Blob Storage von einem Speicherort in einen anderen. Sie haben Folgendes gelernt: 
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory. 

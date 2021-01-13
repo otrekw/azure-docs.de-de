@@ -1,21 +1,14 @@
 ---
-title: 'Kostenanalyse und Budget: Azure Batch'
-description: Es wird beschrieben, wie Sie eine Kostenanalyse abrufen und ein Budget für Ihre Batch-Workload festlegen können.
-services: batch
-author: laurenhughes
-manager: gwallace
-ms.service: batch
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: big-compute
+title: Kostenanalyse und Budget
+description: Erfahren Sie, wie Sie eine Kostenanalyse erhalten und ein Budget für die zugrunde liegenden Computeressourcen und Softwarelizenzen festlegen, die für die Ausführung Ihrer Batch-Workloads verwendet werden.
+ms.topic: how-to
 ms.date: 07/19/2019
-ms.author: lahugh
-ms.openlocfilehash: 6ccf530fe2164b3d9b1936648ffe9057c334efd6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 50ca1ecfd0a973ff39dabfcb62175ce820d0a0d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094200"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88654241"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Kostenanalyse und Budget für Azure Batch
 
@@ -23,7 +16,7 @@ Für Azure Batch selbst werden keine Gebühren berechnet, sondern nur für die z
 
 ## <a name="batch-resources"></a>Batch-Ressourcen
 
-Virtuelle Computer sind die wichtigste Ressource, die für die Batch-Verarbeitung verwendet wird. Die Kosten für die Verwendung von VMs für Batch wird basierend auf dem Typ, der Menge und der Nutzungsdauer berechnet. Zu den VM-Abrechnungsoptionen gehören die [nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) und die [Reservierung](../billing/billing-save-compute-costs-reservations.md) (Zahlung im Voraus). Beide Optionen für die Bezahlung haben bestimmte Vorteile, die von Ihrer Compute-Workload abhängen, und beide Zahlungsmodelle wirken sich anders auf Ihre Rechnung aus.
+Virtuelle Computer sind die wichtigste Ressource, die für die Batch-Verarbeitung verwendet wird. Die Kosten für die Verwendung von VMs für Batch wird basierend auf dem Typ, der Menge und der Nutzungsdauer berechnet. Zu den VM-Abrechnungsoptionen gehören die [nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) und die [Reservierung](../cost-management-billing/reservations/save-compute-costs-reservations.md) (Zahlung im Voraus). Beide Optionen für die Bezahlung haben bestimmte Vorteile, die von Ihrer Compute-Workload abhängen, und beide Zahlungsmodelle wirken sich anders auf Ihre Rechnung aus.
 
 Bei der Bereitstellung von Anwendungen auf Batch-Knoten (VMs) mit [Anwendungspaketen](batch-application-packages.md) werden Ihnen die Azure Storage-Ressourcen in Rechnung gestellt, die von Ihren Anwendungspaketen verbraucht wurden. Darüber hinaus wird Ihnen die Speicherung von Eingabe- oder Ausgabedateien berechnet, z. B. Ressourcendateien und andere Protokolldaten. Im Allgemeinen liegen die Kosten für Speicherdaten in Verbindung mit Batch deutlich unter den Kosten für Computeressourcen. Jeder virtuelle Computer in einem Pool, der mit **VirtualMachineConfiguration** erstellt wurde, verfügt über einen zugeordneten Betriebssystemdatenträger, für den von Azure verwaltete Datenträger verwendet werden. Von Azure verwaltete Datenträger weisen zusätzliche Kosten auf, und auch für andere Datenträger-Leistungsstufen gelten noch andere Kosten.
 
@@ -58,7 +51,7 @@ In der sich ergebenden Kostenanalyse werden die Kosten des Pools und die Ressour
 
 Wählen Sie zum Erstellen eines Budgets für den Pool die Option **Budget: Kein** und dann **Neues Budget erstellen >** . Verwenden Sie jetzt das Fenster, um ein Budget speziell für Ihren Pool zu konfigurieren.
 
-Weitere Informationen zur Konfiguration eines Budgets finden Sie unter [Erstellen und Verwalten von Azure-Budgets](../cost-management/tutorial-acm-create-budgets.md).
+Weitere Informationen zur Konfiguration eines Budgets finden Sie unter [Erstellen und Verwalten von Azure-Budgets](../cost-management-billing/costs/tutorial-acm-create-budgets.md).
 
 > [!NOTE]
 > Azure Batch basiert auf der Technologie von Azure Cloud Services und von Azure Virtual Machines. Wenn Sie sich für die **Cloud Services-Konfiguration** entscheiden, erfolgt die Abrechnung auf Grundlage der Preisstruktur, die auf der Seite mit den Cloud Services-Preisen angegeben ist. Wenn Sie sich für die **VM-Konfiguration** entscheiden, erfolgt die Abrechnung auf Grundlage der Preisstruktur unter „Virtuelle Computer – Preise“. Im Beispiel auf dieser Seite wird **Konfiguration des virtuellen Computers** verwendet.
@@ -75,13 +68,13 @@ Weitere Informationen zum Einrichten von VMs mit niedriger Priorität für Ihre 
 
 ### <a name="virtual-machine-os-disk-type"></a>Typen von Betriebssystemdatenträgern für VMs
 
-Es gibt mehrere [Typen von Betriebssystemdatenträgern für VMs](../virtual-machines/windows/disks-types.md). Die meisten VM-Serien verfügen über Größen, die sowohl Premium- als auch Standard-Speicher unterstützen. Wenn für einen Pool die VM-Größe „S“ ausgewählt wird, werden von Batch SSD Premium-Betriebssystemdatenträger konfiguriert. Bei Auswahl der VM-Größe „Nicht S“ wird der kostengünstigere Datenträgertyp „HDD Standard“ verwendet. Beispielsweise werden SSD Premium-Betriebssystemdatenträger für `Standard_D2s_v3` und HDD Standard-Betriebssystemdatenträger für `Standard_D2_v3` verwendet.
+Es gibt mehrere [Typen von Betriebssystemdatenträgern für VMs](../virtual-machines/disks-types.md). Die meisten VM-Serien verfügen über Größen, die sowohl Premium- als auch Standard-Speicher unterstützen. Wenn für einen Pool die VM-Größe „S“ ausgewählt wird, werden von Batch SSD Premium-Betriebssystemdatenträger konfiguriert. Bei Auswahl der VM-Größe „Nicht S“ wird der kostengünstigere Datenträgertyp „HDD Standard“ verwendet. Beispielsweise werden SSD Premium-Betriebssystemdatenträger für `Standard_D2s_v3` und HDD Standard-Betriebssystemdatenträger für `Standard_D2_v3` verwendet.
 
 SSD Premium-Betriebssystemdatenträger sind teurer, verfügen aber auch über eine höhere Leistung. VMs mit Premium-Datenträgern können etwas schneller als VMs mit HDD Standard-Betriebssystemdatenträgern gestartet werden. Bei Batch wird der Betriebssystemdatenträger häufig nicht viel genutzt, da sich die Anwendungen und Taskdateien auf dem temporären SSD-Datenträger der VMs befinden. Daher ist es in vielen Fällen nicht erforderlich, die höheren Kosten für SSD Premium-Datenträger zu bezahlen, die bereitgestellt werden, wenn „S“ als VM-Größe angegeben wird.
 
 ### <a name="reserved-virtual-machine-instances"></a>Reservierte VM-Instanzen
 
-Falls Sie Batch längere Zeit nutzen möchten, können Sie bei den Kosten für die VMs sparen, indem Sie [Azure-Reservierungen](../billing/billing-save-compute-costs-reservations.md) für Ihre Workloads verwenden. Reservierungsraten sind erheblich niedriger als die Raten bei der nutzungsbasierten Bezahlung. Für VM-Instanzen, die ohne Reservierung verwendet werden, wird die Rate für die nutzungsbasierte Bezahlung berechnet. Bei Erwerb einer Reservierung wird der Reservierungsrabatt angewendet, und Ihnen werden nicht mehr die Raten für die nutzungsbasierte Bezahlung berechnet.
+Falls Sie Batch längere Zeit nutzen möchten, können Sie bei den Kosten für die VMs sparen, indem Sie [Azure-Reservierungen](../cost-management-billing/reservations/save-compute-costs-reservations.md) für Ihre Workloads verwenden. Reservierungsraten sind erheblich niedriger als die Raten bei der nutzungsbasierten Bezahlung. Für VM-Instanzen, die ohne Reservierung verwendet werden, wird die Rate für die nutzungsbasierte Bezahlung berechnet. Bei Erwerb einer Reservierung wird der Reservierungsrabatt angewendet, und Ihnen werden nicht mehr die Raten für die nutzungsbasierte Bezahlung berechnet.
 
 ### <a name="automatic-scaling"></a>Autoskalierung
 

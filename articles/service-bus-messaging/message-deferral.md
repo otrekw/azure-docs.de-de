@@ -1,24 +1,15 @@
 ---
-title: Azure Service Bus-Nachrichtenverzögerung | Microsoft-Dokumentation
-description: Verzögertes Übermitteln von Service Bus-Nachrichten
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: 'Azure Service Bus: Nachrichtenverzögerung'
+description: In diesem Artikel wird erläutert, wie die Übermittlung von Azure Service Bus-Nachrichten verzögert wird. Die Nachricht verbleibt in der Warteschlange oder im Abonnement, wird jedoch zurückgestellt.
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: 11ea10f1deba5a21b98dea875a1b7dc94998aa00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/23/2020
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7c9ec55de24c97df3530d80deef55ed87be84077
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60402733"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86511278"
 ---
 # <a name="message-deferral"></a>Nachrichtenverzögerung
 
@@ -30,13 +21,16 @@ Ein einfaches und anschauliches Beispiel ist die Verarbeitungssequenz für eine 
 
 Die Verzögerung hilft letztendlich beim Neuordnen der Nachrichten von der Eingangsreihenfolge in eine Reihenfolge, in der sie verarbeitet werden können. Dabei werden die Nachrichten, deren Verarbeitung verschoben werden muss, sicher im Nachrichtenspeicher belassen.
 
+> [!NOTE]
+> Verzögerte Nachrichten werden [nach ihrem Ablauf](./service-bus-dead-letter-queues.md#exceeding-timetolive) nicht automatisch in die Warteschlange für unzustellbare Nachrichten verschoben. Dieses Verhalten ist beabsichtigt:
+
 ## <a name="message-deferral-apis"></a>APIs für die Nachrichtenverzögerung
 
-Die API im .NET Framework-Client ist [BrokeredMessage.Defer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) oder [BrokeredMessage.DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync), [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) im .NET Standard-Client und **mesageReceiver.defer** oder **messageReceiver.deferSync** im Java-Client. 
+Die API ist [BrokeredMessage.Defer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) oder [BrokeredMessage.DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) im .NET Framework-Client, [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) im .NET Standard-Client und [IMessageReceiver.defer](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer?view=azure-java-stable) oder [IMessageReceiver.deferAsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync?view=azure-java-stable) im Java-Client. 
 
 Verzögerte Nachrichten verbleiben im Gegensatz zu unzustellbaren Nachrichten, die sich in einer Unterwarteschlange befinden, mit allen anderen aktiven Nachrichten in der Hauptwarteschlange, können jedoch nicht mehr mithilfe der regulären Funktionen „Receive“ bzw. „ReceiveAsync“ empfangen werden. Verzögerte Nachrichten können über das [Durchsuchen von Nachrichten](message-browsing.md) ermittelt werden, wenn eine Anwendung diese nicht mehr findet.
 
-Zum Abrufen einer verzögerten Nachricht muss sich deren Besitzer die [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) beim Verzögern merken. Jeder Empfänger, der die Sequenznummer einer verzögerten Nachricht kennt, kann die Nachricht später explizit durch `Receive(sequenceNumber)` empfangen. Bei Warteschlangen können Sie den [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) und bei Themenabonnements den [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) verwenden.
+Zum Abrufen einer verzögerten Nachricht muss sich deren Besitzer die [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) beim Verzögern merken. Jeder Empfänger, der die Sequenznummer einer verzögerten Nachricht kennt, kann die Nachricht später explizit durch `Receive(sequenceNumber)` empfangen.
 
 Wenn eine Nachricht nicht verarbeitet werden kann, weil eine bestimmte Ressource für die Verarbeitung dieser Nachricht vorübergehend nicht verfügbar ist, aber die Verarbeitung der Nachricht nicht sofort angehalten werden soll, stellt das Merken der **SequenceNumber** in einer [geplanten Nachricht](message-sequencing.md), die in ein paar Minuten gesendet werden soll und das erneute Abrufen der verzögerten Nachricht, wenn die geplante Nachricht eingeht, eine Methode dar, um diese Nachricht für ein paar Minuten zurückzustellen. Wenn alle Vorgänge eines Nachrichtenhandlers von einer Datenbank abhängen und diese Datenbank vorübergehend nicht verfügbar ist, sollten Sie nicht die Verzögerung nutzen, sondern das Empfangen von Nachrichten vollständig anhalten, bis die Datenbank wieder verfügbar ist.
 

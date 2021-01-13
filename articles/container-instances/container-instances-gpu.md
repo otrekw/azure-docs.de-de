@@ -1,19 +1,14 @@
 ---
-title: Bereitstellen GPU-fähiger Azure-Containerinstanzen
-description: Erfahren Sie, wie Sie Azure-Containerinstanzen zur Ausführung auf GPU-Ressourcen bereitstellen.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Bereitstellen GPU-fähiger Containerinstanzen
+description: Erfahren Sie, wie Sie Azure-Containerinstanzen zur Ausführung rechenintensiver Container-Apps unter Verwendung von GPU-Ressourcen bereitstellen.
 ms.topic: article
-ms.date: 04/17/2019
-ms.author: danlep
-ms.openlocfilehash: 300e9b82d578663a4d2ada3889a07d8b03051cc5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 07/22/2020
+ms.openlocfilehash: 0d645d1fce24d1324e485d74e20bcf492d4444a7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325952"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127007"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Bereitstellen von Containerinstanzen, die GPU-Ressourcen verwenden
 
@@ -32,9 +27,9 @@ In der Vorschau gelten die folgenden Einschränkungen beim Verwenden von GPU-Res
 
 Die Unterstützung für weitere Regionen wird im Lauf der Zeit hinzugefügt.
 
-**Unterstützte Betriebssystemtypen**: Nur Linux
+**Unterstützte Betriebssystemtypen** : Nur Linux
 
-**Zusätzliche Einschränkungen**: GPU-Ressourcen können beim Bereitstellen einer Containergruppe in einem [virtuellen Netzwerk](container-instances-vnet.md) nicht verwendet werden.
+**Zusätzliche Einschränkungen** : GPU-Ressourcen können beim Bereitstellen einer Containergruppe in einem [virtuellen Netzwerk](container-instances-vnet.md) nicht verwendet werden.
 
 ## <a name="about-gpu-resources"></a>Informationen zu GPU-Ressourcen
 
@@ -42,30 +37,33 @@ Die Unterstützung für weitere Regionen wird im Lauf der Zeit hinzugefügt.
 
 Geben Sie zum Verwenden von GPUs in einer Containerinstanz eine *GPU-Ressource* mit den folgenden Informationen an:
 
-* **Anzahl**: Anzahl der GPUs: **1**, **2** oder **4**.
-* **SKU**: GPU-SKU: **K80**, **P100** oder **V100**. Jede SKU wird der NVIDIA-Tesla-GPU in einer der folgenden GPU-fähigen Azure-VM-Familien zugeordnet:
+* **Anzahl** : Anzahl der GPUs: **1** , **2** oder **4**.
+* **SKU** : GPU-SKU: **K80** , **P100** oder **V100**. Jede SKU wird der NVIDIA-Tesla-GPU in einer der folgenden GPU-fähigen Azure-VM-Familien zugeordnet:
 
   | SKU | VM-Familie |
   | --- | --- |
-  | K80 | [NC](../virtual-machines/linux/sizes-gpu.md#nc-series) |
-  | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
-  | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
+  | K80 | [NC](../virtual-machines/nc-series.md) |
+  | P100 | [NCv2](../virtual-machines/ncv2-series.md) |
+  | V100 | [NCv3](../virtual-machines/ncv3-series.md) |
 
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
 Wenn Sie GPU-Ressourcen bereitstellen, legen Sie die für die Workload geeignete CPU und die Arbeitsspeicherressourcen bis zu den in der vorstehenden Tabelle gezeigten maximalen Werten fest. Diese Werte sind derzeit höher als die in Containergruppen ohne GPU-Ressourcen verfügbaren CPU- und Arbeitsspeicherressourcen.  
 
+> [!IMPORTANT]
+> Die standardmäßigen [Abonnementlimits](container-instances-quotas.md) (Kontingente) für GPU-Ressourcen unterscheiden sich zwischen SKUs. Die standardmäßigen CPU-Limits für die P100- und V100-SKUs sind anfänglich auf 0 festgelegt. Um eine Erhöhung in einer verfügbaren Region anzufordern, senden Sie eine [Azure-Supportanfrage][azure-support].
+
 ### <a name="things-to-know"></a>Wichtige Hinweise
 
-* **Bereitstellungszeit**: Die Erstellung einer Containergruppe mit GPU-Ressourcen dauert **8 bis 10 Minuten**. Das wird durch den zusätzlichen Zeitaufwand für die Bereitstellung und Konfiguration einer GPU-VM in Azure verursacht. 
+* **Bereitstellungszeit** : Die Erstellung einer Containergruppe mit GPU-Ressourcen dauert **8 bis 10 Minuten**. Das wird durch den zusätzlichen Zeitaufwand für die Bereitstellung und Konfiguration einer GPU-VM in Azure verursacht. 
 
-* **Preise**: Ähnlich wie bei Containergruppen ohne GPU-Ressourcen berechnet Azure die Ressourcen, die über die *Dauer* einer Containergruppe mit GPU-Ressourcen verbraucht wurden. Die Dauer wird ab dem Zeitpunkt, an dem das erste Image Ihres Containers abgerufen wird, bis zu dem Zeitpunkt berechnet, an dem die Containergruppe beendet wird. Die Zeit bis zum Bereitstellen der Containergruppe ist nicht enthalten.
+* **Preise** : Ähnlich wie bei Containergruppen ohne GPU-Ressourcen berechnet Azure die Ressourcen, die über die *Dauer* einer Containergruppe mit GPU-Ressourcen verbraucht wurden. Die Dauer wird ab dem Zeitpunkt, an dem das erste Image Ihres Containers abgerufen wird, bis zu dem Zeitpunkt berechnet, an dem die Containergruppe beendet wird. Die Zeit bis zum Bereitstellen der Containergruppe ist nicht enthalten.
 
   Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/container-instances/).
 
-* **CUDA-Treiber**: Containerinstanzen mit GPU-Ressourcen werden vorab mit NVIDIA-CUDA-Treibern und Containerlaufzeiten bereitgestellt, damit Sie die für CUDA-Workloads entwickelten Containerimages verwenden können.
+* **CUDA-Treiber** : Containerinstanzen mit GPU-Ressourcen werden vorab mit NVIDIA-CUDA-Treibern und Containerlaufzeiten bereitgestellt, damit Sie die für CUDA-Workloads entwickelten Containerimages verwenden können.
 
-  Wir unterstützen CUDA 9.0 in dieser Phase. Beispielsweise können Sie die folgenden Basisimages für Ihre Docker-Datei verwenden:
+  Wir unterstützen in dieser Phase nur CUDA 9.0. Beispielsweise können Sie die folgenden Basisimages für Ihre Docker-Datei verwenden:
   * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow: 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     
@@ -75,7 +73,7 @@ Eine Möglichkeit zum Hinzufügen von GPU-Ressourcen besteht darin, eine Contain
 
 ```YAML
 additional_properties: {}
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 name: gpucontainergroup
 properties:
   containers:
@@ -93,7 +91,7 @@ properties:
   restartPolicy: OnFailure
 ```
 
-Stellen Sie die Containergruppe mithilfe des Befehls [az container create][az-container-create] bereit, und geben Sie dabei für den Parameter `--file` den YAML-Dateinamen an. Sie müssen den Namen einer Ressourcengruppe und einen Speicherort für die Containergruppe (z. B. *eastus*) angeben, der GPU-Ressourcen unterstützt.  
+Stellen Sie die Containergruppe mithilfe des Befehls [az container create][az-container-create] bereit, und geben Sie dabei für den Parameter `--file` den YAML-Dateinamen an. Sie müssen den Namen einer Ressourcengruppe und einen Speicherort für die Containergruppe (z. B. *eastus* ) angeben, der GPU-Ressourcen unterstützt.  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
@@ -135,13 +133,13 @@ Eine weitere Möglichkeit, eine Containergruppe mit GPU-Ressourcen bereitzustell
     },
     "variables": {
       "containername": "gpucontainer",
-      "containerimage": "microsoft/samples-tf-mnist-demo:gpu"
+      "containerimage": "mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu"
     },
     "resources": [
       {
         "name": "[parameters('containerGroupName')]",
         "type": "Microsoft.ContainerInstance/containerGroups",
-        "apiVersion": "2018-10-01",
+        "apiVersion": "2019-12-01",
         "location": "[resourceGroup().location]",
         "properties": {
             "containers": [
@@ -170,10 +168,10 @@ Eine weitere Möglichkeit, eine Containergruppe mit GPU-Ressourcen bereitzustell
 }
 ```
 
-Stellen Sie mit dem Befehl [az group deployment create][az-group-deployment-create] die Vorlage bereit. Sie müssen den Namen einer Ressourcengruppe angeben, die in einer Region (z. B. *eastus*) erstellt wurde, die GPU-Ressourcen unterstützt.
+Stellen Sie die Vorlage mit dem Befehl [az deployment group create][az-deployment-group-create] bereit. Sie müssen den Namen einer Ressourcengruppe angeben, die in einer Region (z. B. *eastus* ) erstellt wurde, die GPU-Ressourcen unterstützt.
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file gpudeploy.json
+az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json
 ```
 
 Die Bereitstellung kann einige Minuten in Anspruch nehmen. Dann wird der Container gestartet, und der TensorFlow-Auftrag wird ausgeführt. Führen Sie den Befehl [az container logs][az-container-logs] aus, um die Protokollausgabe anzuzeigen:
@@ -227,7 +225,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über das Bereitstellen einer Containergruppe mit einer [YAML-Datei](container-instances-multi-container-yaml.md) oder einer [Resource Manager-Vorlage](container-instances-multi-container-group.md).
-* Erfahren Sie mehr über [GPU-optimierte VM-Größen](../virtual-machines/linux/sizes-gpu.md) in Azure.
+* Erfahren Sie mehr über [GPU-optimierte VM-Größen](../virtual-machines/sizes-gpu.md) in Azure.
 
 
 <!-- IMAGES -->
@@ -235,10 +233,11 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+[azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
 [az-container-show]: /cli/azure/container#az-container-show
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

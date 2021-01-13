@@ -1,20 +1,17 @@
 ---
-title: Verarbeiten von konfigurierbaren schwellenwertbasierten Regeln in Azure Stream Analytics
+title: Konfigurierbare schwellenwertbasierte Regeln in Azure Stream Analytics
 description: Dieser Artikel beschreibt, wie Verweisdaten verwendet werden, um eine Warnungslösung zu erreichen, die konfigurierbare schwellenwertbasiere Regeln in Azure Stream Analytics aufweist.
-services: stream-analytics
-author: zhongc
-ms.author: zhongc
-manager: kfile
-ms.reviewer: jasonh
+author: mamccrea
+ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2018
-ms.openlocfilehash: ce2cf6ebdfd74549114e94e4c7356e387576d3c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761725"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86039040"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Verarbeiten von konfigurierbaren schwellenwertbasierten Regeln in Azure Stream Analytics
 Dieser Artikel beschreibt, wie Verweisdaten verwendet werden, um eine Warnungslösung zu erreichen, die konfigurierbare schwellenwertbasiere Regeln in Azure Stream Analytics verwendet.

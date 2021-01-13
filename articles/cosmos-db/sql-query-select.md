@@ -1,35 +1,36 @@
 ---
 title: SELECT-Klausel in Azure Cosmos DB
 description: Erfahren Sie mehr zur SELECT-Klausel von SQL für Azure Cosmos DB. Verwenden Sie SQL als eine JSON-Abfragesprache in Azure Cosmos DB.
-author: ginarobinson
+author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: girobins
-ms.openlocfilehash: d34b1c39d9789409dc365cd4cf07fdc3d5a780fd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.date: 05/08/2020
+ms.author: tisande
+ms.openlocfilehash: 072e17b1c0ea312b4adfa1687e447fd2cadde233
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003518"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335438"
 ---
-# <a name="select-clause"></a>Die SELECT-Klausel
+# <a name="select-clause-in-azure-cosmos-db"></a>SELECT-Klausel in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Jede Abfrage besteht aus einer SELECT-Klausel und optionalen [FROM](sql-query-from.md)- und [WHERE](sql-query-where.md)-Klauseln nach ANSI SQL-Standards. Normalerweise wird die Quelle in der FROM-Klausel aufgelistet, und die WHERE-Klausel wendet einen Filter auf die Quelle an, um eine Teilmenge der JSON-Elemente abzurufen. Dann projiziert die SELECT-Klausel die angeforderten JSON-Werte in die ausgewählte Liste.
+Jede Abfrage besteht aus einer `SELECT`-Klausel und optionalen [FROM](sql-query-from.md)- und [WHERE](sql-query-where.md)-Klauseln nach ANSI SQL-Standards. Normalerweise wird die Quelle in der `FROM`-Klausel aufgelistet, und die `WHERE`-Klausel wendet einen Filter auf die Quelle an, um eine Teilmenge der JSON-Elemente abzurufen. Dann projiziert die `SELECT`-Klausel die angeforderten JSON-Werte in die ausgewählte Liste.
 
 ## <a name="syntax"></a>Syntax
 
 ```sql
 SELECT <select_specification>  
 
-<select_specification> ::=   
-      '*'   
-      | [DISTINCT] <object_property_list>   
+<select_specification> ::=
+      '*'
+      | [DISTINCT] <object_property_list>
       | [DISTINCT] VALUE <scalar_expression> [[ AS ] value_alias]  
   
-<object_property_list> ::=   
+<object_property_list> ::=
 { <scalar_expression> [ [ AS ] property_alias ] } [ ,...n ]  
-  
 ```  
   
 ## <a name="arguments"></a>Argumente
@@ -49,7 +50,7 @@ SELECT <select_specification>
 - `VALUE`  
 
   Gibt an, dass der JSON-Wert anstelle des vollständigen JSON-Objekts abgerufen werden sollte. Hiermit wird im Gegensatz zu `<property_list>` der projizierte Wert nicht in ein Objekt gehüllt.  
- 
+
 - `DISTINCT`
   
   Hiermit wird festgelegt, dass Duplikate von voraussichtlichen Eigenschaften entfernt werden sollen.  
@@ -58,7 +59,7 @@ SELECT <select_specification>
 
   Ausdruck, der den zu berechnenden Wert darstellt. Weitere Informationen finden Sie im Abschnitt [Skalarausdrücke](sql-query-scalar-expressions.md).  
 
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
 
 Die `SELECT *`-Syntax ist nur gültig, wenn die FROM-Klausel genau einen Alias deklariert hat. `SELECT *` bietet eine Identitätsprojektion, die hilfreich sein kann, wenn keine Projektion erforderlich ist. SELECT * ist nur gültig, wenn die FROM-Klausel angegeben und nur eine einzelne Eingabequelle eingeführt ist.  
   
@@ -86,7 +87,7 @@ Das folgende Beispiel für eine SELECT-Abfrage gibt `address` aus `Families` zur
     WHERE f.id = "AndersenFamily"
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [{
@@ -94,78 +95,6 @@ Die Ergebnisse sind wie folgt:
         "state": "WA",
         "county": "King",
         "city": "Seattle"
-      }
-    }]
-```
-
-### <a name="quoted-property-accessor"></a>Eigenschaftenaccessor in Anführungszeichen
-Sie können auf Eigenschaften zugreifen, indem Sie den Anführungszeichenoperator [] für Eigenschaften verwenden. `SELECT c.grade` and `SELECT c["grade"]` gleichwertig. Diese Syntax ist hilfreich, um eine Eigenschaft mit Escapezeichen zu versehen, die Leerzeichen oder Sonderzeichen enthält oder den gleichen Namen wie ein SQL-Schlüsselwort oder ein reserviertes Wort hat.
-
-```sql
-    SELECT f["lastName"]
-    FROM Families f
-    WHERE f["id"] = "AndersenFamily"
-```
-
-### <a name="nested-properties"></a>Verschachtelte Eigenschaften
-
-Im folgenden Beispiel werden zwei verschachtelte Eigenschaften (`f.address.state` und `f.address.city`) projiziert.
-
-```sql
-    SELECT f.address.state, f.address.city
-    FROM Families f
-    WHERE f.id = "AndersenFamily"
-```
-
-Die Ergebnisse sind wie folgt:
-
-```json
-    [{
-      "state": "WA",
-      "city": "Seattle"
-    }]
-```
-### <a name="json-expressions"></a>JSON-Ausdrücke
-
-Die Projektion unterstützt auch JSON-Ausdrücke wie im folgenden Beispiel gezeigt:
-
-```sql
-    SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
-    FROM Families f
-    WHERE f.id = "AndersenFamily"
-```
-
-Die Ergebnisse sind wie folgt:
-
-```json
-    [{
-      "$1": {
-        "state": "WA",
-        "city": "Seattle",
-        "name": "AndersenFamily"
-      }
-    }]
-```
-
-Im vorherigen Beispiel muss die SELECT-Klausel ein JSON-Objekt erstellen, und da im Beispiel kein Schlüssel bereitgestellt wird, verwendet die Klausel den impliziten Argumentvariablennamen `$1`. Die folgende Abfrage gibt zwei implizite Argumentvariablen zurück: `$1` und `$2`.
-
-```sql
-    SELECT { "state": f.address.state, "city": f.address.city },
-           { "name": f.id }
-    FROM Families f
-    WHERE f.id = "AndersenFamily"
-```
-
-Die Ergebnisse sind wie folgt:
-
-```json
-    [{
-      "$1": {
-        "state": "WA",
-        "city": "Seattle"
-      }, 
-      "$2": {
-        "name": "AndersenFamily"
       }
     }]
 ```

@@ -1,19 +1,19 @@
 ---
 title: Problembehandlung des Azure Data Box-Datenträgers | Microsoft Docs
-description: Beschreibt, wie Sie Probleme mit dem Azure Data Box-Datenträger beheben können.
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe von Protokollen Validierungsprobleme beseitigen können, die auftreten können, wenn Sie Azure Data Box Disk bereitstellen.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: f8116ec0836623adf803991017950ddc7f960923
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: fa8a6643f1b7bd60fbf6e5950234e0381666177e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67805706"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605223"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Verwenden von Protokollen zur Behandlung von Problemen bei der Überprüfung in Azure Data Box Disk
 
@@ -51,21 +51,21 @@ Wenn Sie mehrere Sitzungen zur Überprüfung ausführen, wird ein Fehlerprotokol
 - Es folgt ein Beispiel für das Fehlerprotokoll, wenn der Containername nicht gültig ist. Der Ordner, den Sie unter den Ordnern `BlockBlob`, `PageBlob` oder `AzureFile` auf dem Datenträger erstellen, wird zu einem Container in Ihrem Azure Storage-Konto. Der Name des Containers muss den [Azur-Benennungskonventionen](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) entsprechen.
 
     ```xml
-        <?xml version="1.0" encoding="utf-8"?>
-        <ErrorLog Version="2018-10-01">
-          <SessionId>bbsession</SessionId>
-          <ItemType>BlockBlob</ItemType>
-          <SourceDirectory>E:\BlockBlob</SourceDirectory>
-          <Errors>
-            <Error Code="InvalidShareContainerFormat">
-              <List>
-                <Container Name="Azu-reFile" />
-                <Container Name="bbcont ainer1" />
-              </List>
-              <Count>2</Count>
-            </Error>
-          </Errors>
-          <Warnings />
+    <?xml version="1.0" encoding="utf-8"?>
+    <ErrorLog Version="2018-10-01">
+        <SessionId>bbsession</SessionId>
+        <ItemType>BlockBlob</ItemType>
+        <SourceDirectory>E:\BlockBlob</SourceDirectory>
+        <Errors>
+        <Error Code="InvalidShareContainerFormat">
+            <List>
+            <Container Name="Azu-reFile" />
+            <Container Name="bbcont ainer1" />
+            </List>
+            <Count>2</Count>
+        </Error>
+        </Errors>
+        <Warnings />
     </ErrorLog>
     ```
 
@@ -75,7 +75,7 @@ In der folgenden Tabelle sind die Fehler, die in *error.xml* enthalten sind, zus
 
 | Fehlercode| BESCHREIBUNG                       | Empfohlene Aktionen               |
 |------------|--------------------------|-----------------------------------|
-| `None` | Die Daten wurden erfolgreich überprüft. | Es ist keine Aktion erforderlich. |
+| `None` | Die Daten wurden erfolgreich überprüft. | Keine Aktion erforderlich. |
 | `InvalidXmlCharsInPath` |Es konnte keine Manifestdatei erstellt werden, da der Dateipfad ungültige Zeichen enthält. | Entfernen Sie diese Zeichen, um fortzufahren.  |
 | `OpenFileForReadFailed`| Die Datei konnte nicht verarbeitet werden. Die Ursache hierfür kann ein Zugriffsproblem oder eine Beschädigung des Dateisystems sein.|Die Datei konnte aufgrund eines Fehlers nicht gelesen werden. Die Fehlerdetails befinden sich in der Ausnahme. |
 | `Not512Aligned` | Diese Datei weist kein gültiges Format für den Ordner „PageBlob“ auf.| Laden Sie nur Daten, die einem ganzzahligen Vielfachen von 512 Bytes entsprechen, in den Ordner `PageBlob` hoch. Entfernen Sie die Datei aus dem Ordner „PageBlob“, oder verschieben Sie sie in den Ordner „BlockBlob“. Wiederholen Sie die Überprüfung.|

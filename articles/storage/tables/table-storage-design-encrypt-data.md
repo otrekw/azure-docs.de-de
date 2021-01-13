@@ -1,19 +1,19 @@
 ---
 title: Verschlüsseln von Azure-Speichertabellendaten | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen zum Verschlüsseln der Tabellendaten im Azure-Speicher.
+description: Hier erhalten Sie Informationen zum Verschlüsseln der Tabellendaten im Azure-Speicher. Die .NET-Clientbibliothek für Azure Storage ermöglicht Ihnen das Verschlüsseln von Zeichenfolgenentitäten für Einfüge- und Ersetzungsvorgänge.
 services: storage
-author: MarkMcGeeAtAquent
+author: tamram
+ms.author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 04/11/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: f56946702011968a0fcb31f6fbecbaacdc89ea42
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b921be718bfeb5eb95d4a802fb4d2a8cdd0946c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60326002"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88236776"
 ---
 # <a name="encrypt-table-data"></a>Verschlüsseln von Tabellendaten
 Die .NET-Clientbibliothek für Azure Storage unterstützt die Verschlüsselung der Eigenschaften von Zeichenfolgenentitäten für Einfüge- und Ersetzungsvorgänge. Die verschlüsselten Zeichenfolgen werden als binäre Eigenschaften für den Dienst gespeichert, und sie werden nach der Entschlüsselung wieder in Zeichenfolgen konvertiert.    

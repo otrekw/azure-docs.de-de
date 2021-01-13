@@ -1,31 +1,20 @@
 ---
-title: Verwalten von Kontoressourcen mit der Clientbibliothek für .NET – Azure Batch | Microsoft-Dokumentation
+title: Verwalten von Kontoressourcen mit der Batch Management .NET-Bibliothek
 description: Erstellen, löschen und ändern Sie Azure-Batch-Kontoressourcen mit der Batch Management .NET-Bibliothek.
-services: batch
-documentationcenter: .net
-author: laurenhughes
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 16279b23-60ff-4b16-b308-5de000e4c028
-ms.service: batch
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
+ms.topic: how-to
 ms.date: 04/24/2017
-ms.author: lahugh
-ms.custom: seodec18
-ms.openlocfilehash: f7554993e2e3d8d2f6bce71db57a746a4392ce1a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seodec18, has-adal-ref, devx-track-csharp
+ms.openlocfilehash: 0672a7dc1a5c26eff88806ca37b28d70b49f2288
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095073"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88926523"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Verwalten von Batch-Konten und -Kontingenten mit der Batch Management-Clientbibliothek für .NET
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](batch-account-create-portal.md)
+> * [Azure portal](batch-account-create-portal.md)
 > * [Batch Management .NET](batch-management-dotnet.md)
 > 
 > 
@@ -95,7 +84,7 @@ BatchAccountRegenerateKeyResponse newKeys =
 > 
 
 ## <a name="check-azure-subscription-and-batch-account-quotas"></a>Überprüfen des Azure-Abonnements und der Batch-Kontokontingente
-Azure-Abonnements und die einzelnen Azure-Dienste wie z. B. Batch verfügen über Standardkontingente, die die Anzahl von bestimmten darin enthaltenen Entitäten begrenzen. Die Standardkontingente für Azure-Abonnements finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md). Die Standardkontingente für den Batch-Dienst finden Sie unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md). Mithilfe der Batch Management .NET-Bibliothek können Sie diese Kontingente in Ihren Anwendungen überprüfen. Dadurch können Sie Zuordnungsentscheidungen treffen, bevor Sie Konten oder Computeressourcen hinzufügen (z. B. Pools und Computeknoten).
+Azure-Abonnements und die einzelnen Azure-Dienste wie z. B. Batch verfügen über Standardkontingente, die die Anzahl von bestimmten darin enthaltenen Entitäten begrenzen. Die Standardkontingente für Azure-Abonnements finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md). Die Standardkontingente für den Batch-Dienst finden Sie unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md). Mithilfe der Batch Management .NET-Bibliothek können Sie diese Kontingente in Ihren Anwendungen überprüfen. Dadurch können Sie Zuordnungsentscheidungen treffen, bevor Sie Konten oder Computeressourcen hinzufügen (z. B. Pools und Computeknoten).
 
 ### <a name="check-an-azure-subscription-for-batch-account-quotas"></a>Überprüfen des Azure-Abonnements für Batch-Kontokontingente
 Vor dem Erstellen eines Batch-Kontos in einer Region können Sie Ihr Azure-Abonnement überprüfen, um festzustellen, ob Sie ein Konto in der betreffenden Region hinzufügen können.
@@ -176,29 +165,29 @@ Um die Beispielanwendung erfolgreich ausführen zu können, müssen Sie sie zun�
 
 
 [aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Was ist Azure Active Directory?"
-[aad_adal]: ../active-directory/active-directory-authentication-libraries.md
+[aad_adal]: ../active-directory/azuread-dev/active-directory-authentication-libraries.md
 [aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Authentifizierungsszenarien für Azure AD"
 [aad_integrate]:../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md "Integrieren von Anwendungen in Azure Active Directory"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
-[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[api_mgmt_net]: https://msdn.microsoft.com/library/azure/mt463120.aspx
+[api_net]: /dotnet/api/microsoft.azure.batch
+[api_mgmt_net]: /dotnet/api/overview/azure/batch
 [azure_portal]: https://portal.azure.com
 [azure_storage]: https://azure.microsoft.com/services/storage/
-[azure_tokencreds]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.tokencloudcredentials.aspx
+[azure_tokencreds]: /previous-versions/azure/reference/mt167728(v=azure.100)
 [batch_explorer_project]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
-[net_batch_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
-[net_list_keys]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.accountoperationsextensions.listkeysasync.aspx
-[net_create]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.accountoperationsextensions.createasync.aspx
-[net_delete]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.accountoperationsextensions.deleteasync.aspx
-[net_regenerate_keys]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.accountoperationsextensions.regeneratekeyasync.aspx
-[net_sharedkeycred]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.auth.batchsharedkeycredentials.aspx
-[net_mgmt_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.batchmanagementclient.aspx
-[net_mgmt_subscriptions]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.batchmanagementclient.subscriptions.aspx
-[net_mgmt_listaccounts]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.iaccountoperations.listasync.aspx
-[resman_api]: https://msdn.microsoft.com/library/azure/mt418626.aspx
-[resman_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.resourcemanagementclient.aspx
-[resman_subclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.subscriptions.subscriptionclient.aspx
-[resman_overview]: ../azure-resource-manager/resource-group-overview.md
+[net_batch_client]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_list_keys]: /previous-versions/azure/mt463199(v=azure.100)
+[net_create]: /previous-versions/azure/mt463210(v=azure.100)
+[net_delete]: /previous-versions/azure/mt463128(v=azure.100)
+[net_regenerate_keys]: /previous-versions/azure/mt463213(v=azure.100)
+[net_sharedkeycred]: /dotnet/api/microsoft.azure.batch.auth.batchsharedkeycredentials
+[net_mgmt_client]: /dotnet/api/microsoft.azure.management.batch.batchmanagementclient
+[net_mgmt_subscriptions]: /previous-versions/azure/mt592937(v=azure.100)
+[net_mgmt_listaccounts]: /previous-versions/azure/mt463134(v=azure.100)
+[resman_api]: /previous-versions/azure/mt463134(v=azure.100)
+[resman_client]: /dotnet/api/microsoft.azure.management.resourcemanager
+[resman_subclient]: /dotnet/api/microsoft.azure.management.resourcemanager
+[resman_overview]: ../azure-resource-manager/management/overview.md
 
 [1]: ./media/batch-management-dotnet/portal-01.png
 [2]: ./media/batch-management-dotnet/portal-02.png

@@ -1,34 +1,29 @@
 ---
-title: 'Tutorial: Konfigurieren von BlueJeans für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren von BlueJeans für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in BlueJeans konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd-msft
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84870ef03e07cdabe994da7c04a103bead48d34f
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 204cdc689d5a117df428bb314a81a35081f7b13c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672999"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357639"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von BlueJeans für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die in BlueJeans und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in BlueJeans zu konfigurieren.
 
 > [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
+> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,15 +46,15 @@ Bevor Sie BlueJeans für die automatische Benutzerbereitstellung mit Azure AD ko
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **BlueJeans** ein, wählen Sie im Ergebnisbereich **BlueJeans** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **BlueJeans** ein, wählen Sie im Ergebnisbereich **BlueJeans** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
 
     ![BlueJeans in der Ergebnisliste](common/search-new-app.png)
 
@@ -86,7 +81,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für BlueJeans in Azure AD
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Unternehmensanwendungen**, **Alle Anwendungen** und dann **BlueJeans** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Unternehmensanwendungen** , **Alle Anwendungen** und dann **BlueJeans** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -96,11 +91,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Bereitstellung von BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
+    ![Screenshot der Randleiste der BlueJeans-Unternehmensanwendung mit hervorgehobener und aufgerufener Option „Bereitstellung“](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Bereitstellung von BlueJeans](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
+    ![Screenshot der Seite „Bereitstellung“ mit den aufgerufenen Abschnitten „Bereitstellungsmodus“ und „Administratoranmeldeinformationen“](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** einen Wert für **Administratorbenutzername** und **Administratorkennwort** Ihres BlueJeans-Kontos ein. Beispiele für diese Werte:
 
@@ -108,41 +103,41 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
    * Geben Sie im Feld **Administratorkennwort** das Kennwort für den Administratorbenutzernamen ein.
 
-6. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit BlueJeans herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr BlueJeans-Konto über Administratorrechte verfügt, und wiederholen Sie den Vorgang.
+6. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit BlueJeans herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr BlueJeans-Konto über Administratorrechte verfügt, und wiederholen Sie den Vorgang.
 
-    ![Bereitstellung von BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
+    ![Screenshot des Abschnitts „Administratoranmeldeinformationen“ mit der aufgerufenen Option „Verbindung testen“](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
 
 7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
-    ![Bereitstellung von BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
+    ![Screenshot des Textfelds „Benachrichtigungs-E-Mail“](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
 8. Klicken Sie auf **Speichern**.
 
 9. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit BlueJeans synchronisieren** aus.
 
-    ![Bereitstellung von BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
+    ![Screenshot des Abschnitts „Zuordnungen“ mit hervorgehobener Option „Azure Active Directory-Benutzer mit BlueJeans synchronisieren“](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
 
-10. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit BlueJeans synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in BlueJeans für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+10. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit BlueJeans synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in BlueJeans für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
-    ![Bereitstellung von BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
+    ![Screenshot: Abschnitt „Attributzuordnungen“ mit sieben Zuordnungen](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
 
-11. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+11. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 12. Um den Azure AD-Bereitstellungsdienst für BlueJeans zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
-    ![Bereitstellung von BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
+    ![Screenshot des Abschnitts „Einstellungen“, in dem die Option „Bereitstellungsstatus“ auf „Ein“ festgelegt ist](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
 
 13. Legen Sie die Benutzer und/oder Gruppen fest, die in BlueJeans bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
 
-    ![Bereitstellung von BlueJeans](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
+    ![Screenshot der Einstellung „Bereich“ mit hervorgehobener Option „Nur zugewiesene Benutzer und Gruppen synchronisieren“](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
 
 14. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
-    ![Bereitstellung von BlueJeans](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
+    ![Screenshot der Randleiste der BlueJeans-Unternehmensanwendung mit aufgerufener Option „Speichern“](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in BlueJeans ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 
@@ -150,12 +145,12 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 

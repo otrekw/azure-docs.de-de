@@ -1,24 +1,18 @@
 ---
-title: Erstellen einer App Service-Umgebung mit einer Resource Manager-Vorlage – Azure
-description: Dieser Artikel beschreibt das Erstellen einer externen oder ILB-basierten Azure App Service-Umgebung mithilfe einer Resource Manager-Vorlage.
-services: app-service
-documentationcenter: na
+title: Erstellen einer ASE mit ARM
+description: Erfahren Sie, wie eine externe oder ILB-basierte Azure App Service-Umgebung mithilfe einer Azure Resource Manager-Vorlage erstellt wird.
 author: ccompy
-manager: stefsch
 ms.assetid: 6eb7d43d-e820-4a47-818c-80ff7d3b6f8e
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bf66a9e9aeee859953b4e1e2021a385491c6298e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 15cd0979fdc2468ab50451042cd99a8442470139
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069655"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148164"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Erstellen einer ASE mit einer Azure Resource Manager-Vorlage
 
@@ -42,9 +36,9 @@ Gehen Sie zum Automatisieren der ASE-Erstellung wie folgt vor:
 
 1. Erstellen Sie die ASE aus einer Vorlage. Wenn Sie eine externe ASE erstellen, sind Sie nach diesem Schritt fertig. Wenn Sie eine ILB-ASE erstellen, sind einige weitere Schritte erforderlich.
 
-2. Nach dem Erstellen Ihrer ILB-ASE wird ein SSL-Zertifikat hochgeladen, das Ihrer ILB-ASE-Domäne entspricht.
+2. Nach dem Erstellen Ihrer ILB-ASE wird ein TLS/SSL-Zertifikat hochgeladen, das Ihrer ILB-ASE-Domäne entspricht.
 
-3. Das hochgeladene SSL-Zertifikat wird der ILB-ASE als SSL-Standardzertifikat zugewiesen.  Dieses Zertifikat wird für SSL-Datenverkehr zu Apps in der ILB-ASE verwendet, wenn die Apps die allgemeine Stammdomäne verwenden, die der ASE zugewiesen ist (z.B. https://someapp.mycustomrootdomain.com).
+3. Das hochgeladene TLS/SSL-Zertifikat wird der ILB-ASE als TLS/SSL-Standardzertifikat zugewiesen.  Dieses Zertifikat wird für TLS/SSL-Datenverkehr zu Apps in der ILB-ASE verwendet, wenn die Apps die allgemeine Stammdomäne verwenden, die der ASE zugewiesen ist (z. B. `https://someapp.mycustomrootdomain.com`).
 
 
 ## <a name="create-the-ase"></a>Erstellen der ASE
@@ -67,17 +61,17 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 Die Erstellung einer ASE dauert etwa eine Stunde. Danach wird die ASE im Port in der Liste der ASEs für das Abonnement angezeigt, in dem die Bereitstellung ausgelöst wurde.
 
-## <a name="upload-and-configure-the-default-ssl-certificate"></a>Hochladen und Konfigurieren des SSL-Standardzertifikats
-Der ASE muss ein SSL-Zertifikat als SSL-Standardzertifikat zugeordnet werden, das zum Herstellen von SSL-Verbindungen mit Apps verwendet wird. Wenn das DNS-Standardsuffix der ASE *internal-contoso.com* lautet, ist für eine Verbindung mit https://some-random-app.internal-contoso.com ein SSL-Zertifikat erforderlich, das für * *.internal-contoso.com* gültig ist. 
+## <a name="upload-and-configure-the-default-tlsssl-certificate"></a>Hochladen und Konfigurieren des TLS/SSL-Standardzertifikats
+Der ASE muss ein TLS/SSL-Zertifikat als TLS/SSL-Standardzertifikat zugeordnet werden, das zum Herstellen von TLS-Verbindungen mit Apps verwendet wird. Wenn das DNS-Standardsuffix der ASE *internal-contoso.com* lautet, ist für eine Verbindung mit `https://some-random-app.internal-contoso.com` ein TLS/SSL-Zertifikat erforderlich, das für * *.internal-contoso.com* gültig ist. 
 
-Ein gültiges SSL-Zertifikat können Sie erhalten, indem Sie interne Zertifizierungsstellen verwenden, ein Zertifikat von einem externen Aussteller erwerben oder ein selbstsigniertes Zertifikat verwenden. Unabhängig von der Quelle des SSL-Zertifikats müssen die folgenden Zertifikatattribute ordnungsgemäß konfiguriert werden:
+Ein gültiges TLS/SSL-Zertifikat können Sie erhalten, indem Sie interne Zertifizierungsstellen verwenden, ein Zertifikat von einem externen Aussteller erwerben oder ein selbstsigniertes Zertifikat verwenden. Unabhängig von der Quelle des TLS/SSL-Zertifikats müssen die folgenden Zertifikatattribute ordnungsgemäß konfiguriert werden:
 
-* **Betreff**: Dieses Attribut muss auf * *.your-root-domain-here.com* festgelegt werden.
-* **Alternativer Antragstellername**: Dieses Attribut muss sowohl * *.your-root-domain-here.com* als auch * *.scm.your-root-domain-here.com* enthalten. SSL-Verbindungen mit der SCM/Kudu-Website, die jeder App zugeordnet ist, verwenden eine Adresse im Format *your-app-name.scm.your-root-domain-here.com*.
+* **Antragsteller:** Dieses Attribut muss auf * *.your-root-domain-here.com* festgelegt werden.
+* **Alternativer Antragstellername:** Dieses Attribut muss sowohl * *.your-root-domain-here.com* als auch * *.scm.your-root-domain-here.com* enthalten. TLS-Verbindungen mit der SCM/Kudu-Website, die jeder App zugeordnet ist, verwenden eine Adresse im Format *your-app-name.scm.your-root-domain-here.com*.
 
-Wenn ein gültiges SSL-Zertifikat vorhanden ist, sind zwei weitere Vorbereitungsschritte erforderlich. Konvertieren Sie das SSL-Zertifikat in eine PFX-Datei, und speichern Sie es. Denken Sie daran, dass die PFX-Datei alle Zwischenzertifikate und Stammzertifikate enthalten muss. Sichern Sie es mit einem Kennwort.
+Wenn ein gültiges TLS/SSL-Zertifikat vorhanden ist, sind zwei weitere Vorbereitungsschritte erforderlich. Konvertieren Sie das TLS/SSL-Zertifikat in eine PFX-Datei, und speichern Sie es. Denken Sie daran, dass die PFX-Datei alle Zwischenzertifikate und Stammzertifikate enthalten muss. Sichern Sie es mit einem Kennwort.
 
-Die PFX-Datei muss in eine Base64-Zeichenfolge konvertiert werden, da das SSL-Zertifikat mithilfe einer Resource Manager-Vorlage hochgeladen wird. Da es sich bei Resource Manager-Vorlagen um Textdateien handelt, muss die PFX-Datei in eine Base64-Zeichenfolge konvertiert werden. Auf diese Weise kann sie als Parameter in die Vorlage eingeschlossen werde.
+Die PFX-Datei muss in eine Base64-Zeichenfolge konvertiert werden, da das TLS/SSL-Zertifikat mithilfe einer Resource Manager-Vorlage hochgeladen wird. Da es sich bei Resource Manager-Vorlagen um Textdateien handelt, muss die PFX-Datei in eine Base64-Zeichenfolge konvertiert werden. Auf diese Weise kann sie als Parameter in die Vorlage eingeschlossen werde.
 
 Verwenden Sie nachstehenden PowerShell-Codeausschnitt für folgende Zwecke:
 
@@ -102,16 +96,16 @@ $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 $fileContentEncoded | set-content ($fileName + ".b64")
 ```
 
-Nachdem das SSL-Zertifikat erfolgreich generiert und in eine Base64-codierte Zeichenfolge konvertiert wurde, verwenden Sie die Resource Manager-Vorlage [Configure the default SSL certificate][quickstartconfiguressl] (Konfigurieren des SSL-Standardzertifikats) auf GitHub. 
+Nachdem das TLS/SSL-Zertifikat erfolgreich generiert und in eine Base64-codierte Zeichenfolge konvertiert wurde, verwenden Sie die Resource Manager-Vorlage [Configure the default SSL certificate][quickstartconfiguressl] (Konfigurieren des SSL-Standardzertifikats) auf GitHub. 
 
 Die Parameter in der Datei *azuredeploy.parameters.json* sind hier aufgeführt:
 
 * *appServiceEnvironmentName*: Der Name der ILB-ASE, die konfiguriert wird.
-* *existingAseLocation*: Die Textzeichenfolge mit der Azure-Region, in der die ILB-ASE bereitgestellt wurde.  Beispiel:  „USA, Süden-Mitte“
+* *existingAseLocation*: Die Textzeichenfolge mit der Azure-Region, in der die ILB-ASE bereitgestellt wurde.  Beispiel: „USA, Süden-Mitte“
 * *pfxBlobString*: Die Base64-codierte Zeichenfolgendarstellung der PFX-Datei. Verwenden Sie den oben gezeigten Codeausschnitt, und kopieren Sie die Zeichenfolge in „exportedcert.pfx.b64“. Fügen Sie sie als Wert des Attributs *pfxBlobString* ein.
 * *password*: Das Kennwort, das zum Schützen der PFX-Datei verwendet wird.
 * *certificateThumbprint*: Der Fingerabdruck des Zertifikats. Wenn Sie diesen Wert aus PowerShell abrufen (z.B. als *$certificate.Thumbprint* aus dem Codeausschnitt weiter oben), können Sie den Wert unverändert nutzen. Falls Sie den Wert aus dem Windows-Zertifikatdialogfeld kopieren, müssen Sie die überflüssigen Leerzeichen entfernen. *certificateThumbprint* sollte etwa wie folgt aussehen: AF3143EB61D43F6727842115BB7F17BBCECAECAE.
-* *certificateName*: Ein benutzerfreundlicher Zeichenfolgenbezeichner zum Identifizieren des Zertifikats, den Sie selbst wählen können. Der Name wird als Teil des eindeutigen Resource Manager-Bezeichners für die Entität *Microsoft.Web/certificates* verwendet, die das SSL-Zertifikat repräsentiert. Der Name *muss* auf folgendes Suffix enden: \_yourASENameHere_InternalLoadBalancingASE. Dieses Suffix wird im Azure-Portal als Indikator dafür verwendet, dass das Zertifikat zum Sichern einer für den ILB geeigneten ASE genutzt wird.
+* *certificateName*: Ein benutzerfreundlicher Zeichenfolgenbezeichner zum Identifizieren des Zertifikats, den Sie selbst wählen können. Der Name wird als Teil des eindeutigen Resource Manager-Bezeichners für die Entität *Microsoft.Web/certificates* verwendet, die das TLS/SSL-Zertifikat repräsentiert. Der Name *muss* auf folgendes Suffix enden: \_yourASENameHere_InternalLoadBalancingASE. Dieses Suffix wird im Azure-Portal als Indikator dafür verwendet, dass das Zertifikat zum Sichern einer für den ILB geeigneten ASE genutzt wird.
 
 Ein gekürztes Beispiel für *azuredeploy.parameters.json* sehen Sie hier:
 
@@ -142,7 +136,7 @@ Ein gekürztes Beispiel für *azuredeploy.parameters.json* sehen Sie hier:
 }
 ```
 
-Nachdem alle notwendigen Informationen in der Datei *azuredeploy.parameters.json* eingegeben sind, konfigurieren Sie das SSL-Standardzertifikat mithilfe des PowerShell-Codeausschnitts. Ändern Sie die Dateipfade in die Speicherorte, in denen sich die Resource Manager-Vorlagendateien auf Ihrem Computer befinden. Denken Sie daran, Ihre eigenen Werte für den Resource Manager-Bereitstellungsnamen und den Ressourcengruppennamen anzugeben:
+Nachdem alle notwendigen Informationen in der Datei *azuredeploy.parameters.json* eingegeben sind, konfigurieren Sie das TLS/SSL-Standardzertifikat mithilfe des PowerShell-Codeausschnitts. Ändern Sie die Dateipfade in die Speicherorte, in denen sich die Resource Manager-Vorlagendateien auf Ihrem Computer befinden. Denken Sie daran, Ihre eigenen Werte für den Resource Manager-Bereitstellungsnamen und den Ressourcengruppennamen anzugeben:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -153,14 +147,14 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 Es dauert in jedem ASE-Front-End etwa 40 Minuten, bis die Änderungen angewendet wurden. Bei einer ASE mit Standardgröße, die zwei Front-Ends nutzt, dauert es beispielsweise ungefähr eine Stunde und 20 Minuten, bis der Vorgang für die Vorlage abgeschlossen ist. Während der Ausführung der Vorlage kann die ASE nicht skaliert werden.  
 
-Nachdem die Ausführung der Vorlage abgeschlossen ist, kann über HTTPS auf Apps in der ILB-ASE zugegriffen werden. Die Verbindungen werden mit dem SSL-Standardzertifikat gesichert. Das SSL-Standardzertifikat wird verwendet, wenn der Zugriff auf Apps in der ILB-ASE mit einer Kombination aus dem Anwendungsnamen und dem Standardhostnamen angefordert wird. Für https://mycustomapp.internal-contoso.com wird beispielsweise das SSL-Standardzertifikat für * *.internal-contoso.com* verwendet.
+Nachdem die Ausführung der Vorlage abgeschlossen ist, kann über HTTPS auf Apps in der ILB-ASE zugegriffen werden. Die Verbindungen werden mit dem TLS/SSL-Standardzertifikat gesichert. Das TLS/SSL-Standardzertifikat wird verwendet, wenn der Zugriff auf Apps in der ILB-ASE mit einer Kombination aus dem Anwendungsnamen und dem Standardhostnamen angefordert wird. Für `https://mycustomapp.internal-contoso.com` wird beispielsweise das TLS/SSL-Standardzertifikat für * *.internal-contoso.com* verwendet.
 
-Entwickler können jedoch genau wie bei Apps, die im öffentlichen Mehrinstanzendienst ausgeführt werden, benutzerdefinierte Hostnamen für einzelne Apps konfigurieren. Sie können auch eindeutige SNI-SSL-Zertifikatbindungen für einzelne Apps konfigurieren.
+Entwickler können jedoch genau wie bei Apps, die im öffentlichen Mehrinstanzendienst ausgeführt werden, benutzerdefinierte Hostnamen für einzelne Apps konfigurieren. Sie können auch eindeutige SNI-TLS/SSL-Zertifikatbindungen für einzelne Apps konfigurieren.
 
 ## <a name="app-service-environment-v1"></a>App Service-Umgebung v1 ##
 Es gibt zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. Die oben aufgeführten Informationen basieren auf ASEv2. In diesem Abschnitt werden die Unterschiede zwischen ASEv1 und ASEv2 aufgezeigt.
 
-In ASEv1 verwalten Sie alle Ressourcen manuell. Dies schließt Front-Ends, Worker und IP-Adressen ein, die für IP-basiertes SSL verwendet werden. Bevor Sie Ihren App Service-Plan horizontal hochskalieren können, müssen Sie zunächst den Workerpool skalieren, den Sie zum Hosten verwenden möchten.
+In ASEv1 verwalten Sie alle Ressourcen manuell. Dies schließt Front-Ends, Worker und IP-Adressen ein, die für IP-basiertes SSL verwendet werden. Bevor Sie Ihren App Service-Plan aufskalieren können, müssen Sie zunächst den Workerpool aufskalieren, den Sie zum Hosten verwenden möchten.
 
 ASEv1 verwendet ein anderes Preismodell als ASEv2. In ASEv1 bezahlen Sie jede zugewiesene vCPU. Dazu gehören vCPUs für Front-Ends oder Worker, die keine Workloads hosten. In ASEv1 beträgt die maximale Standardskalierungsgröße einer ASE insgesamt 55 Hosts. Dazu gehören Worker und Front-Ends. ASEv1 hat den Vorteil, dass die Bereitstellung in einem klassischen virtuellen Netzwerk sowie in einem virtuellen Resource Manager-Netzwerk möglich ist. Weitere Informationen zu ASEv1 finden Sie unter [Einführung in die App Service-Umgebung v1][ASEv1Intro].
 
@@ -181,15 +175,15 @@ Informationen zum Erstellen einer ASEv1 mithilfe einer Resource Manager-Vorlage 
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
-[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../../app-service/web-sites-purchase-ssl-web-site.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
+[ConfigureSSL]: ../../app-service/configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [ILBASEv1Template]: app-service-app-service-environment-create-ilb-ase-resourcemanager.md

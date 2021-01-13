@@ -1,18 +1,16 @@
 ---
 title: Anwenden einer Windows-Lizenz auf virtuelle Sitzungshostcomputer – Azure
 description: Hier wird beschrieben, wie die Windows-Lizenz für virtuelle Windows Virtual Desktop-Computer angewendet wird.
-services: virtual-desktop
 author: ChristianMontoya
-ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: af8542ccc8fad8d833d8329999ded2f5a52b3d03
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 5f3749be36f5f035e49fcb862f92180e4902101f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563849"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88010139"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Anwenden einer Windows-Lizenz auf virtuelle Sitzungshostcomputer
 
@@ -23,11 +21,11 @@ Die Windows Virtual Desktop-Lizenzierung gestattet es Ihnen, eine Lizenz auf jed
 
 Es gibt einige Möglichkeiten, die Windows Virtual Desktop-Lizenz zu verwenden:
 - Sie können das [Azure Marketplace-Angebot](./create-host-pools-azure-marketplace.md) verwenden, um einen Hostpool und dessen virtuelle Sitzungshostcomputer zu erstellen. Virtuellen Computern, die auf diese Weise erstellt werden, wird die Lizenz automatisch zugewiesen.
-- Sie können die [Azure Resource Manager-GitHub-Vorlage](./create-host-pools-arm-template.md) verwenden, um einen Hostpool und dessen virtuelle Sitzungshostcomputer zu erstellen. Virtuellen Computern, die auf diese Weise erstellt werden, wird die Lizenz automatisch zugewiesen.
+- Sie können die [Azure Resource Manager-GitHub-Vorlage](./virtual-desktop-fall-2019/create-host-pools-arm-template.md) verwenden, um einen Hostpool und dessen virtuelle Sitzungshostcomputer zu erstellen. Virtuellen Computern, die auf diese Weise erstellt werden, wird die Lizenz automatisch zugewiesen.
 - Sie können eine Lizenz auf einen vorhandenen virtuellen Sitzungshostcomputer anwenden. Führen Sie dazu zunächst die Schritte aus, die in [Erstellen eines Hostpools mit PowerShell](./create-host-pools-powershell.md) aufgeführt sind, um eine Hostpool und zugehörige virtuelle Computer zu erstellen, und kehren Sie dann zu diesem Artikel zurück, um zu erfahren, wie Sie die Lizenz anwenden.
 
 ## <a name="apply-a-windows-license-to-a-session-host-vm"></a>Anwenden einer Windows-Lizenz auf einen virtuellen Sitzungshostcomputer
-Stellen Sie sicher, dass Sie die [neueste Azure PowerShell-Version installiert und konfiguriert](/powershell/azure/overview)haben. Führen Sie das folgende PowerShell-Cmdlet aus, um die Windows-Lizenz anzuwenden:
+Stellen Sie sicher, dass Sie die [neueste Azure PowerShell-Version installiert und konfiguriert](/powershell/azure/)haben. Führen Sie das folgende PowerShell-Cmdlet aus, um die Windows-Lizenz anzuwenden:
 
 ```powershell
 $vm = Get-AzVM -ResourceGroup <resourceGroupName> -Name <vmName>
@@ -38,7 +36,7 @@ Update-AzVM -ResourceGroupName <resourceGroupName> -VM $vm
 ## <a name="verify-your-session-host-vm-is-utilizing-the-licensing-benefit"></a>Feststellen, ob für den virtuellen Sitzungshostcomputer der Lizenzierungsvorteil genutzt wird
 Nachdem Sie Ihren virtuellen Computer bereitgestellt haben, führen Sie das folgende Cmdlet aus, um den Lizenztyp zu überprüfen:
 ```powershell
-Get-AzVM -ResourceGroup <resourceGroupName> -Name <vmName>
+Get-AzVM -ResourceGroupName <resourceGroupName> -Name <vmName>
 ```
 
 Für einen virtuellen Sitzungshostcomputer mit der angewendeten Windows-Lizenz werden Informationen angezeigt, die in etwa wie folgt aussehen:
@@ -61,5 +59,5 @@ Führen Sie das folgende Cmdlet aus, um eine Liste aller virtuellen Sitzungshost
 
 ```powershell
 $vms = Get-AzVM
-$vms | ?{$_.LicenseType -like "Windows_Client"} | select ResourceGroupName, Name, LicenseType
+$vms | Where-Object {$_.LicenseType -like "Windows_Client"} | Select-Object ResourceGroupName, Name, LicenseType
 ```

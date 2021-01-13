@@ -1,27 +1,26 @@
 ---
-title: Verschieben von Daten nach/aus Azure Cosmos DB | Microsoft-Dokumentation
+title: Verschieben von Daten nach/aus Azure Cosmos DB
 description: Erfahren Sie, wie Daten mithilfe von Azure Data Factory in eine bzw. aus einer Azure Cosmos DB-Sammlung verschoben werden.
 services: data-factory, cosmosdb
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: c9297b71-1bb4-4b29-ba3c-4cf1f5575fac
 ms.service: multiple
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1016a7800ddcfd4066ec3f6d6dce00d01ad83471
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 91f2b338ac9cda96521a5fe1d555de054826e273
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839485"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637631"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Verschieben von Daten nach und aus Azure Cosmos DB mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-azure-documentdb-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-azure-cosmos-db.md)
 
@@ -40,9 +39,9 @@ Informationen zum Kopieren von Daten in bzw. aus JSON-Dateien oder eine andere C
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs nach und aus Azure Cosmos DB verschiebt.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten** . Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager-Vorlage** , **.NET-API** und **REST-API** . Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
@@ -59,7 +58,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 | **Eigenschaft** | **Beschreibung** | **Erforderlich** |
 | --- | --- | --- |
-| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **DocumentDb**. |Ja |
+| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **DocumentDb** . |Ja |
 | connectionString |Geben Sie die zum Verbinden mit der Azure Cosmos DB-Datenbank erforderlichen Informationen an. |Ja |
 
 Beispiel:
@@ -124,7 +123,7 @@ Wenn „source“ bei der Kopieraktivität den Typ **DocumentDbCollectionSource*
 
 | **Eigenschaft** | **Beschreibung** | **Zulässige Werte** | **Erforderlich** |
 | --- | --- | --- | --- |
-| query |Geben Sie die Abfrage an, um Daten zu lesen. |Von Azure Cosmos DB unterstützte Abfragezeichenfolge. <br/><br/>Beispiel: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nein <br/><br/>Falls nicht angegeben, wird folgende SQL-Anweisung ausgeführt: `select <columns defined in structure> from mycollection` |
+| Abfrage |Geben Sie die Abfrage an, um Daten zu lesen. |Von Azure Cosmos DB unterstützte Abfragezeichenfolge. <br/><br/>Beispiel: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nein <br/><br/>Falls nicht angegeben, wird folgende SQL-Anweisung ausgeführt: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |Sonderzeichen, um anzugeben, dass das Dokument geschachtelt ist. |Beliebiges Zeichen. <br/><br/>Azure Cosmos DB ist ein NoSQL-Speicher für JSON-Dokumente, in denen geschachtelte Strukturen zulässig sind. Azure Data Factory ermöglicht es dem Benutzer, über einen „nestingSeparator“ eine Hierarchie anzugeben. In den obigen Beispielen ist dies „.“. Mit dem Trennzeichen generiert die Kopieraktivität das Objekt "Name" mit den drei untergeordneten Elementen "First", "Middle" und "Last" gemäß "Name.First", "Name.Middle" und "Name.Last" in der Tabellendefinition. |Nein |
 
 **DocumentDbCollectionSink** unterstützt die folgenden Eigenschaften:
@@ -484,16 +483,16 @@ Azure Cosmos DB ist ein NoSQL-Speicher für JSON-Dokumente, in denen geschachtel
 ## <a name="appendix"></a>Anhang
 1. **Frage:** Unterstützt die Kopieraktivität das Aktualisieren von vorhandenen Datensätzen?
 
-    **Antwort:**  Nein.
+    **Antwort:** Nein.
 2. **Frage:** Wie wird bei einer Wiederholung eines Kopiervorgangs nach Azure Cosmos DB mit bereits kopierten Datensätzen umgegangen?
 
     **Antwort:** Wenn Datensätze über ein ID-Feld verfügen und beim Kopiervorgang versucht wird, einen Datensatz mit der gleichen ID einzufügen, löst der Kopiervorgang einen Fehler aus.
-3. **Frage:** Unterstützt Data Factory die [bereichs- oder hashbasierte Datenpartitionierung](../../cosmos-db/sql-api-partition-data.md)?
+3. **Frage:** Unterstützt Data Factory die [bereichs- oder hashbasierte Datenpartitionierung](../../cosmos-db/partitioning-overview.md)?
 
-    **Antwort:**  Nein.
+    **Antwort:** Nein.
 4. **Frage:** Können mehrere Azure Cosmos DB-Sammlungen für eine Tabelle angegeben werden?
 
-    **Antwort:**  Nein. Zurzeit kann nur eine Auflistung angegeben werden.
+    **Antwort:** Nein. Zurzeit kann nur eine Auflistung angegeben werden.
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.

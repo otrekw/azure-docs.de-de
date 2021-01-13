@@ -1,26 +1,19 @@
 ---
-title: 'Schnellstart: Erstellen eines virtuellen Windows-Computers mit der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen eines virtuellen Windows-Computers mit der Azure-Befehlszeilenschnittstelle'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle einen virtuellen Windows-Computer erstellen.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: e6709a6efff80df01d7504db8b39f8ff5c2c5e49
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: bcfbcc4f78e14edc40abccf4a697b00bc7a3f014
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088845"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "87496184"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Schnellstart: Erstellen einer Windows-VM mit der Azure CLI
 
@@ -36,7 +29,7 @@ Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach d
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -46,21 +39,20 @@ az group create --name myResourceGroup --location eastus
 
 Erstellen Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* erstellt: Dieses Beispiel verwendet *azureuser* als Administratorbenutzernamen. 
 
-Sie müssen den Wert für `--admin-password` ändern, sonst tritt ein Fehler auf. Ändern Sie ihn in ein Kennwort, das die [Kennwortanforderungen für Azure-VMs](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-) erfüllt. Benutzername und Kennwort werden später verwendet, wenn Sie eine Verbindung mit dem virtuellen Computer herstellen.
+Sie müssen ein Kennwort angeben, das die [Kennwortanforderungen für Azure-VMs](./faq.md#what-are-the-password-requirements-when-creating-a-vm
+) erfüllt. Beim folgenden Beispiel werden Sie zur Eingabe eines Kennworts in der Befehlszeile aufgefordert. Sie können auch den Parameter `--admin-password` mit einem Wert für Ihr Kennwort hinzufügen. Benutzername und Kennwort werden später verwendet, wenn Sie eine Verbindung mit dem virtuellen Computer herstellen.
 
 ```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
     --image win2016datacenter \
-    --admin-username azureuser \
-    --admin-password myPassword
+    --admin-username azureuser 
 ```
 
 Das Erstellen des virtuellen Computers und der unterstützenden Ressourcen dauert einige Minuten. In der folgenden Beispielausgabe wird angezeigt, dass der Vorgang der VM-Erstellung erfolgreich war.
 
-```azurecli-interactive
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",

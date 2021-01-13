@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 837231ca07abcfdbd6ce932bb24bd890d91506a8
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 3693f46a602929f9d6e2f4e29083b071ae6a9e9e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541478"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972459"
 ---
 Sie können nun mithilfe des Daten-Explorer-Tools im Azure-Portal eine Diagrammdatenbank erstellen. 
 
@@ -25,11 +25,11 @@ Sie können nun mithilfe des Daten-Explorer-Tools im Azure-Portal eine Diagrammd
 
 2. Geben Sie auf der Seite **Graph hinzufügen** die Einstellungen für den neuen Graphen ein.
 
-    Einstellung|Empfohlener Wert|BESCHREIBUNG
+    Einstellung|Vorgeschlagener Wert|BESCHREIBUNG
     ---|---|---
     Datenbank-ID|sample-database|Geben Sie *sample-database* als Namen für die neue Datenbank ein. Datenbanknamen müssen zwischen 1 und 255 Zeichen lang sein und dürfen weder `/ \ # ?` noch nachgestellte Leerzeichen enthalten.
-    Throughput|400 RUs|Ändern Sie den Durchsatz in 400 Anforderungseinheiten pro Sekunde (RU/s). Sie können den Durchsatz später zentral hochskalieren, wenn Sie Wartezeiten reduzieren möchten.
+    Throughput|400 RUs|Ändern Sie den Durchsatz in 400 Anforderungseinheiten pro Sekunde (RU/s). Sie können den Durchsatz später hochskalieren, wenn Sie Wartezeiten reduzieren möchten.
     Graph-ID|sample-graph|Geben Sie *sample-graph* als Namen für die neue Sammlung ein. Für Diagrammnamen gelten dieselben Zeichenanforderungen wie für Datenbank-IDs.
-    Partitionsschlüssel| /pk |Alle Cosmos DB-Konten benötigen zum horizontalen Skalieren einen Partitionsschlüssel. Informationen zum Auswählen eines geeigneten Partitionsschlüssels finden Sie unter [Verwenden eines partitionierten Graphen in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning).
+    Partitionsschlüssel| /pk |Alle Cosmos DB-Konten benötigen zum horizontalen Skalieren einen Partitionsschlüssel. Informationen zum Auswählen eines geeigneten Partitionsschlüssels finden Sie unter [Verwenden eines partitionierten Graphen in Azure Cosmos DB](../articles/cosmos-db/graph-partitioning.md).
 
 3. Wählen Sie **OK** aus, nachdem Sie das Formular ausgefüllt haben.

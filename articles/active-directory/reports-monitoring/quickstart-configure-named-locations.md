@@ -3,7 +3,7 @@ title: Konfigurieren benannter Orte in Azure Active Directory | Microsoft-Dokume
 description: Hier erfahren Sie, wie Sie benannte Orte konfigurieren.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: f56e042a-78d5-4ea3-be33-94004f2a0fc3
 ms.service: active-directory
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1513dba19221e64d40551ffb13a5e9f33fd9858f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 94f4d17596936dd9d0ebbdae3c351cac9ed2a570
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127238"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89299863"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Schnellstart: Konfigurieren benannter Orte in Azure Active Directory
 
 Mit benannten Orten können Sie in Ihrer Organisation vertrauenswürdige IP-Adressbereiche bezeichnen. Azure AD verwendet benannte Orte zum:
-- Erkennen falsch positiver Ergebnisse in [Risikoerkennungen](concept-risk-events.md). Die Anmeldung von einem vertrauenswürdigen Ort aus senkt das Anmelderisiko von Benutzern.   
+- Erkennen falsch positiver Ergebnisse in [Risikoerkennungen](../identity-protection/overview-identity-protection.md). Die Anmeldung von einem vertrauenswürdigen Ort aus senkt das Anmelderisiko von Benutzern.   
 - Konfigurieren des [standortbasierten bedingten Zugriffs](../conditional-access/location-condition.md).
 
 In diesem Schnellstart erfahren Sie, wie Sie benannte Orte in Ihrer Umgebung konfigurieren.
@@ -55,7 +55,7 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
    * Geben Sie im Feld **Name** einen Namen für den benannten Ort ein.
    * Geben Sie im Textfeld **IP-Adressbereiche** den IP-Adressbereich im CIDR-Format ein.  
-   * Klicken Sie auf **Create**.
+   * Klicken Sie auf **Erstellen**.
     
      ![Das Blatt „Neu“](./media/quickstart-configure-named-locations/61.png)
 
@@ -63,6 +63,5 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
 Weitere Informationen finden Sie unter
 
-- [Bedingter Zugriff auf Azure AD](../active-directory-conditional-access-azure-portal.md)
-- [Standortbedingungen beim bedingten Zugriff in Azure Active Directory](../conditional-access/location-condition.md)
-- [Bericht „Riskante Anmeldungen“](concept-risky-sign-ins.md)  
+- [Standort als Bedingung beim bedingten Zugriff](../conditional-access/concept-conditional-access-conditions.md#locations).
+- [Bericht „Riskante Anmeldungen“](../identity-protection/overview-identity-protection.md)

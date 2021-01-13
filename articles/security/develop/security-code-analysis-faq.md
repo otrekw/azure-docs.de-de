@@ -1,7 +1,7 @@
 ---
 title: Dokumentation zur Microsoft-Sicherheitscodeanalyse – häufig gestellte Fragen
-description: Dieser Artikel enthält häufig gestellte Fragen zur Erweiterung „Microsoft-Sicherheitscodeanalyse“.
-author: vharindra
+description: Erfahren Sie mehr über die Erweiterung „Microsoft-Sicherheitscodeanalyse“, indem Sie die häufig gestellten Fragen (Frequently Asked Questions, FAQs) lesen.
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: f872159e538dc85121a7a6d4d6503fd18a263628
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828246"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87543043"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 Haben Sie Fragen? Weitere Informationen finden Sie in den folgenden häufig gestellten Fragen.
@@ -106,15 +106,17 @@ Im Folgenden finden Sie Details zu zwei der gängigsten Unterdrückungsszenarien
 
 Der Hashschlüssel des Geheimnisses aus der CredScan-Ausgabedatei ist erforderlich, wie im folgenden Beispiel gezeigt.
 
-        {
-            "tool": "Credential Scanner",
-            "suppressions": [
-            {
-                "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
-                "_justification": "Secret used by MSDN sample, it is fake."
-            }
-          ]
-        }
+```js
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+    {
+        "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
+        "_justification": "Secret used by MSDN sample, it is fake."
+    }
+  ]
+}
+```
 
 >[!WARNING]
 > Der Hashschlüssel wird von einem Teil des entsprechenden Werts oder Dateiinhalts generiert. Durch jede Quellcoderevision kann der Hashschlüssel geändert und die Unterdrückungsregel deaktiviert werden.
@@ -123,29 +125,31 @@ Der Hashschlüssel des Geheimnisses aus der CredScan-Ausgabedatei ist erforderli
 
 Der Dateiausdruck kann ein Dateiname sein. Darüber hinaus kann er der Basename-Teil eines vollständigen Dateipfads oder eines Dateinamens sein. Platzhalter werden nicht unterstützt.
 
-In den folgenden Beispielen wird gezeigt, wie Sie die Datei „\<Eingabepfad>\src\JS\lib\angular.js“ unterdrücken.
+In den folgenden Beispielen wird gezeigt, wie Sie die Datei „\<InputPath>\src\JS\lib\angular.js“ unterdrücken.
 
 Beispiele für gültige Unterdrückungsregeln:
 
-- \<Eingabepfad>\src\JS\lib\angular.js: unterdrückt die Datei im angegebenen Pfad
+- \<InputPath>\src\JS\lib\angular.js: Unterdrückt die Datei im angegebenen Pfad.
 - \src\JS\lib\angular.js
 - \JS\lib\angular.js
 - \lib\angular.js
 - angular.js: unterdrückt alle Dateien mit dem gleichen Namen
 
-        {
-            "tool": "Credential Scanner",
-            "suppressions": [
-            {
-                "file": "\\files\\AdditonalSearcher.xml", 
-                "_justification": "Additional CredScan searcher specific to my team"
-            },
-            {
-                "file": "\\files\\unittest.pfx", 
-                "_justification": "Legitimate UT certificate file with private key"
-            }
-          ]
-        }      
+```js
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+    {
+        "file": "\\files\\AdditonalSearcher.xml", 
+        "_justification": "Additional CredScan searcher specific to my team"
+    },
+    {
+        "file": "\\files\\unittest.pfx", 
+        "_justification": "Legitimate UT certificate file with private key"
+    }
+  ]
+}
+```
 
 >[!WARNING] 
 > Alle zukünftigen Geheimnisse, die der Datei hinzugefügt werden, werden ebenfalls automatisch unterdrückt.
@@ -155,11 +159,11 @@ Beispiele für gültige Unterdrückungsregeln:
 Die folgenden Ressourcen helfen Ihnen, Geheimnisse sicher zu verwalten und von Anwendungen aus sicher auf vertrauliche Informationen zuzugreifen:
 
  - [Azure Key Vault](../../key-vault/index.yml)
- - [Azure Active Directory (Azure AD)](../../sql-database/sql-database-aad-authentication.md)
+ - [Azure Active Directory (Azure AD)](../../azure-sql/database/authentication-aad-overview.md)
  - [Verwaltete Dienstidentität (Managed Service Identity, MSI) in Azure AD](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Verwaltete Identitäten im Azure App Service und Azure Functions](../../app-service/overview-managed-identity.md)
- - [AppAuthentication-Bibliothek](../../key-vault/service-to-service-authentication.md)
+ - [AppAuthentication-Bibliothek](../../key-vault/general/service-to-service-authentication.md)
 
 
 Weitere Informationen finden Sie im Blogbeitrag zum [sicheren Verwalten von Geheimnissen in der Cloud](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/).
@@ -173,7 +177,7 @@ Eine Inhaltssuchroutine wird wie folgt definiert:
 - **Name**: Der beschreibende Name der Suchroutine, der in den Ausgabedateien von Credential Scanner verwendet werden soll. Es wird empfohlen, die Camel-Case-Namenskonvention für Namen von Suchroutinen zu verwenden.
 - **RuleId**: Die stabile, opake ID der Suchroutine:
     - Standardsuchroutinen von Credential Scanner wird ein **RuleId**-Wert wie CSCAN0010, CSCAN0020 oder CSCAN0030 zugewiesen. Die letzte Ziffer ist für das Mergen oder Unterteilen von Suchroutinengruppen durch reguläre Ausdrücke (RegEx) reserviert.
-    - Der **RuleId**-Wert für eine angepasste Suchroutine sollte über einen eigenen Namespace verfügen. Beispiele sind: CSCAN-\<Namespace\>0010, CSCAN-\<Namespace\>0020 und CSCAN-\<Namespace\>0030.
+    - Der **RuleId**-Wert für eine angepasste Suchroutine sollte über einen eigenen Namespace verfügen. Beispiele: CSCAN-\<Namespace\>0010, CSCAN-\<Namespace\>0020 und CSCAN-\<Namespace\>0030.
     - Der vollqualifizierte Name der Suchroutine besteht aus der Kombination von **RuleId**-Wert und Suchroutinennamen. Beispiele sind: CSCAN0010.KeyStoreFiles und CSCAN0020.Base64EncodedCertificate.
 - **ResourceMatchPattern**: RegEx der Dateierweiterungen, die anhand der Suchroutine überprüft werden sollen.
 - **ContentSearchPatterns**: Ein Array von Zeichenfolgen mit RegEx-Anweisungen, die abgeglichen werden sollen. Wenn keine Suchmuster definiert sind, werden alle Dateien zurückgegeben, die mit dem **ResourceMatchPattern**-Wert übereinstimmen.
@@ -222,9 +226,6 @@ Durch den Roslyn Analyzers-Buildtask müssen Azure DevOps für das MSBuild-Proto
 
 Wenn Sie zusätzliche Unterstützung benötigen, ist Support für die Microsoft-Sicherheitscodeanalyse von Montag bis Freitag zwischen 9:00 Uhr und 17:00 Uhr (Pazifik-Standardzeit) verfügbar.
 
-  - Onboarding: Wenden Sie sich an Ihren Technical Account Manager, um zu beginnen.
+- Onboarding: Weitere Informationen finden Sie in unserer [Onboardingdokumentation](security-code-analysis-onboard.md).
   
-  - Support: Senden Sie eine E-Mail an unser Team unter [Support für die Microsoft-Sicherheitscodeanalyse](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
-
-  >[!NOTE] 
-  >Möglicherweise verfügen Sie nicht über eine kostenpflichtige Supportbeziehung mit Microsoft. Oder Sie nutzen ein Supportangebot, das Sie daran hindert, Dienste aus dem Phoenix-Katalog zu erwerben. Wenn eine dieser Bedingungen zutrifft, besuchen Sie unsere [Support Services-Startseite](https://www.microsoft.com/enterprise/services/support), um weitere Informationen zu erhalten.
+- Support: Senden Sie eine E-Mail an unser Team unter [Support für die Microsoft-Sicherheitscodeanalyse](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).

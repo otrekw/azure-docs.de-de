@@ -1,7 +1,7 @@
 ---
-title: 'Beispiel: Hinzufügen von Gesichtern zu einer PersonGroup: Gesichtserkennungs-API'
+title: 'Beispiel: Hinzufügen von Gesichtern zu einer Personengruppe (PersonGroup): Gesichtserkennung'
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mithilfe der Gesichtserkennungs-API Bildern Gesichter hinzufügen.
+description: Diese Anleitung veranschaulicht das Hinzufügen einer großen Anzahl von Personen und Gesichtern zu einem PersonGroup-Objekt mit dem Gesichtserkennungsdienst von Azure Cognitive Services.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,16 +10,17 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 0415dcae08c188c1758150c4b8b0df4dee014ce6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3643fad1c9e821a78df6d78edeede2341ec79ea8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448604"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91303760"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Hinzufügen von Gesichtern zu einer PersonGroup
 
-Diese Anleitung veranschaulicht das Hinzufügen einer großen Anzahl von Personen und Gesichtern zu einer PersonGroup. Dieselbe Strategie gilt auch für LargePersonGroup-, FaceList- und LargeFaceList-Objekte. Dieses Beispiel wurde in C# unter Verwendung der .NET-Clientbibliothek für die Gesichtserkennungs-API von Azure Cognitive Services geschrieben.
+Diese Anleitung veranschaulicht das Hinzufügen einer großen Anzahl von Personen und Gesichtern zu einer PersonGroup. Dieselbe Strategie gilt auch für LargePersonGroup-, FaceList- und LargeFaceList-Objekte. Dieses Beispiel wurde in C# unter Verwendung der .NET-Clientbibliothek für die Gesichtserkennung von Azure Cognitive Services geschrieben.
 
 ## <a name="step-1-initialization"></a>Schritt 1: Initialisierung
 
@@ -87,7 +88,7 @@ await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 Personen werden gleichzeitig erstellt und `await WaitCallLimitPerSecondAsync()` wird ebenfalls angewandt, um zu vermeiden, dass die Aufrufbeschränkung überschritten wird.
 
 ```csharp
-CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
+Person[] persons = new Person[PersonCount];
 Parallel.For(0, PersonCount, async i =>
 {
     await WaitCallLimitPerSecondAsync();
@@ -137,6 +138,5 @@ Die folgenden Funktionen wurden erläutert und veranschaulicht:
 
 ## <a name="related-topics"></a>Verwandte Themen
 
-- [Identifizieren von Gesichtern in Bildern](HowtoIdentifyFacesinImage.md)
 - [Gesichtserkennung in einem Bild](HowtoDetectFacesinImage.md)
 - [Verwenden der Funktion für die Verarbeitung in großem Umfang](how-to-use-large-scale.md)

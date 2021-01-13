@@ -4,40 +4,36 @@ description: Erfahren Sie mehr über die Richtlinien für die Zugriffsbeschränk
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 11/23/2020
 ms.author: apimpm
-ms.openlocfilehash: 3201edd3b90d6db1393286db688b24065ea8dc6b
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: e38dcf1e12629405ae5f28a987ba20557037ee67
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273542"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683441"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
 
-Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
+Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
 
-## <a name="AccessRestrictionPolicies"></a> Richtlinien für die Zugriffsbeschränkung
+## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a> Richtlinien für die Zugriffsbeschränkung
 
--   [HTTP-Header überprüfen](api-management-access-restriction-policies.md#CheckHTTPHeader) – erfordert das Vorhandensein und/oder einen Wert eines HTTP-Headers.
--   [Limit call rate (Aufrufrate begrenzen)](api-management-access-restriction-policies.md#LimitCallRate) – verhindert API-Lastspitzen, indem die Aufrufrate jeweils pro Abonnement beschränkt wird.
--   [Limit call rate (Aufrufrate nach Schlüssel begrenzen)](#LimitCallRateByKey) – verhindert API-Lastspitzen, indem die Aufrufrate jeweils pro Schlüssel beschränkt wird.
--   [Beschränkung für Aufrufer-IP](api-management-access-restriction-policies.md#RestrictCallerIPs) – Filtert (erlaubt/blockiert) Aufrufe von bestimmten IP-Adressen und/oder Adressbereichen.
--   [Set usage quota by subscription (Nutzungskontingent nach Abonnement festlegen)](api-management-access-restriction-policies.md#SetUsageQuota) – ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Abonnements.
--   [Set usage quota by key (Nutzungskontingent nach Schlüssel festlegen)](#SetUsageQuotaByKey) – ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Schlüssels.
--   [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) – Erzwingt das Vorhandensein und die Gültigkeit eines JWT, das entweder aus einem angegebenen HTTP-Header oder aus einem angegebenen Abfrageparameter extrahiert wurde.
+-   [HTTP-Header überprüfen](#CheckHTTPHeader) – Erfordert das Vorhandensein und/oder einen Wert eines HTTP-Headers.
+-   [Limit call rate (Aufrufrate begrenzen)](#LimitCallRate) – verhindert API-Lastspitzen, indem die Aufrufrate jeweils pro Abonnement beschränkt wird.
+-   [Limit call rate by key (Aufrufrate nach Schlüssel begrenzen)](#LimitCallRateByKey) – Verhindert API-Lastspitzen, indem die Aufrufrate jeweils pro Schlüssel beschränkt wird.
+-   [Beschränkung für Aufrufer-IP](#RestrictCallerIPs) – Filtert (erlaubt/blockiert) Aufrufe von bestimmten IP-Adressen und/oder Adressbereichen.
+-   [Set usage quota by subscription (Nutzungskontingent nach Abonnement festlegen)](#SetUsageQuota) – ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Abonnements.
+-   [Set usage quota by key (Nutzungskontingent nach Schlüssel festlegen)](#SetUsageQuotaByKey) – Ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Schlüssels.
+-   [JWT überprüfen](#ValidateJWT) – Erzwingt das Vorhandensein und die Gültigkeit eines JWT, das entweder aus einem angegebenen HTTP-Header oder aus einem angegebenen Abfrageparameter extrahiert wurde.
 
 > [!TIP]
 > Sie können Richtlinien für die Zugriffsbeschränkung in verschiedenen Bereichen zu unterschiedlichen Zwecken verwenden. Beispielsweise können Sie die gesamte API mit AAD-Authentifizierung sichern, indem Sie die `validate-jwt`-Richtlinie auf API-Ebene anwenden, oder Sie können sie auf der Ebene der API-Vorgänge anwenden und `claims` für eine präzisere Steuerung verwenden.
 
-## <a name="CheckHTTPHeader"></a> HTTP-Header überprüfen
+## <a name="check-http-header"></a><a name="CheckHTTPHeader"></a> HTTP-Header überprüfen
 
 Verwenden Sie die `check-header`-Richtlinie, um zu erzwingen, dass eine Anforderung einen angegebenen HTTP-Header enthält. Sie können optional überprüfen, ob der Header einen bestimmten Wert aufweist, oder einen Bereich zulässiger Werte überprüfen. Wenn die Überprüfung nicht erfolgreich abgeschlossen wird, beendet die Richtlinie die Verarbeitung und gibt den von der Richtlinie festgelegten HTTP-Statuscode und die zugehörige Fehlermeldung zurück.
 
@@ -60,14 +56,14 @@ Verwenden Sie die `check-header`-Richtlinie, um zu erzwingen, dass eine Anforder
 
 ### <a name="elements"></a>Elemente
 
-| NAME         | BESCHREIBUNG                                                                                                                                   | Erforderlich |
+| Name         | BESCHREIBUNG                                                                                                                                   | Erforderlich |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | check-header | Stammelement                                                                                                                                 | Ja      |
 | value        | Zulässiger HTTP-Headerwert. Wenn mehrere Wertelemente angegeben sind, wird die Überprüfung als erfolgreich gewertet, wenn für einen beliebigen dieser Werte eine Übereinstimmung vorhanden ist. | Nein       |
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
-| NAME                       | BESCHREIBUNG                                                                                                                                                            | Erforderlich | Standard |
+| Name                       | BESCHREIBUNG                                                                                                                                                            | Erforderlich | Standard |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | failed-check-error-message | Die Fehlermeldung, die im HTTP-Antworttext zurückgegeben wird, wenn der Header nicht vorhanden ist oder einen ungültigen Wert aufweist. In dieser Meldung müssen alle Sonderzeichen ordnungsgemäß mit Escapezeichen versehen sein. | Ja      | –     |
 | failed-check-httpcode      | Der HTTP-Statuscode, der zurückgeben werden wird, wenn der Header nicht vorhanden ist oder einen ungültigen Wert aufweist.                                                                                        | Ja      | –     |
@@ -76,13 +72,13 @@ Verwenden Sie die `check-header`-Richtlinie, um zu erzwingen, dass eine Anforder
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound, outbound
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="LimitCallRate"></a> Aufrufrate nach Abonnement begrenzen
+## <a name="limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a> Aufrufrate nach Abonnement begrenzen
 
 Die `rate-limit`-Richtlinie verhindert API-Nutzungsspitzen auf Abonnementbasis, indem sie die Aufrufrate auf eine angegebene Anzahl pro angegebenem Zeitraum begrenzt. Wenn diese Richtlinie ausgelöst wird, empfängt der Aufrufer einen `429 Too Many Requests`-Antwortstatuscode.
 
@@ -93,6 +89,9 @@ Die `rate-limit`-Richtlinie verhindert API-Nutzungsspitzen auf Abonnementbasis, 
 
 > [!CAUTION]
 > Da die Einschränkungsarchitektur verteilt ist, ist die Begrenzung der Rate nie ganz genau. Der Unterschied zwischen konfigurierter und tatsächlicher Anzahl zulässiger Anforderungen variiert basierend auf Anforderungsvolumen und -rate, Back-End-Wartezeit und anderen Faktoren.
+
+> [!NOTE]
+> Informationen zu den Unterschieden zwischen Ratenbegrenzungen und Kontingenten finden Sie unter [Ratenbegrenzungen und Kontingente](./api-management-sample-flexible-throttling.md#rate-limits-and-quotas).
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
@@ -120,39 +119,42 @@ Die `rate-limit`-Richtlinie verhindert API-Nutzungsspitzen auf Abonnementbasis, 
 
 ### <a name="elements"></a>Elemente
 
-| NAME      | BESCHREIBUNG                                                                                                                                                                                                                                                                                              | Erforderlich |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| Name       | Beschreibung                                                                                                                                                                                                                                                                                              | Erforderlich |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | rate-limit | Stammelement                                                                                                                                                                                                                                                                                            | Ja      |
-| api       | Fügen Sie mindestens eins dieser Elemente hinzu, um eine Aufrufratenbegrenzung für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufratenbegrenzungen werden unabhängig voneinander angewendet. Auf „api“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.                    | Nein       |
-| operation | Fügen Sie mindestens eins dieser Elemente hinzu, um eine Aufrufratenbegrenzung auf Vorgänge innerhalb einer API zu erzwingen. Aufrufratenbegrenzungen für Produkte, APIs und Vorgänge werden unabhängig voneinander angewendet. Auf „operation“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert. | Nein       |
+| api        | Fügen Sie mindestens eins dieser Elemente hinzu, um eine Aufrufratenbegrenzung für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufratenbegrenzungen werden unabhängig voneinander angewendet. Auf „api“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.                    | Nein       |
+| operation  | Fügen Sie mindestens eins dieser Elemente hinzu, um eine Aufrufratenbegrenzung auf Vorgänge innerhalb einer API zu erzwingen. Aufrufratenbegrenzungen für Produkte, APIs und Vorgänge werden unabhängig voneinander angewendet. Auf „operation“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert. | Nein       |
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
-| NAME           | BESCHREIBUNG                                                                                           | Erforderlich | Standard |
+| Name           | Beschreibung                                                                                           | Erforderlich | Standard |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| name           | Der Name der API, auf die die Ratenbegrenzung angewendet werden soll.                                                | Ja      | –     |
-| calls          | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Ja      | –     |
+| name           | Der Name der API, auf die die Ratenbegrenzung angewendet werden soll.                                                | Ja      | N/V     |
+| calls          | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Ja      | N/V     |
 | renewal-period | Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.                                              | Ja      | –     |
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
 
 -   **Richtlinienbereiche:** Produkt, API, Vorgang
 
-## <a name="LimitCallRateByKey"></a> Aufrufrate nach Schlüssel begrenzen
+## <a name="limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a> Aufrufrate nach Schlüssel begrenzen
 
 > [!IMPORTANT]
 > Diese Funktion ist auf der Ebene **Verbrauch** von API Management nicht verfügbar.
 
 Die `rate-limit-by-key`-Richtlinie verhindert API-Nutzungsspitzen auf Schlüsselbasis, indem sie die Aufrufrate auf eine angegebene Anzahl pro angegebenem Zeitraum beschränkt. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben. Optional kann eine inkrementelle Bedingung hinzugefügt werden, um anzugeben, welche Anforderungen für den Grenzwert gezählt werden sollen. Wenn diese Richtlinie ausgelöst wird, empfängt der Aufrufer einen `429 Too Many Requests`-Antwortstatuscode.
 
-Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Erweiterte Anforderungsbegrenzung mit Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).
+Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Erweiterte Anforderungsbegrenzung mit Azure API Management](./api-management-sample-flexible-throttling.md).
 
 > [!CAUTION]
 > Da die Einschränkungsarchitektur verteilt ist, ist die Begrenzung der Rate nie ganz genau. Der Unterschied zwischen konfigurierter und tatsächlicher Anzahl zulässiger Anforderungen variiert basierend auf Anforderungsvolumen und -rate, Back-End-Wartezeit und anderen Faktoren.
+
+> [!NOTE]
+> Informationen zu den Unterschieden zwischen Ratenbegrenzungen und Kontingenten finden Sie unter [Ratenbegrenzungen und Kontingente](./api-management-sample-flexible-throttling.md#rate-limits-and-quotas).
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
@@ -185,28 +187,28 @@ Im folgenden Beispiel wird die Ratenbegrenzung anhand der IP-Adresse des Aufrufe
 
 ### <a name="elements"></a>Elemente
 
-| NAME              | BESCHREIBUNG   | Erforderlich |
+| Name              | Beschreibung   | Erforderlich |
 | ----------------- | ------------- | -------- |
 | rate-limit-by-key | Stammelement | Ja      |
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
-| NAME                | BESCHREIBUNG                                                                                           | Erforderlich | Standard |
+| Name                | Beschreibung                                                                                           | Erforderlich | Standard |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| calls               | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Ja      | –     |
-| counter-key         | Der Schlüssel, der für die Ratenbegrenzungsrichtlinie verwendet werden soll.                                                             | Ja      | –     |
-| increment-condition | Der boolesche Ausdruck, der angibt, ob die Anforderung für das Kontingent gezählt werden soll (`true`).        | Nein       | –     |
+| calls               | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Ja      | N/V     |
+| counter-key         | Der Schlüssel, der für die Ratenbegrenzungsrichtlinie verwendet werden soll.                                                             | Ja      | N/V     |
+| increment-condition | Der boolesche Ausdruck, der angibt, ob die Anforderung für das Kontingent gezählt werden soll (`true`).        | Nein       | N/V     |
 | renewal-period      | Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.                                              | Ja      | –     |
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="RestrictCallerIPs"></a> Aufrufer-IPs beschränken
+## <a name="restrict-caller-ips"></a><a name="RestrictCallerIPs"></a> Aufrufer-IPs beschränken
 
 Die `ip-filter`-Richtlinie filtert (erlaubt/blockiert) Aufrufe von bestimmten IP-Adressen und/oder Adressbereichen.
 
@@ -232,34 +234,37 @@ Im folgenden Beispiel lässt die Richtlinie nur Anfragen zu, die entweder von de
 
 ### <a name="elements"></a>Elemente
 
-| NAME                                      | BESCHREIBUNG                                         | Erforderlich                                                       |
+| Name                                      | Beschreibung                                         | Erforderlich                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
 | ip-filter                                 | Stammelement                                       | Ja                                                            |
 | address                                   | Gibt eine einzelne IP-Adresse an, nach der gefiltert werden soll.   | Mindestens ein `address`- oder `address-range`-Element ist erforderlich. |
 | address-range from="Adresse" to="Adresse" | Gibt einen Bereich von IP-Adressen an, nach dem gefiltert werden soll. | Mindestens ein `address`- oder `address-range`-Element ist erforderlich. |
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
-| NAME                                      | BESCHREIBUNG                                                                                 | Erforderlich                                           | Standard |
+| Name                                      | Beschreibung                                                                                 | Erforderlich                                           | Standard |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
-| address-range from="Adresse" to="Adresse" | Ein IP-Adressbereich, für den diese Richtlinie gelten soll.                                        | Erforderlich, wenn das `address-range`-Element verwendet wird. | –     |
+| address-range from="Adresse" to="Adresse" | Ein IP-Adressbereich, für den diese Richtlinie gelten soll.                                        | Erforderlich, wenn das `address-range`-Element verwendet wird. | N/V     |
 | ip-filter action="allow &#124; forbid"    | Gibt an, ob Aufrufe für die angegebenen IP-Adressen oder -Adressbereiche erlaubt oder blockiert werden sollen. | Ja                                                | –     |
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="SetUsageQuota"></a> Nutzungskontingent nach Abonnement festlegen
+## <a name="set-usage-quota-by-subscription"></a><a name="SetUsageQuota"></a> Nutzungskontingent nach Abonnement festlegen
 
 Die `quota`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gültiges Aufruf- und/oder Bandbreitenkontingent pro Abonnement.
 
 > [!IMPORTANT]
 > Diese Richtlinie kann pro Richtliniendokument nur einmal verwendet werden.
 >
-> [Richtlinienausdrücke](api-management-policy-expressions.md) können in keinem der Richtlinienattribute für diese Richtlinie werden.
+> [Richtlinienausdrücke](api-management-policy-expressions.md) können in keinem der Richtlinienattribute für diese Richtlinie verwendet werden.
+
+> [!NOTE]
+> Informationen zu den Unterschieden zwischen Ratenbegrenzungen und Kontingenten finden Sie unter [Ratenbegrenzungen und Kontingente](./api-management-sample-flexible-throttling.md#rate-limits-and-quotas).
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
@@ -287,36 +292,39 @@ Die `quota`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gült
 
 ### <a name="elements"></a>Elemente
 
-| NAME      | BESCHREIBUNG                                                                                                                                                                                                                                                                                  | Erforderlich |
+| Name      | Beschreibung                                                                                                                                                                                                                                                                                  | Erforderlich |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | quota     | Stammelement                                                                                                                                                                                                                                                                                | Ja      |
 | api       | Fügen Sie mindestens eines dieser Elemente hinzu, um ein Aufrufkontingent für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufkontingente werden unabhängig voneinander angewendet. Auf „api“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.                    | Nein       |
 | operation | Fügen Sie mindestens eines dieser Elemente hinzu, um ein Aufrufkontingent für Vorgänge innerhalb einer API zu erzwingen. Aufrufkontingente für Produkte, APIs und Vorgänge werden unabhängig voneinander angewendet. Auf „operation“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert. | Nein       |
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
-| NAME           | BESCHREIBUNG                                                                                               | Erforderlich                                                         | Standard |
+| Name           | Beschreibung                                                                                               | Erforderlich                                                         | Standard |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| name           | Der Name der API oder des Vorgangs, für die bzw. den das Kontingent gilt.                                             | Ja                                                              | –     |
-| bandwidth      | Die maximale Gesamtanzahl von Kilobytes, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
-| calls          | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.     | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
+| name           | Der Name der API oder des Vorgangs, für die bzw. den das Kontingent gilt.                                             | Ja                                                              | N/V     |
+| bandwidth      | Die maximale Gesamtanzahl von Kilobytes, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | N/V     |
+| calls          | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.     | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | N/V     |
 | renewal-period | Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.                                                  | Ja                                                              | –     |
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
 -   **Richtlinienbereiche**: Produkt
 
-## <a name="SetUsageQuotaByKey"></a> Nutzungskontingent nach Schlüssel festlegen
+## <a name="set-usage-quota-by-key"></a><a name="SetUsageQuotaByKey"></a> Nutzungskontingent nach Schlüssel festlegen
 
 > [!IMPORTANT]
 > Diese Funktion ist auf der Ebene **Verbrauch** von API Management nicht verfügbar.
 
 Die `quota-by-key`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gültiges Aufruf- und/oder Bandbreitenkontingent pro Schlüssel. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben. Optional kann eine inkrementelle Bedingung hinzugefügt werden, um anzugeben, welche Anforderungen für das Kontingent gezählt werden sollen. Wenn der gleiche Schlüsselwert durch mehrere Richtlinien erhöht würde, erfolgt nur eine Erhöhung pro Anforderung. Wenn der Aufrufgrenzwert erreicht wird, empfängt der Aufrufer einen `403 Forbidden`-Antwortstatuscode.
 
-Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Erweiterte Anforderungsbegrenzung mit Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).
+Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Erweiterte Anforderungsbegrenzung mit Azure API Management](./api-management-sample-flexible-throttling.md).
+
+> [!NOTE]
+> Informationen zu den Unterschieden zwischen Ratenbegrenzungen und Kontingenten finden Sie unter [Ratenbegrenzungen und Kontingente](./api-management-sample-flexible-throttling.md#rate-limits-and-quotas).
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
@@ -349,13 +357,13 @@ Im folgenden Beispiel wird das Kontingent anhand der IP-Adresse des Aufrufers be
 
 ### <a name="elements"></a>Elemente
 
-| NAME  | BESCHREIBUNG   | Erforderlich |
+| Name  | Beschreibung   | Erforderlich |
 | ----- | ------------- | -------- |
 | quota | Stammelement | Ja      |
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
-| NAME                | BESCHREIBUNG                                                                                               | Erforderlich                                                         | Standard |
+| Name                | Beschreibung                                                                                               | Erforderlich                                                         | Standard |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | bandwidth           | Die maximale Gesamtanzahl von Kilobytes, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
 | calls               | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.     | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
@@ -365,19 +373,19 @@ Im folgenden Beispiel wird das Kontingent anhand der IP-Adresse des Aufrufers be
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="ValidateJWT"></a> JWT überprüfen
+## <a name="validate-jwt"></a><a name="ValidateJWT"></a> JWT überprüfen
 
-Die `validate-jwt`-Richtlinie erzwingt das Vorhandensein und die Gültigkeit eines JWT (Java Web Token), das entweder aus einem angegebenen HTTP-Header oder aus einem angegebenen Abfrageparameter extrahiert wurde.
+Die `validate-jwt`-Richtlinie erzwingt die Existenz und die Gültigkeit eines JSON-Webtokens (JWT), das entweder aus einem angegebenen HTTP-Header oder einem angegebenen Abfrageparameter extrahiert wurde.
 
 > [!IMPORTANT]
 > Die `validate-jwt`-Richtlinie erfordert, dass der über `exp` registrierte Anspruch in das JWT einbezogen wird, sofern nicht das `require-expiration-time`-Attribut angegeben und auf `false` festgelegt ist.
-> Die `validate-jwt`-Richtlinie unterstützt die Signaturalgorithmen HS256 und RS256. Für HS256 muss der Schlüssel inline innerhalb der Richtlinie in Base64-codiertem Format angegeben werden. Für RS256 muss der Schlüssel über einen Open ID-Konfigurationsendpunkt bereitgestellt werden.
-> Die Richtlinie `validate-jwt` unterstützt Token, die mit symmetrischen Schlüsseln über die folgenden Verschlüsselungsalgorithmen verschlüsselt wurden: A128CBC-HS256, A192CBC-HS384, A256CBC-HS512.
+> Die `validate-jwt`-Richtlinie unterstützt die Signaturalgorithmen HS256 und RS256. Für HS256 muss der Schlüssel inline innerhalb der Richtlinie in Base64-codiertem Format angegeben werden. Für RS256 kann der Schlüssel entweder über einen Open ID-Konfigurationsendpunkt oder durch Angabe der ID eines hochgeladenen Zertifikats bereitgestellt werden, das den öffentlichen Schlüssel oder das Modulus-Exponent-Paar des öffentlichen Schlüssels enthält.
+> Die `validate-jwt`-Richtlinie unterstützt Token, die mithilfe der folgenden Verschlüsselungsalgorithmen mit symmetrischen Schlüsseln verschlüsselt wurden: A128CBC-HS256, A192CBC-HS384, A256CBC-HS512.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
@@ -392,6 +400,7 @@ Die `validate-jwt`-Richtlinie erzwingt das Vorhandensein und die Gültigkeit ein
     require-signed-tokens="true|false"
     clock-skew="allowed clock skew in seconds"
     output-token-variable-name="name of a variable to receive a JWT object representing successfully validated token">
+  <openid-config url="full URL of the configuration endpoint, e.g. https://login.constoso.com/openid-configuration" />
   <issuer-signing-keys>
     <key>base64 encoded signing key</key>
     <!-- if there are multiple keys, then add additional key elements -->
@@ -415,8 +424,6 @@ Die `validate-jwt`-Richtlinie erzwingt das Vorhandensein und die Gültigkeit ein
     </claim>
     <!-- if there are multiple possible allowed values, then add additional value elements -->
   </required-claims>
-  <openid-config url="full URL of the configuration endpoint, e.g. https://login.constoso.com/openid-configuration" />
-  <zumo-master-key id="key identifier">key value</zumo-master-key>
 </validate-jwt>
 
 ```
@@ -429,6 +436,22 @@ Die `validate-jwt`-Richtlinie erzwingt das Vorhandensein und die Gültigkeit ein
 <validate-jwt header-name="Authorization" require-scheme="Bearer">
     <issuer-signing-keys>
         <key>{{jwt-signing-key}}</key>  <!-- signing key specified as a named value -->
+    </issuer-signing-keys>
+    <audiences>
+        <audience>@(context.Request.OriginalUrl.Host)</audience>  <!-- audience is set to API Management host name -->
+    </audiences>
+    <issuers>
+        <issuer>http://contoso.com/</issuer>
+    </issuers>
+</validate-jwt>
+```
+
+#### <a name="token-validation-with-rsa-certificate"></a>Tokenvalidierung mit RSA-Zertifikat
+
+```xml
+<validate-jwt header-name="Authorization" require-scheme="Bearer">
+    <issuer-signing-keys>
+        <key certificate-id="my-rsa-cert" />  <!-- signing key specified as certificate ID, enclosed in double-quotes -->
     </issuer-signing-keys>
     <audiences>
         <audience>@(context.Request.OriginalUrl.Host)</audience>  <!-- audience is set to API Management host name -->
@@ -502,38 +525,21 @@ Dieses Beispiel zeigt die Verwendung der Richtlinie [JWT überprüfen](api-manag
 </choose>
 ```
 
-#### <a name="azure-mobile-services-token-validation"></a>Azure Mobile Services-Tokenüberprüfung
-
-```xml
-<validate-jwt header-name="x-zumo-auth" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Supplied access token is invalid.">
-    <issuers>
-        <issuer>urn:microsoft:windows-azure:zumo</issuer>
-    </issuers>
-    <audiences>
-        <audience>Facebook</audience>
-    </audiences>
-    <issuer-signing-keys>
-        <zumo-master-key id="0">insert key here</zumo-master-key>
-    </issuer-signing-keys>
-</validate-jwt>
-```
-
 ### <a name="elements"></a>Elemente
 
 | Element             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                           | Erforderlich |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | validate-jwt        | Stammelement                                                                                                                                                                                                                                                                                                                                         | Ja      |
 | audiences           | Enthält eine Liste der zulässigen audience-Ansprüche, die im Token vorhanden sein können. Wenn mehrere audience-Werte vorhanden sind, wird jeder Wert ausprobiert, bis entweder alle verbraucht sind (in diesem Fall gibt es einen Überprüfungsfehler) oder ein Wert erfolgreich ist. Mindestens ein audience-Wert muss angegeben werden.                                                                     | Nein       |
-| issuer-signing-keys | Eine Liste von Base64-codierten Sicherheitsschlüsseln, die zum Überprüfen von signierten Token verwendet werden. Wenn mehrere Sicherheitsschlüssel vorhanden sind, wird jeder Schlüssel ausprobiert, bis entweder alle verbraucht sind (in diesem Fall gibt es einen Überprüfungsfehler) oder ein Schlüssel erfolgreich ist (hilfreich für ein Tokenrollover). Schlüsselelemente verfügen über ein optionales `id`-Attribut, das für einen Abgleich mit dem `kid`-Anspruch verwendet wird.               | Nein       |
-| decryption-keys     | Eine Liste der Base64-codierten Schlüssel zum Entschlüsseln der Token. Wenn mehrere Sicherheitsschlüssel vorhanden sind, wird jeder Schlüssel ausprobiert, bis entweder alle verbraucht sind (in diesem Fall gibt es einen Überprüfungsfehler) oder ein Schlüssel erfolgreich ist. Schlüsselelemente verfügen über ein optionales `id`-Attribut, das für einen Abgleich mit dem `kid`-Anspruch verwendet wird.                                                 | Nein       |
+| issuer-signing-keys | Eine Liste von Base64-codierten Sicherheitsschlüsseln, die zum Überprüfen von signierten Token verwendet werden. Wenn mehrere Sicherheitsschlüssel vorhanden sind, wird jeder Schlüssel ausprobiert, bis entweder alle verbraucht sind (in diesem Fall gibt es einen Validierungsfehler) oder ein Schlüssel erfolgreich ist (hilfreich für ein Tokenrollover). Schlüsselelemente verfügen über ein optionales `id`-Attribut, das für einen Abgleich mit dem `kid`-Anspruch verwendet wird. <br/><br/>Alternativ dazu geben Sie folgendermaßen einen Signaturschlüssel eines Zertifikatausstellers an:<br/><br/> – `certificate-id` im Format `<key certificate-id="mycertificate" />` zur Angabe des Bezeichners einer Zertifikatentität, die in API Management [hochgeladen](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity#Add) wurde<br/>– Wertepaar aus RSA-Modulus `n` und -Exponent `e` im Format `<key n="<modulus>" e="<exponent>" />` zur Angabe der RSA-Parameter im Base64URL-codierten Format               | Nein       |
+| decryption-keys     | Eine Liste der Base64-codierten Schlüssel zum Entschlüsseln der Token. Wenn mehrere Sicherheitsschlüssel vorhanden sind, wird jeder Schlüssel ausprobiert, bis entweder alle verbraucht sind (in diesem Fall gibt es einen Validierungsfehler) oder ein Schlüssel erfolgreich ist. Schlüsselelemente verfügen über ein optionales `id`-Attribut, das für einen Abgleich mit dem `kid`-Anspruch verwendet wird.<br/><br/>Alternativ dazu geben Sie folgendermaßen einen Entschlüsselungsschlüssel an:<br/><br/> – `certificate-id` im Format `<key certificate-id="mycertificate" />` zur Angabe des Bezeichners einer Zertifikatentität, die in API Management [hochgeladen](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity#Add) wurde                                                 | Nein       |
 | issuers             | Eine Liste der zulässigen Prinzipale, die das Token ausgestellt haben. Wenn mehrere issuer-Werte vorhanden sind, wird jeder Wert ausprobiert, bis entweder alle verbraucht sind (in diesem Fall gibt es einen Überprüfungsfehler) oder ein Wert erfolgreich ist.                                                                                                                                         | Nein       |
 | openid-config       | Das Element, das zum Angeben eines kompatiblen Open ID-Konfigurationsendpunkts verwendet wird, von dem Signaturschlüssel und Aussteller abgerufen werden können.                                                                                                                                                                                                                        | Nein       |
 | required-claims     | Enthält eine Liste von Ansprüchen, deren Vorhandensein im Token erwartet wird, damit dieses als gültig eingestuft wird. Wenn das `match`-Attribut auf `all` festgelegt ist, muss jeder Anspruchswert in der Richtlinie im Token vorhanden sein, damit die Überprüfung erfolgreich ist. Wenn das `match`-Attribut auf `any` festgelegt ist, muss mindestens ein Anspruch im Token vorhanden sein, damit die Überprüfung erfolgreich ist. | Nein       |
-| zumo-master-key     | Der Hauptschlüssel für Token, die von Azure Mobile Services ausgestellt wurden.                                                                                                                                                                                                                                                                                                 | Nein       |
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
-| NAME                            | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                            | Erforderlich                                                                         | Standard                                                                           |
+| Name                            | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                            | Erforderlich                                                                         | Standard                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | clock-skew                      | Zeitspanne. Verwenden Sie diese Option, um die maximal erwartete Zeitdifferenz zwischen den Systemuhren des Tokenausstellers und der API Management-Instanz anzugeben.                                                                                                                                                                                                                                                                                                               | Nein                                                                               | 0 Sekunden                                                                         |
 | failed-validation-error-message | Die Fehlermeldung, die im HTTP-Antworttext zurückgegeben werden soll, wenn das JWT die Überprüfung nicht besteht. In dieser Meldung müssen alle Sonderzeichen ordnungsgemäß mit Escapezeichen versehen sein.                                                                                                                                                                                                                                                                                                 | Nein                                                                               | Die Standardfehlermeldung hängt vom Überprüfungsproblem ab, z.B. „JWT nicht vorhanden“. |
@@ -541,18 +547,18 @@ Dieses Beispiel zeigt die Verwendung der Richtlinie [JWT überprüfen](api-manag
 | header-name                     | Der Name des HTTP-Headers, der das Token enthält.                                                                                                                                                                                                                                                                                                                                                                                                         | Eines von `header-name`, `query-parameter-name` oder `token-value` muss angegeben werden. | –                                                                               |
 | query-parameter-name            | Der Name des Abfrageparameters, der das Token enthält.                                                                                                                                                                                                                                                                                                                                                                                                     | Eines von `header-name`, `query-parameter-name` oder `token-value` muss angegeben werden. | –                                                                               |
 | token-value                     | Ausdruck, der eine Zeichenfolge mit JWT-Token zurückgibt                                                                                                                                                                                                                                                                                                                                                                                                     | Eines von `header-name`, `query-parameter-name` oder `token-value` muss angegeben werden. | –                                                                               |
-| id                              | Das `id`-Attribut im `key`-Element ermöglicht Ihnen die Angabe der Zeichenfolge, die mit dem `kid`-Anspruch im Token (sofern vorhanden) verglichen wird, um den geeigneten Schlüssel für die Signaturüberprüfung zu ermitteln.                                                                                                                                                                                                                                           | Nein                                                                               | –                                                                               |
+| id                              | Das `id`-Attribut im `key`-Element ermöglicht Ihnen die Angabe der Zeichenfolge, die mit dem `kid`-Anspruch im Token (sofern vorhanden) verglichen wird, um den geeigneten Schlüssel für die Signaturüberprüfung zu ermitteln.                                                                                                                                                                                                                                           | Nein                                                                               | N/V                                                                               |
 | match                           | Das `match`-Attribut im `claim`-Element gibt an, ob jeder Anspruchswert in der Richtlinie im Token vorhanden sein muss, damit die Überprüfung erfolgreich ist. Mögliche Werte:<br /><br /> - `all` – jeder Anspruchswert in der Richtlinie muss im Token vorhanden sein, damit die Überprüfung erfolgreich ist.<br /><br /> - `any` – mindestens ein Anspruchswert in der Richtlinie muss im Token vorhanden sein, damit die Überprüfung erfolgreich ist.                                                       | Nein                                                                               | alle                                                                               |
 | require-expiration-time         | Boolesch. Gibt an, ob ein Ablaufanspruch im Token erforderlich ist.                                                                                                                                                                                                                                                                                                                                                                               | Nein                                                                               | true                                                                              |
-| require-scheme                  | Der Name des Tokenschemas, z.B. „Bearer“. Wenn dieses Attribut festgelegt ist, stellt die Richtlinie sicher, das das angegebene Schema im Wert für den Autorisierungsheader vorhanden ist.                                                                                                                                                                                                                                                                                    | Nein                                                                               | –                                                                               |
-| require-signed-tokens           | Boolescher Wert. Gibt an, ob ein Token signiert sein muss.                                                                                                                                                                                                                                                                                                                                                                                           | Nein                                                                               | true                                                                              |
-| separator                       | Eine Zeichenfolge. Gibt ein Trennzeichen (z.B. „,“) zum Extrahieren eines Satzes von Werten aus einem mehrwertigen Anspruch an.                                                                                                                                                                                                                                                                                                                                          | Nein                                                                               | –                                                                               |
+| require-scheme                  | Der Name des Tokenschemas, z.B. „Bearer“. Wenn dieses Attribut festgelegt ist, stellt die Richtlinie sicher, das das angegebene Schema im Wert für den Autorisierungsheader vorhanden ist.                                                                                                                                                                                                                                                                                    | Nein                                                                               | N/V                                                                               |
+| require-signed-tokens           | Boolesch. Gibt an, ob ein Token signiert sein muss.                                                                                                                                                                                                                                                                                                                                                                                           | Nein                                                                               | true                                                                              |
+| Trennzeichen                       | Zeichenfolge. Gibt ein Trennzeichen (z.B. „,“) zum Extrahieren eines Satzes von Werten aus einem mehrwertigen Anspruch an.                                                                                                                                                                                                                                                                                                                                          | Nein                                                                               | –                                                                               |
 | url                             | URL des Open ID-Konfigurationsendpunkts, von dem die Open ID-Konfigurationsmetadaten abgerufen werden können. Die Antwort sollte den Spezifikationen entsprechen, wie sie unter URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata` definiert sind. Verwenden Sie für Azure Active Directory diese URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`. Verwenden Sie dabei den Namen Ihres Verzeichnismandanten, z.B. `contoso.onmicrosoft.com`. | Ja                                                                              | –                                                                               |
-output-token-variable-name|Eine Zeichenfolge. Der Name der Kontextvariablen, die den Tokenwert bei erfolgreicher Überprüfung als ein Objekt des Typs [`Jwt` ](api-management-policy-expressions.md) empfängt|Nein|–
+| output-token-variable-name      | Eine Zeichenfolge. Der Name der Kontextvariablen, die den Tokenwert bei erfolgreicher Überprüfung als ein Objekt des Typs [`Jwt`](api-management-policy-expressions.md) empfängt                                                                                                                                                                                                                                                                                     | Nein                                                                               | –                                                                               |
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
 -   **Richtlinienbereiche:** alle Bereiche
@@ -563,5 +569,5 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 
 -   [Richtlinien in Azure API Management](api-management-howto-policies.md)
 -   [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
--   Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
--   [API Management policy samples](policy-samples.md) (API Management-Richtlinienbeispiele)
+-   Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
+-   [API Management-Richtlinienbeispiele](./policy-reference.md)

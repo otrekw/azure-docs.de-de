@@ -2,18 +2,15 @@
 title: Sichern von Azure Data Lake Analytics für mehrere Benutzer
 description: Erfahren Sie, wie Sie mehrere Benutzer zum Ausführen von Aufträgen in Azure Data Lake Analytics konfigurieren.
 ms.service: data-lake-analytics
-services: data-lake-analytics
-author: matt1883
-ms.author: mahi
-ms.reviewer: jasonwhowell
-ms.topic: conceptual
+ms.reviewer: jasonh
+ms.topic: how-to
 ms.date: 05/30/2018
-ms.openlocfilehash: 9fbc94259d6fdfb6758204efd6e6f0a346dc58da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52bdd80dba1d5de150f403199fbd5c14d188a410
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813374"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220141"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>Konfigurieren des Benutzerzugriffs auf Auftragsinformationen in Azure Data Lake Analytics 
 

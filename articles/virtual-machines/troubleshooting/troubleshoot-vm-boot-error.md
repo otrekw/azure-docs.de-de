@@ -1,27 +1,26 @@
 ---
-title: Fehler beim Starten eines virtuellen Azure-Computers
+title: Linux-VM startet mit Grub Rescue
 description: Der virtuelle Computer konnte nicht gestartet werden, da auf ihm eine Rettungskonsole gestartet wurde.
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
-manager: ''
+manager: dcscontentpm
 editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 9995b9049378a0ab4f3450ec577d034598d171e9
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 5a2fd7fcfdae8559bfb39bffff7c73c7082a86aa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984842"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87543281"
 ---
-# <a name="vm-boot-error"></a>Fehler beim Starten des virtuellen Computers
+# <a name="linux-vm-boots-to-grub-rescue"></a>Linux-VM startet mit Grub Rescue
 
 Wir haben festgestellt, dass auf Ihrem virtuellen Computer (virtual machine, VM) eine Rettungskonsole gestartet wurde. Dieses Problem tritt auf, wenn auf Ihrem virtuellen Linux-Computer kürzlich Kerneländerungen (beispielsweise ein Kernelupgrade) vorgenommen wurden und der Computer aufgrund von Kernelfehlern während des Startprozesses nicht mehr ordnungsgemäß startet. Wenn das Startladeprogramm im Zuge des Startprozesses versucht, den Linux-Kernel zu finden und die Startsteuerung an ihn zu übergeben, diese Übergabe aber nicht erfolgreich ist, wird für den virtuellen Computer eine Rettungskonsole gestartet.
 
@@ -35,8 +34,8 @@ Führen Sie die passenden Problembehandlungsschritte für Ihren Fehler aus:
 
 * Der Fehler **Unbekanntes Dateisystem** kann auf eine Beschädigung des Dateisystems auf der Startpartition oder auf eine falsche Kernelkonfiguration zurückzuführen sein.
 
-   * Informationen zur Vorgehensweise bei Dateisystemproblemen finden Sie im Artikel [Linux Recovery: Cannot SSH to Linux VM due to file system errors (fsck, inodes)](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/) (Linux-Wiederherstellung: Aufgrund von Dateisystemfehlern keine SSH-Verbindung mit virtuellem Linux-Computer möglich (fsck, inodes)).
-   * Informationen zur Vorgehensweise bei Kernelproblemen finden Sie im Artikel [Linux Recovery: Manually fixing non-boot issues related to Kernel problems](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/) (Linux-Wiederherstellung: Manuelles Beheben nicht startbezogener Probleme im Zusammenhang mit Kernelproblemen) oder unter [Linux Recovery: Fixing non-boot issues related to Kernel problems using chroot](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/) (Linux-Wiederherstellung: Beheben nicht startbezogener Probleme im Zusammenhang mit Kernelproblemen mithilfe von chroot).
+   * Informationen zur Vorgehensweise bei Dateisystemproblemen finden Sie im Artikel [Linux Recovery: Cannot SSH to Linux VM due to file system errors (fsck, inodes)](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes) (Linux-Wiederherstellung: Aufgrund von Dateisystemfehlern keine SSH-Verbindung mit virtuellem Linux-Computer möglich (fsck, inodes)).
+   * Wenn Kernel Probleme vorliegen, führen Sie die Schritte in den folgenden Artikeln aus: [Wiederherstellen eines virtuellen Azure Linux-Computers von kernelbezogenen Startproblemen](https://support.microsoft.com/help/4091524/how-recover-azure-linux-vm-from-kernel-related-boot-related-issues) oder [Linux-Wiederherstellung: Fixing non-boot issues related to Kernel problems using chroot](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/) (Linux-Wiederherstellung: Beheben nicht startbezogener Probleme im Zusammenhang mit Kernelproblemen mithilfe von chroot).
    
 ### <a name="error---file-not-found"></a>Fehler: Datei nicht gefunden
 
@@ -52,7 +51,7 @@ Führen Sie die passenden Problembehandlungsschritte für Ihren Fehler aus:
 
 ### <a name="error---no-such-partition"></a>Fehler: Keine entsprechende Partition vorhanden
 
-* Wenn Sie den Fehler **No such partition** (Keine entsprechende Partition vorhanden) erhalten, lesen Sie [Case Scenario : “no such partition” error while trying to start the VM after attempting to extend the OS drive](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/) (Fallszenario: Fehler „no such partition“ (Keine entsprechende Partition vorhanden) beim Starten des virtuellen Computers nach dem Versuch, das Betriebssystemlaufwerk zu erweitern).
+* Wenn Sie den Fehler **No such partition** (Keine entsprechende Partition vorhanden) erhalten, lesen Sie [Case Scenario : “no such partition” error while trying to start the VM after attempting to extend the OS drive](/archive/blogs/shwetanayak/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive) (Fallszenario: Fehler „no such partition“ (Keine entsprechende Partition vorhanden) beim Starten des virtuellen Computers nach dem Versuch, das Betriebssystemlaufwerk zu erweitern).
 
 ### <a name="error---grubcfg-file-not-found"></a>Fehler: Datei „grub.cfg“ nicht gefunden
 
@@ -70,4 +69,3 @@ Führen Sie die passenden Problembehandlungsschritte für Ihren Fehler aus:
 
 * [Übersicht über den Agent für virtuelle Azure-Computer](../extensions/agent-windows.md)
 * [Erweiterungen und Features für virtuelle Computer für Windows](../extensions/features-windows.md)
-

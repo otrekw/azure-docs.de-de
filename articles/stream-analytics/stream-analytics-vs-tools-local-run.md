@@ -1,20 +1,18 @@
 ---
-title: Lokales Testen von Azure Stream Analytics-Abfragen mit Visual Studio
+title: Lokales Testen von Azure Stream Analytics-Abfragen in Visual Studio
 description: Dieser Artikel beschreibt, wie Abfragen mit den Azure Stream Analytics-Tools für Visual Studio lokal getestet werden.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 4ec427ad7af18f4f301e1e62ca21af643a0425aa
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: a921e51a3c63828602e7e21bfc96f507649236a5
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914009"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682829"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Lokales Testen von Stream Analytics-Abfragen mit Visual Studio
 
@@ -32,7 +30,7 @@ Doppelklicken Sie in Ihrem Azure Stream Analytics-Projekt auf **Script.asaql**, 
 
 Um Ihre Abfrage anhand der lokalen statischen Daten zu überprüfen, klicken Sie mit der rechten Maustaste auf die Eingabe, und wählen Sie **Lokale Eingabe hinzufügen** aus.
    
-![Lokale Eingabe hinzufügen](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-01.png)
+![Screenshot: Hervorgehobene Menüoption „Lokale Eingabe hinzufügen“](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-01.png)
    
 Wählen Sie im Popupfenster die Beispieldaten von Ihrem lokalen Pfad aus, und klicken Sie auf **Speichern**.
    
@@ -74,9 +72,7 @@ Sie können den Status im Fenster **Ausgabe** anzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-
 * [Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe von Visual Studio](stream-analytics-quick-create-vs.md)
 * [Anzeigen von Azure Stream Analytics-Aufträgen mit Visual Studio](stream-analytics-vs-tools.md)
 * [Lokales Testen von Livedaten mithilfe von Azure Stream Analytics-Tools für Visual Studio (Vorschauversion)](stream-analytics-live-data-local-testing.md)
-* [Tutorial: Bereitstellen eines Azure Stream Analytics-Auftrags mit CI/CD mithilfe von Azure DevOps](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Kontinuierliche Integration und Entwicklung mit Stream Analytics-Tools](stream-analytics-tools-for-visual-studio-cicd.md)

@@ -1,20 +1,15 @@
 ---
 title: Häufig gestellte Fragen zu Netzwerken in Azure Functions
 description: Hier finden Sie Antworten auf einige der häufigsten Fragen und Szenarien im Zusammenhang mit Netzwerken in Azure Functions.
-services: functions
-author: alexkarcher-msft
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: troubleshooting
 ms.date: 4/11/2019
-ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 6f363003dc24509bd0b80922d9e34560250cc7ed
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 3e8a992aac95b6c2688cb45aa980bf0b01883a53
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779305"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578228"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Häufig gestellte Fragen zu Netzwerken in Azure Functions
 
@@ -32,15 +27,13 @@ Zum Einschränken des Internetzugriffs stehen mehrere Möglichkeiten zur Verfüg
     * Mit IP-Einschränkungen können Sie auch [Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) konfigurieren, die Ihre Funktion so einschränken, dass nur eingehender Datenverkehr von einem bestimmten virtuellen Netzwerk akzeptiert wird.
 * Entfernen aller HTTP-Trigger: Bei einigen Anwendungen genügt es, HTTP-Trigger einfach zu vermeiden und eine andere Ereignisquelle zum Auslösen der Funktion zu verwenden.
 
-Beachten Sie hierbei, dass für den Editor im Azure-Portal direkter Zugriff auf die ausgeführte Funktion erforderlich ist. Alle über das Azure-Portal vorgenommenen Codeänderungen erfordern, dass die IP-Adresse des Geräts, das Sie zum Navigieren im Portal verwenden, in der Whitelist enthalten ist. Sie können jedoch weiterhin alle Funktionen auf der Registerkarte „Plattformfeatures“ verwenden, wenn Netzwerkeinschränkungen eingerichtet wurden.
+Beachten Sie hierbei, dass für den Editor im Azure-Portal direkter Zugriff auf die ausgeführte Funktion erforderlich ist. Alle über das Azure-Portal vorgenommenen Codeänderungen erfordern, dass die IP-Adresse des Geräts, das Sie zum Navigieren im Portal verwenden, in der genehmigten Liste enthalten ist. Sie können jedoch weiterhin alle Funktionen auf der Registerkarte „Plattformfeatures“ verwenden, wenn Netzwerkeinschränkungen eingerichtet wurden.
 
 ## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>Wie beschränke ich meine Funktions-App auf ein virtuelles Netzwerk?
 
-Sie können **eingehenden** Datenverkehr für eine Funktions-App mithilfe von [Dienstendpunkten](./functions-networking-options.md#private-site-access) auf ein virtuelles Netzwerk einschränken. Diese Konfiguration ermöglicht der Funktions-App immer noch, ausgehende Aufrufe an das Internet zu senden.
+Sie können **eingehenden** Datenverkehr für eine Funktions-App mithilfe von [Dienstendpunkten](./functions-networking-options.md#use-service-endpoints) auf ein virtuelles Netzwerk einschränken. Diese Konfiguration ermöglicht der Funktions-App immer noch, ausgehende Aufrufe an das Internet zu senden.
 
-Die einzige Möglichkeit, eine Funktion so einzuschränken, dass der gesamte Datenverkehr durch ein virtuelles Netzwerk fließt, ist die Verwendung einer App Service-Umgebung mit internem Lastenausgleich. In diesem Fall wird die Website in einer dedizierten Infrastruktur in einem virtuellen Netzwerk bereitgestellt, und alle Trigger sowie der gesamte Datenverkehr werden über das virtuelle Netzwerk gesendet. 
-
-Details zur Verwendung einer App Service-Umgebung finden Sie im Artikel [Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung](../app-service/environment/create-ilb-ase.md).
+Wenn Sie eine Funktion so einschränken möchten, dass der gesamte Datenverkehr ein virtuelles Netzwerk durchläuft, können Sie einen [privaten Endpunkt](./functions-networking-options.md#private-endpoint-connections) mit VNET-Integration (ausgehend) oder eine App Service-Umgebung verwenden.
 
 ## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Wie kann ich über eine Funktions-App auf Ressourcen in einem virtuellen Netzwerk zugreifen?
 
@@ -52,15 +45,13 @@ Durch Verwendung der Integration des virtuellen Netzwerks können Sie über eine
 
 ## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>Wie kann ich eine Funktion über eine Ressource in einem virtuellen Netzwerk auslösen?
 
-Sie können mithilfe von [Dienstendpunkten](./functions-networking-options.md#private-site-access) zulassen, dass HTTP-Trigger aus einem virtuellen Netzwerk aufgerufen werden. 
+Sie können mithilfe von [Dienstendpunkten](./functions-networking-options.md#use-service-endpoints) oder [privaten Endpunktverbindungen](./functions-networking-options.md#private-endpoint-connections) zulassen, dass HTTP-Trigger aus einem virtuellen Netzwerk aufgerufen werden. 
 
-Sie können eine Funktion auch über eine Ressource in einem virtuellen Netzwerk auslösen, indem Sie Ihre Funktions-App in einer App Service-Umgebung bereitstellen. Details zur Verwendung einer App Service-Umgebung finden Sie unter [Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung](../app-service/environment/create-ilb-ase.md).
-
-Der Premium- und der App Service-Plan unterstützen HTTP-Trigger aus einem virtuellen Netzwerk, aber nur eine App Service-Umgebung unterstützt alle anderen Funktionstriggertypen über ein virtuelles Netzwerk.
+Sie können eine Funktion auch über alle anderen Ressourcen in einem virtuellen Netzwerk auslösen, indem Sie Ihre Funktions-App mit einem Premium-Plan, einem App Service-Plan oder in einer App Service-Umgebung bereitstellen. Weitere Informationen finden Sie im Artikel [Trigger für virtuelle Netzwerke (nicht HTTP)](./functions-networking-options.md#virtual-network-triggers-non-http).
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Wie kann ich meine Funktions-App in einem virtuellen Netzwerk bereitstellen?
 
-Die Bereitstellung in einer App Service Umgebung ist die einzige Möglichkeit, eine Funktions-App zu erstellen, die sich vollständig in einem virtuellen Netzwerk befindet. Details zur Verwendung eines internen Load Balancers in einer App Service-Umgebung finden Sie im Artikel [Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase).
+Die Bereitstellung in einer App Service Umgebung ist die einzige Möglichkeit, eine Funktions-App zu erstellen, die sich vollständig in einem virtuellen Netzwerk befindet. Details zur Verwendung eines internen Load Balancers in einer App Service-Umgebung finden Sie im Artikel [Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung](../app-service/environment/create-ilb-ase.md).
 
 Informationen zu Szenarien, in denen Sie nur unidirektionalen Zugriff auf Ressourcen des virtuellen Netzwerks oder eine weniger umfassende Netzwerkisolation benötigen, finden Sie in der [Übersicht über die Netzwerkoptionen von Functions](functions-networking-options.md).
 

@@ -1,6 +1,6 @@
 ---
 title: Behandlung von Problemen mit virtuellen Netzwerkappliances in Azure | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Probleme mit virtuellen Netzwerkappliances in Azure behoben werden.
+description: Erfahren Sie, wie Sie Probleme mit virtuellen Netzwerkappliances (Network Virtual Appliances, NVAs) in Azure behandeln und grundlegende Azure Platform-Anforderungen für NVA-Konfigurationen überprüfen.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 3a8982b5626e3c19dbd49a3d2e20542d44b1a1da
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056832"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368586"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Probleme mit virtuellen Netzwerkappliances in Azure
 
@@ -71,7 +71,7 @@ Verwenden von PowerShell
    Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
    ```
 
-3. Überprüfen Sie die Eigenschaft **EnableIPForwarding**.
+3. Überprüfen Sie die Eigenschaft **EnableIPForwarding** .
 4. Wenn die IP-Weiterleitung nicht aktiviert ist, führen Sie die folgenden Befehle aus, um diese zu aktivieren:
 
    ```powershell
@@ -95,7 +95,7 @@ Verwenden von PowerShell
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) unter **Network Watcher** **IP-Flussüberprüfung** aus. 
 2. Geben Sie die VM und die IP-Adresse der NVA an, und überprüfen Sie dann, ob der Datenverkehr durch eine Netzwerksicherheitsgruppe (NSG) blockiert wird.
-3. Wenn eine NSG-Regel vorhanden ist, die den Datenverkehr blockiert, suchen Sie die NSG in den **effektiven Sicherheitsregeln**, und aktualisieren Sie sie dann, indem Sie die Weiterleitung von Datenverkehr zulassen. Führen Sie dann erneut **IP-Flussüberprüfung** aus, und testen Sie mit **Problembehandlung für Verbindung** die TCP-Kommunikation zwischen der VM und Ihrer internen oder externen IP-Adresse.
+3. Wenn eine NSG-Regel vorhanden ist, die den Datenverkehr blockiert, suchen Sie die NSG in den **effektiven Sicherheitsregeln** , und aktualisieren Sie sie dann, indem Sie die Weiterleitung von Datenverkehr zulassen. Führen Sie dann erneut **IP-Flussüberprüfung** aus, und testen Sie mit **Problembehandlung für Verbindung** die TCP-Kommunikation zwischen der VM und Ihrer internen oder externen IP-Adresse.
 
 **Überprüfen, ob die NVA und die VMs auf erwarteten Datenverkehr lauschen**
 
@@ -103,11 +103,15 @@ Verwenden von PowerShell
 
     Windows:
 
-        netstat -an
+    ```console
+   netstat -an
+    ```
 
     Linux:
 
-        netstat -an | grep -i listen
+    ```console
+   netstat -an | grep -i listen
+    ```
 2. Wenn der TCP-Port, der von der in den Ergebnissen aufgeführten NVA-Software verwendet wird, nicht angezeigt wird, müssen Sie die Anwendung in der NVA und auf der VM so konfigurieren, dass sie auf Datenverkehr, der auf diesen Ports eingeht, lauscht und antwortet. [Wenden Sie sich an den NVA-Anbieter, wenn Sie Unterstützung benötigen sollten](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
 ## <a name="check-nva-performance"></a>Überprüfen der NVA-Leistung
@@ -136,7 +140,7 @@ Erfassen Sie während der Ausführung von **[PsPing](https://docs.microsoft.com/
    sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
 
 2. Verwenden Sie **PsPing** oder **Nmap** von der Quell-VM zur Ziel-VM (z.B. `PsPing 10.0.0.4:80` oder `Nmap -p 80 10.0.0.4`).
-3. Öffnen Sie mit dem [Netzwerkmonitor](https://www.microsoft.com/download/details.aspx?id=4865) oder mit tcpdump die Netzwerkablaufverfolgung von der Ziel-VM. Wenden Sie einen Anzeigefilter für die IP-Adresse der Quell-VM an, über die Sie **PsPing** oder **Nmap** ausgeführt haben, wie z.B. `IPv4.address==10.0.0.4 (Windows netmon)` oder `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux).
+3. Öffnen Sie mit dem [Netzwerkmonitor](https://download.cnet.com/s/network-monitor) oder mit tcpdump die Netzwerkablaufverfolgung von der Ziel-VM. Wenden Sie einen Anzeigefilter für die IP-Adresse der Quell-VM an, über die Sie **PsPing** oder **Nmap** ausgeführt haben, wie z.B. `IPv4.address==10.0.0.4 (Windows netmon)` oder `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux).
 
 ### <a name="analyze-traces"></a>Analysieren von Ablaufverfolgungen
 

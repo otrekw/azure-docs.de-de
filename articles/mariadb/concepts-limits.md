@@ -1,42 +1,31 @@
 ---
-title: Einschränkungen in Azure Database for MariaDB
+title: Einschränkungen – Azure Database for MariaDB
 description: Dieser Artikel beschreibt die Einschränkungen in Azure Database for MariaDB, z.B. die Anzahl von Verbindungs- und Speicher-Engine-Optionen.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: b78671cc61a4fe755b908ed9f71052cbd0a70b38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/2/2020
+ms.openlocfilehash: d4546732f067988c9d7dd2d11c718a15fbe32d23
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65550505"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540653"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Einschränkungen in Azure Database for MariaDB
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben.
 
-## <a name="maximum-connections"></a>Maximale Anzahl der Verbindungen
-Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif und V-Kernen:
+## <a name="server-parameters"></a>Serverparameter
 
-|**Tarif**|**vCore(s)**| **Max. Anzahl von Verbindungen**|
-|---|---|---|
-|Basic| 1| 50|
-|Basic| 2| 100|
-|Allgemeiner Zweck| 2| 300|
-|Allgemeiner Zweck| 4| 625|
-|Allgemeiner Zweck| 8| 1250|
-|Allgemeiner Zweck| 16| 2500|
-|Allgemeiner Zweck| 32| 5\.000|
-|Allgemeiner Zweck| 64| 10000|
-|Arbeitsspeicheroptimiert| 2| 600|
-|Arbeitsspeicheroptimiert| 4| 1250|
-|Arbeitsspeicheroptimiert| 8| 2500|
-|Arbeitsspeicheroptimiert| 16| 5\.000|
-|Arbeitsspeicheroptimiert| 32| 10000|
+> [!NOTE]
+> Wenn Sie nach Minimal-/Maximalwerten für Serverparameter wie `max_connections` und `innodb_buffer_pool_size` suchen, finden Sie diese Informationen nun im Artikel zu **[Serverparametern](./concepts-server-parameters.md)** .
 
-Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
-> FEHLER 1040 (08004): Zu viele Verbindungen
+Azure Database for MariaDB unterstützt das Anpassen einiger Serverparameter. Die Minimal- und Maximalwerte einiger Parameter (z. B. `max_connections`, `join_buffer_size`, `query_cache_size`) werden durch den Tarif und die virtuellen Kerne des Servers bestimmt. Im Artikel [Serverparameter](./concepts-server-parameters.md) finden Sie weitere Informationen zu diesen Grenzwerten.
+
+Bei der ersten Bereitstellung enthält ein Server für Azure for MariaDB Systemtabellen für Zeitzoneninformationen, die jedoch nicht aufgefüllt sind. Die Zeitzonentabellen können durch Aufrufen der gespeicherten Prozedur `mysql.az_load_timezone` über ein Tool wie die MySQL-Befehlszeile oder MySQL Workbench aufgefüllt werden. Informationen zum Aufrufen der gespeicherten Prozedur und zum Festlegen der globalen Zeitzonen oder Zeitzonen auf Sitzungsebene finden Sie in den Artikeln für das [Azure-Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) und die [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter).
+
+Kennwort-Plug-Ins wie „validate_password“ und „caching_sha2_password“ werden vom Dienst nicht unterstützt.
 
 ## <a name="storage-engine-support"></a>Speicher-Engine-Unterstützung
 
@@ -49,20 +38,25 @@ Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den f
 - [BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/)
 - [ARCHIVE](https://mariadb.com/kb/en/library/archive/)
 
+## <a name="privileges--data-manipulation-support"></a>Berechtigungen und Unterstützung der Datenbearbeitung
+
+Viele Serverparameter und -einstellungen können unbeabsichtigterweise die Serverleistung beeinträchtigen oder ACID-Eigenschaften des MariaDB-Servers verschlechtern. Um die Dienstintegrität und die SLA auf Produktebene aufrechtzuerhalten, macht dieser Dienst nicht mehrere Rollen verfügbar. 
+
+Der MariaDB-Dienst gestattet keinen direkten Zugriff auf das zugrunde liegende Dateisystem. Einige Befehle zur Datenbearbeitung werden nicht unterstützt. 
+
 ## <a name="privilege-support"></a>Berechtigungsunterstützung
 
 ### <a name="unsupported"></a>Nicht unterstützt
-- DBA-Rolle: Viele Serverparameter und -einstellungen können unbeabsichtigterweise die Serverleistung beeinträchtigen oder ACID-Eigenschaften des DBMS verschlechtern. Um die Dienstintegrität und die SLA auf Produktebene aufrechtzuerhalten, stellt dieser Dienst die DBA-Rolle nicht zur Verfügung. Das Standardbenutzerkonto, das zusammen mit einer neuen Datenbankinstanz erstellt wird, gestattet dem Benutzer die Ausführung der meisten DDL- und DML-Anweisungen in der verwalteten Datenbankinstanz.
+
+Folgendes wird nicht unterstützt:
+- DBA-Rolle: Eingeschränkt. Alternativ können Sie den Administratorbenutzer verwenden (der bei Erstellung eines neuen Servers erstellt wird), der Ihnen die Ausführung der meisten DDL- und DML-Anweisungen ermöglicht. 
 - SUPER-Berechtigung: Auf ähnliche Weise ist die [SUPER-Berechtigung](https://mariadb.com/kb/en/library/grant/#global-privileges) ebenfalls eingeschränkt.
 - DEFINER: Erfordert erhöhte Berechtigungen zum Erstellen und ist beschränkt. Entfernen Sie beim Importieren von Daten mithilfe einer Sicherung die `CREATE DEFINER`-Befehle manuell oder mithilfe des Befehls `--skip-definer`, wenn Sie einen mysqldump ausführen.
-
-## <a name="data-manipulation-statement-support"></a>Unterstützung von Datenmanipulationsanweisungen
+- Systemdatenbanken: Die [Systemdatenbank mysql](https://mariadb.com/kb/en/the-mysql-database-tables/) ist schreibgeschützt und wird zur Unterstützung verschiedener PaaS-Funktionen eingesetzt. Die `mysql`-Systemdatenbank kann nicht geändert werden.
+- `SELECT ... INTO OUTFILE`: Wird im Dienst nicht unterstützt.
 
 ### <a name="supported"></a>Unterstützt
 - `LOAD DATA INFILE` wird unterstützt, jedoch muss der Parameter `[LOCAL]` angegeben und an einen UNC-Pfad (über das SMB-Protokoll eingebundene Azure Storage-Instanz) weitergeleitet werden.
-
-### <a name="unsupported"></a>Nicht unterstützt
-- `SELECT ... INTO OUTFILE`
 
 ## <a name="functional-limitations"></a>Funktionale Beschränkungen
 

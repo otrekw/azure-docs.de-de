@@ -1,18 +1,18 @@
 ---
-title: Behandeln von vorübergehenden Konnektivitätsfehlern für Azure Database for PostgreSQL – Einzelserver
-description: Erfahren Sie, wie Sie vorübergehende Konnektivitätsfehler für Azure Database for PostgreSQL (Einzelserver) behandeln.
+title: Behandeln von vorübergehenden Konnektivitätsfehlern – Azure Database for PostgreSQL (Einzelserver)
+description: Erfahren Sie, wie Sie vorübergehende Konnektivitätsfehler bei Azure Database for PostgreSQL (Einzelserver) behandeln.
 keywords: PostgreSQL-Verbindung, Verbindungszeichenfolge, Verbindungsprobleme, vorübergehender Fehler, Verbindungsfehler
-author: jan-eng
-ms.author: janeng
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: ea90de612dcfb2559b29fbffce8306278beb45b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c70c82615df111f265604ff0984aa452d68565f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073514"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91704349"
 ---
 # <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>Behandeln von vorübergehenden Konnektivitätsfehlern für Azure Database for PostgreSQL – Einzelserver
 
@@ -36,7 +36,7 @@ Die ersten beiden Fälle können relativ unkompliziert behandelt werden. Versuch
 * Erhöhen Sie bei jeder folgenden Wiederholung die Wartezeit exponentiell auf bis zu 60 Sekunden.
 * Legen Sie eine maximale Anzahl von Wiederholungen fest, nach denen Ihre Anwendung den Vorgang als fehlerhaft ansieht.
 
-Wenn bei einer Verbindung mit einer aktiven Transaktion ein Fehler auftritt, ist die ordnungsgemäße Wiederherstellung schwieriger. Es gibt zwei Fälle: Wenn die Transaktion schreibgeschützt war, können Sie die Verbindung ohne Gefahr erneut herstellen und die Transaktion wiederholen. Wenn die Transaktion jedoch auch in die Datenbank schreibt, müssen Sie bestimmen, ob für die Transaktion ein Rollback ausgeführt wurde oder ob sie vor dem Auftreten des vorübergehenden Fehlers erfolgreich ausgeführt wurde. In diesem Fall haben Sie möglicherweise nur keine Bestätigung für den Commit vom Datenbankserver erhalten.
+Wenn bei einer Verbindung mit einer aktiven Transaktion ein Fehler auftritt, ist die ordnungsgemäße Wiederherstellung schwieriger. Es gibt zwei Fälle: Wenn die Transaktion schreibgeschützt war, können Sie die Verbindung ohne Gefahr erneut herstellen und die Transaktion wiederholen. Wenn die Transaktion jedoch auch in die Datenbank schreibt, müssen Sie bestimmen, ob für die Transaktion ein Rollback ausgeführt wurde oder ob sie vor dem Auftreten des vorübergehenden Fehlers erfolgreich ausgeführt wurde. In diesem Fall haben Sie vielleicht einfach nur keine Bestätigung für den Commit vom Datenbankserver empfangen.
 
 Sie können dazu z.B. eine eindeutige ID auf dem Client generieren, die für alle Wiederholungen verwendet wird. Übergeben Sie diese eindeutige ID als Teil der Transaktion an den Server, und speichern Sie sie in einer Spalte mit einer unique-Einschränkung. Auf diese Weise können Sie die Transaktion ohne Risiko erneut ausführen. Sie ist erfolgreich, wenn für die vorherige Transaktion ein Rollback ausgeführt wurde und die vom Client generierte eindeutige ID noch nicht im System vorhanden ist. Sie führt zu einem Fehler, wenn ein doppelter Schlüssel vorhanden ist. Dies ist der Fall, wenn die eindeutige ID zuvor gespeichert wurde, da die vorherige Transaktion erfolgreich abgeschlossen wurde.
 

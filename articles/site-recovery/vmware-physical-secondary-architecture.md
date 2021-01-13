@@ -1,19 +1,18 @@
 ---
-title: Architektur für die Notfallwiederherstellung eines VMware- oder physischen Servers an einem sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation
+title: Architektur für die VMware-/physische Notfallwiederherstellung an einem sekundären Standort mit Azure Site Recovery
 description: Dieser Artikel enthält eine Übersicht über die Komponenten und die Architektur, die bei der Notfallwiederherstellung für lokale VMware-VMs oder physische Server unter Windows oder Linux an einem sekundären VMware-Standort mit Azure Site Recovery verwendet werden.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 0c00e26e6c12835db96c192400c3fe8652534dd4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: d400e6bcda0a2114d798a3289f01f52b677a6f94
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972107"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656494"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektur für die Replikation von VMware- oder physischen Servern an einem sekundären lokalen Standort
 
@@ -32,15 +31,31 @@ Dieser Artikel beschreibt die Architektur und Prozesse, die beim Einrichten der 
 **VMware ESX/ESXi und vCenter-Server** |  Virtuelle Computer werden auf ESX/ESXi-Hosts gehostet. Hosts werden mit einem vCenter-Server verwaltet. | Sie benötigen eine VMware-Infrastruktur, um VMware-VMs zu replizieren.
 **VMs/physische Server** |  Vereinheitlichter Agent, installiert auf virtuellen VMware-Computern und auf physischen Servern, die Sie replizieren möchten. | Der Agent fungiert als Kommunikationsanbieter zwischen allen Komponenten.
 
+## <a name="set-up-outbound-network-connectivity"></a>Einrichten der ausgehenden Netzwerkkonnektivität
+
+Damit Site Recovery erwartungsgemäß funktioniert, müssen Sie die ausgehende Netzwerkkonnektivität ändern, um Ihrer Umgebung das Replizieren zu ermöglichen.
+
+> [!NOTE]
+> Site Recovery unterstützt die Verwendung eines Authentifizierungsproxys zur Steuerung der Netzwerkkonnektivität nicht.
+
+### <a name="outbound-connectivity-for-urls"></a>Ausgehende Konnektivität für URLs
+
+Lassen Sie den Zugriff auf die folgenden URLs zu, wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Konnektivität verwenden:
+
+| **Name**                  | **Kommerziell**                               | **Behörden**                                 | **Beschreibung** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Ermöglicht das Schreiben von Daten aus der VM in das Cachespeicherkonto in der Quellregion |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Stellt die Autorisierung und Authentifizierung für Site Recovery-Dienst-URLs bereit. |
+| Replikation               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Ermöglicht die Kommunikation der VM mit Site Recovery |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Ermöglicht es der VM, die Site Recovery-Überwachung und -Diagnosedaten zu schreiben |
+
 ## <a name="replication-process"></a>Replikationsprozess
 
 1. Sie richten die Komponentenserver an jedem Standort ein (Konfiguration, Prozess, Masterziel) und installieren den vereinheitlichten Agent auf Computern, die Sie replizieren möchten.
 2. Nach der ersten Replikation sendet der Agent auf jedem Computer die Deltareplikationsänderungen an den Prozessserver.
 3. Der Prozessserver optimiert die Daten und überträgt sie an den Masterzielserver am sekundären Standort. Der Konfigurationsserver verwaltet den Replikationsprozess.
 
-**Abbildung 6: Replikation von VMware zu VMware**
-
-![VMware zu VMware](./media/site-recovery-components/vmware-to-vmware.png)
+![Diagramm der Replikation von VMware-VMs und physischen Servern an ein sekundäres Rechenzentrum](./media/site-recovery-components/vmware-to-vmware.png)
 
 
 

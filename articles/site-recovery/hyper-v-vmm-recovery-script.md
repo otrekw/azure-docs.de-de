@@ -1,24 +1,24 @@
 ---
-title: Hinzufügen eines Skripts zu einem Wiederherstellungsplan für die Notfallwiederherstellung in Azure Site Recovery | Microsoft-Dokumentation
+title: Hinzufügen eines Skripts zu einem Wiederherstellungsplan in Azure Site Recovery
 description: Erfahren Sie, wie Sie ein VMM-Skript zu einem Wiederherstellungsplan für die Notfallwiederherstellung von Hyper-V-VMs in VMM-Clouds hinzufügen.
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: ea6d969ed6612f947e3c73c438738bd98ac2bb30
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.author: sharrai
+ms.openlocfilehash: 3217c30737a133c1c1092fc4a8a8caaa0338e980
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64700464"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89425873"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Hinzufügen eines VMM-Skripts zu einem Wiederherstellungsplan
 
 Dieser Artikel beschreibt, wie Sie ein System Center Virtual Machine Manager-Skript (VMM) erstellen und einem Wiederherstellungsplan in [Azure Site Recovery](site-recovery-overview.md) hinzufügen.
 
-Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) veröffentlichen.
+Kommentare oder Fragen können Sie am Ende dieses Artikels oder auf der [Microsoft F&A-Seite für Azure Recovery Services](/answers/topics/azure-site-recovery.html) veröffentlichen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +38,7 @@ Sie können PowerShell-Skripts in Ihren Wiederherstellungsplänen verwenden. Sie
 
     `Import-Module -Name virtualmachinemanager`
 
-    Weitere Informationen finden Sie unter [Erste Schritte mit Windows PowerShell und VMM](https://technet.microsoft.com/library/hh875013.aspx).
+    Weitere Informationen finden Sie unter [Erste Schritte mit Windows PowerShell und VMM](/previous-versions/system-center/system-center-2012-R2/hh875013(v=sc.12)).
 * Stellen Sie sicher, dass Ihre VMM-Bereitstellung mindestens einen Bibliothekserver enthält. Standardmäßig befindet sich der Bibliotheksfreigabepfad für einen VMM-Server lokal auf dem VMM-Server. Der Ordnername lautet „MSCVMMLibrary“.
 
   Wenn Ihr Bibliotheksfreigabepfad remote ist (oder lokal, aber nicht für „MSCVMMLibrary“ freigegeben), konfigurieren Sie die Freigabe wie folgt (hier dient „\\libserver2.contoso.com\share\“ als Beispiel):
@@ -51,7 +51,7 @@ Sie können PowerShell-Skripts in Ihren Wiederherstellungsplänen verwenden. Sie
 
      a. Öffnen Sie die **Windows PowerShell-Konsole (64 Bit)** als Administrator.
      
-     b. Geben Sie Folgendes ein: **Set-executionpolicy bypass**. Weitere Informationen finden Sie unter [Verwenden des Cmdlets Set-ExecutionPolicy](https://technet.microsoft.com/library/ee176961.aspx).
+     b. Geben Sie Folgendes ein: **Set-executionpolicy bypass**. Weitere Informationen finden Sie unter [Verwenden des Cmdlets Set-ExecutionPolicy](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10)).
 
      > [!IMPORTANT]
      > Legen Sie **Set-Executionpolicy Bypass** nur in der 64-Bit-Konsole von PowerShell fest. Wenn Sie den Wert in der 32-Bit-Konsole von PowerShell festlegen, werden die Skripts nicht ausgeführt.
@@ -60,9 +60,9 @@ Sie können PowerShell-Skripts in Ihren Wiederherstellungsplänen verwenden. Sie
 
 Falls Sie über eine VMM-Quellwebsite verfügen, können Sie ein Skript auf dem VMM-Server erstellen. Fügen Sie das Skript dann in Ihren Wiederherstellungsplan ein.
 
-1. Erstellen Sie einen neuen Ordner in der Bibliothekfreigabe. Beispiel: „\<VMM-Servername >\MSSCVMMLibrary\RPScripts“. Platzieren Sie den Ordner auf dem VMM-Quell- und -Zielserver.
+1. Erstellen Sie einen neuen Ordner in der Bibliothekfreigabe. Beispiel: \<VMM server name>\MSSCVMMLibrary\RPScripts. Platzieren Sie den Ordner auf dem VMM-Quell- und -Zielserver.
 1. Erstellen Sie das Skript. Geben Sie dem Skript beispielsweise den Namen „RPScript“. Überprüfen Sie, ob das Skript erwartungsgemäß funktioniert.
-1. Platzieren Sie das Skript im Ordner „\<VMM-Servername>\MSSCVMMLibrary“ auf den VMM-Quell- und -Zielservern.
+1. Platzieren Sie das Skript auf den VMM-Quell- und -Zielservern im Ordner „\<VMM server name>\MSSCVMMLibrary“.
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>Hinzufügen des Skripts zu einem Wiederherstellungsplan
 

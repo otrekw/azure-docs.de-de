@@ -1,59 +1,59 @@
 ---
-title: Erfassen und Protokollieren von Azure Data Box- und Azure Data Box Heavy-Ereignissen| Microsoft-Dokumentation
-description: Dieser Artikel beschreibt, wie Ereignisse in den verschiedenen Phasen Ihres Azure Data Box- oder Azure Data Box Heavy-Auftrags nachverfolgt und protokolliert werden.
+title: Erfassen und Protokollieren von Azure Data Box- und Azure Data Box Heavy-Ereignissen für Importaufträge | Microsoft-Dokumentation
+description: In diesem Artikel wird beschreiben, wie Ereignisse in den verschiedenen Phasen Ihres Azure Data Box- oder Azure Data Box Heavy-Importauftrags nachverfolgt und protokolliert werden.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: a9304936f746b82b59550d62e8b60a9e0035d188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535170"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147925"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Nachverfolgung und Ereignisprotokollierung für Azure Data Box und Azure Data Box Heavy
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Nachverfolgung und Ereignisprotokollierung für Azure Data Box- und Azure Data Box Heavy-Importaufträge
 
-Ein Data Box- oder Data Box Heavy-Auftrag durchläuft die folgenden Schritte: Bestellen, Einrichten, Kopieren von Daten, Zurücksenden, Hochladen in Azure und Überprüfen sowie Löschen von Daten. Für jeden Schritt des Auftrags können Sie mehrere Aktionen durchführen, um den Zugriff auf den Auftrag zu steuern, die Ereignisse zu überwachen, den Auftrag zu verfolgen und die verschiedenen Protokolle zu interpretieren, die generiert werden.
+Ein Data Box- oder Data Box Heavy-Importauftrag durchläuft die folgenden Schritte: Bestellen, Einrichten, Kopieren von Daten, Zurücksenden, Hochladen in Azure und Überprüfen und Löschen von Daten. Für jeden Schritt des Auftrags können Sie mehrere Aktionen durchführen, um den Zugriff auf den Auftrag zu steuern, die Ereignisse zu überwachen, den Auftrag zu verfolgen und die verschiedenen Protokolle zu interpretieren, die generiert werden.
 
-Die folgende Tabelle zeigt eine Übersicht über die Schritte eines Data Box- oder Data Box Heavy-Auftrags und die verfügbaren Tools zum Nachverfolgen und Überwachen des Auftrags in jedem Schritt.
+Die folgende Tabelle enthält eine Übersicht der Schritte eines Data Box- oder Data Box Heavy-Importauftrags und die verfügbaren Tools zum Nachverfolgen und Überwachen des Auftrags in jedem Schritt.
 
-| Phase eines Data Box-Auftrags       | Tool zum Nachverfolgen und Überwachen                                                                        |
+| Phase des Data Box-Importauftrags       | Tool zum Nachverfolgen und Überwachen                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| Erstellung des Auftrags               | [Einrichten der Zugriffssteuerung für den Auftrag über RBAC](#set-up-access-control-on-the-order)                                                    |
+| Erstellung des Auftrags               | [Einrichten der Zugriffssteuerung für den Auftrag über Azure RBAC](#set-up-access-control-on-the-order)                                                    |
 | Auftrag verarbeitet            | [Nachverfolgen des Auftrags](#track-the-order) über <ul><li> Azure-Portal </li><li> Website des Spediteurs </li><li>E-Mail-Benachrichtigungen</ul> |
 | Einrichten des Geräts              | In [Aktivitätsprotokollen](#query-activity-logs-during-setup) protokollierter Zugriff auf Geräteanmeldeinformation                                              |
-| Kopieren von Daten auf ein Gerät        | [Anzeigen von *error.xml*-Dateien](#view-error-log-during-data-copy) für das Kopieren von Daten                                                             |
+| Kopieren von Daten auf ein Gerät        | [Anzeigen von *error.xml* -Dateien](#view-error-log-during-data-copy) für das Kopieren von Daten                                                             |
 | Vorbereiten des Versands            | [Überprüfen der BOM-Dateien](#inspect-bom-during-prepare-to-ship) oder der Manifestdateien auf dem Gerät                                      |
 | Datenupload in Azure       | [Überprüfen von Kopierprotokollen](#review-copy-log-during-upload-to-azure) auf Fehler beim Hochladen von Daten im Azure-Rechenzentrum                         |
 | Löschen von Daten vom Gerät   | [Anzeigen der Kette von Protokollen zur Rückverfolgbarkeit](#get-chain-of-custody-logs-after-data-erasure) einschließlich von Überwachungsprotokollen und Auftragsverlauf                |
 
-In diesem Artikel werden die verschiedenen verfügbaren Verfahren und Tools detailliert beschrieben, mit denen Data Box- oder Data Box Heavy-Aufträge nachverfolgt und überwacht werden können. Die Informationen in diesem Artikel gelten sowohl für Data Box als auch für Data Box Heavy. In den folgenden Abschnitten gelten alle Verweise auf Data Box auch für Data Box Heavy.
+In diesem Artikel werden die verschiedenen verfügbaren Verfahren und Tools detailliert beschrieben, mit denen Data Box- oder Data Box Heavy-Importaufträge nachverfolgt und überwacht werden können. Die Informationen in diesem Artikel gelten sowohl für Data Box- als auch für Data Box Heavy-Importaufträge. In den folgenden Abschnitten gelten alle Verweise auf Data Box auch für Data Box Heavy.
 
 ## <a name="set-up-access-control-on-the-order"></a>Einrichten der Zugriffssteuerung für den Auftrag
 
-Sie können beim Erstellen Ihres Auftrags festlegen, wer auf diesen Auftrag zugreifen kann. Richten Sie RBAC-Rollen (Rollenbasierte Zugriffssteuerung) in verschiedenen Bereichen ein, um den Zugriff auf den Data Box-Auftrag zu steuern. Eine RBAC-Rolle bestimmt die Art des Zugriffs: Lese-/Schreibzugriff, schreibgeschützt, Lese-/Schreibzugriff auf eine Teilmenge von Vorgängen.
+Sie können beim Erstellen Ihres Auftrags festlegen, wer auf diesen Auftrag zugreifen kann. Richten Sie Azure-Rollen in verschiedenen Bereichen ein, um den Zugriff auf den Data Box-Auftrag zu steuern. Eine Azure-Rolle bestimmt die Art des Zugriffs: Lese-/Schreibzugriff, schreibgeschützter Zugriff, Lese-/Schreibzugriff auf eine Teilmenge von Vorgängen.
 
 Für den Azure Data Box-Dienst können die folgenden beiden Rollen definiert werden:
 
-- **Data Box-Leser**: Schreibgeschützter Zugriff auf Aufträge, wie im Bereich definiert. Hiermit können lediglich die Details eines Auftrags angezeigt werden. Es ist nicht möglich, auf weitere Details im Zusammenhang mit Speicherkonten zuzugreifen oder die Auftragsdetails zu bearbeiten, z.B. Adresse usw.
-- **Data Box-Mitwirkender**: Kann nur einen Auftrag zum Übertragen von Daten in ein bestimmtes Speicherkonto erstellen, *wenn bereits Schreibzugriff auf ein Speicherkonto gewährt wurde*. Falls kein Zugriff auf ein Speicherkonto gewährt wurde, kann mit dieser Rolle kein Data Box-Auftrag zum Kopieren von Daten in das Konto erstellt werden. Diese Rolle definiert keine Berechtigungen für Speicherkonten und gewährt keinen Zugriff auf Speicherkonten.  
+- **Data Box-Leser** : Schreibgeschützter Zugriff auf Aufträge, wie im Bereich definiert. Hiermit können lediglich die Details eines Auftrags angezeigt werden. Es ist nicht möglich, auf weitere Details im Zusammenhang mit Speicherkonten zuzugreifen oder die Auftragsdetails zu bearbeiten, z.B. Adresse usw.
+- **Data Box-Mitwirkender** : Kann nur einen Auftrag zum Übertragen von Daten in ein bestimmtes Speicherkonto erstellen, *wenn bereits Schreibzugriff auf ein Speicherkonto gewährt wurde* . Falls kein Zugriff auf ein Speicherkonto gewährt wurde, kann mit dieser Rolle kein Data Box-Auftrag zum Kopieren von Daten in das Konto erstellt werden. Diese Rolle definiert keine Berechtigungen für Speicherkonten und gewährt keinen Zugriff auf Speicherkonten.  
 
 Um den Zugriff auf einen Auftrag zu beschränken, können Sie folgende Aktionen ausführen:
 
 - Weisen Sie eine Rolle auf Auftragsebene zu. Der Benutzer verfügt nur über diese durch die Rollen definierten Berechtigungen für die Interaktion mit diesem spezifischen Data Box-Auftrag und kann nichts anderes ausführen.
 - Weisen Sie eine Rolle auf Ebene der Ressourcengruppe zu. Der Benutzer hat Zugriff auf alle Data Box-Aufträge innerhalb einer Ressourcengruppe.
 
-Weitere Informationen über die vorgeschlagene RBAC-Nutzung finden Sie unter [Bewährte Methoden für RBAC](../role-based-access-control/overview.md#best-practice-for-using-rbac).
+Weitere Informationen zur vorgeschlagenen Azure RBAC-Nutzung finden Sie unter [Bewährte Methoden für Azure RBAC](../role-based-access-control/best-practices.md).
 
 ## <a name="track-the-order"></a>Nachverfolgen der Bestellung
 
 Sie können Ihren Auftrag über das Azure-Portal und über die Website des Spediteurs nachverfolgen. Mit den folgenden vorhandenen Verfahren können Sie den Data Box-Auftrag jederzeit nachverfolgen:
 
-- Um den Auftrag nachzuverfolgen, wenn sich das Gerät im Azure-Rechenzentrum oder in Ihrer lokalen Umgebung befindet, wechseln Sie im Azure-Portal zu **Data Box-Auftrag > Übersicht**.
+- Um den Auftrag nachzuverfolgen, wenn sich das Gerät im Azure-Rechenzentrum oder in Ihrer lokalen Umgebung befindet, wechseln Sie im Azure-Portal zu **Data Box-Auftrag > Übersicht** .
 
     ![Anzeigen von Auftragsstatus und Nachverfolgungsnummer](media/data-box-logs/overview-view-status-1.png)
 
@@ -359,8 +359,8 @@ Der Auftragsverlauf ist im Azure-Portal verfügbar. Wenn der Auftrag und die Ger
 Wenn Sie durch den Auftragsverlauf scrollen, sehen Sie Folgendes:
 
 - Nachverfolgungsinformationen des Spediteurs für Ihr Gerät.
-- Ereignisse mit der Aktivität *SecureErase*. Diese Ereignisse entsprechen der Löschung der Daten auf dem Datenträger.
-- Data Box-Protokolllinks. Die Pfade für die *Überwachungsprotokolle*, *Kopierprotokolle* und *BOM*-Dateien werden angezeigt.
+- Ereignisse mit der Aktivität *SecureErase* . Diese Ereignisse entsprechen der Löschung der Daten auf dem Datenträger.
+- Data Box-Protokolllinks. Die Pfade für die *Überwachungsprotokolle* , *Kopierprotokolle* und *BOM* -Dateien werden angezeigt.
 
 Hier finden Sie ein Beispiel für das Auftragsverlaufsprotokoll im Azure-Portal:
 

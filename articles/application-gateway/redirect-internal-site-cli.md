@@ -1,23 +1,19 @@
 ---
-title: Erstellen eines Anwendungsgateways mit interner Umleitung – Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+title: Interne Umleitung mithilfe der CLI
+titleSuffix: Azure Application Gateway
 description: Erfahren Sie, wie Sie mithilfe der Azure CLI ein Anwendungsgateway erstellen, das internen Webdatenverkehr an den entsprechenden Pool umleitet.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.topic: how-to
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 25c50d400a68cdbfb9110a9e8e9d66477ad4710a
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: b443fa7c2d6c644fc1173295f89813c18657d160
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67513366"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566723"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit interner Umleitung über die Azure-Befehlszeilenschnittstelle
 
@@ -25,18 +21,17 @@ Sie können mit der Azure CLI [eine Umleitung des Webdatenverkehrs](multiple-sit
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Anwendungsgateways
-> * Hinzufügen der Listener und einer Umleitungsregel
-> * Erstellen einer VM-Skalierungsgruppe mit dem Back-End-Pool
-> * Erstellen eines CNAME-Eintrags in Ihrer Domäne
+* Einrichten des Netzwerks
+* Erstellen eines Anwendungsgateways
+* Hinzufügen der Listener und einer Umleitungsregel
+* Erstellen einer VM-Skalierungsgruppe mit dem Back-End-Pool
+* Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+ - Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -90,7 +85,7 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress
 ```
 
-Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt ist. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
+Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
 
 - *appGatewayBackendPool*: Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
 - *appGatewayBackendHttpSettings*: Gibt an, dass zur Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.
@@ -221,7 +216,7 @@ Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Beispiel: 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
+In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
 
 > * Einrichten des Netzwerks
 > * Erstellen eines Anwendungsgateways

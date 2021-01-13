@@ -1,21 +1,23 @@
 ---
 title: Indizierung in Azure Cosmos DB
-description: Erhalten Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB.
-author: ThomasWeiss
+description: Hier finden Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB sowie zu verschiedenen unterstützten Indextypen (etwa zu Bereichsindizes, räumlichen Indizes und zusammengesetzten Indizes).
+author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/10/2019
-ms.author: thweiss
-ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 05/21/2020
+ms.author: tisande
+ms.openlocfilehash: 4211f13324b9fda0b0823b2d035eb03863cb686d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914195"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339752"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indizierung in Azure Cosmos DB: Übersicht
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB ist eine schemaunabhängige Datenbank, die es Ihnen ermöglicht, Ihre Anwendung zu durchlaufen, ohne sich mit Schema- oder Indexverwaltung befassen zu müssen. Standardmäßig indiziert Azure Cosmos DB automatisch alle Eigenschaften für sämtliche Elemente in Ihrem [Container](databases-containers-items.md#azure-cosmos-containers), ohne dass ein Schema definiert oder Sekundärindizes konfiguriert werden müssen.
+Azure Cosmos DB ist eine schemaunabhängige Datenbank, die es Ihnen ermöglicht, Ihre Anwendung zu durchlaufen, ohne sich mit Schema- oder Indexverwaltung befassen zu müssen. Standardmäßig indiziert Azure Cosmos DB automatisch alle Eigenschaften für sämtliche Elemente in Ihrem [Container](account-databases-containers-items.md#azure-cosmos-containers), ohne dass ein Schema definiert oder Sekundärindizes konfiguriert werden müssen.
 
 In diesem Artikel wird beschrieben, wie Azure Cosmos DB Daten indiziert und wie Indizes zur Verbesserung der Abfrageleistung verwendet werden. Sie sollten zunächst diesen Abschnitt lesen, bevor Sie sich mit dem Anpassen von [Indizierungsrichtlinien](index-policy.md) beschäftigen.
 
@@ -41,7 +43,7 @@ Betrachten Sie z. B. dieses Element:
 
 Es wird durch die folgende Struktur dargestellt:
 
-![Das vorherige Element als Struktur dargestellt](./media/index-overview/item-as-tree.png)
+:::image type="content" source="./media/index-overview/item-as-tree.png" alt-text="Das vorherige Element als Struktur dargestellt" border="false":::
 
 Beachten Sie, wie Arrays in der Struktur codiert werden: Jeder Eintrag in einem Array erhält direkt einen Zwischenknoten, der mit dem Index dieses Eintrags innerhalb des Arrays bezeichnet ist (0, 1 usw.).
 
@@ -51,28 +53,39 @@ Azure Cosmos DB transformiert die Elemente in Strukturen, da so über die Pfade
 
 Dies sind die Pfade für jede Eigenschaft aus dem oben beschriebenen Beispielelement:
 
-    /locations/0/country: "Germany"
-    /locations/0/city: "Berlin"
-    /locations/1/country: "France"
-    /locations/1/city: "Paris"
-    /headquarters/country: "Belgium"
-    /headquarters/employees: 250
-    /exports/0/city: "Moscow"
-    /exports/1/city: "Athens"
+- /locations/0/country: "Germany"
+- /locations/0/city: "Berlin"
+- /locations/1/country: "France"
+- /locations/1/city: "Paris"
+- /headquarters/country: "Belgium"
+- /headquarters/employees: 250
+- /exports/0/city: "Moscow"
+- /exports/1/city: "Athens"
 
 Wenn ein Element geschrieben wird, indiziert Azure Cosmos DB den Pfad jeder Eigenschaft und den zugehörigen Wert.
 
 ## <a name="index-kinds"></a>Indextypen
 
-Azure Cosmos DB unterstützt derzeit drei Arten von Indizes:
+Azure Cosmos DB unterstützt derzeit drei Arten von Indizes.
 
-Der **Range**-Indextyp wird für Folgendes verwendet:
+### <a name="range-index"></a>Bereichsindex
+
+Der **Bereichsindex** basiert auf einer geordneten Baumstruktur. Dieser Indextyp wird für Folgendes verwendet:
 
 - Gleichheitsabfragen:
 
     ```sql
    SELECT * FROM container c WHERE c.property = 'value'
    ```
+
+   ```sql
+   SELECT * FROM c WHERE c.property IN ("value1", "value2", "value3")
+   ```
+
+   Gleichheitsübereinstimmung für ein Arrayelement
+   ```sql
+    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1")
+    ```
 
 - Bereichsabfragen:
 
@@ -81,9 +94,25 @@ Der **Range**-Indextyp wird für Folgendes verwendet:
    ```
   (funktioniert für `>`, `<`, `>=`, `<=`, `!=`)
 
+- Überprüfen, ob eine Eigenschaft vorhanden ist:
+
+   ```sql
+   SELECT * FROM c WHERE IS_DEFINED(c.property)
+   ```
+
+- Zeichenfolgensystemfunktionen:
+
+   ```sql
+   SELECT * FROM c WHERE CONTAINS(c.property, "value")
+   ```
+
+   ```sql
+   SELECT * FROM c WHERE STRINGEQUALS(c.property, "value")
+   ```
+
 - `ORDER BY` fragt Folgendes ab:
 
-   ```sql 
+   ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
@@ -95,23 +124,33 @@ Der **Range**-Indextyp wird für Folgendes verwendet:
 
 Range-Indizes können für Skalarwerte (Zeichenfolge oder Zahl) verwendet werden.
 
-Der **Spatial**-Indextyp wird für Folgendes verwendet:
+### <a name="spatial-index"></a>Räumlicher Index
 
-- Abfragen zum räumlichen Abstand: 
+**Räumliche** Indizes ermöglichen effiziente Abfragen räumlicher Objekte wie Punkte, Linien, Polygone und Multipolygon. Diese Abfragen verwenden die Schlüsselwörter ST_DISTANCE, ST_WITHIN und ST_INTERSECTS. Es folgen einige Beispiele für die Verwendung des räumlichen Index:
+
+- Abfragen zum räumlichen Abstand:
 
    ```sql
    SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
    ```
 
-- Räumliche Abfragen: 
+- Räumliche Abfragen:
 
    ```sql
-   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
+   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] })
    ```
 
-Spatial-Indizes können für ordnungsgemäß formatierte [GeoJSON](geospatial.md)-Objekte verwendet werden. Derzeit werden Point, LineString, Polygon und MultiPolygon unterstützt.
+- Abfragen zur räumlichen Überschneidung:
 
-Der **zusammengesetzte** Index wird für Folgendes verwendet:
+   ```sql
+   SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
+   ```
+
+Spatial-Indizes können für ordnungsgemäß formatierte [GeoJSON](./sql-query-geospatial-intro.md)-Objekte verwendet werden. Derzeit werden Point, LineString, Polygon und MultiPolygon unterstützt.
+
+### <a name="composite-indexes"></a>Zusammengesetzte Indizes
+
+**Zusammengesetzte** Indizes erhöhen die Effizienz, wenn Sie Vorgänge für mehrere Felder durchführen. Dieser Indextyp wird für Folgendes verwendet:
 
 - `ORDER BY` fragt mehrere Eigenschaften ab:
 
@@ -131,13 +170,19 @@ Der **zusammengesetzte** Index wird für Folgendes verwendet:
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
+Solange ein einziges Filterprädikat einen der Indextypen verwendet, wertet die Abfrage-Engine dieses zuerst aus, bevor der Rest überprüft wird. Wenn Sie z.B. eine SQL-Abfrage haben wie `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+
+* Bei der oben gezeigten Abfrage wird zuerst mithilfe des Index nach Einträgen gefiltert, bei denen „firstName“ den Wert „Andrew“ hat. Anschließend werden alle Einträge mit „firstName“ = „Andrew“ über eine nachfolgende Pipeline übergeben, um das Filterprädikat CONTAINS auszuwerten.
+
+* Sie können Abfragen beschleunigen und vollständige Containerüberprüfungen vermeiden, wenn Sie Funktionen ohne Nutzung des Index (z .B. CONTAINS) verwenden, indem Sie zusätzliche Filterprädikate hinzufügen, die den Index verwenden. Die Reihenfolge der Filterklauseln ist nicht von Bedeutung. Die Abfrage-Engine ermittelt, welche Prädikate selektiver sind, und führt die Abfrage entsprechend aus.
+
 ## <a name="querying-with-indexes"></a>Abfragen mit Indizes
 
 Die während der Indizierung der Daten extrahierten Pfade vereinfachen das Suchen im Index bei der Verarbeitung einer Abfrage. Durch einen Abgleich der `WHERE`-Klausel einer Abfrage mit der Liste der indizierten Pfade ist es möglich, sehr schnell die Elemente zu ermitteln, die dem Abfrageprädikat entsprechen.
 
-Betrachten Sie beispielsweise die folgende Abfrage: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Das Abfrageprädikat (nach Elementen filtern, die an beliebiger Stelle „France“ als Land enthalten) würde dem Pfad entsprechen, der rot hervorgehoben ist:
+Betrachten Sie beispielsweise die folgende Abfrage: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Das Abfrageprädikat (nach Elementen filtern, die an beliebiger Stelle „France“ als Land oder Region enthalten) würde dem Pfad entsprechen, der rot hervorgehoben ist:
 
-![Abgleichen mit einem bestimmten Pfad in einer Struktur](./media/index-overview/matching-path.png)
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Abgleichen mit einem bestimmten Pfad in einer Struktur" border="false":::
 
 > [!NOTE]
 > Eine `ORDER BY`-Klausel, die anhand einer einzelnen Eigenschaft geordnet wird, benötigt *immer* einen Range-Index. Falls der referenzierte Pfad diesen nicht aufweist, tritt ein Fehler auf. Ebenso benötigt eine `ORDER BY`-Abfrage, die nach mehreren Eigenschaften sortiert, *immer* einen zusammengesetzten Index.

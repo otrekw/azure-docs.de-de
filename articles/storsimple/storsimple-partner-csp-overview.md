@@ -1,6 +1,6 @@
 ---
 title: Übersicht über Microsoft Azure StorSimple und das Cloudlösungsanbieter-Programm | Microsoft-Dokumentation
-description: Eine Übersicht über StorSimple und das Cloudlösungsanbieter-Programm für StorSimple-Partner.
+description: Erhalten Sie einführende Informationen zu StorSimple und dem Cloudlösungsanbieter-Programm (CSP) für StorSimple-Partner.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: e2adccaf1371cf322b5a50b0e1f6ef64dde14b66
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c96dcc2bae03b1bd05fb3d1512dba757f180eed8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60628658"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964914"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Was ist das StorSimple für Cloudlösungsanbieter-Programm?
 
@@ -30,7 +30,7 @@ Microsoft Azure StorSimple ist eine besondere Lösung für die Datenspeicherung 
 
 StorSimple Virtual Array für Cloudlösungsanbieter (Cloud Solutions Provider, CSP) ermöglicht Partnern, von dieser Chance zu profitieren. Die Partner haben bei direkter Bereitstellung, Abrechnung und Unterstützung von Microsoft-Clouddiensten die lückenlose Kontrolle über den Lebenszyklus von Kunden. Kurz gesagt, können die Partner nun mit Kunden das StorSimple-Geschäft zusammen mit ihren Diensten machen.
 
-Weitere Informationen zu StorSimple für CSP finden Sie auf der Seite [Übersicht über Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
+Weitere Informationen zu StorSimple für CSP finden Sie auf der Seite [Übersicht über Azure CSP](/azure/cloud-solution-provider/overview/azure-csp-overview).
 
 Weitere Informationen zu Abrechnung, Preisen, Anreizen und Unterstützung im CSP-Programm finden Sie [StorSimple im CSP-Programm: Häufig gestellte Fragen](storsimple-partner-csp-faq.md). 
 
@@ -42,5 +42,5 @@ Weitere Informationen finden Sie unter [Deaktivieren und Verwalten Ihres StorSim
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie weitere Fragen zu StorSimple im CSP-Programm haben, fahren Sie mit [StorSimple im CSP-Programm: Häufig gestellte Fragen (FAQs)](storsimple-partner-csp-faq.md) fort.
+- Wenn Sie weitere Fragen zu StorSimple im CSP-Programm haben, fahren Sie mit [StorSimple im CSP-Programm: Häufig gestellte Fragen](storsimple-partner-csp-faq.md) fort.
 - Wenn Sie bereit sind, Ihre StorSimple-Lösung bereitzustellen, wechseln Sie zu [Bereitstellen Ihrer StorSimple-Lösung im CSP-Programm](storsimple-partner-csp-deploy.md).

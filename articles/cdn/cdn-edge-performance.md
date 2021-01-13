@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: d8119c56c26ed32db136064d93775d21a71f238f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593896"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778655"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analysieren der Leistung von Edgeknoten in Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -55,7 +55,7 @@ Dieses Dashboard besteht aus folgenden Elementen:
     ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     Das CDN-Verwaltungsportal wird geöffnet.
-2. Zeigen Sie auf die Registerkarte **Analysen** und anschließend auf das Flyout **Edge Perfomance Analytics**.  Klicken Sie auf **Dashboard**.
+2. Zeigen Sie auf die Registerkarte **Analysen** und anschließend auf das Flyout **Edge Perfomance Analytics** .  Klicken Sie auf **Dashboard** .
    
     Das Edge Performance Analytics-Dashboard wird angezeigt.
 
@@ -121,7 +121,7 @@ Diese Metriken dient zum Nachverfolgen der CDN-Gesamtleistung für den Datenverk
 | Compressed Request Rate |Gibt den Prozentsatz der Treffer an, die vom CDN (von Edgeservern) an den Anfordernden (z. B. Webbrowser) in einem komprimierten Format übermittelt wurde. |
 | 4xx Error Rate |Gibt den Prozentsatz der Treffer an, die einen Statuscode vom Typ „4xx“ generiert haben. |
 | 5xx Error Rate |Gibt den Prozentsatz der Treffer an, die einen Statuscode vom Typ „5xx“ generiert haben. |
-| Hits |Gibt die Anzahl der Anforderungen von CDN-Inhalten an. |
+| Treffer |Gibt die Anzahl der Anforderungen von CDN-Inhalten an. |
 
 #### <a name="secure-traffic-metrics"></a>Metriken zu geschütztem Datenverkehr
 Diese Metriken dient zum Nachverfolgen der CDN-Leistung für HTTPS-Datenverkehr.
@@ -143,7 +143,7 @@ Jeder Bericht in diesem Modul enthält ein Diagramm und Statistiken zu Bandbreit
     ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     Das CDN-Verwaltungsportal wird geöffnet.
-2. Zeigen Sie auf die Registerkarte **Analysen** und anschließend auf das Flyout **Edge Perfomance Analytics**.  Klicken Sie auf **Großes HTTP-Objekt**.
+2. Zeigen Sie auf die Registerkarte **Analysen** und anschließend auf das Flyout **Edge Perfomance Analytics** .  Klicken Sie auf **Großes HTTP-Objekt** .
    
     Der Bildschirm mit Edge Performance Analytics-Berichten wird angezeigt.
 
@@ -186,6 +186,5 @@ Jeder Bericht in diesem Modul enthält ein Diagramm und Statistiken zu Bandbreit
 ## <a name="see-also"></a>Weitere Informationen
 * [Übersicht über das Azure CDN](cdn-overview.md)
 * [Echtzeitstatistiken in Microsoft Azure CDN](cdn-real-time-stats.md)
-* [Überschreiben des HTTP-Standardverhaltens mithilfe der Regel-Engine](cdn-rules-engine.md)
+* [Überschreiben des HTTP-Standardverhaltens mithilfe der Regel-Engine](./cdn-verizon-premium-rules-engine.md)
 * [Erweiterte HTTP-Berichte](cdn-advanced-http-reports.md)
-

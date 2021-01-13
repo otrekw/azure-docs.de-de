@@ -1,5 +1,5 @@
 ---
-title: 'Azure IoT Hub: Entwickeln für eingeschränkte Geräte mit dem IoT Hub-SDK für C | Microsoft-Dokumentation'
+title: Azure IoT Hub – Entwickeln für eingeschränkte Geräte mit dem IoT Hub-SDK für C
 description: Entwicklerhandbuch – Anleitungen zum Entwickeln mit Azure IoT-SDKs für eingeschränkte Geräte.
 author: robinsh
 ms.service: iot-hub
@@ -7,12 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: robinsh
-ms.openlocfilehash: d69fe6b845d3af04e42ee91daa9359dcb9a88fc5
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 5a43eb2537ebc09ffcb524a4426d7a8c9bec560b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880965"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500001"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Entwickeln für eingeschränkte Geräte mit dem Azure IoT-SDK für C
 
@@ -26,6 +29,9 @@ Das SDK für C ist in Paketform über apt-get NuGet und MBED verfügbar. Wenn Si
 ## <a name="building-the-c-sdk-for-constrained-devices"></a>Erstellen des SDK für C für eingeschränkte Geräte
 
 Erstellen Sie das SDK für C für eingeschränkte Geräte.
+
+> [!NOTE]
+> Das Embedded C SDK ist eine Alternative für eingeschränkte Geräte, bei der der Ansatz „Bring Your Own Network“ (BYON) unterstützt wird. IoT-Entwickler haben die Möglichkeit, den MQTT-Client, TLS und Sockets selbst bereitzustellen, um eine Gerätelösung zu erstellen. [Lesen Sie die weiteren Informationen zum Embedded C SDK](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot).
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -82,5 +88,5 @@ Eine andere Gruppe von APIs ohne den _LL_-Index wird als „Convenience Layer“
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Azure IoT C SDK-Architektur:
--   [Azure IoT C SDK-Quellcode](https://github.com/Azure/azure-iot-sdk-c/)
--   [Einführung in das Azure IoT-Geräte-SDK für C](iot-hub-device-sdk-c-intro.md)
+-    [Azure IoT C SDK-Quellcode](https://github.com/Azure/azure-iot-sdk-c/)
+-    [Einführung in das Azure IoT-Geräte-SDK für C](iot-hub-device-sdk-c-intro.md)

@@ -13,58 +13,118 @@
 - name: Konzepte
   items:
     - name: Delegierte Azure-Ressourcenverwaltung
-      displayName: delegation
+      displayName: 'delegation, projection'
       href: ./concepts/azure-delegated-resource-management.md
     - name: Mandantenübergreifende Verwaltungsmöglichkeiten
-      displayName: scenarios
+      displayName: 'scenarios, supported, enhanced, services, limitations, current'
       href: ./concepts/cross-tenant-management-experience.md
-    - name: Angebote für verwaltete Dienste in Azure Marketplace
+    - name: 'Mandanten, Rollen und Benutzer'
+      displayName: 'Azure AD, Azure Active Directory'
+      href: ./concepts/tenants-users-roles.md
+    - name: Angebote für verwaltete Dienste im Azure Marketplace
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
-    - name: Empfohlene Sicherheitsmaßnahmen
-      displayName: 'mfa, authentication, secure, group'
-      href: ./concepts/recommended-security-practices.md
-    - name: Überlegungen zum Cloud Solution Provider-Programm
+    - name: Programm für Cloud-Lösungsanbieter
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
-    - name: Azure Lighthouse in Unternehmensszenarien
+    - name: Unternehmensszenarien
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
+    - name: ISV-Szenarien
+      displayName: 'independent, software, vendor, saas'
+      href: ./concepts/isv-scenarios.md
+    - name: Azure Lighthouse und verwaltete Azure-Anwendungen
+      displayName: 'managed apps, ama'
+      href: ./concepts/managed-applications.md
+    - name: Sicherheit
+      items:
+        - name: Empfohlene Sicherheitsmaßnahmen
+          displayName: 'mfa, authentication, secure, group'
+          href: ./concepts/recommended-security-practices.md
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
 - name: Anleitungen
   items:
-    - name: Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen
+    - name: Onboarding eines Kunden in Azure Lighthouse durchführen
       displayName: resource management
       href: ./how-to/onboard-customer.md
-    - name: Angebote für verwaltete Dienste in Azure Marketplace veröffentlichen
-      displayName: 'managed services offer, azure marketplace, publish'
+    - name: Veröffentlichen von Angeboten für verwaltete Dienste im Azure Marketplace
+      displayName: 'managed services offer, azure marketplace, publish, marketplace'
       href: ./how-to/publish-managed-services-offers.md
     - name: Kunden anzeigen und verwalten
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: my customers
       href: ./how-to/view-manage-customers.md
-    - name: Dienstanbieter anzeigen und verwalten
-      displayName: 'managed services offer, azure marketplace, publish'
-      href: ./how-to/view-manage-service-providers.md
+    - name: Verknüpfen Ihrer Partner-ID
+      displayName: 'partner earned credit, pec, mpn'
+      href: ./how-to/partner-earned-credit.md
+    - name: Aktualisieren einer Delegierung
+      displayName: upgrade
+      href: ./how-to/update-delegation.md
+    - name: Entfernen des Zugriffs auf eine Delegierung
+      displayName: 'delete, undelegate'
+      href: ./how-to/remove-delegation.md
+    - name: Azure Arc-Integration
+      displayName: 'server, kubernetes, hybrid, infrastructure'
+      href: ./how-to/manage-hybrid-infrastructure-arc.md
+    - name: Azure Migrate-Integration
+      displayName: 'migration, project, on-prem'
+      href: ./how-to/migration-at-scale.md
+    - name: Azure Monitor-Integration
+      items:
+        - name: Verwenden von Azure Monitor-Protokollen im großen Stil
+          displayName: 'log, analytics, analyze, activity'
+          href: ./how-to/monitor-at-scale.md
+        - name: Überwachen von Delegierungsänderungen
+          displayName: activity log
+          href: ./how-to/monitor-delegation-changes.md
+    - name: Azure Policy-Integration
+      items:
+        - name: Bedarfsorientiertes Bereitstellen einer Richtlinie
+          displayName: storage
+          href: ./how-to/policy-at-scale.md
+        - name: 'Bereitstellen einer Richtlinie, die gewartet werden kann'
+          displayName: 'deployIfNotExists, modify, managed identities, managed identity'
+          href: ./how-to/deploy-policy-remediation.md
+    - name: Azure Sentinel-Integration
+      href: ./how-to/manage-sentinel-workspaces.md
+    - name: Kundenaktionen
+      items:
+        - name: Dienstanbieter anzeigen und verwalten
+          displayName: 'customer, update'
+          href: ./how-to/view-manage-service-providers.md
+        - name: Anzeigen der Dienstanbieteraktivität
+          displayName: 'monitor, log'
+          href: ./how-to/view-service-provider-activity.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
-      href: 'https://docs.microsoft.com/cli/azure/managedservices?view=azure-cli-latest'
+    - name: Azure CLI
+      href: /cli/azure/managedservices
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.managedservices/?view=azps-2.4.0#managed_services'
+      href: /powershell/module/az.managedservices#managed_services
     - name: Azure SDK für .NET
-      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.Management.ManagedServices?view=azure-dotnet'
+      href: /dotnet/api/Microsoft.Azure.Management.ManagedServices
     - name: Azure SDK für .NET (NuGet)
       href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/'
     - name: Azure SDK für Python
-      href: 'https://docs.microsoft.com/python/api/azure-mgmt-managedservices'
+      href: /python/api/azure-mgmt-managedservices
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/managedservices/'
+      href: /rest/api/managedservices/
     - name: OpenAPI
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2018-06-01-preview'
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./samples/policy-reference.md
+    - name: Terraform
+      href: 'https://www.terraform.io/docs/providers/azurerm/r/lighthouse_assignment.html'
 - name: Ressourcen
   items:
+    - name: Microsoft Q&A (Fragen und Antworten) für Azure Lighthouse
+      href: /answers/topics/azure-lighthouse.html
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: UserVoice
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-lighthouse&regions=all'
+    - name: Produktfeedback
       href: 'https://feedback.azure.com/forums/922753'

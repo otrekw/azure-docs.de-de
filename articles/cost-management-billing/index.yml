@@ -1,0 +1,140 @@
+### YamlMime:Landing
+title: Dokumentation zur Azure-Kostenverwaltung und -Abrechnung
+summary: Dank Azure Cost Management + Billing können Sie Ihre Azure-Rechnung nachvollziehen, Ihr Abrechnungskonto und Ihre Abonnements verwalten, Azure-Ausgaben überwachen und kontrollieren sowie die Ressourcennutzung optimieren. Erfahren Sie, wie Sie Kosten analysieren, Budgets erstellen und verwalten, Daten exportieren und Empfehlungen prüfen und darauf reagieren.
+metadata:
+  title: Azure-Kostenverwaltung und Abrechnung
+  description: Dank Azure Cost Management + Billing können Sie Ihre Azure-Rechnung nachvollziehen, Ihr Abrechnungskonto und Ihre Abonnements verwalten, Azure-Ausgaben überwachen und kontrollieren sowie die Ressourcennutzung optimieren. Erfahren Sie, wie Sie Kosten analysieren, Budgets erstellen und verwalten, Daten exportieren und Empfehlungen prüfen und darauf reagieren.
+  ms.service: cost-management-billing
+  ms.subservice: common
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.date: 11/21/2020
+  ms.openlocfilehash: 4b3308b7475d9f1adc5446907e19d363fc4faca0
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92367022"
+landingContent:
+- title: Analysieren Ihrer Kosten
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was sind Kostenverwaltung und Abrechnung?
+      url: cost-management-billing-overview.md
+  - linkListType: get-started
+    links:
+    - text: Lernen in Ihrem eigenen Tempo
+      url: /learn/paths/control-spending-manage-bills/?WT.mc_id=ignite2020_collections
+    - text: Videos zu Azure Cost Management
+      url: https://www.youtube.com/c/AzureCostManagement
+    - text: Beginn der Kostenanalyse
+      url: costs/quick-acm-cost-analysis.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verwenden der Kostenanalyse für häufige Aufgaben
+      url: costs/cost-analysis-common-uses.md
+    - text: Analysieren von Kosten mit der Power BI-Vorlagen-App
+      url: ./costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md
+    - text: Herstellen einer Verbindung mit Power BI Desktop
+      url: /power-bi/desktop-connect-azure-cost-management
+  - linkListType: tutorial
+    links:
+    - text: Überprüfen Ihrer Einzelkontorechnung
+      url: understand/review-individual-bill.md
+    - text: Überprüfen der Rechnung Ihrer Microsoft-Kundenvereinbarung
+      url: understand/review-customer-agreement-bill.md
+    - text: Überprüfen der Enterprise Agreement-Rechnung
+      url: understand/review-enterprise-agreement-bill.md
+- title: Verwalten Ihrer Kosten
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Erstellen und Verwalten von Budgets
+      url: costs/tutorial-acm-create-budgets.md
+    - text: Exportieren von Kosten und Nutzungsdaten
+      url: costs/tutorial-export-acm-data.md
+  - linkListType: concept
+    links:
+    - text: Verwalten der Kosten per Automatisierung
+      url: ./costs/manage-automation.md
+    - text: Erläuterung der Nutzungsbedingungen
+      url: understand/understand-usage.md
+    - text: Erläuterung der Rechnungsbedingungen
+      url: understand/understand-invoice.md
+    - text: 'Microsoft-Kundenvereinbarung: Nutzungsbedingungen'
+      url: understand/mca-understand-your-usage.md
+    - text: 'Microsoft-Kundenvereinbarung: Rechnungsbedingungen'
+      url: understand/mca-understand-your-invoice.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verwenden von Kostenwarnungen
+      url: costs/cost-mgt-alerts-monitor-usage-spending.md
+    - text: Anzeigen und Herunterladen Ihrer Azure-Rechnung
+      url: understand/download-azure-invoice.md
+    - text: Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren
+      url: understand/download-azure-daily-usage.md
+- title: Optimieren Ihrer Kosten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure Cost Management – bewährte Methoden
+      url: costs/cost-mgt-best-practices.md
+    - text: Geld sparen mit Azure-Reservierungen
+      url: reservations/save-compute-costs-reservations.md
+  - linkListType: tutorial
+    links:
+    - text: Reagieren auf Empfehlungen
+      url: costs/tutorial-acm-opt-recommendations.md
+  - linkListType: how-to-guide
+    links:
+    - text: Analysieren unerwarteter Gebühren
+      url: understand/analyze-unexpected-charges.md
+  - linkListType: learn
+    links:
+    - text: Beginnen Sie heute mit der Optimierung ihrer Kosten.
+      url: https://azure.microsoft.com/overview/cost-optimization/
+    - text: Vorhersagen von Kosten und Optimieren von Ausgaben für Azure
+      url: /learn/modules/predict-costs-and-optimize-spending/
+    - text: Microsoft Azure Well-Architected Framework – Kostenoptimierung
+      url: /learn/modules/azure-well-architected-cost-optimization/
+- title: Konfigurieren der Kostenverwaltung und Abrechnung
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Verstehen von und Arbeiten mit Bereichen
+      url: costs/understand-work-scopes.md
+    - text: Grundlegendes zu Cost Management-Daten
+      url: costs/understand-cost-mgt-data.md
+    - text: EA-Rollen in Azure
+      url: manage/understand-ea-roles.md
+    - text: Microsoft-Kundenvereinbarungsrollen in Azure
+      url: manage/understand-mca-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Zuweisen des Zugriffs auf Kostenverwaltungsdaten
+      url: costs/assign-access-acm-data.md
+    - text: Anzeigen der Abrechnungskonten
+      url: manage/view-all-accounts.md
+    - text: Erstellen eines zusätzlichen Abonnements
+      url: manage/create-subscription.md
+    - text: Ändern der Kreditkarte
+      url: manage/change-credit-card.md
+    - text: Ändern des Administrators
+      url: manage/add-change-subscription-administrator.md
+    - text: Zahlung per Rechnung
+      url: manage/pay-by-invoice.md
+- title: Überprüfen der Konten für die Microsoft-Kundenvereinbarung
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Abrechnungskonten für Microsoft-Kundenvereinbarung
+      url: understand/mca-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Anzeigen und Herunterladen von Steuerdokumenten
+      url: understand/mca-download-tax-document.md
+    - text: Bezahlen Ihrer Rechnung für die Microsoft-Kundenvereinbarung
+      url: understand/pay-bill.md

@@ -1,25 +1,25 @@
 ---
-title: Kopieren von Daten aus Zoho mithilfe von Azure Data Factory (Vorschauversion) | Microsoft-Dokumentation
+title: Kopieren von Daten aus Zoho mithilfe von Azure Data Factory (Vorschauversion)
 description: Erfahren Sie, wie Daten aus Zoho mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: e87ec0f24c07cc703b623043080d8968d08e0817
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 78e7fc6b2a4c9804fbba60aa9946cc612b494461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089039"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87531284"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Kopieren von Daten aus Zoho mithilfe von Azure Data Factory (Vorschauversion)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Zoho zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -36,6 +36,8 @@ Der Zoho-Connector wird für die folgenden Aktivitäten unterstützt:
 
 Sie können Daten aus Zoho in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
+Dieser Connector unterstützt die Xero-Zugriffstokenauthentifizierung und OAuth 2.0-Authentifizierung.
+
 Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Konnektivität. Daher müssen Sie mit diesem Connector keinen Treiber manuell installieren.
 
 ## <a name="getting-started"></a>Erste Schritte
@@ -51,13 +53,19 @@ Folgende Eigenschaften werden für den mit Zoho verknüpften Dienst unterstützt
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Zoho** | Ja |
+| connectionProperties | Eine Gruppe von Eigenschaften, die definiert, wie eine Verbindung mit Zoho hergestellt werden soll | Ja |
+| ***Unter `connectionProperties`:*** | | |
 | endpoint | Der Endpunkt des Zoho-Servers (`crm.zoho.com/crm/private`). | Ja |
+| authenticationType | Zulässige Werte sind `OAuth_2.0` und `Access Token`. | Ja |
+| clientId | Die Client-ID, die Ihrer Zoho-Anwendung zugeordnet ist | Ja, für die OAuth 2.0-Authentifizierung | 
+| clientSecrect | Das Clientgeheimnis, das Ihrer Zoho-Anwendung zugeordnet ist Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja, für die OAuth 2.0-Authentifizierung | 
+| refreshToken | Das OAuth 2.0-Aktualisierungstoken, das Ihrer Zoho-Anwendung zugeordnet ist und zum Aktualisieren des Zugriffstokens verwendet wird, wenn es abläuft. Das Aktualisierungstoken läuft nie ab. Zum Abrufen eines Aktualisierungstokens müssen Sie den Zugriffstyp `offline` anfordern. Weitere Informationen finden Sie in [diesem Artikel](https://www.zoho.com/crm/developer/docs/api/auth-request.html). <br>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md).| Ja, für die OAuth 2.0-Authentifizierung |
 | accessToken | Das Zugriffstoken für die Zoho-Authentifizierung. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein |
-| useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein |
-| usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein |
+| useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
+| usePeerVerification | Gibt an, ob die Identität des Servers überprüft werden soll, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
 
-**Beispiel:**
+**Beispiel: OAuth 2.0-Authentifizierung**
 
 ```json
 {
@@ -65,11 +73,50 @@ Folgende Eigenschaften werden für den mit Zoho verknüpften Dienst unterstützt
     "properties": {
         "type": "Zoho",
         "typeProperties": {
-            "endpoint" : "crm.zoho.com/crm/private",
-            "accessToken": {
-                 "type": "SecureString",
-                 "value": "<accessToken>"
-            }
+            "connectionProperties": { 
+                "authenticationType":"OAuth_2.0", 
+                "endpoint": "crm.zoho.com/crm/private", 
+                "clientId": "<client ID>", 
+                "clientSecrect": {
+                    "type": "SecureString",
+                    "value": "<client secret>"
+                },
+                "accessToken": {
+                    "type": "SecureString",
+                    "value": "<access token>"
+                }, 
+                "refreshToken": {
+                    "type": "SecureString",
+                    "value": "<refresh token>"
+                }, 
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true, 
+                "usePeerVerification": true
+            }
+        }
+    }
+}
+```
+
+**Beispiel: Zugriffstokenauthentifizierung**
+
+```json
+{
+    "name": "ZohoLinkedService",
+    "properties": {
+        "type": "Zoho",
+        "typeProperties": {
+            "connectionProperties": { 
+                "authenticationType":"Access Token", 
+                "endpoint": "crm.zoho.com/crm/private", 
+                "accessToken": {
+                    "type": "SecureString",
+                    "value": "<access token>"
+                }, 
+                "useEncryptedEndpoints": true, 
+                "useHostVerification": true, 
+                "usePeerVerification": true
+            }
         }
     }
 }
@@ -84,7 +131,7 @@ Legen Sie zum Kopieren von Daten aus Zoho die „type“-Eigenschaft des Dataset
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **ZohoObject** | Ja |
-| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
+| tableName | Der Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -114,7 +161,7 @@ Legen Sie zum Kopieren von Daten aus Zoho den Quelltyp in der Kopieraktivität a
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **ZohoSource** | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Accounts"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Accounts"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

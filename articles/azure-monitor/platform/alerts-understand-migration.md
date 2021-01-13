@@ -1,45 +1,33 @@
 ---
-title: Funktionsweise des Tools für die freiwillige Migration von Azure Monitor-Warnungen
-description: Enthält eine Beschreibung der Funktionsweise des Migrationstools für Warnungen sowie Informationen zur Problembehandlung.
-author: snehithm
-ms.service: azure-monitor
+title: Grundlegendes zur Migration von Azure Monitor-Warnungen
+description: Enthält eine Beschreibung der Funktionsweise der Warnungsmigration sowie Informationen zur Problembehandlung.
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: snmuvva
+ms.author: yalavi
+author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: c3d5bb58989fe87ddf9a185dbae926a71edf1590
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061560"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875919"
 ---
-# <a name="understand-how-the-migration-tool-works"></a>Funktionsweise des Migrationstools
+# <a name="understand-migration-options-to-newer-alerts"></a>Grundlegendes zu den Optionen zur Migration zu neueren Warnungen
 
-Wie [bereits angekündigt](monitoring-classic-retirement.md) werden klassische Warnungen in Azure Monitor ab 31. August 2019 (ursprünglich 30. Juni 2019) eingestellt. Im Azure-Portal steht ein Migrationstool für Kunden bereit, die klassische Warnungsregeln verwenden und die Migration selbst auslösen möchten.
+Klassische Warnungen werden [eingestellt](./monitoring-classic-retirement.md), sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. In Kürze wird ein neues Datum für die Migration verbleibender Warnungen bekannt gegeben, und zwar für [Azure Government-Cloud](../../azure-government/documentation-government-welcome.md) und [Azure China 21Vianet](https://docs.azure.cn/).
 
-In diesem Artikel wird erläutert, wie das Tool für die freiwillige Migration funktioniert. Außerdem werden Abhilfemaßnahmen für einige häufige Probleme beschrieben.
-
-> [!NOTE]
-> Aufgrund einer Verzögerung beim Rollout des Migrationstools wurde der Deaktivierungstermin vom ursprünglich angekündigten Datum, dem 30. Juni 2019, auf den [31. August 2019 verschoben](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/).
-
-## <a name="classic-alert-rules-that-will-not-be-migrated"></a>Klassische Warnungsregeln, die nicht migriert werden
+In diesem Artikel wird erläutert, wie das Tool für die manuelle Migration und die freiwillige Migration verwendet wird, mit dem die verbleibenden Warnungsregeln migriert werden. Außerdem werden Abhilfemaßnahmen für einige häufige Probleme beschrieben.
 
 > [!IMPORTANT]
 > Aktivitätsprotokollwarnungen (einschließlich Service Health-Warnungen) und Protokollwarnungen sind von der Migration nicht betroffen. Die Migration gilt nur für klassische Warnungsregeln, die [hier](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform) beschrieben werden.
 
-Zwar können mit dem Tool fast alle [klassischen Warnungsregeln](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform) migriert werden, doch gibt es einige Ausnahmen. Die folgenden Warnungsregeln werden mit dem Tool nicht migriert (bzw. werden auch während der automatischen Migration ab September 2019 nicht migriert):
-
-- Klassische Warnungsregeln für VM-Gastmetriken (sowohl Windows als auch Linux). Informationen finden Sie in der [Anleitung zum erneuten Erstellen solcher Warnungsregeln in neuen Metrikwarnungen](#guest-metrics-on-virtual-machines) weiter unten in diesem Artikel.
-- Klassische Warnungsregeln für Metriken von klassischem Speicher. Informationen finden Sie in der [Anleitung zum Überwachen Ihrer klassischen Speicherkonten](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/).
-- Klassische Warnungsregeln in einigen Speicherkontometriken. Informationen finden Sie unter den [Details](#storage-account-metrics) weiter unten in diesem Artikel.
-- Klassische Warnungsregeln für einige Cosmos DB-Metriken. Informationen finden Sie unter den [Details](#cosmos-db-metrics) weiter unten in diesem Artikel.
-- Klassische Warnungsregeln für alle Metriken klassischer virtueller Computer und Clouddienste (Microsoft.ClassicCompute/virtualMachines and Microsoft.ClassicCompute/domainNames/slots/roles). Informationen finden Sie unter den [Details](#classic-compute-metrics) weiter unten in diesem Artikel.
-
-Wenn Ihr Abonnement über klassische Regeln dieser Art verfügt, müssen Sie sie manuell migrieren. Da wir keine automatische Migration bereitstellen können, funktionieren alle vorhandenen klassischen Metrikwarnungen noch bis Juni 2020. Diese Verlängerung gibt Ihnen Zeit für die Umstellung auf neue Warnungen. Sie können auch bis Juni 2020 weiterhin neue klassische Warnungen zu den oben aufgeführten Ausnahmen erstellen. Für alles andere können aber nach August 2019 keine neuen klassischen Warnungen mehr erstellt werden.
-
 > [!NOTE]
-> Wenn Ihre klassischen Warnungsregeln, neben den oben aufgeführten Ausnahmen, ungültig sind (d.h. sie gelten für [veraltete Metriken](#classic-alert-rules-on-deprecated-metrics) oder Ressourcen, die gelöscht wurden) werden sie während der freiwilligen Migration nicht migriert. Derartige ungültige klassische Warnungsregeln werden bei der automatischen Migration gelöscht.
+> Wenn Ihre klassischen Warnungsregeln ungültig sind (d. h. für [veraltete Metriken](#classic-alert-rules-on-deprecated-metrics) oder Ressourcen gelten, die gelöscht wurden), werden sie nicht migriert und sind nach Außerbetriebnahme des Diensts nicht mehr verfügbar.
+
+## <a name="manually-migrating-classic-alerts-to-newer-alerts"></a>Manuelles Migrieren klassischer Warnungen zu neueren Warnungen
+
+Kunden, die ihre verbleibenden Warnungen manuell migrieren möchten, können dies anhand der folgenden Abschnitte bereits tun. In diesen Abschnitten werden auch Metriken definiert, die vom Ressourcenanbieter eingestellt werden und derzeit nicht direkt migriert werden können.
 
 ### <a name="guest-metrics-on-virtual-machines"></a>Gastmetriken auf virtuellen Computern
 
@@ -65,7 +53,7 @@ Alle klassischen Warnungen in Speicherkonten können migriert werden, mit Ausnah
 - SASThrottlingError
 - ThrottlingError
 
-Klassische Warnungsregeln für Metriken vom Typ „Percent“ müssen basierend auf der [Zuordnung zwischen alten und neuen Speichermetriken](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics) migriert werden. Schwellenwerte müssen entsprechend geändert werden, da die neue verfügbare Metrik eine absolute Metrik ist.
+Klassische Warnungsregeln für Metriken vom Typ „Percent“ müssen basierend auf der [Zuordnung zwischen alten und neuen Speichermetriken](../../storage/common/storage-metrics-migration.md#metrics-mapping-between-old-metrics-and-new-metrics) migriert werden. Schwellenwerte müssen entsprechend geändert werden, da die neue verfügbare Metrik eine absolute Metrik ist.
 
 Die klassischen Warnungsregeln für AnonymousThrottlingError, SASThrottlingError und ThrottlingError müssen in zwei neue Warnungen aufgeteilt werden, da es keine kombinierte Metrik gibt, die über die gleiche Funktionalität verfügt. Schwellenwerte müssen entsprechend angepasst werden.
 
@@ -105,7 +93,7 @@ Warnungen zu Metriken für fehlgeschlagene Mongo-Anforderungen müssen in mehrer
 
 ### <a name="classic-compute-metrics"></a>Klassische Computemetriken
 
-Die Warnungen zu klassischen Computemetriken werden nicht mithilfe des Migrationstools migriert, da klassische Computeressourcen für neue Warnungen noch nicht unterstützt werden. Die Unterstützung für neue Warnungen zu diesen Ressourcentypen wird in Zukunft hinzugefügt. Sobald sie verfügbar ist, müssen die Kunden vor Juni 2020 neue entsprechende Warnungsregeln basierend auf ihren klassischen Warnungsregeln neu erstellen.
+Die Warnungen zu klassischen Computemetriken werden nicht mithilfe des Migrationstools migriert, da klassische Computeressourcen für neue Warnungen noch nicht unterstützt werden. Die Unterstützung für neue Warnungen zu diesen Ressourcentypen befindet sich zurzeit in der Public Preview. Kunden können basierend auf ihren klassischen Warnungsregeln neue äquivalente Warnungsregeln erstellen.
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>Klassische Warnungsregeln für veraltete Metriken
 
@@ -162,7 +150,7 @@ Bei Speicherkontodiensten wie Blob Storage, Table Storage, Azure Files und Queue
 | SASSuccess | Transaktionsmetrik mit den Dimensionen „ResponseType“=„Success“ und „Authentication“ = „SAS“ | |
 | ServerOtherError | Transaktionsmetrik mit der Dimension „ResponseType“=„ServerOtherError“ | |
 | ServerTimeOutError | Transaktionsmetrik mit der Dimension „ResponseType“=„ServerTimeOutError“  | |
-| Erfolgreich | Transaktionsmetrik mit der Dimension „ResponseType“=„Success“ | |
+| Erfolg | Transaktionsmetrik mit der Dimension „ResponseType“=„Success“ | |
 | TotalBillableRequests| Transaktionen | |
 | TotalEgress | Ausgehende Daten | |
 | TotalIngress | Eingehende Daten | |
@@ -262,14 +250,16 @@ Aufgrund von einigen kürzlich durchgeführten Änderungen an den klassischen Wa
 
 ### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>Bereichssperre verhindert die Migration Ihrer Regeln
 
-Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erstellt und anschließend klassische Warnungsregeln gelöscht. Eine Bereichssperre kann jedoch das Erstellen oder Löschen von Ressourcen verhindern. Je nach Bereichssperre können einige oder alle Regeln nicht migriert werden. Sie können dieses Problem beheben, indem Sie die Bereichssperre für das Abonnement, die Ressourcengruppe oder die Ressource aufheben, die im [Migrationstool](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel) aufgeführt ist, und die Migration erneut auslösen. Die Bereichssperre kann nicht deaktiviert werden und muss für die Dauer des Migrationsprozesses entfernt werden. [Erfahren Sie mehr über das Verwalten von Bereichssperren](../../azure-resource-manager/resource-group-lock-resources.md#portal).
+Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erstellt und anschließend klassische Warnungsregeln gelöscht. Eine Bereichssperre kann jedoch das Erstellen oder Löschen von Ressourcen verhindern. Je nach Bereichssperre können einige oder alle Regeln nicht migriert werden. Sie können dieses Problem beheben, indem Sie die Bereichssperre für das Abonnement, die Ressourcengruppe oder die Ressource aufheben, die im [Migrationstool](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel) aufgeführt ist, und die Migration erneut auslösen. Die Bereichssperre kann nicht deaktiviert werden und muss für die Dauer des Migrationsprozesses entfernt werden. [Erfahren Sie mehr über das Verwalten von Bereichssperren](../../azure-resource-manager/management/lock-resources.md#portal).
 
 ### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>Richtlinie mit Auswirkung „deny“ verhindert die Migration Ihrer Regeln
 
-Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erstellt und anschließend klassische Warnungsregeln gelöscht. Eine Richtlinie kann jedoch das Erstellen von Ressourcen verhindern. Je nach Richtlinie können einige oder alle Regeln nicht migriert werden. Die Richtlinien, die den Prozess blockieren, werden im [Migrationstool](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel) aufgeführt. Dieses Problem lässt sich auf eine der folgenden Arten beheben:
+Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erstellt und anschließend klassische Warnungsregeln gelöscht. Eine [Azure Policy](../../governance/policy/index.yml)-Zuweisung kann jedoch das Erstellen von Ressourcen verhindern. Je nach Richtlinienzuweisung können einige oder alle Regeln nicht migriert werden. Die Richtlinienzuweisungen, die den Prozess blockieren, werden im [Migrationstool](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel) aufgeführt. Dieses Problem lässt sich auf eine der folgenden Arten beheben:
 
-- Ausschließen der Abonnements oder Ressourcengruppen von der Richtlinienzuweisung für die Dauer des Migrationsprozesses. [Erfahren Sie mehr über das Verwalten eines Ausschlussbereichs für Richtlinien](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion).
-- Entfernen oder Ändern des Effekts in „audit“ oder „append“ (wodurch beispielsweise Probleme im Zusammenhang mit fehlenden Tags gelöst werden können). [Erfahren Sie mehr über das Verwalten eines Effekts für Richtlinien](../../governance/policy/concepts/definition-structure.md#policy-rule).
+- Schließen Sie Abonnements, Ressourcengruppen oder einzelnen Ressourcen für die Dauer des Migrationsprozesses aus der Richtlinienzuweisung aus. [Erfahren Sie mehr über das Verwalten von Ausschlussbereichen für Richtlinien](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion).
+- Legen Sie den Erzwingungsmodus in der Richtlinienzuweisung auf **Deaktiviert** fest. [Erfahren Sie mehr über die enforcementMode-Eigenschaft einer Richtlinienzuweisung.](../../governance/policy/concepts/assignment-structure.md#enforcement-mode)
+- Legen Sie eine Azure Policy-Ausnahme (Vorschau) für die Abonnements, Ressourcengruppen oder einzelnen Ressource in der Richtlinienzuweisung fest. [Erfahren Sie mehr über die Ausnahmestruktur von Azure Policy.](../../governance/policy/concepts/exemption-structure.md)
+- Entfernen Sie die Auswirkung einer Richtlinie, oder ändern Sie die Auswirkung in „disabled“, „audit“, „append“ oder „modify“ (wodurch beispielsweise Probleme im Zusammenhang mit fehlenden Tags gelöst werden können). [Erfahren Sie mehr über das Verwalten von Richtlinienauswirkungen](../../governance/policy/concepts/definition-structure.md#policy-rule).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

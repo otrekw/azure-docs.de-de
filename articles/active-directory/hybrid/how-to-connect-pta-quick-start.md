@@ -1,5 +1,5 @@
 ---
-title: Azure AD-Passthrough-Authentifizierung – Schnellstart | Microsoft-Dokumentation
+title: Azure AD-Pass-Through-Authentifizierung – Schnellstart | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie die ersten Schritte für die Azure AD-Passthrough-Authentifizierung (Azure Active Directory) ausführen.
 services: active-directory
 keywords: Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden
@@ -11,19 +11,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 04/15/2019
+ms.topic: how-to
+ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba5455680647b90b113d31c55816a2e0b0131b33
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5394a2829af4b0cd7a1c817f6aad4ca5451cc4bc
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60243667"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792431"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory-Passthrough-Authentifizierung: Schnellstart
+# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory-Passthrough-Authentifizierung: Schnellstart
 
 ## <a name="deploy-azure-ad-pass-through-authentication"></a>Bereitstellen der Azure AD-Passthrough-Authentifizierung
 
@@ -32,43 +32,54 @@ Mit der Azure Active Directory-Passthrough-Authentifizierung (Azure AD) können 
 >[!IMPORTANT]
 >Wenn Sie von AD FS (oder andere Verbundtechnologien nutzen) zur Passthrough-Authentifizierung migrieren, wird dringend empfohlen, dem ausführlichen [Leitfaden zur Bereitstellung](https://aka.ms/adfstoPTADPDownload) zu folgen.
 
+>[!NOTE]
+>Wenn Sie die Pass-Through-Authentifizierung in der Azure Government-Cloud bereitstellen, lesen Sie die [Überlegungen zur Hybrididentität für Azure Government](./reference-connect-government-cloud.md).
+
 Befolgen Sie diese Anweisungen, um die Passthrough-Authentifizierung bereitzustellen:
 
 ## <a name="step-1-check-the-prerequisites"></a>Schritt 1: Überprüfen der Voraussetzungen
 
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
+>[!IMPORTANT]
+>Vom Sicherheitsstandpunkt aus sollten Administratoren den Server, auf dem der PTA-Agent ausgeführt wird, so behandeln, als sei er ein Domänencontroller.  Die PTA-Agent-Server sollten wie in [Sichern von Domänencontrollern gegen Angriffe](/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) beschrieben geschützt werden.
+
 ### <a name="in-the-azure-active-directory-admin-center"></a>Im Azure Active Directory Admin Center
 
-1. Erstellen Sie in Ihrem Azure AD-Mandanten ein auf die Cloud beschränktes globales Administratorkonto. Auf diese Weise können Sie die Konfiguration Ihres Mandanten verwalten, falls Ihre lokalen Dienste ausfallen oder nicht verfügbar sind. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../active-directory-users-create-azure-portal.md). Die Ausführung dieses Schritts ist sehr wichtig, damit sichergestellt ist, dass Sie für Ihren Mandanten nicht gesperrt werden.
-2. Fügen Sie Ihrem Azure AD-Mandanten mindestens einen [benutzerdefinierten Domänennamen](../active-directory-domains-add-azure-portal.md) hinzu. Ihre Benutzer können sich mit einem dieser Domänennamen anmelden.
+1. Erstellen Sie in Ihrem Azure AD-Mandanten ein auf die Cloud beschränktes globales Administratorkonto. Auf diese Weise können Sie die Konfiguration Ihres Mandanten verwalten, falls Ihre lokalen Dienste ausfallen oder nicht verfügbar sind. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../fundamentals/add-users-azure-active-directory.md). Die Ausführung dieses Schritts ist sehr wichtig, damit sichergestellt ist, dass Sie für Ihren Mandanten nicht gesperrt werden.
+2. Fügen Sie Ihrem Azure AD-Mandanten mindestens einen [benutzerdefinierten Domänennamen](../fundamentals/add-custom-domain.md) hinzu. Ihre Benutzer können sich mit einem dieser Domänennamen anmelden.
 
 ### <a name="in-your-on-premises-environment"></a>In Ihrer lokalen Umgebung
 
-1. Identifizieren Sie einen Server mit Windows Server 2012 R2 oder höher, auf dem Azure AD Connect ausgeführt werden soll. Wenn nicht bereits aktiviert, [aktivieren Sie TLS 1.2 auf dem Server](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Fügen Sie den Server derselben Active Directory-Gesamtstruktur wie die Benutzer hinzu, deren Kennwörter überprüft werden müssen.
+1. Identifizieren Sie einen Server mit Windows Server 2012 R2 oder höher, auf dem Azure AD Connect ausgeführt werden soll. Wenn nicht bereits aktiviert, [aktivieren Sie TLS 1.2 auf dem Server](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Fügen Sie den Server derselben Active Directory-Gesamtstruktur wie die Benutzer hinzu, deren Kennwörter überprüft werden müssen. Beachten Sie, dass die Installation des Passthroughauthentifizierungs-Agents unter Windows Server Core-Versionen nicht unterstützt wird. 
 2. Installieren Sie die [aktuelle Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) auf dem Server, den Sie im vorherigen Schritt ausgewählt haben. Wenn Azure AD Connect bereits ausgeführt wird, vergewissern Sie sich, dass die Version 1.1.750.0 oder höher lautet.
 
     >[!NOTE]
-    >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie Informationen dazu in den [Versionshinweisen zu Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470).
+    >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie Informationen dazu in den [Versionshinweisen zu Azure AD Connect](./reference-connect-version-history.md).
 
 3. Identifizieren Sie mindestens einen weiteren Server (mit Windows Server 2012 R2 oder höher, mit aktivierter TLS 1.2), auf dem eigenständige Authentifizierungs-Agents ausgeführt werden können. Diese zusätzlichen Server werden benötigt, um die Hochverfügbarkeit von Anmeldeanforderungen sicherzustellen. Fügen Sie die Server derselben Active Directory-Gesamtstruktur wie die Benutzer hinzu, deren Kennwörter überprüft werden müssen.
 
     >[!IMPORTANT]
-    >Für Produktionsumgebungen wird empfohlen, dass Sie mindestens drei Authentifizierungs-Agents auf Ihrem Mandanten ausführen. In einem System können maximal 40 Authentifizierungs-Agents pro Mandant installiert werden. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+    >Für Produktionsumgebungen wird empfohlen, dass Sie mindestens drei Authentifizierungs-Agents auf Ihrem Mandanten ausführen. In einem System können maximal 40 Authentifizierungs-Agents pro Mandant installiert werden. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
 4. Wenn zwischen Ihren Servern und Azure AD eine Firewall eingerichtet wurde, konfigurieren Sie die folgenden Elemente:
    - Stellen Sie sicher, dass Authentifizierung-Agents *ausgehende* Anforderungen an Azure AD über die folgenden Ports senden können:
 
      | Portnummer | Wie diese verwendet wird |
      | --- | --- |
-     | **80** | Herunterladen der Zertifikatssperrlisten (CRL) bei der Überprüfung des SSL-Zertifikats |
+     | **80** | Herunterladen der Zertifikatsperrlisten (Certificate Revocation Lists, CRLs) bei der Überprüfung des TLS/SSL-Zertifikats |
      | **443** | Verarbeitung der gesamten ausgehende Kommunikation mit dem Dienst |
      | **8080** (optional) | Authentifizierungs-Agents melden ihren Status alle zehn Minuten über Port 8080, wenn Port 443 verfügbar ist. Dieser Status wird im Azure AD-Portal angezeigt. Port 8080 wird _nicht_ für Benutzeranmeldungen verwendet. |
      
      Wenn Ihre Firewall Regeln gemäß Ursprungsbenutzern erzwingt, öffnen Sie diese Ports für den Datenverkehr aus Windows-Diensten, die als Netzwerkdienst ausgeführt werden.
-   - Wenn Ihre Firewall oder ihr Proxy DNS-Whitelisting zulässt, beschränken Sie Verbindungen mit **\*.msappproxy.net** und **\*.servicebus.windows.net** mittels Whitelist. Aktivieren Sie andernfalls den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden.
+   - Wenn Ihre Firewall oder Ihr Proxy das Hinzufügen von DNS-Einträgen zu einer Positivliste zulässt, fügen Sie Verbindungen mit **\*.msappproxy.net** und **\*.servicebus.windows.net** hinzu. Aktivieren Sie andernfalls den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden.
    - Ihre Authentifizierungs-Agents benötigen für den anfänglichen Registrierungsprozess Zugriff auf **login.windows.net** und **login.microsoftonline.com**. Öffnen Sie Ihre Firewall auch für diese URLs.
-   - Geben Sie für die Überprüfung des Zertifikats folgende URLs frei: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80** und **www\.microsoft.com:80**. Da diese URLs für die Überprüfung des Zertifikats in Verbindung mit anderen Microsoft-Produkten verwendet werden, haben Sie diese möglicherweise bereits freigegeben.
+    - Geben Sie zur Zertifikatüberprüfung die folgenden URLs frei: **crl3.digicert.com:80**, **crl4.digicert.com:80**, **ocsp.digicert.com:80**, **www\.d-trust.net:80**, **root-c3-ca2-2009.ocsp.d-trust.net:80**, **crl.microsoft.com:80**, **oneocsp.microsoft.com:80** und **ocsp.msocsp.com:80**. Da diese URLs für die Überprüfung des Zertifikats in Verbindung mit anderen Microsoft-Produkten verwendet werden, haben Sie diese möglicherweise bereits freigegeben.
+
+### <a name="azure-government-cloud-prerequisite"></a>Voraussetzungen für die Azure Government-Cloud
+Laden Sie vor dem Aktivieren der Pass-Through-Authentifizierung über Azure AD Connect in Schritt 2 das neueste Release des PTA-Agents im Azure-Portal herunter.  Sie müssen sicherstellen, dass die Agent-Version **1.5.1742.0** lautet oder höher.  Informationen zum Überprüfen des Agents finden Sie unter [Upgrade von Authentifizierungs-Agents](how-to-connect-pta-upgrade-preview-authentication-agents.md).
+
+Nachdem Sie das neueste Release des Agents heruntergeladen haben, fahren Sie anhand der folgenden Anweisungen fort, um die Pass-Through-Authentifizierung über Azure AD Connect zu konfigurieren.
 
 ## <a name="step-2-enable-the-feature"></a>Schritt 2: Aktivieren des Features
 
@@ -109,13 +120,13 @@ Jetzt können sich Benutzer aus allen verwalteten Domänen Ihres Mandanten mit d
 Wenn Sie die Bereitstellung der Passthrough-Authentifizierung in einer Produktionsumgebung planen, sollten Sie weitere eigenständige Authentifizierungs-Agents installieren. Installieren Sie Authentifizierungs-Agents auf _anderen_ Servern als dem, auf dem Azure AD Connect ausgeführt wird. Mit dieser Einrichtung erzielen Sie Hochverfügbarkeit für Anforderungen zur Benutzeranmeldung.
 
 >[!IMPORTANT]
->Für Produktionsumgebungen wird empfohlen, dass Sie mindestens drei Authentifizierungs-Agents auf Ihrem Mandanten ausführen. In einem System können maximal 40 Authentifizierungs-Agents pro Mandant installiert werden. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+>Für Produktionsumgebungen wird empfohlen, dass Sie mindestens drei Authentifizierungs-Agents auf Ihrem Mandanten ausführen. In einem System können maximal 40 Authentifizierungs-Agents pro Mandant installiert werden. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
 Durch die Installation von mehreren Passthrough-Authentifizierungs-Agents wird zwar Hochverfügbarkeit, jedoch kein deterministischer Lastenausgleich zwischen den Authentifizierungs-Agents sichergestellt. Berücksichtigen Sie beim Ermitteln der Anzahl der für Ihren Mandanten erforderlichen Authentifizierungs-Agents die Spitzenlast und die durchschnittliche Last in Bezug auf die Anmeldeanforderungen, die Sie für Ihren Mandanten erwarten. Als Richtwert gilt, dass ein einzelner Authentifizierungs-Agent auf einem Standardserver mit einer CPU mit vier Kernen und 16 GB RAM pro Sekunde 300 bis 400 Authentifizierungen verarbeiten kann.
 
 Um den Netzwerkverkehr abzuschätzen, verwenden Sie die folgende Anleitung zur Skalierung:
-- Jede Anforderung hat eine Nutzlastgröße von (0,5 K + 1 K * anz_agents) Bytes, d. h. Daten von Azure AD zum Authentifizierungs-Agent. Hier gibt „anz_agents“ die Anzahl der für Ihren Mandanten registrierten Authentifizierung-Agents an.
-- Jede Antwort hat eine Nutzlastgröße von 1 K Bytes, d. h. Daten vom Authentifizierungs-Agent zu Azure AD.
+- Jede Anforderung hat eine Nutzlastgröße von (0,5 K + 1 K * Anz_Agents) Byte, d. h. Daten von Azure AD zum Authentifizierungs-Agent. Hier gibt „anz_agents“ die Anzahl der für Ihren Mandanten registrierten Authentifizierung-Agents an.
+- Jede Antwort hat eine Nutzlastgröße von 1 K Byte, d. h. Daten vom Authentifizierungs-Agent zu Azure AD.
 
 Bei den meisten Kunden reichen insgesamt drei Authentifizierungs-Agents aus, um Hochverfügbarkeit und genügend Kapazität bereitzustellen. Es wird empfohlen, die Authentifizierungs-Agents in der Nähe Ihres Domänencontrollers zu installieren, um die Anmeldungslatenz zu verbessern.
 
@@ -140,15 +151,19 @@ Die erste Methode ist die interaktive Bereitstellung, indem einfach die herunter
 Zweitens können Sie auch ein unbeaufsichtigtes Bereitstellungsskript erstellen und ausführen. Dies ist hilfreich, wenn Sie mehrere Authentifizierungs-Agents gleichzeitig bereitstellen oder Authentifizierungs-Agents auf Windows-Servern installieren möchten, auf denen keine Benutzeroberfläche aktiviert ist bzw. auf die Sie nicht mit Remotedesktop zugreifen können. Hier finden Sie die Anweisungen für diesen Ansatz:
 
 1. Führen Sie den folgenden Befehl aus, um einen Authentifizierungs-Agent zu installieren: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
-2. Sie können den Authentifizierungs-Agent mithilfe von Windows PowerShell bei unserem Dienst registrieren. Erstellen Sie ein PowerShell-Anmeldeinformationsobjekt (`$cred`) mit einem globalen Administratorbenutzernamen und -kennwort für Ihren Mandanten. Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei *\<username\>* und *\<password\>* durch die entsprechenden Werte:
+2. Sie können den Authentifizierungs-Agent mithilfe von Windows PowerShell bei unserem Dienst registrieren. Erstellen Sie ein PowerShell-Anmeldeinformationsobjekt (`$cred`) mit einem globalen Administratorbenutzernamen und -kennwort für Ihren Mandanten. Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei *\<username\>* und *\<password\>* :
 
-        $User = "<username>"
-        $PlainPassword = '<password>'
-        $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
-        $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
+  ```powershell
+  $User = "<username>"
+  $PlainPassword = '<password>'
+  $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
+  $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
+  ```
 3. Wechseln Sie zu **C:\Programme\Microsoft Azure AD Connect Authentication Agent**, und führen Sie das folgende Skript unter Verwendung des zuvor erstellten Objekts `$cred` aus:
 
-        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+  ```powershell
+  RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+  ```
 
 >[!IMPORTANT]
 >Wenn ein Authentifizierungs-Agent auf einem virtuellen Computer installiert ist, können Sie den virtuellen Computer nicht klonen, um einen weiteren Authentifizierungs-Agent einzurichten. Diese Methode wird **nicht unterstützt**.

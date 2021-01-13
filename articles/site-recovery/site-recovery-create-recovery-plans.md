@@ -1,22 +1,18 @@
 ---
-title: Erstellen und Anpassen von Wiederherstellungsplänen für die Notfallwiederherstellung mit Azure Site Recovery
+title: Erstellen von Wiederherstellungsplänen in Azure Site Recovery
 description: Hier erfahren Sie, wie Sie Wiederherstellungspläne für die Notfallwiederherstellung mit dem Azure Site Recovery-Dienst erstellen und anpassen | Microsoft-Dokumentation
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
-ms.topic: article
-ms.date: 09/09/2019
-ms.author: raynew
-ms.openlocfilehash: 2ca44ffd26e1b87dd201ed6f274791eadfeb0737
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.topic: how-to
+ms.date: 01/23/2020
+ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814405"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009720"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Erstellen und Anpassen von Wiederherstellungsplänen
 
-Dieser Artikel beschreibt, wie Sie einen Wiederherstellungsplan in [Azure Site Recovery](site-recovery-overview.md) erstellen und anpassen. Bevor Sie beginnen, lesen Sie die [Informationen zu Wiederherstellungsplänen](recovery-plan-overview.md).
+In diesem Artikel wird beschrieben, wie Sie einen Wiederherstellungsplan für Failover in [Azure Site Recovery](site-recovery-overview.md) erstellen und anpassen. Bevor Sie beginnen, lesen Sie die [Informationen zu Wiederherstellungsplänen](recovery-plan-overview.md).
 
 ## <a name="create-a-recovery-plan"></a>Erstellen eines Wiederherstellungsplans
 
@@ -24,22 +20,25 @@ Dieser Artikel beschreibt, wie Sie einen Wiederherstellungsplan in [Azure Site R
 2. Geben Sie unter **Wiederherstellungsplan erstellen** einen Namen für den Plan an.
 3. Wählen Sie eine Quelle und ein Ziel basierend auf den Computern im Plan aus, und wählen Sie dann **Ressourcen-Manager** für das Bereitstellungsmodell aus. Der Quellort muss Computer aufweisen, die für Failover und Wiederherstellung aktiviert sind. 
 
-   **Failover** | **Quelle** | **Ziel** 
+    **Failover** | **Quelle** | **Ziel** 
    --- | --- | ---
-   Azure zu Azure | Azure-Region |Azure-Region
-   VMware zu Azure | Konfigurationsserver | Azure
-   Physische Computer zu Azure | Konfigurationsserver | Azure   
-   Mit VMM verwaltetes Hyper-V zu Azure  | VMM-Anzeigename | Azure
-   Hyper-V ohne VMM zu Azure | Name der Hyper-V-Site | Azure
-   VMM zu VMM |VMM-Anzeigename | VMM-Anzeigename 
+   Azure zu Azure | Auswählen der Azure-Region | Auswählen der Azure-Region
+   VMware zu Azure | Auswählen des Konfigurationsservers | Auswählen von Azure
+   Physische Computer zu Azure | Auswählen des Konfigurationsservers | Auswählen von Azure   
+   Hyper-V in Azure | Auswählen des Hyper-V-Standortnamens | Auswählen von Azure
+   Hyper-V (mit VMM verwaltet) zu Azure  | Auswählen des VMM-Servers | Auswählen von Azure
+  
+    Beachten Sie Folgendes:
+    - Sie können Wiederherstellungspläne sowohl für das Failover zu als auch das Failback von Azure verwenden.
+    - Der Quellort muss Computer aufweisen, die für Failover und Wiederherstellung aktiviert sind.
+    - Ein Wiederherstellungsplan kann Computer mit derselben Quelle und demselben Ziel aufweisen.
+    - Sie können von VMM verwaltete virtuelle VMware- und Hyper-V-Computer nicht in denselben Plan aufnehmen.
+    - VMware-VMs und physische Server können sich im selben Plan befinden.
 
-   > [!NOTE]
-   > Ein Wiederherstellungsplan kann Computer mit derselben Quelle und demselben Ziel aufweisen. Von VMM verwaltete virtuelle VMware- und Hyper-V-Computer dürfen nicht im gleichen Plan enthalten sein. Virtuelle VMware-Computer und physische Server können im gleichen Plan enthalten sein, bei dem die Quelle ein Konfigurationsserver ist.
-
-2. Wählen Sie unter **Virtuelle Computer auswählen** die Computer (oder die Replikationsgruppe) aus, die Sie dem Plan hinzufügen möchten. Klicken Sie dann auf **OK**.
+4. Wählen Sie unter **Virtuelle Computer auswählen** die Computer (oder die Replikationsgruppe) aus, die Sie dem Plan hinzufügen möchten. Klicken Sie dann auf **OK**.
     - Computer werden der Standardgruppe (Gruppe 1) im Plan hinzugefügt. Nach einem Failover werden alle Computer in dieser Gruppe gleichzeitig gestartet.
     - Sie können nur Computer an den von Ihnen angegebenen Quell- und Zielorten auswählen. 
-1. Klicken Sie auf **OK**, um den Plan zu erstellen.
+5. Klicken Sie auf **OK**, um den Plan zu erstellen.
 
 ## <a name="add-a-group-to-a-plan"></a>Hinzufügen einer Gruppe zu einem Plan
 
@@ -52,12 +51,12 @@ Sie erstellen zusätzliche Gruppen und fügen Computer zu verschiedenen Gruppen 
 
 ## <a name="add-a-script-or-manual-action"></a>Hinzufügen eines Skripts oder einer manuellen Aktion
 
-Sie können einen Wiederherstellungsplan anpassen, indem Sie ein Skript oder eine manuelle Aktion hinzufügen. Beachten Sie Folgendes:
+Sie können einen Wiederherstellungsplan anpassen, indem Sie ein Skript oder eine manuelle Aktion hinzufügen. Beachten Sie dabei Folgendes:
 
 - Wenn Sie zu Azure replizieren, können Sie Azure Automation-Runbooks in Ihren Wiederherstellungsplan integrieren. [Weitere Informationen](site-recovery-runbook-automation.md)
 - Wenn Sie von System Center VMM verwaltete virtuelle Hyper-V-Computer replizieren, können Sie ein Skript auf dem lokalen VMM-Server erstellen und in den Wiederherstellungsplan einfügen.
 - Hierbei wird für die Gruppe ein neuer Satz mit Aktionen hinzugefügt. Eine Gruppe von Vorabschritten für „Group 1“ wird beispielsweise mit dem Namen *Group 1: pre-steps* erstellt. Alle Vorabschritte werden in dieser Gruppe aufgelistet. Sie können am primären Standort nur dann ein Skript hinzufügen, wenn Sie einen VMM-Server bereitgestellt haben.
-- Wenn Sie eine manuelle Aktion hinzufügen, wird beim Ausführen des Wiederherstellungsplans an dem Punkt angehalten, an dem Sie die manuelle Aktion eingefügt haben. Ein Dialogfeld fordert Sie auf anzugeben, dass die manuelle Aktion abgeschlossen wurde.
+- Wenn Sie eine manuelle Aktion hinzufügen, wird der Wiederherstellungsplan beim Ausführen an dem Punkt angehalten, an dem Sie die manuelle Aktion eingefügt haben. Ein Dialogfeld fordert Sie auf anzugeben, dass die manuelle Aktion abgeschlossen wurde.
 - Zum Erstellen eines Skripts auf dem VMM-Server folgen Sie den Anweisungen in [diesem Artikel](hyper-v-vmm-recovery-script.md).
 - Skripts können während eines Failovers zum sekundären Standort und während eines Failbacks vom sekundären zum primären Standard angewendet werden. Die Unterstützung hängt von Ihrem Replikationsszenario ab:
     

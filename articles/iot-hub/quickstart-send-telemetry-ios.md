@@ -1,20 +1,23 @@
 ---
-title: 'Schnellstart: Senden von Telemetriedaten an Azure IoT Hub | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung führen Sie eine iOS-Beispielanwendung aus, um simulierte Telemetriedaten an eine IoT Hub-Instanz zu senden und zur Verarbeitung in der Cloud aus der IoT Hub-Instanz zu lesen.
+title: Senden von Telemetriedaten an Azure IoT Hub (iOS) – Schnellstart
+description: Führen Sie eine iOS-Beispielanwendung aus, um simulierte Telemetriedaten an einen IoT-Hub zu senden und zur Verarbeitung in der Cloud aus dem IoT-Hub zu lesen.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom:
+- mvc
+- mqtt
+- devx-track-azurecli
 ms.date: 04/03/2019
-ms.openlocfilehash: 03a0f285b2e8c74070a30bfbaac50e9bd9c58f65
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1a8ba18e1e690e6be2b552bd37605ef638b2b47d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051477"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843229"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub (iOS)
 
@@ -24,22 +27,23 @@ IoT Hub ist ein Azure-Dienst, mit dem Sie umfangreiche Telemetriedaten von Ihren
 
 In diesem Artikel wird eine vorgefertigte Swift-Anwendung verwendet, um die Telemetriedaten zu senden. Zum Lesen aus IoT Hub wird ein CLI-Programm verwendet.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Laden Sie das Codebeispiel aus den [Azure-Beispielen](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip) herunter.
+
 - Die neueste Version von [Xcode](https://developer.apple.com/xcode/) mit der neuesten Version des iOS SDKs. Diese Schnellstartanleitung wurde mit Xcode 10.2 und iOS 12.2 getestet.
+
 - Die neueste Version von [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
-- Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Microsoft Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
 
-   ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
-   ```
+- Stellen Sie sicher, dass Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in dieser Schnellstartanleitung wird das MQTT-Protokoll verwendet, das über den Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -49,23 +53,25 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
 1. Führen Sie in Azure Cloud Shell den folgenden Befehl aus, um die Geräteidentität zu erstellen.
 
-   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub wählen.
+   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
-   **myiOSdevice** : Der für das registrierte Gerät angegebene Name. Verwenden Sie „myiOSDevice“ wie gezeigt. Wenn Sie für Ihr Gerät einen anderen Namen wählen, müssen Sie diesen innerhalb des gesamten Artikels verwenden und den Gerätenamen in den Beispielanwendungen aktualisieren, bevor Sie sie ausführen.
+   **myiOSdevice**: Der Name des Geräts, das Sie registrieren. Es empfiehlt sich, **myiOSdevice** wie gezeigt zu verwenden. Wenn Sie für Ihr Gerät einen anderen Namen auswählen, müssen Sie diesen innerhalb des gesamten Artikels verwenden und den Gerätenamen in den Beispielanwendungen aktualisieren, bevor Sie sie ausführen.
 
    ```azurecli-interactive
-   az iot hub device-identity create --hub-name YourIoTHubName --device-id myiOSdevice
+   az iot hub device-identity create --hub-name {YourIoTHubName} --device-id myiOSdevice
    ```
 
-1. Führen Sie den folgenden Befehl aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
+1. Führen Sie den folgenden Befehl in Azure Cloud Shell aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
+
+   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id myiOSdevice --output table
+   az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id myiOSdevice --output table
    ```
 
    Notieren Sie sich die Geräteverbindungszeichenfolge, die wie folgt aussieht:
 
-   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=myiOSdevice;SharedAccessKey={YourSharedAccessKey}`
 
     Dieser Wert wird später in der Schnellstartanleitung benötigt.
 
@@ -100,7 +106,7 @@ Der Installationsbefehl installiert nicht nur die erforderlichen Pods für Ihr P
    ```
 
 2. Erweitern Sie das Projekt **MQTT Client Sample** und anschließend den Ordner mit dem gleichen Namen.  
-3. Öffnen Sie **ViewController.swift** zur Bearbeitung in XCode. 
+3. Öffnen Sie **ViewController.swift** zur Bearbeitung in Xcode. 
 4. Suchen Sie nach der Variablen **connectionString**, und aktualisieren Sie den Wert mit der zuvor notierten Geräteverbindungszeichenfolge.
 5. Speichern Sie die Änderungen. 
 6. Klicken Sie auf die Schaltfläche **Erstellen und Ausführen**, oder drücken Sie die Tastenkombination **BEFEHL+R**, um das Projekt im Geräteemulator auszuführen. 
@@ -120,7 +126,7 @@ Die Beispiel-App, die Sie im XCode-Emulator ausgeführt haben, zeigt Daten zu Na
 Führen Sie in Azure Cloud Shell die folgenden Befehle aus, und ersetzen Sie dabei `YourIoTHubName` durch den Namen Ihres IoT-Hubs:
 
 ```azurecli-interactive
-az iot hub monitor-events --device-id myiOSdevice --hub-name YourIoTHubName
+az iot hub monitor-events --device-id myiOSdevice --hub-name {YourIoTHubName}
 ```
 
 Der folgende Screenshot zeigt die Ausgabe, während die Erweiterung die vom simulierten Gerät an den Hub gesendeten Telemetriedaten empfängt:
@@ -135,7 +141,7 @@ Der folgende Screenshot zeigt die Art von Telemetriedaten, die in Ihrem lokalen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie eine IoT Hub-Instanz eingerichtet sowie simulierte Telemetriedaten eines iOS-Geräts an den Hub gesendet und vom Hub gelesen. 
+In diesem Artikel haben Sie einen IoT-Hub eingerichtet, ein Gerät registriert, simulierte Telemetriedaten eines iOS-Geräts an den Hub gesendet und die Telemetriedaten vom Hub gelesen. 
 
 Um zu erfahren, wie Sie das simulierte Gerät über eine Back-End-Anwendung steuern, fahren Sie mit der nächsten Schnellstartanleitung fort.
 

@@ -1,30 +1,23 @@
 ---
-title: Portalvorbereitung für StorSimple Virtual Array | Microsoft-Dokumentation
+title: Portalvorbereitung für StorSimple Virtual Array
 description: Erstes Tutorial zum Bereitstellen von virtuellen StorSimple-Arrays mit Vorbereitung des Azure-Portals
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccdd234f951327aeb5baa6aabcac4314b9de7b34
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c1a3d0b05f04ad8c182d428843479160666b96ee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517103"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87070319"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Vorbereiten des Azure-Portals
 
-![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
+![Abbildung der Schritte, die zur Bereitstellung eines virtuellen Arrays erforderlich sind. Der erste Schritt ist mit „Erste Schritte“ bezeichnet und hervorgehoben.](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
 
 
 ## <a name="overview"></a>Übersicht
@@ -96,7 +89,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr Portal für de
 
 ## <a name="step-1-create-a-new-service"></a>Schritt 1: Erstellen eines neuen Diensts
 
-Mit einer einzelnen Instanz des StorSimple-Geräte-Manager-Diensts können mehrere StorSimple Virtual Arrays verwaltet werden. Führen Sie die folgenden Schritte aus, um eine Instanz des StorSimple-Geräte-Manager-Diensts zu erstellen. Falls Sie einen vorhandenen StorSimple-Geräte-Manager-Dienst zum Verwalten Ihrer virtuellen Arrays verwenden, können Sie diesen Schritt überspringen und mit Folgendem fortfahren: [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key).
+Mit einer einzelnen Instanz des StorSimple-Geräte-Manager-Diensts können mehrere StorSimple Virtual Arrays verwaltet werden. Führen Sie die folgenden Schritte aus, um eine Instanz des StorSimple-Geräte-Manager-Diensts zu erstellen. Falls Sie einen vorhandenen StorSimple-Geräte-Manager-Dienst zum Verwalten Ihrer virtuellen Arrays verwenden, können Sie diesen Schritt überspringen und mit [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key) fortfahren.
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -148,7 +141,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
 
 Dies ist ein optionaler Schritt, der nur dann ausgeführt werden muss, wenn Sie nicht die automatische Erstellung eines Speicherkontos mit Ihrem Dienst aktiviert haben.
 
-Wenn Sie ein Azure-Speicherkonto in einer anderen Region erstellen müssen, finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md) entsprechende Schrittanleitungen.
+Wenn Sie ein Azure-Speicherkonto in einer anderen Region erstellen müssen, finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md) entsprechende Schrittanleitungen.
 
 Führen Sie die folgenden Schritte im [Azure-Portal](https://ms.portal.azure.com/) auf der Seite für den StorSimple-Geräte-Manager-Dienst aus, um ein vorhandenes Microsoft Azure-Speicherkonto hinzuzufügen.
 
@@ -174,5 +167,5 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://ms.portal.azure.com
 Im nächsten Schritt wird ein virtueller Computer für Ihr StorSimple Virtual Array bereitgestellt. Sehen Sie sich je nach Hostbetriebssystem die folgenden ausführlichen Anweisungen an:
 
 * [Bereitstellen eines Virtual Array in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md)
-* [Bereitstellen eines Virtual Array in VMware](storsimple-virtual-array-deploy2-provision-vmware.md)
+* [Bereitstellen von StorSimple Virtual Array in VMware](storsimple-virtual-array-deploy2-provision-vmware.md)
 

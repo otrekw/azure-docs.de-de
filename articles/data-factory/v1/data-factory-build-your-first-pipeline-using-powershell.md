@@ -1,22 +1,22 @@
 ---
-title: Erstellen der ersten Data Factory (PowerShell) | Microsoft Docs
+title: Erstellen Ihrer ersten Data Factory (PowerShell)
 description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Beispielpipeline mithilfe von Azure PowerShell.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 3e60e31f62d74a22a87c60f70e62bd5148906607
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bbeb87c6e96c75e62fe97db031ae926ce30b6a19
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140415"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496343"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Tutorial: Erstellen der ersten Azure Data Factory mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -25,12 +25,10 @@ ms.locfileid: "70140415"
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
->
->
 
 
 > [!NOTE]
-> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Schnellstart: Erstellen einer Data Factory mit Data Factory](../quickstart-create-data-factory-powershell.md) weiter.
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Schnellstart: Erstellen einer Data Factory und Pipeline mit dem .NET SDK](../quickstart-create-data-factory-powershell.md) weiter.
 
 In diesem Artikel verwenden Sie Azure PowerShell zum Erstellen Ihrer ersten Azure Data Factory. Falls Sie das Tutorial mit anderen Tools/SDKs absolvieren möchten, wählen Sie in der Dropdownliste eine andere Option aus.
 
@@ -46,7 +44,7 @@ Die Pipeline in diesem Tutorial enthält nur eine Aktivität: eine **HDInsight H
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die Schritte zur Erfüllung der **Voraussetzungen** aus.
-* Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) zum Installieren der neuesten Version von Azure PowerShell auf Ihrem Computer.
+* Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/) zum Installieren der neuesten Version von Azure PowerShell auf Ihrem Computer.
 * (optional) In diesem Artikel werden nicht alle Data Factory-Cmdlets behandelt. In der [Data Factory-Cmdlet-Referenz](/powershell/module/az.datafactory) finden Sie eine umfassende Dokumentation zu Data Factory-Cmdlets.
 
 ## <a name="create-data-factory"></a>Erstellen einer Data Factory
@@ -81,7 +79,7 @@ In diesem Schritt erstellen Sie mit Azure PowerShell eine Azure Data Factory nam
 * Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name „FirstDataFactoryPSH“ nicht verfügbar** ändern Sie den Namen (z.B. in „IhrNameFirstDataFactoryPSH“). Verwenden Sie diesen Namen beim Ausführen der Schritte in diesem Lernprogramm anstelle von "ADFTutorialDataFactoryPSH". Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .
 * Data Factory-Instanzen können nur von Mitwirkenden/Administratoren des Azure-Abonnements erstellt werden.
 * Der Name der Data Factory kann in Zukunft als DNS-Name registriert und so öffentlich sichtbar werden.
-* Wenn der Fehler „**Dieses Abonnement ist nicht zur Verwendung des Microsoft.DataFactory-Namespaces registriert**“ auftritt, führen Sie einen der folgenden Schritte aus, und versuchen Sie, die Veröffentlichung erneut durchzuführen:
+* Bei Anzeige der Fehlermeldung „**Dieses Abonnement ist nicht zur Verwendung des Microsoft.DataFactory-Namespaces registriert**“ auftritt, führen Sie einen der folgenden Schritte aus, und versuchen Sie, die Veröffentlichung erneut durchzuführen:
 
   * Führen Sie in Azure PowerShell den folgenden Befehl aus, um den Data Factory-Anbieter zu registrieren:
 
@@ -117,7 +115,7 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit Ihrer Data Factory
         }
     }
     ```
-    Ersetzen Sie **Kontoname** durch den Namen Ihres Azure-Speicherkontos und **Kontoschlüssel** durch den Zugriffsschlüssel des Azure-Speicherkontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Verwalten von Speicherkonten](../../storage/common/storage-account-manage.md#access-keys) in den Informationen zum Anzeigen, Kopieren und erneuten Generieren von Speicherzugriffsschlüsseln.
+    Ersetzen Sie **Kontoname** durch den Namen Ihres Azure Storage-Kontos und **Kontoschlüssel** durch den Zugriffsschlüssel des Azure Storage-Kontos. Weitere Informationen zum Abrufen der Speicherzugriffsschlüssel finden Sie unter [Verwalten von Zugriffsschlüsseln für Speicherkonten](../../storage/common/storage-account-keys-manage.md).
 2. Wechseln Sie in Azure PowerShell zum Ordner „ADFGetStarted“.
 3. Verwenden Sie das Cmdlet **New-AzDataFactoryLinkedService**, um einen verknüpften Dienst zu erstellen. Für dieses Cmdlet und andere Data Factory-Cmdlets, die Sie in diesem Tutorial verwenden, ist das Eingeben von Werten für die Parameter *ResourceGroupName* und *DataFactoryName* erforderlich. Sie können auch **Get-AzDataFactory** verwenden, um ein **DataFactory**-Objekt abzurufen und das Objekt ohne Eingabe von *ResourceGroupName* und *DataFactoryName* bei jeder Ausführung eines Cmdlets zu übergeben. Führen Sie den folgenden Befehl aus, um die Ausgabe des Cmdlets **Get-AzDataFactory** der Variablen **$df** zuzuweisen.
 
@@ -170,7 +168,7 @@ In diesem Schritt verknüpfen Sie einen bedarfsgesteuerten HDInsight-Cluster mit
    * Anstelle eines bedarfsgesteuerten HDInsight-Clusters könnten Sie **Ihren eigenen HDInsight-Cluster** verwenden. Ausführliche Informationen finden Sie unter [Verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) .
    * Der HDInsight-Cluster erstellt einen **Standardcontainer** im Blobspeicher, den Sie im JSON-Code angegeben haben (**linkedServiceName**). HDInsight löscht diesen Container nicht, wenn der Cluster gelöscht wird. Dieses Verhalten ist beabsichtigt. Beim bedarfsgesteuerten verknüpften HDInsight-Dienst wird jedes Mal ein HDInsight-Cluster erstellt, wenn ein Slice verarbeitet wird. Dies gilt nur dann nicht, wenn ein aktiver Cluster (**timeToLive**) vorhanden ist. Der Cluster wird automatisch gelöscht, nachdem die Verarbeitung abgeschlossen ist.
 
-       Wenn mehr Segmente verarbeitet werden, werden in Azure Blob Storage viele Container angezeigt. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Die Namen dieser Container basieren auf dem folgenden Muster: „adf**ihrdatafactoryname**-**nameverknüpfterdienst**-datumuhrzeitstempel“. Verwenden Sie Tools wie den [Microsoft Storage-Explorer](https://storageexplorer.com/), um Container in Azure Blob Storage zu löschen.
+       Wenn mehr Segmente verarbeitet werden, werden in Azure Blob Storage viele Container angezeigt. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Die Namen dieser Container basieren auf dem folgenden Muster: „adf **ihrdatafactoryname**-**nameverknüpfterdienst**-datumuhrzeitstempel“. Verwenden Sie Tools wie den [Microsoft Azure Storage-Explorer](https://storageexplorer.com/), um Container in Ihrem Azure-Blobspeicher zu löschen.
 
      Ausführliche Informationen finden Sie unter [Bedarfsgesteuerter verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) .
 2. Führen Sie nun das Cmdlet **New-AzDataFactoryLinkedService** aus, um den verknüpften Dienst „HDInsightOnDemandLinkedService“ zu erstellen.
@@ -208,7 +206,7 @@ In diesem Schritt erstellen Sie Datasets, um die Eingabe- und Ausgabedaten für 
         }
     }
     ```
-    Im JSON-Code wird ein Dataset mit dem Namen **AzureBlobInput**definiert, das Eingabedaten für eine Aktivität in der Pipeline darstellt. Darüber hinaus geben Sie an, dass die Eingabedaten im Blobcontainer **adfgetstarted** und im Ordner **inputdata** gespeichert werden.
+    Im JSON-Code wird ein Dataset mit dem Namen **AzureBlobInput** definiert, das Eingabedaten für eine Aktivität in der Pipeline darstellt. Darüber hinaus geben Sie an, dass die Eingabedaten im Blobcontainer **adfgetstarted** und im Ordner **inputdata** gespeichert werden.
 
     Die folgende Tabelle enthält eine Beschreibung der JSON-Eigenschaften, die im Codeausschnitt verwendet werden:
 
@@ -252,7 +250,7 @@ Nun erstellen Sie das Ausgabedataset, das die in Azure Blob Storage gespeicherte
       }
     }
     ```
-    Im JSON-Code wird ein Dataset mit dem Namen **AzureBlobOutput**definiert, das Ausgabedaten für eine Aktivität in der Pipeline darstellt. Darüber hinaus geben Sie an, dass die Ergebnisse im Blobcontainer **adfgetstarted** und im Ordner **partitioneddata** gespeichert werden. Der Abschnitt **availability** gibt an, dass das Ausgabe-DataSet monatlich erzeugt wird.
+    Im JSON-Code wird ein Dataset mit dem Namen **AzureBlobOutput** definiert, das Ausgabedaten für eine Aktivität in der Pipeline darstellt. Darüber hinaus geben Sie an, dass die Ergebnisse im Blobcontainer **adfgetstarted** und im Ordner **partitioneddata** gespeichert werden. Der Abschnitt **availability** gibt an, dass das Ausgabe-DataSet monatlich erzeugt wird.
 2. Führen Sie in Azure PowerShell den folgenden Befehl zum Erstellen des Data Factory-Datasets aus:
 
     ```PowerShell
@@ -315,7 +313,7 @@ In diesem Schritt erstellen Sie Ihre erste Pipeline mit einer **HDInsightHive** 
     ```
     Im JSON-Codeausschnitt erstellen Sie eine Pipeline, die aus einer einzelnen Aktivität besteht. Diese nutzt Hive, um Daten in einem HDInsight-Cluster Daten zu verarbeiten.
 
-    Die Hive-Skriptdatei **partitionweblogs.hql** ist im Azure-Speicherkonto (das durch den scriptLinkedService-Dienst namens **StorageLinkedService** angegeben ist) und im Ordner **script** im Container **adfgetstarted** gespeichert.
+    Die Hive-Skriptdatei **partitionweblogs.hql** ist im Azure Storage-Konto (das durch den scriptLinkedService-Dienst namens **StorageLinkedService** angegeben ist) und im Ordner **script** im Container **adfgetstarted** gespeichert.
 
     Der Abschnitt **defines** dient zum Angeben der Laufzeiteinstellungen, die als Hive-Konfigurationswerte (z.B. „${hiveconf:inputtable}“, „${hiveconf:partitionedtable}“) an das Hive-Skript übergeben werden.
 
@@ -401,17 +399,17 @@ In diesem Schritt verwenden Sie Azure PowerShell zur Überwachung der Aktivität
 ## <a name="summary"></a>Zusammenfassung
 In diesem Tutorial haben Sie eine Azure Data Factory zum Verarbeiten von Daten erstellt, indem Sie ein Hive-Skript in einem HDInsight Hadoop-Cluster ausgeführt haben. Sie haben den Data Factory-Editor im Azure-Portal verwendet, um die folgenden Schritte auszuführen:
 
-1. Sie haben eine Azure **Data Factory**erstellt.
-2. Sie haben zwei **verknüpfte Dienste**erstellt:
+1. Sie haben eine Azure **Data Factory** erstellt.
+2. Sie haben zwei **verknüpfte Dienste** erstellt:
    1. **Azure Storage:** verknüpfter Dienst zum Verknüpfen Ihrer Azure Blob Storage-Instanz, in der die Eingabe- und Ausgabedateien der Data Factory enthalten sind.
    2. **Azure HDInsight** -Dienst zum Verknüpfen eines bedarfsgesteuerten HDInsight Hadoop-Clusters mit der Data Factory. Azure Data Factory erstellt einen HDInsight Hadoop-Cluster „just in time“, um Eingabedaten zu verarbeiten und Ausgabedaten zu erzeugen.
-3. Sie haben zwei **Datasets**erstellt, in denen Eingabe- und Ausgabedaten für eine HDInsight Hive-Aktivität in der Pipeline beschrieben werden.
+3. Sie haben zwei **Datasets** erstellt, in denen Eingabe- und Ausgabedaten für eine HDInsight Hive-Aktivität in der Pipeline beschrieben werden.
 4. Sie haben eine **Pipeline** mit einer **HDInsight Hive**-Aktivität erstellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (HDInsight-Aktivität) erstellt, die ein Hive-Skript in einem bedarfsgesteuerten Azure HDInsight-Cluster ausführt. Informationen dazu, wie Sie eine Copy-Aktivität zum Kopieren von Daten aus einem Azure-Blob nach Azure SQL verwenden finden Sie unter [Tutorial: Kopieren von Daten aus einem Azure-Blob in Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 | Thema | BESCHREIBUNG |
 |:--- |:--- |

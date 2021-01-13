@@ -1,25 +1,17 @@
 ---
 title: Bereitstellen von IBM DB2 pureScale in Azure
 description: Erfahren Sie, wie Sie eine Beispielarchitektur bereitstellen, die vor Kurzem zum Migrieren eines Unternehmens von der IBM DB2-Umgebung unter z/OS zu IBM DB2 pureScale in Azure verwendet wurde.
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
-manager: edprice
-editor: edprice
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 8eb8075454dc3a49e9525d566c34c64bab8be5a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 17ea965758150adb72d8e8f9fee9937bd5387a48
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083447"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016317"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Bereitstellen von IBM DB2 pureScale in Azure
 
@@ -34,7 +26,7 @@ Zum Bereitstellen dieser Architektur laden Sie das Skript „deploy.sh“ herunt
 Das Repository enthält auch Skripts zum Einrichten eines Grafana-Dashboards. Sie können mit dem Dashboard Prometheus abfragen, das in DB2 enthaltene Open-Source-Überwachungs- und -Warnsystem.
 
 > [!NOTE]
-> Das Skript „deploy.sh“ auf dem Client erstellt private SSH-Schlüssel und übergibt diese per HTTPS an die Bereitstellungsvorlage. Aus Sicherheitsgründen wird empfohlen, [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) zum Speichern von Geheimnissen, Schlüsseln und Kennwörtern zu verwenden.
+> Das Skript „deploy.sh“ auf dem Client erstellt private SSH-Schlüssel und übergibt diese per HTTPS an die Bereitstellungsvorlage. Aus Sicherheitsgründen wird empfohlen, [Azure Key Vault](../../key-vault/general/overview.md) zum Speichern von Geheimnissen, Schlüsseln und Kennwörtern zu verwenden.
 
 ## <a name="how-the-deployment-script-works"></a>Funktionsweise des Bereitstellungsskripts
 
@@ -44,29 +36,31 @@ Das Skript „deploy.sh“ erstellt und konfiguriert die Azure-Ressourcen für d
 
 -   Einrichten der Netzwerksicherheitsgruppen und von SSH für die Umgebung
 
--   Einrichten der NICs auf den virtuellen GlusterFS- und DB2 pureScale-Computern
+-   Einrichten mehrerer NICs auf den virtuellen Computern für den freigegebenen Speicher und auf den virtuellen DB2 pureScale-Computern
 
--   Erstellen der virtuellen Computer für den GlusterFS-Speicher
+-   Erstellen der virtuellen Computer für den freigegebenen Speicher Wenn Sie direkte Speicherplätze oder eine andere Speicherlösung verwenden, finden Sie weitere Informationen unter [Direkte Speicherplätze – Übersicht](/windows-server/storage/storage-spaces/storage-spaces-direct-overview).
 
 -   Erstellen des virtuellen Jumpbox-Computers
 
 -   Erstellen der virtuellen DB2 pureScale-Computer
 
--   Erstellen des virtuellen Zeugencomputers, den DB2 pureScale pingt
+-   Erstellen des virtuellen Zeugencomputers, den DB2 pureScale pingt Überspringen Sie diesen Teil der Bereitstellung, wenn Ihre Version von DB2 pureScale keinen Zeugen erfordert.
 
 -   Erstellen eines virtuellen Windows-Computers zu Testzwecken, jedoch ohne jegliche Installation auf diesem Computer
 
-Als Nächstes richten die Bereitstellungsskripts ein virtuelles Storage Area Network (vSAN) mit iSCSI für den freigegebenen Speicher in Azure ein. In diesem Beispiel stellt iSCSI eine Verbindung mit GlusterFS her. Diese Lösung bietet Ihnen auch die Möglichkeit, die iSCSI-Ziele als einzelnen Windows-Knoten zu installieren. iSCSI stellt eine freigegebene Blockspeicherschnittstelle über TCP/IP bereit, die es dem DB2 pureScale-Setupvorgang ermöglicht, eine Geräteschnittstelle zum Herstellen einer Verbindung mit dem freigegebenen Speicher zu verwenden. Grundlegende Informationen zu GlusterFS finden Sie im Thema [Architecture: Types of volumes](https://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/) (Architektur: Volumetypen) in der Dokumentation zu Gluster.
+Als Nächstes richten die Bereitstellungsskripts ein virtuelles Storage Area Network (vSAN) mit iSCSI für den freigegebenen Speicher in Azure ein. In diesem Beispiel stellt iSCSI eine Verbindung zum Cluster mit freigegebenem Speicher her. In der ursprünglichen Kundenlösung wurde GlusterFS verwendet. Diese Vorgehensweise wird von IBM jedoch nicht mehr unterstützt. Um die Unterstützung von IBM aufrecht zu erhalten, müssen Sie ein unterstütztes iSCSI-kompatibles Dateisystem verwenden. Microsoft bietet direkte Speicherplätze (S2D) als Option an.
+
+Diese Lösung bietet Ihnen auch die Möglichkeit, die iSCSI-Ziele als einzelnen Windows-Knoten zu installieren. iSCSI stellt eine freigegebene Blockspeicherschnittstelle über TCP/IP bereit, die es dem DB2 pureScale-Setupvorgang ermöglicht, eine Geräteschnittstelle zum Herstellen einer Verbindung mit dem freigegebenen Speicher zu verwenden.
 
 Die Bereitstellungsskripts führen die folgenden allgemeinen Schritte aus:
 
-1.  Einrichten eines freigegebenen Speicherclusters in Azure mithilfe von GlusterFS. Dieser Schritt umfasst mindestens zwei Linux-Knoten. Ausführliche Informationen zum Setup finden Sie im Abschnitt zum Thema [Einrichten von Red Hat Gluster Storage in Microsoft Azure](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/deployment_guide_for_public_cloud/chap-documentation-deployment_guide_for_public_cloud-azure-setting_up_rhgs_azure) in der Dokumentation zu Red Hat Gluster.
+1.  Einrichten eines Clusters mit freigegebenem Speicher in Azure. Dieser Schritt umfasst mindestens zwei Linux-Knoten.
 
-2.  Einrichten einer iSCSI Direct-Schnittstelle auf Linux-Zielservern für GlusterFS. Ausführliche Informationen zum Setup finden Sie unter [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/) im Administratorhandbuch zu GlusterFS.
+2.  Einrichten einer iSCSI Direct-Schnittstelle auf Linux-Zielservern für den Cluster mit freigegebenem Speicher.
 
-3.  Einrichten des iSCSI-Initiators auf den virtuellen Linux-Computern. Der Initiator greift mit einem iSCSI-Ziel auf den GlusterFS-Cluster zu. Ausführliche Informationen zum Setup finden Sie unter [How To Configure An iSCSI Target And Initiator In Linux](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) (Konfigurieren von iSCSI-Ziel und -Initiator unter Linux) in der RootUsers-Dokumentation.
+3.  Einrichten des iSCSI-Initiators auf den virtuellen Linux-Computern. Der Initiator greift über ein iSCSI-Ziel auf den Cluster mit freigegebenen Speicher zu. Ausführliche Informationen zum Setup finden Sie unter [How To Configure An iSCSI Target And Initiator In Linux](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) (Konfigurieren von iSCSI-Ziel und -Initiator unter Linux) in der RootUsers-Dokumentation.
 
-4.  Installieren von GlusterFS als Speicherebene für die iSCSI-Schnittstelle.
+4.  Installieren der freigegebenen Speicherebene für die iSCSI-Schnittstelle.
 
 Nach dem Erstellen des iSCSI-Geräts durch die Skripts wird im letzten Schritt DB2 pureScale installiert. Im Rahmen des DB2 pureScale-Setups wird [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (ehemals GPFS) kompiliert und auf dem GlusterFS-Cluster installiert. Dieses gruppierte Dateisystem ermöglicht DB2 pureScale das Freigeben von Daten zwischen virtuellen Computern, auf denen die DB2 pureScale-Engine ausgeführt wird. Weitere Informationen finden Sie in der Dokumentation zu [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) auf der IBM-Website.
 
@@ -77,7 +71,7 @@ Das GitHub-Repository enthält „DB2server.rsp“, eine Antwortdatei (RSP), mit
 > [!NOTE]
 > Eine Beispielantwortdatei („DB2server.rsp“) befindet sich im [DB2onAzure](https://aka.ms/db2onazure)-Repository auf GitHub. Wenn Sie diese Datei verwenden, müssen Sie sie bearbeiten, bevor sie in Ihrer Umgebung funktionieren kann.
 
-| Anzeigename               | Feld                                        | Wert                                                                                                 |
+| Anzeigename               | Feld                                        | value                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | Willkommen                   |                                              | Neue Installation                                                                                           |
 | Produkt auswählen          |                                              | DB2 Version 11.1.3.3. Server-Editionen mit DB2 pureScale                                              |
@@ -141,8 +135,6 @@ Weitere Informationen zu diesen und anderen bekannten Problemen finden Sie in de
 
 ## <a name="next-steps"></a>Nächste Schritte
 
--   [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
-
 -   [Erstellen der erforderlichen Benutzer für eine Installation des DB2 pureScale Features](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 
 -   [DB2icrt – Befehl zum Erstellen einer Instanz](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
@@ -150,7 +142,5 @@ Weitere Informationen zu diesen und anderen bekannten Problemen finden Sie in de
 -   [DB2 pureScale Clusters Data Solution](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 
 -   [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
-
--   [Platform Modernization Alliance: IBM DB2 on Azure](https://www.platformmodernization.org/pages/ibmdb2azure.aspx) (Platform Modernization Alliance: DB2 unter Azure)
 
 -   [Virtuelles Azure-Rechenzentrum: Lift and Shift-Leitfaden](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)

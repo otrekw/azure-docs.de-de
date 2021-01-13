@@ -1,26 +1,17 @@
 ---
-title: 'Schnellstart: Bereitstellen einer Web-App in Azure Service Fabric Mesh | Microsoft-Dokumentation'
+title: 'Schnellstart: Bereitstellen einer Web-App in Azure Service Fabric Mesh'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Visual Studio eine ASP.NET Core-Website erstellen und in Azure Service Fabric Mesh veröffentlichen.
-services: service-fabric-mesh
-documentationcenter: .net
-author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
+author: georgewallace
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/17/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b30676e0c5782a95c629571cadead7bf58211789
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 15e0c3bcbc19eae344ca3965b2b866ca9a15f28d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804916"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840318"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Schnellstart: Erstellen und Bereitstellen einer Web-App in Azure Service Fabric Mesh
 
@@ -42,7 +33,7 @@ Geben Sie im Feld **Name** die Zeichenfolge **ServiceFabricMesh1** ein, und lege
 
 Vergewissern Sie sich, dass das Kontrollkästchen **Projektmappenverzeichnis erstellen** aktiviert ist, und klicken Sie auf **OK**, um das Service Fabric Mesh-Projekt zu erstellen.
 
-![Visual Studio-Dialogfeld für das neue Service Fabric Mesh-Projekt](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
+![Screenshot, der zeigt, wie ein Service Fabric Mesh-Projekt erstellt wird.](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
 
 ### <a name="create-a-service"></a>Erstellen von Diensten
 
@@ -76,11 +67,11 @@ Nun wird das Dialogfeld **Service Fabric-Anwendung veröffentlichen** angezeigt.
 
 Wählen Sie Ihr Azure-Konto und -Abonnement aus. Wählen Sie einen **Standort**aus. In diesem Artikel wird **USA, Osten** verwendet.
 
-Wählen Sie unter **Ressourcengruppe** die Option **\<Neue Ressourcengruppe erstellen...>** aus. Das Dialogfeld **Ressourcengruppe erstellen** wird angezeigt. Legen Sie den **Namen der Ressourcengruppe** und den **Standort** fest.  In dieser Schnellstartanleitung wird der Standort **USA, Osten** verwendet, und der Name der Gruppe lautet **sfmeshTutorial1RG** (wenn in Ihrer Organisation mehrere Personen das gleiche Abonnement verwenden, wählen Sie einen eindeutigen Namen für die Ressourcengruppe aus).  Klicken Sie auf **Erstellen**, um die Ressourcengruppe zu erstellen, und kehren Sie dann zum Dialogfeld „Veröffentlichen“ zurück.
+Wählen Sie unter **Ressourcengruppe** die Option **\<Create New Resource Group...>** aus. Das Dialogfeld **Ressourcengruppe erstellen** wird angezeigt. Legen Sie den **Namen der Ressourcengruppe** und den **Standort** fest.  In dieser Schnellstartanleitung wird der Standort **USA, Osten** verwendet, und der Name der Gruppe lautet **sfmeshTutorial1RG** (wenn in Ihrer Organisation mehrere Personen das gleiche Abonnement verwenden, wählen Sie einen eindeutigen Namen für die Ressourcengruppe aus).  Klicken Sie auf **Erstellen**, um die Ressourcengruppe zu erstellen, und kehren Sie dann zum Dialogfeld „Veröffentlichen“ zurück.
 
-![Dialogfeld für neue Ressourcengruppe von Service Fabric Mesh in Visual Studio](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
+![Screenshot, der zeigt, wie eine neue Ressourcengruppe erstellt wird.](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-Im Dialogfeld **Service Fabric-Anwendung veröffentlichen** wählen Sie unter **Azure Container Registry** die Option **\<Neue Containerregistrierung erstellen...>** aus. Verwenden Sie im Dialogfeld **Containerregistrierung erstellen** einen eindeutigen **Namen der Containerregistrierung**. Geben Sie einen **Standort** an (in dieser Schnellstartanleitung wird **USA, Osten** verwendet). Wählen Sie in der Dropdownliste die **Ressourcengruppe** aus, die Sie im vorherigen Schritt erstellt haben, z.B. **sfmeshTutorial1RG**. Legen Sie die **SKU** auf **Basic** fest, und klicken Sie dann auf **Erstellen**, um zum Dialogfeld „Veröffentlichen“ zurückzukehren.
+Im Dialogfeld **Service Fabric-Anwendung veröffentlichen** wählen Sie unter **Azure Container Registry** die Option **\<Create New Container Registry...>** aus. Verwenden Sie im Dialogfeld **Containerregistrierung erstellen** einen eindeutigen **Namen der Containerregistrierung**. Geben Sie einen **Standort** an (in dieser Schnellstartanleitung wird **USA, Osten** verwendet). Wählen Sie in der Dropdownliste die **Ressourcengruppe** aus, die Sie im vorherigen Schritt erstellt haben, z.B. **sfmeshTutorial1RG**. Legen Sie die **SKU** auf **Basic** fest, und klicken Sie dann auf **Erstellen**, um zum Dialogfeld „Veröffentlichen“ zurückzukehren.
 
 ![Dialogfeld für neue Ressourcengruppe von Service Fabric Mesh in Visual Studio](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 

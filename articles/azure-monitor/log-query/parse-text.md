@@ -1,25 +1,20 @@
 ---
 title: Analysieren von Textdaten in Azure Monitor-Protokollen | Microsoft-Dokumentation
 description: Beschreibt verschiedene Optionen zum Analysieren von Protokolldaten in Azure Monitor-Datensätzen, wenn die Daten erfasst sowie in einer Abfrage abgerufen werden, wobei jeweils ein Vergleich der relativen Vorteile erfolgt.
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/04/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: ad4839a1b9e951a2bb206518254826a066330000
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/04/2018
+ms.openlocfilehash: c76cf939959d198d2c28181295a695a65ae46af9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61426730"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86505702"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Analysieren von Textdaten in Azure Monitor-Protokollen
-Einige von Azure Monitor gesammelte Protokolldaten umfassen mehrere Arten von Informationen in einer einzelnen Eigenschaft. Das Analysieren dieser Daten in mehrere Eigenschaften erleichtert die Verwendung in Abfragen. Ein gängiges Beispiel ist ein [benutzerdefiniertes Protokoll](../../log-analytics/log-analytics-data-sources-custom-logs.md), das einen kompletten Protokolleintrag mit mehreren Werten in einer einzelnen Eigenschaft sammelt. Durch die Erstellung separater Eigenschaften für die verschiedenen Werte können Sie nach den einzelnen Eigenschaften suchen und sie aggregieren.
+Einige von Azure Monitor gesammelte Protokolldaten umfassen mehrere Arten von Informationen in einer einzelnen Eigenschaft. Das Analysieren dieser Daten in mehrere Eigenschaften erleichtert die Verwendung in Abfragen. Ein gängiges Beispiel ist ein [benutzerdefiniertes Protokoll](../platform/data-sources-custom-logs.md), das einen kompletten Protokolleintrag mit mehreren Werten in einer einzelnen Eigenschaft sammelt. Durch die Erstellung separater Eigenschaften für die verschiedenen Werte können Sie nach den einzelnen Eigenschaften suchen und sie aggregieren.
 
 In diesem Artikel werden verschiedene Optionen zum Analysieren von Protokolldaten in Azure Monitor beschrieben, wenn die Daten erfasst sowie in einer Abfrage abgerufen werden, wobei jeweils ein Vergleich der relativen Vorteile erfolgt.
 
@@ -28,7 +23,7 @@ In diesem Artikel werden verschiedene Optionen zum Analysieren von Protokolldate
 Sie können Daten entweder zum Erfassungs- oder zum Abfragezeitpunkt analysieren, wenn die Daten mit einer Abfrage analysiert werden. Jede Strategie hat spezifische Vorteile, wie im Folgenden beschrieben.
 
 ### <a name="parse-data-at-collection-time"></a>Analysieren von Daten zum Sammlungszeitpunkt
-Wenn Sie Daten zum Sammlungszeitpunkt analysieren, konfigurieren Sie [Benutzerdefinierte Felder](../../log-analytics/log-analytics-custom-fields.md), die neue Eigenschaften in der Tabelle erstellen. Abfragen müssen keine Analyselogik enthalten und sie verwenden diese Eigenschaften einfach wie jedes andere Feld in der Tabelle.
+Wenn Sie Daten zum Sammlungszeitpunkt analysieren, konfigurieren Sie [Benutzerdefinierte Felder](../platform/custom-fields.md), die neue Eigenschaften in der Tabelle erstellen. Abfragen müssen keine Analyselogik enthalten und sie verwenden diese Eigenschaften einfach wie jedes andere Feld in der Tabelle.
 
 Vorteile dieser Methode:
 

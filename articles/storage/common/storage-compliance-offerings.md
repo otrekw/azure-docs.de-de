@@ -1,19 +1,19 @@
 ---
 title: Azure Storage-Complianceangebote | Microsoft-Dokumentation
-description: Übersicht über die Complianceangebote in Azure Storage
+description: Lesen Sie eine Zusammenfassung der Complianceangebote für Azure Storage für nationale, regionale und branchenspezifische Anforderungen hinsichtlich der Erfassung und Nutzung von Daten.
 services: storage
 author: fhryo-msft
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 1ad41b0b7391236a15b7c1be7d42ed81aaf5b51a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca0e95d311adedf613ed168927491dfa85b1cabd
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61483433"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095320"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure Storage-Complianceangebote
 
@@ -27,7 +27,7 @@ Nachfolgend finden Sie Complianceangebote für Azure Storage, um sicherzustellen
 * [CSA-STAR-Zertifizierung](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)
 * [CSA-STAR-Selbsteinschätzung](https://www.microsoft.com/trustcenter/compliance/csa-self-assessment)
 * [ISO 20000-1:2011](https://www.microsoft.com/TrustCenter/Compliance/ISO-20000-1)
-* [ISO 22301](https://www.microsoft.com/trustcenter/compliance/iso-22301)
+* [ISO 22301](/compliance/regulatory/offering-iso-22301)
 * [ISO 27001](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)
 * [ISO 27017](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)
 * [ISO 27018](https://www.microsoft.com/trustcenter/compliance/iso-iec-27018)
@@ -58,13 +58,12 @@ Nachfolgend finden Sie Complianceangebote für Azure Storage, um sicherzustellen
 * [FISC (Japan)](https://www.microsoft.com/trustcenter/compliance/fisc)
 * [GLBA](https://aka.ms/AzureCompliance)
 * [GxP](https://www.microsoft.com/TrustCenter/Compliance/FDA)
-* [HIPAA/HITECH](https://www.microsoft.com/trustcenter/compliance/hipaa)
+* [HIPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)
 * [HITRUST](https://www.microsoft.com/trustcenter/Compliance/HITRUST)
 * [MARS-E](https://www.microsoft.com/trustcenter/compliance/mars-e)
 * [MAS + ABS (Singapur)](https://aka.ms/AzureCompliance)
 * [MPAA](https://www.microsoft.com/trustcenter/compliance/mpaa)
 * [NEN-7510 (Niederlande)](https://www.microsoft.com/trustcenter/compliance/nen-7510)
-* [NHS IG Toolkit (UK)](https://www.microsoft.com/trustcenter/Compliance/NHS)
 * [PCI DSS](https://www.microsoft.com/trustcenter/compliance/pci)
 * [Shared Assessments](https://aka.ms/AzureCompliance)
 * [SOX](https://www.microsoft.com/trustcenter/compliance/SOX)

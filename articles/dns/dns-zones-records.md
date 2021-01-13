@@ -1,26 +1,20 @@
 ---
-title: Übersicht über DNS-Zonen und -Einträge – Azure DNS | Microsoft-Dokumentation
+title: 'Übersicht über DNS-Zonen und -Einträge: Azure DNS'
 description: Übersicht über die Unterstützung für das Hosten von DNS-Zonen und -Einträgen in Microsoft Azure DNS.
-services: dns
-documentationcenter: na
-author: vhorne
-manager: jeconnoc
-editor: ''
+author: rohinkoul
 ms.assetid: be4580d7-aa1b-4b6b-89a3-0991c0cda897
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
-ms.author: victorh
-ms.openlocfilehash: ccc418cd3af14c0468ab8d669ad2e2e11a0b6d57
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.author: rohink
+ms.openlocfilehash: 41eb15a38c97532951723f12d1ac74c90c838eb1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772258"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968195"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Übersicht über DNS-Zonen und -Einträge
 
@@ -30,7 +24,7 @@ Auf dieser Seite werden die Konzepte Domänen, DNS-Zonen und DNS-Einträge sowie
 
 Das Domain Name System ist eine Hierarchie von Domänen. Die Hierarchie beginnt mit der Stammdomäne, deren Name einfach „ **.** “ lautet.  Darunter befinden sich Domänen der obersten Ebene, z.B. „com“, „net“, „org“, „uk“ oder „jp“.  Unterhalb davon befinden sich die Domänen der zweiten Ebene, z.B. „org.uk“ oder „co.jp“. Diese Domänen in der DNS-Hierarchie sind global verteilt und werden von DNS-Namenservern in der ganzen Welt gehostet.
 
-Eine Domänennamen-Registrierungsstelle ist eine Organisation, die es Ihnen ermöglicht, einen Domänennamen wie „contoso.com“ zu erwerben.  Das Erwerben eines Domänennamens gibt Ihnen das Recht, die DNS-Hierarchie unter diesem Namen zu kontrollieren. Sie können z. B. der Website Ihrer Firma den Namen  www.contoso.com  geben. Die Registrierungsstelle kann die Domäne in Ihrem Auftrag auf ihren eigenen Namenservern hosten oder es Ihnen gestatten, alternative Namenserver anzugeben.
+Eine Domänennamen-Registrierungsstelle ist eine Organisation, von der Sie einen Domänennamen wie `contoso.com` erwerben können.  Das Erwerben eines Domänennamens gibt Ihnen das Recht, die DNS-Hierarchie unter diesem Namen zu steuern. Sie können z. B. der Website Ihrer Firma den Namen `www.contoso.com` geben. Die Registrierungsstelle kann die Domäne in Ihrem Auftrag auf ihren eigenen Namenservern hosten oder es Ihnen gestatten, alternative Namenserver anzugeben.
 
 Azure DNS bietet eine weltweit verteilte Infrastruktur von Namenservern mit hoher Verfügbarkeit, die Sie benutzen können, um Ihre Domäne zu hosten. Durch das Hosten Ihrer Domänen in Azure DNS stehen Ihnen für die Verwaltung Ihrer DNS-Einträge die gleichen Anmeldeinformationen, APIs und Tools wie für Ihre anderen Azure-Dienste zur Verfügung. Auch Abrechnung und Support erfolgen wie bei diesen Diensten.
 
@@ -40,7 +34,7 @@ Azure DNS unterstützt derzeit nicht den Kauf von Domänennamen. Wenn Sie einen 
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-## <a name="dns-records"></a>DNS-Einträge
+## <a name="dns-records"></a>DNS-Datensätze
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
@@ -78,7 +72,7 @@ Diese Einschränkungen ergeben sich aus den DNS-Standards und sind keine Einschr
 
 Der NS-Datensatz am Zonen-Apex (Name „\@“) wird automatisch bei jeder DNS-Zone erstellt und automatisch gelöscht, wenn die Zone gelöscht wird (er kann nicht separat gelöscht werden).
 
-Dieser Datensatz enthält die Namen der Azure-DNS-Namensserver, die der Zone zugewiesen sind. Sie können diesem NS-Datensatz weitere Namensserver hinzufügen, um das gemeinsame Hosten von Domänen mit mehr als einem DNS-Anbieter zu unterstützen. Sie können auch die Gültigkeitsdauer und die Metadaten für diesen Datensatz ändern. Es ist aber nicht möglich, die vorab mit Daten aufgefüllten Azure-DNS-Namensserver zu entfernen oder zu ändern. 
+Dieser Datensatz enthält die Namen der Azure-DNS-Namensserver, die der Zone zugewiesen sind. Sie können diesem NS-Eintragssatz weitere Namenserver hinzufügen, um das gemeinsame Hosten von Domänen mit mehr als einem DNS-Anbieter zu unterstützen. Sie können auch die Gültigkeitsdauer und die Metadaten für diesen Datensatz ändern. Es ist aber nicht möglich, die vorab mit Daten aufgefüllten Azure-DNS-Namensserver zu entfernen oder zu ändern. 
 
 Dies gilt nur für den NS-Eintragssatz des Zonen-Apex. Andere NS-Eintragssätze in Ihrer Zone (zur Delegierung von untergeordneten Zonen) können ohne Einschränkungen erstellt, geändert und gelöscht werden.
 
@@ -115,7 +109,7 @@ Die Zeichenfolgen eines DNS-Eintrags dürfen nicht mit den TXT-Einträgen in ein
 
 ### <a name="tags"></a>`Tags`
 
-Tags sind eine Liste von Name-Wert-Paaren, die von Azure Resource Manager zum Bezeichnen von Ressourcen verwendet werden.  Mithilfe von Tags ermöglicht Azure Resource Manager gefilterte Ansichten Ihrer Azure-Rechnung. Zusätzlich können Sie eine Richtlinie erstellen, die die erforderlichen Tags festlegt. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/resource-group-using-tags.md).
+Tags sind eine Liste von Name-Wert-Paaren, die von Azure Resource Manager zum Bezeichnen von Ressourcen verwendet werden.  Mithilfe von Tags ermöglicht Azure Resource Manager gefilterte Ansichten Ihrer Azure-Rechnung. Zusätzlich können Sie eine Richtlinie erstellen, die die erforderlichen Tags festlegt. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md).
 
 Azure DNS unterstützt die Verwendung von Tags von Azure Resource Manager in DNS-Zonenressourcen.  Tags für DNS-Ressourceneintragssätze werden nicht unterstützt, aber als Alternative werden „Metadaten“ für DNS-Ressourceneintragssätze wie unten beschrieben unterstützt.
 
@@ -136,7 +130,7 @@ Auf der Ebene der REST-API von Azure DNS werden ETags mithilfe von HTTP-Headern 
 | Header | Verhalten |
 | --- | --- |
 | Keine |PUT ist immer erfolgreich (keine Etag-Prüfung) |
-| If-match \<Etag> |PUT ist nur erfolgreich, wenn die Ressource vorhanden ist und das Etag übereinstimmt. |
+| If-match \<etag> |PUT ist nur erfolgreich, wenn die Ressource vorhanden ist und das Etag übereinstimmt. |
 | If-match * |PUT ist nur erfolgreich, wenn eine Ressource vorhanden ist. |
 | If-none-match * |PUT ist nur erfolgreich, wenn die Ressource nicht vorhanden ist. |
 
@@ -149,5 +143,5 @@ Bei der Verwendung von Azure DNS gelten folgende Standardgrenzwerte:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Lernen Sie, wie Sie [eine DNS-Zone erstellen](dns-getstarted-create-dnszone-portal.md) und [DNS-Einträge erstellen](dns-getstarted-create-recordset-portal.md), um mit der Verwendung von Azure DNS zu beginnen.
+* Lernen Sie, wie Sie [eine DNS-Zone erstellen](./dns-getstarted-portal.md) und [DNS-Einträge erstellen](./dns-getstarted-portal.md), um mit der Verwendung von Azure DNS zu beginnen.
 * Um eine vorhandene DNS-Zone zu migrieren, sollten Sie sich zuerst darüber informieren, wie Sie [eine DNS-Zonendatei importieren und exportieren](dns-import-export.md).

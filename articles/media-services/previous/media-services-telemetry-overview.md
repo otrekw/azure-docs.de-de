@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services-Telemetrie | Microsoft Docs
-description: Dieser Artikel bietet eine Übersicht über die Azure Media Services-Telemetrie.
+description: Dieser Artikel bietet eine Übersicht über die Microsoft Azure Media Services-Telemetrie.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8e8b493881662483e66dd835d1cc68a471b18454
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0701e9c6428283d45cf4b4a2e24c8de99d9a286b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60545519"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89265897"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services-Telemetrie  
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Mit Azure Media Services (AMS) können Sie auf Telemetrie-/Metrikdaten zugreifen. Mit der aktuellen Version der AMS können Sie Telemetriedaten für **Kanal**-, **StreamingEndpoint**- und **Archive**-Live-Entitäten sammeln. 
 
@@ -51,7 +52,7 @@ Die Telemetriedaten werden in dem Speicherkonto, das Sie bei der Konfiguration d
 
 Sie können Telemetriedaten in einer der folgenden Arten verwenden:
 
-- Lesen Sie Daten direkt aus dem Azure-Tabellenspeicher (z.B. mithilfe des Speicher-SDK). Eine Beschreibung der Telemetriespeichertabellen finden Sie in [diesem](https://msdn.microsoft.com/library/mt742089.aspx) Thema unter **Consuming telemetry information** (Nutzung von Telemetrieinformationen).
+- Lesen Sie Daten direkt aus dem Azure-Tabellenspeicher (z.B. mithilfe des Speicher-SDK). Eine Beschreibung der Telemetriespeichertabellen finden Sie in [diesem](/previous-versions/azure/mt742089(v=azure.100)) Thema unter **Consuming telemetry information** (Nutzung von Telemetrieinformationen).
 
 oder
 
@@ -74,13 +75,13 @@ Folgendes sorgt für die Effizienz vieler gängiger Abfragen:
 
 Telemetriedaten werden in aggregierter Form in einer Tabelle „TelemetryMetrics20160321“ gespeichert, wobei „20160321“ das Datum der erstellten Tabelle ist. Das Telemetriesystem erstellt für jeden neuen Tag (Grundlage: 00:00 UTC) eine separate Tabelle. Die Tabelle wird verwendet, um wiederholte Werte wie z.B. Erfassungsbitrate innerhalb eines bestimmten Zeitfensters, gesendete Bytes usw. zu speichern. 
 
-Eigenschaft|Wert|Beispiele/Hinweise
+Eigenschaft|value|Beispiele/Hinweise
 ---|---|---
 PartitionKey|{Konto-ID}_{Entitäts-ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>Die Konto-ID ist im Partitionsschlüssel enthalten, um Workflows zu vereinfachen, in denen mehrere Media Services-Konten in das gleiche Speicherkonto schreiben.
 RowKey|{Sekunden bis Mitternacht}_{Zufallswert}|01688_00199<br/><br/>Der Zeilenschlüssel beginnt mit der Anzahl von Sekunden bis Mitternacht, um Abfragen nach den „oberen n“ innerhalb einer Partition zu ermöglichen. Weitere Informationen dazu finden Sie in [diesem Artikel](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern). 
 Timestamp|Date/Time|Zeitstempel von Azure-Tabelle 2016-09-09T22:43:42.241Z
-Type|Der Typ der Entität, die Telemetriedaten liefert|Kanal/StreamingEndpoint/Archiv<br/><br/>Der Ereignistyp ist einfach ein Zeichenfolgenwert.
-NAME|Der Name des Telemetrieereignisses|ChannelHeartbeat/StreamingEndpointRequestLog
+type|Der Typ der Entität, die Telemetriedaten liefert|Kanal/StreamingEndpoint/Archiv<br/><br/>Der Ereignistyp ist einfach ein Zeichenfolgenwert.
+Name|Der Name des Telemetrieereignisses|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|Die Uhrzeit (UTC), zu der das Telemetrieereignis aufgetreten ist.|2016-09-09T22:42:36.924Z<br/><br/>Die beobachtete Zeit wird von der Entität gemeldet, die die Telemetriedaten sendet (z.B. ein Kanal). Da zwischen Komponenten Zeitsynchronisierungsprobleme auftreten können, ist dies ein ungefährer Wert.
 ServiceID|{Service-ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Entitätsspezifische Eigenschaften|Gemäß der Definition durch das-Ereignis|StreamName: stream1, Bitrate 10123, …<br/><br/>Die übrigen Eigenschaften sind für den angegebenen Ereignistyp definiert. Der Azure-Tabelleninhalt besteht aus Schlüssel-Wert-Paaren.  (D.h., unterschiedliche Zeilen in der Tabelle haben unterschiedliche Sätze von Eigenschaften.)
@@ -89,19 +90,19 @@ Entitätsspezifische Eigenschaften|Gemäß der Definition durch das-Ereignis|Str
 
 Es gibt drei Arten von entitätsspezifischen telemetrischen Dateneinträgen, die jeweils mit folgender Häufigkeit abgelegt werden:
 
-- Streamingendpunkte: Alle 30 Sekunden
-- Livekanäle: Minütlich
-- Livearchiv: Minütlich
+- Streamingendpunkte: alle 30 Sekunden
+- Livekanäle: jede Minute
+- Livearchiv: jede Minute
 
 **Streamingendpunkt**
 
-Eigenschaft|Wert|Beispiele
+Eigenschaft|value|Beispiele
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Automatischer Zeitstempel von Azure-Tabelle 2016-09-09T22:43:42.241Z
-Type|Type|StreamingEndpoint
-NAME|NAME|StreamingEndpointRequestLog
+type|type|StreamingEndpoint
+Name|Name|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|Service-ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 HostName|Hostname des Endpunkts|builddemoserver.origin.mediaservices.windows.net
@@ -114,13 +115,13 @@ E2ELatency|Durchschnittliche End-to-End-Latenz|250
 
 **Livekanal**
 
-Eigenschaft|Wert|Beispiele/Hinweise
+Eigenschaft|value|Beispiele/Hinweise
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Zeitstempel von Azure-Tabelle 2016-09-09T22:43:42.241Z
-Type|Type|Kanal
-NAME|NAME|ChannelHeartbeat
+type|type|Channel
+Name|Name|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|Service-ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|Typ der Nachverfolgung Video/Audio/Text|Video/Audio
@@ -139,13 +140,13 @@ Healthy|„True“, wenn <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonInc
 
 **Livearchiv**
 
-Eigenschaft|Wert|Beispiele/Hinweise
+Eigenschaft|value|Beispiele/Hinweise
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Zeitstempel von Azure-Tabelle 2016-09-09T22:43:42.241Z
-Type|Type|Archivieren
-NAME|NAME|ArchiveHeartbeat
+type|type|Archivieren
+Name|Name|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|Service-ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|Programm-URL|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism

@@ -1,15 +1,15 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: iot-dps
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: e427a7b80b28f1cc70a02890152f9f2247a8bcd2
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: bbe928084a758335e5fa3b0531726c77a6d599b8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68360285"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85839048"
 ---
 Die folgende Tabelle enthält die Grenzwerte, die für Ressourcen des Azure IoT Hub Device Provisioning-Diensts gelten.
 
@@ -20,20 +20,19 @@ Die folgende Tabelle enthält die Grenzwerte, die für Ressourcen des Azure IoT 
 | Maximale Anzahl von Registrierungen (Registrations) | 1\.000.000 |
 | Maximale Anzahl von Registrierungsgruppen | 100 |
 | Maximale Anzahl von Zertifizierungsstellen | 25 |
-| Maximale Anzahl der verknüpften IoT-Hubs | 10 |
+| Maximale Anzahl der verknüpften IoT-Hubs | 50 |
 | Maximale Nachrichtengröße | 96 KB|
-
-
-> [!NOTE]
-> Sie können sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/) wenden, um die Anzahl von Instanzen in Ihrem Abonnement erhöhen zu lassen.
 
 > [!NOTE]
 > Sie können sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/) wenden, um die Anzahl der Registrierungen für Ihren Bereitstellungsdienst zu erhöhen.
+
+> [!NOTE]
+> Die Erhöhung der maximalen Anzahl von Zertifizierungsstellen wird nicht unterstützt.
 
 Der Device Provisioning Service drosselt Anforderungen, wenn die folgenden Kontingente überschritten werden.
 
 | Drosselung | Wert pro Einheit |
 | --- | --- |
-| Vorgänge | 200/Minute/Dienst |
+| Operationen (Operations) | 200/Minute/Dienst |
 | Geräteregistrierungen | 200/Minute/Dienst |
 | Abrufvorgang für Geräte | 5/10 Sekunden/Gerät |

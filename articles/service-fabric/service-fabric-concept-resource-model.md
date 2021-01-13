@@ -1,81 +1,106 @@
 ---
-title: Azure Service Fabric-Anwendungsressourcenmodell | Microsoft-Dokumentation
-description: Dieser Artikel enthält eine Übersicht über die Verwaltung einer Azure Service Fabric-Anwendung mit Azure Resource Manager.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
+title: 'Azure Service Fabric: Anwendungsressourcenmodell'
+description: Dieser Artikel bietet eine Übersicht über die Verwaltung einer Azure Service Fabric-Anwendung mit Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 08/07/2019
-ms.author: atsenthi
-ms.openlocfilehash: 36c0f02202c738ac96d26b748b741cd8eee27380
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.date: 10/21/2019
+ms.openlocfilehash: f4fbd775ab479437c350dc24b9b5511f7a614c8b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241821"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576093"
 ---
-# <a name="what-is-the-service-fabric-application-resource-model"></a>Was ist das Service Fabric-Anwendungsressourcenmodell?
-Es wird empfohlen, dass Service Fabric-Anwendungen über Azure Resource Manager in Ihrem Service Fabric-Cluster bereitgestellt werden. Auf diese Weise können Anwendungen und Dienste in JSON beschrieben und in der gleichen Resource Manager-Vorlage wie der Cluster bereitgestellt werden. Im Unterschied zur Bereitstellung und Verwaltung von Anwendungen über PowerShell oder die Azure-Befehlszeilenschnittstelle muss nicht gewartet werden, bis der Cluster bereit ist. Der Vorgang der Anwendungsregistrierung und -bereitstellung kann in nur einem Schritt erfolgen. Diese Methode hat sich beim Verwalten des Anwendungslebenszyklus im Cluster bewährt. Weitere Informationen finden Sie unter [Bewährte Methoden](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
+# <a name="service-fabric-application-resource-model"></a>Service Fabric: Anwendungsressourcenmodell
 
-Falls möglich, verwalten Sie Ihre Anwendungen als Ressourcen-Manager-Ressourcen, um Folgendes zu verbessern:
-* Überwachungsprotokoll: Der Ressourcen-Manager überprüft jeden einzelnen Vorgang und führt ein detailliertes *Aktivitätsprotokoll*, das Ihnen helfen kann, Änderungen an diesen Anwendungen und Ihrem Cluster nachzuvollziehen.
-* Rollenbasierte Zugriffssteuerung: Die Verwaltung des Zugriffs auf Cluster sowie auf Anwendungen, die im Cluster bereitgestellt sind, kann über dieselbe Resource Manager-Vorlage erfolgen.
-* Azure Resource Manager (über das Azure-Portal) fungiert als Zentrale für die Verwaltung Ihres Clusters und kritischer Anwendungsbereitstellungen.
+Sie haben für die Bereitstellung von Azure Service Fabric-Anwendungen in Ihrem Service Fabric-Cluster mehrere Optionen. Es wird empfohlen, Azure Resource Manager zu verwenden. Bei Verwenden von Resource Manager können Anwendungen und Dienste in JSON beschrieben und anschließend in der gleichen Resource Manager-Vorlage wie der Cluster bereitgestellt werden. Im Unterschied zur Verwendung von PowerShell oder Azure CLI zur Bereitstellung und Verwaltung von Anwendungen müssen Sie bei Einsatz von Resource Manager nicht darauf warten, dass der Cluster bereit ist. Die Registrierung und Bereitstellung von Anwendungen kann in einem Schritt erfolgen. Resource Manager ist die beste Möglichkeit, den Anwendungslebenszyklus in Ihrem Cluster zu verwalten. Weitere Informationen finden Sie unter [Bewährte Methoden: Infrastructure-as-Code](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources).
 
-## <a name="service-fabric-application-life-cycle-with-azure-resource-manager"></a>Service Fabric-Anwendungslebenszyklus mit Azure Resource Manager 
+Das Verwalten Ihrer Anwendungen als Ressourcen in Resource Manager kann Ihnen helfen, Verbesserungen in diesen Bereichen zu erzielen:
+
+* Überwachungsprotokoll: Resource Manager überwacht jeden Vorgang und führt ein detailliertes Aktivitätsprotokoll. Ein Aktivitätsprotokoll kann Ihnen helfen, alle Änderungen an den Anwendungen und Ihrem Cluster nachzuverfolgen.
+* Rollenbasierte Zugriffssteuerung: Sie können den Zugriff auf Cluster und Anwendungen, die im Cluster bereitgestellt werden, mit derselben Resource Manager-Vorlage verwalten.
+* Effizienz der Verwaltung: Dank Resource Manager haben Sie eine Zentrale (das Azure-Portal) für die Verwaltung Ihres Clusters und Ihrer kritischen Anwendungsbereitstellungen.
+
 In diesem Dokument erfahren Sie Folgendes:
 
 > [!div class="checklist"]
-> * Bereitstellen von Anwendungsressourcen mithilfe von Azure Resource Manager 
-> * Aktualisieren von Anwendungsressourcen mithilfe von Azure Resource Manager
+>
+> * Bereitstellen von Anwendungsressourcen mithilfe von Resource Manager
+> * Aktualisieren von Anwendungsressourcen mithilfe von Resource Manager
 > * Löschen von Anwendungsressourcen
 
-## <a name="deploy-application-resources-using-azure-resource-manager"></a>Bereitstellen von Anwendungsressourcen mithilfe von Azure Resource Manager  
-Zum Bereitstellen einer Anwendung und der zugehörigen Dienste mithilfe des Azure Resource Manager-Anwendungsressourcenmodells müssen Sie den Anwendungscode packen, das Paket hochladen und dann auf den Speicherort des Pakets als Anwendungsressource in einer Azure Resource Manager-Vorlage verweisen. Weitere Informationen finden Sie unter [Packen einer Anwendung](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg).
-          
-Erstellen Sie dann eine Azure Resource Manager-Vorlage, aktualisieren Sie die Parameterdatei mit Anwendungsdetails, und stellen Sie sie im Service Fabric-Cluster bereit. Einige Beispiele finden Sie [hier](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM).
+## <a name="deploy-application-resources"></a>Bereitstellen von Anwendungsressourcen
 
-### <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos 
-Zum Bereitstellen einer Anwendung über eine Resource Manager-Vorlage ist ein Speicherkonto zum Bereitstellen des Anwendungsimages erforderlich. Sie können ein vorhandenes Speicherkonto wiederverwenden oder ein neues Speicherkonto erstellen, um Ihre Anwendungen bereitzustellen. Sie können diesen Schritt überspringen, wenn Sie ein vorhandenes Speicherkonto verwenden möchten. 
+Die allgemeinen Schritte, um eine Anwendung und ihre Dienste mithilfe des Anwendungsressourcenmodells von Resource Manager bereitzustellen, sind wie folgt:
+1. Packen des Anwendungscodes
+1. Hochladen des Pakets
+1. Verweisen auf den Speicherort des Pakets in einer Resource Manager-Vorlage als Anwendungsressource 
+
+Weitere Informationen finden Sie unter [Packen einer Anwendung](service-fabric-package-apps.md#create-an-sfpkg).
+
+Erstellen Sie dann eine Resource Manager-Vorlage, aktualisieren Sie die Parameterdatei mit Anwendungsdetails, und stellen Sie die Vorlage im Service Fabric-Cluster bereit. [Erkunden Sie Beispiele](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM).
+
+### <a name="create-a-storage-account"></a>Speicherkonto erstellen
+
+Um eine Anwendung anhand einer Resource Manager-Vorlage bereitzustellen, müssen Sie über ein Speicherkonto verfügen. Das Speicherkonto wird für das Staging des Anwendungsimages verwendet. 
+
+Sie können ein vorhandenes Speicherkonto wiederverwenden oder für das Staging Ihrer Anwendungen ein neues Speicherkonto erstellen. Wenn Sie ein vorhandenes Speicherkonto verwenden, können Sie diesen Schritt überspringen. 
 
 ![Speicherkonto erstellen][CreateStorageAccount]
 
-### <a name="configure-storage-account"></a>Konfigurieren des Speicherkontos 
-Nach dem Erstellen des Speicherkontos müssen Sie einen Blobcontainer erstellen, in dem die Anwendungen bereitgestellt werden können. Navigieren Sie im Azure-Portal zu dem Speicherkonto, in dem Ihre Anwendungen gespeichert werden sollen. Wählen Sie das Blatt **Blobs** aus, und klicken Sie auf die Schaltfläche **Container hinzufügen**. Fügen Sie einen neuen Container mit der öffentlichen Zugriffsebene „Blob“ hinzu.
-   
+### <a name="configure-your-storage-account"></a>Konfigurieren des Speicherkontos
+
+Nach dem Erstellen des Speicherkontos müssen Sie einen Blobcontainer erstellen, in dem das Staging der Anwendungen erfolgen kann. Wechseln Sie im Azure-Portal zum Azure Storage-Konto, in dem Sie Ihre Anwendungen speichern möchten. Wählen Sie **Blobs** > **Container hinzufügen** aus. 
+
+Ressourcen in Ihrem Cluster können geschützt werden, indem die öffentliche Zugriffsebene auf **privat** festgelegt wird. Sie können auf verschiedene Arten Zugriff gewähren:
+
+* Autorisieren des Zugriffs auf Blobs und Warteschlangen mit [Azure Active Directory](../storage/common/storage-auth-aad-app.md)
+* Gewähren von Zugriff auf Azure-Blobdaten und -Warteschlangendaten mithilfe von [Azure RBAC im Azure-Portal](../storage/common/storage-auth-aad-rbac-portal.md)
+* Delegieren des Zugriffs mithilfe einer [Shared Access Signature](/rest/api/storageservices/delegate-access-with-shared-access-signature)
+
+Das Beispiel im folgenden Screenshot verwendet den anonymen Lesezugriff für Blobs.
+
 ![Erstellen des Blobs][CreateBlob]
 
-### <a name="stage-application-in-a-storage-account"></a>Bereitstellen der Anwendung in einem Speicherkonto
-Damit die Anwendung bereitgestellt werden kann, muss sie in Blob Storage bereitgestellt werden. In diesem Tutorial wird das Anwendungspaket manuell erstellt. Dieser Schritt kann jedoch automatisiert werden.  Weitere Informationen finden Sie unter [Packen einer Anwendung](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg). In den folgenden Schritten wird die [Beispielanwendung „Voting“](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) verwendet.
+### <a name="stage-the-application-in-your-storage-account"></a>Staging der Anwendung in einem Speicherkonto
 
-1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt „Voting“, und wählen Sie „Packen“ aus.   
-![Packen der Anwendung][PackageApplication]  
-2. Öffnen Sie das soeben erstellte Verzeichnis **.\service-fabric-dotnet-quickstart\Voting\pkg\Debug**, und zippen Sie den Inhalt so in einer Datei mit dem Namen **Voting.zip**, dass die Datei „ApplicationManifest.xml“ den Stamm der ZIP-Datei bildet.  
-![Zippen der Anwendung][ZipApplication]  
-3. Benennen Sie die Erweiterung der Datei von „.zip“ in **.sfpkg** um.
-4. Klicken Sie im Azure-Portal im Container **apps** des Speicherkontos auf **Hochladen**, und laden Sie **Voting.sfpkg** hoch.  
-![Hochladen des App-Pakets][UploadAppPkg]
+Bevor Sie eine Anwendung bereitstellen können, müssen Sie die Anwendung in Blob Storage stagen. In diesem Tutorial wird das Anwendungspaket manuell erstellt. Beachten Sie, dass dieser Schritt automatisiert werden kann. Weitere Informationen finden Sie unter [Packen einer Anwendung](service-fabric-package-apps.md#create-an-sfpkg). 
 
-Die Anwendung ist damit bereitgestellt. Nun kann die Azure Resource Manager-Vorlage zum Bereitstellen der Anwendung erstellt werden.      
-   
-### <a name="create-the-azure-resource-manager-template"></a>Erstellen der Azure Resource Manager-Vorlage
-Die Beispielanwendung enthält [Azure Resource Manager-Vorlagen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM), die zum Bereitstellen der Anwendung verwendet werden können. Die Vorlagendateien heißen **UserApp.json** und **UserApp.Parameters.json**. 
+In diesem Tutorial verwenden wir die [Beispielanwendung „Voting“](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart).
 
-> [!NOTE] 
-> Die Datei **UserApp.Parameters.json** muss mit dem Namen Ihres Clusters aktualisiert werden.
+1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt **Voting**, und wählen Sie dann **Packen** aus.
+
+   ![Packen der Anwendung][PackageApplication]  
+1. Wechseln Sie zum Verzeichnis *.\service-fabric-dotnet-quickstart\Voting\pkg\Debug*. Zippen Sie den Inhalt in eine Datei mit dem Namen *Voting.zip*. Die Datei *ApplicationManifest.xml* muss sich im Stammverzeichnis der ZIP-Datei befinden.
+
+   ![Zippen der Anwendung][ZipApplication]  
+1. Benennen Sie die Erweiterung der Datei von „.zip“ in *.sfpkg* um.
+
+1. Klicken Sie im Azure-Portal im Container **Apps** Ihres Speicherkontos auf **Hochladen**, und laden Sie dann **Voting.sfpkg** hoch. 
+
+   ![Hochladen des App-Pakets][UploadAppPkg]
+
+Nachdem das Staging für die Anwendung erfolgt ist, können Sie die Resource Manager-Vorlage für die Bereitstellung der Anwendung erstellen.
+
+### <a name="create-the-resource-manager-template"></a>Erstellen der Resource Manager-Vorlage
+
+Die Beispielanwendung enthält [Azure Resource Manager-Vorlagen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM), die Sie zum Bereitstellen der Anwendung verwenden können. Die Vorlagendateien heißen *UserApp.json* und *UserApp.Parameters.json*.
+
+> [!NOTE]
+> Die Datei *UserApp.Parameters.json* muss mit dem Namen Ihres Clusters aktualisiert werden.
 >
 >
+
 
 | Parameter              | BESCHREIBUNG                                 | Beispiel                                                      | Kommentare                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Der Name des Clusters, in dem die Bereitstellung erfolgt | sf-cluster123                                                |                                                              |
 | application            | Der Name der Anwendung.                 | Voting                                                       |
-| applicationTypeName    | Der Typname der Anwendung           | VotingType                                                   | Muss mit dem Inhalt der Datei „ApplicationManifest.xml“ übereinstimmen.                 |
-| applicationTypeVersion | Die Version des Anwendungstyps         | 1.0.0                                                        | Muss mit dem Inhalt der Datei „ApplicationManifest.xml“ übereinstimmen.                 |
+| applicationTypeName    | Der Typname der Anwendung           | VotingType                                                   | Muss „ApplicationManifest.xml“ entsprechen                 |
+| applicationTypeVersion | Die Version des Anwendungstyps         | 1.0.0                                                        | Muss „ApplicationManifest.xml“ entsprechen                 |
 | serviceName            | Der Name des Diensts         | Voting~VotingWeb                                             | Muss im Format „ApplicationName~ServiceType“ vorliegen.            |
-| serviceTypeName        | Der Typname des Diensts                | VotingWeb                                                    | Muss mit dem Inhalt der Datei „ServiceManifest.xml“ übereinstimmen.                 |
-| appPackageUrl          | Die Blob Storage-URL der Anwendung     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Die URL des Anwendungspakets in Blob Storage (die Schritte für diese Festlegung werden weiter unten beschrieben) |
-       
+| serviceTypeName        | Der Typname des Diensts                | VotingWeb                                                    | Muss „ServiceManifest.xml“ entsprechen                 |
+| appPackageUrl          | Die Blob Storage-URL der Anwendung     | https:\//servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Die URL des Anwendungspakets in Blob Storage (die Schritte zur Festlegung der URL werden weiter unten in diesem Artikel beschrieben) |
+
 ```json
 {
     "apiVersion": "2019-03-01",
@@ -103,18 +128,26 @@ Die Beispielanwendung enthält [Azure Resource Manager-Vorlagen](https://github.
 }
 ```
 
-### <a name="deploy-the-application"></a>Bereitstellen der Anwendung 
-Führen Sie zum Bereitstellen der Anwendung „New-AzResourceGroupDeployment“ aus, um die Ressourcengruppe bereitzustellen, die den Cluster enthält.
+### <a name="deploy-the-application"></a>Bereitstellen der Anwendung
+
+Führen Sie das Cmdlet **New-AzResourceGroupDeployment** aus, um die Anwendung in der Ressourcengruppe bereitzustellen, die Ihren Cluster enthält:
+
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParameterFile ".\UserApp.Parameters.json" -TemplateFile ".\UserApp.json" -Verbose
 ```
 
-## <a name="upgrade-service-fabric-application-using-azure-resource-manager"></a>Aktualisieren einer Service Fabric-Anwendung mithilfe von Azure Resource Manager
-Anwendungen, die bereits in einem Service Fabric-Cluster bereitgestellt sind, werden aus folgenden Gründen aktualisiert:
+## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>Aktualisieren der Service Fabric-Anwendung mithilfe von Azure Resource Manager
 
-1. Der Anwendung wird ein neuer Dienst hinzugefügt. Eine Dienstdefinition muss den Dateien „service-manifest.xml“ und „application-manifest.xml“ hinzugefügt werden. Um die neue Version der Anwendung anzugeben, müssen Sie dann die Anwendungstypversion von [UserApp.parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json) von 1.0.0 in 1.0.1 ändern.
 
-    ```
+> [!IMPORTANT]
+> Per ARM-JSON-Definition bereitgestellte Dienste müssen aus dem Abschnitt „DefaultServices“ der entsprechenden Datei „ApplicationManifest.xml“ entfernt werden.
+
+
+Sie müssen eine Anwendung, die bereits in einem Service Fabric-Cluster bereitgestellt wurde, ggf. aus einem dieser Gründe aktualisieren:
+
+* Der Anwendung wird ein neuer Dienst hinzugefügt. Den Dateien *service-manifest.xml* und *application-manifest.xml* muss eine Dienstdefinition hinzugefügt werden, wenn ein Dienst zur Anwendung hinzugefügt wird. Um eine neue Version einer Anwendung widerzuspiegeln, müssen Sie auch in [UserApp.Parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json) die Version des Anwendungstyps von 1.0.0 in 1.0.1 ändern:
+
+    ```json
     "applicationTypeVersion": {
         "value": "1.0.1"
     },
@@ -125,39 +158,40 @@ Anwendungen, die bereits in einem Service Fabric-Cluster bereitgestellt sind, we
         "value": "VotingDataType"
     }
     ```
-2. Eine neue Version eines vorhandenen Diensts wird der Anwendung hinzugefügt. Dies umfasst Änderungen am Anwendungscode sowie Aktualisierungen der Typversion und des Typnamens der Anwendung.
 
-    ```
+* Eine neue Version eines vorhandenen Diensts wird der Anwendung hinzugefügt. Beispiele umfassen Änderungen am Anwendungscode sowie Aktualisierungen von Typversion und Namen der App. Aktualisieren Sie für dieses Upgrade „UserApp.Parameters.json“ wie folgt:
+
+    ```json
      "applicationTypeVersion": {
         "value": "1.0.1"
     },
     ```
 
 ## <a name="delete-application-resources"></a>Löschen von Anwendungsressourcen
-Anwendungen, die mithilfe des Anwendungsressourcenmodells in Azure Resource Manager bereitgestellt werden, können mit den folgenden Schritten aus dem Cluster gelöscht werden.
 
-1) Rufen Sie mit dem Befehl [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) die Ressourcen-ID für die Anwendung ab.  
+So löschen Sie eine Anwendung, die mithilfe des Anwendungsressourcenmodells in Resource Manager bereitgestellt wurde
 
-    #### <a name="get-resource-id-for-application"></a>Abrufen der Ressourcen-ID für die Anwendung
-    ```
+1. Rufen Sie mit dem Cmdlet [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) die Ressourcen-ID für die Anwendung ab:
+
+    ```powershell
     Get-AzResource  -Name <String> | f1
     ```
-2) Löschen Sie die Anwendungsressourcen mit dem Befehl [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0).  
 
-    #### <a name="delete-application-resource-using-its-resource-id"></a>Löschen der Anwendungsressource anhand der zugehörigen Ressourcen-ID
-    ```
+1. Löschen Sie die Anwendungsressourcen mit dem Cmdlet [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0):
+
+    ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zum Anwendungsressourcenmodell:
 
-* [Modellieren einer Anwendung in Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model)
-* [Service Fabric-Anwendungs- und -Dienstmanifeste](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-and-service-manifests)
+* [Modellieren einer Anwendung in Service Fabric](service-fabric-application-model.md)
+* [Service Fabric-Anwendungs- und -Dienstmanifeste](service-fabric-application-and-service-manifests.md)
+* [Bewährte Methoden: Infrastructure-as-Code](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
+* [Verwalten von Anwendungen und Diensten als Azure-Ressourcen](service-fabric-best-practices-infrastructure-as-code.md)
 
-## <a name="see-also"></a>Siehe auch
-* [bewährten Methoden](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
-* [Verwalten von Anwendungen und Diensten als Azure-Ressourcen](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 
 <!--Image references-->
 [CreateStorageAccount]: ./media/service-fabric-application-model/create-storage-account.png

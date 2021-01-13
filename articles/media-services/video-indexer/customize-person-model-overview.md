@@ -1,6 +1,6 @@
 ---
 title: 'Anpassen eines Personenmodells in Video Indexer: Azure'
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Dieser Artikel gibt einen Überblick darüber, was ein Personenmodell in Video Indexer ist und wie Sie es anpassen können.
 services: media-services
 author: anikaz
@@ -9,13 +9,13 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
-ms.author: anzaman
-ms.openlocfilehash: c74b913fc3ac35039d914fc97c9c438d2e4a3069
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.openlocfilehash: 613ad2d0ab90bef016e80a33be12b71cba5e2f71
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799441"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87047042"
 ---
 # <a name="customize-a-person-model-in-video-indexer"></a>Anpassen eines Personenmodells in Video Indexer
 

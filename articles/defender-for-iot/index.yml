@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Defender für IoT
+summary: Azure Defender für IoT bietet umfassende Bedrohungserkennung für IoT-/OT-Umgebungen mit mehreren Bereitstellungsoptionen, u. a. für vollständig lokale Bereitstellung, Bereitstellung mit Cloudverbindung oder Hybridbereitstellung.
+metadata:
+  title: Dokumentation zu Azure Defender für IoT
+  description: Hier erfahren Sie, wie Azure Defender für IoT, ein auf Azure basierender Cloudsicherheitsdienst, umfassenden Bedrohungsschutz für IoT-Geräte bietet.
+  services: service
+  ms.service: defender-for-iot
+  ms.topic: landing-page
+  ms.collection: M365-security-compliance
+  author: mlottner
+  ms.author: mlottner
+  ms.date: 09/07/2020
+  ms.openlocfilehash: 89bab2cde338cdabe47f70ee084aa5365b1f1877
+  ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 01/06/2021
+  ms.locfileid: "97935970"
+landingContent:
+- title: Erste Schritte mit Azure Defender für IoT
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Defender für IoT?
+      url: overview.md
+    - text: Lösungsarchitektur
+      url: architecture.md
+    - text: Übersicht über das Setup
+      url: getting-started.md
+    - text: Neuigkeiten
+      url: release-notes.md
+- title: 'Einrichten und Durchführen des Onboardings: Lösung ohne Agent'
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Einrichten des Netzwerks
+      url: how-to-set-up-your-network.md
+    - text: Ermitteln der erforderlichen Appliances
+      url: how-to-identify-required-appliances.md
+    - text: Installieren von Software
+      url: how-to-install-software.md
+- title: 'Überwachen des Netzwerks: Lösung ohne Agent'
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Anzeigen verbundener Geräte
+      url: how-to-work-with-the-sensor-device-map.md
+    - text: Anzeigen des Gerätebestands
+      url: how-to-investigate-sensor-detections-in-a-device-inventory.md
+    - text: Untersuchen von Warnungen
+      url: how-to-work-with-alerts-on-your-sensor.md
+    - text: Generieren von Berichten
+      url: how-to-generate-reports.md
+    - text: Steuern, welcher Datenverkehr erkannt wird
+      url: how-to-control-what-traffic-is-monitored.md
+    - text: Verbinden mit Azure Sentinel
+      url: how-to-configure-with-sentinel.md
+- title: 'Azure Defender für IoT: Agent-basierte Lösung'
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Edge-Sicherheitsmodul
+      url: security-edge-architecture.md
+  - linkListType: quickstart
+    links:
+    - text: 'Aktivieren von IoT Hub: Agent-basierte Lösungen'
+      url: quickstart-onboard-iot-hub.md
+    - text: Konfigurieren Ihrer IoT-Sicherheitslösung
+      url: quickstart-configure-your-solution.md
+    - text: Konfigurieren Ihres Sicherheitsmoduls für Azure RTOS
+      url: quickstart-azure-rtos-security-module.md
+    - text: Erstellen eines Modulzwillings für Azure Defender für IoT
+      url: quickstart-create-security-twin.md
+    - text: Erstellen benutzerdefinierter Sicherheitswarnungen
+      url: quickstart-create-custom-alerts.md
+    - text: Untersuchen von Sicherheitswarnungen
+      url: quickstart-investigate-security-alerts.md
+- title: 'Azure Defender für IoT: Lösungsressourcen'
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Take
+      url: https://myignite.microsoft.com/sessions/973175b0-2a2d-4b41-99f8-051e42ac575a
+  - linkListType: reference
+    links:
+    - text: Häufig gestellte Fragen
+      url: resources-frequently-asked-questions.md

@@ -3,16 +3,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 7374829554f793bea653e27a879ff3f1408b023a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 586f02b47ad00625a865dcacef1f39b7c9acffa6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242145"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91767881"
 ---
-| **Protokolle** | **Versionen** |
+| **Protokoll** | **Versionen** |
 | --- | --- |
-| SMB |2.x und höher |
+| SMB | 3.0 und 2.0 |
 | NFS | Alle Versionen bis einschließlich 4.1|

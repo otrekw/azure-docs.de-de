@@ -1,24 +1,17 @@
 ---
 title: Überwachen von Surface Hubs mit Azure Monitor | Microsoft-Dokumentation
 description: Verwenden Sie die Surface Hub-Lösung, um die Integrität Ihrer Surface Hubs zu überwachen und um zu verstehen, wie sie verwendet werden.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 8b4e56bc-2d4f-4648-a236-16e9e732ebef
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 01/16/2018
-ms.author: magoedte
-ms.openlocfilehash: 7e0dbb4c3cd8ae4bb552e7b7f0748f1bde2f51de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7e3b0f92770b48ef5163846e67940efe80fb669a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232787"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90085347"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Überwachen von Surface Hubs mit Azure Monitor zum Verfolgen ihrer Integrität
 
@@ -67,7 +60,7 @@ Wenn Sie Intune verwenden, um Ihre Umgebung zu verwalten, können Sie Geräte ma
 3. Klicken Sie auf **Dieses Gerät** und dann unter **Überwachung** auf **Log Analytics-Einstellungen konfigurieren**.
 4. Wählen Sie **Überwachung aktivieren** aus.
 5. Geben Sie im Dialogfeld mit den Log Analytics-Einstellungen die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel** von Log Analytics ein.  
-   ![settings](./media/surface-hubs/settings.png)
+   ![Screenshot der Einstellungen für die Microsoft Operations Manager-Suite mit ausgewählter Option „Überwachung aktivieren“ und Textfeldern für die Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel](./media/surface-hubs/settings.png)
 6. Klicken Sie auf **OK**, um die Konfiguration abzuschließen.
 
 Eine Bestätigung informiert Sie darüber, ob die Konfiguration erfolgreich auf das Gerät angewendet wurde. Ist dies der Fall, wird eine Meldung angezeigt, die besagt, dass der Agent erfolgreich mit Azure Monitor verbunden wurde. Das Gerät beginnt dann mit dem Senden von Daten an Azure Monitor, wo Sie sie anzeigen und darauf reagieren können.

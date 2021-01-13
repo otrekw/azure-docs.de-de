@@ -1,24 +1,16 @@
 ---
-title: Eigenständiges Service Fabric-Paket für Windows Server | Microsoft Docs
+title: Eigenständiges Azure Service Fabric-Paket für Windows Server
 description: Beschreibung und Inhalt des eigenständigen Azure Service Fabric-Pakets für Windows Server.
-services: service-fabric
-documentationcenter: .net
 author: maburlik
-manager: chackdan
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: facdcd162826e6f77ace098391459cba00061c4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb9a52510788a275bdeea67cd5c1fdd2e894738d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711083"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86261028"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Inhalt des eigenständigen Service Fabric-Pakets für Windows Server
 Sie finden im [heruntergeladenen](https://go.microsoft.com/fwlink/?LinkId=730690), eigenständigen Service Fabric-Paket die folgenden Dateien:
@@ -45,11 +37,11 @@ Sie finden im [heruntergeladenen](https://go.microsoft.com/fwlink/?LinkId=730690
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.json |Beispiel für eine Clusterkonfigurationsdatei, die die Einstellungen für einen ungeschützten Entwicklungscluster mit einem einzelnen virtuellen oder physischen Computer und drei Knoten enthält, einschließlich der Informationen für jeden Knoten im Cluster. |
 | ClusterConfig.Unsecure.MultiMachine.json |Beispiel für eine Clusterkonfigurationsdatei, die die Einstellungen für einen ungeschützten Cluster mit mehreren virtuellen oder physischen Computern enthält, einschließlich der Informationen für jeden Computer im Cluster. |
-| ClusterConfig.Windows.DevCluster.json |Beispiel für eine Clusterkonfigurationsdatei, die alle Einstellungen für einen geschützten Entwicklungscluster mit einem einzelnen virtuellen oder physischen Computer und drei Knoten enthält, einschließlich der Informationen für jeden Knoten im Cluster. Der Cluster wird mithilfe von [Windows-Identitäten](https://msdn.microsoft.com/library/ff649396.aspx) geschützt. |
-| ClusterConfig.Windows.MultiMachine.json |Beispiel für eine Clusterkonfigurationsdatei, die alle Einstellungen für einen sicheren Cluster mit mehreren virtuellen oder physischen Computern und Windows-Sicherheit enthält, einschließlich der Informationen für jeden Computer, der Teil des geschützten Clusters ist. Der Cluster wird mithilfe von [Windows-Identitäten](https://msdn.microsoft.com/library/ff649396.aspx) geschützt. |
+| ClusterConfig.Windows.DevCluster.json |Beispiel für eine Clusterkonfigurationsdatei, die alle Einstellungen für einen geschützten Entwicklungscluster mit einem einzelnen virtuellen oder physischen Computer und drei Knoten enthält, einschließlich der Informationen für jeden Knoten im Cluster. Der Cluster wird mithilfe von [Windows-Identitäten](/previous-versions/msp-n-p/ff649396(v=pandp.10)) geschützt. |
+| ClusterConfig.Windows.MultiMachine.json |Beispiel für eine Clusterkonfigurationsdatei, die alle Einstellungen für einen sicheren Cluster mit mehreren virtuellen oder physischen Computern und Windows-Sicherheit enthält, einschließlich der Informationen für jeden Computer, der Teil des geschützten Clusters ist. Der Cluster wird mithilfe von [Windows-Identitäten](/previous-versions/msp-n-p/ff649396(v=pandp.10)) geschützt. |
 | ClusterConfig.x509.DevCluster.json |Beispiel für eine Clusterkonfigurationsdatei, die alle Einstellungen für einen geschützten Entwicklungscluster mit einem einzelnen virtuellen oder physischen Computer und drei Knoten enthält, einschließlich der Informationen für jeden Knoten im Cluster. Der Cluster wird mittels X.509-Zertifikaten geschützt. |
 | ClusterConfig.x509.MultiMachine.json |Beispiel für eine Clusterkonfigurationsdatei, die alle Einstellungen für den geschützten Cluster mit mehreren virtuellen oder physischen Computern enthält, einschließlich der Informationen für jeden Knoten im geschützten Cluster. Der Cluster wird mittels X.509-Zertifikaten geschützt. |
-| ClusterConfig.gMSA.Windows.MultiMachine.json |Beispiel für eine Clusterkonfigurationsdatei, die alle Einstellungen für den geschützten Cluster mit mehreren virtuellen oder physischen Computern enthält, einschließlich der Informationen für jeden Knoten im geschützten Cluster. Der Cluster wird über [gruppenverwalteten Dienstkonten](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx) geschützt. |
+| ClusterConfig.gMSA.Windows.MultiMachine.json |Beispiel für eine Clusterkonfigurationsdatei, die alle Einstellungen für den geschützten Cluster mit mehreren virtuellen oder physischen Computern enthält, einschließlich der Informationen für jeden Knoten im geschützten Cluster. Der Cluster wird über [gruppenverwalteten Dienstkonten](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11)) geschützt. |
 
 ## <a name="cluster-configuration-samples"></a>Clusterkonfigurationsbeispiele
 Die neuesten Versionen der Clusterkonfigurationsvorlagen finden Sie auf der folgenden GitHub-Seite: [Standalone Cluster Configuration Samples](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples) (Beispiele für eigenständige Clusterkonfigurationen).
@@ -59,4 +51,4 @@ Das aktuelle Laufzeitpaket wird während der Clusterbereitstellung automatisch v
 
 ## <a name="related"></a>Verwandte Themen
 * [Erstellen eines eigenständigen Azure Service Fabric-Clusters](service-fabric-cluster-creation-for-windows-server.md)
-* [Szenarien für die Service Fabric-Clustersicherheit](service-fabric-windows-cluster-windows-security.md)
+* [Szenarien für die Clustersicherheit in Service Fabric](service-fabric-windows-cluster-windows-security.md)

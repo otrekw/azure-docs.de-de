@@ -1,29 +1,20 @@
 ---
-title: Intelligente Erkennung – Sicherheitserkennungspaket für Azure Application Insights | Microsoft Docs
-description: Überwachen Sie Anwendungen mit Azure Application Insights auf potenzielle Sicherheitsprobleme.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Sicherheitserkennungspaket für Azure Application Insights
+description: Überwachen Sie Anwendungen mit Azure Application Insights und der intelligenten Erkennung auf potenzielle Sicherheitsprobleme.
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.author: mbullwin
-ms.openlocfilehash: 90d58d1b22e893e922aa0f3770198fc95f539419
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ed304e903bb50591e61e294b6701f8268f9d8e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64572889"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87081626"
 ---
 # <a name="application-security-detection-pack-preview"></a>Paket zur Anwendungsicherheitserkennung (Vorschau)
 
 Application Insights analysiert die von Ihrer Anwendung generierten Telemetriedaten automatisch und erkennt potentielle Sicherheitsprobleme. Diese Funktion ermöglicht es Ihnen, potenzielle Sicherheitsprobleme zu identifizieren und diese durch Reparieren der Anwendung oder durch Ergreifen der erforderlichen Sicherheitsmaßnahmen zu beheben.
 
-Diese Funktion erfordert keine spezielle Einrichtung, abgesehen von der [Konfiguration Ihrer App für das Senden von Telemetriedaten](https://docs.microsoft.com/azure/application-insights/app-insights-usage-overview).
+Diese Funktion erfordert keine spezielle Einrichtung, abgesehen von der [Konfiguration Ihrer App für das Senden von Telemetriedaten](./usage-overview.md).
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wann erhalte ich diese Art von Benachrichtigung der intelligenten Erkennung?
 Es gibt drei Arten von Sicherheitsproblemen, die erkannt werden:

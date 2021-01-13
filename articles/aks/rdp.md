@@ -1,32 +1,28 @@
 ---
-title: Zugreifen per RDP auf Windows Server-Knoten in Azure Kubernetes Service-Clustern (AKS)
+title: RDP-Verbindung mit AKS-Windows Server-Knoten
+titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie eine RDP-Verbindung mit Windows Server-Knoten in Azure Kubernetes Service-Clustern (AKS) zur Problembehandlung und für Wartungsaufgaben erstellen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.author: mlearned
-ms.openlocfilehash: e3a4ea2e81e6c428b51d164336282f8f929d414b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 4f221a98adb779d32fc5567b201699672c8b90f5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639805"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183276"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Herstellen einer RDP-Verbindung mit Windows Server-Knoten in Azure Kubernetes Service-Clustern (AKS) zur Wartung oder Problembehandlung
 
 Während des Lebenszyklus des Azure Kubernetes Service-Clusters (AKS) müssen Sie möglicherweise auf einen AKS-Windows Server-Knoten zugreifen. Dieser Zugriff kann zur Wartung, Protokollsammlung oder für andere Vorgänge der Problembehandlung erforderlich sein. Sie können auf den AKS-Windows Server-Knoten über RDP zugreifen. Wenn Sie mit SSH auf den AKS-Windows Server-Knoten zugreifen möchten und Zugriff auf das gleiche Schlüsselpaar haben, das während der Clustererstellung verwendet wurde, können Sie alternativ die Schritte in [Zugreifen per SSH auf Azure Kubernetes Service-Clusterknoten (AKS)][ssh-steps] ausführen. Aus Sicherheitsgründen werden die AKS-Knoten nicht im Internet verfügbar gemacht.
 
-Die Unterstützung von Windows Server-Knoten in AKS befindet sich derzeit in der Vorschauphase.
-
 In diesem Artikel wird gezeigt, wie Sie eine RDP-Verbindung mit einem AKS-Knoten über die privaten IP-Adressen erstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über einen AKS-Cluster mit einem Windows Server-Knoten verfügen. Wenn Sie einen AKS-Cluster benötigen, lesen Sie den Artikel [Erstellen eines Windows Server-Containers in einem AKS-Cluster (Azure Kubernetes Service) mit der Azure-Befehlszeilenschnittstelle][aks-windows-cli]. Sie benötigen Windows-Administratorbenutzernamen und -kennwort für den Windows Server-Knoten, bei dem Sie ein Problem behandeln möchten. Sie benötigen auch einen RDP-Client wie z. B. [Microsoft Remotedesktop][rdp-mac].
+Es wird vorausgesetzt, dass Sie über einen AKS-Cluster mit einem Windows Server-Knoten verfügen. Wenn Sie einen AKS-Cluster benötigen, lesen Sie den Artikel [Erstellen eines Windows Server-Containers in einem AKS-Cluster (Azure Kubernetes Service) mit der Azure-Befehlszeilenschnittstelle][aks-windows-cli]. Sie benötigen Windows-Administratorbenutzernamen und -kennwort für den Windows Server-Knoten, bei dem Sie ein Problem behandeln möchten. Wenn Sie diese nicht kennen, können Sie sie anhand der Anweisungen unter [Zurücksetzen von Remotedesktopdienste oder dem zugehörigen Administratorkennwort auf einer Windows-VM](../virtual-machines/troubleshooting/reset-rdp.md) zurücksetzen. Sie benötigen auch einen RDP-Client wie z. B. [Microsoft Remotedesktop][rdp-mac].
 
-Außerdem muss mindestens die Version 2.0.61 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.61 der Azure CLI installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>Bereitstellen eines virtuellen Computers in dem gleichen Subnetz, in dem sich Ihr Cluster befindet
 

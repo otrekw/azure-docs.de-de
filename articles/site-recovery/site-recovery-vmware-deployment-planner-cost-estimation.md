@@ -1,20 +1,20 @@
 ---
-title: Überprüfen des Kostenvorkalkulationsberichts im Azure Site Recovery-Bereitstellungsplaner | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt, wie Sie den Kostenvorkalkulationsbericht im Azure Site Recovery-Bereitstellungsplaner für die VMware-Notfallwiederherstellung in Azure überprüfen.
-author: mayurigupta13
+title: Überprüfen von Kostenvorkalkulationen im Azure Site Recovery-Bereitstellungsplaner
+description: Dieser Artikel beschreibt, wie Sie die Kostenvorkalkulation im Azure Site Recovery-Bereitstellungsplaner für die VMware-Notfallwiederherstellung überprüfen.
+author: rajeswari-mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
-ms.author: mayg
-ms.openlocfilehash: 1f825b67baf36c9a1a9187d555522f5a5955d1c7
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.author: ramamill
+ms.openlocfilehash: dba585fbadca479c146ad42ac1bc5aa9d5349f49
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620075"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186704"
 ---
-# <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Überprüfen des Kostenvorkalkulationsberichts im Azure Site Recovery-Bereitstellungsplaner für die VMware-Notfallwiederherstellung in Azure
+# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Überprüfen von Kostenvorkalkulationen im VMware-Bereitstellungsplaner 
 
 Der Bereitstellungsplaner-Bericht enthält eine Zusammenfassung der Kostenvorkalkulation auf Arbeitsblättern mit [Recommendations](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) (Empfehlungen) sowie eine ausführliche Kostenanalyse auf dem Arbeitsblatt „Cost Estimation“ (Kostenvorkalkulation). Er enthält eine ausführliche Kostenanalyse pro VM. 
 
@@ -52,10 +52,10 @@ Für den gesamten Bericht gilt, dass die grau markierten Zellen schreibgeschütz
 ### <a name="overall-dr-cost-by-components"></a>Overall DR cost by components (Gesamtkosten der Notfallwiederherstellung nach Komponenten)
 Im ersten Abschnitt werden die Kosten für die Notfallwiederherstellung nach Komponenten und Zuständen angezeigt. 
 
-**Compute**: Kosten für IaaS-VMs, die in Azure zu Notfallwiederherstellungszwecken ausgeführt werden. Hierin sind VMs enthalten, die von Azure Site Recovery bei DR-Drills (Testfailovern) erstellt werden, und VMs, die in Azure ausgeführt werden, z.B. SQL Server mit Always On-Verfügbarkeitsgruppen und Domänencontrollern/Domänennamenservern.
+**Compute** : Kosten für IaaS-VMs, die in Azure zu Notfallwiederherstellungszwecken ausgeführt werden. Hierin sind VMs enthalten, die von Azure Site Recovery bei DR-Drills (Testfailovern) erstellt werden, und VMs, die in Azure ausgeführt werden, z.B. SQL Server mit Always On-Verfügbarkeitsgruppen und Domänencontrollern/Domänennamenservern.
 
-**Speicher**: Kosten für den Azure-Speicherverbrauch für Notfallwiederherstellungszwecke. Hierin ist die Speichernutzung für Replikationsvorgänge und DR-Drills enthalten.
-„Network“ (Netzwerk): Die Kosten für die ExpressRoute- und Site-to-Site-VPN-Verbindung für Notfallwiederherstellungszwecke. 
+**Storage** : Kosten für den Azure-Speicherverbrauch für Notfallwiederherstellungszwecke. Hierin ist die Speichernutzung für Replikationsvorgänge und DR-Drills enthalten.
+Netzwerk: Die Kosten für die ExpressRoute- und Site-to-Site-VPN-Verbindung für Notfallwiederherstellungszwecke. 
 
 **ASR license** (ASR-Lizenz): Azure Site Recovery-Lizenzkosten für alle kompatiblen VMs. Wenn Sie eine VM manuell in die Tabelle für die ausführliche Kostenanalyse eingegeben haben, sind auch die Azure Site Recovery-Lizenzkosten für diese VM enthalten.
 
@@ -73,7 +73,7 @@ In dieser Tabelle sind die Kosten für Storage Premium und Standardspeicher für
 ### <a name="site-to-azure-network"></a>Site to Azure network (Site-zu-Azure-Netzwerk)
 Wählen Sie die Einstellungen gemäß Ihren Anforderungen aus. 
 
-**ExpressRoute**: Das Tool wählt standardmäßig den ExpressRoute-Plan aus, der der erforderlichen Netzwerkbandbreite für die Deltareplikation am ehesten entspricht. Sie können den Plan gemäß Ihren Anforderungen ändern.
+**ExpressRoute** : Das Tool wählt standardmäßig den ExpressRoute-Plan aus, der der erforderlichen Netzwerkbandbreite für die Deltareplikation am ehesten entspricht. Sie können den Plan gemäß Ihren Anforderungen ändern.
 
 **VPN Gateway** (VPN-Gateway): Wählen Sie das VPN-Gateway aus, sofern ein solches in Ihrer Umgebung vorhanden ist. Standardmäßig ist „NA“ (Nicht verfügbar) festgelegt.
 
@@ -90,7 +90,7 @@ In dieser Tabelle werden die Anzahl von Windows-VMs und anderen VMs sowie die da
 
 ### <a name="settings"></a>Einstellungen 
 
-**Currency**: Die Währung, in der der Bericht erstellt wird. „Cost duration“ (Kostendauer):  Sie können alle Kosten für den Monat oder für das ganze Jahr anzeigen. 
+**Currency** : Die Währung, in der der Bericht erstellt wird. „Cost duration“ (Kostendauer):  Sie können alle Kosten für den Monat oder für das ganze Jahr anzeigen. 
 
 ## <a name="detailed-cost-analysis-table"></a>Tabelle „Detailed cost analysis“ (Ausführliche Kostenanalyse)
 ![Detailed cost analysis](media/site-recovery-hyper-v-deployment-planner-cost-estimation/detailed-cost-analysis-h2a.png) (Ausführliche Kostenanalyse): In dieser Tabelle sind die Kosten für die einzelnen kompatiblen VMs aufgeschlüsselt. Sie können diese Tabelle auch verwenden, um die geschätzten Kosten für die Azure-Notfallwiederherstellung für VMs ohne Profilerstellung zu erhalten, wenn Sie VMs manuell hinzufügen. Dies ist hilfreich, wenn Sie die Azure-Kosten für eine neue Bereitstellung der Notfallwiederherstellung kalkulieren müssen, ohne dass eine ausführliche Profilerstellung durchgeführt wird.
@@ -104,7 +104,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 * VM total storage size (GB) of the source machine (VM-Gesamtspeichergröße des Quellcomputers in GB)
 * Number of DR drills in a year (Anzahl von DR-Drills in einem Jahr) 
 * Each DR drill duration (Days) (Dauer einzelner DR-Drills (Tage)) 
-* OS Type (Betriebssystemtyp)
+* Betriebssystemtyp
 * Datenredundanz 
 * Azure-Hybridvorteil
 
@@ -112,7 +112,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
 1. Klicken Sie auf „Re-calculate cost“ (Kosten neu berechnen), um die Kosten zu aktualisieren.
 
-**VM Name** (VM-Name): Der Name der VM.
+**VM Name:** Der Name der VM.
 
 **Number of VMs** (Anzahl von VMs): Die Anzahl von VMs, die mit der Konfiguration übereinstimmen. Sie können die Anzahl von vorhandenen VMs aktualisieren, wenn für VMs mit ähnlicher Konfiguration keine Profilerstellung durchgeführt wird, diese VMs aber geschützt werden.
 
@@ -150,16 +150,16 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Unterstützte Währungen
 Der Azure Site Recovery-Bereitstellungsplaner kann den Kostenbericht für die folgenden Währungen erstellen:
 
-|Currency|NAME||Currency|NAME||Currency|NAME|
+|Währung|Name|Währung|Name|Währung|Name|
 |---|---|---|---|---|---|---|---|
-|ARS|Argentinische Pesos ($)||AUD|Australischer Dollar ($)||BRL|Brasilianischer Real (R$)|
-|CAD|Kanadischer Dollar ($)||CHF|Schweizer Franken (chf)||DKK|Dänische Krone (kr)|
-|EUR|Euro (€)||GBP|Britisches Pfund (£)||HKD|Hongkong-Dollar (HK$)|
-|IDR|Indonesische Rupiah (Rp)||INR|Indische Rupie (₹)||JPY|Japanischer Yen (¥)|
-|KRW|Südkoreanische Won (₩)||MXN|Mexikanischer Peso (MX$)||MYR|Malaysischer Ringgit (RM$)|
-|NOK|Norwegische Krone (kr)||NZD|Neuseeländischer Dollar ($)||RUB|Russische Rubel (руб)|
-|SAR|Saudi-Riyal (SR)||SEK|Schwedische Krone (kr)||TWD|Taiwanesische Dollar (NT$)|
-|TRY|Türkische Lira (TL)||USD| US-Dollar ($)||ZAR|Südafrikanischer Rand (R)|
+|ARS|Argentinische Pesos ($)|AUD|Australischer Dollar ($)|BRL|Brasilianischer Real (R$)|
+|CAD|Kanadischer Dollar ($)|CHF|Schweizer Franken (chf)|DKK|Dänische Krone (kr)|
+|EUR|Euro (€)|GBP|Britisches Pfund (£)|HKD|Hongkong-Dollar (HK$)|
+|IDR|Indonesische Rupiah (Rp)|INR|Indische Rupie (₹)|JPY|Japanischer Yen (¥)|
+|KRW|Südkoreanische Won (₩)|MXN|Mexikanischer Peso (MX$)|MYR|Malaysischer Ringgit (RM$)|
+|NOK|Norwegische Krone (kr)|NZD|Neuseeländischer Dollar ($)|RUB|Russische Rubel (руб)|
+|SAR|Saudi-Riyal (SR)|SEK|Schwedische Krone (kr)|TWD|Taiwanesische Dollar (NT$)|
+|TRY|Türkische Lira (TL)|USD| US-Dollar ($)|ZAR|Südafrikanischer Rand (R)|
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Schutz finden Sie unter [Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs](https://docs.microsoft.com/azure/site-recovery/tutorial-vmware-to-azure).
+Weitere Informationen zum Schutz finden Sie unter [Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs](./vmware-azure-tutorial.md).

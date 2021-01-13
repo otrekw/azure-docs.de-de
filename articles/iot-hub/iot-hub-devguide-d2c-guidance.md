@@ -8,12 +8,17 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: fffa064b912a96b05feb901d1d2d44533c4681b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom:
+- amqp
+- mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: dd4f4ad7f84ebc1f5e254843e7afa4aa0f3f224f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60885515"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87319132"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Leitfaden zur D2C-Kommunikation
 
@@ -29,12 +34,12 @@ Beim Senden von Informationen von der Geräte-App an das Lösungs-Back-End stehe
 
 Hier finden Sie einen detaillierten Vergleich verschiedener Optionen für die D2C-Kommunikation.
 
-|  | D2C-Nachrichten | Gemeldete Eigenschaften des Gerätezwillings | Dateiuploads |
+| Faktor | D2C-Nachrichten | Gemeldete Eigenschaften des Gerätezwillings | Dateiuploads |
 | ---- | ------- | ---------- | ---- |
 | Szenario | Telemetrie-Zeitreihen und -Warnungen, Beispiel: Sendung von 256-KB-Sensordatenbatches alle 5 Minuten | Verfügbare Funktionen und Bedingungen, z.B. der aktuelle Gerätekonnektivitätsmodus wie Mobilfunk oder WLAN. Synchronisierung von Workflows mit langer Laufzeit, z.B. Konfiguration und Softwareupdates. | Mediendateien. Große (normalerweise komprimierte) Telemetriebatches. |
 | Speichern und Abrufen | Temporäre Speicherung durch IoT Hub, bis zu 7 Tage. Nur sequenzielles Lesen. | Von IoT Hub im Gerätezwilling gespeichert. Abrufbar mithilfe der [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md). | Speicherung im vom Benutzer bereitgestellten Azure Storage-Konto. |
-| Größe | Nachrichten bis zu 256 KB | Die Maximalgröße gemeldeter Eigenschaften beträgt 8 KB. | Maximale von Azure Blob Storage unterstützte Dateigröße. |
-| Frequency | Hoch. Weitere Informationen finden Sie unter [IoT Hub-Grenzwerte](iot-hub-devguide-quotas-throttling.md). | Mittel. Weitere Informationen finden Sie unter [IoT Hub-Grenzwerte](iot-hub-devguide-quotas-throttling.md). | Niedrig. Weitere Informationen finden Sie unter [IoT Hub-Grenzwerte](iot-hub-devguide-quotas-throttling.md). |
+| Size | Nachrichten bis zu 256 KB | Die Maximalgröße gemeldeter Eigenschaften beträgt 32 KB. | Maximale von Azure Blob Storage unterstützte Dateigröße. |
+| Häufigkeit | Hoch. Weitere Informationen finden Sie unter [IoT Hub-Grenzwerte](iot-hub-devguide-quotas-throttling.md). | Mittel. Weitere Informationen finden Sie unter [IoT Hub-Grenzwerte](iot-hub-devguide-quotas-throttling.md). | Niedrig. Weitere Informationen finden Sie unter [IoT Hub-Grenzwerte](iot-hub-devguide-quotas-throttling.md). |
 | Protocol | Mit allen Protokollen verfügbar. | Mit MQTT oder AMQP verfügbar. | Mit jedem Protokoll verfügbar, auf dem Gerät ist jedoch HTTPS erforderlich. |
 
 Eine Anwendung muss möglicherweise Informationen sowohl als Telemetriezeitreihen als auch als Warnung senden und diese außerdem im Gerätezwilling zur Verfügung stellen. In diesem Szenario können Sie eine der folgenden Optionen auswählen:

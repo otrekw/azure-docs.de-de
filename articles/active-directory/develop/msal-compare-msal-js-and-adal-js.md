@@ -1,28 +1,24 @@
 ---
 title: Unterschiede zwischen MSAL.js und ADAL.js | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die Unterschiede zwischen der Microsoft Authentication Library für JavaScript (MSAL.js) und der Azure AD-Authentifizierungsbibliothek für JavaScript (ADAL.js) und über die Auswahl des jeweils zu verwendenden Tools.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8c19b874e79e70349437c5d44a6eb946aeeefb5
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835044"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88120897"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Unterschiede zwischen MSAL.js und ADAL.js
 
@@ -34,7 +30,7 @@ Dieser Artikel bietet Hilfestellung bei der Auswahl zwischen der Microsoft Authe
 
 In den meisten Fällen möchten Sie wahrscheinlich die Microsoft Identity Platform und MSAL.js verwenden, da es sich hierbei um die neueste Generation von Microsoft-Authentifizierungsbibliotheken handelt. Mithilfe von MSAL.js rufen Sie Token für Benutzer ab, die sich mit Azure AD (Geschäfts-, Schul- und Unikonten), (persönlichen) Microsoft-Konten (MSA) oder Azure AD B2C bei Ihrer Anwendung anmelden.
 
-Wenn Sie bereits mit dem v1.0-Endpunkt (und ADAL.js) vertraut sind, könnte Sie der Artikel [Neuerungen des v2.0-Endpunkts](active-directory-v2-compare.md) interessieren.
+Wenn Sie bereits mit dem v1.0-Endpunkt (und ADAL.js) vertraut sind, könnte Sie der Artikel [Neuerungen des v2.0-Endpunkts](../azuread-dev/azure-ad-endpoint-comparison.md) interessieren.
 
 Wenn Benutzer mit früheren Versionen der [Active Directory-Verbunddienste (AD FS)](/windows-server/identity/active-directory-federation-services) bei Ihrer Anwendung angemeldet werden müssen, müssen Sie jedoch weiterhin ADAL.js verwenden.
 
@@ -65,7 +61,7 @@ Wenn in v2.0 die Autorität `https://login.microsoftonline.com/common` verwendet
 
     Sie können Geltungsbereiche für jede beliebige Ressourcen-API mit dem URI der API im Format „App-ID-URI/Geltungsbereich anfordern. Beispiel: „https:\//mytenant.onmicrosoft.com/myapi/api.read“
 
-    Nur bei der Microsoft Graph-API ist der Geltungsbereichswert `user.read` dem Format https://graph.microsoft.com/User.Read zugeordnet und somit austauschbar.
+    Nur bei der Microsoft Graph-API ist der Geltungsbereichswert `user.read` dem Format „https:\//graph.microsoft.com/User.Read“ zugeordnet und somit austauschbar.
 
     ```javascript
     var request = {
@@ -100,4 +96,4 @@ Wenn in v2.0 die Autorität `https://login.microsoftonline.com/common` verwendet
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter [Vergleich von v1.0 und v2.0](active-directory-v2-compare.md).
+Weitere Informationen finden Sie unter [Vergleich von v1.0 und v2.0](../azuread-dev/azure-ad-endpoint-comparison.md).

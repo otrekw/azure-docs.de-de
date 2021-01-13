@@ -1,0 +1,78 @@
+- name: Dokumentation zu Azure Static Web Apps
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zu Azure Static Web Apps
+      href: overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Erstellen Ihrer ersten statischen Web-App
+      expanded: true
+      items:
+        - name: Visual Studio Code
+          href: getting-started.md
+        - name: Azure-Portal
+          href: get-started-portal.md
+        - name: Azure CLI
+          href: get-started-cli.md
+- name: Konzepte
+  items:
+    - name: API-Unterstützung mit Azure Functions
+      href: apis.md
+    - name: Routen
+      href: routes.md
+    - name: Authentifizierung und Autorisierung
+      href: authentication-authorization.md
+    - name: Zugreifen auf Benutzerinformationen
+      href: user-information.md
+    - name: Überprüfen von Pull Requests in Präproduktionsumgebungen
+      href: review-publish-pull-requests.md
+    - name: Benutzerdefinierte Domäne
+      href: custom-domain.md
+    - name: Build- und Workflowkonfiguration
+      href: github-actions-workflow.md
+- name: Anleitungen
+  items:
+    - name: Einrichten der lokalen Entwicklung
+      href: local-development.md
+    - name: Hinzufügen einer API
+      href: add-api.md
+    - name: Konfigurieren von App-Einstellungen
+      href: application-settings.md
+    - name: Konfigurieren von Front-End-Frameworks und -Bibliotheken
+      href: front-end-frameworks.md
+- name: Tutorials
+  items:
+    - name: Veröffentlichen über einen Generator für statische Websites
+      items:
+        - name: Gatsby
+          href: publish-gatsby.md
+        - name: Hugo
+          href: publish-hugo.md
+        - name: VuePress
+          href: publish-vuepress.md
+        - name: Jekyll
+          href: publish-jekyll.md
+    - name: Bereitstellen über ein Framework
+      items:
+        - name: Blazor
+          href: deploy-blazor.md
+        - name: Next.js
+          href: deploy-nextjs.md
+        - name: Nuxt.js
+          href: deploy-nuxtjs.md
+- name: Ressourcen
+  items:
+    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+      items:
+        - name: 'Veröffentlichen einer Angular-, React-, Svelte- oder Vue-JavaScript-App'
+          href: /learn/modules/publish-app-service-static-web-app-api
+        - name: Veröffentlichen einer API
+          href: /learn/modules/publish-static-web-app-api-preview-url
+        - name: Erstellen und Veröffentlichen einer statischen Web-App mit Gatsby
+          href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+        - name: Erstellen und Veröffentlichen einer statischen Web-App mit Blazor
+          href: /learn/modules/publish-app-service-static-web-app-api-dotnet
+    - name: Kontingente
+      href: quotas.md

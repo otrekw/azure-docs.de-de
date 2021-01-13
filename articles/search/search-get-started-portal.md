@@ -1,45 +1,33 @@
 ---
-title: 'Schnellstart: Erstellen eines Suchindex über das Azure-Portal – Azure Search'
-description: Verwenden Sie den Datenimport-Assistenten im Azure-Portal, um Ihren ersten Index in Azure Search zu erstellen, zu laden und abzufragen.
-author: lobrien
+title: Erstellen eines Suchindex im Azure-Portal
+titleSuffix: Azure Cognitive Search
+description: In dieser Schnellstartanleitung zum Azure-Portal erfahren Sie, wie Sie den Datenimport-Assistenten verwenden, um Ihren ersten Suchindex in Azure Cognitive Search zu erstellen, zu laden und abzufragen.
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.author: laobri
-ms.openlocfilehash: 44f370829b972840ac4266a760fefb4aa317be30
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 12/12/2020
+ms.openlocfilehash: 1e9d63c88cf0cd6f65db99b2bc878797770d53cd
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884567"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368629"
 ---
-# <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Search-Indexes im Azure-Portal
-> [!div class="op_single_selector"]
-> * [Portal](search-get-started-portal.md)
-> * [PowerShell](search-get-started-powershell.md)
-> * [Postman](search-get-started-postman.md)
-> * [Python](search-get-started-python.md)
-> * [C#](search-get-started-dotnet.md)
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Schnellstart: Erstellen eines Index für Azure Cognitive Search im Azure-Portal
 
-Für einen schnellen Einstieg in die Azure Search-Konzepte testen Sie die integrierten Tools im Azure-Portal. Assistenten und Editoren bieten keinen vollständigen Ersatz für die .NET- und REST-APIs, aber Sie können schnell mit einer codefreie Einführung beginnen, indem Sie interessante Abfragen für Beispieldaten innerhalb von Minuten schreiben.
+Erstellen Sie Ihren ersten Index mithilfe des Assistenten zum **Importieren von Daten** und einer integrierten Beispieldatenquelle, die fiktive Hoteldaten umfasst. Der Assistent führt Sie durch die Erstellung eines Suchindex („hotels-sample-index“), sodass Sie innerhalb weniger Minuten interessante Abfragen schreiben können. 
 
-> [!div class="checklist"]
-> * Beginnen Sie mit einem kostenlosen öffentlichen Beispieldataset, das in Azure gehostet wird.
-> * Führen Sie den **Daten importieren**-Assistenten in Azure Search aus, um Daten zu laden und einen Index zu generieren.
-> * Überwachen Sie den Indizierungsfortschritt im Portal.
-> * Zeigen Sie einen vorhandenen Index und die Optionen an, mit denen er geändert werden kann.
-> * Verwenden Sie den **Suchexplorer**, um sich mit Volltextsuche, Filtern, Facets, Fuzzysuche und Geosuche vertraut zu machen.
-
-Falls die Tools zu viele Einschränkungen mit sich bringen, können Sie eine [codebasierte Einführung in die Azure Search-Programmierung in .NET](search-howto-dotnet-sdk.md) lesen oder [Postman zur Erstellung von REST-API-Aufrufen](search-get-started-postman.md) verwenden. Außerdem können Sie sich ein sechsminütiges Demovideo zu den Schritten in diesem Tutorial ansehen (etwa ab der dritten Minute [dieses Übersichtsvideos für Azure Search](https://channel9.msdn.com/Events/Connect/2016/138)).
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+Der Assistent enthält auch eine Seite für KI-Anreicherung, sodass Sie Text und eine Struktur aus Bilddateien und unstrukturiertem Text extrahieren können. In dieser Schnellstartanleitung werden diese Optionen jedoch nicht verwendet. Eine ähnliche exemplarische Vorgehensweise, die KI-Anreicherung umfasst, finden Sie unter [Schnellstart: Erstellen eines kognitiven Skillsets](cognitive-search-quickstart-blob.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
+Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
+
++ Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/).
+
++ Ein Azure Cognitive Search-Dienst [Erstellen Sie einen Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
 ### <a name="check-for-space"></a>Überprüfen des Speicherplatzes
 
@@ -47,35 +35,35 @@ Viele Kunden beginnen mit dem kostenlosen Dienst (Free). Diese Version ist auf d
 
 In Abschnitten des Service-Dashboards sehen Sie, über wie viele Indizes, Indexer und Datenquellen Sie bereits verfügen. 
 
-![Listen mit Indizes, Indexern und Datenquellen](media/search-get-started-portal/tiles-indexers-datasources.png)
+:::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
 
-## <a name="create-index"></a> Erstellen eines Index und Laden von Daten
+## <a name="create-an-index-and-load-data"></a><a name="create-index"></a> Erstellen eines Index und Laden von Daten
 
 Suchabfragen durchlaufen einen [*Index*](search-what-is-an-index.md) mit durchsuchbaren Daten, Metadaten und zusätzlichen Konstrukten, die bestimmte Suchverhaltensweisen optimieren.
 
-Für dieses Tutorial verwenden Sie ein integriertes Beispieldataset, das über den Assistenten **Daten importieren** mit einem [*Indexer*](search-indexer-overview.md) durchforstet werden kann. Ein Indexer ist ein quellspezifischer Crawler, mit dem Metadaten und Inhalte von unterstützten Azure-Datenquellen gelesen werden können. Normalerweise werden Indexer programmgesteuert verwendet, aber im Portal können Sie über den **Daten importieren**-Assistenten auf sie zugreifen. 
+Für dieses Tutorial verwenden Sie ein integriertes Beispieldataset, das über den [Assistenten **Daten importieren**](search-import-data-portal.md) mit einem [*Indexer*](search-indexer-overview.md) durchforstet werden kann. Ein Indexer ist ein quellspezifischer Crawler, mit dem Metadaten und Inhalte von unterstützten Azure-Datenquellen gelesen werden können. Normalerweise werden Indexer programmgesteuert verwendet, aber im Portal können Sie über den **Daten importieren**-Assistenten auf sie zugreifen. 
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>Schritt 1: Starten des „Daten importieren“-Assistenten und Erstellen einer Datenquelle
 
-1. Klicken Sie auf dem Dashboard des Azure Search-Diensts in der Befehlsleiste auf **Daten importieren**, um einen Suchindex zu erstellen und zu füllen.
+1. Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.com/) an.
 
-   ![Befehl zum Importieren von Daten](media/search-get-started-portal/import-data-cmd.png)
+1. [Suchen Sie Ihren Suchdienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/), und klicken Sie auf der Übersichtsseite auf der Befehlsleiste auf **Daten importieren**, um einen Suchindex zu erstellen und aufzufüllen.
 
-2. Klicken Sie im Assistenten auf **Mit Ihren Daten verbinden** > **Beispiele** > **hotels-sample**. Diese Datenquelle ist integriert. Wenn Sie eine eigene Datenquelle erstellen, müssen Sie einen Namen, einen Typ und Verbindungsinformationen angeben. Nach der Erstellung wird sie zu einer vorhandenen Datenquelle, die in anderen Importvorgängen wiederverwendet werden kann.
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="Befehl zum Importieren von Daten":::
 
-   ![Auswählen des Beispieldatasets](media/search-get-started-portal/import-datasource-sample.png)
+1. Klicken Sie im Assistenten auf **Mit Ihren Daten verbinden** > **Beispiele** > **hotels-sample**. Diese Datenquelle ist integriert. Wenn Sie eine eigene Datenquelle erstellen, müssen Sie einen Namen, einen Typ und Verbindungsinformationen angeben. Nach der Erstellung wird sie zu einer vorhandenen Datenquelle, die in anderen Importvorgängen wiederverwendet werden kann.
 
-3. Wechseln Sie zur nächsten Seite.
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="Auswählen des Beispieldatasets":::
 
-   ![Nächste Seite-Schaltfläche für kognitive Suche](media/search-get-started-portal/next-button-add-cog-search.png)
+1. Wechseln Sie zur nächsten Seite.
 
-### <a name="step-2---skip-cognitive-skills"></a>Schritt2: Überspringen von kognitiven Qualifikationen
+### <a name="step-2---skip-the-enrich-content-page"></a>Schritt 2: Überspringen der Seite „Inhalte anreichern“
 
-Der Assistent unterstützt die Erstellung einer [Pipeline für kognitive Qualifikationen](cognitive-search-concept-intro.md), um die Cognitive Services-KI-Algorithmen in die Indizierung einzubeziehen. 
+Der Assistent unterstützt die Erstellung einer [Pipeline für KI-Anreicherung](cognitive-search-concept-intro.md), um die Cognitive Services-KI-Algorithmen in die Indizierung einzubeziehen. 
 
 Überspringen Sie diesen Schritt vorerst, und wechseln Sie direkt zu **Zielindex anpassen**.
 
-   ![Überspringen des Schritts zu kognitiven Qualifikationen](media/search-get-started-portal/skip-cog-skill-step.png)
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="Überspringen des Schritts zu kognitiven Qualifikationen":::
 
 > [!TIP]
 > Sie können ein Beispiel für die AI-Indizierung in einem [Schnellstart](cognitive-search-quickstart-blob.md) oder [Tutorial](cognitive-search-tutorial-blob.md) durchgehen.
@@ -95,15 +83,14 @@ Speicheranforderungen ändern sich nicht als Folge Ihrer Auswahl. Wenn Sie z. B.
 
 Standardmäßig durchsucht der Assistent die Datenquelle nach eindeutigen Bezeichnern als Grundlage für das Schlüsselfeld. *Zeichenfolgen* werden durch Attribute als **Abrufbar** und **Durchsuchbar** gekennzeichnet. *Ganze Zahlen* werden durch Attribute als **Abrufbar**, **Filterbar**, **Sortierbar** und **Facettierbar** gekennzeichnet.
 
-1. Übernehmen Sie die Standardeinstellungen. 
+1. Übernehmen Sie die Standardeinstellungen.
 
    Wenn Sie den Assistenten ein zweites Mal unter Verwendung einer vorhandenen Quelle mit Hoteldaten ausführen, wird der Index nicht mit Standardattributen konfiguriert. Sie müssen Attribute für künftige Importe manuell auswählen. 
 
-   ![Generierter Hotelindex](media/search-get-started-portal/hotelsindex.png)
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Generierter Hotelindex":::
 
 2. Wechseln Sie zur nächsten Seite.
 
-   ![Nächste Seite, Indexer erstellen](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>Schritt 4: Konfigurieren des Indexers
 
@@ -113,7 +100,7 @@ Mit diesem Objekt wird ein ausführbarer Prozess definiert. Sie könnten zwar au
 
 Klicken Sie auf **Senden**, um den Indexer zu erstellen und gleichzeitig auszuführen.
 
-  ![Hotelindexer](media/search-get-started-portal/hotels-indexer.png)
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="Hotelindexer":::
 
 ## <a name="monitor-progress"></a>Fortschritt überwachen
 
@@ -121,45 +108,47 @@ Der Assistent sollte die Liste der Indexer anzeigen, in der Sie den Fortschritt 
 
 Es kann einige Minuten dauern, bis die Seite im Portal aktualisiert ist, aber der neu erstellte Indexer sollte in der Liste angezeigt werden. Der Status sollte „In Bearbeitung“ oder „Erfolgreich“ lauten, und die Anzahl indizierter Dokumente sollte angegeben sein.
 
-   ![Statusmeldung des Indexers](media/search-get-started-portal/indexers-inprogress.png)
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="Statusmeldung des Indexers":::
 
 ## <a name="view-the-index"></a>Anzeigen des Index
 
-Die Hauptseite des Diensts enthält Links zu den Ressourcen, die unter Ihrem Azure Search-Dienst erstellt wurden.  Klicken Sie zum Anzeigen des gerade erstellten Index in der Liste mit den Links auf **Indizes**. 
+Die Hauptseite des Diensts enthält Links zu den Ressourcen, die in Ihrem Azure Cognitive Search-Dienst erstellt wurden.  Klicken Sie zum Anzeigen des gerade erstellten Index in der Liste mit den Links auf **Indizes**. 
 
-   ![Liste „Indizes“ im Dashboard des Diensts](media/search-get-started-portal/indexes-list.png)
+Warten Sie, bis die Portalseite aktualisiert wurde. Nach einigen Minuten sollte der Index mit der Dokumentanzahl und der Speichergröße angezeigt werden.
+
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="Liste „Indizes“ im Dashboard des Diensts":::
 
 In dieser Liste können Sie auf den gerade erstellten Index für *hotels-sample* klicken und das Indexschema anzeigen. Optional können Sie auch neue Felder hinzufügen. 
 
-Auf der Registerkarte **Felder** wird das Indexschema angezeigt. Scrollen Sie in der Liste nach unten, um ein neues Feld einzugeben. In den meisten Fällen ist es nicht möglich, bereits vorhandene Felder zu ändern. Vorhandene Felder verfügen über eine physische Darstellung in Azure Search und können daher nicht geändert werden (auch nicht im Code). Wenn Sie ein vorhandenes Feld grundlegend ändern möchten, erstellen Sie einen neuen Index, wobei der ursprüngliche Index verworfen wird.
+Auf der Registerkarte **Felder** wird das Indexschema angezeigt. Scrollen Sie in der Liste nach unten, um ein neues Feld einzugeben. In den meisten Fällen ist es nicht möglich, bereits vorhandene Felder zu ändern. Vorhandene Felder verfügen über eine physische Darstellung in Azure Cognitive Search und können daher nicht geändert werden (auch nicht im Code). Wenn Sie ein vorhandenes Feld grundlegend ändern möchten, erstellen Sie einen neuen Index, wobei der ursprüngliche Index verworfen wird.
 
-   ![Beispiel für Indexdefinition](media/search-get-started-portal/sample-index-def.png)
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Beispiel für Indexdefinition":::
 
 Andere Konstrukte, z.B. Bewertungsprofile und CORS-Optionen, können jederzeit hinzugefügt werden.
 
 Nehmen Sie sich kurz Zeit, um die Optionen für die Indexdefinition anzuzeigen und sich damit vertraut zu machen, was Sie beim Entwerfen des Index bearbeiten können. Wenn Optionen ausgegraut sind, ist dies ein Hinweis darauf, dass ein Wert nicht geändert oder gelöscht werden kann. 
 
-## <a name="query-index"></a> Abfragen mit dem Suchexplorer
+## <a name="query-using-search-explorer"></a><a name="query-index"></a> Abfragen mit dem Suchexplorer
 
 Sie sollten nun über einen Suchindex verfügen, der über die integrierte [**Suchexplorer**](search-explorer.md)-Abfrageseite abgefragt werden kann. Sie enthält ein Suchfeld, über das Sie beliebige Abfragezeichenfolgen testen können.
 
-Der **Suchexplorer** ist nur auf die Verarbeitung von [REST-API-Anforderungen](https://docs.microsoft.com/rest/api/searchservice/search-documents) ausgelegt. Er akzeptiert aber auch [einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) und Syntax für den [vollständigen Lucene-Abfrageparser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) sowie alle Suchparameter, die für Vorgänge mit der [REST-API zum Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) verfügbar sind.
+Der **Suchexplorer** ist nur auf die Verarbeitung von [REST-API-Anforderungen](/rest/api/searchservice/search-documents) ausgelegt. Er akzeptiert aber auch [einfache Abfragesyntax](/rest/api/searchservice/simple-query-syntax-in-azure-search) und Syntax für den [vollständigen Lucene-Abfrageparser](/rest/api/searchservice/lucene-query-syntax-in-azure-search) sowie alle Suchparameter, die für Vorgänge mit der [REST-API zum Durchsuchen von Dokumenten](/rest/api/searchservice/search-documents#bkmk_examples) verfügbar sind.
 
 > [!TIP]
-> Die folgenden Schritte werden im [Übersichtsvideo für Azure Search](https://channel9.msdn.com/Events/Connect/2016/138) ab 6:08 vorgeführt.
+> Die folgenden Schritte werden im [Übersichtsvideo für Azure Cognitive Search](https://channel9.msdn.com/Events/Connect/2016/138) ab 6:08 veranschaulicht.
 >
 
 1. Klicken Sie auf der Befehlsleiste auf **Suchexplorer** .
 
-   ![Suchexplorerbefehl](media/search-get-started-portal/search-explorer-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Suchexplorerbefehl":::
 
-2. Wählen Sie in der Dropdownliste **Index** den Eintrag *hotels-sample* aus. Klicken Sie auf die Dropdownliste **API-Version**, um herauszufinden, welche REST-APIs verfügbar sind. Verwenden Sie für die Abfragen weiter unten die allgemein verfügbare Version (2019-05-06).
+2. Wählen Sie in der Dropdownliste **Index** den Eintrag *hotels-sample-index* aus. Klicken Sie auf die Dropdownliste **API-Version**, um herauszufinden, welche REST-APIs verfügbar sind. Verwenden Sie für die Abfragen unten die allgemein verfügbare Version (2020-06-30).
 
-   ![Index- und API-Befehle](media/search-get-started-portal/search-explorer-changeindex.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Index- und API-Befehle":::
 
 3. Fügen Sie über die Suchleiste die folgenden Abfragezeichenfolgen ein, und klicken Sie auf **Suchen**.
 
-   ![Abfragezeichenfolge und Schaltfläche „Suchen“](media/search-get-started-portal/search-explorer-query-string-example.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Abfragezeichenfolge und Schaltfläche „Suchen“":::
 
 ## <a name="example-queries"></a>Beispielabfragen
 
@@ -181,9 +170,9 @@ Sie können Begriffe und Ausdrücke eingeben, ähnlich wie bei einer Bing- oder 
 
 * Der Parameter **$count=true** gibt die Gesamtanzahl aller zurückgegebenen Dokumente zurück. Dieser Wert wird oben im Bereich mit den Suchergebnissen angezeigt. Zur Überprüfung von Filterabfragen können Sie von **$count=true** gemeldete Änderungen überwachen. Niedrigere Zahlen weisen darauf hin, dass Ihr Filter funktioniert.
 
-* **$top=10** gibt die 10 Dokumente mit dem höchsten Rang zurück. Standardmäßig gibt Azure Search die ersten 50 der besten Treffer zurück. Die Menge kann mithilfe von **$top** erhöht oder verringert werden.
+* **$top=10** gibt die 10 Dokumente mit dem höchsten Rang zurück. Standardmäßig gibt Azure Cognitive Search die ersten 50 besten Treffer zurück. Die Menge kann mithilfe von **$top** erhöht oder verringert werden.
 
-### <a name="filter-query"></a> Filtern der Abfrage
+### <a name="filter-the-query"></a><a name="filter-query"></a> Filtern der Abfrage
 
 Filter werden in Suchanfragen eingefügt, wenn Sie den Parameter **$filter** anfügen. 
 
@@ -191,16 +180,16 @@ Filter werden in Suchanfragen eingefügt, wenn Sie den Parameter **$filter** anf
 
 * Der Parameter **$filter** gibt Ergebnisse zurück, die den angegebenen Kriterien entsprechen. In diesem Fall: höhere Bewertungen als 4.
 
-* Bei der Filtersyntax handelt es sich um eine OData-Konstruktion. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
+* Bei der Filtersyntax handelt es sich um eine OData-Konstruktion. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
 
-### <a name="facet-query"></a> Facettieren der Abfrage
+### <a name="facet-the-query"></a><a name="facet-query"></a> Facettieren der Abfrage
 
 Facettenfilter werden in Suchanfragen eingebunden. Sie können den Parameter „facet“ verwenden, um eine aggregierte Anzahl von Dokumenten zurückzugeben, die mit einem von Ihnen angegebenen Facetwert übereinstimmen.
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Beispiel (facettiert mit Verringerung des Umfangs): `search=*&facet=Category&$top=2`
 
-* **search=** * ist eine leere Suche. Bei einer leeren Suche wird alles durchsucht. Eine leere Abfrage kann beispielsweise übermittelt werden, um den vollständigen Satz von Dokumenten zu filtern oder zu facettieren – etwa, wenn eine Navigationsstruktur mit Facetten alle Hotels im Index enthalten soll.
-* **facet** gibt eine Navigationsstruktur zurück, die Sie an ein Benutzeroberflächenelement übergeben können. Er gibt Kategorien und eine Anzahl zurück. In diesem Fall basieren alle Kategorien auf einem Feld, das praktischerweise *Kategorie* heißt. In Azure Search steht zwar keine Aggregation zur Verfügung, mit `facet` lässt sich jedoch eine Art Aggregation erreichen, die eine Anzahl von Dokumenten in den einzelnen Kategorien liefert.
+* **search=** _ ist eine leere Suche. Bei einer leeren Suche wird alles durchsucht. Eine leere Abfrage kann beispielsweise übermittelt werden, um den vollständigen Satz von Dokumenten zu filtern oder zu facettieren – etwa, wenn eine Navigationsstruktur mit Facetten alle Hotels im Index enthalten soll.
+_ **facet** gibt eine Navigationsstruktur zurück, die Sie an ein UI-Steuerelement übergeben können. Er gibt Kategorien und eine Anzahl zurück. In diesem Fall basieren alle Kategorien auf einem Feld, das praktischerweise *Kategorie* heißt. In Azure Cognitive Search steht zwar keine Aggregation zur Verfügung, mit `facet` lässt sich jedoch eine Art Aggregation erreichen, die eine Anzahl von Dokumenten in den einzelnen Kategorien liefert.
 
 * **$top=2** gibt zwei Dokumente zurück und zeigt, dass Sie mithilfe von `top` die Ergebnisse sowohl verringern als auch erhöhen können.
 
@@ -210,10 +199,10 @@ Facettenfilter werden in Suchanfragen eingebunden. Sie können den Parameter „
 
 * Nur filterbare Felder können facettiert werden. In den Ergebnissen können nur abrufbare Felder zurückgegeben werden.
 
-* Das Feld *Bewertung* ist eine Gleitkommazahl mit doppelter Genauigkeit. Weitere Informationen zum Gruppieren per Intervall (z.B. „Bewertungen mit 3 Sternen“, „Bewertungen mit 4 Sternen“ usw.) finden Sie unter [Implementieren der Facettennavigation in Azure Search](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
+* Das Feld *Bewertung* ist eine Gleitkommazahl mit doppelter Genauigkeit. Weitere Informationen zum Gruppieren per Intervall (z. B. „Bewertungen mit 3 Sternen“, „Bewertungen mit 4 Sternen“ usw.) finden Sie unter [Implementieren der Facettennavigation in Azure Cognitive Search](./search-faceted-navigation.md#filter-based-on-a-range).
 
 
-### <a name="highlight-query"></a> Hervorheben von Suchergebnissen
+### <a name="highlight-search-results"></a><a name="highlight-query"></a> Hervorheben von Suchergebnissen
 
 Bei Treffermarkierungen wird Text, der dem Schlüsselwort entspricht, mit einer Formatierung versehen (sofern Treffer in einem bestimmten Feld gefunden werden). Falls Ihr Suchbegriff Teil einer umfangreicheren Beschreibung ist, können Sie ihn mithilfe einer Treffermarkierung hervorheben.
 
@@ -225,9 +214,9 @@ Bei Treffermarkierungen wird Text, der dem Schlüsselwort entspricht, mit einer 
 
 * Die Volltextsuche erkennt grundlegende Varianten von Wortformen. Die Suchergebnisse für die Stichwortsuche nach „beaches“ enthalten in diesem Fall markierten Text für „beach“ für Hotels, in deren durchsuchbaren Feldern dieses Wort vorkommt. Dank linguistischer Analyse können in den Ergebnissen unterschiedliche Formen des gleichen Worts erscheinen. 
 
-* Azure Search unterstützt 56 Analysen von Lucene und Microsoft. Standardmäßig verwendet Azure Search die Standardanalyse von Lucene.
+* Azure Cognitive Search unterstützt 56 Analysetools von Lucene und Microsoft. Standardmäßig verwendet Azure Cognitive Search die Standardanalyse von Lucene.
 
-### <a name="fuzzy-search"></a> Ausprobieren der Fuzzysuche
+### <a name="try-fuzzy-search"></a><a name="fuzzy-search"></a> Ausprobieren der Fuzzysuche
 
 Für falsch geschriebene Wörter wie *seatle* für „Seattle“ werden bei einer herkömmlichen Suche standardmäßig keine Treffer zurückgegeben. Im folgenden Beispiel werden keine Ergebnisse zurückgegeben.
 
@@ -241,13 +230,13 @@ In diesem Beispiel werden jetzt Dokumente zurückgegeben, die Treffer zu „Seat
 
 Ohne Angabe von **queryType** wird der standardmäßige Parser für einfache Abfragen verwendet. Der Parser für einfache Abfragen ist zwar schneller, Fuzzysuche, reguläre Ausdrücke, NEAR-Suche und andere erweiterte Abfragetypen stehen jedoch nur bei Verwendung der vollständigen Syntax zur Verfügung.
 
-Die Fuzzysuche und die Platzhaltersuche haben Auswirkungen auf die Suchausgabe. Die linguistische Analyse wird für diese Abfrageformate nicht durchgeführt. Bevor Sie die Fuzzy- und Platzhaltersuche verwenden, sollten Sie sich unter [Funktionsweise der Volltextsuche in Azure Search – Phase 2: Lexikalische Analyse](search-lucene-query-architecture.md#stage-2-lexical-analysis) den Abschnitt zu den Ausnahmen bei der lexikalischen Analyse durchlesen.
+Die Fuzzysuche und die Platzhaltersuche haben Auswirkungen auf die Suchausgabe. Die linguistische Analyse wird für diese Abfrageformate nicht durchgeführt. Bevor Sie die Fuzzy- und Platzhaltersuche verwenden, sollten Sie sich unter [Funktionsweise der Volltextsuche in Azure Cognitive Search – Phase 2: Lexikalische Analyse](search-lucene-query-architecture.md#stage-2-lexical-analysis) den Abschnitt zu den Ausnahmen bei der lexikalischen Analyse durchlesen.
 
-Weitere Informationen zu möglichen Abfrageszenarien mit dem Parser für vollständige Abfragen finden Sie unter [Lucene query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) (Lucene-Abfragesyntax in Azure Search).
+Weitere Informationen zu möglichen Abfrageszenarien mit dem Parser für vollständige Abfragen finden Sie unter [Lucene-Abfragesyntax in Azure Cognitive Search](/rest/api/searchservice/lucene-query-syntax-in-azure-search).
 
-### <a name="geo-search"></a> Ausprobieren der Geosuche
+### <a name="try-geospatial-search"></a><a name="geo-search"></a> Ausprobieren der Geosuche
 
-Die Geosuche wird über den [Datentyp „edm.GeographyPoint“](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) für ein Feld mit Koordinaten unterstützt. Die Geosuche ist ein Filtertyp und wird in der [OData-Ausdruckssyntax für Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) angegeben.
+Die Geosuche wird über den [Datentyp „edm.GeographyPoint“](/rest/api/searchservice/supported-data-types) für ein Feld mit Koordinaten unterstützt. Die Geosuche ist ein Filtertyp und wird in der [OData-Ausdruckssyntax für Azure Search](/rest/api/searchservice/odata-expression-syntax-for-azure-search) angegeben.
 
 #### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-12212-4767-le-5"></a>Beispiel (Geokoordinatenfilter): `search=*&$count=true&$filter=geo.distance(Location,geography'POINT(-122.12 47.67)') le 5`
 
@@ -257,15 +246,15 @@ Die Geosuche ist hilfreich, wenn Ihre Suchanwendung über eine Umgebungssuche od
 
 ## <a name="takeaways"></a>Wesentliche Punkte
 
-Dieses Tutorial enthält eine kurze Einführung, wie Azure Search im Azure-Portal verwendet werden kann.
+Dieses Tutorial enthält eine kurze Einführung zur Verwendung von Azure Cognitive Search über das Azure-Portal.
 
-Sie haben erfahren, wie Sie mithilfe des Assistenten **Daten importieren** einen Suchindex erstellen. Sie haben sich über [Indexer](search-indexer-overview.md) und über den grundlegenden Workflow für das Entwerfen von Indizes informiert, z.B. [unterstützte Änderungen an einem veröffentlichten Index](https://docs.microsoft.com/rest/api/searchservice/update-index).
+Sie haben erfahren, wie Sie mithilfe des Assistenten **Daten importieren** einen Suchindex erstellen. Sie haben sich über [Indexer](search-indexer-overview.md) und über den grundlegenden Workflow für das Entwerfen von Indizes informiert, z.B. [unterstützte Änderungen an einem veröffentlichten Index](/rest/api/searchservice/update-index).
 
 Unter Verwendung des **Suchexplorers** im Azure-Portal haben Sie eine grundlegende Abfragesyntax anhand von praktischen Beispielen erlernt, und es wurden wichtige Funktionen wie Filter, Treffermarkierung, Fuzzysuche und die geografische Suche veranschaulicht.
 
 Außerdem haben Sie gelernt, wie Indizes, Indexer und Datenquellen im Portal zu finden sind. Wenn Sie zukünftig Datenquellen verwenden, können Sie schnell und mit minimalem Aufwand über das Portal ihre Definitionen oder Felderauflistungen überprüfen.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
@@ -275,8 +264,7 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Anhand der programmatischen Tools können Sie Azure Search genauer erkunden:
+Verwenden Sie einen Portal-Assistenten, um eine sofort einsatzbereite Web-App zu erstellen, die in einem Browser ausgeführt wird. Sie können diesen Assistenten mit dem soeben von Ihnen erstellten kleinen Index testen oder eins der integrierten Beispieldatasets für umfassendere Suchfunktionen verwenden.
 
-* [Erstellen eines Index mit dem .NET SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
-* [Erstellen eines Index mit REST-APIs](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [Erstellen eines Index mit Postman oder Fiddler und den Azure Search-REST-APIs](search-get-started-postman.md)
+> [!div class="nextstepaction"]
+> [Erstellen einer Demo-App im Portal](search-create-app-portal.md)

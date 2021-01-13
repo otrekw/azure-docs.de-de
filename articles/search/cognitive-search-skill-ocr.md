@@ -1,27 +1,26 @@
 ---
-title: Die Qualifikation „OCR“ der kognitiven Suche – Azure Search
-description: Extrahieren Sie Text aus Bilddateien mithilfe der optischen Zeichenerkennung (OCR) in einer Azure Search-Anreicherungspipeline.
-services: search
+title: Der Skill „OCR“
+titleSuffix: Azure Cognitive Search
+description: Extrahieren von Text aus Bilddateien mithilfe der optischen Zeichenerkennung (OCR) in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: da1ca218f7a3d33e6ceb08b3f8d0f632b8b752b7
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 06/17/2020
+ms.openlocfilehash: 8b6a7c3e05b26cbda80ebf1a3fc0d4fed8255e6b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265329"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950804"
 ---
 # <a name="ocr-cognitive-skill"></a>Der Skill „OCR“
 
-Mit der Qualifikation für die optische Zeichenerkennung (OCR) wird gedruckter und handschriftlicher Text in Bilddateien erkannt. Diese Qualifikation verwendet die durch [Maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) in Cognitive Services bereitgestellten Machine Learning-Modelle. Die Qualifikation **OCR** ist den folgenden Funktionen zugeordnet:
+Mit dem Skill für die **optische Zeichenerkennung (OCR)** wird gedruckter und handschriftlicher Text in Bilddateien erkannt. Dieser Skill verwendet die Machine Learning-Modelle, die durch [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) der [Maschinelles Sehen](../cognitive-services/computer-vision/overview.md)-API in Cognitive Services bereitgestellt werden. Die Qualifikation **OCR** ist den folgenden Funktionen zugeordnet:
 
-+ Die API [OCR](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) wird für nicht englische Sprachen verwendet. 
-+ Für Englisch wird die neue API [Read](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) verwendet.
++ Für Englisch, Spanisch, Deutsch Französisch, Italienisch, Portugiesisch und Niederländisch wird die neue [Lese](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api)-API verwendet.
++ Für alle anderen Sprachen wird die [OCR](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api)-API verwendet.
 
 Der Skill **OCR** extrahiert Text aus Bilddateien. Folgende Dateiformate werden unterstützt:
 
@@ -33,9 +32,9 @@ Der Skill **OCR** extrahiert Text aus Bilddateien. Folgende Dateiformate werden 
 + .TIFF
 
 > [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/) angegeben.
 
 
 ## <a name="skill-parameters"></a>Skillparameter
@@ -44,9 +43,9 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
-| detectOrientation | Aktiviert die automatische Erkennung der Bildausrichtung. <br/> Gültige Werte: „true“ und „false“|
-|defaultLanguageCode | <p>  Sprachcode des Eingabetexts. Unterstützte Sprachen: <br/> zh-Hans (Vereinfachtes Chinesisch) <br/> zh-Hant (Traditionelles Chinesisch) <br/>cs (Tschechisch) <br/>da (Dänisch) <br/>nl (Niederländisch) <br/>en (Englisch) <br/>fi (Finnisch)  <br/>fr (Französisch) <br/>  de (Deutsch) <br/>el (Griechisch) <br/> hu (Ungarisch) <br/> it (Italienisch) <br/>  ja (Japanisch) <br/> ko (Koreanisch) <br/> nb (Norwegisch) <br/>   pl (Polnisch) <br/> pt (Portugiesisch) <br/>  ru (Russisch) <br/>  es (Spanisch) <br/>  sv (Schwedisch) <br/>  tr (Türkisch) <br/> ar (Arabisch) <br/> ro (Rumänisch) <br/> sr-Cyrl (Serbisch, kyrillisch) <br/> sr-Latn (Serbisch, lateinisch) <br/>  sk (Slowakisch) <br/>  unk (Unbekannt) <br/><br/> Wenn der Sprachcode nicht angegeben oder Null ist, wird als Sprache automatisch Englisch festgelegt. Wenn die Sprache explizit auf „unk“ festgelegt ist, wird die Sprache automatisch erkannt. </p> |
-|lineEnding | Der Wert, der zwischen jeder erkannten Zeile verwendet werden soll. Mögliche Werte: 'Space','CarriageReturn','LineFeed'.  Der Standardwert ist 'Space'. |
+| `detectOrientation`   | Aktiviert die automatische Erkennung der Bildausrichtung. <br/> Gültige Werte: „true“ und „false“|
+| `defaultLanguageCode` | <p>   Sprachcode des Eingabetexts. Unterstützte Sprachen: <br/> zh-Hans (Vereinfachtes Chinesisch) <br/> zh-Hant (Traditionelles Chinesisch) <br/>cs (Tschechisch) <br/>da (Dänisch) <br/>nl (Niederländisch) <br/>en (Englisch) <br/>fi (Finnisch)  <br/>fr (Französisch) <br/>  de (Deutsch) <br/>el (Griechisch) <br/> hu (Ungarisch) <br/> it (Italienisch) <br/>  ja (Japanisch) <br/> ko (Koreanisch) <br/> nb (Norwegisch) <br/>   pl (Polnisch) <br/> pt (Portugiesisch) <br/>  ru (Russisch) <br/>  es (Spanisch) <br/>  sv (Schwedisch) <br/>  tr (Türkisch) <br/> ar (Arabisch) <br/> ro (Rumänisch) <br/> sr-Cyrl (Serbisch, kyrillisch) <br/> sr-Latn (Serbisch, lateinisch) <br/>  sk (Slowakisch) <br/>  unk (Unbekannt) <br/><br/> Wenn der Sprachcode nicht angegeben oder Null ist, wird als Sprache automatisch Englisch festgelegt. Wenn die Sprache explizit auf „unk“ festgelegt ist, wird die Sprache automatisch erkannt. </p> |
+| `lineEnding` | Der Wert, der zwischen jeder erkannten Zeile verwendet werden soll. Mögliche Werte: "Space", "CarriageReturn", "LineFeed".  Der Standardwert ist "Space". |
 
 Bislang konnte mithilfe des Parameters „textExtractionAlgorithm“ angegeben werden, ob der Skill gedruckten Text (printed) oder handschriftlichen Text (handwritten) extrahieren soll.  Dieser Parameter ist inzwischen veraltet und nicht mehr erforderlich, da der neueste Algorithmus der Read-API beide Arten von Text gleichzeitig extrahieren kann.  Falls Ihr Skill diesen Parameter bereits enthält, müssen Sie ihn nicht entfernen. Er wird jedoch nicht mehr verwendet, und es werden beide Arten von Text extrahiert – unabhängig davon, auf welchen Wert der Parameter festgelegt ist.
 
@@ -54,14 +53,14 @@ Bislang konnte mithilfe des Parameters „textExtractionAlgorithm“ angegeben w
 
 | Eingabename      | BESCHREIBUNG                                          |
 |---------------|------------------------------------------------------|
-| image         | Komplexer Typ. Arbeitet derzeit mit dem Feld „/document/normalized_images“, das vom Azure Blob-Indexer generiert wird, wenn ```imageAction``` auf einen anderen Wert als ```none``` gesetzt ist. Weitere Informationen finden Sie im [Beispiel](#sample-output).|
+| `image`         | Komplexer Typ. Arbeitet derzeit mit dem Feld „/document/normalized_images“, das vom Azure Blob-Indexer generiert wird, wenn ```imageAction``` auf einen anderen Wert als ```none``` gesetzt ist. Weitere Informationen finden Sie im [Beispiel](#sample-output).|
 
 
 ## <a name="skill-outputs"></a>Skillausgaben
 | Ausgabename     | BESCHREIBUNG                   |
 |---------------|-------------------------------|
-| text          | Aus dem Bild extrahierter Nur-Text-Inhalt.   |
-| layoutText    | Komplexer Typ, der den extrahierten Text und die Fundstelle beschreibt.|
+| `text`            | Aus dem Bild extrahierter Nur-Text-Inhalt.   |
+| `layoutText`    | Komplexer Typ, der den extrahierten Text und die Fundstelle beschreibt.|
 
 
 ## <a name="sample-definition"></a>Beispieldefinition
@@ -173,18 +172,22 @@ Mit der folgenden Beispielqualifikationsgruppe wird das Feld mit der Bezeichnung
       "insertPostTag": " ",
       "inputs": [
         {
-          "name":"text", "source": "/document/content"
+          "name":"text",
+          "source": "/document/content"
         },
         {
-          "name": "itemsToInsert", "source": "/document/normalized_images/*/text"
+          "name": "itemsToInsert", 
+          "source": "/document/normalized_images/*/text"
         },
         {
-          "name":"offsets", "source": "/document/normalized_images/*/contentOffset"
+          "name":"offsets", 
+          "source": "/document/normalized_images/*/contentOffset"
         }
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetName" : "merged_text"
+          "name": "mergedText", 
+          "targetName" : "merged_text"
         }
       ]
     }
@@ -206,7 +209,7 @@ Im oben gezeigten Beispiel für das Skillset wird davon ausgegangen, dass ein Fe
 ```
 
 ## <a name="see-also"></a>Weitere Informationen
-+ [Vordefinierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Der Skill „Text zusammenführen“](cognitive-search-skill-textmerger.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Erstellen eines Indexers (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Erstellen eines Indexers (REST)](/rest/api/searchservice/create-indexer)

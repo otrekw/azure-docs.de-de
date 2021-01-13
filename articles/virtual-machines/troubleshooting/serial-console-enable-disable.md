@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: 1c1fe208c77142351a786fa636896e64a8a467d7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129466"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75451301"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>Aktivieren und Deaktivieren der seriellen Azure-Konsole
 
@@ -31,31 +31,34 @@ Sie können die serielle Konsole auch für einen einzelnen virtuellen Computer o
 Die serielle Konsole kann für bestimmte VMs oder VM-Skalierungsgruppen deaktiviert werden, indem die Startdiagnose deaktiviert wird. Deaktivieren Sie die Startdiagnose im Azure-Portal, um die serielle Konsole für eine VM oder VM-Skalierungsgruppe zu deaktivieren. Stellen Sie sicher, dass Sie Ihre VM-Skalierungsgruppeninstanzen auf die neueste Version aktualisieren, wenn Sie die serielle Konsole für eine VM-Skalierungsgruppe verwenden.
 
 
-## <a name="subscription-level-disable"></a>Deaktivieren auf Abonnementebene
+## <a name="subscription-level-enabledisable"></a>Aktivieren/Deaktivieren auf Abonnementebene
+
+> [!NOTE]
+> Stellen Sie vor der Ausführung dieses Befehls sicher, dass Sie sich in der richtigen Cloud (öffentliche Azure-Cloud, Azure US Government-Cloud) befinden. Dies können Sie mit `az cloud list` überprüfen und mit `az cloud set -n <Name of cloud>` Ihre Cloud festlegen.
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Die serielle Konsole kann über die folgenden Befehle in der Azure-Befehlszeilenschnittstelle für ein gesamtes Abonnement deaktiviert und erneut aktiviert werden:
+Die serielle Konsole kann für ein gesamtes Abonnement deaktiviert und wieder aktiviert werden, indem Sie die folgenden Befehle in der Azure CLI verwenden (Sie können die Schaltfläche „Ausprobieren“ verwenden, um eine Instanz der Azure Cloud Shell zu starten, in der Sie die Befehle ausführen können):
 
 Verwenden Sie zum Deaktivieren der seriellen Konsole für ein Abonnement die folgenden Befehle:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default"
+az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
 Verwenden Sie zum Aktivieren der seriellen Konsole für ein Abonnement die folgenden Befehle:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default"
+az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
 Verwenden Sie die folgenden Befehle, um den aktuellen Status (aktiviert oder deaktiviert) der seriellen Konsole für ein Abonnement abzurufen:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" -o=json | jq .properties
+az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --output=json --api-version="2018-05-01" | jq .properties
 ```
 
 ### <a name="powershell"></a>PowerShell

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b750659bf22e856ee8ad7368e3fea64dd7245df
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632821"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960358"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>Überwachen von Hardwarekomponenten und Status mithilfe des StorSimple-Geräte-Manager-Diensts
 
@@ -49,11 +49,11 @@ Führen Sie die folgenden Schritte aus, um den Hardwarestatus einer Gerätekompo
 
 1. Navigieren Sie zu **Geräte**, und wählen Sie ein bestimmtes StorSimple-Gerät aus. Wechseln Sie zu **Überwachung > Hardwareintegrität**.
 
-    ![](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
+    ![Screenshot, der das Blatt „Einstellungen“ des Geräte-Manager-Diensts zeigt. Unter „Überwachung“ ist „Hardwareintegrität“ ausgewählt.](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
 
 2. Navigieren Sie zum Abschnitt **Hardwarekomponenten**, und wählen Sie eine der verfügbaren Komponenten aus. Klicken Sie einfach auf die Komponentenbezeichnung, um die Liste zu erweitern und den Status der verschiedenen Gerätekomponenten anzuzeigen. Weitere Informationen finden Sie in der [ausführlichen Komponentenliste für das primäre Gehäuse](#component-list-for-primary-enclosure-of-storsimple-device) sowie in der [ausführlichen Komponentenliste für das EBOD-Gehäuse](#component-list-for-ebod-enclosure-of-storsimple-device).
 
-    ![](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
+    ![Screenshot, der eine ausgewählte Komponente im Abschnitt mit den Hardwarekomponenten zeigt. Auf einem angrenzenden Blatt werden der Name und der Status der Teile dieser Komponente angezeigt.](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
 
 3. Der Komponentenstatus basiert auf dem folgenden Farbschema:
    
@@ -64,22 +64,22 @@ Führen Sie die folgenden Schritte aus, um den Hardwarestatus einer Gerätekompo
    
    Der folgende Screenshot zeigt ein Gerät, das Komponenten mit den Status **OK**, **Warnung** und **Fehler** aufweist.
        
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
+   ![Screenshot, der drei Komponenten im Abschnitt mit den Hardwarekomponenten zeigt: eine mit dem Status „In Ordnung“, eine im Status „Fehler“ und eine im Status „Warnung“.](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
 
    Erweitern Sie Liste **Freigegebene Komponenten**, um zu sehen, dass der NVRAM und der Cluster fehlerhaft sind.
 
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
+   ![Screenshot, der das ausgewählte Element „Freigegebene Komponenten“ anzeigt. Auf dem angrenzenden Blatt wird für den NVRAM und den Cluster der Status „Warnung“ angezeigt.](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
 
    Erweitern Sie die Liste **Controller 1-Komponenten**, um zu sehen, dass der Clusterknoten fehlerhaft ist.  
 
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
+   ![Screenshot, der das ausgewählte Element „Controller 1-Komponenten“ anzeigt. Auf dem angrenzenden Blatt weist der Clusterknoten den Status „Fehler“ auf.](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
-4. Sollte sich eine Komponente nicht in einem **fehlerfreien** Zustand befinden, wenden Sie sich an den Support von Microsoft. Sind Warnungen auf dem Gerät aktiviert, werden Sie per E-Mail benachrichtigt. Informationen zum Austauschen fehlerhafter Hardwarekomponenten finden Sie unter [Austausch von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
+4. Sollte sich eine Komponente nicht in einem **fehlerfreien** Zustand befinden, wenden Sie sich an den Support von Microsoft. Sind Warnungen auf dem Gerät aktiviert, werden Sie per E-Mail benachrichtigt. Informationen zum Austauschen fehlerhafter Hardwarekomponenten finden Sie unter [Austausch von StorSimple-Hardwarekomponenten](./storsimple-8000-hardware-component-replacement.md).
 
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Komponentenliste für das primäre Gehäuse eines StorSimple-Geräts
 Die folgende Tabelle gibt Aufschluss über die physischen und logischen Komponenten im primären Gehäuse Ihres lokalen StorSimple-Geräts (sowohl bei 8100 als auch bei 8600).
 
-| Komponente | Modul | Type | Location | FRU (Field Replaceable Unit)? | BESCHREIBUNG |
+| Komponente | Modul | Typ | Standort | FRU (Field Replaceable Unit)? | BESCHREIBUNG |
 | --- | --- | --- | --- | --- | --- |
 | Laufwerk in Einschubfach [0-11] |Laufwerke |Physisch |Shared |Ja |Die einzelnen SSD- oder HDD-Laufwerke des primären Gehäuses werden jeweils in einer eigenen Zeile angegeben. |
 | Ambiente-Temperatursensor |Gehäuse |Physisch |Shared |Nein |Misst die Temperatur im Gehäuse. |
@@ -120,7 +120,7 @@ Die folgende Tabelle gibt Aufschluss über die physischen und logischen Komponen
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Komponentenliste für das EBOD-Gehäuse eines StorSimple-Geräts
 Die folgende Tabelle gibt Aufschluss über die physischen und logischen Komponenten im EBOD-Gehäuse Ihres lokalen StorSimple-Geräts (nur bei 8600).
 
-| Komponente | Modul | Type | Location | FRU? | BESCHREIBUNG |
+| Komponente | Modul | Typ | Standort | FRU? | BESCHREIBUNG |
 | --- | --- | --- | --- | --- | --- |
 | Laufwerk in Einschubfach [0-11] |Laufwerke |Physisch |Shared |Ja |Die einzelnen HDD-Laufwerke an der Vorderseite des EBOD-Gehäuses werden jeweils in einer eigenen Zeile angegeben. |
 | Ambiente-Temperatursensor |Gehäuse |Physisch |Shared |Nein |Misst die Temperatur im Gehäuse. |
@@ -146,6 +146,5 @@ Die folgende Tabelle gibt Aufschluss über die physischen und logischen Komponen
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Verwalten Ihres Geräts mit dem StorSimple-Geräte-Manager-Dienst finden Sie unter [Verwalten von StorSimple-Geräten mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
 * Informationen zum Behandeln von Problemen mit einer beeinträchtigten oder fehlerhaften Gerätekomponente finden Sie unter [StorSimple-Überwachungsindikatoren](storsimple-monitoring-indicators.md).
-* Informationen zum Austauschen fehlerhafter Hardwarekomponenten finden Sie unter [Austausch von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
+* Informationen zum Austauschen fehlerhafter Hardwarekomponenten finden Sie unter [Austausch von StorSimple-Hardwarekomponenten](./storsimple-8000-hardware-component-replacement.md).
 * Sollten weiterhin Geräteprobleme auftreten, [wenden Sie sich an den Microsoft-Support](storsimple-8000-contact-microsoft-support.md).
-

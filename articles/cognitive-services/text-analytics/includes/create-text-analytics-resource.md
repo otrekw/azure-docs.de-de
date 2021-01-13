@@ -3,18 +3,19 @@ title: Erstellen einer Cognitive Services-Ressource zur Textanalyse
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie eine Cognitive Services-Ressource zur Textanalyse erstellen.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
-ms.date: 06/26/2019
-ms.author: dapine
-ms.openlocfilehash: 6a9363472e1d5770232ca9a0b151fb309d9c4c75
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: daafea59b96cc8da6b78f0733c9f54e0e4d3a8c2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377428"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009901"
 ---
 ## <a name="create-a-cognitive-services-text-analytics-resource"></a>Erstellen einer Cognitive Services-Ressource zur Textanalyse
 
@@ -25,9 +26,9 @@ ms.locfileid: "68377428"
 
     |Einstellung|Wert|
     |--|--|
-    |NAME|Geben Sie einen Namen ein (2 bis 64 Zeichen).|
+    |Name|Geben Sie einen Namen ein (2 bis 64 Zeichen).|
     |Subscription|Wählen Sie das entsprechende Abonnement aus.|
-    |Location|Wählen Sie einen nahe gelegenen Speicherort aus.|
+    |Standort|Wählen Sie einen nahe gelegenen Speicherort aus.|
     |Tarif| Geben Sie **S** für den Tarif „Standard“ ein.|
     |Resource group|Wählen Sie eine verfügbare Ressourcengruppe aus.|
 

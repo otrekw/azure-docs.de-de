@@ -1,20 +1,16 @@
 ---
 title: Dauerhafte Orchestrierungen – Azure Functions
 description: Einführung in das Orchestrierungsfeature für Azure Durable Functions.
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 82c4a27ac2491e668c1d99e2a14b870e82ec5665
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ba314963058389e171601407ff00411049eecd45
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935418"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845423"
 ---
 # <a name="durable-orchestrations"></a>Dauerhafte Orchestrierungen
 
@@ -45,9 +41,9 @@ Die Instanz-ID einer Orchestrierung ist ein erforderlicher Parameter für die me
 
 ## <a name="reliability"></a>Zuverlässigkeit
 
-Orchestratorfunktionen verwalten ihren Ausführungsstatus zuverlässig mithilfe eines als [Ereignissourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) bezeichneten Entwurfsmusters. Anstatt den aktuellen Zustand einer Orchestrierung direkt zu speichern, verwendet das Durable Task Framework einen ausschließlich zum Anfügen bestimmten Speicher, um die vollständige Aktionsreihe zu erfassen, die von der Funktionsorchestrierung ausgeführt wird. Ein reiner Anfügespeicher bietet viele Vorteile im Vergleich mit dem „Abladen“ des gesamten Laufzeitstatus. Zu den Vorteilen zählen die gesteigerte Leistung, Skalierbarkeit und Reaktionsfähigkeit. Sie erhalten außerdem endgültige Konsistenz von Transaktionsdaten und vollständige Überwachungspfade sowie vollständigen Verlauf. Die Überwachungspfade unterstützen zuverlässige kompensierende Aktionen.
+Orchestratorfunktionen verwalten ihren Ausführungsstatus zuverlässig mithilfe eines als [Ereignissourcing](/azure/architecture/patterns/event-sourcing) bezeichneten Entwurfsmusters. Anstatt den aktuellen Zustand einer Orchestrierung direkt zu speichern, verwendet das Durable Task Framework einen ausschließlich zum Anfügen bestimmten Speicher, um die vollständige Aktionsreihe zu erfassen, die von der Funktionsorchestrierung ausgeführt wird. Ein reiner Anfügespeicher bietet viele Vorteile im Vergleich mit dem „Abladen“ des gesamten Laufzeitstatus. Zu den Vorteilen zählen die gesteigerte Leistung, Skalierbarkeit und Reaktionsfähigkeit. Sie erhalten außerdem endgültige Konsistenz von Transaktionsdaten und vollständige Überwachungspfade sowie vollständigen Verlauf. Die Überwachungspfade unterstützen zuverlässige kompensierende Aktionen.
 
-Durable Functions verwendet Ereignissourcing transparent. Im Hintergrund gibt der `await`-Operator (C#) oder `yield`-Operator (JavaScript) in einer Orchestratorfunktion die Steuerung des Orchestratorthreads an den Durable Task Framework-Verteiler zurück. Der Verteiler committet dann alle neuen Aktionen, die die Orchestratorfunktion geplant hat (z.B. Aufrufen mindestens einer untergeordneten Funktion oder Planen eines permanenten Timers) in den Speicher. Dieser transparente Commitvorgang wird dem Ausführungsverlauf der Orchestrierungsinstanz angefügt. Der Verlauf wird in einer Speichertabelle gespeichert. Dann fügt die Commitaktion Nachrichten an eine Warteschlange an, um die eigentliche Arbeit zu planen. An diesem Punkt kann die Orchestratorfunktion aus dem Arbeitsspeicher entladen werden.
+Durable Functions verwendet Ereignissourcing transparent. Im Hintergrund gibt der `await`-Operator (C#) oder `yield`-Operator (JavaScript/Python) in einer Orchestratorfunktion die Steuerung des Orchestratorthreads an den Durable Task Framework-Verteiler zurück. Der Verteiler committet dann alle neuen Aktionen, die die Orchestratorfunktion geplant hat (z.B. Aufrufen mindestens einer untergeordneten Funktion oder Planen eines permanenten Timers) in den Speicher. Dieser transparente Commitvorgang wird dem Ausführungsverlauf der Orchestrierungsinstanz angefügt. Der Verlauf wird in einer Speichertabelle gespeichert. Dann fügt die Commitaktion Nachrichten an eine Warteschlange an, um die eigentliche Arbeit zu planen. An diesem Punkt kann die Orchestratorfunktion aus dem Arbeitsspeicher entladen werden.
 
 Wenn eine Orchestrierungsfunktion weitere Aufgaben ausführen muss (z.B. wird eine Antwortnachricht empfangen, oder ein permanenter Timer läuft ab), wird der Orchestrator reaktiviert und führt erneut die gesamte Funktion von Beginn an neu aus, um den lokalen Status wiederherzustellen. Wenn der Code während dieser Wiedergabe versucht, eine Funktion aufzurufen (oder eine andere asynchrone Aktion auszuführen), zieht Durable Task Framework den Ausführungsverlauf der aktuellen Orchestrierung zu Rate. Wenn festgestellt wird, dass die [Aktivitätsfunktion](durable-functions-types-features-overview.md#activity-functions) bereits ausgeführt wurde und ein Ergebnis erbracht hat, wird dieses Funktionsergebnis wiedergegeben und der Orchestratorcode weiter ausgeführt. Die Wiedergabe wird fortgesetzt, bis der Funktionscode abgeschlossen ist oder geplante neue asynchrone Arbeit ansteht.
 
@@ -55,16 +51,18 @@ Wenn eine Orchestrierungsfunktion weitere Aufgaben ausführen muss (z.B. wird ei
 > Damit das Wiedergabemuster ordnungsgemäß und zuverlässig funktioniert, muss der Orchestratorfunktionscode *deterministisch* sein. Weitere Informationen zu Codeeinschränkungen für Orchestratorfunktionen finden Sie im Thema [Codeeinschränkungen für Orchestratorfunktionen](durable-functions-code-constraints.md).
 
 > [!NOTE]
-> Wenn eine Orchestratorfunktion Protokollmeldungen ausgibt, kann das Wiedergabeverhalten zur Ausgabe doppelter Protokollmeldungen führen. Informationen zum Grund für dieses Verhalten sowie zur Umgehung dieses Problems finden Sie im Thema [Protokollierung](durable-functions-diagnostics.md#logging).
+> Wenn eine Orchestratorfunktion Protokollmeldungen ausgibt, kann das Wiedergabeverhalten zur Ausgabe doppelter Protokollmeldungen führen. Informationen zum Grund für dieses Verhalten sowie zur Umgehung dieses Problems finden Sie im Thema [Protokollierung](durable-functions-diagnostics.md#app-logging).
 
 ## <a name="orchestration-history"></a>Orchestrierungsverlauf
 
-Das Ereignissourcingverhalten des Durable Task Frameworks ist eng an den von Ihnen geschriebenen Orchestratorfunktionscode gekoppelt. Angenommen, Sie verfügen über eine Orchestratorfunktion zur Verkettung von Aktivitäten, wie etwa die folgende C#-Orchestratorfunktion:
+Das Ereignissourcingverhalten des Durable Task Frameworks ist eng an den von Ihnen geschriebenen Orchestratorfunktionscode gekoppelt. Angenommen, Sie verfügen über eine Orchestratorfunktion zur Verkettung von Aktivitäten wie etwa die folgende Orchestratorfunktion:
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
 public static async Task<List<string>> Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var outputs = new List<string>();
 
@@ -77,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-In JavaScript sieht Ihre Orchestratorfunktion zur Verkettung von Aktivitäten unter Umständen wie im folgenden Codebeispiel aus:
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -93,7 +91,23 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Bei jeder `await`-Anweisung (C#) oder `yield`-Anweisung (JavaScript) erstellt das Durable Task Framework einen Prüfpunkt für den Ausführungszustand der Funktion in einem dauerhaften Speicher-Back-End (üblicherweise Azure Table Storage). Dieser Zustand wird als *Orchestrierungsverlauf* bezeichnet.
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    result1 = yield context.call_activity('SayHello', "Tokyo")
+    result2 = yield context.call_activity('SayHello', "Seattle")
+    result3 = yield context.call_activity('SayHello', "London")
+    return [result1, result2, result3]
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+---
+
+Bei jeder `await`-Anweisung (C#) oder `yield`-Anweisung (JavaScript/Python) erstellt das Durable Task Framework einen Prüfpunkt für den Ausführungszustand der Funktion in einem dauerhaften Speicher-Back-End (üblicherweise Azure Table Storage). Dieser Zustand wird als *Orchestrierungsverlauf* bezeichnet.
 
 ### <a name="history-table"></a>Verlaufstabelle
 
@@ -112,28 +126,28 @@ Nach Abschluss des Vorgangs sieht der Verlauf der obigen Funktion in Azure Table
 
 | PartitionKey (InstanceId)                     | EventType             | Timestamp               | Eingabe | Name             | Ergebnis                                                    | Status |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | NULL  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | """Hello Tokyo!"""                                        |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | """Hello Seattle!"""                                      |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | """Hello London!"""                                       |                     |
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | Abgeschlossen           |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | Abgeschlossen           |
 
 Einige Hinweise zu den Spaltenwerten:
 
 * **PartitionKey**: Enthält die Instanz-ID der Orchestrierung.
 * **EventType**: Steht für den Typ des Ereignisses. Es kann sich um einen der folgenden Typen handeln:
-  * **OrchestrationStarted**: Die Orchestratorfunktion wurde aus einem Wartezustand fortgesetzt oder wird zum ersten Mal ausgeführt. Die Spalte `Timestamp` wird verwendet, um den deterministischen Wert für die [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime)-API aufzufüllen.
+  * **OrchestrationStarted**: Die Orchestratorfunktion wurde aus einem Wartezustand fortgesetzt oder wird zum ersten Mal ausgeführt. Die Spalte `Timestamp` wird verwendet, um den deterministischen Wert für die `CurrentUtcDateTime`- (.NET), `currentUtcDateTime`- (JavaScript) und `current_utc_datetime`-APIs (Python) aufzufüllen.
   * **ExecutionStarted**: Die Ausführung der Orchestratorfunktion wurde zum ersten Mal gestartet. Dieses Ereignis enthält auch die Funktionseingabe in der Spalte `Input`.
   * **TaskScheduled**: Eine Aktivitätsfunktion wurde geplant. Der Name der Aktivitätsfunktion wird in der Spalte `Name` erfasst.
   * **TaskCompleted**: Eine Aktivitätsfunktion wurde abgeschlossen. Das Ergebnis der Funktion ist in der Spalte `Result` enthalten.
@@ -143,7 +157,7 @@ Einige Hinweise zu den Spaltenwerten:
   * **OrchestratorCompleted**: Die wartende Orchestratorfunktion.
   * **ContinueAsNew**: Die Orchestratorfunktion wurde abgeschlossen und mit einem neuen Zustand neu gestartet. Die Spalte `Result` enthält den Wert, der als Eingabe in der neu gestarteten Instanz verwendet wird.
   * **ExecutionCompleted**: Die Orchestratorfunktion wurde bis zum Abschluss (oder Fehler) ausgeführt. Die Ausgaben der Funktion bzw. die Fehlerdetails werden in der Spalte `Result` gespeichert.
-* **Timestamp** (Zeitstempel): Der UTC-Zeitstempel des Verlaufsereignisses.
+* **Timestamp**: Der UTC-Zeitstempel des Verlaufsereignisses.
 * **Name**: Der Name der Funktion, die aufgerufen wurde.
 * **Eingabe**: Die Eingabe der Funktion im JSON-Format.
 * **Result**: Die Ausgabe der Funktion, also ihr Rückgabewert.
@@ -151,7 +165,7 @@ Einige Hinweise zu den Spaltenwerten:
 > [!WARNING]
 > Die Tabelle ist zwar als Debugtool nützlich, aber Sie sollten keine Abhängigkeiten dafür einrichten. Dies kann sich im Rahmen der Weiterentwicklung der Erweiterung Durable Functions ändern.
 
-Jedes Mal, wenn die Funktion aus einem `await` (C#)- oder `yield` (JavaScript)-Zustand fortgesetzt wird, führt das Durable Task Framework die Orchestratorfunktion von Grund auf neu aus. Bei jeder erneuten Ausführung wird der Ausführungsverlauf herangezogen, um zu ermitteln, ob der aktuelle asynchrone Vorgang ausgeführt wurde.  Wenn ja, gibt das Framework die Ausgabe dieses Vorgangs sofort wieder und fährt mit dem nächsten `await` (C#)- oder `yield` (JavaScript)-Element fort. Dieser Prozess wird fortgesetzt, bis der gesamte Verlauf wiedergegeben wurde. Nachdem der aktuelle Verlauf wiedergegeben wurde, werden die lokalen Variablen wieder auf Ihre vorherigen Werte zurückgesetzt.
+Jedes Mal, wenn die Funktion aus einem `await`- (C#) oder `yield`-Zustand (JavaScript/Python) fortgesetzt wird, führt das Durable Task Framework die Orchestratorfunktion von Grund auf neu aus. Bei jeder erneuten Ausführung wird der Ausführungsverlauf herangezogen, um zu ermitteln, ob der aktuelle asynchrone Vorgang ausgeführt wurde.  Wenn ja, gibt das Framework die Ausgabe dieses Vorgangs sofort wieder und fährt mit dem nächsten `await`- (C#) oder `yield`-Element (JavaScript/Python) fort. Dieser Prozess wird fortgesetzt, bis der gesamte Verlauf wiedergegeben wurde. Nachdem der aktuelle Verlauf wiedergegeben wurde, werden die lokalen Variablen wieder auf Ihre vorherigen Werte zurückgesetzt.
 
 ## <a name="features-and-patterns"></a>Funktionen und Muster
 
@@ -165,7 +179,7 @@ Weitere Informationen und Beispiele finden Sie im Artikel [Untergeordnete Orches
 
 ### <a name="durable-timers"></a>Permanente Timer
 
-Orchestrierungen können mithilfe *permanenter Timer* Verzögerungen implementieren oder die Timeoutbehandlung für asynchrone Aktionen einrichten. Verwenden Sie permanente Timer in Orchestratorfunktionen anstelle von `Thread.Sleep` und `Task.Delay` (C#) oder `setTimeout()` und `setInterval()` (JavaScript).
+Orchestrierungen können mithilfe *permanenter Timer* Verzögerungen implementieren oder die Timeoutbehandlung für asynchrone Aktionen einrichten. Verwenden Sie permanente Timer in Orchestratorfunktionen anstelle von `Thread.Sleep` und `Task.Delay` (C#) oder `setTimeout()` und `setInterval()` (JavaScript) oder `time.sleep()` (Python).
 
 Weitere Informationen und Beispiele finden Sie im Artikel [Timer in Durable Functions (Azure Functions)](durable-functions-timers.md).
 
@@ -186,9 +200,9 @@ Orchestratorfunktionen können den Aktivitäts- oder untergeordneten Orchestrato
 
 Weitere Informationen und Beispiele finden Sie im Artikel [Fehlerbehandlung in Durable Functions (Azure Functions)](durable-functions-error-handling.md).
 
-### <a name="critical-sections"></a>Kritische Abschnitte
+### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>Kritische Abschnitte (Durable Functions 2.x, derzeit nur .NET)
 
-Da es sich bei Orchestrierungsinstanzen um Singlethread-Instanzen handelt, müssen Sie sich keine Gedanken über Racebedingungen *innerhalb* einer Orchestrierung machen. Racebedingung sind jedoch möglich, wenn Orchestrierungen mit externen Systemen interagieren. Um Racebedingungen bei der Interaktion mit externen Systemen entgegenzuwirken, können Orchestratorfunktionen in .NET mithilfe einer Methode vom Typ `LockAsync` *kritische Abschnitte* definieren.
+Da es sich bei Orchestrierungsinstanzen um Singlethread-Instanzen handelt, müssen Sie sich keine Gedanken über Racebedingungen *innerhalb* einer Orchestrierung machen. Racebedingung sind jedoch möglich, wenn Orchestrierungen mit externen Systemen interagieren. Um Racebedingungen bei der Interaktion mit externen Systemen entgegenzuwirken, können Orchestratorfunktionen in .NET mithilfe einer Methode vom Typ `LockAsync`*kritische Abschnitte* definieren.
 
 Der folgende Beispielcode zeigt eine Orchestratorfunktion, die einen kritischen Abschnitt definiert. Der kritische Abschnitt wird mithilfe der Methode `LockAsync` gestartet. Diese Methode erfordert die Übergabe mindestens eines Verweises an eine [dauerhafte Entität](durable-functions-entities.md), die dauerhaft den Sperrzustand verwaltet. Der Code im kritischen Abschnitt kann jeweils nur von einer einzelnen Instanz dieser Orchestrierung ausgeführt werden.
 
@@ -212,11 +226,13 @@ Das Feature „kritischer Abschnitt“ ist auch hilfreich, um Änderungen an dau
 > [!NOTE]
 > Kritische Abschnitte stehen ab Durable Functions 2.0 zur Verfügung. Aktuell wird dieses Feature nur von .NET-Orchestrierungen implementiert.
 
-### <a name="calling-http-endpoints"></a>Aufrufen von HTTP-Endpunkten
+### <a name="calling-http-endpoints-durable-functions-2x"></a>Aufrufen von HTTP-Endpunkten (Durable Functions 2.x)
 
 Von Orchestratorfunktionen dürfen keine E/A-Vorgänge ausgeführt werden, wie unter [Codeeinschränkungen für Orchestratorfunktionen](durable-functions-code-constraints.md) beschrieben. Zur Umgehung dieses Problems wird der Code, der E/A-Vorgänge ausführen muss, in der Regel in eine Aktivitätsfunktion eingeschlossen. Orchestrierungen, die mit externen Systemen interagieren, verwenden häufig Aktivitätsfunktionen, um HTTP-Aufrufe durchzuführen und das Ergebnis an die Orchestrierung zurückzugeben.
 
-Zur Vereinfachung dieses gängigen Musters können Orchestratorfunktionen in .NET die Methode `CallHttpAsync` verwenden, um HTTP-APIs direkt aufzurufen. Neben der Unterstützung grundlegender Anforderungs-/Antwortmuster unterstützt `CallHttpAsync` auch die automatische Behandlung gängiger asynchroner HTTP 202-Abrufmuster sowie die Authentifizierung mit externen Diensten unter Verwendung [verwalteter Identitäten](../../active-directory/managed-identities-azure-resources/overview.md).
+# <a name="c"></a>[C#](#tab/csharp)
+
+Zur Vereinfachung dieses gängigen Musters können Orchestratorfunktionen die Methode `CallHttpAsync` verwenden, um HTTP-APIs direkt aufzurufen.
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -236,21 +252,53 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const url = context.df.getInput();
+    var res = yield context.df.callHttp("GET", url);
+    if (res.statusCode >= 400) {
+        // handling of error codes goes here
+    }
+});
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    url = context.get_input()
+    res = yield context.call_http('GET', url)
+    if res.status_code >= 400:
+        # handing of error code goes here
+```
+---
+
+Neben der Unterstützung grundlegender Anforderungs-/Antwortmuster unterstützt die Methode die automatische Behandlung gängiger asynchroner HTTP 202-Abrufmuster sowie die Authentifizierung mit externen Diensten unter Verwendung [verwalteter Identitäten](../../active-directory/managed-identities-azure-resources/overview.md).
+
 Weitere Informationen und ausführliche Beispiele finden Sie im Artikel [HTTP-Features](durable-functions-http-features.md).
 
 > [!NOTE]
-> Das direkte Aufrufen von HTTP-Endpunkten über Orchestratorfunktionen ist ab Durable Functions 2.0 möglich. Aktuell wird dieses Feature nur von .NET-Orchestrierungen implementiert.
+> Das direkte Aufrufen von HTTP-Endpunkten über Orchestratorfunktionen ist ab Durable Functions 2.0 möglich.
 
 ### <a name="passing-multiple-parameters"></a>Übergeben von mehreren Parametern
 
-Es ist nicht möglich, mehrere Parameter direkt an eine Aktivitätsfunktion zu übergeben. Es wird empfohlen, ein Array von Objekten zu übergeben oder Objekte vom Typ [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) in .NET zu verwenden.
+Es ist nicht möglich, mehrere Parameter direkt an eine Aktivitätsfunktion zu übergeben. Es wird empfohlen, ein Array von Objekten oder zusammengesetzte Objekte zu übergeben.
 
-Das folgende Beispiel verwendet neue Features von [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples), die mit [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) hinzugefügt wurden:
+# <a name="c"></a>[C#](#tab/csharp)
+
+In .NET können Sie auch Objekte vom Typ [ValueTuple](/dotnet/csharp/tuples) verwenden. Im folgenden Beispiel werden neue Features von [ValueTuple](/dotnet/csharp/tuples) verwendet, die mit [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples) hinzugefügt wurden:
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
 public static async Task<object> RunOrchestrator(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string major = "ComputerScience";
     int universityYear = context.GetInput<int>();
@@ -262,7 +310,7 @@ public static async Task<object> RunOrchestrator(
 }
 
 [FunctionName("CourseRecommendations")]
-public static async Task<object> Mapper([ActivityTrigger] DurableActivityContext inputs)
+public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContext inputs)
 {
     // parse input for student's major and year in university
     (string Major, int UniversityYear) studentInfo = inputs.GetInput<(string, int)>();
@@ -281,6 +329,66 @@ public static async Task<object> Mapper([ActivityTrigger] DurableActivityContext
     };
 }
 ```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+#### <a name="orchestrator"></a>Orchestrator
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const location = {
+        city: "Seattle",
+        state: "WA"
+    };
+    const weather = yield context.df.callActivity("GetWeather", location);
+
+    // ...
+};
+```
+
+#### <a name="getweather-activity"></a>`GetWeather` -Aktivität
+
+```javascript
+module.exports = async function (context, location) {
+    const {city, state} = location; // destructure properties into variables
+
+    // ...
+};
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+#### <a name="orchestrator"></a>Orchestrator
+
+```python
+from collections import namedtuple
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    Location = namedtuple('Location', ['city', 'state'])
+    location = Location(city='Seattle', state= 'WA')
+
+    weather = yield context.call_activity("GetWeather", location)
+
+    # ...
+
+```
+#### <a name="getweather-activity"></a>`GetWeather` -Aktivität
+
+```python
+from collections import namedtuple
+
+Location = namedtuple('Location', ['city', 'state'])
+
+def main(location: Location) -> str:
+    city, state = location
+    return f"Hello {city}, {state}!"
+```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

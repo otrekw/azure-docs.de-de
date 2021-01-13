@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c263ed1f18ceaa2db976632ea31b9fe1eb47a93
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 513de6d990884f9abf2378ea208ec1dbe556d397
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907167"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587148"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -59,11 +59,11 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>Erstellen von Klassen für die JSON-Antwort
 
-Als Nächstes erstellen wir eine Klasse, die bei der Deserialisierung der von der Textübersetzungs-API zurückgegebenen JSON-Antwort verwendet wird.
+Als Nächstes wird eine Klasse erstellt, die bei der Deserialisierung der von Translator zurückgegebenen JSON-Antwort zur Anwendung kommt.
 
 ```csharp
 /// <summary>
-/// The C# classes that represents the JSON returned by the Translator Text API.
+/// The C# classes that represents the JSON returned by the Translator.
 /// </summary>
 public class DetectResult
 {
@@ -270,7 +270,7 @@ Entfernen Sie unbedingt alle vertraulichen Informationen wie etwa Abonnementschl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die API-Referenz an, um zu erfahren, welche Möglichkeiten die Textübersetzungs-API bietet.
+Machen Sie sich anhand der API-Referenz mit den Möglichkeiten von Translator vertraut.
 
 > [!div class="nextstepaction"]
 > [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

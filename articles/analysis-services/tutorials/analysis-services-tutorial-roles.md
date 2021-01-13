@@ -1,23 +1,22 @@
 ---
-title: 'Tutorial: Konfigurieren von Administrator- und Benutzerrollen in Azure Analysis Services | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie Azure Analysis Services-Rollen konfigurieren.
+title: 'Tutorial: Konfigurieren von Rollen in Azure Analysis Services | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie Administrator- und Benutzerrollen von Azure Analysis Services über das Azure-Portal oder das SQL Server Management Studio konfigurieren.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: b36541cde457b7faf8b3a020cdde01f049ceb652
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932215"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018694"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Tutorial: Konfigurieren von Serveradministrator- und Benutzerrollen
 
- In diesem Tutorial stellen Sie mithilfe von SQL Server Management Studio (SSMS) eine Verbindung mit Ihrem Server in Azure her, um Serveradministrator- und Modelldatenbankrollen zu konfigurieren. Darüber hinaus finden Sie hier eine Einführung in [TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200). TMSL ist eine auf JSON basierende Skriptsprache für Tabellenmodelle mit einem Kompatibilitätsgrad von mindestens 1200. Sie kann zum Automatisieren zahlreicher Tabellenmodellierungsaufgaben verwendet werden. TMSL wird häufig mit PowerShell verwendet. In diesem Tutorial verwenden Sie jedoch den XMLA-Abfrage-Editor in SSMS. Sie führen im Rahmen dieses Tutorials folgende Aufgaben aus: 
+ In diesem Tutorial stellen Sie mithilfe von SQL Server Management Studio (SSMS) eine Verbindung mit Ihrem Server in Azure her, um Serveradministrator- und Modelldatenbankrollen zu konfigurieren. Darüber hinaus finden Sie hier eine Einführung in [TMSL (Tabular Model Scripting Language)](/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200). TMSL ist eine auf JSON basierende Skriptsprache für Tabellenmodelle mit einem Kompatibilitätsgrad von mindestens 1200. Sie kann zum Automatisieren zahlreicher Tabellenmodellierungsaufgaben verwendet werden. TMSL wird häufig mit PowerShell verwendet. In diesem Tutorial verwenden Sie jedoch den XMLA-Abfrage-Editor in SSMS. Sie führen im Rahmen dieses Tutorials folgende Aufgaben aus: 
   
 > [!div class="checklist"]
 > * Abrufen Ihres Servernamens über das Portal
@@ -34,7 +33,7 @@ Informationen zur Benutzersicherheit in Azure Analysis Services finden Sie unter
 - Erstellung eines [Azure Analysis Services-Servers](../analysis-services-create-server.md) in Ihrem Abonnement
 - [Serveradministratorberechtigungen](../analysis-services-server-admins.md)
 - [Hinzufügen des Beispielmodells „adventureworks“](../analysis-services-create-sample-model.md) zu Ihrem Server
-- [Installieren der aktuellen Version von SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)
+- [Installieren der aktuellen Version von SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -60,15 +59,15 @@ In den übrigen Aufgaben verwenden Sie SSMS, um eine Verbindung mit Ihrem Server
     ![Herstellen der Verbindung in SSMS](./media/analysis-services-tutorial-roles/aas-connect-ssms-auth.png)
 
     > [!TIP]
-    > Die Auswahl von „Active Directory: universell mit MFA-Unterstützung“ wird empfohlen. Dieser Authentifizierungstyp unterstützt eine [nicht interaktive mehrstufige Authentifizierung](../../sql-database/sql-database-ssms-mfa-authentication.md). 
+    > Die Auswahl von „Active Directory: universell mit MFA-Unterstützung“ wird empfohlen. Dieser Authentifizierungstyp unterstützt eine [nicht interaktive mehrstufige Authentifizierung](../../azure-sql/database/authentication-mfa-ssms-overview.md). 
 
 3. Erweitern Sie zum Anzeigen von Serverobjekten den **Objekt-Explorer**. Klicken Sie mit der rechten Maustaste auf ein Objekt, um Servereigenschaften anzuzeigen.
    
-    ![Herstellen der Verbindung in SSMS](./media/analysis-services-tutorial-roles/aas-connect-ssms-objexp.png)
+    ![Objekt-Explorer in SSMS](./media/analysis-services-tutorial-roles/aas-connect-ssms-objexp.png)
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Hinzufügen eines Benutzerkontos zur Serveradministratorrolle
 
-In dieser Aufgabe fügen Sie ein Benutzer- oder Gruppenkonto aus Azure AD zur Serveradministratorrolle hinzu. Wenn Sie eine Sicherheitsgruppe hinzufügen, muss die Eigenschaft `MailEnabled` auf `True` festgelegt sein.
+In dieser Aufgabe fügen Sie ein Benutzer- oder Gruppenkonto aus Azure AD zur Serveradministratorrolle hinzu. Verwenden Sie beim Angeben einer Sicherheitsgruppe `obj:groupid@tenantid`.
 
 1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Servernamen, und klicken Sie dann auf **Eigenschaften**. 
 2. Klicken Sie im Fenster **Eigenschaften für Analysis-Server** auf **Sicherheit** > **Hinzufügen**.
@@ -83,7 +82,7 @@ In dieser Aufgabe fügen Sie ein Benutzer- oder Gruppenkonto aus Azure AD zur Se
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>Hinzufügen eines Benutzers zur Modelldatenbank-Administratorrolle
 
-In dieser Aufgabe fügen Sie ein Benutzer- oder Gruppenkonto zur Rolle „Internet Sales Administrator“ (Administrator für Internetverkäufe) hinzu, die bereits im Modell vorhanden ist. Diese Rolle verfügt über Vollzugriffsberechtigungen (Administrator) für die Beispielmodelldatenbank „adventureworks“. In dieser Aufgabe wird der TMSL-Befehl [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) in einem für Sie erstellten Skript verwendet.
+In dieser Aufgabe fügen Sie ein Benutzer- oder Gruppenkonto zur Rolle „Internet Sales Administrator“ (Administrator für Internetverkäufe) hinzu, die bereits im Modell vorhanden ist. Diese Rolle verfügt über Vollzugriffsberechtigungen (Administrator) für die Beispielmodelldatenbank „adventureworks“. In dieser Aufgabe wird der TMSL-Befehl [CreateOrReplace](/analysis-services/tmsl/createorreplace-command-tmsl) in einem für Sie erstellten Skript verwendet.
 
 1. Erweitern Sie im **Objekt-Explorer** die Option **Datenbanken** > **adventureworks** > **Rollen**. 
 2. Klicken Sie mit der rechten Maustaste auf **Internet Sales Administrator** (Administrator für Internetverkäufe), und klicken Sie dann auf **Script Role as** (Rolle skripten als) > **CREATE OR REPLACE To** (ERSTELLEN ODER ERSETZEN:) > **Neues Abfrage-Editor-Fenster**.
@@ -99,7 +98,7 @@ In dieser Aufgabe fügen Sie ein Benutzer- oder Gruppenkonto zur Rolle „Intern
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>Hinzufügen einer neuen Modelldatenbankrolle sowie eines Benutzers oder einer Gruppe
 
-In dieser Aufgabe verwenden Sie den [Create](https://docs.microsoft.com/bi-reference/tmsl/create-command-tmsl)-Befehl in einem TMSL-Skript, um die neue Rolle „Internet Sales Global“ (Internetverkäufe global) zu erstellen, Leseberechtigungen (*read*) für die Rolle anzugeben und ein Benutzer- oder Gruppenkonto aus Ihrer Azure AD-Instanz hinzuzufügen.
+In dieser Aufgabe verwenden Sie den [Create](/analysis-services/tmsl/create-command-tmsl)-Befehl in einem TMSL-Skript, um die neue Rolle „Internet Sales Global“ (Internetverkäufe global) zu erstellen, Leseberechtigungen (*read*) für die Rolle anzugeben und ein Benutzer- oder Gruppenkonto aus Ihrer Azure AD-Instanz hinzuzufügen.
 
 1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf **adventureworks** und dann auf **Neue Abfrage** > **XMLA**. 
 2. Kopieren Sie das folgende TMSL-Skript, und fügen Sie es im Abfrage-Editor ein:
@@ -145,4 +144,3 @@ In diesem Tutorial haben Sie gelernt, wie Sie eine Verbindung mit Ihrem Azure AS
 
 > [!div class="nextstepaction"]
 > [Tutorial: Herstellen einer Verbindung mit Power BI Desktop](analysis-services-tutorial-pbid.md)
-

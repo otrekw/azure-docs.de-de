@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfaf3cc9b113ff10766f7a17bd7bf09ffa619a8e
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227414"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996626"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur Standardkonfiguration
 In diesem Artikel werden die standardmäßigen Konfigurationsregeln erläutert. Er dokumentiert die Regeln und deren Auswirkungen auf die Konfiguration. Außerdem wird die Standardkonfiguration der Azure AD Connect-Synchronisierung beschrieben. Der Leser soll verstehen, wie das als deklarative Bereitstellung bezeichnete Konfigurationsmodell in einem realistischen Beispiel funktioniert. Dieser Artikel setzt voraus, dass die Azure AD Connect-Synchronisierung bereits mit dem Installations-Assistenten installiert und konfiguriert wurde.
@@ -96,7 +96,7 @@ Ein Gruppenobjekt muss Folgendes erfüllen, um synchronisiert zu werden:
   * Sind vor dem Start der ersten Synchronisierung mehr Mitglieder vorhanden, wird die Gruppe nicht synchronisiert.
   * Sollte die Mitgliederanzahl später 50.000 erreichen, wird die Synchronisierung so lange ausgesetzt, bis die Anzahl der Mitglieder wieder unter 50.000 liegt.
   * Hinweis: Die Mitgliederanzahl von 50.000 wird auch von Azure AD erzwungen. Gruppen mit einer höheren Mitgliederanzahl können auch dann nicht synchronisiert werden, wenn Sie diese Regel ändern oder entfernen.
-* Falls es sich bei der Gruppe um eine **Verteilergruppe**handelt, muss sie zudem E-Mail-aktiviert sein. Informationen zur Erzwingung dieser Regel finden Sie unter [Standardregeln für Kontakte](#contact-out-of-box-rules) .
+* Falls es sich bei der Gruppe um eine **Verteilergruppe** handelt, muss sie zudem E-Mail-aktiviert sein. Informationen zur Erzwingung dieser Regel finden Sie unter [Standardregeln für Kontakte](#contact-out-of-box-rules) .
 
 Die folgenden Gruppenobjekte werden **nicht** mit Azure AD synchronisiert:
 
@@ -160,7 +160,7 @@ Sie können auch sehen, dass diese Synchronisierungsregel zur Kennwortsynchronis
 #### <a name="scoping-filter"></a>Bereichsfilter
 Der Abschnitt "Bereichsfilter" wird zum Konfigurieren verwendet, wann eine Synchronisierungsregel angewendet werden soll. Da der Name der betrachteten Synchronisierungsregel darauf hinweist, dass sie nur für aktivierte Benutzer angewendet werden soll, wird der Gültigkeitsbereich so konfiguriert, dass für das AD-Attribut **userAccountControl** das Bit 2 nicht gesetzt sein darf. Wenn vom Synchronisierungsmodul ein Benutzer in AD gefunden wird, wird diese Synchronisierungsregel angewendet, sofern **userAccountControl** auf den Dezimalwert 512 (aktivierter normaler Benutzer) festgelegt ist. Sie wird nicht angewendet, wenn für den Benutzer der Wert 514 für **userAccountControl** (deaktivierter normaler Benutzer) festgelegt ist.
 
-![Registerkarte „Bereichsdefinition“ im Synchronisierungsregel-Editor](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![Screenshot: Abschnitt „Bereichsfilter“ des Fensters „Eingehende Synchronisierungsregel bearbeiten“](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 Der Bereichsfilter verfügt über Gruppen und Klauseln, die geschachtelt werden können. Alle Klauseln innerhalb einer Gruppe müssen erfüllt werden, damit eine Synchronisierungsregel angewendet wird. Wenn mehrere Gruppen definiert sind, muss mindestens eine Gruppe die Anforderungen erfüllen, damit die Regel angewendet wird. Dies bedeutet, dass zwischen Gruppen ein logisches ODER und innerhalb einer Gruppe ein logisches UND ausgewertet wird. Ein Beispiel für diese Konfiguration befindet sich in der Synchronisierungsregel **Out to AAD – Group Join** (Aus an AAD – Gruppenverknüpfung) für ausgehenden Datenverkehr. Es gibt verschiedene Synchronisierungsfiltergruppen, z.B. eine für Sicherheitsgruppen (`securityEnabled EQUAL True`) und eine für Verteilergruppen (`securityEnabled EQUAL False`).
 
@@ -169,11 +169,11 @@ Der Bereichsfilter verfügt über Gruppen und Klauseln, die geschachtelt werden 
 Diese Regel wird zur Definition verwendet, welche Gruppen für Azure AD bereitgestellt werden sollen. Verteilergruppen müssen E-Mail-aktiviert sein, damit sie mit Azure AD synchronisiert werden können, aber für Sicherheitsgruppen ist keine E-Mail erforderlich.
 
 #### <a name="join-rules"></a>Verknüpfungsregeln
-Der dritte Bereich wird für die Konfiguration verwendet, wie sich Objekte im Connectorbereich auf Objekte im Metaverse beziehen. Die zuvor betrachtete Regel verfügt über keine Konfiguration für Verknüpfungsregeln, sodass wir stattdessen die Regel **Ein von AD – Benutzerverknüpfung**betrachten.
+Der dritte Bereich wird für die Konfiguration verwendet, wie sich Objekte im Connectorbereich auf Objekte im Metaverse beziehen. Die zuvor betrachtete Regel verfügt über keine Konfiguration für Verknüpfungsregeln, sodass wir stattdessen die Regel **Ein von AD – Benutzerverknüpfung** betrachten.
 
 ![Registerkarte „Verknüpfungsregeln“ im Synchronisierungsregel-Editor](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
-Der Inhalt der Verknüpfungsregeln hängt von der entsprechenden Option ab, die im Installations-Assistenten ausgewählt ist. Für eine Regel für eingehenden Datenverkehr beginnt die Auswertung mit einem Objekt im Quellconnectorbereich, und jede Gruppe in den Verknüpfungsregeln wird nacheinander ausgewertet. Wenn die Auswertung eines Quellobjekts mit einer der Verknüpfungsregeln ergibt, dass es genau mit einem Objekt im Metaverse übereinstimmt, werden die Objekte verknüpft. Wenn alle Regeln ausgewertet wurden und es keine Übereinstimmung gibt, wird der Verknüpfungstyp auf der Beschreibungsseite verwendet. Falls für diese Konfiguration **Provision**festgelegt ist, wird im Ziel (dem Metaverse) ein neues Objekt erstellt. Die Bereitstellung eines neuen Objekts im Metaverse wird auch als das **Projizieren** eines Objekts für den Metaverse bezeichnet.
+Der Inhalt der Verknüpfungsregeln hängt von der entsprechenden Option ab, die im Installations-Assistenten ausgewählt ist. Für eine Regel für eingehenden Datenverkehr beginnt die Auswertung mit einem Objekt im Quellconnectorbereich, und jede Gruppe in den Verknüpfungsregeln wird nacheinander ausgewertet. Wenn die Auswertung eines Quellobjekts mit einer der Verknüpfungsregeln ergibt, dass es genau mit einem Objekt im Metaverse übereinstimmt, werden die Objekte verknüpft. Wenn alle Regeln ausgewertet wurden und es keine Übereinstimmung gibt, wird der Verknüpfungstyp auf der Beschreibungsseite verwendet. Wenn diese Konfiguration auf **Bereitstellung** festgelegt ist, wird im Ziel ein neues Objekt erstellt, das Metaverse, wenn mindestens ein Attribut in den Joinkriterien vorhanden ist (einen Wert hat). Die Bereitstellung eines neuen Objekts im Metaverse wird auch als das **Projizieren** eines Objekts für den Metaverse bezeichnet.
 
 Die Verknüpfungsregeln werden nur einmal ausgewertet. Wenn ein Connectorbereichsobjekt und ein Metaverse-Objekt verknüpft werden, bleiben sie verknüpft, solange der Gültigkeitsbereich der Synchronisierungsregel weiterhin gegeben ist.
 
@@ -220,10 +220,10 @@ Die Rangfolge für Synchronisierungsregeln wird vom Installations-Assistenten in
 ### <a name="putting-it-all-together"></a>Zusammenfügen des Gesamtbilds
 Jetzt wissen wir genug über Synchronisierungsregeln, um die Funktionsweise der Konfiguration mit verschiedenen Synchronisierungsregeln zu verstehen. Wenn Sie einen Benutzer und die Attribute betrachten, die zum Metaverse beigetragen werden, werden die Regeln in der folgenden Reihenfolge angewendet:
 
-| NAME | Comment |
+| Name | Comment |
 |:--- |:--- |
 | Ein von AD – Benutzerverknüpfung |Regel für die Verknüpfung von Connectorbereichobjekten mit Metaverse. |
-| Ein von AD – Benutzer AccountEnabled |Erforderliche Attribute für eine Anmeldung bei Azure AD und Office 365. Diese Attribute sollen aus dem aktivierten Konto kommen. |
+| Ein von AD – Benutzer AccountEnabled |Erforderliche Attribute für eine Anmeldung bei Azure AD und Microsoft 365. Diese Attribute sollen aus dem aktivierten Konto kommen. |
 | Ein von AD – Benutzer allgemein aus Exchange |In der globalen Adressliste gefundene Attribute. Es wird vorausgesetzt, dass die Qualität der Daten in der Gesamtstruktur am besten ist, in der wir das Postfach des Benutzers gefunden haben. |
 | Ein von AD – Benutzer allgemein |In der globalen Adressliste gefundene Attribute. Für den Fall, dass ein Postfach nicht gefunden wurde, kann jedes andere verknüpfte Objekt den Attributwert beitragen. |
 | Ein von AD – Benutzer Exchange |Ist nur vorhanden, wenn Exchange erkannt wurde. Fluss aller Exchange-Attribute der Infrastruktur wird ausgeführt. |

@@ -1,27 +1,26 @@
 ---
-title: Verschieben von Daten aus MySQL mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Verschieben von Daten aus MySQL mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie Daten aus der MySQL-Datenbank mithilfe von Azure Data Factory verschieben.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 452f4fce-9eb5-40a0-92f8-1e98691bea4c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 20dd86a46ac1b50f5ce20da6ecf9dff251a8c0b0
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839021"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91872101"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Verschieben von Daten aus MySQL mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-onprem-mysql-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-mysql.md)
 
@@ -42,15 +41,15 @@ Das Gateway ist erforderlich, auch wenn die MySQL-Datenbank auf einem virtuellen
 > Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
 
 ## <a name="supported-versions-and-installation"></a>Unterstützte Versionen und Installation
-Damit das Datenverwaltungsgateway eine Verbindung mit der MySQL-Datenbank herstellt, müssen Sie den [MySQL Connector/Net für Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (Version 6.6.5 bis 6.10.7) auf dem System installieren, auf dem sich auch das Datenverwaltungsgateway befindet. Dieser 32-Bit-Treiber ist mit 64-Bit-Datenverwaltungsgateways kompatibel. MySQL Version 5.1 und höher wird unterstützt.
+Damit das Datenverwaltungsgateway eine Verbindung mit der MySQL-Datenbank herstellt, müssen Sie den [MySQL-Connector/NET für Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (Version 6.6.5 bis 6.10.7) auf dem System installieren, auf dem sich auch das Datenverwaltungsgateway befindet. Dieser 32-Bit-Treiber ist mit 64-Bit-Datenverwaltungsgateways kompatibel. MySQL Version 5.1 und höher wird unterstützt.
 
 > [!TIP]
-> Wenn der Fehler „Fehler bei Authentifizierung, da die Gegenstelle den Transportdatenstrom geschlossen hat.“ auftritt, sollten Sie ein Upgrade für den MySQL-Connector/Net auf eine höhere Version durchführen.
+> Wenn der Fehler „Fehler bei Authentifizierung, da die Gegenstelle den Transportdatenstrom geschlossen hat.“ auftritt, sollten Sie ein Upgrade für den MySQL-Connector/NET auf eine höhere Version durchführen.
 
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen Teradata-Datenspeicher verschiebt. 
 
-- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
+- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
 - Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
@@ -95,7 +94,7 @@ Wenn die Quelle der Kopieraktivität den Typ **RelationalSource** hat (zu dem My
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. |Nein (wenn **tableName** von **Dataset** angegeben ist) |
+| Abfrage |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. |Nein (wenn **tableName** von **Dataset** angegeben ist) |
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus MySQL in ein Azure-Blob
@@ -299,46 +298,46 @@ Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activ
 
 Beim Verschieben von Daten in MySQL werden die folgenden Zuordnungen zwischen MySQL-Typ und .NET-Typ verwendet.
 
-| Typ "MySQL-Datenbank" | Typ ".NET Framework" |
+| Typ "MySQL-Datenbank" | .NET Framework-Typ |
 | --- | --- |
 | bigint (ohne Vorzeichen) |Decimal |
-| bigint |Int64 |
+| BIGINT |Int64 |
 | bit |Decimal |
 | Blob |Byte[] |
 | bool |Boolean |
-| char |string |
-| date |DateTime |
-| datetime |DateTime |
-| decimal |Decimal |
+| char |String |
+| date |Datetime |
+| datetime |Datetime |
+| Decimal |Decimal |
 | double precision |Double |
-| Double |Double |
-| enum |string |
+| double |Double |
+| enum |String |
 | float |Single |
 | int (ohne Vorzeichen) |Int64 |
-| int |Int32 |
+| INT |Int32 |
 | integer (ohne Vorzeichen) |Int64 |
 | integer |Int32 |
 | long varbinary |Byte[] |
-| long varchar |string |
+| long varchar |String |
 | longblob |Byte[] |
-| longtext |string |
+| longtext |String |
 | mediumblob |Byte[] |
 | mediumint (ohne Vorzeichen) |Int64 |
 | mediumint |Int32 |
-| mediumtext |string |
-| numeric |Decimal |
+| mediumtext |String |
+| NUMERIC |Decimal |
 | real |Double |
-| set |string |
+| set |String |
 | smallint (ohne Vorzeichen) |Int32 |
-| smallint |Int16 |
-| text |string |
+| SMALLINT |Int16 |
+| text |String |
 | time |TimeSpan |
-| timestamp |DateTime |
+| timestamp |Datetime |
 | tinyblob |Byte[] |
 | tinyint (ohne Vorzeichen) |Int16 |
-| tinyint |Int16 |
-| tinytext |string |
-| varchar |string |
+| TINYINT |Int16 |
+| tinytext |String |
+| varchar |String |
 | year |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten

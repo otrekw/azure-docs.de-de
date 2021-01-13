@@ -12,24 +12,27 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 228b00a19bac9c773fce8e502d302314821fbf39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5e003e17490c2e35ef3f8adfdef6de0377cda7d5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871641"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89259709"
 ---
-# <a name="offline-fairplay-streaming-for-ios"></a>FairPlay-Streaming im Offlinemodus für iOS 
+# <a name="offline-fairplay-streaming-for-ios"></a>FairPlay-Streaming im Offlinemodus für iOS
 
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Media Services-Version aus:"]
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Media Services-Version aus:"]
 > * [Version 3](../latest/offline-fairplay-for-ios.md)
 > * [Version 2](media-services-protect-hls-with-offline-fairplay.md)
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Azure Media Services bietet eine Reihe von ausgereiften [Content Protection-Diensten](https://azure.microsoft.com/services/media-services/content-protection/), die Folgendes abdecken:
 
@@ -54,7 +57,7 @@ Bevor Sie Offline-DRM für FairPlay auf einem iOS 10+-Gerät implementieren:
 * Machen Sie sich mit dem Schutz von Onlineinhalten für FairPlay vertraut. Weitere Informationen finden Sie in den folgenden Artikeln und Beispielen:
 
     - [Allgemeine Verfügbarkeit von Apple FairPlay Streaming für Azure Media Services](https://azure.microsoft.com/blog/apple-FairPlay-streaming-for-azure-media-services-generally-available/)
-    - [Schützen von HLS-Inhalten mit Apple FairPlay oder Microsoft PlayReady](https://docs.microsoft.com/azure/media-services/media-services-protect-hls-with-FairPlay)
+    - [Schützen von HLS-Inhalten mit Apple FairPlay oder Microsoft PlayReady](./media-services-protect-hls-with-fairplay.md)
     - [Beispiel für FPS Streaming im Onlinemodus](https://azure.microsoft.com/resources/samples/media-services-dotnet-dynamic-encryption-with-FairPlay/)
 
 * Rufen Sie das FPS SDK über das Apple Developer Network ab. Das FPS SDK enthält zwei Komponenten:
@@ -211,7 +214,7 @@ Die folgenden häufig gestellten Fragen helfen bei der Problembehandlung:
 - **Wofür steht der letzte Parameter in der folgenden API für den FPS-Offlinemodus?** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-    Die Dokumentation zu dieser API finden Sie unter [Methode „FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration“](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). Der Parameter repräsentiert die Dauer der Offlinemiete mit der Einheit „Stunde“.
+    Die Dokumentation zu dieser API finden Sie unter [Methode „FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration“](/dotnet/api/microsoft.windowsazure.mediaservices.client.fairplay.fairplayconfiguration.createserializedfairplayoptionconfiguration?view=azure-dotnet). Der Parameter repräsentiert die Dauer der Offlinemiete mit der Einheit „Sekunde“.
 - **Wie sieht die Struktur der heruntergeladenen bzw. Offlinedateien auf iOS-Geräten aus?** Die heruntergeladene Dateistruktur auf einem iOS-Gerät sieht aus wie auf dem folgenden Screenshot. Der Ordner `_keys` speichert heruntergeladene FPS-Lizenzen, wobei eine Speicherdatei für jeden Lizenzdiensthost verwendet wird. Der Ordner `.movpkg` speichert Audio- und Videoinhalte. Der erste Ordner mit einem Namen, der mit einem Bindestrich endet, auf den eine Zahl folgt, enthält Videoinhalte. Der numerische Wert ist die Spitzenbandbreite (PeakBandwidth) der Videowiedergabe. Der zweite Ordner mit einem Namen, der mit einem Bindestrich endet, auf den „0“ folgt, enthält Audioinhalte. Der dritte Ordner namens „Data“ enthält die Hauptwiedergabeliste des FPS-Inhalts. Schließlich enthält „boot.xml“ eine vollständige Beschreibung des Inhalts des Ordners `.movpkg`. 
 
 ![Dateistruktur der iOS-Beispielanwendung für FairPlay im Offlinemodus](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
@@ -245,6 +248,10 @@ Beispieldatei für „boot.xml“:
 </HLSMoviePackage>
 ```
 
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
+
 ## <a name="summary"></a>Zusammenfassung
 Dieses Dokument enthält die folgenden Schritte und Informationen, mit denen Sie den FPS-Offlinemodus implementieren können:
 
@@ -252,3 +259,7 @@ Dieses Dokument enthält die folgenden Schritte und Informationen, mit denen Sie
 * Ein iOS-Player, der auf dem Beispiel aus dem FPS Server SDK basiert, richtet einen iOS-Player ein, der FPS-Inhalte entweder im Onlinestreamingmodus oder im Offlinemodus wiedergeben kann.
 * Beispielvideos für FPS werden zum Testen von Offlinemodus und Onlinestreaming verwendet.
 * Eine häufig gestellte Fragen beantwortet Fragen zum FPS-Offlinemodus.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

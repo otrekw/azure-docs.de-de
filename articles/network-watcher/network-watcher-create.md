@@ -1,25 +1,23 @@
 ---
 title: Erstellen einer Azure Network Watcher-Instanz | Microsoft Docs
-description: Erfahren Sie, wie Sie Network Watcher in einer Azure-Region aktivieren.
+description: Erfahren Sie, wie Sie einen Azure Network Watcher in einer Azure-Region mithilfe des Azure-Portals oder anderer Technologien erstellen und wie Sie einen Network Watcher löschen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: c97f6dff17896b8a58c17aed9063e0b2b5733503
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: c308824afdcae5f5c04a316c199bad71ad84a429
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681581"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961990"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Erstellen einer Azure Network Watcher-Instanz
 
@@ -103,16 +101,38 @@ $requestBody = @"
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
 ```
 
+## <a name="create-a-network-watcher-using-azure-quickstart-template"></a>Erstellen einer Network Watcher-Instanz mithilfe einer Azure-Schnellstartvorlage
+
+Zum Erstellen einer Instanz von Network Watcher verwenden Sie diese [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/101-networkwatcher-create/).
+
+## <a name="delete-a-network-watcher-in-the-portal"></a>Löschen einer Network Watcher-Instanz im Portal
+
+Navigieren Sie zu **Alle Dienste** > **Netzwerk** > **Network Watcher**.
+
+Wählen Sie die Registerkarte „Übersicht“ aus, wenn diese nicht bereits ausgewählt ist. Verwenden Sie die Dropdownliste, um das Abonnement auszuwählen, in dem Sie Network Watcher deaktivieren möchten.
+Erweitern Sie die Liste der Regionen für Ihr ausgewähltes Abonnement, indem Sie auf den Pfeil klicken. Verwenden Sie für jedes Abonnement die drei Punkte rechts daneben, um auf das Kontextmenü zuzugreifen.
+Klicken Sie auf „Network Watcher deaktivieren“, um die Deaktivierung zu starten. Sie werden aufgefordert, diesen Schritt zu bestätigen. Klicken Sie auf „JA“, um fortzufahren.
+Im Portal müssen Sie dies für jede Region in jedem Abonnement einzeln durchführen.
+
+
+## <a name="delete-a-network-watcher-with-powershell"></a>Löschen einer Network Watcher-Instanz mit PowerShell
+
+Um eine Network Watcher-Instanz zu löschen, führen Sie das folgende Beispiel aus:
+
+```powershell
+New-AzResourceGroup -Name NetworkWatcherRG -Location westcentralus
+New-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG -Location westcentralus
+Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, nachdem Sie über eine Instanz von Network Watcher verfügen, welche Features Ihnen zur Verfügung stehen:
 
-* [Topologie](network-watcher-topology-overview.md)
+* [Topologie](./view-network-topology.md)
 * [Paketerfassung](network-watcher-packet-capture-overview.md)
 * [IP-Datenflussüberprüfung](network-watcher-ip-flow-verify-overview.md)
 * [Nächster Hop](network-watcher-next-hop-overview.md)
 * [Sicherheitsgruppenansicht](network-watcher-security-group-view-overview.md)
 * [NSG-Datenflussprotokollierung](network-watcher-nsg-flow-logging-overview.md)
 * [Beheben von Problemen bei Virtual Network-Gateways](network-watcher-troubleshoot-overview.md)
-
-Sobald eine Network Watcher-Instanz erstellt wurde, können Sie die Paketerfassung auf virtuellen Computern aktivieren. Informationen hierzu finden Sie unter [Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions](network-watcher-alert-triggered-packet-capture.md).

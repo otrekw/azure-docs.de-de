@@ -1,26 +1,22 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Small Improvements | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Small Improvements | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Small Improvements konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 59c8a112-41e1-4337-9ef3-3d7029780d61
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d2d0bbc7a6e1c680434041d1b9d55e39a96b6f44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6eced120a05ddaca8d8cf426fd2a977891b3e36b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090376"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997136"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Tutorial: Azure Active Directory-Integration mit Small Improvements
 
@@ -31,7 +27,7 @@ Die Integration von Small Improvements in Azure AD bietet die folgenden Vorteile
 * Sie können es Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei Small Improvements angemeldet werden (einmaliges Anmelden).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -132,15 +128,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Small I
 
 1. Klicken Sie auf der Dashboard-Hauptseite links auf die Schaltfläche **Administration** .
 
-    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
+    ![Screenshot: Auswahl der Schaltfläche „Administration“](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
 
 1. Klicken Sie im Abschnitt **Integrationen** auf die Schaltfläche **SAML-SSO**.
 
-    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
+    ![Screenshot: Auswahl des Symbols „SAML-SSO“ unter „Integrationen“](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
 
 1. Führen Sie auf der Seite für die SSO-Einrichtung die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
+    ![Screenshot: Seite für die SSO-Einrichtung, auf der Sie die beschriebenen Werte eingeben können](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
     a. Fügen Sie in das Textfeld **HTTP Endpoint** (HTTP-Endpunkt) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -175,7 +171,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -185,7 +181,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste **Small Improvements**aus.
+2. Wählen Sie in der Anwendungsliste **Small Improvements** aus.
 
     ![Small Improvements-Link in der Anwendungsliste](common/all-applications.png)
 
@@ -215,15 +211,15 @@ Damit sich Azure AD-Benutzer bei Small Improvements anmelden können, müssen si
 
 1. Klicken Sie im Abschnitt „User Management“ auf die Schaltfläche **User Directory** .
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
+    ![Screenshot: Auswahl von „User Directory“ in der Verwaltungsübersicht](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
 
 1. Klicken Sie auf **Benutzer hinzufügen**.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
+    ![Screenshot: Schaltfläche „Benutzer hinzufügen“](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
 
 1. Führen Sie im Dialogfeld **Benutzer hinzufügen** die folgenden Schritte aus: 
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
+    ![Screenshot: Dialogfeld „Benutzer hinzufügen“, in dem Sie die beschriebenen Werte eingeben können](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
 
     a. Geben Sie den **Vornamen** des Benutzers ein, z.B. **Britta**.
 
@@ -239,12 +235,12 @@ Damit sich Azure AD-Benutzer bei Small Improvements anmelden können, müssen si
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Small Improvements“ klicken, sollten Sie automatisch bei Ihrer Small Improvements-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Small Improvements“ klicken, sollten Sie automatisch bei Ihrer Small Improvements-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

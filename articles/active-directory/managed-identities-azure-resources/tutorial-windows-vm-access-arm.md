@@ -1,9 +1,9 @@
 ---
-title: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Resource Manager
+title: Tutorial`:` Verwenden einer verwalteten Identität zum Zugreifen auf Azure Resource Manager – Windows – Azure AD
 description: In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Windows-Computers verwenden, um auf Azure Resource Manager zuzugreifen.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
-ms.author: markvi
+ms.date: 12/09/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33079303f7f2239b7de4d8a92e78acaf205bfbd5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 935ae74147219d8dc5f615c80ec36f24b6e32b15
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236095"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007771"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Resource Manager
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-In dieser Schnellstartanleitung wird gezeigt, wie Sie mit einem virtuellen Windows-Computer, auf dem die systemseitig zugewiesene verwaltete Identität aktiviert ist, auf die Azure Resource Manager-API zugreifen. Verwaltete Identitäten für Azure-Ressourcen werden von Azure automatisch verwaltet und ermöglichen Ihnen die Authentifizierung für Dienste, die die Azure AD-Authentifizierung unterstützen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Folgendes wird vermittelt:
+In diesem Tutorial wird gezeigt, wie Sie mit einem virtuellen Windows-Computer, auf dem die systemseitig zugewiesene verwaltete Identität aktiviert ist, auf die Azure Resource Manager-API zugreifen. Verwaltete Identitäten für Azure-Ressourcen werden von Azure automatisch verwaltet und ermöglichen Ihnen die Authentifizierung für Dienste, die die Azure AD-Authentifizierung unterstützen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Folgendes wird vermittelt:
 
 > [!div class="checklist"] 
 > * Gewähren des Zugriffs auf eine Ressourcengruppe in Azure Resource Manager für Ihren virtuellen Computer 
@@ -34,14 +34,19 @@ In dieser Schnellstartanleitung wird gezeigt, wie Sie mit einem virtuellen Windo
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+- Grundlegende Kenntnisse im Bereich verwaltete Identitäten. Wenn Sie mit der Funktion für verwaltete Identitäten für Azure-Ressourcen nicht vertraut sind, finden Sie hier eine [Übersicht](overview.md).
+- Ein Azure-Konto. [Registrieren Sie sich für ein kostenloses Azure-Konto.](https://azure.microsoft.com/free/)
+- Berechtigungen vom Typ „Besitzer“ für den entsprechenden Bereich (Ihr Abonnement oder die Ressourcengruppe), um die erforderlichen Schritte zur Ressourcenerstellung und Rollenverwaltung durchführen zu können. Wenn Sie Unterstützung bei der Rollenzuweisung benötigen, finden Sie weitere Informationen unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](../../role-based-access-control/role-assignments-portal.md).
+- Außerdem benötigen Sie einen virtuellen Windows-Computer, auf dem systemseitig zugewiesene verwaltete Identitäten aktiviert sind.
+  - Wenn Sie einen virtuellen Computer für dieses Tutorial erstellen müssen, können Sie den Artikel [Aktivieren einer vom System zugewiesenen verwalteten Identität beim Erstellen eines virtuellen Computers](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) durcharbeiten.
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>Gewähren des Zugriffs auf eine Ressourcengruppe in Azure Resource Manager für Ihren virtuellen Computer
+
 Mithilfe von verwalteten Identitäten für Azure-Ressourcen kann der Code Zugriffstoken zur Authentifizierung von Ressourcen abrufen, die die Azure AD-Authentifizierung unterstützen.  Azure Resource Manager unterstützt die Azure AD-Authentifizierung.  Zunächst müssen Sie dieser systemseitig zugewiesenen verwalteten Identität des virtuellen Computers Zugriff auf eine Ressource in Resource Manager gewähren. In diesem Fall handelt es sich dabei um die Ressourcengruppe, die den virtuellen Computer enthält.  
 
 1.  Navigieren Sie zu der Registerkarte für die **Ressourcengruppen**. 
 2.  Wählen Sie die **Ressourcengruppe** aus, die Sie für den **virtuellen Windows-Computer** erstellt haben. 
-3.  Wechseln Sie im linken Bereich zu **Zugriffssteuerung (IAM)** . 
+3.  Wechseln Sie im linken Bereich zu **Zugriffssteuerung (IAM)**. 
 4.  Klicken Sie dann auf **Rollenzuweisung hinzufügen**, um dem **virtuellen Windows-Computer** eine neue Rollenzuweisung hinzuzufügen.  Wählen Sie die **Rolle** **Leser** aus. 
 5.  Wählen Sie in der nächsten Dropdownliste für die Option **Zugriff zuweisen zu** die Ressource **Virtueller Computer** aus. 
 6.  Stellen Sie dann sicher, dass in der Dropdownliste **Abonnement** das richtige Abonnement aufgeführt wird. Wählen Sie unter **Ressourcengruppe** die Option **Alle Ressourcengruppen**. 
@@ -51,7 +56,7 @@ Mithilfe von verwalteten Identitäten für Azure-Ressourcen kann der Code Zugrif
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>Abrufen eines Zugriffstokens mithilfe der systemseitig zugewiesenen verwalteten Identität eines virtuellen Computers und Verwenden dieses Zugriffstokens zum Aufrufen von Azure Resource Manager 
 
-In diesem Abschnitt müssen Sie **PowerShell** verwenden.  Wenn Sie **PowerShell** nicht installiert haben, können Sie es [hier](https://docs.microsoft.com/powershell/azure/overview) herunterladen. 
+In diesem Abschnitt müssen Sie **PowerShell** verwenden.  Wenn Sie **PowerShell** nicht installiert haben, können Sie es [hier](/powershell/azure/) herunterladen. 
 
 1.  Navigieren Sie im Portal zu **Virtuelle Computer**, wechseln Sie dann zu Ihrem virtuellen Windows-Computer, und klicken Sie in der **Übersicht** auf **Verbinden**. 
 2.  Geben Sie Ihren **Benutzernamen** und Ihr **Kennwort** ein, das Sie beim Erstellen des virtuellen Windows-Computers hinzugefügt haben. 
@@ -95,5 +100,4 @@ In diesem Abschnitt müssen Sie **PowerShell** verwenden.  Wenn Sie **PowerShell
 In dieser Schnellstartanleitung haben Sie gelernt, wie Sie eine systemseitig zugewiesene verwaltete Identität verwenden, um auf die Azure Resource Manager-API zuzugreifen.  Weitere Informationen zu Azure Resource Manager finden Sie hier:
 
 > [!div class="nextstepaction"]
->[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
-
+>[Azure Resource Manager](../../azure-resource-manager/management/overview.md)

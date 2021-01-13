@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 09/25/2019
+ms.date: 01/04/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6760677a94855c259501103a54a96d687c87910b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 1b0771687aa7ccf9b749c107a6b1c507cb3ba08d
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290965"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881938"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 
@@ -44,19 +44,21 @@ Zusätzlich zu diesen drei Konten, die zum Ausführen von Azure AD Connect ausge
 
 - **AD DS-Unternehmensadministratorkonto**: Wird optional verwendet, um das obige AD DS-Connector-Konto zu erstellen.
 
-- **Azure AD Global Administrator-Konto**: Wird zum Erstellen des Azure AD-Connector-Kontos und zum Konfigurieren von Azure AD verwendet.
+- **Azure AD Global Administrator-Konto**: Wird zum Erstellen des Azure AD-Connector-Kontos und zum Konfigurieren von Azure AD verwendet.  Sie können jetzt im Azure-Portal globale Administratorkonten anzeigen.  Siehe [Anzeigen von Rollen](../../active-directory/roles/manage-roles-portal.md#view-all-roles).
 
 - **SQL SA-Konto (optional)** : Wird zum Erstellen der ADSync-Datenbank verwendet, wenn die Vollversion von SQL Server installiert ist.  Dieser SQL Server kann lokal oder remote zur Azure AD Connect-Installation vorliegen.  Dabei kann es sich um das gleiche Konto handeln wie bei Enterprise Administrator.  Der SQL-Administrator kann nun eine Out-of-Band-Datenbankbereitstellung ausführen, sodass die Datenbank anschließend vom Azure AD Connect-Administrator mit Datenbankbesitzerrechten installiert werden kann.  Weitere Informationen finden Sie unter [Installieren von Azure AD Connect mit Berechtigungen eines delegierten SQL-Administrators](how-to-connect-install-sql-delegation.md).
 
-<<<<<<< HEAD
+
 >[!IMPORTANT]
 > Ab Build 1.4. ###.# wird es nicht mehr unterstützt, wenn Sie ein Unternehmens- oder ein Domänenadministratorkonto als AD DS-Connectorkonto verwenden.  Wenn Sie versuchen, ein Unternehmens- oder Domänenadministratorkonto einzugeben, und dabei **vorhandenes Konto verwenden** nutzen, wird Ihnen eine Fehlermeldung angezeigt.
-=======
+
 > [!NOTE]
 > Es wird unterstützt, um die in Azure AD Connect verwendeten Administratorkonten über eine administrative ESAE-Gesamtstruktur (auch „Red Forest“ genannt) verwalten zu können.
 > Mithilfe dedizierter administrativer Gesamtstrukturen können Organisationen Administratorkonten, Arbeitsstationen und Gruppen in einer Umgebung hosten, die über bessere Sicherheitskontrollen verfügt als die Produktionsumgebung.
-> Weitere Informationen zu dedizierten administrativen Gesamtstrukturen finden Sie unter [ESAE Administrative Forest Design Approach](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach) (ESAE-Ansatz für administrative Gesamtstrukturen).
->>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+> Weitere Informationen zu dedizierten administrativen Gesamtstrukturen finden Sie unter [ESAE-basierter Ansatz für den Entwurf einer administrativen Gesamtstruktur](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach).
+
+> [!NOTE]
+> Die Rolle „Globaler Administrator“ ist nach der ersten Installation nicht erforderlich. Das einzige erforderliche Konto ist das Rollenkonto **Verzeichnissynchronisierungskonten**. Dies bedeutet nicht unbedingt, dass Sie das Konto mit der Rolle „Globaler Administrator“ einfach entfernen sollten. Sie sollten stattdessen besser die Rolle in eine Rolle mit weniger Berechtigungen ändern, da das vollständige Entfernen des Kontos zu Problemen führen kann, wenn Sie den Assistenten erneut ausführen müssen. Indem Sie die Berechtigungen der Rolle verringern, können Sie sie jederzeit erneut erhöhen, wenn Sie den Azure AD Connect-Assistenten erneut verwenden müssen. 
 
 ## <a name="installing-azure-ad-connect"></a>Installieren von Azure AD Connect
 Der Azure AD Connect-Installations-Assistent bietet zwei verschiedene Methoden:
@@ -83,7 +85,7 @@ Diese Anmeldeinformationen werden während der Installation verwendet, nach Absc
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>AD DS Connector-Konto zum Erstellen von Berechtigungen für Expresseinstellungen
 Das AD DS Connector-Konto wird zum Erstellen von Lese- und Schreibvorgängen in Windows Server AD erstellt und besitzt die folgenden Berechtigungen, wenn es mit den Expresseinstellungen erstellt wird:
 
-| Berechtigung | Verwendung |
+| Berechtigung | Syntaxelemente |
 | --- | --- |
 | <li>Verzeichnisänderungen replizieren</li><li>Verzeichnisänderungen replizieren: Alle |Kennworthashsynchronisierung |
 | Alle Eigenschaften lesen/schreiben: Benutzer |Importieren und Exchange-Hybridbereitstellung |
@@ -113,7 +115,7 @@ Mit den benutzerdefinierten Installationseinstellungen bietet der Assistent mehr
 
 Nachfolgend finden Sie eine Übersicht über die Seiten des Assistenten für die benutzerdefinierte Installation, die gesammelten Anmeldeinformationen und deren Verwendungszweck.
 
-![Expressinstallation](./media/reference-connect-accounts-permissions/customize.png)
+![Screenshot: Seiten des Assistenten für die benutzerdefinierte Installation](./media/reference-connect-accounts-permissions/customize.png)
 
 | Seite des Assistenten | Erfasste Anmeldeinformationen | Erforderliche Berechtigungen | Verwendung |
 | --- | --- | --- | --- |
@@ -139,24 +141,24 @@ Es muss auch über die erforderlichen Berechtigungen verfügen. Der Installation
 
 Welche Berechtigungen Sie benötigen, hängt von den aktivierten optionalen Funktionen ab. Wenn Sie über mehrere Domänen verfügen, müssen die Berechtigungen für alle Domänen in der Gesamtstruktur erteilt werden. Wenn Sie keine dieser Features aktivieren, sind die **Domänenbenutzer** -Standardberechtigungen ausreichend.
 
-| Feature | Berechtigungen |
+| Funktion | Berechtigungen |
 | --- | --- |
 | ms-DS-ConsistencyGuid |Schreibberechtigungen für das Attribut „ms-DS-ConsistencyGuid“, das unter [Entwurfskonzepte – Verwendung von „ms-DS-ConsistencyGuid“ als „sourceAnchor“](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) dokumentiert ist. | 
 | Kennworthashsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li>Verzeichnisänderungen replizieren: Alle |
 | Exchange-Hybridbereitstellung |Schreibberechtigungen für die Attribute, die in [Exchange-Hybridrückschreiben](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) für Benutzer, Gruppen und Kontakte dokumentiert sind |
 | Öffentlicher Exchange-E-Mail-Ordner |Leseberechtigungen für die Attribute, die im [öffentlichen Exchange-E-Mail-Ordner](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) für öffentliche Ordner dokumentiert sind. | 
-| Kennwortrückschreiben |Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../authentication/howto-sspr-writeback.md) für Benutzer dokumentiert sind |
+| Kennwortrückschreiben |Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../authentication/tutorial-enable-sspr-writeback.md) für Benutzer dokumentiert sind |
 | Geräterückschreiben |Berechtigungen, die mit einem PowerShell-Skript erteilt wurden, wie unter [Geräterückschreiben](how-to-connect-device-writeback.md)beschrieben |
-| Gruppenrückschreiben |Ermöglicht das Rückschreiben von **Office 365-Gruppen** in eine Gesamtstruktur, in der Exchange installiert ist.  Weitere Informationen finden Sie unter [Gruppenrückschreiben](how-to-connect-preview.md#group-writeback).|
+| Gruppenrückschreiben |Ermöglicht das Rückschreiben von **Microsoft 365-Gruppen** in eine Gesamtstruktur, in der Exchange installiert ist.|
 
-## <a name="upgrade"></a>Upgrade
+## <a name="upgrade"></a>Aktualisieren
 Wenn Sie Azure AD Connect auf eine höhere Version aktualisieren, benötigen Sie folgende Berechtigungen:
 
 >[!IMPORTANT]
 >Seit Build 1.1.484 tritt in Azure AD Connect ein Regressionsfehler auf, aufgrund dessen zum Aktualisieren der SQL-Datenbank Systemadministratorberechtigungen erforderlich sind.  Dieser Fehler wurde in Build 1.1.647 behoben.  Für das Upgrade auf diesen Build benötigen Sie Systemadministratorberechtigungen.  dbo-Berechtigungen sind nicht ausreichend.  Wenn Sie versuchen, Azure AD Connect ohne Systemadministratorberechtigungen zu aktualisieren, tritt ein Fehler auf, und Azure AD Connect funktioniert anschließend nicht mehr ordnungsgemäß.  Microsoft ist sich dieses Problems bewusst und arbeitet an einer Lösung.
 
 
-| Prinzipal | Erforderliche Berechtigungen | Verwendung |
+| Prinzipal | Erforderliche Berechtigungen | Syntaxelemente |
 | --- | --- | --- |
 | Benutzer, der den Installations-Assistenten ausführt |Administrator des lokalen Servers |Aktualisieren von Binärdateien. |
 | Benutzer, der den Installations-Assistenten ausführt |Mitglied von ADSyncAdmins |Vornehmen von Änderungen an den Synchronisierungsregeln und anderen Konfigurationen. |
@@ -195,30 +197,29 @@ Legende:
 - Nicht fett formatiert: unterstützte Option
 - Lokales Konto: lokales Benutzerkonto auf dem Server
 - Domänenkonto: Domänenbenutzerkonto
-- sMSA: [eigenständig verwaltetes Dienstkonto](https://technet.microsoft.com/library/dd548356.aspx)
-- gMSA: [gruppenverwaltetes Dienstkonto](https://technet.microsoft.com/library/hh831782.aspx)
+- sMSA: [eigenständig verwaltetes Dienstkonto](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
+- gMSA: [gruppenverwaltetes Dienstkonto](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>Benutzerdefiniert | Remote-SQL</br>Benutzerdefiniert |
 | --- | --- | --- | --- |
-| **Eigenständiger/Arbeitsgruppencomputer** | Nicht unterstützt | **VSA**</br>Lokales Konto (2008)</br>Lokales Konto |  Nicht unterstützt |
 | **In die Domäne eingebundener Computer** | **VSA**</br>Lokales Konto (2008) | **VSA**</br>Lokales Konto (2008)</br>Lokales Konto</br>Domänenkonto</br>sMSA, gMSA | **gMSA**</br>Domänenkonto |
 | **Domänencontroller** | **Domänenkonto** | *gMSA*</br>**Domänenkonto**</br>sMSA| *gMSA*</br>**Domänenkonto**|
 
 #### <a name="virtual-service-account"></a>Virtuelles Dienstkonto
 Ein virtuelles Dienstkonto ist ein besonderer Kontotyp, der nicht über ein Kennwort verfügt und von Windows verwaltet wird.
 
-![VSA](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
+![Screenshot: Virtuelles Dienstkonto (Virtual Service Account, VSA)](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
 Das VSA ist für den Einsatz in Szenarien vorgesehen, in denen das Synchronisierungsmodul und SQL sich auf demselben Server befinden. Wenn Sie einen SQL-Remotecomputer verwenden, empfehlen wir stattdessen den Einsatz eines gruppenverwalteten Dienstkontos.
 
 Für dieses Feature ist Windows Server 2008 R2 oder höher erforderlich. Wenn Sie Azure AD Connect unter Windows Server 2008 installieren, wird bei der Installation automatisch ein [Benutzerkonto](#user-account) verwendet.
 
 #### <a name="group-managed-service-account"></a>Gruppenverwaltetes Dienstkonto
-Wenn Sie einen Remotecomputer mit SQL Server verwenden, empfehlen wir den Einsatz eines **gruppenverwalteten Dienstkontos**. Weitere Informationen zum Vorbereiten von Active Directory für das gruppenverwaltete Benutzerkonto finden Sie unter [Gruppenverwaltete Dienstkonten: Übersicht](https://technet.microsoft.com/library/hh831782.aspx).
+Wenn Sie einen Remotecomputer mit SQL Server verwenden, empfehlen wir den Einsatz eines **gruppenverwalteten Dienstkontos**. Weitere Informationen zum Vorbereiten von Active Directory für das gruppenverwaltete Benutzerkonto finden Sie unter [Gruppenverwaltete Dienstkonten: Übersicht](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)).
 
 Um diese Option zu verwenden, wählen Sie auf der Seite [Erforderliche Komponenten installieren](how-to-connect-install-custom.md#install-required-components) die Optionen **Vorhandenes Dienstkonto verwenden** und **Verwaltetes Dienstkonto**.  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
-Die Verwendung eines [eigenständig verwalteten Dienstkontos](https://technet.microsoft.com/library/dd548356.aspx) wird ebenfalls unterstützt. Diese Konten können jedoch nur auf dem lokalen Computer verwendet werden, und es gibt keinen praktischen Vorteil gegenüber dem virtuellen Standarddienstkonto.
+Die Verwendung eines [eigenständig verwalteten Dienstkontos](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10)) wird ebenfalls unterstützt. Diese Konten können jedoch nur auf dem lokalen Computer verwendet werden, und es gibt keinen praktischen Vorteil gegenüber dem virtuellen Standarddienstkonto.
 
 Für dieses Feature ist Windows Server 2012 oder höher erforderlich. Wenn Sie ein älteres Betriebssystem und Remote-SQL einsetzen, müssen Sie ein [Benutzerkonto](#user-account) verwenden.
 
@@ -240,7 +241,7 @@ Das Konto erhält auch Berechtigungen für Dateien, Registrierungsschlüssel und
 ### <a name="azure-ad-connector-account"></a>Azure AD Connector-Konto
 Zur Verwendung durch den Synchronisierungsdienst wird ein Konto in Azure AD erstellt. Dieses Konto kann anhand des Anzeigenamens identifiziert werden.
 
-![AD-Konto](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
+![Screenshot: Azure AD-Konto](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
 
 Der Name des Servers, auf dem das Konto verwendet wird, kann im zweiten Teil des Benutzernamens identifiziert werden. In der Abbildung oben heißt der Server „DC1“. Wenn Sie über Stagingserver verfügen, erhält jeder Server ein eigenes Konto.
 
@@ -251,7 +252,7 @@ Es besteht eine Beschränkung auf 20 Synchronisierungsdienstkonten in Azure AD.
 Um nicht verwendete Azure AD-Dienstkonten zu entfernen, führen Sie das folgende Azure AD PowerShell-Cmdlet aus: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
->Bevor Sie die oben aufgeführten PowerShell-Befehle verwenden können, müssen Sie [Azure Active Directory-PowerShell für das Graph-Modul](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) installieren und mit [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0) eine Verbindung zu Ihrer Azure AD-Instanz herstellen.
+>Bevor Sie die oben aufgeführten PowerShell-Befehle verwenden können, müssen Sie [Azure Active Directory-PowerShell für das Graph-Modul](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module) installieren und mit [Connect-AzureAD](/powershell/module/azuread/connect-azuread) eine Verbindung zu Ihrer Azure AD-Instanz herstellen.
 
 Weitere Informationen zum Verwalten oder Zurücksetzen des Kennworts für das Azure AD Connector-Konto finden Sie unter [Verwalten der Azure AD Connect-Konten](how-to-connect-azureadaccount.md).
 
@@ -263,7 +264,7 @@ Wenn Sie die Dokumentation zum [Integrieren Ihrer lokalen Identitäten in Azure 
 |Azure AD Connect herunterladen | [Azure AD Connect herunterladen](https://go.microsoft.com/fwlink/?LinkId=615771)|
 |Installieren mit den Express-Einstellungen | [Expressinstallation von Azure AD Connect](how-to-connect-install-express.md)|
 |Installieren mit benutzerdefinierten Einstellungen | [Benutzerdefinierte Installation von Azure AD Connect](./how-to-connect-install-custom.md)|
-|Upgrade von DirSync | [Upgrade von Azure AD-Synchronisierungstools (DirSync)](how-to-dirsync-upgrade-get-started.md)|
+|Upgrade von DirSync | [Upgrade von Azure AD-Synchronisierungstools (DirSync)](how-to-dirsync-upgrade-get-started.md)|
 |Nach der Installation | [Überprüfen der Installation und Zuweisen von Lizenzen](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>Nächste Schritte

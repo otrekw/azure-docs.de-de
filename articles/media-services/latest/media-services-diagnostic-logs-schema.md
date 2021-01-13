@@ -1,44 +1,46 @@
 ---
 title: Schemas für Diagnoseprotokolle von Azure Media Services – Azure
-description: In diesem Artikel werden die Schemas für Diagnoseprotokolle von Azure Media Services vorgestellt.
+description: In diesem Artikel werden die Schemas für Diagnoseprotokolle von Azure Media Services veranschaulicht.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/20/2019
-ms.author: juliako
-ms.openlocfilehash: f95258368664aabeb89426afb83854378c0e4429
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8cfbe26458de630aaf411aade4a31cb4e9c72b17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261099"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89295426"
 ---
 # <a name="diagnostic-logs-schemas"></a>Schemas für Diagnoseprotokolle
 
-[Azure Monitor](../../azure-monitor/overview.md) ermöglicht Ihnen die Überwachung von Metriken und Diagnoseprotokollen, die Ihnen zu verstehen helfen, wie Ihre Anwendungen ausgeführt werden. Sie können Media Services-Diagnoseprotokolle überwachen sowie Warnungen und Benachrichtigungen für die gesammelten Metriken und Protokolle erstellen. Sie können Protokolle an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, sie an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und in [Log Analytics](https://azure.microsoft.com/services/log-analytics/) exportieren oder Dienste von Drittanbietern nutzen.
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Ausführliche Informationen dazu finden Sie unter [Azure Monitor-Metrik](../../azure-monitor/platform/data-platform.md) und [Azure Monitor-Diagnoseprotokolle](../../azure-monitor/platform/resource-logs-overview.md).
+[Azure Monitor](../../azure-monitor/overview.md) ermöglicht Ihnen die Überwachung von Metriken und Diagnoseprotokollen, die Ihnen zu verstehen helfen, wie sich Ihre Anwendungen verhalten. Sie können Media Services-Diagnoseprotokolle überwachen sowie Warnungen und Benachrichtigungen für die gesammelten Metriken und Protokolle erstellen. Sie können Protokolle an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, sie an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und in [Log Analytics](https://azure.microsoft.com/services/log-analytics/) exportieren oder Dienste von Drittanbietern nutzen.
+
+Ausführliche Informationen dazu finden Sie unter [Azure Monitor-Metrik](../../azure-monitor/platform/data-platform.md) und [Azure Monitor-Diagnoseprotokolle](../../azure-monitor/platform/platform-logs-overview.md).
 
 In diesem Artikel werden Schemas für Diagnoseprotokolle von Media Services beschrieben.
 
 ## <a name="top-level-diagnostic-logs-schema"></a>Schema der obersten Ebene für Diagnoseprotokolle
 
-Eine detaillierte Beschreibung des Schemas der obersten Ebene für Diagnoseprotokolle finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../azure-monitor/platform/tutorial-dashboards.md).
+Eine detaillierte Beschreibung des Schemas der obersten Ebene für Diagnoseprotokolle finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../azure-monitor/platform/resource-logs-schema.md).
 
 ## <a name="key-delivery-log-schema"></a>Protokollschema für Schlüsselübermittlung
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 
 Diese Eigenschaften sind spezifisch für das Protokollschema für Schlüsselübermittlung.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |keyId|Die ID des angeforderten Schlüssels.|
 |keyType|Es kann sich um einen der folgenden Werte handeln: „Clear“ (keine Verschlüsselung), „FairPlay“, „PlayReady“ oder „Widevine“.|
@@ -107,6 +109,10 @@ Eigenschaften des Schemas für Schlüsselübermittlungsanforderungen.
     }
 } 
 ```
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

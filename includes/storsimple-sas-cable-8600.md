@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f08a6b3f7abfc79bff6baff2a339053905612535
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178125"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026755"
 ---
 #### <a name="to-attach-the-sas-cables"></a>So schließen Sie die SAS-Kabel an
 1. Identifizieren Sie das primäre Gehäuse und das EBOD-Gehäuse. Die beiden Gehäuse können anhand ihrer Rückwände identifiziert werden. Die folgende Abbildung bietet eine Orientierung. 
@@ -22,7 +22,7 @@ ms.locfileid: "67178125"
    |:--- |:--- |
    | 1 |Primäres Gehäuse |
    | 2 |EBOD-Gehäuse |
-2. Suchen Sie am primären und am EBOD-Gehäuse nach der jeweiligen Seriennummer. Der Aufkleber mit der Seriennummer befindet sich jeweils an der hinteren Lasche des Gehäuses. Die Seriennummern beider Gehäuse müssen identisch sein. [nehmen Sie sofort Kontakt mit dem Microsoft-Support auf](../articles/storsimple/storsimple-contact-microsoft-support.md) . Die folgende Abbildung zeigt die Position der Seriennummern.
+2. Suchen Sie am primären und am EBOD-Gehäuse nach der jeweiligen Seriennummer. Der Aufkleber mit der Seriennummer befindet sich jeweils an der hinteren Lasche des Gehäuses. Die Seriennummern beider Gehäuse müssen identisch sein. [nehmen Sie sofort Kontakt mit dem Microsoft-Support auf](../articles/storsimple/storsimple-8000-contact-microsoft-support.md) . Die folgende Abbildung zeigt die Position der Seriennummern.
    
     ![Rückansicht des Gehäuses mit Seriennummer](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
    
@@ -43,12 +43,11 @@ ms.locfileid: "67178125"
       
       | Bezeichnung | BESCHREIBUNG |
       |:--- |:--- |
-      | Eine Datei |Primäres Gehäuse |
-      | b |EBOD-Gehäuse |
+      | Ein |Primäres Gehäuse |
+      | B |EBOD-Gehäuse |
       | 1 |Controller 0 |
       | 2 |Controller 1 |
       | 3 |EBOD-Controller 0 |
       | 4 |EBOD-Controller 1 |
       | 5, 6 |SAS-Anschlüsse am primären Gehäuse (mit der Beschriftung "EBOD") |
       | 7, 8 |SAS-Anschlüsse am EBOD-Gehäuse (Anschluss A) |
-

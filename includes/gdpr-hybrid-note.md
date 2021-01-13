@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/01/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 236ba117fd324a75ecc20ea7f94e110d75e3ee63
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5bcc770c730b53a9523415a4978b439ac0079410
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177907"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974057"
 ---
 >[!Note]
->Wenn Sie Informationen zum Einsehen oder Löschen personenbezogener Daten benötigen, lesen Sie die Anleitung von Microsoft auf der Website [Windows-Datensubjektanforderungen für die DSGVO](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-windows). Allgemeine Informationen zur Datenschutz-Grundverordnung finden Sie im [Service Trust Portal im Abschnitt zur DSGVO](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+>Informationen zum Anzeigen und Löschen von personenbezogenen Daten finden Sie im Leitfaden von Microsoft auf der Website zu den [Windows-Datensubjektanforderungen für die DSGVO](/microsoft-365/compliance/gdpr-data-subject-requests). Allgemeine Informationen über die DSGVO finden Sie im [Abschnitt zur DSGVO im Service Trust-Portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

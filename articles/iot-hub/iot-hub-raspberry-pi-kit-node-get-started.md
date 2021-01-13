@@ -1,21 +1,24 @@
 ---
-title: 'Raspberry Pi in der Cloud (Node.js): Verbinden von Raspberry Pi mit Azure IoT Hub | Microsoft-Dokumentation'
+title: Verbinden von Raspberry Pi mit Azure IoT Hub in der Cloud (Node.js)
 description: Erfahren Sie in diesem Tutorial, wie Sie Raspberry Pi einrichten und eine Verbindung mit Azure IoT Hub herstellen, damit Raspberry Pi Daten an die Azure-Cloudplattform senden kann.
 author: wesmc7777
-manager: philmea
+manager: eliotgra
 keywords: Azure IoT Raspberry Pi, Raspberry Pi IoT Hub, Raspberry Pi sendet Daten an Cloud, Raspberry Pi in der Cloud
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: wesmc
-ms.openlocfilehash: 79e565668db661d02833d22d2ef619fc67708115
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.custom:
+- 'Role: Cloud Development'
+- devx-track-js
+ms.openlocfilehash: c96f674b64401250d45542d0f59f13654cf37caa
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266152"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802523"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)
 
@@ -78,7 +81,7 @@ Die folgenden Elemente sind optional:
 > [!NOTE]
 > Wenn Sie die optionalen Elemente nicht besitzen, können Sie simulierte Sensordaten verwenden.
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -94,7 +97,7 @@ Bereiten Sie die microSD-Karte für die Installation des Raspbian-Image vor.
 
 1. Laden Sie Raspbian herunter.
 
-   a. [Raspbian Buster mit Desktop](https://www.raspberrypi.org/downloads/raspbian/) (ZIP-Datei).
+   a. [Raspbian Buster mit Desktop](https://www.raspberrypi.org/software/) (ZIP-Datei).
 
    b. Entpacken Sie das Raspbian-Image in einen Ordner auf Ihrem Computer.
 
@@ -148,7 +151,7 @@ Verwenden Sie für Sensorstifte die folgende Verkabelung:
 | LED VDD (Stift 18F)        | GPIO 24 (Stift 18)       | Weißes Kabel   |
 | LED GND (Stift 17F)        | GND (Stift 20)           | Schwarzes Kabel   |
 
-Klicken Sie hier, um die [Raspberry Pi 2- und 3-Stiftzuordnungen](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) zur Referenz anzuzeigen.
+Klicken Sie hier, um die [Raspberry Pi 2- und 3-Stiftzuordnungen](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi) zur Referenz anzuzeigen.
 
 Nachdem Sie den BME280 erfolgreich mit Ihrem Raspberry Pi verbunden haben, sollte das Gerät wie in der nachstehenden Abbildung aussehen.
 
@@ -156,7 +159,7 @@ Nachdem Sie den BME280 erfolgreich mit Ihrem Raspberry Pi verbunden haben, sollt
 
 ### <a name="connect-pi-to-the-network"></a>Verbindung zwischen Pi und dem Netzwerk
 
-Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. Verwenden Sie das Ethernet-Kabel zum Verbinden von Pi mit Ihrem verkabelten Netzwerk, oder befolgen Sie die [Anweisungen der Raspberry Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/), um Pi mit Ihrem WLAN zu verbinden. Notieren Sie sich die [IP-Adresse von Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address), nachdem es eine Verbindung zum Netzwerk hergestellt hat.
+Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. Verwenden Sie das Ethernet-Kabel zum Verbinden von Pi mit Ihrem verkabelten Netzwerk, oder befolgen Sie die [Anweisungen der Raspberry Pi Foundation](https://www.raspberrypi.org/documentation/configuration/wireless/), um Pi mit Ihrem WLAN zu verbinden. Notieren Sie sich die [IP-Adresse von Pi](https://www.raspberrypi.org/documentation/remote-access/ip-address.md), nachdem es eine Verbindung zum Netzwerk hergestellt hat.
 
 ![Mit verkabeltem Netzwerk verbunden](./media/iot-hub-raspberry-pi-kit-node-get-started/5-power-on-pi.png)
 
@@ -202,13 +205,13 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
 3. Klonen Sie die Beispielanwendung.
 
    ```bash
-   git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
+   git clone https://github.com/Azure-Samples/azure-iot-samples-node.git
    ```
 
 4. Installieren Sie alle Pakete für das Beispiel. Die Installation umfasst das Azure IoT-Geräte-SDK, die BME280-Sensorbibliothek und die Wiring-Pi-Bibliothek zur Verkabelung.
 
    ```bash
-   cd iot-hub-node-raspberrypi-client-app
+   cd azure-iot-samples-node/iot-hub/Tutorials/RaspberryPiApp
    npm install
    ```
 

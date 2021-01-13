@@ -1,40 +1,43 @@
 ---
-title: Aktualisieren von Machine Learning-Modellen mithilfe von Azure Data Factory | Microsoft-Dokumentation
-description: Informationen zum Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory und Machine Learning
+title: Aktualisieren von Azure Machine Learning Studio (Classic)-Modellen mithilfe von Azure Data Factory
+description: Dieser Artikel beschreibt das Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory und Azure Machine Learning Studio (Classic).
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/16/2018
-ms.openlocfilehash: 56d0ce6668c1077b99c980c2bc5b16998a3a41c1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 07/16/2020
+ms.openlocfilehash: bec300414483181617a7aa009157a4c4a332c745
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140532"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496737"
 ---
-# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning-Modellen mithilfe der Ressourcenaktualisierungsaktivität
-Dieser Artikel ergänzt den Hauptartikel zu Azure Data Factory: Azure Machine Learning-Integration [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md) Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen.
+# <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning Studio (Classic)-Modellen mithilfe der Ressourcenaktualisierungsaktivität
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Dieser Artikel ergänzt den Hauptartikel zu Azure Data Factory: Integration von Azure Machine Learning Studio (Classic): [Erstellen einer Vorhersagepipeline mithilfe von Azure Machine Learning Studio (Classic) und Azure Data Factory](transform-data-using-machine-learning.md) Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen.
 
 ## <a name="overview"></a>Übersicht
-Im Rahmen der Operationalisierung von Azure Machine Learning-Modellen wird Ihr Modell trainiert und gespeichert. Anschließend kann es dann zum Erstellen eines Vorhersagewebdiensts verwendet werden. Dieser Webdienst kann von Websites, Dashboards und mobilen Apps genutzt werden.
+Im Rahmen der Operationalisierung von Azure Machine Learning Studio (Classic)-Modellen wird Ihr Modell trainiert und gespeichert. Anschließend kann es dann zum Erstellen eines Vorhersagewebdiensts verwendet werden. Dieser Webdienst kann von Websites, Dashboards und mobilen Apps genutzt werden.
 
-Mithilfe von Machine Learning erstellte Modelle sind in der Regel nicht statisch. Wenn neue Daten verfügbar sind oder der Endkunde der API über eigene Daten verfügt, muss das Modell erneut trainiert werden. Unter [Erneutes Trainieren eines Machine Learning-Modells](../machine-learning/machine-learning-retrain-machine-learning-model.md) finden Sie weitere Informationen, wie Sie ein Modell in Azure Machine Learning erneut trainieren können.
+Mithilfe von Azure Machine Learning Studio (Classic) erstellte Modelle sind in der Regel nicht statisch. Wenn neue Daten verfügbar sind oder der Endkunde der API über eigene Daten verfügt, muss das Modell erneut trainiert werden. 
 
-Das erneute Training kann häufig durchgeführt werden. Mithilfe der Batchausführungs- und Ressourcenaktualisierungsaktivität können Sie das Azure Machine Learning-Modell erneut trainieren und den Vorhersagewebdienst mithilfe von Data Factory aktualisieren.
+Das erneute Training kann häufig durchgeführt werden. Unter Verwendung der Batchausführungs- und Ressourcenaktualisierungsaktivität können Sie das Azure Machine Learning Studio (Classic)-Modell erneut trainieren und den Vorhersagewebdienst mithilfe von Data Factory aktualisieren.
 
 Die folgende Abbildung zeigt die Beziehung zwischen Trainings- und Vorhersagewebdiensten.
 
 ![WEB SERVICES](./media/update-machine-learning-models/web-services.png)
 
-## <a name="azure-machine-learning-update-resource-activity"></a>Azure Machine Learning-Ressourcenaktualisierungsaktivität
+## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (Classic)
 
-Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning-Batchausführungsaktivität.
+Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning Studio (Classic)-Batchausführungsaktivität.
 
 ```json
 {
@@ -60,8 +63,8 @@ Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning-Batchausf
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | Name der Aktivität in der Pipeline     | Ja      |
 | description                   | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein       |
-| type                          | Für die Azure Machine Learning-Ressourcenaktualisierungsaktivität ist der Aktivitätstyp **AzureMLUpdateResource**. | Ja      |
-| linkedServiceName             | Mit Azure Machine Learning verknüpfter Dienst, der die „updateResourceEndpoint“-Eigenschaft enthält. | Ja      |
+| type                          | Der Aktivitätstyp der Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (Classic) lautet **AzureMLUpdateResource**. | Ja      |
+| linkedServiceName             | Mit Azure Machine Learning Studio (Classic) verknüpfter Dienst, der die „updateResourceEndpoint“-Eigenschaft enthält. | Ja      |
 | trainedModelName              | Name des „Trained Model“-Moduls im Webdienstexperiment an, das aktualisiert werden soll | Ja      |
 | trainedModelLinkedServiceName | Name des mit Azure Storage verknüpften Diensts, der die „ilearner“-Datei enthält, die vom Aktualisierungsvorgang hochgeladen wird | Ja      |
 | trainedModelFilePath          | Der relative Dateipfad in „trainedModelLinkedService“, der die „ilearner“-Datei darstellt, die beim Aktualisierungsvorgang hochgeladen wird | Ja      |
@@ -70,17 +73,17 @@ Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning-Batchausf
 
 Der gesamte Prozess der Operationalisierung des erneuten Trainierens eines Modells und Aktualisieren der Vorhersagewebdienste umfasst die folgenden Schritte:
 
-- Rufen Sie mithilfe der **Batchausführungsaktivität** den **Trainingswebdienst** auf. Das Aufrufen eines Trainingswebdiensts entspricht dem Aufrufen eines Vorhersagewebdiensts unter [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md). Die Ausgabe des Trainingswebdiensts ist eine „iLearner“-Datei, die Sie zum Aktualisieren des Vorhersagewebdiensts verwenden können.
+- Rufen Sie mithilfe der **Batchausführungsaktivität** den **Trainingswebdienst** auf. Das Aufrufen eines Trainingswebdiensts entspricht dem Aufrufen eines Vorhersagewebdiensts unter [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning Studio (Classic) und Azure Data Factory](transform-data-using-machine-learning.md). Die Ausgabe des Trainingswebdiensts ist eine „iLearner“-Datei, die Sie zum Aktualisieren des Vorhersagewebdiensts verwenden können.
 - Rufen Sie mithilfe der **Ressourcenaktualisierungsaktivität** den **Ressourcenaktualisierungsendpunkt** des **Vorhersagewebdiensts** auf, um den Webdienst mit dem neu trainierten Modell zu aktualisieren.
 
-## <a name="azure-machine-learning-linked-service"></a>Mit Azure Machine Learning verknüpfter Dienst
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Verknüpfter Azure Machine Learning Studio (Classic)-Dienst
 
-Damit der zuvor erwähnte Workflow vollständig funktioniert, müssen Sie zwei mit Azure Machine Learning verknüpfte Dienste erstellen:
+Damit der zuvor erwähnte Workflow vollständig funktioniert, müssen Sie zwei mit Azure Machine Learning Studio (Classic) verknüpfte Dienste erstellen:
 
-1. Einen mit Azure Machine Learning verknüpften Dienst für den Trainingswebdienst. Dieser verknüpfte Dienst wird von der Batchausführungsaktivität verwendet, wie unter [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md) beschrieben. Der Unterschied bei der Ausgabe des Trainingswebdiensts ist eine „iLearner“-Datei, die dann von der Ressourcenaktualisierungsaktivität zum Aktualisieren des Vorhersagewebdiensts verwendet wird.
-2. Ein mit Azure Machine Learning verknüpfter Dienste für den Ressourcenaktualisierungsendpunkt des Vorhersagewebdiensts. Dieser verknüpfte Dienst wird von der Ressourcenaktualisierungsaktivität zum Aktualisieren des Vorhersagewebdiensts mithilfe der im vorherigen Schritt zurückgegebenen „iLearner“-Datei verwendet.
+1. Einen mit Azure Machine Learning Studio (Classic) verknüpften Dienst für den Trainingswebdienst. Dieser verknüpfte Dienst wird von der Batchausführungsaktivität verwendet, wie unter [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning Studio (Classic) und Azure Data Factory](transform-data-using-machine-learning.md) beschrieben. Der Unterschied bei der Ausgabe des Trainingswebdiensts ist eine iLearner-Datei, die dann von der Ressourcenaktualisierungsaktivität zum Aktualisieren des Vorhersagewebdiensts verwendet wird.
+2. Ein mit Azure Machine Learning Studio (Classic) verknüpfter Dienste für den Ressourcenaktualisierungsendpunkt des Vorhersagewebdiensts. Dieser verknüpfte Dienst wird von der Ressourcenaktualisierungsaktivität zum Aktualisieren des Vorhersagewebdiensts mithilfe der im vorherigen Schritt zurückgegebenen „iLearner“-Datei verwendet.
 
-Für den zweiten mit Azure Machine Learning verknüpften Dienst unterscheidet sich die Konfiguration, wenn Ihr Azure Machine Learning-Webdienst ein klassischer oder neuer Webdienst ist. Die Unterschiede werden in den folgenden Abschnitten getrennt erläutert.
+Für den zweiten mit Azure Machine Learning Studio (Classic) verknüpften Dienst unterscheidet sich die Konfiguration, wenn Ihr Azure Machine Learning Studio (Classic)-Webdienst ein klassischer oder neuer Webdienst ist. Die Unterschiede werden in den folgenden Abschnitten getrennt erläutert.
 
 ## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Webdienst ist ein Azure Resource Manager-Webdienst
 
@@ -90,7 +93,7 @@ Wenn der Webdienst der neue Webdiensttyp ist, der einen Azure Resource Manager-E
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview
 ```
 
-Beim Abfragen des Webdiensts im [Azure Machine Learning Web Services-Portal](https://services.azureml.net/) können Sie Werte für Platzhalter in der URL abrufen.
+Beim Abfragen des Webdiensts im [Azure Machine Learning Studio (Classic) Web Services-Portal](https://services.azureml.net/) können Sie Werte für Platzhalter in der URL abrufen.
 
 Der neue Typ des Ressourcenaktualisierungsendpunkts erfordert die Dienstprinzipalauthentifizierung. Um die Dienstprinzipalauthentifizierung zu verwenden, registrieren Sie eine Anwendungsentität in Azure Active Directory (Azure AD), und teilen Sie ihr die Rolle **Mitwirkender** oder **Besitzer** des Abonnements oder der Ressourcengruppe zu, zu der der Webdienst gehört. Informationen dazu finden Sie im Artikel zum [Erstellen eines Dienstprinzipals und Zuweisen von Berechtigungen zum Verwalten einer Azure-Ressource](../active-directory/develop/howto-create-service-principal-portal.md). Notieren Sie sich die folgenden Werte, die Sie zum Definieren des verknüpften Diensts verwenden:
 
@@ -124,18 +127,18 @@ Hier sehen Sie ein Beispiel der Definition eines verknüpften Diensts:
 }
 ```
 
-Das folgende Szenario enthält weitere Details hierzu. Es zeigt ein Beispiel für das erneute Trainieren und Aktualisieren von Azure Machine Learning Studio-Modellen aus einer Azure Data Factory-Pipeline.
+Das folgende Szenario enthält weitere Details hierzu. Es zeigt ein Beispiel für das erneute Trainieren und Aktualisieren von Azure Machine Learning Studio (Classic)-Modellen aus einer Azure Data Factory-Pipeline.
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Beispiel: Erneutes Trainieren und Aktualisieren eines Azure Machine Learning-Modells
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-studio-classic-model"></a>Beispiel: Erneutes Trainieren und Aktualisieren eines Azure Machine Learning Studio (Classic)-Modells
 
-Dieser Abschnitt enthält eine Beispielpipeline, bei der die **Azure Machine Learning Studio-Batchausführungsaktivität** zum erneuten Trainieren des Modells verwendet wird. Für die Pipeline wird außerdem die **Azure Machine Learning Studio-Aktivität zur Ressourcenaktualisierung** verwendet, um das Modell im Bewertungswebdienst zu aktualisieren. Darüber hinaus enthält der Abschnitt JSON-Codeausschnitte für alle verknüpften Dienste, Datasets und Pipelines im Beispiel.
+Dieser Abschnitt enthält eine Beispielpipeline, bei der die **Batchausführungsaktivität von Azure Machine Learning Studio (Classic)** zum erneuten Trainieren des Modells verwendet wird. Für die Pipeline wird außerdem die **Aktivität zur Ressourcenaktualisierung von Azure Machine Learning Studio (Classic)** verwendet, um das Modell im Bewertungswebdienst zu aktualisieren. Darüber hinaus enthält der Abschnitt JSON-Codeausschnitte für alle verknüpften Dienste, Datasets und Pipelines im Beispiel.
 
 ### <a name="azure-blob-storage-linked-service"></a>Mit Azure Blob Storage verknüpfter Dienst:
 Der Azure-Speicher enthält die folgenden Daten:
 
-* Trainingsdaten: Die Eingabedaten für den Azure Machine Learning Studio-Trainingswebdienst.
-* iLearner-Datei: Die Ausgabe des Azure Machine Learning Studio-Trainingswebdiensts. Die Datei dient darüber hinaus als Eingabe für die Aktivität zur Ressourcenaktualisierung.
+* Trainingsdaten: Die Eingabedaten für den Azure Machine Learning Studio (Classic)-Trainingswebdienst.
+* iLearner-Datei: Die Ausgabe vom Azure Machine Learning Studio (Classic)-Trainingswebdienst. Die Datei dient darüber hinaus als Eingabe für die Aktivität zur Ressourcenaktualisierung.
 
 Dies ist die JSON-Beispieldefinition des verknüpften-Diensts:
 
@@ -151,8 +154,8 @@ Dies ist die JSON-Beispieldefinition des verknüpften-Diensts:
 }
 ```
 
-### <a name="linked-service-for-azure-machine-learning-studio-training-endpoint"></a>Verknüpfter Dienst für den Azure Machine Learning Studio-Trainingsendpunkt
-Der folgende JSON-Codeausschnitt definiert einen mit Azure Machine Learning verknüpften Dienst, der auf den Standardendpunkt des Trainingswebdiensts verweist.
+### <a name="linked-service-for-azure-machine-learning-studio-classic-training-endpoint"></a>Verknüpfter Dienst für den Azure Machine Learning Studio (Classic)-Trainingsendpunkt
+Der folgende JSON-Codeausschnitt definiert einen mit Azure Machine Learning Studio (Classic) verknüpften Dienst, der auf den Standardendpunkt des Trainingswebdiensts verweist.
 
 ```JSON
 {
@@ -167,16 +170,16 @@ Der folgende JSON-Codeausschnitt definiert einen mit Azure Machine Learning verk
 }
 ```
 
-Führen Sie in **Azure Machine Learning Studio** folgende Schritte aus, um Werte für **mlEndpoint** und **apiKey** abzurufen:
+Führen Sie in **Azure Machine Learning Studio (klassisch)** folgende Schritte aus, um Werte für **mlEndpoint** und **apiKey** abzurufen:
 
 1. Klicken Sie im linken Menü auf **WEB SERVICES** .
 2. Klicken Sie in der Liste der Webdienste auf den **Trainingswebdienst** .
 3. Klicken Sie neben dem Textfeld **API-Schlüssel** auf „Kopieren“. Fügen Sie den Schlüssel aus der Zwischenablage in den Data Factory-JSON-Editor ein.
-4. Klicken Sie in **Azure Machine Learning Studio** auf den Link **BATCHAUSFÜHRUNG**.
+4. Klicken Sie in **Azure Machine Learning Studio (klassisch)** auf den Link **BATCHAUSFÜHRUNG**.
 5. Kopieren Sie den **Anforderungs-URI** im Abschnitt **Anforderung**, und fügen Sie ihn in den Data Factory-JSON-Editor ein.
 
-### <a name="linked-service-for-azure-machine-learning-studio-updatable-scoring-endpoint"></a>Verknüpfter Dienst für den aktualisierbaren Azure Machine Learning Studio-Bewertungsendpunkt:
-Der folgende JSON-Codeausschnitt definiert einen mit Azure Machine Learning verknüpften Dienst, der auf den aktualisierbaren Endpunkt des Bewertungswebdiensts verweist.
+### <a name="linked-service-for-azure-machine-learning-studio-classic-updatable-scoring-endpoint"></a>Verknüpfter Dienst für den aktualisierbaren Azure Machine Learning Studio (Classic)-Bewertungsendpunkt:
+Der folgende JSON-Codeausschnitt definiert einen mit Azure Machine Learning Studio (Classic) verknüpften Dienst, der auf den aktualisierbaren Endpunkt des Bewertungswebdiensts verweist.
 
 ```JSON
 {

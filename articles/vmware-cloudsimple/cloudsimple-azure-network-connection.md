@@ -1,5 +1,5 @@
 ---
-title: VMware-Lösung von CloudSimple – Azure-Netzwerkverbindungen
+title: VMware Solution by CloudSimple – Azure-Netzwerkverbindungen
 description: Erfahren Sie mehr über das Verbinden Ihres virtuellen Azure-Netzwerks mit Ihrem CloudSimple-Regionsnetzwerk.
 author: sharaths-cs
 ms.author: dikamath
@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: cfd4d65b07cf255ac2b60d6bf8376723a997374e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972949"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "77025077"
 ---
 # <a name="azure-network-connections-overview"></a>Übersicht über Azure-Netzwerkverbindungen
 

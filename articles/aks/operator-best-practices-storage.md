@@ -1,18 +1,16 @@
 ---
-title: Best Practices für Operatoren – Speicherung in Azure Kubernetes Service (AKS)
+title: Bewährte Methoden für Speicherung und Sicherung
+titleSuffix: Azure Kubernetes Service
 description: Lernen Sie die bewährten Methoden für Speicherung, Datenverschlüsselung und Sicherungen in Azure Kubernetes Service (AKS) für Clusteroperatoren kennen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.author: mlearned
-ms.openlocfilehash: b42cdae634a6c2d8d994225d4cb6b440a99918e5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 722fe393ad7637be20360463a4c3b6234224a036
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67614591"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88653969"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Best Practices für Speicherung und Sicherungen in Azure Kubernetes Service (AKS)
 
@@ -38,11 +36,11 @@ In der folgenden Tabelle sind die verfügbarer Speichertypen und ihre Fähigkeit
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Freigegebene Konfiguration       | Azure Files   | Ja | Ja | Ja | Ja |
 | Strukturierte App-Daten        | Azure Disks   | Ja | Nein  | Nein  | Ja |
-| Unstrukturierte Daten, Dateisystemvorgänge | [BlobFuse (Vorschau)][blobfuse] | Ja | Ja | Ja | Nein |
+| Unstrukturierte Daten, Dateisystemvorgänge | [BlobFuse][blobfuse] | Ja | Ja | Ja | Nein |
 
 Die beiden primären Speichertypen, die für Volumes in AKS zur Verfügung stehen, werden durch Azure-Datenträger oder Azure Files gesichert. Um die Sicherheit zu verbessern, verwenden beide Speichertypen standardmäßig Azure-Speicherdienstverschlüsselung (Storage Service Encryption, SSE) zur Verschlüsselung von ruhenden Daten. Festplatten können derzeit nicht mit der Azure Disk Encryption auf AKS-Knotenebene verschlüsselt werden.
 
-Azure Files ist derzeit in der Leistungsstufe „Standard“ verfügbar. Azure-Datenträger sind derzeit in der Leistungsstufe „Standard“ und „Premium“ verfügbar:
+Sowohl Azure Files als auch Azure-Datenträger sind derzeit in der Leistungsstufe „Standard“ und „Premium“ verfügbar:
 
 - *Premium*-Datenträger werden von Hochleistungs-SSDs gesichert. Für alle Produktionsworkloads werden Premium-Datenträger empfohlen.
 - *Standard*-Datenträger werden durch normale rotierende Festplatten (HDDs) gesichert und eignen sich gut für die Archivierung oder für Daten, auf die selten zugegriffen wird.
@@ -78,7 +76,7 @@ Wenn Sie Speicher an Pods anfügen müssen, verwenden Sie persistente Volumes. D
 
 ![Ansprüche auf persistente Volumes in einem Azure Kubernetes Service-Cluster (AKS)](media/concepts-storage/persistent-volume-claims.png)
 
-Mit einem Anspruch auf persistente Volumes (PVC) können Sie bei Bedarf dynamisch Speicher erstellen. Die zugrunde liegenden Azure-Datenträger werden erstellt, wenn sie von Pods angefordert werden. In der Poddefinition fordern Sie an, dass ein Volume erstellt und an einen entworfenen Einbindungspfad angefügt wird.
+Mit einem Anspruch auf persistente Volumes (PVC) können Sie bei Bedarf dynamisch Speicher erstellen. Die zugrunde liegenden Azure-Datenträger werden erstellt, wenn sie von Pods angefordert werden. In der Poddefinition fordern Sie an, dass ein Volume erstellt und an den festgelegten Einbindungspfad angefügt wird.
 
 Informationen zu den Konzepten zum dynamischen Erstellen und Verwenden von Volumes finden Sie unter [Ansprüche auf persistente Volumes][aks-concepts-storage-pvcs].
 
@@ -90,9 +88,9 @@ Weitere Informationen zu Speicherklassenoptionen finden Sie unter [Richtlinien z
 
 ## <a name="secure-and-back-up-your-data"></a>Schützen und Sichern Ihrer Daten
 
-**Best Practices-Anleitung**: Sichern Sie Ihre Daten mithilfe eines entsprechenden Tools für Ihren Speichertyp, z.B. Velero oder Azure Site Recovery. Überprüfen Sie die Integrität und die Sicherheit dieser Sicherungen.
+**Best Practices-Anleitung**: Sichern Sie Ihre Daten mithilfe eines entsprechenden Tools für Ihren Speichertyp, z. B. Velero oder Azure Backup. Überprüfen Sie die Integrität und die Sicherheit dieser Sicherungen.
 
-Wenn Ihre Anwendungen Daten speichern und verbrauchen, die auf Festplatten oder in Dateien gespeichert sind, müssen Sie regelmäßig Sicherungen oder Momentaufnahmen dieser Daten erstellen. Azure-Datenträger können integrierte Momentaufnahmetechnologien verwenden. Möglicherweise benötigen Sie einen Hook für Ihre Anwendungen, damit Schreibzugriffe auf die Festplatte geleert werden, bevor Sie den Momentaufnahmevorgang ausführen. [Velero][velero] kann persistente Volumes zusammen mit zusätzlichen Clusterressourcen und -konfigurationen sichern. Wenn Sie [den Zustand nicht aus Ihren Anwendungen entfernen können][remove-state], sichern Sie die Daten von persistenten Volumes, und testen Sie die Wiederherstellungsvorgänge regelmäßig, um die Datenintegrität und die erforderlichen Prozesse zu überprüfen.
+Wenn Ihre Anwendungen Daten speichern und verbrauchen, die auf Festplatten oder in Dateien gespeichert sind, müssen Sie regelmäßig Sicherungen oder Momentaufnahmen dieser Daten erstellen. Azure-Datenträger können integrierte Momentaufnahmetechnologien verwenden. Möglicherweise müssen Sie Ihre Anwendungen suchen, damit Schreibzugriffe auf die Festplatte geleert werden, bevor Sie den Momentaufnahmevorgang ausführen. [Velero][velero] kann persistente Volumes zusammen mit zusätzlichen Clusterressourcen und -konfigurationen sichern. Wenn Sie [den Zustand nicht aus Ihren Anwendungen entfernen können][remove-state], sichern Sie die Daten von persistenten Volumes, und testen Sie die Wiederherstellungsvorgänge regelmäßig, um die Datenintegrität und die erforderlichen Prozesse zu überprüfen.
 
 Sie sollten die Grenzen der verschiedenen Ansätze für Datensicherungen kennen und wissen, ob Sie Ihre Daten vor dem erstellen der Momentaufnahme stilllegen müssen. Datensicherungen ermöglichen es Ihnen nicht unbedingt, Ihre Anwendungsumgebung der Clusterbereitstellung wiederherzustellen. Weitere Informationen zu diesen Szenarien finden Sie unter [Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)][best-practices-multi-region].
 
@@ -106,12 +104,12 @@ Dieser Artikel konzentriert sich auf bewährte Speichermethoden in AKS. Weitere 
 
 <!-- LINKS - Internal -->
 [aks-concepts-storage]: concepts-storage.md
-[vm-sizes]: ../virtual-machines/linux/sizes.md
+[vm-sizes]: ../virtual-machines/sizes.md
 [dynamic-disks]: azure-disks-dynamic-pv.md
 [dynamic-files]: azure-files-dynamic-pv.md
 [reclaim-policy]: concepts-storage.md#storage-classes
 [aks-concepts-storage-pvcs]: concepts-storage.md#persistent-volume-claims
 [aks-concepts-storage-classes]: concepts-storage.md#storage-classes
-[managed-disks]: ../virtual-machines/linux/managed-disks-overview.md
+[managed-disks]: ../virtual-machines/managed-disks-overview.md
 [best-practices-multi-region]: operator-best-practices-multi-region.md
 [remove-state]: operator-best-practices-multi-region.md#remove-service-state-from-inside-containers

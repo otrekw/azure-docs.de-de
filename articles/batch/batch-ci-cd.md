@@ -1,23 +1,20 @@
 ---
-title: Verwenden von Azure Pipelines zum Erstellen und Bereitstellen von HPC-Lösungen – Azure Batch | Microsoft-Dokumentation
+title: Verwenden von Azure Pipelines zum Erstellen und Bereitstellen von HPC-Lösungen
 description: Erfahren Sie, wie Sie eine Build-/Releaseepipeline für eine in Azure Batch ausgeführte HPC-Anwendung bereitstellen.
-author: christianreddington
+author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
-ms.topic: conceptual
-ms.custom: fasttrack-new
-services: batch
-ms.service: batch
-ms.openlocfilehash: 47665171ee5ae137e0503b3e5fa1d369aeabb356
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.topic: how-to
+ms.openlocfilehash: e87be0db65cf12a265566e0c05815722ce3cc609
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840059"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578874"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Verwenden von Azure Pipelines zum Erstellen und Bereitstellen von HPC-Lösungen
 
-Azure DevOps-Dienste bieten eine Reihe von Tools, die von Entwicklungsteams beim Erstellen einer benutzerdefinierten Anwendung verwendet werden. Tools von Azure DevOps dienen zum Übersetzen in das automatische Erstellen und Testen von Hochleistungscomputelösungen. In diesem Artikel wird die Einrichtung einer Continuous Integration (CI) und Continuous Deployment (CD) mit Azure Pipelines für eine unter Azure Batch bereitgestellte Hochleistungscomputelösung veranschaulicht.
+Azure DevOps Services bietet eine Reihe von Tools, die von Entwicklungsteams beim Erstellen einer benutzerdefinierten Anwendung verwendet werden. Tools von Azure DevOps dienen zum Übersetzen in das automatische Erstellen und Testen von Hochleistungscomputelösungen. In diesem Artikel wird die Einrichtung einer Continuous Integration (CI) und Continuous Deployment (CD) mit Azure Pipelines für eine unter Azure Batch bereitgestellte Hochleistungscomputelösung veranschaulicht.
 
 Azure Pipelines bietet eine Reihe von modernen CI-/CD-Prozessen für das Erstellen, Bereitstellen, Testen und Überwachen von Software. Diese Prozesse beschleunigen die Auslieferung Ihrer Software, sodass Sie sich auf den Code konzentrieren können, anstatt sich um die Infrastruktur und sonstige Abläufe kümmern zu müssen.
 
@@ -27,12 +24,12 @@ In diesem Beispiel erstellen wir eine Build- und Releaseepipeline, um eine Azure
 
 ![Diagramm des Bereitstellungsablaufs in unserer Pipeline](media/batch-ci-cd/DeploymentFlow.png)
 
-### <a name="setup"></a>Einrichtung
+### <a name="setup"></a>Einrichten
 
 Um den Schritten in diesem Artikel folgen zu können, benötigen Sie eine Azure DevOps-Organisation und ein Teamprojekt.
 
-* [Schnellstart: Erstellen einer Organisation](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-* [Erstellen eines Projekts in Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
+* [Schnellstart: Erstellen einer Organisation](/azure/devops/organizations/accounts/create-organization)
+* [Erstellen eines Projekts in Azure DevOps](/azure/devops/organizations/projects/create-project)
 
 ### <a name="source-control-for-your-environment"></a>Quellcodeverwaltung für Ihre Umgebung
 
@@ -46,13 +43,13 @@ Die in diesem Beispiel verwendete Codebasisstruktur ähnelt dem Folgenden:
 
 * Ein **arm-templates**-Ordner mit einer Reihe von Azure Resource Manager-Vorlagen. Die Vorlagen werden in diesem Artikel erläutert.
 * Ein **client-application**-Ordner, der eine Kopie des Beispiels [Azure Batch .NET File Processing with ffmpeg](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) (Azure Batch .NET-Dateiverarbeitung mit ffmpeg) ist. Dies ist für diesen Artikel nicht erforderlich.
-* Ein **hpc-application**-Ordner, der die Windows-64-Bit-Version von [ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) ist.
+* Ein **hpc-application**-Ordner, der die Windows-64-Bit-Version von [ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08) ist.
 * Ein **pipelines**-Ordner. Dieser enthält eine YAML-Datei mit dem Konzept unseres Buildprozesses. Dies wird in diesem Artikel erläutert.
 
 In diesem Abschnitt wird davon ausgegangen, dass Sie mit der Versionskontrolle und dem Entwerfen von Resource Manager-Vorlagen vertraut sind. Wenn Sie mit diesen Konzepten nicht vertraut sind, finden Sie auf den folgenden Seiten weitere Informationen.
 
-* [Was ist Quellcodeverwaltung?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
-* [Grundlegendes zur Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Was ist Quellcodeverwaltung?](/azure/devops/user-guide/source-control)
+* [Grundlegendes zur Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 
@@ -65,7 +62,7 @@ In diesem Beispiel wird eine End-to-End-Lösungsvorlage (deployment.json) verwen
 
 ![Beispiel für die verknüpfte Vorlagenstruktur mit Verwendung von Azure Resource Manager-Vorlagen](media/batch-ci-cd/ARMTemplateHierarchy.png)
 
-Die erste Vorlage, die wir betrachten, ist für ein Azure Storage-Konto bestimmt. Unsere Lösung erfordert ein Speicherkonto, um die Anwendung in unserem Batch-Konto bereitzustellen. Das Referenzhandbuch für [Microsoft.Storage-Ressourcentypen](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions) sollte beim Erstellen der Resource Manager-Vorlagen für Storage-Konten berücksichtigt werden.
+Die erste Vorlage, die wir betrachten, ist für ein Azure Storage-Konto bestimmt. Unsere Lösung erfordert ein Speicherkonto, um die Anwendung in unserem Batch-Konto bereitzustellen. Das Referenzhandbuch für [Microsoft.Storage-Ressourcentypen](/azure/templates/microsoft.storage/allversions) sollte beim Erstellen der Resource Manager-Vorlagen für Storage-Konten berücksichtigt werden.
 
 ```json
 {
@@ -105,7 +102,7 @@ Die erste Vorlage, die wir betrachten, ist für ein Azure Storage-Konto bestimmt
 }
 ```
 
-Als Nächstes werden wir die Vorlage des Azure Batch-Kontos betrachten. Das Azure Batch-Konto fungiert als Plattform zum Pools (Gruppen von Computern) übergreifenden Ausführen zahlreicher Anwendungen. Das Referenzhandbuch für [Microsoft.Batch-Ressourcentypen](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) sollte beim Erstellen der Resource Manager-Vorlagen für Batch-Konten berücksichtigt werden.
+Als Nächstes werden wir die Vorlage des Azure Batch-Kontos betrachten. Das Azure Batch-Konto fungiert als Plattform zum Pools (Gruppen von Computern) übergreifenden Ausführen zahlreicher Anwendungen. Das Referenzhandbuch für [Microsoft.Batch-Ressourcentypen](/azure/templates/microsoft.batch/allversions) sollte beim Erstellen der Resource Manager-Vorlagen für Batch-Konten berücksichtigt werden.
 
 ```json
 {
@@ -144,7 +141,7 @@ Als Nächstes werden wir die Vorlage des Azure Batch-Kontos betrachten. Das Azur
 }
 ```
 
-Die nächste Vorlage zeigt ein Beispiel für das Erstellen eines Azure Batch-Pools (die Back-End-Computer zum Verarbeiten unserer Anwendungen). Das Referenzhandbuch für [Microsoft.Batch-Ressourcentypen](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) sollte beim Erstellen der Resource Manager-Vorlagen für Batch-Kontenpools berücksichtigt werden.
+Die nächste Vorlage zeigt ein Beispiel für das Erstellen eines Azure Batch-Pools (die Back-End-Computer zum Verarbeiten unserer Anwendungen). Das Referenzhandbuch für [Microsoft.Batch-Ressourcentypen](/azure/templates/microsoft.batch/allversions) sollte beim Erstellen der Resource Manager-Vorlagen für Batch-Kontenpools berücksichtigt werden.
 
 ```json
 {
@@ -192,7 +189,7 @@ Die nächste Vorlage zeigt ein Beispiel für das Erstellen eines Azure Batch-Poo
 
 Schließlich haben wir eine Vorlage, die ähnlich wie ein Orchestrator fungiert. Diese Vorlage dient zum Bereitstellen von Funktionsvorlagen.
 
-Sie können auch in einem separaten Artikel mehr über das [Erstellen verknüpfter Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-manager-tutorial-create-linked-templates.md) erfahren.
+Sie können auch in einem separaten Artikel mehr über das [Erstellen verknüpfter Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/deployment-tutorial-linked-template.md) erfahren.
 
 ```json
 {
@@ -294,7 +291,7 @@ Sie können auch in einem separaten Artikel mehr über das [Erstellen verknüpft
 
 Infrastruktur und Software können als Code definiert und im selben Repository verbunden werden.
 
-Für diese Lösung wird ffmpeg als Anwendungspaket verwendet. Das ffmpeg-Paket kann [hier](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) heruntergeladen werden.
+Für diese Lösung wird ffmpeg als Anwendungspaket verwendet. Das ffmpeg-Paket kann [hier](https://www.videohelp.com/software?d=ffmpeg-3.3.4-win64-static.zip) heruntergeladen werden.
 
 ![Git-Repository-Beispielstruktur](media/batch-ci-cd/git-repository.jpg)
 
@@ -303,7 +300,7 @@ Dieses Repository hat vier Hauptabschnitte:
 * Der **arm-templates**-Ordner, in dem unsere Infrastruktur als Code gespeichert wird.
 * Der **hpc-application**-Ordner mit den Binärdateien für ffmpeg.
 * Der **pipelines**-Ordner, der die Definition für unsere Buildpipeline enthält.
-* **Optional:** Der **client-application**-Ordner zum Speichern von Code für die .NET Anwendung. Wir verwenden dies nicht im Beispiel, aber in Ihrem eigenen Projekt können Sie die HPC-Batch-Anwendung über eine Clientanwendung ausführen.
+* **Optional**: Der **client-application**-Ordner zum Speichern von Code für die .NET Anwendung. Wir verwenden dies nicht im Beispiel, aber in Ihrem eigenen Projekt können Sie die HPC-Batch-Anwendung über eine Clientanwendung ausführen.
 
 > [!NOTE]
 > Dies ist nur ein Beispiel einer Struktur einer Codebasis. Dieser Ansatz soll veranschaulichen, dass Anwendungs-, Infrastruktur- und Pipelinecode im selben Repository gespeichert werden.
@@ -312,7 +309,7 @@ Nun ist der Quellcode eingerichtet und wir können mit dem ersten Build beginnen
 
 ## <a name="continuous-integration"></a>Continuous Integration
 
-Mit [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/?view=azure-devops) innerhalb von Azure DevOps Services können Sie eine Erstellungs-, Test- und Bereitstellungspipeline für Ihre Anwendungen implementieren.
+Mit [Azure Pipelines](/azure/devops/pipelines/get-started/) innerhalb von Azure DevOps Services können Sie eine Erstellungs-, Test- und Bereitstellungspipeline für Ihre Anwendungen implementieren.
 
 In dieser Phase der Pipeline werden Tests in der Regel zum Überprüfen von Code und Erstellen der entsprechenden Teile der Software ausgeführt. Anzahl und Typen der Tests sowie weitere Aufgaben, die Sie ausführen, hängen von Ihrer übergeordneten Build- und Releasestrategie ab.
 
@@ -326,9 +323,9 @@ In diesem Beispiel konzentrieren wir uns auf den **hpc-application**-Ordner. Der
 
 1. Eine Buildpipeline kann auf zwei Arten erstellt werden:
 
-    a. [Verwenden des Visual Designer](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav). Klicken Sie zu dessen Verwendung auf der Seite **Neue Pipeline** auf „Verwenden Sie den visuellen Designer“.
+    a. [Verwenden des Visual Designer](/azure/devops/pipelines/get-started-designer). Klicken Sie zu dessen Verwendung auf der Seite **Neue Pipeline** auf „Verwenden Sie den visuellen Designer“.
 
-    b. [Verwenden des YAML-Builds](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=azure-devops). Sie können eine neue YAML-Pipeline erstellen, indem Sie auf der Seite „Neue Pipeline“ auf die Option für Azure Repos oder GitHub klicken. Alternativ können Sie das folgende Beispiel in Ihrer Quellcodeverwaltung speichern und auf eine vorhandene YAML-Datei verweisen, indem Sie auf Visual Designer klicken und dann die YAML-Vorlage verwenden.
+    b. [Verwenden des YAML-Builds](/azure/devops/pipelines/get-started-yaml). Sie können eine neue YAML-Pipeline erstellen, indem Sie auf der Seite „Neue Pipeline“ auf die Option für Azure Repos oder GitHub klicken. Alternativ können Sie das folgende Beispiel in Ihrer Quellcodeverwaltung speichern und auf eine vorhandene YAML-Datei verweisen, indem Sie auf Visual Designer klicken und dann die YAML-Vorlage verwenden.
 
     ```yml
     # To publish an application into Azure Batch, we need to
@@ -360,15 +357,15 @@ In diesem Beispiel konzentrieren wir uns auf den **hpc-application**-Ordner. Der
     ![Anzeigen von Liveausgaben von Ihrem Build](media/batch-ci-cd/Build-1.jpg)
 
 > [!NOTE]
-> Wenn Sie eine Clientanwendung zum Ausführen der HPC-Batchanwendung verwenden, müssen Sie eine separate Builddefinition für diese Anwendung erstellen. Sie finden eine Reihe von Gewusst-wie-Anleitungen in der Dokumentation zu [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/index?view=azure-devops).
+> Wenn Sie eine Clientanwendung zum Ausführen der HPC-Batchanwendung verwenden, müssen Sie eine separate Builddefinition für diese Anwendung erstellen. Sie finden eine Reihe von Gewusst-wie-Anleitungen in der Dokumentation zu [Azure Pipelines](/azure/devops/pipelines/get-started/index).
 
 ## <a name="continuous-deployment"></a>Kontinuierliche Bereitstellung
 
-Azure Pipelines hat auch stets Ihre Anwendung und die zugrunde liegende Infrastruktur bereitgestellt. Die Komponente [Releasepipelines](https://docs.microsoft.com/azure/devops/pipelines/release) ermöglicht die kontinuierliche Bereitstellung und automatisiert Ihren Releaseprozess.
+Azure Pipelines hat auch stets Ihre Anwendung und die zugrunde liegende Infrastruktur bereitgestellt. Die Komponente [Releasepipelines](/azure/devops/pipelines/release) ermöglicht die kontinuierliche Bereitstellung und automatisiert Ihren Releaseprozess.
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>Bereitstellen der Anwendung und der zugrunde liegenden Infrastruktur
 
-Das Bereitstellen der Infrastruktur ist mit einer Reihe von Schritten verbunden. Da wir [verknüpfte Vorlagen](../azure-resource-manager/resource-group-linked-templates.md) verwendet haben, muss der Zugriff auf diese Vorlagen von einem öffentlichen Endpunkt (HTTP oder HTTPS) möglich sein. Dies kann ein Repository auf GitHub, ein Azure Blob Storage-Konto oder ein anderer Speicherort sein. Die hochgeladenen Vorlagenartefakte können sicher bleiben, weil sie in einem privaten Modus gehalten werden können, der Zugriff auf sie aber mithilfe einer Form des Shared Access Signature-Tokens (SAS) erfolgt. Das folgende Beispiel veranschaulicht die Bereitstellung einer Infrastruktur mit Vorlagen aus einem Azure Storage-Blob.
+Das Bereitstellen der Infrastruktur ist mit einer Reihe von Schritten verbunden. Da wir [verknüpfte Vorlagen](../azure-resource-manager/templates/linked-templates.md) verwendet haben, muss der Zugriff auf diese Vorlagen von einem öffentlichen Endpunkt (HTTP oder HTTPS) möglich sein. Dies kann ein Repository auf GitHub, ein Azure Blob Storage-Konto oder ein anderer Speicherort sein. Die hochgeladenen Vorlagenartefakte können sicher bleiben, weil sie in einem privaten Modus gehalten werden können, der Zugriff auf sie aber mithilfe einer Form des Shared Access Signature-Tokens (SAS) erfolgt. Das folgende Beispiel veranschaulicht die Bereitstellung einer Infrastruktur mit Vorlagen aus einem Azure Storage-Blob.
 
 1. Erstellen Sie eine **Neue Releasedefinition**, und wählen Sie eine leere Definition aus. Wir müssen dann die neu erstellte Umgebung unserer Pipeline gemäß umbenennen.
 

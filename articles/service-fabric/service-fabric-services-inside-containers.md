@@ -1,25 +1,15 @@
 ---
 title: Packen Ihrer Azure Service Fabric-Dienste in Container unter Windows
 description: Erfahren Sie, wie Sie Ihre Reliable Services und Reliable Actors von Service Fabric unter Windows in Container packen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: anmolah
-editor: roroutra
-ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 5/23/2018
-ms.author: anmola
-ms.openlocfilehash: 0cb48a2272ce854005f9f3db5b6a9abf62cc7015
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e0c5f3ecf0334ad2190d8542e54388a2a25d30fb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599202"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999806"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Packen Ihrer Reliable Services und Reliable Actors von Service Fabric in Container unter Windows
 
@@ -103,7 +93,7 @@ Dieses Dokument enthält Anweisungen für die Schritte zum Ausführen Ihrer Dien
    </Policies>
    ```
 
-9. Informationen zum Konfigurieren des Containerisolationsmodus finden Sie unter [Konfigurieren des Isolationsmodus]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode). Windows unterstützt zwei Isolationsmodi für Container: Prozesse und Hyper-V. In den folgenden Codeausschnitten wird gezeigt, wie der Isolationsmodus in der Anwendungsmanifestdatei angegeben wird.
+9. Informationen zum Konfigurieren des Containerisolationsmodus finden Sie unter [Konfigurieren des Isolationsmodus]( ./service-fabric-get-started-containers.md#configure-isolation-mode). Windows unterstützt zwei Isolationsmodi für Container: Prozesse und Hyper-V. In den folgenden Codeausschnitten wird gezeigt, wie der Isolationsmodus in der Anwendungsmanifestdatei angegeben wird.
 
    ```xml
    <Policies>

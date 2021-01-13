@@ -1,25 +1,18 @@
 ---
-title: Azure Cache for Redis-Beispiele | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Azure Cache for Redis verwenden.
-services: cache
-documentationcenter: ''
+title: Beispiele für Azure Cache for Redis
+description: 'Erfahren Sie anhand der folgenden Codebeispiele, wie Sie Azure Cache for Redis verwenden können: Herstellen einer Verbindung mit einem Cache, Lesen von Daten aus einem Cache und Schreiben in einen Cache, Anbieter von ASP.NET-Azure Cache for Redis.'
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 1f8d210c-ee09-4fe2-b63f-1e69246a27d8
-ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: multiple
-ms.topic: article
-ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 73c771ab18d1cc2944298818c1cab90eb2f277ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.service: cache
+ms.custom: devx-track-dotnet
+ms.topic: sample
+ms.date: 01/23/2017
+ms.openlocfilehash: 553850173f463a05b13768eb3b9e17703bfa2886
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60829802"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88212289"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Beispiele für Azure Cache for Redis
 Dieses Thema enthält eine Liste mit Azure Cache for Redis-Beispielen für Szenarien wie das Herstellen einer Verbindung mit einem Cache, das Lesen und Schreiben von Cachedaten und das Verwenden der ASP.NET Azure Cache for Redis-Anbieter. Einige der Beispiele sind herunterladbare Projekte und einige bieten eine schrittweise Anleitung und Codeausschnitte, ohne mit einem herunterladbaren Projekt verknüpft zu sein.
@@ -46,8 +39,8 @@ Weitere Informationen finden Sie in der [StackExchange.Redis](https://github.com
 
 [Arbeiten mit .NET-Objekten im Cache](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache) zeigt eine Möglichkeit zum Serialisieren von .NET-Objekten, um sie in eine Azure Cache for Redis-Instanz zu schreiben und daraus zu lesen. 
 
-## <a name="use-azure-cache-for-redis-as-a-scale-out-backplane-for-aspnet-signalr"></a>Verwenden von Azure Cache for Redis als horizontal skalierbare Backplane für ASP.NET SignalR
-Das Beispiel [Use Redis Cache as a Scale out Backplane for ASP.NET SignalR](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane) (Verwenden von Azure Cache for Redis als horizontal skalierbare Backplane für ASP.NET SignalR) veranschaulicht die Verwendung von Azure Cache for Redis als SignalR-Backplane. Weitere Informationen zur Backplane finden Sie unter [Horizontales Hochskalieren von SignalR mit Redis](https://www.asp.net/signalr/overview/performance/scaleout-with-redis).
+## <a name="use-azure-cache-for-redis-as-a-scale-out-backplane-for-aspnet-signalr"></a>Verwenden von Azure Cache for Redis als aufskalierbare Backplane für ASP.NET SignalR
+Das Beispiel [Use Redis Cache as a Scale out Backplane for ASP.NET SignalR](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane) (Verwenden von Azure Cache for Redis als aufskalierbare Backplane für ASP.NET SignalR) veranschaulicht die Verwendung von Azure Cache for Redis als SignalR-Backplane. Weitere Informationen zur Backplane finden Sie unter [Horizontales Hochskalieren von SignalR mit Redis](https://www.asp.net/signalr/overview/performance/scaleout-with-redis).
 
 ## <a name="azure-cache-for-redis-customer-query-sample"></a>Azure Cache for Redis: Kundenabfragebeispiel
 Dieses Beispiel veranschaulicht Leistungsvergleiche zwischen den Zugriff auf Daten aus einem Cache und dem Zugriff auf Daten in persistentem Speicher. Dieses Beispiel enthält zwei Projekte.
@@ -69,4 +62,3 @@ Das Beispiel [Retwis](https://github.com/SyntaxC4-MSFT/retwis) ist die Hello-Wor
 
 ## <a name="bandwidth-monitor"></a>Bandbreitenüberwachung
 Das Beispiel [Bandbreitenüberwachung](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) ermöglicht die Überwachung der auf dem Client genutzten Bandbreite. Um die Bandbreite zu messen, führen Sie das Beispiel auf dem Cacheclientcomputer aus, rufen Sie den Cache auf, und beobachten Sie die durch das Beispiel gemeldete Bandbreite.
-

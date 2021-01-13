@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschungen | Microsoft-Dokumentation'
+title: 'Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschungen | Microsoft Docs'
 description: In diesem Thema wird die Funktion zum Verhindern von versehentlichen Löschungen (Verhindern versehentlicher Löschvorgänge) in Azure AD Connect beschrieben.
 services: active-directory
 documentationcenter: ''
@@ -9,21 +9,21 @@ editor: ''
 ms.assetid: 6b852cb4-2850-40a1-8280-8724081601f7
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c09a751119c1d6effa5795f2dbf7da422b7806
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 16d48cda87b8226ebc3bbab179c1034abf0a486f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135798"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90084608"
 ---
-# <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect-Synchronisierung: Verhindern eines versehentlichen Löschvorgangs
+# <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschvorgängen
 In diesem Thema wird die Funktion zum Verhindern von versehentlichen Löschungen (Verhindern versehentlicher Löschvorgänge) in Azure AD Connect beschrieben.
 
 Bei der Installation von Azure AD Connect wird die Funktion zum Schutz vor unbeabsichtigtem Löschen standardmäßig aktiviert und so konfiguriert, das Exporte mit mehr als 500 Löschungen unterbunden werden. Diese Funktion dient zum Schutz vor unbeabsichtigten Konfigurationsänderungen und Änderungen an Ihrem lokalen Verzeichnis, die sich auf viele Benutzer und andere Objekte auswirken würden.
@@ -60,11 +60,12 @@ Wenn Sie diese Nachricht unerwartet erhalten haben, untersuchen Sie die Grunde d
 
 [!NOTE] Falls Sie unsicher sind, ob alle Löschvorgänge erwünscht sind, und auf Nummer sicher gehen möchten, können Sie mithilfe des PowerShell-Cmdlets `Enable-ADSyncExportDeletionThreshold` einen neuen Schwellenwert festlegen, anstatt den Schwellenwert zu deaktivieren, was möglicherweise zu unerwünschten Löschungen führt. 
 
+## <a name="if-all-deletes-are-desired"></a>Wenn alle Löschvorgänge erwünscht sind
 Wenn alle Löschvorgänge gewünscht sind, gehen Sie folgendermaßen vor:
 
 1. Führen Sie zum Abrufen des aktuellen Schwellenwerts für Löschungen das PowerShell-Cmdlet `Get-ADSyncExportDeletionThreshold` aus. Geben Sie das Konto und das Kennwort eines globalen Azure AD-Administrators ein. Der Standardwert ist 500.
 2. Um den Schutz vorübergehend zu deaktivieren und diese Löschvorgänge zuzulassen, führen Sie folgendes PowerShell-Cmdlet aus: `Disable-ADSyncExportDeletionThreshold`. Geben Sie das Konto und das Kennwort eines globalen Azure AD-Administrators ein.
-   ![Anmeldeinformationen](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
+   ![Screenshot: Dialogfeld zum Eingeben des Benutzernamens und Kennworts des globalen Azure AD-Administrators](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
 3. Lassen Sie Azure Active Directory Connector weiterhin ausgewählt, wählen Sie die Aktion **Run** (Ausführen) und anschließend **Export** (Exportieren) aus.
 4. Führen Sie zum erneuten Aktivieren des Schutzes folgendes PowerShell-Cmdlet aus: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`. Ersetzen Sie „500“ durch den Wert, den Sie beim Abrufen des aktuellen Schwellenwerts für Löschungen notiert haben. Geben Sie das Konto und das Kennwort eines globalen Azure AD-Administrators ein.
 

@@ -1,24 +1,26 @@
 ---
-title: ForEach-Aktivität in Azure Data Factory | Microsoft-Dokumentation
+title: ForEach-Aktivität in Azure Data Factory
 description: Mit der ForEach-Aktivität wird eine wiederholte Ablaufsteuerung in Ihrer Pipeline definiert. Sie wird verwendet, um eine Sammlung zu durchlaufen und die angegebenen Aktivitäten auszuführen.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 319f4e722184ce840d43b8f23e61711851a6d4a0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 71e96e6245d4cf922b82162e01a972264699f3ac
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142480"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499508"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach-Aktivität in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Mit der ForEach-Aktivität wird eine wiederholte Ablaufsteuerung in Ihrer Pipeline definiert. Diese Aktivität wird verwendet, um eine Sammlung zu durchlaufen. Sie führt die angegebenen Aktivitäten in einer Schleife aus. Die Schleifenimplementierung dieser Aktivität ähnelt der Foreach-Schleifenstruktur in Programmiersprachen.
 
 ## <a name="syntax"></a>Syntax
@@ -70,10 +72,10 @@ Die Eigenschaften werden weiter unten in diesem Artikel beschrieben. Die Eigensc
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Name der ForEach-Aktivität. | Zeichenfolge | Ja
-type | Muss auf **ForEach** festgelegt sein. | Zeichenfolge | Ja
-isSequential | Gibt an, ob die Schleife sequenziell oder parallel ausgeführt werden soll.  Maximal 20 Schleifeniterationen können gleichzeitig parallel ausgeführt werden. Beispiel: Bei einer ForEach-Aktivität, die eine Kopieraktivität mit 10 unterschiedlichen Quell- und Senkendatasets durchläuft, während **isSequential** auf „false“ festgelegt ist, werden alle Kopien gleichzeitig ausgeführt. Die Standardeinstellung ist "False". <br/><br/> Wenn „isSequential“ auf „false“ festgelegt ist, stellen Sie sicher, dass die Konfiguration die Ausführung mehrerer ausführbarer Dateien ermöglicht. Andernfalls sollte diese Eigenschaft vorsichtig verwendet werden, um Schreibkonflikte zu vermeiden. Weitere Informationen finden Sie im Abschnitt [Parallele Ausführung](#parallel-execution). | Boolean | Nein. Die Standardeinstellung ist "False".
-batchCount | Batchanzahl, die zum Steuern der Anzahl der parallelen Ausführungen verwendet werden soll (wenn „isSequential“ auf „false“ festgelegt ist). | Ganze Zahl (maximal 50) | Nein. Der Standardwert ist 20.
+name | Name der ForEach-Aktivität. | String | Ja
+type | Muss auf **ForEach** festgelegt sein. | String | Ja
+isSequential | Gibt an, ob die Schleife sequenziell oder parallel ausgeführt werden soll.  Maximal 20 Schleifeniterationen können gleichzeitig parallel ausgeführt werden. Beispiel: Bei einer ForEach-Aktivität, die eine Kopieraktivität mit 10 unterschiedlichen Quell- und Senkendatasets durchläuft, während **isSequential** auf „false“ festgelegt ist, werden alle Kopien gleichzeitig ausgeführt. Der Standardwert lautet False. <br/><br/> Wenn „isSequential“ auf „false“ festgelegt ist, stellen Sie sicher, dass die Konfiguration die Ausführung mehrerer ausführbarer Dateien ermöglicht. Andernfalls sollte diese Eigenschaft vorsichtig verwendet werden, um Schreibkonflikte zu vermeiden. Weitere Informationen finden Sie im Abschnitt [Parallele Ausführung](#parallel-execution). | Boolean | Nein. Der Standardwert lautet False.
+batchCount | Batchanzahl, die zum Steuern der Anzahl der parallelen Ausführungen verwendet werden soll (wenn „isSequential“ auf „false“ festgelegt ist). Dies ist das obere Parallelitätslimit, aber die ForEach-Aktivität wird nicht immer mit dieser Zahl ausgeführt. | Ganze Zahl (maximal 50) | Nein. Der Standardwert ist 20.
 Items | Ein Ausdruck, der ein JSON-Array zurückgibt, das durchlaufen werden soll. | Ausdruck (der ein JSON-Array zurückgibt) | Ja
 activities | Die Aktivitäten, die ausgeführt werden sollen. | Liste der Aktivitäten | Ja
 

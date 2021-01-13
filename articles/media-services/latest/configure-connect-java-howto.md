@@ -1,26 +1,29 @@
 ---
 title: Herstellen von Verbindungen mit der Azure Media Services v3-API – Java
-description: Erfahren Sie, wie Sie mit Java eine Verbindung mit der Media Services v3-API herstellen.
+description: In diesem Artikel wird beschrieben, wie Sie mit Java eine Verbindung mit der Azure Media Services v3-API herstellen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/18/2019
-ms.author: juliako
-ms.openlocfilehash: 3f5e45bb84ca4fc46ccf1f3f3ab86d43c7c03cab
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.topic: quickstart
+ms.date: 11/17/2020
+ms.custom: devx-track-java
+ms.author: inhenkel
+ms.openlocfilehash: 769b4bc431040ee4d872fa60270196db96978ed2
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122872"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94748181"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Verbinden mit der Media Services v3-API – Java
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Dieser Artikel zeigt Ihnen, wie Sie mit der Methode der Dienstprinzipalanmeldung eine Verbindung zum Azure Media Services v3 Java SDK herstellen.
 
@@ -34,8 +37,8 @@ In diesem Artikel wird Visual Studio Code zum Entwickeln der Beispiel-App verwen
    - Apache Maven
    - Java-Erweiterungspaket
 - Achten Sie darauf, die Umgebungsvariablen `JAVA_HOME` und `PATH` festzulegen.
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md) Merken Sie sich unbedingt den Namen der Ressourcengruppe und den Namen des Media Services-Kontos.
-- Führen Sie die Schritte im Thema [Access APIs](access-api-cli-how-to.md) (Zugriff auf APIs) aus. Halten Sie die Abonnement-ID, die Anwendungs-ID (Client-ID), den Authentifizierungsschlüssel und die Mandanten-ID fest. Sie benötigen diese Angaben in einem späteren Schritt.
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md) Merken Sie sich unbedingt den Namen der Ressourcengruppe und den Namen des Media Services-Kontos.
+- Führen Sie die Schritte im Thema [Zugriff auf Azure Media Services API mit Azure CLI](./access-api-howto.md) aus. Halten Sie die Abonnement-ID, die Anwendungs-ID (Client-ID), den Authentifizierungsschlüssel und die Mandanten-ID fest. Sie benötigen diese Angaben in einem späteren Schritt.
 
 Lesen Sie außerdem:
 
@@ -59,25 +62,9 @@ Wenn Sie den Befehl ausführen, werden `pom.xml`, `App.java` und weitere Dateien
 
 1. Öffnen Sie in Visual Studio Code den Ordner, in dem sich Ihr Projekt befindet
 1. Suchen und öffnen Sie `pom.xml`
-1. Fügen Sie die erforderlichen Abhängigkeiten hinzu
+1. Fügen Sie die erforderlichen Abhängigkeiten hinzu.
 
-    ```xml
-   <dependency>
-     <groupId>com.microsoft.azure.mediaservices.v2018_07_01</groupId>
-     <artifactId>azure-mgmt-media</artifactId>
-     <version>1.0.0-beta-3</version>
-   </dependency>
-   <dependency>
-     <groupId>com.microsoft.rest</groupId>
-     <artifactId>client-runtime</artifactId>
-     <version>1.6.6</version>
-   </dependency>
-   <dependency>
-     <groupId>com.microsoft.azure</groupId>
-     <artifactId>azure-client-authentication</artifactId>
-     <version>1.6.6</version>
-   </dependency>
-    ```
+   Sehen Sie sich `pom.xml` im Beispiel zur [Videocodierung](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESCustomPreset/pom.xml) an.
 
 ## <a name="connect-to-the-java-client"></a>Verbinden mit dem Java-Client
 
@@ -94,7 +81,7 @@ Wenn Sie den Befehl ausführen, werden `pom.xml`, `App.java` und weitere Dateien
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-1. Um die Active Directory-Anmeldeinformationen zu erstellen, die Sie zum Senden von Anforderungen benötigen, fügen Sie der main-Methode der App-Klasse folgenden Code hinzu, und legen Sie die Werte fest, die Sie aus [Access APIs](access-api-cli-how-to.md) entnommen haben:
+1. Um die Active Directory-Anmeldeinformationen zu erstellen, die Sie zum Senden von Anforderungen benötigen, fügen Sie der main-Methode der App-Klasse folgenden Code hinzu, und legen Sie die Werte fest, die Sie aus [Access APIs](./access-api-howto.md) entnommen haben:
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -123,11 +110,11 @@ Wenn Sie den Befehl ausführen, werden `pom.xml`, `App.java` und weitere Dateien
 
 - [Media Services-Konzepte](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)
-- [Java-Referenz](https://aka.ms/ams-v3-java-ref)
+- [Java-Referenz](/java/api/overview/azure/mediaservices/management)
 - [com.microsoft.azure.mediaservices.v2018_07_01:azure-mgmt-media](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie können jetzt `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` einschließen und mit dem Ändern von Entitäten beginnen.
 
-Weitere Codebeispiele finden Sie im Repository für [Java SDK-Beispiele](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/).
+Weitere Codebeispiele finden Sie im Repository für [Java SDK-Beispiele](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/).

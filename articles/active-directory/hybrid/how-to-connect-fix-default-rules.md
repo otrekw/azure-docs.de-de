@@ -8,17 +8,17 @@ editor: curtand
 ms.reviewer: darora10
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2f0956b44d6df64fb73e5eee7844574237d8755
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0fc1bc3158e04c9b1f677af7ef2375ac3ed2ce7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067630"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320046"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Korrigieren von geänderten Standardregeln in Azure AD Connect
 
@@ -34,7 +34,7 @@ Seit Version 1.3.7.0 von Azure AD Connect ist es nun einfach, geänderte Standar
 
 Im Editor werden alle geänderten Standardregeln mit einem Warnsymbol vor dem Namen angezeigt.
 
-![Symbol "Warnung"](media/how-to-connect-fix-default-rules/default2.png)
+![Warnungssymbol](media/how-to-connect-fix-default-rules/default2.png)
 
  Eine deaktivierte Regel mit dem gleichen Namen wird ebenfalls aufgeführt (dies ist unbearbeitete Standardregel).
 
@@ -73,7 +73,7 @@ Wenn die Erweiterungen nicht funktionieren, versuchen Sie, zwei neue Synchronisi
 #### <a name="add-an-inbound-sync-rule"></a>Hinzufügen einer Synchronisierungsregel für eingehenden Datenverkehr
 Eine Synchronisierungsregel für eingehenden Datenverkehr bedeutet, dass die Quelle für das Attribut ein Connectorbereich und das Ziel der Metaverse ist. Wenn beispielsweise ein neuer Attributfluss vom lokalen Active Directory nach Azure Active Directory eingerichtet werden soll, erstellen Sie eine neue Synchronisierungsregel für eingehenden Datenverkehr. Starten Sie den **Synchronisierungsregel-Editor**, wählen Sie **Eingehend** als Richtung aus, und wählen Sie **Neue Regel hinzufügen** aus. 
 
- !Synchronization Rules Editor](media/how-to-connect-fix-default-rules/default3a.png)
+ ![Screenshot: „Synchronisierungsregel-Editor“ mit den ausgewählten Optionen „Eingehend“ und „Neue Regel hinzufügen“](media/how-to-connect-fix-default-rules/default3a.png)
 
 Benennen Sie die Regel nach Ihren eigenen Namenskonventionen. Hier verwenden wir **Custom In from AD - User**. Das heißt, dass es sich um eine benutzerdefinierte Regel für eingehenden Datenverkehr aus dem Active Directory-Connectorbereich zum Metaverse handelt.   
 
@@ -89,7 +89,7 @@ Lassen Sie **Bereichsfilter** leer. Das heißt, dass die Regel auf alle Objekte 
 
 Lassen Sie **Verknüpfungsregeln** leer. Das heißt, dass diese Regel die Verknüpfungsbedingung verwendet, die in der unbearbeiteten Standardregel definiert ist. Dies ist ein weiterer Grund dafür, dass die unbearbeitete Standardregel nicht deaktiviert oder gelöscht werden sollte. Ist keine Verknüpfungsbedingung vorhanden, erfolgt kein Attributfluss. 
 
-Fügen Sie die entsprechenden Transformationen für das Attribut hinzu. Sie können eine Konstante zuweisen, um einen den Fluss eines konstanten Werts zum Zielattribut einzurichten. Sie können eine direkte Zuordnung zwischen dem Quell- oder Zielattribut verwenden. Sie können aber auch einen Ausdruck für das Attribut verwenden. Hier finden Sie verschiedene [expression-Funktionen](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-functions-reference), die Sie verwenden können.
+Fügen Sie die entsprechenden Transformationen für das Attribut hinzu. Sie können eine Konstante zuweisen, um einen den Fluss eines konstanten Werts zum Zielattribut einzurichten. Sie können eine direkte Zuordnung zwischen dem Quell- oder Zielattribut verwenden. Sie können aber auch einen Ausdruck für das Attribut verwenden. Hier finden Sie verschiedene [expression-Funktionen](./reference-connect-sync-functions-reference.md), die Sie verwenden können.
 
 #### <a name="add-an-outbound-sync-rule"></a>Hinzufügen einer Synchronisierungsregel für ausgehenden Datenverkehr
 Um das Attribut mit dem Zielverzeichnis zu verknüpfen, müssen Sie eine Ausgangsregel erstellen. Das heißt, dass der Metaverse die Quelle und das verbundene System das Ziel ist. Um eine Ausgangsregel zu erstellen, starten Sie den **Synchronisierungsregel-Editor**, ändern Sie die **Richtung** in **Ausgehend**, und wählen Sie **Neue Regel hinzufügen** aus. 
@@ -102,7 +102,7 @@ Wie bei der Regel für eingehenden Datenverkehr können Sie zum Benennen der Reg
 
 Lassen Sie die Felder **Bereichsfilter** und **Verknüpfungsregeln** leer. Geben Sie die Transformation als Konstante, Direkt oder Ausdruck ein. 
 
-Nun wissen Sie, wie Sie ein neues Attribut für ein Benutzerobjekt von Active Directory nach Azure Active Directory fließen lassen. Sie können diese Schritte verwenden, um jedem beliebigen Attribut jedes beliebigen Objekts eine Quelle und ein Ziel zuzuordnen. Weitere Informationen finden Sie unter [Erstellen benutzerdefinierter Synchronisierungsregeln](how-to-connect-create-custom-sync-rule.md) und [Vorbereiten der Bereitstellung von Benutzern](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization).
+Nun wissen Sie, wie Sie ein neues Attribut für ein Benutzerobjekt von Active Directory nach Azure Active Directory fließen lassen. Sie können diese Schritte verwenden, um jedem beliebigen Attribut jedes beliebigen Objekts eine Quelle und ein Ziel zuzuordnen. Weitere Informationen finden Sie unter [Erstellen benutzerdefinierter Synchronisierungsregeln](how-to-connect-create-custom-sync-rule.md) und [Vorbereiten der Bereitstellung von Benutzern](/office365/enterprise/prepare-for-directory-synchronization).
 
 ### <a name="override-the-value-of-an-existing-attribute"></a>Überschreiben des Werts eines vorhandenen Attributs
 Eventuell möchten Sie den Wert eines Attributs überschreiben, das bereits zugeordnet wurde. Wenn ein Attribut in Azure AD beispielsweise immer auf einen NULL-Wert festgelegt sein soll, erstellen Sie einfach nur eine eingehende Regel. Lassen Sie den konstanten Wert `AuthoritativeNull` zum Zielattribut fließen. 
@@ -176,7 +176,7 @@ Wählen Sie **Vorschau** aus.
 
 Wählen Sie im Vorschaufenster **Vorschau generieren** und **Importattributfluss** im linken Bereich aus.
 
-![Vorschau](media/how-to-connect-fix-default-rules/default14.png)
+![Screenshot: Fenster „Vorschau“ mit den ausgewählten Optionen „Import-Attributfluss“ und „Vorschau generieren“](media/how-to-connect-fix-default-rules/default14.png)
  
 Hier stellen Sie fest, dass die neu hinzugefügte Regel für das Objekt ausgeführt wird und dass das Attribut `cloudFiltered` auf „True“ festgelegt wurde.
 
@@ -194,6 +194,3 @@ Um die Regeln zu korrigieren und sie wieder auf die Standardeinstellungen zurüc
 - [Voraussetzungen für Azure AD Connect](how-to-connect-install-prerequisites.md) 
 - [Express-Einstellungen](how-to-connect-install-express.md)
 - [Benutzerdefinierte Einstellungen](how-to-connect-install-custom.md)
-
-
-

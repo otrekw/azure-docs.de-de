@@ -1,29 +1,24 @@
 ---
-title: Ausfüllen bestimmter Felder für eine benutzerdefiniert entwickelte Anwendung | Microsoft-Dokumentation
-description: Informationen zum Ausfüllen bestimmter Felder beim Registrieren einer benutzerdefiniert entwickelten Anwendung bei Azure AD
+title: Registrierungsfelder im Azure-Portal für benutzerdefiniert entwickelte Apps
+description: Leitfaden zum Registrieren einer benutzerdefiniert entwickelten Anwendung mit Azure AD
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46bc6d2ebbb22ffc37ca73a3fff3b7b5a3a534b8
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1469fcfa68b10353b78d31ccc758c61bf7746692
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325332"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88120693"
 ---
-# <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Ausfüllen bestimmter Felder für eine benutzerdefiniert entwickelte Anwendung
+# <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Registrierungsfelder im Azure-Portal für benutzerdefiniert entwickelte Apps
 
 Dieser Artikel enthält eine kurze Beschreibung aller verfügbaren Felder im Anwendungsregistrierungsformular im [Azure-Portal](https://portal.azure.com).
 
@@ -39,16 +34,16 @@ Dieser Artikel enthält eine kurze Beschreibung aller verfügbaren Felder im Anw
 
 ## <a name="fields-in-the-application-registration-form"></a>Felder im Registrierungsformular für Anwendungen
 
-
 | Feld            | BESCHREIBUNG                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| NAME             | Der Namen der Anwendung. Dieser sollte mindestens vier Zeichen umfassen.                |
+| Name             | Der Namen der Anwendung. Dieser sollte mindestens vier Zeichen umfassen.                |
 | Unterstützte Kontotypen| Wählen Sie die Konten aus, die Ihre Anwendung unterstützen soll: „Nur Konten in diesem Organisationsverzeichnis“, „Konten in einem beliebigen Organisationsverzeichnis“ oder „Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten“.  |
-| Umleitungs-URI (optional) | Wählen Sie die Art der App aus, die Sie erstellen (**Web** oder **Öffentlicher Client (Mobilgerät und Desktop)** ), und geben Sie dann den Umleitungs-URI (oder die Antwort-URL) für Ihre Anwendung ein. Geben Sie für Webanwendungen die Basis-URL Ihrer App an. http://localhost:31544 kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden. Geben Sie für öffentliche Clientanwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein (z. B. „myapp://auth“). Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in unseren [Schnellstartanleitungen](https://docs.microsoft.com/azure/active-directory/develop).|
+| Umleitungs-URI (optional) | Wählen Sie die Art der App aus, die Sie erstellen (**Web** oder **Öffentlicher Client (Mobilgerät und Desktop)** ), und geben Sie dann den Umleitungs-URI (oder die Antwort-URL) für Ihre Anwendung ein. Geben Sie für Webanwendungen die Basis-URL Ihrer App an. http://localhost:31544 kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden. Geben Sie für öffentliche Clientanwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein (z. B. „myapp://auth“). Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in unseren [Schnellstartanleitungen](./index.yml).|
 
 Wenn Sie die oben aufgeführten Felder ausgefüllt haben, wird Ihre Anwendung im Azure-Portal registriert, und Sie werden auf die Übersichtsseite der Anwendung weitergeleitet. Die Einstellungsseiten im linken Bereich unter **Verwalten** enthalten weitere Felder, über die Sie Ihre Anwendung weiter anpassen können. In den folgenden Tabellen werden alle Felder beschrieben. Ihnen wird möglicherweise nur ein Teil dieser Felder angezeigt, je nachdem, ob Sie eine Webanwendung oder eine öffentliche Clientanwendung erstellt haben.
 
 ### <a name="overview"></a>Übersicht
+
 | Feld           | BESCHREIBUNG        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Anwendungs-ID  | Wenn Sie eine Anwendung registrieren, weist Azure AD Ihrer Anwendung eine Anwendungs-ID zu. Die Anwendungs-ID kann verwendet werden, um Ihre Anwendung in Authentifizierungsanforderungen bei Azure AD eindeutig zu identifizieren und um auf Ressourcen wie die Graph-API zuzugreifen.                                                          |
@@ -61,7 +56,7 @@ Wenn Sie die oben aufgeführten Felder ausgefüllt haben, wird Ihre Anwendung im
 | Neues Logo hochladen | Mit diesem Verfahren können Sie ein Logo für Ihre Anwendung hochladen. Das Logo muss im Format BMP, JPG oder PNG vorliegen, und die Datei sollte kleiner als 100 KB sein. Die Bildmaße sollten 215 × 215 Pixel betragen, die Bildmitte sollte 94 × 94 Pixel groß sein.|
 | URL der Startseite   | Dies ist die Anmelde-URL, die während der Registrierung der Anwendung angegeben wurde.|
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 
 | Feld           | BESCHREIBUNG        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -76,4 +71,5 @@ Wenn Sie die oben aufgeführten Felder ausgefüllt haben, wird Ihre Anwendung im
 | Geheime Clientschlüssel            | Sie können geheime Clientschlüssel oder Schlüssel erstellen, um programmgesteuert und ohne Benutzerinteraktion auf Web-APIs zuzugreifen, die von Azure AD geschützt werden. Geben Sie auf der Seite **Neuer geheimer Clientschlüssel** eine Beschreibung des Schlüssels sowie das Ablaufdatum ein, und speichern Sie die Informationen, um den Schlüssel zu generieren. Stellen Sie sicher, dass Sie den Schlüssel an sicherer Stelle speichern, da Sie später nicht mehr darauf zugreifen können.             |
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Verwalten von Anwendungen mit Azure Active Directory](../manage-apps/what-is-application-management.md)

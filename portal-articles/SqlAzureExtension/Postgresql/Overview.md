@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
-ms.openlocfilehash: 6282acaf165d2f31a1a1ac525dad75ebc64a2a7c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 271bcd188f5152bfdac3eb7895827afca2859fe4
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "62113951"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076845"
 ---
 # <a name="azure-database-for-postgresql-documentation"></a>Dokumentation zur Azure-Datenbank für PostgreSQL
 
@@ -31,7 +31,7 @@ Erfahren Sie, wie Sie eine PostgreSQL-Datenbank mit Folgendem erstellen:
 In diesem Artikel werden folgende Themen erläutert:
 
 - Entwerfen einer Datenbank: [Azure-Portal](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure CLI](/azure/postgresql/tutorial-design-database-using-azure-cli)
-- [Erstellen einer Web-App mit Python und der CLI](/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
+- [Erstellen einer Web-App mit Python und der Befehlszeilenschnittstelle](/azure/app-service/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
 
 ## <a name="samples"></a>Beispiele 
 

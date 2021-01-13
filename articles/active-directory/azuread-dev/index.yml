@@ -1,0 +1,45 @@
+### YamlMime:Landing
+title: Azure Active Directory für Entwickler
+summary: >
+  Azure Active Directory (Azure AD) ist ein Cloudidentitätsdienst, mit dem Entwickler Apps erstellen können, über die Benutzer mit einem Geschäfts-, Schul- oder Unikonto von Microsoft angemeldet werden. Azure AD unterstützt die Entwicklung branchenspezifischer Apps mit einem einzelnen Mandanten sowie die Entwicklung mehrinstanzenfähiger Apps.
+
+
+  WICHTIG: Dieser Inhalt gilt für den älteren Azure AD v1.0-Endpunkt. Verwenden Sie für neue Projekte Microsoft Identity Platform.
+metadata:
+  ms.topic: landing-page
+  ms.date: 01/27/2020
+  author: CelesteDG
+  ms.author: celested
+  ms.service: active-directory
+  ms.subservice: azuread-dev
+  ms.workload: identity
+  ROBOTS: NOINDEX
+  ms.openlocfilehash: 9089b944402c31135b32b3304ecf7cf69d86ad93
+  ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92055119"
+landingContent:
+- title: Azure Active Directory für Entwickler
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Active Directory für Entwickler (v1.0)
+      url: v1-overview.md
+- title: Plattformvergleich
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Entwicklung der Microsoft Identity Platform
+      url: about-microsoft-identity-platform.md
+    - text: Gründe für ein Update auf v2.0
+      url: azure-ad-endpoint-comparison.md
+- title: Microsoft Identity Platform
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist die Microsoft Identity Platform?
+      url: ../develop/v2-overview.md
+    - text: Migrieren von Apps von ADAL zu MSAL
+      url: ../develop/msal-migration.md

@@ -1,26 +1,17 @@
 ---
-title: Erstellen einer Linux-Umgebung mit der Azure CLI | Microsoft-Dokumentation
+title: Erstellen einer Linux-Umgebung mit der Azure CLI
 description: Erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine NIC, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-CLI von Grund auf neu erstellen.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
+ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: bcaa3ae105490fe4f38a9de47ba0450c33da5ee1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 5992fb20fc8b86d4a0094a8fe5ed6cb6eb03754d
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671635"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704468"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Erstellen einer vollständigen Linux-VM mit der Azure CLI
 Um schnell einen virtuellen Computer (VM) in Azure zu erstellen, können Sie einen einzelnen Azure CLI-Befehl mit Standardwerten verwenden, um alle erforderlichen unterstützenden Ressourcen zu erstellen. Ressourcen wie ein virtuelles Netzwerk, eine öffentliche IP-Adresse und Regeln für Netzwerksicherheitsgruppen werden automatisch erstellt. Um mehr Kontrolle über Ihre Umgebung in der Produktionsumgebung zu erhalten, können Sie diese Ressourcen im Voraus erstellen und Ihre virtuellen Computer ihnen dann hinzufügen. Dieser Artikel führt Sie schrittweise durch das Erstellen eines virtuellen Computers und der einzelnen unterstützenden Ressourcen.
@@ -333,7 +324,7 @@ Ausgabe:
 ```
 
 ## <a name="create-a-virtual-nic"></a>Erstellen einer virtuellen Netzwerkkarte
-Virtuelle Netzwerkkarten (NICs) sind programmgesteuert verfügbar, da Sie Regeln für ihre Verwendung anwenden können. Abhängig von der [VM-Größe](sizes.md) können Sie mehrere virtuelle NICs bei einem virtuellen Computer anfügen. Mit dem folgenden Befehl [az network nic create](/cli/azure/network/nic) erstellen Sie eine Netzwerkkarte namens *myNic*, die Sie Ihrer Netzwerksicherheitsgruppe zuordnen. Die öffentliche IP-Adresse *myPublicIP* ist auch der virtuellen Netzwerkkarte zugeordnet.
+Virtuelle Netzwerkkarten (NICs) sind programmgesteuert verfügbar, da Sie Regeln für ihre Verwendung anwenden können. Abhängig von der [VM-Größe](../sizes.md) können Sie mehrere virtuelle NICs bei einem virtuellen Computer anfügen. Mit dem folgenden Befehl [az network nic create](/cli/azure/network/nic) erstellen Sie eine Netzwerkkarte namens *myNic*, die Sie Ihrer Netzwerksicherheitsgruppe zuordnen. Die öffentliche IP-Adresse *myPublicIP* ist auch der virtuellen Netzwerkkarte zugeordnet.
 
 ```azurecli
 az network nic create \
@@ -436,14 +427,14 @@ Ausgabe:
 ```
 
 
-## <a name="create-an-availability-set"></a>Erstellen einer Verfügbarkeitsgruppe
+## <a name="create-an-availability-set"></a>Verfügbarkeitsgruppe erstellen
 Mit Verfügbarkeitsgruppen können die virtuellen Computer auf Fehler- und Updatedomänen verteilt werden. Obwohl Sie derzeit nur eine VM erstellen können, wird empfohlen, mit Verfügbarkeitsgruppen zu arbeiten, um künftige Erweiterungen zu erleichtern. 
 
 Durch Fehlerdomänen wird eine Gruppe virtueller Computer definiert, die eine Stromquelle und einen Netzwerkswitch gemeinsam nutzen. Die innerhalb der Verfügbarkeitsgruppe konfigurierten virtuellen Computer werden standardmäßig auf bis zu drei Fehlerdomänen verteilt. Dadurch wirkt sich ein Hardwareproblem in einer dieser Fehlerdomänen nicht auf jeden virtuellen Computer aus, auf dem Ihre App ausgeführt wird.
 
 Updatedomänen definieren Gruppen virtueller Computer und zugrunde liegender physischer Hardwarekomponenten, die gleichzeitig neu gestartet werden können. Während einer geplanten Wartung werden die Updatedomänen möglicherweise nicht der Reihe nach neu gestartet. Es wird aber jeweils nur eine Updatedomäne neu gestartet.
 
-Azure verteilt virtuelle Computer automatisch auf die Fehler- und Updatedomänen, wenn sie in einer Verfügbarkeitsgruppe enthalten sind. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](manage-availability.md).
+Azure verteilt virtuelle Computer automatisch auf die Fehler- und Updatedomänen, wenn sie in einer Verfügbarkeitsgruppe enthalten sind. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../manage-availability.md).
 
 Erstellen Sie mit [az vm availability-set create](/cli/azure/vm/availability-set) eine Verfügbarkeitsgruppe für Ihre VM. Im folgenden Beispiel wird eine Verfügbarkeitsgruppe namens *myAvailabilitySet* erstellt:
 
@@ -559,23 +550,23 @@ Um die standardmäßige NGINX-Website in Aktion zu sehen, öffnen Sie Ihren Webb
 ![NGINX-Standardwebsite für Ihren virtuellen Computer](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>Exportieren als Vorlage
-Was ist, wenn Sie nun eine weitere Entwicklungsumgebung mit den gleichen Parametern oder eine entsprechende Produktionsumgebung erstellen möchten? Der Resource Manager verwendet die JSON-Vorlagen, die alle Parameter für Ihre Umgebung definieren. Sie erstellen ganze Umgebungen durch Verweisen auf diese JSON-Vorlage. Sie können [JSON-Vorlagen manuell erstellen](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder eine vorhandene Umgebung exportieren, um eine JSON-Vorlage zu erstellen. Verwenden Sie [az group export](/cli/azure/group) wie folgt, um Ihre Ressourcengruppe zu exportieren:
+Was ist, wenn Sie nun eine weitere Entwicklungsumgebung mit den gleichen Parametern oder eine entsprechende Produktionsumgebung erstellen möchten? Der Resource Manager verwendet die JSON-Vorlagen, die alle Parameter für Ihre Umgebung definieren. Sie erstellen ganze Umgebungen durch Verweisen auf diese JSON-Vorlage. Sie können [JSON-Vorlagen manuell erstellen](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) oder eine vorhandene Umgebung exportieren, um eine JSON-Vorlage zu erstellen. Verwenden Sie [az group export](/cli/azure/group) wie folgt, um Ihre Ressourcengruppe zu exportieren:
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-Dieser Befehl erstellt die `myResourceGroup.json`-Datei in Ihrem aktuellen Arbeitsverzeichnis. Wenn Sie eine Umgebung anhand dieser Vorlage erstellen, werden Sie aufgefordert, alle Ressourcennamen anzugeben. Sie können diese Namen in Ihre Vorlagendatei eintragen, indem Sie den Parameter `--include-parameter-default-value` dem Befehl `az group export` hinzufügen. Bearbeiten Sie die JSON-Vorlage zum Angeben der Ressourcennamen, oder [erstellen Sie eine Datei „parameters.json“](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), die die Ressourcennamen angibt.
+Dieser Befehl erstellt die `myResourceGroup.json`-Datei in Ihrem aktuellen Arbeitsverzeichnis. Wenn Sie eine Umgebung anhand dieser Vorlage erstellen, werden Sie aufgefordert, alle Ressourcennamen anzugeben. Sie können diese Namen in Ihre Vorlagendatei eintragen, indem Sie den Parameter `--include-parameter-default-value` dem Befehl `az group export` hinzufügen. Bearbeiten Sie die JSON-Vorlage zum Angeben der Ressourcennamen, oder [erstellen Sie eine Datei „parameters.json“](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json), die die Ressourcennamen angibt.
 
-Verwenden Sie zum Erstellen einer Umgebung aus Ihrer Vorlage [az group deployment create](/cli/azure/group/deployment) wie folgt:
+Verwenden Sie zum Erstellen einer Umgebung aus Ihrer Vorlage [az deployment group create](/cli/azure/deployment/group) wie folgt:
 
 ```azurecli
-az group deployment create \
+az deployment group create \
     --resource-group myNewResourceGroup \
     --template-file myResourceGroup.json
 ```
 
-Möglicherweise möchten Sie [weitere Informationen zum Bereitstellen von Vorlagen](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)lesen. Erfahren Sie, wie Sie Umgebungen unter Verwendung der Parameterdatei schrittweise aktualisieren und von einem zentralen Speicherort aus auf Vorlagen zugreifen.
+Möglicherweise möchten Sie [weitere Informationen zum Bereitstellen von Vorlagen](../../azure-resource-manager/templates/deploy-cli.md?toc=/azure/virtual-machines/linux/toc.json)lesen. Erfahren Sie, wie Sie Umgebungen unter Verwendung der Parameterdatei schrittweise aktualisieren und von einem zentralen Speicherort aus auf Vorlagen zugreifen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können jetzt beginnen, mit mehreren Netzwerkkomponenten und VMs zu arbeiten. Sie können diese Beispielumgebung nutzen, um Ihre Anwendung mithilfe der hier eingeführten zentralen Komponenten zu erstellen.

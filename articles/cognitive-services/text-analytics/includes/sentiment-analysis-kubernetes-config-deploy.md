@@ -3,18 +3,19 @@ title: Standpunktanalyse – Kubernetes – Schritte zum Konfigurieren und Berei
 titleSuffix: Azure Cognitive Services
 description: Standpunktanalyse – Kubernetes – Schritte zum Konfigurieren und Bereitstellen
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
-ms.date: 09/19/2019
-ms.author: dapine
-ms.openlocfilehash: f1c571e421dccad366abf403de350b07113e04ba
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: ca8d4d725ff25687d1005ddab1964316a147c730
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130026"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017857"
 ---
 ### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>Bereitstellen des Standpunktanalyse-Containers in einem AKS-Cluster
 
@@ -44,7 +45,7 @@ ms.locfileid: "71130026"
 
 1. Öffnen Sie den Text-Editor Ihrer Wahl. In diesem Beispiel wird Visual Studio Code verwendet.
 
-    ```azurecli
+    ```console
     code .
     ```
 
@@ -66,6 +67,13 @@ ms.locfileid: "71130026"
             image: mcr.microsoft.com/azure-cognitive-services/sentiment
             ports:
             - containerPort: 5000
+            resources:
+              requests:
+                memory: 2Gi
+                cpu: 1
+              limits:
+                memory: 4Gi
+                cpu: 1
             env:
             - name: EULA
               value: "accept"
@@ -91,12 +99,12 @@ ms.locfileid: "71130026"
 1. Führen Sie den Kubernetes-Befehl `apply` mit der Datei *sentiment.yaml* als Ziel aus:
 
     ```console
-    kuberctl apply -f sentiment.yaml
+    kubectl apply -f sentiment.yaml
     ```
 
     Nachdem der Befehl die Bereitstellungskonfiguration erfolgreich angewendet hat, wird eine Meldung ähnlich der folgenden Ausgabe angezeigt:
 
-    ```console
+    ```output
     deployment.apps "sentiment" created
     service "sentiment" created
     ```
@@ -108,7 +116,7 @@ ms.locfileid: "71130026"
 
     Die Ausgabe für den Ausführungsstatus des Pods:
 
-    ```console
+    ```output
     NAME                         READY     STATUS    RESTARTS   AGE
     sentiment-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
@@ -121,7 +129,7 @@ ms.locfileid: "71130026"
 
     Die Ausgabe für den Ausführungsstatus des *sentiment*-Diensts im POD:
 
-    ```console
+    ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
     kubernetes   ClusterIP      10.0.0.1      <none>           443/TCP          2m
     sentiment    LoadBalancer   10.0.100.64   168.61.156.180   5000:31234/TCP   2m

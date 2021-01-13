@@ -1,22 +1,22 @@
 ---
-title: 'Auswählen von Verteilungsspalten in Azure Database for PostgreSQL: Hyperscale (Citus)'
-description: Empfehlenswerte Auswahlen für Verteilungsspalten in gängigen Hyperscaleszenarien
+title: Auswählen von Verteilungsspalten – Hyperscale (Citus) – Azure Database for PostgreSQL
+description: Erfahren Sie, wie Verteilungsspalten in gängigen Szenarien in Azure Database for PostgreSQL – Hyperscale (Citus) – verwendet werden.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: b0d1f343aa9b125ab0a5a9ab559d0788253037aa
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 129eff8c954c0c5469d3607e6ae16ce3202630ed
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998189"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929335"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Auswählen von Verteilungsspalten in Azure Database for PostgreSQL: Hyperscale (Citus)
 
-Die Auswahl der Verteilungsspalte für die einzelnen Tabellen ist eine der wichtigsten Entscheidungen bei der Modellierung, die Sie treffen. Azure Database for PostgreSQL – Hyperscale (Citus) Vorschau speichert Zeilen basierend auf dem Wert der Verteilungsspalte der Zeilen in Shards.
+Die Auswahl der Verteilungsspalte für die einzelnen Tabellen ist eine der wichtigsten Entscheidungen bei der Modellierung, die Sie treffen. Azure Database for PostgreSQL – Hyperscale (Citus) speichert Zeilen basierend auf dem Wert der Verteilungsspalte der Zeilen in Shards.
 
 Durch die richtige Wahl werden verwandte Daten in denselben physischen Knoten gruppiert, was zu schnellen Abfragen führt und Unterstützung für alle SQL-Funktionen hinzufügt. Durch eine falsche Auswahl wird das System langsam ausgeführt und unterstützt nicht alle SQL-Funktionen auf allen Knoten.
 
@@ -71,8 +71,6 @@ Der häufigste Fehler beim Modellieren von Zeitreiheninformationen in Hyperscale
 
 -   **Wählen Sie einen Zeitstempel nicht als Verteilungsspalte aus.** Wählen Sie eine andere Verteilungsspalte aus. Verwenden Sie in einer App mit mehreren Mandanten die Mandanten-ID, oder verwenden Sie in einer Echtzeit-App die Entitäts-ID.
 -   **Verwenden Sie stattdessen die PostgreSQL-Tabellenpartitionierung für die Zeit.** Unterteilen Sie eine große Tabelle mit zeitlich strukturierten Daten mithilfe der Tabellenpartitionierung in mehrere geerbte Tabellen mit jeweils verschiedenen Zeiträumen. Durch die Verteilung einer mit Postgres partitionierten Tabelle in Hyperscale (Citus) werden Shards für die geerbten Tabellen erstellt.
-
-Im [Tutorial zur Verwendung von Zeitreihen](https://aka.ms/hyperscale-tutorial-timeseries) finden Sie ein Beispiel für die Erstellung dieser Art von Anwendung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie die [Zusammenstellung](concepts-hyperscale-colocation.md) zwischen verteilten Daten zu einer schnelleren Ausführung von Abfragen führt.

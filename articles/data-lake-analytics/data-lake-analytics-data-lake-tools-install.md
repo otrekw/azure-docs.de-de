@@ -1,20 +1,16 @@
 ---
 title: Installieren von Azure Data Lake Tools für Visual Studio
 description: In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Tools für Visual Studio installieren.
-services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
-ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
-ms.topic: conceptual
+ms.reviewer: jasonh
+ms.topic: how-to
 ms.date: 08/30/2019
-ms.openlocfilehash: 08f0456b6a8b663f0af68fbb179de14b9e3acf79
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: cb0183ae229c328588a31c2c0549e7e93fd19b78
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914093"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019003"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Installieren von Data Lake-Tools für Visual Studio
 
@@ -22,7 +18,7 @@ Erfahren Sie, wie Sie Azure Data Lake Analytics-Konten mithilfe von Visual Studi
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Visual Studio:** Alle Editionen außer Express werden unterstützt.
+* **Visual Studio:** alle Editionen außer Express werden unterstützt.
 
   * Visual Studio 2019
   * Visual Studio 2017

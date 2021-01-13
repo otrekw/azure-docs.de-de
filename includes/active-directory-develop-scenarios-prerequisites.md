@@ -2,30 +2,38 @@
 title: include file
 description: include file
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: c2769282a2e9afda22d2e03c653b0f62b05b98bc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 79952ad04df4780e1b30eb9cf5c7a35f49cc34c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178272"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257067"
 ---
-Bevor Sie diesen Artikel lesen, sollten Sie mit den folgenden Konzepten vertraut sein oder die folgenden Artikeln gelesen haben:
+Wenn Sie neu im Bereich Identitäts- und Zugriffsverwaltung (IAM) mit OAuth 2.0 und OpenID Connect sind oder auch nur neu im Bereich IAM auf der Microsoft Identity Platform, sollten die folgenden Artikel ganz oben auf Ihrer Leseliste stehen.
 
-- [Übersicht über die Microsoft Identity Platform](../articles/active-directory/develop/v2-overview.md)
-- [Authentifizierungsszenarien für Azure AD](../articles/active-directory/develop/authentication-scenarios.md)
-- [Zielgruppen](../articles/active-directory/develop/v2-supported-account-types.md)
-- [Anwendungen und Dienstprinzipale](../articles/active-directory/develop/app-objects-and-service-principals.md)
-- [Berechtigungen und Zustimmung](../articles/active-directory/develop/v2-permissions-and-consent.md)
-- [ID-Token](../articles/active-directory/develop/id-tokens.md) und [Zugriffstoken](../articles/active-directory/develop/access-tokens.md)
+Obwohl es nicht erforderlich ist, sie vor dem Abschluss Ihres ersten Schnellstarts oder Tutorials zu lesen, decken sie Themen ab, die integraler Bestandteil der Plattform sind, und die Vertrautheit mit ihnen wird Ihnen auf Ihrem Weg beim Erstellen komplexerer Szenarien helfen.
+
+:::row:::
+    :::column:::
+        **Authentifizierung und Autorisierung**
+
+        - [Authentifizierungsszenarien für Azure AD](../articles/active-directory/develop/authentication-vs-authorization.md)
+        - [ID-Token](../articles/active-directory/develop/id-tokens.md)
+        - [Zugriffstoken](../articles/active-directory/develop/access-tokens.md)
+    :::column-end:::
+    :::column:::
+        **Microsoft Identity Platform**
+
+        - [Zielgruppen](../articles/active-directory/develop/v2-supported-account-types.md)
+        - [Anwendungen und Dienstprinzipale](../articles/active-directory/develop/app-objects-and-service-principals.md)
+        - [Berechtigungen und Einwilligung](../articles/active-directory/develop/v2-permissions-and-consent.md)
+    :::column-end:::
+:::row-end:::

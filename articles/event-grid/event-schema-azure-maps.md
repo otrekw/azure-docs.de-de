@@ -1,34 +1,32 @@
 ---
-title: Azure Event Grid-Ereignisschema für Azure Maps
+title: Azure Maps als Event Grid-Quelle
 description: Beschreibt die Eigenschaften und das Schema, die für Azure Maps-Ereignisse im Azure Event Grid verfügbar sind
-services: event-grid
-author: walsehgal
-ms.service: event-grid
-ms.topic: reference
-ms.date: 02/08/2019
-ms.author: v-musehg
-ms.openlocfilehash: 74a3674e632f8dc3f0755bc2ad48376708c7966f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.date: 07/07/2020
+ms.openlocfilehash: 4203bdf5222278b698d656835afebd9769557303
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861853"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87461985"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure Event Grid-Ereignisschema für Azure Maps
+# <a name="azure-maps-as-an-event-grid-source"></a>Azure Maps als Event Grid-Quelle
 
-In diesem Artikel werden die Eigenschaften und das Schema für Azure Maps-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](https://docs.microsoft.com/azure/event-grid/event-schema).
+In diesem Artikel werden die Eigenschaften und das Schema für Azure Maps-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](./event-schema.md). Außerdem erhalten Sie eine Liste mit Schnellstarts und Tutorials, die Azure Maps als Ereignisquelle verwenden.
 
-## <a name="available-event-types"></a>Verfügbare Ereignistypen
+## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
+
+### <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 Ein Azure Maps-Konto gibt die folgenden Ereignistypen aus:
 
-| Ereignistypen | BESCHREIBUNG |
+| Ereignistyp | BESCHREIBUNG |
 | ---------- | ----------- |
 | Microsoft.Maps.GeofenceEntered | Wird ausgelöst, wenn die empfangenen Koordinaten sich von außerhalb eines bestimmten Geofence nach innerhalb bewegt haben |
 | Microsoft.Maps.GeofenceExited | Wird ausgelöst, wenn die empfangenen Koordinaten sich von innerhalb eines bestimmten Geofence nach außerhalb bewegt haben |
 | Microsoft.Maps.GeofenceResult | Wird jedes Mal ausgelöst, wenn eine Geofencingabfrage ein Ergebnis zurückgibt, unabhängig vom Status |
 
-## <a name="event-examples"></a>Ereignisbeispiele
+### <a name="event-examples"></a>Ereignisbeispiele
 
 Das folgende Beispiel zeigt das Schema eines **GeofenceEntered**-Ereignisses
 
@@ -98,70 +96,76 @@ Das folgende Beispiel zeigt das Schema für **GeofenceResult**
 }
 ```
 
-## <a name="event-properties"></a>Ereigniseigenschaften
+### <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | string | Eindeutiger Bezeichner für das Ereignis. |
-| data | object | Geofencing-Ereignisdaten. |
-| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| data | Objekt (object) | Geofencing-Ereignisdaten. |
+| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| apiCategory | string | API-Kategorie des Ereignisses. |
-| apiName | string | API-Name des Ereignisses. |
-| issues | object | Listet während der Verarbeitung aufgetretene Probleme auf. Wenn Probleme zurückgegeben werden, werden mit der Antwort keine Geometrien zurückgegeben. |
+| apiCategory | Zeichenfolge | API-Kategorie des Ereignisses. |
+| apiName | Zeichenfolge | API-Name des Ereignisses. |
+| issues | Objekt (object) | Listet während der Verarbeitung aufgetretene Probleme auf. Wenn Probleme zurückgegeben werden, werden mit der Antwort keine Geometrien zurückgegeben. |
 | responseCode | number | HTTP-Antwortcode |
-| Geometrien | object | Listet die Zaungeometrien auf, die die Koordinatenposition enthalten oder sich mit dem searchBuffer überschneiden, der die Position umgibt. |
+| geometries | Objekt (object) | Listet die Zaungeometrien auf, die die Koordinatenposition enthalten oder sich mit dem searchBuffer überschneiden, der die Position umgibt. |
 
 Das Fehlerobjekt wird zurückgegeben, wenn in der Maps-API ein Fehler auftritt. Das Fehlerobjekt hat die folgenden Eigenschaften:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | error | ErrorDetails |Dieses Objekt wird zurückgegeben, wenn in der Maps-API ein Fehler auftritt.  |
 
 Das ErrorDetails-Objekt wird zurückgegeben, wenn in der Maps-API ein Fehler auftritt. ErrorDetails oder das Objekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| code | string | Der HTTP-Statuscode. |
-| message | string | Sofern verfügbar eine lesbare Beschreibung des Fehlers. |
+| code | Zeichenfolge | Der HTTP-Statuscode. |
+| message | Zeichenfolge | Sofern verfügbar eine lesbare Beschreibung des Fehlers. |
 | innererror | InnerError | Sofern verfügbar ein Objekt, das dienstspezifische Informationen zum Fehler enthält. |
 
 InnerError ist ein Objekt, das dienstspezifische Informationen zum Fehler enthält. Das InnerError-Objekt weist die folgenden Eigenschaften auf: 
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| code | string | Die Fehlermeldung. |
+| code | Zeichenfolge | Die Fehlermeldung. |
 
 Das geometries-Objekt listet die IDs der Geofences auf, die bezogen auf die übermittelte Benutzerzeit in der Anforderung abgelaufen sind. Das geometries-Objekt enthält Geometrieelemente mit den folgenden Eigenschaften: 
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 |:-------- |:---- |:----------- |
-| deviceid | string | Die ID des Geräts. |
-| distance | string | <p>Die Entfernung von der Koordinate zur nächstgelegenen Grenze des Geofence. Positiv bedeutet, dass die Koordinate sich außerhalb des Geofence befindet. Wenn sich die Koordinate außerhalb des Geofence befindet, aber mehr als den Wert von searchBuffer von der nächstgelegenen Geofencegrenze entfernt ist, beträgt der Wert 999. Negativ bedeutet, dass die Koordinate sich innerhalb des Geofence befindet. Wenn sich die Koordinate innerhalb des Polygons befindet, aber mehr als den Wert von searchBuffer von der nächstgelegenen Geofencegrenze entfernt ist, beträgt der Wert -999. Der Wert 999 bedeutet, dass mit großer Zuversicht davon ausgegangen werden kann, dass die Koordinate außerhalb des Geofence liegt. Der Wert -999 bedeutet, dass mit großer Zuversicht davon ausgegangen werden kann, dass die Koordinate innerhalb des Geofence liegt.<p> |
-| geometryid |string | Die eindeutige ID bezeichnet die Geofencegeometrie. |
+| deviceid | Zeichenfolge | Die ID des Geräts. |
+| distance | Zeichenfolge | <p>Die Entfernung von der Koordinate zur nächstgelegenen Grenze des Geofence. Positiv bedeutet, dass die Koordinate sich außerhalb des Geofence befindet. Wenn sich die Koordinate außerhalb des Geofence befindet, aber mehr als den Wert von searchBuffer von der nächstgelegenen Geofencegrenze entfernt ist, beträgt der Wert 999. Negativ bedeutet, dass die Koordinate sich innerhalb des Geofence befindet. Wenn sich die Koordinate innerhalb des Polygons befindet, aber mehr als den Wert von searchBuffer von der nächstgelegenen Geofencegrenze entfernt ist, beträgt der Wert -999. Der Wert 999 bedeutet, dass mit großer Zuversicht davon ausgegangen werden kann, dass die Koordinate außerhalb des Geofence liegt. Der Wert -999 bedeutet, dass mit großer Zuversicht davon ausgegangen werden kann, dass die Koordinate innerhalb des Geofence liegt.<p> |
+| geometryid |Zeichenfolge | Die eindeutige ID bezeichnet die Geofencegeometrie. |
 | nearestlat | number | Breitengrad des nächstgelegenen Punkts der Geometrie. |
 | nearestlon | number | Längengrad des nächstgelegenen Punkts der Geometrie. |
-| udId | string | Die eindeutige ID, die vom Benutzeruploaddienst beim Hochladen eines Geofence zurückgegeben wird. Ist in der Geofencing-Post-API nicht enthalten. |
+| udId | Zeichenfolge | Die eindeutige ID, die vom Benutzeruploaddienst beim Hochladen eines Geofence zurückgegeben wird. Ist in der Geofencing-Post-API nicht enthalten. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | expiredGeofenceGeometryId | string[] | Listen der Geometrie-ID des Geofence, der bezogen auf die in der Anforderung übermittelte Benutzerzeit abgelaufen ist. |
 | geometries | geometries[] |Listet die Zaungeometrien auf, die die Koordinatenposition enthalten oder sich mit dem searchBuffer überschneiden, der die Position umgibt. |
 | invalidPeriodGeofenceGeometryId | string[]  | Listen der Geometrie-ID des Geofence, der sich bezogen auf die in der Anforderung übermittelte Benutzerzeit in einem ungültigen Zeitraum befindet. |
 | isEventPublished | boolean | "True" wird wenn mindestens ein Ereignis im Azure Maps-Ereignisabonnenten veröffentlicht wurde, "false", wenn kein Ereignis im Azure Maps-Ereignisabonnenten veröffentlicht wurde. |
+
+## <a name="tutorials-and-how-tos"></a>Tutorials und Anleitungen
+|Titel  |BESCHREIBUNG  |
+|---------|---------|
+| [Reagieren auf Azure Maps-Ereignisse mithilfe von Event Grid](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Übersicht über die Integration von Azure Maps in Event Grid. |
+| [Tutorial: Einrichten eines Geofence](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | In diesem Tutorial werden die grundlegenden Schritte beschrieben, die zum Einrichten eines Geofence mit Azure Maps ausgeführt werden müssen. Sie verwenden Azure Event Grid, um die Ergebnisse für den Geofence zu streamen und basierend darauf eine Benachrichtigung einzurichten. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

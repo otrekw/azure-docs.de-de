@@ -1,18 +1,18 @@
 ---
-title: Skalierbarkeits- und Leistungsziele für Azure Files | Microsoft-Dokumentation
+title: Skalierbarkeits- und Leistungsziele für Azure Files
 description: Informationen zu den Skalierbarkeits- und Leistungszielen für Azure Files, einschließlich Kapazität, Anforderungsrate sowie Grenzwerte für ein- und ausgehende Bandbreite.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 5/5/2019
+ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ed4aa832c4ec7ccda760d535aa920be8d5c4e2e3
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 43d593a65fd08542eb2829fcebcea81ea0c99986
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699621"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995450"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 
@@ -24,7 +24,7 @@ Die hier aufgelisteten Ziele für Skalierbarkeit und Leistung sind hochgesteckt,
 
 Die übergeordnete Ressource einer Azure-Dateifreigabe ist ein Azure-Speicherkonto. Ein Speicherkonto stellt einen Speicherpool in Azure dar, der von mehreren Speicherdiensten, einschließlich Azure Files, zum Speichern von Daten verwendet werden kann. Andere Dienste, die Daten in Speicherkonten speichern, sind Azure Blob Storage, Azure Queue Storage und Azure Table Storage. Die folgenden Ziele gelten für alle Speicherdienste, die Daten in einem Speicherkonto speichern:
 
-[!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
+[!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -35,7 +35,7 @@ Die übergeordnete Ressource einer Azure-Dateifreigabe ist ein Azure-Speicherkon
 
 Es gibt drei Kategorien von Einschränkungen, die für Azure Files zu berücksichtigen sind: Speicherkonten, Freigaben und Dateien.
 
-Beispiel:  Bei Premium-Dateifreigaben kann eine einzige Freigabe einen IOPS-Wert von 100.000 erreichen, und eine einzelne Datei kann bis zu 5.000 IOPS zentral hochskaliert werden. Wenn Sie drei Dateien in einer Freigabe haben, entspricht der maximale IOPS-Wert aus dieser Freigabe 15.000.
+Beispiel: Bei Premium-Dateifreigaben kann eine einzige Freigabe einen IOPS-Wert von 100.000 erreichen, und eine einzelne Datei kann bis zu 5.000 IOPS hochskaliert werden. Wenn Sie drei Dateien in einer Freigabe haben, entspricht der maximale IOPS-Wert aus dieser Freigabe 15.000.
 
 ### <a name="standard-storage-account-limits"></a>Begrenzungen beim Standard-Speicherkonto
 
@@ -51,8 +51,7 @@ Diese Grenzwerte finden Sie im Abschnitt [Skalierbarkeitsziele für das Azure-Sp
 ### <a name="file-share-and-file-scale-targets"></a>Skalierungsziele für Dateifreigaben und Dateien
 
 > [!NOTE]
-> Standard-Dateifreigaben über 5TiB sind als Vorschau verfügbar und weisen bestimmte Einschränkungen auf.
-> Eine Liste der Einschränkungen und Informationen zum Onboarding zur Vorschau dieser größeren Dateifreigaben finden Sie im Abschnitt [Standarddateifreigaben](storage-files-planning.md#standard-file-shares) des Planungshandbuchs.
+> Für Standarddateifreigaben über 5 TiB gelten bestimmte Einschränkungen. Eine Liste der Einschränkungen und Anweisungen dazu, wie Sie Dateifreigaben vergrößern, finden Sie im Abschnitt [Aktivieren größerer Dateifreigaben für Standarddateifreigaben](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) des Planungshandbuchs.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -66,7 +65,7 @@ Azure-Dateisynchronisierung wurde mit dem Ziel der unbegrenzten Nutzung entwicke
 
 ### <a name="azure-file-sync-performance-metrics"></a>Leistungsmetriken der Azure-Dateisynchronisierung
 
-Da der Azure-Dateisynchronisierungs-Agent auf einem Windows Server-Computer ausgeführt wird, der eine Verbindung mit den Azure-Dateifreigaben herstellt, hängt die effektive Synchronisierungsleistung von einer Reihe von Faktoren in Ihrer Infrastruktur ab: von Windows Server und der zugrunde liegenden Datenträgerkonfiguration, der Netzwerkbandbreite zwischen dem Server und dem Azure-Speicher, der Dateigröße, der Größe des gesamten Datasets und der Aktivität auf dem Dataset. Da die Azure-Dateisynchronisierung auf Dateiebene ausgeführt wird, werden die Leistungsmerkmale einer auf der Azure-Dateisynchronisierung basierenden Lösung besser in der Anzahl von Objekten (Dateien und Verzeichnisse) gemessen, die pro Sekunde verarbeitet werden.
+Da der Azure-Dateisynchronisierungs-Agent auf einem Windows Server-Computer ausgeführt wird, der mit den Azure-Dateifreigaben verbunden wird, hängt die effektive Synchronisierungsleistung von einer Reihe von Faktoren in Ihrer Infrastruktur ab: von Windows Server und der zugrunde liegenden Datenträgerkonfiguration, der Netzwerkbandbreite zwischen dem Server und Azure Storage, der Dateigröße, der gesamten Datasetgröße und der Aktivität im Dataset. Da die Azure-Dateisynchronisierung auf Dateiebene ausgeführt wird, werden die Leistungsmerkmale einer auf der Azure-Dateisynchronisierung basierenden Lösung besser in der Anzahl von Objekten (Dateien und Verzeichnisse) gemessen, die pro Sekunde verarbeitet werden.
 
 Bei der Azure-Dateisynchronisierung ist die Leistung in zwei Phasen entscheidend:
 
@@ -75,7 +74,7 @@ Bei der Azure-Dateisynchronisierung ist die Leistung in zwei Phasen entscheidend
 
 Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folgenden die Ergebnisse an, die bei den internen Tests auf einem System mit einer Konfiguration zustande kamen.
 
-| Systemkonfiguration |  |
+| Systemkonfiguration | Details |
 |-|-|
 | CPU | 64 virtuelle Kerne mit 64-MiB-L3-Cache |
 | Arbeitsspeicher | 128 GB |
@@ -83,22 +82,31 @@ Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folge
 | Netzwerk | 1-GBit/s-Netzwerk |
 | Workload | Allgemeiner Dateiserver|
 
-| Erste einmalige Bereitstellung  |  |
+| Erste einmalige Bereitstellung  | Details |
 |-|-|
 | Anzahl der Objekte | 25 Millionen Objekte |
 | Datasetgröße| ca. 4,7 TiB |
 | Durchschnittliche Dateigröße | ca. 200 KiB (größte Datei: 100 GiB) |
-| Uploaddurchsatz | 20 Objekte pro Sekunde |
-| Durchsatz beim Download von Namespaces* | 400 Objekte pro Sekunde |
+| Anfängliche Enumeration von Cloudänderungen | 7 Objekte pro Sekunde  |
+| Uploaddurchsatz | 20 Objekte pro Sekunde pro Synchronisierungsgruppe |
+| Durchsatz beim Download von Namespaces | 400 Objekte pro Sekunde |
 
-*Wenn ein neuer Serverendpunkt erstellt wird, lädt der Azure-Dateisynchronisierungs-Agent keine Dateiinhalte herunter. Zuerst synchronisiert er den vollständigen Namespace und löst dann im Hintergrund einen Rückruf aus, um die Dateien herunterzuladen, entweder in ihrer Gesamtheit oder bei aktiviertem Cloudtiering in der Cloudtieringrichtliniengruppe für den Serverendpunkt.
+### <a name="initial-one-time-provisioning"></a>Erste einmalige Bereitstellung
 
-| Laufende Synchronisierung  |   |
+**Anfängliche Enumeration von Cloudänderungen**: Wenn eine neue Synchronisierungsgruppe erstellt wird, ist die anfängliche Enumeration von Cloudänderungen der erste durchgeführte Schritt. In diesem Prozess listet das System alle Elemente in der Azure-Dateifreigabe auf. Während dieses Prozesses findet keine Synchronisierungsaktivität statt. Es werden also keine Elemente vom Cloudendpunkt auf den Serverendpunkt heruntergeladen und keine Elemente vom Serverendpunkt auf den Cloudendpunkt hochgeladen. Die Synchronisierungsaktivität beginnt erst, wenn die anfängliche Enumeration von Cloudänderungen abgeschlossen ist.
+Der Durchsatz liegt bei 7 Objekten pro Sekunde. Kunden können die Dauer der anfänglichen Enumeration von Cloudänderungen schätzen, indem sie die Anzahl von Elementen in der Cloudfreigabe bestimmen und den Zeitraum (in Tagen) anhand der folgenden Formel berechnen. 
+
+   **Zeitraum (in Tagen) für die anfängliche Cloudenumeration = (Anzahl von Objekten im Cloudendpunkt)/(7 × 60 × 60 × 24)**
+
+**Durchsatz beim Download von Namespaces**: Wenn einer vorhandenen Synchronisierungsgruppe ein neuer Serverendpunkt hinzugefügt wird, lädt der Azure-Dateisynchronisierungs-Agent keine Dateiinhalte vom Cloudendpunkt herunter. Zuerst synchronisiert er den vollständigen Namespace und löst dann im Hintergrund einen Rückruf aus, um die Dateien herunterzuladen, entweder in ihrer Gesamtheit oder bei aktiviertem Cloudtiering in der Cloudtieringrichtliniengruppe für den Serverendpunkt.
+
+
+| Laufende Synchronisierung  | Details  |
 |-|--|
 | Anzahl der synchronisierten Objekte| 125.000 Objekte (Änderungsumfang ca. 1 %) |
 | Datasetgröße| 50 GiB |
 | Durchschnittliche Dateigröße | Ca. 500 KiB |
-| Uploaddurchsatz | 30 Objekte pro Sekunde |
+| Uploaddurchsatz | 20 Objekte pro Sekunde pro Synchronisierungsgruppe |
 | Durchsatz bei vollständigen Downloads* | 60 Objekte pro Sekunde |
 
 *Wenn Cloudtiering aktiviert ist, werden Sie wahrscheinlich eine bessere Leistung beobachten, da nur ein Teil der Dateidaten heruntergeladen wird. Die Azure-Dateisynchronisierung lädt die Daten zwischengespeicherter Dateien nur dann herunter, wenn sie auf einem der Endpunkte geändert werden. Bei mehrstufigen oder neu erstellten Dateien lädt der Agent nicht die Dateidaten herunter, sondern synchronisiert lediglich den Namespace auf allen Serverendpunkten. Der Agent unterstützt auch teilweise Downloads von mehrstufigen Dateien, wenn Benutzer auf diese zugreifen. 
@@ -115,4 +123,3 @@ Als allgemeine Richtlinie für Ihre Bereitstellung sollten Sie einige Dinge ber�
 
 - [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md)
 - [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)
-- [Skalierbarkeits- und Leistungsziele für andere Speicherdienste](../common/storage-scalability-targets.md)

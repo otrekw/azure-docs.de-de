@@ -1,21 +1,21 @@
 ---
-title: Übersicht über die Geschäftskontinuität mit Azure Database for MariaDB
-description: Übersicht über die Geschäftskontinuität mit Azure Database for MariaDB.
-author: ajlam
-ms.author: andrela
+title: Die Geschäftskontinuität mit Azure Database for MariaDB
+description: Erfahren Sie mehr über Geschäftskontinuität (Point-in-Time-Wiederherstellung, Rechenzentrumsausfälle, Geowiederherstellung), wenn Sie den Dienst Azure Database for MariaDB verwenden.
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4c64f920bf56195ad53ac8acbf3f9199090f0a8b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 7/7/2020
+ms.openlocfilehash: e164930736f7b93e56d9bd4187e72a9c8eb76202
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61043015"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541724"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-mariadb"></a>Übersicht über die Geschäftskontinuität mit Azure Database for MariaDB
+# <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Informationen zur Geschäftskontinuität in Azure Database for MariaDB
 
-Diese Übersicht beschreibt die Funktionen, die Azure Database for MariaDB für Geschäftskontinuität und Notfallwiederherstellung bereitstellt. Erfahren Sie etwas über Optionen für die Wiederherstellung nach Störungen, die Datenverluste nach sich ziehen oder dazu führen können, dass Ihre Datenbank und Ihre Anwendungen nicht mehr verfügbar sind. Erfahren Sie, was zu tun ist, wenn ein Benutzer- oder Anwendungsfehler die Datenintegrität gefährdet, eine Azure-Region ausfällt oder Wartungsaufgaben für Ihre Anwendung ausgeführt werden müssen.
+Dieser Artikel beschreibt die Funktionen, die Azure Database for MariaDB für Geschäftskontinuität und Notfallwiederherstellung bereitstellt. Erfahren Sie etwas über Optionen für die Wiederherstellung nach Störungen, die Datenverluste nach sich ziehen oder dazu führen können, dass Ihre Datenbank und Ihre Anwendungen nicht mehr verfügbar sind. Erfahren Sie, was zu tun ist, wenn ein Benutzer- oder Anwendungsfehler die Datenintegrität gefährdet, eine Azure-Region ausfällt oder Wartungsaufgaben für Ihre Anwendung ausgeführt werden müssen.
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Features zum Sicherstellen der Geschäftskontinuität
 
@@ -23,7 +23,7 @@ Azure Database for MariaDB bietet Features für Geschäftskontinuität, die auto
 
 Die folgende Tabelle vergleicht ERT und RPO für die verfügbaren Features:
 
-| **Funktion** | **Basic** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
+| **Funktion** | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Point-in-Time-Wiederherstellung von Sicherung | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer |
 | Geowiederherstellung von georeplizierten Sicherungen | Nicht unterstützt | ERT < 12 Stunden<br/>RPO < 1 Stunde | ERT < 12 Stunden<br/>RPO < 1 Stunde |
@@ -48,11 +48,16 @@ Die andere Option ist die Verwendung des Geowiederherstellungsfeatures von Azure
 > [!IMPORTANT]
 > Die Geowiederherstellung ist nur möglich, wenn Sie den Server mit einem georedundanten Sicherungsspeicher bereitgestellt haben.
 
+## <a name="cross-region-read-replicas"></a>Regionsübergreifende Lesereplikate
+
+Mithilfe regionsübergreifender Lesereplikate können Sie Ihre BCDR-Planung (Business Continuity & Disaster Recovery) verbessern. Lesereplikate werden mithilfe der binären Protokollreplikation von MariaDB asynchron aktualisiert. Weitere Informationen zu Lesereplikaten, zu verfügbaren Regionen und zum Failover finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md). 
+
+## <a name="faq"></a>Häufig gestellte Fragen
+### <a name="where-does-azure-database-for-mariadb-store-customer-data"></a>Wo speichert Azure Database for MariaDB Kundendaten?
+Standardmäßig speichert Azure Database for MariaDB Kundendaten in der Region, in der sie bereitgestellt werden, und verschiebt sie nicht aus dieser Region. Kunden können jedoch optional [georedundanten Sicherungen](concepts-backup.md#backup-redundancy-options) aktivieren oder [regionsübergreifenden Lesereplikate](concepts-read-replicas.md#cross-region-replication) zum Speichern von Daten in einer anderen Region erstellen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu automatisierten Sicherungen finden Sie unter [Sicherungen in Azure Database for MariaDB](concepts-backup.md).
-- Informationen zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt über das Azure-Portal finden Sie unter  [Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit dem Azure-Portal](howto-restore-server-portal.md).
-
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md). 
--->
+- Weitere Informationen zu [automatisierten Sicherungen in Azure Database for MariaDB](concepts-backup.md).
+- Erfahren Sie, wie Sie eine Wiederherstellung mithilfe des [Azure-Portals](howto-restore-server-portal.md) oder der [Azure CLI](howto-restore-server-cli.md) ausführen.
+- Weitere Informationen zu [Lesereplikaten in Azure Database for MariaDB](concepts-read-replicas.md).

@@ -1,26 +1,26 @@
 ---
-title: Verarbeiten und Extrahieren von Text aus Bildern in der kognitiven Suche – Azure Search
-description: Verarbeiten und extrahieren Sie Text und andere Informationen aus Bildern in kognitiven Suchpipelines in Azure Search.
-services: search
+title: Extrahieren von Text aus Bildern
+titleSuffix: Azure Cognitive Search
+description: Verarbeiten und Extrahieren von Text und anderen Informationen aus Bildern in Pipelines der kognitiven Azure-Suche.
 manager: nitinme
-author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: LuisCabrer
 ms.author: luisca
-ms.openlocfilehash: c1fd5c4e5a3ac054a85bdcc11d95bc3c338ee3c2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 56ec893de159f4c8a90c5a229ccf7669856fb066
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265870"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89020217"
 ---
-#  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Verarbeiten und Extrahieren von Text aus Bildern in kognitiven Suchszenarien
+# <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Verarbeiten und Extrahieren von Informationen aus Bildern in KI-Anreicherungsszenarien
 
-Die kognitive Suche bietet mehrere Funktionen für die Verarbeitung von Bildern und Bilddateien. Im Rahmen der Dokumentaufschlüsselung können Sie den Parameter *imageAction* verwenden, um alphanumerischen Text (beispielsweise das Wort „Stopp“ eines Stopp-Schilds) aus Fotos oder Bildern zu extrahieren. Ein anderes Szenario wäre etwa die Generierung einer Textdarstellung eines Bilds – etwa „Löwenzahn“ (oder die Farbe „Gelb“) für ein Foto eines Löwenzahns. Des Weiteren können Sie Metadaten des Bilds extrahieren (beispielsweise die Größe).
+Die kognitive Azure-Suche umfasst mehrere Funktionen für die Verarbeitung von Bildern und Bilddateien. Im Rahmen der Dokumentaufschlüsselung können Sie den Parameter *imageAction* verwenden, um alphanumerischen Text (beispielsweise das Wort „Stopp“ eines Stopp-Schilds) aus Fotos oder Bildern zu extrahieren. Ein anderes Szenario wäre etwa die Generierung einer Textdarstellung eines Bilds – etwa „Löwenzahn“ (oder die Farbe „Gelb“) für ein Foto eines Löwenzahns. Des Weiteren können Sie Metadaten des Bilds extrahieren (beispielsweise die Größe).
 
-Dieser Artikel geht etwas ausführlicher auf die Bildverarbeitung ein und bietet einen Leitfaden für die Verwendung von Bildern in einer kognitiven Suchpipeline.
+Dieser Artikel geht ausführlicher auf die Bildverarbeitung ein und enthält eine Anleitung für die Verwendung von Bildern in einer KI-Anreicherungspipeline.
 
 <a name="get-normalized-images"></a>
 
@@ -32,7 +32,7 @@ Die Bildnormalisierung kann nicht deaktiviert werden. Qualifikationen, die Bilde
 
 | Konfigurationsparameter | BESCHREIBUNG |
 |--------------------|-------------|
-| imageAction   | Legen Sie diese Eigenschaft auf „none“ fest, falls bei der Erkennung von eingebetteten Bildern oder Bilddateien keine Aktion erfolgen soll. <br/>Wenn Sie die Eigenschaft auf „generateNormalizedImages“ festlegen, wird im Rahmen der Dokumentaufschlüsselung ein Array mit normalisierten Bildern generiert.<br/>Legen Sie diese Option auf „generateNormalizedImagePerPage“ fest, um ein Array von normalisierten Bildern zu erzeugen, bei dem für PDFs in Ihrer Datenquelle jede Seite in ein Ausgabebild gerendert wird.  Die Funktionalität ist die gleiche wie bei „generateNormalizedImages“ für Nicht-PDF-Dateitypen.<br/>Für alle anderen Optionen als „none“ werden diese Bilder im Feld *normalized_images* verfügbar gemacht. <br/>Der Standardwert ist „none“. Diese Konfiguration ist nur für Blobdatenquellen relevant, wenn „dataToExtract" auf „contentAndMetadata“ festgelegt ist. <br/>Maximal 1000 Bilder werden aus einem angegebenen Dokument extrahiert. Wenn in einem Dokument mehr als 1000 Bilder vorhanden sind, werden die ersten 1000 extrahiert, und eine Warnung wird generiert. |
+| imageAction   | Legen Sie diese Eigenschaft auf „none“ fest, falls bei der Erkennung von eingebetteten Bildern oder Bilddateien keine Aktion erfolgen soll. <br/>Wenn Sie die Eigenschaft auf „generateNormalizedImages“ festlegen, wird im Rahmen der Dokumentaufschlüsselung ein Array mit normalisierten Bildern generiert.<br/>Legen Sie die Eigenschaft auf „generateNormalizedImagePerPage“ fest, um ein Array von normalisierten Bildern zu generieren, bei dem für PDFs in der Datenquelle jede Seite in ein Ausgabebild gerendert wird.  Die Funktionalität ist die gleiche wie bei „generateNormalizedImages“ für Nicht-PDF-Dateitypen.<br/>Für alle anderen Optionen als „none“ werden diese Bilder im Feld *normalized_images* verfügbar gemacht. <br/>Der Standardwert ist „none“. Diese Konfiguration ist nur für Blobdatenquellen relevant, wenn „dataToExtract" auf „contentAndMetadata“ festgelegt ist. <br/>Maximal 1000 Bilder werden aus einem angegebenen Dokument extrahiert. Wenn in einem Dokument mehr als 1000 Bilder vorhanden sind, werden die ersten 1000 extrahiert, und eine Warnung wird generiert. |
 |  normalizedImageMaxWidth | Die maximale Breite (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“. Der zulässige Höchstwert ist 10.000. | 
 |  normalizedImageMaxHeight | Die maximale Höhe (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“. Der zulässige Höchstwert ist 10.000.|
 
@@ -43,7 +43,7 @@ Legen Sie den Parameter **parsingMode** auf `json` (zum Indizieren jedes Blob al
 
 Der Standardwert von 2.000 Pixeln für die maximale Breite und Höhe der normalisierten Bilder basiert auf der maximal unterstützten Größe der [OCR-Qualifikation](cognitive-search-skill-ocr.md) und der [Bildanalysequalifikation](cognitive-search-skill-image-analysis.md). Die [OCR-Qualifikation](cognitive-search-skill-ocr.md) unterstützt eine maximale Breite und Höhe von 4.200 für nicht englische Sprachen und 10.000 für Englisch.  Wenn Sie die maximalen Grenzwerte erhöhen, können bei größeren Images je nach Skillsetdefinition und Sprache der Dokumente Fehler bei der Verarbeitung auftreten. 
 
-Die imageAction-Eigenschaft wird in der [Indexerdefinition](https://docs.microsoft.com/rest/api/searchservice/create-indexer) wie folgt angegeben:
+Die imageAction-Eigenschaft wird in der [Indexerdefinition](/rest/api/searchservice/create-indexer) wie folgt angegeben:
 
 ```json
 {
@@ -215,9 +215,9 @@ Um die normalisierten Koordinaten auf den ursprünglichen Koordinatenraum zu üb
 ```
 
 ## <a name="see-also"></a>Weitere Informationen
-+ [Create Indexer (Azure Search Service REST api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) (Erstellen eines Indexers (REST-API für den Azure Search-Dienst: Version 2017-11-11-Preview))
-+ [Image Analysis cognitive skill](cognitive-search-skill-image-analysis.md) (Kognitive Qualifikation: Bildanalyse)
++ [Create Indexer (Azure Search Service REST api-version=2017-11-11-Preview)](/rest/api/searchservice/create-indexer) (Erstellen eines Indexers (REST-API für den Azure Search-Dienst: Version 2017-11-11-Preview))
++ [Skill für Bildanalyse](cognitive-search-skill-image-analysis.md)
 + [OCR cognitive skill](cognitive-search-skill-ocr.md) (Kognitive Qualifikation: OCR)
 + [Text Merge cognitive skill](cognitive-search-skill-textmerger.md) (Kognitive Qualifikation: Textzusammenführung)
-+ [How to create a skillset in an enrichment pipeline](cognitive-search-defining-skillset.md) (Erstellen einer Qualifikationsgruppe in einer Anreicherungspipeline)
-+ [How to map enriched fields to a searchable index](cognitive-search-output-field-mapping.md) (Zuordnen angereicherter Felder zu einem durchsuchbaren Index)
++ [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
++ [Zuordnen angereicherter Felder](cognitive-search-output-field-mapping.md)

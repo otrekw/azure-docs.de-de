@@ -13,23 +13,27 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: bc7c8a059e1e17b7b280a7061206b10ed6c530aa
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d513a11761fec64c8d0732a61740475be52d727f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69015835"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89262028"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Durchführen von Livestreaming mit lokalen Encodern mithilfe von .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [REST](/rest/api/media/operations/channel)
 > 
 > 
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 In diesem Tutorial werden Sie durch die Schritte des Azure Media Services-.NET SDK zum Erstellen eines **Kanals** geführt, der für eine Pass-Through-Bereitstellung konfiguriert ist. 
 
@@ -40,7 +44,7 @@ Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt 
 * Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services Kontos](media-services-portal-create-account.md).
 * Stellen Sie sicher, dass sich der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, im Status **Wird ausgeführt** befindet. 
 * Richten Sie Ihre Entwicklungsumgebung ein. Weitere Informationen finden Sie unter [Einrichten der Umgebung](media-services-set-up-computer.md).
-* Eine Webcam. Beispielsweise den [Telestream Wirecast-Encoder](https://www.telestream.net/wirecast/overview.htm).
+* Eine Webcam. Beispielsweise den [Telestream Wirecast-Encoder](media-services-configure-wirecast-live-encoder.md).
 
 Wir empfehlen, die folgenden Artikel zu lesen:
 
@@ -406,4 +410,3 @@ Media Services-Lernpfade ansehen
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

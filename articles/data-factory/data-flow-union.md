@@ -1,28 +1,33 @@
 ---
-title: 'Azure Data Factory Mapping Data Flow: Transformation für neue Verzweigung'
+title: Vereinigungstransformation im Zuordnungsdatenfluss
 description: 'Azure Data Factory Mapping Data Flow: Transformation für neue Verzweigung'
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/12/2019
-ms.openlocfilehash: af2225d749283c7124f89d5a7cd735b2f6bfd121
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019; seo-dt-2019
+ms.date: 04/27/2020
+ms.openlocfilehash: e10418c18e6f8e0089a893e9d33ee1081f3131f1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348114"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823645"
 ---
-# <a name="mapping-data-flow-union-transformation"></a>Mapping Data Flow: Vereinigungstransformation
+# <a name="union-transformation-in-mapping-data-flow"></a>Vereinigungstransformation im Zuordnungsdatenfluss
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Union kombiniert mehrere Datenströme zu einem einzigen, wobei die SQL Union dieser Datenströme die neue Ausgabe der Union-Transformation ist. Alle Schemas aus jedem Eingabestream werden innerhalb Ihres Datenflusses kombiniert, ohne dass Sie einen Joinschlüssel benötigen.
 
 Sie können die n-Anzahl von Streams in der Einstellungstabelle kombinieren, indem Sie neben jeder konfigurierten Zeile auf das Symbol „+“ klicken, einschließlich sowohl Quelldaten als auch Streams aus vorhandenen Transformationen in Ihrem Datenfluss.
 
-![Vereinigungstransformation](media/data-flow/union.png "Vereinigung")
+In diesem kurzen Video sehen Sie eine exemplarische Vorgehensweise für eine Vereinigungstransformation in einem Zuordnungsdatenfluss in ADF:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vngz]
+
+![Vereinigungstransformation](media/data-flow/union.png "Union")
 
 In diesem Fall können Sie unterschiedliche Metadaten aus mehreren Quellen (in diesem Beispiel drei verschiedene Quelldateien) zusammenführen und zu einem einzigen Stream kombinieren:
 
@@ -30,7 +35,7 @@ In diesem Fall können Sie unterschiedliche Metadaten aus mehreren Quellen (in d
 
 Um dies zu erreichen, fügen Sie zusätzliche Zeilen in „Union Settings“ (Vereinigungseinstellungen) hinzu, indem Sie alle Quellen einbeziehen, die Sie hinzufügen möchten. Ein allgemeiner Verweis oder Joinschlüssel ist nicht notwendig:
 
-![Vereinigungstransformation: Übersicht](media/data-flow/unionsettings.png "Vereinigung 1")
+![Vereinigungstransformation: Einstellungen](media/data-flow/unionsettings.png "Vereinigungseinstellungen")
 
 Wenn Sie nach Ihrer Vereinigung eine Auswahltransformation festlegen, können Sie überlappende Felder oder Felder umbenennen, die in Quellen ohne Kopfzeilen nicht benannt wurden. Klicken Sie auf „Inspekt“ (Überprüfen), um die kombinierten Metadaten mit insgesamt 132 Spalten in diesem Beispiel aus drei verschiedenen Quellen anzuzeigen:
 

@@ -1,25 +1,14 @@
 ---
-title: Unterschiede zwischen Cloud Services und Service Fabric | Microsoft Docs
+title: Unterschiede zwischen Cloud Services und Service Fabric
 description: Ein konzeptioneller Überblick für die Migration von Anwendungen von Cloud Services zu Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 0b87b1d3-88ad-4658-a465-9f05a3376dee
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 8b486e617389e1611dfebf3d347d2d64df088593
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7e7d346b5a39a262d1d55265becadb1c718cc04
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258654"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575770"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Lernen Sie die Unterschiede zwischen Cloud Services und Service Fabric kennen, bevor Sie Anwendungen migrieren
 Microsoft Azure Service Fabric ist die neueste Generation der Cloudanwendungsplattformen für stark skalierbare, sehr zuverlässige verteilte Anwendungen. Es führt viele neue Funktionen zum Verpacken, Bereitstellen, Aktualisieren und Verwalten von verteilten Cloudanwendungen ein. 
@@ -78,7 +67,7 @@ Bei der direkten Kommunikation können die Ebenen direkt durch die auf jeder Ebe
 
 Service Fabric bietet einen Dienstermittlungsmechanismus namens „Naming Service“, welcher verwendet werden kann, um die Endpunktadressen der Dienste aufzulösen. 
 
-![Service Fabric direkte Kommunikation][6]
+![Diagramm, das zeigt, wie Service Fabric einen Dienstermittlungsmechanismus namens „Naming Service“ bietet, welcher verwendet werden kann, um die Endpunktadressen der Dienste aufzulösen][6]
 
 ### <a name="queues"></a>Warteschlangen
 Ein üblicher Kommunikationsmechanismus zwischen Ebenen in zustandslosen Umgebungen wie Cloud Services besteht in der Verwendung einer externen Speicherwarteschlange, um Arbeitsaufgaben dauerhaft von einer Ebene auf die andere zu speichern. Ein verbreitetes Szenario ist eine Web-Ebene, die Aufträge an eine Azure-Speicherwarteschlange oder einen Service Bus schickt. Dort können die Workerrolleninstanzen die Aufträge aus der Warteschlange entfernen und bearbeiten.
@@ -90,7 +79,7 @@ Das gleiche Kommunikationsmodell kann in Service Fabric verwendet werden. Dies k
 ![Service Fabric direkte Kommunikation][8]
 
 ## <a name="parity"></a>Parität
-[Cloud Services ist in puncto Steuerungsmöglichkeiten und Benutzerfreundlichkeit mit Service Fabric vergleichbar, gilt aber mittlerweile als veraltet, weshalb Service Fabric für Neuentwicklungen empfohlen wird.](https://docs.microsoft.com/azure/app-service/overview-compare) Im Anschluss finden Sie einen API-Vergleich:
+[Cloud Services ist in puncto Steuerungsmöglichkeiten und Benutzerfreundlichkeit mit Service Fabric vergleichbar, gilt aber mittlerweile als veraltet, weshalb Service Fabric für Neuentwicklungen empfohlen wird.](/azure/architecture/guide/technology-choices/compute-decision-tree) Im Anschluss finden Sie einen API-Vergleich:
 
 
 | **Cloud Services-API** | **Service Fabric-API** | **Hinweise** |

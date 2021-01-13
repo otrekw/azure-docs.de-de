@@ -1,10 +1,12 @@
 - name: Dokumentation zu Media Services
-  href: index.md
+  href: index.yml
 - name: Übersicht
   href: media-services-overview.md
   items:
-    - name: Szenarien und Verfügbarkeit
+    - name: Häufige Szenarios
       href: scenarios-and-availability.md
+    - name: Regionale Verfügbarkeit
+      href: availability-regions-v-2.md
     - name: Konzepte
       href: media-services-concepts.md
 - name: Erste Schritte
@@ -47,9 +49,10 @@
           href: media-services-portal-live-passthrough-get-started.md
         - name: .NET
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
-- name: Anleitung
+- name: Vorgehensweise
   items:
     - name: Legacy-Komponenten
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
       href: legacy-components.md
       items:
         - name: Migrieren von Azure Media Encoder
@@ -114,8 +117,6 @@
     - name: Codieren von Inhalten
       href: media-services-encode-asset.md
       items:
-        - name: Vergleich der Encoder
-          href: media-services-compare-encoders.md
         - name: Verwalten von Geschwindigkeit und Parallelität der Codierung
           href: media-services-manage-encoding-speed.md
         - name: Media Encoder Standard (MES)
@@ -204,20 +205,6 @@
                   href: media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md
                 - name: H264 Single Bitrate Low Quality SD für Android
                   href: media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md
-        - name: Media Encoder Premium Workflow
-          items:
-            - name: Media Encoder Premium Workflow-Formate und -Codecs
-              href: media-services-premium-workflow-encoder-formats.md
-            - name: Codierung mit dem Medienencoder-Premium-Workflow
-              items:
-                - name: Media Encoder Premium Workflow
-                  href: media-services-encode-with-premium-workflow.md
-                - name: Tutorials für den Medienencoder-Premium-Workflow
-                  href: media-services-media-encoder-premium-workflow-tutorials.md
-                - name: Erstellen von erweiterten Codierungsworkflows mit Workflow-Designer
-                  href: media-services-workflow-designer.md
-                - name: Premium-Workflow mit mehreren Eingaben
-                  href: media-services-media-encoder-premium-workflow-multiplefilesinput.md
         - name: 'Erstellen einer Aufgabe, die fMP4-Blöcke generiert'
           href: media-services-generate-fmp4-chunks.md
         - name: Medienprozessoren
@@ -228,7 +215,7 @@
               href: media-services-rest-get-media-processor.md
         - name: Fehlercodes
           href: media-services-encoding-error-codes.md
-        - name: Veraltet
+        - name: Als veraltet markiert
           items:
             - name: Statische Paketerstellung und Verschlüsselung
               href: media-services-static-packaging.md
@@ -254,30 +241,14 @@
         - name: Konfigurieren von lokalen Encodern für die Verwendung mit einem Cloudencoder
           href: media-services-live-encoders-overview.md
           items:
-            - name: FMLE-Encoder
-              href: media-services-configure-fmle-live-encoder.md
             - name: Haivision KB-Encoder
               href: media-services-configure-kb-live-encoder.md
-            - name: NewTek TriCaster-Encoder
-              href: media-services-configure-tricaster-live-encoder.md
             - name: Wirecast-Encoder
               href: media-services-configure-wirecast-live-encoder.md
         - name: Behandeln von Vorgängen mit langer Ausführungsdauer
           href: media-services-dotnet-long-operations.md
         - name: Spezifikation für die Liveerfassung von fragmentiertem MP4
           href: ../media-services-fmp4-live-ingest-overview.md
-        - name: Erste Schritte
-          href: media-services-azure-media-clipper-getting-started.md
-        - name: Laden von Videos
-          href: media-services-azure-media-clipper-load-assets.md
-        - name: Konfigurieren von Tastenkombinationen
-          href: media-services-azure-media-clipper-keyboard-shortcuts.md
-        - name: Konfigurieren der Lokalisierung
-          href: media-services-azure-media-clipper-localization.md
-        - name: Übermitteln von Beschneidungsaufträgen
-          href: media-services-azure-media-clipper-submit-job.md
-        - name: Azure-Portal
-          href: media-services-azure-media-clipper-portal.md
     - name: Inhalt schützen
       href: media-services-content-protection-overview.md
       items:
@@ -333,33 +304,16 @@
               href: hybrid-design-drm-sybsystem.md
             - name: Referenzdesign für Multi-DRM
               href: media-services-cenc-with-multidrm-access-control.md
-    - name: Analysieren
-      href: media-services-analytics-overview.md
+    - name: Analysieren von Inhalten
       items:
-        - name: Medienanalyse mithilfe des Azure-Portals
-          href: media-services-portal-analyze.md
-        - name: Verarbeiten mit Indexer 2
-          href: media-services-process-content-with-indexer2.md
         - name: Verarbeiten mit Indexer
           href: media-services-index-content.md
-          items:
-            - name: Aufgabenvoreinstellung
-              href: indexer-task-preset.md
-        - name: Verarbeiten mit Gesichtserkennung
-          href: media-services-face-and-emotion-detection.md
-        - name: Verarbeiten mit Bewegungserkennung
-          href: media-services-motion-detection.md
+        - name: Aufgabenvoreinstellung
+          href: indexer-task-preset.md
         - name: Verarbeiten mit Face Redactor
           href: media-services-face-redaction.md
-          items:
-            - name: Exemplarische Vorgehensweise für Face Redactor
-              href: media-services-redactor-walkthrough.md
-        - name: Verarbeiten mit Videominiaturansichten
-          href: media-services-video-summarization.md
-        - name: Verarbeiten mit OCR
-          href: media-services-video-optical-character-recognition.md
-        - name: Verarbeiten mit Content Moderator
-          href: media-services-content-moderation.md
+        - name: Exemplarische Vorgehensweise für Face Redactor
+          href: media-services-redactor-walkthrough.md
     - name: Konfigurieren der Telemetrie
       href: media-services-telemetry-overview.md
       items:
@@ -406,12 +360,11 @@
           href: media-services-deliver-asset-download.md
         - name: Failoverstreamingszenario
           href: media-services-implement-failover.md
+          displayName: 'HA, high availability'
     - name: Nutzen
       items:
         - name: Wiedergeben von Medien mit vorhandenen Playern
           href: media-services-playback-content-with-existing-players.md
-        - name: Wiedergeben von Medien mit Media Player
-          href: media-services-develop-video-players.md
         - name: Weitere Wiedergabeoptionen
           items:
             - name: Windows Store-Anwendung mit Smooth Streaming
@@ -461,11 +414,11 @@
     - name: Azure PowerShell (Resource Manager)
       href: /powershell/module/az.media
     - name: Azure PowerShell
-      href: /powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0
+      href: /powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0
     - name: .NET
       href: /dotnet/api/microsoft.windowsazure.mediaservices.client
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference'
+      href: /rest/api/media/operations/azure-media-services-rest-api-reference
     - name: Spezifikationen
       items:
         - name: 'Liveerfassung: Spezifikation für die Liveerfassung von fragmentiertem MP4'
@@ -474,6 +427,9 @@
           href: ../media-services-specifications-live-timed-metadata.md
         - name: Smooth Streaming (HEVC)
           href: ../media-services-specifications-ms-sstr-amendment-hevc.md
+    - name: Legacy-Komponenten
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
+      href: legacy-components.md
 - name: Ressourcen
   items:
     - name: Azure Media Services-Community

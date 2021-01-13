@@ -3,15 +3,15 @@ title: Einrichten von Micro Focus CICS BankDemo für Micro Focus Enterprise Deve
 description: Führen Sie die Micro Focus BankDemo-Anwendung auf virtuellen Azure-Computern aus, um zu erfahren, wie Sie Micro Focus Enterprise Server und Enterprise Developer verwenden.
 author: sread
 ms.author: sread
-ms.date: 04/02/2019
+ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: b2cac7a8310482305467a1cb3ed3127eb18ae416
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621331"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915775"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Einrichten von Micro Focus CICS BankDemo für Micro Focus Enterprise Developer 4.0 in Azure
 
@@ -19,13 +19,16 @@ Wenn Sie Micro Focus Enterprise Server 4.0 und Enterprise Developer 4.0 in Azure
 
 CICS steht für „Customer Information Control System“, die Transaktionsplattform, die von vielen wichtigen Onlineanwendungen verwendet wird. Mit der BankDemo-Anwendung lässt sich sehr gut veranschaulichen, wie Enterprise Server und Enterprise Developer funktionieren und wie Sie eine tatsächliche Anwendung einschließlich Endkundenterminals verwalten und bereitstellen.
 
+> [!NOTE]
+> In Kürze verfügbar: Anweisungen zum Einrichten von [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) auf Azure-VMs.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Eine VM mit [Enterprise Developer](set-up-micro-focus-azure.md). Beachten Sie, dass Enterprise Developer zu Entwicklungs- und Testzwecken mit einer vollständigen Instanz von Enterprise Server ausgeliefert wird. Diese Instanz ist die Enterprise Server-Instanz, die für diese Demo verwendet wird.
 
 - [SQL Server 2017 Express Edition](https://www.microsoft.com/sql-server/sql-server-editions-express). Laden Sie die Software auf die Enterprise Developer-VM herunter, und installieren Sie sie. Enterprise Server erfordert eine Datenbank für die Verwaltung von CICS-Regionen, und die BankDemo-Anwendung verwendet auch eine SQL Server-Datenbank namens BANKDEMO. Bei dieser Demo wird davon ausgegangen, dass Sie SQL Server Express für beide Datenbanken verwenden. Wählen Sie beim Installationsprozess die Standardinstallation aus.
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). SSMS wird verwendet, um die Datenbanken zu verwalten und ein T-SQL-Skript auszuführen. Laden Sie die Software auf die Enterprise Developer-VM herunter, und installieren Sie sie.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) (SSMS). SSMS wird verwendet, um die Datenbanken zu verwalten und ein T-SQL-Skript auszuführen. Laden Sie die Software auf die Enterprise Developer-VM herunter, und installieren Sie sie.
 
 - [Visual Studio 2019](https://azure.microsoft.com/downloads/) mit dem neuesten Service Pack oder [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), das Sie kostenlos herunterladen können.
 
@@ -239,9 +242,9 @@ Erstellen Sie einen Listener für die TN3270-Sitzungen, die auf die BankDemo-Anw
 
 7. Geben Sie unter **Name** die Zeichenfolge **TN3270** ein. Geben Sie als **Port** den Wert **9024** ein. Die ESDEMO-Anwendung verwendet Port 9230, weshalb Sie einen anderen Port verwenden müssen.
 
-8. Um die Datei zu speichern, klicken Sie auf das Symbol zum **Speichern**, oder wählen Sie **File** \> **Save** (Datei > Speichern) aus.
+8. Klicken Sie zum Speichern der Datei auf das Symbol zum **Speichern**, oder klicken Sie auf **Datei** \> **Speichern**.
 
-9. Um den Listener zu starten, klicken Sie auf das Symbol **Start Listener** (Listener starten), oder wählen Sie **Options** \> **Start Listener** (Optionen > Listener starten) aus.
+9. Klicken Sie zum Starten des Listeners auf das Symbol **Start Listener** (Listener starten), oder klicken Sie auf **Options**\>**Start Listener** (Optionen > Listener starten).
 
      ![Fenster für Listenerkonfigurations-Editor](media/13-demo-listener.png)
 
@@ -270,7 +273,7 @@ Glückwunsch! Sie führen jetzt eine CICS-Anwendung in Azure aus, die Micro Focu
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Ausführen von Enterprise Server in Docker-Containern in Azure](run-enterprise-server-container.md)
-- [Mainframemigration – Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [Virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [Problembehandlung](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Mainframemigration – Portal](/archive/blogs/azurecat/mainframe-migration-to-azure-portal)
+- [Virtuelle Computer](../../../linux/overview.md)
+- [Problembehandlung](../../../troubleshooting/index.yml)
 - [Demystifying mainframe to Azure migration](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/) (Beseitigen von Irrtümern in Bezug auf die Migration von Mainframesystemen zu Azure)

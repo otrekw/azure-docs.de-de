@@ -1,31 +1,25 @@
 ---
 title: Implementieren von Oracle Data Guard auf einem virtuellen Azure-Linux-Computer | Microsoft-Dokumentation
 description: Richten Sie in Ihrer Azure-Umgebung schnell Oracle Data Guard ein.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: romitgirdhar
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: 52723ca53b9156dd8e8183d92d8d4a350750c936
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: kegorman
+ms.reviewer: cynthn
+ms.openlocfilehash: cc7579b48307325e25d8914ea4c722a9641883f3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100107"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952147"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementieren von Oracle Data Guard auf einem virtuellen Azure-Linux-Computer 
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In diesem Artikel wird beschrieben, wie Sie Skripts in der Azure CLI verwenden, um eine Oracle Database 12c-Datenbank aus einem Azure Marketplace-Image bereitzustellen. Anschließend wird in diesem Artikel Schritt für Schritt gezeigt, wie Sie Data Guard auf einem virtuellen Azure-Computer (VM) installieren und konfigurieren.
 
-Stellen Sie sicher, dass die Azure CLI installiert ist, bevor Sie beginnen. Weitere Informationen finden Sie im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Stellen Sie sicher, dass die Azure CLI installiert ist, bevor Sie beginnen. Weitere Informationen finden Sie im [Azure CLI-Installationshandbuch](/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>Vorbereiten der Umgebung
 ### <a name="assumptions"></a>Annahmen
@@ -57,7 +51,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Verfügbarkeitsgruppe erstellen
 
-Die Erstellung einer Verfügbarkeitsgruppe ist optional, wird jedoch empfohlen. Weitere Informationen finden Sie im [Leitfaden zu Azure-Verfügbarkeitsgruppen](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+Die Erstellung einer Verfügbarkeitsgruppe ist optional, wird jedoch empfohlen. Weitere Informationen finden Sie im [Leitfaden zu Azure-Verfügbarkeitsgruppen](/previous-versions/azure/virtual-machines/windows/infrastructure-example).
 
 ```azurecli
 az vm availability-set create \
@@ -87,7 +81,7 @@ az vm create \
 
 Nach der Erstellung der VM zeigt die Azure CLI Informationen an, die den Informationen im folgenden Beispiel ähneln. Beachten Sie den Wert von `publicIpAddress`. Diese Adresse wird verwendet, um auf den virtuellen Computer zuzugreifen.
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -101,6 +95,7 @@ Nach der Erstellung der VM zeigt die Azure CLI Informationen an, die den Informa
 ```
 
 Erstellen Sie „myVM2“ (Standby):
+
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -130,7 +125,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 Das Ergebnis sollte etwa wie die folgende Antwort aussehen:
 
-```bash
+```output
 {
   "access": "Allow",
   "description": null,
@@ -159,7 +154,7 @@ az network nsg rule create --resource-group myResourceGroup\
     --destination-address-prefix '*' --destination-port-range 1521 --access allow
 ```
 
-### <a name="connect-to-the-virtual-machine"></a>Herstellen einer Verbindung mit dem virtuellen Computer
+### <a name="connect-to-the-virtual-machine"></a>Verbinden mit dem virtuellen Computer
 
 Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Computer. Ersetzen Sie die IP-Adresse durch den Wert von `publicIpAddress` für Ihren virtuellen Computer.
 
@@ -198,9 +193,10 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
+
 Die Ausgaben sollten etwa wie folgt aussehen:
 
-```bash
+```output
 Copying database files
 1% complete
 2% complete
@@ -263,6 +259,7 @@ SQL> STARTUP MOUNT;
 SQL> ALTER DATABASE ARCHIVELOG;
 SQL> ALTER DATABASE OPEN;
 ```
+
 Aktivieren Sie die Erzwingung der Protokollierung, und stellen Sie sicher, dass mindestens eine Protokolldatei vorhanden ist:
 
 ```bash
@@ -341,11 +338,13 @@ ADR_BASE_LISTENER = /u01/app/oracle
 ```
 
 Aktivieren Sie Data Guard Broker:
+
 ```bash
 $ sqlplus / as sysdba
 SQL> ALTER SYSTEM SET dg_broker_start=true;
 SQL> EXIT;
 ```
+
 Starten Sie den Listener:
 
 ```bash
@@ -429,6 +428,7 @@ $ lsnrctl start
 ### <a name="restore-the-database-to-myvm2-standby"></a>Wiederherstellen der Datenbank auf „myVM2“ (Standby)
 
 Erstellen Sie die Parameterdatei „/tmp/initcdb1_stby.ora“ mit folgenden Inhalten:
+
 ```bash
 *.db_name='cdb1'
 ```
@@ -447,6 +447,7 @@ Erstellen Sie eine Kennwortdatei:
 ```bash
 $ orapwd file=/u01/app/oracle/product/12.1.0/dbhome_1/dbs/orapwcdb1 password=OraPasswd1 entries=10
 ```
+
 Starten Sie die Datenbank auf „myVM2“:
 
 ```bash
@@ -464,6 +465,7 @@ $ rman TARGET sys/OraPasswd1@cdb1 AUXILIARY sys/OraPasswd1@cdb1_stby
 ```
 
 Führen Sie die folgenden Befehle in RMAN aus:
+
 ```bash
 DUPLICATE TARGET DATABASE
   FOR STANDBY
@@ -475,11 +477,14 @@ DUPLICATE TARGET DATABASE
 ```
 
 Wenn der Befehl durchgeführt wird, sollten Sie Nachrichten sehen, die ähnlich wie die Folgenden aussehen. Beenden Sie RMAN.
-```bash
+
+```output
 media recovery complete, elapsed time: 00:00:00
 Finished recover at 29-JUN-17
 Finished Duplicate Db at 29-JUN-17
+```
 
+```bash
 RMAN> EXIT;
 ```
 
@@ -520,6 +525,7 @@ Enabled.
 ```
 
 Überprüfen Sie die Konfiguration:
+
 ```bash
 DGMGRL> SHOW CONFIGURATION;
 
@@ -586,6 +592,7 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 
 SQL>
 ```
+
 ## <a name="test-the-data-guard-configuration"></a>Testen der Data Guard-Konfiguration
 
 ### <a name="switch-over-the-database-on-myvm1-primary"></a>Wechseln der Datenbank auf „myVM1“ (primär)
@@ -635,6 +642,7 @@ SQL>
 ### <a name="switch-over-the-database-on-myvm2-standby"></a>Wechseln der Datenbank auf „myVM2“ (Standby)
 
 Führen Sie zum Wechseln Folgendes auf „myVM2“ aus:
+
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1_stby
 DGMGRL for Linux: Version 12.1.0.2.0 - 64bit Production

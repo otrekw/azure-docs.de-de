@@ -4,14 +4,14 @@ description: Dieser Artikel bietet Informationen zum Registrieren von Datenquell
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 0c5fdac7df41fec3a6206dbd78af74b7f1b58c7f
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: b8c6c6e33577fe3d49d8f0c7a94a941827f5cf68
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736325"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86523433"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Registrieren von Datenquellen in Azure Data Catalog
 ## <a name="introduction"></a>Einführung

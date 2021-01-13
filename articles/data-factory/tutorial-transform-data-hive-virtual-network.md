@@ -1,24 +1,26 @@
 ---
-title: Transformieren von Daten mithilfe von Hive in Azure Virtual Network | Microsoft-Dokumentation
-description: Dieses Tutorial bietet Schrittanleitungen zum Transformieren von Daten mithilfe einer Hive-Aktivität in Azure Data Factory.
+title: Transformieren von Daten mithilfe von Hive in Azure Virtual Network
+description: Verwenden Sie Azure PowerShell, um eine Data Factory-Pipeline zu erstellen, die Daten mithilfe einer Hive-Aktivität in einem HDInsight-Cluster transformiert, der sich in einem virtuellen Azure-Netzwerk (VNET) befindet.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: tutorial
-ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 667835605cfaf4fced10b07f05028bcfa11f64da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+manager: anandsub
+ms.topic: tutorial
+ms.custom: seo-dt-2019
+ms.date: 01/22/2018
+ms.openlocfilehash: 57915e0b636124265adc8d5f3088cacd20d63746
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60336104"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634010"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformieren von Daten in Azure Virtual Network mithilfe einer Hive-Aktivität in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 In diesem Tutorial verwenden Sie Azure PowerShell, um eine Data Factory-Pipeline zu erstellen, die Daten mithilfe einer Hive-Aktivität in einem HDInsight-Cluster transformiert, der sich in einem virtuellen Azure-Netzwerk (VNet) befindet. In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
@@ -36,14 +38,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure Storage-Konto**. Erstellen Sie ein Hive-Skript, und laden Sie es in Azure Storage hoch. Die Ausgabe des Hive-Skripts wird in diesem Storage-Konto gespeichert. In diesem Beispiel verwendet der HDInsight-Cluster dieses Azure Storage-Konto als primären Speicher. 
-- **Azure Virtual Network.** Wenn Sie noch nicht über ein Azure Virtual Network verfügen, erstellen Sie anhand [dieser Anweisungen](../virtual-network/quick-create-portal.md). In diesem Beispiel befindet sich HDInsight in einem Azure Virtual Network. Hier finden Sie die Beispielkonfiguration von Azure Virtual Network. 
+- **Azure Storage-Konto** . Erstellen Sie ein Hive-Skript, und laden Sie es in Azure Storage hoch. Die Ausgabe des Hive-Skripts wird in diesem Storage-Konto gespeichert. In diesem Beispiel verwendet der HDInsight-Cluster dieses Azure Storage-Konto als primären Speicher. 
+- **Azure Virtual Network.** Wenn Sie noch nicht über ein Azure Virtual Network verfügen, erstellen Sie ein solches anhand [dieser Anweisungen](../virtual-network/quick-create-portal.md). In diesem Beispiel befindet sich HDInsight in einem Azure Virtual Network. Hier finden Sie die Beispielkonfiguration von Azure Virtual Network. 
 
     ![Virtuelles Netzwerk erstellen](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
-- **HDInsight-Cluster.** Erstellen Sie einen HDInsight-Cluster, und binden Sie ihn in das virtuelle Netzwerk ein, das Sie im vorherigen Schritt erstellt haben. Befolgen Sie dazu die Anweisungen in folgendem Artikel: [Erweitern von Azure HDInsight per Azure Virtual Network](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Hier finden Sie die Beispielkonfiguration von HDInsight in einem virtuellen Netzwerk. 
+- **HDInsight-Cluster.** Erstellen Sie einen HDInsight-Cluster, und binden Sie ihn in das virtuelle Netzwerk ein, das Sie im vorherigen Schritt erstellt haben. Befolgen Sie dazu die Anweisungen in folgendem Artikel: [Erweitern von Azure HDInsight per Azure Virtual Network](../hdinsight/hdinsight-plan-virtual-network-deployment.md). Hier finden Sie die Beispielkonfiguration von HDInsight in einem virtuellen Netzwerk. 
 
     ![HDInsight in einem virtuellen Netzwerk](media/tutorial-transform-data-using-hive-in-vnet/hdinsight-in-vnet-configuration.png)
-- **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](/powershell/azure/install-Az-ps) (Erste Schritte mit Azure PowerShell-Cmdlets).
+- **Azure PowerShell** . Befolgen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](/powershell/azure/install-Az-ps) (Erste Schritte mit Azure PowerShell-Cmdlets).
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>Hochladen eines Hive-Skripts in Ihr Blob Storage-Konto
 
@@ -63,8 +65,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
        state
    FROM hivesampletable
    ```
-2. Erstellen Sie in Azure Blob Storage einen Container mit dem Namen **adftutorial**, falls dieser noch nicht vorhanden ist.
-3. Erstellen Sie einen Ordner mit dem Namen **hivescripts**.
+2. Erstellen Sie in Azure Blob Storage einen Container mit dem Namen **adftutorial** , falls dieser noch nicht vorhanden ist.
+3. Erstellen Sie einen Ordner mit dem Namen **hivescripts** .
 4. Laden Sie die Datei **hivescript.hql** in den Unterordner **hivescripts** hoch.
 
   
@@ -91,7 +93,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. Starten Sie **PowerShell**. Lassen Sie Azure PowerShell bis zum Ende dieser Schnellstartanleitung geöffnet. Wenn Sie PowerShell schließen und erneut öffnen, müssen Sie die Befehle erneut ausführen. Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auf der folgenden Seite auswählen und dann **Analysen** erweitern, um **Data Factory** zu finden: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
+2. Starten Sie **PowerShell** . Lassen Sie Azure PowerShell bis zum Ende dieser Schnellstartanleitung geöffnet. Wenn Sie PowerShell schließen und erneut öffnen, müssen Sie die Befehle erneut ausführen. Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auf der folgenden Seite auswählen und dann **Analysen** erweitern, um **Data Factory** zu finden: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
 
     Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben:
         
@@ -166,7 +168,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste und stellen sie berei
 
 ### <a name="azure-storage-linked-service"></a>Mit Azure Storage verknüpfter Dienst
 
-Erstellen Sie in Ihrem bevorzugten Editor eine JSON-Datei, kopieren Sie die folgende JSON-Definition eines verknüpften Azure Storage-Diensts hinein, und speichern Sie die Datei als **MyStorageLinkedService.json**.
+Erstellen Sie in Ihrem bevorzugten Editor eine JSON-Datei, kopieren Sie die folgende JSON-Definition eines verknüpften Azure Storage-Diensts hinein, und speichern Sie die Datei als **MyStorageLinkedService.json** .
 
 ```json
 {
@@ -174,10 +176,7 @@ Erstellen Sie in Ihrem bevorzugten Editor eine JSON-Datei, kopieren Sie die folg
     "properties": {
       "type": "AzureStorage",
       "typeProperties": {
-        "connectionString": {
-          "value": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>",
-          "type": "SecureString"
-        }
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>"
       },
       "connectVia": {
         "referenceName": "MySelfhostedIR",
@@ -191,7 +190,7 @@ Ersetzen Sie **&lt;accountname&gt; und &lt;accountkey&gt;** durch den Namen bzw.
 
 ### <a name="hdinsight-linked-service"></a>Verknüpfter HDInsight-Dienst
 
-Erstellen Sie in Ihrem bevorzugten Editor eine JSON-Datei, kopieren Sie die folgende JSON-Definition eines verknüpften Azure HDInsight-Diensts hinein, und speichern Sie die Datei als **MyHDInsightLinkedService.json**.
+Erstellen Sie in Ihrem bevorzugten Editor eine JSON-Datei, kopieren Sie die folgende JSON-Definition eines verknüpften Azure HDInsight-Diensts hinein, und speichern Sie die Datei als **MyHDInsightLinkedService.json** .
 
 ```
 {
@@ -220,9 +219,9 @@ Erstellen Sie in Ihrem bevorzugten Editor eine JSON-Datei, kopieren Sie die folg
 
 Aktualisieren Sie die Werte der folgenden Eigenschaften in der Definition des verknüpften Diensts:
 
-- **userName**. Der Name des Benutzers, der sich beim Cluster anmeldet und den Sie beim Erstellen des Clusters angegeben haben. 
-- **password**. Das Kennwort für den Benutzer.
-- **clusterUri**. Geben Sie die URL Ihres HDInsight-Clusters im folgenden Format ein: `https://<clustername>.azurehdinsight.net`.  In diesem Artikel wird davon ausgegangen, dass Sie über das Internet auf den Cluster zugreifen können. Sie müssen beispielsweise unter `https://clustername.azurehdinsight.net` eine Verbindung mit dem Cluster herstellen können. Diese Adresse verwendet das öffentliche Gateway, das nicht verfügbar ist, wenn Sie über Netzwerksicherheitsgruppen (Network Security Groups, NSGs) oder benutzerdefinierte Routen (User-Defined Routes, UDRs) den Zugriff aus dem Internet beschränken. Damit Data Factory Aufträge an HDInsight-Cluster in Ihrem virtuellen Azure-Netzwerk übermitteln kann, muss das Netzwerk so konfigurieren sein, dass die URL zur privaten IP-Adresse des von HDInsight verwendeten Gateways aufgelöst werden kann.
+- **userName** . Der Name des Benutzers, der sich beim Cluster anmeldet und den Sie beim Erstellen des Clusters angegeben haben. 
+- **password** . Das Kennwort für den Benutzer.
+- **clusterUri** . Geben Sie die URL Ihres HDInsight-Clusters im folgenden Format ein: `https://<clustername>.azurehdinsight.net`.  In diesem Artikel wird davon ausgegangen, dass Sie über das Internet auf den Cluster zugreifen können. Sie müssen beispielsweise unter `https://clustername.azurehdinsight.net` eine Verbindung mit dem Cluster herstellen können. Diese Adresse verwendet das öffentliche Gateway, das nicht verfügbar ist, wenn Sie über Netzwerksicherheitsgruppen (Network Security Groups, NSGs) oder benutzerdefinierte Routen (User-Defined Routes, UDRs) den Zugriff aus dem Internet beschränken. Damit Data Factory Aufträge an HDInsight-Cluster in Ihrem virtuellen Azure-Netzwerk übermitteln kann, muss das Netzwerk so konfigurieren sein, dass die URL zur privaten IP-Adresse des von HDInsight verwendeten Gateways aufgelöst werden kann.
 
   1. Öffnen Sie im Azure-Portal das virtuelle Netzwerk, in dem sich HDInsight befindet. Öffnen Sie die Netzwerkschnittstelle, deren Name mit `nic-gateway-0` beginnt. Notieren Sie die private IP-Adresse. Beispiel: 10.6.0.15. 
   2. Wenn in Ihrem Azure Virtual Network DNS-Server vorhanden sind, aktualisieren Sie den DNS-Eintrag, sodass die URL des HDInsight-Clusters, `https://<clustername>.azurehdinsight.net`, in `10.6.0.15` aufgelöst werden kann. Dies ist die empfohlene Vorgehensweise. Wenn in Ihrem virtuellen Azure-Netzwerk kein DNS-Server vorhanden ist, können Sie dieses Problem vorübergehend umgehen, indem Sie die Hostdatei (C:\Windows\System32\drivers\etc) aller virtuellen Computer bearbeiten, die als Knoten für die selbstgehostete Integration Runtime-Instanz registriert sind. Fügen Sie hierzu einen Eintrag wie den folgenden hinzu: 
@@ -245,7 +244,7 @@ Wechseln Sie in PowerShell zu dem Ordner, in dem Sie JSON-Dateien erstellt haben
     ```
 
 ## <a name="author-a-pipeline"></a>Erstellen einer Pipeline
-In diesem Schritt erstellen Sie eine neue Pipeline mit einer Hive-Aktivität. Die Aktivität führt ein Hive-Skript aus, um Daten aus einer Beispieltabelle zurückzugeben und in einem von Ihnen definierten Pfad zu speichern. Erstellen Sie in Ihrem bevorzugten Editor eine JSON-Datei, kopieren Sie die folgende JSON-Definition einer Pipelinedefinition hinein, und speichern Sie die Datei als **MyHivePipeline.json**.
+In diesem Schritt erstellen Sie eine neue Pipeline mit einer Hive-Aktivität. Die Aktivität führt ein Hive-Skript aus, um Daten aus einer Beispieltabelle zurückzugeben und in einem von Ihnen definierten Pfad zu speichern. Erstellen Sie in Ihrem bevorzugten Editor eine JSON-Datei, kopieren Sie die folgende JSON-Definition einer Pipelinedefinition hinein, und speichern Sie die Datei als **MyHivePipeline.json** .
 
 
 ```json
@@ -280,8 +279,8 @@ In diesem Schritt erstellen Sie eine neue Pipeline mit einer Hive-Aktivität. Di
 
 Beachten Sie folgende Punkte:
 
-- **scriptPath** zeigt auf den Pfad zu dem Hive-Skript im Azure Storage-Konto, das Sie für „MyStorageLinkedService“ verwendet haben. Beim Pfad wird die Groß-/Kleinschreibung beachtet.
-- **Output** ist ein im Hive-Skript verwendetes Argument. Verwenden Sie das Format `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`, um auf einen vorhandenen Ordner in Ihrem Azure Storage zu zeigen. Beim Pfad wird die Groß-/Kleinschreibung beachtet. 
+- **scriptPath** zeigt auf den Pfad zu dem Hive-Skript im Azure Storage-Konto, das Sie für „MyStorageLinkedService“ verwendet haben. Der Pfad berücksichtigt die Groß- und Kleinschreibung.
+- **Output** ist ein im Hive-Skript verwendetes Argument. Verwenden Sie das Format `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`, um auf einen vorhandenen Ordner in Ihrem Azure Storage zu zeigen. Der Pfad berücksichtigt die Groß- und Kleinschreibung. 
 
 Wechseln Sie zu dem Ordner, in dem Sie die JSON-Dateien erstellt haben, und führen Sie den folgenden Befehl aus, um die Pipeline bereitzustellen: 
 
@@ -409,6 +408,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie mithilfe ein
 
 > [!div class="nextstepaction"]
 >[Branchen und Verketten der Data Factory-Ablaufsteuerung](tutorial-control-flow.md)
-
-
-

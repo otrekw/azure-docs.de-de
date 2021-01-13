@@ -3,24 +3,21 @@ title: 'Azure CLI-Skriptbeispiel: Lastenausgleich für mehrere Websites mit der 
 description: 'Azure CLI-Skriptbeispiel: Lastenausgleich für mehrere Websites auf dem gleichen virtuellen Computer'
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: kumud
-ms.openlocfilehash: e3dc9476d188382db31b03b37b2a23affc61aed3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 568934d6b5ecc2fbb3b6fc6588ecfd48c8306490
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60564883"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "73889456"
 ---
 # <a name="load-balance-multiple-websites"></a>Lastenausgleich für mehrere Websites
 

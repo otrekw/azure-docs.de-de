@@ -14,14 +14,14 @@ ms.topic: sample
 ms.date: 04/16/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 7417eaecddad60c940bf01535b8fb24b8cbef80c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ff40dc62b4dcd622156a78518bbdcb6b9b430644
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034775"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75526599"
 ---
-# <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Bereitstellen einer Anwendung in einem Service Fabric-Cluster
+# <a name="deploy-an-application-to-a-service-fabric-cluster-using-the-service-fabric-cli"></a>Bereitstellen einer Anwendung in einem Service Fabric-Cluster mithilfe der Service Fabric-CLI
 
 Dieses Beispielskript kopiert ein Anwendungspaket in einen Clusterimagespeicher, registriert den Anwendungstyp im Cluster und erstellt eine Anwendungsinstanz aus dem Anwendungstyp. Alle Standarddienste werden ebenfalls zu diesem Zeitpunkt erstellt.
 

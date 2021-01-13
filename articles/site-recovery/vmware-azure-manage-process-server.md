@@ -1,18 +1,18 @@
 ---
-title: Verwalten eines Prozessservers, der für die Notfallwiederherstellung von VMware-VMs und physischen Servern zu Azure verwendet wird, mit Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie einen Prozessserver für die Notfallwiederherstellung von VMware-VMs und physischen Servern zu Azure mithilfe von Azure Site Recovery verwalten.
+title: Verwalten eines Prozessservers für die Notfallwiederherstellung von virtuellen VMware-Computern/physischen Servern in Azure Site Recovery
+description: In diesem Artikel wird beschrieben, wie Sie einen Prozessserver für die Notfallwiederherstellung von VMware-VMs/physischen Servern mit Azure Site Recovery verwalten.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 2c27779719c73adf4d7fc1a61a0c77d03df71815
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a547a874c42d06d8453b154847561d8b5f0dabb8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925623"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019186"
 ---
 # <a name="manage-process-servers"></a>Verwalten von Prozessservern
 
@@ -41,11 +41,11 @@ Nehmen Sie einen Lastausgleich vor, indem Sie VMs zwischen zwei Prozessservern f
 2. Klicken Sie auf den Konfigurationsserver, bei dem die Prozessserver registriert sind.
 3. Klicken Sie auf den Prozessserver, bei dem Sie einen Lastausgleich für Datenverkehr vornehmen möchten.
 
-    ![Lastausgleich](media/vmware-azure-manage-process-server/LoadBalance.png)
+    ![Screenshot: Prozessserver, für den Sie einen Lastausgleich für Datenverkehr vornehmen können](media/vmware-azure-manage-process-server/LoadBalance.png)
 
 4. Klicken Sie auf **Lastausgleich**, und wählen Sie den Zielprozessserver aus, auf den Sie Computer verschieben möchten. Klicken Sie dann auf **OK**.
 
-    ![Laden des Prozessservers](media/vmware-azure-manage-process-server/LoadPS.PNG)
+    ![Screenshot: Bereich „Lastenausgleich“ mit ausgewählter Option „Zielprozessserver auswählen“](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
 2. Klicken Sie auf **Computer auswählen**, und wählen Sie die Computer aus, die Sie vom aktuellen Prozessserver auf den Zielprozessserver verschieben möchten. Für jeden virtuellen Computer werden Details zur durchschnittlichen Datenänderung angezeigt. Klicken Sie dann auf **OK**. 
 3. Überwachen Sie im Tresor den Fortschritt des Auftrags unter **Überwachung** > **Site Recovery-Aufträge**.
@@ -61,13 +61,26 @@ Verschieben Sie die gesamte von einem Prozessserver verarbeitete Workload folgen
 3. Klicken Sie auf den Prozessserver, von dem Sie die Workload wechseln möchten.
 4. Klicken Sie auf **Switch**, und wählen Sie den Zielprozessserver aus, auf den Sie die Workload verschieben möchten. Klicken Sie dann auf **OK**.
 
-    ![Switch](media/vmware-azure-manage-process-server/Switch.PNG)
+    ![Screenshot: Bereich „Zielprozessserver auswählen“](media/vmware-azure-manage-process-server/Switch.PNG)
 
 5. Überwachen Sie im Tresor den Fortschritt des Auftrags unter **Überwachung** > **Site Recovery-Aufträge**.
 
 Es dauert ungefähr 15 Minuten, bis Änderungen im Portal angezeigt werden. Wenn dies schneller geschehen soll, [aktualisieren Sie den Konfigurationsserver](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
+## <a name="register-a-master-target-server"></a>Registrieren eines Masterzielservers
 
+Der Masterzielserver befindet sich auf dem Konfigurationsserver und Prozessservern für die horizontale Skalierung. Er muss beim Konfigurationsserver registriert sein. Eine fehlerhafte Registrierung kann sich auf die Integrität der geschützten Elemente auswirken. Um den Masterzielserver beim Konfigurationsserver zu registrieren, melden Sie sich beim jeweiligen Konfigurationserver/Prozessserver für die horizontale Skalierung an, auf dem die Registrierung erforderlich ist. Navigieren Sie zum Ordner **%PROGRAMDATA%\ASR\Agent**, und führen Sie Folgendes an einer Administratoreingabeaufforderung aus.
+
+   ```
+   cmd
+   cdpcli.exe --registermt
+
+   net stop obengine
+
+   net start obengine
+
+   exit
+   ```
 
 ## <a name="reregister-a-process-server"></a>Erneutes Registrieren eines Prozessservers
 
@@ -125,4 +138,4 @@ Wenn Virenschutzsoftware auf einem Prozessserver mit horizontaler Skalierung (od
 - C:\ProgramData\ASRSetupLogs
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
-- Installationsverzeichnis des Prozessservers. Beispiel:  C:\Programme (x86)\Microsoft Azure Site Recovery
+- Installationsverzeichnis des Prozessservers. Beispiel: C:\Programme (x86)\Microsoft Azure Site Recovery

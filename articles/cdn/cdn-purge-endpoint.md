@@ -1,9 +1,9 @@
 ---
 title: Löschen eines Azure CDN-Endpunkts | Microsoft Docs
-description: Erfahren Sie, wie alle zwischengespeicherten Inhalte aus einem Azure CDN-Endpunkt gelöscht werden.
+description: Erfahren Sie, wie Sie alle zwischengespeicherten Inhalte in einem Azure Content Delivery Network-Endpunkt bereinigen. Edgeknoten speichern Ressourcen zwischen, bis ihre Gültigkeitsdauer abläuft.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: sohamnchatterjee
 ms.assetid: 0b50230b-fe82-4740-90aa-95d4dde8bd4f
@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/17/2019
-ms.author: magattus
-ms.openlocfilehash: ff877810cb32d22cffd2af79880b6223c41d7d73
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: allensu
+ms.openlocfilehash: e90086be18e344e3061b9e683780f4427b3c15a1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593524"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018629"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Löschen eines Azure CDN-Endpunkts
 ## <a name="overview"></a>Übersicht
@@ -69,11 +69,11 @@ Dieses Lernprogramm führt Sie durch das Löschen von Assets aus allen Edgeknote
     ![Löschschaltfläche](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> Die Bearbeitung von Löschanforderungen dauert mit **Azure CDN von Microsoft** and **Azure CDN von Verizon** (Standard oder Premium) etwa 2 Minuten und mit **Azure CDN von Akamai** ca. 10 Sekunden.  Die Anzahl gleichzeitiger Löschanforderungen auf Profilebene ist bei Azure CDN auf 50 begrenzt. 
+> Die Bearbeitung von Löschanforderungen dauert mit **Azure CDN von Microsoft** ca. 10 Minuten, mit **Azure CDN von Verizon** (Standard oder Premium) etwa zwei Minuten und mit **Azure CDN von Akamai** ca. 10 Sekunden.  Die Anzahl gleichzeitiger Löschanforderungen auf Profilebene ist bei Azure CDN auf 100 begrenzt. 
 > 
 > 
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Vorabladen von Assets auf einen Azure CDN-Endpunkt](cdn-preload-endpoint.md)
 * [Azure CDN-REST-API-Referenz – Löschen oder Vorabladen eines Endpunkts](/rest/api/cdn/endpoints)
 

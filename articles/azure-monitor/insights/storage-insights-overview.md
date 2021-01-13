@@ -1,32 +1,25 @@
 ---
-title: Überwachen von Azure-Speicherdiensten mit Azure Monitor für Storage (Vorschauversion) | Microsoft-Dokumentation
+title: Überwachen von Azure Storage-Diensten mit Azure Monitor für Storage | Microsoft-Dokumentation
 description: In diesem Artikel wird das Azure Monitor für Storage-Feature beschrieben, das Speicheradministratoren ein schnelles Verständnis der Leistungs- und Nutzungsprobleme bei ihren Azure Storage-Konten ermöglicht.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
-ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/15/2019
-ms.author: magoedte
-ms.openlocfilehash: 1ab49d17ebf10a1ae0277768ddbd1878195d835d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.subservice: ''
+ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/11/2020
+ms.openlocfilehash: 2538bc91be59ff12b39ee3f5f629e4c016480a97
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212765"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296334"
 ---
-# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage (Vorschauversion)
+# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage
 
-Azure Monitor für Storage (Vorschauversion) ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. Sie können die Speicherkapazität und Leistung auf zwei Arten beobachten: direktes Anzeigen in einem Speicherkonto oder Anzeigen verschiedener Gruppen von Speicherkonten in Azure Monitor. 
+Azure Monitor für Storage ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. Sie können die Speicherkapazität und Leistung auf zwei Arten beobachten: direktes Anzeigen in einem Speicherkonto oder Anzeigen verschiedener Gruppen von Speicherkonten in Azure Monitor. 
 
-Dieser Artikel soll Ihnen verwertbares Wissen zur Oberfläche von Azure Monitor für Storage (Vorschauversion) liefern und zeigen, was sie im Hinblick auf Integrität und Leistung von Speicherkonten im gewünschten Umfang bietet, wobei Sie sich auf Hotspots sowie die Diagnose von Latenz, Drosselung und Verfügbarkeitsproblemen konzentrieren können.
+Dieser Artikel soll Ihnen verwertbares Wissen zur Oberfläche von Azure Monitor für Storage liefern und zeigen, was sie im Hinblick auf Integrität und Leistung von Storage-Konten im gewünschten Umfang bietet, wobei Sie sich auf Hotspots sowie die Diagnose von Wartezeit, Drosselung und Verfügbarkeitsproblemen konzentrieren können.
 
-## <a name="introduction-to-azure-monitor-for-storage-preview"></a>Einführung in Azure Monitor für Storage (Vorschauversion)
+## <a name="introduction-to-azure-monitor-for-storage"></a>Einführung in Azure Monitor für Storage
 
 Bevor Sie sich mit der Oberfläche genauer befassen, sollten Sie nachvollziehen können, wie sie Informationen darstellt und visualisiert. Unabhängig davon, ob Sie das Storage-Feature direkt aus einem Speicherkonto oder in Azure Monitor auswählen, stellt Azure Monitor für Storage eine einheitliche Oberfläche bereit. 
 
@@ -38,14 +31,11 @@ In Kombination bietet sie Folgendes:
 
 * **Anpassbar**. Hier können Sie ändern, welche Metriken Sie anzeigen oder abändern oder aber Schwellenwerte dafür festlegen möchten, die Ihren Grenzwerten entsprechen, und sie als Ihre eigene Arbeitsmappe speichern. Diagramme in der Arbeitsmappe können an das Azure-Dashboard angeheftet werden.  
 
-Bei diesem Feature müssen Sie nichts aktivieren oder konfigurieren, weil die Speichermetriken aus Ihren Speicherkonten standardmäßig erfasst werden. Wenn Sie mit den in Azure Storage verfügbaren Metriken nicht vertraut sind, können Sie unter [Azure Storage-Metriken](../../storage/common/storage-metrics-in-azure-monitor.md) die jeweilige Beschreibung und Definition anzeigen.
+Bei diesem Feature müssen Sie nichts aktivieren oder konfigurieren, weil die Speichermetriken aus Ihren Speicherkonten standardmäßig erfasst werden. Wenn Sie mit den in Azure Storage verfügbaren Metriken nicht vertraut sind, können Sie unter [Azure Storage-Metriken](../../storage/blobs/monitor-blob-storage.md) die jeweilige Beschreibung und Definition anzeigen.
 
 >[!NOTE]
 >Für den Zugriff auf dieses Feature fallen keine Gebühren an. Ihnen werden nur die grundlegenden Features von Azure Monitor in Rechnung gestellt, die Sie entsprechend der Beschreibung auf der Seite [Azure Monitor-Preisdetails](https://azure.microsoft.com/pricing/details/monitor/) konfigurieren oder aktivieren.
 
->[!NOTE]
->Azure Monitor für Storage unterstützt keine [Konten vom Typ „Allgemein v1“](../../storage/common/storage-account-overview.md#general-purpose-v1-accounts).
->
 
 ## <a name="view-from-azure-monitor"></a>Anzeigen in Azure Monitor
 
@@ -55,17 +45,17 @@ Führen Sie die folgenden Schritte aus, um die Nutzung und Verfügbarkeit Ihrer 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Wählen Sie im linken Bereich des Azure-Portals **Überwachen** und im Abschnitt **Insights** die Option **Speicherkonten (Vorschau)** aus.
+2. Wählen Sie im linken Bereich des Azure-Portals **Überwachen** und im Abschnitt **Insights** die Option **Speicherkonten** aus.
 
     ![Ansicht mehrerer Speicherkonten](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
 
 ### <a name="overview-workbook"></a>Arbeitsmappe „Übersicht“
 
-In der Arbeitsmappe **Übersicht** für das ausgewählte Abonnement zeigt die Tabelle interaktive Speichermetriken und den Dienstverfügbarkeitsstatus für bis zu 10 Speicherkonten an, die innerhalb des Abonnements gruppiert sind. Sie können die Ergebnisse anhand der Optionen filtern, die Sie in den folgenden Dropdownlisten auswählen:
+In der Arbeitsmappe **Übersicht** für das ausgewählte Abonnement werden in der Tabelle interaktive Speichermetriken und der Dienstverfügbarkeitsstatus für bis zu 5 Speicherkonten angezeigt, die innerhalb des Abonnements gruppiert sind. Sie können die Ergebnisse anhand der Optionen filtern, die Sie in den folgenden Dropdownlisten auswählen:
 
 * **Abonnements** – Es werden nur Abonnements mit Speicherkonten aufgelistet.  
 
-* **Speicherkonten** – Standardmäßig sind 10 Speicherkonten vorab ausgewählt. Wenn Sie in der Bereichsauswahl alle oder mehrere Speicherkonten auswählen, werden bis zu 200 Speicherkonten zurückgegeben. Wenn Sie beispielsweise insgesamt 573 Speicherkonten in drei ausgewählten Abonnements haben, werden nur 200 Konten angezeigt. 
+* **Speicherkonten** – standardmäßig sind 5 Speicherkonten vorab ausgewählt. Wenn Sie in der Bereichsauswahl alle oder mehrere Speicherkonten auswählen, werden bis zu 200 Speicherkonten zurückgegeben. Wenn Sie beispielsweise insgesamt 573 Speicherkonten in drei ausgewählten Abonnements haben, werden nur 200 Konten angezeigt. 
 
 * **Zeitbereich** – Standardmäßig werden die Informationen aus den letzten 4 Stunden basierend auf der entsprechenden Auswahl angezeigt.
 
@@ -74,7 +64,7 @@ Die Zählerkachel unter den Dropdownlisten führt ein Rollup der Gesamtanzahl de
 Wählen Sie einen Wert in den Spalten **Verfügbarkeit**, **E2E-Latenz**, **Serverlatenz** und **Transaktionsfehlertyp/Fehler** aus. Dann werden Sie zu einem Bericht weitergeleitet, der auf den spezifischen Typ von Speichermetriken zugeschnitten ist, die mit der für dieses Speicherkonto ausgewählten Spalte übereinstimmen. Weitere Informationen zu den Arbeitsmappen für die einzelnen Kategorien finden Sie weiter unten im Abschnitt [Detaillierte Speicherarbeitsmappen](#detailed-storage-workbooks). 
 
 >[!NOTE]
->Ausführliche Informationen dazu, welche Fehler im Bericht angezeigt werden können, finden Sie unter [Response Type schema](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions) (Schema der Antworttypen). Suchen Sie dort nach Antworttypen wie **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**. Abhängig von den ausgewählten Speicherkonten werden alle anderen Fehler unter der Kategorie **Andere** dargestellt, wenn mehr als drei Arten von Fehlern gemeldet werden.
+>Ausführliche Informationen dazu, welche Fehler im Bericht angezeigt werden können, finden Sie unter [Response Type schema](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions) (Schema der Antworttypen). Suchen Sie dort nach Antworttypen wie **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**. Abhängig von den ausgewählten Speicherkonten werden alle anderen Fehler unter der Kategorie **Andere** dargestellt, wenn mehr als drei Arten von Fehlern gemeldet werden.
 
 Der Standardschwellenwert für **Verfügbarkeit** lautet:
 
@@ -99,11 +89,11 @@ Gehen Sie wie folgt vor, um direkt über ein Speicherkonto auf Azure Monitor fü
 
 1. Wählen Sie im Azure-Portal „Speicherkonten“ aus.
 
-2. Wählen Sie in der Liste ein Speicherkonto aus. Wählen Sie im Abschnitt „Überwachung“ die Option „Insights (Vorschau)“.
+2. Wählen Sie in der Liste ein Speicherkonto aus. Wählen Sie im Abschnitt „Überwachung“ die Option „Insights“ aus.
 
-    ![Seite „Übersicht“ für das ausgewählte Speicherkonto](./media/storage-insights-overview/storage-account-direct-overview-01.png)
+    ![Screenshot der Arbeitsmappenseite „Übersicht“ für das Speicherkonto](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
-In der Arbeitsmappe**Übersicht** für das Speicherkonto werden mehrere Leistungsmetriken für die Speicherung angezeigt, anhand derer Sie schnell Folgendes bewerten können:
+In der Arbeitsmappe **Übersicht** für das Speicherkonto werden mehrere Leistungsmetriken für die Speicherung angezeigt, anhand derer Sie schnell Folgendes bewerten können:
 
 * Integrität des Speicherdiensts, um sofort festzustellen, ob ein Problem außerhalb ihrer Kontrolle den Speicherdienst in der Region beeinträchtigt, in der er bereitgestellt wird. Dies wird in der Spalte **Zusammenfassung** angegeben.
 
@@ -145,7 +135,7 @@ Die Arbeitsmappen **Übersicht** oder **Kapazität** für Mehrfachabonnement und
 
 ![Beispiel für das Exportieren von Ergebnissen aus dem Raster einer Arbeitsmappe](./media/storage-insights-overview/workbook-export-example.png)
 
-## <a name="customize-azure-monitor-for-storage-preview"></a>Anpassen von Azure Monitor für Storage (Vorschauversion)
+## <a name="customize-azure-monitor-for-storage"></a>Anpassen von Azure Monitor für Storage
 
 In diesem Abschnitt werden gängige Szenarien für die Bearbeitung der Arbeitsmappe erläutert, um sie zur Unterstützung Ihrer Datenanalyseanforderungen anzupassen:
 
@@ -162,7 +152,7 @@ Die Anpassungen werden in einer benutzerdefinierten Arbeitsmappe gespeichert, um
 
 Sie können die Arbeitsmappen **Übersicht** oder **Kapazität** für Mehrfachabonnement und Speicherkonto bei jeder Ausführung auf den Bereich eines bestimmten Abonnements/von bestimmten Abonnements oder eines bestimmten Speicherkontos/von bestimmten Speicherkonten konfigurieren. Führen Sie dazu die folgenden Schritte aus:
 
-1. Wählen Sie im Portal **Überwachen** und dann im linken Bereich **Speicherkonten (Vorschau)** aus.
+1. Wählen Sie im Portal **Überwachen** und dann im linken Bereich **Speicherkonten** aus.
 
 2. Wählen Sie in der Arbeitsmappe **Übersicht** in der Befehlsleiste den Befehl **Bearbeiten** aus.
 
@@ -174,7 +164,7 @@ Sie können die Arbeitsmappen **Übersicht** oder **Kapazität** für Mehrfachab
 
 ### <a name="modify-metrics-and-colors-in-the-workbook"></a>Ändern von Metriken und Farben in der Arbeitsmappe
 
-Die vorkonfigurierten Arbeitsmappen enthalten Metrikdaten, und Sie haben die Möglichkeit, jede der Visualisierungen zu ändern oder zu entfernen und sie an die spezifischen Anforderungen Ihres Teams anzupassen. 
+Die vorkonfigurierten Arbeitsmappen enthalten Metrikdaten, und Sie haben die Möglichkeit, jede der Visualisierungen zu ändern oder zu entfernen und sie an die spezifischen Anforderungen Ihres Teams anzupassen.
 
 In unserem Beispiel arbeiten wir mit der Arbeitsmappe „Kapazität“ für Mehrfachabonnement und Speicherkonto, um Folgendes zu veranschaulichen:
 
@@ -183,13 +173,13 @@ In unserem Beispiel arbeiten wir mit der Arbeitsmappe „Kapazität“ für Mehr
 
 Sie können bei jeder der vordefinierten Arbeitsmappen **Fehler**, **Leistung**, **Verfügbarkeit** und **Kapazität** dieselben Änderungen ausführen.
 
-1. Wählen Sie im Portal **Überwachen** und dann im linken Bereich **Speicherkonten (Vorschau)** aus.
+1. Wählen Sie im Portal **Überwachen** und dann im linken Bereich **Speicherkonten** aus.
 
 2. Wählen Sie **Kapazität** aus, um zur Arbeitsmappe „Kapazität“ zu wechseln, und wählen Sie in der Befehlsleiste den Befehl **Bearbeiten** aus.
 
     ![„Bearbeiten“ auswählen, um eine Arbeitsmappe zu ändern](./media/storage-insights-overview/workbook-edit-workbook.png)
 
-3. Wählen Sie neben dem Abschnitt „Metriken“ **Bearbeiten** aus. 
+3. Wählen Sie neben dem Abschnitt „Metriken“ **Bearbeiten** aus.
 
     ![„Bearbeiten“ auswählen, um die Metriken für die Arbeitsmappe „Kapazität“ zu ändern](./media/storage-insights-overview/edit-metrics-capacity-workbook-01.png)
 
@@ -197,7 +187,7 @@ Sie können bei jeder der vordefinierten Arbeitsmappen **Fehler**, **Leistung**,
 
     ![Bearbeiten von Spalteneinstellungen](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
 
-5. Wählen Sie im Bereich **Spalteneinstellungen bearbeiten** im Abschnitt **Spalten** die Option **microsoft.storage/storageaccounts-Capacity-UsedCapacity Timeline$|Verwendete Kontokapazität Timeline$** und dann in der Dropdownliste **Spaltenrenderer** den Eintrag **Ausgeblendet** aus. 
+5. Wählen Sie im Bereich **Spalteneinstellungen bearbeiten** im Abschnitt **Spalten** die Option **microsoft.storage/storageaccounts-Capacity-UsedCapacity Timeline$|Verwendete Kontokapazität Timeline$** und dann in der Dropdownliste **Spaltenrenderer** den Eintrag **Ausgeblendet** aus.
 
 6. Wählen Sie **Speichern und schließen** aus, um Ihre Änderung zu committen.
 
@@ -205,7 +195,7 @@ Nun ändern wir das Farbdesign für die Kapazitätsmetriken im Bericht so, dass 
 
 1. Wählen Sie im Metrikraster **Spalteneinstellungen** aus.
 
-2. Wählen Sie im Bereich **Spalteneinstellungen bearbeiten** im Abschnitt **Spalten** die Option **microsoft.storage/storageaccounts-Capacity-UsedCapacity$|microsoft.storage/storageaccounts/blobservices-Capacity-BlobCapacity$|microsoft.storage/storageaccounts/fileservices-Capacity-FileCapacity$|microsoft.storage/storageaccounts/queueservices-Capacity-QueueCapacity$|microsoft.storage/storageaccounts/tableservices-Capacity-TableCapacity$** aus. Wählen Sie in der Dropdownliste **Farbpalette** den Eintrag **Grün** aus.
+2. Wählen Sie im Bereich **Spalteneinstellungen bearbeiten** im Abschnitt **Spalten** die Option **microsoft.storage/storageaccounts-Capacity-UsedCapacity$`|`microsoft.storage/storageaccounts/blobservices-Capacity-BlobCapacity$`|`microsoft.storage/storageaccounts/fileservices-Capacity-FileCapacity$`|`microsoft.storage/storageaccounts/queueservices-Capacity-QueueCapacity$`|`microsoft.storage/storageaccounts/tableservices-Capacity-TableCapacity$** aus. Wählen Sie in der Dropdownliste **Farbpalette** den Eintrag **Grün** aus.
 
 3. Wählen Sie **Speichern und schließen** aus, um Ihre Änderung zu committen.
 
@@ -217,7 +207,7 @@ In diesem Beispiel arbeiten wir mit der Arbeitsmappe „Kapazität“ des Speich
 
 1. Wählen Sie im Portal **Speicherkonten** und dann ein Speicherkonto aus der Liste aus.
 
-2. Wählen Sie im linken Bereich **Insights (Vorschauversion)** aus.
+2. Wählen Sie im linken Bereich **Insights** aus.
 
 3. Wählen Sie in der Arbeitsmappe **Verfügbarkeit** aus, um zur Arbeitsmappe „Verfügbarkeit“ zu wechseln. Wählen Sie dann in der Befehlsleiste den Befehl **Bearbeiten** aus. 
 
@@ -235,16 +225,49 @@ In diesem Beispiel arbeiten wir mit der Arbeitsmappe „Kapazität“ des Speich
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Dieser Abschnitt wird Sie bei der Diagnose und Behandlung einiger bekannter Probleme unterstützen, die auftreten können, wenn Sie Azure Monitor für Storage (Vorschauversion) verwenden. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
+Allgemeine Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung für arbeitsmappenbasierte Erkenntnisse](troubleshoot-workbooks.md).
+
+Dieser Abschnitt wird Sie bei der Diagnose und Behandlung einiger bekannter Probleme unterstützen, die bei der Verwendung von Azure Monitor für Storage auftreten können. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>Beheben von Leistungs-, Kapazitäts-oder Verfügbarkeitsproblemen
 
-Informationen zur Problembehandlung bei speicherbezogenen Problemen, die Sie mit Azure Monitor für Storage (Vorschauversion) identifizieren, finden Sie in [Anleitungen zur Problembehandlung](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance) für Azure Storage.  
+Informationen zur Problembehandlung bei speicherbezogenen Problemen, die Sie im Zusammenhang mit Azure Monitor für Storage ermitteln, finden Sie in den [Anleitungen zur Problembehandlung](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance) für Azure Storage.  
+
+### <a name="why-can-i-only-see-200-storage-accounts"></a>Warum kann ich nur 200 Speicherkonten sehen?
+
+Die Anzahl der ausgewählten Speicherkonten ist auf 200 begrenzt, unabhängig von der Anzahl der ausgewählten Abonnements.
+
+### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>Wie ändert man die Farbgebung und den Schwellenwert für die Verfügbarkeit?
+
+Im Abschnitt [Ändern des Verfügbarkeitsschwellenwerts](#modify-the-availability-threshold) finden Sie detaillierte Schritte zum Ändern der Farbgebung und der Verfügbarkeitsschwellenwerte.
+
+### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Wie können Sie die Daten analysieren und Probleme behandeln, die in Azure Monitor für Storage angezeigt werden?
+
+ Weitere Informationen zur Analyse und Problembehandlung der im Azure Monitor für Storage angezeigten Azure Storage-Daten finden Sie im Artikel [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md).
+
+### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>Warum werden nicht alle Fehlertypen in Metriken angezeigt?
+
+Derzeit werden bis zu drei verschiedene Fehlertypen angezeigt und der Rest der Fehler in einem einzigen Bucket zusammengefasst. Dieses wird über splitByLimit gesteuert und kann geändert werden. Zum Ändern der Eigenschaft:
+
+1. Klicken Sie auf „Edit workbook“ (Arbeitsmappe bearbeiten).
+2. Navigieren Sie zu „metrics“ (Metriken), klicken Sie auf „edit“ (Bearbeiten), und wählen Sie **Transactions, Sum** (Transaktionen, Summe) oder andere beliebige Metriken aus, die Sie bearbeiten möchten.
+
+    ![Navigieren zu „metrics“ (Metriken), Klicken auf „edit“ (Bearbeiten) und „Transactions, Sums“ (Transaktionen, Summen)](./media/storage-insights-overview/fqa7.png)
+
+3. Ändern Sie dann die Anzahl der Aufteilungen.
+
+    ![Auswählen von „Metrikparameter“](./media/storage-insights-overview/fqa7-2.png)
+
+Wenn Sie n verschiedene Fehlertypen anzeigen möchten, geben Sie splitByLimit als n+1 an. 1 steht hier für die zusätzlichen, restlichen Fehler.
+
+###  <a name="i-saved-my-workbook-while-on-some-storage-account-why-cant-i-find-it-now"></a>Ich habe meine Arbeitsmappe in einem Speicherkonto gespeichert. Warum kann ich die Arbeitsmappe nicht mehr finden?
+
+Jede Arbeitsmappe wird in dem Speicherkonto gespeichert, in der Sie diese gespeichert haben. Versuchen Sie das bestimmte Speicherkonto zu finden, in dem der Benutzer die Arbeitsmappe gespeichert hat. Andernfalls gibt es keine Möglichkeit, eine bestimmte Arbeitsmappe zu finden, ohne die Ressource (Speicherkonto) zu kennen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Konfigurieren Sie [Metrikwarnungen](../platform/alerts-metric.md) und [Dienstintegritätsbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications.md), um automatisierte Warnungen einzurichten, die beim Erkennen von Problemen hilfreich sein können.
+* Konfigurieren Sie [Metrikwarnungen](../platform/alerts-metric.md) und [Dienstintegritätsbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md), um automatisierte Warnungen einzurichten, die beim Erkennen von Problemen hilfreich sein können.
 
-* Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../app/usage-workbooks.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.
+* Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.
 
 * Eine ausführliche Anleitung zum Verwenden der Speicheranalyse sowie weiterer Tools, um Azure Storage-bezogene Probleme zu identifizieren, zu diagnostizieren und zu beheben, finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md).

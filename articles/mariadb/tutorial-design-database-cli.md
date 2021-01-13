@@ -1,19 +1,19 @@
 ---
-title: 'Tutorial: Entwerfen einer Azure Database for MariaDB-Instanz mithilfe der Azure CLI'
+title: 'Tutorial: Entwerfen einer Azure Database for MariaDB-Instanz – Azure CLI'
 description: In diesem Tutorial wird das Erstellen und Verwalten des Servers und der Datenbank für Azure Database for MariaDB mithilfe der Azure CLI über die Befehlszeile erläutert.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 11/10/2018
-ms.custom: mvc
-ms.openlocfilehash: 548f4f10758b2d69bf4fda00f8bf52d33d20306c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 3/18/2020
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 8f6f8d5a2cc9dc17d08486125fc2e44307c1be46
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999165"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436656"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Tutorial: Entwerfen einer Azure Database for MariaDB-Instanz mithilfe der Azure CLI
 
@@ -24,17 +24,15 @@ Azure Database for MariaDB ist ein relationaler Datenbankdienst in der Microsoft
 > * Konfigurieren der Serverfirewall
 > * Verwenden des [mysql-Befehlszeilentools](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) zum Erstellen einer Datenbank
 > * Laden von Beispieldaten
-> * Abfragen von Daten
+> * Daten abfragen
 > * Aktualisieren von Daten
 > * Wiederherstellen von Daten
 
 Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-Sie können Azure Cloud Shell im Browser verwenden oder [die Azure CLI auf Ihrem Computer installieren]( /cli/azure/install-azure-cli), um die Codeblöcke in diesem Tutorial auszuführen.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
-
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
+- Für diesen Artikel ist mindestens Version 2.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert. 
 
 Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource vorhanden ist oder in Rechnung gestellt wird. Wählen Sie eine bestimmte Abonnement-ID unter Ihrem Konto mit dem Befehl [az account set](/cli/azure/account#az-account-set) aus.
 ```azurecli-interactive
@@ -42,7 +40,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-Erstellen Sie mit dem Befehl [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) eine [Azure-Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden.
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden.
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `myresourcegroup` am Standort `westus` erstellt.
 
@@ -122,7 +120,7 @@ mysql -h mydemoserver.database.windows.net -u myadmin@mydemoserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>Leere Datenbank erstellen
-Sobald Sie mit dem Server verbunden sind, erstellen Sie eine leere Datenbank.
+Erstellen Sie eine leere Datenbank, nachdem Sie eine Verbindung mit dem Server hergestellt haben.
 ```sql
 mysql> CREATE DATABASE mysampledb;
 ```
@@ -177,7 +175,7 @@ Zum Wiederherstellen benötigen Sie die folgenden Informationen:
 - Wiederherstellungspunkt: Wählen Sie einen Zeitpunkt vor der Änderung des Servers aus. Er darf nicht weiter zurückliegen als das älteste Sicherungsdatum der Quelldatenbank.
 - Zielserver: Geben Sie einen neuen Servernamen für die Wiederherstellung ein.
 - Quellserver: Geben Sie den Namen des Servers ein, von dem aus wiederhergestellt werden soll.
-- Standort: Sie können nicht die Region wählen. Standardmäßig ist dieser Wert mit dem Quellserver identisch.
+- Speicherort: Sie können nicht die Region wählen. Standardmäßig ist dieser Wert mit dem Quellserver identisch.
 
 ```azurecli-interactive
 az mariadb server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
@@ -185,9 +183,9 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 Für den Befehl `az mariadb server restore` sind folgende Parameter erforderlich:
 
-| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
+| Einstellung | Vorgeschlagener Wert | BESCHREIBUNG  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
+| resource-group |  myresourcegroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
 | name | mydemoserver-restored | Der Name des neuen Servers, der durch den Befehl „restore“ erstellt wird. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Wählen Sie einen Zeitpunkt für die Wiederherstellung aus. Datum und Zeit müssen innerhalb des Aufbewahrungszeitraums für Sicherungen des Quellservers liegen. Verwenden Sie das Datums- und Zeitformat nach ISO 8601. Beispielsweise können Sie Ihre eigene lokale Zeitzone wie etwa `2017-04-13T05:59:00-08:00` oder das UTC-Format Zulu `2017-04-13T13:59:00Z` verwenden. |
 | source-server | mydemoserver | Der Name oder die ID des Quellservers, über den die Wiederherstellung durchgeführt wird. |
@@ -203,6 +201,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Konfigurieren der Serverfirewall
 > * Verwenden des [mysql-Befehlszeilentools](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) zum Erstellen einer Datenbank
 > * Laden von Beispieldaten
-> * Abfragen von Daten
+> * Daten abfragen
 > * Aktualisieren von Daten
 > * Wiederherstellen von Daten

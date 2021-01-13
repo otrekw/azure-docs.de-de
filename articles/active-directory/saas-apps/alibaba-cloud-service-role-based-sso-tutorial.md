@@ -2,26 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Alibaba Cloud Service (rollenbasiertes SSO) | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Alibaba Cloud Service (rollenbasiertes SSO) konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3667841e-acfc-4490-acf5-80d9ca3e71e8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 12/08/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99b9173c817cc3ecf4b9a34ec6906af0b4de70e6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c9db5ab471f743ffbf3ae4e140ad4cb32d0a3d6c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120773"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670191"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Alibaba Cloud Service (rollenbasiertes SSO)
 
@@ -30,8 +25,6 @@ In diesem Tutorial erfahren Sie, wie Sie Alibaba Cloud Service (rollenbasiertes 
 * Steuern Sie in Azure AD, wer Zugriff auf Alibaba Cloud Service (rollenbasiertes SSO) hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihrem Azure AD-Konto automatisch bei Alibaba Cloud Service (rollenbasiertes SSO) anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,7 +43,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Um die Integration von Alibaba Cloud Service (rollenbasiertes SSO) in Azure AD zu konfigurieren, müssen Sie Alibaba Cloud Service (rollenbasiertes SSO) über den Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
@@ -61,7 +54,7 @@ Um die Integration von Alibaba Cloud Service (rollenbasiertes SSO) in Azure AD 
     ![Eigenschaftenkonfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/Properties.png)
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-alibaba-cloud-service-role-based-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Alibaba Cloud Service (rollenbasiertes SSO)
+## <a name="configure-and-test-azure-ad-sso-for-alibaba-cloud-service-role-based-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Alibaba Cloud Service (rollenbasiertes SSO)
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Alibaba Cloud Service (rollenbasiertes SSO) mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Alibaba Cloud Service (rollenbasiertes SSO) eingerichtet werden.
 
@@ -79,27 +72,29 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Alibaba Cloud Service (rollenbasiertes SSO)** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Alibaba Cloud Service (rollenbasiertes SSO)** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** verfügen:
-
-    >[!NOTE]
-    >Sie erhalten die Metadaten des Dienstanbieters über diese [URL](https://signin.alibabacloud.com/saml-role/sp-metadata.xml).
 
     a. Klicken Sie auf **Metadatendatei hochladen**.
 
     b. Klicken Sie auf das **Ordnerlogo**, wählen Sie die Metadatendatei aus, und klicken Sie auf **Hochladen**.
+
+
+    >[!NOTE]
+    >1. Laden Sie für die internationale Alibaba Cloud-Website die Dienstanbietermetadaten unter [diesem Link](https://signin.alibabacloud.com/saml-role/sp-metadata.xml) herunter.
+    > 1. Verwenden Sie [diesen Link](https://signin.aliyun.com/saml-role/sp-metadata.xml), um die Dienstanbietermetadaten für die Alibaba Cloud Service-Website (CN) herunterzuladen.
 
     c. Nach dem erfolgreichen Upload der Metadatendatei werden die Werte **Bezeichner** und **Antwort-URL** im Abschnitt „Alibaba Cloud Service (rollenbasiertes SSO)“ automatisch aufgefüllt:
 
     > [!Note]
     > Sollten die Werte **Bezeichner** und **Antwort-URL** nicht automatisch aufgefüllt werden, geben Sie die erforderlichen Werte manuell ein.
 
-1. Für Alibaba Cloud Service (rollenbasiertes SSO) müssen Rollen in Azure AD konfiguriert werden. Der Rollenanspruch ist vorkonfiguriert und muss nicht von Ihnen konfiguriert werden, Sie müssen ihn aber dennoch in Azure AD erstellen. Informationen dazu finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
+1. Für Alibaba Cloud Service (rollenbasiertes SSO) müssen Rollen in Azure AD konfiguriert werden. Der Rollenanspruch ist vorkonfiguriert und muss nicht von Ihnen konfiguriert werden, Sie müssen ihn aber dennoch in Azure AD erstellen. Informationen dazu finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui).
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -119,7 +114,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -128,20 +123,14 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Alibaba Cloud Service (rollenbasiertes SSO)** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie auf der Registerkarte **Benutzer und Gruppen** „u2“ aus der Benutzerliste aus, und klicken Sie auf **Auswählen**. Klicken Sie dann auf **Zuweisen**.
 
-    ![Testkonfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
+    ![Zuweisen des Azure AD-Testbenutzers 1](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
 1. Zeigen Sie die zugewiesene Rolle an, und testen Sie „Alibaba Cloud Service (rollenbasiertes SSO)“.
 
-    ![Testkonfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
+    ![Zuweisen des Azure AD-Testbenutzers 2](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
 
     >[!NOTE]
     >Nach der Zuordnung des Benutzers (u2) wird die erstellte Rolle automatisch an den Benutzer angefügt. Wenn Sie mehrere Rollen erstellt haben, müssen Sie nach Bedarf die geeignete Rolle an den Benutzer anfügen. Wenn Sie rollenbasiertes SSO von Azure AD für mehrere Alibaba Cloud-Konten implementieren möchten, wiederholen Sie die vorherigen Schritte.
@@ -158,36 +147,36 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 5. Nachdem der IdP erfolgreich erstellt wurde, klicken Sie auf **RAM-Rolle erstellen**.
 
-6. Geben Sie im Feld **Name der RAM Rolle** `AADrole` ein, wählen Sie `AAD` aus der Dropdownliste **IdP auswählen** aus, und klicken Sie auf „OK“.
+6. Geben Sie im Feld **Name der RAM Rolle**`AADrole` ein, wählen Sie `AAD` aus der Dropdownliste **IdP auswählen** aus, und klicken Sie auf „OK“.
 
     >[!NOTE]
     >Sie können der Rolle bei Bedarf die Berechtigung erteilen. Nach dem Erstellen des IdPs und der entsprechenden Rolle empfehlen wir, die ARNs des IdPs und der Rolle zur späteren Verwendung zu speichern. Die ARNs finden Sie auf der Seite mit den IdP-Informationen und auf der Seite mit den Rolleninformationen.
 
 7. Ordnen Sie die Alibaba Cloud RAM-Rolle (AADrole) dem Azure AD-Benutzer (u2) zu: Um die RAM-Rolle dem Azure AD-Benutzer zuzuordnen, müssen Sie eine Rolle in Azure AD erstellen, indem Sie diesen Schritten folgen:
 
-    a. Melden Sie sich beim [Azure AD Graph-Tester](https://developer.microsoft.com/graph/graph-explorer?spm=a2c63.p38356.879954.9.7d904e167h6Yg9) an.
+    a. Melden Sie sich beim [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) an.
 
     b. Klicken Sie auf **Berechtigungen ändern** , um die erforderlichen Berechtigungen zum Erstellen einer Rolle zu erhalten.
 
-    ![Graph-Konfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
+    ![Graph-Konfiguration 1](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
 
     c. Wählen Sie die folgenden Berechtigungen aus der Liste aus, und klicken Sie auf **Berechtigungen ändern**, wie in der folgenden Abbildung dargestellt.
 
-    ![Graph-Konfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
+    ![Graph-Konfiguration 2](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
 
     >[!NOTE]
     >Nach dem Zuweisen der Berechtigungen melden Sie sich wieder beim Graph-Tester an.
 
     d. Wählen Sie auf die Graph-Tester Seite aus der ersten Dropdownliste **GET** und aus der zweiten Dropdownliste **beta** aus. Geben Sie dann `https://graph.microsoft.com/beta/servicePrincipals` in das Feld neben den Dropdownlisten ein, und klicken Sie auf **Abfrage ausführen**.
 
-    ![Graph-Konfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
+    ![Graph-Konfiguration 3](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
     >[!NOTE]
     >Wenn Sie mehrere Verzeichnisse verwenden, können Sie `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` in das Feld der Abfrage eingeben.
 
     e. Extrahieren Sie im Abschnitt **Antwortvorschau** die appRoles-Eigenschaft aus „Dienstprinzipal“ für die zukünftige Verwendung.
 
-    ![Graph-Konfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
+    ![Graph-Konfiguration 4](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
 
     >[!NOTE]
     >Die appRoles-Eigenschaft finden Sie durch Eingabe von `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` in das Feld der Abfrage. Beachten Sie, dass `objectID` die Objekt-ID ist, die Sie auf der Azure AD-Seite **Eigenschaften** kopiert haben.
@@ -195,17 +184,17 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     f. Wechseln Sie zurück zum Graph-Tester, ändern Sie die Methode von **GET** zu **PATCH**, fügen Sie den folgenden Inhalt in den Abschnitt **Anforderungstext** ein und klicken Sie auf **Abfrage ausführen**:
     ```
     { 
-    "appRoles": [
+      "appRoles": [
         { 
-        "allowedMemberTypes":[
+          "allowedMemberTypes":[
             "User"
-        ],
-        "description": "msiam_access",
-        "displayName": "msiam_access",
-        "id": "41be2db8-48d9-4277-8e86-f6d22d35****",
-        "isEnabled": true,
-        "origin": "Application",
-        "value": null
+          ],
+          "description": "msiam_access",
+          "displayName": "msiam_access",
+          "id": "41be2db8-48d9-4277-8e86-f6d22d35****",
+          "isEnabled": true,
+          "origin": "Application",
+          "value": null
         },
         { "allowedMemberTypes": [
             "User"
@@ -217,7 +206,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
         "origin": "ServicePrincipal",
         "value": "acs:ram::187125022722****:role/aadrole,acs:ram::187125022722****:saml-provider/AAD"
         }
-    ]
+      ]
     }
     ```
     > [!NOTE]
@@ -239,27 +228,20 @@ Nach Abschluss die vorherigen Konfigurationen testen Sie Alibaba Cloud Service (
 
 1. Wählen Sie im Azure-Portal auf der Seite **Alibaba Cloud Service (rollenbasiertes SSO)** die Option **Einmaliges Anmelden** aus, und klicken Sie auf **Testen**.
 
-    ![Testkonfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
+    ![Testkonfiguration 1](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
 
 2. Klicken Sie auf **Als aktueller Benutzer anmelden**.
 
-    ![Testkonfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
+    ![Testkonfiguration 2](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
 
 3. Wählen Sie auf der Kontoauswahlseite „u2“ aus.
 
-    ![Testkonfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
+    ![Testkonfiguration 3](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
 
 4. Die folgende Seite wird angezeigt und zeigt an, dass das rollenbasierte SSO erfolgreich ausgeführt wurde.
 
-    ![Testkonfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
+    ![Testkonfiguration 4](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Alibaba Cloud Service (rollenbasiertes SSO) mit Azure AD ausprobieren](https://aad.portal.azure.com/)
-
+Nach dem Konfigurieren des einmaligen Anmeldens von Alibaba Cloud Service (rollenbasiertes SSO) können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

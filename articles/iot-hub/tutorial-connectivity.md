@@ -5,16 +5,23 @@ services: iot-hub
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
-ms.custom: mvc
+ms.custom:
+- mvc
+- amqp
+- mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- devx-track-js
+- devx-track-azurecli
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: caa249dda4215dfcef13df96d2dd4245cae49efd
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 1eead9bb93fe8b753ace518cde18b240ab1a3cd4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595757"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572676"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Tutorial: Verwenden eines simulierten Geräts zum Testen der Konnektivität mit Ihrem IoT Hub
 
@@ -29,15 +36,9 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Überprüfen der Cloud-zu-Gerät-Konnektivität
 > * Überprüfen der Synchronisierung von Gerätezwillingen
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-Für die CLI-Skripts, die Sie in diesem Tutorial ausführen, wird die [Microsoft Azure IoT-Erweiterung für die Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) verwendet. Führen Sie den folgenden CLI-Befehl aus, um diese Erweiterung zu installieren:
-
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 Die Gerätesimulatoranwendung, die Sie in diesem Tutorial ausführen, wurde mit Node.js geschrieben. Sie benötigen mindestens Node.js v10.x.x auf Ihrem Entwicklungscomputer.
 
@@ -51,7 +52,9 @@ node --version
 
 Laden Sie das Node.js-Beispielprojekt für den Gerätesimulator von https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip herunter, und extrahieren Sie das ZIP-Archiv.
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in diesem Tutorial wird das MQTT-Protokoll verwendet, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 Wenn Sie in einer vorherigen Schnellstartanleitung oder einem Tutorial einen IoT Hub mit dem Tarif „Free“ oder „Standard“ erstellt haben, können Sie diesen Schritt überspringen.
 
@@ -101,7 +104,7 @@ Führen Sie die folgenden Befehle aus, um den primären Geräteschlüssel für *
 read key < <(date +%s | sha256sum | base64 | head -c 32)
 
 # Requires the IoT Extension for Azure CLI
-# az extension add --name azure-cli-iot-ext
+# az extension add --name azure-iot
 
 # Reset the primary device key for MyTestDevice
 az iot hub device-identity update --device-id MyTestDevice --set authentication.symmetricKey.primaryKey=$key --hub-name {YourIoTHubName}
@@ -262,4 +265,4 @@ Falls Sie die IoT Hub-Instanz nicht mehr benötigen, löschen Sie die Ressourcen
 In diesem Tutorial wurde beschrieben, wie Sie Folgendes überprüfen: Ihre Geräteschlüssel, die Gerät-zu-Cloud-Konnektivität, die Cloud-zu-Gerät-Konnektivität und die Synchronisierung der Gerätezwillinge. Weitere Informationen zur Überwachung Ihres IoT Hub finden Sie im Artikel mit der Anleitung für die IoT Hub-Überwachung.
 
 > [!div class="nextstepaction"]
-> [Überwachen per Diagnose](iot-hub-monitor-resource-health.md)
+> [Überwachen von IoT Hub](monitor-iot-hub.md)

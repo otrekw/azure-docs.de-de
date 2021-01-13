@@ -3,19 +3,20 @@ title: Überprüfen von Text anhand einer benutzerdefinierten Begriffsliste in C
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie Text mit benutzerdefinierten Begriffslisten im Content Moderator SDK für C# moderieren.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: 144137109f97a8c2049430ed1e05117ea6c95d7f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 93d90232fb530a6c14c40558fc6a9974a1da42de
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564406"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900915"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>Überprüfen von Text anhand einer benutzerdefinierten Begriffsliste in C#
 
@@ -28,11 +29,11 @@ Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den Einstieg 
 - Hinzufügen von Benennungen zu einer Liste.
 - Abgleichen von Benennungen mit den Benennungen in einer Liste.
 - Löschen von Benennungen aus einer Liste.
-- Löschen einer Liste.
+- Löschen einer Liste
 - Bearbeiten von Listeninformationen
 - Aktualisieren des Index, damit Änderungen an der Liste in einer neuen Überprüfung berücksichtigt werden
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/), bevor Sie beginnen. 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Registrieren für Content Moderator-Dienste
 
@@ -42,7 +43,7 @@ Um Content Moderator-Dienste über die REST-API oder über das SDK verwenden zu 
 
 1. Fügen Sie Ihrer Projektmappe ein neues Projekt vom Typ **Konsolen-App (.NET Framework)** hinzu.
 
-1. Geben Sie dem Projekt den Namen **TermLists**. Wählen Sie dieses Projekt als einzelnes Startprojekt für die Projektmappe aus.
+1. Geben Sie dem Projekt den Namen **TermLists** . Wählen Sie dieses Projekt als einzelnes Startprojekt für die Projektmappe aus.
 
 ### <a name="install-required-packages"></a>Installieren erforderlicher Pakete
 
@@ -59,8 +60,7 @@ Fügen Sie die folgenden `using`-Anweisungen hinzu:
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -70,10 +70,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Erstellen des Content Moderator-Clients
 
-Fügen Sie den folgenden Code hinzu, um einen Content Moderator-Client für Ihr Abonnement zu erstellen.
-
-> [!IMPORTANT]
-> Aktualisieren Sie die Felder **AzureRegion** und **CMSubscriptionKey** mit den Werten Ihres Regionsbezeichners und des Abonnementschlüssels.
+Fügen Sie den folgenden Code hinzu, um einen Content Moderator-Client für Ihr Abonnement zu erstellen. Aktualisieren Sie die Felder `AzureEndpoint` und `CMSubscriptionKey` mit den Werten Ihrer Endpunkt-URL und Ihres Abonnementschlüssels. Diese finden Sie auf der Registerkarte **Schnellstart** Ihrer Ressource im Azure-Portal.
 
 ```csharp
 /// <summary>
@@ -85,16 +82,9 @@ Fügen Sie den folgenden Code hinzu, um einen Content Moderator-Client für Ihr 
 public static class Clients
 {
     /// <summary>
-    /// The region/location for your Content Moderator account, 
-    /// for example, westus.
-    /// </summary>
-    private static readonly string AzureRegion = "YOUR API REGION";
-
-    /// <summary>
     /// The base URL fragment for Content Moderator calls.
     /// </summary>
-    private static readonly string AzureBaseURL =
-        $"https://{AzureRegion}.api.cognitive.microsoft.com";
+    private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
     /// <summary>
     /// Your Content Moderator subscription key.
@@ -113,7 +103,7 @@ public static class Clients
         // Create and initialize an instance of the Content Moderator API wrapper.
         ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
 
-        client.Endpoint = AzureBaseURL;
+        client.Endpoint = AzureEndpoint;
         return client;
     }
 }
@@ -144,10 +134,10 @@ private const double latencyDelay = 0.5;
 
 ## <a name="create-a-term-list"></a>Erstellen einer Benennungsliste
 
-Sie erstellen eine Begriffsliste mit **ContentModeratorClient.ListManagementTermLists.Create**. Der erste Parameter für **Create** ist eine Zeichenfolge, die einen MIME-Typ enthält. Dieser sollte „application/json“ lauten. Weitere Informationen finden Sie in der [API-Referenz](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). Der zweite Parameter ist ein **Body**-Objekt, das einen Namen und eine Beschreibung für die neue Begriffsliste enthält.
+Sie erstellen eine Begriffsliste mit **ContentModeratorClient.ListManagementTermLists.Create** . Der erste Parameter für **Create** ist eine Zeichenfolge, die einen MIME-Typ enthält. Dieser sollte „application/json“ lauten. Weitere Informationen finden Sie in der [API-Referenz](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). Der zweite Parameter ist ein **Body** -Objekt, das einen Namen und eine Beschreibung für die neue Begriffsliste enthält.
 
 > [!NOTE]
-> Die Obergrenze liegt bei **fünf Benennungslisten**, wobei jede Liste **max. 10.000 Benennungen** enthalten kann.
+> Die Obergrenze liegt bei **fünf Benennungslisten** , wobei jede Liste **max. 10.000 Benennungen** enthalten kann.
 
 Fügen Sie die folgende Methodendefinition dem TermLists-Namespace (Program-Klasse) hinzu.
 
@@ -182,7 +172,7 @@ static string CreateTermList (ContentModeratorClient client)
 
 ## <a name="update-term-list-name-and-description"></a>Aktualisieren von Name und Beschreibung der Begriffsliste
 
-Sie aktualisieren die Begriffslisteninformationen mit **ContentModeratorClient.ListManagementTermLists.Update**. Der erste Parameter für **Update** ist die Begriffslisten-ID. Der zweite Parameter ist ein MIME-Typ. Dieser sollte „application/json“ lauten. Weitere Informationen finden Sie in der [API-Referenz](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685). Der dritte Parameter ist ein **Body**-Objekt, das den neuen Namen und die Beschreibung enthält.
+Sie aktualisieren die Begriffslisteninformationen mit **ContentModeratorClient.ListManagementTermLists.Update** . Der erste Parameter für **Update** ist die Begriffslisten-ID. Der zweite Parameter ist ein MIME-Typ. Dieser sollte „application/json“ lauten. Weitere Informationen finden Sie in der [API-Referenz](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685). Der dritte Parameter ist ein **Body** -Objekt, das den neuen Namen und die Beschreibung enthält.
 
 Fügen Sie die folgende Methodendefinition dem TermLists-Namespace (Program-Klasse) hinzu.
 
@@ -249,7 +239,7 @@ static void GetAllTerms(ContentModeratorClient client, string list_id)
 
 Nachdem Sie eine Begriffsliste geändert haben, aktualisieren Sie ihren Suchindex, damit die Änderungen verwendet werden, wenn Sie das nächste Mal mit der Begriffsliste einen Text überprüfen. Dies entspricht der Vorgehensweise einer Suchmaschine auf Ihrem Desktop (sofern aktiviert) oder einer Internetsuchmaschine, die kontinuierlich ihren Index zur Einbeziehung neuer Dateien oder Seiten aktualisiert.
 
-Sie aktualisieren einen Begriffslisten-Suchindex mit **ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod**.
+Sie aktualisieren einen Begriffslisten-Suchindex mit **ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod** .
 
 Fügen Sie die folgende Methodendefinition dem TermLists-Namespace (Program-Klasse) hinzu.
 
@@ -269,18 +259,18 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 
 ## <a name="screen-text-using-a-term-list"></a>Überprüfen von Bildschirmtext mithilfe einer Begriffsliste
 
-Sie überprüfen Text mithilfe einer Begriffsliste mit **ContentModeratorClient.TextModeration.ScreenText**, die folgende Parameter akzeptiert.
+Sie überprüfen Text mithilfe einer Begriffsliste mit **ContentModeratorClient.TextModeration.ScreenText** , die folgende Parameter akzeptiert.
 
 - Die Sprache der Begriffe in der Begriffsliste.
 - Ein MIME-Typ wie „text/html“, „text/xml“, „text/markdown“ oder „text/plain“.
 - Der zu überprüfende Text.
 - Ein boolescher Wert. Legen Sie für dieses Feld **true** zur Autokorrektur der Texte vor der Überprüfung fest.
-- Ein boolescher Wert. Legen Sie für dieses Feld **true** fest, um persönlich identifizierbare Informationen (Personal Identifiable Information, PII) im Text zu erkennen.
+- Ein boolescher Wert. Legen Sie dieses Feld auf **true** fest, um persönliche Daten im Text zu erkennen.
 - Die Begriffslisten-ID.
 
 Weitere Informationen finden Sie in der [API-Referenz](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
 
-**ScreenText** gibt ein **Screen**-Objekt zurück, das über eine **Terms**-Eigenschaft verfügt, die alle Begriffe auflistet, die Content Moderator in der Prüfung erkannt hat. Beachten Sie: Wenn Content Moderator während der Prüfung keine Begriffe erkannt hat, hat die **Terms**-Eigenschaft den Wert **NULL**.
+**ScreenText** gibt ein **Screen** -Objekt zurück, das über eine **Terms** -Eigenschaft verfügt, die alle Begriffe auflistet, die Content Moderator in der Prüfung erkannt hat. Beachten Sie: Wenn Content Moderator während der Prüfung keine Begriffe erkannt hat, hat die **Terms** -Eigenschaft den Wert **NULL** .
 
 Fügen Sie die folgende Methodendefinition dem TermLists-Namespace (Program-Klasse) hinzu.
 
@@ -306,7 +296,7 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
             Console.WriteLine(String.Format("Found term: \"{0}\" from list ID {1} at index {2}.", term.Term, term.ListId, term.Index));
         }
     }
-    read.Sleep(throttleRate);
+    Thread.Sleep(throttleRate);
 }
 ```
 
@@ -314,9 +304,9 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
 
 Das Löschen eines Begriffs oder einer Liste ist einfach. Mit dem SDK können Sie folgende Aufgaben durchführen:
 
-- Löschen eines Begriffs. (**ContentModeratorClient.ListManagementTerm.DeleteTerm**)
-- Löschen aller Begriffe in einer Liste, jedoch nicht der Liste selbst. (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
-- Löschen einer Liste und aller zugehörigen Inhalte. (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
+- Löschen eines Begriffs. ( **ContentModeratorClient.ListManagementTerm.DeleteTerm** )
+- Löschen aller Begriffe in einer Liste, jedoch nicht der Liste selbst. ( **ContentModeratorClient.ListManagementTerm.DeleteAllTerms** )
+- Löschen einer Liste und aller zugehörigen Inhalte ( **ContentModeratorClient.ListManagementTerm.DeleteAllTerms** )
 
 ### <a name="delete-a-term"></a>Löschen eines Begriffs
 
@@ -375,7 +365,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 
 ## <a name="compose-the-main-method"></a>Erstellen der Methode „Main“
 
-Fügen Sie die **Main**-Methodendefinition dem Namespace **TermLists** (Klasse **Program**) hinzu. Schließen Sie zum Schluss die Klasse **Program** und den Namespace **TermLists**.
+Fügen Sie die **Main** -Methodendefinition dem Namespace **TermLists** (Klasse **Program** ) hinzu. Schließen Sie zum Schluss die Klasse **Program** und den Namespace **TermLists** .
 
 ```csharp
 static void Main(string[] args)

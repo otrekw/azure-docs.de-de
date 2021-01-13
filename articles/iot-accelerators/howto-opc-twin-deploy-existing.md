@@ -1,6 +1,6 @@
 ---
 title: Wie Sie ein OPC Twin-Modul einem vorhandenen Azure-Projekt bereitstellen | Microsoft-Dokumentation
-description: Bereitstellen von OPC Twin in einem vorhandenen Projekt
+description: In diesem Artikel wird beschrieben, wie Sie OPC Twin in einem vorhandenen Projekt bereitstellen. Außerdem erfahren Sie, wie Sie Bereitstellungsfehler beheben können.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 74b502a37081c729c5e33a0db7dc7f26cb44774b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0a4866db463dcf4ff17b2f7b25806806a700e8fa
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972279"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071641"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Bereitstellen von OPC Twin in einem vorhandenen Projekt
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den Inhalt auf dem neuesten Stand lesen.
 
 Das OPC Twin-Modul wird auf IoT Edge ausgeführt und stellt mehrere Edge-Dienste für die OPC Twin- und Registry-Dienste (Gerätezwilling und Registrierung) zur Verfügung.
 
@@ -26,11 +29,11 @@ Der Mikroservice der OPC UA-Geräteregistrierung ermöglicht den Zugriff auf reg
 Der Modulkern ist die Supervisoridentität. Der Supervisor verwaltet den Endpunktzwilling, der den OPC UA-Serverendpunkten entspricht, die über die entsprechende API der OPC UA-Registrierung aktiviert werden. Diese Endpunktzwillinge übersetzen OPC UA JSON, das vom OPC Twin-Microservice in der Cloud empfangen wurde, in binäre OPC UA-Nachrichten, die über einen zustandsbehafteten sicheren Kanal an den verwalteten Endpunkt gesendet werden. Der Supervisor stellt auch Erkennungsdienste bereit, die Geräteerkennungsereignisse zur Verarbeitung an den OPC UA Device Onboarding-Dienst senden, wenn diese Ereignisse zu Aktualisierungen der OPC UA-Registrierung führen.  In diesem Artikel erfahren Sie, wie Sie das OPC Twin-Modul in einem bestehenden Projekt bereitstellen können.
 
 > [!NOTE]
-> Weitere Informationen zu den Details und Anweisungen zur Bereitstellung finden Sie im GitHub-[Repository](https://github.com/Azure/azure-iiot-opc-twin-module).
+> Weitere Informationen zu den Details und eine Anleitung zur Bereitstellung finden Sie im [GitHub-Repository](https://github.com/Azure/azure-iiot-opc-twin-module).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie sicher, dass die PowerShell- und [AzureRM PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)-Erweiterungen installiert sind. Wenn dieser Schritt noch nicht erfolgt ist, klonen Sie dieses GitHub-Repository. Führen Sie die folgenden Befehle in PowerShell aus:
+Stellen Sie sicher, dass die PowerShell- und [AzureRM PowerShell](/powershell/azure/azurerm/install-azurerm-ps)-Erweiterungen installiert sind. Wenn dieser Schritt noch nicht erfolgt ist, klonen Sie dieses GitHub-Repository. Führen Sie die folgenden Befehle in PowerShell aus:
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git

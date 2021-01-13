@@ -7,18 +7,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 1875e3437c13a678532c05b4057126f785b9125c
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.custom: mqtt
+ms.openlocfilehash: 15c0df33b8f09ec71f2be913d72f0785dc766375
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147528"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027532"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Senden von Cloud-zu-Gerät-Nachrichten mit IoT Hub (iOS)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. In der Schnellstartanleitung [Senden von Telemetriedaten von einem Gerät an einen IoT-Hub (iOS)](quickstart-send-telemetry-ios.md) erfahren Sie, wie Sie einen IoT-Hub erstellen, eine Geräteidentität darin bereitstellen und eine simulierte Geräte-App programmieren, die D2C-Nachrichten (Device-to-Cloud, Gerät-zu-Cloud) sendet.
+Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. In [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Python)](quickstart-send-telemetry-ios.md) erfahren Sie, wie Sie einen IoT-Hub erstellen, eine Geräteidentität darin bereitstellen und eine simulierte Geräte-App programmieren, die D2C-Nachrichten (Device-to-Cloud, Gerät-zu-Cloud) sendet.
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
@@ -26,7 +27,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 * Empfangen von C2D-Nachrichten auf einem Gerät.
 
-* Anfordern einer Übermittlungsbestätigung (*Feedback*) von Ihrem Lösungs-Back-End für Nachrichten, die von IoT Hub an ein einzelnes Gerät gesendet wurden.
+* Anfordern einer Übermittlungsbestätigung ( *Feedback* ) von Ihrem Lösungs-Back-End für Nachrichten, die von IoT Hub an ein einzelnes Gerät gesendet wurden.
 
 Weitere Informationen zu C2D-Nachrichten finden Sie im [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide-messaging.md).
 
@@ -50,6 +51,8 @@ Am Ende dieses Artikels führen Sie zwei Swift-iOS-Projekte aus:
 * Die neueste Version von [Xcode](https://developer.apple.com/xcode/) mit der neuesten Version des iOS SDKs. Diese Schnellstartanleitung wurde mit Xcode 9.3 und iOS 11.3 getestet.
 
 * Die neueste Version von [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
+
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="simulate-an-iot-device"></a>Simulieren eines IoT-Geräts
 
@@ -93,13 +96,13 @@ Der Installationsbefehl installiert nicht nur die erforderlichen Pods für Ihr P
 
 3. Öffnen Sie **ViewController.swift** zur Bearbeitung in Xcode. 
 
-4. Suchen Sie nach der Variablen **connectionString**, und aktualisieren Sie den Wert mit der Geräteverbindungszeichenfolge aus dem ersten Schritt.
+4. Suchen Sie nach der Variablen **connectionString** , und aktualisieren Sie den Wert mit der Geräteverbindungszeichenfolge aus dem ersten Schritt.
 
 5. Speichern Sie die Änderungen. 
 
-6. Klicken Sie auf die Schaltfläche **Erstellen und Ausführen**, oder drücken Sie die Tastenkombination **BEFEHL+R**, um das Projekt im Geräteemulator auszuführen.
+6. Klicken Sie auf die Schaltfläche **Erstellen und Ausführen** , oder drücken Sie die Tastenkombination **BEFEHL+R** , um das Projekt im Geräteemulator auszuführen.
 
-   ![Ausführen des Projekts](media/iot-hub-ios-swift-c2d/run-sample.png)
+   ![Screenshot: Schaltfläche zum Erstellen und Ausführen im Geräteemulator](media/iot-hub-ios-swift-c2d/run-sample.png)
 
 ## <a name="get-the-iot-hub-connection-string"></a>Abrufen der IoT-Hub-Verbindungszeichenfolge
 
@@ -141,7 +144,7 @@ Der Installationsbefehl installiert nicht nur die erforderlichen Pods für Ihr P
 
 3. Öffnen Sie **ViewController.swift** zur Bearbeitung in Xcode. 
 
-4. Suchen Sie nach der Variablen **connectionString**, und aktualisieren Sie den Wert mit der Dienstverbindungszeichenfolge, die Sie zuvor in [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben.
+4. Suchen Sie nach der Variablen **connectionString** , und aktualisieren Sie den Wert mit der Dienstverbindungszeichenfolge, die Sie zuvor in [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben.
 
 5. Speichern Sie die Änderungen.
 
@@ -149,19 +152,19 @@ Der Installationsbefehl installiert nicht nur die erforderlichen Pods für Ihr P
 
    ![Ändern des Emulatorgeräts](media/iot-hub-ios-swift-c2d/change-device.png)
 
-7. Klicken Sie auf die Schaltfläche **Erstellen und Ausführen**, oder drücken Sie die Tastenkombination **BEFEHL+R**, um das Projekt im Geräteemulator auszuführen.
+7. Klicken Sie auf die Schaltfläche **Erstellen und Ausführen** , oder drücken Sie die Tastenkombination **BEFEHL+R** , um das Projekt im Geräteemulator auszuführen.
 
-   ![Ausführen des Projekts](media/iot-hub-ios-swift-c2d/run-app.png)
+   ![Screenshot: Schaltfläche zum Erstellen und Ausführen](media/iot-hub-ios-swift-c2d/run-app.png)
 
 ## <a name="send-a-cloud-to-device-message"></a>Senden einer C2D-Nachricht
 
 Nun können Sie mit den beiden Anwendungen C2D-Nachrichten senden und empfangen.
 
-1. Klicken Sie in der App **iOS App Sample**, die auf dem simulierten IoT-Gerät ausgeführt wird, auf **Start**. Die Anwendung beginnt damit, D2C-Nachrichten zu senden und auf C2D-Nachrichten zu lauschen.
+1. Klicken Sie in der App **iOS App Sample** , die auf dem simulierten IoT-Gerät ausgeführt wird, auf **Start**. Die Anwendung beginnt damit, D2C-Nachrichten zu senden und auf C2D-Nachrichten zu lauschen.
 
    ![Anzeigen der Beispiel-IoT-Geräte-App](media/iot-hub-ios-swift-c2d/view-d2c.png)
 
-2. Geben Sie in der App **IoTHub Service Client Sample**, die auf dem simulierten Dienstgerät ausgeführt wird, die ID für das IoT-Gerät ein, an das Sie eine Nachricht senden möchten. 
+2. Geben Sie in der App **IoTHub Service Client Sample** , die auf dem simulierten Dienstgerät ausgeführt wird, die ID für das IoT-Gerät ein, an das Sie eine Nachricht senden möchten. 
 
 3. Schreiben Sie eine Klartextnachricht, und klicken Sie auf **Send** (Senden).
 

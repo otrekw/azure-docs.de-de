@@ -1,27 +1,29 @@
 ---
-title: Visuelles Erstellen in Azure Data Factory | Microsoft-Dokumentation
+title: Visuelles Erstellen
 description: Informationen zum Verwenden der visuellen Erstellung in Azure Data Factory
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/09/2019
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: ''
-manager: craigg
-ms.openlocfilehash: e8b9aa3af6b15272e19589eb422016f4abd9380f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+manager: anandsub
+ms.date: 09/08/2020
+ms.openlocfilehash: c3204d33cac9f0944ec2ea2cf43be65c7afa46df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883663"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500137"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visuelles Erstellen in Azure Data Factory
 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Mithilfe der Azure Data Factory-Benutzeroberfläche (UX) können Sie Ressourcen für Ihre Data Factory visuell erstellen und bereitstellen, ohne Code schreiben zu müssen. Sie können Aktivitäten auf eine Pipelinecanvas ziehen, Testläufe ausführen, iterativ debuggen sowie Ihre Pipelineausführungen bereitstellen und überwachen.
+
+Die Azure Data Factory-Benutzererfahrung wird zurzeit nur unter Microsoft Edge und Google Chrome unterstützt.
 
 ## <a name="authoring-canvas"></a>Erstellungsbereich
 
@@ -32,6 +34,28 @@ Um den **Erstellungsbereich** zu öffnen, klicken Sie auf das Stiftsymbol.
 Hier erstellen Sie die Pipelines, Aktivitäten, Datasets, verknüpften Dienste, Datenflüsse, Trigger und Integrationslaufzeiten, aus denen Ihre Factory besteht. Informationen zum Einstieg in das Erstellen einer Pipeline im Erstellungsbereich finden Sie unter [Kopieren von Daten mit der Kopieraktivität](tutorial-copy-data-portal.md). 
 
 Die standardmäßige visuelle Erstellungsumgebung arbeitet direkt mit dem Data Factory-Dienst zusammen. Die Integration in Azure Repos Git oder GitHub wird ebenfalls unterstützt, um die Versionskontrolle und Zusammenarbeit an Ihren Data Factory-Pipelines zu ermöglichen. Weitere Informationen zu den Unterschieden dieser Erstellungsumgebungen finden Sie unter [Quellcodeverwaltung in Azure Data Factory](source-control.md).
+
+### <a name="properties-pane"></a>Eigenschaftenbereich
+
+Bei Ressourcen der obersten Ebene, z. B Pipelines, Datasets und Datenflüssen, können allgemeine Eigenschaften im Eigenschaftenbereich auf der rechten Seite der Canvas bearbeitet werden. Der Eigenschaftenbereich enthält Eigenschaften wie Name, Beschreibung, Anmerkungen und andere allgemeine Eigenschaften. Unterressourcen, z. B. Pipelineaktivitäten und Datenflusstransformationen, werden in dem Bereich unten in der Canvas bearbeitet. 
+
+![Eigenschaftenbereich](media/author-visually/properties-pane.png)
+
+Der Eigenschaftenbereich wird standardmäßig nur bei der Ressourcenerstellung geöffnet. Wenn Sie ihn bearbeiten möchten, klicken Sie oben rechts im Erstellungsbereich auf das Symbol für den Eigenschaftenbereich.
+
+### <a name="related-resources"></a>Verwandte Ressourcen
+
+Im Bereich „Eigenschaften“ können Sie sehen, welche Ressourcen von der ausgewählten Ressource abhängig sind, indem Sie die Registerkarte **Verknüpft** auswählen. Hier werden alle Ressourcen aufgeführt, die auf die aktuelle Ressource verweisen.
+
+![Verwandte Ressourcen](media/author-visually/related-resources.png)
+
+Beispielsweise verwenden in der obigen Abbildung eine Pipeline und zwei Datenflüsse das aktuell ausgewählte Dataset.
+
+## <a name="management-hub"></a>Verwaltungshub
+
+Der Verwaltungshub, den Sie in der Azure Data Factory-Benutzeroberfläche über die Registerkarte *Verwalten* aufrufen, ist ein Portal mit globalen Verwaltungsaktionen für Ihre Data Factory. Hier können Sie die Verbindungen mit Datenspeichern und externen Compute-Umgebungen, die Konfiguration der Quellcodeverwaltung und die Triggereinstellungen verwalten. Weitere Informationen zu den Funktionen finden Sie unter [Verwaltungshub](author-management-hub.md).
+
+![Verwalten von verknüpften Diensten](media/author-management-hub/management-hub-linked-services.png)
 
 ## <a name="expressions-and-functions"></a>Ausdrücke und Funktionen
 

@@ -8,19 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b905993c88bd4425215dd83962980d8e46a7b943
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 3129ffdb1eaa1802e2521927f32f0fbf03c9ae0f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423708"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351281"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit PHP und der REST-API der Bing-News-Suche
 
-Verwenden Sie diesen Schnellstart, um die Bing-Bildersuche-API zum ersten Mal aufzurufen und eine JSON-Antwort zu erhalten. Diese einfache JavaScript-Anwendung sendet eine Suchabfrage an die API und zeigt die Rohdatenergebnisse an.
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Bing-News-Suche-API zum ersten Mal aufzurufen. Diese einfache PHP-Anwendung sendet eine Suchabfrage an die API und zeigt die JSON-Antwort an.
 
 Diese Anwendung ist zwar in PHP geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
 
@@ -30,17 +35,18 @@ Diese Anwendung ist zwar in PHP geschrieben, an sich ist die API aber ein RESTfu
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
+Weitere Informationen finden Sie unter [Cognitive Services-Preise: Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Die [Bing-News-Suche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) gibt Newsergebnisse der Bing-Suche-Engine zurück.
+Führen Sie die folgenden Schritte aus, um diese Anwendung auszuführen:
 
-1. Achten Sie darauf, dass die Unterstützung des sicheren Hypertext Transfer-Protokolls (HTTP) in Ihrer `php.ini`-Datei aktiviert ist wie im Codekommentar beschrieben.
-2. Erstellen Sie in Ihrer bevorzugten IDE ein neues PHP-Projekt.
+1. Aktivieren Sie die sichere HTTP-Unterstützung in Ihrer `php.ini`-Datei, indem Sie die Zeile `;extension=php_openssl.dll` auskommentieren, wie im Codekommentar beschrieben.
+2. Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues PHP-Projekt.
 3. Fügen Sie den unten stehenden Code hinzu.
 4. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
-5. Führen Sie das Programm aus.
+5. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
+6. Führen Sie das Programm aus.
 
 ```php
 <?php
@@ -49,8 +55,8 @@ Die [Bing-News-Suche-API](https://docs.microsoft.com/rest/api/cognitiveservices-
 // ;extension=php_openssl.dll
 
 // **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+// **_ Update or verify the following values. _*_
+// _*********************************************
 
 // Replace the accessKey string value with your valid access key.
 $accessKey = 'enter key here';
@@ -102,7 +108,7 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**Antwort**
+## <a name="example-json-response"></a>JSON-Beispielantwort
 
 Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 

@@ -1,0 +1,82 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Static Web Apps
+summary: Mit Azure Static Web Apps können Sie moderne Webanwendungen erstellen, die nach Änderungen auf GitHub automatisch veröffentlicht werden.
+metadata:
+  title: Dokumentation zu Azure Static Web Apps
+  description: Mit Azure Static Web Apps können Sie moderne Webanwendungen erstellen, die nach Änderungen auf GitHub automatisch veröffentlicht werden.
+  ms.topic: landing-page
+  ms.service: static-web-apps
+  author: craigshoemaker
+  ms.author: cshoe
+  ms.date: 12/08/2020
+  ms.openlocfilehash: 880d675915a17e24269361c0ceed320a257d0ba9
+  ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 12/09/2020
+  ms.locfileid: "96906130"
+landingContent:
+- title: Informationen zu Azure Static Web Apps
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Static Web Apps?
+      url: overview.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen Ihrer ersten Angular-App
+      url: ./getting-started.md?tabs=angular
+    - text: Erstellen Ihrer ersten React-App
+      url: ./getting-started.md?tabs=react
+    - text: Erstellen Ihrer ersten Vue-App
+      url: ./getting-started.md?tabs=vue
+    - text: Erstellen Ihrer ersten App (ohne Framework)
+      url: ./getting-started.md?tabs=vanilla-javascript
+  - linkListType: learn
+    links:
+    - text: Veröffentlichen einer Angular-, React-, Svelte- oder Vue-JavaScript-App
+      url: /learn/modules/publish-app-service-static-web-app-api
+    - text: Veröffentlichen einer API
+      url: /learn/modules/publish-static-web-app-api-preview-url
+  - linkListType: video
+    links:
+    - text: Erstellen und Bereitstellen einer statischen Web-App
+      url: https://channel9.msdn.com/Shows/Docs-Azure/Building-and-Deploying-a-Static-Web-App/
+- title: Veröffentlichungsszenarien
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Veröffentlichen über Gatsby
+      url: publish-gatsby.md
+    - text: Veröffentlichen über Hugo
+      url: publish-hugo.md
+    - text: Veröffentlichen über VuePress
+      url: publish-vuepress.md
+    - text: Veröffentlichen über Jekyll
+      url: publish-jekyll.md
+    - text: Bereitstellen über Blazor
+      url: deploy-blazor.md
+    - text: Bereitstellen über Next.js
+      url: deploy-nextjs.md
+    - text: Bereitstellen über Nuxt.js
+      url: deploy-nuxtjs.md
+  - linkListType: learn
+    links:
+    - text: Veröffentlichen einer statischen Web-App mit Gatsby
+      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - text: Veröffentlichen einer statischen Web-App mit Blazor
+      url: /learn/modules/publish-app-service-static-web-app-api-dotnet
+- title: Wichtige Begriffe
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Routen
+      url: routes.md
+    - text: Öffentliche APIs
+      url: apis.md
+    - text: Staging
+      url: review-publish-pull-requests.md
+    - text: Beschränken des Zugriffs
+      url: authentication-authorization.md

@@ -1,20 +1,20 @@
 ---
-title: Anleitung zur Verwendung einer Apache Hadoop-Sandbox – Emulator – Azure HDInsight
+title: Anleitung zur Verwendung einer Apache Hadoop-Sandbox, Emulator – Azure HDInsight
 description: 'Um sich mit dem Apache Hadoop-Ökosystem vertraut zu machen, können Sie eine Hadoop-Sandbox von Hortonworks auf einem virtuellen Azure-Computer einrichten. '
 keywords: hadoop emulator,hadoop sandbox
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9515f0ecae92e6350924b3856aa6cbf20e608d51
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 4f19797fa1c79261dc3459e2b924ed45d0b7e36e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066696"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547961"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Erste Schritte mit einer Apache Hadoop-Sandbox, einem Emulator auf einem virtuellen Computer
 
@@ -28,7 +28,7 @@ Hier erfahren Sie, wie Sie die Apache Hadoop-Sandbox von Hortonworks auf einem v
 
 1. Navigieren Sie zu den [Cloudera-Downloads](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html).
 
-1. Klicken Sie unter **Choose Installation Type** (Installationsart auswählen) auf **VIRTUALBOX**, um die aktuelle Hortonworks Sandbox auf eine VM herunterzuladen. Melden Sie sich an, oder füllen Sie das Produktinteresse-Formular aus.
+1. Klicken Sie unter **Choose Installation Type** (Installationsart auswählen) auf **VIRTUALBOX** , um die aktuelle Hortonworks Sandbox auf eine VM herunterzuladen. Melden Sie sich an, oder füllen Sie das Produktinteresse-Formular aus.
 
 1. Klicken Sie auf die Schaltfläche **HDP SANDBOX (LATEST)** , um den Download zu starten.
 
@@ -57,7 +57,9 @@ Informationen zum Herunterladen einer älteren HDP Sandbox-Version erhalten Sie 
 
 2. Geben Sie nach der Anmeldung den folgenden Befehl ein:
 
-        ambari-admin-password-reset
+    ```bash
+    ambari-admin-password-reset
+    ```
 
     Geben Sie ein Kennwort für das Ambari-Administratorkonto ein, wenn Sie dazu aufgefordert werden. Dieses wird verwendet, wenn Sie auf die Ambari-Webbenutzeroberfläche zugreifen.
 
@@ -65,18 +67,26 @@ Informationen zum Herunterladen einer älteren HDP Sandbox-Version erhalten Sie 
 
 1. Verwenden Sie bei einer SSH-Verbindung mit der Sandbox den folgenden Befehl, um die Hive-Shell zu starten:
 
-        hive
+    ```bash
+    hive
+    ```
+
 2. Verwenden Sie nach dem Start der Shell Folgendes, um die Tabellen anzuzeigen, die zusammen mit der Sandbox bereitgestellt werden:
 
-        show tables;
+    ```hiveql
+    show tables;
+    ```
+
 3. Verwenden Sie Folgendes, um zehn Zeilen aus der Tabelle `sample_07` abzurufen:
 
-        select * from sample_07 limit 10;
+    ```hiveql
+    select * from sample_07 limit 10;
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwenden von Visual Studio mit der Sandbox von Hortonworks](../hdinsight-hadoop-emulator-visual-studio.md)
+* [Verwenden von Visual Studio mit der Sandbox von Hortonworks](./apache-hadoop-visual-studio-tools-get-started.md)
 
-* [Learning the ropes of the Hortonworks Sandbox](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Einführung in Hortonworks Sandbox](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 
-* [Hadoop tutorial - Getting started with HDP](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [Hadoop-Tutorial – Erste Schritte mit HDP](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

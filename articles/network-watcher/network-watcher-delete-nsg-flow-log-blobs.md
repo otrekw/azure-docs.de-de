@@ -8,21 +8,22 @@ manager: ''
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6898bed0645146af9c0131307459e31bad661329
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 84f34c9441805352422215fcbac300bd900024d0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036295"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84737953"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Löschen von Speicherblobs für Flowprotokolle für Netzwerksicherheitsgruppen in Network Watcher
 
-Zurzeit gibt es ein Problem, bei dem die [Flowprotokolle für Netzwerksicherheitsgruppen (NSG)](network-watcher-nsg-flow-logging-overview.md) für Network Watcher nicht auf Grundlage der Einstellungen für die Aufbewahrungsrichtlinie automatisch aus Blob Storage gelöscht werden. Sie müssen nun ein PowerShell-Skript ausführen, um Flowprotokolle wie in diesem Artikel beschrieben manuell aus dem Speicherkonto zu löschen.
+Wenn Sie Datenflussprotokolle manuell aus Ihrem Speicherkonto löschen müssen, können Sie das folgende PowerShell-Skript verwenden.
+Mit diesem Skript werden nur Speicherblobs gelöscht, die älter sind als die vorhandene Aufbewahrungsrichtlinie, die vom Benutzer angegeben wurde.
 
 ## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>Ausführen des PowerShell-Skripts zum Löschen von NSG-Flowprotokollen
  
@@ -135,6 +136,6 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    ```
     
 ## <a name="next-steps"></a>Nächste Schritte
-- Kunden können die Ausführung des Skripts mit [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) oder [Azure Automation](https://azure.microsoft.com/services/automation/) automatisieren.
+- Kunden können die Ausführung des Skripts mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) oder [Azure Automation](https://azure.microsoft.com/services/automation/) automatisieren.
 - Unter [Azure Monitor-Protokolle für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) finden Sie weitere Informationen über die NSG-Protokollierung.
 

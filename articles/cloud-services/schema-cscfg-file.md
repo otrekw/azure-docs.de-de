@@ -1,19 +1,20 @@
 ---
 title: Azure Cloud Services-Definitionsschema (CSCFG-Datei) | Microsoft-Dokumentation
+description: Eine Dienstkonfigurationsdatei (.cscfg) gibt an, wie viele Rolleninstanzen für die einzelnen Rollen, Konfigurationswerte und Zertifikatsfingerabdrücke für eine Rolle bereitgestellt werden sollen.
 services: cloud-services
 ms.custom: ''
 ms.date: 12/07/2016
 ms.service: cloud-services
 ms.topic: reference
 caps.latest.revision: 35
-author: georgewallace
-ms.author: gwallace
-ms.openlocfilehash: 0009f843f8de31b92817dc86ccd718fa5eeeb1ba
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+author: tgore03
+ms.author: tagore
+ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358924"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "79534744"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services-Konfigurationsschema (CSCFG-Datei)
 Die Dienstkonfigurationsdatei gibt die Anzahl der Rolleninstanzen, die für jede Rolle im Dienst bereitgestellt werden, die Werte aller Konfigurationseinstellungen und die Fingerabdrücke für alle einer Rolle zugeordneten Zertifikate an. Wenn der Dienst Teil eines virtuellen Netzwerks ist, müssen Konfigurationsinformationen für das Netzwerk in der Dienstkonfigurationsdatei sowie in der Konfigurationsdatei für virtuelle Netzwerke bereitgestellt werden. Die Standarderweiterung für die Dienstkonfigurationsdatei ist .cscfg.
@@ -50,16 +51,16 @@ Die folgenden Themen beschreiben das Schema für das Element `ServiceConfigurati
 ## <a name="service-configuration-namespace"></a>Dienstkonfigurations-Namespace
 Der XML-Namespace für die Dienstkonfigurationsdatei lautet: `http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration`.
 
-##  <a name="ServiceConfiguration"></a> ServiceConfiguration-Element
+##  <a name="serviceconfiguration-element"></a><a name="ServiceConfiguration"></a> ServiceConfiguration-Element
 Das Element `ServiceConfiguration` ist das Element der obersten Ebene der Dienstkonfigurationsdatei.
 
 In der folgenden Tabelle werden die Attribute des Elements `ServiceConfiguration` beschrieben. Alle Attributwerte sind Zeichenfolgentypen.
 
-| Attribut | BESCHREIBUNG |
+| attribute | BESCHREIBUNG |
 | --------- | ----------- |
 |serviceName|Erforderlich. Der Name des Clouddiensts. Der hier angegebene Name muss mit dem Namen in der Dienstdefinitionsdatei übereinstimmen.|
 |osFamily|Optional. Gibt das Gastbetriebssystem an, das auf Rolleninstanzen im Clouddienst ausgeführt wird. Nähere Informationen zu unterstützten Gastbetriebssystem-Releases finden Sie unter [Azure Gastbetriebssystem-Releases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md).<br /><br /> Wenn Sie keinen `osFamily`-Wert einschließen, und wenn Sie das `osVersion`-Attribut nicht für eine bestimmte Gastbetriebssystem-Version festgelegt haben, wird ein Standardwert 1 verwendet.|
 |osVersion|Optional. Gibt die Version des Gastbetriebssystems an, das auf Rolleninstanzen im Clouddienst ausgeführt wird. Nähere Informationen zu unterstützten Gastbetriebssystem-Versionen finden Sie unter [Azure Gastbetriebssystem-Releases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md).<br /><br /> Sie können angeben, dass das Gastbetriebssystem automatisch auf die neueste Version aktualisiert werden soll. Zu diesem Zweck legen Sie den Wert des `osVersion`-Attributs auf `*` fest. Bei Festlegung auf `*` werden die Rolleninstanzen mit der neuesten Version des Gastbetriebssystems für die angegebene Betriebssystemfamilie bereitgestellt und automatisch aktualisiert, wenn neue Versionen des Gastbetriebssystems freigegeben werden.<br /><br /> Wenn Sie eine bestimmte Version manuell angeben möchten, verwenden Sie die `Configuration String` aus der Tabelle im Abschnitt **Future, Current and Transitional Guest OS Versions (Zukünftige-, Aktuelle- und Übergangs- Gastversionen)** der [Azure Gastbetriebssystem-Releases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md).<br /><br /> Der Standardwert für die `osVersion`-Eigenschaft ist `*`.|
-|Schemaversion|Optional. Gibt die Version des Dienstkonfigurationsschemas an. Die Schemaversion ermöglicht Visual Studio, die richtigen SDK-Tools für die Schemaüberprüfung auszuwählen, wenn mehrere Versionen des SDK nebeneinander installiert sind. Nähere Informationen zu Schema- und Versionskompatibilität finden Sie unter [Azure Gastbetriebssystem-Releases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md).|
+|schemaVersion|Optional. Gibt die Version des Dienstkonfigurationsschemas an. Die Schemaversion ermöglicht Visual Studio, die richtigen SDK-Tools für die Schemaüberprüfung auszuwählen, wenn mehrere Versionen des SDK nebeneinander installiert sind. Nähere Informationen zu Schema- und Versionskompatibilität finden Sie unter [Azure Gastbetriebssystem-Releases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md).|
 
 Die Dienstkonfigurationsdatei muss ein `ServiceConfiguration`-Element enthalten. Das `ServiceConfiguration`-Element kann eine beliebige Anzahl von `Role`-Elementen und 0 (null) oder 1 `NetworkConfiguration`-Elemente enthalten.

@@ -1,21 +1,23 @@
 ---
 title: LINQ to SQL-Übersetzung in Azure Cosmos DB
-description: Zuordnen von LINQ-Abfragen zu SQL-Abfragen in Azure Cosmos DB
+description: Informieren Sie sich über die unterstützten LINQ-Operatoren und die Zuordnung von LINQ-Abfragen zu SQL-Abfragen in Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 11/11/2020
 ms.author: tisande
-ms.openlocfilehash: ad6dcf7307955300a781a7a649b6ac76b3c69589
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 122c95fe9ac017ad7a6957dcdb8323837be34f21
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003555"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545382"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ zu SQL-Übersetzung
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Der Azure Cosmos DB-Abfrageanbieter führt eine bestmögliche Zuordnung von LINQ-Abfragen in SQL-Abfragen in Cosmos DB durch. Bei der folgenden Beschreibung wird davon ausgegangen, dass Sie mit den Grundsätzen von LINQ vertraut sind.
+Der Azure Cosmos DB-Abfrageanbieter führt eine bestmögliche Zuordnung von LINQ-Abfragen in SQL-Abfragen in Cosmos DB durch. Wenn Sie die SQL-Abfrage abrufen möchten, die aus LINQ übersetzt wird, verwenden Sie die `ToString()`-Methode für das generierte `IQueryable`-Objekt. Bei der folgenden Beschreibung wird davon ausgegangen, dass Sie mit den Grundsätzen von [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) vertraut sind. Zusätzlich zu LINQ unterstützt Azure Cosmos DB auch [Entity Framework Core](/ef/core/providers/cosmos/?tabs=dotnet-core-cli), das die SQL-API verwendet.
 
 Das Typsystem der Abfrageanbieter unterstützt nur die primitiven JSON-Typen: numerisch, boolesch, Zeichenfolge und Null.
 
@@ -32,7 +34,7 @@ Der Abfrageanbieter unterstützt die folgenden skalaren Ausdrücke:
     family.children[n].grade; //n is an int variable
   ```
   
-- Arithmetische Ausdrücke, einschließlich allgemeiner arithmetischer Ausdrücke auf numerische und boolesche Werte. Eine vollständige Liste finden Sie in der [Azure Cosmos DB-SQL-Spezifikation](https://go.microsoft.com/fwlink/p/?LinkID=510612).
+- Arithmetische Ausdrücke, einschließlich allgemeiner arithmetischer Ausdrücke auf numerische und boolesche Werte. Eine vollständige Liste finden Sie in der [Azure Cosmos DB-SQL-Spezifikation](sql-query-aggregate-functions.md).
   
   ```
     2 * family.children[0].grade;
@@ -54,31 +56,52 @@ Der Abfrageanbieter unterstützt die folgenden skalaren Ausdrücke:
     new int[] { 3, child.grade, 5 };
   ```
 
-## <a id="SupportedLinqOperators"></a>Unterstützte LINQ-Operatoren
+## <a name="using-linq"></a>Verwenden von LINQ
+
+Sie können eine LINQ-Abfrage mit `GetItemLinqQueryable` erstellen. In diesem Beispiel wird die LINQ-Abfragegenerierung und die asynchrone Ausführung mit `FeedIterator` gezeigt:
+
+```csharp
+using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
+                      .Where(b => b.Title == "War and Peace")
+                      .ToFeedIterator<Book>())
+ {
+     //Asynchronous query execution
+     while (setIterator.HasMoreResults)
+     {
+         foreach(var item in await setIterator.ReadNextAsync()){
+         {
+             Console.WriteLine(item.cost);
+         }
+       }
+     }
+ }
+```
+
+## <a name="supported-linq-operators"></a><a id="SupportedLinqOperators"></a>Unterstützte LINQ-Operatoren
 
 Der im SQL .NET SDK enthaltene LINQ-Anbieter unterstützt die folgenden Operatoren:
 
-- **Select**: Projektionen, einschließlich Objektkonstruktion, werden in SQL SELECT übersetzt.
-- **Where**: Filter werden in SQL WHERE übersetzt und unterstützen die Übersetzung von `&&`, `||` und `!` in die SQL-Operatoren.
-- **SelectMany**: Ermöglicht das Entladen von Arrays in die SQL-JOIN-Klausel. Wird zum Verketten oder Verschachteln von Ausdrücken zum Filtern von Arrayelementen verwendet.
-- **OrderBy** und **OrderByDescending**: Übersetzung in ORDER BY mit ASC oder DESC.
-- Die Operatoren **Count**, **Sum**, **Min**, **Max** und **Average** für die Aggregation und deren asynchrone Entsprechungen **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync** und **AverageAsync**.
+- **Select**: Projektionen, einschließlich Objektkonstruktion, werden in [SELECT](sql-query-select.md) übersetzt.
+- **Where**: Filter werden in [WHERE](sql-query-where.md) übersetzt und unterstützen die Übersetzung von `&&`, `||` und `!` in die SQL-Operatoren.
+- **SelectMany**: Ermöglicht das Entladen von Arrays in die [JOIN](sql-query-join.md)-Klausel. Wird zum Verketten oder Verschachteln von Ausdrücken zum Filtern von Arrayelementen verwendet.
+- **OrderBy** und **OrderByDescending**: Übersetzung in [ORDER BY](sql-query-order-by.md) mit ASC oder DESC.
+- Die Operatoren **Count**, **Sum**, **Min**, **Max** und **Average** für die [Aggregation](sql-query-aggregate-functions.md) und deren asynchrone Entsprechungen **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync** und **AverageAsync**.
 - **CompareTo**: Übersetzung in Bereichsvergleiche. Wird häufig für Zeichenfolgen verwendet, da sie nicht in .NET vergleichbar sind.
-- **Take**: Übersetzung in SQL TOP, um Ergebnisse einer Abfrage einzuschränken.
-- **Mathematische Funktionen**: Unterstützt die Übersetzung von `Abs`, `Acos`, `Asin`, `Atan`, `Ceiling`, `Cos`, `Exp`, `Floor`, `Log`, `Log10`, `Pow`, `Round`, `Sign`, `Sin`, `Sqrt`, `Tan` und `Truncate` aus .NET in die entsprechenden integrierten SQL-Funktionen.
-- **Zeichenfolgenfunktionen**: Unterstützt die Übersetzung von `Concat`, `Contains`, `Count`, `EndsWith`,`IndexOf`, `Replace`, `Reverse`, `StartsWith`, `SubString`, `ToLower`, `ToUpper`, `TrimEnd` und `TrimStart` aus .NET in die entsprechenden integrierten SQL-Funktionen.
-- **Arrayfunktionen**: Unterstützt die Übersetzung von `Concat`, `Contains` und `Count` aus .NET in die entsprechenden integrierten SQL-Funktionen.
-- **Geospatial-Erweiterungsfunktionen**: Unterstützt die Übersetzung aus den Stubmethoden `Distance`, `IsValid`, `IsValidDetailed` und `Within` in die entsprechenden integrierten SQL-Funktionen.
-- **Erweiterungsfunktion für benutzerdefinierte Funktion**: Unterstützt die Übersetzung aus der Stubmethode `UserDefinedFunctionProvider.Invoke` in die entsprechende benutzerdefinierte Funktion.
-- **Sonstiges**: Unterstützt die Übersetzung von `Coalesce` und bedingten Operatoren. Kann `Contains` je nach Kontext in die Zeichenfolge CONTAINS, ARRAY_CONTAINS oder SQL IN übersetzen.
+- **Skip** und **Take**: Übersetzung in [OFFSET und LIMIT](sql-query-offset-limit.md) zum Einschränken von Ergebnissen einer Abfrage und zum Durchführen der Paginierung.
+- **Mathematische Funktionen**: Unterstützt die Übersetzung von `Abs`, `Acos`, `Asin`, `Atan`,`Ceiling`, `Cos`, `Exp`, `Floor`, `Log`, `Log10`, `Pow`, `Round`, `Sign`, `Sin`, `Sqrt`, `Tan` und `Truncate` aus .NET in die entsprechenden [integrierten mathematischen Funktionen](sql-query-mathematical-functions.md).
+- **Zeichenfolgenfunktionen**: Unterstützt die Übersetzung von `Concat`, `Contains`, `Count`, `EndsWith`,`IndexOf`, `Replace`, `Reverse`, `StartsWith`, `SubString`, `ToLower`, `ToUpper`, `TrimEnd` und `TrimStart` aus .NET in die entsprechenden [integrierten Zeichenfolgenfunktionen](sql-query-string-functions.md).
+- **Arrayfunktionen**: Unterstützt die Übersetzung von `Concat`, `Contains` und `Count` aus .NET in die entsprechenden [integrierten Arrayfunktionen](sql-query-array-functions.md).
+- **Geospatial-Erweiterungsfunktionen**: Unterstützt die Übersetzung von `Distance`, `IsValid`, `IsValidDetailed` und `Within` aus .NET in die entsprechenden [integrierten Geofunktionen](sql-query-geospatial-query.md).
+- **Erweiterungsfunktion für benutzerdefinierte Funktion**: Unterstützt die Übersetzung aus der Stubmethode `UserDefinedFunctionProvider.Invoke` in die entsprechende [benutzerdefinierte Funktion](sql-query-udfs.md).
+- **Sonstiges**: Unterstützt die Übersetzung von `Coalesce` und bedingten [Operatoren](sql-query-operators.md). Kann `Contains` je nach Kontext in die Zeichenfolge CONTAINS, ARRAY_CONTAINS oder IN übersetzen.
 
 ## <a name="examples"></a>Beispiele
 
-Die folgenden Beispiele zeigen, wie einige der Standard-LINQ-Abfrageoperatoren in Cosmos DB-Abfragen übersetzt werden.
+Die folgenden Beispiele zeigen, wie einige der Standard-LINQ-Abfrageoperatoren in Abfragen in Azure Cosmos DB übersetzt werden.
 
 ### <a name="select-operator"></a>Select-Operator
 
-Die Syntax ist `input.Select(x => f(x))`, wobei `f` ein skalarer Ausdruck ist.
+Die Syntax ist `input.Select(x => f(x))`, wobei `f` ein skalarer Ausdruck ist. `input` ist in diesem Fall ein `IQueryable`-Objekt.
 
 **Select-Operator, Beispiel 1:**
 
@@ -95,7 +118,7 @@ Die Syntax ist `input.Select(x => f(x))`, wobei `f` ein skalarer Ausdruck ist.
       FROM Families f
     ```
   
-**Select-Operator, Beispiel 2:** 
+**Select-Operator, Beispiel 2:**
 
 - **LINQ Lambda-Ausdruck**
   
@@ -122,7 +145,7 @@ Die Syntax ist `input.Select(x => f(x))`, wobei `f` ein skalarer Ausdruck ist.
     });
   ```
   
-- **SQL** 
+- **SQL**
   
   ```sql
       SELECT VALUE {"name":f.children[0].familyName,
@@ -320,7 +343,6 @@ Bei einer geschachtelten Abfrage wird die innere Abfrage auf jedes Element des �
       JOIN c IN f.children
       WHERE c.familyName = f.parents[0].familyName
   ```
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

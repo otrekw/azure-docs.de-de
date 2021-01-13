@@ -1,40 +1,34 @@
 ---
 title: include file
 description: include file
-services: commercial marketplace
 documentationcenter: partner-center-commercial-marketplace
-author: qianw211
-manager: evansma
-editor: ''
 ms.service: marketplace
-ms.devlang: na
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 08/16/2019
-ms.author: v-qiwe
+ms.date: 08/24/2020
 ms.custom: include file
-ms.openlocfilehash: 43b551639fface699b1c0ec95500de8ea2089b26
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 7709f26b30d41b932569227b8b6f05b5725dc98f
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900097"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815662"
 ---
-Beim Veröffentlichen Ihres Angebots im Marketplace über Partner Center müssen Sie das Angebot mit Ihrem CRM-System (Customer Relationship Management) verbinden. So erhalten Sie Kundenkontaktinformationen sofort, nachdem ein Kunde Interesse bekundet oder Ihr Produkt bereitgestellt hat.
+Wenn Sie Ihr Angebot über Partner Center im kommerziellen Marketplace veröffentlichen, müssen Sie das Angebot mit Ihrem CRM-System verbinden. So können Sie Kundenkontaktinformationen unverzüglich erhalten, wenn ein Kunde Interesse bekundet oder Ihr Produkt bereitstellt.
 
-1. **Wählen Sie ein Leadziel aus, an das wir Kundenleads senden sollen**. Die folgenden CRM-Systeme werden unterstützt:
+1. Wählen Sie ein Leadziel aus, an das wir Kundenleads senden sollen. Die folgenden CRM-Systeme werden unterstützt:
 
     * [Dynamics 365](../commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
     * [Marketo](../commercial-marketplace-lead-management-instructions-marketo.md)
     * [Salesforce](../commercial-marketplace-lead-management-instructions-salesforce.md)
 
-    Wenn Ihr CRM-System in der Liste oben nicht explizit aufgeführt ist, stehen Ihnen die folgenden Optionen zur Verfügung, über die Sie die Kundenleaddaten speichern können. Anschließend können Sie diese Daten exportieren oder in Ihr CRM-System importieren.
+    Wenn Ihr CRM-System in dieser Liste nicht explizit unterstützt wird, können Sie die Kundenleaddaten über die folgenden Optionen speichern. Anschließend können Sie diese Daten exportieren oder in Ihr CRM-System importieren.
 
     * [Azure-Tabelle](../commercial-marketplace-lead-management-instructions-azure-table.md)
     * [HTTPS-Endpunkt](../commercial-marketplace-lead-management-instructions-https.md)
 
-2. Lesen Sie die oben verlinkte Dokumentation zu dem jeweils ausgewählten Leadziel, um zu erfahren, wie das Leadziel so eingerichtet wird, dass Leads von Ihrem Marketplace-Angebot empfangen werden. 
-3. Verbinden Sie Ihr Angebot mit dem Leadziel, während Sie das Angebot über Partner Center im Marketplace veröffentlichen. Informationen dazu finden Sie in der oben verlinkten Dokumentation.
-4. Vergewissern Sie sich, dass die Verbindung mit dem Leadziel ordnungsgemäß eingerichtet ist. Nachdem Sie das Leadziel ordnungsgemäß konfiguriert und in Partner Center für Ihr Angebot auf „Veröffentlichen“ geklickt haben, überprüfen wir die Verbindung und senden Ihnen einen Testlead zu. Wenn Sie das Angebot vor der Liveschaltung anzeigen, können Sie Ihre Leadverbindung ebenfalls testen, indem Sie selbst versuchen, das Angebot in der Vorschauumgebung zu erwerben. 
-5. Stellen Sie sicher, dass die Verbindung mit dem Leadziel auf dem neuesten Stand bleibt, damit Sie keine Leads verlieren. Aktualisieren Sie daher immer diese Verbindungen, wenn sich bei Ihnen etwas geändert hat.
+1. Lesen Sie die entsprechende verknüpfte Dokumentation weiter oben, um zu erfahren, wie Sie Ihr Leadziel einrichten und über Leads für Ihre Angebote auf dem kommerziellen Marketplace informiert werden.
+1. Nachdem Sie Ihr Angebot mit dem Leadziel verbunden haben, wählen Sie im Partner Center **Veröffentlichen** für Ihr Angebot aus. Wir überprüfen dann die Verbindung und senden Ihnen einen Testlead. Wenn Sie das Angebot vor der Liveschaltung anzeigen, können Sie Ihre Leadverbindung ebenfalls testen, indem Sie selbst versuchen, das Angebot in der Vorschauumgebung zu erwerben.
+1. Stellen Sie sicher, dass die Verbindung mit dem Leadziel immer auf dem neuesten Stand ist, damit keine Leads verloren gehen. Aktualisieren Sie diese Verbindungen unbedingt, sobald sich etwas geändert hat.

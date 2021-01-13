@@ -1,21 +1,17 @@
 ---
-title: Erstellen serverloser Apps mit Azure Logic Apps und Azure Functions in Visual Studio
-description: Hier erfahren Sie, wie Sie Ihre erste serverlose App mit Azure Logic Apps und Azure Functions in Visual Studio erstellen, bereitstellen und verwalten.
+title: Erstellen der ersten serverlosen App in Visual Studio
+description: Hier erfahren Sie, wie Sie eine serverlose App mit Azure Logic Apps und Azure Functions in Visual Studio erstellen, bereitstellen und verwalten.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.custom: vs-azure
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: b7af4fc731d01bb666165655baa2f1d6c64d4071
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1758cca902eb77ffc66824cb56b8add9446fabf9
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444865"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749146"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Erstellen Ihrer ersten serverlosen App mit Azure Logic Apps und Azure Functions in Visual Studio
 
@@ -25,7 +21,7 @@ Mithilfe der serverlosen Tools und Funktionen in Azure (beispielsweise [Azure Lo
 
 Zum Erstellen einer serverlosen App in Visual Studio benötigen Sie Folgendes:
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die folgenden Tools. Laden Sie diese Tools herunter, und installieren Sie sie, falls sie noch nicht vorhanden sind.
 
@@ -36,7 +32,7 @@ Zum Erstellen einer serverlosen App in Visual Studio benötigen Sie Folgendes:
     > Stellen Sie beim Installieren von Visual Studio 2019 oder 2017 sicher, dass Sie die Workload **Azure-Entwicklung** auswählen.
 
   * [Microsoft Azure SDK für .NET (ab Version 2.9.1).](https://azure.microsoft.com/downloads/) 
-  Weitere Informationen zu [Azure SDK für .NET](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet).
+  Weitere Informationen zu [Azure SDK für .NET](/dotnet/azure/intro).
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation).
 
@@ -48,7 +44,7 @@ Zum Erstellen einer serverlosen App in Visual Studio benötigen Sie Folgendes:
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
   
-    Sie können die Azure Logic Apps-Tools entweder direkt vom Visual Studio Marketplace herunterladen und installieren oder sich über das [Installieren dieser Erweiterung aus Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions) informieren. 
+    Sie können die Azure Logic Apps-Tools entweder direkt vom Visual Studio Marketplace herunterladen und installieren oder sich über das [Installieren dieser Erweiterung aus Visual Studio](/visualstudio/ide/finding-and-using-visual-studio-extensions) informieren. 
     Achten Sie darauf, dass Sie Visual Studio nach Abschluss der Installation neu starten.
 
   * [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) zum lokalen Debuggen von Functions
@@ -60,7 +56,7 @@ Zum Erstellen einer serverlosen App in Visual Studio benötigen Sie Folgendes:
 
 ## <a name="create-a-resource-group-project"></a>Erstellen eines Ressourcengruppenprojekts
 
-Erstellen Sie für Ihre serverlose App zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). In Azure werden Ressourcen innerhalb einer *Ressourcengruppe* erstellt. Dabei handelt es sich um eine logische Sammlung, die als Einzelressource zum Organisieren, Verwalten und Bereitstellen von Ressourcen für eine gesamte App verwendet wird. Für eine serverlose App in Azure umfasst Ihre Ressourcengruppe Ressourcen sowohl für Azure Logic Apps als auch für Azure Functions. Informieren Sie sich über [Azure-Ressourcengruppen und -Ressourcen](../azure-resource-manager/resource-group-overview.md).
+Erstellen Sie für Ihre serverlose App zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-manager/templates/create-visual-studio-deployment-project.md). In Azure werden Ressourcen innerhalb einer *Ressourcengruppe* erstellt. Dabei handelt es sich um eine logische Sammlung, die als Einzelressource zum Organisieren, Verwalten und Bereitstellen von Ressourcen für eine gesamte App verwendet wird. Für eine serverlose App in Azure umfasst Ihre Ressourcengruppe Ressourcen sowohl für Azure Logic Apps als auch für Azure Functions. Informieren Sie sich über [Azure-Ressourcengruppen und -Ressourcen](../azure-resource-manager/management/overview.md).
 
 1. Starten Sie Visual Studio, und melden Sie sich mit Ihrem Azure-Konto an.
 
@@ -140,7 +136,7 @@ Wenn Sie Ihre Logik-App nach der Bereitstellung bearbeiten möchten, öffnen Sie
 
 ## <a name="create-your-azure-functions-project"></a>Erstellen Ihres Azure Functions-Projekts
 
-Wenn Sie Ihr Functions-Projekt und Ihre Funktion unter Verwendung von JavaScript, Python, F#, PowerShell, Batch oder Bash zu erstellen möchten, gehen Sie wie im Artikel [Arbeiten mit Azure Functions Core Tools](../azure-functions/functions-run-local.md) beschrieben vor. Wenn Sie Ihre Azure-Funktion unter Verwendung von C# innerhalb Ihrer Projektmappe entwickeln möchten, gehen Sie wie unter [Veröffentlichen einer .NET-Klassenbibliothek als Funktions-App](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/) beschrieben vor, um eine C#-Klassenbibliothek zu verwenden.
+Wenn Sie Ihr Functions-Projekt und Ihre Funktion unter Verwendung von JavaScript, Python, F#, PowerShell, Batch oder Bash zu erstellen möchten, gehen Sie wie im Artikel [Arbeiten mit Azure Functions Core Tools](../azure-functions/functions-run-local.md) beschrieben vor. Wenn Sie Ihre Azure-Funktion unter Verwendung von C# innerhalb Ihrer Projektmappe entwickeln möchten, gehen Sie wie unter [Veröffentlichen einer .NET-Klassenbibliothek als Funktions-App](https://azure.microsoft.com/blog/) beschrieben vor, um eine C#-Klassenbibliothek zu verwenden.
 
 ## <a name="deploy-functions-from-visual-studio"></a>Bereitstellen von Funktionen aus Visual Studio
 

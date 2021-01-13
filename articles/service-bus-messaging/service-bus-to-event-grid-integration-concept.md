@@ -1,25 +1,18 @@
 ---
 title: Übersicht über die Integration von Azure Service Bus in Event Grid | Microsoft-Dokumentation
-description: Beschreibung der Integration von Service Bus-Messaging in Event Grid
-services: service-bus-messaging
+description: Dieser Artikel enthält eine Beschreibung der Integration von Azure Service Bus-Messaging in Azure Event Grid.
 documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
+author: spelluru
 ms.topic: conceptual
-ms.date: 09/15/2018
-ms.author: aschhab
-ms.openlocfilehash: 5d4ece6b631882200c6f98f6de5daa543fdf7ce4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 5cc112767b2204d019cb1b7bd23b1603cefdf416
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072130"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882516"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Übersicht über die Integration von Azure Service Bus in Event Grid
 
@@ -46,11 +39,13 @@ Navigieren Sie zu Ihrem Service Bus-Namespace, und wählen Sie **Zugriffssteueru
 Service Bus sendet derzeit Ereignisse für zwei Szenarien:
 
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
-* DeadletterMessagesAvailable
+* [DeadletterMessagesAvailable](#deadletter-messages-available-event)
+* [ActiveMessagesAvailablePeriodicNotifications](#active-messages-available-periodic-notifications)
+* [DeadletterMessagesAvailablePeriodicNotifications](#deadletter-messages-available-periodic-notifications)
 
-Darüber hinaus verwendet Service Bus die Standardsicherheit und die [Authentifizierungsmechanismen](https://docs.microsoft.com/azure/event-grid/security-authentication) von Event Grid.
+Darüber hinaus verwendet Service Bus die Standardsicherheit und die [Authentifizierungsmechanismen](../event-grid/security-authentication.md) von Event Grid.
 
-Weitere Informationen finden Sie unter [Azure Event Grid-Ereignisschema](https://docs.microsoft.com/azure/event-grid/event-schema).
+Weitere Informationen finden Sie unter [Azure Event Grid-Ereignisschema](../event-grid/event-schema.md).
 
 #### <a name="active-messages-available-event"></a>Ereignis: Aktive Nachrichten verfügbar
 
@@ -78,7 +73,7 @@ Das Schema für dieses Ereignis sieht wie folgt aus:
 }
 ```
 
-#### <a name="dead-letter-messages-available-event"></a>Ereignis: Unzustellbare Nachrichten verfügbar
+#### <a name="deadletter-messages-available-event"></a>Ereignis: Unzustellbare Nachrichten verfügbar
 
 Sie erhalten mindestens ein Ereignis pro Warteschlange für unzustellbare Nachrichten, die Nachrichten enthält und über keine aktiven Empfänger verfügt.
 
@@ -89,6 +84,58 @@ Das Schema für dieses Ereignis sieht wie folgt aus:
   "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
   "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
   "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="active-messages-available-periodic-notifications"></a>Aktive Nachrichten verfügbar: periodische Benachrichtigungen
+
+Dieses Ereignis wird regelmäßig ausgelöst, wenn aktive Nachrichten für eine Warteschlange oder ein Abonnement vorhanden sind, auch wenn aktive Listener in dieser bestimmten Warteschlange oder im Abonnement vorhanden sind.
+
+Das Schema für dieses Ereignis sieht wie folgt aus.
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="deadletter-messages-available-periodic-notifications"></a>Unzustellbare Nachrichten verfügbar: periodische Benachrichtigungen
+
+Dieses Ereignis wird regelmäßig ausgelöst, wenn unzustellbare Nachrichten für eine Warteschlange oder ein Abonnement vorhanden sind, auch wenn aktive Listener für die Deadletter-Entität in dieser bestimmten Warteschlange oder im Abonnement vorhanden sind.
+
+Das Schema für dieses Ereignis sieht wie folgt aus.
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications",
   "eventTime": "2018-02-14T05:12:53.4133526Z",
   "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
   "data": {
@@ -139,7 +186,7 @@ Gehen Sie wie folgt vor, um ein neues Event Grid-Abonnement zu erstellen:
 
 ## <a name="azure-cli-instructions"></a>Anleitung für die Azure-Befehlszeilenschnittstelle
 
-Vergewissern Sie sich zunächst, dass mindestens die Version 2.0 der Azure-Befehlszeilenschnittstelle installiert ist. [Laden Sie das Installationsprogramm herunter.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Drücken Sie **WINDOWS-TASTE+X**, und öffnen Sie eine neue PowerShell-Konsole mit Administratorberechtigungen. Alternativ können Sie auch eine Befehlsshell im Azure-Portal verwenden.
+Vergewissern Sie sich zunächst, dass mindestens die Version 2.0 der Azure-Befehlszeilenschnittstelle installiert ist. [Laden Sie das Installationsprogramm herunter.](/cli/azure/install-azure-cli?view=azure-cli-latest) Drücken Sie **WINDOWS-TASTE+X**, und öffnen Sie eine neue PowerShell-Konsole mit Administratorberechtigungen. Alternativ können Sie auch eine Befehlsshell im Azure-Portal verwenden.
 
 Führen Sie den folgenden Code aus:
 
@@ -157,7 +204,7 @@ Wenn Sie BASH verwenden
 
 ## <a name="powershell-instructions"></a>Anleitung für PowerShell
 
-Vergewissern Sie sich, dass Azure PowerShell installiert ist. [Laden Sie das Installationsprogramm herunter.](https://docs.microsoft.com/powershell/azure/install-Az-ps) Drücken Sie **WINDOWS-TASTE+X**, und öffnen Sie eine neue PowerShell-Konsole mit Administratorberechtigungen. Alternativ können Sie auch eine Befehlsshell im Azure-Portal verwenden.
+Vergewissern Sie sich, dass Azure PowerShell installiert ist. [Laden Sie das Installationsprogramm herunter.](/powershell/azure/install-Az-ps) Drücken Sie **WINDOWS-TASTE+X**, und öffnen Sie eine neue PowerShell-Konsole mit Administratorberechtigungen. Alternativ können Sie auch eine Befehlsshell im Azure-Portal verwenden.
 
 ```powershell-interactive
 Connect-AzAccount
@@ -178,10 +225,10 @@ Als Nächstes können Sie sich die anderen Setupoptionen ansehen oder sich verge
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Rufen Sie [Beispiele](service-bus-to-event-grid-integration-example.md) für Service Bus und Event Grid ab.
-* Informieren Sie sich ausführlicher über [Event Grid](https://docs.microsoft.com/azure/event-grid/).
-* Erfahren Sie mehr über [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).
-* Informieren Sie sich ausführlicher über [Logic Apps](https://docs.microsoft.com/azure/logic-apps/).
-* Erfahren Sie mehr über [Service Bus](https://docs.microsoft.com/azure/service-bus/).
+* Informieren Sie sich ausführlicher über [Event Grid](../event-grid/index.yml).
+* Erfahren Sie mehr über [Azure Functions](../azure-functions/index.yml).
+* Informieren Sie sich ausführlicher über [Logic Apps](../logic-apps/index.yml).
+* Erfahren Sie mehr über [Service Bus](/azure/service-bus/).
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

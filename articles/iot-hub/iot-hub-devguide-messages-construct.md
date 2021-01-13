@@ -6,14 +6,17 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 07/22/2019
 ms.author: asrastog
-ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 6d6b7122963b51619f26b8d02a8be4ad39261afb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872483"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147696"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Erstellen und Lesen von IoT Hub-Nachrichten
 
@@ -21,7 +24,7 @@ Um eine nahtlose Interoperabilität zwischen Protokollen zu gewährleisten, defi
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT Hub implementiert das D2C-Messaging anhand eines Streaming-Messagingmusters. Die D2C-Nachrichten von IoT Hub sind eher mit [Event Hubs](/azure/event-hubs/)-*Ereignissen* vergleichbar als mit [Service Bus](/azure/service-bus-messaging/)-*Nachrichten*, da der Dienst von einem größeren Volumen von Ereignissen durchlaufen wird, die von mehreren Lesern gelesen werden können.
+IoT Hub implementiert das D2C-Messaging anhand eines Streaming-Messagingmusters. Die D2C-Nachrichten von IoT Hub sind eher mit [Event Hubs](../event-hubs/index.yml)-*Ereignissen* vergleichbar als mit [Service Bus](../service-bus-messaging/index.yml)-*Nachrichten*, da der Dienst von einem größeren Volumen von Ereignissen durchlaufen wird, die von mehreren Lesern gelesen werden können.
 
 Eine IoT Hub-Nachricht enthält Folgendes:
 
@@ -58,6 +61,8 @@ Weitere Informationen zum Codieren und Decodieren von Nachrichten, die über ver
 | iothub-connection-module-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Sie enthält die **moduleId** des Geräts, das die Nachricht sendet. | Nein | connectionModuleId |
 | iothub-connection-auth-generation-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Sie enthält die **connectionDeviceGenerationId** (gemäß [Geräteidentitätseigenschaften](iot-hub-devguide-identity-registry.md#device-identity-properties)) des Geräts, das die Nachricht gesendet hat. | Nein |connectionDeviceGenerationId |
 | iothub-connection-auth-method |Eine von IoT Hub für D2C-Nachrichten festgelegte Authentifizierungsmethode. Diese Eigenschaft enthält Informationen zu der Methode, die zum Authentifizieren des Geräts verwendet wird, das die Nachricht sendet.| Nein | connectionAuthMethod |
+| dt-dataschema | Dieser Wert wird von IoT Hub für Gerät-zu-Cloud-Nachrichten festgelegt. Er enthält die in der Geräteverbindung festgelegte Gerätemodell-ID. | Nein | – |
+| dt-subject | Der Name der Komponente, die die Gerät-zu-Cloud-Nachrichten sendet. | Ja | N/V |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>Systemeigenschaften von **C2D**-IoT Hub-Nachrichten
 
@@ -70,6 +75,25 @@ Weitere Informationen zum Codieren und Decodieren von Nachrichten, die über ver
 | correlation-id |Eine Zeichenfolgeneigenschaft in einer Antwortnachricht, die normalerweise die Nachrichten-ID der Anforderung im Anforderung-Antwort-Muster enthält. |Ja|
 | user-id |Eine ID zum Festlegen des Ursprungs von Nachrichten. Wenn IoT Hub Nachrichten generiert, wird diese Eigenschaft auf `{iot hub name}`festgelegt. |Ja|
 | iothub-ack |Ein Feedbacknachrichtengenerator. Diese Eigenschaft wird in C2D-Nachrichten verwendet, um IoT Hub anzuweisen, als Ergebnis der Nachrichtenverarbeitung durch das Gerät Feedbacknachrichten zu generieren. Mögliche Werte: **Kein** (Standardeinstellung): Es wird keine Feedbacknachricht generiert. **Positiv**: Es wird eine Feedbacknachricht empfangen, wenn die Nachricht abgeschlossen wurde. **Negativ**: Es wird eine Feedbacknachricht empfangen, wenn die Nachricht ohne vollständige Verarbeitung durch das Gerät abgelaufen ist (oder die maximale Anzahl von Zustellversuchen erreicht wurde). **Voll**: Feedback wird sowohl bei erfolgreicher als auch nicht erfolgreicher Nachrichtenverarbeitung generiert. |Ja|
+
+### <a name="system-property-names"></a>Namen von Systemeigenschaften
+
+Die Namen von Systemeigenschaften variieren je nach dem Endpunkt, an den die Nachrichten weitergeleitet werden. Einzelheiten zu diesen Namen finden Sie in der nachstehenden Tabelle.
+
+|Name der Systemeigenschaft|Event Hubs|Azure Storage|Service Bus|Event Grid|
+|--------------------|----------|-------------|-----------|----------|
+|Meldungs-ID|message-id|messageId|MessageId|message-id|
+|Benutzer-ID|user-id|userId|UserId|user-id|
+|Verbindungsgeräte-ID|iothub-connection-device-id| connectionDeviceId|iothub-connection-device-id|iothub-connection-device-id|
+|Verbindungsmodul-ID|iothub-connection-module-id|connectionModuleId|iothub-connection-module-id|iothub-connection-module-id|
+|ID der Verbindungsauthentifizierungsgenerierung|iothub-connection-auth-generation-id|connectionDeviceGenerationId| iothub-connection-auth-generation-id|iothub-connection-auth-generation-id|
+|Verbindungsauthentifizierungsmethode|iothub-connection-auth-method|connectionAuthMethod|iothub-connection-auth-method|iothub-connection-auth-method|
+|contentType|content-type|contentType|ContentType|iothub-content-type|
+|contentEncoding|content-encoding|contentEncoding|ContentEncoding|iothub-content-encoding|
+|iothub-enqueuedtime|iothub-enqueuedtime|enqueuedTime| – |iothub-enqueuedtime|
+|CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
+|dt-dataschema|dt-dataschema|dt-dataschema|dt-dataschema|dt-dataschema|
+|dt-subject|dt-subject|dt-subject|dt-subject|dt-subject|
 
 ## <a name="message-size"></a>Nachrichtengröße
 

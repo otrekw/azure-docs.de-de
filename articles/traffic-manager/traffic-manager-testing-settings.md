@@ -1,21 +1,21 @@
 ---
 title: Überprüfen von Traffic Manager-Einstellungen
-description: In diesem Artikel erfahren Sie, wie Sie Ihre Traffic Manager-Einstellungen überprüfen.
+description: In diesem Artikel erfahren Sie, wie Sie Ihre Traffic Manager-Einstellungen überprüfen und die Methode für das Routing von Datenverkehr testen können.
 services: traffic-manager
-author: asudbring
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: 19ef08a40d0a84aecb070e71bbb8c9b6a88ae059
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: duau
+ms.openlocfilehash: 4bb7458d4258dffb074d663e5cf712c7a0245cc7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070925"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022325"
 ---
 # <a name="verify-traffic-manager-settings"></a>Überprüfen von Traffic Manager-Einstellungen
 
@@ -35,7 +35,9 @@ Die folgenden Beispiele sollen Sie beim Test Ihres Traffic Manager-Profils unter
 2. Geben Sie `ipconfig /flushdns` ein, um den DNS-Auflösungscache zu leeren.
 3. Geben Sie `nslookup <your Traffic Manager domain name>`ein. Der folgende Befehl überprüft beispielsweise einen Domänennamen mit dem Präfix *myapp.contoso*
 
-        nslookup myapp.contoso.trafficmanager.net
+    ```powershell
+    nslookup myapp.contoso.trafficmanager.net
+    ```
 
     Ein typisches Ergebnis umfasst die folgenden Informationen:
 
@@ -70,4 +72,4 @@ Sie können auch kostenlose webbasierte DNS-Lookup- und Analysedienste nutzen. M
 
 * [Informationen zu Traffic Manager-Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md)
 * [Leistungsüberlegungen zu Traffic Manager](traffic-manager-performance-considerations.md)
-* [Problembehandlung beim Status „Heruntergestuft“ in Traffic Manager](traffic-manager-troubleshooting-degraded.md)
+* [Problembehandlung beim Status „Heruntergestuft“ in Azure Traffic Manager](traffic-manager-troubleshooting-degraded.md)

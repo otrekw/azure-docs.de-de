@@ -1,28 +1,24 @@
 ---
-title: Authentifizierung über Azure Active Directory in nationalen Clouds
+title: Azure AD-Authentifizierung und nationale Clouds | Azure
+titleSuffix: Microsoft identity platform
 description: Hier erhalten Sie Informationen zu App-Registrierungs- und Authentifizierungsendpunkten für nationale Clouds.
 services: active-directory
-documentationcenter: ''
 author: negoe
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: negoe
-ms.reviewer: negoe,CelesteDG
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca82efbd4e26ccb8a169c84332e3d24196fae95e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.reviewer: marsma, negoe,celested
+ms.custom: aaddev,references_regions
+ms.openlocfilehash: da1ea6462d22242d23629bcec192d7760314dfed
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135856"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444813"
 ---
 # <a name="national-clouds"></a>Nationale Clouds
 
@@ -64,14 +60,14 @@ Die folgende Tabelle enthält die Basis-URLs für die Azure AD-Endpunkte, die zu
 
 Anforderungen an die Autorisierungs- oder Tokenendpunkte von Azure AD können mit der entsprechenden regionsspezifischen Basis-URL generiert werden. Z.B. für Azure Deutschland:
 
-  - Der allgemeine Autorisierungsendpunkt ist `https://login.microsoftonline.de/common/oauth2/authorize`.
-  - Der allgemeine Tokenendpunkt ist `https://login.microsoftonline.de/common/oauth2/token`.
+- Der allgemeine Autorisierungsendpunkt ist `https://login.microsoftonline.de/common/oauth2/v2.0/authorize`.
+- Der allgemeine Tokenendpunkt ist `https://login.microsoftonline.de/common/oauth2/v2.0/token`.
 
-Ersetzen Sie bei Anwendungen mit einem Mandanten in den oben genannten URLs „common“ durch die ID oder den Namen Ihres Mandanten. Ein Beispiel ist `https://login.microsoftonline.de/contoso.com`.
+Ersetzen Sie bei Anwendungen mit einem Mandanten in den oben genannten URLs „common“ durch die ID oder den Namen Ihres Mandanten. z. B. `https://login.microsoftonline.de/contoso.com`.
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
-Informationen zum Aufrufen der Microsoft Graph-APIs in der Umgebung der nationalen Cloud finden Sie unter [Microsoft Graph in nationalen Cloudbereitstellungen](https://developer.microsoft.com/graph/docs/concepts/deployments).
+Informationen zum Aufrufen der Microsoft Graph-APIs in der Umgebung der nationalen Cloud finden Sie unter [Microsoft Graph in nationalen Cloudbereitstellungen](/graph/deployments).
 
 > [!IMPORTANT]
 > Bestimmte Dienste und Funktionen, die in bestimmten Regionen des globalen Diensts vorhanden sind, sind möglicherweise nicht in allen nationalen Clouds verfügbar. Um herauszufinden, welche Dienste verfügbar sind, wechseln Sie zu [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).
@@ -80,9 +76,10 @@ Wie Sie eine Anwendung mit Microsoft Identity Platform erstellen können, erfahr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen:
+Erfahren Sie, wie Sie [Microsoft Authentication Library (MSAL) in einer nationalen Cloudumgebung](msal-national-cloud.md) verwenden.
 
-- [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
-- [Azure Deutschland](https://docs.microsoft.com/azure/germany/)
-- [Azure AD-Authentifizierungsgrundlagen](authentication-scenarios.md)
+Dokumentation zur nationalen Cloud:
+
+- [Azure Government](../../azure-government/index.yml)
+- [Azure China 21Vianet](/azure/china/)
+- [Azure Deutschland](../../germany/index.yml)

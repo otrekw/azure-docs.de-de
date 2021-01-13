@@ -1,6 +1,6 @@
 ---
 title: Aktivieren oder Deaktivieren einer Firewallregel unter einem Gastbetriebssystem in Azure VM | Microsoft-Dokumentation
-description: ''
+description: Erfahren Sie, wie Sie Online- oder Offline-Remotetools oder Registrierungseinstellungen verwenden können, um Firewallregeln für Gastbetriebssysteme auf einem virtuellen Azure-Remotecomputer zu aktivieren oder zu deaktivieren.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 782240c51833fc841af9f4260860db4c03897c03
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 17616a223292ec07186b0a3fba264400423977ac
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086454"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87058754"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Aktivieren oder Deaktivieren einer Firewallregel unter einem Gastbetriebssystem in Azure VM
 
@@ -77,7 +77,7 @@ Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gl
 
 Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gleichen virtuellen Netzwerk darauf zugreifen kann, können Sie die folgenden vorbeugenden Maßnahmen mithilfe des anderen virtuellen Computers durchführen.
 
-1.  Laden Sie auf den virtuellen Computer, der zur Problembehandlung dient, [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools) herunter.
+1.  Laden Sie auf den virtuellen Computer, der zur Problembehandlung dient, [PSTools](/sysinternals/downloads/pstools) herunter.
 
 2.  Öffnen Sie eine CMD-Instanz, und greifen Sie dann über deren interne IP-Adresse (DIP) auf den virtuellen Computer zu. 
 
@@ -107,7 +107,7 @@ Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gl
     
         Ändern Sie dann **Active=FALSE** in **Active=TRUE** in der Zeichenfolge:
 
-        **v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
+        `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
     
     * Um eine Regel zu deaktivieren, öffnen Sie den folgenden Registrierungswert:
     
@@ -115,7 +115,7 @@ Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gl
 
         Ändern Sie dann **Active=TRUE** in **Active=FALSE** in der Zeichenfolge:
         
-        **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
+        `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
 3.  Starten Sie den virtuellen Computer neu, um diese Änderungen zu übernehmen.
 
@@ -154,7 +154,7 @@ Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffene
         
         Ändern Sie dann **Active=FALSE** in **Active=TRUE**.
         
-        **v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
+        `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
     3.  Um eine Regel zu deaktivieren, öffnen Sie den folgenden Registrierungsschlüssel:
 
@@ -162,7 +162,7 @@ Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffene
 
         Ändern Sie dann **Active=TRUE** in **Active=FALSE**.
         
-        **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
+        `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
 9.  Heben Sie **BROKENSYSTEM** hervor, und wählen Sie dann im Menü **Datei** > **Struktur entfernen** aus.
 

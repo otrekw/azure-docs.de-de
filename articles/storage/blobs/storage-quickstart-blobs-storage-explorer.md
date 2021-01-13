@@ -1,21 +1,22 @@
 ---
-title: 'Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs im Objektspeicher'
-description: In diesem Schnellstart erfahren Sie, wie Sie Azure Storage-Explorer verwenden, um einen Container und ein Blob zu erstellen. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container anzeigen. Außerdem erfahren Sie, wie Sie eine Momentaufnahme eines Blobs erstellen, Zugriffsrichtlinien für Container verwalten und eine SAS (Shared Access Signature) erstellen.
+title: 'Schnellstart: Erstellen eines Blobs mit Azure Storage-Explorer'
+titleSuffix: Azure Storage
+description: Hier erfahren Sie, wie Sie mit Azure Storage-Explorer einen Container und ein Blob erstellen, das Blob auf Ihren lokalen Computer herunterladen und alle Blobs im Container anzeigen.
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 11/15/2018
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: cd31d1c40f30ebc8341c2126da22f8a74cb05438
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2477107105b6dbcab96db8d44ac982554dc0c48d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640517"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543169"
 ---
-# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs im Objektspeicher
+# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs
 
 In diesem Schnellstart erfahren Sie, wie Sie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, um einen Container und ein Blob zu erstellen. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container anzeigen. Außerdem erfahren Sie, wie Sie eine Momentaufnahme eines Blobs erstellen, Zugriffsrichtlinien für Container verwalten und eine SAS (Shared Access Signature) erstellen.
 
@@ -37,9 +38,9 @@ Nach dem ersten Start wird das Fenster **Microsoft Azure Storage-Explorer – Ve
 
 Wählen Sie **Azure-Konto hinzufügen**, und klicken Sie auf **Anmelden...** . Befolgen Sie die Anweisungen auf dem Bildschirm, um sich an Ihrem Azure-Konto anzumelden.
 
-![Fenster „Microsoft Azure Storage-Explorer – Verbinden“](media/storage-quickstart-blobs-storage-explorer/connect.png)
+![Screenshot: Fenster „Microsoft Azure Storage-Explorer – Verbinden“](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
-Nach Abschluss des Verbindungsvorgangs wird Azure Storage-Explorer geladen, und die Registerkarte **Explorer** wird angezeigt. So erhalten Sie einen Einblick in Ihre gesamten Azure Storage-Konten und in den lokalen Speicher, der über den [Azure-Speicheremulator](../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-Konten oder [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-Umgebungen konfiguriert wurde.
+Nach Abschluss des Verbindungsvorgangs wird Azure Storage-Explorer geladen, und die Registerkarte **Explorer** wird angezeigt. So erhalten Sie einen Einblick in Ihre gesamten Azure Storage-Konten und in den lokalen Speicher, der über den [Azurite-Speicheremulator](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-Konten oder [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-Umgebungen konfiguriert wurde.
 
 ![Fenster „Microsoft Azure Storage-Explorer – Verbinden“](media/storage-quickstart-blobs-storage-explorer/mainpage.png)
 
@@ -69,7 +70,7 @@ Wenn Sie **OK** wählen, werden die ausgewählten Dateien in die Warteschlange f
 
 Wählen Sie in der Anwendung **Azure Storage-Explorer** einen Container unter einem Speicherkonto aus. Im Hauptbereich wird eine Liste mit den Blobs des ausgewählten Containers angezeigt.
 
-![Microsoft Azure Storage-Explorer – Blobs eines Containers auflisten](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
+![Screenshot: Zeigt, wo Sie einen Container in Microsoft Azure Storage-Explorer auswählen](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
 
 ## <a name="download-blobs"></a>Herunterladen von Blobs
 
@@ -77,9 +78,9 @@ Wählen Sie im Menüband bei ausgewähltem Blob die Option **Herunterladen**, um
 
 ## <a name="manage-snapshots"></a>Verwalten von Momentaufnahmen
 
-Azure Storage-Explorer bietet die Möglichkeit zum Erstellen und Verwalten von [Momentaufnahmen](storage-blob-snapshots.md) für Ihre Blobs. Klicken Sie zum Erstellen einer Momentaufnahme eines Blobs mit der rechten Maustaste auf das Blob, und wählen Sie **Momentaufnahme erstellen** aus. Klicken Sie zum Anzeigen von Momentaufnahmen für ein Blob mit der rechten Maustaste auf das Blob, und wählen Sie **Manage Snapshots** (Momentaufnahmen verwalten). Auf der aktuellen Registerkarte wird eine Liste mit den Momentaufnahmen des Blobs angezeigt.
+Azure Storage-Explorer bietet die Möglichkeit zum Erstellen und Verwalten von [Momentaufnahmen](./snapshots-overview.md) für Ihre Blobs. Klicken Sie zum Erstellen einer Momentaufnahme eines Blobs mit der rechten Maustaste auf das Blob, und wählen Sie **Momentaufnahme erstellen** aus. Klicken Sie zum Anzeigen von Momentaufnahmen für ein Blob mit der rechten Maustaste auf das Blob, und wählen Sie **Manage Snapshots** (Momentaufnahmen verwalten). Auf der aktuellen Registerkarte wird eine Liste mit den Momentaufnahmen des Blobs angezeigt.
 
-![Microsoft Azure Storage-Explorer – Blobs eines Containers auflisten](media/storage-quickstart-blobs-storage-explorer/snapshots.png)
+![Screenshot: Eine Liste von Blobs in Microsoft Azure Storage-Explorer](media/storage-quickstart-blobs-storage-explorer/snapshots.png)
 
 ## <a name="manage-access-policies"></a>Verwalten von Zugriffsrichtlinien
 
@@ -98,4 +99,4 @@ Shared Access Signatures (SAS) können über den Storage-Explorer abgerufen werd
 In diesem Schnellstart haben Sie gelernt, wie Sie mit **Azure Storage-Explorer** Dateien zwischen einem lokalen Datenträger und Azure Blob Storage übertragen. Weitere Informationen zum Arbeiten mit Blob Storage finden Sie in der exemplarischen Vorgehensweise zu Blob Storage.
 
 > [!div class="nextstepaction"]
-> [Gewusst wie: Blob Storage-Vorgänge](storage-how-to-use-blobs-powershell.md)
+> [Gewusst wie: Blob Storage-Vorgänge](./storage-quickstart-blobs-powershell.md)

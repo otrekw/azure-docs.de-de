@@ -1,25 +1,25 @@
 ---
-title: Kopieren von Daten aus Marketo mithilfe von Azure Data Factory (Vorschau) | Microsoft Docs
+title: Kopieren von Daten aus Marketo mithilfe von Azure Data Factory (Vorschau)
 description: Erfahren Sie, wie Daten aus Marketo mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: fbe299088a7a2edb5319d217defb7c7c00ecfa22
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 08f117e2fc4939eee1458c0807cac5a292785608
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090059"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84669867"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopieren von Daten aus Marketo mithilfe von Azure Data Factory (Vorschau)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Marketo zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -35,7 +35,7 @@ Der Marketo-Connector wird für die folgenden Aktivitäten unterstützt:
 
 Sie können Daten aus Marketo in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Konnektivität. Daher müssen Sie mit diesem Connector keinen Treiber manuell installieren.
+Derzeit wird die Marketo-Instanz, die mit externem CRM integriert ist, nicht unterstützt.
 
 >[!NOTE]
 >Dieser Marketo-Connector basiert auf der Marketo-REST-API. Beachten Sie, dass Marketo auf der Dienstseite ein [Limit für gleichzeitige Anforderungen](https://developers.marketo.com/rest-api/) verwendet. Wenn Fehlermeldungen angezeigt werden wie etwa „Fehler beim Versuch, die REST-API zu verwenden: Übertragungsraten-Obergrenze ‚100‘ innerhalb von ‚20‘ Sekunden überschritten (606)“ oder „Fehler beim Versuch, die REST-API zu verwenden: Grenze für gleichzeitigen Zugriff ‚10‘ erreicht (615)“, erwägen Sie, die gleichzeitigen Kopieraktivitätsausführungen zu verringern, um die Anzahl der Anforderungen an den Dienst zu reduzieren.
@@ -57,8 +57,8 @@ Folgende Eigenschaften werden für den mit Marketo verknüpften Dienst unterstü
 | clientId | Die Client-ID des Marketo-Diensts  | Ja |
 | clientSecret | Der geheime Clientschlüssel des Marketo-Diensts. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein |
-| useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein |
-| usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein |
+| useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
+| usePeerVerification | Gibt an, ob die Identität des Servers überprüft werden soll, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
 
 **Beispiel:**
 
@@ -88,7 +88,7 @@ Legen Sie zum Kopieren von Daten aus Marketo die type-Eigenschaft des Datasets a
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **MarketoObject** | Ja |
-| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
+| tableName | Der Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -118,7 +118,7 @@ Legen Sie zum Kopieren von Daten aus Marketo den Quelltyp in der Kopieraktivitä
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **MarketoSource** | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Activitiy_Types"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Activitiy_Types"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

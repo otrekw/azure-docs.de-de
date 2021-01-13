@@ -7,14 +7,20 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 07/07/2020
 ms.author: robinsh
-ms.openlocfilehash: 99acd43128bedcf3dba470f84c0a406861d77e2d
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.custom:
+- amqp
+- mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- devx-track-csharp
+ms.openlocfilehash: d8df9884c0104792240d85d9ebd4235ef2a18741
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147792"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142351"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Senden von Nachrichten aus der Cloud an das Gerät mit IoT Hub (.NET)
 
@@ -50,11 +56,13 @@ Am Ende dieses Tutorials führen Sie zwei .NET-Konsolen-Apps aus.
 
 * Ein aktives Azure-Konto. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
 
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 ## <a name="receive-messages-in-the-device-app"></a>Empfangen von Nachrichten in der Geräte-App
 
 In diesem Abschnitt ändern Sie die Geräte-App, die Sie in [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](quickstart-send-telemetry-dotnet.md) erstellt haben, um C2D-Nachrichten vom IoT-Hub zu empfangen.
 
-1. Fügen Sie in Visual Studio im **SimulatedDevice**-Projekt der **Program**-Klasse die folgende Methode hinzu.
+1. Fügen Sie in Visual Studio im **SimulatedDevice**-Projekt der **SimulatedDevice**-Klasse die folgende Methode hinzu.
 
    ```csharp
     private static async void ReceiveC2dAsync()
@@ -83,13 +91,20 @@ In diesem Abschnitt ändern Sie die Geräte-App, die Sie in [Senden von Telemetr
 
 Die `ReceiveAsync`-Methode gibt die empfangene Nachricht asynchron zurück, sobald sie vom Gerät empfangen wird. Sie gibt nach einem spezifizierbaren Zeitlimit *NULL* zurück. In diesem Beispiel wird der Standardwert von einer Minute verwendet. Wenn die App *NULL* empfängt, sollte sie weiter auf neue Nachrichten warten. Diese Anforderung ist der Grund für die `if (receivedMessage == null) continue`-Zeile.
 
-Der Aufruf von `CompleteAsync()` teilt IoT Hub mit, dass die Nachricht erfolgreich verarbeitet wurde. Die Nachricht kann sicher aus der Gerätewarteschlange entfernt werden. Wenn ein Fehler aufgetreten ist, der den Abschluss der Verarbeitung der Nachricht durch die Geräte-App verhindert hat, übermittelt IoT Hub sie erneut. Die Nachrichtenverarbeitungslogik in der Geräte-App muss *idempotent* sein, sodass der mehrmalige Empfang derselben Nachricht dasselbe Ergebnis erzeugt.
+Durch den Aufruf von `CompleteAsync()` wird IoT Hub darüber informiert, dass die Nachricht erfolgreich verarbeitet wurde und sicher aus der Gerätewarteschlange entfernt werden kann. Das Gerät sollte diese Methode unabhängig vom verwendeten Protokoll aufrufen, wenn seine Verarbeitung erfolgreich abgeschlossen wurde.
 
-Eine Anwendung kann eine Nachricht auch vorübergehend verwerfen, sodass IoT Hub die Nachricht für die zukünftige Verwendung in der Warteschlange beibehält. Oder die Anwendung kann eine Nachricht ablehnen, wodurch die Nachricht dauerhaft aus der Warteschlange entfernt wird. Weitere Informationen zum Lebenszyklus von C2D-Nachrichten finden Sie unter [D2C- und C2D-Messaging mit IoT Hub](iot-hub-devguide-messaging.md).
+Mit AMQP und HTTPS, aber nicht MQTT, kann das Gerät auch folgende Aktionen ausführen:
 
-   > [!NOTE]
-   > Wird HTTPS anstelle von MQTT oder AMQP als Transport verwendet, erfolgt von der `ReceiveAsync`-Methode sofort eine Rückgabe. Das unterstützte Muster für C2D-Nachrichten mit HTTPS entspricht Geräten, die nicht permanent verbunden sind und weniger häufig Nachrichten abrufen (d.h. seltener als alle 25 Minuten). Die Ausgabe von mehr HTTPS-Empfangsvorgängen führt dazu, dass die Anforderungen von IoT Hub gedrosselt werden. Weitere Informationen zu den Unterschieden zwischen der MQTT-, AMQP- und HTTPS-Unterstützung sowie zur IoT Hub-Drosselung finden Sie unter [D2C- und C2D-Messaging mit IoT Hub](iot-hub-devguide-messaging.md).
-   >
+* Eine Nachricht vorübergehend verwerfen, sodass IoT Hub sie für zukünftige Nutzung in der Gerätewarteschlange beibehält.
+* Eine Nachricht ablehnen, wodurch sie aus der Warteschlange dauerhaft entfernt wird.
+
+Wenn etwas passiert, wodurch verhindert wird, dass das Gerät die Nachricht abschließt, vorübergehend verwirft oder ablehnt, stellt IoT Hub sie nach einem festgelegten Zeitlimit zur erneuten Übermittlung in die Warteschlange. Aus diesem Grund muss die Nachrichtenverarbeitungslogik in der Geräte-App *idempotent* sein, sodass der mehrmalige Empfang derselben Nachricht dasselbe Ergebnis erzeugt.
+
+Ausführlichere Informationen dazu, wie IoT Hub C2D-Nachrichten verarbeitet, einschließlich Details zum Lebenszyklus von C2D-Nachrichten, finden Sie unter [Senden von C2D-Nachrichten von einem IoT-Hub](iot-hub-devguide-messages-c2d.md).
+
+> [!NOTE]
+> Wird HTTPS anstelle von MQTT oder AMQP als Transport verwendet, erfolgt von der `ReceiveAsync`-Methode sofort eine Rückgabe. Das unterstützte Muster für Cloud-zu-Gerät-Nachrichten mit HTTPS ist zeitweilig mit Geräten verbunden, die selten Nachrichten abrufen (mindestens alle 25 Minuten). Die Ausgabe von mehr HTTPS-Empfangsvorgängen führt dazu, dass die Anforderungen von IoT Hub gedrosselt werden. Weitere Informationen zu den Unterschieden zwischen der Unterstützung für MQTT, AMQP und HTTPS finden Sie unter [Leitfaden zur C2D-Kommunikation](iot-hub-devguide-c2d-guidance.md) und [Auswählen eines Kommunikationsprotokolls](iot-hub-devguide-protocols.md).
+>
 
 ## <a name="get-the-iot-hub-connection-string"></a>Abrufen der IoT-Hub-Verbindungszeichenfolge
 
@@ -99,7 +114,7 @@ In diesem Artikel erstellen Sie einen Back-End-Dienst, um C2D-Nachrichten über 
 
 ## <a name="send-a-cloud-to-device-message"></a>Senden einer C2D-Nachricht
 
-Jetzt schreiben Sie eine .NET-Konsolen-App, die C2D-Nachrichten an die Geräte-App sendet.
+In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die Cloud-zu-Gerät-Nachrichten an die simulierte Geräte-App sendet.
 
 1. Wählen Sie in der aktuellen Visual Studio-Projektmappe **Datei** > **Neu** > **Projekt** aus. Wählen Sie in **Neues Projekt erstellen** die Option **Konsolen-App (.NET Framework)** und dann **Weiter** aus.
 
@@ -107,7 +122,7 @@ Jetzt schreiben Sie eine .NET-Konsolen-App, die C2D-Nachrichten an die Geräte-A
 
    ![Konfigurieren eines neuen Projekts in Visual Studio](./media/iot-hub-csharp-csharp-c2d/sendcloudtodevice-project-configure.png)
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die neue Projektmappe, und wählen Sie **NuGet-Pakete verwalten** aus.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die neue Projektmappe, und klicken Sie dann auf **NuGet-Pakete verwalten**.
 
 1. Wählen Sie in **NuGet-Pakete verwalten** die Option **Durchsuchen**, anschließend „Suchen nach“ und dann **Microsoft.Azure.Devices** aus. Wählen Sie **Installieren** aus.
 
@@ -119,25 +134,24 @@ Jetzt schreiben Sie eine .NET-Konsolen-App, die C2D-Nachrichten an die Geräte-A
    using Microsoft.Azure.Devices;
    ```
 
-1. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die IoT-Hub-Verbindungszeichenfolge, die Sie zuvor unter [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben.
+1. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert `{iot hub connection string}` durch die IoT-Hub-Verbindungszeichenfolge, die Sie zuvor unter [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) notiert haben. Ersetzen Sie den Platzhalter `{device id}` durch die Geräte-ID des Geräts, das Sie in [Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub und Lesen der Telemetriedaten mit einer Back-End-Anwendung (.NET)](quickstart-send-telemetry-dotnet.md) erstellt haben.
 
    ``` csharp
    static ServiceClient serviceClient;
    static string connectionString = "{iot hub connection string}";
+   static string targetDevice = "{device id}";
    ```
 
-1. Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Legen Sie den Gerätenamen auf die Zeichenfolge fest, die Sie beim Definieren des Geräts in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)](quickstart-send-telemetry-dotnet.md) verwendet haben.
+1. Fügen Sie der **Program**-Klasse die folgende Methode hinzu, um eine Nachricht an Ihr Gerät zu senden.
 
    ``` csharp
    private async static Task SendCloudToDeviceMessageAsync()
    {
         var commandMessage = new
          Message(Encoding.ASCII.GetBytes("Cloud to device message."));
-        await serviceClient.SendAsync("myFirstDevice", commandMessage);
+        await serviceClient.SendAsync(targetDevice, commandMessage);
    }
    ```
-
-   Diese Methode sendet eine neue C2D-Nachricht an das Gerät mit der ID `myFirstDevice`. Ändern Sie diesen Parameter nur, falls Sie den in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)](quickstart-send-telemetry-dotnet.md) verwendeten Parameter geändert haben.
 
 1. Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu.
 
@@ -153,11 +167,11 @@ Jetzt schreiben Sie eine .NET-Konsolen-App, die C2D-Nachrichten an die Geräte-A
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und wählen Sie **Startprojekte festlegen** aus.
 
-1. Wählen Sie in **Allgemeine Eigenschaften** > **Startprojekt** die Option **Mehrere Startprojekte** und dann die Aktion **Starten** für **ReadDeviceToCloudMessages**, **SimulatedDevice** und **SendCloudToDevice** aus. Klicken Sie zum Speichern der Änderungen auf **OK** .
+1. Klicken Sie unter **Allgemeine Eigenschaften** > **Startprojekt** auf die Option **Mehrere Startprojekte** und dann auf die Aktion **Starten** für **SimulatedDevice** und **SendCloudToDevice**. Klicken Sie zum Speichern der Änderungen auf **OK** .
 
-1. Drücken Sie **F5**. Alle drei Anwendungen sollten beginnen. Wählen Sie das Fenster **SendCloudToDevice** aus, und drücken Sie die **EINGABETASTE**. Die von der Geräte-App empfangene Meldung sollte angezeigt werden.
+1. Drücken Sie **F5**. Beide Anwendungen sollten gestartet werden. Wählen Sie das Fenster **SendCloudToDevice** aus, und drücken Sie die **EINGABETASTE**. Die von der Geräte-App empfangene Meldung sollte angezeigt werden.
 
-   ![Nachrichtenempfangs-App](./media/iot-hub-csharp-csharp-c2d/sendc2d1.png)
+   ![Geräte-App, die eine Nachricht empfängt](./media/iot-hub-csharp-csharp-c2d/sendc2d1.png)
 
 ## <a name="receive-delivery-feedback"></a>Empfangen von Übermittlungsfeedback
 
@@ -202,9 +216,9 @@ In diesem Abschnitt ändern Sie die **SendCloudToDevice**-App so, dass sie Feedb
    commandMessage.Ack = DeliveryAcknowledgement.Full;
    ```
 
-1. Drücken Sie **F5**, um die Apps auszuführen. Alle drei Anwendungen sollten gestartet werden. Wählen Sie das Fenster **SendCloudToDevice** aus, und drücken Sie die **EINGABETASTE**. Die Nachricht sollte von der Geräte-App empfangen werden, und nach einigen Sekunden sollte die Feedbacknachricht von der **SendCloudToDevice**-Anwendung empfangen werden.
+1. Drücken Sie **F5**, um die Apps auszuführen. Beide Anwendungen sollten nun gestartet werden. Wählen Sie das Fenster **SendCloudToDevice** aus, und drücken Sie die **EINGABETASTE**. Die Nachricht sollte von der Geräte-App empfangen werden, und nach einigen Sekunden sollte die Feedbacknachricht von der **SendCloudToDevice**-Anwendung empfangen werden.
 
-   ![Nachrichtenempfangs-App](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
+   ![Geräte-App, die eine Nachricht empfängt, und Dienst-App, die Feedback erhält](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 
 > [!NOTE]
 > Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren, z.B. exponentielles Backoff, wie es in [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults) vorgeschlagen wird.
@@ -214,6 +228,6 @@ In diesem Abschnitt ändern Sie die **SendCloudToDevice**-App so, dass sie Feedb
 
 In dieser Anleitung haben Sie gelernt, wie C2D-Nachrichten gesendet und empfangen werden.
 
-Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT-Solution Accelerator für die Remoteüberwachung](https://docs.microsoft.com/azure/iot-suite/).
+Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT-Solution Accelerator für die Remoteüberwachung](/azure/iot-suite/).
 
 Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md).

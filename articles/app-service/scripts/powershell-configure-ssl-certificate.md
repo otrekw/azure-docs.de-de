@@ -1,41 +1,34 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Binden eines benutzerdefinierten SSL-Zertifikats an eine Web-App | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Binden eines benutzerdefinierten SSL-Zertifikats an eine Web-App
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'Mit PowerShell: Hochladen und Binden von TLS/SSL'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie ein benutzerdefiniertes TLS-/SSL-Zertifikat an eine App binden.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 057d9beebc106d71183b3c979636bb9c5410b15c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 74bec2e8793331019a6eca986446880c10565aeb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098373"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89079947"
 ---
-# <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>Binden eines benutzerdefinierten SSL-Zertifikats an eine Web-App mit PowerShell
+# <a name="bind-a-custom-tlsssl-certificate-to-a-web-app-using-powershell"></a>Binden eines benutzerdefinierten TLS-/SSL-Zertifikats an eine Web-App mit PowerShell
 
-Dieses Skriptbeispiel erstellt eine Web-App und die zugehörigen Ressourcen in App Service und bindet dann das SSL-Zertifikat eines benutzerdefinierten Domänennamens an die App. 
+Dieses Skriptbeispiel erstellt eine Web-App und die zugehörigen Ressourcen in App Service und bindet dann das TLS-/SSL-Zertifikat eines benutzerdefinierten Domänennamens an die App. 
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. Stellen Sie darüber hinaus Folgendes sicher:
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. Stellen Sie darüber hinaus Folgendes sicher:
 
 - Eine Verbindung mit Azure wurde mit dem Befehl `az login` hergestellt.
 - Sie haben Zugriff auf die Seite „DNS-Konfiguration“ der Domänenregistrierungsstelle.
-- Sie verfügen über eine gültige PFX-Datei und das zugehörige Kennwort für das SSL-Zertifikat, das Sie hochladen und binden möchten.
+- Sie verfügen über eine gültige PFX-Datei und das zugehörige Kennwort für das TLS-/SSL-Zertifikat, das Sie hochladen und binden möchten.
 
 ## <a name="sample-script"></a>Beispielskript
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 
@@ -56,10 +49,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Erstellt die Web-App. |
 | [Set-AzAppServicePlan](/powershell/module/az.websites/set-azappserviceplan) | Ändert einen App Service-Plan, um den zugehörigen Tarif zu ändern. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Ändert die Konfiguration einer Web-App. |
-| [New-AzWebAppSSLBinding](/powershell/module/az.websites/new-azwebappsslbinding) | Erstellt eine SSL-Zertifikatbindung für eine Web-App. |
+| [New-AzWebAppSSLBinding](/powershell/module/az.websites/new-azwebappsslbinding) | Erstellt eine TLS-/SSL-Zertifikatsbindung für eine Web-App. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Azure PowerShell-Beispiele für Azure App Service-Web-Apps finden Sie unter [Azure PowerShell-Beispiele](../samples-powershell.md).

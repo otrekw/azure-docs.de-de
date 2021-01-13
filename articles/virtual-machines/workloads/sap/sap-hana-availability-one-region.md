@@ -9,27 +9,28 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c5b4904419af1fe86e43dc2f781ef43ce8dd762
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e522e358a1b76cea08dac550b33d7a2dfa7d926d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078791"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950226"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Verfügbarkeit von SAP HANA innerhalb einer Azure-Region
-In diesem Artikel werden mehrere Verfügbarkeitsszenarien innerhalb einer Azure-Region beschrieben. Azure bietet viele Regionen auf der ganzen Welt. Die Liste mit Azure-Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). Für die Bereitstellung von SAP HANA auf VMs in einer Azure-Region bietet Microsoft die Bereitstellung einer einzelnen VM mit einer HANA-Instanz. Zur Erhöhung der Verfügbarkeit können Sie zwei VMs mit zwei HANA-Instanzen innerhalb einer [Azure-Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) bereitstellen, die aus Verfügbarkeitsgründen die HANA-Systemreplikation verwenden. 
+In diesem Artikel werden mehrere Verfügbarkeitsszenarien innerhalb einer Azure-Region beschrieben. Azure bietet viele Regionen auf der ganzen Welt. Die Liste mit Azure-Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). Für die Bereitstellung von SAP HANA auf VMs in einer Azure-Region bietet Microsoft die Bereitstellung einer einzelnen VM mit einer HANA-Instanz. Zur Erhöhung der Verfügbarkeit können Sie zwei VMs mit zwei HANA-Instanzen innerhalb einer [Azure-Verfügbarkeitsgruppe](../../windows/tutorial-availability-sets.md) bereitstellen, die aus Verfügbarkeitsgründen die HANA-Systemreplikation verwenden. 
 
-Azure bietet derzeit [Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview). In diesem Artikel werden Verfügbarkeitszonen nicht im Detail beschrieben. Es wird jedoch allgemein erläutert, wie Verfügbarkeitsgruppen im Vergleich zu Verfügbarkeitszonen verwendet werden.
+Azure bietet derzeit [Azure-Verfügbarkeitszonen](../../../availability-zones/az-overview.md). In diesem Artikel werden Verfügbarkeitszonen nicht im Detail beschrieben. Es wird jedoch allgemein erläutert, wie Verfügbarkeitsgruppen im Vergleich zu Verfügbarkeitszonen verwendet werden.
 
 Azure-Regionen, in denen Verfügbarkeitszonen angeboten werden, umfassen mehrere Rechenzentren. Die Rechenzentren sind in Bezug auf Stromversorgung, Kühlung und Netzwerk autark. Es werden unterschiedliche Zonen in einer einzelnen Azure-Region angeboten, um die Bereitstellung von Anwendungen über zwei oder drei angebotene Verfügbarkeitszonen hinweg zu ermöglichen. Wenn sich Probleme bei der Stromversorgung und bei Netzwerken nur auf die Infrastruktur einer Azure-Verfügbarkeitszone auswirken, ist Ihre Anwendungsbereitstellung innerhalb einer Azure-Region durch das Bereitstellen über verschiedene Zonen weiterhin voll funktionsfähig. Es kann zu einer Kapazitätsbeeinträchtigung kommen. VMs in einer Zone könnten zwar beispielsweise ausfallen, doch VMs in den anderen beiden Zonen wären nach wie vor im Betrieb. 
  
-Eine Azure-Verfügbarkeitsgruppe ist eine Funktion zur logischen Gruppierung, mit der sichergestellt werden kann, dass die in der Verfügbarkeitsgruppe enthaltenen VM-Ressourcen voneinander fehlerisoliert sind, wenn sie in einem Azure-Rechenzentrum bereitgestellt werden. Azure stellt sicher, dass die virtuellen Computer innerhalb einer Verfügbarkeitsgruppe auf mehrere physische Server, Compute-Racks, Speichereinheiten und Netzwerkswitches verteilt werden. Diese Konfiguration wird in einigen Azure-Dokumentationen alternativ als Platzierungen in verschiedene [Update- und Fehlerdomänen](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) bezeichnet. Diese Platzierungen erfolgen normalerweise in einem Azure-Rechenzentrum. Unter der Annahme, dass Probleme an Stromversorgungsquellen und/oder Netzwerken das Rechenzentrum beeinträchtigen, würde Ihre gesamte Kapazität in einer Azure-Region betroffen werden.
+Eine Azure-Verfügbarkeitsgruppe ist eine Funktion zur logischen Gruppierung, mit der sichergestellt werden kann, dass die in der Verfügbarkeitsgruppe enthaltenen VM-Ressourcen voneinander fehlerisoliert sind, wenn sie in einem Azure-Rechenzentrum bereitgestellt werden. Azure stellt sicher, dass die virtuellen Computer innerhalb einer Verfügbarkeitsgruppe auf mehrere physische Server, Compute-Racks, Speichereinheiten und Netzwerkswitches verteilt werden. Diese Konfiguration wird in einigen Azure-Dokumentationen alternativ als Platzierungen in verschiedene [Update- und Fehlerdomänen](../../manage-availability.md) bezeichnet. Diese Platzierungen erfolgen normalerweise in einem Azure-Rechenzentrum. Unter der Annahme, dass Probleme an Stromversorgungsquellen und/oder Netzwerken das Rechenzentrum beeinträchtigen, würde Ihre gesamte Kapazität in einer Azure-Region betroffen werden.
 
 Bei der Platzierung von Rechenzentren, die Azure-Verfügbarkeitszonen darstellen, wird ein Mittelweg zwischen akzeptablen Netzwerklatenzen zwischen Diensten, die in unterschiedlichen Zonen bereitgestellt werden, und einer Entfernung zwischen den Rechenzentren verfolgt. Damit soll im Idealfall erreicht werden, dass die Stromversorgung, das Netzwerk und die Infrastruktur für alle Verfügbarkeitszonen in dieser Region vor Naturkatastrophen geschützt bleiben. Doch angesichts des gewaltigen Ausmaßes, das sich bei Naturkatastrophen abgezeichnet hat, können Verfügbarkeitszonen nicht immer die von Ihnen gewünschte Verfügbarkeit innerhalb einer Region bieten. Denken Sie daran, als Hurrikan Maria am 20. September 2017 die Insel Puerto Rico durchzog. Der Hurrikan richtete fast einen kompletten Stromausfall auf der etwa 150 km langen Insel an.
 
@@ -78,11 +79,11 @@ Eine der elementarsten Einrichtungen ist die Verwendung von Sicherungen. Dies is
 
 Die Architektur sieht wie folgt aus:
 
-![Abbildung mit zwei VMs mit Speicherreplikation](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
+![Diagramm: Architektur der beiden VMs mit Speicherreplikation.](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
 
 Diese Einrichtung ist nicht geeignet, um hervorragende Zeiten hinsichtlich der Recovery Point Objective (RPO) und Recovery Time Objective (RTO) zu erzielen. Insbesondere bei den RTO-Zeiten müssen Einbußen in Kauf genommen werden, da die gesamte Datenbank mit den kopierten Sicherungen vollständig wiederhergestellt werden muss. Dieses Setup ist jedoch nützlich, um nach einer unbeabsichtigten Datenlöschung in den Hauptinstanzen Wiederherstellungen durchzuführen. Mit dieser Einrichtung können Sie jederzeit eine Wiederherstellung zu einem bestimmten Zeitpunkt durchführen, die Daten extrahieren und die gelöschten Daten in Ihre Hauptinstanz importieren. Daher kann es sinnvoll sein, eine solche Methode zur Sicherungskopie in Kombination mit anderen Hochverfügbarkeitsfunktionen zu verwenden. 
 
-Während des Kopiervorgangs der Sicherungen, können Sie möglicherweise eine kleineren VM als die Haupt-VM verwenden, auf der die SAP HANA-Instanz ausgeführt wird. Denken Sie daran, dass Sie eine kleinere Anzahl von VHDs an kleinere VMs anfügen können. Informationen zu den Grenzwerte für die einzelnen VM-Typen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+Während des Kopiervorgangs der Sicherungen, können Sie möglicherweise eine kleineren VM als die Haupt-VM verwenden, auf der die SAP HANA-Instanz ausgeführt wird. Denken Sie daran, dass Sie eine kleinere Anzahl von VHDs an kleinere VMs anfügen können. Informationen zu den Grenzwerte für die einzelnen VM-Typen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../../sizes.md).
 
 ### <a name="sap-hana-system-replication-without-automatic-failover"></a>SAP HANA-Systemreplikation ohne automatisches Failover
 
@@ -108,7 +109,7 @@ In diesem Szenario werden Daten, die auf der zweiten VM in der HANA-Instanz repl
 
 ### <a name="sap-hana-system-replication-with-automatic-failover"></a>SAP HANA-Systemreplikation mit automatischem Failover
 
-In der standardmäßigen und am häufigsten verwendeten Verfügbarkeitskonfiguration innerhalb einer Azure-Region ist bei zwei Azure-VMs, auf denen SLES (SUSE Linux Enterprise Server) ausgeführt wird, ein Failovercluster definiert. Der SLES-Cluster (SUSE Linux Enterprise Server) basiert auf dem [Pacemaker](http://www.linux-ha.org/wiki/Pacemaker)-Framework in Verbindung mit einem [STONITH](http://linux-ha.org/wiki/STONITH)-Gerät. 
+In der standardmäßigen und am häufigsten verwendeten Verfügbarkeitskonfiguration innerhalb einer Azure-Region ist bei zwei Azure-VMs, auf denen SLES (SUSE Linux Enterprise Server) ausgeführt wird, ein Failovercluster definiert. Der SLES-Cluster (SUSE Linux Enterprise Server) basiert auf dem [Pacemaker](./high-availability-guide-suse-pacemaker.md)-Framework in Verbindung mit einem [STONITH](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device)-Gerät. 
 
 Aus SAP HANA-Sicht wird der verwendete Replikationsmodus synchronisiert, und ein automatisches Failover wird konfiguriert. Auf der zweiten VM agiert die SAP HANA-Instanz als Hot Standby-Knoten. Der Standby-Knoten empfängt einen synchronen Datenstrom von Änderungsdatensätzen aus der primären SAP HANA-Instanz. Da Transaktionen von der Anwendung auf dem primären HANA-Knoten committed werden, wartet dieser mit der Bestätigung des Commits in der Anwendung, bis der sekundäre SAP HANA-Knoten den Commitdatensatz bestätigt hat. SAP HANA bietet zwei verschiedene Modi für die synchrone Replikation. Einzelheiten und eine Beschreibung zu den Unterschieden zwischen diesen beiden Modi für die synchrone Replikation finden Sie im Artikel [Replication modes for SAP HANA System Replication](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html) (Replikationsmodi für die SAP HANA-Systemreplikation).
 
@@ -127,5 +128,4 @@ Eine ausführliche Anleitung zum Einrichten dieser Konfigurationen in Azure find
 
 Weitere Informationen zur SAP HANA-Verfügbarkeit in Azure-Regionen finden Sie im folgenden Artikel:
 
-- [SAP HANA-Verfügbarkeit in den Azure-Regionen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
-
+- [SAP HANA-Verfügbarkeit in den Azure-Regionen](./sap-hana-availability-across-regions.md)

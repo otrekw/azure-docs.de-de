@@ -1,25 +1,15 @@
 ---
-title: Verwalten von Azure Service Fabric-Anwendungsgeheimnissen | Microsoft-Dokumentation
+title: Verwalten von Azure Service Fabric-Anwendungsgeheimnissen
 description: Hier erfahren Sie, wie Sie geheime Werte in einer Service Fabric-Anwendung (plattformunabhängig) schützen.
-services: service-fabric
-documentationcenter: .net
-author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/04/2019
-ms.author: vturecek
-ms.openlocfilehash: d151dbf20e68a2152e9d886a74e51786bb8fbfa6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a11869c3b606ed9e74ce4f598109139fa1bb4164
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614478"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89012822"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Verwalten von verschlüsselten Geheimnissen in Service Fabric-Anwendungen
 In diesem Leitfaden werden die Schritte zum Verwalten von Geheimnissen in einer Service Fabric-Anwendung beschrieben. Geheimnisse beinhalten jegliche Art von vertraulichen Informationen (z.B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die nicht als Nur-Text verarbeitet werden sollen).
@@ -31,8 +21,8 @@ Die Verwendung von verschlüsselten Geheimnissen in einer Service Fabric-Anwendu
 
 ## <a name="set-up-an-encryption-certificate-and-encrypt-secrets"></a>Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen
 Das Einrichten eines Verschlüsselungszertifikats und das anschließende Verwenden zum Verschlüsseln von Geheimnissen unterscheidet sich unter Windows und Linux.
-* [Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen in Windows-Clustern][secret-management-windows-specific-link]
-* [Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen in Linux-Clustern][secret-management-linux-specific-link]
+* [Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen in Windows-Clustern.][secret-management-windows-specific-link]
+* [Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen in Linux-Clustern.][secret-management-linux-specific-link]
 
 ## <a name="specify-encrypted-secrets-in-an-application"></a>Angeben von verschlüsselten Geheimnissen in einer Anwendung
 Im vorherigen Schritt wird beschrieben, wie Sie ein Geheimnis mit einem Zertifikat verschlüsseln und eine Zeichenfolge mit Base64-Codierung erzeugen, die in einer Anwendung verwendet werden kann. Diese Base64-codierte Zeichenfolge kann als verschlüsselter [Parameter][parameters-link] in der Datei „Settings.xml“ eines Diensts oder als verschlüsselte [Umgebungsvariable][environment-variables-link] in der Datei „ServiceManifest.xml“ eines Diensts angegeben werden.
@@ -55,6 +45,22 @@ Geben Sie eine verschlüsselte [Umgebungsvariable][environment-variables-link] i
   </EnvironmentVariables>
 </CodePackage>
 ```
+
+Die Geheimnisse sollten auch in Ihre Service Fabric-Anwendung eingebunden werden, indem Sie ein Zertifikat im Anwendungsmanifest angeben. Fügen Sie der Datei **ApplicationManifest.xml** ein **SecretsCertificate**-Element hinzu, und binden Sie den Fingerabdruck des gewünschten Zertifikats ein.
+
+```xml
+<ApplicationManifest … >
+  ...
+  <Certificates>
+    <SecretsCertificate Name="MyCert" X509FindType="FindByThumbprint" X509FindValue="[YourCertThumbrint]"/>
+  </Certificates>
+</ApplicationManifest>
+```
+> [!NOTE]
+> Beim Aktivieren einer Anwendung, die ein SecretsCertificate angibt, sucht Service Fabric das übereinstimmende Zertifikat und gewährt der Identität, in der die Anwendung ausgeführt wird, volle Berechtigungen für den privaten Schlüssel des Zertifikats. Service Fabric überwacht außerdem das Zertifikat auf Änderungen und wendet die Berechtigungen entsprechend erneut an. Zum Erkennen von Änderungen für Zertifikate, die über einen allgemeinen Namen deklariert wurden, führt Service Fabric eine regelmäßige Aufgabe aus, die alle übereinstimmenden Zertifikate findet und sie mit einer zwischengespeicherten Liste von Fingerabdrücken vergleicht. Wenn ein neuer Fingerabdruck erkannt wird, bedeutet dies, dass ein Zertifikat dieses Antragstellers erneuert wurde. Der Task wird einmal pro Minute auf jedem Knoten des Clusters ausgeführt.
+>
+> Obwohl SecretsCertificate antragstellerbasierte Deklarationen zulässt, sollten Sie beachten, dass die verschlüsselten Einstellungen an das Schlüsselpaar gebunden sind, das zum Verschlüsseln der Einstellung auf dem Client verwendet wurde. Sie müssen sicherstellen, dass das ursprüngliche Verschlüsselungszertifikat (oder eine Entsprechung) mit der antragstellerbasierten Deklaration übereinstimmt und dass es einschließlich des zugehörigen privaten Schlüssels auf jedem Knoten des Clusters installiert ist, der die Anwendung hosten könnte. Alle derzeit gültigen Zertifikate, die mit der antragstellerbasierten Deklaration übereinstimmen und mit demselben Schlüsselpaar wie das ursprüngliche Verschlüsselungszertifikat erstellt wurden, werden als Entsprechungen angesehen.
+>
 
 ### <a name="inject-application-secrets-into-application-instances"></a>Einfügen von Geheimnissen aus Anwendungen in Anwendungsinstanzen
 Die Bereitstellung in anderen Umgebungen sollte idealerweise so automatisiert wie möglich erfolgen. Zu diesem Zweck können Sie die Geheimnisse in einer Buildumgebung verschlüsseln und die verschlüsselten Geheimnisse beim Erstellen von Anwendungsinstanzen als Parameter angeben.
@@ -94,7 +100,7 @@ Um Werte in „Settings.xml“ zu überschreiben, deklarieren Sie einen Außerkr
 
 Der Wert kann nun beim Erstellen einer Instanz der Anwendung als *Anwendungsparameter* angegeben werden. Sie können mithilfe von PowerShell ein Skript zum Erstellen einer Anwendungsinstanz erstellen. Alternativ können Sie C# verwenden, um eine problemlose Integration in einen Erstellungsprozess zu ermöglichen.
 
-Bei Verwendung von PowerShell wird der Parameter als [Hashtabelle](https://technet.microsoft.com/library/ee692803.aspx) an den Befehl `New-ServiceFabricApplication` übergeben:
+Bei Verwendung von PowerShell wird der Parameter als [Hashtabelle](/previous-versions/windows/it-pro/windows-powershell-1.0/ee692803(v=technet.10)) an den Befehl `New-ServiceFabricApplication` übergeben:
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
@@ -136,10 +142,12 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erfahren Sie mehr über [Anwendungs- und Dienstsicherheit](service-fabric-application-and-service-security.md).
+* Service Fabric-[Geheimnisspeicher](service-fabric-application-secret-store.md) 
+* Erfahren Sie mehr über [Anwendungs- und Dienstsicherheit](service-fabric-application-and-service-security.md).
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md
 [environment-variables-link]: service-fabric-how-to-specify-environment-variables.md
 [secret-management-windows-specific-link]: service-fabric-application-secret-management-windows.md
 [secret-management-linux-specific-link]: service-fabric-application-secret-management-linux.md
+[service fabric secrets store]: service-fabric-application-secret-store.md

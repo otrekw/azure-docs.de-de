@@ -1,24 +1,25 @@
 ---
-title: Überwachen und Protokollieren beim Azure AD-Kennwortschutz – Azure Active Directory
-description: Informationen zur Überwachung und Protokollierung beim Azure AD-Kennwortschutz
+title: Überwachen des lokalen Azure AD-Kennwortschutzes
+description: Erfahren Sie, wie Sie in einer lokalen Active Directory Domain Services-Umgebung die Protokolle für den Azure AD-Kennwortschutz überwachen und überprüfen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: how-to
+ms.date: 11/21/2019
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a763f15b57bf7f23eeb52c81dd48de7f02adc5e4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: edc246a414401c4c1c0248787eda0381fcd63037
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853561"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741761"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Überwachung und Protokollierung beim Azure AD-Kennwortschutz
+# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Überwachen und Überprüfen der Protokolle für lokale Umgebungen mit Azure AD-Kennwortschutz
 
 Nach der Bereitstellung des Azure AD-Kennwortschutzes sind Überwachung und Berichterstellung zentrale Aufgaben. Dieser Artikel enthält detaillierte Informationen, damit Sie verschiedene Überwachungstechniken verstehen, einschließlich der Speicherorte, an denen die einzelnen Dienste Informationen protokollieren, und der Methoden zum Berichten über die Verwendung des Azure AD-Kennwortschutzes.
 
@@ -63,17 +64,21 @@ Diskrete Ereignisse zum Erfassen dieser Situationen werden basierend auf folgend
 
 Die wichtigsten auf die Kennwortüberprüfung bezogenen Ereignisse sind wie folgt:
 
-|   |Kennwortänderung |Kennwortfestlegung|
+| Ereignis |Kennwortänderung |Kennwortfestlegung|
 | --- | :---: | :---: |
 |Pass |10014 |10015|
 |Fehler (aufgrund der Kundenkennwortrichtlinie)| 10016, 30002| 10017, 30003|
 |Fehler (aufgrund der Microsoft-Kennwortrichtlinie)| 10016, 30004| 10017, 30005|
 |Fehler (aufgrund einer Kombination aus der Microsoft- und der Kundenkennwortrichtlinie)| 10016, 30026| 10017, 30027|
+|Fehler (aufgrund des Benutzernamens)| 10016, 30021| 10017, 30022|
 |Im ausschließlichen Überwachungsmodus bestanden (würde Kundenkennwortrichtlinie nicht bestehen)| 10024, 30008| 10025, 30007|
 |Im ausschließlichen Überwachungsmodus bestanden (würde Kennwortrichtlinie von Microsoft nicht bestehen)| 10024, 30010| 10025, 30009|
 |Im Nur-Überprüfungsmodus bestanden (würde Kombination aus Microsoft- und Kundenkennwortrichtlinie nicht bestehen)| 10024, 30028| 10025, 30029|
+|Im ausschließlichen Überwachungsmodus bestanden (Benutzername hätte zu einem Fehler geführt)| 10016, 30024| 10017, 30023|
 
 Wenn in der obigen Tabelle auf „kombinierte Richtlinien“ verwiesen wird, bezieht sich das auf Situationen, in denen das Kennwort eines Benutzers mindestens ein Token enthält, das sowohl in der Microsoft-Kennwortsperrliste als auch in der Kunden-Kennwortsperrliste auftritt.
+
+Die Fälle in der obigen Tabelle, in denen auf den Benutzernamen verwiesen wird, beziehen sich auf Situationen, in denen das Kennwort eines Benutzers entweder den Kontonamen des Benutzers und/oder einen der Anzeigenamen des Benutzers enthielt. In diesen Szenarien wird das Kennwort des Benutzers jeweils abgelehnt, wenn die Richtlinie auf „Erzwingen“ festgelegt ist, oder zugelassen, wenn sich die Richtlinie im Überwachungsmodus befindet.
 
 Wenn ein Paar von Ereignissen gemeinsam protokolliert wird, sind beide Ereignisse explizit über dieselbe CorrelationId zugeordnet.
 
@@ -94,7 +99,7 @@ PasswordChangeErrors            : 0
 PasswordSetErrors               : 1
 ```
 
-Der Umfang der Berichterstellung des Cmdlets kann mit einem der -Forest, -Domain- oder -DomainController-Parameter beeinflusst werden. Keine Angabe eines Parameters bedeutet –Forest.
+Der Umfang der Berichterstellung des Cmdlets kann mit einem der –Forest-, –Domain- oder –DomainController-Parameter beeinflusst werden. Keine Angabe eines Parameters bedeutet –Forest.
 
 Die Cmdlet `Get-AzureADPasswordProtectionSummaryReport` funktioniert durch Abfragen des DC-Agent-Administratorereignisprotokolls und anschließendes Zählen der Gesamtanzahl von Ereignissen, die den einzelnen angezeigten Ergebniskategorien entsprechen. Die folgende Tabelle enthält die Zuordnungen zwischen den einzelnen Ergebnissen und der zugehörigen Ereignis-ID:
 
@@ -117,7 +122,7 @@ Beachten Sie, dass das Cmdlet `Get-AzureADPasswordProtectionSummaryReport` in Po
 > Dieses Cmdlet funktioniert, indem es eine PowerShell-Sitzung mit jedem Domänencontroller öffnet. Damit dies gelingt, muss die Unterstützung für PowerShell-Remotesitzungen auf jedem Domänencontroller aktiviert sein, und der Client muss über ausreichende Berechtigungen verfügen. Weitere Informationen zu Anforderungen für PowerShell-Remotesitzungen führen Sie in einem PowerShell-Fenster „Get-Help about_Remote_Troubleshooting“ aus.
 
 > [!NOTE]
-> Dieses Cmdlet funktioniert durch Remoteabfrage des Admin-Ereignisprotokolls jedes DC-Agentendienstes. Wenn die Ereignisprotokolle eine große Anzahl von Ereignissen enthalten, kann es lange dauern, bis das Cmdlet abgeschlossen ist. Darüber hinaus können umfangreiche Netzwerkabfragen großer Datenmengen die Leistung des Domänencontrollers beeinträchtigen. Daher sollte dieses Cmdlet in Produktionsumgebungen sorgfältig verwendet werden.
+> Bei diesem Cmdlet wird jeweils das Admin-Ereignisprotokoll der einzelnen DC-Agent-Dienste remote abgefragt. Wenn die Ereignisprotokolle eine große Anzahl von Ereignissen enthalten, kann es lange dauern, bis das Cmdlet abgeschlossen ist. Darüber hinaus können umfangreiche Netzwerkabfragen großer Datenmengen die Leistung des Domänencontrollers beeinträchtigen. Daher sollte dieses Cmdlet in Produktionsumgebungen sorgfältig verwendet werden.
 
 ### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>Beispiel einer Ereignisprotokollmeldung für Ereignis-ID 10014 – Kennwort erfolgreich geändert
 
@@ -265,7 +270,7 @@ HeartbeatUTC          : 2/16/2018 8:35:02 AM
 
 Die verschiedenen Eigenschaften werden von jedem DC-Agent-Dienst ungefähr stündlich aktualisiert. Die Daten unterliegen nach wie vor der Replikationswartezeit von Active Directory.
 
-Der Bereich der Cmdlet-Abfrage wird möglicherweise durch die Verwendung entweder des Parameters „–Forest“ oder „–Domain“ beeinflusst.
+Der Bereich der Cmdlet-Abfrage kann durch die Verwendung des Parameters „–Forest“ oder „–Domain“ beeinflusst werden.
 
 Wenn der HeartbeatUTC-Wert veraltet, kann dies darauf hinweisen, dass der DC-Agent des Azure AD-Kennwortschutzes auf diesem Domänencontroller nicht ausgeführt wird oder deinstalliert wurde oder dass der Computer herabgestuft wurde und kein Domänencontroller mehr ist.
 
@@ -357,7 +362,7 @@ HeartbeatUTC          : 12/25/2018 6:35:02 AM
 
 Die verschiedenen Eigenschaften werden von den einzelnen Proxydiensten ungefähr stündlich aktualisiert. Die Daten unterliegen nach wie vor der Replikationswartezeit von Active Directory.
 
-Der Bereich der Cmdlet-Abfrage wird möglicherweise durch die Verwendung entweder des Parameters „–Forest“ oder „–Domain“ beeinflusst.
+Der Bereich der Cmdlet-Abfrage kann durch die Verwendung des Parameters „–Forest“ oder „–Domain“ beeinflusst werden.
 
 Wenn der HeartbeatUTC-Wert veraltet, kann dies darauf hinweisen, dass der Proxy des Azure AD-Kennwortschutzes auf diesem Computer nicht ausgeführt wird oder deinstalliert wurde.
 

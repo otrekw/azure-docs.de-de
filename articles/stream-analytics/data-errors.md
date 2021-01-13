@@ -1,28 +1,27 @@
 ---
-title: Azure Stream Analytics-Diagnoseprotokolldatenfehler
+title: Datenfehler in Azure Stream Analytics-Ressourcenprotokollen
 description: In diesem Artikel werden die verschiedenen Fehler bei der Eingabe und Ausgabe von Daten erklärt, die bei der Verwendung von Azure Stream Analytics auftreten können.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: ecc7077bf208adf1ac89adcce2f2e480ce34888e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.topic: troubleshooting
+ms.date: 08/07/2020
+ms.openlocfilehash: 416e6cb29ab2816d53cb837f72233a9fe098f659
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329595"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011420"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Datenfehler in Azure Stream Analytics
 
-Datenfehler sind Fehler, die bei der Datenverarbeitung auftreten.  Sie entstehen am häufigsten bei der (De)Serialisierung von Daten und beim Schreiben von Vorgängen.  Wenn ein solcher Fehler auftritt, schreibt Stream Analytics detaillierte Informationen und Beispielereignisse in die Diagnoseprotokolle.  In einigen Fällen wird auch eine Zusammenfassung dieser Informationen über Benachrichtigungen im Portal bereitgestellt.
+Datenfehler sind Fehler, die bei der Datenverarbeitung auftreten.  Sie entstehen am häufigsten bei der (De)Serialisierung von Daten und beim Schreiben von Vorgängen.  Wenn ein solcher Fehler auftritt, schreibt Stream Analytics detaillierte Informationen und Beispielereignisse in die Ressourcenprotokolle. Aktivieren Sie die Diagnoseprotokolle in Ihrem Auftrag, um diese zusätzlichen Details zu erhalten. In einigen Fällen wird auch eine Zusammenfassung dieser Informationen über Benachrichtigungen im Portal bereitgestellt.
 
-In diesem Artikel erhalten Sie einen Überblick über die verschiedenen Fehlertypen, Gründe und Details zum Diagnoseprotokoll für Fehler bei der Eingabe oder Ausgabe von Daten.
+In diesem Artikel finden Sie eine Übersicht über die verschiedenen Fehlertypen, Ursachen und Details zum Ressourcenprotokoll für Fehler bei der Eingabe oder Ausgabe von Daten.
 
-## <a name="diagnostic-log-schema"></a>Diagnoseprotokollschema
+## <a name="resource-logs-schema"></a>Ressourcenprotokollschema
 
-Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen](stream-analytics-job-diagnostic-logs.md#diagnostics-logs-schema). Im folgenden JSON-Codeausschnitt finden Sie einen Beispielwert für das **Eigenschaften**-Feld eines Diagnoseprotokolls für einen Datenfehler.
+Weitere Informationen zum Schema für Ressourcenprotokolle finden Sie unter [Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen](stream-analytics-job-diagnostic-logs.md#resource-logs-schema). Im folgenden JSON-Codeausschnitt finden Sie einen Beispielwert für das Feld **Eigenschaften** eines Ressourcenprotokolls für einen Datenfehler.
 
 ```json
 {
@@ -44,7 +43,7 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 * Ursache: Der ausgewählte Eingabekomprimierungstyp stimmt nicht mit den Daten überein.
 * Benachrichtigung im Portal: Ja
-* Art des Diagnoseprotokolls: Warnung
+* Ressourcenprotokollebene: Warnung
 * Auswirkung: Nachrichten mit Deserialisierungsfehlern, einschließlich Nachrichten zu ungültigen Komprimierungstypen, werden aus der Eingabe entfernt.
 * Protokolldetails
    * Eingabenachrichtbezeichner. Bei einem Event Hub ist der Bezeichner „PartitionId“, „Offset“ und „Sequenznummer“.
@@ -59,7 +58,7 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 * Ursache: Der Header der Eingabedaten ist ungültig. Ein Beispiel: Eine CSV-Datei weist Spalten mit doppelten Namen auf.
 * Benachrichtigung im Portal: Ja
-* Art des Diagnoseprotokolls: Warnung
+* Ressourcenprotokollebene: Warnung
 * Auswirkung: Nachrichten mit Deserialisierungsfehlern, einschließlich Nachrichten zu ungültigen Headern, werden aus der Eingabe entfernt.
 * Protokolldetails
    * Eingabenachrichtbezeichner. 
@@ -75,7 +74,7 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 * Ursache: Die über CREATE TABLE oder TIMESTAMP definierten Eingabespalten sind nicht vorhanden.
 * Benachrichtigung im Portal: Ja
-* Art des Diagnoseprotokolls: Warnung
+* Ressourcenprotokollebene: Warnung
 * Auswirkung: Ereignisse mit fehlenden Spalten werden aus der Eingabe entfernt.
 * Protokolldetails
    * Eingabenachrichtbezeichner. 
@@ -96,7 +95,7 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 * Ursache: Die Eingabe konnte nicht in den Typ konvertiert werden, der in der CREATE TABLE-Anweisung angegeben ist.
 * Benachrichtigung im Portal: Ja
-* Art des Diagnoseprotokolls: Warnung
+* Ressourcenprotokollebene: Warnung
 * Auswirkung: Ereignisse mit Typkonvertierungsfehlern werden aus der Eingabe gelöscht.
 * Protokolldetails
    * Eingabenachrichtbezeichner. 
@@ -116,7 +115,7 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 * Ursache: Die Eingabedaten weisen nicht das richtige Format auf. Ein Beispiel: Die Eingabe ist in keinem gültigen JSON-Format.
 * Benachrichtigung im Portal: Ja
-* Art des Diagnoseprotokolls: Warnung
+* Ressourcenprotokollebene: Warnung
 * Auswirkung: Alle Ereignisse in der Nachricht, nachdem ein Fehler aufgrund von ungültigen Daten aufgetreten ist, werden aus der Eingabe entfernt.
 * Protokolldetails
    * Eingabenachrichtbezeichner. 
@@ -136,7 +135,7 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 * Ursache: Der Wert des TIMESTAMP BY-Ausdrucks kann nicht in datetime konvertiert werden.
 * Benachrichtigung im Portal: Ja
-* Art des Diagnoseprotokolls: Warnung
+* Ressourcenprotokollebene: Warnung
 * Auswirkung: Ereignisse mit ungültigem Eingabezeitstempel werden aus der Eingabe gelöscht.
 * Protokolldetails
    * Eingabenachrichtbezeichner. 
@@ -153,7 +152,7 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 * Ursache: Der Wert der Zeitstempelspalte TIMESTAMP BY OVER ist NULL.
 * Benachrichtigung im Portal: Ja
-* Art des Diagnoseprotokolls: Warnung
+* Ressourcenprotokollebene: Warnung
 * Auswirkung: Ereignisse mit ungültigem Eingabezeitstempelschlüssel werden aus der Eingabe gelöscht.
 * Protokolldetails
    * Tatsächliche Nutzlast bis auf einige Kilobytes genau.
@@ -168,8 +167,8 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 * Ursache: Der Unterschied zwischen der Anwendungszeit und der Eingangszeit ist größer als das Toleranzfenster für Eingangsverzögerung.
 * Benachrichtigung im Portal: Nein
-* Art des Diagnoseprotokolls: Information
-* Auswirkung:  Späte Eingabeereignisse werden entsprechend der Einstellung „Handle other events“ (Andere Ereignisse verarbeiten) im Abschnitt „Ereignisreihenfolge“ der Auftragskonfiguration verarbeitet. Weitere Informationen finden Sie unter [Time Handling Policies (Richtlinien zur Behandlung von Zeitangaben)](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Ressourcenprotokollebene: Information
+* Auswirkung:  Späte Eingabeereignisse werden entsprechend der Einstellung „Handle other events“ (Andere Ereignisse verarbeiten) im Abschnitt „Ereignisreihenfolge“ der Auftragskonfiguration verarbeitet. Weitere Informationen finden Sie unter [Time Handling Policies (Richtlinien zur Behandlung von Zeitangaben)](/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Protokolldetails
    * Anwendungszeit und Eingangszeit 
    * Tatsächliche Nutzlast bis auf einige Kilobytes genau.
@@ -184,8 +183,8 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 * Ursache: Der Unterschied zwischen der Anwendungszeit und der Eingangszeit beträgt mehr als fünf Minuten.
 * Benachrichtigung im Portal: Nein
-* Art des Diagnoseprotokolls: Information
-* Auswirkung:  Frühe Eingabeereignisse werden entsprechend der Einstellung „Handle other events“ (Andere Ereignisse verarbeiten) im Abschnitt „Ereignisreihenfolge“ der Auftragskonfiguration verarbeitet. Weitere Informationen finden Sie unter [Time Handling Policies (Richtlinien zur Behandlung von Zeitangaben)](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Ressourcenprotokollebene: Information
+* Auswirkung:  Frühe Eingabeereignisse werden entsprechend der Einstellung „Handle other events“ (Andere Ereignisse verarbeiten) im Abschnitt „Ereignisreihenfolge“ der Auftragskonfiguration verarbeitet. Weitere Informationen finden Sie unter [Time Handling Policies (Richtlinien zur Behandlung von Zeitangaben)](/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Protokolldetails
    * Anwendungszeit und Eingangszeit 
    * Tatsächliche Nutzlast bis auf einige Kilobytes genau.
@@ -200,8 +199,8 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 * Ursache: Das Ereignis wird entsprechend des definierten Toleranzfensters für Fehlordnung als fehlgeordnet angesehen.
 * Benachrichtigung im Portal: Nein
-* Art des Diagnoseprotokolls: Information
-* Auswirkung:  Eingabeereignisse, die in falscher Reihenfolge stattfinden, werden entsprechend der Einstellung „Handle other events“ (Andere Ereignisse verarbeiten) im Abschnitt „Ereignisreihenfolge“ der Auftragskonfiguration verarbeitet. Weitere Informationen finden Sie unter [Time Handling Policies (Richtlinien zur Behandlung von Zeitangaben)](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Ressourcenprotokollebene: Information
+* Auswirkung:  Eingabeereignisse, die in falscher Reihenfolge stattfinden, werden entsprechend der Einstellung „Handle other events“ (Andere Ereignisse verarbeiten) im Abschnitt „Ereignisreihenfolge“ der Auftragskonfiguration verarbeitet. Weitere Informationen finden Sie unter [Time Handling Policies (Richtlinien zur Behandlung von Zeitangaben)](/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Protokolldetails
    * Tatsächliche Nutzlast bis auf einige Kilobytes genau.
 
@@ -213,12 +212,16 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 ## <a name="output-data-errors"></a>Fehler bei der Ausgabe von Daten
 
+Azure Stream Analytics kann abhängig von der Konfiguration Ausgabedatenfehler mit oder ohne E/A-Anforderung an die Ausgabesenke identifizieren. So kann z. B. bei Verwendung der Azure-Tabellenausgabe eine fehlende erforderliche Spalte wie `PartitionKey` ohne eine E/A-Anforderung identifiziert werden. Bei Einschränkungsverletzungen in der SQL-Ausgabe ist jedoch eine E/A-Anforderung nötig.
+
+Es gibt mehrere Datenfehler, die nur nach Aufrufen der Ausgabesenke erkannt werden können, wodurch die Verarbeitung verlangsamt werden kann. Ändern Sie daher die Konfiguration des Auftrags oder die Abfrage, die den Datenfehler hervorruft.
+
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
 
 * Ursache: Die für die Ausgabe erforderliche Spalte ist nicht vorhanden. Ein Beispiel: Eine Spalte, die als PartitionKey für eine Azure-Tabelle definiert wurde, ist nicht vorhanden.
 * Benachrichtigung im Portal: Ja
-* Art des Diagnoseprotokolls: Warnung
-* Auswirkung:  Alle anderen Fehler bei der Datenkonvertierung, einschließlich Fehlern aufgrund von fehlenden Pflichtspalten, werden entsprechend der Einstellung [Output Data Policy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) (Richtlinie für Ausgabedaten) verarbeitet.
+* Ressourcenprotokollebene: Warnung
+* Auswirkung:  Alle anderen Fehler bei der Datenkonvertierung, einschließlich Fehlern aufgrund von fehlenden Pflichtspalten, werden entsprechend der Einstellung [Output Data Policy](./stream-analytics-output-error-policy.md) (Richtlinie für Ausgabedaten) verarbeitet.
 * Protokolldetails
    * Name der Spalte und entweder der Zeilenbezeichner oder der Teil der Zeile.
 
@@ -232,8 +235,8 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 * Ursache: Der Spaltenwert entspricht nicht der Ausgabe. Ein Beispiel: Der Spaltenname ist keine gültige Azure-Tabellenspalte.
 * Benachrichtigung im Portal: Ja
-* Art des Diagnoseprotokolls: Warnung
-* Auswirkung:  Alle anderen Fehler bei der Datenkonvertierung, einschließlich Fehlern aufgrund von ungültigen Spaltennamen, werden entsprechend der Einstellung [Output Data Policy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) (Richtlinie für Ausgabedaten) verarbeitet.
+* Ressourcenprotokollebene: Warnung
+* Auswirkung:  Alle anderen Fehler bei der Datenkonvertierung, einschließlich Fehlern aufgrund von ungültigen Spaltennamen, werden entsprechend der Einstellung [Output Data Policy](./stream-analytics-output-error-policy.md) (Richtlinie für Ausgabedaten) verarbeitet.
 * Protokolldetails
    * Name der Spalte und entweder der Zeilenbezeichner oder der Teil der Zeile.
 
@@ -247,8 +250,8 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 * Ursache: Eine Spalte kann in der Ausgabe nicht in einen gültigen Typ konvertiert werden. Ein Beispiel: Der Wert einer Spalte ist nicht kompatibel mit Einschränkungen oder Typen, die in der SQL-Tabelle definiert wurden.
 * Benachrichtigung im Portal: Ja
-* Art des Diagnoseprotokolls: Warnung
-* Auswirkung:  Alle anderen Fehler bei der Datenkonvertierung, einschließlich Fehlern bei der Typkonvertierung, werden entsprechend der Einstellung [Output Data Policy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) (Richtlinie für Ausgabedaten) verarbeitet.
+* Ressourcenprotokollebene: Warnung
+* Auswirkung:  Alle anderen Fehler bei der Datenkonvertierung, einschließlich Fehlern bei der Typkonvertierung, werden entsprechend der Einstellung [Output Data Policy](./stream-analytics-output-error-policy.md) (Richtlinie für Ausgabedaten) verarbeitet.
 * Protokolldetails
    * Name der Spalte.
    * Entweder der Zeilenbezeichner oder der Teil der Zeile.
@@ -263,8 +266,8 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 * Ursache: Der Wert der Nachricht ist größer als die unterstützte Ausgabegröße. Ein Beispiel: Eine Zeile für eine Event Hub-Ausgabe ist größer als 1 MB.
 * Benachrichtigung im Portal: Ja
-* Art des Diagnoseprotokolls: Warnung
-* Auswirkung:  Alle anderen Fehler bei der Datenkonvertierung, einschließlich Fehlern aufgrund von Überschreitungen der Maximalgröße von Datensätzen, werden entsprechend der Einstellung [Output Data Policy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) (Richtlinie für Ausgabedaten) verarbeitet.
+* Ressourcenprotokollebene: Warnung
+* Auswirkung:  Alle anderen Fehler bei der Datenkonvertierung, einschließlich Fehlern aufgrund von Überschreitungen der Maximalgröße von Datensätzen, werden entsprechend der Einstellung [Output Data Policy](./stream-analytics-output-error-policy.md) (Richtlinie für Ausgabedaten) verarbeitet.
 * Protokolldetails
    * Entweder der Zeilenbezeichner oder der Teil der Zeile.
 
@@ -278,8 +281,8 @@ Weitere Informationen zum Schema für Diagnoseprotokolle finden Sie unter [Probl
 
 * Ursache: Eine Zeile enthält bereits eine Spalte mit demselben Namen wie eine Systemspalte. Ein Beispiel: Eine CosmosDB-Ausgabe mit einer Spalte namens ID, obwohl dieser Spaltenname bereits für eine andere Spalte verwendet wird.
 * Benachrichtigung im Portal: Ja
-* Art des Diagnoseprotokolls: Warnung
-* Auswirkung:  Alle anderen Fehler bei der Datenkonvertierung, einschließlich Fehlern aufgrund von Duplikatschlüsseln, werden entsprechend der Einstellung [Output Data Policy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) (Richtlinie für Ausgabedaten) verarbeitet.
+* Ressourcenprotokollebene: Warnung
+* Auswirkung:  Alle anderen Fehler bei der Datenkonvertierung, einschließlich Fehlern aufgrund von Duplikatschlüsseln, werden entsprechend der Einstellung [Output Data Policy](./stream-analytics-output-error-policy.md) (Richtlinie für Ausgabedaten) verarbeitet.
 * Protokolldetails
    * Name der Spalte.
    * Entweder der Zeilenbezeichner oder der Teil der Zeile.

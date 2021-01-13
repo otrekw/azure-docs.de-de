@@ -1,36 +1,40 @@
 ---
-title: Herstellen einer Verbindung mit Azure Database for MySQL per Node.js
+title: 'Schnellstart: Herstellen einer Verbindung unter Verwendung von Node.js: Azure Database for MySQL'
 description: Diese Schnellstartanleitung enthält mehrere Node.js-Codebeispiele, mit deren Hilfe Sie eine Verbindung mit Azure-Datenbank für MySQL herstellen und Daten daraus abfragen können.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
-ms.custom: mvc
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/21/2018
-ms.openlocfilehash: ad022f6ac9cebbe92cdca3a4b368524d828a9cbb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 12/11/2020
+ms.openlocfilehash: 6a9134e13e3145daea1eed81c4aa8795a0a49950
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931561"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588232"
 ---
-# <a name="azure-database-for-mysql-use-nodejs-to-connect-and-query-data"></a>Azure Database for MySQL: Verwenden von Node.js zum Herstellen einer Verbindung und Abfragen von Daten
-In diesem Schnellstart wird gezeigt, wie Sie eine Verbindung mit einer Azure-Datenbank für MySQL per [Node.js](https://nodejs.org/) auf Windows-, Ubuntu Linux- und Mac-Plattformen herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Node.js-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von Node.js zum Herstellen von Verbindungen mit Daten und Abfragen von Daten in Azure Database for MySQL
+
+In dieser Schnellstartanleitung stellen Sie unter Verwendung von Node.js eine Verbindung mit einer Azure Database for MySQL-Instanz her. Anschließend verwenden Sie SQL-Anweisungen, um Daten in der Datenbank über Mac-, Ubuntu Linux- und Windows-Plattformen abzufragen, einzufügen, zu aktualisieren und zu löschen. 
+
+In diesem Thema wird davon ausgegangen, dass Sie mit der Node.js-Entwicklung vertraut sind, aber noch keine Erfahrung mit Azure Database for MySQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
-- [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe des Azure-Portals](./quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe der Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-Außerdem benötigen Sie Folgendes:
-- Installation der [Node.js](https://nodejs.org)-Laufzeit
-- Installation des [mysql](https://www.npmjs.com/package/mysql)-Pakets zum Herstellen der Verbindung mit MySQL für die Node.js-Anwendung 
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Ein Azure Database for MySQL-Server. [Erstellen Sie einen Azure Database for MySQL-Server mithilfe des Azure-Portals](quickstart-create-mysql-server-database-using-azure-portal.md), oder [erstellen Sie einen Azure Database for MySQL-Server mithilfe der Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+
+> [!IMPORTANT] 
+> Sicherstellen, dass der IP-Adresse, über die Sie eine Verbindung herstellen, die Firewallregeln des Servers über das [Azure-Portal](./howto-manage-firewall-using-portal.md) oder die [Azure CLI](./howto-manage-firewall-using-cli.md) hinzugefügt wurden
 
 ## <a name="install-nodejs-and-the-mysql-connector"></a>Installation von Node.js und MySQL-Connector
-Befolgen Sie für die Installation von Node.js je nach Plattform die Anweisungen im entsprechende Abschnitt. Verwenden Sie npm, um das mysql-Paket und die Abhängigkeiten in Ihrem Projektordner zu installieren.
 
-### <a name="windows"></a>**Windows**
+Befolgen Sie zum Installieren von [Node.js](https://nodejs.org) die plattformabhängigen Anweisungen im entsprechenden Abschnitt. Verwenden Sie npm, um das Paket [mysql](https://www.npmjs.com/package/mysql) und die entsprechenden Abhängigkeiten in Ihrem Projektordner zu installieren.
+
+### <a name="windows"></a>Windows
+
 1. Besuchen Sie die [Node.js-Seite „Downloads“](https://nodejs.org/en/download/), und wählen Sie dann die gewünschte Windows Installer-Option aus.
 2. Erstellen Sie einen lokalen Projektordner, z.B. `nodejsmysql`. 
 3. Öffnen Sie die Eingabeaufforderung, und wechseln Sie zum Projektordner, z.B. mit `cd c:\nodejsmysql\`.
@@ -44,11 +48,18 @@ Befolgen Sie für die Installation von Node.js je nach Plattform die Anweisungen
 
 5. Überprüfen Sie die Installation, indem Sie sich den Ausgabetext von `npm list` ansehen. Die Versionsnummer kann hiervon abweichen, wenn neue Patches veröffentlicht werden.
 
-### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>Linux (Ubuntu)
+
 1. Führen Sie die folgenden Befehle zum Installieren von **Node.js** und **npm** (Paket-Manager für Node.js) aus.
 
    ```bash
-   sudo apt-get install -y nodejs npm
+    # Using Ubuntu
+    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+
+    # Using Debian, as root
+    curl -sL https://deb.nodesource.com/setup_14.x | bash -
+    apt-get install -y nodejs
    ```
 
 2. Führen Sie die folgenden Befehle aus, um den Projektordner `mysqlnodejs` zu erstellen und das mysql-Paket in diesem Ordner zu installieren.
@@ -61,13 +72,10 @@ Befolgen Sie für die Installation von Node.js je nach Plattform die Anweisungen
    ```
 3. Überprüfen Sie die Installation, indem Sie sich den Ausgabetext von „npm list“ ansehen. Die Versionsnummer kann hiervon abweichen, wenn neue Patches veröffentlicht werden.
 
-### <a name="mac-os"></a>**Mac OS**
-1. Geben Sie die folgenden Befehle zum Installieren von **brew** ein, einem einfach zu verwendenden Paket-Manager für Mac OS X und **Node.js**.
+### <a name="macos"></a>macOS
 
-   ```bash
-   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-   brew install node
-   ```
+1. Besuchen Sie die [Node.js-Seite „Downloads“](https://nodejs.org/en/download/), und wählen Sie dann Ihren macOS-Installer aus.
+
 2. Führen Sie die folgenden Befehle aus, um den Projektordner `mysqlnodejs` zu erstellen und das mysql-Paket in diesem Ordner zu installieren.
 
    ```bash
@@ -80,21 +88,24 @@ Befolgen Sie für die Installation von Node.js je nach Plattform die Anweisungen
 3. Überprüfen Sie die Installation, indem Sie sich den Ausgabetext von `npm list` ansehen. Die Versionsnummer kann hiervon abweichen, wenn neue Patches veröffentlicht werden.
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
+
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank für MySQL erforderlich sind. Sie benötigen den vollqualifizierten Servernamen und die Anmeldeinformationen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Wählen Sie im Azure-Portal im linken Menü **Alle Ressourcen** aus, und suchen Sie dann nach dem Server, den Sie erstellt haben (z.B. **mydemoserver**).
 3. Wählen Sie den Servernamen aus.
 4. Notieren Sie sich im Bereich **Übersicht** des Servers den **Servernamen** und den **Anmeldenamen des Serveradministrators**. Wenn Sie Ihr Kennwort vergessen haben, können Sie es in diesem Bereich auch zurücksetzen.
- ![Servername für Azure-Datenbank für MySQL](./media/connect-nodejs/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-nodejs/server-name-azure-database-mysql.png" alt-text="Servername für Azure-Datenbank für MySQL":::
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Ausführen des JavaScript-Codes in Node.js
+
 1. Fügen Sie den JavaScript-Code in Textdateien ein, und speichern Sie ihn dann in einem Projektordner mit der Dateierweiterung „.js“, z.B. „C:\nodejsmysql\createtable.js“ oder „/home/username/nodejsmysql/createtable.js“.
 2. Öffnen Sie die Eingabeaufforderung oder die Bash-Shell, und wechseln Sie zu Ihrem Projektordner: `cd nodejsmysql`.
 3. Um die Anwendung auszuführen, geben Sie den node-Befehl gefolgt vom Dateinamen ein, z.B. `node createtable.js`.
 4. Unter Windows müssen Sie unter Umständen den vollständigen Pfad verwenden, um die Node-Anwendung zu starten, z.B. `"C:\Program Files\nodejs\node.exe" createtable.js`, wenn sich die Node-Anwendung nicht unter dem Pfad der Umgebungsvariablen befindet.
 
 ## <a name="connect-create-table-and-insert-data"></a>Herstellen der Verbindung, Erstellen der Tabelle und Einfügen von Daten
+
 Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und die Daten zu laden, indem Sie die SQL-Anweisungen **CREATE TABLE** und **INSERT INTO** verwenden.
 
 Die [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections)-Methode wird verwendet, um die Kommunikation mit dem MySQL-Server zu ermöglichen. Die Funktion [connect()](https://github.com/mysqljs/mysql#establishing-connections) wird verwendet, um die Verbindung mit dem Server herzustellen. Die Funktion [query()](https://github.com/mysqljs/mysql#performing-queries) wird verwendet, um die SQL-Abfrage für die MySQL-Datenbank auszuführen. 
@@ -126,42 +137,43 @@ conn.connect(
     {
        console.log("Connection established.");
            queryDatabase();
-    }   
+    }
 });
 
 function queryDatabase(){
-       conn.query('DROP TABLE IF EXISTS inventory;', function (err, results, fields) { 
-            if (err) throw err; 
-            console.log('Dropped inventory table if existed.');
-        })
-       conn.query('CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);', 
+    conn.query('DROP TABLE IF EXISTS inventory;', function (err, results, fields) { 
+        if (err) throw err; 
+        console.log('Dropped inventory table if existed.');
+    })
+        conn.query('CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);', 
             function (err, results, fields) {
                 if (err) throw err;
-            console.log('Created inventory table.');
-        })
-       conn.query('INSERT INTO inventory (name, quantity) VALUES (?, ?);', ['banana', 150], 
+        console.log('Created inventory table.');
+    })
+    conn.query('INSERT INTO inventory (name, quantity) VALUES (?, ?);', ['banana', 150], 
             function (err, results, fields) {
                 if (err) throw err;
-            else console.log('Inserted ' + results.affectedRows + ' row(s).');
+        else console.log('Inserted ' + results.affectedRows + ' row(s).');
         })
-       conn.query('INSERT INTO inventory (name, quantity) VALUES (?, ?);', ['orange', 154], 
+    conn.query('INSERT INTO inventory (name, quantity) VALUES (?, ?);', ['orange', 154], 
             function (err, results, fields) {
                 if (err) throw err;
-            console.log('Inserted ' + results.affectedRows + ' row(s).');
+        console.log('Inserted ' + results.affectedRows + ' row(s).');
         })
-       conn.query('INSERT INTO inventory (name, quantity) VALUES (?, ?);', ['apple', 100], 
-        function (err, results, fields) {
+    conn.query('INSERT INTO inventory (name, quantity) VALUES (?, ?);', ['apple', 100], 
+    function (err, results, fields) {
                 if (err) throw err;
-            console.log('Inserted ' + results.affectedRows + ' row(s).');
+        console.log('Inserted ' + results.affectedRows + ' row(s).');
         })
-       conn.end(function (err) { 
-        if (err) throw err;
-        else  console.log('Done.') 
-        });
+    conn.end(function (err) { 
+    if (err) throw err;
+    else  console.log('Done.') 
+    });
 };
 ```
 
 ## <a name="read-data"></a>Lesen von Daten
+
 Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **SELECT** zu verbinden und zu lesen. 
 
 Die [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections)-Methode wird verwendet, um die Kommunikation mit dem MySQL-Server zu ermöglichen. Die [connect()](https://github.com/mysqljs/mysql#establishing-connections)-Methode wird verwendet, um die Verbindung mit dem Server herzustellen. Die [query()](https://github.com/mysqljs/mysql#performing-queries)-Methode wird verwendet, um die SQL-Abfrage für die MySQL-Datenbank auszuführen. Das results-Array wird für die Ergebnisse der Abfrage verwendet.
@@ -192,28 +204,29 @@ conn.connect(
         else {
             console.log("Connection established.");
             readData();
-        }   
+        }
     });
 
 function readData(){
-        conn.query('SELECT * FROM inventory', 
-            function (err, results, fields) {
-                if (err) throw err;
-                else console.log('Selected ' + results.length + ' row(s).');
-                for (i = 0; i < results.length; i++) {
-                    console.log('Row: ' + JSON.stringify(results[i]));
-                }
-                console.log('Done.');
-            })
-       conn.end(
-           function (err) { 
-                if (err) throw err;
-                else  console.log('Closing connection.') 
-        });
+    conn.query('SELECT * FROM inventory', 
+        function (err, results, fields) {
+            if (err) throw err;
+            else console.log('Selected ' + results.length + ' row(s).');
+            for (i = 0; i < results.length; i++) {
+                console.log('Row: ' + JSON.stringify(results[i]));
+            }
+            console.log('Done.');
+        })
+    conn.end(
+        function (err) { 
+            if (err) throw err;
+            else  console.log('Closing connection.') 
+    });
 };
 ```
 
 ## <a name="update-data"></a>Aktualisieren von Daten
+
 Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **UPDATE** zu verbinden und zu lesen. 
 
 Die [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections)-Methode wird verwendet, um die Kommunikation mit dem MySQL-Server zu ermöglichen. Die [connect()](https://github.com/mysqljs/mysql#establishing-connections)-Methode wird verwendet, um die Verbindung mit dem Server herzustellen. Die [query()](https://github.com/mysqljs/mysql#performing-queries)-Methode wird verwendet, um die SQL-Abfrage für die MySQL-Datenbank auszuführen. 
@@ -244,7 +257,7 @@ conn.connect(
         else {
             console.log("Connection established.");
             updateData();
-        }   
+        }
     });
 
 function updateData(){
@@ -252,7 +265,7 @@ function updateData(){
             function (err, results, fields) {
                 if (err) throw err;
                 else console.log('Updated ' + results.affectedRows + ' row(s).');
-        })
+           })
        conn.end(
            function (err) { 
                 if (err) throw err;
@@ -262,6 +275,7 @@ function updateData(){
 ```
 
 ## <a name="delete-data"></a>Löschen von Daten
+
 Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **DELETE** zu verbinden und zu lesen. 
 
 Die [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections)-Methode wird verwendet, um die Kommunikation mit dem MySQL-Server zu ermöglichen. Die [connect()](https://github.com/mysqljs/mysql#establishing-connections)-Methode wird verwendet, um die Verbindung mit dem Server herzustellen. Die [query()](https://github.com/mysqljs/mysql#performing-queries)-Methode wird verwendet, um die SQL-Abfrage für die MySQL-Datenbank auszuführen. 
@@ -292,7 +306,7 @@ conn.connect(
         else {
             console.log("Connection established.");
             deleteData();
-        }   
+        }
     });
 
 function deleteData(){
@@ -300,7 +314,7 @@ function deleteData(){
             function (err, results, fields) {
                 if (err) throw err;
                 else console.log('Deleted ' + results.affectedRows + ' row(s).');
-        })
+           })
        conn.end(
            function (err) { 
                 if (err) throw err;
@@ -309,6 +323,17 @@ function deleteData(){
 };
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Ressourcengruppe mit dem folgenden Befehl, um alle in dieser Schnellstartanleitung verwendeten Ressourcen zu bereinigen:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
+
 > [!div class="nextstepaction"]
 > [Migrieren der Datenbank mit Export und Import](./concepts-migrate-import-export.md)

@@ -1,5 +1,5 @@
 ---
-title: Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services
+title: Aktivieren von Remotedesktop für eine Rolle mithilfe von Visual Studio (Azure Cloud Services)
 description: Konfigurieren einer Azure-Clouddienstanwendung für Remotedesktopverbindungen
 services: cloud-services
 author: ghogen
@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 6a6d045513e3e91c5a8b2004e47378a097be8963
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515916"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80294386"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services mit Visual Studio
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
@@ -65,7 +65,7 @@ Wenn Sie als Teil eines Teams arbeiten, sollten Sie stattdessen Remotedesktop en
 
 Diese Empfehlung erfolgt aufgrund einer Änderung der Art, in der Visual Studio 2017 Version 15.5 und höher mit der Clouddienst-VM kommuniziert. Wenn Sie Remotedesktop über den Veröffentlichungs-Assistenten aktivieren, kommunizieren frühere Versionen von Visual Studio über das sogenannte „RDP-Plug-In" mit dem virtuellen Computer. Visual Studio 2017 Version 15.5 und höher kommuniziert stattdessen mithilfe der „RDP-Erweiterung“, was sicherer und flexibler ist. Diese Änderung ist auch konform mit der Tatsache, dass die Methoden zum Aktivieren von Remotedesktop mittels Azure-Portal und PowerShell auch die RDP-Erweiterung verwenden.
 
-Wenn Visual Studio mit der RDP-Erweiterung kommuniziert, wird ein Kennwort im Klartextformat über SSL übertragen. Allerdings speichern die Konfigurationsdateien des Projekts nur ein verschlüsseltes Kennwort, das nur mit dem lokalen Zertifikat, das ursprünglich zum Verschlüsseln verwendet wurde, in Klartext entschlüsselt werden kann.
+Wenn Visual Studio mit der RDP-Erweiterung kommuniziert, wird ein Kennwort im Klartextformat über TLS übertragen. Allerdings speichern die Konfigurationsdateien des Projekts nur ein verschlüsseltes Kennwort, das nur mit dem lokalen Zertifikat, das ursprünglich zum Verschlüsseln verwendet wurde, in Klartext entschlüsselt werden kann.
 
 Wenn Sie das Clouddienstprojekt jedes Mal vom gleichen Entwicklungscomputer aus bereitstellen, ist dieses lokale Zertifikat verfügbar. In diesem Fall können Sie weiterhin die Option **Remotedesktop für alle Rollen aktivieren** im Veröffentlichungs-Assistenten verwenden.
 

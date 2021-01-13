@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f5e1a21f24fdd2458d4803d6ed1675455fa5037d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 542f62f04adc7d4858e4b4621b0ae85e906434ad
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595601"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369323"
 ---
 # <a name="view-system-test-results"></a>Anzeigen der Ergebnisse von Systemtests
 
@@ -70,12 +70,12 @@ So fordern Sie eine Bereitstellung an:
 
 2. Für erfolgreich trainierte Modelle, die noch nicht bereitgestellt wurden, wird die Schaltfläche „Bereitstellen“ angezeigt.
 
-    ![Bereitstellen des Modells](media/how-to/how-to-deploy-model.png)
+    ![Screenshot: Hervorgehobene Schaltfläche „Bereitstellen“ zum Bereitstellen eines Modells](media/how-to/how-to-deploy-model.png)
 
 3.  Klicken Sie auf „Bereitstellen“.
 4.  Wählen Sie **Bereitgestellt** für die Regionen aus, in denen das Modell bereitgestellt werden soll, und klicken Sie auf „Speichern“. **Bereitgestellt** kann für mehrere Regionen ausgewählt werden.
 
-    ![Bereitstellen des Modells](media/how-to/how-to-deploy-model-regions.png)
+    ![Screenshot, der zeigt, wo Sie ein Modell bereitstellen oder die Bereitstellung eines Modells aufheben können](media/how-to/how-to-deploy-model-regions.png)
 
 5.  Der Status Ihres Modells wird in der Spalte „Status“ angezeigt.
 
@@ -90,7 +90,7 @@ So aktualisieren Sie die Bereitstellungseinstellungen:
 
 2. Bei erfolgreich bereitgestellten Modellen wird die Schaltfläche **Aktualisieren** angezeigt.
 
-    ![Bereitstellen des Modells](media/how-to/how-to-update-undeploy-model.png)
+    ![Screenshot: Hervorgehobene Schaltfläche „Aktualisieren“ zum Aktualisieren der Bereitstellungseinstellungen](media/how-to/how-to-update-undeploy-model.png)
 
 3.  Wählen Sie **Update** aus.
 4.  Wählen Sie **Bereitgestellt** oder **Undeployed** (Nicht bereitgestellt) für die Regionen aus, in denen das Modell bereitgestellt oder nicht bereitgestellt werden soll, und klicken Sie auf **Speichern**.
@@ -102,6 +102,6 @@ So aktualisieren Sie die Bereitstellungseinstellungen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Beginnen Sie mit der Verwendung Ihres bereitstellten benutzerdefinierten Übersetzungsmodells über die [Microsoft-Textübersetzungs-API (V3)](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- Beginnen Sie mit der Verwendung Ihres bereitstellten benutzerdefinierten Übersetzungsmodells über die [Microsoft-Textübersetzungs-API (V3)](../reference/v3-0-translate.md?tabs=curl).
 - Informieren Sie sich über das [Verwalten von Einstellungen](how-to-manage-settings.md) zum Freigeben Ihres Arbeitsbereichs sowie über die Verwaltung Ihres Abonnementschlüssels.
-- Informieren Sie sich über das [Migrieren Ihres Arbeitsbereichs und Projekts](how-to-migrate.md) über den [Microsoft Translator-Hub](https://hub.microsofttranslator.com).
+- Erfahren Sie mehr über das [Migrieren Ihres Arbeitsbereichs und Projekts](how-to-migrate.md) aus [Microsoft Translator Hub](https://hub.microsofttranslator.com).

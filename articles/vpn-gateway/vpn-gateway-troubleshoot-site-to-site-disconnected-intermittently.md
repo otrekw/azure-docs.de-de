@@ -1,27 +1,21 @@
 ---
-title: Problembehandlung bei Unterbrechungen der Verbindung des Azure-Standort-zu-Standort-VPN | Microsoft-Dokumentation
+title: Problembehandlung bei zeitweiligen Unterbrechungen von Azure-Site-to-Site-VPN-Verbindungen
 description: Erfahren Sie, wie Sie das Problem beheben, wenn die Standort-zu-Standort-VPN-Verbindung regelmäßig getrennt wird.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 394062257f09bb0b8cfa6875795b88d35404f87c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058834"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75862559"
 ---
-# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Problembehandlung: Unterbrechungen der Azure-Site-to-Site-VPN-Verbindung
+# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Problembehandlung: Unterbrechungen der Verbindung des Azure-Standort-zu-Standort-VPN
 
 Möglicherweise tritt bei Ihnen das Problem auf, dass eine neue oder bereits vorhandene Microsoft Azure Standort-zu-Standort-VPN-Verbindung nicht stabil ist oder regelmäßig getrennt wird. Dieser Artikel enthält Schritte, mit denen Sie die Ursache ausfindig machen und das Problem beheben können. 
 

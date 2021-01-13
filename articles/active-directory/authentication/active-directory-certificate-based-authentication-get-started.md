@@ -1,22 +1,23 @@
 ---
-title: Erste Schritte mit der zertifikatbasierten Authentifizierung – Azure Active Directory
+title: 'Azure Active Directory: Zertifikatbasierte Authentifizierung'
 description: Erfahren Sie, wie Sie die zertifikatbasierte Authentifizierung in Ihrer Umgebung konfigurieren.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
-ms.date: 01/15/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: how-to
+ms.date: 11/21/2019
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f57d4615fc80df6c5df9ba295288ad71ae12fa23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: has-adal-ref
+ms.openlocfilehash: 3ba84bb3ee38981217e72f8372a836b03647083d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60359074"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861339"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory
 
@@ -30,19 +31,22 @@ Wenn Sie dieses Feature konfigurieren, ist es bei bestimmten E-Mail- und Microso
 Dieses Thema:
 
 - Informiert Sie über die Schritte zum Konfigurieren und Nutzen zertifikatbasierter Authentifizierung für Benutzer von Mandanten in Office 365 Enterprise-, Business-, Education- und US Government-Plänen. Dieses Feature ist als Vorversion in Office 365 China-, US Government Defense- und US Government Federal-Plänen verfügbar.
-- Setzt voraus, dass Sie bereits über eine [Public Key-Infrastruktur (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) verfügen und [AD FS](../hybrid/how-to-connect-fed-whatis.md) konfiguriert haben.
+- Setzt voraus, dass Sie bereits über eine [Public Key-Infrastruktur (PKI)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831740(v=ws.11)) verfügen und [AD FS](../hybrid/how-to-connect-fed-whatis.md) konfiguriert haben.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
 Damit Sie eine zertifikatbasierte Authentifizierung konfigurieren können, muss Folgendes zutreffen:
 
-- Die zertifikatbasierte Authentifizierung (Certificate-Based Authentication, CBA) wird nur für Verbundumgebungen für Browseranwendungen oder native Clients mit moderner Authentifizierung (ADAL) unterstützt. Die einzige Ausnahme ist das EAS-Protokoll (Exchange ActiveSync) für Exchange Online (EXO), das sowohl für Verbund- als auch verwaltete Konten verwendet werden kann.
+- Die zertifikatbasierte Authentifizierung (Certificate-Based Authentication, CBA) wird nur für Verbundumgebungen für Browseranwendungen, native Clients mit moderner Authentifizierung (ADAL) oder MSAL-Bibliotheken unterstützt. Die einzige Ausnahme ist das EAS-Protokoll (Exchange ActiveSync) für Exchange Online (EXO), das sowohl für Verbund- als auch verwaltete Konten verwendet werden kann.
 - Die Stammzertifizierungsstelle und alle Zwischenzertifizierungsstellen müssen in Azure Active Directory konfiguriert sein.
 - Jede Zertifizierungsstelle muss über eine Zertifikatsperrliste verfügen, auf die über eine Internet-URL verwiesen werden kann.
 - Sie müssen mindestens eine Zertifizierungsstelle in Azure Active Directory konfiguriert haben. Die entsprechenden Schritte finden Sie im Abschnitt [Konfigurieren Sie die Zertifizierungsstellen](#step-2-configure-the-certificate-authorities).
 - Bei Exchange ActiveSync-Clients muss das Clientzertifikat über die routingfähige E-Mail-Adresse des Benutzers in Exchange Online verfügen (entweder als Prinzipalname oder als Wert des RFC822-Namens im Feld „Alternativer Antragstellername“). Azure Active Directory ordnet den RFC822-Wert dem Attribut für die Proxyadresse innerhalb des Verzeichnisses zu.
 - Ihr Clientgerät benötigt Zugriff auf mindestens eine Zertifizierungsstelle, die Clientzertifikate ausstellt.
 - Ein Clientzertifikat für die Clientauthentifizierung muss für Ihren Client ausgestellt sein.
+
+>[!IMPORTANT]
+>Eine Zertifikatsperrliste darf maximal 20 MB groß sein, damit sie erfolgreich von Azure Active Directory heruntergeladen und zwischengespeichert werden kann, und der Download der Zertifikatsperrliste darf maximal zehn Sekunden dauern.  Wenn Azure Active Directory eine Zertifikatsperrliste nicht herunterladen kann, sind zertifikatbasierte Authentifizierungen mit Zertifikaten, die von der entsprechenden Zertifizierungsstelle ausgestellt wurden, nicht erfolgreich. Zur Einhaltung der Größenbeschränkungen für CRL-Dateien empfiehlt es sich, eine angemessene Zertifikatlebensdauer zu verwenden und abgelaufene Zertifikate zu bereinigen.
 
 ## <a name="step-1-select-your-device-platform"></a>Schritt 1: Auswählen Ihrer Geräteplattform
 
@@ -65,6 +69,7 @@ Laden Sie zum Konfigurieren Ihrer Zertifizierungsstellen in Azure Active Directo
 
 So sieht das Schema für eine Zertifizierungsstelle aus:
 
+```csharp
     class TrustedCAsForPasswordlessAuth
     {
        CertificateAuthorityInformation[] certificateAuthorities;
@@ -86,57 +91,70 @@ So sieht das Schema für eine Zertifizierungsstelle aus:
         RootAuthority = 0,
         IntermediateAuthority = 1
     }
+```
 
-Für die Konfiguration können Sie [Azure Active Directory PowerShell, Version 2](/powershell/azure/install-adv2?view=azureadps-2.0) verwenden:
+Für die Konfiguration können Sie [Azure Active Directory PowerShell, Version 2](/powershell/azure/active-directory/install-adv2) verwenden:
 
 1. Starten Sie Windows PowerShell mit Administratorrechten.
 2. Installieren Sie das Azure AD-Modul Version [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) oder höher.
 
-        Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+```powershell
+    Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+```
 
 Im ersten Konfigurationsschritt müssen Sie eine Verbindung mit Ihrem Mandanten herstellen. Sobald eine Verbindung mit Ihrem Mandanten hergestellt ist, können Sie die in Ihrem Verzeichnis definierten vertrauenswürdigen Zertifizierungsstellen überprüfen, hinzufügen, löschen und ändern.
 
 ### <a name="connect"></a>Verbinden
 
-Stellen Sie eine Verbindung mit Ihrem Mandanten mit dem [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0)-Cmdlet her:
+Stellen Sie eine Verbindung mit Ihrem Mandanten mit dem [Connect-AzureAD](/powershell/module/azuread/connect-azuread)-Cmdlet her:
 
+```azurepowershell
     Connect-AzureAD
+```
 
 ### <a name="retrieve"></a>Gerätehandle
 
-Rufen Sie die in Ihrem Verzeichnis definierten vertrauenswürdigen Zertifizierungsstellen mit dem [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0)-Cmdlet ab.
+Rufen Sie die in Ihrem Verzeichnis definierten vertrauenswürdigen Zertifizierungsstellen mit dem [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority)-Cmdlet ab.
 
+```azurepowershell
     Get-AzureADTrustedCertificateAuthority
+```
 
 ### <a name="add"></a>Hinzufügen
 
-Um eine vertrauenswürdige Zertifizierungsstelle mit dem Cmdlet [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) zu erstellen, legen Sie das Attribut **crlDistributionPoint** auf den richtigen Wert fest:
+Um eine vertrauenswürdige Zertifizierungsstelle mit dem Cmdlet [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority) zu erstellen, legen Sie das Attribut **crlDistributionPoint** auf den richtigen Wert fest:
 
+```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation
     $new_ca.AuthorityType=0
     $new_ca.TrustedCertificate=$cert
     $new_ca.crlDistributionPoint="<CRL Distribution URL>"
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
+```
 
 ### <a name="remove"></a>Remove (Entfernen)
 
-Entfernen Sie eine vertrauenswürdige Zertifizierungsstelle mit dem [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0)-Cmdlet:
+Entfernen Sie eine vertrauenswürdige Zertifizierungsstelle mit dem [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority)-Cmdlet:
 
+```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
+```
 
 ### <a name="modify"></a>Ändern
 
-Ändern Sie eine vertrauenswürdige Zertifizierungsstelle mit dem [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0)-Cmdlet:
+Ändern Sie eine vertrauenswürdige Zertifizierungsstelle mit dem [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority)-Cmdlet:
 
+```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
+```
 
 ## <a name="step-3-configure-revocation"></a>Schritt 3: Konfigurieren der Sperrung
 
-Zum Sperren eines Clientzertifikats ruft Azure Active Directory die Zertifikatsperrliste von den URLs ab, die als Teil der Informationen zur Zertifizierungsstelle hochgeladen wurden, und platziert diese Liste im Zwischenspeicher. Anhand des Zeitstempels der letzten Veröffentlichung (Eigenschaft**Effective Date** ) in der Zertifikatsperrliste wird sichergestellt, dass die Liste noch gültig ist. Der Verweis auf die Zertifikatsperrliste erfolgt regelmäßig, um den Zugriff auf Zertifikate zu sperren, die in dieser Liste enthalten sind.
+Zum Sperren eines Clientzertifikats ruft Azure Active Directory die Zertifikatsperrliste von den URLs ab, die als Teil der Informationen zur Zertifizierungsstelle hochgeladen wurden, und platziert diese Liste im Zwischenspeicher. Anhand des Zeitstempels der letzten Veröffentlichung (Eigenschaft **Effective Date** ) in der Zertifikatsperrliste wird sichergestellt, dass die Liste noch gültig ist. Der Verweis auf die Zertifikatsperrliste erfolgt regelmäßig, um den Zugriff auf Zertifikate zu sperren, die in dieser Liste enthalten sind.
 
 Wenn eine schnellere Sperrung erforderlich ist (beispielsweise beim Verlust eines Geräts), kann der Autorisierungstoken des Benutzers für ungültig erklärt werden. Um das Autorisierungstoken für ungültig zu erklären, legen Sie das Feld **StsRefreshTokenValidFrom** für diesen Benutzer über Windows PowerShell fest. Das Feld **StsRefreshTokenValidFrom** muss für jeden Benutzer aktualisiert werden, für den der Zugriff gesperrt werden soll.
 
@@ -148,17 +166,23 @@ Die unten aufgeführten Schritte zeigen, wie Sie das Autorisierungstoken aktuali
 
 1. Verbinden Sie sich mit Administratoranmeldeinformationen mit dem MSOL-Dienst:
 
+```powershell
         $msolcred = get-credential
         connect-msolservice -credential $msolcred
+```
 
 2. Rufen Sie den aktuellen StsRefreshTokensValidFrom-Wert für einen Benutzer ab:
 
+```powershell
         $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
         $user.StsRefreshTokensValidFrom
+```
 
 3. Legen Sie einen neuen StsRefreshTokensValidFrom-Wert für den Benutzer fest, der mit dem aktuellen Zeitstempel übereinstimmt:
 
+```powershell
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
+```
 
 Das festgelegte Datum muss in der Zukunft liegen. Wenn das Datum nicht in der Zukunft liegt, wird die **StsRefreshTokensValidFrom** -Eigenschaft nicht festgelegt. Wenn das Datum in der Zukunft liegt, wird **StsRefreshTokensValidFrom** auf die aktuelle Uhrzeit festgelegt (nicht das Datum, das mit dem Befehl „Set-MsolUser“ angegeben ist).
 

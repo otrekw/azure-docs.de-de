@@ -1,20 +1,15 @@
 ---
 title: Überwachen von Azure-Diensten und -Anwendungen mit Grafana
 description: Es wird beschrieben, wie Sie Azure Monitor- und Application Insights-Daten weiterleiten, um sie in Grafana anzuzeigen.
-services: azure-monitor
-keywords: ''
-author: rboucher
-ms.author: robb
-ms.date: 11/06/2017
-ms.topic: conceptual
-ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: b9a9d0a16a31d06d0d4edc1b6f0617a5771b179e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.topic: conceptual
+ms.date: 11/06/2017
+ms.openlocfilehash: 23bba091628eee767fbf292a8a8d772ffab674cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872843"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87073475"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Überwachen Ihrer Azure-Dienste in Grafana
 Sie können Azure-Dienste und -Anwendungen jetzt mit [Grafana](https://grafana.com/) überwachen, indem Sie das [Azure Monitor-Datenquellen-Plug-In](https://grafana.com/plugins/grafana-azure-monitor-datasource) verwenden. Das Plug-In sammelt Daten zur Anwendungsleistung, die von Azure Monitor erfasst wurden, einschließlich verschiedener Protokolle und Metriken. Sie können diese Daten dann in Ihrem Grafana-Dashboard anzeigen.
@@ -47,7 +42,7 @@ Um einen lokalen Grafana-Server einzurichten, müssen Sie [Grafana herunterladen
 
 ## <a name="sign-in-to-grafana"></a>Anmelden an Grafana
 
-1. Verwenden Sie die IP-Adresse Ihres Servers, und öffnen Sie die Anmeldeseite unter *http://\<IP-Adresse\>:3000* oder *\<DNS-Name>\:3000* in Ihrem Browser. 3000 ist zwar der Standardport, aber beachten Sie, dass Sie bei der Einrichtung möglicherweise einen anderen Port ausgewählt haben. Es sollte eine Anmeldeseite für den zuvor erstellten Grafana-Server angezeigt werden.
+1. Verwenden Sie die IP-Adresse Ihres Servers, und öffnen Sie die Anmeldeseite unter *http://\<IP address\>:3000* oder *\<DNSName>\:3000* in Ihrem Browser. 3000 ist zwar der Standardport, aber beachten Sie, dass Sie bei der Einrichtung möglicherweise einen anderen Port ausgewählt haben. Es sollte eine Anmeldeseite für den zuvor erstellten Grafana-Server angezeigt werden.
 
     ![Grafana-Anmeldebildschirm](./media/grafana-plugin/grafana-login-screen.png)
 
@@ -64,9 +59,9 @@ Nach der erfolgreichen Anmeldung sollte zu sehen sein, dass das Azure Monitor-Da
 2. Wählen Sie einen Namen für die Datenquelle, und wählen Sie in der Dropdownliste **Azure Monitor** als Typ aus.
 
 3. Erstellen Sie einen Dienstprinzipal: Grafana verwendet zum Herstellen einer Verbindung mit Azure Monitor-APIs und zum Sammeln von Daten einen Azure Active Directory-Dienstprinzipal. Sie müssen einen Dienstprinzipal erstellen (oder einen vorhandenen Dienstprinzipal verwenden), um den Zugriff auf Ihre Azure-Ressourcen zu verwalten.
-    * Informationen zum Erstellen eines Dienstprinzipals finden Sie in [dieser Anleitung](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Kopieren und speichern Sie Ihre Mandanten-ID (Verzeichnis-ID), Client-ID (Anwendungs-ID) und den geheimen Clientschlüssel (Wert des Anwendungsschlüssels).
-    * Unter [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) finden Sie Informationen zum Zuweisen der Rolle „Leser“ zur Azure Active Directory-Anwendung auf der zu überwachenden Abonnement-, Ressourcengruppen- oder Ressourcenebene. 
-    Für die Log Analytics-API ist die [Rolle „Log Analytics-Leser“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) erforderlich, welche die Berechtigungen der Rolle "Leser" enthält und ergänzt.
+    * Informationen zum Erstellen eines Dienstprinzipals finden Sie in [dieser Anleitung](../../active-directory/develop/howto-create-service-principal-portal.md). Kopieren und speichern Sie Ihre Mandanten-ID (Verzeichnis-ID), Client-ID (Anwendungs-ID) und den geheimen Clientschlüssel (Wert des Anwendungsschlüssels).
+    * Unter [Zuweisen der Anwendung zu einer Rolle](../../active-directory/develop/howto-create-service-principal-portal.md) finden Sie Informationen zum Zuweisen der Rolle „Leser“ zur Azure Active Directory-Anwendung auf der zu überwachenden Abonnement-, Ressourcengruppen- oder Ressourcenebene. 
+    Für die Log Analytics-API ist die [Rolle „Log Analytics-Leser“](../../role-based-access-control/built-in-roles.md#log-analytics-reader) erforderlich, welche die Berechtigungen der Rolle "Leser" enthält und ergänzt.
 
 4. Geben Sie die Verbindungsdetails zu den APIs an, die Sie verwenden möchten. Sie können eine Verbindung zu allen oder nur zu einigen herstellen. 
     * Wenn Sie eine Verbindung mit Azure Monitor zum Sammeln sowohl von Metriken als auch von Protokollen herstellen, können Sie die gleichen Anmeldeinformationen verwenden, indem Sie **Gleiche Details wie Azure Monitor-API** auswählen.
@@ -96,7 +91,7 @@ Nach der erfolgreichen Anmeldung sollte zu sehen sein, dass das Azure Monitor-Da
 4. Wählen Sie die Azure Monitor-Datenquelle aus, die Sie konfiguriert haben.
    * Wählen Sie **Azure Monitor** im Dropdownmenü „Dienst“ aus, um Azure Monitor-Metrikdaten zu sammeln. Es wird eine Liste der Selektoren angezeigt wird, in der Sie die Ressourcen und die Metrik auswählen können, die in diesem Diagramm überwacht werden sollen. Verwenden Sie den Namespace **Microsoft.Compute/VirtualMachines**, um Metriken von einem virtuellen Computer zu sammeln. Nachdem Sie die virtuellen Computer und die Metriken ausgewählt haben, können Sie damit beginnen, die Daten im Dashboard anzuzeigen.
      ![Grafana-Diagrammkonfiguration für Azure Monitor](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-   * Sammeln von Azure Monitor-Protokolldaten: Wählen Sie **Azure Log Analytics** in der Dropdownliste mit Diensten aus. Wählen Sie den Arbeitsbereich aus, den Sie abfragen möchten, und legen Sie den Text der Abfrage fest. Sie können eine bereits erstellte Protokollabfrage hierhin kopieren oder eine neue Abfrage erstellen. Während Sie die Abfrage eingeben, wird IntelliSense aktiv und schlägt Optionen zur automatischen Vervollständigung vor. Wählen Sie den Visualisierungstyp **Zeitreihe,** **Tabelle** aus, und starten Sie die Abfrage.
+   * Sammeln von Azure Monitor-Protokolldaten: Wählen Sie **Azure Log Analytics** in der Dropdownliste mit Diensten aus. Wählen Sie den Arbeitsbereich aus, den Sie abfragen möchten, und legen Sie den Text der Abfrage fest. Sie können eine bereits erstellte Protokollabfrage hierhin kopieren oder eine neue Abfrage erstellen. Während Sie die Abfrage eingeben, wird IntelliSense aktiv und schlägt Optionen zur automatischen Vervollständigung vor. Wählen Sie den Visualisierungstyp **Zeitreihe** **Tabelle** aus, und starten Sie die Abfrage.
     
      > [!NOTE]
      >
@@ -164,4 +159,3 @@ Wenn Sie eine Grafana-Umgebung in Azure eingerichtet haben, werden Ihnen für au
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Überblick über Metriken in Microsoft Azure](data-platform.md)
-

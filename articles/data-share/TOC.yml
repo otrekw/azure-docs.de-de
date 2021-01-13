@@ -1,58 +1,91 @@
-- name: Azure Data Share (Vorschauversion) – Dokumentation
+- name: Dokumentation für Azure Data Share
   href: index.yml
 - name: Übersicht
+  expanded: true
   items:
-    - name: Was ist Azure Data Share (Vorschauversion)?
+    - name: Was ist Azure Data Share?
       href: overview.md
-- name: Lernprogramme
+    - name: Unterstützte Datenspeicher
+      href: supported-data-stores.md
+- name: Schnellstarts
+  items:
+    - name: 'Freigeben von Daten: Azure-Portal'
+      href: share-your-data-portal.md
+    - name: 'Freigeben von Daten: ARM-Vorlage'
+      displayName: Resource Manager
+      href: share-your-data-arm.md
+- name: Tutorials
   expanded: true
   items:
     - name: Freigeben von Daten
       href: share-your-data.md
+      displayName: 'Azure CLI, az datashare account create, az datashare create'
     - name: Akzeptieren und Empfangen von Daten
       href: subscribe-to-data-share.md
+      displayName: 'Azure CLI, az datashare consumer invitation, az datashare consumer share-subscription'
 - name: Konzepte
   items:
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsübersicht
+          href: security.md
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Azure Data Share-Terminologie
       href: terminology.md
     - name: Rollen und Anforderungen
       href: concepts-roles-permissions.md
+    - name: Grundlegendes zu Preisen
+      href: concepts-pricing.md
 - name: Beispiele
   items:
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: samples-powershell.md
 - name: Anleitungen
   items:
-    - name: Überwachen
-      href: how-to-monitor.md
-    - name: Konfigurieren von Dataset-Mappings
-      href: how-to-configure-mapping.md
-    - name: Problembehandlung
-      href: data-share-troubleshoot.md
+    - name: Freigeben und Empfangen von Daten nach Quelle
+      items:
+        - name: Freigeben aus Azure Storage
+          href: how-to-share-from-storage.md
+        - name: Freigeben aus Azure SQL-Datenbank oder Azure Synapse Analytics
+          href: how-to-share-from-sql.md
+        - name: Freigeben über Azure Data Explorer
+          href: /azure/data-explorer/data-share
+          maintainContext: true
     - name: Hinzufügen von Datasets
       href: how-to-add-datasets.md
+    - name: Konfigurieren von Dataset-Mappings
+      href: how-to-configure-mapping.md
     - name: Hinzufügen von Empfängern
       href: how-to-add-recipients.md
     - name: Löschen einer Einladung
       href: how-to-delete-invitation.md
     - name: Aufheben einer Abonnementfreigabe
       href: how-to-revoke-share-subscription.md
+    - name: Überwachen
+      href: how-to-monitor.md
+    - name: Notfallwiederherstellung
+      href: disaster-recovery.md
+    - name: Problembehandlung
+      href: data-share-troubleshoot.md
 - name: Verweis
   items:
     - name: .NET
       href: /dotnet/api/overview/azure/datashare
-    - name: Azure Powershell
-      href: 'https://docs.microsoft.com/powershell/module/az.datashare/?view=azps-2.6.0'
+    - name: Azure PowerShell
+      href: /powershell/module/az.datashare/?view=azps-2.6.0
     - name: REST-API
       href: /rest/api/datashare
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest
 - name: Ressourcen
   items:
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataShare'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: /answers/topics/azure-data-share.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: Blog
-      href: 'https://azure.microsoft.com/blog/announcing-preview-of-azure-data-share/'
+      href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Share/bg-p/AzureDataShareBlog'
     - name: Technische Microsoft-Community
       href: 'https://techcommunity.microsoft.com/'
     - name: Produktfeedback

@@ -3,20 +3,20 @@ title: Azure Data Factory – Häufig gestellte Fragen
 description: Häufig gestellte Fragen zu Azure Data Factory
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 7c0b5cbfe77a39cbc8ac660178a1c573d1fe8f7d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 57f2beef3dc14a47480950bf9e3bdf35a1fd6ce8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139819"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495819"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – Häufig gestellte Fragen
 > [!NOTE]
@@ -44,7 +44,7 @@ Preisinformationen zu Azure Data Factory finden Sie auf der Seite [Data Factory 
 Data Factory ist in den Regionen **USA, Westen** sowie in **Europa, Norden** verfügbar. Die von Data Factory verwendeten Rechen- und Speicherdienste können in anderen Regionen verfügbar sein. Siehe [Unterstützte Regionen](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Welche Grenzwerte sind hinsichtlich der Anzahl der Data Factorys/Pipelines/Aktivitäten/Datasets gegeben?
-Weitere Informationen finden Sie im Abschnitt **Einschränkungen von Azure Data Factory** unter dem Artikel [Begrenzungen, Kontingente und Einschränkungen von Azure-Abonnements und -Diensten](../../azure-subscription-service-limits.md#data-factory-limits) .
+Weitere Informationen finden Sie im Abschnitt **Einschränkungen von Azure Data Factory** unter dem Artikel [Begrenzungen, Kontingente und Einschränkungen von Azure-Abonnements und -Diensten](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) .
 
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Was sieht die Erstellung-/Entwicklungsumgebung im Azure Data Factory-Dienst aus?
 Sie können Data Factorys mithilfe eines der folgenden Werkzeuge/SDKs erstellen:
@@ -70,9 +70,9 @@ Die folgende Tabelle enthält eine Liste von Compute-Umgebungen, die von Data Fa
 | --- | --- |
 | [Bedarfsgesteuerter HDInsight-Cluster](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) oder [Eigener HDInsight-Cluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Aktivitäten mit maschinellem Lernen: „Batchausführung“ und „Ressource aktualisieren“](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning Studio (klassisch)](data-factory-compute-linked-services.md#azure-machine-learning-studio-classic-linked-service) |[Aktivitäten in Studio (klassisch): Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
-| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Gespeicherte Prozedur](data-factory-stored-proc-activity.md) |
+| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure Synapse Analytics](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Gespeicherte Prozedur](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Wie unterscheidet sich Azure Data Factory von SQL Server Integration Services (SSIS)? 
 Siehe die Präsentation [Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) (in englischer Sprache) von einem unserer MVPs (Most Valued Professionals): Reza Rad. Einige der kürzlich in Data Factory vorgenommenen Änderungen werden möglicherweise in der Präsentation nicht aufgeführt. Azure Data Factory werden fortlaufend weitere Funktionen hinzugefügt. Azure Data Factory werden fortlaufend weitere Funktionen hinzugefügt. Diese Aktualisierungen werden irgendwann im Laufe dieses Jahres in den Vergleich der Datenintegrationstechnologien von Microsoft aufgenommen.   
@@ -205,4 +205,4 @@ Wenn Sie alle Ausführungen wirklich sofort beenden möchten, ist die einzige M�
 [adf-pricing-details]: https://go.microsoft.com/fwlink/?LinkId=517777
 [hdinsight-supported-regions]: https://azure.microsoft.com/pricing/details/hdinsight/
 [hdinsight-alternate-storage]: https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
-[hdinsight-alternate-storage-2]: https://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
+[hdinsight-alternate-storage-2]: /archive/blogs/cindygross/use-additional-storage-accounts-with-hdinsight-hive

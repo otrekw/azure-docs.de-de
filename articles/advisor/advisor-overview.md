@@ -1,42 +1,36 @@
 ---
-title: Einführung in Azure Advisor | Microsoft Docs
+title: Einführung in Azure Advisor
 description: Nutzen Sie Azure Advisor, um Ihre Azure-Bereitstellungen zu optimieren.
-services: advisor
-documentationcenter: NA
-author: kasparks
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 02/01/2019
-ms.author: kasparks
-ms.openlocfilehash: 2ccac3bf9a882dc021c6c969946ad9d439a7cf5d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 09/27/2020
+ms.openlocfilehash: 12e56bf44a29a32b2149bca14f7c99f319c9c4ea
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069684"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405206"
 ---
 # <a name="introduction-to-azure-advisor"></a>Einführung in Azure Advisor
 
 Hier erfahren Sie mehr über die wichtigsten Funktionen vom Azure Advisor und erhalten Antworten auf häufig gestellte Fragen.
 
 ## <a name="what-is-advisor"></a>Was ist der Advisor?
-Beim Advisor handelt es sich um einen personalisierten Cloudberater, der Sie mit bewährten Methoden zum Optimieren von Azure-Bereitstellungen unterstützt. Das Tool analysiert die Konfiguration Ihrer Ressourcen und Telemetriedaten zur Nutzung und macht anschließend Vorschläge, wie Sie die Wirtschaftlichkeit, Leistung, Hochverfügbarkeit und Sicherheit Ihrer Azure-Ressourcen steigern können.
+Beim Advisor handelt es sich um einen personalisierten Cloudberater, der Sie mit bewährten Methoden zum Optimieren von Azure-Bereitstellungen unterstützt. Das Tool analysiert die Konfiguration Ihrer Ressourcen und Telemetriedaten zur Nutzung und macht anschließend Vorschläge, wie Sie die Kosteneffizienz, Leistung, Zuverlässigkeit (früher als „Hochverfügbarkeit“ bezeichnet) und Sicherheit Ihrer Azure-Ressourcen steigern können.
 
 Der Advisor ermöglicht Folgendes:
 * Abrufen proaktiver, umsetzbarer und individueller Empfehlungen und bewährter Methoden. 
-* Verbessern der Leistung, Sicherheit und Hochverfügbarkeit Ihrer Ressourcen und Ermitteln von Möglichkeiten der Senkung Ihrer Gesamtausgaben für Azure.
+* Verbessern der Leistung, Sicherheit und Zuverlässigkeit Ihrer Ressourcen und Ermitteln von Möglichkeiten der Senkung Ihrer Gesamtausgaben für Azure.
 * Abrufen von Empfehlungen mit vorgeschlagenen Inlineaktionen.
 
 Der Zugriff auf Advisor erfolgt im [Azure-Portal](https://aka.ms/azureadvisordashboard). Melden Sie sich beim [Portal](https://portal.azure.com) an, und suchen Sie den **Advisor** im Navigationsmenü oder im Menü **Alle Dienste**.
 
-Auf dem Advisor-Dashboard werden personalisierte Empfehlungen für alle Ihre Abonnements angezeigt.  Sie können Filter zum Anzeigen von Empfehlungen für bestimmte Abonnements und Ressourcentypen anwenden.  Die Empfehlungen sind in vier Kategorien unterteilt: 
+Auf dem Advisor-Dashboard werden personalisierte Empfehlungen für alle Ihre Abonnements angezeigt.  Sie können Filter zum Anzeigen von Empfehlungen für bestimmte Abonnements und Ressourcentypen anwenden.  Die Empfehlungen sind in fünf Kategorien unterteilt: 
 
-* **Hochverfügbarkeit**: Der Ratgeber hilft, die ununterbrochene Verfügbarkeit Ihrer unternehmenskritischen Anwendungen zu gewährleisten und zu verbessern. Weitere Informationen finden Sie unter [Advisor-Empfehlungen für Hochverfügbarkeit](advisor-high-availability-recommendations.md).
-* **Sicherheit:** Der Ratgeber hilft beim Erkennen von Bedrohungen und Sicherheitsrisiken, die zu Sicherheitslücken führen können. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md).
+* **Zuverlässigkeit (früher als „Hochverfügbarkeit“ bezeichnet):** Der Ratgeber hilft, die ununterbrochene Verfügbarkeit Ihrer unternehmenskritischen Anwendungen zu gewährleisten und zu verbessern. Weitere Informationen finden Sie unter [Verbessern der Zuverlässigkeit Ihrer Anwendung mit dem Azure Advisor](advisor-high-availability-recommendations.md).
+* **Sicherheit**: Der Ratgeber hilft beim Erkennen von Bedrohungen und Sicherheitsrisiken, die zu Sicherheitslücken führen können. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md).
 * **Leistung**: Der Ratgeber hilft, die Geschwindigkeit Ihrer Anwendungen zu verbessern. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md).
 * **Kosten**: Mit dem Ratgeber können Sie Ihre Gesamtausgaben für Azure senken und optimieren. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md).
+* **Optimaler Betrieb**: Dieser Ratgeber hilft Ihnen bei der Implementierung effizienter Prozesse und Workflows, unterstützt Sie bei der Ressourcenverwaltung und enthält bewährte Methoden für die Bereitstellung. erforderlich. Weitere Informationen finden Sie unter [Advisor-Empfehlungen für einen optimalen Betrieb](advisor-operational-excellence-recommendations.md).
 
   ![Typen von Advisor-Empfehlungen](./media/advisor-overview/advisor-dashboard.png)
 
@@ -57,13 +51,13 @@ Sie können die Advisor-Empfehlungen auch auf der VM-Ressourcenbenutzeroberfläc
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Welche Berechtigungen benötige ich für den Zugriff auf Advisor?
  
-Sie können als *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements auf die Advisor-Empfehlungen zugreifen.
+Sie können als *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements, einer Ressourcengruppe oder einer Ressource auf die Advisor-Empfehlungen zugreifen.
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Für welche Ressourcen bietet Advisor Empfehlungen?
 
-Advisor bietet Empfehlungen für Application Gateway, App Services, Verfügbarkeitsgruppen, Azure Cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, öffentlich Azure-IP-Adressen, SQL Data Warehouse, SQL-Server, Speicherkonten, Traffic Manager-Profile und virtuelle Computer.
+Advisor bietet Empfehlungen für Application Gateway, App Services, Verfügbarkeitsgruppen, Azure Cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, öffentliche Azure-IP-Adressen, Azure Synapse Analytics, SQL-Server, Speicherkonten, Traffic Manager-Profile und virtuelle Computer.
 
-Außerdem enthält Azure Advisor auch Ihre Empfehlungen aus dem [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations), zu denen auch Empfehlungen für weitere Ressourcentypen gehören können.
+Außerdem enthält Azure Advisor auch Ihre Empfehlungen aus dem [Azure Security Center](../security-center/security-center-recommendations.md), zu denen auch Empfehlungen für weitere Ressourcentypen gehören können.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Kann ich eine Empfehlung zurückstellen oder verwerfen?
 
@@ -74,7 +68,9 @@ Um eine Empfehlung zurückzustellen oder zu verwerfen, klicken Sie auf den Link 
 Hier finden Sie weitere Informationen zu Empfehlungen des Advisor:
 
 * [Erste Schritte mit Advisor](advisor-get-started.md)
-* [Advisor-Empfehlungen für Hochverfügbarkeit](advisor-high-availability-recommendations.md)
+* [Advisor-Bewertung](azure-advisor-score.md)
+* [Verbessern der Zuverlässigkeit Ihrer Anwendung mit dem Azure Advisor](advisor-high-availability-recommendations.md)
 * [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
 * [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
 * [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md)
+* [Sicherstellen des optimalen Betriebs mit dem Azure Advisor](advisor-operational-excellence-recommendations.md)

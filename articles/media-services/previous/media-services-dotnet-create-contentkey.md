@@ -1,6 +1,6 @@
 ---
 title: Erstellen von ContentKeys mit .NET
-description: Erfahren Sie, wie Sie Inhaltsschlüssel erstellen, die den sicheren Zugriff auf Medienobjekte ermöglichen.
+description: In diesem Artikel wird gezeigt, wie symmetrische Schlüssel mithilfe von .NET erstellt werden können. Diese Schlüssel ermöglichen einen sicheren Zugriff auf Medienobjekte.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ab26be3b9ac5d209cfe8117bdf9e87e0c7e74188
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d5efbc30c80a0052ed99cb129c2e5f9030482012
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465574"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261225"
 ---
-# <a name="create-contentkeys-with-net"></a>Erstellen von ContentKeys mit .NET 
+# <a name="create-contentkeys-with-net"></a>Erstellen von ContentKeys mit .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+ 
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
@@ -70,7 +74,7 @@ Einer der Werte, die Sie beim Erstellen eines Inhaltsschlüssels festlegen müss
     }
 ```
 
-## <a id="envelope_contentkey"></a>Erstellen eines "ContentKey" vom Typ "Umschlagverschlüsselung"
+## <a name="create-envelope-type-contentkey"></a><a id="envelope_contentkey"></a>Erstellen eines "ContentKey" vom Typ "Umschlagverschlüsselung"
 Im folgenden Codeausschnitt wird ein Inhaltsschlüssel vom Typ „Umschlagverschlüsselung“ erstellt. Anschließend wird der Schlüssel dem angegebenen Medienobjekt zugeordnet.
 
 ```csharp
@@ -108,7 +112,7 @@ call
 ```
 
 
-## <a id="common_contentkey"></a>Erstellen eines "ContentKey" vom Typ "Allgemeine Verschlüsselung"
+## <a name="create-common-type-contentkey"></a><a id="common_contentkey"></a>Erstellen eines "ContentKey" vom Typ "Allgemeine Verschlüsselung"
 Im folgenden Codeausschnitt wird ein Inhaltsschlüssel vom Typ „Allgemeine Verschlüsselung“ erstellt. Anschließend wird der Schlüssel dem angegebenen Medienobjekt zugeordnet.
 
 ```csharp

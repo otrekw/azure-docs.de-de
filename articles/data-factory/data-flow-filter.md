@@ -1,37 +1,63 @@
 ---
-title: 'Azure Data Factory Mapping Data Flow: Filtertransformation'
-description: 'Azure Data Factory Mapping Data Flow: Filtertransformation'
+title: Filter-Transformation in einem Zuordnungsdatenfluss
+description: Mithilfe der Filter-Transformation in einem Azure Data Factory-Zuordnungsdatenfluss können Sie Zeilen herausfiltern.
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/03/2019
-ms.openlocfilehash: e0b41850c149ff7095333cf77b780dec1f03b882
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.date: 05/26/2020
+ms.openlocfilehash: 8189228d6707812fb943e9925dc2bbf1b6da4972
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234410"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84112813"
 ---
-# <a name="azure-data-factory-filter-transformation"></a>Azure Data Factory: Filtertransformation
+# <a name="filter-transformation-in-mapping-data-flow"></a>Filter-Transformation in einem Zuordnungsdatenfluss
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Die Filtertransformation ermöglicht die Zeilenfilterung. Erstellen Sie einen Ausdruck, der die Filterbedingung definiert. Klicken Sie in das Textfeld, um den Ausdrucks-Generator zu starten. Erstellen Sie im Ausdrucks-Generator einen Filterausdruck, um zu steuern, welche Zeilen aus dem aktuellen Datenstrom zur nächsten Transformation durchlaufen (filtern) dürfen. Stellen Sie sich die Filtertransformation als die WHERE-Klausel einer SQL-Anweisung vor.
+Filter-Transformationen ermöglicht das Filtern von Zeilen auf der Grundlage einer Bedingung. Der Ausgabestream enthält alle Zeilen, die der Filterbedingung entsprechen. Die Filter-Transformation ähnelt einer WHERE-Klausel in SQL.
 
-## <a name="filter-on-loanstatus-column"></a>Filtern nach der Spalte „loan_status“:
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xnxN]
+
+## <a name="configuration"></a>Konfiguration
+
+Verwenden Sie den Ausdrucks-Generator für Datenflüsse, um einen Ausdruck für die Filterbedingung einzugeben. Klicken Sie auf das blaue Feld, um den Ausdrucks-Generator zu öffnen. Bei der Filterbedingung muss es sich um eine boolesche Bedingung handeln. Weitere Informationen zur Ausdruckserstellung finden Sie in der [Dokumentation für den Ausdrucks-Generator](concepts-data-flow-expression-builder.md).
+
+![Filter-Transformation](media/data-flow/filter1.png "Filter-Transformation")
+
+## <a name="data-flow-script"></a>Datenflussskript
+
+### <a name="syntax"></a>Syntax
 
 ```
-in([‘Default’, ‘Charged Off’, ‘Fully Paid’], loan_status).
+<incomingStream>
+    filter(
+        <conditionalExpression>
+    ) ~> <filterTransformationName>
 ```
 
-Filtern Sie in der Filmedemo nach der Spalte „year“:
+### <a name="example"></a>Beispiel
+
+Das folgende Beispiel ist eine Filtertransformation mit dem Namen `FilterBefore1960`, bei der der eingehende Stream `CleanData` verwendet wird. Die Filterbedingung ist der Ausdruck `year <= 1960`.
+
+Auf der Data Factory-Benutzeroberfläche sieht diese Transformation wie folgt aus:
+
+![Filter-Transformation](media/data-flow/filter1.png "Filter-Transformation")
+
+Das Datenflussskript für diese Transformation befindet sich im folgenden Codeausschnitt:
 
 ```
-year > 1980
+CleanData
+    filter(
+        year <= 1960
+    ) ~> FilterBefore1960
+
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Probieren Sie eine Spaltenfiltertransformation aus, die [Auswahltransformation](data-flow-select.md)
+Verwenden Sie die [Select-Transformation](data-flow-select.md), um Spalten herauszufiltern.

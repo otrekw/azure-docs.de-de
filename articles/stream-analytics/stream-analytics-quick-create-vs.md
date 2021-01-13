@@ -1,22 +1,24 @@
 ---
-title: Erstellen eines Azure Stream Analytics-Auftrags mithilfe von Visual Studio
+title: 'Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe von Visual Studio'
 description: In dieser Schnellstartanleitung werden die ersten Schritte zum Erstellen eines Stream Analytics-Auftrags, zum Konfigurieren von Ein- und Ausgaben sowie zum Definieren einer Abfrage mithilfe von Visual Studio erläutert.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: eb3b25387df33f8d366a088f9fa63e0dc96290bf
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 034f1497cb6262ca86cd440b914f3ae67356eef9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173257"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124610"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe von Visual Studio
 
 In dieser Schnellstartanleitung wird gezeigt, wie Sie mithilfe der Azure Stream Analytics-Tools für Visual Studio einen Stream Analytics-Auftrag erstellen und ausführen. Der Beispielauftrag liest Streamingdaten von einem IoT Hub-Gerät. Sie legen einen Auftrag fest, der bei Überschreitung von 27 Grad die Durchschnittstemperatur berechnet und die entsprechenden Ausgabeereignisse in eine neue Datei im Blobspeicher schreibt.
+
+> [!NOTE]
+> Visual Studio und Visual Studio Code Tools unterstützen keine Aufträge in den Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“ oder „Deutschland, Nordosten“.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -26,7 +28,7 @@ In dieser Schnellstartanleitung wird gezeigt, wie Sie mithilfe der Azure Stream 
 
 * Installieren Sie Visual Studio 2019, Visual Studio 2015 oder Visual Studio 2013 Update 4. Die Editionen Enterprise (Ultimate/Premium), Professional und Community werden unterstützt. Die Express Edition wird nicht unterstützt.
 
-* Befolgen Sie die [Installationsanweisungen](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install) für die Stream Analytics-Tools für Visual Studio.
+* Befolgen Sie die [Installationsanweisungen](./stream-analytics-tools-for-visual-studio-install.md) für die Stream Analytics-Tools für Visual Studio.
 
 ## <a name="prepare-the-input-data"></a>Vorbereiten der Eingabedaten
 
@@ -40,9 +42,9 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
    
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
-   |Subscription  | \<Ihr Abonnement\> |  Wählen Sie das gewünschte Azure-Abonnement aus. |
+   |Subscription  | \<Your subscription\> |  Wählen Sie das gewünschte Azure-Abonnement aus. |
    |Resource group   |   asaquickstart-resourcegroup  |   Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein. |
-   |Region  |  \<Die Region, die Ihren Benutzern am nächsten liegt\> | Wählen Sie einen geografischen Standort aus, an dem Sie Ihre IoT Hub-Instanz hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten ist. |
+   |Region  |  \<Select the region that is closest to your users\> | Wählen Sie einen geografischen Standort aus, an dem Sie Ihre IoT Hub-Instanz hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten ist. |
    |IoT Hub-Name  | MyASAIoTHub  |   Wählen Sie einen Namen für Ihre IoT Hub-Instanz aus.   |
 
    ![Erstellen eines IoT Hubs](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
@@ -71,11 +73,11 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 
    ![Speicherkonto erstellen](./media/stream-analytics-quick-create-portal/create-storage-account.png)
 
-3. Wählen Sie nach der Erstellung des Speicherkontos im Bereich **Übersicht** die Kachel**Blobs** aus.
+3. Wählen Sie nach der Erstellung des Speicherkontos im Bereich **Übersicht** die Kachel **Blobs** aus.
 
    ![Speicherkontoübersicht](./media/stream-analytics-quick-create-portal/blob-storage.png)
 
-4. Wählen Sie auf der Seite **Blob-Dienst** die Option **Container** aus, und geben Sie einen Namen für Ihren Container (etwa *container1*) ein. Übernehmen Sie für **Öffentliche Zugriffsebene** die Option **Private (no anonymous access)** (Privat (kein anonymer Zugriff)), und wählen Sie **OK** aus.
+4. Wählen Sie auf der Seite **Blob-Dienst** die Option **Container** aus, und geben Sie einen Namen für Ihren Container (etwa *container1* ) ein. Übernehmen Sie für **Öffentliche Zugriffsebene** die Option **Private (no anonymous access)** (Privat (kein anonymer Zugriff)), und wählen Sie **OK** aus.
 
    ![Erstellen eines Blobcontainers](./media/stream-analytics-quick-create-portal/create-blob-container.png)
 
@@ -87,7 +89,7 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 
 3. Wählen Sie in der Vorlagenliste links **Stream Analytics** und dann **Azure Stream Analytics Application** (Azure Stream Analytics-Anwendung) aus.  
 
-4. Geben Sie **Name**, **Speicherort** und **Projektmappenname** für Ihr Projekt ein, und klicken Sie auf **OK**.
+4. Geben Sie **Name** , **Speicherort** und **Projektmappenname** für Ihr Projekt ein, und klicken Sie auf **OK**.
 
    ![Erstellen eines Stream Analytics-Projekts](./media/stream-analytics-quick-create-vs/create-stream-analytics-project.png)
 
@@ -100,11 +102,11 @@ Sehen Sie sich die Elemente an, die in einem Azure Stream Analytics-Projekt enth
 
 1. Wählen Sie in Visual Studio im Menü **Ansicht** den **Server-Explorer** aus.
 
-2. Klicken Sie mit der rechten Maustaste auf **Azure**, wählen Sie **Verbindung mit Microsoft Azure-Abonnement herstellen** aus, und melden Sie sich dann mit Ihrem Azure-Konto an.
+2. Klicken Sie mit der rechten Maustaste auf **Azure** , wählen Sie **Verbindung mit Microsoft Azure-Abonnement herstellen** aus, und melden Sie sich dann mit Ihrem Azure-Konto an.
 
 ## <a name="define-input"></a>Festlegen der Eingabe
 
-1. Erweitern Sie im **Projektmappen-Explorer** den Knoten **Eingaben**, und doppelklicken Sie auf **Input.json**.
+1. Erweitern Sie im **Projektmappen-Explorer** den Knoten **Eingaben** , und doppelklicken Sie auf **Input.json**.
 
 2. Fügen Sie unter **Stream Analytics Input Configuration** (Stream Analytics-Eingabekonfiguration) die folgenden Werte ein:
 
@@ -114,7 +116,7 @@ Sehen Sie sich die Elemente an, die in einem Azure Stream Analytics-Projekt enth
    |Quellentyp   |  Datenstrom |  Wählen Sie die geeignete Eingabequelle aus: Datenstrom oder Referenzdaten.   |
    |`Source`  |  IoT Hub |  Wählen Sie die geeignete Eingabequelle aus.   |
    |Resource  | Datenquelle aus aktuellem Konto wählen | Geben Sie Daten entweder manuell ein, oder wählen Sie ein vorhandenes Konto aus.   |
-   |Subscription  |  \<Ihr Abonnement\>   | Wählen Sie das Azure-Abonnement aus, in dem sich die erstellte IoT Hub-Instanz befindet.   |
+   |Subscription  |  \<Your subscription\>   | Wählen Sie das Azure-Abonnement aus, in dem sich die erstellte IoT Hub-Instanz befindet.   |
    |IoT Hub  |  MyASAIoTHub   |  Wählen Sie den Namen Ihrer IoT Hub-Instanz aus, oder geben Sie ihn ein. IoT Hub-Namen werden automatisch erkannt, wenn sie unter demselben Abonnement erstellt werden.   |
    
 3. Übernehmen Sie für die anderen Optionen die Standardwerte, und klicken Sie zum Speichern der Einstellungen auf **Speichern**.  
@@ -123,7 +125,7 @@ Sehen Sie sich die Elemente an, die in einem Azure Stream Analytics-Projekt enth
 
 ## <a name="define-output"></a>Definieren der Ausgabe
 
-1. Erweitern Sie im **Projektmappen-Explorer** den Knoten **Ausgaben**, und doppelklicken Sie auf **Output.json**.
+1. Erweitern Sie im **Projektmappen-Explorer** den Knoten **Ausgaben** , und doppelklicken Sie auf **Output.json**.
 
 2. Fügen Sie unter **Stream Analytics Output Configuration** (Stream Analytics-Ausgabekonfiguration) die folgenden Werte ein:
 
@@ -132,7 +134,7 @@ Sehen Sie sich die Elemente an, die in einem Azure Stream Analytics-Projekt enth
    |Ausgabealias  |  Output   |  Geben Sie einen Namen zur Identifizierung der Auftragsausgabe ein.   |
    |Senke   |  Blob Storage |  Wählen Sie die geeignete Senke aus.    |
    |Resource  |  Geben Sie die Datenquelleneinstellungen manuell an. |  Geben Sie Daten entweder manuell ein, oder wählen Sie ein vorhandenes Konto aus.   |
-   |Subscription  |  \<Ihr Abonnement\>   | Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben.   |
+   |Subscription  |  \<Your subscription\>   | Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben.   |
    |Speicherkonto  |  asaquickstartstorage   |  Wählen Sie den Namen des Speicherkontos aus, oder geben Sie ihn ein. Speicherkontonamen werden automatisch erkannt, wenn sie im gleichen Abonnement erstellt werden.   |
    |Container  |  container1   |  Wählen Sie den vorhandenen Container aus, den Sie in Ihrem Speicherkonto erstellt haben.   |
    |Pfadmuster  |  output   |  Geben Sie den Namen eines Dateipfads ein, der innerhalb des Containers erstellt werden soll.   |
@@ -149,8 +151,8 @@ Sehen Sie sich die Elemente an, die in einem Azure Stream Analytics-Projekt enth
 
    ```sql
    SELECT *
-   INTO BlobOutput
-   FROM IoTHubInput
+   INTO Output
+   FROM Input
    HAVING Temperature > 27
    ```
 
@@ -158,7 +160,7 @@ Sehen Sie sich die Elemente an, die in einem Azure Stream Analytics-Projekt enth
 
 1. Wählen Sie im **Abfrage-Editor** im Skript-Editor die Option **An Azure übermitteln** aus.
 
-2. Wählen Sie die Option **Neuen Azure Stream Analytics-Auftrag erstellen**, und geben Sie unter **Auftragsname** einen Namen ein. Wählen Sie die Werte für **Abonnement**, **Ressourcengruppe** und **Standort** aus, die Sie zu Beginn der Schnellstartanleitung verwendet haben.
+2. Wählen Sie die Option **Neuen Azure Stream Analytics-Auftrag erstellen** , und geben Sie unter **Auftragsname** einen Namen ein. Wählen Sie die Werte für **Abonnement** , **Ressourcengruppe** und **Standort** aus, die Sie zu Beginn der Schnellstartanleitung verwendet haben.
 
    ![Übermitteln des Auftrags an Azure](./media/stream-analytics-quick-create-vs/stream-analytics-job-to-azure.png)
 
@@ -178,7 +180,7 @@ Sehen Sie sich die Elemente an, die in einem Azure Stream Analytics-Projekt enth
 
    ![Starten des Stream Analytics-Auftrags](./media/stream-analytics-quick-create-vs/start-stream-analytics-job-vs.png)
 
-2. Ändern Sie den **Startmodus der Auftragsausgabe** in **JobStartTime**, und wählen Sie **Start**.
+2. Ändern Sie den **Startmodus der Auftragsausgabe** in **JobStartTime** , und wählen Sie **Start**.
 
    ![Starten der Auftragskonfiguration](./media/stream-analytics-quick-create-vs/stream-analytics-start-configuration.png)
 
@@ -186,17 +188,17 @@ Sehen Sie sich die Elemente an, die in einem Azure Stream Analytics-Projekt enth
 
    ![Ausführen des Stream Analytics-Auftrags](./media/stream-analytics-quick-create-vs/stream-analytics-job-running.png)
 
-4. Klicken Sie zum Anzeigen der Ergebnisse im Menü **Ansicht** auf **Cloud-Explorer**, und navigieren Sie zum Speicherkonto in Ihrer Ressourcengruppe. Doppelklicken Sie unter **Blobcontainer** auf **container1** und dann auf den Dateipfad der **Ausgabe**.
+4. Klicken Sie zum Anzeigen der Ergebnisse im Menü **Ansicht** auf **Cloud-Explorer** , und navigieren Sie zum Speicherkonto in Ihrer Ressourcengruppe. Doppelklicken Sie unter **Blobcontainer** auf **container1** und dann auf den Dateipfad der **Ausgabe**.
 
    ![Anzeigen der Ergebnisse](./media/stream-analytics-quick-create-vs/stream-analytics-vs-results.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, den Streamingauftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie ihn beenden und später bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht weiter verwenden möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen. Führen Sie dazu folgende Schritte aus:
+Löschen Sie die Ressourcengruppe, den Streamingauftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie ihn beenden und später bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht mehr verwenden möchten, löschen Sie alle Ressourcen, die im Rahmen dieser Schnellstartanleitung erstellt wurden:
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** und dann auf den Namen der erstellten Ressource.  
 
-2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
+2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen** , geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

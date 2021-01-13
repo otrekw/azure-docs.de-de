@@ -1,24 +1,14 @@
 ---
 title: Nachrichtensequenzierung und -zeitstempel mit Azure Service Bus | Microsoft-Dokumentation
-description: Beibehalten der Service Bus-Nachrichtensequenz und der Reihenfolge mit Zeitstempeln
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+description: In diesem Artikel wird erläutert, wie Sie die Sequenz und Reihenfolge (mit Zeitstempeln) von Azure Service Bus-Nachrichten beibehalten.
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: 8665d0a1fccecf5521a553a894e2a55e52384ec3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/23/2020
+ms.openlocfilehash: fdb18802e576ad114fd3f783d5efd7bb826a5f94
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60402716"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85341163"
 ---
 # <a name="message-sequencing-and-timestamps"></a>Nachrichtensequenzierung und -zeitstempel
 

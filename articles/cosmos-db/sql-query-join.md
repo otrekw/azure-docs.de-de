@@ -1,21 +1,23 @@
 ---
 title: SQL-JOIN-Abfragen für Azure Cosmos DB
-description: Erfahren Sie mehr zur JOIN-SQL-Syntax für Azure Cosmos DB.
+description: Hier erfahren Sie, wie Sie mehrere Tabellen in Azure Cosmos DB verknüpfen, um die Daten abzufragen.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 408ee11b318143b3128833a741e04dd68f3816ed
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c3fad0c7eed2b42a9ac340a091f17b90e22b000a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343222"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333833"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Verknüpfungen in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-In einer relationalen Datenbank sind tabellenübergreifende Verknüpfungen die logische Grundvoraussetzung für die Planung normalisierter Schemas. Im Gegensatz dazu verwendet die SQL-API das denormalisierte Datenmodell schemafreier Elemente (das logische Äquivalent einer *Selbstverknüpfung*).
+In einer relationalen Datenbank sind tabellenübergreifende Verknüpfungen die logische Grundvoraussetzung für die Planung normalisierter Schemas. Im Gegensatz dazu verwendet die SQL-API das denormalisierte Datenmodell schemafreier Elemente (das logische Äquivalent einer *Selbstverknüpfung* ).
 
 Aus inneren Verknüpfungen resultiert ein komplettes Kreuzungsprodukt der an der Verknüpfung beteiligten Sätze. Das Ergebnis einer N-Way-Verknüpfung ist ein Satz von N-Element-Tupeln, wo jeder Wert im Tupel dem an der Verknüpfung beteiligten Aliassatz zugeordnet ist, und der Zugriff auf den Wert durch Verweis auf diesen Alias in anderen Klauseln erfolgen kann.
 
@@ -103,7 +105,7 @@ Betrachten Sie die folgende FROM-Klausel: `<from_source1> JOIN <from_source2> JO
   
 ## <a name="examples"></a>Beispiele
 
-Die folgenden Beispiele veranschaulichen die Funktionsweise der JOIN-Klausel. Das Ergebnis im folgenden Beispiel ist leer, da das Kreuzprodukt der einzelnen Quellelemente und einem leeren Satz leer ist:
+Die folgenden Beispiele veranschaulichen die Funktionsweise der JOIN-Klausel. Bevor Sie diese Beispiele ausführen, laden Sie die [Beispielfamiliendaten](sql-query-getting-started.md#upload-sample-data) hoch. Das Ergebnis im folgenden Beispiel ist leer, da das Kreuzprodukt der einzelnen Quellelemente und einem leeren Satz leer ist:
 
 ```sql
     SELECT f.id
@@ -126,7 +128,7 @@ Im folgenden Beispiel ist die Verknüpfung ein Kreuzprodukt zwischen zwei JSON-O
     JOIN f.children
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
@@ -147,7 +149,7 @@ Das folgende Beispiel zeigt eine gewöhnlichere Verknüpfung:
     JOIN c IN f.children
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
@@ -167,7 +169,7 @@ Die FROM-Quelle der JOIN-Klausel ist ein Iterator. Der Ablauf im vorherigen Beis
 
 1. Alle untergeordneten Elemente `c` im Array erweitern.
 2. Kreuzprodukt mit dem Stammknoten des Elements `f` mit den einzelnen untergeordneten Elementen vom Typ `c` anwenden, die im ersten Schritt vereinfacht wurden.
-3. Zuletzt die `id`-Eigenschaft des Stammobjekts `f` alleine projizieren.
+3. Zuletzt die `id`-Eigenschaft des Stammobjekts `f` alleine projizieren
 
 Das erste Element (`AndersenFamily`) enthält nur ein einzelnes Element `children`. Daher enthält der Ergebnissatz nur ein einzelnes Objekt. Das zweite Element (`WakefieldFamily`) enthält zwei Elemente vom Typ `children`. Daher erzeugt das Kreuzprodukt zwei Objekte, eines für jedes `children`-Element. Die Stammfelder sind in beiden Elementen gleich (wie bei einem Kreuzprodukt zu erwarten).
 
@@ -184,7 +186,7 @@ Der wahre Nutzen der JOIN-Klausel ist die Bildung von Tupeln aus dem Kreuzproduk
     JOIN p IN c.pets
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
@@ -240,7 +242,7 @@ Das nächste Beispiel enthält einen zusätzlichen Filter für `pet`, durch den 
     WHERE p.givenName = "Shadow"
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [

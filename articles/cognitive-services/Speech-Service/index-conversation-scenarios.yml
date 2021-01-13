@@ -1,0 +1,66 @@
+### YamlMime:Landing
+title: Dokumentation zu Konversationsszenarien
+summary: Erkunden Sie die verschiedenen Konversationsszenarien. Erfahren Sie, wie Sie in Besprechungsszenarien die Unterhaltungstranskription oder die Konversation mit mehreren Geräten und in Callcenterszenarien die Transkription nutzen.
+metadata:
+  title: 'Dokumentation zu Unterhaltungsszenarien: Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: trevorbye
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 03/16/2020
+  ms.author: trbye
+  ms.openlocfilehash: 9cb8c769074dea9ed75a9282c41c24437d17d5ab
+  ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/23/2020
+  ms.locfileid: "92756910"
+landingContent:
+- title: Informationen zur Unterhaltungstranskription (Besprechungsszenario)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Worum handelt es sich bei der Unterhaltungstranskription in Besprechungen?
+      url: conversation-transcription.md
+  - linkListType: quickstart
+    links:
+    - text: 'Schnellstart: Unterhaltungstranskription in Echtzeit'
+      url: how-to-use-conversation-transcription.md
+  - linkListType: how-to-guide
+    links:
+    - text: Asynchrone Unterhaltungstranskription
+      url: how-to-async-conversation-transcription.md
+- title: Informationen zu Konversationen mit mehreren Geräten (Besprechungsszenario)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Worum handelt es sich bei der Konversation mit mehreren Geräten?
+      url: multi-device-conversation.md
+  - linkListType: quickstart
+    links:
+    - text: Starten einer Konversation und Beitreten zu einer Konversation
+      url: quickstarts/multi-device-conversation.md
+- title: Callcentertranskription (Szenario mit Kunde/Mitarbeiter)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Behandeln von Callcenterszenarien
+      url: call-center-transcription.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sprachunterstützung für die Unterhaltungstranskription
+      url: conversation-transcription.md#language-support
+    - text: Sprachunterstützung für die Konversationen mit mehreren Geräten
+      url: multi-device-conversation.md#language-support
+    - text: Preise für die Sprachtranskription
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

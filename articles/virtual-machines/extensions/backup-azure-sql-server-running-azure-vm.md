@@ -1,19 +1,19 @@
 ---
 title: Azure Backup für auf einer Azure-VM ausgeführten SQL Server
-description: So registrieren Sie auf einer Azure-VM ausgeführten SQL Server von Azure Backup
-services: backup
-author: swatisachdeva
-manager: vijayts
-ms.service: backup
+description: In diesem Artikel erfahren Sie, wie Sie Azure Backup in einem auf einem virtuellen Azure-Computer ausgeführten SQL Server registrieren.
+author: dcurwin
+manager: carmonm
+ms.service: virtual-machines
+ms.subservice: extensions
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: vijayts
-ms.openlocfilehash: 25f23078af67b2f80f39faab975cbec54721c560
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: dacurwin
+ms.openlocfilehash: 66675f77d480ce8d9f21e5ffb507c475337c9dab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871902"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490729"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup für auf einer Azure-VM ausgeführten SQL Server
 
@@ -22,15 +22,15 @@ Dazu installiert Azure Backup während des vom Benutzer ausgelösten Registrieru
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Eine Liste der unterstützten Szenarien finden Sie in der von Azure Backup unterstützten [Unterstützungsmatrix](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support).
+Eine Liste der unterstützten Szenarien finden Sie in der von Azure Backup unterstützten [Unterstützungsmatrix](../../backup/sql-support-matrix.md#scenario-support).
 
-## <a name="network-connectivity"></a>Netzwerkverbindung
+## <a name="network-connectivity"></a>Netzwerkkonnektivität
 
-Azure Backup unterstützt NSG-Tags, die Bereitstellung eines Proxyservers oder aufgelistete IP-Bereiche; Details zu den einzelnen Methoden finden Sie in diesem [Artikel](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity).
+Azure Backup unterstützt NSG-Tags, die Bereitstellung eines Proxyservers oder aufgelistete IP-Bereiche; Details zu den einzelnen Methoden finden Sie in diesem [Artikel](../../backup/backup-sql-server-database-azure-vms.md#establish-network-connectivity).
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
-Die Werte für das Erweiterungsschema und die Eigenschaften sind die Konfigurationswerte (Laufzeiteinstellungen), die der Dienst an die CRP-API übergibt. Diese Konfigurationswerte werden während der Registrierung und beim Upgrade verwendet. Die Erweiterung **AzureBackupWindowsWorkload** verwendet dieses Schema ebenfalls. Das Schema wird vorab festgelegt; ein neuer Parameter kann im Feld „ObjectStr“ hinzugefügt werden.
+Die Werte für das Erweiterungsschema und die Eigenschaften sind die Konfigurationswerte (Laufzeiteinstellungen), die der Dienst an die CRP-API übergibt. Diese Konfigurationswerte werden während der Registrierung und beim Upgrade verwendet. Die Erweiterung **AzureBackupWindowsWorkload** verwendet ebenfalls dieses Schema. Das Schema wird vorab festgelegt; ein neuer Parameter kann im Feld „ObjectStr“ hinzugefügt werden.
 
   ```json
       "runtimeSettings": [{
@@ -85,36 +85,33 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung „WorkloadBackup�
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-NAME | Wert/Beispiel | Datentyp
+Name | Wert/Beispiel | Datentyp
  --- | --- | ---
-locale | en-us  |  Zeichenfolge
-taskId | „1c0ae461-9d3b-418c-a505-bb31dfe2095d“  | Zeichenfolge
-objectStr <br/> (publicSettings)  | „eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdjYTJhNDZlM2ZkIiwiSWRNZ210Q29udGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJkNGEzOTliNy1iYjAyLTQ2MWMtODdmYS1jNTM5ODI3ZTgzNTQiLCJVbmlxdWVDb250YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ==“ | Zeichenfolge
-commandStartTimeUTCTicks | „636967192566036845“  | Zeichenfolge
-vmType  | „microsoft.compute/virtualmachines“  | Zeichenfolge
-objectStr <br/> (protectedSettings) | „eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdjYTJhNDZlM2ZkIiwiSWRNZ210Q29udGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJkNGEzOTliNy1iYjAyLTQ2MWMtODdmYS1jNTM5ODI3ZTgzNTQiLCJVbmlxdWVDb250YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ==“ | Zeichenfolge
-logsBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | Zeichenfolge
-statusBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | Zeichenfolge
-
+locale | de-de  |  string
+taskId | „1c0ae461-9d3b-418c-a505-bb31dfe2095d“  | string
+objectStr <br/> (publicSettings)  | „eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdjYTJhNDZlM2ZkIiwiSWRNZ210Q29udGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJkNGEzOTliNy1iYjAyLTQ2MWMtODdmYS1jNTM5ODI3ZTgzNTQiLCJVbmlxdWVDb250YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ==“ | string
+commandStartTimeUTCTicks | „636967192566036845“  | string
+vmType  | „microsoft.compute/virtualmachines“  | string
+objectStr <br/> (protectedSettings) | „eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdjYTJhNDZlM2ZkIiwiSWRNZ210Q29udGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJkNGEzOTliNy1iYjAyLTQ2MWMtODdmYS1jNTM5ODI3ZTgzNTQiLCJVbmlxdWVDb250YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ==“ | string
+logsBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw> | string
+statusBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw> | string
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
 Wir empfehlen, die Erweiterung AzureBackupWindowsWorkload zu einem virtuellen Computer hinzuzufügen, indem Sie die SQL Server-Sicherung auf dem virtuellen Computer aktivieren. Dafür verwenden Sie die [Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup),die für die Automatisierung der Sicherung auf einer SQL Server-VM entwickelt wurde.
 
-
 ## <a name="powershell-deployment"></a>PowerShell-Bereitstellung
 
-Sie müssen die Azure-VM, die die SQL-Anwendung enthält, bei einem Recovery Services-Tresor „registrieren“. Während der Registrierung wird die Erweiterung „AzureBackupWindowsWorkload“ auf der VM installiert. Verwenden Sie das Cmdlet  [Register-AzRecoveryServicesBackupContainerPS](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0), um die VM zu registrieren.
- 
+Sie müssen die Azure-VM, die die SQL-Anwendung enthält, bei einem Recovery Services-Tresor „registrieren“. Während der Registrierung wird die Erweiterung „AzureBackupWindowsWorkload“ auf der VM installiert. Verwenden Sie das Cmdlet  [Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-1.5.0), um die VM zu registrieren.
+
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
 Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID -Force
 ```
- 
-Der Befehl gibt einen **Sicherungscontainer** dieser Ressource zurück, und der Status lautet **registriert**.
 
+Der Befehl gibt einen **Sicherungscontainer** dieser Ressource zurück, und der Status lautet **registriert** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erfahren Sie mehr](https://docs.microsoft.com/azure/backup/backup-sql-server-azure-troubleshoot) zu den Richtlinien für die Problembehandlung für die Azure SQL Server-VM-Sicherung.
-- [Häufige Fragen](https://docs.microsoft.com/azure/backup/faq-backup-sql-server) zum Sichern von SQL Server-Datenbanken, die auf virtuellen Azure-Computern (VMs) ausgeführt werden, und für die der Dienst Azure Backup genutzt wird.
+- [Erfahren Sie mehr](../../backup/backup-sql-server-azure-troubleshoot.md) zu den Richtlinien für die Problembehandlung für die Azure SQL Server-VM-Sicherung.
+- [Häufige Fragen](../../backup/faq-backup-sql-server.md) zum Sichern von SQL Server-Datenbanken, die auf virtuellen Azure-Computern (VMs) ausgeführt werden, und für die der Dienst Azure Backup genutzt wird.

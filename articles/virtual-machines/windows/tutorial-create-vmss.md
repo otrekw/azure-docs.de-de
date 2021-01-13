@@ -1,27 +1,20 @@
 ---
-title: Tutorial – Erstellen einer VM-Skalierungsgruppe für Windows in Azure | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Erstellen und Bereitstellen einer hoch verfügbaren Anwendung auf virtuellen Windows-Computern mithilfe einer VM-Skalierungsgruppe verwenden.
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: ''
+title: 'Tutorial: Erstellen einer Windows-VM-Skalierungsgruppe'
+description: Hier erfahren Sie, wie Sie Azure PowerShell zum Erstellen und Bereitstellen einer hochverfügbaren Anwendung auf virtuellen Windows-Computern mithilfe einer VM-Skalierungsgruppe verwenden.
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: windows
 ms.date: 11/30/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 66b9099c8989b5ad3df1d8e27eb33a19ee6f23eb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.reviewer: mimckitt
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: b3853ddc71d1a9be26b2492764a9b341446e0eeb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708071"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89078740"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Tutorial: Erstellen einer VM-Skalierungsgruppe und Bereitstellen einer hochverfügbaren App unter Windows mit Azure PowerShell
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren. Sie können auch basierend auf der Ressourcennutzung wie CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. In diesem Tutorial stellen Sie eine VM-Skalierungsgruppe in Azure bereit und lernen Folgendes:
@@ -44,11 +37,11 @@ Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch 
 
 Virtuelle Computer werden nach Bedarf in einer Skalierungsgruppe erstellt. Sie können Regeln für die automatische Skalierung definieren, um zu steuern, wie und wann virtuelle Computer in der Skalierungsgruppe hinzugefügt oder entfernt werden. Diese Regeln können basierend auf Metriken wie CPU-Auslastung, Speicherauslastung oder Netzwerkdatenverkehr ausgelöst werden.
 
-Bei Verwendung eines Azure-Plattformimages unterstützen Skalierungsgruppen bis zu 1.000 virtuelle Computer. Für Workloads mit beträchtlichen Installations- oder VM-Anpassungsanforderungen können Sie nach Wunsch ein [benutzerdefiniertes VM-Image erstellen](tutorial-custom-images.md). Bei Verwendung eines benutzerdefinierten Images können Sie bis zu 300 virtuelle Computer in einer Skalierungsgruppe erstellen.
+Bei Verwendung eines Azure-Plattformimages unterstützen Skalierungsgruppen bis zu 1.000 virtuelle Computer. Für Workloads mit beträchtlichen Installations- oder VM-Anpassungsanforderungen können Sie nach Wunsch ein [benutzerdefiniertes VM-Image erstellen](tutorial-custom-images.md). Bei Verwendung eines benutzerdefinierten Images können Sie bis zu 600 virtuelle Computer in einer Skalierungsgruppe erstellen.
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
-Erstellen Sie mit [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, für die das Plattformimage *Windows Server 2016 Datacenter* verwendet wird. Die Azure-Netzwerkressourcen für virtuelles Netzwerk, öffentliche IP-Adresse und Lastenausgleich werden automatisch erstellt. Bei entsprechender Aufforderung können Sie Ihre eigenen Administratoranmeldeinformationen für die VM-Instanzen in der Skalierungsgruppe festlegen:
+Erstellen Sie mit [New-AzVmss](/powershell/module/az.compute/new-azvmss) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, für die das Plattformimage *Windows Server 2016 Datacenter* verwendet wird. Die Azure-Netzwerkressourcen für virtuelles Netzwerk, öffentliche IP-Adresse und Lastenausgleich werden automatisch erstellt. Bei entsprechender Aufforderung können Sie Ihre eigenen Administratoranmeldeinformationen für die VM-Instanzen in der Skalierungsgruppe festlegen:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -66,7 +59,7 @@ Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Sk
 
 
 ## <a name="deploy-sample-application"></a>Bereitstellen der Beispielanwendung
-Installieren Sie eine einfache Webanwendung, um Ihre Skalierungsgruppe zu testen. Die benutzerdefinierte Skripterweiterung von Azure wird zum Herunterladen und Ausführen eines Skripts verwendet, das IIS auf den VM-Instanzen installiert. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](extensions-customscript.md).
+Installieren Sie eine einfache Webanwendung, um Ihre Skalierungsgruppe zu testen. Die benutzerdefinierte Skripterweiterung von Azure wird zum Herunterladen und Ausführen eines Skripts verwendet, das IIS auf den VM-Instanzen installiert. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../extensions/custom-script-windows.md).
 
 Verwenden Sie die benutzerdefinierte Skripterweiterung, um einen einfachen IIS-Webserver zu installieren. Wenden Sie die benutzerdefinierte Skripterweiterung, mit der IIS installiert wird, wie folgt an:
 
@@ -99,7 +92,7 @@ Update-AzVmss `
 
 ## <a name="allow-traffic-to-application"></a>Zulassen von Datenverkehr für die Anwendung
 
-Erstellen Sie mit [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) und [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) eine Netzwerksicherheitsgruppe, um den Zugriff auf die einfache Webanwendung zuzulassen. Weitere Informationen finden Sie unter [Netzwerk für Azure-VM-Skalierungsgruppen](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md).
+Erstellen Sie mit [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) und [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecuritygroup) eine Netzwerksicherheitsgruppe, um den Zugriff auf die einfache Webanwendung zuzulassen. Weitere Informationen finden Sie unter [Netzwerk für Azure-VM-Skalierungsgruppen](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md).
 
 ```azurepowershell-interactive
 # Get information about the scale set
@@ -148,7 +141,7 @@ Update-AzVmss `
 ```
 
 ## <a name="test-your-scale-set"></a>Testen Ihrer Skalierungsgruppe
-Um Ihre Skalierungsgruppe in Aktion zu sehen, rufen Sie mit [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse Ihres Lastenausgleichs ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIP* angezeigt, die als Teil der Skalierungsgruppe erstellt wurde:
+Um Ihre Skalierungsgruppe in Aktion zu sehen, rufen Sie mit [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse Ihres Lastenausgleichs ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIP* angezeigt, die als Teil der Skalierungsgruppe erstellt wurde:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -167,7 +160,7 @@ Um die Skalierungsgruppe in Aktion zu sehen, führen Sie eine erzwungene Aktuali
 Während des Lebenszyklus der Skalierungsgruppe müssen Sie möglicherweise eine oder mehrere Verwaltungsaufgaben ausführen. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von verschiedenen Aufgaben im Lebenszyklus zu erstellen. Azure PowerShell bietet eine schnelle Möglichkeit, diese Aufgaben auszuführen. Im Folgenden sind einige allgemeine Aufgaben aufgeführt.
 
 ### <a name="view-vms-in-a-scale-set"></a>Anzeigen von virtuellen Computern in einer Skalierungsgruppe
-Verwenden Sie [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm) wie folgt, um eine Liste mit den VM-Instanzen in einer Skalierungsgruppe anzuzeigen:
+Verwenden Sie [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) wie folgt, um eine Liste mit den VM-Instanzen in einer Skalierungsgruppe anzuzeigen:
 
 ```azurepowershell-interactive
 Get-AzVmssVM `
@@ -184,7 +177,7 @@ MYRESOURCEGROUPSCALESET   myScaleSet_0   eastus Standard_DS1_v2          0      
 MYRESOURCEGROUPSCALESET   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm) den Parameter `-InstanceId` hinzu. Im folgenden Beispiel werden Informationen zur VM-Instanz *1* angezeigt:
+Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) den Parameter `-InstanceId` hinzu. Im folgenden Beispiel werden Informationen zur VM-Instanz *1* angezeigt:
 
 ```azurepowershell-interactive
 Get-AzVmssVM `
@@ -195,7 +188,7 @@ Get-AzVmssVM `
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>VM-Instanzen erhöhen oder verringern
-Verwenden Sie [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss), und fragen Sie *sku.capacity* ab, um die Anzahl vorhandener Instanzen anzuzeigen, die sich zurzeit in einer Skalierungsgruppe befinden:
+Verwenden Sie [Get-AzVmss](/powershell/module/az.compute/get-azvmss), und fragen Sie *sku.capacity* ab, um die Anzahl vorhandener Instanzen anzuzeigen, die sich zurzeit in einer Skalierungsgruppe befinden:
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
@@ -203,7 +196,7 @@ Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
   Select -ExpandProperty Sku
 ```
 
-Die Anzahl virtueller Computer in der Skalierungsgruppe kann dann mit [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) manuell erhöht oder verringert werden. Im folgenden Beispiel wird die Anzahl der virtuellen Computer in der Skalierungsgruppe auf *3* festgelegt:
+Die Anzahl virtueller Computer in der Skalierungsgruppe kann dann mit [Update-AzVmss](/powershell/module/az.compute/update-azvmss) manuell erhöht oder verringert werden. Im folgenden Beispiel wird die Anzahl der virtuellen Computer in der Skalierungsgruppe auf *3* festgelegt:
 
 ```azurepowershell-interactive
 # Get current scale set
@@ -279,7 +272,7 @@ Weitere Entwurfsinformationen zur Verwendung der automatischen Skalierung finden
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie eine Skalierungsgruppe für virtuelle Computer bereitgestellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie eine Skalierungsgruppe für virtuelle Computer bereitgestellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Verwenden der Benutzerdefinierten Skripterweiterung zum Definieren einer IIS-Website zur Skalierung

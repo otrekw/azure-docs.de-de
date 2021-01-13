@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 32445e3f6859a6161eb2fae20233c598234f18a0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fb0e56c5eeebb4f3a869feacb996d690ea7dde86
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400625"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124168"
 ---
 # <a name="azure-data-box-disk-limits"></a>Begrenzungen für Azure Data Box Disk
 
@@ -27,7 +27,7 @@ Berücksichtigen Sie die folgenden Einschränkungen beim Bereitstellen und Betre
 
 ## <a name="data-box-disk-performance"></a>Leistung des Data Box-Datenträgers
 
-Beim Testen mit Datenträgern, die über USB 3.0 verbunden waren, betrug die Datenträgerleistung bis zu 430MB/s. Die tatsächlichen Zahlen variieren abhängig von der Größe der verwendeten Datei. Bei kleineren Dateien stellen Sie möglicherweise eine geringere Leistung fest.
+Beim Testen mit Datenträgern, die über USB 3.0 verbunden waren, betrug die Datenträgerleistung bis zu 430 MB/s. Die tatsächlichen Zahlen variieren abhängig von der Größe der verwendeten Datei. Bei kleineren Dateien ist die Leistung unter Umständen etwas reduziert.
 
 ## <a name="azure-storage-limits"></a>Speichergrenzwerte für Azure
 
@@ -35,9 +35,9 @@ In diesem Abschnitt werden die Grenzwerte für den Azure Storage-Dienst und die 
 
 Aktuelle Informationen zu Grenzwerten für den Azure Storage-Dienst und bewährte Vorgehensweisen für die Benennung von Freigaben, Containern und Dateien finden Sie hier:
 
-- [Benennen und Referenzieren von Containern, Blobs und Metadaten](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Verstehen von Blockblobs, Anfügeblobs und Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+- [Benennen und Referenzieren von Containern, Blobs und Metadaten](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
+- [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Verstehen von Blockblobs, Anfügeblobs und Seitenblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
 > Wenn Dateien oder Verzeichnisse die Grenzwerte des Azure Storage-Diensts überschreiten oder nicht den Benennungskonventionen für Azure Files/-Blobs entsprechen, werden diese Dateien oder Verzeichnisse nicht über den Data Box-Dienst in Azure Storage erfasst.
@@ -50,19 +50,21 @@ Aktuelle Informationen zu Grenzwerten für den Azure Storage-Dienst und bewährt
 - Jede Datei, die in die Freigaben *BlockBlob* und *PageBlob* geschrieben wird, wird als Blockblob bzw. Seitenblob hochgeladen.
 - Eine unter den Ordnern *BlockBlob* und *PageBlob* erstellte leere Verzeichnishierarchie (ohne jegliche Dateien) wird nicht hochgeladen.
 - Wenn beim Hochladen von Daten in Azure Fehler auftreten, wird im Zielspeicherkonto ein Fehlerprotokoll erstellt. Der Pfad zu diesem Fehlerprotokoll ist im Portal verfügbar, wenn der Upload abgeschlossen ist, und Sie können das Protokoll überprüfen, um Korrekturmaßnahmen zu ergreifen. Löschen Sie keine Daten aus der Quelle, ohne die hochgeladenen Daten zu überprüfen.
+- Dateimetadaten und NTFS-Berechtigungen werden beim Hochladen der Daten in Azure Files nicht beibehalten. Beispielsweise wird das Attribut *Letzte Änderung* der Dateien beim Kopieren der Daten nicht beibehalten.
 - Wenn Sie verwaltete Datenträger in der Bestellung angegeben haben, beachten Sie die folgenden zusätzlichen Punkte:
 
     - Der Name eines verwalteten Datenträgers muss in einer Ressourcengruppe in allen vorab erstellten Ordner und der gesamten Data Box Disk-Instanz eindeutig sein. Die VHDs, die in die vorab erstellten Ordner hochgeladen werden, müssen also jeweils einen eindeutigen Namen aufweisen. Achten Sie darauf, dass der Name nicht mit dem Namen eines bereits vorhandenen verwalteten Datenträgers in einer Ressourcengruppe identisch ist. Wenn VHDs denselben Namen haben, wird nur eine VHD in einen verwalteten Datenträger mit diesem Namen konvertiert. Die anderen VHDs werden als Seitenblobs in das Stagingspeicherkonto hochgeladen.
     - Kopieren Sie die VHDs immer in einen der vorab erstellten Ordner. Wenn Sie die VHDs an einen Ort außerhalb dieser Ordner oder in einen selbst erstellten Ordner kopieren, werden sie nicht als verwaltete Datenträger, sondern als Seitenblobs in das Azure Storage-Konto hochgeladen.
     - Zur Erstellung von verwalteten Datenträgern können nur feste VHDs hochgeladen werden. Dynamische VHDs, differenzierende VHDs oder VHDX-Dateien werden nicht unterstützt.
+    - Nicht-VHD-Dateien, die in die vorher erstellten Ordner für verwaltete Datenträger kopiert werden, werden nicht in einen verwalteten Datenträger konvertiert.
 
 ## <a name="azure-storage-account-size-limits"></a>Größenbeschränkungen für das Azure-Speicherkonto
 
-Dies sind die Grenzwerte für die Größe der Daten, die in das Speicherkonto kopiert werden. Stellen Sie sicher, dass die von Ihnen hochgeladenen Daten diesen Grenzwerten entsprechen. Die neuesten Informationen zu diesen Einschränkungen finden Sie unter [Skalierbarkeitsziele für Azure-Blobspeicher](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) und [Skalierbarkeitsziele für Azure Files](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
+Dies sind die Grenzwerte für die Datenmenge, die in ein Speicherkonto kopiert werden kann. Stellen Sie sicher, dass die von Ihnen hochgeladenen Daten diesen Grenzwerten entsprechen. 
 
-| Größe der in das Azure-Speicherkonto kopierten Daten                      | Standardlimit          |
-|---------------------------------------------------------------------|------------------------|
-| Blockblob und Seitenblob                                            | 500TB pro Speicherkonto. <br> Dies schließt Daten aus allen Quellen einschließlich Data Box-Datenträger ein.|
+| Datentyp             | Standardlimit          |
+|--------------------------|------------------------|
+| Blockblob, Seitenblob    | Aktuelle Informationen zu diesen Grenzwerten finden Sie unter [Skalierbarkeitsziele für Blob Storage](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage), [Skalierbarkeitsziele für Standardspeicherkonten](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts) und [Skalierungsziele für Dateifreigaben und Dateien](../storage/files/storage-files-scale-targets.md#file-share-and-file-scale-targets). <br /><br /> Die Grenzwerte schließen Daten aus allen Quellen ein, einschließlich Data Box Disk.|
 
 
 ## <a name="azure-object-size-limits"></a>Größenbeschränkungen für das Azure-Objekt

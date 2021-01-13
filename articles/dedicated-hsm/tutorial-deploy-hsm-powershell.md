@@ -8,21 +8,21 @@ manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc, seodec18
+ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 53fb4fa344839957a3f98275d174bbb787fa5e38
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 07/14/2020
+ms.author: johndaw
+ms.openlocfilehash: ee431df89128a516e3a1cabeb43b5cbe9e356dae
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880988"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927854"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe von PowerShell
 
-Der Azure-Dienst für dedizierte HSMs stellt ein physisches Gerät für die Verwendung durch einen Kunden mit umfassender administrativer Kontrolle und vollständiger Verwaltungsverantwortung bereit. Da es sich hierbei um physische Hardware handelt, muss Microsoft die Zuordnung dieser Geräte steuern, um eine effektive Kapazitätsverwaltung zu gewährleisten. Aus diesem Grund steht der Dienst für dedizierte HSMs innerhalb eines Azure-Abonnements standardmäßig nicht für die Ressourcenbereitstellung zur Verfügung. Azure-Kunden, die Zugriff auf den Dienst für dedizierte HSMs benötigen, müssen bei ihrem Microsoft-Kundenbetreuer die Registrierung für den Dienst für dedizierte HSMs beantragen. Die Bereitstellung ist erst nach Abschluss dieses Prozesses möglich.
+Der Azure-Dienst für dedizierte HSMs stellt ein physisches Gerät für die Verwendung durch einen Kunden mit umfassender administrativer Kontrolle und vollständiger Verwaltungsverantwortung bereit. Da es sich hierbei um physische Hardware handelt, muss Microsoft die Zuordnung dieser Geräte steuern, um eine effektive Kapazitätsverwaltung zu gewährleisten. Deshalb steht der Dienst für dedizierte HSMs innerhalb eines Azure-Abonnements standardmäßig nicht für die Ressourcenbereitstellung zur Verfügung. Azure-Kunden, die Zugriff auf den Dienst für dedizierte HSMs benötigen, müssen bei ihrem Microsoft-Kundenbetreuer die Registrierung für den Dienst für dedizierte HSMs beantragen. Die Bereitstellung ist erst nach Abschluss dieses Prozesses möglich.
 Dieses Tutorial zeigt einen typischen Bereitstellungsprozess mit folgenden Kriterien:
 
 - Ein Kunde verfügt bereits über ein virtuelles Netzwerk.
@@ -40,7 +40,7 @@ Dieses Tutorial konzentriert sich auf die Integration eines HSM-Paars und des er
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Da der Azure-Dienst für dedizierte HSMs derzeit nicht im Azure-Portal verfügbar ist, werden sämtliche Interaktionen mit dem Dienst über die Befehlszeile oder mithilfe von PowerShell abgewickelt. In diesem Tutorial wird PowerShell in Azure Cloud Shell verwendet. Sollten Sie noch nicht mit der PowerShell vertraut sein, informieren Sie sich hier über die ersten Schritte: [Get started with Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) (Erste Schritte mit Azure PowerShell)
+Da der Azure-Dienst für dedizierte HSMs derzeit nicht im Azure-Portal verfügbar ist, werden sämtliche Interaktionen mit dem Dienst über die Befehlszeile oder mithilfe von PowerShell abgewickelt. In diesem Tutorial wird PowerShell in Azure Cloud Shell verwendet. Sollten Sie noch nicht mit der PowerShell vertraut sein, informieren Sie sich hier über die ersten Schritte: [Get started with Azure PowerShell](/powershell/azure/get-started-azureps) (Erste Schritte mit Azure PowerShell)
 
 Voraussetzungen:
 
@@ -62,13 +62,7 @@ Der Dienst für dedizierte HSMs muss wie bereits erwähnt für Ihr Abonnement re
 Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
-Der folgende Befehl überprüft die Netzwerkfeatures, die für den Dienst für dedizierte HSMs erforderlich sind:
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
-```
-
-Fahren Sie erst mit den weiteren Schritten fort, wenn bei beiden Befehlen der Status „Registered“ zurückgegeben wird, wie in der folgenden Abbildung zu sehen.  Falls Sie sich noch für den Dienst registrieren müssen, wenden Sie sich an Ihren Microsoft-Kontobeauftragten.
+Fahren Sie erst mit den weiteren Schritten fort, wenn beim Befehl der Status „Registered“ zurückgegeben wird, wie in der folgenden Abbildung zu sehen.  Falls Sie sich noch nicht für diesen Dienst registriert haben, wenden Sie sich an Ihren Microsoft-Kontobeauftragten.
 
 ![Abonnementstatus](media/tutorial-deploy-hsm-powershell/subscription-status.png)
 
@@ -217,7 +211,7 @@ Die Verbindung mit dem virtuellen Computer wird mithilfe des ssh-Tools hergestel
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 Als Kennwort muss das Kennwort aus der Parameterdatei verwendet werden.
-Nach der Anmeldung bei dem virtuellen Linux-Computer können Sie sich unter Verwendung der privaten IP-Adresse, die im Portal für die Ressource „\<Präfix>hsm_vnic“ angegeben ist, beim HSM anmelden.
+Nach der Anmeldung bei dem virtuellen Linux-Computer können Sie sich unter Verwendung der privaten IP-Adresse, die im Portal für die Ressource „\<prefix>hsm_vnic“ angegeben ist, beim HSM anmelden.
 
 ```powershell
 
@@ -239,29 +233,18 @@ Führen Sie nach dem Herstellen der SSH-Verbindung mit dem HSM-Gerät den folgen
 
 Die Ausgabe sollte in etwa wie folgt aussehen:
 
-![Bereitstellungsstatus](media/tutorial-deploy-hsm-powershell/output.png)
+![Screenshot: Ausgabe des Befehls „hsm show“](media/tutorial-deploy-hsm-powershell/output.png)
 
 Sie haben nun alle Ressourcen für eine hoch verfügbare Bereitstellung mit zwei HSMs zugeordnet und den Zugriff sowie die Betriebsbereitschaft geprüft. Die weiteren Konfigurations-/Testschritte erfordern eine intensivere Interaktion mit dem eigentlichen HSM-Gerät. Gehen Sie hierzu gemäß der Anleitung in Kapitel 7 des Administratorhandbuchs für Gemalto Luna Network HSM 7 vor, um das HSM zu initialisieren und Partitionen zu erstellen. Die gesamte Dokumentation und Software kann direkt von Gemalto heruntergeladen werden, nachdem Sie sich beim Kundensupportportal von Gemalto registriert und eine Kunden-ID erhalten haben. Laden Sie die Version 7.2 der Clientsoftware herunter, um alle erforderlichen Komponenten zu erhalten.
 
 ## <a name="delete-or-clean-up-resources"></a>Löschen oder Bereinigen von Ressourcen
 
-Wenn Sie das HSM-Gerät nicht mehr benötigen, kann es als Ressource gelöscht und wieder dem freien Pool zugeführt werden. Ein wichtiger Aspekt bei diesem Schritt sind natürlich vertrauliche Kundendaten, die sich ggf. auf dem Gerät befinden. Um vertrauliche Kundeninformationen zu entfernen, sollte das Gerät mithilfe des Gemalto-Clients auf die Werkseinstellungen zurückgesetzt werden. Konsultieren Sie hierzu das Gemalto-Administratorhandbuch für das SafeNet Netzwerk Luna 7-Gerät, und führen Sie ggf. die folgenden Befehle in der angegebenen Reihenfolge aus:
-
-1. `hsm factoryReset -f`
-2. `sysconf config factoryReset -f -service all`
-3. `network interface delete -device eth0`
-4. `network interface delete -device eth1`
-5. `network interface delete -device eth2`
-6. `network interface delete -device eth3`
-7. `my file clear -f`
-8. `my public-key clear -f`
-9. `syslog rotate`
-
+Wenn Sie das HSM-Gerät nicht mehr benötigen, kann es als Ressource gelöscht und wieder dem freien Pool zugeführt werden. Ein wichtiger Aspekt bei diesem Schritt sind natürlich vertrauliche Kundendaten, die sich ggf. auf dem Gerät befinden. Ein Gerät lässt sich am besten durch dreimalige Falscheingabe des HSM-Administratorkennworts nullen. (Hinweis: Hierbei handelt es sich um das Kennwort des HSM-Administrators, nicht um das des Applianceadministrators.) Als Sicherheitsmaßnahme zum Schutz der Schlüsseldaten kann das Gerät erst als Azure-Ressource gelöscht werden, wenn es sich im genullten Zustand befindet.
 
 > [!NOTE]
 > Wenden Sie sich bei Problemen mit der Gemalto-Gerätekonfiguration bitte an den [Gemalto-Kundensupport](https://safenet.gemalto.com/technical-support/).
 
-Wenn Sie die Ressourcen in dieser Ressourcengruppe nicht mehr benötigen, können Sie alle mithilfe des folgenden Befehls entfernen:
+Wenn Sie die HSM-Ressource in Azure entfernen möchten, können Sie den folgenden Befehl verwenden. Ersetzen Sie dabei die „$“-Variablen durch Ihre eindeutigen Parameter:
 
 ```powershell
 

@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Dokumentation zur RBAC für Azure-Ressourcen
-summary: Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ist ein System, das eine präzise Zugriffsverwaltung für Azure-Ressourcen ermöglicht. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
+title: Azure RBAC-Dokumentation
+summary: Die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) ist ein System, das eine präzise Zugriffsverwaltung für Azure-Ressourcen ermöglicht. Mithilfe von Azure RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
 metadata:
-  title: Dokumentation zur rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen
-  description: Hier erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) verwalten, welche Benutzer Zugriff auf Azure-Ressourcen besitzen, welche Aktionen für diese Ressourcen ausgeführt werden können und auf welche Bereiche die Benutzer zugreifen können.
+  title: Azure RBAC-Dokumentation
+  description: Hier erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) verwalten, welche Benutzer Zugriff auf Azure-Ressourcen besitzen, welche Aktionen für diese Ressourcen ausgeführt werden können und auf welche Bereiche die Benutzer zugreifen können.
   services: role-based-access-control
   ms.service: role-based-access-control
   ms.subservice: na
@@ -11,19 +11,19 @@ metadata:
   ms.collection: na
   author: rolyon
   ms.author: rolyon
-  ms.date: 08/26/2019
-  ms.openlocfilehash: e947b1ab685bcc1da5d3895e49c07d1ff56c0937
-  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+  ms.date: 04/30/2020
+  ms.openlocfilehash: dea645e61009e84e8781d9439626ecd0ef818c28
+  ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/13/2019
-  ms.locfileid: "70968309"
+  ms.lasthandoff: 11/17/2020
+  ms.locfileid: "94657498"
 landingContent:
-- title: Informationen zur RBAC für Azure-Ressourcen
+- title: Info zu Azure RBAC
   linkLists:
   - linkListType: overview
     links:
-    - text: Was ist RBAC?
+    - text: Was ist Azure RBAC?
       url: overview.md
     - text: Grundlegendes zu den verschiedenen Rollen
       url: rbac-and-directory-admin-roles.md
@@ -45,8 +45,8 @@ landingContent:
       url: tutorial-role-assignments-group-powershell.md
   - linkListType: learn
     links:
-    - text: Sichern Ihrer Azure-Ressourcen mit rollenbasierter Zugriffssteuerung
-      url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
+    - text: Schützen Ihrer Azure-Ressourcen mit Azure RBAC
+      url: /learn/modules/secure-azure-resources-with-rbac/
 - title: Verwalten des Zugriffs
   linkLists:
   - linkListType: how-to-guide
@@ -63,12 +63,16 @@ landingContent:
       url: role-assignments-rest.md
     - text: Vorlage
       url: role-assignments-template.md
-- title: Erstellen von benutzerdefinierten Rollen
+- title: Erstellen oder Aktualisieren von benutzerdefinierten Rollen
   linkLists:
   - linkListType: overview
     links:
     - text: Benutzerdefinierte Rollen
       url: custom-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: 'Erstellen einer benutzerdefinierten Rolle: Portal'
+      url: custom-roles-portal.md
   - linkListType: tutorial
     links:
     - text: 'Erstellen einer benutzerdefinierten Rolle: PowerShell'

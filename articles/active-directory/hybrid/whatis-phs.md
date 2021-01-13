@@ -7,21 +7,21 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83e172e61411c7c1c098706b5ff4566f565d6bf1
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 23f88a783ca257090fc607cc9a16ec457c7e9c8c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66253861"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90016587"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Was ist die Kennworthashsynchronisierung mit Azure AD?
 Die Kennworthashsynchronisierung ist eine der Anmeldemethoden, die zur Implementierung von Hybrididentitäten verwendet wird. Azure AD Connect synchronisiert einen Hash eines Benutzerkennworthashs aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure AD-Instanz.
 
-Die Kennworthashsynchronisierung ist eine Erweiterung des durch die Azure AD Connect-Synchronisierung implementierten Verzeichnissynchronisierungsfeatures. Dieses Feature kann für die Anmeldung bei Azure AD-Dienste wie Office 365 verwendet werden. Sie melden sich bei dem Dienst mit dem gleichen Kennwort an, das Sie zur Anmeldung bei Ihrer lokalen Active Directory-Instanz verwenden.
+Die Kennworthashsynchronisierung ist eine Erweiterung des durch die Azure AD Connect-Synchronisierung implementierten Verzeichnissynchronisierungsfeatures. Dieses Feature kann für die Anmeldung bei Azure AD-Diensten wie Microsoft 365 verwendet werden. Sie melden sich bei dem Dienst mit dem gleichen Kennwort an, das Sie zur Anmeldung bei Ihrer lokalen Active Directory-Instanz verwenden.
 
 ![Was ist Azure AD Connect?](./media/how-to-connect-password-hash-synchronization/arch1.png)
 
@@ -29,6 +29,12 @@ Dank der Kennworthashsynchronisierung benötigen Benutzer nur noch ein einzelnes
 
 * Verbessern der Produktivität Ihrer Benutzer
 * Reduzieren der Helpdeskkosten  
+
+Mit der Kennworthashsynchronisierung wird auch die [Ermittlung kompromittierter Anmeldeinformationen](../identity-protection/concept-identity-protection-risks.md#user-risk) für Ihre Hybridkonten aktiviert. Microsoft arbeitet mit Darknet-Ermittlern und Justizbehörden zusammen, um öffentlich verfügbare Benutzername/Kennwort-Paare zu finden. Wenn eines dieser Paare mit denen unserer Benutzer identisch ist, wird für das zugehörige Konto der Status „Hohes Risiko“ aktiviert. 
+
+>[!NOTE]
+> Nur kompromittierte Anmeldeinformationen, die nach dem Aktivieren der Kennworthashsynchronisierung neu gefunden wurden, werden für Ihren Mandanten verarbeitet. Eine Überprüfung anhand zuvor gefundener Anmeldeinformationspaare erfolgt nicht.
+
 
 Wenn Sie sich bei der Anmeldemethode für einen [Verbund mit Active Directory Federation Services (AD FS)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect) entscheiden, können Sie die Kennworthashsynchronisierung optional als zusätzliche Sicherheitsmaßnahme aktivieren.
 

@@ -4,31 +4,31 @@ description: In diesem Artikel erfahren Sie, wie Netzwerkdatenverkehr mithilfe v
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: cd13b3a7a3bc4d5a80e44d146e08c14e81ffdb60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 41c0f9546b07158a2c7fb3344698598f0c38521f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730064"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492079"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Weiterleiten von Netzwerkdatenverkehr über eine Routingtabelle mithilfe von PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Standardmäßig leitet Azure den Datenverkehr automatisch durch alle Subnetze des virtuellen Netzwerks. Sie können eigene Routen erstellen, um das Azure-Standardrouting außer Kraft zu setzen. Die Möglichkeit zum Erstellen von benutzerdefinierten Routen ist beispielsweise hilfreich, wenn Sie über ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) Datenverkehr zwischen Subnetzen weiterleiten möchten. In diesem Artikel werden folgende Vorgehensweisen behandelt:
+Standardmäßig leitet Azure automatisch den Datenverkehr aller Subnetze des virtuellen Netzwerks weiter. Sie können eigene Routen erstellen, um das Azure-Standardrouting außer Kraft zu setzen. Die Möglichkeit zum Erstellen von benutzerdefinierten Routen ist beispielsweise hilfreich, wenn Sie über ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) Datenverkehr zwischen Subnetzen weiterleiten möchten. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 * Erstellen einer Routingtabelle
 * Erstellen einer Route
@@ -121,13 +121,13 @@ Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork `
   -Name 'Public' `
   -AddressPrefix 10.0.0.0/24 `
-  -RouteTable $routeTablePublic | `
+  -RouteTable $myRouteTablePublic | `
 Set-AzVirtualNetwork
 ```
 
 ## <a name="create-an-nva"></a>Erstellen eines virtuellen Netzwerkgeräts
 
-Eine NVA ist eine VM, die eine Netzwerkfunktion wie Routing, Firewall oder WAN-Optimierung ausführt.
+Ein virtuelles Netzwerkgerät ist eine VM, die eine Netzwerkfunktion wie Routing, Firewall oder WAN-Optimierung ausführt.
 
 Vor dem Erstellen eines virtuellen Computers erstellen Sie eine Netzwerkschnittstelle.
 
@@ -275,7 +275,7 @@ mstsc /v:myVmPublic
 Geben Sie auf der VM *myVmPublic* in PowerShell den folgenden Befehl ein, um ICMP-Datenverkehr in der Windows-Firewall zuzulassen:
 
 ```powershell
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
 ```
 
 Geben Sie auf der VM *myVmPublic* in PowerShell den folgenden Befehl ein, um die Weiterleitung von Netzwerkdatenverkehr der VM *myVmPublic* an der VM *myVmPrivate* zu testen:

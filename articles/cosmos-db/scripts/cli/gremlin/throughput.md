@@ -1,30 +1,31 @@
 ---
-title: Aktualisieren der Anforderungseinheiten pro Sekunde für eine Gremlin-Datenbank und einen Gremlin-Graphen für Azure Cosmos DB
-description: Aktualisieren der Anforderungseinheiten pro Sekunde für eine Gremlin-Datenbank und einen Gremlin-Graphen für Azure Cosmos DB
+title: 'Azure CLI-Skripts für Durchsatzvorgänge (RU/s): Ressourcen der Gremlin-API für Azure Cosmos DB'
+description: 'Azure CLI-Skripts für Durchsatzvorgänge (RU/s): Ressourcen der Gremlin-API für Azure Cosmos DB'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
-ms.date: 9/25/2019
-ms.openlocfilehash: 0ef01a50e4827ec2ba96ce5d370bc2386e0dbfd6
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.date: 10/07/2020
+ms.openlocfilehash: 0aa05d165f83eec4bacb588ce974a18034918028
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71275067"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565567"
 ---
-# <a name="update-rus-for-a-gremlin-database-and-graph-for-azure-cosmos-db-using-azure-cli"></a>Aktualisieren der Anforderungseinheiten pro Sekunde für eine Gremlin-Datenbank und einen Gremlin-Graphen für Azure Cosmos DB per Azure CLI
+# <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Durchsatzvorgänge (RU/s) mit der Azure CLI für eine Datenbank oder einen Graphen für Azure Cosmos DB: Gremlin-API
+[!INCLUDE[appliesto-gremlin-api](../../../includes/appliesto-gremlin-api.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, ist es für dieses Thema erforderlich, Azure CLI-Version 2.0.73 oder höher auszuführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.12.1 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="sample-script"></a>Beispielskript
 
-Mit diesem Skript werden eine Gremlin-Datenbank mit gemeinsam genutztem Durchsatz und ein Gremlin-Graph mit dediziertem Durchsatz erstellt, und anschließend wird der Durchsatz sowohl für die Datenbank als auch für den Graphen aktualisiert.
+Mit diesem Skript werden eine Gremlin-Datenbank mit gemeinsam genutztem Durchsatz und ein Gremlin-Graph mit dediziertem Durchsatz erstellt, und anschließend wird der Durchsatz sowohl für die Datenbank als auch für den Graphen aktualisiert. Anschließend führt das Skript die Migration vom standardmäßigen zum automatisch skalierten Durchsatz durch, und nach Abschluss der Migration wird dann der Wert des automatisch skalierten Durchsatzes gelesen.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/gremlin/throughput.sh "Update RU/s for a Gremlin database and graph.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/gremlin/throughput.sh "Throughput operations for a Gremlin database and graph.")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
@@ -46,6 +47,8 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [az cosmosdb gremlin graph create](/cli/azure/cosmosdb/gremlin/graph#az-cosmosdb-gremlin-graph-create) | Erstellt einen Azure Cosmos-Gremlin-Graphen. |
 | [az cosmosdb gremlin database throughput update](/cli/azure/cosmosdb/gremlin/database/throughput#az-cosmosdb-gremlin-database-throughput-update) | Aktualisiert die Anforderungseinheiten pro Sekunde (RU/s) für eine Azure Cosmos-Gremlin-Datenbank. |
 | [az cosmosdb gremlin graph throughput update](/cli/azure/cosmosdb/gremlin/graph/throughput#az-cosmosdb-gremlin-graph-throughput-update) | Aktualisiert die Anforderungseinheiten pro Sekunde (RU/s) für einen Azure Cosmos-Gremlin-Graphen. |
+| [az cosmosdb gremlin database throughput migrate](/cli/azure/cosmosdb/gremlin/database/throughput#az_cosmosdb_gremlin_database_throughput_migrate) | Migriert den Durchsatz für eine Azure Cosmos-Gremlin-Datenbank. |
+| [az cosmosdb gremlin graph throughput migrate](/cli/azure/cosmosdb/gremlin/graph/throughput#az_cosmosdb_gremlin_graph_throughput_migrate) | Migriert den Durchsatz für einen Azure Cosmos-Gremlin-Graphen. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

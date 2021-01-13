@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8aebb5b6f6a3ac53bc49fd1d2f75de88667865fb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61244343"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147638"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Verwenden von Nachrichtenrouten und benutzerdefinierten Endpunkten für D2C-Nachrichten
 
@@ -46,7 +46,7 @@ Weitere Informationen zum Lesen von benutzerdefinierten Endpunkten finden Sie un
 
 * Lesen aus [Azure Storage-Containern](../storage/blobs/storage-blobs-introduction.md).
 
-* Lesen aus [Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
+* Lesen aus [Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).
 
 * Lesen aus [Service Bus-Warteschlangen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 

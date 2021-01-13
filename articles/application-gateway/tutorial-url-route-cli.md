@@ -4,16 +4,16 @@ description: In diesem Artikel erfahren Sie, wie Sie Webdatenverkehr basierend a
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 8e8fed99fe0b1de52d2e2d0018dfd8867b54b63b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688180"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566519"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Weiterleiten von Webdatenverkehr basierend auf der URL mit der Azure-Befehlszeilenschnittstelle
 
@@ -23,21 +23,20 @@ Als IT-Administrator, der Webdatenverkehr verwaltet, möchten Sie Ihren Kunden o
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Erstellen einer Ressourcengruppe für die benötigten Netzwerkressourcen
-> * Erstellen der Netzwerkressourcen
-> * Erstellen eines Anwendungsgateways für den Datenverkehr aus Ihrer Anwendung
-> * Angeben von Serverpools und Routingregeln für die verschiedenen Arten von Datenverkehr
-> * Erstellen einer Skalierungsgruppe für jeden Pool, damit der Pool automatisch skaliert werden kann
-> * Testen, ob die verschiedenen Arten von Datenverkehr an den richtigen Pool weitergeleitet werden
+* Erstellen einer Ressourcengruppe für die benötigten Netzwerkressourcen
+* Erstellen der Netzwerkressourcen
+* Erstellen eines Anwendungsgateways für den Datenverkehr aus Ihrer Anwendung
+* Angeben von Serverpools und Routingregeln für die verschiedenen Arten von Datenverkehr
+* Erstellen einer Skalierungsgruppe für jeden Pool, damit der Pool automatisch skaliert werden kann
+* Testen, ob die verschiedenen Arten von Datenverkehr an den richtigen Pool weitergeleitet werden
 
 Dieses Verfahren kann auch mit [Azure PowerShell](tutorial-url-route-powershell.md) oder mit dem [Azure-Portal](create-url-route-portal.md) durchgearbeitet werden.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+ - Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -98,7 +97,7 @@ az network application-gateway create \
  Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
 
 
-|Feature  |BESCHREIBUNG  |
+|Funktion  |BESCHREIBUNG  |
 |---------|---------|
 |appGatewayBackendPool     |Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.|
 |appGatewayBackendHttpSettings     |Gibt an, dass zur Kommunikation der Port 80 und ein HTTP-Protokoll verwendet werden.|

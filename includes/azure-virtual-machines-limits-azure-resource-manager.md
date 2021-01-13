@@ -2,19 +2,35 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 9070aee55969c1cc0fdf3870a05a065aaa5a8bf3
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 45c959bc3cb71a965f254867798ae32d86ba1e70
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178448"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612695"
 ---
-| Resource | Standardlimit |
+| Resource | Begrenzung |
 | --- | --- |
+| VMs pro [Abonnement](https://azure.microsoft.com/pricing/) |25.000<sup>1</sup> pro Region |
+| Gesamte Kerne pro [Abonnement](https://azure.microsoft.com/pricing/) |20<sup>1</sup> pro Region Wenden Sie sich an den Support, um diesen Grenzwert heraufzusetzen. |
+| Azure Spot-VM: Kerne gesamt pro [Abonnement](https://azure.microsoft.com/pricing/) |20<sup>1</sup> pro Region Wenden Sie sich an den Support, um diesen Grenzwert heraufzusetzen. |
+| VM-Kerne pro Serie (z. B. Dv2 und F) pro [Abonnement](https://azure.microsoft.com/pricing/) |20<sup>1</sup> pro Region Wenden Sie sich an den Support, um diesen Grenzwert heraufzusetzen. |
+| [Verfügbarkeitsgruppen](../articles/virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) pro Abonnement |2\.500 pro Region |
 | Virtuelle Computer pro Verfügbarkeitsgruppe | 200 |
-| Zertifikate pro Abonnement |Unbegrenzt<sup>1</sup> |
+| Zertifikate pro Verfügbarkeitsgruppe | 199<sup>2</sup> |
+| Zertifikate pro Abonnement |Unbegrenzt<sup>3</sup> |
 
-<sup>1</sup> Beim Azure-Ressourcen-Manager werden Zertifikate im Azure-Schlüsseltresor gespeichert. Die Anzahl der Zertifikate für ein Abonnement ist unbegrenzt. Es besteht ein Grenzwert von 1 MB an Zertifikaten pro Bereitstellung, die entweder aus einer einzelnen VM oder einer Verfügbarkeitsgruppe besteht.
+<sup>1</sup> Standardgrenzwerte variieren nach angebotenem Kategorietyp, z. B. kostenlose Testversion oder nutzungsbasierte Bezahlung, und nach Serie, z. B. Dv2, F und G. Der Standardgrenzwert für Enterprise Agreement-Abonnements ist beispielsweise 350.
 
+<sup>2</sup> Eigenschaften wie öffentliche SSH-Schlüssel werden ebenfalls als Zertifikate gepusht und zur Ermittlung des Grenzwerts gezählt. Verwenden Sie zum Umgehen dieses Grenzwerts die [Azure Key Vault-Erweiterung für Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows) oder die [Azure Key Vault-Erweiterung für Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux), um Zertifikate zu installieren.
+
+<sup>3</sup> Beim Azure Resource Manager werden Zertifikate unter Azure Key Vault gespeichert. Die Anzahl der Zertifikate für ein Abonnement ist unbegrenzt. Es besteht ein Grenzwert von 1 MB an Zertifikaten pro Bereitstellung, die entweder aus einer einzelnen VM oder einer Verfügbarkeitsgruppe besteht.
+
+
+
+> [!NOTE]
+> Für VM-Kerne gilt ein regionaler Gesamtgrenzwert. Außerdem gilt ein Grenzwert für die regionaler Serien pro Größe wie Dv2 und F. Diese Grenzwerte werden separat erzwungen. Angenommen, Sie verwenden ein Abonnement mit einem Kerngesamtgrenzwert von 30 für VMs in der Region „USA, Osten“, einem Kerngrenzwert von 30 für die A-Serie und einem Kerngrenzwert von 30 für die D-Serie. Für dieses Abonnement dürfen dann 30 virtuelle A1-Computer bzw. 30 virtuelle D1-Computer bereitgestellt werden – oder eine Kombination daraus, bei der die Gesamtanzahl von 30 Kernen nicht überschritten wird. Ein Beispiel wäre eine Kombination aus 10 A1-VMs und 20 D1-VMs.  
+> <!-- -->
+>

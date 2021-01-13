@@ -1,20 +1,20 @@
 ---
-title: Kommunizieren mit einer Geräteanwendung in C über Azure IoT Hub-Gerätestreams (Vorschauversion) | Microsoft-Dokumentation
+title: Kommunizieren mit einer Geräte-App in C über Azure IoT Hub-Gerätestreams
 description: In diesem Schnellstart führen Sie eine geräteseitige C-Anwendung aus, die über einen Gerätestream mit einem IoT-Gerät kommuniziert.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: a5c4ffde886735e096c4c4a96a648c997d1e7dec
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: de310846ad0449a0dac7eccd60d82d4c68ef519b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050167"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832205"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Schnellstart: Kommunizieren mit einer Geräteanwendung in C über IoT Hub-Gerätestreams (Vorschauversion)
 
@@ -36,9 +36,7 @@ Die geräteseitige C-Anwendung in dieser Schnellstartanleitung hat folgende Funk
 
 Der Code veranschaulicht den Initiierungsprozess eines Gerätestreams sowie das Verwenden dieses Streams zum Senden und Empfangen von Daten.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,17 +46,16 @@ Die folgenden Voraussetzungen müssen erfüllt sein:
 
 * Installieren Sie die aktuelle Version von [Git](https://git-scm.com/download/).
 
-* Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-   ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
-   ```
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 Die Vorschau der Gerätestreams wird derzeit nur für IoT-Hubs unterstützt, die in folgenden Regionen erstellt werden:
 
-* USA (Mitte)
-
-* USA, Mitte (EUAP)
+  * USA (Mitte)
+  * USA, Mitte (EUAP)
+  * Nordeuropa
+  * Asien, Südosten
 
 ## <a name="prepare-the-development-environment"></a>Vorbereiten der Entwicklungsumgebung
 
@@ -69,18 +66,19 @@ Für diesen Schnellstart verwenden Sie das [Azure IoT-Geräte-SDK für C](iot-hu
 
 1. Installieren Sie das [CMake-Buildsystem](https://cmake.org/download/), wie auf der Downloadseite beschrieben.
 
-1. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie den folgenden Befehl zum Klonen des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus:
+1. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie die folgenden Befehle zum Klonen des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus:
 
-    ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
+    ```cmd/sh
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Dieser Vorgang dauert einige Minuten.
 
-1. Erstellen Sie wie im folgenden Befehl gezeigt ein *cmake*-Verzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie dann zu diesem Ordner:
+1. Erstellen Sie ein *cmake*-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. Führen Sie die folgenden Befehle aus dem Verzeichnis *azure-iot-sdk-c* aus:
 
-    ```cmd
-    cd azure-iot-sdk-c
+    ```cmd/sh
     mkdir cmake
     cd cmake
     ```
@@ -110,34 +108,34 @@ Für diesen Schnellstart verwenden Sie das [Azure IoT-Geräte-SDK für C](iot-hu
       cmake --build . -- /m /p:Configuration=Release
       ```
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Registrieren eines Geräts
 
-Sie müssen ein Gerät bei Ihrem IoT-Hub registrieren, damit eine Verbindung hergestellt werden kann. In diesem Abschnitt verwenden Sie Azure Cloud Shell mit der [IoT-Erweiterung](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest), um ein simuliertes Gerät zu registrieren.
+Sie müssen ein Gerät bei Ihrem IoT-Hub registrieren, damit eine Verbindung hergestellt werden kann. In diesem Abschnitt verwenden Sie Azure Cloud Shell mit der [IoT-Erweiterung](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest), um ein simuliertes Gerät zu registrieren.
 
 1. Führen Sie in Cloud Shell den folgenden Befehl aus, um die Geräteidentität zu erstellen:
 
    > [!NOTE]
-   > * Ersetzen Sie den Platzhalter *YourIoTHubName* durch den Namen, den Sie für Ihren IoT-Hub wählen.
-   > * Verwenden Sie *MyDevice* wie gezeigt. Der für das registrierte Gerät angegebene Name. Wenn Sie für Ihr Gerät einen anderen Namen auswählen, verwenden Sie diesen im gesamten Artikel, und aktualisieren Sie den Gerätenamen in den Beispielanwendungen, bevor Sie sie ausführen.
+   > * Ersetzen Sie den Platzhalter *YourIoTHubName* durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
+   > * Verwenden Sie für den Namen des Geräts, das Sie registrieren, am besten *MyDevice*, wie bereits gezeigt. Wenn Sie für Ihr Gerät einen anderen Namen auswählen, verwenden Sie diesen im gesamten Artikel, und aktualisieren Sie den Gerätenamen in den Beispielanwendungen, bevor Sie sie ausführen.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. Führen Sie den folgenden Befehl in Cloud Shell aus, um die *Geräteverbindungszeichenfolge* für das soeben registrierte Gerät abzurufen:
 
    > [!NOTE]
-   > Ersetzen Sie den Platzhalter *YourIoTHubName* durch den Namen, den Sie für Ihren IoT-Hub wählen.
+   > Ersetzen Sie den Platzhalter *YourIoTHubName* durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    Notieren Sie sich die Geräteverbindungszeichenfolge zur späteren Verwendung in dieser Schnellstartanleitung. Dies sieht in etwa wie im folgenden Beispiel aus:
+    Notieren Sie sich die zurückgegebene Verbindungszeichenfolge des Geräts zur späteren Verwendung in dieser Schnellstartanleitung. Dies sieht in etwa wie im folgenden Beispiel aus:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -149,14 +147,14 @@ In diesem Abschnitt führen Sie die geräteseitige Anwendung und die dienstseiti
 
 Gehen Sie zum Ausführen der geräteseitigen Anwendung folgendermaßen vor:
 
-1. Geben Sie Ihre Geräteanmeldeinformationen an, indem Sie die Quelldatei *iothub_client_c2d_streaming_sample.c* im Ordner *iothub_client/samples/iothub_client_c2d_streaming_sample* bearbeiten und dann die Geräteverbindungszeichenfolge angeben.
+1. Geben Sie Ihre Geräteanmeldeinformationen an, indem Sie die Quelldatei **iothub_client_c2d_streaming_sample.c** im Ordner `iothub_client/samples/iothub_client_c2d_streaming_sample` bearbeiten und Ihre Geräteverbindungszeichenfolge angeben.
 
    ```C
    /* Paste in your iothub connection string  */
-   static const char* connectionString = "[device connection string]";
+   static const char* connectionString = "{DeviceConnectionString}";
    ```
 
-1. Kompilieren Sie den Code:
+1. Kompilieren Sie den Code mit den folgenden Befehlen aus:
 
    ```bash
    # In Linux
@@ -186,7 +184,7 @@ Gehen Sie zum Ausführen der geräteseitigen Anwendung folgendermaßen vor:
 
 ### <a name="run-the-service-side-application"></a>Ausführen der dienstseitigen Anwendung
 
-Wie bereits erwähnt, unterstützt das IoT Hub C SDK nur geräteseitige Gerätestreams. Wenn Sie die dienstseitige Anwendung erstellen und ausführen möchten, befolgen Sie die Anweisungen in den folgenden Schnellstartanleitungen:
+Wie bereits erwähnt, unterstützt das IoT Hub C SDK nur geräteseitige Gerätestreams. Wenn Sie die zugehörige dienstseitige Anwendung erstellen und ausführen möchten, befolgen Sie die Anweisungen in den folgenden Schnellstartanleitungen:
 
 * [Kommunizieren mit einer Geräte-App in C# über IoT Hub-Gerätestreams](./quickstart-device-streams-echo-csharp.md)
 
@@ -203,4 +201,4 @@ In dieser Schnellstartanleitung haben Sie einen IoT-Hub eingerichtet, ein Gerät
 Weitere Informationen zu Gerätestreams finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [IoT Hub-Gerätestreams (Vorschau)](./iot-hub-device-streams-overview.md)
+> [Übersicht über Gerätestreams](./iot-hub-device-streams-overview.md)

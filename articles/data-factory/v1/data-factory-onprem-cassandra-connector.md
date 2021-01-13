@@ -1,27 +1,26 @@
 ---
-title: Verschieben von Daten aus Cassandra mit Data Factory | Microsoft Docs
+title: Verschieben von Daten aus Cassandra mit Data Factory
 description: Enthält Informationen zum Verschieben von Daten aus einer lokalen Cassandra-Datenbank mit Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 085cc312-42ca-4f43-aa35-535b35a102d5
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5b098aaf2df5e04983aa53563d5e0203f3287b42
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 0f96680f1ea91434c84d6606e3637c68c1cb5a84
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839943"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019632"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Verschieben von Daten aus einer lokalen Cassandra-Datenbank mit Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-onprem-cassandra-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-cassandra.md)
 
@@ -48,7 +47,7 @@ Beim Installieren des Gateways wird automatisch ein Microsoft Cassandra-ODBC-Tre
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen Teradata-Datenspeicher verschiebt.
 
-- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 - Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
@@ -70,13 +69,13 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die speziell 
 | host |Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/><br/>Geben Sie eine durch Trennzeichen getrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. |Ja |
 | port |Der TCP-Port, den der Cassandra-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein, Standardwert: 9042 |
 | authenticationType |Basic (Standard) oder Anonymous (Anonym) |Ja |
-| userName |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
+| username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
 | gatewayName |Der Name des Gateways, das zum Herstellen der Verbindung mit der lokalen Cassandra-Datenbank verwendet wird. |Ja |
 | encryptedCredential |Anmeldeinformationen, die vom Gateway verschlüsselt werden. |Nein |
 
 >[!NOTE]
->Verbindungen mit Cassandra über SSL werden derzeit nicht unterstützt.
+>Verbindungen mit Cassandra über TLS werden derzeit nicht unterstützt.
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
@@ -93,11 +92,11 @@ Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Akt
 
 Eigenschaften im Abschnitt typeProperties der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
 
-Bei einer Quelle des Typs **SqlDWSource**sind im Abschnitt „typeProperties“ folgende Eigenschaften verfügbar:
+Bei einer Quelle des Typs **SqlDWSource** sind im Abschnitt „typeProperties“ folgende Eigenschaften verfügbar:
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-92-Abfrage oder CQL-Abfrage. Weitere Informationen finden Sie in der [Referenz zu CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Geben Sie beim Verwenden der SQL-Abfrage **keyspace name.table name** für die Tabelle an, die Sie abfragen möchten. |Nein (wenn tableName und keyspace im Dataset definiert sind) |
+| Abfrage |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-92-Abfrage oder CQL-Abfrage. Weitere Informationen finden Sie in der [Referenz zu CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Geben Sie beim Verwenden der SQL-Abfrage **keyspace name.table name** für die Tabelle an, die Sie abfragen möchten. |Nein (wenn tableName und keyspace im Dataset definiert sind) |
 | consistencyLevel |Mit der Konsistenzebene (consistencyLevel) wird angegeben, wie viele Replikate auf eine Leseanforderung reagieren müssen, bevor Daten an die Clientanwendung zurückgegeben werden. Cassandra überprüft die angegebene Anzahl von Replikaten auf Daten, um die Leseanforderung zu erfüllen. |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Ausführliche Informationen finden Sie unter [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) (Konfigurieren der Datenkonsistenz). |Nein. Der Standardwert ist ONE. |
 
 ## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus Cassandra in ein Azure-Blob
@@ -263,16 +262,16 @@ Unter [RelationalSource-Typeigenschaften](#copy-activity-properties) finden Sie 
 | Cassandra-Typ | .NET-basierter Typ |
 | --- | --- |
 | ASCII |String |
-| BIGINT |Int64 |
+| bigint |Int64 |
 | BLOB |Byte[] |
-| Boolean |Boolean |
-| Decimal |Decimal |
+| BOOLEAN |Boolean |
+| DECIMAL |Decimal |
 | Double |Double |
-| FLOAT |Single |
+| GLEITKOMMAZAHL |Single |
 | INET |String |
 | INT |Int32 |
 | TEXT |String |
-| TIMESTAMP |DateTime |
+| timestamp |Datetime |
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |String |
@@ -300,7 +299,7 @@ Sie können den [Kopier-Assistenten](data-factory-data-movement-activities.md#cr
 ### <a name="example"></a>Beispiel
 Die folgende Beispieltabelle „ExampleTable“ ist beispielsweise eine Cassandra-Datenbanktabelle, die eine Spalte mit dem Namen „pk_int“ für ganzzahlige Primärschlüssel, eine Textspalte mit dem Namen „value“ und die Spalten „list“, „map“ und „set“ („StringSet“) enthält.
 
-| pk_int | Wert | Auflisten | Map | StringSet |
+| pk_int | Wert | List | Karte | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |"sample value 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"sample value 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
@@ -316,7 +315,7 @@ Die erste virtuelle Tabelle ist die unten dargestellte Basistabelle mit dem Name
 
 Die folgenden Tabellen enthalten die virtuellen Tabellen, in denen die Daten aus den Spalten „List“, „Map“ und „StringSet“ erneut normalisiert werden. Die Spalten mit Namen, die auf „_index“ oder „_key“ enden, geben die Position der Daten in der Originalliste (list) bzw. -zuordnung (map) an. Die Spalten mit Namen, die auf „_value“ enden, enthalten die erweiterten Daten aus der Sammlung.
 
-#### <a name="table-exampletablevtlist"></a>Tabelle „ExampleTable_vt_List“:
+#### <a name="table-exampletable_vt_list"></a>Tabelle „ExampleTable_vt_List“:
 | pk_int | List_index | List_value |
 | --- | --- | --- |
 | 1 |0 |1 |
@@ -327,20 +326,20 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, in denen die Daten aus
 | 3 |2 |102 |
 | 3 |3 |103 |
 
-#### <a name="table-exampletablevtmap"></a>Tabelle „ExampleTable_vt_Map“:
+#### <a name="table-exampletable_vt_map"></a>Tabelle „ExampleTable_vt_Map“:
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
-| 1 |S1 |Eine |
+| 1 |S1 |Ein |
 | 1 |S2 |b |
 | 3 |S1 |t |
 
-#### <a name="table-exampletablevtstringset"></a>Tabelle „ExampleTable_vt_StringSet“:
+#### <a name="table-exampletable_vt_stringset"></a>Tabelle „ExampleTable_vt_StringSet“:
 | pk_int | StringSet_value |
 | --- | --- |
-| 1 |Eine Datei |
-| 1 |b |
+| 1 |Ein |
+| 1 |B |
 | 1 |C |
-| 3 |Eine Datei |
+| 3 |Ein |
 | 3 |E |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten

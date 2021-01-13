@@ -1,28 +1,22 @@
 ---
-title: Azure-Messagingvergleich – Event Grid, Event Hubs, Service Bus
+title: 'Auswahl von Azure-Messagingdiensten: Event Grid, Event Hubs und Service Bus'
 description: 'Enthält eine Beschreibung der drei Azure-Messagingdienste: Azure Event Grid, Event Hubs und Service Bus. Hier erfahren Sie, welcher Dienst für welche Szenarien zu empfehlen ist.'
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: overview
-ms.date: 01/30/2019
-ms.author: spelluru
-ms.custom: seodec18
-ms.openlocfilehash: d2daa23a22fae6ba420a146599c0c0ba659a94f2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 07/07/2020
+ms.openlocfilehash: 7a3a0cd7f63a67206053ae55f33bd71aee2c19c6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540804"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "87460404"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Auswahl von Azure-Messagingdiensten: Event Grid, Event Hubs und Service Bus
 
 Azure bietet drei Dienste, die Sie bei der Übermittlung von Ereignisnachrichten innerhalb einer Lösung unterstützen. Folgende Dienste stehen zur Verfügung:
 
-* [Event Grid](/azure/event-grid/)
-* [Event Hubs](/azure/event-hubs/)
-* [Service Bus](/azure/service-bus-messaging/)
+* [Event Grid](./index.yml)
+* [Event Hubs](../event-hubs/index.yml)
+* [Service Bus](../service-bus-messaging/index.yml)
 
 Trotz einiger Gemeinsamkeiten ist jeder dieser Dienste für bestimmte Szenarien konzipiert. Dieser Artikel beschreibt die Unterschiede zwischen den Diensten und unterstützt Sie bei der Wahl eines passenden Diensts für Ihre Anwendung. In vielen Fällen ergänzen sich die Messagingdienste gegenseitig und können zusammen verwendet werden.
 
@@ -38,17 +32,17 @@ Eigenständige Ereignisse geben Statusänderungen an und erfordern Aktionen. Um 
 
 Reihenereignisse geben eine Bedingung an und können analysiert werden. Die Ereignisse sind nach Zeit sortiert und voneinander abhängig. Der Consumer benötigt die sortierte Reihe von Ereignissen, um zu analysieren, was passiert ist.
 
-### <a name="message"></a>Message
+### <a name="message"></a>`Message`
 
 Bei einer Nachricht handelt es sich um Rohdaten, die von einem Dienst erzeugt wurden und für die Nutzung oder Speicherung an anderer Stelle vorgesehen sind. Die Nachricht enthält die Daten, die die Nachrichtenpipeline ausgelöst haben. Der Verleger der Nachricht hat eine Erwartung dazu, wie der Consumer die Nachricht verarbeitet. Ein Vertrag besteht zwischen den beiden Seiten. Beispiel: Der Verleger sendet eine Nachricht mit den Rohdaten und erwartet, dass der Consumer eine Datei aus den Daten erstellt und eine Antwort sendet, wenn die Arbeit abgeschlossen ist.
 
 ## <a name="comparison-of-services"></a>Vergleich von Diensten
 
-| Dienst | Zweck | Type | Einsatzgebiete |
+| Dienst | Zweck | type | Verwendung |
 | ------- | ------- | ---- | ----------- |
 | Event Grid | Reaktive Programmierung | Ereignisverteilung (eigenständig) | Reagieren auf Statusänderungen |
 | Event Hubs | Big Data-Pipeline | Ereignisstreaming (Reihe) | Streamen von Telemetriedaten und verteilten Daten |
-| Service Bus | Hochwertiges Unternehmensmessaging | Message | Auftragsverarbeitung und Finanztransaktionen |
+| Service Bus | Hochwertiges Unternehmensmessaging | `Message` | Auftragsverarbeitung und Finanztransaktionen |
 
 ### <a name="event-grid"></a>Event Grid
 
@@ -97,8 +91,8 @@ In anderen Fällen können die Dienste zu einer Ereignis- und Datenpipeline verk
 ![Übersicht über das Streamen von Daten](./media/compare-messaging-services/overview.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln: 
-
+Weitere Informationen finden Sie in folgenden Artikeln: 
+- [Asynchrone Messagingoptionen in Azure](/azure/architecture/guide/technology-choices/messaging)
 - [Events, Data Points, and Messages - Choosing the right Azure messaging service for your data](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/) Ereignisse, Datenpunkte und Nachrichten: Der passende Azure-Messagingdienst für Ihre Daten)
 - [Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - Informationen zu den ersten Schritten mit Event Grid finden Sie unter [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure CLI und Event Grid](custom-event-quickstart.md).

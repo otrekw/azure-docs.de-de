@@ -1,24 +1,26 @@
 ---
 title: Reaktion auf Azure Media Services-Ereignisse | Microsoft-Dokumentation
-description: Verwenden Sie Azure Event Grid, um Media Services-Ereignisse zu abonnieren.
+description: In diesem Artikel wird das Abonnieren von Media Services-Ereignissen mithilfe von Azure Event Grid erläutert.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 08/08/2019
-ms.author: juliako
-ms.openlocfilehash: d8cb8fdebb5a7e4bcbc9f979c98085e90ebd4c68
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 4ef6a920e9334c6e98b18d1db1abf39136c6f4e2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147158"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89289153"
 ---
 # <a name="handling-event-grid-events"></a>Behandeln von Event Grid-Ereignissen
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Media Services-Ereignisse ermöglichen es Anwendungen, mithilfe moderner serverloser Architekturen auf verschiedene Ereignisse zu reagieren (z.B. auf Statusänderungsereignisse für Aufträge). Dies geschieht ohne komplizierten Code oder teure und ineffiziente Abrufdienste. Stattdessen werden die Ereignisse per Push über [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) an Ereignishandler wie [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) oder sogar Ihren eigenen Webhook übertragen, und Sie zahlen nur für das, was Sie tatsächlich nutzen. Informationen zu den Preisen finden Sie unter [Event Grid – Preise](https://azure.microsoft.com/pricing/details/event-grid/).
 
@@ -40,7 +42,7 @@ Anwendungen, die Media Services-Ereignisse behandeln, sollten einige empfohlene 
 * Verwenden Sie Präfix- und Suffixübereinstimmungen für „subject“, um Ereignisse auf ein bestimmtes Ereignis zu beschränken.
 
 > [!NOTE]
-> Ereignisse unterliegen der [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) von Event Grid. Wenn Sie Ereignisbenachrichtigungen mithilfe von APIs erhalten möchten, finden Sie weitere Informationen in den Beispielen zum Verarbeiten von Ereignissen mit dem [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/ContentProtection/BasicAESClearKey) oder [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/ContentProtection/BasicAESClearKey).
+> Ereignisse unterliegen der [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) von Event Grid. Wenn Sie Ereignisbenachrichtigungen mithilfe von APIs erhalten möchten, finden Sie weitere Informationen in den Beispielen zum Verarbeiten von Ereignissen mit dem [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) oder [Java SDK](https://github.com/Azure-Samples/media-services-v3-java).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,18 +1,19 @@
 ---
-title: Importieren und Exportieren einer Domänenzonendatei in Azure DNS mit der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+title: Importieren und Exportieren einer Domänenzonendatei – Azure CLI
+titleSuffix: Azure DNS
 description: Informationen zum Importieren und Exportieren einer DNS-Zonendatei in Azure DNS mithilfe der Azure-CLI
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
-ms.date: 4/3/2019
-ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: b65b70e7a994d7d49b2282d7e193fe6e7b84cfca
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 7/30/2020
+ms.author: rohink
+ms.topic: how-to
+ms.openlocfilehash: e2b998432f6c4417da0242d86347ed43acb5071a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612771"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968229"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importieren und Exportieren einer DNS-Zonendatei mit der Azure-Befehlszeilenschnittstelle
 
@@ -32,7 +33,7 @@ Bevor Sie eine DNS-Zonendatei in Azure DNS importieren, müssen Sie eine Kopie d
 
 * Wenn Ihre DNS-Zone von einem Partnerdienst (z. B. einer Domänenregistrierungsstelle, einem dedizierten DNS-Hostinganbieter oder anderen Cloudanbieter) gehostet wird, sollte der Dienst die Möglichkeit zum Herunterladen der DNS-Zonendatei bieten.
 * Falls Ihre DNS-Zone unter einem Windows-DNS gehostet wird, lautet der Standardordner für die Zonendateien **%systemroot%\system32\dns**. Der vollständige Pfad zu jeder Zonendatei wird auch in der DNS-Konsole auf der Registerkarte **Allgemein** angezeigt.
-* Wenn Ihre DNS-Zone mithilfe von BIND gehostet wird, wird der Speicherort der Zonendatei für jede Zone in der BIND-Konfigurationsdatei **named.conf**angegeben.
+* Wenn Ihre DNS-Zone mithilfe von BIND gehostet wird, wird der Speicherort der Zonendatei für jede Zone in der BIND-Konfigurationsdatei **named.conf** angegeben.
 
 ## <a name="import-a-dns-zone-file-into-azure-dns"></a>Importieren einer DNS-Zonendatei in Azure DNS
 
@@ -81,7 +82,7 @@ So importieren Sie eine Zonendatei für die Zone **contoso.com**
 1. Falls noch nicht vorhanden, müssen Sie eine Ressourcen-Manager-Ressourcengruppe erstellen.
 
     ```azurecli
-    az group create --group myresourcegroup -l westeurope
+    az group create --resource-group myresourcegroup -l westeurope
     ```
 
 2. Um die Zone **contoso.com** aus der Datei **contoso.com.txt** in eine neue DNS-Zone in der Ressourcengruppe **myresourcegroup** zu importieren, führen Sie den Befehl `az network dns zone import` aus.<BR>Mit diesem Befehl wird die Zonendatei geladen und analysiert. Der Befehl führt eine Reihe von Befehlen für den Azure DNS-Dienst aus, um die Zone und alle Ressourceneintragssätze in der Zone zu erstellen. Außerdem werden mit dem Befehl im Konsolenfenster der Status sowie Fehler und Warnungen angegeben. Da Ressourceneintragssätze in Reihe erstellt werden, dauert der Import einer großen Zonendatei einige Minuten.
@@ -172,12 +173,12 @@ Sie müssen sich – wie beim Zonenimport – zunächst anmelden, Ihr Abonnement
 
 Um die vorhandene Azure-DNS-Zone **contoso.com** in die Ressourcengruppe **myresourcegroup** in der Datei **contoso.com.txt** (im aktuellen Ordner) zu exportieren, führen Sie `azure network dns zone export` aus. Mit diesem Befehl wird der Azure DNS-Dienst aufgefordert, die Ressourceneintragssätze in der Zone aufzuzählen und die Ergebnisse in eine mit BIND kompatible Zonendatei zu exportieren.
 
-```
+```azurecli
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie [Ressourceneintragssätze und Einträge in Ihrer DNS-Zone verwalten](dns-getstarted-create-recordset-cli.md).
+* Erfahren Sie, wie Sie [Ressourceneintragssätze und Einträge in Ihrer DNS-Zone verwalten](./dns-getstarted-cli.md).
 
 * Erfahren Sie, wie Sie [Ihre Domäne an Azure DNS delegieren](dns-domain-delegation.md).

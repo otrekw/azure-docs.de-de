@@ -1,25 +1,17 @@
 ---
-title: Versionsanmerkungen zu Update 1.0 für StorSimple Virtual Array | Microsoft-Dokumentation
+title: Versionsanmerkungen zu Update 1.0 für StorSimple Virtual Array
 description: Beschreibt wichtige offene Probleme und Lösungen für StorSimple Virtual Array mit Update 1.0.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: fdf37a8360ec69017458fabee2a9e16aa2c160aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ec88e4e97d45b27c0226198491b3adec6448496
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789670"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000894"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>Versionsanmerkungen zu Update 1.0 für StorSimple Virtual Array
 
@@ -55,7 +47,7 @@ Update 1.0 entspricht der Softwareversion **10.0.10296.0**.
 
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser Version behoben wurden:
 
-| Nein. | Feature | Problem |
+| Nein. | Funktion | Problem |
 | --- | --- | --- |
 | 1 |AAD-basierte Authentifizierung| Diese Version enthält Änderungen, die die AAD-Authentifizierung beim StorSimple-Geräte-Manager ermöglichen.|
 | 2 |Garbage Collection| Dieses Problem trat an einem Kundenstandort auf, bei dem sich die Geräte- und Speicherkonten in unterschiedlichen Regionen befinden. Der Kunde hat von vorübergehenden Netzwerkfehlern und einer dadurch bedingten Beeinträchtigung der Abrechnung berichtet. Das Problem wurde in dieser Version behoben. |
@@ -66,7 +58,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser V
 
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme für StorSimple Virtual Array sowie die Probleme aus früheren Versionsinformationen.
 
-| Nein. | Feature | Problem | Problemumgehung/Kommentare |
+| Nein. | Funktion | Problem | Problemumgehung/Kommentare |
 | --- | --- | --- | --- |
 | **1.** |Aktualisierungen |In der Vorschauversion erstellte virtuelle Arrays können nicht auf eine unterstützte allgemein verfügbare Version werden. |Für diese virtuellen Arrays muss mithilfe eines Notfallwiederherstellungsworkflows ein Failover für die allgemein verfügbare Version ausgeführt werden. |
 | **2.** |Bereitgestellter Datenträger |Nachdem Sie einen Datenträger mit einer bestimmten angegebenen Größe bereitgestellt und das entsprechende StorSimple Virtual Array erstellt haben, darf der Datenträger nicht erweitert oder verkleinert werden. Ein entsprechender Versuch führt zum Verlust aller Daten auf den lokalen Ebenen des Geräts. | |
@@ -84,18 +76,18 @@ Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme für S
 | **14.** |Dateiserver |Wenn einer Datei in einem Ordner ein alternativer Datenstrom (Alternate Data Stream, ADS) zugeordnet ist, wird dieser nicht gesichert oder mittels Notfallwiederherstellung, Klonen oder Wiederherstellung auf Elementebene wiederhergestellt. | |
 | **15.** |Dateiserver |Symbolische Verknüpfungen werden nicht unterstützt. | |
 | **16.** |Dateiserver |Mit dem verschlüsselnden Dateisystem von Windows (Encrypting File System, EFS) verschlüsselte Dateien bewirken beim Kopieren auf den oder Speichern auf dem StorSimple Virtual Array-Dateiserver eine nicht unterstützte Konfiguration.  | |
-| **17.** |Aktualisierungen |Der Fehlercode 2359302 (hex. 0x240006) beim Installieren eines Hotfixes über die lokale Benutzeroberfläche gibt an, dass der Hotfix bereits auf dem Gerät installiert ist.   | |
+| **17.** |Aktualisierungen |Wenn beim Installieren eines Hotfixes über die lokale Benutzeroberfläche der Fehlercode 2359302 (hex. 0x240006) angezeigt wird, zeigt dies an, dass der Hotfix bereits auf dem Gerät installiert ist.   | |
 | **18.** |Aktualisierungen |Wenn Sie Update 1 über die lokale Weboberfläche auf Ihrem virtuellen Array installieren möchten, vergewissern Sie sich, dass Update 0.6 ausgeführt wird. Andernfalls müssen Sie zuerst Update 0.6 installieren, um Update 1 anwenden zu können. Wenn Sie eine Version vor Update 0.6 verwenden und direkt Update 1.0 installieren, stehen einige Updates nicht zur Verfügung, und die Überwachungsdiagramme funktionieren nicht.   | |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Installieren Sie Update 1.0](storsimple-virtual-array-install-update-1.md) für Ihr StorSimple Virtual Array.
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 Suchen Sie nach älteren Versionsanmerkungen? Wechseln Sie zu:
 *  [Versionsanmerkungen zu Update 0.6 für StorSimple Virtual Array](storsimple-virtual-array-update-06-release-notes.md)
 * [Versionsanmerkungen zu Update 0.5 für StorSimple Virtual Array](storsimple-virtual-array-update-05-release-notes.md)
 * [Versionsanmerkungen zu Update 0.4 für StorSimple Virtual Array](storsimple-virtual-array-update-04-release-notes.md)
 * [Versionsanmerkungen zu Update 0.3 für StorSimple Virtual Array](storsimple-ova-update-03-release-notes.md)
 * [Versionsanmerkungen zu Update 0.1 und Update 0.2 für das StorSimple Virtual Array](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Virtual Array – Version mit allgemeiner Verfügbarkeit – Versionsanmerkungen](storsimple-ova-pp-release-notes.md)
+* [StorSimple Virtual Array – Version mit allgemeiner Verfügbarkeit – Versionsanmerkungen](./storsimple-virtual-array-update-06-release-notes.md)

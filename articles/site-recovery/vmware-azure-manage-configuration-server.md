@@ -1,36 +1,39 @@
 ---
-title: Verwalten des Konfigurationsservers für die Notfallwiederherstellung von VMware und physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie einen vorhandenen Konfigurationsserver für die Notfallwiederherstellung von VMware-VMs und physischen Servern in Azure mit Azure Site Recovery verwalten.
+title: Verwalten des Konfigurationsservers für die Notfallwiederherstellung mit Azure Site Recovery
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 66022b5e4885c515bd6117f9a44b8108ff84ae5c
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 2f1edc14efdeaf70bf4c2acc0e31e1517753ed3e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250098"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546346"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern
+# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern/physischen Servern
 
 Sie richten einen lokalen Konfigurationsserver ein, wenn Sie [Azure Site Recovery](site-recovery-overview.md) für die Notfallwiederherstellung von VMware-VMs und physischen Servern in Azure verwenden. Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen VMware-Umgebung und Azure und verwaltet die Datenreplikation. In diesem Artikel werden häufige Aufgaben zur Verwaltung des Konfigurationsservers nach dessen Bereitstellung zusammengefasst.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+## <a name="update-windows-license"></a>Aktualisieren der Windows-Lizenz
+
+Bei der mit der OVF-Vorlage bereitgestellten Lizenz handelt es sich um eine Evaluierungslizenz mit einer Gültigkeit von 180 Tagen. Zur unterbrechungsfreien Nutzung müssen Sie Windows mit einer käuflich erworbenen Lizenz aktivieren. Das Lizenzupdate kann über einen eigenständigen Schlüssel oder einen KMS-Standardschlüssel durchgeführt werden. Anleitungen finden Sie unter [Windows Edition-Dienst-und-Wartung-Befehlszeilenoptionen](/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options). Informationen zum Abrufen der Schlüssel finden Sie unter [KMS-Clientsetupschlüssel](/windows-server/get-started/kmsclientkeys).
+
 ## <a name="access-configuration-server"></a>Zugreifen auf den Konfigurationsserver
 
 Sie können wie folgt auf den Konfigurationsserver zugreifen:
 
 * Melden Sie sich bei dem virtuellen Computer an, auf dem er bereitgestellt wird, und starten Sie den **Azure Site Recovery Configuration Manager** über die Desktopverknüpfung.
-* Alternativ können Sie remote über „https://*Name des Konfigurationsservers*/:44315/“ auf den Konfigurationsserver zugreifen. Melden Sie sich mit Administratoranmeldeinformationen an.
+* Alternativ können Sie remote über „https:// *Konfigurationsservername* /:44315/“ auf den Konfigurationsserver zugreifen. Melden Sie sich mit Administratoranmeldeinformationen an.
 
 ## <a name="modify-vmware-server-settings"></a>Ändern von VMware-Servereinstellungen
 
-1. Klicken Sie nach dem [Anmelden](#access-configuration-server) auf **vCenter-Server/vSphere ESXi-Server hinzufügen**, um dem Konfigurationsserver einen anderen VMware-Server zuzuordnen.
+1. Klicken Sie nach dem [Anmelden](#access-configuration-server) auf **vCenter-Server/vSphere ESXi-Server hinzufügen** , um dem Konfigurationsserver einen anderen VMware-Server zuzuordnen.
 2. Geben Sie die Eigenschaften ein, und wählen Sie dann **OK** aus.
 
 ## <a name="modify-credentials-for-automatic-discovery"></a>Ändern der Anmeldeinformationen für die automatische Ermittlung
@@ -68,20 +71,20 @@ Gehen Sie wie folgt vor, falls Sie im Rahmen der OVF-Bereitstellung des Konfigur
 
 1. Klicken Sie nach dem [Anmelden](#access-configuration-server) auf **VM-Anmeldeinformationen verwalten**.
 2. Klicken Sie auf **VM-Anmeldeinformationen hinzufügen**.
-    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![Screenshot: Der Bereich „VM-Anmeldeinformationen verwalten“ mit dem Link „VM-Anmeldeinformationen hinzufügen“.](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Geben Sie die neuen Anmeldeinformationen ein, und klicken Sie auf **Hinzufügen**.
 
 Anmeldeinformationen können auch über „CSPSConfigtool.exe“ hinzugefügt werden.
 
 1. Melden Sie sich beim Konfigurationsserver an, und starten Sie „CSPSConfigtool.exe“.
-2. Klicken Sie auf **Hinzufügen**, geben Sie die neuen Anmeldeinformationen ein, und klicken Sie anschließend auf **OK**.
+2. Klicken Sie auf **Hinzufügen** , geben Sie die neuen Anmeldeinformationen ein, und klicken Sie anschließend auf **OK**.
 
 ## <a name="modify-proxy-settings"></a>Ändern von Proxyeinstellungen
 
 Ändern Sie die Proxyeinstellungen, die vom Konfigurationsservercomputer für den Internetzugriff in Azure verwendet werden. Ändern Sie die Einstellungen auf beiden Computern, wenn Sie zusätzlich zum Standardprozessserver, der auf dem Konfigurationsservercomputer ausgeführt wird, über einen weiteren Prozessservercomputer verfügen.
 
 1. Klicken Sie nach der [Anmeldung](#access-configuration-server) beim Konfigurationsserver auf **Konnektivität verwalten**.
-2. Aktualisieren Sie die Proxywerte. Klicken Sie auf **Speichern**, um die Einstellungen zu aktualisieren.
+2. Aktualisieren Sie die Proxywerte. Klicken Sie auf **Speichern** , um die Einstellungen zu aktualisieren.
 
 ## <a name="add-a-network-adapter"></a>Hinzufügen eines Netzwerkadapters
 
@@ -90,6 +93,32 @@ Die OVF-Vorlage (Open Virtualization Format) stellt die Konfigurationsserver-VM 
 - Sie können [der VM einen zusätzlichen Adapter hinzufügen](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter), müssen diesen Schritt aber vor der Registrierung des Konfigurationsservers im Tresor durchführen.
 - Nach dem Registrieren des Konfigurationsservers im Tresor fügen Sie einen Adapter in den Eigenschaften des virtuellen Computers hinzu. Danach müssen Sie den Server [erneut im Tresor registrieren](#reregister-a-configuration-server-in-the-same-vault).
 
+## <a name="how-to-renew-ssl-certificates"></a>Erneuern von SSL-Zertifikaten
+
+Der Konfigurationsserver verfügt über einen integrierten Webserver, der die Aktivitäten der Mobilitäts-Agents auf allen geschützten Computern, der integrierten oder für horizontales Skalieren ausgelegten Prozessserver und der Masterzielserver orchestriert, die mit dem Konfigurationsserver verbunden sind. Der Webserver verwendet ein SSL-Zertifikat, um Clients zu authentifizieren. Das Zertifikat läuft nach drei Jahren ab und kann jederzeit erneuert werden.
+
+### <a name="check-expiry"></a>Überprüfen des Ablaufs
+
+Das Ablaufdatum wird unter **Integrität des Konfigurationsservers** angezeigt. Für Bereitstellungen von Konfigurationsservern vor dem Mai 2016 wurde die Zertifikatablaufzeit auf ein Jahr festgelegt. Wenn eines Ihrer Zertifikate demnächst abläuft, geschieht Folgendes:
+
+- Wenn das Ablaufdatum höchstens zwei Monate in der Zukunft liegt, sendet der Dienst Benachrichtigungen im Portal und per E-Mail (wenn Sie Site Recovery-Benachrichtigungen abonniert haben).
+- Auf der Ressourcenseite des Tresors wird ein Benachrichtigungsbanner angezeigt. Klicken Sie auf das Banner, um ausführlichere Informationen zu erhalten.
+- Wenn die Schaltfläche **Jetzt Upgrade durchführen** angezeigt wird, wurde für einige Komponenten in Ihrer Umgebung noch kein Upgrade auf 9.4.xxxx.x oder höhere Versionen durchgeführt. Aktualisieren Sie die Komponenten, bevor Sie das Zertifikat erneuern. Sie können bei älteren Versionen keine Erneuerung durchführen.
+
+### <a name="if-certificates-are-yet-to-expire"></a>Wenn die Zertifikate noch nicht abgelaufen sind
+
+1. Öffnen Sie zum Verlängern im Tresor die Option **Site Recovery-Infrastruktur** > **Konfigurationsserver**. Wählen Sie den erforderlichen Konfigurationsserver aus.
+2. Stellen Sie sicher, dass alle Komponenten von Prozessservern für horizontale Skalierung, Masterzielservern und Mobilitäts-Agents auf allen geschützten Computern über die neuesten Versionen verfügen und verbunden sind.
+3. Wählen Sie jetzt **Zertifikate erneuern** aus.
+4. Befolgen Sie sorgfältig die Anweisungen auf dieser Seite, und klicken Sie auf „OK“, um die Zertifikate auf dem ausgewählten Konfigurationsserver und den zugehörigen Komponenten zu erneuern.
+
+### <a name="if-certificates-have-already-expired"></a>Wenn die Zertifikate bereits abgelaufen sind
+
+1. Nach Ablauf des Zertifikats können Zertifikate **nicht mehr im Azure-Portal erneuert werden**. Stellen Sie vor dem Fortfahren sicher, dass alle Komponenten von Prozessservern für horizontale Skalierung, Masterzielservern und Mobilitäts-Agents auf allen geschützten Computern über die neuesten Versionen verfügen und verbunden sind.
+2. **Befolgen Sie dieses Verfahren nur, wenn die Zertifikate bereits abgelaufen sind.** Melden Sie sich beim Konfigurationsserver an, und navigieren Sie zu „C:/Programme/Site Recovery/Homepage/svsystems/bin“, und führen Sie das Tool „RenewCerts“ als Administrator aus.
+3. Ein PowerShell-Ausführungsfenster wird geöffnet, und die Erneuerung der Zertifikate wird ausgelöst. Der Vorgang kann bis zu 15 Minuten dauern. Schließen Sie das Fenster erst, wenn die Verlängerung abgeschlossen ist.
+
+:::image type="content" source="media/vmware-azure-manage-configuration-server/renew-certificates.png" alt-text="RenewCertificates":::
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>Erneutes Registrieren eines Konfigurationsservers im selben Tresor
 
@@ -97,10 +126,10 @@ Sie können den Konfigurationsserver bei Bedarf im selben Tresor erneut registri
 
 
 1. Öffnen Sie im Tresor **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**.
-2. Klicken Sie unter **Server** auf **Registrierungsschlüssel herunterladen**, um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
+2. Klicken Sie unter **Server** auf **Registrierungsschlüssel herunterladen** , um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
 3. Melden Sie sich auf dem Konfigurationsservercomputer an.
 4. Öffnen Sie in **%ProgramData%\ASR\home\svsystems\bin** die Datei **cspsconfigtool.exe**.
-5. Klicken Sie auf der Registerkarte **Tresorregistrierung** auf **Durchsuchen**, und suchen Sie die Datei mit den Anmeldeinformationen für den Tresor, die Sie heruntergeladen haben.
+5. Klicken Sie auf der Registerkarte **Tresorregistrierung** auf **Durchsuchen** , und suchen Sie die Datei mit den Anmeldeinformationen für den Tresor, die Sie heruntergeladen haben.
 6. Geben Sie bei Bedarf die Proxyserverdetails an. Klicken Sie anschließend auf **Registrieren**.
 7. Öffnen Sie als Administrator ein PowerShell-Eingabefenster, und führen Sie den folgenden Befehl aus:
    ```
@@ -109,7 +138,7 @@ Sie können den Konfigurationsserver bei Bedarf im selben Tresor erneut registri
    ```
 
     >[!NOTE]
-    >Um das **neueste Zertifikat** vom Konfigurationsserver auf den Prozessserver für die horizontale Skalierung zu pullen, führen Sie den folgenden Befehl aus: *„\<Installationslaufwerk\Microsoft Azure Site Recovery\agent\cdpcli.exe>“ --registermt*.
+    >Um das **neueste Zertifikat** vom Konfigurationsserver auf den Prozessserver für die horizontale Skalierung zu pullen, führen Sie den folgenden Befehl aus: *"\<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>"--registermt*.
 
 8. Starten Sie den OBEngine-Dienst neu, indem Sie den folgenden Befehl ausführen.
    ```
@@ -140,12 +169,12 @@ Sie führen Updaterollups aus, um den Konfigurationsserver zu aktualisieren. Upd
 - Wenn Sie Version 9.7, 9.8, 9.9 oder 9.10 ausführen, können Sie direkt auf 9.11 aktualisieren.
 - Falls Sie Version 9.6 oder eine ältere Version ausführen und auf 9.11 aktualisieren möchten, müssen Sie zuerst das Upgrade auf Version 9.7 durchführen, bevor das Upgrade auf 9.11 möglich ist.
 
-Ausführliche Informationen zum Supporthinweis für Azure Site Recovery-Komponenten finden Sie [hier](https://aka.ms/asr_support_statement).
-Links zu Updaterollups zum Aktualisieren aller Versionen des Konfigurationsservers finden Sie [hier](https://aka.ms/asr_update_rollups).
+Ausführliche Informationen zum Supporthinweis für Azure Site Recovery-Komponenten finden Sie [hier](./service-updates-how-to.md#support-statement-for-azure-site-recovery).
+Links zu Updaterollups zum Aktualisieren aller Versionen des Konfigurationsservers finden Sie [hier](./service-updates-how-to.md#links-to-currently-supported-update-rollups).
 
 > [!IMPORTANT]
 > Mit jeder neuen N-Version einer Azure Site Recovery-Komponente, die veröffentlicht wird, werden alle Versionen, die älter als „N-4“ sind, nicht mehr unterstützt. Es ist immer ratsam, auf die neueste verfügbare Version zu aktualisieren.</br>
-> Ausführliche Informationen zum Supporthinweis für Azure Site Recovery-Komponenten finden Sie [hier](https://aka.ms/asr_support_statement).
+> Ausführliche Informationen zum Supporthinweis für Azure Site Recovery-Komponenten finden Sie [hier](./service-updates-how-to.md#support-statement-for-azure-site-recovery).
 
 Aktualisieren Sie den Server wie folgt:
 
@@ -154,16 +183,16 @@ Aktualisieren Sie den Server wie folgt:
     ![Aktualisieren](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Laden Sie die Datei mit dem Update-Installer auf den Konfigurationsserver herunter.
 
-    ![Aktualisieren](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![Screenshot: Herunterladen der Updateinstallerdatei](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. Doppelklicken Sie auf die Datei, um das Installationsprogramm auszuführen.
-5. Das Installationsprogramm erkennt die aktuelle Version, die auf dem Computer ausgeführt wird. Klicken Sie auf **Ja**, um das Upgrade zu starten.
+5. Das Installationsprogramm erkennt die aktuelle Version, die auf dem Computer ausgeführt wird. Klicken Sie auf **Ja** , um das Upgrade zu starten.
 6. Nach Abschluss des Upgrades wird die Serverkonfiguration überprüft.
 
-    ![Aktualisieren](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![Screenshot: Abgeschlossene Serverüberprüfungskonfiguration](./media/vmware-azure-manage-configuration-server/update3.png)
 
-7. Klicken Sie auf **Fertig stellen**, um das Installationsprogramm zu schließen.
-8. Informationen zum Durchführen des Upgrades für die restlichen Site Recovery-Komponenten finden Sie in der [Upgradeanleitung](https://aka.ms/asr_vmware_upgrades).
+7. Klicken Sie auf **Fertig stellen** , um das Installationsprogramm zu schließen.
+8. Informationen zum Durchführen des Upgrades für die restlichen Site Recovery-Komponenten finden Sie in der [Upgradeanleitung](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure).
 
 ## <a name="upgrade-configuration-serverprocess-server-from-the-command-line"></a>Aktualisieren des Konfigurationsservers/Prozessservers über die Befehlszeile
 
@@ -237,7 +266,7 @@ ProxyPassword="Password"
 
 Optional können Sie den Konfigurationsserver mithilfe von PowerShell löschen:
 
-1. [Installieren](https://docs.microsoft.com/powershell/azure/install-Az-ps) Sie das Azure PowerShell-Modul.
+1. [Installieren](/powershell/azure/install-Az-ps) Sie das Azure PowerShell-Modul.
 2. Melden Sie sich mit diesem Befehl bei Ihrem Azure-Konto an:
 
     `Connect-AzAccount`
@@ -267,34 +296,12 @@ Optional können Sie den Konfigurationsserver mithilfe von PowerShell löschen:
 3. Um die Passphrasedatei zu generieren, führen Sie **genpassphrase.exe -v > MobSvc.passphrase** aus.
 4. Die Passphrase wird in der Datei gespeichert, die sich unter **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase** befindet.
 
-## <a name="renew-ssl-certificates"></a>Erneuern von SSL-Zertifikaten
-
-Der Konfigurationsserver verfügt über einen integrierten Webserver, der die Aktivitäten von Mobility Service, Prozessservern und Masterzielservern, die mit dem Konfigurationsserver verbunden sind, orchestriert. Der Webserver verwendet ein SSL-Zertifikat, um Clients zu authentifizieren. Das Zertifikat läuft nach drei Jahren ab und kann jederzeit erneuert werden.
-
-### <a name="check-expiry"></a>Überprüfen des Ablaufs
-
-Für Bereitstellungen von Konfigurationsservern vor dem Mai 2016 wurde die Zertifikatablaufzeit auf ein Jahr festgelegt. Wenn eines Ihrer Zertifikate demnächst abläuft, geschieht Folgendes:
-
-- Wenn das Ablaufdatum höchstens zwei Monate in der Zukunft liegt, sendet der Dienst Benachrichtigungen im Portal und per E-Mail (wenn Sie Site Recovery-Benachrichtigungen abonniert haben).
-- Auf der Ressourcenseite des Tresors wird ein Benachrichtigungsbanner angezeigt. Klicken Sie auf das Banner, um ausführlichere Informationen zu erhalten.
-- Wenn die Schaltfläche **Jetzt Upgrade durchführen** angezeigt wird, wurde für einige Komponenten in Ihrer Umgebung noch kein Upgrade auf 9.4.xxxx.x oder höhere Versionen durchgeführt. Aktualisieren Sie die Komponenten, bevor Sie das Zertifikat erneuern. Sie können bei älteren Versionen keine Erneuerung durchführen.
-
-### <a name="renew-the-certificate"></a>Erneuern von Zertifikaten
-
-1. Öffnen Sie im Tresor **Site Recovery-Infrastruktur** > **Konfigurationsserver**. Wählen Sie den erforderlichen Konfigurationsserver aus.
-2. Das Ablaufdatum wird unter **Integrität des Konfigurationsservers** angezeigt.
-3. Klicken Sie auf **Zertifikate erneuern**.
-
 ## <a name="refresh-configuration-server"></a>Aktualisieren des Konfigurationsservers
 
 1. Navigieren Sie im Azure-Portal zu **Recovery Services-Tresor** > **Verwalten** > **Site Recovery-Infrastruktur** > **Für VMware und physische Computer** > **Konfigurationsserver**.
 2. Klicken Sie auf den Konfigurationsserver, den Sie aktualisieren möchten.
 3. Klicken Sie auf dem Blatt mit den Details des ausgewählten Konfigurationsservers auf **Mehr** > **Server aktualisieren**.
 4. Den Fortschritt des Auftrags können Sie unter **Recovery Services-Tresor** > **Überwachung** > **Site Recovery-Aufträge** überwachen.
-
-## <a name="update-windows-license"></a>Aktualisieren der Windows-Lizenz
-
-Bei der mit der OVF-Vorlage bereitgestellten Lizenz handelt es sich um eine Evaluierungslizenz mit einer Gültigkeit von 180 Tagen. Zur unterbrechungsfreien Nutzung müssen Sie Windows mit einer käuflich erworbenen Lizenz aktivieren.
 
 ## <a name="failback-requirements"></a>Failbackanforderungen
 

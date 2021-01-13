@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
-ms.date: 08/26/2019
-ms.openlocfilehash: 607eacc531166d9d770f31cc64825e8ffea9ca76
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.date: 04/14/2020
+ms.openlocfilehash: b8be230044d868cc3ec03f6dc3fc2d21e102f121
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810677"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856295"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Behandeln von Fehlern bei der Clustererstellung mit Azure HDInsight
 
@@ -29,9 +29,9 @@ Fehler bei der Clustererstellung sind häufig auf folgende Probleme zurückzufü
 
 ## <a name="permissions-issues"></a>Berechtigungsprobleme
 
-Gehen Sie wie folgt vor, wenn Sie Azure Data Lake Storage Gen2 verwenden und den Fehler ```AmbariClusterCreationFailedErrorCode```, ```Internal server error occurred while processing the request. Please retry the request or contact support.``` erhalten: Öffnen Sie das Azure-Portal, navigieren Sie zu Ihrem Storage-Konto, und vergewissern Sie sich unter „Zugriffssteuerung (IAM)“, dass die Rolle **Mitwirkender an Storage-Blobdaten** oder **Besitzer von Speicherblobdaten** Zugriff auf die **Benutzerseitig zugewiesene verwaltete Identität** für das Abonnement hat. Eine ausführliche Anleitung finden Sie unter [Festlegen von Berechtigungen für verwaltete Identitäten im Data Lake Storage Gen2-Konto](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account).
+Gehen Sie wie folgt vor, wenn Sie Azure Data Lake Storage Gen2 verwenden und den Fehler `AmbariClusterCreationFailedErrorCode`: „:::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::“ erhalten: Öffnen Sie das Azure-Portal, navigieren Sie zu Ihrem Storage-Konto, und vergewissern Sie sich unter „Zugriffssteuerung (IAM)“, dass die Rolle **Mitwirkender an Storage-Blobdaten** oder **Besitzer von Speicherblobdaten** Zugriff auf die **Benutzerseitig zugewiesene verwaltete Identität** für das Abonnement hat. Eine ausführliche Anleitung finden Sie unter [Festlegen von Berechtigungen für verwaltete Identitäten in Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2-portal.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2).
 
-Die Einrichtungs- und Konfigurationsanleitung für Azure Data Lake Storage Gen1 finden Sie [hier](../hdinsight-hadoop-use-data-lake-store.md). Data Lake Storage Gen1 wird für HBase-Cluster sowie in der HDInsight-Version 4.0 nicht unterstützt.
+Wenn Sie Azure Data Lake Storage Gen1 verwenden, finden Sie eine Anleitung zur Einrichtung und Konfiguration unter [Verwenden von Data Lake Storage Gen1 mit Azure HDInsight-Clustern](../hdinsight-hadoop-use-data-lake-storage-gen1.md). Data Lake Storage Gen1 wird für HBase-Cluster sowie in der HDInsight-Version 4.0 nicht unterstützt.
 
 Achten Sie bei Verwendung von Azure Storage darauf, dass der Name des Speicherkontos bei der Clustererstellung gültig ist.
 
@@ -64,11 +64,11 @@ Wenn Sie ExpressRoute oder Ihren eigenen benutzerdefinierten DNS-Server verwende
 
 ## <a name="resources-locks"></a>Ressourcensperren  
 
-Vergewissern Sie sich, dass keine [Sperren für Ihr virtuelles Netzwerk oder für Ihre Ressourcengruppe](../../azure-resource-manager/resource-group-lock-resources.md) vorhanden sind.  
+Vergewissern Sie sich, dass keine [Sperren für Ihr virtuelles Netzwerk oder für Ihre Ressourcengruppe](../../azure-resource-manager/management/lock-resources.md) vorhanden sind. Wenn die Ressourcengruppe gesperrt ist, können Cluster nicht erstellt oder gelöscht werden. 
 
 ## <a name="unsupported-component-versions"></a>Nicht unterstützte Komponentenversionen
 
-Vergewissern Sie sich, dass Sie in Ihrer Lösung eine [unterstützte Version von Azure HDInsight](../hdinsight-component-versioning.md) sowie unterstützte Versionen von [Apache Hadoop-Komponenten](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions) verwenden.  
+Vergewissern Sie sich, dass Sie in Ihrer Lösung eine [unterstützte Version von Azure HDInsight](../hdinsight-component-versioning.md) sowie unterstützte Versionen von [Apache Hadoop-Komponenten](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) verwenden.  
 
 ## <a name="storage-account-name-restrictions"></a>Einschränkungen für Speicherkontonamen
 
@@ -78,7 +78,7 @@ Für die Clustererstellung gelten noch weitere Benennungseinschränkungen. Weite
 
 ## <a name="service-outages"></a>Dienstausfälle
 
-Überprüfen Sie den [Azure-Status](https://status.azure.com/status) auf mögliche Dienstunterbrechungen oder -probleme.
+Überprüfen Sie den [Azure-Status](https://status.azure.com) auf mögliche Dienstunterbrechungen oder -probleme.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

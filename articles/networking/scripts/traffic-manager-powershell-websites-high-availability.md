@@ -1,32 +1,29 @@
 ---
-title: 'Azure PowerShell-Skriptbeispiel: Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen | Microsoft-Dokumentation'
+title: Weiterleiten von Netzwerkdatenverkehr für Hochverfügbarkeit – Azure PowerShell
 description: 'Azure PowerShell-Skriptbeispiel: Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen'
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
-manager: timlt
-editor: georgewallace
-tags: azure-infrastructure
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: traffic-manager
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 1086fe6d656db9450d84fd6971a271775f54687d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 46d76a25018a68d43d11efcef162e5b4b6801572
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66156925"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87030452"
 ---
-# <a name="route-traffic-for-high-availability-of-applications"></a>Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen
+# <a name="route-traffic-for-high-availability-of-applications---azure-powershell"></a>Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen – Azure PowerShell
 
 Dieses Skript erstellt eine Ressourcengruppe, zwei App Service-Pläne, zwei Web-Apps, ein Traffic Manager-Profil und zwei Traffic Manager-Endpunkte. Traffic Manager leitet Datenverkehr zur Anwendung an eine Region weiter, die als primäre Region gilt, und an die sekundäre Region, wenn die Anwendung in der primären Region nicht verfügbar ist. Vor dem Ausführen des Skripts müssen Sie die Werte von MyWebApp, MyWebAppL1 und MyWebAppL2 in Werte ändern, die innerhalb von Azure eindeutig sind. Nach dem Ausführen des Skripts können Sie in der primären Region mit der URL „mywebapp.trafficmanager.net“ auf die App zugreifen.
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -60,6 +57,6 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/overview).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/).
 
 Zusätzliche Netzwerk-PowerShell-Skriptbeispiele finden Sie unter [Azure-Dokumentation für Netzwerke – Übersicht](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

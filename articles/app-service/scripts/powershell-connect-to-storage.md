@@ -1,32 +1,23 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Herstellen einer Verbindung mit einem Speicherkonto für eine App | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Herstellen einer Verbindung mit einem Speicherkonto für eine App Service-App
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: 'Mit PowerShell: Herstellen einer Verbindung mit einem Speicherkonto'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie eine Verbindung zwischen einer App und einem Speicherkonto herstellen.
 tags: azure-service-management
 ms.assetid: e4831bdc-2068-4883-9474-0b34c2e3e255
-ms.service: app-service
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 1eae5c4b94a59b09e73454fdfcea4e9f041652f2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 9c182c797515288038ae6a23d6d939d5ec855011
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098358"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89073912"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account"></a>Verbinden einer App Service-App mit einem Speicherkonto
 
 In diesem Szenario erfahren Sie, wie Sie ein Azure-Speicherkonto und eine App Service-App erstellen. Anschließend verknüpfen Sie das Speicherkonto mithilfe von App-Einstellungen mit der App.
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -57,6 +48,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Azure PowerShell-Beispiele für Azure App Service finden Sie unter [PowerShell samples for Azure App Service](../samples-powershell.md) (PowerShell-Beispiele für Azure App Service).

@@ -1,35 +1,27 @@
 ---
-title: Azure Service Fabric – programmgesteuertes Skalieren| Microsoft-Dokumentation
+title: Azure Service Fabric – programmgesteuertes Skalieren
 description: Programmgesteuertes horizontales Herunter- oder Hochskalieren eines Azure Service Fabric-Clusters gemäß benutzerdefinierten Triggern
-services: service-fabric
-documentationcenter: .net
 author: mjrousos
-manager: jonjung
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 128f28d2a8b97feb3d20c34b7468b60c446a78a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9f39bd874c1f5a1be42ca1c88e6ea2fe8df22f87
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306932"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648207"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Programmgesteuertes Skalieren eines Service Fabric-Clusters 
 
-Service Fabric-Cluster, die in Azure ausgeführt werden, basieren auf VM-Skalierungsgruppen.  Im Artikel zur [Clusterskalierung](./service-fabric-cluster-scale-up-down.md) wird beschrieben, wie Service Fabric-Cluster entweder manuell oder mit Regeln für die automatische Skalierung skaliert werden können. In diesem Artikel wird beschrieben, wie Sie Anmeldeinformationen verwalten und einen Cluster horizontal hoch- oder herunterskalieren, indem Sie das Azure Fluent-Compute-SDK verwenden. Dies ist ein anspruchsvolleres Szenario. Eine Übersicht hierzu finden Sie in dem Artikel, in dem die [programmgesteuerten Methoden zum Koordinieren von Azure-Skalierungsvorgängen](service-fabric-cluster-scaling.md#programmatic-scaling) beschrieben werden. 
+Service Fabric-Cluster, die in Azure ausgeführt werden, basieren auf VM-Skalierungsgruppen.  Im Artikel zur [Clusterskalierung](./service-fabric-cluster-scale-in-out.md) wird beschrieben, wie Service Fabric-Cluster entweder manuell oder mit Regeln für die automatische Skalierung skaliert werden können. In diesem Artikel wird beschrieben, wie Sie Anmeldeinformationen verwalten und einen Cluster horizontal hoch- oder herunterskalieren, indem Sie das Azure Fluent-Compute-SDK verwenden. Dies ist ein anspruchsvolleres Szenario. Eine Übersicht hierzu finden Sie in dem Artikel, in dem die [programmgesteuerten Methoden zum Koordinieren von Azure-Skalierungsvorgängen](service-fabric-cluster-scaling.md#programmatic-scaling) beschrieben werden. 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>Verwalten von Anmeldeinformationen
-Eine Herausforderung beim Schreiben von einem Dienst für die Skalierung besteht darin, dass der Dienst ohne eine interaktive Anmeldung Zugriff auf VM-Skalierungsgruppenressourcen haben muss. Der Zugriff auf den Service Fabric-Cluster ist einfach, wenn der Skalierungsdienst seine eigene Service Fabric-Anwendung ändert, für den Zugriff auf die Skalierungsgruppe jedoch Anmeldeinformationen erforderlich sind. Für die Anmeldung können Sie einen mit der [Azure CLI](https://github.com/azure/azure-cli) erstellten [Dienstprinzipal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) verwenden.
+Eine Herausforderung beim Schreiben von einem Dienst für die Skalierung besteht darin, dass der Dienst ohne eine interaktive Anmeldung Zugriff auf VM-Skalierungsgruppenressourcen haben muss. Der Zugriff auf den Service Fabric-Cluster ist einfach, wenn der Skalierungsdienst seine eigene Service Fabric-Anwendung ändert, für den Zugriff auf die Skalierungsgruppe jedoch Anmeldeinformationen erforderlich sind. Für die Anmeldung können Sie einen mit der [Azure CLI](https://github.com/azure/azure-cli) erstellten [Dienstprinzipal](/cli/azure/create-an-azure-service-principal-azure-cli) verwenden.
 
 Ein Dienstprinzipal kann mit den folgenden Schritten erstellt werden:
 
@@ -68,7 +60,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Alternativ kann die Größe der VM-Skalierungsgruppe auch mit PowerShell-Cmdlets verwaltet werden. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) kann das Objekt der VM-Skalierungsgruppe abrufen. Die aktuelle Kapazität ist über die Eigenschaft `.sku.capacity` verfügbar. Nach der Änderung der Kapazität in den gewünschten Wert kann die VM-Skalierungsgruppe mit dem Befehl [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) in Azure aktualisiert werden.
+Alternativ kann die Größe der VM-Skalierungsgruppe auch mit PowerShell-Cmdlets verwaltet werden. [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) kann das Objekt der VM-Skalierungsgruppe abrufen. Die aktuelle Kapazität ist über die Eigenschaft `.sku.capacity` verfügbar. Nach der Änderung der Kapazität in den gewünschten Wert kann die VM-Skalierungsgruppe mit dem Befehl [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) in Azure aktualisiert werden.
 
 Wie beim manuellen Hinzufügen eines Knotens sollte zum Starten eines neuen Service Fabric-Knotens nur das Hinzufügen einer Skalierungsgruppe erforderlich sein, da die Skalierungsgruppenvorlage Erweiterungen beinhaltet, um dem Service Fabric-Cluster automatisch neue Instanzen hinzuzufügen. 
 
@@ -128,6 +120,6 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 Für die ersten Schritte mit der Implementierung Ihrer eigenen Logik für automatische Skalierung machen Sie sich mit den folgenden Konzepten und hilfreichen APIs vertraut:
 
-- [Manuelles Skalieren oder mit automatischen Skalierungsregeln](./service-fabric-cluster-scale-up-down.md)
-- [Azure-Fluent-Verwaltungsbibliotheken für .NET](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (nützlich für die Interaktion mit den einem Service Fabric-Cluster zugrunde liegenden VM-Skalierungsgruppen)
-- [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (nützlich für die Interaktion mit einem Service Fabric-Cluster und dessen Knoten)
+- [Manuelles Skalieren oder mit automatischen Skalierungsregeln](./service-fabric-cluster-scale-in-out.md)
+- [Azure-Verwaltungsbibliotheken für .NET](https://github.com/Azure/azure-libraries-for-net) (nützlich für die Interaktion mit den einem Service Fabric-Cluster zugrunde liegenden VM-Skalierungsgruppen)
+- [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient) (nützlich für die Interaktion mit einem Service Fabric-Cluster und dessen Knoten)

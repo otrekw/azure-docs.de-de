@@ -14,19 +14,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2a7f15eb7e90ba4dec9bc614a45d2de46c07bdfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c6c1dcb0af500c47aabbd8e8193c066bb4a921c5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868102"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89267767"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Warteschlangenspeicher zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET 
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Warteschlangenspeicher zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
-Beim Ausführen von Codierungsaufträgen ist es nützlich, deren Status nachverfolgen zu können. Sie können Media Services zur Übermittlung von Benachrichtigungen an [Azure Queue Storage](../../storage/storage-dotnet-how-to-use-queues.md) konfigurieren. Sie können den Status des Auftrags überwachen, indem Sie Benachrichtigungen aus Queue Storage abrufen. 
+Beim Ausführen von Codierungsaufträgen ist es nützlich, deren Status nachverfolgen zu können. Sie können Media Services zur Übermittlung von Benachrichtigungen an [Azure Queue Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md) konfigurieren. Sie können den Status des Auftrags überwachen, indem Sie Benachrichtigungen aus Queue Storage abrufen. 
 
 Auf die an den Warteschlangenspeicher übermittelten Nachrichten kann von überall auf der Welt aus zugegriffen werden. Die Benachrichtigungsarchitektur von Queue Storage ist zuverlässig und hochgradig skalierbar. Das Abrufen von Nachrichten aus Queue Storage wird gegenüber anderen Methoden empfohlen.
 
@@ -37,10 +40,10 @@ In diesem Artikel wird gezeigt, wie Sie Benachrichtigungen aus Queue Storage abr
 ## <a name="considerations"></a>Überlegungen
 Beachten Sie Folgendes beim Entwickeln von Media Services-Anwendungen, die Queue Storage verwenden:
 
-* Queue Storage bietet keine Garantie, dass die Übermittlung nach First-in-First-out (FIFO) sortiert erfolgt. Weitere Informationen finden sie unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://msdn.microsoft.com/library/azure/hh767287.aspx).
+* Queue Storage bietet keine Garantie, dass die Übermittlung nach First-in-First-out (FIFO) sortiert erfolgt. Weitere Informationen finden sie unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](/previous-versions/azure/hh767287(v=azure.100)).
 * Queue Storage ist kein Pushdienst. Sie müssen die Warteschlange abfragen.
-* Sie können eine beliebige Anzahl von Warteschlangen verwenden. Weitere Informationen finden Sie unter [REST-API des Warteschlangendiensts](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
-* Queue Storage verfügt über einige Einschränkungen und Besonderheiten, die Sie berücksichtigen müssen. Diese werden unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted) besprochen.
+* Sie können eine beliebige Anzahl von Warteschlangen verwenden. Weitere Informationen finden Sie unter [REST-API des Warteschlangendiensts](/rest/api/storageservices/queue-service-rest-api).
+* Queue Storage verfügt über einige Einschränkungen und Besonderheiten, die Sie berücksichtigen müssen. Diese werden unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md) besprochen.
 
 ## <a name="net-code-example"></a>Codebeispiel für .NET
 
@@ -53,7 +56,10 @@ Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
 5. Fügt den Endpunkt für die Benachrichtigung an den Auftrag an und übermittelt den Codierungsauftrag. Sie können mehrere Benachrichtigungsendpunkte an einen Auftrag anfügen.
 6. Übergibt **NotificationJobState.FinalStatesOnly** an die **AddNew**-Methode. (In diesem Beispiel sind wir nur am abschließenden Status der Verarbeitung des Auftrags interessiert.)
 
-        job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
+    ```csharp
+    job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
+    ```
+
 7. Wenn Sie **NotificationJobState.All** übergeben, erhalten Sie damit alle folgenden Benachrichtigungen über Statusänderungen: „Warteschlange“, „Geplant“, „Verarbeitung“ und „Abgeschlossen“. Wie aber bereits erwähnt, garantiert Queue Storage keine geordnete Übermittlung. Sie können die **Timestamp**-Eigenschaft (im Beispiel unten im Typ **EncodingJobMessage** definiert) zum Ordnen der Nachrichten verwenden. Doppelte Nachrichten sind möglich. Mithilfe der **ETag**-Eigenschaft (im Typ **EncodingJobMessage** definiert) können Sie nach Duplikaten suchen. Andererseits kann es auch vorkommen, dass Statusänderungsbenachrichtigungen ausgelassen werden.
 8. Wartet, bis der Auftrag abgeschlossen ist, indem er die Warteschlange alle zehn Sekunden überprüft. Löscht Nachrichten, nachdem sie verarbeitet wurden.
 9. Löscht die Warteschlange und den Benachrichtigungsendpunkt.
@@ -344,31 +350,32 @@ namespace JobNotification
 
 Das Beispiel oben generiert die folgende Ausgabe: Die Werte können variieren.
 
-    Created assetFile BigBuckBunny.mp4
-    Upload BigBuckBunny.mp4
-    Done uploading of BigBuckBunny.mp4
+```output
+Created assetFile BigBuckBunny.mp4
+Upload BigBuckBunny.mp4
+Done uploading of BigBuckBunny.mp4
 
-    EventType: NotificationEndPointRegistration
-    MessageVersion: 1.0
-    ETag: e0238957a9b25bdf3351a88e57978d6a81a84527fad03bc23861dbe28ab293f6
-    TimeStamp: 2013-05-14T20:22:37
-        NotificationEndPointId: nb:nepid:UUID:d6af9412-2488-45b2-ba1f-6e0ade6dbc27
-        State: Registered
-        Name: dde957b2-006e-41f2-9869-a978870ac620
-        Created: 2013-05-14T20:22:35
+EventType: NotificationEndPointRegistration
+MessageVersion: 1.0
+ETag: e0238957a9b25bdf3351a88e57978d6a81a84527fad03bc23861dbe28ab293f6
+TimeStamp: 2013-05-14T20:22:37
+    NotificationEndPointId: nb:nepid:UUID:d6af9412-2488-45b2-ba1f-6e0ade6dbc27
+    State: Registered
+    Name: dde957b2-006e-41f2-9869-a978870ac620
+    Created: 2013-05-14T20:22:35
 
-    EventType: JobStateChange
-    MessageVersion: 1.0
-    ETag: 4e381f37c2d844bde06ace650310284d6928b1e50101d82d1b56220cfcb6076c
-    TimeStamp: 2013-05-14T20:24:40
-        JobId: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54
-        JobName: My MP4 to Smooth Streaming encoding job
-        NewState: Finished
-        OldState: Processing
-        AccountName: westeuropewamsaccount
-    job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
-    State: Finished
-
+EventType: JobStateChange
+MessageVersion: 1.0
+ETag: 4e381f37c2d844bde06ace650310284d6928b1e50101d82d1b56220cfcb6076c
+TimeStamp: 2013-05-14T20:24:40
+    JobId: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54
+    JobName: My MP4 to Smooth Streaming encoding job
+    NewState: Finished
+    OldState: Processing
+    AccountName: westeuropewamsaccount
+job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
+State: Finished
+```
 
 ## <a name="next-step"></a>Nächster Schritt
 Überprüfen Sie die Media Services-Lernpfade.

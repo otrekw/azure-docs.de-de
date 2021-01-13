@@ -1,21 +1,20 @@
 ---
-title: Batchverarbeitung von EDI-Nachrichten als Gruppe oder Sammlung – Azure Logic Apps | Microsoft-Dokumentation
-description: Senden von EDI-Nachrichten für die Batchverarbeitung in Logik-Apps
+title: Batchverarbeitung von EDI-Nachrichten als Gruppe
+description: Senden und Empfangen von EDI-Nachrichten als Batches, Gruppen oder Sammlungen mithilfe der Batchverarbeitung in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: c2b0e2ed801724b682e0c4a60d6d7dff9645aab3
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827432"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000401"
 ---
-# <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Senden von EDI-Nachrichten in Batches an Handelspartner mit Azure Logic Apps
+# <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Austauschen von EDI-Nachrichten als Batches oder Gruppen zwischen Handelspartnern in Azure Logic Apps
 
 In B2B-Szenarien tauschen Geschäftspartner häufig Nachrichten in Gruppen oder *Batches* aus. Wenn Sie eine Batchverarbeitungslösung mit Logic Apps erstellen, können Sie Nachrichten an Handelspartner senden und diese Nachrichten in Batches verarbeiten. In diesem Artikel wird am Beispiel von X12 erläutert, wie Sie EDI-Nachrichten in Batches verarbeiten können, indem Sie eine Logik-App für den Batchversand und eine Logik-App für den Batchempfang erstellen. 
 
@@ -35,7 +34,7 @@ Stellen Sie sicher, dass sich die Logik-App für den Batchempfang und die Logik-
 
 Für dieses Beispiel benötigen Sie Folgendes:
 
-* Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Oder [registrieren Sie sich für ein Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
+* ein Azure-Abonnement Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Oder [registrieren Sie sich für ein Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -55,24 +54,24 @@ Um Nachrichten an einen Batch senden zu können, muss dieser Batch zunächst als
 
 Für den Batchempfang werden der Batchmodus, der Batchname, die Freigabekriterien, die X12-Vereinbarung und weitere Einstellungen angegeben. 
 
-1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) oder in Visual Studio eine Logik-App mit diesem Namen: „BatchX12Messages“
+1. Erstellen Sie über das [Azure-Portal](https://portal.azure.com) oder Visual Studio eine Logik-App mit dem Namen „BatchX12Messages“.
 
 2. [Verknüpfen Sie Ihre Logik-App mit Ihrem Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
-3. Fügen Sie im Designer für Logik-Apps den Trigger **Batch** hinzu, um den Workflow Ihrer Logik-App zu starten. Geben Sie im Suchfeld den Begriff „Batch“ als Filter ein. Wählen Sie den folgenden Trigger aus: **Batchnachrichten**
+3. Fügen Sie im Designer für Logik-Apps den Trigger **Batch** hinzu, um den Workflow Ihrer Logik-App zu starten. Geben Sie im Suchfeld den Begriff „Batch“ als Filter ein. Wählen Sie den Trigger **Batchnachrichten** aus.
 
    ![Hinzufügen des Triggers „Batch“](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-receiver-trigger.png)
 
 4. Legen Sie die Eigenschaften für den Batchempfang fest: 
 
-   | Eigenschaft | Wert | Notizen | 
+   | Eigenschaft | value | Notizen | 
    |----------|-------|-------|
    | **Batchmodus** | Inline |  |  
    | **Batchname** | TestBatch | Nur mit dem Batchmodus **Inline** verfügbar | 
    | **Freigabekriterien** | Basierend auf der Nachrichtenanzahl, basierend auf dem Zeitplan | Nur mit dem Batchmodus **Inline** verfügbar | 
    | **Nachrichtenanzahl** | 10 | Nur mit den Freigabekriterien **Basierend auf der Nachrichtenanzahl** verfügbar | 
    | **Intervall** | 10 | Nur mit den Freigabekriterien **Basierend auf dem Zeitplan** verfügbar | 
-   | **Frequency** | Minute | Nur mit den Freigabekriterien **Basierend auf dem Zeitplan** verfügbar | 
+   | **Frequency** | minute | Nur mit den Freigabekriterien **Basierend auf dem Zeitplan** verfügbar | 
    ||| 
 
    ![Angeben von Details für den Batchtrigger](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
@@ -84,7 +83,7 @@ Für den Batchempfang werden der Batchmodus, der Batchname, die Freigabekriterie
 
    1. Wählen Sie unter dem Batchtrigger die Option **+ Neuer Schritt** aus.
 
-   2. Geben Sie im Suchfeld „X12 batch“ als Filter ein, und wählen Sie die folgende Aktion (beliebige Version) aus: **Batch encode <*Version*> - X12** 
+   2. Geben Sie im Suchfeld „X12 batch“ als Filter ein, und wählen Sie die folgende Aktion (beliebige Version) aus: **Batch encode <*version*> – X12** (Batchcodierung <Version> – X12) 
 
       ![Auswählen der X12-Codierungsaktion](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
 
@@ -118,7 +117,7 @@ Um sicherzustellen, dass die Logik-App für den Batchempfang wie erwartet ausgef
 
 1. Wählen Sie unter der X12-Codierungsaktion die Option **+ Neuer Schritt** aus. 
 
-2. Geben Sie im Suchfeld „HTTP“ als Filter ein. Wählen Sie diese Aktion aus: **HTTP – HTTP**
+2. Geben Sie im Suchfeld „HTTP“ als Filter ein. Wählen Sie die folgende Aktion aus: **HTTP - HTTP**
     
    ![Auswählen der HTTP-Aktion](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action.png)
 
@@ -149,9 +148,9 @@ Erstellen Sie nun eine oder mehrere Logik-Apps, die Nachrichten an die Logik-App
 
 * Stellen Sie sicher, dass sich die Logik-App für den Batchempfang und die Logik-App für den Batchversand in der gleichen Azure-Region *und* dem gleichen Azure-Abonnement befinden. Wenn dies nicht der Fall ist, können Sie beim Erstellen der Logik-App für den Batchversand nicht die Logik-App für den Batchempfang auswählen, da sie gegenseitig nicht sichtbar sind.
 
-1. Erstellen Sie eine weitere Logik-App mit diesem Namen: "SendX12MessagesToBatch" 
+1. Erstellen Sie eine weitere Logik-App mit dem Namen „SendX12MessagesToBatch“. 
 
-2. Geben Sie im Suchfeld „Beim Empfang einer HTTP-Anforderung“ als Filter ein. Wählen Sie den folgenden Trigger aus: **Beim Empfang einer HTTP-Anforderung** 
+2. Geben Sie im Suchfeld „Beim Empfang einer HTTP-Anforderung“ als Filter ein. Wählen Sie **Beim Empfang einer HTTP-Anforderung** als Trigger aus. 
    
    ![Hinzufügen des Anforderungstriggers](./media/logic-apps-scenario-EDI-send-batch-messages/add-request-trigger-sender.png)
 
@@ -160,7 +159,7 @@ Erstellen Sie nun eine oder mehrere Logik-Apps, die Nachrichten an die Logik-App
    1. Wählen Sie unter der HTTP-Anforderungsaktion die Option **+ Neuer Schritt** aus.
 
    2. Geben Sie im Suchfeld den Begriff „Batch“ als Filter ein. 
-   Wählen Sie die Liste **Aktionen** aus, und wählen Sie dann diese Aktion aus: **Logik-App-Workflow mit Batchtrigger auswählen – Nachrichten an Batch senden**
+   Wählen Sie die Liste **Aktionen** und dann die Aktion **Logik-App-Workflow mit Batchtrigger auswählen – Nachrichten an Batch senden** aus.
 
       ![Auswählen von „Logik-App-Workflow mit Batchtrigger auswählen“](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-trigger.png)
 
@@ -168,7 +167,7 @@ Erstellen Sie nun eine oder mehrere Logik-Apps, die Nachrichten an die Logik-App
 
       ![Auswählen der Logik-App „BatchReceiver“](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. Wählen Sie diese Aktion aus: **Batch_messages – <*Ihre Logik-App für den Batchempfang*>**
+   4. Wählen Sie die Aktion **Batch_messages – <*Ihre Logik-App für den Batchempfang*>** aus.
 
       ![Auswählen der Aktion „Batch_messages“](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 
@@ -176,7 +175,7 @@ Erstellen Sie nun eine oder mehrere Logik-Apps, die Nachrichten an die Logik-App
 
    | Eigenschaft | BESCHREIBUNG | 
    |----------|-------------| 
-   | **Batchname** | Der in der Logik-App für den Empfang definierte Batchname, in diesem Beispiel „TestBatch“. <p>**Wichtig**: Der Batchname wird zur Laufzeit überprüft und muss mit dem in der Logik-App für den Empfang angegebenen Namen übereinstimmen. Wenn Sie den Batchnamen ändern, funktioniert die Logik-App für den Batchversand nicht. | 
+   | **Batchname** | Der in der Logik-App für den Empfang definierte Batchname, in diesem Beispiel „TestBatch“. <p>**Wichtig:** Der Batchname wird zur Laufzeit überprüft und muss mit dem in der Logik-App für den Empfang angegebenen Namen übereinstimmen. Wenn Sie den Batchnamen ändern, funktioniert die Logik-App für den Batchversand nicht. | 
    | **Nachrichteninhalt** | Der Inhalt der zu sendenden Nachricht, in diesem Beispiel das Token **Text**. | 
    ||| 
    

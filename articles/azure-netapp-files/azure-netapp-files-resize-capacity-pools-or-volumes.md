@@ -1,6 +1,6 @@
 ---
 title: Anpassen der Größe des Kapazitätspools oder eines Volumes für Azure NetApp Files | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie die Größe eines Kapazitätspools oder eines Volumes geändert wird.
+description: Erfahren Sie, wie die Größe eines Kapazitätspools oder eines Volumes geändert wird. Durch eine Größenänderung des Kapazitätspools wird die erworbene Azure NetApp Files-Kapazität geändert.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/14/2019
+ms.topic: how-to
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: c58ceef57b984f46b86bb2a8577c53b75082b78b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62bf154c1dbf1a0d3f12e2cef916b37059ce985b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65794611"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012475"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Ändern der Größe eines Kapazitätspools oder Volumes
 Sie können die Größe eines Kapazitätspools oder eines Volumes nach Bedarf anpassen. 
@@ -40,3 +40,8 @@ Sie können die Größe eines Volumes nach Bedarf anpassen. Der Kapazitätsverbr
 2. Klicken Sie mit der rechten Maustaste auf den Namen des Volumes, dessen Größe Sie anpassen möchten, oder klicken Sie auf am Ende der Zeile mit dem Volume auf das Symbol „...“, um das Kontextmenü anzuzeigen.
 3. Mithilfe der Kontextmenüoptionen können Sie die Größe des Volumes ändern oder es löschen.
 
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md)
+- [Verwalten eines manuellen QoS-Kapazitätspools](manage-manual-qos-capacity-pool.md)
+- [Dynamisches Ändern der Dienstebene eines Volumes](dynamic-change-volume-service-level.md) 

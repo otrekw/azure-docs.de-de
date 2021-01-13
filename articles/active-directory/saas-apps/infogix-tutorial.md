@@ -1,28 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von Infogix Data3Sixty Govern | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Infogix Data3Sixty Govern | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Infogix Data3Sixty Govern konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: aa3109b8-bdbe-45ae-933a-2eb4dc03855c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a0b8dbb3992808bdcb94291d876192431c72f6c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ca566c554c02d20d21bd7eba87dfbcbf1f746da
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100341"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606486"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Tutorial: Azure Active Directory-Integration von Infogix Data3Sixty Govern
+# <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Tutorial: Azure Active Directory-Integration mit Infogix Data3Sixty Govern
 
 In diesem Tutorial erfahren Sie, wie Sie Infogix Data3Sixty Govern in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Infogix Data3Sixty Govern in Azure AD bietet die folgenden Vorteile:
@@ -31,7 +27,7 @@ Die Integration von Infogix Data3Sixty Govern in Azure AD bietet die folgenden V
 * Sie können für Ihre Benutzer aktivieren, dass sie automatisch mit ihren Azure AD-Konten bei Infogix Data3Sixty Govern angemeldet werden (einmaliges Anmelden, Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -68,7 +64,7 @@ Zum Konfigurieren der Integration von Infogix Data3Sixty Govern in Azure AD müs
 
 4. Geben Sie im Suchfeld **Infogix Data3Sixty Govern** ein, wählen Sie **Infogix Data3Sixty Govern** im der Ergebnisbereich aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Infogix Data3Sixty Govern in der Ergebnisliste](common/search-new-app.png)
+    ![Infogix Data3Sixty Govern in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -104,7 +100,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Infogix 
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Infogix Data3Sixty Govern](common/idp-intiated.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners und einer Antwort-URL sowie zum Klicken auf „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL ein: `https://data3sixty.com/ui`
 
@@ -112,7 +108,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Infogix 
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Infogix Data3Sixty Govern](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.data3sixty.com`
 
@@ -121,21 +117,21 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Infogix 
 
 6. Die Infogix Data3Sixty Govern-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot der Benutzerattribute mit ausgewähltem Symbol „Bearbeiten“](common/edit-attribute.png)
 
 7. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus:
 
-    | NAME | Quellattribut|
+    | Name | Quellattribut|
     | -----------| -------------- |
     | firstname  | user.givenname |
-    | lastname   | user.surname |
-    | userName   | user.mail    |
+    | lastname | user.surname |
+    | username | user.mail |
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    ![image](common/new-save-attribute.png)
+    ![Screenshot: Benutzeransprüche mit Option zum Hinzufügen eines neuen Anspruchs](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Screenshot des Dialogfelds „Benutzeransprüche verwalten“, in dem Sie die hier beschriebenen Werte eingeben können](common/new-attribute-details.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -184,13 +180,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -223,19 +219,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt wird in Infogix Data3Sixty Govern ein Benutzer namens „Britta Simon“ erstellt. Infogix Data3Sixty Govern unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Infogix Data3Sixty Govern vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 > [!Note]
-> Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Infogix Data3Sixty Govern-Supportteam](mailto:data3sixtysupport@infogix.com).
+> Setzen Sie sich mit dem [Infogix Data3Sixty Govern-Supportteam](mailto:data3sixtysupport@infogix.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Infogix Data3Sixty Govern“ klicken, sollten Sie automatisch bei Infogix Data3Sixty Govern angemeldet werden, für das Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Infogix Data3Sixty Govern“ klicken, sollten Sie automatisch bei Infogix Data3Sixty Govern angemeldet werden, für das Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

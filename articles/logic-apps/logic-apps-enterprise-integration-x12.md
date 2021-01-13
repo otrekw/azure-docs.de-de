@@ -1,306 +1,391 @@
 ---
-title: X12-Nachrichten für die B2B-Unternehmensintegration – Azure Logic Apps | Microsoft-Dokumentation
-description: Austauschen von X12-Nachrichten im EDI-Format für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
+title: Senden und Empfangen von X12-Nachrichten für B2B
+description: Austauschen von X12-Nachrichten für Szenarien der B2B-Unternehmensintegration mithilfe von Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
-ms.date: 01/31/2017
-ms.openlocfilehash: f06e213dbae31c9d7c4e212d605cc962aba71d2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 04/29/2020
+ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728756"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015195"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von X12-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
-Bevor Sie X12-Nachrichten für Azure Logic Apps austauschen können, müssen Sie eine X12-Vereinbarung erstellen und in Ihrem Integrationskonto speichern. Hier erfahren Sie, wie Sie eine X12-Vereinbarung erstellen.
+Um mit X12-Nachrichten in Azure Logic Apps zu arbeiten, können Sie den X12-Connector verwenden, der Auslöser und Aktionen für die Verwaltung der X12-Kommunikation bereitstellt. Weitere Informationen zu EDIFACT-Nachrichten finden Sie unter [Austauschen von EDIFACT-Nachrichten](logic-apps-enterprise-integration-edifact.md).
 
-> [!NOTE]
-> Auf dieser Seite werden die X12-Features für Azure Logic Apps beschrieben. Weitere Informationen finden Sie unter [EDIFACT](logic-apps-enterprise-integration-edifact.md).
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="before-you-start"></a>Vorbereitung
+* Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement haben, [melden Sie sich für ein kostenloses Azure-Konto an](https://azure.microsoft.com/free/).
 
-Sie benötigen Folgendes:
+* Die Logik-App, von der aus Sie auf den X12-Connector zugreifen möchten, und einen Trigger, der den Workflow Ihre Logik-App startet. Der X12-Connector stellt nur Aktionen und keine Trigger bereit. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-* Ein bereits definiertes und mit Ihrem Azure-Abonnement verknüpftes [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md)
-* Mindestens zwei [Partner](../logic-apps/logic-apps-enterprise-integration-partners.md), die in Ihrem Integrationskonto definiert und mit der X12-Kennung unter **Geschäftsidentitäten** konfiguriert sind    
-* Ein erforderliches [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md), das Sie in Ihr Integrationskonto hochladen können
+* Ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), das Ihrem Azure-Abonnement zugeordnet und mit der Logik-App verknüpft ist, in der Sie den X12-Connector verwenden möchten. Sowohl Ihre Logik-App als auch Ihr Integrationskonto müssen an demselben Standort oder in derselben Azure-Region vorhanden sein.
 
-Wenn Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) und [Partner hinzugefügt](logic-apps-enterprise-integration-partners.md) haben sowie über ein geeignetes [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) verfügen, können Sie eine X12-Vereinbarung erstellen. Gehen Sie dazu wie folgt vor:
+* Mindestens zwei [Parteien](../logic-apps/logic-apps-enterprise-integration-partners.md), die Sie bereits in Ihrem Integrationskonto unter Verwendung des X12-Identitätsqualifizierers definiert haben.
 
-## <a name="create-an-x12-agreement"></a>Erstellen einer X12-Vereinbarung
+* Die [Schemas](../logic-apps/logic-apps-enterprise-integration-schemas.md), die für die XML-Überprüfung verwendet werden sollen, die Sie Ihrem Integrationskonto bereits hinzugefügt haben. Wenn Sie mit HIPAA-Schemas (Health Insurance Portability and Accountability Act) arbeiten, finden Sie Informationen unter [HIPAA-Schemas](#hipaa-schemas).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com "Azure-Portal") an. 
+* Bevor Sie den X12-Connector verwenden können, müssen Sie eine X12-[Vereinbarung](../logic-apps/logic-apps-enterprise-integration-agreements.md) zwischen den Parteien erstellen und diese Vereinbarung in Ihrem Integrationskonto speichern. Wenn Sie mit HIPAA-Schemas (Health Insurance Portability and Accountability Act) arbeiten, müssen Sie Ihrer Vereinbarung einen `schemaReferences`-Abschnitt hinzufügen. Weitere Informationen finden Sie unter [HIPAA-Schemas](#hipaa-schemas).
 
-2. Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. 
-   Geben Sie im Suchfeld das Wort „Integration“ ein, und wählen Sie dann **Integrationskonten** aus.  
+<a name="receive-settings"></a>
 
-   ![Suchen Ihres Integrationskontos](./media/logic-apps-enterprise-integration-x12/account-1.png)
+## <a name="receive-settings"></a>Empfangseinstellungen
 
-   > [!TIP]
-   > Falls **Alle Dienste** nicht angezeigt wird, müssen Sie das Menü möglicherweise zunächst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Menü anzeigen** aus.
+Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigurieren, wie die Vereinbarung eingehende Nachrichten identifizieren und behandeln soll, die Sie im Rahmen dieser Vereinbarung von Ihrem Partner empfangen.
 
-3. Wählen Sie unter **Integrationskonten** das Integrationskonto aus, dem Sie die Vereinbarung hinzufügen möchten.
+1. Wählen Sie unter **Hinzufügen** die Option **Empfangseinstellungen** aus.
 
-   ![Integrationskonto für die Erstellung der Vereinbarung auswählen](./media/logic-apps-enterprise-integration-x12/account-3.png)
+1. Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die **Empfangseinstellungen** sind in diese Abschnitte unterteilt:
 
-4. Wählen Sie **Übersicht** und anschließend die Kachel **Vereinbarungen** aus. 
-   Sollte die Kachel „Vereinbarungen“ nicht angezeigt werden, fügen Sie sie hinzu. 
+   * [Identifiers (Bezeichner)](#inbound-identifiers)
+   * [Bestätigung ](#inbound-acknowledgement)
+   * [Schemas](#inbound-schemas)
+   * [Umschläge](#inbound-envelopes)
+   * [Kontrollnummern](#inbound-control-numbers)
+   * [validations](#inbound-validations)
+   * [Interne Einstellungen](#inbound-internal-settings)
 
-   ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
+   Die Eigenschaften werden in den Tabellen in diesem Abschnitt beschrieben.
 
-5. Wählen Sie unter **Vereinbarungen** die Option **Hinzufügen** aus.
+1. Wählen Sie abschließend **OK** aus, um die Einstellungen zu speichern.
 
-   ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
+<a name="inbound-identifiers"></a>
 
-6. Geben Sie unter **Hinzufügen** im Feld **Name** einen Namen für Ihre Vereinbarung ein. 
-   Wählen Sie als Vertragstyp die Option **X12** aus. 
-   Wählen Sie den **Hostpartner**, die **Hostidentität**, den **Gastpartner** und die **Gastidentität** für Ihre Vereinbarung aus. 
-   Weitere Details zu den Eigenschaften finden Sie in der Tabelle in diesem Schritt.
+### <a name="receive-settings---identifiers"></a>Empfangseinstellungen – Bezeichner
 
-    ![Details zur Vereinbarung angeben](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
-
-    | Eigenschaft | BESCHREIBUNG |
-    | --- | --- |
-    | NAME |Name der Vereinbarung |
-    | Vereinbarungstyp | Muss X12 sein |
-    | Hostpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Hostpartner stellt die Organisation dar, die die Vereinbarung konfiguriert. |
-    | Hostidentität |Ein Bezeichner für den Hostpartner. |
-    | Gastpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Gastpartner stellt die Organisation dar, die Geschäfte mit dem Hostpartner tätigt. |
-    | Gastidentität |Ein Bezeichner für den Gastpartner. |
-    | Empfangseinstellungen |Diese Eigenschaften gelten für alle Nachrichten, die von einer Vereinbarung empfangen werden. |
-    | Sendeeinstellungen |Diese Eigenschaften gelten für alle Nachrichten, die von einer Vereinbarung gesendet werden. |  
-
-   > [!NOTE]
-   > Die Auflösung der X12-Vereinbarung hängt von der Übereinstimmung des Absenderqualifizierers und Bezeichners sowie des Empfängerqualifizierers und Bezeichners ab, die beim Partner und in der eingehenden Nachricht definiert sind. Falls sich diese Werte für Ihren Partner ändern, aktualisieren Sie die Vereinbarung entsprechend.
-
-## <a name="configure-how-your-agreement-handles-received-messages"></a>Konfigurieren der Behandlung empfangener Nachrichten durch die Vereinbarung
-
-Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigurieren, wie die Vereinbarung eingehende Nachrichten identifizieren und behandeln soll, die im Rahmen dieser Vereinbarung von Ihrem Partner gesendet werden.
-
-1.  Wählen Sie unter **Hinzufügen** die Option **Empfangseinstellungen** aus.
-Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die Eigenschaften werden in den Tabellen in diesem Abschnitt beschrieben.
-
-    **Empfangseinstellungen** ist in die folgenden Abschnitte unterteilt: „Bezeichner“, „Bestätigung“, „Schemas“, „Umschläge“, „Kontrollnummern“, „Überprüfungen“ und „Interne Einstellungen“.
-
-2. Klicken Sie abschließend auf **OK**, um die Einstellungen zu speichern.
-
-Ihre Vereinbarung kann nun eingehende Nachrichten verarbeiten, die den ausgewählten Einstellungen entsprechen.
-
-### <a name="identifiers"></a>Bezeichner
-
-![Bezeichnereigenschaften festlegen](./media/logic-apps-enterprise-integration-x12/x12-2.png)  
+![Bezeichnereigenschaften für eingehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-identifiers.png)
 
 | Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| ISA1 (Autorisierungsqualifizierer) |Wählen Sie den Wert für den Autorisierungsqualifizierer aus der Dropdownliste. |
-| ISA2 |Optional. Geben Sie den Wert für den Autorisierungsqualifizierer ein. Wenn Sie für ISA1 einen anderen Wert als 00 eingegeben haben, geben Sie mindestens ein alphanumerisches Zeichen und maximal 10 ein. |
-| ISA3 (Sicherheitsqualifizierer) |Wählen Sie den Wert für den Sicherheitsqualifizierer aus der Dropdownliste. |
-| ISA4 |Optional. Geben Sie den Wert für Sicherheitsinformationen ein. Wenn Sie für ISA3 einen anderen Wert als 00 eingegeben haben, geben Sie mindestens ein alphanumerisches Zeichen und maximal 10 ein. |
+|----------|-------------|
+| **ISA1 (Autorisierungsqualifizierer)** | Der Wert des Autorisierungsqualifizierers, den Sie verwenden möchten. Der Standardwert ist **00 – Keine Autorisierungsinformationen vorhanden**. <p>**Hinweis**: Wenn Sie andere Werte auswählen, geben Sie einen Wert für die Eigenschaft **ISA2** an. |
+| **ISA2** | Der Wert der Autorisierungsinformationen, der verwendet werden soll, wenn die Eigenschaft **ISA1** nicht **00 – Keine Autorisierungsinformationen vorhanden** lautet. Dieser Eigenschaftswert muss aus mindestens einem alphanumerischen Zeichen und maximal 10 Zeichen bestehen. |
+| **ISA3 (Sicherheitsqualifizierer)** | Der Wert des Sicherheitsqualifizierers, den Sie verwenden möchten. Der Standardwert ist **00 – Keine Sicherheitsinformationen vorhanden**. <p>**Hinweis**: Wenn Sie andere Werte auswählen, geben Sie einen Wert für die Eigenschaft **ISA4** an. |
+| **ISA4** | Der Wert der Sicherheitsinformationen, der verwendet werden soll, wenn die Eigenschaft **ISA3** nicht **00 – Keine Sicherheitsinformationen vorhanden** lautet. Dieser Eigenschaftswert muss aus mindestens einem alphanumerischen Zeichen und maximal 10 Zeichen bestehen. |
+|||
 
-### <a name="acknowledgment"></a>Bestätigung
+<a name="inbound-acknowledgement"></a>
 
-![Bestätigungseigenschaften festlegen](./media/logic-apps-enterprise-integration-x12/x12-3.png) 
+### <a name="receive-settings---acknowledgement"></a>Empfangseinstellungen – Bestätigung
 
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| TA1 erwartet |Gibt eine technische Bestätigung an den Absender des Austauschs zurück. |
-| FA erwartet |Gibt eine Funktionsbestätigung an den Absender des Austauschs zurück. Wählen Sie dann basierend auf den Schemaversionen, mit denen Sie arbeiten, ob Sie die Bestätigungen des Typs 997 oder 999 wünschen. |
-| AK2/IK2-Schleife einschließen |Aktiviert die Generierung von AK2-Schleifen in Funktionsbestätigungen für akzeptierte Transaktionssätze |
-
-### <a name="schemas"></a>Schemas
-
-Wählen Sie ein Schema für jeden Transaktionstyp (ST1) und jede Absenderanwendung (GS2) aus. Die Empfangspipeline disassembliert die eingehende Nachricht durch Abstimmen der Werte für ST1 und GS2 in der eingehenden Nachricht mit den hier festgelegten Werten und des Schemas der eingehenden Nachricht mit dem Schema, das Sie hier festlegen.
-
-![Schema auswählen](./media/logic-apps-enterprise-integration-x12/x12-33.png) 
+![Bestätigung für eingehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-acknowledgement.png)
 
 | Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Version |Wählen Sie die X12-Version. |
-| Transaktionstyp (ST01) |Wählen Sie den Transaktionstyp. |
-| Absenderanwendung (GS02) |Wählen Sie die Absenderanwendung. |
-| Schema |Wählen Sie die gewünschte Schemadatei aus. Schemas werden Ihrem Integrationskonto hinzugefügt. |
+|----------|-------------|
+| **TA1 erwartet** | Gibt eine technische Bestätigung (TA1) an den Absender des Austauschs zurück. |
+| **FA erwartet** | Gibt eine funktionale Bestätigung (FA) an den Absender des Austauschs zurück. <p>Wählen Sie basierend auf der Schemaversion für die **FA-Version** Die Bestätigungen des Typs 997 oder 999 aus. <p>Um die Generierung von AK2-Schleifen in funktionalen Bestätigungen für akzeptierte Transaktionssätze zu aktivieren, wählen Sie **AK2-/IK2-Schleife einschließen** aus. |
+||||
 
-> [!NOTE]
-> Konfigurieren Sie das erforderliche [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md), das in Ihr [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md) hochgeladen wird.
+<a name="inbound-schemas"></a>
 
-### <a name="envelopes"></a>Umschläge
+### <a name="receive-settings---schemas"></a>Empfangseinstellungen – Schemas
 
-![Trennzeichen in einem Transaktionssatz angeben: „Standardbezeichner“ oder „Wiederholungstrennzeichen“](./media/logic-apps-enterprise-integration-x12/x12-34.png)
+![Schemas für eingehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-schemas.png)
 
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| ISA11-Verwendung |Gibt das Trennzeichen an, das in einem Transaktionssatz verwendet werden soll: <p>Wählen Sie **Standardbezeichner** aus, um anstelle der Dezimalschreibweise des eingehenden Dokuments in der EDI-Empfangspipeline einen Punkt (.) für die Dezimalschreibweise zu verwenden. <p>Wählen Sie **Wiederholungstrennzeichen** aus, um das Trennzeichen für wiederholte Vorkommen eines einfachen Datenelements oder einer wiederholten Datenstruktur anzugeben. Als Wiederholungstrennzeichen wird beispielsweise in der Regel das Caretzeichen (^) verwendet. Für HIPAA-Schemas können Sie ausschließlich das Caretzeichen verwenden. |
-
-### <a name="control-numbers"></a>Kontrollnummern
-
-![Behandlung von Kontrollnummernduplikaten auswählen](./media/logic-apps-enterprise-integration-x12/x12-35.png) 
+Wählen Sie für diesen Abschnitt ein [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) in Ihrem [Integrationskonto](./logic-apps-enterprise-integration-create-integration-account.md) für jeden Transaktionstyp (ST01) und jede Absenderanwendung (GS02) aus. Die EDI-Empfangspipeline disassembliert die eingehende Nachricht durch Abgleich der Werte und des Schemas, die Sie in diesem Abschnitt festgelegt haben, mit den Werten für ST01 und GS02 in der eingehenden Nachricht sowie mit dem Schema der eingehenden Nachricht. Nach Abschluss aller einzelnen Zeilen wird automatisch eine neue leere Zeile angezeigt.
 
 | Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Doppelte Austauschkontrollnummern nicht zulassen |Blockiert doppelte Austauschvorgänge. Überprüft die Austauschkontrollnummer (ISA13) auf die empfangene Austauschkontrollnummer. Wird eine Übereinstimmung gefunden, verarbeitet die Empfangspipeline den Austausch nicht. Sie können den Zeitraum für die Überprüfung angeben, indem Sie einen Wert für *Auf ISA13-Duplikate überprüfen alle (Tage)* festlegen. |
-| Doppelte Gruppenkontrollnummern nicht zulassen |Blockiert Austauschvorgänge mit doppelten Gruppenkontrollnummern. |
-| Doppelte Transaktionssatz-Kontrollnummern nicht zulassen |Blockiert Austauschvorgänge mit doppelten Transaktionssatz-Kontrollnummern. |
+|----------|-------------|
+| **Version** | Die X12-Version für das Schema. |
+| **Transaktionstyp (ST01)** | Der Transaktionstyp. |
+| **Absenderanwendung (GS02)** | Die Absenderanwendung. |
+| **Schema** | Die Schemadatei, die verwendet werden soll. |
+|||
 
-### <a name="validations"></a>Überprüfungen
+<a name="inbound-envelopes"></a>
 
-![Überprüfungseigenschaften für empfangene Nachrichten festlegen](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
+### <a name="receive-settings---envelopes"></a>Empfangseinstellungen – Umschläge
 
-Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine weitere hinzugefügt. Wenn Sie keine Regeln angeben, verwendet die Überprüfung die Standardzeile.
-
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Nachrichtentyp |Wählen Sie den EDI-Nachrichtentyp aus. |
-| EDI-Überprüfung |Die EDI-Überprüfung erfolgt für Datentypen gemäß den EDI-Eigenschaften des Schemas, Längenbeschränkungen, leeren Datenelementen und nachfolgenden Trennzeichen. |
-| Erweiterte Überprüfung |Wenn der Datentyp nicht EDI ist, werden die Datenelementanforderung sowie zulässige Wiederholung, Enumerationen und Datenelementlänge (Min./Max.) überprüft. |
-| Führende/nachfolgende Nullen zulassen |Behält alle zusätzlichen führenden oder nachfolgenden Nullen und Leerzeichen bei. Diese Zeichen werden nicht entfernt. |
-| Führende/nachgestellte Nullen abschneiden |Entfernt führende oder nachfolgende Nullen und Leerzeichen. |
-| Richtlinie für nachgestellte Trennzeichen |Generiert nachfolgende Trennzeichen. <p>Wählen Sie **Nicht zulässig** aus, wenn der empfangene Austauschvorgang keine nachfolgenden Trennzeichen enthalten darf. Wenn der Austauschvorgang nachfolgende Trennzeichen enthält, wird er als ungültig deklariert. <p>Wählen Sie **Optional** , um Austauschvorgänge mit oder ohne nachgestellte Trennzeichen zu akzeptieren. <p>Wählen Sie **Erforderlich** aus, wenn der Austauschvorgang nachfolgende Trennzeichen enthalten muss. |
-
-### <a name="internal-settings"></a>Interne Einstellungen
-
-![Interne Einstellungen auswählen](./media/logic-apps-enterprise-integration-x12/x12-37.png) 
+![Trennzeichen, die in Transaktionssätzen für eingehende Nachrichten verwendet werden sollen.](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-envelopes.png)
 
 | Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Implizite Dezimalzahlen im Nn-Format in Zehnerlogarithmuswerte einer Zahl konvertieren |Konvertiert einen im Nn-Format angegebenen EDI-Wert in einen Zehnerlogarithmuswert. |
-| Leere XML-Tags erstellen, wenn nachfolgende Trennzeichen zulässig sind |Aktivieren Sie dieses Kontrollkästchen, damit der Austauschabsender leere XML-Tags für nachfolgende Trennzeichen einbezieht. |
-| Austausch in Transaktionssätze trennen – Transaktionssätze bei Fehler anhalten|Analysiert jeden Transaktionssatz in einem Austausch in ein separates XML-Dokument, indem der geeignete Umschlag auf den Transaktionssatz angewendet wird. Hält nur die Transaktionen an, bei denen die Überprüfung nicht erfolgreich war. |
-| Austausch in Transaktionssätze trennen – Austausch bei Fehler anhalten|Analysiert jeden Transaktionssatz in einem Austausch in ein separates XML-Dokument, indem der geeignete Umschlag angewendet wird. Hält den gesamten Austausch an, wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht. | 
-| Austausch beibehalten – Transaktionssätze bei Fehler anhalten |Behält den Austausch bei und erstellt ein XML-Dokument für den gesamten Batchaustausch. Hält nur die Transaktionssätze an, die die Überprüfung nicht bestehen. Alle anderen Transaktionssätze werden verarbeitet. |
-| Austausch beibehalten – Austausch bei Fehler anhalten |Behält den Austausch bei und erstellt ein XML-Dokument für den gesamten Batchaustausch. Hält den gesamten Austausch an, wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht. |
+|----------|-------------|
+| **ISA11-Verwendung** | Das Trennzeichen, das in einem Transaktionssatz verwendet werden soll: <p>- **Standardbezeichner**: Verwenden Sie anstelle der Dezimalschreibweise des eingehenden Dokuments in der EDI-Empfangspipeline einen Punkt (.) als Dezimalschreibweise. <p>- **Wiederholungstrennzeichen**: Geben Sie das Trennzeichen für wiederholte Vorkommen eines einfachen Datenelements oder einer wiederholten Datenstruktur an. Als Wiederholungstrennzeichen wird beispielsweise in der Regel das Caretzeichen (^) verwendet. Für HIPAA-Schemas können Sie ausschließlich das Caretzeichen verwenden. |
+|||
 
-## <a name="configure-how-your-agreement-sends-messages"></a>Konfigurieren des Nachrichtenversands Ihrer Vereinbarung
+<a name="inbound-control-numbers"></a>
 
-Sie können konfigurieren, wie Ihre Vereinbarung ausgehende Nachrichten identifizieren und behandeln soll, die Sie im Rahmen dieser Vereinbarung an Ihren Partner senden.
+### <a name="receive-settings---control-numbers"></a>Empfangseinstellungen – Kontrollnummern
 
-1.  Wählen Sie unter **Hinzufügen** die Option **Sendeeinstellungen** aus.
-Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die Eigenschaften werden in den Tabellen in diesem Abschnitt beschrieben.
-
-    **Sendeeinstellungen** sind in die folgenden Abschnitte unterteilt: „Bezeichner“, „Bestätigung“, „Schemas“, „Umschläge“, „Zeichensätze und Trennzeichen“, „Kontrollnummern“ und „Überprüfung“.
-
-2. Klicken Sie abschließend auf **OK**, um die Einstellungen zu speichern.
-
-Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewählten Einstellungen entsprechen.
-
-### <a name="identifiers"></a>Bezeichner
-
-![Bezeichnereigenschaften festlegen](./media/logic-apps-enterprise-integration-x12/x12-4.png)  
+![Behandeln von Kontrollnummernduplikaten für eingehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-control-numbers.png) 
 
 | Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Autorisierungsqualifizierer (ISA1) |Wählen Sie den Wert für den Autorisierungsqualifizierer aus der Dropdownliste. |
-| ISA2 |Geben Sie den Wert für den Autorisierungsqualifizierer ein. Wenn dieser Wert nicht 00 ist, geben Sie mindestens ein alphanumerisches Zeichen und maximal 10 ein. |
-| Sicherheitsqualifizierer (ISA3) |Wählen Sie den Wert für den Sicherheitsqualifizierer aus der Dropdownliste. |
-| ISA4 |Geben Sie den Wert für Sicherheitsinformationen ein. Wenn dieser Wert nicht 00 ist, geben Sie für den Wert (ISA4) im Textfeld mindestens ein alphanumerisches Zeichen und maximal 10 ein. |
+|----------|-------------|
+| **Doppelte Austauschkontrollnummern nicht zulassen** | Blockiert doppelte Austauschvorgänge. Überprüft die Austauschkontrollnummer (ISA13) auf die empfangene Austauschkontrollnummer. Wird eine Übereinstimmung gefunden, verarbeitet die EDI-Empfangspipeline den Austausch nicht. <p><p>Um die Anzahl der Tage anzugeben, an denen die Überprüfung durchgeführt werden soll, geben Sie einen Wert für die Eigenschaft **Auf ISA13-Duplikate überprüfen alle (Tage)** ein. |
+| **Doppelte Gruppenkontrollnummern nicht zulassen** | Blockiert Austauschvorgänge, die doppelte Gruppenkontrollnummern enthalten. |
+| **Doppelte Transaktionssatz-Kontrollnummern nicht zulassen** | Blockiert Austauschvorgänge, die doppelte Transaktionssatz-Kontrollnummern enthalten. |
+|||
 
-### <a name="acknowledgment"></a>Bestätigung
+<a name="inbound-validations"></a>
 
-![Bestätigungseigenschaften festlegen](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
+### <a name="receive-settings---validations"></a>Empfangseinstellungen – Überprüfungen
 
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| TA1 erwartet |Gibt eine technische Bestätigung (TA1) an den Absender des Austauschs zurück. Diese Einstellung gibt an, dass der Hostpartner, der die Nachricht sendet, eine Bestätigung vom Gastpartner in der Vereinbarung anfordert. Diese Bestätigungen werden vom Hostpartner basierend auf den Empfangseinstellungen der Vereinbarung erwartet. |
-| FA erwartet |Gibt eine funktionale Bestätigung (FA) an den Absender des Austauschs zurück. Wählen Sie auf der Grundlage der verwendeten Schemaversionen aus, ob Sie 997- oder 999-Bestätigungen verwenden möchten. Diese Bestätigungen werden vom Hostpartner basierend auf den Empfangseinstellungen der Vereinbarung erwartet. |
-| FA-Version |Wählen Sie die FA-Version. |
+![Überprüfungen für eingehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-validations.png)
 
-### <a name="schemas"></a>Schemas
-
-![Zu verwendendes Schema auswählen](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
+In der Zeile **Standard** werden die Überprüfungsregeln angezeigt, die für einen EDI-Nachrichtentyp verwendet werden. Wenn Sie unterschiedliche Regeln definieren möchten, wählen Sie jedes Feld aus, für das die Regel auf **true** festgelegt werden soll. Nach Abschluss aller einzelnen Zeilen wird automatisch eine neue leere Zeile angezeigt.
 
 | Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Version |Wählen Sie die X12-Version. |
-| Transaktionstyp (ST01) |Wählen Sie den Transaktionstyp. |
-| Schema |Wählen Sie das zu verwendende Schema aus. Schemas befinden sich in Ihrem Integrationskonto. Wenn Sie das Schema zuerst ausgewählt haben, konfiguriert es automatisch die Version und den Transaktionstyp.  |
+|----------|-------------|
+| **Nachrichtentyp** | Der EDI-Nachrichtentyp. |
+| **EDI-Überprüfung** | Die EDI-Überprüfung erfolgt für Datentypen gemäß den EDI-Eigenschaften des Schemas, Längenbeschränkungen, leeren Datenelementen und nachfolgenden Trennzeichen. |
+| **Erweiterte Überprüfung** | Wenn der Datentyp nicht EDI ist, werden die Datenelementanforderung sowie zulässige Wiederholung, Enumerationen und Datenelementlänge (Min. oder Max.) überprüft. |
+| **Führende/nachfolgende Nullen zulassen** | Behält alle zusätzlichen führenden oder nachfolgenden Nullen und Leerzeichen bei. Diese Zeichen werden nicht entfernt. |
+| **Führende/nachfolgende Nullen abschneiden** | Entfernt jegliche führende oder nachfolgende Nullen und Leerzeichen. |
+| **Richtlinie für nachfolgende Trennzeichen** | Generiert nachfolgende Trennzeichen. <p>- **Nicht zulässig**: Verhindert nachfolgende Trennzeichen im eingehenden Austauschvorgang. Wenn der Austauschvorgang nachfolgende Trennzeichen enthält, wird er als ungültig deklariert. <p>- **Optional**: Akzeptiert Austauschvorgänge mit oder ohne nachfolgende Trennzeichen. <p>- **Obligatorisch**: Der eingehende Austauschvorgang muss nachfolgende Trennzeichen enthalten. |
+|||
 
-> [!NOTE]
-> Konfigurieren Sie das erforderliche [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md), das in Ihr [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md) hochgeladen wird.
+<a name="inbound-internal-settings"></a>
 
-### <a name="envelopes"></a>Umschläge
+### <a name="receive-settings---internal-settings"></a>Empfangseinstellungen – Interne Einstellungen
 
-![Trennzeichen in einem Transaktionssatz angeben: „Standardbezeichner“ oder „Wiederholungstrennzeichen“](./media/logic-apps-enterprise-integration-x12/x12-6.png) 
-
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| ISA11-Verwendung |Gibt das Trennzeichen an, das in einem Transaktionssatz verwendet werden soll: <p>Wählen Sie **Standardbezeichner** aus, um anstelle der Dezimalschreibweise des eingehenden Dokuments in der EDI-Empfangspipeline einen Punkt (.) für die Dezimalschreibweise zu verwenden. <p>Wählen Sie **Wiederholungstrennzeichen** aus, um das Trennzeichen für wiederholte Vorkommen eines einfachen Datenelements oder einer wiederholten Datenstruktur anzugeben. Als Wiederholungstrennzeichen wird beispielsweise in der Regel das Caretzeichen (^) verwendet. Für HIPAA-Schemas können Sie ausschließlich das Caretzeichen verwenden. |
-
-### <a name="control-numbers"></a>Kontrollnummern
-
-![Kontrollnummerneigenschaften angeben](./media/logic-apps-enterprise-integration-x12/x12-8.png) 
+![Interne Einstellungen für eingehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-internal-settings.png)
 
 | Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Kontrollversionsnummer (ISA12) |Wählen der Version des X12-Standards |
-| Verwendungsindikator (ISA15) |Wählen des Kontexts eines Austauschs.  Die Werte sind Informationen, Produktionsdaten oder Testdaten. |
-| SCHEMA |Generiert die GS- und ST-Segmente für einen X12-codierten Austausch, der an die Sendepipeline gesendet wird. |
-| GS1 |Optional, einen Wert für den Funktionscode in der Dropdownliste wählen |
-| GS2 |Optional, Anwendungsabsender |
-| GS3 |Optional, Anwendungsempfänger |
-| GS4 |CCYYMMDD oder YYMMDD wählen |
-| GS5 |Optional, HHMM, HHMMSS oder HHMMSSdd wählen |
-| GS7 |Optional, einen Wert für die zuständige Agentur in der Dropdownliste wählen |
-| GS8 |Optional, Version des Dokuments |
-| Austauschkontrollnummer (ISA13) |Erforderlich, einen Wertebereich für die Austauschkontrollnummer eingeben. Geben Sie einen numerischen Wert von mindestens 1 und maximal 999999999 ein. |
-| Gruppenkontrollnummer (GS06) |Erforderlich, einen Wertebereich für die Gruppenkontrollnummer eingeben. Geben Sie einen numerischen Wert von mindestens 1 und maximal 999999999 ein. |
-| Transaktionssatz-Kontrollnummer (ST02) |Erforderlich, einen Wertebereich für die Transaktionssatz-Kontrollnummer eingeben. Geben Sie einen numerischen Wertebereich von mindestens 1 und maximal 999999999 ein. |
-| Präfix |Optional, vorgesehen für den Bereich von Transaktionssatz-Kontrollnummern, die in der Bestätigung verwendet werden. Geben Sie einen numerischen Wert für die beiden mittleren Felder und einen alphanumerischen Wert (falls gewünscht) für die Felder Präfix und Suffix ein. Die mittleren Felder sind erforderlich und enthalten die minimalen und maximalen Werte für die Kontrollnummer. |
-| Suffix |Optional, vorgesehen für den Bereich von Transaktionssatz-Kontrollnummern, die in einer Bestätigung verwendet werden. Geben Sie einen numerischen Wert für die beiden mittleren Felder und einen alphanumerischen Wert (falls gewünscht) für die Felder mit dem Präfix und Suffix ein. Die mittleren Felder sind erforderlich und enthalten die minimalen und maximalen Werte für die Kontrollnummer. |
+|----------|-------------|
+| **Implizite Dezimalzahlen im Nn-Format in numerischen Wert zur Basis 10 konvertieren** | Konvertiert einen im Nn-Format angegebenen EDI-Wert in einen numerischen Wert zur Basis 10. |
+| **Leere XML-Tags erstellen, wenn nachfolgende Trennzeichen zulässig sind** | Den Austauschabsender veranlassen, leere XML-Tags für nachfolgende Trennzeichen einzubeziehen. |
+| **Trennen des Austauschs in Transaktionssätze – Transaktionssätze bei Fehler anhalten** | Analysiert jeden Transaktionssatz, der sich in einem Austausch befindet, in ein separates XML-Dokument, indem der geeignete Umschlag auf den Transaktionssatz angewendet wird. Hält nur die Transaktionen an, bei denen die Überprüfung nicht erfolgreich war. |
+| **Trennen des Austauschs in Transaktionssätze – Austausch bei Fehler anhalten** | Analysiert jeden Transaktionssatz, der sich in einem Austausch befindet, in ein separates XML-Dokument, indem der geeignete Umschlag angewendet wird. Hält den gesamten Austausch an, wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht. |
+| **Austausch beibehalten – Transaktionssätze bei Fehler anhalten** | Behält den Austausch bei und erstellt ein XML-Dokument für den gesamten Batchaustausch. Hält nur die Transaktionssätze an, die die Überprüfung nicht bestehen, setzt aber die Verarbeitung aller anderen Transaktionssätze fort. |
+| **Austausch beibehalten – Austausch bei Fehler anhalten** |Behält den Austausch bei und erstellt ein XML-Dokument für den gesamten Batchaustausch. Hält den gesamten Austausch an, wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht. |
+|||
 
-### <a name="character-sets-and-separators"></a>Zeichensätze und Trennzeichen
+<a name="send-settings"></a>
 
-Anders als beim Zeichensatz können Sie für jeden Nachrichtentyp einen anderen Trennzeichensatz eingeben. Ist für ein Nachrichtenschema kein Zeichensatz angegeben, wird der Standardzeichensatz verwendet.
+## <a name="send-settings"></a>Sendeeinstellungen
 
-![Trennzeichen für Nachrichtentypen angeben](./media/logic-apps-enterprise-integration-x12/x12-9.png) 
+Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigurieren, wie die Vereinbarung ausgehende Nachrichten identifizieren und behandeln soll, die Sie im Rahmen dieser Vereinbarung an Ihren Partner senden.
+
+1. Wählen Sie unter **Hinzufügen** die Option **Sendeeinstellungen** aus.
+
+1. Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die Eigenschaften werden in den Tabellen in diesem Abschnitt beschrieben.
+
+   Die **Sendeeinstellungen** sind in diese Abschnitte unterteilt:
+
+   * [Identifiers (Bezeichner)](#outbound-identifiers)
+   * [Bestätigung ](#outbound-acknowledgement)
+   * [Schemas](#outbound-schemas)
+   * [Umschläge](#outbound-envelopes)
+   * [Kontrollversionsnummer](#outbound-control-version-number)
+   * [Kontrollnummern](#outbound-control-numbers)
+   * [Zeichensätze und Trennzeichen](#outbound-character-sets-separators)
+   * [Überprüfung](#outbound-validation)
+
+1. Wählen Sie abschließend **OK** aus, um die Einstellungen zu speichern.
+
+<a name="outbound-identifiers"></a>
+
+### <a name="send-settings---identifiers"></a>Sendeeinstellungen – Bezeichner
+
+![Bezeichnereigenschaften für ausgehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-identifiers.png)
 
 | Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Zu verwendender Zeichensatz |Wählen Sie zum Überprüfen der Eigenschaften den X12-Zeichensatz aus. Verfügbare Optionen: „Basic“, „Extended“ und „UTF8“. |
-| Schema |Wählen Sie in der Dropdownliste ein Schema aus. Nach Abschluss der einzelnen Zeilen wird jeweils automatisch eine neue Zeile hinzugefügt. Wählen Sie für das ausgewählte Schema den gewünschten Trennzeichensatz aus. Orientieren Sie sich dabei an den folgenden Trennzeichenbeschreibungen. |
-| Eingabetyp |Wählen Sie in der Dropdownliste einen Eingabetyp aus. |
-| Komponententrennzeichen |Geben Sie ein einzelnes Zeichen zum Trennen zusammengesetzter Datenelemente ein. |
-| Datenelementtrennzeichen |Geben Sie ein einzelnes Zeichen zum Trennen einfacher Datenelemente in zusammengesetzten Datenelementen ein. |
-| Ersetzungszeichen |Geben Sie ein Ersetzungszeichen ein, mit dem beim Generieren der ausgehenden X12-Nachricht alle Trennzeichen in den Nutzlastdaten ersetzt werden. |
-| Segmentabschlusszeichen |Geben Sie ein einzelnes Zeichen ein, um das Ende eines EDI-Segments anzugeben. |
-| Suffix |Wählen Sie das Zeichen, das mit dem Segmentbezeichner verwendet wird. Wenn Sie ein Suffix angeben, kann das Segmentabschlusszeichen-Datenelement leer sein. Wenn das Segmentabschlusszeichen leer gelassen wird, müssen Sie ein Suffix angeben. |
+|----------|-------------|
+| **ISA1 (Autorisierungsqualifizierer)** | Der Wert des Autorisierungsqualifizierers, den Sie verwenden möchten. Der Standardwert ist **00 – Keine Autorisierungsinformationen vorhanden**. <p>**Hinweis**: Wenn Sie andere Werte auswählen, geben Sie einen Wert für die Eigenschaft **ISA2** an. |
+| **ISA2** | Der Wert der Autorisierungsinformationen, der verwendet werden soll, wenn die Eigenschaft **ISA1** nicht **00 – Keine Autorisierungsinformationen vorhanden** lautet. Dieser Eigenschaftswert muss aus mindestens einem alphanumerischen Zeichen und maximal 10 Zeichen bestehen. |
+| **ISA3 (Sicherheitsqualifizierer)** | Der Wert des Sicherheitsqualifizierers, den Sie verwenden möchten. Der Standardwert ist **00 – Keine Sicherheitsinformationen vorhanden**. <p>**Hinweis**: Wenn Sie andere Werte auswählen, geben Sie einen Wert für die Eigenschaft **ISA4** an. |
+| **ISA4** | Der Wert der Sicherheitsinformationen, der verwendet werden soll, wenn die Eigenschaft **ISA3** nicht **00 – Keine Sicherheitsinformationen vorhanden** lautet. Dieser Eigenschaftswert muss aus mindestens einem alphanumerischen Zeichen und maximal 10 Zeichen bestehen. |
+|||
+
+<a name="outbound-acknowledgement"></a>
+
+### <a name="send-settings---acknowledgement"></a>Sendeeinstellungen – Bestätigung
+
+![Bestätigungseigenschaften für ausgehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-acknowledgement.png)
+
+| Eigenschaft | BESCHREIBUNG |
+|----------|-------------|
+| **TA1 erwartet** | Gibt eine technische Bestätigung (TA1) an den Absender des Austauschs zurück. <p>Diese Einstellung gibt an, dass der Hostpartner, der die Nachricht sendet, eine Bestätigung vom Gastpartner in der Vereinbarung anfordert. Diese Bestätigungen werden vom Hostpartner basierend auf den Empfangseinstellungen der Vereinbarung erwartet. |
+| **FA erwartet** | Gibt eine funktionale Bestätigung (FA) an den Absender des Austauschs zurück. Wählen Sie basierend auf der Schemaversion für die **FA-Version** Die Bestätigungen des Typs 997 oder 999 aus. <p>Diese Einstellung gibt an, dass der Hostpartner, der die Nachricht sendet, eine Bestätigung vom Gastpartner in der Vereinbarung anfordert. Diese Bestätigungen werden vom Hostpartner basierend auf den Empfangseinstellungen der Vereinbarung erwartet. |
+|||
+
+<a name="outbound-schemas"></a>
+
+### <a name="send-settings---schemas"></a>Sendeeinstellungen – Schemas
+
+![Schemas für ausgehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-schemas.png)
+
+Wählen Sie für diesen Abschnitt ein [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) in Ihrem [Integrationskonto](./logic-apps-enterprise-integration-create-integration-account.md) für jeden Transaktionstyp (ST01) aus. Nach Abschluss aller einzelnen Zeilen wird automatisch eine neue leere Zeile angezeigt.
+
+| Eigenschaft | BESCHREIBUNG |
+|----------|-------------|
+| **Version** | Die X12-Version für das Schema. |
+| **Transaktionstyp (ST01)** | Der Transaktionstyp für das Schema. |
+| **Schema** | Die Schemadatei, die verwendet werden soll. Wenn Sie das Schema zuerst auswählen, werden die Version und der Transaktionstyp automatisch festgelegt. |
+|||
+
+<a name="outbound-envelopes"></a>
+
+### <a name="send-settings---envelopes"></a>Sendeeinstellungen – Umschläge
+
+![Trennzeichen in einem Transaktionssatz, der für eingehende Nachrichten verwendet werden soll.](./media/logic-apps-enterprise-integration-x12/x12-send-settings-envelopes.png)
+
+| Eigenschaft | BESCHREIBUNG |
+|----------|-------------|
+| **ISA11-Verwendung** | Das Trennzeichen, das in einem Transaktionssatz verwendet werden soll: <p>- **Standardbezeichner**: Verwenden Sie anstelle der Dezimalschreibweise des ausgehenden Dokuments in der EDI-Sendepipeline einen Punkt (.) als Dezimalschreibweise. <p>- **Wiederholungstrennzeichen**: Geben Sie das Trennzeichen für wiederholte Vorkommen eines einfachen Datenelements oder einer wiederholten Datenstruktur an. Als Wiederholungstrennzeichen wird beispielsweise in der Regel das Caretzeichen (^) verwendet. Für HIPAA-Schemas können Sie ausschließlich das Caretzeichen verwenden. |
+|||
+
+<a name="outbound-control-version-number"></a>
+
+### <a name="send-settings---control-version-number"></a>Sendeeinstellungen – Kontrollversionsnummer
+
+![Kontrollversionsnummer für ausgehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-version-number.png)
+
+Wählen Sie für diesen Abschnitt ein [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) in Ihrem [Integrationskonto](./logic-apps-enterprise-integration-create-integration-account.md) für jeden Austauschvorgang aus. Nach Abschluss aller einzelnen Zeilen wird automatisch eine neue leere Zeile angezeigt.
+
+| Eigenschaft | BESCHREIBUNG |
+|----------|-------------|
+| **Kontrollversionsnummer (ISA12)** | Die Version des X12-Standards. |
+| **Verwendungsindikator (ISA15)** | Der Kontext eines Austauschs, bei dem es sich um **Test** daten, **Information** sdaten oder **Produktion** sdaten handelt. |
+| **Schema** | Das zu verwendende Schema für die Generierung der GS- und ST-Segmente für einen X12-codierten Austausch, der an die EDI-Sendepipeline gesendet wird. |
+| **GS1** | Optional. Wählen Sie den Funktionscode aus. |
+| **GS2** | Optional. Geben Sie den Anwendungsabsender an. |
+| **GS3** | Optional. Geben Sie den Anwendungsempfänger an. |
+| **GS4** | Optional. Wählen Sie **CCYYMMDD** oder **YYMMDD** aus. |
+| **GS5** | Optional. Wählen Sie **HHMM**, **HHMMSS** oder **HHMMSSdd** aus. |
+| **GS7** | Optional. Wählen Sie einen Wert für die zuständige Agentur aus. |
+| **GS8** | Optional. Geben Sie die Schemadokumentversion an. |
+|||
+
+<a name="outbound-control-numbers"></a>
+
+### <a name="send-settings---control-numbers"></a>Sendeeinstellungen – Kontrollnummern
+
+![Kontrollnummern für ausgehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-numbers.png)
+
+| Eigenschaft | BESCHREIBUNG |
+|----------|-------------|
+| **Austauschkontrollnummer (ISA13)** | Der Wertebereich für die Austauschkontrollnummer, der mindestens den Wert 1 und höchsten einen Wert von 999999999 haben kann. |
+| **Gruppenkontrollnummer (GS06)** | Der Wertebereich für die Gruppenkontrollnummer, der mindestens den Wert 1 und höchstens einen Wert von 999999999 haben kann. |
+| **Transaktionssatz-Kontrollnummer (ST02)** | Der Wertebereich für die Transaktionssatz-Kontrollnummer, der mindestens den Wert 1 und höchstens einen Wert von 999999999 haben kann. <p>- **Präfix**: Optional. Ein alphanumerischer Wert. <br>- **Suffix**: Optional. Ein alphanumerischer Wert. |
+|||
+
+<a name="outbound-character-sets-separators"></a>
+
+### <a name="send-settings---character-sets-and-separators"></a>Sendeeinstellungen – Zeichensätze und Trennzeichen
+
+![Trennzeichen für Nachrichtentypen in ausgehenden Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-character-sets-separators.png)
+
+In der Zeile **Standard** wird der Zeichensatz angezeigt, der als Trennzeichen für ein Nachrichtenschema verwendet wird. Wenn Sie den **Standard**-Zeichensatz nicht verwenden möchten, können Sie einen anderen Satz von Trennzeichen für jeden Nachrichtentyp eingeben. Nach Abschluss aller einzelnen Zeilen wird automatisch eine neue leere Zeile angezeigt.
 
 > [!TIP]
 > Um Werte für Sonderzeichen bereitzustellen, bearbeiten Sie die Vereinbarung als JSON, und geben Sie den ASCII-Wert für das Sonderzeichen an.
 
-### <a name="validation"></a>Überprüfen
+| Eigenschaft | BESCHREIBUNG |
+|----------|-------------|
+| **Zu verwendender Zeichensatz** | Der X12-Zeichensatz, der entweder **Basic**, **Erweitert** oder **UTF8** ist. |
+| **Schema** | Das Schema, das verwendet werden soll. Nachdem Sie das Schema ausgewählt haben, wählen Sie den gewünschten Zeichensatz aus. Orientieren Sie sich dabei an den folgenden Trennzeichenbeschreibungen. |
+| **Eingabetyp** | Der Eingabetyp für den Zeichensatz. |
+| **Komponententrennzeichen** | Ein einzelnes Zeichen, das zusammengesetzte Datenelemente trennt. |
+| **Datenelementtrennzeichen** | Ein einzelnes Zeichen, das einfache Datenelemente in zusammengesetzten Datenelementen trennt. |
+| **Ersetzungstrennzeichen** | Ein Ersetzungszeichen, mit dem beim Generieren der ausgehenden X12-Nachricht alle Trennzeichen in den Nutzlastdaten ersetzt werden. |
+| **Segmentabschlusszeichen** | Ein einzelnes Zeichen, das das Ende eines EDI-Segments anzeigt. |
+| **Suffix** | Das Zeichen, das mit dem Segmentbezeichner verwendet werden soll. Wenn Sie ein Suffix angeben, kann das Segmentabschlusszeichen-Datenelement leer sein. Wenn das Segmentabschlusszeichen leer gelassen wird, müssen Sie ein Suffix angeben. |
+|||
 
-![Überprüfungseigenschaften für den Nachrichtenversand festlegen](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
+<a name="outbound-validation"></a>
 
-Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine weitere hinzugefügt. Wenn Sie keine Regeln angeben, verwendet die Überprüfung die Standardzeile.
+### <a name="send-settings---validation"></a>Sendeeinstellungen – Überprüfung
+
+![Überprüfungseigenschaften für ausgehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-validation.png) 
+
+In der Zeile **Standard** werden die Überprüfungsregeln angezeigt, die für einen EDI-Nachrichtentyp verwendet werden. Wenn Sie unterschiedliche Regeln definieren möchten, wählen Sie jedes Feld aus, für das die Regel auf **true** festgelegt werden soll. Nach Abschluss aller einzelnen Zeilen wird automatisch eine neue leere Zeile angezeigt.
 
 | Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Nachrichtentyp |Wählen Sie den EDI-Nachrichtentyp aus. |
-| EDI-Überprüfung |Die EDI-Überprüfung erfolgt für Datentypen gemäß den EDI-Eigenschaften des Schemas, Längenbeschränkungen, leeren Datenelementen und nachfolgenden Trennzeichen. |
-| Erweiterte Überprüfung |Wenn der Datentyp nicht EDI ist, werden die Datenelementanforderung sowie zulässige Wiederholung, Enumerationen und Datenelementlänge (Min./Max.) überprüft. |
-| Führende/nachfolgende Nullen zulassen |Behält alle zusätzlichen führenden oder nachfolgenden Nullen und Leerzeichen bei. Diese Zeichen werden nicht entfernt. |
-| Führende/nachgestellte Nullen abschneiden |Entfernt führende oder nachfolgende Nullen. |
-| Richtlinie für nachgestellte Trennzeichen |Generiert nachfolgende Trennzeichen. <p>Wählen Sie **Nicht zulässig** aus, wenn der gesendete Austauschvorgang keine nachfolgenden Trennzeichen enthalten darf. Wenn der Austauschvorgang nachfolgende Trennzeichen enthält, wird er als ungültig deklariert. <p>Wählen Sie **Optional** aus, um Austauschvorgänge mit und ohne nachgestellte Trennzeichen zu senden. <p>Wählen Sie **Erforderlich** aus, wenn der gesendete Austauschvorgang nachfolgende Trennzeichen enthalten muss. |
+|----------|-------------|
+| **Nachrichtentyp** | Der EDI-Nachrichtentyp. |
+| **EDI-Überprüfung** | Die EDI-Überprüfung erfolgt für Datentypen gemäß den EDI-Eigenschaften des Schemas, Längenbeschränkungen, leeren Datenelementen und nachfolgenden Trennzeichen. |
+| **Erweiterte Überprüfung** | Wenn der Datentyp nicht EDI ist, werden die Datenelementanforderung sowie zulässige Wiederholung, Enumerationen und Datenelementlänge (Min. oder Max.) überprüft. |
+| **Führende/nachfolgende Nullen zulassen** | Behält alle zusätzlichen führenden oder nachfolgenden Nullen und Leerzeichen bei. Diese Zeichen werden nicht entfernt. |
+| **Führende/nachfolgende Nullen abschneiden** | Entfernt jegliche führende oder nachfolgende Nullen und Leerzeichen. |
+| **Richtlinie für nachfolgende Trennzeichen** | Generiert nachfolgende Trennzeichen. <p>- **Nicht zulässig**: Verhindert nachfolgende Trennzeichen im ausgehenden Austauschvorgang. Wenn der Austauschvorgang nachfolgende Trennzeichen enthält, wird er als ungültig deklariert. <p>- **Optional**: Sendet Austauschvorgänge mit oder ohne nachfolgende Trennzeichen. <p>- **Obligatorisch**: Der ausgehende Austauschvorgang muss nachfolgende Trennzeichen enthalten. |
+|||
 
-## <a name="find-your-created-agreement"></a>Suchen der erstellten Vereinbarung
+<a name="hipaa-schemas"></a>
 
-1.  Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften auf der Seite **Hinzufügen** die Option **OK** aus, um die Erstellung Ihrer Vereinbarung abzuschließen und zu Ihrem Integrationskonto zurückzukehren.
+## <a name="hipaa-schemas-and-message-types"></a>HIPAA-Schemas und Nachrichtentypen
 
-    Die neu hinzugefügte Vereinbarung ist nun in der Liste **Vereinbarungen** enthalten.
+Wenn Sie mit HIPAA-Schemas und den Nachrichtentypen 277 oder 837 arbeiten, müssen Sie einige zusätzliche Schritte ausführen. Die [Dokumentversionsnummern (GS8)](#outbound-control-version-number) für diese Nachrichtentypen haben mehr als 9 Zeichen, z. B. „005010x222a1“. Außerdem sind einige Dokumentversionsnummern verschiedenen Nachrichtentypen zugeordnet. Wenn Sie in Ihrem Schema und in Ihrer Vereinbarung nicht auf den richtigen Nachrichtentyp verweisen, erhalten Sie die folgende Fehlermeldung:
 
-2.  Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie im Menü Ihres Integrationskontos die Option **Übersicht** aus, und wählen Sie dann die Kachel **Vereinbarungen** aus.
+`"The message has an unknown document type and did not resolve to any of the existing schemas configured in the agreement."`
 
-    ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
+In dieser Tabelle sind die betroffenen Nachrichtentypen, alle Varianten und die Dokumentversionsnummern aufgelistet, die diesen Nachrichtentypen zugeordnet sind:
 
-## <a name="view-the-swagger"></a>Anzeigen von Swagger
-Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/x12/). 
+| Nachrichtentyp oder -variante |  BESCHREIBUNG | Dokumentversionsnummer (GS8) |
+|-------------------------|--------------|-------------------------------|
+| 277 | Informationen im Gesundheitswesen: Statusbenachrichtigung (USA) | 005010X212 |
+| 837_I | Geltendmachung von Ansprüchen bei der Krankenkasse – Institution (USA) | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
+| 837_D | Geltendmachung von Ansprüchen bei der Krankenkasse – Zahnmedizin (USA) | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
+| 837_P | Geltendmachung von Ansprüchen bei der Krankenkasse – Professionell (USA) | 004010X098A1 <br>005010X222 <br>005010X222A1 |
+|||
 
-## <a name="learn-more"></a>Weitere Informationen
-* [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")  
+Sie müssen außerdem die EDI-Validierung deaktivieren, wenn Sie diese Dokumentversionsnummern verwenden, weil sie zu einem Fehler führen, der besagt, dass die Zeichenlänge ungültig ist.
 
+Um diese Dokumentversionsnummern und Nachrichtentypen anzugeben, führen Sie die folgenden Schritte aus:
+
+1. Ersetzen Sie in Ihrem HIPAA-Schema den aktuellen Nachrichtentyp durch die Nachrichtentypvariante für die Dokumentversionsnummer, die Sie verwenden möchten.
+
+   Angenommen, Sie möchten die Dokumentversionsnummer `005010X222A1` mit dem Nachrichtentyp `837` verwenden. Ersetzen Sie in Ihrem Schema jeden `"X12_00501_837"`-Wert stattdessen durch den Wert `"X12_00501_837_P"`.
+
+   Um Ihr Schema zu aktualisieren, führen Sie die folgenden Schritte aus:
+
+   1. Wechseln Sie im Azure-Portal zu Ihrem Integrationskonto. Suchen Sie Ihr Schema, und laden Sie es herunter. Ersetzen Sie den Nachrichtentyp, benennen Sie die Schemadatei um, und laden Sie Ihr überarbeitetes Schema in Ihr Integrationskonto hoch. Weitere Informationen finden Sie unter [Bearbeiten von Schemas](../logic-apps/logic-apps-enterprise-integration-schemas.md#edit-schemas).
+
+   1. Wählen Sie in den Nachrichteneinstellungen Ihrer Vereinbarung das überarbeitete Schema aus.
+
+1. Fügen Sie im `schemaReferences`-Objekt Ihrer Vereinbarung einen weiteren Eintrag hinzu, der die Nachrichtentypvariante angibt, die Ihrer Dokumentversionsnummer entspricht.
+
+   Angenommen, Sie möchten die Dokumentversionsnummer `005010X222A1` für den Nachrichtentyp `837` verwenden. Ihre Vereinbarung verfügt über einen `schemaReferences`-Abschnitt mit diesen Eigenschaften und Werten:
+
+   ```json
+   "schemaReferences": [
+      {
+         "messageId": "837",
+         "schemaVersion": "00501",
+         "schemaName": "X12_00501_837"
+      }
+   ]
+   ```
+
+   Fügen Sie in diesem `schemaReferences`-Abschnitt einen weiteren Eintrag mit den folgenden Werten hinzu:
+
+   * `"messageId": "837_P"`
+   * `"schemaVersion": "00501"`
+   * `"schemaName": "X12_00501_837_P"`
+
+   Wenn Sie fertig sind, sieht Ihr `schemaReferences`-Abschnitt wie folgt aus:
+
+   ```json
+   "schemaReferences": [
+      {
+         "messageId": "837",
+         "schemaVersion": "00501",
+         "schemaName": "X12_00501_837"
+      },
+      {
+         "messageId": "837_P",
+         "schemaVersion": "00501",
+         "schemaName": "X12_00501_837_P"
+      }
+   ]
+   ```
+
+1. Deaktivieren Sie in den Nachrichteneinstellungen Ihrer Vereinbarung die EDI-Überprüfung, indem Sie das Kontrollkästchen **EDI-Überprüfung** entweder für jeden Nachrichtentyp oder für alle Nachrichtentypen deaktivieren, wenn Sie die **Standard** werte verwenden.
+
+   ![Überprüfung für alle Nachrichtentypen oder jeden Nachrichtentyp deaktivieren](./media/logic-apps-enterprise-integration-x12/x12-disable-validation.png) 
+
+## <a name="connector-reference"></a>Connector-Referenz
+
+Weitere technische Details zu diesem Connector, z. B. Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/x12/).
+
+> [!NOTE]
+> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors die [B2B-Nachrichtengrenzwerte für ISE](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Erfahren Sie mehr über andere [Connectors für Logic Apps](../connectors/apis-list.md).

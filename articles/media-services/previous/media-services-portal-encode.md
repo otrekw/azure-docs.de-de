@@ -14,21 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7c147d99eaabee70316521d1f2bdc41933162ab1
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 606a4d753675475cf0138b688523e9029e6d3b0a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542611"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89260780"
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Codieren eines Medienobjekts mit Media Encoder Standard im Azure-Portal
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
-Bei der Arbeit mit Azure Media Services ist eines der häufigsten Szenarien das Streaming mit adaptiver Bitrate an Clients. Media Services unterstützt die folgenden Technologien mit Adaptive Bitrate Streaming: Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming und Dynamic Adaptive Streaming über HTTP (DASH oder MPEG-DASH). Um die Videos für das Streaming mit adaptiver Bitrate vorzubereiten, müssen Sie zuerst das Quellvideo in Dateien mit mehreren Bitraten codieren. Mit Media Encoder Standard können Sie Ihre Videos codieren.  
+Bei der Arbeit mit Azure Media Services ist eines der häufigsten Szenarien das Streaming mit adaptiver Bitrate an Clients. Media Services unterstützt die folgenden Streamingtechnologien mit adaptiver Bitrate: Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming und Dynamic Adaptive Streaming über HTTP (DASH oder MPEG-DASH). Um die Videos für das Streaming mit adaptiver Bitrate vorzubereiten, müssen Sie zuerst das Quellvideo in Dateien mit mehreren Bitraten codieren. Mit Media Encoder Standard können Sie Ihre Videos codieren.  
 
 Media Services bietet eine dynamische Paketerstellung. Mit der dynamischen Paketerstellung können Sie Ihre MP4-Dateien mit mehreren Bitraten in HLS, Smooth Streaming und MPEG-DASH ohne erneutes Packen in diesen Streamingformaten übermitteln. Mit der dynamischen Paketerstellung können Sie die Dateien in einem einzigen Format speichern und zahlen auch nur für dieses eine Format. Media Services reagiert mit der richtigen Antwort auf die Anforderung eines Clients.
 

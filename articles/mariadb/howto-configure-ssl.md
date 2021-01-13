@@ -1,24 +1,35 @@
 ---
-title: Konfigurieren von SSL-Verbindungen für eine sichere Verbindung mit Azure Database for MariaDB
+title: Konfigurieren von SSL – Azure Database for MariaDB
 description: Anweisungen zum ordnungsgemäßen Konfigurieren der Azure Database for MariaDB und zugehörigen Anwendungen für die richtige Verwendung von SSL-Verbindungen
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 07/02/2019
-ms.openlocfilehash: e57371bb7598a92f35dd4fd0ec22a55fad722987
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.topic: how-to
+ms.date: 07/08/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8f541e2302bc1f1de132de76e0638f9843d7003f
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360504"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592480"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit Azure Database for MariaDB
 Azure Database for MariaDB unterstützt die Verbindung Ihres Servers mit Azure Database for MariaDB mit Clientanwendungen, die Secure Sockets Layer (SSL) verwenden. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.
 
 ## <a name="obtain-ssl-certificate"></a>Abrufen eines SSL-Zertifikats
+
+
 Laden Sie das Zertifikat, das für die SSL-Kommunikation mit Ihrem Azure Database for MariaDB-Server erforderlich ist, von [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) herunter, und speichern Sie die Zertifikatsdatei auf dem lokalen Laufwerk. (In diesem Tutorial wird als Beispiel „c:\ssl“ verwendet.)
 **Für Microsoft Internet Explorer und Microsoft Edge**: Benennen Sie nach dem Download das Zertifikat in „BaltimoreCyberTrustRoot.crt.pem“ um.
+
+>[!NOTE]
+> Basierend auf dem Feedback von Kunden haben wir die eingestellte Unterstützung des Stammzertifikats für unsere vorhandene Baltimore-Stammzertifizierungsstelle bis zum 15. Februar 2021 (15.02.2021) verlängert.
+
+> [!IMPORTANT] 
+> Das SSL-Stammzertifikat wird ab dem 15. Februar 2021 (15.02.2021) auslaufen. Aktualisieren Sie Ihre Anwendung bitte mithilfe des [neuen Zertifikats](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem). Weitere Informationen finden Sie unter [Geplante Zertifikatupdates](concepts-certificate-rotation.md)
+
+Zertifikate für Server in Sovereign Clouds finden Sie unter den folgenden Links: [Azure Government](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem), [Azure China](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) und [Azure Deutschland](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).
 
 ## <a name="bind-ssl"></a>Binden von SSL
 
@@ -27,11 +38,11 @@ Konfigurieren Sie MySQL Workbench, um eine sichere Verbindung über SSL herzuste
 
 1. Navigieren Sie im Dialogfeld „Setup New Connection“ (Neue Verbindung einrichten) zur Registerkarte **SSL**. 
 
-1. Aktualisieren Sie das Feld **„Verwenden von SSL“** auf „Erforderlich“.
+1. Aktualisieren Sie das Feld **Use SSL** (SSL verwenden) auf „Require“ (Anfordern).
 
 1. Geben Sie in das Feld für die **SSL-CA-Datei** den Speicherort der Datei **BaltimoreCyberTrustRoot.crt.pem** ein. 
     
-    ![Speichern Sie die SSL-Konfiguration](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+    ![SSL-Konfiguration speichern](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
 Für vorhandene Verbindungen können Sie SSL binden, indem Sie mit der rechten Maustaste auf das Verbindungssymbol klicken und dann „Bearbeiten“ auswählen. Navigieren Sie dann zur Registerkarte **SSL** und binden die Zertifikatsdatei.
 
@@ -46,9 +57,10 @@ mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p
 > Wenn Sie die MySQL-Befehlszeilenschnittstelle unter Windows verwenden, erhalten Sie möglicherweise eine Fehlermeldung: `SSL connection error: Certificate signature check failed`. Ersetzen Sie in diesem Fall den Parameter `--ssl-mode=REQUIRED --ssl-ca={filepath}` durch `--ssl`.
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>Erzwingen von SSL-Verbindungen in Azure 
+
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 Rufen Sie über das Azure-Portal Ihren Server mit Azure Database for MariaDB auf, und klicken Sie auf **Verbindungssicherheit**. Verwenden Sie die Umschaltfläche, um die Einstellung **SSL-Verbindung erzwingen** zu aktivieren/deaktivieren, und klicken Sie dann auf **Speichern**. Microsoft empfiehlt, die Einstellung **SSL-Verbindung erzwingen** immer zu aktivieren, um die Sicherheit zu erhöhen.
-![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
+![„enable-ssl“ für MariaDB-Server](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 Sie können den **ssl-enforcement**-Parameter in der Azure-Befehlszeilenschnittstelle mit den entsprechenden Werten aktivieren oder deaktivieren.
@@ -92,8 +104,9 @@ conn = pymysql.connect(user='myadmin@mydemoserver',
                        password='yourpassword',
                        database='quickstartdb',
                        host='mydemoserver.mariadb.database.azure.com',
-                       ssl={'ssl': {'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}})
+                       ssl={'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'})
 ```
+
 ### <a name="ruby"></a>Ruby
 ```ruby
 client = Mysql2::Client.new(
@@ -101,9 +114,21 @@ client = Mysql2::Client.new(
         :username => 'myadmin@mydemoserver',      
         :password => 'yourpassword',    
         :database => 'quickstartdb',
-        :ssl_ca => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
+        :sslca => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
+        :ssl_mode => 'required'
     )
 ```
+#### <a name="ruby-on-rails"></a>Ruby on Rails
+```ruby
+default: &default
+  adapter: mysql2
+  username: username@mydemoserver
+  password: yourpassword
+  host: mydemoserver.mariadb.database.azure.com
+  sslca: BaltimoreCyberTrustRoot.crt.pem
+  sslverify: true
+```
+
 ### <a name="golang"></a>Golang
 ```go
 rootCertPool := x509.NewCertPool()

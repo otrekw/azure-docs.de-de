@@ -1,25 +1,23 @@
 ---
-title: Analysieren der Netzwerksicherheit mit der Azure Network Watcher-Sicherheitsgruppenansicht – PowerShell | Microsoft-Dokumentation
+title: Analysieren der Netzwerksicherheit – Sicherheitsgruppenansicht – Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: In diesem Artikel wird die Verwendung von PowerShell zum Analysieren der Sicherheit eines virtuellen Computers über die Sicherheitsgruppenansicht beschrieben.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 04e76b49-6a1b-4d0f-9a9b-51cf2f4df5a2
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 4c7b79460169612a046b19a4d66f222936710a8e
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.author: damendo
+ms.openlocfilehash: 2da4ebfa6a9ce64b03e6e1d29956f740f6cb3c1b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163900"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960608"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>Analysieren der Sicherheit Ihres virtuellen Computers über die Sicherheitsgruppenansicht mit PowerShell
 
@@ -27,6 +25,9 @@ ms.locfileid: "70163900"
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure-Befehlszeilenschnittstelle](network-watcher-security-group-view-cli.md)
 > - [REST-API](network-watcher-security-group-view-rest.md)
+
+> [!NOTE]
+> Die Sicherheitsgruppenansichts-API wird nicht mehr gepflegt und in Kürze außer Betrieb gesetzt. Verwenden Sie die [Funktion „Effektive Sicherheitsregeln“](./network-watcher-security-group-view-overview.md), die dieselbe Funktionalität bietet. 
 
 Die Sicherheitsgruppenansicht gibt konfigurierte und effektive Netzwerksicherheitsregeln zurück, die auf einen virtuellen Computer angewendet werden. Diese Funktion eignet sich zur Überwachung und Diagnose von Netzwerksicherheitsgruppen und Regeln, die auf einem virtuellen Computer konfiguriert sind, um sicherzustellen, dass Datenverkehr ordnungsgemäß zugelassen oder verweigert wird. In diesem Artikel erfahren Sie, wie Sie die konfigurierten und effektiven Sicherheitsregeln mit PowerShell auf einem virtuellen Computer abrufen.
 
@@ -130,6 +131,4 @@ NetworkInterfaces : [
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Automatisierung der Überprüfung von Netzwerksicherheitsgruppen finden Sie unter [Automate NSG auditing with Azure Network Watcher Security group view](network-watcher-nsg-auditing-powershell.md) (Automatisieren der NSG-Überwachung mit Azure Network Watcher-Sicherheitsgruppenansicht).
-
-
+Informationen zur Automatisierung der Überprüfung von Netzwerksicherheitsgruppen finden Sie unter [Überwachen von Netzwerksicherheitsgruppen (NSG) mit Network Watcher](network-watcher-nsg-auditing-powershell.md).

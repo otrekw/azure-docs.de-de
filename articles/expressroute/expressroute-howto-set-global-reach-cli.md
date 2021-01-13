@@ -1,19 +1,19 @@
 ---
-title: 'Konfigurieren von ExpressRoute Global Reach: Azure CLI | Microsoft-Dokumentation'
-description: Dieser Artikel hilft Ihnen, ExpressRoute-Leitungen miteinander zu verbinden, um ein privates Netzwerk zwischen Ihren lokalen Netzwerken aufzubauen und Global Reach zu aktivieren.
+title: 'Azure ExpressRoute: Konfigurieren von ExpressRoute Global Reach: Befehlszeilenschnittstelle (CLI)'
+description: Erfahren Sie, wie Sie ExpressRoute-Leitungen miteinander verbinden k√∂nnen, um ein privates Netzwerk zwischen Ihren lokalen Netzwerken aufzubauen und Global Reach mithilfe der Azure CLI zu aktivieren.
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/12/2018
-ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 89ada41c5f3c9cf1ca7a2ac707363f57080c361d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: duau
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 16a86982813b667ed5c761da27c8e9e5a43ab6cc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869977"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322494"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Konfigurieren von ExpressRoute Global Reach unter Verwendung der Azure CLI
 
@@ -68,7 +68,7 @@ az network express-route peering connection create -g <ResourceGroupName> --circ
 
 Die CLI-Ausgabe sieht wie folgt aus:
 
-```azurecli
+```output
 {
   "addressPrefix": "<__.__.__.__/29>",
   "authorizationKey": null,
@@ -104,7 +104,7 @@ Wenn sich die beiden Leitungen nicht im gleichen Azure-Abonnement befinden, ben√
 
    Die CLI-Ausgabe sieht wie folgt aus:
 
-   ```azurecli
+   ```output
    {
      "authorizationKey": "<authorizationKey>",
      "authorizationUseStatus": "Available",

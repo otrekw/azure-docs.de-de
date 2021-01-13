@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit XaitPorter | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und XaitPorter konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d33c7cb7-0550-425b-882a-619a713a71b7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 8652073eb3d7d154958566b68fb6e27c35d8da30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f729828627fdb0be18f220d34227aac756ed4e13
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086521"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Tutorial: Azure Active Directory-Integration mit XaitPorter
 
@@ -31,7 +27,7 @@ Die Integration von XaitPorter in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei XaitPorter anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -57,15 +53,15 @@ Zum Konfigurieren der Integration von XaitPorter in Azure AD müssen Sie XaitPor
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **XaitPorter** ein, wählen Sie im Ergebnisbereich **XaitPorter** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **XaitPorter** ein, wählen Sie im Ergebnisbereich **XaitPorter** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
 
      ![XaitPorter in der Ergebnisliste](common/search-new-app.png)
 
@@ -97,7 +93,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit XaitPort
 
     ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten** , um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -116,7 +112,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit XaitPort
 
     ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
-6. Geben Sie die **IP-Adresse** oder **Verbundmetadaten-URL der App** an das [SmartRecruiters-Supportteam](https://www.smartrecruiters.com/about-us/contact-us/) weiter, damit es die Whitelist so konfigurieren kann, dass die IP-Adresse über Ihre XaitPorter-Instanz erreichbar ist. 
+6. Geben Sie die **IP-Adresse** oder **Verbundmetadaten-URL der App** an das [SmartRecruiters-Supportteam](https://www.smartrecruiters.com/about-us/contact-us/) weiter, damit XaitPorter durch Konfigurieren der genehmigten Liste seinerseits sicherstellen kann, dass die IP-Adresse über Ihre XaitPorter-Instanz erreichbar ist. 
 
 ### <a name="configure-xaitporter-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für XaitPorter
 
@@ -124,7 +120,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit XaitPort
 
     ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
 
-2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **XaitPorter einrichten**, um zur Anwendung XaitPorter weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei XaitPorter anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 6.
+2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **XaitPorter einrichten** , um zur Anwendung XaitPorter weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei XaitPorter anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 6.
 
     ![Einrichtungskonfiguration](common/setup-sso.png)
 
@@ -132,15 +128,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit XaitPort
 
 4. Klicken Sie auf **Admin**.
 
-    ![Configure single sign-on](./media/xaitporter-tutorial/user1.png)
+    ![Screenshot der ausgewählten Option „Admin“ auf der XaitPorter-Website](./media/xaitporter-tutorial/user1.png)
 
 5. Wählen Sie in der Dropdownliste **System Setup** (Systemsetup) die Option **Manage Single Sign-On** (Einmaliges Anmelden verwalten) aus.
 
-    ![Configure single sign-on](./media/xaitporter-tutorial/user2.png)
+    ![Screenshot der unter „System Setup“ ausgewählten Option für einmaliges Anmelden](./media/xaitporter-tutorial/user2.png)
 
 6. Führen Sie im Abschnitt **MANAGE SINGLE SIGN-ON** (EINMALIGES ANMELDEN VERWALTEN) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/xaitporter-tutorial/user3.png)
+    ![Screenshot des Abschnitts zum Verwalten des einmaligen Anmeldens für das Ausführen dieser Schritte](./media/xaitporter-tutorial/user3.png)
 
     a. Aktivieren Sie **Enable Single Sign-On Authentication** (SSO-Authentifizierung aktivieren).
 
@@ -154,7 +150,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit XaitPort
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -170,9 +166,9 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
   
     b. Geben Sie im Feld **Benutzername** den Namen brittasimon@yourcompanydomain.extension ein. Zum Beispiel, BrittaSimon@contoso.com
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -190,7 +186,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen** , und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
@@ -208,13 +204,12 @@ In diesem Abschnitt erstellen Sie in XaitPorter einen Benutzer mit dem Namen Bri
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „XaitPorter“ klicken, sollten Sie automatisch bei der XaitPorter-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „XaitPorter“ klicken, sollten Sie automatisch bei der XaitPorter-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

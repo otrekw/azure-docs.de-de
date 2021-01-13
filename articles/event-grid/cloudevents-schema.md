@@ -1,35 +1,25 @@
 ---
 title: Verwenden von Azure Event Grid mit Ereignissen im CloudEvents-Schema
-description: Beschreibt das Festlegen des CloudEvents-Schemas für Ereignisse in Azure Event Grid.
-services: event-grid
-author: banisadr
-manager: timlt
-ms.service: event-grid
+description: Beschreibt die Verwendung des CloudEvents-Schemas für Ereignisse in Azure Event Grid. Der Dienst unterstützt Ereignisse in der JSON-Implementierung von Cloudereignissen.
 ms.topic: conceptual
-ms.date: 11/07/2018
-ms.author: babanisa
-ms.openlocfilehash: 0195ce82396a7b05335242a38a2881e1b2d1afb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/10/2020
+ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: e13c3635da7e7a86f4fa2d31215303152167741c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61436595"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109248"
 ---
-# <a name="use-cloudevents-schema-with-event-grid"></a>Verwenden des CloudEvents-Schemas mit Event Grid
-
-Zusätzlich zu seinem [Standardereignisschema](event-schema.md) unterstützt Azure Event Grid nativ Ereignisse im [CloudEvents-JSON-Schema](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](https://cloudevents.io/) ist eine [offene Spezifikation](https://github.com/cloudevents/spec/blob/master/spec.md) zur Beschreibung von Ereignisdaten.
+# <a name="use-cloudevents-v10-schema-with-event-grid"></a>Verwenden des CloudEvents 1.0-Schemas mit Event Grid
+Zusätzlich zu seinem [Standardereignisschema](event-schema.md) unterstützt Azure Event Grid nativ Ereignisse in der [JSON-Implementierung von CloudEvents 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) und in der [HTTP-Bindung](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md). [CloudEvents](https://cloudevents.io/) ist eine [offene Spezifikation](https://github.com/cloudevents/spec/blob/v1.0/spec.md) zur Beschreibung von Ereignisdaten.
 
 CloudEvents vereinfacht die Interoperabilität, indem ein allgemeines Ereignisschema für die Veröffentlichung bereitgestellt wird und cloudbasierte Ereignisse genutzt werden. Dieses Schema ermöglicht einheitliche Tools und Standardmöglichkeiten für Routing und Behandlung von Ereignissen sowie universelle Möglichkeiten, das äußere Ereignisschema zu deserialisieren. Mit einem allgemeinen Schema können Sie Arbeit leichter plattformübergreifend integrieren.
 
-CloudEvents wird von mehreren [Partnern](https://github.com/cloudevents/spec/blob/master/community/contributors.md), einschließlich Microsoft, über die [Cloud Native Computing Foundation](https://www.cncf.io/) entwickelt. Es ist derzeit als Version 1.0 verfügbar.
+CloudEvents wird von mehreren [Partnern](https://github.com/cloudevents/spec/blob/master/community/contributors.md), einschließlich Microsoft, über die [Cloud Native Computing Foundation](https://www.cncf.io/) entwickelt. Es ist derzeit in Version 1.0 verfügbar.
 
 Dieser Artikel beschreibt den Einsatz des CloudEvents-Schemas mit Event Grid.
 
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
-
-## <a name="install-preview-feature"></a>Installieren des Vorschaufeatures
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="cloudevent-schema"></a>CloudEvents-Schema
 
@@ -37,61 +27,50 @@ Hier ist ein Beispiel für ein Azure Blob Storage-Ereignis im CloudEvents-Format
 
 ``` JSON
 {
-    "cloudEventsVersion" : "0.1",
-    "eventType" : "Microsoft.Storage.BlobCreated",
-    "eventTypeVersion" : "",
-    "source" : "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-account}#blobServices/default/containers/{storage-container}/blobs/{new-file}",
-    "eventID" : "173d9985-401e-0075-2497-de268c06ff25",
-    "eventTime" : "2018-04-28T02:18:47.1281675Z",
-    "data" : {
-      "api": "PutBlockList",
-      "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
-      "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
-      "eTag": "0x8D4BCC2E4835CD0",
-      "contentType": "application/octet-stream",
-      "contentLength": 524288,
-      "blobType": "BlockBlob",
-      "url": "https://oc2d2817345i60006.blob.core.windows.net/oc2d2817345i200097container/oc2d2817345i20002296blob",
-      "sequencer": "00000000000004420000000000028963",
-      "storageDiagnostics": {
-        "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
-      }
+    "specversion": "1.0",
+    "type": "Microsoft.Storage.BlobCreated",  
+    "source": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-account}",
+    "id": "9aeb0fdf-c01e-0131-0922-9eb54906e209",
+    "time": "2019-11-18T15:13:39.4589254Z",
+    "subject": "blobServices/default/containers/{storage-container}/blobs/{new-file}",
+    "dataschema": "#",
+    "data": {
+        "api": "PutBlockList",
+        "clientRequestId": "4c5dd7fb-2c48-4a27-bb30-5361b5de920a",
+        "requestId": "9aeb0fdf-c01e-0131-0922-9eb549000000",
+        "eTag": "0x8D76C39E4407333",
+        "contentType": "image/png",
+        "contentLength": 30699,
+        "blobType": "BlockBlob",
+        "url": "https://gridtesting.blob.core.windows.net/testcontainer/{new-file}",
+        "sequencer": "000000000000000000000000000099240000000000c41c18",
+        "storageDiagnostics": {
+            "batchId": "681fe319-3006-00a8-0022-9e7cde000000"
+        }
     }
 }
 ```
 
-CloudEvents v0.1 hat folgende Eigenschaften:
-
-| CloudEvents        | Type     | JSON-Beispielwert             | BESCHREIBUNG                                                        | Event Grid-Zuordnung
-|--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
-| eventType          | string   | "com.example.someevent"          | Typ des aufgetretenen Vorkommens                                   | eventType
-| eventTypeVersion   | string   | "1.0"                            | Die Version des eventType (optional)                            | dataVersion
-| cloudEventsVersion | string   | "0.1"                            | Die Version der CloudEvents-Spezifikation, die das Ereignis verwendet        | *übergeben*
-| source             | URI      | "/mycontext"                     | Beschreibt den Ereignisproduzenten                                       | topic#subject
-| eventID            | string   | "1234-1234-1234"                 | ID des Ereignisses                                                    | id
-| eventTime          | Timestamp| "2018-04-05T17:31:00Z"           | Zeitstempel des Ereignisses (optional)                    | eventTime
-| schemaURL          | URI      | „https:\//myschema.com“           | Eine Verknüpfung mit dem Schema, das dem Attribut entspricht (optional) | *nicht verwendet*
-| contentType        | string   | "application/json"               | Beschreibt das Datencodierungsformat (optional)                       | *nicht verwendet*
-| Erweiterungen         | Map      | { "extA": "vA", "extB", "vB" }  | Zusätzliche Metadaten (optional)                                 | *nicht verwendet*
-| data               | Object   | { "objA": "vA", "objB", "vB" }  | Die Ereignisnutzlast (optional)                                       | data
-
-Weitere Informationen finden Sie in der [CloudEvents-Spezifikation](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
+[Hier](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes) finden Sie eine ausführliche Beschreibung der verfügbaren Felder, Typen und Definitionen in CloudEvents v1.0.
 
 Die im CloudEvents- und Event Grid-Schema übermittelten Headerwerte für Ereignisse sind mit Ausnahme von `content-type` identisch. Für das CloudEvents-Schema ist dieser Headerwert `"content-type":"application/cloudevents+json; charset=utf-8"`. Für das Event Grid-Schema ist dieser Headerwert `"content-type":"application/json; charset=utf-8"`.
 
 ## <a name="configure-event-grid-for-cloudevents"></a>Konfigurieren von Event Grid für CloudEvents
 
-Sie können Event Grid für die Eingabe und Ausgabe von Ereignissen im CloudEvents-Schema verwenden. Sie können CloudEvents für Systemereignisse wie Blob Storage-Ereignisse und IoT Hub-Ereignisse sowie benutzerdefinierte Ereignisse verwenden. Diese Ereignisse können auch bei der Übertragung hin und her transformiert werden.
+Sie können Event Grid für die Eingabe und Ausgabe von Ereignissen im CloudEvents-Schema verwenden. In der folgenden Tabelle sind die möglichen Transformationen beschrieben:
+
+ Event Grid-Ressource | Eingabeschema       | Schema für Bereitstellung
+|---------------------|-------------------|---------------------
+| Systemthemen       | Event Grid-Schema | Event Grid-Schema oder CloudEvent-Schema
+| Benutzerthemen/-domänen | Event Grid-Schema | Event Grid-Schema
+| Benutzerthemen/-domänen | CloudEvent-Schema | CloudEvent-Schema
+| Benutzerthemen/-domänen | Benutzerdefiniertes Schema     | Benutzerdefiniertes Schema ODER Event Grid-Schema ODER CloudEvent-Schema
+| PartnerTopics       | CloudEvent-Schema | CloudEvent-Schema
 
 
-| Eingabeschema       | Ausgabeschema
-|--------------------|---------------------
-| CloudEvents-Format | CloudEvents-Format
-| Event Grid-Format  | CloudEvents-Format
-| CloudEvents-Format | Event Grid-Format
-| Event Grid-Format  | Event Grid-Format
+Für alle Ereignisschemas setzt Event Grid beim Veröffentlichen in einem Event Grid-Thema und Erstellen eines Ereignisabonnements eine Überprüfung voraus.
 
-Für alle Ereignisschemas setzt Event Grid beim Veröffentlichen in einem Event Grid-Thema und Erstellen eines Ereignisabonnements eine Überprüfung voraus. Weitere Informationen finden Sie unter [Event Grid – Sicherheit und Authentifizierung](security-authentication.md).
+Weitere Informationen finden Sie unter [Event Grid – Sicherheit und Authentifizierung](security-authentication.md).
 
 ### <a name="input-schema"></a>Eingabeschema
 
@@ -100,32 +79,22 @@ Das Eingabeschema für ein benutzerdefiniertes Thema wird beim Erstellen des ben
 Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
 
 ```azurecli-interactive
-# If you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid topic create \
   --name <topic_name> \
   -l westcentralus \
   -g gridResourceGroup \
-  --input-schema cloudeventv01schema
+  --input-schema cloudeventschemav1_0
 ```
 
 Verwenden Sie für PowerShell Folgendes:
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
-New-AzureRmEventGridTopic `
+New-AzEventGridTopic `
   -ResourceGroupName gridResourceGroup `
   -Location westcentralus `
   -Name <topic_name> `
-  -InputSchema CloudEventV01Schema
+  -InputSchema CloudEventSchemaV1_0
 ```
-
-Die aktuelle Version von CloudEvents unterstützt nicht die Batchverarbeitung von Ereignissen. Um Ereignisse mit einem CloudEvent-Schema in einem Thema zu veröffentlichen, veröffentlichen Sie jedes Ereignis einzeln.
 
 ### <a name="output-schema"></a>Ausgabeschema
 
@@ -140,24 +109,98 @@ az eventgrid event-subscription create \
   --name <event_subscription_name> \
   --source-resource-id $topicID \
   --endpoint <endpoint_URL> \
-  --event-delivery-schema cloudeventv01schema
+  --event-delivery-schema cloudeventschemav1_0
 ```
 
 Verwenden Sie für PowerShell Folgendes:
 ```azurepowershell-interactive
-$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name <topic-name>).Id
+$topicid = (Get-AzEventGridTopic -ResourceGroupName gridResourceGroup -Name <topic-name>).Id
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName <event_subscription_name> `
   -Endpoint <endpoint_URL> `
-  -DeliverySchema CloudEventV01Schema
+  -DeliverySchema CloudEventSchemaV1_0
 ```
 
-Die aktuelle Version von CloudEvents unterstützt nicht die Batchverarbeitung von Ereignissen. Ein Ereignisabonnement, das für ein CloudEvent-Schema konfiguriert ist, empfängt jedes Ereignis einzeln. Momentan kann für eine Azure Functions-App kein Event Grid-Trigger verwendet werden, wenn das Ereignis im CloudEvents-Schema übermittelt wird. Verwenden Sie einen HTTP-Trigger. Beispiele für die Implementierung eines HTTP-Triggers, der Ereignisse im CloudEvents-Schema empfängt, finden Sie unter [Verwenden eines HTTP-Triggers als Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger).
+ Momentan kann für eine Azure Functions-App kein Event Grid-Trigger verwendet werden, wenn das Ereignis im CloudEvents-Schema übermittelt wird. Verwenden Sie einen HTTP-Trigger. Beispiele für die Implementierung eines HTTP-Triggers, der Ereignisse im CloudEvents-Schema empfängt, finden Sie unter [Verwenden von CloudEvents mit Azure Functions](#azure-functions).
+
+ ## <a name="endpoint-validation-with-cloudevents-v10"></a>Endpunktüberprüfung mit CloudEvents 1.0
+
+Wenn Sie mit Event Grid bereits vertraut sind, kennen Sie wahrscheinlich auch den Event Grid-Überprüfungshandshake für Endpunkte, mit dem Missbrauch verhindert werden soll. CloudEvents 1.0 implementiert eine eigene [Semantik für den Schutz vor Missbrauch](webhook-event-delivery.md) über die HTTP OPTIONS-Methode. Weitere Informationen dazu finden Sie [hier](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Wenn das CloudEvents-Schema für die Ausgabe verwendet wird, verwendet Event Grid anstelle des Event Grid-Mechanismus für Überprüfungsereignisse den Missbrauchschutz von CloudEvents 1.0.
+
+<a name="azure-functions"></a>
+
+## <a name="use-with-azure-functions"></a>Verwendung mit Azure Functions
+
+Die [Azure Functions Event Grid-Bindung](../azure-functions/functions-bindings-event-grid.md) unterstützt CloudEvents nicht nativ, sodass durch HTTP ausgelöste Funktionen zum Lesen von CloudEvents-Nachrichten verwendet werden. Bei Verwendung eines HTTP-Triggers zum Lesen von CloudEvents müssen Sie Code für folgende Vorgänge schreiben, die über den Event Grid-Trigger automatisch ausgeführt werden:
+
+* Senden einer Überprüfungsantwort an eine [Anforderung zur Abonnementüberprüfung](../event-grid/webhook-event-delivery.md)
+* Aufrufen der Funktion einmal pro Element des im Anforderungstext enthaltenen Ereignisarrays
+
+Informationen zu der zum lokalen Aufrufen der Funktion verwendeten URL oder ihrer Ausführung in Azure finden Sie in der [Referenzdokumentation zu HTTP-Triggerbindungen](../azure-functions/functions-bindings-http-webhook.md).
+
+Mit dem folgenden C#-Beispielcode für einen HTTP-Trigger wird das Verhalten eines Event Grid-Triggers simuliert.  Verwenden Sie dieses Beispiel für Ereignisse, die im CloudEvents-Schema bereitgestellt werden.
+
+```csharp
+[FunctionName("HttpTrigger")]
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", "options", Route = null)]HttpRequestMessage req, ILogger log)
+{
+    log.LogInformation("C# HTTP trigger function processed a request.");
+    if (req.Method == HttpMethod.Options)
+    {
+        // If the request is for subscription validation, send back the validation code
+        
+        var response = req.CreateResponse(HttpStatusCode.OK);
+        response.Headers.Add("Webhook-Allowed-Origin", "eventgrid.azure.net");
+
+        return response;
+    }
+
+    var requestmessage = await req.Content.ReadAsStringAsync();
+    var message = JToken.Parse(requestmessage);
+
+    // The request is not for subscription validation, so it's for an event.
+    // CloudEvents schema delivers one event at a time.
+    log.LogInformation($"Source: {message["source"]}");
+    log.LogInformation($"Time: {message["eventTime"]}");
+    log.LogInformation($"Event data: {message["data"].ToString()}");
+
+    return req.CreateResponse(HttpStatusCode.OK);
+}
+```
+
+Mit dem folgenden JavaScript-Beispielcode für einen HTTP-Trigger wird das Verhalten eines Event Grid-Triggers simuliert. Verwenden Sie dieses Beispiel für Ereignisse, die im CloudEvents-Schema bereitgestellt werden.
+
+```javascript
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+    
+    if (req.method == "OPTIONS") {
+        // If the request is for subscription validation, send back the validation code
+        
+        context.log('Validate request received');
+        context.res = { status: 200 };
+        context.res.headers.append('Webhook-Allowed-Origin', 'eventgrid.azure.net');
+    }
+    else
+    {
+        var message = req.body;
+        
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        var event = JSON.parse(message);
+        context.log('Source: ' + event.source);
+        context.log('Time: ' + event.eventTime);
+        context.log('Data: ' + JSON.stringify(event.data));
+    }
+ 
+    context.done();
+};
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zur Überwachung von Ereignisübermittlungen finden Sie unter [Überwachen der Event Grid-Nachrichtenübermittlung](monitor-event-delivery.md).
-* Wir ermutigen Sie, CloudEvents zu testen, zu kommentieren und dazu [beizutragen](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md).
+* Wir ermutigen Sie, CloudEvents zu testen, zu kommentieren und dazu [beizutragen](https://github.com/cloudevents/spec/blob/master/community/CONTRIBUTING.md).
 * Weitere Informationen zum Erstellen eines Azure Event Grid-Abonnements finden Sie unter [Event Grid-Abonnementschema](subscription-creation-schema.md).

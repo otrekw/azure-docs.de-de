@@ -1,11 +1,10 @@
 ---
-title: Tutorial – Anpassen eines virtuellen Linux-Computers mit cloud-Init in Azure | Microsoft-Dokumentation
+title: 'Tutorial: Anpassen eines virtuellen Linux-Computers mit cloud-init in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie cloud-init und Key Vault zum Anpassen virtueller Linux-Computer beim ersten Start in Azure verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 9f053cc7646a2a4f41c57010f7e43a3fe3255b7e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 456c42dc0b25e168744ce283cddbd63b877813ab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931796"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747146"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Tutorial: Verwenden von cloud-init zum Anpassen eines virtuellen Linux-Computers in Azure beim ersten Start
 
@@ -38,27 +37,27 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 ## <a name="cloud-init-overview"></a>Übersicht zu cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io) ist ein weit verbreiteter Ansatz zum Anpassen einer Linux-VM beim ersten Start. Sie können mit cloud-init Pakete installieren und Dateien schreiben oder Benutzer und Sicherheit konfigurieren. Da cloud-init während des ersten Startvorgangs ausgeführt wird, müssen Sie keine zusätzlichen Schritte oder erforderlichen Agents auf Ihre Konfiguration anwenden.
 
-Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. nicht **apt-get install** oder **yum install**, um ein Paket zu installieren. Stattdessen können Sie eine Liste mit zu installierenden Paketen definieren. „cloud-init“ verwendet automatisch das native Paketverwaltungstool für die ausgewählte Distribution.
+Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. nicht **apt-get install** oder **yum install** , um ein Paket zu installieren. Stattdessen können Sie eine Liste mit zu installierenden Paketen definieren. „cloud-init“ verwendet automatisch das native Paketverwaltungstool für die ausgewählte Distribution.
 
 Wir arbeiten mit unseren Partnern zusammen, damit cloud-init einbezogen wird und in den Images arbeitet, die sie in Azure bereitstellen. In der folgenden Tabelle ist die aktuelle cloud-init-Verfügbarkeit für Azure-Plattformimages aufgeführt:
 
 | Herausgeber | Angebot | SKU | Version | cloud-init-fähig |
 |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |latest |Ja | 
-|Canonical |UbuntuServer |16.04-LTS |latest |Ja | 
-|Canonical |UbuntuServer |14.04.5-LTS |latest |Ja |
-|CoreOS |CoreOS |Stable |latest |Ja |
+|Canonical |UbuntuServer |18.04-LTS |latest |ja | 
+|Canonical |UbuntuServer |16.04-LTS |latest |ja | 
+|Canonical |UbuntuServer |14.04.5-LTS |latest |ja |
+|CoreOS |CoreOS |Stable |latest |ja |
 |OpenLogic 7.6 |CentOS |7-CI |latest |preview |
-|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |Ja |
+|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |ja |
 |RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
 
 
 ## <a name="create-cloud-init-config-file"></a>Erstellen der Konfigurationsdatei „cloud-init.txt“
 Um cloud-init in Aktion zu sehen, erstellen Sie einen virtuellen Computer, der NGINX installiert und eine einfache „Hello World“-Node.js-App ausführt. Die folgende cloud-init-Konfiguration installiert die erforderlichen Pakete, erstellt eine Node.js-App und initialisiert und startet dann die Anwendung.
 
-Erstellen Sie an der Bash-Eingabeaufforderung oder in der Cloud Shell eine Datei namens *cloud-init.txt*, und fügen Sie die folgende Konfiguration ein. Geben Sie beispielsweise `sensible-editor cloud-init.txt` ein, um die Datei zu erstellen und eine Liste mit verfügbaren Editoren anzuzeigen. Stellen Sie sicher, dass die gesamte Datei „cloud-init“ ordnungsgemäß kopiert wird, insbesondere die erste Zeile:
+Erstellen Sie an der Bash-Eingabeaufforderung oder in der Cloud Shell eine Datei namens *cloud-init.txt* , und fügen Sie die folgende Konfiguration ein. Geben Sie beispielsweise `sensible-editor cloud-init.txt` ein, um die Datei zu erstellen und eine Liste mit verfügbaren Editoren anzuzeigen. Stellen Sie sicher, dass die gesamte Datei „cloud-init“ ordnungsgemäß kopiert wird, insbesondere die erste Zeile:
 
-```azurecli-interactive
+```yaml
 #cloud-config
 package_upgrade: true
 packages:
@@ -103,7 +102,7 @@ runcmd:
 Weitere Informationen zu den cloud-init-Konfigurationsoptionen finden Sie in den [cloud-init-Konfigurationsbeispielen](https://cloudinit.readthedocs.io/en/latest/topics/examples.html).
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
-Vor der Erstellung eines virtuellen Computers müssen Sie zunächst mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *eastus* eine Ressourcengruppe mit dem Namen *myResourceGroupAutomate*:
+Vor der Erstellung eines virtuellen Computers müssen Sie zunächst mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *eastus* eine Ressourcengruppe mit dem Namen *myResourceGroupAutomate* :
 
 ```azurecli-interactive
 az group create --name myResourceGroupAutomate --location eastus
@@ -126,7 +125,7 @@ Es dauert einige Minuten, den virtuellen Computer zu erstellen, die Pakete zu in
 Damit Webdatenverkehr Ihren virtuellen Computer erreicht, öffnen Sie Port 80 über das Internet mit [az vm open-port](/cli/azure/vm#az-vm-open-port):
 
 ```azurecli-interactive
-az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
+az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAutomatedVM
 ```
 
 ## <a name="test-web-app"></a>Testen der Web-App
@@ -165,7 +164,7 @@ Für die Produktion sollten Sie ein gültiges, von einem vertrauenswürdigen Anb
 az keyvault certificate create \
     --vault-name $keyvault_name \
     --name mycert \
-    --policy "$(az keyvault certificate get-default-policy)"
+    --policy "$(az keyvault certificate get-default-policy --output json)"
 ```
 
 
@@ -177,14 +176,14 @@ secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
           --query "[?attributes.enabled].id" --output tsv)
-vm_secret=$(az vm secret format --secret "$secret")
+vm_secret=$(az vm secret format --secret "$secret" --output json)
 ```
 
 
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>Erstellen der cloud-init-Konfiguration zum Sichern von NGINX
 Wenn Sie einen virtuellen Computer erstellen, werden Zertifikate und Schlüssel im geschützten Verzeichnis */var/lib/waagent/* gespeichert. Um das Hinzufügen des Zertifikats zum virtuellen Computer und Konfigurieren von NGINX zu automatisieren, können Sie eine aktualisierte cloud-init-Konfiguration aus dem vorherigen Beispiel verwenden.
 
-Erstellen Sie eine Datei namens *cloud-init-secured.txt*, und fügen Sie die folgende Konfiguration ein. Erstellen Sie bei Verwendung der Cloud Shell die cloud-init-Konfigurationsdatei nicht auf Ihrem lokalen Computer, sondern über die Cloud Shell. Geben Sie beispielsweise `sensible-editor cloud-init-secured.txt` ein, um die Datei zu erstellen und eine Liste mit verfügbaren Editoren anzuzeigen. Stellen Sie sicher, dass die gesamte Datei „cloud-init“ ordnungsgemäß kopiert wird, insbesondere die erste Zeile:
+Erstellen Sie eine Datei namens *cloud-init-secured.txt* , und fügen Sie die folgende Konfiguration ein. Erstellen Sie bei Verwendung der Cloud Shell die cloud-init-Konfigurationsdatei nicht auf Ihrem lokalen Computer, sondern über die Cloud Shell. Geben Sie beispielsweise `sensible-editor cloud-init-secured.txt` ein, um die Datei zu erstellen und eine Liste mit verfügbaren Editoren anzuzeigen. Stellen Sie sicher, dass die gesamte Datei „cloud-init“ ordnungsgemäß kopiert wird, insbesondere die erste Zeile:
 
 ```yaml
 #cloud-config
@@ -256,7 +255,7 @@ Damit sicherer Webdatenverkehr Ihren virtuellen Computer erreicht, öffnen Sie P
 ```azurecli-interactive
 az vm open-port \
     --resource-group myResourceGroupAutomate \
-    --name myVMSecured \
+    --name myVMWithCerts \
     --port 443
 ```
 
@@ -271,7 +270,7 @@ Gesicherte NGINX-Website und Node.js-App werden dann wie im folgenden Beispiel a
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie virtuelle Computer beim ersten Start mit cloud-init konfiguriert. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie virtuelle Computer beim ersten Start mit cloud-init konfiguriert. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer cloud-init-Konfigurationsdatei

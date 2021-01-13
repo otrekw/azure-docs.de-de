@@ -1,18 +1,18 @@
 ---
-title: Behandeln von Fehlern aufgrund eines ungültigen Gateways (502) in Azure Application Gateway
-description: Hier erfahren Sie, wie Sie Application Gateway-Fehler vom Typ 502 behandeln.
+title: Behandeln von Fehlern aufgrund eines ungültigen Gateways – Azure Application Gateway
+description: 'Hier erfahren Sie, wie Sie folgenden Application Gateway-Serverfehler behandeln: 502: Webserver hat als Gateway oder Proxyserver eine ungültige Antwort erhalten.'
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 4/25/2019
+ms.topic: troubleshooting
+ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 2a1c7e480e896da6852949c9d765d17290e4e9ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d44f9109540c3899ab50bd5c4c02afa19045bafb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64697161"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182936"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Behandeln von Fehlern aufgrund eines ungültigen Gateways in Application Gateway
 
@@ -95,8 +95,8 @@ Die folgende Tabelle enthält die Werte der standardmäßigen Integritätsüberp
 * Falls im BackendHttpSetting-Element nicht der Port 80 angegeben ist, muss die Standardwebsite so konfiguriert werden, dass sie am angegebenen Port lauscht.
 * Der Aufruf von `http://127.0.0.1:port` sollte den HTTP-Ergebniscode 200 zurückgeben. Dieser muss innerhalb des Timeoutzeitraums von 30 Sekunden zurückgegeben werden.
 * Vergewissern Sie sich, dass der konfigurierte Port geöffnet ist und dass eingehender oder ausgehender Datenverkehr am konfigurierten Port nicht durch Firewallregeln oder Azure-Netzwerksicherheitsgruppen blockiert wird.
-* Stellen Sie bei Verwendung klassischer virtueller Azure-Computer sowie bei Verwendung des Clouddiensts mit FQDN oder öffentlicher IP-Adresse außerdem sicher, dass der entsprechende [Endpunkt](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) geöffnet ist.
-* Falls der virtuelle Computer über Azure Resource Manager konfiguriert wurde und sich außerhalb des virtuellen Netzwerks befindet, in dem Application Gateway bereitgestellt ist, muss für den Zugriff auf den gewünschten Port eine [Netzwerksicherheitsgruppe](../virtual-network/security-overview.md) konfiguriert werden.
+* Stellen Sie bei Verwendung klassischer virtueller Azure-Computer sowie bei Verwendung des Clouddiensts mit FQDN oder öffentlicher IP-Adresse außerdem sicher, dass der entsprechende [Endpunkt](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=%2fazure%2fapplication-gateway%2ftoc.json) geöffnet ist.
+* Falls der virtuelle Computer über Azure Resource Manager konfiguriert wurde und sich außerhalb des virtuellen Netzwerks befindet, in dem Application Gateway bereitgestellt ist, muss für den Zugriff auf den gewünschten Port eine [Netzwerksicherheitsgruppe](../virtual-network/network-security-groups-overview.md) konfiguriert werden.
 
 ## <a name="problems-with-custom-health-probe"></a>Probleme mit einer benutzerdefinierten Integritätsüberprüfung
 
@@ -108,10 +108,10 @@ Folgende Zusatzeigenschaften werden hinzugefügt:
 
 | Überprüfungseigenschaft | BESCHREIBUNG |
 | --- | --- |
-| NAME |Name der Überprüfung. Dieser Name wird verwendet, um in den Back-End-HTTP-Einstellungen auf die Überprüfung zu verweisen. |
+| Name |Name der Überprüfung. Dieser Name wird verwendet, um in den Back-End-HTTP-Einstellungen auf die Überprüfung zu verweisen. |
 | Protocol |Das zum Senden der Überprüfung verwendete Protokoll. Für die Überprüfung wird das in den HTTP-Einstellungen des Back-Ends festgelegte Protokoll verwendet. |
 | Host |Hostname zum Senden der Überprüfung Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Entspricht nicht dem VM-Hostnamen. |
-| `Path` |Relativer Pfad der Überprüfung. Der gültige Pfad beginnt mit „/“. Der Test wird an \<Protokoll\>://\<Host\>:\<Port\>\<Pfad\> gesendet |
+| `Path` |Relativer Pfad der Überprüfung. Der gültige Pfad beginnt mit „/“. Der Test wird an \<protocol\>://\<host\>:\<port\>\<path\> gesendet. |
 | Intervall |Überprüfungsintervall in Sekunden Dies ist das Zeitintervall zwischen zwei aufeinanderfolgenden Überprüfungen. |
 | Zeitüberschreitung |Zeitüberschreitung der Überprüfung in Sekunden. Die Überprüfung wird als fehlerhaft markiert, wenn innerhalb des Zeitraums für die Zeitüberschreitung keine gültige Antwort empfangen wird. |
 | Fehlerhafter Schwellenwert |Anzahl der Wiederholungsversuche der Überprüfung Der Back-End-Server wird als außer Betrieb markiert, nachdem die Anzahl der aufeinanderfolgenden fehlgeschlagenen Überprüfungen den fehlerhaften Schwellenwert erreicht. |
@@ -122,7 +122,7 @@ Vergewissern Sie sich anhand der Tabelle weiter oben, dass die benutzerdefiniert
 
 * Stellen Sie anhand der [Anleitung](application-gateway-create-probe-ps.md)sicher, dass die Überprüfung ordnungsgemäß angegeben ist.
 * Wenn Application Gateway für einen einzelnen Standort konfiguriert ist, muss der Hostname standardmäßig als `127.0.0.1` angegeben werden, sofern in der benutzerdefinierten Überprüfung nichts anderes konfiguriert ist.
-* Vergewissern Sie sich, dass ein Aufruf von „http://\<Host\>:\<Port\>\<Pfad\>“ den HTTP-Ergebniscode 200 zurückgibt.
+* Vergewissern Sie sich, dass ein Aufruf von „http://\<host\>:\<port\>\<path\>“ den HTTP-Ergebniscode 200 zurückgibt.
 * Stellen Sie sicher, dass „Intervall“, „Zeitüberschreitung“ und „Fehlerhafter Schwellenwert“ innerhalb des zulässigen Bereichs liegen.
 * Stellen Sie bei Verwendung einer HTTPS-Überprüfung sicher, dass der Back-End-Server kein SNI erfordert, indem Sie ein Fallback-Zertifikat auf dem Back-End-Server selbst erstellen.
 
@@ -195,4 +195,3 @@ Stellen Sie sicher, dass die Instanzen fehlerfrei sind und die Anwendung ordnung
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sollte sich das Problem mit den oben genannten Schritten nicht beheben lassen, erstellen Sie ein [Supportticket](https://azure.microsoft.com/support/options/).
-

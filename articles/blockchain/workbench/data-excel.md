@@ -1,21 +1,15 @@
 ---
 title: Verwenden von Azure Blockchain Workbench-Daten in Microsoft Excel
 description: Erfahren Sie, wie Sie Daten der SQL-Datenbank von Azure Blockchain Workbench (Vorschau) in Microsoft Excel laden und anzeigen.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 09/05/2019
-ms.topic: article
-ms.service: azure-blockchain
+ms.topic: how-to
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: f2a5170f95ebb1b25faea7eed74b08ae446b9499
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 4dd941abdded6a93510f4a71119769cd73855bcc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845086"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000163"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>Verwenden von Azure Blockchain Workbench-Daten mit Microsoft Excel
 
@@ -45,7 +39,7 @@ So stellen Sie eine Verbindung mit der Blockchain Workbench-Datenbank her:
 5. Wählen Sie auf der Dialogfeld-Navigationsleiste **SQL Server-Datenbank** die Option **Datenbank** aus. Geben Sie Ihren **Benutzernamen** und Ihr **Kennwort** ein, und klicken Sie dann auf **Verbinden**.
 
     > [!NOTE]
-    > Wenn Sie die Anmeldeinformationen verwenden, die während des Bereitstellungsprozesses von Azure Blockchain Workbench erstellt wurden, lautet der **Benutzername** `dbadmin`. Das **Kennwort** ist das Kennwort, das Sie bei der Bereitstellung von Blockchain Workbench erstellt haben.
+    > Wenn Sie die Anmeldeinformationen verwenden, die während des Bereitstellungsprozesses von Azure Blockchain Workbench erstellt wurden, lautet der **Benutzername**`dbadmin`. Das **Kennwort** ist das Kennwort, das Sie bei der Bereitstellung von Blockchain Workbench erstellt haben.
     
    ![Angeben der Anmeldeinformationen für den Zugriff auf die Datenbank](./media/data-excel/provide-credentials.png)
 

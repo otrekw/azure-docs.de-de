@@ -1,45 +1,40 @@
 ---
-title: Verwenden von Azure Functions zum Ausführen eines Datenbank-Bereinigungstasks| Microsoft-Dokumentation
+title: Verwenden von Azure Functions zum Ausführen eines Datenbank-Bereinigungstasks
 description: Verwenden Sie Azure Functions, um eine Aufgabe zu planen, die eine Verbindung mit Azure SQL-Datenbank herstellt, um regelmäßig Zeilen zu bereinigen.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
-ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/28/2018
-ms.author: glenga
-ms.openlocfilehash: 0388c712d6f44755e768e491944df1a9451653b7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: devx-track-csharp
+ms.date: 10/02/2019
+ms.openlocfilehash: 0b5e255d7d108eb063ece4e5489a8762261a0bed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085249"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88207262"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
 
-In diesem Artikel wird erläutert, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, über den eine Verbindung mit einer Azure SQL-Datenbank-Instanz hergestellt wird. Der Funktionscode bereinigt die Zeilen in einer Tabelle in der Datenbank. Die neue C#-Funktion wird basierend auf einer vordefinierten Vorlage für einen Zeitgebertrigger in Visual Studio 2019 erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als App-Einstellung in der Funktions-App festlegen. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. 
+In diesem Artikel wird erläutert, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, über den eine Verbindung mit einer Azure SQL-Datenbank-Instanz oder einer verwalteten Azure SQL-Instanz hergestellt wird. Der Funktionscode bereinigt die Zeilen in einer Tabelle in der Datenbank. Die neue C#-Funktion wird basierend auf einer vordefinierten Vorlage für einen Zeitgebertrigger in Visual Studio 2019 erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als App-Einstellung in der Funktions-App festlegen. Für eine verwaltete Azure SQL-Instanz müssen Sie [den öffentlichen Endpunkt](../azure-sql/managed-instance/public-endpoint-configure.md) aktivieren, um eine Verbindung über Azure Functions herstellen zu können. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. 
 
 Wenn Sie C#-Funktionen zum ersten Mal verwenden, sollten Sie die [C#-Entwicklerreferenz zu Azure Functions](functions-dotnet-class-library.md) lesen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ Führen Sie die Schritte im Artikel [Erstellen Ihrer ersten Funktion mit Visual Studio](functions-create-your-first-function-visual-studio.md) aus, um eine lokale Funktions-App für Version 2.x der Runtime zu erstellen. Zudem müssen Sie Ihr Projekt in einer Funktions-App in Azure veröffentlicht haben.
++ Führen Sie die Schritte im Artikel [Erstellen Ihrer ersten Funktion mit Visual Studio](functions-create-your-first-function-visual-studio.md) aus, um eine lokale Funktions-App für Version 2.x oder höher der Runtime zu erstellen. Zudem müssen Sie Ihr Projekt in einer Funktions-App in Azure veröffentlicht haben.
 
-+ In diesem Artikel wird ein Transact-SQL-Befehl veranschaulicht, der einen Massenbereinigungsvorgang in der Tabelle **SalesOrderHeader** in der Beispieldatenbank „AdventureWorksLT“ ausführt. Um die Beispieldatenbank „AdventureWorksLT“ zu erstellen, führen Sie die Schritte im Artikel [Erstellen einer Azure SQL-Datenbank-Instanz im Azure-Portal](../sql-database/sql-database-get-started-portal.md) aus.
++ In diesem Artikel wird ein Transact-SQL-Befehl veranschaulicht, der einen Massenbereinigungsvorgang in der Tabelle **SalesOrderHeader** in der Beispieldatenbank „AdventureWorksLT“ ausführt. Führen Sie die Schritte im Artikel [Erstellen einer Azure SQL-Datenbank-Instanz im Azure-Portal](../azure-sql/database/single-database-create-quickstart.md) aus, um die Beispieldatenbank „AdventureWorksLT“ zu erstellen.
 
-+ Sie müssen eine [Firewallregel auf Serverebene](../sql-database/sql-database-get-started-portal-firewall.md) für die öffentliche IP-Adresse des Computers hinzufügen, den Sie für diesen Schnellstart verwenden. Diese Regel ist erforderlich, damit über den lokalen Computer auf die SQL-Datenbank-Instanz zugegriffen werden kann.  
++ Sie müssen eine [Firewallregel auf Serverebene](../azure-sql/database/firewall-create-server-level-portal-quickstart.md) für die öffentliche IP-Adresse des Computers hinzufügen, den Sie für diesen Schnellstart verwenden. Diese Regel ist erforderlich, damit über den lokalen Computer auf die SQL-Datenbank-Instanz zugegriffen werden kann.  
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 
-Sie müssen die Verbindungszeichenfolge für die Datenbank abrufen, die Sie in [Erstellen einer Azure SQL-Datenbank-Instanz im Azure-Portal](../sql-database/sql-database-get-started-portal.md) erstellt haben.
+Sie müssen die Verbindungszeichenfolge für die Datenbank abrufen, die Sie in [Erstellen einer Azure SQL-Datenbank-Instanz im Azure-Portal](../azure-sql/database/single-database-create-quickstart.md) erstellt haben.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 1. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** Ihre Datenbank aus.
 
-1. Wählen Sie unter **Einstellungen** die Option **Verbindungszeichenfolgen** aus, und kopieren Sie die vollständige **ADO.NET**-Verbindungszeichenfolge.
+1. Wählen Sie unter **Einstellungen** die Option **Verbindungszeichenfolgen** aus, und kopieren Sie die vollständige **ADO.NET**-Verbindungszeichenfolge. Kopieren Sie für die verwaltete Azure SQL-Instanz die Verbindungszeichenfolge für den öffentlichen Endpunkt.
 
     ![Kopieren Sie die ADO.NET-Verbindungszeichenfolge.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
@@ -49,7 +44,7 @@ Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Als bewähr
 
 Zuvor müssen Sie Ihre App in Azure veröffentlicht haben. Wenn dies noch nicht erfolgt ist, [veröffentlichen Sie die Funktions-App in Azure](functions-develop-vs.md#publish-to-azure).
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Funktions-App-Projekt, und wählen Sie **Veröffentlichen** > **Anwendungseinstellungen verwalten** aus. Wählen Sie **Einstellung hinzufügen** aus, geben Sie in **Name der neuen App-Einstellung** den Namen `sqldb_connection` ein, und wählen Sie **OK** aus.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Funktions-App-Projekt, und wählen Sie **Veröffentlichen** > **Azure App Service-Einstellungen bearbeiten** aus. Wählen Sie **Einstellung hinzufügen** aus, geben Sie in **Name der neuen App-Einstellung** den Namen `sqldb_connection` ein, und wählen Sie **OK** aus.
 
     ![Anwendungseinstellungen für Funktions-App](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
@@ -61,7 +56,7 @@ Zuvor müssen Sie Ihre App in Azure veröffentlicht haben. Wenn dies noch nicht 
 
 ## <a name="add-the-sqlclient-package-to-the-project"></a>Hinzufügen des SqlClient-Pakets zum Projekt
 
-Sie müssen das NuGet-Paket hinzufügen, das die SqlClient-Bibliothek enthält. Diese Datenzugriffsbibliothek wird zum Herstellen einer Verbindung mit einer SQL-Datenbank benötigt.
+Sie müssen das NuGet-Paket hinzufügen, das die SqlClient-Bibliothek enthält. Diese Datenzugriffsbibliothek wird zum Herstellen einer Verbindung mit einer SQL-Datenbank-Instanz benötigt.
 
 1. Öffnen Sie das lokale Funktions-App-Projekt in Visual Studio 2019.
 
@@ -139,5 +134,5 @@ Weitere Informationen zu Functions finden Sie in den folgenden Artikeln:
 
 + [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
   Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
-+ [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
++ [Testen von Azure Functions](functions-test-a-function.md)  
   Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen  

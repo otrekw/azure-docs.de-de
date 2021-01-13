@@ -1,20 +1,17 @@
 ---
 title: Azure-Schnellstart – Erstellen eines Azure Automation-Runbooks | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie ein Azure Automation-Runbook erstellen.
+description: Dieser Artikel hilft Ihnen bei der Erstellung eines Azure Automation-Runbooks.
 services: automation
-author: csand-msft
-ms.author: csand
 ms.date: 02/05/2019
 ms.topic: quickstart
-ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 2cbb37b4e93468a42335f40a19baf4c742cb6dbb
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 948ca820347c7cdcd560ade46e850f66b25bc88e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098619"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90987290"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Erstellen eines Azure Automation-Runbooks
 
@@ -26,25 +23,25 @@ Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azu
 
 Melden Sie sich unter https://portal.azure.com bei Azure an.
 
-## <a name="create-runbook"></a>Runbook erstellen
+## <a name="create-the-runbook"></a>Erstellen des Runbooks
 
 Erstellen Sie zuerst ein Runbook. Die Ausgabe des Beispielrunbooks, das in dieser Schnellstartanleitung erstellt wird, lautet standardmäßig `Hello World`.
 
 1. Öffnen Sie Ihr Automation-Konto.
 
-1. Klicken Sie unter **PROZESSAUTOMATISIERUNG** auf **Runbooks**. Die Liste mit den Runbooks wird angezeigt.
+1. Klicken Sie unter **Prozessautomatisierung** auf **Runbooks**. Die Liste mit den Runbooks wird angezeigt.
 
-1. Klicken Sie oben in der Liste auf die Schaltfläche **Runbook erstellen**.
+1. Klicken Sie oben in der Liste auf **Runbook erstellen**.
 
-1. Geben Sie als **Name** für das Runbook „Hello-World“ ein, und wählen Sie als **Runbooktyp** die Option **PowerShell**. Klicken Sie auf **Create**.
+1. Geben Sie im Feld **Name** den Runbooknamen `Hello-World` ein, und wählen Sie im Feld **Runbooktyp** die Option **PowerShell** aus. 
 
    ![Eingeben von Informationen zu Ihrem Automation-Runbook auf der Seite](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
-1. Das Runbook wird erstellt, und die Seite **PowerShell-Runbook bearbeiten** wird geöffnet.
+1. Klicken Sie auf **Erstellen**. Das Runbook wird erstellt, und die Seite „PowerShell-Runbook bearbeiten“ wird geöffnet.
 
-    ![Erstellen des PowerShell-Skripts im Runbook-Editor](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png" alt-text="Screenshot: Seite „PowerShell-Runbook bearbeiten“":::
 
-1. Geben Sie den folgenden Code im Bearbeitungsbereich ein (oder fügen Sie ihn ein). Hiermit wird der optionale Eingabeparameter „Name“ mit dem Standardwert „World“ erstellt, und es wird eine Zeichenfolge ausgegeben, für die dieser Eingabewert verwendet wird:
+1. Geben Sie den folgenden Code im Bearbeitungsbereich ein (oder fügen Sie ihn ein). Dadurch wird der optionale Eingabeparameter `Name` mit dem Standardwert `World` erstellt, und es wird eine Zeichenfolge ausgegeben, für die dieser Eingabewert verwendet wird:
 
    ```powershell-interactive
    param
@@ -58,39 +55,39 @@ Erstellen Sie zuerst ein Runbook. Die Ausgabe des Beispielrunbooks, das in diese
 
 1. Klicken Sie auf **Speichern**, um eine Entwurfskopie des Runbooks zu speichern.
 
-    ![Erstellen des PowerShell-Skripts im Runbook-Editor](./media/automation-quickstart-create-runbook/automation-edit-runbook.png)
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook.png" alt-text="Screenshot: Seite „PowerShell-Runbook bearbeiten“ mit einem Codebeispiel im rechten Fenster":::
 
 ## <a name="test-the-runbook"></a>Testen des Runbooks
 
-Testen Sie das Runbook nach der Erstellung, um die Funktionsweise zu überprüfen.
+Testen Sie das Runbook nach der Erstellung, um sich zu vergewissern, dass es funktioniert.
 
-1. Klicken Sie auf **Testbereich**, um die Seite **Test** zu öffnen.
+1. Klicken Sie auf **Testbereich** , um den Testbereich zu öffnen.
 
 1. Geben Sie einen Wert für **Name** ein, und klicken Sie auf **Starten**. Der Testauftrag wird gestartet, und der Auftragsstatus und die Ausgabe werden angezeigt.
 
-    ![Runbook-Testauftrag](./media/automation-quickstart-create-runbook/automation-test-runbook.png)
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-test-runbook.png" alt-text="Screenshot: Testbereich mit einem Beispielwert im Feld „Name“":::
 
-1. Schließen Sie die Seite **Test**, indem Sie oben rechts auf das **X** klicken. Klicken Sie im angezeigten Popupmenü auf **OK**.
+1. Schließen Sie den Testbereich, indem Sie rechts oben auf das **X** klicken. Klicken Sie im angezeigten Popupmenü auf **OK**.
 
-1. Klicken Sie auf der Seite **PowerShell-Runbook bearbeiten** auf **Veröffentlichen**, um das Runbook als offizielle Version des Runbooks im Konto zu veröffentlichen.
+1. Klicken Sie auf der Seite „PowerShell-Runbook bearbeiten“ auf **Veröffentlichen**, um das Runbook als offizielle Version des Runbooks im Konto zu veröffentlichen.
 
-   ![Runbook-Testauftrag](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png)
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png" alt-text="Screenshot: Seite „PowerShell-Runbook bearbeiten“ mit ausgewählter Schaltfläche „Veröffentlichen“":::
 
 ## <a name="run-the-runbook"></a>Ausführen des Runbooks
 
 Nachdem das Runbook veröffentlicht wurde, wird die Übersichtsseite angezeigt.
 
-1. Klicken Sie auf der Übersichtsseite des Runbooks auf **Starten**, um die Konfigurationsseite **Runbook starten** für das Runbook zu öffnen.
+1. Klicken Sie auf der Übersichtsseite des Runbooks auf **Starten**, um die Konfigurationsseite „Runbook starten“ für das Runbook zu öffnen.
 
-   ![Runbook-Testauftrag](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png)
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png" alt-text="Screenshot: Konfigurationsseite „Runbook starten“":::
 
 1. Lassen Sie das Feld **Name** leer, damit der Standardwert verwendet wird, und klicken Sie auf **OK**. Der Runbookauftrag wird übermittelt, und die Auftragsseite wird angezeigt.
 
-   ![Runbook-Testauftrag](./media/automation-quickstart-create-runbook/automation-job-page.png)
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-job-page.png" alt-text="Screenshot: Auftragsseite mit ausgewählter Schaltfläche „Ausgabe“":::
 
-1. Wenn als **Auftragsstatus** entweder **Wird ausgeführt** oder **Abgeschlossen** angegeben ist, können Sie auf **Ausgabe** klicken, um den Bereich **Ausgabe** zu öffnen und die Runbookausgabe anzuzeigen.
+1. Wenn der Auftragsstatus `Running` oder `Completed` lautet, können Sie auf **Ausgabe** klicken, um den Ausgabebereich zu öffnen und die Runbookausgabe anzuzeigen.
 
-   ![Runbook-Testauftrag](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png" alt-text="Screenshot: Ausgabebereich mit der Runbookausgabe":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -101,4 +98,4 @@ Löschen Sie das Runbook, falls es nicht mehr benötigt wird. Wählen Sie das Ru
 In dieser Schnellstartanleitung haben Sie ein Runbook erstellt, bearbeitet, getestet und veröffentlicht und einen Runbookauftrag gestartet. Weitere Informationen zu Automation-Runbooks finden Sie im Artikel zu den unterschiedlichen Runbooktypen, die Sie in Automation erstellen und nutzen können.
 
 > [!div class="nextstepaction"]
-> [Vorgehensweise für Automation – Runbooktypen](./automation-runbook-types.md)
+> [Azure Automation-Runbooktypen](./automation-runbook-types.md)

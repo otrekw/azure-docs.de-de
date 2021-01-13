@@ -1,28 +1,20 @@
 ---
 title: Azure Event Grid-Ereignisschema
-description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Ereignisse bereitgestellt werden.
-services: event-grid
-author: banisadr
-manager: timlt
-ms.service: event-grid
+description: Beschreibt die Eigenschaften und das Schema für alle Ereignisse. Ereignisse bestehen aus einer Gruppe von fünf erforderlichen Zeichenfolgeneigenschaften und einem erforderlichen Datenobjekt.
 ms.topic: reference
-ms.date: 01/20/2019
-ms.author: babanisa
-ms.openlocfilehash: 8a8193d21bbc1d0af933657705e605ce31589cbf
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.date: 07/07/2020
+ms.openlocfilehash: 7ddc7c78c5a9e5ba2a57b21c45fb9fab65056ee9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785847"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86105879"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid-Ereignisschema
 
 Dieser Artikel beschreibt die Eigenschaften und das Schema für alle Ereignisse. Ereignisse bestehen aus einer Gruppe von fünf erforderlichen Zeichenfolgeneigenschaften und einem erforderlichen Datenobjekt. Die Eigenschaften gelten für alle Ereignisse von jedem Herausgeber. Das Datenobjekt weist Eigenschaften auf, die für die einzelnen Herausgeber spezifisch sind. Bei Systemthemen sind diese Eigenschaften spezifisch für den Ressourcenanbieter, z.B. Azure Storage oder Azure Event Hubs.
 
-Ereignisquellen senden Ereignisse an Azure Event Grid in einem Array, das mehrere Ereignisobjekte aufweisen kann. Beim Veröffentlichen von Ereignissen in einem Ereignisrasterthema kann das Array eine Gesamtgröße von bis zu 1 MB aufweisen. Jedes Ereignis in dem Array ist auf 64 KB (Allgemeine Verfügbarkeit) oder 1 MB (Vorschauversion) beschränkt. Wenn ein Ereignis oder das Array das zulässige Größenlimit überschreitet, erhalten Sie die Antwort **413 Nutzlast zu groß**.
-
-> [!NOTE]
-> Ein Ereignis mit einer Größe von bis zu 64 KB wird von der Vereinbarung zum Servicelevel (SLA) für die allgemeine Verfügbarkeit (GA) abgedeckt. Die Unterstützung für ein Ereignis von einer Größe bis zu 1 MB ist derzeit in der Vorschauversion verfügbar. Ereignisse, die größer als 64 KB sind, werden in Schritten von 64 KB in Rechnung gestellt. 
+Ereignisquellen senden Ereignisse an Azure Event Grid in einem Array, das mehrere Ereignisobjekte aufweisen kann. Beim Veröffentlichen von Ereignissen in einem Ereignisrasterthema kann das Array eine Gesamtgröße von bis zu 1 MB aufweisen. Jedes Ereignis im Array ist auf 1 MB beschränkt. Wenn ein Ereignis oder das Array das zulässige Größenlimit überschreitet, erhalten Sie die Antwort **413 Nutzlast zu groß**. Vorgänge werden jedoch in Schritten von 64 KB in Rechnung gestellt. Daher fallen für Ereignisse über 64 KB Betriebsgebühren wie für mehrere Ereignisse an. Beispielsweise würde ein Ereignis mit einer Größe von 130 KB Vorgangsgebühren verursachen, als würde es sich um drei separate Ereignisse handeln.
 
 Event Grid sendet die Ereignisse an Abonnenten in einem Array, das ein einzelnes Ereignis aufweist. Dieses Verhalten kann sich in der Zukunft ändern.
 
@@ -83,16 +75,16 @@ Das für ein Azure Blob Storage-Ereignis veröffentlichte Schema sieht beispiels
 
 Alle Ereignisse weisen die gleichen Daten auf oberster Ebene auf:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
-| -------- | ---- | ----------- |
-| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | string | Eindeutiger Bezeichner für das Ereignis. |
-| data | object | Die für den Ressourcenanbieter spezifischen Ereignisdaten. |
-| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| Eigenschaft | type | Erforderlich | BESCHREIBUNG |
+| -------- | ---- | -------- | ----------- |
+| topic | Zeichenfolge | Nein, aber muss bei einer Angabe genau mit der Azure Resource Manager-ID des Event Grid-Themas übereinstimmen. Bei nicht eingeschlossener Eigenschaft gilt die Angabe von Event Grid für das Ereignis. | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | Zeichenfolge | Ja | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | Zeichenfolge | Ja | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | Zeichenfolge | Ja | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | Zeichenfolge | Ja | Eindeutiger Bezeichner für das Ereignis. |
+| data | Objekt (object) | Nein  | Die für den Ressourcenanbieter spezifischen Ereignisdaten. |
+| dataVersion | Zeichenfolge | Nein, wird jedoch mit einem leeren Wert versehen. | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | Zeichenfolge | Nicht erforderlich, aber muss bei einer Angabe genau mit dem Wert `metadataVersion` des Event Grid-Themas übereinstimmen (derzeit nur `1`). Bei nicht eingeschlossener Eigenschaft gilt die Angabe von Event Grid für das Ereignis. | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Weitere Informationen zu den Eigenschaften im Datenobjekt finden Sie in der Ereignisquelle:
 
@@ -105,6 +97,7 @@ Weitere Informationen zu den Eigenschaften im Datenobjekt finden Sie in der Erei
 * [Ressourcengruppen (Verwaltungsvorgänge)](event-schema-resource-groups.md)
 * [Service Bus](event-schema-service-bus.md)
 * [Azure SignalR](event-schema-azure-signalr.md)
+* [Azure Machine Learning](event-schema-machine-learning.md)
 
 Für benutzerdefinierte Themen bestimmt der Ereignisherausgeber das Datenobjekt. Die Daten auf oberster Ebene müssen die gleichen Felder wie über Standardressourcen definierte Ereignisse aufweisen.
 

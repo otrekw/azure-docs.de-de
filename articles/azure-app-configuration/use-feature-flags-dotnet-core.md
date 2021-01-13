@@ -3,23 +3,22 @@ title: Tutorial zur Verwendung von Featureflags in einer .NET Core-App | Micros
 description: In diesem Tutorial erfahren Sie, wie Sie Featureflags in .NET Core-Apps implementieren.
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 04/19/2019
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: 99559c0c77c3e4b29badec1c0be2d741df1f0621
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.date: 09/17/2020
+ms.author: alkemper
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 8c0dd9713c673ad676058acc7dbbb3cb5a65362e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798374"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929190"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Tutorial: Verwenden von Featureflags in einer ASP.NET Core-App
 
@@ -27,9 +26,9 @@ Die .NET Core-Featureverwaltungsbibliotheken bieten idiomatische Unterstützung
 
 Die Featureverwaltungsbibliotheken verwalten darüber hinaus Featureflag-Lebenszyklen im Hintergrund. Die Bibliotheken können Flagzustände aktualisieren und zwischenspeichern, garantieren, dass ein Flagzustand während eines Anforderungsaufrufs unveränderlich ist, und Ähnliches. Darüber hinaus bietet die ASP.NET Core-Bibliothek sofort einsetzbare Integrationen – einschließlich MVC-Controlleraktionen, Ansichten, Routen und Middleware.
 
-Unter [Schnellstart: Hinzufügen von Featureflags zu einer ASP.NET Core-App](./quickstart-feature-flag-aspnet-core.md) werden mehrere Methoden gezeigt, mit denen Sie Featureflags in einer ASP.NET Core-Anwendung hinzufügen können. Diese Methoden werden im vorliegenden Tutorial näher erläutert. Eine umfassende Referenz finden Sie in der [Featureverwaltungsdokumentation für ASP.NET Core](https://go.microsoft.com/fwlink/?linkid=2091410).
+Unter [Schnellstart: Hinzufügen von Featureflags zu einer ASP.NET Core-App](./quickstart-feature-flag-aspnet-core.md) werden mehrere Methoden gezeigt, mit denen Sie Featureflags in einer ASP.NET Core-Anwendung hinzufügen können. Diese Methoden werden im vorliegenden Tutorial näher erläutert. Eine umfassende Referenz finden Sie in der [Featureverwaltungsdokumentation für ASP.NET Core](/dotnet/api/microsoft.featuremanagement).
 
-In diesem Lernprogramm lernen Sie Folgendes:
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Hinzufügen von Featureflags in wichtigen Teilen Ihrer Anwendung, um die Verfügbarkeit von Features zu steuern
@@ -37,6 +36,8 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 ## <a name="set-up-feature-management"></a>Einrichten der Featureverwaltung
 
+Fügen Sie einen Verweis auf die NuGet-Pakete `Microsoft.FeatureManagement.AspNetCore` und `Microsoft.FeatureManagement` hinzu, um den .NET Core-Feature-Manager zu nutzen.
+    
 Der .NET Core-Feature-Manager `IFeatureManager` ruft Featureflags aus dem nativen Konfigurationssystem des Frameworks ab. Dadurch können Sie die Featureflags Ihrer Anwendung mit einer beliebigen, von .NET Core unterstützten Konfigurationsquelle konfigurieren – unter anderem mit der lokalen Datei *appsettings.json* oder mit Umgebungsvariablen. `IFeatureManager` basiert auf der .NET Core-Abhängigkeitsinjektion. Die Featureverwaltungsdienste können unter Verwendung von Standardkonventionen registriert werden:
 
 ```csharp
@@ -105,7 +106,7 @@ Die Verbindung zwischen Ihrer ASP.NET Core-Anwendung und App Configuration läs
               .UseStartup<Startup>();
    ```
 
-2. Öffnen Sie die Datei *Startup.cs*, und aktualisieren Sie die `Configure`-Methode, um Middleware hinzuzufügen, damit die Featureflagwerte in regelmäßigen Abständen aktualisiert werden können, während die ASP.NET Core-Web-App weiterhin Anforderungen empfängt.
+2. Öffnen Sie *Startup.cs*, und aktualisieren Sie die `Configure`-Methode, um die integrierte Middleware namens `UseAzureAppConfiguration` hinzuzufügen. Diese Middleware gestattet die regelmäßige Aktualisierung der Featureflagwerte, während die ASP.NET Core-Web-App weiterhin Anforderungen empfängt.
 
    ```csharp
    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -177,7 +178,7 @@ Bei der Featureverwaltung wird grundsätzlich zunächst geprüft, ob ein Feature
 ```csharp
 IFeatureManager featureManager;
 ...
-if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
+if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 {
     // Run the following code
 }
@@ -201,9 +202,11 @@ public class HomeController : Controller
 
 ## <a name="controller-actions"></a>Controlleraktionen
 
-In MVC-Controllern steuern Sie mithilfe eines Attributs vom Typ `FeatureGate`, ob eine gesamte Controllerklasse oder eine spezifische Aktion aktiviert wird. Für den folgenden Controller `HomeController` muss `FeatureA` *aktiviert* sein, damit eine der in der Controllerklasse enthaltenen Aktionen ausgeführt werden kann:
+In MVC-Controllern steuern Sie mithilfe eines Attributs vom Typ `FeatureGate`, ob eine gesamte Controllerklasse oder eine spezifische Aktion aktiviert wird. Für den folgenden Controller `HomeController` muss `FeatureA`*aktiviert* sein, damit eine der in der Controllerklasse enthaltenen Aktionen ausgeführt werden kann:
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public class HomeController : Controller
 {
@@ -211,9 +214,11 @@ public class HomeController : Controller
 }
 ```
 
-Für die folgende Aktion `Index` muss `FeatureA` *aktiviert* sein, damit sie ausgeführt werden kann:
+Für die folgende Aktion `Index` muss `FeatureA`*aktiviert* sein, damit sie ausgeführt werden kann:
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public IActionResult Index()
 {
@@ -224,6 +229,12 @@ public IActionResult Index()
 Ist ein MVC-Controller oder eine Aktion blockiert, weil das steuernde Featureflag *deaktiviert* ist, wird eine registrierte Schnittstelle (`IDisabledFeaturesHandler`) aufgerufen. Die Standardschnittstelle `IDisabledFeaturesHandler` gibt den Statuscode 404 ohne Antworttext an den Client zurück.
 
 ## <a name="mvc-views"></a>MVC-Ansichten
+
+Öffnen Sie *_ViewImports.cshtml* im Verzeichnis *Views*, und fügen Sie das Taghilfsprogramm für den Feature-Manager hinzu:
+
+```html
+@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
+```
 
 In MVC-Ansichten können Sie ein Tag vom Typ `<feature>` verwenden, um das Rendern von Inhalten vom Aktivierungsstatus eines Featureflags abhängig zu machen:
 
@@ -254,7 +265,7 @@ Das `<feature>`-Tag kann auch verwendet werden, um Inhalte anzuzeigen, wenn ein 
 
 ## <a name="mvc-filters"></a>MVC-Filter
 
-Sie können MVC-Filter so einrichten, dass sie abhängig vom Zustand eines Featureflags aktiviert werden. Im folgenden Code wird ein MVC-Filter namens `SomeMvcFilter` hinzugefügt. Dieser Filter wird innerhalb der MVC-Pipeline nur ausgelöst, wenn `FeatureA` aktiviert ist.
+Sie können MVC-Filter so einrichten, dass sie abhängig vom Zustand eines Featureflags aktiviert werden. Im folgenden Code wird ein MVC-Filter namens `SomeMvcFilter` hinzugefügt. Dieser Filter wird innerhalb der MVC-Pipeline nur ausgelöst, wenn `FeatureA` aktiviert ist. Diese Funktion ist auf `IAsyncActionFilter` beschränkt. 
 
 ```csharp
 using Microsoft.FeatureManagement.FeatureFilters;
@@ -267,16 +278,6 @@ public void ConfigureServices(IServiceCollection services)
         options.Filters.AddForFeature<SomeMvcFilter>(nameof(MyFeatureFlags.FeatureA));
     });
 }
-```
-
-## <a name="routes"></a>Routen
-
-Sie können Featureflags verwenden, um Routen dynamisch verfügbar zu machen. Im folgenden Code wird eine Route hinzugefügt, die `Beta` als den Standardcontroller festlegt – aber nur, wenn `FeatureA` aktiviert ist:
-
-```csharp
-app.UseMvc(routes => {
-    routes.MapRouteForFeature(nameof(MyFeatureFlags.FeatureA), "betaDefault", "{controller=Beta}/{action=Index}/{id?}");
-});
 ```
 
 ## <a name="middleware"></a>Middleware
@@ -299,6 +300,6 @@ app.UseForFeature(featureName, appBuilder => {
 
 In diesem Tutorial haben Sie gelernt, wie Sie Featureflags in Ihrer ASP.NET Core-Anwendung unter Verwendung der Bibliotheken vom Typ `Microsoft.FeatureManagement` implementieren. Die folgenden Ressourcen enthalten weitere Informationen zur Unterstützung der Featureverwaltung in ASP.NET Core und App Configuration:
 
-* [Beispielcode für ASP.NET Core-Featureflag](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
-* [Dokumentation für „Microsoft.FeatureManagement“](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
+* [Beispielcode für ASP.NET Core-Featureflag](./quickstart-feature-flag-aspnet-core.md)
+* [Dokumentation für „Microsoft.FeatureManagement“](/dotnet/api/microsoft.featuremanagement)
 * [Verwalten von Featureflags](./manage-feature-flags.md)

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 61490df8305f353493588982886ef3c9ed0df50e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178768"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015872"
 ---
 ## <a name="push-to-azure-from-git"></a>Übertragen von Git an Azure mithilfe von Push
 

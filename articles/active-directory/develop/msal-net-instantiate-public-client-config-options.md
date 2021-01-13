@@ -1,28 +1,24 @@
 ---
-title: Instanziieren einer öffentlichen Clientanwendung mit Optionen (Microsoft Authentication Library für .NET) | Azure
+title: Instanziieren einer öffentlichen Client-App (MSAL.NET) | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie unter Verwendung der Microsoft Authentication Library für .NET (MSAL.NET) eine öffentliche Clientanwendung mit Konfigurationsoptionen instanziieren.
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1311e047b63cc9b5cccc785fbcd118db29f7c4bd
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 349ec8c99bc9e6768e5ec2ded346893da95c1636
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532615"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88166143"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Instanziieren einer öffentlichen Clientanwendung mit Konfigurationsoptionen unter Verwendung von MSAL.NET
 

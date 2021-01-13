@@ -3,17 +3,17 @@ title: Konfigurieren eines benutzerdefinierten Domänennamens in Cloud Services 
 description: Hier erfahren Sie, wie Sie Ihre Azure-Anwendung oder -Daten durch das Konfigurieren von DNS-Einstellungen auf einer benutzerdefinierten Domäne im Internet verfügbar machen.  In diesen Beispielen wird das Azure-Portal verwendet.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 8940d1a319d5bfabf8fd32b98f47cc6d283a8517
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 012801d0aada8ee55bb0eb05eaf75caa95878765
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359381"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069924"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst
 Wenn Sie einen Clouddienst erstellen, weist Azure diesen einer Unterdomäne von **cloudapp.net**zu. Wenn der Clouddienst beispielsweise den Namen „contoso“ hat, können Ihre Benutzer auf die Anwendung über eine URL wie `http://contoso.cloudapp.net` zugreifen. Darüber hinaus weist Azure eine virtuelle IP-Adresse zu.
@@ -30,7 +30,7 @@ Wissen Sie bereits, worum es sich bei CNAME-Einträgen und A-Datensätzen handel
 <p/>
 
 > [!TIP]
-> Schneller ans Ziel kommen – mit der NEUEN [Komplettanleitung für Azure](https://support.microsoft.com/kb/2990804).  Mit dieser Anleitung wird das Zuordnen eines benutzerdefinierten Domänennamens zu Azure-Clouddiensten und Azure-Websites sowie das Absichern der Kommunikation mittels SSL zum Kinderspiel.
+> Schneller ans Ziel kommen – mit der NEUEN [Komplettanleitung für Azure](https://support.microsoft.com/kb/2990804).  Mit dieser Anleitung wird das Zuordnen eines benutzerdefinierten Domänennamens UND das Absichern der Kommunikation (TLS) mit Azure-Clouddiensten oder Azure-Websites zum Kinderspiel.
 > 
 > 
 
@@ -58,12 +58,12 @@ Sie müssen einen neuen Eintrag zu der DNS-Tabelle Ihrer benutzerdefinierten Dom
 
 1. Verwenden Sie eine dieser Methoden, um den **.cloudapp.net** -Domänennamen zu ermitteln, der Ihrem Clouddienst zugewiesen ist.
 
-   * Melden Sie sich beim [Azure-Portal] an, und wählen Sie Ihren Clouddienst aus. Suchen Sie im Abschnitt **Übersicht** nach dem Eintrag **Website-URL**.
+   * Melden Sie sich beim [Azure portal] an, und wählen Sie Ihren Clouddienst aus. Suchen Sie im Abschnitt **Übersicht** nach dem Eintrag **Website-URL**.
 
        ![Die Schnelleinsicht zeigt die Site-URL.][csurl]
 
        **OR**
-   * Installieren und konfigurieren Sie [Azure PowerShell](/powershell/azure/overview), und verwenden Sie dann den folgenden Befehl:
+   * Installieren und konfigurieren Sie [Azure PowerShell](/powershell/azure/), und verwenden Sie dann den folgenden Befehl:
 
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -91,12 +91,12 @@ Sie müssen zunächst die virtuelle IP-Adresse Ihres Clouddiensts ermitteln, um 
 
 1. Verwenden Sie eine der folgenden Methoden, um die IP-Adresse Ihres Clouddiensts zu ermitteln.
 
-   * Melden Sie sich beim [Azure-Portal] an, und wählen Sie Ihren Clouddienst aus. Suchen Sie im Abschnitt **Übersicht** nach dem Eintrag **Öffentliche IP-Adressen**.
+   * Melden Sie sich beim [Azure portal] an, und wählen Sie Ihren Clouddienst aus. Suchen Sie im Abschnitt **Übersicht** nach dem Eintrag **Öffentliche IP-Adressen**.
 
        ![Die Schnelleinsicht zeigt die VIP.][vip]
 
        **OR**
-   * Installieren und konfigurieren Sie [Azure PowerShell](/powershell/azure/overview), und verwenden Sie dann den folgenden Befehl:
+   * Installieren und konfigurieren Sie [Azure PowerShell](/powershell/azure/), und verwenden Sie dann den folgenden Befehl:
 
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip
@@ -119,22 +119,22 @@ Der folgende A-Datensatz leitet zum Beispiel den gesamten Verkehr von **www\.con
 Dieses Beispiel zeigt das Erstellen eines A-Datensatzes für die Stammdomäne. Wenn Sie einen Platzhaltereintrag erstellen möchten, der alle Unterdomänen abdeckt, würden Sie „*****“ als Unterdomäne eingeben.
 
 > [!WARNING]
-> IP-Adressen in Azure sind standardmäßig dynamische IP-Adressen. Es empfiehlt sich, eine [reservierte IP-Adresse](../virtual-network/virtual-networks-reserved-public-ip.md) zu verwenden, um sicherzustellen, dass sich Ihre IP-Adresse nicht ändert.
+> IP-Adressen in Azure sind standardmäßig dynamische IP-Adressen. Es empfiehlt sich, eine [reservierte IP-Adresse](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) zu verwenden, um sicherzustellen, dass sich Ihre IP-Adresse nicht ändert.
 > 
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Verwalten von Cloud Services](cloud-services-how-to-manage-portal.md)
+* [Verwalten von Clouddiensten](cloud-services-how-to-manage-portal.md)
 * [Zuordnen von CDN-Inhalt (Content Delivery Network) zu einer benutzerdefinierten Domäne](../cdn/cdn-map-content-to-custom-domain.md)
 * [Allgemeine Konfiguration Ihres Clouddiensts](cloud-services-how-to-configure-portal.md)
 * Weitere Informationen zum [Bereitstellen eines Clouddiensts](cloud-services-how-to-create-deploy-portal.md)
-* Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
+* Konfigurieren von [TLS/SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
 
 [Expose Your Application on a Custom Domain]: #access-app
 [Add a CNAME Record for Your Custom Domain]: #add-cname
 [Expose Your Data on a Custom Domain]: #access-data
 [VIP swaps]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png

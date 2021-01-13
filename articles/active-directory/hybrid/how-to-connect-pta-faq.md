@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 04/15/2019
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d21bf0f2ba7c93a35952d2eb2dd4df49bb3260b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 75f797c40a276323cea9983c5340d2d854160c83
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290757"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368476"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory-Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -29,22 +29,18 @@ In diesem Artikel werden häufig gestellte Fragen zur Passthrough-Authentifizier
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Welche der Methoden für die Anmeldung bei Azure AD (Passthrough-Authentifizierung, Kennworthashsynchronisierung oder Active Directory-Verbunddienste (AD FS)) sollte ich auswählen?
 
-Einen Vergleich der verschiedenen Azure AD-Anmeldemethoden und Informationen, wie Sie die richtige Anmeldemethode für Ihre Organisation wählen, finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
+Einen Vergleich der verschiedenen Azure AD-Anmeldemethoden und Informationen, wie Sie die richtige Anmeldemethode für Ihre Organisation wählen, finden Sie in [diesem Leitfaden](./choose-ad-authn.md).
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Ist die Passthrough-Authentifizierung ein kostenloses Feature?
 
 Die Passthrough-Authentifizierung ist ein kostenloses Feature. Sie benötigen für die Verwendung keine kostenpflichtigen Editionen von Azure AD.
 
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Ist die Passthrough-Authentifizierung in der Cloud [Microsoft Azure Deutschland](https://www.microsoft.de/cloud-deutschland) und der Cloud [Azure Government](https://azure.microsoft.com/features/gov/) verfügbar?
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Funktioniert der [bedingte Zugriff](../conditional-access/overview.md) mit der Passthrough-Authentifizierung?
 
-Nein. Die Passthrough-Authentifizierung ist nur in der weltweiten Instanz von Azure AD verfügbar.
-
-## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>Funktioniert der [bedingte Zugriff](../active-directory-conditional-access-azure-portal.md) mit der Passthrough-Authentifizierung?
-
-Ja. Alle Funktionen mit bedingtem Zugriff, einschließlich Azure Multi-Factor Authentication, funktionieren mit der Passthrough-Authentifizierung.
+Ja. Alle Funktionen mit bedingtem Zugriff, einschließlich Azure AD Multi-Factor Authentication, funktionieren mit der Passthrough-Authentifizierung.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Unterstützt die Passthrough-Authentifizierung eine alternative Anmelde-ID (Alternate ID) anstelle von „UserPrincipalName“ als Benutzernamen?
-Die Passthrough-Authentifizierung unterstützt die alternative Anmelde-ID in eingeschränktem Maße als Benutzername, wenn dies in Azure AD Connect konfiguriert ist. Als Voraussetzung muss Azure AD Connect das lokale Active Directory-Attribut `UserPrincipalName` mit Azure AD synchronisieren. `UserPrincipalName` für die lokale AD-Instanz und Azure AD ist somit identisch. Falls Sie ein anderes Attribut verwenden möchten, um die Synchronisierung des UPN von der lokalen AD-Instanz mit Azure AD durchzuführen, müssen Sie entweder die Kennworthashsynchronisierung oder AD FS nutzen. Weitere Informationen finden Sie unter [Benutzerdefinierte Installation von Azure AD Connect](how-to-connect-install-custom.md). Nicht alle Office 365-Anwendungen unterstützen `Alternate ID`. Angaben zur Supporterklärung finden Sie in der Dokumentation der jeweiligen Anwendung.
+Ja. Die Anmeldung mit einem UPN-fremden Wert (etwa mit einer alternativen E-Mail-Adresse) wird sowohl für die Passthrough-Authentifizierung (PTA) als auch für die Kennworthashsynchronisierung (Password Hash Sync, PHS) unterstützt. Weitere Informationen zur alternativen Anmelde-ID finden Sie [hier](../authentication/howto-authentication-use-email-signin.md).
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Kann die Kennworthashsynchronisierung als Fallback für die Passthrough-Authentifizierung verwendet werden?
 
@@ -54,7 +50,7 @@ Nein. Bei der Passthrough-Authentifizierung wird _kein_ automatisches Failover a
 
 Wenn Sie Azure AD Connect verwenden, um die Anmeldemethode von Kennworthashsynchronisierung in Passthrough-Authentifizierung zu ändern, wird die Passthrough-Authentifizierung die primäre Anmeldemethode für Ihre Benutzer in verwalteten Domänen. Beachten Sie, dass die Kennworthashes aller Benutzer, die zuvor per Kennworthashsynchronisierung synchronisiert wurden, in Azure AD gespeichert bleiben.
 
-## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kann ich einen [Azure AD-Anwendungsproxy](../manage-apps/application-proxy.md)-Connector und einen Passthrough-Authentifizierungs-Agent auf demselben Server installieren?
+## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kann ich einen [Azure AD-Anwendungsproxy](../manage-apps/application-proxy.md)-Connector und einen Passthrough-Authentifizierungs-Agent auf demselben Server installieren?
 
 Ja. Die umbenannten Versionen des Passthrough-Authentifizierungs-Agents (Versionen 1.5.193.0 oder höher) unterstützen diese Konfiguration.
 
@@ -75,7 +71,7 @@ Wenn Sie das Kennwortrückschreiben für einen bestimmten Benutzer nicht konfigu
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>Was kommunizieren Passthrough-Authentifizierungs-Agents über die Ports 80 und 443?
 
 - Die Authentifizierungs-Agents stellen HTTPS-Anforderungen für alle Funktionsvorgänge über Port 443 aus.
-- Die Authentifizierungs-Agents stellen HTTP-Anforderungen über Port 80, um die SSL-Zertifikatsperrlisten (CRLs) herunterzuladen.
+- Die Authentifizierungs-Agents stellen HTTP-Anforderungen über Port 80, um die TLS/SSL-Zertifikatsperrlisten (CRLs) herunterzuladen.
 
      >[!NOTE]
      >In kürzlich veröffentlichten Updates wurde die Zahl der Ports, die für diese Funktion erforderlich sind, gesenkt. Wenn Sie eine ältere Version von Azure AD Connect oder des Authentifizierungs-Agents verwenden, halten Sie auch folgende Ports offen: 5671, 8080, 9090, 9091, 9350, 9352 und 10100–10120.
@@ -107,13 +103,13 @@ Nein, Sie können nur einen Passthrough-Authentifizierungs-Agent auf einem einze
 
 ## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>Muss ich Zertifikate, die von Passthrough-Authentifizierungs-Agents verwendet werden, manuell verlängern?
 
-Die Kommunikation zwischen den einzelnen Passthrough-Authentifizierungs-Agents und Azure AD wird per zertifikatbasierter Authentifizierung geschützt. Diese [Zertifikate werden alle paar Monate automatisch von Azure AD verlängert](how-to-connect-pta-security-deep-dive.md#operational-security-of -the-authentication-agents). Sie müssen diese Zertifikate nicht manuell verlängern. Abgelaufene Zertifikate können Sie bei Bedarf entfernen.
+Die Kommunikation zwischen den einzelnen Passthrough-Authentifizierungs-Agents und Azure AD wird per zertifikatbasierter Authentifizierung geschützt. Diese [Zertifikate werden alle paar Monate automatisch von Azure AD verlängert](how-to-connect-pta-security-deep-dive.md#operational-security-of-the-authentication-agents). Sie müssen diese Zertifikate nicht manuell verlängern. Abgelaufene Zertifikate können Sie bei Bedarf entfernen.
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Gewusst wie: Entfernen eines Passthrough-Authentifizierungs-Agents
 
 Solange ein Passthrough-Authentifizierungs-Agent ausgeführt wird, bleibt er aktiv und verarbeitet fortlaufend Anmeldeanforderungen von Benutzern. Wenn Sie einen Authentifizierungs-Agent deinstallieren möchten, wechseln Sie zu **Systemsteuerung > Programme > Programme und Funktionen**, und deinstallieren Sie die beiden Programme **Microsoft Azure AD Connect-Authentifizierungs-Agent** und **Microsoft Azure AD Connect Agent Updater**.
 
-Nach Abschluss des vorherigen Schritts sehen Sie auf dem Blatt „Passthrough-Authentifizierung“ im [Azure Active Directory-Admin Center](https://aad.portal.azure.com) den Authentifizierungs-Agent als **Inaktiv**. Dies entspricht dem _erwarteten_ Verhalten. Der Authentifizierungs-Agent wird nach einigen Tagen automatisch aus der Liste entfernt.
+Nach Abschluss des vorherigen Schritts sehen Sie auf dem Blatt „Passthrough-Authentifizierung“ im [Azure Active Directory-Admin Center](https://aad.portal.azure.com) den Authentifizierungs-Agent als **Inaktiv**. Dies entspricht dem _erwarteten_ Verhalten. Der Authentifizierungs-Agent wird nach 10 Tagen automatisch aus der Liste entfernt.
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Ich verwende bereits AD FS für die Anmeldung bei Azure AD. Wie kann ich zur Passthrough-Authentifizierung wechseln?
 
@@ -121,7 +117,7 @@ Wenn Sie von AD FS (oder andere Verbundtechnologien nutzen) zur Passthrough-Auth
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>Kann ich die Passthrough-Authentifizierung in einer Active Directory-Umgebung mit mehreren Gesamtstrukturen verwenden?
 
-Ja. Umgebungen mit mehreren Gesamtstrukturen werden unterstützt, wenn Gesamtstruktur-Vertrauensstellungen zwischen Ihren Active Directory-Gesamtstrukturen bestehen und das Namensuffixrouting ordnungsgemäß konfiguriert ist.
+Ja. Umgebungen mit mehreren Gesamtstrukturen (bidirektional) werden unterstützt, wenn Gesamtstruktur-Vertrauensstellungen zwischen Ihren Active Directory-Gesamtstrukturen bestehen und das Namensuffixrouting ordnungsgemäß konfiguriert ist.
 
 ## <a name="does-pass-through-authentication-provide-load-balancing-across-multiple-authentication-agents"></a>Bietet die Passthrough-Authentifizierung einen Lastenausgleich zwischen mehreren Authentifizierungs-Agents?
 
@@ -142,13 +138,9 @@ Für die meisten Kunden reichen zwei oder drei Authentifizierungs-Agents insgesa
 >[!NOTE]
 >In einem System können maximal 40 Authentifizierungs-Agents pro Mandant installiert werden.
 
-## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>Kann ich den ersten Passthrough-Authentifizierungs-Agent auf einem anderen Server als demjenigen mit Azure AD Connect installieren?
-
-Nein, dieses Szenario wird _nicht_ unterstützt.
-
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>Warum benötige ich ein rein cloudbasiertes globales Administratorkonto, um die Passthrough-Authentifizierung zu aktivieren?
 
-Es wird empfohlen, die Passthrough-Authentifizierung mit einem rein cloudbasierten globalen Administratorkonto zu aktivieren oder zu deaktivieren. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../active-directory-users-create-azure-portal.md). Auf diese Weise wird sichergestellt, dass Sie sich nicht aus Ihrem Mandanten aussperren.
+Es wird empfohlen, die Passthrough-Authentifizierung mit einem rein cloudbasierten globalen Administratorkonto zu aktivieren oder zu deaktivieren. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../fundamentals/add-users-azure-active-directory.md). Auf diese Weise wird sichergestellt, dass Sie sich nicht aus Ihrem Mandanten aussperren.
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>Wie kann ich die Passthrough-Authentifizierung deaktivieren?
 
@@ -168,7 +160,7 @@ A: Lokale UPN-Änderungen können nicht synchronisiert werden, wenn:
 
 Das liegt daran, dass Mandanten, die vor dem 15. Juni 2015 erstellt wurden, UPN-Änderungen standardmäßig blockiert haben.  Wenn Sie UPN-Änderungen freigeben möchten, führen Sie das folgende PowerShell-Cmdlet aus:  
 
-`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers-Enable $True`
+`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $True`
 
 Mandanten, die nach dem 15. Juni 2015 erstellt wurden, synchronisieren UPN-Änderungen standardmäßig.   
 
@@ -184,4 +176,3 @@ Mandanten, die nach dem 15. Juni 2015 erstellt wurden, synchronisieren UPN-Ände
 - [Ausführliche Informationen zur Sicherheit](how-to-connect-pta-security-deep-dive.md): Hier erhalten Sie ausführliche technische Informationen zur Pass-Through-Authentifizierung.
 - [Nahtloses einmaliges Anmelden mit Azure AD:](how-to-connect-sso.md) Erfahren Sie mehr über diese Ergänzungsfunktion.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Fordern Sie neue Features über das Azure Active Directory-Forum an.
-

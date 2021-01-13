@@ -1,24 +1,17 @@
 ---
-title: Erstellen einer Datenpipeline mit der Datensammler-API von Azure Monitor | Microsoft-Dokumentation
+title: Verwenden der Datensammler-API zum Erstellen einer Datenpipeline
 description: Mit der HTTP-Datensammler-API von Azure Monitor können Sie dem Log Analytics-Arbeitsbereich über jeden Client, der die REST-API aufrufen kann, POST JSON-Daten hinzufügen. In diesem Artikel wird beschrieben, wie in Dateien gespeicherte Daten auf automatisierte Weise hochgeladen werden.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 08/09/2018
-ms.author: magoedte
-ms.openlocfilehash: 53457a044f5c69af7bf68561f24732e8f02219d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac2b79046718fe45ad0dad0396b6f7653efbb779
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65603232"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86505328"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Erstellen einer Datenpipeline mit der Datensammler-API
 
@@ -50,7 +43,7 @@ In diesem Artikel wird nicht beschrieben, wie Sie Daten erstellen oder [in ein A
 
 In diesem Artikel wird nicht die detaillierte Einrichtung des Blobspeichers, der Logik-App oder der Azure-Funktion beschrieben, aber auf den Seiten der einzelnen Produkte finden Sie ausführliche Anleitungen.
 
-Zur Überwachung dieser Pipeline nutzen wir Application Insights für unsere Azure-Funktion ([Details](../../azure-functions/functions-monitoring.md)) und Azure Monitor für unsere Logik-App ([Details](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)). 
+Zur Überwachung dieser Pipeline nutzen wir Application Insights für unsere Azure-Funktion ([Details](../../azure-functions/functions-monitoring.md)) und Azure Monitor für unsere Logik-App ([Details](../../logic-apps/monitor-logic-apps-log-analytics.md)). 
 
 ## <a name="setting-up-the-pipeline"></a>Einrichten der Pipeline
 Stellen Sie zum Festlegen der Pipeline zuerst sicher, dass Sie Ihren Blobcontainer erstellt und konfiguriert haben. Stellen Sie auch sicher, dass der Log Analytics-Arbeitsbereich erstellt wurde, an den Sie die Daten senden möchten.

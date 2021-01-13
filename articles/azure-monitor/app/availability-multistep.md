@@ -1,23 +1,14 @@
 ---
-title: Überwachen einer Webanwendung mithilfe von mehrstufigen Webtests und Application Insights | Microsoft-Dokumentation
+title: Überwachen mit mehrstufigen Webtests – Azure Application Insights
 description: Einrichten von mehrstufigen Webtests zur Überwachung Ihrer Webanwendungen mit Azure Application Insights
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/25/2019
-ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: a836e4cf66bf1e957f7b3779e21ec6a0296f7abe
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 05/26/2020
+ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881441"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87024772"
 ---
 # <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 
@@ -25,51 +16,28 @@ Sie können eine aufgezeichnete Sequenz von URLs und Interaktionen mithilfe eine
 
 > [!NOTE]
 > Mehrstufige Webtests sind von Visual Studio-Webtestdateien abhängig. Es wurde [angekündigt](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/), dass Visual Studio 2019 die letzte Version mit Webtestfunktionen sein wird. Es ist wichtig zu verstehen, dass zwar keine neuen Features hinzugefügt werden, aber Webtestfunktionen in Visual Studio 2019 derzeit noch und auch während des Supportlebenszyklus des Produkts weiterhin unterstützt werden. Das Azure Monitor-Produktteam hat Fragen zur Zukunft von mehrstufigen Verfügbarkeitstests [hier](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101) behandelt.  
+> </br>
+> Mehrstufige Webtests werden in der [Azure Government](../../azure-government/index.yml)-Cloud **nicht unterstützt**.
+
 
 ## <a name="pre-requisites"></a>Voraussetzungen
 
 * Visual Studio 2017 Enterprise oder höher
 * Visual Studio-Tools für Webleistungs- und Auslastungstests
 
-Sie finden die Testingtools im **Visual Studio-Installer** unter **Einzelne Komponenten** > **Debuggen und Testen** > **Tools für Webleistung und Auslastungstests**.
+Sie finden die Testingtools im **Visual Studio-Installer** > **Einzelne Komponenten** > **Debuggen und Testen** > **Tools für Webleistung und Auslastungstests**.
 
 ![Screenshot: Visual Studio-Installer mit aktivierter Option „Individuelle Komponenten“ und einem Kontrollkästchen neben dem Element „Tools für Webleistung und Auslastungstests“](./media/availability-multistep/web-performance-load-testing.png)
 
 > [!NOTE]
 > Für mehrstufige Webtests fallen zusätzliche Kosten an. Weitere Informationen erhalten Sie im [offiziellen Leitfaden für Preise](https://azure.microsoft.com/pricing/details/application-insights/).
 
-## <a name="record-a-multi-step-web-test"></a>Aufzeichnung eines mehrstufigen Webtests
+## <a name="record-a-multi-step-web-test"></a>Aufzeichnung eines mehrstufigen Webtests 
 
-Um einen mehrstufigen Test zu erstellen, zeichnen das Szenario mit Visual Studio Enterprise auf. Laden Sie dann die Aufzeichnung in Application Insights hoch. Application Insights wiederholt das Szenario in bestimmten Abständen und überprüft die Antworten.
+> [!WARNING]
+> Die Verwendung der mehrstufigen Aufzeichnung wird nicht mehr empfohlen. Die Aufzeichnung wurde für statische HTML-Seiten mit grundlegenden Interaktionen entwickelt und bietet keine Funktionalität für moderne Webseiten.
 
-> [!IMPORTANT]
-> * Es ist nicht möglich, in Ihren Tests codierte Funktionen oder Schleifen zu verwenden. Der Test muss vollständig im WEBTEST-Skript enthalten sein. Sie können aber Standard-Plug-Ins nutzen.
-> * In den Webtests mit mehreren Schritten werden nur Zeichen der englischen Sprache unterstützt. Wenn Sie Visual Studio in anderen Sprachen verwenden, aktualisieren Sie die Webtest-Definitionsdatei, sodass nicht-englische Zeichen übersetzt/ausgeschlossen werden.
-
-Verwenden Sie Visual Studio Enterprise, um eine Websitzung aufzuzeichnen.
-
-1. Erstellen Sie ein Webleistungs- und Auslastungstestprojekt. **Datei** > **Neu** > **Projekt** > **Visual C#**  > **Test**
-
-    ![Benutzeroberfläche für ein neues Projekt in Visual Studio](./media/availability-multistep/vs-web-performance-and-load-test.png)
-
-2. Öffnen Sie die Datei `.webtest`, und starten Sie die Aufzeichnung.
-
-    ![Benutzeroberfläche für die Aufzeichnung von Tests in Visual Studio](./media/availability-multistep/open-web-test.png)
-
-3. Klicken Sie die Schritte durch, die Ihr Test als Teil der Aufzeichnung simulieren soll.
-
-    ![Benutzeroberfläche der Browseraufzeichnung](./media/availability-multistep/record.png)
-
-4. Bearbeiten Sie den Test:
-
-    * Fügen Sie Validierungen zum Überprüfen der empfangenen Text- und Antwortcodes hinzu.
-    * Entfernen Sie jegliche unnötigen Interaktionen. Sie können auch abhängige Anforderungen von Bildern entfernen oder Websites zur Nachverfolgung hinzufügen, die für Sie nicht relevant sind, weil Sie Ihren Test als Erfolg ansehen.
-    
-    Denken Sie daran, dass Sie nur das Testskript bearbeiten können. Sie können keinen benutzerdefinierten Code hinzufügen oder andere Webtests aufrufen. Fügen Sie keine Schleifen in den Test ein. Sie können standardmäßige Webtest-Plug-Ins verwenden.
-
-5. Führen Sie den Test zur Überprüfung in Visual Studio aus, um sicherzustellen, dass er funktioniert.
-
-    Das Webtest-Ausführungsprogramm öffnet einen Webbrowser und wiederholt die aufgezeichneten Aktionen. Vergewissern Sie sich, dass alles wie erwartet funktioniert.
+Anleitungen zum Erstellen von Visual Studio-Webtests finden Sie in der [offiziellen Dokumentation zu Visual Studio 2019](/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
 
 ## <a name="upload-the-web-test"></a>Hochladen des Webtests
 
@@ -100,7 +68,7 @@ Verwenden Sie Visual Studio Enterprise, um eine Websitzung aufzuzeichnen.
 |**Klassisch** | Die Verwendung von klassischen Warnungen wird für neue Verfügbarkeitstests nicht mehr empfohlen.|
 |**Schwellenwert für den Warnungsspeicherort**|Es wird ein Mindestwert von 3/5 Standorten empfohlen. Das optimale Verhältnis zwischen dem Schwellenwert für den Warnungsspeicherort und der Anzahl von Teststandorten lautet **Warnungsschwellenwert für Standort** = **Anzahl von Teststandorten -2, bei einer Mindestanzahl von fünf Teststandorten.**|
 
-## <a name="advanced-configuration"></a>Erweiterte Konfiguration
+## <a name="configuration"></a>Konfiguration
 
 ### <a name="plugging-time-and-random-numbers-into-your-test"></a>Einfügen von Zeiten und beliebigen Zahlen in einen Test
 
@@ -138,7 +106,7 @@ In allen Fällen sollten Sie in der Anwendung ein Konto erstellen, das nur Testz
 
 **SAML-Authentifizierung**
 
-|Eigenschaftenname| Beschreibung|
+|Eigenschaftenname| BESCHREIBUNG|
 |----|-----|
 | Benutzergruppen-URI | Der Benutzergruppen-URI des SAML-Tokens.  Dies ist der URI für Access Control Service (ACS), einschließlich ACS-Namespace und -Hostname. |
 | Zertifikatkennwort | Das Kennwort für das Clientzertifikat, das Zugriff auf den eingebetteten privaten Schlüssel gewährt. |

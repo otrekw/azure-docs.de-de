@@ -1,25 +1,25 @@
 ---
-title: Kopieren von Daten aus Hive mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Hive mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus Hive mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/17/2020
 ms.author: jingwang
-ms.openlocfilehash: 1db5e0fbdd62ee246d32ca04082b7aedd78ab997
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4207c4ddfcbab325b1ae119dcd200af30fc59f58
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090255"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844937"
 ---
-# <a name="copy-data-from-hive-using-azure-data-factory"></a>Kopieren von Daten aus Hive mithilfe von Azure Data Factory 
+# <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>Kopieren und Transformieren von Daten aus Hive mithilfe von Azure Data Factory 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Hive zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -55,19 +55,20 @@ Folgende Eigenschaften werden für den mit Hive verknüpften Dienst unterstützt
 | port | Der TCP-Port, den der Hive-Server verwendet, um auf Clientverbindungen zu lauschen. Geben Sie beim Herstellen einer Verbindung mit Azure HDInsights als Port 443 an. | Ja |
 | serverType | Der Typ des Hive-Servers. <br/>Zulässige Werte sind: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Nein |
 | thriftTransportProtocol | Das auf der Thrift-Ebene zu verwendende Transportprotokoll. <br/>Zulässige Werte sind: **Binary**, **SASL**, **HTTP** | Nein |
-| authenticationType | Die Authentifizierungsmethode für den Zugriff auf den Hive-Server. <br/>Zulässige Werte sind: **Anonymous**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ja |
+| authenticationType | Die Authentifizierungsmethode für den Zugriff auf den Hive-Server. <br/>Zulässige Werte sind: **Anonymous**, **Username**, **UsernameAndPassword** und **WindowsAzureHDInsightService**. Kerberos-Authentifizierung wird derzeit nicht unterstützt. | Ja |
 | serviceDiscoveryMode | „true“, um das Verwenden des Diensts ZooKeeper anzugeben, andernfalls „false“.  | Nein |
 | zooKeeperNameSpace | Der Namespace für ZooKeeper, unter dem Hive Server 2-Knoten hinzugefügt werden.  | Nein |
 | useNativeQuery | Gibt an, ob der Treiber native HiveQL-Abfragen verwendet oder diese in eine äquivalente Form in HiveQL konvertiert.  | Nein |
 | username | Der Benutzername für den Zugriff auf den Hive-Server.  | Nein |
 | password | Das Kennwort für den Benutzer. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
 | httpPath | Die Teil-URL, die dem Hive-Server entspricht.  | Nein |
-| enableSsl | Gibt an, ob die Verbindungen mit dem Server mit SSL verschlüsselt werden. Der Standardwert ist „false“.  | Nein |
-| trustedCertPath | Der vollständige Pfad der PEM-Datei mit vertrauenswürdigen Zertifizierungsstellenzertifikaten zur Überprüfung des Servers beim Verbindungsaufbau über SSL. Diese Eigenschaft kann nur festgelegt werden, wenn SSL in einer selbstgehostetem IR verwendet wird. Der Standardwert ist die Datei „cacerts.pem“, die mit der IR installiert wird.  | Nein |
-| useSystemTrustStore | Gibt an, ob ein Zertifizierungsstellenzertifikat aus dem Vertrauensspeicher des Systems oder aus einer angegebenen PEM-Datei verwendet werden soll. Der Standardwert ist „false“.  | Nein |
-| allowHostNameCNMismatch | Gibt an, ob ein von der Zertifizierungsstelle ausgestellter SSL-Zertifikatsname erforderlich ist, der mit dem Hostnamen des Servers übereinstimmt, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert ist „false“.  | Nein |
-| allowSelfSignedServerCert | Gibt an, ob vom Server selbstsignierte Zertifikate zugelassen werden. Der Standardwert ist „false“.  | Nein |
+| enableSsl | Gibt an, ob Verbindungen mit dem Server mit TLS verschlüsselt werden. Der Standardwert ist „FALSE“.  | Nein |
+| trustedCertPath | Der vollständige Pfad der PEM-Datei mit vertrauenswürdigen Zertifizierungsstellenzertifikaten zur Überprüfung des Servers beim Verbindungsaufbau über TLS. Diese Eigenschaft kann nur festgelegt werden, wenn TLS in einer selbstgehosteten IR verwendet wird. Der Standardwert ist die Datei „cacerts.pem“, die mit der IR installiert wird.  | Nein |
+| useSystemTrustStore | Gibt an, ob ein Zertifizierungsstellenzertifikat aus dem Vertrauensspeicher des Systems oder aus einer angegebenen PEM-Datei verwendet werden soll. Der Standardwert ist „FALSE“.  | Nein |
+| allowHostNameCNMismatch | Gibt an, ob der Name eines von der Zertifizierungsstelle ausgestellten TLS-/SSL-Zertifikats mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert ist „FALSE“.  | Nein |
+| allowSelfSignedServerCert | Gibt an, ob vom Server selbstsignierte Zertifikate zugelassen werden. Der Standardwert ist „FALSE“.  | Nein |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
+| storageReference | Ein Verweis auf den verknüpften Dienst des Speicherkontos, das für das Staging von Daten im Zuordnungsdatenfluss verwendet wird. Nur erforderlich, wenn im Zuordnungsdatenfluss der verknüpfte Hive-Dienst verwendet wird. | Nein |
 
 **Beispiel:**
 
@@ -96,11 +97,11 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus HTTP die „type“-Eigenschaft des Datasets auf **HiveObject** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **HiveObject** | Ja |
 | schema | Name des Schemas. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
-| table | Name der Tabelle. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
+| table | Der Name der Tabelle. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
 | tableName | Name der Tabelle einschließlich Schemateil. Diese Eigenschaft wird aus Gründen der Abwärtskompatibilität weiterhin unterstützt. Verwenden Sie für eine neue Workload `schema` und `table`. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
@@ -128,10 +129,10 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus einem Hive den Quelltyp in der Kopieraktivität auf **HiveSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **HiveSource** | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 
@@ -164,6 +165,53 @@ Legen Sie zum Kopieren von Daten aus einem Hive den Quelltyp in der Kopieraktivi
     }
 ]
 ```
+
+## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
+
+Der Hive-Connector wird als Quelle vom Typ [Inlinedataset](data-flow-source.md#inline-datasets) in Zuordnungsdatenflüssen unterstützt. Daten können mithilfe einer Abfrage oder direkt aus einer Hive-Tabelle in HDInsight gelesen werden. Hive-Daten werden in einem Speicherkonto als Parquet-Dateien gestaged, bevor sie im Rahmen eines Datenflusses transformiert werden. 
+
+### <a name="source-properties"></a>Quelleigenschaften
+
+Die folgende Tabelle enthält die von einer Hive-Quelle unterstützten Eigenschaften. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten.
+
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Speicher | Als Speicher muss `hive` verwendet werden. | ja |  `hive` | store | 
+| Format | Gibt an, ob Daten aus einer Tabelle oder per Abfrage gelesen werden. | ja | `table` oder `query` | format |
+| Schemaname | Das Schema der Quelltabelle (beim Lesen aus einer Tabelle). |  Ja, wenn das Format `table` lautet. | String | schemaName |
+| Tabellenname | Der Tabellenname (beim Lesen aus einer Tabelle). |   Ja, wenn das Format `table` lautet. | String | tableName |
+| Abfrage | Die Quellabfrage für den verknüpften Hive-Dienst, wenn das Format `query` lautet. | Ja, wenn das Format `query` lautet. | String | Abfrage |
+| Gestaffelt | Die Hive-Tabelle wird immer in einem Stagingbereich bereitgestellt. | ja | `true` | staged |
+| Speichercontainer | Speichercontainer, der vor dem Lesen aus bzw. dem Schreiben in Hive zum Stagen von Daten verwendet wird. Der Hive-Cluster muss Zugriff auf diesen Container haben. | ja | String | storageContainer |
+| Stagingdatenbank | Das Schema bzw. die Datenbank, auf das bzw. auf die das im verknüpften Dienst angegebene Benutzerkonto Zugriff hat. Dient zum Erstellen externer Tabellen während des Stagings und wird hinterher gelöscht. | nein | `true` oder `false` | stagingDatabaseName |
+| SQL-Skripts vor Vorgang | SQL-Code, der vor dem Lesen der Daten für die Hive-Tabelle ausgeführt werden soll. | nein | String | preSQLs |
+
+#### <a name="source-example"></a>Quellbeispiel
+
+Im Anschluss finden Sie ein Beispiel für eine Hive-Quellkonfiguration:
+
+![Beispiel für Hive-Quelle](media/data-flow/hive-source.png "[Beispiel für Hive-Quelle")
+
+Aus diesen Einstellungen ergibt sich das folgende Datenflussskript:
+
+```
+source(
+    allowSchemaDrift: true,
+    validateSchema: false,
+    ignoreNoFilesFound: false,
+    format: 'table',
+    store: 'hive',
+    schemaName: 'default',
+    tableName: 'hivesampletable',
+    staged: true,
+    storageContainer: 'khive',
+    storageFolderPath: '',
+    stagingDatabaseName: 'default') ~> hivesource
+```
+### <a name="known-limitations"></a>Bekannte Einschränkungen
+
+* Komplexe Typen wie Arrays, Zuordnungen, Strukturen und Unions werden für Lesevorgänge nicht unterstützt. 
+* Der Hive-Connector unterstützt nur Hive-Tabellen in Azure HDInsight ab Version 4.0 (Apache Hive 3.1.0).
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 

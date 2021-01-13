@@ -1,22 +1,23 @@
 ---
 title: Zugreifen auf Systemdokumenteigenschaften über den Azure Cosmos DB-Graph
 description: Hier erfahren Sie, wie Sie Cosmos DB-Systemdokumenteigenschaften über die Gremlin-API lesen und schreiben.
-author: olignat
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: overview
+ms.topic: how-to
 ms.date: 09/10/2019
-ms.author: olignat
-ms.openlocfilehash: 4354d37a32bde006a9bee70c39df1fee9b269365
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+author: SnehaGunda
+ms.author: sngun
+ms.openlocfilehash: 61814082ebe9828a08da1e8786890b500c239082
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70911309"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081840"
 ---
 # <a name="system-document-properties"></a>Systemdokumenteigenschaften
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
-Azure Cosmos DB verfügt für jedes Dokument über [Systemeigenschaften](https://docs.microsoft.com/rest/api/cosmos-db/databases), z. B. ```_ts```, ```_self```, ```_attachments```, ```_rid``` und ```_etag```. Darüber hinaus fügt die Gremlin-Engine die Eigenschaften ```inVPartition``` und ```outVPartition``` für Kanten hinzu. Standardmäßig sind diese Eigenschaften für einen Durchlauf verfügbar. Es ist aber möglich, einzelne oder auch alle Eigenschaften in den Gremlin-Durchlauf einzubeziehen.
+Azure Cosmos DB verfügt für jedes Dokument über [Systemeigenschaften](/rest/api/cosmos-db/databases), z. B. ```_ts```, ```_self```, ```_attachments```, ```_rid``` und ```_etag```. Darüber hinaus fügt die Gremlin-Engine die Eigenschaften ```inVPartition``` und ```outVPartition``` für Kanten hinzu. Standardmäßig sind diese Eigenschaften für einen Durchlauf verfügbar. Es ist aber möglich, einzelne oder auch alle Eigenschaften in den Gremlin-Durchlauf einzubeziehen.
 
 ```
 g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_ts').create())

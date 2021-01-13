@@ -1,32 +1,31 @@
 ---
 title: Details der Struktur von Richtliniendefinitionen
-description: Beschreibt, wie die von Azure Policy verwendete Definition von Ressourcenrichtlinien es Ihnen ermöglicht, Konventionen für Ressourcen in Ihrer Organisation einzurichten, indem Sie beschreiben, wann die Richtlinie erzwungen werden soll und welche Auswirkungen erfolgen sollen.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 09/09/2019
+description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
+ms.date: 10/22/2020
 ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: b2b38fe2d9a2bf4c645e5b1cda4b8fba356353d3
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 52adaf9522e4690c4c44a72ed47592f5b1d6471e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181189"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883247"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
-Definitionen von Ressourcenrichtlinien werden von Azure Policy verwendet, um Konventionen für Ressourcen festzulegen. Jede Definition beschreibt Ressourcenkonformität und welche Maßnahme ergriffen werden soll, wenn eine Ressource nicht konform ist.
-Durch Definieren von Konventionen können Sie Kosten beeinflussen und Ihre Ressourcen einfacher verwalten. Sie können beispielsweise angeben, dass nur bestimmte Typen virtueller Computer zulässig sind. Oder Sie können festlegen, dass alle Ressourcen ein bestimmtes Tag aufweisen. Richtlinien werden von allen untergeordneten Ressourcen geerbt. Wenn eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie für alle Ressourcen in dieser Ressourcengruppe.
+Azure Policy richtet Konventionen für Ressourcen ein. Richtliniendefinitionen beschreiben [Bedingungen](#conditions) für die Ressourcenkonformität und die Maßnahmen, die ergriffen werden, wenn eine Bedingung erfüllt ist. Eine Bedingung vergleicht ein [Feld](#fields) oder einen [Wert](#value) einer Ressourceneigenschaft mit einem erforderlichen Wert. Der Zugriff auf Ressourceneigenschaftsfelder erfolgt über [Aliase](#aliases). Wenn ein Ressourceneigenschaftsfeld ein Array ist, kann ein spezieller [Arrayalias](#understanding-the--alias) verwendet werden, um Werte aus allen Arraymembern auszuwählen und auf jedes eine Bedingung anzuwenden.
+Erfahren Sie mehr über [Bedingungen](#conditions).
 
-Das von Azure Policy verwendete Schema finden Sie hier: [https://docs.microsoft.com/azure/templates/microsoft.authorization/2019-01-01/policydefinitions](/azure/templates/microsoft.authorization/2019-01-01/policydefinitions)
+Durch Definieren von Konventionen können Sie Kosten beeinflussen und Ihre Ressourcen einfacher verwalten. Sie können beispielsweise angeben, dass nur bestimmte Typen virtueller Computer zulässig sind. Oder Sie können festlegen, dass Ressourcen ein bestimmtes Tag aufweisen. Richtlinienzuweisungen werden von untergeordneten Ressourcen geerbt. Wenn eine Richtlinienzuweisung auf eine Ressourcengruppe angewandt wird, gilt sie für alle Ressourcen in dieser Ressourcengruppe.
+
+Das Richtliniendefinitionsschema _policyRule_ finden Sie hier: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 Eine Richtliniendefinition wird mithilfe von JSON erstellt. Die Richtliniendefinition enthält Elemente für Folgendes:
 
-- Modus
-- parameters
 - Anzeigename
 - description
+- Modus
+- metadata
+- parameters
 - Richtlinienregel
   - Logische Auswertung
   - Wirkung
@@ -36,7 +35,13 @@ Die folgende JSON-Datei zeigt beispielsweise eine Richtlinie, die einschränkt, 
 ```json
 {
     "properties": {
-        "mode": "all",
+        "displayName": "Allowed locations",
+        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
+        "mode": "Indexed",
+        "metadata": {
+            "version": "1.0.0",
+            "category": "Locations"
+        },
         "parameters": {
             "allowedLocations": {
                 "type": "array",
@@ -48,8 +53,6 @@ Die folgende JSON-Datei zeigt beispielsweise eine Richtlinie, die einschränkt, 
                 "defaultValue": [ "westus2" ]
             }
         },
-        "displayName": "Allowed locations",
-        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
         "policyRule": {
             "if": {
                 "not": {
@@ -65,7 +68,22 @@ Die folgende JSON-Datei zeigt beispielsweise eine Richtlinie, die einschränkt, 
 }
 ```
 
-Alle Azure Policy-Beispiele sind unter [Azure Policy-Beispiele](../samples/index.md) verfügbar.
+Integrierte Richtlinien und Muster von Azure Policy finden Sie unter [Azure Policy-Beispiele](../samples/index.md).
+
+## <a name="display-name-and-description"></a>Anzeigename und Beschreibung
+
+Sie verwenden **displayName** und **description**, um die Richtliniendefinition zu bestimmen und den Kontext für ihre Verwendung anzugeben. **displayName** hat eine maximale Länge von _128_ Zeichen, und **description** hat eine maximale Länge von _512_ Zeichen.
+
+> [!NOTE]
+> Während der Erstellung oder Aktualisierung einer Richtliniendefinition werden **ID**, **Typ** und **Name** durch JSON-externe Eigenschaften definiert und sind in der JSON-Datei nicht erforderlich. Wenn Sie die Richtliniendefinition über das SDK abrufen, werden die Eigenschaften **ID**, **Typ** und **Name** als Teil der JSON-Datei zurückgegeben, sie sind jedoch schreibgeschützte Informationen, die nur die Richtliniendefinition betreffen.
+
+## <a name="type"></a>type
+
+Die **type-** Eigenschaft kann zwar nicht festgelegt werden, aber es gibt drei Werte, die vom SDK zurückgegeben und im Portal angezeigt werden:
+
+- `Builtin`: Diese Richtliniendefinitionen werden von Microsoft bereitgestellt und verwaltet.
+- `Custom`: Alle von Kunden erstellten Richtliniendefinitionen haben diesen Wert.
+- `Static`: Gibt eine Richtliniendefinition zur [Einhaltung gesetzlicher Bestimmungen](./regulatory-compliance.md) mit Microsoft **Ownership** an. Die Complianceergebnisse für diese Richtliniendefinitionen sind die Ergebnisse von Drittanbieterüberwachungen in der Microsoft-Infrastruktur. Im Azure-Portal wird dieser Wert manchmal als **Von Microsoft verwaltet** angezeigt. Weitere Informationen dazu finden Sie unter [Gemeinsame Verantwortung in der Cloud](../../../security/fundamentals/shared-responsibility.md).
 
 ## <a name="mode"></a>Mode
 
@@ -73,21 +91,44 @@ Der Modus (**mode**) wird abhängig davon konfiguriert, ob die Richtlinie für e
 
 ### <a name="resource-manager-modes"></a>Ressourcen-Manager-Modi
 
-Der Modus (**mode**) bestimmt, welche Ressourcentypen für eine Richtlinie ausgewertet werden. Unterstützte Modi:
+Der Modus (**mode**) bestimmt, welche Ressourcentypen für eine Richtliniendefinition ausgewertet werden. Unterstützte Modi:
 
-- `all`: Ressourcengruppen und alle Ressourcentypen werden ausgewertet.
+- `all`: Ressourcengruppen, Abonnements und alle Ressourcentypen werden ausgewertet.
 - `indexed`: Nur Ressourcentypen, die Tags und Speicherort unterstützen, werden ausgewertet.
+
+Beispielsweise unterstützt die Ressource `Microsoft.Network/routeTables` Tags und Standort und wird in beiden Modi ausgewertet. Es ist jedoch nicht möglich, die Ressource `Microsoft.Network/routeTables/routes` mit einem Tag zu versehen, und sie wird nicht im Modus `Indexed` ausgewertet.
 
 Es wird empfohlen, **mode** in den meisten Fällen auf `all` zu setzen. Alle über das Portal erstellten Richtliniendefinitionen verwenden für „mode“ die Option `all`. Wenn Sie PowerShell oder die Azure CLI verwenden, können Sie den **mode**-Parameter manuell angeben. Wenn die Richtliniendefinition keinen Wert für **mode** enthält, wird dieser in Azure PowerShell standardmäßig auf `all` und in der Azure CLI auf `null` festgelegt. Der Modus `null` entspricht dem Verwenden von `indexed`, um Abwärtskompatibilität zu unterstützen.
 
-`indexed` sollte beim Erstellen von Richtlinien verwendet werden, die Tags oder Speicherorte erzwingen. Dies ist nicht erforderlich, verhindert aber, dass Ressourcen, die keine Tags und Speicherorte unterstützen, bei der Konformitätsprüfung als nicht konform angezeigt werden. Die Ausnahme sind **Ressourcengruppen**. Richtlinien zum Erzwingen von Speicherort oder Tags für eine Ressourcengruppe sollten **mode** auf `all` festlegen und speziell auf den Typ `Microsoft.Resources/subscriptions/resourceGroups` abzielen. Ein Beispiel finden Sie unter [Ressourcengruppen-Tags erzwingen](../samples/enforce-tag-rg.md). Eine Liste der Ressourcen, die Tags unterstützen, finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../../azure-resource-manager/tag-support.md).
+`indexed` sollte beim Erstellen von Richtlinien verwendet werden, die Tags oder Speicherorte erzwingen. Dies ist nicht erforderlich, verhindert aber, dass Ressourcen, die keine Tags und Speicherorte unterstützen, bei der Konformitätsprüfung als nicht konform angezeigt werden. Ausgenommen hiervon sind **Ressourcengruppen** und **Abonnements**. Richtliniendefinitionen zum Erzwingen von Speicherort oder Tags für eine Ressourcengruppe oder ein Abonnement sollten **mode** auf `all` festlegen und speziell auf den Typ `Microsoft.Resources/subscriptions/resourceGroups` oder `Microsoft.Resources/subscriptions` abzielen. Ein Beispiel finden Sie unter [Azure Policy-Muster: Tags – Beispiel 1](../samples/pattern-tags.md). Eine Liste der Ressourcen, die Tags unterstützen, finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../../azure-resource-manager/management/tag-support.md).
 
 ### <a name="resource-provider-modes"></a>Ressourcenanbietermodi
 
-Der einzige derzeit unterstützte Ressourcenanbietermodus ist `Microsoft.ContainerService.Data` zur Verwaltung der Zugangscontrollerregeln für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+Der folgende Ressourcenanbietermodus wird vollständig unterstützt:
+
+- `Microsoft.Kubernetes.Data` zum Verwalten Ihrer Kubernetes-Cluster in oder außerhalb von Azure. Definitionen, die diesen Ressourcenanbietermodus nutzen, verwenden die Auswirkungen _audit_, _deny_ und _disabled_. Die Verwendung der Auswirkung [EnforceOPAConstraint](./effects.md#enforceopaconstraint) ist _veraltet_.
+
+Die folgenden Ressourcenanbietermodi werden derzeit als **Vorschau** unterstützt:
+
+- `Microsoft.ContainerService.Data` zur Verwaltung der Zugangscontrollerregeln für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md). Definitionen, die diesen Ressourcenanbietermodus verwenden, **müssen** die Auswirkung [EnforceRegoPolicy](./effects.md#enforceregopolicy) verwenden. Dieser Modus ist _veraltet_.
+- `Microsoft.KeyVault.Data` zur Verwaltung von Tresoren und Zertifikaten in [Azure Key Vault](../../../key-vault/general/overview.md). Weitere Informationen zu diesen Richtliniendefinitionen finden Sie unter [Integrieren von Azure Key Vault in Azure Policy](../../../key-vault/general/azure-policy.md).
 
 > [!NOTE]
-> [Azure Policy für Kubernetes](rego-for-aks.md) ist in der Public Preview-Phase und unterstützt nur integrierte Richtliniendefinitionen.
+> Ressourcenanbietermodi unterstützen nur integrierte Richtliniendefinitionen und keine [Ausnahmen](./exemption-structure.md).
+
+## <a name="metadata"></a>Metadaten
+
+In der optionalen `metadata`-Eigenschaft werden Informationen zur Richtliniendefinition gespeichert. Kunden können alle für ihre Organisation nützlichen Eigenschaften und Werte in `metadata` definieren. Es gibt jedoch einige _allgemeine_ Eigenschaften, die von Azure Policy und integrierten Richtlinien verwendet werden.
+
+### <a name="common-metadata-properties"></a>Allgemeine Metadateneigenschaften
+
+- `version` (Zeichenfolge): Verfolgt Details zur Version des Inhalts einer Richtliniendefinition nach.
+- `category` (Zeichenfolge): Legt fest, unter welcher Kategorie im Azure-Portal die Richtliniendefinition angezeigt wird.
+- `preview` (boolescher Wert): Flag mit einem der Werte TRUE oder FALSE für den Fall, dass sich die Richtliniendefinition in der _Vorschauphase_ befindet.
+- `deprecated` (Boolescher Wert): Flag mit einem der Werte TRUE oder FALSE für den Fall, dass die Richtliniendefinition als _veraltet_ markiert wurde.
+
+> [!NOTE]
+> Der Azure Policy-Dienst verwendet die Eigenschaften `version`, `preview` und `deprecated`, um den Grad der Änderung einer integrierten Richtliniendefinition oder Initiative und einen Status zu übermitteln. Das Format von `version` ist `{Major}.{Minor}.{Patch}`. Bestimmte Zustände, z. B. _veraltet_ oder _Vorschau_, werden der `version`-Eigenschaft angehängt oder in eine andere Eigenschaft als **boolescher** Wert eingefügt. Weitere Informationen zu der Methodik, mit der Azure Policy die Versionen integrierter Richtlinien verwaltet, finden Sie unter [Built-in versioning](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md) (Versionsverwaltung für integrierte Richtlinien).
 
 ## <a name="parameters"></a>Parameter
 
@@ -101,7 +142,7 @@ Parameter funktionieren beim Erstellen von Richtlinien genauso. Sie können die 
 
 Ein Parameter hat die folgenden Eigenschaften, die in der Richtliniendefinition verwendet werden:
 
-- **name:** Der Name des Parameters. Wird in der Richtlinienregel von der Bereitstellungsfunktion `parameters` verwendet. Weitere Informationen finden Sie unter [Verwenden eines Parameterwerts](#using-a-parameter-value).
+- `name`: Der Name des Parameters. Wird in der Richtlinienregel von der Bereitstellungsfunktion `parameters` verwendet. Weitere Informationen finden Sie unter [Verwenden eines Parameterwerts](#using-a-parameter-value).
 - `type`: Bestimmt, ob der Parameter eine **Zeichenfolge**, ein **Array**, ein **Objekt**, ein **boolescher Wert**, eine **ganze Zahl** oder vom Typ **float** oder **datetime** ist.
 - `metadata`: Definiert untergeordnete Eigenschaften, die hauptsächlich vom Azure-Portal verwendet werden, um benutzerfreundliche Informationen anzuzeigen:
   - `description`: Die Erläuterung des Zwecks des Parameters. Kann verwendet werden, um Beispiele zulässiger Werte bereitzustellen.
@@ -135,7 +176,7 @@ Beispielsweise können Sie eine Richtliniendefinition verwenden, um die Speicher
 
 ### <a name="using-a-parameter-value"></a>Verwenden eines Parameterwerts
 
-In der Richtlinienregel wird die folgende Syntax für die `parameters`Bereitstellungswertefunktion verwendet, um auf Parameter zu verweisen:
+In der Richtlinienregel wird die folgende Syntax der Funktion `parameters` verwendet, um auf Parameter zu verweisen:
 
 ```json
 {
@@ -148,19 +189,19 @@ In diesem Beispiel wird auf den Parameter **allowedLocations** verwiesen, der un
 
 ### <a name="strongtype"></a>strongType
 
-Innerhalb der `metadata`-Eigenschaft können Sie mit **strongType** im Azure-Portal eine Liste der Optionen mit Mehrfachauswahl angeben. Derzeit zulässige Werte für **strongType** sind:
+Innerhalb der `metadata`-Eigenschaft können Sie mit **strongType** im Azure-Portal eine Liste der Optionen mit Mehrfachauswahl angeben. **strongType** kann ein unterstützter _Ressourcentyp_ oder ein zulässiger Wert sein. Verwenden Sie [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider), um festzustellen, ob ein _Ressourcentyp_ für **strongType** zulässig ist. Das Format für den **strongType** eines _Ressourcentyps_ lautet `<Resource Provider>/<Resource Type>`. Beispiel: `Microsoft.Network/virtualNetworks/subnets`.
+
+Einige _Ressourcentypen_, die von **Get-AzResourceProvider** nicht zurückgegeben werden, werden unterstützt. Diese Typen lauten wie folgt:
+
+- `Microsoft.RecoveryServices/vaults/backupPolicies`
+
+Die nicht für den _Ressourcentyp_ zulässigen Werte für **strongType** sind:
 
 - `location`
 - `resourceTypes`
 - `storageSkus`
 - `vmSKUs`
 - `existingResourceGroups`
-- `omsWorkspace`
-- `Microsoft.EventHub/Namespaces/EventHubs`
-- `Microsoft.EventHub/Namespaces/EventHubs/AuthorizationRules`
-- `Microsoft.EventHub/Namespaces/AuthorizationRules`
-- `Microsoft.RecoveryServices/vaults`
-- `Microsoft.RecoveryServices/vaults/backupPolicies`
 
 ## <a name="definition-location"></a>Definitionsspeicherort
 
@@ -168,12 +209,10 @@ Beim Erstellen einer Initiative oder Richtlinie muss der Speicherort der Definit
 
 Für den Definitionsspeicherort gilt Folgendes:
 
-- **Abonnement:** Die Richtlinie kann nur Ressourcen innerhalb dieses Abonnements zugewiesen werden.
-- **Verwaltungsgruppe:** Die Richtlinie kann nur Ressourcen innerhalb untergeordneter Verwaltungsgruppen und untergeordneter Abonnements zugewiesen werden. Wenn Sie diese Richtliniendefinition mehreren Abonnements zuordnen möchten, muss der Speicherort eine Verwaltungsgruppe sein, die diese Abonnements enthält.
+- **Abonnement**: Der Richtliniendefinition können nur Ressourcen innerhalb dieses Abonnements zugewiesen werden.
+- **Verwaltungsgruppe**: Der Richtliniendefinition können nur Ressourcen in untergeordneten Verwaltungsgruppen und untergeordneten Abonnements zugewiesen werden. Wenn Sie die Richtliniendefinition auf mehrere Abonnements anwenden möchten, muss der Speicherort eine Verwaltungsgruppe sein, die das jeweilige Abonnement enthält.
 
-## <a name="display-name-and-description"></a>Anzeigename und Beschreibung
-
-Sie verwenden **displayName** und **description**, um die Richtliniendefinition zu bestimmen und den Kontext für ihre Verwendung anzugeben. **displayName** hat eine maximale Länge von _128_ Zeichen, und **description** hat eine maximale Länge von _512_ Zeichen.
+Weitere Informationen finden Sie in der [Übersicht zu Bereichen in Azure Policy](./scope.md#definition-location).
 
 ## <a name="policy-rule"></a>Richtlinienregel
 
@@ -187,7 +226,7 @@ Im **Then**-Block definieren Sie die Wirkung, die eintritt, wenn die **If**-Bedi
         <condition> | <logical operator>
     },
     "then": {
-        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists | disabled"
+        "effect": "deny | audit | modify | append | auditIfNotExists | deployIfNotExists | disabled"
     }
 }
 ```
@@ -224,31 +263,35 @@ Logische Operatoren können geschachtelt werden. Das folgende Beispiel zeigt ein
 
 Eine Bedingung prüft, ob ein **Feld** oder der Accessor **Wert** bestimmte Kriterien erfüllt. Folgende Bedingungen werden unterstützt:
 
-- `"equals": "value"`
-- `"notEquals": "value"`
-- `"like": "value"`
-- `"notLike": "value"`
-- `"match": "value"`
-- `"matchInsensitively": "value"`
-- `"notMatch": "value"`
-- `"notMatchInsensitively": "value"`
-- `"contains": "value"`
-- `"notContains": "value"`
-- `"in": ["value1","value2"]`
-- `"notIn": ["value1","value2"]`
+- `"equals": "stringValue"`
+- `"notEquals": "stringValue"`
+- `"like": "stringValue"`
+- `"notLike": "stringValue"`
+- `"match": "stringValue"`
+- `"matchInsensitively": "stringValue"`
+- `"notMatch": "stringValue"`
+- `"notMatchInsensitively": "stringValue"`
+- `"contains": "stringValue"`
+- `"notContains": "stringValue"`
+- `"in": ["stringValue1","stringValue2"]`
+- `"notIn": ["stringValue1","stringValue2"]`
 - `"containsKey": "keyName"`
 - `"notContainsKey": "keyName"`
-- `"less": "value"`
-- `"lessOrEquals": "value"`
-- `"greater": "value"`
-- `"greaterOrEquals": "value"`
+- `"less": "dateValue"` | `"less": "stringValue"` | `"less": intValue`
+- `"lessOrEquals": "dateValue"` | `"lessOrEquals": "stringValue"` | `"lessOrEquals": intValue`
+- `"greater": "dateValue"` | `"greater": "stringValue"` | `"greater": intValue`
+- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` |
+  `"greaterOrEquals": intValue`
 - `"exists": "bool"`
+
+Bei **less**, **lessOrEquals**, **greater** und **greaterOrEquals** wird, wenn der Eigenschaftentyp nicht mit dem Bedingungstyp übereinstimmt, ein Fehler ausgelöst. Zeichenfolgenvergleiche werden mit `InvariantCultureIgnoreCase` durchgeführt.
 
 Bei Verwendung der Bedingungen **like** und **notLike** können Sie im Wert den Platzhalter `*` angeben.
 Der Wert darf maximal einen Platzhalter des Typs `*` enthalten.
 
-Geben Sie bei Verwendung der Bedingungen **match** und **notMatch** für eine Ziffer `#`, für einen Buchstaben `?`, für irgendein Zeichen `.` und für ein Zeichen das gewünschte Zeichen ein.
-Bei **match** und **notMatch** muss die Groß-/Kleinschreibung beachtet werden. Als Alternativen, bei denen die Groß-/Kleinschreibung nicht beachtet werden muss, stehen **matchInsensitively** und **notMatchInsensitively** zur Verfügung. Beispiele finden Sie unter [Zulassen mehrerer Namensmuster](../samples/allow-multiple-name-patterns.md).
+Geben Sie bei Verwendung der Bedingungen **match** und **notMatch** für eine Ziffer `#`, für einen Buchstaben `?`, für irgendein Zeichen `.` und für ein Zeichen das gewünschte Zeichen ein. Während bei **match** und **notMatch** die Groß-/Kleinschreibung beachtet wird, erfolgt bei allen anderen Bedingungen, die einen _stringValue_ auswerten, keine Berücksichtigung der Groß-/Kleinschreibung. Als Alternativen, bei denen die Groß-/Kleinschreibung nicht beachtet werden muss, stehen **matchInsensitively** und **notMatchInsensitively** zur Verfügung.
+
+Bei den Feldwerten eines Arrays mit einem **\[\*\]-Alias** wird jedes Element im Array einzeln ausgewertet, wobei die Elemente durch ein logisches **UND** verknüpft werden. Weitere Informationen finden Sie unter [Verweisen auf Arrayeigenschaften in Ressourcen](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 ### <a name="fields"></a>Felder
 
@@ -262,7 +305,10 @@ Folgende Felder werden unterstützt:
 - `kind`
 - `type`
 - `location`
-  - Verwenden Sie **global** für Ressourcen, die speicherortagnostisch sind. Ein Beispiel finden Sie unter [Beispiele: Zulässige Speicherorte](../samples/allowed-locations.md).
+  - Verwenden Sie **global** für Ressourcen, die speicherortagnostisch sind.
+- `id`
+  - Gibt die Ressourcen-ID für die auszuwertende Ressource zurück.
+  - Beispiel: `/subscriptions/06be863d-0996-4d56-be22-384767287aa2/resourceGroups/myRG/providers/Microsoft.KeyVault/vaults/myVault`
 - `identity.type`
   - Gibt den Typ [Verwaltete Identität](../../../active-directory/managed-identities-azure-resources/overview.md) zurück, der für die Ressource aktiviert ist.
 - `tags`
@@ -273,7 +319,7 @@ Folgende Felder werden unterstützt:
 - `tags['''<tagName>''']`
   - Diese Klammersyntax unterstützt Tagnamen, die Apostrophe enthalten, und verwendet doppelte Apostrophe als Escapezeichen.
   - Wobei **'\<tagName\>'** der Name des Tags ist, auf das die Bedingung geprüft wird.
-  - Beispiel: `tags['''My.Apostrophe.Tag''']`, wobei **'\<tagName\>'** der Name des Tags ist.
+  - Beispiel: `tags['''My.Apostrophe.Tag''']`, wobei **'My.Apostrophe.Tag'** der Name des Tags ist.
 - Eigenschaftenaliase – Eine Liste finden Sie unter [Aliase](#aliases).
 
 > [!NOTE]
@@ -283,7 +329,7 @@ Folgende Felder werden unterstützt:
 
 Ein Parameterwert kann an ein Tagfeld übergeben werden. Das Übergeben eines Parameters an ein Tagfeld erhöht die Flexibilität der Richtliniendefinition während der Richtlinienzuweisung.
 
-Im folgenden Beispiel wird mit `concat` eine Tagfeldsuche nach dem Tag erstellt, das als Namen den Wert des **TagName**-Parameters aufweist. Wenn dieses Tag nicht vorhanden ist, wird die Auswirkung **append** verwendet, um mithilfe der Nachschlagefunktion `resourcegroup()` das Tag mit dem Wert dieses benannten Tags hinzuzufügen, das für die übergeordnete Ressourcengruppe der überwachten Ressourcen festgelegt ist.
+Im folgenden Beispiel wird mit `concat` eine Tagfeldsuche nach dem Tag erstellt, das als Namen den Wert des **TagName**-Parameters aufweist. Wenn dieses Tag nicht vorhanden ist, wird die Auswirkung **modify** verwendet, um mithilfe der Nachschlagefunktion `resourcegroup()` das Tag mit dem Wert dieses benannten Tags hinzuzufügen, das für die übergeordnete Ressourcengruppe der überwachten Ressourcen festgelegt ist.
 
 ```json
 {
@@ -292,26 +338,31 @@ Im folgenden Beispiel wird mit `concat` eine Tagfeldsuche nach dem Tag erstellt,
         "exists": "false"
     },
     "then": {
-        "effect": "append",
-        "details": [{
-            "field": "[concat('tags[', parameters('tagName'), ']')]",
-            "value": "[resourcegroup().tags[parameters('tagName')]]"
-        }]
+        "effect": "modify",
+        "details": {
+            "operations": [{
+                "operation": "add",
+                "field": "[concat('tags[', parameters('tagName'), ']')]",
+                "value": "[resourcegroup().tags[parameters('tagName')]]"
+            }],
+            "roleDefinitionIds": [
+                "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ]
+        }
     }
 }
 ```
 
 ### <a name="value"></a>Wert
 
-Bedingungen können auch mithilfe von **Wert** gebildet werden. **Wert** gleicht die Bedingungen mit [Parametern](#parameters), [unterstützten Vorlagenfunktionen](#policy-functions) oder Literalen ab.
-**Wert** wird mit beliebigen unterstützten [Bedingungen](#conditions) verknüpft.
+Bedingungen können auch mithilfe von **Wert** gebildet werden. **Wert** gleicht die Bedingungen mit [Parametern](#parameters), [unterstützten Vorlagenfunktionen](#policy-functions) oder Literalen ab. **Wert** wird mit beliebigen unterstützten [Bedingungen](#conditions) verknüpft.
 
 > [!WARNING]
-> Wenn eine _Vorlagenfunktion_ einen Fehler ergibt, schlägt die Richtlinienauswertung fehl. Eine fehlerhafte Auswertung ist ein implizites **Deny** (Verweigern). Weitere Informationen finden Sie unter [Vermeiden von Vorlagenfehlern](#avoiding-template-failures).
+> Wenn eine _Vorlagenfunktion_ einen Fehler ergibt, schlägt die Richtlinienauswertung fehl. Eine fehlerhafte Auswertung ist ein implizites **Deny** (Verweigern). Weitere Informationen finden Sie unter [Vermeiden von Vorlagenfehlern](#avoiding-template-failures). Verwenden Sie als [enforcementMode](./assignment-structure.md#enforcement-mode) den Modus **DoNotEnforce**, um Auswirkungen einer fehlerhaften Auswertung auf neue oder aktualisierte Ressourcen beim Testen und Überprüfen einer neuen Richtliniendefinition zu verhindern.
 
 #### <a name="value-examples"></a>Beispiele von Werten
 
-Dieses Beispiel einer Richtlinienregel verwendet **Wert**, um das Ergebnis der `resourceGroup()`-Funktion und der zurückgegebenen **name**-Eigenschaft mit der **like**-Bedingung `*netrg` zu vergleichen. Die Regel verweigert Ressourcen, die nicht den **Typ** `Microsoft.Network/*` haben, in Ressourcengruppen, deren Name mit `*netrg` endet.
+Dieses Beispiel einer Richtlinienregel verwendet **Wert**, um das Ergebnis der `resourceGroup()`-Funktion und der zurückgegebenen **name**-Eigenschaft mit der **like**-Bedingung `*netrg` zu vergleichen. Die Regel verweigert Ressourcen, die nicht den **type** `Microsoft.Network/*` haben, in Ressourcengruppen, deren Name mit `*netrg` endet.
 
 ```json
 {
@@ -332,7 +383,7 @@ Dieses Beispiel einer Richtlinienregel verwendet **Wert**, um das Ergebnis der `
 }
 ```
 
-Diese Beispiel einer Regelrichtlinie verwendet **Wert**, um zu überprüfen, ob das Ergebnis mehrerer geschachtelter Funktionen **gleich** `true` ist. Die Regel verweigert alle Ressourcen, die nicht mindestens drei Tags haben.
+Diese Beispiel einer Regelrichtlinie verwendet **value**, um zu überprüfen, ob das Ergebnis mehrerer geschachtelter Funktionen **gleich** `true` ist. Die Regel verweigert alle Ressourcen, die nicht mindestens drei Tags haben.
 
 ```json
 {
@@ -340,7 +391,7 @@ Diese Beispiel einer Regelrichtlinie verwendet **Wert**, um zu überprüfen, ob 
     "policyRule": {
         "if": {
             "value": "[less(length(field('tags')), 3)]",
-            "equals": true
+            "equals": "true"
         },
         "then": {
             "effect": "deny"
@@ -367,9 +418,9 @@ Wenn Sie _Vorlagenfunktionen_ als **Wert** verwenden, sind viele komplexe und ve
 }
 ```
 
-Bei der oben als Beispiel verwendeten Richtlinienregel wird [substring()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) zum Vergleichen der ersten drei Zeichen des **Namens** mit **abc** verwendet. Wenn der **Name** kürzer als drei Zeichen ist, ergibt die `substring()`-Funktion einen Fehler. Dieser Fehler löst bei der Richtlinie den **Deny**-Effekt aus.
+Bei der oben als Beispiel verwendeten Richtlinienregel wird [substring()](../../../azure-resource-manager/templates/template-functions-string.md#substring) zum Vergleichen der ersten drei Zeichen des **Namens** mit **abc** verwendet. Wenn der **Name** kürzer als drei Zeichen ist, ergibt die `substring()`-Funktion einen Fehler. Dieser Fehler löst bei der Richtlinie den **Deny**-Effekt aus.
 
-Verwenden Sie stattdessen die [if()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if)-Funktion, um zu überprüfen, ob die ersten drei Zeichen des **Namens** gleich **abc** sind, ohne dass ein **Name**, der kürzer als drei Zeichen ist, einen Fehler verursachen kann:
+Verwenden Sie stattdessen die [if()](../../../azure-resource-manager/templates/template-functions-logical.md#if)-Funktion, um zu überprüfen, ob die ersten drei Zeichen des **Namens** gleich **abc** sind, ohne dass ein **Name**, der kürzer als drei Zeichen ist, einen Fehler verursachen kann:
 
 ```json
 {
@@ -387,52 +438,152 @@ Verwenden Sie stattdessen die [if()](../../../azure-resource-manager/resource-gr
 
 Mit der überarbeiteten Richtlinienregel überprüft `if()` die Länge des **Namens**, bevor es versucht, einen `substring()` für einen Wert mit weniger als drei Zeichen abzurufen. Wenn der **Name** zu kurz ist, wird der Wert, der „nicht mit abc beginnt“, zurückgegeben und mit **abc** verglichen. Eine Ressource mit einem Kurznamen, der nicht mit **abc** beginnt, erzeugt zwar immer noch einen Fehler bei der Richtlinienregel, verursacht aber bei der Auswertung keinen Fehler mehr.
 
+### <a name="count"></a>Anzahl
+
+Mithilfe eines **count**-Ausdrucks können Bedingungen erstellt werden, mit denen gezählt wird, wie viele Member eines Arrays in der Ressourcennutzlast einem Bedingungsausdruck entsprechen. Häufige Szenarien sind die Überprüfung, ob mindestens einer (at least one of), genau einer (exactly one of), alle (all of) oder keiner (none of) der Arraymember die Bedingung erfüllt. **count** wertet jeden [\[\*\]-Alias](#understanding-the--alias)-Arraymember für einen Bedingungsausdruck aus und fasst die Ergebnisse mit dem Wert _true_ zusammen, die dann mit dem Ausdrucksoperator verglichen werden. **Count**-Ausdrücke können einer einzelnen **policyRule-** -Definition bis zu drei Mal hinzugefügt werden.
+
+Die Struktur des **count**-Ausdrucks sieht wie folgt aus:
+
+```json
+{
+    "count": {
+        "field": "<[*] alias>",
+        "where": {
+            /* condition expression */
+        }
+    },
+    "<condition>": "<compare the count of true condition expression array members to this value>"
+}
+```
+
+Die folgenden Eigenschaften werden bei **count** verwendet:
+
+- **count.field** (erforderlich): Enthält den Pfad zum Array und muss ein Arrayalias sein. Wenn das Array fehlt, wird der Ausdruck ohne Berücksichtigung des Bedingungsausdrucks als _false_ ausgewertet.
+- **count.where** (optional): Der Bedingungsausdruck zum individuellen Auswerten der einzelnen Arraymember des Typs [\[\*\]-Alias](#understanding-the--alias) von **count.field**. Wenn diese Eigenschaft nicht angegeben wird, werden alle Arraymember mit dem Pfad „field“ als _true_ ausgewertet. Innerhalb dieser Eigenschaft kann eine beliebige [Bedingung](../concepts/definition-structure.md#conditions) verwendet werden.
+  Es können [logische Operatoren](#logical-operators) innerhalb dieser Eigenschaft verwendet werden, um komplexe Auswertungsanforderungen zu erstellen.
+- **\<condition\>** (erforderlich): Der Wert wird mit der Anzahl der Elemente verglichen, die dem **count.where**-Bedingungsausdruck entsprachen. Es sollte eine numerische [Bedingung](../concepts/definition-structure.md#conditions) verwendet werden.
+
+Weitere Informationen zur Arbeit mit Arrayeigenschaften in Azure Policy, einschließlich einer detaillierten Erklärung, wie der Count-Ausdruck ausgewertet wird, finden Sie unter [Verweisen auf Arrayeigenschaften in Ressourcen](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
+
+#### <a name="count-examples"></a>Beispiele für „count“
+
+Beispiel 1: Überprüfen, ob ein Array leer ist
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]"
+    },
+    "equals": 0
+}
+```
+
+Beispiel 2: Überprüfen, ob nur ein Arraymember dem Bedingungsausdruck entspricht
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "My unique description"
+        }
+    },
+    "equals": 1
+}
+```
+
+Beispiel 3: Überprüfen, ob mindestens ein Arraymember dem Bedingungsausdruck entspricht
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "My common description"
+        }
+    },
+    "greaterOrEquals": 1
+}
+```
+
+Beispiel 4: Überprüfen, ob alle Objektarraymember dem Bedingungsausdruck entsprechen
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "description"
+        }
+    },
+    "equals": "[length(field('Microsoft.Network/networkSecurityGroups/securityRules[*]'))]"
+}
+```
+
+Beispiel 5: Überprüfen, ob mindestens ein Arraymember mehreren Eigenschaften im Bedingungsausdruck entspricht
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "allOf": [
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].direction",
+                    "equals": "Inbound"
+                },
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].access",
+                    "equals": "Allow"
+                },
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                    "equals": "3389"
+                }
+            ]
+        }
+    },
+    "greater": 0
+}
+```
+
+Beispiel 6: Verwenden Sie die `field()`-Funktion innerhalb der `where`-Bedingungen, um auf den Literalwert des aktuell ausgewerteten Arraymembers zuzugreifen. Diese Bedingung prüft, dass es keine Sicherheitsregeln mit einem geradzahligen _Prioritätswert_ gibt.
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+          "value": "[mod(first(field('Microsoft.Network/networkSecurityGroups/securityRules[*].priority')), 2)]",
+          "equals": 0
+        }
+    },
+    "greater": 0
+}
+```
+
 ### <a name="effect"></a>Wirkung
 
 Azure Policy unterstützt die folgenden Auswirkungstypen:
 
-- **Deny** generiert ein Ereignis im Aktivitätsprotokoll und führt zu einem Fehler bei der Anforderung.
-- **Audit** generiert eine Warnung im Überwachungsprotokoll, führt jedoch nicht zu einem Fehler bei der Anforderung.
 - **Append** fügt der Anforderung verschiedene definierte Felder hinzu.
-- **AuditIfNotExists** aktiviert das Überwachen, wenn eine Ressource nicht vorhanden ist.
-- **DeployIfNotExists** stellt eine Ressource bereit, falls noch keine vorhanden ist.
+- **Audit** generiert eine Warnung im Überwachungsprotokoll, führt jedoch nicht zu einem Fehler bei der Anforderung.
+- **AuditIfNotExists** generiert eine Warnung im Aktivitätsprotokoll, wenn keine verwandte Ressource vorhanden ist.
+- **Deny** generiert ein Ereignis im Aktivitätsprotokoll und führt zu einem Fehler bei der Anforderung.
+- **DeployIfNotExists** stellt eine verwandte Ressource bereit, falls noch keine vorhanden ist.
 - **Deaktiviert** wertet Ressourcen nicht auf Konformität mit der Richtlinienregel aus.
-- **EnforceRegoPolicy** konfiguriert den Open Policy Agent-Zugangscontroller in Azure Kubernetes Service (Vorschauversion).
 - **Modify** fügt die definierten Tags zu einer Ressource hinzu, aktualisiert sie oder entfernt sie aus einer Ressource.
-
-Für **append**müssen Sie die folgenden Details angeben:
-
-```json
-"effect": "append",
-"details": [{
-    "field": "field name",
-    "value": "value of the field"
-}]
-```
-
-Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein.
-
-Mit **AuditIfNotExists** und **DeployIfNotExists** können Sie das Vorhandensein einer zugehörigen Ressource auswerten und eine Regel anwenden. Wenn die Ressource nicht mit die Regel übereinstimmt, wird die Auswirkung implementiert. Sie können z.B. erforderlich machen, dass ein Network Watcher für alle virtuellen Netzwerke bereitgestellt wird. Weitere Informationen finden Sie im Beispiel [Überwachung, wenn keine Erweiterung vorhanden ist](../samples/audit-ext-not-exist.md).
-
-Der Effekt **DeployIfNotExists** erfordert die **roleDefinitionId**-Eigenschaft im Bereich **details** der Richtlinienregel. Weitere Informationen finden Sie unter [Korrigieren nicht konformer Ressourcen](../how-to/remediate-resources.md#configure-policy-definition).
-
-```json
-"details": {
-    ...
-    "roleDefinitionIds": [
-        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
-        "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
-    ]
-}
-```
-
-Auf ähnliche Weise erfordert **Modify** die Eigenschaft **roleDefinitionId** im Bereich **details** der Richtlinienregel für den [Wartungstask](../how-to/remediate-resources.md). **Modify** erfordert auch ein **operations**-Array zur Definition, welche Aktionen für die Ressourcentags ausgeführt werden müssen.
+- **EnforceOPAConstraint** (veraltet) konfiguriert den Open Policy Agent-Zugangscontroller mit Gatekeeper v3 für selbstverwaltete Kubernetes-Cluster in Azure.
+- **EnforceRegoPolicy** (veraltet) konfiguriert den Open Policy Agent-Zugangscontroller mit Gatekeeper v2 in Azure Kubernetes Service.
 
 Ausführliche Informationen zu den einzelnen Auswirkungen, der Reihenfolge der Auswertung, den Eigenschaften und Beispielen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](effects.md).
 
 ### <a name="policy-functions"></a>Richtlinienfunktionen
 
-Alle [Resource Manager-Vorlagenfunktionen](../../../azure-resource-manager/resource-group-template-functions.md) stehen innerhalb einer Richtlinienregel zur Verfügung, mit Ausnahme der folgenden Funktionen und benutzerdefinierten Funktionen:
+Alle [Resource Manager-Vorlagenfunktionen](../../../azure-resource-manager/templates/template-functions.md) stehen innerhalb einer Richtlinienregel zur Verfügung, mit Ausnahme der folgenden Funktionen und benutzerdefinierten Funktionen:
 
 - copyIndex()
 - deployment()
@@ -444,15 +595,50 @@ Alle [Resource Manager-Vorlagenfunktionen](../../../azure-resource-manager/resou
 - resourceId()
 - variables()
 
-Die folgenden Funktionen stehen zur Verwendung in einer Richtlinienregel zur Verfügung, unterscheiden sich jedoch von der Verwendung in einer Azure Resource Manager-Vorlage:
+> [!NOTE]
+> Diese Funktionen sind weiterhin innerhalb des Teils `details.deployment.properties.template` der Vorlagenbereitstellung in der Definition der Richtlinie **deployIfNotExists** verfügbar.
 
-- addDays(dateTime, numberOfDaysToAdd)
-  - **dateTime**: [Erforderlich] string – Zeichenfolge im Universal ISO 8601 DateTime-Format 'jjjj-MM-ttTHH:mm:ss.fffffffZ'
+Die folgende Funktion steht zur Verwendung in einer Richtlinienregel zur Verfügung, unterscheidet sich jedoch von der Verwendung in einer Azure Resource Manager-Vorlage (ARM-Vorlage):
+
+- `utcNow()`: Im Gegensatz zu einer ARM-Vorlage kann diese Eigenschaft auch außerhalb von _defaultValue_ verwendet werden.
+  - Gibt eine Zeichenfolge zurück, die auf das aktuelle Datum und die aktuelle Uhrzeit im Universal ISO 8601-DateTime-Format (`yyyy-MM-ddTHH:mm:ss.fffffffZ`) festgelegt ist.
+
+Die folgenden Funktionen sind nur in Richtlinienregeln verfügbar:
+
+- `addDays(dateTime, numberOfDaysToAdd)`
+  - **dateTime**: [Erforderlich] string – Zeichenfolge im Universal ISO 8601 DateTime-Format 'yyyy-MM-ddTHH:mm:ss.FFFFFFFZ'
   - **numberOfDaysToAdd**: [Erforderlich] integer – Anzahl der hinzuzufügenden Tage
-- utcNow() – Im Gegensatz zu einer Resource Manager-Vorlage kann dies auch außerhalb von „defaultValue“ verwendet werden.
-  - Gibt eine Zeichenfolge zurück, die auf das aktuelle Datum und die aktuelle Uhrzeit im Universal ISO 8601 DateTime-Format 'jjjj-MM-ttTHH:mm:ss.fffffffZ' festgelegt ist.
+- `field(fieldName)`
+  - **fieldName** [erforderlich]: Zeichenfolge – Name des abzurufenden [Felds](#fields)
+  - Gibt den Wert dieses Felds aus der Ressource zurück, die von der If-Bedingung ausgewertet wird
+  - `field` ist in erster Linie für die Verwendung mit **AuditIfNotExists** und **DeployIfNotExists** zum Verweisen auf Felder in der Ressource bestimmt, die ausgewertet werden. Ein Beispiel hierfür finden Sie im [Beispiel für DeployIfNotExists](effects.md#deployifnotexists-example).
+- `requestContext().apiVersion`
+  - Gibt die API-Version der Anforderung zurück, die die Richtlinienauswertung ausgelöst hat (z. B. `2019-09-01`).
+    Dieser Wert ist die API-Version, die in der PUT/PATCH-Anforderung für Auswertungen bei der Erstellung/Aktualisierung von Ressourcen verwendet wurde. Bei der Kompatibilitätsauswertung vorhandener Ressourcen wird immer die neueste API-Version verwendet.
+- `policy()`
+  - Gibt die folgenden Informationen zur derzeit ausgewerteten Richtlinie zurück. Auf Eigenschaften kann über das zurückgegebene Objekt zugegriffen werden (Beispiel: `[policy().assignmentId]`).
+  
+  ```json
+  {
+    "assignmentId": "/subscriptions/ad404ddd-36a5-4ea8-b3e3-681e77487a63/providers/Microsoft.Authorization/policyAssignments/myAssignment",
+    "definitionId": "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c",
+    "setDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42a694ed-f65e-42b2-aa9e-8052e9740a92",
+    "definitionReferenceId": "StorageAccountNetworkACLs"
+  }
+  ```
 
-Darüber hinaus ist die `field` Funktion für Richtlinienregeln verfügbar. `field` ist in erster Linie für die Verwendung mit **AuditIfNotExists** und **DeployIfNotExists** zum Verweisen auf Felder in der Ressource bestimmt, die ausgewertet werden. Ein Beispiel hierfür finden Sie im [Beispiel für DeployIfNotExists](effects.md#deployifnotexists-example).
+
+- `ipRangeContains(range, targetRange)`
+    - **range**: [Erforderlich] Zeichenfolge: Zeichenfolge, die einen Bereich von IP-Adressen angibt
+    - **targetRange**: [Erforderlich] Zeichenfolge: Zeichenfolge, die einen Bereich von IP-Adressen angibt
+
+    Gibt zurück, ob der angegebene IP-Adressbereich den Ziel-IP-Adressbereich enthält. Leere Bereiche oder Kombinationen verschiedener IP-Familien sind nicht zulässig und führen zu einem Bewertungsfehler.
+
+    Unterstützte Formate:
+    - Einzelne IP-Adresse (Beispiele: `10.0.0.0`, `2001:0DB8::3:FFFE`)
+    - CIDR-Bereich (Beispiele: `10.0.0.0/24`, `2001:0DB8::/110`)
+    - Durch Start- und End-IP-Adressen definierter Bereich (Beispiele: `192.168.0.1-192.168.0.9`, `2001:0DB8::-2001:0DB8::3:FFFF`)
+
 
 #### <a name="policy-function-example"></a>Beispiel für Richtlinienfunktion
 
@@ -478,6 +664,12 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 
 Die Liste der Aliase wächst ständig. Um zu ermitteln, welche Aliase derzeit von Azure Policy unterstützt werden, verwenden Sie eine der folgenden Methoden:
 
+- Azure Policy-Erweiterung für Visual Studio Code (empfohlen)
+
+  Verwenden Sie die [Azure Policy-Erweiterung für Visual Studio Code](../how-to/extension-for-vscode.md) zum Anzeigen und Ermitteln von Aliasen für Ressourceneigenschaften.
+
+  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Screenshot der Azure Policy-Erweiterung für Visual Studio Code mit dem Mauszeiger über einer Eigenschaft, um die Aliasnamen anzuzeigen" border="false":::
+
 - Azure PowerShell
 
   ```azurepowershell-interactive
@@ -490,7 +682,14 @@ Die Liste der Aliase wächst ständig. Um zu ermitteln, welche Aliase derzeit vo
   (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
   ```
 
-- Azure-Befehlszeilenschnittstelle
+  > [!NOTE]
+  > Zum Suchen von Aliasen, die mit dem [Modify](./effects.md#modify)-Effekt verwendet werden können, verwenden Sie in Azure PowerShell **4.6.0** oder höher den folgenden Befehl:
+  >
+  > ```azurepowershell-interactive
+  > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
+  > ```
+
+- Azure CLI
 
   ```azurecli-interactive
   # Login first with az login if not using Cloud Shell
@@ -505,125 +704,39 @@ Die Liste der Aliase wächst ständig. Um zu ermitteln, welche Aliase derzeit vo
 - REST-API/ARM-Client
 
   ```http
-  GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
+  GET https://management.azure.com/providers/?api-version=2019-10-01&$expand=resourceTypes/aliases
   ```
 
 ### <a name="understanding-the--alias"></a>Grundlegendes zum [*]-Alias
 
-Einige der verfügbaren Aliase weisen eine Version auf, die als „normaler“ Name angezeigt wird, an andere wird **[\*]** angefügt. Beispiel:
+Einige der verfügbaren Aliase weisen eine Version auf, die als „normaler“ Name angezeigt wird, an andere wird **\[\*\]** angefügt. Beispiel:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 Bei einem „normalen“ Alias wird das Feld als einzelner Wert dargestellt. Dieses Feld ist für genaue Vergleichs-/Übereinstimmungsszenarios bestimmt, wenn der gesamte Wertesatz exakt der Definition entsprechen muss (nicht mehr und nicht weniger).
 
-Beim einem Alias mit Stern **[\*]** ist ein Vergleich mit dem Wert jedes einzelnen Elements im Array und mit bestimmten Eigenschaften der einzelnen Elemente möglich. Dieser Ansatz ermöglicht das Vergleichen von Elementeigenschaften bei Szenarios wie „if none of“, „if any of“ oder „if all of“. Mit **IpRules [\*]** würden Sie beispielsweise überprüfen, ob jede _action_ auf _Deny_ eingestellt ist, aber nicht darüber nachdenken, wie viele Regeln vorhanden sind oder welchen _Wert_ die IP-Adresse hat. Diese Beispielregel überprüft alle Übereinstimmungen von **IpRules[\*].Wert** mit **10.0.4.1** und wendet den **Effektttyp** nur dann an, wenn nicht mindestens eine Übereinstimmung gefunden wird:
+Der Alias **\[\*\]** repräsentiert eine Sammlung von Werten, die aus den Elementen einer Arrayressourceneigenschaft ausgewählt wurden. Beispiel:
 
-```json
-"policyRule": {
-    "if": {
-        "allOf": [
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-                "exists": "true"
-            },
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-                "notEquals": "10.0.4.1"
-            }
-        ]
-    },
-    "then": {
-        "effect": "[parameters('effectType')]"
-    }
-}
-```
+| Alias | Ausgewählte Werte |
+|:---|:---|
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | Die Elemente des `ipRules`-Arrays. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | Die Werte der `action`-Eigenschaft der einzelnen Elemente des `ipRules`-Arrays. |
 
-Weitere Informationen finden Sie unter [Auswerten eines Alias mit Stern [\*]](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
+Bei Verwendung in einer [Feld](#fields)-Bedingung ermöglichen die Arrayaliase den Vergleich der einzelnen Arrayelemente mit einem Zielwert. Bei Verwendung mit dem [count](#count)-Ausdruck ist Folgendes möglich:
 
-## <a name="initiatives"></a>Initiativen
+- Überprüfen der Größe eines Arrays
+- Überprüfen, ob alle\einige\keine Arrayelemente eine komplexe Bedingung erfüllen
+- Überprüfen, ob genau ***n*** Arrayelemente eine komplexe Bedingung erfüllen
 
-Mithilfe von Initiativen können Sie mehrere verwandte Richtliniendefinitionen gruppieren, um Zuweisungen und das Verwalten zu vereinfachen, indem Sie mit einer Gruppe als einzelnes Element arbeiten. Beispielsweise können Sie zusammengehörige Richtliniendefinitionen zum Markieren in einer einzelnen Initiative gruppieren. Anstatt jede Richtlinie einzeln zuzuweisen, wenden Sie die Initiative an.
-
-Im folgenden Beispiel wird veranschaulicht, wie eine Initiative zur Behandlung der Tags `costCenter` und `productName` erstellt werden kann. Es werden zwei integrierte Richtlinien verwendet, um den Standardtagwert anzuwenden.
-
-```json
-{
-    "properties": {
-        "displayName": "Billing Tags Policy",
-        "policyType": "Custom",
-        "description": "Specify cost Center tag and product name tag",
-        "parameters": {
-            "costCenterValue": {
-                "type": "String",
-                "metadata": {
-                    "description": "required value for Cost Center tag"
-                }
-            },
-            "productNameValue": {
-                "type": "String",
-                "metadata": {
-                    "description": "required value for product Name tag"
-                }
-            }
-        },
-        "policyDefinitions": [{
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
-                "parameters": {
-                    "tagName": {
-                        "value": "costCenter"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('costCenterValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
-                "parameters": {
-                    "tagName": {
-                        "value": "costCenter"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('costCenterValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
-                "parameters": {
-                    "tagName": {
-                        "value": "productName"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('productNameValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
-                "parameters": {
-                    "tagName": {
-                        "value": "productName"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('productNameValue')]"
-                    }
-                }
-            }
-        ]
-    },
-    "id": "/subscriptions/<subscription-id>/providers/Microsoft.Authorization/policySetDefinitions/billingTagsPolicy",
-    "type": "Microsoft.Authorization/policySetDefinitions",
-    "name": "billingTagsPolicy"
-}
-```
+Weitere Informationen und Beispiele finden Sie unter [Verweisen auf Arrayeigenschaften in Ressourcen](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Weitere Informationen finden Sie unter [Struktur der Initiativendefinition](./initiative-definition-structure.md).
 - Sehen Sie sich die Beispiele unter [Azure Policy-Beispiele](../samples/index.md) an.
 - Lesen Sie [Grundlegendes zu Richtlinienauswirkungen](effects.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).
-- Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
+- Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/get-compliance-data.md).
 - Erfahren Sie, wie Sie [nicht konforme Ressourcen korrigieren](../how-to/remediate-resources.md) können.
 - Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md).

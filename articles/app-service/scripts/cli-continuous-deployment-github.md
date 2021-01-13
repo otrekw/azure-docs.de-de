@@ -1,27 +1,20 @@
 ---
-title: Azure CLI-Skriptbeispiel – Erstellen einer App mit Continuous Deployment über GitHub | Microsoft-Dokumentation
-description: 'Azure CLI-Skriptbeispiel: Erstellen einer App und Continuous Deployment über GitHub'
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'Über die CLI: Continuous Deployment über GitHub'
+description: Hier erfahren Sie, wie Sie die Azure CLI zum Automatisieren der Bereitstellung und Verwaltung Ihrer App Service-App verwenden. In diesem Beispiel wird gezeigt, wie Sie eine App mit CI/CD über GitHub erstellen.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0205c991-0989-4ca3-bb41-237dcc964460
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 09/02/2019
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 02853186a1f28d8c6db6b5421c6ebba0640461cb
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.author: msangapu
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 2147976ae73f93e6f451dbd871ead865e2331455
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "71057893"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006322"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>Erstellen einer App Service-App mit Continuous Deployment über GitHub mithilfe der CLI
 
@@ -48,13 +41,13 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Erstellt einen App Service-Plan. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Erstellt eine App Service-App. |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Ordnet eine App Service-App einem Git- oder Mercurial-Repository zu. |
+| [`az group create`](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Erstellt einen App Service-Plan. |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Erstellt eine App Service-App. |
+| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config) | Ordnet eine App Service-App einem Git- oder Mercurial-Repository zu. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
 Zusätzliche App Service-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure App Service](../samples-cli.md).

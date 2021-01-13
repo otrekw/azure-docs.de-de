@@ -1,36 +1,33 @@
 ---
-title: Container Registry-Ereignisschema in Azure Event Grid
+title: Azure Container Registry als Event Grid-Quelle
 description: In diesem Artikel werden die Eigenschaften beschrieben, die mit Azure Event Grid für Container Registry-Ereignisse bereitgestellt werden.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
-ms.topic: reference
-ms.date: 03/12/2019
-ms.author: spelluru
-ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: conceptual
+ms.date: 07/07/2020
+ms.openlocfilehash: d216fe88ee6aaad33fbbe3b93b8c4f8a6e952a71
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60345463"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86113716"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>Azure Event Grid-Ereignisschema für Container Registry
+# <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry als Event Grid-Quelle
 
 In diesem Artikel werden die Eigenschaften und das Schema für Container Registry-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
-## <a name="available-event-types"></a>Verfügbare Ereignistypen
+## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
+
+### <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 Azure Container Registry gibt die folgenden Ereignistypen aus:
 
-| Ereignistypen | BESCHREIBUNG |
+| Ereignistyp | BESCHREIBUNG |
 | ---------- | ----------- |
 | Microsoft.ContainerRegistry.ImagePushed | Wird ausgelöst, wenn mithilfe von Push ein Image übertragen wird. |
 | Microsoft.ContainerRegistry.ImageDeleted | Wird ausgelöst, wenn ein Image gelöscht wird. |
 | Microsoft.ContainerRegistry.ChartPushed | Wird ausgelöst, wenn ein Helm-Diagramm gepusht wird. |
 | Microsoft.ContainerRegistry.ChartDeleted | Wird ausgelöst, wenn ein Helm-Diagramm gelöscht wird. |
 
-## <a name="example-event"></a>Beispielereignis
+### <a name="example-event"></a>Beispielereignis
 
 Das folgende Beispiel zeigt das Schema eines Ereignisses zu einem mithilfe von Push übertragenen Image: 
 
@@ -151,53 +148,59 @@ Das Schema für ein Ereignis „Diagramm gelöscht“ ähnelt dem Schema für ei
 }]
 ```
 
-## <a name="event-properties"></a>Ereigniseigenschaften
+### <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | string | Eindeutiger Bezeichner für das Ereignis. |
-| data | object | Ereignisdaten für Blob Storage. |
-| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| data | Objekt (object) | Ereignisdaten für Blob Storage. |
+| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| id | string | Die Ereignis-ID. |
-| timestamp | string | Der Zeitpunkt, an dem das Ereignis aufgetreten ist. |
-| action | string | Die Aktion, die das angegebene Ereignis umfasst. |
-| target | object | Das Ziel des Ereignisses. |
-| request | object | Die Anforderung, die das Ereignis generiert hat. |
+| id | Zeichenfolge | Die Ereignis-ID. |
+| timestamp | Zeichenfolge | Der Zeitpunkt, an dem das Ereignis aufgetreten ist. |
+| action | Zeichenfolge | Die Aktion, die das angegebene Ereignis umfasst. |
+| target | Objekt (object) | Das Ziel des Ereignisses. |
+| request | Objekt (object) | Die Anforderung, die das Ereignis generiert hat. |
 
 Das Zielobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| mediaType | string | Der MIME-Typ des Objekts, auf das verwiesen wird. |
+| mediaType | Zeichenfolge | Der MIME-Typ des Objekts, auf das verwiesen wird. |
 | size | integer | Die Byte-Anzahl des Inhalts. Entspricht dem Feld „Length“ (Länge). |
-| digest | string | Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2). |
+| digest | Zeichenfolge | Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2). |
 | length | integer | Die Byte-Anzahl des Inhalts. Entspricht dem Feld „Size“ (Größe). |
-| repository | string | Der Name des Repositorys. |
-| tag | string | Der Tagname. |
-| name | string | Der Diagrammname. |
-| version | string | Die Diagrammversion. |
+| repository | Zeichenfolge | Der Name des Repositorys. |
+| tag | Zeichenfolge | Der Tagname. |
+| name | Zeichenfolge | Diagrammname. |
+| version | Zeichenfolge | Diagrammversion. |
 
 Das Anforderungsobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| id | string | Die ID der Anforderung, die das Ereignis initiiert hat. |
-| addr | string | Die IP-Adresse oder der Hostname und u.U. der Port der Clientverbindung, die das Ereignis initiiert hat. Dieser Wert ist die „RemoteAddr“ aus der standardmäßigen HTTP-Anforderung. |
-| host | string | Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist. |
-| method | string | Die Anforderungsmethode, die das Ereignis generiert hat. |
-| useragent | string | Der Benutzer-Agent-Header der Anforderung. |
+| id | Zeichenfolge | Die ID der Anforderung, die das Ereignis initiiert hat. |
+| addr | Zeichenfolge | Die IP-Adresse oder der Hostname und u.U. der Port der Clientverbindung, die das Ereignis initiiert hat. Dieser Wert ist die „RemoteAddr“ aus der standardmäßigen HTTP-Anforderung. |
+| host | Zeichenfolge | Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist. |
+| method | Zeichenfolge | Die Anforderungsmethode, die das Ereignis generiert hat. |
+| useragent | Zeichenfolge | Der Benutzer-Agent-Header der Anforderung. |
+
+## <a name="tutorials-and-how-tos"></a>Tutorials und Vorgehensweisen
+|Titel |BESCHREIBUNG  |
+|---------|---------|
+| [Schnellstart: Senden von Container Registry-Ereignissen](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Zeigt die Verwendung von Azure CLI zum Senden von Container Registry-Ereignissen. |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

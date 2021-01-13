@@ -1,19 +1,19 @@
 ---
-title: 'Umstellen von Verbindungen vom klassischen Modell auf das Resource Manager-Modell – ExpressRoute: PowerShell: Azure | Microsoft-Dokumentation'
+title: 'Azure ExpressRoute: Verschieben klassischer Verbindungen in Resource Manager'
 description: Auf dieser Seite wird beschrieben, wie Sie mithilfe von PowerShell eine klassische Verbindung in das Resource Manager-Bereitstellungsmodell verschieben.
 services: expressroute
-author: ganesr
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2019
-ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 11a84d4ced3232102d262352b84abe1f813e2406
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: duau
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 460ea446fc6dfc43e81a1a57bbba032a61f3a72d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60365178"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90532544"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Umstellen von ExpressRoute-Verbindungen vom klassischen auf das Resource Manager-Bereitstellungsmodell mithilfe von PowerShell
 
@@ -21,9 +21,9 @@ Damit Sie eine ExpressRoute-Verbindung sowohl für das klassische Bereitstellung
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-* Stellen Sie sicher, dass Sie das klassische und das Az Azure PowerShell-Modul lokal auf Ihrem Computer installiert haben. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+* Stellen Sie sicher, dass Sie das klassische und das Az Azure PowerShell-Modul lokal auf Ihrem Computer installiert haben. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
 * Stellen Sie sicher, dass Sie vor Beginn der Konfiguration die Seiten [Voraussetzungen](expressroute-prerequisites.md), [Routinganforderungen](expressroute-routing.md) und [Workflows](expressroute-workflows.md) gelesen haben.
 * Lesen Sie die unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](expressroute-move.md) bereitgestellten Informationen. Stellen Sie sicher, dass Sie die Grenzwerte und Einschränkungen verstehen.
 * Vergewissern Sie sich, dass die Verbindung im klassischen Bereitstellungsmodell voll funktionsfähig ist.
@@ -35,7 +35,7 @@ Damit Sie eine ExpressRoute-Verbindung sowohl für das klassische Bereitstellung
 
 Melden Sie sich bei der klassischen Azure-Umgebung an, und rufen Sie den Dienstschlüssel ab.
 
-1. Melden Sie sich beim Azure-Konto an.
+1. Melden Sie sich bei Ihrem Azure-Konto an.
 
    ```powershell
    Add-AzureAccount
@@ -95,14 +95,14 @@ Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Locati
 Im klassischen Modus basiert eine ExpressRoute-Verbindung nicht auf einer Verknüpfung mit einer Region. In Resource Manager muss jedoch jede Ressource einer Azure-Region zugeordnet sein. Bei der im Cmdlet „Move-AzExpressRouteCircuit“ angegebenen Region kann es sich aus technischer Sicht um eine beliebige Region handeln. Für organisatorische Zwecke empfiehlt es sich, eine Region auszuwählen, die den Peeringstandort genau darstellt.
 
 > [!NOTE]
-> Nachdem der Verschiebevorgang abgeschlossen wurde, wird der neue Name (der im vorherigen Cmdlet aufgeführt wurde), zum Verweis auf die Ressource verwendet. Die Verbindung wird im Grunde umbenannt.
-> 
+> * Nachdem Sie die klassische ExpressRoute-Verbindung in das Resource Manager-Bereitstellungsmodell verschoben haben, hat sie standardmäßig Zugriff auf beide Bereitstellungsmodelle (klassische und Resource Manager-Bereitstellung).
+> * Der neue Name (der im vorherigen Cmdlet aufgeführt wurde) wird zum Verweisen auf die Ressource verwendet. Die Verbindung wird im Grunde umbenannt.
 
 ## <a name="modify-circuit-access"></a>Ändern des Verbindungszugriffs
 
 ### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>So aktivieren Sie eine ExpressRoute-Verbindung für beide Bereitstellungsmodelle
 
-Nachdem Sie die klassische ExpressRoute-Verbindung in das Resource Manager-Bereitstellungsmodell verschoben haben, können Sie den Zugriff auf beide Bereitstellungsmodelle aktivieren. Führen Sie die folgenden Cmdlets aus, um den Zugriff auf beide Bereitstellungsmodelle zu aktivieren:
+Sie können den Zugriff auf das klassische Bereitstellungsmodell für ExpressRoute-Verbindungen aktivieren, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Führen Sie die folgenden Cmdlets aus, um den Zugriff auf beide Bereitstellungsmodelle zu aktivieren:
 
 1. Rufen Sie die Verbindungsdetails ab.
 

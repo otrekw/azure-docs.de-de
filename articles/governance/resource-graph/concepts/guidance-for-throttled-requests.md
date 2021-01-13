@@ -1,18 +1,15 @@
 ---
 title: Leitfaden für gedrosselte Anforderungen
-description: Erfahren Sie, wie Sie bessere Abfragen erstellen können, um gedrosselte Anforderungen an Azure Resource Graph zu vermeiden.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 06/19/2019
+description: Lernen Sie, parallel zu gruppieren, zu staffeln, zu paginieren und abzufragen, um zu vermeiden, dass Anforderungen durch Azure Resource Graph gedrosselt werden.
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: c644d230846d9c644c3845348431eef36c8279c8
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4a8ba991d13b9be221e67f2ff1e393fb01f8a2d4
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276563"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056173"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Leitfaden für gedrosselte Anforderungen in Azure Resource Graph
 
@@ -21,7 +18,7 @@ Beim programmgesteuerten Erstellen und der häufigen Nutzung von Azure Resource 
 In diesem Artikel werden vier Bereiche und Muster behandelt, die im Zusammenhang mit der Erstellung von Abfragen in Azure Resource Graph stehen:
 
 - Grundlegendes zu Drosselungsheadern
-- Batchverarbeitungsabfragen
+- Gruppieren von Abfragen
 - Staffelungsabfragen
 - Auswirkungen der Paginierung
 
@@ -34,6 +31,8 @@ In jeder Abfrageantwort fügt Azure Resource Graph zwei Drosselungsheader ein:
 - `x-ms-user-quota-remaining` (int): Das verbleibende Ressourcenkontingent für den Benutzer. Dieser Wert entspricht der Anzahl von Abfragen.
 - `x-ms-user-quota-resets-after` (hh:mm:ss): Der Zeitraum, bis die Kontingentnutzung eines Benutzers zurückgesetzt wird.
 
+Wenn ein Sicherheitsprinzipal Zugriff auf mehr als 5000 Abonnements innerhalb des [Abfragebereichs](./query-language.md#query-scope) der Mandanten- oder Verwaltungsgruppe hat, ist die Antwort auf die ersten 5000 Abonnements begrenzt, und der Header `x-ms-tenant-subscription-limit-hit` wird als `true` zurückgegeben.
+
 Zur Veranschaulichung der Funktionsweise von Headern sehen wir uns eine Abfrageantwort mit dem Header und den Werten von `x-ms-user-quota-remaining: 10` und `x-ms-user-quota-resets-after: 00:00:03` an.
 
 - In den nächsten 3 Sekunden werden höchstens 10 Abfragen ohne Drosselung übermittelt.
@@ -41,9 +40,9 @@ Zur Veranschaulichung der Funktionsweise von Headern sehen wir uns eine Abfragea
 
 Ein Beispiel für die Verwendung der Header zum Durchführen eines _Backoff_ für Abfrageanforderungen finden Sie im Beispiel in [Parallele Abfrage](#query-in-parallel).
 
-## <a name="batching-queries"></a>Batchverarbeitungsabfragen
+## <a name="grouping-queries"></a>Gruppieren von Abfragen
 
-Die Batchverarbeitung von Abfragen eines Abonnements, einer Ressourcengruppe oder einer einzelnen Ressource ist effizienter als das Parallelisieren von Abfragen. Die Kontingentkosten für eine größere Abfrage sind oft geringer als die Kontingentkosten für viele kleine und gezielte Abfragen. Die Batchgröße sollte kleiner als _300_ sein.
+Das Gruppieren von Abfragen nach Abonnement, Ressourcengruppe oder einer einzelnen Ressource ist effizienter als das Parallelisieren von Abfragen. Die Kontingentkosten für eine größere Abfrage sind oft geringer als die Kontingentkosten für viele kleine und gezielte Abfragen. Die Gruppengröße sollte kleiner als _300_ sein.
 
 - Beispiel für einen schlecht optimierten Batchverarbeitungsansatz
 
@@ -56,7 +55,7 @@ Die Batchverarbeitung von Abfragen eines Abonnements, einer Ressourcengruppe ode
   {
       var userQueryRequest = new QueryRequest(
           subscriptions: new[] { subscriptionId },
-          query: "project name, type");
+          query: "Resoures | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -66,20 +65,20 @@ Die Batchverarbeitung von Abfragen eines Abonnements, einer Ressourcengruppe ode
   }
   ```
 
-- Beispiel 1 für einen optimierten Batchverarbeitungsansatz
+- Beispiel 1 für einen optimierten Gruppierungsansatz
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var subscriptionIds = /* A big list of subscriptionIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= subscriptionIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= subscriptionIds.Count / groupSize; ++i)
   {
-      var currSubscriptionBatch = subscriptionIds.Skip(i * batchSize).Take(batchSize).ToList();
+      var currSubscriptionGroup = subscriptionIds.Skip(i * groupSize).Take(groupSize).ToList();
       var userQueryRequest = new QueryRequest(
-          subscriptions: currSubscriptionBatch,
-          query: "project name, type");
+          subscriptions: currSubscriptionGroup,
+          query: "Resources | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -89,21 +88,25 @@ Die Batchverarbeitung von Abfragen eines Abonnements, einer Ressourcengruppe ode
   }
   ```
 
-- Beispiel 2 für einen optimierten Batchverarbeitungsansatz
+- Beispiel 2 für einen optimierten Gruppierungsansatz zum Abrufen mehrerer Ressourcen in einer Abfrage
+
+  ```kusto
+  Resources | where id in~ ({resourceIdGroup}) | project name, type
+  ```
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var resourceIds = /* A big list of resourceIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= resourceIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= resourceIds.Count / groupSize; ++i)
   {
-      var resourceIdBatch = string.Join(",",
-          resourceIds.Skip(i * batchSize).Take(batchSize).Select(id => string.Format("'{0}'", id)));
+      var resourceIdGroup = string.Join(",",
+          resourceIds.Skip(i * groupSize).Take(groupSize).Select(id => string.Format("'{0}'", id)));
       var userQueryRequest = new QueryRequest(
           subscriptions: subscriptionList,
-          query: $"where id in~ ({resourceIds}) | project name, type");
+          query: $"Resources | where id in~ ({resourceIdGroup}) | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -129,7 +132,7 @@ Aufgrund der Art und Weise, wie die Drosselung erzwungen wird, werden gestaffelt
   |---------------------|-----|------|-------|-------|
   | Zeitintervall (in Sekunden) | 0-5 | 5-10 | 10-15 | 15 – 20 |
 
-Im Folgenden finden Sie ein Beispiel für die Verwendung von Drosselungsheadern beim Abfragen von Azure Resource Graph:
+Hier sehen Sie ein Beispiel für die Verwendung von Drosselungsheadern beim Abfragen von Azure Resource Graph:
 
 ```csharp
 while (/* Need to query more? */)
@@ -153,12 +156,12 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Gleichzeitige Abfrage
 
-Auch wenn die Batchverarbeitung gegenüber der Parallelisierung empfohlen wird, gibt es Situationen, in denen Abfragen nicht einfach verarbeitet werden können. In diesen Fällen sollten Sie Azure Resource Graph abfragen, indem Sie mehrere Abfragen parallel senden. Nachfolgend sehen Sie ein auf den Drosselungsheadern in solchen Szenarios basierendes Beispiel für das _Backoff_:
+Auch wenn die Gruppierung gegenüber der Parallelisierung empfohlen wird, gibt es Situationen, in denen Abfragen nicht einfach gruppiert werden können. In diesen Fällen sollten Sie Azure Resource Graph abfragen, indem Sie mehrere Abfragen parallel senden. Nachfolgend sehen Sie ein auf den Drosselungsheadern in solchen Szenarios basierendes Beispiel für das _Backoff_ :
 
 ```csharp
-IEnumerable<IEnumerable<string>> queryBatches = /* Batches of queries  */
-// Run batches in parallel.
-await Task.WhenAll(queryBatches.Select(ExecuteQueries)).ConfigureAwait(false);
+IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
+// Run groups in parallel.
+await Task.WhenAll(queryGroup.Select(ExecuteQueries)).ConfigureAwait(false);
 
 async Task ExecuteQueries(IEnumerable<string> queries)
 {
@@ -197,7 +200,7 @@ Da Azure Resource Graph in einer einzelnen Abfrageantwort höchstens 1000 Eintr
   var results = new List<object>();
   var queryRequest = new QueryRequest(
       subscriptions: new[] { mySubscriptionId },
-      query: "project id, name, type | top 5000");
+      query: "Resources | project id, name, type | top 5000");
   var azureOperationResponse = await this.resourceGraphClient
       .ResourcesWithHttpMessagesAsync(queryRequest, header)
       .ConfigureAwait(false);
@@ -216,14 +219,14 @@ Da Azure Resource Graph in einer einzelnen Abfrageantwort höchstens 1000 Eintr
 
 - Azure CLI/Azure PowerShell
 
-  Wenn Sie die Azure CLI oder Azure PowerShell verwenden, werden Abfragen an Azure Resource Graph automatisch paginiert, um maximal 5000 Einträge zu fetchen. Die Abfrageergebnisse geben eine kombinierte Liste mit Einträgen aus allen paginierten Aufrufen zurück. In diesem Fall nutzt eine einzelne paginierte Abfrage (je nach Anzahl der Einträge im Abfrageergebnis) möglicherweise mehr als ein Abfragekontingent. Im folgenden Beispiel werden bei der einzelnen Ausführung einer Abfrage bis zu fünf Abfragekontingente verwendet:
+  Wenn Sie die Azure CLI oder Azure PowerShell verwenden, werden Abfragen an Azure Resource Graph automatisch paginiert, um maximal 5000 Einträge zu fetchen. Die Abfrageergebnisse geben eine kombinierte Liste mit Einträgen aus allen paginierten Aufrufen zurück. In diesem Fall nutzt eine einzelne paginierte Abfrage (je nach Anzahl der Einträge im Abfrageergebnis) möglicherweise mehr als ein Abfragekontingent. Im folgenden Beispiel werden bei der einzelnen Ausführung einer Abfrage etwa bis zu fünf Abfragekontingente verwendet:
 
   ```azurecli-interactive
-  az graph query -q 'project id, name, type' -top 5000
+  az graph query -q 'Resources | project id, name, type' --first 5000
   ```
 
   ```azurepowershell-interactive
-  Search-AzGraph -Query 'project id, name, type' -Top 5000
+  Search-AzGraph -Query 'Resources | project id, name, type' -First 5000
   ```
 
 ## <a name="still-get-throttled"></a>Werden die Anforderungen weiterhin gedrosselt?
@@ -241,4 +244,4 @@ Geben Sie die folgenden Informationen an:
 
 - Informationen zur verwendeten Sprache finden Sie unter [Einfache Abfragen](../samples/starter.md).
 - Informationen zur anspruchsvolleren Nutzung finden Sie unter [Erweiterte Abfragen](../samples/advanced.md).
-- Erfahren Sie, wie Sie [Ressourcen untersuchen](explore-resources.md).
+- Erfahren Sie mehr über das [Erkunden von Ressourcen](explore-resources.md).

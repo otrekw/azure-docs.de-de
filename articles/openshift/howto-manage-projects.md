@@ -4,18 +4,24 @@ description: Verwalten von Projekten, Vorlagen, Imagestreams in einem Azure Red 
 services: openshift
 keywords: Eigenständige Bereitstellung von Anforderungen für Red Hat OpenShift-Projekte
 author: mjudeikis
-ms.author: b-majude
+ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: 5028ce3c71538e67b50a15abb6076871d5af7050
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 0abc086553f5e903a71bcfd0b6322bcee56d2d8b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559148"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216928"
 ---
-# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Verwalten von Projekten, Vorlagen, Imagestreams in einem Azure Red Hat OpenShift-Cluster 
+# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Verwalten von Projekten, Vorlagen, Imagestreams in einem Azure Red Hat OpenShift-Cluster
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 wird zum 30. Juni 2022 eingestellt. Unterstützung für die Erstellung neuer Azure Red Hat OpenShift 3.11-Cluster wird bis zum 30. November 2020 bereitgestellt. Nach der Einstellung werden die verbleibenden Azure Red Hat OpenShift 3.11-Cluster abgeschaltet, um Sicherheitsrisiken zu vermeiden.
+> 
+> Führen Sie die Schritte in diesem Leitfaden aus, um [einen Azure Red Hat OpenShift 4-Cluster zu erstellen](tutorial-create-cluster.md).
+> Wenn Sie spezielle Fragen haben, [kontaktieren Sie uns](mailto:arofeedback@microsoft.com).
 
 In OpenShift Container Platform werden Projekte zum Gruppieren und Isolieren verwandter Objekte verwendet. Als Administrator können Sie Entwicklern den Zugriff auf bestimmte Projekte gewähren, das Erstellen eigener Projekte gestatten und Administratorrechte für einzelne Projekte erteilen.
 
@@ -66,7 +72,7 @@ Sie können verhindern, dass eine authentifizierte Benutzergruppe neue Projekte 
 2. Bearbeiten Sie die Clusterrollenbindung für eigenständige Bereitstellung.
 
    ```
-   oc edit clusterrolebinding self-provisioners
+   oc edit clusterrolebinding.rbac.authorization.k8s.io self-provisioners
    ```
 
 3. Fügen Sie die folgende Anmerkung hinzu, um die Rolle aus dem ARO-Updateprozess zu entfernen: `openshift.io/reconcile-protect: "true"`
@@ -82,7 +88,7 @@ Sie können verhindern, dass eine authentifizierte Benutzergruppe neue Projekte 
 4. Ändern Sie die Clusterrollenbindung, um das Erstellen von Projekten durch `system:authenticated:oauth` zu verhindern:
 
    ```
-   apiVersion: authorization.openshift.io/v1
+   apiVersion: rbac.authorization.k8s.io/v1
    groupNames:
    - osa-customer-admins
    kind: ClusterRoleBinding

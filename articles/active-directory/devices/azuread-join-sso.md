@@ -1,6 +1,6 @@
 ---
 title: Funktionsweise von SSO für lokale Ressourcen auf in Azure AD eingebundenen Geräten | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie in Azure Active Directory eingebundene Hybridgeräte konfigurieren.
+description: Erfahren Sie, wie Sie die Umgebung für einmaliges Anmelden (SSO) durch die Konfiguration von hybrid in Azure Active Directory eingebundenen Geräten erweitern.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -9,40 +9,44 @@ ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: sandeo
+ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14e7a4389c192dde8d086a69a35114f3b8b33e96
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ba802cb86d68298cd4dfff94162069590744833c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562190"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256461"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Funktionsweise von SSO für lokale Ressourcen auf in Azure AD eingebundenen Geräten
 
-Es wird Sie wahrscheinlich nicht überraschen, dass für ein in Azure Active Directory (Azure AD) eingebundenes Gerät einmaliges Anmelden (Single Sign-On, SSO) für die Cloud-Apps Ihres Mandanten möglich ist. Falls Ihre Umgebung über eine lokale Active Directory-Instanz verfügt, können Sie SSO auf diese Geräte erweitern.
+Es wird Sie wahrscheinlich nicht überraschen, dass für ein in Azure Active Directory (Azure AD) eingebundenes Gerät einmaliges Anmelden (Single Sign-On, SSO) für die Cloud-Apps Ihres Mandanten möglich ist. Falls Ihre Umgebung über eine lokale Active Directory-Instanz verfügt, können Sie die SSO-Umgebung auf diesen Geräte um Ressourcen und Anwendungen erweitern, die ebenfalls die lokale AD-Instanz verwenden. 
 
 In diesem Artikel wird die entsprechende Vorgehensweise beschrieben.
 
-## <a name="how-it-works"></a>So funktioniert's 
+## <a name="prerequisites"></a>Voraussetzungen
 
-Da Sie sich nur einen Benutzernamen und das zugehörige Kennwort merken müssen, vereinfacht SSO den Zugriff auf Ihre Ressourcen und erhöht die Sicherheit Ihrer Umgebung. Mit einem in Azure AD eingebundenen Gerät verfügen Ihre Benutzer bereits über eine SSO-Umgebung für die Cloud-Apps in Ihrer Umgebung. Falls Ihre Umgebung über eine Azure AD-Instanz und eine lokale AD-Instanz verfügt, ist die Wahrscheinlichkeit hoch, dass Sie die SSO-Option auf Ihre lokalen Branchen-Apps, Dateifreigaben und Drucker erweitern möchten.  
+ Wenn in Azure AD eingebundene Computer nicht mit dem Netzwerk Ihrer Organisation verbunden sind, ist ein VPN oder eine andere Netzwerkinfrastruktur erforderlich. Für das lokale einmalige Anmelden ist eine Kommunikation in Sichtverbindung mit Ihren lokalen AD DS-Domänencontrollern erforderlich.
+
+## <a name="how-it-works"></a>Funktionsweise 
+
+Mit einem in Azure AD eingebundenen Gerät verfügen Ihre Benutzer bereits über eine SSO-Umgebung für die Cloud-Apps in Ihrer Umgebung. Falls Ihre Umgebung über eine Azure AD-Instanz und eine lokale AD-Instanz verfügt, möchten Sie wahrscheinlich die SSO-Umgebung um lokale Branchen-Apps, Dateifreigaben und Drucker erweitern.
 
 In Azure AD eingebundene Geräte haben keine Informationen zu Ihrer lokalen AD-Umgebung, da sie nicht darin eingebunden sind. Sie können aber mit Azure AD Connect zusätzliche Informationen zu Ihrer lokalen AD-Umgebung auf diesen Geräten bereitstellen.
-Eine Umgebung, die sowohl über eine Azure AD-Instanz als auch eine lokale AD-Instanz verfügt, wird auch als Hybridumgebung bezeichnet. Bei Verwendung einer Hybridumgebung haben Sie Azure AD Connect wahrscheinlich bereits bereitgestellt, um Ihre lokalen Identitätsinformationen mit der Cloud zu synchronisieren. Im Rahmen des Synchronisierungsprozesses synchronisiert Azure AD Connect die Informationen der lokalen Domäne mit Azure AD. Wenn sich ein Benutzer in einer Hybridumgebung an einem in Azure AD eingebundenen Gerät anmeldet, ist der Ablauf wie folgt:
 
-1. Azure AD sendet den Namen der lokalen Domäne, deren Mitglied der Benutzer ist, zurück an das Gerät. 
-1. Der Dienst für die lokale Sicherheitsautorität (Local Security Authority, LSA) ermöglicht die Kerberos-Authentifizierung auf dem Gerät.
+Eine Umgebung, die sowohl über eine Azure AD-Instanz als auch eine lokale AD-Instanz verfügt, wird auch als Hybridumgebung bezeichnet. Bei Verwendung einer Hybridumgebung haben Sie Azure AD Connect wahrscheinlich bereits bereitgestellt, um Ihre lokalen Identitätsinformationen mit der Cloud zu synchronisieren. Im Rahmen des Synchronisierungsprozesses synchronisiert Azure AD Connect die lokalen Benutzerinformationen mit Azure AD. Wenn sich ein Benutzer in einer Hybridumgebung an einem in Azure AD eingebundenen Gerät anmeldet, ist der Ablauf wie folgt:
 
-Bei einem Zugriffsversuch auf eine Ressource in der lokalen Domäne des Benutzers wird für das Gerät Folgendes durchgeführt:
+1. Azure AD sendet die Details der lokalen Domäne des Benutzers zusammen mit dem [primären Aktualisierungstoken](concept-primary-refresh-token.md) wieder an das Gerät zurück.
+1. Der LSA-Dienst (lokale Sicherheitsautorität) ermöglicht die Kerberos- und NTLM-Authentifizierung auf dem Gerät.
 
-1. Die Domäneninformationen werden zum Ermitteln eines Domänencontrollers (DC) verwendet. 
+Bei einem Zugriffsversuch auf eine Ressource, die Kerberos oder NTLM in der lokalen Umgebung des Benutzers anfordert, geschieht auf dem Gerät Folgendes:
+
 1. Die Informationen der lokalen Domäne und die Benutzeranmeldeinformationen werden an den ermittelten DC gesendet, um den Benutzer zu authentifizieren.
-1. Ein Kerberos [Ticket-Granting Ticket (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets) wird empfangen, das zum Zugreifen auf in AD eingebundene Ressourcen verwendet wird.
+1. Das Gerät empfängt von Kerberos ein [Ticket Granting Ticket (TGT)](/windows/desktop/secauthn/ticket-granting-tickets) oder ein NTLM-Token, das auf dem von der lokalen Ressource oder Anwendung unterstützten Protokoll basiert. Wenn beim Versuch, das Kerberos-TGT oder das NTLM-Token für die Domäne abzurufen, ein Fehler auftritt (das zugehörige DCLocator-Timeout kann zu einer Verzögerung führen), werden Wiederholungsversuche mithilfe von Einträgen der Anmeldeinformationsverwaltung unternommen, oder der Benutzer wird ein Popupfenster zur Authentifizierung angezeigt, in dem Anmeldeinformationen für die Zielressource angefordert werden.
 
-Alle Apps, die für die **integrierte Windows-Authentifizierung** konfiguriert sind, erhalten SSO auf nahtlose Weise, wenn ein Benutzer darauf zugreift.  
+Alle Apps, die für die **integrierte Windows-Authentifizierung** konfiguriert sind, erhalten SSO auf nahtlose Weise, wenn ein Benutzer darauf zugreift.
 
-Für Windows Hello for Business ist eine zusätzliche Konfiguration erforderlich, um lokales einmaliges Anmelden über ein in Azure AD eingebundenes Gerät zu ermöglichen. Weitere Informationen finden Sie unter [Configure Azure AD joined devices for On-premises Single-Sign On using Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base) (Konfigurieren von in Azure AD eingebundenen Geräten für lokales einmaliges Anmelden mit Windows Hello for Business). 
+Für Windows Hello for Business ist eine zusätzliche Konfiguration erforderlich, um lokales einmaliges Anmelden über ein in Azure AD eingebundenes Gerät zu ermöglichen. Weitere Informationen finden Sie unter [Configure Azure AD joined devices for On-premises Single-Sign On using Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base) (Konfigurieren von in Azure AD eingebundenen Geräten für lokales einmaliges Anmelden mit Windows Hello for Business). 
 
 ## <a name="what-you-get"></a>Ergebnis
 
@@ -53,7 +57,7 @@ Mit SSO haben Sie auf einem in Azure AD eingebundenen Gerät folgende Möglichke
 
 Falls Sie Ihre lokale AD-Instanz über ein Windows-Gerät verwalten möchten, können Sie die [Remoteserver-Verwaltungstools für Windows 10](https://www.microsoft.com/download/details.aspx?id=45520) installieren.
 
-Sie können Folgendes verwenden:
+Verwenden Sie Folgendes:
 
 - Snap-In „Active Directory-Benutzer und -Computer“ (ADUC) zum Verwalten aller AD-Objekte. Allerdings müssen Sie die Domäne, mit der eine Verbindung hergestellt werden soll, manuell angeben.
 - DHCP-Snap-In zum Verwalten eines in AD eingebundenen DHCP-Servers. Allerdings müssen Sie ggf. den DHCP-Servernamen oder die -Adresse angeben.

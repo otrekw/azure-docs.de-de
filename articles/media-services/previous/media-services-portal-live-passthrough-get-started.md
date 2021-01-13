@@ -14,23 +14,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9a8ab024443744f50482dd2ca1cfb33db43359e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 707c12cac6bbceee925c4710eff29482f687d47f
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463300"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040729"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Durchführen von Livestreaming mit lokalen Encodern mit dem Azure-Portal
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [REST](/rest/api/media/operations/channel)
 > 
 > 
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 In diesem Tutorial werden Sie durch die Schritte des Azure-Portals zum Erstellen eines **Kanals** geführt, der für eine Pass-Through-Bereitstellung konfiguriert ist. 
 
@@ -39,7 +42,7 @@ Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt 
 
 * Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/). 
 * Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services Kontos](media-services-portal-create-account.md).
-* Eine Webcam. Beispielsweise den [Telestream Wirecast-Encoder](https://www.telestream.net/wirecast/overview.htm).
+* Eine Webcam. Beispielsweise den [Telestream Wirecast-Encoder](media-services-configure-wirecast-live-encoder.md). 
 
 Wir empfehlen Ihnen dringend, die folgenden Artikel zu lesen:
 
@@ -47,7 +50,7 @@ Wir empfehlen Ihnen dringend, die folgenden Artikel zu lesen:
 * [Übersicht über Livestreaming mit Azure Media Services](media-services-manage-channels-overview.md)
 * [Livestreaming mit lokalen Encodern, die Datenströme mit Mehrfachbitrate erstellen](media-services-live-streaming-with-onprem-encoders.md)
 
-## <a id="scenario"></a>Allgemeines Livestreamingszenario
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>Allgemeines Livestreamingszenario
 
 In den folgenden Schritten werden Aufgaben beschrieben, die beim Erstellen von gängigen Livestreaming-Anwendungen mit Kanälen ausgeführt werden, die für die Pass-Through-Bereitstellung konfiguriert sind. In diesem Tutorial wird veranschaulicht, wie Sie einen Pass-Through-Kanal und Liveereignisse erstellen und verwalten.
 
@@ -130,7 +133,7 @@ Weitere Informationen zu Pass-Through-Kanälen finden Sie unter [Livestreaming m
 ## <a name="get-ingest-urls"></a>Abrufen von Erfassungs-URLs
 Wenn der Kanal erstellt wurde, können Sie Erfassungs-URLs abrufen, die Sie dem Liveencoder bereitstellen. Diese URLs werden vom Encoder zur Eingabe eines Livedatenstroms verwendet.
 
-![Erstellt](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
+![Screenshot der Seite „Livestreaming“ mit einem ausgewählten Kanal und dem Kanalbereich](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
 ## <a name="watch-the-event"></a>Ansehen des Ereignisses
 Klicken Sie zum Überwachen des Ereignisses im Azure-Portal auf **Überwachen** , oder kopieren Sie die Streaming-URL, und verwenden Sie einen Player Ihrer Wahl. 
@@ -139,7 +142,7 @@ Klicken Sie zum Überwachen des Ereignisses im Azure-Portal auf **Überwachen** 
 
 Das Liveereignis wird automatisch in On-Demand-Inhalt konvertiert, wenn es beendet wird.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 Weitere Informationen zu Pass-Through-Kanälen finden Sie unter [Livestreaming mit lokalen Encodern, die Multi-Bitrate-Datenströme erstellen](media-services-live-streaming-with-onprem-encoders.md).
 
 * Ein Kanal kann nur beendet werden, wenn auch alle Ereignisse/Programme des Kanals beendet wurden.  Wenn der Kanal beendet ist, fallen keine Kosten an. Wenn Sie den Kanal erneut starten, weist er die gleiche Erfassungs-URL auf, damit Sie den Encoder nicht erneut konfigurieren müssen.
@@ -150,7 +153,7 @@ Auch nach dem Beenden und Löschen des Ereignisses können die Benutzer archivie
 
 Wählen Sie zum Verwalten der Objekte **Einstellung** aus, und klicken Sie auf **Assets**.
 
-![Assets](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
+![Objekte](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 
 ## <a name="next-step"></a>Nächster Schritt
 Überprüfen Sie die Media Services-Lernpfade.
@@ -159,4 +162,3 @@ Wählen Sie zum Verwalten der Objekte **Einstellung** aus, und klicken Sie auf *
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

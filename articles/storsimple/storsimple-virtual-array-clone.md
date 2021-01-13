@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: af6e979c-55e3-477c-b53e-a76a697f80c9
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: feffbb634af62d70a840febcf2a04afb7bdeeddd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b6cc89cb082cd0ed32abd88e3a6683c60a27ba90
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60580857"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023039"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klonen aus einer Sicherung des StorSimple Virtual Array
 
@@ -44,7 +44,7 @@ In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie das Klonen aus 
    
    c.    Klicken Sie auf **OK**.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/cloneshare3.png)
+   ![Klonen einer Sicherung 2](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. Klicken Sie auf dem Blatt **Klonen** auf **Zieleinstellungen**, und führen Sie folgendes durch:
    
    a.    Geben Sie einen Freigabenamen an. Der Freigabename kann 3-127 Zeichen lang sein.
@@ -59,13 +59,13 @@ In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie das Klonen aus 
    
    f.    Klicken Sie auf **OK**.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/cloneshare6.png)
+   ![Klonen einer Sicherung 3](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
 4. Klicken Sie auf **Klonen**, um einen Klonauftrag zu starten. Nachdem der Auftrag abgeschlossen ist beginnt der Klonvorgang, und Sie erhalten eine Benachrichtigung. Gehen Sie zum Überwachen des Fortschritts des Klonvorgangs zum Blatt **Aufträge**, und klicken Sie auf den Auftrag, um die Auftragsdetails anzuzeigen.
 5. Nachdem der Klon erfolgreich erstellt wurde, navigieren Sie auf Ihrem Gerät zurück zum Blatt **Freigaben**.
 6. Sie können nun die neue geklonte Freigabe in der Liste mit den Freigaben auf Ihrem Gerät anzeigen. Eine mehrstufige Freigabe wird auch als mehrstufig geklont, und eine lokale Freigabe als lokale Freigabe.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/cloneshare10.png)
+   ![Klonen einer Sicherung 4](./media/storsimple-virtual-array-clone/cloneshare10.png)
 
 ## <a name="clone-volumes-from-a-backup-set"></a>Klonen von Volumes aus einem Sicherungssatz
 
@@ -84,7 +84,7 @@ Um aus einer Sicherung im Azure-Portal zu klonen, müssen Sie ähnliche Schritte
    
    c.    Klicken Sie auf **OK**.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/clonevolume3.png)
+   ![Klonen eines Volumes 2](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. Klicken Sie auf dem Blatt **Klonen** auf **Zielvolumeinstellungen**, und führen Sie folgendes durch:
    
    a. Der Gerätename wird automatisch aufgefüllt.
@@ -95,18 +95,18 @@ Um aus einer Sicherung im Azure-Portal zu klonen, müssen Sie ähnliche Schritte
    
    d. Klicken Sie für **Verbundene Hosts** auf **Auswahl**.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/clonevolume4.png)
+   ![Klonen eines Volumes 3](./media/storsimple-virtual-array-clone/clonevolume4.png)
 4. Wählen Sie auf dem Blatt **Verbundene Hosts** aus einem vorhandenen ACR aus oder fügen Sie einen neuen ACR hinzu. Sie müssen einen ACR-Namen und einen Host-IQN angeben, um einen neuen ACR hinzuzufügen. Klicken Sie auf **Auswählen**.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/clonevolume5.png)
+   ![Klonen eines Volumes 4](./media/storsimple-virtual-array-clone/clonevolume5.png)
 5. Klicken Sie auf **Klonen**, um einen Klonauftrag zu starten.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/clonevolume6.png)  
+   ![Klonen eines Volumes 5](./media/storsimple-virtual-array-clone/clonevolume6.png)  
 6. Nachdem der Klonauftrag erstellt wurde, wird das Klonen gestartet. Sobald der Klon erstellt wurde, wird er auf dem Blatt „Volumes“ auf Ihrem Gerät angezeigt. Beachten Sie, dass ein mehrstufiges Volume als mehrstufiges Volume geklont wird, und ein lokales Volume als lokales Volume.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/clonevolume8.png)
+   ![Klonen eines Volumes 6](./media/storsimple-virtual-array-clone/clonevolume8.png)
 7. Sobald das Volume in der Liste der Volumes online angezeigt wird, ist das Volume für die Verwendung verfügbar. Aktualisieren Sie auf dem iSCSI-Initiatorhost die Liste der Ziele im Fenster mit den iSCSI-Initiatoreigenschaften. Ein neues Ziel, das den Namen des geklonten Volumes enthält, sollte in der Statusspalte als „inaktiv“ angezeigt werden.
-8. Wählen Sie das Ziel aus, und klicken Sie auf **Verbinden**. Wenn der Initiator mit dem Ziel verbunden ist, sollte sich der Status in **Verbunden**ändern.
+8. Wählen Sie das Ziel aus, und klicken Sie auf **Verbinden**. Wenn der Initiator mit dem Ziel verbunden ist, sollte sich der Status in **Verbunden** ändern.
 9. Im Fenster **Datenträgerverwaltung** werden die bereitgestellten Volumes wie in der folgenden Abbildung dargestellt angezeigt. Klicken Sie mit der rechten Maustaste auf das ermittelte Volume (klicken Sie auf den Datenträgernamen), und klicken Sie dann auf **Online**.
 
 > [!IMPORTANT]
@@ -124,10 +124,10 @@ Jede Freigabe verfügt über einen Ordner *.backups* , der die letzten Sicherung
    
    Auf diese Weise werden die letzten fünf Sicherungen angezeigt, und können zur Wiederherstellung auf Elementebene verwendet werden. Zu den fünf letzten Sicherungen gehören sowohl die standardmäßig geplanten als auch die manuellen Sicherungen.
    
-   * **Geplante Sicherungen** weisen die Bezeichnung &lt;Gerätename&gt;DailySchedule-YYYYMMDD-HHMSS-UTC auf.
+   * **Geplante Sicherungen** weisen die Bezeichnung &lt;Gerätename&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC auf.
    * **Manuelle Sicherungen** weisen die Bezeichnung „Ad-hoc-YYYYMMDD-HHMMSS-UTC“ auf.
      
-     ![](./media/storsimple-virtual-array-clone/image14.png)
+     ![Screenshot des Datei-Explorers mit Anzeige des Ordners „.backups“. Innerhalb dieses Ordners wird der Ordner für manuelle Sicherungen ausgewählt.](./media/storsimple-virtual-array-clone/image14.png)
 
 2. Identifizieren Sie die Sicherung mit der letzten Version der gelöschten Datei. Der Ordnername enthält zwar in allen vorigen Fällen einen UTC-Zeitstempel, aber der Zeitpunkt der Ordnererstellung ist die eigentliche Geräteuhrzeit, zu der die Sicherung gestartet wurde. Verwenden Sie den Ordnerzeitstempel, um die Sicherungen zu finden und zu identifizieren.
 

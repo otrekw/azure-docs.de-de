@@ -1,26 +1,25 @@
 ---
 title: Azure PowerShell-Beispiele für Azure Application Gateway
-description: Azure PowerShell-Beispiele für Azure Application Gateway
+description: Dieser Artikel enthält Links zu Azure PowerShell-Beispielen, die die schnelle Bereitstellung einer Azure Application-Instanz mit unterschiedlichen Konfigurationen veranschaulichen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: sample
-ms.date: 08/07/2019
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 2fb809026e8b604ddf25a8160774972eae99411a
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 045009f695197277ab576c8ff41f36af43957be7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824349"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87067778"
 ---
-# <a name="azure-powershell-examples-for-azure-application-gateway"></a>Azure PowerShell-Beispiele für Azure Application Gateway
+# <a name="azure-powershell-examples-for-azure-application-gateway-ag"></a>Azure PowerShell-Beispiele für Azure Application Gateway (AG)
 
 Die folgende Tabelle enthält Links zu Azure PowerShell-Skriptbeispielen für Azure Application Gateway.
 
-| | |
-|---|---|
+| Beispiel | BESCHREIBUNG |
+|-------- | ----------- |
 | [Verwalten von Webdatenverkehr](./scripts/create-vmss-powershell.md) | Erstellt ein Application Gateway und alle dazugehörigen Ressourcen.|
 | [Einschränken von Webdatenverkehr](./scripts/create-vmss-waf-powershell.md) | Erstellt ein Application Gateway, das Datenverkehr mithilfe von OWASP-Regeln einschränkt.|
-|[Benutzerdefinierte WAF v2-Regeln](scripts/waf-custom-rules-powershell.md)|Erstellt eine Web Application Firewall-Instanz v2 für Application Gateway mit benutzerdefinierten Regeln.
-| | |
+|[Benutzerdefinierte WAF v2-Regeln](scripts/waf-custom-rules-powershell.md)|Erstellt eine Web Application Firewall-Instanz v2 für Application Gateway mit benutzerdefinierten Regeln.|

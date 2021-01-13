@@ -3,25 +3,25 @@ title: Moderieren von Text mit benutzerdefinierten Begriffslisten – Content Mo
 titleSuffix: Azure Cognitive Services
 description: Erstellen Sie mithilfe der Listenverwaltungs-API benutzerdefinierte Listen von Benennungen, die mit der API für die Textmoderation verwendet werden sollen.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 0a4e9b7925c2309a9682156934e9d94fa83c0d4b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: f1dfe88741a304da92901d3997c746654336ef54
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564393"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85800039"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Moderieren von Text mit benutzerdefinierten Benennungslisten in der API-Konsole
 
 Die globale Standardliste von Benennungen in Azure Content Moderator reicht für den Großteil der Anforderungen an die Inhaltsmoderation aus. Allerdings müssen Sie eventuell auf Benennungen prüfen, die spezifisch für Ihre Organisation sind. Beispielsweise sollten Sie Namen von Mitbewerbern zur weiteren Überprüfung kennzeichnen. 
 
-Erstellen Sie mithilfe der [Listenverwaltungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) benutzerdefinierte Listen von Benennungen, die mit der API für die Textmoderation verwendet werden sollen. Mit dem Vorgang **Text – Überprüfen** wird Ihr Text auf unerwünschte Ausdrücke geprüft und mit benutzerdefinierten und freigegebenen Blacklists abgeglichen.
+Erstellen Sie mithilfe der [Listenverwaltungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) benutzerdefinierte Listen von Benennungen, die mit der API für die Textmoderation verwendet werden sollen. Mit dem Vorgang **Text – Überprüfen** wird Ihr Text auf unerwünschte Ausdrücke geprüft und mit benutzerdefinierten und freigegebenen Sperrlisten abgeglichen.
 
 > [!NOTE]
 > Die Obergrenze liegt bei **fünf Benennungslisten**, wobei jede Liste **max. 10.000 Benennungen** enthalten kann.
@@ -32,7 +32,7 @@ Mit der Listenverwaltungs-API können Sie folgende Aufgaben durchführen:
 - Hinzufügen von Benennungen zu einer Liste.
 - Abgleichen von Benennungen mit den Benennungen in einer Liste.
 - Löschen von Benennungen aus einer Liste.
-- Löschen einer Liste.
+- Löschen einer Liste
 - Bearbeiten von Listeninformationen
 - Aktualisieren des Index, damit Änderungen an der Liste in einer neuen Überprüfung berücksichtigt werden
 
@@ -48,7 +48,7 @@ Nachdem Sie eine Benennungsliste geändert haben, müssen Sie den zugehörigen I
 
    Die Seite **Benennungslisten – Suchindex aktualisieren** wird geöffnet.
 
-2. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt. 
+2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
 
    ![Regionsauswahl auf der Seite „Benennungslisten – Suchindex aktualisieren“](images/test-drive-region.png)
 
@@ -63,7 +63,7 @@ Nachdem Sie eine Benennungsliste geändert haben, müssen Sie den zugehörigen I
 
    Die Seite **Benennungslisten – Erstellen** wird geöffnet.
 
-2. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt. 
+2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
 
    ![Regionsauswahl auf der Seite „Benennungslisten – Erstellen“](images/test-drive-region.png)
 
@@ -77,15 +77,17 @@ Nachdem Sie eine Benennungsliste geändert haben, müssen Sie den zugehörigen I
 
 5. Verwenden Sie Platzhalter für Schlüssel-Wert-Paare, um Ihrer Liste aussagekräftigere Metadaten zuzuweisen.
 
-       {
-          "Name": "MyExclusionList",
-          "Description": "MyListDescription",
-          "Metadata": 
-          {
-             "Category": "Competitors",
-             "Type": "Exclude"
-          }
-       }
+    ```json
+    {
+        "Name": "MyExclusionList",
+        "Description": "MyListDescription",
+        "Metadata": 
+        {
+            "Category": "Competitors",
+            "Type": "Exclude"
+        }
+    }
+    ```
 
    Fügen Sie Metadaten als Schlüssel-Wert-Paare und nicht als tatsächliche Benennungen zur Liste hinzu.
  
@@ -97,7 +99,7 @@ Nachdem Sie eine Benennungsliste geändert haben, müssen Sie den zugehörigen I
 
    Die Seite **Benennung – Benennung hinzufügen** wird geöffnet. 
 
-8. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt. 
+8. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
 
    ![Regionsauswahl auf der Seite „Benennung – Benennung hinzufügen“](images/test-drive-region.png)
 
@@ -119,12 +121,12 @@ Nachdem Sie eine Benennungsliste geändert haben, müssen Sie den zugehörigen I
  
 13. Fügen Sie noch ein paar Benennungen hinzu. Nachdem Sie nun eine benutzerdefinierte Liste von Benennungen erstellt haben, [überprüfen Sie testweise einen Text](try-text-api.md) mit der benutzerdefinierten Benennungsliste. 
 
-## <a name="delete-terms-and-lists"></a>Löschen von Benennungen und Listen
+## <a name="delete-terms-and-lists"></a>Löschen von Begriffen und Listen
 
-Das Löschen einer Benennung oder einer Liste ist einfach. Mit der API können Sie folgende Aufgaben durchführen:
+Das Löschen eines Begriffs oder einer Liste ist einfach. Mit der API können Sie folgende Aufgaben durchführen:
 
-- Löschen einer Benennung (**Benennung – Löschen**)
-- Löschen aller Benennungen in einer Liste, jedoch nicht der Liste selbst (**Benennung – Alle Benennungen löschen**)
+- Löschen eines Begriffs. (**Benennung – Löschen**)
+- Löschen aller Begriffe in einer Liste, jedoch nicht der Liste selbst. (**Benennung – Alle Benennungen löschen**)
 - Löschen einer Liste und aller zugehörigen Inhalte (**Benennungsliste – Löschen**)
 
 Dieses Beispiel löscht eine einzelne Benennung.
@@ -133,7 +135,7 @@ Dieses Beispiel löscht eine einzelne Benennung.
 
    Die Seite **Benennung – Löschen** wird geöffnet.
 
-2. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt. 
+2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
 
    ![Regionsauswahl auf der Seite „Benennung – Löschen“](images/test-drive-region.png)
 
@@ -157,7 +159,7 @@ Sie können Name und Beschreibung einer Liste bearbeiten und Metadatenelemente h
 
    Die Seite **Benennungslisten – Details aktualisieren** wird geöffnet.
 
-2. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt. 
+2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
 
    ![Regionsauswahl auf der Seite „Benennungslisten – Details aktualisieren“](images/test-drive-region.png)
 

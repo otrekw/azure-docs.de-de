@@ -1,31 +1,33 @@
 ---
-title: Sperren von Images in Azure Container Registry
+title: Sperren von Images
 description: Festlegen von Attributen für ein Containerimage oder Repository, sodass es in einer Azure-Containerregistrierung nicht gelöscht oder überschrieben werden kann.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
-ms.date: 02/19/2019
-ms.author: danlep
-ms.openlocfilehash: 7a313353ee1c7afae10fd7af84570565037e40ab
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.date: 09/30/2019
+ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310648"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "77659695"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Sperren von Containerimages in einer Azure-Containerregistrierung
 
 Sie können eine Imageversion oder ein Repository in einer Azure-Containerregistrierung sperren, damit es nicht gelöscht oder aktualisiert werden kann. Aktualisieren Sie die Attribute mithilfe des Azure CLI-Befehls [az acr repository update][az-acr-repository-update], um ein Image oder ein Repository zu sperren. 
 
-Für die Vorgehensweisen in diesem Artikel ist erforderlich, dass Sie die Azure CLI in Azure Cloud Shell oder lokal ausführen (Version 2.0.55 oder höher werden empfohlen). Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+Für die Vorgehensweisen in diesem Artikel ist erforderlich, dass Sie die Azure CLI in Azure Cloud Shell oder lokal ausführen (Version 2.0.55 oder höher werden empfohlen). Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+
+> [!IMPORTANT]
+> Dieser Artikel gilt nicht für das Sperren einer ganzen Registrierung, z. B. durch die Verwendung von **Einstellungen > Sperren** im Azure-Portal oder von `az lock`-Befehlen in der Azure CLI. Das Sperren einer Registrierungsressource hindert Sie nicht am Erstellen, Aktualisieren oder Löschen von Daten in Repositorys. Das Sperren einer Registrierung wirkt sich nur auf Verwaltungsvorgänge wie das Hinzufügen oder Löschen von Replizierungen oder das Löschen der Registrierung selbst aus. Weitere Informationen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="scenarios"></a>Szenarien
 
 Markierte Images sind in Azure Container Registry standardmäßig *änderbar*. Mit den entsprechenden Berechtigungen können Sie ein Image also wiederholt mit dem gleichen Tag aktualisieren und an eine Registrierung pushen. Containerimages können bei Bedarf auf [gelöscht](container-registry-delete.md) werden. Dieses Verhalten ist nützlich, wenn Sie Images entwickeln und eine Größe für Ihre Registrierung einhalten müssen.
 
-Wenn Sie jedoch ein Containerimage für die Produktionsumgebung bereitstellen, benötigen Sie möglicherweise ein *unveränderliches* Containerimage. Ein unveränderliches Containerimage kann nicht versehentlich gelöscht oder überschrieben werden. Verwenden Sie den Befehl [az acr repository update][az-acr-repository-update], um Repositoryattribute für Folgendes festzulegen:
+Wenn Sie jedoch ein Containerimage für die Produktionsumgebung bereitstellen, benötigen Sie möglicherweise ein *unveränderliches* Containerimage. Ein unveränderliches Containerimage kann nicht versehentlich gelöscht oder überschrieben werden.
+
+Informationen zu Strategien zum Taggen und für die Versionsverwaltung von Images in Ihrer Registrierung finden Sie unter [Empfehlungen für das Taggen und die Versionsverwaltung von Containerimages](container-registry-image-tag-version.md).
+
+Verwenden Sie den Befehl [az acr repository update][az-acr-repository-update], um Repositoryattribute für Folgendes festzulegen:
 
 * Sperren einer Imageversion oder eines gesamten Repositorys
 
@@ -33,7 +35,7 @@ Wenn Sie jedoch ein Containerimage für die Produktionsumgebung bereitstellen, b
 
 * Verhindern von Lesevorgängen (Pull) für eine Imageversion oder ein gesamtes Repository
 
-Beispiele hierzu finden Sie in den nachfolgenden Abschnitten.
+Beispiele hierzu finden Sie in den nachfolgenden Abschnitten. 
 
 ## <a name="lock-an-image-or-repository"></a>Sperren von Images oder Repositorys 
 
@@ -42,7 +44,7 @@ Führen Sie den folgenden Befehl vom Typ [az acr repository show][az-acr-reposit
 
 ```azurecli
 az acr repository show \
-    --name myregistry --repository myrepo
+    --name myregistry --repository myrepo \
     --output jsonc
 ```
 

@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 4b8cbc27757cf6c321ea4b3c27720a129aa27c1b
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 6811a06eb3483fd53b6e566033935c3b2e00ceca
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593476"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84887241"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Echtzeitwarnungen in Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]

@@ -1,23 +1,23 @@
 ---
-title: Erstellen von hoch verfügbaren Spark Streaming-Aufträgen in YARN – Azure HDInsight
+title: Hoch verfügbare Spark Streaming-Aufträge in YARN – Azure HDInsight
 description: Einrichten von Apache Spark Streaming für ein Szenario mit Hochverfügbarkeit in Azure HDInsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: conceptual
+ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 01/26/2018
-ms.openlocfilehash: e4414a64b2ee34ec16fde56dd750f2faa26b2e09
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.date: 11/29/2019
+ms.openlocfilehash: 2ec0bf460a73f95e18e2e9221e8cbd8d4e14ff77
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002977"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86086210"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Erstellen von hoch verfügbaren Apache Spark-Streamingaufträgen mit YARN
 
-Mit [Apache Spark-Streamings](https://spark.apache.org/) können Sie skalierbare und fehlertolerante Anwendungen mit hohem Durchsatz zur Verarbeitung von Datenströmen implementieren. Sie können Spark-Anwendungen für Streamings in einem HDInsight Spark-Cluster mit mehreren Datenquellen verbinden, z.B. mit Azure Event Hubs, Azure IoT Hub, [Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ZeroMQ](http://zeromq.org/), RAW-TCP-Sockets, oder indem Sie das [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html)-Dateisystem auf Änderungen überwachen. Spark Streaming unterstützt die Fehlertoleranz mit der Garantie, dass alle angegebenen Ereignisse jeweils genau einmal verarbeitet werden – selbst bei einem Ausfall eines Knotens.
+Mit [Apache Spark-Streamings](https://spark.apache.org/) können Sie skalierbare und fehlertolerante Anwendungen mit hohem Durchsatz zur Verarbeitung von Datenströmen implementieren. Sie können Spark-Anwendungen für Streamings in einem HDInsight Spark-Cluster mit verschiedenen Datenquellen wie beispielsweise Azure Event Hubs, Azure IoT Hub, [Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ZeroMQ](http://zeromq.org/), RAW-TCP-Sockets verbinden oder das [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html)-Dateisystem auf Änderungen überwachen. Spark Streaming unterstützt die Fehlertoleranz mit der Garantie, dass alle angegebenen Ereignisse jeweils genau einmal verarbeitet werden – selbst bei einem Ausfall eines Knotens.
 
 Spark Streaming erstellt Aufträge mit langer Ausführungszeit, bei denen Transformationen auf die Daten angewendet und die Ergebnisse dann auf Dateisysteme, Datenbanken, Dashboards und die Konsole übertragen werden können. Spark Streaming verarbeitet Mikrobatches von Daten. Dabei wird zunächst ein Batch von Ereignissen in einem definierten Zeitintervall gesammelt. Dann wird dieser Batch zur Verarbeitung und Ausgabe gesendet. Batchzeitintervalle werden normalerweise in Sekundenbruchteilen definiert.
 
@@ -37,11 +37,11 @@ Spark Structured Streaming wurde in Spark 2.0 als Analysemodul zur Verwendung be
 
 ![Spark Structured Streaming](./media/apache-spark-streaming-high-availability/structured-streaming.png)
 
-In Structured Streaming werden die im System eingehenden Daten sofort in der Eingabetabelle erfasst. Sie schreiben Abfragen, mit denen Vorgänge für diese Eingabetabelle ausgeführt werden. Die Abfrageausgabe erfolgt in einer anderen Tabelle, der sogenannten Ergebnistabelle. Die Ergebnistabelle enthält die Ergebnisse Ihrer Abfrage, aus denen Sie Daten zum Senden an einen externen Datenspeicher, z.B. eine relationale Datenbank, beziehen. Mit dem *Triggerintervall* wird der Zeitpunkt festgelegt, zu dem die Daten aus der Eingabetabelle verarbeitet werden. Standardmäßig werden die Daten in Structured Streaming verarbeitet, sobald sie eingehen. Sie können den Trigger jedoch auch zur Ausführung in einem längeren Intervall konfigurieren, sodass die Streamingdaten in zeitbasierten Batches verarbeitet werden. Die Daten in der Ergebnistabelle können bei jedem Eingang neuer Daten vollständig aktualisiert werden, sodass die Ergebnistabelle alle Ausgabedaten seit dem Start der Streamingabfrage enthält (*vollständiger Modus*), oder die Ergebnistabelle kann lediglich die Daten enthalten, die seit der letzten Verarbeitung der Abfrage neu sind (*Anfügemodus*).
+In Structured Streaming werden die im System eingehenden Daten sofort in der Eingabetabelle erfasst. Sie schreiben Abfragen, mit denen Vorgänge für diese Eingabetabelle ausgeführt werden. Die Abfrageausgabe erfolgt in einer anderen Tabelle, der sogenannten Ergebnistabelle. Die Ergebnistabelle enthält die Ergebnisse Ihrer Abfrage, aus denen Sie Daten zum Senden an einen externen Datenspeicher, z.B. eine relationale Datenbank, beziehen. Mit dem *Triggerintervall* wird der Zeitpunkt festgelegt, zu dem die Daten aus der Eingabetabelle verarbeitet werden. Standardmäßig werden die Daten in Structured Streaming verarbeitet, sobald sie eingehen. Sie können den Trigger jedoch auch zur Ausführung in einem längeren Intervall konfigurieren, sodass die Streamingdaten in zeitbasierten Batches verarbeitet werden. Die Daten in der Ergebnistabelle können bei jedem Eingang neuer Daten aktualisiert werden, sodass die Ergebnistabelle alle Ausgabedaten seit dem Start der Streamingabfrage (*vollständiger Modus*) oder lediglich die Daten enthält, die seit der letzten Verarbeitung der Abfrage neu sind (*Anfügemodus*).
 
 ## <a name="create-fault-tolerant-spark-streaming-jobs"></a>Erstellen fehlertoleranter Spark Streaming-Aufträge
 
-Zum Erstellen einer hochverfügbaren Umgebung für Ihre Spark Streaming-Aufträge codieren Sie zunächst die einzelnen Aufträge zur Wiederherstellung bei einem Ausfall. Derartige Aufträge zur selbstständigen Wiederherstellung sind fehlertolerant.
+Codieren Sie zunächst die einzelnen Aufträge zur Wiederherstellung bei einem Ausfall, um eine hochverfügbare Umgebung für Ihre Spark Streaming-Aufträge zu erstellen. Derartige Aufträge zur selbstständigen Wiederherstellung sind fehlertolerant.
 
 RDDs umfassen mehrere Eigenschaften, die hochverfügbare und fehlertolerante Spark Streaming-Aufträge unterstützen:
 
@@ -49,13 +49,13 @@ RDDs umfassen mehrere Eigenschaften, die hochverfügbare und fehlertolerante Spa
 * Daten, die aufgrund eines Workerausfalls verloren gegangen sind, können aus replizierten Eingabedaten auf anderen Workern neu berechnet werden, sofern diese Workerknoten verfügbar sind.
 * Die schnelle Wiederherstellung nach einem Fehler ist innerhalb einer Sekunde möglich, da die Wiederherstellung nach Fehlern und Abweichungen über die Berechnung im Arbeitsspeicher erfolgt.
 
-### <a name="exactly-once-semantics-with-spark-streaming"></a>Semantik vom Typ „Exactly Once“ mit Spark Streaming
+### <a name="exactly-once-semantics-with-spark-streaming"></a>Semantik vom Typ „Exactly-Once“ mit Spark Streaming
 
-Zum Erstellen einer Anwendung, die jedes Ereignis einmal (und nur einmal) verarbeitet, muss berücksichtigt werden, wie alle Komponenten im System nach Ausfällen neu gestartet werden und wie Datenverlust vermieden werden kann. Die „Exactly-Once“-Semantik erfordert, dass keine Daten an irgendeiner Stelle verloren gehen und dass die Nachrichtenverarbeitung neu gestartet werden kann, unabhängig davon, wo der Fehler auftritt. Siehe dazu [Erstellen von Spark-Streamingaufträgen mit Ereignisverarbeitung vom Typ „Exactly-Once“](apache-spark-streaming-exactly-once.md).
+Zum Erstellen einer Anwendung, die jedes Ereignis einmal (und nur einmal) verarbeitet, muss berücksichtigt werden, wie alle Komponenten im System nach Ausfällen neu gestartet werden und wie Datenverlust vermieden werden kann. Die „Exactly-Once“-Semantik erfordert, dass keine Daten an irgendeiner Stelle verloren gehen, und dass die Nachrichtenverarbeitung, unabhängig davon, wo der Fehler auftritt, neu gestartet werden kann. Weitere Informationen finden Sie unter [Erstellen von Spark-Streamingaufträgen mit Ereignisverarbeitung vom Typ „Exactly-Once“](apache-spark-streaming-exactly-once.md).
 
 ## <a name="spark-streaming-and-apache-hadoop-yarn"></a>Spark-Streaming und Apache Hadoop YARN
 
-In HDInsight wird die Verwendung von Clustern über *Yet Another Resource Negotiator* (YARN) koordiniert. Das Entwerfen einer Architektur für Hochverfügbarkeit für Spark Streaming umfasst Techniken für Spark Streaming sowie für YARN-Komponenten.  Eine Beispielkonfiguration unter Verwendung von YARN ist nachfolgend dargestellt. 
+In HDInsight wird die Verwendung von Clustern über *Yet Another Resource Negotiator* (YARN) koordiniert. Das Entwerfen einer Architektur für Hochverfügbarkeit für Spark Streaming umfasst Techniken für Spark Streaming sowie für YARN-Komponenten.  Eine Beispielkonfiguration unter Verwendung von YARN ist nachfolgend dargestellt.
 
 ![YARN-Architektur](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
 
@@ -67,7 +67,7 @@ Beim Erstellen einer YARN-Konfiguration für Hochverfügbarkeit sollten Sie eine
 
 Wenn bei einem **Executor** ein Fehler auftritt, werden die zugehörigen Aufgaben und Empfänger von Spark automatisch neu gestartet, sodass keine Änderung der Konfiguration erforderlich ist.
 
-Wenn jedoch bei einem **Treiber** ein Fehler auftritt, treten auch bei allen zugeordneten Executors Fehler auf und alle empfangenen Blöcke und Berechnungsergebnisse gehen verloren. Verwenden Sie zur Wiederherstellung nach einem Treiberfehler die *DStream-Prüfpunktausführung* entsprechend der Beschreibung unter [Erstellen von Spark-Streamingaufträgen mit Ereignisverarbeitung vom Typ „Exactly-Once“](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers). Bei der DStream-Prüfpunktausführung wird der *gerichtete azyklische Graph* (Directed Acyclic Graph, DAG) von DStreams in regelmäßigen Abständen in einem fehlertoleranten Speicher (z.B. Azure Storage) gespeichert.  Durch die Prüfpunktausführung kann Spark Structured Streaming den fehlerhaften Treiber über die Prüfpunktinformationen neu starten.  Bei diesem Neustart des Treibers werden neue Executors gestartet und zudem Empfänger neu gestartet.
+Wenn jedoch bei einem **Treiber** ein Fehler auftritt, treten auch bei allen zugeordneten Executors Fehler auf und alle empfangenen Blöcke und Berechnungsergebnisse gehen verloren. Verwenden Sie zur Wiederherstellung nach einem Treiberfehler *DStream checkpointing* (DStream-Prüfpunktausführung) entsprechend der Beschreibung unter [Erstellen von Spark-Streamingaufträgen mit Ereignisverarbeitung vom Typ „Exactly-Once“](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers). Bei der DStream-Prüfpunktausführung wird der *gerichtete azyklische Graph* (Directed Acyclic Graph, DAG) von DStreams in regelmäßigen Abständen in einem fehlertoleranten Speicher (z.B. Azure Storage) gespeichert.  Durch die Prüfpunktausführung kann Spark Structured Streaming den fehlerhaften Treiber über die Prüfpunktinformationen neu starten.  Bei diesem Neustart des Treibers werden neue Executors gestartet und zudem Empfänger neu gestartet.
 
 So stellen Sie Treiber mit der DStream-Prüfpunktausführung wieder her
 
@@ -92,8 +92,8 @@ So stellen Sie Treiber mit der DStream-Prüfpunktausführung wieder her
 
 Zusammenfassend gilt: Durch Verwendung von Prüfpunktausführung, WAL und zuverlässigen Empfängern kann sichergestellt werden, dass die Datenwiederherstellung mindestens einmal erfolgt:
 
-* Genau einmal, sofern empfangene Daten nicht verloren gehen und die Ausgaben idempotent oder transaktional sind.
-* Genau einmal mit dem neuen Kafka Direct-Ansatz, bei dem anstelle der Verwendung von Empfängern oder WALs Kafka als repliziertes Protokoll verwendet wird.
+* genau einmal, sofern empfangene Daten nicht verloren gehen und die Ausgaben idempotent oder transaktional sind.
+* genau einmal mit dem neuen Kafka Direct-Ansatz, bei dem anstelle der Verwendung von Empfängern oder WALs Kafka als repliziertes Protokoll verwendet wird.
 
 ### <a name="typical-concerns-for-high-availability"></a>Typische Überlegungen im Hinblick auf die Hochverfügbarkeit
 
@@ -106,7 +106,7 @@ Zusammenfassend gilt: Durch Verwendung von Prüfpunktausführung, WAL und zuverl
     spark.yarn.am.attemptFailuresValidityInterval=1h
     ```
 
-* Spark und die Spark Streaming-Benutzeroberfläche verfügen über ein konfigurierbares Metriksystem. Sie können auch zusätzliche Bibliotheken, z.B. Graphite/Grafana, zum Herunterladen von Dashboardmetriken wie „num records processed“, „memory/GC usage on driver & executors“, „total delay“, „utilization of the cluster“ usw. verwenden. In Structured Streaming Version 2.1 oder höher können Sie mithilfe von `StreamingQueryListener` zusätzliche Metriken erfassen.
+* Spark und die Spark Streaming-Benutzeroberfläche verfügen über ein konfigurierbares Metriksystem. Sie können auch zusätzliche Bibliotheken wie beispielsweise Graphite/Grafana zum Herunterladen von Dashboardmetriken wie „num records processed“, „memory/GC usage on driver & executors“, „total delay“, „utilization of the cluster“ usw. verwenden. In Structured Streaming Version 2.1 oder höher können Sie mithilfe von `StreamingQueryListener` zusätzliche Metriken erfassen.
 
 * Sie sollten Aufträge mit langer Ausführungszeit segmentieren.  Wenn eine Spark Streaming-Anwendung an den Cluster übertragen wird, muss die YARN-Warteschlange, in der der Auftrag ausgeführt wird, definiert werden. Mithilfe eines [YARN Capacity Scheduler](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) (eines YARN-Kapazitätsplaners) können Sie Aufträge mit langer Ausführungszeit zum Trennen von Warteschlangen übertragen.
 
@@ -121,6 +121,6 @@ Zusammenfassend gilt: Durch Verwendung von Prüfpunktausführung, WAL und zuverl
 
 * [Übersicht über Apache Spark-Streaming](apache-spark-streaming-overview.md)
 * [Erstellen von Apache Spark-Streamingaufträgen mit Ereignisverarbeitung vom Typ „Exactly-Once“](apache-spark-streaming-exactly-once.md)
-* [Spark-Streamingaufträge mit langer Ausführungszeit in YARN](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) (in englischer Sprache) 
-* [Structured Streaming: Fault Tolerant Semantics](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics) (Strukturiertes Streaming: Fehlertolerante Semantik)
+* [Spark-Streamingaufträge mit langer Ausführungszeit in YARN](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) (in englischer Sprache)
+* [Structured Streaming: Fault Tolerant Semantics](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics) (Structured Streaming: fehlertolerante Semantik)
 * [Discretized Streams: A Fault-Tolerant Model for Scalable Stream Processing](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf) (Diskretisierte Datenströme: fehlertolerantes Modell für skalierbare Datenstromverarbeitung)

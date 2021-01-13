@@ -1,21 +1,19 @@
 ---
-title: Erstellen von Workflows aus Vorlagen – Azure Logic Apps | Microsoft-Dokumentation
-description: Schnelleres Erstellen von Workflows mit Logik-App-Vorlagen in Azure Logic Apps
+title: Schnelleres Erstellen von Logik-App-Workflows mithilfe vorgefertigter Vorlagen
+description: Erstellen Sie schnell Logik-App-Workflows mithilfe vorgefertigter Vorlagen, die von Azure Logic Apps bereitgestellt werden.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.openlocfilehash: 134a8f9625b45a8196ebd47f10286093f6ba0d46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7eca9b4a8cf09f2f35d56dc22fc25169be192f47
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459624"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87066242"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Erstellen von Logik-App-Workflows aus vorgefertigten Vorlagen
 
@@ -36,7 +34,7 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
 
 ## <a name="create-logic-apps-from-templates"></a>Erstellen von Logik-Apps aus Vorlagen
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com "Azure-Portal") an, falls Sie dies noch nicht getan haben.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com "Azure-Portal") an, falls Sie dies noch nicht getan haben.
 
 2. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Unternehmensintegration** > **Logik-App**.
 
@@ -50,9 +48,9 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
    | ------- | ----- | ----------- | 
    | **Name** | *Name Ihrer Logik-App* | Geben Sie einen eindeutigen Namen für die Logik-App an. | 
    | **Abonnement** | *Name-Ihres-Azure-Abonnements* | Wählen Sie das gewünschte Azure-Abonnement aus. | 
-   | **Ressourcengruppe** | *Name-Ihrer-Azure-Ressourcengruppe* | Erstellen bzw. wählen Sie eine [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) für diese Logik-App und zum Organisieren aller Ressourcen, die der App zugeordnet sind. | 
+   | **Ressourcengruppe** | *Name-Ihrer-Azure-Ressourcengruppe* | Erstellen bzw. wählen Sie eine [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) für diese Logik-App und zum Organisieren aller Ressourcen, die der App zugeordnet sind. | 
    | **Location** | *Ihre-Azure-Datencenterregion* | Wählen Sie die Datencenterregion für die Bereitstellung Ihrer Logik-App aus, z.B. „USA, Westen“. | 
-   | **Log Analytics** | **Aus** (Standard) oder **Ein** | Aktivieren Sie die [Diagnoseprotokollierung](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) für Ihre Logik-App über [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md). Hierfür ist es erforderlich, dass Sie bereits über einen Log Analytics-Arbeitsbereich verfügen. | 
+   | **Log Analytics** | **Aus** (Standard) oder **Ein** | Richten Sie die [Diagnoseprotokollierung](../logic-apps/monitor-logic-apps-log-analytics.md) für Ihre Logik-App ein, indem Sie [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md) verwenden. Hierfür ist es erforderlich, dass Sie bereits über einen Log Analytics-Arbeitsbereich verfügen. | 
    |||| 
 
 4. Wählen Sie die Option **An Dashboard anheften**, wenn Sie fertig sind. Ihre Logik-App wird dann automatisch in Ihrem Azure-Dashboard angezeigt und nach der Bereitstellung geöffnet. Wählen Sie **Erstellen**.
@@ -101,7 +99,7 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
 
 ## <a name="update-logic-apps-with-templates"></a>Aktualisieren von Logik-Apps mit Vorlagen
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com "Azure-Portal") im Designer für Logik-Apps nach Ihrer Logik-App, und öffnen Sie sie.
+1. Suchen oder öffnen Sie Ihre Logik-App im [Azure-Portal](https://portal.azure.com "Azure-Portal") im Logik-App-Designer.
 
 2. Wählen Sie in der Symbolleiste des Designers die Option **Vorlagen**. Bei dieser Aktion werden alle nicht gespeicherten Änderungen verworfen, und es wird eine Warnmeldung angezeigt, damit Sie das Fortfahren bestätigen können. Wählen Sie **OK**, um den Vorgang zu bestätigen. Beispiel:
 
@@ -148,7 +146,7 @@ Wählen Sie auf der Symbolleiste des Designers **Speichern**.
 
 ## <a name="get-support"></a>Support
 
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte

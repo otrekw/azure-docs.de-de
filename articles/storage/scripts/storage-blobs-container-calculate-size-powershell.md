@@ -1,28 +1,24 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Berechnen der Größe des Blobcontainers | Microsoft-Dokumentation
+title: Berechnen der Größe eines Blobcontainers mit PowerShell
+titleSuffix: Azure Storage
 description: Berechnen Sie die Größe eines Containers in Azure Blob Storage, indem Sie die Größe der einzelnen Blobs addieren.
 services: storage
-documentationcenter: na
 author: tamram
-manager: jeconnoc
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
+ms.subservice: blobs
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 11/07/2017
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: d8baec875c25556f1080cdd105c7fa466ffce74e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: de275bcca1644750532809b35ae85d954d3cac6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094006"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89076904"
 ---
-# <a name="calculate-the-size-of-a-blob-storage-container"></a>Berechnen der Größe eines Blob Storage-Containers
+# <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>Berechnen der Größe eines Blobcontainers mit PowerShell
 
 Mit diesem Skript berechnen Sie die Größe eines Containers in Azure Blob Storage, indem Sie die Größe der Blobs im Container addieren.
 
@@ -31,13 +27,13 @@ Mit diesem Skript berechnen Sie die Größe eines Containers in Azure Blob Stora
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
-> Dieses PowerShell-Skript gibt eine geschätzte Größe für den Container an und sollte nicht für Abrechnungsberechnungen verwendet werden. Ein Skript, mit dem die Containergröße zu Abrechnungszwecken berechnet wird, finden Sie unter [Berechnen der Größe eines Blob Storage-Containers zu Abrechnungszwecken](../scripts/storage-blobs-container-calculate-billing-size-powershell.md). 
+> Dieses PowerShell-Skript gibt eine geschätzte Größe für den Container an und sollte nicht für Abrechnungsberechnungen verwendet werden. Ein Skript, mit dem die Containergröße zu Abrechnungszwecken berechnet wird, finden Sie unter [Berechnen der Größe eines Blob Storage-Containers zu Abrechnungszwecken](../scripts/storage-blobs-container-calculate-billing-size-powershell.md).
 
 ## <a name="sample-script"></a>Beispielskript
 
 [!code-powershell[main](../../../powershell_scripts/storage/calculate-container-size/calculate-container-size.ps1 "Calculate container size")]
 
-## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
+## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den Container und alle zugehörigen Ressourcen zu entfernen.
 
@@ -58,6 +54,6 @@ Dieses Skript verwendet die folgenden Befehle, um die Größe des Blob Storage-C
 
 Ein Skript, mit dem die Containergröße zu Abrechnungszwecken berechnet wird, finden Sie unter [Berechnen der Größe eines Blob Storage-Containers zu Abrechnungszwecken](../scripts/storage-blobs-container-calculate-billing-size-powershell.md).
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Weitere PowerShell-Skriptbeispiele für Speicher finden Sie in den [PowerShell-Beispielen für Azure Storage](../blobs/storage-samples-blobs-powershell.md).

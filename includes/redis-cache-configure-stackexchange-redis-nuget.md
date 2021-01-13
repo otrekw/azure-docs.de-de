@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: yegu
 ms.openlocfilehash: 61e93e3700b9a396d2ac4fdcbb51fc5c874cf9cb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68286270"
 ---
 .NET-Anwendungen können den **StackExchange.Redis**-Cacheclient verwenden. Dieser kann mithilfe eines NuGet-Pakets in Visual Studio konfiguriert werden, um die Konfiguration von Cacheclientanwendungen zu vereinfachen. 

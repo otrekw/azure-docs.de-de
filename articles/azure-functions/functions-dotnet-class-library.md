@@ -1,22 +1,15 @@
 ---
 title: C#-Entwicklerreferenz zu Azure Functions
 description: Erfahren Sie, wie Azure Functions mithilfe von C# entwickelt wird.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
-ms.service: azure-functions
-ms.devlang: dotnet
-ms.topic: reference
-ms.date: 09/12/2018
-ms.author: glenga
-ms.openlocfilehash: 388b389cca7c3e820ea3ccfd37a2a93ccd476b31
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.topic: conceptual
+ms.custom: devx-track-csharp
+ms.date: 07/24/2020
+ms.openlocfilehash: 9e11d013b6e7473f290ba1ccb54857034491d116
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254639"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672664"
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -24,12 +17,25 @@ ms.locfileid: "68254639"
 
 Dieser Artikel ist eine Einführung in die Entwicklung von Azure Functions durch Verwenden von C# in .NET-Klassenbibliotheken.
 
+Für C#-Entwickler sind möglicherweise auch folgende Artikel interessant:
+
+| Erste Schritte | Konzepte| Geführte Tutorials/Beispiele |
+| -- | -- | -- | 
+| <ul><li>[Verwenden von Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[Verwendung von Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[Verwenden von Befehlszeilentools](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen zur &nbsp;Leistung](functions-best-practices.md)</li><li>[Visual Studio-Entwicklung](functions-develop-vs.md)</li><li>[Dependency Injection](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Erstellen serverloser Anwendungen](/learn/paths/create-serverless-applications/)</li><li>[Beispiele für C#](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+
 Azure Functions unterstützt die Programmiersprachen C# und C#-Skript. Wenn Sie nach Anleitungen zum [Verwenden von C# im Azure-Portal](functions-create-function-app-portal.md) suchen, lesen Sie [C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions](functions-reference-csharp.md).
 
-In diesem Artikel wird davon ausgegangen, dass Sie die folgenden Artikel bereits gelesen haben:
+## <a name="supported-versions"></a>Unterstützte Versionen
 
-* [Azure Functions: Entwicklerhandbuch](functions-reference.md)
-* [Azure Functions Visual Studio 2019 Tools](functions-develop-vs.md)
+Versionen der Functions-Laufzeit funktionieren mit bestimmten Versionen von .NET. Die folgende Tabelle zeigt die höchste Ebene von .NET Core und .NET Framework und .NET Core, die mit einer bestimmten Version von Functions in Ihrem Projekt verwendet werden kann. 
+
+| Version der Functions-Laufzeit | Maximale .NET-Version |
+| ---- | ---- |
+| Functions 3.x | .NET Core 3.1 |
+| Functions 2.x | .NET Core 2.2 |
+| Functions 1.x | .NET Framework 4.7 |
+
+Weitere Informationen finden Sie unter [Versionen der Azure Functions-Laufzeit: Übersicht](functions-versions.md).
 
 ## <a name="functions-class-library-project"></a>Funktionsklassenbibliotheks-Projekt
 
@@ -53,7 +59,8 @@ Wenn Sie das Projekt erstellen, wird im Buildausgabeverzeichnis eine Ordnerstruk
 Dieses Verzeichnis wird in Ihrer Funktions-App in Azure bereitgestellt. Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen werden [dem Projekt als NuGet-Pakete hinzugefügt](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> Im Buildprozess wird für jede Funktion eine Datei vom Typ *function.json* erstellt. Die Datei *function.json* ist nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. Informationen zum Deaktivieren einer Funktion finden Sie unter [Gewusst wie: Deaktivieren von Funktionen](disable-function.md#functions-2x---c-class-libraries).
+> Im Buildprozess wird für jede Funktion eine Datei vom Typ *function.json* erstellt. Die Datei *function.json* ist nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. Informationen zum Deaktivieren einer Funktion finden Sie unter [Gewusst wie: Deaktivieren von Funktionen](disable-function.md).
+
 
 ## <a name="methods-recognized-as-functions"></a>Methoden, die als Funktionen erkannt werden
 
@@ -158,18 +165,7 @@ Die Erstellung der *function.json*-Datei wird mit dem NuGet-Paket [Microsoft\.NE
 
 Dasselbe Paket wird für die Versionen 1.x und 2.x der Functions-Runtime verwendet. Ein 1.x-Projekt unterscheidet sich durch das Zielframework von einem 2.x-Projekt. Hier sind die relevanten Teile von *CSPROJ*-Dateien, welche verschiedene Zielframeworks und dasselbe `Sdk`-Paket zeigen:
 
-**Functions 1.x**
-
-```xml
-<PropertyGroup>
-  <TargetFramework>net461</TargetFramework>
-</PropertyGroup>
-<ItemGroup>
-  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
-</ItemGroup>
-```
-
-**Functions 2.x**
+# <a name="v2x"></a>[v2.x+](#tab/v2)
 
 ```xml
 <PropertyGroup>
@@ -180,6 +176,19 @@ Dasselbe Paket wird für die Versionen 1.x und 2.x der Functions-Runtime verwend
   <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
 </ItemGroup>
 ```
+
+# <a name="v1x"></a>[v1.x](#tab/v1)
+
+```xml
+<PropertyGroup>
+  <TargetFramework>net461</TargetFramework>
+</PropertyGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
+</ItemGroup>
+```
+---
+
 
 Unter den `Sdk`-Paketabhängigkeiten befinden sich Auslöser und Bindungen. Ein 1.x-Projekt verweist auf 1.x-Auslöser und -Bindungen, da diese Auslöser und Bindungen für das .NET Framework ausgelegt sind, während 2.x-Auslöser und -Bindungen für .NET Core ausgelegt sind.
 
@@ -197,9 +206,31 @@ Wenn Sie Core Tools mithilfe von npm installieren, wirkt sich dies nicht auf die
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
 ```
 
+## <a name="readytorun"></a>ReadyToRun
+
+Sie können ihre Funktions-App als [ReadyToRun-Binärdateien](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images) kompilieren. ReadyToRun ist eine Form der Vorabkompilierung, die zur Optimierung der Startleistung beitragen und die Auswirkungen eines [Kaltstarts](functions-scale.md#cold-start) bei Ausführung in einem [Verbrauchstarif](functions-scale.md#consumption-plan) reduzieren kann.
+
+ReadyToRun ist in .NET 3.0 verfügbar und setzt [Azure Functions Runtimeversion 3.0](functions-versions.md) voraus.
+
+Um Ihr Projekt als „ReadyToRun“ zu kompilieren, aktualisieren Sie die Projektdatei, indem Sie die Elemente `<PublishReadyToRun>` und `<RuntimeIdentifier>` hinzufügen. Im Folgenden finden Sie die Konfiguration für die Veröffentlichung in einer Windows 32-Bit-Funktions-App.
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+  <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+  <PublishReadyToRun>true</PublishReadyToRun>
+  <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+</PropertyGroup>
+```
+
+> [!IMPORTANT]
+> ReadyToRun unterstützt derzeit keine Kreuzkompilierung. Sie müssen Ihre App auf derselben Plattform erstellen, auf der sich auch das Bereitstellungsziel befindet. Achten Sie auch auf die „Bitanzahl“, die in ihrer Funktions-App konfiguriert wird. Wenn Ihre Funktions-App in Azure z. B. mit Windows 64-Bit konfiguriert wird, müssen Sie Ihre App unter Windows mit `win-x64` als [Runtimebezeichner](/dotnet/core/rid-catalog) kompilieren.
+
+Sie können Ihre App mit ReadyToRun auch über die Befehlszeile erstellen. Weitere Informationen finden Sie unter der Option `-p:PublishReadyToRun=true` in [`dotnet publish`](/dotnet/core/tools/dotnet-publish).
+
 ## <a name="supported-types-for-bindings"></a>Unterstützte Typen für Bindungen
 
-Jede Bindung hat ihre eigenen unterstützten Typen. Beispielsweise kann ein Blobtriggerattribut auf einen Zeichenfolgeparameter, einen POCO-Parameter, einen `CloudBlockBlob`-Parameter oder einen von mehreren anderen unterstützten Typen angewendet werden. Im [Bindungsreferenzartikel für Blobbindungen](functions-bindings-storage-blob.md#trigger---usage) sind alle unterstützten Parametertypen aufgelistet. Weitere Informationen hierzu finden Sie unter [Trigger und Bindungen](functions-triggers-bindings.md) und in den [Bindungsreferenzdokumenten für jeden Bindungstyp](functions-triggers-bindings.md#next-steps).
+Jede Bindung hat ihre eigenen unterstützten Typen. Beispielsweise kann ein Blobtriggerattribut auf einen Zeichenfolgeparameter, einen POCO-Parameter, einen `CloudBlockBlob`-Parameter oder einen von mehreren anderen unterstützten Typen angewendet werden. Im [Bindungsreferenzartikel für Blobbindungen](functions-bindings-storage-blob-trigger.md#usage) sind alle unterstützten Parametertypen aufgelistet. Weitere Informationen hierzu finden Sie unter [Trigger und Bindungen](functions-triggers-bindings.md) und in den [Bindungsreferenzdokumenten für jeden Bindungstyp](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -231,28 +262,9 @@ public static class ICollectorExample
 }
 ```
 
-## <a name="logging"></a>Protokollierung
-
-Um eine Ausgabe in C# in Ihren Streamingprotokollen zu dokumentieren, fügen Sie ein Argument vom Typ [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) ein. Es wird empfohlen, diesen wie im folgenden Beispiel `log` zu nennen:  
-
-```csharp
-public static class SimpleExample
-{
-    [FunctionName("QueueTrigger")]
-    public static void Run(
-        [QueueTrigger("myqueue-items")] string myQueueItem, 
-        ILogger log)
-    {
-        log.LogInformation($"C# function processed: {myQueueItem}");
-    }
-} 
-```
-
-Vermeiden Sie die Verwendung von `Console.Write` in Azure Functions. Weitere Informationen finden Sie unter [Schreiben von Protokollen in C#-Funktionen](functions-monitoring.md#write-logs-in-c-functions) im Artikel **Überwachen von Azure Functions**.
-
 ## <a name="async"></a>Async
 
-Um eine Funktion [asynchron](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/) auszuführen, verwenden Sie das `async`-Schlüsselwort, und geben Sie ein `Task`-Objekt zurück.
+Um eine Funktion [asynchron](/dotnet/csharp/programming-guide/concepts/async/) auszuführen, verwenden Sie das `async`-Schlüsselwort, und geben Sie ein `Task`-Objekt zurück.
 
 ```csharp
 public static class AsyncExample
@@ -300,6 +312,239 @@ public static class CancellationTokenExample
 }
 ```
 
+## <a name="logging"></a>Protokollierung
+
+In Ihrem Funktionscode können Sie die Ausgabe in Protokolle schreiben, die in Application Insights als Ablaufverfolgungen angezeigt werden. Die empfohlene Vorgehensweise zum Schreiben in die Protokolle besteht darin, einen Parameter vom Typ [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) hinzuzufügen, der in der Regel `log` heißt. In Version 1.x der Functions-Runtime wurde `TraceWriter` verwendet. Dadurch wurde ebenfalls in Application Insights geschrieben, aber es wurde keine strukturierte Protokollierung unterstützt. Verwenden Sie nicht `Console.Write` zum Schreiben der Protokolle, da diese Daten von Application Insights nicht aufgezeichnet werden. 
+
+### <a name="ilogger"></a>ILogger
+
+Fügen Sie in Ihrer Funktionsdefinition den Parameter [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) ein, der [strukturierte Protokollierung](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging) unterstützt.
+
+Mit einem `ILogger`-Objekt rufen Sie `Log<level>`-[Erweiterungsmethoden in ILogger](/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) auf, um Protokolle zu erstellen. Mit dem folgenden Code werden Protokolle vom Typ `Information` mit der Kategorie `Function.<YOUR_FUNCTION_NAME>.User.` geschrieben.
+
+```cs
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
+{
+    logger.LogInformation("Request for item with key={itemKey}.", id);
+```
+
+Weitere Informationen zur Implementierung von `ILogger` in Functions finden Sie unter [Sammeln von Telemetriedaten](functions-monitoring.md#collecting-telemetry-data). Bei Kategorien mit dem Präfix `Function` wird angenommen, dass Sie eine `ILogger`-Instanz verwenden. Wenn Sie stattdessen eine `ILogger<T>`-Instanz verwenden, kann der Kategoriename stattdessen auf `T` basieren.  
+
+### <a name="structured-logging"></a>Strukturierte Protokollierung
+
+Die Reihenfolge der Platzhalter, nicht der Namen, bestimmt, welche Parameter in der Protokollnachricht verwendet werden. Angenommen, Sie verwenden den folgenden Code:
+
+```csharp
+string partitionKey = "partitionKey";
+string rowKey = "rowKey";
+logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionKey, rowKey);
+```
+
+Wenn Sie die gleiche Nachrichtenzeichenfolge beibehalten und die Reihenfolge der Parameter umkehren, befinden sich die Werte im resultierenden Nachrichtentext an den falschen Stellen.
+
+Platzhalter werden auf diese Weise verarbeitet, damit Sie die strukturierte Protokollierung durchführen können. Application Insights speichert die Name/Wert-Paare für Parameter und die Nachrichtenzeichenfolge. Das Ergebnis ist, dass die Nachrichtenargumente zu Feldern werden, anhand denen Sie Abfragen durchführen können.
+
+Wenn Ihr Methodenaufruf für die Protokollierung wie im vorherigen Beispiel aussieht, können Sie das Feld `customDimensions.prop__rowKey` abfragen. Durch das Hinzufügen des Präfix `prop__` soll sichergestellt werden, dass es zwischen den Feldern, die von der Runtime hinzugefügt werden, und Feldern, die von Ihrem Funktionscode hinzugefügt werden, nicht zu Konflikten kommt.
+
+Sie können auch die ursprüngliche Nachrichtenzeichenfolge abfragen, indem Sie auf das Feld `customDimensions.prop__{OriginalFormat}` verweisen.  
+
+Hier ist eine JSON-Beispieldarstellung von `customDimensions`-Daten angegeben:
+
+```json
+{
+  "customDimensions": {
+    "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
+    "Category":"Function",
+    "LogLevel":"Information",
+    "prop__message":"c9519cbf-b1e6-4b9b-bf24-cb7d10b1bb89"
+  }
+}
+```
+
+## <a name="log-custom-telemetry-in-c-functions"></a>Protokollieren von benutzerdefinierter Telemetrie in C#-Funktionen
+
+Es gibt eine Functions-spezifische Version des Application Insights SDK, mit der Sie benutzerdefinierte Telemetriedaten von ihren Funktionen an Application Insights senden können: [Microsoft.Azure.WebJobs.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). Verwenden Sie den folgenden Befehl in der Eingabeaufforderung, um das folgende Paket zu installieren:
+
+# <a name="command"></a>[Befehl](#tab/cmd)
+
+```cmd
+dotnet add package Microsoft.Azure.WebJobs.Logging.ApplicationInsights --version <VERSION>
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <VERSION>
+```
+
+---
+
+Ersetzen `<VERSION>` in diesem Befehl durch eine Version dieses Pakets, die Ihre installierte Version von [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/) unterstützt. 
+
+Im folgenden C#-Beispiel wird die [benutzerdefinierte Telemetrie-API](../azure-monitor/app/api-custom-events-metrics.md) verwendet. Das Beispiel gilt für eine .NET-Klassenbibliothek, aber der Application Insights-Code ist für C#-Skript identisch.
+
+# <a name="v2x"></a>[v2.x+](#tab/v2)
+
+Die Runtime ab Version 2.x verwendet neuere Features in Application Insights, um die Telemetrie automatisch mit dem aktuellen Vorgang zu korrelieren. Es ist nicht erforderlich, für den Vorgang die Felder `Id`, `ParentId` oder `Name` festzulegen.
+
+```cs
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using System.Linq;
+
+namespace functionapp0915
+{
+    public class HttpTrigger2
+    {
+        private readonly TelemetryClient telemetryClient;
+
+        /// Using dependency injection will guarantee that you use the same configuration for telemetry collected automatically and manually.
+        public HttpTrigger2(TelemetryConfiguration telemetryConfiguration)
+        {
+            this.telemetryClient = new TelemetryClient(telemetryConfiguration);
+        }
+
+        [FunctionName("HttpTrigger2")]
+        public Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]
+            HttpRequest req, ExecutionContext context, ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            DateTime start = DateTime.UtcNow;
+
+            // Parse query parameter
+            string name = req.Query
+                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+                .Value;
+
+            // Write an event to the customEvents table.
+            var evt = new EventTelemetry("Function called");
+            evt.Context.User.Id = name;
+            this.telemetryClient.TrackEvent(evt);
+
+            // Generate a custom metric, in this case let's use ContentLength.
+            this.telemetryClient.GetMetric("contentLength").TrackValue(req.ContentLength);
+
+            // Log a custom dependency in the dependencies table.
+            var dependency = new DependencyTelemetry
+            {
+                Name = "GET api/planets/1/",
+                Target = "swapi.co",
+                Data = "https://swapi.co/api/planets/1/",
+                Timestamp = start,
+                Duration = DateTime.UtcNow - start,
+                Success = true
+            };
+            dependency.Context.User.Id = name;
+            this.telemetryClient.TrackDependency(dependency);
+
+            return Task.FromResult<IActionResult>(new OkResult());
+        }
+    }
+}
+```
+
+In diesem Beispiel werden die benutzerdefinierten Metrikdaten vom Host aggregiert, bevor sie an die Tabelle „customMetrics“ gesendet werden. Weitere Informationen finden Sie in der Dokumentation zu [GetMetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) in Application Insights. 
+
+Bei der lokalen Ausführung müssen Sie die Einstellung `APPINSIGHTS_INSTRUMENTATIONKEY` mit dem Application Insights-Schlüssel zur Datei [local.settings.json](functions-run-local.md#local-settings-file) hinzufügen.
+
+
+# <a name="v1x"></a>[v1.x](#tab/v1)
+
+```cs
+using System;
+using System.Net;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Azure.WebJobs;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
+using System.Linq;
+
+namespace functionapp0915
+{
+    public static class HttpTrigger2
+    {
+        private static string key = TelemetryConfiguration.Active.InstrumentationKey = 
+            System.Environment.GetEnvironmentVariable(
+                "APPINSIGHTS_INSTRUMENTATIONKEY", EnvironmentVariableTarget.Process);
+
+        private static TelemetryClient telemetryClient = 
+            new TelemetryClient() { InstrumentationKey = key };
+
+        [FunctionName("HttpTrigger2")]
+        public static async Task<HttpResponseMessage> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
+            HttpRequestMessage req, ExecutionContext context, ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            DateTime start = DateTime.UtcNow;
+
+            // Parse query parameter
+            string name = req.GetQueryNameValuePairs()
+                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+                .Value;
+
+            // Get request body
+            dynamic data = await req.Content.ReadAsAsync<object>();
+
+            // Set name to query string or body data
+            name = name ?? data?.name;
+         
+            // Track an Event
+            var evt = new EventTelemetry("Function called");
+            UpdateTelemetryContext(evt.Context, context, name);
+            telemetryClient.TrackEvent(evt);
+            
+            // Track a Metric
+            var metric = new MetricTelemetry("Test Metric", DateTime.Now.Millisecond);
+            UpdateTelemetryContext(metric.Context, context, name);
+            telemetryClient.TrackMetric(metric);
+            
+            // Track a Dependency
+            var dependency = new DependencyTelemetry
+            {
+                Name = "GET api/planets/1/",
+                Target = "swapi.co",
+                Data = "https://swapi.co/api/planets/1/",
+                Timestamp = start,
+                Duration = DateTime.UtcNow - start,
+                Success = true
+            };
+            UpdateTelemetryContext(dependency.Context, context, name);
+            telemetryClient.TrackDependency(dependency);
+        }
+        
+        // Correlate all telemetry with the current Function invocation
+        private static void UpdateTelemetryContext(TelemetryContext context, ExecutionContext functionContext, string userName)
+        {
+            context.Operation.Id = functionContext.InvocationId.ToString();
+            context.Operation.ParentId = functionContext.InvocationId.ToString();
+            context.Operation.Name = functionContext.FunctionName;
+            context.User.Id = userName;
+        }
+    }    
+}
+```
+---
+
+Vermeiden Sie es, `TrackRequest` oder `StartOperation<RequestTelemetry>` aufzurufen, da in diesem Fall für einen Funktionsaufruf doppelte Anforderungen angezeigt werden.  Mit der Functions-Laufzeit werden Anforderungen automatisch nachverfolgt.
+
+Legen Sie nicht `telemetryClient.Context.Operation.Id` fest. Diese globale Einstellung führt zu falschen Korrelationen, wenn viele Funktionen gleichzeitig ausgeführt werden. Erstellen Sie stattdessen eine neue Telemetrieinstanz (`DependencyTelemetry`, `EventTelemetry`), und ändern Sie die `Context`-Eigenschaft. Übergeben Sie in der Telemetrie-Instanz dann die entsprechende `Track`-Methode `TelemetryClient` (`TrackDependency()`, `TrackEvent()`, `TrackMetric()`). Durch diese Methode wird sichergestellt, dass die Telemetrie die richtigen Korrelationsdetails für den aktuellen Funktionsaufruf enthält.
+
+
 ## <a name="environment-variables"></a>Umgebungsvariablen
 
 Verwenden Sie `System.Environment.GetEnvironmentVariable`zum Abrufen einer Umgebungsvariablen oder zum Abrufen des Werts einer App-Einstellung, wie im folgenden Codebeispiel zu sehen:
@@ -315,7 +560,7 @@ public static class EnvironmentVariablesExample
         log.LogInformation(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
     }
 
-    public static string GetEnvironmentVariable(string name)
+    private static string GetEnvironmentVariable(string name)
     {
         return name + ": " +
             System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
@@ -325,11 +570,11 @@ public static class EnvironmentVariablesExample
 
 App-Einstellungen können sowohl beim lokalen Entwickeln als auch bei der Ausführung unter Azure aus Umgebungsvariablen gelesen werden. Beim lokalen Entwickeln kommen App-Einstellungen aus der `Values`-Sammlung in der Datei *local.settings.json*. In beiden Umgebungen, lokal und Azure, ruft `GetEnvironmentVariable("<app setting name>")` den Wert der benannten App-Einstellung ab. Bei der lokalen Ausführung würde beispielsweise „My Site Name“ zurückgegeben, wenn Ihre *local.settings.json*-Datei `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }` enthält.
 
-Die Eigenschaft [System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) ist eine alternative API zum Abrufen von Werten einer App-Einstellung, jedoch wird die hier gezeigte Verwendung von `GetEnvironmentVariable` empfohlen.
+Die Eigenschaft [System.Configuration.ConfigurationManager.AppSettings](/dotnet/api/system.configuration.configurationmanager.appsettings) ist eine alternative API zum Abrufen von Werten einer App-Einstellung, jedoch wird die hier gezeigte Verwendung von `GetEnvironmentVariable` empfohlen.
 
 ## <a name="binding-at-runtime"></a>Binden zur Laufzeit
 
-In C# und anderen .NET-Sprachen können Sie ein [imperatives](https://en.wikipedia.org/wiki/Imperative_programming) Bindungsmuster verwenden, im Gegensatz zu den [*deklarativen* ](https://en.wikipedia.org/wiki/Declarative_programming) Bindungen in Attributen. Imperative Bindung eignet sich, wenn Bindungsparameter zur Laufzeit statt zur Entwurfszeit berechnet werden müssen. Mit diesem Muster ist die Bindung an unterstützte Eingabe- und Ausgabebindungen direkt im Funktionscode möglich.
+In C# und anderen .NET-Sprachen können Sie ein [imperatives](https://en.wikipedia.org/wiki/Imperative_programming) Bindungsmuster verwenden, im Gegensatz zu den [*deklarativen*](https://en.wikipedia.org/wiki/Declarative_programming) Bindungen in Attributen. Imperative Bindung eignet sich, wenn Bindungsparameter zur Laufzeit statt zur Entwurfszeit berechnet werden müssen. Mit diesem Muster ist die Bindung an unterstützte Eingabe- und Ausgabebindungen direkt im Funktionscode möglich.
 
 Definieren Sie eine imperative Bindung wie folgt:
 
@@ -344,11 +589,11 @@ Definieren Sie eine imperative Bindung wie folgt:
   }
   ```
 
-  `BindingTypeAttribute` ist das .NET-Attribut, das die Bindung definiert, und `T` ist ein Eingabe- oder Ausgabetyp, der von diesem Bindungstyp unterstützt wird. `T` darf kein `out`-Parametertyp sein (wie etwa `out JObject`). Die ausgehende Bindung für die Tabelle „Mobile Apps“ unterstützt z. B. [sechs Ausgabetypen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), Sie können aber nur [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) oder [IAsyncCollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) mit imperativer Bindung verwenden.
+  `BindingTypeAttribute` ist das .NET-Attribut, das die Bindung definiert, und `T` ist ein Eingabe- oder Ausgabetyp, der von diesem Bindungstyp unterstützt wird. `T` darf kein `out`-Parametertyp sein (wie etwa `out JObject`). Die ausgehende Bindung für die Tabelle „Mobile Apps“ unterstützt z. B. [sechs Ausgabetypen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), Sie können aber nur [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) oder [IAsyncCollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) mit imperativer Bindung verwenden.
 
 ### <a name="single-attribute-example"></a>Beispiel mit einem einzigen Attribut
 
-Mit dem folgenden Beispielcode wird eine [ausgehende Speicherblob-Bindung](functions-bindings-storage-blob.md#output) mit einem Blobpfad erstellt, der zur Laufzeit definiert wird. Dann wird eine Zeichenfolge in das Blob geschrieben.
+Mit dem folgenden Beispielcode wird eine [ausgehende Speicherblob-Bindung](functions-bindings-storage-blob-output.md) mit einem Blobpfad erstellt, der zur Laufzeit definiert wird. Dann wird eine Zeichenfolge in das Blob geschrieben.
 
 ```cs
 public static class IBinderExample
@@ -369,7 +614,7 @@ public static class IBinderExample
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definiert die Eingabe- oder Ausgabebindung für den [Speicherblob](functions-bindings-storage-blob.md), und [TextWriter](/dotnet/api/system.io.textwriter) ist ein unterstützter Ausgabenbindungstyp.
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) definiert die Eingabe- oder Ausgabebindung für den [Speicherblob](functions-bindings-storage-blob.md), und [TextWriter](/dotnet/api/system.io.textwriter) ist ein unterstützter Ausgabenbindungstyp.
 
 ### <a name="multiple-attribute-example"></a>Beispiel mit mehreren Attributen
 

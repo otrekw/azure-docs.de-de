@@ -1,25 +1,26 @@
 ---
-title: Kopieren von Daten aus Concur mithilfe von Azure Data Factory (Vorschau) | Microsoft Docs
+title: Kopieren von Daten aus Concur mithilfe von Azure Data Factory (Vorschau)
 description: Erfahren Sie, wie Daten aus Concur mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 89c497286b8fcb7650bac2ed9c4eff6a2a500c1d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: f6d6c830eec8e711e700733a90611c353b68439d
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092141"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030797"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Kopieren von Daten aus Concur mithilfe von Azure Data Factory (Vorschau)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Concur zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -34,8 +35,6 @@ Der Concur-Connector wird für die folgenden Aktivitäten unterstützt:
 - [Lookup-Aktivität](control-flow-lookup-activity.md)
 
 Sie können Daten aus Concur in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
-
-Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Konnektivität. Daher müssen Sie mit diesem Connector keinen Treiber manuell installieren.
 
 > [!NOTE]
 > Ein Partnerkonto wird derzeit nicht unterstützt.
@@ -53,14 +52,53 @@ Folgende Eigenschaften werden für den mit Concur verknüpften Dienst unterstüt
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Concur** | Ja |
+| connectionProperties | Eine Gruppe von Eigenschaften zum Definieren, wie eine Verbindung mit Concur hergestellt werden soll. | Ja |
+| **_Unter `connectionProperties`:_* _ | | |
+| authenticationType | Zulässige Werte sind `OAuth_2.0_Bearer` und `OAuth_2.0` (Legacy). Die Option für die OAuth 2.0-Authentifizierung funktioniert mit der alten Concur-API, die seit Februar 2017 als veraltet eingestuft ist. | Ja |
+| host | Der Endpunkt des Concur-Servers, z. B. `implementation.concursolutions.com`.  | Ja |
+| baseUrl | Die Basis-URL Ihrer Concur-Autorisierungs-URL. | Ja für die `OAuth_2.0_Bearer`-Authentifizierung |
 | clientId | Die von der Concur-App-Verwaltung bereitgestellte Client-ID der Anwendung.  | Ja |
-| username | Der Benutzername für den Zugriff auf den Concur Service.  | Ja |
+| clientSecret | Der geheime Clientschlüssel entsprechend der Client-ID. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja für die `OAuth_2.0_Bearer`-Authentifizierung |
+| username | Der Benutzername für den Zugriff auf den Concur-Dienst. | Ja |
 | password | Das Kennwort, das dem Benutzernamen entspricht, den Sie im Feld „username“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein |
-| useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein |
-| usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein |
+| useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
+| usePeerVerification | Gibt an, ob die Identität des Servers überprüft werden soll, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
 
-**Beispiel:**
+_ *Beispiel:* *
+
+```json
+{ 
+    "name": "ConcurLinkedService", 
+    "properties": {
+        "type": "Concur",
+        "typeProperties": {
+            "connectionProperties": {
+                "host":"<host e.g. implementation.concursolutions.com>",
+                "baseUrl": "<base URL for authorization e.g. us-impl.api.concursolutions.com>",
+                "authenticationType": "OAuth_2.0_Bearer",
+                "clientId": "<client id>",
+                "clientSecret": {
+                    "type": "SecureString",
+                    "value": "<client secret>"
+                },
+                "username": "fakeUserName",
+                "password": {
+                    "type": "SecureString",
+                    "value": "<password>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+} 
+```
+
+**Beispiel (Legacy):**
+
+Bei Folgendem handelt es sich um ein verknüpftes Legacydienstmodell ohne `connectionProperties` und mit `OAuth_2.0`-Authentifizierung.
 
 ```json
 {
@@ -88,7 +126,7 @@ Legen Sie zum Kopieren von Daten aus Concur die „type“-Eigenschaft des Datas
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **ConcurObject**. | Ja |
-| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
+| tableName | Der Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 
 **Beispiel**
@@ -119,7 +157,7 @@ Legen Sie zum Kopieren von Daten aus Concur den Quellentyp in der Kopieraktivit�
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **ConcurSource**. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Opportunities where Id = xxx "`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Opportunities where Id = xxx "`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

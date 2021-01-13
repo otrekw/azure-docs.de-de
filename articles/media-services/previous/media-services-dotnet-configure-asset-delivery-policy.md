@@ -14,14 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b5e733c93fef8920c73c8cf460dac7a7051fddb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 24fd4dcb9b24b6d025ff0327d98fee15a05fb7de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465608"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89267716"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>Konfigurieren von Übermittlungsrichtlinien für Medienobjekte mit .NET SDK
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
 
 ## <a name="overview"></a>Übersicht
@@ -199,9 +203,9 @@ Im Abschnitt [Beim Definieren von AssetDeliveryPolicy verwendete Typen](#types) 
     }
 ```
 
-## <a id="types"></a>Beim Definieren von AssetDeliveryPolicy verwendete Typen
+## <a name="types-used-when-defining-assetdeliverypolicy"></a><a id="types"></a>Beim Definieren von AssetDeliveryPolicy verwendete Typen
 
-### <a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol
+### <a name="assetdeliveryprotocol"></a><a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol
 
 Die folgende Enumeration beschreibt Werte, die Sie für das Protokoll zur Übermittlung von Medienobjekten festlegen können.
 
@@ -237,7 +241,7 @@ Die folgende Enumeration beschreibt Werte, die Sie für das Protokoll zur Überm
         All = 0xFFFF
     }
 ```
-### <a id="AssetDeliveryPolicyType"></a>AssetDeliveryPolicyType
+### <a name="assetdeliverypolicytype"></a><a id="AssetDeliveryPolicyType"></a>AssetDeliveryPolicyType
 
 Die folgende Enumeration beschreibt Werte, die Sie für den Richtlinientyp zur Übermittlung von Medienobjekten festlegen können.  
 ```csharp
@@ -270,7 +274,7 @@ Die folgende Enumeration beschreibt Werte, die Sie für den Richtlinientyp zur �
         DynamicCommonEncryption
         }
 ```
-### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a name="contentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
 
 Die folgende Enumeration beschreibt Werte, die Sie verwenden können, um die Übermittlungsmethode des symmetrischen Schlüssels an den Client zu konfigurieren.
   ```csharp  
@@ -302,7 +306,7 @@ Die folgende Enumeration beschreibt Werte, die Sie verwenden können, um die Üb
 
     }
 ```
-### <a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
+### <a name="assetdeliverypolicyconfigurationkey"></a><a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
 
 Die folgende Enumeration beschreibt Werte, die Sie festlegen können, um die Schlüssel zum Abrufen einer spezifischen Konfiguration für eine Richtlinie zur Übermittlung von Medienobjekten zu konfigurieren.
 ```csharp
@@ -349,6 +353,11 @@ Die folgende Enumeration beschreibt Werte, die Sie festlegen können, um die Sch
         WidevineLicenseAcquisitionUrl
     }
 ```
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
+
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

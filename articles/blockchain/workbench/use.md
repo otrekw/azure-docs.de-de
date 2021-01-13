@@ -1,21 +1,15 @@
 ---
-title: Verwenden von Anwendungen in der Vorschauversion von Azure Blockchain Workbench
+title: Verwenden von Anwendungen in Azure Blockchain Workbench
 description: Tutorial zur Verwendung von Anwendungsverträgen in der Vorschauversion von Azure Blockchain Workbench
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: e1ba09c4fbba6492e2d5f870a6c31a3d5a6d8956
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845142"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74324040"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Tutorial: Verwenden von Anwendungen in Azure Blockchain Workbench
 

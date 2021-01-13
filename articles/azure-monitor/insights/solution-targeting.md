@@ -1,24 +1,17 @@
 ---
 title: Zielgruppenadressierung für Überwachungslösungen in Azure Monitor | Microsoft-Dokumentation
 description: Die Zielgruppenadressierung für Überwachungslösungen bietet Ihnen die Möglichkeit, Überwachungslösungen auf einen bestimmten Satz von Agents zu beschränken.  Dieser Artikel beschreibt, wie Sie eine Bereichskonfiguration erstellen und auf eine Lösung anwenden.
-services: monitoring
-documentationcenter: ''
+ms.subservice: ''
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 1f054a4e-6243-4a66-a62a-0031adb750d8
-ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: 4082847e1871fc03713471b0c043dddb80f91b0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 04/27/2017
+ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62110343"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86498677"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Zielgruppenadressierung für Überwachungslösungen in Azure Monitor (Vorschau)
 Wenn Sie eine Überwachungslösung zu Ihrem Abonnement hinzufügen, wird sie automatisch standardmäßig für alle mit Ihrem Log Analytics-Arbeitsbereich verbundenen Windows- und Linux-Agents bereitgestellt.  Möglicherweise möchten Sie Ihre Kosten verwalten und den Umfang der für eine Lösung gesammelten Daten begrenzen, indem Sie sie auf einen bestimmten Satz von Agents beschränken.  Dieser Artikel beschreibt, wie Sie das Feature der **Zielgruppenadressierung für eine Lösung** verwenden, um einen Geltungsbereich auf Ihre Lösungen anzuwenden.
@@ -66,7 +59,7 @@ Wenden Sie eine Bereichskonfiguration mithilfe des folgenden Vorgangs an.
 Im Folgenden werden die Kriterien für Agents und Lösungen erörtert, die nicht mit der Zielgruppenadressierung für Lösung verwendet werden können.
 
 - Zielgruppenadressierung für Lösung kann nur auf Lösungen angewendet werden, die für Agents bereitgestellt werden.
-- Zielgruppenadressierung für Lösung kann nur auf Lösungen angewendet werden, die von Microsoft bereitgestellt werden.  Sie kann nicht auf Lösungen angewendet werden, die [von Ihnen selbst oder Partnern erstellt](solutions-creating.md) worden sind.
+- Zielgruppenadressierung für Lösung kann nur auf Lösungen angewendet werden, die von Microsoft bereitgestellt werden.  Sie kann nicht auf Lösungen angewendet werden, die [von Ihnen selbst oder Partnern erstellt](./solutions.md) worden sind.
 - Sie können nur Agents herausfiltern, die direkt mit Azure Monitor verbunden sind.  Lösungen werden automatisch für alle Agents bereitgestellt, die Teil einer verbundenen Operations Manager-Verwaltungsgruppe sind, und zwar unabhängig davon, ob sie in einer Bereichskonfiguration enthalten sind oder nicht.
 
 ### <a name="exceptions"></a>Ausnahmen

@@ -1,25 +1,25 @@
 ---
-title: Transformieren von Daten mit JAR in Databricks – Azure | Microsoft-Dokumentation
+title: Transformieren von Daten mit JAR in Databricks
 description: Erfahren Sie, wie Sie mit JAR Daten in Databricks verarbeiten oder transformieren.
 services: data-factory
 documentationcenter: ''
 ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/15/2018
-author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 924367c6bb85b64bafbcb8feb546eeb490e07a34
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+author: nabhishek
+manager: shwang
+ms.date: 03/15/2018
+ms.openlocfilehash: 6b010000a674e351051c664dd5eeacd40e802439
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812788"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81414611"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Transformieren von Daten durch Ausführen einer JAR-Aktivität in Azure Databricks
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Die JAR-Aktivität in Azure Databricks in einer [Data Factory-Pipeline](concepts-pipelines-activities.md) führt eine Spark JAR-Datei in Ihrem Azure Databricks-Cluster aus. Dieser Artikel baut auf dem Artikel zu  [Datentransformationsaktivitäten](transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet. Azure Databricks ist eine verwaltete Plattform für die Ausführung von Apache Spark.
 
@@ -109,7 +109,7 @@ Weitere Informationen zu Bibliothekstypen finden Sie in der [Databricks-Dokument
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Hochladen einer Bibliothek in Databricks
 
-#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Benutzeroberfläche des Databricks-Arbeitsbereichs](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+#### <a name="using-databricks-workspace-ui"></a>[Benutzeroberfläche des Databricks-Arbeitsbereichs](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
 
 Sie können den DBFS-Pfad der hinzugefügten Bibliothek über die Benutzeroberfläche mithilfe der [Databricks-Benutzerzeilenschnittstelle (Installation)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli) abrufen. 
 
@@ -117,7 +117,7 @@ JAR-Bibliotheken werden beim Verwenden der Benutzeroberfläche in der Regel unte
 
 
 
-#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Kopieren von Bibliotheken mit der Databricks-Benutzerzeilenschnittstelle](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+#### <a name="copy-library-using-databricks-cli"></a>[Kopieren von Bibliotheken mit der Databricks-Benutzerzeilenschnittstelle](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
 Verwenden Sie die Databricks-Befehlszeilenschnittstelle [(Installationsschritte)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
 Beispiel – Kopieren von JAR in dbfs: *dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar*

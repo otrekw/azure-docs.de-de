@@ -1,30 +1,21 @@
 ---
-title: Kadenz für das Patchen von Betriebssystem und Runtime – Azure App Service | Microsoft-Dokumentation
-description: Beschreibt, wie Azure App Service das Betriebssystem und Runtimes aktualisiert, und wie Sie Updateankündigungen erhalten.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: Abfolge beim Betriebssystem- und Runtimepatching
+description: Erfahren Sie, wie Azure App Service das Betriebssystem und Runtimes aktualisiert, welche Runtimes und Patchebenen Ihre App hat und wie Sie Updateankündigungen erhalten.
 ms.topic: article
 ms.date: 02/02/2018
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 3469c4f11a075ceb958e35e4cfc87a78e60b3882
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 8b52223aea0f0bdfecf58906ac192e893da3b47d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074131"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558486"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patchen von Betriebssystem und Runtime in Azure App Service
 
 Dieser Artikel veranschaulicht das Abrufen bestimmter Versionsinformationen zu Betriebssystem oder Software in [App Service](overview.md). 
 
-App Service ist eine Platform as a Service, d.h., Betriebssystem und Anwendungsstapel werden für Sie von Azure verwaltet; Sie verwalten nur Ihre Anwendung und deren Daten. Mehr Kontrolle über Betriebssystem und Anwendungsstapel haben Sie in [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/). Vor diesem Hintergrund ist es dennoch für Sie als App Service-Benutzer hilfreich, weitere Informationen zu kennen, z.B.:
+App Service ist eine Platform as a Service, d.h., Betriebssystem und Anwendungsstapel werden für Sie von Azure verwaltet; Sie verwalten nur Ihre Anwendung und deren Daten. Mehr Kontrolle über Betriebssystem und Anwendungsstapel haben Sie in [Azure Virtual Machines](../virtual-machines/index.yml). Vor diesem Hintergrund ist es dennoch für Sie als App Service-Benutzer hilfreich, weitere Informationen zu kennen, z.B.:
 
 -   Wie und wann werden Betriebssystemupdates angewendet?
 -   Wie wird App Service für erhebliche Sicherheitsrisiken (z.B. Zero-Day-Bedrohungen) gepatcht?
@@ -34,7 +25,7 @@ Aus Sicherheitsgründen werden bestimmte Einzelheiten von Sicherheitsinformation
 
 ## <a name="how-and-when-are-os-updates-applied"></a>Wie und wann werden Betriebssystemupdates angewendet?
 
-Azure verwaltet Betriebssystempatches auf zwei Ebenen, den physischen Servern und den virtuellen Gastcomputern (VMs), die die App Service-Ressourcen ausführen. Beide werden monatlich aktualisiert, was dem monatlichen [Patch-Dienstag](https://technet.microsoft.com/security/bulletins.aspx)-Zeitplan entspricht. Diese Updates werden automatisch auf eine Weise angewendet, die die Hochverfügbarkeits-SLA der Azure-Dienste erfüllt. 
+Azure verwaltet Betriebssystempatches auf zwei Ebenen, den physischen Servern und den virtuellen Gastcomputern (VMs), die die App Service-Ressourcen ausführen. Beide werden monatlich aktualisiert, was dem monatlichen [Patch-Dienstag](/security-updates/)-Zeitplan entspricht. Diese Updates werden automatisch auf eine Weise angewendet, die die Hochverfügbarkeits-SLA der Azure-Dienste erfüllt. 
 
 Ausführliche Informationen zur Anwendung von Updates finden Sie unter [Demystifying the magic behind App Service OS updates](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html) (Entmystifizierung des hinter App Service-Betriebssystemupdates steckenden Zaubers).
 
@@ -60,11 +51,11 @@ Runtimeupdates und Veraltungen werden hier angekündigt:
 
 ### <a name="new-patch-updates"></a>Neue Patchupdates
 
-Patchupdates für .NET-, PHP-, Java SDK- oder Tomcat/Jetty-Version werden automatisch durch Überschreiben der vorhandenen Installation mit der neuen Version angewendet. Node.js-Patchupdates werden parallel zu den vorhandenen Versionen installiert (ähnlich wie Haupt- und Nebenversionen im nächsten Abschnitt). Neue Python-Patchversionen können manuell über [Websiteerweiterungen](https://www.siteextensions.net/packages?q=Tags%3A%22python%22) parallel zu integrierten Python-Installationen installiert werden.
+Patchupdates für .NET-, PHP-, Java SDK- oder Tomcat-Version werden automatisch durch Überschreiben der vorhandenen Installation mit der aktuellen Version angewendet. Node.js-Patchupdates werden parallel zu den vorhandenen Versionen installiert (ähnlich wie Haupt- und Nebenversionen im nächsten Abschnitt). Neue Python-Patchversionen können manuell über [Websiteerweiterungen](https://azure.microsoft.com/blog/azure-web-sites-extensions/) parallel zu integrierten Python-Installationen installiert werden.
 
 ### <a name="new-major-and-minor-versions"></a>Neue Haupt- und Nebenversionen
 
-Wenn eine neue Haupt- oder Nebenversion hinzugefügt wird, wird sie parallel zu vorhandenen Versionen installiert. Sie können Ihre App manuell auf die neue Version aktualisieren. Wenn Sie die Runtimeversion in einer Konfigurationsdatei (z.B. `web.config` und `package.json`) konfiguriert haben, müssen Sie sie mit der gleichen Methode aktualisieren. Bei Verwendung einer App Service-Einstellung zum Konfigurieren der Runtimeversion können Sie sie im [Azure-Portal](https://portal.azure.com) oder durch Ausführen eines [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)-Befehls in der [Cloud Shell](../cloud-shell/overview.md) ändern, wie in den folgenden Beispielen gezeigt:
+Wenn eine neue Haupt- oder Nebenversion hinzugefügt wird, wird sie parallel zu vorhandenen Versionen installiert. Sie können Ihre App manuell auf die neue Version aktualisieren. Wenn Sie die Runtimeversion in einer Konfigurationsdatei (z.B. `web.config` und `package.json`) konfiguriert haben, müssen Sie sie mit der gleichen Methode aktualisieren. Bei Verwendung einer App Service-Einstellung zum Konfigurieren der Runtimeversion können Sie sie im [Azure-Portal](https://portal.azure.com) oder durch Ausführen eines [Azure CLI](/cli/azure/get-started-with-azure-cli)-Befehls in der [Cloud Shell](../cloud-shell/overview.md) ändern, wie in den folgenden Beispielen gezeigt:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -87,14 +78,15 @@ Die folgende Tabelle zeigt, wie Sie die Versionen von Windows und der Language R
 | Information | Ort | 
 |-|-|
 | Windows-Version | Siehe `https://<appname>.scm.azurewebsites.net/Env.cshtml` (unter Systeminfo) |
-| .NET-Version | Geben Sie unter `https://<appname>.scm.azurewebsites.net/DebugConsole` im Eingabeaufforderungsfenster den folgenden Befehl ein: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| .NET-Version | Geben Sie unter `https://<appname>.scm.azurewebsites.net/DebugConsole` im Eingabeaufforderungsfenster den folgenden Befehl ein: <br>`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"` |
 | .NET Core-Version | Geben Sie unter `https://<appname>.scm.azurewebsites.net/DebugConsole` im Eingabeaufforderungsfenster den folgenden Befehl ein: <br> `dotnet --version` |
 | PHP-Version | Geben Sie unter `https://<appname>.scm.azurewebsites.net/DebugConsole` im Eingabeaufforderungsfenster den folgenden Befehl ein: <br> `php --version` |
 | Standardmäßige Node.js-Version | Führen Sie in der [Cloud Shell](../cloud-shell/overview.md)-Instanz folgenden Befehl aus: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Python-Version | Geben Sie unter `https://<appname>.scm.azurewebsites.net/DebugConsole` im Eingabeaufforderungsfenster den folgenden Befehl ein: <br> `python --version` |  
+| Java-Version | Geben Sie unter `https://<appname>.scm.azurewebsites.net/DebugConsole` im Eingabeaufforderungsfenster den folgenden Befehl ein: <br> `java -version` |  
 
 > [!NOTE]  
-> Der Zugriff auf den Registrierungsspeicherort `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, wo Informationen zu [„KB“-Patches](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) gespeichert sind, ist gesperrt.
+> Der Zugriff auf den Registrierungsspeicherort `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, wo Informationen zu [„KB“-Patches](/security-updates/SecurityBulletins/securitybulletins) gespeichert sind, ist gesperrt.
 >
 >
 

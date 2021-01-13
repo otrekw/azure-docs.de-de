@@ -1,27 +1,23 @@
 ---
 title: Speicherdienste von Azure Deutschland | Microsoft-Dokumentation
-description: Vergleich der Speicherdienste für Azure Deutschland
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
+description: Dieses Thema enthält einen Vergleich der Speicherdienste für Azure Deutschland. Außerdem finden Sie hier weitere relevante Informationen.
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/07/2017
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: fc3eaa92e2373384b59c65aae3d9d2d622a89e6f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: 7a82dfa03c85ecf8ad5c80a7d037431b18a28fed
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080840"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018472"
 ---
 # <a name="azure-germany-storage-services"></a>Speicherdienste von Azure Deutschland
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
+
 ## <a name="storage"></a>Storage
 Einzelheiten zu Azure Storage und seiner Verwendung finden Sie in der [globalen Dokumentation zu Storage](../storage/index.yml).
 
@@ -42,11 +38,11 @@ Die Speicherdienstverschlüsselung schützt ruhende Daten in Azure Storage-Konte
 | --- | --- | --- |
 | [Blob Storage](../storage/common/storage-introduction.md#blob-storage) |Allgemein verfügbar |Allgemein verfügbar |
 | [Azure Files](../storage/common/storage-introduction.md#azure-files) | Allgemein verfügbar | Allgemein verfügbar |
-| [Tabellenspeicherung](../storage/common/storage-introduction.md#table-storage) |Allgemein verfügbar  |Allgemein verfügbar |
-| [Queue Storage](../storage/common/storage-introduction.md#queue-storage) |Allgemein verfügbar | Allgemein verfügbar |
+| [Table Storage](../storage/common/storage-introduction.md#table-storage) |Allgemein verfügbar  |Allgemein verfügbar |
+| [Queue Storage](../storage/common/storage-introduction.md#queue-storage) |Allgemein verfügbar | Allgemein verfügbar |
 | [Hot/Cold Blob Storage](../storage/blobs/storage-blob-storage-tiers.md) |Allgemein verfügbar |Allgemein verfügbar |
-| [Storage Service Encryption](../storage/common/storage-service-encryption.md) |Allgemein verfügbar |Allgemein verfügbar |
-| Import/Export |Nicht verfügbar |Nicht verfügbar |
+| [Speicherdienstverschlüsselung](../storage/common/storage-service-encryption.md) |Allgemein verfügbar |Allgemein verfügbar |
+| Importieren/Exportieren |Nicht verfügbar |Nicht verfügbar |
 | StorSimple |Nicht verfügbar |Nicht verfügbar |
 
 ### <a name="variations"></a>Abweichungen
@@ -57,7 +53,7 @@ Die URLs für Speicherkonten in Azure Deutschland unterscheiden sich von denen i
 | Blob Storage | *.blob.core.windows.net | *.blob.core.cloudapi.de |
 | Azure Files | *.file.core.windows.net | *.file.core.cloudapi.de | 
 | Queue Storage | *.queue.core.windows.net | *.queue.core.cloudapi.de |
-| Table Storage | *.table.core.windows.net | *.table.core.cloudapi.de |
+| Tabellenspeicher | *.table.core.windows.net | *.table.core.cloudapi.de |
 
 > [!NOTE]
 > Ihre gesamten Skripts und Ihr Code müssen die passenden Endpunkte berücksichtigen. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](../storage/common/storage-configure-connection-string.md). 
@@ -75,4 +71,4 @@ Das zu verwendende Endpunktsuffix für diese Überladungen lautet *core.cloudapi
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
+Abonnieren Sie den [Azure Deutschland-Blog](/archive/blogs/azuregermany/), um weitere Informationen und Updates zu erhalten.

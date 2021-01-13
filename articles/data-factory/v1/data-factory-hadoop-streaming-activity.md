@@ -1,10 +1,10 @@
 ---
-title: Transformieren von Daten mit der Hadoop-Streamingaktivität – Azure | Microsoft-Dokumentation
+title: Transformieren von Daten mit der Hadoop-Streamingaktivität – Azure
 description: Erfahren Sie, wie Sie die Hadoop-Streamingaktivität in Azure Data Factory verwenden können, um Daten durch die Ausführung von Hadoop-Streamingprogrammen in einem bedarfsgesteuerten oder einem eigenen HDInsight-Cluster zu transformieren.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: 4c3ff8f2-2c00-434e-a416-06dfca2c41ec
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fd9512f4ede8d9b8b1a8fd69b7120303fe6a0ad5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 80f78e3d2e7fdcd8fef53ca0412676a37c6486c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139542"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495598"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Hadoop-Streamingaktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
@@ -26,8 +26,8 @@ ms.locfileid: "70139542"
 > * [MapReduce-Aktivität](data-factory-map-reduce.md)
 > * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 > * [Spark-Aktivität](data-factory-spark.md)
-> * [Machine Learning-Batchausführungsaktivität](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning-Ressourcenaktualisierungsaktivität](data-factory-azure-ml-update-resource-activity.md)
+> * [Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md)
 > * [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
 > * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
@@ -41,7 +41,7 @@ Mit der Aktivität „HDInsightStreamingActivity“ können Sie einen Hadoop-Str
 Die HDInsight-Streamingaktivität in einer Data Factory-[Pipeline](data-factory-create-pipelines.md) wendet Hadoop-Streamingprogramme auf [Ihren eigenen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) oder [bedarfsgesteuerten](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows-/Linux-basierten HDInsight-Cluster an. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
 
 > [!NOTE] 
-> Wenn Sie noch nicht mit Azure Data Factory vertraut sind, sollten Sie zunächst den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md) lesen und anschließend das Tutorial zum Thema [Erstellen Ihrer ersten Datenpipeline](data-factory-build-your-first-pipeline.md) durcharbeiten, bevor Sie diesen Artikel lesen. 
+> Wenn Sie noch nicht mit Azure Data Factory vertraut sind, lesen Sie zunächst den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md), und durchlaufen Sie anschließen das Tutorial [Erstellen Ihrer ersten Pipeline](data-factory-build-your-first-pipeline.md), bevor Sie diesen Artikel lesen. 
 
 ## <a name="json-sample"></a>JSON-Beispiel
 Der HDInsight-Cluster wird automatisch mit Beispielprogrammen („wc.exe“ und „cat.exe“) und Daten („davinci.txt“) aufgefüllt. Standardmäßig entspricht der Name des Containers, der im HDInsight-Cluster verwendet wird, dem Namen des Clusters. Wenn der Name Ihres Clusters beispielsweise „myhdicluster“ lautet, lautet der Name des zugeordneten Blob-Containers auch „myhdicluster“. 
@@ -95,7 +95,7 @@ Der HDInsight-Cluster wird automatisch mit Beispielprogrammen („wc.exe“ und 
 Beachten Sie folgende Punkte:
 
 1. Legen Sie **linkedServiceName** auf den Namen des verknüpften Diensts fest, der auf Ihren HDInsight-Cluster verweist, auf dem der MapReduce-Streamingauftrag ausgeführt wird.
-2. Legen Sie den Typ der Aktivität auf **HDInsightStreaming**fest.
+2. Legen Sie den Typ der Aktivität auf **HDInsightStreaming** fest.
 3. Geben Sie für die **mapper** -Eigenschaft den Namen der ausführbaren Zuordnungsdatei an. Im Beispiel ist „cat.exe“ die ausführbare Zuordnungsdatei.
 4. Geben Sie für die **reducer** -Eigenschaft den Namen der ausführbaren Reduzierungsdatei an. Im Beispiel ist „wc.exe“ die ausführbare Reduzierungsdatei.
 5. Geben Sie für die **input** -Eigenschaft die Eingabedatei (einschließlich Speicherort) für die Zuordnung an. Im Beispiel `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` ist „adfsample“ der Blobcontainer, „example/data/Gutenberg“ der Ordner und „davinci.txt“ das Blob.
@@ -174,7 +174,7 @@ Die Pipeline in diesem Beispiel akzeptiert keine Eingaben. Für die HDInsight-St
 ```
 
 ### <a name="pipeline"></a>Pipeline
-Die Pipeline in diesem Beispiel besitzt nur eine einzelne Aktivität vom Typ **HDInsightStreaming**. 
+Die Pipeline in diesem Beispiel weist nur eine einzelne Aktivität vom Typ **HDInsightStreaming** auf. 
 
 Der HDInsight-Cluster wird automatisch mit Beispielprogrammen („wc.exe“ und „cat.exe“) und Daten („davinci.txt“) aufgefüllt. Standardmäßig entspricht der Name des Containers, der im HDInsight-Cluster verwendet wird, dem Namen des Clusters. Wenn der Name Ihres Clusters beispielsweise „myhdicluster“ lautet, lautet der Name des zugeordneten Blob-Containers auch „myhdicluster“.  
 
@@ -222,10 +222,10 @@ Der HDInsight-Cluster wird automatisch mit Beispielprogrammen („wc.exe“ und 
     }
 }
 ```
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Hive-Aktivität](data-factory-hive-activity.md)
 * [Pig-Aktivität](data-factory-pig-activity.md)
 * [MapReduce-Aktivität](data-factory-map-reduce.md)
 * [Invoke Spark programs (Aufrufen von Spark-Programmen)](data-factory-spark.md)
-* [Invoke R scripts (Aufrufen von R-Skripts)](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [Invoke R scripts (Aufrufen von R-Skripts)](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

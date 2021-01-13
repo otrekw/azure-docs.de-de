@@ -1,25 +1,14 @@
 ---
-title: Weitere Informationen zu Azure Service Fabric | Microsoft-Dokumentation
+title: Weitere Informationen zu Azure Service Fabric
 description: Erfahren Sie mehr über die grundlegenden Konzepte und die wesentlichen Bereiche von Azure Service Fabric. Dieser Artikel bietet eine erweiterte Übersicht über Service Fabric und das Erstellen von Microservices.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/08/2017
-ms.author: atsenthi
-ms.openlocfilehash: 1227871f2003ded7b9cb92eaf32bd9a984958f9f
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 36215dd3419050cf498a749b5caf927c3c4e275a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537811"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485449"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Sie möchten sich über Service Fabric informieren?
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht.  Service Fabric bietet allerdings eine große Oberfläche, und es gibt viel darüber zu erfahren.  Dieser Artikel enthält eine Zusammenfassung von Service Fabric und beschreibt die grundlegenden Konzepte, Programmiermodelle, Cluster, den Anwendungslebenszyklus und die Systemüberwachung. Eine Einführung und eine Anleitung zum Erstellen von Microservices mit Service Fabric finden Sie unter [Übersicht](service-fabric-overview.md) und [Was sind Microservices?](service-fabric-overview-microservices.md). Dieser Artikel enthält keine umfassende Liste der Inhalte, aber Links zu Artikeln zur Übersicht und zu den ersten Schritten für die einzelnen Bereiche von Service Fabric. 
@@ -27,18 +16,18 @@ Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, 
 ## <a name="core-concepts"></a>Wichtige Konzepte
 Die Artikel [Übersicht über Service Fabric-Terminologie](service-fabric-technical-overview.md), [Modellieren von Anwendungen in Service Fabric](service-fabric-application-model.md) und [Übersicht über die Service Fabric-Programmiermodelle](service-fabric-choose-framework.md) enthalten weitere Konzepte und Beschreibungen, aber hier geht es um die Grundlagen.
 
-### <a name="design-time-service-type-service-package-and-manifest-application-type-application-package-and-manifest"></a>Entwurfszeit: Servicetyp, Servicepaket und -manifest, Anwendungstyp, Anwendungspaket und -manifest
-Eine Diensttyp ist der Name oder die Version, der bzw. die den Code-, Daten- und Konfigurationspaketen eines Diensts zugewiesen wird. Dies wird in einer ServiceManifest.xml-Datei definiert. Der Diensttyp besteht aus ausführbarem Code und Dienstkonfigurationseinstellungen, die zur Laufzeit geladen werden, sowie aus statischen Daten, die vom Dienst genutzt werden.
+### <a name="design-time-service-type-service-package-and-manifest-application-type-application-package-and-manifest"></a>Entwurfszeit: Diensttyp, Dienstpaket und -manifest, Anwendungstyp, Anwendungspaket und -manifest
+Eine Diensttyp ist der Name oder die Version, der bzw. die den Code-, Daten- und Konfigurationspaketen eines Diensts zugewiesen wird. Dies wird in der Datei „ServiceManifest.xml“ definiert. Der Diensttyp besteht aus ausführbarem Code und Dienstkonfigurationseinstellungen, die zur Laufzeit geladen werden, sowie aus statischen Daten, die vom Dienst genutzt werden.
 
 Ein Dienstpaket ist ein Datenträgerverzeichnis mit der Datei „ServiceManifest.xml“ des Diensttyps, in der auf die Pakete mit dem Code, den statischen Daten und der Konfiguration für den Diensttyp verwiesen wird. Ein Dienstpaket kann beispielsweise auf den Code, die statischen Daten und die Konfigurationspakete verweisen, die zusammen einen Datenbankdienst bilden.
 
-Ein Anwendungstyp ist der Name oder die Version, der bzw. die einer Sammlung von Diensttypen zugewiesen ist. Dies wird in einer ApplicationManifest.xml-Datei definiert.
+Ein Anwendungstyp ist der Name oder die Version, der bzw. die einer Sammlung von Diensttypen zugewiesen ist. Dies wird in der Datei „ApplicationManifest.xml“ definiert.
 
 ![Service Fabric-Anwendungstypen und Diensttypen][cluster-imagestore-apptypes]
 
-Das Anwendungspaket ist ein Datenträgerverzeichnis mit der Datei ApplicationManifest.xml des Anwendungstyps, in der auf die Dienstpakete für jeden Diensttyp verwiesen wird, aus dem der Anwendungstyp besteht. Ein Anwendungspaket für einen E-Mail-Anwendungstyp kann beispielsweise Verweise auf ein Warteschlangendienstpaket, ein Front-End-Dienstpaket und ein Datenbankdienstpaket enthalten.  
+Das Anwendungspaket ist ein Datenträgerverzeichnis, das die Datei „ApplicationManifest.xml“ des Anwendungstyps enthält, in der auf die Dienstpakete für jeden Diensttyp verwiesen wird, aus dem der Anwendungstyp besteht. Ein Anwendungspaket für einen E-Mail-Anwendungstyp kann beispielsweise Verweise auf ein Warteschlangendienstpaket, ein Front-End-Dienstpaket und ein Datenbankdienstpaket enthalten.  
 
-Die Dateien im Anwendungspaketverzeichnis werden in den Imagespeicher des Service Fabric-Clusters kopiert. Anschließend können Sie aus diesem Anwendungstyp eine benannte Anwendung erstellen, die dann im Cluster ausgeführt wird. Nach der Erstellung einer benannten Anwendung können Sie einen benannten Dienst aus einem der Diensttypen des Anwendungstyps erstellen. 
+Die Dateien im Anwendungspaketverzeichnis werden in den Imagespeicher des Service Fabric-Clusters kopiert. Anschließend können Sie aus diesem Anwendungstyp eine benannte Anwendung erstellen, die dann im Cluster ausgeführt wird. Nach der Erstellung einer benannten Anwendung kann ein benannter Dienst aus einem der Diensttypen des Anwendungstyps erstellt werden. 
 
 ### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>Laufzeit: Cluster und Knoten, benannte Anwendungen, benannte Dienste, Partitionen und Replikate
 Ein [Service Fabric-Cluster](service-fabric-deploy-anywhere.md) enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Cluster können auf Tausende von Computern skaliert werden.
@@ -62,7 +51,7 @@ Die [Partitionierung](service-fabric-concepts-partitioning.md) ist nicht nur auf
 
 Die Replikate der einzelnen Partitionen sind auf die Clusterknoten verteilt, wodurch der Zustand Ihres benannten Diensts [skaliert](service-fabric-concepts-scalability.md) werden kann. Wenn die Daten zunehmen müssen, werden die Partitionen vergrößert, und Service Fabric verteilt die Partitionen neu über die Knoten, um die Hardwareressourcen effektiv zu nutzen. Wenn Sie dem Cluster neue Knoten hinzufügen, verteilt Service Fabric die Partitionsreplikate auf die erhöhte Anzahl von Knoten neu, um sie auszugleichen. Die Gesamtleistung der Anwendung verbessert sich und Konflikte beim Speicherzugriff werden reduziert. Wenn die Knoten im Cluster nicht effizient genutzt werden, können Sie die Anzahl der Knoten im Cluster verringern. Service Fabric gleicht die Partitionsreplikate erneut über die verringerte Anzahl von Knoten aus, um die Hardware der einzelnen Knoten besser zu nutzen.
 
-Innerhalb einer Partition besitzen zustandslose benannte Dienste Instanzen, wohingegen zustandsbehaftete benannte Dienste Replikate besitzen. In der Regel verfügen zustandslose benannte Dienste immer nur über eine einzelne Partition, da sie keinen internen Zustand aufweisen. Die Partitionsinstanzen sorgen für [Verfügbarkeit](service-fabric-availability-services.md). Wenn eine Instanz ausfällt, werden andere Instanzen weiterhin normal ausgeführt, und Service Fabric erstellt eine neue Instanz. Zustandsbehaftete benannte Dienste behalten ihren Zustand in Replikaten bei, und jede Partition verfügt über eine eigene Replikatgruppe. Lese- und Schreibvorgänge erfolgen im selben Replikat (primäres Replikat). Änderungen des Zustands aufgrund von Schreibvorgängen werden in mehreren anderen Replikaten (aktive sekundäre Replikate) repliziert. Fällt ein Replikat aus, erstellt Service Fabric aus den vorhandenen Replikaten ein neues Replikat.
+Innerhalb einer Partition besitzen zustandslose benannte Dienste Instanzen, wohingegen zustandsbehaftete benannte Dienste Replikate besitzen. Zustandslose benannte Dienste verfügen in der Regel nur über eine Partition, da sie keinen internen Zustand aufweisen. [Es gibt jedoch auch Ausnahmen](./service-fabric-concepts-partitioning.md#partition-service-fabric-stateless-services). Die Partitionsinstanzen sorgen für [Verfügbarkeit](service-fabric-availability-services.md). Wenn eine Instanz ausfällt, werden andere Instanzen weiterhin normal ausgeführt, und Service Fabric erstellt eine neue Instanz. Zustandsbehaftete benannte Dienste behalten ihren Zustand in Replikaten bei, und jede Partition verfügt über eine eigene Replikatgruppe. Lese- und Schreibvorgänge erfolgen im selben Replikat (primäres Replikat). Änderungen des Zustands aufgrund von Schreibvorgängen werden in mehreren anderen Replikaten (aktive sekundäre Replikate) repliziert. Fällt ein Replikat aus, erstellt Service Fabric aus den vorhandenen Replikaten ein neues Replikat.
 
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Zustandslose und zustandsbehaftete Microservices für Service Fabric
 Service Fabric ermöglicht es Ihnen, Anwendungen zu erstellen, die aus Microservices oder Containern bestehen. Zustandslose Microservices (z.B. Protokollgateways und Webproxys) behalten über die Anforderung und ihre Antwort vom Dienst hinaus keinen veränderbaren Zustand bei. Ein zustandsloser Dienst ist zum Beispiel die Workerrolle in Azure Cloud Services. Zustandsbehaftete Microservices (z.B. Benutzerkonten, Datenbanken, Geräte, Einkaufswagen und Warteschlangen) behalten einen veränderbaren, autoritativen Zustand über die Anforderung und ihre Antwort hinaus bei. Heutige Internetanwendungen bestehen aus einer Kombination aus zustandslosen und zustandsbehafteten Microservices. 
@@ -98,7 +87,7 @@ Bei einer [ausführbaren Gastanwendungsdatei](service-fabric-guest-executables-i
 ## <a name="application-lifecycle"></a>Anwendungslebenszyklus
 Ähnlich wie auf anderen Plattformen durchläuft eine Anwendung auf Service Fabric normalerweise die folgenden Phasen: Entwurf, Entwicklung, Test, Bereitstellung, Upgrade, Wartung und Deinstallation. Service Fabric bietet erstklassige Unterstützung für den gesamten Anwendungslebenszyklus von Cloudanwendungen: von der Entwicklung über die Bereitstellung, die tägliche Verwaltung und die Wartung bis zur endgültigen Außerbetriebnahme. Das Dienstmodell ermöglicht die unabhängige Beteiligung verschiedener Rollen am Anwendungslebenszyklus. [Service Fabric-Anwendungslebenszyklus](service-fabric-application-lifecycle.md) bietet eine Übersicht über die APIs und wie sie von den verschiedenen Rollen während der Phasen des Service Fabric-Anwendungslebenszyklus verwendet werden. 
 
-Der gesamte App-Lebenszyklus kann mithilfe von [PowerShell-Cmdlets](/powershell/module/ServiceFabric/), [CLI-Befehle](service-fabric-sfctl.md), [C#-APIs](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java-APIs](/java/api/overview/azure/servicefabric) und [REST-APIs](/rest/api/servicefabric/). verwaltet werden. Sie können auch Continuous Integration-/Continuous Deployment-Pipelines mit Tools wie [Azure Pipelines](service-fabric-set-up-continuous-integration.md) oder [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) einrichten.
+Der gesamte App-Lebenszyklus kann mithilfe von [PowerShell-Cmdlets](/powershell/module/ServiceFabric/), [CLI-Befehle](service-fabric-sfctl.md), [C#-APIs](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java-APIs](/java/api/overview/azure/servicefabric) und [REST-APIs](/rest/api/servicefabric/). verwaltet werden. Sie können auch Continuous Integration-/Continuous Deployment-Pipelines mit Tools wie [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) oder [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster) einrichten.
 
 ## <a name="test-applications-and-services"></a>Testen von Anwendungen und Diensten
 Zum Erstellen echter Dienste für die Cloud müssen Sie unbedingt sicherstellen, dass Ihre Anwendungen und Dienste für die in der Praxis auftretenden Fehler gerüstet sind. Der Fault Analysis Service ist auf das Testen von Diensten ausgelegt, die in Service Fabric erstellt werden. Mit dem [Fault Analysis Service](service-fabric-testability-overview.md) können Sie aussagekräftige Fehler auslösen und vollständige Testszenarien für Ihre Anwendungen ausführen. Mit diesen Fehlern und Szenarien werden die verschiedenen Zustände und Übergänge durchgespielt und überprüft, die während der Lebensdauer eines Diensts auftreten – und zwar auf kontrollierte, sichere und einheitliche Weise.
@@ -116,14 +105,14 @@ Zum Erstellen echter Dienste für die Cloud müssen Sie unbedingt sicherstellen,
 * Das [Failovertestszenario](service-fabric-testability-scenarios.md#failover-test) ist eine Version des Chaostestszenarios für eine bestimmte Dienstpartition, während andere Dienste nicht betroffen sind.
 
 ## <a name="clusters"></a>Cluster
-Ein [Service Fabric-Cluster](service-fabric-deploy-anywhere.md) enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Cluster können auf Tausende von Computern skaliert werden. Ein Computer oder ein virtueller Computer, der Teil eines Clusters ist, wird als Clusterknoten bezeichnet. Jeder Knoten erhält einen Knotennamen (Zeichenfolge). Knoten weisen Merkmale wie etwa Platzierungseigenschaften auf. Jeder physische oder virtuelle Computer verfügt über einen Dienst für den automatischen Start (`FabricHost.exe`), der beim Start ausgeführt wird und dann zwei ausführbare Dateien startet: „Fabric.exe“ und „FabricGateway.exe“. Diese zwei ausführbaren Dateien bilden zusammen den Knoten. In Testszenarien können Sie mehrere Knoten auf einem einzelnen Computer oder virtuellen Computer hosten, indem Sie mehrere Instanzen von `Fabric.exe` und `FabricGateway.exe` ausführen.
+Ein [Service Fabric-Cluster](service-fabric-deploy-anywhere.md) enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Cluster können auf Tausende von Computern skaliert werden. Ein Computer oder ein virtueller Computer, der Teil eines Clusters ist, wird als Clusterknoten bezeichnet. Jeder Knoten erhält einen Knotennamen (Zeichenfolge). Knoten weisen Merkmale wie etwa Platzierungseigenschaften auf. Jeder Computer bzw. virtuelle Computer verfügt über einen automatisch gestarteten Dienst, `FabricHost.exe`, für den die Ausführung beim Hochfahren gestartet wird und mit dem dann zwei ausführbare Dateien gestartet werden: „Fabric.exe“ und „FabricGateway.exe“. Diese zwei ausführbaren Dateien bilden zusammen den Knoten. In Testszenarien können Sie mehrere Knoten auf einem einzelnen Computer oder virtuellen Computer hosten, indem Sie mehrere Instanzen von `Fabric.exe` und `FabricGateway.exe` ausführen.
 
 Service Fabric-Cluster können auf virtuellen oder physischen Computern erstellt werden, auf denen Windows Server oder Linux ausgeführt wird. Es lassen sich Service Fabric-Anwendungen in jeder lokalen oder cloudbasierten Umgebung oder in einer Microsoft Azure-Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Computer mit Windows Server oder Linux befinden.
 
 ### <a name="clusters-on-azure"></a>Cluster in Azure
-Das Ausführen von Service Fabric-Clustern unter Azure ermöglicht die Integration anderer Azure-Features und -Dienste, die den Betrieb und die Verwaltung des Clusters vereinfachen und zuverlässiger machen. Ein Cluster ist eine Azure Resource Manager-Ressource, daher können Sie Cluster wie alle anderen Ressourcen in Azure modellieren. Resource Manager ermöglicht auch eine einfache Verwaltung aller Ressourcen, die vom Cluster als einzelne Einheit verwendet werden. Cluster unter Azure werden mit Azure-Diagnose und Azure Monitor-Protokollen integriert. Clusterknotentypen sind [Skalierungsgruppen für virtuelle Computer](/azure/virtual-machine-scale-sets/index), daher sind automatische Skalierungsfunktionen bereits integriert.
+Das Ausführen von Service Fabric-Clustern unter Azure ermöglicht die Integration anderer Azure-Features und -Dienste, die den Betrieb und die Verwaltung des Clusters vereinfachen und zuverlässiger machen. Ein Cluster ist eine Azure Resource Manager-Ressource, daher können Sie Cluster wie alle anderen Ressourcen in Azure modellieren. Resource Manager ermöglicht auch eine einfache Verwaltung aller Ressourcen, die vom Cluster als einzelne Einheit verwendet werden. Cluster unter Azure werden mit Azure-Diagnose und Azure Monitor-Protokollen integriert. Clusterknotentypen sind [Skalierungsgruppen für virtuelle Computer](../virtual-machine-scale-sets/index.yml), daher sind automatische Skalierungsfunktionen bereits integriert.
 
-Sie können einen Cluster über das [Azure-Portal](service-fabric-cluster-creation-via-portal.md), mithilfe einer [Vorlage](service-fabric-cluster-creation-via-arm.md) oder mit [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md) in Azure erstellen.
+Sie können einen Cluster über das [Azure-Portal](service-fabric-cluster-creation-via-portal.md), mithilfe einer [Vorlage](service-fabric-cluster-creation-via-arm.md) oder mit [Visual Studio](./service-fabric-cluster-creation-via-arm.md) in Azure erstellen.
 
 Service Fabric unter Linux ermöglicht Ihnen, hoch verfügbare und skalierbare Anwendungen unter Linux (genauso wie unter Windows) zu erstellen, bereitzustellen und zu verwalten. Neben C# (.NET Core) stehen Service Fabric-Frameworks (Reliable Services und Reliable Actors) in Java unter Linux zur Verfügung. Sie können auch [ausführbare Gastdienste](service-fabric-guest-executables-introduction.md) mit jeder beliebigen Sprache und jedem beliebigen Framework erstellen. Orchestrierung von Docker-Containern wird ebenfalls unterstützt. Docker-Container können ausführbare Gastanwendungsdateien oder native Service Fabric-Dienste ausführen, die die Service Fabric-Frameworks nutzen. Weitere Informationen finden Sie unter [Service Fabric unter Linux](service-fabric-deploy-anywhere.md).
 
@@ -142,12 +131,12 @@ Cluster müssen immer gesichert werden, um zu verhindern, dass nicht autorisiert
 Die Szenarien für die Clustersicherheit sind:
 * Knoten-zu-Knoten-Sicherheit
 * Client-zu-Knoten-Sicherheit
-* Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+* Rollenbasierte Service Fabric-Zugriffssteuerung
 
 Weitere Informationen hierzu finden Sie unter [Schützen eines Clusters](service-fabric-cluster-security.md).
 
-### <a name="scaling"></a>Skalieren
-Wenn Sie dem Cluster neue Knoten hinzufügen, verteilt Service Fabric die Partitionsreplikate und Instanzen auf die erhöhte Anzahl von Knoten neu, um sie auszugleichen. Die Gesamtleistung der Anwendung verbessert sich und Konflikte beim Speicherzugriff werden reduziert. Wenn die Knoten im Cluster nicht effizient genutzt werden, können Sie die Anzahl der Knoten im Cluster verringern. Service Fabric gleicht die Partitionsreplikate und Instanzen erneut über die verringerte Anzahl von Knoten aus, um die Hardware der einzelnen Knoten besser zu nutzen. Sie können Cluster in Azure entweder [manuell](service-fabric-cluster-scale-up-down.md) oder [programmgesteuert](service-fabric-cluster-programmatic-scaling.md) skalieren. Eigenständige Cluster können [manuell](service-fabric-cluster-windows-server-add-remove-nodes.md) skaliert werden.
+### <a name="scaling"></a>Skalierung
+Wenn Sie dem Cluster neue Knoten hinzufügen, verteilt Service Fabric die Partitionsreplikate und Instanzen auf die erhöhte Anzahl von Knoten neu, um sie auszugleichen. Die Gesamtleistung der Anwendung verbessert sich und Konflikte beim Speicherzugriff werden reduziert. Wenn die Knoten im Cluster nicht effizient genutzt werden, können Sie die Anzahl der Knoten im Cluster verringern. Service Fabric gleicht die Partitionsreplikate und Instanzen erneut über die verringerte Anzahl von Knoten aus, um die Hardware der einzelnen Knoten besser zu nutzen. Sie können Cluster in Azure entweder [manuell](service-fabric-cluster-scale-in-out.md) oder [programmgesteuert](service-fabric-cluster-programmatic-scaling.md) skalieren. Eigenständige Cluster können [manuell](service-fabric-cluster-windows-server-add-remove-nodes.md) skaliert werden.
 
 ### <a name="cluster-upgrades"></a>Clusterupgrades
 Es werden Regelmäßig neue Versionen der Service Fabric-Runtime veröffentlicht. Führen Sie Runtime-Upgrades (oder Fabric-Upgrades) auf Ihrem Cluster aus, damit Sie immer eine [unterstützte Version](service-fabric-support.md) ausführen. Zusätzlich zu Fabric-Upgrades können Sie auch die Clusterkonfiguration aktualisieren, z. B. Zertifikate oder Anwendungsports.
@@ -200,9 +189,9 @@ Mehrere Produkte sind erhältlich, die alle drei Bereiche abdecken. Zudem könne
 * Informieren Sie sich über [Lokales Überwachen und Diagnostizieren von Diensten](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). 
 * Informieren Sie sich über das [Testen von Apps und Diensten.](service-fabric-testability-overview.md)
 * Informieren Sie sich über das [Verwalten und Orchestrieren von Clusterressourcen](service-fabric-cluster-resource-manager-introduction.md).
-* Betrachten Sie die verschiedenen [Service Fabric-Beispiele](https://aka.ms/servicefabricsamples).
+* Betrachten Sie die verschiedenen [Service Fabric-Beispiele](/samples/browse/?products=azure).
 * Informieren Sie sich über [Service Fabric-Supportoptionen](service-fabric-support.md).
-* Lesen Sie Artikel und Ankündigungen im [Teamblog](https://blogs.msdn.microsoft.com/azureservicefabric/).
+* Lesen Sie Artikel und Ankündigungen im [Teamblog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric).
 
 
 [cluster-application-instances]: media/service-fabric-content-roadmap/cluster-application-instances.png

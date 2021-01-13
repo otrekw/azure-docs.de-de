@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 31c432b884ce92c508dd7f893c12ba13acff28e8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 72bf252488878c8b6fabb2ea2d61658a2cd87e14
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963511"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966206"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple-Sicherheit und -Datenschutz
 
@@ -234,7 +234,7 @@ Die folgenden Fragen und Antworten beziehen sich auf die Sicherheit und Microsof
 
 **A:** Dieser Schlüssel wurde erstellt, als Sie den StorSimple-Geräte-Manager-Dienst erstmals erstellt haben. Wenn Sie eine Verbindung mit dem Gerät mithilfe des StorSimple-Geräte-Manager-Diensts herstellen, können Sie den Dienstregistrierungsschlüssel auf der Seite „Schnellstart“ des Diensts anzeigen oder erneut generieren. Das Generieren eines neuen Dienstregistrierungsschlüssels wirkt sich nicht auf die vorhandenen registrierten Geräte aus. Anweisungen dazu finden Sie unter:
 
-* [Anzeigen oder Neugenerieren des Dienstregistrierungsschlüssels](storsimple-8000-manage-service.md##regenerate-the-service-registration-key)
+* [Anzeigen oder Neugenerieren des Dienstregistrierungsschlüssels](storsimple-8000-manage-service.md#regenerate-the-service-registration-key)
 
 **F:** Ich habe meinen Verschlüsselungsschlüssel für Dienstdaten verloren. Wie gehe ich vor?
 
@@ -269,7 +269,7 @@ Die folgenden Fragen und Antworten beziehen sich auf die Sicherheit und Microsof
 
 **A:** Sie können das neue Zertifikat aus dem StorSimple-Geräte-Manager-Dienst herunterladen und dann für die Installation im Zertifikatspeicher der Remotezugriffsclients bereitstellen. Anweisungen dazu finden Sie unter:
 
-* [Cmdlet "Import-Certificate"](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
+* [Cmdlet "Import-Certificate"](/powershell/module/pkiclient/import-certificate)
 
 **F:** Sind meine Daten im Fall einer Gefährdung des StorSimple-Geräte-Manager-Diensts geschützt?
 
@@ -288,4 +288,3 @@ Die folgenden Fragen und Antworten beziehen sich auf die Sicherheit und Microsof
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Bereitstellen von StorSimple-Geräten](storsimple-8000-deployment-walkthrough-u2.md).
-

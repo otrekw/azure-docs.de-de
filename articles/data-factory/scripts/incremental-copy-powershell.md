@@ -1,24 +1,24 @@
 ---
-title: 'PowerShell-Skript: Inkrementelles Laden von Daten mithilfe von Azure Data Factory | Microsoft-Dokumentation'
-description: Dieses PowerShell-Skript veranschaulicht, wie Sie Azure Data Factory zum inkrementellen Kopieren von Daten aus einer Azure SQL-Datenbank in eine Azure Blob Storage-Instanz verwenden.
+title: Inkrementelles Laden von Daten mithilfe von PowerShell
+description: Dieses PowerShell-Skript veranschaulicht, wie Sie Azure Data Factory zum inkrementellen Kopieren von Daten aus einer Azure SQL-Datenbank in eine Azure Blob Storage-Instanz verwenden.
 services: data-factory
+ms.author: jingwang
 author: linda33wj
-manager: craigg
-editor: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2017
-ms.author: jingwang
-ms.openlocfilehash: 5ae6d6ed06aa5734dc601e6e72ba55ec8ddf7bcf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: seo-lt-2019
+ms.date: 03/12/2020
+ms.openlocfilehash: 2024fc6c4640f79e5001472f29803c6cef1c07a1
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160639"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636611"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell-Skript: Inkrementelles Laden von Daten mithilfe von Azure Data Factory
+
 Dieses PowerShell-Beispielskript lädt nach der vollständigen Erstkopie von Daten aus der Quelle in die Senke nur neue oder aktualisierte Datensätze aus einem Quelldatenspeicher in einen Senkendatenspeicher.  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -32,7 +32,7 @@ Die Voraussetzungen zum Ausführen dieses Beispiels finden Sie unter [Inkremente
 > [!IMPORTANT]
 > Dieses Skript erstellt JSON-Dateien, die Data Factory-Entitäten (verknüpften Dienst, Dataset und Pipeline) auf der Festplatte im Ordner „c:\“ definieren.
 
-[!code-powershell[main](../../../powershell_scripts/data-factory/incremental-copy-from-azure-sql-to-blob/incremental-copy-from-azure-sql-to-blob.ps1 "Incremental copy from Azure SQL Database to Azure Blob Storage")]
+:::code language="powershell" source="~/powershell_scripts/data-factory/incremental-copy-from-azure-sql-to-blob/incremental-copy-from-azure-sql-to-blob.ps1":::
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
@@ -65,6 +65,6 @@ Das Skript verwendet die folgenden Befehle:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/).
 
 Zusätzliche PowerShell-Skriptbeispiele für Azure Data Factory finden Sie unter [PowerShell-Beispiele für Azure Data Factory](../samples-powershell.md).

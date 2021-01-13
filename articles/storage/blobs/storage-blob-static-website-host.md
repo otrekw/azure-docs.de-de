@@ -5,23 +5,23 @@ author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 4cc38b952e773002e0b5f6b2311187f8d3d46400
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 36cdaa813e0eccb23563301052aee268ab61533a
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855385"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888503"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
 # <a name="tutorial-host-a-static-website-on-blob-storage"></a>Tutorial: Hosten einer statischen Website in Blob Storage
 
-Dieses Tutorial ist der erste Teil einer Serie. Darin wird beschrieben, wie Sie eine statische Website erstellen und in Azure Storage bereitstellen. Nach Abschluss des Vorgangs verfügen Sie über eine statische Website, auf die Benutzer öffentlich zugreifen können. 
+In diesem Tutorial wird beschrieben, wie Sie eine statische Website erstellen und in Azure Storage bereitstellen. Nach Abschluss des Vorgangs verfügen Sie über eine statische Website, auf die Benutzer öffentlich zugreifen können. 
 
-Im ersten Teil der Serie lernen Sie Folgendes:
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Konfigurieren des Hostens von statischen Websites
@@ -30,6 +30,9 @@ Im ersten Teil der Serie lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+
+> [!NOTE] 
+> Erstellen Sie unbedingt ein Standardspeicherkonto vom Typ „Universell v2 (GPv2)“. Statische Websites sind in keinem anderen Speicherkontotyp verfügbar.
 
 In diesem Tutorial wird [Visual Studio Code](https://code.visualstudio.com/download) verwendet. Hierbei handelt es sich um ein kostenloses Tool für Programmierer, mit dem die statische Website erstellt und in einem Azure Storage-Konto bereitgestellt werden kann.
 
@@ -74,14 +77,24 @@ Erstellen Sie als Nächstes eine Hello World-Webseite mit Visual Studio Code, un
 1. Öffnen Sie die Datei *index.html* im Editor, fügen Sie den folgenden Text in die Datei ein, und speichern Sie sie:
 
     ```
-    <h1>Hello World!</h1>
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <h1>Hello World!</h1>
+      </body>
+    </html>
     ```
 
 1. Erstellen Sie die Standardfehlerdatei, und geben Sie ihr den Namen *404.html*.
 1. Öffnen Sie die Datei *404.html* im Editor, fügen Sie den folgenden Text in die Datei ein, und speichern Sie sie:
 
     ```
-    <h1>404</h1>
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <h1>404</h1>
+      </body>
+    </html>
     ```
 
 1. Klicken Sie unter dem Ordner *mywebsite* mit der rechten Maustaste in den Bereich **Explorer**, und wählen Sie **Deploy to Static Website...** (Auf statischer Website bereitstellen...), um Ihre Website bereitzustellen. Sie werden aufgefordert, sich an Azure anzumelden, um eine Liste mit Abonnements abzurufen.
@@ -90,15 +103,13 @@ Erstellen Sie als Nächstes eine Hello World-Webseite mit Visual Studio Code, un
 
 Visual Studio Code lädt Ihre Dateien jetzt auf Ihren Webendpunkt hoch und zeigt die Statusleiste an, damit Sie den Vorgang verfolgen können. Starten Sie die Website, um sie in Azure anzuzeigen.
 
-![Anzeigen der Bereitstellung von statischen Websites in Azure](media/storage-blob-static-website-host/view-static-website-endpoint.png)
-
 Sie haben das Tutorial erfolgreich abgeschlossen und eine statische Website in Azure bereitgestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im ersten Teil dieses Tutorials wurde beschrieben, wie Sie Ihr Azure Storage-Konto für das Hosten von statischen Websites konfigurieren und eine statische Website auf einem Azure-Endpunkt erstellen und bereitstellen.
+In diesem Tutorial wurde beschrieben, wie Sie Ihr Azure Storage-Konto für das Hosten von statischen Websites konfigurieren und eine statische Website auf einem Azure-Endpunkt erstellen und bereitstellen.
 
-Fahren Sie jetzt mit Teil 2 fort, in dem Sie eine benutzerdefinierte Domäne mit SSL für Ihre statische Website mit Azure CDN konfigurieren.
+Als Nächstes erfahren Sie, wie Sie eine benutzerdefinierte Domäne mit Ihrer statischen Website konfigurieren.
 
 > [!div class="nextstepaction"]
-> [Verwenden von Azure CDN zum Aktivieren einer benutzerdefinierten Domäne mit SSL für eine statische Website](storage-blob-static-website-custom-domain.md)
+> [Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md)

@@ -1,45 +1,50 @@
 ---
-title: Tutorial – Erstellen benutzerdefinierter VM-Images mit Azure PowerShell | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Erstellen eines benutzerdefinierten VM-Images in Azure verwenden.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
+title: 'Tutorial: Erstellen benutzerdefinierter VM-Images mit Azure PowerShell'
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure PowerShell ein benutzerdefiniertes Image für virtuelle Windows-Computer in einer Azure Shared Image Gallery-Instanz erstellen.
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: imaging
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/30/2018
+ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 24a382680860890e57c8d5a380b8a1bb097baaa1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cf8fc9916384c9eef24c4c50f7647632c0e6b7a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101683"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87077464"
 ---
-# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit Azure PowerShell
+# <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>Tutorial: Erstellen von Windows-VM-Images mit Azure PowerShell
 
-Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können für das Bootstrapping von Bereitstellungen verwendet werden und sorgen für VM-übergreifende Konsistenz. In diesem Tutorial erstellen Sie mithilfe von PowerShell ein eigenes benutzerdefiniertes Image eines virtuellen Azure-Computers. Folgendes wird vermittelt:
+Images können für das Bootstrapping von Bereitstellungen verwendet werden und sorgen für VM-übergreifende Konsistenz. In diesem Tutorial erstellen Sie mithilfe von PowerShell ein eigenes spezialisiertes Image eines virtuellen Azure-Computers und speichern es in einer Shared Image Gallery-Instanz. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Sysprep und Generalisieren virtueller Computer
-> * Erstellen eines benutzerdefinierten Images
-> * Erstellen eines virtuellen Computers aus einem benutzerdefinierten Image
-> * Liste aller Images in Ihrem Abonnement
-> * Löschen eines Images
+> * Erstellen einer Shared Image Gallery-Instanz
+> * Erstellen einer Imagedefinition
+> * Erstellen einer Imageversion
+> * Erstellen eines virtuellen Computers aus einem Image 
+> * Freigeben eines Imagekatalogs
 
-In der öffentlichen Vorschauversion ist der Dienst [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) verfügbar. Beschreiben Sie einfach Ihre Anpassungen in einer Vorlage, und diese übernimmt die Schritte zur Imageerstellung in diesem Artikel. Probieren Sie [Azure Image Builder (Vorschau)](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder) aus.
+
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In den folgenden Schritten wird erläutert, wie Sie eine vorhandene VM in ein wiederverwendbares benutzerdefiniertes Image umwandeln, mit dem Sie neue VM-Instanzen erstellen können.
+In den folgenden Schritten wird erläutert, wie Sie eine vorhandene VM in ein wiederverwendbares benutzerdefiniertes Image umwandeln, mit dem Sie neue VMs erstellen können.
 
-Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein. Gegebenenfalls können Sie mit diesem [Beispielskript](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) einen virtuellen Computer erstellen. Ersetzen Sie beim Durcharbeiten des Tutorials bei Bedarf den Namen der Ressourcengruppe und des virtuellen Computers.
+Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein. Sehen Sie sich ggf. die [Schnellstartanleitung zu PowerShell](quick-create-powershell.md) an, um einen virtuellen Computer für dieses Tutorial zu erstellen. Ersetzen Sie beim Durcharbeiten des Tutorials bei Bedarf die Ressourcennamen.
+
+## <a name="overview"></a>Übersicht
+
+Der [Katalog mit freigegebenen Images](shared-image-galleries.md) vereinfacht das Freigeben benutzerdefinierter Images in Ihrer Organisation. Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Starten von Konfigurationen verwendet werden, z.B. zum Vorabladen von Anwendungen, Anwendungskonfigurationen und anderen Betriebssystemkonfigurationen. 
+
+Mithilfe eines Katalogs mit freigegebenen Images können Sie Ihre benutzerdefinierten VM-Images für andere Benutzer freigeben. Wählen Sie aus, welche Images Sie teilen möchten, in welchen Regionen Sie sie verfügbar machen möchten, und mit wem Sie sie teilen möchten. 
+
+Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressourcentypen:
+
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
+
 
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
 
@@ -47,126 +52,175 @@ Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritt
 
 Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach die Option **Ausprobieren**. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte starten, indem Sie zu [https://shell.azure.com/powershell](https://shell.azure.com/powershell) navigieren. Wählen Sie **Kopieren**, um die Blöcke mit dem Code zu kopieren. Fügen Sie ihn anschließend in Cloud Shell ein, und drücken Sie die EINGABETASTE, um ihn auszuführen.
 
-## <a name="prepare-vm"></a>Vorbereiten der VM
+## <a name="get-the-vm"></a>Abrufen des virtuellen Computers
 
-Wenn Sie ein Image eines virtuellen Computers erstellen möchten, müssen Sie den virtuellen Quellcomputer vorbereiten, indem Sie ihn generalisieren, die Zuordnung aufheben und ihn dann mit Azure als generalisiert markieren.
-
-### <a name="generalize-the-windows-vm-using-sysprep"></a>Generalisieren der Windows-VM mithilfe von Sysprep
-
-Sysprep entfernt unter anderem alle persönlichen Kontoinformationen, und bereitet den Computer darauf vor, als Image verwendet zu werden. Weitere Informationen zu Sysprep finden Sie unter [How to Use Sysprep: An Introduction](https://technet.microsoft.com/library/bb457073.aspx) (Verwenden von Sysprep: Eine Einführung).
-
-
-1. Stellen Sie eine Verbindung mit dem virtuellen Computer her.
-2. Öffnen Sie das Eingabeaufforderungsfenster als Administrator. Wechseln Sie in das Verzeichnis *%windir%\system32\sysprep*, und führen Sie anschließend `sysprep.exe` aus.
-3. Wählen Sie unter **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren**, und vergewissern Sie sich, dass das Kontrollkästchen **Verallgemeinern** aktiviert ist.
-4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren** aus, und klicken Sie auf **OK**.
-5. Nach Abschluss von Sysprep wird die virtuelle Maschine heruntergefahren. **Starten Sie den virtuellen Computer nicht neu**.
-
-### <a name="deallocate-and-mark-the-vm-as-generalized"></a>Aufheben der Zuordnung und Markieren des virtuellen Computers als generalisiert
-
-Um ein Image zu erstellen, muss die Zuordnung des virtuellen Computers aufgehoben werden, und er muss in Azure als generalisiert markiert werden.
-
-Heben Sie mit [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) die Zuordnung des virtuellen Computers auf.
+Mit [Get-AzVM](/powershell/module/az.compute/get-azvm) können Sie eine Liste der VMs abrufen, die in einer Ressourcengruppe verfügbar sind. Wenn Sie den Namen und die Ressourcengruppe des virtuellen Computers kennen, können Sie erneut `Get-AzVM` verwenden, um das VM-Objekt abzurufen und für die spätere Verwendung in einer Variablen zu speichern. Dieses Beispiel ruft die VM *sourceVM* aus der Ressourcengruppe „myResourceGroup“ ab und weist es der Variablen *$sourceVM* zu. 
 
 ```azurepowershell-interactive
-Stop-AzVM `
-   -ResourceGroupName myResourceGroup `
-   -Name myVM -Force
+$sourceVM = Get-AzVM `
+   -Name sourceVM `
+   -ResourceGroupName myResourceGroup
 ```
 
-Legen Sie mithilfe von [Set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) den Status des virtuellen Computers auf `-Generalized` fest. 
+## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+
+Erstellen Sie mit dem Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe.
+
+Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myGalleryRG* in der Region *EastUS* erstellt:
+
+```azurepowershell-interactive
+$resourceGroup = New-AzResourceGroup `
+   -Name 'myGalleryRG' `
+   -Location 'EastUS'
+```
+
+## <a name="create-an-image-gallery"></a>Erstellen eines Imagekatalogs 
+
+Ein Imagekatalog ist die primäre Ressource, die zur Ermöglichung des Teilens von Images verwendet wird. Zulässige Zeichen für Katalognamen sind Groß- und Kleinbuchstaben, Zahlen und Punkte. Der Katalogname darf keine Bindestriche enthalten. Katalognamen müssen innerhalb Ihres Abonnements eindeutig sein. 
+
+Erstellen Sie mit [New-AzGallery](/powershell/module/az.compute/new-azgallery) einen Imagekatalog. Im folgenden Beispiel wird der Katalog *myGallery* in der Ressourcengruppe *myGalleryRG* erstellt.
+
+```azurepowershell-interactive
+$gallery = New-AzGallery `
+   -GalleryName 'myGallery' `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -Description 'Shared Image Gallery for my organization'  
+```
+
+
+## <a name="create-an-image-definition"></a>Erstellen einer Imagedefinition 
+
+Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden verwendet, um Informationen über die Imageversionen zu verwalten, die in ihnen erstellt werden. Namen für Imagedefinition können aus Groß- und Kleinbuchstaben, Zahlen, Punkten und (Binde)Strichen bestehen. Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](./shared-image-galleries.md#image-definitions).
+
+Erstellen Sie die Imagedefinition mit [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). In diesem Beispiel hat das Katalogimage den Namen *myGalleryImage* und wird für ein spezialisiertes Image erstellt. 
+
+```azurepowershell-interactive
+$galleryImage = New-AzGalleryImageDefinition `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $gallery.Location `
+   -Name 'myImageDefinition' `
+   -OsState specialized `
+   -OsType Windows `
+   -Publisher 'myPublisher' `
+   -Offer 'myOffer' `
+   -Sku 'mySKU'
+```
+
+
+## <a name="create-an-image-version"></a>Erstellen einer Imageversion
+
+Erstellen Sie mit [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) eine Imageversion aus einem virtuellen Computer. 
+
+Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen im Bereich einer ganzen 32-Bit-Zahl liegen. Format: *Hauptversion*.*Nebenversion*.*Patch*.
+
+In diesem Beispiel lautet die Imageversion *1.0.0*. Sie wird in den Rechenzentren *USA, Osten* und *USA, Süden-Mitte* repliziert. Bei der Auswahl der Zielregionen für die Replikation müssen Sie die *Quellregion* als Ziel für die Replikation angeben.
+
+Verwenden Sie `$vm.Id.ToString()` für `-Source`, um eine Imageversion des virtuellen Computers zu erstellen.
+
+```azurepowershell-interactive
+   $region1 = @{Name='South Central US';ReplicaCount=1}
+   $region2 = @{Name='East US';ReplicaCount=2}
+   $targetRegions = @($region1,$region2)
+
+New-AzGalleryImageVersion `
+   -GalleryImageDefinitionName $galleryImage.Name`
+   -GalleryImageVersionName '1.0.0' `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -TargetRegion $targetRegions  `
+   -Source $sourceVM.Id.ToString() `
+   -PublishingProfileEndOfLifeDate '2020-12-01'
+```
+
+Es kann eine Weile dauern, bis das Image in alle Zielregionen repliziert ist.
+
+
+## <a name="create-a-vm"></a>Erstellen einer VM 
+
+Wenn Sie ein spezialisiertes Image erstellt haben, können Sie eine neue VM oder mehrere neue VMs erstellen. Mithilfe des Cmdlets [New-AzVM](/powershell/module/az.compute/new-azvm). Verwenden Sie zur Nutzung des Images `Set-AzVMSourceImage`, und legen Sie `-Id` auf die Imagedefinitions-ID (in diesem Fall „$galleryImage.Id“) fest, damit stets die aktuelle Imageversion verwendet wird. 
+
+Ersetzen Sie bei Bedarf die Ressourcennamen in diesem Beispiel. 
+
+```azurepowershell-interactive
+# Create some variables for the new VM.
+$resourceGroup = "myResourceGroup"
+$location = "South Central US"
+$vmName = "mySpecializedVM"
+
+# Create a resource group
+New-AzResourceGroup -Name $resourceGroup -Location $location
+
+# Create the network resources.
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+$vnet = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $location `
+  -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+$pip = New-AzPublicIpAddress -ResourceGroupName $resourceGroup -Location $location `
+  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
+  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+  -DestinationPortRange 3389 -Access Allow
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
+  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
+$nic = New-AzNetworkInterface -Name $vmName -ResourceGroupName $resourceGroup -Location $location `
+  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+
+# Create a virtual machine configuration using $imageVersion.Id to specify the image version.
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
+Set-AzVMSourceImage -Id $galleryImage.Id | `
+Add-AzVMNetworkInterface -Id $nic.Id
+
+# Create a virtual machine
+New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+```
+
+
+## <a name="share-the-gallery"></a>Teilen des Katalogs
+
+Wir empfehlen, dass Sie den Zugriff auf der Ebene des Imagekatalogs teilen. Verwenden Sie eine E-Mail-Adresse und das Cmdlet [Get-AzADUser](/powershell/module/az.resources/get-azaduser), um die Objekt-ID für den Benutzer abzurufen, und verwenden Sie dann [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment), um ihnen Zugriff auf den Katalog zu gewähren. Ersetzen Sie die Beispiel-E-Mail-Adresse alinne_montes@contoso.com in diesem Beispiel durch Ihre eigenen Informationen.
+
+```azurepowershell-interactive
+# Get the object ID for the user
+$user = Get-AzADUser -StartsWith alinne_montes@contoso.com
+# Grant access to the user for our gallery
+New-AzRoleAssignment `
+   -ObjectId $user.Id `
+   -RoleDefinitionName Reader `
+   -ResourceName $gallery.Name `
+   -ResourceType Microsoft.Compute/galleries `
+   -ResourceGroupName $resourceGroup.ResourceGroupName
+```
    
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn die Ressourcengruppe und alle dazugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Cmdlet [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) entfernen:
+
 ```azurepowershell-interactive
-Set-AzVM `
-   -ResourceGroupName myResourceGroup `
-   -Name myVM -Generalized
+# Delete the gallery 
+Remove-AzResourceGroup -Name myGalleryRG
+
+# Delete the VM
+Remove-AzResourceGroup -Name myResoureceGroup
 ```
 
+## <a name="azure-image-builder"></a>Azure Image Builder
 
-## <a name="create-the-image"></a>Erstellen des Images
-
-Nun können Sie mit [New-AzImageConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig) und [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage) ein Image des virtuellen Computers erstellen. Im folgenden Beispiel wird ein Image mit dem Namen *myImage* vom virtuellen Computer *myVM* erstellt.
-
-Rufen Sie den virtuellen Computer ab. 
-
-```azurepowershell-interactive
-$vm = Get-AzVM `
-   -Name myVM `
-   -ResourceGroupName myResourceGroup
-```
-
-Erstellen Sie die Imagekonfiguration.
-
-```azurepowershell-interactive
-$image = New-AzImageConfig `
-   -Location EastUS `
-   -SourceVirtualMachineId $vm.ID 
-```
-
-Erstellen Sie das Image.
-
-```azurepowershell-interactive
-New-AzImage `
-   -Image $image `
-   -ImageName myImage `
-   -ResourceGroupName myResourceGroup
-``` 
-
- 
-## <a name="create-vms-from-the-image"></a>Erstellen von VMs anhand des Images
-
-Nachdem Sie ein Image erstellt haben, können Sie anhand des Images eine oder mehrere neue VMs erstellen. Das Erstellen einer VM anhand eines benutzerdefinierten Images ist vergleichbar mit dem Erstellen einer VM mithilfe eines Marketplace-Images. Wenn Sie ein Marketplace-Image verwenden, müssen Sie Informationen zum Image, zu dessen Anbieter, zum Angebot, zur SKU und Version bereitstellen. Mit dem vereinfachten Parametersatz für das Cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) müssen Sie nur den Namen des benutzerdefinierten Images angeben (vorausgesetzt, es befindet sich in der gleichen Ressourcengruppe). 
-
-Dieses Beispiel erstellt auf der Grundlage des Images *myImage* einen virtuellen Computer namens *myVMfromImage* in *myResourceGroup*.
-
-
-```azurepowershell-interactive
-New-AzVm `
-    -ResourceGroupName "myResourceGroup" `
-    -Name "myVMfromImage" `
-    -ImageName "myImage" `
-    -Location "East US" `
-    -VirtualNetworkName "myImageVnet" `
-    -SubnetName "myImageSubnet" `
-    -SecurityGroupName "myImageNSG" `
-    -PublicIpAddressName "myImagePIP" `
-    -OpenPorts 3389
-```
-
-## <a name="image-management"></a>Verwaltung von Images 
-
-Hier sind einige Beispiele für allgemeine Aufgaben des verwalteten Images und ihre Ausführung mithilfe von PowerShell.
-
-Auflisten aller Images nach Namen.
-
-```azurepowershell-interactive
-$images = Get-AzResource -ResourceType Microsoft.Compute/images 
-$images.name
-```
-
-Löschen eines Images. Dieses Beispiel löscht das Image mit dem Namen *myImage* aus *myResourceGroup*.
-
-```azurepowershell-interactive
-Remove-AzImage `
-    -ImageName myImage `
-    -ResourceGroupName myResourceGroup
-```
+Azure bietet darüber hinaus den auf Packer basierenden Dienst [Azure VM Image Builder](./image-builder-overview.md). Beschreiben Sie einfach Ihre Anpassungen in einer Vorlage, und diese übernimmt die Imageerstellung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie ein benutzerdefiniertes Image eines virtuellen Computers erstellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie ein spezialisiertes VM-Image erstellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Sysprep und Generalisieren virtueller Computer
-> * Erstellen eines benutzerdefinierten Images
-> * Erstellen eines virtuellen Computers aus einem benutzerdefinierten Image
-> * Liste aller Images in Ihrem Abonnement
-> * Löschen eines Images
+> * Erstellen einer Shared Image Gallery-Instanz
+> * Erstellen einer Imagedefinition
+> * Erstellen einer Imageversion
+> * Erstellen eines virtuellen Computers aus einem Image 
+> * Freigeben eines Imagekatalogs
 
 Im nächsten Tutorial erhalten Sie Informationen zum Erstellen hoch verfügbarer virtueller Computer.
 
 > [!div class="nextstepaction"]
 > [Erstellen eines hoch verfügbaren virtuellen Computers](tutorial-availability-sets.md)
-
-
-

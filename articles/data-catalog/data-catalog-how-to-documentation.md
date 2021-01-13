@@ -4,19 +4,19 @@ description: Anleitungsartikel, in dem die Dokumentation von Datenressourcen in 
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: e9e9013d354585d04f205feb93a84d94c0f05905
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 3674c316e34b1e54ed8282ac7d2c228a2b774c06
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950184"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019020"
 ---
 # <a name="how-to-document-data-sources-in-azure-data-catalog"></a>Dokumentieren von Datenquellen in Azure Data Catalog
 
 ## <a name="introduction"></a>Einführung
-**Microsoft Azure Data Catalog** ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenquellen von Unternehmen dient. Mit anderen Worten ist es die Aufgabe von **Azure Data Catalog** , den Benutzern zu helfen, Datenquellen zu ermitteln, zu *verstehen*und zu nutzen, und Unternehmen zu helfen, mehr Nutzen aus ihren vorhandenen Daten zu ziehen.
+**Microsoft Azure Data Catalog** ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenquellen von Unternehmen dient. Mit anderen Worten ist es die Aufgabe von **Azure Data Catalog** , den Benutzern zu helfen, Datenquellen zu ermitteln, zu *verstehen* und zu nutzen, und Unternehmen zu helfen, mehr Nutzen aus ihren vorhandenen Daten zu ziehen.
 
 Wenn eine Datenquelle in **Azure Data Catalog** registriert wird, werden ihre Metadaten vom Dienst kopiert und indiziert. Dies ist aber noch nicht alles. **Azure Data Catalog** ermöglicht Benutzern auch das Bereitstellen ihrer eigenen vollständigen Dokumentation, in der die Verwendung und allgemeine Szenarien für die Datenquelle beschrieben werden können.
 

@@ -1,22 +1,17 @@
 ---
-title: 'Authentifizierung von Endbenutzern: REST-API mit Azure Data Lake Storage Gen1 mit Azure Active Directory | Microsoft-Dokumentation'
+title: Authentifizierung von Endbenutzern – REST bei Data Lake Storage Gen1 – Azure
 description: Hier erfahren Sie, wie Sie die Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe von Azure Active Directory und der REST-API umsetzen.
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 0ef65c23ee1bf4f064695779b71c8616427da204
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 462cd06c9da3b1f0a57c293d52c59181372b709b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60877821"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103746"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe der REST-API
 > [!div class="op_single_selector"]
@@ -46,23 +41,25 @@ In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert.
 
 1. Leiten Sie den Benutzer über die Anwendung an die folgende URL um:
 
-        https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
+    `https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>`
 
    > [!NOTE]
-   > \<REDIRECT-URI&gt; muss für die Verwendung in einer URL codiert werden. Für https://localhost verwenden Sie also `https%3A%2F%2Flocalhost` ).
+   > \<REDIRECT-URI> muss für die Verwendung in einer URL codiert werden. Für https://localhost verwenden Sie also `https%3A%2F%2Flocalhost` ).
 
     In diesem Tutorial können Sie die Platzhalterwerte in der URL oben ersetzen und in der Adressleiste des Webbrowsers einfügen. Sie werden umgeleitet und authentifizieren sich mit Ihrer Azure-Anmeldung. Nachdem Sie sich erfolgreich angemeldet haben, wird die Antwort in der Adressleiste des Browsers angezeigt. Die Antwort wird im folgenden Format angezeigt:
 
-        http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
+    `http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>`
 
 2. Erfassen Sie den in der Antwort angegebenen Autorisierungscode. In diesem Tutorial können Sie den Autorisierungscode aus der Adressleiste des Webbrowsers kopieren und wie im folgenden Codeausschnitt gezeigt in der POST-Anforderung an den Tokenendpunkt übergeben:
 
-        curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
-        -F redirect_uri=<REDIRECT-URI> \
-        -F grant_type=authorization_code \
-        -F resource=https://management.core.windows.net/ \
-        -F client_id=<APPLICATION-ID> \
-        -F code=<AUTHORIZATION-CODE>
+    ```console
+    curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
+    -F redirect_uri=<REDIRECT-URI> \
+    -F grant_type=authorization_code \
+    -F resource=https://management.core.windows.net/ \
+    -F client_id=<APPLICATION-ID> \
+    -F code=<AUTHORIZATION-CODE>
+    ```
 
    > [!NOTE]
    > In diesem Fall muss \<REDIRECT-URI> nicht codiert werden.
@@ -71,21 +68,24 @@ In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert.
 
 3. Die Antwort ist ein JSON-Objekt, das ein Zugriffstoken (z.B. `"access_token": "<ACCESS_TOKEN>"`) und ein Aktualisierungstoken (z.B. `"refresh_token": "<REFRESH_TOKEN>"`) enthält. Die Anwendung verwendet das Zugriffstoken beim Zugriff auf Azure Data Lake Storage Gen1 und das Aktualisierungstoken zum Abrufen eines anderen Zugriffstokens, wenn ein Zugriffstoken abläuft.
 
-        {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
+    ```json
+    {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
+    ```
 
 4. Wenn das Zugriffstoken abläuft, können Sie wie im folgenden Codeausschnitt gezeigt mithilfe des Aktualisierungstokens ein neues Zugriffstoken anfordern:
 
-        curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
-             -F grant_type=refresh_token \
-             -F resource=https://management.core.windows.net/ \
-             -F client_id=<APPLICATION-ID> \
-             -F refresh_token=<REFRESH-TOKEN>
+    ```console
+    curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
+         -F grant_type=refresh_token \
+         -F resource=https://management.core.windows.net/ \
+         -F client_id=<APPLICATION-ID> \
+         -F refresh_token=<REFRESH-TOKEN>
+    ```
 
-Weitere Informationen zur interaktiven Benutzerauthentifizierung finden Sie unter [Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory](https://msdn.microsoft.com/library/azure/dn645542.aspx).
+Weitere Informationen zur interaktiven Benutzerauthentifizierung finden Sie unter [Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory](/previous-versions/azure/dn645542(v=azure.100)).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie erfahren, wie Sie die Authentifizierung zwischen Diensten verwenden, um sich mit der REST-API bei Azure Data Lake Storage Gen1 zu authentifizieren. In den folgenden Artikeln wird erörtert, wie Sie die REST-API mit Azure Data Lake Storage Gen1 verwenden.
 
 * [Kontoverwaltungsvorgänge für Azure Data Lake Storage Gen1 mit der REST-API](data-lake-store-get-started-rest-api.md)
 * [Dateisystemvorgänge in Data Lake Storage Gen1 mit der REST-API](data-lake-store-data-operations-rest-api.md)
-

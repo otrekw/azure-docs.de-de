@@ -1,18 +1,16 @@
 ---
-title: 'Unterstützung von Render-Managern: Azure Batch'
-description: Verwenden von Azure für das Rendering mit Integration eines Azure Batch-Render-Managers
-services: batch
-ms.service: batch
+title: Unterstützung von Render-Managern
+description: Hier wird das Verwenden der Integration eines Azure Batch-Render-Managers beschrieben. Informieren Sie sich über die integrierte Unterstützung oder Add-Ons für beliebte Render-Manager.
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: eb3ce47e5ffed697392065a1faacbbfaec19f4d1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.topic: how-to
+ms.openlocfilehash: c44cbf86d8bf2fe83a6dc91dee1c4f58eec156c0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983668"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83726450"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>Verwenden von Azure Batch mit Renderfarm-Managern
 

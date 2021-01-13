@@ -1,25 +1,25 @@
 ---
-title: Kopieren von Daten aus MariaDB mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus MariaDB mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus MariaDB mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b58617281094973e2705c34fdd4e4f6ccb2e8d8c
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: c2c036cc8538fbceb21da7c5166df52b3a04e12e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090134"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81414996"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Kopieren von Daten aus MariaDB mithilfe von Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus MariaDB zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -53,7 +53,7 @@ Folgende Eigenschaften werden für den mit MariaDB verknüpften Dienst unterstü
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **MariaDB** | Ja |
-| connectionString | Eine ODBC-Verbindungszeichenfolge zum Herstellen einer Verbindung mit MariaDB. <br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch das Kennwort in Azure Key Vault speichern und die `pwd`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| connectionString | Eine ODBC-Verbindungszeichenfolge zum Herstellen einer Verbindung mit MariaDB. <br/>Sie können auch das Kennwort in Azure Key Vault speichern und die `pwd`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 **Beispiel:**
@@ -64,10 +64,7 @@ Folgende Eigenschaften werden für den mit MariaDB verknüpften Dienst unterstü
     "properties": {
         "type": "MariaDB",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
-            }
+            "connectionString": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -85,10 +82,7 @@ Folgende Eigenschaften werden für den mit MariaDB verknüpften Dienst unterstü
     "properties": {
         "type": "MariaDB",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;"
-            },
+            "connectionString": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;",
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -140,7 +134,7 @@ Legen Sie zum Kopieren von Daten aus MariaDB den Quelltyp in der Kopieraktivitä
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **MariaDBSource** | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

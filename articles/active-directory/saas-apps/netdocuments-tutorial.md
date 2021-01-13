@@ -2,26 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit NetDocuments | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und NetDocuments konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1a47dc42-1a17-48a2-965e-eca4cfb2f197
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bf25ce318415a8aa36bca8d4cd7380e4e8e67ca
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: b9a85c7093d0f42ac97c4a548ba6f0feebae8b89
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743456"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350720"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit NetDocuments
 
@@ -31,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie NetDocuments in Azure Active Directory 
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei NetDocuments anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -85,9 +80,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`.
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
+    
+    c. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `http://netdocuments.com/VAULT`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Anmelde-URL und Antwort-URL. Die Repository-ID ist ein Wert, der mit **CA-** beginnt, gefolgt von einem Code aus acht Zeichen, der Ihrem NetDocuments-Repository zugeordnet ist. Weitere Informationen können Sie dem [Supportdokument zur Verbundidentität von NetDocuments](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) entnehmen. Sie können sich auch an das [Kundensupportteam von NetDocuments](https://support.netdocuments.com/hc/) wenden, um diese Werte zu erhalten, falls Schwierigkeiten beim Konfigurieren mithilfe der oben angegebenen Informationen auftreten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Anmelde-URL und Antwort-URL. Die Repository-ID ist ein Wert, der mit **CA-** beginnt, gefolgt von einem Code aus acht Zeichen, der Ihrem NetDocuments-Repository zugeordnet ist. Weitere Informationen können Sie dem [Supportdokument zur Verbundidentität von NetDocuments](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) entnehmen. Sie können sich auch an das [Kundensupportteam von NetDocuments](https://support.netdocuments.com/hc/) wenden, um diese Werte zu erhalten, falls beim Konfigurieren mit den oben angegebenen Informationen Schwierigkeiten auftreten sollten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Die NetDocuments-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. **nameidentifier** ist hier **user.userprincipalname** zugeordnet. Die NetDocuments-Anwendung erwartet, dass **nameidentifier** dem Eintrag **employeeid** oder einem anderen Anspruch zugeordnet wird, der als **nameidentifier** für Ihre Organisation fungiert. Bearbeiten Sie daher die Attributzuordnung, indem Sie auf das Symbol **Bearbeiten** klicken und die Attributzuordnung ändern.
 
@@ -111,7 +108,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -135,63 +132,61 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der NetDocuments-Unternehmenswebsite als Administrator an.
 
-2. Wechseln Sie zu **Administrator**.
+2. Wählen Sie in der Ecke oben rechts Ihren Namen und dann **Admin** aus.
 
-3. Klicken Sie auf **Benutzer und Gruppen hinzufügen und entfernen**.
+3. Wählen Sie **Security Center** aus.
    
-    ![Repository](./media/netdocuments-tutorial/ic795047.png "Repository")
+    ![Screenshot: Option „Security Center“ unter „Legal Documents“ (Rechtliche Dokumente) ausgewählt](./media/netdocuments-tutorial/security-center.png "Security Center")
 
-4. Klicken Sie auf **Erweiterte Authentifizierungsoptionen konfigurieren**.
+4. Wählen Sie **Advanced Authentication** (Erweiterte Authentifizierung) aus.
     
-    ![Erweiterte Authentifizierungsoptionen konfigurieren](./media/netdocuments-tutorial/ic795048.png "Erweiterte Authentifizierungsoptionen konfigurieren")
+    ![Erweiterte Authentifizierungsoptionen konfigurieren](./media/netdocuments-tutorial/advance-authentication.png "Erweiterte Authentifizierungsoptionen konfigurieren")
 
-5. Führen Sie im Dialogfeld **Identitätsverbund** die folgenden Schritte aus:
+5.  Führen Sie auf der Registerkarte **Federated ID** (Verbund-ID) die folgenden Schritte aus:   
    
-    ![Identitätsverbund](./media/netdocuments-tutorial/ic795049.png "Identitätsverbund")
+    ![Verbundidentität](./media/netdocuments-tutorial/federated-id.png "Verbundidentität")
    
     a. Wählen Sie als **Servertyp für Identitätsverbund** die Option **Active Directory-Verbunddienste** aus.
-   
-    b. Klicken Sie auf **Datei auswählen**, um die Metadatendatei hochzuladen, die Sie über das Azure-Portal heruntergeladen haben.
-   
-    c. Klicken Sie auf **OK**.
+    
+    b.  Wählen Sie **Choose File** (Datei auswählen) aus, um die Metadatendatei hochzuladen, die Sie über das Azure-Portal heruntergeladen haben.
+    
+    c.  Wählen Sie **SAVE** (SPEICHERN) aus.
 
 ### <a name="create-netdocuments-test-user"></a>Erstellen eines NetDocuments-Testbenutzers
 
-Damit sich Azure AD-Benutzer bei NetDocuments anmelden können, müssen sie in NetDocuments bereitgestellt werden.  
-Im Fall von NetDocuments ist die Bereitstellung eine manuelle Aufgabe.
+Damit sich Azure AD-Benutzer bei NetDocuments anmelden können, müssen sie in NetDocuments bereitgestellt werden. Im Fall von NetDocuments ist die Bereitstellung eine manuelle Aufgabe.
 
 **Führen Sie zum Bereitstellen eines Benutzerkontos die folgenden Schritte aus:**
 
 1. Melden Sie sich bei Ihrer **NetDocuments**-Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie oben im Menü auf **Administrator**.
+2. Wählen Sie in der Ecke oben rechts Ihren Namen und dann **Admin** aus.
    
-    ![Admin](./media/netdocuments-tutorial/ic795051.png "Admin")
+    ![Administrator](./media/netdocuments-tutorial/user-admin.png "Admin")
 
-3. Klicken Sie auf **Benutzer und Gruppen hinzufügen und entfernen**.
+3. Wählen Sie **Benutzer und Gruppen**.
    
-    ![Repository](./media/netdocuments-tutorial/ic795047.png "Repository")
+    ![Screenshot: Option „Users & Groups“ (Benutzer und Gruppen) unter „Legal Documents“ (Rechtliche Dokumente) ausgewählt](./media/netdocuments-tutorial/users-groups.png "Repository")
 
 4. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse eines gültigen Azure Active Directory-Kontos ein, das Sie bereitstellen möchten, und klicken Sie auf **Benutzer hinzufügen**.
    
-    ![E-Mail-Adresse](./media/netdocuments-tutorial/ic795053.png "E-Mail-Adresse")
+    ![E-Mail-Adresse](./media/netdocuments-tutorial/user-mail.png "E-Mail-Adresse")
    
-    >[!NOTE]
-    >Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird. Sie können Azure Active Directory-Benutzerkonten auch mithilfe von anderen Tools zum Erstellen von NetDocuments-Benutzerkonten oder mithilfe der von NetDocuments bereitgestellten APIs erstellen.
+    > [!NOTE]
+    > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird. Sie können Azure Active Directory-Benutzerkonten auch mithilfe von anderen Tools zum Erstellen von NetDocuments-Benutzerkonten oder mithilfe der von NetDocuments bereitgestellten APIs erstellen.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „NetDocuments“ klicken, sollten Sie automatisch bei der NetDocuments-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „NetDocuments“ klicken, sollten Sie automatisch bei der NetDocuments-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
 
 - [NetDocuments mit Azure AD ausprobieren](https://aad.portal.azure.com/)
-

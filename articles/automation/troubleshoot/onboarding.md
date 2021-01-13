@@ -1,31 +1,28 @@
 ---
-title: Beheben von Fehlern beim Integrieren von Lösungen für Updateverwaltung, Änderungsnachverfolgung und Bestand
-description: Erfahren Sie, wie Sie Fehler beim Integrieren von Lösungen für Updateverwaltung, Änderungsnachverfolgung und Bestand beheben.
+title: Beheben von Problemen bei der Azure Automation-Featurebereitstellung
+description: In diesem Artikel erfahren Sie, wie Sie Probleme lösen, die beim Bereitstellen von Azure Automation-Features auftreten können.
 services: automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 05/22/2019
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: 8b4ee999bb23abdcea3411720bde244b2da4e89f
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: a6b8384193e821e6c41a0d4d979cda51f6c65b3a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516395"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070485"
 ---
-# <a name="troubleshoot-errors-when-onboarding-solutions"></a>Beheben von Fehlern beim Integrieren von Lösungen
+# <a name="troubleshoot-feature-deployment-issues"></a>Beheben von Problemen bei der Featurebereitstellung
 
-Beim Integrieren von Lösungen wie Updateverwaltung oder Änderungsnachverfolgung können Fehler auftreten. In diesem Artikel wird beschrieben, welche Fehler auftreten und wie diese behoben werden können.
+Möglicherweise erhalten Sie beim Bereitstellen des Azure Automation-Features für die Updateverwaltung, die Änderungsnachverfolgung und den Bestand für Ihre VMs eine Fehlermeldung. In diesem Artikel werden die Fehler beschrieben, die auftreten können, und wie diese gelöst werden.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-### <a name="node-rename"></a>Szenario: Das Umbenennen eines registrierten Knotens erfordert das Aufheben der Registrierung und das erneute Registrieren.
+### <a name="scenario-renaming-a-registered-node-requires-unregister-or-register-again"></a><a name="node-rename"></a>Szenario: Das Umbenennen eines registrierten Knotens erfordert das Aufheben der Registrierung und das erneute Registrieren.
 
 #### <a name="issue"></a>Problem
 
-Ein Knoten ist für Azure Automation registriert, und dann wird der Computername des im Betriebssystem geändert.  Berichte von diesem Knoten werden weiterhin mit dem ursprünglichen Namen angezeigt.
+Ein Knoten ist bei Azure Automation registriert, und dann wird der Computername im Betriebssystem geändert. Berichte von diesem Knoten werden weiterhin mit dem ursprünglichen Namen angezeigt.
 
 #### <a name="cause"></a>Ursache
 
@@ -33,30 +30,29 @@ Beim Umbenennen registrierter Knoten wird der Knotenname in Azure Automation nic
 
 #### <a name="resolution"></a>Lösung
 
-Heben Sie die Registrierung des Knotens in Azure Automation State Configuration auf, und registrieren Sie ihn erneut.  Berichte, die vor diesem Zeitpunkt im Dienst veröffentlicht wurden, sind anschließend nicht mehr verfügbar.
+Heben Sie die Registrierung des Knotens in Azure Automation State Configuration auf, und registrieren Sie ihn erneut. Berichte, die vor diesem Zeitpunkt im Dienst veröffentlicht wurden, sind anschließend nicht mehr verfügbar.
 
-
-### <a name="resigning-cert"></a>Szenario: Das erneute Signieren von Zertifikaten über den HTTPS-Proxy wird nicht unterstützt.
+### <a name="scenario-re-signing-certificates-via-https-proxy-isnt-supported"></a><a name="resigning-cert"></a>Szenario: Das erneute Signieren von Zertifikaten über HTTPS-Proxy wird nicht unterstützt
 
 #### <a name="issue"></a>Problem
 
-Kunden haben gemeldet, dass beim Herstellen einer Verbindung über eine Proxylösung, die den HTTPS-Datenverkehr beendet und dann den Datenverkehr mit einem neuen Zertifikat erneut verschlüsselt, der Dienst die Verbindung nicht zulässt.
+Beim Herstellen einer Verbindung über einen Proxy, der den HTTPS-Datenverkehr beendet und dann den Datenverkehr mit einem neuen Zertifikat erneut verschlüsselt, lässt der Dienst die Verbindung nicht zu.
 
 #### <a name="cause"></a>Ursache
 
-Azure Automation unterstützt keine Neusignierung von Zertifikaten, die zum Verschlüsseln des Datenverkehrs verwendet werden.
+Azure Automation unterstützt kein erneutes Signieren von Zertifikaten, die zum Verschlüsseln von Datenverkehr verwendet werden.
 
 #### <a name="resolution"></a>Lösung
 
-Für dieses Szenario gibt es keine Problemumgehung.
+Für dieses Problem gibt es derzeit keine Problemumgehung.
 
 ## <a name="general-errors"></a>Allgemeine Fehler
 
-### <a name="missing-write-permissions"></a>Szenario: Fehler beim Onboarding mit der Meldung, dass die Lösung nicht aktiviert werden kann
+### <a name="scenario-feature-deployment-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Szenario: Die Featurebereitstellung schlägt mit der Meldung „The solution cannot be enabled“ (Die Lösung kann nicht aktiviert werden) fehl.
 
 #### <a name="issue"></a>Problem
 
-Eine der folgenden Meldungen wird angezeigt, wenn Sie versuchen, einen virtuellen Computer in eine Lösung zu integrieren (Onboarding):
+Wenn Sie versuchen, ein Feature für eine VM zu aktivieren, wird eine der folgenden Meldungen angezeigt:
 
 ```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
@@ -68,17 +64,17 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 #### <a name="cause"></a>Ursache
 
-Dieser Fehler wird durch falsche oder fehlende Berechtigungen auf dem virtuellen Computer, im Arbeitsbereich oder für den Benutzer verursacht.
+Dieser Fehler wird durch falsche oder fehlende Berechtigungen auf dem virtuellen Computer oder im Arbeitsbereich oder für den Benutzer verursacht.
 
 #### <a name="resolution"></a>Lösung
 
-Stellen Sie sicher, dass Sie die erforderlichen Berechtigungen zum Integrieren des virtuellen Computers haben. Überprüfen Sie noch einmal [die Berechtigungen, die für das Onboarding von Computern erforderlich sind](../automation-role-based-access-control.md#onboarding), und wiederholen Sie das Onboarding für die Lösung. Wenn Sie den Fehler `The solution cannot be enabled on this VM because the permission to read the workspace is missing` erhalten, stellen Sie sicher, dass Sie über die Berechtigung `Microsoft.OperationalInsights/workspaces/read` verfügen, um herausfinden zu können, ob die VM in einen Arbeitsbereich integriert ist.
+Stellen Sie sicher, dass Sie über die richtigen [Featurebereitstellungsberechtigungen](../automation-role-based-access-control.md#feature-setup-permissions) verfügen, und versuchen Sie dann nochmal, das Feature bereitzustellen. Sollte die Fehlermeldung `The solution cannot be enabled on this VM because the permission to read the workspace is missing` angezeigt werden, berücksichtigen Sie die folgenden [Informationen zur Problembehandlung](update-management.md#failed-to-enable-error).
 
-### <a name="diagnostic-logging"></a>Szenario: Onboarding-Fehler mit der Meldung „Fehler beim Konfigurieren eines Automation-Kontos für die Diagnoseprotokollierung“
+### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Szenario: Die Featurebereitstellung schlägt mit der Meldung „Fehler beim Konfigurieren eines Automation-Kontos für die Diagnoseprotokollierung“ fehl.
 
 #### <a name="issue"></a>Problem
 
-Die folgende Meldung wird angezeigt, wenn Sie versuchen, einen virtuellen Computer in eine Lösung zu integrieren (Onboarding):
+Die folgende Meldung wird angezeigt, wenn Sie versuchen, ein Feature für eine VM zu aktivieren:
 
 ```error
 Failed to configure automation account for diagnostic logging
@@ -86,49 +82,48 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>Ursache
 
-Dieser Fehler kann auftreten, wenn der Tarif nicht mit dem Abrechnungsmodell des Abonnements übereinstimmt. Weitere Informationen finden Sie unter [Überwachen der Nutzung und geschätzten Kosten in Azure Monitor](https://aka.ms/PricingTierWarning).
+Dieser Fehler kann auftreten, wenn der Tarif nicht mit dem Abrechnungsmodell des Abonnements übereinstimmt. Weitere Informationen finden Sie unter [Überwachen der Nutzung und geschätzten Kosten in Azure Monitor](../../azure-monitor/platform/usage-estimated-costs.md).
 
 #### <a name="resolution"></a>Lösung
 
-Erstellen Sie Ihren Log Analytics-Arbeitsbereich manuell, und wiederholen Sie den Onboardingprozess, um den erstellten Arbeitsbereich auszuwählen.
+Erstellen Sie Ihren Log Analytics-Arbeitsbereich manuell, und wiederholen Sie den Prozess für die Featurebereitstellung, um den erstellten Arbeitsbereich auszuwählen.
 
-### <a name="computer-group-query-format-error"></a>Szenario: ComputerGroupQueryFormatError
+### <a name="scenario-computergroupqueryformaterror"></a><a name="computer-group-query-format-error"></a>Szenario: ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>Problem
 
-Dieser Fehlercode bedeutet, dass die Abfrage einer gespeicherten Suchcomputergruppe für die Ziellösung nicht ordnungsgemäß formatiert war. 
+Dieser Fehlercode bedeutet, dass die Abfrage einer gespeicherten Suchcomputergruppe für das Zielfeature nicht ordnungsgemäß formatiert ist. 
 
 #### <a name="cause"></a>Ursache
 
-Möglicherweise haben Sie die Abfrage geändert, oder sie wurde vom System geändert.
+Möglicherweise haben Sie oder das System die Abfrage geändert.
 
 #### <a name="resolution"></a>Lösung
 
-Sie können die Abfrage für diese Lösung löschen und die Lösung erneut anwenden, wodurch die Abfrage neu erstellt wird. Die Abfrage finden Sie in Ihrem Arbeitsbereich unter **Gespeicherte Suchvorgänge**. Der Name der Abfrage lautet **MicrosoftDefaultComputerGroup**, und die Kategorie der Abfrage ist der Name der mit dieser Abfrage verknüpften Lösung. Wenn mehrere Lösungen aktiviert sind, wird **MicrosoftDefaultComputerGroup** unter **Speicherte Suchvorgänge** mehrfach angezeigt.
+Sie können die Abfrage für das Feature löschen und das Feature dann wieder aktivieren, wodurch die Abfrage neu erstellt wird. Die Abfrage finden Sie in Ihrem Arbeitsbereich unter **Gespeicherte Suchvorgänge**. Der Name der Abfrage lautet **MicrosoftDefaultComputerGroup**, und die Kategorie der Abfrage ist der Name des zugeordneten Features. Wenn mehrere Features aktiviert sind, wird die Abfrage **MicrosoftDefaultComputerGroup** unter **Gespeicherte Suchvorgänge** mehrmals angezeigt.
 
-### <a name="policy-violation"></a>Szenario: PolicyViolation
+### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>Szenario: PolicyViolation
 
 #### <a name="issue"></a>Problem
 
-Dieser Fehlercode bedeutet, dass bei der Bereitstellung ein Fehler aufgrund einer oder mehrerer Richtlinienverletzungen aufgetreten ist.
+Dieser Fehlercode zeigt an, dass bei der Bereitstellung ein Fehler aufgrund einer oder mehrerer Richtlinienverletzungen aufgetreten ist.
 
 #### <a name="cause"></a>Ursache 
 
-Eine Richtlinie ist vorhanden, die den Abschluss des Vorgangs blockiert.
+Eine Richtlinie blockiert den Abschluss des Vorgangs.
 
 #### <a name="resolution"></a>Lösung
 
-Für eine erfolgreiche Bereitstellung der Lösung müssen Sie eine Änderung der angegebenen Richtlinie in Betracht ziehen. Da viele verschiedene Richtlinientypen definiert werden können, hängen die erforderlichen Änderungen von der Richtlinie ab, gegen die verstoßen wurde. Beispiel: Wenn eine Richtlinie für eine Ressourcengruppe festgelegt wurde, die die Berechtigung zum Ändern der Inhalte bestimmter Ressourcentypen in dieser Ressourcengruppe verweigert hat, können Sie beispielsweise einen der folgenden Schritte ausführen:
+Für eine erfolgreiche Bereitstellung des Features müssen Sie eine Änderung der angegebenen Richtlinie in Betracht ziehen. Da viele verschiedene Richtlinientypen definiert werden können, hängen die erforderlichen Änderungen von der Richtlinie ab, gegen die verstoßen wurde. Wenn z. B. eine Richtlinie für eine Ressourcengruppe definiert ist, die die Berechtigung zum Ändern des Inhalts einiger enthaltener Ressourcen verweigert, können Sie eine der folgenden Korrekturen auswählen:
 
 * Entfernen Sie die Richtlinie vollständig.
-* Versuchen Sie, sie für eine andere Ressourcengruppe festzulegen.
-* Überarbeiten Sie die Richtlinie etwa wie folgt:
-  * Weisen Sie die Richtlinie einer bestimmten Ressource neu zu (z.B. einem bestimmten Automation-Konto).
-  * Überarbeiten Sie die Gruppe der Ressourcen, zu deren Ablehnung diese Richtlinie konfiguriert wurde.
+* Versuchen Sie, das Feature für eine andere Ressourcengruppe zu aktivieren.
+* Wählen Sie als neues Ziel der Richtlinie eine andere spezifische Ressource aus, z. B. ein Automation-Konto.
+* Überarbeiten Sie die Gruppe der Ressourcen, für deren Ablehnung diese Richtlinie konfiguriert wurde.
 
-Lesen Sie die Benachrichtigungen in der oberen rechten Ecke des Azure-Portals, oder navigieren Sie zum Anzeigen der fehlerhaften Bereitstellung zu der Ressourcengruppe, die Ihr Automation-Konto enthält, und wählen Sie unter **Einstellungen** die Option **Bereitstellungen** aus. Weitere Informationen zu Azure Policy finden Sie hier: [Übersicht zu Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
+Prüfen Sie die Benachrichtigungen rechts oben im Azure-Portal, oder navigieren Sie zum Anzeigen der fehlerhaften Bereitstellung zur Ressourcengruppe, die Ihr Automation-Konto enthält, und wählen Sie unter **Einstellungen** die Option **Bereitstellungen** aus. Weitere Informationen zu Azure Policy finden Sie unter [Übersicht zu Azure-Richtlinien](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
 
-### <a name="unlink"></a>Szenario: Fehler beim Versuch, die Verknüpfung eines Arbeitsbereichs aufzuheben
+### <a name="scenario-errors-trying-to-unlink-a-workspace"></a><a name="unlink"></a>Szenario: Fehler beim Versuch, die Verknüpfung eines Arbeitsbereichs aufzuheben
 
 #### <a name="issue"></a>Problem
 
@@ -140,37 +135,33 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>Ursache
 
-Dieser Fehler tritt auf, wenn Sie noch über aktive Lösungen in Ihrem Log Analytics-Arbeitsbereich verfügen, die davon abhängig sind, dass Ihr Automation-Konto und Ihr Log Analytics-Arbeitsbereich verknüpft sind.
+Dieser Fehler tritt auf, wenn Sie noch über aktive Features in Ihrem Log Analytics-Arbeitsbereich verfügen, die davon abhängig sind, dass Ihr Automation-Konto und Ihr Log Analytics-Arbeitsbereich verknüpft sind.
 
 ### <a name="resolution"></a>Lösung
 
-Zum Beheben dieses Problems müssen Sie die folgenden Lösungen aus Ihrem Arbeitsbereich entfernen, sofern Sie sie verwenden:
+Entfernen Sie die Ressourcen für die folgenden Features aus Ihrem Arbeitsbereich, wenn Sie sie verwenden:
 
 * Updateverwaltung
-* Change Tracking
+* Änderungsnachverfolgung und Bestand
 * Starten/Beenden von VMs außerhalb der Kernzeit
 
-Nachdem Sie die Lösungen entfernt haben, können Sie die Verknüpfung zu Ihrem Arbeitsbereich aufheben. Es ist wichtig, alle vorhandenen Artefakte dieser Lösungen auch aus Ihrem Arbeitsbereich und Ihrem Automation-Konto zu entfernen.  
+Nachdem Sie die Featureressourcen entfernt haben, können Sie die Verknüpfung mit Ihrem Arbeitsbereich aufheben. Es ist wichtig, alle vorhandenen Artefakte dieser Features aus Ihrem Arbeitsbereich und Ihrem Automation-Konto zu entfernen:
 
-* Updateverwaltung
-  * Entfernen von Updatebereitstellungen (Zeitplänen) aus Ihrem Automation-Konto
-* Starten/Beenden von VMs außerhalb der Kernzeit
-  * Entfernen Sie alle Sperren für die Komponenten der Lösung in Ihrem Automation-Konto unter **Einstellungen** > **Sperren**.
-  * Zusätzliche Schritte zum Entfernen der Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten finden Sie im Artikel [Starten/Beenden von VMs außerhalb der Geschäftszeiten – Entfernen der Lösung](../automation-solution-vm-management.md##remove-the-solution).
+* Für „Updateverwaltung“ entfernen Sie **Updatebereitstellungen (Zeitpläne)** aus Ihrem Automation-Konto.
+* Für „VMs außerhalb der Geschäftszeiten starten/beenden“ entfernen Sie alle Sperren für die Komponenten des Features in Ihrem Automation-Konto unter **Einstellungen** > **Sperren**. Weitere Informationen finden Sie unter [Entfernen von Features](../automation-solution-vm-management.md#remove-the-feature).
 
-## <a name="mma-extension-failures"></a>MMA-Erweiterungsfehler
+## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Fehler der Log Analytics für Windows-Erweiterung
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Bei der Bereitstellung einer Lösung wird eine Vielzahl zugehöriger Ressourcen bereitgestellt. Eine dieser Ressourcen ist die Microsoft Monitoring Agent-Erweiterung oder der Log Analytics-Agent für Linux. Dies sind VM-Erweiterungen, die vom Gast-Agent des virtuellen Computers installiert werden. Dieser ist zuständig für die Kommunikation mit dem konfigurierten Log Analytics-Arbeitsbereich zum Zweck der späteren Koordination des Herunterladens von Binär- und anderen Dateien, von denen die von Ihnen integrierte Lösung abhängt, sobald die Ausführung beginnt.
-Auf Fehler bei der Installation von MMA oder des Log Analytics-Agents für Linux werden Sie zumeist über eine Benachrichtigung im Notifications Hub aufmerksam. Wenn Sie auf diese Benachrichtigung klicken, erhalten Sie weitere Informationen zum jeweiligen Fehler. Durch Navigieren zur Ressource „Ressourcengruppen“ und dann zum darin enthaltenen Element „Bereitstellungen“ werden auch Details zu den aufgetretenen Bereitstellungsfehlern angezeigt.
-Die Installation von MMA oder des Log Analytics-Agents für Linux kann aus verschiedenen Gründen fehlschlagen, wobei die Schritte zur Behebung dieser Fehler je nach Problem unterschiedlich sind. Es folgen spezifische Schritte zur Problembehandlung.
+Eine Installation des Log Analytics-Agents für die Windows-Erweiterung kann aus einer Vielzahl von Gründen fehlschlagen. Im folgenden Abschnitt werden die Probleme bei der Featurebereitstellung beschrieben, die während der Bereitstellung des Log Analytics-Agents für die Windows-Erweiterung Fehler verursachen können.
 
-Im folgenden Abschnitt werden verschiedene Probleme beschrieben, die bei der Integration auftreten können und die einen Fehler bei der Bereitstellung der MMA-Erweiterung verursachen.
+>[!NOTE]
+>„Log Analytics-Agent für Windows“ ist der Name, der aktuell in Azure Automation für den Microsoft Monitoring Agent (MMA) verwendet wird.
 
-### <a name="webclient-exception"></a>Szenario: Ausnahme während einer WebClient-Anforderung
+### <a name="scenario-an-exception-occurred-during-a-webclient-request"></a><a name="webclient-exception"></a>Szenario: Ausnahme während einer WebClient-Anforderung
 
-Die MMA-Erweiterung auf dem virtuellen Computer kann nicht mit externen Ressourcen kommunizieren, und die Bereitstellung schlägt fehl.
+Die Log Analytics für Windows-Erweiterung auf dem virtuellen Computer kann nicht mit externen Ressourcen kommunizieren, und die Bereitstellung schlägt fehl.
 
 #### <a name="issue"></a>Problem
 
@@ -188,17 +179,16 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 Mögliche Ursachen für diesen Fehler:
 
-* In der VM ist ein Proxy konfiguriert, der nur bestimmte Ports zulässt.
-
+* Ein in der VM konfigurierter Proxy lässt nur bestimmte Ports zu.
 * Eine Firewalleinstellung hat den Zugriff auf die benötigten Ports und Adressen blockiert.
 
 #### <a name="resolution"></a>Lösung
 
 Stellen Sie sicher, dass die ordnungsgemäßen Ports und Adressen für die Kommunikation geöffnet sind. Eine Liste der Ports und Adressen finden Sie unter [Planen Ihres Netzwerks](../automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="transient-environment-issue"></a>Szenario: Fehler bei der Installation aufgrund vorübergehender Umgebungsprobleme
+### <a name="scenario-install-failed-because-of-transient-environment-issues"></a><a name="transient-environment-issue"></a>Szenario: Fehler bei der Installation aufgrund vorübergehender Umgebungsprobleme
 
-Die Installation der Microsoft Monitoring Agent-Erweiterung ist während der Bereitstellung aufgrund einer anderen Installation oder Aktion fehlgeschlagen, die die Installation blockiert.
+Die Installation von Log Analytics für Windows-Erweiterung ist während der Bereitstellung aufgrund einer anderen Installation oder Aktion fehlgeschlagen, die die Installation blockiert.
 
 #### <a name="issue"></a>Problem
 
@@ -225,15 +215,15 @@ Mögliche Ursachen für diesen Fehler:
 
 #### <a name="resolution"></a>Lösung
 
-Dieser Fehler tritt nur vorübergehend auf. Wiederholen Sie die Bereitstellung, um die Erweiterung zu installieren.
+Dieser Fehler ist von vorübergehender Natur. Wiederholen Sie die Bereitstellung, um die Erweiterung zu installieren.
 
-### <a name="installation-timeout"></a>Szenario: Zeitlimit für Installation
+### <a name="scenario-installation-timeout"></a><a name="installation-timeout"></a>Szenario: Zeitlimit für Installation
 
-Die Installation der MMA-Erweiterung wurde aufgrund eines Zeitlimits nicht abgeschlossen.
+Die Installation der Log Analytics für Windows-Erweiterung wurde aufgrund eines Timeouts nicht abgeschlossen.
 
 #### <a name="issue"></a>Problem
 
-Im folgenden finden Sie ein Beispiel einer Fehlermeldung, die zurückgegeben werden kann:
+Im Folgenden finden Sie ein Beispiel für eine Fehlermeldung, die zurückgegeben werden kann:
 
 ```error
 Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent, version 1.0.11081.4) with exception Command C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\1.0.11081.4\MMAExtensionInstall.exe of Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent has exited with Exit code: 15614
@@ -241,16 +231,16 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 #### <a name="cause"></a>Ursache
 
-Dieser Fehler tritt auf, weil der virtuelle Computer während der Installation unter großer Last stand.
+Diese Art von Fehler tritt auf, weil der virtuelle Computer während der Installation unter großer Last steht.
 
 ### <a name="resolution"></a>Lösung
 
-Versuchen Sie, die MMA-Erweiterung zu installieren, wenn die VM unter geringerer Last steht.
+Versuchen Sie, die Log Analytics für Windows-Erweiterung zu installieren, wenn die VM unter geringerer Last steht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
+Wenn Ihr Problem hier nicht aufgeführt wird, oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
 
 * Erhalten Sie Antworten von Azure-Experten über [Azure-Foren](https://azure.microsoft.com/support/forums/).
-* Mit [@AzureSupport](https://twitter.com/azuresupport) verbinden – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit durch Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
-* Wenn Sie weitere Hilfe benötigen, können Sie einen Azure-Supportvorgang anlegen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+* Stellen Sie eine Verbindung mit [@AzureSupport](https://twitter.com/azuresupport) her, dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Der Azure-Support verbindet die Azure-Community mit Antworten, Support und Experten.
+* Erstellen Sie einen Azure-Supportfall. Wechseln Sie zur [Azure-Supportwebsite](https://azure.microsoft.com/support/options/), und wählen Sie **Support erhalten** aus.

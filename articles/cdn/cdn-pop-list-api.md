@@ -1,9 +1,9 @@
 ---
 title: Abrufen der aktuellen POP-IP-Liste für Azure CDN | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die aktuelle POP-Liste abrufen.
+description: Erfahren Sie, wie Sie mithilfe der Rest-API POP-Server abrufen können. POP-Server nehmen Anforderungen an Ursprungsserver vor, die Azure Content Delivery Network-Endpunkten zugeordnet sind.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
-ms.author: magattus
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: f677d6b8edfe60646c6368acce9d47b23a35237d
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 43b4bcaee447d84efa088e84340ccfc717fe2777
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146888"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005179"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Abrufen der aktuellen POP-IP-Liste für Azure CDN
 
@@ -28,7 +28,7 @@ ms.locfileid: "71146888"
 
 Mit der REST-API können Sie den Satz von IP-Adressen für Point of Presence (POP)-Server von Verizon abrufen. Diese POP-Server führen Anforderung an Ursprungsserver durch, die Azure Content Delivery Network (CDN)-Endpunkten in einem Verizon-Profil (**Azure CDN Standard von Verizon** oder **Azure CDN Premium von Verizon**) zugeordnet sind. Beachten Sie, dass sich dieser Satz von IP-Adressen von den IP-Adressen unterscheidet, die dem Client bei Anforderungen an die POPs angezeigt werden würden. 
 
-Informationen zur Syntax des REST-API-Vorgangs zum Abrufen der POP-Liste finden Sie unter [Edgeknoten – Liste](https://docs.microsoft.com/rest/api/cdn/edgenodes/list).
+Informationen zur Syntax des REST-API-Vorgangs zum Abrufen der POP-Liste finden Sie unter [Edgeknoten – Liste](/rest/api/cdn/edgenodes/list).
 
 ## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>Abrufen der aktuellen POP-IP-Liste von Microsoft für Azure CDN
 
@@ -39,9 +39,8 @@ Konfigurieren Sie IP-ACLs für Ihre Back-Ends so, dass sie nur Datenverkehr aus 
 * IPv4-Back-End-IP-Adressraum von Azure CDN von Microsoft: 147.243.0.0/16
 * IPv6-Back-End-IP-Adressraum von Azure CDN von Microsoft: 2a01:111:2050::/44
 
-IP-Bereiche und Diensttags für Microsoft-Dienste finden Sie [hier](https://www.microsoft.com/download/details.aspx?id=56519).
+Um Diensttags mit Azure CDN von Microsoft zu verwenden, verwenden Sie das Azure Front Door-Tag. IP-Bereiche und Diensttags für Microsoft-Dienste finden Sie [hier](https://www.microsoft.com/download/details.aspx?id=56519).
 
-Filtern Sie auf die Werte für den eingehenden Header „X-Forwarded-Host“, der von Azure CDN von Microsoft gesendet wird. Die einzigen zulässigen Werte für den Header sollten alle Endpunkthosts sein, die in Ihrer CDN-Konfiguration definiert sind. Noch spezifischer: nur die Hostnamen, von denen Sie Datenverkehr für diesen speziellen Ursprung akzeptieren möchten.
 
 ## <a name="typical-use-case"></a>Typischer Anwendungsfall
 
@@ -49,4 +48,4 @@ Aus Sicherheitsgründen können Sie diese IP-Liste verwenden, um zu erzwingen, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur REST-API finden Sie unter [Azure CDN-REST-APIs](https://docs.microsoft.com/rest/api/cdn/).
+Informationen zur REST-API finden Sie unter [Azure CDN-REST-APIs](/rest/api/cdn/).

@@ -1,10 +1,10 @@
 ---
-title: Erstellen einer Azure Data Factory mithilfe der REST-API | Microsoft-Dokumentation
-description: Erstellen Sie eine Azure Data Factory-Instanz, um Daten von einem Speicherort in einem Azure Blob-Speicher an einen anderen Speicherort zu kopieren.
+title: Erstellen einer Azure Data Factory-Instanz mithilfe der REST-API
+description: Erstellen Sie eine Azure Data Factory-Pipeline, um Daten in einem Azure Blob Storage von einem Speicherort in einen anderen zu kopieren.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 6a2d67c38a6e61cb6610b861c03544fae42406b1
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 48928c5c4f3a2787e8f00e4084daacf6a64f1ea7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910145"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461579"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Schnellstart: Erstellen einer Azure Data Factory und einer Pipeline mithilfe der REST-API
 
@@ -26,7 +26,9 @@ ms.locfileid: "70910145"
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuelle Version](quickstart-create-data-factory-rest-api.md)
 
-Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können.
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten oder transformieren und die Ausgabedaten in Datenspeichern wie Azure Synapse Analytics veröffentlichen, damit diese von BI-Anwendungen (Business Intelligence) genutzt werden können.
 
 Diese Schnellstartanleitung beschreibt, wie Sie die REST-API verwenden, um eine Azure Data Factory zu erstellen. Die Pipeline in diesem Beispiel kopiert Daten in einem Azure Blob Storage von einem Speicherort in einen anderen.
 
@@ -37,17 +39,17 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * **Azure-Abonnement**. Falls Sie nicht über ein Abonnement verfügen, können Sie ein [kostenloses Testkonto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
-* **Azure Storage-Konto**. Sie verwenden den Blob Storage als **Quelldatenspeicher** und als **Senkendatenspeicher**. Wenn Sie kein Azure Storage-Konto besitzen, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md) Schritte zum Erstellen eines solchen Kontos.
-* Erstellen Sie einen **Blobcontainer** in Blob Storage, erstellen Sie einen **Eingabeordner** im Container, und laden Sie einige Dateien in den Ordner. Sie können Tools wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, um eine Verbindung mit Azure Blob Storage herzustellen, einen Blobcontainer zu erstellen, eine Eingabedatei hochzuladen und die Ausgabedatei zu überprüfen.
+* **Azure Storage-Konto**. Sie verwenden den Blob Storage als **Quelldatenspeicher** und als **Senkendatenspeicher**. Wenn Sie kein Azure Storage-Konto besitzen, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md) Schritte zum Erstellen eines solchen Kontos.
+* Erstellen Sie einen **Blobcontainer** in Blob Storage, erstellen Sie einen **Eingabeordner** im Container, und laden Sie einige Dateien in den Ordner. Sie können mithilfe von Tools wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) eine Verbindung mit Azure Blob Storage herstellen, einen Blobcontainer erstellen, eine Eingabedatei hochladen und die Ausgabedatei überprüfen.
 * Installieren Sie **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](/powershell/azure/install-Az-ps) (Erste Schritte mit Azure PowerShell-Cmdlets). Diese Schnellstartanleitung verwendet PowerShell, um REST-API-Aufrufe aufzurufen.
-* **Erstellen Sie eine Anwendung in Azure Active Directory**, indem Sie [diese Anweisungen](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) befolgen. Notieren Sie sich die folgenden Werte, die Sie in späteren Schritten benötigen: **Anwendungs-ID**, **clientSecrets** und **Mandanten-ID**. Weisen Sie die Anwendung der Rolle **Mitwirkender** zu.
+* **Erstellen Sie eine Anwendung in Azure Active Directory**, indem Sie [diese Anweisungen](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) befolgen. Notieren Sie sich die folgenden Werte, die Sie in späteren Schritten benötigen: **Anwendungs-ID**, **clientSecrets** und **Mandanten-ID**. Weisen Sie die Anwendung der Rolle **Mitwirkender** zu.
 
 ## <a name="set-global-variables"></a>Festlegen von globalen Variablen
 
 1. Starten Sie **PowerShell**. Lassen Sie Azure PowerShell bis zum Ende dieser Schnellstartanleitung geöffnet. Wenn Sie PowerShell schließen und erneut öffnen, müssen Sie die Befehle erneut ausführen.
 
     Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben:
-    
+
     ```powershell
     Connect-AzAccount
     ```
@@ -81,7 +83,7 @@ Führen Sie die folgenden Befehle aus, um die Authentifizierung bei Azure Active
 $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]"https://login.microsoftonline.com/${tenantId}"
 $cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($appId, $clientSecrets)
 $result = $AuthContext.AcquireTokenAsync("https://management.core.windows.net/", $cred).GetAwaiter().GetResult()
-$authHeader = @{
+$authHeader = @{
 'Content-Type'='application/json'
 'Accept'='application/json'
 'Authorization'=$result.CreateAuthorizationHeader()
@@ -96,7 +98,7 @@ Führen Sie die folgenden Befehle aus, um eine Data Factory zu erstellen:
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}?api-version=${apiVersion}"
 $body = @"
 {
-    "name": "$dataFactoryName",
+    "name": "$factoryName",
     "location": "East US",
     "properties": {},
     "identity": {
@@ -304,7 +306,7 @@ Hier ist die Beispielausgabe:
 In diesem Beispiel enthält die Pipeline eine Aktivität und akzeptiert zwei Parameter: Eingabeblobpfad und Ausgabeblobpfad. Die Werte für diese Parameter werden festgelegt, wenn die Pipeline ausgelöst bzw. ausgeführt wird. Die Kopieraktivität verweist für die Eingabe und Ausgabe auf das gleiche Blobdataset, das im vorherigen Schritt erstellt wurde. Wenn das Dataset als Eingabedataset verwendet wird, wird der Eingabepfad angegeben. Wenn das Dataset als Ausgabedataset verwendet wird, wird der Ausgabepfad angegeben.
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
+$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
 $body = @"
 {
     "name": "Adfv2QuickStartPipeline",
@@ -430,7 +432,7 @@ Hier ist die Beispielausgabe:
         "runGroupId":"04a2bb9a-71ea-4c31-b46e-75276b61bafc",
         "pipelineName":"Adfv2QuickStartPipeline",
         "parameters":{  
-    
+
         },
         "invokedBy":{  
             "id":"2bb3938176ee43439752475aa12b2251",
@@ -444,15 +446,15 @@ Hier ist die Beispielausgabe:
         "message":"",
         "lastUpdated":"2019-09-03T07:22:57.8862692Z",
         "annotations":[  
-    
+
         ],
         "runDimension":{  
-    
+
         },
         "isLatest":true
     }
     ```
-    
+
 2. Führen Sie das folgende Skript aus, um Ausführungsdetails zur Kopieraktivität abzurufen, z.B. die Größe der gelesenen/geschriebenen Daten.
 
     ```powershell
@@ -494,7 +496,7 @@ Hier ist die Beispielausgabe:
 Verwenden Sie Azure Storage-Explorer, um zu überprüfen, ob die Datei wie von Ihnen beim Erstellen der Pipelineausführung angegeben von „inputPath“ nach „outputPath“ kopiert wird.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Die im Rahmen dieser Schnellstartanleitung erstellten Ressourcen können auf zwei Arten bereinigt werden. Sie können die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) einschließlich aller darin enthaltenen Ressourcen löschen. Falls die anderen Ressourcen erhalten bleiben sollen, löschen Sie nur die Data Factory, die Sie in diesem Tutorial erstellt haben.
+Die im Rahmen dieser Schnellstartanleitung erstellten Ressourcen können auf zwei Arten bereinigt werden. Sie können die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) einschließlich aller darin enthaltenen Ressourcen löschen. Falls die anderen Ressourcen erhalten bleiben sollen, löschen Sie nur die Data Factory, die Sie in diesem Tutorial erstellt haben.
 
 Führen Sie den folgenden Befehl aus, um die gesamte Ressourcengruppe zu löschen:
 ```powershell

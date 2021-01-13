@@ -1,5 +1,5 @@
 ---
-title: Aktivieren von Transparent Data Encryption für Stretch Database-T-SQL – Azure | Microsoft-Dokumentation
+title: Aktivieren von Transparent Data Encryption für Stretch Database (T-SQL)
 description: Aktivieren von Transparent Data Encryption (TDE) für SQL Server Stretch Database über Azure T-SQL
 services: sql-server-stretch-database
 documentationcenter: ''
@@ -13,23 +13,24 @@ author: blazem-msft
 ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
-ms.openlocfilehash: 9718db18ea675fa744262f0736aff3c07732e1d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 772341d046186e46b79ad7b11170e1bad23a3a6f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002870"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024193"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Aktivieren von Transparent Data Encryption (TDE) für Stretch Database in Azure (Transact-SQL)
 > [!div class="op_single_selector"]
-> * [Azure-Portal](sql-server-stretch-database-encryption-tde.md)
+> * [Azure portal](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
 
 Transparent Data Encryption (TDE) bietet Schutz vor der Bedrohung durch böswillige Aktivitäten. Hierzu werden die Datenbank, die dazugehörigen Sicherungen und die Transaktionsprotokolldateien im Ruhezustand in Echtzeit ver- und entschlüsselt, ohne dass Änderungen der Anwendung erforderlich sind.
 
-TDE verschlüsselt die Speicherung einer gesamten Datenbank, indem ein symmetrischer Schlüssel verwendet wird, der als Datenbankverschlüsselungsschlüssel bezeichnet wird. Der Datenbank-Verschlüsselungsschlüssel ist mit einem integrierten Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden Azure-Server einmalig. Microsoft führt für diese Zertifikate nach spätestens 90 Tagen automatisch eine Rotation durch. Eine allgemeine Beschreibung von TDE finden Sie unter [Transparente Datenverschlüsselung (TDE)].
+TDE verschlüsselt die Speicherung einer gesamten Datenbank, indem ein symmetrischer Schlüssel verwendet wird, der als Datenbankverschlüsselungsschlüssel bezeichnet wird. Der Datenbank-Verschlüsselungsschlüssel ist mit einem integrierten Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden Azure-Server einmalig. Microsoft tauscht diese Zertifikate mindestens alle 90 Tage automatisch untereinander. Eine allgemeine Beschreibung von TDE finden Sie unter [Transparente Datenverschlüsselung (TDE)].
 
 ## <a name="enabling-encryption"></a>Aktivieren der Verschlüsselung
 Befolgen Sie folgende Schritte zum Aktivieren von TDE für eine Azure-Datenbank, die die Daten speichert, die aus einer SQL Server Datenbank migriert wurden, für die Stretch aktiviert ist:
@@ -68,7 +69,7 @@ FROM
 Das Ergebnis ```1``` steht für eine verschlüsselte Datenbank, und mit ```0``` wird eine nicht verschlüsselte Datenbank angegeben.
 
 <!--Anchors-->
-[Transparente Datenverschlüsselung (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[Transparente Datenverschlüsselung (TDE)]: /sql/relational-databases/security/encryption/transparent-data-encryption
 
 
 <!--Image references-->

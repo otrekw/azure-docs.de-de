@@ -3,24 +3,25 @@ title: Streaminglocators in Azure Media Services | Microsoft-Dokumentation
 description: Dieser Artikel erläutert, was Streaminglocators sind und wie sie in Azure Media Services verwendet werden.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 05/26/2019
-ms.author: juliako
-ms.openlocfilehash: 5897b7df2460257784c40eb974c473573ec4003d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.date: 03/04/2020
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 68df5256949db44b2b347002570c64d1aa0d55ea
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299167"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89297959"
 ---
 # <a name="streaming-locators"></a>Streaminglocators
 
-Um Videos im Ausgabeobjekt für die Wiedergabe durch Clients verfügbar zu machen, müssen Sie einen [Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators) erstellen und dann die Streaming-URLs erstellen. Zum Erstellen einer URL müssen Sie den Hostnamen des Streamingendpunkts und den Pfad des Streaminglocators miteinander verketten. Informationen zum .NET-Beispiel finden Sie unter [Abrufen eines Streaminglocators](stream-files-tutorial-with-api.md#get-a-streaming-locator).
+Um Videos im Ausgabeobjekt für die Wiedergabe durch Clients verfügbar zu machen, müssen Sie einen [Streaminglocator](/rest/api/media/streaminglocators) erstellen und dann die Streaming-URLs erstellen. Zum Erstellen einer URL müssen Sie den Hostnamen des Streamingendpunkts und den Pfad des Streaminglocators miteinander verketten. Informationen zum .NET-Beispiel finden Sie unter [Abrufen eines Streaminglocators](stream-files-tutorial-with-api.md#get-a-streaming-locator).
 
 Der Vorgang zum Erstellen eines **Streaminglocators** wird als „Veröffentlichen“ bezeichnet. Standardmäßig ist der **Streaminglocator** sofort nach dem Vornehmen der API-Aufrufe gültig und bleibt es auch, bis er gelöscht wird (es sei denn, Sie konfigurieren die optionalen Start- und Endzeiten). 
 
@@ -36,7 +37,7 @@ Sie können außerdem die Start- und Endzeit in Ihrem Streaminglocator angeben, 
 
 * **Streaminglocators** werden nicht aktualisiert. 
 * Eigenschaften von **Streaminglocators** vom Datetime-Typ liegen immer im UTC-Format vor.
-* Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. Weitere Informationen finden Sie unter [Kontingente und Einschränkungen](limits-quotas-constraints.md).
+* Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. Weitere Informationen finden Sie unter [Kontingente und Grenzwerte](limits-quotas-constraints.md).
 
 ## <a name="create-streaming-locators"></a>Erstellen von Streaminglocators  
 
@@ -75,6 +76,9 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 Wenn Sie auch Ihren HLS-Datenstrom mit CBCS (FairPlay) verschlüsseln möchten, verwenden Sie „Predefined_MultiDrmStreaming“.
 
+> [!NOTE]
+> Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
+
 ## <a name="associate-filters-with-streaming-locators"></a>Zuordnen von Filtern mit Streaminglocators
 
 Lesen Sie [Filter: Zuordnen mit Streaminglocators](filters-concept.md#associating-filters-with-streaming-locator).
@@ -89,18 +93,19 @@ Um Streaminglocators basierend auf dem zugeordneten Medienobjektnamen abzurufen,
 
 |Sprache|API|
 |---|---|
-|REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
-|Befehlszeilenschnittstelle (CLI)|[az ams asset list-streaming-locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
-|.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
-|Java|[AssetStreamingLocator](https://docs.microsoft.com/java/api/com.microsoft.azure.management.mediaservices.v2018_07_01.assetstreaminglocator?view=azure-java-stable)|
-|Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/assets?view=azure-node-latest#liststreaminglocators-string--string--string--object-)|
+|REST|[liststreaminglocators](/rest/api/media/assets/liststreaminglocators)|
+|Befehlszeilenschnittstelle (CLI)|[az ams asset list-streaming-locators](/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|.NET|[ListStreamingLocators](/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
+|Java|[AssetStreamingLocator](/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
+|Node.js|[listStreamingLocators](/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="also-see"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 * [Medienobjekte](assets-concept.md)
 * [Streamingrichtlinien](streaming-policy-concept.md)
 * [Richtlinien für Inhaltsschlüssel](content-key-policy-concept.md)
+* [Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET](stream-files-tutorial-with-api.md)
+[Erstellen eines Streaminglocators und von URLs](create-streaming-locator-build-url.md)

@@ -1,64 +1,56 @@
 ---
-title: Web-App, die Web-APIs aufruft (Übersicht) – Microsoft Identity Platform
+title: Erstellen einer Web-App, die Web-APIs aufruft – Microsoft Identity Platform | Azure
 description: Erfahren Sie, wie Sie eine Web-App erstellen, die Web-APIs aufruft (Übersicht)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce45f11a697b72ebdd0fe01166a70e7b47aa8e9f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4123b0424e52c6a2919de4b60bcc6158062b0f1
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080290"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442632"
 ---
-# <a name="scenario-web-app-that-calls-web-apis"></a>Szenario: Web-App, die Web-APIs aufruft
+# <a name="scenario-a-web-app-that-calls-web-apis"></a>Szenario: Web-App, die Web-APIs aufruft
 
-Erfahren Sie, wie Sie eine Web-App erstellen, die Benutzer bei der Microsoft Identity Platform anmeldet und Web-APIs im Namen des angemeldeten Benutzers aufruft.
+Erfahren Sie, wie Sie eine Web-App erstellen, die Benutzer bei Microsoft Identity Platform anmeldet und dann Web-APIs im Namen des angemeldeten Benutzers aufruft.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
-In diesem Szenario wird angenommen, dass Sie mit dem folgenden Szenario vertraut sind:
-
-> [!div class="nextstepaction"]
-> [Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md)
+In diesem Szenario wird davon ausgegangen, dass Sie folgendes Szenario bereits abgeschlossen haben: [Szenario: Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md).
 
 ## <a name="overview"></a>Übersicht
 
-Fügen Sie eine Authentifizierung zu Ihrer Web-App hinzu, die daher Benutzer anmelden und eine Web-API im Namen des angemeldeten Benutzers aufrufen kann.
+Sie fügen eine Authentifizierung zu Ihrer Web-App hinzu, damit diese Benutzer anmelden und eine Web-API im Namen des angemeldeten Benutzers aufrufen kann.
 
 ![Web-App, die Web-APIs aufruft](./media/scenario-webapp/web-app.svg)
 
-Web-Apps, die Web-APIs aufrufen:
-
-- sind vertrauliche Clientanwendungen.
-- Dies ist der Grund für die Registrierung eines Geheimnisses (Anwendungskennwort oder -zertifikat) in Azure AD. Dieses Geheimnis wird während des Aufrufs von Azure AD zum Abrufen eines Tokens übergeben.
+Web-Apps, die Web-APIs anrufen, sind vertrauliche Clientanwendungen.
+Daher registrieren sie ein Geheimnis (Anwendungskennwort oder Zertifikat) bei Azure Active Directory (Azure AD). Dieses Geheimnis wird während des Aufrufs von Azure AD zum Abrufen eines Tokens übergeben.
 
 ## <a name="specifics"></a>Besonderheiten
 
 > [!NOTE]
-> Beim Hinzufügen von Anmeldedaten zu einer Web-App werden keine MSAL-Bibliotheken verwendet, um die Web-App zu schützen. Bibliotheken werden mithilfe von Bibliotheken namens Middleware geschützt. Dies war das Ziel des vorherigen Szenarios [Anmelden von Benutzern bei einer Web-App](scenario-web-app-sign-user-overview.md).
+> Das Hinzufügen der Anmeldung zu einer Web-App ist eine Maßnahme zum Schutz der Web-App. Dieser Schutz wird durch die Verwendung von *Middleware*-Bibliotheken erreicht, nicht mit MSAL (Microsoft Authentication Library). Im vorherigen Szenario [Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md) wurde dieses Thema behandelt.
 >
-> Beim Aufrufen von Web-APIs über eine Web-App benötigen Sie Zugriffstoken für diese Web-APIs. Sie können MSAL-Bibliotheken zum Abrufen dieser Token verwenden.
+> In diesem Szenario wird das Aufrufen von Web-APIs von einer Web-App behandelt. Sie müssen Zugriffstoken für diese Web-APIs abrufen. Sie verwenden MSAL-Bibliotheken zum Abrufen dieser Token.
 
-Das End-to-End-Szenario hat für Entwickler daher bestimmte Aspekte:
+Die Entwicklung für dieses Szenario umfasst die folgenden speziellen Aufgaben:
 
-- Während der [Anwendungsregistrierung](scenario-web-app-call-api-app-registration.md) müssen Sie gegebenenfalls mehrere (falls Sie Ihre App in mehreren Orten bereitstellen möchten) Antwort-URLs, Geheimnisse oder Zertifikate bereitstellen, die für Azure AD freigegeben sind.
-- Die [Anwendungskonfiguration](scenario-web-app-call-api-app-configuration.md) muss Clientanmeldeinformationen bereitstellen, die wie während der Anwendungsregistrierung für Azure AD freigegeben sind.
+- Bei der [Anwendungsregistrierung](scenario-web-app-call-api-app-registration.md) müssen Sie einen Antwort-URI, ein Geheimnis oder ein Zertifikat bereitstellen, das für Azure AD freigegeben werden soll. Wenn Sie Ihre App an mehreren Standorten bereitstellen, geben Sie für jeden Standort einen Antwort-URI an.
+- Die [Anwendungskonfiguration](scenario-web-app-call-api-app-configuration.md) muss die Clientanmeldeinformationen bereitstellen, die bei der Anwendungsregistrierung für Azure AD freigegeben wurden.
+
+## <a name="recommended-reading"></a>Empfohlene Literatur
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [App-Registrierung](scenario-web-app-call-api-app-registration.md)
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [App-Registrierung](scenario-web-app-call-api-app-registration.md).

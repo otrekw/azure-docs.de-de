@@ -1,7 +1,7 @@
 ---
 title: Häufig gestellte Fragen zur Textanalyse-API
 titleSuffix: Azure Cognitive Services
-description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Textanalyse-API.
+description: In diesem Artikel finden Sie Antworten zu häufig gestellten Fragen zu Konzepten, Code und Szenarios der Textanalyse-API für Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: a85fa543a6b26a5ea6452ce99fb91dc1ce465db7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffa70afa0edf29181bc622cbef6ff8716134b1f7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60827951"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364937"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Häufig gestellte Fragen (FAQ) zur Textanalyse in Cognitive Service
 
@@ -29,11 +29,11 @@ In der Stimmungsanalyse ist immer ein gewisses Maß an Ungenauigkeit vorhanden. 
 
 ## <a name="can-i-add-my-own-training-data-or-models"></a>Kann ich meine eigenen Trainingsdaten oder Modelle hinzufügen?
 
-Nein, die Modelle sind vortrainiert. Die einzigen Vorgänge zum Hochladen von Daten sind die Bewertung, Schlüsselbegriffserkennung und Spracherkennung. Benutzerdefinierte Modelle werden nicht gehostet. Wenn Sie benutzerdefinierte Machine Learning-Modelle erstellen und hosten möchten, informieren Sie sich über die [Machine Learning-Funktionen in Microsoft R Server](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package).
+Nein, die Modelle sind vortrainiert. Die einzigen Vorgänge zum Hochladen von Daten sind die Bewertung, Schlüsselbegriffserkennung und Spracherkennung. Benutzerdefinierte Modelle werden nicht gehostet. Wenn Sie benutzerdefinierte Machine Learning-Modelle erstellen und hosten möchten, informieren Sie sich über die [Machine Learning-Funktionen in Microsoft R Server](/r-server/r/concept-what-is-the-microsoftml-package).
 
 ## <a name="can-i-request-additional-languages"></a>Kann ich weitere Sprachen anfordern?
 
-Die Stimmungsanalyse und Schlüsselbegriffserkennung sind für eine [bestimmte Auswahl von Sprachen](text-analytics-supported-languages.md) verfügbar. Die Verarbeitung natürlicher Sprache ist komplex und erfordert umfangreiche Tests, bevor neue Funktionen veröffentlicht werden können. Aus diesem Grund wird die Unterstützung nicht frühzeitig angekündigt, sodass niemand sich auf eine Funktion verlässt, die mehr Entwicklungszeit benötigt. 
+Die Stimmungsanalyse und Schlüsselbegriffserkennung sind für eine [bestimmte Auswahl von Sprachen](./language-support.md) verfügbar. Die Verarbeitung natürlicher Sprache ist komplex und erfordert umfangreiche Tests, bevor neue Funktionen veröffentlicht werden können. Aus diesem Grund wird die Unterstützung nicht frühzeitig angekündigt, sodass niemand sich auf eine Funktion verlässt, die mehr Entwicklungszeit benötigt. 
 
 Sie können für bestimmte Sprachen auf der [User Voice](https://cognitive.uservoice.com/forums/555922-text-analytics)-Website abstimmen, damit die Entscheidung leichter fällt, welche Sprache als nächstes priorisiert wird. 
 
@@ -53,5 +53,5 @@ Haben Sie eine Frage zu einem fehlenden Feature bzw. einer fehlenden Funktion? E
 
 ## <a name="see-also"></a>Weitere Informationen
 
- [StackOverflow: Textanalyse-API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow: Text Analytics API (StackOverflow: Textanalyse-API)](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

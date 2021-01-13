@@ -1,216 +1,195 @@
 ---
-title: Planen der Service Fabric-Clusterkapazität | Microsoft Docs
-description: Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster. Knotentypen, Vorgänge, Dauerhaftigkeit und Zuverlässigkeitsstufen
-services: service-fabric
-documentationcenter: .net
-author: ChackDan
-manager: chackdan
-editor: ''
-ms.assetid: 4c584f4a-cb1f-400c-b61f-1f797f11c982
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
+description: Knotentypen, Dauerhaftigkeit, Zuverlässigkeit und andere Faktoren bei der Planung eines Service Fabric-Clusters
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/09/2019
-ms.author: chackdan
-ms.openlocfilehash: 2d13364093776028f96b75c5bfef252e2fdfc790
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.date: 05/21/2020
+ms.author: pepogors
+ms.openlocfilehash: 731dcfdf25efc4b2f44669dacd8a400037ed47f4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679401"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576331"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
-Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstellung. Nachfolgend sind einige Aspekte aufgeführt, die Sie dabei berücksichtigen müssen.
 
-* Die Anzahl von Knotentypen, über die Ihr Cluster anfänglich verfügen muss
-* Die Eigenschaften der einzelnen Knotentypen (Größe, primärer Knotentyp, Internetzugriff, Anzahl von VMs usw.)
-* Die Zuverlässigkeits- und Dauerhaftigkeitsmerkmale des Clusters
+Die Planung der Clusterkapazität ist für jede Service Fabric-Produktionsumgebung ein wichtiger Schritt. Folgende Aspekte sind besonders wichtig:
 
-> [!NOTE]
-> Sie müssen mindestens alle Werte der Upgraderichtlinie **Unzulässig** während der Planung überprüfen. Damit stellen Sie sicher, dass Sie die Werte richtig festlegen und ein späteres Abbrechen Ihres Clusters aufgrund unveränderlicher Systemkonfigurationseinstellungen verhindern. 
-> 
+* **Anzahl und Eigenschaften der *Clusterknotentypen***
 
-Im Folgenden gehen wir kurz auf diese Aspekte ein.
+* ***Dauerhaftigkeitsgrad* jedes Knotentyps** – entscheidet über die Service Fabric-VM-Berechtigungen in der Azure-Infrastruktur
 
-## <a name="the-number-of-node-types-your-cluster-needs-to-start-out-with"></a>Die Anzahl von Knotentypen, über die Ihr Cluster anfänglich verfügen muss
-Zuerst müssen Sie ermitteln, für welche Zwecke der von Ihnen erstellte Cluster verwendet werden soll.  Welche Arten von Anwendungen sollen in diesem Cluster bereitgestellt werden? Wenn Sie bezüglich des Verwendungszwecks des Clusters unsicher sind, ist es vermutlich noch zu früh für die Kapazitätsplanung.
+* ***Zuverlässigkeitsgrad* des Clusters** – entscheidet über die Stabilität der Service Fabric-Systemdienste und die Clusterfunktionalität insgesamt
 
-Legen Sie die Anzahl von Knotentypen fest, über die Ihr Cluster anfänglich verfügen muss.  Jeder Knotentyp wird einer VM-Skalierungsgruppe zugeordnet. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. Wenn Sie die Anzahl von Knotentypen festlegen, sind also die folgenden Aspekte entscheidend:
+In diesem Artikel werden die wesentlichen Entscheidungspunkte für die einzelnen Bereiche erläutert.
 
-* Weist Ihre Anwendung mehrere Dienste auf, und müssen einige dieser Dienste öffentlich sein oder über Internetzugriff verfügen? Typische Anwendungen umfassen einen Front-End-Gatewaydienst, der Eingaben von einem Client empfängt, und einen oder mehrere Back-End-Dienste, die mit den Front-End-Diensten kommunizieren. In diesem Fall verfügen Sie also über mindestens zwei Knotentypen.
-* Haben Ihre Dienste (aus denen sich Ihre Anwendung zusammensetzt) unterschiedliche Infrastrukturanforderungen, z. B. höhere RAM-Anforderungen oder längere CPU-Zyklen? Nehmen wir z. B. an, dass die Anwendung, die bereitgestellt werden soll, einen Front-End-Dienst und einen Back-End-Dienst umfasst. Der Front-End-Dienst kann auf kleineren virtuellen Computern (VM-Größen wie D2) platziert werden, die über geöffnete Ports für das Internet verfügen.  Der rechenintensive Back-End-Dienst hingegen muss auf größeren virtuellen Computern (mit VM-Größen wie D4, D6, D15) platziert werden, die nicht vom Internet aus zugänglich sind.
-  
-  Auch wenn beide Dienste in diesem Beispiel auf einem Knotentyp verwendet werden können, wird empfohlen, sie in einem Cluster mit zwei Knotentypen zu platzieren.  Dadurch können für die Knotentypen unterschiedliche Eigenschaften (z.B. Internetkonnektivität oder VM-Größe) festgelegt werden. Außerdem kann die Anzahl von VMs individuell skaliert werden.  
-* Da Sie nicht in die Zukunft blicken können, sollten Sie sich auf die Ihnen bekannten Fakten verlassen und die Anzahl von Knotentypen entsprechend festlegen, über die Ihre Anwendungen anfänglich verfügen müssen. Später können Knotentypen hinzugefügt oder entfernt werden. Ein Service Fabric-Cluster muss über mindestens einen Knotentyp verfügen.
+## <a name="initial-number-and-properties-of-cluster-node-types"></a>Anzahl und Eigenschaften der Clusterknotentypen
 
-## <a name="the-properties-of-each-node-type"></a>Die Eigenschaften der einzelnen Knotentypen
-Der **Knotentyp** kann als Äquivalent zu Rollen in Cloud Services betrachtet werden. Knotentypen definieren die Größe, die Anzahl und die Eigenschaften der virtuellen Computer. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird einer [VM-Skalierungsgruppe](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) zugeordnet.  
-Jeder Knotentyp ist eine separate Skalierungsgruppe und kann einzeln zentral hoch- oder herunterskaliert werden. Bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen weisen verschiedene Kapazitätsmetriken auf. Weitere Informationen über die Beziehungen zwischen Knotentypen und VM-Skalierungsgruppen, über den Zugriff per RDP auf eine der Instanzen, über das Öffnen neuer Ports usw. finden Sie unter [Service Fabric-Clusterknotentypen](service-fabric-cluster-nodetypes.md).
+Ein *Knotentyp* definiert die Größe, Anzahl und Eigenschaften der Knoten (virtuelle Computer) im Cluster. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird einer [VM-Skalierungsgruppe](../virtual-machine-scale-sets/overview.md) zugeordnet.
 
-Ein Service Fabric-Cluster kann mehrere Knotentypen enthalten. In diesem Fall besteht der Cluster aus einem primären Knotentyp und einem oder mehreren nicht primären Knotentypen.
+Da jeder Knotentyp eine separate Skalierungsgruppe ist, ist es möglich, diesen einzeln zentral hoch- oder herunterzuskalieren. Bei jedem Typ können unterschiedliche Ports geöffnet sein, und die Typen weisen verschiedene Kapazitätsmetriken auf. Weitere Informationen zur Beziehung zwischen Knotentypen und VM-Skalierungsgruppen finden Sie im Artikel zu [Service Fabric-Clusterknotentypen](service-fabric-cluster-nodetypes.md).
 
-Ein einzelner Knotentyp kann nicht zuverlässig auf mehr als 100 Knoten pro VM-Skalierungsgruppe für Service Fabric-Anwendungen skaliert werden. Um zuverlässig mehr als 100 Knoten zu erreichen, müssen Sie weitere VM-Skalierungsgruppen hinzufügen.
+Für jeden Cluster muss ein **primärer Knotentyp** festgelegt werden, der kritische Systemdienste ausführt, die Service Fabric-Plattformfeatures bereitstellen. Obwohl es auch möglich ist, primäre Knotentypen für die Ausführung Ihrer Anwendungen zu verwenden, wird empfohlen, diese nur für die Ausführung von Systemdiensten einzusetzen.
 
-### <a name="primary-node-type"></a>Primärer Knotentyp
+**Nicht primäre Knotentypen** können verwendet werden, um Anwendungsrollen (wie *Front-End-* oder *Back-End-Dienste*) zu definieren und die Dienste in einem Cluster physisch zu isolieren. Service Fabric-Cluster können null oder mehr nicht primäre Knotentypen aufweisen.
 
-Die Service Fabric-Systemdienste (z.B. der Cluster-Manager-Dienst oder der Imagespeicherdienst) werden auf dem primären Knotentyp platziert. 
+Der primäre Knotentyp wird mit dem Attribut `isPrimary` unter der Knotentypdefinition in der Azure Resource Manager-Vorlage konfiguriert. Die vollständige Liste der Knotentypeigenschaften finden Sie unter [NodeTypeDescription-Objekt](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object). Öffnen Sie eine *AzureDeploy.json*-Datei aus den [Service Fabric-Clusterbeispielen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/), und suchen Sie mit *Auf Seite suchen* nach dem `nodeTypes`-Objekt, um die Verwendung zu testen.
 
-![Screenshot eines Clusters mit zwei Knotentypen][SystemServices]
+### <a name="node-type-planning-considerations"></a>Aspekte der Knotentypplanung
 
-* Die **Mindestgröße von VMs** für den primären Knotentyp hängt von der gewählten **Dauerhaftigkeitsstufe** ab. Die Standarddauerhaftigkeitsstufe ist „Bronze“. Weitere Informationen finden Sie unter [Die Dauerhaftigkeitsmerkmale des Clusters](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).  
-* Die **Mindestanzahl von VMs** für den primären Knotentyp hängt von der gewählten **Zuverlässigkeitsstufe** ab. Die Standardzuverlässigkeitsstufe ist „Silber“. Weitere Informationen finden Sie unter [Die Zuverlässigkeitsmerkmale des Clusters](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster).  
+Die Anzahl der ursprünglichen Knoten hängt vom Zweck des Clusters und den darauf ausgeführten Anwendungen und Diensten ab. Stellen Sie sich die folgenden Fragen:
 
-Der primäre Knotentyp wird anhand der Azure Resource Manager-Vorlage mit dem Attribut `isPrimary` unter der [Knotentypdefinition](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) konfiguriert.
+* ***Weist Ihre Anwendung mehrere Dienste auf, und müssen einige dieser Dienste öffentlich sein oder über Internetzugriff verfügen?**
 
-### <a name="non-primary-node-type"></a>Nicht primärer Knotentyp
+    Typische Anwendungen umfassen einen Front-End-Gatewaydienst, der Eingaben von einem Client empfängt, und einen oder mehrere Back-End-Dienste, die mit den Front-End-Diensten kommunizieren. Dabei gibt es ein separates Netzwerk für Front-End- und Back-End-Dienste. In solchen Fällen sind normalerweise drei Knotentypen erforderlich: ein primärer Knotentyp und zwei nicht primäre Knotentypen (einen für jeden Front-End- und Back-End-Dienst).
 
-Cluster mit mehreren Knotentypen verfügen über einen primären Knotentyp. Die übrigen Knotentypen sind keine primären Knotentypen.
+_ ***Haben die Dienste, aus denen sich Ihre Anwendung zusammensetzt, unterschiedliche Infrastrukturanforderungen, z. B. höhere RAM-Anforderungen oder längere CPU-Zyklen?** _
 
-* Die **Mindestgröße von VMs** für nicht primäre Knotentypen hängt von der ausgewählten **Dauerhaftigkeitsstufe** ab. Die Standarddauerhaftigkeitsstufe ist „Bronze“. Weitere Informationen finden Sie unter [Die Dauerhaftigkeitsmerkmale des Clusters](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).  
-* Die **Mindestanzahl von VMs** für nicht primäre Knotentypen ist 1. Diese Anzahl sollte jedoch basierend auf der Anzahl von Replikaten der Anwendung/Dienste ausgewählt werden, die auf diesem Knotentyp ausgeführt werden soll bzw. sollen. Die Anzahl von VMs auf einem Knotentyp kann nach der Bereitstellung des Clusters erhöht werden.
+    Often, front-end service can run on smaller VMs (VM sizes like D2) that have ports open to the internet.  Computationally intensive back-end services might need to run on larger VMs (with VM sizes like D4, D6, D15) that are not internet-facing. Defining different node types for these services allow you to make more efficient and secure use of underlying Service Fabric VMs, and enables them to scale them independently. For more on estimating the amount of resources you'll need, see [Capacity planning for Service Fabric applications](service-fabric-capacity-planning.md)
 
-## <a name="the-durability-characteristics-of-the-cluster"></a>Die Dauerhaftigkeitsmerkmale des Clusters
-Über die Dauerhaftigkeitsstufe wird dem System angezeigt, über welche Berechtigungen Ihre VMs für die zugrunde liegende Azure-Infrastruktur verfügen. Auf dem primären Knotentyp kann Service Fabric mit dieser Berechtigung Infrastrukturanforderungen auf VM-Ebene anhalten (z. B. einen VM-Neustart, ein VM-Reimaging oder eine VM-Migration), die sich auf die Quorumanforderungen für die Systemdienste und Ihre zustandsbehafteten Dienste auswirken. Auf den nicht primären Knotentypen kann Service Fabric mit dieser Berechtigung Infrastrukturanforderungen auf VM-Ebene (z.B. einen VM-Neustart, ein VM-Reimaging und eine VM-Migration) anhalten, die sich auf die Quorumanforderungen für Ihre zustandsbehafteten Dienste auswirken.
+_ ***Muss einer der Anwendungsdienste auf über 100 Knoten aufskaliert werden?** _
 
-| Dauerhaftigkeitsstufe  | Erforderliche Mindestanzahl von VMs | Unterstützte VM-SKUs                                                                  | Aktualisierungen, die Sie an Ihrer VM-Skalierungsgruppe vornehmen                               | Updates und Wartung, initiiert von Azure                                                              | 
+    A single node type can't reliably scale beyond 100 nodes per virtual machine scale set for Service Fabric applications. Running more than 100 nodes requires additional virtual machine scale sets (and therefore additional node types).
+
+_ ***Erstreckt sich Ihr Cluster über Verfügbarkeitszonen?** _
+
+    Service Fabric supports clusters that span across [Availability Zones](../availability-zones/az-overview.md) by deploying node types that are pinned to specific zones, ensuring high-availability of your applications. Availability Zones require additional node type planning and minimum requirements. For details, see [Recommended topology for primary node type of Service Fabric clusters spanning across Availability Zones](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
+
+Wenn Sie die Anzahl und die Eigenschaften von Knotentypen für die Erstellung Ihres Clusters bestimmen, müssen Sie bedenken, dass Sie auch nach der Bereitstellung Ihres Clusters jederzeit nicht primäre Knotentypen hinzufügen, bearbeiten oder entfernen können. [Primäre Knotentypen](service-fabric-scale-up-primary-node-type.md) können zudem in ausgeführten Clustern bearbeitet werden. Einige Vorgänge in Produktionsumgebungen müssen jedoch sorgfältig geplant und durchgeführt werden.
+
+Ein weiterer zu berücksichtigender Aspekt für Ihre Knotentypeigenschaften ist der Dauerhaftigkeitsgrad, der über die Berechtigungen der VMs eines Knotentyps in der Azure-Infrastruktur entscheidet. Verwenden Sie die VM-Größen, die Sie für Ihre Cluster auswählen, und die Anzahl der Instanzen, die Sie einzelnen Knotentypen zuweisen, um den geeigneten Dauerhaftigkeitsgrad für die jeweiligen Knotentypen festzulegen. Dies wird im Folgenden erläutert.
+
+## <a name="durability-characteristics-of-the-cluster"></a>Dauerhaftigkeitsmerkmale des Clusters
+
+Der _Dauerhaftigkeitsgrad* entscheidet über die Berechtigungen Ihrer Service Fabric-VMs in der zugrunde liegenden Azure-Infrastruktur. Mit dieser Berechtigung kann Service Fabric Infrastrukturanforderungen auf VM-Ebene anhalten (z. B. einen Neustart, ein Reimaging oder eine Migration), die sich auf die Quorumanforderungen für Service Fabric-Systemdienste und Ihre zustandsbehafteten Dienste auswirken.
+
+> [!IMPORTANT]
+> Der Dauerhaftigkeitsgrad wird pro Knotentyp festgelegt. Wenn kein Wert angegeben ist, wird *Bronze* verwendet, es werden jedoch keine automatischen Betriebssystemupgrades durchgeführt. Die Dauerhaftigkeit *Silber* oder *Gold* wird für Produktionsworkloads empfohlen.
+
+In der folgenden Tabelle werden die Dauerhaftigkeitsgrade für Service Fabric sowie die jeweiligen Anforderungen aufgeführt.
+
+| Dauerhaftigkeitsstufe  | Erforderliche Mindestanzahl von VMs | Unterstützte VM-Größen                                                                  | Aktualisierungen, die Sie an Ihrer VM-Skalierungsgruppe vornehmen                               | Updates und Wartung, initiiert von Azure                                                              | 
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| Gold             | 5                              | Vollknoten-SKUs speziell für einen einzelnen Kunden (z.B. L32s, GS5, G5, DS15_v2, D15_v2) | Kann bis zur Genehmigung durch den Service Fabric-Cluster verzögert werden | Kann für 2 Stunden pro UD angehalten werden, damit zusätzliche Zeit für die Wiederherstellung von Replikaten nach früheren Fehlern verfügbar ist |
+| Gold             | 5                              | Vollknotengrößen speziell für einen einzelnen Kunden (z. B. L32s, GS5, G5, DS15_v2, D15_v2) | Kann bis zur Genehmigung durch den Service Fabric-Cluster verzögert werden | Kann für 2 Stunden pro Upgradedomäne angehalten werden, damit zusätzliche Zeit für die Wiederherstellung von Replikaten nach früheren Fehlern verfügbar ist |
 | Silber           | 5                              | Virtuelle Computer mit einem Kern oder höher mit mindestens 50 GB lokalem SSD-Speicher                      | Kann bis zur Genehmigung durch den Service Fabric-Cluster verzögert werden | Kann nicht für eine längere Zeit verzögert werden                                                    |
-| Bronze           | 1                              | Virtuelle Computer mit mindestens 50 GB lokaler SSD-Kapazität                                              | Wird nicht durch den Service Fabric-Cluster verzögert           | Kann nicht für eine längere Zeit verzögert werden                                                    |
+| Bronze          | 1                              | Virtuelle Computer mit mindestens 50 GB lokaler SSD-Kapazität                                              | Wird nicht durch den Service Fabric-Cluster verzögert           | Kann nicht für eine längere Zeit verzögert werden                                                    |
 
 > [!WARNING]
-> Knotentypen, die mit der Dauerhaftigkeitsstufe „Bronze“ ausgeführt werden, erhalten _keine Berechtigungen_. Das bedeutet, dass die Infrastrukturaufträge, die sich auf die zustandslosen Workloads auswirken, nicht angehalten oder verzögert werden. Dies kann sich auf Ihre Workloads auswirken. Verwenden Sie „Bronze“ nur für Knotentypen, die ausschließlich zustandslose Workloads ausführen. Für Produktionsworkloads wird die Ausführung unter „Silber“ oder höher empfohlen. 
-> 
-> Unabhängig von der Dauerhaftigkeitsstufe wird durch den Vorgang der [Aufhebung der Zuordnung](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) für die VM-Skalierungsgruppe der Cluster gelöscht.
+> Beim Dauerhaftigkeitsgrad „Bronze“ sind keine automatischen Betriebssystemupgrades verfügbar. Während die [Anwendung zur Patchorchestrierung](service-fabric-patch-orchestration-application.md) (nur für nicht in Azure gehostete Cluster) für den Dauerhaftigkeitsgrad Silber oder höher *nicht empfohlen* wird, stellt diese die einzige Möglichkeit dar, Windows-Updates unter Einbeziehung von Service Fabric-Upgradedomänen zu automatisieren.
 
-**Vorteile der Verwendung der Dauerhaftigkeitsstufe „Silber“ oder „Gold“**
- 
-- Reduziert die Anzahl der erforderlichen Schritte in einem Vorgang zur horizontalen Herunterskalierung (d.h., die Knotendeaktivierung und der Befehl „Remove-ServiceFabricNodeState“ werden automatisch ausgeführt)
-- Reduziert das Risiko eines Datenverlusts aufgrund eines vom Kunden initiierten direkten VM-SKU-Änderungsvorgangs oder von Azure-Infrastruktur-Vorgängen.
+> [!IMPORTANT]
+> Unabhängig vom Dauerhaftigkeitsgrad wird der Cluster durch die Ausführung einer [Belegungsfreigabe](/rest/api/compute/virtualmachinescalesets/deallocate) in einer VM-Skalierungsgruppe zerstört.
 
-**Nachteile der Verwendung der Dauerhaftigkeitsstufe „Silber“ oder „Gold“**
- 
-- Für Bereitstellungen in Ihrer VM-Skalierungsgruppe (und anderen verwandten Azure-Ressourcen) kann eine Verzögerung bzw. ein Timeout auftreten, oder sie können durch Probleme in Ihrem Cluster oder auf der Infrastrukturebene vollständig blockiert werden. 
-- Erhöht die Anzahl der [Lebenszyklusereignisse für Replikate](service-fabric-reliable-services-lifecycle.md) (z.B. Tausch des primären Replikats) aufgrund von automatischen Knotendeaktivierungen während Azure-Infrastrukturvorgängen.
-- Stellt Knoten für bestimmte Zeiträume außer Dienst, während Updates der Azure-Plattformsoftware oder Aktivitäten zur Hardwarewartung durchgeführt werden. Es kann sein, dass Knoten während dieser Aktivitäten den Status „Wird deaktiviert“ oder „Deaktiviert“ aufweisen. Hierdurch reduziert sich die Kapazität Ihres Clusters vorübergehend, aber es sollten sich keine Auswirkungen auf die Verfügbarkeit Ihres Clusters oder Ihrer Anwendungen ergeben.
+### <a name="bronze"></a>Bronze
 
-### <a name="recommendations-for-when-to-use-silver-or-gold-durability-levels"></a>Empfehlungen für den Einsatz der Dauerhaftigkeitsstufen „Silber“ und „Gold“
+Knotentypen, die mit dem Dauerhaftigkeitsgrad „Bronze“ ausgeführt werden, erhalten keine Berechtigungen. Das bedeutet, dass die Infrastrukturaufträge, die sich auf die zustandsbehafteten Workloads auswirken, nicht angehalten oder verzögert werden. Verwenden Sie den Dauerhaftigkeitsgrad „Bronze“ nur für Knotentypen, die zustandslose Workloads ausführen. Für Produktionsworkloads wird die Ausführung unter „Silber“ oder höher empfohlen.
 
-Verwenden Sie die Silber- oder Gold-Dauerhaftigkeit für alle Knotentypen, die zustandsbehaftete Dienste hosten, für die Sie eine häufige horizontale Herunterskalierung (Reduzierung der VM-Instanzanzahl) erwarten und für die Sie bevorzugen, dass sich – zugunsten einer Vereinfachung dieser Herunterskalierungsvorgänge – Bereitstellungsvorgänge verzögern und die Kapazität reduziert wird. Die Szenarien mit horizontaler Hochskalierung (Hinzufügen von virtuellen Computerinstanzen) haben keinen Einfluss auf Ihre Wahl der Dauerhaftigkeitsstufe, dies ist nur bei horizontaler Hochskalierung der Fall.
+### <a name="silver-and-gold"></a>Silber und Gold
+
+Verwenden Sie die Dauerhaftigkeitsgrade „Silber“ oder „Gold“ für alle Knotentypen, die zustandsbehaftete Dienste hosten, für die Sie eine häufige horizontale Herunterskalierung erwarten und für die Bereitstellungsvorgänge verzögert und Kapazitäten reduziert werden sollen, um den Vorgang zu vereinfachen. Szenarios mit horizontaler Skalierung sollten die Wahl des Dauerhaftigkeitsgrads jedoch nicht beeinflussen.
+
+#### <a name="advantages"></a>Vorteile
+
+* Reduziert die Anzahl der erforderlichen Schritte in einem Vorgang zur horizontalen Herunterskalierung (Knotendeaktivierung und Remove-ServiceFabricNodeState werden automatisch aufgerufen)
+* Reduziert das Risiko eines Datenverlusts aufgrund von direkten Änderungen der VM-Größe oder von Azure-Infrastrukturvorgängen
+
+#### <a name="disadvantages"></a>Nachteile
+
+* Für Bereitstellungen in Ihren VM-Skalierungsgruppen (und anderen zugehörigen Azure-Ressourcen) kann eine Verzögerung bzw. ein Timeout auftreten, oder sie können durch Probleme in Ihrem Cluster oder auf Infrastrukturebene vollständig blockiert werden.
+* Erhöht die Anzahl der [Lebenszyklusereignisse für Replikate](service-fabric-reliable-services-lifecycle.md) (z.B. Tausch des primären Replikats) aufgrund von automatischen Knotendeaktivierungen während Azure-Infrastrukturvorgängen.
+* Stellt Knoten für bestimmte Zeiträume außer Dienst, während Updates der Azure-Plattformsoftware oder Aktivitäten zur Hardwarewartung durchgeführt werden. Es kann sein, dass Knoten während dieser Aktivitäten den Status „Wird deaktiviert“ oder „Deaktiviert“ aufweisen. Hierdurch reduziert sich die Kapazität Ihres Clusters vorübergehend, aber es sollten sich keine Auswirkungen auf die Verfügbarkeit Ihres Clusters oder Ihrer Anwendungen ergeben.
+
+#### <a name="best-practices-for-silver-and-gold-durability-node-types"></a>Bewährte Methoden für die Dauerhaftigkeitsgrade „Silber“ und „Gold“
+
+Berücksichtigen Sie die folgenden Empfehlungen für die Verwaltung von Knotentypen mit der Dauerhaftigkeit „Silber“ oder „Gold“:
+
+* Halten Sie Ihren Cluster und Anwendungen jederzeit fehlerfrei, und stellen Sie sicher, dass Anwendungen rechtzeitig auf alle [Lebenszyklus-Dienstereignisse für Replikate](service-fabric-reliable-services-lifecycle.md) (z.B. Unterbrechung der Replikaterstellung) reagieren.
+* Führen Sie sicherere Methoden für die Änderung von VM-Größen (Hoch-/Herunterskalieren) ein. Das Ändern der VM-Größe einer VM-Skalierungsgruppe muss sorgfältig geplant und durchgeführt werden. Weitere Informationen finden Sie unter [Hochskalieren des primären Knotentyps eines Service Fabric-Clusters](service-fabric-scale-up-primary-node-type.md).
+* Verwalten Sie mindestens fünf Knoten für alle VM-Skalierungsgruppen, für die die Dauerhaftigkeitsstufen „Gold“ oder „Silber“ aktiviert wurden. Der Cluster wechselt in den Fehlerzustand, wenn Sie unter diesem Schwellenwert abskalieren, und Sie müssen den Status (`Remove-ServiceFabricNodeState`) für die entfernten Knoten manuell bereinigen.
+* Jede VM-Skalierungsgruppe mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ muss einem eigenen Knotentyp im Service Fabric-Cluster zugeordnet werden. Das Zuordnen mehrerer VM-Skalierungsgruppen zu einem einzelnen Knotentyp verhindert die ordnungsgemäße Koordinierung zwischen dem Service Fabric-Cluster und der Azure-Infrastruktur.
+* Löschen Sie keine zufälligen VM-Instanzen, sondern verwenden Sie immer die Funktion zum Abskalieren für VM-Skalierungsgruppen. Das Löschen von zufälligen VM-Instanzen kann zu Ungleichheiten in der auf [Upgradedomänen](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) und [Fehlerdomänen](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains) verteilten VM-Instanz führen. Durch eine solche Ungleichheit kann das System ggf. keinen ordnungsgemäßen Lastenausgleich zwischen den Dienstinstanzen und Dienstreplikaten mehr durchführen.
+* Wenn Sie die Autoskalierung verwenden, legen Sie die Regeln so fest, dass die Abskalierung (Entfernung von VM-Instanzen) jeweils nur für einen Knoten ausgeführt wird. Es ist nicht sicher, mehrere Instanzen gleichzeitig herunterzuskalieren.
+* Beim Löschen oder Freigeben von VMs auf dem primären Knotentyp sollten Sie niemals die Anzahl der zugeordneten virtuellen Computer unter die Anforderungen des Zuverlässigkeitsgrads reduzieren. Diese Vorgänge werden in einer Skalierungsgruppe mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ auf unbestimmte Zeit blockiert.
 
 ### <a name="changing-durability-levels"></a>Ändern von Dauerhaftigkeitsstufen
-- Knotentypen mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ können nicht auf „Bronze“ herabgestuft werden.
-- Das Upgrade von „Bronze“ auf „Silber“ oder „Gold“ kann einige Stunden dauern.
-- Stellen Sie beim Ändern der Dauerhaftigkeitsstufe sicher, dass diese sowohl in der Service Fabric-Erweiterungskonfiguration der VMS-Skalierungsgruppenressource als auch in der Knotentypdefinition der Service Fabric-Clusterressource aktualisiert wird. Diese Werte müssen übereinstimmen.
 
-### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Betriebsempfehlungen für den Knotentyp, dessen Dauerhaftigkeitsstufe Sie auf „Silber“ oder „Gold“ festgelegt haben.
+Innerhalb bestimmter Einschränkungen kann die der Dauerhaftigkeitsgrad für Knotentypen angepasst werden:
 
-- Halten Sie Ihren Cluster und Anwendungen jederzeit fehlerfrei, und stellen Sie sicher, dass Anwendungen rechtzeitig auf alle [Lebenszyklus-Dienstereignisse für Replikate](service-fabric-reliable-services-lifecycle.md) (z.B. Unterbrechung der Replikaterstellung) reagieren.
-- Führen Sie sicherere Methoden für VM-SKU-Änderungen (Horizontales Hoch-/Herunterskalieren nach) ein: Für Ändern der VM-SKU einer VM-Skalierungsgruppe sind mehrere Schritte und diverse Überlegungen erforderlich. Mit dieser Vorgehensweise vermeiden Sie gängige Probleme.
-    - **Für nicht primäre Knotentypen:** Es wird empfohlen, eine neue VM-Skalierungsgruppe zu erstellen, die Dienstplatzierungseinschränkungen so zu ändern, dass die neue VM-Skalierungsgruppe bzw. der neue Knotentyp enthalten ist, und dann die Instanzenanzahl der alten VM-Skalierungsgruppe auf null zu reduzieren (nacheinander für alle Knoten, um sicherzustellen, dass das Entfernen der Knoten die Zuverlässigkeit des Clusters nicht beeinträchtigt).
-    - **Für den primären Knotentyp:** Wenn die von Ihnen ausgewählte VM-SKU die Kapazitätsgrenze erreicht und Sie zu einer größeren VM-SKU wechseln möchten, beachten Sie unsere Hinweise zur [vertikalen Skalierung für einen primären Knotentyp](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type). 
+* Knotentypen mit dem Dauerhaftigkeitsgrad „Silber“ oder „Gold“ können nicht auf „Bronze“ herabgestuft werden.
+* Das Upgrade von „Bronze“ auf „Silber“ oder „Gold“ kann einige Stunden dauern.
+* Stellen Sie beim Ändern des Dauerhaftigkeitsgrads sicher, dass diese sowohl in der Service Fabric-Erweiterungskonfiguration der VM-Skalierungsgruppenressource als auch in der Knotentypdefinition der Service Fabric-Clusterressource aktualisiert wird. Diese Werte müssen übereinstimmen.
 
-- Verwalten Sie mindestens fünf Knoten für alle VM-Skalierungsgruppen, für die die Dauerhaftigkeitsstufen „Gold“ oder „Silber“ aktiviert wurden.
-- Jede VM-Skalierungsgruppe mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ muss einem eigenen Knotentyp im Service Fabric-Cluster zugeordnet werden. Das Zuordnen mehrerer VM-Skalierungsgruppen zu einem einzelnen Knotentyp verhindert die ordnungsgemäße Koordinierung zwischen dem Service Fabric-Cluster und der Azure-Infrastruktur.
-- Löschen Sie keine zufälligen VM-Instanzen, sondern verwenden Sie immer die Funktion zum zentralen Herunterskalieren für VM-Skalierungsgruppen. Das Löschen von zufälligen VM-Instanzen kann zu Ungleichheiten in der auf UD und FD verteilten VM-Instanz führen. Eine solche Ungleichheit kann die Fähigkeit des Systems zum ordnungsgemäßen Lastenausgleich zwischen den Dienstinstanzen/Dienstreplikaten beeinträchtigen.
-- Wenn Sie die automatische Skalierung verwenden, legen Sie die Regeln so fest, dass die horizontale Herunterskalierung (Entfernung von VM-Instanzen) jeweils nur für einen Knoten ausgeführt wird. Es ist nicht sicher, mehrere Instanzen gleichzeitig herunterzuskalieren.
-- Beim Löschen oder Freigeben von virtuellen Computern auf dem primären Knotentyp sollten Sie niemals die Anzahl der zugeordneten virtuellen Computer unter die Anforderungen der Zuverlässigkeitsstufe reduzieren. Diese Vorgänge werden in einer Skalierungsgruppe mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ auf unbestimmte Zeit blockiert.
+Ein weiterer Aspekt bei der Kapazitätsplanung ist der Zuverlässigkeitsgrad für Ihren Cluster, der über die Stabilität der Systemdienste und Ihres gesamten Clusters entscheidet. Dies wird im nächsten Abschnitt beschrieben.
 
-## <a name="the-reliability-characteristics-of-the-cluster"></a>Die Zuverlässigkeitsmerkmale des Clusters
-Über die Zuverlässigkeitsstufe wird die Anzahl von Replikaten der Systemdienste festgelegt, die in diesem Cluster auf dem primären Knotentyp ausgeführt werden sollen. Je mehr Replikate vorhanden sind, desto größer ist die Zuverlässigkeit der Systemdienste in Ihrem Cluster.  
+## <a name="reliability-characteristics-of-the-cluster"></a>Zuverlässigkeitsmerkmale des Clusters
+
+Der *Zuverlässigkeitsgrad* des Clusters entscheidet über die Anzahl der Systemdienstreplikate, die auf dem primären Knotentyp des Clusters ausgeführt werden. Je mehr Replikate, desto zuverlässiger sind die Systemdienste (und somit der gesamte Cluster).
+
+> [!IMPORTANT]
+> Der Zuverlässigkeitsgrad wird auf Clusterebene festgelegt und entscheidet über die Mindestanzahl der Knoten des primären Knotentyps. Für Produktionsworkloads muss mindestens der Zuverlässigkeitsgrad „Silber“ (größer oder gleich fünf Knoten) festgelegt werden.  
 
 Für die Zuverlässigkeitsstufe können folgende Werte festgelegt werden:
 
-* Platin: Systemdienste mit einer Replikatgruppen-Zielanzahl von 7 ausführen
-* Gold: Systemdienste mit einer Replikatgruppen-Zielanzahl von 7 ausführen
-* Silber: Systemdienste mit einer Replikatgruppen-Zielanzahl von 5 ausführen 
-* Bronze: Systemdienste mit einer Replikatgruppen-Zielanzahl von 3 ausführen
+* **Platin:** Systemdienste werden mit neun Zielreplikatgruppen ausgeführt.
+* **Gold:** Systemdienste werden mit sieben Zielreplikatgruppen ausgeführt.
+* **Silber:** Systemdienste werden mit fünf Zielreplikatgruppen ausgeführt.
+* **Bronze:** Systemdienste werden mit drei Zielreplikatgruppen ausgeführt.
 
-> [!NOTE]
-> Die gewählte Zuverlässigkeitsstufe bestimmt die Mindestanzahl von Knoten, über die Ihr primärer Knotentyp verfügen muss. 
-> 
-> 
+Dies ist die Empfehlung für die Auswahl der Zuverlässigkeitsstufe. Die Anzahl von Seedknoten wird ebenfalls auf die Mindestanzahl von Knoten für eine Zuverlässigkeitsstufe festgelegt.
 
-### <a name="recommendations-for-the-reliability-tier"></a>Empfehlungen für die Zuverlässigkeitsstufe
 
-Wenn Sie den Cluster vergrößern oder verkleinern (die Summe der VM-Instanzen in allen Knotentypen), müssen Sie die Zuverlässigkeit des Clusters von einer Stufe auf eine andere aktualisieren. Durch diesen Vorgang werden die erforderlichen Clusterupgrades ausgelöst, um die Replikatgruppenanzahl der Systemdienste zu ändern. Warten Sie, bis das laufende Upgrade abgeschlossen ist, ehe Sie Änderungen am Cluster vornehmen, beispielsweise Knoten hinzufügen.  Sie können den Fortschritt des Upgrades im Service Fabric Explorer oder durch Ausführen von [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) verfolgen.
-
-Dies ist die Empfehlung für die Auswahl der Zuverlässigkeitsstufe.  Die Anzahl von Seedknoten wird ebenfalls auf die Mindestanzahl von Knoten für eine Zuverlässigkeitsstufe festgelegt.  Bei einem Cluster mit Gold-Zuverlässigkeit sind beispielsweise sieben Seedknoten vorhanden.
-
-| **Anzahl von Clusterknoten** | **Zuverlässigkeitsstufe** |
+| **Anzahl von Knoten** | **Zuverlässigkeitsstufe** |
 | --- | --- |
-| 1 |Geben Sie den Parameter für die Zuverlässigkeitsstufe nicht an, er wird vom System berechnet |
-| 3 |Bronze |
-| 5 oder 6|Silber |
-| 7 oder 8 |Gold |
-| 9 und höher |Platin |
+| 1 | *Geben Sie den Parameter `reliabilityLevel` nicht an, denn er wird vom System berechnet.* |
+| 3 | Bronze |
+| 5 oder 6| Silber |
+| 7 oder 8 | Gold |
+| 9 und höher | Platin |
 
-## <a name="primary-node-type---capacity-guidance"></a>Primärer Knotentyp: Kapazitätsleitfaden
+Wenn Sie den Cluster vergrößern oder verkleinern (die Summe der VM-Instanzen in allen Knotentypen), sollten Sie ggf. den Zuverlässigkeitgrad des Clusters ändern. Durch diesen Vorgang werden die erforderlichen Clusterupgrades ausgelöst, um die Replikatgruppenanzahl der Systemdienste zu ändern. Warten Sie, bis das laufende Upgrade abgeschlossen ist, ehe Sie Änderungen am Cluster vornehmen, beispielsweise Knoten hinzufügen.  Sie können den Fortschritt des Upgrades im Service Fabric Explorer oder durch Ausführen von [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) verfolgen.
 
-Nutzen Sie diesen Leitfaden, um die Kapazität Ihres primären Knotentyps zu planen:
+### <a name="capacity-planning-for-reliability"></a>Kapazitätsplanung für Zuverlässigkeit
 
-- **Anzahl von VM-Instanzen, um eine Produktionsworkload in Azure auszuführen:** Sie müssen die Mindestgröße 5 und die Zuverlässigkeitsstufe Silber für den primären Knotentyp angeben.  
-- **Anzahl von VM-Instanzen, um eine Testworkload in Azure auszuführen:** Sie können die Mindestgröße 1 oder 3 für den primären Knotentyp angeben. Knotencluster 1 setzt eine spezifische Konfiguration voraus, daher wird bei diesem Cluster horizontales Skalieren nicht unterstützt. Knotencluster 1 besitzt keine Zuverlässigkeit. Daher müssen Sie in Ihrer Resource Manager-Vorlage diese Konfiguration entfernen bzw. nicht angeben (es reicht nicht, den Konfigurationswert nicht einzustellen). Wenn Sie über das Portal den Knotencluster 1 eingerichtet haben, wird die Konfiguration automatisch bearbeitet. Bei den Knotenclustern der Größe 1 und 3 wird die Ausführung von Produktionsworkloads nicht unterstützt. 
-- **VM-SKU:** Der primäre Knotentyp dient zur Ausführung der Systemdienste, daher muss die ausgewählte VM-SKU die gesamte Spitzenlast verarbeiten können, die Sie für den Cluster planen. Eine Analogie zur Veranschaulichung: Stellen Sie sich den primären Knotentyp als Ihre Lunge vor, die Ihr Gehirn mit Sauerstoff versorgt. Wenn Ihr Gehirn nicht genügend Sauerstoff erhält, funktioniert Ihr Körper nicht richtig. 
+Die Kapazitätsanforderungen Ihres Clusters richten sich nach Ihren Anforderungen an Workloads und Zuverlässigkeit. Dieser Abschnitt enthält allgemeine Anleitungen für den Einstieg in die Kapazitätsplanung.
 
-Da die Kapazitätsanforderungen eines Clusters von der Workload abhängig sind, die Sie für die Ausführung im Cluster planen, können wir Ihnen keine detaillierten Anleitungen für Ihre spezifische Workload bereitstellen. Im Folgenden finden Sie eine allgemeine Übersicht, um Ihnen beim Einstieg zu helfen
+#### <a name="virtual-machine-sizing"></a>VM-Größen
 
-Für Produktionsworkloads: 
+**Für Produktionsworkloads wird die VM-Größe (SKU) [Standard D2_V2](../virtual-machines/dv2-dsv2-series.md) (oder gleichwertig) mit mindestens 50 GB lokalem SSD-Speicher, 2 Kernen und 4 GiB Arbeitsspeicher empfohlen.** Es wird mindestens 50 GB lokaler SSD-Speicher empfohlen. Für einige Workloads (z. B. solche, die Windows-Container ausführen) werden jedoch größere Datenträger benötigt. Wenn Sie [andere VM-Größen](../virtual-machines/sizes-general.md) für Produktionsworkloads auswählen, müssen Sie die folgenden Einschränkungen beachten:
 
-- Es wird empfohlen, den primären NodeType exklusiv für Systemdienste zu reservieren und Platzierungseinschränkungen zu verwenden, um Ihre Anwendung auf den sekundären NodeTypes bereitzustellen.
-- Die empfohlene VM-SKU ist D2_V2 oder eine entsprechende SKU mit einer lokalen SSD-Kapazität von mindestens 50 GB.
-- Die minimal unterstützte VM-SKU ist Standard_D2_V3 oder Standard_D1_V2 oder eine entsprechende SKU mit einer lokalen SSD-Kapazität von mindestens 50 GB. 
-- Empfohlen werden mindestens 50 GB. Für Ihre Workloads, insbesondere bei der Ausführung von Windows-Containern, werden größere Datenträger benötigt. 
-- VM-SKUs mit partiellem Kern wie A0 Standard werden für Produktionsworkloads nicht unterstützt.
-- VM-SKUs der A-Serie werden aus Leistungsgründen für Produktionsworkloads nicht unterstützt.
+- VM-Größen mit partiellem Kern wie Standard A0 werden nicht unterstützt.
+- VM-Größen der *A-Serie* werden aus Leistungsgründen nicht unterstützt.
 - Virtuelle Computer mit niedriger Priorität werden nicht unterstützt.
 
+#### <a name="primary-node-type"></a>Primärer Knotentyp
+
+Für **Produktionsworkloads** in Azure sind mindestens fünf primäre Knoten (VM-Instanzen) und der Zuverlässigkeitsgrad „Silber“ erforderlich. Es wird empfohlen, den primären Knotentyp für Systemdienste zu reservieren und Platzierungseinschränkungen zu verwenden, um Ihre Anwendung auf den sekundären Knotentypen bereitzustellen.
+
+**Testworkloads** in Azure können eine Mindestanzahl von einem oder drei Knoten ausführen. Stellen Sie bei der Konfiguration eines Knotenclusters sicher, dass die Einstellung `reliabilityLevel` in Ihrer Resource Manager-Vorlage nicht vorhanden ist (die Angabe eines leeren Zeichenfolgenwerts für `reliabilityLevel` ist nicht ausreichend). Wenn Sie über das Azure-Portal einen Cluster mit einem Knoten eingerichtet haben, erfolgt diese Konfiguration automatisch.
+
 > [!WARNING]
-> Das Ändern der VM-SKU-Größe des primären Knotens in einem aktuell ausgeführten Cluster ist ein Skalierungsvorgang, der in der Dokumentation [Horizontales Hochskalieren von VM-Skalierungsgruppen](virtual-machine-scale-set-scale-node-type-scale-out.md) dokumentiert wird.
+> Cluster mit einem Knoten werden ohne Zuverlässigkeit und mit einer speziellen Konfiguration ausgeführt, wenn das Aufskalieren nicht unterstützt wird.
 
-## <a name="non-primary-node-type---capacity-guidance-for-stateful-workloads"></a>Nicht primärer Knotentyp: Kapazitätsleitfaden für zustandsbehaftete Workloads
+#### <a name="non-primary-node-types"></a>Nicht primäre Knotentypen
 
-Diese Anleitung gilt für zustandsbehaftete Workloads mit [zuverlässigen Sammlungen oder Reliable Actors](service-fabric-choose-framework.md) von Service Fabric, die Sie auf dem nicht primären Knotentyp ausführen.
+Die Mindestanzahl der Knoten für einen nicht primären Knotentyp hängt vom jeweiligen [Dauerhaftigkeitsgrad](#durability-characteristics-of-the-cluster) des Knotentyps ab. Sie sollten die Anzahl der Knoten (und den Dauerhaftigkeitsgrad) anhand der Anzahl der Replikate für Anwendungen oder Dienste planen, die für den Knotentyp ausgeführt werden sollen. Zudem spielt eine Rolle, ob die Workload zustandsbehaftet oder zustandslos ist. Denken Sie daran, dass Sie die Anzahl der VMs in einem Knotentyp nach der Bereitstellung des Clusters jederzeit erhöhen oder verringern können.
 
-**Anzahl von VM-Instanzen:** Es wird empfohlen, zustandsbehaftete Produktionsworkloads mit mindestens 5 Zielreplikaten auszuführen. Dies bedeutet, dass Sie im stabilen Zustand in jeder Fehlerdomäne und jeder Upgradedomäne ein Replikat (aus einer Replikatgruppe) erhalten. Das gesamte Konzept der Zuverlässigkeitsstufen für den primären Knotentyp ist eine Möglichkeit, diese Einstellung für Systemdienste anzugeben. Daher gilt die gleiche Überlegung auch für Ihre zustandsbehafteten Dienste.
+##### <a name="stateful-workloads"></a>Zustandsbehaftete Workloads
 
-Für Produktionsworkloads wird die Mindestgröße 5 für den primären Knotentyp empfohlen, wenn Sie zustandsbehaftete Workloads auf dem Knoten ausführen.
+Für zustandsbehaftete Workloads, die [zuverlässige Sammlungen oder Reliable Actors](service-fabric-choose-framework.md) von Service Fabric verwenden, werden mindestens fünf Zielreplikate empfohlen. So ist im stabilen Zustand in jeder Fehlerdomäne und jeder Upgradedomäne ein Replikat (aus einer Replikatgruppe) vorhanden. Im Allgemeinen verwenden Sie den Zuverlässigkeitsgrad, den Sie für Systemdienste festlegen, als Richtwert für die Replikatanzahl, die Sie für Ihre zustandsbehafteten Dienste verwenden.
 
-**VM-SKU:** Dies ist der Knotentyp, auf dem Ihre Anwendungsdienste ausgeführt werden. Daher muss die ausgewählte VM-SKU die Spitzenlast verarbeiten können, die Sie für jeden Knoten planen. Die Kapazitätsanforderungen des Knotentyps sind von der Workload abhängig, die Sie im Cluster ausführen möchten. Daher können wir keine detaillierten Anleitungen für Ihre spezifische Workload bereitstellen. Im Anschluss finden Sie eine allgemeine Übersicht, um Ihnen beim Einstieg zu helfen.
+##### <a name="stateless-workloads"></a>Zustandslose Workloads
 
-Für Produktionsworkloads 
-
-- Die empfohlene VM-SKU ist D2_V2 oder eine entsprechende SKU mit einer lokalen SSD-Kapazität von mindestens 50 GB.
-- Die minimal unterstützte VM-SKU ist Standard_D2_V3 oder Standard_D1_V2 oder eine entsprechende SKU mit einer lokalen SSD-Kapazität von mindestens 50 GB. 
-- VM-SKUs mit partiellem Kern wie A0 Standard werden für Produktionsworkloads nicht unterstützt.
-- VM-SKUs der A-Serie werden aus Leistungsgründen für Produktionsworkloads nicht unterstützt.
-
-## <a name="non-primary-node-type---capacity-guidance-for-stateless-workloads"></a>Nicht primärer Knotentyp: Kapazitätsleitfaden für zustandslose Workloads
-
-Diese Anleitung gilt für zustandslose Workloads, die Sie auf dem nicht primären Knotentyp ausführen.
-
-**Anzahl von VM-Instanzen:** Für zustandslose Produktionsworkloads wird die Mindestgröße 2 für nicht primäre Knotentypen unterstützt. So können Sie zwei zustandslose Instanzen Ihrer Anwendung ausführen und stellen sicher, dass Ihr Dienst auch beim Ausfall einer VM-Instanz weiter funktioniert. 
-
-**VM-SKU:** Dies ist der Knotentyp, auf dem Ihre Anwendungsdienste ausgeführt werden. Daher muss die ausgewählte VM-SKU die Spitzenlast verarbeiten können, die Sie für jeden Knoten planen. Die Kapazitätsanforderungen des Knotentyps sind von der Workload abhängig, die Sie im Cluster ausführen möchten. Wir können keine detaillierten Anleitungen für Ihre spezifische Workload bereitstellen.  Im Anschluss finden Sie jedoch eine allgemeine Übersicht, um Ihnen beim Einstieg zu helfen.
-
-Für Produktionsworkloads 
-
-- Die empfohlene VM-SKU ist Standard D2_V2 oder eine entsprechende SKU. 
-- Die minimal unterstützte VM-SKU ist D1 Standard oder D1_V2 Standard oder eine entsprechende SKU. 
-- VM-SKUs mit partiellem Kern wie A0 Standard werden für Produktionsworkloads nicht unterstützt.
-- VM-SKUs der A-Serie werden aus Leistungsgründen für Produktionsworkloads nicht unterstützt.
-
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+Für zustandslose Produktionsworkloads müssen mindestens drei nicht primäre Knotentypen unterstützt werden, um das Quorum aufrechtzuerhalten. Es werden jedoch fünf Knotentypen empfohlen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie die Kapazitätsplanung abgeschlossen haben und einen Cluster einrichten, sollten Sie folgende Artikel lesen:
 
-* [Service Fabric-Clustersicherheit](service-fabric-cluster-security.md)
-* [Service Fabric-Clusterskalierung](service-fabric-cluster-scaling.md)
+Bevor Sie Ihren Cluster konfigurieren, sollten Sie die [Clusterupgraderichtlinien `Not Allowed`](service-fabric-cluster-fabric-settings.md) lesen, damit Sie Ihre Cluster später nicht neu erstellen müssen, weil andernfalls nicht änderbare Systemkonfigurationseinstellungen vorliegen.
+
+Weitere Informationen zur Clusterplanung:
+
+* [Computeplanung und -skalierung](service-fabric-best-practices-capacity-scaling.md)
+* [Kapazitätsplanung für Service Fabric-Anwendungen](service-fabric-capacity-planning.md)
 * [Planen der Notfallwiederherstellung](service-fabric-disaster-recovery.md)
-* [Beziehung zwischen Knotentypen und der VM-Skalierungsgruppe](service-fabric-cluster-nodetypes.md)
 
 <!--Image references-->
 [SystemServices]: ./media/service-fabric-cluster-capacity/SystemServices.png

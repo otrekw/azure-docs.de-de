@@ -1,31 +1,25 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Sichern einer Web-App | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Sichern einer Web-App
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'Mit PowerShell: Sichern einer App'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie eine App sichern.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: fc755f82-ca3e-4532-b251-690b699324d6
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: c1c43e8523a46971e99b2d91b9c121de3dc57681
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 8d41d491edd5fc6acf0b3b93d92771d0a99ece90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087972"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89079964"
 ---
 # <a name="back-up-a-web-app-using-powershell"></a>Sichern einer Web-App mithilfe von PowerShell
 
 Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und anschließend eine einmalige Sicherung für sie. 
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. 
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. 
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -58,6 +52,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Azure PowerShell-Beispiele für Azure App Service-Web-Apps finden Sie unter [Azure PowerShell-Beispiele](../samples-powershell.md).

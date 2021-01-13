@@ -1,19 +1,15 @@
 ---
 title: Allgemeine Metriken für die automatische Skalierung
 description: Erfahren Sie, welche Metriken häufig für die automatische Skalierung von Cloud Services, Virtual Machines und Web-Apps verwendet werden.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e1a77fc1b40faca0a339c5e1aaceb71dec8de8bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129733"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004635"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Allgemeine Metriken für die automatische Skalierung in Azure Monitor
 
@@ -21,7 +17,7 @@ ms.locfileid: "66129733"
 
 Mit der automatischen Skalierung in Azure Monitor können Sie die Anzahl der ausgeführten Instanzen basierend auf Telemetriedaten (Metriken) zentral hoch- oder herunterskalieren. Dieses Dokument beschreibt allgemeine Metriken, die Sie verwenden möchten. Im Azure-Portal können Sie die Metrik der Ressource für die Skalierung auswählen. Sie können jedoch auch eine Metrik aus einer anderen Ressource für die Skalierung auswählen.
 
-Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Andere Azure-Dienste verwenden andere Skalierungsmethoden.
+Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](../../api-management/api-management-key-concepts.md). Andere Azure-Dienste verwenden andere Skalierungsmethoden.
 
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>Berechnen von Metriken für Resource Manager-basierte virtuelle Computer
 Standardmäßig geben Resource Manager-basierte virtuelle Computer und VM-Skalierungsgruppen grundlegende Metriken (also Metriken auf der Hostebene) aus. Wenn Sie die Erfassung von Diagnosedaten für einen virtuellen Azure-Computer und eine VM-Skalierungsgruppe konfigurieren, gibt die Azure-Diagnoseerweiterung darüber hinaus Leistungsmetriken für das Gastbetriebssystem (so genannte „Gastbetriebssystem-Metriken“) aus.  Diese Metriken werden alle in Regeln für die automatische Skalierung verwendet.
@@ -37,10 +33,10 @@ Wenn einer der oben genannten Fälle zutrifft, lesen Sie unter [Aktivieren der A
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Hostmetriken für Resource Manager-basierte virtuelle Windows- und Linux-Computer
 Die folgenden Metriken auf Hostebene werden standardmäßig für virtuelle Azure-Computer und VM-Skalierungsgruppen ausgegeben (sowohl in Windows- als auch in Linux-Instanzen). Diese Metriken beschreiben Ihren virtuellen Azure-Computer, werden aber nicht per installiertem Agent auf dem virtuellen Gastcomputer, sondern vom Azure-VM-Host erfasst. Sie können diese Metriken in Regeln für die automatische Skalierung verwenden.
 
-- [Hostmetriken für Resource Manager-basierte virtuelle Windows- und Linux-Computer](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
-- [Hostmetriken für Resource Manager-basierte VM Scale Sets-Instanzen unter Windows oder Linux](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
+- [Hostmetriken für Resource Manager-basierte virtuelle Windows- und Linux-Computer](./metrics-supported.md#microsoftcomputevirtualmachines)
+- [Hostmetriken für Resource Manager-basierte VM Scale Sets-Instanzen unter Windows oder Linux](./metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>Gastbetriebssystem-Metriken für Resource Manager-basierte virtuelle Windows-Computer
+### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Gastbetriebssystem-Metriken für Resource Manager-basierte virtuelle Windows-Computer
 Wenn Sie in Azure einen virtuellen Computer erstellen, wird die Diagnose durch Verwenden der Diagnoseerweiterung aktiviert. Die Diagnoseerweiterung gibt einen Satz von Metriken aus dem virtuellen Computer aus. Das bedeutet, dass Sie für die automatische Skalierung Metriken verwenden können, die standardmäßig nicht ausgegeben werden.
 
 Sie können eine Liste der Metriken mithilfe des folgenden Befehls in PowerShell generieren.
@@ -56,10 +52,10 @@ Sie können eine Warnung für die folgenden Metriken erstellen:
 | \Processor(_Total)\%Prozessorzeit |Percent |
 | \Processor(_Total)\%Privilegierte Zeit |Percent |
 | \Processor(_Total)\%Benutzerzeit |Percent |
-| \Processor Informationen(_Total)\Prozessorfrequenz |Count |
-| \System\Prozesse |Count |
-| \Process(_Total)\Threadanzahl |Count |
-| \Process(_Total)\Handleanzahl |Count |
+| \Processor Informationen(_Total)\Prozessorfrequenz |Anzahl |
+| \System\Prozesse |Anzahl |
+| \Process(_Total)\Threadanzahl |Anzahl |
+| \Process(_Total)\Handleanzahl |Anzahl |
 | \Memory\%Verwendete zugesicherte Bytes |Percent |
 | \Memory\Verfügbare Bytes |Byte |
 | \Memory\Zugesicherte Bytes |Byte |
@@ -75,11 +71,11 @@ Sie können eine Warnung für die folgenden Metriken erstellen:
 | \PhysicalDisk(_Total)\Bytes/s |Bytes pro Sekunde |
 | \PhysicalDisk(_Total)\Byte gelesen/s |Bytes pro Sekunde |
 | \PhysicalDisk(_Total)\Byte geschrieben/s |Bytes pro Sekunde |
-| \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge des Datenträgers |Count |
-| \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge der Datenträger-Lesevorgänge |Count |
-| \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge der Datenträger-Schreibvorgänge |Count |
+| \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge des Datenträgers |Anzahl |
+| \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge der Datenträger-Lesevorgänge |Anzahl |
+| \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge der Datenträger-Schreibvorgänge |Anzahl |
 | \LogicalDisk(_Total)\%Freier Speicherplatz |Percent |
-| \LogicalDisk(_Total)\MB frei |Count |
+| \LogicalDisk(_Total)\MB frei |Anzahl |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Gastbetriebssystem-Metriken für virtuelle Linux-Computer
 Wenn Sie in Azure einen virtuellen Computer erstellen, wird die Diagnose standardmäßig durch Verwenden der Diagnoseerweiterung aktiviert.
@@ -92,7 +88,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
  Sie können eine Warnung für die folgenden Metriken erstellen:
 
-| Metrikname | Unit |
+| Metrikname | Einheit |
 | --- | --- |
 | \Memory\AvailableMemory |Byte |
 | \Memory\PercentAvailableMemory |Percent |
@@ -123,18 +119,18 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageReadTime |Sekunden |
 | \PhysicalDisk\AverageWriteTime |Sekunden |
 | \PhysicalDisk\AverageTransferTime |Sekunden |
-| \PhysicalDisk\AverageDiskQueueLength |Count |
+| \PhysicalDisk\AverageDiskQueueLength |Anzahl |
 | \NetworkInterface\BytesTransmitted |Byte |
 | \NetworkInterface\BytesReceived |Byte |
-| \NetworkInterface\PacketsTransmitted |Count |
-| \NetworkInterface\PacketsReceived |Count |
+| \NetworkInterface\PacketsTransmitted |Anzahl |
+| \NetworkInterface\PacketsReceived |Anzahl |
 | \NetworkInterface\BytesTotal |Byte |
-| \NetworkInterface\TotalRxErrors |Count |
-| \NetworkInterface\TotalTxErrors |Count |
-| \NetworkInterface\TotalCollisions |Count |
+| \NetworkInterface\TotalRxErrors |Anzahl |
+| \NetworkInterface\TotalTxErrors |Anzahl |
+| \NetworkInterface\TotalCollisions |Anzahl |
 
-## <a name="commonly-used-web-server-farm-metrics"></a>Häufig verwendete Webmetriken (Serverfarm)
-Sie können die automatische Skalierung auch basierend auf allgemeinen Webservermetriken wie der HTTP-Warteschlangenlänge ausführen. Der Metrikname ist **HttpQueueLength**.  Im folgenden Abschnitt sind die verfügbaren Serverfarmmetriken (Web-Apps) aufgeführt.
+## <a name="commonly-used-app-service-server-farm-metrics"></a>Häufig verwendete App Service-Metriken (Serverfarm)
+Sie können die automatische Skalierung auch basierend auf allgemeinen Webservermetriken wie der HTTP-Warteschlangenlänge ausführen. Der Metrikname ist **HttpQueueLength**.  Im folgenden Abschnitt sind die verfügbaren Serverfarmmetriken (App Service) aufgeführt.
 
 ### <a name="web-apps-metrics"></a>Web-Apps-Metriken
 Sie können eine Liste der Web-Apps-Metriken mithilfe des folgenden Befehls in PowerShell generieren.
@@ -145,12 +141,12 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 Anhand dieser Metriken können Sie Warnungen ausgeben oder skalieren.
 
-| Metrikname | Unit |
+| Metrikname | Einheit |
 | --- | --- |
 | CpuPercentage |Percent |
 | MemoryPercentage |Percent |
-| DiskQueueLength |Count |
-| HttpQueueLength |Count |
+| DiskQueueLength |Anzahl |
+| HttpQueueLength |Anzahl |
 | BytesReceived |Byte |
 | BytesSent |Byte |
 
@@ -163,8 +159,8 @@ Bei einem klassischen Speicherkonto würde die metricTrigger-Einstellung für di
 
 ```
 "metricName": "ApproximateMessageCount",
- "metricNamespace": "",
- "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
+"metricNamespace": "",
+"metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
 Bei einem (nicht klassischen) Speicherkonto würde metricTrigger Folgendes enthalten:
@@ -181,7 +177,7 @@ Sie können nach Service Bus-Warteschlangenlänge skalieren, wobei es sich um di
 Für VM-Skalierungsgruppen können Sie die Einstellung für die automatische Skalierung in der Resource Manager-Vorlage aktualisieren, sodass *metricName* als *ApproximateMessageCount* verwendet und die ID der Speicherwarteschlange als *metricResourceUri* übergeben wird.
 
 ```
-"metricName": "MessageCount",
+"metricName": "ApproximateMessageCount",
  "metricNamespace": "",
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ServiceBus/namespaces/SB_NAMESPACE/queues/QUEUE_NAME"
 ```

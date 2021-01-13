@@ -1,25 +1,14 @@
 ---
-title: Ausführen eines Azure Service Fabric-Diensts unter System- und lokalen Sicherheitskonten | Microsoft-Dokumentation
+title: Ausführen eines Diensts unter System- und lokalen Sicherheitskonten
 description: Erfahren Sie, wie Sie eine Service Fabric-Anwendung unter System- und lokalen Sicherheitskonten ausführen.  Erstellen Sie Sicherheitsprinzipale, und übernehmen Sie die Run-As-Richtlinie zur sicheren Ausführung der Dienste.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/29/2018
-ms.author: atsenthi
-ms.openlocfilehash: 8b0ddc619a7e840b0379a790bd21e7beae812109
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600053"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75610119"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Ausführen eines Diensts als lokales Benutzerkonto oder lokales Systemkonto
 Durch Verwenden von Azure Service Fabric können Sie Anwendungen sichern, die im Cluster unter verschiedenen Benutzerkonten ausgeführt werden. Standardmäßig werden Service Fabric-Anwendungen unter dem Konto ausgeführt, unter dem der Prozess „Fabric.exe“ ausgeführt wird. Service Fabric bietet auch die Möglichkeit, Anwendungen für einen lokalen Benutzer oder ein Systemkonto auszuführen. Unterstützte lokale Systemkontotypen sind **LocalUser**, **NetworkService**, **LocalService** und **LocalSystem**.  Wenn Sie Service Fabric auf einem eigenständigen Windows-Cluster ausführen, können Sie einen Dienst unter [Active Directory-Domänenkonten](service-fabric-run-service-as-ad-user-or-group.md) oder [gruppenverwalteten Dienstkonten](service-fabric-run-service-as-gmsa.md) ausführen.

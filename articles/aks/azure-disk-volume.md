@@ -2,17 +2,14 @@
 title: Erstellen eines statischen Volumes für Pods in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie manuell ein Volume mit Azure-Datenträgern für die Verwendung mit Pods in Azure Kubernetes Service (AKS) erstellen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: 9017c8cf721fbb9c493dc18da769b9d6e83ddf05
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: d44c8a7241308c26a3f1148ec70a7a5730dd0c89
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67616132"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900850"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
@@ -27,11 +24,11 @@ Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Speicheroptionen f
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="create-an-azure-disk"></a>Erstellen eines Azure-Datenträgers
 
-Wenn Sie einen Azure-Datenträger für die Verwendung mit AKS erstellen, können Sie die Datenträgerressource in der Ressourcengruppe **Knoten** erstellen. Diese Vorgehensweise ermöglicht es dem AKS-Cluster, auf die Datenträgerressource zuzugreifen und diese zu verwalten. Wenn Sie den Datenträger stattdessen in einer separaten Ressourcengruppe erstellen, müssen Sie dem Azure Kubernetes Service-Dienstprinzipal (AKS) für Ihren Cluster die Rolle `Contributor` für die Ressourcengruppe des Datenträgers zuweisen.
+Wenn Sie einen Azure-Datenträger für die Verwendung mit AKS erstellen, können Sie die Datenträgerressource in der Ressourcengruppe **Knoten** erstellen. Diese Vorgehensweise ermöglicht es dem AKS-Cluster, auf die Datenträgerressource zuzugreifen und diese zu verwalten. Wenn Sie den Datenträger stattdessen in einer separaten Ressourcengruppe erstellen, müssen Sie dem Azure Kubernetes Service-Dienstprinzipal (AKS) für Ihren Cluster die Rolle `Contributor` für die Ressourcengruppe des Datenträgers zuweisen. Alternativ können Sie für Berechtigungen die vom System zugewiesene verwaltete Identität anstelle des Dienstprinzipals verwenden. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
 
 In diesem Artikel erstellen Sie den Datenträger in der Ressourcengruppe „Knoten“. Rufen Sie zunächst den Namen der Ressourcengruppe mit dem Befehl [az aks show][az-aks-show] ab, und fügen Sie den Abfrageparameter `--query nodeResourceGroup` hinzu. Im folgenden Beispiel wird der Knoten „Ressourcengruppe“ für den AKS-Clusternamen *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen:
 
@@ -41,7 +38,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Erstellen Sie nun mit dem Befehl [az disk create][az-disk-create] einen Datenträger. Geben Sie den Knotennamen der Ressourcengruppe, den Sie mit dem vorherigen Befehl abgerufen haben, und dann einen Namen für die Datenträgerressource an, z.B. *myAKSDisk*: Das folgende Beispiel erstellt einen Datenträger mit *20* GiB und gibt die ID des Datenträgers nach der Erstellung aus. Wenn Sie einen Datenträger für die Verwendung mit Windows Server-Containern (zurzeit in der Vorschauphase in AKS) erstellen möchten, fügen Sie den Parameter `--os-type windows` hinzu, um den Datenträger ordnungsgemäß zu formatieren.
+Erstellen Sie nun mit dem Befehl [az disk create][az-disk-create] einen Datenträger. Geben Sie den Knotennamen der Ressourcengruppe, den Sie mit dem vorherigen Befehl abgerufen haben, und dann einen Namen für die Datenträgerressource an, z.B. *myAKSDisk* : Das folgende Beispiel erstellt einen Datenträger mit *20*  GiB und gibt die ID des Datenträgers nach der Erstellung aus. Wenn Sie einen Datenträger für die Verwendung mit Windows Server-Containern erstellen möchten, fügen Sie den Parameter `--os-type windows` hinzu, um den Datenträger ordnungsgemäß zu formatieren.
 
 ```azurecli-interactive
 az disk create \
@@ -62,7 +59,7 @@ Die ID der Datenträgerressource wird angezeigt, sobald der Befehl erfolgreich a
 
 ## <a name="mount-disk-as-volume"></a>Einbinden des Datenträgers als Volume
 
-Um den Azure-Datenträger in Ihren Pod einzubinden, konfigurieren Sie das Volume in der Containerspezifikation. Erstellen Sie eine neue Datei namens „`azure-disk-pod.yaml`“ mit folgendem Inhalt. Aktualisieren Sie `diskName` mit dem Namen des im vorherigen Schritt erstellten Datenträgers und `diskURI` mit der in der Ausgabe des Befehls „disk create“ angezeigten Datenträger-ID. Wenn gewünscht, aktualisieren Sie auch den Wert `mountPath`. Dies ist der Pfad, unter dem der Azure-Datenträger im Pod eingebunden wird. Geben Sie für Windows Server-Container (derzeit in der Vorschau in AKS) einen *mountPath* gemäß Windows-Pfadkonvention an, z. B. *D:* .
+Um den Azure-Datenträger in Ihren Pod einzubinden, konfigurieren Sie das Volume in der Containerspezifikation. Erstellen Sie eine neue Datei namens „`azure-disk-pod.yaml`“ mit folgendem Inhalt. Aktualisieren Sie `diskName` mit dem Namen des im vorherigen Schritt erstellten Datenträgers und `diskURI` mit der in der Ausgabe des Befehls „disk create“ angezeigten Datenträger-ID. Wenn gewünscht, aktualisieren Sie auch den Wert `mountPath`. Dies ist der Pfad, unter dem der Azure-Datenträger im Pod eingebunden wird. Geben Sie für Windows Server-Container einen *mountPath* gemäß Windows-Pfadkonvention an, z. B. *D:* .
 
 ```yaml
 apiVersion: v1
@@ -71,7 +68,7 @@ metadata:
   name: mypod
 spec:
   containers:
-  - image: nginx:1.15.5
+  - image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     name: mypod
     resources:
       requests:

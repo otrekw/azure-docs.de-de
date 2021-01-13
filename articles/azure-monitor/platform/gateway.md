@@ -1,24 +1,17 @@
 ---
 title: Verbinden von Computern über das Log Analytics-Gateway | Microsoft-Dokumentation
 description: Verbinden Sie Geräte und durch Operations Manager überwachte Computer mit dem Log Analytics-Gateway, um Daten an den Azure Automation- und Log Analytics-Dienst zu senden, wenn sie nicht über Internetzugriff verfügen.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: magoedte
-ms.openlocfilehash: 1d735a3740b473806835f2e80f40cea02b48387e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+author: bwren
+ms.author: bwren
+ms.date: 12/24/2019
+ms.openlocfilehash: dc4d1b852b0a498de0834731b2b1cd1225b9748b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955098"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008853"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway in Azure Monitor
 
@@ -28,18 +21,18 @@ ms.locfileid: "68955098"
 
 Dieser Artikel beschreibt, wie Sie die Kommunikation mit Azure Automation and Azure Monitor über das Log Analytics-Gateway konfigurieren, wenn Computer, die direkt verbunden sind oder von Operations Manager überwacht werden, über keinen Internetzugang verfügen. 
 
-Das Log Analytics-Gateway ist ein HTTP-Forwardproxy, der HTTP-Tunnel mit dem Befehl „HTTP CONNECT“ unterstützt. Dieses Gateway sendet im Namen der Computer, die keine direkte Verbindung mit dem Internet herstellen können, Daten an Azure Automation und einen Log Analytics-Arbeitsbereich in Azure Monitor. Daten von den Agents werden nicht zwischengespeichert, und der Agent verarbeitet die Zwischenspeicherung von Daten in dieser Situation, bis die Kommunikation wieder hergestellt wurde.
+Das Log Analytics-Gateway ist ein HTTP-Forwardproxy, der HTTP-Tunnel mit dem Befehl „HTTP CONNECT“ unterstützt. Dieses Gateway sendet im Namen der Computer, die keine direkte Verbindung mit dem Internet herstellen können, Daten an Azure Automation und einen Log Analytics-Arbeitsbereich in Azure Monitor. 
 
 Das Log Analytics-Gateway unterstützt Folgendes:
 
-* Kommunikation mit bis zu den gleichen vier Log Analytics-Arbeitsbereichs-Agents, die sich hinter dem Gateway befinden und die mit Azure Automation Hybrid Runbook Workers konfiguriert sind.  
+* Berichterstattung an dieselben Log Analytics-Arbeitsbereiche, die auf den einzelnen Agents dahinter sowie mit Azure Automation Hybrid Runbook Workern konfiguriert sind.  
 * Direkt mit einem Log Analytics-Arbeitsbereich in Azure Monitor verbundene Windows-Computer mit Microsoft Monitoring Agent.
 * Direkt mit einem Log Analytics-Arbeitsbereich in Azure Monitor verbundene Linux-Computer mit dem Log Analytics-Agent für Linux.  
 * System Center Operations Manager 2012 SP1 mit UR7, Operations Manager 2012 R2 mit UR3 oder eine Verwaltungsgruppe in Operations Manager 2016 oder höher, die in Log Analytics integriert ist.  
 
 Einige IT-Sicherheitsrichtlinien lassen keine Internetverbindung für Netzwerkcomputer zu. Diese nicht verbundenen Computer können beispielsweise POS-Geräte (Point of Sale) oder Server sein, die IT-Dienste unterstützen. Um diese Geräte mit Azure Automation oder einen Log Analytics-Arbeitsbereich zu verbinden, damit Sie sie verwalten und überwachen können, konfigurieren Sie sie so, dass sie direkt mit dem Log Analytics-Gateway kommunizieren. Das Log Analytics-Gateway kann Konfigurationsinformationen empfangen und Daten in ihrem Auftrag weiterleiten. Wenn die Computer mit dem Log Analytics-Agent konfiguriert werden, um eine direkte Verbindung mit einem Log Analytics-Arbeitsbereich herzustellen, kommunizieren die Computer stattdessen mit dem Log Analytics-Gateway.  
 
-Das Log Analytics-Gateway überträgt Daten von den Agents direkt an den Dienst. Dabei werden keinerlei Daten im Übergang analysiert.
+Das Log Analytics-Gateway überträgt Daten von den Agents direkt an den Dienst. Die Daten werden während der Übertragung nicht analysiert, und das Gateway nimmt keine Zwischenspeicherung von Daten vor, wenn die Verbindung mit dem Dienst unterbrochen wird. Kann das Gateway nicht mit dem Dienst kommunizieren, wird der Agent weiterhin ausgeführt und stellt die gesammelten Daten in die Warteschlange auf dem Datenträger des überwachten Computers. Nachdem die Verbindung wiederhergestellt wurde, sendet der Agent die gesammelten zwischengespeicherten Daten an Azure Monitor.
 
 Wenn eine Operations Manager-Verwaltungsgruppe in Log Analytics integriert wird, können die Verwaltungsserver so konfiguriert werden, dass sie eine Verbindung mit dem Log Analytics-Gateway herstellen, um Konfigurationsinformationen zu empfangen und gesammelte Daten abhängig von der aktivierten Lösung zu senden.  Operations Manager-Agents senden einige Daten an den Verwaltungsserver. Agents können z.B. Operations Manager-Warnungen, Daten zur Konfigurationsbewertung, Instanz-Speicherplatzdaten und Kapazitätsdaten senden. Andere umfangreiche Daten wie etwa IIS-Protokolle (Internet Information Services, Internetinformationsdienste), Leistungsdaten und Sicherheitsereignisse werden direkt an das Log Analytics-Gateway gesendet. 
 
@@ -51,7 +44,7 @@ Der Computer, auf dem das Log Analytics-Gateway ausgeführt wird, benötigt den 
 
 Ein Gateway kann mehrfach vernetzt mit bis zu vier Arbeitsbereichen sein. Dies ist die Gesamtzahl der Arbeitsbereiche, die ein Windows-Agent unterstützt.  
 
-Jeder Agent benötigt eine Netzwerkverbindung mit dem entsprechenden Gateway, damit Agents automatisch Daten an das und vom Gateway übertragen können. Sie sollten das Gateway nicht auf einem Domänencontroller installieren.
+Jeder Agent benötigt eine Netzwerkverbindung mit dem entsprechenden Gateway, damit Agents automatisch Daten an das und vom Gateway übertragen können. Sie sollten das Gateway nicht auf einem Domänencontroller installieren. Bei Linux-Computern, die sich hinter einem Gatewayserver befinden, kann die Methode der [Installation mit einem Wrapperskript](agent-linux.md#install-the-agent-using-wrapper-script) nicht verwendet werden, um den Log Analytics-Agent für Linux zu installieren. Der Agent muss manuell heruntergeladen, auf den Computer kopiert und manuell installiert werden, da das Gateway nur die Kommunikation mit den zuvor erwähnten Azure-Diensten unterstützt.
 
 Die folgende Abbildung zeigt den Datenfluss von direkten Agents durch das Gateway an Azure Automation und Log Analytics. Die Proxykonfiguration des Agents muss mit dem Port übereinstimmen, mit dem das Log Analytics-Gateway konfiguriert ist.  
 
@@ -66,7 +59,7 @@ Die folgende Abbildung zeigt den Datenfluss von einer Operations Manager-Verwalt
 Computer, die das Log Analytics-Gateway ausführen, müssen über die folgende Konfiguration verfügen:
 
 * Windows 10, Windows 8.1 oder Windows 7
-* Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 oder Windows Server 2008
+* Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 oder Windows Server 2008
 * Microsoft .NET Framework 4.5
 * Vierkernprozessor und 8 GB Arbeitsspeicher (Mindestanforderung) 
 * [Log Analytics-Agent für Windows](agent-windows.md), konfiguriert für die Kommunikation mit demselben Arbeitsbereich wie die Agents, die über das Gateway kommunizieren.
@@ -79,7 +72,7 @@ Das Log Analytics-Gateway ist in den folgenden Sprachen verfügbar:
 - Chinesisch (traditionell)
 - Tschechisch
 - Niederländisch
-- Deutsch
+- Englisch
 - Französisch
 - Deutsch
 - Ungarisch
@@ -96,7 +89,7 @@ Das Log Analytics-Gateway ist in den folgenden Sprachen verfügbar:
 
 Das Log Analytics-Gateway unterstützt nur Transport Layer Security (TLS) 1.0, 1.1 und 1.2.  Secure Sockets Layer (SSL) wird nicht unterstützt.  Um die Sicherheit der Daten während der Übertragung an Log Analytics zu gewährleisten, konfigurieren Sie das Gateway so, dass es mindestens TLS 1.2 verwendet. Ältere Versionen von TLS- oder SSL sind anfällig. Obwohl sie zurzeit Abwärtskompatibilität zulassen, sollten Sie diese älteren Versionen vermeiden.  
 
-Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
+Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](./data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Unterstützte Anzahl von Agent-Verbindungen
 
@@ -105,11 +98,11 @@ Die folgende Tabelle zeigt in etwa, wie viele Agents mit einem Gatewayserver kom
 |Gateway |Unterstützte Agents (ungefähr)|  
 |--------|----------------------------------|  
 |CPU: Intel Xeon-Prozessor E5-2660 v3 \@ 2,6 GHz, 2 Kerne<br> Memory: 4 GB<br> Netzwerkbandbreite: 1 GBit/s| 600|  
-|CPU: Intel Xeon-Prozessor E5-2660 v3 \@ 2,6 GHz, 4 Kerne<br> Memory: 8 GB<br> Netzwerkbandbreite: 1 GBit/s| 1000|  
+|CPU: Intel Xeon-Prozessor E5-2660 v3 \@ 2,6 GHz, 4 Kerne<br> Memory: 8 GB<br> Netzwerkbandbreite: 1 GBit/s| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>Herunterladen des Log Analytics-Gateways
 
-Rufen Sie die neueste Version der Log Analytics-Gatewaysetupdatei aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=54443) oder dem Azure-Portal ab.
+Rufen Sie die neueste Version der Log Analytics-Gatewaysetupdatei aus dem Microsoft Download Center ([Downloadlink](https://go.microsoft.com/fwlink/?linkid=837444)) oder dem Azure-Portal ab.
 
 Um das Log Analytics-Gateway aus dem Azure-Portal abzurufen, gehen Sie folgendermaßen vor:
 
@@ -141,21 +134,22 @@ Führen Sie zum Installieren des Gateways mit dem Setup-Assistenten die folgende
    a. Geben Sie die für das Gateway zu verwendende TCP-Portnummer ein. Das Setup verwendet diese Portnummer, um eine Eingangsregel für die Windows-Firewall zu konfigurieren.  Der Standardwert ist 8080.
       Zulässig sind Portnummern im Bereich zwischen 1 und 65535. Wenn die Eingabe außerhalb dieses Bereichs liegt, wird eine Fehlermeldung angezeigt.
 
-   b. Falls der Server, auf dem das Gateway installiert ist, über einen Proxy kommunizieren muss, geben Sie die Proxyadresse ein, mit der das Gateway eine Verbindung herstellen muss. Geben Sie z. B. Folgendes ein: `http://myorgname.corp.contoso.com:80`.  Wenn Sie dieses Feld leer lassen, versucht das Gateway, eine direkte Verbindung mit dem Internet herzustellen.  Falls der Proxyserver eine Authentifizierung erfordert, geben Sie einen Benutzernamen und ein Kennwort ein.
+   b. Falls der Server, auf dem das Gateway installiert ist, über einen Proxy kommunizieren muss, geben Sie die Proxyadresse ein, mit der das Gateway eine Verbindung herstellen muss. Geben Sie z. B. `http://myorgname.corp.contoso.com:80` ein  Wenn Sie dieses Feld leer lassen, versucht das Gateway, eine direkte Verbindung mit dem Internet herzustellen.  Falls der Proxyserver eine Authentifizierung erfordert, geben Sie einen Benutzernamen und ein Kennwort ein.
 
-   c. Klicken Sie auf **Weiter**.
+   c. Wählen Sie **Weiter** aus.
 
    ![Screenshot der Konfiguration für den Gatewayproxy](./media/gateway/gateway-wizard02.png)
 
 1. Falls Microsoft Update nicht aktiviert ist, wird die Seite „Microsoft Update“ angezeigt, auf der Sie Microsoft Update aktivieren können. Treffen Sie eine Auswahl, und klicken Sie anschließend auf **Weiter**. Fahren Sie andernfalls mit dem nächsten Schritt fort.
-1. Übernehmen Sie auf der Seite **Zielordner** entweder den Standardordner „C:\Programme\OMS Gateway“, oder geben Sie den Speicherort ein, an dem Sie das Gateway installieren möchten. Klicken Sie anschließend auf **Weiter**.
+1. Übernehmen Sie auf der Seite **Zielordner** entweder den Standardordner „C:\Programme\OMS Gateway“, oder geben Sie den Speicherort ein, an dem Sie das Gateway installieren möchten. Wählen Sie **Weiter** aus.
 1. Wählen Sie auf der Seite **Bereit zur Installation** die Option **Installieren** aus. Wenn die Benutzerkontensteuerung eine Installationsberechtigung anfordert, wählen Sie **Ja** aus.
 1. Klicken Sie nach Abschluss des Setups auf **Fertig stellen**. Überprüfen Sie, ob der Dienst ausgeführt wird: Öffnen Sie dazu das Snap-In „services.msc“, und überprüfen Sie, ob **OMS-Gateway** in der Liste mit den Diensten angezeigt wird und den Status **Wird ausgeführt** aufweist.
 
    ![Screenshot der lokalen Dienste, der zeigt, dass das OMS-Gateway ausgeführt wird](./media/gateway/gateway-service.png)
 
 ## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>Installieren des Log Analytics-Gateways über die Befehlszeile
-Die heruntergeladene Datei für das Gateway ist ein Windows Installer-Paket, mit dem die automatische Installation über die Befehlszeile oder mit einer anderen automatisierten Methode unterstützt wird. Wenn Sie nicht mit den standardmäßigen Befehlszeilenoptionen für Windows Installer vertraut sind, finden Sie entsprechende Informationen unter [Command-line options](https://docs.microsoft.com/windows/desktop/Msi/command-line-options) (Befehlszeilenoptionen).
+
+Die heruntergeladene Datei für das Gateway ist ein Windows Installer-Paket, mit dem die automatische Installation über die Befehlszeile oder mit einer anderen automatisierten Methode unterstützt wird. Wenn Sie nicht mit den standardmäßigen Befehlszeilenoptionen für Windows Installer vertraut sind, finden Sie entsprechende Informationen unter [Command-line options](/windows/desktop/msi/command-line-options) (Befehlszeilenoptionen).
  
 In der folgenden Tabelle sind die beim Setup unterstützten Parameter aufgeführt.
 
@@ -173,7 +167,7 @@ In der folgenden Tabelle sind die beim Setup unterstützten Parameter aufgeführ
 Geben Sie Folgendes ein, um das Gateway automatisch zu installieren und mit einer spezifischen Proxyadresse und einer spezifischen Portnummer zu konfigurieren:
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 LicenseAccepted=1 
 ```
 
 Mit der Befehlszeilenoption „/qn“ wird das Setup bei der automatischen Installation ausgeblendet, mit der Befehlszeilenoption „/qb“ wird das Setup angezeigt.  
@@ -181,7 +175,7 @@ Mit der Befehlszeilenoption „/qn“ wird das Setup bei der automatischen Insta
 Wenn Sie für die Authentifizierung beim Proxy Anmeldeinformationen angeben müssen, geben Sie Folgendes ein:
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 HASAUTH=1 USERNAME="<username>" PASSWORD="<password>" LicenseAccepted=1 
 ```
 
 Nach der Installation können Sie mit den folgenden PowerShell-Cmdlets bestätigen, dass die Einstellungen akzeptiert werden (mit Ausnahme des Benutzernamens und Kennworts):
@@ -189,11 +183,13 @@ Nach der Installation können Sie mit den folgenden PowerShell-Cmdlets bestätig
 - **Get-OMSGatewayConfig:** gibt den TCP-Port zurück, für den das Gateway zum Lauschen konfiguriert ist.
 - **Get-OMSGatewayRelayProxy:** gibt die IP-Adresse des Proxyservers zurück, den Sie für die Kommunikation mit dem Gateway konfiguriert haben.
 
-## <a name="configure-network-load-balancing"></a>Konfigurieren des Netzwerklastenausgleichs 
-Für Hochverfügbarkeit können Sie das Gateway mit Netzwerklastenausgleich (Network Load Balancing, NLB) konfigurieren. Hierzu können Sie entweder den [Netzwerklastenausgleich (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing) von Microsoft, [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) oder einen hardwarebasierten Lastenausgleich verwenden. Beim Lastenausgleich werden die angeforderten Verbindungen von Log Analytics-Agents oder Operations Manager-Verwaltungsservern zur Verwaltung des Datenverkehrs für alle Knoten umgeleitet. Wenn ein Gatewayserver ausfällt, wird der Datenverkehr zu anderen Knoten umgeleitet.
+## <a name="configure-network-load-balancing"></a>Konfigurieren des Netzwerklastenausgleichs
+
+Für Hochverfügbarkeit können Sie das Gateway mit Netzwerklastenausgleich (Network Load Balancing, NLB) konfigurieren. Hierzu können Sie entweder den [Netzwerklastenausgleich (NLB)](/windows-server/networking/technologies/network-load-balancing) von Microsoft, [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) oder einen hardwarebasierten Lastenausgleich verwenden. Beim Lastenausgleich werden die angeforderten Verbindungen von Log Analytics-Agents oder Operations Manager-Verwaltungsservern zur Verwaltung des Datenverkehrs für alle Knoten umgeleitet. Wenn ein Gatewayserver ausfällt, wird der Datenverkehr zu anderen Knoten umgeleitet.
 
 ### <a name="microsoft-network-load-balancing"></a>Microsoft-Netzwerklastenausgleich
-Informationen zum Entwerfen und Bereitstellen eines Netzwerklastenausgleichs-Clusters unter Windows Server 2016 finden Sie unter [Netzwerklastenausgleich](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing). In den folgenden Schritten wird das Konfigurieren eines Clusters mit Microsoft-Netzwerklastenausgleich beschrieben.  
+
+Informationen zum Entwerfen und Bereitstellen eines Netzwerklastenausgleichs-Clusters unter Windows Server 2016 finden Sie unter [Netzwerklastenausgleich](/windows-server/networking/technologies/network-load-balancing). In den folgenden Schritten wird das Konfigurieren eines Clusters mit Microsoft-Netzwerklastenausgleich beschrieben.  
 
 1. Melden Sie sich mit einem Administratorkonto bei dem Windows-Server an, der dem NLB-Cluster angehört.  
 2. Öffnen Sie im Server-Manager den Netzwerklastenausgleich-Manager, klicken Sie auf **Tools**, und klicken Sie anschließend auf **Netzwerklastenausgleich-Manager**.
@@ -206,31 +202,34 @@ Informationen zum Entwerfen und Bereitstellen eines Netzwerklastenausgleichs-Clu
     ![Netzwerklastenausgleich-Manager – Host dem Cluster hinzufügen: Verbinden](./media/gateway/nlb03.png) 
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-Weitere Informationen zum Entwerfen und Bereitstellen von Azure Load Balancer finden Sie unter [Was ist Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Um einen grundlegenden Lastausgleich bereitzustellen, folgen Sie den in diesem [Schnellstart](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) beschriebenen Schritten mit Ausnahme der im Abschnitt **Erstellen des Back-End-Servers** beschriebenen Schritte.   
+
+Weitere Informationen zum Entwerfen und Bereitstellen von Azure Load Balancer finden Sie unter [Was ist Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Um einen grundlegenden Lastausgleich bereitzustellen, folgen Sie den in diesem [Schnellstart](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) beschriebenen Schritten mit Ausnahme der im Abschnitt **Erstellen des Back-End-Servers** beschriebenen Schritte.   
 
 > [!NOTE]
-> Die Konfiguration von Azure Load Balancer mit der **SKU „Basic“** erfordert, dass virtuelle Azure-Computer zu einer Verfügbarkeitsgruppe gehören. Weitere Informationen zu Verfügbarkeitsgruppen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../virtual-machines/windows/manage-availability.md). Wenn Sie vorhandene virtuelle Computer einer Verfügbarkeitsgruppe hinzufügen möchten, finden Sie weitere Informationen unter [Festlegen einer Azure Resource Manager-VM-Verfügbarkeitsgruppe](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
+> Die Konfiguration von Azure Load Balancer mit der **SKU „Basic“** erfordert, dass virtuelle Azure-Computer zu einer Verfügbarkeitsgruppe gehören. Weitere Informationen zu Verfügbarkeitsgruppen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../virtual-machines/manage-availability.md). Wenn Sie vorhandene virtuelle Computer einer Verfügbarkeitsgruppe hinzufügen möchten, finden Sie weitere Informationen unter [Festlegen einer Azure Resource Manager-VM-Verfügbarkeitsgruppe](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
 > 
 
-Nachdem der Lastausgleich erstellt wurde, muss ein Back-End-Pool erstellt werden, der den Datenverkehr auf mindestens einen Gatewayserver verteilt. Führen Sie die im Abschnitt [Erstellen von Ressourcen für den Lastenausgleich](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer) im Schnellstartartikel beschriebenen Schritte aus.  
+Nachdem der Lastausgleich erstellt wurde, muss ein Back-End-Pool erstellt werden, der den Datenverkehr auf mindestens einen Gatewayserver verteilt. Führen Sie die im Abschnitt [Erstellen von Ressourcen für den Lastenausgleich](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) im Schnellstartartikel beschriebenen Schritte aus.  
 
 >[!NOTE]
 >Der Integritätstest sollte so konfiguriert werden, dass er den TCP-Port des Gatewayservers verwendet. Abhängig von der Reaktion auf Integritätsüberprüfungen werden der Lastenausgleichsrotation durch den Integritätstest dynamisch Gatewayserver hinzugefügt oder aus der Rotation entfernt. 
 >
 
 ## <a name="configure-the-log-analytics-agent-and-operations-manager-management-group"></a>Konfigurieren des Log Analytics-Agents und der Operations Manager-Verwaltungsgruppe
+
 Im diesem Abschnitt erfahren Sie, wie Sie direkt verbundene Log Analytics-Agents, eine Operations Manager-Verwaltungsgruppe oder Azure Automation Hybrid Runbook Worker mit dem Log Analytics-Gateway konfigurieren, um die Kommunikation mit Azure Automation und Log Analytics zu ermöglichen.  
 
 ### <a name="configure-a-standalone-log-analytics-agent"></a>Konfigurieren eines eigenständigen Log Analytics-Agents
+
 Beim Konfigurieren eines Log Analytics-Agents ersetzen Sie den Proxyserverwert durch die IP-Adresse und die Portnummer des Log Analytics-Gatewayservers. Wenn Sie mehrere Gatewayserver hinter einem Lastenausgleich bereitgestellt haben, handelt es sich bei der Log Analytics-Agent-Proxykonfiguration um die virtuelle IP-Adresse des Lastenausgleichs.  
 
 >[!NOTE]
->Informationen zur Installation des Log Analytics-Agents auf dem Gateway und auf Windows-Computern, die direkt mit Log Analytics verbunden sind, finden Sie unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](agent-windows.md). Informationen zum Verbinden von Linux-Computern finden Sie unter [Konfigurieren des Log Analytics-Agents für Linux-Computer in einer Hybridumgebung](../../azure-monitor/learn/quick-collect-linux-computer.md). 
+>Informationen zur Installation des Log Analytics-Agents auf dem Gateway und auf Windows-Computern, die direkt mit Log Analytics verbunden sind, finden Sie unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](agent-windows.md). Informationen zum Verbinden von Linux-Computern finden Sie unter [Verbinden von Linux-Computern mit Azure Monitor](agent-linux.md). 
 >
 
 Nach der Installation des Agents auf dem Gatewayserver konfigurieren Sie ihn für die Kommunikation mit mindestens einem Arbeitsbereich-Agent, der mit dem Gateway kommuniziert. Wenn der Log Analytics-Windows-Agent nicht auf dem Gateway installiert ist, wird Ereignis 300 in das OMS-Gatewayereignisprotokoll geschrieben und gibt an, dass der Agent installiert werden muss. Wenn der Agent installiert ist, aber nicht zum Berichten an denselben Arbeitsbereich konfiguriert ist wie die Agents, die darüber kommunizieren, wird Ereignis 105 in das gleiche Protokoll geschrieben und gibt an, dass der Agent auf dem Gateway zum Berichten an denselben Arbeitsbereich konfiguriert werden muss wie die Agents, die mit dem Gateway kommunizieren.
 
-Nachdem Sie die Konfiguration abgeschlossen haben, starten Sie den OMS-Gatewaydienst neu, um die Änderungen zu übernehmen. Andernfalls lehnt das Gateway Agents ab, die mit Log Analytics zu kommunizieren versuchen, und meldet das Ereignis 105 im OMS-Gatewayereignisprotokoll. Dies gilt auch beim Hinzufügen oder Entfernen eines Arbeitsbereichs aus der Agent-Konfiguration auf dem Gatewayserver.   
+Nachdem Sie die Konfiguration abgeschlossen haben, starten Sie den **OMS-Gatewaydienst** neu, um die Änderungen zu übernehmen. Andernfalls lehnt das Gateway Agents ab, die mit Log Analytics zu kommunizieren versuchen, und meldet das Ereignis 105 im OMS-Gatewayereignisprotokoll. Dies gilt auch beim Hinzufügen oder Entfernen eines Arbeitsbereichs aus der Agent-Konfiguration auf dem Gatewayserver.
 
 Weitere Informationen zum Automation Hybrid Runbook Worker finden Sie unter [Automatisieren von Ressourcen in Ihrem Datencenter oder Ihrer Cloud mit Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).
 
@@ -286,7 +285,7 @@ So konfigurieren Sie bestimmte Server oder Gruppen für die Verwendung des Log A
 1. Öffnen Sie die Operations Manager-Konsole, und wählen Sie den Arbeitsbereich **Erstellen** aus.  
 1. Klicken Sie im Arbeitsbereich „Erstellen“ auf **Regeln**. 
 1. Klicken Sie auf der Operations Manager-Symbolleiste auf die Schaltfläche **Bereich**. Sollte diese Schaltfläche nicht verfügbar sein, vergewissern Sie sich, dass im Bereich **Überwachung** kein Ordner, sondern ein Objekt ausgewählt ist. Im Dialogfeld **Management Pack-Objekte in Bereiche einteilen** wird eine Liste mit allgemeinen Zielklassen, Gruppen oder Objekten angezeigt. 
-1. Geben Sie in das **Suchfeld**den Suchbegriff **Integritätsdienst** ein, und wählen Sie den Dienst in der Liste aus. Klicken Sie auf **OK**.  
+1. Geben Sie in das **Suchfeld** den Suchbegriff **Integritätsdienst** ein, und wählen Sie den Dienst in der Liste aus. Klicken Sie auf **OK**.  
 1. Suchen Sie nach **Advisor Proxy Setting Rule** (Proxyeinstellungsregel für Ratgeber). 
 1. Wählen Sie auf der Operations Manager-Symbolleiste **Außerkraftsetzungen** aus, und zeigen Sie anschließend auf **Regel außer Kraft setzen\Für ein bestimmtes Objekt der Klasse: Integritätsdienst**, und wählen Sie ein Objekt in der Liste aus.  Sie können auch eine benutzerdefinierte Gruppe mit dem Integritätsdienstobjekt der Server, auf die Sie diese Außerkraftsetzung anwenden möchten, erstellen. Wenden Sie die Außerkraftsetzung anschließend auf Ihre benutzerdefinierte Gruppe an.
 1. Fügen Sie im Dialogfeld **Außerkraftsetzungseigenschaften** in der Spalte **Außerkraftsetzung** neben dem Parameter **WebProxyAddress** ein Häkchen hinzu.  Geben Sie im Feld **Außerkraftsetzungswert** die URL des Log Analytics-Gatewayservers ein. Achten Sie darauf, dass Sie mit dem Präfix `http://` beginnen.  
@@ -300,50 +299,11 @@ So konfigurieren Sie bestimmte Server oder Gruppen für die Verwendung des Log A
 
 ### <a name="configure-for-automation-hybrid-runbook-workers"></a>Konfigurieren für Automation Hybrid Runbook Worker
 
-Für den Fall, dass Ihre Umgebung Automation Hybrid Runbook Worker enthält, finden Sie im Anschluss manuelle, temporäre Problemumgehungen, mit denen Sie das OMS-Gateway für Unterstützung der Worker konfigurieren können.
+Für den Fall, dass Ihre Umgebung Automation Hybrid Runbook Worker enthält, führen Sie die folgenden Schritte aus, um das Gateway für die Unterstützung der Worker zu konfigurieren.
 
-Um die Schritte in diesem Abschnitt ausführen zu können, müssen Sie die Azure-Region kennen, in der sich das Automation-Konto befindet. Gehen Sie zum Ermitteln dieses Standorts wie folgt vor:
+Die URL für jede Region finden Sie in der Dokumentation zu Automation im Abschnitt [Konfigurieren des Netzwerks](../../automation/automation-hybrid-runbook-worker.md#network-planning).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Wählen Sie den Azure Automation-Dienst.
-1. Wählen Sie das entsprechende Azure Automation-Konto aus.
-1. Zeigen Sie seine Region unter **Speicherort** an.
-
-   ![Screenshot des Automation-Kontostandorts im Azure-Portal](./media/gateway/location.png)
-
-Verwenden Sie die folgenden Tabellen, um die URL für jeden Speicherort zu identifizieren:
-
-**Auftragslaufzeit-Datendienst-URLs**
-
-| **Location** | **URL** |
-| --- | --- |
-| USA Nord Mitte |ncus-jobruntimedata-prod-su1.azure-automation.net |
-| Europa, Westen |we-jobruntimedata-prod-su1.azure-automation.net |
-| USA, Süden-Mitte |scus-jobruntimedata-prod-su1.azure-automation.net |
-| USA (Ost) 2 |eus2-jobruntimedata-prod-su1.azure-automation.net |
-| Kanada, Mitte |cc-jobruntimedata-prod-su1.azure-automation.net |
-| Nordeuropa |ne-jobruntimedata-prod-su1.azure-automation.net |
-| Südostasien |sea-jobruntimedata-prod-su1.azure-automation.net |
-| Indien, Mitte |cid-jobruntimedata-prod-su1.azure-automation.net |
-| Japan |jpe-jobruntimedata-prod-su1.azure-automation.net |
-| Australien |ase-jobruntimedata-prod-su1.azure-automation.net |
-
-**Agent-Dienst-URLs**
-
-| **Location** | **URL** |
-| --- | --- |
-| USA Nord Mitte |ncus-agentservice-prod-1.azure-automation.net |
-| Europa, Westen |we-agentservice-prod-1.azure-automation.net |
-| USA Süd Mitte |scus-agentservice-prod-1.azure-automation.net |
-| USA (Ost) 2 |eus2-agentservice-prod-1.azure-automation.net |
-| Kanada, Mitte |cc-agentservice-prod-1.azure-automation.net |
-| Nordeuropa |ne-agentservice-prod-1.azure-automation.net |
-| Südostasien |sea-agentservice-prod-1.azure-automation.net |
-| Indien, Mitte |cid-agentservice-prod-1.azure-automation.net |
-| Japan |jpe-agentservice-prod-1.azure-automation.net |
-| Australien |ase-agentservice-prod-1.azure-automation.net |
-
-Wenn Ihr Computer automatisch als Hybrid Runbook Worker registriert ist, verwenden Sie die Updateverwaltungslösung, um den Patch zu verwalten. Folgen Sie diesen Schritten:
+Wenn Ihr Computer automatisch als Hybrid Runbook Worker registriert wird, z.B. wenn die Lösung für die Updateverwaltung für eine oder mehrere VMs aktiviert ist, gehen Sie wie folgt vor:
 
 1. Fügen Sie die Auftragslaufzeit-Datendienst-URLs der Liste zulässiger Hosts auf dem Log Analytics-Gateway hinzu. Beispiel: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 1. Starten Sie den Log Analytics-Gatewaydienst mithilfe des folgenden PowerShell-Cmdlets neu: `Restart-Service OMSGatewayService`
@@ -372,7 +332,7 @@ Wenn in Schritt 3 ein Fehler auftritt, wurde das Modul nicht importiert. Dieser 
 | `Get-OMSGatewayConfig` |Schlüssel |Ruft die Konfiguration des Diensts ab |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |Schlüssel (erforderlich) <br> Wert |Ändert die Konfiguration des Diensts |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |Ruft die Adresse des Relays (Upstreamproxy) ab |`Get-OMSGatewayRelayProxy` |  
-| `Set-OMSGatewayRelayProxy` |Adresse<br> Username<br> Kennwort |Legt die Adresse (und Anmeldeinformationen) des Relays (Upstreamproxy) fest |1. Legen Sie einen Relay-Proxy und Anmeldeinformationen fest:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. Legen Sie einen Relay-Proxy fest, der keine Authentifizierung erfordert: `Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. Löschen Sie die Relay-Proxyeinstellung:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
+| `Set-OMSGatewayRelayProxy` |Adresse<br> Username<br> Kennwort (sichere Zeichenfolge) |Legt die Adresse (und Anmeldeinformationen) des Relays (Upstreamproxy) fest |1. Legen Sie einen Relay-Proxy und Anmeldeinformationen fest:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. Legen Sie einen Relay-Proxy fest, der keine Authentifizierung erfordert: `Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. Löschen Sie die Relay-Proxyeinstellung:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
 | `Get-OMSGatewayAllowedHost` | |Ruft den derzeit zulässigen Host ab (nur lokal konfigurierter zulässiger Host, nicht automatisch heruntergeladene zulässige Hosts) |`Get-OMSGatewayAllowedHost` | 
 | `Add-OMSGatewayAllowedHost` |Host (erforderlich) |Fügt den Host der Liste zulässiger Hosts hinzu |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
 | `Remove-OMSGatewayAllowedHost` |Host (erforderlich) |Entfernt den Host aus der Liste zulässiger Hosts |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  
@@ -428,4 +388,4 @@ Um Hilfe zu erhalten, wählen Sie das Fragezeichensymbol in der oberen rechten E
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Fügen Sie Datenquellen hinzu](../../azure-monitor/platform/agent-data-sources.md), um Daten aus verbundenen Quellen zu erfassen und die Daten in Ihrem Log Analytics-Arbeitsbereich zu speichern.
+[Fügen Sie Datenquellen hinzu](./agent-data-sources.md), um Daten aus verbundenen Quellen zu erfassen und die Daten in Ihrem Log Analytics-Arbeitsbereich zu speichern.

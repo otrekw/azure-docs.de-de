@@ -1,24 +1,18 @@
 ---
-title: Bereitstellen von Azure File Storage auf Linux-VMs per SMB | Microsoft-Dokumentation
+title: Bereitstellen von Azure File Storage auf Linux-VMs per SMB
 description: Bereitstellen von Azure File Storage auf virtuellen Linux-Computern per SMB mithilfe der Azure-Befehlszeilenschnittstelle
-services: virtual-machines-linux
-documentationcenter: virtual-machines-linux
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: c394b013b057a78e99cafc0adde9727d0a75a87c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091829"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016096"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Bereitstellen von Azure File Storage auf Linux-VMs per SMB
 
@@ -35,15 +29,15 @@ Für diese Führungslinie müssen Sie mindestens Version 2.0.4 der Azure-Befehls
 
 Erstellen Sie eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *USA, Osten*.
 
-```bash
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Erstellen Sie mithilfe des Befehls [az storage account create](/cli/azure/storage/account) ein neues Speicherkonto in der von Ihnen erstellten Ressourcengruppe. In diesem Beispiel wird ein Speicherkonto mit dem Namen *mySTORAGEACCT\<Zufallszahl>* erstellt und der Name dieses Speicherkontos in die Variable **STORAGEACCT** eingefügt. Da Speicherkontonamen eindeutig sein müssen, wird durch Verwendung von `$RANDOM` eine Zahl an das Ende des Namens angefügt.
+Erstellen Sie mithilfe des Befehls [az storage account create](/cli/azure/storage/account) ein neues Speicherkonto in der von Ihnen erstellten Ressourcengruppe. In diesem Beispiel wird ein Speicherkonto mit dem Namen *mySTORAGEACCT\<random number>* erstellt und der Name dieses Speicherkontos in die Variable **STORAGEACCT** eingefügt. Da Speicherkontonamen eindeutig sein müssen, wird durch Verwendung von `$RANDOM` eine Zahl an das Ende des Namens angefügt.
 
-```bash
+```azurecli
 STORAGEACCT=$(az storage account create \
     --resource-group "myResourceGroup" \
     --name "mystorageacct$RANDOM" \
@@ -58,7 +52,7 @@ Beim Erstellen eines Speicherkontos werden die Speicherkontoschlüssel als Paar 
 
 Verwenden Sie [az storage account keys list](/cli/azure/storage/account/keys), um die Speicherkontoschlüssel anzuzeigen. In diesem Beispiel wird der Wert des Schlüssels 1 in der Variable **STORAGEKEY** gespeichert.
 
-```bash
+```azurecli
 STORAGEKEY=$(az storage account keys list \
     --resource-group "myResourceGroup" \
     --account-name $STORAGEACCT \
@@ -69,11 +63,11 @@ STORAGEKEY=$(az storage account keys list \
 
 Erstellen Sie die Dateispeicherfreigabe mithilfe des Befehls [az storage share create](/cli/azure/storage/share). 
 
-Freigabenamen dürfen nur Kleinbuchstaben, Zahlen und einzelne Bindestriche enthalten und dürfen nicht mit einem Bindestrich beginnen. Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Freigabenamen dürfen nur Kleinbuchstaben, Zahlen und einzelne Bindestriche enthalten und dürfen nicht mit einem Bindestrich beginnen. Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata).
 
 In diesem Beispiel wird eine Freigabe mit dem Namen *myshare* mit einem Kontingent von 10 GiB erstellt. 
 
-```bash
+```azurecli
 az storage share create --name myshare \
     --quota 10 \
     --account-name $STORAGEACCT \
@@ -109,11 +103,11 @@ Beim Neustart eines virtuellen Linux-Computers wird die Bereitstellung der SMB-F
 ```bash
 //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=myStorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
+
 Zur Erhöhung der Sicherheit in Produktionsumgebungen sollten Sie Ihre Anmeldeinformationen außerhalb der fstab-Datei speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Verwenden von Cloud-Init zum Anpassen einer Linux-VM während der Erstellung](using-cloud-init.md)
 - [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer](add-disk.md)
-- [Verschlüsseln von Datenträgern auf einem virtuellen Linux-Computer mithilfe der Azure-Befehlszeilenschnittstelle](encrypt-disks.md)
-
+- [Azure Disk Encryption für Linux-VMs](disk-encryption-overview.md)

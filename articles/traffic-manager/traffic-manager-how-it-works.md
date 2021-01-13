@@ -3,7 +3,7 @@ title: Funktionsweise von Azure Traffic Manager | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt, wie Traffic Manager Datenverkehr für eine hohe Leistung und Verfügbarkeit Ihrer Webanwendungen weiterleitet.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: allensu
-ms.openlocfilehash: 281e1e591d7c3cc31b77a116fb42af49dc27798c
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.author: duau
+ms.openlocfilehash: 471895f1a615770521584a627e6bca850b87d0ac
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312144"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89462631"
 ---
 # <a name="how-traffic-manager-works"></a>Funktionsweise von Traffic Manager
 
@@ -34,7 +34,7 @@ Wenn ein Client eine Verbindung mit einem Dienst herstellen möchte, muss zunäc
 
 ## <a name="traffic-manager-example"></a>Traffic Manager-Beispiel
 
-Contoso Corp hat ein neues Partnerportal entwickelt. Die URL für dieses Portal lautet https://partners.contoso.com/login.aspx. Die Anwendung wird in drei Bereichen von Azure gehostet. Traffic Manager wird zur Verteilung des Clientdatenverkehrs auf den nächstgelegenen verfügbaren Endpunkt verwendet, um die Verfügbarkeit zu verbessern und die allgemeine Leistung zu maximieren.
+Contoso Corp hat ein neues Partnerportal entwickelt. Die URL für dieses Portal lautet `https://partners.contoso.com/login.aspx`. Die Anwendung wird in drei Bereichen von Azure gehostet. Traffic Manager wird zur Verteilung des Clientdatenverkehrs auf den nächstgelegenen verfügbaren Endpunkt verwendet, um die Verfügbarkeit zu verbessern und die allgemeine Leistung zu maximieren.
 
 Um diese Konfiguration zu erzielen, werden die folgenden Schritte ausgeführt:
 
@@ -49,7 +49,7 @@ Um diese Konfiguration zu erzielen, werden die folgenden Schritte ausgeführt:
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>Verbindungsherstellung von Clients über Traffic Manager
 
-Wenn ein Client (das vorherige Beispiel fortgesetzt) die Seite https://partners.contoso.com/login.aspx anfordert, führt er die folgenden Schritte durch, um den DNS-Namen aufzulösen und eine Verbindung herzustellen:
+Wenn ein Client (das vorherige Beispiel fortgesetzt) die Seite `https://partners.contoso.com/login.aspx` anfordert, führt er die folgenden Schritte durch, um den DNS-Namen aufzulösen und eine Verbindung herzustellen:
 
 ![Verbindungsherstellung mit Traffic Manager][2]
 
@@ -62,8 +62,8 @@ Wenn ein Client (das vorherige Beispiel fortgesetzt) die Seite https://partners.
     - Aktuelle Integrität der einzelnen Endpunkte gemäß Traffic Manager-Integritätsüberprüfungen. Weitere Informationen finden Sie unter [Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md).
     - Gewählte Datenverkehrsrouting-Methode. Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting](traffic-manager-routing-methods.md).
 
-5. Der ausgewählte Endpunkt wird als anderer DNS-CNAME-Eintrag zurückgegeben. Nehmen wir beispielsweise an, dass „contoso-us.cloudapp.net“ zurückgegeben wird.
-6. Als Nächstes ermittelt nun der rekursive DNS-Dienst die Namenserver für die Domäne „cloudapp.net“. Von diesen Namenservern fordert er den DNS-Eintrag „contoso-us.cloudapp.net“ an. Ein DNS-A-Eintrag mit der IP-Adresse des Dienstendpunkts in den USA wird zurückgegeben.
+5. Der ausgewählte Endpunkt wird als anderer DNS-CNAME-Eintrag zurückgegeben. Nehmen wir beispielsweise an, dass „contoso-eu.cloudapp.net“ zurückgegeben wird.
+6. Als Nächstes ermittelt nun der rekursive DNS-Dienst die Namenserver für die Domäne „cloudapp.net“. Von diesen Namenservern fordert er den DNS-Eintrag „contoso-eu.cloudapp.net“ an. Ein DNS-A-Eintrag mit der IP-Adresse des Dienstendpunkts in der EU wird zurückgegeben.
 7. Der rekursive DNS-Dienst konsolidiert die Ergebnisse und gibt an den Client eine DNS-Antwort zurück.
 8. Der Client erhält die DNS-Ergebnisse und stellt eine Verbindung mit der angegebenen IP-Adresse her. Der Client stellt die Verbindung mit dem Dienstendpunkt der Anwendung direkt und nicht über Traffic Manager her. Da es sich um einen HTTPS-Endpunkt handelt, führt der Client erst den erforderlichen SSL/TLS-Handshake durch und fordert anschließend per HTTP GET-Anforderung die Seite „/login.aspx“ an.
 

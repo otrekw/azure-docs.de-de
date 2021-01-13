@@ -1,29 +1,32 @@
 ---
 title: Aktualisieren der Gerätefirmware per Azure IoT Hub | Microsoft-Dokumentation
-description: Implementieren Sie einen Updateprozess für die Gerätefirmware, indem Sie Aufträge und Gerätezwillinge verwenden.
+description: Es wird beschrieben, wie Sie einen Updateprozess für die Gerätefirmware implementieren, der über eine mit Ihrem IoT-Hub verbundene Back-End-Anwendung ausgelöst werden kann.
 services: iot-hub
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/28/2019
-ms.custom: mvc
-ms.openlocfilehash: c576020118778e34b80187ec056fca22a4d9c5b1
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.custom:
+- mvc
+- mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- devx-track-js
+- devx-track-azurecli
+ms.openlocfilehash: b4de685accf665c7555a454ef247ddf589c6ba5f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485832"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572336"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Tutorial: Implementieren eines Updateprozesses für die Gerätefirmware
 
 Unter Umständen müssen Sie die Firmware auf den Geräten aktualisieren, die mit Ihrem IoT Hub verbunden sind. Es kann beispielsweise sein, dass Sie der Firmware neue Features hinzufügen oder Sicherheitspatches anwenden möchten. In vielen IoT-Szenarien ist es unpraktisch, physisch vor Ort manuell Firmwareupdates auf Ihre Geräte anzuwenden. In diesem Tutorial wird veranschaulicht, wie Sie den Prozess für Firmwareupdates per Remotezugriff über eine Back-End-Anwendung, die mit Ihrem Hub verbunden ist, starten und überwachen können.
 
-Zum Erstellen und Überwachen des Prozesses für Firmwareupdates erstellt die Back-End-Anwendung in diesem Tutorial eine _Konfiguration_ auf Ihrem IoT Hub. Für die [automatische IoT Hub-Geräteverwaltung](iot-hub-auto-device-config.md) wird diese Konfiguration verwendet, um eine Gruppe mit gewünschten _Eigenschaften von Gerätezwillingen_ auf Ihren gesamten Kältemaschinen zu aktualisieren. Über die gewünschten Eigenschaften werden die Details zum erforderlichen Firmwareupdate angegeben. Während die Kältemaschinen den Prozess für das Firmwareupdate ausführen, wird der Status zurück an die Back-End-Anwendung gemeldet, indem _gemeldete Eigenschaften von Gerätezwillingen_ verwendet werden. Die Back-End-Anwendung kann die Konfiguration nutzen, um die vom Gerät gesendeten gemeldeten Eigenschaften zu überwachen und den Prozess für das Firmwareupdate bis zum Abschluss nachzuverfolgen:
+Zum Erstellen und Überwachen des Prozesses für Firmwareupdates erstellt die Back-End-Anwendung in diesem Tutorial eine _Konfiguration_ auf Ihrem IoT Hub. Für die [automatische IoT Hub-Geräteverwaltung](./iot-hub-automatic-device-management.md) wird diese Konfiguration verwendet, um eine Gruppe mit gewünschten _Eigenschaften von Gerätezwillingen_ auf Ihren gesamten Kältemaschinen zu aktualisieren. Über die gewünschten Eigenschaften werden die Details zum erforderlichen Firmwareupdate angegeben. Während die Kältemaschinen den Prozess für das Firmwareupdate ausführen, wird der Status zurück an die Back-End-Anwendung gemeldet, indem _gemeldete Eigenschaften von Gerätezwillingen_ verwendet werden. Die Back-End-Anwendung kann die Konfiguration nutzen, um die vom Gerät gesendeten gemeldeten Eigenschaften zu überwachen und den Prozess für das Firmwareupdate bis zum Abschluss nachzuverfolgen:
 
 ![Prozess für das Firmwareupdate](media/tutorial-firmware-update/Process.png)
 
@@ -35,11 +38,9 @@ In diesem Tutorial führen Sie die folgenden Aufgaben durch:
 > * Simulieren des Prozesses für Firmwareupdates auf einem Gerät
 > * Empfangen von Statusaktualisierungen vom Gerät während der Durchführung des Firmwareupdates
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 Die beiden in dieser Schnellstartanleitung ausgeführten Beispielanwendungen sind in Node.js geschrieben. Sie benötigen mindestens Node.js v10.x.x auf Ihrem Entwicklungscomputer.
 
@@ -53,6 +54,8 @@ node --version
 
 Laden Sie das Node.js-Beispielprojekt von https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip herunter, und extrahieren Sie das ZIP-Archiv.
 
+Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in diesem Tutorial wird das MQTT-Protokoll verwendet, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 ## <a name="set-up-azure-resources"></a>Einrichten von Azure-Ressourcen
 
 Damit Sie dieses Tutorial durcharbeiten können, muss Ihr Azure-Abonnement über einen IoT Hub mit einem Gerät verfügen, das der Geräteidentitätsregistrierung hinzugefügt wurde. Mit dem Eintrag in der Geräteidentitätsregistrierung kann für das simulierte Gerät, das Sie in diesem Tutorial ausführen, eine Verbindung mit Ihrem Hub hergestellt werden.
@@ -64,7 +67,7 @@ hubname=tutorial-iot-hub
 location=centralus
 
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Create a resource group
 az group create --name tutorial-iot-hub-rg --location $location
@@ -73,7 +76,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --name $hubname -policy-name service -o table
+az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 
@@ -180,7 +183,7 @@ Im folgenden Screenshot ist die Ausgabe der simulierten Geräteanwendung und ihr
 
 Im folgenden Screenshot ist die Ausgabe der Back-End-Anwendung dargestellt und hervorgehoben, wie damit die Konfiguration zum Aktualisieren der gewünschten Eigenschaften für die Firmware erstellt wird:
 
-![Back-End-Anwendung](./media/tutorial-firmware-update/BackEnd1.png)
+![Screenshot: Ausgabe der Back-End-Anwendung](./media/tutorial-firmware-update/BackEnd1.png)
 
 Im folgenden Screenshot ist die Ausgabe der Back-End-Anwendung dargestellt und hervorgehoben, wie die Metriken des Firmwareupdates vom simulierten Gerät überwacht werden:
 

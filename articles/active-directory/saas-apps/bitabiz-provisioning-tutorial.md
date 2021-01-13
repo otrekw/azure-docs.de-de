@@ -2,32 +2,28 @@
 title: 'Tutorial: Konfigurieren von BitaBIZ für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in BitaBIZ konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: d0d38abe-c041-482a-9d3f-ca340678c226
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: a143164f43f999dcb0740cfc25951882000eafbe
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8eccc3be7da201ee1e2af046c6b515871ef05adc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641391"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350771"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von BitaBIZ für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die in BitaBIZ und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in BitaBIZ zu konfigurieren.
 
 > [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
+> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Dieser Connector befindet sich derzeit in der Public Preview-Phase. Weitere Informationen zu den allgemeinen Nutzungsbedingungen von Microsoft Azure für Previewfunktionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -58,11 +54,11 @@ Bevor Sie BitaBIZ für die automatische Benutzerbereitstellung mit Azure AD konf
 
 1. Melden Sie sich bei Ihrer [BitaBIZ-Verwaltungskonsole](https://www.bitabiz.com/login?lang=en) an. Klicken Sie auf **SETUP ADMIN** (ADMINISTRATOR EINRICHTEN).
 
-    ![BitaBIZ-Verwaltungskonsole](media/bitabiz-provisioning-tutorial/setup-admin.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/setup-admin.png" alt-text="Screenshot der BitaBIZ-Verwaltungskonsole mit hervorgehobener Option „Setup admin“ (Administrator festlegen)" border="false":::
 
 2.  Navigieren Sie zu **INTEGRATION**.
 
-    ![BitaBIZ-Verwaltungskonsole](media/bitabiz-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="Screenshot der BitaBIZ-Verwaltungskonsole mit hervorgehobener Option „Integration“" border="false":::
 
 2.  Navigieren Sie zu **Microsoft Azure AD-Bereitstellung**.  Wählen Sie für die automatische Benutzerbereitstellung die Option **Aktiviert** aus. Kopieren Sie die Werte von **URL des SCIM-Bereitstellungsendpunkts** und **Bearertoken**. Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer BitaBIZ-Anwendung in das Feld „Mandanten-URL“ bzw. „Geheimes Token“ eingegeben.
 
@@ -110,11 +106,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt „Administratoranmeldeinformationen“ die zuvor abgerufenen Werte von **URL des SCIM-Bereitstellungsendpunkts** und **Bearertoken** in das Feld „Mandanten-URL“ bzw. „Geheimes Token“ ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit BitaBIZ herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, stellen Sie sicher, dass Ihr BitaBIZ-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
 
@@ -135,7 +131,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
     ![BitaBIZ-Benutzerattribute](media/bitabiz-provisioning-tutorial/user-attribute.png)
 
 
-10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Um den Azure AD-Bereitstellungsdienst für BitaBIZ zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
@@ -151,7 +147,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Bereitstellungsaktivitätsberichten aufrufen. In diesen Berichten sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in BitaBIZ ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 
@@ -160,9 +156,9 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen](../manage-apps/check-status-user-account-provisioning.md).
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen](../app-provisioning/check-status-user-account-provisioning.md).

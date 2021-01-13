@@ -1,27 +1,19 @@
 ---
-title: Erstellen einer Funktion in Azure, die aus GitHub bereitgestellt wird | Microsoft-Dokumentation
+title: 'Erstellen einer Funktions-App mit GitHub-Bereitstellung: Azure CLI'
 description: Erstellen einer Funktions-App und Bereitstellen von Funktionscode aus einem GitHub-Repository mit Azure Functions.
-services: functions
-ms.service: azure-functions
-keywords: ''
-ms.devlang: azurecli
-author: ggailey777
-ms.author: glenga
 ms.date: 07/03/2018
 ms.topic: sample
-ms.custom: mvc
-ms.openlocfilehash: b973e6538a7639f4119e4407d96e6d9d8f959cbb
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 219e993ad7132c90de6db680facc9b8f815947cc
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959001"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934387"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>Erstellen einer Funktions-App in Azure, die über GitHub bereitgestellt wird
 
-Dieses Azure Functions-Beispielskript erstellt eine Funktions-App unter Verwendung des [Verbrauchsplans](../functions-scale.md#consumption-plan) (zusammen mit den dazugehörigen Ressourcen). Darüber hinaus konfiguriert das Skript den Funktionscode für Continuous Deployment über ein GitHub-Repository. 
-
-[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
+Dieses Azure Functions-Beispielskript erstellt eine Funktions-App unter Verwendung des [Verbrauchsplans](../consumption-plan.md) (zusammen mit den dazugehörigen Ressourcen). Darüber hinaus konfiguriert das Skript den Funktionscode für Continuous Deployment über ein GitHub-Repository. 
 
 In diesem Beispiel benötigen Sie Folgendes:
 
@@ -30,9 +22,9 @@ In diesem Beispiel benötigen Sie Folgendes:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Azure CLI dagegen lokal verwenden, müssen Sie Version 2.0 oder höher verwenden. Um die Azure CLI-Version zu ermitteln, führen Sie `az --version` aus. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli). 
+ - Für dieses Tutorial ist mindestens Version 2.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert. 
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -48,12 +40,12 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. D
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Erstellt das für die Funktions-App erforderliche Speicherkonto. |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | Erstellt eine Funktions-App im serverlosen [Verbrauchsplan](../functions-scale.md#consumption-plan) und ordnet sie einem Git- oder Mercurial-Repository zu. |
+| [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Erstellt das für die Funktions-App erforderliche Speicherkonto. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Erstellt eine Funktions-App im serverlosen [Verbrauchsplan](../consumption-plan.md) und ordnet sie einem Git- oder Mercurial-Repository zu. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
 Weitere Azure Functions-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure Functions](../functions-cli-samples.md).

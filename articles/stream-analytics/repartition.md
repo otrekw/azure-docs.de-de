@@ -1,5 +1,5 @@
 ---
-title: Verwenden der Neupartitionierung zur Optimierung der Verarbeitung mit Azure Stream Analytics
+title: Verwenden der Neupartitionierung zur Optimierung von Azure Stream Analytics-Aufträgen
 description: In diesem Artikel wird beschrieben, wie Sie Azure Stream Analytics Aufträge, die nicht parallelisiert werden können, mithilfe der Neupartitionierung optimieren.
 ms.service: stream-analytics
 author: mamccrea
@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: fcbef434d3b88c20cdaaeab92a973e5fbe41680d
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: c70cfb6c1626908a2ba4e707a890f6dc7481c51a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266439"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75732381"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Verwenden der Neupartitionierung zur Optimierung der Verarbeitung mit Azure Stream Analytics
 
@@ -21,11 +21,11 @@ In diesem Artikel erfahren Sie, wie Sie mit der Neupartitionierung Ihre Azure St
 Die Verwendung der [Parallelisierung](stream-analytics-parallelization.md) ist in folgenden Situationen möglicherweise nicht möglich:
 
 * Sie verfügen nicht über den Partitionsschlüssel für den Eingabestream.
-* Ihre Quelle verteilt die Eingaben auf mehrere Partitionen, die später zusammengeführt werden müssen. 
+* Ihre Quelle verteilt die Eingaben auf mehrere Partitionen, die später zusammengeführt werden müssen.
+
+Eine Neupartitionierung oder „Umsortierung“ ist erforderlich, wenn Sie Daten in einem Stream verarbeiten, der nicht nach einem natürlichen Eingabeschema (z. B. nach der **Partitions-ID** für Event Hubs) horizontal partitioniert wird. Nach einer Neupartitionierung kann jeder Shard unabhängig verarbeitet werden, sodass Sie die Streamingpipeline linear aufskalieren können.
 
 ## <a name="how-to-repartition"></a>Neupartitionierung
-
-Eine Neupartitionierung oder „Umsortierung“ ist erforderlich, wenn Sie Daten in einem Stream verarbeiten, der nicht nach einem natürlichen Eingabeschema (z. B. nach der **Partitions-ID** für Event Hubs) horizontal partitioniert wird. Nach einer Neupartitionierung kann jeder Shard unabhängig verarbeitet werden, sodass Sie die Streamingpipeline linear skalieren können.
 
 Verwenden Sie für die Neupartitionierung das Schlüsselwort **INTO** nach einer **PARTITION BY**-Anweisung in Ihrer Abfrage. Im folgenden Beispiel werden die Daten von **DeviceID** auf 10 Partitionen aufgeteilt (partitioniert). Durch die Erstellung eines Hashwerts aus der Geräte-ID (**DeviceID**) wird festgelegt, welche Partition welchen Teilstream akzeptieren soll. Die Daten werden für jeden partitionierten Datenstrom unabhängig geleert. Dabei wird davon ausgegangen, dass die Ausgabe partitionierte Schreibvorgänge unterstützt und über 10 Partitionen verfügt.
 

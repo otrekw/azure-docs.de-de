@@ -2,20 +2,20 @@
 title: 'Agile Entwicklung von Data Science-Projekten: Team Data Science-Prozess'
 description: Ausführen eines Data Science-Projekts auf systematische Weise mit Versionskontrolle und Zusammenarbeit innerhalb eines Projektteams über den Team Data Science-Prozess.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 09c5962e62077fbecc9b327320d0bb5b88416ffa
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260683"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89440285"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agile Entwicklung von Data Science-Projekten
 
@@ -33,17 +33,17 @@ Die folgende Abbildung veranschaulicht einen typischen Workflow mit Sprintplanun
 
 ![Team Data Science-Prozess](./media/agile-development/1-project-execute.png)
 
-##  <a name='Terminology-1'></a>Arbeitselementtypen
+##  <a name="work-item-types"></a><a name='Terminology-1'></a>Arbeitselementtypen
 
 Im TDSP-Sprintplanungsframework gibt es vier häufig verwendete Typen von *Arbeitselementen*: *Features*, *User Storys*, *Aufgaben* und *Fehler*. Das Backlog für alle Arbeitselemente erfolgt auf Projektebene, nicht auf der Ebene des Git-Repositorys. 
 
 Dies sind die Definitionen für die Arbeitselementtypen:
 
-- **Feature**: Ein Feature entspricht einem Projektauftrag. Unterschiedliche Aufträge von einem Kunden sind unterschiedliche Features, und es ist am besten, verschiedene Phasen eines Projekts als unterschiedliche Features zu betrachten. Wenn Sie zum Benennen Ihrer Features ein Schema wie *\<Kundenname>-\<Auftragsname>* verwenden, können Sie den Kontext des Projekts/Auftrags problemlos dem Namen entnehmen.
+- **Feature**: Ein Feature entspricht einem Projektauftrag. Unterschiedliche Aufträge von einem Kunden sind unterschiedliche Features, und es ist am besten, verschiedene Phasen eines Projekts als unterschiedliche Features zu betrachten. Wenn Sie zum Benennen Ihrer Features ein Schema wie *\<ClientName>-\<EngagementName>* verwenden, können Sie den Kontext des Projekts/Auftrags problemlos dem Namen entnehmen.
   
 - **User Story**: User Storys sind Arbeitselemente, die für die End-to-End-Ausführung eines Features erforderlich sind. Beispiele für User Storys sind:
   - Datensammlung 
-  - Erkunden von Daten 
+  - Durchsuchen von Daten 
   - Generieren von Features
   - Erstellen von Modellen
   - Operationalisieren von Modellen 
@@ -51,7 +51,7 @@ Dies sind die Definitionen für die Arbeitselementtypen:
   
 - **Aufgabe**: Aufgaben sind zuweisbare Arbeitselemente, die erledigt werden müssen, um eine bestimmte User Story abzuschließen. Beispiele für Aufgaben in der User Story *Datenabruf* sind:
   - Abrufen von SQL Server-Anmeldeinformationen
-  - Hochladen von Daten in SQL Data Warehouse
+  - Hochladen von Daten in Azure Synapse Analytics
   
 - **Fehler**: Fehler sind Probleme in vorhandenem Code oder in Dokumenten, die korrigiert werden müssen, um eine Aufgabe abzuschließen. Wenn Fehler durch fehlende Arbeitselemente verursacht werden, können Sie in User Storys oder Aufgaben eskaliert werden. 
 
@@ -60,7 +60,7 @@ Data Scientists bevorzugen möglicherweise eine Agile-Vorlage, die Features, Use
 > [!NOTE]
 > TDSP greift die Konzepte von Features, User Storys, Aufgaben und Fehlern aus SCM (Software Code Management) auf. Die TDSP-Konzepte können von den herkömmlichen SCM-Definitionen leicht abweichen.
 
-## <a name='SprintPlanning-2'></a>Planen von Sprints
+## <a name="plan-sprints"></a><a name='SprintPlanning-2'></a>Planen von Sprints
 
 Viele Data Scientists sind mit mehreren Projekten beschäftigt, deren Abschluss mehrere Monate dauern kann und die in unterschiedlichen Geschwindigkeiten bearbeitet werden. Die Sprintplanung ist für die Projektpriorisierung sowie die Ressourcenplanung und -zuordnung nützlich. In Azure Boards können Sie problemlos Arbeitselemente in Ihrem Projekt erstellen, verwalten und nachverfolgen und eine Sprintplanung durchführen, um sicherzustellen, dass Ihre Projekte sich wie erwartet entwickeln.
 
@@ -68,7 +68,7 @@ Weitere Informationen zur Sprintplanung finden Sie unter [Scrum-Sprints](https:/
 
 Weitere Informationen zur Sprintplanung in Azure Boards finden Sie unter [Zuweisen von Backlogelementen zu einem Sprint](/azure/devops/boards/sprints/assign-work-sprint). 
 
-## <a name='AddFeature-3'></a>Hinzufügen eines Features zum Backlog 
+## <a name="add-a-feature-to-the-backlog"></a><a name='AddFeature-3'></a>Hinzufügen eines Features zum Backlog 
 
 Nachdem Sie das Projekt und das Projektcoderepository erstellt haben, können Sie dem Backlog ein Feature hinzufügen, das die Aufgaben für das Projekt darstellt.
 
@@ -86,11 +86,11 @@ Nachdem Sie das Projekt und das Projektcoderepository erstellt haben, können Si
    
    Sie können das Feature auch mit dem Azure Repos-Coderepository des Projekts verknüpfen, indem Sie im Abschnitt **Entwicklung** die Option **Verknüpfung hinzufügen** auswählen. 
    
-   Nachdem Sie die Bearbeitung des Features abgeschlossen haben, wählen Sie **Speichern und schließen** aus.
+   Nachdem Sie das Feature bearbeitet haben, wählen Sie **Speichern und schließen** aus.
    
    ![Bearbeiten des Features und Auswählen von „Speichern und schließen“](./media/agile-development/3a-add-link-repo.png)
 
-## <a name='AddStoryunderfeature-4'></a>Hinzufügen einer User Story zum Feature 
+## <a name="add-a-user-story-to-the-feature"></a><a name='AddStoryunderfeature-4'></a>Hinzufügen einer User Story zum Feature 
 
 Unter dem Feature können User Storys hinzugefügt werden, um wichtige erforderliche Schritte zum Abschließen des Projekts zu beschreiben. 
 
@@ -108,7 +108,7 @@ So fügen Sie einem Feature eine neue User Story hinzu:
    
 1. Wenn Sie mit dem Bearbeiten der User Story fertig sind, wählen Sie **Speichern und schließen** aus. 
 
-## <a name='AddTaskunderstory-5'></a>Hinzufügen einer Aufgabe zu einer User Story 
+## <a name="add-a-task-to-a-user-story"></a><a name='AddTaskunderstory-5'></a>Hinzufügen einer Aufgabe zu einer User Story 
 
 Aufgaben sind bestimmte ausführliche Schritte, die zum Abschließen einer User Story erforderlich sind. Nachdem alle Aufgaben einer User Story abgeschlossen sind, sollte auch die User Story abgeschlossen werden. 
 
@@ -122,7 +122,7 @@ Nachdem Sie Features, User Storys und Aufgaben erstellt haben, können Sie sie i
 
 ![Ansicht „Boards“](./media/agile-development/8a-sprint-board-view.png)
 
-## <a name='set-up-agile-dsp-6'></a>Verwenden einer Agile-TDSP-Arbeitsvorlage
+## <a name="use-an-agile-tdsp-work-template"></a><a name='set-up-agile-dsp-6'></a>Verwenden einer Agile-TDSP-Arbeitsvorlage
 
 Data Scientists bevorzugen möglicherweise eine Agile-Vorlage, die Features, User Storys und Aufgaben durch TDSP-Lebenszyklusphasen und -Unterphasen ersetzt. In Azure Boards können Sie eine von Agile abgeleitete Vorlage erstellen, die TDSP-Lebenszyklusphasen verwendet, um Arbeitselemente zu erstellen und nachzuverfolgen. Die folgenden Schritte führen Sie durch das Einrichten einer Data Science-spezifischen Agile-Prozessvorlage und das Erstellen von Data Science-Arbeitselementen auf der Basis dieser Vorlage.
 

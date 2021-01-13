@@ -1,239 +1,256 @@
 ---
-title: Verwalten von privaten Endpunkten in Azure
-description: Erfahren Sie, wie Sie mit dem Azure-Portal einen privaten Endpunkt erstellen.
+title: 'Schnellstart: Erstellen eines privaten Endpunkts mit dem Azure-Portal'
+description: In diesem Schnellstart erfahren Sie, wie Sie über das Azure-Portal einen privaten Endpunkt erstellen.
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
-ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 15b4d3208be693a5b8d858d30b663347515f5a68
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 10/20/2020
+ms.author: allensu
+ms.openlocfilehash: 395912ae70c5a01bd7de9a80cf8a507dd516028e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130285"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018068"
 ---
-# <a name="create-a-private-endpoint-using-azure-portal"></a>Erstellen eines privaten Endpunkts mit dem Azure-Portal
+# <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>Schnellstart: Erstellen eines privaten Endpunkts mit dem Azure-Portal
 
-Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Privaten Link-Ressourcen kommunizieren. In diesem Schnellstart erfahren Sie, wie Sie einen virtuellen Computer in einem Azure Virtual Network und einen SQL-Datenbank-Server mit einem privaten Azure-Endpunkt unter Verwendung von Azure PowerShell erstellen. Anschließend können Sie vom virtuellen Computer sicher auf den SQL-Datenbank-Server zugreifen.
+Beginnen Sie mit Azure Private Link, indem Sie einen privaten Endpunkt verwenden, um eine Verbindung mit einer Azure-Web-App herzustellen.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+In diesem Schnellstart erstellen Sie einen privaten Endpunkt für eine Azure-Web-App und stellen einen virtuellen Computer bereit, um die private Verbindung zu testen.  
+
+Private Endpunkte können für verschiedene Arten von Azure-Diensten erstellt werden, z. B. Azure SQL und Azure Storage.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Eine Azure-Web-App mit einem App Service-Plan vom Typ **PremiumV2-Tarif** oder höher, die in Ihrem Azure-Abonnement bereitgestellt wird.  
+    * Weitere Informationen und ein Beispiel finden Sie unter [Schnellstart: Erstellen von ASP.NET Core-Web-Apps in Azure](../app-service/quickstart-dotnetcore.md). 
+    * Ein ausführliches Tutorial zum Erstellen einer Web-App und eines Endpunkts finden Sie unter [Tutorial: Herstellen einer Verbindung mit einer Web-App mithilfe eines privaten Azure-Endpunkts](tutorial-private-endpoint-webapp-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
-## <a name="create-a-vm"></a>Erstellen einer VM
-In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Hosten des virtuellen Computers, der für den Zugriff auf Ihre Private Link-Ressource verwendet wird (in diesem Beispiel ein SQL-Server in Azure).
+## <a name="create-a-virtual-network-and-bastion-host"></a>Erstellen eines virtuellen Netzwerks und eines Bastion-Hosts
 
-### <a name="create-the-virtual-network"></a>Erstellen des virtuellen Netzwerks
+In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk, ein Subnetz und einen Bastion-Host. 
+
+Der Bastion-Host wird verwendet, um eine sichere Verbindung mit dem virtuellen Computer herzustellen, um den privaten Endpunkt zu testen.
+
+1. Wählen Sie links oben auf dem Bildschirm **Ressource erstellen > Netzwerk > Virtuelles Netzwerk** aus, oder suchen Sie über das Suchfeld nach **Virtuelles Netzwerk**.
+
+2. Geben Sie unter **Virtuelles Netzwerk erstellen** auf der Registerkarte **Grundlegende Einstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
+
+    | **Einstellung**          | **Wert**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Projektdetails**  |                                                                 |
+    | Subscription     | Auswählen des Azure-Abonnements                                  |
+    | Ressourcengruppe   | Wählen Sie **CreatePrivateEndpointQS-rg** aus. |
+    | **Instanzendetails** |                                                                 |
+    | Name             | Geben Sie **myVNet** ein.                                    |
+    | Region           | Wählen Sie **Europa, Westen** aus.|
+
+3. Wählen Sie die Registerkarte **IP-Adressen** oder die Schaltfläche **Weiter: IP-Adressen** am unteren Seitenrand aus.
+
+4. Geben Sie auf der Registerkarte **IP-Adressen** die folgenden Informationen ein:
+
+    | Einstellung            | Wert                      |
+    |--------------------|----------------------------|
+    | IPv4-Adressraum | Geben Sie **10.1.0.0/16** ein. |
+
+5. Wählen Sie unter **Subnetzname** das Wort **Standard** aus.
+
+6. Geben Sie unter **Subnetz bearbeiten** die folgenden Informationen ein:
+
+    | Einstellung            | Wert                      |
+    |--------------------|----------------------------|
+    | Subnetzname | Geben Sie **mySubnet** ein. |
+    | Subnetzadressbereich | Geben Sie **10.1.0.0/24** ein. |
+
+7. Wählen Sie **Speichern** aus.
+
+8. Wählen Sie die Registerkarte **Sicherheit** .
+
+9. Wählen Sie unter **BastionHost** die Option **Aktivieren** aus. Geben Sie die folgenden Informationen ein:
+
+    | Einstellung            | Wert                      |
+    |--------------------|----------------------------|
+    | Bastion-Name | Geben Sie **myBastionHost** ein. |
+    | AzureBastionSubnet-Adressraum | Geben Sie **10.1.1.0/24** ein. |
+    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. </br> Geben Sie **myBastionIP** als **Name** ein. </br> Klicken Sie auf **OK**. |
 
 
-In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Hosten des virtuellen Computers, der für den Zugriff auf Ihre Private Link-Ressource verwendet wird.
+8. Wählen Sie die Registerkarte **Überprüfen + erstellen** oder die Schaltfläche **Überprüfen + erstellen** aus.
 
-1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
-1. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
+9. Klicken Sie auf **Erstellen**.
 
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | NAME | Geben Sie *MyVirtualNetwork* ein. |
-    | Adressraum | Geben Sie *10.1.0.0/16* ein. |
-    | Subscription | Wählen Sie Ihr Abonnement aus.|
-    | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie **OK** aus. |
-    | Location | Wählen Sie **WestCentralUS** aus.|
-    | Subnetzname | Geben Sie *mySubnet* ein. |
-    | Subnetzadressbereich | Geben Sie *10.1.0.0/24* ein. |
-    |||
-1. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
+## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
+In diesem Abschnitt erstellen Sie einen virtuellen Computer zum Testen des privaten Endpunkts.
 
-### <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
+1. Wählen Sie oben links im Portal die Option **Ressource erstellen** > **Compute** > **Virtueller Computer** aus, oder suchen Sie über das Suchfeld nach **Virtueller Computer**.
+   
+2. Geben Sie unter **Virtuellen Computer erstellen** auf der Registerkarte **Grundlagen** die folgenden Werte ein, oder wählen Sie sie aus:
 
-1. Wählen Sie oben links auf dem Bildschirm im Azure-Portal die Option **Ressource erstellen** > **Compute** > **Virtueller Computer** aus.
-
-1. Geben Sie in **Virtuellen Computer erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
-
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | **PROJEKTDETAILS** | |
-    | Subscription | Wählen Sie Ihr Abonnement aus. |
-    | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.  |
-    | **INSTANZDETAILS** |  |
-    | Name des virtuellen Computers | Geben Sie *myVm* ein. |
-    | Region | Wählen Sie **WestCentralUS** aus. |
-    | Verfügbarkeitsoptionen | Übernehmen Sie den Standardwert **Keine Infrastrukturredundanz erforderlich**. |
-    | Image | Wählen Sie **Windows Server 2019 Datacenter** aus. |
-    | Size | Übernehmen Sie den Standardwert **Standard DS1 v2**. |
-    | **ADMINISTRATORKONTO** |  |
-    | Username | Geben Sie einen Benutzernamen Ihrer Wahl ein. |
-    | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    | Einstellung | Wert                                          |
+    |-----------------------|----------------------------------|
+    | **Projektdetails** |  |
+    | Subscription | Auswählen des Azure-Abonnements |
+    | Ressourcengruppe | Wählen Sie **CreatePrivateEndpointQS-rg** aus. |
+    | **Instanzendetails** |  |
+    | Name des virtuellen Computers | Geben Sie **myVM** ein. |
+    | Region | Wählen Sie **Europa, Westen** aus. |
+    | Verfügbarkeitsoptionen | Wählen Sie **Keine Infrastrukturredundanz erforderlich** aus. |
+    | Image | Wählen Sie **Windows Server 2019 Datacenter – Gen1** aus. |
+    | Azure Spot-Instanz | Wählen Sie **Nein** aus. |
+    | Size | Wählen Sie eine VM-Größe aus, oder übernehmen Sie die Standardeinstellung. |
+    | **Administratorkonto** |  |
+    | Username | Geben Sie einen Benutzernamen ein. |
+    | Kennwort | Geben Sie ein Kennwort ein. |
     | Kennwort bestätigen | Geben Sie das Kennwort erneut ein. |
-    | **REGELN FÜR EINGEHENDE PORTS** |  |
-    | Öffentliche Eingangsports | Übernehmen Sie den Standardwert **Keine**. |
-    | **SPAREN SIE GELD** |  |
-    | Windows-Lizenz bereits vorhanden? | Übernehmen Sie den Standardwert **Nein**. |
-    |||
 
-1. Klicken Sie auf **Weiter: Datenträger**.
-
-1. Übernehmen Sie unter **Virtuellen Computer erstellen – Datenträger** die Standardwerte, und wählen Sie **Weiter: Netzwerk**.
-
-1. Wählen Sie in **Virtuellen Computer erstellen – Netzwerk** diese Informationen aus:
+3. Wählen Sie die Registerkarte **Netzwerk** aus, oder wählen Sie **Weiter: Datenträger** und anschließend **Weiter: Netzwerk** aus.
+  
+4. Wählen Sie auf der Registerkarte „Netzwerk“ die folgenden Werte aus, oder geben Sie sie ein:
 
     | Einstellung | Wert |
-    | ------- | ----- |
-    | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **MyVirtualNetwork**.  |
-    | Adressraum | Übernehmen Sie den Standardwert **10.1.0.0/24**.|
-    | Subnet | Übernehmen Sie den Standardwert **mySubnet (10.1.0.0/24)** .|
-    | Öffentliche IP-Adresse | Übernehmen Sie den Standardwert **(neu) myVm-ip**. |
-    | Öffentliche Eingangsports | Wählen Sie **Ausgewählte Ports zulassen** aus. |
-    | Eingangsports auswählen | Wählen Sie **HTTP** und **RDP** aus.|
-    |||
-
-
-1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
-
-1. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
-
-## <a name="create-a-sql-database-server"></a>Erstellen eines SQL-Datenbank-Servers
-In diesem Abschnitt erstellen Sie einen SQL-Datenbank-Server in Azure. 
-
-1. Wählen Sie oben links auf dem Bildschirm im Azure-Portal die Option **Ressource erstellen** > **Datenbanken** > **SQL-Datenbank** aus.
-
-1. Geben Sie unter **SQL-Datenbank erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
-
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | **Datenbankdetails** | |
-    | Subscription | Wählen Sie Ihr Abonnement aus. |
-    | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.|
-    | **INSTANZDETAILS** |  |
-    | Datenbankname  | Geben Sie *mydatabase* ein. Wenn dieser Name vergeben ist, erstellen Sie einen eindeutigen Namen. |
-    |||
-5. Wählen Sie unter  **Server** die Option **Neu erstellen** aus. 
-6. Geben Sie bei  **Neuer Server** diese Informationen ein, oder wählen Sie sie aus:
-
-    | Einstellung | Wert |
-    | ------- | ----- |
-    |Servername  | Geben Sie *myserver* ein. Wenn dieser Name vergeben ist, erstellen Sie einen eindeutigen Namen.|
-    | Serveradministratoranmeldung| Geben Sie einen Administratornamen Ihrer Wahl ein. |
-    | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens acht Zeichen lang sein und die festgelegten Anforderungen erfüllen. |
-    | Location | Wählen Sie eine Azure-Region aus, in der sich Ihr SQL Server befinden soll. |
-    
-7. Wählen Sie  **OK** aus. 
-8. Wählen Sie  **Review + create** (Überprüfen und erstellen) aus. Sie werden zur Seite  **Review + create** (Überprüfen und erstellen) weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
-9. Wenn die Meldung „Überprüfung erfolgreich“ angezeigt wird, wählen Sie  **Erstellen** aus. 
-10. Wenn die Meldung „Überprüfung erfolgreich“ angezeigt wird, wählen Sie „Erstellen“ aus. 
+    |-|-|
+    | **Netzwerkschnittstelle** |  |
+    | Virtuelles Netzwerk | **myVNet** |
+    | Subnet | **mySubnet** |
+    | Öffentliche IP-Adresse | Wählen Sie **Keine** aus. |
+    | NIC-Netzwerksicherheitsgruppe | **Grundlegend**|
+    | Öffentliche Eingangsports | Wählen Sie **Keine**. |
+   
+5. Klicken Sie auf **Überprüfen + erstellen**. 
+  
+6. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
 
 ## <a name="create-a-private-endpoint"></a>Erstellen eines privaten Endpunkts
 
-In diesem Abschnitt erstellen Sie einen SQL-Server und fügen ihm einen privaten Endpunkt hinzu. 
+In diesem Abschnitt erstellen Sie einen privaten Endpunkt für die Web-App, die Sie im Abschnitt „Voraussetzungen“ erstellt haben.
 
-1. Wählen Sie oben links auf dem Bildschirm im Azure-Portal die Option **Ressource erstellen** > **Netzwerk** > **Private Link-Center (Vorschau)** aus.
-2. Wählen Sie unter  **Privat Link-Center – Übersicht** bei der Option  **Build a private connection to a service** (Private Verbindung mit einem Dienst herstellen)  **Start** aus.
-1. Geben Sie unter **Privaten Endpunkt erstellen (Vorschau) – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
+1. Wählen Sie auf der oberen linken Seite des Bildschirms im Portal die Option **Ressource erstellen** > **Netzwerk** > **Private Link** aus, oder geben Sie im Suchfeld **Private Link** ein.
+
+2. Wählen Sie **Erstellen** aus.
+
+3. Wählen Sie in **Private Link-Center** im linken Menü **Private Endpunkte** aus.
+
+4. Wählen Sie unter **Private Endpunkte** die Option **+ Hinzufügen** aus.
+
+5. Geben Sie auf der Registerkarte **Grundlagen** unter **Privaten Endpunkt erstellen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
     | **Projektdetails** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
-    | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.|
-    | **INSTANZDETAILS** |  |
-    | NAME | Geben Sie * myPrivateEndpoint* ein. Wenn dieser Name vergeben ist, erstellen Sie einen eindeutigen Namen. |
-    |Region|Wählen Sie **WestCentralUS** aus.|
-    |||
-5. Wählen Sie **Weiter: Ressource** aus.
-6. Geben Sie unter  **Privaten Endpunkt erstellen – Ressource** diese Informationen ein, oder wählen Sie sie aus:
+    | Resource group | Wählen Sie **CreatePrivateEndpointQS-rg** aus. Diese Ressourcengruppe wurde im vorherigen Abschnitt erstellt.|
+    | **Instanzendetails** |  |
+    | Name  | Geben Sie **myPrivateEndpoint** ein. |
+    | Region | Wählen Sie **Europa, Westen** aus. |
+
+6. Wählen Sie die Registerkarte **Ressource** oder unten auf der Seite **Weiter: Ressource** aus.
+    
+7. Geben Sie in **Ressource** diese Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
-    |Verbindungsmethode  | Wählen Sie das Herstellen einer Verbindung mit einer Azure-Ressource im eigenen Verzeichnis aus.|
-    | Subscription| Wählen Sie Ihr Abonnement aus. |
-    | Ressourcentyp | Wählen Sie  **Microsoft.Sql/servers** aus. |
-    | Resource |Wählen Sie *myServer* aus.|
-    |Zielunterressource |Wählen Sie *sqlServer* aus.|
-    |||
-7. Wählen Sie  **Weiter: Konfiguration** aus.
-8. Geben Sie unter **Privaten Endpunkt erstellen (Vorschau) – Konfiguration** diese Informationen ein, oder wählen Sie sie aus:
+    | Verbindungsmethode | Wählen Sie **Hiermit wird eine Verbindung mit einer Azure-Ressource im eigenen Verzeichnis hergestellt** aus. |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
+    | Ressourcentyp | Wählen Sie **Microsoft.Web/sites** aus. |
+    | Resource | Klicken Sie auf **\<your-web-app-name>** (Zur Kasse). </br> Wählen Sie in den Voraussetzungen den Namen der von Ihnen erstellten Web-App aus. |
+    | Zielunterressource | Wählen Sie **Sites** aus. |
+
+8. Wählen Sie die Registerkarte **Konfiguration** oder die Schaltfläche **Weiter: Konfiguration** am unteren Bildschirmrand aus.
+
+9. Geben Sie diese Informationen in **Konfiguration** ein oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
-    |**NETZWERK**| |
-    | Virtuelles Netzwerk| Wählen Sie *MyVirtualNetwork* aus. |
-    | Subnet | Wählen Sie  *mySubnet* aus. |
-    |**PRIVATE DNS-INTEGRATION**||
-    |Integration in eine private DNS-Zone |Wählen Sie  **Ja** aus. |
-    |Private DNS-Zone |Wählen Sie *(New)privatelink.database.windows.net* aus. |
-    |||
+    | **Netzwerk** |  |
+    | Virtuelles Netzwerk | Wählen Sie **myVNet** aus. |
+    | Subnet | Wählen Sie **mySubnet** aus. |
+    | **Private DNS-Integration** |  |
+    | Integration in eine private DNS-Zone | Übernehmen Sie den Standardwert **Ja**. |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
+    | Private DNS-Zonen | Belassen Sie den Standardwert **(New) privatelink.azurewebsites.net**.
+    
 
-1. Wählen Sie  **Review + create** (Überprüfen und erstellen) aus. Sie werden zur Seite  **Review + create** (Überprüfen und erstellen) weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
-2. Wenn die Meldung  **Überprüfung erfolgreich**  angezeigt wird, wählen Sie  **Erstellen** aus. 
- 
-## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Herstellen einer Verbindung mit einem virtuellen Computer mithilfe von Remotedesktop (RDP)
+13. Klicken Sie auf **Überprüfen + erstellen**.
 
+14. Klicken Sie auf **Erstellen**.
 
-Nachdem Sie **myVm* erstellt haben, stellen Sie über das Internet eine Verbindung mit diesem virtuellen Computer her. 
+## <a name="test-connectivity-to-private-endpoint"></a>Testen der Verbindung mit dem privaten Endpunkt
 
-1. Geben Sie in der Suchleiste des Portals *myVm* ein.
+In diesem Abschnitt verwenden Sie den virtuellen Computer, den Sie im vorherigen Schritt erstellt haben, um über den privaten Endpunkt eine Verbindung mit der Web-App herzustellen.
 
-1. Wählen Sie die Schaltfläche **Verbinden** aus. Nach dem Auswählen der Schaltfläche **Verbinden** wird **Verbindung mit virtuellem Computer herstellen** geöffnet.
+1. Wählen Sie **Ressourcengruppen** im linken Navigationsbereich aus.
 
-1. Wählen Sie **RDP-Datei herunterladen** aus. Azure erstellt eine Remotedesktopprotokoll-Datei (*RDP*) und lädt sie auf Ihren Computer herunter.
+2. Wählen Sie **CreatePrivateEndpointQS-rg** aus.
 
-1. Öffnen Sie die heruntergeladene RDP*-Datei.
+3. Wählen Sie **myVM** aus.
 
-    1. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
+4. Wählen Sie auf der Seite „Übersicht“ für **myVM** die Option **Verbinden** und dann **Bastion** aus.
 
-    1. Geben Sie den Benutzernamen und das Kennwort ein, den/das Sie beim Erstellen des virtuellen Computers angegeben haben.
+5. Wählen Sie die blaue Schaltfläche **Bastion verwenden** aus.
 
-        > [!NOTE]
-        > Unter Umständen müssen Sie **Weitere Optionen** > **Anderes Konto verwenden** auswählen, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.
+6. Geben Sie Benutzernamen und Kennwort ein, die Sie beim Erstellen des virtuellen Computers festgelegt haben.
 
-1. Klicken Sie auf **OK**.
+7. Öffnen Sie Windows PowerShell auf dem Server, nachdem Sie eine Verbindung hergestellt haben.
 
-1. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wenn Sie eine Zertifikatwarnung erhalten, wählen Sie **Ja** oder **Weiter** aus.
+8. Geben Sie `nslookup <your-webapp-name>.azurewebsites.net` ein. Ersetzen Sie **\<your-webapp-name>** durch den Namen der Web-App, die Sie in den vorherigen Schritten erstellt haben.  Sie erhalten eine Meldung ähnlich der folgenden:
 
-1. Sobald der VM-Desktop angezeigt wird, minimieren Sie ihn, um zu Ihrem lokalen Desktop zurückzukehren.  
-
-## <a name="access-the-sql-database-server-privately-from-the-vm"></a>Privates Zugreifen auf den SQL-Datenbank-Server vom virtuellen Computer
-
-1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVm*.
-
-2. Geben Sie  `nslookup myserver.database.windows.net` ein. 
-
-    Sie erhalten eine Meldung wie die folgende:
-    ```azurepowershell
+    ```powershell
     Server:  UnKnown
     Address:  168.63.129.16
+
     Non-authoritative answer:
-    Name:    myserver.privatelink.database.windows.net
-    Address:  10.0.0.5
-    Aliases:   myserver.database.windows.net
-3. Install [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
+    Name:    mywebapp8675.privatelink.azurewebsites.net
+    Address:  10.1.0.5
+    Aliases:  mywebapp8675.azurewebsites.net
+    ```
 
-4. In **Connect to server**, enter or select this information:
+    Als Name der Web-App wird die private IP-Adresse **10.1.0.5** zurückgegeben.  Diese Adresse befindet sich in dem Subnetz des virtuellen Netzwerks, das Sie zuvor erstellt haben.
 
-    | Setting | Value |
-    | ------- | ----- |
-    | Server type| Select **Database Engine**.|
-    | Server name| Select *myserver.database.windows.net* |
-    | User name | Enter a password provided during the SQL server creation. |
-    |Password |Enter a password provided during the SQL server creation. |
-    |Remember password|Select **Yes**.|
-    |||
-1. Select **Connect**.
-2. Browse databases from left menu.
-3. (Optionally) Create or query information from mydatabase.
-4. Close the remote desktop connection to *myVm*. 
+11. Öffnen Sie in der Bastionhostverbindung mit **myVM** den Internet Explorer.
 
-## Clean up resources 
-When you're done using the private endpoint, SQL server, and the VM, delete the resource group and all of the resources it contains: 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results. 
-2. Select **Delete resource group**. 
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+12. Geben Sie die URL Ihrer Web-App ein: **https://\<your-webapp-name>.azurewebsites.net**.
 
-## Next steps
+13. Sie erhalten die Standardseite der Web-App, wenn Ihre Anwendung noch nicht bereitgestellt wurde:
 
-In this quickstart, you created a VM on a virtual network, a SQL database server, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the SQL database server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint?](private-endpoint-overview.md).
+    :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="Standardseite der Web-App." border="true":::
 
+18. Trennen Sie die Verbindung zu **myVM**.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Falls Sie diese Anwendung nicht mehr benötigen, löschen Sie die das virtuelle Netzwerk, den virtuellen Computer und die Web-App wie folgt:
+
+1. Wählen Sie im linken Menü die Option **Ressourcengruppen** aus.
+
+2. Wählen Sie **CreatePrivateEndpointQS-rg** aus.
+
+3. Klicken Sie auf **Ressourcengruppe löschen**.
+
+4. Geben Sie **CreatePrivateEndpointQS-rg** in **GEBEN SIE DEN RESSOURCENGRUPPENNAMEN EIN** ein.
+
+5. Klicken Sie auf **Löschen**.
+
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In dieser Schnellstartanleitung haben Sie Folgendes erstellt:
+
+* virtuelles Netzwerk und Bastionhost
+* Virtuellen Computer
+* Privater Endpunkt für eine Azure-Web-App.
+
+Sie haben den virtuellen Computer verwendet, um die Konnektivität mit der Web-App über den privaten Endpunkt auf sichere Weise zu testen.
+
+
+
+Weitere Informationen zu den Diensten, die einen privaten Endpunkt unterstützen, finden Sie unter:
+> [!div class="nextstepaction"]
+> [Private Link-Verfügbarkeit](private-link-overview.md#availability)

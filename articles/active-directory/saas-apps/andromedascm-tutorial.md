@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Andromeda | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Andromeda konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7a142c86-ca0c-4915-b1d8-124c08c3e3d8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68fa570ecfbafe2000bfa6eb9fa159dff48219a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3fcad14ae0c448ee2a41cddf56f5ea64c8e08d2
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107083"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916132"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Tutorial: Azure Active Directory-Integration mit Andromeda
 
@@ -31,9 +26,6 @@ Die Integration von Andromeda in Azure AD bietet die folgenden Vorteile:
 * Sie können in Azure AD steuern, wer Zugriff auf Andromeda hat.
 * Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Andromeda anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -53,59 +45,39 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Andromeda in Azure AD müssen Sie Andromeda aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Andromeda über den Katalog hinzuzufügen:**
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Andromeda** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Andromeda** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-andromeda"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Andromeda
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Andromeda mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Andromeda eingerichtet werden.
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Andromeda die folgenden Schritte aus:
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+2. **[Konfigurieren des einmaligen Anmeldens für Andromeda](#configure-andromeda-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Andromeda-Testbenutzers](#create-andromeda-test-user)** , um in Andromeda ein Pendant von Britta Simon zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-4. Geben Sie im Suchfeld **Andromeda** ein, wählen Sie im Ergebnisbereich **Andromeda** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-    ![Andromeda in der Ergebnisliste](common/search-new-app.png)
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Andromeda** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Andromeda basierend auf einer Testbenutzerin namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Andromeda eingerichtet werden.
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Andromeda müssen die folgenden Schritte ausgeführt werden:
-
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Andromeda](#configure-andromeda-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Andromeda-Testbenutzers](#create-andromeda-test-user)** , um in Andromeda ein Pendant von Britta Simon zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
-
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Andromeda die folgenden Schritte aus:
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Andromeda** die Option **Einmaliges Anmelden** aus.
-
-    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
-
-2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
-
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
-
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
-
-    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
-
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
-
-    ![SSO-Informationen zur Domäne und zu den URLs für Andromeda](common/idp-intiated.png)
+1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<tenantURL>.ngcxpress.com/`
 
@@ -113,7 +85,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Andromed
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Andromeda](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
 
@@ -122,27 +94,27 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Andromed
 
 6. Die Andromeda-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot: Benutzerattribute wie „user.givenname“ für „givenname“ und „user.mail“ für „emailaddress“](common/edit-attribute.png)
 
     > [!Important]
     > Löschen Sie beim Einrichten dieser Werte die NameSpace-Definitionen.
 
 7. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus: 
 
-    | NAME | Quellattribut|
+    | Name | Quellattribut|
     | ------ | -----------|
-    | role        | App-spezifische Rolle |
+    | Rolle (role)        | App-spezifische Rolle |
     | type        | App-Typ |
     | company       | CompanyName |
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie dienen nur zur Veranschaulichung. Verwenden Sie Ihre eigenen Organisationsrollen.
+    > Andromeda erwartet, dass der Anwendung Rollen für Benutzer zugewiesen werden. Richten Sie diese Rollen in Azure AD ein, damit Benutzern die passenden Rollen zugewiesen werden können. Informationen zum Konfigurieren von Rollen in Azure AD finden Sie [hier](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui).
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    ![image](common/new-save-attribute.png)
+    ![Screenshot: Seite „Benutzeransprüche“ mit den Optionen „Neuen Anspruch hinzufügen“ und „Speichern“](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Screenshot: Seite „Benutzeransprüche verwalten“ zum Eingeben der in diesem Schritt beschriebenen Werte](common/new-attribute-details.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -164,13 +136,32 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Andromed
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-    a. Anmelde-URL
 
-    b. Azure AD-Bezeichner
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-    c. Abmelde-URL
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-### <a name="configure-andromeda-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Andromeda
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
+
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Andromeda gewähren.
+
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **Andromeda** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn Sie die Rollen wie oben erläutert eingerichtet haben, können Sie sie in der Dropdownliste **Rolle auswählen** auswählen.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+
+### <a name="configure-andromeda-sso"></a>Konfigurieren des einmaligen Anmeldens für Andromeda
 
 1. Melden Sie sich bei Ihrer Andromeda-Unternehmenswebsite als Administrator an.
 
@@ -206,70 +197,27 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Andromed
 
     i. Klicken Sie auf **Speichern**.
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
-
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
-
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
-
-2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-
-    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
-
-3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
-
-    ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
-    b. Geben Sie im Feld **Benutzername** den Namen `brittasimon@yourcompanydomain.extension` ein. Zum Beispiel, BrittaSimon@contoso.com
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
-
-    d. Klicken Sie auf **Create**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Andromeda gewähren.
-
-1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, und wählen Sie dann **Alle Anwendungen** und **Andromeda** aus.
-
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
-
-2. Wählen Sie in der Anwendungsliste **Andromeda** aus.
-
-    ![Andromeda-Link in der Anwendungsliste](common/all-applications.png)
-
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
-
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
-
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
-
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ### <a name="create-andromeda-test-user"></a>Erstellen eines Andromeda-Testbenutzers
 
 In diesem Abschnitt wird eine Benutzerin mit dem Namen „Britta Simon“ in Andromeda erstellt. Andromeda unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Andromeda vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt. Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam für den Andromeda-Client](https://www.ngcsoftware.com/support/) in Verbindung.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Andromeda“ klicken, sollten Sie automatisch bei Ihrer Andromeda-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Andromeda weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Rufen Sie direkt die Andromeda-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+#### <a name="idp-initiated"></a>IDP-initiiert:
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Andromeda-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Andromeda“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Andromeda-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Konfigurieren von Andromeda können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

@@ -1,22 +1,22 @@
 ---
-title: 'Tutorial: Weiterleiten von Datenverkehr zur Verbesserung der Websitereaktion mit Azure Traffic Manager'
+title: 'Tutorial: Verbesserung der Websitereaktion mit Azure Traffic Manager'
 description: In diesem Tutorial wird beschrieben, wie Sie ein Traffic Manager-Profil erstellen, um eine sehr reaktionsfreudige Website zu entwickeln.
 services: traffic-manager
-author: asudbring
+author: duongau
 Customer intent: As an IT Admin, I want to route traffic so I can improve website response by choosing the endpoint with lowest latency.
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/23/2018
-ms.author: allensu
-ms.openlocfilehash: 304beeae02da5836ba88a56d7166fc681e263501
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/19/2020
+ms.author: duau
+ms.openlocfilehash: d8262a80fac42f103d571523c75c5064d5d43949
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258360"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003819"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Tutorial: Verbesserung der Websitereaktion mit Traffic Manager
 
@@ -43,7 +43,7 @@ Um den Traffic Manager in Aktion sehen zu können, müssen Sie in diesem Tutoria
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 ### <a name="create-websites"></a>Erstellen von Websites
 
@@ -141,11 +141,11 @@ Erstellen Sie ein Traffic Manager-Profil, das den Benutzerdatenverkehr weiterlei
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | NAME                   | Dieser Name muss innerhalb der Zone „trafficmanager.net“ eindeutig sein und ergibt den DNS-Namen „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
+    | Name                   | Dieser Name muss innerhalb der Zone „trafficmanager.net“ eindeutig sein und ergibt den DNS-Namen „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
     | Routingmethode          | Wählen Sie die Routingmethode für **Leistungsdatenverkehr** aus.                                       |
-    | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
-    | Ressourcengruppe          | Wählen Sie die Ressourcengruppe *myResourceGroupTM1* aus. |
-    | Location                | Wählen Sie **USA, Osten** aus. Diese Einstellung bezieht sich auf den Speicherort der Ressourcengruppe und hat keine Auswirkungen auf das Traffic Manager-Profil, das global bereitgestellt wird.                              |
+    | Subscription            | Wählen Sie Ihr Abonnement aus.                          |
+    | Resource group          | Wählen Sie die Ressourcengruppe *myResourceGroupTM1* aus. |
+    | Position                | Wählen Sie **USA, Osten** aus. Diese Einstellung bezieht sich auf den Speicherort der Ressourcengruppe und hat keine Auswirkungen auf das Traffic Manager-Profil, das global bereitgestellt wird.                              |
     |
 
     ![Erstellen eines Traffic Manager-Profils](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-profile.png)
@@ -160,8 +160,8 @@ Fügen Sie die beiden virtuellen Computer hinzu, auf denen die IIS-Server ausgef
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Type                    | Azure-Endpunkt                                   |
-    | NAME           | myEastUSEndpoint                                        |
+    | type                    | Azure-Endpunkt                                   |
+    | Name           | myEastUSEndpoint                                        |
     | Zielressourcentyp           | Öffentliche IP-Adresse                          |
     | Zielressource          | **Wählen Sie eine öffentliche IP-Adresse aus**, um die Liste der Ressourcen mit öffentlichen IP-Adressen im gleichen Abonnement anzuzeigen. Wählen Sie in **Ressource** die öffentliche IP-Adresse mit dem Namen *myIISVMEastUS-ip* aus. Dies ist die öffentliche IP-Adresse der IIS-Server-VM in „USA, Osten“.|
     |        |           |
@@ -203,13 +203,13 @@ In diesem Abschnitt sehen Sie den Traffic Manager in Aktion.
 5. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wenn eine Warnung angezeigt wird, klicken Sie auf **Ja** bzw. **Weiter**, um mit dem Herstellen der Verbindung fortzufahren.
 1. Geben Sie in einem Webbrowser auf der VM *myVMEastUS* den DNS-Namen Ihres Traffic Manager-Profils an, um Ihre Website anzuzeigen. Da sich die VM in **USA, Osten** befindet, werden Sie zur nächsten Website weitergeleitet, die auf dem nächstgelegenen IIS-Server *myIISVMEastUS* gehostet wird, der sich in **USA, Osten** befindet.
 
-   ![Testen des Traffic Manager-Profils](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
+   ![Screenshot: Profil „Traffic Manager“ in einem Webbrowser](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
 2. Stellen Sie dann mit den Schritten 1 bis 5 eine Verbindung mit dem virtuellen Computer *myVMWestEurope* her, der sich in **Europa, Westen** befindet, und browsen Sie von diesem virtuellen Computer aus zu dem Domänennamen des Traffic Manager-Profils. Da sich die VM in **Europa, Westen** befindet, werden Sie zur nächsten Website weitergeleitet, die auf dem nächstgelegenen IIS-Server *myIISVMWestEurope* gehostet wird, der sich in **Europa, Westen** befindet.
 
    ![Testen des Traffic Manager-Profils](./media/tutorial-traffic-manager-improve-website-response/westeurope-traffic-manager-test.png)
 
-## <a name="delete-the-traffic-manager-profile"></a>Löschen des Traffic Manager-Profils
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie die Ressourcengruppen (**ResourceGroupTM1** und **ResourceGroupTM2**) nicht mehr benötigen, löschen Sie sie. Wählen Sie hierzu die Ressourcengruppe aus (**ResourceGroupTM1** oder **ResourceGroupTM2**), und wählen Sie dann **Löschen**.
 

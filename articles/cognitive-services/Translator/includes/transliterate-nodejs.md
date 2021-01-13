@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 4395e0a14819021bd1e4ae32c89ffb0cf8e07d00
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f06ee685158dab466ced33ff7bc4177ff1b65629
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906527"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405318"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
@@ -31,7 +32,7 @@ Diese Module sind zum Erstellen der HTTP-Anforderung und eines eindeutigen Bezei
 
 ## <a name="set-the-subscription-key-and-endpoint"></a>Festlegen des Abonnementschlüssels und Endpunkts
 
-Dieses Beispiel liest den Textübersetzungs-Abonnementschlüssel und den Endpunkt aus den Umgebungsvariablen `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` und `TRANSLATOR_TEXT_ENDPOINT`. Wenn Sie mit Umgebungsvariablen nicht vertraut sind, können Sie `subscriptionKey` und `endpoint` als Zeichenfolge festlegen und die Bedingungsanweisungen auskommentieren.
+In diesem Beispiel werden der Translator-Abonnementschlüssel und der Endpunkt aus den Umgebungsvariablen `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` und `TRANSLATOR_TEXT_ENDPOINT` gelesen. Wenn Sie mit Umgebungsvariablen nicht vertraut sind, können Sie `subscriptionKey` und `endpoint` als Zeichenfolge festlegen und die Bedingungsanweisungen auskommentieren.
 
 Kopieren Sie diesen Code in Ihr Projekt:
 
@@ -53,7 +54,7 @@ var endpoint = process.env[endpoint_var];
 Mit der über das Anforderungsmodul zur Verfügung gestellten `request()`-Methode können Sie die HTTP-Methode, die URL, Anforderungsparameter und den JSON-Text als `options`-Objekt übergeben. In diesem Codeausschnitt wird die Anforderung konfiguriert:
 
 >[!NOTE]
-> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Textübersetzungs-API 3.0: Transliterate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
+> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Translator 3.0: Transliterate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
 
 ```javascript
 let options = {
@@ -99,7 +100,7 @@ request(options, function(err, res, body){
 
 ## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
 
-Das war's: Sie haben ein einfaches Programm erstellt, das die Textübersetzungs-API aufruft und eine JSON-Antwort zurückgibt. Führen Sie das Programm jetzt aus:
+Das war's: Sie haben ein einfaches Programm erstellt, das Translator aufruft und eine JSON-Antwort zurückgibt. Führen Sie das Programm jetzt aus:
 
 ```console
 node transliterate-text.js
@@ -124,7 +125,7 @@ Wenn Sie den Abonnementschlüssel in Ihrem Programm hartcodiert haben, entfernen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die API-Referenz an, um zu erfahren, welche Möglichkeiten die Textübersetzungs-API bietet.
+Machen Sie sich anhand der API-Referenz mit den Möglichkeiten von Translator vertraut.
 
 > [!div class="nextstepaction"]
 > [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

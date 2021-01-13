@@ -1,38 +1,42 @@
 ---
 title: LiveEvent-Typen in Azure Media Services | Microsoft-Dokumentation
-description: Dieser Artikel enthält eine detaillierte Tabelle, in der Liveereignistypen (LiveEvent-Typen) verglichen werden.
+description: In Azure Media Services kann ein Liveereignis entweder auf eine *Pass-Through*- oder *Livecodierung* festgelegt werden. Dieser Artikel enthält eine detaillierte Tabelle, in der Liveereignistypen verglichen werden.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.openlocfilehash: 884cf8d913cec038df3b38c8af2ed0a67bd8060d
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802258"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89397303"
 ---
 # <a name="live-event-types-comparison"></a>Vergleich von Liveereignistypen
 
-In Azure Media Services gibt es zwei Arten von [Liveereignissen](https://docs.microsoft.com/rest/api/media/liveevents): Livecodierung und Pass-Through. 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+In Azure Media Services kann ein [Liveereignis](/rest/api/media/liveevents) entweder auf eine *Pass-Through*- (ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten) oder *Livecodierung* (ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate) festgelegt werden. 
+
+In diesem Artikel werden die Features der Liveereignistypen verglichen.
 
 ## <a name="types-comparison"></a>Typenvergleich 
 
-In der folgenden Tabelle werden die Features der Liveereignistypen verglichen. Die Typen werden während der Erstellung mit [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) festgelegt:
+In der folgenden Tabelle werden die Features der Liveereignistypen verglichen. Die Typen werden während der Erstellung mit [LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) festgelegt:
 
-* **LiveEventEncodingType.None**: Ein lokaler Liveencoder sendet einen Datenstrom mit mehreren Bitraten. Der erfasste Datenstrom durchläuft das Liveereignis ohne weitere Verarbeitung. 
-* **LiveEventEncodingType.Standard**: Ein lokaler Liveencoder sendet einen Datenstrom mit einer einzigen Bitrate an das Liveereignis, und Media Services erstellt einen Datenstrom mit mehreren Bitraten. Wenn der Beitragsfeed eine Auflösung von 720p oder höher hat, bewirkt die Voreinstellung **Default720p**, dass eine Reihe von 6 Auflösung/Bitrate-Paaren codiert wird (weitere Informationen folgen später in diesem Artikel).
-* **LiveEventEncodingType.Premium1080p**: Ein lokaler Liveencoder sendet einen Datenstrom mit einer einzigen Bitrate an das Liveereignis, und Media Services erstellt einen Datenstrom mit mehreren Bitraten. Die Voreinstellung „Default1080p“ gibt den Ausgabesatz von Auflösung/Bitrate-Paaren an (weitere Informationen folgen später in diesem Artikel). 
+* **LiveEventEncodingType.None**: Ein lokaler Liveencoder sendet einen Datenstrom mit mehreren Bitraten. Der erfasste Datenstrom durchläuft das Liveereignis ohne weitere Verarbeitung. Auch als Pass-Through-Liveereignis bezeichnet.
+* **LiveEventEncodingType.Standard**: Ein lokaler Liveencoder sendet einen Datenstrom mit einer einzigen Bitrate an das Liveereignis, und Media Services erstellt Datenströme mit mehreren Bitraten. Wenn der Beitragsfeed eine Auflösung von 720p oder höher hat, bewirkt die Voreinstellung **Default720p**, dass eine Reihe von 6 Auflösung/Bitrate-Paaren codiert wird (weitere Informationen folgen später in diesem Artikel).
+* **LiveEventEncodingType.Premium1080p**: Ein lokaler Liveencoder sendet einen Datenstrom mit einer einzigen Bitrate an das Liveereignis, und Media Services erstellt Datenströme mit mehreren Bitraten. Die Voreinstellung „Default1080p“ gibt den Ausgabesatz von Auflösung/Bitrate-Paaren an (weitere Informationen folgen später in diesem Artikel). 
 
-| Feature | Liveereignis vom Typ „Pass-Through“ | Liveereignis vom Typ „Standard“ oder „Premium1080p“ |
+| Funktion | Liveereignis vom Typ „Pass-Through“ | Liveereignis vom Typ „Standard“ oder „Premium1080p“ |
 | --- | --- | --- |
 | Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein |Ja |
 | Maximale Videoauflösung für Beitragsfeeds |4K (4096 × 2160 bei 60 Frames/Sekunde) |1080p (1920 x 1088 bei 30 Frames/Sekunde)|
@@ -52,6 +56,7 @@ In der folgenden Tabelle werden die Features der Liveereignistypen verglichen. D
 | Preis|Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“.|Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“.|
 | Maximale Laufzeit| 24 Stunden × 365 Tage, live linear | 24 Stunden × 365 Tage, live linear (Vorschauversion)|
 | Möglichkeit zum Übergeben von eingebetteten CEA-608/708-Untertiteldaten|Ja|Ja|
+| Möglichkeit zum Aktivieren der Livetranskription|Ja|Ja|
 | Unterstützung für das Einfügen von Slates|Nein|Nein|
 | Unterstützung für Werbeeinblendungen über API| Nein|Nein|
 | Unterstützung für Werbeeinblendungen über SCTE-35 Inband|Ja|Ja|
@@ -62,7 +67,7 @@ In der folgenden Tabelle werden die Features der Liveereignistypen verglichen. D
 
 ## <a name="system-presets"></a>Systemvoreinstellungen
 
-Die Auflösungen und Bitraten, die in der Ausgabe vom Liveencoder enthalten sind, sind durch [presetName](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencoding) bestimmt. Wird ein **Standard**-Liveencoder (LiveEventEncodingType.Standard) verwendet, gibt die Voreinstellung *Default720p* einen Satz von 6 Auflösung/Bitrate-Paaren an, der weiter unten beschrieben ist. Wird ein **Premium1080p**-Liveencoder (LiveEventEncodingType.Premium1080p) verwendet, gibt die Voreinstellung *Default1080p* den Ausgabesatz der Auflösung/Bitrate-Paare an.
+Die Auflösungen und Bitraten, die in der Ausgabe vom Liveencoder enthalten sind, sind durch [presetName](/rest/api/media/liveevents/create#liveeventencoding) bestimmt. Wird ein **Standard**-Liveencoder (LiveEventEncodingType.Standard) verwendet, gibt die Voreinstellung *Default720p* einen Satz von 6 Auflösung/Bitrate-Paaren an, der weiter unten beschrieben ist. Wird ein **Premium1080p**-Liveencoder (LiveEventEncodingType.Premium1080p) verwendet, gibt die Voreinstellung *Default1080p* den Ausgabesatz der Auflösung/Bitrate-Paare an.
 
 > [!NOTE]
 > Sie können die Voreinstellung „Default1080p“ nicht auf ein Liveereignis anwenden, das für eine Livecodierung des Typs „Standard“ konfiguriert ist – Sie erhalten einen Fehler. Sie erhalten auch einen Fehler, wenn Sie versuchen, die Voreinstellung „Default720p“ auf einen „Premium1080p“-Liveencoder anzuwenden.
@@ -73,16 +78,15 @@ Hat der Beitragsfeed eine Auflösung von 720p oder höher, bewirkt die Voreinste
 
 | Bitrate | Breite | Höhe | Max. Bilder/s | Profil |
 | --- | --- | --- | --- | --- |
-| 3500 |1280 |720 |30 |Hoch |
-| 2200 |960 |540 |30 |Hoch |
-| 1350 |704 |396 |30 |Hoch |
-| 850 |512 |288 |30 |Hoch |
-| 550 |384 |216 |30 |Hoch |
-| 200 |340 |192 |30 |Hoch |
+| 3500 |1280 |720 |30 |High |
+| 2200 |960 |540 |30 |High |
+| 1350 |704 |396 |30 |High |
+| 850 |512 |288 |30 |High |
+| 550 |384 |216 |30 |High |
+| 200 |340 |192 |30 |High |
 
 > [!NOTE]
-> Wenn Sie die Voreinstellung für Livecodierung anpassen müssen, öffnen Sie ein Supportticket über das Azure-Portal. Geben Sie hierbei die gewünschte Tabelle mit den Angaben zur Auflösung und zu den Bitraten an. Vergewissern Sie sich, dass nur eine Ebene mit 720p und maximal sechs Ebenen vorhanden sind. Geben Sie außerdem an, dass Sie eine Voreinstellung für einen „Standard“-Liveencoder anfordern.
-> Die speziellen Werte der Bitraten und Auflösungen können im Laufe der Zeit angepasst werden.
+> Wenn Sie die Voreinstellung für Livecodierung anpassen müssen, öffnen Sie ein Supportticket über das Azure-Portal. Geben Sie hierbei die gewünschte Tabelle mit den Angaben zur Videoauflösung und zu den Bitraten an. Die Anpassung der Bitrate der Audiocodierung wird nicht unterstützt. Vergewissern Sie sich, dass nur eine Ebene mit 720p und maximal sechs Ebenen vorhanden sind. Geben Sie außerdem an, dass Sie eine Voreinstellung anfordern.
 
 ### <a name="output-video-streams-for-default1080p"></a>Videoausgabedatenströme für „Default1080p“
 
@@ -90,16 +94,15 @@ Hat der Beitragsfeed eine Auflösung von 1080p oder höher, bewirkt die Voreinst
 
 | Bitrate | Breite | Höhe | Max. Bilder/s | Profil |
 | --- | --- | --- | --- | --- |
-| 5500 |1920 |1080 |30 |Hoch |
-| 3000 |1280 |720 |30 |Hoch |
-| 1600 |960 |540 |30 |Hoch |
-| 800 |640 |360 |30 |Hoch |
-| 400 |480 |270 |30 |Hoch |
-| 200 |320 |180 |30 |Hoch |
+| 5500 |1920 |1080 |30 |High |
+| 3000 |1280 |720 |30 |High |
+| 1600 |960 |540 |30 |High |
+| 800 |640 |360 |30 |High |
+| 400 |480 |270 |30 |High |
+| 200 |320 |180 |30 |High |
 
 > [!NOTE]
-> Wenn Sie die Voreinstellung für Livecodierung anpassen müssen, öffnen Sie ein Supportticket über das Azure-Portal. Geben Sie hierbei die gewünschte Tabelle mit den Angaben zur Auflösung und zu den Bitraten an. Vergewissern Sie sich, dass nur eine Ebene mit 1080p und maximal sechs Ebenen vorhanden sind. Geben Sie außerdem an, dass Sie eine Voreinstellung für einen „Premium1080p“-Liveencoder anfordern.
-> Die speziellen Werte der Bitraten und Auflösungen können im Laufe der Zeit angepasst werden.
+> Wenn Sie die Voreinstellung für Livecodierung anpassen müssen, öffnen Sie ein Supportticket über das Azure-Portal. Geben Sie hierbei die gewünschte Tabelle mit den Angaben zur Auflösung und zu den Bitraten an. Vergewissern Sie sich, dass nur eine Ebene mit 1080p und maximal sechs Ebenen vorhanden sind. Geben Sie außerdem an, dass Sie eine Voreinstellung für einen „Premium1080p“-Liveencoder anfordern. Die speziellen Werte der Bitraten und Auflösungen können im Laufe der Zeit angepasst werden.
 
 ### <a name="output-audio-stream-for-default720p-and-default1080p"></a>Audioausgabedatenstrom für „Default720p“ und „Default1080p“
 

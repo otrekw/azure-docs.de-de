@@ -9,10 +9,10 @@ ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 1240b4b7e2c84e798c6d7e5257e459628da1420f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68641527"
 ---
 In der Befehlsausgabe zeigt der Abschnitt `identity` an, dass die Identität vom Typ `UserAssigned` in der Aufgabe festgelegt ist:

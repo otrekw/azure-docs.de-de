@@ -1,24 +1,26 @@
 ---
 title: Synchronisieren des Gerätestatus über Azure IoT Hub | Microsoft-Dokumentation
-description: Verwenden von Gerätezwillingen zum Synchronisieren des Zustands zwischen Ihren Geräten und Ihrem IoT Hub
+description: Es wird beschrieben, wie Sie Gerätezwillinge zum Konfigurieren Ihrer Geräte aus der Cloud verwenden und den Status und Konformitätsdaten von Ihren Geräten empfangen.
 services: iot-hub
-documentationcenter: ''
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/21/2019
-ms.custom: mvc
-ms.openlocfilehash: 4ad3013f6914abbf4c75676e7423848dff9d5e9a
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.custom:
+- mvc
+- mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- devx-track-js
+- devx-track-azurecli
+ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330357"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572523"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -37,11 +39,9 @@ In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 > * Verwenden von gewünschten Eigenschaften zum Senden von Statusinformationen an Ihr simuliertes Gerät
 > * Verwenden von gemeldeten Eigenschaften zum Empfangen von Statusinformationen von Ihrem simulierten Gerät
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 Die beiden in dieser Schnellstartanleitung ausgeführten Beispielanwendungen sind in Node.js geschrieben. Sie benötigen mindestens Node.js v10.x.x auf Ihrem Entwicklungscomputer.
 
@@ -55,6 +55,8 @@ node --version
 
 Laden Sie das Node.js-Beispielprojekt von https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip herunter, und extrahieren Sie das ZIP-Archiv.
 
+Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in diesem Tutorial wird das MQTT-Protokoll verwendet, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 ## <a name="set-up-azure-resources"></a>Einrichten von Azure-Ressourcen
 
 Damit Sie dieses Tutorial durcharbeiten können, muss Ihr Azure-Abonnement einen IoT Hub mit einem Gerät enthalten, das der Geräteidentitätsregistrierung hinzugefügt wurde. Mit dem Eintrag in der Geräteidentitätsregistrierung kann für das simulierte Gerät, das Sie in diesem Tutorial ausführen, eine Verbindung mit Ihrem Hub hergestellt werden.
@@ -66,7 +68,7 @@ hubname=tutorial-iot-hub
 location=centralus
 
 # Install the IoT extension if it's not already installed:
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Create a resource group:
 az group create --name tutorial-iot-hub-rg --location $location
@@ -188,11 +190,11 @@ node ServiceClient.js "{your service connection string}"
 
 Im folgenden Screenshot ist die Ausgabe der Anwendung zur Simulation eines Geräts dargestellt, und die Verarbeitung einer Aktualisierung der gewünschten Eigenschaft **maxTemperature** ist hervorgehoben. Sie sehen, wie der Handler der obersten Ebene und die Komponente „climate“ ausgeführt werden:
 
-![Simuliertes Gerät](./media/tutorial-device-twins/SimulatedDevice1.png)
+![Screenshot, der zeigt, wie der Handler der obersten Ebene und die Handler der Komponente „climate“ ausgeführt werden](./media/tutorial-device-twins/SimulatedDevice1.png)
 
 Im folgenden Screenshot ist die Ausgabe der Back-End-Anwendung dargestellt, und das Senden einer Aktualisierung der gewünschten Eigenschaft **maxTemperature** ist hervorgehoben:
 
-![Back-End-Anwendung](./media/tutorial-device-twins/BackEnd1.png)
+![Screenshot, der die Ausgabe der Back-End-Anwendung zeigt und auf dem das Senden einer Aktualisierung hervorgehoben ist](./media/tutorial-device-twins/BackEnd1.png)
 
 ## <a name="receive-state-information"></a>Empfangen von Statusinformationen
 

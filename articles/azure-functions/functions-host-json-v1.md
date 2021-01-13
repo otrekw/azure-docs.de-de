@@ -1,18 +1,14 @@
 ---
 title: host.json-Referenz für Azure Functions 1.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v1 Runtime.
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.author: glenga
-ms.openlocfilehash: b373afc9b5a60abee7a587fc405320fe3c583369
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 588ab6723015f34d15e4a46ec4f7324302b13b81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735155"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832822"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host.json-Referenz für Azure Functions 1.x
 
@@ -23,7 +19,7 @@ ms.locfileid: "70735155"
 Die Metadatendatei *host.json* enthält globale Konfigurationsoptionen, die sich auf alle Funktionen einer Funktionen-App auswirken. In diesem Artikel werden die verfügbaren Einstellungen für die v1 Runtime aufgelistet. Das JSON-Schema finden Sie unter http://json.schemastore.org/host.
 
 > [!NOTE]
-> Dieser Artikel gilt für Azure Functions 1.x.  Eine Referenz für „host.json“ in Functions 2.x finden Sie unter [host.json-Referenz für Azure Functions 2.x](functions-host-json.md).
+> Dieser Artikel gilt für Azure Functions 1.x.  Eine Referenz für „host.json“ in Functions 2x und höheren Versionen finden Sie in der [host.json-Referenz für Azure Functions 2.x oder höher](functions-host-json.md).
 
 Weitere Konfigurationsoptionen Ihrer Funktions-App werden in den [Anwendungseinstellungen](functions-app-settings.md) verwaltet.
 
@@ -97,7 +93,8 @@ Für die folgenden *host.json*-Beispieldateien sind alle möglichen Optionen ang
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     },
     "singleton": {
       "lockPeriod": "00:00:15",
@@ -152,9 +149,7 @@ Konfigurationseinstellungen für [Azure Cosmos DB-Trigger und -Bindungen](functi
 
 ## <a name="eventhub"></a>eventHub
 
-Konfigurationseinstellungen für [Event Hub-Trigger und -Bindungen](functions-bindings-event-hubs.md).
-
-[!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
+Konfigurationseinstellungen für [Event Hub-Trigger und -Bindungen](functions-bindings-event-hubs-trigger.md#functions-1x).
 
 ## <a name="functions"></a>functions
 
@@ -168,7 +163,7 @@ Eine Liste der Funktionen, die vom Auftragshost ausgeführt werden. Ein leeres A
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Gibt die Timeoutdauer für alle Funktionen an. Bei einem serverlosen Verbrauchsplan liegt der gültige Bereich zwischen 1 Sekunde und 10 Minuten, wobei der Standardwert bei 5 Minuten liegt. Bei einem App Service-Plan gibt es keine allgemeine Beschränkung, und der Standardwert hängt von der Version der Runtime ab.
+Gibt die Timeoutdauer für alle Funktionen an. Bei einem serverlosen Verbrauchsplan liegt der gültige Bereich zwischen 1 Sekunde und 10 Minuten, wobei der Standardwert bei 5 Minuten liegt. In einem App Service-Plan besteht keine allgemeine Einschränkung, und der Standardwert ist _NULL_ (also kein Timeout).
 
 ```json
 {
@@ -204,11 +199,25 @@ Konfigurationseinstellungen für [Host Health Monitor](https://github.com/Azure/
 
 Konfigurationseinstellungen für [HTTP-Trigger und -Bindungen](functions-bindings-http-webhook.md).
 
-[!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
+```json
+{
+    "http": {
+        "routePrefix": "api",
+        "maxOutstandingRequests": 200,
+        "maxConcurrentRequests": 100,
+        "dynamicThrottlesEnabled": true
+    }
+}
+```
+
+|Eigenschaft  |Standard | BESCHREIBUNG |
+|---------|---------|---------| 
+|dynamicThrottlesEnabled|false|Bei einer Aktivierung dieser Einstellung überprüft die Pipeline zur Anforderungsverarbeitung regelmäßig Leistungsindikatoren zur Systemleistung wie Verbindungen/Threads/Prozesse/Speicher/CPU usw., und wenn einer dieser Leistungsindikatoren einen integrierten Schwellenwert (80 %) übersteigt, werden Anforderungen mit der Antwort „429 – Ausgelastet“ zurückgewiesen, bis die Leistungsindikatoren wieder ein normales Niveau erreichen.|
+|maxConcurrentRequests|unbounded (`-1`)|Die maximale Anzahl von HTTP-Funktionen, die parallel ausgeführt werden. Dadurch können Sie die Parallelität steuern und somit die Verwaltung der Ressourcenverwendung vereinfachen. Beispielsweise könnten Sie über eine HTTP-Funktion verfügen, die viele Systemressourcen (Speicher/CPU/Sockets) verbraucht und daher Probleme verursacht, wenn die Parallelität zu hoch ist. Oder eine Funktion führt ausgehende Anforderungen an einen Dienst eines Drittanbieters durch, und die Rate dieser Aufrufe muss eingeschränkt werden. In diesen Fällen kann eine Drosselung hilfreich sein.|
+|maxOutstandingRequests|unbounded (`-1`)|Die maximale Anzahl ausstehender Anforderungen, die zu einem beliebigen Zeitpunkt gespeichert werden. Dieser Grenzwert umfasst Anforderungen in der Warteschlange, deren Ausführung aber noch nicht gestartet ist, sowie alle laufenden Ausführungen. Alle eingehenden Anforderungen über diesem Grenzwert werden mit der Antwort 429 „Ausgelastet“ zurückgewiesen. Das ermöglicht es dem Aufrufer zeitbasierte Strategien für Wiederholungsversuche einzusetzen, und Sie erhalten damit die Möglichkeit, die maximalen Wartezeiten für Anforderungen zu steuern. Damit wird nur das Queuing gesteuert, das innerhalb des Ausführungspfads des Skripthosts auftritt. Andere Warteschlangen, z.B. die ASP.NET-Anforderungswarteschlange, sind von dieser Einstellung nicht betroffen und werden weiterhin verwendet.|
+|routePrefix|api|Das Routenpräfix, das für alle Routen gilt. Verwenden Sie eine leere Zeichenfolge, um das Standardpräfix zu entfernen. |
 
 ## <a name="id"></a>id
-
-*Nur Version 1.x.*
 
 Die eindeutige ID für einen Auftragshost. Die kann eine GUID in Kleinbuchstaben mit entfernten Bindestrichen sein. Dies ist für die lokale Ausführung erforderlich. Bei der Ausführung in Azure empfehlen wir, keinen ID-Wert festzulegen. Wenn `id` nicht angegeben ist, wird in Azure automatisch eine ID generiert. 
 
@@ -222,7 +231,7 @@ Wenn Sie ein Speicherkonto für mehrere Funktions-Apps verwenden, stellen Sie si
 
 ## <a name="logger"></a>Protokollierungstool
 
-Steuerelemente, die nach Protokollen filtern, die von einem [ILogger-Objekt](functions-monitoring.md#write-logs-in-c-functions) oder von [context.log](functions-monitoring.md#write-logs-in-javascript-functions) geschrieben werden.
+Steuerelemente, die nach Protokollen filtern, die von einem [ILogger-Objekt](functions-dotnet-class-library.md#ilogger) oder von [context.log](functions-reference-node.md#contextlog-method) geschrieben werden.
 
 ```json
 {
@@ -278,6 +287,7 @@ Konfigurationseinstellung für die [SendGrind-Ausgabebindung](functions-bindings
     "sendGrid": {
         "from": "Contoso Group <admin@contoso.com>"
     }
+}    
 ```
 
 |Eigenschaft  |Standard | BESCHREIBUNG |
@@ -293,7 +303,8 @@ Konfigurationseinstellung für [Service Bus-Trigger und -Bindungen](functions-bi
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     }
 }
 ```
@@ -302,7 +313,8 @@ Konfigurationseinstellung für [Service Bus-Trigger und -Bindungen](functions-bi
 |---------|---------|---------| 
 |maxConcurrentCalls|16|Die maximale Anzahl gleichzeitiger Aufrufe für den Rückruf, der vom Nachrichtensystem initiiert werden soll. Die Functions-Runtime verarbeitet standardmäßig mehrere Nachrichten gleichzeitig. Um die Runtime anzuweisen, jeweils nur eine Warteschlangen- oder Themennachricht zu verarbeiten, legen Sie `maxConcurrentCalls` auf „1“ fest. | 
 |prefetchCount|–|Das standardmäßige PrefetchCount, das von dem zugrunde liegenden MessageReceiver verwendet wird.| 
-|autoRenewTimeout|00:05:00|Die maximale Zeitspanne, in der die Nachrichtensperre automatisch erneuert wird.| 
+|autoRenewTimeout|00:05:00|Die maximale Zeitspanne, in der die Nachrichtensperre automatisch erneuert wird.|
+|autoComplete|true|Wenn „true“, vervollständigt der Trigge die Nachrichtenverarbeitung bei erfolgreicher Ausführung des Vorgangs automatisch. Wenn „false“, liegt es in der Verantwortlichkeit der Funktion, die Nachricht vor der Rückgabe zu vervollständigen.|
 
 ## <a name="singleton"></a>singleton
 
@@ -332,7 +344,7 @@ Konfigurationseinstellungen für das Singleton-Sperrverhalten. Weitere Informati
 
 *Version 1.x*
 
-Konfigurationseinstellungen für Protokolle, die Sie mithilfe eines `TraceWriter`-Objekts erstellen. Weitere Informationen finden Sie unter [C#-Protokollierung](functions-reference-csharp.md#logging) und [Node.js-Protokollierung](functions-reference-node.md#writing-trace-output-to-the-console).
+Konfigurationseinstellungen für Protokolle, die Sie mithilfe eines `TraceWriter`-Objekts erstellen. Weitere Informationen finden Sie unter [C#-Protokollierung].
 
 ```json
 {

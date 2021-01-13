@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 607379f8645226a031646376df9ca18f4d3164bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ec2bbef88ed185c3927676ad2596269783d1850
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60818823"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85515620"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Verwenden des StorSimple-Geräte-Manager-Diensts im Azure-Portal zum Verwalten von Sicherungsrichtlinien
 

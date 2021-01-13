@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: 3bc4bf920f4c780f0b73cdd75e62d8aff77b3c94
-  ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+  ms.openlocfilehash: 38cf63766195c1e91662d725aeb1b21c06257ed9
+  ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/10/2019
-  ms.locfileid: "70875570"
+  ms.lasthandoff: 11/25/2020
+  ms.locfileid: "95912347"
 landingContent:
 - title: Informationen zu Azure-Blobspeicher
   linkLists:
@@ -29,9 +29,9 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Verwenden des Azure-Portals
+    - text: 'Hochladen, Herunterladen und Auflisten von Blobs: Portal'
       url: storage-quickstart-blobs-portal.md
-    - text: Verwenden des Storage-Explorers
+    - text: Verwalten von Blobs mit Storage-Explorer
       url: storage-quickstart-blobs-storage-explorer.md
   - linkListType: concept
     links:
@@ -42,11 +42,19 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Speicherkonto erstellen
-      url: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: Erstellen eines Blockblob-Speicherkontos
       url: storage-blob-create-account-block-blob.md
     - text: Konfigurieren einer benutzerdefinierten Domäne
       url: storage-custom-domain-name.md
+- title: Suchen und Verstehen von Blobdaten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Verstehen von Blobdaten mithilfe von KI
+      url: ../../search/search-blob-ai-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Durchsuchen von Blobinhalt
+      url: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - title: Analysen und Erkenntnisse
   linkLists:
   - linkListType: overview
@@ -59,7 +67,7 @@ landingContent:
       url: data-lake-storage-quickstart-create-databricks-account.md
   - linkListType: concept
     links:
-    - text: Verarbeiten von Big Data
+    - text: Verarbeitung großer Datenmengen
       url: data-lake-storage-data-scenarios.md
     - text: Zugriff auf mehrere Protokolle
       url: data-lake-storage-multi-protocol-access.md
@@ -68,7 +76,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Extrahieren, Transformieren und Laden von Daten mit Azure Databricks
-      url: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: /azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: Extrahieren, Transformieren und Laden von Daten mit Apache Hive in Azure HDInsight
       url: data-lake-storage-tutorial-extract-transform-load-hive.md
     - text: Einfügen von Daten in Databricks-Tabellen mithilfe von Event Grid
@@ -78,15 +86,21 @@ landingContent:
     - text: Verwenden mit Azure HDInsight-Clustern
       url: ../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: Verwenden von Power BI
-      url: data-lake-storage-use-power-bi.md
+      url: /power-query/connectors/datalakestorage
 - title: Entwickeln von Anwendungen
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Verwenden von .NET
+    - text: Azure Blob Storage für .NET
       url: storage-quickstart-blobs-dotnet.md
-    - text: Verwenden von Python
+    - text: Azure Blob Storage für Java
+      url: storage-quickstart-blobs-java.md
+    - text: Azure Blob Storage für Python
       url: storage-quickstart-blobs-python.md
+    - text: Azure Blob Storage für JavaScript mit Node.js
+      url: storage-quickstart-blobs-nodejs.md
+    - text: Azure Blob Storage für JavaScript in einem Browser
+      url: quickstart-blobs-javascript-browser.md
     - text: Weiterleiten von Ereignissen an einen Webendpunkt
       url: ../../event-grid/blob-event-quickstart-portal.md
     - text: Hosten einer statischen Website
@@ -112,8 +126,8 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Zugreifen auf Blobdaten mit einem Azure AD-Konto
-      url: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - text: Verwalten von Zugriffsrechten mit RBAC
+      url: authorize-data-operations-portal.md
+    - text: Verwalten von Zugriffsrechten mit Azure RBAC
       url: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: Autorisieren des Zugriffs auf Blobspeicher mithilfe einer verwalteten Identität
       url: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -136,9 +150,9 @@ landingContent:
   - linkListType: concept
     links:
     - text: Skalierbarkeit und Leistung
-      url: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: scalability-targets.md
     - text: Checkliste zu Leistung und Skalierbarkeit
-      url: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: storage-performance-checklist.md
   - linkListType: tutorial
     links:
     - text: Optimieren für Leistung und Skalierbarkeit

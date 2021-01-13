@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 82f6da54aec7aee94c19fd75a06d2850ca0db8b6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6008ca1549629bcbb582f38de2ab1b453cd73a99
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883131"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843756"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Entwickeln für die Android Things-Plattform mithilfe von Azure IoT-SDKs
 
-[Azure IoT Hub-SDKs](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) bieten direkte Unterstützung für gängige Plattformen, z.B. Windows, Linux, OSX, MBED, und mobile Plattformen wie Android und iOS.  Da wir die Auswahlmöglichkeiten und Flexibilität bei der IoT-Bereitstellungen ständig erweitern, unterstützt das Java SDK auch die Plattform [Android Things](https://developer.android.com/things/).  Entwickler können die Vorteile des Android Things-Betriebssystems auf der Geräteseite nutzen und [Azure IoT Hub](about-iot-hub.md) als zentralen Nachrichtenhub verwenden, der für Millionen gleichzeitig verbundene Geräte skaliert werden kann.
+[Azure IoT Hub-SDKs](./iot-hub-devguide-sdks.md) bieten direkte Unterstützung für gängige Plattformen, z.B. Windows, Linux, OSX, MBED, und mobile Plattformen wie Android und iOS.  Da wir die Auswahlmöglichkeiten und Flexibilität bei der IoT-Bereitstellungen ständig erweitern, unterstützt das Java SDK auch die Plattform [Android Things](https://developer.android.com/things/).  Entwickler können die Vorteile des Android Things-Betriebssystems auf der Geräteseite nutzen und [Azure IoT Hub](about-iot-hub.md) als zentralen Nachrichtenhub verwenden, der für Millionen gleichzeitig verbundene Geräte skaliert werden kann.
 
 In diesem Tutorial werden die Schritte zum Erstellen einer geräteseitigen Anwendung auf Android Things mit dem Azure IoT-Java SDK beschrieben.
 
@@ -28,9 +28,9 @@ In diesem Tutorial werden die Schritte zum Erstellen einer geräteseitigen Anwen
 
 * Aktuelle Version von [Git](https://git-scm.com/)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -45,7 +45,7 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
    **MyAndroidThingsDevice:** Der für das registrierte Gerät angegebene Name. Verwenden Sie „MyAndroidThingsDevice“ wie gezeigt. Wenn Sie für Ihr Gerät einen anderen Namen wählen, müssen Sie diesen innerhalb des gesamten Artikels verwenden und den Gerätenamen in den Beispielanwendungen aktualisieren, bevor Sie sie ausführen.
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
+    az extension add --name azure-iot
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 

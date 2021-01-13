@@ -1,29 +1,20 @@
 ---
-title: Intelligente Erkennung – Anormaler Anstieg in Ausnahmevolume in Azure Application Insights | Microsoft Docs
-description: Überwachen Sie Anwendungsausnahmen mit Azure Application Insights auf ungewöhnliche Muster im Ausnahmevolume.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Anormaler Anstieg in Ausnahmevolume – Azure Application Insights
+description: Überwachen Sie Anwendungsausnahmen auf ungewöhnliche Muster im Ausnahmevolume mit der intelligenten Erkennung in Azure Application Insights.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.author: mbullwin
-ms.openlocfilehash: a6e7e8e01ccb623a3ff340c318c9c238c919cb38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00b7a28a51f91c969b41d2ab85b611f6dde51396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61298583"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86499425"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>Anormaler Anstieg in Ausnahmevolume (Vorschau)
 
 Application Insights analysiert die in Ihrer Anwendung ausgelösten Ausnahmen automatisch und kann Sie vor ungewöhnlichen Mustern in Ihrer Ausnahmetelemetrie warnen.
 
-Diese Funktion erfordert keine spezielle Einrichtung, abgesehen von der [Konfiguration von Ausnahmemeldungen](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-exceptions#set-up-exception-reporting) für Ihre App. Sie ist aktiv, wenn Ihre App genügend Ausnahmetelemetriedaten generiert.
+Diese Funktion erfordert keine spezielle Einrichtung, abgesehen von der [Konfiguration von Ausnahmemeldungen](./asp-net-exceptions.md#set-up-exception-reporting) für Ihre App. Sie ist aktiv, wenn Ihre App genügend Ausnahmetelemetriedaten generiert.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wann erhalte ich diese Art von Benachrichtigung der intelligenten Erkennung?
 Sie können diese Art von Benachrichtigung erhalten, wenn Ihre App eine anormale Zunahme der Anzahl von Ausnahmen eines bestimmten Typs während eines Tages aufweist, im Vergleich zu einer Baseline, die über die letzten sieben Tage berechnet wurde.

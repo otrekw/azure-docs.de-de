@@ -1,6 +1,6 @@
 ---
-title: Zertifikaterneuerung für Office 365- und Azure AD-Benutzer | Microsoft-Dokumentation
-description: In diesem Artikel wird für Office 365-Benutzer erläutert, wie Probleme mit E-Mails behoben werden, die sie zum Erneuern eines Zertifikats auffordern.
+title: Zertifikaterneuerung für Microsoft 365- und Azure AD-Benutzer | Microsoft-Dokumentation
+description: In diesem Artikel wird Microsoft 365-Benutzern erläutert, wie sie Probleme mit E-Mails beheben können, die sie zum Erneuern eines Zertifikats auffordern.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -11,19 +11,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60244827"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89661458"
 ---
-# <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Erneuern von Verbundzertifikaten für Office 365 und Azure Active Directory
+# <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Erneuern von Verbundzertifikaten für Microsoft 365 und Azure Active Directory
 ## <a name="overview"></a>Übersicht
 Damit ein erfolgreicher Verbund zwischen Azure Active Directory (Azure AD) und Active Directory-Verbunddienste (AD FS) eingerichtet werden kann, müssen die Zertifikate, die AD FS zum Signieren der Sicherheitstoken für Azure AD verwendet, mit den in Azure AD konfigurierten Werten übereinstimmen. Jede fehlende Übereinstimmung kann zu einem Bruch der Vertrauensstellung führen. Azure AD stellt sicher, dass die Informationen bei der Bereitstellung von AD FS und einem Webanwendungsproxy (für Extranetzugriff) synchron gehalten werden.
 
@@ -34,7 +34,7 @@ Dieser Artikel enthält weitere Informationen zum Verwalten der Tokensignaturzer
 * Sie verwenden einen externen Identitätsanbieter.
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Standardkonfiguration von AD FS für Tokensignaturzertifikate
-Bei Tokensignatur- und Tokenentschlüsselungszertifikaten handelt es sich in der Regel um selbstsignierte Zertifikate, die ein Jahr lang gültig sind. AD FS enthält standardmäßig einen automatischen Erneuerungsprozess mit der Bezeichnung **AutoCertificateRollover**. Wenn Sie AD FS 2.0 oder höher verwenden, aktualisieren Office 365 und Azure AD das Zertifikat automatisch, bevor es abläuft.
+Bei Tokensignatur- und Tokenentschlüsselungszertifikaten handelt es sich in der Regel um selbstsignierte Zertifikate, die ein Jahr lang gültig sind. AD FS enthält standardmäßig einen automatischen Erneuerungsprozess mit der Bezeichnung **AutoCertificateRollover**. Wenn Sie AD FS 2.0 oder höher verwenden, aktualisieren Microsoft 365 und Azure AD das Zertifikat automatisch, bevor es abläuft.
 
 ### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Verlängerungsbenachrichtigung aus dem Microsoft 365 Admin-Center oder per E-Mail
 > [!NOTE]
@@ -58,11 +58,13 @@ Azure AD versucht, die Verbundmetadaten zu überwachen und die Tokensignaturzert
 >
 >
 
-## Überprüfen, ob die Zertifikate aktualisiert werden müssen <a name="managecerts"></a>
+## <a name="check-if-the-certificates-need-to-be-updated"></a>Überprüfen, ob die Zertifikate aktualisiert werden müssen <a name="managecerts"></a>
 ### <a name="step-1-check-the-autocertificaterollover-state"></a>Schritt 1: Überprüfen des AutoCertificateRollover-Status
 Öffnen Sie auf dem AD FS-Server die PowerShell. Stellen Sie sicher, dass der AutoCertificateRollover-Wert auf „True“ festgelegt ist.
 
-    Get-Adfsproperties
+```azurepowershell-interactive
+Get-Adfsproperties
+```
 
 ![AutoCertificateRollover](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
@@ -78,16 +80,22 @@ Azure AD versucht, die Verbundmetadaten zu überwachen und die Tokensignaturzert
 > 
 >
 
-    Install-Module MSOnline
+```azurepowershell-interactive
+Install-Module MSOnline
+```
 
 Stellen Sie über das MSOnline PowerShell-Modul eine Verbindung mit Azure AD her.
 
-    Import-Module MSOnline
-    Connect-MsolService
+```azurepowershell-interactive
+Import-Module MSOnline
+Connect-MsolService
+```
 
 Überprüfen Sie, ob die in AD FS und Azure AD konfigurierten Zertifikate den Eigenschaften für die angegebene Domäne vertrauen.
 
-    Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```azurepowershell-interactive
+Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```
 
 ![Get-MsolFederationProperty](./media/how-to-connect-fed-o365-certs/certsync.png)
 
@@ -104,7 +112,7 @@ Wenn die Fingerabdrücke in beiden Ausgaben übereinstimmen, sind Ihre Zertifika
 
 \[-] Unwichtig
 
-## Automatisches Erneuern von Tokensignaturzertifikaten (empfohlen) <a name="autorenew"></a>
+## <a name="renew-the-token-signing-certificate-automatically-recommended"></a>Automatisches Erneuern von Tokensignaturzertifikaten (empfohlen) <a name="autorenew"></a>
 Sie müssen keine manuellen Schritte ausführen, wenn die beiden folgenden Bedingungen erfüllt sind:
 
 * Sie haben einen Webanwendungsproxy bereitgestellt, mit dem der Zugriff auf die Verbundmetadaten aus dem Extranet ermöglicht werden kann.
@@ -120,19 +128,19 @@ https://(Ihr_FS_Name)/federationmetadata/2007-06/federationmetadata.xml
 
 Dabei wird `(your_FS_name)` durch den Verbunddiensthostnamen ersetzt, den Ihre Organisation verwendet, z. B. „fs.contoso.com“.  Wenn Sie diese beiden Einstellungen erfolgreich überprüfen können, müssen Sie nichts weiter tun.  
 
-Beispiel: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
-## Manuelles Erneuern des Tokensignaturzertifikats <a name="manualrenew"></a>
+Beispiel: `https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml`
+## <a name="renew-the-token-signing-certificate-manually"></a>Manuelles Erneuern des Tokensignaturzertifikats <a name="manualrenew"></a>
 Sie können die Tokensignaturzertifikate auch manuell signieren. Beispielsweise funktionieren die folgenden Szenarien unter Umständen besser für die manuelle Erneuerung:
 
 * Bei den Tokensignaturzertifikaten handelt es sich nicht um selbstsignierte Zertifikate. Die häufigste Ursache hierfür ist, dass Ihre Organisation AD FS-Zertifikate verwaltet, die von einer Organisationszertifizierungsstelle registriert werden.
 * Die Netzwerksicherheit lässt nicht zu, dass die Verbundmetadaten öffentlich zugänglich sind.
 
-In diesen Szenarien müssen Sie bei jeder Aktualisierung der Tokensignaturzertifikate auch die Office 365-Domäne mithilfe des PowerShell-Befehls „Update-MsolFederatedDomain“ aktualisieren.
+In diesen Szenarien müssen Sie bei jeder Aktualisierung der Tokensignaturzertifikate auch die Microsoft 365-Domäne mithilfe des PowerShell-Befehls „Update-MsolFederatedDomain“ aktualisieren.
 
 ### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>Schritt 1: Sicherstellen, dass AD FS über neue Tokensignaturzertifikate verfügt
 **Nicht standardmäßige Konfiguration**
 
-Wenn Sie eine nicht dem Standard entsprechende Konfiguration von AD FS nutzen, bei der **AutoCertificateRollover** auf **False** festgelegt ist, verwenden Sie wahrscheinlich benutzerdefinierte Zertifikate (nicht selbstsigniert). Weitere Informationen zur Erneuerung der AD FS-Tokensignaturzertifikate finden Sie unter [Anleitung für Kunden, die keine selbstsignierten AD FS-Zertifikate verwenden](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert).
+Wenn Sie eine nicht dem Standard entsprechende Konfiguration von AD FS nutzen, bei der **AutoCertificateRollover** auf **False** festgelegt ist, verwenden Sie wahrscheinlich benutzerdefinierte Zertifikate (nicht selbstsigniert). Weitere Informationen zur Erneuerung der AD FS-Tokensignaturzertifikate finden Sie unter [Zertifikatanforderungen für Verbunddienste](/windows-server/identity/ad-fs/design/certificate-requirements-for-federation-servers).
 
 **Die Verbundmetadaten sind nicht öffentlich verfügbar.**
 
@@ -154,8 +162,8 @@ Wenn **AutoCertificateRollover** auf **True** festgelegt ist, aber Ihre Verbundm
 
 Nun sollten zwei Zertifikate aufgeführt werden, bei denen das **NotAfter**-Datum in etwa ein Jahr in der Zukunft liegt und bei dem der **IsPrimary**-Wert **False** lautet.
 
-### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>Schritt 2: Aktualisieren der neuen Tokensignaturzertifikate für die Office 365-Vertrauensstellung
-Aktualisieren Sie Office 365 wie folgt mit den neuen Tokensignaturzertifikaten für die Vertrauensstellung:
+### <a name="step-2-update-the-new-token-signing-certificates-for-the-microsoft-365-trust"></a>Schritt 2: Aktualisieren der neuen Tokensignaturzertifikate für die Microsoft 365-Vertrauensstellung
+Aktualisieren Sie Microsoft 365 wie folgt mit den neuen Tokensignaturzertifikaten für die Vertrauensstellung.
 
 1. Öffnen Sie das Microsoft Azure Active Directory-Modul für Windows PowerShell.
 2. Führen Sie $cred=Get-Credential aus. Wenn Sie dieses Cmdlet zur Eingabe von Anmeldeinformationen auffordert, geben Sie die Anmeldeinformationen Ihres Clouddienstadministrators ein.
@@ -168,7 +176,7 @@ Aktualisieren Sie Office 365 wie folgt mit den neuen Tokensignaturzertifikaten f
 >
 
 
-## Reparieren einer Azure AD-Vertrauensstellung mit Azure AD Connect <a name="connectrenew"></a>
+## <a name="repair-azure-ad-trust-by-using-azure-ad-connect"></a>Reparieren einer Azure AD-Vertrauensstellung mit Azure AD Connect <a name="connectrenew"></a>
 Wenn Sie Ihre AD FS-Farm und die Azure AD-Vertrauensstellung unter Verwendung von Azure AD Connect konfiguriert haben, können Sie mit Azure AD Connect erkennen, ob Sie für Ihre Tokensignaturzertifikate Maßnahmen ergreifen müssen. Falls Sie die Zertifikate erneuern müssen, können Sie dafür Azure AD Connect nutzen.
 
 Weitere Informationen finden Sie unter [Reparieren der Vertrauensstellung](how-to-connect-fed-management.md).
@@ -180,4 +188,4 @@ Standardmäßig ist AD FS so konfiguriert, dass die Zertifikate für die Tokensi
 
 Azure AD versucht 30 Tage vor Ablauf des aktuellen Zertifikats, ein neues Zertifikat von Ihren Verbunddienstmetadaten abzurufen. Falls zu diesem Zeitpunkt kein neues Zertifikat verfügbar ist, setzt Azure AD die Überwachung der Metadaten in regelmäßigen täglichen Intervallen fort. Sobald das neue Zertifikat in den Metadaten verfügbar ist, werden die Verbundeinstellungen für die Domäne mit den neuen Zertifikatsinformationen aktualisiert. Sie können mit `Get-MsolDomainFederationSettings` überprüfen, ob das neue Zertifikat in NextSigningCertificate/SigningCertificate angezeigt wird.
 
-Weitere Informationen zu Tokensignaturzertifikaten in AD FS finden Sie unter [Abrufen und Konfigurieren von Tokensignaturzertifikaten und Tokenentschlüsselungszertifikaten für AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)
+Weitere Informationen zu Tokensignaturzertifikaten in AD FS finden Sie unter [Abrufen und Konfigurieren von Tokensignaturzertifikaten und Tokenentschlüsselungszertifikaten für AD FS](/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)

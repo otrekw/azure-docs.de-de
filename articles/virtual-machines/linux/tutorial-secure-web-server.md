@@ -1,11 +1,10 @@
 ---
-title: Tutorial – Sichern eines Linux-Webservers mit SSL-Zertifikaten in Azure | Microsoft-Dokumentation
+title: 'Tutorial: Schützen eines Linux-Webservers mit TLS/SSL-Zertifikaten in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie die Azure CLI zum Schützen eines virtuellen Linux-Computers verwenden, auf dem der NGINX-Webserver mit in Azure Key Vault gespeicherten SSL-Zertifikaten ausgeführt wird.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,26 +13,26 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 6b6a5651bde0666b224be04d62aeb8b2dfc9c193
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 4a790c51cd0caa2c81275e7eafdd663f2f2f0116
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081483"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740192"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Tutorial: Sichern eines Webservers auf einem virtuellen Linux-Computer in Azure mit in Key Vault gespeicherten SSL-Zertifikaten
-Zum Sichern von Webservern kann ein SSL-Zertifikat (Secure Sockets Layer) zum Verschlüsseln des Webdatenverkehrs verwendet werden. Diese SSL-Zertifikate können in Azure Key Vault gespeichert werden. Sie ermöglichen sichere Bereitstellungen von Zertifikaten auf virtuellen Linux-Computern in Azure. In diesem Tutorial lernen Sie Folgendes:
+# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Tutorial: Schützen eines Webservers auf einem virtuellen Linux-Computer in Azure mit in Key Vault gespeicherten TLS/SSL-Zertifikaten
+Als Schutz für Webserver kann ein TLS-Zertifikat (Transport Layer Security) verwendet werden, um Webdatenverkehr zu verschlüsseln. „Transport Layer Security“ wurde früher als „Secure Sockets Layer“ (SSL) bezeichnet. Diese TLS/SSL-Zertifikate können in Azure Key Vault gespeichert werden. Sie ermöglichen sichere Bereitstellungen von Zertifikaten auf virtuellen Linux-Computern in Azure. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer Azure Key Vault-Instanz
 > * Generieren oder Hochladen eines Zertifikats in Key Vault
 > * Erstellen eines virtuellen Computers und Installieren des NGINX-Webservers
-> * Einfügen des Zertifikats auf dem virtuellen Computer und Konfigurieren von NGINX mit einer SSL-Bindung
+> * Einfügen des Zertifikats auf dem virtuellen Computer und Konfigurieren von NGINX mit einer TLS-Bindung
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Dieses Tutorial verwendet die CLI innerhalb des Diensts [Azure Cloud Shell](../../cloud-shell/overview.md), der ständig auf die neueste Version aktualisiert wird. Wählen Sie zum Öffnen von Cloud Shell oben in einem Codeblock die Option **Ausprobieren** aus.
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 
 ## <a name="overview"></a>Übersicht
@@ -85,7 +84,7 @@ vm_secret=$(az vm secret format --secrets "$secret" -g myResourceGroupSecureWeb 
 
 Wenn Sie einen virtuellen Computer erstellen, werden Zertifikate und Schlüssel im geschützten Verzeichnis */var/lib/waagent/* gespeichert. Verwenden Sie cloud-init, um die Vorgänge zum Hinzufügen des Zertifikats zum virtuellen Computer und zum Konfigurieren des Webservers zu automatisieren. In diesem Beispiel installieren und konfigurieren Sie den NGINX-Webserver. Dasselbe Verfahren kann zum Installieren und Konfigurieren von Apache verwendet werden. 
 
-Erstellen Sie eine Datei namens *cloud-init-web-server.txt*, und fügen Sie die folgende Konfiguration ein:
+Erstellen Sie eine Datei namens *cloud-init-web-server.txt* , und fügen Sie die folgende Konfiguration ein:
 
 ```yaml
 #cloud-config
@@ -147,13 +146,13 @@ Die gesicherte NGINX-Website wird dann wie im folgenden Beispiel angezeigt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen NGINX-Webserver mit einem in Azure Key Vault gespeicherten SSL-Zertifikat gesichert. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie einen NGINX-Webserver mit einem in Azure Key Vault gespeicherten TLS/SSL-Zertifikat geschützt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer Azure Key Vault-Instanz
 > * Generieren oder Hochladen eines Zertifikats in Key Vault
 > * Erstellen eines virtuellen Computers und Installieren des NGINX-Webservers
-> * Einfügen des Zertifikats auf dem virtuellen Computer und Konfigurieren von NGINX mit einer SSL-Bindung
+> * Einfügen des Zertifikats auf dem virtuellen Computer und Konfigurieren von NGINX mit einer TLS-Bindung
 
 Folgen Sie diesem Link, um sich vordefinierte Skriptbeispiele für virtuelle Computer anzusehen.
 

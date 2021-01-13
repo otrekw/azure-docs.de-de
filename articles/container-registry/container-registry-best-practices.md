@@ -1,23 +1,20 @@
 ---
-title: Bewährte Methoden in Azure Container Registry
+title: Registrierung – bewährte Methoden
 description: Erfahren Sie, wie Sie Azure Container Registry anhand dieser bewährten Methoden effektiv verwenden.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: danlep
-ms.openlocfilehash: a1ab010300d3f7bec3aeb5969a9a09fa9ee9a6a5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: fc84fb8cb98f58e28570095370d55a7358ce3a99
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309769"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83682683"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Bewährte Methoden für Azure Container Registry
 
 Durch Befolgen dieser bewährten Methoden sorgen Sie für eine optimale Leistung und kostengünstige Verwendung Ihrer privaten Docker-Registrierung in Azure.
+
+Informationen zu Strategien zum Taggen und für die Versionsverwaltung von Images in Ihrer Registrierung finden Sie unter [Empfehlungen für das Taggen und die Versionsverwaltung von Containerimages](container-registry-image-tag-version.md). 
 
 ## <a name="network-close-deployment"></a>Netzwerknahe Bereitstellung
 
@@ -36,14 +33,12 @@ Sehen Sie sich die dreiteilige Tutorialreihe [Georeplikation in Azure Container 
 
 Mithilfe von Repositorynamespaces können Sie die gemeinsame Nutzung einer einzigen Registrierung in mehreren Gruppen innerhalb Ihrer Organisation ermöglichen. Registrierungen können in mehreren Bereitstellungen und Teams gemeinsam verwendet werden. Azure Container Registry unterstützt geschachtelte Namespaces und ermöglicht damit die Isolation von Gruppen.
 
-Sehen Sie sich beispielsweise die folgenden Containerimagetags an. Images, die unternehmensweit verwendet werden (z.B. `aspnetcore`), werden im Stammnamespace abgelegt, während Containerimages, die zu den Produktions- und Marketinggruppen gehören, jeweils eigene Namespaces verwenden.
+Sehen Sie sich beispielsweise die folgenden Containerimagetags an. Images, die unternehmensweit verwendet werden (z. B. `aspnetcore`), werden im Stammnamespace abgelegt, während Containerimages, die zu den Produk- und Marketinggruppen gehören, jeweils eigene Namespaces verwenden.
 
-```
-contoso.azurecr.io/aspnetcore:2.0
-contoso.azurecr.io/products/widget/web:1
-contoso.azurecr.io/products/bettermousetrap/refundapi:12.3
-contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
-```
+- *contoso.azurecr.io/aspnetcore:2.0*
+- *contoso.azurecr.io/products/widget/web:1*
+- *contoso.azurecr.io/products/bettermousetrap/refundapi:12.3*
+- *contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42*
 
 ## <a name="dedicated-resource-group"></a>Dedizierte Ressourcengruppe
 
@@ -51,7 +46,7 @@ Da Containerregistrierungen Ressourcen sind, die über mehrere Containerhosts ve
 
 Auch wenn Sie mit einem bestimmten Hosttyp (z.B. Azure Container Instances) experimentieren, möchten Sie die Containerinstanz wahrscheinlich am Ende löschen. Möglicherweise empfiehlt es sich jedoch, die Sammlung von Images beizubehalten, die Sie mithilfe von Push in Azure Container Registry übertragen haben. Indem Sie Ihre Registrierung in einer eigenen Ressourcengruppe ablegen, minimieren Sie das Risiko, dass die Sammlung von Images in der Registrierung versehentlich gelöscht wird, wenn Sie die Ressourcengruppe der Containerinstanz löschen.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Bei der Authentifizierung bei einer Azure-Containerregistrierung gibt es im Wesentlichen zwei Szenarien: die individuelle Authentifizierung und die Dienstauthentifizierung (oder „monitorlose Authentifizierung“). Die folgende Tabelle enthält eine kurze Übersicht über diese Szenarien sowie die jeweils empfohlene Authentifizierungsmethode.
 
@@ -64,12 +59,15 @@ Ausführliche Informationen zur Azure Container Registry-Authentifizierung finde
 
 ## <a name="manage-registry-size"></a>Verwalten von Registrierungsgrößen
 
-Die Speichereinschränkungen jeder [SKU der Containerregistrierung][container-registry-skus] sind jeweils für ein typisches Szenario konzipiert: **Basic** für die ersten Schritte, **Standard** für die meisten Produktionsanwendungen und **Premium** für Leistung mit Hyperskalierung und [Georeplikation][container-registry-geo-replication]. Während der gesamten Dauer Ihrer Registrierung sollten Sie die Größe durch regelmäßiges Löschen von ungenutztem Inhalt verwalten.
+Die Speichereinschränkungen jedes [Tarifs der Containerregistrierung][container-registry-skus] sind jeweils für ein typisches Szenario konzipiert: **Basic** für die ersten Schritte, **Standard** für die meisten Produktionsanwendungen und **Premium** für Leistung mit Hyperskalierung und [Georeplikation][container-registry-geo-replication]. Während der gesamten Dauer Ihrer Registrierung sollten Sie die Größe durch regelmäßiges Löschen von ungenutztem Inhalt verwalten.
 
 Verwenden Sie den Azure CLI-Befehl [az acr show-usage][az-acr-show-usage], um die aktuelle Größe Ihrer Registrierung anzuzeigen:
 
-```console
-$ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
+```azurecli
+az acr show-usage --resource-group myResourceGroup --name myregistry --output table
+```
+
+```output
 NAME      LIMIT         CURRENT VALUE    UNIT
 --------  ------------  ---------------  ------
 Size      536870912000  185444288        Bytes
@@ -88,7 +86,7 @@ Weitere Informationen zum Löschen von Imagedaten aus Ihrer Registrierung, einsc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Azure Container Registry ist in mehrere Tarifen (SKUs) verfügbar, die jeweils verschiedene Funktionen bereitstellen. Ausführliche Informationen zu verfügbaren SKUs finden Sie unter [Azure Container Registry-SKUs](container-registry-skus.md).
+Azure Container Registry ist in mehrere Tarifen (auch als SKUs bezeichnet) verfügbar, die jeweils verschiedene Funktionen bereitstellen. Ausführliche Informationen zu den verfügbaren Tarifen finden Sie unter [Azure Container Registry-Tarife](container-registry-skus.md).
 
 <!-- IMAGES -->
 [delete-repository-portal]: ./media/container-registry-best-practices/delete-repository-portal.png

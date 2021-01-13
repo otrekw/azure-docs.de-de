@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Ausführen eines R-Skripts in ML Services unter Verwendung der R-Konsole –Azure HDInsight'
+title: 'Schnellstart: R-Skript in ML Services und R-Konsole – Azure HDInsight'
 description: In diesem Schnellstart führen Sie ein R-Skripts in einem ML Services-Cluster in Azure HDInsight mithilfe der R-Konsole aus.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 44bc90a4c556108b4b6874a2d1297a6467413824
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: af41a7569dedc9a56f67be8ae791d7185e0c7489
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736363"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "73241599"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Schnellstart: Ausführen eines R-Skripts in einem ML Services-Cluster in Azure HDInsight mithilfe der R-Konsole
 
@@ -111,7 +111,7 @@ In diesem Schnellstart erfahren Sie, wie Sie ein R-Skript mithilfe der R-Konsole
      formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
     ```
 
-1. Führen Sie mit dem **lokalen** Computekontext eine logistische Regression für die Daten aus. Geben Sie den folgenden Code in die R-Konsole ein:
+1. Führen Sie mit dem **lokalen** Rechenkontext eine logistische Regression für die Daten aus. Geben Sie den folgenden Code in die R-Konsole ein:
 
     ```R
     # Set a local compute context

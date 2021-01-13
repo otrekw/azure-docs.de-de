@@ -1,23 +1,24 @@
 ---
-title: Verschieben einer öffentlichen Azure-IP-Adresse in eine andere Azure-Region mit dem Azure-Portal
-description: Verwenden einer Azure Resource Manager-Vorlage, um eine öffentliche Azure-IP-Adresse mit dem Azure-Portal aus einer Azure-Region in eine andere zu verschieben.
+title: Verschieben einer öffentlichen Azure-IP-Konfiguration in eine andere Azure-Region mit dem Azure-Portal
+description: In diesem Artikel erhalten Sie Informationen zum Verwenden einer Vorlage, um eine öffentliche Azure-IP-Konfiguration mit dem Azure-Portal aus einer Azure-Region in eine andere zu verschieben.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.subservice: ip-services
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 2610afe9df06d28f2b75bd0023f7ec5a3fe9e56c
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 23fe515ddfdecb9ef168dd662e3fa2d91ece688f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219225"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84711475"
 ---
-# <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>Verschieben einer öffentlichen Azure-IP-Adresse in eine andere Region mit dem Azure-Portal
+# <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>Verschieben einer öffentlichen Azure-IP-Konfiguration in eine andere Region mit dem Azure-Portal
 
-Es gibt verschiedene Szenarien, in denen Sie Ihre vorhandenen öffentlichen Azure-IP-Adressen aus einer Region in eine andere verschieben möchten. Beispielsweise könnte es sein, dass Sie für Testzwecke eine öffentliche IP-Adresse mit derselben Konfiguration und demselben Tarif erstellen möchten. Möglicherweise möchten Sie eine öffentliche IP-Adresse auch im Rahmen der Planung einer Notfallwiederherstellung in eine andere Region verschieben.
+Es gibt verschiedene Szenarios, in denen Sie Ihre vorhandenen öffentlichen Azure-IP-Konfigurationen aus einer Region in eine andere verschieben sollten. Beispielsweise könnte es sein, dass Sie für Testzwecke eine öffentliche IP-Adresse mit derselben Konfiguration und demselben Tarif erstellen möchten. Möglicherweise sollten Sie eine öffentliche IP-Konfiguration auch im Rahmen der Planung einer Notfallwiederherstellung in eine andere Region verschieben.
 
-Öffentliche Azure-IP-Adressen sind regionsspezifisch und können nicht aus einer Region in eine andere verschoben werden. Sie können jedoch eine Azure Resource Manager-Vorlage verwenden, um die vorhandene Konfiguration einer öffentlichen IP-Adresse zu exportieren.  Anschließend können Sie die Ressource in einer anderen Region stagen, indem Sie die öffentliche IP-Adresse in eine Vorlage exportieren, die Parameter so ändern, dass sie der Zielregion entsprechen, und die Vorlage dann in der neuen Region bereitstellen.  Weitere Informationen zu Resource Manager und Vorlagen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+**Öffentliche Azure-IP-Adressen sind regionsspezifisch und können nicht aus einer Region in eine andere verschoben werden.** Sie können jedoch eine Azure Resource Manager-Vorlage verwenden, um die vorhandene Konfiguration einer öffentlichen IP-Adresse zu exportieren.  Anschließend können Sie die Ressource in einer anderen Region stagen, indem Sie die öffentliche IP-Adresse in eine Vorlage exportieren, die Parameter so ändern, dass sie der Zielregion entsprechen, und die Vorlage dann in der neuen Region bereitstellen.  Weitere Informationen zu Resource Manager und Vorlagen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -32,7 +33,7 @@ Es gibt verschiedene Szenarien, in denen Sie Ihre vorhandenen öffentlichen Azur
 
 - Vergewissern Sie sich, dass Sie mit Ihrem Azure-Abonnement öffentliche IP-Adressen in der verwendeten Zielregion erstellen können. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
 
-- Stellen Sie sicher, dass Ihr Abonnement genügend Ressourcen hat, um das Hinzufügen von öffentlichen IP-Adressen für diesen Prozess zu unterstützen.  Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Stellen Sie sicher, dass Ihr Abonnement genügend Ressourcen hat, um das Hinzufügen von öffentlichen IP-Adressen für diesen Prozess zu unterstützen.  Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Vorbereiten und Verschieben
@@ -91,7 +92,7 @@ In den folgenden Schritten wird gezeigt, wie Sie die öffentliche IP-Adresse fü
 
 11. Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **USA, Mitte** = **centralus**.
 
-12. Sie können wahlweise auch andere Parameter in der Vorlage ändern. Diese sind abhängig von Ihren Anforderungen optional:
+12. Sie können wahlweise auch andere Parameter in der Vorlage ändern, die abhängig von Ihren Anforderungen optional sind:
 
     * **SKU**: Sie können die SKU der öffentlichen IP-Adresse in der Konfiguration von „standard“ in „basic“ oder von „basic“ in „standard“ ändern, indem Sie die Eigenschaft **sku** > **name** in der Datei **template.json** ändern:
 
@@ -147,15 +148,15 @@ In den folgenden Schritten wird gezeigt, wie Sie die öffentliche IP-Adresse fü
 
 17. Stellen Sie unter **EINSTELLUNGEN** sicher, dass der Name mit dem Namen übereinstimmt, den Sie oben im Parameter-Editor eingegeben haben.
 
-18. Aktivieren Sie das Kontrollkästchen unter **GESCHÄFTSBEDINGUNGEN**.
+18. Aktivieren Sie das Kontrollkästchen unter **NUTZUNGSBEDINGUNGEN**.
 
-19. Klicken Sie auf die Schaltfläche **Erwerben**, um die IP-Adresse des Ziels bereitzustellen.
+19. Klicken Sie auf die Schaltfläche **Kaufen**, um die öffentliche IP-Adresse des Ziels bereitzustellen.
 
 ## <a name="discard"></a>Verwerfen
 
 Wenn Sie die öffentliche IP-Adresse des Ziels verwerfen möchten, löschen Sie die Ressourcengruppe, die die öffentliche IP-Adresse des Ziels enthält.  Wählen Sie hierzu im Portal die Ressourcengruppe im Dashboard aus, und klicken Sie oben auf der Übersichtsseite auf **Löschen**.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Um die Änderungen zu übernehmen und das Verschieben der öffentlichen IP-Adresse abzuschließen, löschen Sie die öffentliche IP-Adresse der Quelle oder die Quellressourcengruppe. Wählen Sie hierzu im Portal die öffentliche IP-Adresse oder die Ressourcengruppe im Dashboard aus, und klicken Sie oben auf jeder Seite auf **Löschen**.
 

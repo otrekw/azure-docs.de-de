@@ -1,51 +1,47 @@
 ---
-title: Single-Page-Webanwendung (Erwerben eines Tokens zum Aufrufen einer API) – Microsoft Identity Platform
-description: Erfahren Sie, wie Sie eine Single-Page-Webanwendung erstellen (Erwerben eines Tokens zum Aufrufen einer API).
+title: Abrufen eines Tokens zum Aufrufen einer Web-API (Single-Page-Apps) – Microsoft Identity Platform | Azure
+description: Informationen zum Erstellen einer Single-Page-Webanwendung (Abrufen eines Tokens zum Aufrufen einer API)
 services: active-directory
-documentationcenter: dev-center-name
 author: negoe
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f49a6093194ef76a895f2a54f8a78a55da73e7e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3d91e69d7d9eac9f8cae1a1a122a13afd19ef631
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135710"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443873"
 ---
-# <a name="single-page-application---acquire-a-token-to-call-an-api"></a>Single-Page-Anwendung – Erwerben eines Tokens zum Aufrufen einer API
+# <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Single-Page-Webanwendung: Abrufen eines Tokens zum Aufrufen einer API
 
-Das Muster für das Erwerben von Token für APIs mit MSAL.js besteht darin, zunächst eine automatische Tokenanforderung mit der `acquireTokenSilent`-Methode zu versuchen. Wenn diese Methode aufgerufen wird, überprüft die Bibliothek zuerst den Cache im Browserspeicher, um festzustellen, ob ein gültiges Token vorhanden ist, und gibt es zurück. Wenn kein gültiges Token im Cache vorhanden ist, sendet sie aus einem ausgeblendeten IFrame eine automatische Tokenanforderung an Azure Active Directory (Azure AD). Diese Methode ermöglicht der Bibliothek auch, Token zu erneuern. Weitere Informationen zu SSO-Sitzungen und Tokengültigkeitsdauer-Werten in Azure AD finden Sie unter [Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)](active-directory-configurable-token-lifetimes.md).
+Das Muster für das Abrufen von Token für APIs mit MSAL.js besteht darin, zuerst zu versuchen, eine automatische Tokenanforderung mithilfe der `acquireTokenSilent`-Methode zu senden. Wenn diese Methode aufgerufen wird, überprüft die Bibliothek zuerst den Cache im Browserspeicher, um festzustellen, ob ein gültiges Token vorhanden ist, und dann wird das Token zurückgegeben. Wenn kein gültiges Token im Cache vorhanden ist, sendet sie aus einem ausgeblendeten IFrame eine automatische Tokenanforderung an Azure Active Directory (Azure AD). Diese Methode ermöglicht der Bibliothek auch, Token zu erneuern. Weitere Informationen zu SSO-Sitzungen und Werten für die Tokengültigkeitsdauer in Azure AD finden Sie unter [Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)](active-directory-configurable-token-lifetimes.md).
 
-Bei den automatischen Tokenanforderungen für Azure AD können möglicherweise aus beliebigem Grund Fehler auftreten, z.B. wg. einer abgelaufenen Azure AD-Sitzung oder einer Kennwortänderung. In diesem Fall können Sie zum Abrufen von Token eine der interaktiven Methoden aufrufen (die den Benutzer zur Eingabe auffordert).
+Beim Senden von automatischen Tokenanforderungen an Azure AD können beispielsweise aufgrund einer abgelaufenen Azure AD-Sitzung oder einer Kennwortänderung Fehler auftreten. In diesem Fall können Sie eine der interaktiven Methoden aufrufen (die den Benutzer zur Eingabe auffordern), um Token abzurufen:
 
-* [Erwerben eines Tokens mit einem Popupfenster](#acquire-token-with-a-pop-up-window) mit `acquireTokenPopup`
-* [Erwerben eines Tokens mit Umleitung](#acquire-token-with-redirect) mit `acquireTokenRedirect`
+* [Popupfenster](#acquire-a-token-with-a-pop-up-window) mithilfe von `acquireTokenPopup`
+* [Umleitung](#acquire-a-token-with-a-redirect) mithilfe von `acquireTokenRedirect`
 
-**Auswählen zwischen einem Popupfenster oder einer Umleitung**
+## <a name="choose-between-a-pop-up-or-redirect-experience"></a>Auswählen zwischen einem Popupfenster oder einer Umleitung
 
- Sie können in Ihrer Anwendung keine Kombination aus einer Popupfenster- und einer Umleitungsmethode verwenden. Die Entscheidung für ein Popupfenster oder eine Umleitung hängt von Ihrem Anwendungsfluss ab.
+ Sie können in Ihrer Anwendung nicht die Popupfenster- und die Umleitungsmethode verwenden. Die Entscheidung für ein Popupfenster oder eine Umleitung hängt von Ihrem Anwendungsfluss ab:
 
-* Wenn Sie nicht möchten, dass der Benutzer während der Authentifizierung Ihre Hauptanmeldungsseite verlässt, wird empfohlen, die Popupmethoden zu verwenden. Da die Authentifizierungsumleitung in einem Popupfenster erfolgt, wird der Status der Hauptanwendung beibehalten.
+* Wenn Sie nicht möchten, dass Benutzer während der Authentifizierung Ihre Hauptanwendungsseite verlassen, empfiehlt sich die Verwendung der Popupmethode. Da die Authentifizierungsumleitung in einem Popupfenster erfolgt, wird der Status der Hauptanwendung beibehalten.
 
-* Es gibt bestimmte Fälle, in denen Sie möglicherweise die Umleitungsmethoden verwenden müssen. Wenn für Benutzer Ihrer Anwendung Browsereinschränkungen oder Richtlinien gelten, bei denen Popupfenster deaktiviert sind, können Sie die Umleitungsmethoden verwenden. Sie sollten auch die Umleitungsmethoden mit dem Internet Explorer-Browser verwenden, da es bestimmte [bekannte Probleme mit Internet Explorer](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser) bei der Verarbeitung von Popupfenstern gibt.
+* Wenn für Benutzer Browsereinschränkungen oder Richtlinien gelten, bei denen Popupfenster deaktiviert sind, können Sie die Umleitungsmethode verwenden. Wenn Sie Internet Explorer als Browser nutzen, verwenden Sie die Umleitungsmethode, weil [in Internet Explorer bekannte Probleme mit Popupfenstern bestehen](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser).
 
-Sie können beim Erstellen der Anforderung eines Zugriffstokens die API-Bereiche festlegen, die das Zugriffstoken einbeziehen soll. Beachten Sie, dass unter Umständen nicht alle angeforderten Bereiche im Zugriffstoken gewährt werden und dies von der Zustimmung des Benutzers abhängt.
+Sie können beim Erstellen der Zugriffstokenanforderung die API-Bereiche festlegen, die das Zugriffstoken einschließen soll. Beachten Sie, dass möglicherweise nicht alle angeforderten Bereiche im Zugriffstoken gewährt werden. Das ist von der Zustimmung des Benutzers abhängig.
 
-## <a name="acquire-token-with-a-pop-up-window"></a>Erwerben eines Tokens mit einem Popupfenster
+## <a name="acquire-a-token-with-a-pop-up-window"></a>Abrufen eines Tokens mit einem Popupfenster
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Das oben genannten Muster mithilfe der Methoden für eine Popup-Benutzeroberfläche:
+Im folgenden Code wird das zuvor beschriebene Muster mit den Methoden für ein Popupelement kombiniert:
 
 ```javascript
 const accessTokenRequest = {
@@ -54,10 +50,10 @@ const accessTokenRequest = {
 
 userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(accessTokenResponse) {
     // Acquire token silent success
-    // call API with token
+    // Call API with token
     let accessToken = accessTokenResponse.accessToken;
 }).catch(function (error) {
-    //Acquire token silent failure, send an interactive request.
+    //Acquire token silent failure, and send an interactive request
     if (error.errorMessage.indexOf("interaction_required") !== -1) {
         userAgentApplication.acquireTokenPopup(accessTokenRequest).then(function(accessTokenResponse) {
             // Acquire token interactive success
@@ -70,30 +66,50 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angular"></a>[Angular](#tab/angular)
 
-Der MSAL Angular Wrapper hat den Vorteil, dass der HTTP-Interceptor hinzugefügt werden kann, der Zugriffstoken automatisch im Hintergrund beschafft und an die HTTP-Anforderungen für APIs anfügt.
+Der MSAL Angular-Wrapper nutzt den HTTP-Interceptor, der Zugriffstoken automatisch im Hintergrund abruft und an die HTTP-Anforderungen für APIs anfügt.
 
-Sie können die Bereiche für APIs in der Konfigurationsoption `protectedResourceMap` angeben, die der MsalInterceptor anfordert, wenn Token automatisch beschafft werden.
+Sie können die Bereiche für APIs in der Konfigurationsoption `protectedResourceMap` angeben. `MsalInterceptor` fordert diese Bereiche beim automatischen Abrufen von Token an.
 
 ```javascript
-//In app.module.ts
+// app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
-                protectedResourceMap: {"https://graph.microsoft.com/v1.0/me", ["user.read", "mail.send"]}
-            })]
-         })
-
-providers: [ ProductService, {
-        provide: HTTP_INTERCEPTORS,
-        useClass: MsalInterceptor,
-        multi: true
+  declarations: [
+    // ...
+  ],
+  imports: [
+    // ...
+    MsalModule.forRoot({
+      auth: {
+        clientId: 'Enter_the_Application_Id_Here',
+      }
+    },
+    {
+      popUp: !isIE,
+      consentScopes: [
+        'user.read',
+        'openid',
+        'profile',
+      ],
+      protectedResourceMap: [
+        ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+      ]
+    })
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
     }
-   ],
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
-Für das erfolgreiche und nicht erfolgreiche automatische Erwerben von Token stellt MSAL Angular Rückrufe bereit, die Sie abonnieren können. Sie müssen auch daran denken, das Abonnement zu kündigen.
+Für den erfolgreichen und den fehlerhaften automatischen Tokenabruf stellt MSAL Angular Rückrufe bereit, die Sie abonnieren können. Sie müssen auch daran denken, das Abonnement zu kündigen.
 
 ```javascript
 // In app.component.ts
@@ -104,23 +120,25 @@ Für das erfolgreiche und nicht erfolgreiche automatische Erwerben von Token ste
 
 ngOnDestroy() {
    this.broadcastService.getMSALSubject().next(1);
-   if(this.subscription) {
+   if (this.subscription) {
      this.subscription.unsubscribe();
    }
  }
 ```
 
-Alternativ können Sie Token auch explizit mit der in der MSAL.js-Kernbibliothek beschriebenen Methode erwerben.
+Alternativ können Sie Token auch explizit mithilfe der in der MSAL.js-Kernbibliothek beschriebenen „acquire-token“-Methoden abrufen.
 
-## <a name="acquire-token-with-redirect"></a>Erwerben eines Tokens mit Umleitung
+---
 
-### <a name="javascript"></a>JavaScript
+## <a name="acquire-a-token-with-a-redirect"></a>Abrufen eines Tokens mit einer Umleitung
 
-Das Muster ist wie oben beschrieben, wird jedoch mit einer Umleitungsmethode zum interaktiven Erwerben von Token gezeigt. Sie müssen den Umleitungsrückruf wie bereits erwähnt registrieren.
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Das folgende Muster entspricht dem zuvor beschriebenen Muster, wird jedoch mit einer Umleitungsmethode zum interaktiven Abrufen von Token dargestellt. Wie bereits erwähnt, müssen Sie den Umleitungsrückruf registrieren.
 
 ```javascript
 function authCallback(error, response) {
-    //handle redirect response
+    // Handle redirect response
 }
 
 userAgentApplication.handleRedirectCallback(authCallback);
@@ -131,10 +149,10 @@ const accessTokenRequest: AuthenticationParameters = {
 
 userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(accessTokenResponse) {
     // Acquire token silent success
-    // call API with token
+    // Call API with token
     let accessToken = accessTokenResponse.accessToken;
 }).catch(function (error) {
-    //Acquire token silent failure, send an interactive request.
+    //Acquire token silent failure, and send an interactive request
     console.log(error);
     if (error.errorMessage.indexOf("interaction_required") !== -1) {
         userAgentApplication.acquireTokenRedirect(accessTokenRequest);
@@ -142,8 +160,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-## <a name="request-for-optional-claims"></a>Anfordern optionaler Ansprüche
-Sie können in Ihrer App optionale Ansprüche anfordern, um anzugeben, welche zusätzlichen Ansprüche in Token für Ihre Anwendung einbezogen werden sollen. Zum Anfordern optionaler Ansprüche im „id_token“ können Sie ein als Zeichenfolge dargestelltes Anspruchsobjekt an das Feld „claimsRequest“ der „AuthenticationParameters.ts“-Klasse senden.
+## <a name="request-optional-claims"></a>Anfordern optionaler Ansprüche
 
 Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
 
@@ -151,14 +168,14 @@ Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
 - Ändern des Verhaltens bestimmter Ansprüche, die von Azure AD in Token zurückgegeben werden
 - Hinzufügen und Zugreifen auf benutzerdefinierte Ansprüche für Ihre Anwendung
 
+Zum Anfordern optionaler Ansprüche in `IdToken` können Sie ein als Zeichenfolge dargestelltes Anspruchsobjekt an das Feld `claimsRequest` der `AuthenticationParameters.ts`-Klasse senden.
 
-### <a name="javascript"></a>JavaScript
 ```javascript
-"optionalClaims":  
+"optionalClaims":
    {
       "idToken": [
             {
-                  "name": "auth_time", 
+                  "name": "auth_time",
                   "essential": true
              }
       ],
@@ -170,14 +187,15 @@ var request = {
 
 myMSALObj.acquireTokenPopup(request);
 ```
-Weitere Informationen zu optionalen Ansprüchen finden Sie unter [Optionale Ansprüche](active-directory-optional-claims.md).
 
+Weitere Informationen finden Sie unter [Optionale Ansprüche](active-directory-optional-claims.md).
 
-### <a name="angular"></a>Angular
+# <a name="angular"></a>[Angular](#tab/angular)
 
-Dies entspricht der obigen Beschreibung.
+Dieser Code entspricht dem zuvor beschriebenen Code.
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Aufrufen einer Web-API](scenario-spa-call-api.md)
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [Aufrufen einer Web-API](scenario-spa-call-api.md).

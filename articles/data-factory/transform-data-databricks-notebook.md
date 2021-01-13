@@ -1,27 +1,27 @@
 ---
-title: Transformieren von Daten mit einem Databricks-Notebook – Azure | Microsoft-Dokumentation
+title: Transformieren von Daten mit einem Databricks-Notebook
 description: Erfahren Sie, wie Sie Daten verarbeiten oder transformieren, indem Sie ein Databricks-Notebook ausführen.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 author: nabhishek
 ms.author: abnarain
-manager: jroth
+manager: shwang
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 23166a4a0110629674db6ccc9d225118264b3c15
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 4679d06e877679f0a56ee782b9a43a5a8147d7a5
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233059"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608118"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformieren von Daten durch Ausführen eines Databricks-Notebooks
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Die Azure Databricks-Notebook-Aktivität in einer [Data Factory-Pipeline](concepts-pipelines-activities.md) führt ein Databricks-Notebook in Ihrem Azure Databricks-Arbeitsbereich aus. Dieser Artikel baut auf dem Artikel zu  [Datentransformationsaktivitäten](transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet. Azure Databricks ist eine verwaltete Plattform für die Ausführung von Apache Spark.
+Die Azure Databricks-Notebook-Aktivität in einer [Data Factory-Pipeline](concepts-pipelines-activities.md) führt ein Databricks-Notebook in Ihrem Azure Databricks-Arbeitsbereich aus. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.  Azure Databricks ist eine verwaltete Plattform für die Ausführung von Apache Spark.
 
 ## <a name="databricks-notebook-activity-definition"></a>Definition der Databricks-Notebook-Aktivität
 
@@ -62,10 +62,10 @@ Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definiti
 |name|Der Name der Aktivität in der Pipeline.|Ja|
 |description|Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.|Nein|
 |type|Bei Databricks-Notebook-Aktivitäten lautet der Aktivitätstyp DatabricksNotebook.|Ja|
-|linkedServiceName|Der Name des verknüpften Databricks-Diensts, in dem das Databricks-Notebook ausgeführt wird. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel  [Von Azure Data Factory unterstützte Compute-Umgebungen](compute-linked-services.md).|Ja|
+|linkedServiceName|Der Name des verknüpften Databricks-Diensts, in dem das Databricks-Notebook ausgeführt wird. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).|Ja|
 |notebookPath|Der absolute Pfad des Notebooks, das im Databricks-Arbeitsbereich ausgeführt werden soll. Dieser Pfad muss mit einem Schrägstrich beginnen.|Ja|
 |baseParameters|Ein Array aus Schlüssel-Wert-Paaren. Für jede Aktivitätsausführung können Basisparameter verwendet werden. Wenn das Notebook einen nicht spezifizierten Parameter akzeptiert, wird der Standardwert des Notebooks verwendet. Erfahren Sie mehr über Parameter in [Databricks-Notebooks](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Nein|
-|libraries|Eine Liste der Bibliotheken, die in dem Cluster installiert werden, der den Auftrag ausführen wird. Es kann ein Array vom Typ \<Zeichenfolge, Objekt> sein.|Nein|
+|libraries|Eine Liste der Bibliotheken, die in dem Cluster installiert werden, der den Auftrag ausführen wird. Es kann ein \<string, object>-Array sein.|Nein|
 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Unterstützte Bibliotheken für Databricks-Aktivitäten
@@ -81,7 +81,7 @@ In der oben genannten Definition der Databricks-Aktivität geben Sie die folgend
         {
             "egg": "dbfs:/mnt/libraries/library.egg"
         },
-    {
+        {
             "whl": "dbfs:/mnt/libraries/mlflow-0.0.1.dev0-py2-none-any.whl"
         },
         {
@@ -127,7 +127,7 @@ In bestimmten Fällen müssen Sie möglicherweise bestimmte Werte aus dem Notebo
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Hochladen einer Bibliothek in Databricks
 
-#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Benutzeroberfläche des Databricks-Arbeitsbereichs](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+#### <a name="using-databricks-workspace-ui"></a>[Benutzeroberfläche des Databricks-Arbeitsbereichs](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
 
 Sie können den DBFS-Pfad der hinzugefügten Bibliothek über die Benutzeroberfläche mithilfe der [Databricks-Benutzerzeilenschnittstelle (Installation)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli) abrufen. 
 
@@ -135,6 +135,6 @@ JAR-Bibliotheken werden beim Verwenden der Benutzeroberfläche in der Regel unte
 
 
 
-#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Kopieren von Bibliotheken mit der Databricks-Benutzerzeilenschnittstelle](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+#### <a name="copy-library-using-databricks-cli"></a>[Kopieren von Bibliotheken mit der Databricks-Benutzerzeilenschnittstelle](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
 
 Beispiel: *databricks fs cp SparkPi-assembly-0.1.jar dbfs:/FileStore/jars*.

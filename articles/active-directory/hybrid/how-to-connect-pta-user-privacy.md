@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/23/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1a7b740a6b248a12fa3d95f85f602ef7a8b2fa5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60242376"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996575"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Datenschutz und Passthrough-Authentifizierung von Azure Active Directory
 
@@ -67,13 +67,13 @@ Weitere Informationen zu verwandten DSGVO-Anforderungen für Azure AD Connect fi
 
 ### <a name="delete-authentication-agent-event-logs"></a>Löschen der Ereignisprotokolle des Authentifizierungs-Agents
 
-Mit diesem Produkt können auch **Windows-Ereignisprotokolle** erstellt werden. Weitere Informationen finden Sie in [diesem Artikel](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx).
+Mit diesem Produkt können auch **Windows-Ereignisprotokolle** erstellt werden. Weitere Informationen finden Sie in [diesem Artikel](/windows/win32/wes/windows-event-log).
 
 Öffnen Sie zum Anzeigen von Protokollen zum Agent für die Passthrough-Authentifizierung die **Ereignisanzeige** auf dem Server, und sehen Sie unter **Anwendungs- und Dienstprotokolle\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** nach.
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>Löschen der Ablaufverfolgungsprotokoll-Dateien für den Authentifizierungs-Agent
 
-Es ist ratsam, den Inhalt von <strong>%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\</strong> regelmäßig zu überprüfen und den Inhalt dieses Ordners alle 48 Stunden zu löschen. 
+Sie sollten den Inhalt von **%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace** regelmäßig überprüfen und den Inhalt dieses Ordners alle 48 Stunden löschen. 
 
 >[!IMPORTANT]
 >Wenn der Authentifizierungs-Agent ausgeführt wird, ist es nicht möglich, die aktuelle Protokolldatei im Ordner zu löschen. Beenden Sie den Dienst, bevor Sie es erneut versuchen. Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für [Hochverfügbarkeit](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) bereits konfiguriert haben.
@@ -103,7 +103,7 @@ Führen Sie diese Schritte aus, um für das Skript die Ausführung nach jeweils 
  
 ### <a name="note-about-domain-controller-logs"></a>Hinweis zu Domänencontrollerprotokollen
 
-Wenn die Überwachungsprotokollierung aktiviert ist, kann dieses Produkt Sicherheitsprotokolle für Ihre Domänencontroller generieren. Weitere Informationen zum Konfigurieren von Überwachungsrichtlinien finden Sie in [diesem Artikel](https://technet.microsoft.com/library/dd277403.aspx).
+Wenn die Überwachungsprotokollierung aktiviert ist, kann dieses Produkt Sicherheitsprotokolle für Ihre Domänencontroller generieren. Weitere Informationen zum Konfigurieren von Überwachungsrichtlinien finden Sie in [diesem Artikel](/previous-versions/tn-archive/dd277403(v=technet.10)).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Die Microsoft-Datenschutzrichtlinie im Trust Center](https://www.microsoft.com/trustcenter)

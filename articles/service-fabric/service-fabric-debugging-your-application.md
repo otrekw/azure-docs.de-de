@@ -1,26 +1,15 @@
 ---
-title: Debuggen der Anwendung in Visual Studio | Microsoft Docs
+title: Debuggen von Anwendungen in Visual Studio
 description: Verbessern Sie die Zuverlässigkeit und Leistung Ihrer Dienste, indem Sie sie in Visual Studio in einem lokalen Entwicklungscluster entwickeln und debuggen.
-services: service-fabric
-documentationcenter: .net
-author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: cb888532-bcdb-4e47-95e4-bfbb1f644da4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.custom: vs-azure
-ms.workload: azure-vs
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0b7d08d610c883240abedc66c55abba64a74c8e3
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300684"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576314"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Debuggen der Service Fabric-Anwendung mithilfe von Visual Studio
 > [!div class="op_single_selector"]
@@ -35,7 +24,7 @@ Sie können Zeit und Geld sparen, indem Sie Ihre Azure Service Fabric-Anwendung 
 1. Um einen lokalen Cluster für die Entwicklung zu erstellen, folgen Sie den Schritten unter [Einrichten der Service Fabric-Entwicklungsumgebung](service-fabric-get-started.md).
 2. Drücken Sie **F5** oder klicken Sie auf **Debuggen** > **Debugging starten**.
    
-    ![Anwendung debuggen][startdebugging]
+    ![Screenshot, der das Menü „Debuggen“ zeigt.][startdebugging]
 3. Legen Sie Haltepunkte im Code fest und durchlaufen Sie die Anwendung mit den Befehlen im Menü **Debuggen** .
    
    > [!NOTE]
@@ -66,7 +55,7 @@ Sie können Zeit und Geld sparen, indem Sie Ihre Azure Service Fabric-Anwendung 
 ### <a name="running-a-script-as-part-of-debugging"></a>Ausführen eines Skripts beim Debuggen
 In bestimmten Szenarien müssen Sie möglicherweise beim Start einer Debugsitzung ein Skript ausführen (wenn Sie z. B. keine Standarddienste verwenden).
 
-In Visual Studio können Sie die Datei **Start-Service.ps1** im Ordner**Scripts** des Service Fabric-Anwendungsprojekts (.sfproj) hinzufügen. Dieses Skript wird aufgerufen, nachdem die Anwendung im lokalen Cluster erstellt wurde.
+In Visual Studio können Sie die Datei **Start-Service.ps1** im Ordner **Scripts** des Service Fabric-Anwendungsprojekts (.sfproj) hinzufügen. Dieses Skript wird aufgerufen, nachdem die Anwendung im lokalen Cluster erstellt wurde.
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
@@ -76,14 +65,10 @@ Wenn Ihre Service Fabric-Anwendungen auf einem Service Fabric-Cluster in Azure a
 
 > [!NOTE]
 > Die Funktion benötigt [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) und [Azure SDK für .NET 2.9](https://azure.microsoft.com/downloads/).    
-> 
-> 
 
 <!-- -->
 > [!WARNING]
 > Das Remotedebuggen ist für Entwicklungs-/Testszenarios vorgesehen und sollte aufgrund der Auswirkung auf ausgeführte Anwendungen nicht in Produktionsumgebungen verwendet werden.
-> 
-> 
 
 1. Navigieren Sie im **Cloud-Explorer** zu Ihrem Cluster. Klicken Sie mit der rechten Maustaste, und wählen Sie **Debuggen aktivieren**.
    
@@ -128,8 +113,6 @@ Sie können Ablaufverfolgungen von einem Remoteclusterknoten aus auch direkt zu 
 > [!WARNING]
 > Das Streaming von Ablaufverfolgungen ist für Entwicklungs-/Testszenarios vorgesehen und sollte aufgrund der Auswirkung auf ausgeführte Anwendungen nicht in Produktionsumgebungen verwendet werden.
 > In einem Produktionsszenario sollten Sie sich auf das Weiterleiten von Ereignissen mithilfe von Azure-Diagnose verlassen.
-> 
-> 
 
 1. Navigieren Sie im **Cloud-Explorer** zu Ihrem Cluster. Klicken Sie mit der rechten Maustaste, und wählen Sie **Streamingablaufverfolgungen aktivieren**.
    

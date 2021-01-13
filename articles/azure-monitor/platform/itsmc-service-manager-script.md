@@ -1,34 +1,27 @@
 ---
-title: Automatisiertes Skript zum Erstellen einer Service Manager-Web-App zum Herstellen einer Verbindung mit dem ITSM-Connector in Azure | Microsoft-Dokumentation
+title: Erstellen einer Web-App für den Dienstverwaltungsconnector
 description: Erstellen Sie mithilfe eines automatisierten Skripts eine Service Manager-Web-App, um eine Verbindung mit dem ITSM-Connector in Azure herzustellen und die ITSM-Arbeitselemente zentral zu überwachen und zu verwalten.
-services: log-analytics
-documentationcenter: ''
-author: jyothirmaisuri
-manager: riyazp
-editor: ''
-ms.assetid: 879e819f-d880-41c8-9775-a30907e42059
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/23/2018
+author: nolavime
 ms.author: v-jysur
-ms.openlocfilehash: 42adbf7a6f0e7bb462e6bc9b690c61d4ade0cae2
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.date: 01/23/2018
+ms.openlocfilehash: d620df0b55b024cd5d7c25ea17d9b09c5c5da8ff
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479705"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722877"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Erstellen einer Service Manager-Web-App mithilfe des automatisierten Skripts
 
-Führen Sie das folgende Skript aus, um die Web-App für Ihre Service Manager-Instanz zu erstellen. Weitere Informationen zur Service Manager-Verbindung finden Sie hier: [Service Manager-Web-App](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+Führen Sie das folgende Skript aus, um die Web-App für Ihre Service Manager-Instanz zu erstellen. Weitere Informationen zur Service Manager-Verbindung finden Sie hier: [Service Manager-Web-App](./itsmc-connections-scsm.md)
 
 Führen Sie das Skript nach Bereitstellung der folgenden erforderlichen Details aus:
 
 - Details zum Azure-Abonnement
 - Ressourcengruppenname
-- Location
+- Standort
 - Details zum Service Manager-Server (Servername, Domäne, Benutzername und Kennwort)
 - Präfix des Namens der Website für Ihre Web-App
 - Service Bus-Namespace.
@@ -145,14 +138,14 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     {
         Write-Host "Failed to Register Microsoft.Web Resource Provider. Please register it in Azure Portal."
         exit
-    }   
+    }
 }
 do
 {
     $rand = Get-Random -Maximum 32000
 
     $siteName = $siteNamePrefix + $rand
-    
+
     $resource = Get-AzResource -Name $siteName -ResourceType Microsoft.Web/sites
 
 }while($resource)
@@ -283,7 +276,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     catch
     {
         Write-Host "Failed to Register Microsoft.Relay Resource Provider. Please register it in Azure Portal."
-    }   
+    }
 }
 
 $resource = Get-AzResource -Name $serviceName -ResourceType Microsoft.Relay/namespaces
@@ -321,6 +314,9 @@ Write-Host "URI:"  $azureSite
 if(!$err)
 {
     Write-Host "ServiceBus Namespace:"  $serviceName  
-}```
-## Next steps
-[Configure the Hybrid connection](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).
+}
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+[Konfigurieren der Hybridverbindung](./itsmc-connections-scsm.md#configure-the-hybrid-connection).
+

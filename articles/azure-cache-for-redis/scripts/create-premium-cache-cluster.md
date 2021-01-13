@@ -1,26 +1,20 @@
 ---
-title: Azure CLI-Skriptbeispiel – Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Clustering | Microsoft-Dokumentation
-description: Azure CLI-Skriptbeispiel – Erstellen eines Azure Cache for Redis mit Premium-Tarif mit Clustering
-services: cache
-documentationcenter: ''
+title: 'Erstellen einer Azure Cache for Redis-Instanz vom Typ „Premium“ mit Clustering: Azure CLI'
+description: In diesem Azure CLI-Codebeispiel erfahren Sie, wie Sie eine Azure Cache for Redis-Instanz mit 6 GB im Premium-Tarif mit aktiviertem Clustering und zwei Shards erstellen.
 author: yegu-ms
-manager: jhubbard
-editor: ''
+ms.author: yegu
 tags: azure-service-management
-ms.assetid: 07bcceae-2521-4fe3-b88f-ed833104ddd2
 ms.service: cache
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.topic: sample
 ms.date: 08/30/2017
-ms.author: yegu
-ms.openlocfilehash: 18538cf713d2938b0b595c9d4664c39c6ada5231
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: bb5a6ac082ebaf978023321f15341ec7f35779a6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130448"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184218"
 ---
 # <a name="create-a-premium-azure-cache-for-redis-with-clustering"></a>Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Clustering
 
@@ -40,12 +34,12 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az redis create](https://docs.microsoft.com/cli/azure/redis) | Erstellt eine Azure Cache for Redis-Instanz. |
+| [az group create](/cli/azure/group) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az redis create](/cli/azure/redis) | Erstellt eine Azure Cache for Redis-Instanz. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
 Zusätzliche Azure Cache for Redis-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure Cache for Redis](../cli-samples.md).

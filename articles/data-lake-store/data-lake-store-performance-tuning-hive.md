@@ -1,23 +1,17 @@
 ---
-title: Leitlinien für die Optimierung der Leistung von Azure Data Lake Storage Gen1 Hive | Microsoft Docs
-description: Leitlinien für die Optimierung der Leistung von Azure Data Lake Storage Gen1 Hive
-services: data-lake-store
-documentationcenter: ''
-author: stewu
-manager: amitkul
-editor: stewu
-ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
+title: 'Leistungsoptimierung: Hive bei Azure Data Lake Storage Gen1'
+description: Hier erfahren Sie mehr über die Leistungsoptimierung für Hive in HDInsight und Azure Data Lake Storage Gen1. Sie können Hive für E/A-intensive Abfragen optimieren, um eine bessere Leistung zu erhalten.
+author: twooley
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 433c6b7d70cea9406b67d65e23cc357939cb5aa0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: 082d684ed0a29cb6bf2de9c506886b6d98cf174a
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61437275"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723780"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Anleitung für die Leistungsoptimierung für Hive in HDInsight und Azure Data Lake Storage Gen1
 
@@ -26,10 +20,10 @@ Die Standardeinstellungen bieten eine gute Leistung für viele verschiedene Anwe
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Ein Data Lake Storage Gen1-Konto.** Eine Anleitung zum Erstellen eines Kontos finden Sie unter [Erste Schritte mit Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
+* **Ein Data Lake Storage Gen1-Konto.** Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
 * **Ein Azure HDInsight-Cluster** mit Zugriff auf ein Data Lake Storage Gen1-Konto. Weitere Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
-* **Ausführung von Hive in HDInsight**.  Weitere Informationen zum Ausführen von Hive-Aufträgen in HDInsight finden Sie unter [Verwenden von Hive in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive).
-* **Richtlinien für die Leistungsoptimierung von Data Lake Storage Gen1**.  Allgemeine Leistungskonzepte finden Sie unter [Anleitung für die Leistungsoptimierung von Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance).
+* **Ausführung von Hive in HDInsight**.  Weitere Informationen zum Ausführen von Hive-Aufträgen in HDInsight finden Sie unter [Verwenden von Hive in HDInsight](../hdinsight/hadoop/hdinsight-use-hive.md).
+* **Richtlinien für die Leistungsoptimierung von Data Lake Storage Gen1**.  Allgemeine Leistungskonzepte finden Sie unter [Anleitung für die Leistungsoptimierung von Data Lake Storage Gen1](./data-lake-store-performance-tuning-guidance.md).
 
 ## <a name="parameters"></a>Parameter
 
@@ -55,29 +49,27 @@ Im Folgenden finden Sie die wichtigsten Einstellungen für die Optimierung der D
 
 **Set hive.exec.reducer.bytes.per.reducer**: Der Standardwert funktioniert gut, wenn die Daten nicht komprimiert sind.  Bei komprimierten Daten sollten Sie den Reducer verkleinern.  
 
-**Set hive.tez.container.size**: Der Arbeitsspeicher wird in jedem Knoten von „yarn.nodemanager.resource.memory-mb“ angegeben und sollte im HDI-Cluster standardmäßig richtig festgelegt sein.  Weitere Informationen zum Festlegen des geeigneten Speichers in YARN finden Sie in diesem [Beitrag](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
+**Set hive.tez.container.size**: Der Arbeitsspeicher wird in jedem Knoten von „yarn.nodemanager.resource.memory-mb“ angegeben und sollte im HDI-Cluster standardmäßig richtig festgelegt sein.  Weitere Informationen zum Festlegen des geeigneten Speichers in YARN finden Sie in diesem [Beitrag](../hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom.md).
 
 E/A-intensive Workloads können von einem höheren Maß an Parallelität profitieren, indem Sie die Größe der Tez-Container reduzieren. So können Benutzer mehr Container verwenden, wodurch die Parallelität verbessert wird.  Einige Hive-Abfragen erfordern sehr viel Arbeitsspeicher (z.B. MapJoin).  Wenn der Task nicht über genügend Arbeitsspeicher verfügt, wird zur Laufzeit eine Ausnahme wegen unzureichenden Arbeitsspeichers angezeigt.  Wenn Sie eine solche Ausnahme erhalten, sollten Sie den Arbeitsspeicher vergrößern.   
 
 Die Anzahl von gleichzeitigen Tasks bzw. die Parallelität wird durch die Gesamtmenge an YARN-Arbeitsspeicher begrenzt.  Die Anzahl von YARN-Containern bestimmt, wie viele gleichzeitige Tasks ausgeführt werden können.  Die Menge an YARN-Arbeitsspeicher pro Knoten finden Sie bei Ambari.  Navigieren Sie zu YARN, und zeigen Sie die Registerkarte für die Konfiguration an.  Die Größe des YARN-Arbeitsspeichers wird in diesem Fenster angezeigt.  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+> Gesamter YARN-Arbeitsspeicher = Knoten × YARN-Arbeitsspeicher pro Knoten. Anzahl der YARN-Container = gesamter YARN-Arbeitsspeicher / Tez-Containergröße
+
 Entscheidend für die Verbesserung der Leistung bei Data Lake Storage Gen1 ist es, die Parallelität so weit wie möglich zu erhöhen.  Tez berechnet automatisch die Anzahl von Tasks, die erstellt werden müssen – darum müssen Sie sich nicht kümmern.   
 
 ## <a name="example-calculation"></a>Beispielberechnung
 
 Angenommen, Sie haben einen D14-Cluster mit 8 Knoten.  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+> Gesamter YARN-Arbeitsspeicher = Knoten × YARN-Arbeitsspeicher pro Knoten. Gesamter YARN-Arbeitsspeicher = 8 Knoten × 96 GB = 768 GB. Anzahl der YARN-Container = 768 GB / 3.072 MB = 256
 
 ## <a name="limitations"></a>Einschränkungen
 
 **Data Lake Storage Gen1-Einschränkung** 
 
-Wenn Sie die Data Lake Storage Gen1-Grenzwerte für die Bandbreite erreichen, treten Aufgabenfehler auf. Dies lässt sich durch Beobachten der Drosselungsfehler in den Taskprotokollen ermitteln.  Sie können die Parallelität verringern, indem Sie die Tez-Containergröße erhöhen.  Wenn Sie für einen Auftrag mehr Parallelität benötigen, wenden Sie sich an uns.
+Wenn Sie die Data Lake Storage Gen1-Grenzwerte für die Bandbreite erreichen, treten Aufgabenfehler auf. Dies lässt sich durch Beobachten der Drosselungsfehler in den Taskprotokollen ermitteln.  Sie können die Parallelität verringern, indem Sie die Tez-Containergröße erhöhen.  Wenn Sie für einen Auftrag mehr Parallelität benötigen, können Sie sich an uns wenden.
 
 Um zu prüfen, ob eine Drosselung vorliegt, müssen Sie die Debugprotokollierung auf Clientseite aktivieren. Gehen Sie hierzu wie folgt vor:
 
@@ -88,6 +80,6 @@ Um zu prüfen, ob eine Drosselung vorliegt, müssen Sie die Debugprotokollierung
 ## <a name="further-information-on-hive-tuning"></a>Weitere Informationen zur Hive-Optimierung
 
 Diese Blogs können Sie bei der Optimierung Ihrer Hive-Abfragen unterstützen:
-* [Optimize Hive queries for Hadoop in HDInsight](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/) (Optimieren von Hive-Abfragen für Hadoop in HDInsight)
-* [Troubleshooting Hive query performance](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) (Behandlung von Problemen mit der Hive-Abfrageleistung)
+* [Optimize Hive queries for Hadoop in HDInsight](../hdinsight/hdinsight-hadoop-optimize-hive-query.md) (Optimieren von Hive-Abfragen für Hadoop in HDInsight)
+* [Codieren der Hive-Abfragedatei in Azure HDInsight](/archive/blogs/bigdatasupport/encoding-the-hive-query-file-in-azure-hdinsight)
 * [Ignite talk on optimize Hive on HDInsight](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25) (Diskussion über die Optimierung von Hive in HDInsight)

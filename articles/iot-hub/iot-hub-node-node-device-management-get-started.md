@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 98ec53d384186968d69c3f84cdfa12fbdbe92b71
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.custom: mqtt, devx-track-js
+ms.openlocfilehash: cfc0fa45c08f917b2e0b4a0b055e801173a4ba39
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147449"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91252016"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>Erste Schritte mit der Geräteverwaltung (Node.js)
 
@@ -39,7 +40,9 @@ Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolen-Apps:
 
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 

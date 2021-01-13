@@ -4,34 +4,35 @@ description: Erfahren Sie, wie Sie eine VM mit einer statischen öffentlichen IP
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 55bc21b0-2a45-4943-a5e7-8d785d0d015c
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 4b5b0453d4f9935eed9acd5059c0aa9741b25524
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 110f5ab4f0912ae264eb1dc4b649a40cc40f4e12
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64730469"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84703088"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Erstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe der Azure CLI
 
-Sie können einen virtuellen Computer (VM) mit einer statischen öffentlichen IP-Adresse erstellen. Mit einer öffentlichen IP-Adresse können Sie über das Internet mit einer VM kommunizieren. Um sicherzustellen, dass sich die Adresse niemals ändert, weisen Sie anstelle einer dynamischen Adresse eine statische öffentliche IP-Adresse zu. Lesen Sie im folgenden Artikel mehr über [statische öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method). Um eine öffentliche dynamische IP-Adresse, die einem vorhandenen virtuellen Computer zugewiesen ist, in eine statische Adresse zu ändern oder mit privaten IP-Adressen zu arbeiten, lesen Sie [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md). Für öffentliche IP-Adressen fällt eine [Schutzgebühr](https://azure.microsoft.com/pricing/details/ip-addresses) an, und für die Anzahl der öffentlichen IP-Adressen, die Sie pro Abonnement verwenden können, ist ein [Grenzwert](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) festgelegt.
+Sie können einen virtuellen Computer (VM) mit einer statischen öffentlichen IP-Adresse erstellen. Mit einer öffentlichen IP-Adresse können Sie über das Internet mit einer VM kommunizieren. Um sicherzustellen, dass sich die Adresse niemals ändert, weisen Sie anstelle einer dynamischen Adresse eine statische öffentliche IP-Adresse zu. Lesen Sie im folgenden Artikel mehr über [statische öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method). Um eine öffentliche dynamische IP-Adresse, die einem vorhandenen virtuellen Computer zugewiesen ist, in eine statische Adresse zu ändern oder mit privaten IP-Adressen zu arbeiten, lesen Sie [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md). Für öffentliche IP-Adressen fällt eine [Schutzgebühr](https://azure.microsoft.com/pricing/details/ip-addresses) an, und für die Anzahl der öffentlichen IP-Adressen, die Sie pro Abonnement verwenden können, ist ein [Grenzwert](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) festgelegt.
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
 Auf dem lokalen Computer oder mithilfe von Azure Cloud Shell können Sie die folgenden Schritte durchführen. [Azure PowerShell muss installiert](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) sein, damit Sie den lokalen Computer verwenden können. Wählen Sie oben rechts in einem beliebigen Befehlsfelds **Testen** aus, um Azure Cloud Shell zu verwenden. Cloud Shell meldet Sie in Azure an.
 
 1. Wenn Sie Cloud Shell bereits verwenden, fahren Sie mit Schritt 2 fort. Öffnen Sie eine Befehlssitzung, und melden Sie sich mit `az login` in Azure an.
-2. Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe in der Azure-Region „USA, Osten“ erstellt:
+2. Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe in der Azure-Region „USA, Osten“ erstellt:
 
    ```azurecli-interactive
    az group create --name myResourceGroup --location eastus
@@ -50,7 +51,7 @@ Auf dem lokalen Computer oder mithilfe von Azure Cloud Shell können Sie die fol
      --public-ip-address-allocation static
    ```
 
-   Wenn die öffentliche IP-Adresse die SKU „Standard“ aufweisen muss, fügen Sie dem vorherigen Befehl `--public-ip-sku Standard` hinzu. [Hier erfahren Sie mehr über SKUs für öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#sku). Wenn die VM dem Back-End-Pool einer öffentlichen Azure Load Balancer-Instanz hinzugefügt wird, muss die SKU der öffentlichen IP-Adresse der VM der SKU der öffentlichen IP-Adresse des Lastenausgleichsmoduls entsprechen. Weitere Informationen finden Sie unter [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus).
+   Wenn die öffentliche IP-Adresse die SKU „Standard“ aufweisen muss, fügen Sie dem vorherigen Befehl `--public-ip-sku Standard` hinzu. Weitere Informationen zu SKUs für öffentliche IP-Adressen finden Sie [hier](virtual-network-ip-addresses-overview-arm.md#sku). Wenn die VM dem Back-End-Pool einer öffentlichen Azure Load Balancer-Instanz hinzugefügt wird, muss die SKU der öffentlichen IP-Adresse der VM der SKU der öffentlichen IP-Adresse des Lastenausgleichsmoduls entsprechen. Weitere Informationen finden Sie unter [Azure Load Balancer](../load-balancer/skus.md).
 
 4. Zeigen Sie die zugewiesene öffentliche IP-Adresse an, und bestätigen Sie mit [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show), dass sie als statische Adresse mit der Basic-SKU erstellt wurde:
 

@@ -1,38 +1,41 @@
 ---
 title: 'Azure Cosmos DB: Erstellen einer Todo-App mit Xamarin'
 description: Enthält ein Xamarin-Codebeispiel, das Sie zum Verbinden mit Azure Cosmos DB und zum Senden entsprechender Abfragen verwenden können.
-author: codemillmatt
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/30/2018
-ms.author: masoucou
-ms.openlocfilehash: 9d7dc560d452eba4c31b24a2011254258211bf8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 10/09/2020
+ms.author: anfeldma
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 91e89eaf215468f171974e5f3fd383691fdd6ebe
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615735"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096975"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Schnellstart: Erstellen einer To-Do-App mit Xamarin mithilfe eines Azure Cosmos DB-SQL-API-Kontos
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
-> * [.NET](create-sql-api-dotnet.md)
-> * [Java](create-sql-api-java.md)
+> * [.NET V3](create-sql-api-dotnet.md)
+> * [.NET V4](create-sql-api-dotnet-V4.md)
+> * [Java SDK V4](create-sql-api-java.md)
+> * [Spring Data v3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
->  
 
-Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen.
+Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen.
 
 > [!NOTE]
 > Beispielcode für eine vollständige kanonische Xamarin-Beispiel-App, die mehrere Azure-Angebote (einschließlich CosmosDB) veranschaulicht, finden Sie auf [GitHub](https://github.com/xamarinhq/app-geocontacts). Diese App veranschaulicht das Anzeigen geografisch verteilter Kontakte und zeigt, wie diesen Kontakten das Aktualisieren ihres Standorts ermöglicht werden kann.
 
-In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mithilfe über das Azure-Portal ein SQL-API-Konto, eine Dokumentdatenbank und einen Container für Azure Cosmos DB erstellen. Anschließend führen Sie die Erstellung und Bereitstellung einer Todo-Listen-Web-App durch, die auf der [SQL-.NET-API](sql-api-sdk-dotnet.md) und [Xamarin](https://docs.microsoft.com/xamarin/) basiert, indem Sie [Xamarin.Forms](https://docs.microsoft.com/xamarin/) und das [Architekturmuster MVVM](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm) verwenden.
+In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mithilfe über das Azure-Portal ein SQL-API-Konto, eine Dokumentdatenbank und einen Container für Azure Cosmos DB erstellen. Anschließend führen Sie die Erstellung und Bereitstellung einer mobilen Aufgabenlisten-App durch, die auf der [SQL-.NET-API](sql-api-sdk-dotnet.md) und [Xamarin](/xamarin/) basiert, indem Sie [Xamarin.Forms](/xamarin/) und das [Architekturmuster MVVM](/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm) verwenden.
 
-![Xamarin-Todo-App unter iOS](./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png)
+:::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png" alt-text="Xamarin-Todo-App unter iOS":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -66,7 +69,7 @@ Wir klonen jetzt die Xamarin-SQL-API-App von GitHub, überprüfen den Code, besc
 1. Öffnen Sie eine Eingabeaufforderung, erstellen Sie einen neuen Ordner namens „git-samples“, und schließen Sie die Eingabeaufforderung.
 
     ```bash
-    md "C:\git-samples"
+    mkdir "C:\git-samples"
     ```
 
 2. Öffnen Sie ein Git-Terminalfenster (z.B. git bash), und verwenden Sie den Befehl `cd`, um in den neuen Ordner zu gelangen und dort die Beispiel-App zu installieren.
@@ -81,25 +84,31 @@ Wir klonen jetzt die Xamarin-SQL-API-App von GitHub, überprüfen den Code, besc
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-xamarin-getting-started.git
     ```
 
-4. Öffnen Sie anschließend in Visual Studio im Ordner „samples/xamarin/ToDoItems“ die Datei „ToDoItems.sln“.
+4. Öffnen Sie in Visual Studio die Datei **C:\git-samples\azure-cosmos-db-sql-xamarin-getting-started\src\ToDoItems.sln**. 
 
 ## <a name="obtain-your-api-keys"></a>Beschaffen Ihrer API-Schlüssel
 
 Wechseln Sie zurück zum Azure-Portal, um die Informationen zum API-Schlüssel zu beschaffen und in die App zu kopieren.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) in Ihrem Azure Cosmos DB-SQL-API-Konto im linken Navigationsbereich auf **Schlüssel**, und klicken Sie anschließend auf **Lese-/Schreibschlüssel**. Kopieren Sie im nächsten Schritt mithilfe der Schaltflächen zum Kopieren auf der rechten Seite des Bildschirms den URI und den Primärschlüssel in die Datei „APIKeys.cs“.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) in Ihrem Azure Cosmos DB-SQL-API-Konto im linken Navigationsbereich auf **Schlüssel** , und klicken Sie anschließend auf **Lese-/Schreibschlüssel**. Kopieren Sie im nächsten Schritt mithilfe der Schaltflächen zum Kopieren auf der rechten Seite des Bildschirms den URI und den Primärschlüssel in die Datei „APIKeys.cs“.
 
-    ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf dem Blatt „Schlüssel“](./media/create-sql-api-xamarin-dotnet/keys.png)
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf dem Blatt „Schlüssel“":::
 
-2. Öffnen Sie in Visual Studio 2019 oder Visual Studio für Mac im Ordner „azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Helpers“ die Datei „APIKeys.cs“.
+2. Öffnen Sie in Visual Studio die Datei **ToDoItems.Core/Helpers/APIKeys.cs**.
 
-3. Kopieren Sie den URI-Wert aus dem Portal (mithilfe der Schaltfläche zum Kopieren), und legen Sie ihn in „APIKeys.cs“ als Wert für die Variable `CosmosEndpointUrl` fest.
+3. Kopieren Sie im Azure-Portal mit der Schaltfläche zum Kopieren den **URI** -Wert, und legen Sie ihn in „APIKeys.cs“ als Wert für die Variable `CosmosEndpointUrl` fest.
 
-    `public static readonly string CosmosEndpointUrl = "{Azure Cosmos DB account URL}";`
+    ```csharp
+    //#error Enter the URL of your Azure Cosmos DB endpoint here
+            public static readonly string CosmosEndpointUrl = "[URI Copied from Azure Portal]";
+    ```
 
-4. Kopieren Sie anschließend den Wert für Ihren Primärschlüssel (PRIMARY KEY) aus dem Portal, und legen Sie ihn in „APIKeys.cs“ als Wert von `Cosmos Auth Key` fest.
+4. Kopieren Sie im Azure-Portal mit der Schaltfläche zum Kopieren den Wert des **PRIMÄRSCHLÜSSELS** , und legen Sie ihn in „APIKeys.cs“ als Wert für `Cosmos Auth Key` fest.
 
-    `public static readonly string CosmosAuthKey = "{Azure Cosmos DB secret}";`
+    ```csharp
+    //#error Enter the read/write authentication key of your Azure Cosmos DB endpoint here
+            public static readonly string CosmosAuthKey = "[PRIMARY KEY copied from Azure Portal";
+    ```
 
 [!INCLUDE [cosmos-db-auth-key-info](../../includes/cosmos-db-auth-key-info.md)]
 
@@ -107,19 +116,22 @@ Wechseln Sie zurück zum Azure-Portal, um die Informationen zum API-Schlüssel z
 
 Mit dieser Lösung wird veranschaulicht, wie Sie eine Todo-App erstellen, indem Sie die Azure Cosmos DB-SQL-API und Xamarin.Forms verwenden. Die App hat zwei Registerkarten. Die erste Registerkarte enthält eine Listenansicht mit den Todo-Elementen, die noch nicht abgearbeitet wurden. Auf der zweiten Registerkarte werden die Todo-Elemente angezeigt, die bereits abgeschlossen wurden. Zusätzlich zum Anzeigen der nicht abgeschlossenen Todo-Elemente auf der ersten Registerkarte können Sie auch neue Elemente hinzufügen, vorhandene Elemente bearbeiten und Elemente als abgeschlossen kennzeichnen.
 
-![Kopieren Sie JSON-Daten, und klicken Sie im Azure-Portal im Daten-Explorer auf „Speichern“.](./media/create-sql-api-xamarin-dotnet/android-todo-screen.png)
+:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="Kopieren von JSON-Daten und Klicken auf „Speichern“ im Daten-Explorer im Azure-Portal":::
 
 Der Code in der Lösung ToDoItems enthält Folgendes:
 
-* ToDoItems.Core: Dies ist ein .NET Standard-Projekt mit einem Xamarin.Forms-Projekt und freigegebenem Anwendungslogikcode, mit dem Todo-Elemente in Azure Cosmos DB verwaltet werden.
-* ToDoItems.Android: Dieses Projekt enthält die Android-App.
-* ToDoItems.iOS: Dieses Projekt enthält die iOS-App.
+* **ToDoItems.Core**
+   * Dies ist ein .NET Standard-Projekt mit einem Xamarin.Forms-Projekt und freigegebenem Anwendungslogikcode, mit dem Todo-Elemente in Azure Cosmos DB verwaltet werden.
+* **ToDoItems.Android**
+  * Dieses Projekt enthält die Android-App.
+* **ToDoItems.iOS**
+  * Dieses Projekt enthält die iOS-App.
 
 Wir sehen uns jetzt kurz an, wie die App mit Azure Cosmos DB kommuniziert.
 
 * Das NuGet-Paket [Microsoft.Azure.DocumentDb.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/) muss allen Projekten hinzugefügt werden.
-* Die `ToDoItem`-Klasse im Ordner „azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Models“ modelliert die Dokumente im oben erstellten Container **Items**. Beachten Sie, dass bei der Benennung von Eigenschaften die Groß-/Kleinschreibung berücksichtigt wird.
-* In der `CosmosDBService`-Klasse im Ordner „azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Services“ ist die Kommunikation mit Azure Cosmos DB gekapselt.
+* Mit der Klasse `ToDoItem` im Ordner **ToDoItems.Core/Models** werden die Dokumente im oben erstellten Container **Items** modelliert. Beachten Sie, dass bei der Benennung von Eigenschaften die Groß-/Kleinschreibung berücksichtigt wird.
+* Mit der Klasse `CosmosDBService` im Ordner **ToDoItems.Core/Services** wird die Kommunikation mit Azure Cosmos DB gekapselt.
 * Die `CosmosDBService`-Klasse enthält die Typvariable `DocumentClient`. Die Variable `DocumentClient` wird verwendet, um Anforderungen für das Azure Cosmos DB-Konto zu konfigurieren und auszuführen, und wird instanziiert:
 
     ```csharp
@@ -166,31 +178,31 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 Die folgenden Schritte veranschaulichen, wie Sie die App mit dem Debugger von Visual Studio für Mac ausführen.
 
 > [!NOTE]
-> Die Nutzung der Android-Version der App ist nahezu identisch, und alle Unterschiede sind in den Schritten unten angegeben. Wenn Sie das Debuggen mit Visual Studio unter Windows durchführen möchten, finden Sie die Dokumentation für [iOS hier](https://docs.microsoft.com/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin) und für [Android hier](https://docs.microsoft.com/xamarin/android/deploy-test/debugging/).
+> Die Nutzung der Android-Version der App ist nahezu identisch, und alle Unterschiede sind in den Schritten unten angegeben. Wenn Sie das Debuggen mit Visual Studio unter Windows durchführen möchten, finden Sie die Dokumentation für [iOS hier](/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin) und für [Android hier](/xamarin/android/deploy-test/debugging/).
 
 1. Wählen Sie zuerst die gewünschte Zielplattform aus, indem Sie auf die hervorgehobene Dropdownliste klicken und dann entweder „ToDoItems.iOS“ für iOS oder „ToDoItems.Android“ für Android wählen.
 
-    ![Auswählen einer Plattform für das Debuggen in Visual Studio für Mac](./media/create-sql-api-xamarin-dotnet/ide-select-platform.png)
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="Auswählen einer Plattform für das Debuggen in Visual Studio für Mac":::
 
 2. Drücken Sie zum Starten des Debugvorgangs für die App entweder BEFEHLSTASTE+EINGABETASTE, oder klicken Sie auf die Wiedergabeschaltfläche.
 
-    ![Starten des Debuggens in Visual Studio für Mac](./media/create-sql-api-xamarin-dotnet/ide-start-debug.png)
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="Starten des Debuggens in Visual Studio für Mac":::
 
 3. Nachdem der iOS-Simulator bzw. der Android-Emulator gestartet wurde, werden in der App zwei Registerkarten angezeigt: für iOS am unteren Rand und für Android am oberen Rand. Auf der ersten Registerkarte werden Todo-Elemente angezeigt, die nicht abgeschlossen wurden, und auf der zweiten sind die abgeschlossenen Todo-Elemente aufgeführt.
 
-    ![Starten des Bildschirms der Todo-App](./media/create-sql-api-xamarin-dotnet/ios-droid-started.png)
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="Starten des Bildschirms der Todo-App":::
 
 4. Für iOS können Sie ein Todo-Element abschließen, indem Sie es nach links ziehen und dann auf die Schaltfläche **Complete** (Abschließen) tippen. Unter Android können Sie ein Element abschließen, indem Sie länger auf das Element drücken und dann auf die Schaltfläche „Complete“ (Abschließen) tippen.
 
-    ![Abschließen eines Todo-Elements](./media/create-sql-api-xamarin-dotnet/simulator-complete.png)
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="Abschließen eines Todo-Elements":::
 
 5. Tippen Sie auf ein Todo-Element, um es zu bearbeiten. Es wird ein neuer Bildschirm angezeigt, auf dem Sie die neuen Werte eingeben können. Wenn Sie auf die Schaltfläche „Speichern“ tippen, werden die Änderungen dauerhaft in Azure Cosmos DB gespeichert.
 
-    ![Bearbeiten eines Todo-Elements](./media/create-sql-api-xamarin-dotnet/simulator-edit.png)
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="Bearbeiten eines Todo-Elements":::
 
 6. Tippen Sie zum Hinzufügen eines Todo-Elements oben rechts auf dem Startbildschirm auf die Schaltfläche **Hinzufügen**. Es wird eine neue, leere Bearbeitungsseite angezeigt.
 
-    ![Hinzufügen eines Todo-Elements](./media/create-sql-api-xamarin-dotnet/simulator-add.png)
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="Hinzufügen eines Todo-Elements":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
 

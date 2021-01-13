@@ -1,24 +1,27 @@
 ---
-title: Programmgesteuertes Überwachen einer Azure Data Factory | Microsoft-Dokumentation
+title: Programmgesteuertes Überwachen einer Azure Data Factory
 description: Erfahren Sie, wie Sie mithilfe verschiedener Software Development Kits (SDKs) eine Pipeline in einer Data Factory überwachen können.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-author: djpmsft
-ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: 5c1f64282f1e0b1f225bcad0935c4c9b9a0f96b4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+author: dcstwh
+ms.author: weetok
+manager: anandsub
+ms.custom: devx-track-python
+ms.openlocfilehash: e7b435080fda48e1df0bb31d16dafed30ac3d3db
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141040"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497859"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programmgesteuertes Überwachen einer Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 In diesem Artikel wird beschrieben, wie Sie mithilfe verschiedener Software Development Kits (SDKs) eine Pipeline in einer Data Factory überwachen können. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

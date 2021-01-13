@@ -1,10 +1,10 @@
 ---
-title: Erweiterte Zertifikatsignaturoptionen im SAML-Token für vorab integrierte Azure AD-Apps | Microsoft-Dokumentation
+title: Erweiterte Zertifikatsignaturoptionen im SAML-Token für Azure AD-Apps
 description: Hier erfahren Sie, wie Sie erweiterte Optionen für die Zertifikatsignatur im SAML-Token für bereits in Azure Active Directory integrierte Apps verwenden.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea99344399dbbbc17f0d7381e54ab68ae4bcc78f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 79bc43bb2fa99f95a462dcc4c68d27840199b45c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381270"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658535"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Erweiterte Optionen für die Zertifikatsignatur im SAML-Token für Katalog-Apps in Azure Active Directory
 
@@ -75,5 +75,5 @@ Wählen Sie die gewünschte Anwendung aus, um ihre SAML-Zertifikatsignaturoption
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](configure-federated-single-sign-on-non-gallery-applications.md)
-* [Problembehandlung bei SAML-basiertem einmaligem Anmelden](../develop/howto-v1-debug-saml-sso-issues.md)
+* [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](./configure-saml-single-sign-on.md)
+* [Problembehandlung bei SAML-basiertem einmaligem Anmelden](./debug-saml-sso-issues.md)

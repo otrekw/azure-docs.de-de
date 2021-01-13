@@ -1,6 +1,6 @@
 ---
 title: 'Azure NetApp Files: SDKs und CLI-Tools | Microsoft-Dokumentation'
-description: Enthält eine Auflistung der SDKs und Befehlszeilentools (CLI-Tools), die von Azure NetApp Files unterstützt werden.
+description: 'Erfahren Sie etwas über die unterstützten SDKs für Azure NetApp Files und deren Veröffentlichungsorten in GitHub sowie zu den unterstützten Befehlszeilentools: Azure-Befehlszeilenschnittstelle und PowerShell.'
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 10/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 09a1e48d2eb9ab9b117cb1b1161d5137607400ad
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: f7b9cabdc7c2c706ff3b8dd5a0b3b5f7ed3666d6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212090"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369028"
 ---
-# <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDKs und CLI-Tools
+# <a name="azure-netapp-files-sdks-cli-tools-and-arm-templates"></a>Azure NetApp Files SDKs, CLI-Tools und ARM-Vorlagen
 
-Dieser Artikel enthält eine Auflistung der SDKs und Befehlszeilentools (CLI-Tools), die von Azure NetApp Files unterstützt werden.
+Dieser Artikel enthält eine Auflistung der SDKs, Befehlszeilentools (CLI-Tools) und ARM-Vorlagen (Azure Resource Manager), die von Azure NetApp Files unterstützt werden.
 
 ## <a name="supported-sdks"></a>Unterstützte SDKs 
 
@@ -34,7 +34,7 @@ In der folgenden Tabelle werden die unterstützten SDKs aufgeführt.  Details zu
 |    .NET  |    [Azure/azure-sdk-for-net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/netapp)    |
 |    Python  |  [Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/netapp)    |
 |    Go    |    [Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
-|    Java |     [Azure/azure-sdk-for-java](https://github.com/Azure/azure-sdk-for-java/tree/master/netapp/resource-manager) |
+|    Java |     [Azure/azure-sdk-for-java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/netapp) |
 |    JavaScript    |    [Azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/netapp/arm-netapp)    |
 |    Ruby   |    [Azure/azure-sdk-for-ruby](https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_netapp)    |
 
@@ -44,17 +44,18 @@ In der folgenden Tabelle sind die unterstützten CLI-Tools und die zugehörigen 
 
 |    Tool    |    Befehlsreferenz    |
 |------------------|--------------------------------------------|
-|    Azure-Befehlszeilenschnittstelle  |    [az netappfiles](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)    |
-|    PowerShell   |    [Azure PowerShell für Azure NetApp Files](https://docs.microsoft.com/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files)    |
+|    Azure CLI  |    [az netappfiles](/cli/azure/netappfiles?view=azure-cli-latest&preserve-view=true)    |
+|    PowerShell   |    [Azure PowerShell für Azure NetApp Files](/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files&preserve-view=true)    |
 
 ## <a name="code-samples"></a>Codebeispiele
 
-In der folgenden Tabelle sind die Codebeispiele für Ihre Referenz aufgeführt.   
+Informationen finden Sie unter [Codebeispiele für Azure NetApp Files](/samples/browse/?filter-products=netapp&products=azure-netapp-files).
 
-|    Sprache/Tool    |    Codebeispiele: Dokumentation    |
-|------------------|--------------------------------------------|
-|    .NET   |    [Azure NetApp Files SDK-Beispiel für .NET Core](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-netcore/)    |    
-|    Python    |    [Azure NetApp Files SDK-Beispiel für Python](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
+## <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen  
+
+Mit Azure Resource Manager (ARM) können Sie Ihre Anwendungen mithilfe einer deklarativen Vorlage bereitstellen. In einer Vorlage können Sie mehrere Dienste zusammen mit ihren Abhängigkeiten bereitstellen. Sie verwenden die gleiche Vorlage, um Ihre Anwendung während jeder Phase des Anwendungslebenszyklus wiederholt bereitzustellen.   
+
+Informationen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?term=anf).
 
 ## <a name="next-steps"></a>Nächste Schritte   
  [Herunterladen von Azure SDKs](https://azure.microsoft.com/downloads/)

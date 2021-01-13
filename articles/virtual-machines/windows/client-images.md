@@ -1,24 +1,19 @@
 ---
-title: Verwenden von Windows-Clientimages in Azure | Microsoft Docs
+title: Verwenden von Windows-Clientimages in Azure
 description: Verwenden von Visual Studio-Abonnementvorteilen zum Bereitstellen von Windows 7, Windows 8 oder Windows 10 in Azure für Entwicklungs-/Testszenarien
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
+ms.subservice: imaging
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: dbb771351ee774a7fea33e5aaad3ae4d0c70f8b1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 26bfd9a65cd3e6d36b8190e87d382543cc7f0f60
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079906"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87292048"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Verwenden des Windows-Clients in Azure für Entwicklungs-/Testszenarien
 Sie können Windows 7, Windows 8 oder Windows 10 Enterprise (x64) in Azure für Entwicklungs-/Testszenarien verwenden, sofern Sie über ein entsprechendes Visual Studio-Abonnement (früher MSDN) verfügen. Dieser Artikel beschreibt die erforderlichen Berechtigungen für die Ausführung von Windows 7, Windows 8.1 und Windows 10 Enterprise in Azure und die Verwendung der folgenden Images aus dem Azure-Katalog.
@@ -63,5 +58,4 @@ Sie können die Angebots-ID auch auf der [Registerkarte „Abonnements“](https
 ![Details der Angebots-ID aus dem Azure-Kontoportal](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Jetzt können Sie Ihre VMs mit [PowerShell](quick-create-powershell.md), [Resource Manager-Vorlagen](ps-template.md) oder [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) bereitstellen.
-
+Jetzt können Sie Ihre VMs mit [PowerShell](quick-create-powershell.md), [Resource Manager-Vorlagen](ps-template.md) oder [Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) bereitstellen.

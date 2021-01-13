@@ -1,38 +1,29 @@
 ---
-title: 'Azure PowerShell-Skriptbeispiel: Herstellen einer Verbindung zwischen einer App und einer SQL-Datenbank | Microsoft-Dokumentation'
-description: 'Azure PowerShell-Skriptbeispiel: Herstellen einer Verbindung zwischen einer App Service-App und einer SQL-Datenbank'
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: 'Mit PowerShell: Verbinden mit SQL Database'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie eine Verbindung zwischen einer App und einer SQL-Datenbank herstellen.
 tags: azure-service-management
 ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
-ms.service: app-service
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 799fb67b20c45653ec741a92ec7a75aff2f8c509
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 3b355a830703b51264d2f4b819d5be7f2627b4e2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087825"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89077788"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database"></a>Herstellen einer Verbindung zwischen einer App Service-App und einer SQL-Datenbank
+# <a name="connect-an-app-service-app-to-sql-database"></a>Herstellen einer Verbindung zwischen einer App Service-App und einer SQL-Datenbank
 
-In diesem Szenario erfahren Sie, wie Sie eine Azure SQL-Datenbank und eine App Service-App erstellen. Anschließend verknüpfen Sie die SQL-Datenbank mithilfe von App-Einstellungen mit der App.
+In diesem Szenario erfahren Sie, wie Sie eine Datenbank in Azure SQL-Datenbank und eine App Service-App erstellen. Anschließend verknüpfen Sie die Datenbank mithilfe von App-Einstellungen mit der App.
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="sample-script"></a>Beispielskript
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to a SQL database")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to SQL Database")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 
@@ -51,13 +42,13 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Erstellt einen App Service-Plan. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Erstellt eine App Service-App. |
-| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Erstellt einen SQL-Datenbank-Server. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Erstellt eine Firewallregel für einen SQL-Datenbank-Server. |
+| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Erstellt einen Server. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Erstellt eine Firewallregel auf Serverebene. |
 | [New-AzSQLDatabase](/powershell/module/az.sql/new-azsqldatabase) | Erstellt eine Datenbank oder eine elastische Datenbank. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Ändert die Konfiguration einer App Service-App. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Azure PowerShell-Beispiele für Azure App Service finden Sie unter [PowerShell samples for Azure App Service](../samples-powershell.md) (PowerShell-Beispiele für Azure App Service).

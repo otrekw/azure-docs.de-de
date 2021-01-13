@@ -1,25 +1,14 @@
 ---
-title: Übersicht über Azure Service Bus Premium- und Standard-Tarife für Messaging | Microsoft-Dokumentation
-description: Service Bus Premium- und Standard-Tarif für Messaging
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: e211774d-821c-4d79-8563-57472d746c58
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure Service Bus-Tarife Premium und Standard
+description: Dieser Artikel beschreibt die Tarife Standard und Premium von Azure Service Bus. Er vergleicht diese Tarife und erläutert technische Unterschiede.
 ms.topic: conceptual
-ms.date: 03/05/2019
-ms.author: aschhab
-ms.openlocfilehash: 600577ebf05a8bc89dbec35d3b3ee5162aa246e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/28/2020
+ms.openlocfilehash: 31c53a1375078cd5d185945cba55a6e5a6dd5ffb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64872724"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90966792"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium- und Standard-Preisstufe für Messaging
 
@@ -35,7 +24,7 @@ In der folgenden Tabelle sind einige allgemeine Unterschiede hervorgehoben:
 | Vorhersagbare Leistung |Variable Latenzzeit |
 | Feste Preise |Variable Preisgestaltung (nutzungsbasierte Bezahlung) |
 | Möglichkeit zur Herauf- und Herunterskalierung der Workload |– |
-| Nachrichtengröße bis 1 MB |Nachrichtengröße bis 256 KB |
+| Nachrichtengröße bis 1 MB. Dieser Grenzwert kann in Zukunft ggf. erhöht werden. Aktuelle wichtige Updates für den Dienst finden Sie unter [„Messaging“ im Azure-Blog](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog). |Nachrichtengröße bis 256 KB |
 
 **Service Bus Premium-Messaging** bietet Ressourcenisolierung auf CPU- und Arbeitsspeicherebene, sodass die Workloads der einzelnen Kunden isoliert ausgeführt werden. Dieser Ressourcencontainer wird als *Messaging-Einheit* bezeichnet. Jedem Premium-Namespace wird mindestens eine Messaging-Einheit zugeordnet. Sie können 1, 2, 4 oder 8 Messagingeinheiten für jeden Service Bus Premium-Namespace erwerben. Eine einzelne Workload oder Entität kann mehrere Messagingeinheiten umfassen, und die Anzahl der Einheiten kann beliebig geändert werden. Das Ergebnis ist eine vorhersehbare und wiederholbare Leistung Ihrer Service Bus-basierten Lösung.
 
@@ -51,7 +40,7 @@ Partitionierte Warteschlangen und Themen werden bei Premium-Messaging nicht unte
 
 ### <a name="express-entities"></a>Expressentitäten
 
-Da Premium-Messaging in einer vollständig isolierten Laufzeitumgebung ausgeführt wird, werden Expressentitäten in Premium-Namespaces nicht unterstützt. Weitere Informationen zur Expressfunktion finden Sie in der [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress)-Eigenschaft.
+Da Premium-Messaging in einer isolierten Laufzeitumgebung ausgeführt wird, werden Expressentitäten in Premium-Namespaces nicht unterstützt. Weitere Informationen zur Expressfunktion finden Sie in der [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress)-Eigenschaft.
 
 Wenn Sie unter Standard-Messaging über Code verfügen und diesen auf den Premium-Tarif portieren möchten, stellen Sie sicher, dass die Eigenschaft [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) auf **false** (Standardwert) gesetzt ist.
 
@@ -68,7 +57,32 @@ Die CPU- und die Arbeitsspeichernutzung werden aus folgenden Gründen nachverfol
 
 - Bereitstellen von transparenter Einsicht in interne Systemabläufe
 - Verstehen der Kapazität der erworbenen Ressourcen
-- Kapazitätsplanung, damit Sie über zentrales Hoch-/Herunterskalieren entscheiden können
+- Kapazitätsplanung, damit Sie über Hoch-/Herunterskalieren entscheiden können
+
+## <a name="messaging-unit---how-many-are-needed"></a>Messagingeinheit: Wie viele werden benötigt?
+
+Wenn Sie einen Azure Service Bus-Namespace im Tarif „Premium“ bereitstellen, muss die Anzahl zugeordneter Messagingeinheiten angegeben werden. Bei diesen Messagingeinheiten handelt es sich um dedizierte Ressourcen, die dem Namespace zugeordnet werden.
+
+Die Anzahl von Messagingeinheiten, die dem Service Bus-Namespace im Tarif „Premium“ zugeordnet werden, kann **dynamisch angepasst** werden, um auf Veränderungen (Zu- oder Abnahme) bei Workloads zu reagieren.
+
+Bei der Entscheidung über die Anzahl von Messagingeinheiten für Ihre Architektur muss eine Reihe von Faktoren berücksichtigt werden:
+
+- Beginnen Sie mit ***ein bis zwei Messagingeinheiten***, die Ihrem Namespace zugeordnet sind.
+- Sehen Sie sich in den [Metriken zur Ressourcennutzung](service-bus-metrics-azure-monitor.md#resource-usage-metrics) für Ihren Namespace die Metriken zur CPU-Auslastung an.
+    - Bei einer CPU-Auslastung von ***unter 20 Prozent*** können Sie die Anzahl von Messagingeinheiten, die Ihrem Namespace zugeordnet sind, ggf. ***zentral herunterskalieren***.
+    - Bei einer CPU-Auslastung von ***über 70 Prozent*** verbessert sich die Leistung Ihrer Anwendung, wenn Sie die Anzahl von Messagingeinheiten, die Ihrem Namespace zugeordnet sind, ***zentral hochskalieren***.
+
+Informationen zum Konfigurieren eines Service Bus-Namespace für automatisches Skalieren (Erhöhen oder Verringern von Messagingeinheiten) finden Sie unter [Automatisches Aktualisieren von Messagingeinheiten](automate-update-messaging-units.md).
+
+> [!NOTE]
+> Die Ressourcen, die dem Namespace zugeordnet werden, können präventiv oder reaktiv **skaliert** werden.
+>
+>  * **Präventiv:** Wenn zusätzliche Workloads erwartet werden (saisonbedingt oder aufgrund von Trends), können Sie dem Namespace weitere Messagingeinheiten zuordnen, bevor die Workloads auftreten.
+>
+>  * **Reaktiv:** Wenn bei der Betrachtung der Metriken zur Ressourcennutzung zusätzliche Workloads erkannt werden, können dem Namespace zusätzliche Ressourcen zugeordnet werden, um auf die steigende Nachfrage zu reagieren.
+>
+> Die Verbrauchseinheiten für die Service Bus-Abrechnung sind stundenbasiert. Wenn Sie zentral hochskalieren, werden die zusätzlichen Ressourcen nur für die Stunden berechnet, in denen sie verwendet wurden.
+>
 
 ## <a name="get-started-with-premium-messaging"></a>Erste Schritte mit Premium-Messaging
 
@@ -82,10 +96,9 @@ Sie können auch [Premium-Namespaces mit Azure Resource Manager-Vorlagen erstell
 
 Weitere Informationen zum Service Bus-Messaging finden Sie unter folgenden Links:
 
-* [Introducing Azure Service Bus Premium Messaging (Blogbeitrag)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/) (Einführung in Azure Service Bus Premium-Messaging)
-* [Introducing Azure Service Bus Premium Messaging (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging) (Einführung in Azure Service Bus Premium-Messaging)
-* [Service Bus Messaging: Flexible Datenübermittlung in der Cloud](service-bus-messaging-overview.md)
-* [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
+- [Automatisches Aktualisieren von Messagingeinheiten](automate-update-messaging-units.md)
+- [Introducing Azure Service Bus Premium Messaging (Blogbeitrag)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/) (Einführung in Azure Service Bus Premium-Messaging)
+- [Introducing Azure Service Bus Premium Messaging (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging) (Einführung in Azure Service Bus Premium-Messaging)
 
 <!--Image references-->
 

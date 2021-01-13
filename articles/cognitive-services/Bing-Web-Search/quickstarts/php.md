@@ -8,19 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ba132adc6b0fd2b8423a7bce30ad6d52fccc898e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 979d5f3d249f9711905c6115cee52a22fbe7eebc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858200"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350533"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Schnellstart: Verwenden von PHP zum Aufrufen der Bing-Websuche-API  
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Websuche-API erstmals aufrufen und die JSON-Antwort empfangen. Diese einfache Node.js-Anwendung sendet eine Suchanforderung an die API und zeigt die Antwort an. Diese Anwendung ist zwar in JavaScript geschrieben, aber die API ist ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Websuche-API zum ersten Mal aufzurufen. Diese Node.js-Anwendung sendet eine Suchanforderung an die API und zeigt die JSON-Antwort an. Die Anwendung ist zwar in JavaScript geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +38,7 @@ Im Folgenden sind die Tools aufgeführt, die Sie zum Ausführen dieser Schnellst
 
 ## <a name="enable-secure-http-support"></a>Aktivieren der Unterstützung für sicheres HTTP
 
-Bevor wir beginnen, sollten Sie nach der Datei `php.ini` suchen und die Auskommentierung dieser Zeile aufheben:
+Bevor wir beginnen, sollten Sie nach der Datei „php.ini“ suchen und die Auskommentierung dieser Zeile aufheben:
 
 ```php
 ; extension=php_openssl.dll
@@ -41,9 +46,13 @@ Bevor wir beginnen, sollten Sie nach der Datei `php.ini` suchen und die Auskomme
 
 ## <a name="create-a-project-and-define-variables"></a>Erstellen eines Projekts und Definieren von Variablen
 
-Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues PHP-Projekt. Vergessen Sie nicht, öffnende und schließende Tags hinzuzufügen (`<?php` und `?>`).
+1. Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues PHP-Projekt. Fügen Sie öffnende und schließende Tags hinzu (`<?php` und `?>`).
 
-Bevor wir fortfahren können, müssen einige Variablen festgelegt werden. Vergewissern Sie sich, dass `$endpoint` korrekt ist, und ersetzen Sie den Wert `$accesskey` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto. Sie können die Suchabfrage auch anpassen, indem Sie den Wert für `$term` ersetzen.
+2. Für den `$endpoint`-Wert können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird. 
+
+3. Vergewissern Sie sich, dass der `$endpoint`-Wert korrekt ist, und ersetzen Sie den Wert `$accesskey` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto. 
+
+4. Optional können Sie die Suchabfrage auch anpassen, indem Sie den Wert für `$term` ersetzen.
 
 ```php
 $accessKey = 'enter key here';
@@ -113,7 +122,7 @@ if (strlen($accessKey) == 32) {
 
 ## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
 
-Der letzte Schritt ist das Überprüfen Ihres Codes und dessen Ausführung! Hier ist das vollständige Programm angegeben, falls Sie Ihren Code mit unserem Code vergleichen möchten:
+Der letzte Schritt ist das Überprüfen Ihres Codes und dessen Ausführung. Hier ist das vollständige Programm angegeben, falls Sie Ihren Code mit unserem Code vergleichen möchten:
 
 ```php
 <?php
@@ -155,7 +164,7 @@ if (strlen($accessKey) == 32) {
 ?>
 ```
 
-## <a name="sample-response"></a>Beispiel für eine Antwort
+## <a name="example-json-response"></a>JSON-Beispielantwort
 
 Antworten der Bing-Websuche-API werden im JSON-Format zurückgegeben. Diese Beispielantwort wurde gekürzt, damit nur ein Ergebnis angezeigt wird.  
 
@@ -177,9 +186,9 @@ Antworten der Bing-Websuche-API werden im JSON-Format zurückgegeben. Diese Beis
         "snippet": "Knock down barriers between you and your ideas. Enable natural and contextual interaction with tools that augment users' experiences via the power of machine-based AI. Plug them in and bring your ideas to life.",
         "deepLinks": [
           {
-            "name": "Face API",
+            "name": "Face",
             "url": "https://azure.microsoft.com/services/cognitive-services/face/",
-            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face API from Microsoft Azure. ... Cognitive Services; Face API;"
+            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using the Face service from Microsoft Azure. ... Cognitive Services; Face service;"
           },
           {
             "name": "Text Analytics",
@@ -284,6 +293,6 @@ Antworten der Bing-Websuche-API werden im JSON-Format zurückgegeben. Diese Beis
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Einseitige Web-App für die Bing-Websuche](../tutorial-bing-web-search-single-page-app.md)
+> [Tutorial: Einzelseiten-App für die Bing-Websuche-API](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

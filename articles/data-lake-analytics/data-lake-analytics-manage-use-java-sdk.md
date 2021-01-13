@@ -1,20 +1,17 @@
 ---
 title: Verwalten von Azure Data Lake Analytics mithilfe des Azure Java SDK
 description: In diesem Artikel erfahren Sie, wie Sie das Azure Java SDK verwenden, um Apps zu schreiben, die Data Lake Analytics-Aufträge, -Datenquellen und -Benutzer verwalten.
-services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
-ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
-ms.topic: conceptual
+ms.reviewer: jasonh
+ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: b8c7d2ba1c782c3b6ae3034d6a9aab5eb19be954
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom: devx-track-java
+ms.openlocfilehash: 86e84d825bd1dd3774cfd2774e0b96e540bb3cd2
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813641"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218475"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Verwalten von Azure Data Lake Analytics mithilfe einer Java-App
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -33,9 +30,9 @@ Der folgende Codeausschnitt enthält Code für die **nicht interaktive** Authent
 ## <a name="create-a-java-application"></a>Erstellen einer Java-Anwendung
 1. Öffnen Sie IntelliJ, und erstellen Sie mithilfe der Vorlage **Befehlszeilen-App** ein Java-Projekt.
 2. Klicken Sie auf der linken Seite des Bildschirms mit der rechten Maustaste auf das Projekt, und klicken Sie dann auf **Frameworksupport hinzufügen**. Wählen Sie **Maven** aus, und klicken Sie auf **OK**.
-3. Öffnen Sie die neu erstellte Datei **pom.xml**, und fügen Sie den folgenden Textausschnitt zwischen dem Tag **\</version>** und dem Tag **\</project>** hinzu:
+3. Öffnen Sie die neu erstellte Datei **pom.xml**, und fügen Sie den folgenden Textausschnitt zwischen dem **\</version>** -Tag und dem **\</project>** -Tag hinzu:
 
-```
+```xml
 <dependencies>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -319,6 +316,6 @@ Geben Sie Werte für die im Codeausschnitt aufgerufenen Parameter an:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu U-SQL finden Sie unter [Erste Schritte mit der Azure Data Lake Analytics-U-SQL-Sprache](data-lake-analytics-u-sql-get-started.md) und in der [Referenz zur U-SQL-Sprache](https://docs.microsoft.com/u-sql/).
+* Weitere Informationen zu U-SQL finden Sie unter [Erste Schritte mit der Azure Data Lake Analytics-U-SQL-Sprache](data-lake-analytics-u-sql-get-started.md) und in der [Referenz zur U-SQL-Sprache](/u-sql/).
 * Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 * Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).

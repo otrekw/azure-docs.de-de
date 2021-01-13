@@ -3,27 +3,25 @@ title: 'Veraltete vordefinierte Entitäten: LUIS'
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erhalten Sie Informationen zu veralteten vordefinierten Entitäten in LUIS (Language Understanding Intelligent Service).
 services: cognitive-services
-author: diberry
 ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 07/29/2019
-ms.author: diberry
-ms.openlocfilehash: 8c15ebacd0fd959fe789d7f3a9b33b16ee29a1b2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6a050990c28b9137440ec05d918774d76f216be8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933625"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91540845"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Veraltete vordefinierte Entitäten in einer LUIS-App
 Die folgenden vordefinierten Entitäten sind veraltet und können neuen LUIS-Apps nicht hinzugefügt werden.
 
-* **datetime:** Vorhandene LUIS-Apps, die **datetime** verwenden, sollten zu **datetimeV2** migriert werden, auch wenn die datetime-Entität in bereits vorhandenen Apps weiterhin funktioniert.
-* **geography:** Vorhandene LUIS-Apps, die **geography** verwenden, werden bis Dezember 2018 unterstützt.
-* **encyclopedia:** Vorhandene LUIS-Apps, die **encyclopedia** verwenden, werden bis Dezember 2018 unterstützt.
+* **datetime**: Vorhandene LUIS-Apps, die **datetime** verwenden, sollten zu **datetimeV2** migriert werden, obwohl die datetime-Entität in bereits vorhandenen Apps weiterhin funktioniert.
+* **geography**: Vorhandene LUIS-Apps, die **geography** verwenden, werden bis Dezember 2018 unterstützt.
+* **encyclopedia**: Vorhandene LUIS-Apps, die **encyclopedia** verwenden, werden bis Dezember 2018 unterstützt.
 
 ## <a name="geography-culture"></a>Kultur „geography“
 **geography** ist nur im Gebietsschema `en-us` verfügbar.
@@ -43,7 +41,7 @@ Vordefinierte Entität   |   Beispieläußerung   |   JSON
 **encyclopedia** ist nur im Gebietsschema `en-US` verfügbar.
 
 #### <a name="encyclopedia-subtypes"></a>Untergeordnete encyclopedia-Typen
-Die integrierte Entität „encyclopedia“ enthält mehr als 100 Untertypen in der folgenden Tabelle: Darüber hinaus werden encyclopedia-Entitäten häufig mehrere Typen zugeordnet. Die Abfrage „Ronald Reagan“ ergibt z.B. Folgendes: 
+Die integrierte Entität „encyclopedia“ enthält über 100 untergeordnete Typen, die in der folgenden Tabelle aufgeführt sind. Darüber hinaus lassen sich encyclopedia-Entitäten häufig zu mehreren Typen zuordnen. Die Abfrage „Ronald Reagan“ ergibt z.B. Folgendes:
 
 ```json
 {
@@ -163,5 +161,5 @@ Vordefinierte Entität   |   Vordefinierte Entität (untergeordnete Typen)   |  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die Entitäten [dimension](luis-reference-prebuilt-dimension.md), [email](luis-reference-prebuilt-email.md) und [number](luis-reference-prebuilt-number.md). 
+Erfahren Sie mehr über die Entitäten [dimension](luis-reference-prebuilt-dimension.md), [email](luis-reference-prebuilt-email.md) und [number](luis-reference-prebuilt-number.md).
 

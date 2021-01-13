@@ -1,28 +1,31 @@
 ---
-title: Problembehandlung bei Enterprise State Roaming-Einstellungen in Azure Active Directory | Microsoft-Dokumentation
+title: Problembehandlung für Enterprise State Roaming in Azure Active Directory
 description: Enthält Antworten auf einige Fragen, die für IT-Administratoren in Bezug auf die Synchronisierung von Einstellungen und App-Daten ggf. interessant sind.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 06/28/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cceae17b06e8b631dd530b0408008a8222bccbf
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: df70891ef090d44769aadbc235273e3193bc780e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481850"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837208"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Problembehandlung bei Enterprise State Roaming-Einstellungen in Azure Active Directory
 
 Dieses Thema enthält Informationen zur Behandlung und Diagnose von Problemen mit Enterprise State Roaming sowie eine Liste bekannter Probleme.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> Dieser Artikel bezieht sich auf den älteren HTML-basierten Microsoft Edge-Browser, der im Juli 2015 mit Windows 10 veröffentlicht wurde. Der Artikel gilt nicht für den neuen Chromium-basierten Microsoft Edge-Browser, der am 15. Januar 2020 veröffentlicht wurde. Weitere Informationen zum Synchronisierungsverhalten des neuen Microsoft Edge finden Sie im Artikel [Microsoft Edge-Synchronisierung](/deployedge/microsoft-edge-enterprise-sync).
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>Vorbereitende Schritte zur Problembehandlung 
 
@@ -31,7 +34,7 @@ Bevor Sie mit der Problembehandlung beginnen, stellen Sie sicher, dass der Benut
 1. Windows 10 ist mit den neuesten Updates und mindestens Version 1511 (Betriebssystembuild 10586 oder höher) auf dem Gerät installiert. 
 1. Das Gerät ist in Azure AD oder Hybrid-Azure AD eingebunden. Weitere Informationen finden Sie unter [Einführung in die Geräteverwaltung in Azure Active Directory](overview.md).
 1. Stellen Sie sicher, dass **Enterprise State Roaming** wie in [Aktivieren von Enterprise State Roaming in Azure Active Directory](enterprise-state-roaming-enable.md) beschrieben für den Mandanten in Azure AD aktiviert ist. Sie können das Roaming für alle Benutzer oder nur eine ausgewählte Gruppe von Benutzern aktivieren.
-1. Dem Benutzer muss bereits eine Azure Active Directory Premium-Lizenz zugewiesen worden sein.  
+1. Dem Benutzer ist eine Azure Active Directory Premium-Lizenz zugewiesen.  
 1. Das Gerät muss neu gestartet werden, und der Benutzer muss sich zum Zugriff auf die Enterprise State Roaming-Funktionen erneut anmelden.
 
 ## <a name="information-to-include-when-you-need-help"></a>Erforderliche Informationen beim Anfordern von Hilfe
@@ -46,6 +49,7 @@ Wenn Ihr Problem mithilfe der folgenden Anleitungen nicht gelöst wird, können 
 Diese Informationen helfen uns, Ihr Problem so schnell wie möglich zu beheben.
 
 ## <a name="troubleshooting-and-diagnosing-issues"></a>Problembehandlung und Diagnose von Problemen
+
 Dieser Abschnitt enthält Vorschläge zum Beheben und Diagnostizieren von Problemen im Zusammenhang mit Enterprise State Roaming.
 
 ## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>Überprüfen der Synchronisierung und die Seite „Einstellungen synchronisieren“ 
@@ -64,23 +68,23 @@ Für Enterprise State Roaming muss das Gerät bei Azure AD registriert sein. Zwa
 
 1. Öffnen Sie die Eingabeaufforderung ohne erhöhte Rechte. Öffnen Sie dazu das Dialogfeld „Ausführen“ (Windows-Taste+R), und geben Sie zum Öffnen der Eingabeaufforderung „cmd“ ein.
 1. Sobald die Eingabeaufforderung geöffnet ist, geben Sie *dsregcmd.exe /status* ein.
-1. Erwartete Ausgabe: Der Wert des Felds **AzureAdJoined**muss „YES“ sein, der Wert des Felds **WamDefaultSet** muss „YES“, und der Wert des Felds **WamDefaultGUID** muss eine GUID sein, die auf „(AzureAd)“ endet.
+1. Erwartete Ausgabe: Der Wert des Felds **AzureAdJoined** muss „YES“ sein, der Wert des Felds **WamDefaultSet** muss „YES“, und der Wert des Felds **WamDefaultGUID** muss eine GUID sein, die auf „(AzureAd)“ endet.
 
-**Mögliches Problem**: **WamDefaultSet** und **AzureAdJoined** weisen „NO“ als Wert auf, das Gerät gehört der Domäne an und wurde bei Azure AD registriert, und das Gerät wird nicht synchronisiert. In diesem Fall muss das Gerät möglicherweise warten, bis die Richtlinie angewendet wird, oder die Authentifizierung für das Gerät schlägt beim Verbinden mit Azure AD fehl. Der Benutzer muss möglicherweise einige Stunden warten, bis die Richtlinie angewendet wird. Weitere mögliche Schritte zur Problembehandlung sind, erneut eine automatische Registrierung durch eine Abmeldung und erneute Anmeldung zu versuchen oder die Aufgabe in der Aufgabenplanung zu starten. In einigen Fällen kann das Problem behoben werden, indem *dsregcmd.exe /leave* in einem Eingabeaufforderungsfenster mit erhöhten Rechten ausgeführt wird, ein Neustart durchgeführt wird und die Registrierung erneut ausgeführt wird.
+**Mögliches Problem**: **WamDefaultSet** und **AzureAdJoined** weisen „NO“ als Wert auf, das Gerät gehört der Domäne an und wurde bei Azure AD registriert, und das Gerät wird nicht synchronisiert. In diesem Fall muss das Gerät möglicherweise warten, bis die Richtlinie angewendet wird, oder die Authentifizierung für das Gerät schlägt beim Verbinden mit Azure AD fehl. Der Benutzer muss möglicherweise einige Stunden warten, bis die Richtlinie angewendet wird. Weitere mögliche Schritte zur Problembehandlung bestehen darin, erneut eine automatische Registrierung durch eine Abmeldung und erneute Anmeldung zu versuchen oder die Aufgabe in Taskplaner zu starten. In einigen Fällen kann das Problem behoben werden, indem *dsregcmd.exe /leave* in einem Eingabeaufforderungsfenster mit erhöhten Rechten ausgeführt wird, ein Neustart durchgeführt wird und die Registrierung erneut ausgeführt wird.
 
-**Mögliches Problem**: Das Feld für **SettingsUrl** ist leer, und das Gerät wird nicht synchronisiert. Möglicherweise hat sich der Benutzer zuletzt am Gerät angemeldet, bevor Enterprise State Roaming im Azure Active Directory-Portal aktiviert wurde. Starten Sie das Gerät neu, und fordern Sie den Benutzer auf, sich anzumelden. Optional kann der IT-Administrator im Portal zu **Azure Active Directory** > **Geräte** > **Enterprise State Roaming** navigieren und die Option **Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren** deaktiviert und dann erneut aktivieren. Starten Sie dann das Gerät neu, und fordern Sie den Benutzer auf, sich anzumelden. Wenn dadurch das Problem nicht behoben wird, ist **SettingsUrl** im Fall eines fehlerhaften Gerätezertifikats ggf. leer. In diesem Fall kann das Problem behoben werden, indem *dsregcmd.exe /leave* in einem Eingabeaufforderungsfenster mit erhöhten Rechten ausgeführt wird, ein Neustart erfolgt und die Registrierung erneut versucht wird.
+**Mögliches Problem**: Das Feld für **SettingsUrl** ist leer, und das Gerät wird nicht synchronisiert. Möglicherweise hat sich der Benutzer zuletzt am Gerät angemeldet, bevor Enterprise State Roaming im Azure Active Directory-Portal aktiviert wurde. Starten Sie das Gerät neu, und fordern Sie den Benutzer auf, sich anzumelden. Optional kann der IT-Administrator im Portal zu **Azure Active Directory** > **Geräte** > **Enterprise State Roaming** navigieren und die Option **Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren** deaktiviert und dann erneut aktivieren. Starten Sie dann das Gerät neu, und fordern Sie den Benutzer auf, sich anzumelden. Falls das Problem dadurch nicht behoben wird, ist **SettingsUrl** möglicherweise leer, wenn ein fehlerhaftes Gerätezertifikat vorliegt. In diesem Fall kann das Problem behoben werden, indem *dsregcmd.exe /leave* in einem Eingabeaufforderungsfenster mit erhöhten Rechten ausgeführt wird, ein Neustart erfolgt und die Registrierung erneut versucht wird.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming und Multi-Factor Authentication 
 
-In bestimmten Fällen werden Daten von Enterprise State Roaming nicht synchronisiert, wenn die Multi-Factor Authentication (MFA) konfiguriert ist. Weitere Informationen zu diesen Symptomen finden Sie im Supportartikel [KB3193683](https://support.microsoft.com/kb/3193683). 
+In bestimmten Bedingungen werden Daten von Enterprise State Roaming nicht synchronisiert, wenn Azure AD Multi-Factor Authentication (MFA) konfiguriert ist. Weitere Informationen zu diesen Symptomen finden Sie im Supportartikel [KB3193683](https://support.microsoft.com/kb/3193683). 
 
-**Mögliches Problem**: Wenn Ihr Gerät im Azure Active Directory-Portal so konfiguriert ist, dass Multi-Factor Authentication (MFA) erforderlich ist, werden die Einstellungen möglicherweise nicht synchronisiert, wenn Sie sich mit einem Kennwort bei einem Windows 10-Gerät anmelden. Diese Art der MFA-Konfiguration dient dem Schutz eines Azure-Administratorkontos. Administratoren können die Synchronisierung möglicherweise trotzdem durchführen, indem sie sich mit ihrer Microsoft Passport for Work-PIN bei ihrem Windows 10-Gerät anmelden oder indem sie die Multi-Factor Authentication durchführen, während sie auf andere Azure-Dienste wie Office 365 zugreifen.
+**Mögliches Problem**: Wenn Ihr Gerät im Azure Active Directory-Portal so konfiguriert ist, dass Multi-Factor Authentication (MFA) erforderlich ist, werden die Einstellungen möglicherweise nicht synchronisiert, wenn Sie sich mit einem Kennwort bei einem Windows 10-Gerät anmelden. Diese Art der MFA-Konfiguration dient dem Schutz eines Azure-Administratorkontos. Administratoren können die Synchronisierung möglicherweise trotzdem durchführen, indem sie sich mit ihrer Microsoft Passport for Work-PIN bei ihrem Windows 10-Gerät anmelden oder indem sie die Multi-Factor Authentication durchführen, während sie auf andere Azure-Dienste wie Microsoft 365 zugreifen.
 
-**Mögliches Problem**: Bei der Synchronisierung kann ein Fehler auftreten, wenn der Administrator die Richtlinie für bedingten Zugriff mit Multi-Factor Authentication über die Azure Active Directory-Verbunddienste konfiguriert hat und das Zugriffstoken auf dem Gerät abläuft. Stellen Sie sicher, dass Sie die Microsoft Passport for Work-PIN zum An- und Abmelden verwenden, oder führen Sie die Multi-Factor Authentication durch, während Sie auf andere Azure-Dienste wie Office 365 zugreifen.
+**Mögliches Problem**: Bei der Synchronisierung kann ein Fehler auftreten, wenn der Administrator die Richtlinie für bedingten Zugriff mit Multi-Factor Authentication über die Azure Active Directory-Verbunddienste konfiguriert hat und das Zugriffstoken auf dem Gerät abläuft. Stellen Sie sicher, dass Sie die Microsoft Passport for Work-PIN zum An- und Abmelden verwenden, oder führen Sie die Multi-Factor Authentication durch, während Sie auf andere Azure-Dienste wie Microsoft 365 zugreifen.
 
 ### <a name="event-viewer"></a>Ereignisanzeige
 
-Für eine erweiterte Problembehandlung kann die Ereignisanzeige verwendet werden, um nach bestimmten Fehlern suchen. Diese sind in der folgenden Tabelle dokumentiert. Die Ereignisse finden Sie unter „Ereignisanzeige“ > „Anwendungs- und Dienstprotokolle“ > **Microsoft** > **Windows** > **SettingSync-Azure** und bei identitätsbezogenen Problemen mit der Synchronisierung unter **Microsoft** > **Windows** > **AAD**.
+Für eine erweiterte Problembehandlung kann die Ereignisanzeige verwendet werden, um nach bestimmten Fehlern suchen. Diese sind in der folgenden Tabelle dokumentiert. Die Ereignisse finden Sie unter „Ereignisanzeige“ > **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **SettingSync-Azure** und bei identitätsbezogenen Problemen mit der Synchronisierung unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **AAD**.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -104,10 +108,10 @@ Stellen Sie sicher, dass auf dem Windows 10-v1511-Client das kumulative Update v
 
 ### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>Das Design sowie mit Windows Information Protection geschützten Daten werden nicht synchronisiert 
 
-Um Datenlecks zu verhindern, werden mit [Windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) geschützte Daten auf Geräten mit Windows 10 Anniversary Update nicht über Enterprise State Roaming synchronisiert.
+Um Datenlecks zu verhindern, werden mit [Windows Information Protection](/windows/security/information-protection/windows-information-protection/protect-enterprise-data-using-wip) geschützte Daten auf Geräten mit Windows 10 Anniversary Update nicht über Enterprise State Roaming synchronisiert.
 
 **Empfohlene Maßnahme**  
-None (Keine): Dieses Problem wird im Rahmen von zukünftigen Updates für Windows voraussichtlich behoben.
+Keine. Dieses Problem wird im Rahmen von zukünftigen Updates für Windows voraussichtlich behoben.
 
 ---
 
@@ -116,7 +120,7 @@ None (Keine): Dieses Problem wird im Rahmen von zukünftigen Updates für Window
 Bei Geräten, die einer Domäne angehören, werden die Einstellungen für Datum, Uhrzeit und Region nicht synchronisiert: automatische Zeit. Durch das Verwenden der automatischen Zeit können die anderen Einstellungen für Datum, Uhrzeit und Region außer Kraft gesetzt werden, und dies kann dazu führen, dass diese Einstellungen nicht synchronisiert werden. 
 
 **Empfohlene Maßnahme**  
-None (Keine): 
+Keine. 
 
 ---
 
@@ -134,7 +138,7 @@ Stellen Sie sicher, dass auf dem Windows 10-v1511-Client das kumulative Update i
 Wenn Sie versuchen, sich mit einer Smartcard oder einer virtuellen Smartcard bei Ihrem Windows-Gerät anzumelden, funktioniert die Synchronisierung der Einstellungen nicht mehr.     
 
 **Empfohlene Maßnahme**  
-None (Keine): Dieses Problem wird im Rahmen von zukünftigen Updates für Windows voraussichtlich behoben.
+Keine. Dieses Problem wird im Rahmen von zukünftigen Updates für Windows voraussichtlich behoben.
 
 ---
 
@@ -149,7 +153,7 @@ Verbinden Sie das Gerät mit einem Unternehmensnetzwerk, sodass die Synchronisie
 
 ### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>Ein in Azure AD eingebundenes Gerät wird nicht synchronisiert, und der Benutzer hat einen Benutzerprinzipalnamen mit gemischter Groß-/Kleinschreibung.
 
-Wenn der Benutzer einen Benutzerprinzipalnamen mit gemischter Groß-/Kleinschreibung hat (z.B. „BenutzerName“ statt „benutzername“) und ein in Azure AD eingebundenes Gerät nutzt, für das ein Upgrade des Windows 10-Builds 10586 auf 14393 erfolgt ist, kann die Synchronisierung des Geräts misslingen. 
+Wenn der Benutzer einen Benutzerprinzipalnamen mit gemischter Groß-/Kleinschreibung verwendet (z. B. „BenutzerName“ statt „benutzername“) und ein in Azure AD eingebundenes Gerät nutzt, für das ein Windows 10-Upgrade von Build 10586 auf Build 14393 erfolgt ist, kann das Gerät des Benutzers möglicherweise nicht synchronisiert werden. 
 
 **Empfohlene Maßnahme**  
 Der Benutzer muss das Gerät aus der Cloud entfernen und anschließend erneut verbinden. Melden Sie sich hierfür als Benutzer mit der Berechtigung „Lokaler Administrator“ an. Trennen Sie das Gerät, indem Sie zu **Einstellungen** > **System** > **Info** navigieren. Aktivieren Sie „Arbeit oder Schule verwalten bzw. davon trennen“. Bereinigen Sie die unten aufgeführten Dateien, und verbinden Sie dann das Gerät erneut mit Azure AD. Wählen Sie dazu unter **Einstellungen** > **System** > **Info** „Mit Arbeit, Schule oder Uni verbinden“ aus. Setzen Sie das Verbinden des Geräts mit Azure Active Directory fort, und schließen Sie den Vorgang ab.
@@ -169,7 +173,7 @@ Veranlassen Sie im ersten Fall, dass der Benutzer seine Anmeldeinformationen akt
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Ereignis-ID 1098: Fehler 0xCAA5001C. Fehler beim Tokenmaklervorgang  
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Ereignis-ID 1098: Error: 0xCAA5001C. Fehler beim Tokenmaklervorgang  
 
 In der Ereignisanzeige unter „AAD/Betriebsprotokolle“ kann dieser Fehler wie folgt angezeigt werden: Ereignis 1104: Aufruf des AAD-Cloud-AP-Plug-Ins – Fehler beim Abrufen des Tokens: 0xC000005F. Dieses Problem tritt auf, wenn Berechtigungen oder Besitzattribute fehlen.  
 

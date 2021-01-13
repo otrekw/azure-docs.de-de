@@ -5,25 +5,23 @@ services: notification-hubs
 documentationcenter: ios
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 6ead4169-deff-4947-858c-8c6cf03cc3b2
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 07/28/2019
+ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 07/28/2019
-ms.openlocfilehash: 8299725cf6977ca309d57b40f4792ff9b074a8cb
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.lastreviewed: 11/07/2019
+ms.openlocfilehash: 585bdfdd7033f75e5beeba7246c8fbdd03a5e6e8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213233"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86530031"
 ---
-# <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte iOS-Geräte mit Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte iOS-Geräte mit Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -61,6 +59,7 @@ Zunächst werden Sie Benutzeroberflächenelemente zum vorhandenen Storyboard hin
      ![Xcode Interface Builder][3]
 
 2. Erstellen Sie im Assistant Editor Outlets für alle Switches und nennen Sie diese "WorldSwitch", "PoliticsSwitch", "BusinessSwitch", "TechnologySwitch", "ScienceSwitch", "SportsSwitch"
+
 3. Erstellen Sie eine Aktion für Ihre Schaltfläche mit dem Namen `subscribe`. `ViewController.h` sollte den folgenden Code enthalten:
 
     ```objc
@@ -246,7 +245,7 @@ Die App kann jetzt verschiedene Kategorien im lokalen Speicher des Geräts speic
 
 ## <a name="optional-send-tagged-notifications"></a>(Optional) Senden von Benachrichtigungen mit Tags
 
-Wenn Sie keinen Zugriff auf Visual Studio haben, können Sie den nächsten Abschnitt überspringen und Benachrichtigungen direkt über die App senden. Sie können auch die richtige Vorlagenbenachrichtigung aus dem [Azure-Portal] mithilfe der Registerkarte „Debuggen“ für den Notification Hub senden.
+Wenn Sie keinen Zugriff auf Visual Studio haben, können Sie den nächsten Abschnitt überspringen und Benachrichtigungen direkt über die App senden. Sie können auch die richtige Vorlagenbenachrichtigung aus dem [Azure portal] mithilfe der Registerkarte „Debuggen“ für den Notification Hub senden.
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
@@ -336,7 +335,7 @@ Normalerweise würden die Benachrichtigungen von einem Back-End-Dienst gesendet 
 
 3. Erstellen Sie das Projekt neu, und stellen Sie sicher, dass keine Buildfehler vorliegen.
 
-## <a name="run-the-app-and-generate-notifications"></a>Ausführen der Anwendung und Erzeugen von Benachrichtigungen
+## <a name="run-the-app-and-generate-notifications"></a>Ausführen der App und Erzeugen von Benachrichtigungen
 
 1. Klicken Sie auf die Schaltfläche Ausführen, um das Projekt zu erstellen und die App zu starten. Wählen Sie einige Optionen zum Abonnieren aktueller Nachrichten aus, und klicken Sie dann auf die Schaltfläche **Subscribe** . Es sollte in einem Dialogfeld angegeben werden, dass die Benachrichtigungen abonniert wurden.
 
@@ -363,11 +362,11 @@ In diesem Tutorial haben Sie Broadcastbenachrichtigungen an bestimmte iOS-Gerät
 [3]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
 
 <!-- URLs. -->
-[How To: Service Bus Notification Hubs (iOS Apps)]: https://msdn.microsoft.com/library/jj927168.aspx
+[How To: Service Bus Notification Hubs (iOS Apps)]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-ios-xplat-localized-apns-push-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/dn530749.aspx
-[Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
-[get-started]: notification-hubs-ios-apple-push-notification-apns-get-started.md
-[Azure-Portal]: https://portal.azure.com
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/dn530749(v=azure.100)
+[Notification Hubs How-To for iOS]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[get-started]: ios-sdk-get-started.md
+[Azure portal]: https://portal.azure.com

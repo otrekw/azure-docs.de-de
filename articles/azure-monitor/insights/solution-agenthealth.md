@@ -1,30 +1,23 @@
 ---
 title: Lösung für die Agent-Integritätsdiagnose in Azure Monitor | Microsoft-Dokumentation
 description: Dieser Artikel soll Ihnen einen besseren Einblick ermöglichen, wie Sie diese Lösung zum Überwachen der Integrität Ihrer Agents verwenden können, die Daten direkt an Log Analytics oder System Center Operations Manager melden.
-services: operations-management-suite
-documentationcenter: ''
-author: MGoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 03/19/2017
-ms.author: magoedte
-ms.openlocfilehash: e9e27e224e42bf3f65fadcac22210fda314445fa
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
+ms.author: bwren
+ms.date: 02/06/2020
+ms.openlocfilehash: 4f14f006283b7430458d67d2bd3bee787c08411d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67665998"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87326017"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Lösung für die Agent-Integritätsdiagnose in Azure Monitor
 Die Agent-Integritätsdiagnose-Lösung in Azure bietet Ihnen für alle direkt an den Log Analytics-Arbeitsbereich in Azure Monitor oder eine mit Azure Monitor verbundene System Center Operations Manager-Verwaltungsgruppe berichtende Agents, die nicht reagieren und Betriebsdaten übermitteln, Einblicke in die Ursachen.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Vergewissern Sie sich vor dem Bereitstellen dieser Lösung, dass Sie über derzeit unterstützte [Windows-Agents](../../log-analytics/log-analytics-windows-agent.md) verfügen, die Daten an den Log Analytics-Arbeitsbereich oder an eine [Operations Manager-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md), die in Ihren Arbeitsbereich integriert ist, melden.
+Vergewissern Sie sich vor dem Bereitstellen dieser Lösung, dass Sie über derzeit unterstützte [Windows-Agents](../platform/agent-windows.md) verfügen, die Daten an den Log Analytics-Arbeitsbereich oder an eine [Operations Manager-Verwaltungsgruppe](../platform/om-agents.md), die in Ihren Arbeitsbereich integriert ist, melden.
 
 ## <a name="solution-components"></a>Lösungskomponenten
 Diese Lösung besteht aus den folgenden Ressourcen, die Ihrem Arbeitsbereich hinzugefügt werden, und direkt verbundenen Agents oder mit Operations Manager verbundenen Verwaltungsgruppen.
@@ -35,7 +28,7 @@ Wenn Ihre System Center Operations Manager-Verwaltungsgruppe mit einem Log Analy
 * Microsoft System Center Advisor HealthAssessment Direct Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentDirect)
 * Microsoft System Center Advisor HealthAssessment Server Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentViaServer).  
 
-Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../../azure-monitor/platform/om-agents.md).
+Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../platform/om-agents.md).
 
 ## <a name="configuration"></a>Konfiguration
 Fügen Sie die Lösung für die Agent-Integritätsdiagnose dem Log Analytics-Arbeitsbereich hinzu, indem Sie den unter [Hinzufügen von Lösungen](solutions.md) beschriebenen Prozess verwenden. Es ist keine weitere Konfiguration erforderlich.
@@ -85,7 +78,7 @@ Ein Datensatz vom Typ **Heartbeat** wird erstellt.  Die Eigenschaften der Datens
 | `Version` | Log Analytics-Agent- oder Operations Manager-Agent-Version.|
 | `SCAgentChannel` | Der Wert lautet *Direct* bzw. *SCManagementServer*.|
 | `IsGatewayInstalled` | Wenn das Log Analytics-Gateway installiert ist, lautet der Wert *true*, andernfalls *false*.|
-| `ComputerIP` | IP-Adresse des Computers|
+| `ComputerIP` | Die öffentliche IP-Adresse des Computers. Auf virtuellen Azure-Computern wird hier die öffentliche IP-Adresse angezeigt, sofern sie verfügbar ist. Bei virtuellen Computern, auf denen private IP-Adressen verwendet werden, wird die Azure-SNAT-Adresse (und nicht die private IP-Adresse) angezeigt. |
 | `RemoteIPCountry` | Geografischer Standort, an dem der Computer bereitgestellt wird|
 | `ManagementGroupName` | Name der Operations Manager-Verwaltungsgruppe|
 | `SourceComputerId` | Eindeutige ID des Computers|
@@ -97,7 +90,7 @@ Jeder Agent, der Daten an einen Operations Manager-Verwaltungsserver meldet, sen
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
 Die folgende Tabelle enthält Beispiele für Protokollsuchen für Datensätze, die mit dieser Lösung erfasst wurden.
 
-| Abfragen | BESCHREIBUNG |
+| Abfrage | BESCHREIBUNG |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Gesamtanzahl von Agents |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Anzahl der nicht reagierenden Agents innerhalb der letzten 24 Stunden |
@@ -118,3 +111,4 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Datensätze, d
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Lesen Sie sich die Details zum Generieren von Warnungen aus Protokollabfragen unter [Warnungen in Azure Monitor](../platform/alerts-overview.md) durch. 
+

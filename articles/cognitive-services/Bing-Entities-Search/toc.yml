@@ -1,5 +1,5 @@
 - name: Dokumentation zur Bing-Entitätssuche
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Übersicht
   items:
     - name: Was ist die Bing-Entitätssuche?
@@ -7,12 +7,12 @@
     - name: Vergleichen der Bing-Suche-APIs
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: REST-API-Schnellstartanleitungen
+- name: Schnellstarts
   expanded: true
   items:
     - name: REST-API
       items:
-        - name: 'Verwenden von C#'
+        - name: Verwenden von C#
           href: quickstarts/csharp.md
         - name: Verwenden von Java
           href: quickstarts/java.md
@@ -26,15 +26,9 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'Verwenden von C#'
-          href: quickstarts/entity-sdk-csharp-quickstart.md
-        - name: Verwenden von Node.js
-          href: quickstarts/entity-sdk-node-quickstart.md
-        - name: Verwenden von Python
-          href: quickstarts/entity-sdk-python-quickstart.md
-        - name: Verwenden von Java
-          href: quickstarts/entity-sdk-java-quickstart.md
-- name: Lernprogramme
+        - name: Clientbibliotheken für die Bing-Entitätssuche
+          href: ./quickstarts/client-libraries.md
+- name: Tutorials
   items:
     - name: Erstellen einer Einzelseiten-Web-App
       href: tutorial-bing-entities-search-single-page-app.md
@@ -59,17 +53,17 @@
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
     - name: Bing-Entitätssuche-API v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference'
+      href: /rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference
     - name: SDKs
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/cognitiveservices/bing-entity-search-api-readme?view=azure-dotnet
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-java-stable'
+          href: /java/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-java-stable
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/entitysearch?view=azure-python'
+          href: /python/api/azure-cognitiveservices-search-entitysearch/?view=azure-python
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/entitysearch?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-entitysearch/?view=azure-node-latest
         - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch'
 - name: Ressourcen
@@ -87,7 +81,7 @@
     - name: Wissensdatenbank
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
     - name: Abrufen des API-Schlüssels
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: Testen
       href: 'https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/'
     - name: Endpunkt für die Bing-Entitätssuche
@@ -95,5 +89,5 @@
     - name: Analyse für die Bing-Entitätssuche-API
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

@@ -1,24 +1,21 @@
 ---
 title: Ausführen eines Apache Spark-Auftrags mit Azure Kubernetes Service (AKS)
-description: Ausführen eines Apache Spark-Auftrags mithilfe von Azure Kubernetes Service (AKS)
-services: container-service
+description: Verwenden Sie Azure Kubernetes Service (AKS), um einen Apache Spark-Auftrag für umfangreiche Datenverarbeitungen zu erstellen und auszuführen.
 author: lenadroid
-manager: jeconnoc
-ms.service: container-service
-ms.topic: article
-ms.date: 03/15/2018
+ms.topic: conceptual
+ms.date: 10/18/2019
 ms.author: alehall
-ms.custom: mvc
-ms.openlocfilehash: ddaff590fd493b430a72c30dd35cb1b891b80d84
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: e94d9d586f15c228436a8a9d48fb12c26369c449
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205346"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742350"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Ausführen von Apache Spark-Aufträgen in ACS
 
-[Apache Spark][apache-spark] ist eine schnelle Engine zur Verarbeitung von umfangreichen Daten. Ab dem [Spark 2.3.0-Release][spark-latest-release] unterstützt Apache Spark die native Integration in Kubernetes-Cluster. Azure Kubernetes Service (AKS) ist eine verwaltete Kubernetes-Umgebung, die in Azure ausgeführt wird. In diesem Dokument werden die Vorbereitung und Ausführung von Apache Spark-Aufträgen in einem Azure Kubernetes Service-Cluster (AKS) ausführlich beschrieben.
+[Apache Spark][apache-spark] ist eine schnelle Engine zur Verarbeitung von umfangreichen Daten. Ab dem [Spark 2.3.0-Release][spark-kubernetes-earliest-version] unterstützt Apache Spark die native Integration in Kubernetes-Cluster. Azure Kubernetes Service (AKS) ist eine verwaltete Kubernetes-Umgebung, die in Azure ausgeführt wird. In diesem Dokument werden die Vorbereitung und Ausführung von Apache Spark-Aufträgen in einem Azure Kubernetes Service-Cluster (AKS) ausführlich beschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,6 +25,7 @@ Sie benötigen Folgendes, um die Schritte in diesem Artikel ausführen zu könne
 * [Docker-Hub][docker-hub]-Konto oder [Azure Container Registry][acr-create]
 * Eine Installation der [Azure CLI][azure-cli] auf Ihrem Entwicklungssystem
 * Eine [JDK 8][java-install]-Installation auf Ihrem System
+* [Apache Maven][maven-install] muss auf Ihrem System installiert sein.
 * Eine SBT-Installation ([Scala Build Tool][sbt-install]) auf Ihrem System
 * Auf Ihrem System installierte Git-Befehlszeilentools
 
@@ -43,10 +41,16 @@ Erstellen Sie eine Ressourcengruppe für den Cluster.
 az group create --name mySparkCluster --location eastus
 ```
 
-Erstellen Sie den ACS-Cluster mit Knoten, die der Größe `Standard_D3_v2` entsprechen.
+Erstellen Sie einen Dienstprinzipals für den Cluster. Nach der Erstellung benötigen Sie die AppID und das Kennwort des Dienstprinzipals für den nächsten Befehl.
 
 ```azurecli
-az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2
+az ad sp create-for-rbac --name SparkSP
+```
+
+Erstellen Sie den AKS-Cluster mit Knoten der Größe `Standard_D3_v2` und Werten für „appId“ und „password“, die als service-principal- und client-secret-Parameter übergeben werden.
+
+```azurecli
+az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
 ```
 
 Stellen Sie eine Verbindung mit dem ACS-Cluster her.
@@ -64,7 +68,7 @@ Vor der Ausführung von Spark-Aufträgen in einem ACS-Cluster müssen Sie den Sp
 Klonen Sie das Spark-Projektrepository auf Ihrem Entwicklungssystem.
 
 ```bash
-git clone -b branch-2.3 https://github.com/apache/spark
+git clone -b branch-2.4 https://github.com/apache/spark
 ```
 
 Ändern Sie es in das Verzeichnis des geklonten Repositorys, und speichern Sie den Pfad der Spark-Quelle in einer Variablen.
@@ -136,7 +140,7 @@ Führen Sie die folgenden Befehle zum Hinzufügen eines SBT-Plug-Ins aus, die da
 
 ```bash
 touch project/assembly.sbt
-echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")' >> project/assembly.sbt
+echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.10")' >> project/assembly.sbt
 ```
 
 Führen Sie diese Befehle zum Kopieren des Beispielcodes in das neu erstellte Projekt aus, und fügen Sie alle erforderlichen Abhängigkeiten hinzu.
@@ -151,7 +155,7 @@ cat <<EOT >> build.sbt
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.3.0" % "provided"
 EOT
 
-sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11",/' build.sbt
+sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11"/' build.sbt
 sed -ie 's/name.*/name := "SparkPi",/' build.sbt
 ```
 
@@ -183,7 +187,7 @@ export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-strin
 
 Laden Sie mit den folgenden Befehlen die JAR-Datei in das Azure Storage-Konto hoch.
 
-```bash
+```azurecli
 CONTAINER_NAME=jars
 BLOB_NAME=SparkPi-assembly-0.1.0-SNAPSHOT.jar
 FILE_TO_UPLOAD=target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar
@@ -214,6 +218,13 @@ Navigieren Sie zurück zum Stammverzeichnis des Spark-Repositorys.
 cd $sparkdir
 ```
 
+Erstellen Sie ein Dienstkonto, das über ausreichende Berechtigungen zum Ausführen eines Auftrags verfügt.
+
+```bash
+kubectl create serviceaccount spark
+kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
+```
+
 Übermitteln Sie den Auftrag mithilfe von `spark-submit`.
 
 ```bash
@@ -223,6 +234,7 @@ cd $sparkdir
   --name spark-pi \
   --class org.apache.spark.examples.SparkPi \
   --conf spark.executor.instances=3 \
+  --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
   --conf spark.kubernetes.container.image=$REGISTRY_NAME/spark:$REGISTRY_TAG \
   $jarUrl
 ```
@@ -230,8 +242,10 @@ cd $sparkdir
 Dieser Vorgang startet den Spark-Auftrag, der den Auftragsstatus für Ihre Shellsitzung streamt. Während der Auftragsausführung können Sie den Spark-Treiberpod und die Executorpods mithilfe des Befehls „kubectl get pods“ anzeigen. Öffnen Sie eine zweite Terminalsitzung, um diese Befehle auszuführen.
 
 ```console
-$ kubectl get pods
+kubectl get pods
+```
 
+```output
 NAME                                               READY     STATUS     RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   1/1       Running    0          16s
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-1   0/1       Init:0/1   0          4s
@@ -259,7 +273,7 @@ kubectl get pods --show-all
 
 Ausgabe:
 
-```bash
+```output
 NAME                                               READY     STATUS      RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   0/1       Completed   0          1m
 ```
@@ -272,7 +286,7 @@ kubectl logs spark-pi-2232778d0f663768ab27edc35cb73040-driver
 
 In diesen Protokollen können Sie das Ergebnis des Spark-Auftrags sehen, also den Wert von Pi.
 
-```bash
+```output
 Pi is roughly 3.152155760778804
 ```
 
@@ -308,6 +322,7 @@ Bei der Ausführung des Auftrags kann anstelle der Remote-JAR-URL das `local://`
     --name spark-pi \
     --class org.apache.spark.examples.SparkPi \
     --conf spark.executor.instances=3 \
+    --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
     --conf spark.kubernetes.container.image=<spark-image> \
     local:///opt/spark/work-dir/<your-jar-name>.jar
 ```
@@ -325,16 +340,17 @@ Weitere Informationen finden Sie in der Spark-Dokumentation.
 <!-- LINKS - external -->
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
-[java-install]: https://aka.ms/azure-jdks
+[java-install]: /azure/developer/java/fundamentals/java-jdk-long-term-support
+[maven-install]: https://maven.apache.org/install.html
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html
-[spark-latest-release]: https://spark.apache.org/releases/spark-release-2-3-0.html
+[spark-kubernetes-earliest-version]: https://spark.apache.org/releases/spark-release-2-3-0.html
 [spark-quickstart]: https://spark.apache.org/docs/latest/quick-start.html
 
 
 <!-- LINKS - internal -->
-[acr-aks]: https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks
-[acr-create]: https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli
-[aks-quickstart]: https://docs.microsoft.com/azure/aks/
-[azure-cli]: https://docs.microsoft.com/cli/azure/?view=azure-cli-latest
-[storage-account]: https://docs.microsoft.com/azure/storage/common/storage-azure-cli
+[acr-aks]: cluster-container-registry-integration.md
+[acr-create]: ../container-registry/container-registry-get-started-azure-cli.md
+[aks-quickstart]: ./index.yml
+[azure-cli]: /cli/azure/?view=azure-cli-latest
+[storage-account]: ../storage/blobs/storage-quickstart-blobs-cli.md

@@ -1,32 +1,22 @@
 ---
-title: Übersicht über den lokalen Cache – Azure App Service | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie den lokalen Cache von Azure App Service aktivieren, dessen Größe ändern und seinen Status abrufen.
-services: app-service
-documentationcenter: app-service
-author: cephalin
-manager: jpconnock
-editor: ''
+title: Lokaler Cache
+description: Erfahren Sie, wie der lokale Cache in Azure App Service funktioniert und wie Sie den lokalen Cache Ihrer App aktivieren, seine Größe ändern und seinen Status abfragen.
 tags: optional
-keywords: ''
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
-ms.service: app-service
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/04/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bfb66789df3236c096ea00bcc83ddc435e87f047
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 81782f63199a9fe8f43f56aeefcd1c68951d57a4
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097663"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852251"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Übersicht über den lokalen Cache von Azure App Service
 
 > [!NOTE]
-> Lokaler Cache wird in Funktions-Apps oder App Service-Apps in Containern nicht unterstützt, z.B. [App Service unter Linux](containers/app-service-linux-intro.md).
+> Lokaler Cache wird in Funktions-Apps oder containerisierten App Service-Apps nicht unterstützt, z. B. in [Windows-Containern](quickstart-custom-container.md?pivots=container-windows) oder in [App Service für Linux](overview.md#app-service-on-linux).
 
 
 Azure App Service-Inhalt wird in Azure Storage gespeichert und dauerhaft als Inhaltsfreigabe bereitgestellt. Dieses Design ist auf den Einsatz mit einer Vielzahl von Apps ausgelegt und weist die folgenden Merkmale auf:  
@@ -46,7 +36,7 @@ Der lokale Cache von Azure App Service bietet eine Webrollenansicht Ihrer Inhalt
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Auswirkung des lokalen Caches auf das Verhalten von App Service
 * _D:\home_ verweist auf den lokalen Cache, der beim Starten der App auf der VM-Instanz erstellt wird. _D:\local_ verweist weiterhin auf den temporären VM-spezifischen Speicher.
-* Der lokale Cache enthält eine einmalige Kopie der Ordner _/site_ und _/siteextensions_ des freigegebenen Inhaltsspeichers unter _D:\home\site_ bzw. _D:\home\siteextensions_. Die Dateien werden beim Starten der App in den lokalen Cache kopiert. Die Größe der zwei Ordner ist pro App standardmäßig auf 300 MB beschränkt, kann aber auf bis zu 2 GB erhöht werden.
+* Der lokale Cache enthält eine einmalige Kopie der Ordner _/site_ und _/siteextensions_ des freigegebenen Inhaltsspeichers unter _D:\home\site_ bzw. _D:\home\siteextensions_. Die Dateien werden beim Starten der App in den lokalen Cache kopiert. Die Größe der beiden Ordner ist pro App standardmäßig auf 1 GB beschränkt, kann aber auf bis zu 2 GB erhöht werden. Beachten Sie, dass mit zunehmender Größe das Laden des Caches länger dauert. Wenn Sie die Größe des lokalen Caches auf 2 GB heraufgesetzt haben und die kopierten Dateien das Maximum von 2 GB überschreiten, ignoriert App Service den lokalen Cache im Hintergrund und führt Lesevorgänge in der Remotedateifreigabe durch. Wenn kein Grenzwert definiert oder der Grenzwert auf einen niedrigeren Wert als 2 GB festgelegt ist und die kopierten Dateien den Grenzwert überschreiten, kann bei Bereitstellung oder Austausch ein Fehler auftreten.
 * Der lokale Cache bietet Lese- und Schreibzugriff. Änderungen werden jedoch verworfen, wenn die App zwischen virtuellen Computern verschoben oder neu gestartet wird. Verwenden Sie den lokalen Cache nicht für Apps, die unternehmenskritische Daten im Inhaltsspeicher speichern.
 * _D:\home\LogFiles_ und _D:\home\Data_ enthalten Protokolldateien und App-Daten. Die zwei Unterordner werden lokal auf der VM-Instanz gespeichert und regelmäßig in den freigegebenen Inhaltsspeicher kopiert. Apps können Protokolldateien und Daten speichern, indem sie diese in die jeweiligen Ordner schreiben. Das Kopieren in den freigegebenen Inhaltsspeicher erfolgt jedoch nach dem Prinzip der besten Leistung, daher können Protokolldateien und Daten aufgrund eines plötzlichen Absturzes einer VM-Instanz verloren gehen.
 * Das [Protokollstreaming](troubleshoot-diagnostic-logs.md#stream-logs) wird durch den bestmöglichen Kopiervorgang beeinträchtigt. Bei den gestreamten Protokollen kann es zu einer Verzögerung von bis zu einer Minute kommen.
@@ -55,10 +45,14 @@ Der lokale Cache von Azure App Service bietet eine Webrollenansicht Ihrer Inhalt
 * Bei der App-Bereitstellung über eine unterstützte Methode erfolgt die Veröffentlichung direkt im permanenten freigegebenen Inhaltsspeicher. Zum Aktualisieren der Ordner _D:\home\site_ und _D:\home\siteextensions_ im lokalen Cache muss die App neu gestartet werden. Informationen zu einem nahtlosen Lebenszyklus finden Sie weiter unten in diesem Artikel.
 * Die standardmäßige Inhaltsansicht der SCM-Site ist weiterhin die des freigegebenen Inhaltsspeichers.
 
-## <a name="enable-local-cache-in-app-service"></a>Aktivieren des lokalen Caches in App Service
+## <a name="enable-local-cache-in-app-service"></a>Aktivieren des lokalen Caches in App Service 
+
+> [!NOTE]
+> Der lokale Cache wird in den Tarifen **F1** oder **D1** nicht unterstützt. 
+
 Der lokale Cache wird mithilfe einer Kombination aus reservierten App-Einstellungen konfiguriert. Diese App-Einstellungen können über die folgenden Methoden konfiguriert werden:
 
-* [Azure-Portal](#Configure-Local-Cache-Portal)
+* [Azure portal](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Konfigurieren des lokalen Caches über das Azure-Portal
@@ -85,7 +79,7 @@ Der lokale Cache wird für jede Web-App über die folgende App-Einstellung aktiv
 
     "properties": {
         "WEBSITE_LOCAL_CACHE_OPTION": "Always",
-        "WEBSITE_LOCAL_CACHE_SIZEINMB": "300"
+        "WEBSITE_LOCAL_CACHE_SIZEINMB": "1000"
     }
 }
 
@@ -93,7 +87,7 @@ Der lokale Cache wird für jede Web-App über die folgende App-Einstellung aktiv
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>Ändern der Größeneinstellung im lokalen Cache
-Standardmäßig ist der lokale Cache **300 MB** groß. Dies schließt die Ordner „/site“ und „/siteextensions“ ein, die aus dem Inhaltspeicher kopiert werden, sowie alle lokal erstellten Protokolle und Datenordner. Um dieses Limit zu erhöhen, verwenden Sie die folgende App-Einstellung: `WEBSITE_LOCAL_CACHE_SIZEINMB`. Die Größe kann auf bis zu **2 GB** (2.000 MB) pro App erhöht werden.
+Standardmäßig ist der lokale Cache **1 GB** groß. Dies schließt die Ordner „/site“ und „/siteextensions“ ein, die aus dem Inhaltspeicher kopiert werden, sowie alle lokal erstellten Protokolle und Datenordner. Um dieses Limit zu erhöhen, verwenden Sie die folgende App-Einstellung: `WEBSITE_LOCAL_CACHE_SIZEINMB`. Die Größe kann auf bis zu **2 GB** (2.000 MB) pro App erhöht werden. Beachten Sie, dass mit zunehmender Größe das Laden des lokalen Caches länger dauert.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>Bewährte Methoden für die Verwendung des lokalen Caches von App Service
 Es wird empfohlen, den lokalen Cache gemeinsam mit dem Feature [Stagingumgebungen](../app-service/deploy-staging-slots.md) zu verwenden.
@@ -105,6 +99,7 @@ Es wird empfohlen, den lokalen Cache gemeinsam mit dem Feature [Stagingumgebunge
 * Persistente Einstellungen umfassen einen Namen und gelten dauerhaft für einen Slot. Wenn also der Stagingslot auf den Produktionsslot umgeschaltet wird, erbt dieser die App-Einstellungen für den lokalen Cache. Der neue Produktionsslot wird nach ein paar Minuten mit dem lokalen Cache ausgeführt und im Rahmen der Slotaufwärmung nach dem Wechsel aufgewärmt. Wenn der Slotwechsel abgeschlossen ist, wird Ihr Produktionsslot mit dem lokalen Cache ausgeführt.
 
 ## <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
+
 ### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Ist der lokale Cache für meine App geeignet?
 Wenn Ihre App einen zuverlässigen Hochleistungs-Inhaltsspeicher benötigt, den Inhaltsspeicher nicht zum Schreiben von unternehmenskritischen Daten zur Laufzeit nutzt und eine Gesamtgröße von maximal 2 GB erforderlich ist, dann lautet die Antwort: Ja, Ihre Anwendung ist für den lokalen Cache geeignet! Um die Gesamtgröße der Ordner „/site“ und „/siteextensions“ zu ermitteln, können Sie die Siteerweiterung „Azure Web Apps Disk Usage“ verwenden.
 
@@ -114,6 +109,9 @@ Wenn Sie das Feature für den lokalen Cache mit Stagingumgebungen verwenden, fin
 ### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Ich habe soeben neue Änderungen veröffentlicht, aber in meiner App scheinen diese nicht verfügbar zu sein. Warum?
 Wenn Ihre App den lokalen Cache verwendet, müssen Sie Ihre Site neu starten, um die neuesten Änderungen abzurufen. Sie möchten Änderungen nicht für eine Produktionssite veröffentlichen? Relevante Informationen finden Sie bei den Slotoptionen im oben stehenden Abschnitt zu den bewährten Methoden.
 
+> [!NOTE]
+> Die Bereitstellungsoption [aus Paket ausführen](deploy-run-package.md) ist mit dem lokalen Cache nicht kompatibel.
+
 ### <a name="where-are-my-logs"></a>Wo sind meine Protokolle?
 Bei Verwendung des lokalen Caches sehen Ihre Protokolle und Datenordner etwas anders aus. Die Struktur Ihrer Unterordner bleibt jedoch erhalten, mit der Ausnahme, dass sie unterhalb eines Unterordners mit folgendem Format geschachtelt sind: „eindeutiger VM-Bezeichner“ + Zeitstempel
 
@@ -122,3 +120,6 @@ Der lokale Cache trägt dazu bei, speicherbezogene Neustarts von Apps zu vermeid
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Gibt es Verzeichnisse, die für den lokalen Cache nicht auf das schnellere lokale Laufwerk kopiert werden?
 Bei dem Schritt, in dem der Speicherinhalt kopiert wird, werden alle Ordner mit dem Namen „repository“ ausgeschlossen. Dies hilft bei Szenarien, in denen eine Website ein Quellcodeverwaltungs-Repository enthält, das für den täglichen Betrieb der App möglicherweise nicht benötigt wird. 
+
+### <a name="how-to-flush-the-local-cache-logs-after-a-site-management-operation"></a>Wie werden die Protokolle im lokalen Cache nach einem Standortverwaltungsvorgang geleert?
+Zum Leeren der Protokolle im lokalen Cache beenden Sie die App, und starten Sie sie erneut. Durch diese Aktion wird der alte Cache gelöscht. 

@@ -2,43 +2,41 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Aha! | Microsoft-Dokumentation'
 description: In diesem Artikel erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Aha! konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ad955d3d-896a-41bb-800d-68e8cb5ff48d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/09/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a63872680d28664c6d5a7ff109f6de72817173d5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 82f3a2dc7f43bd484d6a81efaa8d07f13b746d9e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989644"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671079"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>Tutorial: Integrieren von Aha! in Azure Active Directory
 
-In diesem Tutorial erfahren Sie, wie Sie Aha! in Azure Active Directory (Azure AD) integrieren. Die Integration von AHA! in Azure AD ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie Aha! in Aha! integrieren. Die Integration von AHA! in Azure AD ermöglicht Folgendes:
 
 * Steuern Sie in Azure AD, wer Zugriff auf Aha! hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Aha! anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Aha!- Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Aha! Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -75,11 +73,11 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Aha! mü
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Aha!** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Aha!** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
@@ -108,7 +106,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
     1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
     1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
     1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-    1. Klicken Sie auf **Create**.
+    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -134,7 +132,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
 
-2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Aha! einrichten**, um zur Anwendung Aha! weitergeleitet zu werden . Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Aha! anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 8.
+2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Aha! einrichten**, um zur Anwendung Aha! weitergeleitet zu werden Anwendung. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Aha! anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 8.
 
     ![Einrichtungskonfiguration](common/setup-sso.png)
 
@@ -145,20 +143,20 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     ![Einstellungen](./media/aha-tutorial/IC798950.png "Einstellungen")
 
 5. Klicken Sie auf **Account**.
-  
+
     ![Profil](./media/aha-tutorial/IC798951.png "Profil")
 
 6. Klicken Sie auf **Security and single sign-on**.
 
-    ![Sicherheit und einmaliges Anmelden ](./media/aha-tutorial/IC798952.png "Sicherheit und einmaliges Anmelden")
+    ![Screenshot: Menüoption „Security and single sign-on“ (Sicherheit und einmaliges Anmelden)](./media/aha-tutorial/IC798952.png "Security and single sign-on")
 
 7. Wählen Sie im Abschnitt **Einmaliges Anmelden** als **Identitätsanbieter** die Option **SAML2.0** aus.
 
-    ![Sicherheit und einmaliges Anmelden ](./media/aha-tutorial/IC798953.png "Sicherheit und einmaliges Anmelden")
+    ![Security and single sign-on (Sicherheit und einmaliges Anmelden)](./media/aha-tutorial/IC798953.png "Security and single sign-on")
 
 8. Führen Sie auf der Konfigurationsseite **Single Sign-On** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden](./media/aha-tutorial/IC798954.png "des einmaligen Anmeldens")
+    ![Einmaliges Anmelden](./media/aha-tutorial/IC798954.png "Single Sign-On")
 
     a. Geben Sie im Textfeld **Name** einen Namen für die Konfiguration ein.
 
@@ -176,13 +174,12 @@ In diesem Abschnitt wird in Aha! ein Benutzer namens B. Simon erstellt. Aha! un
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Aha!“ klicken, sollten Sie automatisch bei der Aha!-Instanz angemeldet werden, für die Sie SSO eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Aha!“ klicken, sollten Sie automatisch bei der Aha!-Instanz angemeldet werden, für die Sie SSO eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)

@@ -2,54 +2,56 @@
 title: Beschränken des Zugriffs auf die Kubernetes-Konfiguration (kubeconfig) in Azure Kubernetes Service (AKS)
 description: Hier erfahren Sie, wie Sie den Zugriff auf die Kubernetes-Konfigurationsdatei (kubeconfig) für Clusteradministratoren und Clusterbenutzer steuern.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
-ms.date: 05/31/2019
-ms.author: mlearned
-ms.openlocfilehash: cbc653b86ed83f9d6a7348d39f51dc7cd49c6892
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 05/06/2020
+ms.openlocfilehash: 371628b02ebecee23697e996ee0d484688167875
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615676"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684813"
 ---
-# <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Definieren des Zugriffs auf die Kubernetes-Konfigurationsdatei in Azure Kubernetes Service (AKS) mithilfe der rollenbasierten Zugriffssteuerung von Azure
+# <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Definieren des Zugriffs auf die Kubernetes-Konfigurationsdatei in Azure Kubernetes Service (AKS) mithilfe der rollenbasierten Zugriffssteuerung von Azure
 
-Sie können das Tool `kubectl` verwenden, um mit Kubernetes-Clustern zu interagieren. Über die Azure-Befehlszeilenschnittstelle können Sie ganz einfach die Anmeldeinformationen für den Zugriff sowie die Konfigurationsinformationen abrufen, die Sie benötigen, um über `kubectl` eine Verbindung mit Ihren AKS-Clustern herzustellen. Mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) können Sie steuern, wer die Kubernetes-Konfigurationsinformationen (*kubeconfig*) abrufen kann und über welche Berechtigungen diese Personen anschließend verfügen sollen.
+Sie können das Tool `kubectl` verwenden, um mit Kubernetes-Clustern zu interagieren. Über die Azure-Befehlszeilenschnittstelle können Sie ganz einfach die Anmeldeinformationen für den Zugriff sowie die Konfigurationsinformationen abrufen, die Sie benötigen, um über `kubectl` eine Verbindung mit Ihren AKS-Clustern herzustellen. Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) können Sie steuern, wer die Kubernetes-Konfigurationsinformationen (*kubeconfig*) abrufen kann und über welche Berechtigungen diese Personen anschließend verfügen sollen.
 
-In diesem Artikel erfahren Sie, wie Sie RBAC-Rollen zuweisen, die einschränken, wer die Konfigurationsinformationen für einen AKS-Cluster abrufen kann.
+In diesem Artikel erfahren Sie, wie Sie Azure-Rollen zuweisen, die einschränken, wer die Konfigurationsinformationen für einen AKS-Cluster abrufen kann.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Für den Artikel wird außerdem mindestens Version 2.0.65 der Azure-Befehlszeilenschnittstelle benötigt. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+Für den Artikel wird außerdem mindestens Version 2.0.65 der Azure-Befehlszeilenschnittstelle benötigt. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 ## <a name="available-cluster-roles-permissions"></a>Verfügbare Clusterrollenberechtigungen
 
 Wenn Sie das Tool `kubectl` verwenden, um mit einem AKS-Cluster zu interagieren, wird eine Konfigurationsdatei verwendet, die Clusterverbindungsinformationen definiert. Diese Konfigurationsdatei ist üblicherweise unter *~/.kube/config* gespeichert. In dieser Datei vom Typ *kubeconfig* können mehrere Cluster definiert werden. Verwenden Sie den Befehl [kubectl config use-context][kubectl-config-use-context], um zwischen Clustern zu wechseln.
 
-Der Befehl [az aks get-credentials][az-aks-get-credentials] ermöglicht das Abrufen der Anmeldeinformationen für den Zugriff auf einen AKS-Cluster und führt sie in der Datei *kubeconfig* zusammen. Der Zugriff auf diese Anmeldeinformationen kann mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure gesteuert werden. Mithilfe dieser Azure RBAC-Rollen können Sie definieren, wer die Datei *kubeconfig* abrufen kann und über welche Berechtigungen diese Personen innerhalb des Clusters verfügen sollen.
+Der Befehl [az aks get-credentials][az-aks-get-credentials] ermöglicht das Abrufen der Anmeldeinformationen für den Zugriff auf einen AKS-Cluster und führt sie in der Datei *kubeconfig* zusammen. Der Zugriff auf diese Anmeldeinformationen kann mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) gesteuert werden. Mithilfe dieser Azure-Rollen können Sie definieren, wer die Datei *kubeconfig* abrufen kann und über welche Berechtigungen diese Personen innerhalb des Clusters verfügen sollen.
 
 Es stehen zwei integrierte Rollen zur Verfügung:
 
 * **Administratorrolle für Azure Kubernetes Service-Cluster**  
-    * Ermöglicht den Zugriff auf den API-Aufruf *Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action*. Dieser API-Aufruf [führt die Administratoranmeldeinformationen für den Cluster auf][api-cluster-admin].
-    * Lädt *kubeconfig* für die Rolle *clusterAdmin* herunter.
+  * Ermöglicht den Zugriff auf den API-Aufruf *Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action*. Dieser API-Aufruf [führt die Administratoranmeldeinformationen für den Cluster auf][api-cluster-admin].
+  * Lädt *kubeconfig* für die Rolle *clusterAdmin* herunter.
 * **Benutzerrolle für Azure Kubernetes Service-Cluster**
-    * Ermöglicht den Zugriff auf den API-Aufruf *Microsoft.ContainerService/managedClusters/listClusterUserCredential/action*. Dieser API-Aufruf [führt die Benutzeranmeldeinformationen für den Cluster auf][api-cluster-user].
-    * Lädt *kubeconfig* für die Rolle *clusterUser* herunter.
+  * Ermöglicht den Zugriff auf den API-Aufruf *Microsoft.ContainerService/managedClusters/listClusterUserCredential/action*. Dieser API-Aufruf [führt die Benutzeranmeldeinformationen für den Cluster auf][api-cluster-user].
+  * Lädt *kubeconfig* für die Rolle *clusterUser* herunter.
 
-Dieser RBAC-Rollen können einem Azure Active Directory-Benutzer (AAD) oder einer AAD-Gruppe zugewiesen werden.
+Diese Azure-Rollen können einem Azure Active Directory-Benutzer (AAD) oder einer AAD-Gruppe zugewiesen werden.
+
+> [!NOTE]
+> In Clustern, die Azure AD verwenden, verfügen Benutzer mit der Rolle *clusterUser* über eine leere Datei *kubeconfig*, die zur Anmeldung auffordert. Nachdem die Benutzer angemeldet sind, haben Sie Zugriff basierend auf ihren Azure AD-Benutzer- oder -Gruppeneinstellungen. Benutzer mit der Rolle *clusterAdmin* haben Administratorzugriff.
+>
+> Cluster, die Azure AD nicht verwenden, verwenden nur die Rolle *clusterAdmin*.
 
 ## <a name="assign-role-permissions-to-a-user-or-group"></a>Zuweisen von Rollenberechtigungen zu einem Benutzer oder einer Gruppe
 
 Wenn Sie eine der Azure-Rollen zuweisen möchten, benötigen Sie die Ressourcen-ID des AKS-Clusters und die ID des Azure AD-Benutzerkontos oder der Azure AD-Gruppe. Die folgenden Beispielbefehle:
 
 * Abrufen der Clusterressourcen-ID mithilfe des Befehls [az aks show][az-aks-show] für den Cluster *myAKSCluster* in der Ressourcengruppe *myResourceGroup*. Geben Sie nach Bedarf Ihren eigenen Cluster- und Ressourcengruppennamen an.
-* Abrufen Ihrer Benutzer-ID mithilfe der Befehle [az account show][az-account-show] und [az ad user show][az-ad-user-show]
-* Zuweisen einer Rolle mithilfe des Befehls [az role assignment create][az-role-assignment-create].
+* Verwenden Sie die Befehle [az account show][az-account-show] und [az ad user show][az-ad-user-show], um Ihre Benutzer-ID abzurufen.
+* Weisen Sie schließlich eine Rolle mithilfe des Befehls [az role assignment create][az-role-assignment-create] zu.
 
 Im folgenden Beispiel wird die *Administratorrolle für Azure Kubernetes Service-Cluster* einem einzelnen Benutzerkonto zugewiesen:
 
@@ -59,7 +61,7 @@ AKS_CLUSTER=$(az aks show --resource-group myResourceGroup --name myAKSCluster -
 
 # Get the account credentials for the logged in user
 ACCOUNT_UPN=$(az account show --query user.name -o tsv)
-ACCOUNT_ID=$(az ad user show --upn-or-object-id $ACCOUNT_UPN --query objectId -o tsv)
+ACCOUNT_ID=$(az ad user show --id $ACCOUNT_UPN --query objectId -o tsv)
 
 # Assign the 'Cluster Admin' role to the user
 az role assignment create \
@@ -90,7 +92,7 @@ Die folgende Beispielausgabe zeigt, dass die Rollenzuweisung erfolgreich erstell
 
 ## <a name="get-and-verify-the-configuration-information"></a>Abrufen und Überprüfen der Konfigurationsinformationen
 
-Rufen Sie nach dem Zuweisen von RBAC-Rollen mithilfe des Befehls [az aks get-credentials][az-aks-get-credentials] die Definition der Kubernetes-Konfiguration (*kubeconfig*) für Ihren AKS-Cluster ab. Im folgenden Beispiel werden die Anmeldeinformationen vom Typ *--admin* abgerufen, die ordnungsgemäß funktionieren, wenn dem Benutzer die *Clusteradministratorrolle* erteilt wurde:
+Rufen Sie nach dem Zuweisen von Azure-Rollen mithilfe des Befehls [az aks get-credentials][az-aks-get-credentials] die Definition der Kubernetes-Konfiguration (*kubeconfig*) für Ihren AKS-Cluster ab. Im folgenden Beispiel werden die Anmeldeinformationen vom Typ *--admin* abgerufen, die ordnungsgemäß funktionieren, wenn dem Benutzer die *Clusteradministratorrolle* erteilt wurde:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
@@ -152,5 +154,5 @@ az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-role-assignment-delete]: /cli/azure/role/assignment#az-role-assignment-delete
-[aad-integration]: azure-ad-integration.md
+[aad-integration]: ./azure-ad-integration-cli.md
 [az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show

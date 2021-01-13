@@ -1,17 +1,18 @@
 ---
-title: 'Gewusst wie: Skalieren mit mehreren Instanzen für Azure SignalR Service'
+title: 'Azure SignalR Service: Skalieren mit mehreren Instanzen'
 description: In vielen Skalierungsszenarien muss der Kunde häufig mehrere Instanzen bereitstellen und für die gemeinsame Nutzung konfigurieren, um eine umfangreiche Bereitstellung zu erzielen. Beispielsweise wird für das Sharding die Unterstützung mehreren Instanzen benötigt.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: e284a0492774e02cab79db6d9006c1718a7fcfc9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd6ac8c4d4fc4c3fec4f549f8ef4f955e2b1c637
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809247"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89439213"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Skalieren von SignalR Service mit mehreren Instanzen
 Das neueste SignalR Service SDK unterstützt mehrere Endpunkte für SignalR Service-Instanzen. Sie können dieses Feature zum Skalieren der gleichzeitigen Verbindungen oder für das regionsübergreifende Messaging verwenden.
@@ -26,7 +27,7 @@ Wenn der Schlüssel mit `Azure:SignalR:ConnectionString:` beginnt, sollte er das
 
 Sie können Verbindungszeichenfolgen für mehrere Instanzen hinzufügen, indem Sie die folgenden `dotnet`-Befehle verwenden:
 
-```batch
+```cmd
 dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-a <ConnectionString1>
 dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-b:primary <ConnectionString2>
 dotnet user-secrets set Azure:SignalR:ConnectionString:backup:secondary <ConnectionString3>
@@ -223,7 +224,7 @@ In Fällen mit regionsübergreifender Nutzung kann das Netzwerk instabil sein. F
 
 ![Regionsübergreifende Infrastruktur](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
-Wenn ein Client versucht, per `/negotiate` die Aushandlung mit dem App-Server über den Standardrouter durchzuführen, wird vom SDK ein Endpunkt aus den verfügbaren Endpunkten vom Typ `primary` **zufällig ausgewählt**. Wenn der Endpunkt verfügbar ist, führt das SDK dann eine **zufällige Auswahl** aus allen verfügbaren Endpunkten vom Typ `secondary` durch. Der Endpunkt wird als **verfügbar** gekennzeichnet, wenn die Verbindung zwischen Server und Dienstendpunkt aktiv ist.
+Wenn ein Client versucht, per `/negotiate` die Aushandlung mit dem App-Server über den Standardrouter durchzuführen, wird vom SDK ein Endpunkt aus den verfügbaren Endpunkten vom Typ `primary`**zufällig ausgewählt**. Wenn der primäre Endpunkt nicht verfügbar ist, führt das SDK dann eine **zufällige Auswahl** aus allen verfügbaren Endpunkten vom Typ `secondary` durch. Der Endpunkt wird als **verfügbar** gekennzeichnet, wenn die Verbindung zwischen Server und Dienstendpunkt aktiv ist.
 
 Wenn ein Client in einem regionsübergreifenden Szenario versucht, per `/negotiate` die Aushandlung mit dem App-Server durchzuführen, der in *USA, Osten* gehostet wird, wird standardmäßig immer der Endpunkt vom Typ `primary` zurückgegeben, der sich in derselben Region befindet. Falls alle Endpunkte der Region *USA, Osten* nicht verfügbar sind, wird der Client an die Endpunkte in anderen Regionen umgeleitet. Unten im Abschnitt „Failover“ ist das Szenario ausführlich beschrieben.
 

@@ -3,32 +3,31 @@ title: Registrieren von Anwendungen für die Verwendung von Azure Active Directo
 description: Dieser Artikel wendet sich an IT-Fachpersonal und erläutert Richtlinien zur Integration von Azure-Anwendungen in Active Directory.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/30/2018
-ms.author: mimart
-ms.custom: seohack1
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba54f8042c20a00f8d559ddce28e007a93afaace
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de16c947c59f5a0111b9325dbefe7daf1268fb40
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108284"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649159"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Entwickeln von Branchen-Apps für Azure Active Directory
-Dieser Leitfaden bietet eine Übersicht über die Entwicklung von Branchenanwendungen (Line of Business, LoB) für Azure Active Directory (AD) und richtet sich primär an globale Administratoren von Active Directory/Office 365.
+Dieser Leitfaden bietet eine Übersicht über die Entwicklung von Branchenanwendungen (Line of Business, LoB) für Azure Active Directory (AD) und richtet sich primär an globale Administratoren von Active Directory/Microsoft 365.
 
 ## <a name="overview"></a>Übersicht
-Das Erstellen von Anwendungen mit Azure AD ermöglicht Benutzern der betreffenden Organisation das einmalige Anmelden mit Office 365. Die Integration der Anwendung in Azure AD bietet Ihnen Kontrolle über die für die Anwendung festgelegte Authentifizierungsrichtlinie. Weitere Informationen zum bedingten Zugriff und zum Schutz von Apps mit Multi-Factor Authentication (MFA) finden Sie unter [Konfigurieren von Zugriffsregeln](../conditional-access/app-based-mfa.md).
+Das Erstellen von mit Azure AD integrierten Anwendungen ermöglicht Benutzern in Ihrer Organisation das einmalige Anmelden mit Microsoft 365. Die Integration der Anwendung in Azure AD bietet Ihnen Kontrolle über die für die Anwendung festgelegte Authentifizierungsrichtlinie. Weitere Informationen zum bedingten Zugriff und zum Schutz von Apps mit Multi-Factor Authentication (MFA) finden Sie unter [Konfigurieren von Zugriffsregeln](../authentication/tutorial-enable-azure-mfa.md).
 
 Registrieren Sie Ihre Anwendung für die Verwendung von Azure Active Directory. Wenn Sie die Anwendung registrieren, können Ihre Entwickler Azure AD verwenden, um Benutzer zu authentifizieren und Zugriff auf Benutzerressourcen wie E-Mails, Kalender und Dokumente anzufordern.
 
-Jedes Mitglied des Verzeichnisses (nicht Gäste) kann eine Anwendung registrieren, was auch als *Erstellung eines Anwendungsobjekts*bezeichnet wird.
+Jedes Mitglied des Verzeichnisses (nicht Gäste) kann eine Anwendung registrieren, was auch als *Erstellung eines Anwendungsobjekts* bezeichnet wird. Wenn Sie eine Anwendung nicht registrieren können, bedeutet dies, dass der globale Administrator Ihres Verzeichnisses diese Funktionalität eingeschränkt hat, und Sie sich möglicherweise an ihn wenden müssen, um [die richtigen Rechte zu erhalten](../roles/delegate-app-roles.md#assign-built-in-application-admin-roles), um die Anwendung registrieren zu können. Weitere Informationen zum Einschränken von Benutzern finden Sie unter [Delegieren von App-Registrierungsberechtigungen in Azure Active Directory](../roles/delegate-app-roles.md#restrict-who-can-create-applications).
 
 Durch das Registrieren einer Anwendung können alle Benutzer folgende Aktionen ausführen:
 
@@ -41,8 +40,8 @@ Durch das Registrieren einer Anwendung können alle Benutzer folgende Aktionen a
   * Azure Active Directory als oAuth-Autorisierungsserver (Absichern einer von der Anwendung offengelegten API)
 * Legen Sie die erforderlichen Berechtigungen für das ordnungsgemäße Funktionieren der Anwendung fest, einschließlich:
 
-     - App-Berechtigungen (nur für globale Administratoren). Beispiel:  Rollenmitgliedschaft in einer anderen Azure AD-Anwendung oder Rollenmitgliedschaft in Bezug auf eine Azure-Ressource, eine Azure-Ressourcengruppe oder ein Azure-Abonnement
-     - Delegierte Berechtigungen (jeder Benutzer) Beispiel:  Azure AD, Anmelden und Profil lesen
+     - App-Berechtigungen (nur für globale Administratoren). Zum Beispiel: Rollenmitgliedschaft in einer anderen Azure AD-Anwendung oder Rollenmitgliedschaft in Bezug auf eine Azure-Ressource, eine Azure-Ressourcengruppe oder ein Azure-Abonnement
+     - Delegierte Berechtigungen (jeder Benutzer) Zum Beispiel: Azure AD, Anmelden und Profil lesen
 
 > [!NOTE]
 > Standardmäßig kann jedes Mitglied eine Anwendung registrieren. Informationen zum Einschränken von Berechtigungen für die Registrierung von Anwendungen für bestimmte Mitglieder finden Sie unter [Wie werden Anwendungen zu Azure AD hinzugefügt?](../develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)
@@ -56,14 +55,14 @@ Folgende Schritte sind für globale Administratoren erforderlich, um Entwickler 
 * Standardmäßiges Unterdrücken der Oberfläche für die Benutzerzustimmung
 
 ## <a name="configure-access-rules"></a>Konfigurieren von Zugriffsregeln
-Konfigurieren Sie anwendungsspezifische Zugriffsregeln für Ihre SaaS-Apps. Sie können z.B. MFA anfordern oder den Zugriff ausschließlich für Benutzer in vertrauenswürdigen Netzwerken gewähren. Weitere Informationen dazu finden Sie im Dokument [Konfigurieren von Zugriffsregeln](../conditional-access/app-based-mfa.md).
+Konfigurieren Sie anwendungsspezifische Zugriffsregeln für Ihre SaaS-Apps. Sie können z.B. MFA anfordern oder den Zugriff ausschließlich für Benutzer in vertrauenswürdigen Netzwerken gewähren. Weitere Informationen dazu finden Sie im Dokument [Konfigurieren von Zugriffsregeln](../authentication/tutorial-enable-azure-mfa.md).
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Konfigurieren der Anwendung für das Erfordern von Benutzerrechten und Zuweisen von Benutzern
-Standardmäßig können Benutzer auf Anwendungen zugreifen, ohne diesen zugewiesen zu sein. Falls die Anwendung jedoch Rollen verfügbar macht oder Sie möchten, dass die Anwendung im Zugriffsbereich eines Benutzers angezeigt wird, sollten Sie Benutzerzuweisungen erforderlich machen.
+Standardmäßig können Benutzer auf Anwendungen zugreifen, ohne diesen zugewiesen zu sein. Falls die Anwendung jedoch Rollen verfügbar macht oder Sie möchten, dass die Anwendung unter „Meine Apps“ für einen Benutzer angezeigt wird, sollten Sie Benutzerzuweisungen erforderlich machen.
 
 Abonnenten von Azure AD Premium oder Enterprise Mobility Suite (EMS) empfehlen wir ausdrücklich die Nutzung von Gruppen. Durch das Zuweisen von Gruppen zu der Anwendung kann die laufende Zugriffsverwaltung an den Besitzer der Gruppe delegiert werden. Sie können eine solche Gruppe selbst erstellen oder die zuständige Person in Ihrer Organisation bitten, die Gruppe mithilfe des vorhandenen Tools für die Gruppenverwaltung zu erstellen.
 
-[Zuweisen von Benutzern und Gruppen zu einer Anwendung](methods-for-assigning-users-and-groups.md)  
+[Zuweisen von Benutzern und Gruppen zu einer Anwendung](./assign-user-or-group-access-portal.md)  
 
 
 ## <a name="suppress-user-consent"></a>Unterdrücken der Benutzerzustimmung
@@ -71,9 +70,8 @@ Standardmäßig muss jeder Benutzer einen Zustimmungsprozess durchlaufen, um sic
 
 Für Anwendungen, die Sie als vertrauenswürdig einstufen, können Sie die Benutzerfreundlichkeit verbessern, indem Sie der Anwendung im Auftrag Ihres Unternehmens die Zustimmung erteilen.
 
-Weitere Informationen über die Benutzerzustimmung und den Zustimmungsprozess in Azure finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).
+Weitere Informationen über die Benutzerzustimmung und den Zustimmungsprozess in Azure finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../develop/quickstart-register-app.md).
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Ermöglichen des sicheren Remotezugriffs auf lokale Anwendungen mit dem Azure AD-Anwendungsproxy](application-proxy.md)
 * [Verwalten des Zugriffs auf Apps mit Azure AD](what-is-access-management.md)
-

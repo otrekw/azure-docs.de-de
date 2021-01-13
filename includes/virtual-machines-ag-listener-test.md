@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: d579e7a4fd83c1a0ce335e0b2357dcbafb217398
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2689e81b089147dfc913fb119e0a499d60574b60
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178036"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050417"
 ---
 In diesem Schritt testen Sie den Verfügbarkeitsgruppenlistener mithilfe einer Clientanwendung, die im selben Netzwerk ausgeführt wird.
 
@@ -20,7 +20,9 @@ Für die Clientkonnektivität gelten folgende Anforderungen:
 
 Ein Beispiel ist die Verbindung mit dem Listener über einen der virtuellen Computer im gleichen virtuellen Azure-Netzwerk (jedoch nicht über den, der ein Replikat hostet). Eine einfache Möglichkeit zum Ausführen dieses Tests besteht darin, SQL Server Management Studio mit dem Verfügbarkeitsgruppenlistener zu verbinden. Eine weitere einfache Methode ist die Ausführung von [SQLCMD.exe](https://technet.microsoft.com/library/ms162773.aspx) wie folgt:
 
-    sqlcmd -S "<ListenerName>,<EndpointPort>" -d "<DatabaseName>" -Q "select @@servername, db_name()" -l 15
+```console
+sqlcmd -S "<ListenerName>,<EndpointPort>" -d "<DatabaseName>" -Q "select @@servername, db_name()" -l 15
+```
 
 > [!NOTE]
 > Wenn der EndpointPort-Wert *1433* ist, müssen Sie ihn nicht im Aufruf angeben. Beim vorherigen Aufruf wird zudem davon ausgegangen, dass der Clientcomputer zur gleichen Domäne gehört und dass dem Aufrufer Berechtigungen für die Datenbank mithilfe der Windows-Authentifizierung gewährt wurden.

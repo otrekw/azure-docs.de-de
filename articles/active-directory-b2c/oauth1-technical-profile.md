@@ -1,21 +1,22 @@
 ---
-title: Definieren eines technischen OAuth1-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie ein technisches OAuth1-Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
+title: Definieren eines technischen OAuth1-Profils in einer benutzerdefinierten Richtlinie
+titleSuffix: Azure AD B2C
+description: Hier erfahren Sie, wie Sie ein technisches OAuth 1.0-Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 97fa5757f8b77e29545f6d6f6b885334c7b526f1
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 7a2cbca8c02dcbfc0e59d31040d1fca7a790cd35
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063986"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936657"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OAuth1-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -27,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für Identitäts
 
 Das **Name**-Attribut des **Protocol**-Elements muss auf `OAuth1` festgelegt werden. Das Protokoll für das technische Profil **Twitter-OAUTH1** ist z.B. `OAuth1`.
 
-```XML
+```xml
 <TechnicalProfile Id="Twitter-OAUTH1">
   <DisplayName>Twitter</DisplayName>
   <Protocol Name="OAuth1" />
@@ -67,7 +68,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 ## <a name="metadata"></a>Metadaten
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | client_id | Ja | Die Anwendungs-ID des Identitätsanbieters. |
 | ProviderName | Nein | Der Name des Identitätsanbieters. |
@@ -81,29 +82,14 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 Das **CryptographicKeys**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | client_secret | Ja | Der geheime Clientschlüssel der Anwendung des Identitätsanbieters.   |
 
 ## <a name="redirect-uri"></a>Umleitungs-URI
 
-Wenn Sie die Umleitungs-URL Ihres Identitätsanbieters konfigurieren, geben Sie `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp` an. Ersetzen Sie **tenant** durch den Namen Ihres Mandanten (z.B. contosob2c.onmicrosoft.com) und **policyId** durch Ihre Richtlinien-ID (z.B. b2c_1_policy). Der Umleitungs-URI muss klein geschrieben sein. Fügen Sie eine Umleitungs-URL für alle Richtlinien hinzu, die die Anmeldung des Identitätsanbieters verwenden.
-
-Achten Sie bei Verwendung der Domäne **b2clogin.com** anstelle von **login.microsoftonline.com** darauf, b2clogin.com anstelle von login.microsoftonline.com zu verwenden.
+Wenn Sie den Umleitungs-URI Ihres Identitätsanbieters konfigurieren, geben Sie `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/{policy-id}/oauth1/authresp` an. Ersetzen Sie `{tenant-name}` durch den Namen Ihres Mandanten (z. B. „contosob2c“) und `{policy-id}` durch den Bezeichner Ihrer Richtlinie (z. B. „b2c_1a_policy“). Der Umleitungs-URI muss klein geschrieben sein. Fügen Sie eine Umleitungs-URL für alle Richtlinien hinzu, die die Anmeldung des Identitätsanbieters verwenden.
 
 Beispiele:
 
-- [Hinzufügen von Twitter als OAuth1-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien](active-directory-b2c-custom-setup-twitter-idp.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
+- [Hinzufügen von Twitter als OAuth1-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien](identity-provider-twitter.md)

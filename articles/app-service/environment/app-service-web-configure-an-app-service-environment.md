@@ -1,25 +1,18 @@
 ---
-title: Konfigurieren einer App Service-Umgebung v1 – Azure
-description: Konfiguration, Verwaltung und Überwachung der App Service-Umgebung v1
-services: app-service
-documentationcenter: ''
+title: Konfigurieren der ASE v1
+description: Konfiguration, Verwaltung und Überwachung der App Service-Umgebung v1 Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b8a05b7e8466187202e6a4d11efce288238cc19b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 598e43d07c213cfeb25f0ecbc7bd02b6ec54b7ed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069950"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88962586"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurieren einer App Service-Umgebung v1
 
@@ -51,7 +44,7 @@ Das Ändern der Menge oder Größe wird als Skalierungsvorgang bezeichnet.  Es k
 * Die Bereitstellung von Front-Ends kann bis zu einer Stunde dauern. 
 * Um eine noch genauere Skalierung zu erzielen, sollten Sie den CPU-Prozentsatz, den Arbeitsspeicher-Prozentsatz und Metriken zu aktiven Anforderungen für den Front-End-Pool überwachen. Wenn die CPU- oder Arbeitsspeicher-Prozentsätze beim Ausführen von P3-Einheiten über einem Wert von 70 liegen, sollten Sie mehr Front-Ends hinzufügen. Wenn der Wert für die aktiven Anforderungen durchschnittlich bei 15.000 bis 20.000 Anforderungen pro Front-End liegt, sollten Sie ebenfalls weitere Front-Ends hinzufügen. Bei der Ausführung von P3-Einheiten ist das Ziel also, für CPU und Arbeitsspeicher einen Prozentsatz von weniger als 70% und für aktive Anforderungen im Durchschnitt eine Anzahl von weniger als 15.000 Anforderungen pro Front-End zu erreichen.  
 
-**Worker**: In den Workern werden Ihre Apps tatsächlich ausgeführt. Wenn Sie Ihre App Service-Pläne zentral hochskalieren, werden für diesen Vorgang Worker im zugeordneten Workerpool genutzt.
+**Worker**: In den Workern werden Ihre Apps tatsächlich ausgeführt. Wenn Sie Ihre App Service-Pläne hochskalieren, werden für diesen Vorgang Worker im zugeordneten Workerpool genutzt.
 
 * Es ist nicht möglich, umgehend Worker hinzuzufügen. Die Bereitstellung kann bis zu einer Stunde dauern.
 * Die Skalierung der Größe einer Computeressource für einen Pool dauert weniger als eine Stunde pro Updatedomäne. Eine App Service-Umgebung verfügt über 20 Updatedomänen. Wenn Sie die Computegröße eines Workerpools mit zehn Instanzen skalieren, kann der Vorgang also bis zu zehn Stunden dauern.
@@ -59,14 +52,14 @@ Das Ändern der Menge oder Größe wird als Skalierungsvorgang bezeichnet.  Es k
 
 Die Größe von Computeressourcen eines Workerpools, in dem keine Apps ausgeführt werden, lässt sich wie folgt am schnellsten ändern:
 
-* Skalieren Sie die Workermenge zentral auf „2“ herunter.  „2“ ist die Mindestgröße für zentrales Herunterskalieren im Portal. Das Aufheben der Zuordnung Ihrer Instanzen dauert einige Minuten. 
+* Skalieren Sie die Workermenge auf „2“ herunter.  „2“ ist die Mindestgröße für zentrales Herunterskalieren im Portal. Das Aufheben der Zuordnung Ihrer Instanzen dauert einige Minuten. 
 * Wählen Sie die neue Computegröße und die Anzahl von Instanzen. Anschließend dauert es noch bis zu zwei Stunden, bis der Vorgang abgeschlossen ist.
 
 Wenn für Ihre Apps mehr Computeressourcen erforderlich sind, sind die vorstehenden Schritte keine geeignete Lösung. Anstatt die Größe des Workerpools zu ändern, in dem die Apps gehostet werden, können Sie einen anderen Workerpool mit Workern der gewünschten Größe füllen und Ihre Apps in diesen Pool verschieben.
 
 * Erstellen Sie die zusätzlichen Instanzen der erforderlichen Computegröße in einem anderen Workerpool. Dies dauert bis zu einer Stunde.
 * Weisen Sie Ihre App Service-Pläne, über die die Apps mit den höheren Ressourcenanforderungen gehostet werden, dem neu konfigurierten Workerpool zu. Dies ist ein schneller Vorgang, der in weniger als einer Minute abgeschlossen sein sollte.  
-* Skalieren Sie den ersten Workerpool zentral herunter, wenn Sie die nicht genutzten Instanzen nicht mehr benötigen. Dieser Vorgang dauert einige Minuten.
+* Skalieren Sie den ersten Workerpool herunter, wenn Sie die nicht genutzten Instanzen nicht mehr benötigen. Dieser Vorgang dauert einige Minuten.
 
 **Automatische Skalierung**: Ein Tool, das Sie beim Verwalten Ihres Computerressourcenverbrauchs unterstützen kann, ist die automatische Skalierung. Sie können die automatische Skalierung für Front-End- oder Workerpools nutzen. Es ist beispielsweise möglich, die Instanzen eines beliebigen Pooltyps am Morgen zu erhöhen und am Abend wieder zu reduzieren. Sie können auch Instanzen hinzufügen, wenn die Anzahl von Workern, die in einem Workerpool verfügbar sind, unter einen bestimmten Schwellenwert fällt.
 
@@ -161,7 +154,7 @@ Um den Skalierungsvorgang auf dem Blatt „App Service-Umgebung“ zu verwenden,
 
 ![Benutzeroberfläche „Skalieren“][6]
 
-Wenn Sie die Funktionen für die manuelle oder die automatische Skalierung in einem bestimmten Ressourcenpool verwenden möchten, wechseln Sie zu **Einstellungen** > **Front-End-Pool** /  **Workerpools**. Öffnen Sie anschließend den Pool, den Sie ändern möchten. Wählen Sie **Einstellungen** > **Horizontal hochskalieren** bzw. **Einstellungen** > **Zentral hochskalieren**. Auf dem Blatt **Horizontal hochskalieren** können Sie die Anzahl von Instanzen steuern. **Zentral hochskalieren** ermöglicht die Festlegung der Ressourcengröße.  
+Wenn Sie die Funktionen für die manuelle oder die automatische Skalierung in einem bestimmten Ressourcenpool verwenden möchten, wechseln Sie zu **Einstellungen** > **Front-End-Pool** / **Workerpools**. Öffnen Sie anschließend den Pool, den Sie ändern möchten. Wählen Sie **Einstellungen** > **Aufskalieren** bzw. **Einstellungen** > **Hochskalieren**. Auf dem Blatt **Aufskalieren** können Sie die Anzahl von Instanzen steuern. **Hochskalieren** ermöglicht die Festlegung der Ressourcengröße.  
 
 ![Benutzeroberfläche „Skalierungseinstellungen“][7]
 
@@ -213,7 +206,7 @@ Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Erstellen
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
-[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md

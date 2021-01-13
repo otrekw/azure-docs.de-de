@@ -1,26 +1,22 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Central Desktop | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Central Desktop | Microsoft Docs'
 description: Erfahren Sie, wie Sie die einmalige Anmeldung zwischen Azure Active Directory und Central Desktop konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b805d485-93db-49b4-807a-18d446c7090e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58fcd21c7e6e3f2336d3e809584451dc38f6276b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36ba61c86082e191831c2c890de4466181f1a4db
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105733"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674185"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Tutorial: Azure Active Directory-Integration mit Central Desktop
 
@@ -31,7 +27,7 @@ Die Integration von Central Desktop in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei Central Desktop angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -67,7 +63,7 @@ Zum Konfigurieren der Integration von Central Desktop in Azure AD müssen Sie Ce
 
 4. Geben Sie im Suchfeld **Central Desktop** ein, wählen Sie im Ergebnisbereich **Central Desktop** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Central Desktop in der Ergebnisliste](common/search-new-app.png)
+    ![Central Desktop in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -108,12 +104,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Central�
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.centraldesktop.com`
 
     b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein:
-    
-    | |
-    |--|
-    | `https://<companyname>.centraldesktop.com/saml2-metadata.php`|
-    | `https://<companyname>.imeetcentral.com/saml2-metadata.php`|
-    | |
+
+    ```http
+    https://<companyname>.centraldesktop.com/saml2-metadata.php
+    https://<companyname>.imeetcentral.com/saml2-metadata.php
+    ```
 
     c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<companyname>.centraldesktop.com/saml2-assertion.php`
 
@@ -140,11 +135,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Central�
 
 2. Wechseln Sie zu **Einstellungen**. Wählen Sie **Advanced**, und wählen Sie dann **Single Sign On**.
 
-    ![Setup – Erweitert](./media/central-desktop-tutorial/ic769563.png "Setup – Erweitert")
+    ![Erweitertes Setup](./media/central-desktop-tutorial/ic769563.png "Setup - Advanced")
 
 3. Führen Sie im Dialogfeld **Single Sign On Settings** die folgenden Schritte aus:
 
-    ![Einstellungen für einmaliges Anmelden](./media/central-desktop-tutorial/ic769564.png "Einstellungen für einmaliges Anmelden")
+    ![Single sign-on settings (Einstellungen für einmaliges Anmelden)](./media/central-desktop-tutorial/ic769564.png "Single Sign On Settings")
 
     a. Aktivieren Sie **Enable SAML v2 Single Sign On**.
 
@@ -156,9 +151,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Central�
 
 4. Führen Sie im Abschnitt **Message Signature Verification Method** die folgenden Schritte aus:
 
-    ![Methode zur Nachrichtensignaturüberprüfung](./media/central-desktop-tutorial/ic769565.png "Methode zur Nachrichtensignaturüberprüfung")
-    
-    a. Wählen Sie **Certificate**aus.
+    ![Message signature verification method (Überprüfungsmethode für die Nachrichtensignatur)](./media/central-desktop-tutorial/ic769565.png "Message Signature Verification Method")
+
+    a. Wählen Sie **Certificate** aus.
 
     b. Wählen Sie in der Liste **SSO Certificate** die Option **RSH SHA256** aus.
 
@@ -185,13 +180,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -236,12 +231,12 @@ Damit sich Azure AD-Benutzer anmelden können, müssen sie in der Central Deskto
 
 3. Geben Sie im Textfeld **Email Address of New Members** ein Azure AD-Konto ein, das Sie bereitstellen möchten, und klicken Sie dann auf **Next**.
 
-    ![E-Mail-Adressen neuer Mitglieder](./media/central-desktop-tutorial/ic781052.png "E-Mail-Adressen neuer Mitglieder")
+    ![Email addresses of new members (E-Mail-Adressen neuer Mitglieder)](./media/central-desktop-tutorial/ic781052.png "Email addresses of new members (E-Mail-Adressen neuer Mitglieder)")
 
 4. Wählen Sie **Add Internal member(s)** aus.
 
-    ![Internes Mitglied hinzufügen](./media/central-desktop-tutorial/ic781053.png "Internes Mitglied hinzufügen")
-  
+    ![Hinzufügen interner Mitglieder](./media/central-desktop-tutorial/ic781053.png "Hinzufügen interner Mitglieder")
+
    > [!NOTE]
    > Die Benutzer, die Sie hinzufügen, erhalten eine E-Mail, die einen Bestätigungslink zum Aktivieren ihrer Konten enthält.
 
@@ -249,12 +244,12 @@ Damit sich Azure AD-Benutzer anmelden können, müssen sie in der Central Deskto
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Central Desktop“ klicken, sollten Sie automatisch bei der Central Desktop-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Central Desktop“ klicken, sollten Sie automatisch bei der Central Desktop-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

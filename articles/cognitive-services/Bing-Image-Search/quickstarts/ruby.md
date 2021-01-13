@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Suchen nach Bildern – Bing-Bildersuche-REST-API und Ruby'
+title: 'Schnellstart: Suchen nach Bildern mithilfe der Bing-Bildersuche-REST-API und Ruby'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung, um Bildsuchanforderungen mithilfe von Ruby an die Bing-Bildersuche-REST-API zu senden und JSON-Antworten zu empfangen.
 services: cognitive-services
@@ -9,34 +9,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 60a8c0009073a996aef7e7fd0bda8f88311b34e6
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 13812fe8590a1046e510c936208258145878adf6
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383599"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341630"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>Schnellstart: Suchen nach Bildern mithilfe der Bing-Bildersuche-REST-API und Ruby
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Verwenden Sie diesen Schnellstart, um die Bing-Bildersuche-API zum ersten Mal aufzurufen und eine JSON-Antwort zu erhalten. Diese einfache Ruby-Anwendung sendet eine Suchabfrage an die API und zeigt die Rohdatenergebnisse an.
 
 Diese Anwendung ist zwar in Ruby geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
 
 Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingImageSearchv7.rb).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Die aktuelle Version von Ruby](https://www.ruby-lang.org/en/downloads/)
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
+Weitere Informationen finden Sie unter [Cognitive Services-Preise: Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-the-application"></a>Erstellen und Initialisieren der Anwendung
 
-1. Importieren Sie die folgenden Pakete in Ihre Codedatei.
+1. Importieren Sie die folgenden Pakete in Ihre Codedatei:
 
     ```ruby
     require 'net/https'
@@ -44,7 +50,7 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
     require 'json'
     ```
 
-2. Erstellen Sie Variablen für den API-Endpunkt, den Bildersuche-API-Pfad, Ihren Abonnementschlüssel und einen Suchbegriff.
+2. Erstellen Sie Variablen für den API-Endpunkt, den Bildersuche-API-Pfad, Ihren Abonnementschlüssel und einen Suchbegriff. Für `uri` können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -144,8 +150,7 @@ Antworten der Bing-Bildersuche-API werden im JSON-Format zurückgegeben. Diese B
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Was ist die Bing-Bildersuche?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Interaktive Onlinedemo testen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Abrufen eines kostenlosen Cognitive Services-Zugriffsschlüssels](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentation zu Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
-* [Referenz zur Bing-Bildersuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Was ist die Bing-Bildersuche-API?](../overview.md)  
+* [Interaktive Onlinedemo testen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)   
+* [Dokumentation zu Azure Cognitive Services](../../index.yml)
+* [Referenz zur Bing-Bildersuche-API](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

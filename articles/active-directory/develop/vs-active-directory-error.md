@@ -1,29 +1,27 @@
 ---
-title: Diagnostizieren von Fehlern mit dem verbundenen Dienst für Azure Active Directory
+title: Diagnostizieren von Fehlern mit dem verbundenen Dienst für Azure AD (Visual Studio)
 description: Der verbundene Dienst für Active Directory hat einen inkompatiblen Authentifizierungstyp erkannt.
 author: ghogen
 manager: jillfra
-ms.assetid: dd89ea63-4e45-4da1-9642-645b9309670a
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e544942029532fdbe998c36917e688d70ce4ed5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7b437e3117540719c8c0adc5701ac1a5e934340b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851995"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88114471"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Diagnostizieren von Fehlern mit dem verbundenen Dienst für Azure Active Directory
 
 Beim Erkennen des vorherigen Authentifizierungscodes hat der verbundene Dienst für Azure Active Directory einen inkompatiblen Authentifizierungstyp erkannt.
 
-Um den vorherigen Authentifizierungscode in einem Projekt richtig erkennen zu können, muss das Projekt erstellt werden.  Wenn dieser Fehler angezeigt wird und in Ihrem Projekt kein vorheriger Authentifizierungscode enthalten ist, erstellen Sie Ihr Projekt neu, und versuchen Sie es nochmals.
+Um den vorherigen Authentifizierungscode in einem Projekt richtig erkennen zu können, muss das Projekt neu erstellt werden. Wenn dieser Fehler angezeigt wird und in Ihrem Projekt kein vorheriger Authentifizierungscode enthalten ist, erstellen Sie Ihr Projekt neu, und versuchen Sie es nochmals.
 
 ## <a name="project-types"></a>Projekttypen
 
@@ -35,16 +33,20 @@ Der verbundene Dienst überprüft auch Authentifizierungseinstellungen, die zuvo
 
 In einem MVC-Projekt überprüft der verbundene Dienst die folgenden Einstellungen, die aus der vorherigen Verwendung des Diensts resultieren:
 
-    <add key="ida:ClientId" value="" />
-    <add key="ida:Tenant" value="" />
-    <add key="ida:AADInstance" value="" />
-    <add key="ida:PostLogoutRedirectUri" value="" />
+```xml
+<add key="ida:ClientId" value="" />
+<add key="ida:Tenant" value="" />
+<add key="ida:AADInstance" value="" />
+<add key="ida:PostLogoutRedirectUri" value="" />
+```
 
 Außerdem überprüft der verbundene Dienst die folgenden Einstellungen in einem Web-API-Projekt, die aus der vorherigen Verwendung des Diensts resultieren:
 
-    <add key="ida:ClientId" value="" />
-    <add key="ida:Tenant" value="" />
-    <add key="ida:Audience" value="" />
+```xml
+<add key="ida:ClientId" value="" />
+<add key="ida:Tenant" value="" />
+<add key="ida:Audience" value="" />
+```
 
 ## <a name="incompatible-authentication-code"></a>Nicht kompatibler Authentifizierungscode
 
@@ -94,4 +96,4 @@ Zum Erkennen der alten Form der Organisationskontoauthentifizierung sucht der ve
 
 Sie können den Authentifizierungstyp ändern, indem Sie den inkompatiblen Authentifizierungstyp entfernen und versuchen, den verbundenen Dienst wieder hinzuzufügen.
 
-Weitere Informationen finden Sie unter [Authentifizierungsszenarien für Azure AD](authentication-scenarios.md).
+Weitere Informationen finden Sie unter [Authentifizierungsszenarien für Azure AD](./authentication-vs-authorization.md).

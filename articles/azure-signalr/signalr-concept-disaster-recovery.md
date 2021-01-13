@@ -4,16 +4,17 @@ description: Übersicht über die Einrichtung mehrerer SignalR Service-Instanzen
 author: chenkennt
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: eb70e65db4a086afc60e91cadf55a8844b102591
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1cb48d1ae858dbcd0df80780b4c3cee3deac75b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61402131"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90976490"
 ---
-# <a name="resiliency-and-disaster-recovery"></a>Resilienz und Notfallwiederherstellung
+# <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Resilienz und Notfallwiederherstellung in Azure SignalR Service
 
 Resilienz und Notfallwiederherstellung sind eine übliche Anforderung für Onlinesysteme. Azure SignalR Service garantiert schon heute eine Verfügbarkeit von 99,9 %, ist aber noch immer ein regionaler Dienst.
 Ihre Dienstinstanz wird immer in einer einzigen Region ausgeführt, und im Fall eines regionsweiten Ausfalls findet kein Failover zu einer anderen Region statt.
@@ -41,7 +42,7 @@ Wenn ein Client eine Verbindung herstellt, wird er aber immer zum App-Server in 
 
 Das folgende Diagramm veranschaulicht diese Topologie:
 
-![Topologie](media/signalr-concept-disaster-recovery/topology.png)
+![Das Diagramm zeigt zwei Regionen, die jeweils einen App-Server und einen SignalR-Dienst aufweisen, und in denen jeder Server dem SignalR-Dienst für seine Region als primärer Server und dem Dienst in der anderen Region als sekundärer Server zugeordnet ist.](media/signalr-concept-disaster-recovery/topology.png)
 
 ## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Konfigurieren von App-Servern mit mehreren SignalR Service-Instanzen
 
@@ -51,11 +52,11 @@ Dafür stehen Ihnen zwei Möglichkeiten zur Auswahl:
 
 ### <a name="through-config"></a>Über die Konfigurationsdatei
 
-Sie sollten bereits wissen, wie Sie die SignalR Service-Verbindungszeichenfolge über „Umgebungsvariablen/App-Einstellungen/web.config“ mit einem Konfigurationseintrag namens `Azure:SignalR:ConnectionString` festlegen.
+Sie sollten bereits wissen, wie Sie die SignalR-Service-Verbindungszeichenfolge über Umgebungsvariablen/App-Einstellungen/web.config in einem Konfigurationseintrag namens `Azure:SignalR:ConnectionString` festlegen.
 Wenn Sie mehrere Endpunkte haben, können Sie diese in mehreren Konfigurationseinträgen im folgenden Format festlegen:
 
 ```
-Azure:SignalR:Connection:<name>:<role>
+Azure:SignalR:ConnectionString:<name>:<role>
 ```
 
 Hier ist `<name>` der Name des Endpunkts, und `<role>` ist die zugehörige Rolle (primär oder sekundär).
@@ -63,9 +64,9 @@ Der Name ist optional. Er ist jedoch hilfreich, wenn Sie das Routingverhalten zw
 
 ### <a name="through-code"></a>Über den Code
 
-Wenn Sie die Verbindungszeichenfolge an anderer Stelle speichern möchten, können Sie sie auch in Ihrem Code einlesen und als Parameter beim Aufrufen von `AddAzureSignalR()` (ASP.NET Core) oder `MapAzureSignalR()` (ASP.NET) verwenden.
+Wenn Sie die Verbindungszeichenfolgen an anderer Stelle speichern möchten, können Sie sie auch in Ihrem Code einlesen und als Parameter beim Aufrufen von `AddAzureSignalR()` (ASP.NET Core) oder `MapAzureSignalR()` (ASP.NET) verwenden.
 
-Hier sehen Sie den Beispielcode:
+Der Beispielcode sieht wie folgt aus:
 
 ASP.NET Core:
 
@@ -87,6 +88,11 @@ app.MapAzureSignalR(GetType().FullName, hub,  options => options.Endpoints = new
         new ServiceEndpoint("<connection_string2>", EndpointType.Secondary, "region2"),
     };
 ```
+
+Sie können mehrere primäre oder sekundäre Instanzen konfigurieren. Wenn mehrere primäre und/oder sekundäre Instanzen vorhanden sind, gibt das Aushandeln einen Endpunkt in dieser Reihenfolge zurück:
+
+1. Wenn mindestens eine primäre Instanz online ist, wird eine zufällige primäre Onlineinstanz zurückgegeben.
+2. Wenn alle primären Instanzen ausgefallen sind, wird eine zufällige sekundäre Onlineinstanz zurückgegeben.
 
 ## <a name="failover-sequence-and-best-practice"></a>Failoversequenz und bewährte Methode
 

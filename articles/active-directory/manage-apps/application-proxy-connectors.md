@@ -1,23 +1,23 @@
 ---
 title: Grundlegendes zu Azure AD-Anwendungsproxyconnectors | Microsoft-Dokumentation
-description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungsproxy-Connectors.
+description: Hier erhalten Sie Informationen zu Azure AD-Anwendungsproxyconnectors.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4666a9d084f6fc12cd68b69d5c71cafc3de0439
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8086bd2a193ac52e76bf8da245063163ab2ea2f9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807783"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591054"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -37,7 +37,7 @@ Sie benötigen einen Server, auf dem Windows Server 2012 R2 oder höher ausgefü
 Auf dem Windows-Server muss TLS 1.2 aktiviert werden, bevor Sie den Anwendungsproxy-Connector installieren. So aktivieren Sie TLS 1.2 auf dem Server
 
 1. Legen Sie die folgenden Registrierungsschlüssel fest:
-    
+
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
@@ -88,7 +88,7 @@ Weitere Informationen zu Connectorgruppen finden Sie unter [Veröffentlichen von
 
 ## <a name="capacity-planning"></a>Kapazitätsplanung
 
-Sie sollten unbedingt sicherstellen, dass Sie ausreichend Kapazität zwischen den Connectors zum Verarbeiten des erwarteten Datenverkehrs geplant haben. Um Hochverfügbarkeit und Skalierung zu gewährleisten, wird empfohlen, jeder Connectorgruppe mindestens zwei Connectors zuzuweisen. Mit drei Connectors sind Sie in dem Fall, dass Sie einen Computer warten müssen, optimal aufgestellt.
+Sie sollten unbedingt sicherstellen, dass Sie ausreichend Kapazität zwischen den Connectors zum Verarbeiten des erwarteten Datenverkehrs geplant haben. Um Hochverfügbarkeit und Skalierung zu gewährleisten, sollten jeder Connectorgruppe mindestens zwei Connectors zugewiesen werden. Mit drei Connectors sind Sie in dem Fall, dass Sie einen Computer warten müssen, optimal aufgestellt.
 
 Im Allgemeinen gilt: Je mehr Benutzer Sie haben, desto größer muss der Computer dimensioniert sein. Die Tabelle weiter unten bietet einen Überblick über das Volumen und die erwartete Latenz bei verschiedenen Computern. Hinweis: Da Nutzungsmuster variieren und sich somit nicht für die Lastprognose eignen, basieren die Angaben nicht auf Benutzern, sondern jeweils auf den erwarteten Transaktionen pro Sekunde (TPS). Abhängig von der Antwortgröße und der Antwortzeit der Back-End-Anwendung ist außerdem mit gewissen Abweichungen zu rechnen: Bei größeren Antworten und längeren Antwortzeiten verringert sich der TPS-Maximalwert. Es wird empfohlen, zusätzliche Computer einzusetzen, um für die auf die Computer verteilte Last immer ausreichend Puffer zur Verfügung zu haben. Die zusätzliche Kapazität sorgt für Hochverfügbarkeit und Resilienz.
 
@@ -102,7 +102,9 @@ Im Allgemeinen gilt: Je mehr Benutzer Sie haben, desto größer muss der Compute
 \* Dieser Computer hat eine benutzerdefinierte Einstellung verwendet, um einige der Standardgrenzwerte für Verbindungen über die für .NET empfohlenen Einstellungen zu erhöhen. Es wird empfohlen, vor der Kontaktaufnahme mit dem Support einen Test mit den Standardeinstellungen durchzuführen, um diesen Grenzwert für Ihren Mandanten ändern zu lassen.
 
 > [!NOTE]
-> Bei Computern mit vier, acht und 16 Kernen ist der Unterschied beim TPS-Maximalwert minimal. Sie unterscheiden sich hauptsächlich bei der erwarteten Wartezeit.  
+> Bei Computern mit vier, acht und 16 Kernen ist der Unterschied beim TPS-Maximalwert minimal. Sie unterscheiden sich hauptsächlich bei der erwarteten Wartezeit.
+>
+> Diese Tabelle nennt auch auf die erwartete Leistung eines Connectors basierend auf dem Computertyp, auf dem er installiert ist. Dies ist unabhängig von den Drosselungsgrenzwerten des Anwendungsproxydiensts, siehe [Dienstgrenzwerte und Einschränkungen](../enterprise-users/directory-service-limits-restrictions.md).
 
 ## <a name="security-and-networking"></a>Sicherheit und Netzwerk
 
@@ -116,7 +118,7 @@ Weitere Informationen zum Konfigurieren von Firewallregeln für ausgehenden Date
 
 Die Skalierung für den Anwendungsproxy ist transparent, aber die Skalierung in Bezug auf Connectors ist ein wichtiger Faktor. Sie müssen über eine ausreichende Zahl von Connectors verfügen, um Spitzenlasten verarbeiten zu können. Da Connectors zustandslos sind, wirkt sich die Anzahl von Benutzern oder Sitzungen nicht auf sie aus. Stattdessen wirkt sich die Anzahl von Anforderungen und deren Nutzlastgröße auf sie aus. Bei standardmäßigem Webdatenverkehr kann ein Computer mit durchschnittlicher Leistungsfähigkeit einige Tausend Anforderungen pro Sekunde verarbeiten. Diese Kapazität richtet sich nach den genauen Eigenschaften des jeweiligen Computers.
 
-Die Connectorleistung wird durch die CPU und das Netzwerk bestimmt. Eine gute CPU-Leistung wird für die SSL-Verschlüsselung und -Entschlüsselung benötigt, und die Netzwerkeigenschaften sind wichtig, um eine gute Konnektivität für die Anwendungen und den Online-Dienst in Azure zu erzielen.
+Die Connectorleistung wird durch die CPU und das Netzwerk bestimmt. Eine gute CPU-Leistung wird für die TLS-Verschlüsselung und -Entschlüsselung benötigt, und die Netzwerkeigenschaften sind wichtig, um eine gute Konnektivität für die Anwendungen und den Online-Dienst in Azure zu erzielen.
 
 Der Arbeitsspeicher ist für Connectors dagegen weniger wichtig. Der Online-Dienst übernimmt einen Großteil der Verarbeitung und den gesamten nicht authentifizierten Datenverkehr. Alle Schritte, die in der Cloud ausgeführt werden können, werden auch in der Cloud ausgeführt.
 
@@ -151,14 +153,22 @@ Zur Bereitstellung eines sicheren Diensts müssen sich Connectors beim Dienst au
 
 Die verwendeten Zertifikate gelten nur für den Anwendungsproxydienst. Sie werden während der ersten Registrierung erstellt und von den Connectors alle paar Monate automatisch verlängert.
 
+Nach der ersten erfolgreichen Zertifikatsverlängerung hat der Azure AD-Anwendungsproxy-Connectordienst (Netzwerkdienst) keine Berechtigung, das alte Zertifikat aus dem Speicher des lokalen Computers zu entfernen. Wenn das Zertifikat abgelaufen ist oder nicht mehr vom Dienst verwendet wird, können Sie es problemlos löschen.
+
+Um Probleme bei der Zertifikatsverlängerung zu vermeiden, müssen Sie sicherstellen, dass die Netzwerkkommunikation zwischen dem Connector und den [dokumentierten Zielen](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) aktiviert ist.
+
 Wenn ein Connector über mehrere Monate hinweg keine Verbindung mit dem Dienst herstellt, sind die Zertifikate möglicherweise veraltet. In diesem Fall müssen Sie den Connector deinstallieren und neu installieren, um die Registrierung auszulösen. Sie können die folgenden PowerShell-Befehle ausführen:
 
 ```
 Import-module AppProxyPSModule
-Register-AppProxyConnector
+Register-AppProxyConnector -EnvironmentName "AzureCloud"
 ```
 
-## <a name="under-the-hood"></a>Im Hintergrund
+Verwenden Sie für IP-Adressen von Behörden `-EnvironmentName "AzureUSGovernment"`. Weitere Informationen finden Sie unter [Installieren des Agents für die Azure Government-Cloud](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud).
+
+Weitere Informationen zum Überprüfen des Zertifikats und zur Problembehandlung finden Sie unter [Überprüfen der Unterstützung des Vertrauensstellungszertifikats des Anwendungsproxys durch Computer und Back-End-Komponenten](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate).
+
+## <a name="under-the-hood"></a>Hinter den Kulissen
 
 Connectors basieren auf dem Windows Server-Webanwendungsproxy und verwenden daher einen Großteil der gleichen Verwaltungstools wie z. B. Windows-Ereignisprotokolle.
 
@@ -168,9 +178,9 @@ und Windows-Leistungsindikatoren.
 
 ![Hinzufügen von Leistungsindikatoren zum Connector mit dem Leistungsmonitor](./media/application-proxy-connectors/performance-monitor.png)
 
-Die Connectors verfügen über Administrator- und Sitzungsprotokolle. Die Administratorprotokolle enthalten wichtige Ereignisse und die dazugehörigen Fehler. Die Sitzungsprotokolle enthalten alle Transaktionen und die dazugehörigen Verarbeitungsdetails.
+Die Connectors verfügen über **Administratorprotokolle** und **Sitzungsprotokolle**. Das **Administratorprotokoll** enthält wichtige Ereignisse und die dazugehörigen Fehler. Das **Sitzungsprotokoll** enthält alle Transaktionen und die dazugehörigen Verarbeitungsdetails.
 
-Um die Protokolle anzuzeigen, wechseln Sie zur Ereignisanzeige, öffnen Sie das Menü **Ansicht**, und aktivieren Sie die Option **Analytische und Debugprotokolle einblenden**. Aktivieren Sie die Protokolle, um mit dem Erfassen von Ereignissen zu beginnen. Diese Protokolle werden nicht im Webanwendungsproxy in Windows Server 2012 R2 angezeigt, da die Connectors auf einer neueren Version basieren.
+Zum Anzeigen der Protokolle öffnen Sie die **Ereignisanzeige**, und navigieren Sie dann zu **Anwendungs- und Dienstprotokolle** > **Microsoft** > **AadApplicationProxy** > **Connector**. Damit das **Sitzungsprotokoll** im Menü **Ansicht** angezeigt wird, klicken Sie auf **Analytische und Debugprotokolle einblenden**. Das **Sitzungsprotokoll** dient in der Regel zur Problembehandlung und ist standardmäßig definiert. Aktivieren Sie das Protokoll, um mit der Erfassung von Ereignissen zu beginnen, und deaktivieren Sie es, wenn Sie es nicht mehr benötigen.
 
 Sie können den Zustand des Diensts im Fenster „Dienste“ untersuchen. Der Connector besteht aus zwei Windows-Diensten: dem eigentlichen Connector und dem Updatedienst. Beide Dienste müssen immer ausgeführt werden.
 

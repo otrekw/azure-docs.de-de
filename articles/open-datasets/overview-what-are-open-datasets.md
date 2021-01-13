@@ -1,22 +1,22 @@
 ---
 title: Was sind öffentliche Datasets? Kuratierte öffentliche Datasets
-titleSuffix: Azure Open Datasets (preview)
-description: Erfahren Sie etwas über öffentliche Azure-Datasets (Vorschauversion), gemeinfreie kuratierte Datasets, die Sie in Lösungen mit maschinellem Lernen und Analysen einsetzen können. Die Datasets umfassen öffentliche Daten wie Wetter, Volkszählungen, Feiertage und Orte, um Vorhersagelösungen anzureichern.
+titleSuffix: Azure Open Datasets
+description: Erfahren Sie mehr über Azure Open Datasets, zusammengestellte Datasets von der öffentlichen Domäne, z. B. Wetter, Volkszählung, Urlaub und Standort zum Erweitern von Vorhersagelösungen.
 ms.service: open-datasets
 ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: 0c4bf3143bbf1ceb2f2f3c4a22477daa03690a0e
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
+ms.date: 05/06/2020
+ms.openlocfilehash: cc7d3a7ba5927730a68b704d61101a9dba447f2f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70213581"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493966"
 ---
-# <a name="what-are-azure-open-datasets-preview-and-how-can-you-use-them"></a>Was sind öffentliche Azure-Datasets (Vorschauversion), und wie können Sie sie verwenden?
+# <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Was ist Azure Open Datasets, und wie können Sie dies verwenden?
 
-[Öffentliche Azure-Datasets](https://azure.microsoft.com/services/open-datasets/) sind kuratierte öffentliche Datasets, mit denen Sie Lösungen mit maschinellem Lernen szenariospezifische Features hinzufügen können, um genauere Modelle zu erzielen. Öffentliche Datasets befinden sich bei Microsoft Azure in der Cloud und sind für Azure Databricks, Machine Learning Service und Machine Learning Studio jederzeit verfügbar. Sie können auch über APIs auf die Datasets zugreifen und sie in anderen Produkten wie Power BI und Azure Data Factory verwenden.
+[Öffentliche Azure-Datasets](https://azure.microsoft.com/services/open-datasets/) sind kuratierte öffentliche Datasets, mit denen Sie Lösungen mit maschinellem Lernen szenariospezifische Features hinzufügen können, um genauere Modelle zu erzielen. Open Datasets befindet sich bei Microsoft Azure in der Cloud und ist in Azure Machine Learning integriert und für Azure Databricks und Machine Learning Studio (klassisch) jederzeit verfügbar. Sie können auch über APIs auf die Datasets zugreifen und sie in anderen Produkten wie Power BI und Azure Data Factory verwenden.
 
 Die Datasets umfassen gemeinfreie Daten für Wetter, Volkszählungen, Feiertage, öffentliche Sicherheit und Orte, mit denen Sie Machine Learning-Modelle trainieren und Vorhersagelösungen anreichern können. Sie können in den öffentlichen Azure-Datasets auch Ihre eigenen öffentlichen Datasets freigeben. 
 
@@ -25,7 +25,9 @@ Die Datasets umfassen gemeinfreie Daten für Wetter, Volkszählungen, Feiertage,
 ## <a name="curated-prepared-datasets"></a>Kuratierte, vorbereitete Datasets
 Die kuratierten offenen und öffentlichen Datasets, aus denen sich die öffentlichen Azure-Datasets zusammensetzen, sind für den Gebrauch in Workflows mit maschinellem Lernen optimiert. 
 
-Data Science-Experten verbringen oft den Großteil ihrer Zeit mit dem Bereinigen und Vorbereiten von Daten für komplexe Analysen. Öffentliche Datasets werden in die Azure-Cloud kopiert und vorverarbeitet, um Ihnen Zeit zu sparen. In regelmäßigen Abständen werden Daten aus den Quellen abgerufen, z.B. über eine FTP-Verbindung mit der National Oceanic and Atmospheric Administration (NOAA), in ein strukturiertes Format analysiert und dann mit Merkmalen wie Postleitzahlen oder den Standort der nächsten Wetterstation angereichert.
+Wenn Sie alle verfügbaren Datasets anzeigen möchten, navigieren Sie zum [Azure Open Datasets-Katalog](https://azure.microsoft.com/services/open-datasets/catalog/).
+
+Data Science-Experten verbringen oft den Großteil ihrer Zeit mit dem Bereinigen und Vorbereiten von Daten für komplexe Analysen. Öffentliche Datasets werden in die Azure-Cloud kopiert und vorverarbeitet, um Ihnen Zeit zu sparen. In regelmäßigen Abständen werden Daten aus den Quellen abgerufen, z. B. über eine FTP-Verbindung mit der National Oceanic and Atmospheric Administration (NOAA). Anschließend werden Daten in einem strukturierten Format analysiert und mit Merkmalen wie Postleitzahlen oder dem Standort der nächsten Wetterstation angereichert.
 
 Datasets werden in Azure gemeinsam mit Compute gehostet, um den Zugriff und die Bearbeitung zu vereinfachen.  
 
@@ -33,21 +35,21 @@ Es folgen Beispiele von verfügbaren Datasets.
 
 ### <a name="weather-data"></a>Wetterdaten
  
-|Datensatz         | Notebooks     | BESCHREIBUNG                                    |
+|Dataset         | Notebooks     | BESCHREIBUNG                                    |
 |----------------|---------------|------------------------------------------------|
 |[Integrierte NOAA-Oberflächendaten (ISD)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/?tab=data-access#AzureDatabricks) | Weltweite stündliche Wetterdaten von NOAA mit der besten räumlichen Abdeckung in Nordamerika, Europa, Australien und Teilen von Asien. Täglich aktualisiert. |
 |[NOAA Global Forecast System (GFS)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/?tab=data-access#AzureDatabricks) | Stündliche US-Wettervorhersagedaten von NOAA für 15 Tage. Täglich aktualisiert. |
 
 ### <a name="calendar-data"></a>Kalenderdaten
 
-|Datensatz         | Notebooks     | BESCHREIBUNG                                    |
+|Dataset         | Notebooks     | BESCHREIBUNG                                    |
 |----------------|---------------|------------------------------------------------|
 |[Gesetzliche Feiertage](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/?tab=data-access#AzureDatabricks) | Weltweite Feiertagsdaten für 41 Länder oder Regionen von 1970 bis 2099. Enthält Länder und die Angabe, ob die meisten Einwohner bezahlte Freizeit haben. |
 
 ## <a name="access-to-datasets"></a>Zugriff auf Datasets  
 Mit einem Azure-Konto können Sie über Code oder über die Azure-Dienstschnittstelle auf öffentliche Datasets zugreifen. Die Daten werden in Azure gemeinsam mit Compute gehostet, damit Sie sie in Ihrer Lösung mit maschinellem Lernen verwenden können.  
 
-Öffentliche Datasets bieten Azure Notebooks und Azure Databricks-Notebooks, mit denen Sie Daten mit Azure Machine Learning Service und Azure Databricks verbinden können. Auch über ein Python-SDK kann auf die Datasets zugegriffen werden. 
+Open Datasets ist über Azure Machine Learning-Benutzeroberfläche und SDK verfügbar. Open Datasets bietet auch Azure Notebooks und Azure Databricks-Notebooks, mit denen Sie Daten mit Azure Machine Learning und Azure Databricks verbinden können. Auch über ein Python-SDK kann auf die Datasets zugegriffen werden. 
 
 Sie benötigen jedoch kein Azure-Konto, um auf Open Datasets zuzugreifen. Der Zugriff darauf ist in jeder Python-Umgebung mit oder ohne Spark möglich.
 
@@ -57,5 +59,5 @@ Wenn Sie die gewünschten Daten nicht finden können, senden Sie uns eine E-Mail
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Beispielnotebook](samples.md)
-* [Tutorial: Regressionsmodellierung mit Taxidaten aus New York](tutorial-opendatasets-automl.md)
-* [Python-SDK für öffentliche Datasets](/python/api/azureml-opendatasets/?view=azure-ml-py)
+* [Tutorial: Regressionsmodellierung mit Taxidaten aus New York](../machine-learning/tutorial-auto-train-models.md?context=azure%2fopen-datasets%2fcontext%2fopen-datasets-context)
+* [Python-SDK für öffentliche Datasets](/python/api/azureml-opendatasets/)

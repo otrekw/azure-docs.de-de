@@ -1,21 +1,21 @@
 ---
-title: Unterstützte Versionen in Azure Database for MariaDB
-description: Beschreibung der unterstützten Versionen in Azure Database for MariaDB
-author: ajlam
-ms.author: andrela
+title: 'Unterstützte Versionen: Azure Database for MariaDB'
+description: Erfahren Sie, welche Versionen des MariaDB-Servers im Dienst Azure Database for MariaDB unterstützt werden.
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.openlocfilehash: e5d1dbc8c212d4cdefb12fb740a454324d3adfa1
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.date: 7/20/2020
+ms.openlocfilehash: dbf32626714200e6712c67b701ebc597c4a7ba7e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962918"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541027"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>Unterstützte Serverversionen von Azure Database for MariaDB
 
-Azure Database for MariaDB wurde mithilfe der InnoDB-Engine auf der Grundlage von [MariaDB Server](https://downloads.mariadb.org/) entwickelt, einem Open-Source-Produkt. 
+Azure Database for MariaDB wurde mithilfe der InnoDB-Engine auf der Grundlage von [MariaDB Server](https://downloads.mariadb.org/) entwickelt, einem Open-Source-Produkt.
 
 MariaDB verwendet das Benennungsschema „X.Y.Z“. X ist die Hauptversion, Y die Nebenversion und Z die Patchversion.
 
@@ -26,15 +26,15 @@ Azure Database for MariaDB unterstützt derzeit die folgende Version:
 
 ## <a name="mariadb-version-102"></a>MariaDB Version 10.2
 
-Patchversion: 10.2.25
+Patchversion: 10.2.32
 
-Weitere Informationen zu Verbesserungen und Fehlerbehebungen in dieser Version finden Sie in der [Dokumentation zu MariaDB](https://mariadb.com/kb/en/library/mariadb-10225-release-notes/).
+Weitere Informationen zu Verbesserungen und Fehlerbehebungen in dieser Version finden Sie in der [Dokumentation zu MariaDB](https://mariadb.com/kb/en/mariadb-10232-release-notes/).
 
 ## <a name="mariadb-version-103"></a>MariaDB Version 10.3
 
-Patchversion: 10.3.16
+Patchversion: 10.3.23
 
-Weitere Informationen zu Verbesserungen und Fehlerbehebungen in dieser Version finden Sie in der [Dokumentation zu MariaDB](https://mariadb.com/kb/en/library/mariadb-10316-release-notes/).
+Weitere Informationen zu Verbesserungen und Fehlerbehebungen in dieser Version finden Sie in der [Dokumentation zu MariaDB](https://mariadb.com/kb/en/mariadb-10323-release-notes/).
 
 ## <a name="managing-updates-and-upgrades"></a>Verwalten von Updates und Upgrades
 Der Dienst verwaltet Upgrades für Patchupdates automatisch. Beispiel: 10.2.21 auf 10.2.23.  

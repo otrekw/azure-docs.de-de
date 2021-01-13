@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0c0ad6ea5a687d066c78533b45a7f531561661bf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3c1e34bb418f9be2e26afc117343f1fa50bd8566
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177958"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "76309010"
 ---
 Diese häufig gestellten Fragen beziehen sich auf P2S-Verbindungen, die das klassische Bereitstellungsmodell verwenden.
 
@@ -35,7 +35,8 @@ Nein. Nur die aufgelisteten Windows-Betriebssystemversionen werden unterstützt.
 
 ### <a name="how-many-vpn-client-endpoints-can-exist-in-my-point-to-site-configuration"></a>Wie viele VPN-Clientendpunkte kann meine Point-to-Site-Konfiguration umfassen?
 
-Bis zu 128 VPN-Clients können gleichzeitig mit einem virtuellen Netzwerk verbunden sein.
+Der Umfang der VPN-Clientendpunkte hängt von der Gateway-SKU und dem Protokoll ab.
+[!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>Kann ich für Punkt-zu-Standort-Verbindungen meine eigene interne PKI-Stammzertifizierungsstelle verwenden?
 

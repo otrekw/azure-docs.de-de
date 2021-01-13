@@ -1,32 +1,26 @@
 ---
-title: Ausführen eines Azure Service Fabric-Diensts unter einem gruppenverwalteten Dienstkonto | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie einen Dienst als gruppenverwaltetes Dienstkonto auf einem eigenständigen, Windows-basierten Service Fabric-Cluster ausführen.
-services: service-fabric
-documentationcenter: .net
-author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
+title: Ausführen eines Azure Service Fabric-Diensts unter einem gruppenverwalteten Dienstkonto
+description: Hier erfahren Sie, wie Sie einen Dienst als gruppenverwaltetes Dienstkonto (gMSA) auf einem eigenständigen, Windows-basierten Service Fabric-Cluster ausführen.
+ms.topic: how-to
 ms.date: 03/29/2018
-ms.author: dekapur
-ms.openlocfilehash: d00eceffebb222196191a389058c0feb496e169a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9750042764306c5df7a391429cc6926704db05ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307640"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91838907"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Ausführen eines Diensts als gruppenverwaltetes Dienstkonto
-Auf einem eigenständigen Windows Server-Cluster können Sie einen Dienst unter Verwendung einer RunAs-Richtlinie als gruppenverwaltetes Dienstkonto (group Managed Service Account, gMSA) ausführen.  Standardmäßig werden Service Fabric-Anwendungen unter dem Konto ausgeführt, unter dem der Prozess „Fabric.exe“ ausgeführt wird. Die Ausführung von Anwendungen unter verschiedenen Konten sorgt dafür, dass die Anwendungen besser voreinander geschützt sind – sogar in einer gehosteten Umgebung mit gemeinsamer Nutzung. Hinweis: Hierbei wird Active Directory lokal in Ihrer Domäne verwendet, nicht Azure Active Directory (Azure AD). Bei Verwendung eines gruppenverwalteten Dienstkontos wird im Anwendungsmanifest kein Kennwort oder verschlüsseltes Kennwort gespeichert.  Sie können einen Dienst auch als [Active Directory-Benutzer oder -Gruppe](service-fabric-run-service-as-ad-user-or-group.md) ausführen.
+
+Auf einem eigenständigen Windows Server-Cluster können Sie einen Dienst unter Verwendung einer *RunAs*-Richtlinie als *gruppenverwaltetes Dienstkonto* (group Managed Service Account, gMSA) ausführen.  Standardmäßig werden Service Fabric-Anwendungen unter dem Konto ausgeführt, unter dem der Prozess `Fabric.exe` ausgeführt wird. Die Ausführung von Anwendungen unter verschiedenen Konten sorgt dafür, dass die Anwendungen besser voreinander geschützt sind – sogar in einer gehosteten Umgebung mit gemeinsamer Nutzung. Bei Verwendung eines gruppenverwalteten Dienstkontos wird im Anwendungsmanifest kein Kennwort oder verschlüsseltes Kennwort gespeichert.  Sie können einen Dienst auch als [Active Directory-Benutzer oder -Gruppe](service-fabric-run-service-as-ad-user-or-group.md) ausführen.
 
 Im folgende Beispiel wird gezeigt, wie ein gruppenverwaltetes Dienstkonto namens *svc-Test$* erstellt, dieses verwaltete Dienstkonto auf Clusterknoten bereitgestellt und der Benutzerprinzipal konfiguriert wird.
 
+> [!NOTE]
+> Die Verwendung eines gMSA mit einem eigenständigen Service Fabric-Cluster erfordert Active Directory lokal innerhalb Ihrer Domäne (anstatt Azure Active Directory (Azure AD)).
+
 Voraussetzungen:
+
 - Die Domäne benötigt einen KDS-Stammschlüssel.
 - Es muss mindestens ein Windows Server 2012-Domänencontroller (oder ein R2-DC) in der Domäne vorhanden sein.
 
@@ -44,7 +38,7 @@ Voraussetzungen:
     Test-AdServiceAccount svc-Test$
     ```
 
-3. Konfigurieren Sie den Benutzerprinzipal, und konfigurieren Sie die RunAsPolicy, um den Benutzer zu verweisen.
+3. Konfigurieren Sie den Benutzerprinzipal, und konfigurieren Sie die `RunAsPolicy`, um auf den [Benutzer](./service-fabric-cluster-fabric-settings.md#runas) zu verweisen.
     
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -64,14 +58,14 @@ Voraussetzungen:
     </ApplicationManifest>
     ```
 
-> [!NOTE] 
-> Wenn Sie eine RunAs-Richtlinie auf einen Dienst anwenden und das Dienstmanifest Endpunktressourcen mit dem HTTP-Protokoll deklariert, müssen Sie eine Richtlinie vom Typ **SecurityAccessPolicy** angeben.  Weitere Informationen finden Sie unter [Zuweisen einer Sicherheitszugriffsrichtlinie für HTTP- und HTTPS-Endpunkte](service-fabric-assign-policy-to-endpoint.md). 
+> [!NOTE]
+> Wenn Sie eine RunAs-Richtlinie auf einen Dienst anwenden und das Dienstmanifest Endpunktressourcen mit dem HTTP-Protokoll deklariert, müssen Sie eine Richtlinie vom Typ **SecurityAccessPolicy** angeben.  Weitere Informationen finden Sie unter [Zuweisen einer Sicherheitszugriffsrichtlinie für HTTP- und HTTPS-Endpunkte](service-fabric-assign-policy-to-endpoint.md).
 >
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-Lesen Sie als Nächstes die folgenden Artikel:
-* [Informationen zum Anwendungsmodell](service-fabric-application-model.md)
-* [Angeben von Ressourcen in einem Dienstmanifest](service-fabric-service-manifest-resources.md)
-* [Bereitstellen von Anwendungen](service-fabric-deploy-remove-applications.md)
+Die folgenden Artikel führen Sie durch die nächsten Schritte:
+
+- [Informationen zum Anwendungsmodell](service-fabric-application-model.md)
+- [Angeben von Ressourcen in einem Dienstmanifest](service-fabric-service-manifest-resources.md)
+- [Bereitstellen von Anwendungen](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

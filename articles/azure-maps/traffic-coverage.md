@@ -1,25 +1,25 @@
 ---
-title: Verkehrsinformationen in Azure Maps | Microsoft-Dokumentation
-description: Hier erfahren Sie mehr über Verkehrsinformationen in Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+title: Verkehrsinformationen | Microsoft Azure Maps
+description: Hier erfahren Sie mehr über Verkehrsinformationen in Azure Maps. Sie können feststellen, ob Informationen zum Verkehrsfluss und Unfällen in verschiedenen Regionen weltweit verfügbar sind.
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 09/22/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: f9a3c4875f01c650485034fe46f53bb5aa1fd75b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 11aa0eb07ed9cb3a1a785b3155b832f8b447708f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722657"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896870"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Verkehrsinformationen in Azure Maps
 
-Azure Maps bietet umfangreiche Verkehrsinformationen in Form von **Verkehrsfluss** und **Verkehrsvorfällen**. Diese Daten können auf Karten visualisiert oder zum Erstellen besserer Routen verwendet werden, die reale Fahrbedingungen berücksichtigen.
+Azure Maps bietet umfangreiche Verkehrsinformationen in Form von **Verkehrsfluss** und **Verkehrsvorfällen** . Diese Daten können auf Karten visualisiert oder zum Erstellen besserer Routen verwendet werden, die reale Fahrbedingungen berücksichtigen.
 
-Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informationen und Genauigkeit. Die folgende Tabelle enthält Informationen dazu, welche Art von Verkehrsinformationen in den jeweiligen Regionen angefordert werden kann: 
+Maps bietet allerdings nicht für alle Länder oder Regionen das gleiche Maß an Informationen und Genauigkeit. Die folgende Tabelle enthält Informationen dazu, welche Art von Verkehrsinformationen in den jeweiligen Länder oder Regionen angefordert werden kann: 
 
 ## <a name="americas"></a>Amerika
 
@@ -27,7 +27,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 |---------|:---------:|:---------:|
 |Argentinien      |✓         |✓         |
 |Brasilien     |✓         |✓         |
-|Kanada     |✓         |✓         |
+|Canada     |✓         |✓         |
 |Chile     |✓         |✓         |
 |Kolumbien      |✓         |✓         |
 |Mexiko     |✓         |✓         |
@@ -46,6 +46,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 |Hongkong (SAR)     |✓         |✓         |
 |Indien   |✓         |✓         |
 |Indonesien     |✓         |✓         |
+|Kasachstan    |✓         |✓         |
 |Macau (SAR)     |✓         |✓         |
 |Malaysia     |✓         |✓         |
 |Neuseeland     |✓         |✓         |
@@ -107,7 +108,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 |Schweiz     |✓         |✓        |
 |Türkei     |✓         |✓         |
 |Ukraine     |✓         |✓         |
-|Vereinigtes Königreich     |✓         |✓         |
+|United Kingdom     |✓         |✓         |
 |+Gibraltar     |✓         |✓         |
 |+Guernsey & Jersey     |✓         |✓         |
 |+Insel Man     |✓         |✓         |
@@ -134,4 +135,4 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure Maps-Verkehrsinformationen finden Sie auf den Referenzseiten zum [Verkehr](https://docs.microsoft.com/rest/api/maps/traffic).
+Weitere Informationen zur Azure Maps-Verkehrsinformationen finden Sie auf den Referenzseiten zum [Verkehr](/rest/api/maps/traffic).

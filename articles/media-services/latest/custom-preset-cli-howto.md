@@ -1,25 +1,27 @@
 ---
-title: Codieren der benutzerdefinierten Transformation mit Media Services v3 CLI – Azure | Microsoft-Dokumentation
-description: In diesem Thema wird gezeigt, wie mit Azure Media Services v3 eine benutzerdefinierte Transformation mithilfe der Befehlszeilenschnittstelle codiert wird.
+title: Codieren der benutzerdefinierten Transformation mit Media Services, Version 3 – Azure CLI | Microsoft-Dokumentation
+description: In diesem Thema wird gezeigt, wie mit Azure Media Services v3 eine benutzerdefinierte Transformation mithilfe der Azure CLI codiert wird.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.custom: ''
-ms.date: 05/14/2019
-ms.author: juliako
-ms.openlocfilehash: 42b7c2d86525c428253137b424fe58bb61edba70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: how-to
+ms.custom: devx-track-azurecli
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: c61ac8c7cf85b1fae4c9b531f16b951dd2b80876
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762027"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89295784"
 ---
-# <a name="how-to-encode-with-a-custom-transform---cli"></a>Codieren mit einer benutzerdefinierten Transformation: CLI
+# <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Codieren mit einer benutzerdefinierten Transformation: Azure CLI
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bei der Codierung mit Azure Media Services können Sie mit einer der empfohlenen integrierten Voreinstellungen, basierend auf in der Branche bewährten Vorgehensweisen, schnell einsteigen, wie im Schnellstart [Streamingdateien](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) gezeigt. Sie können auch eine benutzerdefinierte Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen entwickeln.
 
@@ -30,19 +32,21 @@ Beim Erstellen von benutzerdefinierten Voreinstellungen gelten die folgenden Üb
 * Alle Werte für Höhe und Breite in AVC-Inhalt müssen ein Vielfaches von 4 sein.
 * In Azure Media Services v3 werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies unterscheidet sich von den Voreinstellungen bei unseren v2-APIs. Dort wurden Kilobits pro Sekunde (KBit/s) als Einheit verwendet. Wenn beispielsweise die Bitrate in v2 als 128 (Kilobits/Sekunde) angegeben wurde, würde sie in v3 auf 128.000 (Bits/Sekunde) festgelegt.
 
-## <a name="prerequisites"></a>Voraussetzungen 
+## <a name="prerequisites"></a>Voraussetzungen
 
-[Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md) <br/>Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos. 
+[Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)
+
+Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos.
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="define-a-custom-preset"></a>Definieren einer benutzerdefinierten Voreinstellung
 
-Im folgenden Beispiel wird der Anforderungstext einer neuen Transformation definiert. Es werden mehrere Ausgaben definiert, die bei Verwendung dieser Transformation generiert werden sollen. 
+Im folgenden Beispiel wird der Anforderungstext einer neuen Transformation definiert. Es werden mehrere Ausgaben definiert, die bei Verwendung dieser Transformation generiert werden sollen.
 
 In diesem Beispiel wird zuerst eine AacAudio-Ebene für die Audiocodierung hinzugefügt, sowie zwei H264Video-Ebenen für die Videocodierung. In den Videoebenen weisen wir Bezeichnungen zu, damit sie in den Ausgabedateinamen verwendet werden können. Als Nächstes soll die Ausgabe auch Miniaturansichten enthalten. Im Beispiel unten geben wir Bilder im PNG-Format, die mit 50% der Auflösung vom Videoeingang generiert wurden, und mit drei Zeitstempeln an – {25%, 50%, 75%} der Länge des Videoeingangs. Schließlich geben wir das Format für die Ausgabedateien an – eine für Video+Audio und eine andere für die Miniaturansichten. Weil wir mehrere H264-Ebenen haben, müssen wir Makros verwenden, die eindeutige Namen pro Ebene generieren. Wir können entweder ein `{Label}`- oder ein `{Bitrate}`-Makro verwenden. Im Beispiel wird erstere Option verwendet.
 
-Diese Transformation wird in einer Datei gespeichert. In diesem Beispiel erhält die Datei die Bezeichnung `customPreset.json`. 
+Diese Transformation wird in einer Datei gespeichert. In diesem Beispiel erhält die Datei die Bezeichnung `customPreset.json`.
 
 ```json
 {
@@ -120,25 +124,24 @@ Diese Transformation wird in einer Datei gespeichert. In diesem Beispiel erhält
         }
     ]
 }
-
 ```
 
 ## <a name="create-a-new-transform"></a>Erstellen einer neuen Transformation  
 
 In diesem Beispiel wird eine **Transformation** erstellt, die auf der benutzerdefinierten Voreinstellung basiert, die zuvor festgelegt wurde. Beim Erstellen einer Transformation sollten Sie zunächst prüfen, ob bereits eine vorhanden ist. Wenn eine Transformation vorhanden ist, verwenden Sie diese. Der folgende `show`-Befehl gibt die Transformation `customTransformName` zurück, falls sie vorhanden ist:
 
-```cli
+```azurecli-interactive
 az ams transform show -a amsaccount -g amsResourceGroup -n customTransformName
 ```
 
-Der folgende CLI-Befehl erstellt die Transformation basierend auf der benutzerdefinierten Voreinstellung (die zuvor definiert wurde). 
+Der folgende Azure CLI-Befehl erstellt die Transformation basierend auf der benutzerdefinierten Voreinstellung (die zuvor definiert wurde).
 
-```cli
+```azurecli-interactive
 az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName --description "Basic Transform using a custom encoding preset" --preset customPreset.json
 ```
 
-Damit die Transformation in Media Services auf das angegebene Video oder die angegebene Audiodatei angewendet wird, müssen Sie unter dieser Transformation einen Auftrag übermitteln. Ein umfassendes Beispiel, in dem gezeigt wird, wie ein Auftrag unter einer Transformation übermittelt wird, finden Sie unter [Schnellstart: Streamen von Videodateien: CLI](stream-files-cli-quickstart.md).
+Damit die Transformation in Media Services auf das angegebene Video oder die angegebene Audiodatei angewendet wird, müssen Sie unter dieser Transformation einen Auftrag übermitteln. Ein umfassendes Beispiel, in dem gezeigt wird, wie ein Auftrag unter einer Transformation übermittelt wird, finden Sie unter [Schnellstart: Streamen von Videodateien: Azure CLI](stream-files-cli-quickstart.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Azure-Befehlszeilenschnittstelle](/cli/azure/ams)

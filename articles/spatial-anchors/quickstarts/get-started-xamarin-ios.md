@@ -1,19 +1,19 @@
 ---
-title: 'Schnellstart: Erstellen einer Xamarin-iOS-App mit Azure Spatial Anchors | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen einer Xamarin-iOS-App'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Verwendung von Spatial Anchors und Xamarin eine iOS-App erstellen.
-author: craigktreasure
-manager: virivera
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 07/22/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ef25cf07326220be36ce8f67267428ffe1ac0728
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b62ca4b02a1bd28d150f233adf1dfb621995e1c4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931401"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009737"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Schnellstart: Erstellen einer Xamarin-iOS-App mit Azure Spatial Anchors
 
@@ -33,8 +33,9 @@ Sie lernen Folgendes:
 Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes verfügen:
 - Ein Mac-Computer mit macOS High Sierra (10.13) oder höher und Folgendem:
   - Die neueste Version von Xcode und iOS SDK, installiert aus dem [App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12).
-  - Eine aktuelle Version von <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio für Mac 8.1 oder höher</a>.
-  - <a href="https://git-scm.com/download/mac" target="_blank">Git für macOS</a>
+  - Eine aktuelle Version von <a href="/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio für Mac 8.1 oder höher</a>.
+  - <a href="https://git-scm.com/download/mac" target="_blank">Git für macOS</a>.
+  - <a href="https://git-lfs.github.com/">Git LFS</a>.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -53,6 +54,8 @@ Im nächsten Schritt wird die App zur Verwendung des Kontobezeichners und Kontos
 Suchen Sie nach dem Feld `SpatialAnchorsAccountKey`, und ersetzen Sie `Set me` durch den Kontoschlüssel.
 
 Suchen Sie nach dem Feld `SpatialAnchorsAccountId`, und ersetzen Sie `Set me` durch den Kontobezeichner.
+
+Suchen Sie nach dem Feld `SpatialAnchorsAccountDomain`, und ersetzen Sie `Set me` durch die Kontodomäne.
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>Bereitstellen der App auf Ihrem iOS-Gerät
 

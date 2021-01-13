@@ -1,10 +1,10 @@
 ---
-title: Transformieren von Daten mit der Pig-Aktivität in Azure Data Factory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Pig-Aktivität in Azure Data Factory verwenden können, um Pig-Abfragen in einem bedarfsgesteuerten/eigenen HDInsight-Cluster auszuführen.
+title: Transformieren von Daten mit der Pig-Aktivität in Azure Data Factory
+description: Erfahren Sie, wie Sie die Pig-Aktivität in Azure Data Factory v1 verwenden können, um Pig-Skripte in einem bedarfsgesteuerten/eigenen HDInsight-Cluster auszuführen.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: 5af07a1a-2087-455e-a67b-a79841b4ada5
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 72f532c277096a20387ab1b4922def2cd35a9afb
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 0ad84a0e848abda1b786958947b4081b11b139a7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139129"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495344"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Pig-Aktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
@@ -26,8 +26,8 @@ ms.locfileid: "70139129"
 > * [MapReduce-Aktivität](data-factory-map-reduce.md)
 > * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 > * [Spark-Aktivität](data-factory-spark.md)
-> * [Machine Learning-Batchausführungsaktivität](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning-Ressourcenaktualisierungsaktivität](data-factory-azure-ml-update-resource-activity.md)
+> * [Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md)
 > * [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
 > * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
@@ -39,7 +39,7 @@ ms.locfileid: "70139129"
 Die HDInsight Pig-Aktivität in einer Data Factory-[Pipeline](data-factory-create-pipelines.md) wendet Pig-Abfragen auf [Ihren eigenen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) oder [bedarfsgesteuerten](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows-/Linux-basierten HDInsight-Cluster an. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
 
 > [!NOTE] 
-> Wenn Sie noch nicht mit Azure Data Factory vertraut sind, sollten Sie zunächst den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md) lesen und anschließend das Tutorial zum Thema [Erstellen Ihrer ersten Datenpipeline](data-factory-build-your-first-pipeline.md) durcharbeiten, bevor Sie diesen Artikel lesen. 
+> Wenn Sie noch nicht mit Azure Data Factory vertraut sind, lesen Sie zunächst den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md), und durchlaufen Sie anschließen das Tutorial [Erstellen Ihrer ersten Pipeline](data-factory-build-your-first-pipeline.md), bevor Sie diesen Artikel lesen. 
 
 ## <a name="syntax"></a>Syntax
 
@@ -172,7 +172,7 @@ Betrachten Sie das folgende Beispiel: Spielprotokolle werden täglich in Azure B
 
 Gehen Sie folgendermaßen vor, um das parametrisierte Pig-Skript zu verwenden:
 
-* Legen Sie die Parameter in **defines**fest.
+* Legen Sie die Parameter in **defines** fest.
 
     ```JSON
     {
@@ -219,9 +219,9 @@ Gehen Sie folgendermaßen vor, um das parametrisierte Pig-Skript zu verwenden:
     Store PigSampleOut into '$Output' USING PigStorage (','); 
     ```
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Hive-Aktivität](data-factory-hive-activity.md)
 * [MapReduce-Aktivität](data-factory-map-reduce.md)
 * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 * [Invoke Spark programs (Aufrufen von Spark-Programmen)](data-factory-spark.md)
-* [Invoke R scripts (Aufrufen von R-Skripts)](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [Invoke R scripts (Aufrufen von R-Skripts)](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)

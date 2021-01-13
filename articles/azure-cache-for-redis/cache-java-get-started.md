@@ -1,28 +1,21 @@
 ---
 title: 'Schnellstart: Verwenden von Azure Cache for Redis mit Java'
 description: In dieser Schnellstartanleitung erstellen Sie eine neue Java-App, die Azure Cache for Redis verwendet.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 29275a5e-2e39-4ef2-804f-7ecc5161eab9
 ms.service: cache
 ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: cache
-ms.workload: tbd
-ms.date: 05/23/2018
+ms.date: 05/22/2020
 ms.author: yegu
-ms.custom: mvc, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 019defe782f8258acfd508745d36a0a6599d2e61
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: edb80ab3107cbd0a5ddd802d56a60ce77affb2f2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273894"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012917"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Schnellstart: Verwenden von Azure Cache for Redis mit Java
+# <a name="quickstart-use-azure-cache-for-redis-in-java"></a>Schnellstart: Verwenden von Azure Cache for Redis mit Java
 
 In dieser Schnellstartanleitung integrieren Sie Azure Cache for Redis in eine Java-App mit dem [Jedis](https://github.com/xetorthio/jedis) Redis-Client, um Zugriff auf einen sicheren, dedizierten Cache zu erhalten, der von jeder Anwendung in Azure aus zugänglich ist.
 
@@ -37,12 +30,24 @@ In dieser Schnellstartanleitung integrieren Sie Azure Cache for Redis in eine Ja
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Fügen Sie Umgebungsvariablen für Ihren **HOSTNAMEN** und Ihren **primären** Zugriffsschlüssel hinzu. Diese Variablen werden verwendet, damit solche vertraulichen Informationen nicht direkt in den Code eingefügt werden müssen.
+## <a name="setting-up-the-working-environment"></a>Einrichten der Arbeitsumgebung 
+
+Fügen Sie abhängig von Ihrem Betriebssystem Umgebungsvariablen für Ihren **Hostnamen** und Ihren **primären Zugriffsschlüssel** hinzu. Öffnen Sie eine Eingabeaufforderung oder ein Terminalfenster, und richten Sie die folgenden Werte ein:
 
 ```CMD 
-set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
-set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+set REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
+set REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
 ```
+
+```bash
+export REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
+export REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
+```
+
+Ersetzen Sie die Platzhalter durch die folgenden Werte:
+
+- `<YOUR_HOST_NAME>`: Der DNS-Hostname, den Sie im Abschnitt *Eigenschaften* Ihrer Azure Cache for Redis-Ressource im Azure-Portal abgerufen haben
+- `<YOUR_PRIMARY_ACCESS_KEY>`: Der primäre Zugriffsschlüssel, den Sie im Abschnitt *Zugriffsschlüssel* Ihrer Azure Cache for Redis-Ressource im Azure-Portal abgerufen haben
 
 ## <a name="create-a-new-java-app"></a>Erstellen einer neuen Java-App
 
@@ -60,7 +65,7 @@ Wechseln Sie zum neuen Projektverzeichnis *redistest*.
     <dependency>
         <groupId>redis.clients</groupId>
         <artifactId>jedis</artifactId>
-        <version>2.9.0</version>
+        <version>3.2.0</version>
         <type>jar</type>
         <scope>compile</scope>
     </dependency>
@@ -89,7 +94,7 @@ public class App
         String cacheHostname = System.getenv("REDISCACHEHOSTNAME");
         String cachekey = System.getenv("REDISCACHEKEY");
 
-        // Connect to the Azure Cache for Redis over the SSL port using the key.
+        // Connect to the Azure Cache for Redis over the TLS/SSL port using the key.
         JedisShardInfo shardInfo = new JedisShardInfo(cacheHostname, 6380, useSsl);
         shardInfo.setPassword(cachekey); /* Use your access key. */
         Jedis jedis = new Jedis(shardInfo);      

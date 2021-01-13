@@ -7,15 +7,15 @@ metadata:
   services: dns
   ms.service: dns
   ms.topic: landing-page
-  author: vhorne
-  ms.author: victorh
+  author: rohinkoul
+  ms.author: rohink
   ms.date: 09/20/2019
-  ms.openlocfilehash: 97ba213c59c463abeccd8ce0fe268d39672210d2
-  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+  ms.openlocfilehash: 57d6dfe02a92da48525626719b31bab5b8d1ec22
+  ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71172576"
+  ms.lasthandoff: 11/20/2020
+  ms.locfileid: "94968484"
 landingContent:
 - title: Informationen zu Azure DNS
   linkLists:
@@ -33,6 +33,8 @@ landingContent:
     links:
     - text: Hosten Ihrer Domäne in Azure DNS
       url: dns-delegate-domain-azure-dns.md
+    - text: Erstellen einer untergeordneten DNS-Zone
+      url: tutorial-public-dns-zones-child.md
 - title: Bereitstellen einer privaten DNS-Zone
   linkLists:
   - linkListType: overview
@@ -48,7 +50,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Erstellen einer privaten Azure DNS-Zone über das Azure-Portal
-      url: private-dns-portal.md
+      url: ./private-dns-getstarted-portal.md
 - title: Verwenden von Aliaseinträgen
   linkLists:
   - linkListType: overview

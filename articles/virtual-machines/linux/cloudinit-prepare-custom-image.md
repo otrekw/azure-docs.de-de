@@ -1,25 +1,18 @@
 ---
-title: Vorbereiten des Azure-VM-Images für die Verwendung mit cloud-init | Microsoft-Dokumentation
+title: Vorbereiten des Azure-VM-Images für die Verwendung mit cloud-init
 description: Es wird beschrieben, wie Sie ein bereits vorhandenes Azure-VM-Image für die Bereitstellung mit cloud-init vorbereiten.
-services: virtual-machines-linux
-documentationcenter: ''
 author: danis
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
-ms.topic: article
+ms.subservice: imaging
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: 1f9f6042b52c722280a8227754960ffb270e94b8
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 3aed65b0319f9a80c5ebc45428ff0c380c33fc3d
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668248"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883264"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Vorbereiten eines vorhandenen Linux Azure-VM-Images für die Verwendung mit cloud-init
 In diesem Artikel wird veranschaulicht, wie Sie einen vorhandenen virtuellen Azure-Computer so vorbereiten, dass er wieder bereitgestellt und für die Verwendung von cloud-init genutzt werden kann. Das sich ergebende Image kann verwendet werden, um einen neuen virtuellen Computer oder VM-Skalierungsgruppen bereitzustellen, die dann per cloud-init während der Bereitstellung jeweils weiter angepasst werden können.  Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden. Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).
@@ -33,16 +26,18 @@ Zum Installieren von cloud-init ist es erforderlich, dass Sie eine SSH-Verbindun
 ```bash
 sudo yum makecache fast
 sudo yum install -y gdisk cloud-utils-growpart
-sudo yum install - y cloud-init 
+sudo yum install -y cloud-init 
 ```
 
 Aktualisieren Sie den Abschnitt `cloud_init_modules` in `/etc/cloud/cloud.cfg` so, dass er die folgenden Module enthält:
+
 ```bash
 - disk_setup
 - mounts
 ```
 
 Hier ist ein Beispiel dafür angegeben, wie der Abschnitt `cloud_init_modules` in der Praxis aussehen kann.
+
 ```bash
 cloud_init_modules:
  - migrator
@@ -59,7 +54,9 @@ cloud_init_modules:
  - users-groups
  - ssh
 ```
-Eine Reihe von Aufgaben in Bezug auf das Bereitstellen und Verarbeiten von kurzlebigen Datenträgern muss in `/etc/waagent.conf` aktualisiert werden. Führen Sie die folgenden Befehle aus, um die entsprechenden Einstellungen zu aktualisieren. 
+
+Eine Reihe von Aufgaben in Bezug auf das Bereitstellen und Verarbeiten von kurzlebigen Datenträgern muss in `/etc/waagent.conf` aktualisiert werden. Führen Sie die folgenden Befehle aus, um die entsprechenden Einstellungen zu aktualisieren.
+
 ```bash
 sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
 sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
@@ -80,12 +77,14 @@ Wenn für Ihr vorhandenes Azure-Image eine Auslagerungsdatei konfiguriert wurde 
 Befolgen Sie für Red Hat-basierte Images die Anleitung im [Red Hat-Dokument zur Entfernung der Auslagerungsdatei](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/swap-removing-file).
 
 Für CentOS-Images mit aktivierter Auslagerungsdatei können Sie den folgenden Befehl ausführen, um die Auslagerungsdatei zu deaktivieren:
+
 ```bash
 sudo swapoff /mnt/resource/swapfile
 ```
 
 Stellen Sie sicher, dass der Verweis auf die Auslagerungsdatei aus `/etc/fstab` entfernt wird. Die Ausgabe sollte in etwa wie folgt aussehen:
-```text
+
+```output
 # /etc/fstab
 # Accessible filesystems, by reference, are maintained under '/dev/disk'
 # See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
@@ -95,9 +94,11 @@ UUID=7c473048-a4e7-4908-bad3-a9be22e9d37d /boot xfs defaults 0 0
 ```
 
 Sie können den folgenden Befehl ausführen, um die Auslagerungsdatei zu entfernen und Speicherplatz zu sparen:
+
 ```bash
 rm /mnt/resource/swapfile
 ```
+
 ## <a name="extra-step-for-cloud-init-prepared-image"></a>Zusätzlicher Schritt für ein per cloud-init vorbereitetes Image
 > [!NOTE]
 > Wenn Ihr Image zuvor ein Image war, das per **cloud-init** vorbereitet und konfiguriert wurde, müssen Sie die folgenden Schritte ausführen.
@@ -120,7 +121,7 @@ Weitere Informationen zu den Azure Linux-Agent-Befehlen für die Aufhebung der B
 
 Beenden Sie die SSH-Sitzung, und führen Sie dann in Ihrer Bash-Shell die folgenden Azure CLI-Befehle aus, um die Zuordnung aufzuheben, die Generalisierung durchzuführen und ein neues Azure-VM-Image zu erstellen.  Ersetzen Sie `myResourceGroup` und `sourceVmName` durch die entsprechenden Informationen für Ihre Quell-VM (sourceVM).
 
-```bash
+```azurecli
 az vm deallocate --resource-group myResourceGroup --name sourceVmName
 az vm generalize --resource-group myResourceGroup --name sourceVmName
 az image create --resource-group myResourceGroup --name myCloudInitImage --source sourceVmName

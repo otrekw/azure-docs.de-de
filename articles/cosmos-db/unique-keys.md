@@ -1,26 +1,28 @@
 ---
 title: Verwenden eindeutiger Schlüssel in Azure Cosmos DB
-description: Hier erfahren Sie, wie Sie eindeutige Schlüssel in Ihrer Azure Cosmos-Datenbank verwenden.
-author: rimman
-ms.author: rimman
+description: Erfahren Sie, wie Sie eindeutige Schlüssel für eine Azure Cosmos-Datenbank definieren und verwenden. Außerdem wird in diesem Artikel beschrieben, wie eindeutige Schlüssel eine Ebene der Datenintegrität hinzufügen.
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e5b8eb4d5334eb198ff6699897c56b516ded069e
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 165fb2937db5edfa4f51f62033afaf87cfff83ef
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467561"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353101"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Einschränkungen für eindeutige Schlüssel in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Eindeutige Schlüssel fügen einem Azure Cosmos-Container eine Datenintegritätsebene hinzu. Eine Richtlinie für eindeutige Schlüssel wird erstellt, wenn Sie einen Azure Cosmos-Container erstellen. Mit eindeutigen Schlüsseln stellen Sie die Eindeutigkeit von Werten innerhalb einer logischen Partition sicher. Sie können auch die Eindeutigkeit pro [Partitionsschlüssel](partition-data.md) gewährleisten. 
+Eindeutige Schlüssel fügen einem Azure Cosmos-Container eine Datenintegritätsebene hinzu. Eine Richtlinie für eindeutige Schlüssel wird erstellt, wenn Sie einen Azure Cosmos-Container erstellen. Mit eindeutigen Schlüsseln stellen Sie die Eindeutigkeit von Werten innerhalb einer logischen Partition sicher. Sie können auch die Eindeutigkeit pro [Partitionsschlüssel](partitioning-overview.md) gewährleisten.
 
 Nachdem Sie einen Container mit einer Richtlinie für eindeutige Schlüssel erstellt haben, wird verhindert, dass innerhalb einer logischen Partition neue oder aktualisierte Kopien vorhandener Elemente erstellt werden (gemäß der Einschränkung für eindeutige Schlüssel). Die Kombination aus Partitionsschlüssel und eindeutigem Schlüssel garantiert die Eindeutigkeit eines Elements innerhalb des Containerbereichs.
 
-Stellen Sie sich beispielsweise einen Azure Cosmos-Container mit E-Mail-Adresse als Einschränkung für eindeutige Schlüssel und `CompanyID` als Partitionsschlüssel vor. Wenn Sie die E-Mail-Adresse des Benutzers mit einem eindeutigen Schlüssel konfigurieren, verfügt jedes Element innerhalb einer bestimmten Unternehmens-ID (`CompanyID`) über eine eindeutige e-Mail-Adresse. Es können keine zwei Elemente mit der gleichen E-Mail-Adresse und dem gleichen Partitionsschlüsselwert erstellt werden. 
+Stellen Sie sich beispielsweise einen Azure Cosmos-Container mit E-Mail-Adresse als Einschränkung für eindeutige Schlüssel und `CompanyID` als Partitionsschlüssel vor. Wenn Sie die E-Mail-Adresse des Benutzers mit einem eindeutigen Schlüssel konfigurieren, verfügt jedes Element innerhalb einer bestimmten Unternehmens-ID (`CompanyID`) über eine eindeutige e-Mail-Adresse. Es können keine zwei Elemente mit der gleichen E-Mail-Adresse und dem gleichen Partitionsschlüsselwert erstellt werden. In der SQL-API (Core-API) von Azure Cosmos DB werden Elemente als JSON-Werte gespeichert. Bei diesen JSON-Werten wird die Groß- und Kleinschreibung berücksichtigt. Wenn Sie eine Eigenschaft als eindeutigen Schlüssel auswählen, können Sie Werte, bei denen die Groß-/Kleinschreibung beachtet werden muss, für diese Eigenschaft einfügen. Wenn Sie beispielsweise einen eindeutigen Schlüssel für die name-Eigenschaft definiert haben, unterscheidet sich „Gaby“ von „gaby“, und Sie können beide Schreibweisen in den Container einfügen.
 
 Um Elemente mit derselben E-Mail-Adresse, nicht jedoch mit derselben Kombination aus Vorname, Nachname und E-Mail-Adresse, zu erstellen, fügen Sie der Richtlinie für eindeutige Schlüssel weitere Pfade hinzu. Anstelle eines eindeutigen Schlüssels, der nur auf der E-Mail-Adresse basiert, können Sie auch einen eindeutigen Schlüssel mit einer Kombination aus Vorname, Nachname und E-Mail-Adresse erstellen. Dieser Schlüssel wird als einen zusammengesetzter eindeutiger Schlüssel bezeichnet. In diesem Fall ist jede eindeutige Kombination der drei Werte innerhalb einer bestimmten Unternehmens-ID (`CompanyID`) zulässig. 
 
@@ -43,7 +45,7 @@ Eindeutige Schlüssel können Sie nur beim Erstellen eines Azure Cosmos-Containe
 
 * Sie können einen bereits vorhandenen Container nicht für die Verwendung eines anderen eindeutigen Schlüssels aktualisieren. Anders ausgedrückt: Nachdem ein Container mit einer Richtlinie für eindeutige Schlüssel erstellt wurde, kann die Richtlinie nicht mehr geändert werden.
 
-* Um einen eindeutigen Schlüssel für einen bestehenden Container festzulegen, erstellen Sie einen neuen Container mit der Einschränkung für eindeutige Schlüssel. Verwenden Sie das entsprechende Datenmigrationstool, um die Daten aus dem vorhandenen Container in den neuen Container zu verschieben. Verwenden Sie für SQL-Container das [Datenmigrationstool](import-data.md), um die Daten zu verschieben. Verwenden Sie für MongoDB-Container [„mongoimport.exe“ oder „mongorestore.exe“](mongodb-migrate.md), um die Daten zu verschieben.
+* Um einen eindeutigen Schlüssel für einen bestehenden Container festzulegen, erstellen Sie einen neuen Container mit der Einschränkung für eindeutige Schlüssel. Verwenden Sie das entsprechende Datenmigrationstool, um die Daten aus dem vorhandenen Container in den neuen Container zu verschieben. Verwenden Sie für SQL-Container das [Datenmigrationstool](import-data.md), um die Daten zu verschieben. Verwenden Sie für MongoDB-Container [„mongoimport.exe“ oder „mongorestore.exe“](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json), um die Daten zu verschieben.
 
 * Eine Richtlinie für eindeutige Schlüssel kann maximal 16 Pfadwerte enthalten. Die Werte können z. B. `/firstName`, `/lastName` und `/address/zipCode` lauten. Jede Richtlinie für eindeutige Schlüssel kann höchstens 10 Einschränkungen auf eindeutige Schlüssel oder Kombinationen enthalten. Die kombinierten Pfade für jede Einschränkung für eindeutige Schlüssel dürfen 60 Byte nicht überschreiten. Die Kombination aus Vorname, Nachname und E-Mail-Adresse im vorherigen Beispiel ist eine Einschränkung. Diese Einschränkung verwendet drei der 16 möglichen Pfade.
 
@@ -55,5 +57,5 @@ Eindeutige Schlüssel können Sie nur beim Erstellen eines Azure Cosmos-Containe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über [logische Partitionen](partition-data.md).
+* Erfahren Sie mehr über [logische Partitionen](partitioning-overview.md).
 * Erkunden Sie, [wie eindeutige Schlüssel beim Erstellen eines Containers definiert werden](how-to-define-unique-keys.md)

@@ -6,40 +6,44 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+keywords: Cognitive Services, kognitive Intelligenz, kognitive Lösungen, KI-Dienste
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: cd00f49aea08e5c94a9206b64f66f4424ef3ca04
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: e276d96e8a81b435ec4d0c270cf818555d512ae0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057652"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368898"
 ---
-# <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Erstellen einer Cognitive Services-Ressource mithilfe der Azure-Befehlszeilenschnittstelle (CLI)
+# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe der Azure-Befehlszeilenschnittstelle (CLI)
 
-Verwenden Sie diese Schnellstartanleitung für die Verwendung von Azure Cognitive Services mithilfe der [Azure-Befehlszeilenschnittstelle (Azure Command Line Interface, CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Cognitive Services werden von [Azure-Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) dargestellt, die Sie in Ihrem Azure-Abonnement erstellen. Verwenden Sie nach dem Erstellen der Ressource die Schlüssel und einen für Sie zum Authentifizieren Ihrer Anwendungen generierten Endpunkt. 
+Verwenden Sie diese Schnellstartanleitung für die Verwendung von Azure Cognitive Services mithilfe der [Azure-Befehlszeilenschnittstelle (Azure Command Line Interface, CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
+Azure Cognitive Services sind cloudbasierte Dienste mit REST-APIs und Clientbibliothek-SDKs, die Entwickler bei der Erstellung intelligenter Anwendungen unterstützen, ohne dass direkte KI- oder Data Science-Fähigkeiten oder -Kenntnisse erforderlich sind. Mit Cognitive Services können Entwickler ganz einfach kognitive Features in ihre Anwendungen integrieren – mit kognitiven Lösungen, die sehen, hören, sprechen, verstehen und sogar schlussfolgern können.
 
-In diesem Schnellstart erfahren Sie, wie Sie sich mit der [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) für Azure Cognitive Services registrieren und ein Konto mit einem Abonnement mit einem einzelnen Dienst oder mehreren Diensten erstellen. Diese Dienste werden durch Azure-[Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) repräsentiert, die Ihnen ermöglichen, Verbindungen mit einer oder mehreren der Azure Cognitive Services-APIs herzustellen.
+Cognitive Services werden von [Azure-Ressourcen](../azure-resource-manager/management/manage-resources-portal.md) dargestellt, die Sie in Ihrem Azure-Abonnement erstellen. Verwenden Sie nach dem Erstellen der Ressource die Schlüssel und einen für Sie zum Authentifizieren Ihrer Anwendungen generierten Endpunkt.
+
+In diesem Schnellstart erfahren Sie, wie Sie sich mit der [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest) für Azure Cognitive Services registrieren und ein Konto mit einem Abonnement mit einem einzelnen Dienst oder mehreren Diensten erstellen. Diese Dienste werden durch Azure-[Ressourcen](../azure-resource-manager/management/manage-resources-portal.md) repräsentiert, die Ihnen ermöglichen, Verbindungen mit einer oder mehreren der Azure Cognitive Services-APIs herzustellen.
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein gültiges Azure-Abonnement. Dieses können Sie [kostenlos erstellen](https://azure.microsoft.com/free/).
-* Die [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Ein gültiges Azure-Abonnement. Dieses können Sie [kostenlos erstellen](https://azure.microsoft.com/free/cognitive-services).
+* Die [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-## <a name="install-the-azure-cli-and-sign-in"></a>Installieren der Azure CLI und Anmelden 
+## <a name="install-the-azure-cli-and-sign-in"></a>Installieren der Azure CLI und Anmelden
 
-Installieren Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle anmelden möchten, führen Sie den Befehl [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) aus:
+Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle anmelden möchten, führen Sie den Befehl [az login](/cli/azure/reference-index#az-login) aus:
 
-```console
+```azurecli-interactive
 az login
 ```
 
-Sie können auch die grüne **Ausprobieren**-Schaltfläche verwenden, um diese Befehle in Ihrem Browser auszuführen.
- 
+Sie können auch die grüne **Ausprobieren** -Schaltfläche verwenden, um diese Befehle in Ihrem Browser auszuführen.
+
 ## <a name="create-a-new-azure-cognitive-services-resource-group"></a>Erstellen einer neuen Azure Cognitive Services-Ressourcengruppe
 
 Vor dem Erstellen einer Cognitive Services-Ressource müssen Sie über eine Azure-Ressourcengruppe verfügen, die die Ressource enthalten soll. Beim Erstellen einer neuen Ressource haben Sie die Möglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine bereits vorhandene zu verwenden. In diesem Artikel wird gezeigt, wie Sie eine neue Ressourcengruppe erstellen.
@@ -50,7 +54,7 @@ Um eine Ressource zu erstellen, benötigen Sie einen der für Ihr Abonnement ver
 
 > [!IMPORTANT]
 > * Merken Sie sich Ihren Azure-Speicherort, da Sie ihn beim Aufrufen der Azure Cognitive Services benötigen.
-> * Die Verfügbarkeit einiger Cognitive Services kann je nach Region variieren. Weitere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services).  
+> * Die Verfügbarkeit einiger Cognitive Services kann je nach Region variieren. Weitere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services).
 
 ```azurecli-interactive
 az account list-locations \
@@ -58,7 +62,7 @@ az account list-locations \
     --out table
 ```
 
-Sobald Ihr Azure-Speicherort feststeht, erstellen Sie zuerst eine neue Ressourcengruppe in der Azure-Befehlszeilenschnittstelle, und verwenden Sie hierzu den Befehl [az group create](/cli/azure/group#az-group-create).
+Sobald Ihr Azure-Speicherort feststeht, erstellen Sie eine neue Ressourcengruppe in der Azure-Befehlszeilenschnittstelle mit dem Befehl [az group create](/cli/azure/group#az-group-create).
 
 Ersetzen Sie im folgenden Beispiel den Azure-Speicherort `westus2` durch einen der für Ihr Abonnement verfügbaren Azure-Speicherorte.
 
@@ -74,8 +78,15 @@ az group create \
 
 Wenn Sie eine neue Ressource erstellen, müssen Sie die „Art“ des Diensts kennen, den Sie verwenden möchten, sowie den [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/), den Sie wünschen (oder die SKU). Diese und andere Informationen werden Sie beim Erstellen der Ressource als Parameter verwenden.
 
+### <a name="multi-service"></a>Mehrere Dienste
+
+| Dienst                    | Variante                      |
+|----------------------------|---------------------------|
+| Mehrere Dienste. Weitere Informationen finden Sie auf der Seite mit der [Preisübersicht](https://azure.microsoft.com/pricing/details/cognitive-services/).            | `CognitiveServices`     |
+
+
 > [!NOTE]
-> Bei vielen Cognitive Services können Sie einen kostenlosen Tarif nutzen, um den Dienst auszuprobieren. Um den kostenlosen Tarif zu nutzen, verwenden Sie `F0` als SKU für Ihre Ressource.
+> Bei vielen der unten angegebenen Cognitive Services können Sie einen kostenlosen Tarif nutzen, um den Dienst auszuprobieren. Um den kostenlosen Tarif zu nutzen, verwenden Sie `F0` als SKU für Ihre Ressource.
 
 ### <a name="vision"></a>Bildanalyse
 
@@ -84,7 +95,7 @@ Wenn Sie eine neue Ressource erstellen, müssen Sie die „Art“ des Diensts ke
 | Maschinelles Sehen            | `ComputerVision`          |
 | Custom Vision – Vorhersage | `CustomVision.Prediction` |
 | Custom Vision – Training   | `CustomVision.Training`   |
-| Gesichtserkennungs-API                   | `Face`                    |
+| Gesicht                       | `Face`                    |
 | Formularerkennung            | `FormRecognizer`          |
 | Freihanderkennung             | `InkRecognizer`           |
 
@@ -123,7 +134,7 @@ Wenn Sie eine neue Ressource erstellen, müssen Sie die „Art“ des Diensts ke
 | Content Moderator | `ContentModerator` |
 | Personalisierung      | `Personalizer`     |
 
-Sie können eine Liste der verfügbaren „Arten“ von Cognitive Services mit dem Befehl [az cognitiveservices account list-kinds](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) finden:
+Sie können eine Liste der verfügbaren „Arten“ von Cognitive Services mit dem Befehl [az cognitiveservices account list-kinds](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) finden:
 
 ```azurecli-interactive
 az cognitiveservices account list-kinds
@@ -131,7 +142,7 @@ az cognitiveservices account list-kinds
 
 ### <a name="add-a-new-resource-to-your-resource-group"></a>Hinzufügen einer neuen Ressource zu Ihrer Ressourcengruppe
 
-Um eine neue Cognitive Services-Ressource zu erstellen und zu abonnieren, verwenden Sie den Befehl [az cognitiveservices account create](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create). Dieser Befehl fügt der zuvor erstellten Ressourcengruppe eine neue abrechenbare Ressource hinzu. Wenn Sie Ihre neue Ressource erstellen, müssen Sie die „Art“ des Diensts kennen, den Sie verwenden möchten, sowie dessen Tarif (oder die SKU) und einen Azure-Speicherort.
+Um eine neue Cognitive Services-Ressource zu erstellen und zu abonnieren, verwenden Sie den Befehl [az cognitiveservices account create](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create). Dieser Befehl fügt der zuvor erstellten Ressourcengruppe eine neue abrechenbare Ressource hinzu. Wenn Sie Ihre neue Ressource erstellen, müssen Sie die „Art“ des Diensts kennen, den Sie verwenden möchten, sowie dessen Tarif (oder die SKU) und einen Azure-Speicherort.
 
 Sie können eine (kostenlose) F0-Ressource zur Anomalieerkennung erstellen, die mit dem folgenden Befehl den Namen `anomaly-detector-resource` erhält.
 
@@ -145,15 +156,17 @@ az cognitiveservices account create \
     --yes
 ```
 
+[!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
+
 ## <a name="get-the-keys-for-your-resource"></a>Abrufen der Schlüssel für die Ressource
 
-Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle (CLI) anmelden möchten, führen Sie den Befehl [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) aus.
+Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle (CLI) anmelden möchten, führen Sie den Befehl [az login](/cli/azure/reference-index?view=azure-cli-latest#az-login) aus.
 
-```console
+```azurecli-interactive
 az login
 ```
 
-Rufen Sie mit dem Befehl [az cognitiveservices account keys list](https://docs.microsoft.com/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list) die Schlüssel für Ihre Cognitive Service-Ressource ab.
+Rufen Sie mit dem Befehl [az cognitiveservices account keys list](/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list) die Schlüssel für Ihre Cognitive Service-Ressource ab.
 
 ```azurecli-interactive
     az cognitiveservices account keys list \
@@ -170,6 +183,16 @@ Die Tarife (und der Betrag, der Ihnen in Rechnung gestellt wird) basieren auf de
 * Dienstfeatures, die innerhalb des Tarifs aktiviert sind.
 * Die Kosten für eine vordefinierte Anzahl von Transaktionen. Wird diese Anzahl überschritten, fällt eine zusätzliche Gebühr gemäß den [Preisdetails](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) für Ihren Dienst an.
 
+## <a name="get-current-quota-usage-for-your-resource"></a>Abrufen des aktuellen Kontingentverbrauchs für Ihre Ressource
+
+Rufen Sie mit dem Befehl [az cognitiveservices account list-usage](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) den Verbrauch für Ihre Cognitive Service-Ressource ab.
+
+```azurecli-interactive
+az cognitiveservices account list-usage \
+    --name anomaly-detector-resource \
+    --resource-group cognitive-services-resource-group \
+    --subscription subscription-name
+```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -178,12 +201,12 @@ Wenn Sie eine Cognitive Services-Ressource bereinigen und entfernen möchten, k�
 Verwenden Sie den Befehl „az group delete“, um die Ressourcengruppe und die zugeordneten Ressourcen zu entfernen.
 
 ```azurecli-interactive
-az group delete --name storage-resource-group
+az group delete --name cognitive-services-resource-group
 ```
 
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Authentifizieren von Anforderungen an Azure Cognitive Services](authentication.md)
-* [Was ist Azure Cognitive Services?](Welcome.md)
-* [Unterstützung für natürliche Sprache](language-support.md)
+* [Was ist Azure Cognitive Services?](./what-are-cognitive-services.md)
+* [Unterstützung für natürliche Sprachen in Azure Cognitive Services](language-support.md)
 * [Containerunterstützung in Azure Cognitive Services](cognitive-services-container-support.md)

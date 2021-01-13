@@ -1,18 +1,20 @@
 ---
-title: 'Schnellstart: Erstellen einer Azure DNS-Zone und eines -Eintrags mithilfe von Azure PowerShell'
+title: 'Schnellstart: Erstellen einer Azure DNS-Zone und eines entsprechenden Eintrags – Azure PowerShell'
+titleSuffix: Azure DNS
 description: Erfahren Sie, wie Sie eine DNS-Zone und einen DNS-Eintrag in Azure DNS erstellen. Dies ist ein schrittweiser Schnellstart zum Erstellen und Verwalten Ihrer ersten DNS-Zone und Ihres ersten DNS-Eintrags mithilfe von Azure PowerShell.
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: ccf60a333dcc83e27702d572f922ef6aec741c14
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.date: 10/20/2020
+ms.author: rohink
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f2563c33d02490732f73fcf9d1a78f548ec2d3e2
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730312"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282227"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines entsprechenden Eintrags mithilfe von Azure PowerShell
 
@@ -24,9 +26,12 @@ Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verw
 
 Azure DNS unterstützt auch das Erstellen privater Domänen. Schritt-für-Schritt-Anweisungen zum Erstellen Ihrer ersten privaten DNS-Zone und des ersten Datensatzes finden Sie unter [Erste Schritte mit privaten Azure DNS-Zonen mithilfe von PowerShell](private-dns-getstarted-powershell.md).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Azure PowerShell (lokal installiert) oder Azure Cloud Shell
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-the-resource-group"></a>Ressourcengruppe erstellen
 
@@ -88,11 +93,11 @@ Sie besitzen nun eine DNS-Testzone mit einem A-Testeintrag und können die Namen
 
    Es sollte ein Bildschirm angezeigt werden, der in etwa wie folgt aussieht:
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![Screenshot, der ein Eingabeaufforderungsfenster mit einem Namenserver-Suchbefehl und Werten für Server, Adresse, Name und Adresse zeigt.](media/dns-getstarted-portal/nslookup.PNG)
 
 Der Hostname **www\.contoso.xyz** wird gemäß Ihrer Konfiguration zu **10.10.10.10** aufgelöst. Mit diesem Ergebnis wird bestätigt, dass die Namensauflösung richtig funktioniert.
 
-## <a name="delete-all-resources"></a>Löschen aller Ressourcen
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn sie nicht mehr benötigt werden, können Sie alle in diesem Schnellstart erstellten Ressourcen löschen, indem Sie die Ressourcengruppe löschen:
 

@@ -5,31 +5,24 @@ ms.topic: include
 ms.custom: include file
 services: time-series-insights
 ms.service: time-series-insights
-author: kingdomofends
-ms.author: adgera
-ms.date: 09/24/2019
-ms.openlocfilehash: ccfbd16f4db770558f1bc0284860a5f8d9fb8b68
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+author: deepakpalled
+ms.author: dpalled
+manager: cshankar
+ms.date: 10/02/2020
+ms.openlocfilehash: 50f203357d29d450f5b34593952f611f025b14ff
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266941"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556045"
 ---
-> [!IMPORTANT]
-> * Das neue Blatt **Azure Active Directory** > **App-Registrierungen** ersetzt Mai 2019 das veraltete Blatt **Azure Active Directory** > **App-Registrierungen (Legacy)** .
-> * App-Registrierungen, die auf dem Legacy-Blatt erstellt oder angezeigt werden, werden automatisch auf dem neuen Blatt angezeigt.
-> * Ausführliche Informationen zur Migration zur neuen Azure-App-Registrierungsumgebung finden Sie im [Schulungshandbuch zu Azure-App-Registrierungen](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide) und [Schnellstart zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
-
 1. Wählen Sie im [Azure-Portal](https://ms.portal.azure.com/) nacheinander **Azure Active Directory** > **App-Registrierungen** > **Neue Registrierung** aus.
 
    [![Registrierung einer neuen Anwendung in Azure Active Directory](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
 
-   > [!TIP]
-   > Der neue App-Registrierungsbereich für Azure Active Directory ermöglicht Ihnen, die angezeigten Apps zu filtern, indem Sie **Anwendungen mit Besitzer** auswählen.
-
     Ihre App wird hier aufgelistet, nachdem Sie sie registriert haben.
 
-1. Geben Sie der Anwendung einen Namen, und wählen Sie **Nur Konten in diesem Organisationsverzeichnis** aus, um **Unterstützten Kontotypen** anzugeben, die auf die API zugreifen dürfen. Wählen Sie einen gültigen URI, an den die Benutzer nach der Authentifizierung weitergeleitet werden sollen, und sich dann **registrieren**.
+1. Geben Sie der Anwendung einen Namen, und wählen Sie **Nur Konten in diesem Organisationsverzeichnis** aus, um **Unterstützten Kontotypen** anzugeben, die auf die API zugreifen dürfen. Wenn Sie eine [öffentliche Client-App](../articles/active-directory/develop/msal-client-application-configuration.md#redirect-uri) erstellen, fügen Sie einen Umleitungs-URI hinzu, und klicken Sie dann auf **Registrieren**.
 
    [![Erstellen der Anwendung in Azure Active Directory](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 
@@ -39,20 +32,32 @@ ms.locfileid: "71266941"
 
    Kopieren Sie Ihre **Anwendungs-ID (Client)** , um sie in Ihrer Clientanwendung zu verwenden.
 
-1. Auf dem Blatt **Authentifizierung** sind wichtige Konfigurationseinstellungen für die Authentifizierung angegeben. 
+1. Auf dem Blatt **Authentifizierung** sind wichtige Konfigurationseinstellungen für die Authentifizierung angegeben.
+
+    1. Fügen Sie **Umleitungs-URIs** hinzu, und konfigurieren Sie **Zugriffstoken**, indem Sie **+ Plattform hinzufügen** auswählen.
+
+    1. Legen Sie fest, ob die App ein **öffentlicher Client** ist, indem Sie **Ja** oder **Nein** auswählen.
+
+    1. Überprüfen Sie, welche Konten und Mandanten unterstützt werden.
+
+    [![Konfigurieren der impliziten Genehmigung](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+
+1. Konfigurieren Sie nach der Auswahl der geeigneten Plattform die **Umleitungs-URIs** und **Zugriffstoken** im Seitenpanel rechts auf der Benutzeroberfläche.
 
     1. **Umleitungs-URIs** müssen mit der in der Authentifizierungsanforderung angegebenen Adresse übereinstimmen:
 
-        * Wählen Sie für Anwendungen, die in einer lokalen Entwicklungsumgebung gehostet werden, **Öffentlicher Client (Mobilgerät und Desktop)** aus. Stellen Sie sicher, dass **Standardclienttyp** auf „Ja“ festgelegt ist.
+        * Wählen Sie für Anwendungen, die in einer lokalen Entwicklungsumgebung gehostet werden, **Öffentlicher Client (Mobilgerät und Desktop)** aus. Stellen Sie sicher, dass **Öffentlicher Client** auf **Ja** festgelegt ist.
         * Wählen Sie für in Azure App Service gehostete Einzelseiten-Apps **Web** aus.
 
-    1. Aktivieren Sie den Flow der impliziten Genehmigung, indem Sie **ID-Token** aktivieren.
+    1. Legen Sie fest, ob eine **Abmelde-URL** geeignet ist.
 
-   [![Erstellen eines neuen geheimen Clientschlüssels](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+    1. Aktivieren Sie den Ablauf für die implizite Genehmigung, indem Sie die Option **Zugriffstoken** oder **ID-Token** aktivieren.
 
-   Klicken Sie auf **Speichern**.
+    [![Erstellen von Umleitungs-URIs](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png)](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png#lightbox)
 
-1. Wählen Sie **Zertifikate & Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus, um ein Anwendungskennwort zu erstellen, die der Client zum Nachweis seiner Identität verwenden kann.
+    Klicken Sie auf **Konfigurieren** und dann auf **Speichern**.
+
+1. Wählen Sie **Zertifikate & Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus, um ein Anwendungskennwort zu erstellen, das die Client-App zum Nachweis ihrer Identität verwenden kann.
 
    [![Erstellen eines neuen geheimen Clientschlüssels](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
 
@@ -61,7 +66,7 @@ ms.locfileid: "71266941"
    > [!NOTE]
    > Sie können stattdessen auch ein Zertifikat importieren. Die Verwendung eines Zertifikats wird empfohlen, um die Sicherheit zu erhöhen. Wenn Sie ein Zertifikat verwenden möchten, wählen Sie **Zertifikat hochladen** aus.
 
-1. Ordnen Sie Ihre Azure Active Directory-App Azure Time Series Insights zu. Wählen Sie **API-Berechtigungen** > **Berechtigung hinzufügen** > **Von meiner Organisation verwendete APIs** aus. 
+1. Ordnen Sie Ihre Azure Active Directory-App Azure Time Series Insights zu. Wählen Sie **API-Berechtigungen** > **Berechtigung hinzufügen** > **Von meiner Organisation verwendete APIs** aus.
 
     [![Zuordnen einer API zu Ihrer Azure Active Directory-App](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 

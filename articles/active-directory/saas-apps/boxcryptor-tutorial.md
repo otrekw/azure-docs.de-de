@@ -1,28 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von Boxcryptor | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Boxcryptor | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Boxcryptor konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c46aa523-b58c-4a95-a800-db2e5e01c542
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 384a0d1161197bbe4d4335e27b72ed50755980f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82f6d2a20943c1d8e91c6bfca76a192ee2b7b06e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106060"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672218"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>Tutorial: Azure Active Directory-Integration von Boxcryptor
+# <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>Tutorial: Azure Active Directory-Integration mit Boxcryptor
 
 In diesem Tutorial erfahren Sie, wie Sie Boxcryptor in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Boxcryptor in Azure AD bietet die folgenden Vorteile:
@@ -31,7 +27,7 @@ Die Integration von Boxcryptor in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Boxcryptor anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -68,7 +64,7 @@ Zum Konfigurieren der Integration von Boxcryptor in Azure AD müssen Sie Boxcryp
 
 4. Geben Sie im Suchfeld **Boxcryptor** ein, wählen Sie im Ergebnisbereich **Boxcryptor** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Boxcryptor in der Ergebnisliste](common/search-new-app.png)
+    ![Boxcryptor in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -145,13 +141,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -181,19 +177,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-boxcryptor-test-user"></a>Erstellen eines Boxcryptor-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Boxcryptor einen Benutzer namens Britta Simon. Wenden Sie sich an das [Boxcryptor-Supportteam](mailto:support@boxcryptor.com), um die Benutzer oder die Domänen hinzuzufügen, die zur Zulassungsliste für die Boxcryptor-Plattform hinzugefügt werden sollen. Wird die Domäne vom Team hinzugefügt, werden Benutzer automatisch auf der Boxcryptor-Plattform bereitgestellt. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Boxcryptor einen Benutzer namens Britta Simon. Wenden Sie sich an das [Boxcryptor-Supportteam](mailto:support@boxcryptor.com), um die Benutzer oder die Domänen hinzuzufügen, die zur Zulassungsliste für die Boxcryptor-Plattform hinzugefügt werden sollen. Wird die Domäne vom Team hinzugefügt, werden Benutzer automatisch auf der Boxcryptor-Plattform bereitgestellt. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Boxcryptor“ klicken, sollten Sie automatisch bei der Boxcryptor-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Boxcryptor“ klicken, sollten Sie automatisch bei der Boxcryptor-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

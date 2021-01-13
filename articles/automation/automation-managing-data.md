@@ -1,80 +1,105 @@
 ---
-title: Verwalten von Azure Automation-Daten
-description: Dieser Artikel enthält mehrere Themen zum Verwalten einer Azure Automation-Umgebung.  Er enthält derzeit die Themen "Datenaufbewahrung", "Sichern von Azure Automation" und "Notfallwiederherstellung in Azure Automation".
+title: Datensicherheit in Azure Automation
+description: In diesem Artikel erfahren Sie, wie Azure Automation Ihre Privatsphäre schützt und Ihre Daten sichert.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
-ms.date: 03/16/2018
+ms.date: 07/20/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 9de5909ddca5fd36f3fafcb79e2a4ad519402c9c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476580"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87004646"
 ---
-# <a name="managing-azure-automation-data"></a>Verwalten von Azure Automation-Daten
-Dieser Artikel enthält mehrere Themen zum Verwalten einer Azure Automation-Umgebung.
+# <a name="management-of-azure-automation-data"></a>Verwaltung von Azure Automation-Daten
+
+Dieser Artikel enthält verschiedene Themen, in denen erläutert wird, wie die Daten in einer Azure Automation-Umgebung geschützt und gesichert werden.
+
+## <a name="tls-12-enforcement-for-azure-automation"></a>Erzwingen von TLS 1.2 für Azure Automation
+
+Um die Sicherheit von Daten bei der Übertragung an Azure Automation zu gewährleisten, wird dringend empfohlen, den Computer für die Verwendung von TLS 1.2 (Transport Layer Security) zu konfigurieren. Im Folgenden sehen Sie eine Liste der Methoden bzw. Clients, die über HTTPS mit dem Automation-Dienst kommunizieren:
+
+* Webhookaufrufe
+
+* Hybrid Runbook Worker, einschließlich Computern, die über die Updateverwaltung sowie „Änderungsnachverfolgung und Bestand“ verwaltet werden.
+
+* DSC-Knoten
+
+Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**. Ab September 2020 beginnen wir damit, TLS 1.2 und höhere Versionen des Verschlüsselungsprotokolls zu erzwingen.
+
+Es wird nicht empfohlen, Ihren Agent explizit so einzurichten, dass nur TLS 1.2 verwendet wird, es sei denn, dies ist unbedingt erforderlich. Denn dadurch können Sicherheitsfeatures auf Plattformebene deaktiviert werden, mit deren Hilfe neuere, sicherere Protokolle wie TLS 1.3 automatisch erkannt und genutzt werden können, sobald diese verfügbar sind.
+
+Informationen zur TLS 1.2-Unterstützung mit dem Log Analytics-Agent für Windows und Linux, bei dem es sich um eine Abhängigkeit für die Hybrid Runbook Worker-Rolle handelt, finden Sie unter [Übersicht über den Log Analytics-Agent – TLS 1.2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol). 
+
+### <a name="platform-specific-guidance"></a>Plattformspezifische Anleitungen
+
+|Plattform/Sprache | Support | Weitere Informationen |
+| --- | --- | --- |
+|Linux | Linux-Distributionen greifen zur Unterstützung von TLS 1.2 tendenziell auf [OpenSSL](https://www.openssl.org) zurück.  | Überprüfen Sie anhand des [OpenSSL-Änderungsprotokolls](https://www.openssl.org/news/changelog.html), ob Ihre Version von OpenSSL unterstützt wird.|
+| Windows 8.0 bis 10 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](/windows-server/security/tls/tls-registry-settings) verwenden.  |
+| Windows Server 2012 bis 2016 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](/windows-server/security/tls/tls-registry-settings) verwenden. |
+| Windows 7 SP1 und Windows Server 2008 R2 SP1 | Wird unterstützt, ist jedoch standardmäßig deaktiviert. | Details zur Aktivierung finden Sie auf der Seite [Transport Layer Security (TLS) registry settings (Registrierungseinstellungen für Transport Layer Security (TLS))](/windows-server/security/tls/tls-registry-settings).  |
 
 ## <a name="data-retention"></a>Beibehaltung von Daten
-Wenn Sie eine Ressource in Azure Automation löschen, wird diese zu Überwachungszwecken für 90 Tage aufbewahrt, bevor sie dauerhaft gelöscht wird.  In diesem Zeitraum kann die Ressource weder angezeigt noch verwendet werden.  Diese Richtlinie gilt auch für Ressourcen, die zu einem Automation-Konto gehören, das gelöscht wurde.
 
-Aufträge, die älter sind als 90 Tage, werden in Azure Automation automatisch gelöscht und dauerhaft entfernt.
+Wenn Sie eine Ressource in Azure Automation löschen, wird diese zu Überwachungszwecken für eine Anzahl von Tagen aufbewahrt, bevor sie endgültig gelöscht wird. In diesem Zeitraum kann die Ressource weder angezeigt noch verwendet werden. Diese Richtlinie gilt auch für Ressourcen, die zu einem gelöschten Automation-Konto gehören.
 
 Die folgende Tabelle zeigt die Aufbewahrungsrichtlinie für unterschiedliche Ressourcen.
 
 | Daten | Richtlinie |
 |:--- |:--- |
-| Konten |Dauerhafte Entfernung 90 Tage nach dem Löschen des Kontos durch einen Benutzer. |
-| Objekte |Dauerhafte Entfernung 90 Tage nach dem Löschen des Objekts durch einen Benutzer, oder 90 Tage nach dem Löschen des Kontos mit dem Objekt durch einen Benutzer. |
-| Module |Dauerhafte Entfernung 90 Tage nach dem Löschen des Moduls durch einen Benutzer, oder 90 Tage nach dem Löschen des Kontos mit dem Modul durch einen Benutzer. |
-| Runbooks |Dauerhafte Entfernung 90 Tage nach dem Löschen der Ressource durch einen Benutzer, oder 90 Tage nach dem Löschen des Kontos mit der Ressource durch einen Benutzer. |
-| Aufträge |Löschung und dauerhafte Entfernung 90 Tage nach der letzten Änderung. Dies kann der Fall sein, wenn der Job abgeschlossen, gestoppt oder angehalten wurde. |
-| Knotenkonfigurationen/MOF-Dateien |Die alte Knotenkonfiguration wird 90 Tage nach dem Generieren einer neuen Knotenkonfiguration dauerhaft entfernt. |
-| DSC-Knoten |Diese werden 90 Tage nach Aufhebung der Registrierung im Automation-Konto über das Azure-Portal oder mit dem Cmdlet [Unregister-AzureRMAutomationDscNode](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) in Windows PowerShell dauerhaft entfernt. Wenn ein Benutzer das Konto löscht, in dem die Knoten enthalten sind, werden diese ebenfalls nach 90 Tagen dauerhaft entfernt. |
-| Knotenberichte |90 Tage nach dem Generieren eines neuen Berichts für diesen Knoten dauerhaft entfernt |
+| Konten |Ein Konto wird 30 Tage nach seiner Löschung durch den Benutzer endgültig entfernt. |
+| Objekte |Ein Objekt wird 30 Tage nach seiner Löschung durch den Benutzer endgültig entfernt oder 30 Tage, nachdem ein Benutzer ein Konto gelöscht hat, das das Objekt enthält. Zu den Objekten gehören Variablen, Zeitpläne, Anmeldeinformationen, Zertifikate, Python 2-Pakete und Verbindungen. |
+| DSC-Knoten |Ein DSC-Knoten wird 30 Tage nach Aufhebung seiner Registrierung im Automation-Konto über das Azure-Portal oder mit dem Cmdlet [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) in Windows PowerShell endgültig entfernt. Auch ein Knoten wird nach 30 Tagen endgültig entfernt, nachdem ein Benutzer das Konto gelöscht hat, das den Knoten enthält. |
+| Aufträge |Ein Auftrag wird 30 Tage nach der Änderung gelöscht und endgültig entfernt, z. B. nachdem der Auftrag abgeschlossen, beendet oder angehalten wurde. |
+| Module |Ein Modul wird 30 Tage nach seiner Löschung durch einen Benutzer endgültig entfernt oder 30 Tage, nachdem ein Benutzer das Konto gelöscht hat, das das Modul enthält. |
+| Knotenkonfigurationen/MOF-Dateien |Eine alte Knotenkonfiguration wird 30 Tage nach dem Generieren einer neuen Knotenkonfiguration endgültig entfernt. |
+| Knotenberichte |Ein Knotenbericht wird 90 Tage nach dem Generieren eines neuen Berichts für diesen Knoten endgültig entfernt. |
+| Runbooks |Ein Runbook wird 30 Tage, nachdem ein Benutzer die Ressource gelöscht hat, endgültig entfernt oder 30 Tage, nachdem ein Benutzer das Konto gelöscht hat, das die Ressource enthält. |
 
-Die Datenaufbewahrungsrichtlinie gilt für alle Benutzer und kann zurzeit nicht angepasst werden.
+Die Datenaufbewahrungsrichtlinie gilt für alle Benutzer und kann zurzeit nicht angepasst werden. Wenn Sie jedoch Daten für einen längeren Zeitraum aufbewahren müssen, können Sie [Azure Automation-Auftragsdaten an Azure Monitor-Protokolle weiterleiten](automation-manage-send-joblogs-log-analytics.md).
 
-Wenn Sie jedoch Daten für einen längeren Zeitraum beibehalten möchten, können Sie Runbook-Auftragsprotokolle an Azure Monitor-Protokolle weiterleiten.  Weitere Informationen finden Sie unter [Weiterleiten von Auftragsdaten von Azure Automation an Azure Monitor-Protokolle](automation-manage-send-joblogs-log-analytics.md).   
+## <a name="data-backup"></a>Datensicherung
 
-## <a name="backing-up-azure-automation"></a>Sichern von Azure Automation
-Wenn Sie ein Automation-Konto in Microsoft Azure löschen, werden alle Objekte im Konto gelöscht – darunter Runbooks, Module, Konfigurationen, Einstellungen, Aufträge und Assets. Die Objekte können nicht wiederhergestellt werden, nachdem das Konto gelöscht wurde.  Sie können die Inhalte Ihres Automation-Kontos mithilfe der folgenden Informationen sichern, bevor Sie das Konto löschen. 
+Wenn Sie ein Automation-Konto in Azure löschen, werden auch alle Objekt in dem Konto gelöscht. Zu den Objekten zählen Runbooks, Module, Konfigurationen, Einstellungen, Aufträge und Objekte. Sie können nicht mehr wiederhergestellt werden, nachdem das Konto gelöscht wurde. Sie können die Inhalte Ihres Automation-Kontos mithilfe der folgenden Informationen sichern, bevor Sie das Konto löschen.
 
 ### <a name="runbooks"></a>Runbooks
-Sie können Ihre Runbooks entweder unter Verwendung des Azure-Portals oder mithilfe des Cmdlets [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) in Windows PowerShell in Skriptdateien exportieren.  Diese Skriptdateien können in ein anderes Automation-Konto importiert werden, wie beschrieben unter [Erstellen oder Importieren eines Runbooks](/previous-versions/azure/dn643637(v=azure.100)).
+
+Sie können Ihre Runbooks entweder unter Verwendung des Azure-Portals oder mithilfe des Cmdlets [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure.service/get-azureautomationrunbookdefinition) in Windows PowerShell in Skriptdateien exportieren. Sie können diese Skriptdateien in ein anderes Automation-Konto importieren, wie unter [Verwalten von Runbooks in Azure Automation](manage-runbooks.md) besprochen.
 
 ### <a name="integration-modules"></a>Integrationsmodule
-Integrationsmodule können nicht aus Azure Automation exportiert werden.  Sie müssen sicherstellen, dass diese außerhalb des Automation-Kontos verfügbar sind.
+
+Integrationsmodule können nicht aus Azure Automation exportiert werden. Sie müssen sie außerhalb des Automation-Kontos verfügbar machen.
 
 ### <a name="assets"></a>Objekte
-[Objekte](/previous-versions/azure/dn939988(v=azure.100)) können nicht aus Azure Automation exportiert werden.  Sie müssen sich unter Verwendung des Azure-Portals die Details zu Variablen, Anmeldeinformationen, Zertifikaten, Verbindungen und Zeitplänen notieren.  Anschließend müssen Sie alle Objekte, die in Runbooks verwendet und in ein anderes Automation-Konto importiert werden sollen, manuell erstellen.
 
-Sie können mithilfe von [Azure-Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.automation#automation) Details aus nicht verschlüsselten Objekten abrufen und diese entweder zu Referenzzwecken speichern, oder Sie können gleichwertige Objekte in einem anderen Automation-Konto erstellen.
+Sie können keine Azure Automation-Objekte exportieren: Zertifikate, Verbindungen, Anmeldeinformationen, Zeitpläne und Variablen. Stattdessen können Sie das Azure-Portal und Azure-Cmdlets verwenden, um sich die Details dieser Objekte zu notieren. Verwenden Sie dann diese Details, um alle Objekte zu erstellen, die von Runbooks verwendet werden, die Sie in ein anderes Automation-Konto importieren.
 
-Es ist nicht möglich, den Wert verschlüsselter Variablen oder die Kennwortfelder für Anmeldeinformationen mithilfe von Cmdlets abzurufen.  Wenn Sie diese Werte nicht kennen, können Sie sie mithilfe der Aktivitäten [Get-AutomationVariable](/previous-versions/azure/dn940012(v=azure.100)) und [Get-AutomationPSCredential](/previous-versions/azure/dn940015(v=azure.100)) aus einem Runbook abrufen.
-
-Zertifikate können nicht aus Azure Automation exportiert werden.  Sie müssen sicherstellen, dass die erforderlichen Zertifikate außerhalb von Azure zur Verfügung stehen.
+Es ist nicht möglich, die Werte verschlüsselter Variablen oder die Kennwortfelder für Anmeldeinformationen mithilfe von Cmdlets abzurufen. Wenn Sie diese Werte nicht kennen, können Sie sie aus einem Runbook abrufen. Informationen zum Abrufen von Variablenwerten finden Sie unter [Variablenobjekte in Azure Automation](shared-resources/variables.md). Weitere Informationen zum Abrufen von Anmeldeinformationswerten finden Sie unter [Anmeldeinformationsobjekte in Azure Automation](shared-resources/credentials.md).
 
 ### <a name="dsc-configurations"></a>DSC-Konfigurationen
-Sie können Ihre Konfigurationen unter Verwendung des Azure-Portals oder mithilfe des Cmdlets [Export-AzureRmAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/azurerm.automation/export-azurermautomationdscconfiguration) in Windows PowerShell in Skriptdateien exportieren. Diese Konfigurationen können in ein anderes Automation-Konto importiert und darin verwendet werden.
+
+Sie können Ihre DSC-Konfigurationen unter Verwendung des Azure-Portals oder mithilfe des Cmdlets [Export-AzureRmAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0) in Windows PowerShell in Skriptdateien exportieren. Sie können diese Konfigurationen in ein anderes Automation-Konto importiert importieren und darin verwenden.
 
 ## <a name="geo-replication-in-azure-automation"></a>Georeplikation in Azure Automation
-Über die für Azure Automation-Konten standardmäßig eingerichtete Georeplikation werden die Kontodaten für mehr Redundanz an einer geografisch unterschiedlichen Region gespeichert. Hierzu können Sie beim Einrichten des Kontos eine primäre Region auswählen, der dann automatisch eine sekundäre Region zugeordnet wird. Die aus der primären Region kopierten sekundären Daten werden bei einem Datenverlust kontinuierlich aktualisiert.  
 
-In der folgenden Tabelle werden die verfügbaren Paare primärer und sekundärer Regionen gezeigt:
+Georeplikation ist Standard in Azure Automation-Kontos. Bei der Einrichtung Ihres Kontos wählen Sie eine primäre Region aus. Der interne Automation-Georeplikationsdienst weist dem Konto automatisch eine sekundäre Region zu. Der Dienst sichert dann kontinuierlich Kontodaten aus der primären Region in der sekundären Region. Die vollständige Liste der primären und sekundären Regionen finden Sie unter [Business Continuity und Disaster Recovery (BCDR): Azure-Regionspaare](../best-practices-availability-paired-regions.md).
 
-| Primär | Sekundär |
-| --- | --- |
-| USA Süd Mitte |USA Nord Mitte |
-| USA (Ost 2) |USA (Mitte) |
-| Europa, Westen |Nordeuropa |
-| Südostasien |Ostasien |
-| Japan, Osten |Japan, Westen |
+Die vom Automation-Georeplikationsdienst erstellte Sicherung ist eine vollständige Kopie der Automation-Objekte, -Konfigurationen usw. Diese Sicherung kann verwendet werden, wenn die primäre Region ausfällt und Daten verloren gehen. Microsoft versucht im unwahrscheinlichen Fall, dass Daten in einer primären Region verloren gehen, diese wiederherzustellen. Wenn das Unternehmen die primären Daten nicht wiederherstellen kann, verwendet es automatisches Failover und informiert Sie über die Situation über Ihr Azure-Abonnement.
 
-Microsoft versucht im unwahrscheinlichen Fall, dass Daten der primären Region verloren gehen, diese wiederherzustellen. Wenn die Daten der primären Region nicht wiederhergestellt werden können, erfolgt ein Geofailover, über das die betroffenen Kunden durch ihr Abonnement benachrichtigt werden.
+Externe Kunden können nicht direkt auf den Automation-Georeplikationsdienst zugreifen, wenn es zu einem regionalen Ausfall kommt. Wenn Sie Automation-Konfigurationen und -Runbooks während regionaler Ausfälle beibehalten möchten:
 
+1. Wählen Sie eine sekundäre Region aus, die mit der geografischen Region Ihres primären Automation-Kontos gekoppelt werden soll.
 
+2. Erstellen Sie ein Automation-Konto in der sekundären Region.
+
+3. Exportieren Sie im primären Konto die Runbooks als Skriptdateien.
+
+4. Importieren Sie die Runbooks in Ihr Automation-Konto in der sekundären Region.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Weitere Informationen zu sicheren Objekten in Azure Automation finden Sie unter [Verschlüsseln sicherer Ressourcen in Azure Automation](automation-secure-asset-encryption.md).
+
+* Weitere Informationen zur Georeplikation finden Sie unter [Erstellen und Verwenden der aktiven Georeplikation](../azure-sql/database/active-geo-replication-overview.md).

@@ -4,16 +4,16 @@ description: Erfahren Sie mehr zu den Software- und Hardwareanforderungen für d
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 448d416ce4915aeae048639f6021197ed8c1d334
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d17b9cdebf06e7d754a23a7224bbe3dba1a2832c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967872"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783605"
 ---
 # <a name="azure-importexport-system-requirements"></a>Systemanforderungen für Azure Import/Export
 
@@ -43,14 +43,14 @@ Der Azure Import-/Export-Dienst unterstützt die folgenden Typen von Speicherkon
 
 - Standardmäßige Speicherkonten vom Typ „Universell v2“ (für die meisten Szenarien empfohlen)
 - Blob Storage-Konten
-- Speicherkonten vom Typ „Universell v1“ (sowohl klassische als auch Azure Resource Manager-Bereitstellungen) 
+- Speicherkonten vom Typ „Universell v1“ (sowohl klassische als auch Azure Resource Manager-Bereitstellungen)
 
 Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonten – Übersicht](storage-account-overview.md).
 
-Bei jedem Auftrag können lediglich Daten auf ein oder von einem Speicherkonto übertragen werden. Anders ausgedrückt: Ein einzelner Import/Export-Auftrag kann nicht mehrere Speicherkonten umfassen. Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
+Bei jedem Auftrag können lediglich Daten auf ein oder von einem Speicherkonto übertragen werden. Anders ausgedrückt: Ein einzelner Import/Export-Auftrag kann nicht mehrere Speicherkonten umfassen. Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-account-create.md).
 
-> [!IMPORTANT] 
-> Der Azure Import/Export-Dienst unterstützt keine Speicherkonten, für die das Feature für [VNET-Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md) aktiviert wurde. 
+> [!IMPORTANT]
+> Für Speicherkonten, bei denen das Feature [VNET-Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md) aktiviert wurde, verwenden Sie die Einstellung **Vertrauenswürdige Microsoft-Dienste zulassen...** , um den [Import/Export](./storage-network-security.md)-Dienst zu aktivieren und den Import/Export von Daten in/aus Azure durchzuführen.
 
 ## <a name="supported-storage-types"></a>Unterstützte Speichertypen
 
@@ -60,10 +60,10 @@ Die folgende Liste von Speichertypen wird vom Azure Import/Export-Dienst unterst
 |Auftrag  |Speicherdienst |Unterstützt  |Nicht unterstützt  |
 |---------|---------|---------|---------|
 |Importieren     |  Azure Blob Storage <br><br> Azure-Dateispeicher       | Blockblobs und Seitenblobs werden unterstützt. <br><br> Files wird unterstützt.          |
-|Export     |   Azure Blob Storage       | Blockblobs, Seitenblobs und Anfügeblobs werden unterstützt.         | Azure Files wird nicht unterstützt.
+|Exportieren     |   Azure Blob Storage       | Blockblobs, Seitenblobs und Anfügeblobs werden unterstützt.         | Azure Files wird nicht unterstützt.
 
 
-## <a name="supported-hardware"></a>Unterstützte Hardware 
+## <a name="supported-hardware"></a>Unterstützte Hardware
 
 Für den Azure Import/Export-Dienst benötigen Sie unterstützte Datenträger, um Daten zu kopieren.
 
@@ -74,26 +74,24 @@ Die folgende Liste von Datenträgern wird für die Verwendung mit dem Azure Impo
 
 |Datenträgertyp  |Size  |Unterstützt |
 |---------|---------|---------|
-|SSD    |   2,5"      |SATA III          | 
+|SSD    |   2,5"      |SATA III          |
 |Festplattenlaufwerk     |  2,5"<br>3,5"       |SATA II, SATA III         |
 
 Die folgenden Datenträgertypen werden nicht unterstützt:
+
 - USB-Datenträger
 - Externe Festplattenlaufwerke mit integriertem USB-Adapter
 - Datenträger im Gehäuse eines externen Festplattenlaufwerks
 
 Eine einzelner Import-/Export-Auftrag kann über Folgendes verfügen:
+
 - Maximal 10 Festplattenlaufwerke/SSDs
 - Eine Mischung aus Festplattenlaufwerken/SSDs beliebiger Größe
 
 Eine große Anzahl von Laufwerken kann über mehrere Aufträge verteilt werden, und es gibt keine Beschränkung hinsichtlich der Anzahl der Aufträge, die erstellt werden können. Bei Importaufträgen wird nur das erste Datenvolume auf dem Laufwerk verarbeitet. Das Datenvolume muss mit NTFS formatiert sein.
 
-Bei der Vorbereitung von Festplatten und dem Kopieren der Daten mit dem WAImportExport-Tool können Sie externe USB-Adapter verwenden. Hierbei sollten die meisten Standardadapter mit der Version USB 3.0 oder höher funktionieren. 
-
+Bei der Vorbereitung von Festplatten und dem Kopieren der Daten mit dem WAImportExport-Tool können Sie externe USB-Adapter verwenden. Hierbei sollten die meisten Standardadapter mit der Version USB 3.0 oder höher funktionieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einrichten des WAImportExport-Tools](storage-import-export-tool-how-to.md)
-* [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
-* [Azure Import/Export-REST-API-Beispiel](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
-
+* [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](./storage-use-azcopy-v10.md)

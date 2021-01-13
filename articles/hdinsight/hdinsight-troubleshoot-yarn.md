@@ -1,18 +1,18 @@
 ---
 title: Problembehandlung für YARN in Azure HDInsight
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit Apache Hadoop YARN und Azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 107230a4d8c2e0427c2fcf2a8862559c707831a1
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: b8dc63030c6791779ad90500747e4e2f5c4ffeef
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076566"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022665"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Problembehandlung für Apache Hadoop YARN mit Azure HDInsight
 
@@ -28,30 +28,30 @@ In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen (**defa
 
 | Warteschlange | Capacity | Maximale Kapazität |
 | --- | --- | --- |
-| default | 25% | 50% |
-| thrftsvr | 25% | 50% |
+| default | 25 % | 50% |
+| thrftsvr | 25 % | 50% |
 | spark | 50% | 50% |
 
 1. Wählen Sie das **Ambari-Ansichten**-Symbol und dann das Gittermuster. Wählen Sie als Nächstes **YARN Queue Manager**.
 
-    ![Ambari-Ansichten-Symbol auswählen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+    ![Apache Ambari-Dashboard: YARN Queue Manager](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Wählen Sie die Warteschlange **default** aus.
 
-    ![Warteschlange „default“ auswählen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+    ![Apache Ambari YARN – Auswählen der Warteschlange „default“](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. Ändern Sie für die **default**-Warteschlange **capacity** von 50% in 25%. Ändern Sie für die **thriftsvr**-Warteschlange **capacity** in 25%.
 
     ![Ändern der Kapazität in 25% für die Warteschlangen „default“ und „thriftsvr“](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. Wählen Sie zum Erstellen einer neuen Warteschlange **Add Queue**.
 
-    ![„Add Queue“ wählen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    ![Apache Ambari YARN-Dashboard – Hinzufügen einer Warteschlange](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. Benennen Sie die neue Warteschlange.
 
-    ![Neue Warteschlange „spark“ nennen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    ![Apache Ambari YARN-Dashboard – Benennen einer Warteschlange](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. Lassen Sie die **capacity**-Werte auf 50%, und wählen Sie die Schaltfläche **Actions**.
 
-    ![Schaltfläche „Actions“ wählen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+    ![Apache Ambari YARN – Auswählen der Aktion](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. Wählen Sie **Save and Refresh Queues**.
 
     ![„Save and Refresh Queues“ wählen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
@@ -64,7 +64,7 @@ Diese Änderungen werden sofort auf der YARN-Scheduler-Benutzeroberfläche angez
 
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Wie lade ich YARN-Protokolle aus einem Cluster herunter?
 
-### <a name="resolution-steps"></a>Lösungsschritte 
+### <a name="resolution-steps"></a>Lösungsschritte
 
 1. Stellen Sie mit einem Secure Shell-Client (SSH) eine Verbindung mit dem HDInsight-Cluster her. Weitere Informationen finden Sie unter [Zusätzliche Lektüre](#additional-reading-2).
 
@@ -129,17 +129,11 @@ Diese Änderungen werden sofort auf der YARN-Scheduler-Benutzeroberfläche angez
 
     Dieser Befehl erstellt eine Protokolldatei namens „containerlogs.txt“.
 
-### <a name="additional-reading-2"></a>Zusätzliche Lektüre
+### <a name="additional-reading"></a><a name="additional-reading-2"></a>Zusätzliche Lektüre
 
-- [Herstellen einer Verbindung mit HDInsight (Apache Hadoop) per SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Herstellen einer Verbindung mit HDInsight (Apache Hadoop) per SSH](./hdinsight-hadoop-linux-use-ssh-unix.md)
 - [Apache Hadoop YARN concepts and applications](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow) (Apache Hadoop Yarn – Konzepte und -Anwendungen)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
-
-- Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
-
-- Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
-
-- Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

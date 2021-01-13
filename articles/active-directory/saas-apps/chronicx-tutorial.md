@@ -1,28 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit ChronicX® | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in ChronicX® | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und ChronicX® konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f3f19be6-6ee8-413c-919c-4884ffe685ca
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53a770feebb18781f10c491e0b78843743da9d8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0603e04424acfe979f44110b973b79f6c07e0b81
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105649"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673608"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>Tutorial: Azure Active Directory-Integration mit ChronicX®
+# <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>Tutorial: Azure Active Directory-Integration in ChronicX®
 
 In diesem Tutorial erfahren Sie, wie Sie ChronicX® in Azure Active Directory (Azure AD) integrieren.
 Die Integration von ChronicX® in Azure AD bietet die folgenden Vorteile:
@@ -31,7 +27,7 @@ Die Integration von ChronicX® in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei ChronicX® anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -68,7 +64,7 @@ Zum Konfigurieren der Integration von ChronicX® in Azure AD müssen Sie Chronic
 
 4. Geben Sie im Suchfeld **ChronicX®** ein, wählen Sie im Ergebnisbereich **ChronicX®** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![ChronicX® in der Ergebnisliste](common/search-new-app.png)
+    ![ChronicX® in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -148,13 +144,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -187,18 +183,18 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf ChronicX®, damit sie
 In diesem Abschnitt wird in ChronicX® ein Benutzer namens Britta Simon erstellt. ChronicX® unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in ChronicX® vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 > [!Note]
-> Setzen Sie sich mit dem  [Supportteam von ChronicX®](https://www.casebank.com/contact-us/) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+> Wenn Sie einen Benutzer manuell erstellen möchten, wenden Sie sich an das [ChronicX®-Supportteam](https://www.casebank.com/contact-us/).
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „ChronicX®“ klicken, sollten Sie automatisch bei der ChronicX®-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „ChronicX®“ klicken, sollten Sie automatisch bei der ChronicX®-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

@@ -1,24 +1,23 @@
 ---
-title: Zeitsynchronisierung für Linux-VMs in Azure | Microsoft-Dokumentation
+title: Zeitsynchronisierung für Linux-VMs in Azure
 description: Zeitsynchronisierung für virtuelle Linux-Computer.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 7e23b71edd05154f3c19a097ebf92c690426c777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 399022c1ef740865e4b2f7b82e2175e748a2a925
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100782"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91306955"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Zeitsynchronisierung für Linux-VMs in Azure
 
@@ -26,10 +25,10 @@ Die Zeitsynchronisierung ist für die Sicherheit und die Ereigniskorrelation wic
 
 Azure wird von einer Infrastruktur unter Windows Server 2016 unterstützt. Windows Server 2016 verfügt über verbesserte Algorithmen zur Korrektur der Uhrzeit und zur Konditionierung der lokalen Uhr zum Synchronisieren mit UTC.  Das Windows Server 2016-Feature für die genaue Uhrzeit hat den VMICTimeSync-Dienst erheblich verbessert, der steuert, wie VMs in Bezug auf die genaue Uhrzeit mit dem Host synchronisiert werden. Die Verbesserungen umfassen eine genauere Anfangszeit beim VM-Start oder bei der VM-Wiederherstellung sowie eine Unterbrechungskorrektur der Latenzzeit. 
 
->[!NOTE]
->Eine kurze Übersicht über den Windows-Zeitdienst bietet dieses [allgemeine Übersichtsvideo](https://aka.ms/WS2016TimeVideo).
+> [!NOTE]
+> Eine kurze Übersicht über den Windows-Zeitdienst bietet dieses [allgemeine Übersichtsvideo](https://aka.ms/WS2016TimeVideo).
 >
-> Weitere Informationen finden Sie unter [Genaue Uhrzeit für Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> Weitere Informationen finden Sie unter [Genaue Uhrzeit für Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time). 
 
 ## <a name="overview"></a>Übersicht
 
@@ -39,7 +38,7 @@ Azure-Hosts werden mit internen Microsoft-Zeitservern synchronisiert, die die Uh
 
 Auf eigenständiger Hardware liest das Linux-Betriebssystem nur die Hosthardwareuhr beim Start. Danach wird die Uhr mithilfe des Interrupt-Zeitgebers im Linux-Kernel verwaltet. In dieser Konfiguration kommt es bei der Uhr im Laufe der Zeit zu Abweichungen. Bei neueren Linux-Distributionen in Azure können VMs den in den Linux-Integrationsdiensten (Linux Integration Services, LIS) enthaltenen VMICTimeSync-Anbieter verwenden, um häufiger Uhrenupdates vom Host abzufragen.
 
-VM-Interaktionen mit dem Host können sich auch auf die Uhr auswirken. Während der [Wartung mit Speicherbeibehaltung](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot) werden VMs bis zu 30 Sekunden angehalten. Beispiel: Vor Beginn der Wartung zeigt die VM-Uhr 10:00:00 Uhr an und wird 28 Sekunden angehalten. Nach Wiederaufnahme würde die Uhr des virtuellen Computers auch noch 10:00:00 Uhr anzeigen, was einen Zeitverlust von 28 Sekunden bedeuten würde. Um dies zu korrigieren, überwacht der VMICTimeSync-Dienst die Vorgänge auf dem Host und fordert zwecks Kompensierung zum Durchführen von Änderungen auf dem virtuellen Computer auf.
+VM-Interaktionen mit dem Host können sich auch auf die Uhr auswirken. Während der [Wartung mit Speicherbeibehaltung](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot) werden VMs bis zu 30 Sekunden angehalten. Beispiel: Vor Beginn der Wartung zeigt die VM-Uhr 10:00:00 Uhr an und wird 28 Sekunden angehalten. Nach Wiederaufnahme würde die Uhr des virtuellen Computers auch noch 10:00:00 Uhr anzeigen, was einen Zeitverlust von 28 Sekunden bedeuten würde. Um dies zu korrigieren, überwacht der VMICTimeSync-Dienst die Vorgänge auf dem Host und fordert zwecks Kompensierung zum Durchführen von Änderungen auf dem virtuellen Computer auf.
 
 Ohne Zeitsynchronisierung würden sich auf dem virtuellen Computer Zeitfehler ansammeln. Wenn nur ein virtueller Computer vorhanden ist, sind die Auswirkungen möglicherweise nicht unbedingt erheblich, sofern die Workload keine genaue Zeitmessung erfordert. Aber in den meisten Fällen verfügen wir über mehrere, miteinander verbundene VMs, die Transaktionen anhand der Uhrzeit nachverfolgen, und die Uhrzeit muss in der gesamten Bereitstellung einheitlich sein. Bei unterschiedlichen Uhrzeiten der VMs kann es zu den folgenden Auswirkungen kommen:
 
@@ -65,7 +64,7 @@ Standardmäßig werden die meisten Azure Marketplace-Images für Linux für die 
 - NTP als primäre Quelle, die die Uhrzeit von einem NTP-Server abruft. Ubuntu 16.04 LTS-Marketplace-Images verwenden z. B. **ntp.ubuntu.com**.
 - Der VMICTimeSync-Dienst, der als sekundäre Quelle verwendet wird, um die Hostzeit an die VMs zu übermitteln und Korrekturen vorzunehmen, nachdem der virtuelle Computer zu Wartungszwecken angehalten wird. Azure-Hosts verwenden Microsoft-eigene Stratum 1-Geräte, um die genaue Uhrzeit beizubehalten.
 
-In neueren Linux-Distributionen verwendet der VMICTimeSync-Dienst das Precision Time Protocol (PTP), aber in früheren Distributionen wird PTP möglicherweise nicht unterstützt, sodass zum Abrufen der Uhrzeit vom Host auf NTP zurückgegriffen wird.
+Bei neueren Linux-Distributionen stellt der VMICTimeSync-Dienst eine PTP-Hardwarezeitquelle (Uhr) bereit, doch ist diese Zeitquelle bei früheren Distributionen möglicherweise nicht verfügbar, sodass zum Abrufen der Uhrzeit vom Host auf NTP zurückgegriffen wird.
 
 Führen Sie den Befehl `ntpq -p` aus, um zu bestätigen, dass NTP ordnungsgemäß synchronisiert wird.
 
@@ -113,9 +112,9 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ```
 
 
-### <a name="check-for-ptp"></a>Überprüfen auf PTP
+### <a name="check-for-ptp-clock-source"></a>Überprüfen auf PTP-Zeitquelle
 
-In neueren Versionen von Linux ist eine PTP-Zeitquelle (Uhr) als Teil des VMICTimeSync-Anbieters verfügbar. In älteren Versionen von Red Hat Enterprise Linux oder CentOS 7.x können [Linux Integration Services](https://github.com/LIS/lis-next) heruntergeladen und zum Installieren des aktualisierten Treibers verwendet werden. Bei Verwendung von PTP weist das Linux-Gerät die Form „/dev/ptp*x*“ auf. 
+In neueren Versionen von Linux ist eine PTP-Zeitquelle (Uhr) als Teil des VMICTimeSync-Anbieters verfügbar. In älteren Versionen von Red Hat Enterprise Linux oder CentOS 7.x können [Linux Integration Services](https://github.com/LIS/lis-next) heruntergeladen und zum Installieren des aktualisierten Treibers verwendet werden. Ist die PTP-Zeitquelle verfügbar, weist das Linux-Gerät die Form „/dev/ptp*x*“ auf. 
 
 Ermitteln Sie, welche PTP-Zeitquellen (Uhren) verfügbar sind.
 
@@ -129,31 +128,42 @@ In diesem Beispiel lautet der zurückgegebene Wert *ptp0*, sodass wir diesen ver
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-Dabei sollte **hyperv** zurückgegeben werden.
+Dieser Befehl sollte `hyperv` zurückgegeben.
 
 ### <a name="chrony"></a>chrony
 
-Unter Red Hat Enterprise Linux und CentOS 7.x wird [chrony](https://chrony.tuxfamily.org/) für die Verwendung einer PTP-Zeitquelle konfiguriert. Der Network Time Protocol-Daemon (ntpd) unterstützt keine PTP-Quellen, daher wird die Verwendung von **chronyd** empfohlen. Aktualisieren Sie **chrony.conf**, um PTP zu aktivieren.
+Unter Ubuntu 19.10 und höher, Red Hat Enterprise Linux und CentOS 8.x wird [chrony](https://chrony.tuxfamily.org/) für die Verwendung einer PTP-Zeitquelle konfiguriert. Anstelle von chrony verwenden ältere Linux-Releases den Network Time Protocol-Daemon (ntpd), der keine PTP-Quellen unterstützt. Um PTP in diesen Releases zu aktivieren, muss chrony manuell installiert und mit dem folgenden Code konfiguriert (in chrony.conf) werden:
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 ```
 
-Weitere Informationen zu Red Hat und NTP finden Sie unter [Konfigurieren von NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp). 
+Weitere Informationen zu Ubuntu und NTP finden Sie unter [Zeitsynchronisierung](https://ubuntu.com/server/docs/network-ntp).
 
-Weitere Informationen zu chrony finden Sie unter [Verwenden von Chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony).
+Weitere Informationen zu Red Hat und NTP finden Sie unter [Konfigurieren von NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP). 
 
-Wenn chrony- und TimeSync-Quellen gleichzeitig aktiviert werden, können Sie eine Quelle als **bevorzugt** kennzeichnen, wodurch die andere Quelle als Sicherung festlegt wird. Da NTP-Dienste die Uhr bei großen Abweichungen außer nach einem längeren Zeitraum nicht aktualisieren, stellt der VMICTimeSync-Dienst die Uhr nach Ereignissen von angehaltenen virtuellen Computern deutlich schneller wieder her als NTP-basierte Tools alleine.
+Weitere Informationen zu „chrony“ finden Sie unter [Verwenden von Chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony).
 
+Wenn chrony- und VMICTimeSync-Quellen gleichzeitig aktiviert sind, können Sie eine Quelle als **bevorzugt** kennzeichnen, wodurch die andere Quelle als Sicherung festlegt wird. Da NTP-Dienste die Uhr bei großen Abweichungen außer nach einem längeren Zeitraum nicht aktualisieren, stellt der VMICTimeSync-Dienst die Uhr nach Ereignissen von angehaltenen virtuellen Computern deutlich schneller wieder her als NTP-basierte Tools alleine.
+
+Standardmäßig beschleunigt oder verlangsamt chronyd die Systemuhr, um zeitliche Abweichungen zu beheben. Wenn die Abweichung zu groß wird, kann diese von „chrony“ nicht mehr behoben werden. Dieses Problem kann umgangen werden, indem der `makestep`-Parameter in **/etc/chrony.conf** so geändert wird, dass eine Zeitsynchronisierung erzwungen wird, wenn die Drift den angegebenen Schwellenwert überschreitet.
+
+ ```bash
+makestep 1.0 -1
+```
+
+Hier erzwingt chrony ein Zeitupdate, wenn die Drift größer als eine Sekunde ist. Starten Sie den chronyd-Dienst neu, um die Änderungen zu übernehmen:
+
+```bash
+systemctl restart chronyd
+```
 
 ### <a name="systemd"></a>systemd 
 
-Unter Ubuntu und SUSE wird die Zeitsynchronisierung mithilfe von [systemd](https://www.freedesktop.org/wiki/Software/systemd/) konfiguriert. Weitere Informationen zu Ubuntu finden Sie unter [Zeitsynchronisierung](https://help.ubuntu.com/lts/serverguide/NTP.html). Weitere Informationen zu SUSE finden Sie im Anschnitt 4.5.8 in den [Versionshinweisen zu SUSE Linux Enterprise Server 12 SP3](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
-
-
+Unter SuSE- und Ubuntu-Releases vor 19.10 wird die Zeitsynchronisierung mit [systemd](https://www.freedesktop.org/wiki/Software/systemd/) konfiguriert. Weitere Informationen zu Ubuntu finden Sie unter [Zeitsynchronisierung](https://help.ubuntu.com/lts/serverguide/NTP.html). Weitere Informationen zu SUSE finden Sie im Anschnitt 4.5.8 in den [Versionshinweisen zu SUSE Linux Enterprise Server 12 SP3](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Genaue Uhrzeit für Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time).
+Weitere Informationen finden Sie unter [Genaue Uhrzeit für Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time).
 
 

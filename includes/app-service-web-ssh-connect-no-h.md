@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/29/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 060bc1039982cc0a77214d5dbe2a08de7a839c84
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 458cd36a35ea37b2a317fe98fdeb5acc69a36ce8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178570"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91822773"
 ---
 Um eine direkte SSH-Sitzung mit Ihrem Container zu öffnen, sollte Ihre App ausgeführt werden.
 
-Fügen Sie die folgende URL in Ihren Browser ein, und ersetzen Sie \<App-Name> durch den Namen Ihrer App:
+Fügen Sie die folgende URL in Ihren Browser ein, und ersetzen Sie `<app-name>` durch den Namen Ihrer App:
 
 ```
 https://<app-name>.scm.azurewebsites.net/webssh/host

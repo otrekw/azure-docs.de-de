@@ -1,35 +1,30 @@
 ---
-title: Azure Event Grid-Ereignisschema für Azure App Configuration
-description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Azure App Configuration-Ereignisse bereitgestellt werden.
-services: event-grid
-author: jimmyca
-ms.service: event-grid
-ms.topic: reference
-ms.date: 05/30/2019
-ms.author: jimmyca
-ms.openlocfilehash: fe0274f723692eea3cfd25cc0e9e146b35dce2ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+title: Azure App Configuration als Event Grid-Quelle
+description: In diesem Artikel wird beschrieben, wie Azure App Configuration als Event Grid-Ereignisquelle verwendet wird. Er enthält das Schema sowie Links zu Tutorials und Artikeln mit Vorgehensweisen.
+ms.topic: conceptual
+ms.date: 07/07/2020
+ms.openlocfilehash: bdd077c291bd1e1c441217740daf39c8bcaad732
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735897"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86116997"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Azure Event Grid-Ereignisschema für Azure App Configuration
+# <a name="azure-app-configuration-as-an-event-grid-source"></a>Azure App Configuration als Event Grid-Quelle
+In diesem Artikel werden die Eigenschaften und das Schema für Azure App Configuration-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md). Außerdem erhalten Sie eine Liste mit Schnellstarts und Tutorials, die Azure App Configuration als Ereignisquelle verwenden.
 
-In diesem Artikel werden die Eigenschaften und das Schema für Azure App Configuration-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
+## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
 
-Eine Liste von Beispielskripts und Tutorials finden Sie in den Informationen zur [Ereignisquelle für Azure App Configuration](event-sources.md#app-configuration).
-
-## <a name="available-event-types"></a>Verfügbare Ereignistypen
+### <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 Azure App Configuration gibt die folgenden Ereignistypen aus:
 
-| Ereignistypen | BESCHREIBUNG |
+| Ereignistyp | BESCHREIBUNG |
 | ---------- | ----------- |
 | Microsoft.AppConfiguration.KeyValueModified | Wird ausgelöst, wenn ein Schlüssel-Wert-Paar erstellt oder ersetzt wird. |
 | Microsoft.AppConfiguration.KeyValueDeleted | Wird ausgelöst, wenn ein Schlüssel-Wert-Paar gelöscht wird. |
 
-## <a name="example-event"></a>Beispielereignis
+### <a name="example-event"></a>Beispielereignis
 
 Das folgende Beispiel zeigt das Schema eines Ereignisses aufgrund eines geänderten Schlüssel-Wert-Paars: 
 
@@ -69,29 +64,36 @@ Das Schema für ein Ereignis aufgrund eines gelöschten Schlüssel-Wert-Paars si
 }]
 ```
  
-## <a name="event-properties"></a>Ereigniseigenschaften
+### <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
 | id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
-| data | object | App Configuration-Ereignisdaten. |
+| data | Objekt (object) | App Configuration-Ereignisdaten. |
 | dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
 | metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| key | Zeichenfolge | Der Schlüssel des Schlüssel-Wert-Paars, das geändert oder gelöscht wurde. |
+| Schlüssel | Zeichenfolge | Der Schlüssel des Schlüssel-Wert-Paars, das geändert oder gelöscht wurde. |
 | label | Zeichenfolge | Die Bezeichnung (sofern vorhanden) des Schlüssel-Wert-Paars, das geändert oder gelöscht wurde. |
-| etag | Zeichenfolge | Für `KeyValueModified` das ETag des neuen Schlüssel-Wert-Paars. Für `KeyValueDeleted` das ETag des gelöschten Schlüssel-Wert-Paars. |
- 
+| etag | Zeichenfolge | Für `KeyValueModified`: Das ETag des neuen Schlüssel-Wert-Paars. Für `KeyValueDeleted`: Das ETag des gelöschten Schlüssel-Wert-Paars. |
+
+## <a name="tutorials-and-how-tos"></a>Tutorials und Vorgehensweisen
+
+|Titel | BESCHREIBUNG |
+|---------|---------|
+| [Reacting to Azure App Configuration events](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) (Reagieren auf Azure App Configuration-Ereignisse) | Übersicht über die Integration von Azure App Configuration in Event Grid. |
+| [Schnellstart: Weiterleiten von Azure App Configuration-Ereignissen an einen Webendpunkt mit der Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Zeigt die Verwendung von Azure CLI zum Senden von Azure App Configuration-Ereignissen an einen WebHook. |
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Eine Einführung zu Azure Event Grid finden Sie unter [Einführung in Azure Event Grid](overview.md).

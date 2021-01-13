@@ -1,26 +1,17 @@
 ---
-title: Bereitstellen einer Service Fabric-App in einem Cluster in Azure | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie über Visual Studio eine Anwendung in einem Cluster bereitstellen.
-services: service-fabric
-documentationcenter: .net
+title: Bereitstellen einer Service Fabric-App in einem Cluster in Azure
+description: Hier erfahren Sie, wie Sie über Visual Studio eine vorhandene Anwendung in einem neu erstellten Azure Service Fabric-Cluster bereitstellen.
 author: athinanthny
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: d637b01eb9e4d1664def9eb537b810603eea18ea
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: e35b655dc8b735214de891884fe40fb951dd16cd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598813"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91441292"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Tutorial: Bereitstellen einer Service Fabric-Anwendung in einem Cluster in Azure
 
@@ -47,6 +38,9 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 * [Installieren Sie Visual Studio 2019](https://www.visualstudio.com/) und die Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
 * [Installieren Sie das Service Fabric SDK.](service-fabric-get-started.md)
 
+> [!NOTE]
+> Ein kostenloses Konto erfüllt unter Umständen nicht die Anforderungen zum Erstellen eines virtuellen Computers. Aufgrund dessen kann das Tutorial nicht abgeschlossen werden. Darüber hinaus kann es bei einem Konto, das kein Geschäfts-, Schul- oder Unikonto ist, zu Berechtigungsproblemen beim Erstellen des Zertifikats für den Schlüsseltresor kommen, der dem Cluster zugeordnet ist. Wenn ein Fehler im Zusammenhang mit der Zertifikaterstellung auftritt, verwenden Sie das Portal, um stattdessen den Cluster zu erstellen. 
+
 ## <a name="download-the-voting-sample-application"></a>Herunterladen der Beispielanwendung „Voting“
 
 Falls Sie die Beispielanwendung „Voting“ aus [Teil 1 dieser Tutorialreihe](service-fabric-tutorial-create-dotnet-app.md) nicht erstellt haben, können Sie sie herunterladen. Führen Sie in einem Befehlsfenster den folgenden Code aus, um das Beispielanwendungsrepository auf Ihrem lokalen Computer zu klonen.
@@ -59,9 +53,9 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="create-a-cluster"></a>Erstellen eines Clusters
 
-Die Anwendung ist nun bereit, und Sie können einen Service Fabric-Cluster erstellen und die Anwendung im Cluster bereitstellen. Ein [Service Fabric-Cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere) enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden.
+Die Anwendung ist nun bereit, und Sie können einen Service Fabric-Cluster erstellen und die Anwendung im Cluster bereitstellen. Ein [Service Fabric-Cluster](./service-fabric-deploy-anywhere.md) enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden.
 
-In diesem Tutorial erstellen Sie einen neuen Testcluster mit drei Knoten in der Visual Studio-IDE und veröffentlichen dann die Anwendung in diesem Cluster. Informationen zum Erstellen eines Produktionsclusters finden Sie unter [Tutorial: Bereitstellen eines Service Fabric-Windows-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-windows-cluster.md). Sie können die Anwendung auch in einem vorhandenen Cluster bereitstellen, den Sie zuvor mithilfe von [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)- oder [Azure CLI](./scripts/cli-create-cluster.md)-Skripts im [Azure-Portal](https://portal.azure.com) oder über eine [Azure Resource Manager-Vorlage](service-fabric-tutorial-create-vnet-and-windows-cluster.md) erstellt haben.
+In diesem Tutorial erstellen Sie einen neuen Testcluster mit drei Knoten in der Visual Studio-IDE und veröffentlichen dann die Anwendung in diesem Cluster. Informationen zum Erstellen eines Produktionsclusters finden Sie unter [Tutorial: Bereitstellen eines Service Fabric-Windows-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-windows-cluster.md). Sie können die Anwendung auch in einem vorhandenen Cluster bereitstellen, den Sie zuvor mithilfe von [PowerShell](https://portal.azure.com)- oder [Azure CLI](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)-Skripts im [Azure-Portal](./scripts/cli-create-cluster.md) oder über eine [Azure Resource Manager-Vorlage](service-fabric-tutorial-create-vnet-and-windows-cluster.md) erstellt haben.
 
 > [!NOTE]
 > Die Voting-Anwendung und zahlreiche andere Anwendungen verwenden den Service Fabric-Reverseproxy für die Kommunikation zwischen Diensten. Bei Clustern, die über Visual Studio erstellt werden, ist der Reverseproxy standardmäßig aktiviert. Bei der Bereitstellung in einem vorhandenen Cluster müssen Sie [den Reverseproxy im Cluster aktivieren](service-fabric-reverseproxy-setup.md), damit die Voting-Anwendung funktioniert.
@@ -84,19 +78,19 @@ Wählen Sie unter **Verbindungsendpunkt** die Option **Neuen Cluster erstellen**
 
 Geben Sie auf der Registerkarte **Cluster** unter **Clustername** einen Namen (etwa „mytestcluster“) ein, und wählen Sie Ihr Abonnement und eine Region für den Cluster (beispielsweise „USA, Süden-Mitte“) aus. Geben Sie außerdem die Anzahl von Clusterknoten (empfohlene Anzahl für einen Testcluster: drei Knoten) und eine Ressourcengruppe (etwa „mytestclustergroup“) ein. Klicken Sie auf **Weiter**.
 
-![Erstellen eines Clusters](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
+![Screenshot der Registerkarte „Cluster“ des Dialogfelds „Service Fabric-Cluster erstellen“.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
 Geben Sie auf der Registerkarte **Zertifikat** das Kennwort und den Ausgabepfad für das Clusterzertifikat ein. Ein selbstsigniertes Zertifikat wird als PFX-Datei erstellt und am angegebenen Ausgabepfad gespeichert.  Das Zertifikat wird für sowohl die Knoten-zu-Knoten-Sicherheit als auch für die Client-zu-Knoten-Sicherheit verwendet.  Verwenden Sie kein selbstsigniertes Zertifikat für Produktionscluster.  Dieses Zertifikat wird von Visual Studio für die Authentifizierung beim Cluster und für die Bereitstellung von Anwendungen verwendet. Wählen Sie **Zertifikat importieren**, um die PFX-Datei auf Ihrem Computer unter „CurrentUser\My certificate store“ zu installieren.  Klicken Sie auf **Weiter**.
 
-![Erstellen eines Clusters](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
+![Screenshot der Registerkarte „Zertifikat“ des Dialogfelds „Service Fabric-Cluster erstellen“.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
-Geben Sie auf der Registerkarte **VM-Detail** unter **Benutzername** und **Kennwort** den Benutzernamen und das Kennwort für das Clusteradministratorkonto ein.  Wählen Sie unter **Image des virtuellen Computers** das VM-Image für die Clusterknoten und unter **Größe des virtuellen Computers** die VM-Größe für die einzelnen Clusterknoten aus.  Klicken Sie auf die Registerkarte **Advanced** .
+Geben Sie auf der Registerkarte **VM-Detail** unter **Benutzername** und **Kennwort** den Benutzernamen und das Kennwort für das Clusteradministratorkonto ein.  Wählen Sie unter **Image des virtuellen Computers** das VM-Image für die Clusterknoten und unter **Größe des virtuellen Computers** die VM-Größe für die einzelnen Clusterknoten aus.  Klicken Sie auf die Registerkarte **Erweitert**.
 
-![Erstellen eines Clusters](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
+![Screenshot der Registerkarte „VM-Details“ des Dialogfelds „Service Fabric-Cluster erstellen“.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
 Geben Sie unter **Ports** den VotingWeb-Dienstendpunkt aus dem vorherigen Schritt (beispielsweise 8080) ein.  Bei der Erstellung des Clusters werden diese Anwendungsports im Azure-Lastenausgleich geöffnet, damit Datenverkehr an den Cluster weitergeleitet werden kann.  Klicken Sie auf **Erstellen**, um den Cluster zu erstellen. Dieser Vorgang dauert mehrere Minuten.
 
-![Erstellen eines Clusters](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
+![Screenshot der Registerkarte „Erweitert“ des Dialogfelds „Service Fabric-Cluster erstellen“.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
 
 ## <a name="publish-the-application-to-the-cluster"></a>Veröffentlichen der Anwendung im Cluster
 
@@ -109,7 +103,7 @@ Wählen Sie unter **Verbindungsendpunkt** den Endpunkt des im vorherigen Schritt
 
 Wählen Sie **Veröffentlichen**.
 
-Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und geben Sie die Clusteradresse gefolgt von **:8080** ein. Oder geben Sie einen anderen Port ein, sofern einer konfiguriert ist. Ein Beispiel ist `http://mytestcluster.southcentral.cloudapp.azure.com:8080`. Sie sehen jetzt, dass die Anwendung im Cluster in Azure ausgeführt wird. Fügen Sie auf der Voting-Webseite Abstimmungsoptionen hinzu, löschen Sie Abstimmungsoptionen, und stimmen Sie für einzelne oder mehrere dieser Optionen ab.
+Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und geben Sie die Clusteradresse gefolgt von **:8080** ein. Oder geben Sie einen anderen Port ein, sofern einer konfiguriert ist. z. B. `http://mytestcluster.southcentral.cloudapp.azure.com:8080`. Sie sehen jetzt, dass die Anwendung im Cluster in Azure ausgeführt wird. Fügen Sie auf der Voting-Webseite Abstimmungsoptionen hinzu, löschen Sie Abstimmungsoptionen, und stimmen Sie für einzelne oder mehrere dieser Optionen ab.
 
 ![Service Fabric-Beispiel „Voting“](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-screenshot-new-azure.png)
 

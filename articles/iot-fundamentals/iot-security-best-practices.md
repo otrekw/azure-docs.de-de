@@ -1,19 +1,21 @@
 ---
 title: 'Internet der Dinge (IoT): bewährte Methoden für die Sicherheit'
-description: Bewährte Methoden zum Schützen Ihrer IoT-Infrastruktur
+description: Bewährte Methoden zum Schützen Ihrer IoT-Daten und -Infrastruktur
 author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: aa76e281a47be783ca9694fd65a4db39ae0f4a57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61ddad58a9f61589aae137fb66ad75b37a0cbbe9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61442669"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "73931175"
 ---
+# <a name="security-best-practices-for-internet-of-things-iot"></a>Bewährte Methoden für die Sicherheit für das Internet der Dinge (IoT)
+
 [!INCLUDE [iot-security-best-practices](../../includes/iot-security-best-practices.md)]
 
 ## <a name="see-also"></a>Weitere Informationen

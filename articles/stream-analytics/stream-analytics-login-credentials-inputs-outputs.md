@@ -1,20 +1,19 @@
 ---
 title: Rotieren der Anmeldeinformationen in Azure Stream Analytics-Aufträgen
 description: In diesem Artikel wird beschrieben, wie Sie die Anmeldeinformationen für Eingabe- und Ausgabesenken in Azure Stream Analytics-Aufträgen aktualisieren.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: aad6f237a37ce4782e2c103a7a14e0a3951093de
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 47afaea03e58cf6a24382727c6fc7193fde5abe4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612351"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012100"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Austauschen von Anmeldeinformationen für Ein- und Ausgaben eines Stream Analytics-Auftrags
 
@@ -85,5 +84,5 @@ Sie müssen eine Verbindung mit der SQL-Datenbank herstellen, um die Anmeldeinfo
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](/rest/api/streamanalytics/)

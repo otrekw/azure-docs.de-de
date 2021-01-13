@@ -1,52 +1,51 @@
 ---
-title: 'Schnellstart: Erstellen eines Suchindex in Java mithilfe von REST-APIs – Azure Search'
-description: Hier erfahren Sie, wie Sie mit Java und den Azure Search-REST-APIs einen Index erstellen, Daten laden und Abfragen ausführen.
-author: lisaleib
+title: 'Schnellstart: Erstellen eines Suchindex in Java mithilfe von REST-APIs'
+titleSuffix: Azure Cognitive Search
+description: In diesem Java-Schnellstart erfahren Sie, wie Sie mit den Azure Cognitive Search-REST-APIs einen Index erstellen, Daten laden und Abfragen ausführen.
 manager: nitinme
-ms.author: jjed
-tags: azure-portal
-services: search
-ms.service: search
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
+author: HeidiSteen
+ms.author: heidist
 ms.devlang: java
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: 455f3dfdce93d0b39960f9ec87b0938060f87687
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/25/2020
+ms.custom: devx-track-java
+ms.openlocfilehash: 2ab87dfdeb18f97265c3bb2f34616c942a345c1e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881574"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698946"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Search-Indexes in Java mit REST-APIs
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Java mit REST-APIs
 > [!div class="op_single_selector"]
-> * [JavaScript](search-get-started-nodejs.md)
+> * [JavaScript](search-get-started-javascript.md)
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [Portal](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
-> * [Postman](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 
-Erstellen Sie eine Java-Konsolenanwendung, mit der ein Azure-Suchindex per [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable) und [REST-API für Azure Search-Dienst](/rest/api/searchservice/) erstellt, geladen und abgefragt wird. Dieser Artikel enthält eine Schritt-für-Schritt-Anleitung zum Erstellen der Anwendung. Alternativ können Sie [die vollständige Anwendung herunterladen und ausführen](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+Erstellen Sie eine Java-Konsolenanwendung, mit der ein Suchindex erstellt, geladen und abgefragt wird, indem [IntelliJ](https://www.jetbrains.com/idea/), das [Java 11 SDK](/java/azure/jdk/) und die [Azure Cognitive Search-REST-API](/rest/api/searchservice/) verwendet werden. Dieser Artikel enthält eine Schritt-für-Schritt-Anleitung zum Erstellen der Anwendung. Alternativ können Sie [die vollständige Anwendung herunterladen und ausführen](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Erstellen und Testen dieses Beispiels wurden die folgenden Softwareprodukte und Dienste verwendet:
+Zum Erstellen und Testen dieser Schnellstartanleitung wurden die folgenden Softwareprodukte und Dienste verwendet:
 
 + [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-+ [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)
++ [Java 11 SDK](/java/azure/jdk/)
 
-+ [Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
++ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
 
 <a name="get-service-info"></a>
 
 ## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
 
-Aufrufe, die an den Dienst gerichtet werden, erfordern jeweils einen URL-Endpunkt und einen Zugriffsschlüssel. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
+Aufrufe, die an den Dienst gerichtet werden, erfordern jeweils einen URL-Endpunkt und einen Zugriffsschlüssel. Ein Suchdienst wird mit beidem erstellt. Gehen Sie daher wie folgt vor, um die erforderlichen Informationen zu erhalten, falls Sie Azure Cognitive Search Ihrem Abonnement hinzugefügt haben:
 
 1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und rufen Sie auf der Seite **Übersicht** Ihres Suchdiensts die URL ab. Ein Beispiel für einen Endpunkt ist `https://mydemo.search.windows.net`.
 
@@ -54,11 +53,11 @@ Aufrufe, die an den Dienst gerichtet werden, erfordern jeweils einen URL-Endpunk
 
    Erstellen Sie auch einen Abfrageschlüssel. Es empfiehlt sich, Abfrageanforderungen mit schreibgeschütztem Zugriff auszugeben.
 
-![Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel](media/search-get-started-nodejs/service-name-and-keys.png)
+:::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel" border="false":::
 
 Für jede Anforderung, die an Ihren Dienst gesendet wird, ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
-## <a name="set-up-your-environment"></a>Einrichten der Umgebung
+## <a name="set-up-your-environment"></a>Einrichten Ihrer Umgebung
 
 Beginnen Sie, indem Sie IntelliJ IDEA öffnen und ein neues Projekt einrichten.
 
@@ -68,7 +67,7 @@ Beginnen Sie, indem Sie IntelliJ IDEA öffnen und ein neues Projekt einrichten.
 1. Wählen Sie **Maven** aus.
 1. Wählen Sie in der Liste **Project SDK** (Projekt-SDK) die Option „Java 11 SDK“ aus.
 
-    ![Erstellen eines Maven-Projekts](media/search-get-started-java/java-quickstart-create-new-maven-project.png) 
+    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Erstellen eines Maven-Projekts" border="false":::
 
 1. Geben Sie unter **GroupId** und **ArtifactId** die Zeichenfolge `AzureSearchQuickstart` ein.
 1. Übernehmen Sie die restlichen Standardeinstellungen, um das Projekt zu öffnen.
@@ -79,7 +78,7 @@ Beginnen Sie, indem Sie IntelliJ IDEA öffnen und ein neues Projekt einrichten.
 1. Wählen Sie im Fenster **Settings** (Einstellungen) **Build, Execution, Deployment** > **Build Tools** > **Maven** > **Importing** („Erstellung, Ausführung, Bereitstellung“ > „Buildtools“ > „Maven“ > „Importieren“) aus.
 1. Aktivieren Sie das Kontrollkästchen **Import Maven projects automatically** (Maven-Projekte automatisch importieren), und klicken Sie auf **OK**, um das Fenster zu schließen. Maven-Plug-Ins und andere Abhängigkeiten werden jetzt automatisch synchronisiert, wenn Sie die Datei „pom.xml“ im nächsten Schritt aktualisieren.
 
-    ![Maven: Importieren von Optionen in IntelliJ-Einstellungen](media/search-get-started-java/java-quickstart-settings-import-maven-auto.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="Maven: Importieren von Optionen in IntelliJ-Einstellungen" border="false":::
 
 1. Öffnen Sie die Datei „pom.xml“, und ersetzen Sie den Inhalt durch die folgenden Maven-Konfigurationsdetails. Hierin sind Verweise auf das [Exec Maven-Plug-In](https://www.mojohaus.org/exec-maven-plugin/) und eine [JSON-Schnittstellen-API](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) enthalten.
 
@@ -141,27 +140,27 @@ Beginnen Sie, indem Sie IntelliJ IDEA öffnen und ein neues Projekt einrichten.
 
     Wenn Sie fertig sind, sollte die Projektstruktur wie in der folgenden Abbildung aussehen.
 
-    ![Struktur des Projektverzeichnisses](media/search-get-started-java/java-quickstart-basic-code-tree.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="Struktur des Projektverzeichnisses" border="false":::
 
 1. Klicken Sie auf **OK** , um das Fenster zu schließen.
 
-### <a name="add-azure-search-service-information"></a>Hinzufügen von Azure Search-Dienstinformationen
+### <a name="add-azure-cognitive-search-service-information"></a>Hinzufügen von Azure Cognitive Search-Dienstinformationen
 
 1. Erweitern Sie im Fenster **Projekt** die Quellstruktur, um auf den Ordner `src` >  `main` >`resources` > `app` zuzugreifen und eine `config.properties`-Datei hinzuzufügen. Wählen Sie hierzu den Ordner `app` aus, drücken Sie ALT+EINFG, wählen Sie **Datei** aus, und geben Sie dann den Dateinamen ein.
 
-1. Kopieren Sie die folgenden Einstellungen in die neue Datei, und ersetzen Sie `<YOUR-SEARCH-SERVICE-NAME>`, `<YOUR-ADMIN-KEY>` und `<YOUR-QUERY-KEY>` durch Ihren Dienstnamen und die Schlüssel. Ist Ihr Dienstendpunkt also beispielsweise `https://mydemo.search.windows.net`, lautet der Dienstname „mydemo“.
+1. Kopieren Sie die folgenden Einstellungen in die neue Datei, und ersetzen Sie `<YOUR-SEARCH-SERVICE-NAME>`, `<YOUR-ADMIN-KEY>` und `<YOUR-QUERY-KEY>` durch Ihren Dienstnamen und die Schlüssel. Ist Ihr Dienstendpunkt also beispielsweise `https://mydemo.search.windows.net`, lautet der Dienstname `"mydemo"`.
 
     ```java
         SearchServiceName=<YOUR-SEARCH-SERVICE-NAME>
         SearchServiceAdminKey=<YOUR-ADMIN-KEY>
         SearchServiceQueryKey=<YOUR-QUERY-KEY>
         IndexName=hotels-quickstart
-        ApiVersion=2019-05-06
+        ApiVersion=2020-06-30
     ```
 
 ### <a name="add-the-main-method"></a>Hinzufügen der main-Methode
 
-1. Fügen Sie im Ordner `src` >  `main` > `java` > `app` eine `App`-Klasse hinzu. Wählen Sie hierzu den Ordner `app` aus, drücken Sie ALT+EINFG, wählen Sie **Java-Klasse** aus, und geben Sie dann den Klassennamen ein.
+1. Fügen Sie im Ordner `src` >  `main` > `java` > `app` eine `App`-Klasse hinzu. Wählen Sie hierfür den Ordner `app` aus, drücken Sie ALT+EINFG, wählen Sie **Java-Klasse** aus, und geben Sie dann den Klassennamen ein.
 1. Öffnen Sie die `App`-Klasse, und ersetzen Sie den Inhalt durch den folgenden Code. Dieser Code enthält die `main`-Methode. 
 
     Der Code mit aufgehobener Auskommentierung liest die Suchdienstparameter und verwendet sie, um eine Instanz des Suchdienstclients zu erstellen. Der Suchdienstclient-Code wird im nächsten Abschnitt hinzugefügt.
@@ -261,7 +260,7 @@ Beginnen Sie, indem Sie IntelliJ IDEA öffnen und ein neues Projekt einrichten.
 ### <a name="add-the-http-operations"></a>Hinzufügen der HTTP-Vorgänge
 
 1. Fügen Sie im Ordner `src` >  `main` > `java` > `service` eine `SearchServiceClient`-Klasse hinzu. Wählen Sie hierfür den Ordner `service` aus, drücken Sie ALT+EINFG, wählen Sie **Java-Klasse** aus, und geben Sie dann den Klassennamen ein.
-1. Öffnen Sie die `SearchServiceClient`-Klasse, und ersetzen Sie den Inhalt durch den folgenden Code. Mit diesem Code werden die HTTP-Vorgänge bereitgestellt, die für die Verwendung der Azure Search-REST-API erforderlich sind. Weitere Methoden zum Erstellen eines Index, Hochladen von Dokumenten und Abfragen des Index werden in einem späteren Abschnitt hinzugefügt.
+1. Öffnen Sie die `SearchServiceClient`-Klasse, und ersetzen Sie den Inhalt durch den folgenden Code. Mit diesem Code werden die HTTP-Vorgänge bereitgestellt, die für die Verwendung der Azure Cognitive Search-REST-API erforderlich sind. Weitere Methoden zum Erstellen eines Index, Hochladen von Dokumenten und Abfragen des Index werden in einem späteren Abschnitt hinzugefügt.
 
     ```java
     package main.java.service;
@@ -374,10 +373,10 @@ Beginnen Sie, indem Sie IntelliJ IDEA öffnen und ein neues Projekt einrichten.
 
 1. Stellen Sie sicher, dass Ihr Projekt über die folgende Struktur verfügt.
 
-    ![Struktur des Projektverzeichnisses](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="Struktur des Projektverzeichnisses sowie Klassen" border="false":::
 
 1. Öffnen Sie das Fenster mit dem Tool **Maven**, und führen Sie das folgende Maven-Ziel aus: `verify exec:java`
-![Ausführen des Maven-Ziels: verify exec:java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
+:::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Ausführen des Maven-Ziels: verify exec:java" border="false":::
 
 Suchen Sie nach Abschluss der Verarbeitung nach der Meldung „BUILD SUCCESS“ (BUILD ERFOLGREICH), gefolgt vom Exitcode „0“.
 
@@ -514,9 +513,9 @@ Die Indexdefinition „hotels“ enthält einfache Felder und ein komplexes Feld
 
     Der Indexname lautet „hotels-quickstart“. Mit Attributen in den Indexfeldern wird bestimmt, wie in einer Anwendung nach den indizierten Daten gesucht werden kann. So muss beispielsweise jedem Feld, das in eine Volltextsuche einbezogen werden soll, das Attribut `IsSearchable` zugewiesen werden. Weitere Informationen zu Attributen finden Sie unter [Feldersammlung und Feldattribute](search-what-is-an-index.md#fields-collection).
     
-    Im Feld `Description` dieses Index wird die optionale `analyzer`-Eigenschaft verwendet, um das Lucene-Standard-Sprachanalysetool außer Kraft zu setzen. Für das Feld `Description_fr` wird das französische Lucene-Analysetool (`fr.lucene`) verwendet, da in diesem Feld französischer Text gespeichert wird. Für `Description` wird die optionale Sprachanalyse von Microsoft (en.lucene) verwendet. Weitere Informationen zu Analysetools finden Sie unter [Analysetools für Textverarbeitung in Azure Search](search-analyzers.md).
+    Im Feld `Description` dieses Index wird die optionale `analyzer`-Eigenschaft verwendet, um das Lucene-Standard-Sprachanalysetool außer Kraft zu setzen. Für das Feld `Description_fr` wird das französische Lucene-Analysetool (`fr.lucene`) verwendet, da in diesem Feld französischer Text gespeichert wird. Für `Description` wird die optionale Sprachanalyse von Microsoft (en.lucene) verwendet. Weitere Informationen zu Analysetools finden Sie unter [Analysetools für Textverarbeitung in Azure Cognitive Search](search-analyzers.md).
 
-1. Fügen Sie der `SearchServiceClient` -Klasse den folgenden Code hinzu. Mit diesen Methoden werden Azure Search-REST-Dienst-URLs erstellt, mit denen ein Index erstellt und gelöscht wird. Außerdem wird hiermit ermittelt, ob ein Index vorhanden ist. Mit den Methoden wird auch die HTTP-Anforderung durchgeführt.
+1. Fügen Sie der `SearchServiceClient` -Klasse den folgenden Code hinzu. Mit diesen Methoden werden Azure Cognitive Search-REST-Dienst-URLs erstellt, mit denen ein Index erstellt und gelöscht wird. Außerdem wird hiermit ermittelt, ob ein Index vorhanden ist. Mit den Methoden wird auch die HTTP-Anforderung durchgeführt.
 
     ```java
     public boolean indexExists() throws IOException, InterruptedException {
@@ -696,9 +695,9 @@ Die Indexdefinition „hotels“ enthält einfache Felder und ein komplexes Feld
 
 Nachdem Sie die Hoteldokumente geladen haben, können Sie Suchabfragen erstellen, um auf die Hoteldaten zuzugreifen.
 
-1. Fügen Sie der `SearchServiceClient` -Klasse den folgenden Code hinzu. Mit diesem Code werden Azure Search-REST-Dienst-URLs erstellt, um nach den indizierten Daten zu suchen und die Suchergebnisse auszugeben.
+1. Fügen Sie der `SearchServiceClient` -Klasse den folgenden Code hinzu. Mit diesem Code werden Azure Cognitive Search-REST-Dienst-URLs erstellt, um nach den indizierten Daten zu suchen und die Suchergebnisse auszugeben.
 
-    Bei der `SearchOptions`-Klasse und der `createSearchOptions`-Methode können Sie eine Teilmenge der verfügbaren Azure Search-REST-API-Abfrageoptionen angeben. Weitere Informationen zu den REST-API-Abfrageoptionen finden Sie unter [Search Documents (Azure Search Service REST API)](/rest/api/searchservice/search-documents) (Durchsuchen von Dokumenten (REST-API des Azure Search-Diensts)).
+    Bei der `SearchOptions`-Klasse und der `createSearchOptions`-Methode können Sie eine Teilmenge der verfügbaren Azure Cognitive Search-REST-API-Abfrageoptionen angeben. Weitere Informationen zu den REST-API-Abfrageoptionen finden Sie unter [Durchsuchen von Dokumenten (Azure Cognitive Search-REST-API)](/rest/api/searchservice/search-documents).
 
     Mit der `SearchPlus`-Methode wird die Suchabfragen-URL erstellt und die Suchanforderung durchgeführt. Anschließend werden die Ergebnisse in der Konsole ausgegeben. 
 
@@ -819,7 +818,7 @@ Nachdem Sie die Hoteldokumente geladen haben, können Sie Suchabfragen erstellen
 
     Suchen Sie nach einer Zusammenfassung der einzelnen Abfragen und der zugehörigen Ergebnisse. Die Ausführung sollte mit der Meldung BUILD SUCCESS (BUILD ERFOLGREICH) und dem Exitcode „0“ abgeschlossen werden.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie in Ihrem eigenen Abonnement arbeiten, ist es ratsam, nach Abschluss eines Projekts die nicht mehr benötigten Ressourcen zu entfernen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
@@ -829,10 +828,7 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Java-Schnellstartanleitung haben Sie eine Reihe von Aufgaben ausgeführt, um einen Index zu erstellen, Dokumente in den Index zu laden und Abfragen auszuführen. Wenn Sie mit den grundlegenden Konzepten vertraut sind, empfehlen wir Ihnen, Ihr Wissen mit den folgenden Artikeln zu vertiefen.
+In dieser Java-Schnellstartanleitung haben Sie eine Reihe von Aufgaben ausgeführt, um einen Index zu erstellen, Dokumente in den Index zu laden und Abfragen auszuführen. Wenn Sie mit den grundlegenden Konzepten vertraut sind, empfehlen wir Ihnen die folgenden Artikel mit Indexeroptionen in REST.
 
-+ [Indexvorgänge](/rest/api/searchservice/index-operations)
-
-+ [Dokumentvorgänge](/rest/api/searchservice/document-operations)
-
-+ [Indexer-Vorgänge](/rest/api/searchservice/indexer-operations)
+> [!div class="nextstepaction"]
+> [Indexer-Vorgänge](/rest/api/searchservice/indexer-operations)

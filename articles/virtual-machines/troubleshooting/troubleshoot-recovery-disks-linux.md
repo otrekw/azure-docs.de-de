@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: faa15e9cf6288bcd4014cbc03dcf9d82a2047bde
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: bc796b4d9708c18f4d0612e6f3ebde9b2485d2f7
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088370"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093139"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mithilfe der Azure CLI
 Wenn für Ihren virtuellen Linux-Computer (VM) ein Start- oder Datenträgerfehler auftritt, müssen Sie möglicherweise Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiger Eintrag in `/etc/fstab`, der den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie die Azure CLI die Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Linux-VM herstellt, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen. 
@@ -36,8 +36,10 @@ Der Problembehebungsprozess sieht wie folgt aus:
 
 Zum Ausführen dieser Schritte zur Problembehandlung muss die neueste [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mit [az login](/cli/azure/reference-index) bei einem Azure-Konto angemeldet sein.
 
+Sie können die VM-Reparaturbefehle verwenden, um die Schritte 1, 2, 3, 4, 6 und 7 zu automatisieren. Weitergehende Dokumentation und Anleitungen finden Sie unter [Reparieren eines virtuellen Linux-Computers mit den Reparaturbefehlen virtueller Azure-Computer](repair-linux-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+
 > [!Important]
-> Die Skripts in diesem Artikel gelten nur für VMs, die [verwaltete Datenträger](../linux/managed-disks-overview.md) verwenden. 
+> Die Skripts in diesem Artikel gelten nur für VMs, die [verwaltete Datenträger](../managed-disks-overview.md) verwenden. 
 
 Ersetzen Sie in den folgenden Beispielen die Parameternamen durch Ihre eigenen Werte, beispielsweise `myResourceGroup` und `myVM`.
 
@@ -76,28 +78,25 @@ Dieses Skript erstellt einen verwalteten Datenträger mit dem Namen `myOSDisk` a
 
 ```azurecli
 #Provide the name of your resource group
-$resourceGroup=myResourceGroup
+$resourceGroup="myResourceGroup"
 
 #Provide the name of the snapshot that will be used to create Managed Disks
-$snapshot=mySnapshot
+$snapshot="mySnapshot"
 
 #Provide the name of the Managed Disk
-$osDisk=myNewOSDisk
+$osDisk="myNewOSDisk"
 
 #Provide the size of the disks in GB. It should be greater than the VHD file size.
 $diskSize=128
 
 #Provide the storage type for Managed Disk. Premium_LRS or Standard_LRS.
-$storageType=Premium_LRS
+$storageType="Premium_LRS"
 
 #Provide the OS type
-$osType=linux
-
-#Provide the name of the virtual machine
-$virtualMachine=myVM
+$osType="linux"
 
 #Get the snapshot Id 
-$snapshotId=(az snapshot show --name $snapshot --resource-group $resourceGroup --query [id] -o tsv)
+$snapshotId=(az snapshot show --name $snapshot --resource-group $resourceGroup --query id -o tsv)
 
 # Create a new Managed Disks using the snapshot Id.
 
@@ -116,17 +115,17 @@ Mit diesem Skript wird der Datenträger `myNewOSDisk` der VM `MyTroubleshootVM` 
 
 ```azurecli
 # Get ID of the OS disk that you just created.
-$myNewOSDiskid=(az vm show -g myResourceGroupDisk -n myNewOSDisk --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+$myNewOSDiskid=(az disk show -g $resourceGroup -n $osDisk --query id -o tsv)
 
 # Attach the disk to the troubleshooting VM
-az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 --sku Standard_LRS --vm-name MyTroubleshootVM
+az vm disk attach --disk $myNewOSDiskid --resource-group $resourceGroup --size-gb $diskSize --sku $storageType --vm-name MyTroubleshootVM
 ```
 ## <a name="mount-the-attached-data-disk"></a>Bereitstellen des hinzugefügten Datenträgers
 
 > [!NOTE]
 > In den folgenden Beispielen sind die Schritte beschrieben, die auf einer Ubuntu-VM erforderlich sind. Bei Verwendung einer anderen Linux-Distribution, z.B. Red Hat Enterprise Linux oder SUSE, sind die Speicherorte für Protokolldateien und `mount`-Befehle ggf. etwas anders. Nähere Informationen zu Ihrer spezifischen Distribution für die entsprechenden Änderungen in Befehlen finden Sie in der Dokumentation.
 
-1. Stellen Sie mithilfe von SSH und den entsprechenden Anmeldeinformationen eine Verbindung zu Ihrer Problembehebungs-VM her. Wenn dieses Laufwerk der erste Datenträger ist, der zu Ihrer Problembehebungs-VM hinzugefügt wurde, ist es wahrscheinlich mit `/dev/sdc` verbunden. Verwenden Sie `dmseg`, um hinzugefügte Datenträger anzuzeigen:
+1. Stellen Sie mithilfe von SSH und den entsprechenden Anmeldeinformationen eine Verbindung zu Ihrer Problembehebungs-VM her. Wenn dieses Laufwerk der erste Datenträger ist, der zu Ihrer Problembehebungs-VM hinzugefügt wurde, ist es wahrscheinlich mit `/dev/sdc` verbunden. Verwenden Sie `dmesg`, um hinzugefügte Datenträger anzuzeigen:
 
     ```bash
     dmesg | grep SCSI
@@ -196,7 +195,7 @@ Dieses Beispiel beendet die VM `myVM` und weist den Datenträger `myNewOSDisk` a
 az vm stop -n myVM -g myResourceGroup
 
 # Get ID of the OS disk that is repaired.
-$myNewOSDiskid=(az vm show -g myResourceGroupDisk -n myNewOSDisk --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+$myNewOSDiskid=(az vm show -g $resourceGroup -n $osDisk --query id -o tsv)
 
 # Change the OS disk of the affected VM to "myNewOSDisk"
 az vm update -g myResourceGroup -n myVM --os-disk $myNewOSDiskid

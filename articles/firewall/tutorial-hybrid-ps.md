@@ -1,19 +1,19 @@
 ---
-title: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk mit Azure PowerShell
+title: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk mithilfe von PowerShell
 description: In diesem Artikel erfahren Sie, wie Sie Azure Firewall über Azure PowerShell bereitstellen und konfigurieren.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 5/3/2019
+ms.topic: how-to
+ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: a9987808feb895276f3f9e62fe66c1b353b52e72
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e60c829831bde3b454ab180d1a39ec46cb346963
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073076"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658637"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk mit Azure PowerShell
 
@@ -31,17 +31,16 @@ Für diesen Artikel erstellen Sie drei virtuelle Netzwerke:
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Deklarieren der Variablen
-> * Erstellen des virtuellen Firewall-Hub-Netzwerks
-> * Erstellen des virtuellen Spoke-Netzwerks
-> * Erstellen des lokalen virtuellen Netzwerks
-> * Konfigurieren und Bereitstellen der Firewall
-> * Erstellen und Verbinden der VPN-Gateways
-> * Durchführen des Peerings für die virtuellen Hub- und Spoke-Netzwerke
-> * Erstellen der Routen
-> * Erstellen der virtuellen Computer
-> * Testen der Firewall
+* Deklarieren der Variablen
+* Erstellen des virtuellen Firewall-Hub-Netzwerks
+* Erstellen des virtuellen Spoke-Netzwerks
+* Erstellen des lokalen virtuellen Netzwerks
+* Konfigurieren und Bereitstellen der Firewall
+* Erstellen und Verbinden der VPN-Gateways
+* Durchführen des Peerings für die virtuellen Hub- und Spoke-Netzwerke
+* Erstellen der Routen
+* Erstellen der virtuellen Computer
+* Testen der Firewall
 
 Wenn Sie das Azure-Portal verwenden möchten, statt dieses Tutorial durchzuarbeiten, lesen Sie [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk über das Azure-Portal](tutorial-hybrid-portal.md)
 
@@ -49,11 +48,11 @@ Wenn Sie das Azure-Portal verwenden möchten, statt dieses Tutorial durchzuarbei
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für diesen Artikel müssen Sie PowerShell lokal ausführen. Das Azure PowerShell-Modul muss installiert sein. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-Az-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzAccount` aus, um eine Verbindung mit Azure zu erstellen.
+Für diesen Artikel müssen Sie PowerShell lokal ausführen. Das Azure PowerShell-Modul muss installiert sein. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzAccount` aus, um eine Verbindung mit Azure zu erstellen.
 
 Es gibt drei wichtige Anforderungen, die erfüllt sein müssen, damit dieses Szenario richtig funktioniert:
 
-- Eine benutzerdefinierte Route (User Defined Route, UDR) im Spoke-Subnetz, das auf die Azure Firewall-IP-Adresse als Standardgateway verweist. Die BGP-Routenverteilung muss für diese Routentabelle auf **Deaktiviert** festgelegt werden.
+- Eine benutzerdefinierte Route (User Defined Route, UDR) im Spoke-Subnetz, das auf die Azure Firewall-IP-Adresse als Standardgateway verweist. Die Routenverteilung für das Gateway für virtuelle Netzwerke muss für diese Routentabelle auf **Deaktiviert** festgelegt werden.
 - Eine UDR im Hub-Gatewaysubnetz muss auf die Firewall-IP-Adresse als nächsten Hop auf dem Weg zu den Spoke-Netzwerken verweisen.
 
    Für das Azure Firewall-Subnetz ist keine UDR erforderlich, da es die Routen über BGP erlernt.
@@ -62,14 +61,14 @@ Es gibt drei wichtige Anforderungen, die erfüllt sein müssen, damit dieses Sze
 Informationen zur Erstellung dieser Routen finden Sie in diesem Artikel im Abschnitt [Erstellen von Routen](#create-the-routes).
 
 >[!NOTE]
->Azure Firewall muss über eine direkte Internetverbindung verfügen. Wenn Ihr Subnetz „AzureFirewallSubnet“ eine Standardroute zu Ihrem lokalen Netzwerk über BGP erfasst, müssen Sie diese mit der benutzerdefinierten Route 0.0.0.0/0 überschreiben. Legen Sie dabei den Wert **NextHopType** auf **Internet** fest, um die direkte Internetkonnektivität beizubehalten. Standardmäßig unterstützt Azure Firewall keine Tunnelerzwingung für ein lokales Netzwerk.
+>Azure Firewall muss über eine direkte Internetverbindung verfügen. Wenn Ihr Subnetz „AzureFirewallSubnet“ eine Standardroute zu Ihrem lokalen Netzwerk über BGP erfasst, müssen Sie diese mit der benutzerdefinierten Route 0.0.0.0/0 überschreiben. Legen Sie dabei den Wert **NextHopType** auf **Internet** fest, um die direkte Internetkonnektivität beizubehalten.
 >
->Wenn Ihre Konfiguration jedoch die Tunnelerzwingung für ein lokales Netzwerk erfordert, wird Microsoft dies im Einzelfall unterstützen. Wenden Sie sich in diesem Fall an den Support, damit Ihr Fall überprüft werden kann. Bei einer Annahme wird Ihr Abonnement in die Whitelist aufgenommen, damit die erforderliche Internetkonnektivität der Firewall auch sicher erhalten bleibt.
+>Azure Firewall kann so konfiguriert werden, dass die Tunnelerzwingung unterstützt wird. Weitere Informationen finden Sie unter [Azure Firewall-Tunnelerzwingung](forced-tunneling.md).
 
 >[!NOTE]
 >Der Datenverkehr zwischen per direktem Peering verbundenen VNETs wird direkt weitergeleitet, auch wenn eine UDR auf Azure Firewall als Standardgateway verweist. Um in diesem Szenario Subnetz-zu-Subnetz-Datenverkehr an die Firewall zu senden, muss eine UDR explizit das Zielsubnetzwerk-Präfix in beiden Subnetzen enthalten.
 
-Die entsprechende Azure PowerShell-Referenzdokumentation finden Sie [hier](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
+Die entsprechende Azure PowerShell-Referenzdokumentation finden Sie [hier](/powershell/module/az.network/new-azfirewall).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -355,7 +354,7 @@ Set-AzVirtualNetwork
 
 #Now create the default route
 
-#Create a table, with BGP route propagation disabled
+#Create a table, with BGP route propagation disabled. The property is now called "Virtual network gateway route propagation," but the API still refers to the parameter as "DisableBgpRoutePropagation."
 $routeTableSpokeDG = New-AzRouteTable `
   -Name 'UDR-DG' `
   -ResourceGroupName $RG1 `
@@ -367,7 +366,7 @@ Get-AzRouteTable `
   -ResourceGroupName $RG1 `
   -Name UDR-DG `
   | Add-AzRouteConfig `
-  -Name "ToSpoke" `
+  -Name "ToFirewall" `
   -AddressPrefix 0.0.0.0/0 `
   -NextHopType "VirtualAppliance" `
   -NextHopIpAddress $AzfwPrivateIP `
@@ -434,7 +433,7 @@ Set-AzVMExtension `
     -Publisher Microsoft.Compute `
     -ExtensionType CustomScriptExtension `
     -TypeHandlerVersion 1.4 `
-    -SettingString '{"commandToExecute":"powershell New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4"}' `
+    -SettingString '{"commandToExecute":"powershell New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4"}' `
     -Location $Location1--->
 
 ### <a name="create-the-on-premises-virtual-machine"></a>Erstellen der lokalen VM
@@ -497,4 +496,4 @@ Sie können die Firewallressourcen für das nächste Tutorial behalten oder die 
 
 Als Nächstes können Sie die Azure Firewall-Protokolle überwachen.
 
-[Tutorial: Überwachen von Azure Firewall-Protokollen](./tutorial-diagnostics.md)
+[Tutorial: Überwachen von Azure Firewall-Protokollen](./firewall-diagnostics.md)

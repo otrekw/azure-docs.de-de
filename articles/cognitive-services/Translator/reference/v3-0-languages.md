@@ -1,7 +1,7 @@
 ---
-title: Verwenden der Languages-Methode der Textübersetzungs-API
+title: Translator-Methode „Languages“
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Languages-Methode der Textübersetzungs-API.
+description: Die Methode „Languages“ dient zum Abrufen der Sprachen, die derzeit von anderen Translator-Vorgängen unterstützt werden.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 3dd875fbf9a8da464abe1b6312cec84c030dc624
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d9abd1f305e47eca743dc9274e0ec1f0a950dd6a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934015"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021268"
 ---
-# <a name="translator-text-api-30-languages"></a>Textübersetzungs-API 3.0: Languages
+# <a name="translator-30-languages"></a>Translator 3.0: Languages
 
-Ruft die Sprachen ab, die derzeit von anderen Vorgängen der Textübersetzungs-API unterstützt werden. 
+Ruft die Sprachen ab, die derzeit von anderen Translator-Vorgängen unterstützt werden. 
 
 ## <a name="request-url"></a>Anfrage-URL
 
@@ -57,7 +57,7 @@ Anforderungsheader:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Optionaler Anforderungsheader*.<br/>Eine vom Client generierte GUID zur eindeutigen Identifizierung der Anforderung.</td>
+    <td>*Optionaler Anforderungsheader*.<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung.</td>
   </tr>
 </table> 
 
@@ -139,7 +139,7 @@ Der Wert für jede Eigenschaft lautet wie folgt.
 
     * `toScripts`: Die Liste der Skripts, in die Text konvertiert werden kann. Jedes Element der `toScripts`-Liste verfügt über die Eigenschaften `code`, `name`, `nativeName` und `dir` (wie zuvor beschrieben).
 
-  Der folgende Code zeigt ein Beispiel:
+  Im folgenden Code wird ein Beispiel veranschaulicht:
 
   ```json
   {
@@ -251,7 +251,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   <th>BESCHREIBUNG</th>
   <tr>
     <td>200</td>
-    <td>Erfolgreich.</td>
+    <td>Erfolg.</td>
   </tr>
   <tr>
     <td>304</td>
@@ -275,7 +275,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   </tr>
 </table> 
 
-Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Gängige Fehlercodes finden Sie auf der [Referenzseite zur Textübersetzungs-API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Häufige Fehlercodes finden Sie in der [Referenz zu Version 3 von Translator](./v3-0-reference.md#errors). 
 
 ## <a name="examples"></a>Beispiele
 

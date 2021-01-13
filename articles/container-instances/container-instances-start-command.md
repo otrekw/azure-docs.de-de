@@ -1,19 +1,14 @@
 ---
-title: Verwenden einer Startbefehlszeile in Azure Container Instances
-description: Setzen Sie den in einem Containerimage konfigurierten Einstiegspunkt außer Kraft, wenn Sie eine Azure-Containerinstanz bereitstellen.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Außerkraftsetzen des Einstiegspunkts in einer Containerinstanz
+description: Legen Sie eine Befehlszeile zum außer Kraft setzen des Einstiegspunkts in einem Containerimage fest, in dem Sie eine Azure-Containerinstanz bereitstellen.
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: 40d946db48a65452d2da529098c07d0d0c60d472
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619661"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86169628"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Legen Sie die Befehlszeile in einer Containerinstanz so fest, dass sie die standardmäßige Befehlszeilenoperation außer Kraft setzt.
 
@@ -57,10 +52,10 @@ Die Befehlszeilensyntax variiert je nach Azure-API oder dem Tool, die bzw. das z
 
 ### <a name="examples"></a>Beispiele
 
-|    |  Azure-Befehlszeilenschnittstelle   | Portal | Vorlage | 
+|    |  Azure CLI   | Portal | Vorlage | 
 | ---- | ---- | --- | --- |
-| Einzelner Befehl | `--command-line "python myscript.py arg1 arg2"` | **Außerkraftsetzung von Befehl**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| Mehrere Befehle | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Außerkraftsetzung von Befehl**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| **Einzelner Befehl** | `--command-line "python myscript.py arg1 arg2"` | **Außerkraftsetzung von Befehl**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| **Mehrere Befehle** | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Außerkraftsetzung von Befehl**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Azure CLI-Beispiel
 
@@ -117,7 +112,7 @@ Ausgabe:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Aufgabenbasierte Szenarien, z. B. Stapelverarbeitung eines großen Datasets mit mehreren Containern, können von benutzerdefinierten Befehlszeilen zur Laufzeit profitieren. Weitere Informationen zum Ausführen aufgabenbasierter Containern finden Sie unter [Ausführen von Aufgaben in Containern mit Neustartrichtlinien](container-instances-restart-policy.md).
+Aufgabenbasierte Szenarien, z. B. Stapelverarbeitung eines großen Datasets mit mehreren Containern, können von benutzerdefinierten Befehlszeilen zur Laufzeit profitieren. Weitere Informationen zum Ausführen aufgabenbasierter Container finden Sie unter [Ausführen von Aufgaben in Containern mit Neustartrichtlinien](container-instances-restart-policy.md).
 
 <!-- LINKS - External -->
 [aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount

@@ -1,20 +1,16 @@
 ---
-title: Übersicht über Azure Service Fabric Mesh | Microsoft Docs
+title: Übersicht über Azure Service Fabric Mesh
 description: Informationen zu Azure Service Fabric Mesh. Mit Service Fabric Mesh können Sie Ihre Anwendung bereitstellen und skalieren, ohne sich um die Infrastrukturanforderungen Ihrer Anwendung kümmern zu müssen.
-services: service-fabric-mesh
-keywords: ''
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 10/1/2018
 ms.topic: overview
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: d315ca0702b1d76e0f990d4d33a3807a1dc57935
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 32e855ef1580dd065ee681e635994064a9038f77
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428178"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840267"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Was ist Service Fabric Mesh?
 
@@ -46,7 +42,7 @@ Mit Service Fabric Mesh können Sie die folgenden Aufgaben ausführen:
 
 - Bereitstellen und Verwalten von Anwendungen ohne explizit Infrastruktur bereitstellen und verwalten zu müssen.  Service Fabric Mesh stellt die zugrunde liegende Infrastruktur für Sie bereit, wendet Upgrades und Patches an und übernimmt die Verwaltung.
 - Einrichten von Continuous Integration mit den integrierten Tools zur einfachen Paketerstellung und Bereitstellung von Anwendungen.
-- Nutzen Sie alle Features von Azure Resource Manager-Ressourcen. Beispiele für diese Features sind Überwachungspfade und die [rollenbasierte Zugriffssteuerung](/azure/role-based-access-control/overview). Alle Ressourcen, die Sie im Service Fabric Mesh-Dienst in Azure bereitstellen, sind Azure Resource Manager-Ressourcen. Zu diesen Ressourcen gehören Anwendungen, Dienste, Geheimnisse usw.
+- Nutzen Sie alle Features von Azure Resource Manager-Ressourcen. Beispiele für diese Features sind Überwachungspfade und die [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../role-based-access-control/overview.md). Alle Ressourcen, die Sie im Service Fabric Mesh-Dienst in Azure bereitstellen, sind Azure Resource Manager-Ressourcen. Zu diesen Ressourcen gehören Anwendungen, Dienste, Geheimnisse usw.
 - Bereitstellen und Verwalten von Ressourcen mithilfe des [Azure-Portals](https://portal.azure.com), Resource Manager-Vorlagen oder der Azure CLI/PowerShell-Bibliotheken.
 - Einrichten von operativer Überwachung und Warnungen mithilfe von [Application Insights](/azure/application-insights/) (oder Ihrem bevorzugten Tool) zum Erfassen von Betriebs- und Diagnoseablaufverfolgungen von der Plattform.
 - Zugreifen auf aus dem Anwendungsmodell ausgegebene Anwendungsdiagnoseinformationen mithilfe von [Application Insights](/azure/application-insights/) oder dem Tool Ihrer Wahl.
@@ -54,14 +50,14 @@ Mit Service Fabric Mesh können Sie die folgenden Aufgaben ausführen:
 
 ## <a name="mission-critical-platform-capabilities"></a>Unternehmenswichtige Plattformfunktionen
 
-Service Fabric Mesh erstellt eine Sammlung von Clustern, die [Azure-Verfügbarkeitszonen](/azure/availability-zones/az-overview) und/oder geopolitische regionale Grenzen umfassen. Service Fabric Mesh beschreibt Anwendungen mit einer Sammlung von Absichten, z.B. Skalierung, Hardwareanforderungen, Anforderungen an die Dauerhaftigkeit sowie Sicherheitsrichtlinien.  Wenn die Anwendung bereitgestellt wird, findet Service Fabric Mesh den optimalen Ort für die Ausführung.
+Service Fabric Mesh erstellt eine Sammlung von Clustern, die [Azure-Verfügbarkeitszonen](../availability-zones/az-overview.md) und/oder geopolitische regionale Grenzen umfassen. Service Fabric Mesh beschreibt Anwendungen mit einer Sammlung von Absichten, z.B. Skalierung, Hardwareanforderungen, Anforderungen an die Dauerhaftigkeit sowie Sicherheitsrichtlinien.  Wenn die Anwendung bereitgestellt wird, findet Service Fabric Mesh den optimalen Ort für die Ausführung.
 
 Mit Service Fabric Mesh können Sie die folgenden Aufgaben ausführen:
 
 - Profitieren von Hochverfügbarkeit, Skalierung, Ermittelbarkeit, Orchestrierung, Nachrichtenrouting, zuverlässigem Messaging, Upgrades ohne Ausfallzeit, Verwaltung von Sicherheit/geheimen Schlüsseln, Notfallwiederherstellung, Zustandsverwaltung, Konfigurationsverwaltung und verteilten Transaktionen.
 - Auswählen zwischen mehreren Anwendungsmodellen beim Erstellen von Anwendungen.
 - Verwenden von Plattformfunktionen, die über REST-Endpunkte bereitgestellt werden, indem sprachspezifische Bindungen genutzt werden, die mit Swagger generiert werden.
-- Bereitstellen von Anwendungen über [Verfügbarkeitszonen](/azure/availability-zones/az-overview) und mehrere Regionen hinweg für Geozuverlässigkeit.
+- Bereitstellen von Anwendungen über [Verfügbarkeitszonen](../availability-zones/az-overview.md) und mehrere Regionen hinweg für Geozuverlässigkeit.
 - Verwenden aller Sicherheits- und Konformitätsfeatures, die Azure bietet.
 
 ## <a name="next-steps"></a>Nächste Schritte

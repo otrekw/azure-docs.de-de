@@ -1,26 +1,20 @@
 ---
-title: 'Azure CLI-Skriptbeispiel: Abrufen des Hostnamens, der Ports und Schlüssel für Azure Cache for Redis | Microsoft-Dokumentation'
-description: 'Azure CLI-Skriptbeispiel: Abrufen des Hostnamens, der Ports und Schlüssel für eine Azure Cache for Redis-Instanz'
-services: cache
-documentationcenter: ''
+title: 'Abrufen des Hostnamens, der Ports und Schlüssel – Azure Cache for Redis: Azure CLI'
+description: In diesem Azure CLI-Codebeispiel wird gezeigt, wie Sie den Hostnamen, die Ports und Schlüssel für eine Azure Cache for Redis-Instanz abrufen.
 author: yegu-ms
-manager: jhubbard
-editor: ''
+ms.author: yegu
 tags: azure-service-management
-ms.assetid: 761eb24e-2ba7-418d-8fc3-431153e69a90
 ms.service: cache
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.topic: sample
 ms.date: 08/30/2017
-ms.author: yegu
-ms.openlocfilehash: ff410db561879089c4c1f20acb7cb349f0484fda
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d3e8e359a97c091e025049ac8a978e1beca1d759
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60234320"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184217"
 ---
 # <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>Abrufen des Hostnamens, der Ports und Schlüssel für Azure Cache for Redis
 
@@ -39,12 +33,12 @@ Dieses Skript verwendet die folgenden Befehle, um den Hostnamen, die Schlüssel 
 
 | Get-Help | Notizen |
 |---|---|
-| [az redis show](https://docs.microsoft.com/cli/azure/redis) | Details zu einer Azure Cache for Redis-Instanz abrufen. |
-| [az redis list-keys](https://docs.microsoft.com/cli/azure/redis) | Zugriffsschlüssel für eine Azure Cache for Redis-Instanz abrufen. |
+| [az redis show](/cli/azure/redis) | Ruft Details zu einer Azure Cache for Redis-Instanz ab. |
+| [az redis list-keys](/cli/azure/redis) | Zugriffsschlüssel für eine Azure Cache for Redis-Instanz abrufen. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
 Zusätzliche Azure Cache for Redis-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure Cache for Redis](../cli-samples.md).

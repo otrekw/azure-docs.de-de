@@ -1,22 +1,16 @@
 ---
 title: 'Azure CLI-Skript-Beispiel: Abonnieren eines benutzerdefinierten Themas | Microsoft-Dokumentation'
-description: 'Azure CLI-Skript-Beispiel: Abonnieren eines benutzerdefinierten Themas'
-services: event-grid
-documentationcenter: na
-author: tfitzmac
-ms.service: event-grid
+description: In diesem Artikel wird anhand eines Beispielskripts für die Azure-Befehlszeilenschnittstelle das Abonnieren von Event Grid-Ereignissen für ein benutzerdefiniertes Thema veranschaulicht.
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: a46c348533468ad037ac092037cb34def2b0405c
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.date: 07/08/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 80eff2853db1083fa2805cdd719f03a3235fccac
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038381"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87499023"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-azure-cli"></a>Abonnieren von Ereignissen für ein benutzerdefiniertes Thema mit der Azure CLI
 
@@ -43,10 +37,10 @@ Dieses Skript verwendet den folgenden Befehl, um das Ereignisabonnement zu erste
 
 | Get-Help | Notizen |
 |---|---|
-| [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Erstellen Sie ein Event Grid-Abonnement. |
+| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Erstellen Sie ein Event Grid-Abonnement. |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) - extension version | Erstellen Sie ein Event Grid-Abonnement. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Abfragen von Abonnements finden Sie unter [Abfragen von Event Grid-Abonnements](../query-event-subscriptions.md).
-* Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+* Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).

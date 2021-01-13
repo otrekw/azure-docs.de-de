@@ -1,78 +1,78 @@
 ---
-title: Single-Page-Webanwendung (Codekonfiguration der App) – Microsoft Identity Platform
-description: Erfahren Sie, wie Sie eine Single-Page-Webanwendung (Codekonfiguration der App) erstellen
+title: Konfigurieren einer Single-Page-App – Microsoft Identity Platform | Azure
+description: Informationen zum Erstellen einer Single-Page-Webanwendung (Codekonfiguration der App)
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7b4fba03f9edf8a3f4e42b23c6a1b5e06518863
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 30a9b710ffbf98ebc523217a3b8a7fd9a2640c49
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891527"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443040"
 ---
-# <a name="single-page-application---code-configuration"></a>Single-Page-Webanwendung – Codekonfiguration
+# <a name="single-page-application-code-configuration"></a>Single-Page-Webanwendung: Codekonfiguration
 
 Erfahren Sie, wie Sie den Code für Ihre Single-Page-Webanwendung (SPA) konfigurieren.
 
-## <a name="msal-libraries-supporting-implicit-flow"></a>MSAL-Bibliotheken zur Unterstützung des impliziten Flusses
+## <a name="msal-libraries-for-spas-and-supported-authentication-flows"></a>MSAL-Bibliotheken für SPAs und unterstützte Authentifizierungsflows
 
-Microsoft Identity Platform bietet eine MSAL.js-Bibliothek zur Unterstützung des impliziten Flusses unter Verwendung der für die Branche empfohlenen sicheren Methoden.  
+Microsoft Identity Platform stellt die folgende Microsoft Authentication Library für JavaScript (MSAL.js) zur Unterstützung des impliziten Flows und des Autorisierungscodeflows mit PKCE mithilfe von empfohlenen branchenüblichen Sicherheitsmethoden bereit:
 
-Folgende Bibliotheken unterstützen den impliziten Fluss:
-
-| MSAL-Bibliothek | BESCHREIBUNG |
-|--------------|--------------|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Einfache JavaScript-Bibliothek zur Verwendung in einer beliebigen clientseitigen Web-App, die mit JavaScript- oder SPA-Frameworks wie Angular, Vue.js, React.js usw. erstellt wurde. |
-| ![MSAL Angular](media/sample-v2-code/logo_angular.png) <br/> [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Wrapper der MSAL.js-Kernbibliothek für eine einfachere Verwendung in Single-Page-Webanwendungen, die mit dem Angular-Framework erstellt wurden. Diese Bibliothek ist als Vorschauversion verfügbar und weist [bekannte Probleme](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues?q=is%3Aopen+is%3Aissue+label%3Aangular) mit bestimmten Angular-Versionen und Browsern auf. |
+| MSAL-Bibliothek | Flow | BESCHREIBUNG |
+|--------------|------|-------------|
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js (2.x)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) | Autorisierungscodeflow (PKCE) | Einfache JavaScript-Bibliothek zur Verwendung in einer beliebigen clientseitigen Web-App, die über JavaScript- oder SPA-Frameworks wie Angular, Vue.js und React.js erstellt wurde. |
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js (1.x)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) | Impliziter Flow | Einfache JavaScript-Bibliothek zur Verwendung in einer beliebigen clientseitigen Web-App, die über JavaScript- oder SPA-Frameworks wie Angular, Vue.js und React.js erstellt wurde. |
+| ![MSAL Angular](media/sample-v2-code/logo_angular.png) <br/> [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Impliziter Flow | Wrapper der MSAL.js-Kernbibliothek für eine einfachere Verwendung in Single-Page-Webanwendungen, die über das Angular-Framework erstellt wurden. |
 
 ## <a name="application-code-configuration"></a>Codekonfiguration der Anwendung
 
-In der MSAL-Bibliothek werden die Informationen der Anwendungsregistrierung während der Initialisierung der Bibliothek als Konfiguration übergeben.
+In einer MSAL-Bibliothek werden die Anwendungsregistrierungsinformationen während der Initialisierung der Bibliothek als Konfiguration übergeben.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // Configuration object constructed.
 const config = {
     auth: {
-        clientId: 'your_app_id',
-        redirectUri: "your_app_redirect_uri" //defaults to application start page
+        clientId: 'your_client_id'
     }
-}
+};
 
 // create UserAgentApplication instance
 const userAgentApplication = new UserAgentApplication(config);
 ```
-Weitere Informationen zu den verfügbaren konfigurierbaren Optionen finden Sie unter [Initializing application with MSAL.js (Initialisieren von Anwendungen mit MSAL.js)](msal-js-initializing-client-applications.md).
 
-### <a name="angular"></a>Angular
+Weitere Informationen zu den konfigurierbaren Optionen finden Sie unter [Initialisieren von Clientanwendungen mithilfe von MSAL.js](msal-js-initializing-client-applications.md).
+
+# <a name="angular"></a>[Angular](#tab/angular)
 
 ```javascript
-//In app.module.ts
+// App.module.ts
 import { MsalModule } from '@azure/msal-angular';
 
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id'
-            })]
-         })
+    imports: [
+        MsalModule.forRoot({
+            auth: {
+                clientId: 'your_app_id'
+            }
+        })
+    ]
+})
 
-  export class AppModule { }
+export class AppModule { }
 ```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [An- und Abmeldung](scenario-spa-sign-in.md)
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [Anmelden und Abmelden](scenario-spa-sign-in.md).

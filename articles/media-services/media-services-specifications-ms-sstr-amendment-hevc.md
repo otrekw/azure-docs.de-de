@@ -1,6 +1,6 @@
 ---
-title: 'Azure Media Services: Ergänzung zum Smooth Streaming-Protokoll (MS-SSTR) für HEVC | Microsoft-Dokumentation'
-description: Diese Spezifikation beschreibt das Protokoll und Format für die fragmentierte MP4-basierte Livestreamingerfassung mit HEVC in Azure Media Services. Dieser Artikel ergänzt die Dokumentation zum Smooth Streaming-Protokoll (MS-SSTR) und beschäftigt sich mit der Unterstützung von HEVC-Erfassung und -Streaming. In diesem Artikel werden nur die für die Bereitstellung von HEVC erforderlichen Änderungen angegeben, ausgenommen sind Textstellen, die durch „(Keine Änderung)“ gekennzeichnet sind und der Verdeutlichung dienen.
+title: 'Ergänzung zum Smooth Streaming-Protokoll (MS-SSTR) für HEVC: Azure'
+description: Diese Spezifikation beschreibt das Protokoll und Format für die fragmentierte MP4-basierte Livestreamingerfassung mit HEVC in Azure Media Services. In diesem Artikel werden nur die für die Bereitstellung von HEVC erforderlichen Änderungen angegeben, ausgenommen sind Textstellen, die durch „(Keine Änderung)“ gekennzeichnet sind und der Verdeutlichung dienen.
 services: media-services
 documentationcenter: ''
 author: johndeu
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: e0637b2a015a610f9c3f92809f63a442980b63b1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6454bc863cb5fd628d581fff380c5ab61354f762
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624815"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87053056"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Ergänzung zum Smooth Streaming-Protokoll (MS-SSTR) für HEVC 
 
@@ -64,7 +64,7 @@ Die folgenden Begriffe sind für dieses Dokument spezifisch:
 
 ### <a name="121-normative-references"></a>1.2.1 Normative Verweise 
 
->  [MS-SSTR] Smooth Streaming-Protokoll *v20140502* [https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
+>  [MS-SSTR] Smooth Streaming-Protokoll *v20140502* [https://msdn.microsoft.com/library/ff469518.aspx](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)
 > 
 >   [ISO/IEC 14496-12] Internationale Organisation für Normung (International Organization for Standardization, ISO), „Information technology -- Coding of audio-visual objects -- Part 12: ISO Base Media File Format“ (Informationstechnologie – Codierung von audiovisuellen Objekten – Teil 12: ISO-Basismediendateiformat), ISO/IEC 14496-12:2014, 4. Auflage, plus Berichtigung 1, Ergänzungen 1 und 2.
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
@@ -242,10 +242,12 @@ Das ProtectionElement SOLLTE vorhanden sein, wenn Common Encryption (CENC) auf V
 > 
 >   Die Syntax der in diesem Abschnitt definierten Felder, festgelegt in ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096), lautet wie folgt:
 
-    FileType = MajorBrand MinorVersion CompatibleBrands
-    MajorBrand = STRING_UINT32
-    MinorVersion = STRING_UINT32
-    CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```properties
+FileType = MajorBrand MinorVersion CompatibleBrands
+MajorBrand = STRING_UINT32
+MinorVersion = STRING_UINT32
+CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```
 
 **Hinweis**: Die Kompatibilitätsmarken „ccff“ und „iso8“ zeigen an, dass Fragmente dem „Common Container File Format“ und Common Encryption, [ISO/IEC 23001-7], sowie dem ISO-Basismediendateiformat, 4. Auflage, [ISO/IEC 14496-12], entsprechen.
 
@@ -288,14 +290,18 @@ Das ProtectionElement SOLLTE vorhanden sein, wenn Common Encryption (CENC) auf V
 > 
 >   Präsentationen mit HEVC-Streams SOLLEN Folgendes festlegen:
 
-    MajorVersion = 2
-    MinorVersion = 2
+```properties
+MajorVersion = 2
+MinorVersion = 2
+```
 
 >   LookaheadCount = 0 (Hinweis: Boxes: veraltet)
 > 
 >   Präsentationen SOLLEN ebenfalls festlegen:
 
-    TimeScale = 90000
+```properties
+TimeScale = 90000
+```
 
 >   Streamsammlung: Eine Sammlung von Datenelementen der Streambeschreibung, wie in Abschnitt *3.1.1.1.2* angegeben.
 > 

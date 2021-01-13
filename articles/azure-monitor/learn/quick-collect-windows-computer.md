@@ -1,31 +1,30 @@
 ---
-title: Sammeln von Daten auf einem Windows-Hybridcomputer mit Azure Monitor | Microsoft-Dokumentation
+title: Sammeln von Daten von einem Windows-Hybridcomputer mit Azure Monitor
 description: In dieser Schnellstartanleitung erfahren Sie, wie der Log Analytics-Agent für außerhalb von Azure ausgeführte Windows-Computer bereitgestellt wird und wie Sie die Sammlung von Daten mit Azure Monitor-Protokollen aktivieren.
 services: azure-monitor
 documentationcenter: azure-monitor
-author: mgoedtel
+author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
-ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
-ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 50059711df195c13ee44061ee4844f0192e0e10d
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.author: bwren
+ms.custom: mvc, seo-javascript-october2019
+ms.openlocfilehash: 9cd92075c7e0c4450dbee750fd31efb394dd24f7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992101"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186744"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Sammeln von Daten auf einem Windows-Computer in einer Hybridumgebung mit Azure Monitor
 
-[Azure Monitor](../overview.md) kann Daten direkt von Ihren physischen oder virtuellen Windows-Computern in Ihrer Umgebung zur detaillierten Analyse und Korrelation in einem Log Analytics-Arbeitsbereich sammeln. Wenn Sie den [Log Analytics-Agent](../platform/log-analytics-agent.md) installieren, kann Azure Monitor Daten aus einem Datencenter oder einer anderen Cloudumgebung sammeln. Dieser Schnellstart zeigt Ihnen, wie Sie in wenigen einfachen Schritten Daten von Ihrem Windows-Computer konfigurieren und sammeln. Informationen zu virtuellen Azure-Windows-Computern finden Sie unter [Sammeln von Daten zu virtuellen Azure-Computern](../../azure-monitor/learn/quick-collect-azurevm.md).  
+[Azure Monitor](../overview.md) kann Daten direkt von Ihren physischen oder virtuellen Windows-Computern in Ihrer Umgebung zur detaillierten Analyse und Korrelation in einem Log Analytics-Arbeitsbereich sammeln. Wenn Sie den [Log Analytics-Agent](../platform/log-analytics-agent.md) installieren, kann Azure Monitor Daten aus einem Datencenter oder einer anderen Cloudumgebung sammeln. Dieser Schnellstart zeigt Ihnen, wie Sie in wenigen einfachen Schritten Daten von Ihrem Windows-Computer konfigurieren und sammeln. Informationen zu virtuellen Azure-Windows-Computern finden Sie unter [Sammeln von Daten zu virtuellen Azure-Computern](./quick-collect-azurevm.md).  
 
-Informationen zur unterstützten Konfiguration finden Sie unter [Unterstützte Windows-Betriebssysteme](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) und [Netzwerkfirewall-Konfiguration](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
+Informationen zur unterstützten Konfiguration finden Sie unter [Unterstützte Betriebssysteme](../platform/agents-overview.md#supported-operating-systems) und [Netzwerkfirewall-Konfiguration](../platform/log-analytics-agent.md#network-requirements).
  
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -37,7 +36,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics-Arbeitsbereiche** aus.
 
-    ![Azure-Portal](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Azure-Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Wählen Sie die Option **Erstellen** und anschließend Optionen für die folgenden Elemente aus:
 
@@ -47,7 +46,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
    * Wählen Sie den **Speicherort** für die Bereitstellung Ihrer virtuellen Computer aus.  Weitere Informationen finden Sie auf der Seite zur [Verfügbarkeit von Log Analytics in den einzelnen Regionen](https://azure.microsoft.com/regions/services/).
    * Wenn Sie einen Arbeitsbereich in einem neuen Abonnement erstellen, das nach dem 2. April 2018 erstellt wurde, wird automatisch der Tarif *Pro GB* verwendet. In diesem Fall ist keine Tarifauswahloption verfügbar.  Wenn Sie einen Arbeitsbereich für ein Abonnement erstellen, das vor dem 2. April erstellt oder mit einer vorhandenen EA-Registrierung verknüpft wurde, wählen Sie Ihren bevorzugten Tarif aus.  Weitere Informationen zu den einzelnen Tarifen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
   
-        ![Erstellen des Log Analytics-Ressourcenblatts](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![Erstellen des Log Analytics-Ressourcenblatts](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. Wählen Sie nach dem Bereitstellen der erforderlichen Informationen im Bereich **Log Analytics-Arbeitsbereich** die Option **OK** aus.  
 
@@ -64,7 +63,7 @@ Vor der Installation des Log Analytics-Agents für Windows (auch Microsoft Moni
 
 3. Wählen Sie **Erweiterte Einstellungen** aus:
 
-    ![Log Analytics: erweiterte Einstellungen](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Log Analytics: erweiterte Einstellungen](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
   
 4. Wählen Sie **Verbundene Quellen** und dann **Windows Server** aus.
 
@@ -109,7 +108,7 @@ Azure Monitor kann angegebene Ereignisse aus dem Windows-Ereignisprotokoll und L
 
 2. Wählen Sie **Erweiterte Einstellungen** aus:
 
-    ![Log Analytics: erweiterte Einstellungen](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Log Analytics: erweiterte Einstellungen](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
  
 3. Wählen Sie **Daten** und dann **Windows-Ereignisprotokolle**.  
 
@@ -123,7 +122,7 @@ Azure Monitor kann angegebene Ereignisse aus dem Windows-Ereignisprotokoll und L
 
 8. Wenn Sie die Windows-Leistungsindikatoren zum ersten Mal für einen neuen Log Analytics-Arbeitsbereich konfigurieren, haben Sie die Möglichkeit, schnell mehrere allgemeine Indikatoren zu erstellen. Jede Option wird mit einem Kontrollkästchen aufgeführt:
 
-    ![Windows-Leistungsindikatoren](media/quick-collect-windows-computer/windows-perfcounters-default.png).
+    ![Windows-Leistungsindikatoren](media/quick-collect-windows-computer/windows-perfcounters-default.png)erforderlich.
     
     Wählen Sie **Ausgewählte Leistungsindikatoren hinzufügen** aus. Die Leistungsindikatoren werden hinzugefügt und mit einem Stichprobenintervall von zehn Sekunden voreingestellt.
 
@@ -166,4 +165,4 @@ Jetzt sammeln Sie Betriebs- und Leistungsdaten von Ihrem Windows-Computer und k�
 Um zu erfahren, wie Sie die Daten anzeigen und analysieren, fahren Sie mit dem Tutorial fort:
 
 > [!div class="nextstepaction"]
-> [Anzeigen oder Analysieren der Daten in Log Analytics](tutorial-viewdata.md)
+> [Anzeigen oder Analysieren der Daten in Log Analytics](../log-query/log-analytics-tutorial.md)

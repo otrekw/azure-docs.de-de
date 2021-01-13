@@ -7,6 +7,7 @@ author: billmath
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27e5ae48a8194c05a19e5164ee2cc6be68967a62
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 58ecdfefa79716bcc0a69063293d5a1067693a78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386251"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89182359"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Datenschutz und Azure AD Connect Health 
 
@@ -40,7 +41,7 @@ Server mit aktiven **Fehlerbenachrichtigungen** des Typs **Die Daten des Integri
 Mithilfe von Azure AD Connect Health können Sie die Datensammlung für jeden überwachten Server einzeln oder für eine Instanz eines überwachten Diensts beenden. Sie können beispielsweise die Datensammlung für einzelne AD FS-Server (Active Directory Federation Services) beenden, die mit Azure AD Connect Health überwacht werden. Sie können auch die Datensammlung für die gesamte AD FS-Instanz beenden, die unter Verwendung von Azure AD Connect Health überwacht wird. In diesem Fall werden die entsprechenden Server nach dem Beenden der Datensammlung aus dem Azure AD Connect Health-Portal gelöscht. 
 
 >[!IMPORTANT]
-> Sie benötigen globale Administratorberechtigungen für Azure AD oder die Rolle „Mitwirkender“ in RBAC zum Löschen überwachter Server aus Azure AD Connect Health.
+> Sie benötigen globale Administratorberechtigungen für Azure AD oder die Rolle „Mitwirkender“ in Azure RBAC zum Löschen überwachter Server aus Azure AD Connect Health.
 >
 > Das Entfernen eines Servers oder einer Dienstinstanz aus Azure AD Connect Health kann nicht rückgängig gemacht werden. 
 

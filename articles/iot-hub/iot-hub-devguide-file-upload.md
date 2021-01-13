@@ -8,12 +8,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 3ae87523e66ae49d17f198a1f70b0f449ca0a713
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom:
+- mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080415"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90019528"
 ---
 # <a name="upload-files-with-iot-hub"></a>Hochladen von Dateien mit IoT Hub
 
@@ -25,7 +29,9 @@ Bevor Sie eine Datei von einem Gerät in IoT Hub hochladen, müssen Sie Ihren Hu
 
 Ihr Gerät kann dann einen [Upload initialisieren](iot-hub-devguide-file-upload.md#initialize-a-file-upload) und dann [IoT Hub benachrichtigen](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload), sobald der Upload abgeschlossen ist. Optional: Wenn ein Gerät IoT Hub benachrichtigt, dass der Upload abgeschlossen ist, kann der Dienst eine [Benachrichtigung](iot-hub-devguide-file-upload.md#file-upload-notifications) generieren.
 
-### <a name="when-to-use"></a>Einsatzgebiete
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
+
+### <a name="when-to-use"></a>Verwendung
 
 Verwenden Sie Dateiuploads zum Senden von Mediendateien und umfangreichen Telemetriebatches, die von zeitweise verbundenen Geräten hochgeladen oder komprimiert werden, um Bandbreite zu sparen.
 
@@ -125,10 +131,12 @@ Jeder IoT-Hub weist die folgenden Konfigurationsoptionen für Dateiuploadbenachr
 
 | Eigenschaft | BESCHREIBUNG | Bereich und Standardwert |
 | --- | --- | --- |
-| **enableFileUploadNotifications** |Steuert, ob Dateiuploadbenachrichtigungen in den Endpunkt für Dateibenachrichtigungen geschrieben werden. |Bool. Standardwert: True. |
-| **fileNotifications.ttlAsIso8601** |Standardgültigkeitsdauer für Dateiuploadbenachrichtigungen. |ISO_8601-Intervall bis zu 48 Stunden (mindestens 1 Minute). Standardwert: 1 Stunde. |
+| **enableFileUploadNotifications** |Steuert, ob Dateiuploadbenachrichtigungen in den Endpunkt für Dateibenachrichtigungen geschrieben werden. |Bool. Standardwert: TRUE. |
+| **fileNotifications.ttlAsIso8601** |Standardgültigkeitsdauer für Dateiuploadbenachrichtigungen. |ISO_8601-Intervall bis zu 48 Stunden (mindestens 1 Minute). Standardwert: 1 Stunde. |
 | **fileNotifications.lockDuration** |Sperrdauer für die Warteschlange der Dateiuploadbenachrichtigungen. |5 bis 300 Sekunden (mindestens 5 Sekunden). Standardwert: 60 Sekunden. |
 | **fileNotifications.maxDeliveryCount** |Maximale Übermittlungsanzahl für die Warteschlange der Dateiuploadbenachrichtigungen. |1 bis 100. Standardwert: 100. |
+
+Sie können diese Eigenschaften für Ihren IoT-Hub über das Azure-Portal, Azure CLI oder PowerShell festlegen. Entsprechende Informationen finden Sie in den Themen unter [Konfigurieren des Dateiuploads](iot-hub-configure-file-upload.md).
 
 ## <a name="additional-reference-material"></a>Weiteres Referenzmaterial
 

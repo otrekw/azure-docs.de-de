@@ -2,25 +2,20 @@
 title: 'Tutorial: Konfigurieren von GoToMeeting für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und GoToMeeting konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 0f59fedb-2cf8-48d2-a5fb-222ed943ff78
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e3145d0faaa3aecb90b582b3b6ef0063572ff43
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ff377b0f93968eb6743187e4e659f4e888e5010e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60430768"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358898"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von GoToMeeting für die automatische Benutzerbereitstellung
 
@@ -28,7 +23,7 @@ Dieses Tutorial zeigt Ihnen die Schritte, die Sie in GoToMeeting und Azure AD au
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 *   Einen Azure Active Directory-Mandanten
 *   Ein GoToMeeting-Abonnement, für das einmaliges Anmelden aktiviert ist
@@ -40,7 +35,7 @@ Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff
 
 Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie entscheiden, welche Benutzer und Gruppen in Azure AD die Benutzer darstellen, die Zugriff auf Ihre GoToMeeting-App benötigen. Anschließend können Sie diese Benutzer Ihrer GoToMeeting-App zuweisen, indem Sie diese Anweisungen befolgen:
 
-[Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-gotomeeting"></a>Wichtige Tipps zum Zuweisen von Benutzern zu GoToMeeting
 
@@ -65,7 +60,7 @@ In diesem Abschnitt werden das Verbinden von Azure AD mit der GoToMeeting-API zu
 
 1. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest. 
 
-    ![Bereitstellung](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![Screenshot der Registerkarte „Bereitstellung“ für GoToMeeting im Azure-Portal. Der Bereitstellungsmodus ist auf „Automatisch“ festgelegt, und „Administratorbenutzername“, „Kennwort“ und „Verbindung testen“ sind hervorgehoben.](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
 1. Führen Sie im Abschnitt „Administratoranmeldeinformationen“ die folgenden Schritte aus:
    
@@ -73,7 +68,7 @@ In diesem Abschnitt werden das Verbinden von Azure AD mit der GoToMeeting-API zu
 
     b. Geben Sie im Textfeld **GoToMeeting-Administratorkennwort** das Kennwort des Administrators ein.
 
-1. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer GoToMeeting-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr GoToMeeting-Konto über Teamadministratorberechtigungen verfügt, und versuchen Sie den Schritt **Administratoranmeldeinformationen** erneut.
+1. Klicken Sie im Azure-Portal auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer GoToMeeting-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr GoToMeeting-Konto über Teamadministratorberechtigungen verfügt, und versuchen Sie den Schritt **Administratoranmeldeinformationen** erneut.
 
 1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen.
 
@@ -83,18 +78,16 @@ In diesem Abschnitt werden das Verbinden von Azure AD mit der GoToMeeting-API zu
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit GoToMeeting synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in GoToMeeting für Updatevorgänge verwendet. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
 
-1. Ändern Sie den **Bereitstellungsstatus** im Abschnitt „Einstellungen“ in **Ein**, um den Azure AD-Bereitstellungsdienst für GoToMeeting zu aktivieren.
+1. Ändern Sie den **Bereitstellungsstatus** im Abschnitt „Einstellungen“ in **Ein** , um den Azure AD-Bereitstellungsdienst für GoToMeeting zu aktivieren.
 
 1. Klicken Sie auf **Speichern**.
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und Gruppen gestartet, die GoToMeeting im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer GoToMeeting-App ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurieren des einmaligen Anmeldens](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrix-gotomeeting-tutorial)
-
-
+* [Konfigurieren des einmaligen Anmeldens](./citrix-gotomeeting-tutorial.md)

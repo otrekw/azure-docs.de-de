@@ -1,10 +1,10 @@
 ---
-title: Diagnostizieren von Problemen mit dem Netzwerkrouting eines virtuellen Computers – Tutorial – Azure-Portal | Microsoft-Dokumentation
+title: 'Tutorial: Diagnostizieren eines Problems mit dem VM-Netzwerkrouting – Azure-Portal'
+titleSuffix: Azure Network Watcher
 description: In diesem Tutorial erfahren Sie, wie Sie Probleme mit dem Netzwerkrouting eines virtuellen Computers mit der Funktion „Nächster Hop“ von Azure Network Watcher diagnostizieren.
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 3ad9cd8b620b55aaa17e84343a82ac361081de44
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684519"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "76845210"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Tutorial: Diagnostizieren von Problemen mit dem Netzwerkrouting eines virtuellen Computers über das Azure-Portal
 
@@ -50,12 +50,12 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
     |Einstellung|Wert|
     |---|---|
-    |NAME|myVm|
+    |Name|myVm|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
-    |Ressourcengruppe| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
-    |Location| Wählen Sie **USA, Osten** aus.|
+    |Subscription| Wählen Sie Ihr Abonnement aus.|
+    |Resource group| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
+    |Position| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Übernehmen Sie unter **Einstellungen** alle Standardwerte, und klicken Sie auf **OK**.
@@ -85,7 +85,7 @@ Azure erstellt automatisch Routen zu Standardzielen. Sie können benutzerdefinie
 
     |Einstellung                  |Wert                                                   |
     |---------                |---------                                               |
-    | Ressourcengruppe          | Wählen Sie „myResourceGroup“ aus.                                 |
+    | Resource group          | Wählen Sie „myResourceGroup“ aus.                                 |
     | Virtueller Computer         | Wählen Sie „myVm“ aus.                                            |
     | Netzwerkschnittstelle       | myvm (Der Name Ihrer Netzwerkschnittstelle kann anders lauten.)   |
     | Quell-IP-Adresse       | 10.0.0.4                                               |
@@ -118,7 +118,7 @@ Löschen Sie die Ressourcengruppe mit allen ihren Ressourcen, wenn Sie sie nicht
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen virtuellen Computer erstellt und das Netzwerkrouting vom virtuellen Computer diagnostiziert. Sie haben erfahren, dass Azure mehrere Standardrouten erstellt, und haben das Routing an zwei verschiedene Ziele getestet. Erfahren Sie mehr über das [Routing in Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und das [Erstellen benutzerdefinierter Routen](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
+In diesem Tutorial haben Sie einen virtuellen Computer erstellt und das Netzwerkrouting vom virtuellen Computer diagnostiziert. Sie haben erfahren, dass Azure mehrere Standardrouten erstellt, und Sie haben das Routing an zwei verschiedene Ziele getestet. Erfahren Sie mehr über das [Routing in Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und das [Erstellen benutzerdefinierter Routen](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 
 Für ausgehende Verbindungen virtueller Computer können Sie auch die Latenz, den zulässigen und verweigerten Netzwerkverkehr zwischen dem virtuellen Computer und einem Endpunkt sowie die verwendete Route zu einem Endpunkt mithilfe der Funktion [Problembehandlung für Verbindung](network-watcher-connectivity-portal.md) von Network Watcher bestimmen. Erfahren Sie, wie Sie mithilfe der Verbindungsmonitorfunktion von Network Watcher die Kommunikation zwischen einem virtuellen Computer und einem Endpunkt, z. B. einer IP-Adresse oder URL, über einen Zeitraum überwachen können.
 

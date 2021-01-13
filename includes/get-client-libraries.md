@@ -4,12 +4,12 @@ ms.service: service-bus-messaging
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: spelluru
-ms.openlocfilehash: b6e0e57881154f5885e9f518363eda3c5b1169a0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9e9057073c8a661e2f3382333abc7ac2778c4ee3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178333"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "84680296"
 ---
 ### <a name="install-via-composer"></a>Installation mithilfe von Composer
 1. Erstellen Sie im Stammverzeichnis Ihres Projekts eine Datei namens **composer.json** , und fügen Sie zu dieser den folgenden Code hinzu:
@@ -17,7 +17,7 @@ ms.locfileid: "67178333"
     ```json
     {
       "require": {
-        "microsoft/azure-storage": "*"
+        "microsoft/windowsazure": "*"
       }
     }
     ```
@@ -28,9 +28,7 @@ ms.locfileid: "67178333"
     php composer.phar install
     ```
 
-Navigieren Sie alternativ zur [Azure Storage PHP-Clientbibliothek][php-sdk-github] auf GitHub, um den Quellcode zu klonen.
-
 [php-sdk-github]: https://github.com/Azure/azure-storage-php
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[download-SDK-PHP]: ../articles/php-download-sdk.md
+[download-SDK-PHP]: https://github.com/Azure/azure-sdk-for-php
 [composer-phar]: http://getcomposer.org/composer.phar

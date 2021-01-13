@@ -1,26 +1,28 @@
 ---
-title: 'Azure CLI-Skript: Wiederherstellen eines Azure Database for MariaDB-Servers'
+title: 'CLI-Skript: Wiederherstellen eines Servers – Azure Database for MariaDB'
 description: Dieses Beispielskript für die Azure-Befehlszeilenschnittstelle veranschaulicht das Wiederherstellen eines Azure Database for MariaDB-Servers und seiner Datenbanken auf einen früheren Zeitpunkt.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
-ms.date: 11/28/2018
-ms.openlocfilehash: 2d294f5b43ba3fb7587ca1d03903e39d75291754
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, devx-track-azurecli
+ms.date: 12/02/2019
+ms.openlocfilehash: a4fc645f43858e80eeffc6c1672f6bd4369e7290
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171351"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536760"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Wiederherstellen eines Azure Database for MariaDB-Servers mithilfe der Azure-Befehlszeilenschnittstelle
 Mit diesem CLI-Beispielskript wird für einen einzelnen Azure Database for MariaDB-Server der Zustand eines früheren Zeitpunkts wiederhergestellt.
 
-[!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Wenn Sie die Befehlszeilenschnittelle lokal ausführen, ist für diesen Artikel Azure CLI Version 2.0 oder höher erforderlich. Überprüfen Sie die Version, indem Sie `az --version` ausführen. Informationen zum Installieren oder Aktualisieren Ihrer Version der Azure CLI finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
+
+- Für diesen Artikel ist mindestens Version 2.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert. 
 
 ## <a name="sample-script"></a>Beispielskript
 Bearbeiten Sie in diesem Beispielskript die hervorgehobenen Zeilen, um den Benutzernamen und das Kennwort des Administrators zu aktualisieren und auf Ihre eigenen Daten festzulegen. Ersetzen Sie die Abonnement-ID, die in den `az monitor`-Befehlen verwendet wird, durch Ihre eigene Abonnement-ID.
@@ -41,5 +43,5 @@ In diesem Skript werden die Befehle verwendet, die in der folgenden Tabelle aufg
 | [az group delete](/cli/azure/group#az-group-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure)
+- Lesen Sie weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure).
 - Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure Database for MariaDB](../sample-scripts-azure-cli.md)

@@ -1,80 +1,66 @@
 ---
-title: Kommunizieren mit einer Geräteanwendung in Node.js über IoT Hub-Gerätestreams (Vorschauversion) | Microsoft-Dokumentation
+title: Kommunizieren mit einer Geräte-App in Node.js über Azure IoT Hub-Gerätestreams
 description: In dieser Schnellstartanleitung führen Sie eine dienstseitige Node.js-Anwendung aus, die über einen Gerätestream mit einem IoT-Gerät kommuniziert.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: e85f2ea849aca9deeb92da7d7b2381d6c2b1b725
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 678955970f3eeb87a10c43cd43effc3464db7794
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802446"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832006"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Schnellstart: Kommunizieren mit einer Geräteanwendung in Node.js über IoT Hub-Gerätestreams (Vorschauversion)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-Microsoft Azure IoT Hub unterstützt derzeit Gerätestreams als [Previewfunktion](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Über [IoT Hub-Gerätestreams](./iot-hub-device-streams-overview.md) können Dienst- und Geräteanwendungen sicher und firewallfreundlich kommunizieren. Während der Public Preview-Phase unterstützt das Node.js SDK nur dienstseitige Gerätestreams. Aus diesem Grund wird in dieser Schnellstartanleitung nur das Ausführen der dienstseitigen Anwendung erläutert. Sie sollten eine begleitende geräteseitige Anwendung über einen der folgenden Schnellstarts ausführen:
-
-* [Kommunizieren mit Geräte-Apps in C über IoT Hub-Gerätestreams](./quickstart-device-streams-echo-c.md)
-
-* [Kommunizieren mit Geräte-Apps in C# über IoT Hub-Gerätestreams](./quickstart-device-streams-echo-csharp.md)
-
-Die dienstseitige Node.js-Anwendung in dieser Schnellstartanleitung hat folgende Funktionen:
-
-* Erstellen eines Gerätestreams mit einem IoT-Gerät
-
-* Lesen von Befehlszeileneingaben und senden dieser Eingaben an die Geräteanwendung, die sie anschließend zurückgibt
-
-Der Code veranschaulicht den Initiierungsprozess eines Gerätestreams sowie das Senden und Empfangen von Daten.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+In dieser Schnellstartanleitung führen Sie eine dienstseitige Anwendung aus und richten mithilfe von Gerätestreams die Kommunikation zwischen einem Gerät und einem Dienst ein. Über Azure IoT Hub-Gerätestreams können Dienst- und Geräteanwendungen sicher und firewallfreundlich kommunizieren. Während der Public Preview-Phase unterstützt das Node.js SDK nur dienstseitige Gerätestreams. Aus diesem Grund wird in dieser Schnellstartanleitung nur das Ausführen der dienstseitigen Anwendung erläutert.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Vorschau der Gerätestreams wird derzeit nur für IoT Hubs unterstützt, die in folgenden Regionen erstellt werden:
+* Abschluss von [Schnellstart: Kommunizieren mit einer Geräteanwendung in C über IoT Hub-Gerätestreams (Vorschauversion)](./quickstart-device-streams-echo-c.md) oder von [Schnellstart: Kommunizieren mit einer Geräteanwendung in C# über IoT Hub-Gerätestreams (Vorschauversion)](./quickstart-device-streams-echo-csharp.md)
 
-*  **USA (Mitte)**
+* Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-*  **USA, Mitte (EUAP)**
+* [Node.js 10 oder höher](https://nodejs.org)
 
-Auf Ihrem Entwicklungscomputer muss sich mindestens Node.js v10.x.x befinden, um die dienstseitige Anwendung in diesem Schnellstart ausführen zu können.
+    Mit dem folgenden Befehl können Sie die aktuelle Node.js-Version auf Ihrem Entwicklungscomputer überprüfen:
 
-Sie können Node.js für mehrere Plattformen von [nodejs.org](https://nodejs.org) herunterladen.
+    ```cmd/sh
+    node --version
+    ```
 
-Mit dem folgenden Befehl können Sie die aktuelle Node.js-Version auf Ihrem Entwicklungscomputer überprüfen:
+* [Ein Node.js-Beispielprojekt](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)
 
-```cmd/sh
-node --version
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Microsoft Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
+Microsoft Azure IoT Hub unterstützt derzeit Gerätestreams als [Previewfunktion](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Laden Sie das Node.js-Beispielprojekt von https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip herunter, und extrahieren Sie das ZIP-Archiv (falls Sie dies nicht bereits getan haben).
+> [!IMPORTANT]
+> Die Vorschau der Gerätestreams wird derzeit nur für IoT Hubs unterstützt, die in folgenden Regionen erstellt werden:
+>
+> * USA (Mitte)
+> * USA, Mitte (EUAP)
+> * Nordeuropa
+> * Asien, Südosten
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
-Wenn Sie das vorherige Tutorial [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-node.md) absolviert haben, können Sie diesen Schritt überspringen.
+Wenn Sie das vorherige Tutorial [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](quickstart-send-telemetry-node.md) abgeschlossen haben, können Sie diesen Schritt überspringen.
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Registrieren eines Geräts
 
-Wenn Sie das vorherige Tutorial [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-node.md) absolviert haben, können Sie diesen Schritt überspringen.
+Wenn Sie das vorherige Tutorial [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](quickstart-send-telemetry-node.md) abgeschlossen haben, können Sie diesen Schritt überspringen.
 
 Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung herstellen zu können. In dieser Schnellstartanleitung verwenden Sie Azure Cloud Shell, um ein simuliertes Gerät zu registrieren.
 
@@ -82,10 +68,10 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
    **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
-   **MyDevice**: Der für das registrierte Gerät angegebene Name. Verwenden Sie „MyDevice“ wie gezeigt. Wenn Sie für Ihr Gerät einen anderen Namen wählen, müssen Sie diesen innerhalb des gesamten Artikels verwenden und den Gerätenamen in den Beispielanwendungen aktualisieren, bevor Sie sie ausführen.
+   **MyDevice**: Dies ist der Name des Geräts, das Sie registrieren. Es empfiehlt sich, **MyDevice** wie gezeigt zu verwenden. Wenn Sie für Ihr Gerät einen anderen Namen auswählen, müssen Sie diesen innerhalb des gesamten Artikels verwenden und den Gerätenamen in den Beispielanwendungen aktualisieren, bevor Sie sie ausführen.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 2. Darüber hinaus benötigen Sie eine *Dienstverbindungszeichenfolge*, damit die Back-End-Anwendung eine Verbindung mit Ihrer IoT Hub-Instanz herstellen und die Nachrichten abrufen kann. Der folgende Befehl ruft die Dienstverbindungszeichenfolge für Ihre IoT Hub-Instanz ab:
@@ -93,10 +79,10 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
     **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    Notieren Sie sich den zurückgegebenen Wert, der in etwa wie folgt aussieht:
+    Notieren Sie sich die zurückgegebene Verbindungszeichenfolge des Diensts zur späteren Verwendung in dieser Schnellstartanleitung. Dies sieht in etwa wie im folgenden Beispiel aus:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
@@ -106,31 +92,38 @@ In diesem Abschnitt führen Sie die geräteseitige Anwendung und die dienstseiti
 
 ### <a name="run-the-device-side-application"></a>Ausführen der geräteseitigen Anwendung
 
-Wie bereits erwähnt, unterstützt das IoT Hub Node.js SDK während der Public Preview-Phase nur dienstseitige Gerätestreams. Verwenden Sie als geräteseitige Anwendung die begleitenden Geräteprogramme, die in diesen Schnellstarts verfügbar sind:
+Wie bereits erwähnt, unterstützt das IoT Hub Node.js SDK während der Public Preview-Phase nur dienstseitige Gerätestreams. Verwenden Sie für eine geräteseitige Anwendung die zugehörigen Geräteprogramme, die in diesen Schnellstarts verfügbar sind:
 
-   * [Kommunizieren mit Geräte-Apps in C über IoT Hub-Gerätestreams](./quickstart-device-streams-echo-c.md)
+* [Kommunizieren mit Geräte-Apps in C über IoT Hub-Gerätestreams](./quickstart-device-streams-echo-c.md)
 
-   * [Kommunizieren mit Geräte-Apps in C# über IoT Hub-Gerätestreams](./quickstart-device-streams-echo-csharp.md)
+* [Kommunizieren mit Geräte-Apps in C# über IoT Hub-Gerätestreams](./quickstart-device-streams-echo-csharp.md)
 
 Vergewissern Sie sich, dass die geräteseitige Anwendung ausgeführt wird, bevor Sie mit dem nächsten Schritt fortfahren.
 
 ### <a name="run-the-service-side-application"></a>Ausführen der dienstseitigen Anwendung
 
-Nachdem Sie sich vergewissert haben, dass die geräteseitige Anwendung ausgeführt wird, gehen Sie wie folgt vor, um die dienstseitige Anwendung in Node.js auszuführen:
+Die dienstseitige Node.js-Anwendung in dieser Schnellstartanleitung hat folgende Funktionen:
+
+* Erstellen eines Gerätestreams mit einem IoT-Gerät
+* Lesen von Befehlszeileneingaben und senden dieser Eingaben an die Geräteanwendung, die sie anschließend zurückgibt
+
+Der Code veranschaulicht den Initiierungsprozess eines Gerätestreams sowie das Senden und Empfangen von Daten.
+
+Nachdem Sie sich vergewissert haben, dass die geräteseitige Anwendung ausgeführt wird, gehen Sie in einem Terminalfenster wie folgt vor, um die dienstseitige Anwendung in Node.js auszuführen:
 
 * Geben Sie Ihre Dienstanmeldeinformationen und die Geräte-ID als Umgebungsvariablen an.
  
    ```cmd/sh
    # In Linux
-   export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
+   export IOTHUB_CONNECTION_STRING="{ServiceConnectionString}"
    export STREAMING_TARGET_DEVICE="MyDevice"
 
    # In Windows
-   SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
+   SET IOTHUB_CONNECTION_STRING={ServiceConnectionString}
    SET STREAMING_TARGET_DEVICE=MyDevice
    ```
   
-   Ändern Sie `MyDevice` in die Geräte-ID, die Sie für Ihr Gerät gewählt haben.
+   Ändern Sie den ServiceConnectionString-Platzhalter so, dass er mit der Verbindungszeichenfolge des Diensts identisch ist, und **MyDevice** muss mit Ihrer Geräte-ID übereinstimmen, wenn Sie einen anderen Namen vergeben haben.
 
 * Navigieren Sie in Ihrem entzippten Projektordner zu `Quickstarts/device-streams-service`, und führen Sie das Beispiel mit dem Knoten aus.
 
@@ -161,4 +154,4 @@ In dieser Schnellstartanleitung haben Sie einen IoT-Hub eingerichtet, ein Gerät
 Weitere Informationen zu Gerätestreams finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [IoT Hub-Gerätestreams (Vorschau)](./iot-hub-device-streams-overview.md) 
+> [Übersicht über Gerätestreams](./iot-hub-device-streams-overview.md) 

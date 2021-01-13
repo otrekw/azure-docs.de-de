@@ -1,32 +1,23 @@
 ---
-title: 'Azure PowerShell-Skriptbeispiel: Überwachen einer Web-App mit Webserverprotokollen | Microsoft-Dokumentation'
-description: 'Azure PowerShell-Skriptbeispiel: Überwachen einer Web-App mit Webserverprotokollen'
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: 'Mit PowerShell: Überwachen mit Webserverprotokollen'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie eine App mit Webserverprotokollen überwachen.
 tags: azure-service-management
 ms.assetid: 5805d7cd-9e56-4eba-bd85-75b013690ff5
-ms.service: app-service
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: e9e376de3356a23df648f77738fd2c84cb26d97f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 8a3af13060d932b1a39a85bbc631732f8f859dfb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098313"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89070274"
 ---
 # <a name="monitor-a-web-appwith-web-server-logs"></a>Überwachen einer Web-App mit Webserverprotokollen
 
 In diesem Szenario erstellen Sie eine Ressourcengruppe, einen App Service-Plan und eine Web-App und konfigurieren die Web-App so, dass Webserverprotokolle aktiviert sind. Danach laden Sie die Protokolldateien zur Überprüfung herunter.
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -52,10 +43,9 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Erstellt einen App Service-Plan. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Erstellt die Web-App. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Ändert die Konfiguration einer Web-App. |
-| [Get-AzWebAppMetric](/powershell/module/az.websites/get-azwebappmetric) | Ruft Metriken einer Web-App ab. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Azure PowerShell-Beispiele für Azure App Service-Web-Apps finden Sie unter [Azure PowerShell-Beispiele](../samples-powershell.md).

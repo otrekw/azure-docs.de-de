@@ -1,34 +1,28 @@
 ---
 title: 'Azure CLI-Beispiele: Event Grid | Microsoft-Dokumentation'
-description: Azure CLI-Beispiele für Event Grid
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
-ms.devlang: na
+description: Dieser Artikel enthält eine Tabelle mit Links zu Azure CLI-Skriptbeispielen für Event Grid.
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.date: 08/06/2018
-ms.author: spelluru
-ms.openlocfilehash: 253086cd655bba87b015fbe41282f6610ace4518
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 07/07/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0cddb8b9ba6a4a06667696fdf5eda8e1896f20de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470975"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87498773"
 ---
 # <a name="azure-cli-samples-for-event-grid"></a>Azure CLI-Beispiele für Event Grid
 
 Die folgende Tabelle enthält Links zu Azure CLI-Beispielen für Event Grid:
 
-| | |
-|-|-|
-|**Event Grid-Abonnements**||
-| [Subscribe to events for an Azure subscription with PowerShell](scripts/event-grid-cli-azure-subscription.md) (Abonnieren von Ereignissen für ein Azure-Abonnement mit PowerShell)| Abonnieren von Ereignissen für ein Azure-Abonnement |
-| [Subscribe to events for a Blob storage account with PowerShell](scripts/event-grid-cli-blob.md) (Abonnieren von Ereignissen für ein Blobspeicherkonto mit PowerShell)| Abonnieren von Ereignissen für ein Blobspeicherkonto |
-| [Subscribe to events for a custom topic with PowerShell](scripts/event-grid-cli-subscribe-custom-topic.md) (Abonnieren von Ereignissen für ein benutzerdefiniertes Thema mit PowerShell)| Abonnieren von Ereignissen für ein benutzerdefiniertes Thema |
-| [Subscribe to events for a resource group with PowerShell](scripts/event-grid-cli-resource-group.md) (Abonnieren von Ereignissen für eine Ressourcengruppe mit PowerShell)| Abonniert Ereignisse für eine Ressourcengruppe. |
-| [Subscribe to resource group and filter for a resource](scripts/event-grid-cli-resource-group-filter.md) (Abonnieren einer Ressourcengruppe und Filtern nach einer Ressource)| Abonnieren von Ereignissen für eine Ressourcengruppe und Filtern nach Ereignissen für eine Ressource |
-|**Event Grid-Themen**||
-| [Create Event Grid custom topic with PowerShell](scripts/event-grid-cli-create-custom-topic.md) (Erstellen eines benutzerdefinierten Event Grid-Themas mit PowerShell) | Erstellen eines benutzerdefinierten Event Grid-Themas und Zurückgeben des Endpunkts und des Schlüssels  |
-| | |
+## <a name="event-grid-subscriptions"></a>Event Grid-Abonnements
+
+- [Abonnieren von Ereignissen für ein Azure-Abonnement mit der Azure CLI](scripts/event-grid-cli-azure-subscription.md): Hier werden Ereignisse für ein Azure-Abonnement abonniert. 
+- [Abonnieren von Ereignissen für ein Blobspeicherkonto mit der Azure CLI](scripts/event-grid-cli-blob.md): Hier werden Ereignisse für ein Blobspeicherkonto abonniert. 
+- [Abonnieren von Ereignissen für ein benutzerdefiniertes Thema mit der Azure CLI](scripts/event-grid-cli-subscribe-custom-topic.md): Hier werden Ereignissen für ein benutzerdefiniertes Thema abonniert. 
+- [Abonnieren von Ereignissen für eine Ressourcengruppe mit der Azure CLI](scripts/event-grid-cli-resource-group.md): Hier werden Ereignisse für eine Ressourcengruppe abonniert. 
+- [Abonnieren von Ereignissen für eine Ressourcengruppe und Filtern nach einer Ressource mit der Azure CLI](scripts/event-grid-cli-resource-group-filter.md): Hier werden Ereignisse für eine Ressourcengruppe abonniert und Ereignisse nach einer Ressource gefiltert. 
+
+## <a name="event-grid-topics"></a>Event Grid-Themen
+
+- [Erstellen eines benutzerdefinierten Event Grid-Themas mit der Azure CLI](scripts/event-grid-cli-create-custom-topic.md): Hier werden ein benutzerdefiniertes Event Grid-Thema erstellt und der Endpunkt und der Schlüssel zurückgegeben. 

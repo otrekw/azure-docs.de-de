@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: Microsoft Azure Attestation (Vorschau)
+summary: Informationen zur Verwendung von Azure Attestation
+metadata:
+  title: Dokumentation zu Azure Attestation
+  description: Hier erfahren Sie, wie Sie mithilfe von Azure Attestation Schlüssel für den Zugriff auf und die Verschlüsselung von Cloudressourcen, Apps und Lösungen erstellen und verwalten. Tutorials, API-Referenzen und mehr.
+  services: attestation
+  ms.service: attestation
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 07/20/2020
+  ms.openlocfilehash: d461fb946eeb7a0913162ec164f75b63101cfe97
+  ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 01/11/2021
+  ms.locfileid: "98070251"
+landingContent:
+- title: Informationen zu Microsoft Azure Attestation
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Microsoft Azure Attestation?
+      url: overview.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Schnellstart für PowerShell
+      url: quickstart-powershell.md
+    - text: Schnellstartanleitung zur CLI
+      url: quickstart-azure-cli.md
+    - text: Schnellstart für ARM-Vorlagen
+      url: quickstart-template.md
+- title: Konzepte
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Grundlegende Konzepte
+      url: basic-concepts.md
+    - text: Anspruchsregelgrammatik
+      url: claim-rule-grammar.md
+    - text: Anspruchsätze
+      url: claim-sets.md
+    - text: Workflow
+      url: workflow.md
+- title: Tutorials
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Erstellen einer Nachweisrichtlinie
+      url: author-sign-policy.md
+    - text: 'Erstellen eines privaten Endpunkts: PowerShell'
+      url: private-endpoint-powershell.md
+    - text: Codebeispiele für den SGX-Nachweis
+      url: /samples/browse/?expanded=azure&terms=attestation
+- title: References
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Häufig gestellte Fragen
+      url: faq.md
+    - text: REST
+      url: /rest/api/attestation/
+    - text: Behandeln von Problemen
+      url: troubleshoot-guide.md

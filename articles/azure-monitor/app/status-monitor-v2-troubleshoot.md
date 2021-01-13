@@ -1,29 +1,21 @@
 ---
-title: Problembehandlung für Azure Statusmonitor v2 und bekannte Probleme | Microsoft-Dokumentation
-description: Bekannte Probleme bei Statusmonitor v2 und Beispiele für die Problembehandlung Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: alexklim
-ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: 'Azure Application Insights-Agent: Problembehandlung und bekannte Probleme | Microsoft-Dokumentation'
+description: Hier finden Sie Informationen zu den bekannten Problemen des Application Insights-Agents sowie Problembehandlungsbeispiele. Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
 ms.topic: conceptual
-ms.date: 04/23/2019
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: c3e9bffaf3b533ef8fbe3e32c1dca671fb67c911
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.date: 04/23/2019
+ms.openlocfilehash: 472a7f128ea19cdcc9df5a03d171f345c7d601de
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058293"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616829"
 ---
-# <a name="troubleshooting-status-monitor-v2"></a>Problembehandlung bei Statusmonitor v2
+# <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Behandeln von Problemen mit dem Application Insights-Agent (ehemals „Statusmonitor v2“)
 
 Wenn Sie die Überwachung aktivieren, können Probleme auftreten, die die Datensammlung verhindern.
 In diesem Artikel sind alle bekannten Probleme und Beispiele für die Problembehandlung aufgeführt.
-Wenn bei Ihnen ein Problem auftritt, das hier nicht aufgeführt ist, können Sie mit uns über [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues) Kontakt aufnehmen.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -60,9 +52,14 @@ Sie können mithilfe von Problembehandlungstools symptomatisches Verhalten anzei
     0x0000000004d20000  0xb2000   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation64\Microsoft.ApplicationInsights.Extensions.Base_x64.dll
     ```
 
+### <a name="powershell-versions"></a>PowerShell-Versionen
+Dieses Produkt wurde mithilfe von PowerShell v5.1 geschrieben und getestet.
+Dieses Modul ist nicht kompatibel mit den PowerShell-Versionen 6 oder 7.
+Wir empfehlen die Verwendung von PowerShell v5.1 parallel zu neueren Versionen. Weitere Informationen finden Sie unter [Parallele Nutzung von PowerShell 7 mit Windows PowerShell 5.1](https://docs.microsoft.com/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51).
+
 ### <a name="conflict-with-iis-shared-configuration"></a>Konflikt mit IIS-Freigabekonfiguration
 
-Wenn Sie über einen Cluster von Webservern verfügen, verwenden Sie möglicherweise eine [Freigabekonfiguration](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
+Wenn Sie über einen Cluster von Webservern verfügen, verwenden Sie möglicherweise eine [Freigabekonfiguration](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
 Das HttpModule kann in diese Freigabekonfiguration nicht eingefügt werden.
 Führen Sie den Befehl „Enable“ auf jedem Webserver aus, um die DLL im GAC jedes Servers zu installieren.
 
@@ -79,12 +76,10 @@ Führen Sie nach Ausführung des Befehls „Enable“ die folgenden Schritte aus
 ### <a name="iis-nested-applications"></a>Geschachtelte IIS-Anwendungen
 
 In Version 1.0 werden geschachtelte Anwendungen in IIS nicht instrumentiert.
-Wir verfolgen dieses Problem [hier](https://github.com/microsoft/ApplicationInsights-Home/issues/369).
 
 ### <a name="advanced-sdk-configuration-isnt-available"></a>Die erweiterte SDK-Konfiguration ist nicht verfügbar.
 
 Die SDK-Konfiguration ist in Version 1.0 für den Endbenutzer nicht verfügbar.
-Wir verfolgen dieses Problem [hier](https://github.com/microsoft/ApplicationInsights-Home/issues/375).
 
     
     
@@ -99,9 +94,9 @@ Mit dem Befehl `Get-Module -ListAvailable` können Sie ermitteln, welche Module 
 Wenn ein Modul noch nicht in eine PowerShell-Sitzung geladen wurde, können Sie es mit dem Befehl `Import-Module <path to psd1>` manuell laden.
 
 
-### <a name="troubleshooting-the-status-monitor-v2-module"></a>Problembehandlung beim Statusmonitor v2-Modul
+### <a name="troubleshooting-the-application-insights-agent-module"></a>Behandeln von Problemen mit dem Application Insights-Agent-Modul
 
-#### <a name="list-the-commands-available-in-the-status-monitor-v2-module"></a>Auflisten der Befehle, die im Statusmonitor v2-Modul verfügbar sind
+#### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>Auflisten der im Application Insights-Agent-Modul verfügbaren Befehle
 Führen Sie den Befehl `Get-Command -Module Az.ApplicationMonitor` aus, um die verfügbaren Befehle anzuzeigen:
 
 ```
@@ -117,13 +112,13 @@ Cmdlet          Set-ApplicationInsightsMonitoringConfig            0.4.0      Az
 Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az.ApplicationMonitor
 ```
 
-#### <a name="determine-the-current-version-of-the-status-monitor-v2-module"></a>Ermitteln der aktuellen Version des Statusmonitor v2-Moduls
+#### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>Bestimmen der aktuellen Version des Application Insights-Agent-Moduls
 Führen Sie den Befehl `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` aus, um folgende Informationen zum Modul anzuzeigen:
    - PowerShell-Modulversion
    - Version des Application Insights SDK
    - Dateipfade des PowerShell-Moduls
     
-Lesen Sie die [API-Referenz](status-monitor-v2-api-get-status.md) mit einer ausführlichen Beschreibung zur Verwendung dieses Cmdlets.
+Lesen Sie die [API-Referenz](status-monitor-v2-api-reference.md) mit einer ausführlichen Beschreibung zur Verwendung dieses Cmdlets.
 
 
 ### <a name="troubleshooting-running-processes"></a>Problembehandlung bei aktuell ausgeführten Prozessen
@@ -133,12 +128,12 @@ Wenn die Überwachung funktioniert, sollten mindestens 12 DLLS geladen worden se
 
 Verwenden Sie den Befehl `Get-ApplicationInsightsMonitoringStatus -InspectProcess` zum Überprüfen der DLLs.
 
-Lesen Sie die [API-Referenz](status-monitor-v2-api-get-status.md) mit einer ausführlichen Beschreibung zur Verwendung dieses Cmdlets.
+Lesen Sie die [API-Referenz](status-monitor-v2-api-reference.md) mit einer ausführlichen Beschreibung zur Verwendung dieses Cmdlets.
 
 
 ### <a name="collect-etw-logs-by-using-perfview"></a>Sammeln von ETW-Protokollen mit PerfView
 
-#### <a name="setup"></a>Einrichtung
+#### <a name="setup"></a>Einrichten
 
 1. Laden Sie PerfView.exe und PerfView64.exe aus [GitHub](https://github.com/Microsoft/perfview/releases) herunter.
 2. Starten Sie PerfView64.exe.
@@ -163,4 +158,3 @@ Lesen Sie die [API-Referenz](status-monitor-v2-api-get-status.md) mit einer ausf
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich in der [API-Referenz](status-monitor-v2-overview.md#powershell-api-reference) über Parameter, die Sie möglicherweise übersehen haben.
-- Wenn bei Ihnen ein Problem auftritt, das hier nicht aufgeführt ist, können Sie mit uns über [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues) Kontakt aufnehmen.

@@ -1,48 +1,65 @@
 ---
-title: Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung einer Authentifikator-App – Azure Active Directory | Microsoft-Dokumentation
-description: Hier finden Sie Informationen dazu, wie Sie Ihre Sicherheitsinformationen einrichten, um Ihre Identität mithilfe der Microsoft Authenticator-App zu bestätigen.
+title: Einrichten der Microsoft Authenticator-App als Überprüfungsmethode – Azure AD
+description: Erfahren Sie, wie Sie die Seite „Sicherheitsinformationen“ (Vorschau) einrichten, um Ihre Identität mithilfe der Microsoft Authenticator-App als Überprüfungsmethode zu verifizieren.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/13/2019
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e1be41c854e212a7b673d8c2dff42d7b9981fb4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.author: curtand
+ms.openlocfilehash: e383896e50ccf06ef6d1b5caaeb0ef36ece2ce3b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616131"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348295"
 ---
-# <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung einer Authentifikator-App
+# <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Einrichten der Microsoft Authenticator-App als Überprüfungsmethode
 
 Mit diesen Schritten können Sie Ihre Methoden für die zweistufige Überprüfung und die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformation** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
 
-Wenn Sie direkt nach der Anmeldung mit Ihrem Geschäfts-, Schul- oder Unikonto zur Einrichtung der Sicherheitsinformationen aufgefordert werden, finden Sie weitere Informationen im Artikel [Einrichten Ihrer Sicherheitsinformationen über die Aufforderung auf der Anmeldeseite](security-info-setup-signin.md).
+Wenn Sie direkt nach der Anmeldung mit Ihrem Geschäfts-, Schul- oder Unikonto zur Einrichtung der Sicherheitsinformation aufgefordert werden, finden Sie weitere Informationen im Artikel [Einrichten Ihrer Sicherheitsinformation über die Aufforderung auf der Anmeldeseite](security-info-setup-signin.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->Wird keine Option für eine Authentifikator-App angezeigt, lässt Ihre Organisation unter Umständen die Nutzung einer Authentifikator-App für die Überprüfung nicht zu. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an Ihren Administrator wenden, um weitere Unterstützung zu erhalten.
+> Wenn die Option für die Authenticator-App nicht angezeigt wird, ist es möglich, dass Ihre Organisation die Verwendung dieser Option für die Überprüfung nicht zulässt. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an den Helpdesk Ihrer Organisation wenden, um weitere Unterstützung zu erhalten.
+
+## <a name="security-vs-password-reset-verification"></a>Authentifizierung mittels Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
+
+Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch für die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
+
+| Methode | Syntaxelemente |
+| ------ | -------- |
+| Authenticator-App | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Textnachrichten | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Telefonanrufe | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Sicherheitsschlüssel | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| E-Mail-Konto | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
+| Sicherheitsfragen | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
 
 ## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>Einrichten der Microsoft Authenticator-App über die Seite „Sicherheitsinformationen“
 
 Je nach den Einstellungen Ihrer Organisation können Sie eine Authentifikator-App als eine Ihrer Methoden für Sicherheitsinformationen verwenden. Die Verwendung der Microsoft Authenticator-App ist nicht verpflichtend, und Sie können während der Einrichtung eine andere App auswählen. In diesem Artikel wird jedoch die Microsoft Authenticator-App verwendet.
 
+>[!Important]
+> Wenn Sie die Microsoft Authenticator-App auf fünf verschiedenen Geräten oder fünf Hardwaretoken eingerichtet haben, ist eine sechste Einrichtung nicht möglich, und ggf. wird die folgende Fehlermeldung angezeigt.
+> 
+> **Sie können Microsoft Authenticator nicht einrichten, weil Sie bereits über fünf Authentifikator-Apps oder Hardwaretoken verfügen. Bitten Sie Ihren Administrator, eine der Authentifikator-Apps oder eines der Hardwaretoken zu löschen.**
+
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>So richten Sie die Microsoft Authenticator-App ein
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf.
 
     ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile-page.png)
 
 2. Wählen Sie im linken Navigationsbereich den Eintrag **Sicherheitsinformation** oder den entsprechenden Link im Block **Sicherheitsinformation** aus, und klicken Sie dann auf der Seite **Sicherheitsinformation** auf **Methode hinzufügen**.
 
-    ![Seite „Sicherheitsinformationen“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Seite „Sicherheitsinformation“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. Wählen Sie auf der Seite **Methode hinzufügen** in der Dropdownliste die Option **Authentifikator-App** aus, und klicken Sie dann auf **Hinzufügen**.
 
@@ -148,6 +165,6 @@ Basierend auf der Aktion, die Sie ausführen möchten, stehen zusätzliche Mögl
 
 - Melden Sie sich mit der Microsoft Authenticator-App an. Befolgen Sie die dabei die im Artikel [Anmelden mit der zweistufigen Überprüfung oder einer Sicherheitsinformation](security-info-setup-signin.md) beschriebenen Schritte.
 
-- Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](user-help-reset-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
+- Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](active-directory-passwords-update-your-own-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
 
 - Der Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) enthält Tipps zur Problembehandlung bei Anmeldeproblemen.

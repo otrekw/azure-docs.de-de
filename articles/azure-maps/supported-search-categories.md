@@ -1,6 +1,6 @@
 ---
-title: Suchkategorien in Azure Maps | Microsoft-Dokumentation
-description: Informationen zu Suchkategorien in Azure Maps
+title: Suchkategorien | Microsoft Azure Maps
+description: Hier erfahren Sie, welche Suchkategorien in Azure Maps unterstützt werden. Zeigen Sie alle unterstützten Kategoriecodes und die Arten der Points of Interest an, die von den einzelnen Codes dargestellt werden.
 author: sataneja
 ms.author: sataneja
 ms.date: 05/14/2018
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 4d854aef62af1004faacf73c11bb417cf508a727
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9cf9e031c73b1412ab9fc20f5ffe94736d28eb4
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727145"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896904"
 ---
 # <a name="azure-maps-supported-categories"></a>Unterstützte Kategorien in Azure Maps
 
-Zum Erstellen einer [Suchkategorie](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) für Points of Interest, stehen mehr als einhundert unterstützte Kategorien zur Verfügung. Im Folgenden finden Sie eine Liste der Kategoriecodes für unterstützte Kategorienamen. Kategoriecodes werden für Kategorien der obersten Ebene generiert. Für alle Unterkategorien gilt derselbe Kategoriecode. Beachten Sie, dass die Kategorieliste mit neuen Datenfreigaben geändert werden kann.
+Zum Erstellen einer [Suchkategorie](/rest/api/maps/search/getsearchpoicategory) für Points of Interest, stehen mehr als einhundert unterstützte Kategorien zur Verfügung. Im Folgenden finden Sie eine Liste der Kategoriecodes für unterstützte Kategorienamen. Kategoriecodes werden für Kategorien der obersten Ebene generiert. Für alle Unterkategorien gilt derselbe Kategoriecode. Diese Kategorieliste kann mit neuen Datenfreigaben geändert werden.
 
 <br/>
 
 | **Kategoriecode** | **Dem Code entsprechende Kategorien** |
 | --- | --- |
 | ACCESS\_GATEWAY | Zugang von Fluggesellschaften, Sicherheitstor, Bahnhofzugang, Access Gateway |
-| ADMINISTRATIVE\_DIVISION | Kanton, Verwaltungseinheit vierter Ordnung, Verwaltungseinheit erster Ordnung, historische Verwaltungseinheit dritter Ordnung, Sitz einer Verwaltungseinheit vierter Ordnung, Sitz einer Verwaltungseinheit zweiter Ordnung, abhängige politische Entität, besiedelter Ort, Sitz einer Verwaltungseinheit dritter Ordnung, besiedelte Orte, Verwaltungseinheit zweiter Ordnung, Sitz einer Verwaltungseinheit erster Ordnung, Verwaltungseinheit, besiedelte Örtlichkeit, historische Region, historische Site, historischer besiedelter Ort, israelische Siedlung, historische Verwaltungseinheit vierter Ordnung, Verwaltungseinheit fünfter Ordnung, historische Verwaltungseinheit erster Ordnung, Verwaltungseinheit dritter Ordnung, historische politische Entität, historische Verwaltungseinheit, Regierungssitz einer politischen Entität, historische Verwaltungseinheit zweiter Ordnung, Hauptstadt einer politischen Einheit |
+| ADMINISTRATIVE\_DIVISION | Kanton, Verwaltungseinheit vierter Ordnung, Verwaltungseinheit erster Ordnung, historische Verwaltungseinheit dritter Ordnung, Sitz einer Verwaltungseinheit vierter Ordnung, Sitz einer Verwaltungseinheit zweiter Ordnung, abhängige politische Entität, besiedelter Ort, Sitz einer Verwaltungseinheit dritter Ordnung, besiedelte Orte, Verwaltungseinheit zweiter Ordnung, Sitz einer Verwaltungseinheit erster Ordnung, Verwaltungseinheit, besiedelte Örtlichkeit, historische Region, historische Site, historischer besiedelter Ort, israelische Siedlung, historische Verwaltungseinheit vierter Ordnung, Verwaltungseinheit fünfter Ordnung, historische Verwaltungseinheit erster Ordnung, Verwaltungseinheit dritter Ordnung, historische politische Entität, historische Verwaltungseinheit, Regierungssitz einer politischen Entität, historische Verwaltungseinheit zweiter Ordnung, Hauptstadt/Großstadt einer politischen Einheit |
 | ADVENTURE\_SPORT\_VENUE | Erlebnissportanlage |
 | AGRICULTURE | Gartenbau, Rohstoffproduzent, Landwirtschaft, Bauernhof, Bauerndorf, Gehöft, Eigenheim, Weidefläche, Allgemein, Aquakulturanlage, Bauernhöfe, Angelplatz, Milchprodukte, Feld(er) |
 | AIRPORT | private Behörde, Militärbehörde, Heliport, geschlossen, mittlerer Flughafen, großer Flughafen, kleiner Flughafen, Flugplatz, Basis für Wasserflugzeuge, Behörde, Basis für Heißluftballons, Flughafen |

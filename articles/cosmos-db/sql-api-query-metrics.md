@@ -4,19 +4,21 @@ description: Erfahren Sie, wie die SQL-Abfrageleistung von Azure Cosmos DB-Anfor
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fedcdd55a465f5c09c331a0fa917811c349b15b1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614826"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097225"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB bietet eine [SQL-API zum Abfragen von Daten](how-to-sql-query.md), ohne dass Schemas oder sekundäre Indizes erforderlich sind. Dieser Artikel enthält folgende Informationen für Entwickler:
+Azure Cosmos DB bietet eine [SQL-API zum Abfragen von Daten](./sql-query-getting-started.md), ohne dass Schemas oder sekundäre Indizes erforderlich sind. Dieser Artikel enthält folgende Informationen für Entwickler:
 
 * Allgemeine Informationen zur Funktionsweise der SQL-Abfrageausführung in Azure Cosmos DB
 * Informationen zu Abfrageanforderungen, Antwortheadern und Client-SDK-Optionen
@@ -25,7 +27,7 @@ Azure Cosmos DB bietet eine [SQL-API zum Abfragen von Daten](how-to-sql-query.md
 
 ## <a name="about-sql-query-execution"></a>Informationen über die Ausführung von SQL-Abfragen
 
-In Azure Cosmos DB speichern Sie Daten in Containern, die auf eine beliebige [Speichergröße oder einen beliebigen Anforderungsdurchsatz](partition-data.md) erweitert werden können. Azure Cosmos DB skaliert Daten nahtlos im Hintergrund über physische Partitionen hinweg, um das Datenwachstum im bereitgestellten Durchsatz zu verarbeiten. Sie können mit der REST-API oder einem der unterstützten [SQL-SDKs](sql-api-sdk-dotnet.md) SQL-Abfragen an einen beliebigen Container ausgeben.
+In Azure Cosmos DB speichern Sie Daten in Containern, die auf eine beliebige [Speichergröße oder einen beliebigen Anforderungsdurchsatz](partitioning-overview.md) erweitert werden können. Azure Cosmos DB skaliert Daten nahtlos im Hintergrund über physische Partitionen hinweg, um das Datenwachstum im bereitgestellten Durchsatz zu verarbeiten. Sie können mit der REST-API oder einem der unterstützten [SQL-SDKs](sql-api-sdk-dotnet.md) SQL-Abfragen an einen beliebigen Container ausgeben.
 
 Ein kurzer Überblick über die Partitionierung: Sie definieren einen Partitionsschlüssel wie „city“, der bestimmt, wie Daten auf physischen Partitionen aufgeteilt werden. Daten, die zu einem einzelnen Partitionsschlüssel gehören (z.B. „city“ == „Seattle“), werden auf einer physischen Partition gespeichert, wobei eine einzelne physische Partition in der Regel jedoch mehrere Partitionsschlüssel aufweist. Wenn eine Partition die Speichergröße erreicht, teilt der Dienst die Partition nahtlos in zwei neue Partitionen auf und teilt den Partitionsschlüssel gleichmäßig auf diese Partitionen auf. Da Partitionen vorübergehend sind, verwenden die APIs eine Abstraktion eines „Partitionsschlüsselbereichs“, der die Bereiche von Partitionsschlüsselhashes bezeichnet. 
 
@@ -131,7 +133,7 @@ Die von der Abfrage zurückgegebenen Schlüsselantwortheader umfassen Folgendes:
 | `x-ms-documentdb-query-metrics` | Die Abfragestatistik für die Ausführung. Dies ist eine durch Trennzeichen getrennte Zeichenfolge, die Statistiken zum Zeitaufwand in den verschiedenen Phasen der Abfrageausführung enthält. Dieser Wert wird zurückgegeben, wenn `x-ms-documentdb-populatequerymetrics` auf `True` festgelegt ist. | 
 | `x-ms-request-charge` | Die Anzahl der von der Abfrage genutzten [Anforderungseinheiten](request-units.md). | 
 
-Weitere Informationen über die REST-API-Anforderungsheader und -Optionen finden Sie unter [Abfragen von Ressourcen mithilfe der REST-API](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
+Weitere Informationen über die REST-API-Anforderungsheader und -Optionen finden Sie unter [Abfragen von Ressourcen mithilfe der REST-API](/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
 
 ## <a name="best-practices-for-query-performance"></a>Bewährte Methoden für die Abfrageleistung
 Im Folgenden werden die gängigsten Faktoren vorgestellt, die sich auf die Abfrageleistung von Azure Cosmos DB auswirken. Die einzelnen Themen in diesem Artikel werden im Detail erläutert.
@@ -162,7 +164,7 @@ Bei Azure Cosmos DB werden Abfragen in der Regel in der Reihenfolge von den schn
 
 Abfragen, bei denen alle Partitionen abgefragt werden müssen, verursachen höhere Latenzen und verbrauchen mehr RUs. Da jede Partition über eine automatische Indizierung für alle Eigenschaften verfügt, kann die Abfrage in diesem Fall effizient über den Index verarbeitet werden. Mithilfe der Optionen für die Parallelverarbeitung können Sie partitionsübergreifende Abfragen schneller erstellen.
 
-Weitere Informationen zur Partitionierung und zu Partitionsschlüsseln finden Sie unter [Partitionieren in Azure Cosmos DB](partition-data.md).
+Weitere Informationen zur Partitionierung und zu Partitionsschlüsseln finden Sie unter [Partitionieren in Azure Cosmos DB](partitioning-overview.md).
 
 ### <a name="sdk-and-query-options"></a>SDK und Abfrageoptionen
 Unter [Leistungstipps](performance-tips.md) und [Leistungstests](performance-testing.md) finden Sie Informationen darüber, wie die ideale clientseitige Leistung von Azure Cosmos DB erzielt wird. Dies umfasst die Verwendung aktueller SDKs, die Konfiguration plattformspezifischer Konfigurationen wie die Standardanzahl von Verbindungen, die Häufigkeit von Garbage Collections und die Verwendung einfacher Konnektivitätsoptionen wie Direkt/TCP. 
@@ -237,7 +239,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metrik | Unit | BESCHREIBUNG | 
+| Metrik | Einheit | BESCHREIBUNG | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | Millisekunden | Abfrageausführungszeit | 
 | `queryCompileTimeInMs` | Millisekunden | Abfragekompilierzeit  | 
@@ -259,7 +261,7 @@ Die Client-SDKs können intern möglicherweise mehrere Abfrageoperationen ausfü
 
 Im Folgenden werden einige Beispielabfragen vorgestellt und erläutert, wie einige von der Abfrageausführung zurückgegebenen Metriken zu interpretieren sind: 
 
-| Abfragen | Beispielmetrik | BESCHREIBUNG | 
+| Abfrage | Beispielmetrik | BESCHREIBUNG | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Die Anzahl der abgerufenen Dokumente beträgt 100+1 entsprechend der TOP-Klausel. Die Abfragezeit wird hauptsächlich für `WriteOutputTime` und `DocumentLoadTime` aufgewendet, da es sich um eine Überprüfung handelt. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | „RetrievedDocumentCount“ ist nun höher (500+1 entsprechend der TOP-Klausel). | 
@@ -274,6 +276,4 @@ Im Folgenden werden einige Beispielabfragen vorgestellt und erläutert, wie eini
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu den unterstützten SQL-Abfrageoperatoren und Schlüsselwörtern finden Sie unter [SQL-Abfrage](sql-query-getting-started.md). 
 * Weitere Informationen zu Anforderungseinheiten finden Sie unter [Anforderungseinheiten](request-units.md).
-* Weitere Informationen zur Indizierungsrichtlinie finden Sie unter [Indizierungsrichtlinie](index-policy.md). 
-
-
+* Weitere Informationen zur Indizierungsrichtlinie finden Sie unter [Indizierungsrichtlinie](index-policy.md).

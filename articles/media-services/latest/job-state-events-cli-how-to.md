@@ -1,24 +1,27 @@
 ---
 title: Überwachen von Azure Media Services-Ereignissen mit Event Grid über die CLI | Microsoft-Dokumentation
-description: In diesem Artikel wird gezeigt, wie Sie ein Abonnement für Event Grid abschließen können, um Azure Media Services-Ereignisse zu überwachen.
+description: In diesem Artikel wird gezeigt, wie Sie ein Abonnement für Event Grid abschließen können, um Azure Media Services-Ereignisse mithilfe der Azure-Befehlszeilenschnittstelle zu überwachen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 11/09/2018
-ms.author: juliako
-ms.openlocfilehash: f6243bbc21466361aed7cbb7193f3a7b7c7e539f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: b646965be03b5d3f57483887e256d33262192375
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60322664"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013286"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Erstellen und Überwachen von Media Services-Ereignissen mit Event Grid über die Azure CLI
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Event Grid ist ein Ereignisdienst für die Cloud. Dieser Dienst verwendet [Ereignisabonnements](../../event-grid/concepts.md#event-subscriptions) zum Weiterleiten von Ereignisnachrichten an Abonnenten. Media Services-Ereignisse enthalten alle Informationen, die Sie zur Reaktion auf Änderungen in Ihren Daten benötigen. Sie können ein Media Services-Ereignis daran erkennen, dass die eventType-Eigenschaft mit „Microsoft.Media“ beginnt. Weitere Informationen finden Sie unter [Media Services-Ereignisschemas](media-services-event-schemas.md).
 
@@ -29,9 +32,9 @@ In diesem Artikel verwenden Sie die Azure CLI, um Ereignisse für Ihr Azure Medi
 - Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 - Installieren und verwenden Sie die CLI lokal. Dieser Artikel erfordert mindestens Version 2.0 der Azure CLI. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
 
-    Derzeit funktionieren nicht alle Befehle der [CLI von Media Services v3](https://aka.ms/ams-v3-cli-ref) in Azure Cloud Shell. Es wird empfohlen, die CLI lokal zu verwenden.
+    Derzeit funktionieren nicht alle Befehle der [CLI von Media Services v3](/cli/azure/ams) in Azure Cloud Shell. Es wird empfohlen, die CLI lokal zu verwenden.
 
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)
 
     Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
 
@@ -41,7 +44,7 @@ Vor dem Abonnieren der Ereignisse für das Media Services-Konto erstellen wir zu
 
 1. Wählen Sie **Deploy to Azure** (In Azure bereitstellen), um die Lösung für Ihr Abonnement bereitzustellen. Geben Sie im Azure-Portal Werte für die Parameter an.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   [![Abbildung einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
 
 1. Die Bereitstellung kann einige Minuten dauern. Nach erfolgreichem Abschluss der Bereitstellung können Sie Ihre Web-App anzeigen und sich vergewissern, dass sie ausgeführt wird. Navigieren Sie hierzu in einem Webbrowser zu `https://<your-site-name>.azurewebsites.net`.
 
@@ -79,7 +82,7 @@ Ersetzen Sie `<event_subscription_name>` durch einen eindeutigen Namen für Ihr 
 
     ```azurecli
     az eventgrid event-subscription create \
-    --resource-id $amsResourceId \
+    --source-resource-id $amsResourceId \
     --name <event_subscription_name> \
     --endpoint <endpoint_URL>
     ```
@@ -87,7 +90,7 @@ Ersetzen Sie `<event_subscription_name>` durch einen eindeutigen Namen für Ihr 
     Beispiel:
 
     ```
-    az eventgrid event-subscription create --resource-id $amsResourceId --name amsTestEventSubscription --endpoint https://amstesteventgrid.azurewebsites.net/api/updates/
+    az eventgrid event-subscription create --source-resource-id $amsResourceId --name amsTestEventSubscription --endpoint https://amstesteventgrid.azurewebsites.net/api/updates/
     ```    
 
     > [!TIP]
@@ -109,4 +112,3 @@ Zeigen Sie wieder Ihre Web-App an. Wie Sie sehen, wurde ein Abonnementüberprüf
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Hochladen, Codieren und Streamen](stream-files-tutorial-with-api.md)
-

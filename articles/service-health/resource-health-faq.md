@@ -1,18 +1,14 @@
 ---
-title: Azure Resource Health – FAQ | Microsoft-Dokumentation
+title: Azure Resource Health – FAQ
 description: Übersicht über Azure Resource Health
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 01/29/2019
-ms.workload: Supportability
-ms.openlocfilehash: 03c5fb0f399e43af2584743655eeea8af4c5b2f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5ad8867b110039e4dcc34b20c8a61fccfd39eaf
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924446"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032863"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health – FAQ
 Erfahren Sie die Antworten auf häufig gestellte Fragen zu Azure Resource Health.
@@ -41,7 +37,7 @@ Der Integritätsstatus wird auf „Unbekannt“ festgelegt, wenn Resource Health
 ## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Wie kann ich Hilfe für eine Ressource erhalten, die nicht verfügbar ist?
 Sie können auf dem Resource Health-Blatt eine Supportanfrage senden. Sie benötigen keine Supportvereinbarung mit Microsoft, um eine Anfrage zu öffnen, wenn die Ressource aufgrund von Plattformereignissen nicht verfügbar ist.
 
-## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>Differenziert Resource Health, ob Nichtverfügbarkeit auf Plattformprobleme zurückzuführen ist, oder auf Aktionen, die ich durchgeführt habe?
+## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>Differenziert Resource Health, ob Nichtverfügbarkeit auf Plattformprobleme zurückzuführen ist, oder auf Aktionen, die ich durchgeführt habe?
 Ja, wenn eine Ressource nicht verfügbar ist, identifiziert Resource Health die Grundursache gemäß einer dieser Kategorien: 
 -   Benutzerinitiierte Aktion
 -   Geplantes Ereignis 
@@ -50,13 +46,12 @@ Ja, wenn eine Ressource nicht verfügbar ist, identifiziert Resource Health die 
 Im Portal werden benutzerinitiierte Aktionen mit einem blauen Benachrichtigungssymbol angezeigt, geplante und ungeplante Ereignisse mit einem roten Warnsymbol. Weitere Informationen finden Sie in der [Übersicht über Azure Resource Health](Resource-health-overview.md).  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Kann ich Resource Health in meine Überwachungstools integrieren?
-Resource Health bietet [Vorschauunterstützung der](resource-health-alert-arm-template-guide.md) für auf dem Aktivitätsprotokoll basierende Warnungen. Aktivitätsprotokollwarnungen verwenden [Aktionsgruppen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups), um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Aktionsgruppen unterstützen eine Vielzahl von Benachrichtigungskanälen wie E-Mail, SMS, Webhook und ITSM-Aktionen.
+Resource Health [unterstützt](resource-health-alert-arm-template-guide.md) auf dem Aktivitätsprotokoll basierende Warnungen. Aktivitätsprotokollwarnungen verwenden [Aktionsgruppen](../azure-monitor/platform/action-groups.md), um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Aktionsgruppen unterstützen eine Vielzahl von Benachrichtigungskanälen wie E-Mail, SMS, Webhook und ITSM-Aktionen.
 
 ## <a name="where-do-i-find-resource-health"></a>Wo finde ich Resource Health?
 Nachdem Sie sich beim Azure-Portal angemeldet haben, stehen Ihnen mehrere Möglichkeiten zur Verfügung, auf Resource Health zuzugreifen:
 - Wechseln Sie zu Ihrer Ressource. Wählen Sie im linken Navigationsbereich **Resource Health** aus.
 - Wechseln Sie zum Blatt „Azure Service Health“.  Wählen Sie im linken Navigationsbereich **Resource Health** aus.
-- Öffnen Sie das Blatt **Hilfe und Support**, indem Sie oben rechts im Portal das Fragezeichen und dann die Option **Hilfe und Support** auswählen. Nachdem das Blatt geöffnet wurde, wählen Sie **Resource Health** aus.
 
 Sie können auch mit der Resource Health-API Informationen über den Integritätsstatus Ihrer Ressourcen erhalten.
 
@@ -73,8 +68,6 @@ Resource Health ist in allen Azure-Regionen verfügbar.
 Die von Resource Health bereitgestellten Informationen sind präziser als die vom Azure-Status oder dem Service Health-Dashboard bereitgestellten Informationen.
 
 Während [Azure-Status](https://status.azure.com) und das Service Health-Dashboard Sie über Dienstprobleme informieren, die einen großen Kundenkreis (z.B. eine Azure-Region) betreffen, deckt Resource Health spezifischere Ereignisse auf, die nur für die jeweilige Ressource relevant sind. Wenn z.B. ein Host unerwartet neu startet, warnt Resource Health nur die Kunden, deren virtuelle Computer auf diesem Host ausgeführt wurden.
-
-Bitte beachten Sie: Um Ihnen einen vollständigen Überblick über Ereignisse zu bieten, die Auswirkungen auf Ihre Ressourcen haben, deckt Resource Health auch Ereignisse auf, die im Service Health-Dashboard veröffentlicht werden.
 
 ## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Muss ich Resource Health für jede Ressource aktivieren?
 Nein, Integritätsinformationen sind über Resource Health für alle Ressourcentypen verfügbar. 

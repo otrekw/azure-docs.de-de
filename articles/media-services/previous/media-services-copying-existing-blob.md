@@ -13,17 +13,20 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a1da207a295b40f8d455635d687083bf69e90fdf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4ac981fb3aa17cbc242b5cc51cd579f926bad034
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068892"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89257975"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopieren vorhandener Blobs in ein Media Services-Medienobjekt
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 In diesem Artikel wird erläutert, wie Blobs mithilfe von [Azure Media Services .NET SDK-Erweiterungen](https://github.com/Azure/azure-sdk-for-media-services-extensions/) aus einem Speicherkonto in ein neues Azure Media Services-Medienobjekt (AMS) kopiert werden.
 
@@ -386,4 +389,3 @@ Sie können auch mithilfe von Azure Functions einen Codierungsauftrag auslösen,
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

@@ -1,30 +1,24 @@
 ---
-title: F#-Entwicklerreferenz zu Azure Functions | Microsoft Docs
+title: F#-Entwicklerreferenz zu Azure Functions
 description: Erfahren Sie, wie in Azure Functions mithilfe von F#-Skripts entwickelt wird.
-services: functions
-documentationcenter: fsharp
 author: sylvanc
-manager: jbronsk
-keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Computing, serverlose Architektur, F#
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
-ms.service: azure-functions
-ms.devlang: fsharp
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 23e9ffa5c86674cb34951f29573e033b4a904941
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442226"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87088018"
 ---
 # <a name="azure-functions-f-developer-reference"></a>F#-Entwicklerreferenz zu Azure Functions
 
 F# für Azure Functions ist eine Lösung, mit der Sie ganz einfach kleinere Codeelemente (Funktionen) in der Cloud ausführen können. Daten fließen über Funktionsargumente in Ihre F#-Funktion. Argumentnamen werden in `function.json`angegeben, und es gibt vordefinierte Namen für den Zugriff auf Elemente wie die Funktionsprotokollierung und Abbruchtoken. 
 
 >[!IMPORTANT]
->F#-Skripts („.fsx“) werden nur von [Version 1.x](functions-versions.md#creating-1x-apps) der Azure Functions-Runtime unterstützt. Wenn Sie F# mit der Runtimeversion 2.x verwenden möchten, müssen Sie ein vorkompiliertes F#-Klassenbibliotheksprojekt („.fs“) verwenden. Sie erstellen, verwalten und veröffentlichen ein F#-Klassenbibliotheksprojekt mithilfe von Visual Studio wie ein [C#-Klassenbibliotheksprojekt](functions-dotnet-class-library.md). Weitere Informationen zu den Versionen von Functions finden Sie unter [Übersicht über die Runtimeversionen von Azure Functions](functions-versions.md).
+>F#-Skripts („.fsx“) werden nur von [Version 1.x](functions-versions.md#creating-1x-apps) der Azure Functions-Runtime unterstützt. Wenn Sie F# mit der Runtimeversion 2.x oder höher verwenden möchten, müssen Sie ein vorkompiliertes F#-Klassenbibliotheksprojekt („.fs“) verwenden. Sie erstellen, verwalten und veröffentlichen ein F#-Klassenbibliotheksprojekt mithilfe von Visual Studio wie ein [C#-Klassenbibliotheksprojekt](functions-dotnet-class-library.md). Weitere Informationen zu den Versionen von Functions finden Sie unter [Übersicht über die Runtimeversionen von Azure Functions](functions-versions.md).
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md)gelesen haben.
 
@@ -54,7 +48,7 @@ FunctionsProject
 
 Sie können die freigegebene Datei [host.json](functions-host-json.md) zum Konfigurieren der Funktions-App verwenden. Jede Funktion verfügt über eine eigene Codedatei (FSX-Datei) sowie über eine eigene Bindungskonfigurationsdatei (function.json).
 
-Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](./functions-bindings-register.md#extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
+Die in [Version 2.x](functions-versions.md) oder höher der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](./functions-bindings-register.md#extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
 
 ## <a name="binding-to-arguments"></a>Binden an Argumente
 Jede Bindung unterstützt eine Gruppe von Argumenten. Dies ist in der [Entwicklerreferenz zu Triggern und Bindungen in Azure Functions](functions-triggers-bindings.md) ausführlich beschrieben. Eine Argumentbindung, die von einem Blobtrigger beispielsweise unterstützt wird, ist ein POCO-Element. Dies kann mit einem F#-Eintrag ausgedrückt werden. Beispiel:
@@ -96,7 +90,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>Protokollierung
-Zum Protokollieren der Ausgabe in Ihren [Streamingprotokollen](../app-service/troubleshoot-diagnostic-logs.md) in F# sollte Ihre Funktion ein Argument vom Typ [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) verwenden. Der Einheitlichkeit halber empfehlen wir Ihnen, diesem Argument den Namen `log`zu geben. Beispiel:
+Zum Protokollieren der Ausgabe in Ihren [Streamingprotokollen](../app-service/troubleshoot-diagnostic-logs.md) in F# sollte Ihre Funktion ein Argument vom Typ [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) verwenden. Der Einheitlichkeit halber empfehlen wir Ihnen, diesem Argument den Namen `log`zu geben. Beispiel:
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -183,7 +177,7 @@ Darüber hinaus stehen die folgenden besonderen Assemblys zur Verfügung, auf di
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* `Microsoft.AspNEt.WebHooks.Common`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
+* `Microsoft.AspNEt.WebHooks.Common`.
 
 Wenn Sie auf eine private Assembly verweisen müssen, können Sie die Assemblydatei in einen `bin`-Ordner relativ zu Ihrer Funktion hochladen und anhand des Dateinamens darauf verweisen (Beispiel: `#r "MyAssembly.dll"`). Informationen zum Hochladen von Dateien in Ihren Funktionenordner finden Sie im folgenden Abschnitt zur Paketverwaltung.
 
@@ -284,7 +278,7 @@ let mylog(log: ILogger, text: string) =
 
 Die Pfade zur `#load`-Direktive gelten relativ zum Speicherort Ihrer `.fsx`-Datei.
 
-* `#load "logger.fsx"` lädt eine Datei, die sich im Funktionsordner befindet.
+* `#load "logger.fsx"` : Lädt eine Datei, die sich im Funktionsordner befindet.
 * `#load "package\logger.fsx"` lädt eine Datei, die sich im Ordner `package` im Funktionsordner befindet.
 * `#load "..\shared\mylogger.fsx"` lädt eine Datei, die sich im Ordner `shared` auf derselben Ebene wie der Funktionsordner direkt unter `wwwroot` befindet.
 
@@ -299,4 +293,3 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 * [Azure Functions-Tests](functions-test-a-function.md)
 * [Azure Functions-Skalierung](functions-scale.md)
-

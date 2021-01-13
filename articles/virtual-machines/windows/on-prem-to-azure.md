@@ -1,26 +1,21 @@
 ---
-title: Migrieren von AWS und anderen Plattformen zu Managed Disks in Azure | Microsoft-Dokumentation
+title: Migrieren von AWS und anderen Plattformen zu Managed Disks in Azure
 description: Erstellen Sie VMs in Azure mithilfe von VHDs, die aus anderen Clouds wie AWS oder von anderen Virtualisierungsplattformen hochgeladen werden, und sichern Sie sich die Vorteile von Azure Managed Disks.
-services: virtual-machines-windows
-documentationcenter: ''
 author: roygara
 manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4611efa8767094ea8f92dac584a5610811947620
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 32cbfbcc8feeff66101ab5e2c95f476a4a4215e9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102591"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973902"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrieren von Amazon Web Services (AWS) und anderen Plattformen zu Managed Disks in Azure
 
@@ -46,7 +41,7 @@ Sie können sowohl generalisierte als auch spezialisierte VHDs hochladen.
 ## <a name="overview-of-managed-disks"></a>Managed Disks (verwaltete Datenträger): Übersicht
 
 Azure Managed Disks vereinfacht die VM-Verwaltung dadurch, dass die Verwaltung von Speicherkonten entfällt. Managed Disks profitieren auch von der höheren Zuverlässigkeit von VMs in einer Verfügbarkeitsgruppe. Es wird sichergestellt, dass die Datenträger verschiedener VMs in einer Verfügbarkeitsgruppe ausreichend voneinander isoliert sind, um einen Single Point of Failure zu vermeiden. Datenträger verschiedener VMs werden automatisch in einer Verfügbarkeitsgruppe in unterschiedlichen Skalierungseinheiten von Speicher (sog. „Stamps“) platziert. Dadurch werden die Auswirkungen des Ausfalls einzelner Speicherskalierungseinheiten eingedämmt, die von Hardware- und Softwarefehlern verursacht werden.
-Je nach Anforderungen stehen vier Typen von Speicheroptionen zur Wahl. Weitere Informationen zu den verfügbaren Datenträgertypen finden Sie in unserem Artikel [Auswählen eines Datenträgertyps](disks-types.md).
+Je nach Anforderungen stehen vier Typen von Speicheroptionen zur Wahl. Weitere Informationen zu den verfügbaren Datenträgertypen finden Sie in unserem Artikel [Auswählen eines Datenträgertyps](../disks-types.md).
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Planen der Migration zu Managed Disks
 
@@ -60,7 +55,7 @@ Wählen Sie einen Standort, an dem Azure Managed Disks verfügbar sind. Wenn Sie
 
 ### <a name="vm-sizes"></a>VM-Größen
 
-Wenn Sie zu Premium Managed Disks migrieren, müssen Sie die Größe der VM in eine Storage Premium-fähige Größe ändern, die in der Region mit dem Standort der VM verfügbar ist. Überprüfen Sie die Storage Premium-fähigen VM-Größen. Die Größenspezifikationen der Azure-VM sind unter [Größen für virtuelle Computer](sizes.md)aufgelistet.
+Wenn Sie zu Premium Managed Disks migrieren, müssen Sie die Größe der VM in eine Storage Premium-fähige Größe ändern, die in der Region mit dem Standort der VM verfügbar ist. Überprüfen Sie die Storage Premium-fähigen VM-Größen. Die Größenspezifikationen der Azure-VM sind unter [Größen für virtuelle Computer](../sizes.md)aufgelistet.
 Sehen Sie sich die Leistungsmerkmale von virtuellen Computern für Storage Premium an, und wählen Sie die am besten für Ihre Workload geeignete VM-Größe aus. Stellen Sie sicher, dass auf Ihrem virtuellen Computer ausreichend Bandbreite zum Steuern des Datenverkehrs des Datenträgers verfügbar ist.
 
 ### <a name="disk-sizes"></a>Datenträgergrößen
@@ -72,7 +67,7 @@ Es gibt sieben verwaltete Premium-Datenträgertypen, die Sie mit Ihrer VM verwen
 | Premium-Datenträgertyp  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
 | Datenträgergröße           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| IOPS pro Datenträger       | 120   | 240   | 500   | 1100  |2\.300              | 5\.000              | 7\.500              | 7\.500              | 
+| IOPS pro Datenträger       | 120   | 240   | 500   | 1100  |2300              | 5\.000              | 7\.500              | 7\.500              | 
 | Durchsatz pro Datenträger | 25 MB pro Sekunde  | 50 MB pro Sekunde  | 100 MB pro Sekunde | 125 MB pro Sekunde |150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde |
 
 **Verwaltete Standard-Datenträger**
@@ -81,7 +76,7 @@ Es gibt sieben Arten von verwalteten Standard-Datenträgern, die mit Ihrer VM ve
 
 | Standard-Datenträgertyp  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
 |---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
-| Datenträgergröße           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
+| Datenträgergröße           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
 | IOPS pro Datenträger       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
 | Durchsatz pro Datenträger | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde |60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 
 

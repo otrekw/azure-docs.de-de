@@ -1,39 +1,44 @@
 ---
-title: Leitfaden für die Veröffentlichung von Lösungsvorlagenangeboten für Azure-Anwendungen | Azure Marketplace
-description: In diesem Artikel werden die Anforderungen für die Veröffentlichung von Lösungsvorlagen im Azure Marketplace beschrieben.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
-manager: nunoc
+title: Leitfaden für die Veröffentlichung von Lösungsvorlagenangeboten für Azure-Anwendungen – Azure Marketplace
+description: In diesem Artikel werden die Anforderungen für das Veröffentlichen von Lösungsvorlagen im Azure Marketplace beschrieben.
 ms.service: marketplace
-ms.topic: article
-ms.date: 9/25/2019
-ms.author: ellacroi
-ms.openlocfilehash: 725be2ee239a879be8200d33acaf566b1d42d446
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: msjogarrig
+ms.author: jogarrig
+ms.date: 04/22/2020
+ms.openlocfilehash: 475a8615e9233def091edc03fe91c82ea63cdc27
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300336"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433529"
 ---
-# <a name="azure-applications-solution-template-offer-publishing-guide"></a>Azure-Anwendungen: Leitfaden für die Veröffentlichung von Lösungsvorlagenangeboten
+# <a name="publishing-guide-for-azure-applications-solution-template-offers"></a>Leitfaden für die Veröffentlichung von Lösungsvorlagenangeboten für Azure-Anwendungen
 
-Lösungsvorlagen zählen zu den wichtigsten Optionen für die Veröffentlichung von Lösungen im Marketplace. Informieren Sie sich in diesem Handbuch über die Anforderungen für dieses Angebot. 
+In diesem Artikel werden die Anforderungen für das Veröffentlichen von Lösungsvorlagenangeboten erläutert. Hierbei handelt es sich um eine Möglichkeit, Azure-Anwendungsangebote im Azure Marketplace zu veröffentlichen. Für den Angebotstyp „Lösungsvorlage“ ist eine [Azure Resource Manager-Vorlage (ARM-Vorlage](../azure-resource-manager/templates/overview.md)) erforderlich, um Ihre Lösungsinfrastruktur automatisch bereitzustellen.
 
-Verwenden Sie eine Lösungsvorlage für Azure-Apps, wenn für eine Lösung neben einem einzelnen virtuellen Computer noch eine zusätzliche Bereitstellung und Konfigurationsautomatisierung erforderlich ist. Sie können die Bereitstellung einer oder mehrerer VMs mithilfe von Azure-Apps automatisieren: Lösungsvorlagen. Sie können auch Ressourcen für Netzwerke und Speicher zur Verfügung stellen. Azure-Apps: Angebotstyp der Lösungsvorlagen bietet Automatisierungsvorteile für Einzel-VMs und gesamte IaaS-basierte Lösungen.
+Verwenden Sie den Angebotstyp *Lösungsvorlage* für Azure-Anwendungen unter den folgenden Bedingungen:
 
-Diese Lösungsvorlagen sind keine Transaktionsangebote, sondern können zur Bereitstellung bezahlter VM-Angebote verwendet werden, die über den kommerziellen Marketplace von Microsoft abgerechnet werden. Die Benutzer sehen hier den Aktionsaufruf „Jetzt kaufen“.
+- Ihre Lösung erfordert eine zusätzliche Automatisierung der Bereitstellung und Konfiguration über einen einzelnen virtuellen Computer (Virtual Machine, VM) hinaus, z. B. eine Kombination aus VMs, Netzwerk- und Speicherressourcen.
+- Ihre Kunden werden die Lösung selbst verwalten.
 
+Einem Kunden wird für diesen Angebotstyp eine Auflistungsoption *Jetzt kaufen* angezeigt.
 
-## <a name="requirements-for-solution-templates"></a>Anforderungen für Lösungsvorlagen
+## <a name="requirements-for-solution-template-offers"></a>Anforderungen für Lösungsvorlagenangebote
 
 | **Anforderungen** | **Details**  |
 | ---------------  | -----------  |
-|Abrechnung und Messung    |  Die Ressourcen werden im Azure-Abonnement des Kunden bereitgestellt. Für virtuelle Computer mit nutzungsbasierter Bezahlung (Pay-As-You-Go, PAYGO) wird die Transaktion mit dem Kunden über Microsoft und die Abrechnung über das Azure-Abonnement des Kunden (PAYGO) abgewickelt.  <br/> Im Falle von Bring-Your-Own-License (BYOL) rechnet Microsoft die im Kundenabonnement angefallenen Infrastrukturkosten ab, während Sie Ihre Softwarelizenzgebühren direkt mit dem Kunden abrechnen.   |
-|Azure-kompatible virtuelle Festplatte (VHD)  |   VMs müssen unter Windows oder Linux erstellt werden.  Weitere Informationen finden Sie unter [Erstellen einer Azure-kompatiblen VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md). |
-| Zuordnen der Nutzung durch Kunden | Die Zuordnung der Nutzung durch Kunden muss für alle Lösungsvorlagen aktiviert werden, die über den Azure Marketplace veröffentlicht werden. Weitere Informationen zur Zuordnung der Nutzung durch Kunden sowie zu deren Aktivierung finden Sie unter [Zuordnen der Nutzung durch Kunden von Azure-Partnern](./azure-partner-customer-usage-attribution.md).  |
-| Verwenden von verwalteten Datenträgern | Die Standardoption für persistierte Datenträger virtueller IaaS-Computer in Azure lautet [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview). In Lösungsvorlagen muss Managed Disks verwendet werden. <br> <br> 1. Halten Sie sich an die [Anweisungen](https://docs.microsoft.com/azure/virtual-machines/windows/using-managed-disks-template-deployments) und [Beispiele](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md) für die Verwendung von Managed Disks in den Azure ARM-Vorlagen, um Ihre Lösungsvorlagen zu aktualisieren. <br> <br> 2. Befolgen Sie die nachfolgenden Anweisungen, um die zugrunde liegende VHD von Managed Disks in ein Storage-Konto zu importieren und die VHD als Image im Marketplace zu veröffentlichen: <br> <ul> <li> [PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd?toc=%2fpowershell%2fmodule%2ftoc.json) </li> <li> [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd?toc=%2fcli%2fmodule%2ftoc.json) </li> </ul> |
+|Abrechnung und Messung    |  Lösungsvorlagenangebote sind keine Transaktionsangebote. Sie können jedoch zum Bereitstellen bezahlter VM-Angebote verwendet werden, die über den kommerziellen Microsoft-Marketplace abgerechnet werden. Die über die ARM-Vorlage der Lösung bereitgestellten Ressourcen werden im Azure-Abonnement des Kunden eingerichtet. Bei virtuellen Computern mit nutzungsbasierter Bezahlung erfolgt die Transaktion mit dem Kunden über Microsoft, und die Abrechnung wird über das Azure-Abonnement des Kunden abgewickelt.<br/> Bei der Abrechnung nach dem Modell „Bring Your Own License“ (BYOL) rechnet Microsoft die angefallenen Infrastrukturkosten im Kundenabonnement ab, während Sie Ihre Softwarelizenzgebühren direkt mit dem Kunden abrechnen.   |
+|Azure-kompatible virtuelle Festplatte (VHD)  |   VMs müssen unter Windows oder Linux erstellt werden. Weitere Informationen finden Sie unter <ul> <li>[Erstellen eines Azure-Anwendungsangebots](./create-new-azure-apps-offer.md) (für Windows-VHDs).</li><li>[Von Azure unterstützte Distributionen von Linux](../virtual-machines/linux/endorsed-distros.md) (für Linux-VHDs)</li></ul> |
+| Zuordnen der Nutzung durch Kunden | Die Zuordnung der Nutzung durch Kunden muss für alle Lösungsvorlagen aktiviert werden, die im Azure Marketplace veröffentlicht werden. Weitere Informationen zur Zuordnung der Nutzung durch Kunden sowie zu deren Aktivierung finden Sie unter [Zuordnung der Nutzung durch Kunden von Azure-Partnern](./azure-partner-customer-usage-attribution.md).  |
+| Verwenden von verwalteten Datenträgern | [Verwaltete Datenträger](../virtual-machines/managed-disks-overview.md) sind die Standardoption für persistente Datenträger von Infrastructure-as-a-Service-VMs (IaaS-VMs) in Azure. In Lösungsvorlagen müssen Sie verwaltete Datenträger verwenden. <ul><li>Wenn Sie Ihre Lösungsvorlagen aktualisieren möchten, folgen Sie den Anweisungen unter [Verwenden verwalteter Datenträger mit Resource Manager-Vorlagen](../virtual-machines/using-managed-disks-template-deployments.md), und verwenden Sie die bereitgestellten [Beispiele](https://github.com/Azure/azure-quickstart-templates).<br><br> </li><li>Wenn Sie die VHD als Image im Azure Marketplace veröffentlichen möchten, importieren Sie die zugrunde liegende VHD der verwalteten Datenträger in ein Speicherkonto. Verwenden Sie dazu eine der folgenden Methoden:<ul><li>[Azure PowerShell](../virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md) </li> <li> [Die Azure-CLI](../virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md) </li> </ul></ul> |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Registrieren Sie sich](https://azuremarketplace.microsoft.com/sell) im Marketplace, sofern noch nicht geschehen.
 
-Wenn Sie bereits registriert sind und ein neues Angebot erstellen oder ein bereits vorhandenes Angebot bearbeiten möchten, melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com) an, um Ihr Angebot zu erstellen oder fertigzustellen.
+Informieren Sie sich (falls noch nicht geschehen), wie Sie [Ihr Cloudgeschäft mit dem Azure Marketplace ausweiten](https://azuremarketplace.microsoft.com/sell).
+
+So registrieren Sie sich in Partner Center und beginnen mit der Arbeit
+
+- [Melden Sie sich bei Partner Center an](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership), um Ihr Angebot zu erstellen oder abzuschließen.
+- Weitere Informationen finden Sie unter [Erstellen eines Azure-Anwendungsangebots](./create-new-azure-apps-offer.md).

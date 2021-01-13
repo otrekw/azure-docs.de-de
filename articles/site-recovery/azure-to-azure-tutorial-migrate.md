@@ -1,27 +1,27 @@
 ---
-title: Verschieben von Azure IaaS-VMs in eine andere Azure-Region mithilfe des Azure Site Recovery-Diensts | Microsoft-Dokumentation
-description: Verwenden Sie Azure Site Recovery, um virtuelle Azure IaaS-Computer von einer Azure-Region zu einer anderen zu migrieren.
+title: Verschieben von Azure-VMs in eine andere Azure-Region mit Azure Site Recovery
+description: Verwenden Sie Azure Site Recovery, um virtuelle Azure-Computer aus einer Azure-Region in eine andere zu verschieben.
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.author: rajanaki
+ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 4404f785116110d99dc242d2dae39c4a462f45e9
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 076adbfd4cecf7dae9ffc490e911fcb7ffce48e6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376246"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394831"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Verschieben virtueller Azure-Computer in eine andere Region
+# <a name="move-vms-to-another-azure-region"></a>Verschieben von VMs in eine andere Azure-Region
 
-Es gibt verschiedene Szenarien, in denen Sie Ihre vorhandenen virtuellen Azure IaaS-Computer (Virtual Machines, VMs) aus einer Region in eine andere verschieben möchten. So möchten Sie z. B. die Zuverlässigkeit und Verfügbarkeit Ihrer vorhandenen VMs erhöhen, um die Verwaltbarkeit zu verbessern, oder Sie möchten die VMs aus Governancegründen verschieben. Weitere Informationen finden Sie in der [Übersicht über das Verschieben virtueller Azure-Computer](azure-to-azure-move-overview.md). 
+Es gibt Szenarien, in denen Sie Ihre vorhandenen virtuellen Azure IaaS-Computer (Virtual Machines, VMs) aus einer Region in eine andere verschieben möchten. So möchten Sie z. B. die Zuverlässigkeit und Verfügbarkeit Ihrer vorhandenen VMs erhöhen, um die Verwaltbarkeit zu verbessern, oder Sie möchten die VMs aus Governancegründen verschieben. Weitere Informationen finden Sie in der [Übersicht über das Verschieben virtueller Azure-Computer](azure-to-azure-move-overview.md). 
 
-Mit dem [Azure Site Recovery](site-recovery-overview.md)-Dienst können Sie die Notfallwiederherstellung von lokalen Computern und Azure-VMs zwecks Business Continuity und Disaster Recovery (BCDR) verwalten und orchestrieren. Sie können Azure Site Recovery auch verwenden, um das Verschieben von Azure-VMs in eine sekundäre Region zu verwalten.
+Sie können den [Azure Site Recovery](site-recovery-overview.md)-Dienst verwenden, um Azure-VMs in eine sekundäre Region zu verschieben.
 
-In diesem Lernprogramm lernen Sie Folgendes:
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > 
@@ -30,14 +30,26 @@ In diesem Lernprogramm lernen Sie Folgendes:
 > * Kopieren der Daten und Aktivieren der Replikation
 > * Testen der Konfiguration und Durchführen der Verschiebung
 > * Löschen der Ressourcen in der Quellregion
-> 
+
+
+> [!IMPORTANT]
+> Zum Verschieben von Azure-VMs in eine andere Region empfehlen wir den Einsatz von [Azure Resource Mover](../resource-mover/tutorial-move-region-virtual-machines.md). Resource Mover befindet sich derzeit in der öffentlichen Vorschau und bietet folgende Features:
+> - Eine einzelne Anlaufstelle für das regionsübergreifende Verschieben von Ressourcen.
+> - Kürzere Verschiebungszeit und verringerte Komplexität. Alles Nötige ist an einem einzelnen Ort.
+> - Ein einfaches und konsistentes Verfahren zum Verschieben verschiedener Arten von Azure-Ressourcen.
+> - Eine einfache Möglichkeit zum Erkennen von Abhängigkeiten zwischen Ressourcen, die Sie verschieben möchten. Dies hilft Ihnen, zusammenhängende Ressourcen gemeinsam zu verschieben, damit nach der Verschiebung in der Zielregion alles wie erwartet funktioniert.
+> - Automatische Bereinigung der Ressourcen in der Quellregion, falls Sie sie nach dem Verschieben löschen möchten.
+> - Tests. Sie können eine Verschiebung ausprobieren und sie dann verwerfen, wenn Sie keine vollständige Verschiebung durchführen möchten.
+
+
+
 > [!NOTE]
 > In diesem Tutorial wird aufgezeigt, wie Sie Azure-VMs unverändert aus einer Region in eine andere Region verschieben. Wenn Sie die Verfügbarkeit durch Verschieben von VMs in einer Verfügbarkeitsgruppe auf an Zonen angeheftete VMs in einer anderen Region verbessern müssen, lesen Sie das [Tutorial „Verschieben virtueller Azure-Computer in Verfügbarkeitszonen“](move-azure-vms-avset-azone.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Stellen Sie sicher, dass sich die Azure-VMs in der Azure-Region befinden, aus der Sie verschieben möchten.
-- Überprüfen Sie, ob die von Ihnen ausgewählte [Kombination aus Quell- und Zielregion unterstützt wird](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support), und treffen Sie eine fundierte Entscheidung bezüglich der Zielregion.
+- Überprüfen Sie, ob die von Ihnen ausgewählte [Kombination aus Quell- und Zielregion unterstützt wird](./azure-to-azure-support-matrix.md#region-support), und treffen Sie eine fundierte Entscheidung bezüglich der Zielregion.
 - Stellen Sie sicher, dass Sie die [Architektur und die Komponenten des Szenarios](azure-to-azure-architecture.md) verstehen.
 - Lesen Sie die [Einschränkungen und Anforderungen der Unterstützung](azure-to-azure-support-matrix.md).
 - Überprüfen Sie die Kontoberechtigungen. Wenn Sie ein kostenloses Azure-Konto erstellt haben, sind Sie der Administrator Ihres Abonnements. Wenn Sie nicht der Abonnementadministrator sind, wenden Sie sich an den Administrator, damit dieser Ihnen die erforderlichen Berechtigungen zuweist. Um die Replikation für einen virtuellen Computer zu aktivieren und Daten mithilfe von Azure Site Recovery zu kopieren, benötigen Sie Folgendes:
@@ -56,7 +68,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 - Befolgen Sie bei virtuellen Linux-Computern die Anleitung Ihres Linux-Distributors, um die aktuellen vertrauenswürdigen Stammzertifikate und die Zertifikatsperrliste für den virtuellen Computer abzurufen.
 - Stellen Sie sicher, dass Sie keinen Authentifizierungsproxy zum Steuern der Netzwerkkonnektivität für die VMs verwenden, die Sie verschieben möchten.
 
-- Wenn der virtuelle Computer, den Sie verschieben möchten, keinen Zugriff auf das Internet hat oder einen Firewallproxy zum Steuern des ausgehenden Zugriffs verwendet, [überprüfen Sie die Anforderungen](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms).
+- Wenn der virtuelle Computer, den Sie verschieben möchten, keinen Zugriff auf das Internet hat oder einen Firewallproxy zum Steuern des ausgehenden Zugriffs verwendet, [überprüfen Sie die Anforderungen](azure-to-azure-tutorial-enable-replication.md#set-up-vm-connectivity).
 
 - Identifizieren Sie das Layout des Quellnetzwerks und alle Ressourcen, die Sie aktuell verwenden. Dies schließt unter anderem Lastenausgleichsmodule, Netzwerksicherheitsgruppen (NSGs) und öffentliche IP-Adressen ein.
 
@@ -70,10 +82,10 @@ In diesem Lernprogramm lernen Sie Folgendes:
      > Azure Site Recovery erkennt und erstellt automatisch ein virtuelles Netzwerk, wenn Sie die Replikation für den virtuellen Quellcomputer aktivieren. Sie können auch vorab ein Netzwerk erstellen und es dem virtuellen Computer im Benutzerflow zum Aktivieren der Replikation zuweisen. Alle anderen Ressourcen müssen (wie weiter unten angegeben) manuell in der Zielregion erstellt werden.
 
     Informationen zum Erstellen der für Sie relevanten und am häufigsten verwendeten Netzwerkressourcen auf Grundlage der Konfiguration des virtuellen Quellcomputers finden Sie in der folgenden Dokumentation:
-    - [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Load Balancer](https://docs.microsoft.com/azure/load-balancer)
+    - [Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md)
+    - [Load Balancer](../load-balancer/index.yml)
     -  [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
-    - Informationen zu anderen Netzwerkkomponenten finden Sie in der [Netzwerkdokumentation](https://docs.microsoft.com/azure/#pivot=products&panel=network).
+    - Informationen zu anderen Netzwerkkomponenten finden Sie in der [Netzwerkdokumentation](../index.yml?pivot=products&panel=network).
 
 
 
@@ -82,20 +94,21 @@ Die folgenden Schritte zeigen, wie Sie den virtuellen Computer mithilfe von Azur
 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>Erstellen des Tresors in einer beliebigen Region außer der Quellregion
 
-1. Melden Sie sich unter [Azure-Portal](https://portal.azure.com) > **Recovery Services** an.
-1. Wählen Sie **Ressource erstellen** > **Verwaltungstools** > **Backup & Site Recovery** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
+1. Geben Sie im Suchfeld „Recovery Services“ ein, und klicken Sie auf „Recovery Services-Tresore“.
+1. Klicken Sie im Menü „Recovery Services-Tresore“ auf „+ Hinzufügen“.
 1. Geben Sie in **Name** den Anzeigenamen **ContosoVMVault** ein. Wenn Sie mehrere Abonnements haben, wählen Sie das gewünschte aus.
 1. Erstellen Sie die Ressourcengruppe **ContosoRG**.
 1. Geben Sie eine Azure-Region an. Eine Liste der unterstützten Regionen finden Sie in den Informationen zur geografischen Verfügbarkeit unter [Azure Site Recovery – Preise](https://azure.microsoft.com/pricing/details/site-recovery/).
-1. Wählen Sie unter **Recovery Services-Tresore** die Optionen **Übersicht** > **ContosoVMVault** >  **+ Replizieren** aus.
-1. Wählen Sie unter **Quelle** die Option **Azure**.
+1. Wählen Sie unter **Recovery Services-Tresore** die Optionen **ContosoVMVault** > **Replizierte Elemente** >  **+Replizieren** aus.
+1. Wählen Sie in der Dropdownliste **Azure Virtual Machines** aus.
 1. Wählen Sie unter **Quellstandort** die Azure-Quellregion aus, in der Ihre VMs derzeit ausgeführt werden.
 1. Wählen Sie das Ressourcen-Manager-Bereitstellungsmodell. Wählen Sie dann das **Quellabonnement** und die **Quellressourcengruppe** aus.
-1. Wählen Sie **OK**, um die Einstellungen zu speichern.
+1. Wählen Sie **OK** , um die Einstellungen zu speichern.
 
 ### <a name="enable-replication-for-azure-vms-and-start-copying-the-data"></a>Aktivieren der Replikation für Azure-VMs und Starten des Kopiervorgangs für die Daten
 
-Site Recovery ruft eine Liste der VMs ab, die dem Abonnement und der Ressourcengruppe zugeordnet sind.
+Site Recovery ruft eine Liste der VMs ab, die dem Abonnement und der Ressourcengruppe zugeordnet sind.
 
 1. Wählen Sie im nächsten Schritt den virtuellen Computer aus, den Sie verschieben möchten, und wählen Sie dann **OK** aus.
 1. Wählen Sie unter **Einstellungen** die Option **Notfallwiederherstellung** aus.
@@ -103,7 +116,7 @@ Site Recovery ruft eine Liste der VMs ab, die dem Abonnement und der Ressourceng
 1. Übernehmen Sie für dieses Tutorial die anderen Standardwerte.
 1. Wählen Sie **Replikation aktivieren** aus. Durch diesen Schritt wird ein Auftrag gestartet, um die Replikation des virtuellen Computers zu aktivieren.
 
-    ![Aktivieren der Replikation](media/tutorial-migrate-azure-to-azure/settings.png)
+
 
 ## <a name="move"></a>Move
 
@@ -124,7 +137,7 @@ Wenn Sie den verschobenen virtuellen Computer überprüft haben und Änderungen 
 
 Wenn Sie den verschobenen virtuellen Computer überprüft haben und die Änderung committen möchten, klicken Sie unter **Replizierte Elemente** mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Committen** aus. Durch diesen Schritt wird der Prozess zum Verschieben in die Zielregion abgeschlossen. Warten Sie, bis der Commitauftrag abgeschlossen ist.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Die folgenden Schritte dienen zur Bereinigung der Quellregion und der zugehörigen Ressourcen, die für die Verschiebung verwendet wurden.
 
@@ -146,4 +159,3 @@ In diesem Tutorial haben Sie einen virtuellen Azure-Computer in eine andere Azur
 
 > [!div class="nextstepaction"]
 > [Einrichten der Notfallwiederherstellung nach der Migration](azure-to-azure-quickstart.md)
-

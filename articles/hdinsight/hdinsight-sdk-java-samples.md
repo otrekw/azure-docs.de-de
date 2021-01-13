@@ -2,17 +2,18 @@
 title: 'Azure HDInsight: Beispiele für Java'
 description: Enthält Informationen zu Java-Beispielen für häufige Aufgaben auf GitHub, für die das HDInsight SDK für Java verwendet wird.
 author: hrasheed-msft
+ms.custom: devx-track-java
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
-ms.date: 04/15/2019
-ms.openlocfilehash: 4a9bfe83c9fc1ccbc496ec97822305720dc52c10
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/29/2019
+ms.openlocfilehash: c7c89706d749151b5a59667282eb6675fd18dc8c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076835"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535364"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Beispiele für Java
 
@@ -27,11 +28,11 @@ Dieser Artikel enthält Folgendes:
 * Links zu Beispielen für Aufgaben zur Clustererstellung
 * Links zu Referenzinhalten zu anderen Verwaltungsaufgaben
 
-## <a name="prerequisites"></a>Voraussetzungen
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [Azure HDInsight SDK für Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
+## <a name="prerequisites"></a>Voraussetzungen
+
+[Azure HDInsight SDK für Java](/java/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>Clusterverwaltung: Erstellung
 
@@ -44,4 +45,4 @@ Sie erhalten diese Beispiele für Java, indem Sie das GitHub-Repository [hdinsig
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Codeausschnitte für diese zusätzliche SDK-Funktionalität finden Sie in der [Referenzdokumentation zum HDInsight SDK für Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview).
+Codeausschnitte für diese zusätzliche SDK-Funktionalität finden Sie in der [Referenzdokumentation zum HDInsight SDK für Java](/java/api/overview/azure/hdinsight).

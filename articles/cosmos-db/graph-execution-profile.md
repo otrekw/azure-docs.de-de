@@ -1,26 +1,26 @@
 ---
-title: Auswerten Ihrer Abfragen mit der Funktion „Ausführungsprofil“ für die Gremlin-API für Azure Cosmos DB
+title: Verwenden des Ausführungsprofils zur Auswertung von Abfragen in der Gremlin-API für Azure Cosmos DB
 description: Es wird beschrieben, wie Sie für Ihre Gremlin-Abfragen die Problembehandlung durchführen und sie verbessern, indem Sie den Schritt „Ausführungsprofil“ verwenden.
 services: cosmos-db
-author: luisbosquez
-manager: kfile
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/27/2019
-ms.author: lbosq
-ms.openlocfilehash: ab5c55105eeb912281f35e3d6094c0c43a76f89a
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.author: chrande
+ms.openlocfilehash: 18cefb1dd80368a8ccdad9f6f3ffc30881a8a889
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915882"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087484"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gewusst wie: Verwenden des Schritts „Ausführungsprofil“ zum Auswerten Ihrer Gremlin-Abfragen
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Dieser Artikel enthält eine Übersicht über die Verwendung des Schritts „Ausführungsprofil“ für Graphdatenbanken der Gremlin-API für Azure Cosmos DB. In diesem Schritt werden relevante Informationen zur Problembehandlung und zu Abfrageoptimierungen bereitgestellt. Er ist mit allen Gremlin-Abfragen kompatibel, die für ein Cosmos DB-Gremlin-API-Konto ausgeführt werden können.
 
-Fügen Sie zum Verwenden dieses Schritts einfach den Funktionsaufruf `executionProfile()` am Ende Ihrer Gremlin-Abfrage an. **Ihre Gremlin-Abfrage wird ausgeführt**, und als Ergebnis des Vorgangs wird ein JSON-Antwortobjekt mit dem Ausführungsprofil der Abfrage zurückgegeben.
+Fügen Sie zum Verwenden dieses Schritts einfach den Funktionsaufruf `executionProfile()` am Ende Ihrer Gremlin-Abfrage an. **Ihre Gremlin-Abfrage wird ausgeführt** , und als Ergebnis des Vorgangs wird ein JSON-Antwortobjekt mit dem Ausführungsprofil der Abfrage zurückgegeben.
 
 Beispiel:
 
@@ -139,12 +139,12 @@ Dies ist ein mit Anmerkungen versehenes Beispiel für die Ausgabe, die zurückge
 ## <a name="execution-profile-response-objects"></a>Antwortobjekte des Ausführungsprofils
 
 Die Antwort der Funktion „executionProfile()“ führt zu einer Hierarchie mit JSON-Objekten mit der folgenden Struktur:
-  - **Gremlin-Vorgangsobjekt**: Steht für den gesamten Gremlin-Vorgang, der ausgeführt wurde. Es enthält die folgenden Eigenschaften.
+  - **Gremlin-Vorgangsobjekt** : Steht für den gesamten Gremlin-Vorgang, der ausgeführt wurde. Es enthält die folgenden Eigenschaften.
     - `gremlin`: Die explizite Gremlin-Anweisung, die ausgeführt wurde.
     - `totalTime`: Die Zeit in Millisekunden für die Ausführung des Schritts. 
     - `metrics`: Ein Array mit allen Cosmos DB-Runtimeoperatoren, die für die Abfrage ausgeführt wurden. Diese Liste ist in der Reihenfolge der Ausführung sortiert.
     
-  - **Cosmos DB-Runtimeoperatoren**: Steht für die Komponenten des gesamten Gremlin-Vorgangs. Diese Liste ist in der Reihenfolge der Ausführung sortiert. Jedes Objekt enthält die folgenden Eigenschaften:
+  - **Cosmos DB-Runtimeoperatoren** : Steht für die Komponenten des gesamten Gremlin-Vorgangs. Diese Liste ist in der Reihenfolge der Ausführung sortiert. Jedes Objekt enthält die folgenden Eigenschaften:
     - `name`: Name des Operators. Dies ist der Typ des Schritts, der ausgewertet und ausgeführt wurde. Die Tabelle unten enthält weitere Informationen.
     - `time`: Zeitraum in Millisekunden, der für einen bestimmten Operator benötigt wurde.
     - `annotations`: Enthält zusätzliche spezifische Informationen zum ausgeführten Operator.
@@ -220,8 +220,8 @@ Angenommen, für einen **partitionierten Graphen** ergibt sich die folgende Antw
 
 Hieraus können die folgenden Schlüsse gezogen werden:
 - Die Abfrage ist eine Suche nach einer einzelnen ID, da die Gremlin-Anweisung das Muster `g.V('id')` aufweist.
-- Anhand der Metrik `time` lässt sich erkennen, dass die Latenz dieser Abfrage wahrscheinlich hoch ist, da sie [für einen einzelnen Punktlesevorgang über 10 ms beträgt](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide).
-- Wenn wir uns das `storeOps`-Objekt ansehen, ist erkennbar, dass `fanoutFactor` den Wert `5` hat. Dies bedeutet, dass von diesem Vorgang auf [5 Partitionen](https://docs.microsoft.com/azure/cosmos-db/partition-data) zugegriffen wurde.
+- Anhand der Metrik `time` lässt sich erkennen, dass die Latenz dieser Abfrage wahrscheinlich hoch ist, da sie [für einen einzelnen Punktlesevorgang über 10 ms beträgt](./introduction.md#guaranteed-speed-at-any-scale).
+- Wenn wir uns das `storeOps`-Objekt ansehen, ist erkennbar, dass `fanoutFactor` den Wert `5` hat. Dies bedeutet, dass von diesem Vorgang auf [5 Partitionen](./partitioning-overview.md) zugegriffen wurde.
 
 Als Schlussfolgerung dieser Analyse können wir festhalten, dass von der ersten Abfrage auf mehr Partitionen als nötig zugegriffen wird. Dies kann geändert werden, indem der Partitionierungsschlüssel in der Abfrage als Prädikat angegeben wird. Dies führt zu einer niedrigeren Latenz und zu geringeren Kosten pro Abfrage. Informieren Sie sich eingehender über die [Graphpartitionierung](graph-partitioning.md). Eine besser geeignete Abfrage ist `g.V('tt0093640').has('partitionKey', 't1001')`.
 

@@ -1,7 +1,7 @@
 ---
 title: Konzepte der Gesichtserkennung
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie etwas über die Konzepte der Gesichtserkennung.
+description: In diesem Artikel werden Konzepte der Vorgänge Verify, Find Similar, Group und Identify für die Gesichtserkennung und die zugrunde liegenden Datenstrukturen erläutert.
 services: cognitive-services
 author: PatrickFarley
 manager: nitime
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
-ms.openlocfilehash: fa38c492530cb8938e49bc15e13fdd39ed5b6f1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00dadf8a91b7ed01ab9f91933d296744305a95af
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65890885"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518805"
 ---
 # <a name="face-recognition-concepts"></a>Konzepte der Gesichtserkennung
 
@@ -25,7 +25,7 @@ In diesem Artikel werden Konzepte der Vorgänge Verify, Find Similar, Group und 
 
 Bei den Erkennungsvorgängen werden hauptsächlich die folgenden Datenstrukturen verwendet. Diese Objekte werden in der Cloud gespeichert und durch ihre ID-Zeichenfolgen referenziert. Die ID-Zeichenfolgen sind innerhalb eines Abonnements immer eindeutig. Namensfelder können doppelt vorkommen.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |:--|:--|
 |DetectedFace| Diese Darstellung eines einzelnen Gesichts wird mit dem Vorgang [Gesichtserkennung](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md) abgerufen. Die ID läuft 24 Stunden nach der Erstellung ab.|
 |PersistedFace| Wenn DetectedFace-Objekte einer Gruppe, z. B. FaceList oder Person, hinzugefügt werden, werden sie zu PersistedFace-Objekten. Sie können jederzeit [abgerufen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c) werden und laufen nicht ab.|
@@ -58,7 +58,7 @@ Der Vorgang [Identify](https://westus.dev.cognitive.microsoft.com/docs/services/
 Anhand der folgenden Tipps können Sie sicherstellen, dass Ihre Eingabebilder möglichst genaue Erkennungsergebnisse liefern:
 
 * Als Eingabebildformate werden JPEG, PNG, GIF (der erste Frame), BMP unterstützt.
-* Bilddateien dürfen maximal 4 MB groß sein.
+* Bilddateien dürfen maximal 6 MB groß sein.
 * Wenn Sie die Person-Objekte erstellen, verwenden Sie Fotos mit verschiedenen Winkeln und Belichtungen.
 * Einige Gesichter können möglicherweise aufgrund technischer Probleme wie der folgenden nicht erkannt werden:
   * Bilder mit extremer Beleuchtung (z. B. starkes Gegenlicht)
@@ -69,6 +69,6 @@ Anhand der folgenden Tipps können Sie sicherstellen, dass Ihre Eingabebilder m�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie mit den Konzepten der Gesichtserkennung vertraut sind, erfahren Sie, wie Sie ein Skript schreiben, das Gesichter in einer trainierten PersonGroup erkennt.
+Nachdem Sie nun mit den Konzepten der Gesichtserkennung vertraut sind, schreiben Sie ein Skript, das Gesichter in einer trainierten Personengruppe (PersonGroup) erkennt.
 
-* [Identifizieren von Gesichtern in Bildern](../Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)
+* [Schnellstart: Clientbibliothek zur Gesichtserkennung](../Quickstarts/client-libraries.md)

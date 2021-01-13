@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit UserVoice | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und UserVoice konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 684a405b-8932-46f6-b43a-4d97a42b6b87
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: c0c259d3d05232aa70016771e2a2bce7622730a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39b3104f9d6cbc004383bf2c50d07c4dd345fa3c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087637"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353586"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Tutorial: Azure Active Directory-Integration mit UserVoice
 
@@ -31,7 +27,7 @@ Die Integration von UserVoice in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei UserVoice anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -136,15 +132,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit UserVoi
 
 2. Klicken Sie auf der Symbolleiste oben auf **Settings** (Einstellungen), und wählen Sie dann aus dem Menü die Option **Web portal** aus.
    
-    ![Abschnitt „Settings“ auf App-Seite](./media/uservoice-tutorial/ic777519.png "Settings")
+    ![Abschnitt „Settings“ (Einstellungen) auf App-Seite](./media/uservoice-tutorial/ic777519.png "Einstellungen")
 
 3. Klicken Sie auf der Registerkarte **Web portal** im Abschnitt **User authentication** (Benutzerauthentifizierung) auf **Edit** (Bearbeiten), um die Dialogfeldseite **Edit User Authentication** (Benutzerauthentifizierung bearbeiten) zu öffnen.
    
-    ![Registerkarte „Web portal“](./media/uservoice-tutorial/ic777520.png "Web portal")
+    ![Registerkarte „Web portal“ (Webportal)](./media/uservoice-tutorial/ic777520.png "Webportal")
 
 4. Führen Sie auf der Dialogseite **Benutzerauthentifizierung bearbeiten** die folgenden Schritte aus:
    
-    ![Benutzerauthentifizierung bearbeiten](./media/uservoice-tutorial/ic777521.png "Benutzerauthentifizierung bearbeiten")
+    ![Bearbeiten der Benutzerauthentifizierung](./media/uservoice-tutorial/ic777521.png "Benutzerauthentifizierung bearbeiten")
    
     a. Klicken Sie auf **Einmaliges Anmelden (SSO)** .
  
@@ -178,7 +174,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -222,34 +218,33 @@ Damit sich Azure AD-Benutzer bei UserVoice anmelden können, müssen sie in Use
 
 4. Klicken Sie auf **Agents und Berechtigungen**.
    
-    ![Agents und Berechtigungen](./media/uservoice-tutorial/ic777812.png "Agents und Berechtigungen")
+    ![Agents and permissions (Agents und Berechtigungen)](./media/uservoice-tutorial/ic777812.png "Agents und Berechtigungen")
 
 5. Klicken Sie auf **Administratoren hinzufügen**.
    
-    ![Administratoren hinzufügen](./media/uservoice-tutorial/ic777813.png "Administratoren hinzufügen")
+    ![Add admins (Administratoren hinzufügen)](./media/uservoice-tutorial/ic777813.png "Administratoren hinzufügen")
 
 6. Führen Sie im Dialogfeld **Benutzer einladen** die folgenden Schritte aus:
    
-    ![Administratoren einladen](./media/uservoice-tutorial/ic777814.png "Administratoren einladen")
+    ![Invite admins (Administratoren einladen)](./media/uservoice-tutorial/ic777814.png "Benutzer einladen")
    
     a. Geben Sie in das Textfeld „E-Mails“ die E-Mail-Adresse des Azure AD-Kontos ein, das Sie bereitstellen möchten, und klicken Sie auf **Hinzufügen**.
    
     b. Klicken Sie auf **Einladen**.
 
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von UserVoice-Benutzerkonten oder mithilfe der von UserVoice bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von UserVoice-Benutzerkonten oder mithilfe der von UserVoice bereitgestellten APIs erstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „UserVoice“ klicken, sollten Sie automatisch bei der UserVoice-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „UserVoice“ klicken, sollten Sie automatisch bei der UserVoice-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

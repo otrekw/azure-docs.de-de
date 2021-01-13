@@ -1,22 +1,21 @@
 ---
-title: Bereitstellen eines Geräts mithilfe des Azure IoT Hub Device Provisioning-Diensts | Microsoft-Dokumentation
-description: Bereitstellen Ihres Geräts für eine einzelne IoT Hub-Instanz mithilfe des Azure IoT Hub Device Provisioning-Diensts
+title: 'Tutorial: Bereitstellen eines Geräts mithilfe von Azure IoT Hub Device Provisioning Service'
+description: In diesem Tutorial erfahren Sie, wie Sie Ihr Gerät mithilfe von Azure IoT Hub Device Provisioning Service (DPS) für einen einzelnen IoT-Hub bereitstellen.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/12/2018
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9ff134b0747e78773c95fac7ceab4cddd61c601d
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 876fd8260b64fba4d3d34a766b4259323c660b76
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227013"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968076"
 ---
-# <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Bereitstellen des Geräts für eine IoT Hub-Instanz mithilfe des Azure IoT Hub Device Provisioning-Diensts
+# <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Tutorial: Bereitstellen des Geräts für eine IoT Hub-Instanz mithilfe des Azure IoT Hub Device Provisioning-Diensts
 
 Im vorherigen Tutorial haben Sie erfahren, wie ein Gerät eingerichtet wird, um eine Verbindung mit Ihrem Device Provisioning-Dienst herzustellen. In diesem Tutorial erfahren Sie, wie Sie mithilfe dieses Diensts Ihr Gerät durch automatische Bereitstellung und **_Registrierungslisten_** für eine einzelne IoT Hub-Instanz bereitstellen. Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
@@ -29,27 +28,27 @@ Im vorherigen Tutorial haben Sie erfahren, wie ein Gerät eingerichtet wird, um 
 
 Bevor Sie fortfahren, konfigurieren Sie auf jeden Fall Ihr Gerät wie in dem Tutorial [Einrichten eines bereitzustellenden Geräts mithilfe des Azure IoT Hub Device Provisioning-Diensts](./tutorial-set-up-device.md) erläutert.
 
-Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](concepts-auto-provisioning.md), bevor Sie fortfahren.
+Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Übersicht zur [Bereitstellung](about-iot-dps.md#provisioning-process), bevor Sie den Vorgang fortsetzen.
 
 <a id="enrolldevice"></a>
 ## <a name="enroll-the-device"></a>Registrieren des Geräts
 
-Bei diesem Schritt werden die einzigartigen Sicherheitsartefakte des Geräts zum Device Provisioning-Dienst hinzugefügt. Diese Sicherheitsartefakte basieren auf dem [Nachweismechanismus](concepts-device.md#attestation-mechanism) des Geräts:
+Bei diesem Schritt werden die einzigartigen Sicherheitsartefakte des Geräts zum Device Provisioning-Dienst hinzugefügt. Diese Sicherheitsartefakte basieren auf dem [Nachweismechanismus](concepts-service.md#attestation-mechanism) des Geräts:
 
 - Für TPM-basierte Geräte benötigen Sie Folgendes:
-    - Der *Endorsement Key* ist für jeden TPM-Chip bzw. jede Simulation eindeutig, und Sie erhalten ihn vom Hersteller des TPM-Chips.  Weitere Informationen finden Sie im Artikel [Grundlegendes zum TPM Endorsement Key](https://technet.microsoft.com/library/cc770443.aspx).
+    - Der *Endorsement Key* ist für jeden TPM-Chip bzw. jede Simulation eindeutig, und Sie erhalten ihn vom Hersteller des TPM-Chips.  Weitere Informationen finden Sie im Artikel [Grundlegendes zum TPM Endorsement Key](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11)).
     - Die *Registrierungs-ID*, die zur eindeutigen Identifizierung eines Geräts im Namespace/Bereich verwendet wird. Diese ID ist eventuell mit der Geräte-ID identisch. Die ID ist für jedes Gerät erforderlich. Bei TPM-basierten Geräten kann die Registrierungs-ID vom TMP selbst abgeleitet werden, z.B. ein SHA-256-Hash des TPM Endorsement Key.
 
       [![Registrierungsinformationen für das TPM im Portal](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - Für X.509-basierte Geräte benötigen Sie Folgendes:
-    - Das [für den X.509-Chip oder die X.509-Simulation ausgestellte Zertifikat](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) in Form einer *PEM*- oder *CER*-Datei. Für die individuelle Registrierung müssen Sie für Ihr X.509-System das *Signaturzertifikat* auf Gerätebasis verwenden, für Registrierungsgruppen dagegen das *Stammzertifikat*. 
+    - Das [für den X.509-Chip oder die X.509-Simulation ausgestellte Zertifikat](/windows/win32/seccertenroll/about-x-509-public-key-certificates) in Form einer *PEM*- oder *CER*-Datei. Für die individuelle Registrierung müssen Sie für Ihr X.509-System das *Signaturzertifikat* auf Gerätebasis verwenden, für Registrierungsgruppen dagegen das *Stammzertifikat*. 
 
       [![Hinzufügen einer individuellen Registrierung für den X.509-Nachweis im Portal](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
 Es gibt zwei Möglichkeiten zum Registrieren des Geräts beim Device Provisioning-Dienst:
 
-- **Registrierungsgruppen** Diese stellen Gruppen von Geräten dar, die einen bestimmten Nachweismechanismus gemeinsam nutzen. Es wird empfohlen, eine Registrierungsgruppe für eine große Anzahl von Geräten, die eine gewünschte Erstkonfiguration gemeinsam nutzen, oder für Geräte zu verwenden, die alle demselben Mandanten zugeordnet sind. Weitere Informationen zum Identitätsnachweis für Registrierungsgruppen finden Sie unter [Sicherheit](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+- **Registrierungsgruppen** Diese stellen Gruppen von Geräten dar, die einen bestimmten Nachweismechanismus gemeinsam nutzen. Es wird empfohlen, eine Registrierungsgruppe für eine große Anzahl von Geräten, die eine gewünschte Erstkonfiguration gemeinsam nutzen, oder für Geräte zu verwenden, die alle demselben Mandanten zugeordnet sind. Weitere Informationen zum Identitätsnachweis für Registrierungsgruppen finden Sie unter [Sicherheit](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
     [![Hinzufügen einer Gruppenregistrierung für den X.509-Nachweis im Portal](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 
@@ -59,7 +58,7 @@ Nun registrieren Sie das Gerät mithilfe der erforderlichen Sicherheitsartefakte
 
 1. Melden Sie sich beim Azure-Portal an, klicken Sie im Menü auf der linken Seite auf die Schaltfläche **Alle Ressourcen**, und öffnen Sie Ihren Device Provisioning-Dienst.
 
-2. Wählen Sie auf dem Zusammenfassungsblatt des Device Provisioning-Diensts die Option **Registrierungen verwalten** aus. Wählen Sie je nach Ihrer Geräteinstallation entweder die Registerkarte **Individuelle Registrierungen** oder **Registrierungsgruppen**. Klicken Sie oben auf die Schaltfläche **Hinzufügen**. Wählen Sie **TPM** oder **X.509** als *Mechanismus* zum Identitätsnachweis aus, und geben Sie wie zuvor erläutert die entsprechenden Sicherheitsartefakte ein. Sie können eine neue **IoT Hub-Geräte-ID** eingeben. Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
+2. Wählen Sie auf dem Zusammenfassungsblatt des Device Provisioning-Diensts die Option **Registrierungen verwalten** aus. Wählen Sie je nach Ihrer Geräteinstallation entweder die Registerkarte **Individuelle Registrierungen** oder **Registrierungsgruppen**. Klicken Sie ganz oben auf die Schaltfläche **Hinzufügen**. Wählen Sie **TPM** oder **X.509** als *Mechanismus* zum Identitätsnachweis aus, und geben Sie wie zuvor erläutert die entsprechenden Sicherheitsartefakte ein. Sie können eine neue **IoT Hub-Geräte-ID** eingeben. Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
 
 3. Wenn das Gerät erfolgreich registriert ist, sollte es wie folgt im Portal angezeigt werden:
 
@@ -89,7 +88,7 @@ Nach dem Starten Ihres Geräts sollten die folgenden Aktionen ausgeführt werden
 
     ![Erfolgreiche Herstellung einer Verbindung mit dem Hub im Portal](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-Weitere Informationen finden Sie unter dem Beispiel zur Bereitstellung eines Geräteclients: [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). In diesem Beispiel wird die Bereitstellung eines simulierten Geräts mit TPM, X.509-Zertifikaten und symmetrischen Schlüsseln veranschaulicht. Schritt-für-Schritt-Anleitungen zur Verwenden des Beispiels finden Sie in den Schnellstartanleitungen zu [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device), zu [X.509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509) und zu [symmetrischen Schlüsseln](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key).
+Weitere Informationen finden Sie unter dem Beispiel zur Bereitstellung eines Geräteclients: [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). In diesem Beispiel wird die Bereitstellung eines simulierten Geräts mit TPM, X.509-Zertifikaten und symmetrischen Schlüsseln veranschaulicht. Schritt-für-Schritt-Anleitungen zur Verwenden des Beispiels finden Sie in den Schnellstartanleitungen zu [TPM](./quick-create-simulated-device.md), zu [X.509](./quick-create-simulated-device-x509.md) und zu [symmetrischen Schlüsseln](./quick-create-simulated-device-symm-key.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie Folgendes gelernt:

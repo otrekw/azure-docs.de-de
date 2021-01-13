@@ -3,31 +3,34 @@ title: 'Azure CLI-Skriptbeispiel: Erstellen und Übermitteln eines Auftrags | Mi
 description: Das Azure CLI-Skript in diesem Thema zeigt, wie Sie einen Auftrag mithilfe einer HTTPS-URL an eine einfache Codierungstransformation übermitteln.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: media-services
 ms.devlang: azurecli
-ms.topic: sample
+ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/01/2019
-ms.author: juliako
-ms.openlocfilehash: 08caf4b78b1042d5753dba2bc73e93fa3a250a17
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0f2e1d901e674c3fecf957bd10314e51195f8b84
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122387"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89295987"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>CLI-Beispiel: Erstellen und Übermitteln eines Auftrags
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Wenn Sie in Media Services v3 Aufträge zur Verarbeitung Ihrer Videos übermitteln, müssen Sie Media Services mitteilen, wo sich das Eingabevideo befindet. Eine der Optionen ist die Angabe einer HTTPS-URL als Auftragseingabe (wie in diesem Artikel gezeigt). 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-[Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
+[Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
@@ -87,4 +90,4 @@ Sie erhalten eine Antwort, die in etwa wie folgt aussieht:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[az ams job (CLI)](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+[az ams job (CLI)](/cli/azure/ams/job?view=azure-cli-latest)

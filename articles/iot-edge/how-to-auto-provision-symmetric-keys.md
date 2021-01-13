@@ -1,25 +1,24 @@
 ---
-title: Automatische Bereitstellung von Geräten mit DPS mithilfe des Nachweises symmetrischer Schlüssel – Azure IoT Edge | Microsoft-Dokumentation
+title: Bereitstellen eines Geräts mithilfe des Nachweises des symmetrischen Schlüssels – Azure IoT Edge
 description: Verwenden des Nachweises symmetrischer Schlüssel zum Testen der automatischen Gerätebereitstellung für Azure IoT Edge mithilfe des Device Provisioning-Diensts
 author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 07/10/2019
+ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 5a7e7fa011c0287d5e97ad7a8cd2e3ba77f298dd
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 10ed546e8f05f4a93e4523c7870f79d41aa1f622
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299846"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045991"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe des Nachweises symmetrischer Schlüssel
 
-Azure IoT Edge-Geräte können genau wie nicht Edge-fähige Geräte mit dem [Gerätebereitstellungsdienst](../iot-dps/index.yml) automatisch bereitgestellt werden. Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](../iot-dps/concepts-auto-provisioning.md), bevor Sie fortfahren.
+Azure IoT Edge-Geräte können genau wie nicht Edge-fähige Geräte mit dem [Device Provisioning-Dienst](../iot-dps/index.yml) automatisch bereitgestellt werden. Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Übersicht zu [Bereitstellung](../iot-dps/about-iot-dps.md#provisioning-process), bevor Sie den Vorgang fortsetzen.
 
 In diesem Artikel erfahren Sie, wie Sie mit den folgenden Schritten auf einem IoT Edge-Gerät mithilfe des Nachweises symmetrischer Schlüssel eine individuelle Registrierung beim Device Provisioning-Dienst erstellen:
 
@@ -27,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie mit den folgenden Schritten auf einem Io
 * Erstellen Sie eine individuelle Registrierung für das Gerät.
 * Installieren Sie die IoT Edge-Runtime, und verbinden Sie das Gerät mit dem IoT Hub.
 
-Der Nachweis des symmetrischen Schlüssels ist eine einfache Methode zum Authentifizieren eines Geräts mit einer Device Provisioning Service-Instanz. Diese Nachweismethode stellt eine „Hallo Welt“-Umgebung für Entwickler bereit, die noch nicht mit der Gerätebereitstellung vertraut sind oder keine strengen Sicherheitsanforderungen haben. Die Gerätebestätigung bzw. der Nachweis mithilfe eines [TPM](../iot-dps/concepts-tpm-attestation.md) (Trusted Platform Module) ist sicherer und sollte verwendet werden, wenn striktere Sicherheitsanforderungen gelten.
+Der Nachweis des symmetrischen Schlüssels ist eine einfache Methode zum Authentifizieren eines Geräts mit einer Device Provisioning Service-Instanz. Diese Nachweismethode stellt eine „Hallo Welt“-Umgebung für Entwickler bereit, die noch nicht mit der Gerätebereitstellung vertraut sind oder keine strengen Sicherheitsanforderungen haben. Die Gerätebestätigung bzw. der Nachweis mithilfe eines [TPM](../iot-dps/concepts-tpm-attestation.md) (Trusted Platform Module) oder von [X.509-Zertifikaten](../iot-dps/concepts-x509-attestation.md) ist sicherer und sollte verwendet werden, wenn striktere Sicherheitsanforderungen gelten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,11 +43,7 @@ Nachdem Sie den Device Provisioning-Dienst ausgeführt haben, kopieren Sie den W
 
 Eine eindeutige Registrierungs-ID muss definiert werden, um jedes Gerät zu identifizieren. Sie können die MAC-Adresse, Seriennummer oder eindeutige Informationen vom Gerät verwenden.
 
-In diesem Beispiel wird eine Kombination aus MAC-Adresse und Seriennummer genutzt, um die folgende Zeichenfolge für eine Registrierungs-ID zu bilden.
-
-```
-sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
-```
+In diesem Beispiel dient eine Kombination aus MAC-Adresse und Seriennummer dazu, die folgende Zeichenfolge für eine Registrierungs-ID zu bilden: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`.
 
 Erstellen Sie eine eindeutige Registrierungs-ID für Ihr Gerät. Gültige Zeichen sind alphanumerische Kleinbuchstaben und Bindestriche („-“).
 
@@ -56,7 +51,7 @@ Erstellen Sie eine eindeutige Registrierungs-ID für Ihr Gerät. Gültige Zeiche
 
 Verwenden Sie die Registrierungs-ID Ihres Geräts, um eine individuelle Registrierung im DPS zu erstellen.
 
-Wenn Sie eine Registrierung im DPS erstellen, haben Sie die Möglichkeit zum Angeben von **Anfänglicher Status von Gerätezwilling**. Im Gerätezwilling können Sie Tags zum Gruppieren von Geräten nach jeder beliebigen Metrik, z.B. Region, Umgebung, Speicherort oder Geräte, festlegen, die Sie in Ihrer Projektmappe benötigen. Diese Tags werden zum Erstellen von [automatischen Bereitstellungen](how-to-deploy-monitor.md) verwendet.
+Wenn Sie eine Registrierung im DPS erstellen, haben Sie die Möglichkeit zum Angeben von **Anfänglicher Status von Gerätezwilling**. Im Gerätezwilling können Sie Tags zum Gruppieren von Geräten nach jeder beliebigen Metrik, z.B. Region, Umgebung, Speicherort oder Geräte, festlegen, die Sie in Ihrer Projektmappe benötigen. Diese Tags werden zum Erstellen von [automatischen Bereitstellungen](how-to-deploy-at-scale.md) verwendet.
 
 > [!TIP]
 > Gruppenregistrierungen sind ebenfalls möglich, wenn Sie einen Nachweis symmetrischer Schlüssel verwenden und sie dieselben Entscheidungen wie die individuellen Registrierungen beinhalten.
@@ -76,6 +71,9 @@ Wenn Sie eine Registrierung im DPS erstellen, haben Sie die Möglichkeit zum Ang
    1. Stellen Sie nach Wunsch eine **IoT Hub-Geräte-ID** für Ihr Gerät bereit. Sie können mithilfe von Geräte-IDs ein einzelnes Gerät als Ziel für die Modulbereitstellung festlegen. Wenn Sie keine Geräte-ID angeben, wird die Registrierungs-ID verwendet.
 
    1. Wählen Sie **True** aus, um anzugeben, dass die Registrierung für ein IoT Edge-Gerät erfolgt. Bei einer Gruppenregistrierung müssen alle Geräte IoT Edge-Geräte sein, oder keines von ihnen darf ein IoT Edge-Gerät sein.
+
+   > [!TIP]
+   > In der Azure CLI können Sie eine [Registrierung](/cli/azure/ext/azure-iot/iot/dps/enrollment) oder eine [Registrierungsgruppe](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) erstellen und mithilfe des **Edge-fähigen** Flags angeben, dass ein Gerät oder eine Gruppe von Geräten ein IoT Edge Gerät ist.
 
    1. Übernehmen Sie für **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen** den Standardwert aus der Zuordnungsrichtlinie des Device Provisioning-Diensts, oder wählen Sie einen anderen speziellen Wert für diese Registrierung.
 
@@ -158,7 +156,13 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 Die IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Die Komponenten werden in Containern ausgeführt, und Sie können weitere Container auf dem Gerät bereitstellen, um Code im Edge-Bereich auszuführen.
 
-Sie benötigen die folgenden Informationen, wenn Sie Ihr Gerät bereitstellen:
+Führen Sie die Schritte in [Installieren der Azure IoT Edge-Runtime](how-to-install-iot-edge.md) aus, und kehren Sie dann zu diesem Artikel zurück, um das Gerät bereitzustellen.
+
+## <a name="configure-the-device-with-provisioning-information"></a>Konfigurieren des Geräts mit Bereitstellungsinformationen
+
+Sobald die Runtime auf Ihrem Gerät installiert wurde, konfigurieren Sie es mit den Informationen, die es zum Herstellen einer Verbindung zwischen Device Provisioning Service und IoT Hub verwendet.
+
+Halten Sie die folgenden Informationen bereit:
 
 * Den Wert für den DPS-**ID-Bereich**
 * Die von Ihnen erstellte **Registrierungs-ID** für das Gerät
@@ -169,31 +173,50 @@ Sie benötigen die folgenden Informationen, wenn Sie Ihr Gerät bereitstellen:
 
 ### <a name="linux-device"></a>Linux-Gerät
 
-Befolgen Sie die Anweisungen für die Architektur Ihres Geräts. Stellen Sie sicher, dass Sie die IoT Edge-Runtime für die automatische und nicht für die manuelle Bereitstellung konfigurieren.
+1. Öffnen Sie die Konfigurationsdatei auf dem IoT Edge-Gerät.
 
-[Installieren der Azure IoT Edge-Runtime unter Linux](how-to-install-iot-edge-linux.md)
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
 
-Der Abschnitt in der Konfigurationsdatei für die Bereitstellung von symmetrischen Schlüsseln sieht wie folgt aus:
+1. Suchen Sie den Abschnitt zu Bereitstellungskonfigurationen für die Datei. Heben Sie die Auskommentierung der Zeilen für die Bereitstellung des symmetrischen DPS-Schlüssels auf, und vergewissern Sie sich, dass alle anderen Bereitstellungszeilen auskommentiert sind.
 
-```yaml
-# DPS symmetric key provisioning configuration
-provisioning:
-   source: "dps"
-   global_endpoint: "https://global.azure-devices-provisioning.net"
-   scope_id: "{scope_id}"
-   attestation:
-      method: "symmetric_key"
-      registration_id: "{registration_id}"
-      symmetric_key: "{symmetric_key}"
-```
+   Der Zeile `provisioning:` sollte kein Leerzeichen vorangestellt und geschachtelte Elemente sollten um zwei Leerzeichen eingerückt sein.
 
-Ersetzen Sie die Platzhalterwerte für `{scope_id}`, `{registration_id}` und `{symmetric_key}` durch die Daten, die Sie zuvor gesammelt haben.
+   ```yml
+   # DPS TPM provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "<SCOPE_ID>"
+     attestation:
+       method: "symmetric_key"
+       registration_id: "<REGISTRATION_ID>"
+       symmetric_key: "<SYMMETRIC_KEY>"
+   ```
+
+1. Aktualisieren Sie die Werte `scope_id`, `registration_id`und `symmetric_key` mit Ihren DPS- und Geräteinformationen.
+
+1. Starten Sie die IoT Edge-Runtime neu, damit alle am Gerät vorgenommenen Konfigurationsänderungen erfasst werden.
+
+   ```bash
+   sudo systemctl restart iotedge
+   ```
 
 ### <a name="windows-device"></a>Windows-Gerät
 
-Befolgen Sie die Anweisungen zum Installieren der IoT Edge-Runtime auf dem Gerät, für das Sie einen abgeleiteten Geräteschlüssel generiert haben. Stellen Sie sicher, dass Sie die IoT Edge-Runtime für die automatische und nicht für die manuelle Bereitstellung konfigurieren.
+1. Öffnen Sie ein PowerShell-Fenster im Administratormodus. Bei der Installation von IoT Edge müssen Sie eine AMD64-Sitzung von PowerShell – nicht PowerShell (x86) – verwenden.
 
-[Installation und automatische Bereitstellung von IoT Edge unter Windows](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+1. Der Befehl **Initialize-IoTEdge** konfiguriert die IoT Edge-Runtime auf Ihrem Computer. Der Befehl verwendet standardmäßig die manuelle Bereitstellung mit Windows-Containern. Verwenden Sie deshalb das Flag `-DpsSymmetricKey` für die automatische Bereitstellung per Authentifizierung mit symmetrischem Schlüssel.
+
+   Ersetzen Sie die Platzhalterwerte für `{scope_id}`, `{registration_id}` und `{symmetric_key}` durch die Daten, die Sie zuvor gesammelt haben.
+
+   Wenn Sie Linux-Container unter Windows verwenden, fügen Sie den Parameter `-ContainerOs Linux` hinzu.
+
+   ```powershell
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+   Initialize-IoTEdge -DpsSymmetricKey -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
+   ```
 
 ## <a name="verify-successful-installation"></a>Bestätigen einer erfolgreichen Installation
 
@@ -243,4 +266,4 @@ Sie können überprüfen, ob die individuelle Registrierung, die Sie im Device P
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Der Registrierungsprozess des Device Provisioning-Diensts ermöglicht Ihnen, die Geräte-ID und die Tags von Gerätezwillingen beim Bereitstellen des neuen Geräts zu sehen. Sie können diese Werte verwenden, um einzelne Geräte oder Gruppen von Geräten über die automatische Geräteverwaltung als Ziel festzulegen. Weitere Informationen finden Sie unter [Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals](how-to-deploy-monitor.md) oder [Verwenden der Azure CLI](how-to-deploy-monitor-cli.md).
+Der Registrierungsprozess des Device Provisioning-Diensts ermöglicht Ihnen, die Geräte-ID und die Tags von Gerätezwillingen beim Bereitstellen des neuen Geräts zu sehen. Sie können diese Werte verwenden, um einzelne Geräte oder Gruppen von Geräten über die automatische Geräteverwaltung als Ziel festzulegen. Weitere Informationen finden Sie unter [Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals](how-to-deploy-at-scale.md) oder [Verwenden der Azure CLI](how-to-deploy-cli-at-scale.md).

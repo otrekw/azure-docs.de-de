@@ -1,23 +1,23 @@
 ---
-title: Erstellen von Datenpipelines mithilfe des Azure .NET SDK | Microsoft-Dokumentation
+title: Erstellen von Datenpipelines mithilfe des Azure .NET SDK
 description: Erfahren Sie, wie Sie Azure Data Factorys mithilfe des Data Factory .NET SDK programmgesteuert erstellen, überwachen und verwalten.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 11120a84f2796061d76d8d813ba906da073b57c6
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dd1c7c20441d12600e2101f738904caf6260509e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140210"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496005"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Erstellen, Überwachen und Verwalten von Azure Data Factorys mithilfe des Azure Data Factory .NET SDK
 > [!NOTE]
@@ -35,7 +35,7 @@ Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgeste
 
 * Visual Studio 2012, 2013 oder 2015
 * Laden Sie das [Azure .NET SDK](https://azure.microsoft.com/downloads/)herunter, und installieren Sie es.
-* Azure PowerShell. Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) zum Installieren von Azure PowerShell auf Ihrem Computer. Azure PowerShell wird zum Erstellen einer Azure Active Directory-Anwendung benötigt.
+* Azure PowerShell. Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/) zum Installieren von Azure PowerShell auf Ihrem Computer. Azure PowerShell wird zum Erstellen einer Azure Active Directory-Anwendung benötigt.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Erstellen einer Anwendung in Azure Active Directory
 Erstellen Sie eine Azure Active Directory-Anwendung, erstellen Sie einen Dienstprinzipal für die Anwendung, und weisen Sie ihn der Rolle **Data Factory-Mitwirkender** zu.
@@ -501,6 +501,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sehen Sie sich das folgende Beispiel für die Erstellung einer Pipeline mithilfe des .NET-SDK an, das Daten aus Azure Blob Storage in Azure SQL-Datenbank kopiert: 
+Sehen Sie sich das folgende Beispiel für die Erstellung einer Pipeline mithilfe des .NET-SDK an, das Daten aus einem Azure-Blobspeicher in Azure SQL-Datenbank kopiert: 
 
 - [Erstellen einer Pipeline zum Kopieren von Daten aus Blob Storage in SQL-Datenbank](data-factory-copy-activity-tutorial-using-dotnet-api.md)

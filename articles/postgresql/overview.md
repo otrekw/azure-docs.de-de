@@ -1,38 +1,69 @@
 ---
-title: Übersicht über den relationalen Datenbankdienst Azure Database for PostgreSQL
-description: Bietet eine Übersicht über den relationalen Datenbankdienst Azure-Datenbank für PostgreSQL.
-author: jonels-msft
-ms.author: jonels
+title: Was ist Azure Database for PostgreSQL?
+description: Bietet eine Übersicht über den relationalen Datenbankdienst Azure Database for PostgreSQL im Kontext von Flexible Server.
+author: sunilagarwal
+ms.author: sunila
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 05/06/2019
-ms.openlocfilehash: f4023fa84215a0319669de0d812d8306b62278e3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 09/21/2020
+ms.openlocfilehash: c3ea7930f41fe89538a817da032e993e534db9cd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073267"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491324"
 ---
-# <a name="what-is-azure-database-for-postgresql"></a>Was ist Azure-Datenbank für PostgreSQL?
-Azure Database for PostgreSQL ist ein relationaler Datenbankdienst in der Microsoft Cloud für Entwickler. Er basiert auf der Communityversion der Open-Source-[PostgreSQL](https://www.postgresql.org/)-Datenbank-Engine und wird mit zwei Bereitstellungsoptionen angeboten: „Einzelserver“ und „Hyperscale (Citus)“ (Vorschauversion).
+# <a name="what-is-azure-database-for-postgresql"></a>Was ist Azure Database for PostgreSQL?
 
-## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (Einzelserver)
-Die Bereitstellungsoption „Einzelserver“ bietet Folgendes:
+Azure Database for PostgreSQL ist ein relationaler Datenbankdienst in der Microsoft-Cloud, der auf der Datenbank-Engine [PostgreSQL Community Edition](https://www.postgresql.org/) (verfügbar unter der GPLv2-Lizenz) basiert. Azure-Datenbank für PostgreSQL bietet Folgendes:
 
-- Integrierte Hochverfügbarkeit ohne zusätzliche Kosten (SLA von 99,99 %)
-- Vorhersagbare Leistung inklusive nutzungsbasierter Bezahlung
-- Vertikale Skalierung nach Bedarf in Sekundenschnelle
-- Überwachung und Warnung zur schnellen Bewertung der Auswirkungen der Skalierung
-- Schutz von sensiblen Daten in Ruhe und während der Übertragung
-- Automatische Sicherungen und Point-in-Time-Wiederherstellung für bis zu 35 Tage
-- Sicherheit und Konformität auf Unternehmensniveau
+- Integrierte Hochverfügbarkeit
+- Schutz von Daten durch automatische Sicherungen und Point-in-Time-Wiederherstellungen für bis zu 35 Tage.
+- Automatisierte Wartung für die zugrunde liegende Hardware, das Betriebssystem und die Datenbank-Engine, um die Sicherheit des Diensts zu gewährleisten und sicherzustellen, dass er stets auf dem aktuellen Stand ist.
+- Vorhersagbare Leistung inklusive nutzungsbasierter Bezahlung.
+- Elastische Skalierung innerhalb weniger Sekunden.
+- Sicherheit auf Unternehmensniveau und branchenführende Compliance, um sowohl ruhende vertrauliche Daten als auch Daten während der Übertragung zu schützen.
+- Überwachung und Automatisierung, um die Verwaltung und Überwachung für umfangreiche Bereitstellungen zu vereinfachen.
+- Branchenführender Support.
 
-All diese Funktionen erfordern fast keine Administration und werden alle ohne zusätzliche Kosten bereitgestellt. Sie ermöglichen es Ihnen, sich auf die schnelle Anwendungsentwicklung und die Beschleunigung der Markteinführung zu konzentrieren, anstatt wertvolle Zeit und Ressourcen für die Verwaltung von VMs und der Infrastruktur aufzuwenden. Sie können Ihre Anwendung weiterhin mit den Open-Source-Tools und der Plattform Ihrer Wahl entwickeln, ohne sich neue Fähigkeiten aneignen zu müssen.
+ :::image type="content" source="./media/overview/overview-what-is-azure-postgres.png" alt-text="Azure-Datenbank für PostgreSQL":::
 
-Für die Bereitstellungsoption „Einzelserver“ stehen drei Tarife zur Verfügung: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Jeder Tarif bietet unterschiedliche Ressourcenfunktionen für Ihre Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Durch die dynamische Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter  [Tarife](concepts-pricing-tiers.md).
+Diese Funktionen erfordern fast keine Administration und werden alle ohne zusätzliche Kosten bereitgestellt. Mit diesen Funktionen können Sie sich auf die schnelle Entwicklung von Anwendungen und die Verkürzung des Zeitraums bis zur Markteinführung konzentrieren, anstatt wertvolle Zeit und Ressourcen für die Verwaltung von virtuellen Computern und der Infrastruktur aufwenden zu müssen. Darüber hinaus können Sie Ihre Anwendung weiterhin mit den Open-Source-Tools und der Plattform Ihrer Wahl entwickeln und mit der Geschwindigkeit und Effizienz liefern, die Ihr Unternehmen verlangt, ohne dass Sie sich dafür neue Fähigkeiten aneignen müssen.
 
-## <a name="azure-database-for-postgresql---hyperscale-citus-preview"></a>Azure Database for PostgreSQL: Citus (Vorschauversion)
+## <a name="deployment-models"></a>Bereitstellungsmodelle
+
+Azure Database for PostgreSQL auf Grundlage der PostgreSQL Community Edition ist in drei Bereitstellungsmodi verfügbar:
+
+- Einzelner Server
+- Flexible Server (Vorschau)
+- Hyperscale (Citus)
+
+### <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (Einzelserver)
+
+Bei Azure Database for PostgreSQL Single Server handelt es sich um einen vollständig verwalteten Datenbankdienst mit minimalen Anforderungen für die Anpassung der Datenbank. Die Single Server-Plattform kann die meisten Funktionen zur Datenbankverwaltung bereitstellen, z. B. Patching, Sicherungen, Hochverfügbarkeit sowie Sicherheit mit minimaler Benutzerkonfiguration und -steuerung. Die Architektur ist für integrierte Hochverfügbarkeit mit einer Verfügbarkeit von 99,99 % bei einer einzelnen Verfügbarkeitszone optimiert. Sie unterstützt die Community-Versionen 9.5, 9,6, 10 und 11 von PostgreSQL. Der Dienst ist ab heute in vielen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/) allgemein verfügbar.
+
+Für die Bereitstellungsoption „Einzelserver“ stehen drei Tarife zur Verfügung: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Jeder Tarif bietet unterschiedliche Ressourcenfunktionen für Ihre Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Durch die dynamische Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter [Tarife](./concepts-pricing-tiers.md).
+
+Single Server-Implementierungen eignen sich am besten für cloudnative Anwendungen, da sie für das automatisierte Patchen ohne genauen Patchzeitplan und ohne benutzerdefinierte PostgreSQL-Konfigurationseinstellungen konzipiert sind.
+
+Eine detaillierte Übersicht über den Single Server-Bereitstellungsmodus finden Sie unter [Übersicht über Single Server](./overview-single-server.md).
+
+### <a name="azure-database-for-postgresql---flexible-server-preview"></a>Azure Database for PostgreSQL – Flexible Server (Vorschau)
+
+Azure Database for PostgreSQL Flexible Server ist ein vollständig verwalteter Datenbankdienst, der eine differenziertere Steuerung und mehr Flexibilität bei den Verwaltungsfunktionen und Konfigurationseinstellungen der Datenbank bietet. Durch die höhere Flexibilität und umfassenderen Anpassungsmöglichkeiten lassen sich mit diesem Dienst unterschiedliche Benutzeranforderungen erfüllen. Mit der Flexible Server-Architektur können Benutzer Hochverfügbarkeit in einer einzelnen Verfügbarkeitszone sowie in mehreren Verfügbarkeitszonen auswählen. Flexible Server-Implementierungen bieten eine bessere Kostenoptimierung mit der Möglichkeit, den Server anzuhalten/zu starten, sowie einen burstfähigen Computetarif, der sich ideal für Workloads eignet, die nicht dauerhaft die volle Computekapazität benötigen. Der Dienst unterstützt derzeit die Community-Versionen 11 und 12 von PostgreSQL. Die Unterstützung weiterer Versionen ist für die nahe Zukunft geplant. Aktuell befindet sich der Dienst in der Vorschauphase, und er ist in einer Vielzahl von Azure-Regionen verfügbar.
+
+Flexible Server-Implementierungen eignen sich am besten für folgende Szenarien:
+
+- Anwendungsentwicklungen, die bessere Steuerungs- und Anpassungsmöglichkeiten erfordern.
+- Kostenoptimierungsoptionen mit der Möglichkeit, Server anzuhalten/starten.
+- Zonenredundante Hochverfügbarkeit
+- Verwaltete Wartungsfenster
+  
+Eine detaillierte Übersicht über den Flexible Server-Bereitstellungsmodus finden Sie unter [Übersicht über Flexible Server](./flexible-server/overview.md).
+
+### <a name="azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL – Hyperscale (Citus)
+
 Bei der Option „Hyperscale (Citus)“ werden Abfragen mithilfe von Sharding horizontal über mehrere Computer hinweg skaliert. Die Abfrage-Engine parallelisiert eingehende SQL-Abfragen auf diesen Servern, um die Antwortzeiten bei großen Datasets zu verkürzen. Sie eignet sich für Anwendungen, die eine größere Skalierbarkeit und höhere Leistung erfordern, und wird im Allgemeinen für Workloads mit bis zu 100 GB an Daten (oder auch mehr) eingesetzt.
 
 Die Bereitstellungsoption „Hyperscale (Citus)“ bietet Folgendes:
@@ -40,24 +71,13 @@ Die Bereitstellungsoption „Hyperscale (Citus)“ bietet Folgendes:
 - Horizontale Skalierung auf mehreren Computern mithilfe von Sharding
 - Parallelisierung von Abfragen auf den Servern für kürzere Antwortzeiten bei großen Datasets
 - Hervorragende Unterstützung für mehrinstanzenfähige Anwendungen, operative Echtzeitanalyse und Transaktionsworkloads mit hohem Durchsatz
-
+  
 Bei der Option „Hyperscale (Citus)“ können für PostgreSQL erstellte Anwendungen verteilte Abfragen mit [Standardverbindungsbibliotheken](./concepts-connection-libraries.md) und minimalen Änderungen ausführen.
 
-Beachten Sie, dass Citus derzeit als öffentliche Vorschauversion verfügbar ist und daher noch ohne Vereinbarung zum Servicelevel (Service Level Agreement, SLA) angeboten wird.
-
-## <a name="data-security"></a>Datensicherheit
-Azure-Datenbankdienste sind für ihre Datensicherheit bekannt. Diese Tradition wird auch von Azure Database for PostgreSQL fortgeführt. Der Dienst bietet Features zur Einschränkung des Zugriffs, zum Schutz von Daten (sowohl in Ruhe als auch während der Übertragung) sowie zur Überwachung von Aktivitäten. Weitere Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://azure.microsoft.com/overview/trusted-cloud/).
-
-Der Azure Database for PostgreSQL-Dienst verwendet Speicherverschlüsselung für ruhende Daten und ist mit FIPS 140-2 konform. Daten (auch Sicherungen) werden auf dem Datenträger verschlüsselt. Der Dienst verwendet das in der Azure Storage-Verschlüsselung enthaltene AES-256-Bit-Verschlüsselungsverfahren, und die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden. Für den Schutz von Daten während der Übertragung erfordert der Azure Database for PostgreSQL-Dienst standardmäßig sichere Verbindungen innerhalb des Netzwerks sowie zwischen der Datenbank und Clientanwendung.
-
-## <a name="contacts"></a>Kontakte
-Sollten Sie Fragen oder Vorschläge zur Verwendung von Azure Database for PostgreSQL haben, senden Sie eine E-Mail an das Azure Database for PostgreSQL-Team ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Wenden Sie sich bei allgemeinen Fragen an diese Adresse, anstatt ein Supportticket zu öffnen.
-
-Weitere Kontaktmöglichkeiten:
-- Wenn Sie den Azure-Support kontaktieren oder ein Problem mit Ihrem Konto beheben lassen möchten, [erstellen Sie im Azure-Portal ein Ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag über [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
-
 ## <a name="next-steps"></a>Nächste Schritte
-- Auf der Seite mit der [Preisgestaltung](https://azure.microsoft.com/pricing/details/postgresql/) finden Sie Kostenvergleiche und Rechner.
-- Erstellen Sie Ihre erste [Einzelserverinstanz](./quickstart-create-server-database-portal.md) oder [Citus-Instanz (Vorschauversion)](./quickstart-create-hyperscale-portal.md) von Azure Database for PostgreSQL.
-- Erstellen Ihrer ersten App in Python, PHP, Ruby, C\#, Java oder Node.js: [Verbindungsbibliotheken](./concepts-connection-libraries.md)
+
+Erfahren Sie mehr über die drei Bereitstellungsmodi für Azure Database for PostgreSQL, und wählen Sie die idealen Optionen für Ihre Anforderungen aus.
+
+- [Single Server](./overview-single-server.md)
+- [Flexible Server](./flexible-server/overview.md)
+- Hyperscale (Citus)

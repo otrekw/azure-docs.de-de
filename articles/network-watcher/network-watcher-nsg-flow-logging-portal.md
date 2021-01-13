@@ -3,9 +3,7 @@ title: Protokollieren des Netzwerkdatenverkehrs zu und von einem virtuellen Comp
 description: Erfahren Sie, wie Sie den Netzwerkdatenverkehr zu und von einem virtuellen Computer mithilfe der Funktion für NSG-Flussprotokolle von Network Watcher protokollieren können.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 tags: azure-resource-manager
 Customer intent: I need to log the network traffic to and from a VM so I can analyze it for anomalies.
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
@@ -15,16 +13,23 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 3e5490a4d74f10532764029f7a83788e3e39b592
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 385d43e46cd3f9465c0fbf9a02eeae356f48fac4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636216"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966529"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Tutorial: Protokollieren des Netzwerkdatenverkehrs zu und von einem virtuellen Computer über das Azure-Portal
+
+> [!div class="op_single_selector"]
+> - [Azure portal](network-watcher-nsg-flow-logging-portal.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure-Befehlszeilenschnittstelle](network-watcher-nsg-flow-logging-cli.md)
+> - [REST-API](network-watcher-nsg-flow-logging-rest.md)
+> - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 Mithilfe einer Netzwerksicherheitsgruppe (NSG) können Sie eingehenden Datenverkehr zu und ausgehenden Datenverkehr von einem virtuellen Computer filtern. Sie können den Netzwerkdatenverkehr, der über eine NSG verläuft, mithilfe der Funktion für NSG-Flussprotokolle von Network Watcher protokollieren. In diesem Tutorial lernen Sie Folgendes:
 
@@ -45,12 +50,12 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
     |Einstellung|Wert|
     |---|---|
-    |NAME|myVm|
+    |Name|myVm|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Subscription| Wählen Sie Ihr Abonnement aus.|
     |Resource group| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
-    |Location| Wählen Sie **USA, Osten** aus.|
+    |Standort| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Übernehmen Sie unter **Einstellungen** alle Standardwerte, und klicken Sie auf **OK**.
@@ -88,19 +93,15 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
 
     | Einstellung        | Wert                                                        |
     | ---            | ---   |
-    | NAME           | Länge von 3 bis 24 Zeichen, darf nur Kleinbuchstaben und Ziffern enthalten und muss für alle Azure Storage-Konten eindeutig sein.                                                               |
-    | Location       | Wählen Sie **USA, Osten** aus.                                           |
+    | Name           | Länge von 3 bis 24 Zeichen, darf nur Kleinbuchstaben und Ziffern enthalten und muss für alle Azure Storage-Konten eindeutig sein.                                                               |
+    | Standort       | Wählen Sie **USA, Osten** aus.                                           |
     | Resource group | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
 
-    Das Erstellen des Speicherkontos kann etwa eine Minute dauern. Fahren Sie erst dann mit den weiteren Schritten fort, wenn das Speicherkonto erstellt wurde. Wenn Sie kein Speicherkonto erstellen, sondern ein vorhandenes Konto verwenden, vergewissern Sie sich, dass Sie ein Speicherkonto auswählen, für das **Alle Netzwerke** (Standard) unter **Firewalls und virtuelle Netzwerken** in **EINSTELLUNGEN** ausgewählt ist. Das Speicherkonto muss sich immer in derselben Region wie die NSG befinden. 
-    
-    > [!NOTE]
-    > Microsoft.Insight- und Microsoft.Network-Anbieter werden derzeit zwar als [vertrauenswürdige Microsoft-Dienste für Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services) unterstützt, die NSG-Flussprotokolle wurden jedoch noch nicht vollständig integriert. Zum Aktivieren der NSG-Flussprotokollierung muss wie oben erwähnt **Alle Netzwerke** ausgewählt werden.
-    
+    Das Erstellen des Speicherkontos kann etwa eine Minute dauern. Fahren Sie erst dann mit den weiteren Schritten fort, wenn das Speicherkonto erstellt wurde. Das Speicherkonto muss sich immer in derselben Region wie die NSG befinden.
 4. Wählen Sie oben links im Portal die Option **Alle Dienste** aus. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wählen Sie **Network Watcher** aus, wenn der Begriff in den Suchergebnissen angezeigt wird.
 5. Wählen Sie unter **PROTOKOLLE** die Option **NSG-Flussprotokolle** aus (siehe folgende Abbildung):
 
-    ![NSGs](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
+    ![Screenshot: Network Watcher-NSG-Datenflussprotokolle](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
 
 6. Wählen Sie in der Liste der Netzwerksicherheitsgruppen die Gruppe mit dem Namen **myVm-nsg** aus.
 7. Wählen Sie unter **Flowprotokolleinstellungen** die Option **Ein** aus.
@@ -110,13 +111,9 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
 
 9. Wählen Sie das in Schritt 3 erstellte Speicherkonto aus.
    > [!NOTE]
-   > NSG-Flowprotokolle können in den folgenden Fällen nicht mit Speicherkonten verwendet werden:
-   > * Für die Speicherkonten ist eine Firewall aktiviert.
-   > * Für die Speicherkonten ist der [hierarchische Namespace](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) aktiviert.
+   > NSG-Flowprotokolle können nicht für Speicherkonten mit aktiviertem [hierarchischem Namespace](../storage/blobs/data-lake-storage-namespace.md) verwendet werden.
 1. Wählen Sie oben links im Portal die Option **Alle Dienste** aus. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wählen Sie **Network Watcher** aus, wenn der Begriff in den Suchergebnissen angezeigt wird.
 10. Setzen Sie **Aufbewahrung (Tage)** auf 5, und klicken Sie dann auf **Speichern**.
-    > [!IMPORTANT]
-    > Zurzeit gibt es ein Problem, bei dem die [Flowprotokolle für Netzwerksicherheitsgruppen (NSG)](network-watcher-nsg-flow-logging-overview.md) für Network Watcher nicht auf Grundlage der Einstellungen für die Aufbewahrungsrichtlinie automatisch aus dem Blobspeicher gelöscht werden. Wenn eine Aufbewahrungsrichtlinie ungleich Null vorhanden ist, wird empfohlen, die Speicherblobs mit überschrittenem Aufbewahrungszeitraum regelmäßig zu löschen, um Gebühren zu vermeiden. Weitere Informationen zum Löschen des Speicherblobs mit NSG-Flowprotokoll finden Sie unter [Delete network security group flow log storage blobs in Network Watcher](network-watcher-delete-nsg-flow-log-blobs.md) (Löschen von Speicherblobs mit NSG-Flowprotokollen in Network Watcher).
 
 ## <a name="download-flow-log"></a>Herunterladen des Flussprotokolls
 
@@ -126,7 +123,7 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
    ![Herunterladen von Flowprotokollen](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Wählen Sie das in Schritt 2 unter [Aktivieren des NSG-Flussprotokolls](#enable-nsg-flow-log) konfigurierte Speicherkonto aus.
-4. Wählen Sie unter **Blob-Dienst** **Blobs** aus, und wählen Sie dann den Container **insights-logs-networksecuritygroupflowevent** aus.
+4. Wählen Sie unter **Blob-Dienst** die Option **Container** und dann den Container **insights-logs-networksecuritygroupflowevent** aus.
 5. Navigieren Sie in dem Container in der Ordnerhierarchie, bis Sie zu einer Datei „PT1H.json“ gelangen, wie in der folgenden Abbildung dargestellt. Protokolldateien werden in einer Ordnerhierarchie gespeichert, die der folgenden Namenskonvention folgt: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
    ![Flowprotokoll](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
@@ -217,8 +214,8 @@ Bei dem Wert für **mac** in der vorherigen Ausgabe handelt es sich um die MAC-A
 | 443         | Zielport       | Der Zielport, für den der Datenfluss bestimmt war. Da der Datenverkehr für Port 443 bestimmt war, wurde der Flow anhand der Regel namens **UserRule_default-allow-rdp** in der Protokolldatei verarbeitet.                                                |
 | T            | Protocol               | Gibt an, ob das Protokoll des Datenflusses TCP (T) oder UDP (U) war.                                  |
 | O            | Direction              | Gibt an, ob es sich um eingehenden (I) oder ausgehenden (O) Datenverkehr handelte.                                     |
-| Eine Datei            | Aktion                 | Gibt an, ob es sich um zulässigen (A) oder verweigerten (D) Datenverkehr handelte.  
-| C            | Flowstatus (**nur Version 2**) | Erfasst den Flowstatus. Mögliche Statusangaben: **B** („Begin“/Anfang): Erstellung eines Flows. Statistiken werden nicht bereitgestellt. **C**: („Continue“/Fortsetzung): Ein laufender Flow wird weiter fortgesetzt. Statistiken werden in Intervallen von 5 Minuten bereitgestellt. **E**: („End“/Beendigung): Beendigung eines Flows. Statistiken werden bereitgestellt. |
+| Ein            | Aktion                 | Gibt an, ob es sich um zulässigen (A) oder verweigerten (D) Datenverkehr handelte.  
+| C            | Flowstatus (**nur Version 2**) | Erfasst den Flowstatus. Mögliche Statusangaben: **B**: („Begin“/Anfang): Erstellung eines Flows. Statistiken werden nicht bereitgestellt. **C**: („Continue“/Fortsetzung): Ein laufender Flow wird weiter fortgesetzt. Statistiken werden in Intervallen von 5 Minuten bereitgestellt. **E**: („End“/Beendigung): Beendigung eines Flows. Statistiken werden bereitgestellt. |
 | 30 | Gesendete Pakete – Quelle zu Ziel (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden. |
 | 16978 | Gesendete Bytes – Quelle zu Ziel (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketbytes, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden. Paketbytes enthalten den Paketheader und die Nutzlast. |
 | 24 | Gesendete Pakete – Ziel zu Quelle (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden. |
@@ -226,4 +223,4 @@ Bei dem Wert für **mac** in der vorherigen Ausgabe handelt es sich um die MAC-A
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie die NSG-Datenflussprotokollierung für eine Netzwerksicherheitsgruppe aktivieren. Sie haben außerdem erfahren, wie Sie in einer Datei protokollierte Daten herunterladen und anzeigen. Die Rohdaten in der JSON-Datei sind möglicherweise schwer zu interpretieren. Zur visuellen Darstellung der Daten können Sie die [Datenverkehrsanalyse](traffic-analytics.md) von Network Watcher, Microsoft [PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md) und andere Tools verwenden.
+In diesem Tutorial haben Sie gelernt, wie Sie die NSG-Datenflussprotokollierung für eine Netzwerksicherheitsgruppe aktivieren. Sie haben außerdem erfahren, wie Sie in einer Datei protokollierte Daten herunterladen und anzeigen. Die Rohdaten in der JSON-Datei sind möglicherweise schwer zu interpretieren. Zur Visualisierung von Flowprotokolldaten können Sie [Azure Traffic Analytics](traffic-analytics.md), [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md) und andere Tools verwenden. Sie können alternative Methoden zur Aktivierung von NSG-Flowprotokollen wie [PowerShell](network-watcher-nsg-flow-logging-powershell.md), die [Azure-Befehlszeilenschnittstelle](network-watcher-nsg-flow-logging-cli.md), die [REST-API](network-watcher-nsg-flow-logging-rest.md) und [ARM-Vorlagen](network-watcher-nsg-flow-logging-azure-resource-manager.md) ausprobieren.

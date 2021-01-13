@@ -1,6 +1,6 @@
 ---
 title: Migrieren von Daten von einem Gerät der Serie StorSimple 5000 - 7000 zu einem Gerät der Serie 8000 | Microsoft-Dokumentation
-description: Enthält eine Übersicht und die Voraussetzungen des Migrationsfeatures.
+description: Erfahren Sie mehr über das Migrieren von Daten auf einem Gerät der StorSimple 5000-7000-Serie zu einem Gerät der 8000-Serie sowie die Voraussetzungen für den Migrationsprozess.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -8,17 +8,17 @@ manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2018
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 967c03f3c4201bdcf1529fdda93717b6eb74e771
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f6fffadd3c53f67af2e4c833a6a1d442c18efa0b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631656"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91398185"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrieren von Daten von einem Gerät der Serie StorSimple 5000 - 7000 zu einem Gerät der Serie 8000
 
@@ -41,21 +41,21 @@ Sie können Ihre Daten verschieben, indem Sie das Migrationsfeature verwenden od
 
 Das Migrationsfeature simuliert einen Prozess für die Notfallwiederherstellung von der Serie 7000/5000 zur Serie 8000. Mit diesem Feature können Sie die Daten aus dem Format der Serie 5000/7000 zum Format der Serie 8000 in Azure migrieren. Der Migrationsprozess wird mit dem StorSimple-Migrationstool initiiert. Das Tool startet den Download und die Konvertierung von Sicherungsmetadaten auf dem Gerät der Serie 8000 und verwendet anschließend die letzte Sicherung, um die Volumes auf dem Gerät verfügbar zu machen.
 
-|      | Vorteile                                                                                                                                     |Nachteile                                                                                                                                                              |
-|------|-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.   | Der Migrationsprozess behält den Verlauf der Sicherungen bei, die für die Serie 5000/7000 erstellt wurden.                                               | Wenn Benutzer versuchen, auf die Daten zuzugreifen, werden die Daten bei dieser Migration aus Azure heruntergeladen. Hierbei fallen Kosten für das Herunterladen der Daten an.                                     |
-| 2.   | Auf Hostseite werden keine Daten migriert.                                                                                                     | Für den Prozess kommt es zwischen dem Start der Sicherung und der letzten Sicherung für die Serie 8000 zu einer Ausfallzeit (Schätzung mit dem Migrationstool möglich). |
-| 3.   | Bei diesem Prozess werden alle Richtlinien, Bandbreitenvorlagen, die Verschlüsselung und andere Einstellungen auf Geräten der Serie 8000 beibehalten.                      | Beim Zugriff durch Benutzer werden nur die Daten abgerufen, die für den Zugriffsvorgang relevant sind, und es wird nicht das gesamte Dataset aktiviert.                                                  |
-| 4.   | Für diesen Prozess wird zusätzliche Zeit benötigt, um alle älteren Sicherungen in Azure zu konvertieren. Dies wird asynchron ohne Auswirkung auf die Produktion durchgeführt. | Die Migration kann nur auf einer Cloudkonfigurationsebene erfolgen.  Einzelne Volumes einer Cloudkonfiguration können nicht separat migriert werden                       |
+| Vorteile                                                                                                                                     |Nachteile                                                                                                                                                              |
+|-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Der Migrationsprozess behält den Verlauf der Sicherungen bei, die für die Serie 5000/7000 erstellt wurden.                                               | Wenn Benutzer versuchen, auf die Daten zuzugreifen, werden die Daten bei dieser Migration aus Azure heruntergeladen. Hierbei fallen Kosten für das Herunterladen der Daten an.                                     |
+| Auf Hostseite werden keine Daten migriert.                                                                                                     | Für den Prozess kommt es zwischen dem Start der Sicherung und der letzten Sicherung für die Serie 8000 zu einer Ausfallzeit (Schätzung mit dem Migrationstool möglich). |
+| Bei diesem Prozess werden alle Richtlinien, Bandbreitenvorlagen, die Verschlüsselung und andere Einstellungen auf Geräten der Serie 8000 beibehalten.                      | Beim Zugriff durch Benutzer werden nur die Daten abgerufen, die für den Zugriffsvorgang relevant sind, und es wird nicht das gesamte Dataset aktiviert.                                                  |
+| Für diesen Prozess wird zusätzliche Zeit benötigt, um alle älteren Sicherungen in Azure zu konvertieren. Dies wird asynchron ohne Auswirkung auf die Produktion durchgeführt. | Die Migration kann nur auf einer Cloudkonfigurationsebene erfolgen.  Einzelne Volumes einer Cloudkonfiguration können nicht separat migriert werden                       |
 
 Eine hostseitige Migration ermöglicht das unabhängige Einrichten der Serie 8000 und das Kopieren der Daten von einem Gerät der Serie 5000/7000 auf ein Gerät der Serie 8000. Dies entspricht dem Migrieren von Daten von einem Speichergerät zu einem anderen. Es werden verschiedene Tools, z.B. Diskboss und Robocopy, verwendet, um die Daten zu kopieren.
 
-|      | Vorteile                                                                                                                      |Nachteile                                                                                                                                                                                                      |
-|------|---------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.   | Die Migration kann in Phasen und Volume für Volume durchgeführt werden.                                               | Vorherige Sicherungen (für die Serie 5000/7000) sind auf dem Gerät der Serie 8000 nicht verfügbar.                                                                                                       |
-| 2.   | Daten können in Azure in einem Speicherkonto konsolidiert werden.                                                       | Die erste Sicherung in die Cloud für die Serie 8000 dauert länger als für alle Daten der Serie 8000 in Azure.                                                                     |
-| 3.   | Nach einer erfolgreichen Migration sind alle Daten lokal auf der Appliance vorhanden. Beim Zugreifen auf Daten kommt es nicht zu Wartezeiten. | Es wird mehr Azure-Speicher verbraucht, bis die Daten vom Gerät der Serie 5000/7000 gelöscht werden.                                                                                                        |
-| 4.   |                                                                                                                           | Wenn das Gerät der Serie 7000/5000 eine große Menge von Daten enthält, müssen diese Daten während der Migration aus Azure heruntergeladen werden. Hierfür fallen Kosten und Wartezeiten für das Herunterladen von Daten aus Azure an. |
+| Vorteile                                                                                                                      |Nachteile                                                                                                                                                                                                      |
+|---------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Die Migration kann in Phasen und Volume für Volume durchgeführt werden.                                               | Vorherige Sicherungen (für die Serie 5000/7000) sind auf dem Gerät der Serie 8000 nicht verfügbar.                                                                                                       |
+| Daten können in Azure in einem Speicherkonto konsolidiert werden.                                                       | Die erste Sicherung in die Cloud für die Serie 8000 dauert länger als für alle Daten der Serie 8000 in Azure.                                                                     |
+| Nach einer erfolgreichen Migration sind alle Daten lokal auf der Appliance vorhanden. Beim Zugreifen auf Daten kommt es nicht zu Wartezeiten. | Es wird mehr Azure-Speicher verbraucht, bis die Daten vom Gerät der Serie 5000/7000 gelöscht werden.                                                                                                        |
+|                                                                                                                           | Wenn das Gerät der Serie 7000/5000 eine große Menge von Daten enthält, müssen diese Daten während der Migration aus Azure heruntergeladen werden. Hierfür fallen Kosten und Wartezeiten für das Herunterladen von Daten aus Azure an. |
 
 In diesem Artikel geht es nur um das Feature für die Migration von einem Gerät der Serie 5000/7000 zu 8000. Weitere Informationen zur hostseitigen Migration finden Sie unter [Migration from other storage devices](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf) (Migration von anderen Speichergeräten).
 
@@ -80,8 +80,8 @@ Stellen Sie Folgendes sicher, bevor Sie mit der Migration beginnen:
 
     ![Überprüfen der Softwareversion auf dem Legacygerät](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * Führen Sie für Ihr System ein Upgrade auf die erforderliche Mindestversion durch, wenn Ihr aktives Gerät nicht über v2.1.1.518 oder höher verfügt. Eine ausführliche Anleitung finden Sie unter [Software Patch Upgrade Guide v2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518) (Anleitung für Softwarepatchupgrade auf v2.1.1.518).
-    * Wenn Version v2.1.1.518 ausgeführt wird, können Sie auf der Webbenutzeroberfläche nachsehen, ob Benachrichtigungen zu Wiederherstellungsfehlern für die Registrierung vorhanden sind. Führen Sie die Registrierungswiederherstellung aus, falls dieser Vorgang fehlgeschlagen ist. Weitere Informationen finden Sie unter [Restoring Backup Registry](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry) (Wiederherstellen der Sicherungsregistrierung).
+    * Führen Sie für Ihr System ein Upgrade auf die erforderliche Mindestversion durch, wenn Ihr aktives Gerät nicht über v2.1.1.518 oder höher verfügt. Unter Umständen müssen Sie sich an den Microsoft-Support wenden, um das Upgrade auszuführen.
+    * Wenn Version v2.1.1.518 ausgeführt wird, können Sie auf der Webbenutzeroberfläche nachsehen, ob Benachrichtigungen zu Wiederherstellungsfehlern für die Registrierung vorhanden sind. Führen Sie die Registrierungswiederherstellung aus, falls dieser Vorgang fehlgeschlagen ist. Unter Umständen müssen Sie sich an den Microsoft-Support wenden, um die Registrierung wiederherzustellen.
     * Wenn Sie über ein ausgefallenes Gerät verfügen, auf dem nicht v2.1.1.518 ausgeführt wird, können Sie ein Failover auf ein Ersatzgerät durchführen, auf dem v2.1.1.518 ausgeführt wird. Eine ausführliche Anleitung finden Sie unter den Informationen zur Notfallwiederherstellung Ihres StorSimple-Geräts der Serie 5000/7000.
     * Sichern Sie die Daten für Ihr Gerät, indem Sie eine Cloudmomentaufnahme erstellen.
     * Suchen Sie nach anderen aktiven Sicherungsaufträgen, die auf dem Quellgerät ausgeführt werden. Dies umfasst auch die Aufträge auf dem Host mit der Konsole für den StorSimple-Datenschutz. Warten Sie, bis die aktuellen Aufträge abgeschlossen sind.

@@ -1,20 +1,17 @@
 ---
-title: Pushen von OCI-Artefakten in eine private Azure-Containerregistrierung
+title: Push- und Pull-Vorgänge für OCI-Artefakte
 description: Pushen und Pullen von OCI-Artefakten (Open Container Initiative) unter Verwendung einer privaten Containerregistrierung in Azure
-services: container-registry
 author: SteveLasker
 manager: gwallace
-ms.service: container-registry
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 08/12/2020
 ms.author: stevelas
-ms.custom: ''
-ms.openlocfilehash: 69423f85aecdc3f8049a7e784888e1f71d0bc702
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 7c95766cc12b281521fa52ab113fadd4321d0815
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182714"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89485002"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Pushen und Pullen eines OCI-Artefakts unter Verwendung einer Azure-Containerregistrierung
 
@@ -69,10 +66,20 @@ echo "Here is an artifact!" > artifact.txt
 
 Pushen Sie diese Textdatei mithilfe des Befehls `oras push` in Ihre Registrierung. Im folgenden Beispiel wird die Beispieltextdatei in das Repository `samples/artifact` gepusht. Die Registrierung wird mit dem vollqualifizierten Registrierungsnamen *myregistry.azurecr.io* (nur Kleinbuchstaben) angegeben. Das Artefakt wird als `1.0` markiert. Das Artefakt hat einen undefinierten Typ. Dieser wird standardmäßig durch die *Medientypzeichenfolge* nach dem Dateinamen `artifact.txt` angegeben. Weitere Typen finden Sie unter [OCI Artifacts](https://github.com/opencontainers/artifacts) (OCI-Artefakte). 
 
+**Linux**
+
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
     --manifest-config /dev/null:application/vnd.unknown.config.v1+json \
     ./artifact.txt:application/vnd.unknown.layer.v1+txt
+```
+
+**Windows**
+
+```cmd
+.\oras.exe push myregistry.azurecr.io/samples/artifact:1.0 ^
+    --manifest-config NUL:application/vnd.unknown.config.v1+json ^
+    .\artifact.txt:application/vnd.unknown.layer.v1+txt
 ```
 
 Die Ausgabe für einen erfolgreichen Pushvorgang sieht in etwa wie folgt aus:
@@ -141,6 +148,36 @@ Das Artefakt kann mithilfe des Befehls [az acr repository delete][az-acr-reposit
 az acr repository delete \
     --name myregistry \
     --image samples/artifact:1.0
+```
+
+## <a name="example-build-docker-image-from-oci-artifact"></a>Beispiel: Erstellen eines Docker-Images anhand eines OCI-Artefakts
+
+Quellcode und Binärdateien zum Erstellen eines Containerimages können als OCI-Artefakte in Azure Container Registry gespeichert werden. Sie können auf ein Quellartefakt als Buildkontext für einen [ACR-Task](container-registry-tasks-overview.md) verweisen. Dieses Beispiel zeigt, wie Sie eine Dockerfile als OCI-Artefakt speichern und dann auf das Artefakt verweisen, um ein Containerimage zu erstellen.
+
+Erstellen Sie z. B. eine einzeilige Dockerfile:
+
+```bash
+echo "FROM hello-world" > hello-world.dockerfile
+```
+
+Melden Sie sich bei der Zielcontainerregistrierung an.
+
+```azurecli
+az login
+az acr login --name myregistry
+```
+
+Erstellen und pushen Sie ein neues OCI-Artefakt mit dem Befehl `oras push` in die Zielregistrierung. In diesem Beispiel wird der Standardmedientyp für das Artefakt festgelegt.
+
+```bash
+oras push myregistry.azurecr.io/hello-world:1.0 hello-world.dockerfile
+```
+
+Führen Sie den Befehl [az acr build](/cli/azure/acr#az-acr-build) aus, um das Image „hello-world“ unter Verwendung des neuen Artefakts als Buildkontext zu erstellen:
+
+```azurecli
+az acr build --registry myregistry --file hello-world.dockerfile \
+  oci://myregistry.azurecr.io/hello-world:1.0
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

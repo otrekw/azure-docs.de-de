@@ -1,38 +1,29 @@
 ---
-title: Ändern der FabricTransport-Einstellungen in Azure-Service Fabric-Akteuren | Microsoft-Dokumentation
-description: Erfahren Sie mehr über das Konfigurieren der Kommunikationseinstellungen von Akteuren in Azure Service Fabric.
-services: Service-Fabric
-documentationcenter: .net
+title: Ändern der FabricTransport-Einstellungen
+description: Erfahren Sie mehr über das Konfigurieren der Kommunikationseinstellungen von Akteuren in Azure Service Fabric für verschiedene Akteurkonfigurationen.
 author: suchiagicha
-manager: chackdan
-editor: ''
-ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/20/2017
-ms.author: chackdan
-ms.openlocfilehash: 4170f79e8eaca44260e81c85c1a3a7571720ec7f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: pepogors
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e3c20d86bd29d60eca328a44ab5d5d600bbf4da4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876130"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89010935"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurieren von FabricTransport-Einstellungen für Reliable Actors
 
 Hier folgen Einstellungen, die Sie konfigurieren können:
-- C#: [FabricTransportRemotingSettings](
-https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
-- Java: [FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- C#: [FabricTransportRemotingSettings](/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- Java: [FabricTransportRemotingSettings](/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
 
 Sie können die Standardkonfiguration von FabricTransport auf folgende Weise ändern.
 
 ## <a name="assembly-attribute"></a>Assembly-Attribut
 
-Das [FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN)-Attribut muss auf die Akteurclient- und Akteurdienstassemblys angewendet werden.
+Das [FabricTransportActorRemotingProvider](/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute)-Attribut muss auf die Akteurclient- und Akteurdienstassemblys angewendet werden.
 
 Das folgende Beispiel zeigt, wie der Standardwert der Einstellungen „FabricTransport“ und „OperationTimeout“ geändert werden kann:
 

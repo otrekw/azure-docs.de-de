@@ -1,6 +1,5 @@
 ---
-title: Node.Js, Angular-App mit MongoB-API (Teil 1)
-titleSuffix: Azure Cosmos DB
+title: 'Node.js: Angular-App mit Azure Cosmos DB-API für MongoDB (Teil 1)'
 description: In dieser videobasierten Tutorialreihe erfahren Sie, wie Sie in Azure Cosmos DB eine MongoDB-App mit Angular und Node erstellen und dabei die gleichen APIs verwenden wie für MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,18 +10,19 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: ec88b8e78c2d73ffa4badbc8ceaa468b4e5169e0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d3e33878fdd88ebe0582187274278e150b4507fc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044347"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074334"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Erstellen einer Angular-App mit der API für MongoDB von Azure Cosmos DB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Dieses mehrteilige Tutorial zeigt, wie Sie eine in Node.js geschriebene neue App mit Express und Angular erstellen und mit Ihrem [Cosmos-Konto verbinden, das mit der API für MongoDB von Cosmos DB](mongodb-introduction.md) konfiguriert wurde.
 
-Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen und dabei die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Cosmos DB zugrunde liegen. 
+Azure Cosmos DB ist die schnelle NoSQL-Datenbank von Microsoft mit offenen APIs für jede Größenordnung. Hiermit können Sie moderne Apps mit SLA-gestützter Geschwindigkeit und Verfügbarkeit, automatischer und sofortiger Skalierbarkeit sowie Open Source-APIs für viele NoSQL-Engines entwickeln.
 
 Dieses mehrteilige Tutorial umfasst folgende Aufgaben:
 

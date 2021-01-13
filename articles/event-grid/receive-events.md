@@ -1,23 +1,19 @@
 ---
 title: Empfangen von Ereignissen von Azure Event Grid an einem HTTP-Endpunkt
 description: Beschreibt, wie ein HTTP-Endpunkt überprüft und dann Ereignisse aus Azure Event Grid empfangen und deserialisiert werden.
-services: event-grid
-author: banisadr
-manager: darosa
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/01/2019
-ms.author: babanisa
-ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/19/2020
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 75c80fb85d39298f1130537971bc700897c039d0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803814"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96023714"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Empfangen von Ereignissen an einem HTTP-Endpunkt
 
-In diesem Artikel wird beschrieben, wie Sie [einen HTTP-Endpunkt überprüfen](security-authentication.md#webhook-event-delivery), um Ereignisse von einem Ereignisabonnement zu empfangen, und dann Ereignisse empfangen und deserialisieren. In diesem Artikel wird zu Demonstrationszwecken eine Azure-Funktion verwendet, doch treffen die gleichen Konzepte unabhängig davon zu, wo die Anwendung gehostet wird.
+In diesem Artikel wird beschrieben, wie Sie [einen HTTP-Endpunkt überprüfen](webhook-event-delivery.md), um Ereignisse von einem Ereignisabonnement zu empfangen, und dann Ereignisse empfangen und deserialisieren. In diesem Artikel wird zu Demonstrationszwecken eine Azure-Funktion verwendet, doch treffen die gleichen Konzepte unabhängig davon zu, wo die Anwendung gehostet wird.
 
 > [!NOTE]
 > Es wird **dringend** empfohlen, beim Auslösen einer Azure-Funktion mit Event Grid einen [Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md) zu verwenden. Die Verwendung eines generischen WebHook-Triggers dient hier lediglich zur Veranschaulichung.
@@ -50,48 +46,58 @@ Klicken Sie in Ihrer Azure-Funktion (der Bereich ganz rechts im Azure Functions-
 
 ## <a name="endpoint-validation"></a>Endpunktüberprüfung
 
-Als Erstes sollten Ereignisse des Typs `Microsoft.EventGrid.SubscriptionValidationEvent` behandelt werden. Jedes Mal, wenn ein neues Ereignisabonnement erstellt wird, sendet Event Grid ein Überprüfungsereignis an den Endpunkt mit einem `validationCode`-Element in der Datennutzlast. Der Endpunkt muss diesen als Echo im Antworttext zurückgeben, um [nachzuweisen, dass der Endpunkt gültig ist und Sie der Besitzer sind](security-authentication.md#webhook-event-delivery). Wenn Sie einen [Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md) statt einer durch WebHook ausgelösten Funktion verwenden, erfolgt die Endpunktüberprüfung automatisch. Wenn Sie einen API-Dienst eines Drittanbieters (etwa [Zapier](https://zapier.com) oder [IFTTT](https://ifttt.com/)) verwenden, können Sie den Überprüfungscode unter Umständen nicht programmgesteuert wiederholen. Für diese Dienste können Sie das Abonnement mithilfe einer Überprüfungs-URL manuell überprüfen, die im Abonnementüberprüfungsereignis gesendet wird. Kopieren Sie diese URL in der Eigenschaft `validationUrl`, und senden Sie entweder über einen REST-Client oder Ihren Webbrowser eine GET-Anforderung.
+Als Erstes sollten Ereignisse des Typs `Microsoft.EventGrid.SubscriptionValidationEvent` behandelt werden. Jedes Mal, wenn ein neues Ereignisabonnement erstellt wird, sendet Event Grid ein Überprüfungsereignis an den Endpunkt mit einem `validationCode`-Element in der Datennutzlast. Der Endpunkt muss diesen als Echo im Antworttext zurückgeben, um [nachzuweisen, dass der Endpunkt gültig ist und Sie der Besitzer sind](webhook-event-delivery.md). Wenn Sie einen [Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md) statt einer durch WebHook ausgelösten Funktion verwenden, erfolgt die Endpunktüberprüfung automatisch. Wenn Sie einen API-Dienst eines Drittanbieters (etwa [Zapier](https://zapier.com/home) oder [IFTTT](https://ifttt.com/)) verwenden, können Sie den Überprüfungscode unter Umständen nicht programmgesteuert wiederholen. Für diese Dienste können Sie das Abonnement mithilfe einer Überprüfungs-URL manuell überprüfen, die im Abonnementüberprüfungsereignis gesendet wird. Kopieren Sie diese URL in der Eigenschaft `validationUrl`, und senden Sie entweder über einen REST-Client oder Ihren Webbrowser eine GET-Anforderung.
 
 In C# deserialisiert die Funktion `DeserializeEventGridEvents()` die Event Grid-Ereignisse. Sie deserialisiert die Ereignisdaten in den entsprechenden Typ, z.B. StorageBlobCreatedEventData. Verwenden Sie die Klasse `Microsoft.Azure.EventGrid.EventTypes` zum Abrufen von unterstützten Ereignistypen und -namen.
 
 Verwenden Sie zum programmgesteuerten Wiederholen des Überprüfungscodes den folgenden Code. Sie finden entsprechende Beispiele im [Event Grid-Consumer-Beispiel](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridConsumer).
 
 ```csharp
-using System.Net;
-using Newtonsoft.Json;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using Microsoft.Azure.EventGrid.Models;
 using Microsoft.Azure.EventGrid;
-
-public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+namespace Function1
 {
-    log.Info($"C# HTTP trigger function begun");
-    string response = string.Empty;
-
-    string requestContent = await req.Content.ReadAsStringAsync();
-    log.Info($"Received events: {requestContent}");
-
-    EventGridSubscriber eventGridSubscriber = new EventGridSubscriber();
-
-    EventGridEvent[] eventGridEvents = eventGridSubscriber.DeserializeEventGridEvents(requestContent);
-
-    foreach (EventGridEvent eventGridEvent in eventGridEvents)
+    public static class Function1
     {
-        if (eventGridEvent.Data is SubscriptionValidationEventData)
+        [FunctionName("Function1")]
+        public static async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            ILogger log)
         {
-            var eventData = (SubscriptionValidationEventData)eventGridEvent.Data;
-            log.Info($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}");
-            // Do any additional validation (as required) and then return back the below response
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            string response = string.Empty;
+            string requestContent = await new StreamReader(req.Body).ReadToEndAsync();
+            log.LogInformation($"Received events: {requestContent}");
 
-            var responseData = new SubscriptionValidationResponse()
+            EventGridSubscriber eventGridSubscriber = new EventGridSubscriber();
+
+            EventGridEvent[] eventGridEvents = eventGridSubscriber.DeserializeEventGridEvents(requestContent);
+
+            foreach (EventGridEvent eventGridEvent in eventGridEvents)
             {
-                ValidationResponse = eventData.ValidationCode
-            };
+                if (eventGridEvent.Data is SubscriptionValidationEventData)
+                {
+                    var eventData = (SubscriptionValidationEventData)eventGridEvent.Data;
+                    log.LogInformation($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}");
+                    // Do any additional validation (as required) and then return back the below response
 
-            return req.CreateResponse(HttpStatusCode.OK, responseData);
+                    var responseData = new SubscriptionValidationResponse()
+                    {
+                        ValidationResponse = eventData.ValidationCode
+                    };
+                    return new OkObjectResult(responseData);
+                }
+            }
+            return new OkObjectResult(response);
         }
-    }
-
-    return req.CreateResponse(HttpStatusCode.OK, response);
+   }
 }
 ```
 
@@ -134,55 +140,66 @@ Testen Sie die Funktion der Überprüfungsantwort, indem Sie das Beispielereigni
 }]
 ```
 
-Wenn Sie auf „Ausführen“ klicken, sollte die Ausgabe den Status „200 OK“ aufweisen und `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` im Text enthalten sein:
+Wenn Sie auf „Ausführen“ klicken, sollte die Ausgabe den Status „200 OK“ aufweisen und `{"validationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` im Text enthalten sein:
 
-![Überprüfungsantwort](./media/receive-events/validation-response.png)
+:::image type="content" source="./media/receive-events/validation-request.png" alt-text="Überprüfungsanforderung":::
+
+:::image type="content" source="./media/receive-events/validation-output.png" alt-text="Überprüfungsausgabe":::
 
 ## <a name="handle-blob-storage-events"></a>Behandeln von Blob Storage-Ereignissen
 
 Erweitern wir nun die Funktion auf die Behandlung von `Microsoft.Storage.BlobCreated`:
 
 ```cs
-using System.Net;
-using Newtonsoft.Json;
-using Microsoft.Azure.EventGrid.Models;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using Microsoft.Azure.EventGrid;
+using Microsoft.Azure.EventGrid.Models;
 
-public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+namespace FunctionApp1
 {
-    log.Info($"C# HTTP trigger function begun");
-    string response = string.Empty;
-
-    string requestContent = await req.Content.ReadAsStringAsync();
-    log.Info($"Received events: {requestContent}");
-
-    EventGridSubscriber eventGridSubscriber = new EventGridSubscriber();
-
-    EventGridEvent[] eventGridEvents = eventGridSubscriber.DeserializeEventGridEvents(requestContent);
-
-    foreach (EventGridEvent eventGridEvent in eventGridEvents)
+    public static class Function1
     {
-        if (eventGridEvent.Data is SubscriptionValidationEventData)
+        [FunctionName("Function1")]
+        public static async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            ILogger log)
         {
-            var eventData = (SubscriptionValidationEventData)eventGridEvent.Data;
-            log.Info($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}");
-            // Do any additional validation (as required) and then return back the below response
+            log.LogInformation($"C# HTTP trigger function begun");
+            string response = string.Empty;
 
-            var responseData = new SubscriptionValidationResponse()
+            string requestContent = await new StreamReader(req.Body).ReadToEndAsync();
+            log.LogInformation($"Received events: {requestContent}");
+
+            EventGridSubscriber eventGridSubscriber = new EventGridSubscriber();
+
+            EventGridEvent[] eventGridEvents = eventGridSubscriber.DeserializeEventGridEvents(requestContent);
+
+            foreach (EventGridEvent eventGridEvent in eventGridEvents)
             {
-                ValidationResponse = eventData.ValidationCode
-            };
+                if (eventGridEvent.Data is SubscriptionValidationEventData)
+                {
+                    var eventData = (SubscriptionValidationEventData)eventGridEvent.Data;
+                    log.LogInformation($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}");
+                    // Do any additional validation (as required) and then return back the below response
 
-            return req.CreateResponse(HttpStatusCode.OK, responseData);
-        }
-        else if (eventGridEvent.Data is StorageBlobCreatedEventData)
-        {
-            var eventData = (StorageBlobCreatedEventData)eventGridEvent.Data;
-            log.Info($"Got BlobCreated event data, blob URI {eventData.Url}");
+                    var responseData = new SubscriptionValidationResponse()
+                    {
+                        ValidationResponse = eventData.ValidationCode
+                    };
+
+                    return new OkObjectResult(responseData);
+                }
+            }
+
+            return new OkObjectResult(response);
         }
     }
-
-    return req.CreateResponse(HttpStatusCode.OK, response);
 }
 ```
 
@@ -260,57 +277,71 @@ In C# unterstützt das SDK die Zuordnung eines Ereignistypnamens zum Ereignisdat
 Fügen Sie einen Test für das Ereignis `Contoso.Items.ItemReceived` hinzu. Der resultierende Code sollte wie folgt aussehen:
 
 ```cs
-using System.Net;
-using Newtonsoft.Json;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using Microsoft.Azure.EventGrid.Models;
 using Microsoft.Azure.EventGrid;
+using Newtonsoft.Json;
 
-class ContosoItemReceivedEventData
+namespace FunctionApp1
 {
-    [JsonProperty(PropertyName = "itemSku")]
-    public string ItemSku { get; set; }
-}
-
-public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
-{
-    log.Info($"C# HTTP trigger function begun");
-    string response = string.Empty;
-
-    string requestContent = await req.Content.ReadAsStringAsync();
-    log.Info($"Received events: {requestContent}");
-
-    EventGridSubscriber eventGridSubscriber = new EventGridSubscriber();
-    eventGridSubscriber.AddOrUpdateCustomEventMapping("Contoso.Items.ItemReceived", typeof(ContosoItemReceivedEventData));
-    EventGridEvent[] eventGridEvents = eventGridSubscriber.DeserializeEventGridEvents(requestContent);
-
-    foreach (EventGridEvent eventGridEvent in eventGridEvents)
+    class ContosoItemReceivedEventData
     {
-        if (eventGridEvent.Data is SubscriptionValidationEventData)
+        [JsonProperty("itemSku")]
+        public string ItemSku { get; set; }
+    }
+    public static class Function1
+    {
+        [FunctionName("Function1")]
+        public static async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            ILogger log)
         {
-            var eventData = (SubscriptionValidationEventData)eventGridEvent.Data;
-            log.Info($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}");
-            // Do any additional validation (as required) and then return back the below response
+            log.LogInformation($"C# HTTP trigger function begun");
+            string response = string.Empty;
 
-            var responseData = new SubscriptionValidationResponse()
+            string requestContent = await new StreamReader(req.Body).ReadToEndAsync();
+            log.LogInformation($"Received events: {requestContent}");
+
+            EventGridSubscriber eventGridSubscriber = new EventGridSubscriber();
+            eventGridSubscriber.AddOrUpdateCustomEventMapping("Contoso.Items.ItemReceived", typeof(ContosoItemReceivedEventData));
+            EventGridEvent[] eventGridEvents = eventGridSubscriber.DeserializeEventGridEvents(requestContent);
+
+            foreach (EventGridEvent eventGridEvent in eventGridEvents)
             {
-                ValidationResponse = eventData.ValidationCode
-            };
+                if (eventGridEvent.Data is SubscriptionValidationEventData)
+                {
+                    var eventData = (SubscriptionValidationEventData)eventGridEvent.Data;
+                    log.LogInformation($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}");
+                    // Do any additional validation (as required) and then return back the below response
 
-            return req.CreateResponse(HttpStatusCode.OK, responseData);
-        }
-        else if (eventGridEvent.Data is StorageBlobCreatedEventData)
-        {
-            var eventData = (StorageBlobCreatedEventData)eventGridEvent.Data;
-            log.Info($"Got BlobCreated event data, blob URI {eventData.Url}");
-        }
-        else if (eventGridEvent.Data is ContosoItemReceivedEventData)
-        {
-            var eventData = (ContosoItemReceivedEventData)eventGridEvent.Data;
-            log.Info($"Got ContosoItemReceived event data, item SKU {eventData.ItemSku}");
+                    var responseData = new SubscriptionValidationResponse()
+                    {
+                        ValidationResponse = eventData.ValidationCode
+                    };
+
+                    return new OkObjectResult(responseData);
+                }
+                else if (eventGridEvent.Data is StorageBlobCreatedEventData)
+                {
+                    var eventData = (StorageBlobCreatedEventData)eventGridEvent.Data;
+                    log.LogInformation($"Got BlobCreated event data, blob URI {eventData.Url}");
+                }
+                else if (eventGridEvent.Data is ContosoItemReceivedEventData)
+                {
+                    var eventData = (ContosoItemReceivedEventData)eventGridEvent.Data;
+                    log.LogInformation($"Got ContosoItemReceived event data, item SKU {eventData.ItemSku}");
+                }
+            }
+
+            return new OkObjectResult(response);
         }
     }
-
-    return req.CreateResponse(HttpStatusCode.OK, response);
 }
 ```
 
@@ -365,6 +396,8 @@ Testen Sie zum Schluss, ob die Funktion jetzt den benutzerdefinierten Ereignisty
 ```
 
 Sie können diese Funktionalität auch live testen, indem Sie [ein benutzerdefiniertes Ereignis mit CURL vom Portal senden](./custom-event-quickstart-portal.md) oder mithilfe von Diensten oder Anwendungen, die an einen Endpunkt posten können (z. B. [Postman](https://www.getpostman.com/)), [in einem benutzerdefinierten Thema posten](./post-to-custom-topic.md). Erstellen Sie ein benutzerdefiniertes Thema und ein Ereignisabonnement, wobei der Endpunkt als Funktions-URL festgelegt ist.
+
+[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

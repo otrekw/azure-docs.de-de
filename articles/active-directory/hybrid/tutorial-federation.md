@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a51175d192a5afb1f84f8d0ed2de9796f198f82d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4410708905610562feb15804277021950eb1edeb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102399"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176289"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Tutorial: Erstellen eines Verbunds einer Umgebung mit einer AD-Gesamtstruktur mit der Cloud
 
@@ -29,9 +29,9 @@ Das folgende Tutorial führt Sie durch das Erstellen einer Hybrididentitätsumge
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Im Folgenden finden Sie die erforderlichen Komponenten für die Durchführung dieses Tutorials:
-- Ein Computer mit installiertem [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview).  Es wird empfohlen, dies entweder auf einem [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os)- oder einem [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)-Computer durchzuführen.
+- Ein Computer mit installiertem [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview).  Es wird empfohlen, dies entweder auf einem [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os)- oder einem [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)-Computer durchzuführen.
 - [Ein Azure-Abonnement](https://azure.microsoft.com/free)
-- - Ein [externer Netzwerkadapter](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network), um dem virtuellen Computer die Kommunikation mit dem Internet zu ermöglichen.
+- - Ein [externer Netzwerkadapter](/virtualization/hyper-v-on-windows/quick-start/connect-to-network), um dem virtuellen Computer die Kommunikation mit dem Internet zu ermöglichen.
 - Eine Kopie von Windows Server 2016.
 - Eine [benutzerdefinierte Domäne](../../active-directory/fundamentals/add-custom-domain.md), die verifiziert werden kann.
 
@@ -48,7 +48,7 @@ Um unsere Hybrididentitätsumgebung einzurichten und auszuführen, müssen wir a
 >[!NOTE]
 >Wenn Sie noch nie ein Skript in PowerShell auf Ihrem Hostcomputer ausgeführt haben, müssen Sie vor dem Ausführen von Skripts `Set-ExecutionPolicy remotesigned` ausführen und in PowerShell mit „Ja“ antworten.
 
-Gehen Sie wie folgt vor:
+Gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie das folgende Skript aus.
@@ -87,13 +87,13 @@ Um das Erstellen des virtuellen Computers durchzuführen, müssen Sie die Instal
 4. Wählen Sie auf dem Windows Server-Startbildschirm Ihre Sprache aus, und klicken Sie auf **Weiter**.
 5. Klicken Sie auf **Jetzt installieren**.
 6. Geben Sie Ihren Lizenzschlüssel ein, und klicken Sie auf **Weiter**.
-7. Aktivieren Sie „Ich stimme den Lizenzbedingungen zu“, und klicken Sie auf **Weiter**.
+7. Aktivieren Sie das Kontrollkästchen **Ich stimme den Lizenzbedingungen zu**, und klicken Sie dann auf **Weiter**.
 8. Wählen Sie **Benutzerdefiniert:  Nur Windows installieren (Erweitert)** aus.
-9. Klicken Sie unten auf der Seite auf **Weiter**
+9. Klicken Sie auf **Weiter**.
 10. Nach Abschluss der Installation starten Sie den virtuellen Computer neu, melden sich an und führen Windows-Updates aus, um sicherzustellen, dass die VM auf dem neuesten Stand ist.  Installieren Sie die neuesten Updates.
 
 ## <a name="install-active-directory-pre-requisites"></a>Installieren von Active Directory-Voraussetzungen
-Nachdem nun ein virtueller Computer ausgeführt wird, müssen wir noch ein paar Vorbereitungen treffen vor der Installation von Active Directory.  Das heißt, dass wir den virtuellen Computer umbenennen, eine statische IP-Adresse und DNS-Informationen festlegen und die Remoteserver-Verwaltungstools installieren müssen.   Gehen Sie wie folgt vor:
+Nachdem nun ein virtueller Computer ausgeführt wird, müssen wir noch ein paar Vorbereitungen vor der Installation von Active Directory treffen.  Das heißt, dass wir den virtuellen Computer umbenennen, eine statische IP-Adresse und DNS-Informationen festlegen und die Remoteserver-Verwaltungstools installieren müssen.   Gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie `Set-ExecutionPolicy remotesigned` aus, und beantworten Sie alles mit Ja [A].  Drücken Sie die EINGABETASTE.
@@ -130,7 +130,7 @@ Restart-Computer
 ```
 
 ## <a name="create-a-windows-server-ad-environment"></a>Erstellen einer Windows Server AD-Umgebung
-Nachdem nun die VM erstellt ist, umbenannt wurde und über eine statische IP-Adresse verfügt, können wir fortfahren und die Active Directory Domain Services installieren und konfigurieren.  Gehen Sie wie folgt vor:
+Nachdem nun die VM erstellt ist, umbenannt wurde und über eine statische IP-Adresse verfügt, können wir fortfahren und die Active Directory Domain Services installieren und konfigurieren.  Gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie das folgende Skript aus.
@@ -140,12 +140,12 @@ Nachdem nun die VM erstellt ist, umbenannt wurde und über eine statische IP-Adr
 $DatabasePath = "c:\windows\NTDS"
 $DomainMode = "WinThreshold"
 $DomainName = "contoso.com"
-$DomaninNetBIOSName = "CONTOSO"
+$DomainNetBIOSName = "CONTOSO"
 $ForestMode = "WinThreshold"
 $LogPath = "c:\windows\NTDS"
 $SysVolPath = "c:\windows\SYSVOL"
 $featureLogPath = "c:\poshlog\featurelog.txt" 
-$Password = "Pass1w0rd"
+$Password = ConvertTo-SecureString "Passw0rd" -AsPlainText -Force
 
 #Install AD DS, DNS and GPMC 
 start-job -Name addFeature -ScriptBlock { 
@@ -160,7 +160,7 @@ Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -Doma
 ```
 
 ## <a name="create-a-windows-server-ad-user"></a>Erstellen eines Windows Server AD-Benutzers
-Nachdem nun unsere Active Directory-Umgebung vorhanden ist, benötigen wir ein Testkonto.  Dieses Konto wird in unserer lokalen Active Directory-Umgebung erstellt und dann mit Azure AD synchronisiert.  Gehen Sie wie folgt vor:
+Nachdem nun unsere Active Directory-Umgebung vorhanden ist, benötigen wir ein Testkonto.  Dieses Konto wird in unserer lokalen Active Directory-Umgebung erstellt und dann mit Azure AD synchronisiert.  Gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie das folgende Skript aus.
@@ -184,7 +184,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 ```
 
 ## <a name="create-a-certificate-for-ad-fs"></a>Erstellen eines Zertifikats für AD FS
-Jetzt erstellen wir ein SSL-Zertifikat, das von AD FS verwendet wird.  Es wird ein selbstsigniertes Zertifikat, das ausschließlich zu Testzwecken dient.  Microsoft empfiehlt nicht die Verwendung eines selbstsignierten Zertifikats in einer Produktionsumgebung. Gehen Sie wie folgt vor:
+Jetzt erstellen wir ein TLS-/SSL-Zertifikat, das von AD FS verwendet wird.  Es wird ein selbstsigniertes Zertifikat, das ausschließlich zu Testzwecken dient.  Microsoft empfiehlt nicht die Verwendung eines selbstsignierten Zertifikats in einer Produktionsumgebung. Gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie das folgende Skript aus.
@@ -205,7 +205,7 @@ Jetzt müssen wir einen Azure AD-Mandanten erstellen, damit wir unsere Benutzer 
 2. Wählen Sie das **Plussymbol (+)** aus, und suchen Sie nach **Azure Active Directory**.
 3. Wählen Sie in den Suchergebnissen **Azure Active Directory** aus.
 4. Klicken Sie auf **Erstellen**.</br>
-![Erstellen](media/tutorial-password-hash-sync/create1.png)</br>
+![Screenshot, der zeigt, wie ein Azure AD-Mandant erstellt wird](media/tutorial-password-hash-sync/create1.png)</br>
 5. Geben Sie einen **Namen für die Organisation** an, zusammen mit dem **Namen der Anfangsdomäne**. Klicken Sie anschließend auf **Erstellen**. Hierdurch wird Ihr Verzeichnis erstellt.
 6. Sobald dies abgeschlossen ist, klicken Sie auf **diesen Link**, um das Verzeichnis zu verwalten.
 
@@ -213,28 +213,28 @@ Jetzt müssen wir einen Azure AD-Mandanten erstellen, damit wir unsere Benutzer 
 Nachdem nun ein Azure AD-Mandant vorhanden ist, erstellen wir ein globales Administratorkonto.  Dieses Konto dient zum Erstellen des Azure AD Connector-Kontos während der Installation von Azure AD Connect.  Das Azure AD Connector-Konto wird zum Schreiben von Informationen in Azure AD verwendet.   Gehen Sie zum Erstellen des globalen Administratorkontos wie folgt vor:
 
 1.  Wählen Sie unter **Verwalten** die Option **Benutzer** aus.</br>
-![Erstellen](media/tutorial-password-hash-sync/gadmin1.png)</br>
+![Screenshot: Ausgewählte Option „Benutzer“ im Abschnitt „Verwalten“, in dem Sie einen globalen Administrator in Azure AD erstellen](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Wählen Sie **Alle Benutzer** und dann **+ Neuer Benutzer** aus.
 3.  Geben Sie für diesen Benutzer einen Namen und Benutzernamen an. Dieser wird Ihr globaler Administrator für den Mandanten. Sie sollten außerdem die **Verzeichnisrolle** in **Globaler Administrator** ändern. Sie können auch das temporäre Kennwort anzeigen. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.</br>
-![Erstellen](media/tutorial-password-hash-sync/gadmin2.png)</br>
+![Screenshot: Schaltfläche „Erstellen“, die beim Erstellen eines globalen Administrators in Azure AD ausgewählt wird](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Sobald dies abgeschlossen ist, öffnen Sie einen neuen Webbrowser, und melden Sie sich mit dem neuen globalen Administratorkonto und dem temporären Kennwort bei „myapps.microsoft.com“ an.
 5. Ändern Sie das Kennwort für den globalen Administrator in einen Wert, den Sie sich merken können.
 
 ## <a name="add-the-custom-domain-name-to-your-directory"></a>Fügen Sie Ihrem Verzeichnis den benutzerdefinierten Domänennamen hinzu.
-Nachdem wir nun über einen Mandanten und einen globalen Administrator verfügen, müssen wir unsere benutzerdefinierte Domäne hinzufügen, damit Azure sie verifizieren kann.  Gehen Sie wie folgt vor:
+Nachdem wir nun über einen Mandanten und einen globalen Administrator verfügen, müssen wir unsere benutzerdefinierte Domäne hinzufügen, damit Azure sie verifizieren kann.  Gehen Sie folgendermaßen vor:
 
 1. Stellen Sie im [Azure-Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) sicher, dass das Blatt **Alle Benutzer** geschlossen ist.
 2. Wählen Sie links **Benutzerdefinierte Domänennamen**.
 3. Wählen Sie **Benutzerdefinierte Domäne hinzufügen**.</br>
-![Verbund](media/tutorial-federation/custom1.png)</br>
+![Screenshot: Hervorgehobene Schaltfläche „Benutzerdefinierte Domäne hinzufügen“](media/tutorial-federation/custom1.png)</br>
 4. Geben Sie unter **Benutzerdefinierte Domänennamen** den Namen Ihrer benutzerdefinierten Domäne in das Feld ein, und klicken Sie auf **Domäne hinzufügen**.
 5. Im Bildschirm mit dem benutzerdefinierten Domänennamen erhalten Sie entweder TXT- oder MX-Informationen.  Diese Informationen müssen den DNS-Informationen der Domänenregistrierungsstelle unter Ihrer Domäne hinzugefügt werden.  Sie müssen also zu Ihrer Domänenregistrierungsstelle wechseln und dort entweder die TXT- oder die MX-Informationen in den DNS-Einstellungen für Ihre Domäne eingeben.  Dies gestattet Azure die Verifizierung Ihrer Domäne.  Es kann bis zu 24 Stunden dauern, bis Azure die Verifizierung abgeschlossen hat.  Weitere Informationen finden Sie in der Dokumentation unter [Hinzufügen einer benutzerdefinierten Domäne](../../active-directory/fundamentals/add-custom-domain.md).</br>
-![Verbund](media/tutorial-federation/custom2.png)</br>
+![Screenshot, der zeigt, wo Sie die TXT- oder MX-Informationen hinzufügen](media/tutorial-federation/custom2.png)</br>
 6. Klicken Sie auf die Schaltfläche „Überprüfen“, um sicherzustellen, dass sie verifiziert wurde.</br>
-![Verbund](media/tutorial-federation/custom3.png)</br>
+![Screenshot: Meldung zu erfolgreicher Überprüfung nach dem Auswählen von „Überprüfen“](media/tutorial-federation/custom3.png)</br>
 
 ## <a name="download-and-install-azure-ad-connect"></a>Herunterladen und Installieren von Azure AD Connect
-Jetzt müssen Sie Azure AD Connect herunterladen und installieren.  Nachdem es installiert wurde, führen Sie die Expressinstallation durch.  Gehen Sie wie folgt vor:
+Jetzt müssen Sie Azure AD Connect herunterladen und installieren.  Nachdem es installiert wurde, führen Sie die Expressinstallation durch.  Gehen Sie folgendermaßen vor:
 
 1. Laden Sie [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) herunter.
 2. Navigieren Sie zu **AzureADConnect.msi**, und doppelklicken Sie darauf.
@@ -242,7 +242,7 @@ Jetzt müssen Sie Azure AD Connect herunterladen und installieren.  Nachdem es i
 4. Klicken Sie im Bildschirm „Expresseinstellungen“ auf **Anpassen**.  
 5. Im Bildschirm zum Installieren der erforderlichen Komponenten. Klicken Sie auf **Installieren**.  
 6. Wählen Sie im Bildschirm mit der Benutzeranmeldung **Verbund mit AD FS** aus, und klicken Sie auf **Weiter**.
-![Verbund](media/tutorial-federation/fed1.png)
+![Screenshot, der zeigt, wo der Verbund mit AD FS ausgewählt wird](media/tutorial-federation/fed1.png)
 
 1. Geben Sie im Bildschirm „Mit Azure AD verbinden“ den Benutzernamen und das Kennwort des globalen Administrators ein, den wir weiter oben erstellt haben, und klicken Sie auf **Weiter**.
 2. Klicken Sie im Bildschirm „Verzeichnisse verbinden“ auf **Verzeichnis hinzufügen**.  Wählen Sie dann **Neues AD-Konto erstellen** aus, und geben Sie den contoso\Administrator-Benutzernamen und das Kennwort ein, und klicken Sie auf **OK**.
@@ -257,7 +257,7 @@ Jetzt müssen Sie Azure AD Connect herunterladen und installieren.  Nachdem es i
 11. Wählen Sie **Auf Verbundservern installiertes Zertifikat verwenden** aus, und klicken Sie auf **Durchsuchen**.
 12. Geben Sie „DC1“ in das Suchfeld ein, und wählen Sie es aus, wenn es gefunden wurde.  Klicken Sie auf **OK**.
 13. Wählen Sie im Dropdown **Zertifikatdatei** den Eintrag **adfs.contoso.com** aus, das Zertifikat, das wir weiter oben erstellt haben.  Klicken Sie auf **Weiter**.
-![Verbund](media/tutorial-federation/fed2.png)
+![Screenshot, der zeigt, wo die von Ihnen erstellte Zertifikatsdatei ausgewählt wird](media/tutorial-federation/fed2.png)
 
 1. Klicken Sie im Bildschirm „AD FS-Server“ auf **Durchsuchen**, und geben Sie „DC1“ in das Suchfeld ein, und wählen Sie es aus, wenn es gefunden wurde.  Klicken Sie auf **OK**.  Klicken Sie auf **Weiter**.
 ![Verbund](media/tutorial-federation/fed3.png)
@@ -292,4 +292,3 @@ Sie haben nun erfolgreich eine Hybrididentitätsumgebung eingerichtet, die Sie z
 - [Voraussetzungen für Azure AD Connect](how-to-connect-install-prerequisites.md) 
 - [Benutzerdefinierte Einstellungen](how-to-connect-install-custom.md)
 - [Azure AD Connect und Verbund](how-to-connect-fed-whatis.md)
-

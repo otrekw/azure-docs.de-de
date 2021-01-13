@@ -1,25 +1,16 @@
 ---
-title: Ändern der KVSActorStateProvider-Einstellungen in Azure-Service Fabric-Akteuren | Microsoft-Dokumentation
+title: Ändern der KVSActorStateProvider-Einstellungen
 description: Erfahren Sie mehr über das Konfigurieren von statusbehafteten Azure Service Fabric Actors vom Typ „KVSActorStateProvider“
-services: Service-Fabric
-documentationcenter: .net
 author: sumukhs
-manager: chackdan
-editor: ''
-ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 8b10ef18fd389179a4f5422783606c45fa2e0d32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdb115bd57cf3d5af4388f4efa03c2522feef9ca
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60728048"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75609773"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurieren von Reliable Actors – KVSActorStateProvider
 Sie können die Standardkonfiguration von KVSActorStateProvider ändern, indem Sie die Datei „settings.xml“, die im Stammverzeichnis des Visual Studio-Pakets im Ordner „Config“ generiert wurde, für den betreffenden Actor ändern.
@@ -32,7 +23,7 @@ Standardmäßig sucht die Azure Service Fabric-Laufzeit in der Datei „settings
 > 
 
 ## <a name="replicator-security-configuration"></a>Replicator-Sicherheitskonfiguration
-Replicator-Sicherheitskonfigurationen werden verwendet, um den während der Replikation verwendeten Kommunikationskanal zu sichern. Dies bedeutet, dass Dienste ihren gegenseitigen Replikationsdatenverkehr nicht erkennen können. Dadurch wird sichergestellt, dass die Daten nicht nur hochverfügbar, sondern auch sicher sind.
+Replicator-Sicherheitskonfigurationen werden verwendet, um den während der Replikation verwendeten Kommunikationskanal zu schützen. Dies bedeutet, dass Dienste ihren gegenseitigen Replikationsdatenverkehr nicht erkennen können. Dadurch wird sichergestellt, dass die Daten nicht nur hochverfügbar, sondern auch sicher sind.
 Standardmäßig wird die Replikationssicherheit durch einen leeren Sicherheitskonfigurationsabschnitt verhindert.
 
 > [!IMPORTANT]
@@ -50,7 +41,7 @@ Die Standardkonfiguration wird von der Visual Studio-Vorlage generiert und sollt
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Konfigurationsnamen
-| NAME | Unit | Standardwert | Anmerkungen |
+| Name | Einheit | Standardwert | Bemerkungen |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekunden |0,015 |So lange wartet der Replicator auf dem sekundären Replicator nach dem Empfang eines Vorgangs, bevor er eine Bestätigung an den primären Replicator sendet. Alle anderen Bestätigungen, die für innerhalb dieses Intervalls verarbeitete Vorgänge gesendet werden, werden als eine einzelne Antwort gesendet. |
 | ReplicatorEndpoint |– |Kein Standardwert – Erforderlicher Parameter |Die IP-Adresse und der Port, die der primäre/sekundäre Replicator für die Kommunikation mit anderen Replicatoren in der Replikatgruppe verwendet. Dabei sollte im Dienstmanifest auf einen TCP-Ressourcenendpunkt verwiesen werden. Weitere Informationen zum Definieren von Endpunktressourcen im Dienstmanifest finden Sie unter [Dienstmanifestressourcen](service-fabric-service-manifest-resources.md) . |
@@ -67,7 +58,7 @@ Die Standardkonfiguration wird von der Visual Studio-Vorlage generiert und sollt
 &lt;ActorName&gt;ServiceLocalStoreConfig
 
 ### <a name="configuration-names"></a>Konfigurationsnamen
-| NAME | Unit | Standardwert | Anmerkungen |
+| Name | Einheit | Standardwert | Bemerkungen |
 | --- | --- | --- | --- |
 | MaxAsyncCommitDelayInMilliseconds |Millisekunden |200 |Legt das maximale Batchverarbeitungsintervall für permanente Commits des lokalen Speichers fest. |
 | MaxVerPages |Anzahl von Seiten |16384 |Die maximale Anzahl von Versionsseiten in der lokalen Speicherdatenbank. Sie bestimmt die maximale Anzahl von ausstehenden Transaktionen. |
@@ -94,7 +85,7 @@ Die Standardkonfiguration wird von der Visual Studio-Vorlage generiert und sollt
    </Section>
 </Settings>
 ```
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
 Der Parameter „BatchAcknowledgementInterval“ steuert die Replikationslatenz. Der Wert "0" ergibt die geringstmögliche Latenz, allerdings auf Kosten des Durchsatzes (da eine größer Anzahl von Bestätigungsnachrichten gesendet und verarbeitet werden muss, von denen jede weniger Bestätigungen enthält).
 Je größer der Wert für "BatchAcknowledgementInterval" ist, um so höher ist der Gesamtdurchsatz der Replikation, zu Lasten einer höheren Vorgangslatenz. Daraus ergibt sich direkt die Latenz von Transaktions-Commits.
 

@@ -1,17 +1,17 @@
 ---
-title: Übersicht über das Entwickeln von Anwendungen für Azure Database for MySQL
+title: Entwickeln von Anwendungen – Azure Database for MySQL
 description: Einführung in Entwurfsüberlegungen, die Entwickler beim Schreiben des Anwendungscodes zum Herstellen einer Verbindung zu Azure-Datenbank für MySQL befolgen sollten
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 946f7011c51b7c6844e023d03e01e4c2043d2578
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 3/18/2020
+ms.openlocfilehash: 20c6841bb596c7f4a32ef689423515a8da59a945
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615658"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541554"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Entwicklung von Anwendungen für Azure-Datenbank für MySQL – Überblick 
 In diesem Artikel werden Entwurfsüberlegungen besprochen, die Entwickler beim Schreiben des Anwendungscodes zum Herstellen einer Verbindung mit Azure Database for MySQL befolgen sollten. 
@@ -20,7 +20,7 @@ In diesem Artikel werden Entwurfsüberlegungen besprochen, die Entwickler beim S
 > Ein Tutorial, das die Erstellung eines Servers, Erstellung einer serverbasierten Firewall, Anzeige von Servereigenschaften, Erstellung einer Datenbank, Herstellung einer Verbindung mithilfe von Workbench und „mysql.exe“ und Abfrage derselbigen zeigt, finden Sie unter [Entwerfen Ihrer ersten Azure Database for MySQL-Datenbank](tutorial-design-database-using-portal.md).
 
 ## <a name="language-and-platform"></a>Sprache und Plattform
-Für eine Vielzahl von Programmiersprachen und Plattformen sind Codebeispiele verfügbar. Links zu den Codebeispielen finden Sie unter: [Konnektivitätsbibliotheken zum Herstellen einer Verbindung mit Azure Database for MySQL](concepts-connection-libraries.md)
+Für eine Vielzahl von Programmiersprachen und Plattformen sind Codebeispiele verfügbar. Die Links zu den Codebeispielen finden Sie in folgendem Thema: [Konnektivitätsbibliotheken zur Verbindung mit Azure-Datenbank für MySQL](concepts-connection-libraries.md)
 
 ## <a name="tools"></a>Tools
 Azure-Datenbank für MySQL verwendet die MySQL Community-Version, die mit allgemeinen MySQL-Verwaltungstools wie Workbench oder MySQL-Dienstprogrammen (z.B. mysql.exe, [phpMyAdmin](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql)) kompatibel ist. Sie können auch über das Azure-Portal, die Azure CLI und REST-APIs mit dem Datenbankdienst interagieren.
@@ -39,7 +39,7 @@ Azure Database for MySQL unterstützt die Serverauthentifizierung von Benutzern 
 ## <a name="resiliency"></a>Resilienz
 Wenn beim Herstellen einer Verbindung mit einer MySQL-Datenbank ein vorübergehender Fehler auftritt, sollte Ihr Code den Aufruf wiederholen. Die Wiederholungslogik sollte Backoff-Logik verwenden, damit die SQL-Datenbank nicht unnötig überlastet wird, wenn mehrere Clients die Wiederholung gleichzeitig durchführen.
 
-- Codebeispiele: Codebeispiele, die Wiederholungslogik veranschaulichen, finden Sie in den Beispielen für die Sprache Ihrer Wahl unter: [Konnektivitätsbibliotheken zum Herstellen einer Verbindung mit Azure Database for MySQL](concepts-connection-libraries.md)
+- Codebeispiele: Codebeispiele, die die Wiederholungslogik veranschaulichen, finden Sie in den Beispielen für die Sprache Ihrer Wahl: [Konnektivitätsbibliotheken zum Herstellen einer Verbindung mit Azure-Datenbank für MySQL](concepts-connection-libraries.md).
 
 ## <a name="managing-connections"></a>Verwalten von Verbindungen
 Datenbankverbindungen stellen eine im begrenzten Umfang verfügbare Ressource dar. Daher sollten Verbindungen beim Zugriff auf Ihre MySQL-Datenbank sinnvoll eingesetzt werden, um eine bessere Leistung zu erzielen.

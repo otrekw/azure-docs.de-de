@@ -1,30 +1,27 @@
 ---
-title: Planen von wiederkehrenden Aufgaben mit dem Trigger „Gleitendes Fenster“ – Azure Logic Apps
-description: Planen und Ausführen von wiederkehrenden automatisierten Aufgaben und Workflows mit dem Trigger „Gleitendes Fenster“ in Azure Logic Apps
+title: Planen von Aufgaben zum Verarbeiten von zusammenhängenden Daten
+description: Erstellen und Ausführen von wiederkehrenden Aufgaben, die unter Verwendung gleitender Fenster in Azure Logic Apps zusammenhängende Daten verarbeiten
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: deli, klam, LADocs
+ms.reviewer: deli, logicappspm
 ms.topic: conceptual
-ms.date: 05/25/2019
-ms.openlocfilehash: 44944955019fcf81fb0d296592577e2b00a15928
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/25/2020
+ms.openlocfilehash: 103805fbf395dc120acc96fbcee273abcf14939d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299590"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010417"
 ---
-# <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-sliding-window-trigger-in-azure-logic-apps"></a>Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Trigger „Gleitendes Fenster“ in Azure Logic Apps
+# <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>Planen und Ausführen von Aufgaben für zusammenhängende Daten unter Verwendung des Triggers „Gleitendes Fenster“ in Azure Logic Apps
 
-Um regelmäßig Aufgaben, Prozesse oder Aufträge auszuführen, die Daten in kontinuierlichen Blöcken verarbeiten müssen, können Sie Ihren Logik-App-Workflow mit dem Trigger **Gleitendes Fenster – Zeitplan** starten. Sie können ein Datum, eine Uhrzeit und eine Zeitzone zum Starten des Workflows sowie eine Serie zum Wiederholen dieses Workflows festlegen. Wenn Wiederholungen aus irgendeinem Grund nicht ausgeführt werden, verarbeitet dieser Trigger diese fehlenden Wiederholungen. Verwenden Sie den Trigger „Gleitendes Fenster“ beispielsweise beim Synchronisieren von Daten zwischen Ihrer Datenbank und dem Sicherungsspeicher, damit die Daten lückenlos synchronisiert werden. Weitere Informationen zu den integrierten Zeitplantriggern und -aktionen finden Sie unter [Planen und Ausführen von wiederkehrenden automatisierten Aufgaben und Workflows mit Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Um regelmäßig Aufgaben, Prozesse oder Aufträge auszuführen, die Daten in zusammenhängenden Blöcken verarbeiten müssen, können Sie Ihren Logik-App-Workflow mit dem Trigger **Gleitendes Fenster** starten. Sie können ein Datum, eine Uhrzeit und eine Zeitzone zum Starten des Workflows sowie eine Serie zum Wiederholen dieses Workflows festlegen. Wenn Wiederholungen nicht ausgeführt werden, beispielsweise aufgrund von Unterbrechungen oder deaktivierten Workflows, verarbeitet dieser Trigger die fehlenden Wiederholungen. Verwenden Sie den Trigger „Gleitendes Fenster“ beispielsweise beim Synchronisieren von Daten zwischen Ihrer Datenbank und dem Sicherungsspeicher, damit die Daten lückenlos synchronisiert werden. Weitere Informationen zu den integrierten Zeitplantriggern und -aktionen finden Sie unter [Planen und Ausführen von wiederkehrenden automatisierten Aufgaben und Workflows mit Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 Im Folgenden finden Sie einige der Muster, die von diesem Trigger unterstützt werden:
 
-* Sofortige Ausführung und Wiederholung jeweils nach *n* Sekunden, Minuten oder Stunden.
+* Sofortige Ausführung und Wiederholung jeweils nach *n* Sekunden, Minuten, Stunden, Tagen, Wochen oder Monaten.
 
-* Start an einem bestimmten Datum zu einer bestimmten Uhrzeit und anschließende Ausführung und Wiederholung jeweils nach *n* Sekunden, Minuten oder Stunden. Mit diesem Trigger können Sie eine Startzeit in der Vergangenheit angeben, wodurch alle Wiederholungen der Vergangenheit ausgeführt werden.
+* Start an einem bestimmten Datum zu einer bestimmten Uhrzeit und anschließende Ausführung und Wiederholung jeweils nach *n* Sekunden, Minuten, Stunden, Tagen, Wochen oder Monaten. Mit diesem Trigger können Sie eine Startzeit in der Vergangenheit angeben, wodurch alle Wiederholungen der Vergangenheit ausgeführt werden.
 
 * Geben Sie für jede Wiederholung eine Verzögerung für eine bestimmte Zeitspanne vor der Ausführung an.
 
@@ -43,7 +40,7 @@ Die Unterschiede zwischen diesem Trigger und dem Serientrigger sowie weitere Inf
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Erstellen einer leeren Logik-App
 
-1. Wenn der Designer für Logik-Apps angezeigt wird, geben Sie im Suchfeld „Gleitendes Fenster“ als Filter ein. Wählen Sie aus der Triggerliste den folgenden Trigger als ersten Schritt Ihres Logik-App-Workflows aus: **Gleitendes Fenster**
+1. Wenn der Designer für Logik-Apps angezeigt wird, geben Sie im Suchfeld `sliding window` als Filter ein. Wählen Sie aus der Triggerliste den Trigger **Gleitendes Fenster** als ersten Schritt Ihres Logik-App-Workflows aus.
 
    ![Auswählen des Triggers „Gleitendes Fenster“](./media/connectors-native-sliding-window/add-sliding-window-trigger.png)
 
@@ -51,22 +48,21 @@ Die Unterschiede zwischen diesem Trigger und dem Serientrigger sowie weitere Inf
 
    ![Festlegen von Intervall und Häufigkeit](./media/connectors-native-sliding-window/sliding-window-trigger-details.png)
 
-   | Eigenschaft | Erforderlich | JSON-Name | Type | BESCHREIBUNG |
+   | Eigenschaft | JSON-Name | Erforderlich | type | BESCHREIBUNG |
    |----------|----------|-----------|------|-------------|
-   | **Intervall** | Ja | interval | Integer | Eine positive ganze Zahl, die beschreibt, wie oft der Workflow basierend auf der Häufigkeit ausgeführt wird. Zulässige Mindest- und Maximalintervalle: <p>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall beispielsweise auf „6“ und die Häufigkeit auf „Stunde“ festgelegt ist, erfolgt die Wiederholung alle sechs Stunden. |
-   | **Frequency** | Ja | frequency | string | Die Zeiteinheit für die Wiederholung: **Sekunde**, **Minute** oder **Stunde**. |
+   | **Intervall** | `interval` | Ja | Integer | Eine positive ganze Zahl, die beschreibt, wie oft der Workflow basierend auf der Häufigkeit ausgeführt wird. Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate <br>– Woche: 1–71 Wochen <br>– Tag: 1–500 Tage <br>– Stunde: 1–12.000 Stunden <br>– Minute: 1–72.000 Minuten <br>- Sekunde: 1–9.999.999 Sekunden <p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. |
+   | **Frequency** | `frequency` | Ja | String | Die Zeiteinheit für die Wiederholung: **Sekunde**, **Minute**, **Stunde**, **Tag**, **Woche** oder **Monat** |
    ||||||
 
    ![Erweiterte Wiederholungsoptionen](./media/connectors-native-sliding-window/sliding-window-trigger-more-options-details.png)
 
-   Um weitere Optionen für die Wiederholung zu erhalten, öffnen Sie die Liste **Neuen Parameter hinzufügen**. 
-   Alle von Ihnen ausgewählten Optionen werden nach der Auswahl im Trigger angezeigt.
+   Um weitere Optionen für die Wiederholung zu erhalten, öffnen Sie die Liste **Neuen Parameter hinzufügen**. Alle von Ihnen ausgewählten Optionen werden nach der Auswahl im Trigger angezeigt.
 
-   | Eigenschaft | Erforderlich | JSON-Name | Type | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | JSON-Name | type | BESCHREIBUNG |
    |----------|----------|-----------|------|-------------|
-   | **Verzögern** | Nein | delay | string | Die Dauer der Verzögerung für jede Wiederholung im [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
-   | **Zeitzone** | Nein | timeZone | Zeichenfolge | Nur relevant, wenn Sie eine Startzeit angeben, da dieser Trigger keine [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset) akzeptiert. Wählen Sie die anzuwendende Zeitzone aus. |
-   | **Startzeit** | Nein | startTime | string | Geben Sie Startdatum und -uhrzeit im folgenden Format an: <p>JJJJ-MM-TTThh:mm:ss (bei Auswahl einer Zeitzone) <p>Oder <p>JJJJ-MM-TTThh:mm:ssZ (wenn keine Zeitzone ausgewählt wird) <p>Für den 18. September 2017 um 14:00 Uhr würden Sie also „2017-09-18T14:00:00“ angeben und eine Zeitzone (z.B. „Pacific Standard Time“) auswählen. Alternativ können Sie „2017-09-18T14:00:00Z“ ohne Zeitzone angeben. <p>**Hinweis:** Diese Startzeit muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Zeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden, jedoch ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset). Wenn Sie keine Zeitzone auswählen, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). <p>Bei einfachen Zeitplänen ist die Startzeit das erste Vorkommen. Bei erweiterten Serien wird der Trigger frühestens zur Startzeit ausgelöst. [*Wie kann ich Startdatum und -uhrzeit verwenden?* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Verzögern** | Nein | delay | String | Die Dauer der Verzögerung für jede Wiederholung im [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+   | **Zeitzone** | Nein | timeZone | String | Nur relevant, wenn Sie eine Startzeit angeben, da dieser Trigger keine [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset) akzeptiert. Wählen Sie die anzuwendende Zeitzone aus. |
+   | **Startzeit** | Nein | startTime | String | Geben Sie Startdatum und -uhrzeit im folgenden Format an: <p>JJJJ-MM-TTThh:mm:ss (bei Auswahl einer Zeitzone) <p>Oder <p>JJJJ-MM-TTThh:mm:ssZ (wenn keine Zeitzone ausgewählt wird) <p>Für den 18. September 2017 um 14:00 Uhr würden Sie also „2017-09-18T14:00:00“ angeben und eine Zeitzone (z.B. „Pacific Standard Time“) auswählen. Alternativ können Sie „2017-09-18T14:00:00Z“ ohne Zeitzone angeben. <p>**Hinweis:** Diese Startzeit muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Zeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden, jedoch ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset). Wenn Sie keine Zeitzone auswählen, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). <p>Bei einfachen Zeitplänen ist die Startzeit das erste Vorkommen. Bei erweiterten Serien wird der Trigger frühestens zur Startzeit ausgelöst. [*Wie kann ich Startdatum und -uhrzeit verwenden?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    |||||
 
 1. Nun erstellen Sie den restlichen Workflow mit weiteren Aktionen. Weitere Aktionen, die Sie hinzufügen können, finden Sie unter [Connectors für Azure Logic Apps](../connectors/apis-list.md).

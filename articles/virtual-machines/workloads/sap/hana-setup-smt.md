@@ -4,21 +4,22 @@ description: Einrichten eines SMT-Servers für SAP HANA in Azure (große Instanz
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d9e86e54a4c94db97b6c89b3ef8799855963020
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 88b1cd2a5bf33d6401f0d2e15237400e27c72e54
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099760"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967651"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Einrichten eines SMT-Servers für SUSE Linux
 SAP HANA-Einheiten (große Instanzen) haben keine direkte Verbindung mit dem Internet. Daher ist das Registrieren einer solchen Einheit beim Betriebssystemanbieter und das Herunterladen und Anwenden von Updates kein ganz einfacher Vorgang. Eine mögliche Lösung für SUSE Linux ist die Einrichtung eines SMT-Servers auf einem virtuellen Azure-Computer. Hosten Sie den virtuellen Computer in einem virtuellen Azure-Netzwerk, das mit der HANA-Einheit (große Instanzen) verbunden ist. Mit einem SMT-Server dieser Art kann die HANA-Einheit (große Instanzen) Updates registrieren und herunterladen. 
@@ -44,7 +45,7 @@ Der bereitgestellte virtuelle Computer ist kleiner und hat im virtuellen Azure-N
 
 Fügen Sie einen Datenträger an den virtuellen Computer an. Sie benötigen diesen Datenträger zum Speichern der Updates, und der Startdatenträger ist dafür möglicherweise zu klein. Hier wurde der Datenträger unter „/srv/www/htdocs“ bereitgestellt, wie im folgenden Screenshot gezeigt. Ein Datenträger mit 100 GB sollte hierfür ausreichen.
 
-![Screenshot der VM-Bereitstellung für den SMT-Server](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
+![Screenshot: Hinzugefügter Datenträger im PuTTY-Fenster](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
 
 Melden Sie sich bei der HANA-Einheit bzw. den HANA-Einheiten (große Instanzen) an, verwalten Sie „/etc/hosts“, und überprüfen Sie, ob Sie den virtuellen Azure-Computer erreichen können, auf dem der SMT-Server über das Netzwerk ausgeführt werden soll.
 

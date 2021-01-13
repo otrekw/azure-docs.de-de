@@ -1,15 +1,15 @@
 ---
-author: mmacy
+author: msmimart
 ms.service: active-directory-b2c
 ms.topic: include
 ms.date: 08/08/2019
-ms.author: marsma
-ms.openlocfilehash: adca65cf1cdfff51df2ff04d7c43aebafc119972
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.author: mimart
+ms.openlocfilehash: fa4912e08bb7c82595301c46b8f497e3322fbdf9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622122"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "78183930"
 ---
 > [!NOTE]
 > Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.

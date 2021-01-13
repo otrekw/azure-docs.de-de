@@ -1,18 +1,18 @@
 ---
-title: Einrichten der Notfallwiederherstellung von virtuellen VMware-Computern in Azure mithilfe von PowerShell in Azure Site Recovery | Microsoft-Dokumentation
+title: Einrichten der VMware-Notfallwiederherstellung mit PowerShell in Azure Site Revoery
 description: Hier erfahren Sie, wie Sie Replikation und Failover in Azure für die Notfallwiederherstellung von virtuellen VMware-Computern mithilfe von PowerShell in Azure Site Recovery einrichten.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
-ms.date: 06/30/2019
+ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 7c13bb8586995a82ee240df39a9c95a67743e2a8
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503342"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86129909"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Einrichten der Notfallwiederherstellung von virtuellen VMware-Computern in Azure mithilfe von PowerShell
 
@@ -33,10 +33,10 @@ Folgendes wird vermittelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Vorbereitung:
+Vorbereitungen:
 
 - Stellen Sie sicher, dass Sie die [Architektur und die Komponenten des Szenarios](vmware-azure-architecture.md) verstehen.
-- Überprüfen Sie die [Supportanforderungen](site-recovery-support-matrix-to-azure.md) für alle Komponenten.
+- Überprüfen Sie die [Supportanforderungen](./vmware-physical-azure-support-matrix.md) für alle Komponenten.
 - Sie verfügen über das Azure PowerShell-Modul `Az`. Wenn Sie PowerShell installieren oder aktualisieren müssen, befolgen Sie die Anweisungen unter [Handbuch zum Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="log-into-azure"></a>Anmelden bei Azure
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 Legen Sie mit dem Cmdlet Set-ASRVaultContext den Tresorkontext fest. Nach dem Festlegen werden nachfolgende Azure Site Recovery-Vorgänge in der PowerShell-Sitzung im Kontext des ausgewählten Tresors ausgeführt.
 
 > [!TIP]
-> Im Lieferumfang des Azure Site Recovery-PowerShell-Moduls (Az.RecoveryServices) sind einfach zu verwendende Aliase für die meisten Cmdlets enthalten. Die Cmdlets im Model weisen die Form *\<Vorgang>-**AzRecoveryServicesAsr**\<Objekt>* auf und verfügen über gleichwertige Aliase in der Form *\<Vorgang>-**ASR**\<Objekt>* . Sie können die Cmdletaliase zur einfacheren Verwendung ersetzen.
+> Im Lieferumfang des Azure Site Recovery-PowerShell-Moduls (Az.RecoveryServices) sind einfach zu verwendende Aliase für die meisten Cmdlets enthalten. Die Cmdlets im Modul weisen die Form *\<Operation>-**AzRecoveryServicesAsr**\<Object>* auf und verfügen über gleichwertige Aliase in der Form *\<Operation>-**ASR**\<Object>* . Sie können die Cmdletaliase zur einfacheren Verwendung ersetzen.
 
 Im nachstehenden Beispiel wird mit den Tresordetails aus der $vault-Variable der Tresorkontext für die PowerShell-Sitzung angegeben.
 
@@ -372,9 +372,13 @@ $PolicyMap  = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionCon
 #Get the protectable item corresponding to the virtual machine CentOSVM1
 $VM1 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "CentOSVM1"
 
-# Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0
+# Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0 onwards to replicate to managed disks
 # The name specified for the replicated item needs to be unique within the protection container. Using a random GUID to ensure uniqueness
 $Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
+
+# Alternatively, if the virtual machine CentOSVM1 has CMK enabled disks, enable replication using Az module 3.3.0 onwards as below
+# $diskID is the Disk Encryption Set ID to be used for all replica managed disks and target managed disks in the target region
+$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId -DiskEncryptionSetId $diskId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
 
 #Get the protectable item corresponding to the virtual machine Win2K12VM1
 $VM2 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "Win2K12VM1"
@@ -493,4 +497,4 @@ In diesem Schritt führen wir ein Failover des virtuellen Computers Win2K12VM1 a
 2. Nachdem das Failover erfolgreich ausgeführt wurde, können Sie den Failovervorgang committen und die umgekehrte Replikation von Azure zurück zum lokalen VMware-Standort einrichten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informieren Sie sich in der [Azure Site Recovery-PowerShell-Referenz](https://docs.microsoft.com/powershell/module/Az.RecoveryServices), wie Sie mehr Aufgaben automatisieren können.
+Informieren Sie sich in der [Azure Site Recovery-PowerShell-Referenz](/powershell/module/Az.RecoveryServices), wie Sie mehr Aufgaben automatisieren können.

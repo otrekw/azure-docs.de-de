@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
-ms.openlocfilehash: 945b02003a443c04e692fdc06ca5714de362d074
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 63fade17d10189cbe8e775b2a859902f1c2bb004
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883096"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151631"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Entwicklung für mobile Geräte mithilfe von Azure IoT Hub SDKs | Microsoft-Dokumentation
 
-„Dinge“ im Internet der Dinge (Internet of Things, IoT) können sich auf eine breite Palette von Geräten mit unterschiedlichen Fähigkeiten beziehen: Sensoren, Mikrocontroller, intelligente Geräte, industrielle Gateways und sogar mobile Geräte.  Ein mobiles Gerät kann ein IoT-Gerät sein, das Gerät-zu-Cloud-Telemetriedaten sendet und von der Cloud verwaltet wird.  Es kann auch das Gerät sein, auf dem eine Back-End-Dienstanwendung ausgeführt wird, die andere IoT-Geräte verwaltet.  In beiden Fällen können [Azure IoT Hub SDKs](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) verwendet werden, um Anwendungen zu entwickeln, die auf mobilen Geräten funktionieren.  
+„Dinge“ im Internet der Dinge (Internet of Things, IoT) können sich auf eine breite Palette von Geräten mit unterschiedlichen Fähigkeiten beziehen: Sensoren, Mikrocontroller, intelligente Geräte, industrielle Gateways und sogar mobile Geräte.  Ein mobiles Gerät kann ein IoT-Gerät sein, das Gerät-zu-Cloud-Telemetriedaten sendet und von der Cloud verwaltet wird.  Es kann auch das Gerät sein, auf dem eine Back-End-Dienstanwendung ausgeführt wird, die andere IoT-Geräte verwaltet.  In beiden Fällen können [Azure IoT Hub SDKs](./iot-hub-devguide-sdks.md) verwendet werden, um Anwendungen zu entwickeln, die auf mobilen Geräten funktionieren.  
 
 ## <a name="develop-for-native-ios-platform"></a>Entwicklung für die native iOS-Plattform
 
@@ -52,5 +52,5 @@ In diesen Dokumentationen erfahren Sie, wie Sie eine Geräte- oder Dienstanwendu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [REST-API-Referenz zu IoT Hub](https://docs.microsoft.com/rest/api/iothub/)
+* [REST-API-Referenz zu IoT Hub](/rest/api/iothub/)
 * [Azure IoT C SDK-Quellcode](https://github.com/Azure/azure-iot-sdk-c)

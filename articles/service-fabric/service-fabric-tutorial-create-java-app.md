@@ -1,26 +1,15 @@
 ---
 title: 'Tutorial: Erstellen einer Java-App in Azure Service Fabric'
 description: In diesem Tutorial erfahren Sie, wie Sie eine Reliable Services-Java-Anwendung mit einem Front-End und ein zustandsbehaftetes Reliable Services-Back-End erstellen und die Anwendung in einem Cluster bereitstellen.
-services: service-fabric
-documentationcenter: java
-author: suhuruli
-manager: mfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/01/2018
-ms.author: suhuruli
-ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b3210b97fe6fb0cd16499d5c33538c8e2babe612
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, devx-track-js
+ms.openlocfilehash: d1f66177b1939d612a5ee80c99109c397b56cb37
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173650"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91532192"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Tutorial: Erstellen einer Anwendung mit einem Java-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst in Azure Service Fabric
 
@@ -228,7 +217,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 ### <a name="add-the-httpcommunicationlistenerjava-file"></a>Hinzufügen der Datei „HTTPCommunicationListener.java“
 
-Der HTTP-Kommunikationslistener fungiert als Controller, mit dem der HTTP-Server eingerichtet und die APIs zum Definieren der Abstimmungsaktionen verfügbar gemacht werden. Klicken Sie mit der rechten Maustaste auf das Paket *statelessservice* im Ordner *VotingWeb/src/statelessservice*, und wählen Sie **Neu****Datei** aus.  Geben Sie der Datei den Namen *HttpCommunicationListener.java*, und wählen Sie **Fertig stellen** aus.
+Der HTTP-Kommunikationslistener fungiert als Controller, mit dem der HTTP-Server eingerichtet und die APIs zum Definieren der Abstimmungsaktionen verfügbar gemacht werden. Klicken Sie mit der rechten Maustaste auf das Paket *statelessservice* im Ordner *VotingWeb/src/statelessservice*, und wählen Sie **Neu** > **Datei** aus.  Geben Sie der Datei den Namen *HttpCommunicationListener.java*, und wählen Sie **Fertig stellen** aus.
 
 Ersetzen Sie den Inhalt der Datei durch Folgendes, und speichern Sie anschließend Ihre Änderungen:  Im Abschnitt „Aktualisieren der Datei ‚HttpCommunicationListener.java‘“ wird diese Datei dann geändert, um Abstimmungsdaten für den Back-End-Dienst zu rendern, zu lesen und zu schreiben.  Bisher gibt der Listener einfach nur die statischen HTML-Daten für die Abstimmungs-App zurück.
 
@@ -898,7 +887,7 @@ An diesem Punkt ist die Anwendung bereit für die Bereitstellung in einem lokale
     Wenn Sie einen Mac verwenden, führen Sie den lokalen Cluster mit dem folgenden Befehl aus: Ersetzen Sie den in den Parameter **-v** übergebenen Parameter durch den Pfad zu Ihrem eigenen Arbeitsbereich.
 
     ```bash
-    docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox servicefabricoss/service-fabric-onebox
+    docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest
     ```
     Ausführlichere Anweisungen finden Sie im [Einrichtungsleitfaden für OS X](service-fabric-get-started-mac.md).
 

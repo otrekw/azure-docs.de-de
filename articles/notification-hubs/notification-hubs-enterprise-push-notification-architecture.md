@@ -1,6 +1,6 @@
 ---
-title: Benachrichtigungshubs - Pusharchitektur für Unternehmen
-description: Anleitung zur Verwendung von Azure Notification Hubs (Benachrichtigungshubs) in einer Unternehmensumgebung
+title: Notification Hubs-Pusharchitektur für Unternehmen
+description: Erfahren Sie etwas über die Verwendung von Azure Notification Hubs in einer Unternehmensumgebung.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5b65fe6acb1fdf7ba79b106c876527c9b6736c5f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 018315b7ed468e24fb922337848d14703ffdcd4d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211905"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89003625"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Anleitung für eine unternehmensbezogene Pusharchitektur
 
@@ -35,9 +36,9 @@ Eine bessere Lösung ist das Modell „Azure Service Bus – Thema/Abonnement“
 
 Die allgemeine Architektur der Lösung (verallgemeinert mit mehreren mobilen Apps, jedoch gleichermaßen anwendbar, wenn es nur eine mobile App gibt) sieht wie folgt aus.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
-![][1]
+![Diagramm der Unternehmensarchitektur mit dem Flow durch Ereignisse, Abonnements und Pushnachrichten.][1]
 
 Kernstück dieses Architekturdiagramms ist der Dienst Azure Service Bus, der ein auf Themen und Abonnements basierendes Programmiermodell bereitstellt (mehr dazu erfahren Sie unter [WindowsAzure.ServiceBus]). Der Empfänger, bei dem es sich in diesem Fall um das mobile Back-End handelt (üblicherweise [Azure Mobile Service] zum Auslösen einer Pushbenachrichtigung an die mobilen Apps), erhält Nachrichten nicht direkt von den Back-End-Systemen, sondern von einer dazwischen liegenden Abstraktionsschicht. Diese wird von [Azure Service Bus] bereitgestellt und ermöglicht es den mobilen Back-End-Systemen, Nachrichten von einem oder mehreren Back-End-Systemen zu empfangen. Für jedes der Back-End-Systeme, z.B. für Abrechnung, Personalwesen oder Finanzen, muss ein Service Bus-Thema erstellt werden. Bei diesen Systemen handelt es sich im Grunde um „Themen von Interesse“, die bewirken, dass Nachrichten als Pushbenachrichtigungen gesendet werden. Die Back-End-Systeme senden Nachrichten an diese Themen. Ein Mobil-Back-End kann eines oder mehrere solcher Themen durch Erstellen eines Service Bus-Abonnements abonnieren. Dadurch erhält das mobile Back-End die Berechtigung, eine Benachrichtigung vom entsprechenden Back-End-System zu empfangen. Das Mobil-Back-End lauscht weiterhin auf Nachrichten in seinen Abonnements, und sobald eine Nachricht eingetroffen ist, sendet es diese als Benachrichtigung an seinen Benachrichtigungshub. Notification Hubs senden die Nachricht dann schließlich an die mobile App. Hier finden Sie die Liste der wichtigsten Komponenten:
 
@@ -228,15 +229,17 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples] verfügbar.
 
     e. Um diese App als **WebJob** zu veröffentlichen, klicken Sie in Visual Studio mit der rechten Maustaste auf die Projektmappe, und wählen Sie **Als WebJob veröffentlichen** aus.
 
-    ![][2]
+    ![Screenshot der Optionen, die nach einem Klick mit der rechten Maustaste angezeigt werden, „Als Azure-WebJob veröffentlichen“ ist rot umrandet.][2]
 
     f. Wählen Sie Ihr Veröffentlichungsprofil aus, und erstellen Sie eine neue Azure-Website, sofern noch keine vorhanden ist, die diesen WebJob hostet. Sobald die Website vorhanden ist, klicken Sie auf **Veröffentlichen**.
 
-    ![][3]
+    :::image type="complex" source="./media/notification-hubs-enterprise-push-architecture/PublishAsWebJob.png" alt-text="Screenshot des Workflows zum Erstellen einer Website in Azure.":::
+    Screenshot des Dialogfelds „Web veröffentlichen“ mit ausgewählter Option „Microsoft Azure-Websites“. Ein grüner Pfeil zeigt auf das Dialogfeld „Vorhandene Website auswählen“, in dem die Option „Neu“ rot umrandet ist. Ein weiterer grüner Pfeil zeigt auf das Dialogfeld „Website in Microsoft Azure erstellen“, in dem die Optionen „Websitename“ und „Erstellen“ rot umrandet sind.
+    :::image-end:::
 
-    g. Konfigurieren Sie den WebJob mit „Dauerhaft ausführen“, sodass in etwa Folgendes angezeigt wird, wenn Sie sich beim [Azure-Portal] angemeldet haben:
+    g. Konfigurieren Sie den WebJob mit „Dauerhaft ausführen“, sodass in etwa Folgendes angezeigt wird, wenn Sie sich beim [Azure portal] angemeldet haben:
 
-    ![][4]
+    ![Screenshot des Azure-Portals, in dem die Webaufträge für „enterprisepushbackend“ angezeigt werden und die Werte für den Namen, den Zeitplan und die Protokolle rot umrandet sind.][4]
 
 3. **EnterprisePushMobileApp**
 
@@ -270,11 +273,11 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples] verfügbar.
 2. Führen Sie die **EnterprisePushMobileApp** aus, mit der die Windows Store-App gestartet wird.
 3. Führen Sie die Konsolenanwendung **EnterprisePushBackendSystem** aus, die das Branchen-Back-End simuliert und damit beginnt, Nachrichten zu senden. Es sollten Popupbenachrichtigungen ähnlich der folgenden angezeigt werden:
 
-    ![][5]
+    ![Screenshot einer Konsole mit ausgeführter App „EnterprisePushBackendSystem“ und der Nachricht, die von der App gesendet wird.][5]
 
-4. Die Nachrichten wurden ursprünglich an Service Bus-Themen gesendet, die von Service Bus-Abonnements in Ihrem WebJob überwacht wurden. Sobald eine Nachricht empfangen wurde, wurde eine Benachrichtigung erstellt und an die mobile App gesendet. Sie können die WebJob-Protokolle durchsuchen, um die Verarbeitung zu bestätigen. Navigieren Sie dazu im [Azure-Portal] für Ihren WebJob zum Link „Protokolle“:
+4. Die Nachrichten wurden ursprünglich an Service Bus-Themen gesendet, die von Service Bus-Abonnements in Ihrem WebJob überwacht wurden. Sobald eine Nachricht empfangen wurde, wurde eine Benachrichtigung erstellt und an die mobile App gesendet. Sie können die WebJob-Protokolle durchsuchen, um die Verarbeitung zu bestätigen. Navigieren Sie dazu im [Azure portal] für Ihren WebJob zum Link „Protokolle“:
 
-    ![][6]
+    ![Screenshot des Dialogfelds „Kontinuierlicher WebJob“, in dem die gesendete Nachricht rot umrandet ist.][6]
 
 <!-- Images -->
 [1]: ./media/notification-hubs-enterprise-push-architecture/architecture.png
@@ -287,8 +290,8 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples] verfügbar.
 <!-- Links -->
 [Notification Hubs Samples]: https://github.com/Azure/azure-notificationhubs-samples
 [Azure Mobile Service]: https://azure.microsoft.com/documentation/services/mobile-services/
-[Azure Service Bus]: https://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[WindowsAzure.ServiceBus]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[Azure Service Bus]: ../service-bus-messaging/service-bus-messaging-overview.md
+[WindowsAzure.ServiceBus]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
 [Azure WebJob]: ../app-service/webjobs-create.md
-[Erste Schritte mit Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Azure-Portal]: https://portal.azure.com/
+[Erste Schritte mit Notification Hubs]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[Azure portal]: https://portal.azure.com/

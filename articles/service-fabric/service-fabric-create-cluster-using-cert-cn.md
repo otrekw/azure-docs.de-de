@@ -1,25 +1,14 @@
 ---
-title: Erstellen eines Azure Service Fabric-Clusters mit allgemeinem Zertifikatnamen | Microsoft-Dokumentation
+title: Erstellen eines Clusters mit dem allgemeinen Namen des Zertifikats
 description: Erfahren Sie, wie Sie einen Service Fabric-Cluster erstellen, für den ein Zertifikat mit allgemeinem Namen aus einer Vorlage verwendet wird.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2019
-ms.author: atsenthi
-ms.openlocfilehash: 73e02b4482f69ec0c9d5a602f30cefea77279778
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: c852b40d35f936753d3c16420159676da239b6c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764721"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86246434"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Bereitstellen eines Service Fabric-Clusters mit allgemeinem Zertifikatnamen anstelle eines Fingerabdrucks
 Keine zwei Zertifikate können den gleichen Fingerabdruck haben, was ein Clusterzertifikatrollover oder die Verwaltung erschwert. Mehrere Zertifikate können jedoch den gleichen allgemeinen Namen oder den gleichen Antragsteller haben.  Cluster mit allgemeinen Zertifikatnamen vereinfachen die Zertifikatverwaltung. In diesem Artikel wird beschrieben, wie Sie einen Service Fabric-Cluster für die Verwendung des allgemeinen Zertifikatnamens (anstelle des Zertifikatfingerabdrucks) bereitstellen.
@@ -28,7 +17,7 @@ Keine zwei Zertifikate können den gleichen Fingerabdruck haben, was ein Cluster
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>Abrufen eines Zertifikats
-Fordern Sie zunächst ein Zertifikat von einer [Zertifizierungsstelle (CA)](https://wikipedia.org/wiki/Certificate_authority) an.  Der allgemeine Name des Zertifikats sollte für die benutzerdefinierte Domäne bestimmt sein, die Sie besitzen, und bei einer Domänenregistrierungsstelle gekauft sein. Beispiel: „azureservicefabricbestpractices.com“; da nur Microsoft-Mitarbeiter Zertifikate für MS-Domänen bereitstellen können, können Sie die DNS-Namen von Ihrem LB oder Traffic Manager nicht als allgemeine Namen für Ihr Zertifikat verwenden, und Sie müssen eine [Azure DNS-Zone](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) bereitstellen, wenn Ihre benutzerdefinierte Domäne in Azure auflösbar sein soll. Sie sollten auch Ihre benutzerdefinierte Domäne als „managementEndpoint“ Ihres Clusters deklarieren, wenn das Portal den Alias der benutzerdefinierten Domäne für Ihren Cluster reflektieren soll.
+Fordern Sie zunächst ein Zertifikat von einer [Zertifizierungsstelle (CA)](https://wikipedia.org/wiki/Certificate_authority) an.  Der allgemeine Name des Zertifikats sollte für die benutzerdefinierte Domäne bestimmt sein, die Sie besitzen, und bei einer Domänenregistrierungsstelle gekauft sein. Beispiel: „azureservicefabricbestpractices.com“; da nur Microsoft-Mitarbeiter Zertifikate für MS-Domänen bereitstellen können, können Sie die DNS-Namen von Ihrem LB oder Traffic Manager nicht als allgemeine Namen für Ihr Zertifikat verwenden, und Sie müssen eine [Azure DNS-Zone](../dns/dns-delegate-domain-azure-dns.md) bereitstellen, wenn Ihre benutzerdefinierte Domäne in Azure auflösbar sein soll. Sie sollten auch Ihre benutzerdefinierte Domäne als „managementEndpoint“ Ihres Clusters deklarieren, wenn das Portal den Alias der benutzerdefinierten Domäne für Ihren Cluster reflektieren soll.
 
 Zu Testzwecken können Sie von einer kostenlosen oder offenen Zertifizierungsstelle ein von der Zertifizierungsstelle signiertes Zertifikat abrufen.
 

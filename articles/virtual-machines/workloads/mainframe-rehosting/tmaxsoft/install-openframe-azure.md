@@ -1,6 +1,6 @@
 ---
 title: Installieren von TmaxSoft OpenFrame auf Azure-VMs
-description: Hosten Sie Ihre IBM z/OS-Mainframeworkloads mithilfe der TmaxSoft OpenFrame-Umgebung auf virtuellen Azure-Computern (VMs) neu.
+description: Erfahren Sie, wie Sie eine OpenFrame-Umgebung in Azure einrichten, die sich für Entwicklungs-, Demo-, Test- und Produktionsworkloads eignet.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -8,14 +8,15 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: b69ded2591478a477cd142decb39218841c9ac62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: workloads
+ms.openlocfilehash: ad3dbd8cdc6fff7eca8c24bb6e5258022d52cb9b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410125"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018493"
 ---
-# <a name="install-tmaxsoft-openframe-on-azure"></a>Installieren von TmaxSoft OpenFrame in Azure
+# <a name="install-tmaxsoft-openframe-on-azure"></a>Install TmaxSoft OpenFrame on Azure (Installieren von TmaxSoft OpenFrame in Azure)
 
 Erfahren Sie, wie Sie eine OpenFrame-Umgebung in Azure einrichten, die sich für Entwicklungs-, Demo-, Test- und Produktionsworkloads eignet. In diesem Tutorial werden die einzelnen Schritte erläutert.
 
@@ -51,7 +52,7 @@ Andere erforderliche OpenFrame-Komponenten:
 - PROTRIEVE, eine Lösung, die die Mainframesprache CA-Easytrieve ausführt.
 - OFMiner, eine Lösung, die die Mainframeassets analysiert und dann in Azure migriert.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
 Die folgende Abbildung zeigt eine Übersicht über die OpenFrame 7.0-Architekturkomponenten, die in diesem Tutorial installiert werden:
 
@@ -164,7 +165,7 @@ Wenn neue Personen Zugriff auf den virtuellen Computer erhalten:
 
 3.  Klicken Sie auf **Generate (Generieren)** .
 
-    ![Dialogfeld „PuTTY Key Generator“ (PuTTY-Schlüsselgenerator)](media/puttygen-02.png)
+    ![Screenshot des Dialogfelds „PuTTY Key Generator“, in dem die Schaltfläche „Generate“ hervorgehoben ist.](media/puttygen-02.png)
 
 4.  Speichern Sie nach der Generierung sowohl den öffentlichen als auch den privaten Schlüssel. Fügen Sie den Inhalt des öffentlichen Schlüssels in den Abschnitt **Öffentlicher SSH-Schlüssel** des Bereichs **Virtuellen Computer erstellen \> Grundlagen** ein (im vorherigen Abschnitt in den Schritten 6 und 7 gezeigt).
 
@@ -191,7 +192,7 @@ Wenn neue Personen Zugriff auf den virtuellen Computer erhalten:
 
 7. Geben Sie für **Host Name** (Hostname) Ihren Benutzernamen und die öffentliche IP-Adresse ein, die Sie kopiert haben. Beispiel: **Benutzername\@publicip**.
 
-    ![Dialogfeld „PuTTY Configuration“ (PuTTY-Konfiguration)](media/putty-01.png)
+    ![Screenshot des Dialogfelds „PuTTY Configuration“, in dem das Feld „Host Name (or IP address)“ hervorgehoben ist.](media/putty-01.png)
 
 8. Klicken Sie im Feld **Category** (Kategorie) auf **Connection (Verbindung) \> SSH \> Auth**. Geben Sie den Pfad zu Ihrer **Private key file** (privaten Schlüsseldatei) an.
 
@@ -993,7 +994,7 @@ OFCOBOL ist der OpenFrame-Compiler, der die COBOL-Programme des Mainframes über
 
 3. Lesen Sie die Lizenzvereinbarung, und drücken Sie die EINGABETASTE, um den Vorgang fortzusetzen.
 
-4. Akzeptieren Sie die Lizenzvereinbarung. Nachdem die Installation abgeschlossen ist, wird Folgendes angezeigt:
+4. Akzeptieren Sie die Lizenzbedingungen. Nachdem die Installation abgeschlossen ist, wird Folgendes angezeigt:
 
      ```
      Choose Install Folder 
@@ -1080,7 +1081,7 @@ OFASM ist der OpenFrame-Compiler, der die Assembler-Programme des Mainframes üb
      ```
 
 3. Lesen Sie die Lizenzvereinbarung, und drücken Sie die EINGABETASTE, um den Vorgang fortzusetzen.
-4. Akzeptieren Sie die Lizenzvereinbarung.
+4. Akzeptieren Sie die Lizenzbedingungen.
 5. Stellen Sie sicher, dass das Bashprofil mit OFASM-Variablen aktualisiert wird. Beispiel:
 
      ```
@@ -1167,7 +1168,7 @@ OSC ist die IBM CICS ähnliche OpenFrame-Umgebung, die Hochgeschwindigkeits-OLTP
      Nach Abschluss des Vorgangs wird die Meldung angezeigt, dass die Installation abgeschlossen ist.
 
 4. Stellen Sie sicher, dass das Bashprofil mit OSC-Variablen aktualisiert wird.
-5. Überprüfen Sie die OpenFrame\_OSC7\_0\_Fix2\_InstallLog.log-Datei. Das sollte in etwa so aussehen:
+5. Überprüfen Sie die OpenFrame\_OSC7\_0\_Fix2\_InstallLog.log-Datei. Der Bericht könnte beispielsweise wie folgt aussehen:
 
      ```
      Summary 
@@ -1359,7 +1360,7 @@ Installieren Sie vor JEUS das Apache Ant-Paket, das die zum Installieren von JEU
      [oframe7@ofdemo setup]$ . .bash_profile
      ```
 
-11. *Optional*. Erstellen Sie einen Alias für das einfache Herunterfahren und Starten von JEUS-Komponenten:
+11. *Optional:* Erstellen Sie einen Alias für das einfache Herunterfahren und Starten von JEUS-Komponenten:
 
      ```     
      # JEUS alias
@@ -1474,8 +1475,8 @@ Damit ist die Installation der OpenFrame-Komponenten abgeschlossen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie eine Mainframemigration in Betracht ziehen, steht Ihnen unser expandierendes Partnerökosystem zur Seite. Ausführliche Anleitungen zur Auswahl einer Partnerlösung finden Sie in der [Platform Modernization Alliance](https://www.platformmodernization.org/pages/mainframe.aspx).
+Wenn Sie eine Mainframemigration in Betracht ziehen, steht Ihnen unser expandierendes Partnerökosystem zur Seite. Ausführliche Anleitungen zur Auswahl einer Partnerlösung finden Sie in der [Platform Modernization Alliance](https://datamigration.microsoft.com/).
 
--   [Erste Schritte mit Azure](https://docs.microsoft.com/azure/)
--   [Dokumentation zu Host Integration Server (HIS)](https://docs.microsoft.com/host-integration-server/)
--   [Virtuelles Azure-Rechenzentrum: Lift-and-Shift-Leitfaden](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)
+-   [Erste Schritte mit Azure](../../../../index.yml)
+-   [Dokumentation zu Host Integration Server (HIS)](/host-integration-server/)
+-   [Virtuelles Azure-Rechenzentrum: Lift-and-Shift-Leitfaden](/archive/blogs/azurecat/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide)

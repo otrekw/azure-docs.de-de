@@ -8,18 +8,24 @@
       href: quickstart-powershell.md
 - name: Features und Tools
   href: features.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Ansible
       items:
         - name: Ausführen eines Ansible-Playbooks
-          href: /azure/ansible/ansible-run-playbook-in-cloudshell?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json
+          href: /azure/developer/ansible/getting-started-cloud-shell?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2fcloud-shell%2ftoc.json
         - name: Verwalten dynamischer Azure-Bestände
-          href: /azure/ansible/ansible-manage-azure-dynamic-inventories?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json
+          href: /azure/developer/ansible/dynamic-inventory-configure?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2fcloud-shell%2ftoc.json
     - name: Terraform
       items:
         - name: Erstellen eines Ausführungsplans
           href: example-terraform-bash.md
+- name: Konzepte
+  items:
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
 - name: Anleitungen
   items:
     - name: PowerShell Cloud Shell für Windows-Benutzer
@@ -32,13 +38,15 @@
       href: msi-authorization.md
     - name: Einbetten von Cloud Shell
       href: embed-cloud-shell.md
+    - name: Cloud Shell in Azure Virtual Network
+      href: private-vnet.md
 - name: Verwenden des Cloud Shell-Editors
   href: using-cloud-shell-editor.md
 - name: Problembehandlung und Einschränkungen
   href: troubleshooting.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure
     - name: Azure PowerShell
       href: /powershell/azure

@@ -1,30 +1,21 @@
 ---
-title: Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg| Microsoft-Dokumentation
+title: Bereitstellen eines Clusters für Verfügbarkeitszonen
 description: Erfahren Sie, wie Sie einen Azure Service Fabric-Cluster über Verfügbarkeitszonen hinweg bereitstellen.
-services: service-fabric
-documentationcenter: .net
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: b664c3d655ab45c89a65a0aea31622f57ddc8d9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73a3be62e57991b63525372f008e15d8e4f36a74
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080442"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401728"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
 Verfügbarkeitszonen sind in Azure ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Eine Verfügbarkeitszone ist ein eindeutiger physischer Standort, der mit unabhängiger Stromversorgung, Kühlung und Netzwerk innerhalb einer Azure-Region ausgestattet ist.
 
-Service Fabric unterstützt Cluster, die sich über Verfügbarkeitszonen erstrecken, indem Knotentypen bereitgestellt werden, die an bestimmte Zonen angeheftet sind. Dadurch wird die Hochverfügbarkeit Ihrer Anwendungen sichergestellt. Azure-Verfügbarkeitszonen sind nur in ausgewählten Regionen verfügbar. Weitere Informationen finden Sie unter [Übersicht über Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview).
+Service Fabric unterstützt Cluster, die sich über Verfügbarkeitszonen erstrecken, indem Knotentypen bereitgestellt werden, die an bestimmte Zonen angeheftet sind. Dadurch wird die Hochverfügbarkeit Ihrer Anwendungen sichergestellt. Azure-Verfügbarkeitszonen sind nur in ausgewählten Regionen verfügbar. Weitere Informationen finden Sie unter [Übersicht über Azure-Verfügbarkeitszonen](../availability-zones/az-overview.md).
 
 Es sind Beispielvorlagen verfügbar: [Verfügbarkeitszonenübergreifende Service Fabric-Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
@@ -145,17 +136,21 @@ Die NAT-Regeln für eingehenden Datenverkehr des Lastenausgleichs müssen mit de
 ```
 
 ### <a name="standard-sku-load-balancer-outbound-rules"></a>Load Balancer-Ausgangsregeln der Standard-SKU
-Load Balancer Standard und Standard Public IP führen im Vergleich zur Verwendung der Basic-SKUs neue Fähigkeiten und andere Verhaltensweisen für ausgehende Verbindungen ein. Wenn Sie bei der Arbeit mit Standard-SKUs ausgehende Verbindungen wünschen, müssen Sie diese explizit entweder mit Standard Public IP-Adressen oder Standard Public Load Balancer definieren. Weitere Informationen finden Sie unter [Ausgehende Verbindungen](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust) und [Azure Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
+Load Balancer Standard und Standard Public IP führen im Vergleich zur Verwendung der Basic-SKUs neue Fähigkeiten und andere Verhaltensweisen für ausgehende Verbindungen ein. Wenn Sie bei der Arbeit mit Standard-SKUs ausgehende Verbindungen wünschen, müssen Sie diese explizit entweder mit Standard Public IP-Adressen oder Standard Public Load Balancer definieren. Weitere Informationen finden Sie unter [Ausgehende Verbindungen](../load-balancer/load-balancer-outbound-connections.md) und [Azure Load Balancer Standard](../load-balancer/load-balancer-overview.md).
 
 >[!NOTE]
 > Die Standardvorlage verweist auf eine Netzwerksicherheitsgruppe, die standardmäßig den gesamten ausgehenden Datenverkehr gestattet. Der eingehende Datenverkehr ist auf die Ports beschränkt, die für Vorgänge zur Service Fabric-Verwaltung erforderlich sind. Die Regeln der Netzwerksicherheitsgruppe können an Ihre Anforderungen angepasst werden.
+
+>[!NOTE]
+> Jeder Service Fabric-Cluster, der die Standard-SKU für SLB verwendet, muss sicherstellen, dass jeder Knotentyp über eine Regel verfügt, die ausgehenden Datenverkehr an Port 443 zulässt. Dies ist erforderlich, um die Clustereinrichtung abzuschließen, und jede Bereitstellung ohne diese Regel schlägt fehl.
+
 
 ### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>Aktivieren von Zonen für eine VM-Skalierungsgruppe
 Um eine Zone zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgenden drei Werte in die Ressourcen der VM-Skalierungsgruppe aufnehmen.
 
 * Der erste Wert ist die **zones**-Eigenschaft, die angibt, in welcher Verfügbarkeitszone die VM-Skalierungsgruppe bereitgestellt wird.
 * Der zweite Wert ist die Eigenschaft „singlePlacementGroup“, die auf „true“ festgelegt werden muss.
-* Der dritte Wert ist die Eigenschaft „faultDomainOverride“ in der Erweiterung der Service Fabric-VM-Skalierungsgruppe. Der Wert für diese Eigenschaft sollte die Region und Zone enthalten, in der diese VM-Skalierungsgruppe platziert wird. Beispiel: „faultDomainOverride“: „eastus/az1“. Alle Ressourcen der VM-Skalierungsgruppe müssen in derselben Region positioniert werden, da Azure Service Fabric-Cluster keine regionenübergreifende Unterstützung aufweisen.
+* Der dritte Wert ist die Eigenschaft „faultDomainOverride“ in der Erweiterung der Service Fabric-VM-Skalierungsgruppe. Der Wert für diese Eigenschaft sollte nur die Zone enthalten, in der diese VM-Skalierungsgruppe platziert wird. Beispiel: „faultDomainOverride“: „az1“. Alle Ressourcen der VM-Skalierungsgruppe müssen in derselben Region positioniert werden, da Azure Service Fabric-Cluster keine regionsübergreifende Unterstützung aufweisen.
 
 ```json
 {
@@ -175,7 +170,7 @@ Um eine Zone zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgen
     "properties": {
         "type": "ServiceFabricNode",
         "autoUpgradeMinorVersion": false,
-        "publisher": "Microsoft.Azure.ServiceFabric.Test",
+        "publisher": "Microsoft.Azure.ServiceFabric",
         "settings": {
             "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
             "nodeTypeRef": "[parameters('vmNodeType1Name')]",
@@ -188,7 +183,7 @@ Um eine Zone zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgen
             "systemLogUploadSettings": {
                 "Enabled": true
             },
-            "faultDomainOverride": "eastus/az1"
+            "faultDomainOverride": "az1"
         },
         "typeHandlerVersion": "1.0"
     }
@@ -337,4 +332,96 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 ```
 
+## <a name="preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set"></a>(Vorschau) Aktivieren mehrerer Verfügbarkeitszonen in einer einzelnen VM-Skalierungsgruppe
+
+Die zuvor erwähnte Lösung verwendet einen NodeType pro VZ. Die folgende Lösung ermöglicht Benutzern die Bereitstellung von 3 VZs in demselben NodeType.
+
+Eine vollständige Beispielvorlage finden Sie [hier](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-Windows-Multiple-AZ-Secure).
+
+![Architektur der Azure Service Fabric-Verfügbarkeitszone][sf-multi-az-arch]
+
+### <a name="configuring-zones-on-a-virtual-machine-scale-set"></a>Konfigurieren von Zonen für eine VM-Skalierungsgruppe
+Um Zonen zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgenden drei Werte in die Ressourcen der VM-Skalierungsgruppe aufnehmen.
+
+* Der erste Wert ist die **zones**-Eigenschaft, die angibt, welche Verfügbarkeitszonen in der VM-Skalierungsgruppe vorhanden sind.
+* Der zweite Wert ist die Eigenschaft „singlePlacementGroup“, die auf „true“ festgelegt werden muss.
+* Der dritte, optionale Wert „zoneBalance“ stellt sicher, dass das strikte Zonengleichgewicht auf „true“ festgelegt ist. Informieren Sie sich über [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
+* Die Außerkraftsetzungen für FaultDomain und UpgradeDomain müssen nicht konfiguriert werden.
+
+```json
+{
+    "apiVersion": "2018-10-01",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+    "name": "[parameters('vmNodeType1Name')]",
+    "location": "[parameters('computeLocation')]",
+    "zones": ["1", "2", "3"],
+    "properties": {
+        "singlePlacementGroup": "true",
+        "zoneBalance": false
+    }
+}
+```
+
+>[!NOTE]
+> * **SF-Cluster müssen mindestens einen primären NodeType aufweisen. Primäre NodeTypes müssen mindestens den DurabilityLevel „Silver“ aufweisen.**
+> * Die sich über die VZs erstreckende VM-Skalierungsgruppe sollte unabhängig vom durabilityLevel mit mindestens 3 Verfügbarkeitszonen konfiguriert werden.
+> * Die sich über die VZs erstreckende VM-Skalierungsgruppe mit Silver-Dauerhaftigkeit (oder höher) sollte mindestens 15 VMs aufweisen.
+> * Die sich über die VZs erstreckende VM-Skalierungsgruppe mit Bronze-Dauerhaftigkeit sollte mindestens 6 VMs aufweisen.
+
+### <a name="enabling-the-support-for-multiple-zones-in-the-service-fabric-nodetype"></a>Aktivieren der Unterstützung für mehrere Zonen im Service Fabric-NodeType
+Der Service Fabric-NodeType muss aktiviert werden, um mehrere Verfügbarkeitszonen zu unterstützen.
+
+* Der erste Wert, der für NodeType auf „true“ festgelegt werden sollte, ist **multipleAvailabilityZones**.
+* Der zweite, optionale Wert ist **sfZonalUpgradeMode**. Diese Eigenschaft kann nicht geändert werden, wenn ein NodeType mit mehreren VZs bereits im Cluster vorhanden ist.
+      Die Eigenschaft steuert die logische Gruppierung von VMs in Upgradedomänen.
+          Wenn der Wert auf false festgelegt ist (flacher Modus): Virtuelle Computer unter dem Knotentyp werden in UDs gruppiert, wobei die Zoneninformationen in 5 UDs ignoriert werden.
+          Wenn der Wert ausgelassen oder auf „true“ festgelegt wird (hierarchischer Modus): VMs werden gruppiert, um die zonale Verteilung in bis zu 15 UDs widerzuspiegeln. Jede der drei Zonen erhält fünf UDS.
+          Diese Eigenschaft definiert nur das Upgradeverhalten für ServiceFabric-Anwendungs- und Codeupgrades. Die zugrunde liegenden Upgrades für VM-Skalierungsgruppen werden in allen VZ weiterhin parallel durchlaufen.
+      Diese Eigenschaft wirkt sich nicht auf die UD-Verteilung für Knotentypen aus, für die nicht mehrere Zonen aktiviert sind.
+* Der dritte Wert ist **vmssZonalUpgradeMode = Parallel**. Dies ist eine *erforderliche* Eigenschaft, die im Cluster konfiguriert werden soll, wenn ein NodeType mit mehreren VZs hinzugefügt wird. Diese Eigenschaft definiert den Upgrademodus für die Updates der VM-Skalierungsgruppe, die in allen VZs parallel ausgeführt werden.
+      Diese Eigenschaft kann derzeit nur auf „Parallel“ festgelegt werden.
+* Die apiVersion der Service Fabric-Clusterressource sollte „2020-12-01-preview“ oder höher lauten.
+* Die Clustercodeversion sollte „7.2.445“ oder höher sein.
+
+```json
+{
+    "apiVersion": "2020-12-01-preview",
+    "type": "Microsoft.ServiceFabric/clusters",
+    "name": "[parameters('clusterName')]",
+    "location": "[parameters('clusterLocation')]",
+    "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
+    ],
+    "properties": {
+        "SFZonalUpgradeMode": "Hierarchical",
+        "VMSSZonalUpgradeMode": "Parallel",
+        "nodeTypes": [
+          {
+                "name": "[parameters('vmNodeType0Name')]",
+                "multipleAvailabilityZones": true,
+          }
+        ]
+}
+```
+
+>[!NOTE]
+> * Öffentliche IP- und Load Balancer-Ressourcen sollten die Standard SKU verwenden, wie zuvor in diesem Artikel beschrieben.
+> * Die Eigenschaft „multipleAvailabilityZones“ für NodeType kann nur zum Zeitpunkt der Erstellung von „NodeType“ definiert und später nicht geändert werden. Folglich können vorhandene NodeType-Typen nicht mit dieser Eigenschaft konfiguriert werden.
+> * Wenn „sfZonalUpgradeMode“ ausgelassen oder auf „Hierarchisch“ festgelegt wird, werden die Cluster- und Anwendungsbereitstellungen langsamer, da im Cluster weitere Upgradedomänen vorhanden sind. Es ist wichtig, die Upgraderichtlinientimeouts ordnungsgemäß für die Upgradezeitdauer für 15 Upgradedomänen anzupassen.
+> * Es wird empfohlen, als Zuverlässigkeitsstufe für den Cluster „Platin“ festzulegen, um sicherzustellen, dass der Cluster das Szenario mit einer ausgefallenen Zone überlebt.
+
+>[!NOTE]
+> Für bewährte Methoden empfiehlt es sich, sfZonalUpgradeMode auf „Hierarchisch“ festzulegen oder wegzulassen. Die Bereitstellung befolgt die zonale Verteilung von virtuellen Computern, die sich auf eine geringere Anzahl von Replikaten und/oder Instanzen auswirkt und sie sicherer macht.
+> Verwenden Sie sfZonalUpgradeMode mit der Einstellung „Parallel“, wenn die Bereitstellungsgeschwindigkeit eine Priorität ist oder nur eine zustandslose Workload auf dem Knotentyp mit mehreren VZs ausgeführt wird. Dies führt dazu, dass der UD-Gang in allen VZs parallel erfolgt.
+
+### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Migration zum Knotentyp mit mehreren Verfügbarkeitszonen
+Für alle Migrationsszenarien muss ein neuer NodeType hinzugefügt werden, der mehrere Verfügbarkeitszonen unterstützt. Ein vorhandener NodeType kann nicht migriert werden, um mehrere Zonen zu unterstützen.
+In [diesem](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-primary-node-type ) Artikel werden die ausführlichen Schritte zum Hinzufügen eines neuen NodeTypes und zum Hinzufügen der anderen Ressourcen erfasst, die für den neuen NodeType erforderlich sind, wie die IP-und LB-Ressourcen. Außerdem wird im gleichen Artikel beschrieben, wie Sie den vorhandenen NodeType außer Kraft setzen, nachdem der NodeType mit mehreren Verfügbarkeitszonen dem Cluster hinzugefügt wurde.
+
+* Migration von einem NodeType, der grundlegende LB- und IP-Ressourcen verwendet: Dies wird bereits [hier](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) für die Lösung mit einem Knotentyp pro VZ beschrieben. 
+    Der einzige Unterschied für den neuen Knotentyp besteht darin, dass es nur 1 VM-Skalierungsgruppe und 1 NodeType für alle VZs anstatt 1 pro VZ gibt.
+* Migration von einem NodeType, der Standard SKU-LB- und -IP-Ressourcen verwendet:   Befolgen Sie das oben beschriebene Verfahren mit der Ausnahme, dass es nicht erforderlich ist, neue LB-, IP- und NSG-Ressourcen hinzuzufügen, und dass die gleichen Ressourcen im neuen NodeType wiederverwendet werden können.
+
+
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
+[sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png

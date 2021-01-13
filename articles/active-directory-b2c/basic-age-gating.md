@@ -2,20 +2,20 @@
 title: Aktivieren der Altersbeschränkung in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Minderjährige identifizieren, die Ihre Anwendung verwenden.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f7eb4d8e784acc659f6661ef6efbdb06816b142c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 6bd93f9062f8446ce20436a7a04e2054aaf5be71
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064455"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85386130"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Aktivieren der Altersbeschränkung in Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ ms.locfileid: "71064455"
 
 Mit der Altersbeschränkung in Azure Active Directory B2C (Azure AD B2C) können Sie Minderjährige identifizieren, die Ihre Anwendung verwenden möchten. Sie können Minderjährige bei Bedarf daran hindern, sich an der Anwendung anzumelden. Benutzer können auch zur Anwendung zurückkehren und ihre Altersgruppe und den Status der Zustimmung durch die Erziehungsberechtigten angeben. Azure AD B2C kann Minderjährige ohne elterliche Zustimmung sperren. Außerdem kann Azure AD B2C so eingerichtet werden, dass von der Anwendung entschieden werden kann, wie mit Minderjährigen verfahren wird.
 
-Nachdem Sie die Altersbeschränkung in Ihrem [Benutzerflow](active-directory-b2c-reference-policies.md) aktiviert haben, werden die Benutzer gefragt, wann sie geboren wurden und in welchem Land / welcher Region sie leben. Wenn sich ein Benutzer anmeldet, der diese Informationen noch nicht eingegeben hat, muss dies bei der nächsten Anmeldung erfolgen. Die Regeln werden jedes Mal angewendet, wenn sich ein Benutzer anmeldet.
+Nachdem Sie die Altersbeschränkung in Ihrem [Benutzerflow](user-flow-overview.md) aktiviert haben, werden die Benutzer gefragt, wann sie geboren wurden und in welchem Land / welcher Region sie leben. Wenn sich ein Benutzer anmeldet, der diese Informationen noch nicht eingegeben hat, muss dies bei der nächsten Anmeldung erfolgen. Die Regeln werden jedes Mal angewendet, wenn sich ein Benutzer anmeldet.
 
 Azure AD B2C nutzt die vom Benutzer eingegebenen Informationen, um zu ermitteln, ob es sich um eine minderjährige Person handelt. Anschließend wird das Feld **ageGroup** im Konto aktualisiert. Der Wert kann `null`, `Undefined`, `Minor`, `Adult` oder `NotAdult` lauten.  Die Felder **ageGroup** und **consentProvidedForMinor** werden dann verwendet, um den Wert von **legalAgeGroupClassification** zu berechnen.
 
@@ -48,7 +48,7 @@ Die Altersbeschränkung umfasst zwei Alterswerte: das Alter, in dem eine Person 
 | EG | Ägypten | Keine | 21 |
 | ES | Spanien | 13 | 18 |
 | BV | Frankreich | 16 | 18 |
-| GB | Vereinigtes Königreich | 13 | 18 |
+| GB | United Kingdom | 13 | 18 |
 | GR | Griechenland | 16 | 18 |
 | HR | Kroatien | 16 | 18 |
 | HU | Ungarn | 16 | 18 |

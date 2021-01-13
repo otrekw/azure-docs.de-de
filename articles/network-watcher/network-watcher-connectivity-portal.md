@@ -1,24 +1,23 @@
 ---
-title: Problembehandlung für Verbindungen mit Azure Network Watcher – Azure-Portal | Microsoft-Dokumentation
+title: Problembehandlung bei Verbindungen – Azure-Portal
+titleSuffix: Azure Network Watcher
 description: Hier erfahren Sie, wie Sie über das Azure-Portal die Funktion zur Problembehandlung für Verbindungen von Azure Network Watcher nutzen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/03/2017
-ms.author: kumud
-ms.openlocfilehash: 783bcd0cdc97328f16c4a0defa18daa46a065842
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/04/2021
+ms.author: damendo
+ms.openlocfilehash: f33c5f0fdf69737df0d8bd83499ded1e0e0f4f88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702003"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898112"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Problembehandlung für Verbindungen mit Azure Network Watcher und dem Azure-Portal
 
@@ -38,7 +37,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Ressource
 * Virtuelle Computer zum Ausführen der Problembehandlung für Verbindungen
 
 > [!IMPORTANT]
-> Für die Problembehandlung für Verbindungen muss auf dem virtuellen Computer, auf dem Sie die Problembehandlung ausführen, die VM-Erweiterung `AzureNetworkWatcherExtension` installiert sein. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Die Erweiterung ist nicht auf dem Zielendpunkt erforderlich.
+> Für die Problembehandlung für Verbindungen muss auf dem virtuellen Computer, auf dem Sie die Problembehandlung ausführen, die VM-Erweiterung `AzureNetworkWatcherExtension` installiert sein. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/extensions/network-watcher-windows.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/extensions/network-watcher-linux.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Die Erweiterung ist nicht auf dem Zielendpunkt erforderlich.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Überprüfen der Konnektivität zu einem virtuellen Computer
 

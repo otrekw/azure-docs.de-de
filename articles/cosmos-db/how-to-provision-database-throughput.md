@@ -1,81 +1,55 @@
 ---
-title: Bereitstellen des Datenbankdurchsatzes in Azure Cosmos DB
-description: Hier erfahren Sie, wie Sie in Azure Cosmos DB Durchsatz auf Datenbankebene bereitstellen.
-author: rimman
+title: Bereitstellen des Datenbankdurchsatzes in der Azure Cosmos DB-SQL-API
+description: Hier erfahren Sie, wie Sie Durchsatz auf Datenbankebene in der Azure Cosmos DB-SQL-API mit dem Azure-Portal, mit der CLI, mit PowerShell und mit verschiedenen anderen SDKs bereitstellen.
+author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 07/03/2019
-ms.author: rimman
-ms.openlocfilehash: 29bc65c8afaa1fe4bdc39923bd2219184e8b3a96
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.subservice: cosmosdb-sql
+ms.topic: how-to
+ms.date: 10/15/2020
+ms.author: mjbrown
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 4ecbee2260da735cd6ba74d3b9ffb55b4a652e9e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092993"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341993"
 ---
-# <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos DB
+# <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Bereitstellen von Standarddurchsatz (manuell) für eine Datenbank in Azure Cosmos DB: SQL-API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-In diesem Artikel wird erläutert, wie Sie Durchsatz für eine Datenbank in Azure Cosmos DB bereitstellen. Sie können Durchsatz für einen einzelnen [Container](how-to-provision-container-throughput.md) oder für eine Datenbank bereitstellen und den Durchsatz für die darin enthaltenen Container freigeben. Informationen dazu, wann Durchsatz auf Containerebene und wann auf Datenbankebene verwendet wird, finden Sie im Artikel [Anwendungsfälle für die Bereitstellung von Durchsatz für Container und Datenbanken](set-throughput.md). Durchsatz auf Datenbankebene kann über das Azure-Portal oder über Azure Cosmos DB SDKs bereitgestellt werden.
+In diesem Artikel erfahren Sie, wie Sie Standarddurchsatz (manuell) für eine Datenbank in der Azure Cosmos DB-SQL-API bereitstellen. Sie können Durchsatz für einen einzelnen [Container](how-to-provision-container-throughput.md) oder für eine Datenbank bereitstellen und den Durchsatz für die darin enthaltenen Container freigeben. Wenn Sie erfahren möchten, wann Durchsatz auf Containerebene und wann er auf Datenbankebene verwendet wird, lesen Sie den Artikel [Anwendungsfälle für die Bereitstellung von Durchsatz für Container und Datenbanken](set-throughput.md). Durchsatz auf Datenbankebene kann über das Azure-Portal oder über Azure Cosmos DB SDKs bereitgestellt werden.
+
+Wenn Sie eine andere API verwenden, finden Sie weitere Informationen zum Bereitstellen des Durchsatzes in den Artikeln zur [API für MongoDB](how-to-provision-throughput-mongodb.md), [Cassandra-API](how-to-provision-throughput-cassandra.md) und [Gremlin-API](how-to-provision-throughput-gremlin.md).
 
 ## <a name="provision-throughput-using-azure-portal"></a>Bereitstellen des Durchsatzes mithilfe des Azure-Portals
-
-### <a id="portal-sql"></a>SQL-API (Core-API)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 1. [Erstellen Sie ein neues Azure Cosmos-Konto](create-sql-api-dotnet.md#create-account), oder wählen Sie ein bereits vorhandenes Azure Cosmos-Konto aus.
 
-1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **Neue Datenbank** aus. Geben Sie die folgenden Details an:
+1. Öffnen Sie den Bereich **Daten-Explorer** , und wählen Sie **Neue Datenbank** aus. Geben Sie die folgenden Details an:
 
-   * Geben Sie eine Datenbank-ID ein. 
-   * Aktivieren Sie das Kontrollkästchen **Durchsatz bereitstellen**.
+   * Geben Sie eine Datenbank-ID ein.
+   * Wählen Sie die Option **Provision database throughput** (Datenbankdurchsatz bereitstellen) aus.
    * Geben Sie einen Durchsatz ein (beispielsweise 1.000 RUs).
    * Klicken Sie auf **OK**.
 
-![Screenshot: Dialogfeld „Neue Datenbank“](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
+    :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-sql-api.png" alt-text="Screenshot: Dialogfeld „Neue Datenbank“":::
 
+## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Bereitstellen von Durchsatz über Azure CLI oder PowerShell
 
-## <a name="provision-throughput-using-azure-cli"></a>Bereitstellen des Durchsatzes mithilfe der Azure-Befehlszeilenschnittstelle
+Weitere Informationen zum Erstellen einer Datenbank mit gemeinsamem Durchsatz finden Sie unter
 
-```azcli-interactive
-az cosmosdb database create --db-name
-                            [--key]
-                            [--name]
-                            [--resource-group-name]
-                            [--subscription]
-                            [--throughput]
-                            [--url-connection]
-```
-
-
-
-
-## <a name="provision-throughput-using-powershell"></a>Bereitstellen von Durchsatz mithilfe von PowerShell
-
-```azurepowershell-interactive
-# Create a database and provision throughput of 400 RU/s
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-$databaseName = "database1"
-$databaseResourceName = $accountName + "/sql/" + $databaseName
-
-$databaseProperties = @{
-    "resource"=@{ "id"=$databaseName };
-    "options"=@{ "Throughput"= 400 }
-}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $databaseResourceName -PropertyObject $databaseProperties
-```
+* [Erstellen einer Datenbank über Azure CLI](manage-with-cli.md#create-a-database-with-shared-throughput)
+* [Erstellen einer Azure Cosmos DB-Datenbank mit gemeinsam genutztem Durchsatz](manage-with-powershell.md#create-db-ru)
 
 ## <a name="provision-throughput-using-net-sdk"></a>Bereitstellen des Durchsatzes mithilfe des .NET SDK
 
 > [!Note]
-> Sie können Cosmos SDKs für die SQL-API verwenden, um Durchsatz für alle APIs bereitzustellen. Sie können optional auch das folgende Beispiel für die Cassandra-API verwenden.
+> Sie können Azure Cosmos SDKs für die SQL-API verwenden, um Durchsatz für alle APIs bereitzustellen. Sie können optional auch das folgende Beispiel für die Cassandra-API verwenden.
 
-### <a id="dotnet-all"></a>Alle APIs
-### <a name="net-v2-sdk"></a>.Net V2 SDK
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 //set the throughput for the database
@@ -90,21 +64,18 @@ await client.CreateDatabaseIfNotExistsAsync(
     options);
 ```
 
-### <a name="net-v3-sdk"></a>.Net V3 SDK
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
-### <a id="dotnet-cassandra"></a>Cassandra-API
-
-```csharp
-// Create a Cassandra keyspace and provision throughput of 400 RU/s
-session.Execute(CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400);
-```
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zum Bereitstellen des Durchsatzes in Azure Cosmos DB finden Sie in den folgenden Artikeln:
 
-* [Globales Skalieren von bereitgestelltem Durchsatz](scaling-throughput.md)
+* [Globales Skalieren von bereitgestelltem Durchsatz](./request-units.md)
 * [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md)
-* [Provision throughput for an Azure Cosmos DB container](how-to-provision-container-throughput.md) (Bereitstellen des Durchsatzes für einen Azure Cosmos DB-Container)
+* [Bereitstellen von Standarddurchsatz (manuell) für einen Azure Cosmos-Container](how-to-provision-container-throughput.md)
+* [Bereitstellen von automatisch skalierendem Durchsatz für eine Datenbank oder einen Container in Azure Cosmos DB](how-to-provision-autoscale-throughput.md)
 * [Durchsatz und Anforderungseinheiten in Azure Cosmos DB](request-units.md)

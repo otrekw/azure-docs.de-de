@@ -1,19 +1,14 @@
 ---
-title: Ausführen von Befehlen in ausgeführten Containern in Azure Container Instances
+title: Ausführen von Befehlen in einer ausgeführten Containerinstanz
 description: Erfahren Sie, wie ein Befehl in einem Container ausgeführt wird, der zurzeit in Azure Container Instances ausgeführt wird
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: danlep
-ms.openlocfilehash: a8583cf605891631a2bce6914b24525aebd59ea0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68325978"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "79225846"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>Ausführen eines Befehls in einer ausgeführten Azure Container Instances-Instanz
 
@@ -35,8 +30,7 @@ az container exec --resource-group myResourceGroup --name mynginx --exec-command
 
 In der folgenden Beispielausgabe wird die Bash-Shell in einem ausgeführten Linux-Container gestartet, der einen Terminalserver bereitstellt, in dem `ls` ausgeführt wird:
 
-```console
-$ az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
+```output
 root@caas-83e6c883014b427f9b277a2bba3b7b5f-708716530-2qv47:/# ls
 bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
 boot  etc  lib   media  opt  root  sbin  sys  usr
@@ -47,8 +41,11 @@ Bye.
 
 In diesem Beispiel wird die Eingabeaufforderung in einem ausgeführten Nano Server-Container gestartet:
 
-```console
-$ az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
+```azurecli
+az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
+```
+
+```output
 Microsoft Windows [Version 10.0.14393]
 (c) 2016 Microsoft Corporation. All rights reserved.
 
@@ -83,7 +80,7 @@ In der Containergruppe *mynginx* befinden sich beispielsweise zwei Container: *n
 az container exec --resource-group myResourceGroup --name mynginx --container-name nginx-app --exec-command "/bin/bash"
 ```
 
-## <a name="restrictions"></a>Einschränkungen
+## <a name="restrictions"></a>Beschränkungen
 
 Azure Container Instances unterstützt derzeit den Start eines einzelnen Prozesses mit [az container exec][az-container-exec], und Sie können keine Befehlsargumente übergeben. Sie können beispielsweise keine Befehle wie in `sh -c "echo FOO && echo BAR"` verketten oder `echo FOO` ausführen.
 

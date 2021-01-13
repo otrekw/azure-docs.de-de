@@ -1,21 +1,20 @@
 ---
-title: 'Tutorial: Hinzufügen eines Beispielmodells zu einem Azure Analysis Services-Server | Microsoft-Dokumentation'
+title: 'Tutorial: Hinzufügen eines Beispielmodells – Azure Analysis Services | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie ein Beispielmodell in Azure Analysis Services hinzufügen.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 32c46f0a488d775275b3a367aa2913f034569041
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f882a40940a5c7202e9cf1f5c8b8927f008f4a39
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903928"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013609"
 ---
-# <a name="tutorial-add-a-sample-model-from-the-portal"></a>Tutorial: Hinzufügen eines Beispielmodells aus dem Portal
+# <a name="tutorial-add-a-sample-model-from-the-portal"></a>Tutorial: Hinzufügen eines Beispielmodells über das Portal
 
 In diesem Tutorial fügen Sie eine tabellarische Adventure Works-Modelldatenbank zu Ihrem Server hinzu. Das Beispielmodell ist eine vollständige Version des Beispieldatenmodells für Internetverkäufe in Adventure Works (1200). Ein Beispielmodell eignet sich zum Testen der Modellverwaltung, zum Herstellen einer Verbindung mit Tools und Clientanwendungen und zum Abfragen von Modelldaten. In diesem Tutorial werden das [Azure-Portal](https://portal.azure.com) und [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) für folgende Zwecke verwendet: 
 
@@ -25,13 +24,13 @@ In diesem Tutorial fügen Sie eine tabellarische Adventure Works-Modelldatenbank
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
 - Einen Azure Analysis Services-Server. Weitere Informationen finden Sie unter [Erstellen eines Analysis Services-Servers im Azure-Portal](analysis-services-create-server.md).
 - Serveradministratorberechtigungen
-- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
@@ -46,7 +45,7 @@ Melden Sie sich beim [Portal](https://portal.azure.com/) an.
 
 2. Vergewissern Sie sich unter **Neues Modell** > **Datenquelle auswählen**, dass **Beispieldaten** ausgewählt ist, und klicken Sie dann auf **Hinzufügen**.
 
-    ![Auswählen der Beispieldaten](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
+    ![Auswählen des neuen Modells](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
 3. Vergewissern Sie sich unter **Übersicht**, dass das Beispielmodell `adventureworks` hinzugefügt wurde.
 
@@ -74,6 +73,4 @@ In diesen Schritten wird beschrieben, wie Sie ein Modell mithilfe von SSMS auf e
 In diesem Tutorial haben Sie gelernt, wie Sie Ihrem Server ein einfaches Beispielmodell hinzufügen. Sie besitzen nun eine Modelldatenbank und können über SQL Server Management Studio eine Verbindung damit herstellen und Benutzerrollen hinzufügen. Weitere Informationen finden Sie im nächsten Tutorial.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Konfigurieren von Serveradministrator- und Benutzerrollen](analysis-services-database-users.md)
-
-
+> [Tutorial: Konfigurieren von Serveradministrator- und Benutzerrollen](tutorials/analysis-services-tutorial-roles.md)

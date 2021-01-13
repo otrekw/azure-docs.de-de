@@ -1,27 +1,20 @@
 ---
-title: 'Beispiele für die Azure CLI: Zonenredundante Skalierungsgruppe | Microsoft-Dokumentation'
-description: Azure CLI-Beispiele
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.devlang: azurecli
+title: 'Azure CLI-Beispiele: Zonenredundante Skalierungsgruppe'
+description: Dieses Skript erstellt eine Azure-VM-Skalierungsgruppe unter Ubuntu, die sich über mehrere Verfügbarkeitszonen erstreckt.
+author: mimckitt
+ms.author: mimckitt
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 903a4d1a9864a9ab19df7c453adc002a8bd0f576
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.reviewer: jushiman
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 3424fdecf8431d8cc8ef07f330e1dc1ac9c880bb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983184"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87499652"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Erstellen einer zonenredundanten VM-Skalierungsgruppe mithilfe der Azure CLI
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Ubuntu, die sich über mehrere Verfügbarkeitszonen erstreckt. Nach dem Ausführen des Skripts können Sie per RDP auf den virtuellen Computer zugreifen.
@@ -50,6 +43,4 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 | [az group delete](/cli/azure/ad/group) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
-
-Weitere Azure CLI-Skriptbeispiele für VM-Skalierungsgruppen finden Sie in der [Dokumentation zu Azure-VM-Skalierungsgruppen](../cli-samples.md).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure/overview).

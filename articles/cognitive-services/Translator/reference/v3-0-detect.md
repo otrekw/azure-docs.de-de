@@ -1,7 +1,7 @@
 ---
-title: Erkennungsmethode für die Textübersetzungs-API
+title: Translator-Methode „Detect“
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Erkennungsmethode (Detect) der Textübersetzungs-API.
+description: Ermitteln Sie die Sprache eines Texts mit der Methode „Detect“ von Azure Cognitive Services Translator.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: ba73b75e30639dd3f5cf5523124c926ea3442fa1
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 12029d7a77eb7cbbb10cb5330eb18d6316520a2d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932024"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021319"
 ---
-# <a name="translator-text-api-30-detect"></a>Textübersetzungs-API 3.0: Detect
+# <a name="translator-30-detect"></a>Translator 3.0: Detect
 
 Identifiziert die Sprache eines Textabschnitts.
 
@@ -49,7 +49,7 @@ Anforderungsheader enthalten Folgendes:
   <th>BESCHREIBUNG</th>
   <tr>
     <td>Authentifizierungsheader</td>
-    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
+    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -61,13 +61,13 @@ Anforderungsheader enthalten Folgendes:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Optional*.<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Beachten Sie, dass Sie diesen Header weglassen können, wenn Sie die Ablaufverfolgungs-ID mithilfe eines Abfrageparameters namens `ClientTraceId` in die Abfragezeichenfolge einschließen.</td>
+    <td>*Optional:*<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Beachten Sie, dass Sie diesen Header weglassen können, wenn Sie die Ablaufverfolgungs-ID mithilfe eines Abfrageparameters namens `ClientTraceId` in die Abfragezeichenfolge einschließen.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Anforderungstext
 
-Der Anforderungstext ist ein JSON-Array. Jedes Arrayelement ist ein JSON-Objekt mit einer Zeichenfolgeneigenschaft namens `Text`. Die Spracherkennung wird auf den Wert der `Text`-Eigenschaft angewendet. Ein Beispiel-Anforderungstext sieht folgendermaßen aus:
+Der Anforderungstext ist ein JSON-Array. Jedes Arrayelement ist ein JSON-Objekt mit einer Zeichenfolgeneigenschaft namens `Text`. Die Spracherkennung wird auf den Wert der `Text`-Eigenschaft angewendet. Ein längerer Eingabetext erhöht die Zuverlässigkeit der automatischen Spracherkennung. Ein Beispiel-Anforderungstext sieht folgendermaßen aus:
 
 ```json
 [
@@ -78,7 +78,6 @@ Der Anforderungstext ist ein JSON-Array. Jedes Arrayelement ist ein JSON-Objekt 
 Es gelten die folgenden Einschränkungen:
 
 * Das Array kann höchstens über 100 Elemente verfügen.
-* Der Textwert eines Arrayelements kann 10.000 Zeichen (einschließlich Leerzeichen) nicht überschreiten.
 * Der gesamte Text, der in einer Anforderung enthalten ist, kann 50.000 Zeichen (einschließlich Leerzeichen) nicht überschreiten.
 
 ## <a name="response-body"></a>Antworttext
@@ -142,7 +141,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   <th>BESCHREIBUNG</th>
   <tr>
     <td>200</td>
-    <td>Erfolgreich.</td>
+    <td>Erfolg.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -170,7 +169,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   </tr>
 </table> 
 
-Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Gängige Fehlercodes finden Sie auf der [Referenzseite zur Textübersetzungs-API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Häufige Fehlercodes finden Sie in der [Referenz zu Version 3 von Translator](./v3-0-reference.md#errors). 
 
 ## <a name="examples"></a>Beispiele
 

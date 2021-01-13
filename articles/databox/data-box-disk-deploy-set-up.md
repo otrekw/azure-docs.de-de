@@ -1,6 +1,6 @@
 ---
 title: Tutorial zum Entpacken, Verbinden und Entsperren von Azure Data Box Disk | Microsoft-Dokumentation
-description: Verwenden Sie dieses Tutorial, um zu erfahren, wie Sie Ihren Azure Data Box-Datenträger einrichten.
+description: In diesem Tutorial erfahren Sie, wie Sie Azure Data Box Disk auspacken, eine Verbindung mit den Datenträgern herstellen, den Passkey abrufen und Datenträger auf Windows- und Linux-Clients entsperren.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,13 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 91baec55cb976a3bc64ac60b1759c80e64fd18a3
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 77c09385c69e4a2922fa3b2249143e6e969bfc5a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375882"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759903"
 ---
 ::: zone target="docs"
 
@@ -55,49 +54,49 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
  Führen Sie die folgenden Schritte aus, um Ihre Datenträger auszupacken.
 
-1. Die Data Box-Datenträger werden in einem kleinen Versandpaket gesendet. Öffnen Sie das Paket, und nehmen Sie den Inhalt heraus. Überprüfen Sie, ob das Paket ein bis fünf SSD-Datenträger (Solid-State Disks) und ein USB-Verbindungskabel pro Datenträger enthält. Überprüfen Sie das Paket auf Zeichen einer Manipulation oder andere erkennbare Beschädigungen. 
+1. Die Data Box-Datenträger werden in einem kleinen Versandpaket gesendet. Öffnen Sie das Paket, und nehmen Sie den Inhalt heraus. Überprüfen Sie, ob das Paket ein bis fünf SSD-Datenträger (Solid-State Disks) und ein USB-Verbindungskabel pro Datenträger enthält. Überprüfen Sie das Paket auf Zeichen einer Manipulation oder andere erkennbare Beschädigungen.
 
     ![Versandpaket für Data Box-Datenträger](media/data-box-disk-deploy-set-up/data-box-disk-ship-package1.png)
 
 2. Öffnen Sie das Versandpaket nicht, falls es manipuliert wurde oder stark beschädigt ist. Wenden Sie sich an den Microsoft-Support, um Hilfe bei der Ermittlung zu erhalten, ob sich die Datenträger in einem einwandfreien Zustand befinden oder ob eine Ersatzsendung erforderlich ist.
-3. Prüfen Sie, ob das Paket über eine durchsichtige Kunststoffhülle mit einem Versandetikett für die Rücksendung verfügt (unter dem Etikett für die Zusendung an Sie). Falls dieses Etikett nicht vorhanden oder beschädigt ist, können Sie im Azure-Portal jederzeit ein neues Etikett herunterladen und ausdrucken. 
+3. Prüfen Sie, ob das Paket über eine durchsichtige Kunststoffhülle mit einem Versandetikett für die Rücksendung verfügt (unter dem Etikett für die Zusendung an Sie). Falls dieses Etikett nicht vorhanden oder beschädigt ist, können Sie im Azure-Portal jederzeit ein neues Etikett herunterladen und ausdrucken.
 
     ![Versandetikett für Data Box-Datenträger](media/data-box-disk-deploy-set-up/data-box-disk-package-ship-label.png)
 
 4. Heben Sie das Paket und die Schaumteile für den Schutz des Inhalts für die Rücksendung der Datenträger auf.
 
-## <a name="connect-to-disks-and-get-the-passkey"></a>Herstellen der Verbindung mit Datenträgern und Abrufen des Hauptschlüssels 
+## <a name="connect-to-disks-and-get-the-passkey"></a>Herstellen der Verbindung mit Datenträgern und Abrufen des Hauptschlüssels
 
-1. Verwenden Sie das beigefügte Kabel, um den Datenträger an einen Clientcomputer anzuschließen, auf dem ein unterstütztes Betriebssystem ausgeführt wird (siehe „Voraussetzungen“). 
+1. Verwenden Sie das beigefügte Kabel, um den Datenträger an einen Clientcomputer anzuschließen, auf dem ein unterstütztes Betriebssystem ausgeführt wird (siehe „Voraussetzungen“).
 
-    ![Anschließen des Data Box-Datenträgers](media/data-box-disk-deploy-set-up/data-box-disk-connect-unlock.png)    
-    
-2. Navigieren Sie im Azure-Portal zu **Allgemein > Gerätedetails**. Verwenden Sie das Symbol „Kopieren“, um den Hauptschlüssel zu kopieren. Dieser Hauptschlüssel wird zum Entsperren der Datenträger verwendet.
+    ![Anschließen des Data Box-Datenträgers](media/data-box-disk-deploy-set-up/data-box-disk-connect-unlock.png)
 
-    ![Hauptschlüssel zum Entsperren von Data Box Disk](media/data-box-disk-deploy-set-up/data-box-disk-get-passkey.png) 
+2. Navigieren Sie im Azure-Portal zu Ihrer Data Box Disk-Bestellung. Suchen Sie danach, indem Sie zu **Allgemein > Alle Ressourcen** navigieren und dann Ihre Data Box Disk-Bestellung auswählen. Verwenden Sie das Symbol „Kopieren“, um den Hauptschlüssel zu kopieren. Dieser Hauptschlüssel wird zum Entsperren der Datenträger verwendet.
+
+    ![Hauptschlüssel zum Entsperren von Data Box Disk](media/data-box-disk-deploy-set-up/data-box-disk-get-passkey.png)
 
 Je nachdem, ob Sie mit einem Windows- oder Linux-Client verbunden sind, unterscheiden sich die Schritte zum Entsperren der Datenträger.
 
 ## <a name="unlock-disks-on-windows-client"></a>Entsperren von Datenträgern auf Windows-Client
 
 Führen Sie die folgenden Schritte aus, um Ihre Datenträger anzuschließen und zu entsperren.
-     
-1. Navigieren Sie im Azure-Portal zu **Allgemein > Gerätedetails**. 
-2. Laden Sie das entsprechende Data Box Disk-Toolset für den Windows-Client herunter. Dieses Toolset enthält drei Tools: Data Box Disk-Tool zum Entsperren, Data Box Disk-Überprüfungstool und Data Box Disk-Tool zum Aufteilen/Kopieren. 
+
+1. Navigieren Sie im Azure-Portal zu Ihrer Data Box Disk-Bestellung. Suchen Sie danach, indem Sie zu **Allgemein > Alle Ressourcen** navigieren und dann Ihre Data Box Disk-Bestellung auswählen.
+2. Laden Sie das entsprechende Data Box Disk-Toolset für den Windows-Client herunter. Dieses Toolset enthält drei Tools: Data Box Disk-Tool zum Entsperren, Data Box Disk-Überprüfungstool und Data Box Disk-Tool zum Aufteilen/Kopieren.
 
     In diesem Verfahren verwenden Sie nur das Tool zum Entsperren von Data Box-Datenträgern. Die anderen beiden Tools werden später verwendet.
 
     > [!div class="nextstepaction"]
-    > [Herunterladen des Data Box Disk-Toolsets für Windows](https://aka.ms/databoxdisktoolswin)         
+    > [Herunterladen des Data Box Disk-Toolsets für Windows](https://aka.ms/databoxdisktoolswin)
 
-3. Extrahieren Sie das Toolset auf demselben Computer, den Sie zum Kopieren der Daten verwenden möchten. 
+3. Extrahieren Sie das Toolset auf demselben Computer, den Sie zum Kopieren der Daten verwenden möchten.
 4. Öffnen Sie ein Eingabeaufforderungsfenster, oder führen Sie Windows PowerShell auf demselben Computer als Administrator aus.
-5. (Optional) Um zu überprüfen, ob der zum Entsperren des Datenträgers verwendete Computer die Anforderungen des Betriebssystems erfüllt, können Sie den Befehl für die Systemüberprüfung ausführen. Nachfolgend sehen Sie eine Beispielausgabe. 
+5. (Optional) Um zu überprüfen, ob der zum Entsperren des Datenträgers verwendete Computer die Anforderungen des Betriebssystems erfüllt, können Sie den Befehl für die Systemüberprüfung ausführen. Nachfolgend sehen Sie eine Beispielausgabe.
 
     ```powershell
     Windows PowerShell
     Copyright (C) Microsoft Corporation. All rights reserved.
-    
+
     PS C:\DataBoxDiskUnlockTool\DiskUnlock> .\DataBoxDiskUnlock.exe /SystemCheck
     Successfully verified that the system can run the tool.
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
@@ -110,50 +109,51 @@ Führen Sie die folgenden Schritte aus, um Ihre Datenträger anzuschließen und 
     PS C:\DataBoxDiskUnlockTool\DiskUnlock> .\DataBoxDiskUnlock.exe
     Enter the passkey :
     testpasskey1
-    
+
     Following volumes are unlocked and verified.
     Volume drive letters: D:
-    
+
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
     ```
 
-7. Wiederholen Sie die Schritte zum Entsperren bei jedem erneuten Anschließen des Datenträgers. Verwenden Sie den Befehl `help`, falls Sie Hilfe zum Tool zum Entsperren von Data Box Disk benötigen.   
+7. Wiederholen Sie die Schritte zum Entsperren bei jedem erneuten Anschließen des Datenträgers. Verwenden Sie den Befehl `help`, falls Sie Hilfe zum Tool zum Entsperren von Data Box Disk benötigen.
 
     ```powershell
     PS C:\DataBoxDiskUnlockTool\DiskUnlock> .\DataBoxDiskUnlock.exe /help
     USAGE:
     DataBoxUnlock /PassKey:<passkey_from_Azure_portal>
-    
+
     Example: DataBoxUnlock /PassKey:<your passkey>
     Example: DataBoxUnlock /SystemCheck
     Example: DataBoxUnlock /Help
-    
+
     /PassKey:        Get this passkey from Azure DataBox Disk order. The passkey unlocks your disks.
     /SystemCheck:    This option checks if your system meets the requirements to run the tool.
     /Help:           This option provides help on cmdlet usage and examples.
-    
+
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
     ```  
-8. Nachdem der Datenträger entsperrt wurde, können Sie den Inhalt des Datenträgers anzeigen.    
+
+8. Nachdem der Datenträger entsperrt wurde, können Sie den Inhalt des Datenträgers anzeigen.
 
     ![Inhalt des Data Box-Datenträgers](media/data-box-disk-deploy-set-up/data-box-disk-content.png)
 
-Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Behandlung von Problemen beim Entsperren](data-box-disk-troubleshoot-unlock.md) weitere Informationen. 
+Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Behandlung von Problemen beim Entsperren](data-box-disk-troubleshoot-unlock.md) weitere Informationen.
 
 ## <a name="unlock-disks-on-linux-client"></a>Entsperren von Datenträgern auf Linux-Client
 
-1. Navigieren Sie im Azure-Portal zu **Allgemein > Gerätedetails**. 
+1. Navigieren Sie im Azure-Portal zu **Allgemein > Gerätedetails**.
 2. Laden Sie das entsprechende Data Box Disk-Toolset für den Linux-Client herunter.  
 
     > [!div class="nextstepaction"]
-    > [Herunterladen des Data Box Disk-Toolsets für Linux](https://aka.ms/databoxdisktoolslinux) 
+    > [Herunterladen des Data Box Disk-Toolsets für Linux](https://aka.ms/databoxdisktoolslinux)
 
-3. Öffnen Sie ein Terminal auf Ihrem Linux-Client. Navigieren Sie zum Ordner, in den Sie die Software herunterladen haben. Ändern Sie die Dateiberechtigungen, sodass Sie diese Dateien ausführen können. Geben Sie folgenden Befehl ein: 
+3. Öffnen Sie ein Terminal auf Ihrem Linux-Client. Navigieren Sie zum Ordner, in den Sie die Software herunterladen haben. Ändern Sie die Dateiberechtigungen, sodass Sie diese Dateien ausführen können. Geben Sie folgenden Befehl ein:
 
     `chmod +x DataBoxDiskUnlock_x86_64` 
-    
+
     `chmod +x DataBoxDiskUnlock_Prep.sh` 
- 
+
     Nachfolgend sehen Sie eine Beispielausgabe. Nach der chmod-Befehl ausgeführt wurde, können Sie durch Ausführen des `ls`-Befehls überprüfen, ob die Dateiberechtigungen geändert wurden. 
  
     ```
@@ -163,6 +163,7 @@ Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Beha
         -rwxrwxr-x. 1 user user 1152664 Aug 10 17:26 DataBoxDiskUnlock_x86_64  
         -rwxrwxr-x. 1 user user 795 Aug 5 23:26 DataBoxDiskUnlock_Prep.sh
     ```
+
 4. Führen Sie das Skript so aus, dass es alle für die Software zum Entsperren von Data Box Disk erforderlichen Binärdateien installiert. Verwenden Sie `sudo` zum Ausführen des Befehls als Root-Benutzer. Sobald die Binärdateien erfolgreich installiert sind, wird im Terminal ein entsprechender Hinweis angezeigt.
 
     `sudo ./DataBoxDiskUnlock_Prep.sh`
@@ -174,7 +175,7 @@ Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Beha
         OS = CentOS Version = 6.9 
         Release = CentOS release 6.9 (Final) 
         Architecture = x64 
-    
+
         The script will install the following packages and dependencies. 
         epel-release 
         dislocker 
@@ -182,7 +183,7 @@ Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Beha
         fuse-dislocker 
         Do you wish to continue? y|n :|
     ```
-    
+
  
 5. Geben Sie `y` ein, um die Installation fortzusetzen. Das Skript installiert folgende Pakete: 
    - **epel-release**: Repository, das die folgenden drei Pakete enthält. 
@@ -223,12 +224,12 @@ Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Beha
 
     Geben Sie folgenden Befehl ein.
  
-    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’          
+    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:'<Your passkey from Azure portal>'          
 
     Die Beispielausgabe wird unten gezeigt. 
  
     ```
-    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:’qwerqwerqwer’  
+    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:'qwerqwerqwer'  
     
     START: Mon Aug 13 14:25:49 2018 
     Volumes: /dev/sdbl 
@@ -250,10 +251,10 @@ Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Beha
     [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Help  
     START: Mon Aug 13 14:29:20 2018 
     USAGE: 
-    sudo DataBoxDiskUnlock /PassKey:’<passkey from Azure_portal>’ 
+    sudo DataBoxDiskUnlock /PassKey:'<passkey from Azure_portal>' 
     
-    Example: sudo DataBoxDiskUnlock /PassKey:’passkey’ 
-    Example: sudo DataBoxDiskUnlock /PassKey:’passkey’ /Volumes:’/dev/sdbl’ 
+    Example: sudo DataBoxDiskUnlock /PassKey:'passkey' 
+    Example: sudo DataBoxDiskUnlock /PassKey:'passkey' /Volumes:'/dev/sdbl' 
     Example: sudo DataBoxDiskUnlock /Help Example: sudo DataBoxDiskUnlock /Clean 
     
     /PassKey: This option takes a passkey as input and unlocks all of your disks. 
@@ -267,7 +268,7 @@ Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Beha
     
 8. Nachdem der Datenträger entsperrt wurde, können Sie zum Bereitstellungspunkt wechseln und den Inhalt des Datenträgers anzeigen. Nun können Sie die Daten in *BlockBlob*- oder *PageBlob*-Ordner kopieren. 
 
-    ![Inhalt des Data Box-Datenträgers](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
+    ![Inhalt des Data Box-Datenträgers 2](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
 
 
 Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Behandlung von Problemen beim Entsperren](data-box-disk-troubleshoot-unlock.md) weitere Informationen. 
@@ -308,7 +309,7 @@ Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Beha
     Führen Sie das Tool zum Entsperren von Data Box Disk aus. Rufen Sie im Azure-Portal unter **Allgemein > Gerätedetails** den Hauptschlüssel ab, und geben Sie ihn hier ein. Geben Sie optional eine Liste der mit BitLocker verschlüsselten Volumes (in einfachen Anführungszeichen) an, die entsperrt werden sollen.
 
     ```
-    sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’
+    sudo ./DataBoxDiskUnlock_x86_64 /PassKey:'<Your passkey from Azure portal>'
     ```      
 5. Wiederholen Sie die Schritte zum Entsperren bei jedem erneuten Anschließen des Datenträgers. Nutzen Sie den Befehl „help“, falls Sie Hilfe zum Tool zum Entsperren von Data Box-Datenträgern benötigen.
 

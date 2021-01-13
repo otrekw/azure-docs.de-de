@@ -3,7 +3,7 @@ title: Verizon-spezifische HTTP-Header für Azure CDN-Regel-Engine | Microsoft D
 description: In diesem Artikel wird beschrieben, wie die Verizon-spezifischen HTTP-Header mit der Azure CDN-Regel-Engine verwendet werden.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
-ms.author: magattus
-ms.openlocfilehash: a5881bea578f2791f8dc0d6e760fd15c6f47e435
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: allensu
+ms.openlocfilehash: e20f6ce9540d357b61ae2cfdf0e8f96d127dc6c0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593260"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84343216"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Verizon-spezifische HTTP-Header für Azure CDN-Regel-Engine
 
 Wenn bei **Azure CDN Premium-Produkten von Verizon** eine HTTP-Anforderung an den Ursprungsserver gesendet wird, kann der POP-Server (Point-of-Presence) mindestens einen reservierten Header (oder proxyspezifische Header) in der Clientanforderung an den POP-Server hinzufügen. Diese Header stellen zusätzliche Header zu den empfangenen Standardweiterleitungsheadern dar. Informationen zu Standardanforderungsheadern finden Sie unter [Anforderungsfelder](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields).
 
-Wenn Sie verhindern möchten, dass einer dieser reservierten Header in der Azure CDN (Content Delivery Network) POP-Anforderung an den Ursprungsserver hinzugefügt wird, müssen Sie eine Regel mit dem [Feature „Spezielle Proxyheader“](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers) in der Regel-Engine erstellen. Schließen Sie in dieser Regel den Header aus, den Sie aus der Standardliste der Header im Feld „Header“ entfernen möchten. Wenn Sie das [Feature „Cacheantwortheader debuggen“](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) aktiviert haben, achten Sie darauf, dass Sie die erforderlichen `X-EC-Debug`-Header hinzufügen. 
+Wenn Sie verhindern möchten, dass einer dieser reservierten Header in der Azure CDN (Content Delivery Network) POP-Anforderung an den Ursprungsserver hinzugefügt wird, müssen Sie eine Regel mit dem [Feature „Spezielle Proxyheader“](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm) in der Regel-Engine erstellen. Schließen Sie in dieser Regel den Header aus, den Sie aus der Standardliste der Header im Feld „Header“ entfernen möchten. Wenn Sie das [Feature „Cacheantwortheader debuggen“](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) aktiviert haben, achten Sie darauf, dass Sie die erforderlichen `X-EC-Debug`-Header hinzufügen. 
 
-Um beispielsweise den `Via`-Header zu entfernen, muss das headers-Feld der Regel die folgende Liste von Headern enthalten: *X-Forwarded-For, X-Forwarded-Proto, X-Host, X-Midgress, X-Gateway-List, X-EC-Name, Host*. 
+Um beispielsweise den `Via`-Header zu entfernen, sollte das Feld „Header“ der Regel die folgende Liste von Headern enthalten: *X-Forwarded-For, X-Forwarded-Proto, X-Host, X-Midgress, X-Gateway-List, X-EC-Name, Host*. 
 
 ![Regel „Spezielle Proxyheader“](./media/cdn-http-headers/cdn-proxy-special-header-rule.png)
 
@@ -41,7 +41,7 @@ X-Forwarded-Proto | Gibt das Protokoll der Anforderung an. | http
 X-Host | Gibt den Hostnamen der Anforderung an. | cdn.mydomain.com
 X-Midgress | Gibt an, ob die Anforderung von einem Proxy über einen zusätzlichen CDN-Server übermittelt wurde. Beispielsweise von einem POP-Server an einen Shield-Ursprungsserver oder von einem POP-Server an einen ADN-Gatewayserver. <br />Dieser Header wird nur dann der Anforderung hinzugefügt, wenn Midgress-Datenverkehr stattfindet. In diesem Fall wird der Header auf 1 festgelegt, um anzugeben, dass die Anforderung über einen Proxy durch einen zusätzlichen CDN-Server übermittelt wurde.| 1
 [Host](#host-request-header) | Identifiziert den Host und den Port für den angeforderten Inhalt. | marketing.mydomain.com:80
-[X-Gateway-List](#x-gateway-list-request-header) | ADN: Identifiziert die Failoverliste von ADN-Gatewayservern, die einem Kundenursprung zugewiesen wurden. <br />Origin Shield: Gibt die Gruppe der Origin Shield-Server an, die einem Kundenursprung zugewiesen wurden. | `icn1,hhp1,hnd1`
+[X-Gateway-List](#x-gateway-list-request-header) | ADN: Identifiziert die Failoverliste von ADN-Gatewayservern, die einem Kundenursprung zugewiesen wurden. <br />Origin shield: Gibt die Gruppe der Shield-Ursprungsserver an, die einem Kundenursprung zugewiesen wurden. | `icn1,hhp1,hnd1`
 X-EC- _&lt;name&gt;_ | Anforderungsheader, die mit *X-EG* beginnen (z.B. X-EC-Tag, [X-EC-Debug](cdn-http-debug-headers.md)), sind für die Verwendung durch das CDN reserviert.| waf-production
 
 ## <a name="via-request-header"></a>Via-Anforderungsheader
@@ -50,9 +50,9 @@ Das Format, durch das der `Via`-Anforderungsheader einen POP-Server identifizier
 `Via: Protocol from Platform (POP/ID)` 
 
 Die in der Syntax verwendeten Begriffe sind folgendermaßen definiert:
-- Protokoll: Gibt die Version des Protokolls (z.B. HTTP/1.1) an, die für die Proxyübermittlung der Anforderung verwendet wird. 
+- Protocol: Gibt die Version des Protokolls (z.B. HTTP/1.1) an, die für die Proxyübermittlung der Anforderung verwendet wird. 
 
-- Plattform: Gibt die Plattform an, auf der der Inhalt angefordert wurde. Die folgenden Codes sind für dieses Feld gültig: 
+- Platform: Gibt die Plattform an, auf der der Inhalt angefordert wurde. Die folgenden Codes sind für dieses Feld gültig: 
 
     Code | Plattform
     -----|---------
@@ -60,7 +60,7 @@ Die in der Syntax verwendeten Begriffe sind folgendermaßen definiert:
     ECS   | HTTP klein
     ECD   | Application Delivery Network (ADN)
 
-- POP: Gibt den [POP](cdn-pop-abbreviations.md)-Standort an, der die Anforderung verarbeitet hat. 
+- POP: Gibt den [POP](cdn-pop-abbreviations.md) an, der die Anforderung verarbeitet hat. 
 
 - ID: Nur zur internen Verwendung.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6b1782b9822877850f7c223dd80eed008ef706
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: dd438a09b929274808984322981f6d21da0bf68f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193187"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860948"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -25,7 +25,7 @@ ms.locfileid: "70193187"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>F: Ich habe das Gerät vor Kurzem registriert. Warum kann ich das Gerät nicht in meinen Benutzerinformationen im Azure-Portal sehen? Oder warum ist der Gerätebesitzer für in Azure Active Directory (Azure AD) eingebundene Hybridgeräte als „N/V“ markiert?
 
 **A:** Windows 10-Geräte, die in Azure AD eingebundene Hybridgeräte sind, werden nicht unter den **BENUTZER-Geräten** angezeigt.
-Verwenden Sie die Ansicht **Alle Geräte** im Azure-Portal. Sie können auch das PowerShell-Cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) verwenden.
+Verwenden Sie die Ansicht **Alle Geräte** im Azure-Portal. Sie können auch das PowerShell-Cmdlet [Get-MsolDevice](/powershell/module/msonline/get-msoldevice) verwenden.
 
 Nur die folgenden Geräte werden unter den **BENUTZER-Geräten** aufgeführt:
 
@@ -55,13 +55,15 @@ Nur die folgenden Geräte werden unter den **BENUTZER-Geräten** aufgeführt:
 
 ---
 
-### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>F: Warum sehen meine Benutzer auf ihren Windows 10-Geräten eine Fehlermeldung, die besagt, dass die Organisation das Gerät gelöscht oder deaktiviert hat?
+### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>F: Warum sehen meine Benutzer auf ihren Windows 10-Geräten eine Fehlermeldung, die besagt, dass die Organisation das Gerät gelöscht oder deaktiviert hat?
 
 **A:** Benutzer erhalten auf Windows 10-Geräten, die in Azure AD eingebunden oder registriert sind, ein [Primäres Aktualisierungstoken](concept-primary-refresh-token.md) (Primary Refresh Token, PRT), das das einmalige Anmelden ermöglicht. Die Gültigkeit des PRT basiert auf der Gültigkeit des Geräts selbst. Benutzern wird diese Meldung angezeigt, wenn das Gerät in Azure AD entweder gelöscht oder deaktiviert wurde, ohne dass die Aktion vom Gerät selbst initiiert wurde. Ein Gerät kann in einem der folgenden Szenarien in Azure AD gelöscht oder deaktiviert werden: 
 
 - Der Benutzer deaktiviert das Gerät im Meine Apps-Portal. 
 - Ein Administrator (oder Benutzer) löscht oder deaktiviert das Gerät im Azure-Portal oder über PowerShell.
 - Nur in Azure AD Hybrid eingebundene Geräte: Ein Administrator entfernt die Geräte-OE aus dem Synchronisierungsbereich, was dazu führt, dass die Geräte aus Azure AD gelöscht werden.
+- Aktualisieren von Azure AD Connect auf Version 1.4.xx.x. [Grundlegendes zu Azure AD Connect 1.4.xx.x und zum Verschwinden von Geräten](../hybrid/reference-connect-device-disappearance.md).
+
 
 Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden können.
 
@@ -117,7 +119,7 @@ Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>F: Unterstützt die Windows 10-Geräteregistrierung in Azure AD TPMs im FIPS-Modus?
 
-**A:** Nein. Derzeit unterstützt die Geräteregistrierung unter Windows 10 für alle Gerätezustände – Azure AD Hybrid Join, Azure AD Join und Azure AD Registered – keine TPMs im FIPS-Modus. Für eine erfolgreiche Anmeldung oder Registrierung bei Azure AD muss der FIPS-Modus für die TPMs auf diesen Geräten deaktiviert werden.
+**A:** Die Windows 10-Geräteregistrierung wird nur für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Join oder Azure AD Hybrid Join fortfahren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten. 
 
 ---
 
@@ -126,17 +128,17 @@ Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden
 **A:** Ab dem Zeitpunkt, an dem das Azure AD-Gerät als deaktiviert gekennzeichnet wird, dauert es bis zu einer Stunde, bis ein Widerruf angewendet wird.
 
 >[!NOTE] 
->Für registrierte Geräte wird empfohlen, das Gerät zu löschen, um sicherzustellen, dass Benutzer nicht auf die Ressourcen zugreifen können. Weitere Informationen finden Sie unter [Was ist die Geräteregistrierung?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+>Für registrierte Geräte wird empfohlen, das Gerät zu löschen, um sicherzustellen, dass Benutzer nicht auf die Ressourcen zugreifen können. Weitere Informationen finden Sie unter [Was ist die Geräteregistrierung?](/mem/intune/user-help/use-managed-devices-to-get-work-done). 
 
 ---
 
 ### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>F: Warum sind im Azure-Portal in der Spalte „REGISTRIERT“ Geräte als „Ausstehend“ gekennzeichnet?
 
-**A:**  „Ausstehend“ gibt an, dass das Gerät nicht registriert ist. Dieser Status gibt an, dass ein Gerät mithilfe von Azure AD Connect von der lokalen AD-Instanz synchronisiert wurde und für die Geräteregistrierung bereit ist. Der Verknüpfungstyp von Geräten mit diesem Status ist auf „In Hybrid-Azure AD eingebunden“ festgelegt. Weitere Informationen finden Sie unter [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md).
+**A:**  „Ausstehend“ gibt an, dass das Gerät nicht registriert ist. Dieser Status zeigt an, dass ein Gerät mithilfe von Azure AD Connect von einer lokalen AD-Instanz synchronisiert wurde und für die Geräteregistrierung bereit ist. Der Verknüpfungstyp von Geräten mit diesem Status ist auf „In Hybrid-Azure AD eingebunden“ festgelegt. Weitere Informationen finden Sie unter [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md).
 
 >[!NOTE]
 >Der Status eines Geräts kann sich auch von „Registriert“ in „Ausstehend“ ändern:
->* Wenn ein Gerät zuerst aus Azure AD gelöscht und dann von der lokalen AD-Instanz erneut synchronisiert wird.
+>* Wenn ein Gerät zuerst aus Azure AD gelöscht und dann von einer lokalen AD-Instanz erneut synchronisiert wird.
 >* Wenn ein Gerät aus einem Synchronisierungsbereich in Azure AD Connect entfernt und wieder hinzugefügt wird.
 >
 >In beiden Fällen müssen Sie das Gerät auf jedem dieser Geräte manuell erneut registrieren. Um zu überprüfen, ob das Gerät zuvor registriert wurde, können Sie eine [Problembehandlung von Geräten mit dem Befehl „dsregcmd“](troubleshoot-device-dsregcmd.md) ausführen.
@@ -174,27 +176,29 @@ Gelöschte oder deaktivierte Benutzer, die sich zuvor nicht angemeldet haben, k�
 
 **A:** Derzeit werden UPN-Änderungen nicht vollständig auf in Azure AD eingebundenen Geräten unterstützt. Also tritt bei der Authentifizierung mit Azure AD nach den UPN-Änderungen ein Fehler auf. Infolgedessen haben Benutzer Probleme mit SSO und bedingtem Zugriff auf ihren Geräten. Zu diesem Zeitpunkt müssen sich die Benutzer über die Kachel „Anderer Benutzer“ mit ihrem neuen UPN bei Windows anmelden, um dieses Problem zu lösen. Wir arbeiten derzeit an einer Lösung für das Problem. Allerdings tritt das Problem bei Benutzern, die sich mit Windows Hello for Business anmelden, nicht auf. 
 
+UPN-Änderungen werden mit dem Windows 10-Update 2004 unterstützt. Bei Benutzern, die Geräte mit diesem Update verwenden, kann der UPN problemlos geändert werden.
+
 ---
 
 ### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>F: Meine Benutzer können über in Azure AD eingebundene Geräte keine Drucker suchen. Wie kann ich das Drucken über diese Geräte aktivieren?
 
-**A:** Informationen zum Bereitstellen von Druckern für in Azure AD eingebundene Geräte finden Sie unter [Bereitstellen von Windows Server Hybrid Cloud Print mit Vorauthentifizierung](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Sie benötigen einen lokalen Windows-Server, um das Drucken in Hybrid Clouds bereitzustellen. Aktuell ist kein cloudbasierter Druckdienst verfügbar. 
+**A:** Informationen zum Bereitstellen von Druckern für in Azure AD eingebundene Geräte finden Sie unter [Bereitstellen von Windows Server Hybrid Cloud Print mit Vorauthentifizierung](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Sie benötigen einen lokalen Windows-Server, um das Drucken in Hybrid Clouds bereitzustellen. Aktuell ist kein cloudbasierter Druckdienst verfügbar. 
 
 ---
 
 ### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>F: Wie kann ich eine Verbindung mit einem in Azure AD eingebundenen Remotegerät herstellen?
 
-**A:** Informationen finden Sie unter [Herstellen einer Verbindung mit einem in Azure AD eingebundenen Remotecomputer](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
+**A:** Informationen finden Sie unter [Herstellen einer Verbindung mit einem in Azure AD eingebundenen Remotecomputer](/windows/client-management/connect-to-remote-aadj-pc).
 
 ---
 
-### <a name="q-why-do-my-users-see-you-cant-get-there-from-here"></a>F: Warum wird meinen Benutzern angezeigt: *Von hier aus haben Sie darauf keinen Zugriff*?
+### <a name="q-why-do-my-users-see-you-cant-get-there-from-here"></a>F: Warum wird meinen Benutzern die Meldung *Der Wechsel von hier nach dort ist nicht möglich* angezeigt?
 
 **A:** Haben Sie bestimmte Regeln für bedingten Zugriff konfiguriert, um einen bestimmten Gerätestatus zu erzwingen? Wenn das Gerät die Kriterien nicht erfüllt, wird der Benutzer blockiert und diese Meldung angezeigt. Überprüfen Sie die Regeln für die Richtlinie für bedingten Zugriff. Stellen Sie sicher, dass das Gerät die Kriterien erfüllt, um die Meldung zu vermeiden.
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>F: Warum erhalten einige Benutzer in keine Azure Multi-Factor Authentication-Eingabeaufforderungen auf in Azure AD eingebundenen Geräten?
+### <a name="q-why-dont-some-of-my-users-get-azure-ad-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>F: Warum erhalten einige Benutzer keine Azure AD Multi-Factor Authentication-Eingabeaufforderungen auf in Azure AD eingebundenen Geräten?
 
 **A:** Ein Benutzer kann ein Gerät mit Multi-Factor Authentication in Azure AD einbinden oder registrieren. Dann wird das Gerät zu einem vertrauenswürdigen zweiten Faktor für diesen Benutzer. Wann immer sich derselbe Benutzer bei dem Gerät anmeldet und auf eine Anwendung zugreift, betrachtet Azure AD das Gerät als einen zweiten Faktor. Es ermöglicht dem Benutzer den nahtlosen Zugriff auf Anwendungen ohne zusätzliche Multi-Factor Authentication-Eingabeaufforderungen. 
 
@@ -218,7 +222,7 @@ Dieses Verhalten:
 
 ### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>F: Warum wird das Dialogfeld *Entschuldigung... Es ist ein Fehler aufgetreten!* angezeigt, wenn ich versuche, in Azure AD meinen PC einzubinden?
 
-**A:** Dieser Fehler tritt bei der Einrichtung der Azure Active Directory-Registrierung bei Intune auf. Stellen Sie sicher, dass dem Benutzer, der ein Einbinden in Azure AD versucht, die richtige Intune-Lizenz zugewiesen wurde. Weitere Informationen finden Sie unter [Einrichten der Registrierung für Windows-Geräte](https://docs.microsoft.com/intune/windows-enroll).  
+**A:** Dieser Fehler tritt bei der Einrichtung der Azure Active Directory-Registrierung bei Intune auf. Stellen Sie sicher, dass dem Benutzer, der ein Einbinden in Azure AD versucht, die richtige Intune-Lizenz zugewiesen wurde. Weitere Informationen finden Sie unter [Einrichten der Registrierung für Windows-Geräte](/intune/windows-enroll).  
 
 ---
 
@@ -265,6 +269,8 @@ Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Ger�
 
 **A:** Derzeit werden UPN-Änderungen nicht vollständig auf in Azure AD eingebundenen Hybridgeräten unterstützt. Benutzer können sich zwar am Gerät anmelden und auf ihre lokalen Anwendungen zugreifen, bei der Authentifizierung mit Azure AD tritt nach einer UPN-Änderung aber ein Fehler auf. Infolgedessen haben Benutzer Probleme mit SSO und bedingtem Zugriff auf ihren Geräten. Derzeit müssen Sie das Gerät von Azure AD trennen (führen Sie „dsregcmd /leave“ mit erhöhten Rechten aus) und sich wieder anmelden (geschieht automatisch), um das Problem zu lösen. Wir arbeiten derzeit an einer Lösung für das Problem. Allerdings tritt das Problem bei Benutzern, die sich mit Windows Hello for Business anmelden, nicht auf. 
 
+UPN-Änderungen werden mit dem Windows 10-Update 2004 unterstützt. Bei Benutzern, die Geräte mit diesem Update verwenden, kann der UPN problemlos geändert werden.
+
 ---
 
 ### <a name="q-do-windows-10-hybrid-azure-ad-joined-devices-require-line-of-sight-to-the-domain-controller-to-get-access-to-cloud-resources"></a>F: Benötigen Azure AD Hybrid Join-Geräte unter Windows 10 Sichtverbindung zum Domänencontroller, um auf die Ressourcen in der Cloud zugreifen zu können?
@@ -305,12 +311,12 @@ Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Ger�
 
 **A:** Führen Sie die folgenden Schritte aus:
 
-1.  [Erstellen Sie eine Konformitätsrichtlinie](https://docs.microsoft.com/intune/compliance-policy-create-mac-os).
-1.  [Definieren Sie eine Richtlinie zum bedingten Zugriff für macOS-Geräte](../active-directory-conditional-access-azure-portal.md). 
+1.    [Erstellen Sie eine Konformitätsrichtlinie](/intune/compliance-policy-create-mac-os).
+1.    [Definieren Sie eine Richtlinie zum bedingten Zugriff für macOS-Geräte](../conditional-access/overview.md). 
 
 **Hinweise:**
 
-- Die in der Richtlinie für bedingten Zugriff enthaltenen Benutzer benötigen für den Zugriff auf Ressourcen eine [unterstützte Version von Office für macOS](../conditional-access/technical-reference.md#client-apps-condition). 
+- Die in der Richtlinie für bedingten Zugriff enthaltenen Benutzer benötigen für den Zugriff auf Ressourcen eine [unterstützte Version von Office für macOS](../conditional-access/concept-conditional-access-conditions.md). 
 - Beim ersten Zugriffsversuch werden die Benutzer aufgefordert, das Gerät über das Unternehmensportal zu registrieren.
 
 ---

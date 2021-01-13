@@ -3,20 +3,20 @@ title: Bereitstellungsphase des Team Data Science-Prozesslebenszyklus
 description: Die Ziele, Aufgaben und Projektleistungen für die Bereitstellungsphase Ihrer Data Science-Projekte
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 00710183828892c81d3ea887e4394237288eb6bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3bf8e5f81ae7bf35ff34039fa1e81c9fd4a406b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303535"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324552"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Bereitstellungsphase des Team Data Science-Prozesslebenszyklus
 
@@ -39,7 +39,7 @@ Stellen Sie Modelle mit einer Datenpipeline in einer Produktionsumgebung oder ei
 ## <a name="how-to-do-it"></a>Vorgehensweise
 In dieser Phase geht es um die folgende Hauptaufgabe:
 
-**Operationalisieren des Modells:** Stellen Sie das Modell und die Pipeline in einer Produktionsumgebung oder produktionsähnlichen Umgebung zur Nutzung der Anwendung bereit.
+**Operationalisieren des Modells** : Stellen Sie das Modell und die Pipeline in einer Produktionsumgebung oder produktionsähnlichen Umgebung zur Nutzung der Anwendung bereit.
 
 ### <a name="operationalize-a-model"></a>Operationalisieren eines Modells
 Nachdem wir eine Gruppe von Modellen mit adäquater Leistung haben, können diese für die Nutzung durch andere Anwendungen operationalisiert werden. Abhängig von den Geschäftsanforderungen erfolgen Vorhersagen entweder in Echtzeit oder auf Batchbasis. Um Modelle bereitzustellen, machen Sie diese mit einer offenen API-Schnittstelle verfügbar. Die Schnittstelle ermöglicht die einfache Verwendung des Modells durch unterschiedliche Anwendungen wie:
@@ -50,7 +50,7 @@ Nachdem wir eine Gruppe von Modellen mit adäquater Leistung haben, können dies
    * Branchenanwendungen 
    * Back-End-Anwendungen 
 
-Beispiele für die Operationalisierung von Modellen mit einem Azure Machine Learning-Webdienst finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](../studio/publish-a-machine-learning-web-service.md). Es gilt als bewährte Methode, in das bereitgestellte Produktionsmodell und die bereitgestellte Datenpipeline Telemetriedaten und Überwachung zu integrieren. Diese Vorgehensweise erleichtert nachfolgende Systemstatus-Berichtserstellung und Problembehandlung.  
+Beispiele für die Operationalisierung von Modellen mit einem Azure Machine Learning-Webdienst finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](../classic/deploy-a-machine-learning-web-service.md). Es gilt als bewährte Methode, in das bereitgestellte Produktionsmodell und die bereitgestellte Datenpipeline Telemetriedaten und Überwachung zu integrieren. Diese Vorgehensweise erleichtert nachfolgende Systemstatus-Berichtserstellung und Problembehandlung.  
 
 ## <a name="artifacts"></a>Artefakte
 
@@ -69,6 +69,6 @@ Hier finden Sie Links zu jedem Schritt im Lebenszyklus des TDSP:
    4. [Bereitstellung](lifecycle-deployment.md)
    5. [Kundenakzeptanz](lifecycle-acceptance.md)
 
-Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für bestimmte Szenarien gezeigt werden, sind ebenfalls verfügbar. Der Artikel mit [exemplarischen Vorgehensweisen](walkthroughs.md) enthält eine Liste der Szenarien mit Links und Kurzbeschreibungen. Die exemplarischen Vorgehensweisen zeigen auch, wie Cloud- und lokale Tools sowie Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 
+Wir bieten vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für bestimmte Szenarien gezeigt werden. Der Artikel mit [exemplarischen Vorgehensweisen](walkthroughs.md) enthält eine Liste der Szenarien mit Links und Kurzbeschreibungen. Die exemplarischen Vorgehensweisen zeigen auch, wie Cloud- und lokale Tools sowie Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 
 
-Beispiele für die Ausführung der Schritte in TDSPs mit Azure Machine Learning Studio finden Sie unter [Verwenden des TDSP mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Beispiele für die Ausführung der Schritte in TDSPs mit Azure Machine Learning Studio finden Sie unter [Verwenden des TDSP mit Azure Machine Learning](./index.yml).

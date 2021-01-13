@@ -1,30 +1,28 @@
 ---
-title: Zugreifen auf Azure Resource Manager mithilfe einer benutzerseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers
+title: Tutorial`:` Verwenden einer verwalteten Identität zum Zugreifen auf Azure Resource Manager – Windows – Azure AD
 description: In diesem Tutorial wird erläutert, wie Sie eine benutzerseitig zugewiesene verwaltete Identität auf einem virtuellen Windows-Computer verwenden, um auf Azure Resource Manager zuzugreifen.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
-editor: daveba
+editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2018
-ms.author: markvi
+ms.date: 12/02/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6fc7e13cf5ea3991f81d53edcabe0980d799cb0
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: d9757a322922524f181b1fa3f48850efbb7a18dd
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59520863"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546776"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Tutorial: Zugreifen auf Azure Resource Manager mithilfe einer benutzerseitig zugewiesenen verwalteten Identität auf einem virtuellen Windows-Computer
-
-[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
+# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Tutorial: Zugreifen auf Azure Resource Manager mit einer benutzerseitig zugewiesenen verwalteten Identität auf einem virtuellen Windows-Computer
 
 In diesem Tutorial erfahren Sie, wie Sie eine benutzerseitig zugewiesene Identität erstellen, diese einem virtuellen Windows-Computer zuweisen und anschließend verwenden, um auf die Azure Resource Manager-API zuzugreifen. Verwaltete Dienstidentitäten werden von Azure automatisch verwaltet. Sie ermöglichen die Authentifizierung von Diensten mit Unterstützung für die Azure AD-Authentifizierung, ohne dass Anmeldeinformationen in Ihren Code eingebettet werden müssen. 
 
@@ -45,18 +43,50 @@ Folgendes wird vermittelt:
 
 - [Anmelden beim Azure-Portal](https://portal.azure.com)
 
-- [Erstellen eines virtuellen Windows-Computers](/azure/virtual-machines/windows/quick-create-portal)
+- [Erstellen eines virtuellen Windows-Computers](../../virtual-machines/windows/quick-create-portal.md)
 
-- Ihr Konto muss über die Berechtigung „Besitzer“ für den geeigneten Bereich (Ihr Abonnement oder Ihre Ressourcengruppe) verfügen, um die in diesem Tutorial erforderlichen Schritte für die Ressourcenerstellung und Rollenverwaltung durchführen zu können. Wenn Sie Unterstützung bei der Rollenzuweisung benötigen, finden Sie weitere Informationen unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](/azure/role-based-access-control/role-assignments-portal).
-- [Installieren Sie die aktuelle Version des Azure PowerShell-Moduls.](/powershell/azure/install-az-ps) 
-- Führen Sie zum Starten `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
-- Installieren Sie die [neueste Version von PowerShellGet](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
-- Führen Sie `Install-Module -Name PowerShellGet -AllowPrerelease` aus, um die Vorabversion des `PowerShellGet`-Moduls abzurufen (möglicherweise müssen Sie `Exit` in der aktuellen PowerShell-Sitzung ausführen, nachdem Sie diesen Befehl zum Installieren des `Az.ManagedServiceIdentity`-Moduls ausgeführt haben).
-- Führen Sie `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` aus, um die Vorabversion des `Az.ManagedServiceIdentity`-Moduls zu installieren und die Vorgänge für benutzerseitig zugewiesene Identitäten in diesem Artikel auszuführen.
+- Ihr Konto muss über die Berechtigung „Besitzer“ für den geeigneten Bereich (Ihr Abonnement oder Ihre Ressourcengruppe) verfügen, um die in diesem Tutorial erforderlichen Schritte für die Ressourcenerstellung und Rollenverwaltung durchführen zu können. Wenn Sie Unterstützung bei der Rollenzuweisung benötigen, finden Sie weitere Informationen unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](../../role-based-access-control/role-assignments-portal.md).
 
-## <a name="create-a-user-assigned-identity"></a>Erstellen einer benutzerseitig zugewiesenen Identität
+- Zum Ausführen der Beispielskripts haben Sie zwei Möglichkeiten:
+    - Verwenden Sie den Dienst [Azure Cloud Shell](../../cloud-shell/overview.md), den Sie mithilfe der Schaltfläche **Ausprobieren** in der oberen rechten Ecke der Codeblöcke öffnen können.
+    - Führen Sie Skripts lokal mit Azure PowerShell aus, wie im nächsten Abschnitt beschrieben.
 
-Eine benutzerseitig zugewiesene Identität wird als eigenständige Azure-Ressource erstellt. Mit [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity) erstellt Azure eine Identität in Ihrem Azure AD-Mandanten, die einer oder mehreren Azure-Dienstinstanzen zugewiesen werden kann.
+### <a name="configure-azure-powershell-locally"></a>Lokales Konfigurieren von Azure PowerShell
+
+Wenn Sie Azure PowerShell in diesem Artikel lokal verwenden möchten (anstelle von Cloud Shell), führen Sie die folgenden Schritte aus:
+
+1. Installieren Sie [die aktuelle Version von Azure PowerShell](/powershell/azure/install-az-ps), sofern noch nicht geschehen.
+
+1. Melden Sie sich bei Azure an:
+
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+1. Installieren Sie die [neueste Version von PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
+
+    ```azurepowershell
+    Install-Module -Name PowerShellGet -AllowPrerelease
+    ```
+
+    Sie müssen die aktuelle PowerShell-Sitzung unter Umständen beenden (`Exit`), nachdem Sie diesen Befehl für den nächsten Schritt ausgeführt haben.
+
+1. Installieren Sie die Vorabversion des `Az.ManagedServiceIdentity`-Moduls, um die Vorgänge für benutzerseitig zugewiesene verwaltete Identitäten in diesem Artikel auszuführen:
+
+    ```azurepowershell
+    Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease
+    ```
+
+## <a name="enable"></a>Aktivieren
+
+Für ein Szenario, das auf einer benutzerseitig zugewiesenen Identität basiert, müssen Sie die folgenden Schritte ausführen:
+
+- Erstellen einer Identität
+- Zuweisen der neu erstellten Identität
+
+### <a name="create-identity"></a>Erstellen einer Identität
+
+In diesem Abschnitt wird gezeigt, wie Sie eine benutzerseitig zugewiesene Identität erstellen. Eine benutzerseitig zugewiesene Identität wird als eigenständige Azure-Ressource erstellt. Mit [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity) erstellt Azure eine Identität in Ihrem Azure AD-Mandanten, die einer oder mehreren Azure-Dienstinstanzen zugewiesen werden kann.
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -80,18 +110,18 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 }
 ```
 
-## <a name="assign-the-user-assigned-identity-to-a-windows-vm"></a>Zuweisen der benutzerseitig zugewiesenen Identität zu einem virtuellen Windows-Computer
+### <a name="assign-identity"></a>Zuweisen einer Identität
 
-Eine benutzerseitig zugewiesene Identität kann von Clients für mehrere Azure-Ressourcen verwendet werden. Verwenden Sie die folgenden Befehle, um einem einzelnen virtuellen Computer die benutzerseitig zugewiesene Identität zuzuweisen. Verwenden Sie die Eigenschaft `Id`, die im vorherigen Schritt für den Parameter `-IdentityID` zurückgegeben wird.
+In diesem Abschnitt wird gezeigt, wie Sie die benutzerseitig zugewiesene Identität einem virtuellen Windows-Computer zuweisen. Eine benutzerseitig zugewiesene Identität kann von Clients für mehrere Azure-Ressourcen verwendet werden. Verwenden Sie die folgenden Befehle, um einem einzelnen virtuellen Computer die benutzerseitig zugewiesene Identität zuzuweisen. Verwenden Sie die Eigenschaft `Id`, die im vorherigen Schritt für den Parameter `-IdentityID` zurückgegeben wird.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -IdentityID "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
 ```
 
-## <a name="grant-your-user-assigned-identity-access-to-a-resource-group-in-azure-resource-manager"></a>Gewähren des Zugriffs auf eine Ressourcengruppe in Azure Resource Manager für die benutzerseitig zugewiesene Identität 
+## <a name="grant-access"></a>Gewähren von Zugriff 
 
-Verwaltete Identitäten für Azure-Ressourcen stellen Identitäten dar, mit denen Ihr Code Zugriffstoken zur Authentifizierung bei Ressourcen-APIs anfordern kann, die die Azure AD-Authentifizierung unterstützen. In diesem Tutorial greift Ihr Code auf die Azure Resource Manager-API zu. 
+In diesem Abschnitt wird gezeigt, wie Sie der benutzerseitig zugewiesenen Identität Zugriff auf eine Ressourcengruppe in Azure Resource Manager gewähren. Verwaltete Identitäten für Azure-Ressourcen stellen Identitäten dar, mit denen Ihr Code Zugriffstoken zur Authentifizierung bei Ressourcen-APIs anfordern kann, die die Azure AD-Authentifizierung unterstützen. In diesem Tutorial greift Ihr Code auf die Azure Resource Manager-API zu. 
 
 Bevor Ihr Code auf die API zugreifen kann, müssen Sie der Identität Zugriff auf eine Ressource im Azure Resource Manager gewähren. In diesem Fall ist diese die Ressourcengruppe, in der die VM enthalten ist. Aktualisieren Sie abhängig von Ihrer Umgebung den Wert für `<SUBSCRIPTION ID>`.
 
@@ -114,7 +144,9 @@ ObjectType: ServicePrincipal
 CanDelegate: False
 ```
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-resource-manager"></a>Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwendung zum Aufrufen von Resource Manager 
+## <a name="access-data"></a>Zugreifen auf Daten
+
+### <a name="get-an-access-token"></a>Abrufen eines Zugriffstokens 
 
 Für den Rest des Tutorials arbeiten Sie von der VM aus, die wir zuvor erstellt haben.
 
@@ -126,7 +158,7 @@ Für den Rest des Tutorials arbeiten Sie von der VM aus, die wir zuvor erstellt 
 
 4. Sie haben nun eine **Remotedesktopverbindung** mit dem virtuellen Computer erstellt. Öffnen Sie jetzt **PowerShell** in der Remotesitzung.
 
-5. Erstellen Sie mithilfe des PowerShell-Befehls `Invoke-WebRequest` eine Anforderung an den lokalen Endpunkt für die verwalteten Identitäten für Azure-Ressourcen, um ein Zugriffstoken für Azure Resource Manager zu erhalten.  Der Wert `client_id` wurde zurückgegeben, als Sie [die benutzerseitig zugewiesene verwaltete Identität erstellt haben](#create-a-user-assigned-identity).
+5. Erstellen Sie mithilfe des PowerShell-Befehls `Invoke-WebRequest` eine Anforderung an den lokalen Endpunkt für die verwalteten Identitäten für Azure-Ressourcen, um ein Zugriffstoken für Azure Resource Manager zu erhalten.  Der Wert `client_id` wurde zurückgegeben, als Sie die benutzerseitig zugewiesene verwaltete Identität erstellt haben.
 
     ```azurepowershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=af825a31-b0e0-471f-baea-96de555632f9&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
@@ -134,7 +166,7 @@ Für den Rest des Tutorials arbeiten Sie von der VM aus, die wir zuvor erstellt 
     $ArmToken = $content.access_token
     ```
 
-## <a name="read-the-properties-of-a-resource-group"></a>Lesen der Eigenschaften einer Ressourcengruppe
+### <a name="read-properties"></a>Lesen von Eigenschaften
 
 Verwenden Sie das im vorherigen Schritt abgerufene Zugriffstoken, um auf Azure Resource Manager zuzugreifen, und lesen Sie die Eigenschaften der Ressourcengruppe, für die Sie der benutzerseitig zugewiesenen Identität den Zugriff gewährt haben. Ersetzen Sie `<SUBSCRIPTION ID>` durch die Abonnement-ID Ihrer Umgebung.
 
@@ -152,4 +184,4 @@ Die Antwort enthält die jeweiligen Informationen zur Ressourcengruppe, ähnlich
 In diesem Tutorial haben Sie erfahren, wie Sie eine benutzerseitig zugewiesene Identität erstellen und an einen virtuellen Azure-Computer anfügen, um auf die Azure Resource Manager-API zuzugreifen.  Weitere Informationen zu Azure Resource Manager finden Sie hier:
 
 > [!div class="nextstepaction"]
->[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
+>[Azure Resource Manager](../../azure-resource-manager/management/overview.md)

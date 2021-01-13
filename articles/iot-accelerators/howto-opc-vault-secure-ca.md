@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: f54467c03a67797d52ac499ca9ba455c0f75e240
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200079"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071454"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>Sicheres Ausführen des OPC Vault-Zertifikatverwaltungsdiensts
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den Inhalt auf dem neuesten Stand lesen.
 
 In diesem Artikel wird erläutert, wie Sie den OPC Vault-Zertifikatverwaltungsdienst in Azure sicher ausführen. Außerdem werden andere zu berücksichtigende Sicherheitsrichtlinien beschrieben.
 
@@ -91,10 +94,10 @@ Alle Systeme müssen kontinuierlich überwacht und mit den neuesten Sicherheitsu
 
 ### <a name="security-monitoring"></a>Sicherheitsüberwachung
 
-Abonnieren Sie die entsprechende Sicherheitsüberwachung, oder implementieren Sie sie. Abonnieren Sie beispielsweise eine zentrale Überwachungslösung (z.B. Azure Security Center oder eine Überwachungslösung von Office 365), und konfigurieren Sie sie entsprechend, um sicherzustellen, dass sicherheitsrelevante Ereignisse an die Überwachungslösung übertragen werden.
+Abonnieren Sie die entsprechende Sicherheitsüberwachung, oder implementieren Sie sie. Abonnieren Sie beispielsweise eine zentrale Überwachungslösung (z. B. Azure Security Center oder eine Überwachungslösung von Microsoft 365), und konfigurieren Sie sie entsprechend, um sicherzustellen, dass sicherheitsrelevante Ereignisse an die Überwachungslösung übertragen werden.
 
 > [!IMPORTANT]
-> Der OPC Vault-Dienst wird standardmäßig mit [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) als Überwachungslösung bereitgestellt. Es wird dringend empfohlen, eine Sicherheitslösung wie [Azure Security Center](https://azure.microsoft.com/services/security-center/) hinzuzufügen.
+> Der OPC Vault-Dienst wird standardmäßig mit [Azure Application Insights](../azure-monitor/app/devops.md) als Überwachungslösung bereitgestellt. Es wird dringend empfohlen, eine Sicherheitslösung wie [Azure Security Center](https://azure.microsoft.com/services/security-center/) hinzuzufügen.
 
 ### <a name="assess-the-security-of-open-source-software-components"></a>Bewerten der Sicherheit von Open-Source-Softwarekomponenten
 
@@ -142,7 +145,7 @@ Stellen Sie einen umfassenden Satz aller Zertifikate bereit, die in den letzten 
 
 ### <a name="document-the-standard-operating-procedure-for-securely-deleting-cryptographic-keys"></a>Dokumentieren der Standardprozedur zum sicheren Löschen von kryptografischen Schlüsseln
 
-Während der Lebensdauer einer Zertifizierungsstelle geschieht das Löschen von Schlüsseln möglicherweise nur selten. Aus diesem Grund wurde keinem Benutzer das Recht zum Löschen des Key Vault-Zertifikats zugewiesen, und es werden keine APIs zum Löschen eines Zertifikats der Zertifizierungsstelle verfügbar gemacht. Das manuelle Standardverfahren zum sicheren Löschen von Kryptografieschlüsseln für Zertifizierungsstellen steht nur zur Verfügung, indem auf den Key Vault im Azure-Portal direkt zugegriffen wird. Sie können die Zertifikatgruppe auch in Key Vault löschen. Wenn Sie das sofortige Löschen sicherstellen möchten, deaktivieren Sie die Funktionalität für [Vorläufiges Löschen von Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).
+Während der Lebensdauer einer Zertifizierungsstelle geschieht das Löschen von Schlüsseln möglicherweise nur selten. Aus diesem Grund wurde keinem Benutzer das Recht zum Löschen des Key Vault-Zertifikats zugewiesen, und es werden keine APIs zum Löschen eines Zertifikats der Zertifizierungsstelle verfügbar gemacht. Das manuelle Standardverfahren zum sicheren Löschen von Kryptografieschlüsseln für Zertifizierungsstellen steht nur zur Verfügung, indem auf den Key Vault im Azure-Portal direkt zugegriffen wird. Sie können die Zertifikatgruppe auch in Key Vault löschen. Wenn Sie das sofortige Löschen sicherstellen möchten, deaktivieren Sie die Funktionalität für [Vorläufiges Löschen von Key Vault](../key-vault/general/soft-delete-overview.md).
 
 ## <a name="certificates"></a>Zertifikate
 

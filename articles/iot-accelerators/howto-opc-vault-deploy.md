@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f577059e1ebf70e3a9dfe9e538a9d3d49d7c8e96
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 98dc9345d2c8b392fd094458b612857d6d454739
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71199997"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071488"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Erstellen und Bereitstellen des OPC Vault-Zertifikatverwaltungsdiensts
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den Inhalt auf dem neuesten Stand lesen.
 
 In diesem Artikel wird erläutert, wie Sie den OPC Vault-Zertifikatverwaltungsdienst in Azure bereitstellen.
 
@@ -28,7 +31,7 @@ In diesem Artikel wird erläutert, wie Sie den OPC Vault-Zertifikatverwaltungsdi
 
 Der Build- und Bereitstellungsvorgang ist derzeit auf Windows beschränkt.
 Sämtliche Beispiele sind für C# .NET Standard geschrieben, das Sie zum Erstellen des Diensts und von Beispielen für die Bereitstellung benötigen.
-Alle für .NET Standard erforderlichen Tools sind in den .NET Core Tools enthalten. Weitere Informationen finden Sie unter [Erste Schritte mit .NET Core](https://docs.microsoft.com/dotnet/articles/core/getting-started).
+Alle für .NET Standard erforderlichen Tools sind in den .NET Core Tools enthalten. Weitere Informationen finden Sie unter [Erste Schritte mit .NET Core](/dotnet/articles/core/getting-started).
 
 1. [Installieren von .NET Core 2.1+][dotnet-install].
 2. [Installieren Sie Docker][docker-url] (optional – nur wenn der lokale Docker-Build erforderlich ist).
@@ -76,7 +79,7 @@ Ein PowerShell-Skript bietet eine einfache Möglichkeit zum Bereitstellen des OP
    > Sollten Probleme auftreten, lesen Sie den Abschnitt „Beheben von Problemen bei der Bereitstellung“ weiter unten in diesem Artikel.
 
 8. Öffnen Sie Ihren bevorzugten Browser und dann die Anwendungsseite: `https://myResourceGroup.azurewebsites.net`
-8. Lassen Sie der Web-App und dem OPC Vault-Microservice nach der Bereitstellung ein paar Minuten Zeit zum Aufwärmen. Die Web-Homepage reagiert bei der ersten Verwendung möglicherweise bis zu einer Minute lang nicht, bis Sie die ersten Antworten erhalten.
+8. Lassen Sie der Web-App und dem OPC Vault-Microservice nach der Bereitstellung ein paar Minuten Zeit zum Aufwärmen. Die Webhomepage reagiert bei der ersten Verwendung möglicherweise bis zu einer Minute lang nicht, bis Sie die ersten Antworten erhalten.
 11. Wenn Sie sich die Swagger-API ansehen möchten, öffnen Sie: `https://myResourceGroup-service.azurewebsites.net`.
 13. Zum Starten eines lokalen GDS-Servers mit „dotnet“, starten Sie `.\myResourceGroup-gds.cmd`. Bei Docker starten Sie `.\myResourceGroup-dockergds.cmd`.
 
@@ -88,7 +91,7 @@ Nach erfolgreicher Bereitstellung können Sie mit der Nutzung der Dienste beginn
 
 ## <a name="delete-the-services-from-the-subscription"></a>Löschen der Dienste aus dem Abonnement
 
-Das geht so:
+Gehen Sie dabei folgendermaßen vor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wechseln Sie zu der Ressourcengruppe, in der der Dienst bereitgestellt wurde.
@@ -107,7 +110,7 @@ Verwenden Sie einen kurzen und einfachen Ressourcengruppennamen. Der Name wird a
 
 ### <a name="website-name-already-in-use"></a>Websitename wird bereits verwendet.
 
-Es ist möglich, dass der Name der Website bereits verwendet wird. Sie müssen einen anderen Ressourcengruppennamen verwenden. Die vom Bereitstellungsskript verwendeten Hostnamen lauten: https://resourcegroupname.azurewebsites.net und https://resourgroupname-service.azurewebsites.net.
+Es ist möglich, dass der Name der Website bereits verwendet wird. Sie müssen einen anderen Ressourcengruppennamen verwenden. Die vom Bereitstellungsskript verwendeten Hostnamen lauten: „https:\//resourcegroupname.azurewebsites.net“ und „https:\//resourcegroupname-service.azurewebsites.net“.
 Andere Namen für Dienste werden durch die Kombination von Kurznamenhashes erstellt und wahrscheinlich keinen Konflikt mit anderen Diensten verursachen.
 
 ### <a name="azure-ad-registration"></a>Azure AD-Registrierung 

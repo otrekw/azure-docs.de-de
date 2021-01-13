@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: c5aa7af1ca6f4fe0768add47d2037d797e4ef99b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: a53027ec1f775c240164f67e7ee0473a44690964
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613243"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89262684"
 ---
-# <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Erstellen von erweiterten Codierungsworkflows mit Workflow-Designer  
+# <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Erstellen von erweiterten Codierungsworkflows mit Workflow-Designer
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>Übersicht
 Der **Workflow-Designer** ist ein Windows-Desktoptool, das zum Entwerfen und Erstellen benutzerdefinierter Workflows für die Codierung mit dem **Medienencoder-Premium-Workflow** verwendet wird.
 Dank der Leistungsfähigkeit des Workflow-Designer-Tools können Sie komplexe Workflows entwerfen und erstellen, die in **Medienencoder-Premium**ausgeführt werden.  
@@ -41,7 +44,7 @@ Dieses Tool kann auch verwendet werden, um unsere [veröffentlichten Workflows](
 
 Sobald eine Workflowdatei erstellt wurde, kann sie als Medienobjekt hochgeladen werden und anschließend zum Codieren von Mediendateien verwendet werden. Informationen zum Codieren mit dem **Medienencoder-Premium-Workflow** unter Verwendung von **.NET** finden Sie im Thema [Erweiterte Codierung mit dem Medienencoder-Premium-Workflow](media-services-encode-with-premium-workflow.md).
 
-## <a id="existing_workflows"></a>Ändern vorhandener Workflows
+## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>Ändern vorhandener Workflows
 Die standardmäßigen [veröffentlichten Workflows](media-services-workflow-designer.md#existing_workflows) können mit dem Designer-Tool geändert werden. Sie können die standardmäßigen Workflowdateien [hier](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)abrufen. Der Ordner enthält auch Beschreibungen dieser Dateien.
 
 In den folgenden Videos wird die Verwendung des Designers veranschaulicht.
@@ -79,6 +82,10 @@ Im Video von Tag 3 werden folgende Themen behandelt:
 > 
 > 
 
+## <a name="need-help"></a>Sie brauchen Hilfe?
+
+Sie können ein Supportticket erstellen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
+
 ## <a name="next-step"></a>Nächster Schritt
 Überprüfen Sie die Media Services-Lernpfade.
 
@@ -87,8 +94,6 @@ Im Video von Tag 3 werden folgende Themen behandelt:
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-Falls Sie Support benötigen oder Fragen zur Erstellung von benutzerdefinierten Workflows im Workflow-Designer-Tool haben, können Sie eine E-Mail an mepd@microsoft.com senden. Schreiben Sie die E-Mail in englischer Sprache.
-
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Azure Premium Encoder Workflow-Designer – Schulungsvideos](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 

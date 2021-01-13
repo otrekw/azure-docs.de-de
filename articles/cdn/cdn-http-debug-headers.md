@@ -3,7 +3,7 @@ title: HTTP-Header „X-EC-Debug“ für Azure CDN-Regel-Engine | Microsoft Docs
 description: Der Debugcache-Anforderungsheader „X-EC-Debug“ stellt zusätzliche Informationen zur Cacherichtlinie bereit, die auf das angeforderte Objekt angewendet wird. Diese Header sind spezifisch für Verizon.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
-ms.author: magattus
-ms.openlocfilehash: dec753d7c891d226aa2e6d3efa993d8d24adfbaa
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: allensu
+ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593837"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84343019"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>HTTP-Header „X-EC-Debug“ für Azure CDN-Regel-Engine
 Der Debugcache-Anforderungsheader (`X-EC-Debug`) stellt zusätzliche Informationen zur Cacherichtlinie bereit, die auf das angeforderte Objekt angewendet wird. Diese Header sind spezifisch für **Azure CDN Premium-Produkte von Verizon**.
@@ -27,7 +27,7 @@ Der Debugcache-Anforderungsheader (`X-EC-Debug`) stellt zusätzliche Information
 ## <a name="usage"></a>Verwendung
 Die an einen Benutzer von den POP-Servern gesendete Antwort enthält die `X-EC-Debug`-Header nur, wenn die folgenden Bedingungen erfüllt sind:
 
-- Das Feature [Debug Cache Response Headers](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) wurde für die Regel-Engine für die angegebene Anforderung aktiviert.
+- Das Feature [Debug Cache Response Headers](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) wurde für die Regel-Engine für die angegebene Anforderung aktiviert.
 - Die angegebene Anforderung definiert den Satz der Debugcache-Antwortheader, die in die Antwort einbezogen werden.
 
 ## <a name="requesting-debug-cache-information"></a>Anfordern von Debugcacheinformationen
@@ -105,8 +105,8 @@ Der oben in der Antwortheadersyntax verwendete Begriff ist folgendermaßen defin
 
 Wert  | BESCHREIBUNG
 -------| --------
-JA    | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern geeignet war.
-NO     | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern nicht geeignet war. Dieses Status ergibt sich möglicherweise aufgrund einer der folgenden Ursachen: <br /> – Kundenspezifische Konfiguration: Eine für Ihr Konto spezifische Konfiguration kann verhindern, dass die POP-Server ein Objekt zwischenspeichern. Beispielsweise kann die Regel-Engine verhindern, dass ein Objekt zwischengespeichert wird, indem sie das Feature „Cache umgehen“ für die betreffenden Anforderungen aktiviert.<br /> – Cacheantwortheader: Die Header „Cache-Control“ und „Expires“ des angeforderten Objekts können verhindern, dass POP-Server das Objekt zwischenspeichern.
+YES    | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern geeignet war.
+Nein     | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern nicht geeignet war. Dieses Status ergibt sich möglicherweise aufgrund einer der folgenden Ursachen: <br /> – Kundenspezifische Konfiguration: Eine für Ihr Konto spezifische Konfiguration kann verhindern, dass die POP-Server ein Objekt zwischenspeichern. Beispielsweise kann die Regel-Engine verhindern, dass ein Objekt zwischengespeichert wird, indem sie das Feature „Cache umgehen“ für die betreffenden Anforderungen aktiviert.<br /> – Cacheantwortheader: Die Header „Cache-Control“ und „Expires“ des angeforderten Objekts können verhindern, dass POP-Server das Objekt zwischenspeichern.
 UNKNOWN | Gibt an, dass die Server nicht beurteilen konnten, ob das angeforderte Objekt zwischenspeicherbar war. Dieser Status tritt normalerweise auf, wenn die Anforderung aufgrund von tokenbasierter Authentifizierung abgelehnt wird.
 
 ### <a name="sample-response-header"></a>Beispielantwortheader

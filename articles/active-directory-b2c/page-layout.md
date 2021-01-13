@@ -1,99 +1,181 @@
 ---
-title: Auswählen eines Seitenlayouts – Azure Active Directory B2C
-description: Es wird beschrieben, wie Sie in Azure Active Directory B2C ein Seitenlayout auswählen.
+title: Seitenlayoutversionen
+titleSuffix: Azure AD B2C
+description: Versionsgeschichte des Seitenlayouts für die Anpassung der Benutzeroberfläche in benutzerdefinierten Richtlinien
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 07/04/2019
-ms.author: marsma
+ms.topic: reference
+ms.date: 08/24/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 612d2e3a9a5a324f7d6d8e1b63b6b7e297047239
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063836"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108500"
 ---
-# <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Auswählen eines Seitenlayouts in Azure Active Directory B2C mit benutzerdefinierten Richtlinien
-
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
-
-Sie können den clientseitigen JavaScript-Code in Ihren Azure Active Directory B2C-Richtlinien (Azure AD B2C) aktivieren, und zwar unabhängig davon, ob Sie Benutzerflows oder benutzerdefinierte Richtlinien verwenden. Sie müssen ein Element zu Ihrer [benutzerdefinierten Richtlinie](active-directory-b2c-overview-custom.md) hinzufügen, ein Seitenlayout auswählen und [b2clogin.com](b2clogin.md) in Ihren Anforderungen verwenden, um JavaScript für Ihre Anwendungen zu aktivieren.
-
-Ein Seitenlayout ist eine Zusammenstellung der von Azure AD B2C bereitgestellten Elemente und des von Ihnen bereitgestellten Inhalts.
-
-In diesem Artikel wird das Auswählen eines Seitenlayouts in Azure AD B2C beschrieben, indem dieses in einer benutzerdefinierten Richtlinie konfiguriert wird.
-
-> [!NOTE]
-> Wenn Sie JavaScript für Benutzerflows aktivieren möchten, finden Sie Informationen unter [JavaScript und Seitenlayoutversionen in Azure Active Directory B2C](user-flow-javascript-overview.md).
-
-## <a name="replace-datauri-values"></a>Ersetzen von DataUri-Werten
-
-In Ihren benutzerdefinierten Richtlinien verfügen Sie ggf. über [ContentDefinitions](contentdefinitions.md), mit denen die HTML-Vorlagen für die User Journey definiert werden. Das **ContentDefinition**-Element enthält einen **DataUri**, mit dem auf die von Azure AD B2C bereitgestellten Seitenelemente verwiesen wird. Der **LoadUri** ist der relative Pfad zum HTML- und CSS-Inhalt, den Sie bereitstellen.
-
-```XML
-<ContentDefinition Id="api.idpselections">
-  <LoadUri>~/tenant/default/idpSelector.cshtml</LoadUri>
-  <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
-  <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0</DataUri>
-  <Metadata>
-    <Item Key="DisplayName">Idp selection page</Item>
-    <Item Key="language.intro">Sign in</Item>
-  </Metadata>
-</ContentDefinition>
-```
-
-Zum Auswählen eines Seitenlayouts ändern Sie die **DataUri**-Werte in den [ContentDefinitions](contentdefinitions.md)-Elementen Ihrer Richtlinien. Indem Sie von den alten **DataUri**-Werten zu den neuen Werten wechseln, wählen Sie ein unveränderliches Paket aus. Der Vorteil der Verwendung dieses Pakets besteht darin, dass Sie sicher sein können, dass es nicht zu Änderungen kommt und kein unerwartetes Verhalten für Ihre Seite auftritt.
-
-Verwenden Sie zum Festlegen eines Seitenlayouts die folgende Tabelle, um nach **DataUri**-Werten zu suchen.
-
-| Alter DataUri-Wert | Neuer DataUri-Wert |
-| ----------------- | ----------------- |
-| `urn:com:microsoft:aad:b2c:elements:claimsconsent:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.1.0` |
-| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.1.0` |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.1.0` |
-
-## <a name="version-change-log"></a>Versionsänderungsprotokoll
+# <a name="page-layout-versions"></a>Seitenlayoutversionen
 
 Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesserungen in ihre Seitenelemente aufzunehmen. Das folgende Änderungsprotokoll gibt die in den einzelnen Versionen eingeführten Änderungen an.
 
-### <a name="110"></a>1.1.0
+## <a name="self-asserted-page-selfasserted"></a>Selbstbestätigte Seite (selbstbestätigt)
 
-- Seite mit Ausnahmen (globalexception)
-  - Korrektur zur Barrierefreiheit
-  - Standardmeldung bei fehlendem Kontakt wurde aus der Richtlinie entfernt.
-  - Standard-CSS wurde entfernt.
-- MFA-Seite (Multi-Factor)
-  - Schaltfläche zur Codebestätigung wurde entfernt.
-  - Das Codeeingabefeld nimmt jetzt nur noch Eingaben mit bis zu sechs (6) Zeichen entgegen.
-  - Die Seite versucht automatisch, den eingegebenen Code zu überprüfen, wenn ein 6-stelliger Code eingegeben wird, ohne dass auf eine Schaltfläche geklickt werden muss.
-  - Wenn der Code falsch ist, wird das Eingabefeld automatisch gelöscht.
-  - Nach drei (3) Versuchen mit einem falschen Code sendet B2C eine Fehlermeldung an die vertrauende Seite.
-  - Korrekturen zur Barrierefreiheit
-  - Standard-CSS wurde entfernt.
-- Selbstbestätigte Seite (selbstbestätigt)
-  - Abbruchwarnung wurde entfernt.
-  - CSS-Klasse für Fehlerelemente
-  - Anzeigen/Ausblenden der Fehlerlogik wurde verbessert.
-  - Standard-CSS wurde entfernt.
-- SSP vereinheitlicht (unifiedssp)
-  - „Angemeldet bleiben“-Steuerelement (Keep Me Signed In, KMSI) wurde hinzugefügt.
+**2.1.1**
 
-### <a name="100"></a>1.0.0
+- Zusätzlich zu `intro` wurde das UXString-Element `heading` zur Anzeige als Titel auf der Seite hinzugefügt. Dies ist standardmäßig ausgeblendet.
+- Unterstützung für das Speichern von Kennwörtern in iCloud-Schlüsselbund hinzugefügt
+- Unterstützung für die Verwendung einer Richtlinie oder des QueryString-Parameters `pageFlavor` zum Auswählen des Layouts (klassisch, oceanBlue oder slateGray) hinzugefügt
+- Haftungsausschlüsse auf selbstbestätigter Seite hinzugefügt
+- Der Fokus liegt nun auf dem ersten bearbeitbaren Feld, wenn die Seite geladen wird.
+- Der Fokus liegt nun auf dem ersten Fehlerfeld, wenn bei mehreren Feldern Fehler auftreten.
+- Der Fokus liegt nun auf der Schaltfläche „Ändern“, nachdem der E-Mail-Prüfcode überprüft wurde.
 
-- Erste Version
+**2.1.0**
+
+- Korrekturen für Lokalisierung und Barrierefreiheit.
+
+**2.0.0**
+
+- Unterstützung für [Anzeigesteuerelemente](display-controls.md) in benutzerdefinierten Richtlinien hinzugefügt.
+
+**1.2.0**
+
+- Die Felder für Benutzername/E-Mail-Adresse und Kennwort verwenden jetzt das HTML-Element `form`, damit Microsoft Edge und Internet Explorer (IE) diese Informationen ordnungsgemäß speichern können.
+- Konfigurierbare Verzögerung bei Validierung von Benutzereingaben für verbesserte Benutzerfreundlichkeit hinzugefügt.
+- Korrekturen zur Barrierefreiheit
+- Ein Problem mit der Barrierefreiheit wurde behoben, sodass Fehlermeldungen nun von der Sprachausgabe gelesen werden. 
+- Der Fokus liegt jetzt auf dem Kennwortfeld, nachdem die E-Mail überprüft wurde.
+- `autofocus` aus dem CheckBox-Steuerelement entfernt 
+- Unterstützung für ein Anzeigesteuerelement für die Überprüfung der Telefonnummer hinzugefügt
+- Sie können nun das Attribut `data-preload="true"` hinzufügen [in Ihren HTML-Tags](customize-ui-with-html.md#guidelines-for
+  - Laden Sie verknüpfte CSS-Dateien zur gleichen Zeit wie Ihre HTML-Vorlage, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
+  - Sie steuern damit die Reihenfolge, in der die `script`-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
+- Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt.
+- Unterstützung für den Chrome-Übersetzer
+- Unterstützung für Unternehmensbranding auf Benutzerflowseiten hinzugefügt
+
+**1.1.0**
+
+- Abbruchwarnung wurde entfernt.
+- CSS-Klasse für Fehlerelemente
+- Anzeigen/Ausblenden der Fehlerlogik wurde verbessert.
+- Standard-CSS wurde entfernt.
+
+**1.0.0**
+
+- Erste Veröffentlichung
+
+## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>Vereinheitlichte Anmeldungs- und Registrierungsseite mit Link zur Kennwortzurücksetzung (unifiedssp)
+
+**2.1.1**
+- Zusätzlich zu `intro` wurde das UXString-Element `heading` zur Anzeige als Titel auf der Seite hinzugefügt. Dies ist standardmäßig ausgeblendet.
+- Unterstützung für die Verwendung einer Richtlinie oder des QueryString-Parameters `pageFlavor` zum Auswählen des Layouts (klassisch, oceanBlue oder slateGray) hinzugefügt
+- Unterstützung für das Speichern von Kennwörtern in iCloud-Schlüsselbund hinzugefügt
+- Der Fokus liegt nun auf dem ersten Fehlerfeld, wenn bei mehreren Feldern Fehler auftreten.
+- Der Fokus liegt nun auf dem ersten bearbeitbaren Feld, wenn die Seite geladen wird.
+- Neuer Speicherort für den Link zur Auswahl des Anspruchsanbieters hinzugefügt (`bottomUnderFormClaimsProviderSelections`)
+- Nicht mehr verwendete UXStrings entfernt
+
+**2.1.0**
+
+- Unterstützung für mehrere Registrierungslinks hinzugefügt.
+- Unterstützung für die Validierung von Benutzereingaben gemäß den in der Richtlinie definierten Prädikatsregeln hinzugefügt.
+
+**1.2.0**
+
+- Die Felder für Benutzername/E-Mail-Adresse und Kennwort verwenden jetzt das HTML-Element `form`, damit Microsoft Edge und Internet Explorer (IE) diese Informationen ordnungsgemäß speichern können.
+- Korrekturen zur Barrierefreiheit
+- Sie können nun [in den HTML-Tags](customize-ui-with-html.md#guidelines-for-using-custom-page-content) das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
+  - Laden Sie verknüpfte CSS-Dateien zur gleichen Zeit wie Ihre HTML-Vorlage, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
+  - Sie steuern damit die Reihenfolge, in der die `script`-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
+- Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt.
+- Unterstützung für den Chrome-Übersetzer
+- Unterstützung für Mandantenbranding auf Benutzerflowseiten hinzugefügt
+
+**1.1.0**
+
+- „Angemeldet bleiben“-Steuerelement (Keep Me Signed In, KMSI) wurde hinzugefügt.
+
+**1.0.0**
+
+- Erste Veröffentlichung
+
+## <a name="mfa-page-multifactor"></a>MFA-Seite (Multi-Factor)
+
+**1.2.2**
+- Problem mit dem automatischen Auffüllen des Prüfcodes bei Verwendung von iOS behoben
+- Problem mit dem Umleiten eines Tokens von Android Webview an die vertrauende Seite behoben 
+- Zusätzlich zu `intro` wurde das UXString-Element `heading` zur Anzeige als Titel auf der Seite hinzugefügt. Dies ist standardmäßig ausgeblendet.  
+- Unterstützung für die Verwendung einer Richtlinie oder des QueryString-Parameters `pageFlavor` zum Auswählen des Layouts (klassisch, oceanBlue oder slateGray) hinzugefügt
+
+**1.2.1**
+
+- Korrekturen zur Barrierefreiheit in Standardvorlagen
+
+**1.2.0**
+
+- Korrekturen zur Barrierefreiheit
+- Sie können nun [in den HTML-Tags](customize-ui-with-html.md#guidelines-for-using-custom-page-content) das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
+  - Laden Sie verknüpfte CSS-Dateien zur gleichen Zeit wie Ihre HTML-Vorlage, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
+  - Sie steuern damit die Reihenfolge, in der die `script`-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
+- Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt
+- Unterstützung für den Chrome-Übersetzer
+- Unterstützung für Mandantenbranding auf Benutzerflowseiten hinzugefügt
+
+**1.1.0**
+
+- Schaltfläche zur Codebestätigung wurde entfernt.
+- Das Codeeingabefeld nimmt jetzt nur noch Eingaben mit bis zu sechs (6) Zeichen entgegen.
+- Die Seite versucht automatisch, den eingegebenen Code zu überprüfen, wenn ein 6-stelliger Code eingegeben wird, ohne dass auf eine Schaltfläche geklickt werden muss.
+- Wenn der Code falsch ist, wird das Eingabefeld automatisch gelöscht.
+- Nach drei (3) Versuchen mit einem falschen Code sendet B2C eine Fehlermeldung an die vertrauende Seite.
+- Korrekturen zur Barrierefreiheit
+- Standard-CSS wurde entfernt.
+
+**1.0.0**
+
+- Erste Veröffentlichung
+
+## <a name="exception-page-globalexception"></a>Seite mit Ausnahmen (globalexception)
+
+**1.2.0**
+
+- Korrekturen zur Barrierefreiheit
+- Sie können nun [in den HTML-Tags](customize-ui-with-html.md#guidelines-for-using-custom-page-content) das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
+  - Laden Sie verknüpfte CSS-Dateien zur gleichen Zeit wie Ihre HTML-Vorlage, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
+  - Sie steuern damit die Reihenfolge, in der die `script`-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
+- Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt
+- Unterstützung für den Google Chrome-Übersetzer
+
+**1.1.0**
+
+- Korrektur zur Barrierefreiheit
+- Standardmeldung bei fehlendem Kontakt wurde aus der Richtlinie entfernt.
+- Standard-CSS wurde entfernt.
+
+**1.0.0**
+
+- Erste Veröffentlichung
+
+## <a name="other-pages-providerselection-claimsconsent-unifiedssd"></a>Andere Seiten (ProviderSelection, ClaimsConsent, UnifiedSSD)
+
+**1.2.0**
+
+- Korrekturen zur Barrierefreiheit
+- Sie können nun [in den HTML-Tags](customize-ui-with-html.md#guidelines-for-using-custom-page-content) das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
+  - Laden Sie verknüpfte CSS-Dateien zur gleichen Zeit wie Ihre HTML-Vorlage, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
+  - Sie steuern damit die Reihenfolge, in der die `script`-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
+- Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt
+- Unterstützung für den Google Chrome-Übersetzer
+
+**1.0.0**
+
+- Erste Veröffentlichung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen dazu, wie Sie die Benutzeroberfläche Ihrer Anwendungen anpassen können, finden Sie unter [Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+Weitere Informationen dazu, wie Sie die Benutzeroberfläche Ihrer Anwendungen in benutzerdefinierten Richtlinien anpassen können, finden Sie unter [Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie](customize-ui-with-html.md).

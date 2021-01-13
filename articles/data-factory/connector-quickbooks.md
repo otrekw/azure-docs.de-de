@@ -1,25 +1,26 @@
 ---
-title: Kopieren von Daten aus QuickBooks Online mithilfe von Azure Data Factory (Vorschau) | Microsoft-Dokumentation
+title: Kopieren von Daten aus QuickBooks Online mithilfe von Azure Data Factory (Vorschau)
 description: Erfahren Sie, wie Sie Daten aus QuickBooks Online mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopieren.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: jingwang
-ms.openlocfilehash: 44bfae58badd6aa6b05763dff094475f82fb2e18
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom: seo-lt-2019
+ms.date: 08/03/2020
+ms.openlocfilehash: e9c1651244eecb036ca18ad5dadfe23f48b2bce6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089690"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87529261"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopieren von Daten aus QuickBooks Online mithilfe von Azure Data Factory (Vorschau)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Dieser Artikel beschreibt, wie Sie mit der Kopieraktivität in Azure Data Factory Daten aus QuickBooks Online kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -35,9 +36,7 @@ Der QuickBooks-Connector wird für die folgenden Aktivitäten unterstützt:
 
 Sie können Daten aus QuickBooks Online in einen beliebigen unterstützten Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Konnektivität. Daher müssen Sie mit diesem Connector keinen Treiber manuell installieren.
-
-Momentan unterstützt dieser Connector nur Version 1.0a, was bedeutet, dass Sie ein Entwicklerkonto mit Anwendungen haben müssen, die vor dem 17. Juli 2017 erstellt wurden.
+Dieser Connector unterstützt QuickBooks OAuth 2.0-Authentifizierung.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -51,13 +50,14 @@ Folgende Eigenschaften werden für den mit QuickBooks verknüpften Dienst unters
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **QuickBooks**. | Ja |
+| Typ | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **QuickBooks**. | Ja |
+| connectionProperties | Eine Gruppe von Eigenschaften zum Definieren, wie eine Verbindung mit QuickBooks hergestellt werden soll. | Ja |
+| ***Unter `connectionProperties`:*** | | |
 | endpoint | Der Endpunkt des QuickBooks Online-Servers. (quickbooks.api.intuit.com)  | Ja |
 | companyId | Die Unternehmens-ID des zu autorisierenden QuickBooks-Unternehmens. Weitere Informationen finden Sie unter [Wie finde ich meine Unternehmens-ID?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551) (in englischer Sprache). | Ja |
-| consumerKey | Verbraucherschlüssel für die OAuth 1.0-Authentifizierung | Ja |
-| consumerSecret | Verbrauchergeheimnis für die OAuth 1.0-Authentifizierung. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
-| accessToken | Das Zugriffstoken für die Authentifizierung mit OAuth 1.0. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
-| accessTokenSecret | Das Zugriffstokengeheimnis für die Authentifizierung mit OAuth 1.0. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| consumerKey | Der Verbraucherschlüssel für die OAuth 2.0-Authentifizierung. | Ja |
+| consumerSecret | Das Verbrauchergeheimnis für die OAuth 2.0-Authentifizierung. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| refreshToken | Das der QuickBooks-Anwendung zugeordnete OAuth 2.0-Aktualisierungstoken. Weitere Informationen dazu finden Sie [hier](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app). Beachten Sie, dass das Aktualisierungstoken nach 180 Tagen ablaufen wird. Der Kunde muss das Aktualisierungstoken regelmäßig aktualisieren. <br/>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md).| Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein |
 
 **Beispiel:**
@@ -68,22 +68,20 @@ Folgende Eigenschaften werden für den mit QuickBooks verknüpften Dienst unters
     "properties": {
         "type": "QuickBooks",
         "typeProperties": {
-            "endpoint" : "quickbooks.api.intuit.com",
-            "companyId" : "<companyId>",
-            "consumerKey": "<consumerKey>",
-            "consumerSecret": {
-                "type": "SecureString",
-                "value": "<consumerSecret>"
-            },
-            "accessToken": {
-                 "type": "SecureString",
-                 "value": "<accessToken>"
-            },
-            "accessTokenSecret": {
-                 "type": "SecureString",
-                 "value": "<accessTokenSecret>"
-            },
-            "useEncryptedEndpoints" : true
+            "connectionProperties": {
+                "endpoint": "quickbooks.api.intuit.com",
+                "companyId": "<company id>",
+                "consumerKey": "<consumer key>", 
+                "consumerSecret": {
+                     "type": "SecureString",
+                     "value": "<clientSecret>"
+                },
+                "refreshToken": {
+                     "type": "SecureString",
+                     "value": "<refresh token>"
+                },
+                "useEncryptedEndpoints": true
+            }
         }
     }
 }
@@ -97,8 +95,8 @@ Legen Sie zum Kopieren von Daten aus QuickBooks Online die „type“-Eigenschaf
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **QuickBooksObject**. | Ja |
-| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
+| Typ | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **QuickBooksObject**. | Ja |
+| tableName | Der Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -127,8 +125,8 @@ Legen Sie zum Kopieren von Daten aus QuickBooks Online den Quelltyp in der Kopie
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **QuickBooksSource**. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Typ | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **QuickBooksSource**. | Ja |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

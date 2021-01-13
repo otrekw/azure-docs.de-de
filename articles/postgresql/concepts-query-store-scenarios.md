@@ -1,17 +1,17 @@
 ---
-title: 'Verwendungsszenarios für den Abfragespeicher in Azure Database for PostgreSQL: Einzelserver'
+title: Abfragespeicherszenarios – Azure Database for PostgreSQL – Einzelserver
 description: In diesem Artikel werden einige Szenarios für den Abfragespeicher in Azure Database for PostgreSQL (Einzelserver) beschrieben.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 3cdb0d4e00e667b0369cdf612662830f18dc5fb8
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ad646e39e9b6a87611dc2f40330a77fe70c92c27
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764273"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710548"
 ---
 # <a name="usage-scenarios-for-query-store"></a>Verwendungsszenarios für den Abfragespeicher
 

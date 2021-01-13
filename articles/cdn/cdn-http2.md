@@ -1,6 +1,6 @@
 ---
 title: HTTP/2-Unterstützung in Azure CDN | Microsoft-Dokumentation
-description: Erhalten Sie Informationen zur HTTP/2- und CDN-Unterstützung.
+description: Azure Content Delivery Network unterstützt HTTP/2, was gegenüber HTTP/1 Vorteile hat, z. B. Multiplexing und Parallelität, Headerkomprimierung und Streamabhängigkeiten.
 services: cdn
 documentationcenter: ''
 author: lichard
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: ril
-ms.openlocfilehash: 703623e3f7f314d87417458f3f9a218dfdf45427
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: d4ed04185da251d9042f6b54a192d0e49ef20ede
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849969"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778542"
 ---
 # <a name="http2-support-in-azure-cdn"></a>HTTP/2-Unterstützung in Azure CDN
 
@@ -67,4 +67,4 @@ Weitere Informationen zu HTTP/2 finden Sie in den folgenden Ressourcen:
 *   [Häufig gestellte Fragen zu HTTP/2 (offiziell)](https://http2.github.io/faq/) (in englischer Sprache)
 *   [Akamai HTTP/2-Informationen](https://http2.akamai.com/) (in englischer Sprache)
 
-Weitere Informationen zu verfügbaren Azure CDN-Features finden Sie in der [Übersicht über das Azure CDN](https://azure.microsoft.com/documentation/articles/cdn-overview/).
+Weitere Informationen zu verfügbaren Azure CDN-Features finden Sie in der [Übersicht über das Azure CDN](./cdn-overview.md).

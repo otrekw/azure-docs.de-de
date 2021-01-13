@@ -1,0 +1,90 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Key Vault
+summary: Hier erfahren Sie, wie Sie mithilfe von Key Vault Schlüssel für den Zugriff auf und die Verschlüsselung von Cloudressourcen, Apps und Lösungen erstellen und verwalten. Tutorials, API-Referenzen und mehr.
+metadata:
+  title: Dokumentation zu Azure Key Vault
+  description: Hier erfahren Sie, wie Sie mithilfe von Key Vault Schlüssel für den Zugriff auf und die Verschlüsselung von Cloudressourcen, Apps und Lösungen erstellen und verwalten. Tutorials, API-Referenzen und mehr.
+  services: key-vault
+  ms.service: key-vault
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 1d0fdf9042ccbe2ab433db2f861b6d4e58e7a1c3
+  ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 01/06/2021
+  ms.locfileid: "97935919"
+landingContent:
+- title: Informationen zu Azure Key Vault
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Key Vault?
+      url: overview.md
+    - text: Wichtige Neuigkeiten zu vorläufigem Löschen
+      url: soft-delete-change.md
+  - linkListType: concept
+    links:
+    - text: Grundlegende Konzepte
+      url: basic-concepts.md
+    - text: Vorläufiges Löschen
+      url: soft-delete-overview.md
+    - text: Drosselung
+      url: overview-throttling.md
+- title: Tutorials
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Key Vault über eine Webanwendung
+      url: tutorial-net-create-vault-azure-web-app.md
+    - text: Key Vault mit einem virtuellen Computer in .NET
+      url: tutorial-net-virtual-machine.md
+    - text: Key Vault mit einem virtuellen Computer in Python
+      url: tutorial-python-virtual-machine.md
+- title: Sicherheit
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Sicherheitsübersicht
+      url: security-overview.md
+    - text: Schützen einer Key Vault-Instanz
+      url: secure-your-key-vault.md
+    - text: Sicherheitsbaseline
+      url: security-baseline.md
+  - linkListType: how-to-guide
+    links:
+    - text: Authentifizieren bei Key Vault
+      url: authentication.md
+    - text: Zuweisen der Zugriffsrichtlinie (CLI)
+      url: assign-access-policy-CLI.md
+    - text: Zuweisen der Zugriffsrichtlinie (PowerShell)
+      url: assign-access-policy-powershell.md
+    - text: Zuweisen der Zugriffsrichtlinie (Portal)
+      url: assign-access-policy-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Verwenden von Private Link
+      url: private-link-service.md
+- title: Clientbibliotheken
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Clientbibliotheken für Azure Key Vault
+      url: client-libraries.md
+    - text: .NET-Clientbibliothek
+      url: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - text: Python-Clientbibliothek
+      url: /python/api/overview/azure/key-vault-index?view=azure-python
+    - text: Java-Clientbibliothek
+      url: https://azure.github.io/azure-sdk-for-java/keyvault.html
+    - text: Node.js-Clientbibliothek
+      url: /javascript/api/overview/azure/key-vault-index?view=azure-node-latest
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Verwalten von Geheimnissen in Ihren Server-Apps mit Azure Key Vault
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

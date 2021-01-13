@@ -1,24 +1,24 @@
 ---
-title: Azure CLI-Beispiele für Azure Database for PostgreSQL – Einzelserver
+title: 'Azure CLI-Beispiele: Azure Database for PostgreSQL-Einzelserver'
 description: Dieser Artikel führt verschiedene Azure CLI-Codebeispiele auf, die für die Interaktion mit Azure Database for PostgreSQL – Einzelserver verfügbar sind.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: sample, mvc
+ms.custom: sample, mvc, devx-track-azurecli
 ms.date: 5/6/2019
-ms.openlocfilehash: 9b8ff3334c8e31397f68e890c15bec3e2515a1a2
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: f317734b7020002add710eb9d661028e8df34087
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073129"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707641"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql---single-server"></a>Azure CLI-Beispiele für Azure Database for PostgreSQL – Einzelserver
 Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für Azure Datenbank für PostgreSQL.
 
-| |  |
+| Beispiellink | BESCHREIBUNG |
 |---|---|
 |**Erstellen eines Servers**||
 | [Erstellen eines Servers und einer Firewallregel](scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Azure CLI-Skript, das einen Azure Database for PostgreSQL-Server erstellt und eine Firewallregel auf Serverebene konfiguriert |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 36e41db6e1a3cff13f31f0abf2e83e872dfd7c49
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672180"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91742331"
 ---
 # <a name="network-monitoring-solutions"></a>Netzwerküberwachungslösungen 
 
@@ -65,7 +65,7 @@ Der Netzwerkleistungsmonitor für ExpressRoute bietet eine umfassende ExpressRou
 * Erkennung der Netzwerktopologie zwischen Ihrer lokalen Umgebung und Ihren Cloudanwendungen
 * Kapazitätsplanung, Bandbreitenauslastungsanalyse
 * Überwachung und Warnungsgenerierung für primäre und sekundäre Pfade
-* Überwachung der Konnektivität mit Azure-Diensten (beispielsweise Office 365 und Dynamics 365) über ExpressRoute
+* Überwachung der Konnektivität mit Azure-Diensten (beispielsweise Microsoft 365 und Dynamics 365) über ExpressRoute
 * Erkennung einer Verschlechterung der Konnektivität mit VNets
 
 ![Geografische Karte, die Datenverkehr Regionen übergreifend darstellt](./media/network-monitoring-overview/expressroute-topology-map.png) 
@@ -84,7 +84,7 @@ Mit der Dienstkonnektivitätsüberwachung können Sie nun die Erreichbarkeit von
 * Testen der Erreichbarkeit von Anwendungen über verschiedene Benutzerstandorte auf der ganzen Welt
 * Bestimmen der Netzwerkwartezeit und des Paketverlusts für Ihre Branchen- und SaaS-Anwendungen
 * Bestimmen von Hotspots im Netzwerk, die ggf. zu einer Verschlechterung der Anwendungsleistung führen
-* Überwachen der Erreichbarkeit von Office 365-Anwendungen mithilfe integrierter Tests für Microsoft Office 365, Dynamics 365, Skype for Business und andere Microsoft-Dienste
+* Überwachen der Erreichbarkeit von Microsoft 365-Anwendungen mithilfe integrierter Tests für Microsoft 365, Dynamics 365, Skype for Business und andere Microsoft-Dienste
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
@@ -103,7 +103,7 @@ Traffic Analytics ist eine cloudbasierte Lösung, die Einblick in Benutzer- und 
 
 Traffic Analytics bietet Ihnen Informationen, die Ihnen erleichtern, die Netzwerkaktivität Ihres Unternehmens zu überwachen, Anwendungen und Daten zu schützen, die Arbeitsauslastungsleistung zu optimieren und die Kompatibilität aufrechtzuerhalten.
 
-![Geografische Karte, die Datenverkehr Regionen übergreifend darstellt](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+![Geografische Karte, die Datenverkehr Regionen übergreifend darstellt 2](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 Verwandte Links:
 * [Blogbeitrag](https://aka.ms/trafficanalytics), [Dokumentation](https://aka.ms/trafficanalyticsdocs), [FAQ](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
@@ -122,6 +122,6 @@ Diese für DNS-Administratoren konzipierte Lösung erfasst, analysiert und korre
 Verwandte Links:
 * [Blogbeitrag](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [Dokumentation](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
-## <a name="miscellaneous"></a>Verschiedenes
+## <a name="miscellaneous"></a>Sonstiges
 
 * [Neue Preise](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)

@@ -4,13 +4,17 @@
       href: oracle-overview.md
     - name: Lösungen auf virtuellen Azure-Computern
       href: oracle-vm-solutions.md
-    - name: 'Lösungen mit OCI: Vorschauversion'
+    - name: Welche Lösungen zum Ausführen von Oracle WebLogic Server in Azure Virtual Machines gibt es?
+      href: oracle-weblogic.md
+    - name: Welche Lösungen zum Ausführen von Oracle WebLogic Server in Azure Kubernetes Service gibt es?
+      href: weblogic-aks.md
+    - name: Lösungen mit OCI
       href: oracle-oci-overview.md
 - name: Schnellstarts
   items:
     - name: Erstellen einer Oracle Database
       href: oracle-database-quick-create.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Konfigurieren von Oracle ASM
       href: configure-oracle-asm.md
@@ -22,15 +26,15 @@
   items:
     - name: Architekturen von Oracle-Anwendungen
       href: oracle-oci-applications.md
+    - name: Oracle-Datenbankarchitekturen
+      href: oracle-reference-architecture.md
     - name: Zusammenstellen einer Oracle Database
       href: oracle-design.md
-    - name: Sicherungsstrategie für Oracle Database
-      href: oracle-backup-recovery.md
     - name: Notfallwiederherstellungsoptionen für Oracle
       href: oracle-disaster-recovery.md
 - name: Anleitungen
   items:
-    - name: 'Verbinden von Azure und OCI: Vorschau'
+    - name: Herstellen einer Verbindung zwischen Azure und OCI
       href: configure-azure-oci-networking.md
 - name: Ressourcen
   items:

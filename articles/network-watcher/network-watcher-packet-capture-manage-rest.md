@@ -3,28 +3,25 @@ title: Verwalten von Paketerfassungen mit Azure Network Watcher – REST-API | M
 description: Auf dieser Seite wird erläutert, wie das Network Watcher-Feature zur Paketerfassung mithilfe der Azure-REST-API verwaltet wird.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 53fe0324-835f-4005-afc8-145eeb314aeb
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 896c681cd7337faba7add214e186e18ec87b529d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.author: damendo
+ms.openlocfilehash: 97b20eae4c6b7d4ee81066638e46f1e9a760d3ec
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676356"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966478"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe der Azure-REST-API
 
 > [!div class="op_single_selector"]
-> - [Azure-Portal](network-watcher-packet-capture-manage-portal.md)
+> - [Azure portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure-Befehlszeilenschnittstelle](network-watcher-packet-capture-manage-cli.md)
 > - [Azure-REST-API](network-watcher-packet-capture-manage-rest.md)
@@ -45,11 +42,11 @@ Dieser Artikel führt Sie durch die verschiedenen Verwaltungsaufgaben, die derze
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In diesem Szenario rufen Sie die Network Watcher-Rest-API auf, um die IP-Datenflussüberprüfung auszuführen. ARMClient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden [ARMClient auf Chocolatey](https://chocolatey.org/packages/ARMClient).
+In diesem Szenario rufen Sie die Network Watcher-Rest-API auf, um die IP-Datenflussüberprüfung auszuführen. ARMclient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden [ARMClient auf Chocolatey](https://chocolatey.org/packages/ARMClient).
 
 Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben.
 
-> Die Paketerfassung erfordert eine VM-Erweiterung `AzureNetworkWatcherExtension`. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
+> Für die Paketerfassung ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/extensions/network-watcher-windows.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/extensions/network-watcher-linux.md).
 
 ## <a name="log-in-with-armclient"></a>Anmelden mit ARMClient
 
@@ -304,19 +301,6 @@ armclient delete "https://management.azure.com/subscriptions/${subscriptionId}/R
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Anweisungen zum Herunterladen von Dateien von Azure-Speicherkonten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter dem folgenden Link: [Storage-Explorer](https://storageexplorer.com/)
+Anweisungen zum Herunterladen von Dateien von Azure-Speicherkonten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter [Storage-Explorer](https://storageexplorer.com/).
 
 Informationen zur Automatisierung von Paketerfassungen mit VM-Warnungen finden Sie unter [Erstellen einer durch Warnungen ausgelösten Paketerfassung](network-watcher-alert-triggered-packet-capture.md).
-
-
-
-
-
-
-
-
-
-
-
-
-

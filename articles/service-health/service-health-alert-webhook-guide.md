@@ -1,18 +1,15 @@
 ---
-title: Konfigurieren von Azure Service Health-Benachrichtigungen für vorhandene Problemverwaltungssysteme mit einem Webhook
+title: Senden von Azure Service Health-Benachrichtigungen mit Webhooks
 description: Senden Sie personalisierte Benachrichtigungen zu Service Health-Ereignissen an Ihr vorhandenes Problemverwaltungssystem.
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
-ms.workload: Supportability
 ms.date: 3/27/2018
-ms.openlocfilehash: 8f84b43519c197797b39397cfd15c4f90444177c
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 05b0572c89a29fddc881f9977ee437d1319e6254
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854379"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86518927"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Konfigurieren von Integritätsbenachrichtigungen für vorhandene Problemverwaltungssysteme mit einem Webhook
 
@@ -34,7 +31,7 @@ Wenn Sie eine vorkonfigurierte Integration verwenden möchten, lesen Sie die fol
 ## <a name="configure-a-custom-notification-by-using-the-service-health-webhook-payload"></a>Konfigurieren einer benutzerdefinierten Benachrichtigung mit der Service Health-Webhooknutzlast
 Wenn Sie Ihre eigene benutzerdefinierte Webhookintegration einrichten möchten, müssen Sie die über die Service Health-Benachrichtigung gesendete JSON-Nutzlast analysieren.
 
-[Hier finden Sie ein Beispiel](../azure-monitor/platform/activity-log-alerts-webhook.md) für die `ServiceHealth`-Webhooknutzlast.
+Hier finden Sie [ein Beispiel für die](../azure-monitor/platform/activity-log-alerts-webhook.md) `ServiceHealth`-Webhooknutzlast.
 
 Durch einen Blick auf `context.eventSource == "ServiceHealth"` können Sie bestätigen, dass dies eine Service Health-Warnung ist. Die folgenden Eigenschaften sind die relevantesten:
 - **data.context.activityLog.status**
@@ -118,5 +115,5 @@ Folgen Sie diesen Schritten:
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](../azure-monitor/platform/service-notifications.md).
+- Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](./service-notifications.md).
 - Weitere Informationen zu [Aktionsgruppen](../azure-monitor/platform/action-groups.md).

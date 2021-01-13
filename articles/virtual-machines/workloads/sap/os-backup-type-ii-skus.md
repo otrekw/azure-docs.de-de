@@ -4,21 +4,22 @@ description: Durchführen von Betriebssystemsicherungen und -wiederherstellungen
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 046daed4f548d24010c3d3bef177cee8cf24a55e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e690f6abc9c597cc1facb7b3e59604bb711cf274
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098738"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955666"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>Sichern und Wiederherstellen des Betriebssystems für Typ-II-SKUs von Revision 3-Stamps
 
@@ -69,7 +70,7 @@ Der folgende Befehl zeigt die Wiederherstellung der Datei */etc/fstab* aus der S
 
 Der folgende Screenshot zeigt die Wiederherstellung einer vollständigen Sicherung:
 
-![HowtoRestoreaBackup.PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
+![Screenshot mit einem Eingabeaufforderungsfenster, das die Wiederherstellung zeigt](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
 
 ## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>Installieren des ReaR-Tools und Ändern der Konfiguration 
 
@@ -99,4 +100,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-Der folgende Screenshot zeigt die Wiederherstellung einer vollständigen Sicherung: ![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+Der folgende Screenshot zeigt die Wiederherstellung einer vollständigen Sicherung: ![Screenshot mit dem Eingabeaufforderungsfenster, das die Wiederherstellung mithilfe des ReaR-Tools zeigt](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

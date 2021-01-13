@@ -1,37 +1,33 @@
 ---
 title: Azure Deutschland – Verfügbare Dienste | Microsoft-Dokumentation
-description: Übersicht über die verfügbaren Dienste in Azure Deutschland
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: chsieg
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
+description: Dieser Artikel enthält eine Übersicht über die verfügbaren Dienste in Azure Deutschland.
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/20/2017
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 4191edf9a690e6d4aa28d93cdc6c437ed20abaa2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: 523ef05023f669c5ff37f2d5f06ecc0d410faff0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685619"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018527"
 ---
 # <a name="available-services-in-azure-germany"></a>Verfügbare Dienste in Azure Deutschland
-Azure Deutschland aktualisiert und erweitert seine Dienste fortlaufend nach dem Evergreeningkonzept. Die Dienste werden mit demselben Code bereitgestellt, der in der globalen Azure-Umgebung verwendet wird, und nach Prüfung auf lokale Implementierbarkeit in Azure Deutschland eingepflegt. In diesem Artikel werden die Dienste beschrieben, die zurzeit in Azure Deutschland verfügbar sind. 
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
+
+Azure Deutschland baut seine Dienste nicht weiter aus. In diesem Artikel werden die Dienste beschrieben, die zurzeit in Azure Deutschland verfügbar sind. 
 
 >[!NOTE]
 > Die aktuelle Liste der Dienste finden Sie unter [Produkte nach Region](https://azure.microsoft.com/regions/services/). 
 >
 >
 
-Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dienste verfügen über Ressourcenanbieter und können mithilfe von PowerShell verwaltet werden. Ausführliche Informationen zu Resource Manager-Anbietern, API-Versionen und Schemas finden Sie unter [Unterstützte Resource Manager-Dienste](../azure-resource-manager/resource-manager-supported-services.md). Die als im Portal verfügbar angegebenen Dienste können im [Azure Deutschland-Portal](https://portal.microsoftazure.de/) verwaltet werden. 
+Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dienste verfügen über Ressourcenanbieter und können mithilfe von PowerShell verwaltet werden. Ausführliche Informationen zu Resource Manager-Anbietern, API-Versionen und Schemas finden Sie unter [Unterstützte Resource Manager-Dienste](../azure-resource-manager/management/resource-providers-and-types.md). Die als im Portal verfügbar angegebenen Dienste können im [Azure Deutschland-Portal](https://portal.microsoftazure.de/) verwaltet werden. 
 
-## <a name="computegermany-services-computemd"></a>[Compute](./germany-services-compute.md)
+## <a name="compute"></a>[Compute](./germany-services-compute.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
@@ -40,7 +36,7 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 | Service Fabric | Ja | Ja |
 
 
-## <a name="networkinggermany-services-networkingmd"></a>[Netzwerk](./germany-services-networking.md)
+## <a name="networking"></a>[Netzwerk](./germany-services-networking.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
@@ -53,18 +49,18 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 
 
-## <a name="storagegermany-services-storagemd"></a>[Storage](./germany-services-storage.md)
+## <a name="storage"></a>[Storage](./germany-services-storage.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
-| [Speicher](./germany-services-storage.md#storage) | Ja | Ja |
+| [Storage](./germany-services-storage.md#storage) | Ja | Ja |
 | StorSimple | Nein | Nein |
 | Backup | Ja | Ja |
 | Site Recovery | Ja | Ja |
 
 
 
-## <a name="web-and-mobilegermany-services-webandmobilemd"></a>[Web und Mobil](./germany-services-webandmobile.md)
+## <a name="web-and-mobile"></a>[Web und mobil](./germany-services-webandmobile.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
@@ -74,12 +70,12 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 | Media Services | Ja | Ja |
 
 
-## <a name="databasesgermany-services-databasemd"></a>[Datenbanken](./germany-services-database.md)
+## <a name="databases"></a>[Datenbanken](./germany-services-database.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
 | [SQL-Datenbank](./germany-services-database.md#sql-database) | Ja | Ja |
-| SQL Data Warehouse | Ja | Ja |
+| Azure Synapse Analytics | Ja | Ja |
 | SQL Server Stretch Database | Ja | Ja |
 | [Azure Cache for Redis](./germany-services-database.md#azure-cache-for-redis) | Ja | Ja |
 | Azure Cosmos DB | Ja | Ja |
@@ -93,7 +89,7 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 | Machine Learning | Ja | Nein |
 
 
-## <a name="internet-of-things-iotgermany-services-iotmd"></a>[Internet der Dinge (IoT)](./germany-services-iot.md)
+## <a name="internet-of-things-iot"></a>[Internet der Dinge (IoT)](./germany-services-iot.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
@@ -113,7 +109,7 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 
 
-## <a name="security-and-identitygermany-services-securityandidentitymd"></a>[Sicherheit und Identität](./germany-services-securityandidentity.md)
+## <a name="security-and-identity"></a>[Sicherheit und Identität](./germany-services-securityandidentity.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
@@ -131,9 +127,8 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 | Backup | Ja | Ja |
 | Azure Monitor-Protokolle | Nein | Nein |
 | Site Recovery | Ja | Ja |
-| Scheduler | Ja | Ja |
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
+Abonnieren Sie den [Azure Deutschland-Blog](/archive/blogs/azuregermany/), um weitere Informationen und Updates zu erhalten.

@@ -1,28 +1,28 @@
 ---
-title: Kopieren von Daten aus einer Webtabelle mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus einer Webtabelle mithilfe von Azure Data Factory
 description: Erfahren Sie mehr über den Webtabellenconnector von Azure Data Factory, mit dem Sie Daten aus einer Webtabelle als Senken in von Data Factory unterstützte Datenspeicher kopieren können.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 164b61d624efbe1ed6127f1ed974b221f4e4d304
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089168"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81410215"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopieren von Daten aus einer Webtabelle mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-web-table-connector.md)
 > * [Aktuelle Version](connector-web-table.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Webtabellendatenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -93,7 +93,7 @@ Legen Sie zum Kopieren von Daten aus einer Webtabelle die „type“-Eigenschaft
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **WebTable** | Ja |
 | path |Eine relative URL zu der Ressource, die die Tabelle enthält. |Nein. Wenn der Pfad nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. |
-| index |Der Index der Tabelle in der Ressource. Im Abschnitt [Abrufen des Indexes einer Tabelle auf einer HTML-Seite](#get-index-of-a-table-in-an-html-page) werden die Schritte zum Abrufen des Indexes einer Tabelle auf einer HTML-Seite beschrieben. |Ja |
+| Index |Der Index der Tabelle in der Ressource. Im Abschnitt [Abrufen des Indexes einer Tabelle auf einer HTML-Seite](#get-index-of-a-table-in-an-html-page) werden die Schritte zum Abrufen des Indexes einer Tabelle auf einer HTML-Seite beschrieben. |Ja |
 
 **Beispiel:**
 

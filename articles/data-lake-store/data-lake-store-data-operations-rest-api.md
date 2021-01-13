@@ -8,15 +8,15 @@ manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 351c92f1e1a698893f61004d523ba79ebca253e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51e0fb2ffa7b573ecfeda163d9ad99597ff735a2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878782"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109203"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit der REST-API
 > [!div class="op_single_selector"]
@@ -48,63 +48,75 @@ Dieser Vorgang basiert auf dem [hier](https://hadoop.apache.org/docs/stable/hado
 
 Verwenden Sie den folgenden cURL-Befehl. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Storage Gen1-Kontonamen.
 
-    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS'
+```console
+curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS'
+```
 
 Ersetzen Sie im vorherigen Befehl \<`REDACTED`\> durch das Autorisierungstoken, das Sie zuvor abgerufen haben. Dieser Befehl erstellt das Verzeichnis **mytempdir** im Stammordner Ihres Data Lake Storage Gen1-Kontos.
 
 Wenn der Vorgang erfolgreich abgeschlossen wurde, sollte eine Antwort wie im folgenden Codeausschnitt angezeigt werden:
 
-    {"boolean":true}
+```output
+{"boolean":true}
+```
 
 ## <a name="list-folders"></a>Auflisten von Ordnern
 Dieser Vorgang basiert auf dem [hier](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory)definierten WebHDFS-REST-API-Aufruf.
 
 Verwenden Sie den folgenden cURL-Befehl. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Storage Gen1-Kontonamen.
 
-    curl -i -X GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS'
+```console
+curl -i -X GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS'
+```
 
 Ersetzen Sie im vorherigen Befehl \<`REDACTED`\> durch das Autorisierungstoken, das Sie zuvor abgerufen haben.
 
 Wenn der Vorgang erfolgreich abgeschlossen wurde, sollte eine Antwort wie im folgenden Codeausschnitt angezeigt werden:
 
-    {
-    "FileStatuses": {
-        "FileStatus": [{
-            "length": 0,
-            "pathSuffix": "mytempdir",
-            "type": "DIRECTORY",
-            "blockSize": 268435456,
-            "accessTime": 1458324719512,
-            "modificationTime": 1458324719512,
-            "replication": 0,
-            "permission": "777",
-            "owner": "<GUID>",
-            "group": "<GUID>"
-        }]
-    }
-    }
+```output
+{
+"FileStatuses": {
+    "FileStatus": [{
+        "length": 0,
+        "pathSuffix": "mytempdir",
+        "type": "DIRECTORY",
+        "blockSize": 268435456,
+        "accessTime": 1458324719512,
+        "modificationTime": 1458324719512,
+        "replication": 0,
+        "permission": "777",
+        "owner": "<GUID>",
+        "group": "<GUID>"
+    }]
+}
+}
+```
 
 ## <a name="upload-data"></a>Hochladen von Daten
 Dieser Vorgang basiert auf dem [hier](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File)definierten WebHDFS-REST-API-Aufruf.
 
 Verwenden Sie den folgenden cURL-Befehl. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Storage Gen1-Kontonamen.
 
-    curl -i -X PUT -L -T 'C:\temp\list.txt' -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE'
+```console
+curl -i -X PUT -L -T 'C:\temp\list.txt' -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE'
+```
 
 In der vorherigen Syntax wird mit dem Parameter **-T** der Speicherort der hochgeladenen Datei angegeben.
 
 Die Ausgabe sieht in etwa wie im folgenden Codeausschnitt aus:
    
-    HTTP/1.1 307 Temporary Redirect
-    ...
-    Location: https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE&write=true
-    ...
-    Content-Length: 0
+```output
+HTTP/1.1 307 Temporary Redirect
+...
+Location: https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE&write=true
+...
+Content-Length: 0
 
-    HTTP/1.1 100 Continue
+HTTP/1.1 100 Continue
 
-    HTTP/1.1 201 Created
-    ...
+HTTP/1.1 201 Created
+...
+```
 
 ## <a name="read-data"></a>Lesen von Daten
 Dieser Vorgang basiert auf dem [hier](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File)definierten WebHDFS-REST-API-Aufruf.
@@ -116,52 +128,63 @@ Das Lesen von Daten aus einem Data Lake Storage Gen1-Konto ist ein zweistufiger 
 
 Da es in den Eingabeparametern keinen Unterschied zwischen dem ersten und zweiten Schritt gibt, können Sie mit dem `-L` -Parameter die erste Anforderung senden. Mit `-L` werden im Wesentlichen zwei Anforderungen in einer kombiniert, und es wird erreicht, dass cURL die Anforderung am neuen Speicherort noch einmal ausführt. Schließlich wird die Ausgabe aller Anforderungsaufrufe wie im folgenden Codeausschnitt dargestellt angezeigt. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Storage Gen1-Kontonamen.
 
-    curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
+```console
+curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
+```
 
 Die Ausgabe sollte in etwa wie folgender Codeausschnitt aussehen:
 
-    HTTP/1.1 307 Temporary Redirect
-    ...
-    Location: https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/somerandomfile.txt?op=OPEN&read=true
-    ...
+```output
+HTTP/1.1 307 Temporary Redirect
+...
+Location: https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/somerandomfile.txt?op=OPEN&read=true
+...
 
-    HTTP/1.1 200 OK
-    ...
+HTTP/1.1 200 OK
+...
 
-    Hello, Data Lake Store user!
+Hello, Data Lake Store user!
+```
 
 ## <a name="rename-a-file"></a>Umbenennen einer Datei
 Dieser Vorgang basiert auf dem [hier](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory)definierten WebHDFS-REST-API-Aufruf.
 
 Verwenden Sie zum Umbenennen einer Datei den folgenden cURL-Befehl. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Storage Gen1-Kontonamen.
 
-    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt'
+```console
+curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt'
+```
 
 Die Ausgabe sollte in etwa wie folgender Codeausschnitt aussehen:
 
-    HTTP/1.1 200 OK
-    ...
+```output
+HTTP/1.1 200 OK
+...
 
-    {"boolean":true}
+{"boolean":true}
+```
 
 ## <a name="delete-a-file"></a>Löschen von Dateien
 Dieser Vorgang basiert auf dem [hier](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory)definierten WebHDFS-REST-API-Aufruf.
 
 Verwenden Sie zum Löschen einer Datei den folgenden cURL-Befehl. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Storage Gen1-Kontonamen.
 
-    curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE'
+```console
+curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE'
+```
 
 Folgendes sollte angezeigt werden:
 
-    HTTP/1.1 200 OK
-    ...
+```output
+HTTP/1.1 200 OK
+...
 
-    {"boolean":true}
+{"boolean":true}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Kontoverwaltungsvorgänge für Data Lake Storage Gen1 mit der REST-API](data-lake-store-get-started-rest-api.md)
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Azure Data Lake Storage Gen1 – REST-API-Referenz](https://docs.microsoft.com/rest/api/datalakestore/)
+* [Azure Data Lake Storage Gen1 – REST-API-Referenz](/rest/api/datalakestore/)
 * [Mit Azure Data Lake Storage Gen1 kompatible Open-Source-Big Data-Anwendungen](data-lake-store-compatible-oss-other-applications.md)
-

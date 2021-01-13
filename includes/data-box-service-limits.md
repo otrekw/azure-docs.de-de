@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 05/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 176f35a3e09eb5e8d97e1024f1ab67c13297fb0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66244567"
 ---
  - Wenn Sie mehrere Speicherkonten mit dem Data Box-Dienst nutzen, müssen alle Speicherkonten zur selben Azure-Region gehören.

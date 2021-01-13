@@ -1,9 +1,9 @@
 ---
-title: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Data Lake Store
+title: Tutorial`:` Verwenden einer verwalteten Identität zum Zugreifen auf Azure Data Lake Store – Windows – Azure AD
 description: Dieses Tutorial veranschaulicht die Verwendung einer systemseitig verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Data Lake Store.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/13/2018
-ms.author: markvi
+ms.date: 12/15/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd03ccdab6a7120dc59e42ab62c1d3b2d1e5bc3
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 908fb1ac869ec2b22085af2e07ced6ff64229308
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444681"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592482"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Data Lake Store
 
@@ -34,11 +34,24 @@ In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltet
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+- Kenntnisse im Bereich verwaltete Identitäten. Wenn Sie mit der Funktion für verwaltete Identitäten für Azure-Ressourcen nicht vertraut sind, finden Sie hier eine [Übersicht](overview.md). 
+- Ein Azure-Konto. [Registrieren Sie sich für ein kostenloses Azure-Konto.](https://azure.microsoft.com/free/)
+- Berechtigungen vom Typ „Besitzer“ für den entsprechenden Bereich (Ihr Abonnement oder die Ressourcengruppe), um die erforderlichen Schritte zur Ressourcenerstellung und Rollenverwaltung durchführen zu können. Wenn Sie Unterstützung bei der Rollenzuweisung benötigen, finden Sie weitere Informationen unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](../../role-based-access-control/role-assignments-portal.md).
+- Außerdem benötigen Sie einen virtuellen Windows-Computer, auf dem systemseitig zugewiesene verwaltete Identitäten aktiviert sind.
+  - Wenn Sie einen virtuellen Computer für dieses Tutorial erstellen müssen, können Sie den Artikel [Aktivieren einer vom System zugewiesenen verwalteten Identität beim Erstellen eines virtuellen Computers](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) durcharbeiten.
 
-## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Gewähren des Zugriffs auf Azure Data Lake Store durch Ihre VM
 
-Sie können Ihrem virtuellen Computer nun Zugriff auf Dateien und Ordner in einer Azure Data Lake Store-Instanz gewähren.  Für diesen Schritt können Sie eine vorhandene Data Lake Store-Instanz verwenden oder eine neue erstellen.  Um im Azure-Portal eine neue Data Lake Store-Instanz zu erstellen, führen Sie diesen [Schnellstart zu Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal) durch. Es gibt in der [Dokumentation zu Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) auch Schnellstarts, in denen die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwendet werden.
+
+
+## <a name="enable"></a>Aktivieren
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>Gewähren von Zugriff
+
+Sie können Ihrem virtuellen Computer nun Zugriff auf Dateien und Ordner in einer Azure Data Lake Store-Instanz gewähren.  Für diesen Schritt können Sie eine vorhandene Data Lake Store-Instanz verwenden oder eine neue erstellen.  Um im Azure-Portal eine neue Data Lake Store-Instanz zu erstellen, führen Sie diesen [Schnellstart zu Azure Data Lake Store](../../data-lake-store/data-lake-store-get-started-portal.md) durch. Es gibt in der [Dokumentation zu Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md) auch Schnellstarts, in denen die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwendet werden.
 
 Erstellen Sie in Data Lake Store einen neuen Ordner, und gewähren Sie für die systemseitig zugewiesene Identität des virtuellen Computers die Berechtigungen zum Lesen, Schreiben und Ausführen von Dateien in diesem Ordner:
 
@@ -54,11 +67,11 @@ Erstellen Sie in Data Lake Store einen neuen Ordner, und gewähren Sie für die 
 10. Klicken Sie wie in Schritt 5 auf **Hinzufügen**, geben Sie im Feld **Auswählen** den Namen Ihres virtuellen Computers ein, wählen Sie ihn aus, und klicken Sie dann auf **Auswählen**.
 11. Klicken Sie wie in Schritt 6 auf **Berechtigungen auswählen**, wählen Sie **Lesen**, **Schreiben** und **Ausführen** aus, und fügen Sie diese Berechtigungen **diesem Ordner** als **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** hinzu.  Klicken Sie auf **OK**.  Die Berechtigung sollte erfolgreich hinzugefügt werden.
 
-Ihre systemseitig zugewiesene verwaltete Identität des virtuellen Computers kann nun alle Vorgänge für Dateien in dem erstellten Ordner ausführen.  Weitere Informationen zum Verwalten des Zugriffs auf Data Lake Store finden Sie in diesem Artikel zur [Zugriffssteuerung in Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
+Ihre systemseitig zugewiesene verwaltete Identität des virtuellen Computers kann nun alle Vorgänge für Dateien in dem erstellten Ordner ausführen.  Weitere Informationen zum Verwalten des Zugriffs auf Data Lake Store finden Sie in diesem Artikel zur [Zugriffssteuerung in Data Lake Store](../../data-lake-store/data-lake-store-access-control.md).
 
-## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>Abrufen eines Zugriffstokens mithilfe der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers und Verwenden dieses Zugriffstokens für den Aufruf des Azure Data Lake Store-Dateisystems
+## <a name="access-data"></a>Zugriff auf Daten
 
-Azure Data Lake Store unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit verwalteten Identitäten für Azure-Ressourcen abgerufen wurden, direkt angenommen werden können.  Für die Authentifizierung im Data Lake Store-Dateisystem übermitteln Sie ein Zugriffstoken, das von Azure AD für Ihren Endpunkt des Data Lake Store-Dateisystems ausgestellt wurde, in einem Autorisierungsheader im Format „Bearer <ZUGRIFFSTOKENWERT>“.  Weitere Informationen zur Unterstützung von Data Lake Store für die Azure AD-Authentifizierung finden Sie unter [Authentifizierung bei Data Lake Store mithilfe von Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
+Azure Data Lake Store unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit verwalteten Identitäten für Azure-Ressourcen abgerufen wurden, direkt angenommen werden können.  Für die Authentifizierung im Data Lake Store-Dateisystem übermitteln Sie ein Zugriffstoken, das von Azure AD für Ihren Endpunkt des Data Lake Store-Dateisystems ausgestellt wurde, in einem Autorisierungsheader im Format „Bearer <ZUGRIFFSTOKENWERT>“.  Weitere Informationen zur Unterstützung von Data Lake Store für die Azure AD-Authentifizierung finden Sie unter [Authentifizierung bei Data Lake Store mithilfe von Azure Active Directory](../../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md).
 
 > [!NOTE]
 > Die Client-SDKs für das Data Lake Store-Dateisystem unterstützen noch keine verwalteten Identitäten für Azure-Ressourcen.  Dieses Tutorial wird aktualisiert, wenn die Unterstützung im SDK hinzugefügt wird.
@@ -174,9 +187,15 @@ In diesem Tutorial authentifizieren Sie sich bei der REST-API für das Data Lake
 
 Mithilfe anderer APIs für das Data Lake Store-Dateisystem können Sie Dateien anfügen und herunterladen und viele andere Aufgaben durchführen.
 
+
+## <a name="disable"></a>Disable
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie gelernt, wie Sie eine systemseitig zugewiesene verwaltete Identität für einen virtuellen Windows-Computer verwenden, um auf eine Azure Data Lake Store-Instanz zuzugreifen. Weitere Informationen zu Azure Data Lake Store finden Sie hier:
 
 > [!div class="nextstepaction"]
->[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)
+>[Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md)

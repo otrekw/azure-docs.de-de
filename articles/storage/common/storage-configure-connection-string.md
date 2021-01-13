@@ -1,36 +1,33 @@
 ---
-title: Konfigurieren einer Verbindungszeichenfolge für Azure Storage
+title: Konfigurieren einer Verbindungszeichenfolge
+titleSuffix: Azure Storage
 description: Konfigurieren Sie eine Verbindungszeichenfolge für ein Azure Storage-Konto. Eine Verbindungszeichenfolge enthält die erforderlichen Informationen zum Autorisieren des Zugriffs auf ein Speicherkonto aus Ihrer Anwendung zur Laufzeit mithilfe der Autorisierung mit einem gemeinsam verwendeten Schlüssel.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 06/20/2019
+ms.topic: how-to
+ms.date: 10/14/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d1106865b3a2ea3164090896c5b90ab08f996f3d
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640492"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783877"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Konfigurieren von Azure Storage-Verbindungszeichenfolgen
 
 Eine Verbindungszeichenfolge enthält die erforderlichen Autorisierungsinformationen für den Zugriff auf Daten in einem Azure Storage-Konto aus Ihrer Anwendung zur Laufzeit mithilfe der Autorisierung mit gemeinsam verwendetem Schlüssel. Sie können Verbindungszeichenfolgen konfigurieren, um Folgendes zu tun:
 
-* Verbinden mit dem Azure-Speicheremulator
+* Verbinden mit dem Azurite-Speicheremulator
 * Zugreifen auf ein Speicherkonto in Azure
 * Zugreifen auf angegebene Ressourcen in Azure über eine Shared Access Signature (SAS)
 
-[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
+Informationen zum Anzeigen der Zugriffsschlüssel für Ihr Konto und zum Kopieren einer Verbindungszeichenfolge finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](storage-account-keys-manage.md).
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
-
-## <a name="view-and-copy-a-connection-string"></a>Anzeigen und Kopieren einer Verbindungszeichenfolge
-
-[!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
 
 ## <a name="store-a-connection-string"></a>Speichern einer Verbindungszeichenfolge
 
@@ -38,17 +35,17 @@ Die Anwendung muss zur Laufzeit auf die Verbindungszeichenfolge zugreifen, um be
 
 * Sie können die Verbindungszeichenfolge in einer Umgebungsvariable speichern.
 * Eine Anwendung, die auf dem Desktop oder auf einem Gerät ausgeführt wird, kann die Verbindungszeichenfolge in der Datei **app.config** oder **web.config** speichern. Fügen Sie die Verbindungszeichenfolge dem Abschnitt **AppSettings** in diesen Dateien hinzu.
-* Eine Anwendung, die in einem Clouddienst in Azure ausgeführt wird, kann die Verbindungszeichenfolge zumeist im [Azure-Dienstkonfigurationsschema (CSCFG-Datei)](https://msdn.microsoft.com/library/ee758710.aspx) speichern. Fügen Sie die Verbindungszeichenfolge zum Abschnitt **ConfigurationSettings** der Dienstkonfigurationsdatei hinzu.
+* Eine Anwendung, die in einem Clouddienst in Azure ausgeführt wird, kann die Verbindungszeichenfolge zumeist im [Azure-Dienstkonfigurationsschema (CSCFG-Datei)](/previous-versions/azure/reference/ee758710(v=azure.100)) speichern. Fügen Sie die Verbindungszeichenfolge zum Abschnitt **ConfigurationSettings** der Dienstkonfigurationsdatei hinzu.
 
-Das Speichern der Verbindungszeichenfolge in der Konfigurationsdatei erleichtert die Aktualisierung der Verbindungszeichenfolge, um zwischen dem Speicheremulator und einem Azure-Speicherkonto in der Cloud zu wechseln. Sie müssen die Verbindungszeichenfolge nur so bearbeiten, dass sie auf Ihre Zielumgebung verweist.
+Das Speichern der Verbindungszeichenfolge in der Konfigurationsdatei erleichtert die Aktualisierung der Verbindungszeichenfolge, um zwischen dem [Azurite-Speicheremulator](../common/storage-use-azurite.md) und einem Azure-Speicherkonto in der Cloud zu wechseln. Sie müssen die Verbindungszeichenfolge nur so bearbeiten, dass sie auf Ihre Zielumgebung verweist.
 
 Über den [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) können Sie zur Laufzeit auf die Verbindungszeichenfolge zugreifen, unabhängig davon, wo Ihre Anwendung ausgeführt wird.
 
-## <a name="configure-a-connection-string-for-the-storage-emulator"></a>Konfigurieren einer Verbindungszeichenfolge für den Speicheremulator
+## <a name="configure-a-connection-string-for-azurite"></a>Konfigurieren einer Verbindungszeichenfolge für Azurite
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-Weitere Informationen zum Speicheremulator finden Sie unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](storage-use-emulator.md).
+Weitere Informationen über Azurite finden Sie unter [Verwenden des Azurite-Emulators für lokale Azure Storage-Entwicklung](../common/storage-use-azurite.md).
 
 ## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Konfigurieren einer Verbindungszeichenfolge für ein Azure-Speicherkonto
 
@@ -60,10 +57,10 @@ Die Verbindungszeichenfolge kann beispielsweise wie folgt aussehen:
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-Obwohl Azure Storage sowohl HTTP als auch HTTPS in einer Verbindungszeichenfolge unterstützt, wird die *Verwendung von HTTPS ausdrücklich empfohlen*.
+Obwohl Azure Storage sowohl HTTP als auch HTTPS in einer Verbindungszeichenfolge unterstützt, wird die *Verwendung von HTTPS ausdrücklich empfohlen* .
 
 > [!TIP]
-> Sie finden die Verbindungszeichenfolgen Ihres Speicherkontos im [Azure-Portal](https://portal.azure.com). Navigieren Sie auf dem Menüblatt Ihres Speicherkontos zu **EINSTELLUNGEN** > **Zugriffsschlüssel**, um sowohl für den primären als auch sekundären Zugriffsschlüssel Verbindungszeichenfolgen anzuzeigen.
+> Sie finden die Verbindungszeichenfolgen Ihres Speicherkontos im [Azure-Portal](https://portal.azure.com). Navigieren Sie auf dem Menüblatt Ihres Speicherkontos zu **EINSTELLUNGEN** > **Zugriffsschlüssel** , um sowohl für den primären als auch sekundären Zugriffsschlüssel Verbindungszeichenfolgen anzuzeigen.
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Erstellen einer Verbindungszeichenfolge mit einer Shared Access Signature
@@ -113,9 +110,10 @@ Die Endpunktwerte in einer Verbindungszeichenfolge werden verwendet, um die Anfo
 
 Wenn Sie einen Speicherendpunkt einer benutzerdefinierten Domäne zugeordnet haben, und diesen Endpunkt in einer Verbindungszeichenfolge auslassen, können Sie nicht anhand dieser Verbindungszeichenfolge von Ihrem Code aus auf die Daten in diesem Dienst zugreifen.
 
+Weitere Informationen zum Konfigurieren einer benutzerdefinierten Domäne für Azure Storage finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](../blobs/storage-custom-domain-name.md).
+
 > [!IMPORTANT]
-> Dienstendpunktwerte in den Verbindungszeichenfolgen müssen wohlgeformte URIs einschließlich `https://` (empfohlen) oder `http://` sein. Da Azure Storage noch nicht HTTPS für benutzerdefinierte Domänen unterstützt, *müssen* Sie `http://` für jeden Endpunkt-URI angeben, der auf eine benutzerdefinierte Domäne verweist.
->
+> Dienstendpunktwerte in den Verbindungszeichenfolgen müssen wohlgeformte URIs einschließlich `https://` (empfohlen) oder `http://` sein.
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Erstellen einer Verbindungszeichenfolge mit einem Endpunktsuffix
 
@@ -143,6 +141,6 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](storage-use-emulator.md)
+* [Verwenden des Azurite-Emulators für die lokale Azure Storage-Entwicklung](../common/storage-use-azurite.md)
 * [Azure Storage-Explorer](storage-explorers.md)
 * [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md)

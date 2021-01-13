@@ -1,31 +1,31 @@
 ---
 title: 'Linear Regression: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit dem Modul „Linear Regression“ (Linear Regression) in Azure Machine Learning Service ein lineares Regressionsmodell für den Einsatz in einem Experiment erstellen können.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mit dem Modul Linear Regression in Azure Machine Learning ein Modell für lineare Regression für den Einsatz in einer Pipeline erstellen können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 506f37a2e01f428ccadc0368bd2efb6b58c9106c
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 04/22/2020
+ms.openlocfilehash: 809b1be4f9f12e1963ff5caeaacd109c84db154f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128688"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323656"
 ---
 # <a name="linear-regression-module"></a>Modul „Linear Regression“
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
-Verwenden Sie dieses Modul, um ein lineares Regressionsmodell für den Einsatz in einem Experiment zu erstellen.  Bei der linearen Regression wird versucht, eine lineare Beziehung zwischen einer oder mehreren unabhängigen Variablen und einem numerischen Ergebnis oder einer abhängigen Variablen herzustellen. 
+Verwenden Sie dieses Modul, um ein lineares Regressionsmodell für den Einsatz in einer Pipeline zu erstellen.  Bei der linearen Regression wird versucht, eine lineare Beziehung zwischen einer oder mehreren unabhängigen Variablen und einem numerischen Ergebnis oder einer abhängigen Variablen herzustellen. 
 
 Mit diesem Modul können Sie eine lineare Regressionsmethode definieren und anschließend ein Modell mit einem bezeichneten Dataset trainieren. Das trainierte Modell kann danach verwendet werden, um Vorhersagen zu treffen.
 
 ## <a name="about-linear-regression"></a>Informationen zur linearen Regression
 
-Lineare Regression ist eine gängige statistische Methode, die beim maschinellen Lernen eingesetzt und um viele neue Methoden zum Anpassen der Linie und Messen von Fehlern erweitert wurde. Im einfachsten Sinne ist Regression die Vorhersage eines numerischen Zielwerts. Lineare Regression ist immer noch eine gute Wahl, wenn Sie ein einfaches Modell für eine einfache prädiktive Aufgabe benötigen. Lineare Regression funktioniert auch gut bei hochdimensionalen, spärlichen Datasets mit wenig Komplexität.
+Lineare Regression ist eine gängige statistische Methode, die beim maschinellen Lernen eingesetzt und um viele neue Methoden zum Anpassen der Linie und Messen von Fehlern erweitert wurde. Einfach ausgedrückt ist die Regression die Vorhersage eines numerischen Zielwerts. Lineare Regression ist immer noch eine gute Wahl, wenn Sie ein einfaches Modell für eine einfache prädiktive Aufgabe benötigen. Lineare Regression funktioniert auch gut bei hochdimensionalen, spärlichen Datasets mit wenig Komplexität.
 
 Neben der linearen Regression unterstützt Azure Machine Learning eine Vielzahl von Regressionsmodellen. Allerdings kann der Begriff „Regression“ lose interpretiert werden, und einige Arten von Regression, die in anderen Tools geboten werden, werden nicht unterstützt.
 
@@ -51,27 +51,25 @@ Seit Jahren entwickeln Statistiker immer ausgereiftere Methoden für Regression.
 
 Dieses Modul unterstützt zwei Methoden zur Anpassung eines Regressionsmodells mit unterschiedlichen Optionen:
 
-+ [Erstellen eines Regressionsmodells mithilfe des Onlinegradientenabstiegs](#bkmk_GradientDescent)
++ [Anpassen eines Regressionsmodells mithilfe der Methode der kleinsten Quadrate](#create-a-regression-model-using-ordinary-least-squares)
+
+    Für kleine Datasets empfiehlt sich die Methode der kleinsten Quadrate. Diese sollte ähnliche Ergebnisse wie Excel liefern.
+    
++ [Erstellen eines Regressionsmodells mithilfe des Onlinegradientenabstiegs](#create-a-regression-model-using-online-gradient-descent)
 
     Der Gradientenabstieg ist eine bessere Verlustfunktion für Modelle, die komplexer sind oder angesichts der Anzahl von Variablen zu wenig Trainingsdaten haben.
 
+### <a name="create-a-regression-model-using-ordinary-least-squares"></a>Erstellen eines Regressionsmodells mithilfe der Methode der kleinsten Quadrate
 
+1. Fügen Sie im Designer Ihrer Pipeline das Modul **Linear Regression Model** hinzu.
 
-+ [Anpassen eines Regressionsmodells mithilfe der Methode der kleinsten Quadrate](#bkmk_OrdinaryLeastSquares)
-
-    Für kleine Datasets empfiehlt sich die Methode der kleinsten Quadrate. Diese sollte ähnliche Ergebnisse wie Excel liefern.
-
-## <a name="bkmk_OrdinaryLeastSquares"></a> Erstellen eines Regressionsmodells mithilfe der Methode der kleinsten Quadrate
-
-1. Fügen Sie auf der Benutzeroberfläche das Modul **Linear Regression Model** (Lineares Regressionsmodell) Ihrem Experiment hinzu.
-
-    Sie finden dieses Modul in der Kategorie **Machine Learning**. Erweitern Sie **Initialize Model** (Modell initialisieren), dann **Regression**, und ziehen Sie das Modul **Linear Regression Model** (Lineares Regressionsmodell) in Ihr Experiment.
+    Sie finden dieses Modul in der Kategorie **Machine Learning**. Erweitern Sie **Modell initialisieren** , dann **Regression** , und ziehen Sie das Modul **Linear Regression Model** in Ihre Pipeline.
 
 2. Wählen Sie im Bereich **Properties** (Eigenschaften) in der Dropdownliste **Solution method** (Lösungsmethode) **Ordinary Least Squares** (Methode der kleinsten Quadrate) aus. Diese Option gibt die Berechnungsmethode an, mit der die Regressionslinie ermittelt wird.
 
 3. Geben Sie unter **L2 regularization weight** (L2-Regularisierungsgewichtung) den Wert ein, der zur Gewichtung der L2-Regularisierung verwendet werden soll. Wir empfehlen, einen Wert ungleich 0 zu verwenden, um eine Überpassung zu vermeiden.
 
-     Wenn Sie mehr darüber erfahren möchten, wie sich die Regularisierung auf die Modellanpassung auswirkt, lesen Sie diesen Artikel: [L1- und L2-Regularisierung für Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)
+     Wenn Sie mehr darüber erfahren möchten, wie sich die Regularisierung auf die Modellanpassung auswirkt, lesen Sie diesen Artikel: [L1- und L2-Regularisierung für Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)
 
 4. Aktivieren Sie die Option **Include intercept term** (Term des Schnittpunkts einbeziehen), wenn Sie den Term für den Schnittpunkt anzeigen möchten.
 
@@ -79,33 +77,34 @@ Dieses Modul unterstützt zwei Methoden zur Anpassung eines Regressionsmodells m
 
 5. Für **Random number seed** (zufälliger Startwert) können Sie optional einen Wert eingeben, um für den vom Modell verwendeten Zufallszahlengenerator einen Startwert festzulegen.
 
-    Die Verwendung eines Startwerts ist nützlich, wenn Sie die gleichen Ergebnisse bei verschiedenen Ausführungen desselben Experiments beibehalten möchten. Andernfalls wird standardmäßig ein von der Systemuhr stammender Wert verwendet.
+    Die Verwendung eines Startwerts ist nützlich, wenn Sie die gleichen Ergebnisse bei verschiedenen Ausführungen derselben Pipeline beibehalten möchten. Andernfalls wird standardmäßig ein von der Systemuhr stammender Wert verwendet.
 
 
-7. Fügen Sie das Modul [Train Model](./train-model.md) (Trainieren des Modells) Ihrem Experiment hinzu, und stellen Sie eine Verbindung mit einem bezeichneten Dataset her.
+7. Fügen Sie das Modul [Train Model](./train-model.md) Ihrer Pipeline hinzu, und stellen Sie eine Verbindung mit einem bezeichneten Dataset her.
 
-8. Führen Sie das Experiment aus.
+8. Übermitteln Sie die Pipeline.
 
-## <a name="results-for-ordinary-least-squares-model"></a>Ergebnisse für das Modell der kleinsten Quadrate
+### <a name="results-for-ordinary-least-squares-model"></a>Ergebnisse für das Modell der kleinsten Quadrate
 
 Nach Abschluss des Trainings:
 
-+ Um die Modellparameter anzuzeigen, klicken Sie mit der rechten Maustaste auf die Trainingsausgabe, und wählen Sie **Visualize** (Visualisieren) aus.
 
 + Um Vorhersagen zu treffen, verbinden Sie das trainierte Modell mit dem Modul [Score Model](./score-model.md) (Bewerten des Modells) sowie mit einem Dataset mit neuen Werten. 
 
 
-## <a name="bkmk_GradientDescent"></a> Erstellen eines Regressionsmodells mithilfe des Onlinegradientenabstiegs
+### <a name="create-a-regression-model-using-online-gradient-descent"></a>Erstellen eines Regressionsmodells mithilfe des Onlinegradientenabstiegs
 
-1. Fügen Sie auf der Benutzeroberfläche das Modul **Linear Regression Model** (Lineares Regressionsmodell) Ihrem Experiment hinzu.
+1. Fügen Sie im Designer Ihrer Pipeline das Modul **Linear Regression Model** hinzu.
 
-    Sie finden dieses Modul in der Kategorie **Machine Learning**. Erweitern Sie **Initialize Model** (Modell initialisieren), dann **Regression**, und ziehen Sie das Modul **Linear Regression Model** (Lineares Regressionsmodell) in Ihr Experiment.
+    Sie finden dieses Modul in der Kategorie **Machine Learning**. Erweitern Sie **Modell initialisieren** , dann **Regression** , und ziehen Sie das Modul **Linear Regression Model** in Ihre Pipeline.
 
 2. Wählen Sie im Bereich **Properties** (Eigenschaften) in der Dropdown-Liste **Solution method** (Lösungsmethode) **Online Gradient Descent** (Onlinegradientenabstieg) als Berechnungsmethode zum Auffinden der Regressionslinie.
 
 3. Geben Sie für **Create trainer mode** (Trainermodus erstellen) an, ob Sie das Modell mit einem vordefinierten Parametersatz trainieren möchten oder ob Sie es mithilfe eines Parameter-Sweeps optimieren möchten.
 
     + **Single Parameter** (Einzelner Parameter): Wenn Sie wissen, wie Sie das Netzwerk der linearen Regression konfigurieren möchten, können Sie einen bestimmten Satz von Werten als Argumente angeben.
+    
+    + **Parameter Range** (Parameterbereich): Wählen Sie diese Option, wenn Sie nicht sicher sind, welche Parameter am besten geeignet sind, und einen Parametersweep ausführen möchten. Wählen Sie einen Wertebereich aus, über den iteriert werden soll. Anschließend iteriert das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) über alle möglichen Kombinationen der von Ihnen angegebenen Einstellungen, um die Hyperparameter zur Erzielung der optimalen Ergebnisse zu bestimmen.  
 
    
 4. Geben Sie für **Learning rate** (Lernrate) die Anfangslernrate für die stochastische Gradientenabstiegsoptimierung an.
@@ -120,21 +119,31 @@ Nach Abschluss des Trainings:
 
 7. Geben Sie unter **L2 regularization weight** (L2-Regularisierungsgewichtung) den Wert ein, der zur Gewichtung der L2-Regularisierung verwendet werden soll. Wir empfehlen, einen Wert ungleich 0 zu verwenden, um eine Überpassung zu vermeiden.
 
-    Wenn Sie mehr darüber erfahren möchten, wie sich die Regularisierung auf die Modellanpassung auswirkt, lesen Sie diesen Artikel: [L1- und L2-Regularisierung für Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)
+    Wenn Sie mehr darüber erfahren möchten, wie sich die Regularisierung auf die Modellanpassung auswirkt, lesen Sie diesen Artikel: [L1- und L2-Regularisierung für Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)
 
 
 9. Aktivieren Sie die Option **Decrease learning rate** (Lernrate verringern), wenn Sie möchten, dass die Lernrate im weiteren Verlauf der Iterationen abnimmt.  
 
-10. Für **Random number seed** (zufälliger Startwert) können Sie optional einen Wert eingeben, um für den vom Modell verwendeten Zufallszahlengenerator einen Startwert festzulegen. Die Verwendung eines Startwerts ist nützlich, wenn Sie die gleichen Ergebnisse bei verschiedenen Ausführungen desselben Experiments beibehalten möchten.
+10. Für **Random number seed** (zufälliger Startwert) können Sie optional einen Wert eingeben, um für den vom Modell verwendeten Zufallszahlengenerator einen Startwert festzulegen. Die Verwendung eines Startwerts ist nützlich, wenn Sie die gleichen Ergebnisse bei verschiedenen Ausführungen derselben Pipeline beibehalten möchten.
 
 
-12. Fügen Sie ein bezeichnetes Dataset und eines der Trainingsmodule hinzu.
+12. Trainieren des Modells:
 
-    Wenn Sie keinen Parameter-Sweep einsetzen, verwenden Sie das Modul [Train Model](train-model.md) (Trainieren des Moduls).
+    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie ein mit Tags versehenes Dataset und das Modul [Train Model](train-model.md) (Modell trainieren) verbinden.  
+  
+    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Parameter Range** (Parameterbereich) festlegen, verbinden Sie ein markiertes Dataset, und trainieren Sie das Modell mithilfe des Moduls [Tune Model Hyperparameters](tune-model-hyperparameters.md).  
+  
+    > [!NOTE]
+    > 
+    > Wenn Sie einen Parameterbereich an das Modul [Train Model](train-model.md) übergeben, wird nur der Standardwert in der Liste der Einzelparameter verwendet.  
+    > 
+    > Wenn Sie einen einzelnen Satz von Parameterwerten an das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) übergeben und ein Bereich von Einstellungen für jeden Parameter erwartet wird, werden die Werte ignoriert und stattdessen die Standardwerte für den Learner verwendet.  
+    > 
+    > Wenn Sie die Option **Parameter Range** (Parameterbereich) auswählen und einen einzelnen Wert für einen beliebigen Parameter eingeben, wird dieser angegebene einzelne Wert während des gesamten Löschvorgangs verwendet, auch wenn andere Parameter in einem Wertebereich geändert werden.
 
-13. Führen Sie das Experiment aus.
+13. Übermitteln Sie die Pipeline.
 
-## <a name="results-for-online-gradient-descent"></a>Ergebnisse für den Onlinegradientenabstieg
+### <a name="results-for-online-gradient-descent"></a>Ergebnisse für den Onlinegradientenabstieg
 
 Nach Abschluss des Trainings:
 
@@ -143,4 +152,4 @@ Nach Abschluss des Trainings:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an.

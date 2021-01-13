@@ -1,25 +1,17 @@
 ---
-title: Erstellen und Hochladen eines OpenBSD-VM-Images in Azure | Microsoft-Dokumentation
+title: Erstellen und Hochladen eines OpenBSD-Images
 description: Erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD), die das OpenBSD-Betriebssystem enthält, erstellen und hochladen, um einen virtuellen Azure-Computer über Azure CLI zu erstellen.
-services: virtual-machines-linux
-documentationcenter: ''
-author: thomas1206
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 1ef30f32-61c1-4ba8-9542-801d7b18e9bf
+author: gbowerman
 ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.topic: how-to
 ms.date: 05/24/2017
-ms.author: huishao
-ms.openlocfilehash: 53acab4128d01c92c54c8c01a5e611d313e617d4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: guybo
+ms.openlocfilehash: 08b18dae6cec3f30ba9ecc69a3537eec428cc9ee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083560"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87372721"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Erstellen und Hochladen eines OpenBSD-Datenträgerimages in Azure
 In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit dem OpenBSD-Betriebssystem erstellen und hochladen. Nach dem Hochladen können Sie sie als eigenes Image verwenden, um über Azure CLI einen virtuellen Computer (Virtual Machine, VM) in Azure zu erstellen.
@@ -30,7 +22,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Elemente 
 
 * **Azure-Abonnement**: Falls Sie noch nicht über ein Konto verfügen, können Sie in wenigen Minuten eines erstellen. MSDN-Abonnenten finden weitere Informationen unter [Monatliche Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Alle anderen Benutzer können sich unter [Erstellen eines kostenlosen Testkontos](https://azure.microsoft.com/pricing/free-trial/)informieren.  
 * **Azure CLI**: Überprüfen Sie, ob Sie die neueste Version der [Azure CLI](/cli/azure/install-azure-cli) installiert haben und mit [az login](/cli/azure/reference-index) in Ihrem Azure-Konto angemeldet sind.
-* **In einer VHD-Datei installiertes OpenBSD-Betriebssystem:** Auf einer virtuellen Festplatte muss ein unterstütztes OpenBSD-Betriebssystem ([amd64, Version 6.2](https://ftp.openbsd.org/pub/OpenBSD/6.2/amd64/)) installiert sein. Zum Erstellen von VHD-Dateien stehen mehrere verschiedene Tools bereit. Sie können beispielsweise eine Virtualisierungslösung wie Hyper-V verwenden, um die VHD-Datei zu erstellen und das Betriebssystem zu installieren. Eine Anleitung zum Installieren und Verwenden von Hyper-V finden Sie unter [Installieren von Hyper-V und Erstellen eines virtuellen Computers](https://technet.microsoft.com/library/hh846766.aspx).
+* **In einer VHD-Datei installiertes OpenBSD-Betriebssystem:** Auf einer virtuellen Festplatte muss ein unterstütztes OpenBSD-Betriebssystem ([amd64 Version 6.6](https://ftp.openbsd.org/pub/OpenBSD/6.6/amd64/)) installiert sein. Zum Erstellen von VHD-Dateien stehen mehrere verschiedene Tools bereit. Sie können beispielsweise eine Virtualisierungslösung wie Hyper-V verwenden, um die VHD-Datei zu erstellen und das Betriebssystem zu installieren. Eine Anleitung zum Installieren und Verwenden von Hyper-V finden Sie unter [Installieren von Hyper-V und Erstellen eines virtuellen Computers](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 
 ## <a name="prepare-openbsd-image-for-azure"></a>Vorbereiten des OpenBSD-Images für Azure
@@ -95,7 +87,7 @@ Nun können Sie Ihren virtuellen Computer herunterfahren.
 
 
 ## <a name="prepare-the-vhd"></a>Vorbereiten der VHD
-Das VHDX-Format wird in Azure noch nicht unterstützt, dafür jedoch **virtuelle Festplatten mit fester Größe**. Sie können den Datenträger mit Hyper-V-Manager oder dem Powershell-Cmdlet [convert-vhd](https://technet.microsoft.com/itpro/powershell/windows/hyper-v/convert-vhd) in das feste VHD-Format konvertieren. Im Folgenden finden Sie ein Beispiel.
+Das VHDX-Format wird in Azure noch nicht unterstützt, dafür jedoch **virtuelle Festplatten mit fester Größe**. Sie können den Datenträger mit Hyper-V-Manager oder dem Powershell-Cmdlet [convert-vhd](/powershell/module/hyper-v/convert-vhd?view=win10-ps) in das feste VHD-Format konvertieren. Im Folgenden finden Sie ein Beispiel.
 
 ```powershell
 Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed

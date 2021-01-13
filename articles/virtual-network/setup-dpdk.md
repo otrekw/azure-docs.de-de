@@ -1,6 +1,6 @@
 ---
 title: DPDK auf einer Linux-VM in Azure | Microsoft-Dokumentation
-description: Informationen zum Einrichten des DPDK auf einer Linux-VM
+description: Lernen Sie die Vorteile des Data Plane Development Kit (DPDK) kennen und erfahren Sie, wie das DPDK auf einem virtuellen Computer unter Linux eingerichtet wird.
 services: virtual-network
 documentationcenter: na
 author: laxmanrb
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/27/2018
+ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba7c2a37d58f20ac4ff1f49a46a406d1b1f70106
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731599"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704417"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Einrichten des DPDK auf einem virtuellen Linux-Computer
 
@@ -38,19 +38,19 @@ DPDK kann auf Azure-VMs ausgeführt werden, die mehrere Betriebssystemverteilung
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-Die folgenden Distributionen werden aus dem Azure-Katalog unterstützt:
+Die folgenden Distributionen aus dem Azure Marketplace werden unterstützt:
 
-| Linux-Betriebssystem     | Kernelversion        |
-|--------------|----------------       |
-| Ubuntu 16.04 | 4.15.0-1015-azure     |
-| Ubuntu 18.04 | 4.15.0-1015-azure     |
-| SLES 15      | 4.12.14-5.5-azure     |
-| RHEL 7.5     | 3.10.0-862.9.1.el7    |
-| CentOS 7.5   | 3.10.0-862.3.3.el7    |
+| Linux-Betriebssystem     | Kernelversion               | 
+|--------------|---------------------------   |
+| Ubuntu 16.04 | 4.15.0-1014-azure+           | 
+| Ubuntu 18.04 | 4.15.0-1014-azure+           |
+| SLES 15 SP1  | 4.12.14-8.19-azure+          | 
+| RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64+  | 
+| CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64+  | 
 
 **Benutzerdefinierte Kernelunterstützung**
 
-Nicht aufgeführte Linux-Kernelversionen finden Sie unter [Patches zum Erstellen eines Linux-Kernels für Azure](https://github.com/microsoft/azure-linux-kernel). Weitere Informationen erhalten Sie auch bei [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com). 
+Nicht aufgeführte Linux-Kernelversionen finden Sie unter [Patches zum Erstellen eines Linux-Kernels für Azure](https://github.com/microsoft/azure-linux-kernel). Weitere Informationen erhalten Sie auch bei [aznetdpdk@microsoft.com](mailto:aznetdpdk@microsoft.com). 
 
 ## <a name="region-support"></a>Unterstützung für Regionen
 
@@ -73,6 +73,7 @@ sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev lib
 ### <a name="ubuntu-1804"></a>Ubuntu 18.04
 
 ```bash
+sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
 sudo apt-get update
 sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
 ```
@@ -85,7 +86,7 @@ sudo dracut --add-drivers "mlx4_en mlx4_ib mlx5_ib" -f
 yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel libmnl-devel
 ```
 
-### <a name="sles-15"></a>SLES 15
+### <a name="sles-15-sp1"></a>SLES 15 SP1
 
 **Azure-Kernel**
 
@@ -107,7 +108,7 @@ zypper \
 
 ## <a name="set-up-the-virtual-machine-environment-once"></a>Einmaliges Einrichten der VM-Umgebung
 
-1. [Laden Sie das aktuellste DPDK herunter.](https://core.dpdk.org/download) Azure erfordert Version 18.02 oder höher.
+1. [Laden Sie das aktuellste DPDK herunter.](https://core.dpdk.org/download) Für Azure ist Version 18.11 LTS oder 19.11 LTS erforderlich.
 2. Erstellen Sie die Standardkonfiguration mit `make config T=x86_64-native-linuxapp-gcc`.
 3. Aktivieren Sie Mellanox PMDs in der generierten Konfiguration mit `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config`.
 4. Kompilieren Sie mit `make`.
@@ -119,32 +120,30 @@ Führen Sie nach einem Neustart die folgenden Befehle einmalig aus:
 
 1. Umfangreiche Seiten
 
-   * Konfigurieren Sie umfangreiche Seiten, indem Sie den folgenden Befehl einmal für alle NUMA-Knoten ausführen:
+   * Konfigurieren Sie umfangreiche Seiten, indem Sie den folgenden Befehl einmal für jeden NUMA-Knoten ausführen:
 
      ```bash
-     echo 1024 | sudo tee
-     /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
+     echo 1024 | sudo tee /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
    * Erstellen Sie ein Verzeichnis für die Bereitstellung mit `mkdir /mnt/huge`.
    * Stellen Sie umfangreiche Seiten mit `mount -t hugetlbfs nodev /mnt/huge` bereit.
    * Vergewissern Sie sich mit `grep Huge /proc/meminfo`, dass umfangreiche Seiten reserviert sind.
 
-     > [!NOTE]
-     > Sie können die GRUB-Datei so ändern, dass umfangreiche Seiten beim Starten reserviert werden. Befolgen Sie dazu die [Anweisungen](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) für DPDK. Die Anweisungen befinden sich unten auf der Seite. Wenn Sie eine Linux-VM in Azure verwenden, ändern Sie Dateien stattdessen unter **/etc/config/grub.d**, um umfangreiche Seiten über Neustarts hinweg zu reservieren.
+     > [HINWEIS] Sie können die GRUB-Datei so ändern, dass umfangreiche Seiten beim Starten reserviert werden. Befolgen Sie dazu die [Anweisungen](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) für DPDK. Die Anweisungen befinden sich unten auf der Seite. Wenn Sie eine Linux-VM in Azure verwenden, ändern Sie Dateien stattdessen unter **/etc/config/grub.d**, um umfangreiche Seiten über Neustarts hinweg zu reservieren.
 
-2. MAC- und IP-Adressen: Verwenden Sie `ifconfig –a`, um die MAC- und IP-Adresse der Netzwerkschnittstellen anzuzeigen. Die *VF*-Netzwerkschnittstelle und die *NETVSC*-Netzwerkschnittstelle haben dieselbe MAC-Adresse, allerdings hat nur die *NETVSC*-Netzwerkschnittstelle eine IP-Adresse. VF-Schnittstellen werden als untergeordnete Schnittstellen von NETVSC-Schnittstellen ausgeführt.
+2. MAC- und IP-Adressen: Verwenden Sie `ifconfig –a`, um die MAC- und IP-Adresse der Netzwerkschnittstellen anzuzeigen. Die *VF*-Netzwerkschnittstelle und die *NETVSC*-Netzwerkschnittstelle haben dieselbe MAC-Adresse, allerdings hat nur die *NETVSC*-Netzwerkschnittstelle eine IP-Adresse. *VF*-Schnittstellen werden als untergeordnete Schnittstellen von *NETVSC*-Schnittstellen ausgeführt.
 
 3. PCI-Adressen
 
    * Finden Sie mit `ethtool -i <vf interface name>` heraus, welche PCI-Adresse Sie für *VF* verwenden können.
-   * Wenn für *eth0* der beschleunigte Netzwerkbetrieb aktiviert ist, vergewissern Sie sich, dass testpmd nicht versehentlich das VF-PCI-Gerät für *eth0* übernimmt. Wenn die DPDK-Anwendung versehentlich die Verwaltungsnetzwerkschnittstelle übernimmt und dadurch die SSH-Verbindung unterbrochen wird, beenden Sie die DPDK-Anwendung über die serielle Konsole. Sie können die serielle Konsole auch zum Beenden oder Starten des virtuellen Computers verwenden.
+   * Wenn für *eth0* der beschleunigte Netzwerkbetrieb aktiviert ist, vergewissern Sie sich, dass testpmd nicht versehentlich das *VF*-PCI-Gerät für *eth0* übernimmt. Wenn die DPDK-Anwendung versehentlich die Verwaltungsnetzwerkschnittstelle übernimmt und dadurch die SSH-Verbindung unterbrochen wird, beenden Sie die DPDK-Anwendung über die serielle Konsole. Sie können die serielle Konsole auch zum Beenden oder Starten des virtuellen Computers verwenden.
 
 4. Laden Sie bei jedem Neustart *ibuverbs* mit `modprobe -a ib_uverbs`. Nur für SLES 15: Laden Sie auch *mlx4_ib* mit `modprobe -a mlx4_ib`.
 
 ## <a name="failsafe-pmd"></a>Ausfallsicherer PMD
 
-DPDK-Anwendungen müssen über den ausfallsicheren PMD ausgeführt werden, der in Azure verfügbar gemacht wird. Wenn die Anwendung direkt über den VF-PMD ausgeführt wird, empfängt sie nicht **alle** Pakete, die an die VM gerichtet sind, da einige Pakete über die synthetische Schnittstelle angezeigt werden. 
+DPDK-Anwendungen müssen über den ausfallsicheren PMD ausgeführt werden, der in Azure verfügbar gemacht wird. Wenn die Anwendung direkt über den *VF*-PMD ausgeführt wird, empfängt sie nicht **alle** Pakete, die an die VM gerichtet sind, da einige Pakete über die synthetische Schnittstelle angezeigt werden. 
 
 Wenn Sie eine DPDK-Anwendung über den Failsafe-PMD ausführen, ist garantiert, dass die Anwendung alle Pakete empfängt, die für sie bestimmt sind. Es wird außerdem sichergestellt, dass die Anwendung weiterhin im DPDK-Modus ausgeführt wird, auch wenn VF während der Wartung des Hosts aufgehoben wird. Weitere Informationen zu ausfallsicherem PMD finden Sie unter [Fail-safe poll mode driver library](https://doc.dpdk.org/guides/nics/fail_safe.html) (Ausfallsicherheits-PMD-Bibliothek).
 
@@ -252,7 +251,7 @@ Mit den folgenden Befehlen werden Pakete in einem regelmäßigen Sekundentakt ge
 
 Wenn Sie die vorherigen Befehle auf einer VM ausführen, ändern Sie *IP_SRC_ADDR* und *IP_DST_ADDR* in `app/test-pmd/txonly.c` vor dem Kompilieren entsprechend der tatsächlichen IP-Adresse der VM. Andernfalls werden die Pakete gelöscht, bevor sie die Weiterleitung erreichen. Es ist nicht möglich, dass ein dritter Computer den weitergeleiteten Datenverkehr empfängt, da die *testpmd*-Weiterleitung die Adressen der Schicht 3 nicht ändert, es sei denn, Sie nehmen einige Codeänderungen vor.
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 * [EAL-Optionen](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options) (in englischer Sprache)
 * [Testpmd-Befehle](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options) (in englischer Sprache)

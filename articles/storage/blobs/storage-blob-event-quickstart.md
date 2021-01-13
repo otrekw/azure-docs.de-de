@@ -3,17 +3,18 @@ title: Senden von Azure Blob Storage-Ereignissen an einen Webendpunkt – Azure 
 description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid. Senden Sie die Ereignisse an einen Webhook. Verarbeiten Sie die Ereignisse in einer Webanwendung.
 author: normesta
 ms.author: normesta
-ms.reviewer: cbrooks
-ms.date: 12/06/2018
-ms.topic: quickstart
+ms.reviewer: dineshm
+ms.date: 03/05/2020
+ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: dc8ed420fdb04d04c02c91f2fa90939562b91645
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: f629ec5ccc1895b83cf7f1e831de8d128c49836d
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845622"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702428"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per Azure CLI
 
@@ -23,21 +24,19 @@ Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel abonni
 
 Nach Abschluss der Schritte in diesem Artikel sehen Sie, dass die Ereignisdaten an die Web-App gesendet wurden.
 
-![Anzeigen des Abonnementereignisses](./media/storage-blob-event-quickstart/view-results.png)
+![Screenshot des Azure Event Grid-Viewers mit Ereignisdaten, die an die Web-App gesendet wurden](./media/storage-blob-event-quickstart/view-results.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden, müssen Sie für diesen Artikel mindestens die Version 2.0.24 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
-
-Falls Sie nicht Cloud Shell verwenden, müssen Sie sich zuerst mithilfe von `az login` anmelden.
+- Für diesen Artikel ist mindestens Version 2.0.70 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
 Event Grid-Themen sind Azure-Ressourcen und müssen in einer Azure-Ressourcengruppe platziert werden. Die Azure-Ressourcengruppe ist eine logische Sammlung, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. 
 
 Im folgenden Beispiel wird am Standort *westcentralus* eine Ressourcengruppe namens `<resource_group_name>` erstellt.  Ersetzen Sie `<resource_group_name>` durch einen eindeutigen Namen für Ihre Ressourcengruppe.
 
@@ -70,7 +69,7 @@ Ersetzen Sie `<your-site-name>` durch einen eindeutigen Namen für Ihre Web-App.
 ```azurecli-interactive
 sitename=<your-site-name>
 
-az group deployment create \
+az deployment group create \
   --resource-group <resource_group_name> \
   --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
   --parameters siteName=$sitename hostingPlanName=viewerhost
@@ -93,7 +92,7 @@ storageid=$(az storage account show --name <storage_account_name> --resource-gro
 endpoint=https://$sitename.azurewebsites.net/api/updates
 
 az eventgrid event-subscription create \
-  --resource-id $storageid \
+  --source-resource-id $storageid \
   --name <event_subscription_name> \
   --endpoint $endpoint
 ```

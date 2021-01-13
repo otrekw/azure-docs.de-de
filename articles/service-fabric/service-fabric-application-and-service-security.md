@@ -1,25 +1,14 @@
 ---
-title: Informationen zur Azure Service Fabric-Anwendungssicherheit | Microsoft Docs
+title: Informationen zur Azure Service Fabric-Anwendungssicherheit
 description: Ein Überblick über die sichere Ausführung von Microservicesanwendungen in Service Fabric. Erfahren Sie, wie Sie Dienste und das Startskript unter verschiedenen Sicherheitskonten ausführen, Benutzer authentifizieren und autorisieren, Anwendungsgeheimnisse verwalten, die Dienstkommunikation sichern, ein API-Gateway verwenden und ruhende Anwendungsdaten sichern.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/16/2018
-ms.author: atsenthi
-ms.openlocfilehash: 75a82a0915414d24ab9c58ea15d3fdc9c1922c63
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: f17840f31d2a4c12a1d4618bd16e81dcc2cc8a14
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600072"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86256576"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric-Anwendungs- und -Dienstsicherheit
 Eine Microservicesarchitektur kann [zahlreiche Vorteile](service-fabric-overview-microservices.md) mit sich bringen. Die Verwaltung der Sicherheit von Microservices ist jedoch eine Herausforderung und unterscheidet sich von der Verwaltung traditioneller monolithischer Anwendungen. 
@@ -31,7 +20,7 @@ Dieser Artikel ist kein Leitfaden für die Sicherheit von Microservices (es sind
 ## <a name="authentication-and-authorization"></a>Authentifizierung und Autorisierung
 Es ist häufig erforderlich, die Verwendung von Ressourcen und APIs, die von einem Dienst verfügbar gemacht werden, auf bestimmte vertrauenswürdige Benutzer oder Clients einzuschränken. Authentifizierung ist der Vorgang, bei dem die Identität eines Benutzers zuverlässig ermittelt wird.  Autorisierung ist der Vorgang, durch den APIs oder Dienste einigen authentifizierten Benutzern, aber nicht allen zur Verfügung gestellt werden.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 Der erste Schritt, Entscheidungen zur Vertrauenswürdigkeit auf API-Ebene zu treffen, ist die Authentifizierung. Authentifizierung ist der Vorgang, bei dem die Identität eines Benutzers zuverlässig ermittelt wird.  Die Authentifizierung wird in Microserviceszenarien in der Regel zentral vorgenommen. Wenn Sie ein API-Gateway verwenden, können Sie [die Authentifizierung an das Gateway auslagern](/azure/architecture/patterns/gateway-offloading). Wenn Sie diesen Ansatz verwenden, stellen Sie sicher, dass die einzelnen Dienste nicht direkt (ohne das API-Gateway) erreicht werden können, es sei denn, es ist zusätzliche Sicherheit für die Authentifizierung von Nachrichten vorhanden, und zwar unabhängig davon, ob sie vom Gateway stammen oder nicht.
 
 Wenn auf Dienste direkt zugegriffen werden kann, kann ein Authentifizierungsdienst wie Azure Active Directory oder ein dedizierter Authentifizierungsmicroservice verwendet werden, der als Sicherheitstokendienst (Security Token Service, STS) fungiert, um Benutzer zu authentifizieren. Vertrauensentscheidungen werden zwischen Diensten mit Sicherheitstoken oder Cookies geteilt. 
@@ -44,9 +33,9 @@ Nach der Authentifizierung müssen Dienste den Benutzerzugriff autorisieren oder
 [ASP.NET Core-Autorisierung](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) kann basierend auf den Rollen der Benutzer oder auf benutzerdefinierten Richtlinien ausgeführt werden, die die Überprüfung von Ansprüchen oder andere Heuristiken beinhalten können.
 
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>Einschränken und Sichern des Zugriffs mithilfe eines API-Gateways
-Cloudanwendungen benötigen normalerweise ein Front-End-Gateway, um für Benutzer, Geräte oder andere Anwendungen einen zentralen Eingangspunkt bereitzustellen. Ein [API-Gateway](/azure/architecture/microservices/gateway) befindet sich zwischen Clients und Diensten und ist der Einstiegspunkt zu allen Diensten, die Ihre Anwendung bereitstellt. Es fungiert als Reverseproxy und leitet Anforderungen von Clients an Dienste weiter. Darüber hinaus kann es verschiedene übergreifende Aufgaben wie Authentifizierung und Autorisierung, SSL-Terminierung und Ratenbegrenzung übernehmen. Wenn Sie kein Gateway bereitstellen, müssen Clients Anforderungen direkt an Front-End-Dienste senden.
+Cloudanwendungen benötigen normalerweise ein Front-End-Gateway, um für Benutzer, Geräte oder andere Anwendungen einen zentralen Eingangspunkt bereitzustellen. Ein [API-Gateway](/azure/architecture/microservices/gateway) befindet sich zwischen Clients und Diensten und ist der Einstiegspunkt zu allen Diensten, die Ihre Anwendung bereitstellt. Es fungiert als Reverseproxy und leitet Anforderungen von Clients an Dienste weiter. Darüber hinaus kann es verschiedene übergreifende Aufgaben wie Authentifizierung und Autorisierung, TLS-Terminierung und Ratenbegrenzung übernehmen. Wenn Sie kein Gateway bereitstellen, müssen Clients Anforderungen direkt an Front-End-Dienste senden.
 
-In Service Fabric kann ein Gateway ein beliebiger zustandsloser Dienst sein (etwa eine [ASP.NET Core-Anwendung](service-fabric-reliable-services-communication-aspnetcore.md)) oder ein anderer Dienst, der für den Eingang von Datenverkehr ausgelegt ist (etwa [Traefik](https://docs.traefik.io/), [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT Hub](https://docs.microsoft.com/azure/iot-hub/) oder [Azure API Management](https://docs.microsoft.com/azure/api-management)).
+In Service Fabric kann ein Gateway ein beliebiger zustandsloser Dienst sein (etwa eine [ASP.NET Core-Anwendung](service-fabric-reliable-services-communication-aspnetcore.md)) oder ein anderer Dienst, der für den Eingang von Datenverkehr ausgelegt ist (etwa [Traefik](https://docs.traefik.io/), [Event Hubs](../event-hubs/index.yml), [IoT Hub](../iot-hub/index.yml) oder [Azure API Management](../api-management/index.yml)).
 
 API Management ist direkt in Service Fabric integriert, sodass Sie APIs mit einem umfassenden Satz von Routingregeln für Ihre Service Fabric-Back-End-Dienste veröffentlichen können.  Sie können den Zugriff auf Back-End-Dienste sichern, DOS-Angriffe durch Drosselung verhindern oder API-Schlüssel, JWT-Token, Zertifikate und andere Anmeldeinformationen überprüfen. Weitere Informationen finden Sie unter [Service Fabric mit Azure API Management: Übersicht](service-fabric-api-management-overview.md).
 
@@ -96,7 +85,7 @@ Sie können eine sichere Verbindung zwischen dem Reverseproxy und Diensten herst
 Das Reliable Services-Anwendungsframework stellt einige fertige Kommunikationsstapel und Tools bereit, die Sie verwenden können, um die Sicherheit zu verbessern. Erfahren Sie, wie Sie die Sicherheit verbessern können, wenn Sie Dienstremoting (in [C#](service-fabric-reliable-services-secure-communication.md) oder [Java](service-fabric-reliable-services-secure-communication-java.md)) oder [WCF](service-fabric-reliable-services-secure-communication-wcf.md) verwenden.
 
 ## <a name="encrypt-application-data-at-rest"></a>Verschlüsseln von ruhenden Anwendungsdaten
-Jedem [Knotentyp](service-fabric-cluster-nodetypes.md) in einem in Azure ausgeführten [Service Fabric](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)-Cluster liegt eine VM-Skalierungsgruppe zugrunde. Mit einer Azure Resource Manager-Vorlage können Sie Datenträger an die Skalierungsgruppen anfügen, aus denen sich der Service Fabric-Cluster zusammensetzt.  Wenn Ihre Dienste Daten auf einem angefügten Datenträger speichern, können Sie diese [Datenträger verschlüsseln](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md), um Ihre Anwendungsdaten zu schützen.
+Jedem [Knotentyp](service-fabric-cluster-nodetypes.md) in einem in Azure ausgeführten [Service Fabric](../virtual-machine-scale-sets/overview.md)-Cluster liegt eine VM-Skalierungsgruppe zugrunde. Mit einer Azure Resource Manager-Vorlage können Sie Datenträger an die Skalierungsgruppen anfügen, aus denen sich der Service Fabric-Cluster zusammensetzt.  Wenn Ihre Dienste Daten auf einem angefügten Datenträger speichern, können Sie diese [Datenträger verschlüsseln](../virtual-machine-scale-sets/disk-encryption-powershell.md), um Ihre Anwendungsdaten zu schützen.
 
 <!--TO DO: Enable BitLocker on Windows standalone clusters?
 TO DO: Encrypt disks on Linux clusters?-->
@@ -110,7 +99,7 @@ TO DO: Encrypt disks on Linux clusters?-->
 * [Informationen zur Clustersicherheit](service-fabric-cluster-security.md)
 
 <!-- Links -->
-[key-vault-get-started]:../key-vault/key-vault-overview.md
+[key-vault-get-started]:../key-vault/general/overview.md
 [config-package]: service-fabric-application-and-service-manifests.md
 [service-fabric-cluster-creation-via-arm]: service-fabric-cluster-creation-via-arm.md
 

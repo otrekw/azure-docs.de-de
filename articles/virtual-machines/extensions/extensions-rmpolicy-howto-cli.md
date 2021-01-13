@@ -1,5 +1,5 @@
 ---
-title: Verwenden der Azure Policy, um die Installation der VM-Erweiterung einzuschränken | Microsoft-Dokumentation
+title: Verwenden der Azure Policy, um die Installation der VM-Erweiterung einzuschränken (Linux)
 description: Verwenden Sie Azure Policy, um VM-Erweiterungsbereitstellungen einzuschränken.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -7,24 +7,25 @@ author: axayjo
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 20099bb32a1984be0bfbbaaa4e7bc6cd4481a806
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 26874c33c496b57bf6317a7b837b3afddc2f5e37
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174031"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955649"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Verwenden von Azure Policy, um die Installation von Erweiterungen auf virtuellen Linux-Computern einzuschränken
 
-Wenn Sie die Verwendung oder Installation von bestimmten Erweiterungen auf Ihren virtuellen Linux-Computern verhindern möchten, können Sie mithilfe der CLI eine Azure-Richtlinie zum Einschränken von Erweiterungen für virtuelle Computer innerhalb einer Ressourcengruppe erstellen. 
+Wenn Sie die Verwendung oder Installation bestimmter Erweiterungen auf Ihren Linux-VMs verhindern möchten, können Sie mithilfe der Befehlszeilenschnittstelle eine Azure Policy-Definition zum Einschränken von Erweiterungen für VMs in einer Ressourcengruppe erstellen. 
 
-Dieses Tutorial verwendet die CLI innerhalb der Azure Cloud Shell, die ständig auf die neueste Version aktualisiert wird. Wenn Sie die Azure CLI lokal ausführen möchten, müssen Sie Version 2.0.26 oder höher installieren. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
+Dieses Tutorial verwendet die CLI innerhalb der Azure Cloud Shell, die ständig auf die neueste Version aktualisiert wird. Wenn Sie die Azure CLI lokal ausführen möchten, müssen Sie Version 2.0.26 oder höher installieren. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-rules-file"></a>Erstellen einer Regeldatei
 
@@ -34,7 +35,7 @@ Dieses Beispiel zeigt Ihnen, wie Sie die Installation von Erweiterungen ablehnen
 
 Geben Sie in einer [Bash-Cloud Shell](https://shell.azure.com/bash) ein:
 
-```azurecli-interactive 
+```bash
 vim ~/clouddrive/azurepolicy.rules.json
 ```
 
@@ -75,7 +76,7 @@ Dieses Beispiel zeigt Ihnen, wie Sie eine Parameterdatei für Linux-VMs in Cloud
 
 Geben Sie in der [Bash-Cloud Shell](https://shell.azure.com/bash) ein:
 
-```azurecli-interactive
+```bash
 vim ~/clouddrive/azurepolicy.parameters.json
 ```
 
@@ -87,7 +88,6 @@ Kopieren Sie den folgenden JSON-Code, und fügen Sie ihn in die Datei ein.
         "type": "Array",
         "metadata": {
             "description": "The list of extensions that will be denied. Example: CustomScriptForLinux, VMAccessForLinux etc.",
-            "strongType": "type",
             "displayName": "Denied extension"
         }
     }

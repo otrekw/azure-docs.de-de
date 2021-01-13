@@ -6,39 +6,29 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/15/2019
+ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 4e4e4d250de823ae8fb78a306bae313f340e7ce9
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: e289bea6b1a23f1622ced62656164d9865303298
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992301"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912823"
 ---
-# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Schnellstart: Analysieren von Daten in Azure Data Lake Storage Gen2 mit Azure Databricks
+# <a name="quickstart-analyze-data-with-databricks"></a>Schnellstart: Analysieren von Daten mit Databricks
 
-In diesem Schnellstart erfahren Sie, wie Sie unter Verwendung von Azure Databricks einen Apache Spark-Auftrag ausführen, um Daten zu analysieren, die in einem Speicherkonto mit Azure Data Lake Storage Gen2 gespeichert sind.
-
-Im Rahmen des Spark-Auftrags werden die Abonnementdaten eines Radiosenders analysiert, um Einblicke in die Nutzung kostenloser/kostenpflichtiger Angebote auf der Grundlage demografischer Daten zu gewinnen.
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+In dieser Schnellstartanleitung führen Sie über Azure Databricks einen Apache Spark-Auftrag aus, um Analysen zu den in einem Speicherkonto gespeicherten Daten durchzuführen. Im Rahmen des Spark-Auftrags werden die Abonnementdaten eines Radiosenders analysiert, um Einblicke in die Nutzung kostenloser/kostenpflichtiger Angebote auf der Grundlage demografischer Daten zu gewinnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Erstellen eines Data Lake Gen2-Speicherkontos. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](data-lake-storage-quickstart-create-account.md)
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-  Fügen Sie den Namen des Speicherkontos in eine Textdatei ein. Sie benötigen ihn in Kürze.
+* Ein Speicherkonto, für das hierarchische Namespaces aktiviert sind. Unter [Erstellen eines Speicherkontos für die Verwendung mit Azure Data Lake Storage Gen2](create-data-lake-storage-account.md) erfahren Sie, wie eines erstellt wird.
 
-* Erstellen eines Dienstprinzipals Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-  Bei den Schritten in diesem Artikel müssen einige bestimmte Aktionen ausgeführt werden.
-
-  :heavy_check_mark: Achten Sie beim Ausführen der Schritte im Abschnitt [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) des Artikels darauf, dem Dienstprinzipal die Rolle **Mitwirkender an Storage-Blobdaten** zuzuweisen.
+* Die Mandanten-ID, die App-ID und das Kennwort eines Azure-Dienstprinzipals mit der zugewiesenen Rolle **Mitwirkender an Storage-Blobdaten**. [Erstellen Sie einen Dienstprinzipal](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   > [!IMPORTANT]
-  > Achten Sie darauf, die Rolle im Kontext des Data Lake Storage Gen2-Kontos zuzuweisen. Sie können eine Rolle der übergeordneten Ressourcengruppe oder dem übergeordneten Abonnement zuweisen. In diesem Fall tritt jedoch ein Berechtigungsfehler auf, bis die Rollenzuweisungen an das Speicherkonto weitergegeben wurden.
-
-  :heavy_check_mark: Fügen Sie beim Ausführen der Schritte im Abschnitt [Abrufen von Werten für die Anmeldung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) des Artikels die Werte für Mandanten-ID, App-ID und Kennwort in eine Textdatei ein. Sie benötigen sie in Kürze.
+  > Weisen Sie die Rolle im Kontext des Data Lake Storage Gen2-Kontos zu. Sie können eine Rolle der übergeordneten Ressourcengruppe oder dem übergeordneten Abonnement zuweisen. In diesem Fall tritt jedoch ein Berechtigungsfehler auf, bis die Rollenzuweisungen an das Speicherkonto weitergegeben wurden.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Erstellen eines Azure Databricks-Arbeitsbereichs
 
@@ -58,7 +48,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
     |---------|---------|
     |**Arbeitsbereichsname**     | Geben Sie einen Namen für Ihren Databricks-Arbeitsbereich an.        |
     |**Abonnement**     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |
-    |**Ressourcengruppe**     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). |
+    |**Ressourcengruppe**     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md). |
     |**Location**     | Wählen Sie **USA, Westen 2** aus. Sie können auch eine andere öffentliche Region auswählen.        |
     |**Tarif**     |  Wählen Sie zwischen **Standard** und **Premium**. Weitere Informationen zu diesen Tarifen, finden Sie unter [Azure Databricks – Preise](https://azure.microsoft.com/pricing/details/databricks/).       |
 
@@ -76,19 +66,19 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
 3. Geben Sie auf der Seite **Neuer Cluster** die erforderlichen Werte an, um einen Cluster zu erstellen.
 
-    ![Erstellen eines Databricks-Spark-Clusters in Azure](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-spark-cluster.png "Erstellen eines Databricks-Spark-Clusters in Azure")
+    ![Erstellen eines Databricks Spark-Clusters in Azure](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-spark-cluster.png "Erstellen eines Databricks Spark-Clusters in Azure")
 
-    Übernehmen Sie alle anderen Standardwerte bis auf Folgendes:
+    Geben Sie Werte für die folgenden Felder an, und übernehmen Sie bei den anderen Feldern die Standardwerte:
 
-    * Geben Sie einen Namen für den Cluster ein.
-    * Erstellen Sie einen Cluster mit der Runtime **5.1**.
-    * Aktivieren Sie das Kontrollkästchen **Terminate after 120 minutes of inactivity** (Nach 120 Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
+    - Geben Sie einen Namen für den Cluster ein.
+     
+    - Aktivieren Sie das Kontrollkästchen **Terminate after 120 minutes of inactivity** (Nach 120 Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
 
 4. Klicken Sie auf **Cluster erstellen**. Sobald der Cluster ausgeführt wird, können Sie Notizbücher an den Cluster anfügen und Spark-Aufträge ausführen.
 
 Weitere Informationen zum Erstellen von Clustern in Azure Databricks finden Sie unter [Creating Clusters](https://docs.azuredatabricks.net/user-guide/clusters/create.html) (Erstellen von Clustern).
 
-## <a name="create-storage-account-container"></a>Erstellen eines Speicherkontocontainers
+## <a name="create-notebook"></a>Erstellen eines Notebooks
 
 In diesem Abschnitt erstellen Sie ein Notizbuch im Azure Databricks-Arbeitsbereich und führen anschließend Codeausschnitte aus, um das Speicherkonto zu konfigurieren.
 
@@ -96,11 +86,11 @@ In diesem Abschnitt erstellen Sie ein Notizbuch im Azure Databricks-Arbeitsberei
 
 2. Klicken Sie im linken Bereich auf **Arbeitsbereich**. Wählen Sie in der Dropdownliste **Arbeitsbereich** die Option **Erstellen** > **Notebook** aus.
 
-    ![Erstellen eines Notizbuchs in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Erstellen eines Notizbuchs in Databricks")
+    ![Der Screenshot zeigt, wie ein Notebook in Databricks erstellt wird und hebt die Menüoption „Erstellen > Notebook“ hervor.](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Erstellen eines Notebooks in Databricks")
 
 3. Geben Sie im Dialogfeld **Notizbuch erstellen** einen Namen für das Notebook ein. Wählen Sie **Scala** als Sprache und anschließend den zuvor erstellten Spark-Cluster aus.
 
-    ![Erstellen eines Notizbuchs in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Erstellen eines Notizbuchs in Databricks")
+    ![Erstellen eines Notebooks in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Erstellen eines Notebooks in Databricks")
 
     Klicken Sie auf **Erstellen**.
 
@@ -117,14 +107,7 @@ In diesem Abschnitt erstellen Sie ein Notizbuch im Azure Databricks-Arbeitsberei
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
-
-    > [!NOTE]
-    > Dieser Codeblock greift direkt über OAuth auf den Data Lake Gen2-Endpunkt zu. Es gibt jedoch noch andere Methoden zum Verknüpfen des Databricks-Arbeitsbereichs mit Ihrem Data Lake Storage Gen2-Konto. Beispielsweise können Sie den Container mithilfe von OAuth einbinden oder den Direktzugriff mit gemeinsam verwendetem Schlüssel nutzen. <br>Beispiele für diese Ansätze finden Sie auf der Azure Databricks-Website im Artikel zu [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html).
-
 5. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `storage-account-name`, `appID`, `password` und `tenant-id` durch die Werte, die Sie beim Erstellen des Dienstprinzipals gesammelt haben. Legen Sie für den Platzhalterwert `container-name` den gewünschten Namen für den Container fest.
-
-    > [!NOTE]
-    > In einer Produktionsumgebung empfiehlt es sich, Ihren Authentifizierungsschlüssel in Azure Databricks zu speichern. Fügen Sie dem Codeblock dann einen Suchschlüssel anstelle des Authentifizierungsschlüssels hinzu. Sehen Sie sich nach Abschluss dieses Schnellstarts die Beispiele für diesen Ansatz im Artikel [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) auf der Azure Databricks-Website an.
 
 6. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
 
@@ -134,15 +117,19 @@ Bevor Sie mit diesem Abschnitt beginnen, müssen folgende Schritte ausgeführt w
 
 Geben Sie den folgenden Code in eine Zelle des Notebooks ein:
 
-    %sh wget -P /tmp https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
+```bash
+%sh wget -P /tmp https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
+```
 
-Drücken Sie in der Zelle**UMSCHALT+EINGABE**, um den Code auszuführen.
+Drücken Sie in der Zelle **UMSCHALT+EINGABE**, um den Code auszuführen.
 
 Geben Sie als Nächstes in einer darunterliegenden Zelle den folgenden Code ein, und ersetzen Sie dabei die in Klammern angegebenen Werte durch die zuvor verwendeten Werte:
 
-    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
+```python
+dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/")
+```
 
-Drücken Sie in der Zelle**UMSCHALT+EINGABE**, um den Code auszuführen.
+Drücken Sie in der Zelle **UMSCHALT+EINGABE**, um den Code auszuführen.
 
 ## <a name="run-a-spark-sql-job"></a>Ausführen eines Spark SQL-Auftrags
 
@@ -173,7 +160,7 @@ Führen Sie die folgenden Aufgaben aus, um einen Spark SQL-Auftrag für die Date
 
 3. Sie erhalten eine tabellarische Ausgabe wie im folgenden Screenshot, der allerdings nur einen Teil der Spalten zeigt:
 
-    ![JSON-Beispieldaten](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "JSON-Beispieldaten")
+    ![JSON-Beispieldaten](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "JSON-Beispieldatei")
 
     Neben verschiedenen anderen Details enthalten die Beispieldaten das Geschlecht der Zielgruppe eines Radiokanals (Spalte **gender**) und die Information, ob die jeweilige Person ein kostenloses oder ein kostenpflichtiges Abonnement nutzt (Spalte **level**).
 
@@ -183,7 +170,7 @@ Führen Sie die folgenden Aufgaben aus, um einen Spark SQL-Auftrag für die Date
 
 5. Platzieren Sie per Drag & Drop Werte in **Customize Plot** (Zeichnung anpassen), wie im folgenden Screenshot zu sehen.
 
-    ![Anpassen des Balkendiagramms](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "Anpassen des Balkendiagramms")
+    ![Der Screenshot zeigt den Bildschirm „Customize Plot“ (Zeichnung anpassen) und die Werte, die Sie per Drag & Drop anpassen können.](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "Anpassen eines Balkendiagramms")
 
     - Legen Sie **Schlüssel** auf **gender** fest.
     - Legen Sie **Series groupings** (Reihengruppierungen) auf **level** fest.
@@ -194,7 +181,7 @@ Führen Sie die folgenden Aufgaben aus, um einen Spark SQL-Auftrag für die Date
 
 7. Die Ausgabe zeigt die visuelle Darstellung wie im folgenden Screenshot dargestellt:
 
-     ![Anpassen des Balkendiagramms](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sql-query-output-bar-chart.png "Anpassen des Balkendiagramms")
+     ![Anpassen eines Balkendiagramms](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sql-query-output-bar-chart.png "Anpassen eines Balkendiagramms")
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -206,7 +193,13 @@ Wenn Sie den Cluster nicht manuell beenden, wird er automatisch beendet, sofern 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie einen Spark-Cluster in Azure Databricks erstellt und einen Spark-Auftrag mit Daten in einem Speicherkonto mit aktivierter Data Lake Storage Gen2-SKU ausgeführt. Unter [Spark Data Sources](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) (Spark-Datenquellen) erfahren Sie, wie Sie Daten aus anderen Datenquellen in Azure Databricks importieren. Im nächsten Artikel erfahren Sie, wie Sie unter Verwendung von Azure Databricks einen ETL-Vorgang zum Extrahieren, Transformieren und Laden von Daten ausführen.
+In diesem Artikel haben Sie einen Spark-Cluster in Azure Databricks erstellt und einen Spark-Auftrag mit Daten in einem Speicherkonto mit aktivierter Data Lake Storage Gen2-SKU ausgeführt.
+
+Im nächsten Artikel erfahren Sie, wie Sie unter Verwendung von Azure Databricks einen ETL-Vorgang zum Extrahieren, Transformieren und Laden von Daten ausführen.
 
 > [!div class="nextstepaction"]
->[Extrahieren, Transformieren und Laden von Daten mithilfe von Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md)
+>[Extrahieren, Transformieren und Laden von Daten mithilfe von Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse)
+
+- Unter [Projektmappen-Explorer](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) erfahren Sie, wie Sie Daten aus anderen Datenquellen in Azure Databricks importieren.
+
+- Informationen zu anderen Möglichkeiten für den Zugriff auf Azure Data Lake Storage Gen2 über einen Azure Databricks-Arbeitsbereich finden Sie unter [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html).

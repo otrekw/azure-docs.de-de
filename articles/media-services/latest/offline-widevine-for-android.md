@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren Ihres Kontos für das Offlinestreaming von durch Widevine geschützten Inhalten – Azure
-description: In diesem Thema erfahren Sie, wie Sie Ihr Azure Media Services-Konto für das Offlinestreaming von durch Widevine geschützten Inhalten konfigurieren.
+title: Widevine-Offlinestreaming für Android mit Azure Media Services v3
+description: In diesem Thema erfahren Sie, wie Sie Ihr Azure Media Services v3-Konto für das Offlinestreaming von durch Widevine geschützten Inhalten konfigurieren.
 services: media-services
 keywords: DASH, DRM, Widevine-Offlinemodus, ExoPlayer, Android
 documentationcenter: ''
@@ -11,22 +11,27 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/08/2019
+ms.topic: conceptual
+ms.date: 08/31/2020
 ms.author: willzhan
-ms.openlocfilehash: 9e90951f810c5101a46c29570af8ad71b42be637
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b8c4bed81a73957cc80318064f2aa2a58b3cfe11
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341029"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91597068"
 ---
-# <a name="offline-widevine-streaming-for-android"></a>Widevine-Offlinestreaming für Android
+# <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Widevine-Offlinestreaming für Android mit Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Neben dem Schutz von Inhalten für Onlinestreaming bieten Abonnement- und Verleihdienste für Medieninhalte herunterladbare Inhalte, die genutzt werden können, wenn keine Internetverbindung besteht. Dadurch können Sie beispielsweise Inhalte auf Ihr Smartphone oder Tablet herunterladen und im Offlinemodus ansehen, wenn Sie mit dem Flugzeug unterwegs sind und keine Netzwerkverbindung verfügbar ist. Weitere Szenarien, in denen Sie möglicherweise Inhalte herunterladen möchten:
 
 - Einige Inhaltsanbieter verbieten möglicherweise die Bereitstellung von DRM-Lizenzen außerhalb einer Landesgrenze/Region. Wenn ein Benutzer Inhalte ansehen möchte, während er ins Ausland reist, ist ein Offline-Download erforderlich.
 - In einigen Ländern/Regionen ist die Verfügbarkeit und/oder Bandbreite des Internets begrenzt. Benutzer haben die Möglichkeit, Inhalte herunterzuladen, um sie in zufriedenstellender Auflösung ansehen zu können.
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 In diesem Artikel erfahren Sie, wie Sie auf Android-Geräten die Wiedergabe im Offlinemodus für durch Widevine geschützte DASH-Inhalte implementieren. Dank Offline-DRM können Sie Abonnement-, Verleih- und Kaufmodelle für Ihre Inhalte anbieten, sodass die Kunden Ihrer Dienste Inhalte problemlos mitnehmen können, wenn sie über keine Internetverbindung verfügen.
 
@@ -147,67 +152,19 @@ Wenn Sie Ihren mobilen Chrome-Browser auf einem Android-Smartphone mindestens au
 
 Die oben erwähnte Open-Source-PWA-App wurde in Node.js erstellt. Wenn Sie eine eigene Version auf einem Ubuntu-Server hosten möchten, beachten Sie die folgenden allgemeinen Probleme, die die Wiedergabe verhindern können:
 
-1. CORS-Problem: Das Beispielvideo in der Beispiel-App wird in https://storage.googleapis.com/biograf-video-files/videos/ gehostet. Google hat CORS für alle Testbeispiele eingerichtet, die im Google Cloud Storage-Bucket gehostet werden. Sie werden mit CORS-Headern bereitgestellt, die explizit den CORS-Eintrag angeben: https://biograf-155113.appspot.com (die Domäne, in der Google das Beispiel hostet). Dadurch wird der Zugriff durch andere Sites verhindert. Wenn Sie es versuchen, wird der folgende HTTP-Fehler ausgegeben: Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. Falls eine opake Antwort Ihre Anforderungen erfüllt, legen Sie den Modus der Anforderung auf 'no-cors' fest, um CORS für den Ressourcenabruf zu deaktivieren.
+1. CORS-Problem: Das Beispielvideo in der Beispiel-App wird in https://storage.googleapis.com/biograf-video-files/videos/ gehostet. Google hat CORS für alle Testbeispiele eingerichtet, die im Google Cloud Storage-Bucket gehostet werden. Sie werden mit CORS-Headern bereitgestellt, die explizit den CORS-Eintrag angeben: `https://biograf-155113.appspot.com` (die Domäne, in der Google das Beispiel hostet). Dadurch wird der Zugriff durch andere Sites verhindert. Wenn Sie es versuchen, wird der folgende HTTP-Fehler ausgegeben: `Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
 2. Zertifikatsproblem: Ab der Chrome-Version 58 wird von EME für Widevine HTTPS benötigt. Daher muss die Beispiel-App mit einem X.509-Zertifikat über HTTPS gehostet werden. Ein herkömmliches Testzertifikat funktioniert aufgrund der folgenden Anforderungen nicht: Sie müssen ein Zertifikat abrufen, dass die folgenden Mindestanforderungen erfüllt:
     - Für Chrome und Firefox muss das Zertifikat die Einstellung für den alternativen Antragstellernamen (Subject Alternative Name, SAN) enthalten.
     - Das Zertifikat muss über eine vertrauenswürdige Zertifizierungsstelle verfügen. Ein selbstsigniertes Entwicklungszertifikat kann nicht verwendet werden.
     - Der allgemeine Name (Common Name, CN) des Zertifikats muss dem DNS-Namen des Webservers oder Gateways entsprechen.
 
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+## <a name="faqs"></a>Häufig gestellte Fragen
 
-### <a name="question"></a>Frage
+Weitere Informationen finden unter [Häufig gestellte Fragen zu Widevine](frequently-asked-questions.md#widevine-streaming-for-android).
 
-Wie kann ich für einige Clients/Benutzer permanente (offlinefähige) Lizenzen und für andere Clients/Benutzer nicht permanente (nicht offlinefähige) Lizenzen übermitteln? Muss ich den Inhalt duplizieren und separate symmetrische Schlüssel verwenden?
+## <a name="additional-notes"></a>Zusätzliche Hinweise
 
-### <a name="answer"></a>Antwort
-Da Media Services v3 ein Medienobjekt mit mehreren StreamingLocators zulässt. Folgendes ist zulässig:
-
-1.  Eine ContentKeyPolicy mit license_type = "persistent", ContentKeyPolicyRestriction mit Anspruch auf "persistent", und der StreamingLocator;
-2.  Eine weitere ContentKeyPolicy mit license_type = "persistent", ContentKeyPolicyRestriction mit Anspruch auf "nonpersistent", und der StreamingLocator;
-3.  Die zwei StreamingLocators haben unterschiedliche Contentkey-Objekts.
-
-Abhängig von der Geschäftslogik des benutzerdefinierten STS werden unterschiedliche Ansprüche im JWT-Token ausgegeben. Mit dem Token kann nur die dazugehörige Lizenz abgerufen und nur die entsprechende URL wiedergegeben werden.
-
-### <a name="question"></a>Frage
-
-Als Widevine-Sicherheitsstufen sind [in der Dokumentation von Google](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) drei verschiedenen Sicherheitsstufen definiert. In der [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](widevine-license-template-overview.md) sind dagegen fünf verschiedenen Sicherheitsstufen angegeben. Welche Beziehung oder Zuordnung besteht zwischen den beiden unterschiedlichen Gruppen von Sicherheitsstufen?
-
-### <a name="answer"></a>Antwort
-
-In der [Widevine DRM-Architekturübersicht](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) von Google sind die drei folgenden Sicherheitsstufen definiert:
-
-1.  Sicherheitsstufe 1: Die gesamte Inhaltsverarbeitung, Kryptografie und Kontrolle findet innerhalb der vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE) statt. In einigen Implementierungsmodellen findet die Sicherheitsverarbeitung unter Umständen in unterschiedlichen Chips statt.
-2.  Sicherheitsstufe 2: Die gesamte Kryptografie (aber nicht die Videoverarbeitung) wird innerhalb der TEE durchgeführt. Entschlüsselte Puffer werden an die Anwendungsdomäne zurückgegeben und über separate Videohardware oder -software verarbeitet. Kryptografieinformationen werden auf der zweiten Stufe allerdings weiterhin nur innerhalb der TEE verarbeitet.
-3.  Sicherheitsstufe 3: Verfügt über keine TEE auf dem Gerät. Zum Schutz der kryptografischen Informationen und entschlüsselter Inhalte können geeignete Maßnahmen unter dem Hostbetriebssystem ergriffen werden. Eine Implementierung der dritten Stufe kann auch ein hardwarebasiertes Kryptografiemodul enthalten. Dadurch verbessert sich aber nur die Leistung, nicht die Sicherheit.
-
-Gemäß [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](widevine-license-template-overview.md) kann die security_level-Eigenschaft von „content_key_specs“ folgende fünf Werte (Clientstabilitätsanforderungen für die Wiedergabe) besitzen:
-
-1.  Erfordert softwarebasierte White-Box-Verschlüsselung.
-2.  Erfordert Softwareverschlüsselung und einen verborgenen Decoder.
-3.  Die zentralen Vorgänge für Daten und Verschlüsselung müssen innerhalb einer hardwaregestützten TEE ausgeführt werden.
-4.  Verschlüsselung und Decodierung müssen innerhalb einer hardwaregestützten TEE durchgeführt werden.
-5.  Verschlüsselung, Decodierung und Verarbeitung von Medien (komprimiert und unkomprimiert) müssen innerhalb einer hardwaregestützten TEE stattfinden.
-
-Beide Sicherheitsstufen werden von Google Widevine definiert. Der Unterschied besteht in der Nutzungsebene (Architekturebene oder API-Ebene). Die fünf Sicherheitsstufen werden in der Widevine-API verwendet. Das content_key_specs-Objekt, das „security_level“ enthält, wird deserialisiert und durch den Widevine-Lizenzdienst von Azure Media Services an den globalen Widevine-Übermittlungsdienst übergeben. Die folgende Tabelle zeigt die Zuordnung zwischen den beiden Gruppen von Sicherheitsstufen:
-
-| **In der Widevine-Architektur definierte Sicherheitsstufen** |**In der Widevine-API verwendete Sicherheitsstufen**|
-|---|---| 
-| **Sicherheitsstufe 1**: Die gesamte Inhaltsverarbeitung, Kryptografie und Kontrolle findet innerhalb der vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE) statt. In einigen Implementierungsmodellen findet die Sicherheitsverarbeitung unter Umständen in unterschiedlichen Chips statt.|**security_level=5**: Verschlüsselung, Decodierung und Verarbeitung von Medien (komprimiert und unkomprimiert) müssen innerhalb einer hardwaregestützten TEE stattfinden.<br/><br/>**security_level=4**: Verschlüsselung und Decodierung müssen innerhalb einer hardwaregestützten TEE durchgeführt werden.|
-**Sicherheitsstufe 2**: Die gesamte Kryptografie (aber nicht die Videoverarbeitung) wird innerhalb der TEE durchgeführt. Entschlüsselte Puffer werden an die Anwendungsdomäne zurückgegeben und über separate Videohardware oder -software verarbeitet. Kryptografieinformationen werden auf der zweiten Stufe allerdings weiterhin nur innerhalb der TEE verarbeitet.| **security_level=3**: Die zentralen Vorgänge für Daten und Verschlüsselung müssen innerhalb einer hardwaregestützten TEE ausgeführt werden. |
-| **Sicherheitsstufe 3**: Verfügt über keine TEE auf dem Gerät. Zum Schutz der kryptografischen Informationen und entschlüsselter Inhalte können geeignete Maßnahmen unter dem Hostbetriebssystem ergriffen werden. Eine Implementierung der dritten Stufe kann auch ein hardwarebasiertes Kryptografiemodul enthalten. Dadurch verbessert sich aber nur die Leistung, nicht die Sicherheit. | **security_level=2**: Erfordert Softwareverschlüsselung und einen verborgenen Decoder.<br/><br/>**security_level=1**: Erfordert softwarebasierte White-Box-Verschlüsselung.|
-
-### <a name="question"></a>Frage
-
-Warum dauert das Herunterladen des Inhalts so lange?
-
-### <a name="answer"></a>Antwort
-
-Die Downloadgeschwindigkeit lässt sich auf zwei Arten verbessern:
-
-1.  Aktivieren Sie das CDN, sodass Endbenutzer den Inhalt nicht über den Ursprung/Streamingendpunkt des Inhalts herunterladen, sondern eher über das CDN. Wenn Benutzer auf den Streamingendpunkt zugreifen, wird jedes HLS-Segment oder DASH-Fragment dynamisch gepackt und verschlüsselt. Dies führt bei den einzelnen Segmenten/Fragmenten zwar nur zu einer Wartezeit im Millisekundenbereich, bei einem Video mit einer Laufzeit von einer Stunde kann die kumulierte Wartezeit jedoch zu einer längeren Downloaddauer führen.
-2.  Geben Sie Endbenutzern die Möglichkeit, anstelle des gesamten Inhalts nur bestimmte Videoqualitätsstufen und Audiospuren herunterzuladen. Für den Offlinemodus hat es keinen Sinn, alle Qualitätsstufen herunterzuladen. Es gibt zwei Möglichkeiten, dies zu erreichen:
-    1.  Clientgesteuert: Die herunterzuladende Videoqualitätsstufe und die Audiospuren werden entweder automatisch durch die Player-App oder vom Benutzer ausgewählt.
-    2.  Dienstgesteuert: In Azure Media Services kann mithilfe des Features „Dynamisches Manifest“ ein (globaler) Filter erstellt werden, der die HLS-Wiedergabeliste oder DASH MPD auf eine einzelne Videoqualitätsstufe und bestimmte Audiospuren beschränkt. Dieser Filter ist dann in der Download-URL enthalten, die Endbenutzern angezeigt wird.
+Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="summary"></a>Zusammenfassung
 

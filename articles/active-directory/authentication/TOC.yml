@@ -4,89 +4,100 @@
   items:
     - name: Was ist Authentifizierung?
       href: overview-authentication.md
-- name: Schnellstart
+- name: Tutorials
+  expanded: true
   items:
-    - name: Konfigurieren der Kennwortzurücksetzung
-      href: quickstart-sspr.md
-- name: Lernprogramme
-  items:
-    - name: '1: Aktivieren von MFA für Anwendungen'
-      href: tutorial-mfa-applications.md
-    - name: 2. Aktivieren eines SSPR-Pilotversuchs
-      href: tutorial-sspr-pilot.md
-    - name: Aktivieren der lokalen SSPR-Integration
-      href: tutorial-enable-writeback.md
-    - name: Integrieren von Azure Identity Protection
+    - name: Aktivieren der Self-Service-Kennwortzurücksetzung
+      href: tutorial-enable-sspr.md
+    - name: Aktivieren von Azure AD Multi-Factor Authentication
+      href: tutorial-enable-azure-mfa.md
+    - name: Aktivieren des Kennwortrückschreibens in die lokale Umgebung
+      href: tutorial-enable-sspr-writeback.md
+    - name: Konfigurieren der Liste benutzerdefinierter gesperrter Kennwörter
+      href: tutorial-configure-custom-password-protection.md
+    - name: Aktivieren des risikobasierten Anmeldeschutzes
       href: tutorial-risk-based-sspr-mfa.md
 - name: Konzepte
   expanded: true
   items:
     - name: Authentifizierungsmethoden
-      href: concept-authentication-methods.md
-    - name: Kennwortlose Authentifizierung
-      href: concept-authentication-passwordless.md
-    - name: Registrierung von Sicherheitsinformationen
-      href: concept-registration-mfa-sspr-combined.md
-    - name: Zurücksetzen des Kennworts
+      items:
+        - name: Übersicht
+          href: concept-authentication-methods.md
+        - name: Microsoft Authenticator-App
+          href: concept-authentication-authenticator-app.md
+        - name: OATH-Token
+          href: concept-authentication-oath-tokens.md
+        - name: Kennwortlos
+          href: concept-authentication-passwordless.md
+        - name: Telefonoptionen
+          href: concept-authentication-phone-options.md
+        - name: Sicherheitsfragen
+          href: concept-authentication-security-questions.md
+    - name: Self-Service-Kennwortzurücksetzung
       items:
         - name: Funktionsweise der Kennwortzurücksetzung
           href: concept-sspr-howitworks.md
-        - name: Optionen für die Kennwortzurücksetzung
-          href: concept-sspr-customization.md
-        - name: Richtlinien für die Kennwortzurücksetzung
-          href: concept-sspr-policy.md
-        - name: Welche Lizenz benötige ich?
-          href: concept-sspr-licensing.md
         - name: Lokale Integration
           href: concept-sspr-writeback.md
+        - name: Richtlinien
+          href: concept-sspr-policy.md
+        - name: Lizenzen
+          href: concept-sspr-licensing.md
     - name: Multi-Factor Authentication
       items:
         - name: Funktionsweise von MFA
           href: concept-mfa-howitworks.md
-        - name: Lizenzieren Ihrer Benutzer
+        - name: Aufforderungen und Sitzungslebensdauer
+          href: concepts-azure-multi-factor-authentication-prompts-session-lifetime.md
+        - name: Datenresidenz
+          href: concept-mfa-data-residency.md
+        - name: Lizenzen
           href: concept-mfa-licensing.md
-        - name: Verwalten eines Authentifizierungsanbieters
-          href: concept-mfa-authprovider.md
-        - name: Sicherheitsleitfaden
-          href: multi-factor-authentication-security-best-practices.md
         - name: MFA für Office 365
-          href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
-        - name: Häufig gestellte Fragen zu MFA
+          href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide
+        - name: Häufig gestellte Fragen
           href: multi-factor-authentication-faq.md
-    - name: Kennwortschutz für Azure AD
+    - name: Kennwortschutz
       items:
         - name: Entfernen unsicherer Kennwörter in der Cloud
           href: concept-password-ban-bad.md
         - name: Entfernen unsicherer Kennwörter in der lokalen Umgebung
           href: concept-password-ban-bad-on-premises.md
+    - name: Registrierung von Sicherheitsinformationen
+      href: concept-registration-mfa-sspr-combined.md
     - name: Resiliente Zugriffssteuerungen
       href: concept-resilient-controls.md
 - name: Anleitungen
   items:
     - name: Self-Service-Kennwortzurücksetzung
       items:
-        - name: Bereitstellen der Self-Service-Kennwortzurücksetzung
+        - name: Bereitstellungshandbuch
           href: howto-sspr-deployment.md
+        - name: Optionen zur Benutzeranpassung
+          href: howto-sspr-customization.md
         - name: Vorabregistrierung von Authentifizierungsdaten
           href: howto-sspr-authenticationdata.md
-        - name: Aktivieren des Kennwortrückschreibens
-          href: howto-sspr-writeback.md
         - name: SSPR für Windows-Clients
           href: howto-sspr-windows.md
-    - name: Cloudbasierte MFA
+    - name: Azure AD Multi-Factor Authentication
       items:
-        - name: Bereitstellen von cloudbasierter MFA
+        - name: Bereitstellungshandbuch
           href: howto-mfa-getstarted.md
-        - name: Benutzerbasierte MFA
-          href: howto-mfa-userstates.md
-        - name: Benutzer- und Geräteeinstellungen
-          href: howto-mfa-userdevicesettings.md
         - name: Konfigurieren von Einstellungen
           href: howto-mfa-mfasettings.md
+        - name: Konfigurieren von Benutzern
+          href: howto-mfa-userdevicesettings.md
+        - name: Aktivieren der MFA pro Benutzer
+          href: howto-mfa-userstates.md
+        - name: Konfigurieren von Authentifizierungsanbietern
+          href: concept-mfa-authprovider.md
+        - name: Verwenden von App-Kennwörtern
+          href: howto-mfa-app-passwords.md
         - name: Verzeichnisverbund
           items:
             - name: AD FS-Adapter für Windows Server 2016
-              href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa'
+              href: /windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa
             - name: Verbunddienste
               href: multi-factor-authentication-get-started-adfs.md
             - name: Verwenden von AD FS
@@ -97,54 +108,66 @@
               href: howto-mfa-nps-extension.md
             - name: Erweiterte Konfiguration für NPS-Erweiterung
               href: howto-mfa-nps-extension-advanced.md
-            - name: Azure-VPN und Azure MFA
-              href: ../../vpn-gateway/vpn-gateway-radiuis-mfa-nsp.md
+            - name: Azure-VPN und Azure AD MFA
+              href: ../../vpn-gateway/vpn-gateway-radius-mfa-nsp.md
             - name: Remotedesktopgateway
               href: howto-mfa-nps-extension-rdg.md
             - name: VPN
               href: howto-mfa-nps-extension-vpn.md
+    - name: Kennwortlos
+      items:
+        - name: Bereitstellen kennwortloser Elemente
+          href: howto-authentication-passwordless-deployment.md
+        - name: Kennwortlose FIDO2-Sicherheitsschlüssel
+          items:
+            - name: Aktivieren von FIDO2-Sicherheitsschlüsseln für Ihren Mandanten
+              href: howto-authentication-passwordless-security-key.md
+            - name: "Anmelden bei Windows\_10-Geräten"
+              href: howto-authentication-passwordless-security-key-windows.md
+            - name: Einmaliges Anmelden bei lokalen Ressourcen
+              href: howto-authentication-passwordless-security-key-on-premises.md
+            - name: Häufig gestellte Fragen zu Hybridressourcen
+              href: howto-authentication-passwordless-faqs.md
+            - name: Problembehandlung für Hybridressourcen
+              href: howto-authentication-passwordless-troubleshoot.md
+        - name: Kennwortlose Anmeldung per Telefon
+          href: howto-authentication-passwordless-phone.md
+        - name: Windows Hello for Business
+          href: /windows/security/identity-protection/hello-for-business/hello-identity-verification
     - name: Registrierung von Sicherheitsinformationen
       items:
         - name: Aktivieren der kombinierten Registrierung
           href: howto-registration-mfa-sspr-combined.md
         - name: Problembehandlung für die kombinierte Registrierung
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
-    - name: Kennwortschutz für Azure AD
+    - name: Lokaler Kennwortschutz
       items:
-        - name: Konfigurieren der Liste gesperrter Kennwörter
-          href: howto-password-ban-bad-configure.md
-        - name: Lokale Integration
-          items:
-            - name: Bereitstellen des Kennwortschutzes für Azure AD
-              href: howto-password-ban-bad-on-premises-deploy.md
-            - name: Konfigurieren des Kennwortschutzes für Azure AD
-              href: howto-password-ban-bad-on-premises-operations.md
-            - name: Überwachen des Kennwortschutzes für Azure AD
-              href: howto-password-ban-bad-on-premises-monitor.md
-            - name: Problembehandlung für den Kennwortschutz für Azure AD
-              href: howto-password-ban-bad-on-premises-troubleshoot.md
-            - name: Häufig gestellte Fragen
-              href: howto-password-ban-bad-on-premises-faq.md
-            - name: Versionsverlauf des lokalen Agents
-              href: howto-password-ban-bad-on-premises-agent-versions.md
+        - name: Planen und Bereitstellen
+          href: howto-password-ban-bad-on-premises-deploy.md
+        - name: Aktivieren und Konfigurieren
+          href: howto-password-ban-bad-on-premises-operations.md
+        - name: Überwachen
+          href: howto-password-ban-bad-on-premises-monitor.md
+        - name: Problembehandlung
+          href: howto-password-ban-bad-on-premises-troubleshoot.md
+        - name: Häufig gestellte Fragen
+          href: howto-password-ban-bad-on-premises-faq.md
+        - name: Verlauf der Agent-Version
+          href: howto-password-ban-bad-on-premises-agent-versions.md
+    - name: Verwenden der SMS-basierten Authentifizierung (Vorschau)
+      href: howto-authentication-sms-signin.md
+    - name: Verwenden der Anmeldung mit E-Mail-Adresse (Vorschau)
+      href: howto-authentication-use-email-signin.md
     - name: Smart Lockout für Azure AD
       href: howto-password-smart-lockout.md
-    - name: Kennwortlos
-      items:
-        - name: Kennwortlose Sicherheitsschlüssel
-          href: howto-authentication-passwordless-security-key.md
-        - name: Kennwortlose Anmeldung per Telefon
-          href: howto-authentication-passwordless-phone.md
-        - name: Windows Hello for Business
-          href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
     - name: Zertifikatbasierte Authentifizierung
       items:
         - name: Erste Schritte mit Zertifikatauthentifizierung
           href: active-directory-certificate-based-authentication-get-started.md
           items:
-            - name: CBA auf Android-Geräten
+            - name: Verwenden auf Android-Geräten
               href: active-directory-certificate-based-authentication-android.md
-            - name: CBA auf iOS-Geräten
+            - name: Verwenden auf iOS-Geräten
               href: active-directory-certificate-based-authentication-ios.md
     - name: Berichterstellung
       items:
@@ -164,6 +187,8 @@
           href: howto-mfaserver-deploy-userportal.md
         - name: Webdienst der mobilen App
           href: howto-mfaserver-deploy-mobileapp.md
+        - name: Konfigurieren von Einstellungen
+          href: howto-mfa-server-settings.md
         - name: Konfigurieren von Hochverfügbarkeit
           href: howto-mfaserver-deploy-ha.md
         - name: Aktualisieren des MFA-Servers
@@ -198,8 +223,10 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Problembehandlung
       items:
-        - name: Problembehandlung bei SSPR
-          href: active-directory-passwords-troubleshoot.md
+        - name: Self-Service-Kennwortzurücksetzung (SSPR)
+          href: troubleshoot-sspr.md
+        - name: SSPR-Rückschreiben
+          href: troubleshoot-sspr-writeback.md
         - name: Häufig gestellte Fragen zu SSPR
           href: active-directory-passwords-faq.md
         - name: Häufig gestellte Fragen zu MFA
@@ -209,19 +236,21 @@
 - name: Verweis
   items:
     - name: MFA-Benutzerhandbuch
-      href: ./end-user/current/multi-factor-authentication-end-user.md
+      href: ../user-help/multi-factor-authentication-end-user-first-time.md
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Azure PowerShell-Cmdlets
-      href: /powershell/azure/overview
+      href: /powershell/azure/
+    - name: Betaversion der Microsoft Graph-REST-API
+      href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: Dienstgrenzwerte und Einschränkungen
-      href: ../users-groups-roles/directory-service-limits-restrictions.md
+      href: ../enterprise-users/directory-service-limits-restrictions.md
 - name: Ressourcen
   items:
     - name: Azure-Feedbackforum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: /answers/topics/azure-active-directory.html
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Dienstupdates

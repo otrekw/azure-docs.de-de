@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297781"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017609"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Optimierung der TCP/IP-Leistung für Azure-VMs
 
@@ -125,9 +125,8 @@ Für Azure lautet die Empfehlung, TCP-MSS-Clamping auf 1.350 Bytes und die MTU d
 
 Die Netzwerklatenz wird durch die Lichtgeschwindigkeit über ein Glasfasernetz bestimmt. Der Netzwerkdurchsatz von TCP wird außerdem stark durch die Paketumlaufzeit (Round Trip Time, RTT) zwischen zwei Netzwerkgeräten bestimmt.
 
-| | | | |
-|-|-|-|-|
-|**Route**|**Entfernung**|**Zeit (unidirektional)**|**RTT**|
+| Route | Distance | Unidirektionale Zeit | RTT |
+| ----- | -------- | ------------ | --- |
 |New York nach San Francisco|4\.148 km|21 ms|42 ms|
 |New York nach London|5\.585 km|28 ms|56 ms|
 |New York nach Sydney|15.993 km|80 ms|160 ms|
@@ -136,7 +135,7 @@ Diese Tabelle zeigt die Luftlinie zwischen zwei Orten. In Netzwerken ist der Abs
 
 `minimum RTT = 2 * (Distance in kilometers / Speed of propagation)`
 
-Sie können 200 für die Ausbreitungsgeschwindigkeit (speed of propagation) verwenden. Dies ist die Entfernung in Metern, die Licht in 1 Millisekunde zurücklegt.
+Sie können 200 für die Ausbreitungsgeschwindigkeit (speed of propagation) verwenden. Dies ist die Entfernung in Kilometern, die Licht in 1 Millisekunde zurücklegt.
 
 Nehmen Sie die Strecke New York nach San Francisco als Beispiel. Die Luftlinie beträgt 4.148 km. Nach Einsetzen dieses Werts in die Gleichung, ergibt sich Folgendes:
 
@@ -162,9 +161,8 @@ Die Formel zur Berechnung des maximalen Durchsatzes einer einzelnen TCP-Verbindu
 
 In dieser Tabelle ist der maximale Durchsatz einer einzelnen TCP-Verbindung in Megabytes pro Sekunde (MB/s) aufgeführt. (Zur besseren Lesbarkeit wird MB als Maßeinheit verwendet.)
 
-| | | | |
-|-|-|-|-|
-|**TCP-Fenstergröße (Bytes)**|**RTT-Latenz (ms)**|**Maximaler Durchsatz in MB/s**|**Maximaler Durchsatz in MBit/s**|
+| TCP Window Size (Bytes) | RTT-Latenz (ms) | Maximaler Durchsatz in MB/s | Maximaler Durchsatz in MBit/s |
+| ----------------------- | ---------------- | ---------------------------------- | --------------------------------- |
 |65.535|1|65,54|524,29|
 |65.535|30|2,18|17,48|
 |65.535|60|1,09|8,74|
@@ -179,9 +177,8 @@ TCP Window Scaling (Fensterskalierung) ist eine Technik, bei der die TCP-Fenster
 
 In der folgenden Tabelle sind diese Beziehungen veranschaulicht:
 
-| | | | |
-|-|-|-|-|
-|**TCP-Fenstergröße (Bytes)**|**RTT-Latenz (ms)**|**Maximaler Durchsatz in MB/s**|**Maximaler Durchsatz in MBit/s**|
+| TCP Window Size (Bytes) | RTT-Latenz (ms) | Maximaler Durchsatz in MB/s | Maximaler Durchsatz in MBit/s |
+| ----------------------- | ---------------- | ---------------------------------- | --------------------------------- |
 |65.535|30|2,18|17,48|
 |131.070|30|4.37|34,95|
 |262.140|30|8,74|69,91|
@@ -221,10 +218,9 @@ Set-NetTCPSetting
 
 Dies sind die wirksamen TCP-Einstellungen für `AutoTuningLevel`:
 
-| | | | |
-|-|-|-|-|
-|**AutoTuningLevel**|**Skalierungsfaktor**|**Skalierungsmultiplikator**|**Formel zur <br/>Berechnung der maximalen Fenstergröße**|
-|Deaktiviert|Keine|Keine|Fenstergröße|
+| AutoTuningLevel | Skalierungsfaktor | Skalierungsmultiplikator | Formel zum<br/>Berechnen der maximalen Fenstergröße |
+| --------------- | -------------- | ------------------ | -------------------------------------------- |
+|Disabled|Keine|Keine|Fenstergröße|
 |Eingeschränkt|4|2^4|Fenstergröße * (2^4)|
 |Stark eingeschränkt|2|2^2|Fenstergröße * (2^2)|
 |Normal|8|2^8|Fenstergröße * (2^8)|
@@ -265,7 +261,7 @@ Die empfangsseitige Skalierung ist eine Netzwerktreibertechnologie, die den Empf
 
 Um die beste Leistung zu erzielen, wenn der beschleunigte Netzwerkbetrieb auf einem virtuellen Computer aktiviert ist, müssen Sie die empfangsseitige Skalierung aktivieren. Die empfangsseitige Skalierung kann auch zu Vorteilen auf virtuellen Computern führen, auf denen der beschleunigte Netzwerkbetrieb nicht verwendet wird. Eine Übersicht darüber, wie Sie feststellen können, ob die empfangsseitige Skalierung aktiviert ist, und wie diese aktiviert wird, finden Sie unter [Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer](https://aka.ms/FastVM).
 
-### <a name="tcp-timewait-and-timewait-assassination"></a>TCP TIME_WAIT und TIME_WAIT Assassination
+### <a name="tcp-time_wait-and-time_wait-assassination"></a>TCP TIME_WAIT und TIME_WAIT Assassination
 
 TCP TIME_WAIT ist eine weitere gängige Einstellung, die die Netzwerk- und Anwendungsleistung beeinflusst. Auf ausgelasteten VMs, die viele Sockets öffnen und schließen, entweder als Clients oder Server (Quell-IP:Quellport + Ziel-IP:Zielport), kann ein bestimmter Socket während des normalen Betriebs von TCP für lange Zeit in einem TIME_WAIT-Zustand verharren. Der TIME_WAIT-Zustand soll es ermöglichen, dass jegliche zusätzliche Daten an einen Socket gesendet werden können, bevor er geschlossen wird. Daher verhindern TCP/IP-Stapel grundsätzlich die Wiederverwendung eines Sockets, indem sie das TCP-SYN-Paket des Clients automatisch verwerfen.
 

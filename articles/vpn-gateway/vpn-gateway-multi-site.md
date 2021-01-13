@@ -1,33 +1,26 @@
 ---
-title: 'Herstellen einer Verbindung zwischen einem virtuellen Netzwerk und mehreren Standorten mithilfe eines VPN-Gateways und PowerShell: klassisch | Microsoft-Dokumentation'
+title: 'Verbinden eines VNets mit mehreren Sites über VPN Gateway: Klassisch'
 description: Verbinden Sie mehrere lokale Standorte mithilfe eines VPN-Gateways mit einem klassischen virtuellen Netzwerk.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-service-management
-ms.assetid: b043df6e-f1e8-4a4d-8467-c06079e2c093
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.topic: how-to
+ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: 77f8b7094c96e507eef1d360a26240627bc0e350
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 168bb9e06c73ec27ec1304813023889c9549b8e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836082"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660694"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Hinzufügen einer Standort-zu-Standort-Verbindung mit einem VNet über eine vorhandene VPN-Gatewayverbindung (klassisch)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klassisch)](vpn-gateway-multi-site.md)
 >
 >
@@ -48,7 +41,7 @@ Sie können mehrere lokale Standorte mit einem einzigen virtuellen Netzwerk verb
 
 Wenn bereits ein statisches Gateway mit Ihrem virtuellen Netzwerk verbunden ist, können Sie den Gatewaytyp in „dynamisch“ ändern, um mehrere Standorte einzubinden. Dafür müssen Sie das virtuelle Netzwerk nicht neu erstellen. Stellen Sie vor dem Ändern des Routingtyps sicher, dass Ihr lokales VPN-Gateway routenbasierte VPN-Konfigurationen unterstützt.
 
-![Multi-Site-Diagramm](./media/vpn-gateway-multi-site/multisite.png "Mulit-Site")
+![Multi-Site-Diagramm](./media/vpn-gateway-multi-site/multisite.png "Mehrere Websites")
 
 ## <a name="points-to-consider"></a>Zu berücksichtigende Punkte
 
@@ -62,10 +55,13 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 * Kompatible VPN-Hardware für jeden lokalen Standort. Lesen Sie unter [Informationen zu VPN-Geräten und Gateways für virtuelle Netzwerkverbindungen](vpn-gateway-about-vpn-devices.md) nach, ob das Gerät, das Sie verwenden möchten, bekanntermaßen kompatibel ist.
 * Eine externe öffentliche IPv4-Adresse für jedes VPN-Gerät. Die IP-Adresse darf sich nicht hinter einer NAT befinden. Dies ist eine Voraussetzung
-* Sie müssen die aktuelle Version der Azure PowerShell-Cmdlets installieren. Vergewissern Sie sich, dass Sie zusätzlich zur Resource Manager-Version die Dienstverwaltungsversion installieren. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) .
 * Eine Person, die sich mit der Konfiguration Ihrer VPN-Hardware auskennt. Sie müssen über profunde Kenntnisse der Konfiguration des VPN-Geräts verfügen oder jemanden mit entsprechenden Fachkenntnissen hinzuziehen.
 * Die IP-Adressbereiche, die Sie für Ihr virtuelles Netzwerk verwenden möchten (sofern Sie sie noch nicht erstellt haben).
 * Die IP-Adressbereiche für alle lokalen Netzwerkstandorte, mit denen Sie eine Verbindung herstellen. Sie müssen sicherstellen, dass sich die IP-Adressbereiche der lokalen Netzwerkstandorte nicht überlappen. Andernfalls wird das Hochladen der Konfiguration vom Portal oder der REST-API abgelehnt.<br>Wenn Sie z. B. zwei lokale Netzwerkstandorte haben, die beide den IP-Adressbereich 10.2.3.0/24 enthalten, und ein Paket die Zieladresse 10.2.3.3 aufweist, würde Azure nicht wissen, an welchen Standort Sie das Paket senden möchten, weil sich die Adressbereiche überlappen. Zur Vermeidung von Routingproblemen lässt Azure das Hochladen von Konfigurationsdateien mit überlappenden Bereichen nicht zu.
+
+### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
+
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="1-create-a-site-to-site-vpn"></a>1. Erstellen eines Standort-zu-Standort-VPN
 Sie verfügen bereits über ein Standort-zu-Standort-VPN mit einem Gateway mit dynamischem Routing. In diesem Fall können Sie direkt mit dem [Exportieren der Konfigurationseinstellungen für das virtuelle Netzwerk](#export)fortfahren. Andernfalls führen Sie die folgenden Schritte aus:
@@ -75,10 +71,23 @@ Sie verfügen bereits über ein Standort-zu-Standort-VPN mit einem Gateway mit d
 2. Konfigurieren Sie das neue Gateway, und erstellen Sie den VPN-Tunnel. Eine Anleitung finden Sie im Abschnitt [Angeben der SKU und des VPN-Typs](vpn-gateway-howto-site-to-site-classic-portal.md#sku). Achten Sie darauf, als Routingtyp „Dynamisch“ anzugeben.
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Wenn Sie nicht über ein virtuelles Standort-zu-Standort-Netzwerk verfügen, gehen Sie wie folgt vor:
-1. Erstellen Sie Ihr virtuelles Site-to-Site-Netzwerk mithilfe der folgenden Anleitung: [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung](vpn-gateway-site-to-site-create.md).  
-2. Konfigurieren Sie mithilfe der folgenden Anleitung ein Gateway mit dynamischem Routing: [Konfigurieren eines VPN-Gateways](vpn-gateway-configure-vpn-gateway-mp.md). Denken Sie daran, **dynamisches Routing** als Gatewaytyp auszuwählen.
+1. Erstellen Sie Ihr virtuelles Site-to-Site-Netzwerk mithilfe der folgenden Anleitung: [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung](./vpn-gateway-howto-site-to-site-classic-portal.md).  
+2. Konfigurieren Sie mithilfe der folgenden Anleitung ein Gateway mit dynamischem Routing: [Konfigurieren eines VPN-Gateways](./vpn-gateway-howto-site-to-site-classic-portal.md). Denken Sie daran, **dynamisches Routing** als Gatewaytyp auszuwählen.
 
-## <a name="export"></a>2. Exportieren der Netzwerkkonfigurationsdatei
+## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. Exportieren der Netzwerkkonfigurationsdatei
+
+Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten. Verwenden Sie den folgenden Befehl, um zur Dienstverwaltung zu wechseln:
+
+```powershell
+azure config mode asm
+```
+
+Stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
+
+```powershell
+Add-AzureAccount
+```
+
 Exportieren Sie Ihre Azure-Netzwerkkonfigurationsdatei, indem Sie den folgenden Befehl ausführen. Sie können den Speicherort der zu exportierenden Datei bei Bedarf ändern.
 
 ```powershell
@@ -88,52 +97,54 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ## <a name="3-open-the-network-configuration-file"></a>3. Öffnen der Netzwerkkonfigurationsdatei
 Öffnen Sie die Netzwerkkonfigurationsdatei, die Sie im letzten Schritt heruntergeladen haben. Verwenden Sie dazu einen beliebigen XML-Editor. Die Datei sollte in etwa wie folgt aussehen:
 
-        <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
-          <VirtualNetworkConfiguration>
-            <LocalNetworkSites>
-              <LocalNetworkSite name="Site1">
-                <AddressSpace>
-                  <AddressPrefix>10.0.0.0/16</AddressPrefix>
-                  <AddressPrefix>10.1.0.0/16</AddressPrefix>
-                </AddressSpace>
-                <VPNGatewayAddress>131.2.3.4</VPNGatewayAddress>
-              </LocalNetworkSite>
-              <LocalNetworkSite name="Site2">
-                <AddressSpace>
-                  <AddressPrefix>10.2.0.0/16</AddressPrefix>
-                  <AddressPrefix>10.3.0.0/16</AddressPrefix>
-                </AddressSpace>
-                <VPNGatewayAddress>131.4.5.6</VPNGatewayAddress>
-              </LocalNetworkSite>
-            </LocalNetworkSites>
-            <VirtualNetworkSites>
-              <VirtualNetworkSite name="VNet1" AffinityGroup="USWest">
-                <AddressSpace>
-                  <AddressPrefix>10.20.0.0/16</AddressPrefix>
-                  <AddressPrefix>10.21.0.0/16</AddressPrefix>
-                </AddressSpace>
-                <Subnets>
-                  <Subnet name="FE">
-                    <AddressPrefix>10.20.0.0/24</AddressPrefix>
-                  </Subnet>
-                  <Subnet name="BE">
-                    <AddressPrefix>10.20.1.0/24</AddressPrefix>
-                  </Subnet>
-                  <Subnet name="GatewaySubnet">
-                    <AddressPrefix>10.20.2.0/29</AddressPrefix>
-                  </Subnet>
-                </Subnets>
-                <Gateway>
-                  <ConnectionsToLocalNetwork>
-                    <LocalNetworkSiteRef name="Site1">
-                      <Connection type="IPsec" />
-                    </LocalNetworkSiteRef>
-                  </ConnectionsToLocalNetwork>
-                </Gateway>
-              </VirtualNetworkSite>
-            </VirtualNetworkSites>
-          </VirtualNetworkConfiguration>
-        </NetworkConfiguration>
+```xml
+<NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+  <VirtualNetworkConfiguration>
+    <LocalNetworkSites>
+      <LocalNetworkSite name="Site1">
+        <AddressSpace>
+          <AddressPrefix>10.0.0.0/16</AddressPrefix>
+          <AddressPrefix>10.1.0.0/16</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>131.2.3.4</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="Site2">
+        <AddressSpace>
+          <AddressPrefix>10.2.0.0/16</AddressPrefix>
+          <AddressPrefix>10.3.0.0/16</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>131.4.5.6</VPNGatewayAddress>
+      </LocalNetworkSite>
+    </LocalNetworkSites>
+    <VirtualNetworkSites>
+      <VirtualNetworkSite name="VNet1" AffinityGroup="USWest">
+        <AddressSpace>
+          <AddressPrefix>10.20.0.0/16</AddressPrefix>
+          <AddressPrefix>10.21.0.0/16</AddressPrefix>
+        </AddressSpace>
+        <Subnets>
+          <Subnet name="FE">
+            <AddressPrefix>10.20.0.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="BE">
+            <AddressPrefix>10.20.1.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="GatewaySubnet">
+            <AddressPrefix>10.20.2.0/29</AddressPrefix>
+          </Subnet>
+        </Subnets>
+        <Gateway>
+          <ConnectionsToLocalNetwork>
+            <LocalNetworkSiteRef name="Site1">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+          </ConnectionsToLocalNetwork>
+        </Gateway>
+      </VirtualNetworkSite>
+    </VirtualNetworkSites>
+  </VirtualNetworkConfiguration>
+</NetworkConfiguration>
+```
 
 ## <a name="4-add-multiple-site-references"></a>4. Hinzufügen von mehreren Standortverweisen
 Beim Hinzufügen oder Entfernen der Informationen für Standortverweise nehmen Sie Konfigurationsänderungen an „ConnectionsToLocalNetwork/LocalNetworkSiteRef“ vor. Wenn Sie einen neuen Verweis für einen lokalen Standort hinzufügen, erstellt Azure einen neuen Tunnel. Das folgende Beispiel zeigt die Netzwerkkonfiguration für eine Einzelstandortverbindung. Speichern Sie die Datei, wenn Sie alle Änderungen vorgenommen haben.

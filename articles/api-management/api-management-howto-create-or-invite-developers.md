@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Benutzerkonten in Azure API Management | Microsoft Docs
-description: Erfahren Sie, wie Sie Benutzer in Azure API Management erstellen und einladen.
+title: Verwalten von Benutzerkonten in Azure API Management | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie Benutzer in Azure API Management erstellen und einladen. Außerdem können Sie sich zusätzliche Ressourcen ansehen, die verwendet werden, nachdem ein Entwicklerkonto erstellt wurde.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,26 +12,26 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 9de75b5537b3e267116882e7f151d893de575071
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 92e032eb104835788f515cc7800fe5dacfa8adaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072469"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88566130"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Verwalten von Benutzerkonten in Azure API Management
 
-In API Management sind Entwickler die Benutzer der APIs, die Sie mit API Management verfügbar machen. Diese Anleitung beschreibt die Erstellung und Einladung von Entwicklern zur Nutzung Ihrer API und der Produkte, die Sie über die API Management-Instanz bereitgestellt haben. Informationen zum programmgesteuerten Verwalten von Benutzerkonten finden Sie in der Dokumentation zur [Benutzerentität](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user) in der [Referenz zu API Management REST](/rest/api/apimanagement/).
+In API Management sind Entwickler die Benutzer der APIs, die Sie mit API Management verfügbar machen. Diese Anleitung beschreibt die Erstellung und Einladung von Entwicklern zur Nutzung Ihrer API und der Produkte, die Sie über die API Management-Instanz bereitgestellt haben. Informationen zum programmgesteuerten Verwalten von Benutzerkonten finden Sie in der Dokumentation zur [Benutzerentität](/rest/api/apimanagement/2019-12-01/user) in der [Referenz zu API Management REST](/rest/api/apimanagement/).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie Aufgaben in diesem Artikel aus: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
+Absolvieren Sie die Aufgaben im folgenden Artikel: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-developer"></a>Erstellen eines neuen Entwicklers
+## <a name="create-a-new-developer"></a><a name="create-developer"> </a>Erstellen eines neuen Entwicklers
 
 Um einen neuen Benutzer hinzuzufügen, führen Sie die Schritte in diesem Abschnitt aus:
 
@@ -44,7 +44,7 @@ Um einen neuen Benutzer hinzuzufügen, führen Sie die Schritte in diesem Abschn
 
 Neu erstellte Entwicklerkonten sind standardmäßig **Aktiv** und werden der Gruppe **Entwickler** zugewiesen. Entwicklerkonten mit dem Status **Aktiv** können sämtliche APIs aufrufen, die sie abonniert haben. Informationen zum Zuordnen des neu erstellten Entwicklers zu weiteren Gruppen finden Sie unter [Zuordnen von Entwicklern zu Gruppen][How to associate groups with developers].
 
-## <a name="invite-developer"></a>Einladen eines Entwicklers
+## <a name="invite-a-developer"></a><a name="invite-developer"> </a>Einladen eines Entwicklers
 Um einen Entwickler einzuladen, führen Sie die Schritte in diesem Abschnitt aus:
 
 1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen** aus.
@@ -56,7 +56,7 @@ Wenn Sie einen Entwickler einladen, wird eine E-Mail an diesen Entwickler geschi
 
 Nachdem die Einladung angenommen wurde, ist das Konto aktiv.
 
-## <a name="block-developer"></a> Deaktivieren oder erneutes Aktivieren eines Entwicklerkontos
+## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"> </a> Deaktivieren oder erneutes Aktivieren eines Entwicklerkontos
 
 Neu erstellte oder eingeladene Entwicklerkonten sind standardmäßig **Aktiv**. Klicken Sie auf **Blockieren**, um ein Entwicklerkonto zu deaktivieren. Klicken Sie auf **Aktivieren**, um ein blockiertes Entwicklerkonto erneut zu aktivieren. Blockierte Entwicklerkonten haben keinen Zugriff auf das Entwicklerportal und können keine APIs aufrufen. Klicken Sie zum Löschen eines Benutzerkontos auf **Löschen**.
 
@@ -68,9 +68,9 @@ Um einen Benutzer zu blockieren, führen Sie die folgenden Schritte aus.
 
 ## <a name="reset-a-user-password"></a>Zurücksetzen des Benutzerkennworts
 
-Informationen zur programmgesteuerten Verwendung von Benutzerkonten finden Sie in der Dokumentation zur Benutzerentität in der Referenz zur [API Management REST-API](/rest/api/apimanagement/). Um das Kennwort eines Benutzerkontos auf einen bestimmten Wert zurückzusetzen, können Sie den Vorgang [Aktualisieren eines Benutzers](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) verwenden und das gewünschte Kennwort angeben.
+Informationen zur programmgesteuerten Verwendung von Benutzerkonten finden Sie in der Dokumentation zur Benutzerentität in der Referenz zur [API Management REST-API](/rest/api/apimanagement/). Um das Kennwort eines Benutzerkontos auf einen bestimmten Wert zurückzusetzen, können Sie den Vorgang [Aktualisieren eines Benutzers](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) verwenden und das gewünschte Kennwort angeben.
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a><a name="next-steps"> </a>Nächste Schritte
 Nachdem Sie das Entwicklerkonto erstellt haben, können Sie das Konto zu Rollen zuweisen und Produkte und APIs abonnieren. Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen][How to create and use groups].
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png

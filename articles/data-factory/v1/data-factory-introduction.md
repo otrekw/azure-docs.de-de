@@ -1,10 +1,10 @@
 ---
-title: Einführung in Data Factory, einen Datenintegrationsdienst | Microsoft Docs
+title: Einführung in Data Factory, einen Datenintegrationsdienst
 description: 'Hier erfahren Sie, worum es sich bei Azure Data Factory handelt: Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, der das Verschieben und Transformieren von Daten orchestriert und automatisiert.'
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: cec68cb5-ca0d-473b-8ae8-35de949a009e
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 2e508839cd343820a36cc715ebde0f47c2ac4ab1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 101de32aea47bb3dd3c8a04434993c8614939c37
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139522"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495564"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -35,7 +35,7 @@ Ein Spiele-Unternehmen erfasst beispielsweise Protokolle, die von Spielen in der
 
 Zum Analysieren dieser Protokolle benötigt das Unternehmen die Referenzdaten (beispielsweise Informationen zu den Kunden, zum Spiel und zur Marketingkampagne), die in einem lokalen Datenspeicher gespeichert sind. Daher möchte das Unternehmen Protokolldaten aus dem Clouddatenspeicher und Referenzdaten aus dem lokalen Datenspeicher erfassen. 
 
-Als Nächstes sollen die Daten mit Hadoop in der Cloud (Azure HDInsight) verarbeitet werden. Das Unternehmen möchte die Ergebnisdaten in einem Data Warehouse in der Cloud, z.B. Azure SQL Data Warehouse, oder einem lokalen Speicher wie SQL Server veröffentlichen. Dieser Workflow soll einmal pro Woche ausgeführt werden. 
+Als Nächstes sollen die Daten mit Hadoop in der Cloud (Azure HDInsight) verarbeitet werden. Das Unternehmen möchte die Ergebnisdaten in einem Data Warehouse in der Cloud (beispielsweise Azure Synapse Analytics) oder in einem lokalen Datenspeicher wie SQL Server veröffentlichen. Dieser Workflow soll einmal pro Woche ausgeführt werden. 
 
 Das Unternehmen benötigt eine Plattform, auf der ein Workflow erstellt werden kann, mit dem das Erfassen von Daten aus Datenspeichern lokal oder in der Cloud möglich ist. Außerdem soll es möglich sein, Daten mit vorhandenen Compute Services wie Hadoop zu transformieren und zu verarbeiten und die Ergebnisse in einem Datenspeicher lokal oder in der Cloud zu veröffentlichen, damit sie von BI-Anwendungen genutzt werden können. 
 
@@ -47,7 +47,7 @@ Azure Data Factory ist die optimale Plattform für diese Szenarien. Es ist ein *
 
 - Verarbeiten oder Transformieren der Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning
 
--  Veröffentlichen von Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse für die Nutzung durch BI-Anwendungen (Business Intelligence)  
+-  Veröffentlichen von Ausgabedaten für Datenspeicher wie Azure Synapse Analytics für die Nutzung durch BI-Anwendungen (Business Intelligence)  
 
 Dies ist eher eine EL- (Extract-and-Load) und TL-Plattform (Transform-and-Load) als eine traditionelle ETL-Plattform (Extract-Transform-and-Load). Die Transformationen verarbeiten Daten mit Compute Services, anstatt abgeleitete Spalten hinzuzufügen, die Anzahl von Zeilen zu zählen, Daten zu sortieren usw. 
 
@@ -112,7 +112,7 @@ So gibt etwa ein verknüpfter Azure Storage-Dienst die Verbindungszeichenfolge a
 
 Verknüpfte Dienste werden in Data Factory aus zwei Gründen verwendet:
 
-* Sie stellen einen *Datenspeicher* dar, der beispielsweise eine lokale SQL Server-Datenbank, eine Oracle-Datenbank, eine Dateifreigabe oder ein Azure Blob Storage-Konto enthalten kann (aber nicht darauf beschränkt ist). Eine Liste mit unterstützten Datenspeichern finden Sie im Abschnitt [Datenverschiebungsaktivitäten](#data-movement-activities) .
+* Sie stellen einen *Datenspeicher* dar, der beispielsweise eine SQL Server-Datenbank, eine Oracle-Datenbank, eine Dateifreigabe oder ein Azure Blob Storage-Konto enthalten kann (aber nicht darauf beschränkt ist). Eine Liste mit unterstützten Datenspeichern finden Sie im Abschnitt [Datenverschiebungsaktivitäten](#data-movement-activities) .
 
 * Sie stellen eine *Computeressource* dar, die die Ausführung einer Aktivität hosten kann. So wird beispielsweise die HDInsightHive-Aktivität in einem HDInsight-Hadoop-Cluster ausgeführt. Eine Liste mit unterstützten Compute-Umgebungen finden Sie unter [Datentransformationsaktivitäten](#data-transformation-activities).
 
@@ -140,8 +140,8 @@ Verwenden Sie diese Tools oder APIs, um Datenpipelines in Azure Data Factory zu 
 
 Informationen zum Erstellen von Data Factorys mit Datenpipelines erhalten Sie anhand von Schritt-für-Schritt-Anleitungen in den folgenden Tutorials:
 
-| Tutorial | BESCHREIBUNG |
+| Lernprogramm | BESCHREIBUNG |
 | --- | --- |
-| [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Erstellen Sie eine Pipeline, mit der Daten aus Blobspeicher in eine SQL-Datenbank verschoben werden. |
+| [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Erstellen Sie eine Data Factory mit einer Pipeline, mit der Daten aus Blob Storage in SQL-Datenbank verschoben werden. |
 | [Tutorial: Build your first pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters) |Erstellen Sie Ihre erste Azure Data Factory mit einer Datenpipeline für die Datenverarbeitung, indem ein Hive-Skript in einem Azure HDInsight-Cluster (Hadoop) ausgeführt wird. |
-| [Move data between an on-premises data store and a cloud data store by using Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) (Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway) |Erstellen Sie eine Data Factory mit einer Pipeline, die Daten aus einer lokalen SQL Server-Datenbank in ein Azure-Blob verschiebt. Im Rahmen der exemplarischen Vorgehensweise installieren und konfigurieren Sie das Datenverwaltungsgateway auf Ihrem Computer. |
+| [Move data between an on-premises data store and a cloud data store by using Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) (Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway) |Erstellen Sie eine Data Factory mit einer Pipeline, die Daten aus einer SQL Server-Datenbank in ein Azure-Blob verschiebt. Im Rahmen der exemplarischen Vorgehensweise installieren und konfigurieren Sie das Datenverwaltungsgateway auf Ihrem Computer. |

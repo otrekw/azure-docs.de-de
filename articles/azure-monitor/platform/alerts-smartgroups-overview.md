@@ -1,21 +1,18 @@
 ---
 title: Intelligente Gruppen
 description: Intelligente Gruppen sind Aggregationen von Warnungen, die Ihnen helfen, Störungen bei Warnungen zu reduzieren.
-author: anantr
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/15/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 08657163eb170b8d3185ce15bd724f1f55bbe2bd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.date: 05/15/2018
+ms.openlocfilehash: 743bd1a674c034cd6a0350f959289ac3ecb568de
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702869"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186608"
 ---
 # <a name="smart-groups"></a>Intelligente Gruppen
+
 Eine häufige Herausforderung beim Umgang mit Warnungen ist das Durchsuchen der nicht relevanten Informationen, um die relevanten Warnungen zu ermitteln – intelligente Gruppen sind als Lösung für dieses Problem vorgesehen.  
 
 Intelligente Gruppen werden automatisch mithilfe von Machine Learning-Algorithmen erstellt, um zusammengehörige Warnungen zu kombinieren, die ein einzelnes Problem darstellen.  Wenn eine Warnung erstellt wird, fügt der Algorithmus diese basierend auf Informationen wie bisherigen Mustern, Ähnlichkeit von Eigenschaften und Ähnlichkeit der Struktur einer neuen intelligenten Gruppe oder einer vorhandenen intelligenten Gruppe hinzu. Wenn z. B. „% CPU“ auf mehreren virtuellen Computern in einem Abonnement gleichzeitig Spitzenwerte erreicht, die zu vielen einzelnen Warnungen führen, und wenn solche Warnungen in der Vergangenheit immer wieder zusammen aufgetreten sind, werden diese Warnungen voraussichtlich in einer einzelnen intelligenten Gruppe zusammengefasst, was auf eine mögliche gemeinsame Ursache hindeutet. Das bedeutet, dass intelligente Gruppen für Personen, die Fehlerbehebungen für Warnungen durchführen, nicht nur die Möglichkeit haben, die nicht relevanten Informationen zu reduzieren, indem sie verwandte Warnungen als einzelne aggregierte Einheit verwalten, sondern sie auch zu möglichen gemeinsamen Ursachen für ihre Warnungen führen.
@@ -25,6 +22,7 @@ Derzeit berücksichtigt der Algorithmus nur Warnungen vom gleichen Überwachungs
 Sie können ähnlich wie bei Warnungen die Details der intelligenten Gruppen anzeigen und den Status festlegen. Jede Warnung ist nur Mitglied einer einzigen intelligenten Gruppe. 
 
 ## <a name="smart-group-state"></a>Zustand der intelligenten Gruppe
+
 Der Zustand der intelligenten Gruppe ist ein ähnliches Konzept wie der Warnungszustand, mit dem Sie den Auflösungsprozess auf der Ebene einer intelligenten Gruppe verwalten können. Ähnlich wie beim Warnungszustand befindet sich eine intelligente Gruppe beim Erstellen im Zustand **Neu**, der entweder in **Bestätigt** oder **Geschlossen** geändert werden kann.
 
 Die folgenden Zustände werden für intelligente Gruppen unterstützt.
@@ -35,7 +33,7 @@ Die folgenden Zustände werden für intelligente Gruppen unterstützt.
 | Bestätigt | Ein Administrator hat die intelligente Gruppe überprüft und mit deren Bearbeitung begonnen. |
 | Geschlossen | Das Problem wurde gelöst. Nachdem eine intelligente Gruppe geschlossen wurde, können Sie diese erneut öffnen, indem Sie den Zustand ändern. |
 
-[Erfahren Sie mehr über das Ändern des Zustands Ihrer intelligenten Gruppen](https://aka.ms/managing-alert-smart-group-states).
+[Erfahren Sie mehr über das Ändern des Zustands Ihrer intelligenten Gruppen](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json).
 
 > [!NOTE]
 >  Durch das Ändern des Zustands einer intelligenten Gruppe wird nicht der Zustand der einzelnen Mitgliedswarnungen geändert.
@@ -60,7 +58,5 @@ Der Name einer intelligenten Gruppe ist der Name der ersten Warnung. Sie können
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwalten intelligenter Gruppen](https://aka.ms/managing-smart-groups)
-- [Ändern des Zustands von Warnungen und intelligenten Gruppen](https://aka.ms/managing-alert-smart-group-states)
-
-
+- [Verwalten intelligenter Gruppen](./alerts-managing-smart-groups.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+- [Ändern des Zustands von Warnungen und intelligenten Gruppen](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json)

@@ -1,19 +1,18 @@
 ---
-title: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals | Microsoft-Dokumentation
+title: 'Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals'
 description: In dieser Schnellstartanleitung werden die ersten Schritte zum Erstellen eines Stream Analytic-Auftrags, zum Konfigurieren von Ein- und Ausgaben sowie zum Definieren einer Abfrage erläutert.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: e05d293760b88cd02fdffae60e762f040a4d1311
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5ad261064adf34945a600983296cb3e0ceaa5247
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449229"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006660"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals
 
@@ -37,9 +36,9 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Eingabedaten vo
    
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
-   |Abonnement  | \<Ihr Abonnement\> |  Wählen Sie das gewünschte Azure-Abonnement aus. |
-   |Ressourcengruppe   |   asaquickstart-resourcegroup  |   Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein. |
-   |Region  |  \<Die Region, die Ihren Benutzern am nächsten liegt\> | Wählen Sie einen geografischen Standort aus, an dem Sie Ihre IoT Hub-Instanz hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten ist. |
+   |Subscription  | \<Your subscription\> |  Wählen Sie das gewünschte Azure-Abonnement aus. |
+   |Resource group   |   asaquickstart-resourcegroup  |   Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein. |
+   |Region  |  \<Select the region that is closest to your users\> | Wählen Sie einen geografischen Standort aus, an dem Sie Ihre IoT Hub-Instanz hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten ist. |
    |IoT Hub-Name  | MyASAIoTHub  |   Wählen Sie einen Namen für Ihre IoT Hub-Instanz aus.   |
 
    ![Erstellen eines IoT Hubs](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
@@ -68,7 +67,7 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Eingabedaten vo
 
    ![Speicherkonto erstellen](./media/stream-analytics-quick-create-portal/create-storage-account.png)
 
-3. Wählen Sie nach der Erstellung des Speicherkontos im Bereich **Übersicht** die Kachel**Blobs** aus.
+3. Wählen Sie nach der Erstellung des Speicherkontos im Bereich **Übersicht** die Kachel **Blobs** aus.
 
    ![Speicherkontoübersicht](./media/stream-analytics-quick-create-portal/blob-storage.png)
 
@@ -89,9 +88,9 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Eingabedaten vo
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
    |Auftragsname   |  MyASAJob   |   Geben Sie einen Namen zur Identifizierung des Stream Analytics-Auftrags ein. Der Stream Analytics-Auftragsname darf nur alphanumerische Zeichen, Bindestriche und Unterstriche enthalten und muss zwischen 3 und 63 Zeichen lang sein. |
-   |Abonnement  | \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement aus, das Sie für diesen Auftrag verwenden möchten. |
-   |Ressourcengruppe   |   asaquickstart-resourcegroup  |   Wählen Sie die gleiche Ressourcengruppe für Ihre IoT Hub-Instanz aus. |
-   |Location  |  \<Die Region, die Ihren Benutzern am nächsten liegt\> | Wählen Sie den geografischen Standort aus, in dem Sie Ihren Stream Analytics-Auftrag hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten liegt, um die Leistung zu steigern und die Datenübertragungskosten zu senken. |
+   |Subscription  | \<Your subscription\> |  Wählen Sie das Azure-Abonnement aus, das Sie für diesen Auftrag verwenden möchten. |
+   |Resource group   |   asaquickstart-resourcegroup  |   Wählen Sie die gleiche Ressourcengruppe für Ihre IoT Hub-Instanz aus. |
+   |Ort  |  \<Select the region that is closest to your users\> | Wählen Sie den geografischen Standort aus, in dem Sie Ihren Stream Analytics-Auftrag hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten liegt, um die Leistung zu steigern und die Datenübertragungskosten zu senken. |
    |Streamingeinheiten  | 1  |   Streamingeinheiten sind die Computingressourcen, die für die Ausführung eines Auftrags erforderlich sind. Standardmäßig ist dieser Wert auf 1 festgelegt. Informationen zum Skalieren von Streamingeinheiten finden Sie im Artikel [Überblick über Streamingeinheiten und Informationen zu Anpassungen](stream-analytics-streaming-unit-consumption.md).   |
    |Hosting-Umgebung  |  Cloud  |   Für Stream Analytics-Aufträge ist eine Cloud- oder Edge-Bereitstellung möglich. Mit der Option „Cloud“ können die Aufträge in Azure Cloud und mit der Option „Edge“ auf einem IoT Edge-Gerät bereitgestellt werden. |
 
@@ -114,7 +113,7 @@ In diesem Abschnitt konfigurieren Sie eine IoT Hub-Geräteeingabe für den Strea
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
    |Eingabealias  |  IoTHubInput   |  Geben Sie einen Namen zur Identifizierung der Auftragseingabe ein.   |
-   |Abonnement   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben. |
+   |Subscription   |  \<Your subscription\> |  Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben. |
    |IoT Hub  |  MyASAIoTHub |  Geben Sie den Namen der IoT Hub-Instanz ein, die Sie im vorherigen Abschnitt erstellt haben. |
 
 4. Übernehmen Sie für die anderen Optionen die Standardwerte, und klicken Sie zum Speichern der Einstellungen auf **Speichern**.  
@@ -132,7 +131,7 @@ In diesem Abschnitt konfigurieren Sie eine IoT Hub-Geräteeingabe für den Strea
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
    |Ausgabealias |   BlobOutput   |   Geben Sie einen Namen zur Identifizierung der Auftragsausgabe ein. |
-   |Abonnement  |  \<Ihr Abonnement\>  |  Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben. |
+   |Subscription  |  \<Your subscription\>  |  Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben. |
    |Speicherkonto |  asaquickstartstorage |   Wählen Sie den Namen des Speicherkontos aus, oder geben Sie ihn ein. Speicherkontonamen werden automatisch erkannt, wenn sie im gleichen Abonnement erstellt werden.       |
    |Container |   container1  |  Wählen Sie den vorhandenen Container aus, den Sie in Ihrem Speicherkonto erstellt haben.   |
 
@@ -153,7 +152,7 @@ In diesem Abschnitt konfigurieren Sie eine IoT Hub-Geräteeingabe für den Strea
    HAVING Temperature > 27
    ```
 
-3. In diesem Beispiel liest die Abfrage die Daten aus IoT Hub und kopiert sie in eine neue Datei im Blob. Wählen Sie **Speichern** aus.  
+3. In diesem Beispiel liest die Abfrage die Daten aus IoT Hub und kopiert sie in eine neue Datei im Blob. Klicken Sie auf **Speichern**.  
 
    ![Konfigurieren der Auftragstransformation](./media/stream-analytics-quick-create-portal/add-asa-query.png)
 
@@ -179,7 +178,7 @@ In diesem Abschnitt konfigurieren Sie eine IoT Hub-Geräteeingabe für den Strea
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, den Stream Analytics-Auftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie ihn beenden und später bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht weiter verwenden möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen. Führen Sie dazu folgende Schritte aus:
+Löschen Sie die Ressourcengruppe, den Stream Analytics-Auftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie ihn beenden und später bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht mehr verwenden möchten, löschen Sie alle Ressourcen, die im Rahmen dieser Schnellstartanleitung erstellt wurden:
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** und dann auf den Namen der erstellten Ressource.  
 
@@ -187,10 +186,9 @@ Löschen Sie die Ressourcengruppe, den Stream Analytics-Auftrag und alle dazugeh
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen einfachen Stream Analytics-Auftrag mit dem Azure-Portal bereitgestellt. Stream Analytics-Aufträge können auch mit [PowerShell](stream-analytics-quick-create-powershell.md), [Visual Studio](stream-analytics-quick-create-vs.md) und [Visual Studio Code](quick-create-vs-code.md) bereitgestellt werden.
+In dieser Schnellstartanleitung haben Sie einen einfachen Stream Analytics-Auftrag mit dem Azure-Portal bereitgestellt. Stream Analytics-Aufträge können auch mit [PowerShell](stream-analytics-quick-create-powershell.md), [Visual Studio](stream-analytics-quick-create-vs.md) und [Visual Studio Code](quick-create-visual-studio-code.md) bereitgestellt werden.
 
 Wenn Sie Informationen zum Konfigurieren anderer Eingabequellen sowie zum Ausführen der Echtzeiterkennung benötigen, lesen Sie den folgenden Artikel:
 
 > [!div class="nextstepaction"]
 > [Erste Schritte mit Azure Stream Analytics: Betrugserkennung in Echtzeit](stream-analytics-real-time-fraud-detection.md)
-

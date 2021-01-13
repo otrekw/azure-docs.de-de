@@ -1,27 +1,26 @@
 ---
-title: 'Schnellstart: Registrieren von X.509-Geräten für den Azure Device Provisioning-Dienst per C# | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung werden Gruppenregistrierungen verwendet. In dieser Schnellstartanleitung registrieren Sie X.509-Geräte per C# in Azure IoT Hub Device Provisioning Service.
+title: Schnellstart – Registrieren eines X.509-Geräts bei Azure Device Provisioning Service mit C#
+description: In dieser Schnellstartanleitung werden Gruppenregistrierungen verwendet. In dieser Schnellstartanleitung registrieren Sie X.509-Geräte mithilfe von C# bei Azure IoT Hub Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 09/28/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.devlang: csharp
-ms.custom: mvc
-ms.openlocfilehash: 15bce340b257b5c221192a6ace5c5f0eac30f85a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 9fc34532818a742ef67e4b2532966874d083199d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035992"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959848"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Schnellstart: Registrieren von X.509-Geräten für den Device Provisioning-Dienst mit C#
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Schnellstart: Registrieren von X.509-Geräten für den Device Provisioning-Dienst per C#
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mit C# programmgesteuert eine [Registrierungsgruppe](concepts-service.md#enrollment-group) erstellen, für die X.509-Zertifizierungsstellenzertifikate (Zwischen- oder Stammzertifikat) verwendet werden. Die Registrierungsgruppe wird mit dem [Microsoft Azure IoT SDK für .NET](https://github.com/Azure/azure-iot-sdk-csharp) und einer C# .NET Core-Beispielanwendung erstellt. Eine Registrierungsgruppe steuert den Zugriff auf den Bereitstellungsdienst für Geräte, die das gleiche allgemeine Signaturzertifikat in ihrer Zertifikatkette verwenden. Weitere Informationen finden Sie unter [Steuern des Gerätezugriffs auf den Bereitstellungsdienst mit X.509-Zertifikaten](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). Weitere Informationen zur Verwendung der auf dem X.509-Zertifikat basierenden Public Key-Infrastruktur (PKI) mit Azure IoT Hub und dem Device Provisioning-Dienst finden Sie unter [Geräteauthentifizierung mit X.509-Zertifikaten](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
+In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mit C# programmgesteuert eine [Registrierungsgruppe](concepts-service.md#enrollment-group) erstellen, für die X.509-Zertifizierungsstellenzertifikate (Zwischen- oder Stammzertifikat) verwendet werden. Die Registrierungsgruppe wird mit dem [Microsoft Azure IoT SDK für .NET](https://github.com/Azure/azure-iot-sdk-csharp) und einer C# .NET Core-Beispielanwendung erstellt. Eine Registrierungsgruppe steuert den Zugriff auf den Bereitstellungsdienst für Geräte, die das gleiche allgemeine Signaturzertifikat in ihrer Zertifikatkette verwenden. Weitere Informationen finden Sie unter [Steuern des Gerätezugriffs auf den Bereitstellungsdienst mit X.509-Zertifikaten](./concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). Weitere Informationen zur Verwendung der auf dem X.509-Zertifikat basierenden Public Key-Infrastruktur (PKI) mit Azure IoT Hub und dem Device Provisioning-Dienst finden Sie unter [Geräteauthentifizierung mit X.509-Zertifikaten](../iot-hub/iot-hub-x509ca-overview.md). 
 
 In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie bereits einen IoT Hub und Device Provisioning Service-Instanz erstellt haben. Falls diese Ressourcen noch nicht vorhanden sind, gehen Sie zunächst die Schnellstartanleitung [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) durch, bevor Sie mit diesem Artikel fortfahren.
 
@@ -45,22 +44,26 @@ Das [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) enthält Testtoo
 > Verwenden Sie Zertifikate, die mit den SDK-Tools sind ausschließlich zur Verwendung für Tests in der Entwicklung erstellt wurden.
 > Verwenden Sie diese Zertifikate nicht in der Produktionsumgebung.
 > Sie enthalten hartcodierte Kennwörter wie etwa *1234*, die nach 30 Tagen ablaufen.
-> Informationen zum Abrufen von Zertifikaten, die für den Einsatz in der Produktion geeignet sind, finden Sie in der Azure IoT Hub-Dokumentation unter [Abrufen eines X.509-Zertifizierungsstellenzertifikats](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate).
+> Informationen zum Abrufen von Zertifikaten, die für den Einsatz in der Produktion geeignet sind, finden Sie in der Azure IoT Hub-Dokumentation unter [Abrufen eines X.509-Zertifizierungsstellenzertifikats](../iot-hub/iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate).
 >
 
 Führen Sie die folgenden Schritte aus, um diese Testtools zum Generieren von Zertifikaten zu verwenden:
 
-1. Öffnen Sie ein Eingabeaufforderungsfenster oder eine Git Bash-Shell, und wechseln Sie auf Ihrem Computer in einen Arbeitsordner. Führen Sie den folgenden Befehl zum Klonen des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus:
+1. Suchen Sie den Tagnamen für das [aktuelle Release](https://github.com/Azure/azure-iot-sdk-c/releases/latest) des Azure IoT C SDK.
 
-   ```cmd/sh
-   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
-   ```
+2. Öffnen Sie eine Eingabeaufforderung oder Git Bash-Shell, und wechseln Sie auf Ihrem Computer in einen Arbeitsordner. Führen Sie den folgenden Befehl zum Klonen des aktuellen Releases des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus. Verwenden Sie den im vorherigen Schritt gefundenen Tag als Wert für den Parameter `-b`:
 
-   Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
+    ```cmd/sh
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
+    ```
+
+    Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
 
    Die Testtools befinden sich im geklonten Repository unter *azure-iot-sdk-c/tools/CACertificates*.
 
-1. Führen Sie die Schritte unter [Managing test CA certificates for samples and tutorials](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) (Verwalten von Zertifizierungsstellen-Testzertifikaten für Beispiele und Tutorials) aus.
+3. Führen Sie die Schritte unter [Managing test CA certificates for samples and tutorials](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) (Verwalten von Zertifizierungsstellen-Testzertifikaten für Beispiele und Tutorials) aus.
 
 Zusätzlich zu den Tools im C SDK veranschaulicht das [Beispiel zum Überprüfen des Gruppenzertifikats](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample) im *Microsoft Azure IoT SDK für .NET* das Ausführen eines Eigentumsnachweises in C# für ein vorhandenes X.509-Zwischen- oder -Stammzertifikat einer Zertifizierungsstelle.
 
@@ -76,17 +79,17 @@ Für das Beispiel in dieser Schnellstartanleitung benötigen Sie die Verbindungs
 
 ## <a name="create-the-enrollment-group-sample"></a>Erstellen des Registrierungsgruppenbeispiels 
 
-Dieser Abschnitt zeigt, wie Sie eine .NET Core-Konsolen-App erstellen, die Ihrem Bereitstellungsdienst eine Registrierungsgruppe hinzufügt. Wenn Sie diese Schritte etwas abwandeln, können Sie damit auch eine [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot)-Konsolen-App zum Hinzufügen der Registrierungsgruppe erstellen. Weitere Informationen zum Entwickeln mit IoT Core finden Sie in der [Windows IoT Core-Dokumentation für Entwickler](https://docs.microsoft.com/windows/iot-core/).
+Dieser Abschnitt zeigt, wie Sie eine .NET Core-Konsolen-App erstellen, die Ihrem Bereitstellungsdienst eine Registrierungsgruppe hinzufügt. Wenn Sie diese Schritte etwas abwandeln, können Sie damit auch eine [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot)-Konsolen-App zum Hinzufügen der Registrierungsgruppe erstellen. Weitere Informationen zum Entwickeln mit IoT Core finden Sie in der [Windows IoT Core-Dokumentation für Entwickler](/windows/iot-core/).
 
 1. Öffnen Sie Visual Studio, und wählen Sie **Neues Projekt erstellen** aus. Wählen Sie unter **Neues Projekt erstellen** die Projektvorlage **Konsolen-App (.NET Core)** für C# und dann **Weiter** aus.
 
-1. Nennen Sie das Projekt *CreateEnrollmentGroup*, und wählen Sie anschließend **Erstellen** aus.
+1. Geben Sie dem Projekt den Namen *CreateEnrollmentGroup*, und wählen Sie dann **Erstellen** aus.
 
     ![Konfigurieren des Visual C#-Projekts für den klassischen Windows-Desktop](media//quick-enroll-device-x509-csharp/configure-app-vs2019.png)
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **CreateEnrollmentGroup**, und wählen Sie dann **NuGet-Pakete verwalten** aus.
+1. Wenn die Projektmappe in Visual Studio geöffnet wird, klicken Sie im Bereich des **Projektmappen-Explorers** mit der rechten Maustaste auf das Projekt **CreateEnrollmentGroup**, und wählen Sie dann **NuGet-Pakete verwalten** aus.
 
-1. Wählen Sie im **NuGet-Paket-Manager** die Option **Durchsuchen** aus, suchen Sie nach **Microsoft.Azure.Devices.Provisioning.Service**, wählen Sie diese Option aus, und klicken Sie dann auf **Installieren**.
+1. Wählen Sie im **NuGet-Paket-Manager** die Option **Durchsuchen** aus, suchen Sie nach **Microsoft.Azure.Devices.Provisioning.Service**, und wählen Sie diese Option und dann **Installieren** aus.
 
     ![Fenster „NuGet-Paket-Manager“](media//quick-enroll-device-x509-csharp/add-nuget.png)
 
@@ -103,12 +106,12 @@ Dieser Abschnitt zeigt, wie Sie eine .NET Core-Konsolen-App erstellen, die Ihrem
 1. Fügen Sie die folgenden Felder zur `Program`-Klasse hinzu, und nehmen Sie die aufgeführten Änderungen vor.  
 
    ```csharp
-   private static string ProvisioningConnectionString = "{Your provisioning service connection string}";
+   private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
    private static string EnrollmentGroupId = "enrollmentgrouptest";
    private static string X509RootCertPath = @"{Path to a .cer or .pem file for a verified root CA or intermediate CA X.509 certificate}";
    ```
 
-   * Ersetzen Sie den Platzhalterwert `ProvisioningConnectionString` durch die Verbindungszeichenfolge des Bereitstellungsdiensts, für den Sie die Registrierung erstellen möchten.
+   * Ersetzen Sie den Platzhalterwert `ProvisioningServiceConnectionString` durch die Verbindungszeichenfolge des Bereitstellungsdiensts, für den Sie die Registrierung erstellen möchten.
 
    * Ersetzen Sie den Platzhalterwert `X509RootCertPath` durch den Pfad zu einer PEM- oder CER-Datei. Diese Datei stellt den öffentlichen Teil eines X.509-Zwischenzertifikats oder -Stammzertifikats einer Zertifizierungsstelle dar, das zuvor für Ihren Bereitstellungsdienst hochgeladen und überprüft wurde.
 
@@ -156,19 +159,22 @@ Dieser Abschnitt zeigt, wie Sie eine .NET Core-Konsolen-App erstellen, die Ihrem
    }
    ```
 
-1. Ersetzen Sie schließlich den Text der Methode `Main` durch die folgenden Zeilen:
+1. Ersetzen Sie schließlich die Methode `Main` durch die folgenden Zeilen:
 
    ```csharp
-   RunSample().GetAwaiter().GetResult();
-   Console.WriteLine("\nHit <Enter> to exit ...");
-   Console.ReadLine();
+    static async Task Main(string[] args)
+    {
+        await RunSample();
+        Console.WriteLine("\nHit <Enter> to exit ...");
+        Console.ReadLine();
+    }
    ```
 
 1. Erstellen Sie die Projektmappe.
 
 ## <a name="run-the-enrollment-group-sample"></a>Ausführen des Registrierungsgruppenbeispiels
   
-Führen Sie das Beispiel in Visual Studio aus, um die Registrierungsgruppe zu erstellen. Nach erfolgreicher Erstellung werden im Eingabeaufforderungsfenster die Eigenschaften der neuen Registrierungsgruppe angezeigt.
+Führen Sie das Beispiel in Visual Studio aus, um die Registrierungsgruppe zu erstellen. Ein Eingabeaufforderungsfenster wird geöffnet, in dem Bestätigungsmeldungen angezeigt werden. Nach erfolgreicher Erstellung werden im Eingabeaufforderungsfenster die Eigenschaften der neuen Registrierungsgruppe angezeigt.
 
 Überprüfen Sie, ob die Registrierungsgruppe erstellt wurde. Navigieren Sie zur Device Provisioning Service-Zusammenfassung, und wählen Sie **Registrierungen verwalten** und anschließend **Registrierungsgruppen** aus. Daraufhin sollte ein neuer Registrierungseintrag mit der im Beispiel verwendeten Registrierungs-ID angezeigt werden.
 
@@ -182,9 +188,9 @@ Wenn Sie sich das C#-Dienstbeispiel näher ansehen möchten, dürften Sie die in
 
 1. Schließen Sie das Ausgabefenster des C#-Beispiels auf Ihrem Computer.
 
-1. Navigieren Sie im Azure-Portal zu Ihrem Device Provisioning Service, klicken Sie auf **Registrierungen verwalten**, und wählen Sie anschließend **Registrierungsgruppen** aus. Wählen Sie die *Registrierungs-ID* für den Registrierungseintrag aus, den Sie mit dieser Schnellstartanleitung erstellt haben, und wählen Sie **Löschen** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrem Device Provisioning Service, klicken Sie auf **Registrierungen verwalten**, und wählen Sie anschließend **Registrierungsgruppen** aus. Wählen Sie die *Registrierungs-ID* für den Registrierungseintrag aus, den Sie in diesem Schnellstart erstellt haben, und wählen Sie **Löschen** aus.
 
-1. Klicken Sie im Azure-Portal für Ihren Device Provisioning Service auf **Zertifikate**, wählen Sie das Zertifikat aus, das Sie für diesen Schnellstart hochgeladen haben, und klicken Sie anschließend über **Zertifikatdetails** auf **Löschen**.  
+1. Wählen Sie im Azure-Portal für Ihren Gerätebereitstellungsdienst **Zertifikate** aus. Wählen Sie anschließend das Zertifikat aus, das Sie für diesen Schnellstart hochgeladen haben, und wählen Sie dann oben unter **Zertifikatdetails** die Option **Löschen** aus.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

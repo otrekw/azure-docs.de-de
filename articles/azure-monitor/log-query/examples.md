@@ -1,29 +1,22 @@
 ---
 title: Beispiele für Protokollabfragen in Azure Monitor | Microsoft-Dokumentation
 description: Beispiele für Protokollabfragen in Azure Monitor unter Verwendung der Abfragesprache Kusto.
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 10/01/2019
 ms.author: bwren
-ms.openlocfilehash: 7cdd471e6618e83483f6cc304f284a1669f3b67b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.date: 03/16/2020
+ms.openlocfilehash: 736daa8a09a8f08721c7b7d9c20f012f274b384a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718913"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87045519"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Beispiele für Protokollabfragen in Azure Monitor
 Dieser Artikel enthält mehrere Beispiele für [Abfragen](log-query-overview.md) unter Verwendung der [Abfragesprache Kusto](/azure/kusto/query/), mit denen verschiedene Arten von Protokolldaten aus Azure Monitor abgerufen werden. Da Daten auf unterschiedliche Weise konsolidiert und analysiert werden, können Sie anhand dieser Beispiele verschiedene Strategien ermitteln, die ggf. für Ihre eigenen Anforderungen geeignet sind.  
 
-Ausführliche Informationen zu den Schlüsselwörtern aus diesen Beispielen finden Sie in der [Kusto-Sprachreferenz](https://docs.microsoft.com/azure/kusto/query/). Sollten Sie noch keine Erfahrung mit Azure Monitor haben, machen Sie sich anhand [dieser Lektion](get-started-queries.md) mit dem Erstellen von Abfragen vertraut.
+Ausführliche Informationen zu den Schlüsselwörtern aus diesen Beispielen finden Sie in der [Kusto-Sprachreferenz](/azure/kusto/query/). Sollten Sie noch keine Erfahrung mit Azure Monitor haben, machen Sie sich anhand [dieser Lektion](get-started-queries.md) mit dem Erstellen von Abfragen vertraut.
 
 ## <a name="events"></a>Events
 
@@ -181,7 +174,6 @@ let EndTime = now()-4d;
 Perf
 | where CounterName == "% Processor Time"  
 | where TimeGenerated > StartTime and TimeGenerated < EndTime
-and TimeGenerated < EndTime
 | project TimeGenerated, Computer, cpu=CounterValue 
 | join kind= inner (
    Perf
@@ -383,40 +375,47 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>Verwendung
 
-### <a name="calculate-the-average-size-of-perf-usage-reports-per-computer"></a>Berechnen der durchschnittlichen Größe von Leistungsnutzungsberichten pro Computer
+Mit dem Datentyp `Usage` kann die erfasste Datenmenge nach Lösung oder Datentyp nachverfolgt werden. Es gibt weitere Methoden, mit denen erfasste Datenmengen nach [Computer](../platform/manage-cost-storage.md#data-volume-by-computer) oder [Azure-Abonnement, Ressourcengruppe oder Ressourcen](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription) untersucht werden können.
 
-In diesem Beispiel wird die durchschnittliche Größe von Leistungsnutzungsberichten pro Computer für die letzten drei Stunden berechnet.
-Die Ergebnisse werden in einem Balkendiagramm dargestellt.
-```Kusto
+#### <a name="data-volume-by-solution"></a>Datenvolumen nach Lösung
+
+Die Abfrage, mit der die abrechenbare Datenmenge nach Lösung während des letzten Monats (ohne den letzten angebrochenen Tag) angezeigt wird, lautet wie folgt:
+
+```kusto
 Usage 
-| where TimeGenerated > ago(3h)
-| where DataType == "Perf" 
-| where QuantityUnit == "MBytes" 
-| summarize avg(Quantity) by Computer
-| sort by avg_Quantity desc nulls last
-| render barchart
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-### <a name="timechart-latency-percentiles-50-and-95"></a>Erstellen eines Zeitdiagramms für das 50. und 95. Wartezeit-Perzentil
+Beachten Sie, dass durch die Klausel `where IsBillable = true` Datentypen bestimmter Lösungen herausgefiltert werden, für die keine Erfassungsgebühren anfallen.  Außerdem wird mit der Klausel mit `TimeGenerated` nur sichergestellt, dass die Abfrage im Azure-Portal über den Standardwert von 24 Stunden hinausgeht. Bei Verwendung des Datentyps „Usage“ stellen `StartTime` und `EndTime` die Zeitrahmen dar, für die Ergebnisse angezeigt werden. 
 
-In diesem Beispiel werden das 50. und das 95. Perzentil der gemeldeten durchschnittlichen Wartezeit (**avgLatency**) pro Stunde aus den letzten 24 Stunden berechnet und in einem Diagramm dargestellt.
+#### <a name="data-volume-by-type"></a>Datenmenge nach Typ
 
-```Kusto
-Usage
-| where TimeGenerated > ago(24h)
-| summarize percentiles(AvgLatencyInSeconds, 50, 95) by bin(TimeGenerated, 1h) 
-| render timechart
+Sie können die Daten genauer untersuchen, um Trends für die einzelnen Datentypen zu erkennen:
+
+```kusto
+Usage 
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
 ```
 
-### <a name="usage-of-specific-computers-today"></a>Nutzung bestimmter Computer am aktuellen Tag
-In diesem Beispiel werden für den letzten Tag Nutzungsdaten (**Usage**) für Computernamen abgerufen, die die Zeichenfolge _ContosoFile_ enthalten. Die Ergebnisse werden nach **TimeGenerated** sortiert.
+Oder verwenden Sie Folgendes, um eine Tabelle nach Lösung und Typ für den letzten Monat anzuzeigen:
 
-```Kusto
-Usage
-| where TimeGenerated > ago(1d)
-| where  Computer contains "ContosoFile" 
-| sort by TimeGenerated desc nulls last
+```kusto
+Usage 
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by Solution, DataType
+| sort by Solution asc, DataType asc
 ```
+
+> [!NOTE]
+> Einige der Felder vom Typ „Nutzungsdaten“ sind zwar weiterhin im Schema enthalten, jedoch veraltet, und ihre Werte werden nicht mehr aufgefüllt. Dies sind neben **Computer** Felder in Bezug auf die Erfassung: **TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** und **AverageProcessingTimeMs**.
 
 ## <a name="updates"></a>Aktualisierungen
 

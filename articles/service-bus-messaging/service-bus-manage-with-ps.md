@@ -1,25 +1,14 @@
 ---
 title: Verwenden von PowerShell zum Verwalten von Azure Service Bus-Ressourcen | Microsoft-Dokumentation
-description: Verwenden des PowerShell-Moduls zum Erstellen und Verwalten von Service Bus-Ressourcen
-services: service-bus-messaging
-documentationcenter: .NET
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
+description: In diesem Artikel wird beschrieben, wie das Azure PowerShell-Modul verwendet wird, um Service Bus-Entitäten (Namespaces, Warteschlangen, Themen, Abonnements) zu erstellen und zu verwalten.
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/21/2018
-ms.author: aschhab
-ms.openlocfilehash: 0d15aa4d7b8a922f7606b7c4d1b357a80b3cbfab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/23/2020
+ms.openlocfilehash: b6439deb2b86c2ea5b50fe3bdbad89a0875b2acc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311045"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88065742"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Verwenden von PowerShell zum Verwalten von Service Bus-Ressourcen
 
@@ -33,7 +22,7 @@ Sie können Service Bus-Entitäten zudem mithilfe von Azure Resource Manager-Vor
 
 Bevor Sie beginnen, müssen folgende Voraussetzungen erfüllt sein:
 
-* Ein Azure-Abonnement. Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Azure erwerben][purchase options], [Spezielle Angebote][member offers] oder [Erstellen Sie noch heute Ihr kostenloses Azure-Konto][free account].
+* ein Azure-Abonnement Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Azure erwerben][purchase options], [Spezielle Angebote][member offers] oder [Erstellen Sie noch heute Ihr kostenloses Azure-Konto][free account].
 * Einen Computer mit Azure PowerShell. Anweisungen finden Sie unter [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/azure/get-started-azureps).
 * Allgemeine Kenntnisse über PowerShell-Skripts, NuGet-Pakete und .NET Framework.
 
@@ -170,8 +159,8 @@ Mit dem [PowerShell-Modul für Service Bus](/powershell/module/az.servicebus) k�
 
 Service Bus-Entitäten können auch auf andere Weise verwaltet werden. Dies wird in den folgenden Blogbeiträgen beschrieben:
 
-* [How to create Service Bus queues, topics and subscriptions using a PowerShell script (Erstellen von Service Bus-Warteschlangen, -Themen und -Abonnements mithilfe eines PowerShell-Skripts, in englischer Sprache)](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-* [How to create a Service Bus Namespace and an Event Hub using a PowerShell script (Erstellen eines Service Bus-Namespace und eines Event Hubs mithilfe eines PowerShell-Skripts, in englischer Sprache)](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [How to create Service Bus queues, topics and subscriptions using a PowerShell script (Erstellen von Service Bus-Warteschlangen, -Themen und -Abonnements mithilfe eines PowerShell-Skripts, in englischer Sprache)](/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+* [How to create a Service Bus Namespace and an Event Hub using a PowerShell script (Erstellen eines Service Bus-Namespace und eines Event Hubs mithilfe eines PowerShell-Skripts, in englischer Sprache)](/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 * [Service Bus PowerShell-Skripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->

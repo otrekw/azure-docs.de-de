@@ -1,26 +1,21 @@
 ---
-title: 'Azure Sentinel-Schnellstart: Erste Schritte mit Azure Sentinel | Microsoft-Dokumentation'
-description: 'Azure Sentinel-Schnellstart: Erste Schritte mit Azure Sentinel'
+title: 'Schnellstart: Erste Schritte mit Azure Sentinel'
+description: Verwenden Sie diese Schnellstartanleitung, um zu erfahren, wie Sie die Vorgänge in Ihrer Umgebung mit Azure Sentinel schnell anzeigen und überwachen können.
 services: sentinel
-documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
-editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: quickstart
-ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: c81f4cacd4c93d681122f3c8cd692ca8645288af
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.custom: mvc, fasttrack-edit
+ms.date: 09/16/2020
+ms.author: yelevin
+ms.openlocfilehash: 369847810cdb7f7e93a13f5d410f226d3663080d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240084"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188580"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Schnellstart: Erste Schritte mit Azure Sentinel
 
@@ -39,7 +34,7 @@ Bevor Sie die Vorgänge in Ihrer Umgebung visualisieren und analysieren, sollten
 
 - Auf der Symbolleiste am oberen Rand des Fensters werden die Anzahl von Ereignissen im ausgewählten Zeitraum und ein Vergleich mit den vorherigen 24 Stunden angezeigt. Der Symbolleiste können Sie entnehmen, welche Warnungen für diese Ereignisse ausgelöst wurden (die kleine Zahl stellt die Veränderung in den letzten 24 Stunden dar) und wie viele dieser Ereignisse offen, in Bearbeitung und geschlossen sind. Vergewissern Sie sich in dieser Ansicht, dass keine deutliche Zu- oder Abnahme der Anzahl von Ereignissen vorliegt. Im Fall einer Abnahme meldet eine Verbindung möglicherweise keine Daten mehr an Azure Sentinel. Eine Zunahme kann ein Anzeichen für eine verdächtige Aktivität sein. Überprüfen Sie, ob neue Warnungen vorhanden sind.
 
-   ![Azure Sentinel-Trichter](./media/qs-get-visibility/funnel.png)
+   ![Azure Sentinel-Leistungsindikatoren](./media/qs-get-visibility/funnel.png)
 
 Der Hauptteil der Übersichtsseite bietet auf einen Blick Aufschluss über den Sicherheitsstatus Ihres Arbeitsbereichs:
 
@@ -47,18 +42,17 @@ Der Hauptteil der Übersichtsseite bietet auf einen Blick Aufschluss über den S
 
 - **Potential malicious events** (Potenziell schädliche Ereignisse): Wenn Datenverkehr aus bekanntermaßen schädlichen Quellen erkannt wird, zeigt Azure Sentinel Warnungen auf der Karte an. Orange steht für eingehenden Datenverkehr: Jemand versucht, über eine bekanntermaßen schädliche IP-Adresse auf Ihre Organisation zuzugreifen. Wenn ausgehende Aktivität (rot) angezeigt wird, bedeutet dies, dass Daten aus Ihrem Netzwerk außerhalb Ihrer Organisation zu einer bekanntermaßen schädlichen IP-Adresse gestreamt werden.
 
-   ![Azure Sentinel-Karte](./media/qs-get-visibility/map.png)
+   ![Karte mit schädlichem Datenverkehr](./media/qs-get-visibility/map.png)
 
-
-- **Recent incidents** (Aktuelle Incidents): Hier können Sie Ihre aktuellen Incidents, deren Schweregrad und die Anzahl von Warnungen im Zusammenhang mit dem Incident einsehen. Wenn Sie eine plötzliche Spitze bei einem bestimmten Warnungstyp feststellen, kann dies auf einen aktiven Angriff hinweisen. Bei einem plötzlichen Spitzenwert von 20 Pass-the-Hash-Ereignissen von Azure ATP ist es beispielsweise möglich, dass gerade ein Angriffsversuch stattfindet.
+- **Recent incidents** (Aktuelle Incidents): Hier können Sie Ihre aktuellen Incidents, deren Schweregrad und die Anzahl von Warnungen im Zusammenhang mit dem Incident einsehen. Wenn Sie eine plötzliche Spitze bei einem bestimmten Warnungstyp feststellen, kann dies auf einen aktiven Angriff hinweisen. Bei einem plötzlichen Spitzenwert von 20 Pass-the-Hash-Ereignissen in Microsoft Defender for Identity (ehemals Azure ATP) ist es beispielsweise möglich, dass gerade ein Angriffsversuch stattfindet.
 
 - **Data source anomalies** (Datenquellenanomalien): Die Datenanalysten von Microsoft haben Modelle erstellt, die die Daten aus Ihren Datenquellen ständig auf Anomalien durchsuchen. Wenn keine Anomalien vorliegen, wird nichts angezeigt. Wenn Anomalien erkannt werden, sollten Sie sie genau untersuchen, um herauszufinden, was passiert ist. Klicken Sie beispielsweise auf die Spitze in der Azure-Aktivität. Sie können auf **Diagramm** klicken, um zu überprüfen, wann die Spitze aufgetreten ist, und anschließend zum Ermitteln der Ursache nach Aktivitäten in diesem Zeitraum filtern.
 
-   ![Azure Sentinel-Karte](./media/qs-get-visibility/anomolies.png)
+   ![Anormale Datenquellen](./media/qs-get-visibility/anomolies.png)
 
-## Verwenden integrierter Arbeitsmappen<a name="dashboards"></a>
+## <a name="use-built-in-workbooks"></a>Verwenden integrierter Arbeitsmappen<a name="dashboards"></a>
 
-Integrierte Arbeitsmappen stellen integrierte Daten aus Ihren verbundenen Datenquellen bereit, mit deren Hilfe Sie die in diesen Diensten generierten Ereignisse untersuchen können. Die integrierten Arbeitsmappen umfassen die Azure-ID, Azure-Aktivitätsereignisse und Daten von lokalen Systemen, bei denen es sich um Daten aus „Windows-Ereignisse“ von Servern, Warnungen von Erstanbieterlösungen und Daten von Drittanbieterlösungen handeln kann, die auf Windows-Ereignissen basieren (einschließlich Protokolle zum Firewalldatenverkehr, Office 365 und unsichere Protokolle). Die Arbeitsmappen basieren auf Azure Monitor-Arbeitsmappen, um Ihnen erweiterte Anpassungsmöglichkeiten und Flexibilität beim Entwerfen Ihrer eigenen Arbeitsmappe zu bieten. Weitere Informationen finden Sie unter [Arbeitsmappen](../azure-monitor/app/usage-workbooks.md).
+Integrierte Arbeitsmappen stellen integrierte Daten aus Ihren verbundenen Datenquellen bereit, mit deren Hilfe Sie die in diesen Diensten generierten Ereignisse untersuchen können. Die integrierten Arbeitsmappen umfassen Azure AD-Daten, Azure-Aktivitätsereignisse und Daten von lokalen Systemen, bei denen es sich um Daten aus „Windows-Ereignisse“ von Servern, Warnungen von Erstanbieterlösungen und Daten von Drittanbieterlösungen handeln kann, die auf Windows-Ereignissen basieren (einschließlich Protokolle zum Firewalldatenverkehr, Office 365 und unsichere Protokolle). Die Arbeitsmappen basieren auf Azure Monitor-Arbeitsmappen, um Ihnen erweiterte Anpassungsmöglichkeiten und Flexibilität beim Entwerfen Ihrer eigenen Arbeitsmappe zu bieten. Weitere Informationen finden Sie unter [Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md).
 
 1. Wählen Sie unter **Einstellungen** die Option **Arbeitsmappen** aus. Unter **Installiert** werden alle installierten Arbeitsmappen angezeigt. Unter **Alle** wird der gesamte Katalog integrierter Arbeitsmappen angezeigt, die zur Installation verfügbar sind. 
 2. Suchen Sie nach einer bestimmten Arbeitsmappe, um die ganze Liste und die Beschreibung des Funktionsumfangs der einzelnen Arbeitsmappen anzuzeigen. 
@@ -72,7 +66,7 @@ Integrierte Arbeitsmappen stellen integrierte Daten aus Ihren verbundenen Datenq
       ![Palo Alto-Dashboard](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Sie können die Arbeitsmappen anpassen, indem Sie die ![Schaltfläche](./media/qs-get-visibility/edit-query-button.png) der Hauptabfrage bearbeiten. Sie können auf die Schaltfläche ![Schaltfläche](./media/qs-get-visibility/go-to-la-button.png) klicken, um [zu Log Analytics zu wechseln und die Abfrage dort zu bearbeiten](../azure-monitor/log-query/get-started-portal.md). Sie können auch auf die Schaltfläche mit den Auslassungspunkten (...) klicken und **Kacheldaten anpassen** auswählen, um den Filter für die Hauptzeit zu bearbeiten oder bestimmte Kacheln aus dem Dashboard zu entfernen.
+Sie können die Arbeitsmappen jeweils anpassen, indem Sie die Hauptabfrage über die ![Schaltfläche „Abfrage bearbeiten“](./media/qs-get-visibility/edit-query-button.png) bearbeiten. Sie können auf die Schaltfläche ![Schaltfläche „Log Analytics“](./media/qs-get-visibility/go-to-la-button.png) klicken, um [zu Log Analytics zu wechseln und die Abfrage dort zu bearbeiten](../azure-monitor/log-query/log-analytics-tutorial.md). Sie können auch auf die Schaltfläche mit den Auslassungspunkten (…) klicken und dann auf **Kacheldaten anpassen**, um den Filter für die Hauptzeit zu bearbeiten oder bestimmte Kacheln aus der Arbeitsmappe zu entfernen.
 
 Weitere Informationen zum Verwenden von Abfragen finden Sie unter [Tutorial: Visualisieren von Daten in Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md).
 
@@ -82,37 +76,39 @@ Wenn Sie eine neue Kachel hinzufügen möchten, können Sie sie einer vorhandene
 1. Erstellen Sie in Log Analytics eine Kachel, indem Sie den Anweisungen in [Tutorial: Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../azure-monitor/learn/tutorial-logs-dashboards.md) folgen. 
 2. Nachdem die Kachel erstellt wurde, wählen Sie unter **Anheften** die Arbeitsmappe aus, in der die Kachel angezeigt werden soll.
 
-## <a name="create-new-workbooks"></a>Neue Arbeitsmappen erstellen
+## <a name="create-new-workbooks"></a>Erstellen neuer Arbeitsmappen
 Sie können eine komplett neue Arbeitsmappe erstellen oder eine integrierte Arbeitsmappe als Grundlage für die neue Arbeitsmappe verwenden.
 
 1. Zum Erstellen einer komplett neuen Arbeitsmappe wählen Sie **Arbeitsmappen** aus, und klicken Sie dann auf **+Neue Arbeitsmappe**.
-2. Wählen Sie das Abonnement aus, in dem Sie die Arbeitsmappe erstellen, und geben Sie einen beschreibenden Namen ein. Jede Arbeitsmappe ist eine normale Azure-Ressource. Sie können ihr Rollen zuweisen (rollenbasierte Zugriffssteuerung; Role-Based Access Control, RBAC), um die zugriffsberechtigten Benutzer festzulegen und einzuschränken. 
+2. Wählen Sie das Abonnement aus, in dem Sie die Arbeitsmappe erstellen, und geben Sie einen beschreibenden Namen ein. Jede Arbeitsmappe ist eine normale Azure-Ressource. Sie können ihr Rollen zuweisen (rollenbasierte Zugriffssteuerung; Role-Based Access Control, Azure RBAC), um die zugriffsberechtigten Benutzer festzulegen und einzuschränken. 
 3. Damit die Arbeitsmappe in Ihren Arbeitsmappen angezeigt wird und Visualisierungen angeheftet werden können, müssen Sie sie freigeben. Klicken Sie auf **Freigeben** und dann auf **Benutzer verwalten**. 
  
-1. Verwenden Sie die Optionen **Zugriff überprüfen** und **Rollenzuweisungen** wie bei jeder anderen Azure-Ressource. Weitere Informationen finden Sie unter [Freigeben von Azure-Arbeitsmappe mithilfe der rollenbasierten Zugriffssteuerung](../azure-portal/azure-portal-dashboard-share-access.md).
+1. Verwenden Sie die Optionen **Zugriff überprüfen** und **Rollenzuweisungen** wie bei jeder anderen Azure-Ressource. Weitere Informationen finden Sie unter [Freigeben von Azure-Arbeitsmappe mithilfe der rollenbasierten Zugriffssteuerung (Azure RBAC)](../azure-portal/azure-portal-dashboard-share-access.md).
 
 
 ## <a name="new-workbook-examples"></a>Beispiele für neue Arbeitsmappen
 
 Mit der folgenden Beispielabfrage können Sie Datenverkehrstrends über mehrere Wochen hinweg vergleichen. Sie können den Gerätehersteller und die Datenquelle, für den bzw. die Sie die Abfrage ausführen, ganz einfach ändern. In diesem Beispiel wird „SecurityEvent“ von Windows verwendet. Sie können die Abfrage ändern, um sie für eine beliebige andere Firewall für „AzureActivity“ oder „CommonSecurityLog“ auszuführen.
 
-     |where DeviceVendor = = "Palo Alto Networks":
-      // week over week query
-      SecurityEvent
-      | where TimeGenerated > ago(14d)
-      | summarize count() by bin(TimeGenerated, 1d)
-      | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
-
+```console
+// week over week query
+SecurityEvent
+| where TimeGenerated > ago(14d)
+| summarize count() by bin(TimeGenerated, 1d)
+| extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
+```
 
 Möglicherweise möchten Sie eine Abfrage erstellen, die Daten aus mehreren Quellen umfasst. Sie können eine Abfrage erstellen, die in Azure Active Directory-Überwachungsprotokollen nach neu erstellten Benutzern sucht und dann in Ihren Azure-Protokollen überprüft, ob der jeweilige Benutzer innerhalb von 24 Stunden nach der Erstellung begonnen hat, Änderungen an Rollenzuweisungen vorzunehmen. Eine solche verdächtige Aktivität würde in diesem Dashboard angezeigt werden:
 
-    AuditLogs
-    | where OperationName == "Add user"
-    | project AddedTime = TimeGenerated, user = tostring(TargetResources[0].userPrincipalName)
-    | join (AzureActivity
-    | where OperationName == "Create role assignment"
-    | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
-    | project-away user1
+```console
+AuditLogs
+| where OperationName == "Add user"
+| project AddedTime = TimeGenerated, user = tostring(TargetResources[0].userPrincipalName)
+| join (AzureActivity
+| where OperationName == "Create role assignment"
+| project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
+| project-away user1
+```
 
 Sie können basierend auf der Rolle der Person, die die Daten anzeigt, und den gesuchten Daten verschiedene Arbeitsmappen erstellen. Sie können beispielsweise eine Arbeitsmappe für Ihren Netzwerkadministrator erstellen, die Firewalldaten enthält. Sie können Arbeitsmappen auch basierend auf der Häufigkeit erstellen, mit der Sie sie anzeigen möchten. Während Ihnen bei manchen Daten eine tägliche Überprüfung genügt, möchten Sie andere vielleicht stündlich einsehen (beispielsweise Ihre Azure AD-Anmeldungen, um einmal pro Stunde nach Anomalien zu suchen). 
 
@@ -122,7 +118,7 @@ Erstellen Sie Erkennungen für die [Datenquellen, die Sie mit Azure Sentinel ver
 
 Nutzen Sie beim Erstellen einer neuen Erkennung die von Microsoft-Sicherheitsexperten entwickelten integrierten Erkennungen, die auf die verbundenen Datenquellen zugeschnitten sind.
 
-Zum Anzeigen aller Standarderkennungen wechseln Sie zu **Analytics** und dann zu  **Regelvorlagen**. Diese Registerkarte enthält alle integrierten Azure Sentinel-Regeln.
+Navigieren Sie zum Anzeigen aller standardmäßig verfügbaren Erkennungen zu **Analytics** und dann zu **Regelvorlagen**. Diese Registerkarte enthält alle integrierten Azure Sentinel-Regeln.
 
    ![Verwenden integrierter Erkennungen für die Suche nach Bedrohungen mit Azure Sentinel](media/tutorial-detect-built-in/view-oob-detections.png)
 
@@ -132,4 +128,3 @@ Weitere Informationen zum Abrufen von Standarderkennungen finden Sie unter [Tuto
 In diesem Schnellstart wurden die ersten Schritte mit Azure Sentinel erläutert. Fahren Sie mit dem Tutorial zum [Erkennen von Bedrohungen](tutorial-detect-threats-built-in.md) fort.
 > [!div class="nextstepaction"]
 > [Erstellen Sie benutzerdefinierte Regeln zur Bedrohungserkennung](tutorial-detect-threats-custom.md), um die auf Bedrohungen zu automatisieren.
-

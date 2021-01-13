@@ -1,108 +1,85 @@
 ---
-title: Azure MFA-Versionen und Verbrauchspläne – Azure Active Directory
-description: Informationen über den Client für die Multi-Factor Authentication sowie die verschiedenen verfügbaren Methoden und Versionen
+title: Azure AD Multi-Factor Authentication – Versionen und Verbrauchstarife
+description: Lernen Sie den Client für Azure AD Multi-Factor Authentication sowie die verschiedenen verfügbaren Methoden und Versionen kennen.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/03/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 06/15/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1ee55dd3aebca869da47bbc994f546aa4fe528
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 63d880146a0b068a5d097c452c14b28db4907098
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496769"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743954"
 ---
-# <a name="how-to-get-azure-multi-factor-authentication"></a>Beziehen von Azure Multi-Factor Authentication
+# <a name="features-and-licenses-for-azure-ad-multi-factor-authentication"></a>Features und Lizenzen für Azure AD Multi-Factor Authentication
 
-Zum Schutz Ihrer Konten sollte die zweistufige Überprüfung in Ihrem Unternehmen Standard sein. Dieses Feature ist insbesondere für Konten wichtig, die privilegierten Zugriff auf Ressourcen haben. Aus diesem Grund bietet Microsoft grundlegende Features zur zweistufigen Überprüfung für Administratoren von Office 365 und Azure Active Directory (Azure AD) ohne Zusatzkosten. Wenn Sie für die Features für Ihre Administratoren ein Upgrade durchführen oder die zweistufige Überprüfung auf den Rest Ihrer Benutzer ausweiten möchten, können Sie Azure Multi-Factor Authentication auf verschiedenen Wegen erwerben.
+Zum Schutz von Benutzerkonten in Ihrer Organisation sollten Sie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) verwenden. Dieses Feature ist insbesondere für Konten wichtig, die privilegierten Zugriff auf Ressourcen haben. Grundfunktionen für die mehrstufige Authentifizierung stehen für Administratoren von Microsoft 365 und Azure Active Directory (Azure AD) ohne Zusatzkosten zur Verfügung. Wenn Sie für Ihre Administratoren ein Upgrade der Funktionen durchführen oder die mehrstufige Authentifizierung auf die übrigen Benutzer ausweiten möchten, können Sie Azure AD Multi-Factor Authentication auf mehreren Wegen erwerben.
 
 > [!IMPORTANT]
-> Dieser Artikel bietet einen Überblick über die verschiedenen Möglichkeiten zum Erwerb der Azure Multi-Factor Authentication. Ausführliche Informationen zur Preisgestaltung und Abrechnung finden Sie auf der Seite [Multi-Factor Authentication Preise ](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
->
+> In diesem Artikel werden die verschiedenen Möglichkeiten für die Lizenzierung und Verwendung von Azure AD Multi-Factor Authentication erläutert. Ausführliche Informationen zur Preisgestaltung und Abrechnung finden Sie unter [Azure AD Multi-Factor Authentication – Preise](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
 
-## <a name="available-versions-of-azure-multi-factor-authentication"></a>Verfügbare Versionen von Azure Multi-Factor Authentication
+## <a name="available-versions-of-azure-ad-multi-factor-authentication"></a>Verfügbare Versionen von Azure AD Multi-Factor Authentication
 
-Die folgende Tabelle beschreibt die Unterschiede zwischen den drei Versionen der Multi-Factor Authentication:
+Azure AD Multi-Factor Authentication kann entsprechend den Anforderungen Ihrer Organisation auf unterschiedliche Weise verwendet und lizenziert werden. Abhängig von der Lizenz für Azure AD, EMS oder Microsoft 365, die Sie zurzeit besitzen, sind Sie möglicherweise bereits berechtigt, Azure AD Multi-Factor Authentication zu verwenden. In der folgenden Tabelle werden die verschiedenen Möglichkeiten zum Erwerb von Azure AD Multi-Factor Authentication erläutert sowie jeweils einige Funktionen und Anwendungsfälle beschrieben.
 
-| Version | BESCHREIBUNG |
+| Benutzer von | Funktionen und Anwendungsfälle |
 | --- | --- |
-| Multi-Factor Authentication für Office 365 <br> Microsoft 365 Business | Diese Version wird über das Office 365- oder Microsoft 365-Portal verwaltet. Administratoren können [ihre Office 365-Ressourcen mit der zweistufigen Überprüfung sichern](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). Diese Version ist Teil eines Office 365- oder Microsoft 365 Business-Abonnements. |
-| Multi-Factor Authentication für Azure AD-Administratoren | Benutzer, denen die Rolle „Globaler Administrator“ für Azure AD-Mandanten zugewiesen ist, können die zweistufige Überprüfung ohne zusätzliche Kosten aktivieren. |
-| Azure Multi-Factor Authentication | Azure Multi-Factor Authentication wird häufig auch als „Vollversion“ bezeichnet und bietet von allen Versionen den größten Funktionsumfang. Über das [Azure-Portal](https://portal.azure.com) sind zusätzliche Konfigurationsoptionen verfügbar. Außerdem stehen erweiterte Funktionen für die Berichterstellung zur Verfügung, und es werden verschiedene lokale Anwendungen und Cloudanwendungen unterstützt. Azure Multi-Factor Authentication ist ein Feature von [Azure Active Directory Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features). |
-
-> [!NOTE]
-> Ab dem 1. September 2018 können Neukunden Azure Multi-Factor Authentication nicht mehr als eigenständiges Angebot erwerben. Die mehrstufige Authentifizierung ist in Azure AD Premium-Lizenzen weiterhin als Feature verfügbar.
+| Microsoft 365 Business Premium und EMS oder Microsoft 365 E3 und E5 | EMS E3, Microsoft 365 E3 und Microsoft 365 Business Premium enthalten Azure AD Premium P1. EMS E5 oder Microsoft 365 E5 umfasst Azure AD Premium P2. Sie können die in den folgenden Abschnitten beschriebenen Funktionen für den bedingten Zugriff auch für die Bereitstellung der mehrstufigen Authentifizierung für Benutzer verwenden. |
+| Azure AD Premium P1 | Mit dem [bedingten Zugriff von Azure AD](../conditional-access/howto-conditional-access-policy-all-users-mfa.md) können Sie Benutzer bei bestimmten Szenarien oder Ereignissen zur mehrstufigen Authentifizierung auffordern und auf diese Weise Ihre geschäftlichen Anforderungen erfüllen. |
+| Azure AD Premium P2 | Bietet die höchste Sicherheitsstufe und eine verbesserte Benutzerumgebung. Erweitert die Funktionen von Azure AD Premium P1 um den [risikobasierten bedingten Zugriff](../conditional-access/howto-conditional-access-policy-risk.md), der sich an Benutzermuster anpasst und Eingabeaufforderungen für die mehrstufige Authentifizierung minimiert. |
+| Alle Microsoft 365-Pläne | Azure AD Multi-Factor Authentication kann mithilfe von [Sicherheitsstandardwerten](../fundamentals/concept-fundamentals-security-defaults.md) [auf Benutzerbasis aktiviert](howto-mfa-userstates.md) oder für alle Benutzer aktiviert bzw. deaktiviert werden. Die Verwaltung von Azure AD Multi-Factor Authentication erfolgt über das Microsoft 365-Portal. Führen Sie zugunsten einer optimierten Benutzerumgebung ein Upgrade auf Azure AD Premium P1 oder P2 durch, und verwenden Sie den bedingten Zugriff. Weitere Informationen finden Sie unter [Schützen von Microsoft 365-Ressourcen mit der mehrstufigen Authentifizierung](/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication). |
+| Azure AD Free | Sie können [Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md) verwenden, um die mehrstufige Authentifizierung für alle Benutzer zu aktivieren. Sie haben zwar keine differenzierte Kontrolle über aktivierte Benutzer oder Szenarien, verfügen aber über einen zusätzlichen Sicherheitsschritt.<br /> Auch wenn die Sicherheitsstandards nicht zum Aktivieren der mehrstufigen Authentifizierung für alle Benutzer verwendet werden, können Benutzer mit der Rolle *globaler Azure AD-Administrator* für die Verwendung der mehrstufigen Authentifizierung konfiguriert werden. Diese Funktion der kostenlosen Version stellt sicher, dass die kritischen Administratorkonten durch die mehrstufige Authentifizierung geschützt sind. |
 
 ## <a name="feature-comparison-of-versions"></a>Funktionsvergleich der Versionen
 
-In der folgenden Tabelle werden die Features aufgeführt, die in den verschiedenen Versionen von Azure Multi-Factor Authentication verfügbar sind:
+In der folgenden Tabelle werden die Funktionen aufgeführt, die in den verschiedenen Versionen von Azure AD Multi-Factor Authentication zur Verfügung stehen. Planen Sie Ihre Anforderungen an eine sichere Benutzerauthentifizierung, und legen Sie dann fest, welcher Ansatz diese Anforderungen erfüllt. Beispiel: Obwohl Azure AD Free Azure AD Multi-Factor Authentication über Sicherheitsstandards bereitstellt, kann für Authentifizierungsaufforderungen nur die mobile Authentifikator-App und kein Telefonanruf bzw. keine SMS verwendet werden. Dieser Ansatz kann eine Einschränkung darstellen, wenn Sie nicht gewährleisten können, dass die Authentifikator-App auf dem persönlichen Gerät des Benutzers installiert ist.
 
-> [!NOTE]
-> In dieser Vergleichstabelle werden die Features erläutert, die in den einzelnen Versionen von Multi-Factor Authentication enthalten sind. Wenn Sie über die Vollversion des Multi-Factor Authentication-Diensts verfügen, sind einige Features möglicherweise nicht verfügbar (je nachdem, ob Sie [MFA in der Cloud oder lokal](concept-mfa-whichversion.md) verwenden).
->
+| Funktion | Azure AD Free – Sicherheitsstandards | Azure AD Free – Globale Azure AD-Administratoren | Microsoft 365-Apps | Azure AD Premium P1 oder P2 |
+| --- |:---:|:---:|:---:|:---:|
+| Schutz von Azure AD-Administratorkonten eines Mandanten mit MFA | ● | ● (gilt nur für *globale Azure AD-Administratorkonten*) | ● | ● |
+| Mobile App als zweiter Faktor | ● | ● | ● | ● |
+| Telefonanruf als zweiter Faktor | | ● | ● | ● |
+| SMS als zweiter Faktor | | ● | ● | ● |
+| Administrative Kontrolle über Überprüfungsmethoden | | ● | ● | ● |
+| Betrugswarnung | | | | ● |
+| MFA-Berichte | | | | ● |
+| Benutzerdefinierte Begrüßungen für Telefonanrufe | | | | ● |
+| Benutzerdefinierte Anrufer-ID für Telefonanrufe | | | | ● |
+| Vertrauenswürdige IP-Adressen | | | | ● |
+| Speichern der MFA für vertrauenswürdige Geräte | | ● | ● | ● |
+| MFA für lokale Anwendungen | | | | ● |
 
-| Feature | Multi-Factor Authentication für Office 365 | Multi-Factor Authentication für Azure AD-Administratoren | Azure Multi-Factor Authentication |
-| --- |:---:|:---:|:---:|
-| Schutz von Azure AD-Administratorkonten mit MFA |● |● (Gilt nur für globale Azure AD-Administratorkonten) |● |
-| Mobile App als zweiter Faktor |● |● |● |
-| Telefonanruf als zweiter Faktor |● |● |● |
-| SMS als zweiter Faktor |● |● |● |
-| App-Kennwörter für Clients, die MFA nicht unterstützen |● |● |● |
-| Administrative Kontrolle über Überprüfungsmethoden |● |● |● |
-| Schutz von Nicht-Administrator-Konten mit MFA |● | |● |
-| PIN-Modus | | |● |
-| Betrugswarnung | | |● |
-| MFA-Berichte | | |● |
-| Einmalumgehung | | |● |
-| Benutzerdefinierte Begrüßungen für Telefonanrufe | | |● |
-| Benutzerdefinierte Anrufer-ID für Telefonanrufe | | |● |
-| Vertrauenswürdige IP-Adressen | | |● |
-| Speichern der MFA für vertrauenswürdige Geräte |● |● |● |
-| MFA für lokale Anwendungen | | |● |
+## <a name="purchase-and-enable-azure-ad-multi-factor-authentication"></a>Erwerben und Aktivieren von Azure AD Multi-Factor Authentication
 
-> [!IMPORTANT]
-> Ab März 2019 werden die Telefonanrufoptionen für MFA- und SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
+Registrieren Sie sich für einen berechtigten Azure AD-Tarif (oder erwerben Sie einen solchen Tarif), um Azure AD Multi-Factor Authentication verwenden zu können. Azure AD ist in vier Editionen erhältlich: Free, Microsoft 365-Apps, Premium P1 und Premium P2.
 
-## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>Aktivieren von Azure Multi-Factor Authentication für Azure AD-Administratoren
+Die kostenlose Version (Free) ist im Azure-Abonnement enthalten. Im [folgenden Abschnitt](#azure-ad-free-tier) finden Sie Informationen zur Verwendung der Sicherheitsstandards bzw. zum Schutz von Konten mit der Rolle *globaler Azure AD-Administrator*.
 
-Benutzer, denen die Rolle „Globaler Administrator“ für Azure AD-Mandanten zugewiesen ist, können die zweistufige Überprüfung für ihre globalen Azure AD-Administratorkonten ohne zusätzliche Kosten aktivieren. Wenn Sie ein Microsoft-Konto verwenden, können Sie sich für die Multi-Factor Authentication registrieren, indem Sie die Anleitung im Microsoft-Konto-Support-Artikel [Informationen zur Überprüfung in zwei Schritten](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification) verwenden. Wenn Sie kein Microsoft-Konto verwenden, aktivieren Sie die Multi-Factor Authentication für globale Administratoren mithilfe der Anleitung im Artikel [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe](howto-mfa-userstates.md).
+Die Azure AD Premium-Editionen sind über Ihren Microsoft-Vertreter, das [Open Volume License-Programm](https://www.microsoft.com/licensing/licensing-programs/open-license.aspx) und das [Cloud Solution Providers-Programm](https://go.microsoft.com/fwlink/?LinkId=614968&clcid=0x409) erhältlich. Azure- und Microsoft 365-Abonnenten können Azure Active Directory Premium P1 und P2 auch online erwerben. Für einen Kauf müssen Sie sich [anmelden](https://portal.office.com/Commerce/Catalog.aspx).
 
-## <a name="how-to-purchase-azure-multi-factor-authentication"></a>Erwerben von Azure Multi-Factor Authentication
+Nachdem Sie den erforderlichen Azure AD-Tarif erworben haben, müssen Sie [Azure AD Multi-Factor Authentication planen und bereitstellen](howto-mfa-getstarted.md).
 
-Erwerben Sie Lizenzen mit Azure Multi-Factor Authentication, wie Azure Active Directory Premium, oder ein Lizenzpaket mit Azure AD Premium oder bedingtem Zugriff, und weisen Sie diese Ihren Benutzern in Azure Active Directory zu.
+### <a name="azure-ad-free-tier"></a>Tarif „Azure AD Free“
 
-### <a name="consumption-based-licensing"></a>Nutzungsbasierte Lizenzierung
+Alle Benutzer in einem Mandanten der Edition „Azure AD Free“ können Azure AD Multi-Factor Authentication über die Sicherheitsstandards verwenden. Bei Verwendung der Sicherheitsstandards der Edition „Azure AD Free“ kann nur die mobile Authentifikator-App für Azure AD Multi-Factor Authentication verwendet werden.
 
-Die nutzungsbasierte Lizenzierung steht neuen Kunden seit dem 1. September 2018 nicht mehr zur Verfügung.
+* [Weitere Informationen zu Azure AD-Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md)
+* [Aktivieren von Sicherheitsstandards für Benutzer von Azure AD Free](../fundamentals/concept-fundamentals-security-defaults.md#enabling-security-defaults)
 
-Seit dem 1. September 2018 können keine neuen Authentifizierungsanbieter mehr erstellt werden. Vorhandene Authentifizierungsanbieter können ggf. weiterhin verwendet und aktualisiert werden. Multi-Factor Authentication ist in Azure AD Premium-Lizenzen weiterhin ein verfügbares Feature.
+Wenn Sie Azure AD Multi-Factor Authentication nicht für alle Benutzer aktivieren möchten, können Sie stattdessen Benutzerkonten nur mit der Rolle *globaler Azure AD-Administrator* schützen. Mit dieser Methode werden zusätzliche Authentifizierungsaufforderungen für kritische Administratorkonten bereitgestellt. Sie können Azure AD Multi-Factor Authentication je nach verwendetem Kontotyp mit einer der folgenden Methoden aktivieren:
 
-Bei Verwendung eines Azure Multi-Factor Authentication-Anbieters stehen zwei Nutzungsmodelle zur Verfügung, die über Ihr Azure-Abonnement abgerechnet werden:
-
-1. **Pro aktiviertem Benutzer:** Diese Option ist für Unternehmen geeignet, die die zweistufige Überprüfung für eine feste Anzahl von Mitarbeitern aktivieren möchten, die die Authentifizierung regelmäßig benötigen. Die Abrechnung pro Benutzer basiert auf der Anzahl der Benutzer in Ihrem Azure AD-Mandanten und auf Ihrem Azure MFA-Server, für die MFA aktiviert ist. Wenn MFA für Benutzer sowohl in Azure AD als auch auf dem Azure MFA-Server aktiviert ist und die Domänensynchronisierung (Azure AD Connect) ebenfalls aktiviert ist, berechnen wir die größere Benutzergruppe. Wenn die Domänensynchronisierung nicht aktiviert ist, berechnen wir die Summe aller Benutzer, für die MFA in Azure AD und auf dem Azure MFA-Server aktiviert ist. Die Abrechnung erfolgt anteilsmäßig und wird täglich an das Commerce-System berichtet.
-
-   > [!NOTE]
-   > Abrechnungsbeispiel 1: Für MFA sind heute 5.000 Benutzer aktiviert. Das MFA-System teilt diese Zahl durch 31 und meldet 161,29 Benutzer für diesen Tag. Morgen aktivieren Sie 15 weitere Benutzer, sodass das MFA-System für diesen Tag 161,77 Benutzer meldet. Am Ende des Abrechnungszyklus beträgt die Gesamtzahl der Benutzer, die im Rahmen Ihres Azure-Abonnements abgerechnet werden, 5.000.
-   >
-   > Abrechnungsbeispiel 2: Sie haben sowohl Benutzer mit als auch ohne Lizenz. Für die Differenz verwenden Sie einen Azure MFA-Anbieter für eine Abrechnung pro Benutzer. In Ihrem Mandanten befinden sich 4.500 Enterprise Mobility + Security-Lizenzen, für MFA sind jedoch 5.000 Benutzer aktiviert. Für Ihr Azure-Abonnement werden 500 Benutzer abgerechnet, die täglich anteilsmäßig als 16,13 Benutzer gemeldet werden.
-   >
-
-1. **Pro Authentifizierung** – Diese Option ist für Unternehmen geeignet, die die zweistufige Überprüfung für eine große Benutzergruppe aktivieren möchten, welche die Authentifizierung unregelmäßig benötigt. Die Abrechnung basiert auf der Anzahl der Anforderungen für die zweistufige Überprüfung, unabhängig davon, ob diese Überprüfungen erfolgreich waren oder abgelehnt wurden. Diese Abrechnung erscheint auf Ihrer Azure-Nutzungsaufstellung in Paketen mit 10 Authentifizierungen und wird täglich gemeldet.
-
-   > [!NOTE]
-   > Abrechnungsbeispiel 3: Der Azure MFA-Dienst hat heute 3.105 Anforderungen für die zweistufige Überprüfung empfangen. Ihrem Azure-Abonnement werden heute 310,5 Authentifizierungspakete berechnet.
-   >
-
-Beachten Sie, dass Sie Lizenzen haben können, die verbrauchsbasierte Konfiguration aber weiterhin berechnet wird. Wenn Sie einen Azure MFA-Anbieter für die Abrechnung pro Authentifizierung einrichten, wird jede Anforderung für die zweistufige Überprüfung abgerechnet, auch für Benutzer, die über Lizenzen verfügen. Wenn Sie einen Azure MFA-Anbieter für die Abrechnung pro Benutzer einrichten, der nicht mit Ihrem Azure AD-Mandanten verknüpft ist, erfolgt die Abrechnung pro Benutzer, auch wenn Ihre Benutzer in Azure AD über Lizenzen verfügen.
+* Wenn Sie ein Microsoft-Konto verwenden, können Sie sich [für die mehrstufige Authentifizierung registrieren](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
+* Falls Sie kein Microsoft-Konto verwenden, [aktivieren Sie die mehrstufige Authentifizierung für einen Benutzer oder eine Gruppe in Azure AD](howto-mfa-userstates.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Preisinformationen finden Sie unter [Preise für Azure MFA](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
+* Weitere Informationen zu den Kosten finden Sie unter [Azure AD Multi-Factor Authentication – Preise](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
+* [Was ist bedingter Zugriff?](../conditional-access/overview.md)
 
-- Wählen Sie, ob Azure MFA [in der Cloud oder lokal](concept-mfa-whichversion.md) bereitgestellt werden soll.

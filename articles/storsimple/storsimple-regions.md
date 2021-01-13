@@ -1,25 +1,17 @@
 ---
-title: Regionale Verfügbarkeit von StorSimple | Microsoft-Dokumente
+title: Regionale Verfügbarkeit von StorSimple
 description: Erläutert die Azure-Regionen, in denen die verschiedenen StorSimple-Gerätemodelle verfügbar sind.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 5b41f738c2419f806aef60374a545ff004a6f19e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 5efb87ad674474b2e21b86b5cdc48785753a51dc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965140"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90564150"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Verfügbare Regionen für Ihr StorSimple
 
@@ -47,7 +39,7 @@ Sie definieren eine Region oder einen Standort, wenn Sie den StorSimple-Geräte-
 
 Es folgt eine Liste der Regionen, in denen der StorSimple-Geräte-Manager-Dienst für die öffentliche Azure-Cloud verfügbar ist und bereitgestellt werden kann.
 
-![StorSimple-Geräte-Manager-Dienst-Regionen](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![Screenshot: StorSimple-Geräte-Manager mit hervorgehobener Standortliste](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
 Für Azure Government Cloud ist der StorSimple-Geräte-Manager-Dienst in den Datencentern US Gov Iowa und US Gov Virginia verfügbar.
 
@@ -76,13 +68,13 @@ Wenn Sie ein physisches StorSimple 8100- oder 8600-Gerät verwenden, ist es in d
 | 3  | Bahrain               | 18 | Island            | 33 | Norwegen              | 48 | Spanien                      |
 | 4  | Belgien               | 19 | Indien              | 34 | Peru                | 49 | Sri Lanka                  |
 | 5  | Brasilien                | 20 | Indonesien          | 35 | Philippinen         | 50 | Schweden                     |
-| 6  | Kanada                | 21 | Irland            | 36 | Polen              | 51 | Schweiz                |
+| 6  | Canada                | 21 | Irland            | 36 | Polen              | 51 | Schweiz                |
 | 7  | Chile                 | 22 | Israel             | 37 | Portugal            | 52 | Taiwan                     |
 | 8  | Kolumbien              | 23 | Italien              | 38 | Puerto Rico         | 53 | Thailand                   |
-| 9  | Tschechische Republik        | 24 | Japan              | 11,9 | Katar               | 54 | Türkei                     |
+| 9  | Tschechische Republik        | 24 | Japan              | 39 | Katar               | 54 | Türkei                     |
 | 10 | Dänemark               | 25 | Kenia              | 40 | Rumänien             | 55 | Ukraine                    |
 | 11 | Ägypten                 | 26 | Kuwait             | 41 | Russland              | 56 | Vereinigte Arabische Emirate       |
-| 12 | Finnland               | 27 | Macau (SAR)          | 42 | Saudi-Arabien        | 57 | Vereinigtes Königreich             |
+| 12 | Finnland               | 27 | Macau (SAR)          | 42 | Saudi-Arabien        | 57 | United Kingdom             |
 | 13 | Frankreich                | 28 | Malaysia           | 43 | Singapur           | 58 | USA              |
 | 14 | Deutschland               | 29 | Mexiko             | 44 | Slowakei            | 59 | Vietnam                    |
 | 15 | Griechenland                | 30 | Niederlande        | 45 | Slowenien            | 60 | Kroatien                    |

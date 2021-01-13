@@ -2,32 +2,28 @@
 title: 'Tutorial: Konfigurieren von myPolicies für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in myPolicies konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: f000896d-a78c-4d20-a79c-74c1f9b4961a
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: a1dbab4850d7db5d6ce8243062cb976013653250
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 221f63ab9a7eb3f71a4c730a11565dda64c9edc9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602207"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353583"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von myPolicies für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die in myPolicies und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in myPolicies zu konfigurieren.
 
 > [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
+> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Dieser Connector befindet sich derzeit in der Public Preview-Phase. Weitere Informationen zu den allgemeinen Nutzungsbedingungen von Microsoft Azure für Previewfunktionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -101,11 +97,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** in das Feld **Mandanten-URL** die URL `https://<myPoliciesCustomDomain>.mypolicies.com/scim` ein. Dabei steht `<myPoliciesCustomDomain>` für Ihre benutzerdefinierte myPolicies-Domäne. Sie können Ihre myPolicies-Kundendomäne über Ihre URL abrufen.
 Beispiel: `<demo0-qa>`.mypolicies.com
@@ -122,13 +118,24 @@ Beispiel: `<demo0-qa>`.mypolicies.com
 
 9. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit myPolicies synchronisieren** aus.
 
-    ![Benutzerzuordnungen in myPolicies](media/mypolicies-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mypolicies-provisioning-tutorial/usermapping.png" alt-text="Screenshot des Abschnitts „Zuordnungen“. Unter „Name“ ist die Option „Azure Active Directory-Benutzer mit customappsso synchronisieren“ hervorgehoben." border="false":::
 
 10. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit myPolicies synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in myPolicies für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Benutzerzuordnungen in myPolicies](media/mypolicies-provisioning-tutorial/userattribute.png)
+   |attribute|type|
+   |---|---|
+   |userName|String|
+   |aktiv|Boolean|
+   |emails[type eq "work"].value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |name.formatted|String|
+   |externalId|String|
+   |addresses[type eq "work"].country|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Verweis|
 
-11. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+
+11. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 12. Um den Azure AD-Bereitstellungsdienst für myPolicies zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
@@ -144,18 +151,22 @@ Beispiel: `<demo0-qa>`.mypolicies.com
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in myPolicies ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 
 * Für myPolicies ist immer **userName**, **email** und **externalId** erforderlich.
 * myPolicies unterstützt das endgültige Löschen für Benutzerattribute nicht.
 
+## <a name="change-log"></a>Änderungsprotokoll
+
+* 15.9.2020: Unterstützung für das Attribut „country“ für Benutzer wurde hinzugefügt.
+
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../app-provisioning/check-status-user-account-provisioning.md)

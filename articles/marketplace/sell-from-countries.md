@@ -1,0 +1,267 @@
+---
+title: Unterstützte Länder und Regionen für Herausgeber
+description: Liste der Länder, in denen Sie ein Angebot im kommerziellen Microsoft-Marketplace veröffentlichen können.
+ms.reviewer: nanef
+ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
+ms.custom: references_regions
+ms.topic: how-to
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 01/04/2021
+ms.openlocfilehash: 48a0c3484b6cbeac4d71d3fbf383bb1c14466a9d
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897330"
+---
+# <a name="supported-publisher-countries-and-regions"></a>Unterstützte Länder und Regionen für Herausgeber
+
+Zum Veröffentlichen eines Angebots im kommerziellen Microsoft-Marketplace muss Ihre Firma über einen rechtmäßigen Wohnsitz in einem der folgenden Länder bzw. einer der Regionen verfügen:
+
+- Afghanistan
+- Ålandinseln
+- Albanien
+- Algerien
+- Amerikanisch-Samoa
+- Andorra
+- Angola
+- Anguilla
+- Antarktis
+- Antigua und Barbuda
+- Argentinien
+- Armenien
+- Aruba
+- Australien
+- Österreich
+- Aserbaidschan
+- Bahamas
+- Bahrain
+- Bangladesch
+- Barbados
+- Belarus
+- Belgien
+- Belize
+- Benin
+- Bermuda
+- Bhutan
+- Bolivien
+- Bonaire, Sint Eustatius und Saba
+- Bosnien und Herzegowina
+- Botsuana
+- Bouvetinsel
+- Brasilien
+- Britisches Territorium im Indischen Ozean
+- Britische Jungferninseln
+- Brunei
+- Bulgarien
+- Burkina Faso
+- Burundi
+- Cabo Verde
+- Kambodscha
+- Kamerun
+- Kanada
+- Kaimaninseln
+- Zentralafrikanische Republik
+- Tschad
+- Chile
+- Weihnachtsinsel
+- Kokosinseln
+- Kolumbien
+- Komoren
+- Kongo
+- Kongo (DRK)
+- Cookinseln
+- Costa Rica
+- Kroatien
+- Curaçao
+- Zypern
+- Côte d'Ivoire
+- Tschechien
+- Dänemark
+- Dschibuti
+- Dominica
+- Dominikanische Republik
+- Ecuador
+- Ägypten
+- El Salvador
+- Äquatorialguinea
+- Eritrea
+- Estland
+- Äthiopien
+- Falklandinseln
+- Faröer
+- Fidschi
+- Finnland
+- Frankreich
+- Französisch-Guayana
+- Französisch-Polynesien
+- Französische Süd- und Antarktisgebiete
+- Gabun
+- Gambia
+- Georgien
+- Deutschland
+- Ghana
+- Gibraltar
+- Griechenland
+- Grönland
+- Grenada
+- Guadeloupe
+- Guam
+- Guatemala
+- Guernsey
+- Guinea
+- Guinea-Bissau
+- Guyana
+- Haiti
+- Heard und McDonaldinseln
+- Honduras
+- Hongkong SAR
+- Ungarn
+- Island
+- Indien
+- Indonesien
+- Irak
+- Irland
+- Isle of Man
+- Israel
+- Italien
+- Jamaica
+- Japan
+- Jersey
+- Jordanien
+- Kasachstan
+- Kenia
+- Kiribati
+- Kosovo
+- Kuwait
+- Kirgisistan
+- Laos
+- Lettland
+- Libanon
+- Lesotho
+- Liberia
+- Libyen
+- Liechtenstein
+- Litauen
+- Luxemburg
+- Macau (SAR)
+- Madagaskar
+- Malawi
+- Malaysia
+- Malediven
+- Mali
+- Malta
+- Marshall-Inseln
+- Martinique
+- Mauretanien
+- Mauritius
+- Mayotte
+- Mexiko
+- Mikronesien
+- Moldawien
+- Monaco
+- Mongolei
+- Montenegro
+- Montserrat
+- Marokko
+- Mosambik
+- Myanmar
+- Namibia
+- Nauru
+- Nepal
+- Niederlande
+- Neukaledonien
+- Neuseeland
+- Nicaragua
+- Niger
+- Nigeria
+- Niue
+- Norfolkinsel
+- Nordmazedonien
+- Nördliche Marianen
+- Norwegen
+- Oman
+- Pakistan
+- Palau
+- Palästinensische Autonomiegebiete
+- Panama
+- Papua-Neuguinea
+- Paraguay
+- Peru
+- Philippinen
+- Pitcairninseln
+- Polen
+- Portugal
+- Puerto Rico
+- Katar
+- Rumänien
+- Russland
+- Ruanda
+- Réunion
+- Saba
+- St. Barthélemy
+- St. Kitts und Nevis
+- St. Lucia
+- St. Martin
+- St. Pierre und Miquelon
+- St. Vincent und die Grenadinen
+- Samoa
+- San Marino
+- Saudi-Arabien
+- Senegal
+- Serbien
+- Seychellen
+- Sierra Leone
+- Singapur
+- Sint Eustatius
+- Sint Maarten
+- Slowakei
+- Slowenien
+- Salomonen
+- Somalia
+- Südafrika
+- Südgeorgien und die Südlichen Sandwichinseln
+- Südkorea (Republik Korea)
+- Südsudan
+- Spanien
+- Sri Lanka
+- St. Helena, Ascension und Tristan da Cunha
+- Surinam
+- Spitzbergen und Jan Mayen
+- Swasiland
+- Schweden
+- Schweiz
+- São Tomé und Príncipe
+- Taiwan
+- Tadschikistan
+- Tansania
+- Thailand
+- Timor-Leste
+- Togo
+- Tokelau
+- Tonga
+- Trinidad und Tobago
+- Tunesien
+- Türkei
+- Turkmenistan
+- Turks- und Caicosinseln
+- Tuvalu
+- USA Kleinere Amerikanische Überseeinseln
+- USA Jungferninseln
+- Uganda
+- Ukraine
+- Vereinigte Arabische Emirate
+- Vereinigtes Königreich
+- USA
+- Uruguay
+- Usbekistan
+- Vanuatu
+- Vatikanstadt
+- Venezuela
+- Vietnam
+- Wallis und Futuna
+- Jemen
+- Sambia
+- Simbabwe

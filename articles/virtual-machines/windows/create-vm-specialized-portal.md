@@ -1,24 +1,18 @@
 ---
-title: Erstellen einer Windows-VM auf Grundlage einer speziellen VHD im Azure-Portal | Microsoft-Dokumentation
+title: Erstellen einer Windows-VM auf Grundlage einer speziellen VHD im Azure-Portal
 description: Erstellen einer neuen Windows-VM aus einer VHD im Azure-Portal.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: ab5af0e5971b91f45cbb12b4d0583caafa5ad504
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 31677482660a48e2bb4c71b81b04681eba725fcd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079659"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455137"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Erstellen eines virtuellen Computers anhand einer VHD mithilfe des Azure-Portals
 
@@ -32,8 +26,12 @@ Es gibt mehrere Möglichkeiten zum Erstellen eines virtuellen Computers (Virtual
  
 - Sie können einen virtuellen Azure-Computer anhand einer lokalen VHD erstellen, indem Sie die lokale VHD hochladen und an einen neuen virtuellen Computer anfügen. Verwenden Sie PowerShell oder ein anderes Tool, um die VHD in ein Speicherkonto hochzuladen, und erstellen Sie dann einen verwalteten Datenträger anhand der VHD. Weitere Informationen finden Sie unter [Hochladen einer speziellen VHD](create-vm-specialized.md#option-2-upload-a-specialized-vhd). 
 
-Verwenden Sie keinen speziellen Datenträger, wenn Sie mehrere VMs erstellen möchten. Für größere Bereitstellungen sollten Sie stattdessen [ein Image erstellen](capture-image-resource.md) und dann [dieses Image zum Erstellen mehrerer VMs verwenden](create-vm-generalized-managed.md).
+> [!IMPORTANT]
+> 
+> Wenn Sie zur Erstellung einer neuen VM einen speziellen Datenträger verwenden, behält die neue VM den Computernamen der ursprünglichen VM bei. Andere computerspezifische Informationen (z. B. die CMID) werden ebenfalls beibehalten. In einigen Fällen können diese doppelten Informationen Probleme verursachen. Achten Sie beim Kopieren einer VM darauf, auf welche Arten von computerspezifischen Informationen Ihre Anwendungen angewiesen sind.  
+> Verwenden Sie daher keinen speziellen Datenträger, wenn Sie mehrere VMs erstellen möchten. Für größere Bereitstellungen sollten Sie stattdessen [ein Image erstellen](capture-image-resource.md) und dann [dieses Image zum Erstellen mehrerer VMs verwenden](create-vm-generalized-managed.md).
 
+Es wird empfohlen, die Anzahl gleichzeitiger Bereitstellungen auf Grundlage einer Momentaufnahme oder einer einzelnen VHD auf 20 VMs zu beschränken. 
 
 ## <a name="copy-a-disk"></a>Kopieren eines Datenträgers
 
@@ -74,6 +72,7 @@ Wenn Sie über die verwaltete Datenträger-VHD verfügen, die Sie verwenden möc
 10. Fügen Sie auf der Seite **Gastkonfiguration** nach Bedarf Erweiterungen hinzu.
 11. Wählen Sie abschließend **Überprüfen + erstellen** aus. 
 12. Wählen Sie bei erfolgreicher Überprüfung der VM-Konfiguration die Option **Erstellen** aus, um die Bereitstellung zu starten.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

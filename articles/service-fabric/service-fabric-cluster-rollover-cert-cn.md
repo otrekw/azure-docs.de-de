@@ -1,24 +1,14 @@
 ---
-title: Rollover für ein Azure Service Fabric-Clusterzertifikat | Microsoft-Dokumentation
+title: Rollover für ein Azure Service Fabric-Clusterzertifikat
 description: Erfahren Sie, wie Sie ein Rollover für ein Service Fabric-Clusterzertifikat ausführen, das anhand seines allgemeinen Zertifikatsnamens identifiziert wird.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2019
-ms.author: atsenthi
-ms.openlocfilehash: d6ead6aaa5d4c0e864126bf63d4cc0e9339464f2
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 65ea4f463073c472ac6a31e62dcfdfd11cb28cc5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773366"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88853354"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Manuelles Rollover für ein Service Fabric-Clusterzertifikat
 Wenn ein Service Fabric-Clusterzertifikat in Kürze abläuft, müssen Sie das Zertifikat aktualisieren.  Ein Zertifikatrollover ist einfach, wenn der Cluster [für die Verwendung von Zertifikaten auf Basis des allgemeinen Namens konfiguriert wurde](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (anstelle eines Fingerabdrucks).  Fordern Sie ein neues Zertifikat von einer Zertifizierungsstelle mit einem neuen Ablaufdatum an.  Selbstsignierte Zertifikate werden für Service Fabric-Produktionscluster nicht unterstützt, damit Zertifikate berücksichtigt werden, die während des Clustererstellungsworkflows im Azure-Portal generiert werden. Das neue Zertifikat muss den gleichen allgemeinen Name wie das ältere Zertifikat haben. 
@@ -74,7 +64,7 @@ $certConfig = New-AzVmssVaultCertificateConfig -CertificateUrl $CertificateURL -
 $vmss = Get-AzVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
 
 # Add new secret to the VM scale set.
-$vmss = Add-AzVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault -VaultCertificate $certConfig
+$vmss.VirtualMachineProfile.OsProfile.Secrets[0].VaultCertificates.Add($certConfig)
 
 # Update the VM scale set 
 Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose

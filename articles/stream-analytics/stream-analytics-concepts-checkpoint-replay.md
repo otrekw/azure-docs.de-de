@@ -1,20 +1,19 @@
 ---
-title: Begriffe zur Wiederherstellung von Prüfpunkten und Wiedergabeaufträgen in Azure Stream Analytics
+title: Begriffe zur Wiederherstellung von Prüfpunkten und der Wiedergabe in Azure Stream Analytics
 description: In diesem Artikel werden Begriffe zur Wiederherstellung von Prüfpunkten und Wiedergabeaufträgen in Azure Stream Analytics beschrieben.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9dcfbd4b5fcc8462c88b16f585424166ecd3d499
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61361880"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84020607"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Begriffe zu Prüfpunkten und zur Wiedergabe bei Azure Stream Analytics-Aufträgen
 In diesem Artikel werden Begriffe zu internen Prüfpunkten und zur Wiedergabe in Azure Stream Analytics sowie deren Auswirkung auf die Wiederherstellung von Aufträgen beschrieben. Bei jeder Ausführung eines Stream Analytics-Auftrags werden intern Zustandsinformationen verwaltet. Die Zustandsinformationen werden in regelmäßigen Abständen in einem Prüfpunkt gespeichert. In einigen Szenarien werden die Prüfpunktinformationen bei einem Auftragsfehler oder einem Upgrade für die Auftragswiederherstellung verwendet. In anderen Fällen kann der Prüfpunkt nicht für die Wiederherstellung verwendet werden, sodass eine Wiedergabe erforderlich ist.
@@ -59,7 +58,7 @@ Um die Länge der Verzögerung aufgrund eines Dienstupgrades einzuschätzen, kö
 
 3. Messen Sie den Zeitraum zwischen der Startzeit und dem Zeitpunkt, an dem die erste Ausgabe generiert wird. Der Zeitraum ist ein ungefährer Schätzwert dafür, wie lang die Verzögerung bei einem Auftrag im Falle eines Dienstupgrades wäre.
 
-4. Wenn die Verzögerung zu lang ist, versuchen Sie, Ihren Auftrag zu partitionieren und die Anzahl der SUs zu erhöhen, damit die Last auf eine größere Anzahl von Knoten verteilt wird. Alternativ können Sie die Fenstergrößen in Ihrer Abfrage verkürzen und weitere Aggregationen oder andere zustandsbehaftete Verarbeitungen für die Ausgabe ausführen, die vom Stream Analytics-Auftrag in der Downstreamsenke (z.B. mithilfe von Azure SQL-Datenbank) erzeugt werden.
+4. Wenn die Verzögerung zu lang ist, versuchen Sie, Ihren Auftrag zu partitionieren und die Anzahl der SUs zu erhöhen, damit die Last auf eine größere Anzahl von Knoten verteilt wird. Alternativ können Sie die Fenstergrößen in Ihrer Abfrage verkürzen und weitere Aggregationen oder andere zustandsbehaftete Verarbeitungen für die Ausgabe ausführen, die vom Stream Analytics-Auftrag in der Downstreamsenke (z. B. mithilfe von Azure SQL-Datenbank) erzeugt werden.
 
 Hinsichtlich des allgemeinen Problems mit der Dienststabilität beim Upgrade unternehmenskritischer Aufträge empfiehlt es sich, doppelte Aufträge in paarweise zugeordneten Azure-Regionen auszuführen. Weitere Informationen finden Sie unter [Gewährleisten der Zuverlässigkeit von Stream Analytics-Aufträgen während Dienstupdates](stream-analytics-job-reliability.md).
 

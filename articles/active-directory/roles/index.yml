@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: 'Dokumentation zu Azure AD-Rollen: Azure AD'
+summary: Mit der rollenbasierten Zugriffssteuerung von Azure AD wird der Zugriff auf Azure AD-Ressourcen verwaltet. Sie können benutzerdefinierte Rollen erstellen, Rollen zuweisen, die Verwaltungseinheiten verwenden, um den Steuerungsbereich einzuschränken, Anwendungszugriff für Gruppen oder Benutzer zuweisen, die Berechtigung mit Privileged Identity Management (PIM) verwalten oder Berechtigungen delegieren, um Identitätsverwaltungsaufgaben zu verteilen.
+metadata:
+  title: Dokumentation zu Azure Active Directory-Rollen
+  description: Hier erfahren Sie, wie Sie mithilfe von Azure AD-Rollen den Zugriff in Ihrer Organisation verwalten.
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: roles
+  manager: daveba
+  ms.topic: landing-page
+  ms.date: 10/19/2020
+  author: curtand
+  ms.author: curtand
+  ms.openlocfilehash: 8dd6ac6fef0dbc84c77ccacfd048b2af21771f6a
+  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96499202"
+landingContent:
+- title: Informationen zu Azure AD-Rollen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Übersicht über die rollenbasierte Zugriffssteuerung von Azure AD
+      url: custom-overview.md
+  - linkListType: concept
+    links:
+    - text: Grundlegendes zu Azure AD-Rollen
+      url: concept-understand-roles.md
+    - text: Grundlegendes zu Verwaltungseinheiten in Azure AD
+      url: administrative-units.md
+    - text: Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen
+      url: groups-concept.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erteilen einer Berechtigung zum Erstellen unbegrenzter App-Registrierungen
+      url: quickstart-app-registration-limits.md
+- title: Delegieren von Rollen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Delegieren von Rollen nach Aufgabe
+      url: delegate-by-task.md
+    - text: Delegieren der Anwendungsverwaltung
+      url: delegate-app-roles.md
+- title: Zuweisen von Rollen zu Benutzern
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen von benutzerdefinierten Rollen
+      url: custom-create.md
+    - text: Zuweisen von Rollen mithilfe der Graph-API
+      url: custom-assign-graph.md
+    - text: Zuweisen mithilfe von PowerShell
+      url: custom-assign-powershell.md
+    - text: Zuweisen von Rollen mithilfe der Graph-API
+      url: custom-assign-graph.md
+- title: Zuweisen von Rollen zu Gruppen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen einer Gruppe, der Rollen zugeordnet werden können
+      url: groups-create-eligible.md
+    - text: Zuweisen einer Rolle zu einer Cloudgruppe
+      url: groups-assign-role.md
+    - text: Festlegen einer Gruppe als berechtigt für PIM
+      url: groups-pim-eligible.md
+    - text: Anzeigen der Zuweisungen für eine Gruppe
+      url: groups-view-assignments.md
+- title: Verwalten des Bereichs mit Verwaltungseinheiten
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Hinzufügen und Entfernen von Verwaltungseinheiten
+      url: admin-units-manage.md
+    - text: Zuweisen von Benutzern zu Einheiten
+      url: admin-units-add-manage-users.md
+    - text: Zuweisen von Gruppen zu Einheiten
+      url: admin-units-add-manage-groups.md
+    - text: Zuweisen von Gruppen mit Bereich
+      url: admin-units-assign-roles.md

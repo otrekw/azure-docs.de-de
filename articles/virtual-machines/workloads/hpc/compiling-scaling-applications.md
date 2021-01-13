@@ -1,23 +1,19 @@
 ---
 title: Skalieren von HPC-Anwendungen – Azure Virtual Machines | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie HPC-Anwendungen auf virtuellen Azure-Computern skalieren.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
+ms.subservice: workloads
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 00d5b86c8cae01d342d55b7ad20ec59c3f7530bd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.reviewer: cynthn
+ms.openlocfilehash: 7e05d64420cd920242a887b206fd38cd4a655509
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707838"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967005"
 ---
 # <a name="scaling-hpc-applications"></a>Skalieren von HPC-Anwendungen
 
@@ -37,7 +33,7 @@ Clang ist ein C-, C++- und Objective-C-Compiler für die Verarbeitung, Analyse, 
 
 ### <a name="flang"></a>FLANG
 
-Der FLANG-Compiler wurde der AOCC erst vor Kurzem (im April 2018) hinzugefügt und kann derzeit von Entwicklern als Vorabversion heruntergeladen und getestet werden. AMD erweitert die GitHub-Version von FLANG (https://github.com/flangcompiler/flang) auf der Grundlage von Fortran 2008. Der FLANG-Compiler unterstützt alle Clang-Compileroptionen sowie zahlreiche FLANG-spezifische Compileroptionen.
+Der FLANG-Compiler wurde der AOCC erst vor Kurzem (im April 2018) hinzugefügt und kann derzeit von Entwicklern als Vorabversion heruntergeladen und getestet werden. AMD erweitert die GitHub-Version von FLANG (https://github.com/flang-compiler/flang) auf der Grundlage von Fortran 2008. Der FLANG-Compiler unterstützt alle Clang-Compileroptionen sowie zahlreiche FLANG-spezifische Compileroptionen.
 
 ### <a name="dragonegg"></a>DragonEgg
 
@@ -86,4 +82,4 @@ Die folgenden Vorschläge dienen zur Optimierung der Skalierungseffizienz, Leist
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich ausführlicher über [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) in Azure.
+Informieren Sie sich ausführlicher über [HPC](/azure/architecture/topics/high-performance-computing/) in Azure.

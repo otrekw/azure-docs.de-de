@@ -1,27 +1,20 @@
 ---
-title: Importieren von Zertifikaten in einen unter Azure Service Fabric ausgeführten Container | Microsoft-Dokumentation
+title: Importieren von Zertifikaten in einen Container
 description: Erfahren Sie, wie Sie Zertifikatdateien in einen Service Fabric-Containerdienst importieren.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 80ac20fd2dc7bfe3fea6a58a6df94e3f7b99a700
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 219882a3f7f6db665f1ec311098ef53464773b71
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599225"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313695"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Importieren einer Zertifikatdatei in einen Container, der unter Service Fabric ausgeführt wird
+
+> [!NOTE]
+> Für Service Fabric-Cluster, die in Azure ausgeführt werden, wird empfohlen, die [verwaltete Service Fabric-Anwendungsidentität](./concepts-managed-identity.md) zu verwenden, um Anwendungszertifikate aus einem Container heraus bereitzustellen. Die verwaltete Identität ermöglicht die Isolation von geheimen Schlüsseln und Zertifikaten auf Dienstebene und ermöglicht die Bereitstellung von Anwendungszertifikaten im Workflow der Anwendung, anstatt diese im Infrastrukturworkflow bereitzustellen. Der CertificateRef-Mechanismus wird in einer zukünftigen Version als veraltet markiert.
 
 Containerdienste können durch Angabe eines Zertifikats geschützt werden. Service Fabric bietet einen Mechanismus, über den Dienste innerhalb eines Containers auf ein Zertifikat zugreifen können, das auf den Knoten eines Windows- oder Linux-Clusters (ab Version 5.7) installiert ist. Das Zertifikat muss in einem Zertifikatspeicher unter LocalMachine auf allen Knoten des Clusters installiert werden. Der mit dem Zertifikat übereinstimmende private Schlüssel muss verfügbar, zugänglich und – unter Windows – exportierbar sein. Die Zertifikatinformationen werden im Anwendungsmanifest unter dem Tag `ContainerHostPolicies` angegeben, wie im folgenden Codeausschnitt zu sehen:
 
@@ -40,6 +33,8 @@ Für Linux-Cluster werden die Zertifikate (PEM) aus dem durch X509StoreName ange
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PEM
 * Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey
+
+Beachten Sie, dass die Dateien `PEM` und `PrivateKey` das Zertifikat und den unverschlüsselten privaten Schlüssel enthalten.
 
 Wenn Sie bereits über die Zertifikate im erforderlichen Format verfügen und innerhalb des Containers darauf zugreifen möchten, können Sie alternativ ein Datenpaket innerhalb des App-Pakets erstellen und Folgendes in Ihrem Anwendungsmanifest angeben:
 

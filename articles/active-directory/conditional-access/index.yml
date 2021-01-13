@@ -12,12 +12,12 @@ metadata:
   ms.author: joflore
   ms.date: 08/20/2019
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 39f9cf3e64e343c2da98f2c4f4b403ccdc0f3f20
-  ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+  ms.openlocfilehash: d44745bcea348f944a2434e1164e59e32d1f92dc
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/21/2019
-  ms.locfileid: "69874260"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "77186058"
 landingContent:
 - title: Informationen zum bedingten Zugriff
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Was sind Bedingungen?
-      url: conditions.md
+      url: concept-conditional-access-conditions.md
     - text: Wie kann ich Standorte definieren?
       url: location-condition.md
     - text: Was sind Kontrollen?

@@ -1,18 +1,18 @@
 ---
-title: Azure DNS-Aliaseinträge – Übersicht
-description: Übersicht über die Unterstützung für Aliaseinträge in Microsoft Azure DNS.
+title: 'Übersicht: Azure DNS-Aliaseinträge – Azure DNS'
+description: In diesem Artikel erfahren Sie mehr über die Unterstützung für Aliaseinträge in Microsoft Azure DNS.
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
-ms.author: victorh
-ms.openlocfilehash: 9a3cdb846921c2d73dd2cca5d679663c1ba9e192
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.author: rohink
+ms.openlocfilehash: 8b2576669357aae7e5fe423515933c2ce4a23a7d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946902"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954476"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS-Aliaseinträge – Übersicht
 
@@ -20,7 +20,7 @@ Azure DNS-Aliaseinträge sind Qualifizierungen für einen DNS-Ressourceneintrags
 
 Aliaseintragssätze werden für die folgenden Eintragstypen in einer Azure DNS-Zone unterstützt: 
 
-- Eine Datei
+- Ein
 - AAAA
 - CNAME
 
@@ -66,7 +66,7 @@ So können beispielsweise „contoso.com“ und „www\.contoso.com“ jeweils a
 
 Genau wie ein Traffic Manager-Profil können Sie auch Aliasdatensätze verwenden, um an der Zonenspitze Ihrer DNS-Zone auf Azure CDN-Endpunkte zu verweisen. Dies ist nützlich, wenn Sie statische Websites mit Azure Storage und Azure CDN erstellen. Anschließend können Sie auf die Website zugreifen, ohne dem DNS-Namen „www“ voranstellen zu müssen.
 
-Wenn Ihre statische Website „ www.contoso.com “ heißt, können Ihre Benutzer mit „contoso.com“ auf Ihre Website zugreifen, ohne dem DNS-Namen „www“ voranstellen zu müssen.
+Wenn Ihre statische Website `www.contoso.com` heißt, können Ihre Benutzer mit `contoso.com` auf Ihre Website zugreifen, ohne dem DNS-Namen „www“ voranstellen zu müssen.
 
 Wie zuvor beschrieben, werden CNAME-Einträge am Zonen-Apex nicht unterstützt. Daher können Sie keinen CNAME-Eintrag verwenden, um mit „contoso.com“ auf Ihren CDN-Endpunkt zu verweisen. Stattdessen können Sie einen Aliaseintrag verwenden, um direkt an der Zonenspitze auf einen CDN-Endpunkt zu verweisen.
 
@@ -79,4 +79,4 @@ Weitere Informationen zu Aliaseinträgen finden Sie in den folgenden Artikeln:
 
 - [Tutorial: Konfigurieren eines Aliaseintrags, um auf eine öffentliche Azure-IP-Adresse zu verweisen](tutorial-alias-pip.md)
 - [Tutorial: Konfigurieren eines Alias-Ressourceneintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager](tutorial-alias-tm.md)
-- [Häufig gestellte Fragen zu DNS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
+- [Häufig gestellte Fragen zu DNS](./dns-faq.md#alias-records)

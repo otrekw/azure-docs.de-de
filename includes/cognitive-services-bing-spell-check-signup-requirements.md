@@ -3,12 +3,23 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/12/2019
-ms.openlocfilehash: 4c69ebd7e1d4d649bfd2896ae87f0047c5988325
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 05/19/2020
+ms.openlocfilehash: cb50e5a009b63bebd1656513d2b58c4ec61a8060
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178420"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "85806113"
 ---
-Sie benötigen ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Zugriff auf die Bing-Rechtschreibprüfungs-API. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses [Konto erstellen](https://azure.microsoft.com/try/cognitive-services/?api=text-analytics). Vor dem Fortfahren benötigen Sie den Zugriffsschlüssel, der nach dem [Aktivieren Ihrer kostenlosen Testversion bereitgestellt](https://azure.microsoft.com/try/cognitive-services/my-apis/) wird. Alternativ hierzu können Sie auch den Schlüssel eines kostenpflichtigen Abonnements aus Ihrem Azure-Dashboard verwenden.
+## <a name="create-an-azure-resource"></a>Erstellen einer Azure-Ressource
+
+Beginnen Sie mit der Verwendung der Bing-Rechtschreibprüfung-API, indem Sie eine der folgenden Azure-Ressourcen erstellen:
+
+[Bing-Rechtschreibprüfung-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)
+   * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.
+   * Verwenden Sie den Tarif „Free“, um den Dienst zu testen, und führen Sie später für die Produktion ein Upgrade auf einen kostenpflichtigen Tarif durch.
+   * Die Bing-Rechtschreibprüfung-API wird auch in einigen Tarifen der [Bing-Suche v7-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) angeboten.
+    
+[Ressource für mehrere Dienste](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)
+   * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.  
+   * Verwenden Sie für Ihre Anwendungen den gleichen Schlüssel und Endpunkt über mehrere Cognitive Services-Instanzen hinweg.

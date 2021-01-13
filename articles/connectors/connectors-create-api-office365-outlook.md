@@ -1,96 +1,119 @@
 ---
-title: Herstellen einer Verbindung mit Office 365 Outlook – Azure Logic Apps | Microsoft-Dokumentation
-description: Verwalten von E-Mails, Kontakten und Kalendern mit Office 365-REST-APIs und Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 10/18/2016
-ms.topic: article
-ms.service: logic-apps
+title: Integration in Office 365 Outlook
+description: Automatisieren von Aufgaben und Workflows, die E-Mails, Kontakte und Kalender in Office 365 Outlook mithilfe von Azure Logic Apps verwalten
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: logicappspm
+ms.topic: article
+ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 52abf17e869216e65780129a7b48df79bd79f67a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9caf69a7f78c7872f0a5f8a2ed07bdc749a29023
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105053"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682994"
 ---
-# <a name="get-started-with-the-office-365-outlook-connector"></a>Erste Schritte mit dem Office 365 Outlook-Connector
-Der Office 365 Outlook-Connector ermöglicht die Interaktion mit Outlook in Office 365. Verwenden Sie diesen Connector zum Erstellen, Bearbeiten und Aktualisieren von Kontakten und Kalenderelementen sowie zum Empfangen, Senden und Beantworten von E-Mails.
+# <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Verwalten von E-Mails, Kontakten und Kalendern in Office 365 Outlook mithilfe von Azure Logic Apps
 
-Office 365 Outlook ermöglicht Folgendes:
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [Office 365 Outlook-Connector](/connectors/office365connector/) können Sie durch die Erstellung von Logik-Apps automatisierte Aufgaben und Workflows zur erstellen, die Ihr Geschäfts-, Schul- oder Unikonto verwalten. Sie können beispielsweise folgende Aufgaben automatisieren:
 
-* Erstellen Ihres Workflows unter Verwendung der E-Mail- und Kalenderfeatures in Office 365. 
-* Verwenden von Triggern, um den Workflow zu starten, wenn beispielsweise eine neue E-Mail vorliegt oder ein Kalenderelement aktualisiert wird.
-* Verwenden von Aktionen, um beispielsweise eine E-Mail zu senden oder ein neues Kalenderereignis zu erstellen. Wenn also beispielsweise ein neues Objekt in Salesforce vorhanden ist (Trigger), kann eine E-Mail an Office 365 Outlook gesendet werden (Aktion). 
+* Abrufen, Senden, und Beantworten von E-Mails.
+* Planen von Besprechungen in Ihrem Kalender.
+* Hinzufügen und Bearbeiten von Kontakten
 
-Dieser Artikel beschreibt, wie Sie den Office 365 Outlook-Connector in einer Logik-App verwenden, und enthält eine Liste mit den Triggern und Aktionen.
+Sie können einen beliebigen Trigger verwenden, um Ihren Workflow zu starten – etwa den Eingang einer neuen E-Mail, die Aktualisierung eines Kalenderelements oder das Eintreten eines Ereignisses in einem anderen Dienst, z. B. Salesforce. Auf das Triggerereignis kann dann mit Aktionen wie dem Senden einer E-Mail oder dem Erstellen eines neuen Kalenderereignisses reagiert werden.
 
-> [!NOTE]
-> Diese Version des Artikels gilt für die allgemein verfügbare Version von Logic Apps.
-> 
-> 
+## <a name="prerequisites"></a>Voraussetzungen
 
-Weitere Informationen zu Logik-Apps finden Sie unter [Was sind Logik-Apps](../logic-apps/logic-apps-overview.md) sowie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Ein Outlook-Konto, bei dem Sie sich mit einem [Geschäfts-, Schul- oder Unikonto](https://www.office.com/) anmelden. Wenn Sie ein @outlook.com- oder @hotmail.com-Konto besitzen, verwenden Sie stattdessen den [Outlook.com-Connector](../connectors/connectors-create-api-outlook.md). Informationen zum Herstellen einer Verbindung mit Outlook mit einem anderen Benutzerkonto, z. B. einem Dienstkonto, finden Sie unter [Herstellen einer Verbindung mit anderen Konten](#connect-using-other-accounts).
 
-## <a name="connect-to-office-365"></a>Herstellen einer Verbindung mit Office 365
-Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine Verbindung stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her. Wenn Sie also etwa eine Verbindung mit Office 365 Outlook herstellen möchten, benötigen Sie zunächst eine *Verbindung* mit Office 365. Geben Sie zum Erstellen einer Verbindung die Anmeldeinformationen ein, mit denen Sie normalerweise auf den Dienst zugreifen, mit dem Sie eine Verbindung herstellen möchten. Geben Sie für Office 365 Outlook also die Anmeldeinformationen Ihres Office 365-Kontos ein, um die Verbindung zu erstellen.
+* Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-the-connection"></a>Erstellen der Verbindung
-> [!INCLUDE [Steps to create a connection to Office 365](../../includes/connectors-create-api-office365-outlook.md)]
-> 
-> 
+* Die Logik-App, in der Sie auf Ihr Outlook-Konto zugreifen möchten. Um Ihren Workflow mit einem Office 365 Outlook-Trigger starten zu können, benötigen Sie eine [leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Wenn Sie Ihrem Workflow eine Office 365 Outlook-Aktion hinzufügen möchten, muss Ihre Logik-App bereits über einen-Trigger verfügen.
 
-## <a name="use-a-trigger"></a>Verwenden eines Triggers
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Trigger fragen den Dienst im gewünschten Intervall und mit der gewünschten Häufigkeit ab. Weitere Informationen zu Triggern finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+## <a name="add-a-trigger"></a>Hinzufügen eines Triggers
 
-1. Geben Sie in der Logik-App die Zeichenfolge „office 365“ ein, um eine Liste mit den Triggern abzurufen:  
+Ein [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) ist ein Ereignis, das den Workflow in Ihrer Logik-App startet. In dieser exemplarischen Logik-App wird ein Abfragetrigger verwendet, um Ihr E-Mail-Konto im angegebenen Intervall und mit der angegebenen Frequenz auf aktualisierte Kalenderereignisse zu überprüfen.
+
+1. Öffnen Sie Ihre leere Logik-App im [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
+
+1. Geben Sie im Suchfeld den Begriff `office 365 outlook` als Filter ein. In diesem Beispiel wird **Wenn ein anstehender Termin in Kürze startet** ausgewählt.
    
-    ![](./media/connectors-create-api-office365-outlook/office365-trigger.png)
-2. Wählen Sie **Office 365 Outlook - When an upcoming event is starting soon** (Office 365 Outlook – Wenn ein anstehendes Ereignis in Kürze beginnt) aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie in der Dropdownliste einen Kalender aus.
-   
-    ![](./media/connectors-create-api-office365-outlook/sample-calendar.png)
-   
-    Wenn Sie zur Anmeldung aufgefordert werden, geben Sie die Anmeldeinformationen ein, um die Verbindung zu erstellen. Die erforderlichen Schritte sind in diesem Thema unter [Erstellen der Verbindung](connectors-create-api-office365-outlook.md#create-the-connection) aufgeführt. 
-   
+   ![Auswählen des Triggers zum Starten Ihrer Logik-App](./media/connectors-create-api-office365-outlook/office365-trigger.png)
+
+1. Wenn keine aktive Verbindung mit Ihrem Outlook-Konto vorhanden ist, werden Sie aufgefordert, sich anzumelden und diese Verbindung zu erstellen. Informationen zum Herstellen einer Verbindung mit Outlook mit einem anderen Benutzerkonto, z. B. einem Dienstkonto, finden Sie unter [Herstellen einer Verbindung mit anderen Konten](#connect-using-other-accounts). Geben Sie andernfalls die Informationen für die Eigenschaften des Triggers ein.
+
    > [!NOTE]
-   > In diesem Beispiel wird die Logik-App ausgeführt, wenn ein Kalenderereignis aktualisiert wird. Fügen Sie zum Anzeigen der Ergebnisse dieses Triggers eine weitere Aktion hinzu, die Ihnen eine SMS sendet. Fügen Sie beispielsweise die Twilio-Aktion *Nachricht senden* hinzu, um eine SMS zu erhalten, wenn das Ereignis in 15 Minuten beginnt. 
-   > 
-   > 
-3. Wählen Sie die Schaltfläche **Bearbeiten** aus, und legen Sie Werte für **Häufigkeit** und **Intervall** fest. Falls die Abfrage durch den Trigger also beispielsweise alle 15 Minuten erfolgen soll, legen Sie **Häufigkeit** auf **Minute** und **Intervall** auf **15** fest. 
-   
-    ![](./media/connectors-create-api-office365-outlook/calendar-settings.png)
-4. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
+   > Ihre Verbindung läuft erst ab, wenn sie widerrufen wird. Sie läuft selbst dann nicht ab, wenn Sie die Anmeldeinformationen ändern. Weitere Informationen finden Sie unter [Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md).
 
-## <a name="use-an-action"></a>Verwenden einer Aktion
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+   In diesem Beispiel wird der Kalender ausgewählt, den der Trigger überprüft, beispielsweise:
 
-1. Wählen Sie das Pluszeichen aus. Sie sehen mehrere Auswahlmöglichkeiten: **Aktion hinzufügen**, **Bedingung hinzufügen** oder eine der Optionen unter **Mehr**.
-   
-    ![](./media/connectors-create-api-office365-outlook/add-action.png)
-2. Wählen Sie **Aktion hinzufügen**aus.
-3. Geben Sie im Textfeld die Zeichenfolge „office 365“ ein, um eine Liste mit allen verfügbaren Aktionen zu erhalten.
-   
-    ![](./media/connectors-create-api-office365-outlook/office365-actions.png) 
-4. In unserem Beispiel wählen wir **Office 365 Outlook – Kontakt erstellen** aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie **Ordner-ID**, **Vorname** und andere Eigenschaften aus:  
-   
-    ![](./media/connectors-create-api-office365-outlook/office365-sampleaction.png)
-   
-    Wenn Sie zur Eingabe der Verbindungsinformationen aufgefordert werden, geben Sie die Details ein, um die Verbindung zu erstellen. Die Eigenschaften werden in diesem Thema unter [Erstellen der Verbindung](connectors-create-api-office365-outlook.md#create-the-connection) beschrieben. 
-   
+   ![Konfigurieren der Eigenschaften des Triggers](./media/connectors-create-api-office365-outlook/select-calendar.png)
+
+1. Legen Sie im Trigger die Werte für **Häufigkeit** und **Intervall** fest. Um weitere verfügbare Trigger wie **Zeitzone** hinzuzufügen, wählen Sie diese Eigenschaften aus der Liste **Neuen Parameter hinzufügen** aus.
+
+   Wenn also der Trigger beispielsweise den Kalender alle 15 Minuten überprüfen soll, legen Sie **Häufigkeit** auf **Minute** und **Intervall** auf `15` fest. 
+
+   ![Festlegen von Häufigkeit und Intervall für den Trigger](./media/connectors-create-api-office365-outlook/calendar-settings.png)
+
+1. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
+
+Fügen Sie nun eine Aktion hinzu, die ausgeführt wird, nachdem der Trigger ausgelöst wurde. Beispielsweise können Sie die Twilio-Aktion **Nachricht senden** hinzufügen, die einen Text sendet, wenn ein Kalenderereignis in 15 Minuten beginnt.
+
+## <a name="add-an-action"></a>Hinzufügen einer Aktion
+
+Eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) ist ein Vorgang, der durch den Workflow in Ihrer Logik-App ausgeführt wird. Diese Beispiel-Logik-App erstellt einen neuen Kontakt in Office 365 Outlook. Für die Erstellung des Kontakts können Sie die Ausgabe eines anderen Triggers oder einer Aktion verwenden. Ein Beispiel: Angenommen, Ihre Logik-App verwendet den Dynamics 365-Trigger **Wenn ein Datensatz erstellt wird**. Sie können die Office 365 Outlook-Aktion **Kontakt erstellen** hinzufügen und die Ausgaben des SalesForce-Triggers verwenden, um den neuen Kontakt zu erstellen.
+
+1. Öffnen Sie Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
+
+1. Wenn Sie eine Aktion als letzten Schritt in Ihrem Workflow hinzufügen möchten, wählen Sie **Neuer Schritt** aus. 
+
+   Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen diesen Schritten. Wählen Sie das angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
+
+1. Geben Sie im Suchfeld den Begriff `office 365 outlook` als Filter ein. In diesem Beispiel wird **Kontakt erstellen** ausgewählt.
+
+   ![Auswählen der Aktion, die in ihrer Logik-App ausgeführt werden soll](./media/connectors-create-api-office365-outlook/office365-actions.png) 
+
+1. Wenn keine aktive Verbindung mit Ihrem Outlook-Konto vorhanden ist, werden Sie aufgefordert, sich anzumelden und diese Verbindung zu erstellen. Informationen zum Herstellen einer Verbindung mit Outlook mit einem anderen Benutzerkonto, z. B. einem Dienstkonto, finden Sie unter [Herstellen einer Verbindung mit anderen Konten](#connect-using-other-accounts). Geben Sie andernfalls die Informationen für die Eigenschaften der Aktion ein.
+
    > [!NOTE]
-   > In diesem Beispiel erstellen wir einen neuen Kontakt in Office 365 Outlook. Für die Erstellung des Kontakts kann die Ausgabe eines anderen Triggers verwendet werden. Fügen Sie beispielsweise den Salesforce-Trigger *Wenn ein Objekt erstellt wird* hinzu. Fügen Sie dann die Office 365 Outlook-Aktion *Kontakt erstellen* hinzu, die den neuen Kontakt in Office 365 auf der Grundlage der Salesforce-Felder erstellt. 
-   > 
-   > 
-5. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
+   > Ihre Verbindung läuft erst ab, wenn sie widerrufen wird. Sie läuft selbst dann nicht ab, wenn Sie die Anmeldeinformationen ändern. Weitere Informationen finden Sie unter [Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md).
 
-## <a name="connector-specific-details"></a>Connectorspezifische Details
+   In diesem Beispiel wird der Ordner „Kontakte“ ausgewählt, in dem die Aktion den neuen Kontakt erstellt, z. B.:
 
-Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/office365connector/) an. 
+   ![Konfigurieren der Eigenschaften der Aktion](./media/connectors-create-api-office365-outlook/select-contacts-folder.png)
+
+   Um weitere verfügbare Aktionseigenschaften hinzuzufügen, wählen Sie diese Eigenschaften aus der Liste **Neuen Parameter hinzufügen** aus.
+
+1. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
+
+<a name="connect-using-other-accounts"></a>
+
+## <a name="connect-using-other-accounts"></a>Herstellen einer Verbindung mit anderen Konten
+
+Wenn Sie versuchen, eine Verbindung mit Outlook herzustellen, indem Sie ein anderes Konto als das derzeit bei Azure angemeldete verwenden, erhalten Sie möglicherweise Fehlermeldungen bezüglich des [einmaligen Anmeldens](../active-directory/manage-apps/what-is-single-sign-on.md). Dieses Problem tritt auf, wenn Sie sich beim Azure-Portal mit einem Konto anmelden, aber ein anderes Konto verwenden, um die Verbindung herzustellen. Der Logik-App-Designer erwartet, dass Sie das bei Azure angemeldete Konto verwenden. Sie haben folgende Möglichkeiten, um dieses Problem zu beheben:
+
+* Richten Sie das andere Konto als **Mitwirkender** der Ressourcengruppe Ihrer Logik-App ein.
+
+  1. Wählen Sie im Ressourcengruppenmenü Ihrer Logik-App **Zugriffssteuerung (IAM)** aus. Richten Sie das andere Konto mit der Rolle **Mitwirkender** ein. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](../role-based-access-control/role-assignments-portal.md).
+
+  1. Wenn Sie mit Ihrem Geschäfts-, Schul- oder Unikonto beim Azure-Portal angemeldet sind, melden Sie sich ab, und melden Sie sich mit Ihrem anderen Konto wieder an. Sie können jetzt mit dem anderen Konto eine Verbindung mit Outlook herstellen.
+
+* Richten Sie das andere Konto so ein, dass Ihr Geschäfts-, Schul- oder Unikonto über „Senden als“-Berechtigungen verfügt.
+
+   Wenn Sie über Administratorberechtigungen verfügen, richten Sie im Postfach des Dienstkontos Ihr Geschäfts-, Schul- oder Unikonto entweder mit **Senden als**- oder **Senden im Auftrag von**-Berechtigungen ein. Weitere Informationen finden Sie unter [Erteilen von Postfachberechtigungen für einen anderen Benutzer – Administratorhilfe](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user). Anschließend können Sie die Verbindung mit Ihrem Geschäfts-, Schul- oder Unikonto herstellen. In Triggern oder Aktionen, bei denen Sie den Absender angeben können, können Sie jetzt die E-Mail-Adresse des Dienstkontos verwenden.
+
+   Beispielsweise verfügt die Aktion **E-Mail senden** über einen optionalen Parameter **Von (Senden als)** , den Sie der Aktion hinzufügen und die E-Mail-Adresse Ihres Dienstkontos als Absender verwenden können. Um diesen Parameter hinzuzufügen, führen Sie die folgenden Schritte aus:
+
+   1. Öffnen Sie in der Aktion **E-Mail senden** die Liste **Einen Parameter hinzufügen**, und wählen Sie den Parameter **Von (Senden als)** aus.
+
+   1. Sobald der Parameter in der Aktion angezeigt wird, geben Sie die E-Mail-Adresse des Dienstkontos ein.
+
+## <a name="connector-reference"></a>Connector-Referenz
+
+Technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/office365/). 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
 
+* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

@@ -1,34 +1,28 @@
 ---
 title: Verwendungsanalyse mit Azure Application Insights | Microsoft Docs
 description: Verstehen Sie Ihre Benutzer und wie sie Ihre App verwenden.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/19/2019
-ms.author: mbullwin
-ms.openlocfilehash: 77aa39ae68800128409beb17ce3eb636ddcf28d1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 03/25/2019
+ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128964"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90532102"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Verwendungsanalyse mit Application Insights
 
-Welche Funktionen Ihrer Web- oder mobilen App sind die beliebtesten? Erreichen die Benutzer mit Ihrer App ihre Ziele? Brechen sie an bestimmten Stellen ab, und kehren sie später zurück?  Mit [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) erhalten Sie wertvolle Einblicke in die Nutzung Ihrer App durch die Benutzer. Bei jeder Aktualisierung Ihrer App können Sie beurteilen, wie gut sie für Benutzer funktioniert. Mit diesem Wissen können Sie datengesteuerte Entscheidungen über die nächsten Entwicklungszyklen treffen.
+Welche Funktionen Ihrer Web- oder mobilen App sind die beliebtesten? Erreichen die Benutzer mit Ihrer App ihre Ziele? Brechen sie an bestimmten Stellen ab, und kehren sie später zurück?  Mit [Azure Application Insights](./app-insights-overview.md) erhalten Sie wertvolle Einblicke in die Nutzung Ihrer App durch die Benutzer. Bei jeder Aktualisierung Ihrer App können Sie beurteilen, wie gut sie für Benutzer funktioniert. Mit diesem Wissen können Sie datengesteuerte Entscheidungen über die nächsten Entwicklungszyklen treffen.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Cijb]
 
 ## <a name="send-telemetry-from-your-app"></a>Senden von Telemetriedaten aus der App
 
 Sie erzielen optimale Ergebnisse, wenn Sie Application Insights im Servercode der App und in den Webseiten installieren. Die Client- und die Serverkomponente der App senden Telemetriedaten zur Analyse an das Azure-Portal.
 
-1. **Servercode:** Installieren Sie das entsprechende Modul für die [ASP.NET](../../azure-monitor/app/asp-net.md)-, [Azure](../../azure-monitor/app/app-insights-overview.md)-, [Java](../../azure-monitor/app/java-get-started.md)-, [Node.js](../../azure-monitor/app/nodejs.md)-App oder einen [anderen Typ](../../azure-monitor/app/platforms.md) von App.
+1. **Servercode:** Installieren Sie das entsprechende Modul für die [ASP.NET](./asp-net.md)-, [Azure](./app-insights-overview.md)-, [Java](./java-get-started.md)-, [Node.js](./nodejs.md)-App oder einen [anderen Typ](./platforms.md) von App.
 
-    * *Sie möchten keinen Servercode installieren? [Erstellen Sie einfach eine Azure Application Insights-Ressource](../../azure-monitor/app/create-new-resource.md ).*
+    * *Sie möchten keinen Servercode installieren? [Erstellen Sie einfach eine Azure Application Insights-Ressource](./create-new-resource.md).*
 
 2. **Webseitencode:** Fügen Sie Ihrer Webseite vor dem schließenden ``</head>``-Tag das folgende Skript hinzu. Ersetzen Sie den Instrumentierungsschlüssel durch den geeigneten Wert für Ihre Application Insights-Ressource:
     
@@ -42,9 +36,9 @@ Sie erzielen optimale Ergebnisse, wenn Sie Application Insights im Servercode de
     </script>
     ```
 
-    Informationen zu komplexeren Konfigurationen für die Websiteüberwachung finden Sie im [Referenzartikel zum JavaScript SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+    Informationen zu komplexeren Konfigurationen für die Websiteüberwachung finden Sie im [Referenzartikel zum JavaScript SDK](./javascript.md).
 
-3. **Code der mobilen App:** Verwenden Sie das App Center SDK, um Ereignisse aus Ihrer App zu erfassen, und senden Sie Kopien dieser Ereignisse zur Analyse an Application Insights. Eine entsprechende Anleitung finden Sie [hier](../../azure-monitor/learn/mobile-center-quickstart.md).
+3. **Code der mobilen App:** Verwenden Sie das App Center SDK, um Ereignisse aus Ihrer App zu erfassen, und senden Sie Kopien dieser Ereignisse zur Analyse an Application Insights. Eine entsprechende Anleitung finden Sie [hier](../learn/mobile-center-quickstart.md).
 
 4. **Abrufen von Telemetriedaten:** Führen Sie das Projekt einige Minuten lang im Debugmodus aus, und suchen Sie dann im Blatt „Übersicht“ von Application Insights nach Ergebnissen.
 
@@ -53,14 +47,14 @@ Sie erzielen optimale Ergebnisse, wenn Sie Application Insights im Servercode de
 ## <a name="include-user-and-session-id-in-your-telemetry"></a>Einschließen der Benutzer- und Sitzungs-ID in der Telemetrie
 Um im Laufe der Zeit Benutzeraktionen nachzuverfolgen, erfordert Application Insights die Möglichkeit, um diese zu kennzeichnen. Das Ereignistool ist das einzige Nutzungstool, das keine Benutzer- oder Sitzungs-ID erfordert.
 
-Beginnen Sie mit dem Senden von Benutzer- und Sitzungs-IDs mithilfe [dieses Prozesses](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context).
+Beginnen Sie mit dem Senden von Benutzer- und Sitzungs-IDs mithilfe [dieses Prozesses](./usage-send-user-context.md).
 
 ## <a name="explore-usage-demographics-and-statistics"></a>Untersuchen von demografische Daten und Statistiken zur Nutzung
 Ermitteln Sie, wann Personen Ihre App verwenden, für welche Seiten sie sich am meisten interessieren, wo sich die Benutzer befinden, welche Browser und Betriebssysteme sie verwenden. 
 
 In Benutzer- und Sitzungsberichte werden Ihre Daten nach Seiten oder benutzerdefinierten Ereignissen gefiltert und nach Eigenschaften wie Speicherort, Umgebung und Seite segmentiert. Sie können auch eigene Filter hinzufügen.
 
-![Benutzer](./media/usage-overview/users.png)  
+![Bildschirmaufnahme der Übersichtsseite „Benutzer“ für ein fiktives Unternehmen](./media/usage-overview/users.png)  
 
 Aus den Informationen auf der rechten Seite gehen interessante Muster im Datensatz hervor.  
 
@@ -77,7 +71,7 @@ Anhand der Vermerkdauer können Sie basierend auf Kohorten von Benutzern, die w�
 - Bilden von Hypothesen basierend auf echten Benutzerdaten 
 - Bestimmen, ob die Vermerkdauer ein Problem in Ihrem Produkt darstellt 
 
-![Aufbewahrung](./media/usage-overview/retention.png) 
+![Bildschirmaufnahme der Übersichtsseite „Aufbewahrung“, auf der Informationen darüber angezeigt werden, wie oft Benutzer zur Verwendung ihrer App zurückkehren](./media/usage-overview/retention.png) 
 
 Die Vermerkdauer-Steuerelemente oben ermöglichen Ihnen das Definieren bestimmter Ereignisse und des Zeitbereichs für die Berechnen der Vermerkdauer. Das Diagramm in der Mitte bietet eine visuelle Darstellung des Prozentsatzes der gesamten Vermerkdauer nach dem angegebenen Zeitbereichs. Im Diagramm unten wird eine einzelne Vermerkdauer in einem bestimmten Zeitraum dargestellt. Dank dieses Detaillierungsgrads können Sie mit höherer Granularität verstehen, was Ihre Benutzer tun und was sich auf zurückkehrende Benutzer auswirkt.  
 
@@ -111,12 +105,12 @@ Oder von der Serverseite:
 
 Sie können diesen Ereignissen Eigenschaftswerte anfügen, damit Sie die Ereignisse beim Überprüfen im Portal filtern oder teilen können. Außerdem wird jedem Ereignis ein Standardsatz von Eigenschaften angefügt, z.B. eine anonyme Benutzer-ID, die Ihnen die Ablaufverfolgung der Sequenz von Aktivitäten eines einzelnen Benutzers ermöglicht.
 
-Erfahren Sie mehr über [benutzerdefinierte Ereignisse](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) und [Eigenschaften](../../azure-monitor/app/api-custom-events-metrics.md#properties).
+Erfahren Sie mehr über [benutzerdefinierte Ereignisse](./api-custom-events-metrics.md#trackevent) und [Eigenschaften](./api-custom-events-metrics.md#properties).
 
 ### <a name="slice-and-dice-events"></a>Aufteilen von Ereignissen
 
 In den Tools für Benutzer, Sitzungen und Ereignisse können Sie benutzerdefinierte Ereignisse nach Benutzer, Ereignisname und Eigenschaften aufteilen.
-![Benutzer](./media/usage-overview/users.png)  
+![Bildschirmaufnahme der Übersichtsseite „Benutzer“ für ein fiktives Unternehmen](./media/usage-overview/users.png)  
   
 ## <a name="design-the-telemetry-with-the-app"></a>Entwerfen der Telemetrie mit der App
 
@@ -129,7 +123,7 @@ Für dieses Verfahren fügen Sie unterschiedliche Eigenschaftswerte an alle Tele
 
 Filtern und teilen Sie im Application Insights-Portal Ihre Daten anhand der Eigenschaftswerte, um die verschiedenen Versionen zu vergleichen.
 
-Dazu [richten Sie einen Telemetrieinitialisierer ein](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer):
+Dazu [richten Sie einen Telemetrieinitialisierer ein](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer):
 
 **ASP.NET-Apps**
 
@@ -137,10 +131,14 @@ Dazu [richten Sie einen Telemetrieinitialisierer ein](../../azure-monitor/app/ap
     // Telemetry initializer class
     public class MyTelemetryInitializer : ITelemetryInitializer
     {
-        public void Initialize (ITelemetry telemetry)
-        {
-            telemetry.Properties["AppVersion"] = "v2.1";
-        }
+        public void Initialize(ITelemetry item)
+            {
+                var itemProperties = item as ISupportProperties;
+                if (itemProperties != null && !itemProperties.Properties.ContainsKey("AppVersion"))
+                {
+                    itemProperties.Properties["AppVersion"] = "v2.1";
+                }
+            }
     }
 ```
 
@@ -177,7 +175,8 @@ Alle neuen TelemetryClients-Elemente fügen automatisch den von Ihnen angegebene
 ## <a name="next-steps"></a>Nächste Schritte
    - [Benutzer, Sitzungen, Ereignisse](usage-segmentation.md)
    - [Trichter](usage-funnels.md)
-   - [Aufbewahrung](usage-retention.md)
+   - [Vermerkdauer](usage-retention.md)
    - [Benutzerabläufe](usage-flows.md)
-   - [Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)
+   - [Arbeitsmappen](../platform/workbooks-overview.md)
    - [Hinzufügen von Benutzerkontext](usage-send-user-context.md)
+

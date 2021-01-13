@@ -1,24 +1,17 @@
 ---
 title: Azure Application Insights-Nutzungskohorten | Microsoft-Dokumentation
 description: Analysieren unterschiedlicher Gruppen von Benutzern, Sitzungen, Ereignissen oder Vorgängen, die eine Gemeinsamkeit aufweisen
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 263316028e7b35a1a515322dddc4ee867011dcac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8edeb452f01af88f0305cd0a3e3a2332ec09e4e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604104"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186948"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights-Kohorten
 
@@ -138,7 +131,7 @@ Kohorten und Filter unterscheiden sich. Angenommen, Sie haben eine Kohorte von B
 
 ## <a name="learn-more"></a>Weitere Informationen
 
-* [Analytics-Abfragesprache](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Analytics-Abfragesprache](../log-query/log-analytics-tutorial.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Benutzer, Sitzungen, Ereignisse](usage-segmentation.md)
 * [Benutzerabläufe](usage-flows.md)
 * [Nutzungsübersicht](usage-overview.md)

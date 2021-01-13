@@ -1,25 +1,17 @@
 ---
-title: Generieren von Protokollereignissen aus einer .NET Service Fabric-App in Azure oder einem eigenständigen Cluster
+title: Generieren von Protokollereignissen über eine .NET-App
 description: Erfahren Sie, wie Sie der auf einem Azure-Cluster oder eigenständigen Cluster gehosteten .NET Service Fabric-Anwendung Protokollierung hinzufügen.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/27/2018
 ms.author: srrengar
-ms.openlocfilehash: d1b3dc25dd9bda9d7f9d9152c2a94cea8321f5cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a36425acf42a469c7f48b2e954bdacfdfcce1b10
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482606"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89011479"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Hinzufügen von Protokollierung zur Service Fabric-Anwendung
 
@@ -105,7 +97,7 @@ Auch die Nutzung einer Hybridlösung mit strukturierter und generischer Instrume
 
 Die ASP.NET Core-Protokollierung ([Microsoft.Extensions.Logging NuGet-Paket](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) ist ein Protokollierungsframework, das eine Standardprotokollierungs-API für Ihre Anwendung bereitstellt. Unterstützung für andere Protokollierungs-Back-Ends kann per Plug-In in die ASP.NET Core-Protokollierung integriert werden. Dies bietet Ihnen vielfältige Möglichkeiten, die Protokollierung ohne umfangreiche Codeänderungen in Ihre Anwendung zu integrieren.
 
-1. Fügen Sie das NuGet-Paket **Microsoft.Extensions.Logging** dem Projekt hinzu, das Sie instrumentieren möchten. Fügen Sie ggf. auch Anbieterpakete hinzu. Weitere Informationen finden Sie unter [Logging in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging) (Protokollierung in ASP.NET Core).
+1. Fügen Sie das NuGet-Paket **Microsoft.Extensions.Logging** dem Projekt hinzu, das Sie instrumentieren möchten. Fügen Sie ggf. auch Anbieterpakete hinzu. Weitere Informationen finden Sie unter [Logging in ASP.NET Core](/aspnet/core/fundamentals/logging) (Protokollierung in ASP.NET Core).
 2. Fügen Sie der Dienstdatei eine **using**-Direktive für **Microsoft.Extensions.Logging** hinzu.
 3. Definieren Sie eine private Variable innerhalb Ihrer Dienstklasse.
 
@@ -170,19 +162,9 @@ Einige Drittanbieter verwenden den im obigen Abschnitt beschriebenen Ansatz, ein
 5. Instrumentieren Sie den Code so wie bei der Verwendung von ASP.NET Core ohne SeriLog.
 
    >[!NOTE]
-   >Wir empfehlen Ihnen, den statischen `Log.Logger` *nicht* für das vorherige Beispiel zu verwenden. Service Fabric kann mehrere Instanzen mit dem gleichen Diensttyp innerhalb eines Prozesses hosten. Wenn Sie den statischen `Log.Logger` nutzen, zeigt der letzte Writer der Eigenschaftserweiterungen Werte für alle ausgeführten Instanzen an. Dies ist ein Grund dafür, dass die _logger-Variable eine private Membervariable der Dienstklasse ist. Darüber hinaus müssen Sie den `_logger` für den allgemeinen Code verfügbar machen, der ggf. dienstübergreifend verwendet wird.
+   >Wir empfehlen Ihnen, den statischen `Log.Logger`*nicht* für das vorherige Beispiel zu verwenden. Service Fabric kann mehrere Instanzen mit dem gleichen Diensttyp innerhalb eines Prozesses hosten. Wenn Sie den statischen `Log.Logger` nutzen, zeigt der letzte Writer der Eigenschaftserweiterungen Werte für alle ausgeführten Instanzen an. Dies ist ein Grund dafür, dass die _logger-Variable eine private Membervariable der Dienstklasse ist. Darüber hinaus müssen Sie den `_logger` für den allgemeinen Code verfügbar machen, der ggf. dienstübergreifend verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Lesen Sie weitere Informationen zu [Ereignis- und Protokollgenerierung auf Anwendungs- und Dienstebene](service-fabric-diagnostics-event-generation-app.md).
 - Lesen Sie weitere Informationen über die Protokollierung mit [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) und [Microsoft Azure Diagnose](service-fabric-diagnostics-event-aggregation-wad.md).
-
-
-
-
-
-
-
-
-
-

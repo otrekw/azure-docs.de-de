@@ -1,25 +1,26 @@
 ---
-title: Kopieren von Daten in die oder aus der Azure Cosmos DB-API für MongoDB mit Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus der Azure Cosmos DB-API für MongoDB
 description: Erfahren Sie, wie Sie mithilfe von Data Factory Daten aus unterstützten Quelldatenspeichern in die oder aus der Azure Cosmos DB-API für MongoDB in unterstützte Senkenspeicher kopieren können.
 services: data-factory, cosmosdb
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: multiple
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: jingwang
-ms.openlocfilehash: dfacecbaaf627b05d7706f60b4eb86cca9d856ba
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.custom: seo-lt-2019
+ms.date: 11/20/2019
+ms.openlocfilehash: 67e5fba562a398fe8f0e9639b3db2fd3d325b60f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720849"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635880"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Kopieren von Daten in die oder aus der Azure Cosmos DB-API für MongoDB mithilfe von Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus der und in die Azure Cosmos DB-API für MongoDB zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -32,8 +33,8 @@ Sie können Daten aus der Azure Cosmos DB-API für MongoDB in einen beliebigen u
 
 Sie können den Connector für Azure Cosmos DB-API für MongoDB für die folgenden Aufgaben verwenden:
 
-- Kopieren von Daten aus der oder in die [Azure Cosmos DB-API für MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction).
-- Schreiben in Azure Cosmos DB als **insert** oder **upsert**.
+- Kopieren von Daten aus der oder in die [Azure Cosmos DB-API für MongoDB](../cosmos-db/mongodb-introduction.md).
+- Schreiben in Azure Cosmos DB als **insert** oder **upsert** .
 - Importieren und Exportieren von JSON-Dokumenten in ihrem jeweiligen Zustand oder Kopieren von Daten aus einem tabellarischen Dataset oder in ein tabellarisches Dataset. Die Beispiele zeigen eine SQL-Datenbank und eine CSV-Datei. Informationen zum Kopieren von Dokumenten in ihrem jeweiligen Zustand in bzw. aus JSON-Dateien oder in eine andere bzw. aus einer anderen Azure Cosmos DB-Sammlung finden Sie unter „Importieren oder Exportieren von JSON-Dokumenten“.
 
 ## <a name="get-started"></a>Erste Schritte
@@ -48,8 +49,8 @@ Folgende Eigenschaften werden für den mit Azure Cosmos DB-API für MongoDB verk
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft muss auf **CosmosDbMongoDbApi** festgelegt werden. | Ja |
-| connectionString |Geben Sie die Verbindungszeichenfolge für Ihre Azure Cosmos DB-API für MongoDB an. Diese ist im Azure-Portal auf dem Blatt für Ihre Cosmos DB-Instanz unter der primären oder sekundären Verbindungszeichenfolge mit dem folgenden Muster aufgeführt: `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb` <br/><br />Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. |Ja |
+| type | Die **type** -Eigenschaft muss auf **CosmosDbMongoDbApi** festgelegt werden. | Ja |
+| connectionString |Geben Sie die Verbindungszeichenfolge für Ihre Azure Cosmos DB-API für MongoDB an. Diese ist im Azure-Portal auf dem Blatt für Ihre Cosmos DB-Instanz unter der primären oder sekundären Verbindungszeichenfolge mit dem folgenden Muster aufgeführt: `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb` <br/><br />Sie können auch ein Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md).|Ja |
 | database | Der Name der Datenbank, auf die Sie zugreifen möchten. | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
@@ -61,10 +62,7 @@ Folgende Eigenschaften werden für den mit Azure Cosmos DB-API für MongoDB verk
     "properties": {
         "type": "CosmosDbMongoDbApi",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
-            },
+            "connectionString": "mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb",
             "database": "myDatabase"
         },
         "connectVia": {
@@ -81,7 +79,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft des Datasets muss auf **CosmosDbMongoDbApiCollection** festgelegt werden. |Ja |
+| type | Die **type** -Eigenschaft des Datasets muss auf **CosmosDbMongoDbApiCollection** festgelegt werden. |Ja |
 | collectionName |Der Name der Azure Cosmos DB-Sammlung. |Ja |
 
 **Beispiel**
@@ -115,16 +113,16 @@ Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **CosmosDbMongoDbApiSource** festgelegt werden. |Ja |
+| type | Die **type** -Eigenschaft der Quelle der Kopieraktivität muss auf **CosmosDbMongoDbApiSource** festgelegt werden. |Ja |
 | filter | Gibt den Auswahlfilter mit Abfrageoperatoren an. Um alle Dokumente in einer Sammlung zurückzugeben, lassen Sie diesen Parameter aus oder übergeben Sie ein leeres Dokument ({}). | Nein |
 | cursorMethods.project | Gibt die Felder an, die in den Dokumenten für die Projektion zurückgegeben werden sollen. Um alle Felder in den entsprechenden Dokumenten zurückzugeben, lassen Sie diesen Parameter aus. | Nein |
 | cursorMethods.sort | Gibt die Reihenfolge an, in der übereinstimmende Dokumente von der Abfrage zurückgegeben werden. Siehe [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nein |
 | cursorMethods.limit | Gibt die maximale Anzahl von Dokumenten an, die vom Server zurückgegeben werden. Siehe [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nein | 
 | cursorMethods.skip | Gibt die Anzahl von Dokumenten an, die übersprungen werden sollen und ab denen MongoDB mit der Rückgabe von Ergebnissen beginnt. Siehe [cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nein |
-| batchSize | Gibt die Anzahl von Dokumenten an, die in jedem Batch der Antwort von der MongoDB-Instanz zurückgegeben werden sollen. In den meisten Fällen wirkt sich eine Änderung der Batchgröße nicht auf den Benutzer oder die Anwendung aus. Cosmos DB begrenzt die einzelnen Batches auf eine maximale Größe von 40 MB. Dies entspricht der Summe der „batchSize“-Größen für die Anzahl von Dokumenten. Verringern Sie deshalb diesen Wert, falls Ihre Dokumente groß sind. | Nein<br/>(der Standardwert ist **100**) |
+| batchSize | Gibt die Anzahl von Dokumenten an, die in jedem Batch der Antwort von der MongoDB-Instanz zurückgegeben werden sollen. In den meisten Fällen wirkt sich eine Änderung der Batchgröße nicht auf den Benutzer oder die Anwendung aus. Cosmos DB begrenzt die einzelnen Batches auf eine maximale Größe von 40 MB. Dies entspricht der Summe der „batchSize“-Größen für die Anzahl von Dokumenten. Verringern Sie deshalb diesen Wert, falls Ihre Dokumente groß sind. | Nein<br/>(der Standardwert ist **100** ) |
 
 >[!TIP]
->ADF unterstützt die Nutzung eines BSON-Dokuments im **Strict-Modus**. Stellen Sie sicher, dass die Filterabfrage den Strict-Modus und nicht den Shell-Modus aufweist. Eine weitere Beschreibung finden Sie im [MongoDB-Handbuch](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
+>ADF unterstützt die Nutzung eines BSON-Dokuments im **Strict-Modus** . Stellen Sie sicher, dass die Filterabfrage den Strict-Modus und nicht den Shell-Modus aufweist. Eine weitere Beschreibung finden Sie im [MongoDB-Handbuch](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
 
 **Beispiel**
 
@@ -170,10 +168,13 @@ Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität un
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **CosmosDbMongoDbApiSink** festgelegt werden. |Ja |
-| writeBehavior |Beschreibt, wie Daten in Azure Cosmos DB geschrieben werden. Zulässige Werte: **insert** und **upsert**.<br/><br/>Das Verhalten von **upsert** besteht darin, das Dokument zu ersetzen, wenn ein Dokument mit der gleichen ID bereits vorhanden ist. Andernfalls wird das Dokument eingefügt.<br /><br />**Hinweis**: Data Factory generiert automatisch eine ID für ein Dokument, wenn eine ID weder im Originaldokument noch durch Spaltenzuordnung angegeben wird. Dies bedeutet, dass Sie sicherstellen müssen, dass Ihr Dokument eine ID besitzt, damit **upsert** wie erwartet funktioniert. |Nein<br />(der Standardwert ist **insert**) |
-| writeBatchSize | Die **writeBatchSize**-Eigenschaft steuert die Größe der in jeden Batch zu schreibenden Dokumente. Sie können versuchen, den Wert für **writeBatchSize** zu erhöhen, um die Leistung zu verbessern, oder den Wert verringern, falls Ihre Dokumente groß sind. |Nein<br />(der Standardwert ist **10.000**) |
+| type | Die **type** -Eigenschaft der Senke der Kopieraktivität muss auf **CosmosDbMongoDbApiSink** festgelegt werden. |Ja |
+| writeBehavior |Beschreibt, wie Daten in Azure Cosmos DB geschrieben werden. Zulässige Werte: **insert** und **upsert** .<br/><br/>Das Verhalten von **upsert** besteht darin, das Dokument zu ersetzen, wenn ein Dokument mit dem gleichen `_id`-Typ bereits vorhanden ist. Andernfalls wird das Dokument eingefügt.<br /><br />**Hinweis** : Data Factory generiert automatisch einen `_id`-Typ für ein Dokument, wenn ein `_id`-Typ weder im Originaldokument noch durch Spaltenzuordnung angegeben wird. Dies bedeutet, dass Sie sicherstellen müssen, dass Ihr Dokument eine ID besitzt, damit **upsert** wie erwartet funktioniert. |Nein<br />(der Standardwert ist **insert** ) |
+| writeBatchSize | Die **writeBatchSize** -Eigenschaft steuert die Größe der in jeden Batch zu schreibenden Dokumente. Sie können versuchen, den Wert für **writeBatchSize** zu erhöhen, um die Leistung zu verbessern, oder den Wert verringern, falls Ihre Dokumente groß sind. |Nein<br />(der Standardwert ist **10.000** ) |
 | writeBatchTimeout | Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird. Der zulässige Wert ist „timespan“. | Nein<br/>(der Standardwert ist **00:30:00** – 30 Minuten) |
+
+>[!TIP]
+>Informationen zum Importieren von JSON-Dokumenten in unveränderter Form finden Sie im Abschnitt [Importieren oder Exportieren von JSON-Dokumenten](#import-and-export-json-documents). Informationen zum Kopieren aus tabellarisch strukturierten Daten finden Sie unter [Schemazuordnung](#schema-mapping).
 
 **Beispiel**
 
@@ -207,18 +208,18 @@ Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität un
 ]
 ```
 
->[!TIP]
->Informationen zum Importieren von JSON-Dokumenten in unveränderter Form finden Sie im Abschnitt [Importieren oder Exportieren von JSON-Dokumenten](#import-or-export-json-documents). Informationen zum Kopieren aus tabellarisch strukturierten Daten finden Sie unter [Schemazuordnung](#schema-mapping).
-
-## <a name="import-or-export-json-documents"></a>Importieren oder Exportieren von JSON-Dokumenten
+## <a name="import-and-export-json-documents"></a>Importieren und Exportieren von JSON-Dokumenten
 
 Sie können diesen Azure Cosmos DB-Connector verwenden, um die folgenden Aufgaben auf einfache Weise zu erledigen:
 
-* Importieren von JSON-Dokumenten aus verschiedenen Quellen in Azure Cosmos DB, z.B. aus Azure Blob Storage, Azure Data Lake Storage und anderen dateibasierten Speichern, die von Azure Data Factory unterstützt werden.
-* Exportieren von JSON-Dokumenten aus einer Azure Cosmos DB-Sammlung in verschiedene dateibasierte Speicher.
 * Kopieren von Dokumenten in ihrem jeweiligen Zustand zwischen zwei Azure Cosmos DB-Sammlungen.
+* Importieren von JSON-Dokumenten aus verschiedenen Quellen in Azure Cosmos DB, z. B. aus MongoDB, Azure Blob Storage, Azure Data Lake Storage und anderen dateibasierten Speichern, die von Azure Data Factory unterstützt werden.
+* Exportieren von JSON-Dokumenten aus einer Azure Cosmos DB-Sammlung in verschiedene dateibasierte Speicher.
 
-Um eine solche vom Schema unabhängige Kopie zu erzielen, überspringen Sie den Abschnitt „structure“ (auch *schema* genannt) im Dataset und die Schemazuordnung in der Kopieraktivität.
+So erhalten Sie eine vom Schema unabhängige Kopie:
+
+* Aktivieren Sie bei Verwendung des Tools zum Kopieren von Daten die Option **Export as-is to JSON files or Cosmos DB collection** (Wie vorhanden in JSON-Dateien oder Cosmos DB-Sammlung exportieren).
+* Wenn Sie die Aktivität „Dokumenterstellung“ verwenden, wählen Sie das JSON-Format mit dem entsprechenden Dateispeicher für Quelle oder Senke aus.
 
 ## <a name="schema-mapping"></a>Schemazuordnung
 
@@ -238,4 +239,4 @@ Nach Ausführen der Kopieraktivität wird die nachstehende BSON-ObjectId in der 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Liste der Datenspeicher, die von der Kopieraktivität als Quellen und Senken in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die von der Kopieraktivität als Quellen und Senken in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

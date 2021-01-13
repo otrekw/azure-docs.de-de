@@ -1,5 +1,5 @@
 ---
-title: Verwalten des Konfigurationsservers für die Notfallwiederherstellung von lokalen physischen Servern in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+title: Verwalten des Konfigurationsservers für physische Computer in Azure Site Recovery
 description: In diesem Artikel wird beschrieben, wie Sie den Azure Site Recovery-Konfigurationsserver für die Notfallwiederherstellung von physischen Servern in Azure verwalten.
 services: site-recovery
 author: mayurigupta13
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 10bec01a3b90776c8dd8c32a74ba7754264da131
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119725"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017439"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern
 
@@ -33,13 +33,13 @@ In der Tabelle werden die erforderlichen Komponenten für die Bereitstellung des
 | Freier Speicherplatz (Aufbewahrungslaufwerk) | 600 GB|
 | Betriebssystem  | Windows Server 2012 R2 <br> Windows Server 2016 |
 | Gebietsschema des Betriebssystems | Englisch (USA)|
-| VMware vSphere PowerCLI-Version | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
+| VMware vSphere PowerCLI-Version | Nicht erforderlich|
 | Windows Server-Rollen | Aktivieren Sie die folgenden Rollen nicht: <br> - Active Directory Domain Services <br>- Internetinformationsdienste <br> - Hyper-V |
-| Gruppenrichtlinien| Aktivieren Sie die folgenden Gruppenrichtlinien nicht: <br> - Zugriff auf Eingabeaufforderung verhindern <br> - Zugriff auf Programme zum Bearbeiten der Registrierung verhindern <br> - Vertrauenslogik für Dateianlagen <br> - Skriptausführung aktivieren <br> [Weitere Informationen](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-| IIS | - Keine bereits vorhandene Standardwebsite <br> - Aktivieren der [anonymen Authentifizierung](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - Aktivieren der Einstellung [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br> - Keine bereits vorhandene Website/Anwendung sollte an Port 443 lauschen<br>|
+| Gruppenrichtlinien| Aktivieren Sie die folgenden Gruppenrichtlinien nicht: <br> - Zugriff auf Eingabeaufforderung verhindern <br> - Zugriff auf Programme zum Bearbeiten der Registrierung verhindern <br> - Vertrauenslogik für Dateianlagen <br> - Skriptausführung aktivieren <br> [Weitere Informationen](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+| IIS | - Keine bereits vorhandene Standardwebsite <br> - Aktivieren der [anonymen Authentifizierung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br> - Aktivieren der Einstellung [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10))  <br> - Keine bereits vorhandene Website/Anwendung sollte an Port 443 lauschen<br>|
 | NIC-Typ | VMXNET3 (bei Bereitstellung als VMware-VM) |
 | Art der IP-Adresse | statischen |
-| Zugriff auf das Internet | Der Server benötigt Zugriff auf diese URLs: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (für horizontal skalierte Prozessserver nicht erforderlich) <br> - time.nist.gov <br> - time.windows.com |
+| Zugriff auf das Internet | Der Server benötigt Zugriff auf diese URLs: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (für horizontal skalierte Prozessserver nicht erforderlich) <br> - time.nist.gov <br> - time.windows.com |
 | Ports | 443 (Steuerkanalorchestrierung)<br>9443 (Datentransport)|
 
 ## <a name="download-the-latest-installation-file"></a>Herunterladen der aktuellen Installationsdatei
@@ -108,7 +108,7 @@ Führen Sie die Installationsdatei wie folgt aus:
 
 ### <a name="parameters"></a>Parameter
 
-|Parametername| Type | BESCHREIBUNG| Werte|
+|Parametername| type | BESCHREIBUNG| Werte|
 |-|-|-|-|
 | /ServerMode|Erforderlich|Gibt an, ob die Installation sowohl den Konfigurations- als auch den Prozessserver oder nur den Prozessserver umfassen soll.|CS<br>PS|
 |/InstallLocation|Erforderlich|Der Ordner, in dem die Komponenten installiert werden.| Beliebiger Ordner auf dem Computer|
@@ -178,7 +178,7 @@ Sie können Proxyeinstellungen für den Konfigurationsservercomputer wie folgt �
       ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Geben Sie die Details des Proxyservers an, und klicken Sie auf die Schaltfläche **Registrieren**.  
 6. Öffnen Sie ein PowerShell-Befehlsfenster mit Administratorrechten.
-7. Führen Sie den folgenden Befehl aus
+7. Führen Sie den folgenden Befehl aus.
 
     ```powershell
     $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -207,7 +207,7 @@ Sie können Proxyeinstellungen für den Konfigurationsservercomputer wie folgt �
 5. Laden Sie eine neue Registrierungsdatei aus dem Portal herunter, und geben Sie sie als Eingabe für das Tool an.
 6. Geben Sie die Details des Proxyservers an, und klicken Sie auf die Schaltfläche **Registrieren**.  
 7. Öffnen Sie ein PowerShell-Befehlsfenster mit Administratorrechten.
-8. Führen Sie den folgenden Befehl aus
+8. Führen Sie den folgenden Befehl aus.
     ```powershell
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
     Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
@@ -267,7 +267,7 @@ Aktualisieren Sie den Server wie folgt:
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Löschen oder Aufheben der Registrierung eines Konfigurationsservers (PowerShell)
 
-1. [Installieren](https://docs.microsoft.com/powershell/azure/install-Az-ps) Sie das Azure PowerShell-Modul.
+1. [Installieren](/powershell/azure/install-Az-ps) Sie das Azure PowerShell-Modul.
 2. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an:
     
     `Connect-AzAccount`
@@ -290,8 +290,8 @@ Aktualisieren Sie den Server wie folgt:
 > [!NOTE]
 > Die **-Force**-Option im Cmdlet „Remove-AzSiteRecoveryFabric“ kann dazu verwendet werden, das Entfernen bzw. Löschen des Konfigurationsservers zu erzwingen.
 
-## <a name="renew-ssl-certificates"></a>Erneuern von SSL-Zertifikaten
-Der Konfigurationsserver verfügt über einen integrierten Webserver, der die Aktivitäten von Mobility Service, Prozessservern und Masterzielservern, die mit dem Konfigurationsserver verbunden sind, orchestriert. Der Webserver verwendet ein SSL-Zertifikat, um Clients zu authentifizieren. Das Zertifikat läuft nach drei Jahren ab und kann jederzeit erneuert werden.
+## <a name="renew-tlsssl-certificates"></a>Erneuern von TLS-/SSL-Zertifikaten
+Der Konfigurationsserver verfügt über einen integrierten Webserver, der die Aktivitäten von Mobility Service, Prozessservern und Masterzielservern, die mit dem Konfigurationsserver verbunden sind, orchestriert. Der Webserver verwendet ein TLS-/SSL-Zertifikat, um Clients zu authentifizieren. Das Zertifikat läuft nach drei Jahren ab und kann jederzeit erneuert werden.
 
 ### <a name="check-expiry"></a>Überprüfen des Ablaufs
 
@@ -315,5 +315,4 @@ Für Bereitstellungen von Konfigurationsservern vor dem Mai 2016 wurde die Zerti
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die Tutorials zum Einrichten der Notfallwiederherstellung von [physischen Servern](tutorial-physical-to-azure.md) in Azure an.
-
+Sehen Sie sich die Tutorials zum Einrichten der Notfallwiederherstellung von [physischen Servern](./physical-azure-disaster-recovery.md) in Azure an.

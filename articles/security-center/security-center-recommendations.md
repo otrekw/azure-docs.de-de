@@ -1,5 +1,5 @@
 ---
-title: Sicherheitsempfehlungen in Azure Security Center | Microsoft-Dokumentation
+title: Sicherheitsempfehlungen in Azure Security Center
 description: In diesem Dokument erfahren Sie, wie Sicherheitsempfehlungen in Azure Security Center Ihnen helfen, Ihre Azure-Ressourcen zu schützen und Ihre Sicherheitsrichtlinien einzuhalten.
 services: security-center
 documentationcenter: na
@@ -11,66 +11,78 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/29/2019
+ms.date: 12/25/2020
 ms.author: memildin
-ms.openlocfilehash: 32b7f1d699c0d620d70614c441a8c18520c1b2d5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201045"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795983"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Sicherheitsempfehlungen in Azure Security Center 
 In diesem Thema wird erläutert, wie Sie die Empfehlungen in Azure Security Center anzeigen und nutzen können, mit denen Sie Ihre Azure-Ressourcen schützen.
 
-> [!NOTE]
-> Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Dieses Dokument ist keine Schritt-für-Schritt-Anleitung.
->
 
 ## <a name="what-are-security-recommendations"></a>Was sind Sicherheitsempfehlungen?
 
 Empfehlungen sind Maßnahmen, die Sie ergreifen sollten, um Ihre Ressourcen zu schützen.
 
-Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen, um mögliche Sicherheitsrisiken zu identifizieren. Anschließend erhalten Sie Empfehlungen dazu, wie sie behoben werden können.
+Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen, um mögliche Sicherheitsrisiken zu erkennen. Anschließend erhalten Sie Empfehlungen dazu, wie Sie diese Sicherheitsrisiken beheben können.
 
 Jede Empfehlung beinhaltet Folgendes:
 
-- Eine kurze Beschreibung der empfohlenen Aktion
-- Die Schritte zur Bereinigung, die zum Implementieren der Empfehlung ausgeführt werden müssen <!-- In some cases, one-click remediation is available. -->
-- Angaben zu den Ressourcen, für die die empfohlene Aktion ausgeführt werden sollte
-- Die **Secure Score-Auswirkung**, d. h. die Punkte, um die Ihre Sicherheitsbewertung erhöht wird, wenn Sie die Empfehlung implementieren
+- Eine kurze Problembeschreibung
+- Die Schritte zur Bereinigung, die zum Implementieren der Empfehlung ausgeführt werden müssen
+- Die betroffenen Ressourcen
 
-## Überwachen von Empfehlungen<a name="monitor-recommendations"></a>
+## <a name="monitor-recommendations"></a>Überwachen von Empfehlungen<a name="monitor-recommendations"></a>
 
-Security Center analysiert den Sicherheitsstatus Ihrer Ressourcen, um mögliche Sicherheitsrisiken zu identifizieren. Auf der Kachel **Empfehlungen** unter **Übersicht** wird die Gesamtzahl der von Security Center identifizierten Empfehlungen angezeigt.
+Security Center analysiert den Sicherheitsstatus Ihrer Ressourcen, um mögliche Sicherheitsrisiken zu identifizieren. 
 
-![Übersicht über Security Center](./media/security-center-recommendations/asc-overview.png)
+1. Öffnen Sie im Menü von Security Center die Seite **Empfehlungen**, um die für Ihre Umgebung geltenden Empfehlungen anzuzeigen. Die Empfehlungen sind nach Sicherheitssteuerungen gruppiert.
 
-1. Wählen Sie die Kachel **Empfehlungen** unter **Übersicht** aus. Die Liste **Empfehlungen** wird geöffnet.
+    :::image type="content" source="./media/security-center-recommendations/view-recommendations.png" alt-text="Nach Sicherheitssteuerung gruppierte Empfehlungen" lightbox="./media/security-center-recommendations/view-recommendations.png":::
 
-      ![Anzeigen von Empfehlungen](./media/security-center-recommendations/view-recommendations.png)
+1. Verwenden Sie die optionalen Filter oberhalb der Liste der Empfehlungen, um Empfehlungen zu Ressourcentyp, Schweregrad, Umgebung oder anderen Kriterien zu finden, die für Sie wichtig sind.
 
-    Sie können Empfehlungen filtern. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Filter**, um die Empfehlungen zu filtern. Das Blatt **Filter** wird geöffnet. Sie können Werte für Schweregrad und Status auswählen, die Sie anzeigen möchten.
+    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="Filter zum Verfeinern der Liste der Azure Security Center-Empfehlungen":::
 
-   * **EMPFEHLUNGEN:** Die Empfehlung
-   * **SECURE SCORE-AUSWIRKUNG:** Eine Bewertung, die von Security Center anhand Ihrer Sicherheitsempfehlungen generiert wurde, samt Anwendung von komplexen Algorithmen, mit denen bestimmt wird, wie wichtig jede Empfehlung ist. Weitere Informationen finden Sie unter [Secure Score-Berechnung](security-center-secure-score.md#secure-score-calculation).
-   * **RESSOURCE**: Eine Liste mit den Ressourcen, für die diese Empfehlung gilt.
-   * **STATUSLEISTEN:**  Beschreibt den Schweregrad der jeweiligen Empfehlung:
-       * **Hoch (rot):** Ein Sicherheitsrisiko betrifft eine wichtige Ressource (z. B. eine Anwendung, eine VM oder eine Netzwerksicherheitsgruppe) und erfordert einen Eingriff.
-       * **Mittel (orange):** Es besteht ein Sicherheitsrisiko, und es sind nicht kritische oder zusätzliche Schritte erforderlich, um es zu beseitigen oder einen Prozess abzuschließen.
-       * **Niedrig (blau):** Es besteht ein Sicherheitsrisiko, das behandelt werden sollte, aber keinen unmittelbaren Eingriff erfordert. (Standardmäßig werden Empfehlungen mit dem Status „Niedrig“ nicht angezeigt, aber Sie können bei Bedarf nach diesen Empfehlungen filtern.) 
-       * **Fehlerfrei (grün):**
-       * **Nicht verfügbar (grau):**
+1. Erweitern Sie eine Steuerung, und wählen Sie eine bestimmte Empfehlung aus, um die Seite mit den Empfehlungsdetails anzuzeigen.
 
-1. Um die Details einer Empfehlung anzuzeigen, klicken Sie auf die Empfehlung.
+    :::image type="content" source="./media/security-center-recommendations/recommendation-details-page.png" alt-text="Seite mit den Empfehlungsdetails" lightbox="./media/security-center-recommendations/recommendation-details-page.png":::
 
-    ![Empfehlungsdetails](./media/security-center-recommendations/recommendation-details.png)
+    Inhalt der Seite:
 
->[!NOTE] 
-> Informationen zu Azure-Ressourcen finden Sie in der Beschreibung für das [klassische und das Resource Manager-Bereitstellungsmodell](../azure-classic-rm.md).
+    1. Die Schaltflächen **Erzwingen** und **Ablehnen** für unterstützte Empfehlungen (siehe [Verhindern von Fehlkonfigurationen mit den Optionen zum Erzwingen/Ablehnen für Empfehlungen](prevent-misconfigurations.md))
+    1. **Angabe des Schweregrads**
+    1. **Aktualisierungsintervall** (sofern relevant) 
+    1. **Beschreibung**: Eine kurze Beschreibung des Problems
+    1. **Schritte zur Bereinigung**: Eine Beschreibung der manuellen Schritte, die erforderlich sind, um das Sicherheitsproblem für die betroffenen Ressourcen zu beheben. Für Empfehlungen unter „Schnellkorrektur“ können Sie **Korrekturlogik anzeigen** auswählen, bevor Sie die vorgeschlagene Lösung auf die Ressourcen anwenden. 
+    1. **Betroffene Ressourcen**: Die Ressourcen sind in Registerkarten unterteilt:
+        - **Fehlerfreie Ressourcen**: Relevante Ressourcen, die entweder nicht beeinträchtigt sind oder bei denen das Problem bereits behoben wurde.
+        - **Fehlerhafte Ressourcen**: Ressourcen, die weiterhin vom identifizierten Problem betroffen sind.
+        - **Nicht anwendbare Ressourcen**: Ressourcen, für die die Empfehlung keine definitive Antwort geben kann. Auf dieser Registerkarte werden auch Gründe für die jeweilige Ressource angegeben. 
+
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Nicht anwendbare Ressourcen mit Gründen":::
+    1. Aktionsschaltflächen zum Beheben über die Empfehlung oder Auslösen einer Logik-App
+
+## <a name="preview-recommendations"></a>Vorschau der Empfehlungen
+
+Empfehlungen, die als **Vorschau** gekennzeichnet sind, werden nicht in die Berechnungen Ihrer Sicherheitsbewertung einbezogen.
+
+Sie sollten nach Möglichkeit weiterhin korrigiert werden, damit sie nach Ablauf des Vorschauzeitraums zu Ihrer Bewertung beitragen.
+
+Beispiel für eine Vorschauempfehlung:
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Empfehlung mit dem Flag „Vorschau“":::
  
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Dokument wurden Ihnen die Sicherheitsempfehlungen in Security Center vorgestellt. So erfahren Sie, wie Sie die Empfehlungen umsetzen
+In diesem Dokument wurden Ihnen die Sicherheitsempfehlungen in Security Center vorgestellt. In den folgenden Artikeln finden Sie verwandte Informationen:
 
-* [Umsetzen von Empfehlungen:](security-center-remediate-recommendations.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+- [Umsetzen von Empfehlungen](security-center-remediate-recommendations.md) – In diesem Artikel erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+- [Verhindern von Fehlkonfigurationen mit den Optionen zum Erzwingen/Ablehnen für Empfehlungen](prevent-misconfigurations.md).
+- [Automatisieren von Reaktionen auf Security Center-Trigger](workflow-automation.md) – In diesem Artikel erfahren Sie, wie Sie Reaktionen auf Empfehlungen automatisieren.
+- [Ausschließen einer Ressource aus einer Empfehlung](exempt-resource.md)
+- [Sicherheitsempfehlungen: Referenzhandbuch](recommendations-reference.md)

@@ -1,35 +1,24 @@
 ---
-title: Verwalten von Zertifikaten in einem Azure Service Fabric-Cluster | Microsoft-Dokumentation
+title: Verwalten von Zertifikaten in einem Azure Service Fabric-Cluster
 description: Es wird beschrieben, wie Sie neue Zertifikate hinzufügen, ein Rollover für Zertifikate durchführen und ein Zertifikat für einen Service Fabric-Cluster entfernen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chakdan
-editor: ''
-ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/13/2018
-ms.author: atsenthi
-ms.openlocfilehash: d84525e869d47fc609ee8aac7feb7feda36a5f23
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 6dd4440d76bed9d110c13baab9f4e67b3a5c64c0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599959"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660898"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Hinzufügen oder Entfernen von Zertifikaten für einen Service Fabric-Cluster in Azure
 Es wird empfohlen, dass Sie sich damit vertraut machen, wie Service Fabric X.509-Zertifikate verwendet werden, und dass Sie sich mit den [Szenarien für die Clustersicherheit](service-fabric-cluster-security.md) auskennen. Sie müssen verstehen, was ein Clusterzertifikat ist, und wofür es verwendet wird, bevor Sie den Vorgang fortsetzen.
 
-Das standardmäßige Zertifikatladeverhalten des Azure Service Fabric SDK besteht in der Bereitstellung und Verwendung eines definierten Zertifikats mit einem Ablaufdatum, das am weitesten in der Zukunft liegt, und zwar unabhängig von der primären oder sekundären Konfigurationsdefinition. Das Zurückfallen auf das klassische Verhalten ist eine nicht empfohlene erweiterte Aktion und erfordert das Festlegen des Parameters „UseSecondaryIfNewer“ in Ihrer Fabric.Code-Konfiguration auf FALSE.
+Das standardmäßige Zertifikatladeverhalten des Azure Service Fabric SDK besteht in der Bereitstellung und Verwendung des definierten Zertifikats mit dem Ablaufdatum, das am weitesten in der Zukunft liegt, und zwar unabhängig von der primären oder sekundären Konfigurationsdefinition. Das Zurückfallen auf das klassische Verhalten ist eine nicht empfohlene erweiterte Aktion und erfordert das Festlegen des Parameters „UseSecondaryIfNewer“ in Ihrer `Fabric.Code`-Konfiguration auf FALSE.
 
 Service Fabric ermöglicht es Ihnen, zusätzlich zu den Clientzertifikaten zwei Clusterzertifikate anzugeben – ein primäres und ein sekundäres –, wenn Sie die Zertifikatsicherheit während der Erstellung des Clusters konfigurieren. Ausführliche Informationen zur Einrichtung während der Erstellung finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal](service-fabric-cluster-creation-via-portal.md) oder [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Wenn Sie während der Erstellung nur ein Clusterzertifikat angeben, wird es als primäres Zertifikat verwendet. Nach der Erstellung des Clusters können Sie ein neues Zertifikat als sekundäres hinzufügen.
 
 > [!NOTE]
-> Für einen sicheren Cluster muss stets mindestens ein gültiges (nicht widerrufenes oder abgelaufenes) Clusterzertifikat (primär oder sekundär) bereitgestellt sein. Andernfalls funktioniert der Cluster nicht mehr. 90 Tage, bevor alle gültigen Zertifikate ablaufen, generiert das System eine Warnungsablaufverfolgung sowie ein Warnungsintegritätsereignis auf dem Knoten. Zurzeit sendet Service Fabric zu diesem Artikel weder E-Mails noch sonstige Benachrichtigungen. 
+> Für einen sicheren Cluster muss stets mindestens ein gültiges (nicht widerrufenes oder abgelaufenes) Clusterzertifikat (primär oder sekundär) bereitgestellt sein. Andernfalls funktioniert der Cluster nicht mehr. 90 Tage, bevor alle gültigen Zertifikate ablaufen, generiert das System eine Warnungsablaufverfolgung sowie ein Warnungsintegritätsereignis auf dem Knoten. Dabei handelt es sich zurzeit um die einzigen Benachrichtigungen, die Service Fabric zum Ablauf des Zertifikats sendet.
 > 
 > 
 
@@ -37,7 +26,7 @@ Service Fabric ermöglicht es Ihnen, zusätzlich zu den Clientzertifikaten zwei 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>Hinzufügen eines sekundären Clusterzertifikats mithilfe des Portals
-Das sekundäre Clusterzertifikat kann nicht über das Azure-Portal hinzugefügt werden, verwenden Sie stattdessen Azure-PowerShell. Der Prozess wird weiter unten in diesem Dokument beschrieben.
+Das sekundäre Clusterzertifikat kann nicht über das Azure-Portal hinzugefügt werden; verwenden Sie stattdessen Azure PowerShell. Der Prozess wird weiter unten in diesem Dokument beschrieben.
 
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>Entfernen eines Clusterzertifikats mit dem Portal
 Für einen sicheren Cluster benötigen Sie immer mindestens ein gültiges (nicht widerrufenes oder abgelaufenes) Zertifikat. Das bereitgestellte Zertifikat, das das am weitesten in der Zukunft liegende Ablaufdatum aufweist, wird verwendet, und wenn Sie es entfernen, funktioniert Ihr Cluster nicht mehr. Stellen Sie sicher, dass Sie nur das Zertifikat entfernen, das abgelaufen ist, oder ein nicht verwendetes Zertifikat, das am schnellsten abläuft.
@@ -46,20 +35,18 @@ Um ein nicht verwendetes Clustersicherheitszertifikat zu entfernen, navigieren S
 
 Wenn Sie beabsichtigen, das als primär markierte Zertifikat zu entfernen, müssen Sie ein sekundäres Zertifikat mit einem Ablaufdatum weiter in der Zukunft als das primäre Zertifikat bereitstellen, um das automatische Rolloververhalten zu aktivieren. Löschen Sie das primäre Zertifikat, nachdem der automatische Rollover abgeschlossen wurde.
 
-## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Hinzufügen eines sekundären Zertifikats per Resource Manager PowerShell
-> [!TIP]
-> Jetzt gibt es eine bessere und einfachere Methode zum Hinzufügen eines sekundären Zertifikats mit dem Cmdlet [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate). Sie müssen die restlichen Schritte in diesem Abschnitt nicht ausführen.  Außerdem benötigen Sie bei Verwendung des Cmdlets [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) nicht die ursprünglich für die Erstellung und Bereitstellung des Clusters verwendete Vorlage.
+## <a name="add-a-secondary-certificate-using-azure-resource-manager"></a>Hinzufügen eines sekundären Zertifikats mit Azure Resource Manager
 
 Diese Schritte setzen voraus, dass Sie mit der Funktionsweise von Resource Manager vertraut sind und mindestens einen Service Fabric-Cluster mithilfe einer Resource Manager-Vorlage bereitgestellt haben. Außerdem müssen Sie die Vorlage, die Sie zum Einrichten des Clusters verwendet haben, zur Hand haben. Außerdem wird vorausgesetzt, dass Sie mit der Anwendung von JSON vertraut sind.
 
 > [!NOTE]
-> Wenn Sie eine Beispielvorlage und Parameter suchen, die Sie als Leitlinie oder Ausgangspunkt verwenden können, laden Sie sie aus diesem [Git-Repository](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) herunter. 
+> Wenn Sie eine Beispielvorlage und Parameter suchen, die Sie als Leitlinie oder Ausgangspunkt verwenden können, laden Sie sie aus diesem [Git-Repository](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) herunter. 
 > 
 > 
 
 ### <a name="edit-your-resource-manager-template"></a>Bearbeiten Ihrer Resource Manager-Vorlage
 
-Damit Sie alles besser verfolgen können, enthält die Beispieldatei „5-VM-1-NodeTypes-Secure_Step2.JSON“ alle Bearbeitungsschritte, die wir ausführen. Die Beispieldatei finden Sie im [Git-Repository](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample).
+Damit Sie alles besser verfolgen können, enthält die Beispieldatei „5-VM-1-NodeTypes-Secure_Step2.JSON“ alle Bearbeitungsschritte, die wir ausführen. Die Beispieldatei finden Sie im [Git-Repository](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample).
 
 **Achten Sie darauf, dass Sie alle Schritte ausführen**.
 
@@ -178,7 +165,7 @@ Damit Sie alles besser verfolgen können, enthält die Beispieldatei „5-VM-1-N
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Bearbeiten Ihrer Vorlagendatei gemäß der neuen Parameter, die Sie oben hinzugefügt haben
-Wenn Sie das Beispiel aus dem [Git-Repository](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) als Leitlinie verwendet haben, können Sie beginnen, Änderungen im Beispiel „5-VM-1-NodeTypes-Secure.parameters_Step2.JSON“ vorzunehmen. 
+Wenn Sie das Beispiel aus dem [Git-Repository](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) als Leitlinie verwendet haben, können Sie beginnen, Änderungen im Beispiel „5-VM-1-NodeTypes-Secure.parameters_Step2.JSON“ vorzunehmen. 
 
 Bearbeiten Sie die Parameterdatei der Resource Manager-Vorlage, indem Sie die beiden neuen Parameter für „secCertificateThumbprint“ und „secCertificateUrlValue“ hinzufügen. 
 
@@ -210,7 +197,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 
 ```
 
-Stellen Sie die Vorlage für Ihre Ressourcengruppe bereit. Verwenden Sie die gleiche Ressourcengruppe, für die Ihr Cluster derzeit bereitgestellt wird. Führen Sie den Befehl „New-AzResourceGroupDeployment“ aus. Sie müssen nicht den Modus angeben, da der Standardwert **incremental**ist.
+Stellen Sie die Vorlage für Ihre Ressourcengruppe bereit. Verwenden Sie die gleiche Ressourcengruppe, für die Ihr Cluster derzeit bereitgestellt wird. Führen Sie den Befehl „New-AzResourceGroupDeployment“ aus. Sie müssen nicht den Modus angeben, da der Standardwert **incremental** ist.
 
 > [!NOTE]
 > Wenn Sie für „Mode“ den Wert „Complete“ festlegen, können Sie versehentlich Ressourcen löschen, die nicht in Ihrer Vorlage enthalten sind. Darum tun Sie es in diesem Szenario nicht.
@@ -273,7 +260,7 @@ Zusätzlich zu den Clusterzertifikaten können Sie Clientzertifikate hinzufügen
 
 Sie können zwei Arten von Clientzertifikaten hinzufügen: „Administrator“ oder „Schreibgeschützt“. Diese können dann zum Steuern des Zugriffs auf die Administratorvorgänge und Abfragevorgänge im Cluster verwendet werden. Standardmäßig werden die Clusterzertifikate der Liste mit den zulässigen Administratorzertifikaten hinzugefügt.
 
-Sie können eine beliebige Zahl von Clientzertifikaten angeben. Jedes Hinzufügen/Löschen führt zu einem Konfigurationsupdate des Service Fabric-Clusters.
+Sie können eine beliebige Anzahl von Clientzertifikaten angeben. Jedes Hinzufügen/Löschen führt zu einem Konfigurationsupdate des Service Fabric-Clusters.
 
 
 ### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Hinzufügen von Clientzertifikaten – „Administrator“ oder „Schreibgeschützt“ über das Portal
@@ -287,6 +274,10 @@ Sie können eine beliebige Zahl von Clientzertifikaten angeben. Jedes Hinzufüge
 ### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Löschen von Clientzertifikaten – „Administrator“ oder „Schreibgeschützt“ über das Portal
 
 Zum Entfernen eines sekundären Zertifikats aus der Verwendung für die Clustersicherheit navigieren Sie zum Abschnitt „Sicherheit“ und wählen im Kontextmenü für das spezifische Zertifikat die Option „Löschen“.
+
+## <a name="adding-application-certificates-to-a-virtual-machine-scale-set"></a>Hinzufügen von Anwendungszertifikaten zu einer VM-Skalierungsgruppe
+
+Informationen zum Bereitstellen eines Zertifikats, das Sie für Ihre Anwendungen verwenden, auf Ihrem Cluster, finden Sie in [diesem PowerShell-Beispielskript](scripts/service-fabric-powershell-add-application-certificate.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Lesen Sie die folgenden Artikel, um weitere Informationen zur Clusterverwaltung zu enthalten:

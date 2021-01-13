@@ -2,19 +2,15 @@
 title: Bereitstellungscenter für Azure Kubernetes
 description: Das Bereitstellungscenter in Azure DevOps vereinfacht die Einrichtung einer stabilen Azure DevOps-Pipeline für Ihre Anwendung.
 ms.author: puagarw
-ms.manager: douge
-ms.prod: devops
-ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-monikerRange: vsts
-ms.openlocfilehash: 35484566890f3bfd964e3fda337bfb3666d1da6c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 15b0413eabcfae7e3a4b28243caf2a708260ccae
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618730"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932216"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Bereitstellungscenter für Azure Kubernetes
 
@@ -38,11 +34,11 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Wählen Sie im Azure-Portal rechts auf der Menüleiste die Option [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) aus.
+1. Wählen Sie im Azure-Portal rechts auf der Menüleiste die Option [Cloud Shell](../cloud-shell/overview.md) aus.
 
 1. Führen Sie die folgenden Befehle aus, um den AKS-Cluster zu erstellen:
 
-    ```cmd
+    ```azurecli
     # Create a resource group in the South India location:
 
     az group create --name azooaks --location southindia
@@ -58,9 +54,9 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 1. Wählen Sie den AKS-Cluster und dann auf dem linken Blatt **Bereitstellungscenter (Vorschau)** aus. Wählen Sie **Erste Schritte** aus.
 
-   ![settings](media/deployment-center-launcher/settings.png)
+   ![Screenshot: Azure-Portal mit einem Pfeil, der auf das Bereitstellungscenter zeigt](media/deployment-center-launcher/settings.png)
 
-1. Wählen Sie den Speicherort des Codes und dann **Weiter** aus. Wählen Sie anschließend eins der derzeit unterstützten Repository aus: **[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** oder **GitHub**.
+1. Wählen Sie den Speicherort des Codes und dann **Weiter** aus. Wählen Sie anschließend eins der derzeit unterstützten Repository aus: **[Azure Repos](/azure/devops/repos/index)** oder **GitHub**.
 
     Bei Azure Repos handelt es sich um einen Satz von Tools für die Versionskontrolle, mit denen Sie Ihren Code verwalten können. Unabhängig von der Größe Ihres Softwareprojekts empfiehlt es sich, die Versionskontrolle so früh wie möglich zu verwenden.
 
@@ -70,7 +66,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
     - **GitHub:** Autorisieren Sie das Repository für Ihr GitHub-Konto, und wählen Sie es aus.
 
-        ![GitHub](media/deployment-center-launcher/github.gif)
+        ![Animation: Prozess in GitHub, in dessen Rahmen GitHub als Quelle und anschließend Ihr Repository ausgewählt wird](media/deployment-center-launcher/github.gif)
 
 
 1. Das Bereitstellungscenter analysiert das Repository und erkennt das Dockerfile. Zur Aktualisierung des Dockerfile können Sie die ermittelte Portnummer bearbeiten.
@@ -79,9 +75,9 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
     Ist im Repository kein Dockerfile enthalten, wird vom System eine Meldung mit dem Hinweis angezeigt, dass eins committet werden muss.
 
-    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
+    ![Screenshot: Bereitstellungscenter mit der Meldung, dass das Dockerfile nicht im Repository gefunden wurde](media/deployment-center-launcher/dockerfile.png)
 
-1. Wählen Sie eine vorhandene Containerregistrierung aus, oder erstellen Sie eine, und wählen Sie dann **Fertig stellen** aus. Die Pipeline wird automatisch erstellt, und ein Build wird in [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops) in die Warteschlange eingereiht.
+1. Wählen Sie eine vorhandene Containerregistrierung aus, oder erstellen Sie eine, und wählen Sie dann **Fertig stellen** aus. Die Pipeline wird automatisch erstellt, und ein Build wird in [Azure Pipelines](/azure/devops/pipelines/index) in die Warteschlange eingereiht.
 
     Azure Pipelines ist ein Clouddienst, mit dem Sie Ihr Codeprojekt automatisch erstellen und testen sowie es anderen Benutzern zur Verfügung stellen können. Azure Pipelines kombiniert Continuous Integration und Continuous Delivery, um den Code kontinuierlich und konsistent zu testen und zu erstellen und auf einem beliebigen Ziel bereitzustellen.
 
@@ -91,7 +87,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 1. Nach der Bereitstellung werden die Erfolgsprotokolle angezeigt.
 
-    ![Protokolle](media/deployment-center-launcher/logs.png)
+    ![Screenshot: Bereitstellungscenter, in dem „Release-1“ mit einem grünen Häkchen markiert ist](media/deployment-center-launcher/logs.png)
 
 ## <a name="examine-the-ci-pipeline"></a>Überprüfen der CI-Pipeline
 

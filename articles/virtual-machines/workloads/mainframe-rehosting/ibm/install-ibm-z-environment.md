@@ -3,6 +3,7 @@ title: Installieren der IBM ZD&T-Entwicklungs-/Testumgebung in Azure | Microsoft
 description: Bereitstellen von IBM Z Development and Test Environment (ZD&T) auf Azure-IaaS-VMs.
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 7ba3323f0811f3f9b76d73796264bf17712a1179
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c12a812f66345a26701b2a1623487fd262ede4be
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841343"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968331"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Installieren der IBM ZD&T-Entwicklungs-/Testumgebung in Azure
 
@@ -44,7 +45,7 @@ In diesem Artikel wird beschrieben, wie Sie die ZD&T Enterprise Edition in Azure
 > [!NOTE]
 > Die ZD&T Enterprise Edition von IBM kann ausschließlich in Entwicklungs-/Testumgebungen installiert werden. Der Einsatz in Produktionsumgebungen ist *nicht* möglich.
 
-- Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 - Sie benötigen Zugriff auf die Medien. Diese stehen nur IBM-Kunden und -Partnern zur Verfügung. Wenden Sie sich an Ihren Ansprechpartner bei IBM, oder nutzen Sie die Kontaktinformationen auf der [ZD&T-Website](https://www.ibm.com/us-en/marketplace/z-systems-development-test-environment), um weitere Informationen zu erhalten.
 
@@ -56,13 +57,13 @@ In diesem Artikel wird beschrieben, wie Sie die ZD&T Enterprise Edition in Azure
 
 ## <a name="create-the-base-image-and-connect"></a>Erstellen des Basisimages und Herstellen einer Verbindung
 
-1. [Erstellen Sie im Azure-Portal eine VM](/azure/virtual-machines/linux/quick-create-portal) mit der gewünschten Betriebssystemkonfiguration. In diesem Artikel wird eine B4ms-VM (mit 4 vCPUs und 16 GB Arbeitsspeicher) unter Ubuntu 16.04 vorausgesetzt.
+1. [Erstellen Sie im Azure-Portal eine VM](../../../linux/quick-create-portal.md) mit der gewünschten Betriebssystemkonfiguration. In diesem Artikel wird eine B4ms-VM (mit 4 vCPUs und 16 GB Arbeitsspeicher) unter Ubuntu 16.04 vorausgesetzt.
 
 2. Öffnen Sie nach der Erstellung der VM die eingehenden Ports 22 für SSH, 21 für FTP und 9443 für den Webserver.
 
 3. Rufen Sie auf dem Blatt **Übersicht** der VM über die Schaltfläche **Verbinden** die SSH-Anmeldeinformationen ab. Klicken Sie auf die Registerkarte **SSH**, und kopieren Sie den SSH-Anmeldebefehl in die Zwischenablage.
 
-4. Melden Sie sich auf Ihrem lokalen PC bei einer [Bash-Shell](/azure/cloud-shell/quickstart) an, und fügen Sie den Befehl ein. Dieser ist wie folgt strukturiert: **ssh\<Benutzer-ID\>\@\<IP-Adresse\>** . Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden, um eine Verbindung mit dem Basisverzeichnis herzustellen.
+4. Melden Sie sich auf Ihrem lokalen PC bei einer [Bash-Shell](../../../../cloud-shell/quickstart.md) an, und fügen Sie den Befehl ein. Er weist folgendes Format auf: **ssh\<user id\>\@\<IP Address\>** . Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden, um eine Verbindung mit dem Basisverzeichnis herzustellen.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Kopieren der Installationsdatei auf den Server
 
@@ -104,7 +105,7 @@ Die Installationsdatei für den Webserver heißt **ZDT\_Install\_EE\_V12.0.0.1.t
     ./ZDT_Install_EE_V12.0.0.0.x86_64
     ```
 
-3. Wählen Sie **1**  aus, um Enterprise Server zu installieren.
+3. Wählen Sie **1** aus, um Enterprise Server zu installieren.
 
 4. Drücken Sie die **EINGABETASTE**, und lesen Sie sich die Lizenzvereinbarung sorgfältig durch. Geben Sie unter der Lizenzvereinbarung **Yes** ein, um fortzufahren.
 
@@ -138,4 +139,4 @@ Beachten Sie, dass der Webserver beim Start unter der ZD&T-Benutzer-ID ausgefüh
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Set up an Application Developers Controlled Distribution (ADCD) in IBM zD&T v1 (Einrichten einer Application Developers Controlled Distribution (ADCD) in IBM ZD&T v1)](./demo.md)
+[Einrichten einer Application Developers Controlled Distribution (ADCD) in IBM ZD&T v1](./demo.md)

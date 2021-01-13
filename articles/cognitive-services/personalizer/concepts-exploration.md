@@ -3,19 +3,17 @@ title: 'Sondieren: Personalisierung'
 titleSuffix: Azure Cognitive Services
 description: Durch das Sondieren kann die Personalisierung auch dann weiterhin gute Ergebnisse liefern, wenn sich das Benutzerverhalten ändert. Die Auswahl der Einstellung für das Sondieren ist eine geschäftliche Entscheidung über den Anteil der Benutzerinteraktionen für die Untersuchung, um das Modell zu verbessern.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/13/2019
-ms.author: diberry
-ms.openlocfilehash: cfecea6a64301d86aa657420dc300c26d4ed6f1e
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.date: 10/23/2019
+ms.openlocfilehash: 00b9cc881d9414e957d7503bb6156095bb821c06
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663398"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87128147"
 ---
 # <a name="exploration-and-exploitation"></a>Sondieren und Einsetzen
 
@@ -25,22 +23,15 @@ Wenn die Personalisierung einen Aufruf zum Zuweisen eines Rangs empfängt, gibt 
 * Das wahrscheinlichste Benutzerverhalten wird durch Einsetzen des aktuellen Machine Learning-Modells ermittelt.
 * Das Verhalten wird durch Sondieren ermittelt. Dabei wird nicht zwangsläufig die Aktion gefunden, deren Rang die höchste Wahrscheinlichkeit aufweist.
 
-<!--
-Returning the most probable action is called *exploit* behavior. Returning a different action is called *exploration*.
--->
 Die Personalisierung verwendet für das Sondieren derzeit den *Epsilon-Greedy-Algorithmus*. 
 
 ## <a name="choosing-an-exploration-setting"></a>Auswählen einer Sondierungseinstellung
 
-Sie konfigurieren den Prozentsatz des Datenverkehrs für die Sondierung im Azure-Portal auf der Seite **Einstellungen** für die Personalisierung. Diese Einstellung bestimmt den Prozentsatz von Rangaufrufen, bei denen eine Sondierung erfolgt. 
+Sie konfigurieren den Prozentsatz des Datenverkehrs für die Sondierung im Azure-Portal auf der Seite **Konfiguration** für die Personalisierung. Diese Einstellung bestimmt den Prozentsatz von Rangaufrufen, bei denen eine Sondierung erfolgt. 
 
 Die Personalisierung ermittelt dann anhand dieser Wahrscheinlichkeit bei jedem Priorisierungsaufruf, ob sie sondiert oder das derzeitige Modell einsetzt. Dies unterscheidet sich vom Verhalten bei einigen A/B-Frameworks, in denen eine Vorgehensweise für bestimmte Benutzer-IDs festgelegt ist.
 
 ## <a name="best-practices-for-choosing-an-exploration-setting"></a>Best Practices für das Auswählen einer Sondierungseinstellung
-
-<!--
-@edjez - you say what not to do, but make no recommendations of what **to** do. 
--->
 
 Die Auswahl der Einstellung für das Sondieren ist eine geschäftliche Entscheidung über den Anteil der Benutzerinteraktionen für die Untersuchung, um das Modell zu verbessern. 
 

@@ -1,6 +1,6 @@
 ---
 title: Richtlinien in Azure API Management | Microsoft Docs
-description: Erfahren Sie, wie Sie Richtlinien in API Management erstellen, bearbeiten und konfigurieren.
+description: Erfahren Sie, wie Sie Richtlinien in API Management erstellen, bearbeiten und konfigurieren. Hier finden Sie Codebeispiele und zusätzliche verfügbare Ressourcen.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 37ac6369790ed526fd923819558863ae84432aed
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072305"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358115"
 ---
 # <a name="policies-in-azure-api-management"></a>Richtlinien in Azure API Management
 
@@ -27,14 +27,14 @@ Richtlinien werden im Gateway, das sich zwischen API-Consumer und der verwaltete
 
 Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung][Control flow] und [Variable festlegen][Set variable], basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien][Advanced policies] und [Richtlinienausdrücke][Policy expressions].
 
-## <a name="sections"></a>Grundlegendes zur Richtlinienkonfiguration
+## <a name="understanding-policy-configuration"></a><a name="sections"> </a>Grundlegendes zur Richtlinienkonfiguration
 
 Die Richtliniendefinition ist ein einfaches XML-Dokument, das eine Sequenz eingehender und ausgehender Anweisungen beschreibt. Das XML-Dokument kann direkt im Definitionsfenster bearbeitet werden. Auf der rechten Seite sehen Sie eine Liste mit Anweisungen, und die für den aktuellen Bereich anwendbaren Anweisungen sind aktiviert und hervorgehoben.
 
 Wenn Sie auf eine aktivierte Anweisung klicken, wird der entsprechende XML-Ausschnitt an der Cursorposition in der Definitionsansicht eingefügt. 
 
 > [!NOTE]
-> Wenn die Richtlinie, die Sie hinzufügen möchten, nicht aktiviert ist, stellen Sie sicher, dass Sie sich im richtigen Bereich für diese Richtlinie befinden. Für jede Richtlinienanweisung sind bestimmte Bereiche und Richtlinienabschnitte vorgesehen. Informationen zu den Richtlinienabschnitten und Bereichen für eine Richtlinie finden Sie in der **Richtlinienreferenz** im Abschnitt [Verwendung][Policy Reference]für die jeweilige Richtlinie.
+> Wenn die Richtlinie, die Sie hinzufügen möchten, nicht aktiviert ist, stellen Sie sicher, dass Sie sich im richtigen Bereich für diese Richtlinie befinden. Für jede Richtlinienanweisung sind bestimmte Bereiche und Richtlinienabschnitte vorgesehen. Informationen zu den Richtlinienabschnitten und Bereichen für eine Richtlinie finden Sie in der [Richtlinienreferenz][Policy Reference] im Abschnitt **Verwendung** für die jeweilige Richtlinie.
 > 
 > 
 
@@ -58,19 +58,19 @@ Die Konfiguration ist in `inbound`, `backend`, `outbound` und `on-error` unterte
 </policies> 
 ```
 
-Wenn bei der Verarbeitung einer Anfrage ein Fehler auftritt, werden alle verbleibenden Schritte in den `inbound`-, `backend`- oder `outbound`-Abschnitten übersprungen und die Ausführung bei den Anweisungen im `on-error`-Abschnitt fortgesetzt. Durch Platzieren von Richtlinienanweisungen im `on-error`-Abschnitt können Sie den Fehler überprüfen, indem Sie die `context.LastError`-Eigenschaft verwenden, die Fehlerantwort mit der `set-body`-Richtlinie untersuchen und anpassen sowie konfigurieren, was geschieht, wenn ein Fehler auftritt. Es gibt Fehlercodes für integrierte Schritte und für Fehler, die während der Verarbeitung von Richtlinienanweisungen auftreten können. Weitere Informationen finden Sie unter [Error handling in API Management policies](/azure/api-management/api-management-error-handling-policies)(in englischer Sprache).
+Wenn bei der Verarbeitung einer Anfrage ein Fehler auftritt, werden alle verbleibenden Schritte in den `inbound`-, `backend`- oder `outbound`-Abschnitten übersprungen und die Ausführung bei den Anweisungen im `on-error`-Abschnitt fortgesetzt. Durch Platzieren von Richtlinienanweisungen im `on-error`-Abschnitt können Sie den Fehler überprüfen, indem Sie die `context.LastError`-Eigenschaft verwenden, die Fehlerantwort mit der `set-body`-Richtlinie untersuchen und anpassen sowie konfigurieren, was geschieht, wenn ein Fehler auftritt. Es gibt Fehlercodes für integrierte Schritte und für Fehler, die während der Verarbeitung von Richtlinienanweisungen auftreten können. Weitere Informationen finden Sie unter [Error handling in API Management policies](./api-management-error-handling-policies.md)(in englischer Sprache).
 
-## <a name="scopes"></a>Konfigurieren von Richtlinien
+## <a name="how-to-configure-policies"></a><a name="scopes"> </a>Konfigurieren von Richtlinien
 
 Informationen zum Konfigurieren von Richtlinien finden Sie unter [How to set or edit Azure API Management policies](set-edit-policies.md) (Festlegen oder Bearbeiten von Azure API Management-Richtlinien).
 
 ## <a name="policy-reference"></a>Richtlinienreferenz
 
-In der [Richtlinienreferenz](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
+In der [Richtlinienreferenz](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
 
 ## <a name="policy-samples"></a>Richtlinienbeispiele
 
-Weitere Codebeispiele finden Sie unter [Richtlinien für die API-Verwaltung](policy-samples.md).
+Weitere Codebeispiele finden Sie unter [Richtlinien für die API-Verwaltung](./policy-reference.md).
 
 ## <a name="examples"></a>Beispiele
 
@@ -118,17 +118,17 @@ Daraufhin wird ein XML-Ausschnitt in das `inbound` -Element eingefügt, der Anwe
 Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
-+ Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
-+ [API Management policy samples](policy-samples.md) (API Management-Richtlinienbeispiele)   
++ Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
++ [API Management-Richtlinienbeispiele](./policy-reference.md)   
 
-[Policy Reference]: api-management-policy-reference.md
+[Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md
 [API]: api-management-howto-add-products.md
-[Operation]: api-management-howto-add-operations.md
+[Operation]: ./mock-api-responses.md
 
-[Advanced policies]: https://msdn.microsoft.com/library/azure/dn894085.aspx
-[Control flow]: https://msdn.microsoft.com/library/azure/dn894085.aspx#choose
-[Set variable]: https://msdn.microsoft.com/library/azure/dn894085.aspx#set_variable
-[Policy expressions]: https://msdn.microsoft.com/library/azure/dn910913.aspx
+[Advanced policies]: ./api-management-advanced-policies.md
+[Control flow]: ./api-management-advanced-policies.md#choose
+[Set variable]: ./api-management-advanced-policies.md#set-variable
+[Policy expressions]: ./api-management-policy-expressions.md
 
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png

@@ -1,19 +1,16 @@
 ---
 title: Leitfaden zur Notfallwiederherstellung für Azure Data Lake Analytics
 description: Erfahren Sie, wie Sie die Notfallwiederherstellung für Ihre Azure Data Lake Analytics-Konten planen.
-services: data-lake-analytics
-author: MikeRys
-ms.author: mrys
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: ea1d4020aa9be23b4839690ae0b386d35bce8a23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce5e96bf464eebb9b91e3ffac9312e89df9cbabe
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66498544"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220974"
 ---
 # <a name="disaster-recovery-guidance-for-azure-data-lake-analytics"></a>Leitfaden zur Notfallwiederherstellung für Azure Data Lake Analytics
 
@@ -23,7 +20,7 @@ Azure Data Lake Analytics ist ein bedarfsgesteuerter Dienst für Analyseaufträg
 
 Wenn Sie Azure Data Lake Analytics verwenden, ist es wichtig, dass Sie Ihren eigenen Notfallwiederherstellungsplan vorbereiten. Dieser Artikel führt Sie durch den Vorgang zum Erstellen eines Notfallwiederherstellungsplans. Folgende zusätzliche Ressourcen können Ihnen beim Erstellen Ihres eigenen Plans hilfreich sein:
 - [Failure and disaster recovery for Azure applications](/azure/architecture/reliability/disaster-recovery) (Wiederherstellung bei einem Fehler oder Notfall für Azure-Anwendungen)
-- [Technischer Leitfaden zur Resilienz in Azure](/azure/architecture/reliability)
+- [Technischer Leitfaden zur Resilienz in Azure](/azure/architecture/checklist/resiliency-per-service)
 
 ## <a name="best-practices-and-scenario-guidance"></a>Bewährte Methoden und Szenarioanleitungen
 

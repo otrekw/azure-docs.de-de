@@ -1,18 +1,14 @@
 ---
-title: Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers mit Azure Backup
+title: Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 description: Hier wird beschrieben, wie die Sicherung beim Erstellen eines virtuellen Azure-Computers mit Azure Backup aktiviert wird.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.author: dacurwin
-ms.openlocfilehash: 90f69371457bbfe37789b12971343f738ff35e8e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ad81300545686d61f42cdd8684e502c937b4fd43
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639716"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89377334"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 
@@ -32,12 +28,12 @@ Falls Sie noch nicht bei Ihrem Konto angemeldet sind, melden Sie beim [Azure-Por
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
 
-2. Klicken Sie im Azure Marketplace auf **Compute**, und wählen Sie dann ein VM-Image aus.
+2. Wählen Sie im Azure Marketplace **Compute** und dann ein VM-Image aus.
 
-3. Richten Sie die VM gemäß den Anweisungen für [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) oder [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) ein.
+3. Richten Sie die VM gemäß den Anweisungen für [Windows](../virtual-machines/windows/quick-create-portal.md) oder [Linux](../virtual-machines/linux/quick-create-portal.md) ein.
 
-4. Klicken Sie auf der Registerkarte **Verwaltung** unter **Backup aktivieren** auf **Ein**.
-5. Azure Backup führt Sicherungen in einen Recovery Services-Tresor durch. Klicken Sie auf **Neu erstellen**, wenn Sie über keinen vorhandenen Tresor verfügen.
+4. Wählen Sie auf der Registerkarte **Verwaltung** unter **Backup aktivieren** die Option **Ein** aus.
+5. Azure Backup führt Sicherungen in einen Recovery Services-Tresor durch. Wählen Sie **Neu erstellen** aus, wenn Sie über keinen vorhandenen Tresor verfügen.
 6. Akzeptieren Sie den vorgeschlagenen Tresornamen, oder geben Sie einen eigenen an.
 7. Geben Sie eine Ressourcengruppe an oder erstellen Sie sie, in der sich der Tresor befinden wird. Der Tresor der Ressourcengruppe kann sich von der VM-Ressourcengruppe unterscheiden.
 
@@ -52,11 +48,27 @@ Falls Sie noch nicht bei Ihrem Konto angemeldet sind, melden Sie beim [Azure-Por
 
       ![Standardsicherungsrichtlinie](./media/backup-during-vm-creation/daily-policy.png)
 
+>[!NOTE]
+>[SSE und PMK sind die Standardverschlüsselungsmethoden](backup-encryption.md) für Azure-VMs. Azure Backup unterstützt die Sicherung und Wiederherstellung dieser virtuellen Azure-Computer.
 
-> [!NOTE]
-> Der Azure Backup-Dienst erstellt zum Speichern der Momentaufnahme eine separate Ressourcengruppe (nicht die VM-Ressourcengruppe) mit dem Namensformat **AzureBackupRG_geography_number** (Beispiel: AzureBackupRG_northeurope_1). Die Daten in dieser Ressourcengruppe werden so lange aufbewahrt, wie dies in der Sicherungsrichtlinie für virtuelle Azure-Computer unter *Momentaufnahme(n) zur sofortigen Wiederherstellung beibehalten für* angegeben ist (in Tagen).  Das Anwenden einer Sperre auf diese Ressourcengruppe kann zu Sicherungsfehlern führen.<br>
-Diese Ressourcengruppe sollte von allen Namens-/Tag-Einschränkungen ausgeschlossen werden, da eine Einschränkungsrichtlinie die Erstellung von Wiederherstellungspunktsammlungen in dieser Gruppe blockieren und erneut zu Fehlern führen würde.
+## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Backup-Ressourcengruppe für virtuelle Computer
 
+Der Backup-Dienst erstellt eine separate Ressourcengruppe (RG) neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung (RPC). Die RPC enthält die Wiederherstellungspunkte für die sofortige Wiederherstellung der verwalteten VMs. Das Standardnamensformat der vom Backup-Dienst erstellten Ressourcengruppe sieht folgendermaßen aus: `AzureBackupRG_<Geo>_<number>`. Beispiel: *AzureBackupRG_northeurope_1*. Sie können den von Azure Backup erstellten Ressourcengruppennamen jetzt anpassen.
+
+Beachten Sie Folgendes:
+
+1. Sie können entweder den Standardnamen der RG verwenden oder ihn entsprechend den Anforderungen Ihres Unternehmens bearbeiten.
+2. Beim Erstellen der VM-Sicherungsrichtlinie geben Sie das RG-Namensmuster als Eingabe an. Der RG-Name sollte das folgende Format aufweisen: `<alpha-numeric string>* n <alpha-numeric string>`. „n“ wird durch eine ganze Zahl (beginnend mit 1) ersetzt und zum horizontalen Hochskalieren verwendet, wenn die erste RG voll ist. Eine RG kann heute maximal 600 Remoteprozeduraufrufe umfassen.
+              ![Wählen Sie den Namen beim Erstellen einer Richtlinie aus](./media/backup-during-vm-creation/create-policy.png)
+3. Das Muster sollte den nachstehend aufgeführten RG-Benennungsregeln folgen, und die Gesamtlänge sollte die maximal zulässige Länge für RG-Namen nicht überschreiten.
+    1. Ressourcengruppennamen dürfen nur alphanumerische Zeichen, Punkte, Unterstriche, Bindestriche und Klammern enthalten. Sie dürfen nicht mit einem Punkt enden.
+    2. Ressourcengruppennamen können bis zu 74 Zeichen enthalten, einschließlich des Namens der RG und des Suffixes.
+4. Die erste `<alpha-numeric-string>` ist obligatorisch, während die zweite nach dem „n“ optional ist. Dies gilt nur, wenn Sie einen benutzerdefinierten Namen vergeben. Wenn Sie beide Textfelder leer lassen, wird der Standardname verwendet.
+5. Sie können den Namen der RG bearbeiten, indem Sie die Richtlinie ändern, wenn dies erforderlich ist. Wenn das Namensmuster geändert wird, werden in der neuen RG neue RPs erstellt. Die alten RPs befinden sich jedoch weiterhin in der alten RG und werden nicht verschoben, da die RP-Sammlung kein Verschieben von Ressourcen unterstützt. Schließlich erfolgt eine automatische Speicherbereinigung der RPs, wenn die Punkte ablaufen.
+![Ändern des Namens beim Ändern der Richtlinie](./media/backup-during-vm-creation/modify-policy.png)
+6. Die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe sollte nicht gesperrt werden.
+
+Informationen zum Konfigurieren der Azure Backup-Ressourcengruppe für Virtual Machines mithilfe von PowerShell finden Sie unter [Erstellen einer Azure Backup-Ressourcengruppe während der Aufbewahrung von Momentaufnahmen](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention).
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Starten einer Sicherung nach dem Erstellen der VM
 
@@ -64,16 +76,14 @@ Ihre VM-Sicherung wird in Übereinstimmung mit Ihrer Sicherungsrichtlinie ausgef
 
 Nachdem die VM erstellt wurde, gehen Sie wie folgt vor:
 
-1. Klicken Sie unter den VM-Eigenschaften auf **Sicherung**. Der VM-Status lautet „Erste Sicherung ausstehend“, bis die erste Sicherung ausgeführt wird.
-2. Klicken Sie auf **Jetzt sichern**, um eine On-Demand-Sicherung auszuführen.
+1. Wählen Sie unter den VM-Eigenschaften **Sicherung** aus. Der VM-Status lautet „Erste Sicherung ausstehend“, bis die erste Sicherung ausgeführt wird.
+2. Wählen Sie **Jetzt sichern** aus, um eine bedarfsgesteuerte Sicherung auszuführen.
 
     ![Ausführen einer On-Demand-Sicherung](./media/backup-during-vm-creation/run-backup.png)
 
 ## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>Bereitstellen einer geschützten VM mithilfe einer Resource Manager-Vorlage
 
 In den vorherigen Schritten wurde erläutert, wie Sie eine VM über das Azure-Portal erstellen und in einem Recovery Services-Tresor schützen. Informationen zur schnellen Bereitstellung und zum Schützen von VMs in einem Recovery Services-Tresor finden Sie unter [Deploy a Windows VM and enable backup (Bereitstellen einer Windows-VM und Aktivieren der Sicherung)](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/).
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

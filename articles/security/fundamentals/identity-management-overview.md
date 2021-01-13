@@ -1,6 +1,6 @@
 ---
 title: Azure-Sicherheitsfeatures, die die Identitätsverwaltung unterstützen | Microsoft-Dokumentation
-description: " Dieser Artikel bietet eine Übersicht über die wichtigsten Azure-Sicherheitsfeatures, die die Identitätsverwaltung unterstützen. Lösungen zur Identitäts- und Zugriffsverwaltung von Microsoft unterstützen IT-Profis dabei, den Zugriff auf Anwendungen und Ressourcen über das Unternehmensrechenzentrum und in der Cloud zu schützen, wobei zusätzliche Überprüfungsebenen aktiviert werden, z. B. mehrstufige Authentifizierung und Richtlinien für bedingten Zugriff. "
+description: Hier erfahren Sie mehr über die wichtigsten Azure-Sicherheitsfeatures, die Sie bei der Identitätsverwaltung unterstützen. Außerdem finden Sie hier Informationen über Themen wie das einmalige Anmelden und Reverseproxys.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 021767aa20dc35459c68fead674ff00510af2538
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2c7d51da361816841ff556c1da696a48d2ce6a06
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129359"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843688"
 ---
 # <a name="azure-identity-management-security-overview"></a>Übersicht über die Sicherheit der Azure-Identitätsverwaltung
 
- Identitätsverwaltung ist der Prozess der Authentifizierung und Autorisierung von [Sicherheitsprinzipalen](/windows/security/identity-protection/access-control/security-principals). Sie umfasst auch das Steuern von Informationen über diese Prinzipale (Identitäten). Sicherheitsprinzipale (Identitäten) können Dienste, Anwendungen, Benutzer, Gruppen usw. umfassen. Lösungen zur Identitäts- und Zugriffsverwaltung von Microsoft unterstützen IT-Profis dabei, den Zugriff auf Anwendungen und Ressourcen über das Unternehmensrechenzentrum und in der Cloud zu schützen. Für diesen Schutz werden zusätzliche Überprüfungsebenen aktiviert, wie etwa mehrstufige Authentifizierung und Richtlinien für bedingten Zugriff. Die Überwachung verdächtiger Aktivitäten über erweiterte Sicherheitsberichtserstellung, Überwachung und Warnung trägt dazu bei, potenzielle Sicherheitsprobleme zu verringern. [Azure Active Directory Premium](/azure/active-directory/active-directory-editions) ermöglicht einmaliges Anmelden (SSO) bei Tausenden von SaaS-Cloudanwendungen (Software-as-a-Service) und Zugriff auf Webanwendungen, die Sie lokal ausführen.
+ Identitätsverwaltung ist der Prozess der Authentifizierung und Autorisierung von [Sicherheitsprinzipalen](/windows/security/identity-protection/access-control/security-principals). Sie umfasst auch das Steuern von Informationen über diese Prinzipale (Identitäten). Sicherheitsprinzipale (Identitäten) können Dienste, Anwendungen, Benutzer, Gruppen usw. umfassen. Lösungen zur Identitäts- und Zugriffsverwaltung von Microsoft unterstützen IT-Profis dabei, den Zugriff auf Anwendungen und Ressourcen über das Unternehmensrechenzentrum und in der Cloud zu schützen. Für diesen Schutz werden zusätzliche Überprüfungsebenen aktiviert, wie etwa mehrstufige Authentifizierung und Richtlinien für bedingten Zugriff. Die Überwachung verdächtiger Aktivitäten über erweiterte Sicherheitsberichtserstellung, Überwachung und Warnung trägt dazu bei, potenzielle Sicherheitsprobleme zu verringern. [Azure Active Directory Premium](../../active-directory/fundamentals/active-directory-whatis.md) ermöglicht einmaliges Anmelden (SSO) bei Tausenden von SaaS-Cloudanwendungen (Software-as-a-Service) und Zugriff auf Webanwendungen, die Sie lokal ausführen.
  
 Die Nutzung der Sicherheitsvorteile von Azure Active Directory (Azure AD) gibt Ihnen folgende Möglichkeiten:
 
@@ -41,7 +41,7 @@ Der Artikel konzentriert sich auf die folgenden wesentlichen Funktionen der Azur
 * Einmaliges Anmelden
 * Reverseproxy
 * Multi-Factor Authentication
-* Rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC)
+* Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)
 * Sicherheitsüberwachung, Warnungen und Machine Learning-basierte Berichte
 * Kundenidentitäts- und Kundenzugriffsverwaltung
 * Geräteregistrierung
@@ -54,7 +54,7 @@ Der Artikel konzentriert sich auf die folgenden wesentlichen Funktionen der Azur
 
 SSO bedeutet, dass Sie Zugriff auf sämtliche für Ihre Geschäftsaktivitäten benötigten Anwendungen und Ressourcen erhalten, indem Sie sich nur einmal mit einem einzigen Benutzerkonto anmelden. Nach der Anmeldung können Sie auf alle benötigten Anwendungen zugreifen, ohne sich ein zweites Mal (z.B. durch Eingabe eines Kennworts) authentifizieren zu müssen.
 
-Viele Organisationen nutzen SaaS-Anwendungen, z.B. Office 365, Box und Salesforce, um die Benutzerproduktivität zu steigern. In der Vergangenheit musste das IT-Personal Benutzerkonten in jeder SaaS-Anwendung individuell erstellen und aktualisieren, und Benutzer mussten sich für jede SaaS-Anwendung ein Kennwort merken.
+Viele Organisationen nutzen SaaS-Anwendungen, z. B. Microsoft 365, Box und Salesforce, um die Benutzerproduktivität zu steigern. In der Vergangenheit musste das IT-Personal Benutzerkonten in jeder SaaS-Anwendung individuell erstellen und aktualisieren, und Benutzer mussten sich für jede SaaS-Anwendung ein Kennwort merken.
 
 Azure AD weitet lokale Active Directory-Umgebungen auf die Cloud aus und ermöglicht Benutzern auf diese Weise, sich mit ihrem primären Organisationskonto nicht nur bei den mit ihrer Domäne verknüpften Geräten und Unternehmensressourcen anzumelden, sondern auch bei sämtlichen Web- und SaaS-Anwendungen, die sie für ihre Arbeit benötigen.
 
@@ -64,37 +64,42 @@ Weitere Informationen:
 
 * [Übersicht über „Einmaliges Anmelden“](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../../active-directory/manage-apps/what-is-single-sign-on.md)
-* [Integrieren des einmaligen Anmeldens mit Azure Active Directory in SaaS-Apps](../../active-directory/manage-apps/configure-single-sign-on-portal.md)
+* [Schnellstartserie zur App-Verwaltung](../../active-directory/manage-apps/view-applications-portal.md)
 
 ## <a name="reverse-proxy"></a>Reverseproxy
 
-Der Azure AD-Anwendungsproxy ermöglicht Ihnen das Veröffentlichen von lokalen Anwendungen, z.B. [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US)-Websites, [Outlook Web App](https://technet.microsoft.com/library/jj657718.aspx) und [IIS](https://www.iis.net/)-basierte Apps innerhalb Ihres privaten Netzwerks und bietet sicheren Zugriff für Benutzer außerhalb Ihres Netzwerks. Der Anwendungsproxy bietet Remotezugriff und SSO für eine Vielzahl von lokalen Webanwendungen sowie Tausende von SaaS-Anwendungen, die Azure AD unterstützt werden. Mitarbeiter können sich auf ihren eigenen Geräten von zu Hause aus bei Ihren Apps anmelden und sich über diesen cloudbasierten Proxy authentifizieren.
+Der Azure AD-Anwendungsproxy ermöglicht Ihnen das Veröffentlichen von lokalen Anwendungen, z.B. [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US)-Websites, [Outlook Web App](/Exchange/clients/outlook-on-the-web/outlook-on-the-web) und [IIS](https://www.iis.net/)-basierte Apps innerhalb Ihres privaten Netzwerks und bietet sicheren Zugriff für Benutzer außerhalb Ihres Netzwerks. Der Anwendungsproxy bietet Remotezugriff und SSO für eine Vielzahl von lokalen Webanwendungen sowie Tausende von SaaS-Anwendungen, die Azure AD unterstützt werden. Mitarbeiter können sich auf ihren eigenen Geräten von zu Hause aus bei Ihren Apps anmelden und sich über diesen cloudbasierten Proxy authentifizieren.
 
 Weitere Informationen:
 
-* [Aktivieren des Azure AD-Anwendungsproxys](/azure/active-directory/manage-apps/application-proxy-enable)
-* [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](/azure/active-directory/active-directory-application-proxy-publish)
+* [Aktivieren des Azure AD-Anwendungsproxys](../../active-directory/manage-apps/application-proxy-add-on-premises-application.md)
+* [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](../../active-directory/manage-apps/application-proxy-add-on-premises-application.md)
 * [Einmaliges Anmelden mit dem Anwendungsproxy](../../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [Arbeiten mit bedingtem Zugriff](../../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication ist eine Authentifizierungsmethode, für die die Verwendung von mehr als einem Verifizierungsverfahren erforderlich ist und die eine wichtige zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen darstellt. Multi-Factor Authentication trägt zum Schutz des Zugriffs auf Daten und Anwendungen bei und bietet gleichzeitig ein einfaches Anmeldeverfahren für Benutzer. Sie bietet eine leistungsfähige Authentifizierung mit verschiedenen Überprüfungsoptionen – Telefonanruf, SMS oder per Benachrichtigung bzw. Überprüfungscode in einer mobilen App sowie OAuth-Token von Drittanbietern.
+Azure AD Multi-Factor Authentication ist eine Authentifizierungsmethode, für die die Verwendung von mehr als einem Verifizierungsverfahren erforderlich ist und die eine wichtige zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen darstellt. Multi-Factor Authentication trägt zum Schutz des Zugriffs auf Daten und Anwendungen bei und bietet gleichzeitig ein einfaches Anmeldeverfahren für Benutzer. Sie bietet eine leistungsfähige Authentifizierung mit verschiedenen Überprüfungsoptionen – Telefonanruf, SMS oder per Benachrichtigung bzw. Überprüfungscode in einer mobilen App sowie OAuth-Token von Drittanbietern.
 
 Weitere Informationen:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Was ist Azure Multi-Factor Authentication?](/azure/active-directory/authentication/multi-factor-authentication)
-* [Funktionsweise von Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Was ist Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Funktionsweise von Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
 
-## <a name="rbac"></a>RBAC
+## <a name="azure-rbac"></a>Azure RBAC
 
-RBAC ist ein Autorisierungssystem, das auf Azure Resource Manager basiert und eine präzise Verwaltung des Zugriffs auf Ressourcen in Azure ermöglicht. RBAC ermöglicht Ihnen eine präzise Steuerung der Zugriffsebene, über die Benutzer verfügen. Beispielsweise können Sie einen Benutzer auf die alleinige Verwaltung von virtuellen Netzwerken und einen anderen Benutzer auf die Verwaltung aller Ressourcen in einer Ressourcengruppe beschränken. Azure umfasst mehrere integrierte Rollen, die Sie verwenden können. Im Folgenden werden vier grundlegende integrierte Rollen aufgeführt. Die ersten drei Rollen gelten für alle Ressourcentypen.
+Azure RBAC ist ein Autorisierungssystem, das auf Azure Resource Manager basiert und eine präzise Verwaltung des Zugriffs auf Ressourcen in Azure ermöglicht. Azure RBAC ermöglicht Ihnen eine präzise Steuerung der Zugriffsebene, über die Benutzer verfügen. Beispielsweise können Sie einen Benutzer auf die alleinige Verwaltung von virtuellen Netzwerken und einen anderen Benutzer auf die Verwaltung aller Ressourcen in einer Ressourcengruppe beschränken. Azure umfasst mehrere integrierte Rollen, die Sie verwenden können. Im Folgenden werden vier grundlegende integrierte Rollen aufgeführt. Die ersten drei Rollen gelten für alle Ressourcentypen.
+
+- [Besitzer](../../role-based-access-control/built-in-roles.md#owner) verfügen über vollständigen Zugriff auf alle Ressourcen, einschließlich des Rechts, den Zugriff an andere Personen zu delegieren. 
+- [Mitwirkende](../../role-based-access-control/built-in-roles.md#contributor) können alle Arten von Azure-Ressourcen erstellen und verwalten, aber keinen anderen Personen Zugriff gewähren.
+- [Leser](../../role-based-access-control/built-in-roles.md#reader) können vorhandene Azure-Ressourcen anzeigen.
+- Mit einem [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) können Sie den Benutzerzugriff auf Azure-Ressourcen verwalten.
 
 Weitere Informationen:
 
-* [Was ist die rollenbasierte Zugriffssteuerung (RBAC)?](/azure/role-based-access-control/overview)
-* [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](/azure/role-based-access-control/built-in-roles)
+* [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md)
+* [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Sicherheitsüberwachung, Warnungen und Machine Learning-basierte Berichte
 
@@ -106,13 +111,13 @@ Im Azure-Portal fallen Berichte in die folgenden Kategorien:
 * **Integrierte Anwendungsberichte:** Bieten Einblicke, wie Cloudanwendungen in Ihrer Organisation verwendet werden. Azure AD ermöglicht die Integration in Tausende von Cloudanwendungen.
 * **Fehlerberichte:** Enthalten Hinweise auf Fehler, die bei der Bereitstellung von Konten für externe Anwendungen auftreten können.
 * **Benutzerspezifische Berichte:** Enthalten Geräte- und Anmeldeaktivitätsdaten für einen bestimmten Benutzer.
-* **Aktivitätsprotokolle**: Enthalten eine Aufzeichnung aller überwachten Ereignisse in den letzten 24 Stunden, 7 Tagen oder 30 Tagen sowie geänderte Gruppenaktivitäten und Kennwortzurücksetzungs- und Registrierungsaktivitäten.
+* **Aktivitätsprotokolle**: Enthalten eine Aufzeichnung aller überwachten Ereignisse in den letzten 24 Stunden, 7 Tagen oder 30 Tagen sowie geänderte Gruppenaktivitäten und Kennwortzurücksetzungs- und Registrierungsaktivitäten.
 
 Weitere Informationen:
 
-* [Anzeigen Ihrer Zugriffs- und Nutzungsberichte](/azure/active-directory/active-directory-view-access-usage-reports)
-* [Erste Schritte mit Azure Active Directory-Berichten](/azure/active-directory/active-directory-reporting-getting-started)
-* [Anleitung für Azure Active Directory-Berichte](/azure/active-directory/active-directory-reporting-guide)
+* [Anzeigen Ihrer Zugriffs- und Nutzungsberichte](../../active-directory/reports-monitoring/overview-reports.md)
+* [Erste Schritte mit Azure Active Directory-Berichten](../../active-directory/reports-monitoring/overview-reports.md)
+* [Anleitung für Azure Active Directory-Berichte](../../active-directory/reports-monitoring/overview-reports.md)
 
 ## <a name="consumer-identity-and-access-management"></a>Kundenidentitäts- und Kundenzugriffsverwaltung
 
@@ -125,31 +130,31 @@ Wenn Sie Azure AD B2C verwenden, können sich Ihre Kunden mit vorhandenen Konten
 Weitere Informationen:
 
 * [Was ist Azure Active Directory B2C?](https://azure.microsoft.com/services/active-directory-b2c/)
-* [Azure Active Directory B2C – Vorschauversion: Registrieren und Anmelden von Kunden bei Ihren Anwendungen](../../active-directory-b2c/active-directory-b2c-overview.md)
-* [Azure Active Directory B2C – Vorschauversion: Anwendungsarten](../../active-directory-b2c/active-directory-b2c-apps.md)
+* [Azure Active Directory B2C – Vorschauversion: Registrieren und Anmelden von Kunden bei Ihren Anwendungen](../../active-directory-b2c/overview.md)
+* [Azure Active Directory B2C – Vorschauversion: Anwendungsarten](../../active-directory-b2c/application-types.md)
 
 ## <a name="device-registration"></a>Geräteregistrierung
 
-Die Azure AD-Geräteregistrierung ist die Grundlage gerätebasierter Szenarien für den [bedingten Zugriff](/azure/active-directory/active-directory-conditional-access-device-registration-overview). Wenn ein Gerät registriert ist, stellt die Azure AD-Geräteregistrierung eine Identität für das Gerät bereit, die bei der Anmeldung eines Benutzers zum Authentifizieren des Geräts dient. Das authentifizierte Gerät und die Attribute des Geräts können anschließend verwendet werden, um bedingte Zugriffsrichtlinien für Anwendungen zu erzwingen, die in der Cloud und lokal gehostet werden.
+Die Azure AD-Geräteregistrierung ist die Grundlage gerätebasierter Szenarien für den [bedingten Zugriff](../../active-directory/devices/device-management-azure-portal.md). Wenn ein Gerät registriert ist, stellt die Azure AD-Geräteregistrierung eine Identität für das Gerät bereit, die bei der Anmeldung eines Benutzers zum Authentifizieren des Geräts dient. Das authentifizierte Gerät und die Attribute des Geräts können anschließend verwendet werden, um bedingte Zugriffsrichtlinien für Anwendungen zu erzwingen, die in der Cloud und lokal gehostet werden.
 
 In Kombination mit einer Lösung für die Verwaltung mobiler Geräte, wie z.B. Intune, werden die Geräteattribute in Azure AD mit zusätzlichen Informationen über das Gerät aktualisiert. So können Sie Regeln für den bedingten Zugriff erstellen, die erzwingen, dass der Zugriff von Geräten Ihren Standards für Sicherheit und Compliance entspricht.
 
 Weitere Informationen:
 
-* [Erste Schritte bei der Azure AD-Geräteregistrierung](/azure/active-directory/active-directory-conditional-access-device-registration-overview)
-* [Automatische Geräteregistrierung bei Azure AD für in Domänen eingebundene Windows-Geräte](/azure/active-directory/active-directory-conditional-access-automatic-device-registration)
-* [Einrichten der automatischen Registrierung bei Azure AD für in Domänen eingebundene Windows-Geräte](/azure/active-directory/active-directory-conditional-access-automatic-device-registration-setup)
+* [Erste Schritte bei der Azure AD-Geräteregistrierung](../../active-directory/devices/device-management-azure-portal.md)
+* [Automatische Geräteregistrierung bei Azure AD für in Domänen eingebundene Windows-Geräte](../../active-directory/devices/hybrid-azuread-join-plan.md)
+* [Einrichten der automatischen Registrierung bei Azure AD für in Domänen eingebundene Windows-Geräte](../../active-directory/devices/hybrid-azuread-join-plan.md)
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Mithilfe von Azure AD Privileged Identity Management (PIM) können Sie Ihre privilegierten Identitäten und deren Zugriff auf Ressourcen in Azure AD und anderen Microsoft Online Services wie Office 365 und Microsoft Intune verwalten, steuern und überwachen.
+Mithilfe von Azure AD Privileged Identity Management (PIM) können Sie Ihre privilegierten Identitäten und deren Zugriff auf Ressourcen in Azure AD und anderen Microsoft Online Services wie Microsoft 365 und Microsoft Intune verwalten, steuern und überwachen.
 
-Manchmal müssen Benutzer privilegierte Vorgänge in Azure- oder Office 365-Ressourcen oder anderen SaaS-Apps ausführen. Dieses Erfordernis bedeutet häufig, dass Organisationen diesen Benutzern in Azure AD dauerhaften privilegierten Zugriff gewähren müssen. Diese Zugriffsart stellt ein wachsendes Sicherheitsrisiko für die in der Cloud gehosteten Ressourcen dar, da Organisationen die Aktionen, die diese Benutzer mit ihren Administratorberechtigungen ausführen, nicht ausreichend überwachen können. Darüber hinaus kann die Sicherheit der gesamten Cloud in Gefahr sein, wenn ein Benutzerkonto mit privilegiertem Zugriff kompromittiert wird. Mit Azure AD Privileged Identity Management können Sie dieses Risiko abmildern.
+Manchmal müssen Benutzer privilegierte Vorgänge in Azure- oder Microsoft 365-Ressourcen oder anderen SaaS-Apps ausführen. Dieses Erfordernis bedeutet häufig, dass Organisationen diesen Benutzern in Azure AD dauerhaften privilegierten Zugriff gewähren müssen. Diese Zugriffsart stellt ein wachsendes Sicherheitsrisiko für die in der Cloud gehosteten Ressourcen dar, da Organisationen die Aktionen, die diese Benutzer mit ihren Administratorberechtigungen ausführen, nicht ausreichend überwachen können. Darüber hinaus kann die Sicherheit der gesamten Cloud in Gefahr sein, wenn ein Benutzerkonto mit privilegiertem Zugriff kompromittiert wird. Mit Azure AD Privileged Identity Management können Sie dieses Risiko abmildern.
 
 Azure AD Privileged Identity Management gibt Ihnen diese Möglichkeiten:
 
 * Ermitteln, welche Benutzer Azure AD-Administratoren sind.
-* Aktivieren von bedarfsgesteuertem Just-In-Time-Administratorzugriff (JIT) auf Microsoft Online Services wie z.B. Office 365 und Intune.
+* Aktivieren von bedarfsgesteuertem Just-In-Time-Administratorzugriff (JIT) auf Microsoft Online Services wie z. B. Microsoft 365 und Intune.
 * Abrufen von Berichten zum Administratorzugriffsverlauf und zu Änderungen bei Administratorzuweisungen.
 * Aktivieren von Benachrichtigungen zum Zugriff auf eine privilegierte Rolle.
 
@@ -164,14 +169,14 @@ Azure AD Identity Protection ist ein Sicherheitsdienst, der eine umfassende Üb
 
 Weitere Informationen:
 
-* [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview)
+* [Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 * [Channel 9: Show zu Azure AD und Identität: Schutz der Identität – Vorschauversion](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hybrididentitätsverwaltung/Azure AD Connect
 
-Die Identitätslösungen von Microsoft decken sowohl lokale als auch cloudbasierte Funktionen ab, und es wird eine einzelne Benutzeridentität für die standortunabhängige Authentifizierung und Autorisierung gegenüber allen Ressourcen erstellt. Wir bezeichnen dies als Hybrididentität. Das Microsoft-Tool Azure AD Connect wurde entwickelt, um Sie beim Erreichen Ihrer Hybrididentitätsziele zu unterstützen. Dadurch können Sie für Ihre Benutzer eine einzige Identität für in Azure AD integrierte in Office 365-, Azure- und SaaS-Anwendungen bereitstellen. Er zeichnet sich durch Folgendes aus:
+Die Identitätslösungen von Microsoft decken sowohl lokale als auch cloudbasierte Funktionen ab, und es wird eine einzelne Benutzeridentität für die standortunabhängige Authentifizierung und Autorisierung gegenüber allen Ressourcen erstellt. Wir bezeichnen dies als Hybrididentität. Das Microsoft-Tool Azure AD Connect wurde entwickelt, um Sie beim Erreichen Ihrer Hybrididentitätsziele zu unterstützen. Dadurch können Sie für Ihre Benutzer eine gemeinsame Identität für in Azure AD integrierte Microsoft 365-, Azure- und SaaS-Anwendungen bereitstellen. Er zeichnet sich durch Folgendes aus:
 
-* Synchronisierung
+* Synchronization
 * AD FS und Verbundintegration
 * Passthrough-Authentifizierung
 * Systemüberwachung

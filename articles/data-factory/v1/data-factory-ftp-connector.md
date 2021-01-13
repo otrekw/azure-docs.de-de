@@ -1,27 +1,26 @@
 ---
-title: Verschieben von Daten von einem FTP-Server mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Verschieben von Daten von einem FTP-Server mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie Daten mithilfe von Azure Data Factory von einem FTP-Server verschieben.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: eea3bab0-a6e4-4045-ad44-9ce06229c718
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5d043072244ede5b1d7bd28d4628ffe3cf4961d8
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836320"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001642"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Verschieben von Daten von einem FTP-Server mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-ftp-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-ftp.md)
 
@@ -43,7 +42,7 @@ Das Gateway kann auf dem gleichen lokalen Computer oder IaaS-VM wie der FTP-Serv
 ## <a name="get-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools oder APIs aus einer FTP-Quelle verschiebt.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Data Factory-Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise.
+Am einfachsten erstellen Sie eine Pipeline mit dem **Data Factory-Kopier-Assistenten**. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise.
 
 Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
@@ -68,13 +67,13 @@ In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verk
 | type |Legen Sie diese Eigenschaft auf „FtpServer“ fest. |Ja |&nbsp; |
 | host |Gibt den Namen oder die IP-Adresse des FTP-Servers an. |Ja |&nbsp; |
 | authenticationType |Gibt den Authentifizierungstyp an. |Ja |Standard, Anonym |
-| userName |Gibt den Benutzer an, der Zugriff auf den FTP-Server hat. |Nein |&nbsp; |
+| username |Gibt den Benutzer an, der Zugriff auf den FTP-Server hat. |Nein |&nbsp; |
 | password |Gibt das Kennwort für den Benutzer (username) an. |Nein |&nbsp; |
 | encryptedCredential |Gibt die verschlüsselten Anmeldeinformationen für den Zugriff auf den FTP-Server an. |Nein |&nbsp; |
 | gatewayName |Gibt den Namen des Gateways im Datenverwaltungsgateway zum Herstellen einer Verbindung mit einem lokalen FTP-Server an. |Nein |&nbsp; |
 | port |Gibt den Port, den der FTP-Server abhört, an. |Nein |21 |
 | enableSsl |Gibt an, ob FTP über einen SSL/TLS-Kanal verwendet werden soll. |Nein |true |
-| enableServerCertificateValidation |Gibt an, ob die Überprüfung des SSL-Zertifikats aktiviert werden soll, wenn Sie FTP über SSL/TLS-Kanal verwenden. |Nein |true |
+| enableServerCertificateValidation |Gibt an, ob die Überprüfung des TLS/SSL-Serverzertifikats aktiviert werden soll, wenn Sie FTP über den SSL/TLS-Kanal verwenden. |Nein |true |
 
 >[!NOTE]
 >Der FTP-Connector unterstützt den Zugriff auf FTP-Server ohne Verschlüsselung oder mit expliziter SSL/TLS-Verschlüsselung. Er unterstützt keine implizite SSL/TLS-Verschlüsselung.
@@ -390,7 +389,7 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 > Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 
 * Im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 

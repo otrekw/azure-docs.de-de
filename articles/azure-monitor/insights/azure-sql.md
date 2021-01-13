@@ -1,29 +1,26 @@
 ---
 title: Azure SQL-Analyse-Lösung in Azure Monitor | Microsoft-Dokumentation
 description: Die Azure SQL-Analyse-Lösung hilft Ihnen bei der Verwaltung Ihrer Azure SQL-Datenbanken.
-services: log-analytics
-ms.service: log-analytics
-ms.custom: ''
+ms.subservice: logs
 ms.topic: conceptual
 author: danimir
 ms.author: danil
+ms.date: 09/19/2020
 ms.reviewer: carlrab
-manager: craigg
-ms.date: 12/17/2018
-ms.openlocfilehash: 60538145652f3539768e6deb591352a1765488fd
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019012"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397078"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)
 
 ![Symbol Azure SQL Analytics](./media/azure-sql/azure-sql-symbol.png)
 
-Azure SQL-Analyse ist eine erweiterte Cloudüberwachungslösung zum bedarfsorientierten und abonnementübergreifenden Überwachen der Leistung von Azure SQL-Datenbanken, Pools für elastische Datenbanken und verwalteten Instanzen über eine zentrale Benutzeroberfläche. Die Lösung erfasst und visualisiert wichtige Azure SQL-Datenbank-Leistungsmetriken und umfasst integrierte Intelligenz für die Problembehandlung der Leistung.
+Azure SQL-Analyse ist eine erweiterte Cloudüberwachungslösung zum bedarfsorientierten und abonnementübergreifenden Überwachen der Leistung Ihrer gesamten Azure SQL-Datenbankinstanzen in einer zentralen Ansicht. Azure SQL-Analyse erfasst und visualisiert wichtige Leistungsmetriken und umfasst integrierte Logik für die Problembehandlung in Bezug auf die Leistung.
 
-Anhand von mit der Lösung erfassten Metriken können Sie benutzerdefinierte Überwachungsregeln und -warnungen erstellen. Die Lösung hilft Ihnen beim Erkennen von Problemen auf jeder Ebene Ihres Anwendungsstapels. Sie verwendet Azure-Diagnosemetriken zusammen mit Azure Monitor-Ansichten, um Daten zu allen Azure SQL-Datenbanken, Pools für elastische Datenbanken und Datenbanken in verwalteten Instanzen in einem einzigen Log Analytics-Arbeitsbereich darzustellen. Azure Monitor unterstützt Sie beim Erfassen, Korrelieren und Visualisieren strukturierter und nicht strukturierter Daten.
+Indem Sie diese erfassten Metriken verwenden, können Sie benutzerdefinierte Überwachungsregeln und Warnungen erstellen. Azure SQL-Analyse hilft Ihnen beim Erkennen von Problemen auf jeder Ebene Ihres Anwendungsstapels. Hierbei werden Azure-Diagnosemetriken zusammen mit Azure Monitor-Ansichten verwendet, um Daten zu Ihren gesamten Azure SQL-Datenbanken in einem zentralen Log Analytics-Arbeitsbereich darzustellen. Azure Monitor unterstützt Sie beim Erfassen, Korrelieren und Visualisieren strukturierter und nicht strukturierter Daten.
 
 Einen Überblick über die praktische Verwendung der Azure SQL-Analyse und über typische Verwendungsszenarien finden Sie im eingebetteten Video:
 
@@ -32,60 +29,76 @@ Einen Überblick über die praktische Verwendung der Azure SQL-Analyse und über
 
 ## <a name="connected-sources"></a>Verbundene Quellen
 
-Azure SQL-Analyse ist eine Cloudüberwachungslösung, die das Streaming von Diagnosetelemetriedaten für Azure SQL-Datenbanken unterstützt: Einzeldatenbanken, Pooldatenbanken und Datenbanken der verwalteten Instanz. Da die Lösung keine Agents für die Verbindung mit Azure Monitor verwendet, wird die Überwachung von lokal oder auf virtuellen Computern gehosteten SQL Server-Instanzen nicht unterstützt. Entsprechende Informationen finden Sie in der folgenden Kompatibilitätstabelle.
+Azure SQL-Analyse ist eine reine Cloudüberwachungslösung, die das Streaming von Diagnosetelemetriedaten für Ihre gesamten Azure SQL-Datenbanken unterstützt. Da von Azure SQL-Analyse für die Verbindungsherstellung mit Azure Monitor keine Agents verwendet werden, wird die Überwachung von SQL Server (lokal oder auf virtuellen Computern gehostet) nicht unterstützt.
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
-| [Azure-Diagnose](../platform/collect-azure-metrics-logs.md) | **Ja** | Azure-Metrik- und Protokolldaten werden direkt von Azure an Azure Monitor-Protokolle gesendet. |
-| [Azure-Speicherkonto](../platform/collect-azure-metrics-logs.md) | Nein | Azure Monitor liest keine Daten aus einem Speicherkonto. |
-| [Windows-Agents](../platform/agent-windows.md) | Nein | Direkte Windows-Agents werden von der Lösung nicht verwendet. |
-| [Linux-Agents](../learn/quick-collect-linux-computer.md) | Nein | Direkte Linux-Agents werden von der Lösung nicht verwendet. |
-| [System Center Operations Manager-Verwaltungsgruppe](../platform/om-agents.md) | Nein | Es wird von der Lösung keine direkte Verbindung vom Operations Manager-Agent zu Azure Monitor verwendet. |
+| [Diagnoseeinstellungen](../platform/diagnostic-settings.md) | **Ja** | Azure-Metrik- und Protokolldaten werden direkt von Azure an Azure Monitor-Protokolle gesendet. |
+| [Azure-Speicherkonto](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nein | Azure Monitor liest keine Daten aus einem Speicherkonto. |
+| [Windows-Agents](../platform/agent-windows.md) | Nein | Von Azure SQL-Analyse werden keine direkten Windows-Agents verwendet. |
+| [Linux-Agents](../learn/quick-collect-linux-computer.md) | Nein | Von Azure SQL-Analyse werden keine direkten Linux-Agents verwendet. |
+| [System Center Operations Manager-Verwaltungsgruppe](../platform/om-agents.md) | Nein | Von Azure SQL-Analyse wird keine direkte Verbindung vom Operations Manager-Agent zu Azure Monitor verwendet. |
+
+## <a name="azure-sql-analytics-options"></a>Azure SQL-Analyse – Optionen
+
+In der folgenden Tabelle werden unterstützte Optionen für zwei Versionen des Dashboards der Azure SQL-Analyse beschrieben: eine für Azure SQL-Datenbank und die andere für Datenbanken einer verwalteten Azure SQL-Instanz.
+
+| Option für Azure SQL-Analyse | BESCHREIBUNG | Unterstützung für SQL-Datenbank | Unterstützung für verwaltete SQL-Instanz |
+| --- | ------- | ----- | ----- |
+| Ressource nach Typ | Perspektive, die alle überwachten Ressourcen zählt. | Ja | Ja |
+| Einblicke | Stellt einen hierarchischen Drilldown in die Leistung in Intelligent Insights bereit. | Ja | Ja |
+| Errors | Stellt den hierarchischen Drilldown in SQL-Fehler bereit, die in den Datenbanken aufgetreten sind. | Ja | Ja |
+| Zeitlimits | Stellt den hierarchischen Drilldown in SQL-Zeitlimits bereit, die in den Datenbanken aufgetreten sind. | Ja | Nein |
+| Blockierungen | Stellt den hierarchischen Drilldown in SQL-Blockierungen bereit, die in den Datenbanken aufgetreten sind. | Ja | Nein |
+| Datenbankwartevorgänge | Stellt den hierarchischen Drilldown in SQL-Wartestatistiken auf Datenbankebene bereit. Enthält Zusammenfassungen der gesamten Wartezeit sowie die Wartezeit pro Wartetyp. |Ja | Nein |
+| Abfragedauer | Stellt den hierarchischen Drilldown in die Statistiken zur Abfrageausführung bereit, z.B. Abfragedauer, CPU-Auslastung, Daten-E/A-Auslastung und Protokoll-E/A-Auslastung. | Ja | Ja |
+| Abfragewartevorgänge | Stellt den hierarchischen Drilldown in die Statistiken zu Abfragewartevorgängen nach Wartekategorie bereit. | Ja | Ja |
 
 ## <a name="configuration"></a>Konfiguration
-Fügen Sie mithilfe des unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Prozesses Ihrem Log Analytics-Arbeitsbereich die Azure SQL-Analyse-Lösung (Vorschau) hinzu.
 
-### <a name="configure-azure-sql-databases-elastic-pools-and-managed-instances-to-stream-diagnostics-telemetry"></a>Konfigurieren von Azure SQL-Datenbanken, Pools für elastische Datenbanken und verwalteten Instanzen zum Streamen von Diagnosetelemetriedaten
+Fügen Sie Azure SQL-Analyse (Vorschau) mithilfe des unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](./solutions.md) beschriebenen Prozesses Ihrem Log Analytics-Arbeitsbereich hinzu.
 
-Nachdem Sie die Azure SQL-Analyse-Lösung in Ihrem Arbeitsbereich erstellt haben, müssen Sie **jede Ressource konfigurieren**, für die Sie zur Überwachung die zugehörige Diagnosetelemetrie an die Lösung streamen möchten. Befolgen Sie dazu die detaillierten Anweisungen auf dieser Seite:
+### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>Konfigurieren von Azure SQL-Datenbank zum Streamen von Diagnosetelemetriedaten
 
-- Aktivieren Sie die Azure-Diagnose für Ihre Azure SQL-Datenbank, um [Diagnosetelemetriedaten an die Azure SQL-Analyse zu streamen](../../sql-database/sql-database-metrics-diag-logging.md).
+Nachdem Sie die Azure SQL-Analyse-Lösung in Ihrem Arbeitsbereich erstellt haben, müssen Sie **jede Ressource konfigurieren**, für die Sie zur Überwachung die zugehörigen Diagnosetelemetriedaten an Azure SQL-Analyse streamen möchten. Befolgen Sie dazu die detaillierten Anweisungen auf dieser Seite:
+
+- Aktivieren Sie die Azure-Diagnose für Ihre Datenbank, um [Diagnosetelemetriedaten an die Azure SQL-Analyse zu streamen](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
 Die oben abgebildete Seite enthält auch Anweisungen zum Aktivieren der Unterstützung für die Überwachung mehrerer Azure-Abonnements über einen einzelnen Azure SQL-Analysearbeitsbereich als zentrale Konsole.
 
-## <a name="using-the-solution"></a>Verwenden der Lösung
+## <a name="using-azure-sql-analytics"></a>Verwenden von Azure SQL-Analyse
 
-Wenn Sie die Lösung zu Ihrem Arbeitsbereich hinzufügen, wird die Kachel „Azure SQL Analytics“ zu Ihrem Arbeitsbereich hinzugefügt und erscheint in der Übersicht. Klicken Sie auf den Link „Zusammenfassung anzeigen“, um den Kachelinhalt zu laden.
+Wenn Sie Azure SQL-Analyse Ihrem Arbeitsbereich hinzufügen, wird die Kachel „Azure SQL-Analyse“ Ihrem Arbeitsbereich hinzugefügt und erscheint in der Übersicht. Klicken Sie auf den Link „Zusammenfassung anzeigen“, um den Kachelinhalt zu laden.
 
 ![Zusammenfassungskachel „Azure SQL Analytics“](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-Nach dem Laden zeigt die Kachel die Anzahl von Azure SQL-Datenbanken, Pools für elastische Datenbanken, verwaltete Instanzen und Datenbanken in verwalteten Instanzen an, von denen die Lösung Diagnosetelemetriedaten empfängt.
+Nach dem Laden werden auf der Kachel die Anzahl von Datenbanken und Pools für elastische Datenbanken in SQL-Datenbank sowie Instanzen und Instanzdatenbanken in einer verwalteten SQL-Instanz angezeigt, von denen Diagnosetelemetriedaten für Azure SQL-Analyse empfangen werden.
 
 ![Kachel „Azure SQL Analytics“](./media/azure-sql/azure-sql-sol-tile-02.png)
 
-Die Lösung bietet zwei separate Ansichten: eine für die Überwachung von Azure SQL-Datenbanken und Pools für elastische Datenbanken und eine andere für die Überwachung der verwalteten Instanz und Datenbanken in verwalteten Instanzen.
+Azure SQL-Analyse bietet zwei separate Ansichten: eine zur Überwachung der SQL-Datenbank und die andere zur Überwachung der verwalteten SQL-Instanz.
 
-Zum Anzeigen des Überwachungsdashboards der Azure SQL-Analyse für Azure SQL-Datenbanken und Pools für elastische Datenbanken klicken Sie in den oberen Bereich der Kachel. Zum Anzeigen des Überwachungsdashboards der Azure SQL-Analyse für Azure SQL-Datenbanken und Pool für elastische Datenbanken klicken Sie in den oberen Bereich der Kachel.
+Zum Anzeigen des Überwachungsdashboards der Azure SQL-Analyse für die SQL-Datenbank klicken Sie auf den oberen Bereich der Kachel. Zum Anzeigen des Überwachungsdashboards der Azure SQL-Analyse für die verwaltete SQL-Instanz klicken Sie auf den unteren Bereich der Kachel.
 
 ### <a name="viewing-azure-sql-analytics-data"></a>Anzeigen von Azure SQL Analytics-Daten
 
 Das Dashboard umfasst die Übersicht über alle Datenbanken, die aus verschiedenen Perspektiven überwacht werden. Damit verschiedene Perspektiven funktionieren, müssen Sie die richtigen Metriken oder Protokolle auf Ihren SQL-Ressourcen aktivieren, die dann an den Log Analytics-Arbeitsbereich gestreamt werden.
 
-Hinweis: Wenn einige Metriken oder Protokolle nicht nach Azure Monitor gestreamt werden, werden die Kacheln in der Lösung nicht mit Überwachungsinformationen gefüllt.
+Wenn einige Metriken oder Protokolle nicht nach Azure Monitor gestreamt werden, werden die Kacheln in Azure SQL-Analyse nicht mit Überwachungsinformationen gefüllt.
 
-### <a name="azure-sql-database-and-elastic-pool-view"></a>Ansicht für Azure SQL-Datenbank und Pools für elastische Datenbanken
+### <a name="sql-database-view"></a>Ansicht der SQL-Datenbank
 
 Nach Auswahl der Kachel „Azure SQL-Analyse“ für die Datenbank wird das Überwachungsdashboard angezeigt.
 
-![Azure SQL-Analyse – Übersicht](./media/azure-sql/azure-sql-sol-overview.png)
+![Screenshot des Überwachungsdashboards](./media/azure-sql/azure-sql-sol-overview.png)
 
 Die Auswahl einer Kachel öffnet einen Drilldown-Bericht zur entsprechenden Perspektive. Nach Auswahl der Perspektive wird der Drilldownbericht geöffnet.
 
-![Azure SQL-Analyse – Zeitlimits](./media/azure-sql/azure-sql-sol-metrics.png)
+![Screenshot des Drilldownberichts in eine bestimmte Perspektive](./media/azure-sql/azure-sql-sol-metrics.png)
 
-Jede Perspektive in dieser Ansicht bietet Zusammenfassungen zum Abonnement, Server, Pool für elastische Datenbanken und zur Datenbankebene. Darüber hinaus zeigt jede Perspektive auf der rechten Seite eine Perspektive an, die für den Bericht spezifisch ist. Durch die Auswahl eines Abonnements, Servers, Anwendungspools oder einer Datenbank aus der Liste wird der Drilldown fortgesetzt.
+Jede Perspektive in dieser Ansicht enthält Zusammenfassungen zu den Ebenen für Abonnement, Server, Pool für elastische Datenbanken und Datenbank. Darüber hinaus zeigt jede Perspektive auf der rechten Seite eine Perspektive an, die für den Bericht spezifisch ist. Durch die Auswahl eines Abonnements, Servers, Anwendungspools oder einer Datenbank aus der Liste wird der Drilldown fortgesetzt.
 
-### <a name="managed-instance-and-databases-in-managed-instance-view"></a>Ansicht für eine verwaltete Instanz und Datenbanken in einer verwalteten Instanz
+### <a name="sql-managed-instance-view"></a>Ansicht der verwalteten SQL-Instanz
 
 Nach Auswahl der Kachel „Azure SQL-Analyse“ für die Datenbank wird das Überwachungsdashboard angezeigt.
 
@@ -93,34 +106,19 @@ Nach Auswahl der Kachel „Azure SQL-Analyse“ für die Datenbank wird das Übe
 
 Die Auswahl einer Kachel öffnet einen Drilldown-Bericht zur entsprechenden Perspektive. Nach Auswahl der Perspektive wird der Drilldownbericht geöffnet.
 
-Die Auswahl der Kachel „Verwaltete Instanz“ zeigt Details zur Auslastung der verwalteten Instanz, darin enthaltene Datenbanken und Telemetriedaten zu den für die gesamte Instanz ausgeführten Abfragen.
+Nach dem Auswählen der Ansicht der verwalteten SQL-Instanz werden Details zur Instanznutzung, Instanzdatenbanken und Telemetriedaten zu den für die gesamte verwaltete Instanz ausgeführten Abfragen angezeigt.
 
 ![Azure SQL-Analyse – Zeitlimits](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
-### <a name="perspectives"></a>Perspektiven
-
-In der folgenden Tabelle werden Perspektiven erläutert, die für zwei Versionen des im Dashboards unterstützt werden: eine für Azure SQL-Datenbank und Pools für elastische Datenbanken, und die andere für eine verwaltete Instanz.
-
-| Perspektive | BESCHREIBUNG | Unterstützung für SQL-Datenbank und Pools für elastische Datenbanken | Unterstützung für die verwaltete Instanz |
-| --- | ------- | ----- | ----- |
-| Ressource nach Typ | Perspektive, die alle überwachten Ressourcen zählt. | Ja | Ja |
-| Einblicke | Stellt einen hierarchischen Drilldown in die Leistung in Intelligent Insights bereit. | Ja | Ja |
-| Errors | Stellt den hierarchischen Drilldown in SQL-Fehler bereit, die in den Datenbanken aufgetreten sind. | Ja | Ja |
-| Zeitlimits | Stellt den hierarchischen Drilldown in SQL-Zeitlimits bereit, die in den Datenbanken aufgetreten sind. | Ja | Nein |
-| Blockierungen | Stellt den hierarchischen Drilldown in SQL-Blockierungen bereit, die in den Datenbanken aufgetreten sind. | Ja | Nein |
-| Datenbankwartevorgänge | Stellt den hierarchischen Drilldown in SQL-Wartestatistiken auf Datenbankebene bereit. Enthält Zusammenfassungen der gesamten Wartezeit sowie die Wartezeit pro Wartetyp. |Ja | Ja |
-| Abfragedauer | Stellt den hierarchischen Drilldown in die Statistiken zur Abfrageausführung bereit, z.B. Abfragedauer, CPU-Auslastung, Daten-E/A-Auslastung und Protokoll-E/A-Auslastung. | Ja | Ja |
-| Abfragewartevorgänge | Stellt den hierarchischen Drilldown in die Statistiken zu Abfragewartevorgängen nach Wartekategorie bereit. | Ja | Ja |
-
 ### <a name="intelligent-insights-report"></a>Intelligent Insights-Bericht
 
-[Intelligent Insights](../../sql-database/sql-database-intelligent-insights.md) von Azure SQL-Datenbank informiert Sie über die Leistung all Ihrer Azure SQL-Datenbanken. Alle erfassten Intelligent Insights-Daten können visuell dargestellt und über die Insights Perspektive aufgerufen werden.
+[Intelligent Insights](../../azure-sql/database/intelligent-insights-overview.md) von Azure SQL-Datenbank informiert Sie über die Leistung all Ihrer Azure SQL-Datenbanken. Alle erfassten Intelligent Insights-Daten können visuell dargestellt und über die Insights Perspektive aufgerufen werden.
 
 ![Azure SQL-Analyse – Insights](./media/azure-sql/azure-sql-sol-insights.png)
 
-### <a name="elastic-pool-and-database-reports"></a>Berichte zu Pools für elastische Datenbanken und Datenbanken
+### <a name="elastic-pools-and-database-reports"></a>Berichte zu Pools für elastische Datenbanken und Datenbanken
 
-Sowohl Pools für elastische Datenbanken als auch SQL-Datenbanken verfügen über eigene bestimmte Berichte, die alle Daten anzeigen, die für die Ressource im angegebenen Zeitraum gesammelt werden.
+Sowohl Pools für elastische Datenbanken als auch Datenbanken verfügen über eigene spezifische Berichte mit allen Daten, die für die Ressource im angegebenen Zeitraum gesammelt werden.
 
 ![Azure SQL-Analyse –Datenbank](./media/azure-sql/azure-sql-sol-database.png)
 
@@ -128,13 +126,13 @@ Sowohl Pools für elastische Datenbanken als auch SQL-Datenbanken verfügen übe
 
 ### <a name="query-reports"></a>Abfrageberichte
 
-Durch die Abfragedauer- und Abfragewartevorgänge-Perspektive können Sie die Leistung von Abfragen über den Abfragebericht korrelieren. Dieser Bericht vergleicht die Abfrageleistung in verschiedenen Datenbanken und erleichtert das Ermitteln von Datenbanken, die die ausgewählte Abfrage im Vergleich zu langsamen Datenbanken ordnungsgemäß ausführen.
+Anhand der Perspektive für Abfragedauer und Abfragewartevorgänge können Sie die Leistung von Abfragen über den Abfragebericht korrelieren. Dieser Bericht vergleicht die Abfrageleistung in verschiedenen Datenbanken und erleichtert das Ermitteln von Datenbanken, die die ausgewählte Abfrage im Vergleich zu langsamen Datenbanken ordnungsgemäß ausführen.
 
 ![Azure SQL-Analyse – Abfragen](./media/azure-sql/azure-sql-sol-queries.png)
 
 ## <a name="permissions"></a>Berechtigungen
 
-Für die Verwendung von Azure SQL-Analyse benötigen Benutzer mindestens die Rolle „Leser“ in Azure. Diese Rolle erlaubt es Benutzern jedoch nicht, den Abfragetext anzuzeigen oder automatische Optimierungsaktionen durchzuführen. Rollen mit umfassenderen Berechtigungen in Azure, die eine Nutzung der Lösung in vollem Umfang ermöglichen, sind „Besitzer“, „Mitwirkender“, „SQL-DB-Mitwirkender“ und „SQL Server-Mitwirkender“. Sie sollten auch erwägen, im Portal eine benutzerdefinierte Rolle mit spezifischen Berechtigungen zu erstellen, die nur erforderlich sind, um Azure SQL-Analyse zu verwenden, aber keinen Zugriff auf die Verwaltung anderer Ressourcen bieten.
+Für die Verwendung von Azure SQL-Analyse benötigen Benutzer mindestens die Rolle „Leser“ in Azure. Diese Rolle erlaubt es Benutzern jedoch nicht, den Abfragetext anzuzeigen oder automatische Optimierungsaktionen durchzuführen. Rollen mit umfassenderen Berechtigungen in Azure, die eine Nutzung von Azure SQL-Analyse in vollem Umfang ermöglichen, sind „Besitzer“, „Mitwirkender“, „SQL-DB-Mitwirkender“ und „SQL Server-Mitwirkender“. Sie sollten auch erwägen, im Portal eine benutzerdefinierte Rolle mit spezifischen Berechtigungen zu erstellen, die nur erforderlich sind, um Azure SQL-Analyse zu verwenden, aber keinen Zugriff auf die Verwaltung anderer Ressourcen bieten.
 
 ### <a name="creating-a-custom-role-in-portal"></a>Erstellen einer benutzerdefinierten Rolle im Portal
 
@@ -172,15 +170,15 @@ Nachdem die neue Rolle erstellt wurde, weisen Sie sie allen Benutzern zu, denen 
 
 ## <a name="analyze-data-and-create-alerts"></a>Analysieren von Daten und Erstellen von Warnungen
 
-Die Datenanalyse in Azure SQL-Analyse basiert auf der [Log Analytics-Sprache](../log-query/get-started-queries.md) für Ihre benutzerdefinierten Abfragen und Berichte. Eine Beschreibung der von der Datenbankressource für benutzerdefinierte Abfragen gesammelten Daten finden Sie unter [Verfügbare Metriken und Protokolle](../../sql-database/sql-database-metrics-diag-logging.md#metrics-and-logs-available).
+Die Datenanalyse in Azure SQL-Analyse basiert auf der [Log Analytics-Sprache](../log-query/get-started-queries.md) für Ihre benutzerdefinierten Abfragen und Berichte. Eine Beschreibung der von der Datenbankressource für benutzerdefinierte Abfragen gesammelten Daten finden Sie unter [Verfügbare Metriken und Protokolle](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available).
 
-Automatisierte Warnungen in der Lösung basieren auf dem Schreiben einer Log Analytics-Abfrage, die eine Warnung auslöst, wenn eine Bedingung erfüllt ist. Im Folgenden finden Sie mehrere Beispiele für Log Analytics-Abfragen, für die in der Lösung Warnungen eingerichtet werden können.
+Automatisierte Warnungen in Azure SQL-Analyse basieren auf dem Schreiben einer Log Analytics-Abfrage, die eine Warnung auslöst, wenn eine Bedingung erfüllt ist. Im Folgenden finden Sie mehrere Beispiele für Log Analytics-Abfragen, für die in Azure SQL-Analyse Warnungen eingerichtet werden können.
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Erstellen von Warnungen für Azure SQL-Datenbank
 
 Sie können problemlos [Warnungen](../platform/alerts-metric.md) mit den Daten erstellen, die aus Azure SQL-Datenbank-Ressourcen stammen. Im Folgenden finden Sie einige nützliche [Protokollabfragen](../log-query/log-query-overview.md), die Sie mit einer Protokollwarnung verwenden können:
 
-#### <a name="high-cpu-on-azure-sql-database"></a>Hohe CPU-Auslastung für Azure SQL-Datenbank
+#### <a name="high-cpu"></a>Hohe CPU-Auslastung
 
 ```
 AzureMetrics
@@ -192,10 +190,11 @@ AzureMetrics
 ```
 
 > [!NOTE]
-> - Voraussetzung für die Einrichtung dieser Warnung ist, dass überwachte Datenbanken grundlegende Metriken an die Lösung streamen.
+>
+> - Voraussetzung für die Einrichtung dieser Warnung ist, dass überwachte Datenbanken grundlegende Metriken an Azure SQL-Analyse streamen.
 > - Ersetzen Sie den MetricName-Wert „cpu_percent“ durch „dtu_consumption_percent“ um stattdessen hohe DTU-Ergebnisse zu erhalten.
 
-#### <a name="high-cpu-on-azure-sql-database-elastic-pools"></a>Hohe CPU-Auslastung in Pools für elastische Datenbanken in Azure SQL-Datenbank
+#### <a name="high-cpu-on-elastic-pools"></a>Hohe CPU-Auslastung der Pools für elastische Datenbanken
 
 ```
 AzureMetrics
@@ -207,10 +206,11 @@ AzureMetrics
 ```
 
 > [!NOTE]
-> - Voraussetzung für die Einrichtung dieser Warnung ist, dass überwachte Datenbanken grundlegende Metriken an die Lösung streamen.
+>
+> - Voraussetzung für die Einrichtung dieser Warnung ist, dass überwachte Datenbanken grundlegende Metriken an Azure SQL-Analyse streamen.
 > - Ersetzen Sie den MetricName-Wert „cpu_percent“ durch „dtu_consumption_percent“ um stattdessen hohe DTU-Ergebnisse zu erhalten.
 
-#### <a name="azure-sql-database-storage-in-average-above-95-in-the-last-1-hr"></a>Durchschnittlicher Speicherverbrauch für Azure SQL-Datenbank in der letzten Stunde bei über 95%
+#### <a name="storage-in-average-above-95-in-the-last-1-hr"></a>Speicher im Durchschnitt über 95 % in der letzten Stunde
 
 ```
 let time_range = 1h;
@@ -224,11 +224,15 @@ AzureMetrics
 ```
 
 > [!NOTE]
-> - Voraussetzung für die Einrichtung dieser Warnung ist, dass überwachte Datenbanken grundlegende Metriken an die Lösung streamen.
+>
+> - Voraussetzung für die Einrichtung dieser Warnung ist, dass überwachte Datenbanken grundlegende Metriken an Azure SQL-Analyse streamen.
 > - Diese Abfrage erfordert die Einrichtung einer Warnungsregel, die eine Warnung auslöst, wenn Ergebnisse (> 0 Ergebnisse) von der Abfrage vorhanden sind, die angeben, dass die Bedingung in einigen Datenbanken vorhanden ist. Die Ausgabe ist eine Liste von Datenbankressourcen, die im definierten Zeitbereich den Speicherschwellenwert überschreiten.
 > - Die Ausgabe ist eine Liste von Datenbankressourcen, die im definierten Zeitbereich den Speicherschwellenwert überschreiten.
 
 #### <a name="alert-on-intelligent-insights"></a>Warnung in Intelligent Insights
+
+> [!IMPORTANT]
+> Wenn die Leistung einer Datenbank zufriedenstellend war und keine Intelligent Insights-Ergebnisse erzeugt werden konnten, wird für diese Abfrage folgende Fehlermeldung zurückgegeben: „Failed to resolve scalar expression named 'rootCauseAnalysis_s'“ (Der Skalarausdruck namens „rootCauseAnalysis_s“ konnte nicht aufgelöst werden). Dieses Verhalten ist für alle Fälle zu erwarten, in denen keine Intelligent Insights-Ergebnisse für die Datenbank vorhanden sind.
 
 ```
 let alert_run_interval = 1h;
@@ -241,10 +245,11 @@ AzureDiagnostics
 ```
 
 > [!NOTE]
-> - Voraussetzung für die Einrichtung dieser Warnung ist, dass überwachte Datenbanken ein SQLInsights-Diagnoseprotokoll an die Lösung streamen.
+>
+> - Voraussetzung für die Einrichtung dieser Warnung ist, dass überwachte Datenbanken ein SQLInsights-Diagnoseprotokoll an Azure SQL-Analyse streamen.
 > - Diese Abfrage erfordert die Einrichtung einer Warnungsregel, die mit der gleichen Häufigkeit wie „alert_run_interval“ ausgeführt wird, um Duplikate zu vermeiden. Die Regel muss für das Auslösen der Warnung eingerichtet werden, wenn Ergebnisse (> 0 Ergebnisse) von der Abfrage vorhanden sind.
-> - Passen Sie den Wert „alert_run_interval“ an, um den Zeitbereich festzulegen, für den überprüft wird, ob die Bedingung in Datenbanken aufgetreten ist, die zum Streamen des SQLInsights-Protokolls an die Lösung konfiguriert sind.
-> - Passen Sie „insights_string“ so an, dass die Ausgabe des Texts der Insights-Analyse der Grundursache erfasst wird. Der gleiche Text wird auf der Benutzeroberfläche der Lösung angezeigt, die sie in den vorhandenen Erkenntnissen nutzen können. Alternativ können Sie die folgende Abfrage verwenden, um den Text aller in Ihrem Abonnement generierten Einblicke anzuzeigen. Verwenden Sie die Ausgabe der Abfrage, um die unterschiedlichen Zeichenfolgen für die Einrichtung von Warnungen für Insights zu nutzen.
+> - Passen Sie den Wert „alert_run_interval“ an, um den Zeitbereich festzulegen, für den überprüft wird, ob die Bedingung in Datenbanken aufgetreten ist, die zum Streamen des SQLInsights-Protokolls an Azure SQL-Analyse konfiguriert sind.
+> - Passen Sie „insights_string“ so an, dass die Ausgabe des Texts der Insights-Analyse der Grundursache erfasst wird. Der gleiche Text wird auf der Azure SQL-Analyse-Benutzeroberfläche angezeigt, die sie über die vorhandenen Einblicke nutzen können. Alternativ können Sie die folgende Abfrage verwenden, um den Text aller in Ihrem Abonnement generierten Einblicke anzuzeigen. Verwenden Sie die Ausgabe der Abfrage, um die unterschiedlichen Zeichenfolgen für die Einrichtung von Warnungen für Insights zu nutzen.
 
 ```
 AzureDiagnostics
@@ -252,9 +257,9 @@ AzureDiagnostics
 | distinct rootCauseAnalysis_s
 ```
 
-### <a name="creating-alerts-for-managed-instance"></a>Erstellen von Warnungen für eine verwaltete Instanz
+### <a name="creating-alerts-for-sql-managed-instance"></a>Erstellen von Warnungen für verwaltete SQL-Instanz
 
-#### <a name="managed-instance-storage-is-above-90"></a>Speicherverbrauch der verwalteten Instanz bei über 90%
+#### <a name="storage-is-above-90"></a>Speicher liegt über 90 %
 
 ```
 let storage_percentage_threshold = 90;
@@ -266,10 +271,11 @@ AzureDiagnostics
 ```
 
 > [!NOTE]
-> - Voraussetzung für die Einrichtung dieser Warnung ist, dass für die überwachte verwaltete Instanz das Streaming des ResourceUsageStats-Protokolls an die Lösung aktiviert ist.
-> - Diese Abfrage erfordert die Einrichtung einer Warnungsregel, die eine Warnung auslöst, wenn Ergebnisse (> 0 Ergebnisse) von der Abfrage vorhanden sind, die angeben, dass die Bedingung in der verwalteten Instanz vorhanden ist. Die Ausgabe ist der prozentuale Speicherverbrauch in der verwalteten Instanz.
+>
+> - Voraussetzung für die Einrichtung dieser Warnung ist, dass für die überwachte verwaltete Instanz das Streaming des ResourceUsageStats-Protokolls an Azure SQL-Analyse aktiviert ist.
+> - Diese Abfrage erfordert die Einrichtung einer Warnungsregel, die eine Warnung auslöst, wenn Ergebnisse (> 0 Ergebnisse) für die Abfrage vorhanden sind, die angeben, dass die Bedingung auf der verwalteten Instanz vorhanden ist. Die Ausgabe ist der prozentuale Speicherverbrauch auf der verwalteten Instanz.
 
-#### <a name="managed-instance-cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>Durchschnittlicher CPU-Verbrauch der verwalteten Instanz in der letzten 1 Stunde über 95%
+#### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>Durchschnittliche CPU-Auslastung über 95 % in der letzten Stunde
 
 ```
 let cpu_percentage_threshold = 95;
@@ -281,15 +287,17 @@ AzureDiagnostics
 ```
 
 > [!NOTE]
-> - Voraussetzung für die Einrichtung dieser Warnung ist, dass für die überwachte verwaltete Instanz das Streaming des ResourceUsageStats-Protokolls an die Lösung aktiviert ist.
-> - Diese Abfrage erfordert die Einrichtung einer Warnungsregel, die eine Warnung auslöst, wenn Ergebnisse (> 0 Ergebnisse) von der Abfrage vorhanden sind, die angeben, dass die Bedingung in der verwalteten Instanz vorhanden ist. Die Ausgabe ist die durchschnittliche CPU-Auslastung der verwalteten Instanz im definierten Zeitraum, angegeben in Prozent.
+>
+> - Voraussetzung für die Einrichtung dieser Warnung ist, dass für die überwachte verwaltete Instanz das Streaming des ResourceUsageStats-Protokolls an Azure SQL-Analyse aktiviert ist.
+> - Diese Abfrage erfordert die Einrichtung einer Warnungsregel, die eine Warnung auslöst, wenn Ergebnisse (> 0 Ergebnisse) für die Abfrage vorhanden sind, die angeben, dass die Bedingung auf der verwalteten Instanz vorhanden ist. Die Ausgabe ist die durchschnittliche CPU-Auslastung der verwalteten Instanz im definierten Zeitraum in Prozent.
 
 ### <a name="pricing"></a>Preise
 
-Obwohl die Lösung kostenlos verwendet werden kann, fallen für die Nutzung von Diagnosetelemetriedaten über die kostenlosen Einheiten hinaus, die für die Datenerfassung jeden Monat zugeteilt werden, Gebühren an. Weitere Informationen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/monitor). Die kostenlosen Einheiten der bereitgestellten Datenerfassung ermöglichen die kostenlose Überwachung von mehreren Datenbanken pro Monat. Beachten Sie, dass bei einer größeren Anzahl aktiver Datenbanken mit umfangreicheren Workloads mehr Daten als bei Datenbanken im Leerlauf erfasst werden. Sie können problemlos Ihre Datenerfassungsnutzung in der Lösung überwachen, indem Sie den OMS-Arbeitsbereich im Navigationsmenü der Azure SQL-Analyse auswählen und dann „Nutzungs- und geschätzte Kosten“ auswählen.
+Obwohl Azure SQL-Analyse kostenlos verwendet werden kann, fallen für die Nutzung von Diagnosetelemetriedaten über die kostenlosen Einheiten hinaus, die für die Datenerfassung jeden Monat zugeteilt werden, Gebühren an. Weitere Informationen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/monitor). Die kostenlosen Einheiten der bereitgestellten Datenerfassung ermöglichen die kostenlose Überwachung von mehreren Datenbanken pro Monat. Bei einer größeren Anzahl aktiver Datenbanken mit umfangreicheren Workloads können mehr Daten als bei Datenbanken im Leerlauf erfasst werden. Sie können problemlos Ihre Datenerfassungsnutzung in Azure SQL-Analyse überwachen, indem Sie den OMS-Arbeitsbereich im Navigationsmenü von Azure SQL-Analyse und dann „Nutzungs- und geschätzte Kosten“ auswählen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Verwenden Sie [Protokollabfragen](../log-query/log-query-overview.md) in Azure Monitor, um detaillierte Azure SQL-Daten anzuzeigen.
 - [Erstellen eigener Dashboards](../learn/tutorial-logs-dashboards.md), die Azure SQL-Daten anzeigen
 - [Erstellen von Warnungen](../platform/alerts-overview.md), wenn bestimmte Azure SQL-Ereignisse auftreten
+

@@ -1,6 +1,6 @@
 ---
 title: Migrieren von Windows Azure Media Encoder zu Media Encoder Standard | Microsoft-Dokumentation
-description: In diesem Thema wird erläutert, wie Sie von Azure Media Encoder zum Media Encoder Standard-Medienprozessor migrieren.
+description: In diesem Thema wird erläutert, wie Sie von Microsoft Azure Media Encoder zum Media Encoder Standard-Medienprozessor migrieren.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -11,18 +11,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 2e9008d039f014c95d473f3197b48651bdaa5a45
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9125639ab5b563a8db7cfa5730bd9673f383071c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019322"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90529246"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Migrieren von Windows Azure Media Encoder zu Media Encoder Standard
 
-In diesem Artikel werden die Schritte für die Migration vom älteren WAME-Medienprozessor (Windows Azure Media Encoder), der am 30. November 2019 eingestellt wird, zum Media Encoder Standard-Medienprozessor erläutert.
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
+In diesem Artikel werden die Schritte für die Migration vom älteren WAME-Medienprozessor (Windows Azure Media Encoder), der eingestellt wird, zum Media Encoder Standard-Medienprozessor erläutert. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](legacy-components.md).
 
 Beim Codieren von Dateien mit WAME haben Kunden in der Regel eine benannte Voreinstellungszeichenfolge wie `H264 Adaptive Bitrate MP4 Set 1080p` verwendet. Für die Migration muss Ihr Code aktualisiert werden, um den **Media Encoder Standard**-Medienprozessor anstelle von WAME und eine der entsprechenden [Systemvoreinstellungen](media-services-mes-presets-overview.md) wie `H264 Multiple Bitrate 1080p` zu verwenden. 
 
@@ -64,7 +67,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>Erweiterte Szenarien 
 
-Wenn Sie eine eigene Codierungsvoreinstellung für WAME mit dessen Schema erstellt haben, gibt es ein [äquivalentes Schema für Media Encoder Standard](media-services-mes-schema.md). Wenn Sie Fragen zur Zuordnung der älteren Einstellungen zum neuen Encoder haben, können Sie uns über mailto:amshelp@microsoft.com erreichen.  
+Wenn Sie eine eigene Codierungsvoreinstellung für WAME mit dessen Schema erstellt haben, gibt es ein [äquivalentes Schema für Media Encoder Standard](media-services-mes-schema.md).
 
 ## <a name="known-differences"></a>Bekannte Unterschiede 
 
@@ -73,6 +76,10 @@ Media Encoder Standard ist robuster, zuverlässiger, hat eine höhere Leistung u
 * Media Encoder Standard erzeugt Ausgabedateien mit einer anderen Namenskonvention als WAME.
 * Media Encoder Standard erzeugt Artefakte wie Dateien, die die [Eingabedateimetadaten](media-services-input-metadata-schema.md) und die [Metadaten der Ausgabedatei(en)](media-services-output-metadata-schema.md) enthalten.
 * Wie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/media-services/#encoding) dokumentiert (insbesondere im Abschnitt zu den häufig gestellten Fragen), werden Sie bei der Codierung von Videos mit dem Media Encoder Standard auf Basis der Dauer der als Ausgabe erzeugten Dateien abgerechnet. Bei WAME werden Sie nach den Größen der Eingabevideodatei(en) und der Ausgabevideodatei(en) abgerechnet.
+
+## <a name="need-help"></a>Sie brauchen Hilfe?
+
+Sie können ein Supportticket erstellen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

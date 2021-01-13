@@ -1,21 +1,18 @@
 ---
-title: Überwachen von geplanten Ereignissen für Windows-VMs in Azure | Microsoft-Dokumentation
+title: Überwachen von geplanten Ereignissen für Windows-VMs in Azure
 description: Erfahren Sie, wie Sie Ihre virtuellen Azure-Computer für geplante Ereignisse überwachen.
-services: virtual-machines-windows
-documentationcenter: ''
 author: mysarn
-manager: gwallace
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: vm-windows
+ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
-ms.topic: conceptual
-ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.topic: how-to
+ms.openlocfilehash: 0d1edde5ac1b83feab458eb5d12d524163d3ffb1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051857"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483299"
 ---
 # <a name="monitoring-scheduled-events"></a>Überwachen von geplanten Ereignissen
 
@@ -28,7 +25,7 @@ In diesem Artikel erfahren Sie, wie Sie geplante Ereignisse verwenden können, u
 
 Scheduled Events ist als Teil des [Azure Instance Metadata Service](instance-metadata-service.md) verfügbar, der auf jedem virtuellen Azure-Computer verfügbar ist. Kunden können eine Automatisierung schreiben, um den Endpunkt ihrer virtuellen Computer abzufragen, nach Benachrichtigungen über geplante Wartung zu suchen sowie Risikominderungen durchzuführen, etwa Speichern des Zustands und Außerbetriebnahme des virtuellen Computers. Es empfiehlt sich, Automatisierung zu erstellen, um geplante Ereignisse aufzuzeichnen, damit Sie ein Überwachungsprotokoll zu Azure-Wartungsereignissen erhalten. 
 
-In diesem Artikel sind die Schritte erläutert, mit denen Sie das Erfassen von geplanten Wartungsereignissen in Log Analytics einrichten. Anschließend werden einige einfache Benachrichtigungsaktionen ausgelöst, z. B. Senden einer E-Mail an Ihr Team und Abrufen einer Verlaufsansicht aller Ereignisse, die sich auf Ihre virtuellen Computer ausgewirkt haben. Für die Ereignisaggregation und -automatisierung wird [Log Analytics](/azure/azure-monitor/learn/quick-create-workspace) verwendet, Sie können jedoch jede beliebige Überwachungslösung verwenden, um diese Protokolle zu erfassen und Automatisierung auszulösen.
+In diesem Artikel sind die Schritte erläutert, mit denen Sie das Erfassen von geplanten Wartungsereignissen in Log Analytics einrichten. Anschließend werden einige einfache Benachrichtigungsaktionen ausgelöst, z. B. Senden einer E-Mail an Ihr Team und Abrufen einer Verlaufsansicht aller Ereignisse, die sich auf Ihre virtuellen Computer ausgewirkt haben. Für die Ereignisaggregation und -automatisierung wird [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) verwendet, Sie können jedoch jede beliebige Überwachungslösung verwenden, um diese Protokolle zu erfassen und Automatisierung auszulösen.
 
 ![Diagramm, in dem der Ereignislebenszyklus dargestellt ist](./media/notifications/events.png)
 
@@ -38,7 +35,7 @@ Für dieses Beispiel müssen Sie einen [virtuellen Windows-Computer in einer Ver
 
 Löschen Sie die Ressourcengruppe nicht am Ende des Tutorials.
 
-Außerdem müssen Sie einen [Log Analytics-Arbeitsbereich](/azure/azure-monitor/learn/quick-create-workspace) erstellen, der dazu verwendet wird, die Informationen von den virtuellen Computern der Verfügbarkeitsgruppe zu aggregieren.
+Außerdem müssen Sie einen [Log Analytics-Arbeitsbereich](../../azure-monitor/learn/quick-create-workspace.md) erstellen, der dazu verwendet wird, die Informationen von den virtuellen Computern der Verfügbarkeitsgruppe zu aggregieren.
 
 ## <a name="set-up-the-environment"></a>Einrichten der Umgebung
 
@@ -115,7 +112,7 @@ Es soll nun ein Log Analytics Arbeitsbereich mit dem virtuellen Collector-Comput
 1. Suchen Sie nach **myCollectorVM**, und wählen Sie diesen Eintrag aus. 
 1. Wählen Sie auf der Seite für **myCollectorVM** die Option **Verbinden** aus.
 
-Hiermit wird der [Microsoft Monitoring Agent](/azure/virtual-machines/extensions/oms-windows) auf Ihrem virtuellen Computer installiert. Es dauert einige Minuten, bis Ihr virtueller Computer mit dem Arbeitsbereich verbunden und die Erweiterung installiert ist. 
+Hiermit wird der [Microsoft Monitoring Agent](../extensions/oms-windows.md) auf Ihrem virtuellen Computer installiert. Es dauert einige Minuten, bis Ihr virtueller Computer mit dem Arbeitsbereich verbunden und die Erweiterung installiert ist. 
 
 ## <a name="configure-the-workspace"></a>Konfigurieren des Arbeitsbereichs
 
@@ -135,7 +132,7 @@ Hiermit wird der [Microsoft Monitoring Agent](/azure/virtual-machines/extensions
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>Erstellen einer Warnungsregel mit Azure Monitor 
 
 
-Sobald die Ereignisse an Log Analytics übermittelt wurden, können Sie die folgende [Abfrage](/azure/azure-monitor/log-query/get-started-portal) ausführen, um nach den geplanten Ereignissen zu suchen.
+Sobald die Ereignisse an Log Analytics übermittelt wurden, können Sie die folgende [Abfrage](../../azure-monitor/log-query/log-analytics-tutorial.md) ausführen, um nach den geplanten Ereignissen zu suchen.
 
 1. Wählen Sie oben auf der Seite die Option **Protokolle** aus, und fügen Sie Folgendes in das Textfeld ein:
 
@@ -164,7 +161,7 @@ Sobald die Ereignisse an Log Analytics übermittelt wurden, können Sie die folg
 1. Wählen Sie unter **Aktionen** die Option **Aktionsgruppe erstellen** aus. Die Seite **Aktionsgruppe hinzufügen** wird geöffnet.
 1. Geben Sie in **Name der Aktionsgruppe** den Namen *myActionGroup* ein.
 1. Geben Sie in **Kurzname** den Namen **myActionGroup** ein.
-1. Wählen Sie in **Ressourcengruppe** den Eintrag *myResourceGroupAvailability** aus.
+1. Wählen Sie unter **Ressourcengruppe** den Eintrag **myResourceGroupAvailability** aus.
 1. Geben Sie in **AKTIONSNAME** den Namen **E-Mail** ein, und wählen Sie dann **E-Mail/SMS/Push/Sprache** aus. Die Seite **E-Mail/SMS/Push/Sprache** wird geöffnet.
 1. Wählen Sie **E-Mail** aus, geben Sie Ihre E-Mail-Adresse ein, und wählen Sie dann **OK** aus.
 1. Wählen Sie auf der Seite **Aktionsgruppe hinzufügen** die Option **OK** aus. 

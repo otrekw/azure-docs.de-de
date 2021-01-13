@@ -12,16 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: NA
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 02/25/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: c9754c1d7fee5af13de6176dbf8a1ca6e57a71eb
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b5139f75084eb0646db2fc8b05b04aaf3ddb2a12
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213155"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89010782"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnostizieren verworfener Benachrichtigungen in Azure Notification Hubs
 
@@ -33,7 +34,7 @@ Zunächst müssen Sie wissen, wie Notification Hubs Benachrichtigungen an ein Ge
 
 In einem typischen Benachrichtigungsflow wird eine Nachricht vom *Anwendungs-Back-End* an Notification Hubs gesendet. Notification Hubs verarbeitet alle Registrierungen. Dabei werden die konfigurierten Tags und Tagausdrücke berücksichtigt, um Ziele zu bestimmen. Bei den Zielen handelt es sich um die Registrierungen, die die Pushbenachrichtigung erhalten sollen. Diese Registrierungen können alle von uns unterstützten Plattformen umfassen: Android, Baidu (Android-Geräte in China), Fire OS (Amazon) iOS, Windows und Windows Phone.
 
-Wenn die Ziele bestimmt sind, übermittelt Notification Hubs Benachrichtigungen per Push an den *Pushbenachrichtigungsdienst* für die Geräteplattform. Apple Push Notification Service (APNs) für Apple und Firebase Cloud Messaging (FCM) für Google sind zwei Beispiele für einen solchen Dienst. Notification Hubs übermittelt die Benachrichtigungen aufgeteilt auf mehrere Registrierungsbatches. Die Authentifizierung erfolgt beim jeweiligen Pushbenachrichtigungsdienst mit den Anmeldeinformationen, die Sie im Azure-Portal unter **Notification Hub konfigurieren** festgelegt haben. Danach leitet der Pushbenachrichtigungsdienst die Benachrichtigungen an die entsprechenden *Clientgeräte* weiter.
+Wenn die Ziele bestimmt sind, übermittelt Notification Hubs Benachrichtigungen per Push an den *Pushbenachrichtigungsdienst* für die Geräteplattform. Apple Push Notification Service (APNs) für iOS und macOS und Firebase Cloud Messaging (FCM) für Android-Geräte sind zwei Beispiele für einen solchen Dienst. Notification Hubs übermittelt die Benachrichtigungen aufgeteilt auf mehrere Registrierungsbatches. Die Authentifizierung erfolgt beim jeweiligen Pushbenachrichtigungsdienst mit den Anmeldeinformationen, die Sie im Azure-Portal unter **Notification Hub konfigurieren** festgelegt haben. Danach leitet der Pushbenachrichtigungsdienst die Benachrichtigungen an die entsprechenden *Clientgeräte* weiter.
 
 Der letzte Abschnitt einer Benachrichtigungsübermittlung liegt zwischen dem Pushbenachrichtigungsdienst der Plattform und dem Gerät. Die Benachrichtigungsübermittlung kann in jeder der vier Phasen im Pushbenachrichtigungsprozess (Client, Anwendungs-Back-End, Notification Hubs und Pushbenachrichtigungsdienst der Plattform) fehlschlagen. Weitere Informationen zur Architektur von Notification Hubs finden Sie in der Übersicht über [Übersicht über Notification Hubs].
 
@@ -41,7 +42,7 @@ Fehler bei der Übermittlung von Benachrichtigungen können während der anfäng
 
 Der nächste Abschnitt beschreibt Szenarien, in denen Benachrichtigungen verworfen werden können. Zunächst werden häufiger anzutreffende Szenarien beschrieben, danach seltenere.
 
-## <a name="notification-hubs-misconfiguration"></a>Fehlkonfiguration von Notification Hubs ##
+## <a name="notification-hubs-misconfiguration"></a>Fehlkonfiguration von Notification Hubs
 
 Notification Hubs muss sich im Kontext Ihrer Anwendung authentifizieren, um Benachrichtigungen an den jeweiligen Pushbenachrichtigungsdienst senden zu können. Sie müssen ein Entwicklerkonto für den Benachrichtigungsdienst der Zielplattform (Microsoft, Apple, Google usw.) erstellen. Anschließend müssen Sie Ihre Anwendung beim Betriebssystem registrieren, von dem Sie ein Token oder einen Schlüssel für die Kommunikation mit dem Ziel-Pushbenachrichtigungsdienst erhalten.
 
@@ -54,19 +55,20 @@ Dies sind einige häufige Konfigurationsfehler, nach denen Sie suchen können:
 ### <a name="notification-hub-name-location"></a>Adresse des Notification Hub-Namens
 
 Stellen Sie sicher, dass der Name des Notification Hubs (ohne Tippfehler) an folgenden Stellen identisch ist:
-   * Bei der Registrierung vom Client aus
-   * Beim Senden von Benachrichtigungen aus dem Back-End
-   * Beim Konfigurieren der Anmeldeinformationen für den Pushbenachrichtigungsdienst
+
+* Bei der Registrierung vom Client aus
+* Beim Senden von Benachrichtigungen aus dem Back-End
+* Beim Konfigurieren der Anmeldeinformationen für den Pushbenachrichtigungsdienst
 
 Stellen Sie sicher, dass Sie auf dem Client und im Anwendungs-Back-End die richtigen Konfigurationszeichenfolgen für die Signatur des gemeinsamen Zugriffs verwenden. Allgemein gilt: Sie müssen auf dem Client **DefaultListenSharedAccessSignature** und **DefaultFullSharedAccessSignature** im Anwendungs-Back-End verwenden. Dadurch wird die Berechtigung erteilt, Benachrichtigungen an Notification Hubs zu senden.
 
-### <a name="apn-configuration"></a>APN-Konfiguration ###
+### <a name="apn-configuration"></a>APN-Konfiguration
 
 Sie müssen zwei unterschiedliche Hubs verwalten – einen für die Produktion und einen anderen für Testzwecke. Sie müssen das Zertifikat, das Sie in einer Sandboxumgebung verwenden, auf einen anderen Hub hochladen als das Zertifikat bzw. den Hub für die Produktionsumgebung. Versuchen Sie nicht, verschiedene Arten von Zertifikaten auf den gleichen Hub hochzuladen. Dies kann Benachrichtigungsfehler bewirken.
 
 Wenn Sie versehentlich unterschiedliche Arten von Zertifikaten auf den gleichen Hub hochgeladen haben, sollten Sie den Hub löschen und mit einem neuen Hub von vorn beginnen. Wenn Sie den Hub aus irgendeinem Grund nicht löschen können, müssen Sie zumindest alle vorhandenen Registrierungen aus dem Hub löschen.
 
-### <a name="fcm-configuration"></a>FCM-Konfiguration ###
+### <a name="fcm-configuration"></a>FCM-Konfiguration
 
 1. Stellen Sie sicher, dass der *Serverschlüssel*, den Sie von Firebase erhalten haben, mit dem Serverschlüssel übereinstimmt, den Sie im Azure-Portal registriert haben.
 
@@ -76,9 +78,9 @@ Wenn Sie versehentlich unterschiedliche Arten von Zertifikaten auf den gleichen 
 
    ![Firebase-Projekt-ID][1]
 
-## <a name="application-issues"></a>Anwendungsprobleme ##
+## <a name="application-issues"></a>Anwendungsprobleme
 
-### <a name="tags-and-tag-expressions"></a>Tags und Tagausdrücke ###
+### <a name="tags-and-tag-expressions"></a>Tags und Tagausdrücke
 
 Wenn Sie Tags oder Tagausdrücke verwenden, um Ihre Zielgruppe zu segmentieren, wird möglicherweise beim Senden einer Benachrichtigung kein Ziel gefunden. Dieser Fehler ist auf die im Sendeaufruf angegebenen Tags oder Tagausdrücke zurückzuführen.
 
@@ -86,11 +88,11 @@ Wenn Sie Tags oder Tagausdrücke verwenden, um Ihre Zielgruppe zu segmentieren, 
 
 Angenommen, alle Ihre Registrierungen bei Notification Hubs verwenden das Tag „Politik“. Wenn Sie eine Benachrichtigung mit dem Tag „Sport“ senden, wird diese an kein Gerät gesendet. Ein komplexer Fall könnte Tagausdrücke umfassen, die Sie für „Tag A“ *oder* „Tag B“ registriert haben, beim Senden von Benachrichtigungen wird aber „Tag A && Tag B“ verwendet. Im Abschnitt mit Tipps für die Selbstdiagnose (siehe unten) wird erläutert, wie Sie Ihre Registrierungen und die zugehörigen Tags überprüfen.
 
-### <a name="template-issues"></a>Vorlagenprobleme ###
+### <a name="template-issues"></a>Vorlagenprobleme
 
 Wenn Sie Vorlagen verwenden, stellen Sie sicher, dass Sie die unter [Vorlagen] beschriebenen Richtlinien befolgen.
 
-### <a name="invalid-registrations"></a>Ungültige Registrierungen ###
+### <a name="invalid-registrations"></a>Ungültige Registrierungen
 
 Wenn der Notification Hub ordnungsgemäß konfiguriert wurde und Tags bzw. Tagausdrücke richtig verwendet werden, werden gültige Ziele gefunden. Benachrichtigungen sollten an diese Ziele gesendet werden. Notification Hubs sendet mehrere Verarbeitungsbatches parallel. Jeder Batch sendet Nachrichten an eine Reihe von Registrierungen.
 
@@ -103,7 +105,7 @@ Jeder Batch wird an den Pushbenachrichtigungsdienst gesendet, der wiederum die R
 
 In diesem Fall wird die Registrierung, die den Fehler verursacht, aus der Datenbank entfernt. Dann wird erneut versucht, die Benachrichtigungen für den Rest der Geräte in diesem Batch zu übermitteln.
 
-Um weitere Informationen zum Übermittlungsfehler bei einer Registrierung zu erhalten, können Sie diese Notification Hubs-REST-APIs verwenden: [Per Message Telemetry: Get Notification Message Telemetry](https://msdn.microsoft.com/library/azure/mt608135.aspx) (Nachrichtenbasierte Telemetrie: Abrufen der Telemetrie für Benachrichtigungsmeldungen) und [PNS-Feedback](https://msdn.microsoft.com/library/azure/mt705560.aspx). Beispielcode finden Sie im [Beispiel für „Send REST“](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
+Um weitere Informationen zum Übermittlungsfehler bei einer Registrierung zu erhalten, können Sie diese Notification Hubs-REST-APIs verwenden: [Per Message Telemetry: Get Notification Message Telemetry](/rest/api/notificationhubs/get-notification-message-telemetry) (Nachrichtenbasierte Telemetrie: Abrufen der Telemetrie für Benachrichtigungsmeldungen) und [PNS-Feedback](/previous-versions/azure/reference/mt705560(v=azure.100)). Beispielcode finden Sie im [Beispiel für „Send REST“](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
 
 ## <a name="push-notification-service-issues"></a>Probleme mit dem Pushbenachrichtigungsdienst
 
@@ -121,13 +123,13 @@ Bei Notification Hubs können Sie einen zusammenfügenden Schlüssel mit der gen
 
 Hier finden Sie Möglichkeiten, die Ursache von verworfenen Benachrichtigungen in Notification Hubs zu diagnostizieren.
 
-### <a name="verify-credentials"></a>Überprüfen von Anmeldeinformationen ###
+### <a name="verify-credentials"></a>Überprüfen von Anmeldeinformationen
 
-#### <a name="push-notification-service-developer-portal"></a>Entwicklerportal für den Pushbenachrichtigungsdienst ####
+#### <a name="push-notification-service-developer-portal"></a>Entwicklerportal für den Pushbenachrichtigungsdienst
 
-Überprüfen Sie die Anmeldeinformationen im Entwicklerportal des jeweiligen Pushbenachrichtigungsdiensts (APNs, FCM, Windows-Benachrichtigungsdienst usw.). Weitere Informationen finden Sie unter [Tutorial: Senden von Benachrichtigungen an Apps für die universelle Windows-Plattform mit Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification) erstellt haben.
+Überprüfen Sie die Anmeldeinformationen im Entwicklerportal des jeweiligen Pushbenachrichtigungsdiensts (APNs, FCM, Windows-Benachrichtigungsdienst usw.). Weitere Informationen finden Sie im [Tutorial: Senden von Benachrichtigungen an Apps für die universelle Windows-Plattform mit Azure Notification Hubs](./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) erstellt haben.
 
-#### <a name="azure-portal"></a>Azure-Portal ####
+#### <a name="azure-portal"></a>Azure-Portal
 
 Um die Anmeldeinformationen zu überprüfen und mit denjenigen abzugleichen, die Sie aus dem Entwicklerportal für den Pushbenachrichtigungsdienst erhalten haben, wechseln Sie im Azure-Portal zur Registerkarte **Zugriffsrichtlinien**.
 
@@ -135,46 +137,48 @@ Um die Anmeldeinformationen zu überprüfen und mit denjenigen abzugleichen, die
 
 ### <a name="verify-registrations"></a>Überprüfen von Registrierungen
 
-#### <a name="visual-studio"></a>Visual Studio ####
+#### <a name="visual-studio"></a>Visual Studio
 
 In Visual Studio können Sie über den Server-Explorer eine Verbindung mit Azure herstellen, um verschiedene Azure-Dienste anzuzeigen und zu verwalten, einschließlich Notification Hubs. Dies ist in erster Linie für Ihre Test-/Entwicklungsumgebung nützlich.
 
 ![Server-Explorer von Visual Studio][9]
 
+![Server-Explorer](media/notification-hubs-push-notification-fixer/vsserverexplorer2.png)
+
 Sie können alle Registrierungen im Hub anzeigen und verwalten. Die Registrierungen können nach Plattform, nativer oder Vorlagenregistrierung, Tags, Bezeichner des Pushbenachrichtigungsdiensts, Registrierungs-ID und Ablaufdatum kategorisiert werden. Auf dieser Seite können Sie Registrierungen auch bearbeiten. Dies ist besonders nützlich zur Bearbeitung von Tags.
 
 Klicken Sie im **Server-Explorer** auf Ihren Notification Hub, und wählen Sie **Diagnose** aus. 
 
-![Server-Explorer von Visual Studio: Menü „Diagnose“](./media/notification-hubs-diagnosing/diagnose-menu.png)
+![Server-Explorer von Visual Studio: Menü „Diagnose“](./media/notification-hubs-push-notification-fixer/diagnose-menu.png)
 
 Die folgende Seite wird angezeigt:
 
-![Visual Studio: Seite „Diagnose“](./media/notification-hubs-diagnosing/diagnose-page.png)
+![Visual Studio: Seite „Diagnose“](./media/notification-hubs-push-notification-fixer/diagnose-page.png)
 
 Wechseln Sie zur Seite **Geräteregistrierungen**:
 
-![Visual Studio: Geräteregistrierungen](./media/notification-hubs-diagnosing/VSRegistrations.png)
+![Visual Studio: Geräteregistrierungen](./media/notification-hubs-push-notification-fixer/VSRegistrations.png)
 
 Auf der Seite **Testsendevorgang** können Sie eine Testnachricht senden:
 
-![Visual Studio: Testsendung](./media/notification-hubs-diagnosing/test-send-vs.png)
+![Visual Studio: Testsendung](./media/notification-hubs-push-notification-fixer/test-send-vs.png)
 
 > [!NOTE]
-> Verwenden Sie Visual Studio, um während der Test-/Entwicklungsphase einige wenige Registrierungen zu bearbeiten. Wenn Sie Ihre Registrierungen per Massenvorgang bearbeiten müssen, bietet es sich an, die Funktion zum Exportieren/Importieren von Registrierungen zu verwenden, die unter [ Exportieren und Ändern von Registrierungen in einem Massenvorgang](https://msdn.microsoft.com/library/dn790624.aspx) beschrieben wird.
+> Verwenden Sie Visual Studio, um während der Test-/Entwicklungsphase einige wenige Registrierungen zu bearbeiten. Wenn Sie Ihre Registrierungen per Massenvorgang bearbeiten müssen, bietet es sich an, die Funktion zum Exportieren/Importieren von Registrierungen zu verwenden, die unter [ Exportieren und Ändern von Registrierungen in einem Massenvorgang](/previous-versions/azure/azure-services/dn790624(v=azure.100)) beschrieben wird.
 
-#### <a name="service-bus-explorer"></a>Service Bus-Explorer ####
+#### <a name="service-bus-explorer"></a>Service Bus-Explorer
 
 Viele Kunden verwenden [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer), um ihre Notification Hubs anzuzeigen und zu verwalten. Service Bus-Explorer ist ein Open Source-Projekt. 
 
 ### <a name="verify-message-notifications"></a>Überprüfen von Benachrichtigungen
 
-#### <a name="azure-portal"></a>Azure-Portal ####
+#### <a name="azure-portal"></a>Azure-Portal
 
 Um eine Testbenachrichtigung an Ihre Clients zu senden, ohne ein Dienst-Back-End einrichten und ausführen zu müssen, wählen Sie unter **SUPPORT UND PROBLEMBEHANDLUNG** die Option **Testsendevorgang** aus.
 
 ![Funktion für Testsendevorgang in Azure][7]
 
-#### <a name="visual-studio"></a>Visual Studio ####
+#### <a name="visual-studio"></a>Visual Studio
 
 Sie können Testbenachrichtigungen auch aus Visual Studio senden.
 
@@ -182,13 +186,13 @@ Sie können Testbenachrichtigungen auch aus Visual Studio senden.
 
 Weitere Informationen zur Verwendung von Notification Hubs mit Visual Studio-Server-Explorer finden Sie in diesen Artikeln:
 
-* [Anzeigen von Geräteregistrierungen für Notification Hubs](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
+* [Anzeigen von Geräteregistrierungen für Notification Hubs](/previous-versions/windows/apps/dn792122(v=win.10))
 * [Ausführliche Betrachtung: Visual Studio 2013 Update 2 RC und Azure SDK 2.3]
 * [Announcing release of Visual Studio 2013 Update 3 and Azure SDK 2.4] (Ankündigung der Releases Visual Studio 2013 Update 3 und Azure SDK 2.4)
 
 ### <a name="debug-failed-notifications-and-review-notification-outcome"></a>Debuggen von Benachrichtigungsfehlern und Überprüfen von Benachrichtigungsergebnissen
 
-#### <a name="enabletestsend-property"></a>EnableTestSend-Eigenschaft ####
+#### <a name="enabletestsend-property"></a>EnableTestSend-Eigenschaft
 
 Wenn Sie eine Benachrichtigung über Notification Hubs senden, wird die Benachrichtigung zunächst in die Warteschlange eingereiht. Notification Hubs bestimmt die richtigen Ziele und sendet die Benachrichtigung dann an den Pushbenachrichtigungsdienst. Wenn Sie die REST-API oder eines der Client-SDKs verwenden, bedeutet die Rückgabe des Sendeaufrufs nur, dass die Nachricht in die Warteschlange von Notification Hubs eingereiht wurde. Sie erfahren nicht, was geschieht, wenn Notification Hubs die Nachricht schließlich an den Pushbenachrichtigungsdienst sendet.
 
@@ -202,7 +206,7 @@ Um die `EnableTestSend`-Eigenschaft mit dem REST-Aufruf zu verwenden, fügen Sie
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
 ```
 
-#### <a name="net-sdk-example"></a>Beispiel für .NET SDK ####
+#### <a name="net-sdk-example"></a>Beispiel für .NET SDK
 
 Im Folgenden finden Sie ein Beispiel für die Verwendung des .NET SDK zum Senden einer nativen Popupbenachrichtigung:
 
@@ -229,7 +233,7 @@ Anschließend können Sie die boolesche `EnableTestSend`-Eigenschaft verwenden. 
     }
 ```
 
-#### <a name="sample-output"></a>Beispielausgabe ####
+#### <a name="sample-output"></a>Beispielausgabe
 
 ```text
 DetailedStateAvailable
@@ -243,9 +247,9 @@ Diese Nachricht weist darauf hin, dass entweder in Notification Hubs ungültige 
 > [!NOTE]
 > Die Verwendung der `EnableTestSend`-Eigenschaft ist stark eingeschränkt. Verwenden Sie diese Option nur in einer Entwicklungs-/Testumgebung und nur mit einer begrenzten Anzahl von Registrierungen. Debugbenachrichtigungen werden nur an 10 Geräte gesendet. Zudem ist die Anzahl von Sendevorgängen für Debugbenachrichtigungen auf 10 pro Minute begrenzt.
 
-### <a name="review-telemetry"></a>Überprüfen der Telemetrie ###
+### <a name="review-telemetry"></a>Überprüfen der Telemetrie
 
-#### <a name="azure-portal"></a>Azure-Portal ####
+#### <a name="azure-portal"></a>Azure-Portal
 
 Das Portal bietet Ihnen einen schnellen Überblick über alle Aktivitäten in Ihrem Notification Hub.
 
@@ -261,9 +265,9 @@ Das Portal bietet Ihnen einen schnellen Überblick über alle Aktivitäten in Ih
 
 4. Wenn die Authentifizierungseinstellungen für Ihren Notification Hub falsch sind, wird die Nachricht **PNS-Authentifizierungsfehler** angezeigt. Dies ist ein Hinweis darauf, dass Sie die Anmeldeinformationen für den Pushbenachrichtigungsdienst überprüfen sollten.
 
-#### <a name="programmatic-access"></a>Programmgesteuerter Zugriff ####
+#### <a name="programmatic-access"></a>Programmgesteuerter Zugriff
 
-Weitere Informationen zum programmgesteuerten Zugriff finden Sie unter [Programmgesteuerter Zugriff](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
+Weitere Informationen zum programmgesteuerten Zugriff finden Sie unter [Programmgesteuerter Zugriff](/previous-versions/azure/azure-services/dn458823(v=azure.100)).
 
 > [!NOTE]
 > Verschiedene telemetriebezogene Features wie z.B. der Export und Import von Registrierungen und der Telemetriezugriff über APIs sind nur auf der Dienstebene „Standard“ verfügbar. Wenn Sie versuchen, diese Funktionen auf der Dienstebene „Free“ oder „Basic“ zu nutzen, wird bei Verwenden des SDK eine Ausnahmemeldung ausgegeben. Ein Fehler des Typs „HTTP 403 (Verboten)“ wird ausgegeben, wenn Sie die Funktionen direkt aus den REST-APIs aufrufen.
@@ -271,27 +275,27 @@ Weitere Informationen zum programmgesteuerten Zugriff finden Sie unter [Programm
 > Um telemetriebezogene Features zu verwenden, stellen Sie zunächst im Azure-Portal sicher, dass Sie die Dienstebene „Standard“ verwenden.  
 
 <!-- IMAGES -->
-[0]: ./media/notification-hubs-diagnosing/Architecture.png
-[1]: ./media/notification-hubs-diagnosing/FCMConfigure.png
-[3]: ./media/notification-hubs-diagnosing/FCMServerKey.png
+[0]: ./media/notification-hubs-push-notification-fixer/Architecture.png
+[1]: ./media/notification-hubs-push-notification-fixer/FCMConfigure.png
+[3]: ./media/notification-hubs-push-notification-fixer/FCMServerKey.png
 [4]: ../../includes/media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png
-[5]: ./media/notification-hubs-diagnosing/PortalDashboard.png
-[6]: ./media/notification-hubs-diagnosing/PortalAnalytics.png
+[5]: ./media/notification-hubs-push-notification-fixer/PortalDashboard.png
+[6]: ./media/notification-hubs-push-notification-fixer/PortalAnalytics.png
 [7]: ./media/notification-hubs-ios-get-started/notification-hubs-test-send.png
-[8]: ./media/notification-hubs-diagnosing/VSRegistrations.png
-[9]: ./media/notification-hubs-diagnosing/VSServerExplorer.png
-[10]: ./media/notification-hubs-diagnosing/VSTestNotification.png
+[8]: ./media/notification-hubs-push-notification-fixer/VSRegistrations.png
+[9]: ./media/notification-hubs-push-notification-fixer/vsserverexplorer.png
+[10]: ./media/notification-hubs-push-notification-fixer/VSTestNotification.png
 
 <!-- LINKS -->
 [Übersicht über Notification Hubs]: notification-hubs-push-notification-overview.md
 [Erste Schritte mit Azure Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Vorlagen]: https://msdn.microsoft.com/library/dn530748.aspx
+[Vorlagen]: /previous-versions/azure/azure-services/dn530748(v=azure.100)
 [APNs overview]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html (Übersicht über APNs)
 [About FCM messages]: https://firebase.google.com/docs/cloud-messaging/concept-options (Informationen zu FCM-Nachrichten)
-[Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
+[Export and modify registrations in bulk]: /previous-versions/azure/azure-services/dn790624(v=azure.100)
 [Service Bus Explorer code]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
-[View device registrations for notification hubs]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
+[View device registrations for notification hubs]: /previous-versions/windows/apps/dn792122(v=win.10)
 [Ausführliche Betrachtung: Visual Studio 2013 Update 2 RC und Azure SDK 2.3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
 [Announcing release of Visual Studio 2013 Update 3 and Azure SDK 2.4]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/ (Ankündigung der Releases Visual Studio 2013 Update 3 und Azure SDK 2.4)
-[EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
-[Programmatic telemetry access]: https://msdn.microsoft.com/library/azure/dn458823.aspx
+[EnableTestSend]: /dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
+[Programmatic telemetry access]: /previous-versions/azure/azure-services/dn458823(v=azure.100)

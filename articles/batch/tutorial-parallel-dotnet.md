@@ -1,22 +1,16 @@
 ---
-title: Ausführen einer parallelen Workload – Azure Batch .NET
+title: Tutorial – Ausführen einer parallelen Workload mithilfe der .NET-API
 description: 'Tutorial: Paralleles Transcodieren von Mediendateien mit ffmpeg in Azure Batch per .NET-Clientbibliothek in Batch'
-services: batch
-author: laurenhughes
-manager: gwallace
-ms.assetid: ''
-ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 12/21/2018
-ms.author: lahugh
-ms.custom: mvc
-ms.openlocfilehash: 103d09da3fedf9c31d4e5255456e63cab34bc0ee
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.date: 09/29/2020
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: a990a5480a8a6462bb6ef9f84070b78768628fd0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258595"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106528"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Tutorial: Ausführen einer parallelen Workload mit Azure Batch über die .NET-API
 
@@ -41,7 +35,7 @@ In diesem Tutorial konvertieren Sie MP4-Mediendateien parallel in das MP3-Format
 
 * Ein Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md).
 
-* [Windows-Version (64 Bit) von ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Laden Sie die ZIP-Datei auf Ihren lokalen Computer herunter. Für dieses Tutorial benötigen Sie nur die ZIP-Datei. Es ist nicht erforderlich, die Datei zu entzippen oder sie lokal zu installieren.
+* [Windows-Version (64 Bit) von ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08) (.zip). Laden Sie die ZIP-Datei auf Ihren lokalen Computer herunter. Für dieses Tutorial benötigen Sie nur die ZIP-Datei. Es ist nicht erforderlich, die Datei zu entzippen oder sie lokal zu installieren.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -53,7 +47,7 @@ Verwenden Sie das Azure-Portal, um ffmpeg Ihrem Batch-Konto als [Anwendungspaket
 
 1. Klicken Sie im Azure-Portal auf **Weitere Dienste** > **Batch-Konten** und dann auf den Namen Ihres Batch-Kontos.
 3. Klicken Sie auf **Anwendungen** > **Hinzufügen**.
-4. Geben Sie für **Anwendungs-ID** das Tool *ffmpeg* und als Paketversion *3.4* ein. Wählen Sie die ffmpeg-ZIP-Datei aus, die Sie heruntergeladen haben, und klicken Sie auf **OK**. Das ffmpeg-Anwendungspaket wird Ihrem Batch-Konto hinzugefügt.
+4. Geben Sie für **Anwendungs-ID** das Tool *ffmpeg* und als Paketversion *4.3.1* ein. Wählen Sie die ffmpeg-ZIP-Datei aus, die Sie heruntergeladen haben, und klicken Sie auf **OK**. Das ffmpeg-Anwendungspaket wird Ihrem Batch-Konto hinzugefügt.
 
 ![Hinzufügen eines Anwendungspakets](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -90,7 +84,7 @@ Stellen Sie außerdem sicher, dass der Verweis auf das ffmpeg-Anwendungspaket in
 
 ```csharp
 const string appPackageId = "ffmpeg";
-const string appPackageVersion = "3.4";
+const string appPackageVersion = "4.3.1";
 ```
 
 ### <a name="build-and-run-the-sample-project"></a>Erstellen und Ausführen des Beispielprojekts
@@ -164,7 +158,7 @@ using (BatchClient batchClient = BatchClient.Open(sharedKeyCredentials))
 
 ### <a name="upload-input-files"></a>Hochladen von Eingabedateien
 
-Die App übergibt das `blobClient`-Objekt an die `CreateContainerIfNotExistAsync`-Methode, um einen Speichercontainer für die Eingabedateien (MP4-Format) und einen Container für die Aufgabeausgabe zu erstellen.
+Die App übergibt das `blobClient`-Objekt an die `CreateContainerIfNotExistAsync`-Methode, um einen Speichercontainer für die Eingabedateien (MP4-Format) und einen Container für die Aufgabenausgabe zu erstellen.
 
 ```csharp
 CreateContainerIfNotExistAsync(blobClient, inputContainerName);
@@ -197,6 +191,9 @@ Weitere Informationen zum Hochladen von Dateien als Blobs in ein Speicherkonto m
 Als Nächstes erstellt das Beispiel im Batch-Konto durch Aufrufen von `CreatePoolIfNotExistAsync` einen Pool mit Computeknoten. In dieser definierten Methode wird die [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool)-Methode verwendet, um die Anzahl von Knoten, die VM-Größe und eine Poolkonfiguration festzulegen. Hier gibt ein [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration)-Objekt einen [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference)-Verweis auf ein Windows Server-Image an, das im Azure Marketplace veröffentlicht wurde. Batch unterstützt viele verschiedene VM-Images im Azure Marketplace und auch benutzerdefinierte VM-Images.
 
 Die Anzahl von Knoten und die VM-Größe werden mit definierten Konstanten festgelegt. Batch unterstützt dedizierte Knoten und [Knoten mit niedriger Priorität](batch-low-pri-vms.md), und Sie können eine oder beide Arten von Knoten in Ihren Pools verwenden. Dedizierte Knoten sind für Ihren Pool reserviert. Knoten mit niedriger Priorität werden zu einem reduzierten Preis basierend auf überschüssiger VM-Kapazität in Azure angeboten. Knoten mit niedriger Priorität sind nicht mehr verfügbar, wenn in Azure nicht genügend Kapazität vorhanden ist. Im Beispiel wird standardmäßig ein Pool mit nur fünf Knoten mit niedriger Priorität und der Größe *Standard_A1_v2* erstellt.
+
+>[!Note]
+>Überprüfen Sie Ihre Knotenkontingente. Eine Anleitung zum Erstellen einer Kontingentanforderung finden Sie unter [Batch-Dienst – Kontingente und Limits](batch-quota-limit.md#increase-a-quota).
 
 Die Anwendung ffmpeg wird auf den Computeknoten bereitgestellt, indem der Poolkonfiguration ein [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference)-Element hinzugefügt wird.
 
@@ -266,7 +263,7 @@ for (int i = 0; i < inputFiles.Count; i++)
     string outputMediaFile = String.Format("{0}{1}",
         System.IO.Path.GetFileNameWithoutExtension(inputMediaFile),
         ".mp3");
-    string taskCommandLine = String.Format("cmd /c {0}\\ffmpeg-3.4-win64-static\\bin\\ffmpeg.exe -i {1} {2}", appPath, inputMediaFile, outputMediaFile);
+    string taskCommandLine = String.Format("cmd /c {0}\\ffmpeg-4.3.1-2020-09-21-full_build\\bin\\ffmpeg.exe -i {1} {2}", appPath, inputMediaFile, outputMediaFile);
 
     // Create a cloud task (with the task ID and command line)
     CloudTask task = new CloudTask(taskId, taskCommandLine);
@@ -320,7 +317,7 @@ Löschen Sie die Ressourcengruppe, das Batch-Konto und das Speicherkonto, wenn d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
+In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Hinzufügen eines Anwendungspakets zu Ihrem Batch-Konto

@@ -1,32 +1,34 @@
 ---
-title: Erstellen von Filtern mit der Azure Media Services-REST-API | Microsoft Docs
-description: In diesem Thema wird erläutert, wie Sie Filter erstellen, mit denen Ihre Kunden bestimmte Abschnitte eines Streams streamen können. Media Services erstellt dynamische Manifeste, um dieses selektive Streaming zu erreichen.
+title: Erstellen von Filtern mit der Azure Media Services v3 REST-API
+description: In diesem Thema wird erläutert, wie Sie Filter erstellen, mit denen Ihre Kunden bestimmte Abschnitte eines Streams streamen können. Die Media Services v3-REST-API erstellt dynamische Manifeste, um dieses selektive Streaming zu erreichen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.openlocfilehash: 76e6e1595cb8bf49dbbc82c3cae5de80ea718aeb
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: c1d7bf933b487c40d571f1912341b5ef771e4e67
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786454"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90527325"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Erstellen von Filtern mit der Media Services-REST-API
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 Bei der Inhaltsbereitstellung für Ihre Kunden (Streaming von Liveereignissen oder Video on Demand) benötigen Ihre Kunden möglicherweise mehr Flexibilität als in der Manifestdatei für das Standardmedienobjekt beschrieben. Azure Media Services ermöglicht es Ihnen, Kontofilter und Medienobjektfilter für Ihre Inhalte zu definieren. 
 
-Eine ausführliche Beschreibung dieser Funktion und der Szenarien, in denen sie verwendet wird, finden Sie unter [Dynamische Manifeste](filters-dynamic-manifest-overview.md) und [Filter](filters-concept.md).
+Eine ausführliche Beschreibung dieses Features und der Szenarien, in denen es verwendet wird, finden Sie unter [Dynamische Manifeste](filters-dynamic-manifest-overview.md) und [Filter](filters-concept.md).
 
-In diesem Thema wird beschrieben, wie Sie einen Filter für ein Video on Demand-Medienobjekt definieren und mithilfe von REST-APIs [Kontofilter](https://docs.microsoft.com/rest/api/media/accountfilters) und [Medienobjektfilter](https://docs.microsoft.com/rest/api/media/assetfilters) erstellen. 
+In diesem Thema wird beschrieben, wie Sie einen Filter für ein Video on Demand-Medienobjekt definieren und mithilfe von REST-APIs [Kontofilter](/rest/api/media/accountfilters) und [Medienobjektfilter](/rest/api/media/assetfilters) erstellen. 
 
 > [!NOTE]
 > Lesen Sie die Informationen zu [presentationTimeRange](filters-concept.md#presentationtimerange).
@@ -97,7 +99,7 @@ Wählen Sie **Senden** aus.
 
 Der Filter wurde erstellt.
 
-Weitere Informationen finden Sie unter [Account Filters – Create Or Update](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate) (Erstellen oder Aktualisieren von Kontofiltern). Siehe auch [JSON-Beispiele für Filter](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
+Weitere Informationen finden Sie unter [Account Filters – Create Or Update](/rest/api/media/accountfilters/createorupdate) (Erstellen oder Aktualisieren von Kontofiltern). Siehe auch [JSON-Beispiele für Filter](/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
 ## <a name="create-asset-filters"></a>Erstellen von Medienobjektfiltern  
 
@@ -115,13 +117,13 @@ Wählen Sie **Senden** aus.
 
 Der Medienobjektfilter wurde erstellt.
 
-Ausführliche Informationen zum Erstellen oder Aktualisieren von Medienobjektfiltern finden Sie unter [Erstellen und Aktualisieren](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate). Siehe auch [JSON-Beispiele für Filter](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
+Ausführliche Informationen zum Erstellen oder Aktualisieren von Medienobjektfiltern finden Sie unter [Erstellen und Aktualisieren](/rest/api/media/assetfilters/createorupdate). Siehe auch [JSON-Beispiele für Filter](/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
 
 ## <a name="associate-filters-with-streaming-locator"></a>Zuordnen von Filtern mit Streaminglocator
 
 Sie können eine Liste von Medienobjekt- oder Kontenfiltern angeben, die für Ihren Streaminglocator gelten würden. Der [dynamische Paketerstellungs-Manager (Streamingendpunkt)](dynamic-packaging-overview.md) wendet diese Liste der Filter zusammen mit den Filtern an, die Ihr Client in der URL angibt. Diese Kombination generiert ein [dynamisches Manifest](filters-dynamic-manifest-overview.md), das auf Filtern in den URL und Filtern basiert, die Sie im Streaminglocator angeben. Es wird empfohlen, dieses Feature zu verwenden, wenn Sie Filter anwenden, aber nicht die Filternamen in der URL verfügbar machen möchten.
 
-Um Filter mit einem Streaminglocator mit REST zu erstellen und zuzuordnen, verwenden Sie die API [Streaminglocators – Erstellen](https://docs.microsoft.com/rest/api/media/streaminglocators/create) und geben Sie `properties.filters` im [Anforderungstext](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body) an.
+Um Filter mit einem Streaminglocator mit REST zu erstellen und zuzuordnen, verwenden Sie die API [Streaminglocators – Erstellen](/rest/api/media/streaminglocators/create) und geben Sie `properties.filters` im [Anforderungstext](/rest/api/media/streaminglocators/create#request-body) an.
                                 
 ## <a name="stream-using-filters"></a>Streamen unter Verwendung von Filtern
 

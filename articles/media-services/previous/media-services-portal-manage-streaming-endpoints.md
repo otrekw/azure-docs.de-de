@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Streamingendpunkten mithilfe des Azure-Portals | Microsoft Docs
-description: Diese Thema zeigt, wie Sie Streamingendpunkte mithilfe des Azure-Portals verwalten.
+description: In diesem Artikel erfahren Sie, wie Sie Streamingendpunkte mithilfe des Azure-Portals verwalten.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1775bbb2913f6b1a985ca7ec9e89bafed42fd0e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 496c5de8f9ead0773dfef7e65051344645ffa9de
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61129710"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041973"
 ---
-# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Verwalten von Streamingendpunkten mithilfe des Azure-Portals 
+# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Verwalten von Streamingendpunkten mithilfe des Azure-Portals
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 In diesem Artikel wird erläutert, wie Streamingendpunkte über das Azure-Portal verwaltet werden. 
 
@@ -38,7 +40,7 @@ Gehen Sie wie folgt vor, um mit dem Verwalten von Streamingendpunkten für Ihr K
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Azure Media Services-Konto aus.
 2. Klicken Sie auf dem Blatt **Einstellungen** auf **Streamingendpunkte**.
    
-    ![Streamingendpunkt](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
+    ![Screenshot der Seite „Media Services“ mit ausgewählter Option „Streamingendpunkte“ auf dem Blatt „Einstellungen“](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
 > [!NOTE]
 > Abgerechnet werden nur ausgeführte Streamingendpunkte.
@@ -57,17 +59,17 @@ Führen Sie folgende Schritte aus, um einen Streamingendpunkt mithilfe des Azure
 2. Um einen Streamingendpunkt zu löschen, klicken Sie auf die Schaltfläche **Löschen** .      
 3. Klicken Sie auf die Schaltfläche **Starten** , um den Streamingendpunkt zu starten.
    
-    ![Streamingendpunkt](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
+    ![Screenshot der ausgewählten Aktion „Endpunkt“ und des Bereichs „Streamingendpunktdetails“](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
-## <a id="configure_streaming_endpoints"></a>Konfigurieren des Streamingendpunkts
+## <a name="configuring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>Konfigurieren des Streamingendpunkts
 Mit einem Streamingendpunkt können Sie die folgenden Eigenschaften konfigurieren:
 
 * Zugriffssteuerung
 * Cachesteuerung
 * Websiteübergreifende Zugriffsrichtlinien
 
-Ausführliche Informationen zu diesen Eigenschaften finden Sie unter [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+Ausführliche Informationen zu diesen Eigenschaften finden Sie unter [StreamingEndpoint](/rest/api/media/operations/streamingendpoint).
 
 >[!NOTE]
 >Bei aktiviertem CDN ist kein IP-Zugriff möglich. Der IP-Zugriff ist nur anwendbar, wenn kein CDN vorhanden ist.
@@ -79,7 +81,7 @@ Sie können den Streamingendpunkt wie folgt konfigurieren:
 
 Eine kurze Beschreibung der Felder folgt.
 
-![Streamingendpunkt](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
+![Screenshot der ausgewählten Aktion „Einstellungen“ für den Streamingendpunkt](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
 
 1. Maximale Cacherichtlinie: Dient zum Konfigurieren der Cachelebensdauer von Medienobjekten, die über diesen Streamingendpunkt bereitgestellt werden. Wenn kein Wert festgelegt ist, wird der Standardwert verwendet. Die Standardwerte können auch direkt im Azure-Speicher definiert werden. Wenn Azure CDN für den Streamingendpunkt aktiviert ist, darf die Cacherichtlinie nicht auf einen Wert unter 600 Sekunden festgelegt werden.  
 2. Zulässige IP-Adressen: Dient zum Angeben von IP-Adressen, die sich mit dem veröffentlichten Streamingendpunkt verbinden dürfen. Falls keine IP-Adressen angegeben sind, dürfen sich alle IP-Adressen verbinden. IP-Adressen können als einzelne IP-Adresse (z.B. 10.0.0.1), IP-Adressbereiche mit einer IP-Adresse und einer CIDR-Subnetzmaske (z.B. 10.0.0.1/22) oder IP-Adressbereiche mit einer IP-Adresse und einer Subnetzmaske in Punkt-Dezimalschreibweise (z.B. 10.0.0.1(255.255.255.0)) angegeben werden.
@@ -89,20 +91,20 @@ Eine kurze Beschreibung der Felder folgt.
 
 Weitere Informationen dazu finden Sie in [diesem Artikel](media-services-portal-scale-streaming-endpoints.md).
 
-## <a id="enable_cdn"></a>Aktivieren der Azure CDN-Integration
+## <a name="enable-azure-cdn-integration"></a><a id="enable_cdn"></a>Aktivieren der Azure CDN-Integration
 
 Wenn Sie ein neues Konto erstellen, ist die Streamingendpunkt-/Azure CDN-Integration standardmäßig aktiviert.
 
-Wenn Sie das CDN später deaktivieren bzw. aktivieren möchten, muss Ihr Streamingendpunkt den Zustand **Beendet** haben. Es kann bis zu zwei Stunden dauern, bis die Azure CDN-Integration aktiviert ist und die Änderungen auf allen CDN-POPs aktiv sind. Sie können jedoch Ihren Streamingendpunkt starten und von ihm aus unterbrechungsfrei streamen. Sobald die Integration abgeschlossen ist, wird der Stream vom CDN übermittelt. Während der Bereitstellungsphase hat Ihr Streamingendpunkt den Zustand **Wird gestartet**, und seine Leistung ist ggf. eingeschränkt.
+Wenn Sie das CDN später deaktivieren bzw. aktivieren möchten, muss Ihr Streamingendpunkt den Zustand **Beendet** haben. Es kann bis zu zwei Stunden dauern, bis die Azure CDN-Integration aktiviert ist und die Änderungen auf allen CDN-POPs aktiv sind. Sie können jedoch Ihren Streamingendpunkt starten und von ihm aus unterbrechungsfrei streamen. Sobald die Integration abgeschlossen ist, wird der Stream vom CDN übermittelt. Während der Bereitstellungsphase hat Ihr Streamingendpunkt den Zustand **Wird gestartet** , und seine Leistung ist ggf. eingeschränkt.
 
 Die CDN-Integration ist in allen Azure-Rechenzentren mit Ausnahme der Regionen China und US-Regierung aktiviert.
 
-Nach der Aktivierung wird die Konfiguration von **Zugriffssteuerung**, **Benutzerdefinierter Hostname und **Akamai-Signaturauthentifizierung** deaktiviert.
+Nach der Aktivierung wird die Konfiguration von **Zugriffssteuerung** , **Benutzerdefinierter Hostname und **Akamai-Signaturauthentifizierung** deaktiviert.
  
 > [!IMPORTANT]
-> Die Azure Media Services-Integration in Azure CDN ist in **Azure CDN von Verizon**für Standard-Streamingendpunkte implementiert. Premium-Streamingendpunkte können mithilfe aller **Azure CDN-Tarife und -Anbieter** konfiguriert werden. Weitere Informationen zu Azure CDN-Features finden Sie in der [Übersicht über das Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md).
+> Die Azure Media Services-Integration in Azure CDN ist in **Azure CDN von Verizon** für Standard-Streamingendpunkte implementiert. Premium-Streamingendpunkte können mithilfe aller **Azure CDN-Tarife und -Anbieter** konfiguriert werden. Weitere Informationen zu Azure CDN-Features finden Sie in der [Übersicht über das Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md).
  
-### <a name="additional-considerations"></a>Zusätzliche Überlegungen
+### <a name="additional-considerations"></a>Weitere Überlegungen
 
 * Wenn CDN für einen Streamingendpunkt aktiviert ist, können die Clients keine Inhalte direkt vom Ursprung anfordern. Wenn Sie Ihre Inhalte mit oder ohne CDN testen können möchten, können Sie einen anderen Streamingendpunkt erstellen, für den kein CDN aktiviert ist.
 * Der Hostname für den Streamingendpunkt bleibt nach dem Aktivieren von CDN gleich. Sie müssen keine Änderungen an Ihrem Media Services-Workflow vornehmen, nachdem CDN aktiviert wurde. Wenn der Hostname des Streamingendpunkts z. B. "strasbourg.streaming.mediaservices.windows.net" lautet, wird nach der Aktivierung von CDN genau der gleiche Hostname verwendet.
@@ -122,4 +124,3 @@ Sie können das CDN-Profil konfigurieren, indem Sie oben auf die Schaltfläche *
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

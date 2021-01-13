@@ -1,29 +1,29 @@
 ---
-title: 'Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Domäne für Azure Front Door Service | Microsoft-Dokumentation'
-description: In diesem Tutorial wird beschrieben, wie Sie HTTPS in Ihrer Azure Front Door Service-Konfiguration für eine benutzerdefinierte Domäne aktivieren und deaktivieren.
+title: 'Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Domäne für Azure Front Door | Microsoft-Dokumentation'
+description: In diesem Tutorial wird beschrieben, wie Sie HTTPS in Ihrer Azure Front Door-Konfiguration für eine benutzerdefinierte Domäne aktivieren und deaktivieren.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/05/2018
-ms.author: sharadag
-ms.openlocfilehash: 5b44bfd94dffa14fcd501f5e0ddea11309adabf6
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 10/21/2020
+ms.author: duau
+ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907844"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368331"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Front Door-Domäne
 
 In diesem Tutorial erfahren Sie, wie Sie im Abschnitt mit den Front-End-Hosts das HTTPS-Protokoll für eine benutzerdefinierte Domäne aktivieren, die Ihrer Front Door-Instanz zugeordnet ist. Durch die Verwendung des HTTPS-Protokolls in Ihrer benutzerdefinierten Domäne (Beispiel: https:\//www.contoso.com) stellen Sie sicher, dass Ihre sensiblen Daten per TLS/SSL-Verschlüsselung sicher zugestellt werden, wenn diese über das Internet gesendet werden. Wenn Ihr Webbrowser über HTTPS eine Verbindung mit einer Website herstellt, überprüft er das Sicherheitszertifikat der Website, um sicherzustellen, dass es von einer legitimen Zertifizierungsstelle stammt. Dieser Prozess sorgt für Sicherheit und schützt Ihre Webanwendungen vor Angriffen.
 
-Azure Front Door Service unterstützt HTTPS standardmäßig für einen Front Door-Standardhostnamen. Wenn Sie beispielsweise eine Front Door-Instanz erstellen (z.B. „https:\//contoso.azurefd.net“), wird HTTPS automatisch für Anforderungen an https://contoso.azurefd.net aktiviert. Nachdem Sie jedoch die benutzerdefinierte Domäne „www.contoso.com“ integriert haben, müssen Sie zusätzlich HTTPS für den Front-End-Host aktivieren.   
+Azure Front Door unterstützt HTTPS standardmäßig für einen Front Door-Standardhostnamen. Wenn Sie beispielsweise eine Front Door-Instanz erstellen (z. B. `https://contoso.azurefd.net`), wird HTTPS automatisch für Anforderungen an `https://contoso.azurefd.net` aktiviert. Nachdem Sie jedoch die benutzerdefinierte Domäne „www.contoso.com“ integriert haben, müssen Sie zusätzlich HTTPS für den Front-End-Host aktivieren.   
 
 Zu den wichtigsten Attributen des benutzerdefinierten HTTPS-Features zählen unter anderem folgende:
 
@@ -37,7 +37,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > - Aktivieren des HTTPS-Protokolls für Ihre benutzerdefinierte Domäne
 > - Verwenden eines AFD-verwalteten Zertifikats 
-> - Verwenden Ihres eigenen Zertifikats (ein benutzerdefiniertes SSL-Zertifikat)
+> - Verwenden Ihres eigenen Zertifikats (ein benutzerdefiniertes TLS-/SSL-Zertifikat)
 > - Überprüfen der Domäne
 > - Deaktivieren des HTTPS-Protokolls in Ihrer benutzerdefinierten Domäne
 
@@ -46,52 +46,55 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie die Schritte in diesem Tutorial ausführen können, müssen Sie zunächst eine Front Door-Instanz und mindestens eine integrierte benutzerdefinierte Domäne erstellen. Weitere Informationen finden Sie unter [Tutorial: Hinzufügen einer benutzerdefinierten Domäne für Ihre „Front Door“](front-door-custom-domain.md).
+Bevor Sie die Schritte in diesem Tutorial ausführen können, müssen Sie zunächst eine Front Door-Instanz und mindestens eine integrierte benutzerdefinierte Domäne erstellen. Weitere Informationen finden Sie im [Tutorial: Hinzufügen einer benutzerdefinierten Domäne für Ihre „Front Door“](front-door-custom-domain.md).
 
-## <a name="ssl-certificates"></a>SSL-Zertifikate
+## <a name="tlsssl-certificates"></a>TLS-/SSL-Zertifikate
 
-Sie müssen ein SSL-Zertifikat verwenden, um das HTTPS-Protokoll für die sichere Übermittlung von Inhalten in einer benutzerdefinierten Front Door-Domäne zu aktivieren. Sie können ein von Azure Front Door Service verwaltetes Zertifikat oder ein eigenes Zertifikat verwenden.
+Sie müssen ein TLS-/SSL-Zertifikat verwenden, um das HTTPS-Protokoll für die sichere Übermittlung von Inhalten in einer benutzerdefinierten Front Door-Domäne zu aktivieren. Sie können ein von Azure Front Door verwaltetes Zertifikat oder ein eigenes Zertifikat verwenden.
 
 
 ### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Option 1 (Standard): Verwenden eines von Azure Front Door Service verwalteten Zertifikats
 
-Wenn Sie ein von Azure Front Door Service verwaltetes Zertifikat verwenden, kann das HTTPS-Feature mit nur wenigen Mausklicks aktiviert werden. Azure Front Door Service übernimmt sämtliche Zertifikatverwaltungsaufgaben wie etwa Beschaffung und Verlängerung. Der Prozess wird umgehend nach der Aktivierung des Features gestartet. Wenn die benutzerdefinierte Domäne bereits dem standardmäßigen Front-End-Host von Front Door (`{hostname}.azurefd.net`) zugeordnet ist, ist keine weitere Aktion erforderlich. Front Door durchläuft die Schritte und schließt Ihre Anforderung automatisch ab. Sollte Ihre benutzerdefinierte Domäne an anderer Stelle zugeordnet sein, müssen Sie per E-Mail bestätigen, dass Sie der Besitzer der Domäne sind.
+Wenn Sie ein von Azure Front Door verwaltetes Zertifikat verwenden, kann das HTTPS-Feature mit nur wenigen Mausklicks aktiviert werden. Azure Front Door übernimmt sämtliche Zertifikatverwaltungsaufgaben wie etwa Beschaffung und Verlängerung. Der Prozess wird umgehend nach der Aktivierung des Features gestartet. Wenn die benutzerdefinierte Domäne bereits dem standardmäßigen Front-End-Host von Front Door (`{hostname}.azurefd.net`) zugeordnet ist, ist keine weitere Aktion erforderlich. Front Door durchläuft die Schritte und schließt Ihre Anforderung automatisch ab. Sollte Ihre benutzerdefinierte Domäne an anderer Stelle zugeordnet sein, müssen Sie per E-Mail bestätigen, dass Sie der Besitzer der Domäne sind.
 
 Um HTTPS für eine benutzerdefinierte Domäne zu aktivieren, führen Sie die folgenden Schritte aus:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Front Door**-Profil.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Front Door** -Profil.
 
 2. Wählen Sie in der Liste der Front-End-Hosts die benutzerdefinierte Domäne aus, für die Sie HTTPS aktivieren möchten.
 
-3. Klicken Sie im Abschnitt **HTTPS für benutzerdefinierte Domänen** auf **Aktiviert**, und wählen Sie **Mit Front Door verwaltet** als Zertifikatquelle aus.
+3. Klicken Sie im Abschnitt **HTTPS für benutzerdefinierte Domänen** auf **Aktiviert** , und wählen Sie **Mit Front Door verwaltet** als Zertifikatquelle aus.
 
 4. Klicken Sie auf Speichern.
 
 5. Fahren Sie mit [Domäne überprüfen](#validate-the-domain) fort.
 
+> [!NOTE]
+> Bei von AFD verwalteten Zertifikaten wird der Grenzwert von 64 Zeichen von DigiCert erzwungen. Bei der Überprüfung tritt ein Fehler auf, wenn dieser Grenzwert überschritten wird.
+
 
 ### <a name="option-2-use-your-own-certificate"></a>Option 2: Verwenden Ihres eigenen Zertifikats
 
-Sie können das HTTPS-Feature mit Ihrem eigenen Zertifikat aktivieren. Dabei erfolgt eine Integration in Azure Key Vault, was eine sichere Speicherung Ihrer Zertifikate ermöglicht. Azure Front Door Service nutzt diesen sicheren Mechanismus zum Abrufen Ihres Zertifikats, und es sind einige zusätzliche Schritte erforderlich. Wenn Sie Ihr SSL-Zertifikat erstellen, müssen Sie dafür eine zulässige Zertifizierungsstelle (certificate authority, CA) verwenden. Bei Verwendung einer unzulässigen Zertifizierungsstelle wird Ihre Anforderung abgelehnt. Eine Liste mit zulässigen Zertifizierungsstellen für die Aktivierung von benutzerdefiniertem HTTPS für Azure Front Door Service finden Sie [hier](front-door-troubleshoot-allowed-ca.md).
+Sie können das HTTPS-Feature mit Ihrem eigenen Zertifikat aktivieren. Dabei erfolgt eine Integration in Azure Key Vault, was eine sichere Speicherung Ihrer Zertifikate ermöglicht. Azure Front Door nutzt diesen sicheren Mechanismus zum Abrufen Ihres Zertifikats, und es sind einige zusätzliche Schritte erforderlich. Wenn Sie Ihr TLS-/SSL-Zertifikat erstellen, müssen Sie dafür eine zulässige Zertifizierungsstelle verwenden. Bei Verwendung einer unzulässigen Zertifizierungsstelle wird Ihre Anforderung abgelehnt. Eine Liste mit zulässigen Zertifizierungsstellen für die Aktivierung von benutzerdefiniertem HTTPS für Azure Front Door finden Sie [hier](front-door-troubleshoot-allowed-ca.md).
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Vorbereiten Ihres Azure Key Vault-Kontos und Ihres Zertifikats
  
 1. Azure Key Vault: Sie benötigen ein aktives Azure Key Vault-Konto. Dieses muss zum gleichen Abonnement gehören wie die Front Door-Instanz, für die Sie benutzerdefiniertes HTTPS aktivieren möchten. Erstellen Sie bei Bedarf ein Azure Key Vault-Konto.
 
 > [!WARNING]
-> Azure Front Door Service unterstützt derzeit nur Key Vault-Konten im selben Abonnement wie die Front Door-Konfiguration. Das Auswählen eines Schlüsseltresors in einem anderen Abonnement als Ihre Front Door-Konfiguration führt zu einem Fehler.
+> Azure Front Door unterstützt derzeit nur Key Vault-Konten im selben Abonnement wie die Front Door-Konfiguration. Das Auswählen eines Schlüsseltresors in einem anderen Abonnement als Ihre Front Door-Konfiguration führt zu einem Fehler.
 
-2. Azure Key Vault-Zertifikate: Wenn Sie bereits über ein Zertifikat verfügen, können Sie es direkt in Ihr Azure Key Vault-Konto hochladen. Alternativ können Sie direkt in Azure Key Vault ein neues Zertifikat über eine der Partnerzertifizierungsstellen mit Azure Key Vault-Integration erstellen. Laden Sie Ihr Zertifikat nicht als **Geheimnis**, sondern als Objekt vom Typ **Zertifikat** hoch.
-
-> [!IMPORTANT]
-> Sie müssen das Zertifikat im PFX-Format **ohne** Kennwortschutz hochladen.
-
-#### <a name="register-azure-front-door-service"></a>Registrieren von Azure Front Door Service
-
-Registrieren Sie den Dienstprinzipal für Azure Front Door Service als App in Azure Active Directory mithilfe von PowerShell.
+2. Azure Key Vault-Zertifikate: Wenn Sie bereits über ein Zertifikat verfügen, können Sie es direkt in Ihr Azure Key Vault-Konto hochladen. Alternativ können Sie direkt in Azure Key Vault ein neues Zertifikat über eine der Partnerzertifizierungsstellen mit Azure Key Vault-Integration erstellen. Laden Sie Ihr Zertifikat nicht als **Geheimnis** , sondern als Objekt vom Typ **Zertifikat** hoch.
 
 > [!NOTE]
-> Diese Aktion muss nur **einmal** pro Mandant ausgeführt werden.
+> Bei eigenen TLS-/SSL-Zertifikaten werden von Front Door keine Zertifikate mit EC-Kryptographiealgorithmen unterstützt.
+
+#### <a name="register-azure-front-door"></a>Registrieren von Azure Front Door
+
+Registrieren Sie den Dienstprinzipal für Azure Front Door als App in Azure Active Directory mithilfe von PowerShell.
+
+> [!NOTE]
+> Diese Aktion erfordert globale Administratorberechtigungen und muss lediglich **einmal** pro Mandant ausgeführt werden.
 
 1. Installieren Sie bei Bedarf auf dem lokalen Computer [Azure PowerShell](/powershell/azure/install-az-ps) in PowerShell.
 
@@ -99,23 +102,23 @@ Registrieren Sie den Dienstprinzipal für Azure Front Door Service als App in Az
 
      `New-AzADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
-#### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>Gewähren von Zugriff auf Ihren Schlüsseltresor für Azure Front Door Service
+#### <a name="grant-azure-front-door-access-to-your-key-vault"></a>Gewähren von Zugriff auf Ihren Schlüsseltresor für Azure Front Door
  
-Gewähren Sie Azure Front Door Service Berechtigungen für den Zugriff auf die Zertifikate in Ihrem Azure Key Vault-Konto.
+Gewähren Sie Azure Front Door Berechtigungen für den Zugriff auf die Zertifikate in Ihrem Azure Key Vault-Konto.
 
-1. Klicken Sie in Ihrem Key Vault-Konto unter „EINSTELLUNGEN“ auf **Zugriffsrichtlinien** und anschließend auf **Neu hinzufügen**, um eine neue Richtlinie zu erstellen.
+1. Klicken Sie in Ihrem Key Vault-Konto unter „EINSTELLUNGEN“ auf **Zugriffsrichtlinien** und anschließend auf **Neu hinzufügen** , um eine neue Richtlinie zu erstellen.
 
-2. Suchen Sie in **Prinzipal auswählen** nach **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**, und wählen Sie **Microsoft.Azure.Frontdoor** aus. Klicken Sie auf **Auswählen**.
+2. Suchen Sie in **Prinzipal auswählen** nach **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** , und wählen Sie **Microsoft.Azure.Frontdoor** aus. Klicken Sie auf **Auswählen** .
 
 3. Wählen Sie unter **Berechtigungen für Geheimnis** die Option **Abrufen** aus, um Front Door das Abrufen des Zertifikats zu ermöglichen.
 
 4. Wählen Sie unter **Zertifikatberechtigungen** die Option **Abrufen** aus, um Front Door das Abrufen des Zertifikats zu ermöglichen.
 
-5. Klicken Sie auf **OK**. 
+5. Klicken Sie auf **OK** . 
 
-    Azure Front Door Service kann nun auf diese Key Vault-Instanz und auf die darin gespeicherten Zertifikate zugreifen.
+    Azure Front Door kann nun auf diese Key Vault-Instanz und auf die darin gespeicherten Zertifikate zugreifen.
  
-#### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>Auswählen des bereitzustellenden Zertifikats für Azure Front Door Service
+#### <a name="select-the-certificate-for-azure-front-door-to-deploy"></a>Auswählen des bereitzustellenden Zertifikats für Azure Front Door
  
 1. Kehren Sie im Portal zu Front Door zurück. 
 
@@ -125,12 +128,17 @@ Gewähren Sie Azure Front Door Service Berechtigungen für den Zugriff auf die Z
 
 3. Wählen Sie unter „Zertifikatverwaltungstyp“ die Option **Eigenes Zertifikat verwenden** aus. 
 
-4. Azure Front Door Service erfordert, dass das Abonnement des Key Vault-Kontos mit dem von Front Door identisch ist. Wählen Sie einen Schlüsseltresor, ein Zertifikat (Geheimnis) und eine Zertifikatversion aus.
+4. Azure Front Door erfordert, dass das Abonnement des Key Vault-Kontos mit dem von Front Door identisch ist. Wählen Sie einen Schlüsseltresor, ein Zertifikat (Geheimnis) und eine Zertifikatversion aus.
 
-    Azure Front Door Service führt die folgenden Informationen auf: 
+    Azure Front Door führt die folgenden Informationen auf: 
     - Die Schlüsseltresorkonten für Ihre Abonnement-ID 
     - Die Zertifikate (Geheimnisse) unter dem ausgewählten Schlüsseltresor 
     - Die verfügbaren Zertifikatversionen 
+
+> [!NOTE]
+> Wenn Sie die Zertifikatversion leer lassen, würde dies zu Folgendem führen:
+> - Die neueste Version des Zertifikats wird ausgewählt.
+> - Automatische Rotation der Zertifikate zur neuesten Version, wenn eine neuere Version des Zertifikats in Ihrem Key Vault verfügbar ist.
  
 5. Wenn Sie Ihr eigenes Zertifikat verwenden, ist keine Domänenüberprüfung erforderlich. Fahren Sie mit [Warten auf die Weitergabe](#wait-for-propagation) fort.
 
@@ -147,11 +155,11 @@ Wenn Sie Ihr eigenes Zertifikat verwenden, ist keine Domänenüberprüfung erfor
 
 Ihr CNAME-Eintrag sollte im folgenden Format vorliegen, wobei *Name* Ihr benutzerdefinierter Domänenname und *Wert* der Standardhostname „.azurefd.net“ von Front Door ist:
 
-| NAME            | type  | Wert                 |
+| Name            | Typ  | Wert                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
-Weitere Informationen über CNAME-Einträge finden Sie unter [Erstellen Sie die CNAME-DNS-Einträge](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
+Weitere Informationen über CNAME-Einträge finden Sie unter [Erstellen Sie die CNAME-DNS-Einträge](../cdn/cdn-map-content-to-custom-domain.md).
 
 Wenn Ihr CNAME-Eintrag im richtigen Format vorliegt, überprüft DigiCert automatisch Ihren benutzerdefinierten Domänennamen und erstellt ein dediziertes Zertifikat für Ihren Domänennamen. DigiCert sendet Ihnen keine Bestätigungs-E-Mail, und Sie müssen Ihre Anforderung nicht genehmigen. Das Zertifikat ist ein Jahr gültig und wird automatisch verlängert, bevor es abläuft. Fahren Sie mit [Warten auf die Weitergabe](#wait-for-propagation) fort. 
 
@@ -216,19 +224,39 @@ Sollte vor dem Übermitteln der Anforderung ein Fehler auftreten, wird die folge
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
+1. *Wer ist der Zertifikatanbieter, und welche Art von Zertifikat wird verwendet?*
 
-## <a name="clean-up-resources---disable-https"></a>Bereinigen von Ressourcen – Deaktivieren von HTTPS
+    Ein dediziertes/einzelnes Zertifikat von DigiCert wird für Ihre benutzerdefinierte Domäne verwendet. 
+
+2. *Basiert TLS/SSL auf IP oder auf SNI?*
+
+    Azure Front Door verwendet SNI-basiertes TLS/SSL.
+
+3. *Was passiert, wenn ich die Domänenüberprüfungs-E-Mail von DigiCert nicht erhalte?*
+
+    Wenn Sie einen CNAME-Eintrag für Ihre benutzerdefinierte Domäne haben, der direkt auf Ihren Endpunkt-Hostnamen verweist (und wenn Sie den afdverify-Unterdomänennamen nicht verwenden), erhalten Sie keine Bestätigungs-E-Mail für die Domäne. Die Bestätigung erfolgt automatisch. Wenden Sie sich andernfalls an den Microsoft-Support, falls Sie nicht über einen CNAME-Eintrag verfügen und innerhalb von 24 Stunden keine E-Mail erhalten.
+
+4. *Ist ein SAN-Zertifikat weniger sicher als ein dediziertes Zertifikat?*
+    
+    Ein SAN-Zertifikat bietet die gleichen Verschlüsselungs- und Sicherheitsstandards wie ein dediziertes Zertifikat. Zur Verbesserung der Serversicherheit verwenden alle ausgestellten TLS-/SSL-Zertifikate SHA-256.
+
+5. *Benötige ich einen CAA-Datensatz (Certificate Authority Authorization) bei meinem DNS-Anbieter?*
+
+    Nein. Ein CAA-Datensatz ist momentan nicht erforderlich. Wenn Sie allerdings über einen solchen Datensatz verfügen, muss er DigiCert als gültige Zertifizierungsstelle enthalten.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 In den obigen Schritten haben Sie das HTTPS-Protokoll für Ihre benutzerdefinierte Domäne aktiviert. Falls Sie Ihre benutzerdefinierte Domäne nicht mehr mit HTTPS verwenden möchten, können Sie HTTPS mit diesen Schritten deaktivieren:
 
 ### <a name="disable-the-https-feature"></a>Deaktivieren des HTTPS-Features 
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer **Azure Front Door Service**-Konfiguration.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer **Azure Front Door** -Konfiguration.
 
 2. Klicken Sie in der Liste der Front-End-Hosts auf die benutzerdefinierte Domäne, für die Sie HTTPS deaktivieren möchten.
 
-3. Klicken Sie auf **Deaktiviert**, um HTTPS zu deaktivieren, und klicken Sie dann auf **Speichern**.
+3. Klicken Sie auf **Deaktiviert** , um HTTPS zu deaktivieren, und klicken Sie dann auf **Speichern** .
 
 ### <a name="wait-for-propagation"></a>Warten auf die Weitergabe
 
@@ -244,30 +272,15 @@ Die folgende Tabelle zeigt den Status des Vorgangs zum Deaktivieren von HTTPS. N
 | 2: Aufheben der Zertifikatbereitstellung | Das Zertifikat wird gelöscht. |
 | 3: Abschließen | Das Zertifikat wurde gelöscht. |
 
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-
-1. *Wer ist der Zertifikatanbieter, und welche Art von Zertifikat wird verwendet?*
-
-    Ein dediziertes/einzelnes Zertifikat von DigiCert wird für Ihre benutzerdefinierte Domäne verwendet. 
-
-2. *Basiert TLS/SSL auf IP oder auf SNI?*
-
-    Azure Front Door Service verwendet SNI TLS/SSL.
-
-3. *Was passiert, wenn ich die Domänenüberprüfungs-E-Mail von DigiCert nicht erhalte?*
-
-    Wenn Sie einen CNAME-Eintrag für Ihre benutzerdefinierte Domäne haben, der direkt auf Ihren Endpunkt-Hostnamen verweist (und wenn Sie den afdverify-Unterdomänennamen nicht verwenden), erhalten Sie keine Bestätigungs-E-Mail für die Domäne. Die Bestätigung erfolgt automatisch. Wenden Sie sich andernfalls an den Microsoft-Support, falls Sie nicht über einen CNAME-Eintrag verfügen und innerhalb von 24 Stunden keine E-Mail erhalten.
-
-4. *Ist ein SAN-Zertifikat weniger sicher als ein dediziertes Zertifikat?*
-    
-    Ein SAN-Zertifikat bietet die gleichen Verschlüsselungs- und Sicherheitsstandards wie ein dediziertes Zertifikat. Zur Verbesserung der Serversicherheit verwenden alle ausgestellten SSL-Zertifikate SHA-256.
-
-5. *Benötige ich einen CAA-Datensatz (Certificate Authority Authorization) bei meinem DNS-Anbieter?*
-
-    Nein. Ein CAA-Datensatz ist momentan nicht erforderlich. Wenn Sie allerdings über einen solchen Datensatz verfügen, muss er DigiCert als gültige Zertifizierungsstelle enthalten.
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Azure Front Door Service-Konfiguration](quickstart-create-front-door.md).
-- Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).
+In diesem Tutorial haben Sie Folgendes gelernt:
+
+* Hochladen eines Zertifikats in Key Vault
+* Überprüfen einer Domäne
+* Aktivieren von HTTPS für eine benutzerdefinierte Domäne
+
+Informationen zum Einrichten einer Geofilterungsrichtlinie für Front Door finden Sie im nächsten Tutorial:
+
+> [!div class="nextstepaction"]
+> [Geofilterung in einer Domäne für Azure Front Door](front-door-geo-filtering.md)

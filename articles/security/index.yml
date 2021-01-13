@@ -4,7 +4,7 @@ summary: Sicherheit ist ein wesentlicher Bestandteil aller Azure-Lösungen. Azur
 brand: azure
 metadata:
   title: Dokumentation zur Azure-Sicherheit
-  description: Sicherheit ist ein wesentlicher Bestandteil aller Azure-Lösungen. Azure bietet einzigartige Sicherheitsvorteile, die auf globalen Sicherheitsfunktionen, ausgereiften kundenorientierten Kontrollmöglichkeiten und einer sicheren, verstärkten Infrastruktur basieren. Diese leistungsstarke Kombination unterstützt Sie beim Schutz Ihrer Anwendungen und Daten sowie beim Durchsetzen Ihrer Compliance-Maßnahmen und bietet kostengünstige Sicherheit für Organisationen jeder Größe.
+  description: Informationen zur Sicherheit in Azure Lesen Sie die Informationen zu Grundlagen, Best Practices und Mustern im Zusammenhang mit Sicherheit sowie zu Azure Security Center.
   services: security
   ms.service: security
   ms.subservice: na
@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: db9cd038d5992aa698e8dc0f0cd30d915700895a
-  ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+  ms.openlocfilehash: a96ff0e329fb00888645949f2eab5652d15cb941
+  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/11/2019
-  ms.locfileid: "70880873"
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96489682"
 highlightedContent:
   items:
   - title: Einführung in die Azure-Sicherheit
@@ -30,7 +30,7 @@ highlightedContent:
     url: ./fundamentals/best-practices-and-patterns.md
   - title: Was ist Azure Security Center?
     itemType: overview
-    url: ../security-center/security-center-intro.md
+    url: ../security-center/security-center-introduction.md
 conceptualContent:
   items:
   - title: Grundlagen
@@ -45,14 +45,14 @@ conceptualContent:
       itemType: concept
       text: Sicherheitskontrollen für Azure-Dienste
     footerLink:
-      url: ./fundamentals/index.md
-      text: Mehr Informationen
+      url: ./fundamentals/index.yml
+      text: Weitere Informationen
   - title: Entwickler
     links:
     - url: ./develop/secure-dev-overview.md
       itemType: overview
       text: Bewährte Methoden für die sichere Entwicklung
-    - url: ./develop/secure-web-app.md
+    - url: /previous-versions/azure/security/develop/secure-web-app
       itemType: tutorial
       text: Entwickeln einer sicheren Web-App
     - url: ./develop/threat-modeling-tool.md
@@ -60,30 +60,33 @@ conceptualContent:
       text: Microsoft Threat Modeling Tool
     footerLink:
       url: ./develop/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Benchmarks und Empfehlungen
     links:
-    - url: https://azure.microsoft.com/resources/azure-cloud-security-benchmark-draft/
+    - url: ./benchmarks/introduction.md
       itemType: download
       text: Benchmark für die Azure-Cloudsicherheit
     - url: ../security-center/security-center-using-recommendations.md
       itemType: overview
       text: Azure Security Center-Empfehlungen
+    footerLink:
+      url: ./benchmarks/index.yml
+      text: Weitere Informationen
   - title: Geheimnisse und Schlüssel
     links:
-    - url: ../key-vault/key-vault-overview.md
+    - url: ../key-vault/general/overview.md
       itemType: overview
-      text: Was ist der Azure-Schlüsseltresor?
-    - url: ../key-vault/quick-create-cli.md
+      text: Was ist Azure Key Vault?
+    - url: ../key-vault/secrets/quick-create-cli.md
       itemType: quickstart
       text: Festlegen und Abrufen eines Geheimnisses
     - url: ../dedicated-hsm/overview.md
       itemType: overview
       text: Was ist Azure Dedicated HSM?
     footerLink:
-      url: /azure/key-vault/
-      text: Mehr Informationen
-  - title: Datenschutz
+      url: ../key-vault/index.yml
+      text: Weitere Informationen
+  - title: Schutz von Daten
     links:
     - url: ./fundamentals/encryption-atrest.md
       itemType: concept
@@ -91,15 +94,15 @@ conceptualContent:
     - url: ./fundamentals/data-encryption-best-practices.md
       itemType: concept
       text: Bewährte Methoden für Datensicherheit und Verschlüsselung
-    - url: ../storage/common/storage-security-guide.md
+    - url: ../storage/blobs/security-recommendations.md
       itemType: concept
       text: Speichersicherheit
     footerLink:
-      url: azure-security-disk-encryption-overview.md
-      text: Mehr Informationen
+      url: ./fundamentals/encryption-overview.md
+      text: Weitere Informationen
   - title: Identitätsverwaltung
     links:
-    - url: ./fundamentals/choose-ad-authn.md
+    - url: ../active-directory/hybrid/choose-ad-authn.md
       itemType: concept
       text: Auswählen der richtigen Authentifizierungsmethode
     - url: ./fundamentals/steps-secure-identity.md
@@ -107,10 +110,10 @@ conceptualContent:
       text: Schützen Ihrer Identitätsinfrastruktur
     - url: ./fundamentals/identity-management-best-practices.md
       itemType: concept
-      text: Bewährte Methoden für die Sicherheit
+      text: Bewährte Sicherheitsmethoden
     footerLink:
       url: ./fundamentals/identity-management-overview.md
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Sicherheitsüberwachung
     links:
     - url: ../security-center/security-center-get-started.md
@@ -123,22 +126,22 @@ conceptualContent:
       itemType: how-to-guide
       text: Arbeiten mit Sicherheitsrichtlinien
     footerLink:
-      url: /azure/security-center/
-      text: Mehr Informationen
+      url: ../security-center/index.yml
+      text: Weitere Informationen
   - title: IoT-Sicherheitsüberwachung
     links:
-    - url: ../asc-for-iot/overview.md
+    - url: ../defender-for-iot/overview.md
       itemType: overview
       text: Einführung in Azure Security Center für IoT
-    - url: ../asc-for-iot/architecture.md
+    - url: ../defender-for-iot/architecture.md
       itemType: how-to-guide
       text: Azure Security Center für IoT-Architektur
-    - url: ../asc-for-iot/getting-started.md
+    - url: ../defender-for-iot/getting-started.md
       itemType: how-to-guide
       text: Erste Schritte mit Azure Security Center für IoT
     footerLink:
       url: /azure/asc-for-iot/
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Sicherheitsanalysen
     links:
     - url: ../sentinel/overview.md
@@ -151,22 +154,22 @@ conceptualContent:
       itemType: quickstart
       text: Erste Schritte mit Azure Sentinel (Vorschauversion)
     footerLink:
-      url: /azure/sentinel/
-      text: Mehr Informationen
+      url: ../sentinel/index.yml
+      text: Weitere Informationen
   - title: Bedrohungsschutz
     links:
     - url: ../security-center/security-center-alerts-overview.md
       itemType: concept
       text: Sicherheitswarnungen in Azure Security Center
-    - url: ../storage/common/storage-advanced-threat-protection.md
+    - url: ../storage/common/azure-defender-storage-configure.md
       itemType: concept
       text: Advanced Threat Protection für Azure Storage
-    - url: ../sql-database/sql-database-threat-detection-overview.md
+    - url: ../azure-sql/database/threat-detection-overview.md
       itemType: concept
       text: Advanced Threat Protection für Azure SQL-Datenbank
     footerLink:
       url: ./fundamentals/threat-detection.md
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Protokollierung und Überwachung
     links:
     - url: ./fundamentals/log-audit.md
@@ -175,11 +178,8 @@ conceptualContent:
     - url: ./fundamentals/management-monitoring-overview.md
       itemType: overview
       text: Übersicht über die Verwaltung und Überwachung
-    - url: ./fundamentals/azure-log-integration-overview.md
-      itemType: overview
-      text: Einführung in Azure Log Integration
     footerLink:
-      url: https://docs.microsoft.com/search/?search=security+audit+log&scope=azure&category=Documentation
+      url: /search/?category=Documentation&scope=azure&search=security%2baudit%2blog
       text: Nach weiteren Artikeln suchen
   - title: Netzwerksicherheit
     links:
@@ -188,8 +188,8 @@ conceptualContent:
       text: Sicherheitsübersicht
     - url: ./fundamentals/network-best-practices.md
       itemType: concept
-      text: Bewährte Methoden für die Sicherheit
-    - url: ./fundamentals/ddos-best-practices.md
+      text: Bewährte Sicherheitsmethoden
+    - url: ../ddos-protection/fundamental-best-practices.md
       itemType: concept
       text: DDoS Protection
   - title: Sicherheit der Infrastruktur
@@ -205,7 +205,7 @@ conceptualContent:
       text: Schutz von Kundendaten
     footerLink:
       url: ./fundamentals/infrastructure.md
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Sicherheit virtueller Computer
     links:
     - url: ./fundamentals/virtual-machines-overview.md
@@ -219,20 +219,17 @@ conceptualContent:
       text: Empfehlungen für die Sicherheitskonfiguration
   - title: Datenbanksicherheit
     links:
-    - url: ./fundamentals/database-security-overview.md
+    - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
       itemType: overview
-      text: Sicherheitsübersicht
-    - url: ./fundamentals/database-best-practices.md
+      text: Datensicherheit
+    - url: ./fundamentals/paas-applications-using-sql.md
       itemType: concept
-      text: Bewährte Methoden für die Sicherheit
+      text: Bewährte Methoden für PaaS-Datenbanken
     - url: ./fundamentals/database-security-checklist.md
       itemType: concept
       text: Checkliste für die Sicherheit
   - title: Governance und Einhaltung
     links:
-    - url: ./blueprints/au-protected-iaaswa-overview.md
-      itemType: tutorial
-      text: Compliancelösungen
     - url: ../governance/policy/overview.md
       itemType: overview
       text: Azure Policy-Dienst
@@ -240,5 +237,5 @@ conceptualContent:
       itemType: overview
       text: Azure Blueprints-Dienst
     footerLink:
-      url: /azure/governance/
-      text: Mehr Informationen
+      url: ../governance/index.yml
+      text: Weitere Informationen

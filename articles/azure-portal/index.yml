@@ -3,21 +3,17 @@ title: Dokumentation zum Azure-Portal
 summary: Das Azure-Portal ist eine webbasierte, zentrale Konsole, die eine Alternative zu Befehlszeilentools darstellt. Sie können Ihr Azure-Abonnement mit dem Azure-Portal verwalten. Erstellen, Verwalten und Überwachen aller Komponenten – von einfachen Web-Apps bis hin zu komplexen Cloudbereitstellungen. Erstellen Sie benutzerdefinierte Dashboards für eine strukturierte Ansicht von Ressourcen, und konfigurieren Sie Barrierefreiheitsoptionen für optimale Benutzerfreundlichkeit.
 metadata:
   title: Dokumentation zum Azure-Portal
-  description: Erfahren Sie, wie Sie Ihr Azure-Abonnement und Ihre Ressourcen mit der webbasierten Konsole des Azure-Portals verwalten.
+  description: Erfahren Sie, wie Sie Ihre Azure-Abonnements und -Ressourcen mithilfe der webbasierten Konsole des Azure-Portals verwalten. Das Azure-Portal ist eine Alternative zur Verwendung von Befehlszeilentools.
   services: Azure portal
-  ms.service: azure-portal
-  ms.subservice: 
   ms.topic: landing-page
   ms.collection: collection
-  author: kfollis
-  ms.author: kfollis
-  ms.date: 09/17/2019
-  ms.openlocfilehash: 7fdd6f95ee2f84abc151f5c6e6e7929df2bc57a1
-  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.date: 08/05/2020
+  ms.openlocfilehash: c1617f295a101ae645743d60fdbe82a09d936ea2
+  ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/17/2019
-  ms.locfileid: "71076653"
+  ms.lasthandoff: 12/07/2020
+  ms.locfileid: "96749010"
 landingContent:
 - title: Informationen zum Azure-Portal
   linkLists:
@@ -31,6 +27,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Festlegen Ihrer Portaleinstellungen
+      url: set-preferences.md
     - text: Erstellen und Freigeben von benutzerdefinierten Dashboards
       url: azure-portal-dashboards.md
     - text: Verwalten Ihrer Favoriten
@@ -41,13 +39,13 @@ landingContent:
     links:
     - text: Hinzufügen von Azure-Portal-URLs zu einer Liste sicherer IP-Adressen
       url: azure-portal-safelist-urls.md
-    - text: Rollenbasierte Zugriffssteuerung für Dashboards
+    - text: Rollenbasierte Zugriffssteuerung von Azure für Dashboards
       url: azure-portal-dashboard-share-access.md
   - linkListType: learn
     links:
     - text: Verwalten von Ressourcen in Azure
       url: /learn/paths/manage-resources-in-azure/
-    - text: Schützen Ihrer Azure-Ressourcen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)
+    - text: Schützen Ihrer Azure-Ressourcen mit der rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC)
       url: /learn//modules/secure-azure-resources-with-rbac/
 - title: Erste Schritte
   linkLists:
@@ -63,7 +61,7 @@ landingContent:
     links:
     - text: Azure-Grundlagen
       url: /learn/paths/azure-fundamentals/
-    - text: 'Cloudkonzepte: Cloud Computing-Prinzipien'
+    - text: 'Cloudkonzepte: Die Prinzipien des Cloud Computings'
       url: /learn/modules/principles-cloud-computing/
 - title: Verwenden von Barrierefreiheitsoptionen
   linkLists:
@@ -74,4 +72,12 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Aktivieren von hohem Kontrast
-      url: azure-portal-change-theme-high-contrast.md
+      url: set-preferences.md#choose-a-theme-or-enable-high-contrast
+- title: Erstellen und Verwalten von Supportanfragen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen einer Azure-Supportanfrage
+      url: ../azure-portal/supportability/how-to-create-azure-support-request.md
+    - text: Beheben von Abonnementproblemen im Zusammenhang mit Region oder SKU
+      url: ../azure-portal/supportability/sku-series-unavailable.md

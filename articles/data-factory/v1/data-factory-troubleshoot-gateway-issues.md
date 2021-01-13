@@ -1,23 +1,22 @@
 ---
-title: Problembehandlung für das Datenverwaltungsgateway | Microsoft-Dokumentation
+title: Beheben von Problemen mit dem Datenverwaltungsgateway
 description: Tipps zur Problembehandlung im Zusammenhang mit dem Datenverwaltungsgateway.
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0559d89bd691323a95713d518df05e58283cef39
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b12ff431b2d164baf4f70fa5341f538b16bca51
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61252435"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896564"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways
 Dieser Artikel enthält Informationen zur Problembehandlung bei der Verwendung des Datenverwaltungsgateways.
@@ -25,7 +24,7 @@ Dieser Artikel enthält Informationen zur Problembehandlung bei der Verwendung d
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Selbstgehostete Integration Runtime in Data Factory](../create-self-hosted-integration-runtime.md).
 
-Ausführliche Informationen zum Gateway finden Sie im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md). Im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) finden Sie eine exemplarische Vorgehensweise zum Verschieben von Daten aus einer lokalen SQL Server-Datenbank in Microsoft Azure Blob Storage mithilfe des Gateways.
+Ausführliche Informationen zum Gateway finden Sie im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md). Im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) finden Sie eine exemplarische Vorgehensweise zum Verschieben von Daten aus einer SQL Server-Datenbank in Microsoft Azure Blob Storage mithilfe des Gateways.
 
 ## <a name="failed-to-install-or-register-gateway"></a>Fehler beim Installieren oder Registrieren des Gateways
 ### <a name="1-problem"></a>1. Problem
@@ -87,7 +86,7 @@ Möglicherweise wird beim Registrieren eines Gateways die folgende Fehlermeldung
 
 `Error: The gateway key is invalid or empty. Specify a valid gateway key from the portal.`
 
-![Gatewayschlüssel ist ungültig oder leer](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
+![Screenshot mit hervorgehobener Fehlermeldung, derzufolge der Gatewayschlüssel ungültig oder leer ist.](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
 
 #### <a name="cause"></a>Ursache
 Der Gatewayschlüssel wurde neu generiert, oder das Gateway wurde im Azure-Portal gelöscht. Es ist auch möglich, dass das Datenverwaltungsgateway nicht das neueste Setup aufweist.
@@ -108,14 +107,14 @@ Möglicherweise wird beim Registrieren eines Gateways die folgende Fehlermeldung
 Dieser Fehler kann auftreten, wenn das Gateway gelöscht wurde oder der zugehörige Gatewayschlüssel neu generiert wurde.
 
 #### <a name="resolution"></a>Lösung
-Wenn das Gateway gelöscht wurde, erstellen Sie das Gateway über das Portal erneut, klicken Sie auf **Registrieren**, kopieren Sie den Schlüssel aus dem Portal, fügen Sie ihn ein, und wiederholen Sie das Registrieren des Gateways.
+Wenn das Gateway gelöscht wurde, erstellen Sie das Gateway über das Portal erneut, klicken Sie auf **Registrieren** , kopieren Sie den Schlüssel aus dem Portal, fügen Sie ihn ein, und wiederholen Sie das Registrieren des Gateways.
 
 Wenn das Gateway noch vorhanden ist, aber der Schlüssel neu generiert wurde, verwenden Sie den neuen Schlüssel, um das Gateway zu registrieren. Wenn Sie nicht über den Schlüssel verfügen, generieren Sie den Schlüssel erneut über das Portal.
 
 ### <a name="7-problem"></a>7. Problem
 Wenn Sie ein Gateway registrieren, müssen Sie ggf. den Pfad und das Kennwort für ein Zertifikat angeben.
 
-![Angeben des Zertifikats](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
+![Screenshot, der zeigt, wo der Pfad und das Kennwort für das Zertifikat eingeben werden](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
 
 #### <a name="cause"></a>Ursache
 Das Gateway wurde zuvor auf anderen Computern registriert. Bei der ersten Registrierung eines Gateways wurde ihm ein Verschlüsselungszertifikat zugeordnet. Das Zertifikat kann durch das Gateway selbst generiert oder vom Benutzer bereitgestellt werden.  Mit diesem Zertifikat werden die Anmeldeinformationen des Datenspeichers (verknüpfter Dienst) verschlüsselt.  
@@ -197,7 +196,7 @@ Wenn dieser Fehler angezeigt wird, kann die Seite „Einstellungen“ des Datenv
 ![Die Datenbank wurde nicht gefunden](media/data-factory-troubleshoot-gateway-issues/database-cannot-be-reached.png)
 
 #### <a name="cause"></a>Ursache
-Möglicherweise ist das SSL-Zertifikat auf dem Gatewaycomputer nicht mehr vorhanden. Das derzeit für die SSL-Verschlüsselung verwendete Zertifikat kann vom Gatewaycomputer nicht geladen werden. Sie erhalten möglicherweise auch eine Fehlermeldung im Ereignisprotokoll, die der folgenden Meldung ähnlich ist.
+Möglicherweise ist das TLS/SSL-Zertifikat auf dem Gatewaycomputer nicht mehr vorhanden. Das derzeit für die TLS-Verschlüsselung verwendete Zertifikat kann vom Gatewaycomputer nicht geladen werden. Sie erhalten möglicherweise auch eine Fehlermeldung im Ereignisprotokoll, die der folgenden Meldung ähnlich ist.
 
  `Unable to get the gateway settings from cloud service. Check the gateway key and the network connection. (Certificate with thumbprint cannot be loaded.)`
 
@@ -206,10 +205,10 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 
 1. Starten Sie den Datenverwaltungsgateway-Konfigurations-Manager.
 2. Wechseln Sie zur Registerkarte **Einstellungen**.  
-3. Klicken Sie auf die Schaltfläche **Ändern**, um das SSL-Zertifikat zu ändern.
+3. Klicken Sie auf die Schaltfläche **Ändern** , um das TLS/SSL-Zertifikat zu ändern.
 
    ![Schaltfläche „Zertifikat ändern“](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
-4. Wählen Sie ein neues Zertifikat als das SSL-Zertifikat aus. Sie können ein beliebiges SSL-Zertifikat verwenden, das von Ihnen oder einer beliebigen Organisation generiert wurde.
+4. Wählen Sie ein neues Zertifikat als das TLS/SSL-Zertifikat aus. Sie können ein beliebiges TLS/SSL-Zertifikat verwenden, das von Ihnen oder einer beliebigen Organisation generiert wurde.
 
    ![Angeben des Zertifikats](media/data-factory-troubleshoot-gateway-issues/specify-http-end-point.png)
 
@@ -223,9 +222,9 @@ Möglicherweise tritt nach dem Einrichten einer Pipeline im Portal der folgende 
 Dies kann aus verschiedenen Gründen geschehen, und die Fehlerbehebung variiert entsprechend.
 
 #### <a name="resolution"></a>Lösung
-Erlauben Sie ausgehende TCP-Verbindungen über Port TCP/1433 auf der Clientseite des Datenverwaltungsgateways, bevor Sie eine Verbindung mit einer SQL-Datenbank herstellen.
+Lassen Sie ausgehende TCP-Verbindungen über den Port „TCP/1433“ auf der Clientseite des Datenverwaltungsgateways zu, bevor Sie eine Verbindung mit einer SQL-Datenbank herstellen.
 
-Wenn die Zieldatenbank eine Azure SQL-Datenbank ist, überprüfen Sie auch die SQL Server-Firewalleinstellungen für Azure.
+Wenn sich die Zieldatenbank in Azure SQL-Datenbank befindet, überprüfen Sie auch die SQL Server-Firewalleinstellungen für Azure.
 
 Im folgenden Abschnitt finden Sie Anweisungen zum Testen der Verbindung mit dem lokalen Datenspeicher.
 
@@ -233,9 +232,9 @@ Im folgenden Abschnitt finden Sie Anweisungen zum Testen der Verbindung mit dem 
 Wenn Sie Fehler bei der Datenspeicherverbindung oder den Datenspeichertreibern bemerken, führen Sie folgende Schritte aus:
 
 1. Starten Sie den Datenverwaltungsgateway-Konfigurations-Manager auf dem Gatewaycomputer.
-2. Wechseln Sie zur Registerkarte **Diagnose**.
+2. Wechseln Sie zur Registerkarte **Diagnose** .
 3. Fügen Sie in **Verbindung testen** die Werte der Gatewaygruppe hinzu.
-4. Klicken Sie auf **Testen**, um festzustellen, ob Sie vom Gatewaycomputer aus mithilfe der Verbindungs- und Anmeldeinformationen eine Verbindung mit der lokalen Datenquelle herstellen können. Wenn das Testen der Verbindung weiter misslingt, nachdem Sie einen Treiber installiert haben, starten Sie das Gateway neu, damit es die letzte Änderung übernimmt.
+4. Klicken Sie auf **Testen** , um festzustellen, ob Sie vom Gatewaycomputer aus mithilfe der Verbindungs- und Anmeldeinformationen eine Verbindung mit der lokalen Datenquelle herstellen können. Wenn das Testen der Verbindung weiter misslingt, nachdem Sie einen Treiber installiert haben, starten Sie das Gateway neu, damit es die letzte Änderung übernimmt.
 
 ![„Verbindung testen“ auf der Registerkarte „Diagnose“](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
 
@@ -246,18 +245,18 @@ Wenn Sie sich im Zusammenhang mit Gatewayproblemen an den Microsoft-Support wend
 1. Wechseln Sie im Datenverwaltungsgateway-Konfigurations-Manager zur Registerkarte **Diagnose**.
 
     ![Datenverwaltungsgateway: Registerkarte „Diagnose“](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png)
-2. Klicken Sie auf den Link **Protokolle senden**, um das folgende Dialogfeld anzuzeigen.
+2. Klicken Sie auf den Link **Protokolle senden** , um das folgende Dialogfeld anzuzeigen.
 
     ![Datenverwaltungsgateway: Senden von Protokollen](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
-3. (Optional) Klicken Sie auf **Protokolle anzeigen**, um Protokolle in der Ereignisanzeige durchzusehen.
-4. (Optional) Klicken Sie auf **Datenschutz**, um die Datenschutzbestimmungen der Onlinedienste von Microsoft anzuzeigen.
-5. Wenn Sie zum Hochladen bereit sind, klicken Sie auf **Protokolle senden**, um Protokolle der letzten sieben Tage zur Problembehandlung an Microsoft zu senden. Daraufhin sollte der Status des Vorgangs „Protokolle senden“ wie in der folgenden Abbildung angezeigt werden.
+3. (Optional) Klicken Sie auf **Protokolle anzeigen** , um Protokolle in der Ereignisanzeige durchzusehen.
+4. (Optional) Klicken Sie auf **Datenschutz** , um die Datenschutzbestimmungen der Onlinedienste von Microsoft anzuzeigen.
+5. Wenn Sie zum Hochladen bereit sind, klicken Sie auf **Protokolle senden** , um Protokolle der letzten sieben Tage zur Problembehandlung an Microsoft zu senden. Daraufhin sollte der Status des Vorgangs „Protokolle senden“ wie in der folgenden Abbildung angezeigt werden.
 
-    ![Datenverwaltungsgateway: Senden des Status von Protokollen](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
+    ![Screenshot, der zeigt, wo der Status des Protokollsendevorgangs angezeigt werden kann](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
 6. Nach Abschluss des Vorgangs wird ein Dialogfeld wie in der folgenden Abbildung angezeigt.
 
     ![Datenverwaltungsgateway: Senden des Status von Protokollen](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
-7. Notieren Sie sich die **Berichts-ID**, und teilen Sie sie dem Microsoft Support mit. Die Berichts-ID wird verwendet, um die Gatewayprotokolle zu suchen, die Sie zur Problembehandlung hochgeladen haben.  Die Berichts-ID wird auch in der Ereignisanzeige gespeichert.  Sie finden Sie anhand der Ereignis-ID „25“ sowie von Datum und Uhrzeit.
+7. Notieren Sie sich die **Berichts-ID** , und teilen Sie sie dem Microsoft Support mit. Die Berichts-ID wird verwendet, um die Gatewayprotokolle zu suchen, die Sie zur Problembehandlung hochgeladen haben.  Die Berichts-ID wird auch in der Ereignisanzeige gespeichert.  Sie finden Sie anhand der Ereignis-ID „25“ sowie von Datum und Uhrzeit.
 
     ![Datenverwaltungsgateway: Senden der Berichts-ID von Protokollen](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png)    
 
@@ -272,14 +271,14 @@ Bei diesen Szenarien können Sie Gatewayprotokolle als ZIP-Datei speichern und s
 
 ![Datenverwaltungsgateway: Fehler bei der Registrierung](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png)
 
-Klicken Sie auf den Link **Gatewayprotokolle archivieren**, um Protokolle zu archivieren und zu speichern und dann die ZIP-Datei für den Microsoft Support freizugeben.
+Klicken Sie auf den Link **Gatewayprotokolle archivieren** , um Protokolle zu archivieren und zu speichern und dann die ZIP-Datei für den Microsoft Support freizugeben.
 
 ![Datenverwaltungsgateway: Archivieren von Protokollen](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png)
 
 ### <a name="locate-gateway-logs"></a>Suchen von Gatewayprotokollen
 Ausführliche Informationen hierzu finden Sie in den Gateway-Protokollinformationen und Windows-Ereignisprotokollen.
 
-1. Starten Sie die Windows-**Ereignisanzeige**.
+1. Starten Sie die Windows- **Ereignisanzeige**.
 2. Suchen Sie die Protokolle im Ordner **Anwendungs- und Dienstprotokolle** > **Datenverwaltungsgateway**.
 
    Wenn Sie Probleme mit dem Gateway beheben müssen, suchen Sie in der Ereignisanzeige nach Ereignissen des Typs „Fehler“.

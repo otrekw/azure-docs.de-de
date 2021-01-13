@@ -1,5 +1,5 @@
 ---
-title: Verwalten des Mobilitäts-Agents auf Servern für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation
+title: Verwalten des Mobilität-Agent für VMware-/physische Server mit Azure Site Recovery
 description: Verwalten Sie den Mobilitäts-Agent, um mit dem Azure Site Recovery-Dienst eine Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure auszuführen.
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -7,25 +7,28 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0a8b3a8bcfc2aa8270d7be140a94e5b83973f3e5
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: d921bddf90c415cb244e2cc9ad98354392a537ee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972127"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90530147"
 ---
-# <a name="manage-mobility-agent-on-protected-machines"></a>Verwalten des Mobilitäts-Agents auf geschützten Computern
+# <a name="manage-the-mobility-agent"></a>Verwalten des Mobilitäts-Agent 
 
 Sie richten einen Mobilitäts-Agent auf Ihrem Server ein, wenn Sie Azure Site Recovery für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure verwenden. Der Mobilitäts-Agent koodiniert die Kommunikation zwischen dem geschützten Computer und dem Konfigurationsserver/Prozessserver für horizontales Hochskalieren und verwaltet die Datenreplikation. In diesem Artikel werden häufige Aufgaben zur Verwaltung des Mobilitäts-Agents nach dessen Bereitstellung zusammengefasst.
 
+>[!TIP]
+>Anleitungen zum Herunterladen des Installationsprogramms für eine bestimmte Betriebssystem-/Linux-Distribution finden Sie [hier](vmware-physical-mobility-service-overview.md#locate-installer-files). Zum automatischen Aktualisieren über das Portal müssen Sie das Installationsprogramm nicht herunterladen. [ASR ruft das Installationsprogramm automatisch vom Konfigurationsserver ab und aktualisiert den Agent](#update-mobility-service-from-azure-portal).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="update-mobility-service-from-azure-portal"></a>Aktualisieren des Mobilitätsdiensts über das Azure-Portal
 
 1. Stellen Sie vor dem Start sicher, dass der Konfigurationsserver, der Prozessserver für horizontales Skalieren und alle Masterzielserver, die Teil der Bereitstellung sind, aktualisiert werden, bevor Sie mit der Aktualisierung von Mobility Service auf den geschützten Computern beginnen.
-2. Öffnen Sie im Portal den Tresor > **Replizierte Elemente**.
-3. Wenn der Konfigurationsserver bereits die neueste Version verwendet, wird eine Benachrichtigung angezeigt, dass ein neues Update für den Site Recovery-Replikations-Agent verfügbar ist. Sie können es per Klick installieren.
+    1. Stellen Sie ab Version 9.36 für SUSE Linux Enterprise Server 11 SP3, RHEL 5, CentOS 5 und Debian 7 sicher, dass das neueste Installationsprogramm [auf dem Konfigurationsserver und dem Prozessserver für horizontales Hochskalieren verfügbar ist](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server).
+1. Öffnen Sie im Portal den Tresor > **Replizierte Elemente**.
+1. Wenn der Konfigurationsserver bereits die neueste Version verwendet, wird eine Benachrichtigung angezeigt, dass ein neues Update für den Site Recovery-Replikations-Agent verfügbar ist. Sie können es per Klick installieren.
 
      ![Fenster „Replizierte Elemente“](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
@@ -33,15 +36,28 @@ Sie richten einen Mobilitäts-Agent auf Ihrem Server ein, wenn Sie Azure Site Re
 
      ![VM-Liste mit replizierten Elementen](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
-5. Der Aktualisierungsauftrag für Mobility Service wird für jeden ausgewählten Computer gestartet.
+5. Der Aktualisierungsauftrag für Mobility Service wird für jeden ausgewählten Computer gestartet. Der Mobilitäts-Agent wird auf die Version des Konfigurationsservers aktualisiert. Wenn der Konfigurationsserver beispielsweise die Version 9.33 aufweist, wird der Mobilitäts-Agent auf einer geschützten VM ebenfalls auf Version 9.33 aktualisiert.
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Aktualisieren des Mobilitätsdiensts über ein PowerShell-Skript unter Windows Server
+
+Stellen Sie vor dem Start sicher, dass der Konfigurationsserver, der Prozessserver für horizontales Skalieren und alle Masterzielserver, die Teil der Bereitstellung sind, aktualisiert werden, bevor Sie mit der Aktualisierung von Mobility Service auf den geschützten Computern beginnen.
 
 Verwenden Sie das folgende Skript zum Aktualisieren des Mobilitätsdiensts auf einem Server über das PowerShell-Cmdlet:
 
 ```azurepowershell
 Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
+
+## <a name="update-mobility-service-manually-on-each-protected-server"></a>Manuelles Aktualisieren des Mobilitätsdiensts auf den einzelnen geschützten Servern
+
+1. Stellen Sie vor dem Start sicher, dass der Konfigurationsserver, der Prozessserver für horizontales Skalieren und alle Masterzielserver, die Teil der Bereitstellung sind, aktualisiert werden, bevor Sie mit der Aktualisierung von Mobility Service auf den geschützten Computern beginnen.
+
+2. [Suchen Sie das Agent-Installationsprogramm](vmware-physical-mobility-service-overview.md#locate-installer-files) basierend auf dem Betriebssystem des Servers.
+
+>[!IMPORTANT]
+> Wenn Sie virtuelle Azure-IaaS-Computer von einer Azure-Region in eine andere replizieren, sollten Sie diese Methode nicht verwenden. Weitere Informationen zu allen verfügbaren Optionen finden Sie in [unserem Leitfaden](azure-to-azure-autoupdate.md).
+
+3. Kopieren Sie die Installationsdatei auf den geschützten Computer, und führen Sie sie aus, um den Mobilitäts-Agent zu aktualisieren.
 
 ## <a name="update-account-used-for-push-installation-of-mobility-service"></a>Aktualisieren des für die Pushinstallation des Mobilitätsdiensts verwendeten Kontos
 

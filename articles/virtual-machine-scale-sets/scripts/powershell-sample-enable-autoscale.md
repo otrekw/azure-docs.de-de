@@ -1,34 +1,26 @@
 ---
-title: 'Azure PowerShell-Beispiele: Aktivieren der hostbasierten automatischen Skalierung | Microsoft-Dokumentation'
-description: Azure PowerShell-Beispiele
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.devlang: na
+title: 'Azure PowerShell-Beispiele: Aktivieren der hostbasierten automatischen Skalierung'
+description: Dieses Skript erstellt eine VM-Skalierungsgruppe unter Windows Server 2016 und verwendet hostbasierte Metriken zur automatischen Skalierung bei Veränderungen der CPU-Auslastung.
+author: ju-shim
+ms.author: jushiman
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: bf424cabdfee4e325078594b8b0cc09fe26e9625
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.service: virtual-machine-scale-sets
+ms.subservice: autoscale
+ms.date: 06/25/2020
+ms.custom: avverma, devx-track-azurepowershell
+ms.openlocfilehash: 9530f34ee919547049df06fb0974971c3ba4b2a9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980634"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89079624"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-powershell"></a>Automatisches Skalieren einer VM-Skalierungsgruppe mit PowerShell
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Windows Server 2016 und verwendet hostbasierte Metriken zur automatischen Skalierung bei Veränderungen der CPU-Auslastung.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -55,6 +47,5 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe und alle darin enthaltenen Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
-Weitere PowerShell-Skriptbeispiele für VM-Skalierungsgruppen finden Sie in der [Dokumentation zu Azure-VM-Skalierungsgruppen](../powershell-samples.md).

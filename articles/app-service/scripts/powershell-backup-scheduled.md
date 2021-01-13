@@ -1,31 +1,25 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Erstellen einer geplanten Sicherung für eine Web-App | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Erstellen einer geplanten Sicherung für eine Web-App
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'Mit PowerShell: Erstellen einer geplanten Sicherung'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird das Erstellen einer geplanten Sicherung für eine App veranschaulicht.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: b0223d093cc82becf66a903ea80c03c8435ea84c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, seodec18, devx-track-azurepowershell
+ms.openlocfilehash: c53872973dad3d438d0d948c4eaebaf0cb7ba4de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098398"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89075887"
 ---
 # <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>Erstellen einer geplanten Sicherung für eine Web-App mit PowerShell
 
 Dieses Beispielskript erstellt in App Service eine Web-App mit den zugehörigen Ressourcen und dann eine geplante Sicherung dafür. 
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. 
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. 
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -59,6 +53,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Azure PowerShell-Beispiele für Azure App Service-Web-Apps finden Sie unter [Azure PowerShell-Beispiele](../samples-powershell.md).

@@ -1,20 +1,14 @@
 ---
 title: Kontinuierliches Überwachen der DevOps-Releasepipeline mit Azure Pipelines und Azure Application Insights | Microsoft-Dokumentation
 description: Dieser Artikel enthält Anweisungen zum schnellen Einrichten der kontinuierlichen Überwachung mit Application Insights.
-services: application-insights
-keywords: ''
-author: mrbullwinkle
-ms.author: mbullwin
-ms.date: 07/16/2019
-ms.service: application-insights
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c39a2f75fe74b61463af464078b4446bba07dec0
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.date: 05/01/2020
+ms.openlocfilehash: fd7cd6a107ed45adb60167a57661b60be5dc8212
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277730"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86517126"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Hinzufügen der kontinuierlichen Überwachung zur Releasepipeline
 
@@ -57,17 +51,19 @@ Die Vorlage **Azure App Service-Bereitstellung mit kontinuierlicher Überwachung
 
 Ändern Sie die Einstellungen für Warnungsregeln wie folgt:
 
-1. Wählen Sie auf der Seite der Releasepipeline im linken Bereich die Option **Configure Application Insights Alerts** (Application Insights-Warnungen konfigurieren).
+Wählen Sie auf der Seite der Releasepipeline im linken Bereich die Option **Configure Application Insights Alerts** (Application Insights-Warnungen konfigurieren).
 
-1. Wählen Sie im Bereich **Azure Monitor-Warnungen** neben **Warnungsregeln** die Auslassungszeichen ( **...** ).
-   
-1. Wählen Sie im Dialogfeld **Warnungsregeln** das Dropdownsymbol neben einer Warnungsregel, z. B. **Verfügbarkeit**. 
-   
-1. Ändern Sie den **Schwellenwert** und andere Einstellungen, um Ihre Anforderungen zu erfüllen.
-   
-   ![Ändern der Warnung](media/continuous-monitoring/003.png)
-   
-1. Wählen Sie **OK** und dann oben rechts im Azure DevOps-Fenster die Option **Speichern**. Geben Sie einen beschreibenden Kommentar ein, und wählen Sie anschließend **OK**.
+Die vier Standardwarnungsregeln werden über ein Inlineskript erstellt:
+
+```bash
+$subscription = az account show --query "id";$subscription.Trim("`"");$resource="/subscriptions/$subscription/resourcegroups/"+"$(Parameters.AppInsightsResourceGroupName)"+"/providers/microsoft.insights/components/" + "$(Parameters.ApplicationInsightsResourceName)";
+az monitor metrics alert create -n 'Availability_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg availabilityResults/availabilityPercentage < 99' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'FailedRequests_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count requests/failed > 5' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'ServerResponseTime_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg requests/duration > 5' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'ServerExceptions_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count exceptions/server > 5' --description "created from Azure DevOps";
+```
+
+Sie können das Skript ändern und zusätzliche Warnungsregeln hinzufügen, die Warnungsbedingungen ändern oder Warnungsregeln entfernen, die für Ihre Bereitstellungszwecke nicht sinnvoll sind.
 
 ## <a name="add-deployment-conditions"></a>Hinzufügen von Bereitstellungsbedingungen
 
@@ -105,4 +101,4 @@ Sie können das Verhalten von Bereitstellungsgates und andere Releaseschritte de
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Pipelines finden Sie in der [Azure Pipelines-Dokumentation](https://docs.microsoft.com/azure/devops/pipelines).
+Weitere Informationen zu Azure Pipelines finden Sie in der [Azure Pipelines-Dokumentation](/azure/devops/pipelines).

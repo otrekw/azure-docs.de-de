@@ -1,18 +1,18 @@
 ---
 title: Übersicht über Azure Firewall-Diensttags
-description: Dieser Artikel bietet eine Übersicht über die Azure Firewall-Diensttags.
+description: Ein Diensttag steht für eine Gruppe von IP-Adressen und hat die Aufgabe, bei der Erstellung von Sicherheitsregeln die Komplexität zu verringern.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 6/27/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: d0ac36e415c056dffc9c75d00968ff74c2156e63
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 83e9a96573bbc72e0afff61cc0f151f95b081e30
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450171"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031578"
 ---
 # <a name="azure-firewall-service-tags"></a>Azure Firewall-Diensttags
 
@@ -22,7 +22,7 @@ Azure Firewall-Diensttags können im Zielfeld für Netzwerkregeln verwendet werd
 
 ## <a name="supported-service-tags"></a>Unterstützte Diensttags
 
-Eine Liste mit Diensttags, die für Netzwerkregeln der Azure-Firewall verfügbar sind, finden Sie unter [Diensttags](../virtual-network/security-overview.md#service-tags).
+Eine Liste mit Diensttags, die für Azure Firewall-Netzwerkregeln verfügbar sind, finden Sie unter [Diensttags für virtuelle Netzwerke](../virtual-network/service-tags-overview.md#available-service-tags).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,20 +1,20 @@
 ---
-title: Problembehandlung beim Failback auf lokale Umgebungen während der Notfallwiederherstellung von VMware-VMs in Azure mit Azure Site Recovery | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt Möglichkeiten zum Beheben von Fehlern beim Failback und erneuten Schützen während der Notfallwiederherstellung von VMware-VMs in Azure mit Azure Site Recovery.
-author: vDonGlover
-manager: JarrettRenshaw
+title: Problembehandlung bei VMware vCenter-Ermittlungsfehlern in Azure Site Recovery
+description: In diesem Artikel wird beschrieben, wie Sie die Problembehandlung bei VMware vCenter-Ermittlungsfehlern in Azure Site Recovery durchführen können.
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.author: v-doglov
-ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 10/29/2019
+ms.author: mayg
+ms.openlocfilehash: 1a8471305af93194ccae7b0928685e10d4d64726
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565190"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366654"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>Behandeln von vCenter-Ermittlungsfehlern
+# <a name="troubleshoot-vcenter-server-discovery-failures"></a>Problembehandlung von vCenter Server-Ermittlungsfehlern
 
 Dieser Artikel hilft Ihnen bei der Behandlung von Problemen, die aufgrund von VMware vCenter-Ermittlungsfehler auftreten.
 
@@ -24,12 +24,14 @@ In Versionen vor 9.20 trennt vCenter die Verbindung, wenn ein nicht-numerischer 
 
 Dieses Problem wird durch die Fehler-ID 95126 identifiziert.
 
-    ERROR :: Hit an exception while fetching the required informationfrom vCenter/vSphere.Exception details:
-    System.FormatException: Input string was not in a correct format.
-       at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-       at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-       at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
-    
+```output
+ERROR :: Hit an exception while fetching the required informationfrom vCenter/vSphere.Exception details:
+System.FormatException: Input string was not in a correct format.
+    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+    at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
+```
+
 So lösen Sie das Problem:
 
 - Identifizieren Sie den virtuellen Computer, und legen Sie den Wert auf einen numerischen Wert fest (VM Edit-Einstellungen in vCenter).
@@ -46,13 +48,13 @@ Im Allgemeinen wird der Proxy zur Kommunikation mit öffentlichen Netzwerken ver
 
 Die folgenden Situationen treten auf, wenn dieses Problem vorliegt:
 
-- Der vCenter-Server \<vCenter> ist aufgrund des Fehlers nicht erreichbar: Der Remoteserver hat einen Fehler zurückgegeben: (503) Server nicht verfügbar
-- Der vCenter-Server \<vCenter> ist aufgrund des Fehlers nicht erreichbar: Der Remoteserver hat einen Fehler zurückgegeben: Es konnte keine Verbindung mit dem Remoteserver hergestellt werden.
+- Der vCenter-Server \<vCenter> ist aufgrund des Fehlers nicht erreichbar: The remote server returned an error: (503) Server nicht verfügbar
+- Der vCenter-Server \<vCenter> ist aufgrund des Fehlers nicht erreichbar: The remote server returned an error: Es konnte keine Verbindung mit dem Remoteserver hergestellt werden.
 - Es konnte keine Verbindung mit dem vCenter/ESXi-Server hergestellt werden.
 
 So lösen Sie das Problem:
 
-Laden Sie das [PsExec-Tool](https://aka.ms/PsExec) herunter. 
+Laden Sie das [PsExec-Tool](/sysinternals/downloads/psexec) herunter. 
 
 Verwenden Sie das PsExec-Tool, um auf den Systembenutzerkontext zuzugreifen und zu bestimmen, ob die Proxyadresse konfiguriert ist. Anschließend können Sie vCenter mit den folgenden Verfahren zur Umgehungsliste hinzufügen.
 
@@ -79,4 +81,4 @@ Für die DRA-Proxykonfiguration:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 
+[Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern](./vmware-azure-manage-configuration-server.md#refresh-configuration-server)

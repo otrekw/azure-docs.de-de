@@ -1,31 +1,20 @@
 ---
-title: Erstellen einer Azure Service Fabric-Clustervorlage| Microsoft-Dokumente
+title: Erstellen einer Azure Service Fabric-Clustervorlage
 description: Erfahren Sie, wie Sie eine Resource Manager-Vorlage für einen Service Fabric-Cluster erstellen. Konfigurieren der Sicherheit, von Azure Key Vault und Azure Active Directory für die Clientauthentifizierung
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/16/2018
-ms.author: atsenthi
-ms.openlocfilehash: 9030a1d9d0b1e3f9b84f6636b0d3d758ab4cfa3b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b028b5c1f32733146c071e50b24202e5bad945c0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599990"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86260492"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Erstellen einer Resource Manager-Vorlage für Service Fabric-Cluster
 
 Ein [Azure Service Fabric-Cluster](service-fabric-deploy-anywhere.md) ist eine vernetzte Gruppe von virtuellen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Bei einem Service Fabric-Cluster, der in Azure ausgeführt wird, handelt es sich um eine Azure-Ressource, und er wird mithilfe des Ressourcen-Managers bereitgestellt, verwaltet und überwacht.  In diesem Artikel wird beschrieben, wie eine Resource Manager-Vorlage für einen Service Fabric-Cluster, der in Azure ausgeführt wird, erstellt wird.  Wenn die Vorlage vollständig ist, können Sie [den Cluster in Azure bereitstellen](service-fabric-cluster-creation-via-arm.md).
 
-Die Clustersicherheit wird konfiguriert, sobald der Cluster zum ersten Mal eingerichtet wird. Diese kann später nicht geändert werden. Lesen Sie vor dem Einrichten eines Clusters den Artikel [Szenarien für die Clustersicherheit in Service Fabric][service-fabric-cluster-security]. In Azure verwendet Service Fabric das X.509-Zertifikat zum Schützen Ihres Clusters und seiner Endpunkte sowie zum Authentifizieren von Clients und Verschlüsseln von Daten. Azure Active Directory wird ebenfalls empfohlen, um den Zugriff auf Verwaltungsendpunkte zu schützen. Azure AD-Mandanten und -Benutzer müssen vor der Erstellung des Clusters erstellt werden.  Weitere Informationen finden Sie unter [Set up Azure AD to authenticate clients (Einrichten von Azure AD zum Authentifizieren von Clients)](service-fabric-cluster-creation-setup-aad.md).
+Die Clustersicherheit wird konfiguriert, sobald der Cluster zum ersten Mal eingerichtet wird. Diese kann später nicht geändert werden. Lesen Sie vor dem Einrichten eines Clusters den Artikel [Szenarien für die Clustersicherheit in Service Fabric][service-fabric-cluster-security]. In Azure verwendet Service Fabric das X.509-Zertifikat zum Schützen Ihres Clusters und seiner Endpunkte sowie zum Authentifizieren von Clients und Verschlüsseln von Daten. Azure Active Directory wird ebenfalls empfohlen, um den Zugriff auf Verwaltungsendpunkte zu schützen. Azure AD-Mandanten und -Benutzer müssen vor der Erstellung des Clusters erstellt werden.  Weitere Informationen finden Sie unter [Einrichten der Azure Active Directory-Authentifizierung](service-fabric-cluster-creation-setup-aad.md).
 
 Bevor Sie einen Produktionscluster für die Ausführung von Produktionsworkloads bereitstellen, lesen Sie zuerst die [Prüfliste für die Produktionsbereitschaft](service-fabric-production-readiness-checklist.md).
 
@@ -95,7 +84,7 @@ Das Zertifikat für die Clusterauthentifizierung muss sowohl in der Service Fabr
       "extensionProfile": {
         "extensions": [
           {
-            "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType0Name')]",
+            "name": "[concat('ServiceFabricNodeVmExt_',variables('vmNodeType0Name'))]",
             "properties": {
               ...
               "settings": {
@@ -146,7 +135,7 @@ Das Zertifikat für die Clusterauthentifizierung muss sowohl in der Service Fabr
 Fügen Sie die Azure AD-Konfiguration einer Resource Manager-Vorlage für einen Cluster hinzu, indem Sie auf den Schlüsseltresor mit den Zertifikatschlüsseln verweisen. Fügen Sie die Azure AD-Parameter und -werte zu einer Resource Manager-Vorlagenparameterdatei (*azuredeploy.parameters.json*) hinzu. 
 
 > [!NOTE]
-> Azure AD-Mandanten und -Benutzer müssen vor der Erstellung des Clusters erstellt werden.  Weitere Informationen finden Sie unter [Einrichten der Azure Active Directory-Authentifizierung](service-fabric-cluster-creation-setup-aad.md).
+> Azure AD-Mandanten und -Benutzer müssen unter Linux vor der Erstellung des Clusters erstellt werden.  Weitere Informationen finden Sie unter [Einrichten der Azure Active Directory-Authentifizierung](service-fabric-cluster-creation-setup-aad.md).
 
 ```json
 {
@@ -273,7 +262,7 @@ Informationen zur JSON-Syntax und zu den Eigenschaften für die in diesem Artike
 <!-- Links -->
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-secure-cluster-5-node-1-nodetype]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure
-[resource-group-template-deploy]: https://azure.microsoft.com/documentation/articles/resource-group-template-deploy/
+[resource-group-template-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 
 <!-- Images -->
 [cluster-security-arm-dependency-map]: ./media/service-fabric-cluster-creation-create-template/cluster-security-arm-dependency-map.png

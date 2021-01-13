@@ -1,22 +1,15 @@
 ---
-title: Überwachen von Batch mit Azure Application Insights | Microsoft-Dokumentation
+title: Überwachen von Azure Batch mit Azure Application Insights
 description: Erfahren Sie, wie Sie eine Azure Batch-.NET-Anwendung mithilfe der Azure Application Insights-Bibliothek instrumentieren.
-services: batch
-author: laurenhughes
-manager: gwallace
-ms.assetid: ''
-ms.service: batch
-ms.devlang: .NET
-ms.topic: article
-ms.workload: na
+ms.topic: how-to
+ms.custom: devx-track-csharp
 ms.date: 04/05/2018
-ms.author: lahugh
-ms.openlocfilehash: 8d896785a2f000a22f68611d5b3b1162c2021236
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d06e2b61725f05d025acd8a2995ea041f138ae4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322566"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88933561"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Überwachen und Debuggen einer Azure Batch-.NET-Anwendung mit Application Insights
 
@@ -37,7 +30,7 @@ Für diesen Artikel ist auf [GitHub](https://github.com/Azure/azure-batch-sample
 
 * [Eine Application Insights-Ressource](../azure-monitor/app/create-new-resource.md )
   
-   * Verwenden Sie das Azure-Portal, um eine Application Insights-*Ressource* zu erstellen. Klicken Sie auf *Allgemein* **Anwendungstyp**.
+   * Verwenden Sie das Azure-Portal, um eine Application Insights-*Ressource* zu erstellen. Wählen Sie den **Anwendungstyp** *Allgemein* aus.
 
    * Kopieren Sie den [Instrumentierungsschlüssel](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) aus dem Portal. Sie benötigen ihn an späterer Stelle dieses Artikels.
   

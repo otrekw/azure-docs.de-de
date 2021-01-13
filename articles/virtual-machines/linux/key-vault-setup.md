@@ -1,30 +1,24 @@
 ---
-title: Einrichten von Azure Key Vault für virtuelle Linux-Computer | Microsoft Docs
-description: Einrichten eines Schlüsseltresors, der für einen mit Azure Resource Manager erstellten virtuellen Computer verwendet werden soll, mit der Azure CLI.
-services: virtual-machines-linux
-documentationcenter: ''
-author: singhkays
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: bccdd5ab-5ccf-4760-9039-92c6eafb15bd
-ms.service: virtual-machines-linux
-ms.devlang: azurecli
+title: Einrichten von Azure Key Vault mithilfe der CLI
+description: Einrichten eines Schlüsseltresors für virtuelle Computer mithilfe der Azure CLI
+author: mimckitt
+manager: vashan
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/24/2017
-ms.author: kasing
-ms.openlocfilehash: cbc8b6be09fcf4232636b580dc0c62482b83bd60
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.author: mimckitt
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 94a48662d2a81b5475b63df99c3f1a7f492e3561
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002156"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678344"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Einrichten eines Schlüsseltresors für virtuelle Computer mithilfe der Azure CLI
 
-Im Azure Resource Manager-Stapel werden Geheimnisse/Zertifikate als Ressourcen modelliert, die durch Key Vault bereitgestellt werden. Weitere Informationen über Azure Schlüsseltresore finden Sie unter [Was ist der Azure-Schlüsseltresor?](../../key-vault/key-vault-overview.md) Damit Key Vault mit Azure Resource Manager-VMs verwendet werden kann, müssen Sie die *EnabledForDeployment*-Eigenschaft in Key Vault auf TRUE festlegen. Dieser Artikel zeigt das Einrichten eines Schlüsseltresors mithilfe von Azure CLI für die Verwendung mit virtuellen Azure-Computern (Azure-VMs). 
+Im Azure Resource Manager-Stapel werden Geheimnisse/Zertifikate als Ressourcen modelliert, die durch Key Vault bereitgestellt werden. Weitere Informationen über Azure Schlüsseltresore finden Sie unter [Was ist der Azure-Schlüsseltresor?](../../key-vault/general/overview.md) Damit Key Vault mit Azure Resource Manager-VMs verwendet werden kann, müssen Sie die *EnabledForDeployment* -Eigenschaft in Key Vault auf TRUE festlegen. Dieser Artikel zeigt das Einrichten eines Schlüsseltresors mithilfe von Azure CLI für die Verwendung mit virtuellen Azure-Computern (Azure-VMs). 
 
 Zum Ausführen dieser Schritte muss die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index) bei einem Azure-Konto angemeldet sein.
 

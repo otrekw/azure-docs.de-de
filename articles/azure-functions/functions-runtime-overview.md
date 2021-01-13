@@ -1,20 +1,16 @@
 ---
-title: Übersicht über Azure Functions Runtime | Microsoft-Dokumentation
+title: Übersicht über Azure Functions Runtime
 description: Übersicht über Azure Functions Runtime Preview
-services: functions
 author: apwestgarth
-manager: stefsch
-ms.assetid: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: e67041ca78ba328fad132cc556b12d780eb9b318
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 61e3b82e497afcdc8239a9f4fda3e4f739166a1f
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095972"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108438"
 ---
 # <a name="azure-functions-runtime-overview-preview"></a>Übersicht über Azure Functions-Runtime (Vorschauversion)
 
@@ -49,7 +45,7 @@ Um mit der Nutzung von Azure Functions Runtime zu beginnen, benötigen Sie einen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Installieren von [Azure Functions Runtime Preview](https://aka.ms/azafrdoc)
+Installieren von [Azure Functions Runtime Preview](./functions-runtime-install.md)
 
 <!--Image references-->
 [1]: ./media/functions-runtime-overview/AzureFunctionsRuntime_Portal.png

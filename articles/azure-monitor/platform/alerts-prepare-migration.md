@@ -1,25 +1,23 @@
 ---
-title: Vorbereiten der Migration von klassischen Azure Monitor-Warnungen durch Aktualisieren Ihrer Logik-Apps und Runbooks
+title: Aktualisieren von Logik-Apps und Runbooks für die Migration von Warnungen
 description: Erfahren Sie, wie Sie Ihre Webhooks, Logik-Apps und Runbooks zur Vorbereitung der freiwilligen Migration ändern.
-author: snehithm
-ms.service: azure-monitor
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 5235db5cab39be6e36bdf145d3edc7c73fe9da54
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9df5d702019063ffba6d79cc63370cd25a7242fd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827391"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358780"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Vorbereiten Ihrer Logik-Apps und Runbooks für die Migration von klassischen Warnungsregeln
 
-Wie [bereits angekündigt](monitoring-classic-retirement.md) werden klassische Warnungen in Azure Monitor im September 2019 (ursprünglich Juli 2019) eingestellt. Im Azure-Portal steht ein Migrationstool für Kunden bereit, die klassische Warnungsregeln verwenden und die Migration selbst auslösen möchten.
-
 > [!NOTE]
-> Aufgrund einer Verzögerung beim Rollout des Migrationstools wurde der Deaktivierungstermin vom ursprünglich angekündigten Datum, dem 30. Juni 2019, auf den 31. August 2019 verschoben.
+> Wie [bereits angekündigt](monitoring-classic-retirement.md), werden klassische Warnungen in Azure Monitor eingestellt, sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. Das Deaktivierungsdatum für diese Warnungen wurde auf einen späteren Termin verschoben. Ein neues Datum wird demnächst angekündigt.
+>
 
 Wenn Sie sich entscheiden, Ihre klassischen Warnungsregeln freiwillig zu neuen Warnungsregeln zu migrieren, beachten Sie, dass einige Unterschiede zwischen den beiden Systemen bestehen. In diesem Artikel werden die Unterschiede erläutert, und Sie erfahren, wie Sie sich auf die Änderung vorbereiten können.
 
@@ -29,12 +27,12 @@ Die APIs zum Erstellen und Verwalten klassischer Warnungsregeln (`microsoft.insi
 
 In der folgenden Tabelle sind befehlsorientierte Benutzerschnittstellen für klassische und neue Warnungen aufgeführt:
 
-|         |Klassische Warnungen  |Neue Metrikwarnungen |
-|---------|---------|---------|
-|REST-API     | [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
-|Azure-Befehlszeilenschnittstelle     | [az monitor alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor metrics alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [Referenz](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Referenz](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
-| Azure Resource Manager-Vorlage | [Für klassische Warnungen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Für neue Metrikwarnungen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
+| Typ des Bereitstellungsskripts | Klassische Warnungen | Neue Metrikwarnungen |
+| ---------------------- | -------------- | ----------------- |
+|REST-API     | [microsoft.insights/alertrules](/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](/rest/api/monitor/metricalerts)       |
+|Azure-Befehlszeilenschnittstelle     | [az monitor alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor metrics alert](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|PowerShell      | [Referenz](/powershell/module/az.monitor/add-azmetricalertrule)       |  [Referenz](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+| Azure Resource Manager-Vorlage | [Für klassische Warnungen](./alerts-enable-template.md)|[Für neue Metrikwarnungen](./alerts-metric-create-templates.md)|
 
 ## <a name="notification-payload-changes"></a>Änderungen der Benachrichtigungsnutzlast
 
@@ -42,10 +40,10 @@ Das Format der Benachrichtigungsnutzlast für [klassische Warnungsregeln](alerts
 
 Mithilfe der folgenden Tabelle können Sie die Felder für die Webhooknutzlast im klassischen Format dem neuen Format zuordnen:
 
-|  |Klassische Warnungen  |Neue Metrikwarnungen |
-|---------|---------|---------|
+| Typ des Benachrichtigungsendpunkts | Klassische Warnungen | Neue Metrikwarnungen |
+| -------------------------- | -------------- | ----------------- |
 |Wurde die Warnung aktiviert oder behoben?    | **status**       | **data.status** |
-|Kontextinformationen zur Warnung     | **Kontextvariable**        | **data.context**        |
+|Kontextinformationen zur Warnung     | **context**        | **data.context**        |
 |Zeitstempel der Aktivierung oder Auflösung der Warnung     | **context.timestamp**       | **data.context.timestamp**        |
 | Warnungsregel-ID | **context.id** | **data.context.id** |
 | Name der Warnungsregel | **context.name** | **data.context.name** |
@@ -78,7 +76,7 @@ Wenn Sie Logik-Apps mit klassischen Warnungen verwenden, müssen Sie den Logik-A
 
 1. Verwenden Sie die Vorlage „Azure Monitor – Metrics Alert Handler“ (Azure Monitor – Metrikwarnungshandler). Diese Vorlage enthält einen Auslöser **HTTP-Anforderung**, für den das entsprechende Schema definiert ist.
 
-    ![Logik-App-Vorlage](media/alerts-migration/logic-app-template.png "Metrikwarnungsvorlage")
+    ![Screenshot: Zwei Schaltflächen: „Leere Logik-App“ und „Azure Monitor – Metrics Alert Handler“ (Azure Monitor – Metrikwarnungshandler)](media/alerts-migration/logic-app-template.png "Vorlage für Metrikwarnung")
 
 1. Fügen Sie eine Aktion zum Hosten Ihrer Verarbeitungslogik hinzu.
 
@@ -151,11 +149,11 @@ else {
 
 ```
 
-Ein vollständiges Beispiel für ein Runbook, das bei Auslösung einer Warnung einen virtuellen Computer beendet, finden Sie in der [Dokumentation zu Azure Automation](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook).
+Ein vollständiges Beispiel für ein Runbook, das bei Auslösung einer Warnung einen virtuellen Computer beendet, finden Sie in der [Dokumentation zu Azure Automation](../../automation/automation-create-alert-triggered-runbook.md).
 
 ## <a name="partner-integration-via-webhooks"></a>Partnerintegration über Webhooks
 
-Die meisten [unserer Partner, die integrierte Lösungen für klassische Warnungen anbieten](https://docs.microsoft.com/azure/azure-monitor/platform/partners), unterstützen neuere Metrikwarnungen bereits über ihre Integrationen. Bekannte Integrationen, die bereits mit neuen Metrikwarnungen funktionieren:
+Die meisten [unserer Partner, die integrierte Lösungen für klassische Warnungen anbieten](./partners.md), unterstützen neuere Metrikwarnungen bereits über ihre Integrationen. Bekannte Integrationen, die bereits mit neuen Metrikwarnungen funktionieren:
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)

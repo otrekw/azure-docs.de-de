@@ -1,20 +1,22 @@
 ---
 title: Verwenden von Azure Cosmos DB-Ressourcentoken mit dem Gremlin SDK
 description: Hier erfahren Sie, wie Sie Ressourcentoken erstellen und damit auf die Graphdatenbank zugreifen.
-author: olignat
+author: christopheranderson
+ms.author: chrande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: overview
+ms.topic: how-to
 ms.date: 09/06/2019
-ms.author: olignat
-ms.openlocfilehash: 6364bd0f762647b5fe9567ed40042a5ad81f97c1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 22c048b748806404ccfa580e660552a1744f3781
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105031"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361692"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Verwenden von Azure Cosmos DB-Ressourcentoken mit dem Gremlin SDK
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 In diesem Artikel wird erläutert, wie Sie mithilfe von [Azure Cosmos DB-Ressourcentoken](secure-access-to-data.md) über das Gremlin SDK auf die Graphdatenbank zugreifen.
 
@@ -24,11 +26,11 @@ Das Apache TinkerPop Gremlin SDK enthält keine API zum Erstellen von Ressourcen
 
 Die Objektmodellhierarchie über Ressourcentoken ist in der folgenden Gliederung dargestellt:
 
-- **Azure Cosmos DB-Konto**: Entität der höchsten Ebene, der ein DNS zugeordnet ist (z. B. `contoso.gremlin.cosmos.azure.com`).
+- **Azure Cosmos DB-Konto** : Entität der höchsten Ebene, der ein DNS zugeordnet ist (z. B. `contoso.gremlin.cosmos.azure.com`).
   - **Azure Cosmos DB-Datenbank**
     - **Benutzer**
       - **Berechtigung**
-        - **Token**: Eine Eigenschaft des Permission-Objekts, die angibt, welche Aktionen zugelassen oder verweigert werden
+        - **Token** : Eine Eigenschaft des Permission-Objekts, die angibt, welche Aktionen zugelassen oder verweigert werden
 
 Ein Ressourcentoken verwendet das folgende Format: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`. Diese Zeichenfolge ist für die Clients nicht transparent und muss unverändert verwendet werden.
 
@@ -36,7 +38,7 @@ Ein Ressourcentoken verwendet das folgende Format: `"type=resource&ver=1&sig=<ba
 // Notice that document client is created against .NET SDK endpoint, rather than Gremlin.
 DocumentClient client = new DocumentClient(
   new Uri("https://contoso.documents.azure.com:443/"), 
-  "<master key>", 
+  "<primary key>", 
   new ConnectionPolicy 
   {
     EnableEndpointDiscovery = false, 
@@ -62,7 +64,7 @@ Beim Erstellen der GremlinServer-Klasse können Sie Ressourcentoken direkt als p
 // You can obtain the token for a given permission by using the Azure Cosmos DB SDK, or you can pass it into the application as a command line argument or configuration value.
 string resourceToken = GetResourceToken();
 
-// Configure the Gremlin server to use a resource token rather than a master key.
+// Configure the Gremlin server to use a resource token rather than a primary key.
 GremlinServer server = new GremlinServer(
   "contoso.gremlin.cosmosdb.azure.com",
   port: 443,
@@ -102,5 +104,5 @@ Mit einem einzelnen Gremlin-Konto können Sie eine unbegrenzte Anzahl von Token 
 Ein häufiger Fehler, der in Anwendungen bei der Verwendung von Ressourcentoken auftritt, ist „Insufficient permissions provided in the authorization header for the corresponding request. Please retry with another authorization header.“ (Unzureichende Berechtigungen im Autorisierungsheader für die entsprechende Anforderung. Versuchen Sie es mit einem anderen Autorisierungsheader erneut.). Dieser Fehler wird zurückgegeben, wenn bei einem Gremlin-Durchlauf versucht wird, eine Kante oder einen Scheitelpunkt zu schreiben, das Ressourcentoken jedoch nur *Leseberechtigungen* erteilt. Überprüfen Sie, ob der Durchlauf einen der folgenden Schritte enthält: *.addV()* , *.addE()* , *.drop()* oder *.property()* .
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Rollenbasierte Zugriffssteuerung in Azure Cosmos DB](role-based-access-control.md)
+* [Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](role-based-access-control.md) in Azure Cosmos DB
 * [Sicherer Zugriff auf Daten in Azure Cosmos DB](secure-access-to-data.md)

@@ -1,26 +1,27 @@
 ---
 title: Azure IoT Hub-Vorgangsüberwachung (veraltet) | Microsoft-Dokumentation
 description: Verwenden der Azure IoT Hub-Vorgangsüberwachung zum Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit.
-author: nberdy
-manager: briz
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.author: nberdy
-ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: robinsh
+ms.custom: amqp, devx-track-csharp
+ms.openlocfilehash: 045d5693c4388c6285bc6983ac2a385ceac9f6d0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60345719"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408123"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub-Vorgangsüberwachung (veraltet)
 
 Die IoT Hub-Vorgangsüberwachung ermöglicht Ihnen das Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit. IoT Hub verfolgt Ereignisse in verschiedenen Vorgangskategorien nach. Sie können festlegen, dass Ereignisse aus einer oder mehreren Kategorien zur Verarbeitung an einen Endpunkt Ihres IoT-Hubs gesendet werden. Sie können die Daten auf Fehler überwachen oder eine komplexere auf Datenmustern basierende Verarbeitung einrichten.
 
 >[!NOTE]
->Die **Vorgangsüberwachung von IoT Hub ist veraltet und wird am 10. März 2019 aus IoT Hub entfernt**. Informationen zur Überwachung der Vorgänge und Integrität von IoT Hub finden Sie unter [Monitor the health of Azure IoT Hub and diagnose problems quickly](iot-hub-monitor-resource-health.md) (Überwachen der Integrität von Azure IoT Hub und schnelles Diagnostizieren von Problemen). Weitere Informationen zur Veraltungszeitachse finden Sie unter [Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health) (Überwachen Ihrer Azure IoT-Lösungen mit Azure Monitor und Azure Resource Health).
+>Die **Vorgangsüberwachung von IoT Hub ist veraltet und wird am 10. März 2019 aus IoT Hub entfernt**. Informationen zum Überwachen der Vorgänge und Integrität von IoT Hub finden Sie unter [Überwachen von IoT Hub](monitor-iot-hub.md). Weitere Informationen zur Veraltungszeitachse finden Sie unter [Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health) (Überwachen Ihrer Azure IoT-Lösungen mit Azure Monitor und Azure Resource Health).
 
 IoT Hub überwacht sechs Ereigniskategorien:
 
@@ -42,7 +43,7 @@ IoT Hub überwacht sechs Ereigniskategorien:
 
     ![Zugriff auf die Konfiguration der Vorgangsüberwachung im Portal](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. Wählen Sie die Kategorien aus, die Sie überwachen möchten, und klicken Sie dann auf **Speichern**. Die Ereignisse können aus dem Event Hub-kompatiblen Endpunkt gelesen werden, der in **Überwachungseinstellungen**aufgelistet ist. Der IoT Hub-Endpunkt heißt `messages/operationsmonitoringevents`.
+3. Wählen Sie die Kategorien aus, die Sie überwachen möchten, und klicken Sie dann auf **Speichern**. Die Ereignisse können aus dem Event Hub-kompatiblen Endpunkt gelesen werden, der in **Überwachungseinstellungen** aufgelistet ist. Der IoT Hub-Endpunkt heißt `messages/operationsmonitoringevents`.
 
     ![Konfigurieren der Vorgangsüberwachung in IoT Hub](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
@@ -190,7 +191,7 @@ Die Kategorie „Nachrichtenweiterleitung“ verfolgt Fehler, die während der A
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>Herstellen einer Verbindung mit dem Überwachungsendpunkt
 
-Der Überwachungsendpunkt in IoT Hub ist ein mit Event Hub kompatibler Endpunkt. Sie können einen beliebigen für Event Hubs geeigneten Mechanismus zum Lesen von Überwachungsnachrichten von diesem Endpunkt verwenden. Im folgenden Beispiel wird ein einfacher Reader erstellt, der für eine Bereitstellung mit hohem Durchsatz nicht geeignet ist. Weitere Informationen zum Verarbeiten von Nachrichten von Event Hubs finden Sie im Tutorial [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) .
+Der Überwachungsendpunkt in IoT Hub ist ein mit Event Hub kompatibler Endpunkt. Sie können einen beliebigen für Event Hubs geeigneten Mechanismus zum Lesen von Überwachungsnachrichten von diesem Endpunkt verwenden. Im folgenden Beispiel wird ein einfacher Reader erstellt, der für eine Bereitstellung mit hohem Durchsatz nicht geeignet ist. Weitere Informationen zum Verarbeiten von Nachrichten von Event Hubs finden Sie im Tutorial [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) .
 
 Zum Herstellen einer Verbindung mit dem Überwachungsendpunkt benötigen Sie eine Verbindungszeichenfolge und den Endpunktnamen. Führen Sie die folgenden Schritte aus, um die erforderlichen Werte im Portal zu ermitteln:
 
@@ -266,8 +267,8 @@ class Program
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
+Weitere Informationen zur Verwendung von Azure Monitor zum Überwachen von IoT Hub finden Sie hier:
 
-* [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
+* [Überwachen von IoT Hub](monitor-iot-hub.md)
 
-* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Migrieren von der IoT Hub-Vorgangsüberwachung zu Azure Monitor](iot-hub-migrate-to-diagnostics-settings.md)

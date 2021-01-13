@@ -1,54 +1,84 @@
 ---
-title: 'Azure Data Factory Mapping Data Flow: Transformation für Ersatzschlüssel'
-description: 'Verwenden von Azure Data Factory Mapping Data Flow: Transformation für Ersatzschlüssel zum Generieren eines nachfolgenden Schlüsselwerts'
+title: Transformation für Ersatzschlüssel im Zuordnungsdatenfluss
+description: Hier erfahren Sie, wie Sie die Transformation für Ersatzschlüssel von Azure Data Factory Mapping Data Flow zum Generieren nachfolgender Schlüsselwerte verwenden.
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/12/2019
-ms.openlocfilehash: eaa1c577f7e208400d3430222b006e0dbbd7956a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.date: 10/30/2020
+ms.openlocfilehash: d1f8993b1adc297b1bfadba114df76a66e59afa2
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61350429"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147175"
 ---
-# <a name="mapping-data-flow-surrogate-key-transformation"></a>Mapping Data Flow: Transformation für Ersatzschlüssel
+# <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Transformation für Ersatzschlüssel im Zuordnungsdatenfluss 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Verwenden Sie die Transformation für Ersatzschlüssel, um Ihrem Datenflussrowset einen inkrementellen, nicht geschäftlichen beliebigen Schlüsselwert hinzuzufügen. Dies ist nützlich, wenn Sie Dimensionstabellen in einem analytischen Sternschema-Datenmodell entwerfen, bei dem jedes Element in Ihren Dimensionstabellen über einen eindeutigen Schlüssel verfügen muss, der kein geschäftlicher Schlüssel ist (Bestandteil der Kimball-DW-Methode).
+Verwenden Sie die Transformation für Ersatzschlüssel, um einen inkrementell geänderten Schlüsselwert für jede Datenzeile hinzuzufügen. Dieses Vorgehen ist nützlich, wenn Sie Dimensionstabellen in einem analytischen Datenmodell mit Sternschema entwerfen. In einem Sternschema erfordert jedes Mitglied in Dimensionstabellen einen eindeutigen Schlüssel, bei dem es sich nicht um einen Geschäftsschlüssel handelt.
+
+## <a name="configuration"></a>Konfiguration
 
 ![Transformation für Ersatzschlüssel](media/data-flow/surrogate.png "Transformation für Ersatzschlüssel")
 
-Die „Schlüsselspalte“ ist der Name, den Sie Ihrer neuen Ersatzschlüsselspalte zuweisen.
+**Schlüsselspalte** : Der Name der Spalte mit dem generierten Ersatzschlüssel.
 
-„Startwert“ ist der Anfangspunkt des inkrementellen Werts.
+**Startwert** : Die niedrigste Schlüsselwert, der generiert wird.
 
 ## <a name="increment-keys-from-existing-sources"></a>Inkrementelle Schlüssel aus vorhandenen Quellen
 
-Wenn Sie Ihre Sequenz von einem Wert aus starten möchten, der in einer Quelle vorhanden ist, können Sie eine Transformation für abgeleitete Spalten unmittelbar nach der Transformation für Ersatzschlüssels verwenden und die beiden Werte zusammenfügen:
+Um Ihre Sequenz von einem Wert aus zu starten, der in einer Quelle vorhanden ist, wird empfohlen, eine Cachesenke zum Speichern dieses Werts und eine Transformation für abgeleitete Spalten zum gemeinsamen Hinzufügen der beiden Werte zu verwenden. Verwenden Sie eine zwischengespeicherte Suche, um die Ausgabe abzurufen, und fügen Sie sie an den generierten Schlüssel an. Weitere Informationen finden Sie unter [Cachesenken](data-flow-sink.md#cache-sink) und [zwischengespeicherten Suchen](concepts-data-flow-expression-builder.md#cached-lookup).
 
-![SK add Max](media/data-flow/sk006.png "Surrogate Key Transformation Add Max")
+![Ersatzschlüsselsuche](media/data-flow/cached-lookup-example.png "Ersatzschlüsselsuche")
 
-Um den Schlüsselwert mit dem vorherigen Maximum zu versehen, gibt es zwei Techniken, die Sie verwenden können:
+### <a name="increment-from-existing-maximum-value"></a>Inkrement des vorhandenen Maximalwerts
 
-### <a name="database-sources"></a>Datenbankquellen
+Ein Seeding für den Schlüsselwert mit dem vorherigen Maximalwert lässt sich mit zwei Methoden durchführen, je nachdem, wo sich Ihre Quelldaten befinden.
 
-Verwenden Sie die Option „Abfrage“, um MAX() aus Ihrer Quelle mithilfe der Quelltransformation auszuwählen:
+#### <a name="database-sources"></a>Datenbankquellen
 
-![Surrogate Key Query](media/data-flow/sk002.png "Surrogate Key Transformation Query")
+Verwenden Sie eine SQL-Abfrageoption, um „MAX()“ aus Ihrer Quelle auszuwählen. Beispiel: `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`.
 
-### <a name="file-sources"></a>Dateiquellen
+![Ersatzschlüsselabfrage](media/data-flow/surrogate-key-max-database.png "Transformation für Ersatzschlüssel – Abfrage")
 
-Wenn sich Ihr vorheriger Maximalwert in einer Datei befindet, können Sie Ihre Quelltransformation zusammen mit einer Aggregattransformation verwenden und die Funktion „MAX() expression“ verwenden, um den vorherigen Maximalwert zu erhalten:
+#### <a name="file-sources"></a>Dateiquellen
 
-![Surrogate Key File](media/data-flow/sk008.png "Surrogate Key File")
+Wenn sich der vorherige Maximalwert in einer Datei befindet, verwenden Sie die `max()`-Funktion in der Aggregattransformation, um den vorherigen Maximalwert abzurufen:
 
-In beiden Fällen müssen Sie Ihre eingehenden neuen Daten zusammen mit Ihrer Quelle, die den vorherigen Maximalwert enthält, zusammenfügen:
+![Ersatzschlüsseldatei](media/data-flow/surrogate-key-max-file.png "Ersatzschlüsseldatei")
 
-![Surrogate Key Join](media/data-flow/sk004.png "Surrogate Key Join")
+In beiden Fällen müssen Sie in eine Cachesenke schreiben und den Wert suchen. 
+
+
+## <a name="data-flow-script"></a>Datenflussskript
+
+### <a name="syntax"></a>Syntax
+
+```
+<incomingStream> 
+    keyGenerate(
+        output(<surrogateColumnName> as long),
+        startAt: <number>L
+    ) ~> <surrogateKeyTransformationName>
+```
+
+### <a name="example"></a>Beispiel
+
+![Transformation für Ersatzschlüssel](media/data-flow/surrogate.png "Transformation für Ersatzschlüssel")
+
+Der nachfolgende Codeausschnitt zeigt das Datenflussskript für die obige Konfiguration des Ersatzschlüssels.
+
+```
+AggregateDayStats
+    keyGenerate(
+        output(key as long),
+        startAt: 1L
+    ) ~> SurrogateKey1
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

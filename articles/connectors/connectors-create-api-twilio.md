@@ -1,22 +1,18 @@
 ---
-title: Herstellen einer Verbindung mit Twilio aus Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit Twilio aus Azure Logic Apps
 description: Automatisieren Sie Aufgaben und Workflows zur Verwaltung globaler SMS-, MMS- und IP-Nachrichten über Ihr Twilio-Konto mithilfe von Azure Logic Apps.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 09d4a6acf93f5fb01c70f9e9bd935c404c5abf50
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: d144960972f5a1b45e88cc3a0ea015925cae3b91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050706"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87288144"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Verwalten von Nachrichten in Twilio mit Azure Logic Apps
 
@@ -73,7 +69,7 @@ Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Bes
 
 ## <a name="get-support"></a>Support
 
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte

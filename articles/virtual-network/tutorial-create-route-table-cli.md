@@ -4,25 +4,25 @@ description: In diesem Artikel erfahren Sie, wie Netzwerkdatenverkehr mithilfe d
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: ff5897766bb56b76a34940ecd786773fd844a336
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 043d450a1b968174ad263579d39de06a296a98e4
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683115"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741484"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Weiterleiten von Netzwerkdatenverkehr mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -36,11 +36,11 @@ Standardmäßig leitet Azure automatisch den Datenverkehr aller Subnetze des vir
 * Bereitstellen von VMs in unterschiedlichen Subnetzen
 * Weiterleiten von Datenverkehr aus einem Subnetz zu einem anderen über ein virtuelles Netzwerkgerät
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart mindestens Azure CLI-Version 2.0.28 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). 
+- Für diesen Artikel ist mindestens Version 2.0.28 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-route-table"></a>Erstellen einer Routingtabelle
 
@@ -51,11 +51,11 @@ Bevor Sie eine Routingtabelle erstellen können, müssen Sie mit [az group creat
 az group create \
   --name myResourceGroup \
   --location eastus
-``` 
+```
 
 Erstellen Sie mit [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create) eine Routingtabelle. Im folgenden Beispiel wird eine Routingtabelle mit dem Namen *myRouteTablePublic* erstellt. 
 
-```azurecli-interactive 
+```azurecli-interactive
 # Create a route table
 az network route-table create \
   --resource-group myResourceGroup \
@@ -74,7 +74,7 @@ az network route-table route create \
   --address-prefix 10.0.1.0/24 \
   --next-hop-type VirtualAppliance \
   --next-hop-ip-address 10.0.2.4
-``` 
+```
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Zuordnen einer Routingtabelle zu einem Subnetz
 
@@ -119,11 +119,11 @@ az network vnet subnet update \
 
 ## <a name="create-an-nva"></a>Erstellen eines virtuellen Netzwerkgeräts
 
-Eine NVA ist eine VM, die eine Netzwerkfunktion wie Routing, Firewall oder WAN-Optimierung ausführt.
+Ein virtuelles Netzwerkgerät ist eine VM, die eine Netzwerkfunktion wie Routing, Firewall oder WAN-Optimierung ausführt.
 
 Erstellen Sie eine NVA im *DMZ*-Subnetz mit [az vm create](/cli/azure/vm). Beim Erstellen einer VM erstellt Azure standardmäßig eine öffentliche IP-Adresse und weist diese der VM zu. Der Parameter `--public-ip-address ""` weist Azure an, keine öffentliche IP-Adresse zu erstellen und der VM zuzuweisen, da keine Verbindungen mit der VM über das Internet hergestellt werden müssen. Wenn SSH-Schlüssel nicht bereits an einem Standardschlüsselspeicherort vorhanden sind, werden sie durch den Befehl erstellt. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.
 
-```azure-cli-interactive
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVmNva \
@@ -155,6 +155,7 @@ az vm extension set \
   --publisher Microsoft.Azure.Extensions \
   --settings '{"commandToExecute":"sudo sysctl -w net.ipv4.ip_forward=1"}'
 ```
+
 Die Ausführung des Befehls kann bis zu einer Minute dauern.
 
 ## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
@@ -192,7 +193,7 @@ az vm create \
 
 Die Erstellung des virtuellen Computers dauert einige Minuten. Nach dem Erstellen der VM zeigt die Azure CLI ähnliche Informationen wie im folgenden Beispiel an: 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVmPrivate",
@@ -204,13 +205,14 @@ Die Erstellung des virtuellen Computers dauert einige Minuten. Nach dem Erstelle
   "resourceGroup": "myResourceGroup"
 }
 ```
+
 Notieren Sie sich **publicIpAddress**. Über diese Adresse wird in einem späteren Schritt über das Internet auf den virtuellen Computer zugegriffen.
 
 ## <a name="route-traffic-through-an-nva"></a>Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 
-Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit der *myVmPrivate*-VM. Ersetzen Sie *\<publicIpAddress>* durch die öffentliche IP-Adresse Ihrer VM. Im Beispiel oben lautet die IP-Adresse *13.90.242.231*.
+Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit der *myVmPrivate*-VM. Ersetzen Sie *\<publicIpAddress>* durch die öffentliche IP-Adresse der VM. Im Beispiel oben lautet die IP-Adresse *13.90.242.231*.
 
-```bash 
+```bash
 ssh azureuser@<publicIpAddress>
 ```
 
@@ -218,7 +220,7 @@ Geben Sie bei entsprechender Aufforderung das Kennwort ein, das Sie unter [Erste
 
 Installieren Sie mit dem folgenden Befehl die Routenverfolgung auf der *myVmPrivate*-VM:
 
-```bash 
+```bash
 sudo apt-get install traceroute
 ```
 
@@ -230,7 +232,7 @@ traceroute myVmPublic
 
 Die Antwort ähnelt dem folgenden Beispiel:
 
-```bash
+```output
 traceroute to myVmPublic (10.0.0.4), 30 hops max, 60 byte packets
 1  10.0.0.4 (10.0.0.4)  1.404 ms  1.403 ms  1.398 ms
 ```
@@ -239,13 +241,13 @@ Wie Sie sehen, wird Datenverkehr direkt von der VM *myVmPrivate* zur VM *myVmPub
 
 Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung zwischen der *myVmPublic*-VM und der *myVmPrivate*-VM:
 
-```bash 
+```bash
 ssh azureuser@myVmPublic
 ```
 
 Installieren Sie mit dem folgenden Befehl die Routenverfolgung auf der *myVmPublic*-VM:
 
-```bash 
+```bash
 sudo apt-get install traceroute
 ```
 
@@ -257,11 +259,12 @@ traceroute myVmPrivate
 
 Die Antwort ähnelt dem folgenden Beispiel:
 
-```bash
+```output
 traceroute to myVmPrivate (10.0.1.4), 30 hops max, 60 byte packets
 1  10.0.2.4 (10.0.2.4)  0.781 ms  0.780 ms  0.775 ms
 2  10.0.1.4 (10.0.0.4)  1.404 ms  1.403 ms  1.398 ms
 ```
+
 Wie Sie sehen können, ist der erste Hop 10.0.2.4, die private IP-Adresse des virtuellen Netzwerksgeräts. Der zweite Hop ist 10.0.1.4, die private IP-Adresse der VM *myVmPrivate*. Die Route, die der Routingtabelle *myRouteTablePublic* hinzugefügt und dem Subnetz *Public* zugeordnet wurde, hat bewirkt, dass Azure Datenverkehr über das virtuelle Netzwerkgerät weiterleitet und nicht direkt an das Subnetz *Private*.
 
 Schließen Sie die SSH-Sitzungen zu *myVmPublic*- und *myVmPrivate*-VM.
@@ -270,7 +273,7 @@ Schließen Sie die SSH-Sitzungen zu *myVmPublic*- und *myVmPrivate*-VM.
 
 Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit [az group delete](/cli/azure/group) entfernen.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 

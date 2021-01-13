@@ -1,26 +1,15 @@
 ---
-title: Bereitstellen einer Service Fabric-App mit Continuous Integration und Azure Pipelines in Azure | Microsoft-Dokumentation
+title: Bereitstellen einer App mit CI und Azure Pipelines
 description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration und Continuous Deployment für eine Service Fabric-Anwendung mithilfe von Azure Pipelines einrichten.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 184c57c0d9160cedef4be417f16c52c8635a1eb4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a26cfaca466e01b154c65b27895f3004f6320e5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68385290"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91326336"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Tutorial: Bereitstellen einer Anwendung mit CI/CD in einem Service Fabric-Cluster
 
@@ -50,7 +39,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 * [Installieren Sie Visual Studio 2019](https://www.visualstudio.com/) und die Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
 * [Installieren Sie das Service Fabric SDK](service-fabric-get-started.md).
 * Erstellen Sie einen Windows Service Fabric-Cluster in Azure, z.B. durch das [Ausführen der Schritte in diesem Tutorial](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-* Erstellen Sie eine [Azure DevOps-Organisation](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). Dadurch können Sie ein Projekt in Azure DevOps erstellen und Azure Pipelines verwenden.
+* Erstellen Sie eine [Azure DevOps-Organisation](/azure/devops/organizations/accounts/create-organization-msa-or-work-student). Dadurch können Sie ein Projekt in Azure DevOps erstellen und Azure Pipelines verwenden.
 
 ## <a name="download-the-voting-sample-application"></a>Laden Sie die Beispielanwendung „Voting“ herunter.
 
@@ -76,11 +65,11 @@ Erstellen Sie ein neues lokales Git-Repository für das Projekt, indem Sie auf d
 
 Klicken Sie in der Ansicht **Push** in **Team Explorer** unter **Per Push in Azure DevOps übertragen** auf die Schaltfläche **Git-Repository veröffentlichen**.
 
-![Git-Repository pushen][push-git-repo]
+![Screenshot: Team Explorer-Synchronisierungsfenster in Visual Studio. Unter „Per Push an Azure DevOps übertragen“ ist die Schaltfläche „Git-Repository veröffentlichen“ hervorgehoben.][push-git-repo]
 
 Überprüfen Sie Ihre E-Mail-Adresse, und wählen Sie in der Dropdownliste **Azure DevOps-Domäne** Ihr Konto aus. Geben Sie den Repositorynamen ein, und wählen Sie **Repository veröffentlichen** aus.
 
-![Git-Repository pushen][publish-code]
+![Screenshot: Einstellungen für „Per Push an Azure DevOps übertragen“. Die Einstellungen für „E-Mail“, „Konto“ und „Repositoryname“ sowie die Schaltfläche „Repository veröffentlichen“ sind hervorgehoben.][publish-code]
 
 Durch das Veröffentlichen des Repositorys wird in Ihrem Konto ein neues Projekt mit dem gleichen Namen wie das lokale Repository erstellt. Um das Repository in einem vorhandenen Projekt zu erstellen, klicken Sie neben **Repositoryname** auf **Erweitert**, und wählen Sie ein Projekt aus. Sie können den Code im Web anzeigen, indem Sie **Im Web anzeigen** auswählen.
 
@@ -134,7 +123,7 @@ Fügen Sie bei Verwendung von Azure Active Directory-Anmeldeinformationen den **
 
 Klicken Sie auf **Hinzufügen**, um die Clusterverbindung zu speichern.
 
-Fügen Sie als Nächstes der Pipeline ein Buildartefakt hinzu, damit die Releasepipeline die Ausgabe des Builds findet. Klicken Sie auf **Pipeline** und anschließend auf **Artefakte**-> **+Hinzufügen**.  Wählen Sie unter **Quelle (Builddefinition)** die zuvor erstellte Buildpipeline aus.  Klicken Sie auf **Hinzufügen**, um das Buildartefakt zu speichern.
+Fügen Sie als Nächstes der Pipeline ein Buildartefakt hinzu, damit die Releasepipeline die Ausgabe des Builds findet. Klicken Sie auf **Pipeline** und anschließend auf **Artefakte**->**+Hinzufügen**.  Wählen Sie unter **Quelle (Builddefinition)** die zuvor erstellte Buildpipeline aus.  Klicken Sie auf **Hinzufügen**, um das Buildartefakt zu speichern.
 
 ![Hinzufügen des Artefakts][add-artifact]
 
@@ -144,13 +133,13 @@ Aktivieren Sie einen Continuous Deployment-Trigger, damit nach Abschluss des Bui
 
 Wählen Sie **+ Release** -> **Release erstellen** -> **Erstellen** aus, um manuell ein Release zu erstellen. Sie können den Releasestatus auf der Registerkarte **Releases** überwachen.
 
-Überprüfen Sie, ob die Bereitstellung erfolgreich war und die Anwendung im Cluster ausgeführt wird.  Öffnen Sie einen Webbrowser, und navigieren Sie zu [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Beachten Sie, dass die Anwendungsversion in diesem Beispiel „1.0.0.20170616.3“ lautet.
+Überprüfen Sie, ob die Bereitstellung erfolgreich war und die Anwendung im Cluster ausgeführt wird.  Öffnen Sie einen Webbrowser, und navigieren Sie zu `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Beachten Sie, dass die Anwendungsversion in diesem Beispiel „1.0.0.20170616.3“ lautet.
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Committen und Pushen von Änderungen, Auslösen eines Release
 
 Um die Funktionsfähigkeit Continuous Integration-Pipeline zu überprüfen, checken Sie einige Codeänderungen bei Azure DevOps ein.
 
-Während Sie den Code schreiben, werden Ihre Änderungen automatisch von Visual Studio nachverfolgt. Führen Sie den Commit der Änderungen in das lokale Git-Repository aus, indem Sie auf der Statusleiste unten rechts das Symbol „Ausstehende Änderungen“ (![Ausstehend][pending]) auswählen.
+Während Sie den Code schreiben, werden Ihre Änderungen automatisch von Visual Studio nachverfolgt. Führen Sie den Commit der Änderungen in das lokale Git-Repository aus, indem Sie auf der Statusleiste unten rechts das Symbol „Ausstehende Änderungen“ (![Für das Symbol „Ausstehende Änderungen“ werden ein Stift und eine Zahl angezeigt.][pending]) auswählen.
 
 Fügen Sie in der Ansicht **Änderungen** in Team Explorer eine Nachricht hinzu, die die Aktualisierung beschreibt, und führen Sie den Commit der Änderungen aus.
 
@@ -164,9 +153,9 @@ Durch das Pushen der Änderungen an Azure Pipelines wird automatisch ein Buildvo
 
 Um den Buildstatus zu überprüfen, wechseln Sie in Visual Studio in **Team Explorer** zur Registerkarte **Builds**.  Nachdem Sie überprüft haben, ob der Build erfolgreich ausgeführt wird, müssen Sie eine Releasepipeline festlegen, mit der die Anwendung in einem Cluster bereitgestellt wird.
 
-Überprüfen Sie, ob die Bereitstellung erfolgreich war und die Anwendung im Cluster ausgeführt wird.  Öffnen Sie einen Webbrowser, und navigieren Sie zu [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Beachten Sie, dass die Anwendungsversion in diesem Beispiel 1.0.0.20170815.3 lautet.
+Überprüfen Sie, ob die Bereitstellung erfolgreich war und die Anwendung im Cluster ausgeführt wird.  Öffnen Sie einen Webbrowser, und navigieren Sie zu `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Beachten Sie, dass die Anwendungsversion in diesem Beispiel 1.0.0.20170815.3 lautet.
 
-![Service Fabric Explorer][sfx1]
+![Screenshot: In einem Browserfenster ausgeführte Voting-App in Service Fabric Explorer. Die App-Version 1.0.0.20170815.3 ist hervorgehoben.][sfx1]
 
 ## <a name="update-the-application"></a>Aktualisieren der Anwendung
 
@@ -174,11 +163,11 @@ Nehmen Sie in der Anwendung Codeänderungen vor.  Speichern und committen Sie di
 
 Sobald das Upgrade der Anwendung gestartet wird, können Sie in Service Fabric Explorer den Upgradestatus beobachten:
 
-![Service Fabric Explorer][sfx2]
+![Screenshot: Voting-App in Service Fabric Explorer. Die Statusmeldung „Upgrade wird durchgeführt“ und eine Meldung vom Typ „Das Upgrade wird ausgeführt...“ sind hervorgehoben.][sfx2]
 
 Das Anwendungsupgrade kann mehrere Minuten dauern. Wenn das Upgrade abgeschlossen ist, wird die nächste Version der Anwendung ausgeführt.  In diesem Beispiel: 1.0.0.20170815.4
 
-![Service Fabric Explorer][sfx3]
+![Screenshot: In einem Browserfenster ausgeführte Voting-App in Service Fabric Explorer. Die aktualisierte App-Version 1.0.0.20170815.4 ist hervorgehoben.][sfx3]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

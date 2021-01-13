@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric-Anwendungsbereitstellung | Microsoft-Dokumentation
-description: Bereitstellen und Entfernen von Anwendungen in Service Fabric mit PowerShell
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Azure Service Fabric-Bereitstellung mit PowerShell
+description: Erfahren Sie mehr über das Entfernen und Bereitstellen von Anwendungen in Azure Service Fabric und die Durchführung dieser Aktionen in PowerShell.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/19/2018
-ms.author: atsenthi
-ms.openlocfilehash: 3cfebadf6dadeb81b1b57e671b19594b75645e31
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 8bc4557c5d0d59330c7e91a4b3fdce83cfbf334c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599610"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827430"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Bereitstellen und Entfernen von Anwendungen mit PowerShell
 
@@ -35,7 +24,7 @@ Sobald der [Anwendungstyp gepackt][10] wurde, ist die Anwendung für die Bereits
 
 1. Hochladen des Anwendungspakets in den Imagespeicher
 2. Registrieren des Anwendungstyps mit dem relativen Pfad des Imagespeichers
-3. Erstellen der Anwendungsinstanz
+3. Erstellen Sie die Anwendungsinstanz.
 
 Sobald die bereitgestellte Anwendung nicht mehr benötigt wird, können Sie die Anwendungsinstanz und deren Anwendungstyp löschen. Das vollständige Entfernen einer Anwendung aus dem Cluster umfasst die folgenden Schritte:
 
@@ -58,7 +47,7 @@ Entfernen Sie zur Bereinigung die Anwendungsinstanzen, und heben Sie die Registr
 
  
 
-## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
+## <a name="connect-to-the-cluster"></a>Herstellen einer Verbindung mit dem Cluster
 
 Bevor Sie die in diesem Artikel aufgeführten PowerShell-Befehle ausführen, stellen Sie immer zuerst über [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) eine Verbindung mit dem Service Fabric-Cluster her. Führen Sie zum Herstellen der Verbindung mit dem lokalen Entwicklungscluster den folgenden Befehl aus:
 
@@ -75,7 +64,7 @@ Wenn Sie das Anwendungspaket lokal überprüfen möchten, verwenden Sie das Cmdl
 
 Mit dem Befehl [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) wird das Anwendungspaket in den Clusterimagespeicher hochgeladen.
 
-Angenommen, Sie erstellen und verpacken eine Anwendung namens *MyApplication* in Visual Studio 2015. Der Name des Anwendungstyps ist in der Datei „ApplicationManifest.xml“ standardmäßig als „MyApplicationType“ aufgeführt.  Das Anwendungspaket mit den erforderlichen Anwendungs- und Dienstmanifesten sowie Code-/Konfigurations-/Datenpaketen befindet sich in *C:\Benutzer\<Benutzername\>\Eigene Dokumente\Visual Studio 2015\Projekte\MeineAnwendung\MeineAnwendung\pkg\Debuggen*. 
+Angenommen, Sie erstellen und verpacken eine Anwendung namens *MyApplication* in Visual Studio 2015. Der Name des Anwendungstyps ist in der Datei „ApplicationManifest.xml“ standardmäßig als „MyApplicationType“ aufgeführt.  Das Anwendungspaket mit den erforderlichen Anwendungs- und Dienstmanifesten sowie Code-/Konfigurations-/Datenpaketen befindet sich unter *C:\Users\<username\>\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug*. 
 
 Mit dem folgenden Befehl werden die Inhalte des Anwendungspakets aufgelistet:
 
@@ -111,7 +100,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 ```
 
 Wenn das Anwendungspaket groß ist und/oder viele Dateien enthält, können Sie es [komprimieren](service-fabric-package-apps.md#compress-a-package). Durch eine Komprimierung werden Größe und Anzahl der Dateien verringert.
-Ein positiver Nebeneffekt dabei ist, dass die Registrierung und die Aufhebung der Registrierung des Anwendungstyps schneller erfolgen. Der Upload kann sich in diesem Zeitraum eventuell verlangsamen, insbesondere, wenn Sie die Zeit zur Komprimierung des Pakets berücksichtigen. 
+Dies führt zu einer schnelleren Registrierung und Aufhebung der Registrierung des Anwendungstyps. Der Upload kann sich in diesem Zeitraum eventuell verlangsamen, insbesondere, wenn Sie die Zeit zur Komprimierung des Pakets berücksichtigen. 
 
 Mit demselben Befehl [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) wird das Paket komprimiert. Die Komprimierung kann getrennt vom Upload mithilfe des Flags `SkipCopy` oder beim Uploadvorgang durchgeführt werden. Die Komprimierung eines komprimierten Pakets ist nicht möglich.
 Mit demselben Befehl [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) mit dem Schalter `UncompressPackage` wird ein komprimiertes Paket dekomprimiert.
@@ -142,7 +131,7 @@ Im Folgenden werden beispielhaft Komprimierungsstatistiken für einige Pakete au
 |----------------:|---------:|---------------:|---------------------------:|
 |100|100|00:00:03.3547592|60|
 |512|100|00:00:16.3850303|307|
-|1\.024|500|00:00:32.5907950|615|
+|1024|500|00:00:32.5907950|615|
 |2048|1000|00:01:04.3775554|1231|
 |5012|100|00:02:45.2951288|3074|
 

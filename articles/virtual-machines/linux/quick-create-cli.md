@@ -1,30 +1,31 @@
 ---
 title: 'Schnellstart: Erstellen einer Linux-VM mit der Azure-Befehlszeilenschnittstelle'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure CLI einen virtuellen Linux-Computer erstellen.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
-ms.custom: mvc, seo-javascript-september2019
-ms.openlocfilehash: 2d66064167741b59766763f4fc1313409de1e649
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.custom:
+- mvc
+- seo-javascript-september2019
+- seo-javascript-october2019
+- seo-python-october2019
+- devx-track-azurecli
+ms.openlocfilehash: 78ecd052c071835ef488882979a3bc5306c35365
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801045"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "87488975"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Schnellstart: Erstellen einer Linux-VM mit der Azure CLI
 
-Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Schnellstartanleitung wird gezeigt, wie Sie mit der Azure CLI einen virtuellen Linux-Computer in Azure bereitstellen. In diesem Tutorial installieren wir Ubuntu 16.04 LTS. Sie können die VM in Aktion erleben, indem Sie per SSH eine Verbindung damit herstellen und den NGINX-Webserver installieren.
+In dieser Schnellstartanleitung wird gezeigt, wie Sie mit der Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) einen virtuellen Linux-Computer in Azure bereitstellen. Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts.
+
+In diesem Tutorial installieren wir Ubuntu 16.04 LTS. Sie können die VM in Aktion erleben, indem Sie per SSH eine Verbindung damit herstellen und den NGINX-Webserver installieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -34,11 +35,11 @@ Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritt
 
 Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach die Option **Ausprobieren**. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte öffnen, indem Sie zu [https://shell.azure.com/bash](https://shell.azure.com/bash) navigieren. Wählen Sie **Kopieren** aus, um die Codeblöcke zu kopieren. Fügen Sie die Blöcke anschließend in Cloud Shell ein, und wählen Sie **Eingabe**, um sie auszuführen.
 
-Wenn Sie es vorziehen, die Befehlszeilenschnittstelle lokal zu installieren und zu verwenden, müssen Sie für diese Schnellstartanleitung mindestens Azure CLI-Version 2.0.30 verwenden. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie es vorziehen, die Befehlszeilenschnittstelle lokal zu installieren und zu verwenden, müssen Sie für diese Schnellstartanleitung mindestens Azure CLI-Version 2.0.30 verwenden. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -107,7 +108,7 @@ Geben Sie abschließend `exit` ein, um die SSH-Sitzung zu verlassen.
 
 Verwenden Sie einen beliebigen Webbrowser, um die Standardwillkommensseite von NGINX anzuzeigen. Verwenden Sie die öffentliche IP-Adresse Ihres virtuellen Computers als Webadresse. Im folgenden Beispiel ist die NGINX-Standardwebsite dargestellt:
 
-![NGINX-Standardwebsite](./media/quick-create-cli/nginx.png)
+![Anzeigen der NGINX-Willkommensseite](./media/quick-create-cli/view-the-nginx-welcome-page.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

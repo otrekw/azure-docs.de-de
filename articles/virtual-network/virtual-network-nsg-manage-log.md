@@ -1,39 +1,38 @@
 ---
-title: Azure-Diagnoseprotokolle für Ereignis- und Regelzähler der Netzwerksicherheitsgruppe
+title: Diagnoseressourcenprotokollierung für eine Netzwerksicherheitsgruppe
 titlesuffix: Azure Virtual Network
-description: In diesem Artikel erfahren Sie, wie Diagnoseprotokolle für Ereignis- und Regelzähler für eine Azure-Netzwerksicherheitsgruppe aktiviert werden.
+description: In diesem Artikel erfahren Sie, wie Sie Diagnoseressourcenprotokolle für Ereignis- und Regelzähler für eine Azure-Netzwerksicherheitsgruppe aktivieren.
 services: virtual-network
-documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 07b196b8e7081a6cce1ae87297528c1711b3b8bb
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 221f7577b3181b1535ab9f544073dac4d031fe66
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259438"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89319439"
 ---
-# <a name="diagnostic-logging-for-a-network-security-group"></a>Diagnoseprotokollierung für eine Netzwerksicherheitsgruppe
+# <a name="resource-logging-for-a-network-security-group"></a>Ressourcenprotokollierung für eine Netzwerksicherheitsgruppe
 
-Eine Netzwerksicherheitsgruppe (NSG) umfasst Regeln, die Datenverkehr an ein Subnetz oder eine Netzwerkschnittstelle eines virtuellen Netzwerks oder beides zulassen oder ablehnen. Wenn Sie die Diagnoseprotokollierung für eine NSG aktivieren, können Sie folgende Kategorien von Informationen protokollieren:
+Eine Netzwerksicherheitsgruppe (NSG) umfasst Regeln, die Datenverkehr an ein Subnetz oder eine Netzwerkschnittstelle eines virtuellen Netzwerks oder beides zulassen oder ablehnen. 
 
-* **Ereignis:** Es werden Einträge protokolliert, für die auf Grundlage der MAC-Adresse NSG-Regeln auf VMs angewendet werden. Der Status für diese Regeln wird alle 60 Sekunden erfasst.
-* **Regelzähler:** Enthält Einträge darüber, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
+Wenn Sie die Protokollierung für eine NSG aktivieren, können Sie die folgenden Typen von Ressourcenprotokollinformationen erfassen:
 
-Diagnoseprotokolle sind nur für NSGs verfügbar, die im Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden. Sie können keine Diagnoseprotokollierung für Netzwerksicherheitsgruppen aktivieren, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden. Zum besseren Verständnis der beiden Modelle lesen Sie den Artikel [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* **Ereignis:** Es werden Einträge protokolliert, für die auf Grundlage der MAC-Adresse NSG-Regeln auf VMs angewendet werden.
+* **Regelzähler:** Enthält Einträge darüber, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern. Der Status für diese Regeln wird alle 300 Sekunden erfasst.
 
-Die Diagnoseprotokollierung ist für *jede* NSG separat aktiviert, für die Sie Diagnosedaten sammeln möchten. Wenn Sie stattdessen an Betriebs- oder Aktivitätsprotokollen interessiert sind, lesen Sie [Überwachen von Aktivitäten in einem Abonnement mithilfe von Azure-Aktivitätsprotokollen](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Ressourcenprotokolle sind nur für NSGs verfügbar, die über das Azure Resource Manager-Bereitstellungsmodell bereitgestellt wurden. Sie können die Ressourcenprotokollierung nicht für NSGs aktivieren, die über das klassische Bereitstellungsmodell bereitgestellt wurden. Zum besseren Verständnis der beiden Modelle lesen Sie den Artikel [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+Die Ressourcenprotokollierung wird für *jede* NSG separat aktiviert, für die Sie Diagnosedaten sammeln möchten. Wenn Sie stattdessen an Aktivitätsprotokollen (Betriebsprotokollen) interessiert sind, lesen Sie die Informationen zur [Azure-Aktivitätsprotokollierung](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
-Die Diagnoseprotokollierung kann über das [Azure-Portal](#azure-portal), [PowerShell](#powershell) oder die [Azure-Befehlszeilenschnittstelle](#azure-cli) aktiviert werden.
+Die Ressourcenprotokollierung kann über das [Azure-Portal](#azure-portal), [PowerShell](#powershell) oder die [Azure-Befehlszeilenschnittstelle](#azure-cli) aktiviert werden.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -48,7 +47,7 @@ Die Diagnoseprotokollierung kann über das [Azure-Portal](#azure-portal), [Power
 
     | Einstellung                                                                                     | Wert                                                          |
     | ---------                                                                                   |---------                                                       |
-    | NAME                                                                                        | Ein Name Ihrer Wahl.  Beispiel: *myNsgDiagnostics*      |
+    | Name                                                                                        | Ein Name Ihrer Wahl.  Beispiel: *myNsgDiagnostics*      |
     | **In einem Speicherkonto archivieren**, **An einen Event Hub streamen** und **An Log Analytics senden** | Sie können beliebig viele Ziele auswählen. Weitere Informationen zu den einzelnen Zielen finden Sie unter [Protokollziele](#log-destinations).                                                                                                                                           |
     | PROTOKOLL                                                                                         | Wählen Sie eine oder beide Protokollkategorien aus. Weitere Informationen zu den Daten, die zu den einzelnen Kategorien protokolliert werden, finden Sie unter [Protokollkategorien](#log-categories).                                                                                                                                             |
 6. Zeigen Sie Protokolle an, und analysieren Sie sie. Weitere Informationen finden Sie unter [Anzeigen und Analysieren von Protokollen](#view-and-analyze-logs).
@@ -59,9 +58,9 @@ Die Diagnoseprotokollierung kann über das [Azure-Portal](#azure-portal), [Power
 
 Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/powershell) oder über PowerShell auf Ihrem Computer ausführen. Azure Cloud Shell ist eine kostenlose interaktive Shell. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Wenn Sie PowerShell auf Ihrem Computer ausführen, müssen Sie das Azure PowerShell-Modul Version 1.0.0 oder höher ausführen. Führen Sie `Get-Module -ListAvailable Az` auf Ihrem Computer aus, um nach der installierten Version zu suchen. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um sich bei Azure mit einem Konto anzumelden, das über die [erforderlichen Berechtigungen](virtual-network-network-interface.md#permissions) verfügt.
 
-Um die Diagnoseprotokollierung zu aktivieren, benötigen Sie die ID einer vorhandenen NSG. Wenn noch keine NSG vorhanden ist, können Sie eine mit [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) erstellen.
+Um die Ressourcenprotokollierung zu aktivieren, benötigen Sie die ID einer vorhandenen NSG. Wenn noch keine NSG vorhanden ist, können Sie eine mit [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) erstellen.
 
-Rufen Sie mit [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) die Netzwerksicherheitsgruppe ab, für die die Diagnoseprotokollierung aktiviert werden soll. Um z.B. eine NSG namens *myNsg* abzurufen, die sich in einer Ressourcengruppe mit dem Namen *myResourceGroup* befindet, geben Sie den folgenden Befehl ein:
+Rufen Sie mit [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) die Netzwerksicherheitsgruppe ab, für die die Ressourcenprotokollierung aktiviert werden soll. Um z.B. eine NSG namens *myNsg* abzurufen, die sich in einer Ressourcengruppe mit dem Namen *myResourceGroup* befindet, geben Sie den folgenden Befehl ein:
 
 ```azurepowershell-interactive
 $Nsg=Get-AzNetworkSecurityGroup `
@@ -69,7 +68,7 @@ $Nsg=Get-AzNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup
 ```
 
-Sie können Diagnoseprotokolle in drei Zieltypen schreiben. Weitere Informationen finden Sie unter [Protokollziele](#log-destinations). In diesem Artikel werden Protokolle beispielhaft an das Ziel *Log Analytics* gesendet. Rufen Sie mit [Get-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) einen vorhandenen Log Analytics-Arbeitsbereich ab. Geben Sie beispielsweise den folgenden Befehl ein, wenn Sie einen vorhandenen Arbeitsbereich mit dem Namen *myWorkspace* in einer Ressourcengruppe mit dem Namen *myWorkspaces* abrufen möchten:
+Sie können Ressourcenprotokolle in drei Zieltypen schreiben. Weitere Informationen finden Sie unter [Protokollziele](#log-destinations). In diesem Artikel werden Protokolle beispielhaft an das Ziel *Log Analytics* gesendet. Rufen Sie mit [Get-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) einen vorhandenen Log Analytics-Arbeitsbereich ab. Geben Sie beispielsweise den folgenden Befehl ein, wenn Sie einen vorhandenen Arbeitsbereich mit dem Namen *myWorkspace* in einer Ressourcengruppe mit dem Namen *myWorkspaces* abrufen möchten:
 
 ```azurepowershell-interactive
 $Oms=Get-AzOperationalInsightsWorkspace `
@@ -79,7 +78,7 @@ $Oms=Get-AzOperationalInsightsWorkspace `
 
 Falls kein Arbeitsbereich vorhanden ist, können Sie einen mit [New-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) erstellen.
 
-Es gibt zwei Protokollierungskategorien, für die Sie Protokolle aktivieren können. Weitere Informationen finden Sie unter [Protokollkategorien](#log-categories). Aktivieren Sie mit [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) die Diagnoseprotokollierung für die NSG. Im folgenden Beispiel werden mithilfe der IDs für die NSG und des Arbeitsbereichs, den Sie zuvor abgerufen haben, Ereignis- und Zählerkategoriedaten für den Arbeitsbereich einer NSG protokolliert:
+Es gibt zwei Protokollierungskategorien, für die Sie Protokolle aktivieren können. Weitere Informationen finden Sie unter [Protokollkategorien](#log-categories). Aktivieren Sie mit [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) die Ressourcenprotokollierung für die NSG. Im folgenden Beispiel werden mithilfe der IDs für die NSG und des Arbeitsbereichs, den Sie zuvor abgerufen haben, Ereignis- und Zählerkategoriedaten für den Arbeitsbereich einer NSG protokolliert:
 
 ```azurepowershell-interactive
 Set-AzDiagnosticSetting `
@@ -92,13 +91,13 @@ Wenn Sie Daten nur für eine der Kategorien protokollieren möchten anstatt für
 
 Zeigen Sie Protokolle an, und analysieren Sie sie. Weitere Informationen finden Sie unter [Anzeigen und Analysieren von Protokollen](#view-and-analyze-logs).
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/bash) oder über die Azure-Befehlszeilenschnittstelle auf Ihrem Computer ausführen. Azure Cloud Shell ist eine kostenlose interaktive Shell. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Wenn Sie die Befehlszeilenschnittstelle über Ihren Computer ausführen, ist mindestens Version 2.0.38 erforderlich. Führen Sie `az --version` auf Ihrem Computer aus, um nach der installierten Version zu suchen. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest) weitere Informationen. Wenn Sie die Befehlszeilenschnittstelle lokal ausführen, müssen Sie auch `az login` ausführen, um sich bei Azure mit einem Konto anzumelden, das über die [erforderlichen Berechtigungen](virtual-network-network-interface.md#permissions) verfügt.
 
-Um die Diagnoseprotokollierung zu aktivieren, benötigen Sie die ID einer vorhandenen NSG. Wenn noch keine NSG vorhanden ist, können Sie mit dem Befehl [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) eine erstellen.
+Um die Ressourcenprotokollierung zu aktivieren, benötigen Sie die ID einer vorhandenen NSG. Wenn noch keine NSG vorhanden ist, können Sie mit dem Befehl [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) eine erstellen.
 
-Rufen Sie mit dem Befehl [az network nsg show](/cli/azure/network/nsg#az-network-nsg-show) die Netzwerksicherheitsgruppe ab, für die die Diagnoseprotokollierung aktiviert werden soll. Um z.B. eine NSG namens *myNsg* abzurufen, die sich in einer Ressourcengruppe mit dem Namen *myResourceGroup* befindet, geben Sie den folgenden Befehl ein:
+Rufen Sie mit dem Befehl [az network nsg show](/cli/azure/network/nsg#az-network-nsg-show) die Netzwerksicherheitsgruppe ab, für die die Ressourcenprotokollierung aktiviert werden soll. Um z.B. eine NSG namens *myNsg* abzurufen, die sich in einer Ressourcengruppe mit dem Namen *myResourceGroup* befindet, geben Sie den folgenden Befehl ein:
 
 ```azurecli-interactive
 nsgId=$(az network nsg show \
@@ -108,9 +107,9 @@ nsgId=$(az network nsg show \
   --output tsv)
 ```
 
-Sie können Diagnoseprotokolle in drei Zieltypen schreiben. Weitere Informationen finden Sie unter [Protokollziele](#log-destinations). In diesem Artikel werden Protokolle beispielhaft an das Ziel *Log Analytics* gesendet. Weitere Informationen finden Sie unter [Protokollkategorien](#log-categories).
+Sie können Ressourcenprotokolle in drei Zieltypen schreiben. Weitere Informationen finden Sie unter [Protokollziele](#log-destinations). In diesem Artikel werden Protokolle beispielhaft an das Ziel *Log Analytics* gesendet. Weitere Informationen finden Sie unter [Protokollkategorien](#log-categories).
 
-Aktivieren Sie mit dem Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) die Diagnoseprotokollierung für die NSG. Im folgenden Beispiel werden Daten für die Ereignis- und die Indikatorkategorie in einem vorhandenen Arbeitsbereich namens *myWorkspace* protokolliert. Dieser ist in einer Ressourcengruppe namens *myWorkspaces* vorhanden, und die zuvor abgerufene ID der NSG lautet:
+Aktivieren Sie mit dem Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) die Ressourcenprotokollierung für die NSG. Im folgenden Beispiel werden Daten für die Ereignis- und die Indikatorkategorie in einem vorhandenen Arbeitsbereich namens *myWorkspace* protokolliert. Dieser ist in einer Ressourcengruppe namens *myWorkspaces* vorhanden, und die zuvor abgerufene ID der NSG lautet:
 
 ```azurecli-interactive
 az monitor diagnostic-settings create \
@@ -198,7 +197,7 @@ Das Regelzählerprotokoll enthält Informationen über jede Regel, die auf Resso
 
 ## <a name="view-and-analyze-logs"></a>Anzeigen und Analysieren von Protokollen
 
-Lesen Sie den Artikel [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), um zu erfahren, wie Sie Diagnoseprotokolldaten anzeigen. Beim Senden von Diagnosedaten in folgenden Lösungen sollten Sie Folgendes wissen:
+Informationen zum Anzeigen von Ressourcenprotokolldaten finden Sie unter [Übersicht über die Azure-Plattformprotokolle](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Beim Senden von Diagnosedaten in folgenden Lösungen sollten Sie Folgendes wissen:
 - **Azure Monitor-Protokolle:** Mit der [Analyselösung für Netzwerksicherheitsgruppen](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 ) können Sie bessere Erkenntnisse erzielen. Die Lösung bietet Visualisierungen für NSG-Regeln, die Datenverkehr mittels der MAC-Adresse der Netzwerkschnittstelle auf einem virtuellen Computer zulassen oder ablehnen.
 - **Azure Storage-Konto**: Daten werden in eine Datei namens „PT1H.json“ geschrieben. Folgende Informationen finden Sie in den angegebenen Speicherorten:
@@ -207,7 +206,7 @@ Lesen Sie den Artikel [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Re
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Aktivitätsprotokollierung](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), vormals bekannt als Überwachungs- oder Betriebsprotokolle. Die Aktivitätsprotokollierung ist für alle NSGs standardmäßig aktiviert, unabhängig davon, in welchem Azure-Bereitstellungsmodell sie erstellt wurden. Um zu bestimmen, welche Vorgänge für Netzwerksicherheitsgruppen im Aktivitätsprotokoll abgeschlossen wurden, suchen Sie nach Einträgen, die die folgenden Ressourcentypen enthalten:
+- Erfahren Sie mehr über die [Aktivitätsprotokollierung](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Die Aktivitätsprotokollierung ist für alle NSGs standardmäßig aktiviert, unabhängig davon, in welchem Azure-Bereitstellungsmodell sie erstellt wurden. Um zu bestimmen, welche Vorgänge für Netzwerksicherheitsgruppen im Aktivitätsprotokoll abgeschlossen wurden, suchen Sie nach Einträgen, die die folgenden Ressourcentypen enthalten:
   - Microsoft.ClassicNetwork/networkSecurityGroups
   - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups

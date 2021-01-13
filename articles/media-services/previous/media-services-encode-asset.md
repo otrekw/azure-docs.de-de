@@ -1,6 +1,6 @@
 ---
 title: Azure On-Demand Media Encoder – Übersicht | Microsoft-Dokumentation
-description: Dieses Thema bietet eine Übersicht über Azure On-Demand-Media Encoder.
+description: Azure Media Services bietet verschiedene Optionen für die Codierung von Medien in der Cloud. Dieser Artikel bietet eine Übersicht über Azure On-Demand-Media Encoder.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,17 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5c55b419b88a66d2e1acf1687478ab35d9f0a059
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: e841d1922beb3f0276ff94cacbbdf566b23cdf6e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019031"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017283"
 ---
-# <a name="overview-of-azure-on-demand-media-encoders"></a>Übersicht der Azure On-Demand Media Encoder 
+# <a name="overview-of-azure-on-demand-media-encoders"></a>Übersicht der Azure On-Demand Media Encoder
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Azure Media Services bietet verschiedene Optionen für die Codierung von Medien in der Cloud.
 
@@ -34,12 +36,11 @@ Media Services bietet dynamische Paketerstellung zum Übermitteln Ihrer MP4-Date
 
 Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. Die Abrechnung für Streamingendpunkte erfolgt immer dann, wenn sich der Endpunkt im Status **Wird ausgeführt** befindet.
 
-Media Services unterstützt die folgenden On-Demand-Encoder, die in diesem Artikel beschrieben werden:
+Media Services unterstützt die folgenden On-Demand-Encoder:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
-* [Media Encoder Premium Workflow](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-Dieser Artikel enthält eine kurze Übersicht über On-Demand-Media Encoder und stellt Links zu Artikeln bereit, die detailliertere Informationen bieten. Das Thema enthält auch einen Encodervergleich.
+Dieser Artikel enthält eine kurze Übersicht über On-Demand-Media Encoder und stellt Links zu Artikeln bereit, die detailliertere Informationen bieten.
 
 Standardmäßig kann jedes Media Services-Konto je eine aktive Codierungsaufgabe gleichzeitig aufweisen. Sie können Einheiten für die Codierung reservieren, mit denen Sie mehrere Codierungsaufgaben gleichzeitig ausführen kennen – jeweils eine für jede reservierte Einheit für die Codierung, die Sie erwerben. Weitere Informationen finden Sie unter [Skalieren der Codierung](media-services-scale-media-processing-overview.md).
 
@@ -52,7 +53,7 @@ Standardmäßig kann jedes Media Services-Konto je eine aktive Codierungsaufgabe
 [Formate und Codecs](media-services-media-encoder-standard-formats.md)
 
 ### <a name="presets"></a>Voreinstellungen
-Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)beschrieben sind.
+Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](./media-services-mes-presets-overview.md)beschrieben sind.
 
 ### <a name="input-and-output-metadata"></a>Eingabe- und Ausgabemetadaten
 Die Eingabemetadaten für den Encoder werden [hier](media-services-input-metadata-schema.md)beschrieben.
@@ -60,7 +61,7 @@ Die Eingabemetadaten für den Encoder werden [hier](media-services-input-metadat
 Die Ausgabemetadaten für den Encoder werden [hier](media-services-output-metadata-schema.md)beschrieben.
 
 ### <a name="generate-thumbnails"></a>Generieren von Miniaturansichten
-Informationen finden Sie unter [Generieren von Miniaturansichten mithilfe von Media Encoder Standard](media-services-advanced-encoding-with-mes.md#thumbnails).
+Informationen finden Sie unter [Generieren von Miniaturansichten mithilfe von Media Encoder Standard](media-services-advanced-encoding-with-mes.md).
 
 ### <a name="trim-videos-clipping"></a>Kürzen von Videos (Clipping)
 Informationen finden Sie unter [Kürzen von Videos mithilfe von Media Encoder Standard](media-services-advanced-encoding-with-mes.md#trim_video).
@@ -70,15 +71,6 @@ Informationen finden Sie unter [Erstellen von Überlagerungen mithilfe von Media
 
 ### <a name="see-also"></a>Weitere Informationen
 [Media Services-Blog](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
-
-## <a name="media-encoder-premium-workflow"></a>Media Encoder Premium Workflow
-### <a name="overview"></a>Übersicht
-[Introducing Premium Encoding in Azure Media Services (in englischer Sprache)](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
-
-### <a name="how-to-use"></a>Gewusst wie
-Media Encoder Premium Workflow ist mit komplexen Workflows konfiguriert. Workflowdateien können mit dem Tool [Workflow-Designer](media-services-workflow-designer.md) erstellt und aktualisiert werden.
-
-[How to Use Premium Encoding in Azure Media Services (in englischer Sprache)](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
 
 ### <a name="known-issues"></a>Bekannte Probleme
 Wenn Ihr Eingabevideo keine Untertitel enthält, enthält das Ausgabemedienobjekt trotzdem eine leere TTML-Datei.

@@ -1,19 +1,19 @@
 ---
-title: 'Azure Marketplace und AppSource: bevorzugte Lösungen'
-description: Übersicht über bevorzugte Lösungen im Marketplace und deren Auswahl
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
+title: Bevorzugte Lösungen in Azure Marketplace und AppSource – Kommerzieller Microsoft-Marketplace
+description: Informationen zu bevorzugten Lösungen im Marketplace und zu deren Auswahl
 ms.service: marketplace
-ms.topic: article
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 06/27/2018
-ms.author: ellacroi
-ms.openlocfilehash: 225ed171599e3f822fc869c97a1c7d91f9107b1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 954068e2fc60321f8594aa7fdd8f4cf9a3327ebd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779809"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88607174"
 ---
-# <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Bevorzugte Lösungen im Azure Marketplace und in AppSource
+# <a name="preferred-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Bevorzugte Lösungen in Microsoft AppSource und Azure Marketplace
 
-Eine bevorzugte Microsoft-Lösung ist eine Cloudanwendung, die aufgrund ihrer Qualität, Leistung und Möglichkeit, den Kundenanforderungen in einer bestimmten Branche oder einem bestimmten Anwendungsbereich gerecht zu werden, ausgewählt wird. Ein Team von Microsoft-Experten überprüft Lösungen von Partnern mit spezifischen, bewährten Kompetenzen und Fähigkeiten. Diese Lösungen werden in unseren Storefronts in der Cloud – Azure Marketplace und AppSource – sowie im Azure-Portal vorgestellt. Bevorzugte Lösungen können in AppSource nach Branchen angezeigt werden, während sie im Azure Marketplace und im Azure-Portal nach Kategorien von Lösungsbereichen angezeigt werden können.
+Eine bevorzugte Microsoft-Lösung ist eine Cloudanwendung, die aufgrund ihrer Qualität, Leistung und Möglichkeit, den Kundenanforderungen in einer bestimmten Branche oder einem bestimmten Anwendungsbereich gerecht zu werden, ausgewählt wird. Ein Team von Microsoft-Experten überprüft Lösungen von Partnern mit spezifischen, bewährten Kompetenzen und Fähigkeiten. Diese Lösungen werden in den Onlineshops unseres kommerziellen Marketplace, im Azure Marketplace und in AppSource sowie im Azure-Portal vorgestellt. Bevorzugte Lösungen in AppSource können nach Branchen angezeigt werden, während sie im Azure Marketplace und im Azure-Portal nach Kategorien von Lösungsbereichen angezeigt werden können.

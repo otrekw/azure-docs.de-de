@@ -1,30 +1,30 @@
 ---
 title: 'Remove Duplicate Rows: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Remove Duplicate Rows“ (Doppelte Zeilen entfernen) im Azure Machine Learning Service verwenden, um potenzielle Duplikate aus einem Dataset zu entfernen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul „Remove Duplicate Rows“ (Doppelte Zeilen entfernen) in Azure Machine Learning verwenden, um potenzielle Duplikate aus einem Dataset zu entfernen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: b16e745de277d5aa262f1e1624df22f97d0cf29c
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 10/22/2019
+ms.openlocfilehash: bf35d08128aa8a3e8f545ed7184866694219f2cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128538"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90905219"
 ---
 # <a name="remove-duplicate-rows-module"></a>Modul „Remove Duplicate Rows“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Mit diesem Modul können Sie potenzielle Duplikate aus einem Dataset entfernen.
 
 Angenommen beispielsweise, Ihre Daten sehen wie die folgenden aus und stellen mehrere Datensätze für Patienten dar. 
 
-| Patienten-ID | Initials| Geschlecht|Alter|Aufgenommen|
+| Patienten-ID | Initials| Geschlecht|Age|Aufgenommen|
 |----|----|----|----|----|
 |1|W.M.| M| 53| Jan|
 |2| W.J.M.| M| 53| Jan|
@@ -51,7 +51,7 @@ Wenn Sie das Modul ausführen, erstellt es ein Kandidaten-Dataset und gibt eine 
 
 ## <a name="how-to-use-remove-duplicate-rows"></a>Verwenden von „Remove Duplicate Rows“
 
-1. Fügen Sie das Modul zu Ihrem Experiment hinzu. Sie finden das Modul **Remove Duplicate Rows** unter **Datentransformation**, **Bearbeitung**.  
+1. Fügen Sie das Modul zu Ihrer Pipeline hinzu. Sie finden das Modul **Remove Duplicate Rows** unter **Datentransformation**, **Bearbeitung**.  
 
 2. Verbinden Sie das Dataset, das Sie auf doppelte Zeilen überprüfen möchten.
 
@@ -69,13 +69,13 @@ Wenn Sie das Modul ausführen, erstellt es ein Kandidaten-Dataset und gibt eine 
     + Wenn das Kontrollkästchen aktiviert ist, wird die erste Zeile zurückgegeben, und die anderen Zeilen werden verworfen. 
     + Wenn Sie das Kontrollkästchen deaktivieren, wird die letzte doppelte Zeile in den Ergebnissen beibehalten, und die anderen Zeilen werden verworfen. 
 
-5. Führen Sie das Experiment aus.
+5. Übermitteln Sie die Pipeline.
 
-6. Um die Ergebnisse zu überprüfen, klicken Sie mit der rechten Maustaste auf das Modul, wählen Sie **Results dataset** (Ergebnisdataset) aus, und klicken Sie auf **Visualize** (Visualisieren). 
+6. Um die Ergebnisse anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Visualisieren** aus. 
 
 > [!TIP]
 > Wenn die Ergebnisse schwer zu verstehen sind oder wenn Sie einige Spalten nicht berücksichtigen möchten, können Sie Spalten mithilfe des Moduls [Select Columns in Dataset](./select-columns-in-dataset.md) (Spalten im Dataset auswählen) entfernen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

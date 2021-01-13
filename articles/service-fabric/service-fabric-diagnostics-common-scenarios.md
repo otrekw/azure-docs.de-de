@@ -1,25 +1,14 @@
 ---
-title: Häufige Diagnoseszenarien in Azure Service Fabric | Microsoft-Dokumentation
-description: Lernen Sie die Problembehandlung bei häufigen Szenarien mit Azure Service Fabric kennen
-services: service-fabric
-documentationcenter: .net
-author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Häufige Diagnoseszenarien in Azure Service Fabric
+description: Erfahren Sie mehr über die Problembehandlung für häufig auftretende Überwachungs- und Diagnoseszenarien in Azure Service Fabric-Anwendungen.
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: 265aea1b8873d812859b39175c732c3e7118cbb5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: f92bc02082d8bcd9d917f05c93d3da413f772cd0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60394210"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86257726"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostizieren häufiger Szenarien mit Service Fabric
 
@@ -56,7 +45,7 @@ Für die Lösungen in diesem Artikel werden die folgenden Tools verwendet. Es wi
 1. In der gleichen Application Insights-Ressource können Sie anstatt nach „Ausnahme“ nach „Anforderungen“ filtern und alle vorgenommenen Anforderungen anzeigen.
 2. Wenn Sie das Service Fabric Application Insights SDK verwenden, können Sie eine visuelle Darstellung der miteinander verbundenen Dienste sowie die Anzahl der erfolgreichen und fehlgeschlagenen Anforderungen anzeigen. Klicken Sie auf der linken Seite auf „App-Übersicht“.
 
-    ![Blatt „AI-App-Übersicht“](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI-App-Übersicht](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![Blatt „KI-App-Übersicht“](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![KI-App-Übersicht](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
     Weitere Informationen zur Anwendungsübersicht finden Sie in der [Dokumentation zur Anwendungsübersicht](../azure-monitor/app/app-map.md).
 
@@ -143,9 +132,10 @@ Nutzen Sie diese Links, um die vollständige Liste der Leistungsindikatoren für
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Richten Sie Warnungen in AI ein](../azure-monitor/app/alerts.md), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
+* [Suchen von häufigen Codepaket-Aktivierungsfehlern](./service-fabric-diagnostics-code-package-errors.md)
+* [Richten Sie Warnungen in AI ein](../azure-monitor/platform/alerts-log.md), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
 * Die [intelligente Erkennung in Application Insights](../azure-monitor/app/proactive-diagnostics.md) führt eine proaktive Analyse der an AI gesendeten Telemetriedaten aus, um Sie vor potenziellen Leistungsproblemen zu warnen.
-* Erfahren Sie mehr über die [Warnungen](../log-analytics/log-analytics-alerts.md) von Azure Monitor-Protokolle, die bei der Erkennung und Diagnose hilfreich sein können.
+* Erfahren Sie mehr über die [Warnungen](../azure-monitor/platform/alerts-overview.md) von Azure Monitor-Protokolle, die bei der Erkennung und Diagnose hilfreich sein können.
 * Für lokale Cluster bietet Azure Monitor-Protokolle ein Gateway (HTTP-Weiterleitungsproxy), über das Daten an Azure Monitor-Protokolle gesendet werden können. Weitere Informationen dazu finden Sie unter [Verbinden von Computern ohne Internetzugriff mit Azure Monitor-Protokolle über das Log Analytics-Gateway](../azure-monitor/platform/gateway.md).
-* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokolle vertraut.
-* Eine ausführlichere Übersicht über Azure Monitor-Protokolle und die zugehörigen Optionen finden Sie unter [Was ist Azure Monitor-Protokolle?](../operations-management-suite/operations-management-suite-overview.md).
+* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../azure-monitor/log-query/log-query-overview.md) in Azure Monitor-Protokolle vertraut.
+* Eine ausführlichere Übersicht über Azure Monitor-Protokolle und die zugehörigen Optionen finden Sie unter [Was ist Azure Monitor-Protokolle?](../azure-monitor/overview.md).

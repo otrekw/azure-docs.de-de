@@ -1,19 +1,17 @@
 ---
 title: Problembehandlung bei der Azure-Diagnoseerweiterung
 description: Behandeln Sie Probleme bei der Verwendung der Azure-Diagnose in Azure Virtual Machines, Service Fabric und Cloud Services.
-services: azure-monitor
-author: rboucher
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 05/08/2019
-ms.author: robb
-ms.openlocfilehash: 99ac4ffc288773e52183d371ef2c20f6153bc0f3
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "65471782"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86515494"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
 Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwendung der Azure-Diagnose relevant sind. Weitere Informationen zur Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](diagnostics-extension-overview.md).
@@ -37,7 +35,7 @@ Hier sind die Pfade zu einigen wichtigen Protokollen und Artefakten angegeben. W
 | **Konfigurationsdatei für Monitoring Agent** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
 | **Paket mit Azure-Diagnoseerweiterung** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
 | **Pfad des Hilfsprogramms für die Protokollsammlung** | %SystemDrive%\Packages\GuestAgent\ |
-| **MonAgentHost-Protokolldatei** | C:\Resources\Directory\<Clouddienstbereitstellungs-ID>.\<Rollenname>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<Sequenznummer>.log |
+| **MonAgentHost-Protokolldatei** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ### <a name="virtual-machines"></a>Virtuelle Computer
 | Artefakt | `Path` |
@@ -49,10 +47,10 @@ Hier sind die Pfade zu einigen wichtigen Protokollen und Artefakten angegeben. W
 | **Statusdatei** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
 | **Paket mit Azure-Diagnoseerweiterung** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
 | **Pfad des Hilfsprogramms für die Protokollsammlung** | C:\WindowsAzure\Logs\WaAppAgent.log |
-| **MonAgentHost-Protokolldatei** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<Diagnoseversion>\WAD0107\Configuration\MonAgentHost.<Sequenznummer>.log |
+| **MonAgentHost-Protokolldatei** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Metrikdaten werden nicht im Azure-Portal angezeigt
-Bei der Azure-Diagnose werden Metrikdaten bereitgestellt, die im Azure-Portal angezeigt werden können. Falls Sie Probleme beim Anzeigen der Daten im Portal haben, können Sie die Tabelle „WADMetrics\*“ im Azure-Diagnose-Speicherkonto überprüfen, um festzustellen, ob die entsprechenden Metrikdatensätze vorhanden sind.
+Bei der Azure-Diagnose werden Metrikdaten bereitgestellt, die im Azure-Portal angezeigt werden können. Falls Sie Probleme beim Anzeigen der Daten im Portal haben, können Sie die Tabelle „WADMetrics\*“ im Azure-Diagnose-Speicherkonto überprüfen, um festzustellen, ob die entsprechenden Metrikdatensätze vorhanden sind, und um sicherzustellen, dass der [Ressourcenanbieter](../../azure-resource-manager/management/resource-providers-and-types.md) „Microsoft.Insights“ registriert ist.
 
 Hier ist der **PartitionKey** der Tabelle die Ressourcen-ID, der virtuelle Computer oder die VM-Skalierungsgruppe. **RowKey** ist der Metrikname (auch als Leistungsindikatorname bezeichnet).
 
@@ -122,7 +120,7 @@ Wenn Sie nicht alle Daten erhalten, sondern nur einige, bedeutet dies, dass die 
 Die Diagnosekonfiguration enthält eine Anleitung zum Sammeln von Daten eines bestimmten Typs. [Überprüfen Sie Ihre Konfiguration](#how-to-check-diagnostics-extension-configuration), um sicherzustellen, dass Sie nur nach den für die Sammlung konfigurierten Daten suchen.
 
 #### <a name="is-the-host-generating-data"></a>Generierung von Daten durch den Host
-- **Leistungsindikatoren**: Öffnen Sie den Systemmonitor, und überprüfen Sie den Leistungsindikator.
+- **Leistungsindikatoren:** Öffnen Sie den Systemmonitor, und überprüfen Sie den Leistungsindikator.
 
 - **Ablaufverfolgungsprotokolle**:  Führen Sie den Remotezugriff auf die VM durch, und fügen Sie der Konfigurationsdatei der App einen TextWriterTraceListener hinzu.  Informationen zum Einrichten des Textlisteners finden Sie unter https://msdn.microsoft.com/library/sk36c28t.aspx.  Stellen Sie sicher, dass für das `<trace>`-Element `<trace autoflush="true">` festgelegt ist.<br />
 Wenn Sie nicht sehen, dass Ablaufverfolgungsprotokolle generiert werden, helfen Ihnen die Informationen unter „Weitere Informationen zu fehlenden Ablaufverfolgungsprotokollen“ weiter.
@@ -209,15 +207,15 @@ Mit diesem Code werden vier Tabellen generiert:
 
 | Ereignis | Tabellenname |
 | --- | --- |
-| provider=”prov1” &lt;Event id=”1” /&gt; |WADEvent+MD5(“prov1”)+”1” |
-| provider=”prov1” &lt;Event id=”2” eventDestination=”dest1” /&gt; |WADdest1 |
-| provider=”prov1” &lt;DefaultEvents /&gt; |WADDefault+MD5(“prov1”) |
-| provider=”prov2” &lt;DefaultEvents eventDestination=”dest2” /&gt; |WADdest2 |
+| provider="prov1" &lt;Event id="1" /&gt; |WADEvent+MD5("prov1")+"1" |
+| provider="prov1" &lt;Event id="2" eventDestination="dest1" /&gt; |WADdest1 |
+| provider="prov1" &lt;DefaultEvents /&gt; |WADDefault+MD5("prov1") |
+| provider="prov2" &lt;DefaultEvents eventDestination="dest2" /&gt; |WADdest2 |
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>Überprüfen der Konfiguration der Diagnoseerweiterung
-Die einfachste Möglichkeit zum Überprüfen Ihrer Erweiterungskonfiguration ist das Navigieren zum [Azure-Ressourcen-Explorer](http://resources.azure.com) und dann zu dem virtuellen Computer oder Clouddienst, unter dem sich die betreffende Azure-Diagnoseerweiterung (IaaSDiagnostics/PaaDiagnostics) befindet.
+Die einfachste Möglichkeit zum Überprüfen Ihrer Erweiterungskonfiguration ist das Navigieren zum [Azure-Ressourcen-Explorer](https://resources.azure.com) und dann zu dem virtuellen Computer oder Clouddienst, unter dem sich die betreffende Azure-Diagnoseerweiterung (IaaSDiagnostics/PaaDiagnostics) befindet.
 
 Greifen Sie alternativ dazu über Remotedesktop auf den Computer zu, und sehen Sie sich die Datei für die Azure-Diagnosekonfiguration an, die im Abschnitt zum Protokollartefaktpfad beschrieben ist.
 
@@ -232,11 +230,11 @@ Das Plug-In gibt die folgenden Exitcodes zurück:
 
 | Exitcode | BESCHREIBUNG |
 | --- | --- |
-| 0 |Erfolgreich. |
+| 0 |Erfolg. |
 | -1 |Allgemeiner Fehler. |
 | -2 |Die RCF-Datei konnte nicht geladen werden.<p>Dies ist ein interner Fehler, der nur auftreten sollte, wenn das Startprogramm für das Gast-Agent-Plug-In auf dem virtuellen Computer falsch manuell aufgerufen wird. |
 | -3 |Die Diagnosekonfigurationsdatei kann nicht geladen werden.<p><p>Lösung: Der Grund hierfür ist, dass eine Konfigurationsdatei die Schemaüberprüfung nicht bestanden hat. Gelöst werden kann der Fehler durch Bereitstellung einer Konfigurationsdatei, die dem Schema entspricht. |
-| -4 |Es wird bereits eine andere Instanz des Überwachungs-Agents der Diagnose unter Verwendung des lokalen Ressourcenverzeichnisses ausgeführt.<p><p>Lösung: Geben Sie für **LocalResourceDirectory** einen anderen Wert an. |
+| –4 |Es wird bereits eine andere Instanz des Überwachungs-Agents der Diagnose unter Verwendung des lokalen Ressourcenverzeichnisses ausgeführt.<p><p>Lösung: Geben Sie für **LocalResourceDirectory** einen anderen Wert an. |
 | -6 |Das Startprogramm für das Gast-Agent-Plug-In hat versucht, die Diagnose mit einer ungültigen Befehlszeile zu starten.<p><p>Dies ist ein interner Fehler, der nur auftreten sollte, wenn das Startprogramm für das Gast-Agent-Plug-In auf dem virtuellen Computer falsch manuell aufgerufen wird. |
 | -10 |Das Diagnose-Plug-In wurde mit einem Ausnahmefehler beendet. |
 | -11 |Der Gast-Agent konnte den für den Start und die Überwachung des Überwachungs-Agents zuständigen Prozess nicht erstellen.<p><p>Lösung: Überprüfen Sie, ob genügend Systemressourcen zum Starten neuer Prozesse verfügbar sind.<p> |
@@ -296,7 +294,6 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 
 Auf der Portaloberfläche auf den virtuellen Computern werden bestimmte Leistungsindikatoren standardmäßig angezeigt. Überprüfen Sie Folgendes, wenn die Leistungsindikatoren nicht angezeigt werden und Sie sicher sind, dass die Daten generiert werden, weil sie im Speicher verfügbar sind:
 
-- Haben die Daten im Speicher englische Indikatornamen? Wenn die Indikatornamen nicht auf Englisch sind, können sie vom Portalmetrikdiagramm nicht erkannt werden. **Vorbeugende Maßnahme**: Ändern Sie die Sprache des Computers für Systemkonten in Englisch. Wählen Sie hierzu **Systemsteuerung** > **Region** > **Verwaltung** > **Einstellungen kopieren**. Deaktivieren Sie als Nächstes die Option **Willkommensseite und Systemkonten**, damit die benutzerdefinierte Sprache nicht auf das Systemkonto angewendet wird.
+- Haben die Daten im Speicher englische Indikatornamen? Wenn die Indikatornamen nicht auf Englisch sind, können sie vom Portalmetrikdiagramm nicht erkannt werden. **Lösung**: Ändern Sie die Sprache des Computers für Systemkonten in Englisch. Wählen Sie hierzu **Systemsteuerung** > **Region** > **Verwaltung** > **Einstellungen kopieren**. Deaktivieren Sie als Nächstes die Option **Willkommensseite und Systemkonten**, damit die benutzerdefinierte Sprache nicht auf das Systemkonto angewendet wird.
 
-- Wenn Sie in den Namen Ihrer Leistungsindikatoren Platzhalter (\*) verwenden, ist es für das Portal nicht möglich, den konfigurierten und erfassten Indikator zu korrelieren, wenn die Leistungsindikatoren an die Azure Storage-Senke gesendet werden. **Vorbeugende Maßnahme**: Um sicherzustellen, dass Sie Platzhalter verwenden können und das Portal zudem den (\*) erweitert, leiten Sie Ihre Leistungsindikatoren an die [„Azure Monitor“-Senke](diagnostics-extension-schema.md#diagnostics-extension-111) weiter.
-
+- Wenn Sie in den Namen Ihrer Leistungsindikatoren Platzhalter (\*) verwenden, ist es für das Portal nicht möglich, den konfigurierten und erfassten Indikator zu korrelieren, wenn die Leistungsindikatoren an die Azure Storage-Senke gesendet werden. **Lösung**: Um sicherzustellen, dass Sie Platzhalter verwenden können und das Portal zudem den (\*) erweitert, leiten Sie Ihre Leistungsindikatoren an die Azure Monitor-Senke weiter.

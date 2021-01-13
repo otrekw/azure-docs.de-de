@@ -1,24 +1,17 @@
 ---
-title: Azure Service Fabric mit VS Code – Erste Schritte | Microsoft-Dokumentation
+title: 'Azure Service Fabric mit VS Code: Erste Schritte'
 description: Dieser Artikel enthält einen Überblick über die Erstellung von Service Fabric-Anwendungen mit Visual Studio Code.
-services: service-fabric
-documentationcenter: .net
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 9662ebd26a263fa006c8fccf877fdc950e9014c0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: devx-track-js
+ms.openlocfilehash: a655199d854462285ca98a2d8f454c483c061f99
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102958"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316669"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric für Visual Studio Code
 
@@ -36,7 +29,7 @@ Die folgenden Voraussetzungen müssen in allen Umgebungen installiert werden.
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Node.js](https://nodejs.org/)
 * [Git-Client](https://git-scm.com/)
-* [Service Fabric SDK](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
+* [Service Fabric SDK](./service-fabric-get-started.md)
 * Yeoman-Generatoren: Installieren Sie die entsprechenden Generatoren für Ihre Anwendung
 
    ```sh
@@ -49,19 +42,19 @@ Die folgenden Voraussetzungen müssen in allen Umgebungen installiert werden.
 
 Die folgenden Voraussetzungen müssen für die Java-Entwicklung installiert werden:
 
-* [Java SDK](https://aka.ms/azure-jdks) (Version 1.8)
+* [Java SDK](/azure/developer/java/fundamentals/java-jdk-long-term-support) (Version 1.8)
 * [Gradle](https://gradle.org/install/)
-* [Debugger für Java VS Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) Wird zum Debuggen von Java-Diensten benötigt. Das Debuggen von Java-Diensten wird nur unter Linux unterstützt. Sie können installieren, indem Sie auf das Symbol „Erweiterungen“ in der **Aktivitätsleiste** in VS Code klicken und die Erweiterung suchen, oder aber über den Visual Studio Code Marketplace.
+* [Debugger für Java VS Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) Wird zum Debuggen von Java-Diensten benötigt. Das Debuggen von Java-Diensten wird nur unter Linux unterstützt. Sie können installieren, indem Sie auf „Erweiterungen“ in der **Aktivitätsleiste** in VS Code klicken und die Erweiterung suchen, oder aber über den Visual Studio Code Marketplace.
 
 Die folgenden Voraussetzungen müssen für die .NET Core/C#-Entwicklung installiert werden:
 
 * [.NET Core](https://www.microsoft.com/net/learn/get-started) (ab Version 2.0.0)
-* [C# für Visual Studio Code (unterstützt von OmniSharp) VS Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Wird zum Debuggen von C#-Diensten benötigt. Sie können installieren, indem Sie auf „Erweiterungen“ in der **Aktivitätsleiste** in VS Code klicken und die Erweiterung suchen, oder aber über den Visual Studio Code Marketplace.
+* [C# für Visual Studio Code (unterstützt von OmniSharp) VS Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) Wird zum Debuggen von C#-Diensten benötigt. Sie können installieren, indem Sie auf „Erweiterungen“ in der **Aktivitätsleiste** in VS Code klicken und die Erweiterung suchen, oder aber über den Visual Studio Code Marketplace.
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 1. Öffnen Sie Visual Studio Code.
-2. Klicken Sie in der **Aktivitätsleiste** am Rand von VS Code auf das Symbol „Debuggen“. Suchen Sie „Service Fabric“. Klicken Sie auf **Installieren** für die Service Fabric Reliable Services-Erweiterung.
+2. Klicken Sie in der **Aktivitätsleiste** am Rand von VS Codeauf das Symbol „Debuggen“. Suchen Sie „Service Fabric“. Klicken Sie auf **Installieren** für die Service Fabric Reliable Services-Erweiterung.
 
 ## <a name="commands"></a>Befehle
 Die Service Fabric Reliable Services-Erweiterung für VS Code bietet viele Befehle, mit denen Entwickler Service Fabric-Projekte erstellen und bereitstellen können. Sie können Befehle über die **Befehlspalette** aufrufen, indem Sie `(Ctrl + Shift + p)` drücken, den Namen des Befehls in die Eingabeleiste eingeben und den gewünschten Befehl in der Liste der Eingabeaufforderungen auswählen. 
@@ -77,7 +70,7 @@ Die Service Fabric Reliable Services-Erweiterung für VS Code bietet viele Befeh
 
 Der Befehl **Service Fabric: Anwendung erstellen** erstellt eine neue Service Fabric-Anwendung in Ihrem aktuellen Arbeitsbereich. Je nachdem, welche Yeoman-Generatoren auf dem Entwicklungscomputer installiert sind, können Sie mehrere Typen von Service Fabric-Anwendungen erstellen, darunter Java-, C#-, Container- und Gastprojekte. 
 
-1.  Wählen Sie den Befehl **Service Fabric: Dienst hinzufügen** aus.
+1.  Wählen Sie den Befehl **Service Fabric: Anwendung erstellen**-Befehl.
 2.  Wählen Sie den Typ für die neue Service Fabric-Anwendung aus. 
 3.  Geben Sie den Namen der Anwendung ein, die Sie erstellen möchten
 3.  Wählen Sie den Typ des Diensts aus, den Sie der Service Fabric-Anwendung hinzufügen möchten. 

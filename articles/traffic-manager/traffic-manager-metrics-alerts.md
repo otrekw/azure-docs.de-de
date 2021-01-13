@@ -1,21 +1,21 @@
 ---
 title: Metriken und Warnungen in Azure Traffic Manager
-description: Dieser Artikel beschreibt die verfügbaren Metriken für Traffic Manager in Azure.
+description: In diesem Artikel erfahren Sie mehr über die Metriken und Warnungen, die für Traffic Manager in Azure verfügbar sind.
 services: traffic-manager
-author: asudbring
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
-ms.author: allensu
-ms.openlocfilehash: e689398a38030a712ec6beb651131d0424e44476
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: duau
+ms.openlocfilehash: 997e2e97161e6db7cdca04c1b79f5149a2e4c409
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071114"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003530"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager-Metriken und -Warnungen
 
@@ -39,7 +39,7 @@ Abbildung 2 zeigt die gleichen Informationen, sie sind allerdings nach Endpunkte
 
 ![Traffic Manager-Metriken – unterteilte Ansicht des Abfragevolumens pro Endpunkt](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-query-volume-per-endpoint.png)
 
-*Abbildung 2: Geteilte Ansicht mit Abfragevolumen pro zurückgegebenem Endpunkt*
+*Abbildung 2: Unterteilte Ansicht mit Abfragevolumen, dargestellt pro zurückgegebenem Endpunkt*
 
 ## <a name="endpoint-status-by-endpoint"></a>Endpunktstatus nach Endpunkt
 Verwenden Sie [diese Metrik](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles), um den Integritätsstatus der Endpunkte im Profil zu verstehen. Zwei Werte sind möglich:
@@ -56,7 +56,7 @@ Diese Metrik kann als ein aggregierter Wert angezeigt werden, der den Status all
 
 ![Traffic Manager-Metriken – unterteilte Ansicht des Endpunktstatus](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-split-view.png)
 
-*Abbildung 4: Geteilte Ansicht der Metrik zum Endpunktstatus*
+*Abbildung 4: Unterteilte Ansicht der Metrik zum Endpunktstatus*
 
 Sie können diese Metriken über das Portal des [Azure Monitor-Diensts](../azure-monitor/platform/metrics-supported.md), [REST-API](https://docs.microsoft.com/rest/api/monitor/), [Azure CLI](https://docs.microsoft.com/cli/azure/monitor) und [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights) oder über den Abschnitt „Metriken“ in der Traffic Manager-Portalumgebung nutzen.
 

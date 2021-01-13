@@ -1,20 +1,17 @@
 ---
-title: 'PowerShell-Skript: Erstellen eines neuen Azure Data Share-Kontos | Microsoft-Dokumentation'
+title: 'PowerShell-Skript: Erstellen eines neuen Azure Data Share-Kontos'
 description: Dieses PowerShell-Skript erstellt ein neues Data Share-Konto.
-services: data-share
 author: joannapea
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: c3852dd5f1d3d3df8a982716ce5dab9426782869
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 4608afc16398a4cd1fa47ee1ae2cd4a4489a3f96
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307272"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221365"
 ---
 # <a name="use-powershell-to-create-a-data-share-account-in-azure"></a>Verwenden von PowerShell zum Erstellen eines Data Share-Kontos in Azure
 
@@ -38,11 +35,11 @@ Das Skript verwendet die folgenden Befehle:
 
 | Get-Help | Notizen |
 |---|---|
-| [New-AzDataShareAccount](/powershell/module/az.datashare/new-azdatashareaccount?view=azps-2.6.0) | Erstellt ein Data Share-Konto |
+| [New-AzDataShareAccount](/powershell/module/az.datashare/new-azdatashareaccount) | Erstellt ein Data Share-Konto |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/).
 
 Weitere PowerShell-Skriptbeispiele für Azure Data Share finden Sie unter [Azure PowerShell-Beispiele für Azure Data Share](../../samples-powershell.md).

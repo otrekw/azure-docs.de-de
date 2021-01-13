@@ -1,18 +1,14 @@
 ---
-title: Wiederherstellen gesicherter SQL Server-Datenbanken auf einem virtuellen Azure-Computer mithilfe von Azure Backup | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken wiederherstellen, die auf einem virtuellen Azure-Computer ausgeführt und mit Azure Backup gesichert werden.
-author: dcurwin
-manager: carmonm
-ms.service: backup
+title: Wiederherstellen von SQL Server-Datenbanken auf einem virtuellen Azure-Computer
+description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken wiederherstellen, die auf einem virtuellen Azure-Computer ausgeführt und mit Azure Backup gesichert werden. Zum Wiederherstellen von Datenbanken in einer sekundären Region können Sie auch die regionsübergreifende Wiederherstellung verwenden.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.author: dacurwin
-ms.openlocfilehash: 71867e520d9c98b4af4d4f18f3d08c9e8cc4a8c4
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7dd8d8d54fa7d33bb4a0935357597d19dd2368c5
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639543"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734401"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Wiederherstellen von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -27,32 +23,33 @@ Azure Backup kann auf virtuellen Azure-Computern ausgeführte SQL Server-Datenb
 - Wiederherstellung eines bestimmten Datums oder einer bestimmten Uhrzeit (sekundengenau) mithilfe von Transaktionsprotokollsicherungen. Azure Backup ermittelt automatisch die geeignete vollständige differenzielle Sicherung und die Kette von Protokollsicherungen, die für die Wiederherstellung Ihrer Daten basierend auf dem ausgewählten Zeitpunkt benötigt werden.
 - Wiederherstellung einer bestimmten vollständigen oder differenziellen Sicherung, um die Daten eines bestimmten Wiederherstellungspunkts wiederherzustellen.
 
-
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="restore-prerequisites"></a>Voraussetzungen für die Wiederherstellung
 
 Beachten Sie vor dem Wiederherstellen einer Datenbank Folgendes:
 
 - Sie können die Datenbank auf einer SQL Server-Instanz in derselben Azure-Region wiederherstellen.
 - Der Zielserver muss bei demselben Tresor wie die Quelle registriert werden.
-- Wenn Sie eine mit TDE verschlüsselte Datenbank in einer anderen SQL Server-Instanz wiederherstellen möchten, müssen Sie zuerst [das Zertifikat auf dem Zielserver wiederherstellen](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017).
+- Wenn auf einem Server mehrere Instanzen ausgeführt werden, sollten alle Instanzen aktiv sein und ausgeführt werden. Andernfalls wird der Server nicht in der Liste der Zielserver angezeigt, auf denen Sie die Datenbank wiederherstellen können. Weitere Informationen finden Sie in den [Schritten zur Problembehandlung](backup-sql-server-azure-troubleshoot.md#faulty-instance-in-a-vm-with-multiple-sql-server-instances).
+- Wenn Sie eine mit TDE verschlüsselte Datenbank in einer anderen SQL Server-Instanz wiederherstellen möchten, müssen Sie zuerst [das Zertifikat auf dem Zielserver wiederherstellen](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server).
+- [CDC](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server)-fähige Datenbanken sollten mithilfe der Option [Als Dateien wiederherstellen](#restore-as-files) wiederhergestellt werden.
 - Starten Sie vor der Wiederherstellung der Masterdatenbank die SQL Server-Instanz mit der Startoption **-m AzureWorkloadBackup** im Einzelbenutzermodus.
-    - Der Wert für **-m** ist der Name des Clients.
-    - Die Verbindung kann nur vom angegebenen Clientnamen geöffnet werden.
+  - Der Wert für **-m** ist der Name des Clients.
+  - Die Verbindung kann nur vom angegebenen Clientnamen geöffnet werden.
 - Beenden Sie für alle Systemdatenbanken („model“, „master“, „msdb“) vor dem Auslösen der Wiederherstellung den SQL Server-Agent-Dienst.
 - Schließen Sie alle Anwendungen, die ggf. versuchen, eine Verbindung mit einer dieser Datenbanken zu verwenden.
-- Wenn auf einem Server mehrere Instanzen ausgeführt werden, müssen alle Instanzen aktiv sein. Andernfalls wird der Server nicht in der Liste mit den Zielservern für die Datenbankwiederherstellung angezeigt.
 
 ## <a name="restore-a-database"></a>Wiederherstellen einer Datenbank
 
 Zum Wiederherstellen benötigen Sie folgende Berechtigungen:
 
-* Berechtigungen vom Typ **Sicherungsoperator** in dem Tresor, in dem Sie die Wiederherstellung durchführen.
-* Zugriff **Mitwirkender (Schreiben)** auf die gesicherte Quell-VM.
-* Zugriff **Mitwirkender (Schreiben)** auf die Ziel-VM:
-    - Wenn Sie die Daten auf dem gleichen virtuellen Computer wiederherstellen, handelt es sich hierbei um den virtuellen Quellcomputer.
-    - Wenn Sie als Ziel für die Wiederherstellung einen anderen Speicherort verwenden, handelt es sich hierbei um den neuen virtuellen Zielcomputer.
+- Berechtigungen vom Typ **Sicherungsoperator** in dem Tresor, in dem Sie die Wiederherstellung durchführen.
+- Zugriff **Mitwirkender (Schreiben)** auf die gesicherte Quell-VM.
+- Zugriff **Mitwirkender (Schreiben)** auf die Ziel-VM:
+  - Wenn Sie die Daten auf dem gleichen virtuellen Computer wiederherstellen, handelt es sich hierbei um den virtuellen Quellcomputer.
+  - Wenn Sie als Ziel für die Wiederherstellung einen anderen Speicherort verwenden, handelt es sich hierbei um den neuen virtuellen Zielcomputer.
 
 Die Wiederherstellung wird wie folgt durchgeführt:
+
 1. Öffnen Sie den Tresor, in dem die SQL Server-VM registriert ist.
 2. Wählen Sie im Dashboard des Tresors unter **Nutzung** die Option **Sicherungselemente** aus.
 3. Wählen Sie im Menü **Sicherungselemente** unter **Sicherungsverwaltungstyp** die Option **SQL Server in Azure-VM** aus.
@@ -65,34 +62,43 @@ Die Wiederherstellung wird wie folgt durchgeführt:
 
 5. Überprüfen Sie das Datenbankmenü. Es enthält folgende Informationen über die Datenbanksicherung:
 
-    * Die ältesten und neuesten Wiederherstellungspunkte
-    * Den Protokollsicherungsstatus der letzten 24 Stunden (für Datenbanken in einem vollständigen und massenprotokollierten Wiederherstellungsmodus, die für Transaktionsprotokollsicherungen konfiguriert sind)
+    - Die ältesten und neuesten Wiederherstellungspunkte
+    - Den Protokollsicherungsstatus der letzten 24 Stunden (für Datenbanken in einem vollständigen und massenprotokollierten Wiederherstellungsmodus, die für Transaktionsprotokollsicherungen konfiguriert sind)
 
-6. Wählen Sie **Datenbank wiederherstellen** aus.
+6. Wählen Sie **Wiederherstellen** aus.
 
-    ![Auswählen von „Datenbank wiederherstellen“](./media/backup-azure-sql-database/restore-db-button.png)
+    ![Auswählen von „Wiederherstellen“](./media/backup-azure-sql-database/restore-db.png)
 
-7. Geben Sie unter **Wiederherstellungskonfiguration** an, wo die Daten wiederhergestellt werden sollen:
+7. Geben Sie unter **Wiederherstellungskonfiguration** an, wo (oder wie) die Daten wiederhergestellt werden sollen:
    - **Alternativer Standort:** Die Datenbank wird an einem alternativen Speicherort wiederhergestellt, und die ursprüngliche Quelldatenbank bleibt erhalten.
    - **Datenbank überschreiben:** Die Daten werden auf derselben SQL Server-Instanz wiederhergestellt, auf der sich auch die ursprüngliche Quelle befunden hat. Bei dieser Option wird die ursprüngliche Datenbank überschrieben.
 
-     > [!Important]
-     > Wenn die ausgewählte Datenbank zu einer Always On-Verfügbarkeitsgruppe gehört, lässt SQL Server das Überschreiben der Datenbank nicht zu. Nur **Alternativer Speicherort** ist verfügbar.
-     >
-
-     ![Menü „Konfiguration wiederherstellen“](./media/backup-azure-sql-database/restore-restore-configuration-menu.png)
+        > [!IMPORTANT]
+        > Wenn die ausgewählte Datenbank zu einer Always On-Verfügbarkeitsgruppe gehört, lässt SQL Server das Überschreiben der Datenbank nicht zu. Nur **Alternativer Speicherort** ist verfügbar.
+        >
+   - **Als Dateien wiederherstellen:** Anstelle einer Datenbank werden die Sicherungsdateien wiederhergestellt, die später mithilfe von SQL Server Management Studio als Datenbank auf jedem Computer wiederhergestellt werden können, auf dem die Dateien vorhanden sind.
+     ![Menü „Wiederherstellungskonfiguration“](./media/backup-azure-sql-database/restore-configuration.png)
 
 ### <a name="restore-to-an-alternate-location"></a>Wiederherstellen an einem alternativen Speicherort
 
 1. Wählen Sie im Menü **Wiederherstellungskonfiguration** unter **Zielort der Wiederherstellung** die Option **Alternativer Speicherort** aus.
-2. Wählen Sie den SQL Server-Namen und die Instanz aus, in der Sie die Datenbank wiederherstellen möchten.
-3. Geben Sie im Feld **Name der wiederhergestellten Datenbank** den Namen der Zieldatenbank ein.
-4. Aktivieren Sie ggf. **Überschreiben, wenn die gleichnamige Datenbank bereits in der ausgewählten SQL-Instanz vorhanden ist**.
-5. Klicken Sie auf **OK**.
+1. Wählen Sie den SQL Server-Namen und die Instanz aus, in der Sie die Datenbank wiederherstellen möchten.
+1. Geben Sie im Feld **Name der wiederhergestellten Datenbank** den Namen der Zieldatenbank ein.
+1. Aktivieren Sie ggf. **Überschreiben, wenn die gleichnamige Datenbank bereits in der ausgewählten SQL-Instanz vorhanden ist**.
+1. Wählen Sie unter **Wiederherstellungspunkt** aus, ob Sie [einen bestimmten Zeitpunkt](#restore-to-a-specific-point-in-time) oder einen [bestimmten Wiederherstellungspunkt](#restore-to-a-specific-restore-point) wiederherstellen möchten.
 
-    ![Angeben von Werten für das Menü „Konfiguration wiederherstellen“](./media/backup-azure-sql-database/restore-configuration-menu.png)
+    ![Wiederherstellungspunkt auswählen](./media/backup-azure-sql-database/select-restore-point.png)
 
-2. Wählen Sie unter **Wiederherstellungspunkt auswählen** aus, ob Sie [einen bestimmten Zeitpunkt](#restore-to-a-specific-point-in-time) oder einen [bestimmten Wiederherstellungspunkt](#restore-to-a-specific-restore-point) wiederherstellen möchten.
+    ![Wiederherstellung zu einem bestimmten Zeitpunkt](./media/backup-azure-sql-database/restore-to-point-in-time.png)
+
+1. Gehen Sie im Menü **Erweiterte Konfiguration** wie folgt vor:
+
+    - Aktivieren Sie **Mit NORECOVERY wiederherstellen**, wenn die Datenbank nach der Wiederherstellung nicht in Betrieb gehen soll.
+    - Wenn Sie den Speicherort für die Wiederherstellung auf dem Zielserver ändern möchten, geben Sie neue Zielpfade ein.
+
+        ![Zielpfade eingeben](./media/backup-azure-sql-database/target-paths.png)
+
+1. Wählen Sie **OK** aus, um die Wiederherstellung auszulösen. Verfolgen Sie den Fortschritt der Wiederherstellung im Bereich **Benachrichtigungen** oder im Tresor in der Ansicht **Wiederherstellungsaufträge**.
 
     > [!NOTE]
     > Die Point-in-Time-Wiederherstellung ist nur für Transaktionsprotokollsicherungen für Datenbanken in einem vollständigen und massenprotokollierten Wiederherstellungsmodus verfügbar.
@@ -108,31 +114,43 @@ Die Wiederherstellung wird wie folgt durchgeführt:
     > [!NOTE]
     > Die Point-in-Time-Wiederherstellung ist nur für Transaktionsprotokollsicherungen für Datenbanken in einem vollständigen und massenprotokollierten Wiederherstellungsmodus verfügbar.
 
+### <a name="restore-as-files"></a>Wiederherstellen als Dateien
+
+Um die Sicherungsdaten als BAK-Dateien und nicht als Datenbank wiederherzustellen, wählen Sie **Als Dateien wiederherstellen** aus. Nachdem die Dateien in einem angegebenen Pfad gesichert wurden, können Sie diese Dateien auf jeden Computer verschieben, auf dem sie als Datenbank wiederhergestellt werden sollen. Da Sie diese Dateien auf einen beliebigen Computer verschieben können, können Sie nun die Daten abonnement- und regionsübergreifend wiederherstellen.
+
+1. Wählen Sie unter **Ziel und Art der Wiederherstellung** die Option **Als Dateien wiederherstellen** aus.
+1. Wählen Sie den Namen der SQL Server-Instanz aus, in der Sie die Sicherungsdateien wiederherstellen möchten.
+1. Geben Sie unter **Zielpfad auf dem Server** den Ordnerpfad auf dem in Schritt 2 ausgewählten Server ein. Dies ist der Speicherort, an dem der Dienst alle erforderlichen Sicherungsdateien sichert. Normalerweise kann über einen Netzwerkfreigabepfad oder den Pfad einer eingebundenen Azure-Dateifreigabe, wenn dieser als Zielpfad angegeben ist, über andere Computer im selben Netzwerk oder mit derselben eingebundenen Azure-Dateifreigabe einfacher auf diese Dateien zugegriffen werden.<BR>
+
+    >Um die Datenbank-Sicherungsdateien auf einer Azure-Dateifreigabe wiederherzustellen, die auf der registrierten Ziel-VM bereitgestellt ist. stellen Sie sicher, dass „NT AUTHORITY\SYSTEM“ auf die Dateifreigabe zugreifen kann. Sie können die unten aufgeführten Schritte ausführen, um die Lese-/Schreibberechtigungen für die auf dem virtuellen Computer bereitgestellten AFS zu erteilen:
+    >
+    >- Führen Sie `PsExec -s cmd` aus, um in die NT AUTHORITY\SYSTEM-Shell zu gelangen.
+    >   - Führen Sie `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` aus.
+    >   - Überprüfen Sie den Zugriff mit `dir \\<storageacct>.file.core.windows.net\<filesharename>`.
+    >- Starten Sie eine Wiederherstellung als Dateien aus dem Sicherungstresor unter dem Pfad `\\<storageacct>.file.core.windows.net\<filesharename>`.<BR>
+    „PsExec“ können Sie von der Seite [Sysinternals](/sysinternals/downloads/psexec) herunterladen.
+
+1. Klicken Sie auf **OK**.
+
+    ![Auswählen von „Wiederherstellen als Dateien“](./media/backup-azure-sql-database/restore-as-files.png)
+
+1. Wählen Sie unter **Wiederherstellungspunkt** aus, ob Sie [einen bestimmten Zeitpunkt](#restore-to-a-specific-point-in-time) oder einen [bestimmten Wiederherstellungspunkt](#restore-to-a-specific-restore-point) wiederherstellen möchten.
+
+1. Alle Sicherungsdateien, die dem ausgewählten Wiederherstellungspunkt zugeordnet sind, werden im Zielpfad gesichert. Sie können die Dateien mithilfe von SQL Server Management Studio als Datenbank auf jedem Computer wiederherstellen, auf dem sie vorhanden sind.
+
+    ![Wiederhergestellte Sicherungsdateien im Zielpfad](./media/backup-azure-sql-database/sql-backup-files.png)
+
 ### <a name="restore-to-a-specific-point-in-time"></a>Wiederherstellen eines bestimmten Zeitpunkts
 
 Wenn Sie **Protokolle (Zeitpunkt)** als Wiederherstellungstyp ausgewählt haben, gehen Sie folgendermaßen vor:
 
-1.  Öffnen Sie unter **Datum/Uhrzeit für Wiederherstellung** den Kalender. Im Kalender sind Tage, für die Wiederherstellungspunkte vorhanden sind, fett formatiert, und das aktuelle Datum ist hervorgehoben.
+1. Öffnen Sie unter **Datum/Uhrzeit für Wiederherstellung** den Kalender. Im Kalender sind Tage, für die Wiederherstellungspunkte vorhanden sind, fett formatiert, und das aktuelle Datum ist hervorgehoben.
 1. Wählen Sie ein Datum mit Wiederherstellungspunkten aus. Tage ohne Wiederherstellungspunkte können nicht ausgewählt werden.
 
     ![Öffnen des Kalenders](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
 
 1. Wenn Sie ein Datum ausgewählt haben, zeigt das Zeitachsendiagramm die verfügbaren Wiederherstellungspunkte in einem fortlaufenden Bereich an.
-1. Geben Sie auf der Zeitleiste eine Uhrzeit für die Wiederherstellung an, oder wählen Sie eine Uhrzeit aus. Wählen Sie dann **OK**aus.
-
-    ![Auswählen einer Uhrzeit für die Wiederherstellung](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
-
-
-1. Aktivieren Sie im Menü **Erweiterte Konfiguration** die Option **Mit NORECOVERY wiederherstellen**, wenn die Datenbank nach der Wiederherstellung nicht in Betrieb gehen werden soll.
-1. Wenn Sie den Speicherort für die Wiederherstellung auf dem Zielserver ändern möchten, geben Sie einen neuen Zielpfad ein.
-1. Klicken Sie auf **OK**.
-
-    ![Menü „Erweiterte Konfiguration“](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
-
-1. Wählen Sie im Menü **Wiederherstellen** **Wiederherstellen** aus, um den Wiederherstellungsauftrag zu starten.
-1. Verfolgen Sie den Fortschritt der Wiederherstellung im Bereich **Benachrichtigungen**, oder wählen Sie im Datenbankmenü die Option **Wiederherstellungsaufträge** aus.
-
-    ![Fortschritt des Wiederherstellungsauftrags](./media/backup-azure-sql-database/restore-job-notification.png)
+1. Geben Sie auf der Zeitleiste eine Uhrzeit für die Wiederherstellung an, oder wählen Sie eine Uhrzeit aus. Klicken Sie anschließend auf **OK**.
 
 ### <a name="restore-to-a-specific-restore-point"></a>Wiederherstellen eines bestimmten Wiederherstellungspunkts
 
@@ -140,25 +158,61 @@ Wenn Sie **Vollständig und differenziell** als Wiederherstellungstyp ausgewähl
 
 1. Wählen Sie aus der Liste einen Wiederherstellungspunkt aus, und wählen Sie **OK** aus, um die Prozedur der Wiederherstellungspunkte abzuschließen.
 
-    ![Auswählen eines vollständigen Wiederherstellungspunkts](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
+    ![Auswählen eines vollständigen Wiederherstellungspunkts](./media/backup-azure-sql-database/choose-full-recovery-point.png)
 
-1. Aktivieren Sie im Menü **Erweiterte Konfiguration** die Option **Mit NORECOVERY wiederherstellen**, wenn die Datenbank nach der Wiederherstellung nicht in Betrieb gehen werden soll.
-1. Wenn Sie den Speicherort für die Wiederherstellung auf dem Zielserver ändern möchten, geben Sie einen neuen Zielpfad ein.
-1. Klicken Sie auf **OK**.
-
-    ![Menü „Erweiterte Konfiguration“](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
-
-1. Wählen Sie im Menü **Wiederherstellen** **Wiederherstellen** aus, um den Wiederherstellungsauftrag zu starten.
-1. Verfolgen Sie den Fortschritt der Wiederherstellung im Bereich **Benachrichtigungen**, oder wählen Sie im Datenbankmenü die Option **Wiederherstellungsaufträge** aus.
-
-    ![Fortschritt des Wiederherstellungsauftrags](./media/backup-azure-sql-database/restore-job-notification.png)
+    >[!NOTE]
+    > Standardmäßig werden die Wiederherstellungspunkte der letzten 30 Tage angezeigt. Sie können Wiederherstellungspunkte anzeigen, die älter als 30 Tage sind, indem Sie **Filter** und dann einen benutzerdefinierten Bereich auswählen.
 
 ### <a name="restore-databases-with-large-number-of-files"></a>Wiederherstellen von Datenbanken mit zahlreichen Dateien
 
-Wenn die gesamte Zeichenfolgengröße von Dateien in einer Datenbank einen [bestimmten Grenzwert](backup-sql-server-azure-troubleshoot.md#size-limit-for-files) übersteigt, speichert Azure Backup die Liste mit den Datenbankdateien in einer anderen PIT-Komponente, sodass Sie während des Wiederherstellungsvorgangs den Wiederherstellungszielpfad nicht angegeben können. Die Dateien werden stattdessen am SQL-Standardpfad wiederhergestellt.
+Wenn die gesamte Zeichenfolgegröße von Dateien in einer Datenbank einen [bestimmten Grenzwert](backup-sql-server-azure-troubleshoot.md#size-limit-for-files) überschreitet, speichert Azure Backup die Liste mit den Datenbankdateien in einer anderen PIT-Komponente, sodass Sie den Wiederherstellungszielpfad während des Wiederherstellungsvorgangs nicht festlegen können. Die Dateien werden stattdessen am SQL-Standardpfad wiederhergestellt.
 
   ![Wiederherstellen einer Datenbank mit großer Datei](./media/backup-azure-sql-database/restore-large-files.jpg)
 
+## <a name="cross-region-restore"></a>Regionsübergreifende Wiederherstellung
+
+Als eine der Wiederherstellungsoptionen ermöglicht die regionsübergreifende Wiederherstellung die Wiederherstellung von auf virtuellen Azure-Computern gehosteten SQL-Datenbanken in einer sekundären Region, bei der es sich um eine gekoppelte Azure-Region handelt.
+
+Informationen zum Integrieren des Features während der Vorschau finden Sie im Abschnitt [Bevor Sie beginnen](./backup-create-rs-vault.md#set-cross-region-restore).
+
+Um festzustellen, ob CRR aktiviert ist, befolgen Sie die Anweisungen unter [Konfigurieren der regionsübergreifenden Wiederherstellung](backup-create-rs-vault.md#configure-cross-region-restore).
+
+### <a name="view-backup-items-in-secondary-region"></a>Anzeigen von Sicherungselementen in der sekundären Region
+
+Wenn CRR aktiviert ist, können Sie die Sicherungselemente in der sekundären Region anzeigen.
+
+1. Navigieren Sie im Portal zu **Recovery Services-Tresor** > **Sicherungselemente**.
+1. Wählen Sie **Sekundäre Region** aus, um die Elemente in der sekundären Region anzuzeigen.
+
+>[!NOTE]
+>In der Liste werden nur Sicherungsverwaltungstypen angezeigt, die das CRR-Feature unterstützen. Derzeit ist nur die Unterstützung der Wiederherstellung von Daten aus sekundären Regionen in einer sekundären Region zulässig.
+
+![Sicherungselemente in einer sekundären Region](./media/backup-azure-sql-database/backup-items-secondary-region.png)
+
+![Datenbanken in einer sekundären Region](./media/backup-azure-sql-database/databases-secondary-region.png)
+
+### <a name="restore-in-secondary-region"></a>Wiederherstellen in der sekundären Region
+
+Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt der Benutzerumgebung für die Wiederherstellung in der primären Region. Wenn Sie Details im Bereich „Wiederherstellungskonfiguration“ festlegen, um Ihre Wiederherstellung zu konfigurieren, werden Sie aufgefordert, nur die Parameter der sekundären Region anzugeben.
+
+![Ziel und Art der Wiederherstellung](./media/backup-azure-sql-database/restore-secondary-region.png)
+
+>[!NOTE]
+>Das virtuelle Netzwerk in der sekundären Region muss eindeutig zugewiesen werden und kann nicht für andere VMs in dieser Ressourcengruppe verwendet werden.
+
+![Auslösen der Benachrichtigung „Wiederherstellung wird ausgeführt“](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+>[!NOTE]
+>
+>- Nachdem die Wiederherstellung ausgelöst wurde und sich in der Datenübertragungsphase befindet, kann der Wiederherstellungsauftrag nicht abgebrochen werden.
+>- Die für die Wiederherstellung in der Sekundärregion erforderlichen Azure-Rollen sind die gleichen wie in der Primärregion.
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>Überwachen von Wiederherstellungsaufträgen für die sekundäre Regionen
+
+1. Navigieren Sie im Portal zu **Recovery Services-Tresor** > **Sicherungsaufträge**.
+1. Wählen Sie **Sekundäre Region** aus, um die Elemente in der sekundären Region anzuzeigen.
+
+    ![Gefilterte Sicherungsaufträge](./media/backup-azure-sql-database/backup-jobs-secondary-region.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

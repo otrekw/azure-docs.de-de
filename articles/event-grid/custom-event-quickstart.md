@@ -1,42 +1,37 @@
 ---
-title: Senden von benutzerdefinierten Ereignissen mit Event Grid und der Azure CLI
-description: Verwenden Sie Azure Event Grid und Azure CLI, um ein benutzerdefiniertes Thema zu veröffentlichen und Ereignisse für dieses Thema zu abonnieren. Die Ereignisse werden von einer Webanwendung verarbeitet.
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 12/07/2018
+title: 'Schnellstart: Senden von benutzerdefinierten Ereignissen mit Event Grid und der Azure CLI'
+description: 'Schnellstart: Verwenden von Azure Event Grid und der Azure CLI, um ein benutzerdefiniertes Thema zu veröffentlichen und Ereignisse für dieses Thema zu abonnieren. Die Ereignisse werden von einer Webanwendung verarbeitet.'
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18, seo-javascript-september2019
-ms.openlocfilehash: a6888179d4d465808dc28f7784db8d1d915e3f80
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0a3d8f5a1614704cea4242ce64ecc6c4504da754
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861106"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702020"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Schnellstart: Weiterleiten benutzerdefinierter Ereignisse an einen Webendpunkt mit Azure CLI und Event Grid
 
-Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel erstellen Sie mithilfe der Azure-Befehlszeilenschnittstelle ein benutzerdefiniertes Thema, abonnieren dieses benutzerdefinierte Thema und lösen das Ereignis zum Anzeigen des Ergebnisses aus. Üblicherweise senden Sie Ereignisse an einen Endpunkt, der die Ereignisdaten verarbeitet und entsprechende Aktionen ausführt. Der Einfachheit halber senden Sie die Ereignisse in diesem Artikel allerdings an eine Web-App, die die Nachrichten sammelt und anzeigt.
+Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel erstellen Sie mithilfe der Azure-Befehlszeilenschnittstelle ein benutzerdefiniertes Thema, abonnieren dieses benutzerdefinierte Thema und lösen das Ereignis zum Anzeigen des Ergebnisses aus.
+
+Üblicherweise senden Sie Ereignisse an einen Endpunkt, der die Ereignisdaten verarbeitet und entsprechende Aktionen ausführt. Der Einfachheit halber senden Sie die Ereignisse in diesem Artikel allerdings an eine Web-App, die die Nachrichten sammelt und anzeigt.
 
 Am Ende sehen Sie, dass die Ereignisdaten an die Web-App gesendet wurden.
 
-![Anzeigen der Ergebnisse](./media/custom-event-quickstart/view-result.png)
+![Anzeigen der Ergebnisse in Azure Event Grid Viewer](./media/custom-event-quickstart/azure-event-grid-viewer-record-inserted-event.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden, müssen Sie für diesen Artikel mindestens die Version 2.0.24 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
-
-Falls Sie nicht Cloud Shell verwenden, müssen Sie sich zuerst mithilfe von `az login` anmelden.
+- Für diesen Artikel ist mindestens Version 2.0.70 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
 Event Grid-Themen sind Azure-Ressourcen und müssen in einer Azure-Ressourcengruppe platziert werden. Die Azure-Ressourcengruppe ist eine logische Sammlung, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. 
 
 Das folgende Beispiel erstellt eine Ressourcengruppe namens *gridResourceGroup* am Standort *westus2*.
 
@@ -65,7 +60,7 @@ Ersetzen Sie `<your-site-name>` durch einen eindeutigen Namen für Ihre Web-App.
 ```azurecli-interactive
 sitename=<your-site-name>
 
-az group deployment create \
+az deployment group create \
   --resource-group gridResourceGroup \
   --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
   --parameters siteName=$sitename hostingPlanName=viewerhost
@@ -85,15 +80,16 @@ Der Endpunkt für Ihre Web-App muss das Suffix `/api/updates/` enthalten.
 endpoint=https://$sitename.azurewebsites.net/api/updates
 
 az eventgrid event-subscription create \
-  --source-resource-id "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/$topicname" 
-  --name demoViewerSub 
+  --source-resource-id "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/$topicname" \
+  --name demoViewerSub \
   --endpoint $endpoint
   
 ```
 
 Zeigen Sie wieder Ihre Web-App an. Wie Sie sehen, wurde ein Abonnementüberprüfungsereignis an sie gesendet. Klicken Sie auf das Augensymbol, um die Ereignisdaten zu erweitern. Event Grid sendet das Überprüfungsereignis, damit der Endpunkt bestätigen kann, dass er Ereignisdaten empfangen möchte. Die Web-App enthält Code zur Überprüfung des Abonnements.
 
-![Anzeigen des Abonnementereignisses](./media/custom-event-quickstart/view-subscription-event.png)
+![Anzeigen des Abonnementereignisses in Azure Event Grid Viewer](./media/custom-event-quickstart/azure-event-grid-viewer-subscription-validation-event.png)
+
 
 ## <a name="send-an-event-to-your-custom-topic"></a>Senden eines Ereignisses an Ihr benutzerdefiniertes Thema
 

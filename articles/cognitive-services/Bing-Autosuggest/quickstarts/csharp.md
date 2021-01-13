@@ -1,36 +1,42 @@
 ---
 title: 'Schnellstart: Vorschlagen von Suchabfragen mit der Bing-Vorschlagssuche-REST-API und C#'
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie schnell loslegen und mit der Bing-Vorschlagssuche-API Suchbegriffe in Echtzeit vorschlagen können.
+description: Hier erfahren Sie, wie Sie schnell loslegen und mit der Bing-Vorschlagssuche-API und C# Suchbegriffe in Echtzeit vorschlagen können.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: bf5322b64b46854d2652c6edf264e25ce0be3d0f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 812c40ba54ee584a9616b7809960bc0dea0c0e7e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564713"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353373"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Schnellstart: Vorschlagen von Suchabfragen mit der Bing-Vorschlagssuche-REST-API und C#
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-API aufrufen und die JSON-Antwort erhalten. Diese einfache C#-Anwendung sendet eine partielle Suchabfrage an die API und gibt Vorschläge für Suchvorgänge zurück. Diese Anwendung ist zwar in C# geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-API aufrufen und die JSON-Antwort lesen. Diese einfache C#-Anwendung sendet eine partielle Suchabfrage an die API und gibt Vorschläge für Suchvorgänge zurück. Diese Anwendung ist zwar in C# geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Eine beliebige Edition von [Visual Studio 2017 oder höher](https://www.visualstudio.com/downloads/).
-* Unter Linux/macOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden
+* Unter Linux/macOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
 ## <a name="create-a-visual-search-solution"></a>Erstellen einer Projektmappe für die visuelle Suche
 
-1. Erstellen Sie eine neue Konsolenprojektmappe in Visual Studio. Fügen Sie dann die folgenden Namespaces in die Hauptcodedatei ein.
+1. Erstellen Sie eine neue Konsolenprojektmappe in Visual Studio. Fügen Sie dann die folgenden Namespaces in die Hauptcodedatei ein:
 
     ```csharp
     using System;
@@ -40,7 +46,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-A
     using System.Text;
     ```
 
-2. Erstellen Sie in einer neuen Klasse Variablen für den API-Host und -Pfad, Ihren [Marktcode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine partielle Suchabfrage.
+2. Erstellen Sie in einer neuen Klasse Variablen für den API-Host und -Pfad, Ihren [Marktcode](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine partielle Suchabfrage. Verwenden Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md), der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```csharp
     static string host = "https://api.cognitive.microsoft.com";
@@ -65,7 +71,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-A
     }
     ```
 
-2. Erstellen Sie in der gleichen Funktion oben einen Anforderungs-URI. Kombinieren Sie dazu Host und Pfad für Ihre API. Fügen Sie dem Parameter `?mkt=` Ihren Markt und dem Parameter `&query=` Ihre Abfrage hinzu. Fügen Sie Ihrer Abfrage unbedingt eine URL-Codierung hinzu. 
+2. Erstellen Sie in der gleichen Funktion oben einen Anforderungs-URI. Kombinieren Sie dazu Host und Pfad für Ihre API. Fügen Sie dem Parameter `mkt=` Ihren Markt und dem Parameter `query=` Ihre Abfrage hinzu. Fügen Sie Ihrer Abfrage unbedingt eine URL-Codierung hinzu. 
 
     ```csharp
     string uri = host + path + "?mkt=" + market + "&query=" + System.Net.WebUtility.UrlEncode (query);
@@ -166,4 +172,4 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Worum handelt es sich bei der Bing-Vorschlagssuche?](../get-suggested-search-terms.md)
-- [Referenz für die Bing-Vorschlagssuche-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Referenz für die Bing-Vorschlagssuche-API V7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

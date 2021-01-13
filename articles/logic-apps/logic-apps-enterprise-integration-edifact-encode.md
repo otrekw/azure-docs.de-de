@@ -1,21 +1,19 @@
 ---
-title: Codieren von EDIFACT-Nachrichten – Azure Logic Apps | Microsoft-Dokumentation
+title: Codierung von EDIFACT-Nachrichten
 description: Überprüfen von EDI und Generieren von XML-Code mit dem EDIFACT-Nachrichtendecoder für Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.assetid: 974ac339-d97a-4715-bc92-62d02281e900
-ms.date: 01/27/2017
-ms.openlocfilehash: 7396aee56acdf2476ed1bb3cc5a9909349662dc7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 04/22/2020
+ms.openlocfilehash: cee97fddc619840de821ebb70d32e0cab1bbe040
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705547"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "82106524"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Codieren von EDIFACT-Nachrichten für Azure Logic Apps mit Enterprise Integration Pack
 
@@ -32,6 +30,10 @@ Sie benötigen Folgendes:
 * Eine bereits in Ihrem Integrationskonto definierte [EDIFACT-Vereinbarung](logic-apps-enterprise-integration-edifact.md).
 
 ## <a name="encode-edifact-messages"></a>Codierung von EDIFACT-Nachrichten
+
+> [!IMPORTANT]
+> Der EDIFACT-Connector unterstützt nur UTF-8-Zeichen.
+> Wenn Ihre Ausgabe unerwartete Zeichen enthält, überprüfen Sie, ob Ihre EDIFACT-Nachrichten den UTF-8-Zeichensatz verwenden.
 
 1. [Erstellen einer Logik-App](quickstart-create-first-logic-app-workflow.md)
 
@@ -68,7 +70,7 @@ Falls Sie sich für die Codierung von EDIFACT-Nachrichten nach Vereinbarungsname
 
 #### <a name="encode-edifact-message-by-identities"></a>Encode EDIFACT Message by identities (EDIFACT-Nachricht nach Identitäten codieren)
 
-Falls Sie sich für die Codierung von EDIFACT-Nachrichten nach Identitäten entschieden haben, geben Sie den Absenderqualifizierer und -bezeichner und den Empfängerqualifizierer und -bezeichner gemäß der Konfiguration in Ihrer EDIFACT-Vereinbarung ein. Select the XML message to encode.
+Falls Sie sich für die Codierung von EDIFACT-Nachrichten nach Identitäten entschieden haben, geben Sie den Absenderqualifizierer und -bezeichner und den Empfängerqualifizierer und -bezeichner gemäß der Konfiguration in Ihrer EDIFACT-Vereinbarung ein. Wählen Sie die zu codierende XML-Nachricht aus.
 
 ![Identitäten für Absender und Empfänger angeben und zu codierende XML-Nachricht auswählen](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
 
@@ -77,7 +79,7 @@ Falls Sie sich für die Codierung von EDIFACT-Nachrichten nach Identitäten ents
 Der Connector „EDIFACT-Nachricht codieren“ führt folgende Aufgaben aus: 
 
 * Auflösen der Vereinbarung durch Abgleich von Senderqualifizierer und -bezeichner sowie von Empfängerqualifizierer und -bezeichner
-* Serialisieren des EDI-Austauschs, Konvertieren von XML-codierten Nachrichten in EDI-Transaktionssätze im Austausch
+* Serialisierung des EDI-Austauschs mit Konvertierung von XML-codierten Nachrichten in EDI-Transaktionssätze im Austausch
 * Anwendung von Header- und Nachspannsegmenten für den Transaktionssatz
 * Generierung einer Austauschkontrollnummer, einer Gruppenkontrollnummer und einer Transaktionssatz-Kontrollnummer für jeden ausgehenden Austausch
 * Ersetzung von Trennzeichen in den Nutzlastdaten
@@ -86,7 +88,7 @@ Der Connector „EDIFACT-Nachricht codieren“ führt folgende Aufgaben aus:
   * EDI-Überprüfung für Transaktionssatz-Datenelemente
   * Erweiterte Überprüfung für Transaktionssatz-Datenelemente
 * Generieren eines XML-Dokuments für jeden Transaktionssatz
-* Generieren einer technischen Bestätigung (Kontrollbestätigung) und/oder einer Funktionsbestätigung (sofern konfiguriert)
+* Anforderung einer technischen Bestätigung und/oder einer Funktionsbestätigung (sofern konfiguriert)
   * Als technische Bestätigung kennzeichnet die Kontrollbestätigung den Empfang eines Austauschvorgangs.
   * Als Funktionsbestätigung dient die Kontrollbestätigung dazu, die Annahme oder Ablehnung des empfangenen Austauschs, der Gruppe oder der Nachricht mit einer Liste von Fehlern oder nicht unterstützter Funktionen anzugeben.
 
@@ -94,5 +96,5 @@ Der Connector „EDIFACT-Nachricht codieren“ führt folgende Aufgaben aus:
 Informationen zum Anzeigen der Details zu Swagger für den EDIFACT-Connector finden Sie unter [EDIFACT](/connectors/edifact/).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack") 
+[Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Erfahren Sie mehr zum Enterprise Integration Pack.") 
 

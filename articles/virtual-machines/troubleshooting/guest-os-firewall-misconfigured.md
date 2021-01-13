@@ -1,6 +1,6 @@
 ---
 title: Falsch konfigurierte Gastbetriebssystem-Firewall der Azure-VM | Microsoft-Dokumentation
-description: ''
+description: Erfahren Sie, wie Sie die serielle Konsole oder die Offlinemethode verwenden können, um eine falsch konfigurierte Firewall des Gastbetriebssystems auf einem virtuellen Azure-Remotecomputer zu analysieren und zu beheben.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 8f04d943e1db49beed13c183fbd06e401546fc03
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: e6f42bdf462ac5261f77bc05c62e50500345fe37
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71153891"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80422534"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Falsch konfigurierte Gastbetriebssystem-Firewall der Azure-VM
 

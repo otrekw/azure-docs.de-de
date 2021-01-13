@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f71a27ea4da6bce5832287e948e0731672280196
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 1d2a0d79a5cdd53f8376c088fc986c20908575eb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699487"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91329454"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Tutorial: Erweitern von Windows-Dateiservern mit der Azure-Dateisynchronisierung
 
@@ -27,8 +27,6 @@ In diesem Artikel werden die grundlegenden Schritte zum Erweitern der Speicherka
 > * Erstellen eines Serverendpunkts
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -136,7 +134,7 @@ Sie haben jetzt einen neuen virtuellen Computer erstellt und einen Datenträger 
 
 Deaktivieren Sie für den Windows Server 2016 Datacenter-Server die Option „Verstärkte Sicherheitskonfiguration für Internet Explorer“. Dieser Schritt ist nur für die anfängliche Serverregistrierung erforderlich. Sie können sie nach dem Registrieren des Servers erneut aktivieren.
 
-Auf der VM mit Windows Server 2016 Datacenter wird der Server-Manager automatisch geöffnet.  Wenn der Server-Manager nicht standardmäßig geöffnet wird, können Sie im Datei-Explorer danach suchen.
+Auf der VM mit Windows Server 2016 Datacenter wird der Server-Manager automatisch geöffnet.  Sollte der Server-Manager nicht automatisch geöffnet werden, können Sie im Startmenü danach suchen.
 
 1. Wählen Sie im **Server-Manager** die Option **Lokaler Server**.
 
@@ -261,9 +259,8 @@ Die Benutzeroberfläche der Serverregistrierung sollte sich automatisch öffnen,
 
    ![Screenshot der Serverregistrierungs-Benutzeroberfläche](media/storage-sync-files-extend-servers/signin.png)
 
-   | | |
-   | ----- | ----- |
    | Wert | BESCHREIBUNG |
+   | ----- | ----- |
    | **Azure-Abonnement** | Das Abonnement, das den Speichersynchronisierungsdienst für dieses Tutorial enthält. |
    | **Ressourcengruppe** | Die Ressourcengruppe, die den Speichersynchronisierungsdienst enthält. Verwenden Sie für dieses Tutorial _afsresgroup101918_. |
    | **Speichersynchronisierungsdienst** | Der Name des Speichersynchronisierungsdiensts. Verwenden Sie für dieses Tutorial _afssyncservice02_. |
@@ -303,11 +300,10 @@ Ein Serverendpunkt stellt einen bestimmten Speicherort auf einem registrierten S
 
 1. Geben Sie im Bereich **Serverendpunkt hinzufügen** die folgenden Informationen ein, um einen Serverendpunkt zu erstellen:
 
-   | | |
-   | ----- | ----- |
    | Wert | BESCHREIBUNG |
+   | ----- | ----- |
    | **Registrierter Server** | Der Name des Servers, den Sie erstellt haben. Verwenden Sie *afsvm101918* für dieses Tutorial. |
-   | **Path** | Der Windows Server-Pfad zum Laufwerk, das Sie erstellt haben. Verwenden Sie *f:\filestosync* für dieses Tutorial. |
+   | **Pfad** | Der Windows Server-Pfad zum Laufwerk, das Sie erstellt haben. Verwenden Sie *f:\filestosync* für dieses Tutorial. |
    | **Cloudtiering** | Lassen Sie diese Option für dieses Tutorial deaktiviert. |
    | **Freier Volumespeicherplatz** | Lassen Sie diese Option für dieses Tutorial leer. |
 
@@ -318,6 +314,8 @@ Ihre Dateien sind zwischen der Azure-Dateifreigabe und Windows Server jetzt sync
 ![Azure Storage erfolgreich synchronisiert](media/storage-sync-files-extend-servers/files-synced-in-azurestorage.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die in diesem Tutorial erstellten Ressourcen bereinigen möchten, entfernen Sie zuerst die Endpunkte aus dem Speichersynchronisierungsdienst. Heben Sie anschließend die Registrierung des Servers beim Speichersynchronisierungsdienst auf, entfernen Sie die Synchronisierungsgruppen, und löschen Sie den Synchronisierungsdienst.
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 

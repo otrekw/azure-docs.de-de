@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: d8a1d64ac8e65fd52730ee1750c0b0b1949b3512
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088465"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86500921"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows-Neustartschleife auf einem virtuellen Azure-Computer
 In diesem Artikel wird die Neustartschleife beschrieben, die auf einem virtuellen Windows-Computer (Virtual Machine, VM) in Microsoft Azure auftreten kann.
@@ -50,7 +50,7 @@ Eine Beschädigung des Dateisystems kann die Ursache dafür sein. Die Änderung,
 
 ## <a name="solution"></a>Lösung
 
-Um dieses Problem zu lösen, können Sie [den Betriebssystemdatenträger sichern](../windows/snapshot-copy-managed-disk.md), [den Betriebssystemdatenträger an einen virtuellen Wiederherstellungscomputer anfügen](../windows/troubleshoot-recovery-disks-portal.md) und dann den Lösungsoptionen entsprechend folgen oder die einzelnen Lösungen nacheinander ausprobieren.
+Um dieses Problem zu lösen, können Sie [den Betriebssystemdatenträger sichern](../windows/snapshot-copy-managed-disk.md), [den Betriebssystemdatenträger an einen virtuellen Wiederherstellungscomputer anfügen](./troubleshoot-recovery-disks-portal-windows.md) und dann den Lösungsoptionen entsprechend folgen oder die einzelnen Lösungen nacheinander ausprobieren.
 
 ### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
 
@@ -86,7 +86,7 @@ Um dieses Problem zu lösen, können Sie [den Betriebssystemdatenträger sichern
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. Wählen Sie den Schlüssel **BROKENSYSTEM** aus, und wählen Sie dann im Menü die Optionen **Datei** > **Struktur laden** aus.
+13. Wählen Sie den Schlüssel **BROKENSYSTEM** aus, und wählen Sie dann im Menü die Optionen **Datei** > **Struktur entladen** aus.
 
 14. Trennen Sie den Betriebssystemdatenträger von dem virtuellen Computer, auf dem Sie die Problembehandlung ausführen.
 
@@ -94,7 +94,7 @@ Um dieses Problem zu lösen, können Sie [den Betriebssystemdatenträger sichern
 
 16. [Erstellen Sie einen neuen virtuellen Computer auf Grundlage des Betriebssystemdatenträgers](../windows/create-vm-specialized.md).
 
-17. Wenn das Problem behoben wurde, müssen Sie möglicherweise den [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) („WaAppAgent.exe“) neu installieren.
+17. Wenn das Problem behoben wurde, müssen Sie möglicherweise den [RDAgent](/archive/blogs/mast/install-the-vm-agent-on-an-existing-azure-vm) („WaAppAgent.exe“) neu installieren.
 
 ### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
 
@@ -113,5 +113,3 @@ Stellen Sie die letzte als funktionierend bekannte Konfiguration des virtuellen 
 4. Entfernen Sie den Datenträger von dem virtuellen Computer, auf dem Sie die Problembehandlung ausführen, und warten Sie ca. 2 Minuten, bis Azure diesen Datenträger freigibt.
 
 5. [Erstellen Sie einen neuen virtuellen Computer auf Grundlage des Betriebssystemdatenträgers](../windows/create-vm-specialized.md).
-
-

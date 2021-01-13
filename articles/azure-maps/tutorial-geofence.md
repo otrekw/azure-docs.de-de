@@ -1,66 +1,62 @@
 ---
-title: Erstellen eines Geofence mit Azure Maps | Microsoft-Dokumentation
-description: Richten Sie mit Azure Maps einen Geofence ein.
-author: walsehgal
-ms.author: v-musehg
-ms.date: 02/14/2019
+title: 'Tutorial: Erstellen eines Geofence und Nachverfolgen von Geräten auf einer Microsoft Azure-Karte'
+description: Tutorial zum Einrichten eines Geofence. Es wird beschrieben, wie Sie mit dem räumlichen Dienst von Azure Maps Geräte relativ zum Geofence nachverfolgen.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 8/20/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: ee32749e2c6f0118507fcfc6d4994a04ea3a6d69
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694923"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997272"
 ---
-# <a name="set-up-a-geofence-by-using-azure-maps"></a>Einrichten eines Geofence mit Azure Maps
+# <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Tutorial: Einrichten eines Geofence mit Azure Maps
 
-In diesem Tutorial werden die grundlegenden Schritte beschrieben, die zum Einrichten eines Geofence mit Azure Maps ausgeführt werden müssen. Im Szenario dieses Tutorials unterstützen wir Baustellenleiter bei der Überwachung von Fällen, in denen potenziell gefährliche Ausrüstung den gekennzeichneten Baustellenbereich verlässt. Auf einer Baustelle wird teure Ausrüstung verwendet, und es gelten bestimmte gesetzliche Vorschriften. Eine häufige Anforderung ist, dass die Ausrüstung innerhalb des Baustellenbereichs verbleiben muss und diesen ohne vorherige Erlaubnis nicht verlassen darf.
+In diesem Tutorial werden Schritt für Schritt die Grundlagen der Erstellung und Verwendung von Azure Maps-Geofencediensten beschrieben. Sie führen dies im Kontext des folgenden Szenarios durch:
 
-Wir nutzen die Datenupload-API von Azure Maps, um einen Geofence zu speichern, und die Geofence-API von Azure Maps, um den Standort der Ausrüstung relativ zum Geofence zu überprüfen. Wir verwenden Azure Event Grid, um die Ergebnisse für den Geofence zu streamen und basierend darauf eine Benachrichtigung einzurichten.
-Weitere Informationen zu Event Grid finden Sie unter [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
-In diesem Tutorial lernen Sie Folgendes:
+*Ein Baustellenleiter muss den Ein- und Ausgang von Geräten für eine Baustelle überwachen. Wenn ein Gerät den Baustellenbereich verlässt oder in den Baustellenbereich gebracht wird, erhält der Baustellenleiter eine E-Mail.*
+
+Azure Maps verfügt über eine Reihe von Diensten, die die Nachverfolgung des Ein- und Ausgangs von Geräten unterstützen. In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
-> * Hochladen des Geofencebereichs in den Azure Maps-Datendienst per Datenupload-API
-> *   Einrichten einer Event Grid-Instanz zum Verarbeiten von Geofence-Ereignissen
-> *   Einrichten eines Geofence-Ereignishandlers
-> *   Einrichten von Warnungen als Antwort auf Geofence-Ereignisse mit Logic Apps
-> *   Verwenden von Azure Maps-Geofencedienst-APIs zum Nachverfolgen, ob sich eine bestimmte Baustellenressource innerhalb des Baustellenbereichs befindet
-
+> * Sie laden [GeoJSON-Geofencingdaten](geofence-geojson.md) hoch, mit denen die zu überwachenden Baustellenbereiche definiert werden. Sie verwenden die [Datenupload-API](/rest/api/maps/data/uploadpreview), um Geofences als Polygonkoordinaten in Ihr Azure Maps-Konto hochzuladen.
+> * Sie richten zwei [Logik-Apps](../event-grid/handler-webhooks.md#logic-apps) ein, die ausgelöst werden können, um E-Mail-Benachrichtigungen an den Baustellenleiter zu senden, wenn Geräte in den Geofencebereich gebracht werden oder diesen verlassen.
+> * Sie verwenden [Azure Event Grid](../event-grid/overview.md), um Eingangs- und Ausgangsereignisse für Ihren Azure Maps-Geofence zu abonnieren. Sie richten zwei Webhook-Ereignisabonnements ein, von denen die in Ihren beiden Logik-Apps definierten HTTP-Endpunkte aufgerufen werden. Von den Logik-Apps werden dann die entsprechenden E-Mail-Benachrichtigungen für Geräte gesendet, die in den Geofencebereich gebracht werden oder diesen verlassen.
+> * Verwenden Sie die [GET-API für die Geofencesuche](/rest/api/maps/spatial/getgeofence), um Benachrichtigungen zu erhalten, wenn ein Gerät in die Geofencebereiche gebracht oder daraus entfernt wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-### <a name="create-an-azure-maps-account"></a>Erstellen eines Azure Maps-Kontos 
+1. [Erstellen Sie ein Azure Maps-Konto](quick-demo-map-app.md#create-an-azure-maps-account).
+2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
 
-Befolgen Sie für die Schritte in diesem Tutorial die Anleitung unter [Verwalten Ihres Azure Maps-Kontos](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account), um ein Azure Maps-Kontoabonnement mit S1-Tarif zu erstellen. Führen Sie außerdem die Schritte unter [Suchen nach Points of Interest in der Nähe mit Azure Maps](./tutorial-search-location.md#getkey) aus, um den primären Abonnementschlüssel für Ihr Konto abzurufen.
+In diesem Tutorial wird die Anwendung [Postman](https://www.postman.com/) verwendet. Sie können aber auch eine andere API-Entwicklungsumgebung nutzen.
 
-## <a name="upload-geofences"></a>Hochladen von Geofences
+## <a name="upload-geofencing-geojson-data"></a>Hochladen von GeoJSON-Geofencingdaten
 
-Wir nutzen die Anwendung Postman, um den Geofence für die Baustelle mit der Datenupload-API hochzuladen. Für dieses Tutorial setzen wir voraus, dass es einen festgelegten Baustellenbereich gibt, bei dem es sich um einen festen Parameter handelt, gegen den von der Baustellenausrüstung nicht verstoßen werden sollte. Verstöße gegen diese Begrenzung stellen eine schwerwiegende Übertretung dar, die der Baustellenleitung gemeldet wird. Es kann auch eine optimierte Gruppe mit zusätzlichen Geofences verwendet werden, um innerhalb des gesamten Baustellenbereichs je nach Planung kleinere Unterbereiche nachzuverfolgen. Wir setzen voraus, dass der übergeordnete Geofence über den untergeordneten Bereich „subsite1“ mit einem bestimmten Ablaufzeitpunkt verfügt, nach dem dieser nicht mehr gültig ist. Sie können je nach Ihren Anforderungen weitere geschachtelte Geofences erstellen. Beispielsweise kann „subsite1“ der Bereich sein, in dem während der Wochen 1 bis 4 des Zeitplans gearbeitet wird, und „subsite2“ der Bereich, in dem während der Wochen 5 bis 7 gearbeitet wird. Alle diese Fences können zu Beginn des Projekts als einzelnes Dataset geladen und verwendet werden, um Regeln anhand von Zeit und Raum nachzuverfolgen. Weitere Informationen zum Datenformat von Geofences finden Sie unter [Geofencing GeoJSON data](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) (Geofencing: GeoJSON-Daten). Weitere Informationen zum Hochladen von Daten in den Azure Maps-Dienst finden Sie unter [Data – Upload Preview](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) (Datenupload: Vorschau).
+In diesem Tutorial laden Sie GeoJSON-Geofencingdaten hoch, die eine Merkmalsauswahl (`FeatureCollection`) enthalten. Die Merkmalsauswahl (`FeatureCollection`) enthält zwei Geofences, durch die polygonale Bereiche innerhalb der Baustelle definiert werden. Für den ersten Geofence sind keine Ablaufzeit und keine Einschränkungen festgelegt. Der zweite kann nur während der Geschäftszeiten (9:00 bis 17:00 Uhr Pacific Time) abgefragt werden und ist nach dem 1. Januar 2022 nicht mehr gültig. Weitere Informationen zum GeoJSON-Format finden Sie unter [Geofencing von GeoJSON-Daten](geofence-geojson.md).
 
-Öffnen Sie die Postman-App, und führen Sie die folgenden Schritte aus, um den Geofence der Baustelle mit der Datenupload-API von Azure Maps hochzuladen.
+>[!TIP]
+>Sie können Ihre Geofencingdaten jederzeit aktualisieren. Weitere Informationen finden Sie unter [Datenupload-API](/rest/api/maps/data/uploadpreview).
 
-1. Öffnen Sie die App Postman, und klicken Sie auf „New“ > „Create new“ („Neu“ > „Neu erstellen“). Wählen Sie anschließend die Option „Request“ (Anfordern). Geben Sie einen Anforderungsnamen für das Hochladen von Geofencedaten ein, wählen Sie eine Sammlung oder einen Ordner zum Speichern aus, und klicken Sie auf „Save“ (Speichern).
+1. Öffnen Sie die Postman-App. Wählen Sie oben die Option **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus. Geben Sie der Sammlung einen Namen, und wählen Sie **Create** (Erstellen) aus.
 
-    ![Hochladen von Geofences mit Postman](./media/tutorial-geofence/postman-new.png)
+2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung und anschließend **Save** (Speichern) aus.
 
-2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die POST-HTTP-Methode aus, und geben Sie die folgende URL ein, um eine POST-Anforderung zu senden.
+3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein, um die Geofencingdaten in Azure Maps hochzuladen. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 
     ```HTTP
-    https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
+    https://atlas.microsoft.com/mapData/upload?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&dataFormat=geojson
     ```
-    
-    Der Parameter GEOJSON im URL-Pfad steht für das Format der Daten, die hochgeladen werden.
 
-3. Klicken Sie auf **Params**, und geben Sie die folgenden Schlüssel-Wert-Paare ein, die für die POST-Anforderungs-URL verwendet werden sollen. Ersetzen Sie den Abonnementschlüsselwert durch Ihren primären Azure Maps-Abonnementschlüssel.
-   
-    ![Schlüssel-Wert-Parameter: Postman](./media/tutorial-geofence/postman-key-vals.png)
+    Der Parameter `geojson` im URL-Pfad steht für das Format der Daten, die hochgeladen werden.
 
-4. Klicken Sie auf **Text**, und wählen Sie dann das Rohdaten-Eingabeformat aus. Wählen Sie in der Dropdownliste anschließend „JSON“ als Eingabeformat. Geben Sie den folgenden JSON-Code als hochzuladende Daten ein:
+4. Wählen Sie die Registerkarte **Body (Hauptteil)** aus. Wählen Sie **Rohdaten** und anschließend **JSON** als Eingabeformat aus. Kopieren Sie die folgenden GeoJSON-Daten, und fügen Sie sie in den Bereich **Text** ein:
 
    ```JSON
    {
@@ -131,11 +127,11 @@ Wir nutzen die Anwendung Postman, um den Geofence für die Baustelle mit der Dat
           "properties": {
             "geometryId": "2",
             "validityTime": {
-              "expiredTime": "2019-01-15T00:00:00",
-              "validityPeriod": [
+            "expiredTime": "2022-01-01T00:00:00",
+            "validityPeriod": [
                 {
-                  "startTime": "2019-01-08T01:00:00",
-                  "endTime": "2019-01-08T17:00:00",
+                  "startTime": "2020-07-15T16:00:00",
+                  "endTime": "2020-07-15T24:00:00",
                   "recurrenceType": "Daily",
                   "recurrenceFrequency": 1,
                   "businessDayOnly": true
@@ -148,131 +144,335 @@ Wir nutzen die Anwendung Postman, um den Geofence für die Baustelle mit der Dat
    }
    ```
 
-5. Klicken Sie auf „Senden“, und sehen Sie sich den Antwortheader an. Bei einer erfolgreichen Anforderung enthält der Adressheader (**Location**) den Status-URI, um den aktuellen Status der Uploadanforderung zu überprüfen. Der Status-URI hat das folgende Format. 
+5. Wählen Sie die Option **Send** (Senden) aus, und warten Sie auf die Verarbeitung der Anforderung. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort. Kopieren Sie den Wert des Schlüssels **Location** (Speicherort). Hierbei handelt es sich um die Status-URL (`status URL`).
+
+    ```http
+    https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0
+    ```
+
+6. Erstellen Sie zum Überprüfen des Status des API-Aufrufs eine **GET**-HTTP-Anforderung für `status URL`. An die URL muss zur Authentifizierung der primäre Abonnementschlüssel angefügt werden. Die **GET**-Anforderung sollte wie die folgende URL aussehen:
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
+   https://atlas.microsoft.com/mapData/<operationId>/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. Kopieren Sie Ihren Status-URI, und fügen Sie den Parameter `subscription-key` an, der als Wert den Abonnementschlüssel Ihres Azure Maps-Kontos enthält. Das Format des Status-URI sollte wie folgt aussehen:
+7. Wenn die **GET**-HTTP-Anforderung erfolgreich abgeschlossen wurde, wird `resourceLocation` zurückgegeben. Der `resourceLocation` enthält die eindeutige `udid` für den hochgeladenen Inhalt. Speichern Sie diese `udid`. Sie wird im letzten Abschnitt dieses Tutorials zum Abfragen der API „GET Geofence“ benötigt. Optional können Sie im nächsten Schritt mithilfe der `resourceLocation`-URL Metadaten aus dieser Ressource abzurufen.
 
-   ```HTTP
-   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
-   ```
+      ```json
+      {
+          "status": "Succeeded",
+          "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0"
+      }
+      ```
 
-7. Um den Wert von `udId` abzurufen, öffnen Sie in der Postman-App eine neue Registerkarte, wählen auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus und führen eine GET-Anforderung für den Status-URI aus. Wenn der Datenupload erfolgreich ausgeführt wurde, wird im Antworttext ein Wert für „udId“ ausgegeben. Kopieren Sie die udId zur späteren Verwendung.
+8. Erstellen Sie zum Abrufen von Inhaltsmetadaten eine **GET**-HTTP-Anforderung für die `resourceLocation`-URL, die Sie in Schritt 7 kopiert haben. Stellen Sie sicher, dass Sie für die Authentifizierung den primären Abonnementschlüssel an die URL anfügen. Die **GET**-Anforderung sollte wie die folgende URL aussehen:
 
-   ```JSON
-   {
-    "udid" : "{udId}"
-   }
-   ```
+    ```http
+   https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    ```
 
-## <a name="set-up-an-event-handler"></a>Einrichten eines Ereignishandlers
+9. Nachdem die **GET**-HTTP-Anforderung erfolgreich abgeschlossen wurde, enthält der Antworttext die `udid`, die in Schritt 7 für `resourceLocation` angegeben wurde. Darüber hinaus enthält er den Speicherort für den zukünftigen Zugriff und Download des Inhalts sowie andere Metadaten zum Inhalt. Im Anschluss sehen Sie ein Beispiel für eine vollständige Antwort:
 
-Um den Baustellenleiter über Betreten- und Verlassen-Ereignisse des Bereichs („enter“ und „exit“) zu benachrichtigen, sollten wir einen Ereignishandler erstellen, der die Benachrichtigungen empfängt.
+    ```json
+    {
+        "udid": "{udid}",
+        "location": "https://atlas.microsoft.com/mapData/{udid}?api-version=1.0",
+        "created": "7/15/2020 6:11:43 PM +00:00",
+        "updated": "7/15/2020 6:11:45 PM +00:00",
+        "sizeInBytes": 1962,
+        "uploadStatus": "Completed"
+    }
+    ```
 
-Wir erstellen zwei [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps)-Dienste zum Verarbeiten von enter- und exit-Ereignissen. Außerdem erstellen wir Ereignisauslöser in den Logik-Apps, die von diesen Ereignissen ausgelöst werden. Die Idee besteht darin, jeweils Benachrichtigungen (in diesem Fall in Form von E-Mails) an den Baustellenleiter zu senden, wenn Ausrüstung in den Baustellenbereich gelangt bzw. diesen verlässt. In der folgenden Abbildung ist die Erstellung einer Logik-App für das Geofence-Ereignis „enter“ dargestellt. Auf ähnliche Weise können Sie auch eine Logik-App für das Ereignis „exit“ erstellen.
-Sie können auch die [Informationen zu allen unterstützten Ereignishandlern anzeigen](https://docs.microsoft.com/azure/event-grid/event-handlers).
+## <a name="create-workflows-in-azure-logic-apps"></a>Erstellen von Workflows in Azure Logic Apps
 
-1. Erstellen einer Logik-App im Azure-Portal
+Als Nächstes erstellen Sie zwei [Logik-App](../event-grid/handler-webhooks.md#logic-apps)-Endpunkte, die eine E-Mail-Benachrichtigung auslösen. Erstellen Sie den ersten Endpunkt wie folgt:
 
-   ![Erstellen von Logik-Apps](./media/tutorial-geofence/logic-app.png)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Wählen Sie einen HTTP-Anforderungstrigger und dann als Aktion im Outlook-Connector die Option zum Senden einer E-Mail aus.
+2. Wählen Sie im Azure-Portal oben links die Option **Ressource erstellen** aus.
+
+3. Geben Sie im Feld **Marketplace durchsuchen** den Suchbegriff **Logik-App** ein.
+
+4. Wählen Sie in den Ergebnissen die Option **Logik-App** > **Erstellen** aus.
+
+5. Geben Sie auf der Seite **Logik-App** die folgenden Werte ein:
+    * Das **Abonnement**, das Sie für diese Logik-App verwenden möchten.
+    * Den Namen der **Ressourcengruppe** für diese Logik-App. Sie können für die Ressourcengruppe die Option **Neu erstellen** oder **Vorhandene verwenden** auswählen.
+    * Den **Namen Ihrer Logik-App**. Verwenden Sie hier den Namen `Equipment-Enter`.
+
+    Behalten Sie in diesem Tutorial für alle anderen Werte die Standardeinstellungen bei.
+
+    :::image type="content" source="./media/tutorial-geofence/logic-app-create.png" alt-text="Screenshot: Erstellen einer Logik-App":::
+
+6. Klicken Sie auf **Überprüfen + erstellen**. Überprüfen Sie Ihre Einstellungen, und wählen Sie **Erstellen** aus, um die Bereitstellung zu senden. Wählen Sie die Option **Zu Ressource wechseln** aus, nachdem die Bereitstellung erfolgreich abgeschlossen wurde. Der **Logik-App-Designer** wird angezeigt.
+
+7. Wählen Sie einen Triggertyp aus. Scrollen Sie nach unten zum Abschnitt **Starten Sie mit einem gängigen Trigger**. Wählen Sie **Beim Empfang einer HTTP-Anforderung** aus.
+
+     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="Screenshot: Erstellen eines HTTP-Triggers für eine Logik-App":::
+
+8. Wählen Sie oben rechts im Logik-App-Designer die Option **Speichern** aus. Die **HTTP-POST-URL** wird automatisch generiert. Speichern Sie die URL. Sie wird im nächsten Abschnitt zum Erstellen eines Ereignisendpunkts benötigt.
+
+    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="Screenshot: Logik-App: HTTP-Anforderungs-URL und JSON-Code":::
+
+9. Wählen Sie **+ Neuer Schritt** aus. Als Nächstes wählen Sie eine Aktion aus. Geben Sie im Suchfeld als Suchbegriff `outlook.com email` ein. Scrollen Sie in der Liste **Aktionen** nach unten, und wählen Sie **E-Mail senden (V2)** aus.
   
-   ![Logic Apps-Schema](./media/tutorial-geofence/logic-app-schema.png)
+    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="Screenshot: Erstellen eines Logik-App-Designers":::
 
-3. Speichern Sie die Logik-App, um den HTTP-URL-Endpunkt zu generieren, und kopieren Sie die HTTP-URL.
+10. Melden Sie sich bei Ihrem Outlook-Konto an. Wählen Sie **Ja** aus, damit die Logik-App auf das Konto zugreifen kann. Füllen Sie die Felder für das Senden einer E-Mail aus.
 
-   ![Logic Apps-Endpunkt](./media/tutorial-geofence/logic-app-endpoint.png)
+    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="Screenshot: Erstellen einer Logik-App: Schritt zum Senden einer E-Mail":::
 
+    >[!TIP]
+    > Sie können GeoJSON-Antwortdaten, z. B. `geometryId` oder `deviceId`, in Ihren E-Mail-Benachrichtigungen abrufen. Sie können Logic Apps so konfigurieren, dass die von Event Grid gesendeten Daten gelesen werden. Weitere Informationen zum Konfigurieren von Logic Apps für die Nutzung und Übergabe von Ereignisdaten in E-Mail-Benachrichtigungen finden Sie unter [Tutorial: Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Event Grid und Logic Apps](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
-## <a name="create-an-azure-maps-events-subscription"></a>Erstellen eines Abonnements für Azure Maps-Ereignisse
+11. Wählen Sie oben links im Logik-App-Designer die Option **Speichern** aus.
 
-Azure Maps unterstützt drei Ereignistypen. Sie können sich die von Azure Maps unterstützten Ereignistypen [hier](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps) ansehen. Wir erstellen zwei verschiedene Abonnements: eins für enter- und eins für exit-Ereignisse.
+Wiederholen Sie die Schritte 3 bis 11, um eine zweite Logik-App zu erstellen, die den Baustellenleiter benachrichtigt, wenn Geräte den Baustellenbereich verlassen. Geben Sie der Logik-App den Namen `Equipment-Exit`.
 
-Führen Sie die unten angegebenen Schritte aus, um ein Ereignisabonnement für die enter-Ereignisse von Geofences zu erstellen. Sie können exit-Ereignisse von Geofences auf ähnliche Weise abonnieren.
+## <a name="create-azure-maps-events-subscriptions"></a>Erstellen von Abonnements für Azure Maps-Ereignisse
 
-1. Navigieren Sie über [diesen Link im Portal](https://ms.portal.azure.com/#@microsoft.onmicrosoft.com/dashboard/) zu Ihrem Azure Maps-Konto, und wählen Sie die Registerkarte „Ereignisse“.
+Azure Maps unterstützt [drei Ereignistypen](../event-grid/event-schema-azure-maps.md). Hier müssen Sie zwei verschiedene Ereignisabonnements erstellen: eins für Geofence-Eingangsereignisse und eins für Geofence-Ausgangsereignisse.
 
-   ![Azure Maps-Ereignisse](./media/tutorial-geofence/events-tab.png)
+In den folgenden Schritten wird veranschaulicht, wie Sie ein Ereignisabonnement für die Eingangsereignisse von Geofences erstellen. Geofence-Ausgangsereignisse können auf ähnliche Weise abonniert werden.
 
-2. Wählen Sie zum Erstellen eines Ereignisabonnements auf der Seite „Ereignisse“ die Option „Ereignisabonnement“.
+1. Navigieren Sie zu Ihrem Azure Maps-Konto. Wählen Sie im Dashboard die Option **Abonnements** aus. Wählen Sie den Namen Ihres Abonnements und dann im Menü „Einstellungen“ die Option **Ereignisse** aus.
 
-   ![Azure Maps-Ereignisabonnement](./media/tutorial-geofence/create-event-subscription.png)
+    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="Screenshot: Navigieren zu Ereignissen im Azure Maps-Konto":::
 
-3. Geben Sie dem Ereignisabonnement einen Namen, und abonnieren Sie den Ereignistyp „enter“. Wählen Sie nun als Endpunkttyp „Webhook“ aus, und kopieren Sie Ihren HTTP-URL-Endpunkt der Logik-App in „Endpunkt“.
+2. Wählen Sie zum Erstellen eines Ereignisabonnements auf der Ereignisseite die Option **+ Ereignisabonnement** aus.
 
-   ![Ereignisabonnement](./media/tutorial-geofence/events-subscription.png)
+    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="Screenshot: Erstellen eines Abonnements für Azure Maps-Ereignisse":::
 
+3. Geben Sie auf der Seite **Ereignisabonnement erstellen** die folgenden Werte ein:
+    * Den **Namen** des Ereignisabonnements.
+    * Das **Ereignisschema** muss *Event Grid-Schema* lauten.
+    * Der **Name des Systemthemas** für dieses Ereignisabonnement, der in diesem Fall `Contoso-Construction` lautet.
+    * Wählen Sie unter **Nach Ereignistypen filtern** die Option `Geofence Entered` (Eingang in Geofence) als Ereignistyp aus.
+    * Wählen Sie unter **Endpunkttyp** die Option `Web Hook` (Webhook) aus.
+    * Kopieren Sie unter **Endpunkt** die HTTP-POST-URL für den Logik-App-Eingangsendpunkt, den Sie im vorherigen Abschnitt erstellt haben. Sollten Sie die URL nicht gespeichert haben, können Sie zum Logik-App-Designer zurückkehren und sie im Schritt für den HTTP-Trigger kopieren.
 
-## <a name="use-geofence-api"></a>Verwenden der Geofence-API
+    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Screenshot: Details zum Azure Maps-Ereignisabonnement":::
 
-Sie können die Geofence-API nutzen, um zu überprüfen, ob sich ein Gerät (**device**) innerhalb oder außerhalb eines Geofencebereichs befindet. (Hinweis: Die Ausrüstung ist Teil des Status.) Wir gehen wie folgt vor, um ein besseres Verständnis der Geofence-GET-API zu entwickeln. Wir führen dafür Abfragen für verschiedene Standorte durch, an denen sich bestimmte Ausrüstung im Laufe der Zeit befunden hat. In der folgenden Abbildung sind fünf Standorte von bestimmter Ausrüstung der Baustelle mit einer eindeutigen Geräte-ID (**device id**) in chronologischer Reihenfolge dargestellt. Jeder dieser fünf Standorte wird genutzt, um zu bewerten, wie sich der Geofencestatus „enter“ und „exit“ basierend auf dem Fence jeweils ändert. Bei einer Statusänderung löst der Geofencedienst ein Ereignis aus, das von Event Grid an die Logik-App gesendet wird. Der Baustellenleiter erhält dann per E-Mail die entsprechende Benachrichtigung zum enter- bzw. exit-Vorgang.
+4. Klicken Sie auf **Erstellen**.
 
-> [!Note]
-> Das obige Szenario und Verhalten basiert auf derselben Geräte-ID (**device id**) und spiegelt somit die fünf verschiedenen Standorte wider, die in der Abbildung unten dargestellt sind.
+Wiederholen Sie die Schritte 1 bis 4 für den Logik-App-Ausgangsendpunkt, den Sie im vorherigen Abschnitt erstellt haben. Wählen Sie im dritten Schritt `Geofence Exited` als Ereignistyp aus.
 
-![Geofencekarte](./media/tutorial-geofence/geofence.png)
+## <a name="use-spatial-geofence-get-api"></a>Verwenden der Spatial Geofence-GET-API
 
-Öffnen Sie in der App Postman eine neue Registerkarte in derselben Sammlung, die Sie oben erstellt haben. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-GET-Methode aus:
+Verwenden Sie als Nächstes die [Spatial Geofence-GET-API](/rest/api/maps/spatial/getgeofence), um E-Mail-Benachrichtigungen an den Baustellenleiter zu senden, wenn ein Gerät in den Geofencebereich gebracht wird oder ihn verlässt.
 
-Im Folgenden sind fünf HTTP-GET-Anforderungen der Geofencing-API angegeben, die jeweils über andere Standortkoordinaten der Ausrüstung in chronologischer Reihenfolge verfügen. Auf jede Anforderung folgt jeweils der Antworttext.
- 
-1. Standort 1:
-    
+Jedes Gerät verfügt über eine `deviceId`. In diesem Tutorial verfolgen Sie ein einzelnes Gerät mit der eindeutigen ID `device_1` nach.
+
+Das folgende Diagramm zeigt die fünf Positionen des Geräts im Zeitverlauf – beginnend mit der *Startposition*, die sich außerhalb der Geofences befindet. Die *Startposition* ist in diesem Tutorial nicht definiert, da Sie das Gerät hierfür nicht abfragen.
+
+Wenn Sie die [Spatial Geofence-GET-API](/rest/api/maps/spatial/getgeofence) mit einer Geräteposition abfragen, die angibt, dass das Gerät erstmals in den Geofencebereich gebracht wurde oder diesen verlassen hat, wird von Event Grid der entsprechende Logik-App-Endpunkt aufgerufen. Hierüber wird dann eine E-Mail-Benachrichtigung an den Baustellenleiter gesendet.
+
+In den folgenden Abschnitten werden jeweils API-Anforderungen mit den fünf verschiedenen Positionskoordinaten des Geräts gesendet.
+
+![Diagramm: Geofencekarte in Azure Maps](./media/tutorial-geofence/geofence.png)
+
+### <a name="equipment-location-1-47638237-122132483"></a>Geräteposition 1 (47,638237,-122,132483)
+
+1. Wählen Sie oben in der Postman-App **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Legen Sie hierfür *Position 1* fest. Wählen Sie die Sammlung aus, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) erstellt haben, und wählen Sie anschließend **Speichern** aus.
+
+2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{udid}` durch die `udid`, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) gespeichert haben.
+
    ```HTTP
-   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
-   ![Geofence-Abfrage 1](./media/tutorial-geofence/geofence-query1.png)
 
-   In der obigen Antwort bedeutet der negative Abstand vom Geofencehauptbereich, dass sich die Ausrüstung innerhalb des Geofence befindet. Der positive Abstand vom Geofence des Unterbereichs bedeutet, dass sich die Ausrüstung außerhalb dieses Unterbereichs befindet. 
+3. Klicken Sie auf **Senden**. Im Antwortfenster wird der folgende GeoJSON-Code angezeigt.
 
-2. Standort 2: 
-   
+    ```json
+    {
+      "geometries": [
+        {
+          "deviceId": "device_1",
+          "udId": "64f71aa5-bbee-942d-e351-651a6679a7da",
+          "geometryId": "1",
+          "distance": -999.0,
+          "nearestLat": 47.638291,
+          "nearestLon": -122.132483
+        },
+        {
+          "deviceId": "device_1",
+          "udId": "64f71aa5-bbee-942d-e351-651a6679a7da",
+          "geometryId": "2",
+          "distance": 999.0,
+          "nearestLat": 47.638053,
+          "nearestLon": -122.13295
+        }
+      ],
+      "expiredGeofenceGeometryId": [],
+      "invalidPeriodGeofenceGeometryId": [],
+      "isEventPublished": true
+    }
+    ```
+
+In der obigen GeoJSON-Antwort bedeutet die negative Entfernung zum Geofence für den Hauptbereich, dass sich das Gerät innerhalb des Geofencebereichs befindet. Die positive Entfernung vom Geofence für den Unterbereich bedeutet, dass sich das Gerät außerhalb des Unterbereichs befindet. Da dieses Gerät zum ersten Mal innerhalb des Geofence für den Hauptbereich ermittelt wurde, wird der Parameter `isEventPublished` auf `true` festgelegt. Der Baustellenleiter erhält eine E-Mail-Benachrichtigung mit dem Hinweis, dass ein Gerät in den Geofencebereich gebracht wurde.
+
+### <a name="location-2-4763800-122132531"></a>Position 2 (47.63800,-122.132531)
+
+1. Wählen Sie oben in der Postman-App **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Legen Sie hierfür *Position 2* fest. Wählen Sie die Sammlung aus, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) erstellt haben, und wählen Sie anschließend **Speichern** aus.
+
+2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{udid}` durch die `udid`, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) gespeichert haben.
+
    ```HTTP
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
-    
-   ![Geofence-Abfrage 2](./media/tutorial-geofence/geofence-query2.png)
 
-   Wenn Sie sich die obige JSON-Antwort genau ansehen, erkennen Sie, dass sich die Ausrüstung außerhalb des Unterbereichs und innerhalb des Hauptbereichs befindet. Es wird kein Ereignis ausgelöst und keine E-Mail gesendet.
+3. Klicken Sie auf **Senden**. Im Antwortfenster wird der folgende GeoJSON-Code angezeigt:
 
-3. Standort 3: 
-  
-   ```HTTP
-   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
-   ```
+    ```json
+    {
+      "geometries": [
+        {
+          "deviceId": "device_01",
+          "udId": "64f71aa5-bbee-942d-e351-651a6679a7da",
+          "geometryId": "1",
+          "distance": -999.0,
+          "nearestLat": 47.637997,
+          "nearestLon": -122.132399
+        },
+        {
+          "deviceId": "device_01",
+          "udId": "64f71aa5-bbee-942d-e351-651a6679a7da",
+          "geometryId": "2",
+          "distance": 999.0,
+          "nearestLat": 47.63789,
+          "nearestLon": -122.132809
+        }
+      ],
+      "expiredGeofenceGeometryId": [],
+      "invalidPeriodGeofenceGeometryId": [],
+      "isEventPublished": false
+    }
+    ````
 
-   ![Geofence-Abfrage 3](./media/tutorial-geofence/geofence-query3.png)
+In der obigen GeoJSON-Antwort befindet sich das Gerät weiterhin innerhalb des Geofence für den Hauptbereich und wurde nicht in den Geofence für den Unterbereich gebracht. Der Parameter `isEventPublished` wird daher auf `false` festgelegt, und der Baustellenleiter erhält keine E-Mail-Benachrichtigungen.
 
-   Eine Zustandsänderung ist eingetreten, und jetzt befindet sich die Ausrüstung sowohl innerhalb des Hauptbereichs als auch innerhalb des Unterbereichs. Ein Ereignis wird veröffentlicht, und eine Benachrichtigungs-E-Mail wird an den Baustellenleiter gesendet.
+### <a name="location-3-4763810783315048-12213336020708084"></a>Position 3 (47.63810783315048,-122.13336020708084)
 
-4. Standort 4: 
+1. Wählen Sie oben in der Postman-App **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Legen Sie hierfür *Position 3* fest. Wählen Sie die Sammlung aus, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) erstellt haben, und wählen Sie anschließend **Speichern** aus.
 
-   ```HTTP
-   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
-   ```
-  
-   ![Geofence-Abfrage 4](./media/tutorial-geofence/geofence-query4.png)
+2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{udid}` durch die `udid`, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) gespeichert haben.
 
-   Wenn Sie sich die entsprechende Antwort genau ansehen, erkennen Sie, dass hier kein Ereignis veröffentlicht wird, obwohl die Ausrüstung den Geofence des Unterbereichs verlassen hat. Anhand des angegebenen Zeitpunkts des Benutzers in der GET-Anforderung können Sie sehen, dass der Geofence des Unterbereichs bezogen auf diesen Zeitpunkt abgelaufen ist und sich die Ausrüstung noch innerhalb des Geofencehauptbereichs befindet. Im Antworttext unter `expiredGeofenceGeometryId` sehen Sie auch die Geometrie-ID des Geofence-Unterbereichs.
+    ```HTTP
+      https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
+      ```
+
+3. Klicken Sie auf **Senden**. Im Antwortfenster wird der folgende GeoJSON-Code angezeigt:
+
+    ```json
+    {
+      "geometries": [
+        {
+          "deviceId": "device_01",
+          "udId": "64f71aa5-bbee-942d-e351-651a6679a7da",
+          "geometryId": "1",
+          "distance": -999.0,
+          "nearestLat": 47.638294,
+          "nearestLon": -122.133359
+        },
+        {
+          "deviceId": "device_01",
+          "udId": "64f71aa5-bbee-942d-e351-651a6679a7da",
+          "geometryId": "2",
+          "distance": -999.0,
+          "nearestLat": 47.638161,
+          "nearestLon": -122.133549
+        }
+      ],
+      "expiredGeofenceGeometryId": [],
+      "invalidPeriodGeofenceGeometryId": [],
+      "isEventPublished": true
+    }
+    ````
+
+In der obigen GeoJSON-Antwort befindet sich das Gerät weiterhin innerhalb des Geofence für den Hauptbereich, aber zusätzlich auch im Geofence für den Unterbereich. Der Parameter `isEventPublished` wird daher auf `true` festgelegt. Der Baustellenleiter erhält eine E-Mail-Benachrichtigung mit dem Hinweis, dass das Gerät in einen Geofencebereich gebracht wurde.
+
+>[!NOTE]
+>Falls das Gerät außerhalb der Arbeitszeit in den Unterbereich gebracht wurde, wird kein Ereignis veröffentlicht, und der Baustellenleiter erhält keine Benachrichtigungen.  
+
+### <a name="location-4-47637988-1221338344"></a>Position 4 (47.637988,-122.1338344)
+
+1. Wählen Sie oben in der Postman-App **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Legen Sie hierfür *Position 4* fest. Wählen Sie die Sammlung aus, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) erstellt haben, und wählen Sie anschließend **Speichern** aus.
+
+2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{udid}` durch die `udid`, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) gespeichert haben.
+
+    ```HTTP
+    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&userTime=2023-01-16&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+    ```
+
+3. Klicken Sie auf **Senden**. Im Antwortfenster wird der folgende GeoJSON-Code angezeigt:
+
+    ```json
+    {
+      "geometries": [
+        {
+          "deviceId": "device_01",
+          "udId": "64f71aa5-bbee-942d-e351-651a6679a7da",
+          "geometryId": "1",
+          "distance": -999.0,
+          "nearestLat": 47.637985,
+          "nearestLon": -122.133907
+        }
+      ],
+      "expiredGeofenceGeometryId": [
+        "2"
+      ],
+      "invalidPeriodGeofenceGeometryId": [],
+      "isEventPublished": false
+    }
+    ````
+
+In der obigen GeoJSON-Antwort befindet sich das Gerät weiterhin innerhalb des Geofence für den Hauptbereich, aber hat den Geofence für den Unterbereich verlassen. Beachten Sie hierbei aber, dass der Wert `userTime` nach dem in den Geofencedaten definierten Ablauftermin (`expiredTime`) liegt. Der Parameter `isEventPublished` wird deshalb auf `false` festgelegt, und der Baustellenleiter erhält keine E-Mail-Benachrichtigung.
+
+### <a name="location-5-4763799--122134505"></a>Position 5 (47,63799, -122,134505)
+
+1. Wählen Sie oben in der Postman-App **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Legen Sie hierfür *Position 5* fest. Wählen Sie die Sammlung aus, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) erstellt haben, und wählen Sie anschließend **Speichern** aus.
+
+2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{udid}` durch die `udid`, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) gespeichert haben.
+
+    ```HTTP
+    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
+    ```
+
+3. Klicken Sie auf **Senden**. Im Antwortfenster wird der folgende GeoJSON-Code angezeigt:
+
+    ```json
+    {
+      "geometries": [
+      {
+        "deviceId": "device_01",
+        "udId": "64f71aa5-bbee-942d-e351-651a6679a7da",
+        "geometryId": "1",
+        "distance": -999.0,
+        "nearestLat": 47.637985,
+        "nearestLon": -122.133907
+      },
+      {
+        "deviceId": "device_01",
+        "udId": "64f71aa5-bbee-942d-e351-651a6679a7da",
+        "geometryId": "2",
+        "distance": 999.0,
+        "nearestLat": 47.637945,
+        "nearestLon": -122.133683
+      }
+      ],
+      "expiredGeofenceGeometryId": [],
+      "invalidPeriodGeofenceGeometryId": [],
+      "isEventPublished": true
+    }
+    ````
+
+In der obigen GeoJSON-Antwort wurde das Gerät aus dem Geofence für den Hauptbereich entfernt. Der Parameter `isEventPublished` wird daher auf `true` festgelegt, und der Baustellenleiter erhält eine E-Mail-Benachrichtigung mit dem Hinweis, dass das Gerät aus einem Geofencebereich entfernt wurde.
 
 
-5. Standort 5:
-      
-   ```HTTP
-   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63799&lon=-122.134505&userTime=2019-01-16&searchBuffer=5&isAsync=True&mode=EnterAndExit
-   ```
-
-   ![Geofence-Abfrage 5](./media/tutorial-geofence/geofence-query5.png)
-
-   Sie können sehen, dass die Ausrüstung den Geofence des Hauptbereichs der Baustelle verlassen hat. Ein Ereignis wird veröffentlicht, es handelt sich um einen schweren Verstoß, und eine E-Mail mit einer kritischen Warnung wird an den Baustellenleiter gesendet.
+Sie können mithilfe von Azure Maps außerdem [E-Mail-Benachrichtigungen mithilfe von Event Grid und Logic Apps senden](../event-grid/publish-iot-hub-events-to-logic-apps.md) und die [unterstützten Ereignishandler in Event Grid](../event-grid/event-handlers.md) überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde beschrieben, wie Sie einen Geofence einrichten, indem Sie ihn mit der Datenupload-API in den Datendienst von Azure Maps hochladen. Sie haben auch erfahren, wie Sie Azure Maps Event Grid nutzen, um Geofence-Ereignisse zu abonnieren und zu verarbeiten. 
-
-* Unter [Behandeln von Inhaltstypen in Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type) finden Sie Informationen dazu, wie Sie Logic Apps zum Analysieren von JSON-Code nutzen, um eine komplexere Logik zu erstellen.
-* Weitere Informationen zu Ereignishandlern in Event Grid finden Sie unter [Ereignishandler in Azure Event Grid](https://docs.microsoft.com/azure/event-grid/event-handlers).
+> [!div class="nextstepaction"]
+> [Behandeln von Inhaltstypen in Azure Logic Apps](../logic-apps/logic-apps-content-type.md)

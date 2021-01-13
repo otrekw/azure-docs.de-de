@@ -1,76 +1,72 @@
 ---
-title: Zoomfaktoren und Kachelraster in Azure Maps | Microsoft-Dokumentation
-description: Erfahren Sie mehr über Zoomfaktoren und Kachelraster in Azure Maps.
-author: jingjing-z
-ms.author: jinzh
-ms.date: 05/07/2018
+title: Zoomfaktoren und Kachelraster in Microsoft Azure Maps
+description: Lernen Sie, Zoomfaktoren in Azure Maps festzulegen. Erfahren Sie, wie Sie geografische Koordinaten in Pixelkoordinaten, Kachelkoordinaten und Quadkeys konvertieren. Zeigen Sie Codebeispiele an.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/14/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
-ms.openlocfilehash: 6dced7106b59f0e5a05c7ed6ff3e3368978cb083
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+manager: philmea
+ms.openlocfilehash: 21c2329ec58e414ebfedaa4c49d5f690f47cac72
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976067"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913890"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomfaktoren und Linienraster
 
-Azure Maps verwendet das Koordinatensystem der sphärischen Mercator-Projektion (EPSG: 3857). Eine Projektion ist ein mathematisches Modell, mit dem ein kugelförmiger Globus in eine flache Karte transformiert wird. Die sphärische Mercator-Projektion streckt die Karte an den Polen, um eine quadratische Karte zu erzeugen. Das verzerrt den Maßstab und die Fläche der Karte erheblich, hat aber zwei wichtige Vorteile, die diese Verzerrung überwiegen:
+Azure Maps verwendet das Koordinatensystem der sphärischen Mercator-Projektion (EPSG: 3857). Eine Projektion ist ein mathematisches Modell, mit dem ein kugelförmiger Globus in eine flache Karte transformiert wird. Die sphärische Mercator-Projektion streckt die Karte an den Polen, um eine quadratische Karte zu erzeugen. Diese Projektion verzerrt den Maßstab und die Fläche der Karte erheblich, hat aber zwei wichtige Vorteile, die diese Verzerrung überwiegen:
 
-- Es ist eine winkelgetreue Projektion, sodass die Form relativ kleiner Objekte erhalten bleibt. Dies ist besonders bei der Anzeige von Luftaufnahmen wichtig, weil die Form von Gebäuden nicht verzerrt werden soll. Quadratische Gebäude sollten als Quadrate und nicht als Rechtecke angezeigt werden.
-- Es handelt sich um eine Form der Zylinderprojektion, was bedeutet, dass Norden und Süden immer genau oben bzw. unten sind, und Westen und Osten immer genau links bzw. rechts. 
+- Es ist eine winkelgetreue Projektion, sodass die Form relativ kleiner Objekte erhalten bleibt. Das Beibehalten der Form von kleinen Objekten ist beim Anzeigen von Luftaufnahmen besonders wichtig. Beispielsweise möchten wir vermeiden, dass die Form von Gebäuden verzerrt wird. Quadratische Gebäude sollten als Quadrate und nicht als Rechtecke angezeigt werden.
+- Es handelt sich um eine Zylinderprojektion. Norden und Süden sind immer oben und unten, und Westen und Osten sind immer links und rechts. 
 
 Um die Leistung beim Abrufen und Anzeigen von Karten zu optimieren, wird die Karte in vier quadratische Kacheln aufgeteilt. Die Azure Maps SDKs verwenden Kacheln mit einer Größe von 512 × 512 Pixeln für Straßenkarten und kleinere Kacheln mit 256 × 256 Pixeln für Satellitenbilder. Azure Maps enthält Raster- und Vektorkacheln für 23 Zoomfaktoren (nummeriert von 0 bis 22). Die ganze Welt würde bei Zoomfaktor 0 auf einer einzigen Kachel passen:
 
-<center>
-
-![Weltkachel](./media/zoom-levels-and-tile-grid/world0.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/world0.png" alt-text="Kachel mit Weltkarte":::
 
 Der Zoomfaktor 1 verwendet vier Kacheln zum Rendering der Welt: ein Quadrat aus 2 x 2 Kacheln.
 
-<center>
-
-![Kartenlayout mit 2 × 2 Kacheln](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png" alt-text="Kartenlayout mit 2 × 2 Kacheln":::
 
 Jedes zusätzliche Zoomfaktorquadrat unterteilt die Kacheln des vorherigen Zoomfaktors, wodurch ein Raster mit 2<sup>Zoom</sup> x 2<sup>Zoom</sup> entsteht. Zoomfaktor 22 ist ein Raster aus 2<sup>22</sup> x 2<sup>22</sup> oder 4.194.304 x 4.194.304 Kacheln (insgesamt 17.592.186.044.416 Kacheln).
 
 Die interaktiven Kartensteuerelemente in Azure Maps für Web und Android unterstützen 25 Zoomfaktoren, nummeriert von 0 bis 24. Obwohl Straßendaten bei den Zoomfaktoren nur dann verfügbar sind, wenn die jeweiligen Kacheln verfügbar sind.
 
-In der folgenden Tabelle finden Sie die vollständige Liste der Zoomfaktorwerte für eine Kachelgröße von 512 Pixeln im Quadrat:
+In der folgenden Tabelle finden Sie die vollständige Liste der Zoomfaktorwerte für eine Kachelgröße von 512 Pixeln im Quadrat am Breitengrad 0:
 
 |Zoomfaktor|Meter/Pixel|Seite Meter/Kachel|
 |--- |--- |--- |
-|0|156543|40075008|
-|1|78271,5|20037504|
-|2|39135,8|10018764,8|
-|3|19567,9|5009382,4|
-|4|9783,9|2504678,4|
-|5|4892|1252352|
-|6|2446|626176|
-|7|1223|313088|
-|8|611,5|156544|
-|9|305,7|78259,2|
-|10|152,9|39142,4|
-|11|76,4|19558,4|
-|12|38,2|9779,2|
-|13|19,1|4889,6|
-|14|9,6|2457,6|
-|15|4.8|1228,8|
-|16|2.4|614,4|
-|17|1.2|307,2|
-|18|0,6|152,8|
-|19|0,3|76,4|
-|20|0,15|38,2|
-|21|0,075|19,1|
-|22|0,0375|9,55|
-|23|0,01875|4,775|
-|24|0,009375|2,3875|
+| 0 | 156543 | 40075017 |
+| 1 | 78271,5 | 20037508 |
+| 2 | 39135,8 | 10018754 |
+| 3 | 19567,88 | 5009377,1 |
+| 4 | 9783,94 | 2504688,5 |
+| 5 | 4891,97 | 1252344,3 |
+| 6 | 2445,98 | 626172,1 |
+| 7 | 1222,99 | 313086,1 |
+| 8 | 611,5 | 156543 |
+| 9 | 305,75 | 78271,5 |
+| 10 | 152,87 | 39135,8 |
+| 11 | 76,44 | 19567,9 |
+| 12 | 38,219 | 9783,94 |
+| 13 | 19,109 | 4891,97 |
+| 14 | 9,555 | 2445,98 |
+| 15 | 4,777 | 1222,99 |
+| 16 | 2,3887 | 611,496 |
+| 17 | 1,1943 | 305,748 |
+| 18 | 0,5972 | 152,874 |
+| 19 | 0,14929 | 76,437 |
+| 20 | 0,14929 | 38,2185 |
+| 21 | 0,074646 | 19,10926 |
+| 22 | 0,037323 | 9,55463 |
+| 23 | 0,0186615 | 4,777315 |
+| 24 | 0,00933075 | 2,3886575 |
 
 ## <a name="pixel-coordinates"></a>Pixelkoordinaten
 
-Wenn wir die Projektion und den Maßstab für jeden Zoomfaktor ausgewählt haben, können wir geografische Koordinaten in Pixelkoordinaten konvertieren. Die vollständige Pixelhöhe und -breite eines Kartenbilds der Welt für einen bestimmten Zoomfaktor kann folgendermaßen berechnet werden:
+Wenn wir die Projektion und den Maßstab für jeden Zoomfaktor ausgewählt haben, können wir geografische Koordinaten in Pixelkoordinaten konvertieren. Die vollständige Pixelhöhe und -breite eines Kartenbilds der Welt für einen bestimmten Zoomfaktor wird folgendermaßen berechnet:
 
 ```javascript
 var mapWidth = tileSize * Math.pow(2, zoom);
@@ -78,13 +74,11 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-Da die Werte für die Höhe und Breite der Karte für jeden Zoomfaktor unterschiedlich sind, gilt dies auch für die Pixelkoordinaten. Das Pixel in der oberen linken Ecke einer Karte weist immer die Pixelkoordinaten (0, 0) auf. Das Pixel in der unteren rechten Ecke einer Karte besitzt die Pixelkoordinaten *(width-1, height-1)* bzw. in Bezug auf die Gleichungen im vorherigen Abschnitt *(tileSize \* 2<sup>zoom</sup>–1, tileSize \* 2<sup>zoom</sup>–1)* . Ein Beispiel: Bei 512 quadratischen Kacheln mit Zoomfaktor 2 reichen die Pixelkoordinaten von (0, 0) bis (2047, 2047), wie hier zu sehen:
+Da die Werte für die Höhe und Breite der Karte für jeden Zoomfaktor unterschiedlich sind, gilt dies auch für die Pixelkoordinaten. Das Pixel in der oberen linken Ecke einer Karte weist immer die Pixelkoordinaten (0, 0) auf. Das Pixel in der unteren rechten Ecke einer Karte besitzt die Pixelkoordinaten *(width-1, height-1)* bzw. in Bezug auf die Gleichungen im vorherigen Abschnitt *(tileSize \* 2 <sup>zoom</sup>–1, tileSize \* 2 <sup>zoom</sup>–1)* . Ein Beispiel: Bei 512 quadratischen Kacheln mit Zoomfaktor 2 reichen die Pixelkoordinaten von (0, 0) bis (2047, 2047), wie hier zu sehen:
 
-<center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="Karte mit Pixeldimensionen":::
 
-![Karte mit Pixeldimensionen](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
-
-Wenn Breiten- und Längengrad sowie die Detailstufe angegeben sind, können die XY-Pixelkoordinaten wie folgt berechnet werden:
+Wenn Breiten- und Längengrad sowie die Detailstufe angegeben sind, wird die XY-Pixelkoordinaten wie folgt berechnet:
 
 ```javascript
 var sinLatitude = Math.sin(latitude * Math.PI/180);
@@ -94,11 +88,11 @@ var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
 var pixelY = (0.5 – Math.log((1 + sinLatitude) / (1 – sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
 ```
 
-Bei den Werten für Breitengrad und Längengrad wird davon ausgegangen, dass diese sich im Bezugssystem WGS 84 befinden. Auch wenn Azure Maps eine sphärische Projektion verwendet, ist es wichtig, alle geografischen Koordinaten in ein gemeinsames Bezugssystem zu konvertieren. Dafür wurde WGS 84 ausgewählt. Der Wert für den Längengrad reicht von -180 bis +180 Grad, und der Wert für den Breitengrad muss auf einen Bereich von -85.05112878 bis 85.05112878 beschnitten werden. Dadurch wird eine Singularität an den Polen verhindert, und die projizierte Karte ist quadratisch.
+Bei den Werten für Breitengrad und Längengrad wird davon ausgegangen, dass diese sich im Bezugssystem WGS 84 befinden. Auch wenn Azure Maps eine sphärische Projektion verwendet, ist es wichtig, alle geografischen Koordinaten in ein gemeinsames Bezugssystem zu konvertieren. Dafür wurde WGS 84 ausgewählt. Der Wert für den Längengrad reicht von -180 Grad bis +180 Grad, und der Wert für den Breitengrad muss auf einen Bereich von -85.05112878 bis 85.05112878 beschnitten werden. Durch die Einhaltung dieser Werte wird eine Singularität an den Polen vermieden, und es wird sichergestellt, dass die projizierte Karte eine quadratische Form hat.
 
 ## <a name="tile-coordinates"></a>Kachelkoordinaten
 
-Um die Leistung beim Abrufen und Anzeigen von Karten zu optimieren, wird die gerenderte Karte in Kacheln aufgeteilt. Da die Anzahl von Pixeln für jeden Zoomfaktor unterschiedlich ist, gilt dies auch für die Anzahl von Kacheln:
+Um die Leistung beim Abrufen und Anzeigen von Karten zu optimieren, wird die gerenderte Karte in Kacheln aufgeteilt. Die Anzahl von Pixeln und Kacheln ist für jeden Zoomfaktor unterschiedlich:
 
 ```javascript
 var numberOfTilesWide = Math.pow(2, zoom);
@@ -106,11 +100,9 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-Jede Kachel erhält XY-Koordinaten von (0, 0) in der oberen rechten Ecke bis *(2<sup>zoom</sup>–1, 2<sup>zoom</sup>–1)* in der rechten unteren Ecke. Bei Zoomfaktor 2 reichen die Kachelkoordinaten beispielsweise von (0, 0) bis(7, 7), wie hier zu sehen:
+Jede Kachel erhält XY-Koordinaten von (0, 0) in der oberen rechten Ecke bis *(2 <sup>zoom</sup>–1, 2 <sup>zoom</sup>–1)* in der rechten unteren Ecke. Bei Zoomfaktor 3 reichen die Kachelkoordinaten beispielsweise von (0, 0) bis(7, 7), wie hier zu sehen:
 
-<center>
-
-![Karte mit Kachelkoordinaten](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="Karte mit Kachelkoordinaten":::
 
 Wenn ein XY-Pixelkoordinatenpaar bekannt ist, können Sie ganz einfach die XY-Kachelkoordinaten der Kachel bestimmen, die dieses Pixel enthält:
 
@@ -120,52 +112,46 @@ var tileX = Math.floor(pixelX / tileSize);
 var tileY = Math.floor(pixelY / tileSize);
 ```
 
-Kacheln werden durch den Zoomfaktor und die x- und y-Koordinaten entsprechend der Kachelposition im Raster für diesen Zoomfaktor angegeben.
+Kacheln werden durch den Zoomfaktor angegeben. Die x- und y-Koordinaten entsprechend der Kachelposition im Raster für diesen Zoomfaktor.
 
-Denken Sie bei der Ermittlung des zu verwendenden Zoomfaktors daran, dass jeder Standort eine feste Position auf der Kachel darstellt. Dies bedeutet, dass die Anzahl der Kacheln, die für die Darstellung einer bestimmten Fläche des Gebiets erforderlich ist, von der jeweiligen Platzierung des Zoomrasters auf der Welt abhängig ist. Wenn zwei Punkte z.B. 900 Meter auseinander liegen, sind *möglicherweise* nur drei Kacheln notwendig, um eine Route zwischen diesen im Zoomfaktor 17 anzuzeigen. Wenn sich der westliche Punkt allerdings rechts von der Kachel und der östliche Punkt links von der Kachel befindet, sind möglicherweise vier Kacheln erforderlich:
+Denken Sie bei der Ermittlung des zu verwendenden Zoomfaktors daran, dass jeder Standort eine feste Position auf der Kachel darstellt. Folglich ist die Anzahl der Kacheln, die für die Darstellung einer bestimmten Fläche des Gebiets erforderlich ist, von der jeweiligen Platzierung des Zoomrasters auf der Weltkarte abhängig. Wenn zwei Punkte z.B. 900 Meter auseinander liegen, sind *möglicherweise* nur drei Kacheln notwendig, um eine Route zwischen diesen im Zoomfaktor 17 anzuzeigen. Wenn sich der westliche Punkt allerdings rechts von der Kachel und der östliche Punkt links von der Kachel befindet, sind möglicherweise vier Kacheln erforderlich:
 
-<center>
-
-![Beispielraster für Zoom](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="Beispielraster für Zoom":::
 
 Sobald der Zoomfaktor ermittelt wurde, können die x- und y-Werte berechnet werden. Die obere linke Kachel in jedem Zoomraster entspricht x=0, y=0, während die Kachel unten rechts x=2<sup>Zoom -1</sup>, y=2<sup>Zoom-1</sup> entspricht.
 
 Hier wird das Zoomraster für Zoomfaktor 1 dargestellt:
 
-<center>
-
-![Zoomraster für Zoomfaktor 1](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/api_x_y.png" alt-text="Zoomraster für Zoomfaktor 1":::
 
 ## <a name="quadkey-indices"></a>Quadkey-Indizes
 
-Einige Kartenplattformen verwenden eine Namenskonvention für Quadkey-Indizes, die die ZY-Kachelkoordinaten in eine eindimensionale Zeichenfolge kombiniert, die als „Quadtree Keys“ oder kurz „Quadkeys“ bezeichnet wird. Jeder Quadkey identifiziert eindeutig eine einzelne Kachel mit einer bestimmten Detailebene und kann in allgemeinen B-Strukturindizes von Datenbanken als Schlüssel verwendet werden. Die Azure Maps SDKs unterstützen die Überlagerung von Kachelebenen, die die Quadkey-Namenskonvention zusätzlich zu anderen Namenskonventionen verwenden, wie im Artikel [Hinzufügen einer Kachelebene](map-add-tile-layer.md) dokumentiert.
+Einige Kartenplattformen verwenden eine Namenskonvention für `quadkey`-Indizes, die die ZY-Kachelkoordinaten in eine eindimensionale Zeichenfolge kombiniert, die als `quadtree` Keys oder kurz `quadkeys` bezeichnet wird. Jeder `quadkey` identifiziert eindeutig eine einzelne Kachel mit einer bestimmten Detailebene und kann in allgemeinen B-Strukturindizes von Datenbanken als Schlüssel verwendet werden. Die Azure Maps SDKs unterstützen die Überlagerung von Kachelebenen, die die `quadkey`-Namenskonvention zusätzlich zu anderen Namenskonventionen verwenden, wie im Artikel [Hinzufügen einer Kachelebene](map-add-tile-layer.md) dokumentiert.
 
 > [!NOTE]
-> Die Quadkey-Namenskonvention funktioniert nur für Zoomfaktor 1 oder höher. Die Azure Maps SDKs unterstützen Zoomfaktor 0 – eine einzelne Kartenkachel für die gesamte Welt. 
+> Die `quadkeys`-Namenskonvention funktioniert nur für Zoomfaktor 1 oder höher. Die Azure Maps SDKs unterstützen Zoomfaktor 0 – eine einzelne Kartenkachel für die gesamte Welt. 
 
-Um Kachelkoordinaten in einen Quadkey umzuwandeln, werden die Y- und X-Koordinate miteinander kombiniert, und das Ergebnis wird als Quaternärzahl mit der Basis 4 interpretiert (führende Nullen bleiben erhalten) und in eine Zeichenfolge konvertiert. Ein Beispiel: Bei den XY-Kachelkoordinaten (3, 5) mit Zoomfaktor 3 wird der Quadkey wie folgt bestimmt:
+Um Kachelkoordinaten in einen `quadkey` umzuwandeln, werden die Y- und X-Koordinate miteinander kombiniert, und das Ergebnis wird als Quaternärzahl mit der Basis 4 interpretiert (führende Nullen bleiben erhalten) und in eine Zeichenfolge konvertiert. Ein Beispiel: Bei den XY-Kachelkoordinaten (3, 5) mit Zoomfaktor 3 wird der `quadkey` wie folgt bestimmt:
 
 ```
 tileX = 3 = 011 (base 2)
 
-tileY = 5 = 1012 (base 2)
+tileY = 5 = 101 (base 2)
 
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-Quadkeys weisen einige interessante Eigenschaften auf. Erstens: Die Länge eines Quadkeys (die Anzahl von Stellen) ist gleich dem Zoomfaktor der entsprechenden Kachel. Zweitens: Der Quadkey jeder Kachel beginnt mit dem Quadkey der übergeordneten Kachel (der Kachel im vorherigen Zoomfaktor). Wie im Beispiel unten gezeigt, ist Kachel 2 den Kacheln 20 bis 23 übergeordnet:
+`Qquadkeys` weisen einige interessante Eigenschaften auf. Erstens: Die Länge eines `quadkey` (die Anzahl von Stellen) ist gleich dem Zoomfaktor der entsprechenden Kachel. Zweitens: Der `quadkey` jeder Kachel beginnt mit dem `quadkey` der übergeordneten Kachel (der Kachel im vorherigen Zoomfaktor). Wie im Beispiel unten gezeigt, ist Kachel 2 den Kacheln 20 bis 23 übergeordnet:
 
-<center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="Quadkey-Kachelpyramide":::
 
-![Quadkey-Kachelpyramide](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
-
-Und schließlich stellen Quadkeys einen eindimensionalen Indexschlüssel bereit, der üblicherweise die Nähe der Kacheln im XY-Raum aufrechterhält. Anders gesagt: Zwei Kacheln mit ähnlichen XY-Koordinaten weisen in der Regel relativ nahe beieinander liegende Quadkeys auf. Dies ist wichtig für die Optimierung der Datenbankleistung, weil benachbarte Kacheln häufig in Gruppen angefordert werden. Daher ist es wünschenswert, diese Kacheln in denselben Datenträgerblöcken zu speichern, um die Anzahl von Lesevorgängen auf dem Datenträger zu minimieren.
+Und schließlich stellen `quadkeys` einen eindimensionalen Indexschlüssel bereit, der üblicherweise die Nähe der Kacheln im XY-Raum aufrechterhält. Anders gesagt: Zwei Kacheln mit ähnlichen XY-Koordinaten weisen in der Regel relativ nahe beieinander liegende `quadkeys` auf. Dies ist wichtig für die Optimierung der Datenbankleistung, weil benachbarte Kacheln häufig in Gruppen angefordert werden. Daher ist es wünschenswert, diese Kacheln in denselben Datenträgerblöcken zu speichern, um die Anzahl von Lesevorgängen auf dem Datenträger zu minimieren.
 
 ## <a name="tile-math-source-code"></a>Mathematischer Quellcode für Kacheln
 
 Der folgende Beispielcode veranschaulicht, wie die in diesem Dokument beschriebenen Funktionen implementiert werden. Diese Funktionen lassen sich bei Bedarf problemlos in andere Programmiersprachen übersetzen.
 
-#### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+#### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 using System;
@@ -422,6 +408,7 @@ namespace AzureMaps
             var sinLatitude = Math.Sin(latitude * Math.PI / 180);
             var y = 0.5 - Math.Log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
 
+            //tileSize needed in calculations as in rare cases the multiplying/rounding/dividing can make the difference of a pixel which can result in a completely different tile. 
             var mapSize = MapSize(zoom, tileSize);
             tileX = (int)Math.Floor(Clip(x * mapSize + 0.5, 0, mapSize - 1) / tileSize);
             tileY = (int)Math.Floor(Clip(y * mapSize + 0.5, 0, mapSize - 1) / tileSize);
@@ -563,7 +550,7 @@ namespace AzureMaps
 }
 ```
 
-#### <a name="typescripttabtypescript"></a>[TypeScript](#tab/typescript)
+#### <a name="typescript"></a>[TypeScript](#tab/typescript)
 
 ```typescript
 module AzureMaps {
@@ -802,6 +789,7 @@ module AzureMaps {
             var sinLatitude = Math.sin(latitude * Math.PI / 180);
             var y = 0.5 - Math.log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
 
+            //tileSize needed in calculations as in rare cases the multiplying/rounding/dividing can make the difference of a pixel which can result in a completely different tile. 
             var mapSize = this.MapSize(zoom, tileSize);
 
             return {
@@ -945,20 +933,20 @@ module AzureMaps {
 
 > [!NOTE]
 > Die interaktiven Kartensteuerelemente in den Azure Maps SDKs besitzen Hilfsfunktionen zum Konvertieren zwischen räumlichen Positionen und Viewportpixeln. 
-> - [Web SDK: Kartenpixel und Positionsberechnungen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> - [Web SDK: Kartenpixel und Positionsberechnungen](/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Greifen Sie über die Azure Maps-REST-Dienste direkt auf Kartenkacheln zu:
 
 > [!div class="nextstepaction"]
-> [Get map tiles](https://docs.microsoft.com/rest/api/maps/render/getmaptile) (Abrufen von Kartenkacheln)
+> [Get map tiles](/rest/api/maps/render/getmaptile) (Abrufen von Kartenkacheln)
 
 > [!div class="nextstepaction"]
-> [Get traffic flow tiles](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile) (Abrufen von Kacheln zum Verkehrsfluss)
+> [Get traffic flow tiles](/rest/api/maps/traffic/gettrafficflowtile) (Abrufen von Kacheln zum Verkehrsfluss)
 
 > [!div class="nextstepaction"]
-> [Get traffic incident tiles](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile) (Abrufen von Kacheln zu Verkehrsstörungen)
+> [Get traffic incident tiles](/rest/api/maps/traffic/gettrafficincidenttile) (Abrufen von Kacheln zu Verkehrsstörungen)
 
 Weitere Informationen zu räumlichen Konzepten:
 

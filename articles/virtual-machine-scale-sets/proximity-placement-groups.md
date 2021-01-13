@@ -1,39 +1,36 @@
 ---
-title: Näherungsplatzierungsgruppen (Vorschau) für VM-Skalierungsgruppen | Microsoft-Dokumentation
+title: Näherungsplatzierungsgruppen (Vorschau) für VM-Skalierungsgruppen
 description: Erfahren Sie mehr über das Erstellen und Verwenden von Näherungsplatzierungsgruppen für Windows-VM-Skalierungsgruppen in Azure.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-ms.service: virtual-machine-scale-sets
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
-ms.date: 07/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 6a4f145c6431e98bbe9575f128ace30a23a1b972
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
+ms.date: 07/01/2019
+ms.reviewer: zivr
+ms.custom: mimckitt
+ms.openlocfilehash: 1525ef7c1e19aa9821df3f111fdce3518d37afd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850675"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87011055"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Vorschau: Erstellen und Verwenden von Näherungsplatzierungsgruppen mit PowerShell
 
 Um den Abstand zwischen den VMs so stark wie möglich zu verringern und somit die geringstmögliche Latenz zu erzielen, sollten Sie Ihre Skalierungsgruppe in einer [Näherungsplatzierungsgruppe](co-location.md#preview-proximity-placement-groups) bereitstellen.
 
-Eine Näherungsplatzierungsgruppe ist eine logische Gruppierung, mit der ein möglichst geringer Abstand zwischen Azure-Computeressourcen sichergestellt wird. Näherungsplatzierungsgruppen sind für Workloads hilfreich, die eine geringe Latenz erfordern.
+Eine Näherungsplatzierungsgruppe ist eine logische Gruppierung, mit der ein möglichst geringer Abstand zwischen Azure-Compute-Ressourcen sichergestellt wird. Näherungsplatzierungsgruppen sind für Workloads hilfreich, die eine geringe Latenz erfordern.
 
 > [!IMPORTANT]
 > Näherungsplatzierungsgruppen sind zurzeit als Public Preview verfügbar.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Näherungsplatzierungsgruppen sind während der Vorschau in den folgenden Regionen nicht verfügbar: **Japan, Osten**, **Australien, Osten** und **Indien, Mitte**.
+> Näherungsplatzierungsgruppen sind in der Vorschauversion in den folgenden Regionen nicht verfügbar: **Japan, Osten**, **Australien, Osten** und **Indien, Mitte**.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Erstellen einer Näherungsplatzierungsgruppe
-Erstellen Sie mithilfe des Cmdlets [New-AzProximityPlacementGroup ](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) eine Näherungsplatzierungsgruppe. 
+Erstellen Sie mithilfe des Cmdlets [New-AzProximityPlacementGroup ](/powershell/module/az.compute/new-azproximityplacementgroup) eine Näherungsplatzierungsgruppe. 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -58,7 +55,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
 
-Erstellen Sie mit `-ProximityPlacementGroup $ppg.Id` eine Skalierung in der Näherungsplatzierungsgruppe, um auf die Näherungsplatzierungsgruppen-ID zu verweisen, wenn Sie mit [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) die Skalierungsgruppe erstellen.
+Erstellen Sie mit `-ProximityPlacementGroup $ppg.Id` eine Skalierung in der Näherungsplatzierungsgruppe, um auf die Näherungsplatzierungsgruppen-ID zu verweisen, wenn Sie mit [New-AzVMSS](/powershell/module/az.compute/new-azvmss) die Skalierungsgruppe erstellen.
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"

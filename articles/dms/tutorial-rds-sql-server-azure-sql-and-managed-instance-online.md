@@ -1,29 +1,31 @@
 ---
-title: 'Tutorial: Durchführen einer Onlinemigration von RDS SQL Server zu Azure SQL-Datenbank oder einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von Azure Database Migration Service | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Onlinemigration von einer RDS SQL Server-Instanz zu Azure SQL-Datenbank oder einer verwalteten Azure SQL-Datenbank-Instanz durchführen.
+title: 'Tutorial: Onlinemigration von RDS SQL Server zu Microsoft Azure SQL-Datenbank'
+titleSuffix: Azure Database Migration Service
+description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Onlinemigration von einer RDS SQL Server-Instanz zu einer einzelnen oder einer verwalteten Azure SQL-Datenbank-Instanz durchführen.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
-ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: 982ead69ba3d206e1aa2538597927dcbeaab70e9
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.custom: seo-lt-2019
+ms.topic: tutorial
+ms.date: 01/08/2020
+ms.openlocfilehash: 249667dfa8c0491027f0244d4aa5e49d19399ab0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416105"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955037"
 ---
-# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Tutorial: Migrieren von RDS SQL Server zu Azure SQL-Datenbank oder zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von DMS (online)
-Mit Azure Database Migration Service können Sie die Datenbanken aus einer RDS SQL Server-Instanz mit minimaler Ausfallzeit zu [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/) oder einer [verwalteten Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) migrieren. In diesem Tutorial migrieren Sie die Datenbank **Adventureworks2012**, die in einer RDS SQL Server-Instanz von SQL Server 2012 (oder höher) wiederhergestellt wurde, mithilfe von Azure Database Migration Service zu einer Azure SQL-Datenbank-Instanz oder einer verwalteten Azure SQL-Datenbank-Instanz.
+# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-managed-instance-online-using-dms"></a>Tutorial: Migrieren von RDS SQL Server zu Azure SQL-Datenbank oder zu einer verwalteten Azure SQL-Instanz mithilfe von DMS (online)
+
+Mit Azure Database Migration Service können Sie die Datenbanken aus einer RDS SQL Server-Instanz mit minimaler Ausfallzeit zu [Azure SQL-Datenbank](/azure/sql-database/) oder einer [verwalteten Azure SQL-Instanz](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) migrieren. In diesem Tutorial migrieren Sie die Datenbank **Adventureworks2012**, die in einer RDS SQL Server-Instanz von SQL Server 2012 (oder höher) wiederhergestellt wurde, mithilfe von Azure Database Migration Service zu SQL-Datenbank oder einer verwalteten SQL-Instanz.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
-> * Erstellen einer Instanz von Azure SQL-Datenbank oder einer verwalteten Azure SQL-Datenbank-Instanz. 
+> * Erstellen einer Datenbank in Azure SQL-Datenbank oder einer SQL Managed Instance 
 > * Migrieren des Beispielschemas über den Data Migration Assistant
 > * Erstellen einer Instanz von Azure Database Migration Service
 > * Erstellen Sie ein Migrationsprojekt mithilfe von Azure Database Migration Service.
@@ -39,22 +41,19 @@ In diesem Tutorial lernen Sie Folgendes:
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-In diesem Artikel wird eine Onlinemigration von RDS SQL Server zu Azure SQL-Datenbank oder einer verwalteten Azure SQL-Datenbank-Instanz beschrieben.
+In diesem Artikel wird eine Onlinemigration von RDS SQL Server zu SQL-Datenbank oder einer verwalteten SQL-Instanz beschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Erstellen Sie eine [RDS SQL Server-Datenbank](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html).
-* Erstellen Sie eine Azure SQL-Datenbank-Instanz gemäß der Anleitung im Artikel [Erstellen einer Azure SQL-Datenbank im Azure-Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
-
-    > [!NOTE]
-    > Befolgen Sie beim Durchführen einer Migration zu einer verwalteten Azure SQL-Datenbank-Instanz die Anleitung im Artikel [Schnellstart: Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started), und erstellen Sie anschließend eine leere Datenbank mit dem Namen **AdventureWorks2012**. 
- 
+* [Erstellen Sie eine Datenbank in Azure SQL-Datenbank im Azure-Portal](../azure-sql/database/single-database-create-quickstart.md), oder [erstellen Sie eine Datenbank in SQL Managed Instance](../azure-sql/managed-instance/instance-create-quickstart.md), und erstellen Sie dann eine leere Datenbank mit dem Namen **AdventureWorks2012**. 
 * Laden Sie mindestens Version 3.3 des [Datenmigrations-Assistenten](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) herunter, und installieren Sie sie.
-* Erstellen Sie ein virtuelles Azure-Netzwerk (Azure Virtual Network, VNET) für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden. Stellen Sie beim Migrieren zur verwalteten Azure SQL-Datenbank-Instanz sicher, dass Sie die DMS-Instanz in demselben VNET erstellen, das auch für die verwaltete Azure SQL-Datenbank-Instanz verwendet wird. Verwenden Sie hierbei aber ein anderes Subnetz.  Falls Sie ein anderes VNET für DMS nutzen, müssen Sie ein VNET-Peering zwischen den beiden VNETs erstellen. Weitere Informationen zum Erstellen eines VNET finden Sie in der [Dokumentation zu Virtual Network](https://docs.microsoft.com/azure/virtual-network/) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
+* Erstellen Sie ein Microsoft Azure Virtual Network für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden. Stellen Sie beim Migrieren zu einer verwalteten SQL-Instanz sicher, dass Sie die DMS-Instanz in demselben virtuellen Netzwerk erstellen, das auch für die verwaltete SQL-Instanz verwendet wird. Verwenden Sie hierbei aber ein anderes Subnetz.  Falls Sie ein anderes virtuelles Netzwerk für DMS nutzen, müssen Sie ein Peering virtueller Netzwerke zwischen diesen beiden virtuellen Netzwerken erstellen. Weitere Informationen zum Erstellen eines virtuellen Netzwerks finden Sie in der [Dokumentation zu Virtual Network](../virtual-network/index.yml) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
 
     > [!NOTE]
-    > Fügen Sie bei Verwendung von ExpressRoute mit Netzwerkpeering zu Microsoft während des VNet-Setups die folgenden [Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) zu dem Subnetz hinzu, in dem der Dienst bereitgestellt werden soll:
+    > Fügen Sie bei Verwendung von ExpressRoute mit Netzwerkpeering zu Microsoft während des Setups des virtuellen Netzwerks die folgenden [Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) zu dem Subnetz hinzu, in dem der Dienst bereitgestellt werden soll:
     >
     > * Zieldatenbankendpunkt (z. B. SQL-Endpunkt, Cosmos DB-Endpunkt usw.)
     > * Speicherendpunkt
@@ -62,12 +61,12 @@ Für dieses Tutorial benötigen Sie Folgendes:
     >
     > Diese Konfiguration ist erforderlich, da Azure Database Migration Service über keine Internetverbindung verfügt. 
 
-* Stellen Sie sicher, dass die Netzwerksicherheitsgruppen-Regeln des VNET nicht die folgenden Ports für eingehende Kommunikation in Azure Database Migration Service blockieren: 443, 53, 9354, 445, 12000. Ausführlichere Informationen zur NSG-Datenverkehrsfilterung in einem Azure-VNet finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
-* Konfigurieren Sie Ihre [Windows-Firewall für Datenbank-Engine-Zugriff](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+* Stellen Sie sicher, dass die Netzwerksicherheitsgruppen-Regeln des virtuellen Netzwerks nicht die folgenden Ports für eingehende Kommunikation in Azure Database Migration Service blockieren: 443, 53, 9354, 445, 12000. Ausführlichere Informationen zur NSG-Datenverkehrsfilterung in einem virtuellen Netzwerk finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Konfigurieren Sie Ihre [Windows-Firewall für Datenbank-Engine-Zugriff](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Öffnen Sie Ihre Windows-Firewall, damit Azure Database Migration Service auf die SQL Server-Quellinstanz zugreifen kann (standardmäßig TCP-Port 1433).
-* Erstellen Sie für den Azure SQL-Datenbank-Server eine [Firewallregel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) auf Serverebene, um den Zugriff auf die Zieldatenbanken durch Azure Database Migration Service zu ermöglichen. Geben Sie den Subnetzbereich des für Azure Database Migration Service verwendeten VNET an.
+* Erstellen Sie für SQL-Datenbank eine [Firewallregel](../azure-sql/database/firewall-configure.md) auf Serverebene, um für Azure Database Migration Service den Zugriff auf die Zieldatenbanken zu ermöglichen. Geben Sie den Subnetzbereich des für Azure Database Migration Service verwendeten virtuellen Netzwerks an.
 * Achten Sie darauf, dass die Anmeldeinformationen zum Herstellen der Verbindung mit der RDS SQL Server-Quellinstanz einem Konto zugeordnet sind, das Mitglied der Serverrolle „Processadmin“ und der Datenbankrolle „db_owner“ in allen zu migrierenden Datenbanken ist.
-* Stellen Sie sicher, dass die Anmeldeinformationen zum Herstellen der Verbindung mit der Azure SQL-Datenbank-Zielinstanz in den Azure SQL-Zieldatenbanken über die Berechtigung CONTROL DATABASE verfügen und Mitglied der Rolle „sysadmin“ sind, wenn eine Migration zur verwalteten Azure SQL-Datenbank-Instanz durchgeführt wird.
+* Stellen Sie sicher, dass die Anmeldeinformationen zum Herstellen der Verbindung mit der Zieldatenbank über die Berechtigung CONTROL DATABASE für die Zieldatenbank in SQL-Datenbank verfügen und Mitglied der Rolle „sysadmin“ sind, wenn eine Migration zu einer Datenbank in SQL Managed Instance durchgeführt wird.
 * Die Quellversion von RDS SQL Server muss SQL Server 2012 oder höher sein. Informationen zum Ermitteln der Version der ausgeführten SQL Server-Instanz finden Sie im Artikel [So ermitteln Sie die Version, Edition und Updateebene von SQL Server und seinen Komponenten](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an).
 * Aktivieren Sie Change Data Capture (CDC) in der RDS SQL Server-Datenbank und für alle Benutzertabellen, die für die Migration ausgewählt wurden.
     > [!NOTE]
@@ -86,26 +85,31 @@ Für dieses Tutorial benötigen Sie Folgendes:
     @supports_net_changes = 1 --for PK table 1, non PK tables 0
     GO
     ```
-* Deaktivieren Sie die Datenbanktrigger in der Azure SQL-Zieldatenbank.
+* Deaktivieren Sie die Datenbanktrigger in der Zieldatenbank.
     > [!NOTE]
-    > Sie können die Datenbanktrigger in der Azure SQL-Zieldatenbank mit der folgenden Abfrage ermitteln:
+    > Sie können die Datenbanktrigger in der Zieldatenbank mit der folgenden Abfrage ermitteln:
     ```
     Use <Database name>
+    go
     select * from sys.triggers
     DISABLE TRIGGER (Transact-SQL)
     ```
-    Weitere Informationen finden Sie im Artikel [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017).
+    Weitere Informationen finden Sie im Artikel [DISABLE TRIGGER (Transact-SQL)](/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017).
 
 ## <a name="migrate-the-sample-schema"></a>Migrieren des Beispielschemas
-Verwenden Sie den Datenmigrations-Assistenten (DMA), um das Schema zu Azure SQL-Datenbank zu migrieren.
+Migrieren Sie das Schema mithilfe von DMA.
 
 > [!NOTE]
-> Bevor Sie ein Migrationsprojekt im DMA erstellen, vergewissern Sie sich, dass Sie bereits eine Azure SQL-Datenbank bereitgestellt haben, wie in den Voraussetzungen aufgeführt. In diesem Tutorial lautet der Name der Azure SQL-Datenbank-Instanz **AdventureWorks2012**. Sie können sie aber je nach Bedarf umbenennen.
+> Bevor Sie ein Migrationsprojekt im DMA erstellen, vergewissern Sie sich, dass Sie bereits eine Datenbank in SQL-Datenbank oder SQL Managed Instance bereitgestellt haben, wie in den Voraussetzungen aufgeführt. In diesem Tutorial lautet der Name der Datenbank **AdventureWorks2012**. Sie können jedoch einen beliebigen Namen angeben.
 
-Führen Sie zur Migration des **AdventureWorks2012**-Schemas zu Azure SQL-Datenbank die folgenden Schritte durch:
+Führen Sie zur Migration des **AdventureWorks2012**-Schemas die folgenden Schritte aus:
 
 1. Wählen Sie im Data Migration Assistant das Symbol „Neu (+)“ aus, und wählen Sie dann unter **Projekttyp** die Option **Migration** aus.
 2. Geben Sie einen Projektnamen im Textfeld **Source server type** (Quellservertyp) an, wählen Sie **SQL Server**, und wählen Sie dann im Textfeld **Target server type** (Zielservertyp) die Option **Azure SQL Database** (Azure SQL-Datenbank).
+
+    > [!NOTE]
+    > Wählen Sie sowohl für die Migration zu Azure SQL-Datenbank als auch zu SQL Managed Instance **Azure SQL-Datenbank** als Zielservertyp aus.
+
 3. Wählen Sie unter **Migration Scope** (Migrationsumfang) die Option **Schema only** (Nur Schema).
 
     Nachdem Sie die vorherigen Schritte ausgeführt haben, wird die DMA-Oberfläche wie in der folgenden Abbildung angezeigt:
@@ -117,11 +121,11 @@ Führen Sie zur Migration des **AdventureWorks2012**-Schemas zu Azure SQL-Datenb
 
     ![Data Migration Assistant-Quellverbindungsdetails](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-source-connect.png)
 
-6. Wählen Sie **Weiter**. Geben Sie unter **Verbindung mit Zielserver herstellen** die Zielverbindungsdetails für die Azure SQL-Datenbank an, wählen Sie **Verbinden**, und wählen Sie dann die Datenbank **AdventureWorksAzure** aus, die Sie zuvor in Azure SQL-Datenbank bereitgestellt haben.
+6. Wählen Sie **Weiter** aus. Geben Sie unter **Verbindung mit Zielserver herstellen** die Zielverbindungsdetails für die Datenbank in SQL-Datenbank oder SQL Managed Instance an, wählen Sie **Verbinden** aus, und wählen Sie dann die Datenbank **AdventureWorksAzure** aus, die Sie vorab bereitgestellt haben.
 
     ![Data Migration Assistant-Zielverbindungsdetails](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-target-connect.png)
 
-7. Wählen Sie **Weiter**, um zum Bildschirm **Select objects** (Objekte auswählen) zu gelangen. Hier können Sie die Schemaobjekte in der Datenbank **AdventureWorks2012** angeben, die in Azure SQL-Datenbank bereitgestellt werden sollen.
+7. Wählen Sie **Weiter** aus, um zum Bildschirm **Select objects** (Objekte auswählen) zu gelangen. Hier können Sie die Schemaobjekte in der Datenbank **AdventureWorks2012** angeben, die bereitgestellt werden müssen.
 
     Standardmäßig sind alle Objekte ausgewählt.
 
@@ -131,7 +135,7 @@ Führen Sie zur Migration des **AdventureWorks2012**-Schemas zu Azure SQL-Datenb
 
     ![Schemaskript](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-schema-script.png)
 
-9. Wählen Sie **Deploy schema** (Schema bereitstellen) aus, um das Schema für Azure SQL-Datenbank bereitzustellen, und prüfen Sie den Zielserver anschließend auf Anomalien.
+9. Wählen Sie **Deploy schema** (Schema bereitstellen) aus, um das Schema bereitzustellen, und prüfen Sie den Zielserver nach der Schemabereitstellung auf Anomalien.
 
     ![Bereitstellen des Schemas](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-schema-deploy.png)
 
@@ -163,11 +167,11 @@ Führen Sie zur Migration des **AdventureWorks2012**-Schemas zu Azure SQL-Datenb
 
 4. Wählen Sie den Standort aus, an dem Sie die Azure Database Migration Service-Instanz erstellen möchten. 
 
-5. Wählen Sie ein vorhandenes VNet aus, oder erstellen Sie ein neues VNet.
+5. Wählen Sie ein vorhandenes virtuelles Netzwerk aus, oder erstellen Sie ein neues.
 
-    Das VNET erteilt Azure Database Migration Service Zugriff auf die SQL Server-Quellinstanz und die Azure SQL-Datenbank-Zielinstanz.
+    Das virtuelle Netzwerk erteilt Azure Database Migration Service Zugriff auf die SQL Server-Quellinstanz und die SQL-Datenbank-Zielinstanz oder SQL Managed Instance-Instanz.
 
-    Weitere Informationen zum Erstellen eines VNet im Azure-Portal finden Sie im Artikel [Erstellen eines virtuellen Netzwerks im Azure Portal](https://aka.ms/DMSVnet).
+    Weitere Informationen zum Erstellen eines virtuellen Netzwerks im Azure-Portal finden Sie im Artikel [Erstellen eines virtuellen Netzwerks im Azure Portal](../virtual-network/quick-create-portal.md).
 
 6. Wählen Sie einen Tarif aus. Für diese Onlinemigration ist der Tarif „Premium“ die richtige Wahl.
 
@@ -193,7 +197,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 4. Geben Sie auf dem Bildschirm **Neues Migrationsprojekt** einen Projektnamen im Textfeld **Typ des Quellservers** an, wählen Sie **AWS RDS for SQL Server** (AWS RDS für SQL Server), und wählen Sie dann im Textfeld **Typ des Zielservers** die Option **Azure SQL-Datenbank**.
 
     > [!NOTE]
-    > Wählen Sie sowohl für die Migration zu einer Azure SQL-Datenbank-Singleton-Datenbank als auch zu einer verwalteten Instanz von Azure SQL-Datenbank **Azure SQL-Datenbank** als Zielservertyp aus.
+    > Wählen Sie sowohl für die Migration zu SQL-Datenbank als auch zu SQL Managed Instance **Azure SQL-Datenbank** als Zielservertyp aus.
 
 5. Wählen Sie im Abschnitt **Aktivitätstyp auswählen** die Option **Onlinedatenmigration** aus.
 
@@ -222,13 +226,13 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
     Wenn kein vertrauenswürdiges Zertifikat installiert ist, generiert SQL Server beim Starten der Instanz ein selbstsigniertes Zertifikat. Dieses Zertifikat wird zum Verschlüsseln der Anmeldeinformationen für Clientverbindungen verwendet.
 
     > [!CAUTION]
-    > SSL-Verbindungen, die mit einem selbstsignierten Zertifikat verschlüsselt sind, bieten keine hohe Sicherheit. Sie sind anfällig für Man-in-the-Middle-Angriffe. Verlassen Sie sich in einer Produktionsumgebung oder auf Servern, die mit dem Internet verbunden sind, nicht auf SSL-Verbindungen, die selbstsignierte Zertifikate verwenden.
+    > TLS-Verbindungen, die mit einem selbstsignierten Zertifikat verschlüsselt sind, bieten keine hohe Sicherheit. Sie sind anfällig für Man-in-the-Middle-Angriffe. In einer Produktionsumgebung oder auf Servern, die mit dem Internet verbunden sind, sollten Sie sich nicht auf TLS mit Verwendung selbstsignierter Zertifikate verlassen.
 
    ![Quellendetails](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-source-details3.png)
 
 ## <a name="specify-target-details"></a>Angeben von Zieldetails
 
-1. Wählen Sie **Speichern**, und geben Sie dann auf dem Bildschirm **Zieldetails für die Migration** die Verbindungsdetails für den Zielserver für Azure SQL-Datenbank an. Dabei handelt es sich um die zuvor bereitgestellte Azure SQL-Datenbank, für die das **AdventureWorks2012**-Schema über den DMA bereitgestellt wurde.
+1. Wählen Sie **Speichern** aus, und geben Sie dann im Bildschirm **Migrationszieldetail** die Verbindungsdetails für die Zieldatenbank in Azure an.
 
     ![Auswählen des Ziels](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-select-target3.png)
 
@@ -240,9 +244,9 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 
 3. Wählen Sie **Save** (Speichern) im Bildschirm **Select tables** (Tabellen auswählen) aus, erweitern Sie die Tabellenauflistung, und prüfen Sie die Liste betroffener Felder.
 
-    Azure Database Migration Service wählt automatisch alle leeren Quelltabellen aus, die in der Zielinstanz von Azure SQL-Datenbank vorhanden sind. Wenn Sie Tabellen, die bereits Daten enthalten, erneut migrieren möchten, müssen Sie die Tabellen in diesem Fenster explizit auswählen.
+    Azure Database Migration Service wählt automatisch alle leeren Quelltabellen aus, die in der Zieldatenbank vorhanden sind. Wenn Sie Tabellen, die bereits Daten enthalten, erneut migrieren möchten, müssen Sie die Tabellen in diesem Fenster explizit auswählen.
 
-    ![Auswählen von Tabellen](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-configure-setting-activity4.png)
+    ![Tabellen auswählen](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-configure-setting-activity4.png)
 
 4. Wählen Sie **Speichern**, nachdem Sie die folgenden **erweiterten Einstellungen für die Onlinemigration** vorgenommen haben.
 
@@ -284,13 +288,13 @@ Wenn der erste vollständige Ladevorgang abgeschlossen ist, werden die Datenbank
 
 2. Achten Sie darauf, alle eingehenden Transaktionen für die Quelldatenbank zu beenden. Warten Sie, bis der Zähler **Ausstehende Änderungen** das Ergebnis **0** zeigt.
 3. Aktivieren Sie **Bestätigen**, und klicken Sie dann auf **Anwenden**.
-4. Wenn als Status der Datenmigration **Abgeschlossen** angezeigt wird, stellen Sie eine Verbindung zwischen Ihren Anwendungen und der neuen Azure SQL-Zieldatenbank her.
+4. Wenn als Status der Datenmigration **Abgeschlossen** angezeigt wird, stellen Sie eine Verbindung zwischen Ihren Anwendungen und der neuen Zieldatenbank her.
 
     ![Aktivitätsstatus: Abgeschlossen](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-activity-completed.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu bekannten Problemen und Einschränkungen beim Ausführen der Onlinemigration zu Azure SQL-Datenbank finden Sie im Artikel [Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank](known-issues-azure-sql-online.md).
-* Informationen zu Azure Database Migration Service finden Sie im Artikel [Was ist Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-* Informationen zu Azure SQL-Datenbank finden Sie im Artikel [Der Azure SQL-Datenbank-Dienst](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).
-* Informationen zur verwalteten Azure SQL-Datenbank-Instanz finden Sie auf der Seite [Verwaltete Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index).
+* Informationen zu bekannten Problemen und Einschränkungen beim Ausführen der Onlinemigration zu finden Sie im Artikel [Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen](known-issues-azure-sql-online.md).
+* Informationen zu Database Migration Service finden Sie im Artikel [Was ist Database Migration Service?](./dms-overview.md).
+* Informationen zu SQL-Datenbank finden Sie im Artikel [Der SQL-Datenbank-Dienst](../azure-sql/database/sql-database-paas-overview.md).
+* Informationen zu SQL Managed Instance finden Sie im Artikel [Was ist SQL Managed Instance?](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)

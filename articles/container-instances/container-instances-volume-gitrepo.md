@@ -1,19 +1,14 @@
 ---
-title: Einbinden eines gitRepo-Volumes in Azure Container Instances
+title: Einbinden eines gitRepo-Volumes in eine Containergruppe
 description: Hier erfahren Sie, wie Sie ein gitRepo-Volume einbinden, um ein Git-Repository in Ihren Containerinstanzen zu klonen.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
-ms.author: danlep
-ms.openlocfilehash: e8afa9e14941920cdcfb984e6660bdc666240716
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5f361b0bbd4a02f754e47c8321a664af05036601
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325439"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86260706"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Einbinden eines gitRepo-Volumes in Azure Container Instances
 
@@ -53,8 +48,11 @@ az container create \
 
 Um zu überprüfen, ob das gitRepo-Volume eingebunden wurde, starten Sie eine Shell im Container mit [az container exec][az-container-exec], und listen Sie das Verzeichnis auf:
 
-```console
-$ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```azurecli
+az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```
+
+```output
 /usr/src/app # ls -l /mnt/aci-helloworld/
 total 16
 -rw-r--r--    1 root     root           144 Apr 16 16:35 Dockerfile
@@ -87,13 +85,13 @@ Zum Einbinden eines gitRepo-Volumes für ein privates Git-Repository geben Sie A
 
 Beispiel: Der `--gitrepo-url`-Parameter der Azure CLI für ein privates GitHub-Repository würde etwa wie folgt aussehen (dabei steht „gituser“ für den GitHub-Benutzernamen, und „abcdef1234fdsa4321abcdef“ ist das persönliche Zugriffstoken des Benutzers):
 
-```azurecli
+```console
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
 Für ein Azure Repos Git-Repository geben Sie einen Benutzernamen (Sie können wie im folgenden Beispiel „azurereposuser“ verwenden) in Kombination mit einem gültigen PAT an:
 
-```azurecli
+```console
 --gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 
@@ -114,7 +112,7 @@ Erfahren Sie, wie andere Volumetypen in Azure Container Instances bereitgestellt
 <!-- LINKS - External -->
 [aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld
 [pat-github]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
-[pat-repos]: https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
+[pat-repos]: /azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

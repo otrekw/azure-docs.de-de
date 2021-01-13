@@ -13,10 +13,10 @@ ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70881009"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure-Dienst für dedizierte HSMs – Unterstützbarkeit

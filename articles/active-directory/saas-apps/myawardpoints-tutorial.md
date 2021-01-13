@@ -1,27 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit My Award Points Top Sub/Top Team | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in My Award Points Top Sub/Top Team | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und My Award Points Top Sub/Top Team konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a7a08eed-7a6b-4a83-8f8e-0add6d2fb8cf
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 32095f76dbcdf2afd716daab096b9dd8d18d1bb9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2328bd51712089f706c8491007f9f51eba52337
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096587"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92508093"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Tutorial: Azure Active Directory-Integration mit My Award Points Top Sub/Top Team
+# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Tutorial: Azure Active Directory-Integration in My Award Points Top Sub/Top Team
 
 In diesem Tutorial erfahren Sie, wie Sie My Award Points Top Sub/Top Team in Azure Active Directory (Azure AD) integrieren.
 Die Integration von My Award Points Top Sub/Top Team in Azure AD bietet die folgenden Vorteile:
@@ -30,7 +27,7 @@ Die Integration von My Award Points Top Sub/Top Team in Azure AD bietet die folg
 * Sie können es Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei My Award Points Top Sub/Top Team angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -44,7 +41,7 @@ Um die Azure AD-Integration in My Award Points Top Sub/Top Team zu konfigurieren
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* My Award Points Top Sub/Top Team unterstützt **SP**-initiiertes einmaliges Anmelden.
+* My Award Points Top Sub/Top Team unterstützt **SP** -initiiertes einmaliges Anmelden.
 
 ## <a name="adding-my-award-points-top-subtop-team-from-the-gallery"></a>Hinzufügen von My Award Points Top Sub/Top Team aus dem Katalog
 
@@ -52,19 +49,19 @@ Zum Konfigurieren der Integration von My Award Points Top Sub/Top Team in Azure 
 
 **Führen Sie die folgenden Schritte aus, um My Award Points Top Sub/Top Team aus dem Katalog hinzuzufügen:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory** .
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie **My Award Points Top Sub/Top Team** in das Suchfeld ein, wählen Sie **My Award Points Top Sub/Top Team** im Ergebnisbereich aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie **My Award Points Top Sub/Top Team** in das Suchfeld ein, wählen Sie **My Award Points Top Sub/Top Team** im Ergebnisbereich aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
 
      ![My Award Points Top Sub/Top Team in der Ergebnisliste](common/search-new-app.png)
 
@@ -76,10 +73,10 @@ Damit einmaliges Anmelden funktioniert, muss zwischen einem Azure AD-Benutzer un
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei My Award Points Top Sub/Top Team sind folgende Bausteine erforderlich:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **Konfigurieren des einmaligen Anmeldens für My Award Points Top Sub/Top Team Single Sign-On**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+2. **Konfigurieren des einmaligen Anmeldens für My Award Points Top Sub/Top Team Single Sign-On** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **Erstellen eines My Award Points Top Sub/Top Team-Testbenutzers**, um eine Entsprechung für Britta Simon in My Award Points Top Sub/Top Team zu haben, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
+5. **Erstellen eines My Award Points Top Sub/Top Team-Testbenutzers** , um eine Entsprechung für Britta Simon in My Award Points Top Sub/Top Team zu haben, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
@@ -88,7 +85,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in My Award Points Top Sub/Top Team die folgenden Schritte aus:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **My Award Points Top Sub/Top Team** die Option **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **My Award Points Top Sub/Top Team** die Option **Einmaliges Anmelden** .
 
     ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
@@ -96,7 +93,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in My Award 
 
     ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten** , um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -109,7 +106,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in My Award 
     > [!NOTE]
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Sie erhalten den Wert `<Azure AD Identifier>` in späteren Schritten in diesem Tutorial.
 
-5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen** , um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML** -Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
@@ -128,13 +125,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in My Award 
 
 ### <a name="configure-my-award-points-top-subtop-team-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für My Award Points Top Sub/Top Team
 
-Zum Konfigurieren des einmaligen Anmeldens bei **My Award Points Top Sub/Top Team** müssen Sie die heruntergeladene **Verbundmetadaten-XML**-Datei und die entsprechenden kopierten URLs aus dem Azure-Portal an das [Supportteam von My Award Points Top Sub/Top Team](mailto:myawardpoints@biworldwide.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens bei **My Award Points Top Sub/Top Team** müssen Sie die heruntergeladene **Verbundmetadaten-XML** -Datei und die entsprechenden kopierten URLs aus dem Azure-Portal an das [Supportteam von My Award Points Top Sub/Top Team](mailto:myawardpoints@biworldwide.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -148,18 +145,18 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung** .  
     Zum Beispiel, BrittaSimon@contoso.com
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf My Award Points Top Sub/Top Team gewähren.
 
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **My Award Points Top Sub/Top Team**.
+1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen** , **Alle Anwendungen** und **My Award Points Top Sub/Top Team** .
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -171,30 +168,30 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen** , und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen** .
 
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen** .
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
 
 ### <a name="create-my-award-points-top-subtop-team-test-user"></a>Erstellen eines My Award Points Top Sub/Top Team-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in My Award Points Top Sub/Top Team einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der My Award Points Top Sub/Top Team-Plattform ggf. vom [Supportteam von My Award Points Top Sub/Top Team](mailto:myawardpoints@biworldwide.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in My Award Points Top Sub/Top Team einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer in der My Award Points Top Sub/Top Team-Plattform ggf. vom [Supportteam von My Award Points Top Sub/Top Team](mailto:myawardpoints@biworldwide.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „My Award Points Top Sub/Top Team“ klicken, sollten Sie automatisch bei der My Award Points Top Sub/Top Team-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „My Award Points Top Sub/Top Team“ klicken, sollten Sie automatisch bei der My Award Points Top Sub/Top Team-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

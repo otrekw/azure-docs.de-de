@@ -3,27 +3,27 @@ title: Steuern des Azure CDN-Zwischenspeicherverhaltens mit Chacheregeln | Micro
 description: Anhand von CDN-Cacheregeln können Sie das Standardverhalten bei Cacheablauf sowohl global als auch mit Bedingungen (z.B. URL-Pfad und Dateierweiterungen) festlegen oder ändern.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2019
-ms.author: magattus
-ms.openlocfilehash: d4ab3ca32f229e92ae6bae5906c6c70593e9f9d3
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: allensu
+ms.openlocfilehash: a5f4f6a6e72b57638688069111071a6e0a035c49
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594037"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018663"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Steuern des Azure CDN-Zwischenspeicherverhaltens mit Chacheregeln
 
 > [!NOTE] 
-> Cacheregeln sind nur für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** verfügbar. Für Profile vom Typ **Azure CDN Premium von Verizon**  müssen Sie die [Azure CDN-Regel-Engine](cdn-rules-engine.md) im **Verwaltungsportal** verwenden, um von einer ähnlichen Funktionalität zu profitieren.
+> Cacheregeln sind nur für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** verfügbar. Für Profile von **Azure CDN von Microsoft** müssen Sie die [Standard-Regel-Engine](cdn-standard-rules-engine-reference.md) verwenden und für Profile von **Azure CDN Premium von Verizon** die [Verizon Premium-Regel-Engine](./cdn-verizon-premium-rules-engine.md) im **Verwaltungsportal**, um eine ähnliche Funktionalität nutzen zu können.
  
 Azure Content Delivery Network (CDN) bietet zwei Möglichkeiten, um zu steuern, wie Ihre Dateien zwischengespeichert werden: 
 
@@ -67,7 +67,7 @@ Für globale und benutzerdefinierte Cacheregeln können Sie die folgenden Einste
 ## <a name="cache-expiration-duration"></a>Dauer bis Cacheablauf
 Bei globalen und benutzerdefinierten Cacheregeln können Sie die Dauer bis zum Cacheablauf in Tagen, Stunden, Minuten und Sekunden angeben:
 
-- Für die Optionen **Überschreiben** und **Bei Fehlen festlegen** in den Einstellungen **Verhalten beim Zwischenspeichern** liegt der gültige Bereich der Cachedauer zwischen 0 Sekunden und 366 Tagen. Bei einem Wert von 0 Sekunden speichert das CDN den Inhalt im Cache, muss jedoch jede Anforderung mit dem Ursprungsserver erneut überprüfen.
+- Für die Optionen **Überschreiben** und **Bei Fehlen festlegen** in den Einstellungen **Verhalten beim Zwischenspeichern** liegt der gültige Bereich der Cachedauer zwischen 0 Sekunden und 366 Tagen. Bei einem Wert von 0 Sekunden speichert das CDN den Inhalt im Cache, muss jedoch jede Anforderung mit dem Ursprungsserver erneut überprüfen.
 
 - Bei der Einstellung **Cache umgehen** wird die Cachedauer automatisch auf 0 Sekunden gesetzt und kann nicht geändert werden.
 
@@ -86,13 +86,13 @@ Globale und benutzerdefinierte Cacheregeln werden in der folgenden Reihenfolge v
 
 - Benutzerdefinierte Cacheregeln haben gegenüber globalen Cacheregeln Vorrang, sofern diese anwendbar sind. Benutzerdefinierte Cacheregeln werden in der Reihenfolge von oben nach unten verarbeitet. Dies bedeutet, wenn eine Anforderung beide Bedingungen erfüllt, haben Regeln ganz unten in der Liste Vorrang gegenüber Regeln am Anfang der Liste. Aus diesem Grund sollten Sie spezifischere Regeln weiter unten in der Liste platzieren.
 
-**Beispiel**:
+**Beispiel:**
 - Globale Cacheregel: 
    - Verhalten beim Zwischenspeichern: **Überschreiben**
    - Dauer bis Cacheablauf: 1 Tag
 
 - Benutzerdefinierte Cacheregel 1:
-   - Übereinstimmungsbedingung: **Path**
+   - Übereinstimmungsbedingung: **Pfad**
    - Übereinstimmungswert: _/home/*_
    - Verhalten beim Zwischenspeichern: **Überschreiben**
    - Dauer bis Cacheablauf: 2 Tage

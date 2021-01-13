@@ -2,20 +2,17 @@
 title: Herstellen der Verbindung mit REST-Endpunkten von Azure Logic Apps
 description: Überwachen von REST-Endpunkten in automatisierten Aufgaben, Prozessen und Workflows mithilfe von Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: f0410ed7a98e4838e41407868cf26b5254811ae3
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: af98811e158b9613e41389e08e19cb36797aa272
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541571"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790592"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Aufrufen von REST-Endpunkten mit Azure Logic Apps
 
@@ -25,17 +22,19 @@ Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierte
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Die URL für die Swagger-Datei, die den Ziel-REST-Endpunkt beschreibt
+* Die URL für die Swagger-Datei (nicht OpenAPI), die den REST-Zielendpunkt beschreibt
 
   Der REST-Endpunkt muss in der Regel diese Kriterien für den Connector erfüllen, damit der Connector funktioniert:
 
   * Die Swagger-Datei muss auf einer HTTPS-URL gehostet werden, die öffentlich zugänglich ist.
+  
+  * Die Swagger-Datei muss ein `operationID` für jeden Vorgang in der Definition enthalten. Wenn das nicht der Fall ist, zeigt der Connector nur den letzten Vorgang in der Swagger-Datei an. 
 
-  * Für die Swagger-Datei muss [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) aktiviert sein.
+  * Für die Swagger-Datei muss [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) aktiviert sein.
 
   Um auf eine Swagger-Datei zu verweisen, die nicht gehostet wird oder nicht den Sicherheitsanforderungen und Anforderungen für die Ressourcenfreigabe zwischen verschiedenen Ursprüngen entspricht, können Sie [die Swagger-Datei in einen Blobcontainer in einem Azure-Speicherkonto hochladen](#host-swagger) und CORS auf diesem Speicherkonto aktivieren, sodass Sie auf die Datei verweisen können.
 
-  Die Beispiele in diesem Thema verwenden die [Cognitive Services Face-API](https://docs.microsoft.com/azure/cognitive-services/face/overview), die ein [Cognitive Services-Konto und einen Zugriffsschlüssel](../cognitive-services/cognitive-services-apis-create-account.md) erfordert.
+  Die Beispiele in diesem Thema verwenden die [Cognitive Services Face-API](../cognitive-services/face/overview.md), die ein [Cognitive Services-Konto und einen Zugriffsschlüssel](../cognitive-services/cognitive-services-apis-create-account.md) erfordert.
 
 * Grundlegende Kenntnisse über das [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
@@ -47,7 +46,7 @@ Dieser integrierte Trigger sendet eine HTTP-Anfrage an eine URL für eine Swagge
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Öffnen Sie Ihre leere Logik-App im Logik-App-Designer.
 
-1. Geben Sie im Suchfeld des Designers „swagger“ als Filter ein. Wählen Sie in der Liste **Trigger** den **HTTP + Swagger**-Trigger aus.
+1. Geben Sie im Suchfeld des Designers „swagger“ als Filter ein. Wählen Sie in der Liste **Trigger** den **HTTP + Swagger** -Trigger aus.
 
    ![Auswählen des „HTTP + Swagger“-Triggers](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
@@ -57,21 +56,21 @@ Dieser integrierte Trigger sendet eine HTTP-Anfrage an eine URL für eine Swagge
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![Eingeben der URL für den Swagger-Endpunkt](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![Screenshot: Logik-App-Designer mit dem Trigger „HTTP + Swagger“ und der auf einen URL-Wert festgelegten Eigenschaft „Swagger-Endpunkt-URL“](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. Wenn der Designer die von der Swagger-Datei beschriebenen Vorgänge anzeigt, wählen Sie den Vorgang aus, den Sie verwenden möchten.
 
-   ![Vorgänge in der Swagger-Datei](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
+   ![Screenshot: Logik-App-Designer mit dem Trigger „HTTP + Swagger“ und einer Liste mit Swagger-Vorgängen](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
 1. Geben Sie die je nach dem ausgewählten Vorgang variierenden Werte für die Triggerparameter an, die Sie in den Endpunktaufruf aufnehmen möchten. Geben Sie mithilfe einer Wiederholung an, wie oft der Trigger den Endpunkt aufrufen soll.
 
    Dieses Beispiel benennt den Trigger in „HTTP + Swagger trigger: Face – Detect“ („HTTP + Swagger“-Trigger: Gesicht – Erkennen) um, damit der Schritt eine aussagekräftigere Beschreibung hat.
 
-   ![Vorgangsdetails](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
+   ![Screenshot: Logik-App-Designer mit dem Trigger „HTTP + Swagger“ und dem Vorgang „ Gesicht – Erkennen“](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
-1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
+1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen** , und wählen Sie die gewünschten Parameter aus.
 
-   Weitere Informationen zu verfügbaren Authentifizierungstypen für „HTTP + Swagger“ finden Sie unter [Authentifizieren von HTTP-Triggern und -Aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP und Swagger finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Fahren Sie mit dem Erstellen des Workflows Ihrer Logik-App fort, und fügen Sie weitere Aktionen hinzu, die bei Auslösung des Triggers ausgeführt werden.
 
@@ -87,7 +86,7 @@ Diese integrierte Aktion sendet eine HTTP-Anfrage an eine URL für die Swagger-D
 
    Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. Wählen Sie das angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
 
-1. Geben Sie im Suchfeld des Designers „swagger“ als Filter ein. Wählen Sie in der Liste **Aktionen** die **HTTP + Swagger**-Aktion aus.
+1. Geben Sie im Suchfeld des Designers „swagger“ als Filter ein. Wählen Sie in der Liste **Aktionen** die **HTTP + Swagger** -Aktion aus.
 
     ![Aktion „HTTP + Swagger“ auswählen](./media/connectors-native-http-swagger/select-http-swagger-action.png)
 
@@ -109,9 +108,9 @@ Diese integrierte Aktion sendet eine HTTP-Anfrage an eine URL für die Swagger-D
 
    ![Vorgangsdetails](./media/connectors-native-http-swagger/http-swagger-action-operation-details.png)
 
-1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
+1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen** , und wählen Sie die gewünschten Parameter aus.
 
-   Weitere Informationen zu verfügbaren Authentifizierungstypen für „HTTP + Swagger“ finden Sie unter [Authentifizieren von HTTP-Triggern und -Aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP und Swagger finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Speichern Sie die Logik-App unbedingt, wenn Sie fertig sind. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
@@ -121,7 +120,7 @@ Diese integrierte Aktion sendet eine HTTP-Anfrage an eine URL für die Swagger-D
 
 Sie können auf eine Swagger-Datei verweisen, die nicht gehostet wird oder nicht den Sicherheitsanforderungen und Anforderungen für die Ressourcenfreigabe zwischen verschiedenen Ursprüngen entspricht, indem Sie diese Datei in einen Blobcontainer in einem Azure-Speicherkonto hochladen und CORS auf diesem Speicherkonto aktivieren. Um Swagger-Dateien in Azure Storage zu erstellen, einzurichten und zu speichern, führen Sie diese Schritte aus:
 
-1. [Erstellen Sie ein Azure-Speicherkonto](../storage/common/storage-create-storage-account.md).
+1. [Erstellen Sie ein Azure-Speicherkonto](../storage/common/storage-account-create.md).
 
 1. Aktivieren Sie jetzt CORS für das Blob. Wählen Sie im Menü Ihres Speicherkontos **CORS** aus. Geben Sie auf der Registerkarte **Blob-Dienst** diese Werte ein, und wählen Sie dann **Speichern** aus.
 
@@ -140,9 +139,9 @@ Sie können auf eine Swagger-Datei verweisen, die nicht gehostet wird oder nicht
 
 1. [Laden Sie die Swagger-Datei in den Blobcontainer hoch](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), entweder mit dem [Azure-Portal](https://portal.azure.com) oder [Azure Storage-Explorer](https://storageexplorer.com/).
 
-1. Um auf die Datei im Blobcontainer zu verweisen, verwenden Sie einen HTTPS-Link, der diesem Format entspricht, das Groß-/Kleinschreibung unterscheidet:
+1. Um auf die Datei im Blobcontainer zu verweisen, rufen Sie die HTTPS-URL im folgenden Format (Beachtung der Groß-/Kleinschreibung) aus Azure Storage-Explorer ab:
 
-   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<swagger-file-name>`
+   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<complete-swagger-file-name>?<query-parameters>`
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
@@ -150,12 +149,12 @@ Hier finden Sie weitere Informationen zu den Ausgaben eines „HTTP + Swagger“
 
 | Eigenschaftenname | type | BESCHREIBUNG |
 |---------------|------|-------------|
-| headers | object | Die Header aus der Anforderung |
-| body | object | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
-| status code | int | Der Statuscode aus der Anforderung |
+| headers | Objekt (object) | Die Header aus der Anforderung |
+| body | Objekt (object) | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
+| status code | INT | Der Statuscode aus der Anforderung |
 |||
 
-| Statuscode | BESCHREIBUNG |
+| Statuscode | Beschreibung |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Zulässig |

@@ -1,19 +1,19 @@
 ---
-title: 'Azure VMware-Lösung von CloudSimple: Einrichten eines VPN-Gateways'
+title: 'Azure VMware Solution by CloudSimple: Einrichten eines VPN-Gateways'
 description: Beschreibt, wie Sie ein Point-to-Site-VPN-Gateway und ein Site-to-Site-VPN-Gateway einrichten und Verbindungen zwischen Ihrem lokalen Netzwerk und Ihrer privaten CloudSimple-Cloud herstellen.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 78f78bfbf885cbae7708a75cb54ce2d41e7b526c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845361"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899098"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>Einrichten von VPN-Gateways für ein CloudSimple-Netzwerk
 
@@ -21,8 +21,8 @@ VPN-Gateways ermöglichen es Ihnen, eine Verbindung mit einem CloudSimple-Netzwe
 
 ## <a name="vpn-gateway-types"></a>VPN-Gatewaytypen
 
-* Eine **Site-to-Site**-VPN-Verbindung ermöglicht Ihnen das Einrichten der Workloads Ihrer privaten Cloud, um auf lokale Dienste zuzugreifen. Sie können auch ein lokales Active Directory als Identitätsquelle für die Authentifizierung bei Ihrem vCenter in der privaten Cloud verwenden.  Derzeit wird nur der **richtlinienbasierte VPN**-Typ unterstützt.
-* Eine **Point-to-Site-VPN**-Verbindung ist die einfachste Möglichkeit, von Ihrem Computer eine Verbindung mit Ihrer privaten Cloud herzustellen. Verwenden Sie eine Point-to-Site-VPN-Verbindung, wenn Sie eine Remoteverbindung mit der privaten Cloud herstellen möchten. Informationen zum Installieren eines Clients für eine Point-to-Site-VPN-Verbindung finden Sie unter [Konfigurieren einer VPN-Verbindung mit Ihrer privaten Cloud](set-up-vpn.md).
+* Eine **Site-to-Site-VPN**-Verbindung ermöglicht Ihnen das Einrichten der Workloads Ihrer privaten Cloud, um auf lokale Dienste zuzugreifen. Sie können auch ein lokales Active Directory als Identitätsquelle für die Authentifizierung bei Ihrem vCenter in der privaten Cloud verwenden.  Derzeit wird nur der **richtlinienbasierte VPN**-Typ unterstützt.
+* Eine **Point-to-Site-VPN**-Verbindung ist die einfachste Möglichkeit, von Ihrem Computer eine Verbindung mit der privaten Cloud herzustellen. Verwenden Sie eine Point-to-Site-VPN-Verbindung, wenn Sie eine Remoteverbindung mit der privaten Cloud herstellen möchten. Informationen zum Installieren eines Clients für eine Point-to-Site-VPN-Verbindung finden Sie unter [Konfigurieren einer VPN-Verbindung mit Ihrer privaten Cloud](set-up-vpn.md).
 
 In einer Region können Sie ein Point-to-Site-VPN-Gateway und ein Site-to-Site-VPN-Gateway erstellen.
 
@@ -101,7 +101,7 @@ Mit einem Point-to-Site-VPN-Gateway können Sie eine Richtlinie zum automatische
 
 6. Im Abschnitt „VLANs/Subnets“ können Sie Verwaltungs- und Benutzer-VLANs/Subnetze für das Gateway und für Verbindungen angeben.
 
-    * Mit den Optionen **Automatically add** (Automatisch hinzufügen) wird die globale Richtlinie für das Gateway festgelegt. Die Einstellungen gelten für das aktuelle Gateway. Die Einstellungen können im **Auswahl**bereich überschrieben werden.
+    * Mit den Optionen **Automatically add** (Automatisch hinzufügen) wird die globale Richtlinie für das Gateway festgelegt. Die Einstellungen gelten für das aktuelle Gateway. Die Einstellungen können im **Auswahl** bereich überschrieben werden.
     * Wählen Sie **Add management VLANs/Subnets of Private Clouds** aus. 
     * Um alle benutzerdefinierten VLANs/Subnetze hinzuzufügen, klicken Sie auf **Add user-defined VLANs/Subnets**.
     * Die **Auswahl**-Einstellungen überschreiben die globalen Einstellungen unter **Automatically add**.

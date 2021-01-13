@@ -1,19 +1,20 @@
 ---
-title: 'Beispiel: Erstellen einer benutzerdefinierten kognitiven Qualifikation mit der Bing-Entitätssuche-API – Azure Search'
-description: Hier erfahren Sie, wie Sie den Bing-Entitätssuche-Dienst in einer benutzerdefinierten Qualifikation verwenden, die einer Indizierungspipeline der kognitiven Suche in Azure Search zugeordnet ist.
+title: Beispiel für benutzerdefinierte Qualifikationen mit der Bing-Entitätssuche-API
+titleSuffix: Azure Cognitive Search
+description: Hier erfahren Sie, wie Sie den Bing-Entitätssuche-Dienst in einer benutzerdefinierten Qualifikation verwenden, die einer Indizierungspipeline mit KI-Anreicherung in der kognitiven Azure-Suche zugeordnet ist.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: d76a250cc3554b086501899376cb411346a4251c
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5755e14e53d359fd8b322939bf1325d21536d593
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266332"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89020183"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API
 
@@ -69,7 +70,7 @@ namespace SampleSkills
 {
     /// <summary>
     /// Sample custom skill that wraps the Bing entity search API to connect it with a 
-    /// cognitive search pipeline.
+    /// AI enrichment pipeline.
     /// </summary>
     public static class BingEntitySearch
     {
@@ -311,7 +312,7 @@ namespace SampleSkills
 }
 ```
 
-Wichtig: Geben Sie in der Konstanten `key` *Ihren* eigenen Schlüsselwert ein (auf der Grundlage des Schlüssels, den Sie bei der Anmeldung für die Bing-Entitätssuche-API erhalten haben).
+Wichtig: Geben Sie in der Konstanten `key`*Ihren* eigenen Schlüsselwert ein (auf der Grundlage des Schlüssels, den Sie bei der Anmeldung für die Bing-Entitätssuche-API erhalten haben).
 
 Der Einfachheit halber ist der gesamte erforderliche Code in diesem Beispiel in einer einzelnen Datei enthalten. Eine strukturiertere Version der gleichen Qualifikation finden Sie im Repository [azure-search-power-skills](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch).
 
@@ -347,7 +348,7 @@ POST https://localhost:7071/api/EntitySearch
 }
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 Die Antwort sollte in etwa wie hier dargestellt aussehen:
 
 ```json
@@ -476,9 +477,10 @@ Hier wird vorausgesetzt, dass die integrierte [Qualifikation „Entitätserkennu
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Glückwunsch! Sie haben Ihre erste benutzerdefinierte Anreicherungsfunktion erstellt. Nun können Sie Ihre eigene benutzerdefinierte Funktionalität nach dem gleichen Muster hinzufügen. 
+Glückwunsch! Sie haben Ihre erste benutzerdefinierte Qualifikation erstellt. Nun können Sie Ihre eigene benutzerdefinierte Funktionalität nach dem gleichen Muster hinzufügen. Klicken Sie auf die folgenden Links, um weitere Informationen zu erhalten.
 
-+ [Hinzufügen eines benutzerdefinierten Skills zu einer Pipeline der kognitiven Suche](cognitive-search-custom-skill-interface.md)
++ [Power Skills: ein Repository benutzerdefinierter Skills](https://github.com/Azure-Samples/azure-search-power-skills)
++ [Hinzufügen einer benutzerdefinierten Qualifikation zu einer KI-Anreicherungspipeline](cognitive-search-custom-skill-interface.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Erstellen eines Skillsets (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Erstellen eines Skillsets (REST)](/rest/api/searchservice/create-skillset)
 + [Zuordnen angereicherter Felder](cognitive-search-output-field-mapping.md)

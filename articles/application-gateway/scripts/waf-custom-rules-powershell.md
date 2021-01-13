@@ -6,14 +6,15 @@ ms.service: application-gateway
 ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: ffdde80598322222e2a8f000eee8be269becdd11
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 312f052671036d8153dd19fcf4e559e825fd8464
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743327"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396990"
 ---
-# <a name="create-waf-custom-rules-with-azure-powershell"></a>Erstellen von benutzerdefinierten WAF-Regeln mit Azure PowerShell
+# <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>Erstellen von benutzerdefinierten Web Application Firewall-Regeln (WAF) mit Azure PowerShell
 
 Dieses Skript erstellt eine Web Application Firewall-Instanz für Application Gateway, die benutzerdefinierte Regeln verwendet. Die benutzerdefinierte Regel blockiert Datenverkehr, wenn der Anforderungsheader den Benutzer-Agent *evilbot* enthält.
 
@@ -69,6 +70,6 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu benutzerdefinierten WAF-Regeln finden Sie unter [Custom rules for Web Application Firewall](../custom-waf-rules-overview.md) (Benutzerdefinierte Regeln für Web Application Firewall).
-- Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+- Weitere Informationen zu benutzerdefinierten WAF-Regeln finden Sie unter [Custom rules for Web Application Firewall](../../web-application-firewall/ag/custom-waf-rules-overview.md) (Benutzerdefinierte Regeln für Web Application Firewall).
+- Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 - Zusätzliche PowerShell-Skriptbeispiele zu Anwendungsgateways finden Sie in der [Dokumentation zu Azure Application Gateway](../powershell-samples.md).

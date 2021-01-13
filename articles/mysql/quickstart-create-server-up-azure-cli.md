@@ -1,19 +1,19 @@
 ---
-title: 'Schnellstart: Erstellen einer Azure Database for MySQL-Instanz mithilfe eines einfachen Azure CLI-Befehls – az mysql up (Vorschau)'
+title: 'Schnellstart: Erstellen einer Azure Database for MySQL-Instanz mithilfe von „az mysql up“'
 description: Schnellstart zum Erstellen von Azure Database for MySQL-Servern mithilfe des Befehls „up“ der Azure-Befehlszeilenschnittstelle.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 3/18/2019
-ms.custom: mvc
-ms.openlocfilehash: aa0d2a9e990faa8d99355744824f34e26aeb519e
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.date: 3/18/2020
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: d89cc41ed26124ae4ad2e6689be6d59278c3d9da
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58137911"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542166"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Schnellstart: Erstellen einer Azure Database for MySQL-Instanz mithilfe eines einfachen Azure CLI-Befehls – az mysql up (Vorschau)
 
@@ -26,15 +26,15 @@ Azure-Datenbank für MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügba
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-Für den Artikel müssen Sie mindestens Version 2.0 der Azure-Befehlszeilenschnittstelle lokal ausführen. Führen Sie den Befehl `az --version` aus, um die installierte Version anzuzeigen. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+Für den Artikel müssen Sie mindestens Version 2.0 der Azure-Befehlszeilenschnittstelle lokal ausführen. Führen Sie den Befehl `az --version` aus, um die installierte Version anzuzeigen. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
-Sie müssen sich mithilfe des Befehls [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **id** aus der Befehlsausgabe für den entsprechenden Abonnementnamen.
+Sie müssen sich mithilfe des Befehls [az login](/cli/azure/authenticate-azure-cli) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **id** aus der Befehlsausgabe für den entsprechenden Abonnementnamen.
 
 ```azurecli
 az login
 ```
 
-Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) die Abonnement-ID unter Ihrem Konto aus. Ersetzen Sie den Platzhalter für die Abonnement-ID durch die **subscription id**-Eigenschaft der Ausgabe von **az login** für Ihr Abonnement.
+Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) die Abonnement-ID unter Ihrem Konto aus. Ersetzen Sie den Platzhalter für die Abonnement-ID durch die **subscription ID**-Eigenschaft der Ausgabe von **az login** für Ihr Abonnement.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -62,11 +62,11 @@ Servername | Systemgeneriert | Ein eindeutiger Name, der Ihren Server für Azure
 resource-group | Systemgeneriert | Eine neue Azure-Ressourcengruppe
 sku-name | GP_Gen5_2 | Der Name der SKU. Folgt der Konvention „{Tarif}\_{Computegeneration}\_{virtuelle Kerne}“ in Kurzform. Der Standardwert ist ein Gen5-Server vom Typ „Universell“ mit zwei virtuellen Kernen. Informationen zu den Tarifen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/mysql/).
 backup-retention | 7 | Gibt die Aufbewahrungsdauer für eine Sicherung an. Die Einheit ist Tage.
-geo-redundant-backup | Deaktiviert | Gibt an, ob georedundante Sicherungen für diesen Server aktiviert werden sollen.
+geo-redundant-backup | Disabled | Gibt an, ob georedundante Sicherungen für diesen Server aktiviert werden sollen.
 location | westus2 | Der Azure-Standort für den Server.
-ssl-enforcement | Deaktiviert | Gibt an, ob SSL für diesen Server aktiviert werden soll.
+ssl-enforcement | Aktiviert | Gibt an, ob SSL für diesen Server aktiviert werden soll.
 storage-size | 5120 | Die Speicherkapazität des Servers (Einheit: MB).
-Version | 5.7 | Die MySQL-Hauptversion.
+version | 5.7 | Die MySQL-Hauptversion.
 admin-user | Systemgeneriert | Der Benutzername für die Administratoranmeldung.
 admin-password | Systemgeneriert | Das Kennwort des Administratorbenutzers.
 
@@ -75,7 +75,7 @@ admin-password | Systemgeneriert | Das Kennwort des Administratorbenutzers.
 
 Nach der Erstellung weist Ihr Server die folgenden Einstellungen auf:
 
-- Es wird eine Firewallregel namens „devbox“ erstellt. Die Azure-Befehlszeilenschnittstelle versucht, die IP-Adresse des Computers zu ermitteln, auf dem der Befehl `az mysql up` ausgeführt wird, und fügt diese IP-Adresse der Whitelist hinzu.
+- Es wird eine Firewallregel namens „devbox“ erstellt. Die Azure-Befehlszeilenschnittstelle versucht, die IP-Adresse des Computers zu ermitteln, auf dem der Befehl `az mysql up` ausgeführt wird, und lässt diese IP-Adresse zu.
 - „Zugriff auf Azure-Dienste zulassen“ ist aktiviert. Mit dieser Einstellung wird die Firewall des Servers so konfiguriert, dass sie Verbindungen von allen Azure-Ressourcen akzeptiert – auch von Ressourcen, die nicht in Ihrem Abonnement enthalten sind.
 - Der Parameter `wait_timeout` ist auf 8 Stunden festgelegt.
 - Es wird eine leere Datenbank mit der Bezeichnung „sampledb“ erstellt.

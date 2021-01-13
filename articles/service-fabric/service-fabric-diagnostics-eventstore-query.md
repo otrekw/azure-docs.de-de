@@ -1,25 +1,17 @@
 ---
-title: Abfragen von Clusterereignissen mit den EventStore-APIs in Azure Service Fabric-Clustern | Microsoft-Dokumentation
+title: Abfragen nach Clusterereignissen mithilfe von EventStore-APIs
 description: Es wird beschrieben, wie Sie die Azure Service Fabric-EventStore-APIs verwenden, um Plattformereignisse abzufragen.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: facbcd6def7451ca83bdf00fe9b7c7cac2c74945
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 286c59938413a912c005181fca12f6698a7bc55e
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60392873"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042893"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>Abfragen von EventStore-APIs nach Clusterereignissen
 
@@ -119,7 +111,7 @@ Hier ist zu sehen, dass zwischen `2018-04-03T18:00:00Z` und `2018-04-04T18:00:00
 
 ## <a name="query-the-eventstore-programmatically"></a>Programmgesteuertes Abfragen der EventStore-Komponente
 
-Sie können die EventStore-Komponente auch programmgesteuert über die [Service Fabric-Clientbibliothek](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library) abfragen.
+Sie können die EventStore-Komponente auch programmgesteuert über die [Service Fabric-Clientbibliothek](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library) abfragen.
 
 Nachdem Sie den Service Fabric-Client eingerichtet haben, können Sie Ereignisse abfragen, indem Sie wie folgt auf die EventStore-Komponente zugreifen: `sfhttpClient.EventStore.<request>`.
 
@@ -200,7 +192,7 @@ Es kann sein, dass Sie nicht nur Ereignisse zum Anwendungslebenszyklus anzeigen 
 
 *Integritätsverlauf für alle Dienste in „myApp“:*
 
-Derzeit werden Integritätsberichtsereignisse für Dienste unter der entsprechenden Anwendungsentität als `DeployedServicePackageNewHealthReport`-Ereignisse angezeigt. Verwenden Sie die folgende Abfrage, um den Verlauf für Ihre Dienste für „App1“ anzuzeigen: `https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`.
+Derzeit werden Integritätsberichtsereignisse für Dienste unter der entsprechenden Anwendungsentität als `DeployedServicePackageNewHealthReport`-Ereignisse angezeigt. Verwenden Sie die folgende Abfrage, um den Verlauf für Ihre Dienste für „App1“ anzuzeigen: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`.
 
 *Neukonfiguration der Partition:*
 
@@ -209,4 +201,3 @@ Fragen Sie das `PartitionReconfigured`-Ereignis ab, um alle Partitionsbewegungen
 *Chaosdienst:*
 
 Es ist ein Ereignis für den Start bzw. die Beendigung des Chaosdiensts vorhanden, das auf der Clusterebene verfügbar gemacht wird. Verwenden Sie die folgende Abfrage, um Ihre letzte Nutzung des Chaosdiensts anzuzeigen: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`.
-

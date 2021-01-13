@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: 0a88c1e4d357f2919635e36a223e79b0407c0b8b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: ba6dda86475456b6797d27e11727d70261be2e1a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168749"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439992"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Behandeln von Problemen bei Remotedesktopverbindungen mit einem virtuellen Azure-Computer
 Eine Verbindung über das Remotedesktopprotokoll (RDP) mit Ihrem Windows-basierten virtuellen Azure-Computer (VM, Virtual Machine) kann aus verschiedenen Gründen fehlschlagen, sodass Sie nicht auf Ihren virtuellen Computer zugreifen können. Das Problem kann mit dem Remotedesktopdienst auf dem virtuellen Computer, der Netzwerkverbindung oder dem Remotedesktopclient auf Ihrem Hostcomputer zusammenhängen. Dieser Artikel führt Sie durch einige der am häufigsten verwendeten Methoden, um die RDP-Verbindungsprobleme zu beheben. 
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)Fragen stellen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 <a id="quickfixrdp"></a>
 
@@ -46,7 +46,7 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
 Lesen Sie weiter, falls Sie ausführlichere Schritte und Erläuterungen benötigen. Vergewissern Sie sich, dass lokale Netzwerkgeräte wie Router und Firewalls den ausgehenden TCP-Port 3389 nicht blockieren (siehe den Hinweis unter [Detaillierte RDP Problembehandlungsszenarien](detailed-troubleshoot-rdp.md)).
 
 > [!TIP]
-> Falls die Schaltfläche **Verbinden** für Ihren virtuellen Computer im Portal abgeblendet ist und keine [ExpressRoute](../../expressroute/expressroute-introduction.md)- oder [Site-to-Site-VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)-Verbindung mit Azure besteht, müssen Sie eine öffentliche IP-Adresse erstellen und dem virtuellen Computer zuweisen, um RDP verwenden zu können. Lesen Sie mehr über [öffentliche IP-Adressen in Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+> Falls die Schaltfläche **Verbinden** für Ihren virtuellen Computer im Portal abgeblendet ist und keine [ExpressRoute](../../expressroute/expressroute-introduction.md)- oder [Site-to-Site-VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)-Verbindung mit Azure besteht, müssen Sie eine öffentliche IP-Adresse erstellen und dem virtuellen Computer zuweisen, um RDP verwenden zu können. Lesen Sie mehr über [öffentliche IP-Adressen in Azure](../../virtual-network/public-ip-addresses.md).
 
 
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>Behandlungsmöglichkeiten für RDP-Probleme
@@ -67,13 +67,13 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Kennwort zurücksetzen**. Legen Sie den **Modus** auf **Reset configuration only** (Nur Konfiguration zurücksetzen) fest, und klicken Sie anschließend auf die Schaltfläche **Aktualisieren**:
    
     ![Zurücksetzen der RDP-Konfiguration im Azure-Portal](./media/troubleshoot-rdp-connection/reset-rdp.png)
-2. **Überprüfen Sie die Netzwerksicherheitsgruppen-Regeln.** Verwenden Sie den Ansatz [Überprüfen des IP-Flusses](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md), um zu bestätigen, dass eine Regel in einer Netzwerksicherheitsgruppe den Datenverkehr an eine VM oder von einer VM blockiert. Sie können auch die aktiven Sicherheitsgruppenregeln überprüfen, um sicherzustellen, dass die NSG-Regel „Zulassen“ für eingehende Verbindungen vorhanden ist und für den RDP-Port (standardmäßig 3389) Priorität hat. Weitere Informationen finden Sie unter [Verwenden von effektiven Sicherheitsregeln zur Problembehandlung des Datenverkehrsflusses auf virtuellen Computern](../../virtual-network/diagnose-network-traffic-filter-problem.md).
+2. **Überprüfen Sie die Netzwerksicherheitsgruppen-Regeln.** Verwenden Sie den Ansatz [Überprüfen des IP-Flusses](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md), um zu bestätigen, dass eine Regel in einer Netzwerksicherheitsgruppe den Datenverkehr an eine VM oder von einer VM blockiert. Sie können auch die aktiven Sicherheitsgruppenregeln überprüfen, um sicherzustellen, dass die NSG-Regel „Zulassen“ für eingehende Verbindungen vorhanden ist und für den RDP-Port (standardmäßig 3389) Priorität hat. Weitere Informationen finden Sie unter [Verwenden von effektiven Sicherheitsregeln zur Problembehandlung des Datenverkehrsflusses auf virtuellen Computern](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
 3. **Überprüfen Sie die Startdiagnose des virtuellen Computers.** In diesem Problembehandlungsschritt wird anhand der Konsolenprotokolle des virtuellen Computers ermittelt, ob der virtuelle Computer ein Problem meldet. Da die Startdiagnose nicht bei allen virtuellen Computern aktiviert ist, handelt es sich hierbei ggf. um einen optionalen Problembehandlungsschritt.
    
     Spezifische Problembehandlungsschritte werden in diesem Artikel nicht behandelt, deuten aber möglicherweise auf ein größeres Problem hin, das die RDP-Verbindung beeinträchtigt. Weitere Informationen zum Überprüfen der Konsolenprotokolle des virtuellen Computers sowie einen Screenshot finden Sie unter [Boot Diagnostics for Virtual Machines v2](boot-diagnostics.md) (Startdiagnose für virtuelle Computer v2).
 
-4. **Setzen Sie die NIC für den virtuellen Computer zurück**. Weitere Informationen finden Sie unter [How to reset NIC for Azure Windows VM (Zurücksetzen der NIC für die Azure-Windows-VM)](../windows/reset-network-interface.md).
+4. **Setzen Sie die NIC für den virtuellen Computer zurück**. Weitere Informationen finden Sie unter [How to reset NIC for Azure Windows VM (Zurücksetzen der NIC für die Azure-Windows-VM)](./reset-network-interface.md).
 5. **Überprüfen Sie die Ressourcenintegrität des virtuellen Computers.** In diesem Problembehandlungsschritt wird überprüft, ob bekannte Probleme für die Azure-Plattform vorliegen, die möglicherweise die Verbindung mit dem virtuellen Computer beeinträchtigen.
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Ressourcenintegrität**. Fehlerfreie virtuelle Computer haben den Status **Verfügbar**:
@@ -97,19 +97,19 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
    
     Nach Beendigung dieses Vorgangs gehen kurzlebige Datenträgerdaten verloren, und dynamische IP-Adressen, die dem virtuellen Computer zugeordnet sind, werden aktualisiert.
 
-9. **Überprüfen Sie das Routing**. Vergewissern Sie sich mit der Funktion [Nächster Hop](../../network-watcher/network-watcher-check-next-hop-portal.md) von Network Watcher, dass eine Route nicht das Weiterleiten des Datenverkehrs an einen bzw. von einem virtuellen Computer verhindert. Sie können auch die effektiven Routen überprüfen, um alle effektiven Routen für eine Netzwerkschnittstelle anzuzeigen. Weitere Informationen finden Sie unter [Problembehandlung bei Routen mit Azure PowerShell](../../virtual-network/diagnose-network-routing-problem.md).
+9. **Überprüfen Sie das Routing**. Vergewissern Sie sich mit der Funktion [Nächster Hop](../../network-watcher/diagnose-vm-network-routing-problem.md) von Network Watcher, dass eine Route nicht das Weiterleiten des Datenverkehrs an einen bzw. von einem virtuellen Computer verhindert. Sie können auch die effektiven Routen überprüfen, um alle effektiven Routen für eine Netzwerkschnittstelle anzuzeigen. Weitere Informationen finden Sie unter [Problembehandlung bei Routen über das Azure-Portal](../../virtual-network/diagnose-network-routing-problem.md).
 
 10. Stellen Sie sicher, dass alle lokalen Firewalls oder Firewalls auf dem Computer ausgehenden Datenverkehr an TCP-Port 3389 für Azure zulassen.
 
 Sollten weiterhin RDP-Probleme auftreten, können Sie eine [Supportanfrage stellen](https://azure.microsoft.com/support/options/) oder sich eine [ausführlichere Darstellung der Konzepte und Schritte für die RDP-Problembehandlung](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ansehen.
 
 ## <a name="troubleshoot-using-azure-powershell"></a>Behandeln von Problemen mit Azure PowerShell
-Sofern dies noch nicht erfolgt ist, [installieren und konfigurieren Sie die neueste Version von Azure PowerShell](/powershell/azure/overview).
+Sofern dies noch nicht erfolgt ist, [installieren und konfigurieren Sie die neueste Version von Azure PowerShell](/powershell/azure/).
 
 In den folgenden Beispielen werden Variablen wie `myResourceGroup`, `myVM` und `myVMAccessExtension` verwendet. Ersetzen Sie diese Variablennamen und -orte durch Ihre eigenen Werte.
 
 > [!NOTE]
-> Zum Zurücksetzen der Benutzeranmeldeinformationen und der RDP-Konfiguration wird das PowerShell-Cmdlet [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) verwendet. In den folgenden Beispielen wird im Rahmen des Prozesses der Name `myVMAccessExtension` angegeben. Wenn Sie zuvor VMAccessAgent verwendet haben, können Sie den Namen der vorhandenen Erweiterung mithilfe von `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` abrufen, um die Eigenschaften des virtuellen Computers zu überprüfen. Der Name wird in der Ausgabe im Abschnitt „Erweiterungen“ angezeigt.
+> Zum Zurücksetzen der Benutzeranmeldeinformationen und der RDP-Konfiguration wird das PowerShell-Cmdlet [Set-AzVMAccessExtension](/powershell/module/az.compute/set-azvmaccessextension) verwendet. In den folgenden Beispielen wird im Rahmen des Prozesses der Name `myVMAccessExtension` angegeben. Wenn Sie zuvor VMAccessAgent verwendet haben, können Sie den Namen der vorhandenen Erweiterung mithilfe von `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` abrufen, um die Eigenschaften des virtuellen Computers zu überprüfen. Der Name wird in der Ausgabe im Abschnitt „Erweiterungen“ angezeigt.
 
 Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtuellen Computer erneut herzustellen. Sollte sich immer noch keine Verbindung herstellen lassen, versuchen Sie es mit dem nächsten Schritt.
 
@@ -186,29 +186,33 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
     Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
-6. **Überprüfen Sie das Routing**. Vergewissern Sie sich mit der Funktion [Nächster Hop](../../network-watcher/network-watcher-check-next-hop-portal.md) von Network Watcher, dass eine Route nicht das Weiterleiten des Datenverkehrs an einen bzw. von einem virtuellen Computer verhindert. Sie können auch die effektiven Routen überprüfen, um alle effektiven Routen für eine Netzwerkschnittstelle anzuzeigen. Weitere Informationen finden Sie unter [Problembehandlung bei Routen mit Azure PowerShell](../../virtual-network/diagnose-network-routing-problem.md).
+6. **Überprüfen Sie das Routing**. Vergewissern Sie sich mit der Funktion [Nächster Hop](../../network-watcher/diagnose-vm-network-routing-problem.md) von Network Watcher, dass eine Route nicht das Weiterleiten des Datenverkehrs an einen bzw. von einem virtuellen Computer verhindert. Sie können auch die effektiven Routen überprüfen, um alle effektiven Routen für eine Netzwerkschnittstelle anzuzeigen. Weitere Informationen finden Sie unter [Problembehandlung bei Routen über das Azure-Portal](../../virtual-network/diagnose-network-routing-problem.md).
 
 7. Stellen Sie sicher, dass alle lokalen Firewalls oder Firewalls auf dem Computer ausgehenden Datenverkehr an TCP-Port 3389 für Azure zulassen.
 
 Sollten weiterhin RDP-Probleme auftreten, können Sie eine [Supportanfrage stellen](https://azure.microsoft.com/support/options/) oder sich eine [ausführlichere Darstellung der Konzepte und Schritte für die RDP-Problembehandlung](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ansehen.
 
 ## <a name="troubleshoot-vms-created-using-the-classic-deployment-model"></a>Behandeln von Problemen mit virtuellen Computern, die unter Verwendung des klassischen Bereitstellungsmodells erstellt wurden
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+
 Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtuellen Computer erneut herzustellen.
 
 1. **Setzen Sie Ihre RDP-Verbindung zurück.** In diesem Problembehandlungsschritt wird die RDP-Konfiguration zurückgesetzt. Dies kann beispielsweise hilfreich sein, wenn Remoteverbindungen deaktiviert sind oder RDP aufgrund von Windows-Firewallregeln blockiert wird.
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Klicken Sie auf die Schaltfläche **...Mehr** und anschließend auf **Remotezugriff zurücksetzen**:
    
-    ![Zurücksetzen der RDP-Konfiguration im Azure-Portal](./media/troubleshoot-rdp-connection/classic-reset-rdp.png)
+    ![Zurücksetzen der RDP-Konfiguration im Azure-Portal für einen virtuellen Computer mit klassischem Bereitstellungsmodell](./media/troubleshoot-rdp-connection/classic-reset-rdp.png)
 2. **Überprüfen Sie die Cloud Services-Endpunkte.** In diesem Problembehandlungsschritt wird überprüft, ob Ihre Cloud Services-Instanz Endpunkte enthält, die RDP-Datenverkehr zulassen. Der Standardport für RDP ist der TCP-Port 3389. Unter Umständen wird bei der Erstellung Ihres virtuellen Computers nicht automatisch eine Regel zum Zulassen von RDP-Datenverkehr erstellt.
    
    Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Klicken Sie auf die Schaltfläche **Endpunkte**, um die Endpunkte anzuzeigen, die derzeit für Ihren virtuellen Computer konfiguriert sind. Vergewissern Sie sich, dass Endpunkte vorhanden sind, die RDP-Datenverkehr über den TCP-Port 3389 zulassen.
    
    Das folgende Beispiel zeigt gültige Endpunkte, die RDP-Datenverkehr zulassen:
    
-   ![Überprüfen der Cloud Services-Endpunkte im Azure-Portal](./media/troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
+   ![Überprüfen von Cloud Services-Endpunkten im Azure-Portal für einen virtuellen Computer mit klassischem Bereitstellungsmodell](./media/troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
    
-   Sollte kein Endpunkt vorhanden sein, der RDP-Datenverkehr zulässt, [erstellen Sie einen Cloud Services-Endpunkt](../windows/classic/setup-endpoints.md). Lassen Sie TCP für den privaten Port 3389 zu.
+   Sollte kein Endpunkt vorhanden sein, der RDP-Datenverkehr zulässt, [erstellen Sie einen Cloud Services-Endpunkt](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints). Lassen Sie TCP für den privaten Port 3389 zu.
 3. **Überprüfen Sie die Startdiagnose des virtuellen Computers.** In diesem Problembehandlungsschritt wird anhand der Konsolenprotokolle des virtuellen Computers ermittelt, ob der virtuelle Computer ein Problem meldet. Da die Startdiagnose nicht bei allen virtuellen Computern aktiviert ist, handelt es sich hierbei ggf. um einen optionalen Problembehandlungsschritt.
    
     Spezifische Problembehandlungsschritte werden in diesem Artikel nicht behandelt, deuten aber möglicherweise auf ein größeres Problem hin, das die RDP-Verbindung beeinträchtigt. Weitere Informationen zum Überprüfen der Konsolenprotokolle des virtuellen Computers sowie einen Screenshot finden Sie unter [Boot Diagnostics for Virtual Machines v2](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) (Startdiagnose für virtuelle Computer v2).
@@ -216,17 +220,17 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Ressourcenintegrität**. Fehlerfreie virtuelle Computer haben den Status **Verfügbar**:
    
-    ![Überprüfen der Ressourcenintegrität des virtuellen Computers im Azure-Portal](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
+    ![Überprüfen der Ressourcenintegrität des virtuellen Computers im Azure-Portal für einen virtuellen Computer mit klassischem Bereitstellungsmodell](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
 5. **Setzen Sie die Benutzeranmeldeinformationen zurück.** In diesem Problembehandlungsschritt wird das Kennwort des lokalen Administratorkontos zurückgesetzt, das Sie angeben, falls Sie sich bei den Anmeldeinformationen unsicher sind oder die Anmeldeinformationen vergessen haben.  Sobald Sie sich beim virtuellen Computer angemeldet haben, müssen Sie das Kennwort für diesen Benutzer zurücksetzen.
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Kennwort zurücksetzen**. Geben Sie Ihren Benutzernamen und ein neues Kennwort ein. Klicken Sie abschließend auf die Schaltfläche **Speichern**:
    
-    ![Zurücksetzen der Benutzeranmeldeinformationen im Azure-Portal](./media/troubleshoot-rdp-connection/classic-reset-password.png)
+    ![Zurücksetzen der Benutzeranmeldeinformationen im Azure-Portal für einen virtuellen Computer mit klassischem Bereitstellungsmodell](./media/troubleshoot-rdp-connection/classic-reset-password.png)
 6. **Starten Sie den virtuellen Computer neu.** Dieser Problembehandlungsschritt dient zum Beheben von Problemen, die auf den eigentlichen virtuellen Computer zurückzuführen sind.
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus, und klicken Sie auf die Registerkarte **Übersicht**. Klicken Sie auf die Schaltfläche **Neu starten**:
    
-    ![Neustarten des virtuellen Computers im Azure-Portal](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
+    ![Neustarten des virtuellen Computers im Azure-Portal für einen virtuellen Computer mit klassischem Bereitstellungsmodell](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
 
 7. Stellen Sie sicher, dass alle lokalen Firewalls oder Firewalls auf dem Computer ausgehenden Datenverkehr an TCP-Port 3389 für Azure zulassen.
 
@@ -243,7 +247,5 @@ Möglicherweise wird beim Herstellen der RDP-Verbindung mit Ihrem virtuellen Com
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 Wenn keiner dieser Fehler auftritt und Sie trotzdem keine Verbindung mit dem virtuellen Computer per Remotedesktop herstellen können, können Sie im [ausführlichen Handbuch zur Problembehandlung für Remotedesktop](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)nachschlagen.
-* Informationen zum Behandeln von Problemen beim Zugreifen auf Anwendungen, die auf einem virtuellen Computer ausgeführt werden, finden Sie unter [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Informationen zu Problemen beim Herstellen einer SSH-Verbindung (Secure Shell) mit einem virtuellen Linux-Computer in Azure finden Sie unter [Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
-
+* Informationen zum Behandeln von Problemen beim Zugreifen auf Anwendungen, die auf einem virtuellen Computer ausgeführt werden, finden Sie unter [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json).
+* Informationen zu Problemen beim Herstellen einer SSH-Verbindung (Secure Shell) mit einem virtuellen Linux-Computer in Azure finden Sie unter [Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).

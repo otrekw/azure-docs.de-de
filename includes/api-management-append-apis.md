@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
 ms.openlocfilehash: 2bfa356deeede1c16bd5a464ea7081132a67faf6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178607"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183822"
 ---
 ## <a name="append-other-apis"></a>Anfügen weiterer APIs
 

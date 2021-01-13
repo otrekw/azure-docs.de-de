@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit ITRP | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und ITRP konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e09716a3-4200-4853-9414-2390e6c10d98
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d44391624e29d2bdd182bb07452e0e8def2d1407
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67656692"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "92459678"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Tutorial: Azure Active Directory-Integration mit ITRP
 
@@ -31,7 +27,7 @@ Diese Integration bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei ITRP anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten: im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -98,7 +94,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ITRP die
 
 3. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Symbol **Bearbeiten** aus, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen:
 
-    ![Symbol „Bearbeiten“](common/edit-urls.png)
+    ![Screenshot: Seite „Einmaliges Anmelden (SSO) mit SAML einrichten“ mit Auswahl des Symbols „Bearbeiten“](common/edit-urls.png)
 
 4. Führen Sie im Dialogfeld **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
@@ -113,11 +109,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ITRP die
        `https://<tenant-name>.itrp.com`
 
     > [!NOTE]
-    > Diese Werte sind Platzhalter. Sie müssen die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner verwenden. Die Werte erhalten Sie vom [Supportteam von ITRP](https://www.itrp.com/support). Sie können sich auch die Muster im Azure-Portal im Dialogfeld **Grundlegende SAML-Konfiguration** ansehen.
+    > Diese Werte sind Platzhalter. Sie müssen die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner verwenden. Die Werte erhalten Sie vom [Supportteam von ITRP](https://www.4me.com/support/). Sie können sich auch die Muster im Azure-Portal im Dialogfeld **Grundlegende SAML-Konfiguration** ansehen.
 
 5. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** das Symbol **Bearbeiten** aus, um das Dialogfeld **SAML-Signaturzertifikat** zu öffnen:
 
-    ![Symbol „Bearbeiten“](common/edit-certificate.png)
+    ![Screenshot: Seite „SAML Signing Certificate“ (SAML-Signaturzertifikat) mit Auswahl des Symbols „Bearbeiten“](common/edit-certificate.png)
 
 6. Kopieren Sie im Dialogfeld **SAML-Signaturzertifikat** den Wert **Fingerabdruck**, und speichern Sie ihn:.
 
@@ -139,17 +135,17 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ITRP die
 
 1. Wählen Sie im oberen Fensterbereich das Symbol **Settings** (Einstellungen) aus.
 
-    ![Symbol „Settings“ (Einstellungen)](./media/itrp-tutorial/ic775570.png "Symbol „Settings“ (Einstellungen)")
+    ![Symbol „Einstellungen“](./media/itrp-tutorial/ic775570.png "Symbol „Einstellungen“")
 
 1. Wählen Sie im linken Bereich **Single Sign-On** (Einmaliges Anmelden) aus:
 
-    ![Auswählen von „Single Sign-On“ (Einmaliges Anmelden)](./media/itrp-tutorial/ic775571.png "Auswählen von „Single Sign-On“ (Einmaliges Anmelden)")
+    ![Auswählen von „Einmaliges Anmelden“](./media/itrp-tutorial/ic775571.png "„Einmaliges Anmelden“ auswählen")
 
 1. Führen Sie im Konfigurationsabschnitt **Single Sign-On** (Einmaliges Anmelden) die folgenden Schritte aus:
 
-    ![Abschnitt „Single Sign-On“ (Einmaliges Anmelden)](./media/itrp-tutorial/ic775572.png "Abschnitt „Single Sign-On“ (Einmaliges Anmelden)")
+    ![Screenshot: Abschnitt „Single Sign-On“ (Einmaliges Anmelden) mit Auswahl von „Enabled“ (Aktiviert)](./media/itrp-tutorial/ic775572.png "Abschnitt „Einmaliges Anmelden“")
 
-    ![Abschnitt „Single Sign-On“ (Einmaliges Anmelden)](./media/itrp-tutorial/ic775573.png "Abschnitt „Single Sign-On“ (Einmaliges Anmelden)")
+    ![Screenshot: Abschnitt „Single Sign-On“ (Einmaliges Anmelden), in dem Sie die in diesem Schritt beschriebenen Informationen hinzufügen können](./media/itrp-tutorial/ic775573.png "Abschnitt „Einmaliges Anmelden“")
 
     1. Wählen Sie **Aktiviert**.
 
@@ -179,7 +175,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „
 
     1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
   
-    1. Geben Sie im Feld **Benutzername** die Zeichenfolge **BrittaSimon@\<IhreUnternehmensdomäne>.\<Erweiterung>** ein. (Beispiel: BrittaSimon@contoso.com.)
+    1. Geben Sie in das Feld **Benutzername** den Namen **BrittaSimon@\<yourcompanydomain>.\<extension>** ein. (Beispiel: BrittaSimon@contoso.com.)
 
     1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den im Feld **Kennwort** angezeigten Wert.
 
@@ -221,19 +217,19 @@ Zum Erstellen eines Benutzerkontos führen Sie die folgenden Schritte aus:
 
 1. Wählen Sie im oberen Fensterbereich das Symbol **Records** (Datensätze) aus.
 
-    ![Symbol „Records“ (Datensätze)](./media/itrp-tutorial/ic775575.png "Symbol „Records“ (Datensätze)")
+    ![Symbol „Datensätze“](./media/itrp-tutorial/ic775575.png "Symbol „Datensätze“")
 
 1. Wählen Sie im Menü **People** (Personen) aus:
 
-    ![Auswählen von „People“ (Personen)](./media/itrp-tutorial/ic775587.png "Auswählen von „People“ (Personen)")
+    ![Auswählen von „Personen“](./media/itrp-tutorial/ic775587.png "„Personen“ auswählen")
 
 1. Wählen Sie das Pluszeichen ( **+** ) aus, um eine neue Person hinzuzufügen:
 
-    ![Auswählen des Pluszeichens](./media/itrp-tutorial/ic775576.png "Auswählen des Pluszeichens")
+    ![Auswählen des Pluszeichens](./media/itrp-tutorial/ic775576.png "Pluszeichen auswählen")
 
 1. Führen Sie im Dialogfeld **Add New Person** (Neue Person hinzufügen) die folgenden Schritte aus:
 
-    ![Dialogfeld „Add New Person“ (Neue Person hinzufügen)](./media/itrp-tutorial/ic775577.png "Dialogfeld „Add New Person“ (Neue Person hinzufügen)")
+    ![Dialogfeld „Neue Person hinzufügen“](./media/itrp-tutorial/ic775577.png "Dialogfeld „Neue Person hinzufügen“")
 
     1. Geben Sie den Namen und die E-Mail-Adresse eines gültigen Azure AD-Kontos ein, das Sie hinzufügen möchten.
 
@@ -246,12 +242,12 @@ Zum Erstellen eines Benutzerkontos führen Sie die folgenden Schritte aus:
 
 Jetzt müssen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich testen.
 
-Wenn Sie im Zugriffsbereich die Kachel „ITRP“ auswählen, sollten Sie automatisch bei der ITRP-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich die Kachel „ITRP“ auswählen, sollten Sie automatisch bei der ITRP-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

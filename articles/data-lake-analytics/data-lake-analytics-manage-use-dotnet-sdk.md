@@ -1,20 +1,17 @@
 ---
 title: Verwalten von Azure Data Lake Analytics mithilfe des Azure .NET SDK
 description: In diesem Artikel erfahren Sie, wie Sie das Azure .NET SDK verwenden, um Apps zu schreiben, die Data Lake Analytics-Aufträge, -Datenquellen und -Benutzer verwalten.
-services: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
-ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
+ms.reviewer: jasonh
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/18/2017
-ms.openlocfilehash: 0a10af73d754596e9b5bb34b2974d7f1647d06f8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a9ece3fe54ca8596f610439f8a0dd228ae1ef907
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60617706"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220906"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Verwalten von Azure Data Lake Analytics mithilfe einer .NET-App
 
@@ -215,7 +212,7 @@ if (adlaClient.Account.Exists(rg, adla))
 }
 ```
 
-## <a name="manage-data-sources"></a>Verwalten von Datenquellen
+## <a name="manage-data-sources"></a>Datenquellen verwalten
 
 Data Lake Analytics unterstützt derzeit die folgenden Datenquellen:
 

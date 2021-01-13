@@ -1,20 +1,15 @@
 ---
-title: 'Senden von benutzerdefinierten Ereignissen an die Hybridverbindung: Event Grid, Azure CLI'
-description: Verwenden Sie Azure Event Grid und die Azure CLI, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Für den Endpunkt wird eine Hybridverbindung verwendet.
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 02/02/2019
+title: 'Tutorial: Senden von benutzerdefinierten Ereignissen an die Hybridverbindung: Event Grid'
+description: 'Tutorial: Verwenden Sie Azure Event Grid und die Azure CLI, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Für den Endpunkt wird eine Hybridverbindung verwendet.'
+ms.date: 07/07/2020
 ms.topic: tutorial
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: 270059537fc8d06648c86088b22aef5b78ff00ec
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: c709d77827551860cc917c3c84c5a849d9fdc512
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606299"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566825"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Tutorial: Weiterleiten benutzerdefinierter Ereignisse an Azure Relay Hybrid Connections mit Azure-Befehlszeilenschnittstelle und Event Grid
 
@@ -22,18 +17,17 @@ Azure Event Grid ist ein Ereignisdienst für die Cloud. Azure Relay Hybrid Conne
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits über eine Hybridverbindung und eine Listener-Anwendung verfügen. Informationen zu den ersten Schritten mit Hybridverbindungen finden Sie unter [Erste Schritte mit Relay Hybrid Connections – .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) oder [Erste Schritte mit Relay Hybrid Connections – Knoten](../service-bus-relay/relay-hybrid-connections-node-get-started.md).
+- In diesem Artikel wird davon ausgegangen, dass Sie bereits über eine Hybridverbindung und eine Listener-Anwendung verfügen. Informationen zu den ersten Schritten mit Hybridverbindungen finden Sie unter [Erste Schritte mit Relay Hybrid Connections – .NET](../azure-relay/relay-hybrid-connections-dotnet-get-started.md) oder [Erste Schritte mit Relay Hybrid Connections – Knoten](../azure-relay/relay-hybrid-connections-node-get-started.md).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-> [!NOTE]
-> Wenn Sie die Azure CLI auf Ihrem lokalen Computer nutzen, verwenden Sie mindestens Version 2.0.56. Anweisungen zum Installieren der aktuellen Version der Azure CLI finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.0.56 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
 Event Grid-Themen sind Azure-Ressourcen und müssen in einer Azure-Ressourcengruppe platziert werden. Die Azure-Ressourcengruppe ist eine logische Sammlung, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. 
 
 Das folgende Beispiel erstellt eine Ressourcengruppe namens *gridResourceGroup* am Standort *westus2*.
 

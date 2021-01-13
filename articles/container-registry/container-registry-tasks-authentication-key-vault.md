@@ -1,18 +1,14 @@
 ---
-title: Externe Authentifizierung in einer Azure Container Registry-Aufgabe
-description: Aktivieren Sie eine verwaltete Identität für Azure-Ressourcen in einer Azure Container Registry-Aufgabe (ACR), damit in der Aufgabe die in einem Azure-Schlüsseltresor gespeicherten Docker Hub-Anmeldeinformationen gelesen werden können.
-services: container-registry
-author: dlepow
-ms.service: container-registry
+title: Externe Authentifizierung aus ACR-Aufgabe
+description: Konfigurieren Sie eine Azure Container Registry-Aufgabe (ACR-Aufgabe), damit die in einem Azure-Schlüsseltresor gespeicherten Docker Hub-Anmeldeinformationen mithilfe einer verwalteten Identität für Azure-Ressourcen gelesen werden können.
 ms.topic: article
-ms.date: 07/12/2019
-ms.author: danlep
-ms.openlocfilehash: bcaf2918c92ec7b8223d394290a1d7c624fc451c
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 07/06/2020
+ms.openlocfilehash: 0bc43f958a14016146160a06372af0b36a9fff75
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509233"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86058128"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Externe Authentifizierung in einer ACR-Aufgabe unter Verwendung einer in Azure verwalteten Identität 
 
@@ -20,19 +16,19 @@ In einer [ACR-Aufgabe](container-registry-tasks-overview.md) können Sie [eine v
 
 In diesem Artikel erfahren Sie, wie Sie eine verwaltete Identität in einer Aufgabe aktivieren, die auf Geheimnisse zugreift, die in einem Azure-Schlüsseltresor gespeichert sind. 
 
-Um die in diesem Artikel verwendeten Azure-Ressourcen zu erstellen, müssen Sie mindestens Version 2.0.68 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+Um die in diesem Artikel verwendeten Azure-Ressourcen zu erstellen, müssen Sie mindestens Version 2.0.68 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 ## <a name="scenario-overview"></a>Übersicht über das Szenario
 
-Die Beispielaufgabe liest Docker Hub-Anmeldeinformationen, die in einem Azure-Schlüsseltresor gespeichert sind. Die Anmeldeinformationen gelten für ein Docker Hub-Konto mit Schreibberechtigungen (Push) für ein privates Repository in Docker Hub. Zum Lesen der Anmeldeinformationen konfigurieren Sie die Aufgabe mit einer verwalteten Identität und weisen ihr entsprechende Berechtigungen zu. Die mit der Identität verknüpfte Aufgabe erstellt ein Image und meldet sich bei Docker Hub an, um das Image an das private Repository zu übertragen. 
+Die Beispielaufgabe liest Docker Hub-Anmeldeinformationen, die in einem Azure-Schlüsseltresor gespeichert sind. Die Anmeldeinformationen gelten für ein Docker Hub-Konto mit Schreibberechtigungen (Push) für ein privates Docker Hub-Repository. Zum Lesen der Anmeldeinformationen konfigurieren Sie die Aufgabe mit einer verwalteten Identität und weisen ihr entsprechende Berechtigungen zu. Die mit der Identität verknüpfte Aufgabe erstellt ein Image und meldet sich bei Docker Hub an, um das Image an das private Repository zu übertragen. 
 
-In diesem Beispiel werden die Schritte unter Verwendung einer vom Benutzer zugewiesenen oder einer vom System zugewiesenen verwalteten Identität beschrieben. Die Wahl der Identität hängt von den Anforderungen Ihrer Organisation ab.
+In diesem Beispiel werden die Schritte unter Verwendung einer benutzerseitig zugewiesenen oder einer systemseitig zugewiesenen verwalteten Identität beschrieben. Die Wahl der Identität hängt von den Anforderungen Ihrer Organisation ab.
 
 In der Praxis kann ein Unternehmen Images für ein privates Repository in Docker Hub als Teil des Buildprozesses veröffentlichen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen eine Azure-Containerregistrierung, in der Sie die Aufgabe ausführen. In diesem Artikel wird die Registrierung *myregistry* verwendet. Diese ersetzen Sie in späteren Schritten durch Ihre eigene Registrierung.
+Sie benötigen eine Azure-Containerregistrierung, in der Sie die Aufgabe ausführen. In diesem Artikel heißt diese Registrierung *myregistry*. Diese ersetzen Sie in späteren Schritten durch Ihre eigene Registrierung.
 
 Wenn Sie noch über keine Azure-Containerregistrierung verfügen, finden Sie entsprechende Informationen unter [Schnellstart: Erstellen einer privaten Containerregistrierung mit der Azure CLI](container-registry-get-started-azure-cli.md). Sie müssen noch keine Images in die Registrierung pushen.
 
@@ -75,7 +71,7 @@ In der Praxis werden Geheimnisse wahrscheinlich in einem separaten Prozess festg
 Die Schritte für diese Beispielaufgabe werden in einer [YAML-Datei](container-registry-tasks-reference-yaml.md) definiert. Erstellen Sie eine Datei mit dem Namen `dockerhubtask.yaml` in einem lokalen Arbeitsverzeichnis, und fügen Sie Folgendes ein. Achten Sie darauf, dass Sie den Namen des Schlüsseltresors in der Datei durch den Namen Ihres Schlüsseltresors ersetzen.
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 # Replace mykeyvault with the name of your key vault
 secrets:
   - id: username
@@ -84,12 +80,12 @@ secrets:
     keyvault: https://mykeyvault.vault.azure.net/secrets/Password
 steps:
 # Log in to Docker Hub
-  - cmd: docker login --username '{{.Secrets.username}}' --password '{{.Secrets.password}}'
+  - cmd: bash echo '{{.Secrets.password}}' | docker login --username '{{.Secrets.username}}' --password-stdin 
 # Build image
-  - build: -t {{.Values.PrivateRepo}}:{{.Run.ID}} https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
+  - build: -t {{.Values.PrivateRepo}}:$ID https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
 # Push image to private repo in Docker Hub
   - push:
-    - {{.Values.PrivateRepo}}:{{.Run.ID}}
+    - {{.Values.PrivateRepo}}:$ID
 ```
 
 Mit den Aufgabenschritten wird Folgendes ausgeführt:
@@ -98,6 +94,7 @@ Mit den Aufgabenschritten wird Folgendes ausgeführt:
 * Authentifizieren bei Docker Hub durch Übergeben der Geheimnisse an den Befehl `docker login`
 * Erstellen eines Images mithilfe eines Beispiel-Dockerfile im Repository [Azure-Samples/acr-tasks](https://github.com/Azure-Samples/acr-tasks.git)
 * Übertragen des Images an das private Docker Hub-Repository
+
 
 ## <a name="option-1-create-task-with-user-assigned-identity"></a>Option 1: Erstellen einer Aufgabe mit benutzerseitig zugewiesener Identität
 
@@ -120,6 +117,20 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
+
+### <a name="grant-identity-access-to-key-vault"></a>Gewähren des Zugriffs auf den Schlüsseltresor für die Identität
+
+Führen Sie den folgenden Befehl vom Typ [az keyvault set-policy][az-keyvault-set-policy] aus, um eine Zugriffsrichtlinie für den Schlüsseltresor festzulegen. Das folgende Beispiel ermöglicht der Identität das Lesen von Geheimnissen aus dem Schlüsseltresor. 
+
+```azurecli
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
+```
+
+Fahren Sie fort mit [Manuelles Ausführen der Aufgabe](#manually-run-the-task).
+
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>Option 2: Erstellen einer Aufgabe mit systemseitig zugewiesener Identität
 
 Mit den Schritten in diesem Abschnitt wird eine Aufgabe erstellt und eine systemseitig zugewiesene Identität aktiviert. Wenn Sie stattdessen eine benutzerseitig zugewiesene Identität aktivieren möchten, navigieren Sie zu [Option 1: Erstellen einer Aufgabe mit benutzerseitig zugewiesener Identität](#option-1-create-task-with-user-assigned-identity). 
@@ -139,20 +150,23 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="grant-identity-access-to-key-vault"></a>Gewähren des Zugriffs auf den Schlüsseltresor für die Identität
+### <a name="grant-identity-access-to-key-vault"></a>Gewähren des Zugriffs auf den Schlüsseltresor für die Identität
 
 Führen Sie den folgenden Befehl vom Typ [az keyvault set-policy][az-keyvault-set-policy] aus, um eine Zugriffsrichtlinie für den Schlüsseltresor festzulegen. Das folgende Beispiel ermöglicht der Identität das Lesen von Geheimnissen aus dem Schlüsseltresor. 
 
 ```azurecli
-az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
 ```
 
 ## <a name="manually-run-the-task"></a>Manuelles Ausführen der Aufgabe
 
-Um zu überprüfen, ob die Aufgabe, in der Sie eine verwaltete Identität aktiviert haben, erfolgreich ausgeführt wird, führen Sie die Aufgabe mit dem Befehl [az acr task run][az-acr-task-run] manuell aus. Der Parameter `--set` wird verwendet, um den Namen des privaten Repositorys an die Aufgabe zu übergeben. In diesem Beispiel lautet der Name des Platzhalterrepositorys *hubuser/hubrepo*.
+Um zu überprüfen, ob die Aufgabe, in der Sie eine verwaltete Identität aktiviert haben, erfolgreich ausgeführt wird, führen Sie die Aufgabe manuell mit dem Befehl [az acr task run][az-acr-task-run] aus. Der Parameter `--set` wird verwendet, um den Namen des privaten Repositorys an die Aufgabe zu übergeben. In diesem Beispiel lautet der Name des Platzhalterrepositorys *hubuser/hubrepo*.
 
 ```azurecli
-az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo 
+az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo
 ```
 
 Wenn die Aufgabe erfolgreich ausgeführt wurde, wird in der Ausgabe die erfolgreiche Authentifizierung bei Docker Hub angezeigt und das Image erfolgreich erstellt und an das private Repository übergeben:

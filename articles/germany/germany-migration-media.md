@@ -1,22 +1,22 @@
 ---
 title: Migrieren von Azure-Medienressourcen von Azure Deutschland zu Azure weltweit
 description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Medienressourcen von Azure Deutschland zu Azure weltweit.
+ms.topic: article
+ms.date: 10/16/2020
 author: gitralf
-services: germany
-cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 08/15/2018
-ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: c8a34137c6d1d0d238d27c61d11012bf589b6ea0
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: ac7cd5ca55525c11d2b985d931be24d1780899fb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657041"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018582"
 ---
 # <a name="migrate-media-resources-to-global-azure"></a>Migrieren von Medienressourcen zu Azure weltweit
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 Dieser Artikel enthält Informationen dazu, wie Sie Azure-Medienressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
@@ -26,7 +26,7 @@ In Azure Media Services konfigurieren Sie Ihr eigenes Speicherkonto und alle Med
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Media Services](https://docs.microsoft.com/azure/media-services/previous/) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Media Services](../media-services/previous/index.yml) durcharbeiten.
 - Lesen Sie die [Übersicht über Media Services](../media-services/previous/media-services-overview.md).
 - Erfahren Sie, wie Sie [ein Media Services-Konto erstellen](../media-services/previous/media-services-portal-create-account.md).
 
@@ -42,12 +42,12 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 
 - [Compute](./germany-migration-compute.md)
 - [Netzwerk](./germany-migration-networking.md)
-- [Speicher](./germany-migration-storage.md)
+- [Storage](./germany-migration-storage.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
 - [Analyse](./germany-migration-analytics.md)
 - [IoT](./germany-migration-iot.md)
 - [Integration](./germany-migration-integration.md)
 - [Identität](./germany-migration-identity.md)
-- [Sicherheit](./germany-migration-security.md)
+- [Security](./germany-migration-security.md)
 - [Verwaltungstools](./germany-migration-management-tools.md)

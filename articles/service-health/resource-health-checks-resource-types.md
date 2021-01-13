@@ -1,17 +1,14 @@
 ---
 title: Durch Azure Resource Health unterstützte Ressourcentypen | Microsoft-Dokumentation
 description: Durch Azure Resource Health unterstützte Ressourcentypen
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 01/29/2019
-ms.openlocfilehash: 1692e8acda88a51173eb0eabcd90c377b431a3c3
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1b0958732a96786b2fb86b2b145f5cb8d36c0c5a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955035"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883366"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Ressourcentypen und Integritätsprüfungen in Azure Resource Health
 Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource Health ausgeführten Überprüfungen.
@@ -26,12 +23,17 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Ist der API Management-Dienst aktiv und wird ausgeführt?</li></ul>|
 
+## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Spring
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist die Azure Spring Cloud-Instanz verfügbar?</li></ul>|
+
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Wird das Batch-Konto ausgeführt?</li><li>Wurde das Poolkontingent für dieses Batch-Konto überschritten?</li></ul>|
 
-## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Sind alle Cacheknoten funktionstüchtig?</li><li>Kann der Cache vom Rechenzentrum aus erreicht werden?</li><li>Hat der Cache die maximale Anzahl von Verbindungen erreicht?</li><li> Hat der Cache seinen verfügbaren Arbeitsspeicher ausgschöpft? </li><li>Tritt im Cache eine große Anzahl von Seitenfehlern auf?</li><li>Ist der Cache stark ausgelastet?</li></ul>|
@@ -44,17 +46,32 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |Ausgeführte Überprüfungen|
 |---|
-|<ul><li>Ist der Hostserver funktionstüchtig?</li><li>Ist das Starten des Hostbetriebssystems abgeschlossen?</li><li>Ist der VM-Container bereitgestellt und hochgefahren?</li><li>Besteht Netzwerkkonnektivität zwischen Host und Speicherkonto?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li></ul>|
+|<ul><li>Ist der Hostserver funktionstüchtig?</li><li>Ist das Starten des Hostbetriebssystems abgeschlossen?</li><li>Ist der VM-Container bereitgestellt und hochgefahren?</li><li>Besteht Netzwerkkonnektivität zwischen Host und Speicherkonto?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li><li>Wurde die Hosthardware heruntergestuft und ein baldiger Ausfall vorhergesagt?</li></ul>|
+
+## <a name="microsoftclassiccomputedomainnames"></a>Microsoft.classiccompute/domainnames
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist die Produktionsslotbereitstellung in allen Rolleninstanzen fehlerfrei?</li><li>Ist die Rolle in allen VM-Instanzen fehlerfrei?</li><li>Wie ist der Integritätsstatus der einzelnen virtuellen Computer innerhalb einer Rolle eines Clouddiensts?</li><li>Hat sich der VM-Status aufgrund eines von der Plattform oder vom Kunden initiierten Vorgangs geändert?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li><li>Wurde die Hosthardware heruntergestuft und ein baldiger Ausfall vorhergesagt?</li><li>[Weitere Informationen zu ausgeführten Überprüfungen](../cloud-services/resource-health-for-cloud-services.md)</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Kann das Konto vom Rechenzentrum aus erreicht werden?</li><li>Ist der Cognitive Services-Ressourcenanbieter verfügbar?</li><li>Sind die Cognitive Services in der entsprechenden Region verfügbar?</li><li>Können Lesevorgänge in dem Speicherkonto durchgeführt werden, auf dem die Ressourcenmetadaten gespeichert sind?</li><li>Wurde das API-Aufrufkontingent erreicht?</li><li>Wurde die API-Aufruflesebeschränkung erreicht?</li></ul>|
 
+## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroups/hosts
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist der Host aktiv und wird ausgeführt?</li><li>Wurde die Hosthardware heruntergestuft?</li><li>Wurde die Zuordnung des Hosts aufgehoben?</li><li>Ist der Hosthardwaredienst auf unterschiedlicher Hardware verfügbar?</li></ul>|
+
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |Ausgeführte Überprüfungen|
 |---|
-|<ul><li>Hostet der Server diese VM funktionstüchtig?</li><li>Ist das Starten des Hostbetriebssystems abgeschlossen?</li><li>Ist der VM-Container bereitgestellt und hochgefahren?</li><li>Besteht Netzwerkkonnektivität zwischen Host und Speicherkonto?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li></ul>|
+|<ul><li>Hostet der Server diese VM funktionstüchtig?</li><li>Ist das Starten des Hostbetriebssystems abgeschlossen?</li><li>Ist der VM-Container bereitgestellt und hochgefahren?</li><li>Besteht Netzwerkkonnektivität zwischen Host und Speicherkonto?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li><li>Wurde die Hosthardware heruntergestuft und ein baldiger Ausfall vorhergesagt?</li></ul>|
+
+## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist der Cluster aktiv und wird ausgeführt?</li><li>Sind Kerndienste im Cluster verfügbar?</li><li>Sind alle Clusterknoten bereit?</li><li>Ist der Dienstprinzipal aktuell und gültig?</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
 |Ausgeführte Überprüfungen|
@@ -102,6 +119,11 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Wird IoT Hub ausgeführt?</li></ul>|
 
+## <a name="microsoftdigitaltwinsdigitaltwinsinstances"></a>Microsoft.DigitalTwins/DigitalTwinsInstances
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist die Azure Digital Twins-Instanz aktiv und wird ausgeführt?</li></ul>|
+
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |Ausgeführte Überprüfungen|
 |---|
@@ -117,10 +139,20 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Sind Kerndienste für den HDInsight-Cluster verfügbar?</li><li>Kann der HDInsight-Cluster auf den Schlüssel für die BYOK-Verschlüsselung ruhender Daten zugreifen?</li></ul>|
 
+## <a name="microsoftiotcentraliotapps"></a>Microsoft.IoTCentral/IoTApps
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist die IoT Central-Anwendung verfügbar?</li></ul>|
+
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Sind an den Schlüsseltresor gerichtete Anforderungen aufgrund von Problemen mit der Azure Key Vault-Plattform nicht erfolgreich?</li><li>Werden an den Schlüsseltresor gerichtete Anforderungen aufgrund von übermäßig vielen Anforderungen des Kunden gedrosselt?</li></ul>|
+
+## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/clusters
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Treten beim Cluster niedrige Erfolgsraten bei der Erfassung auf?</li><li>Treten beim Cluster hohe Latenzen bei der Erfassung auf?</li><li>Treten beim Cluster viele Abfragefehler auf?</li></ul>|
 
 ## <a name="microsoftmachinelearningwebservices"></a>Microsoft.MachineLearning/webServices
 |Ausgeführte Überprüfungen|
@@ -137,12 +169,17 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Ist die Leistung der Application Gateway-Instanz beeinträchtigt?</li><li>Ist das Application Gateway verfügbar?</li></ul>|
 
+## <a name="microsoftnetworkbastionhosts"></a>Microsoft.network/bastionhosts
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist der Bastionhost aktiv, und wird er ausgeführt?</li></ul>|
+
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Ist der VPN-Tunnel verbunden?</li><li>Treten Konfigurationskonflikte in der Verbindung auf?</li><li>Sind die vorinstallierten Schlüssel ordnungsgemäß konfiguriert?</li><li>Ist das lokale VPN-Gerät erreichbar?</li><li>Treten Konflikte in der IPSec-/IKE-Sicherheitsrichtlinie auf?</li><li>Ist die S2S-VPN-Verbindung ordnungsgemäß bereitgestellt oder in einem fehlerhaften Zustand?</li><li>Ist die VNET-zu-VNET-Verbindung ordnungsgemäß bereitgestellt oder in einem fehlerhaften Zustand?</li></ul>|
 
-## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft.network/expressreoutecircuits
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.network/expressroutecircuits
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Ist die ExpressRoute-Verbindung integer?</li></ul>|
@@ -156,6 +193,11 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Sind die Endpunkte des Lastenausgleichs verfügbar?</li></ul>|
+
+## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.network/trafficmanagerprofiles
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Gibt es Probleme, die sich auf das Traffic Manager-Profil auswirken?</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |Ausgeführte Überprüfungen|
@@ -175,12 +217,7 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
 |Ausgeführte Überprüfungen|
 |---|
-|<ul><li>Wird die Kapazitätsressource ausgeführt?</li><li>Werden alle Workloads ausgeführt?</li></ul>|
-
-## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
-|Ausgeführte Überprüfungen|
-|---|
-|<ul><li>Ist das Host-BS funktionstüchtig?</li><li>Ist die workspaceCollection von außerhalb des Rechenzentrums erreichbar?</li><li>Ist der Power BI-Ressourcenanbieter verfügbar?</li><li>Ist der Power BI-Dienst in der entsprechenden Region verfügbar?</li></ul>|
+|<ul><li>Wird die Kapazitätsressource ausgeführt?</li><li>Werden alle Workloads ausgeführt?</li></ul>
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 |Ausgeführte Überprüfungen|
@@ -192,12 +229,17 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Treten bei Kunden benutzergenerierte Service Bus-Fehler auf?</li><li>Treten bei Benutzern nach dem Upgrade eines Service Bus-Namespace vermehrt vorübergehende Fehler auf?</li></ul>|
 
+## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clusters
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist der Service Fabric Cluster aktiv und wird ausgeführt?</li><li>Kann der Service Fabric-Cluster über Azure Resource Manager verwaltet werden?</li></ul>|
+
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.SQL/managedInstances/databases
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Wird die Datenbank ausgeführt?</li></ul>|
 
-## <a name="microsoftsqlserverdatabases"></a>Microsoft.SQL/Server/databases
+## <a name="microsoftsqlserversdatabases"></a>Microsoft.SQL/servers/databases
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Wurden Anmeldungen bei der Datenbank durchgeführt?</li></ul>|
@@ -225,4 +267,4 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 ## <a name="next-steps"></a>Nächste Schritte
 -  Weitere Informationen finden Sie unter [Dienstintegrität](service-health-overview.md) und [Übersicht über Azure Resource Health](resource-health-overview.md). 
 -  [Azure Resource Health – FAQ](resource-health-faq.md)
-- Richten Sie Warnungen ein, damit Sie über Integritätsprobleme benachrichtigt werden. Weitere Informationen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
+- Richten Sie Warnungen ein, damit Sie über Integritätsprobleme benachrichtigt werden. Weitere Informationen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](./alerts-activity-log-service-notifications-portal.md).

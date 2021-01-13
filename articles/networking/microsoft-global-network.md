@@ -1,6 +1,6 @@
 ---
 title: Globales Microsoft-Netzwerk – Azure
-description: Hier wird beschrieben, wie Microsoft sein schnelles und zuverlässiges globales Netzwerk aufbaut
+description: Erfahren Sie, wie Microsoft eins der größten Backbonenetzwerke weltweit erstellt und betreibt und warum es für die Bereitstellung einer hervorragenden Clouderfahrung von zentraler Bedeutung ist.
 services: networking
 documentationcenter: ''
 author: KumudD
@@ -13,32 +13,32 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: c064a5afee8db0c747273ab1c38c901a6f10ef98
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876135"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819890"
 ---
 # <a name="microsoft-global-network"></a>Globales Microsoft-Netzwerk
 
-Microsoft besitzt und betreibt eines der größten Backbonenetzwerke der Welt. Diese globale und hochentwickelte Architektur, die sich über mehr als 160.000 Kilometer erstreckt, verbindet unsere Rechenzentren und Kunden. 
+Microsoft besitzt und betreibt eines der größten Backbonenetzwerke der Welt. Diese globale und hoch entwickelte Architektur, die sich über mehr als 165.000 Meilen erstreckt, verbindet unsere Rechenzentren und Kunden. 
  
-Täglich stellen Kunden rund um die Welt Verbindungen mit Microsoft Azure, Bing, Dynamics 365, Office 365, XBox und vielen anderen Diensten her und übermitteln Billionen von Anforderungen. Unabhängig vom Typ erwarten die Kunden sofortige Zuverlässigkeit und Reaktion von unseren Diensten. 
+Täglich stellen Kunden rund um die Welt Verbindungen mit Microsoft Azure, Bing, Dynamics 365, Microsoft 365, XBox und vielen anderen Diensten her und übermitteln Billionen von Anforderungen. Unabhängig vom Typ erwarten die Kunden sofortige Zuverlässigkeit und Reaktion von unseren Diensten. 
  
-Das [globale Microsoft-Netzwerk](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) ist ein zentraler Bestandteil für die Bereitstellung einer großartigen Cloudumgebung. Durch die Verbindung unserer Microsoft-[Rechenzentren](https://azure.microsoft.com/global-infrastructure/) in 54 Azure-Regionen und durch das große Netz von Edgeknoten, die strategisch auf der ganzen Welt positioniert sind, bietet unser globales Netzwerk sowohl die Verfügbarkeit, Kapazität als auch die Flexibilität, um sämtliche Anforderungen zu erfüllen.
+Das [globale Microsoft-Netzwerk](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) ist ein zentraler Bestandteil für die Bereitstellung einer großartigen Cloudumgebung. Durch die Verbindung unserer Microsoft-[Rechenzentren](https://azure.microsoft.com/global-infrastructure/) in 61 Azure-Regionen und durch das große Netz von Edgeknoten, die strategisch auf der ganzen Welt positioniert sind, bietet unser globales Netzwerk sowohl die Verfügbarkeit, Kapazität als auch die Flexibilität, um sämtliche Anforderungen zu erfüllen.
 
 ![Globales Microsoft-Netzwerk](./media/microsoft-global-network/microsoft-global-wan.png)
  
 ## <a name="get-the-premium-cloud-network"></a>Holen Sie sich das Premium-Cloudnetzwerk
  
-Die Entscheidung für die [bestmögliche Umgebung](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) ist mit der Microsoft-Cloud einfach. Ab dem Moment, in dem der Datenverkehr der Kunden über unsere strategisch platzierten Edgeknoten in unserem globalen Netzwerk eintrifft, werden Ihre Daten mit nahezu Lichtgeschwindigkeit über optimierte Routen weitergeleitet. Dadurch wird eine optimale Latenz für bestmögliche Leistungen sichergestellt. Diese Edgeknoten sind über Tausende von Verbindungen an mehr als 145 Standorten mit mehr als 3500 individuellen Internetpartnern (Peers) verbunden und bilden die Grundlage unserer Verbindungsstrategie. 
+Die Entscheidung für die [bestmögliche Umgebung](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) ist mit der Microsoft-Cloud einfach. Ab dem Moment, in dem der Datenverkehr der Kunden über unsere strategisch platzierten Edgeknoten in unserem globalen Netzwerk eintrifft, werden Ihre Daten mit nahezu Lichtgeschwindigkeit über optimierte Routen weitergeleitet. Dadurch wird eine optimale Latenz für bestmögliche Leistungen sichergestellt. Diese Edgeknoten sind über Tausende von Verbindungen an mehr als 175 Standorten mit mehr als 4000 individuellen Internetpartnern (Peers) verbunden und bilden die Grundlage unserer Verbindungsstrategie. 
  
 Ganz gleich, ob Sie eine Verbindung von London nach Tokio oder von Washington DC nach Los Angeles herstellen, die Netzwerkleistung wird durch Faktoren wie Latenz, Jitter, Paketverlust und Durchsatz bestimmt und beeinflusst.  Bei Microsoft verwenden wir direkte Verbindungen anstelle von Transitverbindungen. Dies sorgt für einen symmetrischen Antwortdatenverkehr sowie für möglichst kurze und einfache Hops, Peering-Partner und Wege. 
 
 Wenn beispielsweise ein Benutzer in London versucht, auf einen Dienst in Tokio zuzugreifen, trifft Internetdatenverkehr an einem unserer Edges in London ein, läuft über das Microsoft-WAN durch Frankreich, über unsere Pfade in der Vermittlungsregion Arabien zwischen Europa und Indien und trifft dann in Japan ein, wo der Dienst gehostet wird. Der Antwortdatenverkehr ist symmetrisch. Dies wird manchmal als [Cold-Potato-Routing](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) bezeichnet, d. h., der Datenverkehr bleibt so lange wie möglich im Microsoft-Netzwerk, bevor wir ihn übergeben.  
   
-Bezieht sich das auf den gesamten Datenverkehr bei der Verwendung von Microsoft-Diensten? Ja, jeder Datenverkehr zwischen Rechenzentren, innerhalb von Microsoft Azure oder zwischen Microsoft-Diensten wie Virtual Machines, Office 365, XBox, SQL DBs, Storage und zwischen virtuellen Netzwerken wird innerhalb unseres globalen Netzwerks und niemals über das öffentliche Internet geleitet, um die optimale Leistung und Integrität sicherzustellen.  
+Bezieht sich das auf den gesamten Datenverkehr bei der Verwendung von Microsoft-Diensten? Ja, jeder Datenverkehr zwischen Rechenzentren, innerhalb von Microsoft Azure oder zwischen Microsoft-Diensten wie Virtual Machines, Microsoft 365, XBox, SQL DBs, Storage und zwischen virtuellen Netzwerken wird innerhalb unseres globalen Netzwerks und niemals über das öffentliche Internet geleitet, um die optimale Leistung und Integrität sicherzustellen.  
  
 Gewaltige Investitionen in Glasfaserkapazitäten und die Vielfalt hinsichtlich unter-, überirdischer und unterseeischer Wege sind entscheidend für uns, um einen konsistenten und hohen Servicelevel aufrechtzuerhalten und gleichzeitig das extreme Wachstum unserer Cloud- und Onlinedienste zu fördern. Die neuesten Erweiterungen unseres globalen Netzwerks sind unser [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea)-Überseekabel, das branchenweit erste unter dem Meeresboden gelegene Open Line System (OLS) zwischen Bilbao, Spanien und Virginia Beach, Virginia, USA sowie das [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) zwischen New York, USA und Dublin, Irland und [New Cross Pacific (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) zwischen Tokio, Japan und Portland, Oregon, USA. 
  
@@ -56,7 +56,7 @@ Microsoft Azure bietet das umfassendste Portfolio an Diensten und Funktionen, di
 
 ## <a name="well-managed-using-software-defined-innovation"></a>Softwaredefinierte Innovationen für eine optimale Verwaltung
 
-Mit dem Betrieb einer der führenden Clouds der Welt hat Microsoft tiefe Einblicke und Erfahrungen hinsichtlich der [Erstellung und Verwaltung](https://myignite.techcommunity.microsoft.com/sessions/66668) einer hochleistungsfähigen globalen Infrastruktur gewonnen.  
+Mit dem Betrieb einer der führenden Clouds der Welt hat Microsoft tiefe Einblicke und Erfahrungen hinsichtlich der Erstellung und Verwaltung einer hochleistungsfähigen globalen Infrastruktur gewonnen.  
  
 Wir halten uns an bewährte Verfahrensprinzipien: 
  

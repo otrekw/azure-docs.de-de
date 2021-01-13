@@ -1,27 +1,20 @@
 ---
 title: Erfassen der Linux-Anwendungsleistung in Azure Monitor | Microsoft-Dokumentation
 description: Dieser Artikel enthält Details zum Konfigurieren des Log Analytics-Agents für Linux, um Leistungsindikatoren für MySQL und Apache HTTP Server zu erfassen.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+author: bwren
+ms.author: bwren
 ms.date: 05/04/2017
-ms.author: magoedte
-ms.openlocfilehash: ea74440a5c8a9a2584e742ec72ccf888b6bb5ad9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: db83e24931ec91449ac8c08bf4ce476e0f527b26
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60628913"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461344"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Erfassen von Leistungsindikatoren für Linux-Anwendungen in Azure Monitor 
-[!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
+
 Dieser Artikel enthält Details zum Konfigurieren des [Log Analytics-Agents für Linux](https://github.com/Microsoft/OMS-Agent-for-Linux), um Leistungsindikatoren für bestimmte Anwendungen in Azure Monitor zu erfassen.  Folgende Anwendungen sind in diesem Artikel enthalten:  
 
 - [MySQL](#mysql)
@@ -41,14 +34,14 @@ Die MySQL-Authentifizierungsdatei befindet sich in `/var/opt/microsoft/mysql-cim
 ### <a name="authentication-file-format"></a>Authentifizierungsdateiformat
 Die MySQL-OMI-Authentifizierungsdatei hat das folgende Format
 
-    [Port]=[Bind-Address], [username], [Base64 encoded Password]
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    AutoUpdate=[true|false]
+> [Port]=[Bind-Address], [Benutzername], [Base64-codiertes Kennwort]  
+> (Port)=(Bind-Address), (Benutzername), (Base64-codiertes Kennwort)  
+> (Port)=(Bind-Address), (Benutzername), (Base64-codiertes Kennwort)  
+> AutoUpdate = [true|false]  
 
 In der folgenden Tabelle werden die Einträge aus der Authentifizierungsdatei beschrieben.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--|:--|
 | Port | Stellt den aktuellen Port dar, den die MySQL-Instanz überwacht Port 0 gibt an, dass die folgenden Eigenschaften für die Standardinstanz verwendet werden. |
 | Bind-Adresse| Aktuelle MySQL-Bind-Adresse |
@@ -61,7 +54,7 @@ Die MySQL-OMI-Authentifizierungsdatei kann eine Standardinstanz und Portnummer d
 
 Die folgende Tabelle enthält Beispielinstanzeinstellungen 
 
-| Beschreibung | Datei |
+| BESCHREIBUNG | Datei |
 |:--|:--|
 | Standardinstanz und Instanz mit Port 3308 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | Standardinstanz und Instanz mit Port 3308 und anderem Benutzernamen und Kennwort | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -70,7 +63,7 @@ Die folgende Tabelle enthält Beispielinstanzeinstellungen
 ### <a name="mysql-omi-authentication-file-program"></a>MySQL-OMI-Authentifizierungsdateiprogramm
 In der Installation von MySQL-OMI-Anbieter enthalten ist ein MySQL-OMI-Authentifizierungsdateiprogramm, mit dem die MySQL-OMI-Authentifizierungsdatei bearbeitet werden kann. Das Authentifizierungsdateiprogramm befindet sich an folgendem Speicherort.
 
-    /opt/microsoft/mysql-cimprov/bin/mycimprovauth
+`/opt/microsoft/mysql-cimprov/bin/mycimprovauth`
 
 > [!NOTE]
 > Die Datei mit den Anmeldeinformationen muss vom omsagent-Konto gelesen werden können. Es wird empfohlen, den „mycimprovauth“-Befehl als omsagent auszuführen.
@@ -88,15 +81,18 @@ Die folgende Tabelle enthält Details zur Syntax für die Verwendung von mycimpr
 
 Mit den folgenden Beispielbefehlen wird ein Standardbenutzerkonto für den MySQL-Server auf „localhost“ definiert.  In das Kennwortfeld sollte Nur-Text eingegeben werden, das Kennwort in der MySQL-OMI-Authentifizierungsdatei ist Base 64-codiert
 
-    sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
-    sudo /opt/omi/bin/service_control restart
+```console
+sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
+sudo /opt/omi/bin/service_control restart
+```
 
 ### <a name="database-permissions-required-for-mysql-performance-counters"></a>Datenbankberechtigungen für MySQL-Leistungsindikatoren
 Der MySQL-Benutzer benötigt Zugriff auf die folgenden Abfragen zum Erfassen von MySQL-Server-Leistungsdaten. 
 
-    SHOW GLOBAL STATUS;
-    SHOW GLOBAL VARIABLES:
-
+```sql
+SHOW GLOBAL STATUS;
+SHOW GLOBAL VARIABLES:
+```
 
 Der MySQL-Benutzer benötigt auch SELECT-Zugriff auf die folgenden Standardtabellen.
 
@@ -105,9 +101,10 @@ Der MySQL-Benutzer benötigt auch SELECT-Zugriff auf die folgenden Standardtabel
 
 Diese Berechtigungen können durch Ausführen der folgenden „grant“-Befehle erteilt werden.
 
-    GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
-    GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
-
+```sql
+GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
+GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
+```
 
 > [!NOTE]
 > Der gewährende Benutzer muss über die „GRANT-Option“-Berechtigung sowie über die Berechtigung verfügen, die gewährt wird, um einem Benutzer der MySQL-Überwachung Berechtigungen zu gewähren.
@@ -118,8 +115,8 @@ Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten an Azure Mon
 
 | Objektname | Name des Leistungsindikators |
 |:--|:--|
-| MySQL Database | Disk Space in Bytes |
-| MySQL Database | Tabellen |
+| MySQL-Datenbank | Disk Space in Bytes |
+| MySQL-Datenbank | Tabellen |
 | MySQL Server | Aborted Connection Pct |
 | MySQL Server | Connection Use Pct |
 | MySQL Server | Disk Space Use in Bytes |
@@ -139,12 +136,14 @@ Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten an Azure Mon
 
 ## <a name="apache-http-server"></a>Apache HTTP Server 
 Falls Apache HTTP Server auf dem Computer erkannt wird, wenn das omsagent-Paket installiert wird, wird ein Leistungsüberwachungsanbieter für Apache HTTP Server automatisch installiert. Dieser Anbieter basiert auf einem Apache-Modul, das in den Apache HTTP Server geladen werden muss, um auf Leistungsdaten zuzugreifen. Das Modul kann mithilfe des folgenden Befehls geladen werden:
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
 ```
 
 Führen Sie folgenden Befehl aus, um das Apache-Überwachungsmodul zu entfernen:
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 

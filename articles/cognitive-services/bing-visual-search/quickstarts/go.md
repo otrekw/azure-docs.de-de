@@ -1,38 +1,43 @@
 ---
-title: 'Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API für die visuelle Bing-Suche und Go'
+title: 'Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API und Go – Visuelle Bing-Suche'
 titleSuffix: Azure Cognitive Services
-description: Es wird beschrieben, wie Sie ein Bild in die API für die visuelle Bing-Suche hochladen und Erkenntnisse dazu gewinnen.
+description: Hier wird beschrieben, wie Sie ein Bild mit der API für die visuelle Bing-Suche und Go hochladen und dann Erkenntnisse zum Bild abrufen.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 4/02/2019
-ms.author: rosh
-ms.openlocfilehash: dcfb2d7dc49dae03c733a3016d37425e33fb0535
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 05/22/2020
+ms.author: aahi
+ms.openlocfilehash: baa0c66508e63fc4363fbf72f01ed7016f2a30eb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796482"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499100"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API für die visuelle Bing-Suche und Go
 
-In dieser Schnellstartanleitung wird die Programmiersprache Go verwendet, um die API für die visuelle Bing-Suche aufzurufen und Ergebnisse anzuzeigen. Über eine POST-Anforderung wird ein Bild in den API-Endpunkt hochgeladen. Die Ergebnisse enthalten URLs und beschreibende Informationen zu Bildern, die dem hochgeladenen Bild ähneln.
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suche zum ersten Mal aufzurufen, und verwenden Sie dazu die Programmiersprache Go. Über eine POST-Anforderung wird ein Bild in den API-Endpunkt hochgeladen. Die Ergebnisse enthalten URLs und beschreibende Informationen zu Bildern, die dem hochgeladenen Bild ähneln.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Installieren Sie die [Go-Binärdateien](https://golang.org/dl/).
-* Zum Anzeigen der Ergebnisse wird der go-spew-Drucker für Schöndruck verwendet. go-spew kann mithilfe des Befehls `$ go get -u https://github.com/davecgh/go-spew` installiert werden.
+* Installieren Sie den go-spew-Drucker für Schöndruck, um die Ergebnisse anzuzeigen. Verwenden Sie zum Installieren des go-spew-Druckers den Befehl `$ go get -u https://github.com/davecgh/go-spew`.
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-libraries"></a>Projekt und Bibliotheken
 
-Erstellen Sie in Ihrer IDE oder in einem Editor ein Go-Projekt. Importieren Sie anschließend `net/http` für Anforderungen, `ioutil` zum Lesen der Antwort und `encoding/json` zum Verarbeiten des JSON-Texts der Ergebnisse. Die Bibliothek `go-spew` wird zum Analysieren der JSON-Ergebnisse verwendet.
+Erstellen Sie in Ihrer IDE oder in einem Editor ein Go-Projekt. Importieren Sie anschließend `net/http` für Anforderungen, `ioutil` zum Lesen der Antwort und `encoding/json` zum Verarbeiten des JSON-Texts der Ergebnisse. Verwenden Sie die Bibliothek `go-spew` zum Analysieren der JSON-Ergebnisse.
 
-```
+```go
 package main
 
 import (
@@ -54,7 +59,7 @@ import (
 
 Mit der Struktur `BingAnswer` werden Daten formatiert, die in der JSON-Antwort zurückgegeben werden. Diese verfügt über mehrere Ebenen und ist komplex. Die folgende Implementierung deckt einige grundlegende Aspekte ab:
 
-```
+```go
 type BingAnswer struct {
     Type         string `json:"_type"`
     Instrumentation struct {
@@ -109,9 +114,14 @@ type BingAnswer struct {
 
 ## <a name="main-function-and-variables"></a>main-Funktion und Variablen  
 
-Der folgende Code dient zum Deklarieren der main-Funktion und zum Zuweisen der erforderlichen Variablen. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `token` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto. `batchNumber` ist eine GUID, die für führende und nachgestellte Grenzen der POST-Daten erforderlich ist. Die Variable `fileName` gibt die Bilddatei für den POST-Vorgang an. In den folgenden Abschnitten werden die Details des Codes beschrieben:
+Der folgende Code dient zum Deklarieren der main-Funktion und zum Zuweisen der erforderlichen Variablen: 
 
-```
+1. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `token` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto. 
+2. Für `batchNumber` weisen Sie eine GUID zu, die für die führenden und nachfolgenden Grenzen der POST-Daten erforderlich ist. 
+3. Weisen Sie für `fileName` die Bilddatei zu, die für POST verwendet werden soll. 
+4. Für `endpoint` können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
+
+```go
 func main() {
     // Verify the endpoint URI and replace the token string with a valid subscription key.se
     endpoint := "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch"
@@ -159,9 +169,14 @@ func main() {
 
 ## <a name="boundaries-of-post-body"></a>Grenzen des POST-Texts
 
-Für eine POST-Anforderung an den Endpunkt der visuellen Suche werden führende und nachgestellte Grenzen benötigt, mit denen die POST-Daten umschlossen werden. Die führende Grenze umfasst eine Batchnummer, den Inhaltstypbezeichner `Content-Disposition: form-data; name="image"; filename=` sowie den Dateinamen des Bilds, für das der POST-Vorgang ausgeführt werden soll. Bei der nachgestellten Grenze handelt es sich einfach um eine Batchnummer. Diese Funktionen sind nicht im `main`-Block enthalten:
+Für eine POST-Anforderung an den Endpunkt der visuellen Bing-Suche werden führende und nachgestellte Grenzen benötigt, mit denen die POST-Daten umschlossen werden. Diese Funktionen sind nicht im `main()`-Block enthalten.
 
-```
+Die führende Grenze umfasst eine Batchnummer, den Inhaltstypbezeichner `Content-Disposition: form-data; name="image"; filename=` und den Dateinamen des Bilds, für das der POST-Vorgang ausgeführt werden soll. 
+
+Die nachgestellte Grenze umfasst nur die Batchnummer. 
+
+
+```go
 func BuildFormDataStart(batNum string, fileName string) string{
 
     startBoundary := "--batch_" + batNum + "\r\n"
@@ -178,9 +193,9 @@ func BuildFormDataEnd(batNum string) string{
 ```
 ## <a name="add-image-bytes-to-post-body"></a>Hinzufügen von Bildbytes zum POST-Text
 
-Mit diesem Codesegment wird die POST-Anforderung erstellt, die die Bilddaten enthält:
+Mit dem folgenden Code wird die POST-Anforderung erstellt, die die Bilddaten enthält:
 
-```
+```go
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
     file, err := os.Open(fileName)
     if err != nil {
@@ -209,7 +224,7 @@ func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, stri
 
 Der folgende Code sendet die Anforderung und liest die Ergebnisse:
 
-```
+```go
 resp, err := client.Do(req)
     if err != nil {
         panic(err)
@@ -226,9 +241,9 @@ resp, err := client.Do(req)
 
 ## <a name="handle-the-response"></a>Verarbeiten der Antwort
 
-Die Funktion `Unmarshall` extrahiert Informationen aus dem JSON-Text, der von der API für die visuelle Bing-Suche zurückgegeben wird. Der `go-spew`-Drucker für Schöndruck zeigt die Ergebnisse an:
+Die Funktion `Unmarshall` extrahiert Informationen aus dem JSON-Text, der von der API für die visuelle Bing-Suche zurückgegeben wird. Der `go-spew`-Drucker für Schöndruck zeigt die Ergebnisse an.
 
-```
+```go
     // Create a new answer.  
     ans := new(BingAnswer)
     err = json.Unmarshal(resbody, &ans)
@@ -249,9 +264,9 @@ Die Funktion `Unmarshall` extrahiert Informationen aus dem JSON-Text, der von de
 
 ## <a name="results"></a>Ergebnisse
 
-In den Ergebnissen werden Bilder identifiziert, die dem Bild im POST-Text ähneln. Die nützlichen Felder sind `WebSearchUrl` und `Name`:
+In den Ergebnissen werden Bilder identifiziert, die dem Bild im POST-Text ähneln. Die nützlichen Felder lauten `WebSearchUrl` und `Name`.
 
-```
+```go
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {
      (struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) {
       WebSearchUrl: (string) (len=129) "https://www.bing.com/images/search?view=detailv2&FORM=OIIRPO&id=B9E6621161769D578A9E4DD9FD742128DE65225A&simid=608046863828453626",

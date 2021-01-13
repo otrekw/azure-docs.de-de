@@ -1,45 +1,68 @@
 ---
-title: Erstellen einer freigegebenen, selbstgehosteten Integration Runtime in Azure Data Factory mit PowerShell | Microsoft-Dokumentation
+title: Erstellen einer freigegebenen selbstgehosteten Integration Runtime mit PowerShell
 description: Erfahren Sie, wie Sie in Azure Data Factory eine freigegebene, selbstgehostete Integration Runtime erstellen, damit mehrere Data Factorys auf die Integration Runtime zugreifen können.
 services: data-factory
 documentationcenter: ''
-author: nabhishek
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: f038510c20e70c9d6b9dc8e396d9a15beb7270ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+author: nabhishek
+manager: anansub
+ms.custom: seo-lt-2019
+ms.date: 06/10/2020
+ms.openlocfilehash: 8734247a913bdf6a44a9156f6f87705b618f7228
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66155152"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632888"
 ---
-# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory-with-powershell"></a>Erstellen einer freigegebenen, selbstgehosteten Integration Runtime in Azure Data Factory mit PowerShell
+# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Erstellen einer freigegebenen selbstgehosteten Integration Runtime in Azure Data Factory
 
-Diese Schritt-für-Schritt-Anleitung zeigt Ihnen, wie Sie mit Azure PowerShell eine freigegebene, selbstgehostete Integration Runtime in Azure Data Factory erstellen. Anschließend können Sie die freigegebene, selbstgehostete Integration Runtime in einer anderen Data Factory verwenden. In diesem Tutorial führen Sie die folgenden Schritte aus: 
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
+In diesem Leitfaden erfahren Sie, wie Sie eine freigegebene selbstgehostete Integration Runtime in Azure Data Factory erstellen. Anschließend können Sie die freigegebene, selbstgehostete Integration Runtime in einer anderen Data Factory verwenden.
+
+## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Erstellen einer freigegebenen selbstgehosteten IR über die Azure Data Factory-Benutzeroberfläche
+
+Sie können die unten angegebenen Schritte ausführen, um über die Azure Data Factory-Benutzeroberfläche eine freigegebene selbstgehostete IR zu erstellen.
+
+1. Wählen Sie in der freizugebenden selbstgehosteten Integration Runtime die Option **Anderen Data Factory die Berechtigung erteilen** , und wählen Sie auf der Seite „Integration Runtime-Setup“ die Data Factory aus, in der Sie die verknüpfte Integration Runtime erstellen möchten.
+      
+    ![Schaltfläche zum Erteilen von Berechtigungen auf der Registerkarte „Freigabe“](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)  
+    
+2. Notieren und kopieren Sie die obige „Ressourcen-ID“ der freizugebenden selbstgehosteten IR.
+         
+3. Erstellen Sie in der Data Factory, für die Berechtigungen erteilt wurden, eine neue selbstgehostete IR (verknüpft), und geben Sie die Ressourcen-ID ein.
+      
+    ![Schaltfläche zum Erstellen einer selbstgehosteten Integration Runtime](media/create-self-hosted-integration-runtime/create-linkedir-1.png)
+   
+    ![Schaltfläche zum Erstellen einer verknüpften selbstgehosteten Integration Runtime](media/create-self-hosted-integration-runtime/create-linkedir-2.png) 
+
+    ![Felder für Name und Ressourcen-ID](media/create-self-hosted-integration-runtime/create-linkedir-3.png)
+
+## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Erstellen einer freigegebenen selbstgehosteten IR mithilfe von Azure PowerShell
+
+Sie können die unten angegebenen Schritte ausführen, um mithilfe von Azure PowerShell eine freigegebene selbstgehostete IR zu erstellen. 
 1. Erstellen einer Data Factory. 
 1. Erstellen Sie eine selbstgehostete Integration Runtime.
 1. Freigeben der selbstgehosteten Integration Runtime für andere Data Factorys.
 1. Erstellen einer verknüpften Integration Runtime.
 1. Aufheben der Freigabe.
 
-## <a name="prerequisites"></a>Voraussetzungen 
+### <a name="prerequisites"></a>Voraussetzungen 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure-Abonnement**. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. 
+- **Azure-Abonnement** . Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. 
 
-- **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps). Verwenden Sie PowerShell zum Ausführen eines Skripts, um eine selbstgehostete Integration Runtime zu erstellen, die für andere Data Factorys freigegeben werden kann. 
+- **Azure PowerShell** . Befolgen Sie die Anweisungen unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](/powershell/azure/install-az-ps). Verwenden Sie PowerShell zum Ausführen eines Skripts, um eine selbstgehostete Integration Runtime zu erstellen, die für andere Data Factorys freigegeben werden kann. 
 
 > [!NOTE]  
 > Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auswählen: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
 
-## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
+### <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
 1. Starten Sie die Windows PowerShell Integrated Scripting Environment (ISE).
 
@@ -76,7 +99,7 @@ Diese Schritt-für-Schritt-Anleitung zeigt Ihnen, wie Sie mit Azure PowerShell e
     > [!NOTE]  
     > Dieser Schritt ist optional. Wenn Sie bereits eine Data Factory verwenden, überspringen Sie diesen Schritt. 
 
-    Erstellen Sie mit dem Befehl [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort „WestEurope“ erstellt: 
+    Erstellen Sie mit dem Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort „WestEurope“ erstellt: 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -90,7 +113,7 @@ Diese Schritt-für-Schritt-Anleitung zeigt Ihnen, wie Sie mit Azure PowerShell e
                              -Name $SharedDataFactoryName
     ```
 
-## <a name="create-a-self-hosted-integration-runtime"></a>Erstellen einer selbstgehosteten Integration Runtime
+### <a name="create-a-self-hosted-integration-runtime"></a>Erstellen einer selbstgehosteten Integration Runtime
 
 > [!NOTE]  
 > Dieser Schritt ist optional. Wenn Sie bereits über die selbstgehostete Integration Runtime verfügen, die Sie für andere Data Factorys freigeben möchten, überspringen Sie diesen Schritt.
@@ -106,7 +129,7 @@ $SharedIR = Set-AzDataFactoryV2IntegrationRuntime `
     -Description $SharedIntegrationRuntimeDescription
 ```
 
-### <a name="get-the-integration-runtime-authentication-key-and-register-a-node"></a>Abzurufen des Integration Runtime-Authentifizierungsschlüssels und Registrieren eines Knotens
+#### <a name="get-the-integration-runtime-authentication-key-and-register-a-node"></a>Abzurufen des Integration Runtime-Authentifizierungsschlüssels und Registrieren eines Knotens
 
 Führen Sie den folgenden Befehl aus, um den Authentifizierungsschlüssel für die selbstgehostete Integration Runtime abzurufen:
 
@@ -119,7 +142,7 @@ Get-AzDataFactoryV2IntegrationRuntimeKey `
 
 Die Antwort enthält den Authentifizierungsschlüssel für diese selbstgehostete Integration Runtime. Verwenden Sie diesen Schlüssel beim Registrieren des Integration Runtime-Knotens.
 
-### <a name="install-and-register-the-self-hosted-integration-runtime"></a>Installieren und Registrieren der selbstgehosteten Integration Runtime
+#### <a name="install-and-register-the-self-hosted-integration-runtime"></a>Installieren und Registrieren der selbstgehosteten Integration Runtime
 
 1. Laden Sie den Installer der selbstgehosteten Integration Runtime-Installation von [Azure Data Factory Integration Runtime](https://aka.ms/dmg) herunter.
 
@@ -127,19 +150,19 @@ Die Antwort enthält den Authentifizierungsschlüssel für diese selbstgehostete
 
 3. Registrieren Sie die neue selbstgehostete Integration Runtime mit dem Authentifizierungsschlüssel, den Sie in einem vorherigen Schritt abgerufen haben.
 
-## <a name="share-the-self-hosted-integration-runtime-with-another-data-factory"></a>Freigeben der selbstgehosteten Integration Runtime für eine andere Data Factory
+### <a name="share-the-self-hosted-integration-runtime-with-another-data-factory"></a>Freigeben der selbstgehosteten Integration Runtime für eine andere Data Factory
 
-### <a name="create-another-data-factory"></a>Erstellen einer anderen Data Factory
+#### <a name="create-another-data-factory"></a>Erstellen einer anderen Data Factory
 
 > [!NOTE]  
-> Dieser Schritt ist optional. Wenn Sie bereits über die Data Factory verfügen, für die Sie die Freigabe ausführen möchten, überspringen Sie diesen Schritt.
+> Dieser Schritt ist optional. Wenn Sie bereits über die Data Factory verfügen, für die Sie die Freigabe ausführen möchten, überspringen Sie diesen Schritt. Um jedoch Rollenzuweisungen hinzufügen oder entfernen zu können, benötigen Sie `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z. B. [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) oder [Besitzer](../role-based-access-control/built-in-roles.md#owner).
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
     -Location $DataFactoryLocation `
     -Name $LinkedDataFactoryName
 ```
-### <a name="grant-permission"></a>Erteilen der Berechtigung
+#### <a name="grant-permission"></a>Erteilen einer Berechtigung
 
 Erteilen Sie die Berechtigung für die Data Factory, die auf die selbstgehostete Integration Runtime zugreifen muss, die Sie erstellt und registriert haben.
 
@@ -149,11 +172,11 @@ Erteilen Sie die Berechtigung für die Data Factory, die auf die selbstgehostete
 ```powershell
 New-AzRoleAssignment `
     -ObjectId $factory.Identity.PrincipalId ` #MSI of the Data Factory with which it needs to be shared
-    -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' ` #This is the Contributor role
+    -RoleDefinitionName 'Contributor' `
     -Scope $SharedIR.Id
 ```
 
-## <a name="create-a-linked-self-hosted-integration-runtime"></a>Erstellen einer verknüpften, selbstgehosteten Integration Runtime
+### <a name="create-a-linked-self-hosted-integration-runtime"></a>Erstellen einer verknüpften, selbstgehosteten Integration Runtime
 
 Führen Sie den folgenden Befehl aus, um eine verknüpfte, selbstgehostete Integration Runtime zu erstellen:
 
@@ -169,14 +192,14 @@ Set-AzDataFactoryV2IntegrationRuntime `
 
 Jetzt können Sie diese verknüpften Integration Runtime in einem beliebigen verknüpften Dienst verwenden. Die verknüpfte Integration Runtime verwendet die freigegebene Integration Runtime, um Aktivitäten auszuführen.
 
-## <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Aufheben der Freigabe der Integration Runtime über eine Data Factory
+### <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Aufheben der Freigabe der Integration Runtime über eine Data Factory
 
 Um den Zugriff einer Data Factory auf die freigegebene Integration Runtime aufzuheben, führen Sie den folgenden Befehl aus:
 
 ```powershell
 Remove-AzRoleAssignment `
     -ObjectId $factory.Identity.PrincipalId `
-    -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
+    -RoleDefinitionName 'Contributor' `
     -Scope $SharedIR.Id
 ```
 
@@ -191,8 +214,8 @@ Remove-AzDataFactoryV2IntegrationRuntime `
     -LinkedDataFactoryName $LinkedDataFactoryName
 ```
 
-## <a name="next-steps"></a>Nächste Schritte
+### <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie [Integration Runtime-Konzepte in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
+- Lesen Sie [Integration Runtime-Konzepte in Azure Data Factory](./concepts-integration-runtime.md).
 
-- Informieren Sie sich über das [Erstellen einer selbstgehosteten Integration Runtime im Azure-Portal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+- Informieren Sie sich über das [Erstellen einer selbstgehosteten Integration Runtime im Azure-Portal](./create-self-hosted-integration-runtime.md).

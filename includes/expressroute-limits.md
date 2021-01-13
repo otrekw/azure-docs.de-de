@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 45d34297bf37a6e46bc57e95ff49def49051e32e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: d1402bcc0c46003429e1809e8d09e9662218cd82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67622099"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89147822"
 ---
-| Resource | Standard/maximales Limit |
+| Resource | Begrenzung |
 | --- | --- |
 | ExpressRoute-Verbindungen pro Abonnement |10 |
 | ExpressRoute-Verbindungen pro Region und Abonnement mit Azure Resource Manager |10 |
@@ -28,7 +28,7 @@ ms.locfileid: "67622099"
 | Maximale Anzahl von ExpressRoute-Verbindungen, die mit dem gleichen virtuellen Netzwerk an unterschiedlichen Peeringstandorten verknüpft sind |4 |
 | Anzahl der pro ExpressRoute-Leitung zulässigen virtuellen Netzwerkverbindungen |Siehe Tabelle [Anzahl von virtuellen Netzwerken pro ExpressRoute-Leitung](#vnetpercircuit).  |
 
-#### <a name="vnetpercircuit"></a>Anzahl von virtuellen Netzwerken pro ExpressRoute-Leitung
+#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><a name="vnetpercircuit"></a>Anzahl von virtuellen Netzwerken pro ExpressRoute-Leitung
 | **Verbindungsgröße** | **Anzahl der Verknüpfungen eines virtuellen Netzwerks für Standard** | **Anzahl der Verknüpfungen eines virtuellen Netzwerks mit Premium-Add-on** |
 | --- | --- | --- |
 | 50 MBit/s |10 |20 |
@@ -43,3 +43,6 @@ ms.locfileid: "67622099"
 | 100 GBit/s* |10 |100 |
 
 **100 GBit/s nur bei ExpressRoute Direct*
+
+> [!NOTE]
+> Global Reach-Verbindungen werden auf den Grenzwert virtueller Netzwerkverbindungen pro ExpressRoute-Verbindung angerechnet. Beispiel: Eine Premium-Verbindung mit 10 GBit/s ermöglicht 5 Global Reach-Verbindungen und 95 Verbindungen mit den ExpressRoute-Gateways oder 95 Global Reach-Verbindungen und 5 Verbindungen mit den ExpressRoute-Gateways oder eine beliebige andere Kombination bis zum Grenzwert von 100 Verbindungen für die Leitung.

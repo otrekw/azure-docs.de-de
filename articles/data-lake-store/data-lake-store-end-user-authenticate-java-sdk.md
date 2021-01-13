@@ -1,22 +1,18 @@
 ---
-title: 'Authentifizierung von Endbenutzern: Java mit Azure Data Lake Storage Gen1 mit Azure Active Directory | Microsoft-Dokumentation'
+title: 'Authentifizierung von Endbenutzern: Java bei Data Lake Storage Gen1 – Azure'
 description: Hier erfahren Sie, wie Sie die Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe von Azure Active Directory mit Java umsetzen.
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
+ms.custom: devx-track-java
 ms.author: twooley
-ms.openlocfilehash: 8b558fca964f33d47d331e007329d1bae2626877
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ece996f7edb8d37cea47756c5b7e635e02409b35
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878100"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87318860"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mit Java
 > [!div class="op_single_selector"]
@@ -43,35 +39,41 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des Java SDK die Authentifizier
 
 2. Fügen Sie Ihrer Maven-Datei **pom.xml** die folgenden Abhängigkeiten hinzu. Fügen Sie den folgenden Codeausschnitt vor dem Tag **\</project>** hinzu:
    
-        <dependencies>
-          <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-data-lake-store-sdk</artifactId>
-            <version>2.2.3</version>
-          </dependency>
-          <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-nop</artifactId>
-            <version>1.7.21</version>
-          </dependency>
-        </dependencies>
+    ```xml
+    <dependencies>
+      <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-data-lake-store-sdk</artifactId>
+        <version>2.2.3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-nop</artifactId>
+        <version>1.7.21</version>
+      </dependency>
+    </dependencies>
+    ```
    
-    Die erste Abhängigkeit ist die Verwendung des Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) aus dem Maven-Repository. Die zweite Abhängigkeit ist die Angabe des Protokollierungsframeworks (`slf4j-nop`) für diese Anwendung. Das Data Lake Storage Gen1 SDK verwendet die Protokollierungsfassade [slf4j](https://www.slf4j.org/), bei der Sie aus einer Reihe gängiger Protokollierungsframeworks wie log4j, Java-Protokollierung, Logback usw. wählen oder die Protokollierung deaktivieren können. Da wir im vorliegenden Beispiel die Protokollierung deaktivieren möchten, verwenden wir die Bindung **slf4j-nop**. Informationen zur Verwendung anderer Protokollierungsoptionen für Ihre App finden Sie [hier](https://www.slf4j.org/manual.html#projectDep).
+    Die erste Abhängigkeit ist die Verwendung des Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) aus dem Maven-Repository. Die zweite Abhängigkeit ist die Angabe des Protokollierungsframeworks (`slf4j-nop`) für diese Anwendung. Das Data Lake Storage Gen1 SDK verwendet die Protokollierungsfassade [SLF4J](https://www.slf4j.org/), bei der Sie zwischen mehreren gängigen Protokollierungsframeworks wie Log4j, Java-Protokollierung, Logback usw. auswählen oder die Protokollierung deaktivieren können. Da wir im vorliegenden Beispiel die Protokollierung deaktivieren möchten, verwenden wir die Bindung **slf4j-nop**. Informationen zur Verwendung anderer Protokollierungsoptionen für Ihre App finden Sie [hier](https://www.slf4j.org/manual.html#projectDep).
 
 3. Fügen Sie Ihrer Anwendung die folgenden Importanweisungen hinzu.
 
-        import com.microsoft.azure.datalake.store.ADLException;
-        import com.microsoft.azure.datalake.store.ADLStoreClient;
-        import com.microsoft.azure.datalake.store.DirectoryEntry;
-        import com.microsoft.azure.datalake.store.IfExists;
-        import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
-        import com.microsoft.azure.datalake.store.oauth2.DeviceCodeTokenProvider;
+    ```java
+    import com.microsoft.azure.datalake.store.ADLException;
+    import com.microsoft.azure.datalake.store.ADLStoreClient;
+    import com.microsoft.azure.datalake.store.DirectoryEntry;
+    import com.microsoft.azure.datalake.store.IfExists;
+    import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
+    import com.microsoft.azure.datalake.store.oauth2.DeviceCodeTokenProvider;
+    ```
 
 4. Rufen Sie mit dem folgenden Codeausschnitt in Ihrer Java-Anwendung ein Token für die native Active Directory-Anwendung ab, die Sie zuvor mit `DeviceCodeTokenProvider` erstellt haben. Ersetzen Sie **FILL-IN-HERE** durch die Werte für die native Azure Active Directory-Anwendung.
 
-        private static String nativeAppId = "FILL-IN-HERE";
+    ```java
+    private static String nativeAppId = "FILL-IN-HERE";
             
-        AccessTokenProvider provider = new DeviceCodeTokenProvider(nativeAppId);   
+    AccessTokenProvider provider = new DeviceCodeTokenProvider(nativeAppId);   
+    ```
 
 Das Data Lake Storage Gen1 SDK ermöglicht die komfortable Verwaltung der Sicherheitstoken, die für die Kommunikation mit dem Data Lake Storage Gen1-Konto benötigt werden. Das SDK ermöglicht jedoch auch die Verwendung anderer Methoden. Token können daher auch auf andere Weise abgerufen werden – etwa mit dem [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) oder mit eigenem benutzerdefiniertem Code.
 

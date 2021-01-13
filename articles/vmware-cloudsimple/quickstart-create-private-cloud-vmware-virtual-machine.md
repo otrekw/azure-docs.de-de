@@ -1,19 +1,19 @@
 ---
-title: 'Schnellstart: Erstellen einer VMware-VM in einer privaten Cloud'
-description: Beschreibt, wie eine VMware-VM in der privaten CloudSimple-Cloud erstellt wird
-author: sharaths-cs
-ms.author: b-shsury
+title: 'Schnellstart: Erstellen einer Azure VMware-VM in einer privaten Cloud – Azure VMware Solution by CloudSimple'
+description: Hier erfahren Sie, wie eine VMware-VM in der privaten CloudSimple-Cloud erstellt wird. Greifen Sie über das Azure-Portal auf das CloudSimple-Portal zu.
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8d4712ca57801c15510ffcaf54852ce9287d343b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: c741f01ccc3e34ec991aa77fc850fd9f60c4d8aa
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972397"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899285"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Erstellen von virtuellen VMware-Computern in Ihrer privaten Cloud
 
@@ -43,7 +43,7 @@ Um auf vCenter zuzugreifen, starten Sie im CloudSimple-Portal. Klicken Sie auf d
 ## <a name="upload-an-iso-or-vsphere-template"></a>Hochladen einer ISO- oder vSphere-Vorlage
 
   > [!WARNING]
-  > Verwenden Sie für ISO-Uploads den vSphere HTML5-Client.  Die Verwendung des Flash-Clients kann zu einem Fehler führen.
+  > Verwenden Sie für ISO-Uploads den vSphere HTML5-Client.  Die Verwendung eines Flash-Clients kann zu einem Fehler führen.
 
 1. Rufen Sie die ISO- oder vSphere-Vorlage ab, die Sie auf vCenter hochladen möchten, um einen virtuellen Computer zu erstellen, damit er in Ihrem lokalen System zur Verfügung steht.
 2. Klicken Sie in vCenter, auf das Symbol **Datenträger**, und wählen Sie **vsanDatastore** aus. Klicken Sie auf **Dateien** und dann auf **Neuer Ordner**.
@@ -58,37 +58,37 @@ Um auf vCenter zuzugreifen, starten Sie im CloudSimple-Portal. Klicken Sie auf d
 1. Klicken Sie in vCenter auf das Symbol **Hosts und Cluster**.
 
 2. Klicken Sie mit der rechten Maustaste auf **Workload**, und wählen Sie **Neuer virtueller Computer** aus.
-    ![Neuer virtueller Computer](media/vcvm01.png)
+    ![Screenshot, der die Menüoption „Neuer virtueller Computer“ hervorhebt.](media/vcvm01.png)
 
 3. Wählen Sie **Neuen virtuellen Computer erstellen** aus, und klicken Sie auf **Weiter**.
-    ![Neuer virtueller Computer](media/vcvm02.png)
+    ![Screenshot, der die Option „Neuer virtueller Computer“ hervorhebt.](media/vcvm02.png)
 
 4. Benennen Sie den Computer, wählen Sie den Ordner **Workload-VMs** aus, und klicken Sie auf **Weiter**.
-    ![Neuer virtueller Computer](media/vcvm03.png)
+    ![Screenshot, der die Option „Workload-VMs“ hervorhebt](media/vcvm03.png)
 
 5. Wählen Sie die Computeressource **Workload** aus, und klicken Sie auf **Weiter**.
-    ![Neuer virtueller Computer](media/vcvm04.png)
+    ![Screenshot, der die Computeressource „Workload“ hervorhebt](media/vcvm04.png)
 
 6. Wählen Sie **vsanDatastore** aus, und klicken Sie auf **Weiter**.
-    ![Neuer virtueller Computer](media/vcvm05.png)
+    ![Screenshot, der die Option vsanDatastore hervorhebt.](media/vcvm05.png)
 
 7. Behalten Sie die Standardauswahl für ESXi 6.5-Kompatibilität bei, und klicken Sie auf **Weiter**.
-    ![Neuer virtueller Computer](media/vcvm06.png)
+    ![Screenshot mit der ausgewählten Option „ESXi 6.5-Kompatibilität“.](media/vcvm06.png)
 
 8. Wählen Sie das Gastbetriebssystem der ISO-Datei für den virtuellen Computer aus, den Sie erstellen, und klicken Sie auf **Weiter**.
-    ![Neuer virtueller Computer](media/vcvm07.png)
+    ![Screenshot, der zeigt, wie das Gastbetriebssystem der ISO-Datei für die VM ausgewählt wird.](media/vcvm07.png)
 
 9. Wählen Sie Optionen für Festplatte und Netzwerk aus. Wählen Sie für „Neues CD-/DVD-Laufwerk“ **Datastore-ISO-Datei** aus.  Wenn Sie Datenverkehr aus der öffentlichen IP-Adresse an diesen virtuellen Computer zulassen möchten, wählen Sie das Netzwerk als **vm-1** aus.
-    ![Neuer virtueller Computer](media/vcvm08.png)
+    ![Screenshot, der zeigt, wo Sie die ISO-Datei „Datastore“ auswählen.](media/vcvm08.png)
 
 10. Ein Auswahlfenster wird geöffnet. Wählen Sie die Datei aus, die Sie zuvor in den Ordner „ISO-Dateien und Vorlagen“ hochgeladen haben, und klicken Sie auf **OK**.
     ![Neuer virtueller Computer](media/vcvm10.png)
 
 11. Überprüfen Sie die Einstellungen, und klicken Sie auf **OK**, um den virtuellen Computer zu erstellen.
-    ![Neuer virtueller Computer](media/vcvm11.png)
+    ![Screenshot, der zeigt, wo Sie die Einstellungen überprüfen.](media/vcvm11.png)
 
 Der virtuelle Computer wird jetzt den Workload-Computeressourcen hinzugefügt und ist einsatzbereit. 
-![Neuer virtueller Computer](media/vcvm12.png)
+![Screenshot, der die VM zeigt, die den Computeressourcen für die Workload hinzugefügt wurde.](media/vcvm12.png)
 
 Die grundlegende Einrichtung ist jetzt abgeschlossen. Sie können mit der Verwendung Ihrer privaten Cloud ähnlich wie mit der Verwendung Ihrer lokalen Infrastruktur für virtuelle Computer beginnen.
 
@@ -112,7 +112,7 @@ Voraussetzungen
 
 Über die folgenden Links erhalten Sie Anleitungen zum Einrichten von DHCP- und DNS-Servern unter Linux und Windows.
 
-#### <a name="linux-based-dns-server-setup"></a>Linux-basiertes Setup für DNS-Server
+#### <a name="linux-based-dns-server-setup"></a>Setup für Linux-basiertes DNS-Server
 
 Linux bietet verschiedene Pakete für das Einrichten von DNS-Servern.  Hier ist ein Link zu Anleitungen, wie Sie einen Open-Source-BIND DNS-Server einrichten.
 
@@ -122,9 +122,9 @@ Linux bietet verschiedene Pakete für das Einrichten von DNS-Servern.  Hier ist 
 
 In diesen Microsoft-Themen wird beschrieben, wie Sie einen Windows-Server als DNS-Server und als DHCP-Server einrichten.
 
-[Windows-Server als DNS-Server](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
+[Windows-Server als DNS-Server](/windows-server/networking/dns/dns-top)
 
-[Windows-Server als DHCP-Server](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
+[Windows-Server als DHCP-Server](/windows-server/networking/technologies/dhcp/dhcp-top)
 
 ## <a name="customize-networking-configuration-optional"></a>Anpassen der Netzwerkkonfiguration (optional)
 
@@ -227,4 +227,4 @@ Um eine Lösung zu installieren, müssen Sie zusätzliche Berechtigungen für ei
 
 * [Nutzen von virtuellen VMware-Computern in Azure](quickstart-create-vmware-virtual-machine.md)
 * [Connect from on-premises to CloudSimple using ExpressRoute](on-premises-connection.md)
-* [Einrichten von VPN-Gateways im CloudSimple-Netzwerk](vpn-gateway.md)
+* [Einrichten von VPN-Gateways für ein CloudSimple-Netzwerk](vpn-gateway.md)

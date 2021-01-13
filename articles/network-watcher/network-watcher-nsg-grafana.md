@@ -1,33 +1,29 @@
 ---
-title: Verwalten von Datenflussprotokollen für Netzwerksicherheitsgruppen mit Network Watcher und Grafana | Microsoft-Dokumentation
+title: Verwalten von Flowprotokollen zu Netzwerksicherheitsgruppen mit Grafana
+titleSuffix: Azure Network Watcher
 description: Auf dieser Seite wird erläutert, wie Datenflussprotokolle für Netzwerksicherheitsgruppen in Azure mithilfe von Network Watcher und Grafana verwaltet werden.
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
-editor: ''
+author: damendo
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
-ms.author: mareat
-ms.openlocfilehash: 73173c144f979d4a10b90a16aec783fe51a3f90e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: d522d305c70214009b8aa2886d07d2d5403dd2b1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62116240"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656307"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Verwalten von Datenflussprotokollen für Netzwerksicherheitsgruppen mit Network Watcher und Grafana
 
 [Datenflussprotokolle von Netzwerksicherheitsgruppen (NSG)](network-watcher-nsg-flow-logging-overview.md) enthalten Informationen zum besseren Verstehen von ein- und ausgehendem IP-Datenverkehr an Netzwerkschnittstellen. Diese Datenflussprotokolle zeigen aus- und eingehende Datenflüsse pro NSG-Regel, die NIC, auf die sich der Datenfluss bezieht, fünf Informationen zum Datenfluss (Quell-/Ziel-IP-Adresse, Quell-/Zielport, Protokoll) und Informationen dazu, ob der Datenverkehr zugelassen oder verweigert wurde.
-
-> [!Warning]  
-> In den folgenden Schritten werden Flowprotokolle der Version 1 verwendet. Ausführliche Informationen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md). Die folgenden Anweisungen funktionieren ohne Änderungen nicht mit Version 2 der Protokolldateien.
 
 Für viele NSGs in Ihrem Netzwerk kann die Datenflussprotokollierung aktiviert sein. Diese Menge an Protokolldaten macht es allerdings umständlich, Ihre Protokolle zu analysieren, um Einblicke zu gewinnen. Dieser Artikel bietet eine Lösung zur zentralen Verwaltung dieser NSG-Datenflussprotokolle mit Grafana, einem Open-Source-Visualisierungstool, Elasticsearch, einer verteilten Engine für Suche und Analyse, und Logstash, einer serverseitigen Open-Source-Datenverarbeitungspipeline.  
 
@@ -51,7 +47,7 @@ Bei diesem Beispiel sind Grafana, Elasticsearch und Logstash auf einem in Azure 
 
 Mithilfe von Logstash können Sie die JSON-formatierten Datenflussprotokolle auf Flusstupelebene vereinfachen.
 
-1. Führen Sie zum Installieren von Logstash die folgenden Befehle aus:
+1. Führen Sie die folgenden Befehle zum Installieren von Logstash aus:
 
     ```bash
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
@@ -108,6 +104,11 @@ Mithilfe von Logstash können Sie die JSON-formatierten Datenflussprotokolle auf
           "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
           "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
           "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
+    "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
+    "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
+    "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
+    "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
+    "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
         }
         add_field => {
           "time" => "%{[records][time]}"
@@ -138,7 +139,7 @@ Mithilfe von Logstash können Sie die JSON-formatierten Datenflussprotokolle auf
     }
    ```
 
-Die bereitgestellte CONF-Datei von Logstash besteht aus drei Teilen: Eingabe, Filter und Ausgabe.
+Die bereitgestellte Konfigurationsdatei von Logstash besteht aus drei Teilen: Eingabe, Filter und Ausgabe.
 Der Eingabebereich bezeichnet die Eingabequelle der Protokolle, die Logstash verarbeitet. In diesem Fall verwenden wir ein „azureblob“-Eingabe-Plug-In (das in den nächsten Schritten installiert wird). Es erlaubt uns, auf die JSON-Dateien des NSG-Datenflussprotokolls zuzugreifen, die in Blob Storage gespeichert sind. 
 
 Der Filterabschnitt vereinfacht dann jede Datenfluss-Protokolldatei so, dass jedes einzelnen Flusstupel und die ihm zugeordneten Eigenschaften zu einem gesonderten Logstash-Ereignis werden.
@@ -198,7 +199,7 @@ Nachdem Sie Grafana nun erfolgreich so konfiguriert haben, dass Daten aus dem El
 
 Der folgende Screenshot zeigt einen Graphen und ein Diagramm der wichtigsten Datenflüsse und ihrer Häufigkeit. Datenflüsse werden auch nach NSG-Regel und nach Entscheidung angezeigt. Grafana ist überaus anpassbar, weshalb es ratsam ist, Dashboards entsprechend Ihren Überwachungsanforderungen zu erstellen. Das folgende Beispiel zeigt ein typisches Dashboard:
 
-![Dashboardgraph](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+![Der Screenshot zeigt die Beispielkonfiguration eines Graphen mit nach NSG-Regel segmentierten Datenflüssen.](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>Zusammenfassung
 

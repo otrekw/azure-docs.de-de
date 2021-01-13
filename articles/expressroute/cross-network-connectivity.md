@@ -1,21 +1,18 @@
 ---
-title: Netzwerkübergreifende Azure-Verbindungen | Microsoft-Dokumentation
+title: Netzwerkübergreifende Azure-Verbindungen
 description: Auf dieser Seite wird ein Anwendungsszenario für netzwerkübergreifende Verbindungen und Lösungen beschrieben, das auf Azure-Netzwerkfeatures basiert.
-documentationcenter: na
-services: networking
-author: rambk
-manager: tracsman
+services: expressroute
+author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 04/03/2019
-ms.author: rambala
-ms.openlocfilehash: 3bc189cf269084fdb26f141a36755c96554cad7b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: duau
+ms.openlocfilehash: 018afa1b2a31ebd44925a3fc79cbdc729b2d4695
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866004"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202496"
 ---
 # <a name="cross-network-connectivity"></a>Netzwerkübergreifende Verbindungen
 
@@ -23,25 +20,25 @@ Fabrikam Inc. hat eine große Niederlassung und eine umfangreiche Azure-Bereitst
 
 Fabrikam Inc. übernimmt Contoso Ltd. Nach der Fusion möchte Fabrikam die beiden Netzwerke miteinander verbinden. Die folgende Abbildung veranschaulicht das Szenario:
 
- [![1]][1]
+![Das Anwendungsszenario](./media/cross-network-connectivity/premergerscenario.png)
 
 Die gestrichelten Pfeile in der Mitte der obigen Abbildung stellen die gewünschten Netzwerkverbindungen dar. Es sollen drei Arten von übergreifenden Verbindungen verwendet werden: 1) Querverbindung von Fabrikam- und Contoso-VNETs, 2) regionsübergreifende lokale und VNET-Querverbindungen (Verbindung des lokalen Fabrikam-Netzwerks mit dem Contoso-VNET und des lokalen Contoso-Netzwerks mit dem Fabrikam-VNET) und 3) Querverbindung des lokalen Fabrikam- und Contoso-Netzwerks. 
 
 Die folgende Tabelle zeigt die Routingtabelle des privaten Peerings der ExpressRoute-Lösung von Contoso Ltd. vor der Übernahme.
 
-[![2]][2]
+![ExpressRoute-Routingtabelle vor der Übernahme (Contoso)](./media/cross-network-connectivity/contosoexr-rt-premerger.png)
 
-Die folgende Tabelle enthält die bestehenden Routen einer VM unter dem Contoso-Abonnement vor der Übernahme. Laut Tabelle ist die VM im VNET neben den Standardkomponenten auch über den VNET-Adressraum und das lokale Contoso-Netzwerk informiert. 
+Die folgende Tabelle enthält die bestehenden Routen einer VM unter dem Contoso-Abonnement vor der Übernahme. Laut Tabelle ist die VM im VNET neben den Standardkomponenten auch über den VNET-Adressraum und das lokale Contoso-Netzwerk informiert.
 
-[![4]][4]
+![VM-Routen vor der Übernahme (Contoso)](./media/cross-network-connectivity/contosovm-routes-premerger.png)
 
 Die folgende Tabelle zeigt die Routingtabelle des privaten Peerings der ExpressRoute-Lösung von Fabrikam Inc. vor der Übernahme.
 
-[![3]][3]
+![ExpressRoute-Routingtabelle vor der Übernahme (Fabrikam)](./media/cross-network-connectivity/fabrikamexr-rt-premerger.png)
 
 Die folgende Tabelle enthält die bestehenden Routen einer VM unter dem Fabrikam-Abonnement vor der Übernahme. Laut Tabelle ist die VM im VNET neben den Standardkomponenten auch über den VNET-Adressraum und das lokale Fabrikam-Netzwerk informiert.
 
-[![5]][5]
+![VM-Routen vor der Übernahme (Fabrikam)](./media/cross-network-connectivity/fabrikamvm-routes-premerger.png)
 
 In diesem Artikel gehen wir Schritt für Schritt vor. Es wird beschrieben, wie Sie die gewünschten Querverbindungen mit den folgenden Azure-Netzwerkfeatures erzielen:
 
@@ -57,15 +54,15 @@ Wir konfigurieren nun das globale VNET-Peering zwischen den VNETs in den Azure-A
 
 In der folgenden Abbildung ist die Netzwerkarchitektur nach der Konfiguration des globalen VNET-Peerings dargestellt.
 
-[![6]][6]
+![Die Architektur nach dem VNET-Peering](./media/cross-network-connectivity/vnet-peering.png )
 
 In der folgenden Tabelle sind die Routen enthalten, die der VM des Contoso-Abonnements bekannt sind. Achten Sie auf den letzten Eintrag der Tabelle. Dieser Eintrag ist das Ergebnis der Querverbindung der virtuellen Netzwerke.
 
-[![7]][7]
+![VM-Routen nach dem VNET-Peering (Contoso)](./media/cross-network-connectivity/contosovm-routes-peering.png)
 
 In der folgenden Tabelle sind die Routen enthalten, die der VM des Fabrikam-Abonnements bekannt sind. Achten Sie auf den letzten Eintrag der Tabelle. Dieser Eintrag ist das Ergebnis der Querverbindung der virtuellen Netzwerke.
 
-[![8]][8]
+![VM-Routen nach dem VNET-Peering (Fabrikam)](./media/cross-network-connectivity/fabrikamvm-routes-peering.png)
 
 Per VNET-Peering werden zwei virtuelle Netzwerke direkt verknüpft (für den Eintrag *VNetGlobalPeering* in den obigen beiden Tabellen ist kein nächster Hop enthalten).
 
@@ -77,23 +74,23 @@ Wir stellen eine Verbindung zwischen der ExpressRoute-Leitung von Fabrikam und d
 
 In der folgenden Abbildung ist die Netzwerkarchitektur nach der Konfiguration der ExpressRoute-Querverbindung mit den virtuellen Netzwerken dargestellt.
 
-[![9]][9]
+![Die Architektur nach der ExpressRoute-Querverbindung](./media/cross-network-connectivity/exr-x-connect.png)
 
 In der folgenden Tabelle ist die Routingtabelle des privaten Peerings der ExpressRoute-Leitung von Contoso Ltd. dargestellt, nachdem per ExpressRoute für die virtuellen Netzwerke eine Querverbindung mit den lokalen Netzwerken hergestellt wurde. Sie sehen, dass die Routingtabelle über Routen verfügt, die zu beiden virtuellen Netzwerken gehören.
 
-[![10]][10]
+![ExpressRoute-Routingtabelle nach Querverbindung von ExR und VNETs (Contoso)](./media/cross-network-connectivity/contosoexr-rt-xconnect.png)
 
 In der folgenden Tabelle ist die Routingtabelle des privaten Peerings der ExpressRoute-Leitung von Fabrikam Inc. dargestellt, nachdem per ExpressRoute für die virtuellen Netzwerke eine Querverbindung mit den lokalen Netzwerken hergestellt wurde. Sie sehen, dass die Routingtabelle über Routen verfügt, die zu beiden virtuellen Netzwerken gehören.
 
-[![11]][11]
+![ExpressRoute-Routingtabelle nach Querverbindung von ExR und VNETs (Fabrikam)](./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png)
 
 In der folgenden Tabelle sind die Routen enthalten, die der VM des Contoso-Abonnements bekannt sind. Achten Sie in der Tabelle auf die Einträge vom Typ *Gateway für virtuelle Netzwerke*. Die VM sieht Routen beider lokalen Netzwerke.
 
-[![12]][12]
+![VM-Routen nach Querverbindung von ExR und VNETs (Contoso)](./media/cross-network-connectivity/contosovm-routes-xconnect.png)
 
 In der folgenden Tabelle sind die Routen enthalten, die der VM des Fabrikam-Abonnements bekannt sind. Achten Sie in der Tabelle auf die Einträge vom Typ *Gateway für virtuelle Netzwerke*. Die VM sieht Routen beider lokalen Netzwerke.
 
-[![13]][13]
+![VM-Routen nach Querverbindung von ExR und VNETs (Fabrikam)](./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png)
 
 >[!NOTE]
 >Im Fabrikam- bzw. Contoso-Abonnement können Sie auch über Spoke-VNET-Verbindungen mit dem entsprechenden Hub-VNET verfügen. (In den Architekturdiagrammen dieses Artikels ist das Hub-and-Spoke-Modell nicht dargestellt.) Die Querverbindungen zwischen den Hub-VNET-Gateways und ExpressRoute ermöglicht auch die Kommunikation zwischen Hubs und Spokes im Osten und Westen.
@@ -105,47 +102,29 @@ ExpressRoute Global Reach ermöglicht die Konnektivität zwischen lokalen Netzwe
 
 In der folgenden Abbildung ist die Netzwerkarchitektur nach der Konfiguration von Global Reach dargestellt.
 
-[![14]][14]
+![Architektur nach der Konfiguration von Global Reach](./media/cross-network-connectivity/globalreach.png)
 
 Die folgende Tabelle zeigt die Routingtabelle des privaten Peerings der ExpressRoute-Lösung von Contoso Ltd. nach der Konfiguration von Global Reach. Sie sehen, dass die Routingtabelle über Routen verfügt, die zu beiden lokalen Netzwerken gehören. 
 
-[![15]][15]
+![ExpressRoute-Routingtabelle nach Global Reach (Contoso)](./media/cross-network-connectivity/contosoexr-rt-gr.png)
 
 Die folgende Tabelle zeigt die Routingtabelle des privaten Peerings der ExpressRoute-Lösung von Fabrikam Inc. nach der Konfiguration von Global Reach. Sie sehen, dass die Routingtabelle über Routen verfügt, die zu beiden lokalen Netzwerken gehören.
 
-[![16]][16]
+![ExpressRoute-Routingtabelle nach Global Reach (Fabrikam)]( ./media/cross-network-connectivity/fabrikamexr-rt-gr.png )
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Antworten auf weitere Fragen zu VNETs und zum VNET-Peering finden Sie unter [FAQs zu virtuellen Netzwerken][VNet-FAQ]. Antworten auf weitere Fragen zu ExpressRoute und zur VNET-Konnektivität finden Sie unter [ExpressRoute – FAQ][ER-FAQ].
+Antworten auf weitere Fragen zu VNETs und zum VNET-Peering finden Sie unter [FAQs zu virtuellen Netzwerken][VNet-FAQ]. Antworten auf weitere Fragen zu ExpressRoute und zur virtuellen Netzwerkkonnektivität finden Sie unter [ExpressRoute – FAQ][ER-FAQ].
 
 Global Reach wurde noch nicht in allen Ländern/Regionen eingeführt. Ob Global Reach in den gewünschten Ländern/Regionen verfügbar ist, erfahren Sie unter [ExpressRoute Global Reach][Global Reach].
 
-<!--Image References-->
-[1]: ./media/cross-network-connectivity/premergerscenario.png "Das Anwendungsszenario"
-[2]: ./media/cross-network-connectivity/contosoexr-rt-premerger.png "ExpressRoute-Routingtabelle vor der Übernahme (Contoso)"
-[3]: ./media/cross-network-connectivity/fabrikamexr-rt-premerger.png "ExpressRoute-Routingtabelle vor der Übernahme (Fabrikam)"
-[4]: ./media/cross-network-connectivity/contosovm-routes-premerger.png "VM-Routen vor der Übernahme (Contoso)"
-[5]: ./media/cross-network-connectivity/fabrikamvm-routes-premerger.png "VM-Routen vor der Übernahme (Fabrikam)"
-[6]: ./media/cross-network-connectivity/vnet-peering.png "Architektur nach dem VNET-Peering"
-[7]: ./media/cross-network-connectivity/contosovm-routes-peering.png "VM-Routen nach dem VNET-Peering (Contoso)"
-[8]: ./media/cross-network-connectivity/fabrikamvm-routes-peering.png "VM-Routen nach dem VNET-Peering (Fabrikam)"
-[9]: ./media/cross-network-connectivity/exr-x-connect.png "Architektur nach der ExpressRoute-Querverbindung"
-[10]: ./media/cross-network-connectivity/contosoexr-rt-xconnect.png "ExpressRoute-Routingtabelle nach Querverbindung von ExR und VNETs (Contoso)"
-[11]: ./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png "ExpressRoute-Routingtabelle nach Querverbindung von ExR und VNETs (Fabrikam)"
-[12]: ./media/cross-network-connectivity/contosovm-routes-xconnect.png "VM-Routen nach Querverbindung von ExR und VNETs (Contoso)"
-[13]: ./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png "VM-Routen nach Querverbindung von ExR und VNETs (Fabrikam)"
-[14]: ./media/cross-network-connectivity/globalreach.png "Architektur nach der Konfiguration von Global Reach"
-[15]: ./media/cross-network-connectivity/contosoexr-rt-gr.png "ExpressRoute-Routingtabelle nach Global Reach (Contoso)"
-[16]: ./media/cross-network-connectivity/fabrikamexr-rt-gr.png "ExpressRoute-Routingtabelle nach Global Reach (Fabrikam)"
-
 <!--Link References-->
-[Virtual network peering]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview
-[connection]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager
-[Global Reach]: https://docs.microsoft.com/azure/expressroute/expressroute-global-reach
-[Configure VNet peering]: https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions
-[Configure Global Reach]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-set-global-reach
-[Subscription limits]: https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits
-[Connect-ER-VNet]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager
-[ER-FAQ]: https://docs.microsoft.com/azure/expressroute/expressroute-faqs
+[Virtual network peering]: ../virtual-network/virtual-network-peering-overview.md
+[connection]: ./expressroute-howto-linkvnet-portal-resource-manager.md
+[Global Reach]: ./expressroute-global-reach.md
+[Configure VNet peering]: ../virtual-network/create-peering-different-subscriptions.md
+[Configure Global Reach]: ./expressroute-howto-set-global-reach.md
+[Subscription limits]: ../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits
+[Connect-ER-VNet]: ./expressroute-howto-linkvnet-portal-resource-manager.md
+[ER-FAQ]: ./expressroute-faqs.md
 [VNet-FAQ]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq

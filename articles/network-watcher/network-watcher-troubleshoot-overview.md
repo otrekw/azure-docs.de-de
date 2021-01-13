@@ -1,31 +1,29 @@
 ---
-title: Einführung in die Problembehandlung bei Ressourcen in Azure Network Watcher | Microsoft Docs
+title: Einführung in die Problembehandlung für Ressourcen
+titleSuffix: Azure Network Watcher
 description: Diese Seite enthält eine Übersicht über die Network Watcher-Funktionen zur Problembehandlung bei Ressourcen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 65ce9e7d298131486ae4e5f3584c7975ca81e1ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 5342c4505bd300d1287acba246ca59610f2697bd
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684247"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858636"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Einführung in die Problembehandlung bei Ressourcen in Azure Network Watcher
 
 Virtual Network-Gateways stellen die Konnektivität zwischen lokalen Ressourcen und anderen virtuellen Netzwerken in Azure bereit. Die Überwachung der Gateways und ihrer Verbindungen ist wichtig, damit die Kommunikation nicht unterbrochen wird. Network Watcher bietet Funktionen zur Problembehandlung bei Gateways und Verbindungen. Diese können über Portal, PowerShell, Azure CLI oder REST-API aufgerufen werden. Bei Aufruf untersucht Network Watcher die Integrität des Gateways oder der Verbindung und gibt die Ergebnisse zurück. Die Anforderung ist eine lange andauernde Transaktion. Die Ergebnisse werden zurückgegeben, sobald die Diagnose abgeschlossen ist.
 
-![Portal][2]
+![Screenshot zeigt Network Watcher VPN-Diagnose.][2]
 
 ## <a name="results"></a>Ergebnisse
 
@@ -49,7 +47,7 @@ Die folgenden Tabellen enthalten die verschiedenen verfügbaren Fehlertypen (ID 
 
 ### <a name="gateway"></a>Gateway
 
-| Fehlertyp | `Reason` | Protokoll|
+| Fehlertyp | `Reason` | Log|
 |---|---|---|
 | NoFault | Es wurde kein Fehler erkannt. |Ja|
 | GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein|
@@ -64,7 +62,7 @@ Die folgenden Tabellen enthalten die verschiedenen verfügbaren Fehlertypen (ID 
 
 ### <a name="connection"></a>Verbindung
 
-| Fehlertyp | `Reason` | Protokoll|
+| Fehlertyp | `Reason` | Log|
 |---|---|---|
 | NoFault | Es wurde kein Fehler erkannt. |Ja|
 | GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein|
@@ -75,7 +73,7 @@ Die folgenden Tabellen enthalten die verschiedenen verfügbaren Fehlertypen (ID 
 | ConnectionIsMarkedDisconnected | Die Verbindung ist als „getrennt“ gekennzeichnet. |Nein|
 | ConnectionNotConfiguredOnGateway | Für den zugrunde liegenden Dienst wurde die Verbindung nicht konfiguriert. | Ja |
 | ConnectionMarkedStandby | Der zugrunde liegende Dienst ist als im Ruhezustand gekennzeichnet.| Ja|
-| Authentication | Der vorinstallierte Schlüssel stimmt nicht überein. | Ja|
+| Authentifizierung | Der vorinstallierte Schlüssel stimmt nicht überein. | Ja|
 | PeerReachability | Das Peergateway ist nicht erreichbar. | Ja|
 | IkePolicyMismatch | Das Peergateway verfügt über IKE-Richtlinien, die von Azure nicht unterstützt werden. | Ja|
 | WfpParse Error | Beim Analysieren des WFP-Protokolls ist ein Fehler aufgetreten. |Ja|
@@ -84,7 +82,7 @@ Die folgenden Tabellen enthalten die verschiedenen verfügbaren Fehlertypen (ID 
 
 In der folgenden Tabelle sind die Gateways und Verbindungen aufgelistet, die von der Network Watcher-Problembehandlung unterstützt werden:
 
-|  |  |
+| Gateway oder Verbindung | Unterstützt  |
 |---------|---------|
 |**Gatewaytypen**   |         |
 |VPN      | Unterstützt        |
@@ -107,7 +105,7 @@ Nach Abschluss der Problembehandlung werden die Protokolldateien zur Ressourcenp
 > [!NOTE]
 > In einigen Fällen wird nur eine Teilmenge der Protokolldateien in den Speicher geschrieben.
 
-Anweisungen zum Herunterladen von Dateien von Azure Storage-Konten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter dem folgenden Link: [Storage-Explorer](https://storageexplorer.com/)
+Anweisungen zum Herunterladen von Dateien von Azure-Speicherkonten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter dem folgenden Link: [Storage-Explorer](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
@@ -209,6 +207,9 @@ Elapsed Time            330 sec
 |         6    ikeext               ike_sa_management_c3162  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 |        12    ikeext               ike_sa_management_c3307  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 ```
+
+## <a name="considerations"></a>Überlegungen 
+* CLI-Fehler: Wenn Sie Azure CLI verwenden, um den Befehl auszuführen, müssen sich das VPN Gateway und das Speicherkonto in derselben Ressourcengruppe befinden. Kunden mit den Ressourcen in verschiedenen Ressourcengruppen können stattdessen PowerShell oder das Azure-Portal verwenden.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,19 +1,19 @@
 ---
 title: Hochverfügbarkeit von Azure Analysis Services | Microsoft-Dokumentation
-description: Sicherstellung der Hochverfügbarkeit für Azure Analysis Services.
+description: In diesem Artikel wird beschrieben, wie Azure Analysis Services während einer Dienstunterbrechung Hochverfügbarkeit bereitstellt.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9947ab24262c6b92457bcd858bbf03d21eb317a2
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.custom: references_regions
+ms.openlocfilehash: abfcc38601887cd14509ac436e0344b681e3577e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619315"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86506751"
 ---
 # <a name="analysis-services-high-availability"></a>Hochverfügbarkeit für Analysis Services
 

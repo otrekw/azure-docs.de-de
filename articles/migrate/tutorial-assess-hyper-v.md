@@ -1,271 +1,123 @@
 ---
-title: Bewerten von Hyper-V-VMs für die Migration zu Azure mit Azure Migrate | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie lokale Hyper-V-VMs mithilfe von Azure Migrate für die Migration zu Azure bewerten.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Bewerten von virtuellen Hyper-V-Computern für die Migration zu Azure-VMs mit Serverbewertung in Azure Migrate
+description: Es wird beschrieben, wie Sie Hyper-V-VMs für die Migration zu Azure-VMs bewerten, indem Sie die Serverbewertung verwenden.
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 08/11/2019
-ms.author: raynew
-ms.custom: mvc
-ms.openlocfilehash: b93d9ee65850749e79714b632584f1977ca88c81
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 09/14/2020
+ms.custom: MVC
+ms.openlocfilehash: 04570785d80e494134bc50cefe3381277d6440a4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639984"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753279"
 ---
-# <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Bewerten von Hyper-V-VMs mit der Azure Migrate-Serverbewertung
+# <a name="tutorial-assess-hyper-v-vms-for-migration-to-azure"></a>Tutorial: Bewerten von virtuellen Hyper-V-Computern für die Migration zu Azure
 
-In diesem Artikel erfahren Sie, wie Sie lokale Hyper-V-VMs mithilfe der Azure Migrate-Serverbewertung bewerten.
+Im Rahmen Ihrer Migrationsjourney zu Azure bewerten Sie Ihre lokalen Workloads, um die Cloudbereitschaft zu messen, Risiken zu identifizieren und Kosten und Komplexität zu schätzen.
 
-[Azure Migrate](migrate-services-overview.md) stellt einen Hub mit Tools bereit, die Ihnen dabei helfen, Apps, Infrastrukturen und Workloads zu ermitteln, zu bewerten und zu Microsoft Azure zu migrieren. Der Hub umfasst Azure Migrate-Tools sowie Angebote von unabhängigen Drittanbietern (Independent Software Vendors, ISVs).
+In diesem Artikel wird veranschaulicht, wie Sie ermittelte virtuelle Hyper-V-Computer (VMs) für die Migration zu Azure per Azure Migrate-Serverbewertung bewerten.
 
 
-
-Dieses Tutorial ist das zweite in einer Reihe zur Bewertung und Migration von Hyper-V-VMs zu Azure. In diesem Tutorial lernen Sie Folgendes:
-
+In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
-> * Einrichten eines Azure Migrate-Projekts
-> * Einrichten und Registrieren einer Azure Migrate-Appliance
-> * Starten der kontinuierlichen Ermittlung lokaler VMs
-> * Gruppieren erkannter VMs und Bewerten der Gruppe
-> * Überprüfen der Bewertung
+- Durchführen einer Bewertung
+- Analysieren einer Bewertung
 
 > [!NOTE]
-> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert, damit Sie schnell einen Proof of Concept einrichten können. Die Tutorials verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie in den Anleitungsartikeln.
+> In Tutorials wird der schnellste Weg zum Ausprobieren eines Szenarios beschrieben, und nach Möglichkeit werden dabei die Standardoptionen verwendet. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Absolvieren Sie das erste Tutorial dieser Reihe.](tutorial-prepare-hyper-v.md) Andernfalls funktionieren die Anweisungen in diesem Tutorial nicht.
-- Im ersten Tutorial müssen folgende Schritte ausgeführt werden:
-    - [Einrichten von Azure-Berechtigungen](tutorial-prepare-hyper-v.md#prepare-azure) für Azure Migrate
-    - [Vorbereiten von Hyper-V](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-assessment) (Cluster, Hosts und VMs) für die Bewertung
+- Stellen Sie sicher, dass Sie die zu bewertenden Computer richtig ermittelt haben, bevor Sie dieses Tutorial zum Bewerten Ihrer Computer für die Migration zu Azure-VMs durcharbeiten:
+    - Arbeiten Sie [dieses Tutorial](tutorial-discover-hyper-v.md) durch, um Computer mit der Azure Migrate-Appliance zu ermitteln. 
+    - Bei der Ermittlung von Computern mit einer importierten CSV-Datei hilft Ihnen [dieses Tutorial](tutorial-discover-import.md) weiter.
 
-## <a name="set-up-an-azure-migrate-project"></a>Einrichten eines Azure Migrate-Projekts
 
-1. Wählen Sie im Azure-Portal **Alle Dienste** aus, und suchen Sie nach **Azure Migrate**.
-2. Wählen Sie in den Suchergebnissen die Option **Azure Migrate** aus.
-3. Klicken Sie in der **Übersicht** unter **Server ermitteln, bewerten und migrieren** auf **Server bewerten und migrieren**.
 
-    ![Ermitteln und Bewerten von Servern](./media/tutorial-assess-hyper-v/assess-migrate.png)
+## <a name="decide-which-assessment-to-run"></a>Treffen einer Entscheidung für eine Bewertung
 
-4. Klicken Sie unter **Erste Schritte** auf **Tools hinzufügen**.
-5. Wählen Sie auf der Registerkarte **Projekt migrieren** Ihr Azure-Abonnement aus, und erstellen Sie bei Bedarf eine Ressourcengruppe.
-6. Geben Sie unter **Projektdetails** den Projektnamen und die Region an, in der Sie das Projekt erstellen möchten.
 
+Entscheiden Sie, ob Sie eine Bewertung durchführen möchten, bei der die Kriterien für die Größenanpassung auf den Daten bzw. Metadaten der Computerkonfiguration basieren, die lokal im unveränderten Zustand gesammelt werden, oder auf dynamischen Leistungsdaten.
 
-    ![Erstellen eines Azure Migrate-Projekts](./media/tutorial-assess-hyper-v/migrate-project.png)
-
-    Azure Migrate-Projekte können in folgenden Regionen erstellt werden:
-
-    **Geografie** | **Region**
-    --- | ---
-    Asien  | Asien, Südosten
-    Europa | „Europa, Norden“ oder „Europa, Westen“
-    Vereinigtes Königreich |  „Vereinigtes Königreich, Süden“ oder „Vereinigtes Königreich, Westen“
-    USA | „USA, Osten“, „USA, Westen 2“ oder „USA, Westen-Mitte“
-
-    - Die Projektregion dient nur zum Speichern der Metadaten, die von den lokalen VMs erfasst werden.
-    - Bei der Migration der VMs kann eine andere Azure-Zielregion ausgewählt werden. Alle Azure-Regionen werden als Migrationsziel unterstützt.
-
-7. Klicken Sie auf **Weiter**.
-8. Wählen Sie unter **Bewertungstool auswählen** Folgendes aus: **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) > **Weiter**.
-
-    ![Erstellen eines Azure Migrate-Projekts](./media/tutorial-assess-hyper-v/assessment-tool.png)
-
-9. Wählen Sie unter **Migrationstool auswählen** die Option **Hinzufügen eines Migrationstools vorerst überspringen** und anschließend **Weiter** aus.
-10. Überprüfen Sie die Einstellungen unter **Review + add tools** (Überprüfen und Tools hinzufügen), und klicken Sie auf **Tools hinzufügen**.
-11. Warten Sie einige Minuten, bis das Azure Migrate-Projekt bereitgestellt wurde. Sie werden zur Projektseite weitergeleitet. Sollte das Projekt nicht angezeigt werden, können Sie auf dem Azure Migrate-Dashboard unter **Server** darauf zugreifen.
-
-
-
-
-## <a name="set-up-the-appliance-vm"></a>Einrichten der Appliance-VM
-
-Für die Azure Migrate-Serverbewertung wird eine einfache Hyper-V-VM-Appliance ausgeführt.
-
-- Diese Appliance ermittelt VMs und sendet Meta- und Leistungsdaten zu VMs an die Azure Migrate-Serverbewertung.
-- Die Einrichtung der Appliance umfasst Folgendes:
-    - Herunterladen einer komprimierten Hyper-V-VHD über das Azure-Portal
-    - Erstellen der Appliance und Überprüfen der Verbindungsherstellung mit der Azure Migrate-Serverbewertung
-    - Durchführen der Erstkonfiguration für die Appliance und Registrieren der Appliance beim Azure Migrate-Projekt
-
-### <a name="download-the-vhd"></a>Herunterladen der VHD
-
-Laden Sie die gezippte VHD-Vorlage für die Appliance herunter.
-
-1. Klicken Sie unter **Migrationsziele** > **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Ermitteln**.
-2. Klicken Sie unter **Computer ermitteln** > **Sind Ihre Computer virtualisiert?** auf **Ja, mit Hyper-V**.
-3. Klicken Sie auf **Herunterladen**, um die VHD-Datei herunterzuladen.
-
-    ![Herunterladen der VM](./media/tutorial-assess-hyper-v/download-appliance-hyperv.png)
-
-
-### <a name="verify-security"></a>Überprüfen der Sicherheit
-
-Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist.
-
-1. Öffnen Sie auf dem Computer, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
-
-2. Führen Sie den folgenden PowerShell-Befehl aus, um den Hash für die ZIP-Datei zu generieren:
-    - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
-    - Beispielverwendung: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
-
-3.  Für die Applianceversion 2.19.07.30 muss der generierte Hash den folgenden Einstellungen entsprechen:
-
-  **Algorithmus** | **Hashwert**
-  --- | ---
-  MD5 | d0a68e76ea24ba4e4a494c0dab95e90e
-  SHA256 | 0551221d2a9de75c352c201ccc88f7f10e87e5df1ecda42bfd4ec6c8defc57c0
-
-
-
-### <a name="create-the-appliance-vm"></a>Erstellen der Appliance-VM
-
-Importieren Sie die heruntergeladene Datei, und erstellen Sie die VM.
-
-1. Laden Sie die gezippte VHD-Datei auf den Hyper-V-Host herunter, auf dem sich die Appliance-VM befinden wird, und extrahieren Sie sie anschließend.
-    - Am Speicherort für das Extrahieren wird die Datei in einem Ordner namens **AzureMigrateAppliance_VersionNumber** entpackt.
-    - Dieser Ordner enthält einen Unterordner, der ebenfalls **AzureMigrateAppliance_VersionNumber** heißt.
-    - Dieser Unterordner enthält drei weitere Unterordner: **Momentaufnahmen** (Snapshots), **VHDs** (Virtual Hard Disks) und **Virtual Machines**.
-
-2. Öffnen Sie den Hyper-V-Manager. Klicken Sie unter **Aktionen** auf **Virtuellen Computer importieren**.
-
-    ![Bereitstellen der VHD](./media/tutorial-assess-hyper-v/deploy-vhd.png)
-
-2. Klicken Sie im Assistenten zum Importieren virtueller Computer unter **Vorbereitung** auf **Weiter**.
-3. Wählen Sie unter **Ordner suchen** den Ordner **Virtual Machines** aus. Klicken Sie auf **Weiter**.
-1. Klicken Sie unter **Virtuellen Computer auswählen** auf **Weiter**.
-2. Klicken Sie unter **Importtyp auswählen** auf **Virtuellen Computer kopieren (neue eindeutige ID erstellen)** . Klicken Sie auf **Weiter**.
-3. Behalten Sie unter **Ziel auswählen** die Standardeinstellung bei. Klicken Sie auf **Weiter**.
-4. Behalten Sie unter **Speicherordner** die Standardeinstellung bei. Klicken Sie auf **Weiter**.
-5. Geben Sie unter **Netzwerk auswählen** den virtuellen Switch an, der von der VM verwendet wird. Der Switch benötigt Internetkonnektivität, um Daten an Azure senden zu können.
-6. Überprüfen Sie die Einstellungen unter **Zusammenfassung**. Klicken Sie auf **Fertig stellen**.
-7. Starten Sie die VM im Hyper-V-Manager unter **Virtuelle Computer**.
-
-
-### <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
-
-Vergewissern Sie sich, dass die Appliance-VM eine Verbindung mit [Azure-URLs](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) herstellen kann.
-
-### <a name="configure-the-appliance"></a>Konfigurieren der Appliance
-
-Führen Sie die Ersteinrichtung der Appliance durch.
-
-1. Klicken Sie im Hyper-V-Manager unter **Virtuelle Computer** mit der rechten Maustaste auf die VM, und klicken Sie anschließend auf **Verbinden**.
-2. Geben Sie die Sprache, die Zeitzone und das Kennwort für die Appliance an.
-3. Öffnen Sie in einem Browser auf einem beliebigen Computer, der eine Verbindung mit der VM herstellen kann, die URL der Appliance-Web-App: **https://*Name oder IP-Adresse der Appliance*: 44368**.
-
-   Alternativ können Sie auch auf dem Appliancedesktop auf die App-Verknüpfung klicken, um die App zu öffnen.
-1. Gehen Sie in der Web-App unter **Erforderliche Komponenten einrichten** wie folgt vor:
-    - **Lizenz**: Akzeptieren Sie die Lizenzbedingungen, und lesen Sie die Drittanbieterinformationen.
-    - **Konnektivität**: Die App überprüft, ob die VM über Internetzugriff verfügt. Sollte die VM einen Proxy verwenden, gehen Sie wie folgt vor:
-      - Klicken Sie auf **Proxyeinstellungen**, und geben Sie die Proxyadresse und den Lauschport an (im Format http://ProxyIPAddress oder http://ProxyFQDN ).
-      - Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
-      - Es werden nur HTTP-Proxys unterstützt.
-    - **Uhrzeitsynchronisierung**: Die Uhrzeit wird überprüft. Die Uhrzeit der Appliance muss mit der Internetzeit synchronisiert werden, damit die VM-Ermittlung ordnungsgemäß funktioniert.
-    - **Updates installieren**: Die Azure Migrate-Serverbewertung überprüft, ob auf der Appliance die neuesten Updates installiert sind.
-
-### <a name="register-the-appliance-with-azure-migrate"></a>Registrieren der Appliance bei Azure Migrate
-
-1. Klicken Sie auf **Anmelden**. Sollte keine Anmeldung angezeigt werden, vergewissern Sie sich, dass Sie den Popupblocker im Browser deaktiviert haben.
-2. Melden Sie sich auf der neuen Registerkarte mit Ihren Azure-Anmeldeinformationen an.
-    - Melden Sie sich mit Ihrem Benutzernamen und Ihrem Kennwort an.
-    - Die Anmeldung mit einer PIN wird nicht unterstützt.
-3. Kehren Sie nach erfolgreicher Anmeldung zur Web-App zurück.
-4. Wählen Sie das Abonnement aus, in dem das Azure Migrate-Projekt erstellt wurde. Wählen Sie anschließend das Projekt aus.
-5. Geben Sie einen Namen für die Appliance an. Für den Namen können bis zu 14 alphanumerische Zeichen angegeben werden.
-6. Klicken Sie auf **Registrieren**.
-
-
-### <a name="delegate-credentials-for-smb-vhds"></a>Delegieren von Anmeldeinformationen für SMB-VHDs
-
-Wenn Sie VHDs in SMBs ausführen, müssen Sie die Delegierung von Anmeldeinformationen von der Appliance an die Hyper-V-Hosts aktivieren. Dafür ist Folgendes erforderlich:
-
-- Sie ermöglichen es jedem Host, als Delegat für die Appliance zu fungieren. Diesen Schritte sollten Sie im vorherigen Tutorial ausgeführt haben, als Sie Hyper-V auf die Bewertung und Migration vorbereitet haben. Sie müssen CredSSP für die Hosts entweder [manuell](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts) oder durch [Ausführung des Konfigurationsskripts für Hyper-V-Voraussetzungen](tutorial-prepare-hyper-v.md#hyper-v-prerequisites-configuration-script) eingerichtet haben.
-- Aktivieren Sie die CredSSP-Delegierung, sodass die Azure Migrate-Appliance als Client fungieren und die Anmeldeinformationen an einen Host delegieren kann.
-
-Gehen Sie zur Aktivierung für die Appliance wie folgt vor:
-
-#### <a name="option-1"></a>Option 1:
-
-Führen Sie auf der Appliance-VM den folgenden Befehl aus. „HyperVHost1“ und „HyperVHost2“ sind Beispielhostnamen.
-
-```
-Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
-```
-
-Beispiel: ` Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force `
-
-#### <a name="option-2"></a>Option 2:
-
-Gehen Sie alternativ im Editor für lokale Gruppenrichtlinien auf der Appliance wie folgt vor:
-
-1. Klicken Sie unter **Richtlinie für "Lokaler Computer"**  > **Computerkonfiguration** auf **Administrative Vorlagen** > **System** > **Delegierung von Anmeldeinformationen**.
-2. Doppelklicken Sie auf **Delegierung von aktuellen Anmeldeinformationen zulassen**, und wählen Sie **Aktiviert** aus.
-3. Klicken Sie unter **Optionen** auf **Anzeigen**, und fügen Sie jeden Hyper-V-Host, den Sie ermitteln möchten, mit dem Präfix **wsman/** der Liste hinzu.
-4. Doppelklicken Sie dann unter **Delegierung von Anmeldeinformationen** auf **Delegierung von aktuellen Anmeldeinformationen mit reiner NTLM-Serverauthentifizierung zulassen**. Fügen Sie auch hier wieder jeden Hyper-V-Host, den Sie ermitteln möchten, mit dem Präfix **wsman/** der Liste hinzu.
-
-## <a name="start-continuous-discovery"></a>Starten der kontinuierlichen Ermittlung
-
-Stellen Sie von der Appliance aus eine Verbindung mit Hyper-V-Hosts oder -Clustern her, und starten Sie VM-Ermittlung.
-
-1. Geben Sie unter **Benutzername** und **Kennwort** die Kontoanmeldeinformationen an, die die Appliance für die VM-Ermittlung verwendet. Geben Sie einen Anzeigenamen für die Anmeldeinformationen an, und klicken Sie auf **Details speichern**.
-2. Klicken Sie auf **Host hinzufügen**, und geben Sie Details zum Hyper-V-Host/-Cluster an.
-3. Klicken Sie auf **Überprüfen**. Nach der Überprüfung wird die Anzahl von VMs angezeigt, die auf dem jeweiligen Host/im jeweiligen Cluster ermittelt werden können.
-    - Sollte bei der Überprüfung eines Hosts ein Fehler auftreten, sehen Sie sich den Fehler an, indem Sie mit dem Mauszeiger auf das Symbol in der Spalte **Status** zeigen. Beheben Sie mögliche Probleme, und wiederholen Sie die Überprüfung.
-    - Wenn Sie Hosts oder Cluster entfernen möchten, wählen Sie **Löschen** aus.
-    - Es ist nicht möglich, einen bestimmten Host aus einem Cluster zu entfernen. Sie können nur den gesamten Cluster entfernen.
-    - Ein Cluster kann auch dann hinzugefügt werden, wenn Probleme mit bestimmten, in dem Cluster enthaltenen Hosts vorliegen.
-4. Klicken Sie nach der Überprüfung auf **Speichern und Ermittlung starten**, um mit der Ermittlung zu beginnen.
-
-Daraufhin wird die Ermittlung gestartet. Es dauert etwa 15 Minuten, bis Metadaten von ermittelten VMs im Azure-Portal angezeigt werden.
-
-### <a name="verify-vms-in-the-portal"></a>Überprüfen virtueller Computer im Portal
-
-Nach Abschluss der Ermittlung können Sie überprüfen, ob die VMs im Portal angezeigt werden.
-
-1. Öffnen Sie das Azure Migrate-Dashboard.
-2. Klicken Sie unter **Azure Migrate – Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf das Symbol mit der Anzahl für **Ermittelte Server**.
-
-## <a name="set-up-an-assessment"></a>Einrichten einer Bewertung
-
-Mit der Azure Migrate-Serverbewertung können zwei Arten von Bewertungen ausgeführt werden:
-
-**Bewertung** | **Details** | **Daten**
+**Bewertung** | **Details** | **Empfehlung**
 --- | --- | ---
-**Leistungsbasiert** | Bewertungen basierend auf gesammelten Leistungsdaten | **Empfohlene VM-Größe**: Basierend auf CPU- und Arbeitsspeicher-Nutzungsdaten<br/><br/> **Empfohlener Datenträgertyp (Verwalteter Datenträger vom Typ Standard oder Premium)** : Basierend auf IOPS und Durchsatz der lokalen Datenträger
-**Wie lokal** | Bewertungen basierend auf lokaler Größenanpassung | **Empfohlene VM-Größe**: Basierend auf der Größe der lokalen VM<br/><br> **Empfohlener Datenträgertyp**: Basierend auf der für die Bewertung ausgewählten Speichertypeinstellung
+**Aktuelle lokale Umgebung** | Bewertung basierend auf den Daten bzw. Metadaten für die Computerkonfiguration.  | Die empfohlene Größe der Azure-VM basiert auf der lokalen VM-Größe.<br/><br> Der empfohlene Azure-Datenträgertyp basiert auf Ihrer Auswahl in der Speichertypeinstellung in der Bewertung.
+**Leistungsbasiert** | Bewertung basierend auf gesammelten dynamischen Leistungsdaten. | Die empfohlene Größe der Azure-VM basiert auf den Daten zur Auslastung der CPU und des Arbeitsspeichers.<br/><br/> Der empfohlene Datenträgertyp basiert auf dem IOPS-Wert und dem Durchsatz der lokalen Datenträger.
 
 
-
-### <a name="run-an-assessment"></a>Durchführen einer Bewertung
+## <a name="run-an-assessment"></a>Durchführen einer Bewertung
 
 Führen Sie eine Bewertung wie folgt aus:
 
-1. Machen Sie sich mit den [bewährten Methoden](best-practices-assessment.md) für die Bewertungserstellung vertraut.
-2. Klicken Sie unter **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Bewerten**.
+1. Klicken Sie auf der Seite **Server** unter **Windows- und Linux-Server** auf **Server bewerten und migrieren**.
 
-    ![Bewerten](./media/tutorial-assess-hyper-v/assess.png)
+   ![Ort der Schaltfläche „Server bewerten und migrieren“](./media/tutorial-assess-vmware-azure-vm/assess.png)
 
-3. Geben Sie unter **Server bewerten** einen Namen für die Bewertung an.
-4. Klicken Sie auf **Alle anzeigen**, um die Eigenschaften für die Bewertung zu überprüfen.
+2. Klicken Sie unter „Azure Migrate-Serverbewertung“ auf **Bewerten**.
 
-    ![Bewertungseigenschaften](./media/tutorial-assess-hyper-v/assessment-properties.png)
+    ![Position der Schaltfläche „Bewerten“](./media/tutorial-assess-vmware-azure-vm/assess-servers.png)
 
-3. Wählen Sie unter **Gruppe auswählen oder erstellen** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Gruppe ein. Eine Gruppe enthält mindestens eine zu bewertende VM.
-4. Wählen Sie unter **Computer zur Gruppe hinzufügen** die VMs aus, die der Gruppe hinzugefügt werden sollen.
-5. Klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen und die Bewertung auszuführen.
+3. Wählen Sie unter **Server bewerten** > **Bewertungstyp** die Option **Azure-VM** aus.
+4. Unter **Ermittlungsquelle**:
 
-    ![Erstellen einer Bewertung](./media/tutorial-assess-hyper-v/assessment-create.png)
+    - Wählen Sie die Option **Von Azure Migrate-Appliance erkannte Computer** aus, falls Sie Computer mit der Appliance ermittelt haben.
+    - Wählen Sie die Option **Importierte Computer** aus, falls Sie Computer mit einer importierten CSV-Datei ermittelt haben. 
+    
+5. Geben Sie einen Namen für die Bewertung an. 
+6. Klicken Sie auf **Alle anzeigen**, um die Eigenschaften für die Bewertung zu überprüfen.
 
-6. Zeigen Sie die erstellte Bewertung unter **Server** > **Azure Migrate: Serverbewertung** aus.
-7. Klicken Sie auf **Bewertung exportieren**, um sie als Excel-Datei herunterzuladen.
+    ![Ort der Schaltfläche „Alle anzeigen“ zum Anzeigen der Bewertungseigenschaften](./media/tutorial-assess-vmware-azure-vm/assessment-name.png)
 
+7. Unter **Bewertungseigenschaften** > **Zieleigenschaften**:
+    - Geben Sie unter **Zielspeicherort** die Azure-Region an, zu der Sie die Migration durchführen möchten.
+        - Empfehlungen zur Größe und zu den Kosten basieren auf dem von Ihnen angegebenen Standort.
+        - Bei Azure Government können Sie Bewertungen in [diesen Regionen](migrate-support-matrix.md#supported-geographies-azure-government) durchführen.
+    - Unter **Speichertyp**:
+        - Wählen Sie bei Verwendung von leistungsbezogenen Daten in der Bewertung die Option **Automatisch** für Azure Migrate aus, um basierend auf dem IOPS-Wert und dem Durchsatz des Datenträgers eine Empfehlung zum Speichertyp anzuzeigen.
+        - Wählen Sie alternativ den Speichertyp aus, den Sie beim Migrieren für die VM verwenden möchten.
+    - Geben Sie unter **Reservierte Instanzen** an, ob Sie für die VM beim Migrieren reservierte Instanzen verwenden möchten.
+        - Wenn Sie die Verwendung einer reservierten Instanz auswählen, können Sie nicht **Abzug (%)** oder **VM-Betriebszeit** angeben. 
+        - [Weitere Informationen](https://aka.ms/azurereservedinstances)
+8. Unter **VM-Größe**:
+ 
+    - Wählen Sie unter **Größenkriterium** aus, ob die Bewertung auf Daten bzw. Metadaten für die Computerkonfiguration oder leistungsbezogenen Daten basieren soll. Bei Verwendung von Leistungsdaten:
+        - Geben Sie unter **Leistungsverlauf** die Datendauer an, auf der die Bewertung basieren soll.
+        - Geben Sie unter **Perzentilwert der Nutzung** den Perzentilwert an, den Sie für das Leistungsbeispiel verwenden möchten. 
+    - Geben Sie unter **VM-Serie** die gewünschte Azure-VM-Serie an.
+        - Bei Verwendung der leistungsbezogenen Bewertung wird Ihnen von Azure Migrate ein Wert vorgeschlagen.
+        - Optimieren Sie die Einstellungen nach Bedarf. Wenn Sie beispielsweise in der Produktionsumgebung keine virtuellen Computer der A-Serie in Azure benötigen, können Sie die A-Serie aus der Liste der Serien ausschließen.
+    - Geben Sie unter **Komfortfaktor** den Puffer an, den Sie während der Bewertung verwenden möchten. Hierbei werden Aspekte wie saisonale Nutzung, ein kurzer Leistungsverlauf und eine voraussichtliche Zunahme der zukünftigen Nutzung berücksichtigt. Beispiel für einen Komfortfaktor von „2“: **Komponente** | **Tatsächliche Auslastung** | **Komfortfaktor hinzufügen (2.0)** Kerne | 2 | 4 Arbeitsspeicher | 8 GB | 16 GB     
+   
+9. Unter **Preise**:
+    - Geben Sie unter **Angebot** das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/) ein, wenn Sie registriert sind. Bei der Serverbewertung werden die Kosten für dieses Angebot geschätzt.
+    - Wählen Sie unter **Währung** die Abrechnungswährung für Ihr Konto aus.
+    - Fügen Sie unter **Abzug (%)** alle abonnementspezifischen Rabatte hinzu, die Sie zusätzlich zum Azure-Angebot erhalten. Die Standardeinstellung ist 0 %.
+    - Geben Sie unter **VM-Betriebszeit** die Dauer (Tage pro Monat/Stunden pro Tag) für die Ausführung der VMs an.
+        - Dies ist für Azure-VMs hilfreich, die nicht dauerhaft ausgeführt werden.
+        - Die Kostenschätzungen basieren auf der angegebenen Dauer.
+        - Der Standardwert ist „31 Tage pro Monat/24 Stunden pro Tag“.
+
+    - Geben Sie unter **EA-Abonnement** an, ob bei der Kostenschätzung ein Rabatt für ein EA-Abonnement (Enterprise Agreement) berücksichtigt werden soll. 
+    - Geben Sie unter **Azure-Hybridvorteil** an, ob Sie bereits über eine Windows Server-Lizenz verfügen. Wenn dies der Fall ist und eine aktive Software Assurance-Abdeckung für Windows Server-Abonnements besteht, können Sie sich für den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/) bewerben, sofern Sie eigene Lizenzen für Azure mitbringen.
+
+10. Klicken Sie auf **Speichern**, falls Sie Änderungen vorgenommen haben.
+
+    ![Bewertungseigenschaften](./media/tutorial-assess-vmware-azure-vm/assessment-properties.png)
+
+11. Klicken Sie unter **Server bewerten** auf **Weiter**.
+12. Wählen Sie unter **Computer für die Bewertung auswählen** die Option **Neu erstellen** aus, und geben Sie einen Gruppennamen an. 
+13. Wählen Sie die Appliance und dann die VMs aus, die Sie der Gruppe hinzufügen möchten. Klicken Sie dann auf **Weiter**.
+14. Sehen Sie sich unter „Überprüfen + Bewertung erstellen“ die Bewertungsdetails an, und klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen und die Bewertung durchzuführen.
+
+
+    > [!NOTE]
+    > Bei leistungsbezogenen Bewertungen empfehlen wir Ihnen, nach dem Starten einer Ermittlung mindestens einen Tag zu warten, bevor Sie eine Bewertung erstellen. Dies ermöglicht einen längeren Zeitraum zum Sammeln von Leistungsdaten mit höherer Zuverlässigkeit. Idealerweise sollten Sie nach dem Starten der Ermittlung den Zeitraum der Leistungsdauer abwarten, den Sie angegeben haben (Tag/Woche/Monat), um eine Bewertung mit einer hohen Zuverlässigkeit zu erzielen.
 
 ## <a name="review-an-assessment"></a>Überprüfen einer Bewertung
 
@@ -275,75 +127,64 @@ Eine Bewertung beschreibt Folgendes:
 - **Geschätzte monatliche Kosten**: Die geschätzten monatlichen Compute- und Speicherkosten für die Ausführung der VMs in Azure.
 - **Geschätzte monatliche Speicherkosten**: Die geschätzten Kosten für den Datenträgerspeicher nach der Migration.
 
+So zeigen Sie eine Bewertung an:
 
-### <a name="view-an-assessment"></a>Anzeigen einer Bewertung
+1. Klicken Sie unter **Server** > **Azure Migrate: Serverbewertung** auf die Zahl neben **Bewertungen**.
+2. Wählen Sie unter **Bewertungen** eine Bewertung aus, um sie zu öffnen. Beispiel (Schätzungen und Kosten gelten nur für das Beispiel): 
 
-1. Klicken Sie unter **Migrationsziele** >  **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Bewertungen**.
-2. Klicken Sie unter **Bewertungen** auf eine Bewertung, um sie zu öffnen.
+    ![Zusammenfassung der Bewertung](./media/tutorial-assess-vmware-azure-vm/assessment-summary.png)
 
-    ![Zusammenfassung der Bewertung](./media/tutorial-assess-hyper-v/assessment-summary.png)
+3. Sehen Sie sich die Zusammenfassung der Bewertung an. Sie können auch die Bewertungseigenschaften bearbeiten oder die Bewertung neu berechnen.
+ 
+ 
+### <a name="review-readiness"></a>Überprüfen der Bereitschaft
 
-
-### <a name="review-azure-readiness"></a>Überprüfen der Azure-Bereitschaft
-
-1. Überprüfen Sie unter **Azure-Bereitschaft**, ob VMs für die Migration zu Azure bereit sind.
-2. Überprüfen Sie den VM-Status:
-    - **Bereit für Azure**: Azure Migrate empfiehlt in der Bewertung eine VM-Größe und gibt Kostenschätzungen für VMs ab.
+1. Klicken Sie auf **Azure-Bereitschaft**.
+2. Sehen Sie sich unter **Azure-Bereitschaft** den VM-Status an:
+    - **Bereit für Azure**: Wird verwendet, wenn Azure Migrate in der Bewertung eine VM-Größe empfiehlt und Kostenschätzungen für virtuelle Computer angibt.
     - **Bereit mit Bedingungen**: Zeigt Probleme und eine vorgeschlagene Abhilfe an.
     - **Nicht bereit für Azure**: Zeigt Probleme und eine vorgeschlagene Abhilfe an.
     - **Bereitschaft unbekannt**: Wird verwendet, wenn Azure Migrate die Bereitschaft aufgrund von Problemen mit der Datenverfügbarkeit nicht bewerten kann.
 
-2. Klicken Sie auf einen **Azure-Bereitschaftsstatus**. Sie können Details zur VM-Bereitschaft sowie VM-Details wie Compute-, Speicher- und Netzwerkeinstellungen anzeigen.
+3. Wählen Sie unter **Azure-Bereitschaft** einen Status aus. Sie können Details zur VM-Bereitschaft anzeigen. Darüber hinaus können Sie VM-Details wie Compute-, Speicher- und Netzwerkeinstellungen anzeigen.
 
-### <a name="review-cost-details"></a>Überprüfen der Kostendetails
+### <a name="review-cost-estimates"></a>Überprüfen der Kostenschätzungen
 
-In dieser Ansicht werden die geschätzten Compute- und Speicherkosten für die Ausführung der VMs in Azure angezeigt.
+Die Zusammenfassung der Bewertung enthält die geschätzten Compute- und Speicherkosten für die VM-Ausführung in Azure. 
 
-1. Überprüfen Sie die monatlichen Compute- und Speicherkosten. Die Kosten für alle VMs in der bewerteten Gruppe werden aggregiert.
+1. Überprüfen Sie die monatlichen Gesamtkosten. Die Kosten für alle VMs in der bewerteten Gruppe werden aggregiert.
 
     - Kostenschätzungen basieren auf den Größenempfehlungen für einen Computer sowie auf seinen Datenträgern und Eigenschaften.
     - Die geschätzten monatlichen Kosten für Compute und Speicher werden angezeigt.
-    - Die Kostenschätzung gilt für die Ausführung der lokalen VMs als IaaS-VMs. PaaS- oder SaaS-Kosten werden von der Azure Migrate-Serverbewertung nicht berücksichtigt.
+    - Die Kostenschätzung gilt für die Ausführung der lokalen VMs auf Azure-VMs. Bei der Schätzung werden keine PaaS- oder SaaS-Kosten berücksichtigt.
 
-2. Sie können die geschätzten monatlichen Speicherkosten überprüfen. Diese Ansicht zeigt aggregierte Speicherkosten für die bewertete Gruppe, aufgeschlüsselt nach verschiedenen Arten von Speicherdatenträgern.
-3. Sie können einen Drilldown ausführen, um die Details für bestimmte VMs anzuzeigen.
-
+2. Überprüfen Sie die monatlichen Speicherkosten. In der Ansicht werden die aggregierten Speicherkosten für die bewertete Gruppe angezeigt, aufgeschlüsselt nach verschiedenen Arten von Speicherdatenträgern. 
+3. Sie können einen Drilldown ausführen, um Kostendetails für bestimmte virtuelle Computer anzuzeigen.
 
 ### <a name="review-confidence-rating"></a>Prüfen der Zuverlässigkeitsstufe
 
-Wenn Sie leistungsbasierte Bewertungen ausführen, wird der Bewertung eine Zuverlässigkeitsstufe zugewiesen.
+Von der Serverbewertung wird für leistungsbezogene Bewertungen eine Zuverlässigkeitsstufe zugewiesen. Die Bewertung kann einen Wert zwischen einem Stern (am niedrigsten) und fünf Sternen (am höchsten) aufweisen.
 
-![Zuverlässigkeitsstufe](./media/tutorial-assess-hyper-v/confidence-rating.png)
+![Zuverlässigkeitsstufe](./media/tutorial-assess-vmware-azure-vm/confidence-rating.png)
 
-- Es wird eine Bewertung zwischen einem Stern (niedrigste Stufe) und fünf Sternen (höchste Stufe) vergeben.
-- Anhand der Zuverlässigkeitsstufe können Sie die Zuverlässigkeit der von der Bewertung bereitgestellten Größenempfehlungen besser einschätzen.
-- Die Zuverlässigkeitsstufe basiert auf der Verfügbarkeit von Datenpunkten, die zum Berechnen der Bewertung erforderlich sind.
+Anhand der Zuverlässigkeitsstufe können Sie die Zuverlässigkeit der Größenempfehlungen in der Bewertung besser einschätzen. Die Stufe basiert auf der Verfügbarkeit von Datenpunkten, die für die Berechnung der Bewertung erforderlich sind.
 
-Die Zuverlässigkeitsstufen für eine Bewertung sehen wie folgt aus:
+> [!NOTE]
+> Zuverlässigkeitsstufen werden nicht zugewiesen, wenn Sie eine Bewertung basierend auf einer CSV-Datei erstellen.
+
+Die Zuverlässigkeitsstufen lauten wie unten angegeben.
 
 **Verfügbarkeit von Datenpunkten** | **Zuverlässigkeitsstufe**
 --- | ---
-0 % bis 20 % | Ein Stern
-21 % bis 40 % | Zwei Sterne
-41 % bis 60 % | Drei Sterne
-61 % bis 80 % | Vier Sterne
-81 % bis 100 % | Fünf Sterne
+0 % bis 20 % | 1 Stern
+21 % bis 40 % | 2 Sterne
+41 % bis 60 % | 3 Sterne
+61 % bis 80 % | 4 Sterne
+81 % bis 100 % | 5 Sterne
 
-Weitere Informationen zu bewährten Methoden für Zuverlässigkeitsstufen finden Sie [hier](best-practices-assessment.md#best-practices-for-confidence-ratings).
-
-
-
-
+Informieren Sie sich über [Zuverlässigkeitsstufen](concepts-assessment-calculation.md#confidence-ratings-performance-based).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial führen Sie Folgendes durch:
-
-> [!div class="checklist"]
-> * Einrichten einer Azure Migrate-Appliance
-> * Erstellen und Überprüfen einer Bewertung
-
-Im dritten Tutorial der Reihe erfahren Sie, wie Sie Hyper-V-VMs mithilfe der Azure Migrate-Servermigration zu Azure migrieren.
-
-> [!div class="nextstepaction"]
-> [Migrieren von virtuellen Hyper-V-Computern zu Azure](./tutorial-migrate-hyper-v.md)
+- Suchen Sie nach Computerabhängigkeiten, indem Sie die [Zuordnung von Abhängigkeiten](concepts-dependency-visualization.md) verwenden.
+- Richten Sie die Abhängigkeitszuordnung [mit Agent](how-to-create-group-machine-dependencies.md) ein.

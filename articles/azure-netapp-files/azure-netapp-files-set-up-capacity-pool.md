@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 02/15/2019
+ms.topic: how-to
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 8f50b2ad34c705c8d3831d8243f136c41d750dc0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60691097"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325408"
 ---
 # <a name="set-up-a-capacity-pool"></a>Einrichten eines Kapazitätspools
 
@@ -47,18 +47,29 @@ Sie müssen bereits ein NetApp-Konto erstellt haben.
 
    * **Servicelevel**   
      In diesem Feld wird die gewünschte Leistung des Kapazitätspools angezeigt.  
-     Geben Sie die Dienstebene für den Kapazitätspool an: [**Premium**](azure-netapp-files-service-levels.md#Premium) oder [**Standard**](azure-netapp-files-service-levels.md#Standard).
+     Geben Sie die Dienstebene für den Kapazitätspool an: [**Ultra**](azure-netapp-files-service-levels.md#Ultra), [**Premium**](azure-netapp-files-service-levels.md#Premium) oder [**Standard**](azure-netapp-files-service-levels.md#Standard).
 
-   * **Größe**     
+    * **Größe**     
      Geben Sie die Größe des Kapazitätspools an, den Sie erwerben.        
      Die Mindestgröße eines Kapazitätspools beträgt 4 TiB. Die Poolgröße kann auf ein Vielfaches von 4 TiB festgelegt werden.   
-      
-     ![Neuer Kapazitätspool](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. Klicken Sie auf **OK**.
+   * **QoS**   
+     Geben Sie an, ob für den Kapazitätspool der QoS-Typ **Manuell** oder **Automatisch** verwendet werden soll.  
+
+     Informationen zu den QoS-Typen finden Sie unter [Speicherhierarchie von Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md) und [Überlegungen zur Leistung für Azure NetApp Files](azure-netapp-files-performance-considerations.md).  
+
+     > [!IMPORTANT] 
+     > Wenn Sie **QoS-Typ** auf **Manuell** festlegen, kann dies nicht rückgängig gemacht werden. Sie können einen manuellen QoS-Kapazitätspool nicht auf die Verwendung des QoS-Typs „Automatisch“ umstellen. Sie können jedoch einen automatischen QoS-Kapazitätspool auf die Verwendung des QoS-Typs „Manuell“ umstellen. Weitere Informationen finden Sie unter [Ändern eines Kapazitätspools für die Verwendung der manuellen QoS](manage-manual-qos-capacity-pool.md#change-to-qos).   
+     > Bei Verwendung des QoS-Typs „Manuell“ für einen Kapazitätspool ist die Registrierung erforderlich. Informationen hierzu finden Sie unter [Verwalten eines manuellen QoS-Kapazitätspools](manage-manual-qos-capacity-pool.md#register-the-feature). 
+
+    ![Neuer Kapazitätspool](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+
+4. Klicken Sie auf **Erstellen**.
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
+- [Speicherhierarchie](azure-netapp-files-understand-storage-hierarchy.md) 
 - [Dienstebenen für Azure NetApp Files](azure-netapp-files-service-levels.md)
-- Die Preise der verschiedenen Dienstebenen finden Sie unter [Preise für Azure NetApp Files (Vorschauversion)](https://azure.microsoft.com/pricing/details/storage/netapp/).
+- [Seite mit den Preisen von Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [Verwalten eines manuellen QoS-Kapazitätspools](manage-manual-qos-capacity-pool.md)
 - [Delegieren eines Subnetzes für Azure NetApp Files](azure-netapp-files-delegate-subnet.md)

@@ -1,42 +1,43 @@
 ---
-title: Verschieben von Logik-App-Ressourcen zwischen Abonnements, Ressourcengruppen oder Regionen – Azure Logic Apps
+title: Verschieben von Logik-Apps zwischen Abonnements, Ressourcengruppen oder Regionen
 description: Migrieren von Logik-Apps oder Integrationskonten zu anderen Azure-Abonnements, -Ressourcengruppen oder -Standorten (Regionen)
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: e7c201004be6c4d39f482cc288824cba74e302cb
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.date: 04/06/2020
+ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737300"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87826210"
 ---
-# <a name="migrate-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Migrieren von Logik-App-Ressourcen zu anderen Azure-Abonnements, -Ressourcengruppen oder -Regionen
+# <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Verschieben von Logik-App-Ressourcen zu anderen Azure-Ressourcengruppen, -Regionen oder -Abonnements
 
-Wenn Sie Ihre Logik-App oder verwandte Ressourcen in ein anderes Azure-Abonnement, eine andere Ressourcengruppe oder Region verschieben möchten, haben Sie verschiedene Möglichkeiten, diese Aufgaben auszuführen, z. B. das Azure-Portal, Azure PowerShell, Azure CLI und die REST-API. Überprüfen Sie vor dem Verschieben von Ressourcen die folgenden Punkte: 
+Wenn Sie Ihre Logik-App oder verwandte Ressourcen zu einem anderen Azure-Abonnement oder zu einer anderen Ressourcengruppe oder Region migrieren möchten, können Sie dazu beispielsweise das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle oder die REST-API verwenden. Überprüfen Sie vor dem Verschieben von Ressourcen die folgenden Punkte: 
 
-* Sie können nur [bestimmte Logik-App-Ressourcentypen](../azure-resource-manager/move-support-resources.md#microsoftlogic) zwischen Azure-Ressourcengruppen oder -Abonnements verschieben.
+* Sie können nur [bestimmte Logik-App-Ressourcentypen](../azure-resource-manager/management/move-support-resources.md#microsoftlogic) zwischen Azure-Ressourcengruppen oder -Abonnements verschieben.
 
 * Überprüfen Sie die [Limits](../logic-apps/logic-apps-limits-and-config.md) für die Anzahl von Logik-App-Ressourcen, die Sie in Ihrem Azure-Abonnement und in jeder Azure-Region haben können. Diese Limits beeinflussen, ob Sie bestimmte Ressourcentypen verschieben können, wenn die Region in Abonnements oder Ressourcengruppen gleich bleibt. Beispielsweise können Sie nur ein Integrationskonto im Free-Tarif für jede Azure-Region in jedem Azure-Abonnement haben.
 
-* Wenn Sie Ressourcen verschieben, erstellt Azure neue Ressourcen-IDs. Stellen Sie daher sicher, dass Sie die neuen IDs verwenden, und aktualisieren Sie alle Skripts und Tools, die den verschobenen Ressourcen zugeordnet sind. Nachdem Sie Logik-Apps zwischen Abonnements, Ressourcengruppen oder Regionen verschoben haben, müssen Sie alle OAuth-basierten Verbindungen neu erstellen oder neu autorisieren.
+* Wenn Sie Ressourcen verschieben, erstellt Azure neue Ressourcen-IDs. Stellen Sie daher sicher, dass Sie die neuen IDs verwenden, und aktualisieren Sie alle Skripts und Tools, die den verschobenen Ressourcen zugeordnet sind.
+
+* Nachdem Sie Logik-Apps zwischen Abonnements, Ressourcengruppen oder Regionen migriert haben, müssen alle Verbindungen, die Open Authorization (OAuth) erfordern, neu erstellen oder neu autorisieren.
+
+* Sie können eine [Integrationsdienstumgebung](connect-virtual-network-vnet-isolated-environment-overview.md) nur in eine andere Ressourcengruppe verschieben, die sich in derselben Azure-Region oder demselben Azure-Abonnement befindet. Sie können eine Integrationsdienstumgebung nicht in eine Ressourcengruppe verschieben, die sich in einer anderen Azure-Region oder einem anderen Azure-Abonnement befindet. Außerdem müssen Sie alle Verweise auf die Integrationsdienstumgebung nach einer solchen Migration in Ihren Logik-App-Workflows, Integrationskonten, Verbindungen usw. aktualisieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Dasselbe Azure-Abonnement, das zum Erstellen der Logik-App oder des Integrationskontos verwendet wurde, das Sie verschieben möchten.
 
-* Ressourcenbesitzerberechtigungen zum Verschieben und Einrichten der gewünschten Ressourcen. Weitere Informationen zur [rollenbasierten Zugriffssteuerung (RBAC)](../role-based-access-control/built-in-roles.md#owner).
+* Ressourcenbesitzerberechtigungen zum Verschieben und Einrichten der gewünschten Ressourcen. Erfahren Sie mehr über die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/built-in-roles.md#owner).
 
 <a name="move-subscription"></a>
 
 ## <a name="move-resources-between-subscriptions"></a>Verschieben von Ressourcen zwischen Abonnements
 
-Um eine Ressource, beispielsweise eine Logik-App oder ein Integrationskonto, in ein anderes Azure-Abonnement zu verschieben, können Sie das Azure-Portal, Azure PowerShell, Azure CLI oder die REST-API verwenden. Diese Schritte behandeln das Azure-Portal, das Sie verwenden können, wenn die Region der Ressource unverändert bleibt. Informationen zu anderen Schritten und zur allgemeinen Vorbereitung finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
+Um eine Ressource, beispielsweise eine Logik-App oder ein Integrationskonto, in ein anderes Azure-Abonnement zu verschieben, können Sie das Azure-Portal, Azure PowerShell, Azure CLI oder die REST-API verwenden. Diese Schritte behandeln das Azure-Portal, das Sie verwenden können, wenn die Region der Ressource unverändert bleibt. Informationen zu anderen Schritten und zur allgemeinen Vorbereitung finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach der Logik-App-Ressource, die Sie verschieben möchten, und wählen Sie sie aus.
 
@@ -54,9 +55,9 @@ Um eine Ressource, beispielsweise eine Logik-App oder ein Integrationskonto, in 
 
 ## <a name="move-resources-between-resource-groups"></a>Verschieben von Ressourcen zwischen Ressourcengruppen
 
-Um eine Ressource, beispielsweise eine Logik-App oder ein Integrationskonto, in eine andere Azure-Ressourcengruppe zu verschieben, können Sie das Azure-Portal, Azure PowerShell, Azure CLI oder die REST-API verwenden. Diese Schritte behandeln das Azure-Portal, das Sie verwenden können, wenn die Region der Ressource unverändert bleibt. Informationen zu anderen Schritten und zur allgemeinen Vorbereitung finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
+Zum Verschieben einer Ressource wie einer Logik-App, einem Integrationskonto oder einer [Integrationsdienstumgebung](connect-virtual-network-vnet-isolated-environment-overview.md) in eine andere Azure-Ressourcengruppe, können Sie das Azure-Portal, Azure PowerShell, die Azure CLI oder die REST-API verwenden. Diese Schritte behandeln das Azure-Portal, das Sie verwenden können, wenn die Region der Ressource unverändert bleibt. Informationen zu anderen Schritten und zur allgemeinen Vorbereitung finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-Bevor Sie Ressourcen tatsächlich zwischen Gruppen verschieben, können Sie testen, ob Sie Ihre Ressource erfolgreich in eine andere Gruppe verschieben können. Weitere Informationen finden Sie unter [Überprüfen Ihrer Verschiebung](../azure-resource-manager/resource-group-move-resources.md#validate-move).
+Bevor Sie Ressourcen tatsächlich zwischen Gruppen verschieben, können Sie testen, ob Sie Ihre Ressource erfolgreich in eine andere Gruppe verschieben können. Weitere Informationen finden Sie unter [Überprüfen Ihrer Verschiebung](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move).
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach der Logik-App-Ressource, die Sie verschieben möchten, und wählen Sie sie aus.
 
@@ -93,7 +94,7 @@ Einige Azure-Ressourcen wie lokale Datengateway-Ressourcen in Azure können in e
 
 Um beispielsweise eine Logik-App mit einem Integrationskonto zu verknüpfen, müssen sich beide Ressourcen in derselben Region befinden. In Szenarien wie einer Notfallwiederherstellung benötigen Sie in der Regel Integrationskonten, die über dieselbe Konfiguration und dieselben Artefakte verfügen. In anderen Szenarien benötigen Sie möglicherweise Integrationskonten mit unterschiedlichen Konfigurationen und Artefakten.
 
-Benutzerdefinierte Connectors in Azure Logic Apps sind für die Ersteller und Benutzer der Connectors sichtbar, die dasselbe Azure-Abonnement und denselben Azure Active Directory-Mandanten haben. Diese Connectors sind in derselben Region verfügbar, in der Logik-Apps bereitgestellt werden. Weitere Informationen finden Sie unter [Freigeben eines benutzerdefinierten Connectors in Ihrer Organisation](https://docs.microsoft.com/connectors/custom-connectors/share).
+Benutzerdefinierte Connectors in Azure Logic Apps sind für die Ersteller und Benutzer der Connectors sichtbar, die dasselbe Azure-Abonnement und denselben Azure Active Directory-Mandanten haben. Diese Connectors sind in derselben Region verfügbar, in der Logik-Apps bereitgestellt werden. Weitere Informationen finden Sie unter [Freigeben eines benutzerdefinierten Connectors in Ihrer Organisation](/connectors/custom-connectors/share).
 
 Die Vorlage, die Sie von Visual Studio erhalten, umfasst nur die Ressourcendefinitionen für Ihre Logik-App und deren Verbindungen. Wenn Ihre Logik-App also andere Ressourcen verwendet, z. B. ein Integrationskonto und B2B-Artefakte, beispielsweise Partner, Vereinbarungen und Schemas, müssen Sie die Vorlage dieses Integrationskontos mithilfe des Azure-Portals exportieren. Diese Vorlage umfasst die Ressourcendefinitionen für sowohl das Integrationskonto als auch die Artefakte. Die Vorlage ist allerdings nicht vollständig parametrisiert. Daher müssen Sie die Werte, die Sie für die Bereitstellung verwenden möchten, manuell parametrisieren.
 
@@ -109,4 +110,4 @@ Die Vorlage, die Sie von Visual Studio erhalten, umfasst nur die Ressourcendefin
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Verschieben von Azure-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md)
+[Verschieben von Azure-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)

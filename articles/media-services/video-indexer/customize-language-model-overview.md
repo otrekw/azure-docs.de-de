@@ -1,6 +1,6 @@
 ---
 title: 'Anpassen eines Sprachmodells in Video Indexer: Azure'
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Dieser Artikel enthält einen Überblick darüber, was ein Sprachmodell in Video Indexer ist und wie Sie es anpassen können.
 services: media-services
 author: anikaz
@@ -9,17 +9,17 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
-ms.author: anzaman
-ms.openlocfilehash: 516ecd8842e7b673201cc640b283c081a02d2b2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.openlocfilehash: 29490e08748a37f7eb93fbb8804f55f74c53df35
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799561"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87047137"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>Anpassen eines Sprachmodells mit Video Indexer
 
-Video Indexer unterstützt die automatische Spracherkennung durch die Integration in Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Sie können das Sprachmodell anpassen, indem Sie den Anpassungstext hochladen. Dies ist Text aus der Domäne, an dessen Vokabular sich das Modul anpassen soll. Nachdem Sie Ihr Modell trainiert haben, werden neue Wörter aus dem Anpassungstext erkannt, und die Standardaussprache wird übernommen. Darüber hinaus lernt das Sprachmodell neue Wortsequenzen, für die die Wahrscheinlichkeit des Auftretens hoch ist. Benutzerdefinierte Sprachmodelle werden für Englisch, Spanisch, Französisch, Deutsch, Italienisch, Chinesisch (vereinfacht), Japanisch, Russisch, brasilianisches Portugiesisch, Hindi und Koreanisch unterstützt. 
+Video Indexer unterstützt die automatische Spracherkennung durch die Integration in Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Sie können das Sprachmodell anpassen, indem Sie den Anpassungstext hochladen. Dies ist Text aus der Domäne, an dessen Vokabular sich das Modul anpassen soll. Nachdem Sie Ihr Modell trainiert haben, werden neue Wörter aus dem Anpassungstext erkannt, und die Standardaussprache wird übernommen. Darüber hinaus lernt das Sprachmodell neue Wortsequenzen, für die die Wahrscheinlichkeit des Auftretens hoch ist. Benutzerdefinierte Sprachmodelle werden für Englisch, Spanisch, Französisch, Deutsch, Italienisch, Chinesisch (vereinfacht), Japanisch, Russisch, Portugiesisch, Hindi und Koreanisch unterstützt. 
 
 Wir verwenden ein sehr spezifisches Wort wie „Kubernetes“ (im Kontext des Azure Kubernetes Service) als Beispiel. Da das Wort für Video Indexer neu ist, wird es als „Communitys“ erkannt. Sie müssen das Modell trainieren, damit „Kubernetes“ richtig erkannt wird. In anderen Fällen sind die Wörter zwar vorhanden, aber das Sprachmodell erwartet ihr Vorkommen in einem bestimmten Kontext nicht. Im Englischen handelt es sich bei „container service“ beispielsweise nicht um eine Folge von zwei Wörtern, die von einem nicht speziell trainierten Sprachmodell als spezifische Wortfolge erkannt wird.
 

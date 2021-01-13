@@ -1,22 +1,22 @@
 ---
 title: Migrieren von Azure-Verwaltungstools von Azure Deutschland zu Azure weltweit
 description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Verwaltungstools von Azure Deutschland zu Azure weltweit.
+ms.topic: article
+ms.date: 10/16/2020
 author: gitralf
-services: germany
-cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 08/15/2018
-ms.topic: article
-ms.custom: bfmigrate
-ms.openlocfilehash: a9c3ca3a4047e69efedaa0baa93d3f1923c78c22
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.custom: bfmigrate, devx-track-azurecli
+ms.openlocfilehash: e048a0761dbbc6458d8dc6aa3e639d173097e5f0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272529"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018585"
 ---
 # <a name="migrate-management-tool-resources-to-global-azure"></a>Migrieren von Verwaltungstoolressourcen zu Azure weltweit
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 Dieser Artikel enthält Informationen dazu, wie Sie Azure-Verwaltungstools von Azure Deutschland zu Azure weltweit migrieren können.
 
@@ -36,9 +36,9 @@ Sie können zusätzliche Endpunkte in der Zielumgebung definieren, indem Sie den
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Traffic Manager-Tutorials](https://docs.microsoft.com/azure/traffic-manager) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Traffic Manager-Tutorials](../traffic-manager/index.yml) durcharbeiten.
 - Lesen Sie [Was ist Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
-- Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](../traffic-manager/traffic-manager-create-profile.md).
+- Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 - Erfahren Sie mehr über das [Blau-Grün-Szenario](https://azure.microsoft.com/blog/blue-green-deployments-using-azure-traffic-manager/).
 
 ## <a name="backup"></a>Backup
@@ -47,28 +47,28 @@ Azure Backup-Aufträge und -Momentaufnahmen von Azure Deutschland können nicht 
 
 Weitere Informationen finden Sie unter: 
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Backup](https://docs.microsoft.com/azure/backup/#step-by-step-tutorials) durcharbeiten.
-- Lesen Sie die [Übersicht über die Funktionen in Azure Backup](../backup/backup-introduction-to-azure-backup.md).
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Backup](../backup/index.yml) durcharbeiten.
+- Lesen Sie die [Übersicht über die Funktionen in Azure Backup](../backup/backup-overview.md).
 
 ## <a name="scheduler"></a>Scheduler
 
-Azure Scheduler ist veraltet. Verwenden Sie Azure Logic Apps zum Erstellen von Planungsaufträgen.
+Azure Scheduler wird eingestellt. Wenn Sie Planungsaufträge erstellen möchten, können Sie stattdessen [Azure Logic Apps](../logic-apps/logic-apps-overview.md) im globalen Azure verwenden.
 
 Weitere Informationen finden Sie unter:
 
-- Machen Sie sich mit Funktionen in Azure Logic Apps vertraut, indem Sie die [Logic Apps-Tutorials](https://docs.microsoft.com/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow) durcharbeiten.
+- Erfahren Sie mehr, indem Sie die [Tutorials zu Azure Logic Apps](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md) durcharbeiten.
 - Lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="network-watcher"></a>Network Watcher
 
-Das Migrieren einer Azure Network Watcher-Instanz von Azure Deutschland zu Azure weltweit wird derzeit nicht unterstützt. Es empfiehlt sich, dass Sie eine neue Network Watcher-Instanz in Azure weltweit erstellen und konfigurieren. Vergleichen Sie dann die Ergebnisse zwischen der alten und der neuen Umgebung. 
+Das Migrieren einer Azure Network Watcher-Instanz von Azure Deutschland zu Azure weltweit wird derzeit nicht unterstützt. Es wird empfohlen, eine neue Network Watcher-Instanz in Azure weltweit zu erstellen und zu konfigurieren. Vergleichen Sie dann die Ergebnisse zwischen der alten und der neuen Umgebung. 
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Network Watcher-Tutorials](https://docs.microsoft.com/azure/network-watcher) durcharbeiten.
-- Lesen Sie [Was ist Azure Network Watcher?](../network-watcher/network-watcher-monitoring-overview.md)
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Network Watcher-Tutorials](../network-watcher/index.yml) durcharbeiten.
+- Im Artikel [Übersicht über Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) finden Sie weitere Informationen zu diesem Thema.
 - Erfahren Sie mehr über [Datenflussprotokolle für Netzwerksicherheitsgruppen](../network-watcher/network-watcher-nsg-flow-logging-portal.md).
-- Erfahren Sie mehr über[Verbindungsmonitor](../network-watcher/connection-monitor.md).
+- Erfahren Sie mehr über [Verbindungsmonitor](../network-watcher/connection-monitor.md).
 
 ## <a name="site-recovery"></a>Site Recovery
 
@@ -78,9 +78,9 @@ Weitere Informationen zu Site Recovery und Informationen dazu, wie Sie virtuelle
 
 Frischen Sie Ihre Kenntnisse auf, indem Sie die folgenden Schritt-für-Schritt-Tutorials durcharbeiten:
 
-- [Azure zu Azure: Notfallwiederherstellung](https://docs.microsoft.com/azure/site-recovery/#azure-to-azure)
-- [VMware zu Azure: Notfallwiederherstellung](https://docs.microsoft.com/azure/site-recovery/#vmware)
-- [Hyper-V zu Azure: Notfallwiederherstellung](https://docs.microsoft.com/azure/site-recovery/#hyper-v)
+- [Azure zu Azure: Notfallwiederherstellung](../site-recovery/azure-to-azure-about-networking.md)
+- [VMware zu Azure: Notfallwiederherstellung](../site-recovery/site-recovery-deployment-planner.md)
+- [Hyper-V zu Azure: Notfallwiederherstellung](../site-recovery/hyper-v-deployment-planner-overview.md)
 
 ## <a name="azure-policies"></a>Azure-Richtlinien
 
@@ -160,12 +160,12 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 
 - [Compute](./germany-migration-compute.md)
 - [Netzwerk](./germany-migration-networking.md)
-- [Speicher](./germany-migration-storage.md)
+- [Storage](./germany-migration-storage.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
 - [Analyse](./germany-migration-analytics.md)
 - [IoT](./germany-migration-iot.md)
 - [Integration](./germany-migration-integration.md)
 - [Identität](./germany-migration-identity.md)
-- [Sicherheit](./germany-migration-security.md)
+- [Security](./germany-migration-security.md)
 - [Medien](./germany-migration-media.md)

@@ -2,18 +2,15 @@
 title: 'Tutorial zu Kubernetes in Azure: Vorbereiten einer Anwendung'
 description: In diesem Azure Kubernetes Service-Tutorial (AKS) erfahren Sie, wie mit Docker Compose eine App mit mehreren Containern vorbereitet und erstellt wird, die Sie dann in AKS bereitstellen können.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
-ms.author: mlearned
+ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: 3ff93d006b7599eaa3f97c33efb047ce480c301c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 15bf29c676c4ca41fc2d005f3500a89ed6b9c380
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71264468"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576335"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Tutorial: Vorbereiten einer Anwendung für Azure Kubernetes Service (AKS)
 
@@ -34,7 +31,7 @@ In weiteren Tutorials wird das Containerimage in eine Azure Container Registry-I
 
 In diesem Tutorial wird vorausgesetzt, dass zentrale Docker-Konzepte wie Container und Containerimages sowie `docker`-Befehle bekannt sind. Eine Einführung in Container finden Sie bei Bedarf unter [Get started with Docker][docker-get-started] (Erste Schritte mit Docker).
 
-Für dieses Tutorial ist eine lokale Docker-Entwicklungsumgebung mit Linux-Containern erforderlich. Für Docker sind Pakete erhältlich, mit denen Docker in einem [Mac-][docker-for-mac], [Windows-][docker-for-windows] oder [Linux-][docker-for-linux]System konfiguriert werden kann.
+Für dieses Tutorial ist eine lokale Docker-Entwicklungsumgebung mit Linux-Containern erforderlich. Für Docker sind Pakete erhältlich, mit denen Docker in einem [Mac][docker-for-mac]-, [Windows][docker-for-windows]- oder [Linux][docker-for-linux]-System konfiguriert werden kann.
 
 Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der einzelnen Schritte dieser Tutorials erforderlich sind. Aus diesem Grund wird empfohlen, eine vollständige Docker-Entwicklungsumgebung zu verwenden.
 
@@ -66,15 +63,15 @@ Verwenden Sie die Beispieldatei `docker-compose.yaml`, um das Containerimage zu 
 docker-compose up -d
 ```
 
-Verwenden Sie anschließend den Befehl [docker-images][docker-images], um die erstellten Images anzuzeigen. Drei Images wurden heruntergeladen oder erstellt. Das Image *azure-vote-front* enthält die Front-End-Anwendung und verwendet das `nginx-flask`-Image als Grundlage. Das `redis`-Image wird zum Starten einer Redis-Instanz verwendet.
+Verwenden Sie anschließend den Befehl [docker-images][docker-images], um die erstellten Images anzuzeigen. Drei Images wurden heruntergeladen oder erstellt. Das Image *azure-vote-front* enthält die Front-End-Anwendung und verwendet das *nginx-flask*-Image als Grundlage. Das *redis*-Image wird zum Starten einer Redis-Instanz verwendet.
 
 ```
 $ docker images
 
-REPOSITORY                   TAG        IMAGE ID            CREATED             SIZE
-azure-vote-front             latest     9cc914e25834        40 seconds ago      694MB
-redis                        latest     a1b99da73d05        7 days ago          106MB
-tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
+REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
+mcr.microsoft.com/azuredocs/azure-vote-front   v1                  84b41c268ad9        9 seconds ago       944MB
+mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c        2 days ago          103MB
+tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863        6 weeks ago         944MB
 ```
 
 Führen Sie den Befehl [docker ps][docker-ps] aus, um die ausgeführten Container anzuzeigen:
@@ -82,9 +79,9 @@ Führen Sie den Befehl [docker ps][docker-ps] aus, um die ausgeführten Containe
 ```
 $ docker ps
 
-CONTAINER ID        IMAGE             COMMAND                  CREATED             STATUS              PORTS                           NAMES
-82411933e8f9        azure-vote-front  "/usr/bin/supervisord"   57 seconds ago      Up 30 seconds       443/tcp, 0.0.0.0:8080->80/tcp   azure-vote-front
-b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago      Up 30 seconds       0.0.0.0:6379->6379/tcp          azure-vote-back
+CONTAINER ID        IMAGE                                             COMMAND                  CREATED             STATUS              PORTS                           NAMES
+d10e5244f237        mcr.microsoft.com/azuredocs/azure-vote-front:v1   "/entrypoint.sh /sta…"   3 minutes ago       Up 3 minutes        443/tcp, 0.0.0.0:8080->80/tcp   azure-vote-front
+21574cb38c1f        mcr.microsoft.com/oss/bitnami/redis:6.0.8         "/opt/bitnami/script…"   3 minutes ago       Up 3 minutes        0.0.0.0:6379->6379/tcp          azure-vote-back
 ```
 
 ## <a name="test-application-locally"></a>Lokales Testen der Anwendung
@@ -107,7 +104,7 @@ Wenn die lokale Anwendung entfernt wurde, verfügen Sie über ein Docker-Image, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde eine Anwendung getestet und es wurden Containerimages für die Anwendung erstellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial wurde eine Anwendung getestet und es wurden Containerimages für die Anwendung erstellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Klonen einer Beispielanwendungsquelle von GitHub

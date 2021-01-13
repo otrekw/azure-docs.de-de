@@ -10,7 +10,7 @@
   items:
     - name: REST-API
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstarts/csharp.md
         - name: Java
           href: quickstarts/java.md
@@ -22,9 +22,9 @@
       href: concepts/send-ink-data.md
 - name: Beispiele
   items:
-    - name: 'C# und universelle Windows-Plattform (UWP)'
+    - name: C# und universelle Windows-Plattform (UWP)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089803'
-    - name: 'C# und Windows Presentation Foundation (WPF)'
+    - name: C# und Windows Presentation Foundation (WPF)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089804'
     - name: JavaScript-Webbrowser-App
       href: 'https://go.microsoft.com/fwlink/?linkid=2089908'
@@ -35,14 +35,14 @@
 - name: Verweis
   items:
     - name: REST-API-Referenz
-      href: 'https://go.microsoft.com/fwlink/?linkid=2089907'
+      href: /rest/api/cognitiveservices/inkrecognizer/inkrecognizer
     - name: PowerShell
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+      href: /powershell/module/azurerm.cognitiveservices/
     - name: Azure-Befehlszeilenschnittstelle
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: Sprachunterstützung
       href: language-support.md
-    - name: Regionen
+    - name: Regions
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
 - name: Ressourcen
   items:
@@ -52,5 +52,5 @@
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
     - name: Datenschutz und Cookies
       href: 'https://privacy.microsoft.com/privacystatement'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

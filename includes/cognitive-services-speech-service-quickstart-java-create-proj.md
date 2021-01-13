@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 2/20/2019
+ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: ebefe878393b66e5097ebbda5ef6159a8413833f
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: ee88a7cc187644c89aca5656df9ab9ae48a5a056
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298440"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187677"
 ---
 1. Starten Sie Eclipse.
 
@@ -17,7 +17,7 @@ ms.locfileid: "68298440"
 
    ![Screenshot des Eclipse-Startprogramms](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-01-create-new-eclipse-workspace.png)
 
-1. Nach kurzer Zeit wird das Hauptfenster der Eclipse-IDE angezeigt. Schließen Sie den Begrüßungsbildschirm, wenn ein solcher vorhanden ist.
+1. Nach kurzer Zeit wird das Hauptfenster der Eclipse-IDE angezeigt. Schließen Sie den **Begrüßungsbildschirm**, sofern vorhanden.
 
 1. Erstellen Sie über die Eclipse-Menüleiste ein neues Projekt, indem Sie **Datei** > **Neu** > **Projekt** auswählen.
 
@@ -25,7 +25,7 @@ ms.locfileid: "68298440"
 
    ![Screenshot des Dialogfelds „Neues Projekt“ mit hervorgehobenem Java-Projekt](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-02-select-wizard.png)
 
-1. Der Assistent für ein neues Java-Projekt wird gestartet. Geben Sie im Feld **Projektname** den Namen **Schnellstart** ein, und wählen Sie **JavaSE-1.8** als Ausführungsumgebung aus. Wählen Sie **Fertig stellen** aus.
+1. Der **Assistent für ein neues Java-Projekt** wird gestartet. Geben Sie im Feld **Projektname** den Namen **Schnellstart** ein, und wählen Sie **JavaSE-1.8** als Ausführungsumgebung aus. Wählen Sie **Fertig stellen** aus.
 
    ![Screenshot des Assistenten für ein neues Java-Projekt](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-03-create-java-project.png)
 
@@ -35,18 +35,18 @@ ms.locfileid: "68298440"
 
    ![Screenshot des Paket-Explorers](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
-1. Das Fenster **Neue POM-Datei erstellen** wird angezeigt. Geben Sie im Feld **Gruppen-ID** **com.microsoft.cognitiveservices.speech.samples** und im Feld **Artefakt-ID** **Schnellstart** ein. Klicken Sie dann auf **Fertig stellen**.
+1. Das Fenster **Neue POM-Datei erstellen** wird angezeigt. Geben Sie *com.microsoft.cognitiveservices.speech.samples* in das Feld **Gruppen-ID** und *Schnellstart* in das Feld **Artefakt-ID** ein. Wählen Sie dann **Fertig stellen** aus.
 
    ![Screenshot des Fensters „Neue POM-Datei erstellen“](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
 
-1. Öffnen Sie die Datei **pom.xml**, und bearbeiten Sie diese.
+1. Öffnen Sie die Datei *pom.xml*, und bearbeiten Sie diese.
 
    * Erstellen Sie wie hier gezeigt vor dem schließenden Tag `</project>` am Ende der Datei ein `repositories`-Element mit einem Verweis auf das Maven-Repository für das Speech SDK:
 
-     [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
+     [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * Fügen Sie außerdem ein `dependencies`-Element mit Version 1.6.0 des Speech SDK als Abhängigkeit hinzu:
+   * Fügen Sie außerdem ein Element vom Typ `dependencies` mit der Version 1.13.0 des Speech SDK als Abhängigkeit hinzu:
 
-     [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
+     [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 
    * Speichern Sie die Änderungen.

@@ -8,12 +8,17 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom:
+- amqp
+- mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 1792535fab79ed20bdf77f96b4fc39f13b0c7bbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626178"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90015998"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Referenz – Auswählen eines Kommunikationsprotokolls
 
@@ -39,16 +44,18 @@ Beachten Sie bei der Auswahl des Protokolls für die geräteseitige Kommunikatio
 
 * **C2D-Muster**. HTTPS bietet keine effiziente Methode zum Implementieren von Serverpushvorgängen. Daher fragen Geräte bei Verwendung von HTTPS IoT Hub nach C2D-Nachrichten ab. Dieser Ansatz ist für das Gerät und auch für IoT Hub sehr ineffizient. Gemäß den aktuellen HTTPS-Richtlinien muss jedes Gerät mindestens alle 25 Minuten eine Abfrage nach Nachrichten durchführen. MQTT und AMQP unterstützen Serverpush beim Empfangen von C2D-Nachrichten. Sie ermöglichen sofortiges Nachrichtenpushen von IoT Hub zum Gerät. Wenn die Übermittlungslatenz eine wichtige Rolle spielt, sind MQTT oder AMQP die zu bevorzugenden Protokolle. Bei nur selten verbundenen Geräten funktioniert auch HTTPS.
 
-* **Bereichsgateways**. Bei Verwendung von MQTT und HTTPS ist es nicht möglich, mehrere Geräte (jedes mit eigenen gerätebezogenen Anmeldeinformationen) mithilfe der gleichen TLS-Verbindung zu verbinden. Für [Bereichsgatewayszenarien](iot-hub-devguide-endpoints.md#field-gateways), die für jedes verbundene Gerät eine TLS-Verbindung zwischen dem Bereichsgateway und IoT Hub benötigen, sind diese Protokolle nicht optimal.
+* **Bereichsgateways**. MQTT und HTTPS unterstützen nur eine einzelne Geräteidentität (Geräte-ID plus Anmeldeinformationen) pro TLS-Verbindung. Aus diesem Grund werden diese Protokolle bei [Szenarien mit Bereichsgateways](iot-hub-devguide-endpoints.md#field-gateways) nicht unterstützt, die ein Multiplexing von Nachrichten unter Verwendung mehrerer Geräteidentitäten über einzelne oder mehrere Upstreamverbindungen mit IoT Hub erfordern. Solche Gateways können für den Upstreamdatenverkehr ein Protokoll verwenden, das mehrere Geräteidentitäten pro Verbindung unterstützt, wie z. B. AMQP.
 
 * **Geräte mit eingeschränkten Ressourcen**. Die MQTT- und HTTPS-Bibliotheken haben weniger Speicherbedarf als die AMQP-Bibliotheken. Wenn daher das Gerät über beschränkte Ressourcen verfügt (beispielsweise weniger als 1 MB RAM), stehen möglicherweise nur diese Protokolle als Protokollimplementierung zur Verfügung.
 
-* **Netzwerkausnahme**. Das AMQP-Standardprotokoll verwendet Port 5671, und MQTT lauscht an Port 8883. Die Verwendung dieser Ports kann Probleme in Netzwerken verursachen, die für Nicht-HTTPS-Protokolle geschlossen sind. Verwenden Sie MQTT über WebSockets, AMQP über WebSockets oder HTTPS in diesem Szenario.
+* **Netzwerkausnahme**. Das AMQP-Standardprotokoll verwendet Port 5671, und MQTT lauscht an Port 8883. Die Verwendung dieser Ports könnte Probleme in Netzwerken verursachen, die für Nicht-HTTPS-Protokolle geschlossen sind. Verwenden Sie MQTT über WebSockets, AMQP über WebSockets oder HTTPS in diesem Szenario.
 
 * **Größe der Nutzlast**. MQTT und AMQP sind binäre Protokolle und weisen daher kompaktere Nutzlasten als HTTPS auf.
 
 > [!WARNING]
-> Bei Verwendung von HTTPS muss jedes Gerät mindestens alle 25 Minuten eine Abfrage nach C2D-Nachrichten durchführen. In der Entwicklungsphase darf freilich häufiger als alle 25 Minuten eine Abfrage erfolgen.
+> Bei Verwendung von HTTPS muss jedes Gerät maximal alle 25 Minuten eine Abfrage auf C2D-Nachrichten durchführen. Bei der Entwicklung kann jedes Gerät bei Bedarf häufiger Abfragen durchführen.
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="port-numbers"></a>Portnummern
 

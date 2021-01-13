@@ -11,16 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 69fa9d24d24c26a7d945c27e86739475f9883b27
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 4c6b8b0bfa78dca5ca32c8c72edcc463ebb9057a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200704"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91322137"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherheit
+
 Sie können die Wahrscheinlichkeit eines Sicherheitsvorfalls verringern, indem Sie eine Sicherheitsrichtlinie und die Azure Security Center-Empfehlungen umsetzen. In diesem Artikel wird erläutert, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center Sicherheitsangriffe abgewehrt werden können. 
 
 Security Center führt kontinuierliche Überprüfungen automatisch aus, um den Sicherheitsstatus Ihrer Azure-Ressourcen zu analysieren. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Sicherheitskontrollen unterstützen. Security Center aktualisiert seine Empfehlungen innerhalb von 24 Stunden, mit folgenden Ausnahmen:
@@ -40,7 +41,7 @@ David, Mitarbeiter der IT-Sicherheit von Contoso, hat sich bereits für ein Onbo
 
 Das Security Center analysiert automatisch den Sicherheitszustand der Azure-Ressourcen von Contoso und wendet Standardsicherheitsrichtlinien an. Wenn Security Center potenzielle Sicherheitsrisiken ermittelt, werden basierend auf den in der Sicherheitsrichtlinie festgelegten Elementen **Empfehlungen** erstellt. 
 
-David führt den Azure Security-Standardtarif für alle seine Abonnements aus, um den vollen Umfang an verfügbaren Empfehlungen und Sicherheitsfunktionen zu erhalten. Jeff nimmt ebenfalls ein Onboarding all seiner vorhandenen lokalen Server vor, die noch nicht zur Cloud migriert wurden, sodass er auf allen [Windows](quick-onboard-windows-computer.md)- und [Linux](quick-onboard-linux-computer.md)-Servern von der Hybridunterstützung von Security Center profitieren kann.
+David führt den Azure Security mit aktiviertem Azure Defender für alle seine Abonnements aus, um den vollen Umfang an verfügbaren Empfehlungen und Sicherheitsfeatures zu erhalten. Jeff nimmt ebenfalls ein Onboarding aller seiner vorhandenen lokalen Server vor, die noch nicht zur Cloud migriert wurden, sodass er auf allen [Windows- und Linux-Servern](quickstart-onboard-machines.md) von der Hybridunterstützung von Security Center profitieren kann.
 
 Jeff ist Besitzer einer Cloudworkload. Jeff ist verantwortlich für die Anwendung von Sicherheitskontrollen gemäß den Sicherheitsrichtlinien von Contoso. 
 
@@ -57,15 +58,20 @@ Im Rahmen seiner täglichen Überwachungsaktivitäten meldet sich Jeff bei Azure
 
 2. Jeff überprüft seine **Sicherheitsbewertung**, um einen Gesamteindruck davon zu bekommen, wie sicher die Abonnements sind, und er sieht, dass seine Bewertung 548 ist.
 
-3. Jeff muss entscheiden, welche Empfehlungen er zuerst umsetzt. Also klickt Jeff auf „Sicherheitsbewertung“ und beginnt, die Empfehlungen abzuarbeiten, basierend darauf, um wie viel sie seine [Sicherheitsbewertung](security-center-secure-score.md) verbessern.
+3. Jeff muss entscheiden, welche Empfehlungen er zuerst umsetzt. Also klickt Jeff auf „Sicherheitsbewertung“ und beginnt, die Empfehlungen abzuarbeiten, basierend darauf, um wie viel sie seine [Sicherheitsbewertung](secure-score-security-controls.md) verbessern.
 
-4. Da Jeff über viele verbundene virtuelle Computer und Server verfügt, entscheidet er, dass er sich auf **Compute und Apps** konzentriert.
+4. Da Jeff über viele verbundene VMs verfügt, beschließt er, sich auf Computer im [Ressourcenbestand](asset-inventory.md) zu konzentrieren.
 
-5. Als Jeff auf **Compute und Apps** klickt, wird ihm eine Liste mit Empfehlungen angezeigt, und er arbeitet diese gemäß ihrer Auswirkungen auf die Sicherheitsbewertung ab.
+5. Wenn Jeff den Ressourcenbestand öffnet, wird eine Liste der Empfehlungen angezeigt. Jeff arbeitet sie entsprechend ihrer Auswirkung auf die Sicherheitsbewertung ab.
 
-6. Jeff verfügt über zahlreiche virtuelle Computer mit Internetzugriff, und da deren Ports verfügbar sind, macht er sich Sorgen, dass ein Angreifer die Kontrolle über die Server erlangen könnte. Also entscheidet sich Jeff für die Verwendung von (**Just-in-Time VM Access**)[security-center-just-in-time.md].
+6. Jeff verfügt über zahlreiche virtuelle Computer mit Internetzugriff, und da deren Ports verfügbar sind, macht er sich Sorgen, dass ein Angreifer die Kontrolle über die Server erlangen könnte. Jeff entscheidet sich daher für [**Just-in-Time-VM-Zugriff**](security-center-just-in-time.md).
 
-Jeff geht die Empfehlungen mit hoher und mittlerer Priorität weiter durch und trifft Entscheidungen zu ihrer Umsetzung. Bei jeder Empfehlung sieht sich Jeff die ausführlichen Informationen an, die vom Security Center bereitgestellt werden, um zu verstehen, welche Ressourcen betroffen sind, wie die Auswirkungen auf die Sicherheitsbewertung sind, und was jede Empfehlung bedeutet, sowie die Korrekturschritte dafür, wie jedes Problem korrigiert werden kann.
+Jeff geht die Empfehlungen mit hoher und mittlerer Priorität weiter durch und trifft Entscheidungen zu ihrer Umsetzung. Bei jeder Empfehlung sieht sich Jeff die ausführlichen Informationen an, die vom Security Center bereitgestellt werden, um zu verstehen, welche Ressourcen betroffen sind, wie die Auswirkung auf die Sicherheitsbewertung sind, und was jede Empfehlung bedeutet, sowie die Korrekturschritte dafür, wie jedes Problem korrigiert werden kann.
+
+### <a name="enforce-recommendations-to-prevent-security-misconfigurations"></a>Erzwingen von Empfehlungen zum Verhindern von Sicherheitsfehlkonfigurationen
+
+Um sicherzustellen, dass Benutzer keine Ressourcen erstellen, die sich negativ auf den Score von Jeff auswirken, konfiguriert er die Optionen zum Erzwingen und Verweigern in den Empfehlungen, die für ihn am wichtigsten sind. Weitere Informationen finden Sie unter [Verhindern von Fehlkonfigurationen mit den Optionen zum Erzwingen/Ablehnen für Empfehlungen](prevent-misconfigurations.md).
+
 
 ## <a name="conclusion"></a>Zusammenfassung
 Die Überwachungsempfehlungen im Security Center helfen Ihnen dabei, Sicherheitsrisiken zu beseitigen, ehe ein Angriff erfolgt. Wenn Sie Korrekturen gemäß den Empfehlungen vornehmen, verbessern Sie Ihre Sicherheitsbewertung sowie den Sicherheitsstatus Ihrer Workloads. Security Center ermittelt automatisch neue Ressourcen, die Sie bereitstellen, bewertet diese anhand Ihrer Sicherheitsrichtlinie und stellt neue Empfehlungen zu deren Schutz bereit.

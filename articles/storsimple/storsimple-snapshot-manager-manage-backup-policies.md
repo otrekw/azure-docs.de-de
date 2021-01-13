@@ -3,23 +3,23 @@ title: StorSimple Snapshot Manager-Sicherungsrichtlinien | Microsoft Docs
 description: Beschreibt, wie das StorSimple Snapshot Manager-MMC-Snap-in zum Erstellen und Verwalten von Sicherungsrichtlinien verwendet wird, die geplante Sicherungen steuern.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 04415d0b-42f0-4737-8afa-257fb2dbe5d0
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: 7dac26b058b959011e38b4373369b8a1115d2705
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: alkohli
+ms.openlocfilehash: 745aeb9844f1abad075d34b34735563200ea618b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687274"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90054941"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Verwenden des StorSimple Snapshot Managers zum Erstellen und Verwalten von Sicherungsrichtlinien
 ## <a name="overview"></a>Übersicht
@@ -92,5 +92,5 @@ Verwenden Sie das folgende Verfahren, um eine Sicherungsrichtlinie zu löschen.
     ![Bestätigung der gelöschten Sicherungsrichtlinie](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
+* Erfahren Sie mehr über das [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
 * Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Anzeigen und Verwalten von Sicherungsaufträgen](storsimple-snapshot-manager-manage-backup-jobs.md).

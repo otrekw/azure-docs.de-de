@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70e3267792f27a170efa26cc4267d1b25045a099
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: da5cefbacbd3851d2609a687c1948d9bcba5ffae
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231237"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88612468"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Aufgaben nach der Konfiguration für die Hybrid-Azure AD-Einbindung
 
@@ -43,9 +43,9 @@ Alle in die Domäne eingebundenen Geräte, auf denen Windows 10 und Windows Serv
 ## <a name="2-configure-network-with-device-registration-endpoints"></a>2. Konfigurieren des Netzwerks mit Endpunkten für die Geräteregistrierung
 Achten Sie darauf, dass von Computern innerhalb Ihres Unternehmensnetzwerks zur Registrierung bei Azure AD auf die folgenden URLs zugegriffen werden kann:
 
-* https://enterpriseregistration.windows.net
-* https://login.microsoftonline.com
-* https://device.login.microsoftonline.com 
+* `https://enterpriseregistration.windows.net`
+* `https://login.microsoftonline.com`
+* `https://device.login.microsoftonline.com` 
 
 ## <a name="3-implement-wpad-for-windows-10-devices"></a>3. Implementieren von WPAD für Windows 10-Geräte
 Wenn in Ihrer Organisation in ausgehender Richtung über einen Proxy auf das Internet zugegriffen wird, sollten Sie WPAD (Web Proxy Auto-Discovery) installieren, damit Windows 10-Computer bei Azure AD registriert werden können.
@@ -76,9 +76,9 @@ Zum Registrieren von kompatiblen Windows-Geräten müssen Sie sicherstellen, das
 
 ## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. Hinzufügen eines Azure AD-Endpunkts für Windows-kompatible Geräte
 
-Fügen Sie den Endpunkt für die Azure AD-Geräteauthentifizierung den lokalen Intranetzonen auf Ihren kompatiblen Windows-Geräten hinzu, um beim Authentifizieren des Geräts Zertifikataufforderungen zu vermeiden: https://device.login.microsoftonline.com 
+Fügen Sie den Endpunkt für die Azure AD-Geräteauthentifizierung den lokalen Intranetzonen auf Ihren kompatiblen Windows-Geräten hinzu, um beim Authentifizieren des Geräts Zertifikataufforderungen zu vermeiden: `https://device.login.microsoftonline.com` 
 
-Aktivieren Sie bei Verwendung des [nahtlosen einmaligen Anmeldens](how-to-connect-sso.md) auch die Option „Statusleistenupdates über Skript zulassen“ für diese Zone, und fügen Sie den folgenden Endpunkt hinzu: https://autologon.microsoftazuread-sso.com. 
+Aktivieren Sie bei Verwendung des [nahtlosen einmaligen Anmeldens](how-to-connect-sso.md) auch die Option „Statusleistenupdates über Skript zulassen“ für diese Zone, und fügen Sie den folgenden Endpunkt hinzu: `https://autologon.microsoftazuread-sso.com`. 
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Installieren von Microsoft Workplace Join auf kompatiblen Windows-Geräten
 
@@ -86,15 +86,7 @@ Dieses Installationsprogramm erstellt einen geplanten Task auf dem Gerätesystem
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. Konfigurieren der Gruppenrichtlinie, um die Geräteregistrierung zuzulassen
 
-* Erstellen Sie ein Gruppenrichtlinienobjekt in Ihrer Active Directory-Instanz, falls Sie dies nicht bereits getan haben.
-* Geben Sie ihm einen Namen (z.B. „Hybrid-Azure AD-Einbindung“).
-* Bearbeiten Sie und navigieren Sie zu:  „Computerkonfiguration“ > „Richtlinien“ > „Administrative Vorlagen“ > „Windows-Komponenten“ > „Geräteregistrierung“.
-* Aktivieren Sie:  „In die Domäne eingebundene Computer als Geräte registrieren“.
-* Übernehmen Sie die Änderung, und klicken Sie auf „OK“.
-* Verknüpfen Sie das GPO mit dem Speicherort Ihrer Wahl (Organisationseinheit, Sicherheitsgruppe oder Domäne für alle Geräte).
-
->[!NOTE]
->Für 2012R2 befinden sich die Richtlinieneinstellungen unter **Computerkonfiguration > Richtlinien > Administrative Vorlagen > Windows-Komponenten > Arbeitsbereichverknüpfung > Clientcomputer automatisch in Arbeitsbereich einbinden**
+Informationen zum Zulassen einer Azure AD-Hybrideinbindung für einzelne Geräte finden Sie unter [Kontrollierte Überprüfung der Azure AD-Hybrideinbindung](../devices/hybrid-azuread-join-control.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Konfigurieren des Geräterückschreibens](how-to-connect-device-writeback.md)

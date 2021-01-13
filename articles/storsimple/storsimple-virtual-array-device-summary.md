@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: a13c1ea7-6428-4234-84a6-0ebf51670a85
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
-ms.openlocfilehash: 9edc0b552f5c2f38e646bc4b44dd8df5c16b0457
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ab72788c768568366f2627055015c74028330b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61408485"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005876"
 ---
 # <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Verwenden des Geräteübersichtsblatts für den StorSimple-Geräte-Manager, der mit dem StorSimple Virtual Array verbunden ist
 
@@ -35,7 +35,7 @@ Auf dem Geräteübersichtsblatt werden die folgenden Informationen angezeigt:
 
 ## <a name="management"></a>Verwaltung
 
-Auf dem Geräteübersichtsblatt sehen Sie die Optionen zum Verwalten Ihres StorSimple-Geräts. Im oberen Bereich und auf der linken Seite des Blatts finden Sie die Verwaltungsbefehle. Verwenden Sie diese Optionen, um Freigaben oder Volumes hinzuzufügen, oder um Ihr virtuelles Array zu aktualisieren bzw. ein Failover des Geräts zu ermöglichen.
+Auf dem Blatt mit der Geräteübersicht sehen Sie die Optionen zum Verwalten Ihres StorSimple-Geräts. Im oberen Bereich und auf der linken Seite des Blatts finden Sie die Verwaltungsbefehle. Verwenden Sie diese Optionen, um Freigaben oder Volumes hinzuzufügen, oder um Ihr virtuelles Array zu aktualisieren bzw. ein Failover des Geräts zu ermöglichen.
 
 Der Bereich „Essentials“ (Zusammenfassung) erfasst einige der wichtigen Eigenschaften wie z.B. Status, Modell, Softwareversion sowie einen Link zur **Web-UI** des Arrays. Wenn Sie sich in einem internen Netzwerk befinden, können Sie die [lokale Web-UI](storsimple-ova-web-ui-admin.md) direkt starten, um Ihren virtuellen Array zu verwalten.
 

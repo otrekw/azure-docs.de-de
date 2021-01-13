@@ -1,22 +1,14 @@
 ---
-title: 'Azure Batch: Ereignis zum Starten der Größenänderung von Pools | Microsoft-Dokumentation'
-description: Referenz zum Batch-Ereignis zum Starten der Größenänderung von Pools.
-services: batch
-author: laurenhughes
-manager: gwallace
-ms.assetid: ''
-ms.service: batch
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
-ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: 965c1181399b76523b624d53dc47e59de0208ecb
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+title: 'Azure Batch: Ereignis zum Starten der Größenänderung von Pools'
+description: Referenz zum Batch-Ereignis zum Starten der Größenänderung von Pools. Das Beispiel zeigt den Text eines Ereignisses zum Starten der Größenänderung von Pools für einen Pool, der manuell von 0 auf 2 Knoten vergrößert wurde.
+ms.topic: reference
+ms.date: 12/28/2020
+ms.openlocfilehash: be64a2ef30cbe3c404633b29202a4adf1e49ea9e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258264"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803611"
 ---
 # <a name="pool-resize-start-event"></a>Ereignis zum Starten der Größenänderung von Pools: Azure
 
@@ -26,21 +18,21 @@ ms.locfileid: "70258264"
 
 ```
 {
-    "id": "myPool1",
-    "nodeDeallocationOption": "Invalid",
-    "currentDedicatedNodes": 0,
-    "targetDedicatedNodes": 2,
-    "currentLowPriorityNodes": 0,
-    "targetLowPriorityNodes": 2,
-    "enableAutoScale": false,
-    "isAutoPool": false
+   "id": "myPool1",
+   "nodeDeallocationOption": "Invalid",
+   "currentDedicatedNodes": 0,
+   "targetDedicatedNodes": 2,
+   "currentLowPriorityNodes": 0,
+   "targetLowPriorityNodes": 2,
+   "enableAutoScale": false,
+   "isAutoPool": false
 }
 ```
 
-|Element|Typ|Notizen|
+|Element|type|Notizen|
 |-------------|----------|-----------|
-|`id`|Zeichenfolge|Die ID des Pools.|
-|`nodeDeallocationOption`|Zeichenfolge|Gibt ab, ob Knoten ggf. aus dem Pool entfernt werden müssen, wenn sich die Poolgröße verringert.<br /><br /> Mögliche Werte:<br /><br /> **requeue**: Beendet ausgeführte Tasks, die erneut in die Warteschlange gestellt werden. Die Tasks werden erneut ausgeführt, sobald der Auftrag aktiviert ist. Entfernen Sie Knoten, sobald Tasks abgeschlossen wurden.<br /><br /> **terminate**: Beendet derzeit ausgeführte Tasks. Die Tasks werden nicht erneut ausgeführt. Entfernen Sie Knoten, sobald Tasks abgeschlossen wurden.<br /><br /> **taskcompletion**: Lässt das Abschließen aktuell ausgeführter Tasks zu. Planen Sie beim Warten keine neuen Tasks. Entfernen Sie Knoten, sobald alle Aufgaben abgeschlossen sind.<br /><br /> **Retaineddata**: Lässt das Abschließen aktuell ausgeführter Tasks zu und wartet dann, bis die Aufbewahrungszeiträume aller Taskdaten abgelaufen sind. Planen Sie beim Warten keine neuen Tasks. Entfernen Sie Knoten, sobald die Aufbewahrungszeiträume aller Tasks abgelaufen sind.<br /><br /> Der Standardwert ist „requeue“.<br /><br /> Wenn die Poolgröße zunimmt, wird der Wert auf **invalid** festgelegt.|
+|`id`|String|Die ID des Pools.|
+|`nodeDeallocationOption`|String|Gibt ab, ob Knoten ggf. aus dem Pool entfernt werden müssen, wenn sich die Poolgröße verringert.<br /><br /> Mögliche Werte:<br /><br /> **requeue**: Beendet ausgeführte Tasks, die erneut in die Warteschlange gestellt werden. Die Tasks werden erneut ausgeführt, sobald der Auftrag aktiviert ist. Entfernen Sie Knoten, sobald Tasks abgeschlossen wurden.<br /><br /> **terminate**: Beendet derzeit ausgeführte Tasks. Die Tasks werden nicht erneut ausgeführt. Entfernen Sie Knoten, sobald Tasks abgeschlossen wurden.<br /><br /> **taskcompletion**: Lässt das Abschließen aktuell ausgeführter Tasks zu. Planen Sie beim Warten keine neuen Tasks. Entfernen Sie Knoten, sobald alle Aufgaben abgeschlossen sind.<br /><br /> **Retaineddata**: Lässt das Abschließen aktuell ausgeführter Tasks zu und wartet dann, bis die Aufbewahrungszeiträume aller Taskdaten abgelaufen sind. Planen Sie beim Warten keine neuen Tasks. Entfernen Sie Knoten, sobald die Aufbewahrungszeiträume aller Tasks abgelaufen sind.<br /><br /> Der Standardwert ist „requeue“.<br /><br /> Wenn die Poolgröße zunimmt, wird der Wert auf **invalid** festgelegt.|
 |`currentDedicatedNodes`|Int32|Die Anzahl der Computeknoten, die dem Pool derzeit zugewiesen sind.|
 |`targetDedicatedNodes`|Int32|Die Anzahl der Computeknoten, die für den Pool angefordert werden.|
 |`currentLowPriorityNodes`|Int32|Die Anzahl der Computeknoten, die dem Pool derzeit zugewiesen sind.|

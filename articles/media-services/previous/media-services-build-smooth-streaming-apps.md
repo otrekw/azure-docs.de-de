@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 9ff961638aa170948d51793a21e86d18dd7e1d80
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b616b03698e83d256a7b81e4548edbf21dba058
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69016793"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021128"
 ---
-# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Erstellen einer Smooth Streaming Windows Store-Anwendung  
+# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Erstellen einer Smooth Streaming Windows Store-Anwendung
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 Mit dem Smooth Streaming Client SDK für Windows 8 können Entwickler Windows Store-Anwendungen erstellen, die Smooth Streaming-Inhalte bedarfsgesteuert und live wiedergeben können. Neben der Wiedergabe von Smooth Streaming-Inhalten bietet das SDK zahlreiche weitere Funktionen wie Microsoft PlayReady-Schutz, Qualitätsstufeneinschränkung, Live DVR, Wechsel von Audiodatenströmen, Überwachen von Statusaktualisierungen (z. B. Qualitätsstufenänderungen) und Fehlerereignissen usw. Weitere Informationen zu den unterstützten Funktionen finden Sie in den [Versionshinweisen](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). Weitere Informationen finden Sie im [Player Framework für Windows 8](https://playerframework.codeplex.com/). 
 
@@ -53,7 +56,7 @@ In dieser Lektion erstellen Sie eine Windows Store-Anwendung mit einem MediaElem
 
 ![Beispiel für Smooth Streaming Windows Store-Anwendung][PlayerApplication]
 
-Weitere Informationen zum Entwickeln von Windows Store-Anwendungen finden Sie unter [Entwickeln von Apps für Windows 8](https://msdn.microsoft.com/windows/apps/br229512.aspx). Diese Lektion enthält die folgenden Prozeduren:
+Weitere Informationen zum Entwickeln von Windows Store-Anwendungen finden Sie unter [Entwickeln von Apps für Windows 8](https://developer.microsoft.com/en-us/windows/). Diese Lektion enthält die folgenden Prozeduren:
 
 1. Erstellen eines Windows Store-Projekts
 2. Entwerfen der Benutzeroberfläche (XAML)
@@ -66,12 +69,12 @@ Weitere Informationen zum Entwickeln von Windows Store-Anwendungen finden Sie un
 1. Klicken Sie im Menü **DATEI** auf **Neu** und dann auf **Projekt**.
 1. Geben Sie im Dialogfeld „Neues Projekt“ die folgenden Werte ein, oder wählen Sie sie aus:
 
-    | NAME | Wert |
+    | Name | Wert |
     | --- | --- |
     | Vorlagengruppe |Installed/Templates/Visual C#/Windows Store |
     | Vorlage |Leere App (XAML) |
-    | NAME |SSPlayer |
-    | Location |C:\SSTutorials |
+    | Name |SSPlayer |
+    | Position |C:\SSTutorials |
     | Projektmappenname |SSPlayer |
     | Verzeichnis für Lösung erstellen |(aktiviert) |
 
@@ -82,7 +85,7 @@ Weitere Informationen zum Entwickeln von Windows Store-Anwendungen finden Sie un
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **SSPlayer** und anschließend auf **Verweis hinzufügen**.
 1. Geben Sie folgende Werte ein bzw. wählen diese aus:
 
-    | NAME | Wert |
+    | Name | Wert |
     | --- | --- |
     | Verweisgruppe |Windows/Extensions |
     | Verweis |Wählen Sie Microsoft Smooth Streaming Client SDK for Windows 8 und Microsoft Visual C++ Runtime Package. |
@@ -151,15 +154,24 @@ In dieser XAML-Datei sind den Steuerelementen einige Ereignishandler zugeordnet.
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **MainPage.xaml**, und klicken Sie anschließend auf **Code anzeigen**.
 2. Fügen Sie am Anfang der Datei die folgende using-Anweisung hinzu:
-   
+
+    ```csharp
         using Windows.Media;
+    ```
+
 3. Fügen Sie am Anfang der **MainPage** -Klasse das folgende Datenmember hinzu:
-   
-         private MediaExtensionManager extensions = new MediaExtensionManager();
+
+    ```csharp
+        private MediaExtensionManager extensions = new MediaExtensionManager();
+    ```
+
 4. Fügen Sie am Ende des **MainPage** -Konstruktors die beiden folgenden Zeilen hinzu:
-   
+
+    ```csharp
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
+    ```
+
 5. Fügen Sie am Ende der **MainPage**-Klasse den folgenden Code ein:
    ```csharp
          # region UI Button Click Events
@@ -1036,4 +1048,3 @@ Sie haben Lektion 4 abgeschlossen.  In dieser Lektion haben Sie die Funktion zu
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-

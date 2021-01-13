@@ -1,21 +1,19 @@
 ---
-title: Decodieren von X12-Nachrichten – Azure Logic Apps | Microsoft-Dokumentation
+title: Decodieren von X12-Nachrichten
 description: Überprüfen von EDI und Generieren von Bestätigungen mit dem X12-Nachrichtendecoder in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
-ms.openlocfilehash: 4a19462f4f849602fd14fe1204f1c7e3c01e6ec4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64701450"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74792372"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Decodieren von X12-Nachrichten in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -32,7 +30,7 @@ Sie benötigen Folgendes:
 
 ## <a name="decode-x12-messages"></a>Decodieren von X12-Nachrichten
 
-1. [Erstellen Sie eine Logik-App](quickstart-create-first-logic-app-workflow.md).
+1. [Erstellen einer Logik-App](quickstart-create-first-logic-app-workflow.md)
 
 2. Da der Connector „X12-Nachricht decodieren“ über keine Trigger verfügt, müssen Sie einen Trigger zum Starten Ihrer Logik-App hinzufügen (beispielsweise einen Anforderungstrigger). Fügen Sie im Logik-App-Designer einen Trigger hinzu, und fügen Sie anschließend Ihrer Logik-App eine Aktion hinzu.
 
@@ -98,12 +96,12 @@ Der Connector „X12-Nachricht decodieren“ führt folgende Aufgaben aus:
   * Austausch beibehalten – Austausch bei Fehler anhalten: Behält den Austausch bei und verarbeitet den gesamten Batchaustausch. 
   Wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht, gibt die Aktion „X12 decodieren“ alle Transaktionssätze in diesem Austausch in `badMessages` aus. 
 * Generieren einer technischen Bestätigung und/oder einer Funktionsbestätigung (sofern konfiguriert)
-  * Als Ergebnis der Headerüberprüfung wird eine technische Bestätigung generiert. Die technische Bestätigung meldet den Status der Verarbeitung eines Austauschheaders und -nachspanns durch den Adressempfänger.
+  * Eine technische Bestätigung wird als Ergebnis der Headerüberprüfung generiert. Die technische Bestätigung meldet den Status der Verarbeitung eines Austauschheaders und -nachspanns durch den Adressempfänger.
   * Eine Funktionsbestätigung wird als Ergebnis der Textüberprüfung generiert. Die Funktionsbestätigung meldet jeden Fehler, der bei der Verarbeitung des empfangenen Dokuments aufgetreten ist.
 
 ## <a name="view-the-swagger"></a>Anzeigen von Swagger
 Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/x12/). 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack") 
+[Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Erfahren Sie mehr zum Enterprise Integration Pack.") 
 

@@ -1,5 +1,5 @@
-- name: StorSimple-Dokumentation
-  href: index.md
+- name: Dokumentation zu StorSimple
+  href: index.yml
 - name: StorSimple Virtual Array
   items:
     - name: Übersicht
@@ -8,7 +8,7 @@
           href: storsimple-ova-overview.md
     - name: Erste Schritte
       items:
-        - name: Plan
+        - name: Planen
           items:
             - name: Überprüfen der Anforderungen
               href: storsimple-ova-system-requirements.md
@@ -73,7 +73,7 @@
               href: storsimple-virtual-array-manage-storage-accounts.md
             - name: Verwalten von ACRs
               href: storsimple-virtual-array-manage-acrs.md
-            - name: Verwalten von Aufträgen
+            - name: Aufträge verwalten
               href: storsimple-virtual-array-manage-jobs.md
             - name: Ändern des Gerätekennworts
               href: storsimple-virtual-array-change-device-admin-password.md
@@ -87,11 +87,11 @@
           href: storsimple-ova-web-ui-admin.md
     - name: Versionshinweise
       items:
-        - name: "Update\_1.2"
+        - name: Update 1.2 – aktuell
           href: storsimple-virtual-array-update-12-release-notes.md
         - name: "Update\_1.1"
           href: storsimple-virtual-array-update-11-release-notes.md
-        - name: "Update\_1"
+        - name: Update 1
           href: storsimple-virtual-array-update-1-release-notes.md
         - name: Archivieren
           items:
@@ -121,7 +121,7 @@
           href: storsimple-regions.md
     - name: Erste Schritte
       items:
-        - name: Plan
+        - name: Planen
           items:
             - name: Überprüfen der Anforderungen
               href: storsimple-8000-system-requirements.md
@@ -194,7 +194,7 @@
                   items:
                     - name: 'Häufig gestellte Fragen: Lokale Volumes'
                       href: storsimple-8000-local-volume-faq.md
-                - name: Rollenbasierte Zugriffssteuerung
+                - name: Rollenbasierte Zugriffssteuerung in Azure
                   href: storsimple-8000-role-based-access-control.md
                 - name: Verwalten von ACRs
                   href: storsimple-8000-manage-acrs.md
@@ -316,24 +316,28 @@
           items:
             - name: Abonnements und Speicherkonten
               href: storsimple-8000-migrate-classic-azure-portal.md
+            - name: Von Geräten der 8000-Serie
+              href: storsimple-8000-migration-from-8000-options.md
             - name: Von Geräten der 5000-/7000-Serie
               href: storsimple-8000-migration-options.md
               items:
                 - name: Geräte der StorSimple 8000-Serie
                   href: storsimple-8000-migrate-from-5000-7000.md
-                - name: Zu Azure-Dateisynchronisierung
-                  href: storsimple-5000-7000-afs-migration.md
             - name: Von anderen Speichergeräten
               href: 'https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf'
         - name: Aktualisieren
           items:
-            - name: Installieren von Update 5 – aktuell
+            - name: Installieren von Update 5.1 – aktuell
+              href: storsimple-8000-install-update-51.md
+            - name: Installieren von Update 5
               href: storsimple-8000-install-update-5.md
             - name: Installieren von Update 4
               href: storsimple-8000-install-update-4.md
     - name: Versionshinweise
       items:
-        - name: Update 5 – aktuell
+        - name: Update 5.1 – aktuell
+          href: storsimple-update51-release-notes.md
+        - name: Update 5
           href: storsimple-update5-release-notes.md
         - name: Update 4
           href: storsimple-update4-release-notes.md
@@ -345,22 +349,22 @@
               href: storsimple-update21-release-notes.md
             - name: "Update\_2"
               href: storsimple-update2-release-notes.md
-            - name: "Update\_1"
+            - name: Update 1
               href: storsimple-update1-release-notes.md
             - name: "Update\_0.3"
-              href: storsimple-february-2015-release-notes.md
+              href: ./index.yml
             - name: "Update\_0.2"
-              href: storsimple-january-2015-release-notes.md
+              href: ./index.yml
             - name: "Update\_0.1"
-              href: storsimple-october-2014-release-notes.md
+              href: ./index.yml
             - name: Release – GA
-              href: storsimple-july-2014-release-notes.md
+              href: ./index.yml
     - name: Verweis
       items:
         - name: REST-API
-          href: 'https://docs.microsoft.com/rest/api/storsimple'
+          href: /rest/api/storsimple
         - name: Windows PowerShell für StorSimple-Cmdlets
-          href: 'https://technet.microsoft.com/library/dn688168.aspx'
+          href: /powershell/module/hcs/?viewFallbackFrom=winserverr2-ps
         - name: Resource Manager-Vorlage
           href: /azure/templates/microsoft.storsimple/allversions
 - name: StorSimple Data Manager
@@ -394,7 +398,7 @@
     - name: Versionshinweise
       items:
         - name: StorSimple-Versionshinweise
-          href: 'https://aka.ms/storsimple-virtual-array-latest-relnote'
+          href: ./storsimple-virtual-array-update-04-release-notes.md
         - name: CSP-Versionshinweise
           href: 'https://partner.microsoft.com/Support/whats-new'
         - name: 'StorSimple für CSP: Häufig gestellte Fragen'
@@ -408,13 +412,13 @@
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Marketingblog
-      href: 'https://blogs.technet.com/b/cis/'
+      href: /archive/blogs/cis/
     - name: Marketing
-      href: 'https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx'
+      href: 'https://azure.microsoft.com/services/storsimple/'
     - name: Supportoptionen für StorSimple
       href: storsimple-8000-support-options.md
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: /answers/topics/azure-storsimple.html
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/storsimple/'
     - name: Preisrechner
@@ -422,7 +426,7 @@
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=storsimple'
     - name: Supportblog
-      href: 'https://blogs.msdn.com/b/storsimple/'
+      href: /archive/blogs/storsimple/
     - name: Hinweise zu Drittanbietern
       href: 'https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip'
     - name: Videos

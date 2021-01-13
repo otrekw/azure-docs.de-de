@@ -2,17 +2,17 @@
 title: 'Tutorial: Erstellen von benutzerdefinierten Azure DNS-Einträgen für eine Web-App'
 description: In diesem Tutorial erstellen Sie mithilfe von Azure DNS benutzerdefinierte Domänen-DNS-Einträge für eine Web-App.
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: 9d7a277db7550c1850ec0c9d555553064ab19f7c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.date: 10/20/2020
+ms.author: rohink
+ms.openlocfilehash: 369c7dab174f0269797b10635882a6821ade8311
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730274"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952912"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Tutorial: Erstellen von DNS-Einträgen in einer benutzerdefinierten Domäne für eine Web-App 
 
@@ -35,27 +35,26 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen eines A- und eines TXT-Eintrags für Ihre benutzerdefinierte Domäne
 > * Erstellen eines CNAME-Eintrags für Ihre benutzerdefinierten Domäne
 > * Testen der neuen Einträge
-> * Hinzufügen von benutzerdefinierten Hostnamen zu Ihrer Web-App
+> * Hinzufügen benutzerdefinierter Hostnamen zu Ihrer Web-App
 > * Testen der benutzerdefinierten Hostnamen
 
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Sie müssen über einen Domänennamen zum Testen verfügen, den Sie in Azure DNS hosten können. Sie müssen uneingeschränkte Kontrolle über diese Domäne haben. Das bedeutet, Sie müssen unter anderem die Namenservereinträge für die Domäne festlegen können.
-* [Erstellen Sie eine App Service-App](../app-service/app-service-web-get-started-html.md), oder verwenden Sie eine App, die Sie für ein anderes Tutorial erstellt haben.
+* [Erstellen Sie eine App Service-App](../app-service/quickstart-html.md), oder verwenden Sie eine App, die Sie für ein anderes Tutorial erstellt haben.
 
 * Erstellen Sie in Azure DNS eine DNS-Zone, und delegieren Sie die Zone in Ihrer Registrierungsstelle an Azure DNS.
 
-   1. Befolgen Sie zum Erstellen einer DNS-Zone die Anweisungen unter [Erstellen einer DNS-Zone](dns-getstarted-create-dnszone.md).
+   1. Befolgen Sie zum Erstellen einer DNS-Zone die Anweisungen unter [Erstellen einer DNS-Zone](./dns-getstarted-powershell.md).
    2. Befolgen Sie zum Delegieren Ihrer Zone an Azure DNS die Schritte unter [Delegieren von DNS-Zonen mit Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Nach dem Erstellen einer Zone und ihrer Delegierung an Azure DNS können Sie Einträge für Ihre benutzerdefinierte Domäne erstellen.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-an-a-record-and-txt-record"></a>Erstellen eines A-Eintrags und eines TXT-Eintrags
 

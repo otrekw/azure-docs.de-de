@@ -1,37 +1,51 @@
 ---
-title: Unterstützte Clusterversionen in Azure Service Fabric | Microsoft-Dokumentation
-description: Informationen zu Clusterversionen in Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Unterstützte Clusterversionen in Azure Service Fabric
+description: Erfahren Sie mehr über Clusterversionen in Azure Service Fabric, einschließlich eines Links zu den neuesten Releases des Service Fabric-Teamblogs.
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 08/21/2019
-ms.author: atsenthi
-ms.openlocfilehash: ca7a3cfe62520ed82dcf494a33f3bd188dbebe76
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.date: 06/15/2020
+ms.openlocfilehash: 5770aa072666f89a574da9d1f2584ab33b612330
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279980"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862170"
 ---
 # <a name="supported-service-fabric-versions"></a>Unterstützte Service Fabric-Versionen
 
 Achten Sie darauf, dass in Ihrem Cluster immer eine unterstützte Azure Service Fabric-Version ausgeführt wird. Nach der Ankündigung einer neuen Service Fabric-Version beträgt die verbleibende Supportdauer für die vorherige Version noch mindestens 60 Tage. Ankündigungen neuer Versionen finden Sie im [Blog des Service Fabric-Teams](https://azure.microsoft.com/updates/?product=service-fabric).
+
+Für eine bestimmte Version der Service Fabric-Runtime können Sie die angegebene oder ältere Versionen der SDK/NuGet-Pakete verwenden. Neuere Versionen der Pakete werden nicht unterstützt und weisen möglicherweise Probleme beim Umgang mit älteren Clustern auf, da sie Feature- oder Protokolländerungen aufweisen können, die von diesen Umgebungen nicht unterstützt werden.
 
 In den folgenden Dokumenten finden Sie Details dazu, wie Sie sicherstellen können, dass in Ihrem Cluster immer eine unterstützte Service Fabric-Version ausgeführt wird:
 
 - [Upgrade von Azure Service Fabric-Clustern](service-fabric-cluster-upgrade.md)
 - [Upgraden der in Ihrem Cluster ausgeführten Service Fabric-Version](service-fabric-cluster-upgrade-windows-server.md)
 
-## <a name="supported-versions"></a>Unterstützte Versionen
 
+## <a name="unsupported-versions"></a>Nicht unterstützte Versionen
+
+### <a name="upgrade-alert-for-versions-between-57-and-below-6363"></a>Upgradewarnung für Versionen zwischen 5.7 und 6.3.63.*
+
+***Alle Service Fabric-Cluster in nicht unterstützten Versionen zwischen 5.7 und 6.3.63* sind von einer Breaking Change für die Sicherheit betroffen, die am 7. Januar 2021 in Azure eingeführt wird***.
+ 
+ Um schwerwiegende Dienstunterbrechungen zu vermeiden (einschließlich nicht erstellter Cluster), müssen Sie die Cluster so bald wie möglich auf eine der unten genannten unterstützten Versionen von Service Fabric Runtime aktualisieren, in der das Sicherheitsproblem behoben ist. Wir haben mit den betroffenen Kunden Kontakt aufgenommen und eine Anleitung für sie bereitgestellt. Wenn Sie über einen Supportplan verfügen und technische Hilfe benötigen, wenden Sie sich über [Azure-Supportkanäle](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) an uns, indem Sie eine Supportanfrage öffnen und im Supportticket diesen Kontext erwähnen. 
+ 
+  #### <a name="supported-service-fabric-runtime-versions-including-the-fix-for-the-security-breaking-change"></a>Unterstützte Versionen von Service Fabric Runtime, in denen das Problem bezüglich der Breaking Change für die Sicherheit behoben ist. 
+   Führen Sie ein Upgrade der Service Fabric Cluster, auf denen ältere, nicht unterstützte Versionen ausgeführt werden und die von der Breaking Change für die Sicherheit betroffen sind, auf eine der folgenden unterstützten Versionen durch.
+
+  | OS | Aktuelle Service Fabric-Runtime im Cluster | CU/Patchrelease  | 
+  | --- | --- |--- | 
+  | Windows | 7.0.* | 7.0.478.9590 |
+  | Windows | 7.1.* | 7.1.503.9590 |
+  | Windows | 7.2.* | 7.2.445.9590 |
+  | Ubuntu 16 | 7.0.* | 7.0.472.1  |
+  | Ubuntu 16 | 7.1.* | 7.1.455.1  |
+  | Ubuntu 1804 | 7.1.* | 7.1.455.1804 |
+  | Ubuntu 16 | 7.2.* | 7.2.447.1 |
+  | Ubuntu 1804 | 7.2.* | 7.2.447.1804 |
+ 
+
+## <a name="supported-versions"></a>Unterstützte Versionen
 Die folgende Tabelle enthält die Versionen von Service Fabric und das jeweilige Datum des Ablaufs des Supports.
 
 | Service Fabric-Runtime im Cluster | Kann direkt von Clusterversion aktualisiert werden |Kompatible SDK- oder NuGet-Paket-Version | Ende des Supports |
@@ -47,7 +61,23 @@ Die folgende Tabelle enthält die Versionen von Service Fabric und das jeweilige
 | 6.2.* | 6.0.232.* |Alle Versionen bis einschließlich Version 3.1 |26. Oktober 2018   |
 | 6.3.* | 6.1.480.* |Alle Versionen bis einschließlich Version 3.2 |31. März 2019  |
 | 6.4.* | 6.2.301.* |Alle Versionen bis einschließlich Version 3.3 |15. September 2019 |
-| 6.5.* | 6.4.617.* |Alle Versionen bis einschließlich Version 3.4 |Aktuelle Version, daher kein Enddatum |
+| 6.5.* | 6.4.617.* |Alle Versionen bis einschließlich Version 3.4 |1\. August 2020 |
+| 7.0.466.* | 6.4.664.* |Alle Versionen bis einschließlich Version 4.0|31. Januar 2021  |
+| 7.0.466.* | 6.5.* |Alle Versionen bis einschließlich Version 4.0|31. Januar 2021 |
+| 7.0.470.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.0 |31. Januar 2021  |
+| 7.0.472.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.0 |31. Januar 2021  |
+| 7.0.478.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.0 |31. Januar 2021  |
+| 7.1.409.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.1 |31. März 2021 |
+| 7.1.417.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.1 |31. März 2021 |
+| 7.1.428.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.1 |31. März 2021 |
+| 7.1.456.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.1 |31. März 2021 |
+| 7.1.458.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.1 |31. März 2021 |
+| 7.1.459.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.1 |31. März 2021 |
+| 7.1.503.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.1 |31. März 2021 |
+| 7.2.413.* | 7.0.470.* |Alle Versionen bis einschließlich Version 4.2 |Aktuelle Version, daher kein Enddatum |
+| 7.2.432.* | 7.0.470.* |Alle Versionen bis einschließlich Version 4.2 |Aktuelle Version, daher kein Enddatum |
+| 7.2.433.* | 7.0.470.* |Alle Versionen bis einschließlich Version 4.2 |Aktuelle Version, daher kein Enddatum |
+| 7.2.445.* | 7.0.470.* |Alle Versionen bis einschließlich Version 4.2 |Aktuelle Version, daher kein Enddatum |
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
@@ -57,11 +87,12 @@ Die folgende Tabelle enthält die unterstützten Betriebssysteme für die unters
 | --- | --- |
 | Windows Server 2012 R2 | Alle Versionen |
 | Windows Server 2016 | Alle Versionen |
-| Windows Server 1709 | 6,0 |
-| Windows Server 1803 | 6.4. |
+| Windows Server 1709 | 6.0 |
+| Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16.04 | 6,0 |
+| Linux Ubuntu 16.04 | 6.0 |
+| Linux Ubuntu 18.04 | 7.1 |
 
 ## <a name="supported-version-names"></a>Unterstützte Versionsnamen
 
@@ -77,7 +108,7 @@ In der folgende Tabelle werden die Versionsnamen von Service Fabric und die zuge
 | 5.5 CU1 | 5.5.216.0    | Nicht verfügbar |
 | 5.5 CU2 | 5.5.219.0    | Nicht verfügbar |
 | 5.5 CU3 | 5.5.227.0    | Nicht verfügbar |
-| 5.5 CU4 | 5.5.232.0    | Nicht verfügbar |
+| 5.5 CU4 | 5.5.232.0 | Nicht verfügbar |
 | 5.6 RTO | 5.6.204.9494 | Nicht verfügbar |
 | 5.6 CU2 | 5.6.210.9494 | Nicht verfügbar |
 | 5.6 CU3 | 5.6.220.9494 | Nicht verfügbar |
@@ -90,7 +121,7 @@ In der folgende Tabelle werden die Versionsnamen von Service Fabric und die zuge
 | 6.1 CU2 | 6.1.467.9494 | 6.1.185.1 |
 | 6.1 CU3 | 6.1.472.9494 | Nicht verfügbar |
 | 6.1 CU4 | 6.1.480.9494 | 6.1.187.1 |
-| 6.2 RTO | 6.2.269.9494 | 6.2.184.1 | 
+| 6.2 RTO | 6.2.269.9494 | 6.2.184.1 | 
 | 6.2 CU1 | 6.2.274.9494 | 6.2.191.1 |
 | 6.2 CU2 | 6.2.283.9494 | 6.2.194.1 |
 | 6.2 CU3 | 6.2.301.9494 | 6.2.199.1 |
@@ -109,3 +140,22 @@ In der folgende Tabelle werden die Versionsnamen von Service Fabric und die zuge
 | 6.5 CU1 | 6.5.641.9590 | 6.5.454.1 |
 | 6.5 CU2 | 6.5.658.9590 | 6.5.460.1 |
 | 6.5 CU3 | 6.5.664.9590 | 6.5.466.1 |
+| 6.5 CU5 | 6.5.676.9590 | 6.5.467.1 |
+| 7.0 RTO | 7.0.457.9590 | 7.0.457.1 |
+| 7.0 CU2 | 7.0.464.9590 | 7.0.464.1 |
+| 7.0 CU3 | 7.0.466.9590 | 7.0.465.1 |
+| 7.0 CU4 | 7.0.470.9590 | 7.0.469.1 |
+| 7.0 CU6 | 7.0.472.9590 | 7.0.471.1 |
+| 7.0 CU9 | 7.0.478.9590 | 7.0.472.1 |
+| 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |
+| 7.1 CU1 | 7.1.417.9590 | 7.1.418.1 |
+| 7.1 CU2 | 7.1.428.9590 | 7.1.428.1 |
+| 7.1 CU3 | 7.1.456.9590 | 7.1.452.1 |
+| 7.1 CU5 | 7.1.458.9590 | 7.1.454.1 |
+| 7.1 CU6 | 7.1.459.9590 | 7.1.455.1 |
+| 7.1 CU8 | 7.1.503.9590 | 7.1.508.1 |
+| 7.2 RTO | 7.2.413.9590 | Nicht verfügbar |
+| 7.2 CU2 | 7.2.432.9590 | 7.2.431.1 |
+| 7.2 CU3 | 7.2.433.9590 | Nicht verfügbar |
+| 7.2 CU4 | 7.2.445.9590 | 7.2.447.1 |
+

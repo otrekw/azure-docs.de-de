@@ -1,26 +1,19 @@
 ---
-title: Threat Modeling Tool-Releases – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
-description: Dokumentation der Versionshinweise für das Threat Modeling Tool
-services: security
-documentationcenter: na
+title: Microsoft Threat Modeling Tool, Release 9.4.2019
+titleSuffix: Azure
+description: Dokumentation der Versionshinweise für das Threat Modeling Tool-Release 7.1.60408.1
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: jegeib
-ms.openlocfilehash: 6992ac58ebf8976714e5a478dd7b886efab2a4b7
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 69dd2c6cdba41779849b4eb6b889cde9b1d6e5c9
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934801"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913567"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool, Updaterelease 7.1.60408.1: 09.04.2019
 
@@ -29,13 +22,13 @@ Version 7.1.60408.1 für das Microsoft Threat Modeling Tool (TMT) wurde am 9. Ap
 - Neue Schablonen für Azure Key Vault und Azure Traffic Manager
 - Die TMT-Versionsnummer wird jetzt auf dem Startbildschirm angezeigt
 - Die Supportlinks wurden aktualisiert
-- Fehlerbehebungen
+- Behebung von Programmfehlern
 
 ## <a name="feature-changes"></a>Funktionsänderungen
 
 ### <a name="new-stencils-for-azure-key-vault-and-azure-traffic-manager"></a>Neue Schablonen für Azure Key Vault und Azure Traffic Manager
 
-![Azure Key Vault-Schablone](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
+![Screenshot: Symbole für Azure Key Vault und Azure Traffic Manager](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
 
 Der Azure-Schablonensammlung wurden neue Schablonen und Bedrohungen für Azure Key Vault und Azure Traffic Manager hinzugefügt. Beim Öffnen von Modellen, die auf der Azure-Schablonensammlung basieren, werden Benutzer zum Aktualisieren der dem Modell zugeordneten Vorlage aufgefordert. Das Aktualisieren eines auf der Azure-Schablonensammlung basierenden Modells kann auch manuell mithilfe des Befehls „Vorlage übernehmen“ im Menü „Datei“ und erneutes Anwenden der neuesten Azure Cloud Services.tb7-Datei erfolgen.
 
@@ -43,7 +36,7 @@ Der Azure-Schablonensammlung wurden neue Schablonen und Bedrohungen für Azure K
 
 Die Clientversion des Threat Modeling Tools wird jetzt zwecks bequemem Zugriff auf der Startseite der Anwendung angezeigt.
 
-![Azure Key Vault-Schablone](./media/threat-modeling-tool-releases-71604081/tmt_version.PNG)
+![Screenshot: Microsoft Threat Modeling Tool mit der Clientversionsnummer](./media/threat-modeling-tool-releases-71604081/tmt_version.PNG)
 
 ### <a name="support-links-have-been-updated"></a>Die Supportlinks wurden aktualisiert
 

@@ -1,29 +1,29 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure Database for MariaDB-Servers – Azure-Befehlszeilenschnittstelle'
+title: 'Schnellstart: Erstellen eines Servers – Azure-Befehlszeilenschnittstelle – Azure Database for MariaDB'
 description: Dieser Schnellstart beschreibt die Verwendung der Azure-Befehlszeilenschnittstelle zum Erstellen eines Azure Database for MariaDB-Servers in einer Azure-Ressourcengruppe.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 01/09/2019
-ms.custom: mvc
-ms.openlocfilehash: 7d94834523e331ff048f787760561739765e7023
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 3/18/2020
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 3279150d0cb7b287f0a78581094a51356033596c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171424"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435738"
 ---
-# <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Erstellen eines Azure Database for MariaDB-Servers mit der Azure-Befehlszeilenschnittstelle
+# <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Schnellstart: Erstellen eines Azure Database for MariaDB-Servers mit der Azure-Befehlszeilenschnittstelle
 
-Sie können die Azure-Befehlszeilenschnittstelle (Azure CLI) verwenden, um Azure-Ressourcen über die Befehlszeile oder mit Skripts zu erstellen und zu verwalten. Dieser Schnellstart beschreibt die Verwendung der Azure-Befehlszeilenschnittstelle zum Erstellen eines Azure Database for MariaDB-Servers in einer Azure-Ressourcengruppe in etwa fünf Minuten. 
+Sie können die Azure-Befehlszeilenschnittstelle (Azure CLI) verwenden, um Azure-Ressourcen über die Befehlszeile oder mit Skripts zu erstellen und zu verwalten. Dieser Schnellstart beschreibt die Verwendung der Azure-Befehlszeilenschnittstelle zum Erstellen eines Azure Database for MariaDB-Servers in einer Azure-Ressourcengruppe in etwa fünf Minuten.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Für diesen Schnellstart ist Version 2.0 oder höher der Azure CLI erforderlich, wenn Sie die CLI lokal installieren und verwenden. Führen Sie `az --version` aus, um die Version zu finden. Informationen zur Installation und Aktualisierung der CLI finden Sie bei Bedarf unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+- Für diesen Artikel ist mindestens Version 2.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, das die Ressource enthält, oder das Abonnement, über das Ihre Abrechnung erfolgt. Verwenden Sie zum Auswählen einer bestimmte Abonnement-ID in Ihrem Konto den Befehl [az account set](/cli/azure/account#az-account-set):
 
@@ -33,7 +33,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine [Azure-Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen als Gruppe bereitgestellt und verwaltet werden.
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen als Gruppe bereitgestellt und verwaltet werden.
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myresourcegroup` am Standort `westus`:
 
@@ -74,13 +74,12 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 
 > [!NOTE]
 > Ziehen Sie die Verwendung des Tarifs „Basic“ in Betracht, wenn geringe Compute- und E/A-Leistung für Ihre Workload angemessen ist. Beachten Sie, dass im Tarif „Basic“ erstellte Server später nicht auf „Universell“ oder „Arbeitsspeicheroptimiert“ skaliert werden können. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/mariadb/).
-> 
 
 ## <a name="configure-a-firewall-rule"></a>Konfigurieren einer Firewallregel
 
-Erstellen Sie mit dem Befehl [az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) eine Azure Database for MariaDB-Firewallregel auf Serverebene. Eine Firewallregel auf Serverebene ermöglicht es einer externen Anwendung (z. B. dem MySQL-Befehlszeilentool oder MySQL Workbench), über die Firewall des Azure Database for MariaDB-Diensts eine Verbindung mit Ihrem Server herzustellen. 
+Erstellen Sie mit dem Befehl [az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) eine Azure Database for MariaDB-Firewallregel auf Serverebene. Eine Firewallregel auf Serverebene ermöglicht es einer externen Anwendung (z. B. dem MySQL-Befehlszeilentool oder MySQL Workbench), über die Firewall des Azure Database for MariaDB-Diensts eine Verbindung mit Ihrem Server herzustellen.
 
-Das folgende Beispiel erstellt eine Firewallregel namens `AllowMyIP`, die Verbindungen über eine bestimmte IP-Adresse (192.168.0.1) zulässt. Geben Sie entsprechend dem Standort, von dem Sie eine Verbindung herstellen, eine IP-Adresse oder einen Bereich von IP-Adressen an. 
+Das folgende Beispiel erstellt eine Firewallregel namens `AllowMyIP`, die Verbindungen über eine bestimmte IP-Adresse (192.168.0.1) zulässt. Geben Sie entsprechend dem Standort, von dem Sie eine Verbindung herstellen, eine IP-Adresse oder einen Bereich von IP-Adressen an.
 
 ```azurecli-interactive
 az mariadb server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -88,14 +87,13 @@ az mariadb server firewall-rule create --resource-group myresourcegroup --server
 
 > [!NOTE]
 > Die Kommunikation für Verbindungen mit Azure Database for MariaDB erfolgt über Port 3306. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 3306 unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Server herstellen, wenn Ihre IT-Abteilung Port 3306 öffnet.
-> 
 
 ## <a name="configure-ssl-settings"></a>Konfigurieren der SSL-Einstellungen
 
 Standardmäßig werden SSL-Verbindungen zwischen Ihrem Server und Clientanwendungen erzwungen. Mit dieser Standardeinstellung wird die Sicherheit von Daten während des Betriebs gewährleistet, indem der Datenstrom über das Internet verschlüsselt wird. Für diesen Schnellstart deaktivieren Sie SSL-Verbindungen für Ihren Server. Das Deaktivieren von SSL ist für Produktionsserver aber nicht zu empfehlen. Weitere Informationen finden Sie unter [Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit Azure Database for MariaDB](./howto-configure-ssl.md).
 
 Das folgende Beispiel deaktiviert die SSL-Erzwingung auf Ihrem Azure Database for MariaDB-Server:
- 
+
 ```azurecli-interactive
 az mariadb server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Disabled
 ```
@@ -156,9 +154,10 @@ So stellen Sie mit dem MySQL-Befehlszeilentool eine Verbindung mit dem Server he
    ```sql
    status
    ```
+
    Es sollte ein Text ähnlich dem folgenden angezeigt werden:
 
-   ```bash
+   ```cmd
    C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
    Enter password: ***********
    Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -207,11 +206,11 @@ So stellen Sie mit dem MySQL-Befehlszeilentool eine Verbindung mit dem Server he
 
 1. Öffnen Sie MySQL Workbench auf Ihrem Clientcomputer. Falls die Anwendung noch nicht installiert ist, können Sie sie [herunterladen](https://dev.mysql.com/downloads/workbench/) und installieren.
 
-2. Geben Sie im Dialogfeld **Setup New Connection** (Neue Verbindung einrichten) auf der Registerkarte **Parameter** die folgenden Informationen ein:
+2. Geben Sie im Dialogfeld **Setup New Connection** (Neue Verbindung einrichten) auf der Registerkarte **Parameter** folgende Informationen ein:
 
    ![Einrichten einer neuen Verbindung](./media/quickstart-create-mariadb-server-database-using-azure-cli/setup-new-connection.png)
 
-   | Einstellung | Empfohlener Wert | BESCHREIBUNG |
+   | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
    |---|---|---|
    | Verbindungsname | **Beispielverbindung** | Geben Sie eine Bezeichnung für die Verbindung ein (Sie können einen beliebigen Verbindungsnahmen verwenden). |
    | Verbindungsmethode | **Standard (TCP/IP)** | Verwenden Sie das TCP/IP-Protokoll zum Herstellen einer Verbindung mit Azure Database for MariaDB. |
@@ -241,4 +240,4 @@ az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Entwerfen einer MariaDB-Datenbank mit der Azure CLI](./tutorial-design-database-cli.md)
+> [Entwerfen einer MariaDB-Datenbank mit der Azure CLI](tutorial-design-database-cli.md)

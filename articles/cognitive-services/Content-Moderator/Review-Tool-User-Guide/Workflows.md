@@ -3,19 +3,19 @@ title: Definieren und Verwenden von Inhaltsworkflows über das Prüfungstool –
 titleSuffix: Azure Cognitive Services
 description: Sie können den Workflow-Designer von Azure Content Moderator verwenden, um benutzerdefinierte Workflows und Schwellenwerte basierend auf Ihren Inhaltsrichtlinien zu definieren.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: sajagtap
-ms.openlocfilehash: ca223735e64e5499313872ba0508bfb0d8ec7ed2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 6eb2a2d2762b60a12bb9a24b92e2edae4b846cd1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882695"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904141"
 ---
 # <a name="define-and-use-moderation-workflows"></a>Definieren und Verwenden von Moderationsworkflows
 
@@ -83,4 +83,4 @@ Wechseln Sie zur Registerkarte **Bild**  unter **Überprüfung**, und vergewisse
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurde erläutert, wie Sie Moderationsworkflows über das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) von Content Moderator einrichten und verwenden. Sehen Sie sich als Nächstes die [Anleitung für die REST-API](../try-review-api-workflow.md) an, um zu erfahren, wie Workflows programmgesteuert erstellt werden.
+In diesem Artikel wurde erläutert, wie Sie Moderationsworkflows über das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) von Content Moderator einrichten und verwenden. Sehen Sie sich als Nächstes die [Anleitung für die API-Konsole](../try-review-api-workflow.md) an, um zu erfahren, wie Workflows programmgesteuert erstellt werden.

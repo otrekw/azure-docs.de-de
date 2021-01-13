@@ -1,31 +1,31 @@
 ---
 title: Integration von Azure ExpressRoute und Oracle Cloud Infrastructure | Microsoft-Dokumentation
 description: Integration von Azure ExpressRoute und Oracle Cloud Infrastructure (OCI) FastConnect unterstützt cloudübergreifende Oracle-Anwendungslösungen
-documentationcenter: virtual-machines
-author: romitgirdhar
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 08/02/2019
-ms.author: rogirdh
-ms.openlocfilehash: eb5d03d50a99978e4f3ee58fba206dd730f7d5fe
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 03/16/2020
+ms.author: rogardle
+ms.reviewer: cynthn
+ms.openlocfilehash: 2717ba307cac82465e0c5df996ef3b668af5e7d4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100137"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963707"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Einrichten einer direkten Verbindung zwischen Azure und Oracle Cloud Infrastructure  
 
-Microsoft und Oracle bieten mit [ExpressRoute](../../../expressroute/expressroute-introduction.md) und [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) die Möglichkeit, eine direkte Verbindung zwischen Azure und Oracle Cloud Infrastructure (OCI) herzustellen und so eine [integrierte Multi-Cloud-Umgebung](oracle-oci-overview.md) (Vorschauversion) bereitzustellen. Dank der Integration von ExpressRoute und FastConnect profitieren Kunden von geringer Latenz, hohem Durchsatz und privaten Direktverbindungen zwischen den beiden Clouds.
+Microsoft und Oracle bieten mit [ExpressRoute](../../../expressroute/expressroute-introduction.md) und [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) die Möglichkeit, eine direkte Verbindung zwischen Azure und Oracle Cloud Infrastructure (OCI) herzustellen und so eine [integrierte Multi-Cloud-Umgebung](oracle-oci-overview.md) bereitzustellen. Dank der Integration von ExpressRoute und FastConnect profitieren Kunden von geringer Latenz, hohem Durchsatz und privaten Direktverbindungen zwischen den beiden Clouds.
 
 > [!IMPORTANT]
-> Die Cloudverbindung zwischen Microsoft Azure und OCI befindet sich in der Vorschauphase. Damit Verbindungen mit geringer Latenz zwischen Azure und OCI unterstützt werden, muss diese Funktionalität für Ihr Azure-Abonnement zunächst in die Whitelist aufgenommen werden. Sie müssen sich für die Vorschauversion registrieren, indem Sie dieses kurze [Umfrageformular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu) ausfüllen. Sie erhalten eine E-Mail zurück, nachdem Ihr Abonnement registriert wurde. Sie können die Funktion erst verwenden, wenn Sie eine Bestätigungs-E-Mail erhalten haben. Sie können sich auch an Ihren Ansprechpartner bei Microsoft wenden, um für diese Vorschauversion aktiviert zu werden. Der Zugriff auf die Vorschaufunktion ist vorbehaltlich der Verfügbarkeit und wird von Microsoft nach eigenem Ermessen beschränkt. Die Beantwortung der Umfrage garantiert keinen Zugriff. Diese Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+> Oracle zertifiziert diese Anwendungen für die Ausführung in Azure, wenn die Azure/Oracle Cloud Interconnect-Lösung bis Mai 2020 verwendet wird.
+> * E-Business Suite
+> * JD Edwards EnterpriseOne
+> * PeopleSoft
+> * Oracle Retail-Anwendungen
+> * Oracle Hyperion Financial Management
 
 Die folgende Abbildung enthält eine allgemeine Übersicht über die Verbindung:
 
@@ -35,9 +35,7 @@ Die folgende Abbildung enthält eine allgemeine Übersicht über die Verbindung:
 
 * Um die Verbindung zwischen Azure und OCI herzustellen, benötigen Sie ein aktives Azure-Abonnement und einen aktiven OCI-Mandanten.
 
-* Die Verbindung ist nur möglich, wenn sich ein Azure ExpressRoute-Peeringstandort in der Nähe oder am gleichen Peeringstandort wie OCI FastConnect befindet. Siehe [Einschränkungen der Vorschau](oracle-oci-overview.md#preview-limitations).
-
-* Ihr Azure-Abonnement muss für diese Vorschaufunktion in die Whitelist aufgenommen werden.
+* Die Verbindung ist nur möglich, wenn sich ein Azure ExpressRoute-Peeringstandort in der Nähe oder am gleichen Peeringstandort wie OCI FastConnect befindet. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](oracle-oci-overview.md#region-availability).
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>Konfigurieren der direkten Konnektivität zwischen ExpressRoute und FastConnect
 
@@ -63,7 +61,7 @@ Die folgende Abbildung enthält eine allgemeine Übersicht über die Verbindung:
     * Fügen Sie den ExpressRoute-Dienstschlüssel in das Feld für den **Anbieterdienstschlüssel** ein.
     * Verwenden Sie den ersten privaten /30-IP-Adressraum, den Sie in einem vorherigen Schritt erstellt haben, für die **Primary BGP IP Address** (Primäre BGP-IP-Adresse) und den zweiten privaten /30-IP-Adressraum für die **Secondary BGP IP Address** (Sekundäre BGP-IP-Adresse).
         * Weisen Sie die erste verwendbare Adresse aus den beiden Adressräumen der Oracle-BGP-IP-Adresse (primär und sekundär) und die zweite Adresse der Kunden-BGP-IP-Adresse zu (aus der Perspektive von FastConnect). Die erste verwendbare IP-Adresse entspricht der zweiten IP-Adresse im /30-Adressraum (die erste IP-Adresse wird von Microsoft reserviert).
-    * Klicken Sie auf **Create**.
+    * Klicken Sie auf **Erstellen**.
 1. Schließen Sie die Verknüpfung von FastConnect mit Virtual Cloud Network im Oracle-Mandanten ab. Verwenden Sie dazu ein DRG (Dynamic Routing Gateway) und eine Routingtabelle.
 1. Navigieren Sie zu Azure, und stellen sicher, dass der **Anbieterstatus** für die ExpressRoute-Verbindung in **Bereitgestellt** geändert und dass der Peeringtyp **Azure, privat** bereitgestellt wurde. Dies ist eine Voraussetzung für die nächsten Schritte.
 
@@ -93,7 +91,7 @@ Bei der Installation der Agents in beiden Clouds können Sie den [Netzwerkleistu
 
 Um die Verbindung zu löschen, müssen die folgenden Schritte in der angegebenen Reihenfolge ausgeführt werden. Andernfalls wird die ExpressRoute-Verbindung in einen Fehlerzustand versetzt.
 
-1. Löschen Sie die ExpressRoute-Verbindung. Sie löschen die Verbindung, indem Sie auf der zugehörigen Seite auf das Symbol **Löschen** klicken. Weitere Informationen finden Sie in der [Dokumentation zu ExpressRoute](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#delete-a-connection-to-unlink-a-vnet).
+1. Löschen Sie die ExpressRoute-Verbindung. Sie löschen die Verbindung, indem Sie auf der zugehörigen Seite auf das Symbol **Löschen** klicken. Weitere Informationen finden Sie in der [Dokumentation zu ExpressRoute](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#clean-up-resources).
 1. Löschen Sie Oracle FastConnect in der Oracle Cloud Console.
 1. Nachdem die Oracle FastConnect-Verbindung gelöscht wurde, können Sie die Azure ExpressRoute-Verbindung löschen.
 

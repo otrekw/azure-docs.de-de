@@ -1,24 +1,17 @@
 ---
 title: Leitfaden für in Azure Log Analytics gespeicherte personenbezogene Daten | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie personenbezogene Daten verwalten, die in Azure Log Analytics gespeichert sind, und wie Sie diese Daten identifizieren und entfernen.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 05/18/2018
-ms.author: magoedte
-ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617307"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505272"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Leitfaden für personenbezogene Daten, die in Log Analytics und Application Insights gespeichert sind
 
@@ -55,7 +48,7 @@ Log Analytics ist ein flexibler Datenspeicher, der zwar ein Schema für die Date
     ```
   Wichtig: Suchen Sie nicht nur nach lesbaren Benutzernamen, sondern auch nach GUIDs, die direkt zu einem bestimmten Benutzer zurückverfolgt werden können.
 * *Geräte-IDs*: Geräte-IDs sind mit Benutzer-IDs vergleichbar und werden gelegentlich als „privat“ betrachtet. Verwenden Sie die gleiche Vorgehensweise, die weiter oben für Benutzer-IDs angegeben ist, um Tabellen zu ermitteln, bei denen dies ggf. relevant ist. 
-* *Benutzerdefinierte Daten*: In Log Analytics stehen verschiedene Erfassungsmethoden zur Verfügung: benutzerdefinierte Protokolle und benutzerdefinierte Felder, die [HTTP-Datensammler-API](../../azure-monitor/platform/data-collector-api.md) und benutzerdefinierte Daten, die im Rahmen von Systemereignisprotokollen erfasst werden. Alle diese Optionen können personenbezogene Daten enthalten und müssen auf entsprechende Daten untersucht werden.
+* *Benutzerdefinierte Daten*: In Log Analytics stehen verschiedene Erfassungsmethoden zur Verfügung: benutzerdefinierte Protokolle und benutzerdefinierte Felder, die [HTTP-Datensammler-API](./data-collector-api.md) und benutzerdefinierte Daten, die im Rahmen von Systemereignisprotokollen erfasst werden. Alle diese Optionen können personenbezogene Daten enthalten und müssen auf entsprechende Daten untersucht werden.
 * *Durch die Lösung erfasste Daten*: Da es sich bei dem Lösungsmechanismus um einen Mechanismus mit offenem Ende handelt, empfiehlt es sich, alle von Lösungen generierten Tabellen zu überprüfen, um die Compliance zu gewährleisten.
 
 ### <a name="application-data"></a>Anwendungsdaten
@@ -74,8 +67,8 @@ Log Analytics ist ein flexibler Datenspeicher, der zwar ein Schema für die Date
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *Daten im Speicher und während der Übertragung*: Application Insights erfasst Ausnahmen, Anforderungen, Abhängigkeitsaufrufe und Ablaufverfolgungen. Personenbezogene Daten können häufig auf Code- und HTTP-Aufrufebene gesammelt werden. Überprüfen Sie die Tabellen für Ausnahmen, Anforderungen, Abhängigkeiten und Ablaufverfolgungen, um solche Daten zu ermitteln. Verwenden Sie nach Möglichkeit [Telemetrieinitialisierer](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling), um diese Daten zu verschleiern.
-* *Aufzeichnungen des Momentaufnahmedebuggers*: Mithilfe des Features [Momentaufnahmedebugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) in Application Insights können Sie Debugmomentaufnahmen erfassen, sobald eine Ausnahme in der Produktionsinstanz Ihrer Anwendung abgefangen wird. Momentaufnahmen zeigen die gesamte Stapelüberwachung, die zu den Ausnahmen führt, sowie die Werte für lokale Variablen in jedem Schritt im Stapel. Leider ermöglicht dieses Feature weder das selektive Löschen von Fangpunkten noch den programmgesteuerten Zugriff auf Daten innerhalb der Momentaufnahme. Falls die Standardaufbewahrungsrate für Momentaufnahmen Ihren Compliancevorgaben nicht entspricht, wird empfohlen, das Feature zu deaktivieren.
+* *Daten im Speicher und während der Übertragung*: Application Insights erfasst Ausnahmen, Anforderungen, Abhängigkeitsaufrufe und Ablaufverfolgungen. Personenbezogene Daten können häufig auf Code- und HTTP-Aufrufebene gesammelt werden. Überprüfen Sie die Tabellen für Ausnahmen, Anforderungen, Abhängigkeiten und Ablaufverfolgungen, um solche Daten zu ermitteln. Verwenden Sie nach Möglichkeit [Telemetrieinitialisierer](../app/api-filtering-sampling.md), um diese Daten zu verschleiern.
+* *Aufzeichnungen des Momentaufnahmedebuggers*: Mithilfe des Features [Momentaufnahmedebugger](../app/snapshot-debugger.md) in Application Insights können Sie Debugmomentaufnahmen erfassen, sobald eine Ausnahme in der Produktionsinstanz Ihrer Anwendung abgefangen wird. Momentaufnahmen zeigen die gesamte Stapelüberwachung, die zu den Ausnahmen führt, sowie die Werte für lokale Variablen in jedem Schritt im Stapel. Leider ermöglicht dieses Feature weder das selektive Löschen von Fangpunkten noch den programmgesteuerten Zugriff auf Daten innerhalb der Momentaufnahme. Falls die Standardaufbewahrungsrate für Momentaufnahmen Ihren Compliancevorgaben nicht entspricht, wird empfohlen, das Feature zu deaktivieren.
 
 ## <a name="how-to-export-and-delete-private-data"></a>Exportieren und Löschen personenbezogener Daten
 
@@ -88,7 +81,7 @@ Wie bereits weiter oben im Abschnitt [Strategie für den Umgang mit personenbezo
 Sowohl für das Anzeigen als auch für das Exportieren von Datenanforderungen sollte die [Log Analytics-Abfrage-API](https://dev.loganalytics.io/) oder die [Application Insights-Abfrage-API](https://dev.applicationinsights.io/quickstart) verwendet werden. Die Logik, mit der die Daten in eine geeignete Form konvertiert werden, um sie für Ihre Benutzer bereitzustellen, muss von Ihnen selbst implementiert werden. [Azure Functions](https://azure.microsoft.com/services/functions/) eignet sich hervorragend zum Hosten einer solchen Logik.
 
 > [!IMPORTANT]
->  Obwohl die Mehrzahl der Bereinigungsvorgänge wesentlich schneller als die SLA ausgeführt werden kann, ist – aufgrund der starken Auswirkung auf die verwendete Datenplattform – **die formelle SLA für die Ausführung von Bereinigungsvorgängen auf 30 Tage festgelegt**. Dies ist ein automatisierter Prozess; es gibt keine Möglichkeit anzufordern, dass ein Vorgang schneller verarbeitet werden soll.
+>  Obwohl die Mehrzahl der Bereinigungsvorgänge wesentlich schneller als die SLA ausgeführt werden kann, ist – aufgrund der starken Auswirkung auf die verwendete Datenplattform – **die formelle SLA für die Ausführung von Bereinigungsvorgängen auf 30 Tage festgelegt**. Diese SLA erfüllt die DSGVO-Anforderungen. Dies ist ein automatisierter Prozess. Es gibt daher keine Möglichkeit, eine schnellere Verarbeitung eines Vorgangs anzufordern. 
 
 ### <a name="delete"></a>Löschen
 
@@ -96,6 +89,9 @@ Sowohl für das Anzeigen als auch für das Exportieren von Datenanforderungen so
 > Löschvorgänge in Log Analytics sind destruktiv und unumkehrbar. Seien Sie bei der Ausführung äußerst vorsichtig.
 
 Im Rahmen der Vorgehensweisen für den Datenschutz haben wir einen API-Pfad für die *Bereinigung* verfügbar gemacht. Dieser Pfad sollte aufgrund der Risiken im Zusammenhang mit seiner Verwendung, möglichen Leistungseinbußen sowie einer möglichen Verzerrung von Aggregationen, Messungen und anderen Aspekten Ihrer Log Analytics-Daten möglichst selten verwendet werden. Alternative Methoden für den Umgang mit personenbezogenen Daten finden Sie im Abschnitt [Strategie für den Umgang mit personenbezogenen Daten](#strategy-for-personal-data-handling).
+
+> [!NOTE]
+> Nachdem der Löschvorgang durchgeführt wurde, kann nicht auf die Daten zugegriffen werden, solange der [Status des Löschvorgangs](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus) *ausstehend* lautet. 
 
 Das Bereinigen ist ein Vorgang, der hohe Berechtigungen erfordert, und weder eine App noch ein Benutzer in Azure (einschließlich des Ressourcenbesitzers) ist zur Ausführung berechtigt, sofern nicht in Azure Resource Manager explizit eine entsprechende Rolle zugewiesen wurde. Dies ist die Rolle _Datenpurger_, die aufgrund des möglichen Datenverlusts sehr zurückhaltend vergeben werden sollte. 
 
@@ -108,7 +104,7 @@ Nachdem die Azure Resource Manager-Rolle zugewiesen wurde, sind zwei neue API-Pf
 
 #### <a name="log-data"></a>Protokolldaten
 
-* [POST purge](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge): Verwendet ein Objekt, das Parameter der zu löschenden Daten angibt, und gibt eine Verweis-GUID zurück. 
+* [POST purge](/rest/api/loganalytics/workspacepurge/purge): Verwendet ein Objekt, das Parameter der zu löschenden Daten angibt, und gibt eine Verweis-GUID zurück. 
 * GET purge status: Der Aufruf von „POST purge“ gibt einen Header vom Typ „x-ms-status-location“ zurück, der eine URL enthält, die Sie zum Ermitteln des Status Ihrer Bereinigungs-API aufrufen können. Beispiel:
 
     ```
@@ -120,7 +116,7 @@ Nachdem die Azure Resource Manager-Rolle zugewiesen wurde, sind zwei neue API-Pf
 
 #### <a name="application-data"></a>Anwendungsdaten
 
-* [POST purge](https://docs.microsoft.com/rest/api/application-insights/components/purge): Verwendet ein Objekt, das Parameter der zu löschenden Daten angibt, und gibt eine Verweis-GUID zurück.
+* [POST purge](/rest/api/application-insights/components/purge): Verwendet ein Objekt, das Parameter der zu löschenden Daten angibt, und gibt eine Verweis-GUID zurück.
 * GET purge status: Der Aufruf von „POST purge“ gibt einen Header vom Typ „x-ms-status-location“ zurück, der eine URL enthält, die Sie zum Ermitteln des Status Ihrer Bereinigungs-API aufrufen können. Beispiel:
 
    ```
@@ -131,5 +127,6 @@ Nachdem die Azure Resource Manager-Rolle zugewiesen wurde, sind zwei neue API-Pf
 >  Obwohl die Mehrzahl der Bereinigungsvorgänge wesentlich schneller als die SLA ausgeführt werden kann, ist aufgrund der starken Auswirkung auf die von Application Insights verwendete Datenplattform **die formelle SLA für die Ausführung von Bereinigungsvorgängen auf 30 Tage festgelegt**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zum Sammeln, Verarbeiten und Schützen von Daten in Log Analytics finden Sie unter [Log Analytics – Datensicherheit](../../azure-monitor/platform/data-security.md).
-- Weitere Informationen zum Sammeln, Verarbeiten und Sichern von Daten in Application Insights finden Sie unter [Application Insights – Datensicherheit](../../azure-monitor/app/data-retention-privacy.md).
+- Weitere Informationen zum Sammeln, Verarbeiten und Schützen von Daten in Log Analytics finden Sie unter [Log Analytics – Datensicherheit](./data-security.md).
+- Weitere Informationen zum Sammeln, Verarbeiten und Sichern von Daten in Application Insights finden Sie unter [Application Insights – Datensicherheit](../app/data-retention-privacy.md).
+

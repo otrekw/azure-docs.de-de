@@ -1,32 +1,26 @@
 ---
-title: Erstellen eines virtuellen Windows-Computers in einer Zone mit dem Azure-Portal | Microsoft Docs
+title: Erstellen eines virtuellen Windows-Computers in einer Zone mit dem Azure-Portal
 description: Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit dem Azure-Portal
-services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 90c6f7106cbc885c513d47bf80a7b1ec218d8c6c
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 339c093e5444839f9b106cd08980438a864c0474
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168558"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87828913"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit dem Azure-Portal
 
 In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers in einer Azure-Verfügbarkeitszone mithilfe des Azure-Portals erläutert. Eine [Verfügbarkeitszone](../../availability-zones/az-overview.md) ist eine physisch separate Zone in einer Azure-Region. Verwenden Sie Verfügbarkeitszonen, um Ihre Apps und Daten vor einem unwahrscheinlichen Fehler oder Ausfall eines gesamten Rechenzentrums zu schützen.
 
-Um eine Verfügbarkeitszone verwenden zu können, muss der virtuelle Computer in einer [unterstützten Azure-Region](../../availability-zones/az-overview.md#services-support-by-region) erstellt werden.
+Um eine Verfügbarkeitszone verwenden zu können, muss der virtuelle Computer in einer [unterstützten Azure-Region](../../availability-zones/az-region.md) erstellt werden.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure 
 
@@ -74,4 +68,4 @@ Sie können die Zoneneinstellungen für diese Ressourcen im Portal überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie einen virtuellen Computer in einer Verfügbarkeitszone erstellen. Erfahren Sie mehr über die [Verfügbarkeit](availability.md) virtueller Azure-Computer.
+In diesem Artikel haben Sie gelernt, wie Sie einen virtuellen Computer in einer Verfügbarkeitszone erstellen. Erfahren Sie mehr über die [Verfügbarkeit](../availability.md) virtueller Azure-Computer.

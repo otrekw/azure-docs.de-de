@@ -1,18 +1,14 @@
 ---
-title: Ausführen Ihrer ersten Abfrage mit Azure PowerShell
-description: Dieser Artikel führt Sie durch die Schritte zum Aktivieren des Resource Graph-Moduls für Azure PowerShell und Ausführen Ihrer ersten Abfrage.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 01/23/2019
+title: 'Schnellstart: Ihre erste PowerShell-Abfrage'
+description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren des Resource Graph-Moduls für Azure PowerShell und zum Ausführen Ihrer ersten Abfrage aus.
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 7c47b233e508c22ef7b380acfb7720ad763d8de3
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b810f4af319d3a5212d35e3387ab35b9fa40aafa
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241104"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057432"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mit Azure PowerShell
 
@@ -20,7 +16,11 @@ Wenn Sie Azure Resource Graph verwenden möchten, müssen Sie sich zunächst ver
 
 Am Ende dieses Prozesses haben Sie das Modul zu Ihrer Azure PowerShell-Installation hinzugefügt und Ihre erste Resource Graph-Abfrage ausgeführt.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-module"></a>Hinzufügen des Resource Graph-Moduls
 
@@ -32,7 +32,7 @@ Das Azure Resource Graph-Modul setzt folgende Software voraus:
 
 - Azure PowerShell 1.0.0 oder höher. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/powershell/azure/install-az-ps).
 
-- PowerShellGet 2.0.1 oder höher. Falls es nicht installiert oder aktuell ist, befolgen Sie [diese Anweisungen](/powershell/gallery/installing-psget).
+- PowerShellGet 2.0.1 oder höher. Falls es nicht installiert oder aktuell ist, befolgen Sie [diese Anweisungen](/powershell/scripting/gallery/installing-psget).
 
 ### <a name="install-the-module"></a>Installieren des Moduls
 
@@ -54,7 +54,7 @@ Das Resource Graph-Modul für PowerShell ist **Az.ResourceGraph**.
 
 ## <a name="run-your-first-resource-graph-query"></a>Ausführen Ihrer ersten Resource Graph-Abfrage
 
-Nachdem das Azure PowerShell-Modul der gewünschten Umgebung hinzugefügt wurde, können Sie eine einfache Resource Graph-Abfrage ausprobieren. Die Abfrage gibt die ersten fünf Azure-Ressourcen mit **Namen** und **Ressourcentyp** der einzelnen Ressourcen zurück.
+Nachdem das Azure PowerShell-Modul der gewünschten Umgebung hinzugefügt wurde, können Sie eine einfache Resource Graph-Abfrage ausprobieren. Die Abfrage gibt die ersten fünf Azure-Ressourcen mit dem **Namen** und **Ressourcentyp** der einzelnen Ressourcen zurück.
 
 1. Führen Sie Ihre erste Azure Resource Graph-Abfrage mit dem `Search-AzGraph`-Cmdlet aus:
 
@@ -62,7 +62,7 @@ Nachdem das Azure PowerShell-Modul der gewünschten Umgebung hinzugefügt wurde,
    # Login first with Connect-AzAccount if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   Search-AzGraph -Query 'project name, type | limit 5'
+   Search-AzGraph -Query 'Resources | project name, type | limit 5'
    ```
 
    > [!NOTE]
@@ -72,20 +72,20 @@ Nachdem das Azure PowerShell-Modul der gewünschten Umgebung hinzugefügt wurde,
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
-   Search-AzGraph -Query 'project name, type | limit 5 | order by name asc'
+   Search-AzGraph -Query 'Resources | project name, type | limit 5 | order by name asc'
    ```
 
    > [!NOTE]
-   > Genau wie bei der ersten Abfrage ergibt die mehrfache Ausführung dieser Abfrage vermutlich pro Anforderung einen anderen Satz von Ressourcen. Die Reihenfolge der Abfragebefehle ist wichtig. In diesem Beispiel kommt `order by` nach `limit`. Dies beschränkt zunächst die Ergebnisse der Abfrage und sortiert sie dann.
+   > Genau wie bei der ersten Abfrage ergibt die mehrfache Ausführung dieser Abfrage vermutlich pro Anforderung einen anderen Satz von Ressourcen. Die Reihenfolge der Abfragebefehle ist wichtig. In diesem Beispiel kommt `order by` nach `limit`. Durch diese Befehlsreihenfolge werden die Abfrageergebnisse zuerst eingeschränkt und dann sortiert.
 
 1. Aktualisieren Sie die Abfrage, sodass zuerst eine Sortierung (`order by`) nach der Eigenschaft **Name** vorgenommen wird, und begrenzen Sie die Ergebnisse mithilfe von `limit` auf die fünf relevantesten Ergebnisse:
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   Search-AzGraph -Query 'project name, type | order by name asc | limit 5'
+   Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5'
    ```
 
-Wenn die letzte Abfrage mehrmals ausgeführt wird, sind die zurückgegebenen Ergebnisse – vorausgesetzt, dass sich in Ihrer Umgebung nichts ändert – konsistent und wie erwartet: sortiert nach der Eigenschaft **Name**, aber immer noch auf die fünf relevantesten Ergebnisse begrenzt.
+Wenn die letzte Abfrage mehrmals ausgeführt wird und in Ihrer Umgebung keine Änderungen vorgenommenen werden, sind die zurückgegebenen Ergebnisse konsistent und nach der Eigenschaft **Name** sortiert, aber immer noch auf die ersten fünf Ergebnisse begrenzt.
 
 > [!NOTE]
 > Beachten Sie, dass das Cmdlet `Search-AzGraph` standardmäßig Abonnements im Standardkontext verwendet, wenn die Abfrage keine Ergebnisse aus einem Abonnement zurückgibt, auf das Sie bereits Zugriff haben. Wenn Sie die Liste der Abonnement-IDs anzeigen möchten, die Teil des Standardkontexts sind, führen Sie `(Get-AzContext).Account.ExtendedProperties.Subscriptions` aus. Wenn Sie alle Abonnements durchsuchen möchten, auf die Sie Zugriff haben, können Sie „PSDefaultParameterValues“ für das Cmdlet `Search-AzGraph` durch Ausführen von `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` festlegen.
@@ -107,9 +107,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Abfragesprache](./concepts/query-language.md)
-- Lernen Sie, [Ressourcen zu untersuchen](./concepts/explore-resources.md)
-- Führen Sie Ihre erste Abfrage mit der [Azure CLI](first-query-azurecli.md) aus.
-- Siehe Beispiele der [einfachen Abfragen](./samples/starter.md)
-- Siehe Beispiele der [erweiterten Abfragen](./samples/advanced.md)
-- Senden von Feedback über [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)
+In dieser Schnellstartanleitung haben Sie das Resource Graph-Modul zu ihrer Azure PowerShell-Umgebung hinzugefügt und Ihre erste Abfrage ausgeführt. Wenn Sie mehr über die Resource Graph-Sprache erfahren möchten, fahren Sie mit der Seite mit den Details zur Abfragesprache fort.
+
+> [!div class="nextstepaction"]
+> [Erfahren Sie mehr über die Abfragesprache](./concepts/query-language.md).

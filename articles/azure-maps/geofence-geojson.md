@@ -1,19 +1,19 @@
 ---
-title: Geofence GeoJSON-Datenformat in Azure Maps | Microsoft-Dokumentation
-description: Informationen zum Geofence GeoJSON-Datenformat in Azure Maps
-author: walsehgal
-ms.author: v-musehg
+title: GeoJSON-Datenformat für Geofence | Microsoft Azure Maps
+description: Erfahren Sie mehr über Geofence-Daten in Azure Maps. Sehen Sie, wie die GET Geofence- und POST Geofence-APIs beim Abrufen der Position von Koordinaten relative zu einem Geofence verwendet werden.
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5946180c161a38a30f44e235ce0b626fd70a5400
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: e880710b93a6764df50780e685c89b5f569b4ec0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735145"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897193"
 ---
 # <a name="geofencing-geojson-data"></a>Geofencing von GeoJSON-Daten
 
@@ -30,7 +30,7 @@ Die Daten für einen Geofence oder eine Reihe von Geofences werden durch das `Fe
 * Die `expiredTime` stellt Ablaufdatum und -uhrzeit der Geofencingdaten dar. Wenn der Wert von `userTime` in der Anforderung später ist als dieser Wert, werden die entsprechenden Geofencedaten als abgelaufen angesehen und nicht abgefragt. Daraufhin wird die geometryId dieser Geofencedaten in das Array `expiredGeofenceGeometryId` in der Geofenceantwort aufgenommen.
 * Die `validityPeriod` ist eine Liste der Gültigkeitszeiträume des Geofence. Wenn der Wert von `userTime` in der Anforderung außerhalb der Gültigkeitsdauer liegt, werden die entsprechenden Geofencedaten als ungültig angesehen und nicht abgefragt. Die geometryId dieser Geofencedaten wird in das Array `invalidPeriodGeofenceGeometryId` in der Geofenceantwort aufgenommen. In der folgenden Tabelle sind die Eigenschaften des ValidityPeriod-Elements dargestellt.
 
-| NAME | type | Erforderlich  | BESCHREIBUNG |
+| Name | type | Erforderlich  | BESCHREIBUNG |
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datetime  | true | Das Anfangsdatum und die Anfangsuhrzeit der Gültigkeitsdauer. |
 | endTime   | Datetime  | true |  Das Enddatum und die Enduhrzeit der Gültigkeitsdauer. |
@@ -40,7 +40,7 @@ Die Daten für einen Geofence oder eine Reihe von Geofences werden durch das `Fe
 
 * Alle Koordinatenwerte werden als [Breitengrad, Längengrad] gemäß der Definition in `WGS84` dargestellt.
 * Bei allen Features, die `MultiPoint`, `MultiLineString`, `MultiPolygon` oder `GeometryCollection` enthalten gelten die Eigenschaften für alle Elemente. Beispiel: Alle Punkte in `MultiPoint` verwenden den gleichen Radius, um einen Geofence aus mehreren Kreisen zu bilden.
-* Im Punkt-Kreis-Szenario kann eine Kreisgeometrie mithilfe eines `Point`-Geometrieobjekts dargestellt werden, dessen Eigenschaften in [Erweitern der GeoJSON-Geometrien](https://docs.microsoft.com/azure/azure-maps/extend-geojson) dargelegt sind.      
+* Im Punkt-Kreis-Szenario kann eine Kreisgeometrie mithilfe eines `Point`-Geometrieobjekts dargestellt werden, dessen Eigenschaften in [Erweitern der GeoJSON-Geometrien](./extend-geojson.md) dargelegt sind.      
 
 Das Folgende ist ein Beispielanforderungstext für einen Geofence, der als Kreis-Geofencegeometrie in `GeoJSON` dargestellt ist und einen Mittelpunkt sowie einen Radius verwendet. Der Gültigkeitszeitraum der Geofencedaten beginnt am 22.10.2018 von 9 Uhr bis 17 Uhr. Die Gültigkeit wiederholt sich täglich mit Ausnahme der Wochenenden. `expiredTime` gibt an, dass diese Geofencedaten als abgelaufen angesehen werden, falls `userTime` in der Anforderung später als `2019-01-01` ist.  
 

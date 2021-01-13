@@ -11,43 +11,43 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60384108"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319876"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager
 
-![Synchronization Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
+![Screenshot des Synchronization Service Managers](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
 
 Die Registerkarte „Connectors“ wird verwendet, um alle Systeme zu verwalten, mit denen das Synchronisierungsmodul verbunden ist.
 
 ## <a name="connector-actions"></a>Connectoraktionen
-| Aktion | Comment |
+| Action | Comment |
 | --- | --- |
-| Erstellen |Nicht verwenden. Verwenden Sie den Installations-Assistenten zum Verbinden mit weiteren Active Directory-Gesamtstrukturen. |
+| Erstellen |Darf nicht verwendet werden. Verwenden Sie den Installations-Assistenten zum Verbinden mit weiteren Active Directory-Gesamtstrukturen. |
 | Eigenschaften |Wird zum Filtern von Domänen und Organisationseinheiten verwendet. |
 | [Löschen](#delete) |Wird zum Löschen der Daten im Connectorbereich oder zum Löschen der Verbindung mit einer Gesamtstruktur verwendet. |
 | [Ausführungsprofile konfigurieren](#configure-run-profiles) |Hier muss nur das Filtern von Domänen konfiguriert werden. Sie können diese Aktion verwenden, um bereits konfigurierte Ausführungsprofile anzuzeigen. |
 | Ausführen |Wird zum Starten einer einmaligen Ausführung eines Profils verwendet. |
 | Beenden |Beendet einen Connector, der gerade ein Profil ausführt. |
-| Connector exportieren |Nicht verwenden. |
-| Connector importieren |Nicht verwenden. |
-| Connector aktualisieren |Nicht verwenden. |
+| Connector exportieren |Darf nicht verwendet werden. |
+| Connector importieren |Darf nicht verwendet werden. |
+| Connector aktualisieren |Darf nicht verwendet werden. |
 | Schema aktualisieren |Aktualisiert das zwischengespeicherte Schema. Es wird empfohlen, die Option im Installations-Assistenten zu verwenden, da damit auch die Synchronisierungsregeln aktualisiert werden. |
 | [Connectorbereich durchsuchen](#search-connector-space) |Wird verwendet, um Objekte zu finden und um ein Objekt und dessen Daten durch das System zu verfolgen. |
 
 ### <a name="delete"></a>Löschen
 Die Löschaktion wird für zwei verschiedene Dinge verwendet.  
-![Synchronization Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
+![Screenshot des Fensters „Connector löschen“ mit ausgewählter Option „Nur Connectorbereich löschen“](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 
 Mit der Option **Delete connector space only** (Nur Connectorbereich löschen) werden alle Daten entfernt, die Konfiguration bleibt aber erhalten.
 
@@ -58,17 +58,17 @@ Mit beiden Optionen werden alle Objekte synchronisiert und die Metaverse-Objekte
 ### <a name="configure-run-profiles"></a>Ausführungsprofile konfigurieren
 Mit dieser Option können Sie die für einen Connector konfigurierten Ausführungsprofile anzeigen.
 
-![Synchronization Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
+![Screenshot des Fensters „Ausführungsprofile konfigurieren“ mit ausgewählter Option „Deltaimport“](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
 
 ### <a name="search-connector-space"></a>Connectorbereich durchsuchen
 Die Aktion zum Durchsuchen des Connectorbereichs ist nützlich, um nach Objekten zu suchen und Probleme zu behandeln.
 
-![Synchronization Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
+![Screenshot des Fensters „Connectorbereich suchen“](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
 Wählen Sie zuerst einen **Bereich**aus. Sie können basierend auf Daten (RDN, DN, Anker, Teilstruktur) oder des Zustands des Objekts (alle anderen Optionen) suchen.  
-![Synchronization Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
+![Screenshot mit dem Dropdown Menü „Bereich“](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
 Wenn Sie beispielsweise eine Unterstruktur durchsuchen, erhalten Sie alle Objekte in einer Organisationseinheit.  
-![Synchronization Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
+![Screenshot mit einem Beispiel für das Durchsuchen einer Unterstruktur](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
 In dieser Tabelle können Sie ein Objekt auswählen, **Eigenschaften** auswählen und das Objekt aus dem Quellconnectorbereich durch das Metaverse bis zum Zielconnectorbereich [verfolgen](tshoot-connect-object-not-syncing.md).
 
 ### <a name="changing-the-ad-ds-account-password"></a>Ändern des AD DS-Kontokennworts
@@ -80,7 +80,7 @@ Wenn Sie das Kontokennwort ändern, kann Synchronisierungsdienst Änderungen an 
 Um das Problem zu beheben, aktualisieren Sie das AD DS-Benutzerkonto wie folgt:
 
 
-1. Starten Sie Synchronization Service Manager („START“ > „Synchronization Service“).
+1. Starten Sie den Synchronization Service Manager („START“ > „Synchronisierungsdienst“).
 </br>![Synchronization Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/startmenu.png)
 2. Wechseln Sie zur Registerkarte **Connectors**.
 3. Wählen Sie den AD-Connector aus, der für das Verwenden des AD DS-Kontos konfiguriert ist.

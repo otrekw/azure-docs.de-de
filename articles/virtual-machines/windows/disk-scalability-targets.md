@@ -1,5 +1,5 @@
 ---
-title: Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows – Microsoft Azure | Microsoft-Dokumentation
+title: Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows
 description: Hier finden Sie Informationen zu Skalierbarkeits- und Leistungszielen für VM-Datenträger, die an unter Windows ausgeführte virtuelle Computer angefügt sind.
 author: roygara
 ms.author: rogarana
@@ -7,22 +7,22 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 9b89cbab450e74a75a63d54ca3b327da622a78c3
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: bf56f1fac1f12f9e4994221d672410715393ae9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698779"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88815137"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-Weitere Informationen finden Sie unter [Windows VM-Größen](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Weitere Informationen finden Sie unter [Windows VM-Größen](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="managed-virtual-machine-disks"></a>Verwaltete VM-Datenträger
 
-Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in der Vorschau. In unseren [häufig gestellten Fragen](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) erfahren Sie, in welchen Regionen sie verfügbar sind.
+Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in der Vorschau. In unseren [häufig gestellten Fragen](../faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) erfahren Sie, in welchen Regionen sie verfügbar sind.
 
 [!INCLUDE [azure-storage-limits-vm-disks-managed](../../../includes/azure-storage-limits-vm-disks-managed.md)]
 
@@ -33,4 +33,4 @@ Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits)
+[Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-resource-manager/management/azure-subscription-service-limits.md)

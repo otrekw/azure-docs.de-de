@@ -10,22 +10,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/23/2019
+ms.date: 09/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d371ba2a09dda933bf14208a00535b757afea85
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 0fbda588d99de44c77118586519055a8fc474104
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014221"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861764"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect: „msExchUserHoldPolicies“ und „cloudMsExchUserHoldPolicies“
 Im folgenden Referenzdokument werden diese von Exchange verwendeten Attribute beschrieben, und Sie erfahren, wie Sie die Standardsynchronisierungsregeln ordnungsgemäß bearbeiten.
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Worum handelt es sich bei „msExchUserHoldPolicies“ und „cloudMsExchUserHoldPolicies“?
-Für Exchange Server sind zwei [Aufbewahrungsarten](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) verfügbar: Beweissicherungsverfahren und In-Situ-Aufbewahrung. Bei aktiviertem Beweissicherungsverfahren werden alle Postfachelemente aufbewahrt.  Bei der In-Situ-Aufbewahrung werden nur Elemente aufbewahrt, die den Kriterien einer Suchabfrage entsprechen, die Sie mithilfe des In-Situ-eDiscovery-Tools definiert haben.
+Für Exchange Server sind zwei [Aufbewahrungsarten](/Exchange/policy-and-compliance/holds/holds) verfügbar: Beweissicherungsverfahren und In-Situ-Aufbewahrung. Bei aktiviertem Beweissicherungsverfahren werden alle Postfachelemente aufbewahrt.  Bei der In-Situ-Aufbewahrung werden nur Elemente aufbewahrt, die den Kriterien einer Suchabfrage entsprechen, die Sie mithilfe des In-Situ-eDiscovery-Tools definiert haben.
 
 Anhand der Attribute „MsExchUserHoldPolicies“ und „cloudMsExchUserHoldPolicies“ können lokale AD-Instanzen und Azure AD-Instanzen die Benutzer ermitteln, für die eine Aufbewahrungspflicht gilt (abhängig davon, ob sie eine lokale Exchange-Instanz oder Exchange Online verwenden).
 
@@ -47,7 +47,7 @@ Ausgehend an Azure AD:
 |Azure Active Directory|msExchUserHoldPolicies|Direkt|msExchUserHoldPolicies|Ausgehend an AAD: UserExchangeOnline|
 
 ## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>Synchronisierungsfluss für „cloudMsExchUserHoldPolicies“
-„cloudMsExchUserHoldPolicies“ wird von Azure AD Connect standardmäßig direkt mit dem Attribut „cloudMsExchUserHoldPolicies“ im Metaverse synchronisiert. Anschließend wird das Attribut an Active Directory weitergegeben, sofern „msExchUserHoldPolices“ im Metaverse nicht NULL ist.
+„cloudMsExchUserHoldPolicies“ wird von Azure AD Connect standardmäßig direkt mit dem Attribut „cloudMsExchUserHoldPolicies“ im Metaverse synchronisiert. Anschließend wird das Attribut an Active Directory weitergegeben, sofern „msExchUserHoldPolicies“ im Metaverse nicht NULL ist.
 
 Der Fluss wird in den folgenden Tabellen beschrieben:
 

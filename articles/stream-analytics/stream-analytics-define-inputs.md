@@ -1,19 +1,18 @@
 ---
 title: Streamen von Daten als Eingabe in Azure Stream Analytics
 description: Hier erfahren Sie, wie eine Datenverbindung mit Stream Analytics eingerichtet wird. Eingaben umfassen einen Datenstrom von Ereignissen und Verweisdaten.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 1f03f9e68640edd73d2f6bb55cf205a609450658
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 10/28/2020
+ms.openlocfilehash: d2fb2ac40dfbe6e48fef5c98e21896575b298a94
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620495"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683464"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Streamen von Daten als Eingabe in Stream Analytics
 
@@ -22,6 +21,7 @@ Stream Analytics verfügt über eine erstklassige Integration in Azure-Datenstr�
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
+- [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 
 
 Diese Eingaberessourcen können aus demselben Azure-Abonnement wie dem Ihres Stream Analytics-Auftrags oder aus einem anderen Abonnement stammen.
 
@@ -31,14 +31,14 @@ Stream Analytics unterstützt die Komprimierung für alle Datenstrom-Eingabequel
 
 ## <a name="create-edit-or-test-inputs"></a>Erstellen, Bearbeiten oder Testen von Eingaben
 
-Mit dem [Azure-Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md) und [Visual Studio Code](quick-create-vs-code.md) können Sie Eingaben hinzufügen und anzeigen oder vorhandene Eingaben für Ihren Streamingauftrag bearbeiten. Sie können auch Tests für Eingabeverbindungen und [Abfragen](stream-analytics-manage-job.md#test-your-query) anhand von Beispieldaten über das Azure-Portal, [Visual Studio](stream-analytics-vs-tools-local-run.md) und [Visual Studio Code](vscode-local-run.md) ausführen. Beim Schreiben einer Abfrage listen Sie die Eingabe in der FROM-Klausel auf. Sie erhalten die Liste mit den verfügbaren Eingaben im Portal über die Seite **Abfrage**. Wenn Sie mehrere Eingaben verwenden möchten, können Sie sie per `JOIN` verknüpfen oder mehrere `SELECT`-Abfragen schreiben.
+Mit dem [Azure-Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md) und [Visual Studio Code](quick-create-visual-studio-code.md) können Sie Eingaben hinzufügen und anzeigen oder vorhandene Eingaben für Ihren Streamingauftrag bearbeiten. Sie können auch Tests für Eingabeverbindungen und Abfragen anhand von Beispieldaten über das Azure-Portal, [Visual Studio](stream-analytics-vs-tools-local-run.md) und [Visual Studio Code](visual-studio-code-local-run.md) ausführen. Beim Schreiben einer Abfrage listen Sie die Eingabe in der FROM-Klausel auf. Sie erhalten die Liste mit den verfügbaren Eingaben im Portal über die Seite **Abfrage**. Wenn Sie mehrere Eingaben verwenden möchten, können Sie sie per `JOIN` verknüpfen oder mehrere `SELECT`-Abfragen schreiben.
 
 
 ## <a name="stream-data-from-event-hubs"></a>Streamen von Daten aus Event Hubs
 
 Azure Event Hubs sind hoch skalierbare Ereigniserfasser zum Veröffentlichen/Abonnieren. Ein Event Hub kann Millionen von Ereignissen pro Sekunde erfassen. Auf diese Weise können Sie riesige Datenmengen verarbeiten und analysieren, die von vernetzten Geräten und Anwendungen erzeugt werden. Event Hubs und Stream Analytics stellen zusammen eine End-to-End-Lösung für Echtzeitanalysen dar. Event Hubs ermöglichen es Ihnen, Ereignisse in Echtzeit an Azure zu übergeben, sodass Stream Analytics-Aufträge diese Ereignisse in Echtzeit verarbeiten können. Beispielsweise können Sie Webklicks, Sensormesswerte oder Onlineprotokollereignisse an Event Hubs senden. Anschließend können Sie Stream Analytics-Aufträge erstellen, um Event Hubs als Eingabedatenströme zum Filtern, Aggregieren und Korrelieren in Echtzeit zu verwenden.
 
-`EventEnqueuedUtcTime` ist der Zeitstempel für die Ankunft eines Ereignisses in einem Event Hub und der Standardzeitstempel für Ereignisse aus Event Hubs für Stream Analytics. Zum Verarbeiten der Daten als Datenstrom mit einem Zeitstempel in der Ereignisnutzlast müssen Sie das Schlüsselwort [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) verwenden.
+`EventEnqueuedUtcTime` ist der Zeitstempel für die Ankunft eines Ereignisses in einem Event Hub und der Standardzeitstempel für Ereignisse aus Event Hubs für Stream Analytics. Zum Verarbeiten der Daten als Datenstrom mit einem Zeitstempel in der Ereignisnutzlast müssen Sie das Schlüsselwort [TIMESTAMP BY](/stream-analytics-query/timestamp-by-azure-stream-analytics) verwenden.
 
 ### <a name="event-hubs-consumer-groups"></a>Event Hubs-Consumergruppen
 
@@ -56,7 +56,8 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf der Seite **N
 | **Event Hub-Name** | Der Name des Event Hubs, der als Eingabe verwendet wird. |
 | **Event Hub-Richtlinienname** | Die SAS-Richtlinie, die Zugriff auf den Event Hub ermöglicht. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. Diese Option wird automatisch ausgefüllt, sofern Sie nicht die Option zum manuellen Festlegen der Event-Hub-Einstellungen wählen.|
 | **Event Hub-Consumergruppe** (empfohlen) | Es wird dringend empfohlen, für jeden Stream Analytics-Auftrag eine eigene Consumergruppe zu verwenden. Diese Zeichenfolge identifiziert die Consumergruppe, die zum Erfassen von Daten aus dem Event Hub verwendet werden soll. Wenn keine Consumergruppe angegeben wird, verwendet der Stream Analytics-Auftrag die $Default-Consumergruppe.  |
-| **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV oder Avro) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
+| **Partitionsschlüssel** | Dies ist ein optionales Feld, das nur verfügbar ist, wenn Ihr Auftrag so konfiguriert ist, dass er den [Kompatibilitätsgrad](./stream-analytics-compatibility-level.md) 1.2 oder höher verwendet. Wenn Ihre Eingabe durch eine Eigenschaft partitioniert wird, können Sie den Namen dieser Eigenschaft hier hinzufügen. Dies wird verwendet, um die Leistung Ihrer Abfrage zu verbessern, wenn sie eine PARTITION BY- oder GROUP BY-Klausel für diese Eigenschaft enthält. Wenn dieser Auftrag den Kompatibilitätsgrad 1.2 oder höher verwendet, wird dieses Feld standardmäßig auf „PartitionId“ festgelegt. |
+| **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV, Avro, oder [Sonstige (Protobuf, XML, Proprietär...)](custom-deserializer.md)) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
 | **Codieren** | UTF-8 ist derzeit das einzige unterstützte Codierungsformat. |
 | **Typ der Ereigniskomprimierung** | Der Komprimierungstyp, der zum Lesen des eingehenden Datenstroms verwendet wird, z.B. „Keine“, „GZip“ oder „Deflate“. |
 
@@ -79,14 +80,14 @@ FROM Input
 ```
 
 > [!NOTE]
-> Bei Verwendung von Event Hub als Endpunkt für IoT Hub-Routen können Sie mithilfe der [GetMetadataPropertyValue-Funktion](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) auf die IoT Hub-Metadaten zugreifen.
+> Bei Verwendung von Event Hub als Endpunkt für IoT Hub-Routen können Sie mithilfe der [GetMetadataPropertyValue-Funktion](/stream-analytics-query/getmetadatapropertyvalue) auf die IoT Hub-Metadaten zugreifen.
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>Streamen von Daten aus IoT Hub
 
 Azure IoT Hub ist ein hochgradig skalierbares Erfassungsmodul für das Veröffentlichen und Abonnieren von Ereignissen, das für IoT-Szenarien optimiert ist.
 
-Der Standardzeitstempel von Ereignissen, die von IoT Hub in Stream Analytics stammen, ist der Zeitstempel, an dem das Ereignis in IoT Hub eingeht, also `EventEnqueuedUtcTime`. Zum Verarbeiten der Daten als Datenstrom mit einem Zeitstempel in der Ereignisnutzlast müssen Sie das Schlüsselwort [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) verwenden.
+Der Standardzeitstempel von Ereignissen, die von IoT Hub in Stream Analytics stammen, ist der Zeitstempel, an dem das Ereignis in IoT Hub eingeht, also `EventEnqueuedUtcTime`. Zum Verarbeiten der Daten als Datenstrom mit einem Zeitstempel in der Ereignisnutzlast müssen Sie das Schlüsselwort [TIMESTAMP BY](/stream-analytics-query/timestamp-by-azure-stream-analytics) verwenden.
 
 ### <a name="iot-hub-consumer-groups"></a>IoT Hub-Consumergruppen
 
@@ -105,7 +106,8 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf der Seite **N
 | **Name der SAS-Richtlinie** | Die SAS-Richtlinie, die Zugriff auf IoT Hub ermöglicht. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. |
 | **Schlüssel für SAS-Richtlinie** | Der Schlüssel für den gemeinsamen Zugriff, der für die Autorisierung des Zugriffs auf IoT Hub verwendet wird.  Diese Option wird automatisch ausgefüllt, es sei denn, Sie wählen die Option zum manuellen Festlegen der IoT Hub-Einstellungen. |
 | **Consumergruppe** | Es wird dringend empfohlen, für jeden Stream Analytics-Auftrag eine andere Consumergruppe zu verwenden. Die Consumergruppe, die zum Erfassen von Daten aus IoT Hub verwendet werden soll. Stream Analytics verwendet die $Default-Consumergruppe, sofern nicht anders angegeben.  |
-| **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV oder Avro) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
+| **Partitionsschlüssel** | Dies ist ein optionales Feld, das nur verfügbar ist, wenn Ihr Auftrag so konfiguriert ist, dass er den [Kompatibilitätsgrad](./stream-analytics-compatibility-level.md) 1.2 oder höher verwendet. Wenn Ihre Eingabe durch eine Eigenschaft partitioniert wird, können Sie den Namen dieser Eigenschaft hier hinzufügen. Dies wird verwendet, um die Leistung Ihrer Abfrage zu verbessern, wenn sie eine PARTITION BY- oder GROUP BY-Klausel für diese Eigenschaft enthält. Wenn dieser Auftrag den Kompatibilitätsgrad 1.2 oder höher verwendet, wird dieses Feld standardmäßig auf „PartitionId“ festgelegt. |
+| **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV, Avro, oder [Sonstige (Protobuf, XML, Proprietär...)](custom-deserializer.md)) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
 | **Codieren** | UTF-8 ist derzeit das einzige unterstützte Codierungsformat. |
 | **Typ der Ereigniskomprimierung** | Der Komprimierungstyp, der zum Lesen des eingehenden Datenstroms verwendet wird, z.B. „Keine“, „GZip“ oder „Deflate“. |
 
@@ -124,19 +126,25 @@ Wenn Ihre gestreamten Daten aus IoT Hub stammen, haben Sie Zugriff auf folgende 
 | **IoTHub.EnqueuedTime** | Der Zeitpunkt, an dem die Nachricht durch IoT Hub empfangen wurde. |
 
 
-## <a name="stream-data-from-blob-storage"></a>Streamen von Daten aus Blob Storage
-Für Szenarien mit großen Mengen unstrukturierter Daten, die in der Cloud gespeichert werden sollen, bietet der Azure Blob Storage eine kostengünstige und skalierbare Lösung. Daten im Blobspeicher werden im Allgemeinen als „ruhende“ Daten angesehen. Blobdaten können aber als Datenstrom von Stream Analytics verarbeitet werden. 
+## <a name="stream-data-from-blob-storage-or-data-lake-storage-gen2"></a>Streamen von Daten aus Blobspeicher oder Data Lake Storage Gen2
+Für Szenarien mit großen Mengen unstrukturierter Daten, die in der Cloud gespeichert werden sollen, bietet der Azure-Blobspeicher oder Azure Data Lake Storage Gen2 (ADLS Gen2) eine kostengünstige und skalierbare Lösung. Daten im Blobspeicher oder ADLS Gen2 werden im Allgemeinen als „ruhende“ Daten angesehen. Diese Daten können aber als Datenstrom von Stream Analytics verarbeitet werden. 
 
-Ein häufig verwendetes Szenario für Blob Storage-Eingaben bei Stream Analytics ist die Protokollverarbeitung. In diesem Szenario wurden Telemetriedatendateien von einem System erfasst, die zur Extraktion aussagekräftiger Daten analysiert und verarbeitet werden müssen.
+Ein häufig verwendetes Szenario für solche Eingaben bei Stream Analytics ist die Protokollverarbeitung. In diesem Szenario wurden Telemetriedatendateien von einem System erfasst, die zur Extraktion aussagekräftiger Daten analysiert und verarbeitet werden müssen.
 
-Der Standardzeitstempel von Blob Storage-Ereignissen in Stream Analytics ist der Zeitstempel, an dem das Blob zuletzt geändert wurde, also `BlobLastModifiedUtcTime`. Zum Verarbeiten der Daten als Datenstrom mit einem Zeitstempel in der Ereignisnutzlast müssen Sie das Schlüsselwort [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) verwenden. Bei einem Stream Analytics-Auftrag werden Daten jede Sekunde per Pullvorgang aus der Azure-Blobspeichereingabe abgerufen, wenn die Blobdatei verfügbar ist. Falls die Blobdatei nicht verfügbar ist, kommt es zu einem exponentiellen Backoff mit einer maximalen Zeitverzögerung von 90 Sekunden.
+Der Standardzeitstempel von Blobspeicher- oder ADLS Gen2-Ereignissen in Stream Analytics ist der Zeitstempel, an dem es zuletzt geändert wurde, also `BlobLastModifiedUtcTime`. Wenn ein Blob um 13:00 Uhr auf ein Speicherkonto hochgeladen wird und der Azure Stream Analytics-Auftrag mit der Option *Jetzt* um 13:01 Uhr gestartet wird, wird es nicht abgeholt, da seine geänderte Zeit außerhalb des Zeitraums für die Auftragsausführung liegt.
+
+Wenn ein Blob um 13:00 Uhr in einen Speicherkontocontainer hochgeladen wird und der Azure Stream Analytics-Auftrag mit der Option *Benutzerdefinierte Uhrzeit* um 13:00 Uhr oder früher gestartet wird, wird der Blob abgeholt, da seine geänderte Zeit in den Zeitraum für die Auftragsausführung fällt.
+
+Wenn ein Azure Stream Analytics-Auftrag mit der Option *Jetzt* um 13:00 Uhr gestartet wird und ein Blob um 13:01 Uhr in den Speicherkontocontainer hochgeladen wird, holt Azure Stream Analytics den Blob ab. Der jedem Blob zugewiesene Zeitstempel basiert nur auf `BlobLastModifiedTime`. Der Ordner, in dem sich das Blob befindet, hat keine Beziehung zum zugewiesenen Zeitstempel. Wenn es beispielsweise einen Blob *2019/10-01/00/b1.txt* mit einer `BlobLastModifiedTime` von 2019-11-11 gibt, lautet der dem Blob zugewiesene Zeitstempel 2019-11-11.
+
+Zum Verarbeiten der Daten als Datenstrom mit einem Zeitstempel in der Ereignisnutzlast müssen Sie das Schlüsselwort [TIMESTAMP BY](/stream-analytics-query/stream-analytics-query-language-reference) verwenden. Bei einem Stream Analytics-Auftrag werden Daten jede Sekunde per Pullvorgang aus der Azure-Blobspeicher- oder ADLS Gen2-Eingabe abgerufen, wenn die Blobdatei verfügbar ist. Falls die Blobdatei nicht verfügbar ist, kommt es zu einem exponentiellen Backoff mit einer maximalen Zeitverzögerung von 90 Sekunden.
 
 Eingaben im CSV-Format müssen über eine Überschriftenzeile verfügen, um Felder für das Dataset zu definieren. Alle Felder der Überschriftenzeile müssen eindeutig sein.
 
 > [!NOTE]
 > Stream Analytics unterstützt das Hinzufügen von Inhalten zu einer vorhandenen Blobdatei nicht. Stream Analytics zeigt jede Datei nur einmal an. Des Weiteren werden alle Änderungen, die in der Datei vorgenommen wurden, nachdem der Auftrag die Daten gelesen hat, nicht verarbeitet. Die Methode, alle Daten für eine Blobdatei auf einmal hochzuladen und dann zusätzliche neuere Ereignisse einer anderen, neuen Blobdatei hinzuzufügen, hat sich bewährt.
 
-Das gleichzeitige Hochladen einer sehr großen Anzahl von Blobs kann dazu führen, dass Stream Analytics in seltenen Fällen das Lesen einiger Blobs überspringt. Es wird empfohlen, Blobs in einem Abstand von mindestens 2 Sekunden in Blob Storage hochzuladen. Wenn diese Option nicht praktikabel ist, können Sie Event Hubs verwenden, um große Mengen von Ereignissen zu streamen. 
+In Szenarien, in denen fortlaufend viele Blobs hinzugefügt werden und Stream Analytics die Blobs beim Hinzufügen verarbeitet, kann es in seltenen Fällen vorkommen, dass einige Blobs aufgrund der Granularität von `BlobLastModifiedTime` übersprungen werden. Sie können dies entschärfen, indem Sie Blobs in einem Abstand von mindestens zwei Sekunden hochladen. Wenn diese Option nicht praktikabel ist, können Sie Event Hubs verwenden, um große Mengen von Ereignissen zu streamen.
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>Konfigurieren von Blob Storage als Datenstromeingabe 
 
@@ -145,14 +153,16 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf der Seite **N
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | **Eingabealias** | Ein Anzeigename, der in der Auftragsabfrage verwendet wird, um auf diese Eingabe zu verweisen. |
-| **Abonnement** | Wählen Sie das Abonnement, in dem die IoT Hub-Ressource vorhanden ist. | 
+| **Abonnement** | Wählen Sie das Abonnement, in dem die Speicherressource vorhanden ist. | 
 | **Speicherkonto** | Der Name des Speicherkontos an, in dem sich die Blobdateien befinden. |
-| **Speicherkontoschlüssel** | Der geheime Schlüssel, der dem Speicherkonto zugeordnet ist. Diese Option wird automatisch ausgefüllt, es sei denn, Sie wählen die Option zum manuellen Festlegen der Blob Storage-Einstellungen. |
-| **Container** | Der Container für die Blobeingabe. Container stellen eine logische Gruppierung für Blobs bereit, die im Microsoft Azure-Blobdienst gespeichert sind. Wenn Sie ein Blob in den Azure Blob Storage-Dienst hochladen, müssen Sie einen Container für dieses Blob angeben. Sie können entweder **Vorhandenes Element verwenden** oder **Neues Element erstellen** wählen, um einen neuen Container zu erstellen.|
-| **Pfadmuster** (optional) | Der Dateipfad, der verwendet wird, um die Blobs im angegebenen Container zu suchen. In dem Pfad können Sie mindestens eine Instanz der folgenden drei Variablen angeben: `{date}`, `{time}` oder `{partition}`.<br/><br/>Beispiel 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Beispiel 2: `cluster1/logs/{date}`<br/><br/>Das Zeichen `*` ist kein zulässiger Wert für das Pfadpräfix. Es sind nur gültige <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-Zeichen</a> zulässig. Schließen Sie keine Containernamen oder Dateinamen ein. |
-| **Datumsformat** (optional) | Wenn Sie die Datumsvariable im Pfad verwenden, wird das Datumsformat, in dem die Dateien organisiert sind, verwendet. Beispiel: `YYYY/MM/DD` |
+| **Speicherkontoschlüssel** | Der geheime Schlüssel, der dem Speicherkonto zugeordnet ist. Diese Option wird automatisch ausgefüllt, es sei denn, Sie wählen die Option zum manuellen Festlegen der Einstellungen. |
+| **Container** | Container bieten eine logische Gruppierung für Blobs. Sie können entweder **Vorhandenes Element verwenden** oder **Neues Element erstellen** wählen, um einen neuen Container zu erstellen.|
+| **Pfadmuster** (optional) | Der Dateipfad, der verwendet wird, um die Blobs im angegebenen Container zu suchen. Wenn Sie Blobs aus dem Containerstamm lesen möchten, legen Sie kein Pfadmuster fest. In dem Pfad können Sie mindestens eine Instanz der folgenden drei Variablen angeben: `{date}`, `{time}` oder `{partition}`.<br/><br/>Beispiel 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Beispiel 2: `cluster1/logs/{date}`<br/><br/>Das Zeichen `*` ist kein zulässiger Wert für das Pfadpräfix. Es sind nur gültige <a HREF="/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata">Azure Blob-Zeichen</a> zulässig. Schließen Sie keine Containernamen oder Dateinamen ein. |
+| **Datumsformat** (optional) | Wenn Sie die Datumsvariable im Pfad verwenden, wird das Datumsformat, in dem die Dateien organisiert sind, verwendet. Beispiel: `YYYY/MM/DD` <br/><br/> Wenn Blobeingaben `{date}` oder `{time}` in ihrem Pfad aufweisen, werden die Ordner in zeitlich aufsteigender Reihenfolge untersucht.|
 | **Zeitformat** (optional) |  Wenn Sie die Zeitvariable im Pfad verwenden, wird das Zeitformat, in dem die Dateien organisiert sind, verwendet. Der einzige derzeit unterstützte Wert ist `HH` für Stunden. |
-| **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV oder Avro) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
+| **Partitionsschlüssel** | Dies ist ein optionales Feld, das nur verfügbar ist, wenn Ihr Auftrag so konfiguriert ist, dass er den [Kompatibilitätsgrad](./stream-analytics-compatibility-level.md) 1.2 oder höher verwendet. Wenn Ihre Eingabe durch eine Eigenschaft partitioniert wird, können Sie den Namen dieser Eigenschaft hier hinzufügen. Dies wird verwendet, um die Leistung Ihrer Abfrage zu verbessern, wenn sie eine PARTITION BY- oder GROUP BY-Klausel für diese Eigenschaft enthält. Wenn dieser Auftrag den Kompatibilitätsgrad 1.2 oder höher verwendet, wird dieses Feld standardmäßig auf „PartitionId“ festgelegt. |
+| **Anzahl von Eingabepartitionen** | Dieses Feld ist nur vorhanden, wenn {partition} im Pfadmuster vorhanden ist. Der Wert dieser Eigenschaft ist eine ganze Zahl >=1. Wo immer {partition} in „pathPattern“ auftritt, wird eine Zahl zwischen 0 und dem Wert dieses Felds minus 1 verwendet. |
+| **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV, Avro, oder [Sonstige (Protobuf, XML, Proprietär...)](custom-deserializer.md)) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
 | **Codieren** | Bei CSV und JSON ist UTF-8 gegenwärtig das einzige unterstützte Codierungsformat. |
 | **Komprimierung** | Der Komprimierungstyp, der zum Lesen des eingehenden Datenstroms verwendet wird, z.B. „Keine“, „GZip“ oder „Deflate“. |
 
@@ -184,5 +194,5 @@ FROM Input
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

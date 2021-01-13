@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Azure Communication Services
+summary: Azure Communication Services ist ein cloudbasierter Kommunikationsdienst, mit dem Sie Ihren Apps Sprach-, Video-, Chat- und Telefoniefunktionen hinzufügen können. Beachten Sie, dass sich Azure Communication Services derzeit in der Public Preview-Phase befindet.
+metadata:
+  title: Azure Communication Services
+  description: Azure Communication Services ist ein cloudbasierter Kommunikationsdienst, mit dem Sie Ihren Apps Sprach-, Video-, Chat- und Telefoniefunktionen hinzufügen können. Beachten Sie, dass sich Azure Communication Services derzeit in der Public Preview-Phase befindet.
+  ms.service: azure-communication-services
+  ms.topic: landing-page
+  author: mikben
+  ms.author: mikben
+  ms.date: 08/10/2020
+  ms.openlocfilehash: 396b32a9f84895532c8c233b5c7ccc3d2ce85c11
+  ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 12/09/2020
+  ms.locfileid: "96937303"
+landingContent:
+- title: Informationen zu Azure Communication Services
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Communication Services?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Clientbibliothekoptionen
+      url: concepts/sdk-options.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen einer Communication Services-Ressource
+      url: quickstarts/create-communication-resource.md
+    - text: Erstellen und Verwalten von Benutzerzugriffstoken
+      url: quickstarts/access-tokens.md
+  - linkListType: concept
+    links:
+    - text: Client- und Serverarchitektur
+      url: concepts/client-and-server-architecture.md
+    - text: Authentifizierung und Autorisierung
+      url: concepts/authentication.md
+    - text: Ereignisbehandlung
+      url: concepts/event-handling.md
+    - text: Benachrichtigungen
+      url: concepts/notifications.md
+- title: Sprach- und Videoanrufe
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Hinzufügen von Sprach- und Videoanrufen zu Ihrer App
+      url: quickstarts/voice-video-calling/getting-started-with-calling.md
+    - text: Verwenden der Clientbibliothek für Telefonie
+      url: quickstarts/voice-video-calling/calling-client-samples.md
+  - linkListType: concept
+    links:
+    - text: Sprach- und Videokonzepte
+      url: concepts/voice-video-calling/about-call-types.md
+    - text: Übersicht über die Clientbibliothek für Telefonie
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: Anrufflows
+      url: concepts/call-flows.md
+- title: Telefonie und SMS
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erhalten einer Telefonnummer
+      url: quickstarts/telephony-sms/get-phone-number.md
+    - text: Senden einer SMS
+      url: quickstarts/telephony-sms/send.md
+    - text: Behandeln von SMS-Ereignissen
+      url: quickstarts/telephony-sms/handle-sms-events.md
+  - linkListType: concept
+    links:
+    - text: SMS-Konzepte
+      url: concepts/telephony-sms/concepts.md
+    - text: Übersicht über die Clientbibliothek für SMS
+      url: concepts/telephony-sms/sdk-features.md
+    - text: Übersicht über Anrufe
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: Planen Ihrer Telefonie- und SMS-Lösung
+      url: concepts/telephony-sms/plan-solution.md
+- title: Chat
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Hinzufügen von Chatfunktionen zu Ihrer App
+      url: quickstarts/chat/get-started.md
+  - linkListType: concept
+    links:
+    - text: Chatkonzepte
+      url: concepts/chat/concepts.md
+    - text: Übersicht über die Clientbibliothek für Chats
+      url: concepts/chat/sdk-features.md
+- title: Proben
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Erste Schritte mit dem Hero-Beispiel für Gruppenanrufe
+      url: samples/calling-hero-sample.md
+    - text: Erste Schritte mit dem Hero-Beispiel für Chats
+      url: samples/chat-hero-sample.md

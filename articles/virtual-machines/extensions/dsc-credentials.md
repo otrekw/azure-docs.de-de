@@ -10,23 +10,24 @@ tags: azure-resource-manager
 keywords: DSC
 ms.assetid: ea76b7e8-b576-445a-8107-88ea2f3876b9
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 38a302545f2dd46a8123816a41c97ae26ee4c260
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f191ab5819cd69ce90699db60be1665ef77e10a9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092508"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955887"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Übergeben von Anmeldeinformationen an den Azure DSC-Erweiterungshandler
 
 In diesem Artikel wird die Desired State Configuration-Erweiterung (DSC) für Azure behandelt. Eine Übersicht über den DSC-Erweiterungshandler finden Sie unter [Einführung in den Handler der Azure Desired State Configuration-Erweiterung](dsc-overview.md).
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="pass-in-credentials"></a>Übergeben von Anmeldeinformationen
 
@@ -83,11 +84,11 @@ $vm | Update-AzVM
 
 Auf das Ausführen dieses Codes folgt die Aufforderung, Anmeldeinformationen anzugeben. Nachdem die Anmeldeinformationen bereitgestellt sind, werden sie kurz im Arbeitsspeicher gespeichert. Beim Veröffentlichen der Anmeldeinformationen mithilfe des Cmdlets **Set-AzVMDscExtension** werden sie über HTTPS an den virtuellen Computer übertragen. Auf dem virtuellen Computer speichert Azure die Anmeldeinformationen verschlüsselt über das lokale VM-Zertifikat auf dem Datenträger. Die Anmeldeinformationen werden dann für kurze Zeit im Arbeitsspeicher entschlüsselt und wieder verschlüsselt, um an DSC übergeben zu werden.
 
-Dieser Vorgang unterscheidet sich von der [Verwendung von sicheren Konfigurationen ohne den Erweiterungshandler](/powershell/dsc/securemof). Die Azure-Umgebung bietet eine Möglichkeit zum sicheren Übertragen von Konfigurationsdaten über Zertifikate. Mit dem DSC-Erweiterungshandler besteht keine Notwendigkeit, **$CertificatePath** oder einen Eintrag **$CertificateID**/  **$Thumbprint** in **ConfigurationData** anzugeben.
+Dieser Vorgang unterscheidet sich von der [Verwendung von sicheren Konfigurationen ohne den Erweiterungshandler](/powershell/scripting/dsc/pull-server/securemof). Die Azure-Umgebung bietet eine Möglichkeit zum sicheren Übertragen von Konfigurationsdaten über Zertifikate. Mit dem DSC-Erweiterungshandler besteht keine Notwendigkeit, **$CertificatePath** oder einen Eintrag **$CertificateID**/  **$Thumbprint** in **ConfigurationData** anzugeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Lesen Sie die [Einführung in den Azure DSC-Erweiterungshandler](dsc-overview.md).
 - Sehen Sie sich die [Azure Resource Manager-Vorlage für die DSC-Erweiterung](dsc-template.md)an.
-- Weitere Informationen zu PowerShell DSC finden Sie im [PowerShell-Dokumentationscenter](/powershell/dsc/overview).
-- Weitere Funktionen, die Sie mit PowerShell DSC verwalten können, sowie weitere DSC-Ressourcen finden Sie im [PowerShell-Katalog](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
+- Weitere Informationen zu PowerShell DSC finden Sie im [PowerShell-Dokumentationscenter](/powershell/scripting/dsc/overview/overview).
+- Durchsuchen Sie für mehr Funktionalität, die Sie mithilfe von PowerShell DSC verwalten können, und für weitere DSC-Ressourcen den [PowerShell-Katalog](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).

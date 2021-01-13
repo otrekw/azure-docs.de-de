@@ -1,22 +1,22 @@
 ---
-title: Verwenden von Resource Manager-Vorlagen in Data Factory | Microsoft Docs
+title: Verwenden von Resource Manager-Vorlagen in Data Factory
 description: Erfahren Sie, wie Sie Azure Resource Manager-Vorlagen erstellen und diese verwenden, um Data Factory-Entitäten zu erstellen.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d2360efe71327f02d5cb7d16cb8141f47c304b0c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4c840d50fb80a57e9c68645ade8baa22b455fa84
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164677"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495496"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Verwenden von Vorlagen zum Erstellen von Azure Data Factory-Entitäten
 > [!NOTE]
@@ -25,16 +25,16 @@ ms.locfileid: "70164677"
 ## <a name="overview"></a>Übersicht
 Wenn Sie Azure Data Factory für die Integration Ihrer Daten verwenden, kann es vorkommen, dass Sie dasselbe Muster in verschiedenen Umgebungen verwenden oder dass Sie innerhalb einer Lösung wiederholt denselben Task implementieren. Diese Szenarios lassen sich mithilfe von Vorlagen einfach implementieren und verwalten. Vorlagen in Azure Data Factory sind ideal für Szenarios, bei denen Wiederverwendbarkeit und Wiederholungen möglich sind.
 
-Nehmen wir an, ein Unternehmen verfügt weltweit über 10 Produktionsanlagen. Die Protokolle jeder einzelnen Anlage werden separat in einer lokalen SQL Server-Datenbank gespeichert. Das Unternehmen möchte in der Cloud ein einzelnes Data Warehouse für Ad-hoc-Analysen erstellen. Außerdem sollen in Entwicklungs-, Test- und Produktionsumgebungen zwar dieselbe Logik, aber unterschiedliche Konfigurationen verwendet werden.
+Nehmen wir an, ein Unternehmen verfügt weltweit über 10 Produktionsanlagen. Die Protokolle jeder einzelnen Anlage werden in einer separaten SQL Server-Datenbank gespeichert. Das Unternehmen möchte in der Cloud ein einzelnes Data Warehouse für Ad-hoc-Analysen erstellen. Außerdem sollen in Entwicklungs-, Test- und Produktionsumgebungen zwar dieselbe Logik, aber unterschiedliche Konfigurationen verwendet werden.
 
 In diesem Fall muss eine Aufgabe zwar in derselben Umgebung, jedoch mit unterschiedlichen Werten für jede der 10 Data Factorys wiederholt werden. Es findet eine **Wiederholung** statt. Die Verwendung von Vorlagen ermöglicht die Abstraktion dieses generischen Ablaufs (= in den Pipelines aller Data Factorys finden dieselben Aktivitäten statt). Jedoch wird für jede Produktionsanlage eine eigene Parameterdatei verwendet.
 
 Das Unternehmen möchte diese 10 Data Factorys darüber hinaus mehrfach in verschiedenen Umgebungen bereitstellen. Mithilfe von Vorlagen kann es sich die **Wiederverwendbarkeit** zunutze machen und verschiedene Parameterdateien für Entwicklungs-, Test- und Produktionsumgebungen verwenden.
 
 ## <a name="templating-with-azure-resource-manager"></a>Verwenden von Vorlagen in Azure Resource Manager
-[Azure Resource Manager-Vorlagen](../../azure-resource-manager/template-deployment-overview.md) stellen eine hervorragende Möglichkeit dar, in Azure Data Factory mit Vorlagen zu arbeiten. Resource Manager-Vorlagen definieren die Infrastruktur und Konfiguration Ihrer Azure-Lösung über eine JSON-Datei. Da Azure Resource Manager-Vorlagen für (beinahe) alle Azure-Dienste zur Verfügung stehen, können Sie in vielen Bereichen genutzt werden, um alle Ressourcen Ihrer Azure-Assets zu verwalten. Weitere (allgemeinere) Informationen über Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md).
+[Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/overview.md) stellen eine hervorragende Möglichkeit dar, in Azure Data Factory mit Vorlagen zu arbeiten. Resource Manager-Vorlagen definieren die Infrastruktur und Konfiguration Ihrer Azure-Lösung über eine JSON-Datei. Da Azure Resource Manager-Vorlagen für (beinahe) alle Azure-Dienste zur Verfügung stehen, können Sie in vielen Bereichen genutzt werden, um alle Ressourcen Ihrer Azure-Assets zu verwalten. Weitere (allgemeinere) Informationen über Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md).
 
-## <a name="tutorials"></a>Lernprogramme
+## <a name="tutorials"></a>Tutorials
 Schritt-für-Schritt-Anleitungen zum Erstellen von Data Factory-Entitäten mithilfe von Resource Manager-Vorlagen finden Sie in den folgenden Tutorials:
 
 * [Tutorial: Create a pipeline to copy data by using Azure Resource Manager template](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md) (Tutorial: Erstellen einer Pipeline zum Kopieren von Daten mithilfe einer Azure Resource Manager-Vorlage)
@@ -228,12 +228,12 @@ Ausführliche Informationen zu den JSON-Eigenschaften für das Definieren einer 
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>Parametrisieren einer Data Factory-Vorlage
-Informationen zu bewährten Vorgehensweisen bei der Parametrisierung finden Sie unter [Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-manager-template-best-practices.md). Im Allgemeinen sollten so wenig Parameter wie möglich verwendet werden. Dies gilt insbesondere dann, wen stattdessen Variablen verwendet werden können. Verwenden Sie Parameter nur für folgende Szenarios:
+Informationen zu bewährten Vorgehensweisen bei der Parametrisierung finden Sie unter [Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-best-practices.md). Im Allgemeinen sollten so wenig Parameter wie möglich verwendet werden. Dies gilt insbesondere dann, wen stattdessen Variablen verwendet werden können. Verwenden Sie Parameter nur für folgende Szenarios:
 
 * Einstellungen variieren nach Umgebung (Beispiel: Entwicklung, Test und Produktion)
 * Geheime Schlüssel (z.B. Kennwörter)
 
-Möchten Sie beim Bereitstellen von Azure Data Factory-Entitäten mithilfe von Pull Geheimnisse aus [Azure Key Vault](../../key-vault/key-vault-overview.md) übertragen, müssen Sie **keyVault** und **secretName** wie im folgenden Beispiel gezeigt angeben:
+Möchten Sie beim Bereitstellen von Azure Data Factory-Entitäten mithilfe von Pull Geheimnisse aus [Azure Key Vault](../../key-vault/general/overview.md) übertragen, müssen Sie **keyVault** und **secretName** wie im folgenden Beispiel gezeigt angeben:
 
 ```JSON
 "parameters": {

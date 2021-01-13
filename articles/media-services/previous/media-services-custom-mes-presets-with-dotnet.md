@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a300345749351a360a16dc00424ee41ece7a17c9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61247242"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652969"
 ---
-# <a name="customizing-media-encoder-standard-presets"></a>Anpassen von Media Encoder Standard-Voreinstellungen  
+# <a name="customizing-media-encoder-standard-presets"></a>Anpassen von Media Encoder Standard-Voreinstellungen
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 ## <a name="overview"></a>Übersicht
 
@@ -30,9 +33,9 @@ In diesem Artikel wird erläutert, wie Sie die erweiterten Codierungsaufgaben mi
 In diesem Artikel erfahren Sie, wie Sie eine Voreinstellung anpassen, indem Sie die Anzahl der Ebenen in der Voreinstellung [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) reduzieren. Der Artikel [Erweiterte Codierung mit Media Encoder Standard-Voreinstellungen](media-services-advanced-encoding-with-mes.md) zeigt benutzerdefinierte Voreinstellungen, die verwendet werden können, um erweiterte Codierungsaufgaben auszuführen.
 
 > [!NOTE]
-> Die in diesem Artikel beschriebenen benutzerdefinierten Voreinstellungen können nicht in [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/)-Transformationen oder in den Befehlen der Befehlszeilenschnittstelle verwendet werden. Weitere Informationen finden Sie unter [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Die in diesem Artikel beschriebenen benutzerdefinierten Voreinstellungen können nicht in [Media Services V3](../latest/index.yml)-Transformationen oder in den Befehlen der Befehlszeilenschnittstelle verwendet werden. Weitere Informationen finden Sie unter [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
-## <a id="customizing_presets"></a> Anpassen einer MES-Voreinstellung
+## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a> Anpassen einer MES-Voreinstellung
 
 ### <a name="original-preset"></a>Ursprüngliche Voreinstellung
 
@@ -43,89 +46,91 @@ Speichern Sie das im Artikel [H264 Multiple Bitrate 720p](media-services-mes-pre
 Öffnen Sie die Datei **CustomPreset_JSON.json**, und entfernen Sie die ersten drei Ebenen von **H264Layers**, sodass die Datei wie folgt aussieht.
 
 ```json 
-    {  
-      "Version": 1.0,  
-      "Codecs": [  
-        {  
-          "KeyFrameInterval": "00:00:02",  
-          "H264Layers": [  
-            {  
-              "Profile": "Auto",  
-              "Level": "auto",  
-              "Bitrate": 1000,  
-              "MaxBitrate": 1000,  
-              "BufferWindow": "00:00:05",  
-              "Width": 640,  
-              "Height": 360,  
-              "BFrames": 3,  
-              "ReferenceFrames": 3,  
-              "AdaptiveBFrame": true,  
-              "Type": "H264Layer",  
-              "FrameRate": "0/1"  
-            },  
-            {  
-              "Profile": "Auto",  
-              "Level": "auto",  
-              "Bitrate": 650,  
-              "MaxBitrate": 650,  
-              "BufferWindow": "00:00:05",  
-              "Width": 640,  
-              "Height": 360,  
-              "BFrames": 3,  
-              "ReferenceFrames": 3,  
-              "AdaptiveBFrame": true,  
-              "Type": "H264Layer",  
-              "FrameRate": "0/1"  
-            },  
-            {  
-              "Profile": "Auto",  
-              "Level": "auto",  
-              "Bitrate": 400,  
-              "MaxBitrate": 400,  
-              "BufferWindow": "00:00:05",  
-              "Width": 320,  
-              "Height": 180,  
-              "BFrames": 3,  
-              "ReferenceFrames": 3,  
-              "AdaptiveBFrame": true,  
-              "Type": "H264Layer",  
-              "FrameRate": "0/1"  
-            }  
-          ],  
-          "Type": "H264Video"  
-        },  
-        {  
-          "Profile": "AACLC",  
-          "Channels": 2,  
-          "SamplingRate": 48000,  
-          "Bitrate": 128,  
-          "Type": "AACAudio"  
-        }  
-      ],  
-      "Outputs": [  
-        {  
-          "FileName": "{Basename}_{Width}x{Height}_{VideoBitrate}.mp4",  
-          "Format": {  
-            "Type": "MP4Format"  
+  {  
+    "Version": 1.0,  
+    "Codecs": [  
+      {  
+        "KeyFrameInterval": "00:00:02",  
+        "H264Layers": [  
+          {  
+            "Profile": "Auto",  
+            "Level": "auto",  
+            "Bitrate": 1000,  
+            "MaxBitrate": 1000,  
+            "BufferWindow": "00:00:05",  
+            "Width": 640,  
+            "Height": 360,  
+            "BFrames": 3,  
+            "ReferenceFrames": 3,  
+            "AdaptiveBFrame": true,  
+            "Type": "H264Layer",  
+            "FrameRate": "0/1"  
+          },  
+          {  
+            "Profile": "Auto",  
+            "Level": "auto",  
+            "Bitrate": 650,  
+            "MaxBitrate": 650,  
+            "BufferWindow": "00:00:05",  
+            "Width": 640,  
+            "Height": 360,  
+            "BFrames": 3,  
+            "ReferenceFrames": 3,  
+            "AdaptiveBFrame": true,  
+            "Type": "H264Layer",  
+            "FrameRate": "0/1"  
+          },  
+          {  
+            "Profile": "Auto",  
+            "Level": "auto",  
+            "Bitrate": 400,  
+            "MaxBitrate": 400,  
+            "BufferWindow": "00:00:05",  
+            "Width": 320,  
+            "Height": 180,  
+            "BFrames": 3,  
+            "ReferenceFrames": 3,  
+            "AdaptiveBFrame": true,  
+            "Type": "H264Layer",  
+            "FrameRate": "0/1"  
           }  
+        ],  
+        "Type": "H264Video"  
+      },  
+      {  
+        "Profile": "AACLC",  
+        "Channels": 2,  
+        "SamplingRate": 48000,  
+        "Bitrate": 128,  
+        "Type": "AACAudio"  
+      }  
+    ],  
+    "Outputs": [  
+      {  
+        "FileName": "{Basename}_{Width}x{Height}_{VideoBitrate}.mp4",  
+        "Format": {  
+          "Type": "MP4Format"  
         }  
-      ]  
-    }  
+      }  
+    ]  
+  }  
 ```
 
-## <a id="encoding_with_dotnet"></a>Codierung mit dem Media Services .NET SDK
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Codierung mit dem Media Services .NET SDK
 
 Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die folgenden Aufgaben auszuführen:
 
 - Erstellen eines Codierungsauftrags.
 - Abrufen eines Verweises auf den Media Encoder Standard-Encoder
 - Laden Sie die benutzerdefinierte JSON-Voreinstellung, die Sie im vorherigen Abschnitt erstellt haben. 
-  
-        // Load the JSON from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the JSON from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
 
 - Hinzufügen einer Codierungsaufgabe zum Auftrag 
-- Geben Sie das zu codierende Medienobjekt an.
+- Geben Sie das zu codierende Asset an.
 - Erstellen Sie ein Ausgabemedienobjekt, das das codierte Medienobjekt enthält.
 - Fügen Sie einen Ereignishandler hinzu, um den Auftragsstatus zu überprüfen.
 - Übermitteln des Auftrags.

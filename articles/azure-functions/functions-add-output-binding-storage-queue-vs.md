@@ -1,25 +1,19 @@
 ---
 title: Verbinden von Funktionen mit Azure Storage mithilfe von Visual Studio
 description: Hier erfahren Sie, wie Sie eine Ausgabebindung hinzufügen, um Ihre C#-Klassenbibliotheksfunktionen mithilfe von Visual Studio mit einer Azure Storage-Warteschlange zu verbinden.
-author: ggailey777
-ms.author: glenga
 ms.date: 07/22/2019
 ms.topic: quickstart
-ms.service: azure-functions
 ms.custom: mvc
-manager: gwallace
-ms.openlocfilehash: 6ef6f4ae86f0f732164603bd8b38dc1bbef95dd9
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 635392212027c73e5aa954eb671be31228796a0d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600147"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185129"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Verbinden von Funktionen mit Azure Storage mithilfe von Visual Studio
 
-Mit Azure Functions können Sie Funktionen mit Azure-Diensten und anderen Ressourcen verbinden, ohne dass Sie Ihren eigenen Integrationscode schreiben müssen. Diese vordefinierten Verbindungen werden als *Bindungen* bezeichnet. Bindungen ermöglichen es einer Funktion, Azure-Dienste und andere Ressourcen als Eingabe und Ausgabe für eine Funktion zu verwenden.
-
-Die Funktionsausführung wird durch einen einzelnen *Trigger* gestartet. Ein Trigger ist ein spezieller Typ Eingabebindung. Während eine Funktion nur einen Trigger hat, kann sie mehrere Ein- und Ausgabebindungen haben. Weitere Informationen finden Sie unter [Konzepte der Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md).
+[!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Funktion, die Sie im [Vorheriger Schnellstartartikel] erstellt haben, mithilfe von Visual Studio mit Azure Storage verbinden. Die Ausgabebindung, die Sie dieser Funktion hinzufügen, schreibt Daten aus der HTTP-Anforderung in eine Nachricht in einer Azure Queue Storage-Warteschlange. 
 
@@ -29,13 +23,13 @@ Die meisten Bindungen erfordern eine gespeicherte Verbindungszeichenfolge, die F
 
 Bevor Sie mit diesem Artikel beginnen, sind folgende Schritte erforderlich: 
 
- - Absolvieren Sie [Teil 1 der Visual Studio-Schnellstartanleitung][./functions-create-first-function-vs-code.md]. 
+ - Absolvieren Sie [Teil 1 der Visual Studio-Schnellstartanleitung](./functions-create-your-first-function-visual-studio.md). 
 
 - Melden Sie sich über Visual Studio bei Ihrem Azure-Abonnement an.
 
 ## <a name="download-the-function-app-settings"></a>Herunterladen der Funktions-App-Einstellungen
 
-Im [vorherigen Schnellstartartikel](functions-create-first-function-vs-code.md) haben Sie zusammen mit dem erforderlichen Storage-Konto eine Funktions-App in Azure erstellt. Die Verbindungszeichenfolge für dieses Konto wird sicher in App-Einstellungen in Azure gespeichert. In diesem Artikel schreiben Sie Nachrichten in eine Speicherwarteschlange in demselben Konto. Um bei der lokalen Ausführung der Funktion eine Verbindung mit Ihrem Storage-Konto herzustellen, müssen Sie App-Einstellungen in die Datei *local.settings.json* herunterladen. 
+Im [vorherigen Schnellstartartikel](./create-first-function-vs-code-csharp.md) haben Sie zusammen mit dem erforderlichen Storage-Konto eine Funktions-App in Azure erstellt. Die Verbindungszeichenfolge für dieses Konto wird sicher in App-Einstellungen in Azure gespeichert. In diesem Artikel schreiben Sie Nachrichten in eine Speicherwarteschlange in demselben Konto. Um bei der lokalen Ausführung der Funktion eine Verbindung mit Ihrem Storage-Konto herzustellen, müssen Sie App-Einstellungen in die Datei *local.settings.json* herunterladen. 
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus. 
 
@@ -85,7 +79,7 @@ Eine neue Warteschlange mit dem Namen `outqueue` wird in Ihrem Speicherkonto von
 
 1. Erweitern Sie den Knoten **Warteschlangen**, und doppelklicken Sie anschließend auf die Warteschlange namens **outqueue**, um die Inhalte der Warteschlange in Visual Studio anzuzeigen. 
 
-   Die Warteschlange enthält die Meldung, die die Warteschlangen-Ausgabebindung erstellt hat, als Sie die per HTTP ausgelöste Funktion ausgeführt haben. Wenn Sie die Funktion mit dem `name`-Standardwert *Azure* aufgerufen haben, lautet die Warteschlangenmeldung *Name passed to the function: Azure* (An die Funktion übergebener Name: Azure).
+   Die Warteschlange enthält die Meldung, die die Warteschlangen-Ausgabebindung erstellt hat, als Sie die per HTTP ausgelöste Funktion ausgeführt haben. Wenn Sie die Funktion mit dem `name`-Standardwert *Azure* aufgerufen haben, lautet die Warteschlangenmeldung *Name passed to the function: Azure*.
 
     ![In Azure Storage-Explorer angezeigte Warteschlangennachricht](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 
@@ -112,7 +106,7 @@ Sie haben Ihre mittels HTTP ausgelöste Funktion so aktualisiert, dass sie Daten
 Als Nächstes sollten Sie die Application Insights-Überwachung für Ihre Funktions-App aktivieren:
 
 > [!div class="nextstepaction"]
-> [Aktivieren der Application Insights-Integration](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Aktivieren der Application Insights-Integration](configure-monitoring.md#add-to-an-existing-function-app)
 
 [Azure Storage Explorer]: https://storageexplorer.com/
 [Vorheriger Schnellstartartikel]: functions-create-your-first-function-visual-studio.md

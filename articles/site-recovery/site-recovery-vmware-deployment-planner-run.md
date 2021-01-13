@@ -1,20 +1,20 @@
 ---
-title: Ausführen des Azure Site Recovery-Bereitstellungsplaners für die VMware-Notfallwiederherstellung in Azure | Microsoft-Dokumentation
+title: Ausführen des Bereitstellungsplaners für die VMware-Notfallwiederherstellung mit Azure Site Recovery
 description: In diesem Artikel wird beschrieben, wie Sie den Azure Site Recovery-Bereitstellungsplaner für die VMware-Notfallwiederherstellung in Azure ausführen.
-author: mayurigupta13
+author: rajeswari-mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/15/2019
-ms.author: mayg
-ms.openlocfilehash: 3a6c9e50804db573395984b8ba38838eb15b0792
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: ramamill
+ms.openlocfilehash: 05d260de726c62c130a58938c2a2c9fa2440a96d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61276687"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004720"
 ---
-# <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Ausführen des Azure Site Recovery-Bereitstellungsplaners für die VMware-Notfallwiederherstellung in Azure
+# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>Ausführen des Bereitstellungsplaners für die VMware-Notfallwiederherstellung
 Dieser Artikel ist der Leitfaden zum Deployment Planner (Bereitstellungsplaner) von Azure Site Recovery für Bereitstellungen von „VMware zu Azure“ in der Produktion.
 
 
@@ -40,18 +40,24 @@ Zuerst benötigen Sie eine Liste mit den VMs, für die die Profilerstellung durc
 2. Öffnen Sie die VMware vSphere PowerCLI-Konsole.
 3. Stellen Sie sicher, dass die Ausführungsrichtlinie für das Skript aktiviert ist. Wenn sie deaktiviert ist, können Sie die VMware vSphere PowerCLI-Konsole im Administratormodus starten und dann aktivieren, indem Sie den folgenden Befehl ausführen:
 
-            Set-ExecutionPolicy –ExecutionPolicy AllSigned
+    ```powershell
+    Set-ExecutionPolicy –ExecutionPolicy AllSigned
+    ```
 
 4. Sie müssen möglicherweise den folgenden Befehl ausführen, falls Connect-VIServer nicht als Cmdlet-Name erkannt wird.
 
-            Add-PSSnapin VMware.VimAutomation.Core
+    ```powershell
+    Add-PSSnapin VMware.VimAutomation.Core
+    ```
 
 5. Zum Abrufen aller Namen von VMs eines vCenter-Servers/vSphere ESXi-Hosts und Speichern der Liste in einer TXT-Datei führen Sie die beiden hier angegebenen Befehle aus.
 Ersetzen Sie &lsaquo;server name&rsaquo;, &lsaquo;user name&rsaquo;, &lsaquo;password&rsaquo; und &lsaquo;outputfile.txt&rsaquo; durch Ihre Angaben:
 
-            Connect-VIServer -Server <server name> -User <user name> -Password <password>
+    ```powershell
+    Connect-VIServer -Server <server name> -User <user name> -Password <password>
 
-            Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
+    Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
+    ```
 
 6. Öffnen Sie die Ausgabedatei im Editor, und kopieren Sie die Namen aller VMs, für die Profile erstellt werden sollen, in eine andere Datei (z.B. „ProfileVMList.txt“). Fügen Sie einen VM-Namen pro Zeile ein. Diese Datei wird als Eingabe für den Parameter *-VMListFile* des Befehlszeilentools verwendet.
 
@@ -108,18 +114,18 @@ VM-Konfigurationen werden zu Beginn des Profilerstellungsvorgangs einmal erfasst
 
 Mit dem Befehl für die Profilerstellung werden im Verzeichnis der Profilerstellung mehrere Dateien generiert. Löschen Sie keine Dateien, weil sich dies auf die Berichterstellung auswirkt.
 
-#### <a name="example-1-profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>Beispiel 1: VM-Profilerstellung für 30 Tage, Ermittlung des Durchsatzes von lokal zu Azure
+#### <a name="example-1-profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>Beispiel 1: VM-Profilerstellung für 30 Tage, Ermittlung des Durchsatzes von lokal zu Azure
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  30  -User vCenterUser1 -StorageAccountName  asrspfarm1 -StorageAccountKey Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
 
-#### <a name="example-2-profile-vms-for-15-days"></a>Beispiel 2: VM-Profilerstellung für 15 Tage
+#### <a name="example-2-profile-vms-for-15-days"></a>Beispiel 2: VM-Profilerstellung für 15 Tage
 
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -NoOfDaysToProfile  15  -User vCenterUser1
 ```
 
-#### <a name="example-3-profile-vms-for-60-minutes-for-a-quick-test-of-the-tool"></a>Beispiel 3: VM-Profilerstellung für 60 Minuten zum schnellen Testen des Tools
+#### <a name="example-3-profile-vms-for-60-minutes-for-a-quick-test-of-the-tool"></a>Beispiel 3: VM-Profilerstellung für 60 Minuten zum schnellen Testen des Tools
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfMinutesToProfile 60  -User vCenterUser1
 ```
@@ -174,18 +180,18 @@ Standardmäßig ist das Tool so konfiguriert, dass für bis zu 1000 VMs Profile 
 <add key="MaxVmsSupported" value="1000"/>
 ```
 
-#### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>Beispiel 1: Berichterstellung mit Standardwerten, wenn sich die Profilerstellungsdaten auf dem lokalen Laufwerk befinden
+#### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>Beispiel 1: Berichterstellung mit Standardwerten, wenn sich die Profilerstellungsdaten auf dem lokalen Laufwerk befinden
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-2-generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>Beispiel 2: Berichterstellung, wenn sich die Profilerstellungsdaten auf einem Remoteserver befinden
+#### <a name="example-2-generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>Beispiel 2: Berichterstellung, wenn sich die Profilerstellungsdaten auf einem Remoteserver befinden
 Sie sollten über Lese-/Schreibzugriff für das Remoteverzeichnis verfügen.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>Beispiel 3: Berichterstellung mit spezifischer Bandbreite und der Vorgabe, die erste Replikation innerhalb der angegebenen Zeit abzuschließen
+#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>Beispiel 3: Berichterstellung mit spezifischer Bandbreite und der Vorgabe, die erste Replikation innerhalb der angegebenen Zeit abzuschließen
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -Bandwidth 100 -GoalToCompleteIR 24
 ```

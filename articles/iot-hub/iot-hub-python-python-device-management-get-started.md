@@ -6,14 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 01/17/2020
 ms.author: robinsh
-ms.openlocfilehash: eb5085db10c5763a4173f460eabde6afcccd5aff
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.custom: mqtt, devx-track-python
+ms.openlocfilehash: d4c514042b89341b90b0bb9c939ef4b463741916
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000443"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87872717"
 ---
 # <a name="get-started-with-device-management-python"></a>Erste Schritte mit der Geräteverwaltung (Python)
 
@@ -37,9 +38,11 @@ Am Ende dieses Tutorials verfügen Sie über zwei Python-Konsolen-Apps:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -62,10 +65,6 @@ In diesem Abschnitt führen Sie folgende Schritte aus:
     ```cmd/sh
     pip install azure-iot-device
     ```
-
-   > [!NOTE]
-   > Die PIP-Pakete für „azure-iothub-service-client“ sind nur für das Betriebssystem Windows verfügbar. Pakete für Linux/Mac OS finden Sie in den Abschnitten zu Linux und Mac OS im Beitrag [Prepare your development environment for Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) (Vorbereiten der Entwicklungsumgebung für Python).
-   >
 
 2. Erstellen Sie mit einem Text-Editor in Ihrem Arbeitsverzeichnis eine Datei namens **dmpatterns_getstarted_device.py**.
 
@@ -154,15 +153,11 @@ In diesem Abschnitt führen Sie folgende Schritte aus:
 
 In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die einen Remote-Neustart auf einem Gerät über eine direkte Methode auslöst. Die App verwendet Gerätezwillingsabfragen, um den Zeitpunkt des letzten Neustarts bei diesem Gerät zu ermitteln.
 
-1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um das Paket **azure-iot-service-client** zu installieren:
+1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um das Paket **azure-iot-hub** zu installieren:
 
     ```cmd/sh
-    pip install azure-iothub-service-client
+    pip install azure-iot-hub
     ```
-
-   > [!NOTE]
-   > Die PIP-Pakete für „azure-iothub-service-client“ und „azure-iothub-device-client“ sind derzeit nur für das Windows-Betriebssystem verfügbar. Pakete für Linux/Mac OS finden Sie in den Abschnitten zu Linux und Mac OS im Beitrag [Prepare your development environment for Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) (Vorbereiten der Entwicklungsumgebung für Python).
-   >
 
 2. Erstellen Sie mit einem Text-Editor in Ihrem Arbeitsverzeichnis eine Datei namens **dmpatterns_getstarted_service.py**.
 
@@ -170,9 +165,9 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die einen Remote-Neu
 
     ```python
     import sys, time
-    import iothub_service_client
 
-    from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
+    from azure.iot.hub import IoTHubRegistryManager
+    from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult, Twin
     ```
 
 4. Fügen Sie die folgenden Variablendeklarationen hinzu. Ersetzen Sie den Platzhalterwert `{IoTHubConnectionString}` durch die IoT-Hub-Verbindungszeichenfolge, die Sie zuvor unter [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben. Ersetzen Sie den Platzhalterwert `{deviceId}` durch die Geräte-ID, die Sie unter [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) registriert haben.
@@ -192,13 +187,15 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die einen Remote-Neu
     ```python
     def iothub_devicemethod_sample_run():
         try:
-            iothub_twin_method = IoTHubDeviceTwin(CONNECTION_STRING)
-            iothub_device_method = IoTHubDeviceMethod(CONNECTION_STRING)
+            # Create IoTHubRegistryManager
+            registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
 
             print ( "" )
             print ( "Invoking device to reboot..." )
 
-            response = iothub_device_method.invoke(DEVICE_ID, METHOD_NAME, METHOD_PAYLOAD, TIMEOUT)
+            # Call the direct method.
+            deviceMethod = CloudToDeviceMethod(method_name=METHOD_NAME, payload=METHOD_PAYLOAD)
+            response = registry_manager.invoke_device_method(DEVICE_ID, deviceMethod)
 
             print ( "" )
             print ( "Successfully invoked the device to reboot." )
@@ -212,19 +209,19 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die einen Remote-Neu
 
                 status_counter = 0
                 while status_counter <= WAIT_COUNT:
-                    twin_info = iothub_twin_method.get_twin(DEVICE_ID)
+                    twin_info = registry_manager.get_twin(DEVICE_ID)
 
-                    if twin_info.find("rebootTime") != -1:
-                        print ( "Last reboot time: " + twin_info[twin_info.find("rebootTime")+11:twin_info.find("rebootTime")+37])
+                    if twin_info.properties.reported.get("rebootTime") != None :
+                        print ("Last reboot time: " + twin_info.properties.reported.get("rebootTime"))
                     else:
                         print ("Waiting for device to report last reboot time...")
 
                     time.sleep(5)
                     status_counter += 1
 
-        except IoTHubError as iothub_error:
+        except Exception as ex:
             print ( "" )
-            print ( "Unexpected error {0}".format(iothub_error) )
+            print ( "Unexpected error {0}".format(ex) )
             return
         except KeyboardInterrupt:
             print ( "" )

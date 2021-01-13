@@ -1,25 +1,23 @@
 ---
-title: Dynamisches Erstellen eines Datenträgervolumes für mehrere Pods in Azure Kubernetes Service (AKS)
-description: Erfahren Sie, wie Sie dynamisch ein persistentes Volume mit Azure-Datenträgern für die Verwendung mit mehreren gleichzeitigen Pods in Azure Kubernetes Service (AKS) erstellen.
+title: Dynamisches Erstellen von Azure-Datenträgervolumes
+titleSuffix: Azure Kubernetes Service
+description: Erfahren Sie, wie Sie ein persistentes Volume mit Azure-Datenträgern in Azure Kubernetes Service (AKS) dynamisches erstellen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
-ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: 0641d613da86aeffa0c4abb0f82ce93c38283156
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 09/21/2020
+ms.openlocfilehash: ad51bfdf8c494e763921de880926b839cdb7be62
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67616075"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021638"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
 Ein persistentes Volume stellt ein Speicherelement dar, das für die Verwendung in Kubernetes-Pods bereitgestellt wurde. Ein persistentes Volume kann von einem oder mehreren Pods verwendet und dynamisch oder statisch bereitgestellt werden. Dieser Artikel zeigt Ihnen, wie Sie dynamisch persistente Volumes mit Azure-Datenträgern erstellen, die von einem einzelnen Pod in einem AKS-Cluster (Azure Kubernetes Service) verwendet werden.
 
 > [!NOTE]
-> Ein Azure-Datenträger kann nur mit dem *Zugriffsmodus* vom Typ *ReadWriteOnce* eingebunden werden. Dadurch ist er nur für einen einzelnen Pod in AKS verfügbar. Wenn Sie ein persistentes Volume für mehrere Pods freigeben müssen, verwenden Sie [Azure Files][azure-files-pvc].
+> Ein Azure-Datenträger kann nur mit einem *Zugriffsmodus* vom Typ *ReadWriteOnce* eingebunden werden. Dadurch ist er für einen Knoten in AKS verfügbar. Wenn Sie ein persistentes Volume für mehrere Knoten freigeben möchten, verwenden Sie [Azure Files][azure-files-pvc].
 
 Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Speicheroptionen für Anwendungen in AKS][concepts-storage].
 
@@ -27,20 +25,24 @@ Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Speicheroptionen f
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="built-in-storage-classes"></a>Integrierte Speicherklassen
 
 Mit einer Speicherklasse wird festgelegt, wie eine Speichereinheit dynamisch in einem persistenten Volume erstellt wird. Weitere Informationen zu Kubernetes-Speicherklassen finden Sie unter [Kubernetes-Speicherklassen][kubernetes-storage-classes].
 
-Jeder AKS-Cluster schließt zwei vorab erstellte Speicherklassen ein, die beide für die Arbeit mit Azure-Datenträgern konfiguriert sind:
+Jeder AKS-Cluster enthält vier vorab erstellte Speicherklassen, von denen zwei für die Arbeit mit Azure-Datenträgern konfiguriert sind:
 
-* Die Speicherklasse *default* stellt einen Azure Standard-Datenträger bereit.
-    * Der Standardspeicher basiert auf Festplatten und stellt eine kostengünstige, leistungsstarke Speicherlösung dar. Standarddatenträger sind ideal für eine kostengünstige Entwicklungs- und Testworkload.
+* Die Speicherklasse *default* stellt einen Azure SSD Standard-Datenträger bereit.
+    * Der Standardspeicher basiert auf SSD Standard-Laufwerken und stellt eine kostengünstige Speicherlösung mit zuverlässiger Leistung dar. 
 * Die Speicherklasse *managed-premium* stellt einen Azure Premium-Datenträger bereit.
     * Premium-Datenträger zeichnen sich durch SSD-basierte hohe Leistung und geringe Wartezeit aus. Sie eignen sich hervorragend für virtuelle Computer, auf denen die Produktionsworkload ausgeführt wird. Wenn die AKS-Knoten in dem Cluster Storage Premium verwenden, wählen Sie die *managed-premium*-Klasse aus.
     
-Diese Standardspeicherklassen erlauben nicht, die Größe des Volumes nach der Erstellung zu aktualisieren. Um dies zu ermöglichen, fügen Sie einer der Standardspeicherklassen die Zeile *allowVolumeExpansion: true* hinzu, oder erstellen Sie Ihre eigene benutzerdefinierte Speicherklasse. Sie können eine vorhandene Speicherklasse mit dem Befehl `kubectl edit sc` bearbeiten. Weitere Informationen zu Speicherklassen und der Erstellung eigener Speicherklassen finden Sie unter [Speicheroptionen für Anwendungen in AKS][storage-class-concepts].
+Wenn Sie eine der Standardspeicherklassen verwenden, können Sie die Volumegröße nicht mehr aktualisieren, nachdem die Speicherklasse erstellt wurde. Wenn Sie die Volumegröße auch nach der Erstellung einer Speicherklasse noch ändern können möchten, fügen Sie einer der Standardspeicherklassen die Zeile `allowVolumeExpansion: true` hinzu, oder Sie erstellen Ihre eigene, benutzerdefinierte Speicherklasse. Beachten Sie, dass eine Reduzierung der PVC-Größe nicht unterstützt wird (zur Vermeidung von Datenverlusten). Sie können eine vorhandene Speicherklasse mit dem Befehl `kubectl edit sc` bearbeiten. 
+
+Wenn Sie beispielsweise einen Datenträger mit einer Größe von 4 TiB verwenden möchten, müssen Sie eine Speicherklasse erstellen, die `cachingmode: None` definiert, da [Datenträgerzwischenspeicherungen für Datenträger ab 4 TiB nicht unterstützt werden](../virtual-machines/premium-storage-performance.md#disk-caching).
+
+Weitere Informationen zu Speicherklassen und der Erstellung eigener Speicherklassen finden Sie unter [Speicheroptionen für Anwendungen in AKS][storage-class-concepts].
 
 Mit dem Befehl [kubectl get sc][kubectl-get] können Sie die vorab erstellten Speicherklassen anzeigen. Im folgenden Beispiel werden die in einem AKS-Cluster verfügbaren vorab erstellten Speicherklassen gezeigt:
 
@@ -88,7 +90,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>Verwenden des persistenten Volumes
 
-Nachdem der Anspruch auf ein persistentes Volumes erstellt und der Datenträger erfolgreich bereitgestellt wurde, kann ein Pod mit Zugriff auf den Datenträger erstellt werden. Das folgende Manifest erstellt einen grundlegenden NGINX-Pod, der den Anspruch auf das persistente Volume *azure-managed-disk* verwendet, um den Azure-Datenträger im Pfad `/mnt/azure` einzubinden. Geben Sie für Windows Server-Container (derzeit in der Vorschau in AKS) einen *mountPath* gemäß Windows-Pfadkonvention an, z.B. *D:* .
+Nachdem der Anspruch auf ein persistentes Volumes erstellt und der Datenträger erfolgreich bereitgestellt wurde, kann ein Pod mit Zugriff auf den Datenträger erstellt werden. Das folgende Manifest erstellt einen grundlegenden NGINX-Pod, der den Anspruch auf das persistente Volume *azure-managed-disk* verwendet, um den Azure-Datenträger im Pfad `/mnt/azure` einzubinden. Geben Sie für Windows Server-Container einen *mountPath* gemäß Windows-Pfadkonvention an, z. B. *D:* .
 
 Erstellen Sie eine Datei namens `azure-pvc-disk.yaml`, und fügen Sie das folgende Manifest ein.
 
@@ -100,7 +102,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -149,6 +151,9 @@ Events:
   Normal  SuccessfulMountVolume  1m    kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "pvc-faf0f176-8b8d-11e8-923b-deb28c58d242"
 [...]
 ```
+
+## <a name="use-ultra-disks"></a>Verwenden von Ultra-Datenträgern
+Informationen zum Nutzen von Ultra-Datenträgern finden Sie unter [Verwenden von Ultra-Datenträgern in Azure Kubernetes Service (AKS)](use-ultra-disks.md).
 
 ## <a name="back-up-a-persistent-volume"></a>Sichern eines persistenten Volumes
 
@@ -206,7 +211,7 @@ metadata:
 spec:
   containers:
   - name: mypodrestored
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -271,7 +276,7 @@ Erfahren Sie mehr über persistente Kubernetes-Volumes bei Verwendung von Azure-
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
-[premium-storage]: ../virtual-machines/windows/disks-types.md
+[premium-storage]: ../virtual-machines/disks-types.md
 [az-disk-list]: /cli/azure/disk#az-disk-list
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create
@@ -282,3 +287,11 @@ Erfahren Sie mehr über persistente Kubernetes-Volumes bei Verwendung von Azure-
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

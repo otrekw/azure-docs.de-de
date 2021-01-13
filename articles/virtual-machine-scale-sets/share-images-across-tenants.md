@@ -1,23 +1,22 @@
 ---
-title: Mandantenübergreifendes Freigeben von Katalogimages in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie VM-Images mithilfe von Katalogen mit freigegebenen Images über Azure-Mandanten hinweg freigeben.
-services: virtual-machine-scale-sets
+title: Mandantenübergreifendes Freigeben von Katalogimages
+description: Erfahren Sie, wie Sie Skalierungsgruppen mithilfe von Images erstellen, die von Azure-Mandanten mithilfe von Shared Image Gallerys freigegeben wurden.
 author: cynthn
-manager: jeconnoc
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
-ms.date: 04/05/2019
 ms.author: cynthn
-ms.openlocfilehash: cbaaac629fd013602eed75cc7dc357f13a62e3b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
+ms.date: 04/05/2019
+ms.reviewer: akjosh
+ms.custom: akjosh, devx-track-azurecli
+ms.openlocfilehash: ea61b3bd76fc4ada48a8a2fb734a841b8a969272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65157942"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91323480"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Freigeben von Katalog-VM-Images über Azure-Mandanten hinweg
+# <a name="share-images-across-tenants-with-shared-image-gallery"></a>Freigeben von Images für Mandanten über eine Shared Image Gallery
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -52,4 +51,4 @@ az vmss create \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sollten Probleme auftreten, finden Sie unter [Problembehandlung für Kataloge mit freigegebenen Images](troubleshooting-shared-images.md) mögliche Problembehandlungen.
+Sollten Probleme auftreten, finden Sie unter [Problembehandlung für Kataloge mit freigegebenen Images](../virtual-machines/troubleshooting-shared-images.md) mögliche Problembehandlungen.

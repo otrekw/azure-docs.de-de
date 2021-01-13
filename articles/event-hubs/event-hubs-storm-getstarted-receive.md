@@ -1,39 +1,27 @@
 ---
-title: Empfangen von Ereignissen mithilfe von Apache Storm – Azure Event Hubs | Microsoft-Dokumentation
-description: Dieser Artikel enthält Informationen zum Empfangen von Ereignissen aus Azure Event Hubs mit Apache Storm.
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: java
-ms.devlang: multiple
-ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 75a96127c48186befc48b2240f78e49cd5914239
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+title: 'Schnellstart: Empfangen von Ereignissen mit Apache Storm – Azure Event Hubs'
+description: 'Schnellstart: Dieser Artikel enthält Informationen zum Empfangen von Ereignissen aus Azure Event Hubs mit Apache Storm.'
+ms.topic: quickstart
+ms.date: 06/23/2020
+ms.openlocfilehash: 099a3ff1ad57616de0d7929d787b82e9d55c9e00
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343415"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "87087576"
 ---
-# <a name="receive-events-from-event-hubs-using-apache-storm"></a>Empfangen von Ereignissen von Event Hubs mithilfe von Apache Storm
+# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Schnellstart: Empfangen von Ereignissen von Event Hubs mithilfe von Apache Storm
 
 [Apache Storm](https://storm.incubator.apache.org) ist ein verteiltes System für Echtzeitberechnungen, das die zuverlässige Verarbeitung unbegrenzter Datenströme vereinfacht. In diesem Abschnitt wird gezeigt, wie ein Azure Event Hubs-Storm-Spout verwendet wird, um Ereignisse von Event Hubs zu empfangen. Mit Apache Storm können Sie Ereignisse auf mehrere Prozesse aufteilen, die in verschiedenen Knoten gehostet werden. Die Ereignis-Hub-Integration in Storm vereinfacht die Ereignisnutzung durch transparente Prüfung des Fortschritts mithilfe der Zookeeper Installation von Storm, der Verwaltung von permanenten Prüfpunkten und dem parallelen von Ereignissen von Ereignis-Hubs.
 
 Weitere Informationen zu Empfangsmustern von Event Hubs finden Sie unter [Event Hubs – Übersicht][Event Hubs overview].
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie mit dem Schnellstart beginnen, **erstellen Sie einen Event Hubs-Namespace und einen Event Hub**. Verwenden Sie das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und rufen Sie die Verwaltungsanmeldeinformationen ab, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Erstellen Sie anhand der Anleitung in [diesem Artikel](event-hubs-create.md) einen Namespace und einen Event Hub. 
+Bevor Sie mit dem Schnellstart beginnen, **erstellen Sie einen Event Hubs-Namespace und einen Event Hub**. Verwenden Sie das [Azure-Portal](https://portal.azure.com), um einen Namespace des Typs „Event Hubs“ zu erstellen, und rufen Sie die Verwaltungsanmeldeinformationen ab, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Erstellen Sie anhand der Anleitung in [diesem Artikel](event-hubs-create.md) einen Namespace und einen Event Hub. 
 
 ## <a name="create-project-and-add-code"></a>Erstellen eines Projekts und Hinzufügen von Code
 
-In diesem Tutorial wird eine [HDInsight Storm][HDInsight Storm]-Installation verwendet, in der der Event Hubs-Spout bereits verfügbar ist.
+In diesem Lernprogramm wird eine [HDInsight Storm][HDInsight Storm] -Installation verwendet, in der der Event Hubs-Spout bereits verfügbar ist.
 
 1. Gehen Sie wie unter [HDInsight Storm – Erste Schritte](../hdinsight/storm/apache-storm-overview.md) beschrieben vor, um einen neuen HDInsight-Cluster zu erstellen und über Remotedesktop eine Verbindung mit diesem herzustellen.
 2. Kopieren Sie die Datei `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` in Ihre lokale Entwicklungsumgebung. Sie enthält events-storm-spout.
@@ -250,9 +238,9 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
 
 <!-- Links -->
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
-[Beispiel für HDInsight Storm mit Event Hub]: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
+[Beispiel für HDInsight Storm mit Event Hub]: https://github.com/Azure-Samples/hdinsight-java-storm-eventhub
 
 <!-- Images -->
 

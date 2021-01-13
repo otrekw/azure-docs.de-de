@@ -1,103 +1,86 @@
 ### YamlMime:Landing
 title: Azure Machine Learning-Dokumentation
-summary: Azure Machine Learning bietet Webschnittstellen und SDKs zum schnellen Trainieren und Bereitstellen skalierbarer Machine Learning-Modelle und Pipelines. Diese Funktionen stehen Ihnen über Open-Source-Python-Frameworks (etwa PyTorch, TensorFlow und sciKit-learn) zur Verfügung.
+summary: Hier erfahren Sie, wie Sie mit Azure Machine Learning nach Bedarf Machine Learning-Modelle bereitstellen und verwalten, AutoML verwenden und Pipelines ausführen.  Die Informationen werden in Form von Tutorials, Codebeispielen, API-Referenzen und mehr vermittelt.
 metadata:
-  title: Machine Learning-Dokumentation – Azure
-  description: Azure Machine Learning bietet Ihnen Webschnittstellen und SDKs zum schnellen Trainieren und Bereitstellen skalierbarer Machine Learning-Modelle und Pipelines. Diese Funktionen stehen Ihnen über Open-Source-Python-Frameworks (etwa PyTorch, TensorFlow und sciKit-learn) zur Verfügung.
+  title: Azure Machine Learning-Dokumentation
+  description: Hier erfahren Sie, wie Sie mit Azure Machine Learning nach Bedarf Machine Learning-Modelle bereitstellen und verwalten, AutoML verwenden und Pipelines ausführen. Die Informationen werden in Form von Tutorials, Codebeispielen, API-Referenzen und mehr vermittelt.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
   ms.topic: landing-page
   ms.collection: collection
-  author: j-martens
-  ms.author: jmartens
-  ms.date: 09/03/2019
-  ms.openlocfilehash: 589e97442412d30d844111cd9a3e332d70d705b6
-  ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+  ms.author: larryfr
+  author: BlackMist
+  ms.date: 09/21/2020
+  ms.custom: contperf-fy21q1
+  ms.openlocfilehash: ddf39e9822d55f8e7bec8a0e36659757ac9b4770
+  ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/19/2019
-  ms.locfileid: "71130370"
+  ms.lasthandoff: 01/11/2021
+  ms.locfileid: "98071985"
 landingContent:
-- title: Erste Schritte mit Azure ML
+- title: 'Erste Schritte: Code First'
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Experimentieren in Python-Notebooks
-      url: service/tutorial-1st-experiment-sdk-setup.md
-    - text: Experimentieren mithilfe von Drag & Drop
-      url: service/ui-tutorial-automobile-price-train-score.md
-    - text: Automatisieren Ihres ersten Experiments
-      url: service/tutorial-first-experiment-automated-ml.md
+    - text: Tutorial mit den ersten Schritten (Python)
+      url: tutorial-1st-experiment-sdk-setup-local.md
+    - text: Tutorial zur Verwendung von Jupyter-Notebooks
+      url: tutorial-1st-experiment-sdk-setup.md
+    - text: Batchrückschluss mit ML-Pipelines (Python)
+      url: tutorial-pipeline-batch-scoring-classification.md
+    - text: Erste Schritte mit R
+      url: tutorial-1st-r-experiment.md
+- title: 'Erste Schritte: Wenig oder kein Code'
+  linkLists:
   - linkListType: overview
     links:
-    - text: Was ist Azure ML?
-      url: service/overview-what-is-azure-ml.md
-    - text: Architektur und Konzepte
-      url: service/concept-azure-machine-learning-architecture.md
-  - linkListType: how-to-guide
-    links:
-    - text: Einrichten der Umgebung
-      url: service/how-to-configure-environment.md
-    - text: Einrichten von Computezielen für das Training
-      url: service/how-to-set-up-training-targets.md
-- title: 'Experiment: Python SDK'
-  linkLists:
+    - text: Azure Machine Learning Studio
+      url: overview-what-is-machine-learning-studio.md
+    - text: Was ist automatisiertes maschinelles Lernen (AutoML)?
+      url: concept-automated-ml.md
+    - text: Worum handelt es sich beim Drag & Drop-Designer?
+      url: concept-designer.md
   - linkListType: tutorial
     links:
-    - text: Erstellen Ihres ersten ML-Experiments
-      url: service/tutorial-1st-experiment-sdk-setup.md
-    - text: Klassifizieren von Bildern
-      url: service/tutorial-train-models-with-aml.md
-    - text: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellem Lernen
-      url: service/tutorial-auto-train-models.md
-    - text: Verwenden von Pipelines für die Batchbewertung
-      url: service/tutorial-pipeline-batch-scoring-classification.md
-  - linkListType: how-to-guide
+    - text: Erste Schritte (AutoML)
+      url: tutorial-first-experiment-automated-ml.md
+    - text: Erste Schritte (Designer)
+      url: tutorial-designer-automobile-price-train-score.md
+  - linkListType: reference
     links:
-    - text: Trainieren mit Scikit-learn
-      url: service/how-to-train-scikit-learn.md
-    - text: Trainieren mit TensorFlow
-      url: service/how-to-train-tensorflow.md
-    - text: Trainieren mit PyTorch
-      url: service/how-to-train-pytorch.md
-    - text: Trainieren mit Keras
-      url: service/how-to-train-keras.md
-- title: 'Experimentieren: grafische Benutzeroberfläche'
+    - text: Designeralgorithmen und -module
+      url: algorithm-module-reference/module-reference.md
+- title: Bereitstellen Ihres ML-Modells in Azure
   linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Vorhersagen von Abonnements mit automatisiertem Machine Learning
-      url: service/tutorial-first-experiment-automated-ml.md
-    - text: Vorhersagen von Preisen mit der linearen Regression
-      url: service/ui-tutorial-automobile-price-train-score.md
   - linkListType: how-to-guide
     links:
-    - text: Vorhersagen des Kreditrisikos
-      url: service/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
-    - text: Vorhersagen von Verzögerungen
-      url: service/how-to-ui-sample-classification-predict-flight-delay.md
-    - text: Änderungsprognose
-      url: service/how-to-ui-sample-classification-predict-churn.md
-- title: Bereitstellen und Verwalten von Modellen
+    - text: Bereitstellen Ihres Modells in der Cloud
+      url: how-to-deploy-existing-model.md
+    - text: Nachverfolgen und Bereitstellen von MLflow-Modellen
+      url: how-to-use-mlflow.md
+- title: Bereitstellen und Verwalten von Modellen (MLOps)
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Was ist MLOps?
-      url: service/concept-model-management-and-deployment.md
+      url: concept-model-management-and-deployment.md
     - text: Bereitstellungsanleitung und -ort
-      url: service/how-to-deploy-and-where.md
-    - text: Echtzeitvorhersage
-      url: service/how-to-consume-web-service.md
-    - text: Batchvorhersage
-      url: service/how-to-run-batch-predictions.md
-- title: Erkunden von Referenzdokumenten
-  linkLists:
+      url: how-to-deploy-and-where.md
   - linkListType: reference
     links:
-    - text: Azure ML Python SDK
-      url: https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py
-    - text: Azure ML CLI
-      url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
-    - text: 'Grafische Benutzeroberfläche: Algorithmen und Module'
-      url: algorithm-module-reference/module-reference.md
+    - text: Python SDK
+      url: /python/api/overview/azure/ml/?view=azure-ml-py
+    - text: REST-API
+      url: /rest/api/azureml/
+    - text: Machine Learning-CLI
+      url: /cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
+- title: Suchen nach Studio (klassisch)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 'Studio (klassisch): Landing Page'
+      url: classic/index.yml
+    - text: Studio (klassisch) und Studio
+      url: overview-what-is-machine-learning-studio.md

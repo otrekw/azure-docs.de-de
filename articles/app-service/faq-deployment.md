@@ -1,26 +1,20 @@
 ---
 title: Häufig gestellte Fragen zur Bereitstellung - Azure App Service | Microsoft-Dokumentation
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Bereitstellung für das Web-Apps-Feature von Azure App Service.
-services: app-service\web
-documentationcenter: ''
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 0a01f25894d1226466473dec7333859c7415f1fd
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 163a6940e50d1f8beacc23855fd1e6f9daad0085
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121203"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88080472"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Bereitstellung von Web-Apps in Azure
 
@@ -39,14 +33,14 @@ Weitere Informationen finden Sie unter [Bereitstellen der App in App Service](de
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>Wenn ich die Bereitstellung über Visual Studio versuche, wird eine Fehlermeldung angezeigt. Wie kann ich diesen Fehler beheben?
 
-Wird Ihnen die folgende Meldung angezeigt, verwenden Sie möglicherweise eine ältere SDK-Version: „Error during deployment for resource 'YourResourceName' in resource group 'YourResourceGroup': MissingRegistrationForLocation: The subscription is not registered for the resource type 'components' in the location 'Central US'.“ („Während der Bereitstellung der Ressource 'NameIhrerRessource' in der Ressourcengruppe 'IhreRessourcengruppe' ist ein Fehler aufgetreten: FehlendeRegistrierungFürOrt: Das Abonnement ist für den Ressourcentyp 'Komponenten' am Ort 'USA, Mitte' nicht registriert.“). Registrieren Sie sich erneut für diesen Anbieter, um Zugang zu diesem Ort zu erhalten.“ 
+Wenn die folgende Meldung angezeigt wird, verwenden Sie möglicherweise eine ältere Version des SDK: „Fehler bei der Bereitstellung für die Ressource ‚IhrRessourcenname‘ in der Ressourcengruppe ‚IhreRessourcengruppe‘: MissingRegistrationForLocation: Das Abonnement ist nicht für den Ressourcentyp ‚components‘ am Ort ‚USA, Mitte‘ registriert. Registrieren Sie sich erneut für diesen Anbieter, um Zugang zu diesem Ort zu erhalten.“ 
 
 Um diesen Fehler zu beheben, führen Sie eine Aktualisierung auf das [neueste SDK](https://azure.microsoft.com/downloads/) aus. Wenn diese Meldung angezeigt wird und Sie über das neueste SDK verfügen, senden Sie eine Supportanfrage.
 
 ## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>Wie stelle ich eine ASP.NET-Anwendung über Visual Studio in App Service bereit?
 <a id="deployasp"></a>
 
-Im Tutorial [Erstellen Ihrer ersten ASP.NET-Web-App in Azure in fünf Minuten](app-service-web-get-started-dotnet.md) erfahren Sie, wie Sie eine ASP.NET-Webanwendung mithilfe von Visual Studio in einer Web-App in App Service bereitstellen.
+Im Tutorial [Erstellen Ihrer ersten ASP.NET-Web-App in Azure in fünf Minuten](quickstart-dotnetcore.md) erfahren Sie, wie Sie eine ASP.NET-Webanwendung mithilfe von Visual Studio in einer Web-App in App Service bereitstellen.
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>Welche verschiedenen Typen von Anmeldeinformationen für die Bereitstellung gibt es?
 
@@ -58,7 +52,7 @@ Informationen zur Dateistruktur Ihrer App Service-App finden Sie unter [File Str
 
 ## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>Wie behebe ich den Fehler „FTP-Fehler 550 - Es steht nicht genug Speicherplatz auf dem Datenträger zur Verfügung“, wenn ich FTP für meine Dateien verwenden möchte?
 
-Wenn diese Meldung angezeigt wird, ist es wahrscheinlich, dass Sie auf ein Datenträgerkontingent im Serviceplan Ihrer Web-App gestoßen sind. Möglicherweise müssen Sie je nach Speicherbedarf auf eine höhere Dienstebene zentral hochskalieren. Weitere Informationen zu den Tarifen und Ressourcenlimits finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).
+Wenn diese Meldung angezeigt wird, ist es wahrscheinlich, dass Sie auf ein Datenträgerkontingent im Serviceplan Ihrer Web-App gestoßen sind. Möglicherweise müssen Sie je nach Speicherbedarf auf eine höhere Dienstebene hochskalieren. Weitere Informationen zu den Tarifen und Ressourcenlimits finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Wie richte ich für meine App Service-Web-App die kontinuierliche Bereitstellung ein?
 
@@ -74,8 +68,8 @@ So beheben Sie FTP-Probleme:
 
 1. Überprüfen Sie, ob Sie den richtigen Hostnamen und die richtigen Anmeldeinformationen eingegeben haben. Ausführliche Informationen zu den verschiedenen Typen von Anmeldeinformationen und deren Verwendung finden Sie unter [Deployment Credentials](https://github.com/projectkudu/kudu/wiki/Deployment-credentials) (Anmeldeinformationen für die Bereitstellung).
 2. Vergewissern Sie sich, dass die FTP-Ports nicht durch eine Firewall blockiert werden. Die Ports sollten diese Einstellungen haben:
-    * Port für FTP-Kontrollverbindung: 21
-    * Port für FTP-Datenverbindung: 989, 10001–10300
+    * Steuerungsport für FTP-Verbindung: 21
+    * Port für FTP-Datenverbindung: 989, 10001-10300
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>Wie veröffentliche ich meinen Code in App Service?
 

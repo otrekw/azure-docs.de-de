@@ -1,27 +1,23 @@
 ---
 title: Azure Deutschland-Images | Microsoft-Dokumentation
 description: Dieser Artikel verschafft Ihnen einen Überblick über die Images, die der Azure Deutschland-Marketplace bietet.
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/13/2017
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 34c45418f47e6e5238cfab5946a7f9b6ae61bdad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: 90258a20c0f763ec427a80bff7075974af1e95f4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780793"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127515"
 ---
 # <a name="azure-germany-images"></a>Azure Deutschland-Images
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
+
 ## <a name="overview"></a>Übersicht
 Kunden können beim Bereitstellen neuer virtueller Server in Azure Deutschland wahlweise vorgefertigte Images von Microsoft verwenden oder ihre eigenen VHDs hochladen. So erhalten Sie die Flexibilität, bei Bedarf Ihre eigenen standardisierten Images verwenden zu können.
 

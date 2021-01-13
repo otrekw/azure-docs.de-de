@@ -1,20 +1,20 @@
 ---
-title: Beschleunigter Netzwerkbetrieb mit Notfallwiederherstellung für virtuelle Azure-Computer | Microsoft-Dokumentation
+title: Aktivieren des beschleunigten Netzwerkbetriebs für die Notfallwiederherstellung für virtuelle Azure-Computer mit Azure Site Recovery
 description: Dieser Artikel beschreibt, wie Sie den beschleunigten Netzwerkbetrieb mit Azure Site Recovery für die Notfallwiederherstellung von virtuellen Azure-Computern verwenden.
 services: site-recovery
 documentationcenter: ''
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: mayg
-ms.openlocfilehash: c7edc7979636ced8697aa5ad724f9c6600d840bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: harshacs
+ms.openlocfilehash: 1d2d3b3aacc00428c96cde0f8230421a98151ae2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772486"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000248"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Beschleunigter Netzwerkbetrieb mit Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -45,7 +45,7 @@ Der beschleunigte Netzwerkbetrieb wird in den meisten universellen, computeoptim
 
 Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 4 vCPUs unterstützt. Folgende Reihen werden unterstützt: D/DSv3, E/ESv3, Fsv2 und Ms/Mms
 
-Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Windows-Computer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Windows-Computer](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="accelerated-networking-with-linux-vms"></a>Beschleunigter Netzwerkbetrieb mit virtuellen Linux-Computern
 
@@ -66,7 +66,7 @@ Der beschleunigte Netzwerkbetrieb wird in den meisten universellen, computeoptim
 
 Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 4 vCPUs unterstützt. Folgende Reihen werden unterstützt: D/DSv3, E/ESv3, Fsv2 und Ms/Mms.
 
-Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="enabling-accelerated-networking-for-replicated-vms"></a>Aktivieren des beschleunigten Netzwerkbetriebs für replizierte VMs
 

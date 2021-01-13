@@ -1,6 +1,6 @@
 ---
 title: 'Azure AD Connect: Erzwingen von TLS 1.2 für Azure Active Directory Connect| Microsoft-Dokumentation'
-description: In diesem Artikel sind alle Versionen von Azure AD Connect und Azure AD Sync aufgeführt.
+description: Erfahren Sie, wie Sie erzwingen, dass Ihr Azure AD Connect-Server nur Transport Layer Security (TLS) 1.2 verwendet.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,12 +15,12 @@ ms.date: 10/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff4e170f8f5d8e30004b94bbcfdb0ca3e8c3e04d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c610eb8fe6caf308117fa7adfc6e2f2a35c6352
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386260"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325894"
 ---
 # <a name="tls-12-enforcement-for-azure-ad-connect"></a>Erzwingen von TLS 1.2 für Azure AD Connect
 
@@ -34,12 +34,20 @@ Um bei dem Azure AD Connect-Server zu erzwingen, dass nur TLS 1.2 verwendet wird
 
 
 ### <a name="enable-tls-12"></a>Aktivieren von TLS 1.2
-- [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000001 "SchUseStrongCrypto"=dword:0000001
-- [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000001 "SchUseStrongCrypto"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "Enabled"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "Enabled"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000
+- [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions"=dword:00000001
+  - "SchUseStrongCrypto"=dword:0000001
+- [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions"=dword:00000001
+  - "SchUseStrongCrypto"=dword:00000001
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server]
+  - "Enabled"=dword:00000001
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server]
+  - "DisabledByDefault"=dword:00000000 
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client]
+  - "Enabled"=dword:00000001
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client]
+  - "DisabledByDefault"=dword:00000000
 
 ### <a name="powershell-script-to-enable-tls-12"></a>PowerShell-Skript zur Aktivierung von TLS 1.2
 Sie können das folgende PowerShell-Skript zum Aktivieren von TLS 1.2 auf Ihrem Azure AD Connect-Server verwenden.
@@ -72,12 +80,20 @@ Sie können das folgende PowerShell-Skript zum Aktivieren von TLS 1.2 auf Ihrem 
 ```
 
 ### <a name="disable-tls-12"></a>Deaktivieren von TLS 1.2
-- [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000000 "SchUseStrongCrypto"=dword:0000000
-- [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000000 "SchUseStrongCrypto"=dword:00000000
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "Enabled"=dword:00000000
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "Enabled"=dword:00000000
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000001 
+- [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions"=dword:00000000
+  - "SchUseStrongCrypto"=dword:0000000
+- [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions"=dword:00000000
+  - "SchUseStrongCrypto"=dword:00000000
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server]
+  - "Enabled"=dword:00000000
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server]
+  - "DisabledByDefault"=dword:00000001
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client]
+  - "Enabled"=dword:00000000
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client]
+  - "DisabledByDefault"=dword:00000001 
 
 ### <a name="powershell-script-to-disable-tls-12"></a>PowerShell-Skript zur Deaktivierung von TLS 1.2
 Sie können das folgende PowerShell-Skript zum Deaktivieren von TLS 1.2 auf Ihrem Azure AD Connect-Server verwenden.

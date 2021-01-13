@@ -1,22 +1,21 @@
 ---
-title: Erhalten einer E-Mail beim Öffnen einer Tür per SendGrid-Dienst und Azure Functions | Microsoft-Dokumentation
+title: Senden einer E-Mail per Azure Functions beim Öffnen einer Tür
 description: Überwachen Sie den Magnetsensor, um zu erkennen, wenn eine Tür geöffnet wird, und verwenden Sie Azure Functions, um eine E-Mail-Benachrichtigung zu senden.
 author: liydu
-manager: jeffya
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: a620b592a33f9de11de53d623d257f203da2157b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3649ac786c07459695a1e6ca6ad52620e23d59f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61370275"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148798"
 ---
-# <a name="door-monitor"></a>Türüberwachung          
+# <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Türüberwachung: Senden einer E-Mail mithilfe von Azure Functions und SendGrid beim Öffnen einer Tür           
 
 Das MXChip IoT DevKit enthält einen integrierten Magnetsensor. In diesem Projekt erkennen Sie das Vorhandensein oder Fehlen eines starken Magnetfelds in der Nähe, das in diesem Fall von einem kleinen Dauermagnet stammt.
 
@@ -66,7 +65,7 @@ Das Formular für die SendGrid-Registrierung wird angezeigt.
 
 Füllen Sie das Registrierungsformular aus:
 
-   * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe zum Hosten des SendGrid-Diensts, oder verwenden Sie eine vorhandene Ressourcengruppe. Siehe [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/manage-resource-groups-portal.md).
+   * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe zum Hosten des SendGrid-Diensts, oder verwenden Sie eine vorhandene Ressourcengruppe. Siehe [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    * **Name**: Der Name für Ihren SendGrid-Dienst. Wählen Sie einen eindeutigen Namen, der sich von Ihren anderen Diensten unterscheidet.
 
@@ -106,7 +105,7 @@ Das Registrierungsformular wird angezeigt.
 
 Füllen Sie die Felder des Registrierungsformulars aus.
 
-   * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe zum Hosten des SendGrid-Diensts, oder verwenden Sie eine vorhandene Ressourcengruppe. Siehe [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/manage-resource-groups-portal.md).
+   * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe zum Hosten des SendGrid-Diensts, oder verwenden Sie eine vorhandene Ressourcengruppe. Siehe [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    * **IoT Hub-Name**: Der Name Ihres IoT-Hubs. Wählen Sie einen eindeutigen Namen, der sich von Ihren anderen Diensten unterscheidet.
 
@@ -172,7 +171,7 @@ Die Verbindungszeichenfolge, die im Schritt [Bereitstellen von Azure-Diensten](#
 
 Anschließend startet VS Code die Überprüfung und den Upload des Arduino-Sketchs in das DevKit.
 
-![device-upload](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
+![Der Screenshot zeigt Visual Studio Code beim Überprüfen und Hochladen des Arduino-Sketches.](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
 
 Das DevKit startet neu und beginnt mit der Ausführung des Codes.
 
@@ -185,7 +184,7 @@ Das Programm wird zum ersten Mal initialisiert, wenn sich das DevKit in der Näh
 
 Nach der Initialisierung wird `Door closed` angezeigt. Wenn sich das Magnetfeld ändert, ändert sich der Status in `Door opened`. Bei jeder Änderung des Türstatus erhalten Sie eine E-Mail-Benachrichtigung. (Es kann bis zu fünf Minuten dauern, bis diese E-Mail-Nachricht eintrifft.)
 
-![Magnet in der Nähe des Sensors: Tür geschlossen](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "Magnet in der Nähe des Sensors: Tür geschlossen")
+![Magnet in der Nähe des Sensors: Tür geschlossen](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "Magnete in der Nähe des Sensors: Tür geschlossen")
 
 ![Magnet nicht in der Nähe des Sensors: Tür geöffnet](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "Magnet nicht in der Nähe des Sensors: Tür geöffnet")
 
@@ -198,7 +197,4 @@ Wenn Probleme auftreten, helfen Ihnen die Informationen in den [häufig gestellt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Es wurde beschrieben, wie Sie ein DevKit-Gerät mit Ihrer Azure IoT-Remoteüberwachungslösung verbinden und den SendGrid-Dienst zum Senden einer E-Mail verwenden. Hier sind die empfohlenen nächsten Schritte aufgeführt:
-
-* [Solution Accelerator für die Azure IoT-Remoteüberwachung: Übersicht](https://docs.microsoft.com/azure/iot-suite/)
-* [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+Es wurde beschrieben, wie Sie ein DevKit-Gerät mit Ihrer Azure IoT-Remoteüberwachungslösung verbinden und den SendGrid-Dienst zum Senden einer E-Mail verwenden. Wir empfehlen, mit dem folgenden Schritt fortzufahren: [Solution Accelerator für die Azure IoT-Remoteüberwachung: Übersicht](/azure/iot-suite/)

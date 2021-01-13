@@ -1,25 +1,25 @@
 ---
-title: 'Zurücksetzen einer fehlerhaften Verbindung: ExpressRoute: PowerShell: Azure | Microsoft-Dokumentation'
+title: 'Zurücksetzen einer fehlerhaften Verbindung: ExpressRoute: Mit PowerShell: Azure | Microsoft-Dokumentation'
 description: In diesem Artikel wird beschrieben, wie Sie eine ExpressRoute-Verbindung zurücksetzen, die sich in einem fehlerhaften Zustand befindet.
 services: expressroute
-author: anzaman
+author: duongau
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/28/2018
-ms.author: anzaman
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: f6fd8e5f0e5730e55fa5bbe13f74be796dd6a4cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7df96f34ee408c0a6d26b27adbac7351c9ab937f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115836"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89393087"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>Zurücksetzen einer fehlerhaften ExpressRoute-Verbindung
 
 Wenn ein Vorgang über eine ExpressRoute-Verbindung nicht erfolgreich abgeschlossen wird, gelangt die Verbindung möglicherweise in einen Fehlerstatus. In diesem Artikel erfahren Sie, wie Sie eine fehlerhafte Azure ExpressRoute-Verbindung zurücksetzen.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 ## <a name="reset-a-circuit"></a>Zurücksetzen einer Verbindung
 

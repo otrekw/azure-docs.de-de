@@ -1,5 +1,5 @@
 ---
-title: Tutorial – Bereitstellen von LAMP auf einem virtuellen Linux-Computer in Azure | Microsoft-Dokumentation
+title: 'Tutorial: Bereitstellen von LAMP auf einem virtuellen Linux-Computer in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie den LAMP-Stack auf einem virtuellen Linux-Computer in Azure installieren.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 66b7d7692d9143c8db813ad135b0b9c70b8869d2
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d0d86e1a9c40eb6860508cf136ab9d466cc28ecd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708584"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88225902"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Tutorial: Installieren eines LAMP-Webservers auf einem virtuellen Linux-Computer in Azure
 
-In diesem Artikel werden Sie durch die Bereitstellung eines Apache-Webservers sowie von MySQL und PHP (LAMP-Stack) auf einem virtuellen Ubuntu-Computer in Azure geführt. Wenn Sie den NGINX-Webserver bevorzugen, finden Sie entsprechende Informationen im Tutorial zum [LEMP-Stack](tutorial-lemp-stack.md). Um den LAMP-Server in Aktion zu sehen, können Sie optional eine WordPress-Website installieren und konfigurieren. In diesem Tutorial lernen Sie Folgendes:
+In diesem Artikel werden Sie durch die Bereitstellung eines Apache-Webservers sowie von MySQL und PHP (LAMP-Stack) auf einem virtuellen Ubuntu-Computer in Azure geführt. Um den LAMP-Server in Aktion zu sehen, können Sie optional eine WordPress-Website installieren und konfigurieren. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines virtuellen Ubuntu-Computers („L“ im LAMP-Stack)
@@ -35,9 +35,9 @@ In diesem Artikel werden Sie durch die Bereitstellung eines Apache-Webservers so
 
 Dieses Setup ist für schnelle Tests oder Proof of Concept gedacht. Weitere Informationen zum LAMP-Stack, einschließlich Empfehlungen für eine Produktionsumgebung, finden Sie in der [Ubuntu-Dokumentation](https://help.ubuntu.com/community/ApacheMySQLPHP).
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Dieses Tutorial verwendet die CLI innerhalb des Diensts [Azure Cloud Shell](../../cloud-shell/overview.md), der ständig auf die neueste Version aktualisiert wird. Wählen Sie zum Öffnen von Cloud Shell oben in einem Codeblock die Option **Ausprobieren** aus.
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 [!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
 
@@ -105,7 +105,7 @@ Wenn Sie weitere Tests durchführen möchten, erstellen Sie schnell eine PHP-Inf
 sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 ```
 
-Nun können Sie die erstellte PHP-Infoseite überprüfen. Öffnen Sie einen Browser, und wechseln Sie zu `http://yourPublicIPAddress/info.php`. Ersetzen Sie die öffentliche IP-Adresse Ihres virtuellen Computers. Die Seite sollte ähnlich wie diese Abbildung aussehen.
+Nun können Sie die erstellte PHP-Infoseite überprüfen. Öffnen Sie einen Browser, und rufen Sie `http://yourPublicIPAddress/info.php` auf. Ersetzen Sie die öffentliche IP-Adresse Ihres virtuellen Computers. Die Seite sollte ähnlich wie diese Abbildung aussehen.
 
 ![PHP-Infoseite][2]
 
@@ -113,7 +113,7 @@ Nun können Sie die erstellte PHP-Infoseite überprüfen. Öffnen Sie einen Brow
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen LAMP-Server in Azure bereitgestellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie einen LAMP-Server in Azure bereitgestellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen eines virtuellen Ubuntu-Computers
@@ -122,10 +122,10 @@ In diesem Tutorial haben Sie einen LAMP-Server in Azure bereitgestellt. Es wurde
 > * Überprüfen der Installation und Konfiguration
 > * Installieren von WordPress auf dem LAMP-Server
 
-Im nächsten Tutorial erfahren Sie, wie Sie Webserver mit SSL-Zertifikaten sichern.
+Im nächsten Tutorial erfahren Sie, wie Sie Webserver mit TLS/SSL-Zertifikaten schützen.
 
 > [!div class="nextstepaction"]
-> [Sichern von Webservern mit SSL](tutorial-secure-web-server.md)
+> [Schützen von Webservern mit TLS](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lamp-stack/apachesuccesspage.png

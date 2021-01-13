@@ -1,20 +1,20 @@
 ---
 title: Tutorial zum Einrichten der Azure Data Box | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Ihre Azure Data Box verkabeln und die Verbindung herstellen.
+description: In diesem Tutorial erfahren Sie, wie Sie Ihr Azure Data Box-Gerät verkabeln, eine Verbindung mit Azure Data Box herstellen und Azure Data Box einschalten.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 528be96f95523089c78562814c292fb0f40849e1
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: ac87d5040cd572635d81be51308f48a57ddd38e3
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70240235"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335467"
 ---
 ::: zone target="docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "70240235"
 
 ::: zone target="chromeless"
 
-# <a name="cable-and-connect-to-your-device"></a>Verkabeln und Herstellen einer Verbindung mit Ihrem Gerät
+## <a name="cable-and-connect-to-your-device"></a>Verkabeln und Herstellen einer Verbindung mit Ihrem Gerät
 
 ::: zone-end
 
@@ -42,18 +42,20 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-1. Sie haben die Schritte unter [Tutorial: Bestellen von Azure Data Box](data-box-deploy-ordered.md) ausgeführt.
-2. Sie haben Ihre Data Box erhalten, und die Bestellung wird im Portal mit dem Status **Übermittelt** angezeigt. 
+1. Sie haben die Bestellung für Azure Data Box aufgegeben.
+    - Weitere Informationen zu Importbestellungen finden Sie unter [Tutorial: Bestellen von Azure Data Box](data-box-deploy-ordered.md).
+    - Weitere Informationen zu Exportbestellungen finden Sie unter [Tutorial: Bestellen von Azure Data Box](data-box-deploy-export-ordered.md).
+1. Sie haben Ihre Data Box erhalten, und die Bestellung wird im Portal mit dem Status **Übermittelt** angezeigt. 
     - Die Klarsichthülle, die am Gerät unter dem eigentlichen Etikett angebracht ist, enthält ein Adressetikett. Bewahren Sie dieses Etikett sicher auf, da Sie es für den Rückversand benötigen.
     - In einigen Regionen in Europa wird das Gerät unter Umständen in einer Kiste ausgeliefert. Packen Sie das Gerät aus, und behalten Sie die Kiste für die Rücksendung.
-3. Sie haben sich mit den [Sicherheitsrichtlinien für die Data Box](data-box-safety.md) vertraut gemacht.
-4. Sie haben ein geerdetes Netzkabel zur Verwendung mit dem 100-TB-Speichergerät erhalten.
-5. Sie haben einen Hostcomputer mit den Daten, die Sie auf die Data Box kopieren möchten. Für Ihren Hostcomputer müssen die folgenden Bedingungen erfüllt sein:
+1. Sie haben sich mit den [Sicherheitsrichtlinien für die Data Box](data-box-safety.md) vertraut gemacht.
+1. Sie haben ein geerdetes Netzkabel zur Verwendung mit dem 100-TB-Speichergerät erhalten.
+1. Sie verfügen über einen Hostcomputer, der zum Kopieren von Daten auf Ihre Data Box (Importauftrag) oder zum Kopieren von Daten von Ihrer Data Box (Exportauftrag) verwendet wird. Für Ihren Hostcomputer müssen die folgenden Bedingungen erfüllt sein:
     - Es muss ein [unterstütztes Betriebssystem](data-box-system-requirements.md) ausgeführt werden.
     - Er muss mit einem Hochgeschwindigkeitsnetzwerk verbunden sein. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, kann eine 1-GbE-Datenverbindung verwendet werden, wodurch aber die Geschwindigkeit der Kopiervorgänge leidet. 
-6. Sie verfügen über eine geeignete ebene Fläche, auf der Sie die Data Box aufstellen können. Wenn Sie das Gerät in einem standardmäßigen Rackregal einbauen möchten, benötigen Sie einen 7HE-Steckplatz in Ihrem Rack im Rechenzentrum. Sie können das Gerät waagerecht oder senkrecht in das Rack einbauen.
-7. Sie haben die folgenden Kabel zur Hand, um Ihre Data Box mit dem Hostcomputer zu verbinden.
-    - Mindestens ein SFP+-Twinax-Kupferkabel oder SFP+-Glasfaserkabel mit 10 GbE (zur Verwendung mit den Netzwerkschnittstellen DATA 1 und DATA 2). Die Data Box verfügt über die Netzwerkschnittstelle „Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Adapters w/ PCI Express 3.0“, sodass mit dieser Schnittstelle kompatible Kabel verwendet werden können. Bei internen Tests wurde beispielsweise ein Kabel vom Typ „CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M“ verwendet. Weitere Informationen finden Sie in der [Liste der unterstützten Kabel und Switches von Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
+1. Sie verfügen über eine geeignete ebene Fläche, auf der Sie die Data Box aufstellen können. Wenn Sie das Gerät in einem standardmäßigen Rackregal einbauen möchten, benötigen Sie einen 7HE-Steckplatz in Ihrem Rack im Rechenzentrum. Sie können das Gerät waagerecht oder senkrecht in das Rack einbauen.
+1. Sie haben die folgenden Kabel zur Hand, um Ihre Data Box mit dem Hostcomputer zu verbinden.
+    - Mindestens ein SFP+-Twinax-Kupferkabel oder SFP+-Glasfaserkabel mit 10 GbE (zur Verwendung mit den Netzwerkschnittstellen DATA 1 und DATA 2). Die Data Box verfügt über die Netzwerkschnittstelle „Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Adapters w/ PCI Express 3.0“, sodass mit dieser Schnittstelle kompatible Kabel verwendet werden können. Bei internen Tests wurde beispielsweise ein Kabel vom Typ „CISCO SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M“ verwendet. Weitere Informationen finden Sie in der [Liste der unterstützten Kabel und Switches von Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Ein Netzwerkkabel des Typs RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle MGMT)
     - Ein Netzwerkkabel des Typs RJ-45 CAT 6A oder RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle DATA 3, die mit 10 GBit/s bzw. 1 GBit/s konfiguriert ist)
 
@@ -117,7 +119,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät über die lokale Webbenutz
 2. Stellen Sie eine Verbindung mit dem MGMT-Port des Geräts her, und greifen Sie über „https\://192.168.100.10“ auf die lokale Webbenutzeroberfläche des Geräts zu. Dies kann nach dem Einschalten des Geräts bis zu 5 Minuten dauern.
 3. Klicken Sie auf **Details** und anschließend auf **Webseite trotzdem laden**.
 
-   ![Herstellen einer Verbindung mit der lokalen Webbenutzeroberfläche](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
+   ![Herstellen einer Verbindung mit der lokalen Webbenutzeroberfläche](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png)
 
 4. Eine Seite **Anmelden** für die lokale Webbenutzeroberfläche wird angezeigt. Stellen Sie sicher, dass die Seriennummer des Geräts in der Benutzeroberfläche des Portals und der lokalen Webbenutzeroberfläche übereinstimmt. Das Gerät ist zu diesem Zeitpunkt gesperrt.
 5. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -127,15 +129,15 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät über die lokale Webbenutz
     
     
 7. Geben Sie das Gerätekennwort an, das Sie im vorherigen Schritt aus dem Azure-Portal kopiert haben, um sich bei der lokalen Webbenutzeroberfläche des Geräts anzumelden. Klicken Sie auf **Anmelden**.
-8. Überprüfen Sie im **Dashboard**, ob die Netzwerkschnittstellen konfiguriert sind. 
+8. Überprüfen Sie im **Dashboard** , ob die Netzwerkschnittstellen konfiguriert sind. 
    - Falls DHCP in Ihrer Umgebung aktiviert ist, werden Netzwerkschnittstellen automatisch konfiguriert. 
-   - Wenn DHCP nicht aktiviert ist, wechseln Sie zu **Netzwerkschnittstellen festlegen**, und weisen Sie ggf. statische IP-Adressen zu.
+   - Wenn DHCP nicht aktiviert ist, wechseln Sie zu **Netzwerkschnittstellen festlegen** , und weisen Sie ggf. statische IP-Adressen zu.
 
      ![Gerätedashboard](media/data-box-deploy-set-up/data-box-dashboard-1.png)
 
 Nach dem Konfigurieren der Datennetzwerkschnittstellen können Sie auch die IP-Adresse einer der Schnittstellen (DATA 1 bis DATA 3) verwenden, um auf die lokale Webbenutzeroberfläche unter `https://<IP address of a data network interface>` zuzugreifen. 
 
-Sobald die Einrichtung des Geräts abgeschlossen ist, können Sie eine Verbindung mit den Gerätefreigaben herstellen und die Daten von Ihrem Computer auf das Gerät kopieren. 
+Sobald die Einrichtung des Geräts abgeschlossen ist, können Sie eine Verbindung mit den Gerätefreigaben herstellen und die Daten kopieren. 
 
 ::: zone-end
 
@@ -161,10 +163,15 @@ In diesem Tutorial haben Sie Informationen zu Azure Data Box-Themen erhalten, da
 > * Verkabeln der Data Box
 > * Herstellen einer Verbindung mit der Data Box
 
-Im nächsten Tutorial erfahren Sie, wie Sie Daten auf Ihre Data Box kopieren.
+Im nächsten Tutorial erfahren Sie, wie Sie Daten kopieren:
 
 > [!div class="nextstepaction"]
-> [Kopieren der Daten auf die Azure Data Box](./data-box-deploy-copy-data.md)
+> [Tutorial: Kopieren von Daten in eine Azure Data Box über SMB](./data-box-deploy-copy-data.md)
+
+oder
+
+> [!div class="nextstepaction"]
+> [Tutorial: Kopieren von Daten aus Azure Data Box über SMB (Vorschau)](./data-box-deploy-export-copy-data.md)
 
 ::: zone-end
 

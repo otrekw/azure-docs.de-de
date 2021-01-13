@@ -1,6 +1,6 @@
 ---
-title: Azure-VMware-Lösung von CloudSimple – Firewalltabellen
-description: Erfahren Sie mehr über Firewalltabellen und Firewallregeln einer privaten CloudSimple-Cloud.
+title: Azure VMware Solution by CloudSimple – Firewalltabellen
+description: Hier erfahren Sie mehr über Firewalltabellen und Firewallregeln einer privaten CloudSimple-Cloud, u a. über Standardregeln, die für jede Firewalltabelle erstellt werden.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 89bef6cef48f2b972aa3f931008b0db84431b832
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8c44c39f66a0a0161eea8a7e9656bbe0e3d1015c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877713"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88140869"
 ---
 # <a name="firewall-tables-overview"></a>Übersicht über Firewalltabellen
 
@@ -31,7 +31,7 @@ In der folgenden Tabelle sind die Parameter beschrieben, die es in einer Firewal
 | **Protokoll** | Zu den Optionen gehören „Any“ (Beliebig), „TCP“ und „UDP“. Wenn Sie ICMP benötigen, verwenden Sie „Any“. |
 | **Richtung** | Gibt an, ob die Regel für ein- oder ausgehenden Datenverkehr gilt. |
 | **Aktion** | Zulassen oder ablehnen für den Typ von Datenverkehr, der in der Regel definiert ist. |
-| **Quelle** | Eine IP-Adresse, ein CIDR-Block (Classless Inter-Domain Routing, z. B. 10.0.0.0/24) oder „Alle“.  Durch das Angeben eines Bereichs, eines Diensttags oder einer Anwendungssicherheitsgruppe haben Sie die Möglichkeit, weniger Sicherheitsregeln zu erstellen. |
+| **Quelle** | Eine IP-Adresse, ein CIDR-Block (Classless Inter-Domain Routing, z. B. 10.0.0.0/24) oder „Any“.  Durch das Angeben eines Bereichs, eines Diensttags oder einer Anwendungssicherheitsgruppe haben Sie die Möglichkeit, weniger Sicherheitsregeln zu erstellen. |
 | **Quellport** | Port, von dem der Netzwerkdatenverkehr stammt.  Sie können einen einzelnen Port oder einen Portbereich, etwa 443 oder 8000-8080, angeben. Das Angeben von Bereichen ermöglicht Ihnen die Erstellung von weniger Sicherheitsregeln. |
 | **Ziel** | Eine IP-Adresse, ein CIDR-Block (Classless Inter-Domain Routing, z. B. 10.0.0.0/24) oder „Any“.  Durch das Angeben eines Bereichs, eines Diensttags oder einer Anwendungssicherheitsgruppe haben Sie die Möglichkeit, weniger Sicherheitsregeln zu erstellen.  |
 | **Zielport** | Der Port, an den der Netzwerkdatenverkehr gesendet wird.  Sie können einen einzelnen Port oder einen Portbereich, etwa 443 oder 8000-8080, angeben. Das Angeben von Bereichen ermöglicht Ihnen die Erstellung von weniger Sicherheitsregeln.|
@@ -53,12 +53,12 @@ Möglicherweise sind weitere Regeln für Datenverkehr in umgekehrter Richtung er
 
 Die folgenden Standardregeln werden in jeder Firewalltabelle erstellt.
 
-|Priority|NAME|Zustandsnachverfolgung|Direction|Datenverkehrstyp|Protocol|`Source`|Quellport|Ziel|Zielport|Aktion|
+|Priority|Name|Zustandsnachverfolgung|Direction|Datenverkehrstyp|Protocol|`Source`|Quellport|Destination|Zielport|Action|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
-|65000|allow-all-to-internet|Zustandsbehaftet|Ausgehend|Öffentliche IP-Adresse oder Internetdatenverkehr|Alle|Any|Any|Any|Any|ZULASSEN|
-|65001|deny-all-from-internet|Zustandsbehaftet|Eingehend|Öffentliche IP-Adresse oder Internetdatenverkehr|Alle|Any|Any|Any|Any|Verweigern|
-|65002|allow-all-to-intranet|Zustandslos|Ausgehend|Datenverkehr in privater Cloud oder VPN-Datenverkehr|Alle|Any|Any|Any|Any|ZULASSEN|
-|65003|allow-all-from-intranet|Zustandslos|Eingehend|Datenverkehr in privater Cloud oder VPN-Datenverkehr|Alle|Any|Any|Any|Any|ZULASSEN|
+|65000|allow-all-to-internet|Zustandsbehaftet|Ausgehend|Öffentliche IP-Adresse oder Internetdatenverkehr|All|Any|Any|Any|Any|Allow|
+|65001|deny-all-from-internet|Zustandsbehaftet|Eingehend|Öffentliche IP-Adresse oder Internetdatenverkehr|All|Any|Any|Any|Any|Verweigern|
+|65002|allow-all-to-intranet|Zustandslos|Ausgehend|Datenverkehr in privater Cloud oder VPN-Datenverkehr|All|Any|Any|Any|Any|Allow|
+|65003|allow-all-from-intranet|Zustandslos|Eingehend|Datenverkehr in privater Cloud oder VPN-Datenverkehr|All|Any|Any|Any|Any|Allow|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

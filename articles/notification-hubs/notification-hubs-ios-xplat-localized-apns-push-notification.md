@@ -1,5 +1,5 @@
 ---
-title: Senden von lokalisierten Benachrichtigungen an iOS-Geräte mit Azure Notification Hubs | Microsoft-Dokumentation
+title: Senden von lokalisierten Pushbenachrichtigungen an iOS mit Azure Notification Hubs | Microsoft-Dokumentation
 description: Informationen zum Senden von lokalisierten Benachrichtigungen an iOS-Geräte mit Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: ios
@@ -16,14 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8eb4cf5e12c16c3c164ecce41a84a9cd32fd85ee
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: a78d3a76e2b13a120e9e744e181c95bfcb330f27
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211897"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313908"
 ---
-# <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Tutorial: Senden von lokalisierten Benachrichtigungen an iOS-Geräte mit Azure Notification Hubs
+# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>Tutorial: Senden von lokalisierten Pushbenachrichtigungen an iOS mit Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -273,7 +273,7 @@ In diesem Tutorial haben Sie lokalisierte Benachrichtigungen an iOS-Geräte gese
 [14]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized2.png
 
 <!-- URLs. -->
-[How To: Service Bus Notification Hubs (iOS Apps)]: https://msdn.microsoft.com/library/jj927168.aspx
+[How To: Service Bus Notification Hubs (iOS Apps)]: /previous-versions/azure/reference/dn223264(v=azure.100)
 [Verwenden von Benachrichtigungshubs zum Übermitteln von Nachrichten]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs: ASP.NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
@@ -289,6 +289,6 @@ In diesem Tutorial haben Sie lokalisierte Benachrichtigungen an iOS-Geräte gese
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
 [JavaScript and HTML]: ../get-started-with-push-js.md
 [Windows Developer Preview registration steps for Mobile Services]: ../mobile-services-windows-developer-preview-registration.md
-[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
+[wns object]: /previous-versions/azure/reference/jj860484(v=azure.100)
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for iOS]: /previous-versions/azure/reference/dn223264(v=azure.100)

@@ -1,23 +1,22 @@
 ---
-title: Bereitstellen von Azure Log Analytics Nozzle zur Überwachung von Cloud Foundry | Microsoft-Dokumentation
+title: Bereitstellen von Azure Log Analytics Nozzle zur Überwachung von Cloud Foundry
 description: Enthält eine Schritt-für-Schritt-Anleitung zur Bereitstellung von Cloud Foundry Loggregator Nozzle für Azure Log Analytics. Verwenden Sie Nozzle zum Überwachen der Systemintegrität und Leistungsmetriken von Cloud Foundry.
 services: virtual-machines-linux
 author: ningk
-manager: jeconnoc
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: azure-monitor
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 6220aebdef6970f3d5f7017e4ae48f6f409ae0ce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199396"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021587"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Bereitstellen von Azure Log Analytics Nozzle zur Überwachung des Cloud Foundry-Systems
 
@@ -68,7 +67,7 @@ Sie können den Log Analytics-Arbeitsbereich manuell oder mit einer Vorlage erst
    * **Standort**: Geben Sie den Standort ein.
    * **Tarif:** Wählen Sie **OK** aus, um den Vorgang abzuschließen.
 
-Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokollen](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
+Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokolle](../azure-monitor/overview.md).
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Gehen Sie wie folgt vor, um den Log Analytics-Arbeitsbereich über die Überwachungsvorlage aus dem Azure Marketplace zu erstellen:
 
@@ -192,7 +191,7 @@ Sie können diese Ansichten über den **Ansicht-Designer** anpassen oder neue An
 
 ### <a name="2-create-alert-rules"></a>2. Erstellen von Warnungsregeln
 
-Sie können [die Warnungen erstellen](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts) und die Abfragen und Schwellenwerte nach Bedarf anpassen. Hier sind empfohlene Warnungen angegeben:
+Sie können [die Warnungen erstellen](../azure-monitor/platform/alerts-overview.md) und die Abfragen und Schwellenwerte nach Bedarf anpassen. Hier sind empfohlene Warnungen angegeben:
 
 | Suchabfrage                                                                  | Warnung generieren basierend auf | BESCHREIBUNG                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
@@ -213,12 +212,12 @@ Sie können die Nozzle-Komponente und den Loggregator skalieren.
 
 Sie sollten mindestens mit zwei Instanzen der Nozzle-Komponente beginnen. Die Firehose-Komponente verteilt die Workload auf alle Instanzen der Nozzle-Komponente.
 Richten Sie die Warnung **slowConsumerAlert** (im vorherigen Abschnitt „Erstellen von Warnungsregeln“ aufgeführt) ein, um sicherzustellen, dass die Nozzle-Komponente den Datenverkehr von der Firehose-Komponente bewältigen kann. Befolgen Sie nach Erhalt der Warnung den [Leitfaden für eine langsame Nozzle-Komponente](https://docs.pivotal.io/pivotalcf/1-11/loggregator/log-ops-guide.html#slow-noz), um zu ermitteln, ob eine Skalierung erforderlich ist.
-Verwenden Sie zum Skalieren der Nozzle-Komponente entweder Apps Manager oder die CF-Befehlszeilenschnittstelle, um die Instanzanzahl oder die Arbeitsspeicher- bzw. Datenträgerressourcen für die Nozzle-Komponente zu erhöhen.
+Verwenden Sie zum Hochskalieren der Nozzle-Komponente entweder Apps Manager oder die CF-Befehlszeilenschnittstelle, um die Instanzanzahl oder die Arbeitsspeicher- bzw. Datenträgerressourcen für die Nozzle-Komponente zu erhöhen.
 
 ### <a name="scale-the-loggregator"></a>Skalieren von Loggregator
 
 Loggregator sendet eine Protokollmeldung **LGR**, um auf Probleme mit dem Protokollierungsprozess hinzuweisen. Sie können die Warnung überwachen, um zu ermitteln, ob Loggregator zentral hochskaliert werden muss.
-Erhöhen Sie zum zentralen Hochskalieren von Loggregator entweder die Doppler-Puffergröße, oder fügen Sie im CF-Manifest zusätzliche Doppler-Serverinstanzen hinzu. Weitere Informationen finden Sie im [Leitfaden zum Skalieren von Loggregator](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
+Erhöhen Sie zum Hochskalieren von Loggregator entweder die Doppler-Puffergröße, oder fügen Sie im CF-Manifest zusätzliche Doppler-Serverinstanzen hinzu. Weitere Informationen finden Sie im [Leitfaden zum Skalieren von Loggregator](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
 
 ## <a name="update"></a>Aktualisieren
 

@@ -1,21 +1,15 @@
 ---
-title: Problembehandlung bei Azure Blockchain Workbench (Vorschauversion)
+title: Problembehandlung bei Azure Blockchain Workbench
 description: So behandeln Sie Probleme mit einer Azure Blockchain Workbench-Anwendung (Vorschauversion).
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 09/05/2019
-ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: 8fec065b629f2f2b93e78a63521ea0ce4669dd4e
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 10/14/2019
+ms.topic: troubleshooting
+ms.reviewer: brendal
+ms.openlocfilehash: 20c0f9bdd6f820a73b1ba6660de805268c0d8714
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844020"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85212852"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Problembehandlung bei Azure Blockchain Workbench (Vorschauversion)
 
@@ -38,7 +32,7 @@ Das PowerShell-Skript für die Problembehandlung ist auf GitHub verfügbar. [Lad
 git clone https://github.com/Azure-Samples/blockchain.git
 ```
 
-## <a name="run-the-script"></a>Ausführen des Skripts
+## <a name="run-the-script"></a>Führen Sie das Skript aus.
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
 Führen Sie das `collectBlockchainWorkbenchTroubleshooting.ps1`-Skript aus, um Protokolle zu sammeln und eine ZIP-Datei zu erstellen, die einen Ordner mit Informationen zur Problembehebung enthält. Beispiel:
@@ -48,7 +42,7 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 ```
 Das Skript akzeptiert die folgenden Parameter:
 
-| Parameter  | BESCHREIBUNG | Erforderlich |
+| Parameter  | Beschreibung | Erforderlich |
 |---------|---------|----|
 | SubscriptionID | SubscriptionID zum Erstellen oder Suchen aller Ressourcen. | Ja |
 | ResourceGroupName | Name der Azure-Ressourcengruppe, in der Blockchain Workbench bereitgestellt wurde. | Ja |

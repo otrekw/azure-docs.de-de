@@ -1,27 +1,21 @@
 ---
-title: Exportieren einer in Azure gehosteten API nach PowerApps und Microsoft Flow | Microsoft-Dokumentation
+title: Exportieren einer in Azure gehosteten API nach PowerApps und Microsoft Flow
 description: Übersicht über das Verfügbarmachen einer in App Service gehosteten API für PowerApps und Microsoft Flow
-services: app-service
-author: ggailey777
-manager: jeconnoc
-ms.assetid: ''
-ms.service: app-service
 ms.topic: conceptual
-ms.date: 12/15/2017
-ms.author: glenga
+ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 2ed154d15176ed6706a69f0a6be4c60159d478c2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 359f19598d5f1dff6cda4b303d33ed721ed72d97
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087695"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054796"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Exportieren einer in Azure gehosteten API nach PowerApps und Microsoft Flow
 
-[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) ist ein Dienst zum Erstellen und Verwenden benutzerdefinierter Branchen-Apps, die eine Verbindung mit Ihren Daten herstellen und plattformübergreifend verwendet werden können. [Microsoft Flow](https://flow.microsoft.com/guided-learning/learning-introducing-flow/) ermöglicht die problemlose Automatisierung von Workflows und Geschäftsprozessen zwischen Ihren bevorzugten Apps und Diensten. Sowohl PowerApps als auch Microsoft Flow verfügt über verschiedene integrierte Connectors für Datenquellen wie Office 365, Dynamics 365 und Salesforce. In einigen Fällen sollten App- und Flow-Generatoren auch mit den von ihrer Organisation erstellten Datenquellen und APIs verbunden werden.
+[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) ist ein Dienst zum Erstellen und Verwenden benutzerdefinierter Branchen-Apps, die eine Verbindung mit Ihren Daten herstellen und plattformübergreifend verwendet werden können. [Power Automate](/learn/modules/get-started-with-flow/index) ermöglicht die problemlose Automatisierung von Workflows und Geschäftsprozessen zwischen Ihren bevorzugten Apps und Diensten. Sowohl PowerApps als auch Microsoft Flow verfügt über verschiedene integrierte Connectors für Datenquellen wie Office 365, Dynamics 365 und Salesforce. In einigen Fällen sollten App- und Flow-Generatoren auch mit den von ihrer Organisation erstellten Datenquellen und APIs verbunden werden.
 
-Analog dazu können Entwickler, die eine umfassendere Bereitstellung ihrer APIs in einer Organisation anstreben, ihre APIs für App- und Flow-Generatoren verfügbar machen. In diesem Thema wird beschrieben, wie eine in [Azure Functions](../azure-functions/functions-overview.md) oder [Azure App Service](../app-service/overview.md) integrierte API exportiert wird. Die exportierte API dient als *benutzerdefinierter Connector*, der wie ein integrierter Connector in PowerApps und Microsoft Flow verwendet wird.
+Analog dazu können Entwickler, die eine umfassendere Bereitstellung ihrer APIs in einer Organisation anstreben, ihre APIs für App- und Flow-Generatoren verfügbar machen. In diesem Artikel wird beschrieben, wie eine in [Azure Functions](../azure-functions/functions-overview.md) oder [Azure App Service](../app-service/overview.md) integrierte API exportiert wird. Die exportierte API dient als *benutzerdefinierter Connector*, der wie ein integrierter Connector in PowerApps und Microsoft Flow verwendet wird.
 
 > [!IMPORTANT]
 > Die in diesem Artikel gezeigte API-Definitionsfunktionalität wird nur für [Version 1. x der Azure Functions Runtime](functions-versions.md#creating-1x-apps) und für App Services-Apps unterstützt. Version 2. x der Funktionen ist in API Management integriert, um OpenAPI-Definitionen zu erstellen und zu verwalten. Weitere Informationen finden Sie unter [Erstellen einer OpenAPI-Definition für eine Funktion mithilfe von Azure API Management](functions-openapi-definition.md). 
@@ -30,19 +24,15 @@ Analog dazu können Entwickler, die eine umfassendere Bereitstellung ihrer APIs 
 Vor dem Exportieren einer API müssen Sie die API mithilfe einer OpenAPI-Definition (ehemals als [Swagger](https://swagger.io/)-Datei bezeichnet) beschreiben. Diese Definition enthält Informationen zu den in einer API verfügbaren Vorgängen sowie zur Strukturierung der Anforderungs- und Antwortdaten für die API. PowerApps und Microsoft Flow können benutzerdefinierte Connectors für jede beliebige OpenAPI 2.0-Definition erstellen. In Azure Functions und Azure App Service ist die Unterstützung für das Erstellen, Hosten und Verwalten von OpenAPI-Definitionen bereits integriert. Weitere Informationen finden Sie unter [Hosten einer RESTful-API mit CORS in Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).
 
 > [!NOTE]
-> Sie können auch benutzerdefinierte Connectors in der Benutzeroberfläche von PowerApps und Microsoft Flow erstellen, ohne eine OpenAPI-Definition zu verwenden. Weitere Informationen finden Sie unter [Registrieren und Verwenden von benutzerdefinierten Connectors (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) und [Registrieren und Verwenden von benutzerdefinierten Connectors (Microsoft Flow)](https://flow.microsoft.com/documentation/register-custom-api/).
+> Sie können auch benutzerdefinierte Connectors in der Benutzeroberfläche von PowerApps und Microsoft Flow erstellen, ohne eine OpenAPI-Definition zu verwenden. Weitere Informationen finden Sie unter [Registrieren und Verwenden von benutzerdefinierten Connectors (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) und [Registrieren und Verwenden von benutzerdefinierten Connectors (Microsoft Flow)](/power-automate/developer/register-custom-api).
 
 Um die API-Definition zu exportieren, gehen Sie folgendermaßen vor:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Azure Functions- oder einer anderen App Service-Anwendung.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Funktions-App oder einer App Service-Anwendung.
 
-    Wenn Sie Azure Functions verwenden, wählen Sie Ihre Funktionen-App aus, und klicken Sie dann auf **Plattformfeatures** und **API-Definition**.
+    Wählen Sie im Menü auf der linken Seite unter **API** den Eintrag **API-Definition**aus.
 
-    ![API-Definition von Azure Functions](media/app-service-export-api-to-powerapps-and-flow/api-definition-function.png)
-
-    Wählen Sie bei Verwendung von Azure App Service in der Liste mit den Einstellungen die Option **API-Definition** aus.
-
-    ![API-Definition von App Service](media/app-service-export-api-to-powerapps-and-flow/api-definition-app.png)
+    :::image type="content" source="media/app-service-export-api-to-powerapps-and-flow/api-definition-function.png" alt-text="API-Definition von Azure Functions":::
 
 2. Die Schaltfläche **Nach PowerApps + Microsoft Flow exportieren** sollte verfügbar sein (wenn dies nicht der Fall ist, müssen Sie zunächst eine OpenAPI-Definition erstellen). Klicken Sie auf diese Schaltfläche, um den Exportvorgang zu starten.
 
@@ -50,9 +40,9 @@ Um die API-Definition zu exportieren, gehen Sie folgendermaßen vor:
 
 3. Wählen Sie den **Exportmodus** aus:
 
-    Mit **Express** können Sie innerhalb des Azure-Portals den benutzerdefinierten Connector erstellen. Hierfür müssen Sie bei PowerApps oder Microsoft Flow angemeldet sein und über die Berechtigung zum Erstellen von Connectors in der Zielumgebung verfügen. Dies ist die empfohlene Vorgehensweise, wenn diese beiden Anforderungen erfüllt werden können. Wenn Sie diesen Modus verwenden, befolgen Sie die unten stehenden Anweisungen unter [Verwenden des Expressexports](#express).
+    Mit **Express** können Sie innerhalb des Azure-Portals den benutzerdefinierten Connector erstellen. Hierfür müssen Sie bei PowerApps oder Microsoft Flow angemeldet sein und über die Berechtigung zum Erstellen von Connectors in der Zielumgebung verfügen. Diese Vorgehensweise wird empfohlen, wenn diese beiden Anforderungen erfüllt werden können. Wenn Sie diesen Modus verwenden, befolgen Sie die unten stehenden Anweisungen unter [Verwenden des Expressexports](#express).
 
-    Über die Option **Manuell** können Sie die API-Definition exportieren, die Sie anschließend über die Portale PowerApps oder Microsoft Flow importieren. Dies ist die empfohlene Vorgehensweise, wenn der Azure-Benutzer und der Benutzer mit der Berechtigung zum Erstellen von Connectors nicht dieselbe Person sind oder der Connector in einem anderen Azure-Mandanten erstellt werden muss. Wenn Sie diesen Modus verwenden, befolgen Sie die unten stehenden Anweisungen unter [Verwenden des manuellen Exports](#manual).
+    Über die Option **Manuell** können Sie die API-Definition exportieren, die Sie anschließend über die Portale PowerApps oder Microsoft Flow importieren. Diese Vorgehensweise wird empfohlen, wenn der Azure-Benutzer und der Benutzer mit der Berechtigung zum Erstellen von Connectors nicht dieselbe Person sind oder der Connector in einem anderen Azure-Mandanten erstellt werden muss. Wenn Sie diesen Modus verwenden, befolgen Sie die unten stehenden Anweisungen unter [Verwenden des manuellen Exports](#manual).
 
     ![Exportmodus](media/app-service-export-api-to-powerapps-and-flow/export-mode.png)
 
@@ -87,7 +77,7 @@ Um den Export im **manuellen** Modus durchzuführen, gehen Sie folgendermaßen v
  
     ![Manueller Export nach PowerApps und Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-manual.png)
  
-2. Falls Ihre API-Definition Sicherheitsdefinitionen enthält, werden diese in Schritt 2 angegeben. Während des Imports werden sie von PowerApps und Microsoft Flow erkannt, und Sie werden zur Angabe von Sicherheitsinformationen aufgefordert. Erfassen Sie die Anmeldeinformationen für die einzelnen Definitionen, um sie im nächsten Abschnitt verwenden zu können. Weitere Informationen finden Sie weiter unten unter [Angeben eines Authentifizierungstyps](#auth).
+2. Falls Ihre API-Definition Sicherheitsdefinitionen enthält, werden diese Definitionen in Schritt 2 angegeben. Während des Imports werden diese Definitionen von PowerApps und Microsoft Flow erkannt, und Sie werden zur Angabe von Sicherheitsinformationen aufgefordert. Erfassen Sie die Anmeldeinformationen für die einzelnen Definitionen, um sie im nächsten Abschnitt verwenden zu können. Weitere Informationen finden Sie weiter unten unter [Angeben eines Authentifizierungstyps](#auth).
 
     ![Sicherheit beim manuellen Export](media/app-service-export-api-to-powerapps-and-flow/export-manual-security.png)
 
@@ -127,7 +117,7 @@ Um die API-Definition in PowerApps und Microsoft Flow zu importieren, gehen Sie 
 
 7. Klicken Sie am oberen Rand der Seite auf **Connector erstellen**.
 
-Nun können Sie eine Verbindung mit dem benutzerdefinierten Connector in PowerApps und Microsoft Flow herstellen. Weitere Informationen zum Erstellen von Connectors in den Portalen PowerApps und Microsoft Flow finden Sie unter [Registrieren des benutzerdefinierten Connectors (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) und [Registrieren des benutzerdefinierten Connectors (Microsoft Flow)](https://flow.microsoft.com/documentation/register-custom-api/#register-your-custom-connector).
+Nun können Sie eine Verbindung mit dem benutzerdefinierten Connector in PowerApps und Microsoft Flow herstellen. Weitere Informationen zum Erstellen von Connectors in den Portalen PowerApps und Microsoft Flow finden Sie unter [Registrieren des benutzerdefinierten Connectors (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) und [Registrieren des benutzerdefinierten Connectors (Microsoft Flow)](/power-automate/get-started-flow-dev#create-a-custom-connector).
 
 <a name="auth"></a>
 ## <a name="specify-authentication-type"></a>Angeben des Authentifizierungstyps
@@ -156,22 +146,22 @@ Für die Verwendung von Azure AD benötigen Sie zwei Azure AD-Anwendungsregistri
 
 - Verwenden Sie zum Konfigurieren der Registrierung für die API die Funktion [App Service-Authentifizierung/-Autorisierung](../app-service/configure-authentication-provider-aad.md).
 
-- Um die Registrierung für den Connector zu konfigurieren, befolgen Sie die Schritte unter [Hinzufügen einer Anwendung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Für die Registrierung muss ein delegierter Zugriff auf Ihre API und die Antwort-URL `https://msmanaged-na.consent.azure-apim.net/redirect` vorhanden sein. 
+- Um die Registrierung für den Connector zu konfigurieren, befolgen Sie die Schritte unter [Hinzufügen einer Anwendung](../active-directory/develop/quickstart-register-app.md). Für die Registrierung muss ein delegierter Zugriff auf Ihre API und die Antwort-URL `https://msmanaged-na.consent.azure-apim.net/redirect` vorhanden sein. 
 
-Weitere Informationen finden Sie in den Azure AD-Registrierungsbeispielen für [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) und [Microsoft Flow](https://flow.microsoft.com/documentation/customapi-azure-resource-manager-tutorial/). In diesen Beispielen wird Azure Resource Manager als API verwendet. Ersetzen Sie sie bei der Durchführung der Schritte durch Ihre API.
+Weitere Informationen finden Sie in den Azure AD-Registrierungsbeispielen für [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) und [Microsoft Flow](/connectors/custom-connectors/azure-active-directory-authentication). In diesen Beispielen wird Azure Resource Manager als API verwendet. Ersetzen Sie sie bei der Durchführung der Schritte durch Ihre API.
 
 Die folgenden Konfigurationswerte sind erforderlich:
 - **Client-ID** – Die Client-ID der Azure AD-Registrierung Ihres Connectors
 - **Geheimer Clientschlüssel** – Der geheime Clientschlüssel der Azure AD-Registrierung Ihres Connectors
-- **Anmelde-URL** – Die Basis-URL für Azure AD. In Azure lautet diese in der Regel `https://login.windows.net`.
-- **Mandanten-ID** – Die für die Anmeldung verwendete ID des Mandanten. Diese sollte allgemein oder die ID des Mandanten sein, in dem der Connector erstellt wird.
+- **Anmelde-URL** – Die Basis-URL für Azure AD. In Azure ist dies in der Regel `https://login.windows.net`.
+- **Mandanten-ID** – Die für die Anmeldung verwendete ID des Mandanten. Diese ID sollte „allgemein“ oder die ID des Mandanten sein, in dem der Connector erstellt wird.
 - **Ressourcen-URL** – Die Ressourcen-URL der Azure AD-Registrierung Ihrer API
 
 > [!IMPORTANT]
 > Falls die API-Definition im Rahmen des manuellen Flusses von einer anderen Person in PowerApps und Microsoft Flow importiert wird, stellen Sie ihr die Client-ID und den geheimen Clientschlüssel der *Connectorregistrierung* sowie die Ressourcen-URL Ihrer API bereit. Achten Sie auf eine sichere Verwaltung dieser Geheimnisse. **Geben Sie die Sicherheitsanmeldeinformationen der API nicht weiter.**
 
 ### <a name="generic-oauth-20"></a>Generisches OAuth 2.0
-Wenn Sie das generische OAuth 2.0-Protokoll verwenden, können Sie Integrationen in einen beliebigen OAuth 2.0-Anbieter durchführen. So können Sie auch mit benutzerdefinierten Anbietern arbeiten, die nicht nativ unterstützt werden.
+Wenn Sie das generische OAuth 2.0-Protokoll verwenden, können Sie Integrationen in einen beliebigen OAuth 2.0-Anbieter durchführen. Auf diese Weise können Sie auch mit benutzerdefinierten Anbietern arbeiten, die nicht nativ unterstützt werden.
 
 Die folgenden Konfigurationswerte sind erforderlich:
 - **Client-ID** – Client-ID von OAuth 2.0
@@ -179,5 +169,3 @@ Die folgenden Konfigurationswerte sind erforderlich:
 - **Autorisierungs-URL** – Die OAuth 2.0-Autorisierungs-URL
 - **Token-URL** – Die OAuth 2.0-Token-URL
 - **Aktualisierungs-URL** – Die OAuth 2.0-Aktualisierungs-URL
-
-

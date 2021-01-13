@@ -1,25 +1,22 @@
 ---
-title: Azure Event Grid-Ereignisschema für Azure SignalR
+title: Azure SignalR als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für SignalR-Ereignisse bereitgestellt werden
-services: event-grid
-author: chenyl
-ms.service: event-grid
-ms.topic: reference
-ms.date: 06/11/2019
-ms.author: chenyl
-ms.openlocfilehash: 3b072ff2b680ad6d144c7441190ab2df9870f5d0
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.topic: conceptual
+ms.date: 07/07/2020
+ms.openlocfilehash: 2ac391f366c4b9a82741a1b6b3135f5d7b5fe331
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788513"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86106650"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>Azure Event Grid-Ereignisschema für SignalR
 
-In diesem Artikel werden die Eigenschaften und das Schema für SignalR-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
+In diesem Artikel werden die Eigenschaften und das Schema für SignalR-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md). Außerdem erhalten Sie eine Liste mit Schnellstarts und Tutorials, die Azure SignalR als Ereignisquelle verwenden.
 
+## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
 
-## <a name="available-event-types"></a>Verfügbare Ereignistypen
+### <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 SignalR Service gibt die folgenden Ereignistypen aus:
 
@@ -28,7 +25,7 @@ SignalR Service gibt die folgenden Ereignistypen aus:
 | Microsoft.SignalRService.ClientConnectionConnected | Wird ausgelöst, wenn eine Clientverbindung verbunden wird. |
 | Microsoft.SignalRService.ClientConnectionDisconnected | Wird ausgelöst, wenn eine Clientverbindung getrennt wird. |
 
-## <a name="example-event"></a>Beispielereignis
+### <a name="example-event"></a>Beispielereignis
 
 Das folgende Beispiel zeigt das Schema eines Ereignisses vom Typ „Clientverbindung verbunden“: 
 
@@ -71,30 +68,36 @@ Das Schema für ein Ereignis vom Typ „Clientverbindung getrennt“ ist ähnlic
 }]
 ```
 
-## <a name="event-properties"></a>Ereigniseigenschaften
+### <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | string | Eindeutiger Bezeichner für das Ereignis. |
-| data | object | SignalR Service-Ereignisdaten. |
-| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| data | Objekt (object) | SignalR Service-Ereignisdaten. |
+| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | timestamp | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
 | hubName | Zeichenfolge | Der Hub, zu dem die Clientverbindung gehört. |
 | connectionId | Zeichenfolge | Der eindeutige Bezeichner für die Clientverbindung. |
 | userId | Zeichenfolge | Der im Anspruch definierte Benutzerbezeichner. |
 | errorMessage | Zeichenfolge | Der Fehler, der bewirkt, dass die Verbindung getrennt wird. |
+
+## <a name="tutorials-and-how-tos"></a>Tutorials und Vorgehensweisen
+|Titel | BESCHREIBUNG |
+|---------|---------|
+| [Reagieren auf Azure SignalR Service-Ereignisse](../azure-signalr/signalr-concept-event-grid-integration.md) | Übersicht über die Integration von Azure SignalR Service in Event Grid. |
+| [Senden von Ereignissen von Azure SignalR Service an Event Grid](../azure-signalr/signalr-howto-event-grid-integration.md) | Hier wird gezeigt, wie Sie Azure SignalR Service-Ereignisse über Event Grid an eine Anwendung senden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

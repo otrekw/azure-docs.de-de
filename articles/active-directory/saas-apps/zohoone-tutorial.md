@@ -1,28 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Zoho One | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in Zoho One| Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Zoho One konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: bbc3038c-0d8b-45dd-9645-368bd3d01a0f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0a37789e7c7efeb71770ff0e8061d57e6603b6c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 98c9012969051e4370239a0f4098e0ea1d7a55a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086230"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348312"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Tutorial: Azure Active Directory-Integration mit Zoho One
+# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Tutorial: Azure Active Directory-Integration in Zoho One
 
 In diesem Tutorial erfahren Sie, wie Sie Zoho One in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Zoho One in Azure AD bietet die folgenden Vorteile:
@@ -31,7 +27,7 @@ Die Integration von Zoho One in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Zoho One anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -103,14 +99,14 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Zoho One
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Zoho One](common/idp-relay.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners und einer Antwort-URL sowie zum Klicken auf „Speichern“](common/idp-relay.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL ein: `one.zoho.com`
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://accounts.zoho.com/samlresponse/<saml-identifier>`
 
     > [!NOTE]
-    > Der vorherige Wert für die **Antwort-URL** entspricht nicht dem tatsächlichen Wert. Sie erhalten den `<saml-identifier>`-Wert in Schritt 4 des Abschnitts **Konfigurieren des einmaligen Anmeldens für Zoho One** später in diesem Tutorial.
+    > Der vorherige Wert für die **Antwort-URL** entspricht nicht dem tatsächlichen Wert. Den Wert `<saml-identifier>` erhalten Sie in Schritt 4 des Abschnitts **Konfigurieren des einmaligen Anmeldens für Zoho One**. Dies wird weiter unten in diesem Tutorial beschrieben.
 
     c. Klicken Sie auf **Zusätzliche URLs festlegen**.
 
@@ -118,8 +114,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Zoho One
 
 5. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten, führen Sie die folgenden Schritte durch:
 
-
-    ![SSO-Informationen zur Domäne und zu den URLs für Zoho One](common/both-signonurl.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/both-signonurl.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com` 
 
@@ -201,7 +196,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -258,13 +253,12 @@ Damit sich Azure AD-Benutzer bei Zoho One anmelden können, müssen sie in Zoho 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Zoho One“ klicken, sollten Sie automatisch bei Ihrer Zoho One-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Zoho One“ klicken, sollten Sie automatisch bei Ihrer Zoho One-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

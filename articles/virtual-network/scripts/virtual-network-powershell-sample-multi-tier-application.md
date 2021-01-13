@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Erstellen eines Netzwerks für Anwendungen mit mehreren Ebenen | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Erstellen eines virtuellen Netzwerks für Anwendungen mit mehreren Ebenen.
+title: 'Erstellen eines VNET für Anwendungen mit mehreren Ebenen: Azure PowerShell-Skriptbeispiel'
+description: 'Erstellen eines virtuellen Netzwerks für Anwendungen mit mehreren Ebenen: Azure PowerShell-Skriptbeispiel'
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,12 +15,13 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 2fad78db4fdc92f3dc9c0f320c36d12dea554a61
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 51cafb0a344c5b6226b3b033d8c60327eaf2c05f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725393"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91267940"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Skriptbeispiel für das Erstellen eines Netzwerks für Anwendungen mit mehreren Ebenen
 
@@ -65,6 +66,6 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Weitere PowerShell-Skriptbeispiele für virtuelle Netzwerke finden Sie unter [PowerShell-Beispiele für virtuelle Netzwerke](../powershell-samples.md).

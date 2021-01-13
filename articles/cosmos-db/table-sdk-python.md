@@ -6,16 +6,18 @@ ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: reference
 ms.date: 11/20/2018
-author: wmengmsft
-ms.author: wmeng
-ms.openlocfilehash: a26e69d756c0f5b8bb26d85d2901e686aba50771
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+author: sakash279
+ms.author: akshanka
+ms.openlocfilehash: 0029b3f2f70745997ea99db6d88ee298965453fd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480157"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101135"
 ---
-# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB-Tabellen-API SDK für Python: Versionshinweise und Ressourcen
+# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table API SDK für Python: Versionshinweise und Ressourcen
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -27,7 +29,7 @@ ms.locfileid: "66480157"
 |   |   |
 |---|---|
 |**SDK-Download**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
-|**API-Dokumentation**|[Python-API-Referenzdokumentation](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)|
+|**API-Dokumentation**|[Python-API-Referenzdokumentation](/python/api/overview/azure/cosmosdb?preserve-view=true&view=azure-python)|
 |**SDK-Installationsanweisungen**|[Python-SDK-Installationsanweisungen](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Am SDK mitwirken**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Aktuell unterstützte Plattform**|[Python 2.7](https://www.python.org/downloads/) oder [Python 3.3, 3.4, 3.5 oder 3.6](https://www.python.org/downloads/)|
@@ -38,10 +40,10 @@ ms.locfileid: "66480157"
 
 ## <a name="release-notes"></a>Versionshinweise
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * Release zur allgemeinen Verfügbarkeit
 
-### <a name="a-name03710371"></a><a name="0.37.1"/>0.37.1
+### <a name="0371"></a><a name="0.37.1"></a>0.37.1
 * Vorabversion-SDK
 
 ## <a name="release-and-retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
@@ -51,7 +53,7 @@ Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzuge
 
 <br/>
 
-| Version | Herausgabedatum | Deaktivierungstermine |
+| Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |15. November 2017 |--- |
 | [0.37.1](#0.37.1) |05. Oktober 2017 |--- |
@@ -61,5 +63,4 @@ Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzuge
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Weitere Informationen
-Weitere Informationen zu Cosmos DB finden Sie auf der Seite zum Dienst [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). 
-
+Weitere Informationen zu Cosmos DB finden Sie auf der Seite zum Dienst [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).

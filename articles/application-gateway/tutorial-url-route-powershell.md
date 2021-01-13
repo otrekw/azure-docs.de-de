@@ -4,35 +4,34 @@ description: Erfahren Sie, wie Sie Webdatenverkehr basierend auf der URL mit Azu
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a6a8c68edd658e5c207b88b48ee09c6472441e78
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 2a73208ef7014c1f21c78485fc613a26ce3bfc76
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688163"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397154"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Weiterleiten von Webdatenverkehr basierend auf der URL mit Azure PowerShell
 
-Sie können mit Azure PowerShell Webdatenverkehrsrouting zu bestimmten skalierbaren Serverpools basierend auf der URL konfigurieren, die für den Zugriff auf Ihre Anwendung verwendet wird. In diesem Artikel erstellen Sie eine [Azure Application Gateway](application-gateway-introduction.md)-Instanz mit drei Back-End-Pools unter Verwendung von [VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Jeder der Back-End-Pools dient einem bestimmten Zweck, z.B. allgemeine Daten, Bilder und Videos.  Routing des Datenverkehrs zu separaten Pools stellt sicher, dass Ihre Kunden die Informationen zu dem Zeitpunkt erhalten, zu dem sie sie benötigen.
+Sie können mit Azure PowerShell Webdatenverkehrsrouting zu bestimmten skalierbaren Serverpools basierend auf der URL konfigurieren, die für den Zugriff auf Ihre Anwendung verwendet wird. In diesem Artikel erstellen Sie eine [Azure Application Gateway](./overview.md)-Instanz mit drei Back-End-Pools unter Verwendung von [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md). Jeder der Back-End-Pools dient einem bestimmten Zweck, z.B. allgemeine Daten, Bilder und Videos.  Routing des Datenverkehrs zu separaten Pools stellt sicher, dass Ihre Kunden die Informationen zu dem Zeitpunkt erhalten, zu dem sie sie benötigen.
 
-Um das Datenverkehrsrouting zu ermöglichen, erstellen Sie [Routingregeln](application-gateway-url-route-overview.md), die Listenern zugewiesen werden, die auf bestimmte Ports lauschen, um sicherzustellen, dass Webdatenverkehr auf den entsprechenden Servern in den Pools eingeht.
+Um das Datenverkehrsrouting zu ermöglichen, erstellen Sie [Routingregeln](./url-route-overview.md), die Listenern zugewiesen werden, die auf bestimmte Ports lauschen, um sicherzustellen, dass Webdatenverkehr auf den entsprechenden Servern in den Pools eingeht.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen von Listenern, URL-Pfadzuordnung und Regeln
-> * Erstellen von skalierbaren Back-End-Pools
+* Einrichten des Netzwerks
+* Erstellen von Listenern, URL-Pfadzuordnung und Regeln
+* Erstellen von skalierbaren Back-End-Pools
 
 ![URL-Routingbeispiel](./media/tutorial-url-route-powershell/scenario.png)
 
 Dieses Verfahren kann auch mit der [Azure CLI](tutorial-url-route-cli.md) oder mit dem [Azure-Portal](create-url-route-portal.md) bearbeitet werden.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -85,9 +84,9 @@ $pip = New-AzPublicIpAddress `
 
 In diesem Abschnitt erstellen Sie Ressourcen, die das Anwendungsgateway unterstützen, und schließlich das Anwendungsgateway selbst. Sie erstellen die folgenden Ressourcen:
 
-- *IP-Konfigurationen und Front-End-Port*: Hierdurch wird das zuvor erstellte Subnetz dem Anwendungsgateway zugeordnet, und es wird ein Port für den Zugriff darauf zugewiesen.
-- *Standardpool*: Alle Anwendungsgateways müssen mindestens einen Back-End-Pool mit Servern haben.
-- *Standardlistener und Regel*: Der Standardlistener lauscht auf dem Port, der zugewiesen wurde, auf Datenverkehr, und die Standardregel sendet Datenverkehr an den Standardpool.
+- *IP-Konfigurationen und Front-End-Port* : Hierdurch wird das zuvor erstellte Subnetz dem Anwendungsgateway zugeordnet, und es wird ein Port für den Zugriff darauf zugewiesen.
+- *Standardpool* : Alle Anwendungsgateways müssen mindestens einen Back-End-Pool mit Servern haben.
+- *Standardlistener und Regel* : Der Standardlistener lauscht auf dem Port, der zugewiesen wurde, auf Datenverkehr, und die Standardregel sendet Datenverkehr an den Standardpool.
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Erstellen der IP-Konfigurationen und des Front-End-Ports
 
@@ -119,13 +118,13 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-default-pool-and-settings"></a>Erstellen des Standardpools und der Einstellungen
 
-Erstellen Sie mit [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) den Standard-Back-End-Pool *appGatewayBackendPool* für das Anwendungsgateway. Konfigurieren Sie mit [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) die Einstellungen für den Back-End-Pool.
+Erstellen Sie mit [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) den Standard-Back-End-Pool *appGatewayBackendPool* für das Anwendungsgateway. Konfigurieren Sie mit [New-AzApplicationGatewayBackendHttpSetting](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) die Einstellungen für den Back-End-Pool.
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
   -Name appGatewayBackendPool
 
-$poolSettings = New-AzApplicationGatewayBackendHttpSettings `
+$poolSettings = New-AzApplicationGatewayBackendHttpSetting `
   -Name myPoolSettings `
   -Port 80 `
   -Protocol Http `
@@ -186,7 +185,7 @@ An diesem Punkt verfügen Sie über ein Anwendungsgateway, dass auf Port 80 auf 
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>Hinzufügen von Back-End-Pools und Port für Images und Videos
 
-Fügen Sie Back-End-Pools namens *imagesBackendPool* und*videoBackendPool* mit [Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool) Ihrem Anwendungsgateway hinzu. Fügen Sie den Front-End-Port für die Pools mit [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport) hinzu. Übermitteln Sie die Änderungen mit [Set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway) an das Anwendungsgateway.
+Fügen Sie Back-End-Pools namens *imagesBackendPool* und *videoBackendPool* mit [Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool) Ihrem Anwendungsgateway hinzu. Fügen Sie den Front-End-Port für die Pools mit [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport) hinzu. Übermitteln Sie die Änderungen mit [Set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway) an das Anwendungsgateway.
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -246,7 +245,7 @@ $appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-$poolSettings = Get-AzApplicationGatewayBackendHttpSettings `
+$poolSettings = Get-AzApplicationGatewayBackendHttpSetting `
   -ApplicationGateway $appgw `
   -Name myPoolSettings
 
@@ -313,7 +312,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>Erstellen von VM-Skalierungsgruppen
 
-In diesem Beispiel erstellen Sie drei VM-Skalierungsgruppen, die die drei von Ihnen erstellten Back-End-Pools unterstützen. Die erstellten Skalierungsgruppen werden *myvmss1*, *myvmss2* und *myvmss3* genannt. Sie weisen die Skalierungsgruppe dem Back-End-Pool zu, wenn Sie die IP-Einstellungen konfigurieren.
+In diesem Beispiel erstellen Sie drei VM-Skalierungsgruppen, die die drei von Ihnen erstellten Back-End-Pools unterstützen. Die erstellten Skalierungsgruppen werden *myvmss1* , *myvmss2* und *myvmss3* genannt. Sie weisen die Skalierungsgruppe dem Back-End-Pool zu, wenn Sie die IP-Einstellungen konfigurieren.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -366,7 +365,7 @@ for ($i=1; $i -le 3; $i++)
     -ImageReferencePublisher MicrosoftWindowsServer `
     -ImageReferenceOffer WindowsServer `
     -ImageReferenceSku 2016-Datacenter `
-    -ImageReferenceVersion latest
+    -ImageReferenceVersion latest `
     -OsDiskCreateOption FromImage
 
   Set-AzVmssOsProfile $vmssConfig `

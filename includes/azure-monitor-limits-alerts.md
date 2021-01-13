@@ -5,21 +5,20 @@ services: azure-monitor
 author: rboucher
 tags: azure-service-management
 ms.topic: include
-ms.date: 02/07/2019
+ms.date: 10/01/2020
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: e3b9acf38bc213db7fcde5fbb5fe26f455c0fc00
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 0c3cdc21425e0634a725000efb27b3cde0ccd718
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67305286"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97844720"
 ---
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | Metrikwarnungen (klassisch) |100 aktive Warnungsregeln pro Abonnement. | Wenden Sie sich an den Support. |
-| Metrikwarnungen |1\.000 aktive Warnungsregeln pro Abonnement (in öffentlichen Clouds) und 100 aktive Warnungsregeln pro Abonnement in Azure China 21Vianet und Azure Government. | Wenden Sie sich an den Support. |
-| Aktivitätsprotokollwarnungen | 100 aktive Warnungsregeln pro Abonnement. | Wie Standard. |
-| Protokollwarnungen | 512 | Wenden Sie sich an den Support. |
-| Aktionsgruppen |2\.000 Aktionsgruppen pro Abonnement. | Wenden Sie sich an den Support. |
-| Einstellungen für automatische Skalierung |100 pro Region und Abonnement. | Wie Standard. |
+| Metrikwarnungen |5\.000 aktive Warnungsregeln pro Abonnement in öffentlichen Azure-Clouds sowie in Azure China 21Vianet- und Azure Government-Clouds. Wird dieser Grenzwert erreicht, versuchen Sie, ob Sie [Warnungen mit mehreren Ressourcen desselben Typs](../articles/azure-monitor/platform/alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) verwenden können.<br/>5\.000 metrische Zeitreihen pro Warnungsregel. | Wenden Sie sich an den Support. |
+| Aktivitätsprotokollwarnungen | 100 aktive Warnungsregeln pro Abonnement (der Wert kann nicht erhöht werden). | Wie Standard. |
+| Protokollwarnungen | 512 aktive Warnungsregeln pro Abonnement. 200 aktive Warnungsregeln pro Ressource. | Wenden Sie sich an den Support. |
+| Länge der Beschreibungen von Warnungsregeln und Aktionsregeln| Protokollsuchwarnungen: 4.096 Zeichen<br/>Alle anderen: 2.048 Zeichen | Wie Standard. |

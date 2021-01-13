@@ -1,29 +1,22 @@
 ---
-title: Verwenden von Azure Application Gateway mit internem Lastenausgleich – PowerShell | Microsoft-Dokumentation
+title: Verwenden mit internem Lastenausgleich –Azure Application Gateway
 description: Diese Seite enthält Anweisungen zum Erstellen, Konfigurieren, Starten und Löschen eines Azure Application Gateways mit internem Lastenausgleich (ILB) mit Azure-Ressourcen-Manager.
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
-ms.assetid: 75cfd5a2-e378-4365-99ee-a2b2abda2e0d
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/23/2018
+ms.topic: how-to
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 70b350e228785e47a41cb83ce0d80b93c8a601c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d663dc4e2bd860ec9494785ecbf6dbf10a4c5b5
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135225"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397755"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)
 
-Ein Azure Application Gateway kann mit einer VIP mit Internetzugriff oder mit einem internen Endpunkt konfiguriert werden, der nicht über das Internet erreichbar ist. Dies wird auch als Endpunkt für internen Lastenausgleich (Internal Load Balancer, ILB) bezeichnet. Das Konfigurieren des Gateways mit einem ILB ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für die Dienste und Ebenen in einer Anwendung mit mehreren Ebenen, die sich innerhalb einer Sicherheitsgrenze befinden und nicht für das Internet verfügbar gemacht werden, aber dennoch eine Round-Robin-Lastverteilung, Sitzungsbindungen oder SSL-Terminierung erfordern.
+Ein Azure Application Gateway kann mit einer VIP mit Internetzugriff oder mit einem internen Endpunkt konfiguriert werden, der nicht über das Internet erreichbar ist. Dies wird auch als Endpunkt für internen Lastenausgleich (Internal Load Balancer, ILB) bezeichnet. Das Konfigurieren des Gateways mit einem ILB ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für die Dienste und Ebenen in einer Anwendung mit mehreren Ebenen, die sich innerhalb einer Sicherheitsgrenze befinden und nicht für das Internet verfügbar gemacht werden, aber dennoch eine Round-Robin-Lastverteilung, Sitzungsbindungen oder Transport Layer Security (TLS), früher als SSL-Auslagerung (Secure Sockets Layer) bekannt, erfordern.
 
 Dieser Artikel führt Sie durch die Schritte zum Konfigurieren eines Application Gateways mit einem ILB.
 
@@ -48,7 +41,7 @@ Dieser Artikel führt Sie durch die Schritte zum Konfigurieren eines Application
 Der Unterschied zwischen dem klassischen Azure-Modell und Azure Resource Manager besteht in der Reihenfolge, in der Sie ein Anwendungsgateway und die Elemente erstellen, die konfiguriert werden müssen.
 Beim Resource Manager werden alle Elemente, die ein Application Gateway bilden, einzeln konfiguriert und anschließend zusammengesetzt, um die Application Gateway-Ressource zu erstellen.
 
-Hier sind die erforderlichen Schritte zum Erstellen eines Application Gateways angegeben:
+Hier sind die erforderlichen Schritte zum Erstellen eines Anwendungsgateways angegeben:
 
 1. Erstellen einer Ressourcengruppe für den Resource Manager
 2. Erstellen eines virtuelles Netzwerkes und eines Subnetzes für das Application Gateway.
@@ -57,7 +50,7 @@ Hier sind die erforderlichen Schritte zum Erstellen eines Application Gateways a
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Erstellen einer Ressourcengruppe für den Resource Manager
 
-Stellen Sie sicher, dass Sie in den PowerShell-Modus wechseln, um die Azure-Ressourcen-Manager-Cmdlets zu verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
+Stellen Sie sicher, dass Sie in den PowerShell-Modus wechseln, um die Azure-Ressourcen-Manager-Cmdlets zu verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md).
 
 ### <a name="step-1"></a>Schritt 1
 
@@ -265,12 +258,9 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie die SSL-Auslagerung konfigurieren möchten, finden Sie weitere Informationen im Abschnitt [Konfigurieren eines Application Gateways für die SSL-Auslagerung](application-gateway-ssl.md).
-
-Wenn Sie ein Application Gateway für ILB konfigurieren möchten, lesen Sie [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md).
+Wenn Sie die SSL-Auslagerung konfigurieren möchten, finden Sie weitere Informationen im Abschnitt [Konfigurieren eines Application Gateways für die SSL-Auslagerung](./tutorial-ssl-powershell.md).
 
 Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unter:
 
 * [Azure-Lastenausgleich](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-

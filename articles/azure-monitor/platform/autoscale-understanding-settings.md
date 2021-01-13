@@ -1,19 +1,15 @@
 ---
 title: Grundlegendes zu Einstellungen für die automatische Skalierung in Azure Monitor
 description: Enthält eine ausführliche Aufschlüsselung der Einstellungen für die automatische Skalierung und deren Funktionsweise. Gilt für Virtual Machines, Cloud Services und Web-Apps.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a914f6d71c013acea8dfde0f6578985bc009bb26
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787494"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605239"
 ---
 # <a name="understand-autoscale-settings"></a>Grundlegendes zu Einstellungen für die automatische Skalierung
 Mithilfe der Einstellungen für die automatische Skalierung können Sie sicherstellen, dass Sie über die richtige Anzahl von ausgeführten Ressourcen verfügen, um die wechselnde Auslastung Ihrer Anwendung zu bewältigen. Sie können konfigurieren, dass Einstellungen für die automatische Skalierung basierend auf Metriken ausgelöst werden, mit denen die Auslastung oder die Leistung angezeigt werden, oder die Auslösung kann zu einem geplanten Datum bzw. einer geplanten Uhrzeit erfolgen. In diesem Artikel wird die Anatomie einer Einstellung für die automatische Skalierung ausführlich beschrieben. Der Artikel beginnt mit Erläuterungen zu dem Schema und den Eigenschaften einer Einstellung und führt Sie dann durch die verschiedenen Profiltypen, die konfiguriert werden können. Abschließend erfahren Sie in diesem Artikel, wie das Feature für die automatische Skalierung in Azure auswertet, welches Profil zu einem bestimmten Zeitpunkt ausgeführt wird.
@@ -21,7 +17,7 @@ Mithilfe der Einstellungen für die automatische Skalierung können Sie sicherst
 ## <a name="autoscale-setting-schema"></a>Schema der Einstellung für die automatische Skalierung
 Zur Veranschaulichung des Schemas der Einstellung für die automatische Skalierung wird die folgende Einstellung verwendet. Es ist wichtig zu beachten, dass diese Einstellung für die automatische Skalierung über Folgendes verfügt:
 - Ein Profil 
-- Zwei Metrikregeln in diesem Profil: eine für das horizontale Hochskalieren und eine für das horizontale Herunterskalieren
+- Zwei Metrikregeln in diesem Profil: eine für das Aufskalieren und eine für das Abskalieren
   - Die Regel für das horizontale Hochskalieren wird ausgelöst, wenn der Durchschnittswert für die Metrik „CPU in Prozent“ für die VM-Skalierungsgruppe in den letzten zehn Minuten über 85 Prozent gelegen hat.
   - Die Regel für das horizontale Herunterskalieren wird ausgelöst, wenn der Durchschnittswert der VM-Skalierungsgruppe in der letzten Minute unter 60 Prozent gelegen hat.
 
@@ -64,7 +60,7 @@ Zur Veranschaulichung des Schemas der Einstellung für die automatische Skalieru
               "cooldown": "PT5M"
             }
           },
-    {
+          {
             "metricTrigger": {
               "metricName": "Percentage CPU",
               "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1",
@@ -99,8 +95,8 @@ Zur Veranschaulichung des Schemas der Einstellung für die automatische Skalieru
 | profile | name | Der Name des Profils. Sie können einen beliebigen Namen wählen, der Ihnen die Identifizierung des Profils erleichtert. |
 | profile | Capacity.maximum | Die maximal zulässige Kapazität. Hiermit wird sichergestellt, dass bei der automatischen Skalierung während der Ausführung dieses Profils für Ihre Ressourcen keine Skalierung über diesen Wert hinaus durchgeführt wird. |
 | profile | Capacity.minimum | Die zulässige Mindestkapazität. Hiermit wird sichergestellt, dass bei der automatischen Skalierung während der Ausführung dieses Profils für Ihre Ressourcen keine Skalierung durchgeführt wird, die zu einer niedrigeren Kapazität führt. |
-| profile | Capacity.default | Falls ein Problem beim Lesen der Ressourcenmetriken vorliegt (hier die CPU von „vmss1“) und die aktuelle Kapazität unterhalb der Standardkapazität liegt, wird von der automatischen Skalierung das horizontale Hochskalieren auf den Standardwert durchgeführt. Dadurch wird die Verfügbarkeit der Ressource sichergestellt. Wenn die aktuelle Kapazität bereits über der Standardkapazität liegt, wird die automatische Skalierung nicht horizontal herunterskaliert. |
-| profile | rules | Die automatische Skalierung skaliert automatisch zwischen der maximalen und minimalen Kapazität, indem die Regeln im Profil verwendet werden. Sie können in einem Profil mehrere Regeln nutzen. Normalerweise gibt es zwei Regeln: eine zum Ermitteln des Zeitpunkts für das horizontale Hochskalieren und die andere zum Ermitteln des Zeitpunkts für das horizontale Herunterskalieren. |
+| profile | Capacity.default | Falls ein Problem beim Lesen der Ressourcenmetriken vorliegt (hier die CPU von „vmss1“) und die aktuelle Kapazität unterhalb der Standardkapazität liegt, wird von der automatischen Skalierung das horizontale Hochskalieren auf den Standardwert durchgeführt. Dadurch wird die Verfügbarkeit der Ressource sichergestellt. Wenn die aktuelle Kapazität bereits über der Standardkapazität liegt, wird durch die automatische Skalierung nicht abskaliert. |
+| profile | rules | Die automatische Skalierung skaliert automatisch zwischen der maximalen und minimalen Kapazität, indem die Regeln im Profil verwendet werden. Sie können in einem Profil mehrere Regeln nutzen. Normalerweise gibt es zwei Regeln: eine zum Ermitteln des Zeitpunkts für das Aufskalieren und die andere zum Ermitteln des Zeitpunkts für das Abskalieren. |
 | rule | metricTrigger | Definiert die Metrikbedingung der Regel. |
 | metricTrigger | metricName | Der Name der Metrik. |
 | metricTrigger |  metricResourceUri | Die Ressourcen-ID der Ressource, von der die Metrik ausgegeben wird. Meistens ist dies auch die zu skalierende Ressource. In einigen Fällen kann es sich auch um eine andere Ressource handeln. Sie können beispielsweise eine VM-Skalierungsgruppe basierend auf der Anzahl von Nachrichten in einer Speicherwarteschlange skalieren. |
@@ -109,7 +105,7 @@ Zur Veranschaulichung des Schemas der Einstellung für die automatische Skalieru
 | metricTrigger | timeWindow | Gibt an, wie weit auf Metriken zurückgegriffen werden soll. Beispiel: **timeWindow = „PT10M“** bedeutet, dass bei jeder Ausführung der automatischen Skalierung die Metriken der letzten zehn Minuten abgefragt werden. Dieses Zeitfenster ermöglicht, dass Ihre Metriken normalisiert werden, und eine Reaktion auf vorübergehende Spitzen wird vermieden. |
 | metricTrigger | timeAggregation | Die Aggregationsmethode, die zum Aggregieren der Stichprobenmetriken verwendet wird. Beispiel: Mit **TimeAggregation = „Average“** werden die Stichprobenmetriken aggregiert, indem der Durchschnittswert herangezogen wird. Im vorangegangenen Fall wird der Mittelwert für die zehn 1-Minuten-Stichproben ermittelt. |
 | rule | scaleAction | Die Aktion, die nach dem Auslösen des metricTrigger-Elements der Regel durchgeführt wird. |
-| scaleAction | direction | „Increase“ (Erhöhen) für horizontales Hochskalieren oder „Decrease“ (Verringern) für horizontales Herunterskalieren.|
+| scaleAction | direction | „Increase“ (Erhöhen) für Aufskalieren oder „Decrease“ (Verringern) für Abskalieren.|
 | scaleAction | value | Der Wert für die Erhöhung bzw. Verringerung der Kapazität einer Ressource. |
 | scaleAction | cooldown | Gibt an, wie lange nach einem Skalierungsvorgang gewartet werden soll, bevor erneut skaliert wird. Beispiel: Bei **cooldown = „PT10M“** versucht die automatische Skalierung zehn Minuten lang nicht, einen neuen Vorgang zu starten. Der Zweck des cooldown-Vorgangs besteht darin, dass sich die Metriken nach dem Hinzufügen bzw. Entfernen von Instanzen stabilisieren können. |
 
@@ -117,40 +113,47 @@ Zur Veranschaulichung des Schemas der Einstellung für die automatische Skalieru
 
 Es gibt drei Arten von Profilen für die automatische Skalierung:
 
-- **Reguläres Profil:** Dies ist das am häufigsten verwendete Profil. Wenn Sie Ihre Ressourcen nicht an einem Wochentag oder einem bestimmten Tag skalieren müssen, können Sie ein reguläres Profil verwenden. Dieses Profil kann dann mit Metrikregeln konfiguriert werden, die vorgeben, wann horizontal hoch- oder herunterskaliert werden soll. Sie sollten nur ein reguläres Profil definieren.
+- **Reguläres Profil:** Dies ist das am häufigsten verwendete Profil. Wenn Sie Ihre Ressourcen nicht an einem Wochentag oder einem bestimmten Tag skalieren müssen, können Sie ein reguläres Profil verwenden. Dieses Profil kann dann mit Metrikregeln konfiguriert werden, die vorgeben, wann auf- oder abskaliert werden soll. Sie sollten nur ein reguläres Profil definieren.
 
     Das Beispielprofil weiter oben in diesem Artikel ist ein Beispiel für ein reguläres Profil. Beachten Sie, dass es auch möglich ist, ein Profil für die Skalierung auf eine statische Instanzanzahl für Ihre Ressource festzulegen.
 
 - **Profil für ein festgelegtes Datum:** Dieses Profil eignet sich für Sonderfälle. Angenommen, es findet ein wichtiges Ereignis am 26. Dezember 2017 (PST) statt. Sie möchten, dass die minimalen und maximalen Kapazitäten Ihrer Ressource an diesem Tag abweichen, aber dennoch eine Skalierung unter Verwendung derselben Metriken ausgeführt wird. In diesem Fall sollten Sie der Profilliste Ihrer Einstellung ein Profil für ein festgelegtes Datum hinzufügen. Das Profil ist nur für die Ausführung am Tag des Ereignisses konfiguriert. An allen anderen Tagen verwendet die automatische Skalierung das reguläre Profil.
 
-    ``` JSON
-    "profiles": [{
-    "name": " regularProfile",
-    "capacity": {
-    ...
-    },
-    "rules": [{
-    ...
-    },
-    {
-    ...
-    }]
-    },
-    {
-    "name": "eventProfile",
-    "capacity": {
-    ...
-    },
-    "rules": [{
-    ...
-    }, {
-    ...
-    }],
-    "fixedDate": {
-        "timeZone": "Pacific Standard Time",
-               "start": "2017-12-26T00:00:00",
-               "end": "2017-12-26T23:59:00"
-    }}
+    ```json
+    "profiles": [
+        {
+            "name": " regularProfile",
+            "capacity": {
+                ...
+            },
+            "rules": [
+                {
+                ...
+                },
+                {
+                ...
+                }
+            ]
+        },
+        {
+            "name": "eventProfile",
+            "capacity": {
+            ...
+            },
+            "rules": [
+                {
+                ...
+                }, 
+                {
+                ...
+                }
+            ],
+            "fixedDate": {
+                "timeZone": "Pacific Standard Time",
+                "start": "2017-12-26T00:00:00",
+                "end": "2017-12-26T23:59:00"
+            }
+        }
     ]
     ```
     
@@ -305,9 +308,9 @@ Angenommen, es ist eine VM-Skalierungsgruppe mit einer aktuellen Kapazität von 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur automatischen Skalierung finden Sie in den folgenden Ressourcen:
 
-* [Übersicht über die automatische Skalierung](../../azure-monitor/platform/autoscale-overview.md)
-* [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](../../azure-monitor/platform/autoscale-common-metrics.md)
-* [Best Practices für die automatische Skalierung in Azure Monitor](../../azure-monitor/platform/autoscale-best-practices.md)
-* [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen](../../azure-monitor/platform/autoscale-webhook-email.md)
-* [REST-API für die automatische Skalierung](https://msdn.microsoft.com/library/dn931953.aspx)
+* [Übersicht über die automatische Skalierung](./autoscale-overview.md)
+* [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](./autoscale-common-metrics.md)
+* [Best Practices für die automatische Skalierung in Azure Monitor](./autoscale-best-practices.md)
+* [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen](./autoscale-webhook-email.md)
+* [REST-API für die automatische Skalierung](/rest/api/monitor/autoscalesettings)
 

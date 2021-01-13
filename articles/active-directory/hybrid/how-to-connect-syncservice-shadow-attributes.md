@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 128303cb51b39db8442fdda71f949db17923bfa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60384703"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90088969"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Schattenattribute für den Azure AD Connect-Synchronisierungsdienst
 Die meisten Attribute werden in Azure AD genauso wie in Ihrem lokalen Azure Directory dargestellt. Einige Attribute werden jedoch besonders verarbeitet, weshalb sich der Attributwert in Azure AD davon unterscheiden kann, was mit Azure AD Connect synchronisiert wird.
@@ -32,13 +32,13 @@ Für einige Attribute gibt es in Azure AD zwei Darstellungen. Sowohl der lokale 
 Die Schattenattribute können nicht im Azure-Portal oder mit PowerShell angezeigt werden. Doch das Verstehen des Konzepts hilft, Probleme in bestimmten Szenarien zu beheben, in denen das Attribut lokal und in der Cloud unterschiedliche Werte aufweist.
 
 Um das Verhalten besser zu verstehen, betrachten Sie dieses Beispiel für Fabrikam:  
-![Domänen](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
+![Der Screenshot zeigt das Active Directory-UPN-Suffix für mehrere Beispiele mit dem entsprechenden Azure AD-Domänenwert „Nicht hinzugefügt“, „Nicht überprüft“ und „Überprüft“.](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
 Das Unternehmen hat mehrere UPN-Suffixe in seinem lokalen Active Directory, von denen aber nur eines bestätigt ist.
 
 ### <a name="userprincipalname"></a>userPrincipalName
 Ein Benutzer hat die folgenden Attributwerte in einer nicht bestätigten Domäne:
 
-| Attribut | Wert |
+| attribute | value |
 | --- | --- |
 | „userPrincipalName“ lokal | lee.sperry@fabrikam.com |
 | „shadowUserPrincipalName“ in Azure AD | lee.sperry@fabrikam.com |
@@ -53,7 +53,7 @@ Dasselbe Verfahren für ausschließlich bestätigte Domänen erfolgt auch für �
 
 Für einen Postfachbenutzer, ob lokal oder in Exchange Online, werden nur Werte für bestätigte Domänen angezeigt. Diese können wie folgt aussehen:
 
-| Attribut | Wert |
+| attribute | value |
 | --- | --- |
 | „proxyAddresses“ lokal | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | „proxyAddresses“ in Exchange Online | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |

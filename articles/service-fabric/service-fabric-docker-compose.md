@@ -1,31 +1,20 @@
 ---
 title: Azure Service Fabric Docker Compose-Bereitstellung (Vorschau)
 description: Azure Service Fabric akzeptiert das Docker Compose-Format für eine einfachere Orchestrierung vorhandener Container mithilfe von Service Fabric. Diese Unterstützung befindet sich derzeit in der Vorschauphase.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: de02c9a8580527ab708418aa266f1b56411fb95b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599577"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84691287"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker Compose-Bereitstellungsunterstützung in Azure Service Fabric (Vorschau)
 
 Docker verwendet die Datei [„docker-compose.yml“](https://docs.docker.com/compose) zum Definieren von Anwendungen mit mehreren Containern. Damit Kunden, die mit Docker vertraut sind, vorhandene Containeranwendungen einfacher in Azure Service Fabric orchestrieren können, haben wir eine Unterstützung für die Vorschauversion der Docker Compose-Bereitstellung nativ in die Plattform integriert. Service Fabric akzeptiert `docker-compose.yml`-Dateien ab Version 3 (und höher). 
 
-Da diese Unterstützung als Vorschauversion verfügbar ist, wird nur ein Teil der Compose-Direktiven unterstützt. So werden beispielsweise Anwendungsupgrades nicht unterstützt. Sie können jedoch jederzeit Anwendungen entfernen und bereitstellen, statt sie zu aktualisieren.
+Da diese Unterstützung als Vorschauversion verfügbar ist, wird nur ein Teil der Compose-Direktiven unterstützt.
 
 Wenn Sie diese Vorschauversion verwenden möchten, erstellen Sie Ihren Cluster mindestens mit der Version 5.7 der Service Fabric-Laufzeit über das Azure-Portal (zusammen mit dem entsprechenden SDK). 
 
@@ -80,37 +69,37 @@ Get-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp
 
 Verwenden Sie alternativ den folgenden Service Fabric CLI-Befehl:
 
-```azurecli
+```shell
 sfctl compose create --deployment-name TestContainerApp --file-path docker-compose.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [ --timeout ]
 ```
 
 Nachdem Sie die Bereitstellung erstellt haben, können Sie deren Status mit folgendem Befehl überprüfen:
 
-```azurecli
+```shell
 sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Verwenden Sie den folgenden Befehl, um die Compose-Bereitstellung zu löschen:
 
-```azurecli
+```shell
 sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Verwenden Sie den folgenden Befehl, um ein Compose-Bereitstellungsupgrade zu starten:
 
-```azurecli
+```shell
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
 ```
 
 Verwenden Sie den folgenden Befehl, um ein Compose-Bereitstellungsupgrade zurückzusetzen:
 
-```azurecli
+```shell
 sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Nachdem das Upgrade akzeptiert wurde, kann der Upgradestatus mit dem folgenden Befehl nachverfolgt werden:
 
-```azurecli
+```shell
 sfctl compose upgrade-status --deployment-name TestContainerApp
 ```
 

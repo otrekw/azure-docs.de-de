@@ -1,25 +1,14 @@
 ---
-title: Kapazitätsplanung für Service Fabric-Apps | Microsoft Docs
+title: Kapazitätsplanung für Service Fabric-Apps
 description: Informationen zum Bestimmen der Anzahl von Computeknoten, die für eine Service Fabric-Anwendung erforderlich sind.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: markfuss
-editor: ''
-ms.assetid: 9fa47be0-50a2-4a51-84a5-20992af94bea
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 4f2aa4b848172ab8b6a7e74de7dc1bc5f80639a1
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: cd5a5c55ff873e4891ac63361d0c4a0b56d70109
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335645"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75377207"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Kapazitätsplanung für Service Fabric-Anwendungen
 In diesem Dokument erfahren Sie, wie Sie die Anzahl der Ressourcen (CPU, Arbeitsspeicher, Datenträgerspeicher) bestimmen, die Sie zum Ausführen von Azure Service Fabric-Anwendungen benötigen. Es ist üblich, dass sich die erforderlichen Ressourcen mit der Zeit ändern. In der Regel brauchen Sie für das Entwickeln und Testen Ihres Diensts ein bestimmtes Maß an Ressourcen, das Sie erhöhen müssen, sobald Sie zur Produktionsumgebung wechseln und die Beliebtheit Ihrer Anwendung zunimmt. Vergegenwärtigen Sie sich beim Entwurf einer Anwendung die langfristigen Anforderungen, und treffen Sie Entscheidungen, die Ihrem Dienst eine Skalierung zum Erfüllen einer hohen Kundennachfrage ermöglichen.
@@ -31,7 +20,7 @@ Einige Dienste verwalten wenige oder keine Daten auf den virtuellen Computern. B
 Bei Diensten, die sehr große Datenmengen in den VMs verwalten, sollte der Fokus der Kapazitätsplanung auf der Größe liegen. Deshalb müssen Sie die Kapazität des Arbeits- und Datenträgerspeichers des virtuellen Computers sorgfältig prüfen. Das Windows-Verwaltungssystem für virtuellen Arbeitsspeicher sorgt dafür, dass der Anwendungscode Speicherplatz auf dem Datenträger als RAM interpretiert. Darüber hinaus bietet die Service Fabric-Laufzeit eine Smart Paging genannte intelligente Auslagerung, bei der nur aktive Daten im Arbeitsspeicher verbleiben und inaktive Daten auf Datenträger verschoben werden. Anwendungen können dadurch mehr Arbeitsspeicher nutzen, als auf dem virtuellen Computer physisch verfügbar ist. Durch den zusätzlichen RAM wird die Leistung gesteigert, da der virtuelle Computer mehr Datenträgerspeicher im RAM belassen kann. Der virtuelle Computer, den Sie auswählen, muss über einen Datenträger verfügen, der für die vorgesehene Datenmenge groß genug ist. Gleichfalls muss der virtuelle Computer genügend Arbeitsspeicher bieten, um die gewünschte Leistung bereitzustellen. Wenn die Daten Ihres Diensts mit der Zeit anwachsen, können Sie dem Cluster weitere VMs hinzufügen und die Daten auf alle VMs verteilen.
 
 ## <a name="determine-how-many-nodes-you-need"></a>Festlegen der benötigten Anzahl von Knoten
-Durch das Partitionieren Ihres Diensts können Sie die Daten für Ihren Dienst horizontal hochskalieren. Weitere Informationen zur Partitionierung finden Sie unter [Partitionieren von Service Fabric](service-fabric-concepts-partitioning.md). Jede Partition muss in eine einzige VM passen, doch mehrere (kleine) Partitionen können in einer einzelnen VM platziert werden. Eine große Anzahl kleiner Partitionen bietet Ihnen daher mehr Flexibilität als eine kleine Anzahl größerer Partitionen. Der Nachteil besteht darin, dass viele Partitionen den Verarbeitungsaufwand für Service Fabric erhöhen und Transaktionsvorgänge nicht partitionsübergreifend erfolgen können. Außerdem fällt potenziell mehr Netzwerkdatenverkehr an, wenn Ihr Dienst häufig auf Datenelemente zugreifen muss, die sich in verschiedenen Partitionen befinden. Wenn Sie Ihren Dienst entwerfen, müssen Sie diese Vor- und Nachteile sorgfältig prüfen, um zu einer effektiven Partitionierungsstrategie zu gelangen.
+Durch das Partitionieren Ihres Diensts können Sie die Daten für Ihren Dienst aufskalieren. Weitere Informationen zur Partitionierung finden Sie unter [Partitionieren von Service Fabric](service-fabric-concepts-partitioning.md). Jede Partition muss in eine einzige VM passen, doch mehrere (kleine) Partitionen können in einer einzelnen VM platziert werden. Eine große Anzahl kleiner Partitionen bietet Ihnen daher mehr Flexibilität als eine kleine Anzahl größerer Partitionen. Der Nachteil besteht darin, dass viele Partitionen den Verarbeitungsaufwand für Service Fabric erhöhen und Transaktionsvorgänge nicht partitionsübergreifend erfolgen können. Außerdem fällt potenziell mehr Netzwerkdatenverkehr an, wenn Ihr Dienst häufig auf Datenelemente zugreifen muss, die sich in verschiedenen Partitionen befinden. Wenn Sie Ihren Dienst entwerfen, müssen Sie diese Vor- und Nachteile sorgfältig prüfen, um zu einer effektiven Partitionierungsstrategie zu gelangen.
 
 Nehmen wir an, dass Ihre Anwendung über einen einzelnen statusbehafteten Dienst verfügt, dessen Speichergröße in einem Jahr voraussichtlich auf „DB_Size GB“ (Datenbankgröße in GB) anwachsen wird. Sie sind bereit, auch über dieses Jahr hinaus dem Wachstum entsprechend weitere Anwendungen (und Partitionen) hinzuzufügen.  Der Replikationsfaktor (RF), der die Anzahl der Replikate für Ihren Dienst bestimmt, wirkt sich auf die gesamte „DB_Size“ aus. Die gesamte „DB_Size“ in allen Replikaten ist der mit DB_Size multiplizierte Replikationsfaktor.  „Node_Size“ (Knotengröße) stellt den Datenträgerspeicherplatz/RAM pro Knoten dar, den Sie für Ihren Dienst verwenden möchten. Für eine optimale Leistung sollte „DB_Size“ in den Arbeitsspeicher des gesamten Clusters passen, weshalb Sie eine Knotengröße wählen, die ungefähr der RAM-Kapazität der gewählten VM entspricht. Durch Zuordnen einer „Node_Size“, die die RAM-Kapazität übersteigt, sind Sie auf die von der Service Fabric-Laufzeit gebotene Auslagerung angewiesen. Folglich ist die Leistung möglicherweise nicht optimal, wenn Ihre gesamten Daten als aktiv angesehen werden (da dann die Daten ausgelagert werden und umgekehrt). Doch bei vielen Diensten, bei denen nur ein Bruchteil der Daten aktiv ist, ist dies wirtschaftlicher.
 

@@ -1,25 +1,28 @@
 ---
-title: Warteaktivität in Azure Data Factory | Microsoft-Dokumentation
+title: Warteaktivität in Azure Data Factory
 description: Die Warteaktivität hält die Ausführung der Pipeline für den angegebenen Zeitraum an.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 48a722979e61209a855dd1fec22fcdcc756ae1ce
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 12c9027067c00a3db84e6610a0d73090cc011713
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142415"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485909"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Ausführen der Warteaktivität in Azure Data Factory
 Wenn Sie eine Warteaktivität in einer Pipeline verwenden, wartet die Pipeline den angegebenen Zeitraum, bevor Sie die Ausführung nachfolgender Aktivitäten fortsetzt. 
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 ## <a name="syntax"></a>Syntax
 
@@ -38,8 +41,8 @@ Wenn Sie eine Warteaktivität in einer Pipeline verwenden, wartet die Pipeline d
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Der Name der `Wait`-Aktivität. | Zeichenfolge | Ja
-type | Muss auf **Wait** festgelegt werden. | Zeichenfolge | Ja
+name | Der Name der `Wait`-Aktivität. | String | Ja
+type | Muss auf **Wait** festgelegt werden. | String | Ja
 waitTimeInSeconds | Die Anzahl von Sekunden, die die Pipeline wartet, bevor sie die Verarbeitung fortsetzt | Integer | Ja
 
 ## <a name="example"></a>Beispiel
@@ -48,7 +51,7 @@ waitTimeInSeconds | Die Anzahl von Sekunden, die die Pipeline wartet, bevor sie 
 > Dieser Abschnitt enthält die JSON-Definitionen und PowerShell-Beispielbefehle zum Ausführen der Pipeline. Eine exemplarische Vorgehensweise mit einer ausführlichen Anleitung zum Erstellen einer Data Factory-Pipeline mithilfe von Azure PowerShell und JSON-Definitionen finden Sie unter [Erstellen einer Data Factory und Pipeline mithilfe von PowerShell](quickstart-create-data-factory-powershell.md).
 
 ### <a name="pipeline-with-wait-activity"></a>Pipeline mit Warteaktivität
-In diesem Beispiel enthält die Pipeline zwei Aktivitäten: **Until** und **Wait**. Für die Warteaktivität ist eine Wartezeit von einer Sekunde konfiguriert. Die Pipeline führt die Webaktivität in einer Schleife mit einer Sekunde Wartezeit zwischen jeder Ausführung aus. 
+In diesem Beispiel besitzt die Pipeline zwei Aktivitäten: **Until** und **Wait**. Für die Warteaktivität ist eine Wartezeit von einer Sekunde konfiguriert. Die Pipeline führt die Webaktivität in einer Schleife mit einer Sekunde Wartezeit zwischen jeder Ausführung aus. 
 
 ```json
 {

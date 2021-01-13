@@ -1,30 +1,33 @@
 ---
-title: Statische IP-Adresse für ausgehenden Datenverkehr in Azure Kubernetes Service (AKS)
+title: Verwenden einer statischen IP-Adresse für ausgehenden Datenverkehr
+titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie eine statische öffentliche IP-Adresse für ausgehenden Datenverkehr in einem AKS-Cluster erstellen und verwenden
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: mlearned
-ms.openlocfilehash: 67471d688e64244067a7537bc87c379da4a69c03
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 81b99478358ec3d670e8d783fba27603483614ea
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696361"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87563244"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Verwenden einer statischen öffentlichen IP-Adresse für ausgehenden Datenverkehr in Azure Kubernetes Service (AKS)
+# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden einer statischen öffentlichen IP-Adresse für ausgehenden Datenverkehr mit einem Lastenausgleich der SKU *Basic* in Azure Kubernetes Service (AKS)
 
-Standardmäßig wird die ausgehende IP-Adresse eines AKS-Clusters zufällig zugewiesen. Diese Konfiguration ist nicht ideal, wenn Sie beispielsweise eine IP-Adresse für den Zugriff auf externe Dienste identifizieren müssen. Stattdessen müssen Sie möglicherweise eine statische IP-Adresse zuweisen, die für den Dienstzugriff in die Whitelist aufgenommen werden kann.
+Standardmäßig wird die ausgehende IP-Adresse eines AKS-Clusters zufällig zugewiesen. Diese Konfiguration ist nicht ideal, wenn Sie beispielsweise eine IP-Adresse für den Zugriff auf externe Dienste identifizieren müssen. Stattdessen müssen Sie möglicherweise eine statische IP-Adresse zuweisen, die einer Liste zugelassener IP-Adressen für den Dienstzugriff hinzugefügt wird.
 
 In diesem Artikel wird Ihnen gezeigt, wie Sie eine statische öffentliche IP-Adresse für ausgehenden Datenverkehr in einem AKS-Cluster erstellen und verwenden.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
+In diesem Artikel wird davon ausgegangen, dass Sie Azure Load Balancer Basic verwenden.  Wir empfehlen die Verwendung von [Azure Load Balancer Standard](../load-balancer/load-balancer-overview.md), und Sie können erweiterte Features zum [Steuern des ausgehenden AKS-Datenverkehrs](./limit-egress-traffic.md) verwenden.
+
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
 Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
+
+> [!IMPORTANT]
+> In diesem Artikel wird der Lastenausgleich der SKU *Basic* mit einem einzelnen Knotenpool verwendet. Diese Konfiguration ist für mehrere Knotenpools nicht verfügbar, da der Lastenausgleich der SKU *Basic* mit mehreren Knotenpools nicht unterstützt wird. Unter [Verwenden einer öffentlichen Instanz von Load Balancer Standard in Azure Kubernetes Service (AKS)][slb] finden Sie ausführlichere Informationen zur Verwendung des Lastenausgleichs der SKU *Standard*.
 
 ## <a name="egress-traffic-overview"></a>Übersicht über ausgehenden Datenverkehr
 
@@ -95,7 +98,7 @@ Erstellen Sie den Dienst und die Bereitstellung mit dem Befehl `kubectl apply`.
 kubectl apply -f egress-service.yaml
 ```
 
-Beim Erstellen dieses Dienstes wird eine neue Front-End-IP in Azure Load Balancer konfiguriert. Wenn keine anderen IP-Adressen konfiguriert wurden, wird ab sofort **sämtlicher ausgehender Datenverkehr** diese Adresse verwenden. Wenn mehrere IP-Adressen im Azure Load Balancer konfiguriert wurden, nutzt der ausgehende Datenverkehr die erste IP-Adresse im Load Balancer.
+Beim Erstellen dieses Dienstes wird eine neue Front-End-IP in Azure Load Balancer konfiguriert. Wenn keine anderen IP-Adressen konfiguriert wurden, wird ab sofort **sämtlicher ausgehender Datenverkehr** diese Adresse verwenden. Wenn für den Azure Load Balancer mehrere Adressen konfiguriert sind, sind diese öffentlichen IP-Adressen Kandidaten für ausgehende Datenflüsse, und eine davon wird nach dem Zufallsprinzip ausgewählt.
 
 ## <a name="verify-egress-address"></a>Überprüfen der Adresse für ausgehende Daten
 
@@ -104,7 +107,7 @@ Sie können einen DNS-Lookup-Dienst wie `checkip.dyndns.org` verwenden, um zu ü
 Beginnen Sie zunächst mit dem Anfügen eines einfachen *Debian*-Pods:
 
 ```console
-kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
+kubectl run -it --rm aks-ip --image=debian
 ```
 
 Verwenden Sie `apt-get` zum Installieren von `curl` im Container, um innerhalb des Containers auf eine Website zuzugreifen.
@@ -136,3 +139,4 @@ Um der Verwaltung mehrerer öffentlicher IP-Adressen in Azure Load Balancer zu e
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[slb]: load-balancer-standard.md

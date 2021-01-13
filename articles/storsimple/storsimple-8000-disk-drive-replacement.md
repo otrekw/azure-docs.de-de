@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
-ms.openlocfilehash: 3d6ef22e4df36996d68194589f43ea0f57def22c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5a7a31c174271f963bb005f10b8376a59133d36
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576858"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014872"
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Austauschen eines Festplattenlaufwerks in einem Gerät der StorSimple 8000-Serie
 

@@ -4,13 +4,13 @@ ms.service: devtest-lab
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: 0331cc5b567199a6d4ab4f7474b83f5f6aaa71e9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ceae3d0320e2d702cf7c6e7e0cffbf20055dda6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178687"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84884600"
 ---
 > [!div class="op_single_selector"]
-> * [Azure-Portal](../articles/lab-services/devtest-lab-create-template.md)
-> * [PowerShell](../articles/lab-services/devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+> * [Azure portal](../articles/devtest-labs/devtest-lab-create-template.md)
+> * [PowerShell](../articles/devtest-labs/devtest-lab-create-custom-image-from-vhd-using-powershell.md)

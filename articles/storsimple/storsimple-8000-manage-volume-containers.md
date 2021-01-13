@@ -1,5 +1,5 @@
 ---
-title: Verwalten von StorSimple-Volumecontainern auf einem Gerät der StorSimple 8000-Serie | Microsoft-Dokumentation
+title: Verwalten von Volumecontainern für Geräte der StorSimple 8000-Serie
 description: Beschreibt, wie Sie die Seite „Volumecontainer“ des StorSimple-Geräte-Manager-Diensts zum Hinzufügen, Ändern oder Löschen eines Volumecontainers verwenden können.
 services: storsimple
 documentationcenter: NA
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 7e1a5ac2c2b734c77fc3dbe788206f8c75044953
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a6cd904d7baa71c8b383022523909ca30000ce8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60724746"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85514994"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>Verwalten von StorSimple-Volumecontainern mithilfe des StorSimple-Geräte-Manager-Diensts
 

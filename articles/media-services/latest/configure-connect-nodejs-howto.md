@@ -1,33 +1,36 @@
 ---
 title: Verbinden mit der Azure Media Services v3-API – Node.js
-description: Erfahren Sie, wie Sie mit Node.js eine Verbindung mit der Media Services v3-API herstellen.
+description: In diesem Artikel wird demonstriert, wie Sie mit Node.js eine Verbindung mit der Media Services v3-API herstellen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/25/2019
-ms.author: juliako
-ms.openlocfilehash: 2ab620ec456610029d699952bb9625abfe4c21dc
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-js
+ms.openlocfilehash: c6ea238edd68413646dda59b22d1c0dc2557d57e
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307886"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916830"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Verbinden mit der Media Services v3-API – Node.js
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Dieser Artikel zeigt Ihnen, wie Sie mit der Methode der Dienstprinzipalanmeldung eine Verbindung zum Azure Media Services v3 Node.js SDK herstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Installieren Sie [Node.js](https://nodejs.org/en/download/).
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md) Merken Sie sich unbedingt den Namen der Ressourcengruppe und den Namen des Media Services-Kontos.
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md) Merken Sie sich unbedingt den Namen der Ressourcengruppe und den Namen des Media Services-Kontos.
 
 > [!IMPORTANT]
 > Informieren Sie sich über die [Namenskonventionen](media-services-apis-overview.md#naming-conventions).
@@ -37,6 +40,8 @@ Dieser Artikel zeigt Ihnen, wie Sie mit der Methode der Dienstprinzipalanmeldung
 1. Erstellen Sie eine package.json-Datei mit Ihrem bevorzugten Editor.
 1. Öffnen Sie die Datei, und fügen Sie den folgenden Code ein:
 
+   Verwenden Sie unbedingt die aktuelle Version des [AzureMediaServices SDK für JavaScript](https://www.npmjs.com/package/@azure/arm-mediaservices).
+
 ```json
 {
   "name": "media-services-node-sample",
@@ -44,7 +49,7 @@ Dieser Artikel zeigt Ihnen, wie Sie mit der Methode der Dienstprinzipalanmeldung
   "description": "",
   "main": "./index.js",
   "dependencies": {
-    "azure-arm-mediaservices": "^4.1.0",
+    "azure-arm-mediaservices": "^8.0.0",
     "azure-storage": "^2.8.0",
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
@@ -70,7 +75,7 @@ npm install azure-arm-mediaservices
 
 1. Erstellen Sie eine JS-Datei mit Ihrem bevorzugten Editor.
 1. Öffnen Sie die Datei, und fügen Sie den folgenden Code ein.
-1. Legen Sie die Werte im Abschnitt „Endpunktkonfiguration“ auf Werte fest, die Sie von [Zugriffs-APIs](access-api-cli-how-to.md) erhalten haben.
+1. Legen Sie die Werte im Abschnitt „Endpunktkonfiguration“ auf Werte fest, die Sie von [Zugriffs-APIs](./access-api-howto.md) erhalten haben.
 
 ```js
 'use strict';
@@ -114,7 +119,7 @@ msRestAzure.loginWithServicePrincipalSecret(aadClientId, aadSecret, aadTenantId,
 });
 ```
 
-## <a name="run-your-app"></a>Führen Sie Ihre App aus.
+## <a name="run-your-app"></a>Ausführen der App
 
 Öffnen Sie eine Eingabeaufforderung. Navigieren Sie zum Verzeichnis des Beispiels, und führen Sie die folgenden Befehle aus:
 
@@ -130,5 +135,4 @@ node index.js
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Machen Sie sich mit der [Node.js-Referenzdokumentation](https://aka.ms/ams-v3-nodejs-ref) für Media Services sowie mit [Beispielen](https://github.com/Azure-Samples/media-services-v3-node-tutorials) vertraut, die die Verwendung der Media Services-API mit Node.js veranschaulichen.
-
+Machen Sie sich mit der [Node.js-Referenzdokumentation](/javascript/api/overview/azure/mediaservices/management) für Media Services sowie mit [Beispielen](https://github.com/Azure-Samples/media-services-v3-node-tutorials) vertraut, die die Verwendung der Media Services-API mit Node.js veranschaulichen.

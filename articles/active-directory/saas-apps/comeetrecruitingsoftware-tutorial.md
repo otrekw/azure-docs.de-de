@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Comeet Recruiting Software | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Comeet Recruiting Software konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 75f51dc9-9525-4ec6-80bf-28374f0c8adf
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac7c0d82f1fbb314630573d15f70af5e3a115590
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d458d94a4bee4fce523819af2fd3e555db6e70df
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105124"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672088"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>Tutorial: Azure Active Directory-Integration mit Comeet Recruiting Software
 
@@ -31,7 +27,7 @@ Die Integration von Comeet Recruiting Software in Azure AD bietet die folgenden 
 * Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Comeet Recruiting Software anzumelden (einmaliges Anmelden).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -67,7 +63,7 @@ Zum Konfigurieren der Integration von Comeet Recruiting Software in Azure AD mü
 
 4. Geben Sie im Suchfeld **Comeet Recruiting Software** ein. Wählen Sie im Ergebnisbereich **Comeet Recruiting Software** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Comeet Recruiting Software in der Ergebnisliste](common/search-new-app.png)
+    ![Comeet Recruiting Software in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -103,7 +99,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Comeet Re
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Comeet Recruiting Software](common/idp-intiated.png)
+    ![Screenshot des Abschnitts „Grundlegende S A M L-Konfiguration“, in dem die Aktion „Speichern“, das Feld „Bezeichner“ und das Feld „Antwort-U R L“ hervorgehoben sind](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
 
@@ -120,18 +116,18 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Comeet Re
 
 5. Ihre Comeet Recruiting Software-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot: Abschnitt „User Attributes“ (Benutzerattribute) mit der Schaltfläche „Bearbeiten“ ausgewählt](common/edit-attribute.png)
 
 6. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus: 
 
-    | NAME |  Quellattribut|
+    | Name |  Quellattribut|
     | ---------------| --------------- |
     | nameidentifier | user.mail |
     | comeet_id | user.userprincipalname |
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    ![image](common/new-save-attribute.png)
+    ![Screenshot: Abschnitt „Benutzeransprüche“ mit den hervorgehobenen Aktionen „Neuen Anspruch hinzufügen“ und „Speichern“](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -182,13 +178,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -198,7 +194,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung von einmaligem 
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste **Comeet Recruiting Software**aus.
+2. Wählen Sie in der Anwendungsliste **Comeet Recruiting Software** aus.
 
     ![Der Link „Comeet Recruiting Software“ in der Liste „Anwendungen“](common/all-applications.png)
 
@@ -224,13 +220,12 @@ In diesem Abschnitt erstellen Sie in der Comeet Recruiting Software eine Benutze
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Comeet Recruiting Software“ klicken, sollten Sie automatisch bei der Comeet Recruiting Software-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Comeet Recruiting Software“ klicken, sollten Sie automatisch bei der Comeet Recruiting Software-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

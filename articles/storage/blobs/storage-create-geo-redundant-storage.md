@@ -1,29 +1,30 @@
 ---
-title: 'Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blobspeicher: Azure Storage'
-description: Verwenden von georedundantem Speicher mit Lesezugriff, um Ihre Anwendungsdaten hoch verfügbar zu machen
+title: 'Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blob Storage'
+titleSuffix: Azure Storage
+description: Hier erfahren Sie, wie Sie geozonenredundanten Speicher mit Lesezugriff (RA-GZRS) verwenden, um Ihre Anwendungsdaten hochverfügbar zu machen.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc
+ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 3302402ae791ac17b8ac09ab91b061a558eb7c75
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 1c1ba7d8cd0e4202003a98153a48e0593d1fcd04
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390360"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543152"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blobspeicher
 
 Dieses Tutorial ist der erste Teil einer Serie. In diesem Teil erfahren Sie, wie Sie Hochverfügbarkeit für Ihre Anwendungsdaten in Azure herstellen.
 
-Am Ende des Tutorials verfügen Sie über eine Konsolenanwendung, die ein Blob in ein RA-GRS-Speicherkonto ([georedundanter Speicher mit Lesezugriff](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) hochlädt und aus diesem abruft.
+Am Ende des Tutorials verfügen Sie über eine Konsolenanwendung, die ein Blob in ein RA-GZRS-Speicherkonto ([geozonenredundanter Speicher mit Lesezugriff](../common/storage-redundancy.md)) hochlädt und aus diesem abruft.
 
-Georedundanter Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS) beruht auf der Replikation von Transaktionen von einer primären in eine sekundäre Region. Dieser Replikationsprozess garantiert, dass die Daten in der sekundären Region letztendlich konsistent sind. Die Anwendung ermittelt mithilfe des [Circuit-Breaker](/azure/architecture/patterns/circuit-breaker)-Musters, mit welchem Endpunkt eine Verbindung hergestellt werden soll, und wechselt automatisch zwischen Endpunkten, wenn Fehler und Wiederherstellungen simuliert werden.
+Georedundanz in Azure Storage repliziert Transaktionen asynchron von einer primären Region in eine sekundäre Region, die Hunderte von Kilometern entfernt ist. Dieser Replikationsprozess garantiert, dass die Daten in der sekundären Region letztendlich konsistent sind. Die Konsolenanwendung ermittelt mithilfe des Musters [Trennschalter](/azure/architecture/patterns/circuit-breaker), mit welchem Endpunkt eine Verbindung hergestellt werden soll, und wechselt automatisch zwischen Endpunkten, wenn Fehler und Wiederherstellungen simuliert werden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -38,19 +39,18 @@ Im ersten Teil der Serie lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-* Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
-  - **Azure-Entwicklung**
+* Installieren von [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit der Workload **Azure-Entwicklung**.
 
   ![Azure-Entwicklung (unter Web & Cloud)](media/storage-create-geo-redundant-storage/workloads.png)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 * [Installieren Sie Python.](https://www.python.org/downloads/)
 * Laden Sie das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python) herunter, und installieren Sie es.
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 * Installieren Sie [Node.js](https://nodejs.org).
 
@@ -64,29 +64,28 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 Ein Speicherkonto stellt einen eindeutigen Namespace zum Speichern Ihrer Azure Storage-Datenobjekte sowie für den Zugriff auf diese Objekte bereit.
 
-Führen Sie die folgenden Schritte aus, um ein georedundantes Speicherkonto mit Lesezugriff zu erstellen:
+Führen Sie die folgenden Schritte aus, um ein geozonenredundantes Speicherkonto mit Lesezugriff (RA-GZRS) zu erstellen:
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
-2. Klicken Sie auf der Seite **Neu** auf **Storage**.
-3. Wählen Sie unter **Ausgewählte** die Option **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus.
+1. Wählen Sie im Azure-Portal die Schaltfläche **Ressource erstellen** aus.
+2. Wählen Sie auf der Seite **Neu** die Option **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus.
 4. Füllen Sie das Speicherkontoformular wie in der Abbildung dargestellt mit den folgenden Angaben aus, und klicken Sie auf **Erstellen**.
 
-   | Einstellung       | Empfohlener Wert | Beschreibung |
+   | Einstellung       | Beispielwert | BESCHREIBUNG |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Name** | mystorageaccount | ein eindeutiger Wert für Ihr Speicherkonto |
-   | **Bereitstellungsmodell** | Ressourcen-Manager  | Azure Resource Manager enthält die neuesten Funktionen.|
-   | **Kontoart** | StorageV2 | Weitere Informationen zu den unterschiedlichen Kontoarten finden Sie unter [Speicherkontentypen](../common/storage-introduction.md#types-of-storage-accounts). |
-   | **Leistung** | Standard | Der Wert „Standard“ ist für das Beispielszenario ausreichend. |
-   | **Replikation**| Georedundanter Speicher mit Lesezugriff (RA-GRS) | Diese Angabe ist erforderlich, damit das Beispiel funktioniert. |
-   |**Abonnement** | Ihr Abonnement |Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.azure.com/Subscriptions). |
-   |**ResourceGroup** | myResourceGroup |Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). |
-   |**Location** | East US | Wählen Sie einen Standort aus. |
+   | **Abonnement** | *Mein Abonnement* | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.azure.com/Subscriptions). |
+   | **ResourceGroup** | *myResourceGroup* | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |
+   | **Name** | *mystorageaccount* | Ein eindeutiger Name für Ihr Speicherkonto |
+   | **Location** | *USA, Osten* | Wählen Sie einen Standort aus. |
+   | **Leistung** | *Standard* | Die Standardleistung ist eine gute Option für das Beispielszenario. |
+   | **Kontoart** | *StorageV2* | Es wird die Verwendung eines Speicherkontos vom Typ „Universell v2“ empfohlen. Weitere Informationen zu den Azure Storage-Kontotypen finden Sie unter [Speicherkontoübersicht](../common/storage-account-overview.md). |
+   | **Replikation**| *Geozonenredundanter Speicher mit Lesezugriff (RA-GZRS)* | Die primäre Region ist zonenredundant und wird in einer sekundären Region repliziert. Lesezugriff auf die sekundäre Region ist dabei aktiviert. |
+   | **Zugriffsebene**| *Heiße Ebene* | Verwenden Sie die heiße Ebene für häufig verwendete Daten. |
 
-![Erstellen eines Speicherkontos](media/storage-create-geo-redundant-storage/createragrsstracct.png)
+    ![Erstellen eines Speicherkontos](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [Laden Sie das Beispielprojekt herunter](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip), und extrahieren (entzippen) Sie die Datei „storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip“. Sie können auch [Git](https://git-scm.com/) verwenden, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung herunterzuladen. Das Beispielprojekt enthält eine Konsolenanwendung.
 
@@ -94,7 +93,7 @@ Führen Sie die folgenden Schritte aus, um ein georedundantes Speicherkonto mit 
 git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 [Laden Sie das Beispielprojekt herunter](https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip), und extrahieren (entzippen) Sie die Datei „storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.zip“. Sie können auch [Git](https://git-scm.com/) verwenden, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung herunterzuladen. Das Beispielprojekt enthält eine einfache Python-Anwendung.
 
@@ -102,7 +101,7 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 [Laden Sie das Beispielprojekt herunter](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs), und entzippen Sie die Datei. Sie können auch [Git](https://git-scm.com/) verwenden, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung herunterzuladen. Das Beispielprojekt enthält eine einfache Node.js-Anwendung.
 
@@ -114,7 +113,7 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 ## <a name="configure-the-sample"></a>Das Beispiel konfigurieren
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 Sie müssen in der Anwendung die Verbindungszeichenfolge für das Speicherkonto angeben. Sie können diese Verbindungszeichenfolge in einer Umgebungsvariablen auf dem lokalen Computer speichern, auf dem die Anwendung ausgeführt wird. Befolgen Sie je nach Betriebssystem die Schritte für eines der unten angegebenen Beispiele, um die Umgebungsvariable zu erstellen.
 
@@ -132,7 +131,7 @@ export storageconnectionstring=<yourconnectionstring>
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Sie müssen in der Anwendung Ihre Anmeldeinformationen für das Speicherkonto angeben. Sie können diese Informationen in einer Umgebungsvariablen auf dem lokalen Computer speichern, auf dem die Anwendung ausgeführt wird. Befolgen Sie je nach Betriebssystem die Schritte für eines der unten angegebenen Beispiele, um die Umgebungsvariablen zu erstellen.
 
@@ -152,7 +151,7 @@ setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 Um dieses Beispiel ausführen zu können, müssen Sie Ihre Anmeldeinformationen für das Speicherkonto der `.env.example`-Datei hinzufügen und sie in `.env` umbenennen.
 
@@ -169,30 +168,29 @@ Installieren Sie die erforderlichen Abhängigkeiten. Öffnen Sie hierzu eine Ein
 
 ## <a name="run-the-console-application"></a>Ausführen der Konsolenanwendung
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-Drücken Sie in Visual Studio **F5**, oder wählen Sie **Starten** aus, um mit dem Debuggen der Anwendung zu beginnen. Visual Studio stellt fehlende NuGet-Pakete bei entsprechender Konfiguration automatisch wieder her. Weitere Informationen finden Sie unter [Installieren und Neuinstallieren von Paketen mit der Paketwiederherstellung](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview).
+Drücken Sie in Visual Studio **F5**, oder wählen Sie **Starten** aus, um mit dem Debuggen der Anwendung zu beginnen. Visual Studio stellt fehlende NuGet-Pakete bei entsprechender Konfiguration automatisch wieder her. Weitere Informationen finden Sie unter [Installieren und Neuinstallieren von Paketen mit der Paketwiederherstellung](/nuget/consume-packages/package-restore#package-restore-overview).
 
-Ein Konsolenfenster wird geöffnet, und die Anwendung wird ausgeführt. Die Anwendung lädt das Bild **HelloWorld.png** Bild aus der Projektmappe in das Speicherkonto hoch. Anschließend wird von der Anwendung überprüft, ob das Bild repliziert wurde und sich am sekundären RA-GRS-Endpunkt befindet. Das Bild wird dann von der Anwendung maximal 999 Mal heruntergeladen. Jeder Lesevorgang wird dabei durch ein **P** oder ein **S** dargestellt. Während **P** für den primären Endpunkt steht, repräsentiert **S** den sekundären Endpunkt.
+Ein Konsolenfenster wird geöffnet, und die Anwendung wird ausgeführt. Die Anwendung lädt das Bild **HelloWorld.png** Bild aus der Projektmappe in das Speicherkonto hoch. Anschließend wird von der Anwendung überprüft, ob das Bild im sekundären RA-GZRS-Endpunkt repliziert wurde. Das Bild wird dann von der Anwendung maximal 999 Mal heruntergeladen. Jeder Lesevorgang wird dabei durch ein **P** oder ein **S** dargestellt. Während **P** für den primären Endpunkt steht, repräsentiert **S** den sekundären Endpunkt.
 
 ![Konsolenanwendung wird ausgeführt](media/storage-create-geo-redundant-storage/figure3.png)
 
 Im Beispielcode wird die Aufgabe `RunCircuitBreakerAsync` in der Datei `Program.cs` verwendet, um mit der [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync)-Methode ein Bild aus dem Speicherkonto herunterzuladen. Vor dem Download wird ein [OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext)-Objekt initialisiert. Der Vorgangskontext definiert Ereignishandler, die aufgerufen werden, wenn ein Download erfolgreich abgeschlossen wurde oder wenn ein Download fehlschlägt und erneut versucht wird, den Download auszuführen.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Navigieren Sie zum Ausführen der Anwendung in einem Terminal oder über eine Eingabeaufforderung zum Verzeichnis **circuitbreaker.py**, und geben Sie `python circuitbreaker.py` ein. Die Anwendung lädt das Bild **HelloWorld.png** Bild aus der Projektmappe in das Speicherkonto hoch. Anschließend wird von der Anwendung überprüft, ob das Bild repliziert wurde und sich am sekundären RA-GRS-Endpunkt befindet. Das Bild wird dann von der Anwendung maximal 999 Mal heruntergeladen. Jeder Lesevorgang wird dabei durch ein **P** oder ein **S** dargestellt. Während **P** für den primären Endpunkt steht, repräsentiert **S** den sekundären Endpunkt.
+Navigieren Sie zum Ausführen der Anwendung in einem Terminal oder über eine Eingabeaufforderung zum Verzeichnis **circuitbreaker.py**, und geben Sie `python circuitbreaker.py` ein. Die Anwendung lädt das Bild **HelloWorld.png** Bild aus der Projektmappe in das Speicherkonto hoch. Anschließend wird von der Anwendung überprüft, ob das Bild im sekundären RA-GZRS-Endpunkt repliziert wurde. Das Bild wird dann von der Anwendung maximal 999 Mal heruntergeladen. Jeder Lesevorgang wird dabei durch ein **P** oder ein **S** dargestellt. Während **P** für den primären Endpunkt steht, repräsentiert **S** den sekundären Endpunkt.
 
 ![Konsolenanwendung wird ausgeführt](media/storage-create-geo-redundant-storage/figure3.png)
 
-Im Beispielcode wird die `run_circuit_breaker`-Methode in der Datei `circuitbreaker.py` verwendet, um mit der [get_blob_to_path](https://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html)-Methode ein Bild aus dem Speicherkonto herunterzuladen.
+Im Beispielcode wird die `run_circuit_breaker`-Methode in der Datei `circuitbreaker.py` verwendet, um mit der [get_blob_to_path](/python/api/azure-storage-blob/azure.storage.blob.baseblobservice.baseblobservice?view=azure-python-previous#get-blob-to-path-container-name--blob-name--file-path--open-mode--wb---snapshot-none--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--lease-id-none--if-modified-since-none--if-unmodified-since-none--if-match-none--if-none-match-none--timeout-none-)-Methode ein Bild aus dem Speicherkonto herunterzuladen.
 
 Die retry-Funktion des Storage-Objekts wird auf eine lineare Wiederholungsrichtlinie festgelegt. Mit der retry-Funktion wird ermittelt, ob für eine Anforderung ein Wiederholungsversuch durchgeführt werden soll. Außerdem wird angegeben, wie viele Sekunden lang gewartet werden soll, bevor der Versuch gestartet wird. Legen Sie den Wert **retry\_to\_secondary** auf „true“ fest, wenn für die Anforderung ein Wiederholungsversuch für den sekundären Endpunkt durchgeführt werden soll, falls die erste Anforderung an den primären Endpunkt fehlschlägt. In der Beispielanwendung wird in der `retry_callback`-Funktion des Storage-Objekts eine benutzerdefinierte Wiederholungsrichtlinie definiert.
 
-Vor dem Herunterladen werden die Funktionen [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) und [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) für das Dienstobjekt definiert. Mit diesen Funktionen werden die Ereignishandler definiert, die aufgerufen werden, wenn ein Download erfolgreich abgeschlossen wurde oder wenn ein Download fehlschlägt und erneut versucht wird, den Download durchzuführen.
+Vor dem Herunterladen werden die Funktionen [retry_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) und [response_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) für das Dienstobjekt definiert. Mit diesen Funktionen werden die Ereignishandler definiert, die aufgerufen werden, wenn ein Download erfolgreich abgeschlossen wurde oder wenn ein Download fehlschlägt und erneut versucht wird, den Download durchzuführen.
 
-
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 Um das Beispiel auszuführen, öffnen Sie eine Eingabeaufforderung, navigieren Sie zum Beispielordner, und geben Sie dann `node index.js` ein.
 
@@ -223,7 +221,7 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>Grundlagen des Beispielcodes
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+### <a name="net"></a>[.NET](#tab/dotnet)
 
 ### <a name="retry-event-handler"></a>Ereignishandler für erneuten Downloadversuch
 
@@ -274,11 +272,11 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 ### <a name="retry-event-handler"></a>Ereignishandler für erneuten Downloadversuch
 
-Der Ereignishandler `retry_callback` wird aufgerufen und für einen Neuversuch festgelegt, wenn es beim Herunterladen des Bilds zu einem Fehler kommt. Wenn die maximale Anzahl von Wiederholungen erreicht ist, die in der Anwendung definiert ist, wird die [LocationMode](https://docs.microsoft.com/python/api/azure.storage.common.models.locationmode?view=azure-python)-Eigenschaft der Anforderung in `SECONDARY` geändert. Durch diese Einstellung versucht die Anwendung, das Bild vom sekundären Endpunkt herunterzuladen. Diese Konfiguration reduziert die Anforderungszeit für das Bild, da die Anzahl der wiederholten Anforderungen an den primären Endpunkt begrenzt ist.
+Der Ereignishandler `retry_callback` wird aufgerufen und für einen Neuversuch festgelegt, wenn es beim Herunterladen des Bilds zu einem Fehler kommt. Wenn die maximale Anzahl von Wiederholungen erreicht ist, die in der Anwendung definiert ist, wird die [LocationMode](/python/api/azure-storage-common/azure.storage.common.models.locationmode?view=azure-python)-Eigenschaft der Anforderung in `SECONDARY` geändert. Durch diese Einstellung versucht die Anwendung, das Bild vom sekundären Endpunkt herunterzuladen. Diese Konfiguration reduziert die Anforderungszeit für das Bild, da die Anzahl der wiederholten Anforderungen an den primären Endpunkt begrenzt ist.
 
 ```python
 def retry_callback(retry_context):
@@ -302,7 +300,7 @@ def retry_callback(retry_context):
 
 ### <a name="request-completed-event-handler"></a>Ereignishandler für abgeschlossene Anforderung
 
-Der Ereignishandler `response_callback` wird aufgerufen, wenn der Download des Bilds erfolgreich ist. Wenn die Anwendung den sekundären Endpunkt verwendet, stellt die Anwendung weiterhin bis zu 20 Anforderungen an diesen Endpunkt. Nach 20 Anforderungen legt die Anwendung für die [LocationMode](https://docs.microsoft.com/python/api/azure.storage.common.models.locationmode?view=azure-python)-Eigenschaft auf den Wert `PRIMARY` zurück und versucht erneut, Anforderungen an den primären Endpunkt zu senden. Wenn eine Anforderung erfolgreich ist, liest die Anwendung weiterhin aus dem primären Endpunkt.
+Der Ereignishandler `response_callback` wird aufgerufen, wenn der Download des Bilds erfolgreich ist. Wenn die Anwendung den sekundären Endpunkt verwendet, stellt die Anwendung weiterhin bis zu 20 Anforderungen an diesen Endpunkt. Nach 20 Anforderungen legt die Anwendung für die [LocationMode](/python/api/azure-storage-common/azure.storage.common.models.locationmode?view=azure-python)-Eigenschaft auf den Wert `PRIMARY` zurück und versucht erneut, Anforderungen an den primären Endpunkt zu senden. Wenn eine Anforderung erfolgreich ist, liest die Anwendung weiterhin aus dem primären Endpunkt.
 
 ```python
 def response_callback(response):
@@ -317,7 +315,7 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 Mit dem Node.js V10 SDK sind Rückrufhandler nicht erforderlich. Stattdessen erstellt das Beispiel eine Pipeline, die mit Optionen für Wiederholungsversuche und einem sekundären Endpunkt konfiguriert wird. Dies ermöglicht der Anwendung, automatisch zur sekundären Pipeline zu wechseln, wenn sie Ihre Daten nicht über die primäre Pipeline erreichen kann.
 
@@ -344,9 +342,9 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im ersten Teil dieser Reihe haben Sie erfahren, wie Sie mit RA-GRS-Speicherkonten Hochverfügbarkeit für eine Anwendung herstellen.
+Im ersten Teil dieser Reihe haben Sie erfahren, wie Sie mit RA-GZRS-Speicherkonten Hochverfügbarkeit für eine Anwendung herstellen.
 
-Im zweiten Teil der Reihe erfahren Sie, wie Sie einen Fehler simulieren, durch den Ihre Anwendung auf den sekundären RA-GRS-Endpunkt ausweichen muss.
+Im zweiten Teil der Reihe erfahren Sie, wie Sie einen Fehler simulieren, durch den Ihre Anwendung auf den sekundären RA-GZRS-Endpunkt ausweichen muss.
 
 > [!div class="nextstepaction"]
-> [Simulate a failure in connection to your primary storage endpoint (Simulieren eines Fehlers bei einem primären Speicherendpunkt)](storage-simulate-failure-ragrs-account-app.md)
+> [Tutorial: Simulieren eines Fehlers bei Zugriff auf redundanten Speicher mit Lesezugriff](simulate-primary-region-failure.md)

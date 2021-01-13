@@ -1,25 +1,17 @@
 ---
-title: Verwalten der Auslastung von Azure Service Fabric-Apps mithilfe von Metriken | Microsoft-Dokumentation
+title: Verwalten der Auslastung von Azure Service Fabric-Apps mithilfe von Metriken
 description: Hier erfahren Sie, wie Sie Metriken in Service Fabric konfigurieren und verwenden, um den Ressourcenverbrauch von Diensten zu verwalten.
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1a61de6b0b6f73e112dd69108272ded3a67497e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2a7dedea2937c9cafb4216da3628aa1360ad6993
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516772"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173006"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken
 *Metriken* die Ressourcen, die für Ihre Dienste wichtig sind und die von den Knoten im Cluster bereitgestellt werden. Eine Metrik ist ein beliebiges Element, das Sie verwalten möchten, um die Leistung Ihrer Dienste zu verbessern oder zu steuern. Sie können beispielsweise den Arbeitsspeicherverbrauch überwachen, um festzustellen, ob Ihr Dienst überlastet ist. Eine weitere Verwendungsmöglichkeit: Sie können ermitteln, ob der Dienst an eine andere Position verschoben werden kann, bei der eine geringere Arbeitsspeicherauslastung gegeben ist, um die Leistung zu steigern.
@@ -35,9 +27,9 @@ Angenommen, Sie möchten damit beginnen, Ihren Dienst zu schreiben und bereitzus
 
 | Metrik | Auslastung für zustandslose Instanz | Zustandsbehaftete sekundäre Auslastung | Zustandsbehaftete primäre Auslastung | Weight |
 | --- | --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |Hoch |
-| ReplicaCount |0 |1 |1 |Mittel |
-| Count |1 |1 |1 |Niedrig |
+| PrimaryCount |0 |0 |1 |High |
+| ReplicaCount |0 |1 |1 |Medium |
+| Anzahl |1 |1 |1 |Niedrig |
 
 
 Für grundlegende Workloads liefern die Standardmetriken eine hinreichende Lastverteilung im Cluster. Im folgenden Beispiel wird untersucht, was geschieht, wenn zwei Dienste erstellt und die Standardmetriken für den Ausgleich verwendet werden. Der erste Dienst ist ein zustandsbehafteter Dienst mit drei Partitionen und der Zielreplikatgruppen-Größe „3“. Der zweite Dienst ist ein zustandsloser Dienst mit einer einzelnen Partition und drei Instanzen.
@@ -49,7 +41,7 @@ Ergebnis:
 ![Clusterlayout mit Standardmetriken][Image1]
 </center>
 
-Zu beachtende Aspekte:
+Hinweise, die Sie beachten sollten:
   - Primäre Replikate für den zustandsbehafteten Dienst werden auf mehrere Knoten verteilt.
   - Replikate einer Partition befinden sich auf unterschiedlichen Knoten.
   - Die Gesamtanzahl primärer und sekundärer Replikate ist über den Cluster verteilt.
@@ -57,7 +49,7 @@ Zu beachtende Aspekte:
 
 So weit, so gut.
 
-Die Standardmetriken funktionieren hervorragend als Ausgangspunkt. Anschließend reichen die Standardmetriken jedoch nicht mehr aus. Beispiel:  Wie hoch ist die Wahrscheinlichkeit, dass sich mit dem gewählten Partitionierungsschema eine absolut gleichmäßige Auslastung für alle Partitionen erreichen lässt? Wie hoch ist die Wahrscheinlichkeit, dass die Auslastung für einen bestimmten Dienst dauerhaft konstant oder auch nur zum aktuellen Zeitpunkt für mehrere Partitionen gleich ist?
+Die Standardmetriken funktionieren hervorragend als Ausgangspunkt. Anschließend reichen die Standardmetriken jedoch nicht mehr aus. Beispiel: Wie hoch ist die Wahrscheinlichkeit, dass sich mit dem gewählten Partitionierungsschema eine absolut gleichmäßige Auslastung für alle Partitionen erreichen lässt? Wie hoch ist die Wahrscheinlichkeit, dass die Auslastung für einen bestimmten Dienst dauerhaft konstant oder auch nur zum aktuellen Zeitpunkt für mehrere Partitionen gleich ist?
 
 Sie können den Dienst auch nur mit den Standardmetriken ausführen. Dies bedeutet jedoch im Allgemeinen nur, dass Ihre Clusterauslastung geringer und ungleichmäßiger als erwartet ist. Das liegt daran, dass die Standardmetriken nicht adaptiv sind und davon ausgegangen wird, dass alles gleichwertig ist. So tragen sowohl ein ausgelasteter als auch ein nicht ausgelasteter primärer Knoten zur Metrik „PrimaryCount“ jeweils „1“ bei. Im schlimmsten Fall kann die ausschließliche Verwendung der Standardmetriken auch zu überlasteten Knoten und damit zu Leistungseinbußen führen. Wenn Sie also Ihren Cluster optimal nutzen und Leistungsprobleme vermeiden möchten, müssen Sie auf benutzerdefinierte Metriken und dynamische Auslastungsberichte zurückgreifen.
 
@@ -146,12 +138,13 @@ Im Folgenden betrachten wir jede dieser Einstellungen eingehender und diskutiere
 ## <a name="load"></a>Laden
 Metriken werden definiert, um eine Auslastung darzustellen. Die *Auslastung* gibt an, welcher Anteil einer bestimmten Metrik von einer Dienstinstanz oder von einem Replikat auf einem bestimmten Knoten verbraucht wird. Die Auslastung kann an beinahe jedem Punkt konfiguriert werden. Beispiel:
 
-  - Die Auslastung kann beim Erstellen eines Diensts definiert werden. Hierbei wird von der _Standardauslastung_ gesprochen.
-  - Die Metrikinformationen für einen Dienst, einschließlich der Standardauslastungen, können nach dem Erstellen des Diensts aktualisiert werden. Dies wird als _Aktualisieren eines Diensts_ bezeichnet. 
-  - Die Auslastungen für eine bestimmte Partition können auf die Standardwerte für den betreffenden Dienst zurückgesetzt werden. Dies wird als _Zurücksetzen der Partitionsauslastung_ bezeichnet.
-  - Die Auslastung kann dynamisch während der Laufzeit für einzelne Dienstobjekte gemeldet werden. Dies wird als _Melden der Auslastung_ bezeichnet. 
-  
-Alle diese Strategien können für ein und denselben Dienst während dessen Lebensdauer verfolgt werden. 
+  - Die Auslastung kann beim Erstellen eines Diensts definiert werden. Diese Art der Auslastungskonfiguration wird als _Standardauslastung_ bezeichnet.
+  - Die Metrikinformationen für einen Dienst, einschließlich der Standardauslastungen, können nach dem Erstellen des Diensts aktualisiert werden. Diese Metrikaktualisierung erfolgt durch _Aktualisieren eines Dienst_ .
+  - Die Auslastungen für eine bestimmte Partition können auf die Standardwerte für den betreffenden Dienst zurückgesetzt werden. Diese Metrikaktualisierung wird als _Zurücksetzen der Partitionsauslastung_ bezeichnet.
+  - Die Auslastung kann dynamisch während der Laufzeit für einzelne Dienstobjekte gemeldet werden. Diese Metrikaktualisierung wird als _Melden der Auslastung_ bezeichnet.
+  - Die Auslastung für Replikate oder Instanzen der Partition kann auch aktualisiert werden, indem Auslastungswerte über einen Fabric-API-Aufruf gemeldet werden. Diese Metrikaktualisierung wird als _Melden der Auslastung für eine Partition_ bezeichnet.
+
+Alle diese Strategien können für ein und denselben Dienst während dessen Lebensdauer verfolgt werden.
 
 ## <a name="default-load"></a>Standardauslastung
 Die *Standardauslastung* gibt den Verbrauch der Metrik an, der für die einzelnen Dienstobjekte (zustandslose Instanz oder zustandsbehaftetes Replikat) dieses Dienstes anfällt. Der Clusterressourcen-Manager verwendet diesen Wert als Auslastung des Dienstobjekts, bis er weitere Informationen erhält, beispielsweise einen dynamischen Auslastungsbericht. Für einfachere Dienste stellt die Standardauslastung eine statische Definition dar. Die Standardauslastung wird nie aktualisiert und über die gesamte Lebensdauer des Diensts verwendet. Standardauslastungen eignen sich gut für einfache Kapazitätsplanungsszenarien, in denen verschiedenen Workloads bestimmte Ressourcenmengen zugewiesen werden, die sich nicht ändern.
@@ -183,6 +176,67 @@ this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnecti
 ```
 
 Ein Dienst kann Berichte zu jeder der Metriken liefern, die für ihn bei seiner Erstellung definiert wurden. Wenn ein Dienst eine Auslastung für eine Metrik meldet, dessen Verwendung für ihn nicht konfiguriert ist, wird der betreffende Bericht von Service Fabric ignoriert. Werden gleichzeitig andere Metriken gemeldet, die gültig sind, werden diese Berichte akzeptiert. Der Dienstcode kann sämtliche ihm bekannten Metriken messen und melden, und der Bediener kann die zu verwendende Metrikkonfiguration angeben, ohne den Dienstcode zu ändern. 
+
+## <a name="reporting-load-for-a-partition"></a>Melden der Auslastung für eine Partition
+Im vorherigen Abschnitt wird beschrieben, wie Dienstreplikate oder -instanzen selbst Auslastungen melden. Es gibt eine zusätzliche Option zum dynamischen Melden der Auslastung mit FabricClient. Wenn Sie die Auslastung für eine Partition melden, können Sie sie für mehrere Partitionen gleichzeitig melden.
+
+Diese Berichte werden auf die gleiche Weise wie Auslastungsberichte verwendet, die von den Replikaten oder Instanzen selbst stammen. Gemeldete Werte sind gültig, bis neue Auslastungswerte gemeldet werden, entweder durch das Replikat oder die Instanz oder durch das Melden eines neuen Auslastungswerts für eine Partition.
+
+Mit dieser API gibt es mehrere Möglichkeiten, die Auslastung im Cluster zu aktualisieren:
+
+  - Eine zustandsbehaftete Dienstpartition kann die primäre Replikatauslastung aktualisieren.
+  - Durch zustandslose und zustandsbehaftete Dienste kann die Auslastung aller zugehörigen sekundären Replikate oder Instanzen aktualisiert werden.
+  - Durch zustandslose und zustandsbehaftete Dienste kann die Auslastung eines bestimmten Replikats oder einer bestimmten Instanz auf einem Knoten aktualisiert werden.
+
+Es ist auch möglich, jede dieser Aktualisierungen pro Partition gleichzeitig zu kombinieren.
+
+Das Aktualisieren von Auslastungen für mehrere Partitionen kann mit einem einzigen API-Aufruf durchführt werden. in diesem Fall enthält die Ausgabe eine Antwort pro Partition. Wenn die Partitionsaktualisierung aus irgendeinem Grund nicht erfolgreich angewendet wird, werden Aktualisierungen für diese Partition übersprungen, und der entsprechende Fehlercode für eine Zielpartition wird angegeben:
+
+  - PartitionNotFound: Die angegebene Partitions-ID ist nicht vorhanden.
+  - ReconfigurationPending: Die Partition wird zurzeit neu konfiguriert.
+  - InvalidForStatelessServices: Es wurde versucht, die Auslastung eines primären Replikats für eine Partition zu ändern, die zu einem zustandslosen Dienst gehört.
+  - ReplicaDoesNotExist: Das sekundäre Replikat oder die Instanz für einen angegebenen Knoten ist nicht vorhanden.
+  - InvalidOperation: Kann in zwei Fällen auftreten: Die Aktualisierung der Auslastung für eine Partition, die zur Systemanwendung gehört, oder die Aktualisierung der vorhergesagten Auslastung ist nicht aktiviert.
+
+Wenn einige dieser Fehler zurückgegeben werden, können Sie die Eingabe für eine bestimmte Partition aktualisieren und die Aktualisierung für eine bestimmte Partition wiederholen.
+
+Code:
+
+```csharp
+Guid partitionId = Guid.Parse("53df3d7f-5471-403b-b736-bde6ad584f42");
+string metricName0 = "CustomMetricName0";
+List<MetricLoadDescription> newPrimaryReplicaLoads = new List<MetricLoadDescription>()
+{
+    new MetricLoadDescription(metricName0, 100)
+};
+
+string nodeName0 = "NodeName0";
+List<MetricLoadDescription> newSpecificSecondaryReplicaLoads = new List<MetricLoadDescription>()
+{
+    new MetricLoadDescription(metricName0, 200)
+};
+
+OperationResult<UpdatePartitionLoadResultList> updatePartitionLoadResults =
+    await this.FabricClient.UpdatePartitionLoadAsync(
+        new UpdatePartitionLoadQueryDescription
+        {
+            PartitionMetricLoadDescriptionList = new List<PartitionMetricLoadDescription>()
+            {
+                new PartitionMetricLoadDescription(
+                    partitionId,
+                    newPrimaryReplicaLoads,
+                    new List<MetricLoadDescription>(),
+                    new List<ReplicaMetricLoadDescription>()
+                    {
+                        new ReplicaMetricLoadDescription(nodeName0, newSpecificSecondaryReplicaLoads)
+                    })
+            }
+        },
+        this.Timeout,
+        cancellationToken);
+```
+
+In diesem Beispiel führen Sie eine Aktualisierung der zuletzt gemeldeten Auslastung für eine Partition _53df3d7f-5471-403b-b736-bde6ad584f42_ aus. Die Auslastung des primären Replikats für eine Metrik _CustomMetricName0_ wird mit dem Wert 100 aktualisiert. Gleichzeitig wird die Auslastung für die gleiche Metrik für ein bestimmtes sekundäres Replikat, das sich auf dem Knoten _NodeName0_ befindet, mit dem Wert 200 aktualisiert.
 
 ### <a name="updating-a-services-metric-configuration"></a>Aktualisieren der Metrikkonfiguration eines Diensts
 Die dem Dienst zugeordnete Liste der Metriken und die Eigenschaften dieser Metriken können dynamisch aktualisiert werden, während der Dienst aktiv ist. Dies bietet eine gewisse Flexibilität und Experimentiermöglichkeiten. Beispiele für Situationen, in denen dies hilfreich ist:

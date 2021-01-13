@@ -1,24 +1,23 @@
 ---
-title: Überwachen von VPN Gateways mit der Problembehandlung von Azure Network Watcher | Microsoft-Dokumentation
+title: Problembehandlung und Überwachung von VPN-Gateways – Azure Automation
+titleSuffix: Azure Network Watcher
 description: In diesem Artikel wird beschrieben, wie die Diagnose für die lokale Verbindung mit Azure Automation und Network Watcher durchgeführt wird.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: d3a09ee83d4a1f05781c885eaa708e6e024b7f97
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.author: damendo
+ms.openlocfilehash: af671996722524de9af1a90ae8dfde27f814c8c2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64719792"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011811"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Überwachen von VPN Gateways mit der Problembehandlung von Network Watcher
 
@@ -43,7 +42,7 @@ Vor dem Starten dieses Szenarios müssen die folgenden Voraussetzungen erfüllt 
 
 - Azure Automation-Konto in Azure Stellen Sie sicher, dass das Automation-Konto über die neuesten Module und über das AzureRM.Network-Modul verfügt. Das AzureRM.Network-Modul ist im Modulkatalog verfügbar, falls Sie es ihrem Automation-Konto noch hinzufügen müssen.
 - In Azure Automation muss ein Satz mit Anmeldeinformationen konfiguriert sein. Weitere Informationen finden Sie im Artikel zur [Azure Automation-Sicherheit](../automation/automation-security-overview.md).
-- Gültiger SMTP-Server (Office 365, Ihre lokale E-Mail-Anwendung oder Ähnliches) und definierte Anmeldeinformationen in Azure Automation
+- Gültiger SMTP-Server (Microsoft 365, Ihre lokale E-Mail-Anwendung oder Ähnliches) und definierte Anmeldeinformationen in Azure Automation
 - Konfiguriertes Virtual Network-Gateway in Azure
 - Ein bestehendes Speicherkonto mit einem bestehenden Container, in dem die Protokolle gespeichert werden.
 
@@ -52,7 +51,7 @@ Vor dem Starten dieses Szenarios müssen die folgenden Voraussetzungen erfüllt 
 
 ### <a name="create-the-runbook"></a>Erstellen des Runbooks
 
-Der erste Schritt zum Konfigurieren des Beispiels ist die Erstellung des Runbooks. In diesem Beispiel wird ein ausführendes Konto verwendet. Informationen zu ausführenden Konten finden Sie unter [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/automation-create-runas-account.md).
+Der erste Schritt zum Konfigurieren des Beispiels ist die Erstellung des Runbooks. In diesem Beispiel wird ein ausführendes Konto verwendet. Informationen zu ausführenden Konten finden Sie unter [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/manage-runas-account.md).
 
 ### <a name="step-1"></a>Schritt 1
 
@@ -80,13 +79,13 @@ In diesem Schritt geben wir dem Runbook einen Namen. Im Beispiel ist dies **Get-
 
 ### <a name="step-5"></a>Schritt 5
 
-In diesem Schritt wird das Runbook erstellt. Das folgende Codebeispiel enthält den gesamten Code, der für das Beispiel benötigt wird. Die Elemente im Code, die das Wort \<value\> enthalten, müssen durch die Werte aus Ihrem Abonnement ersetzt werden.
+In diesem Schritt wird das Runbook erstellt. Das folgende Codebeispiel enthält den gesamten Code, der für das Beispiel benötigt wird. Die Elemente im Code, die \<value\> enthalten, müssen durch die Werte aus Ihrem Abonnement ersetzt werden.
 
 Verwenden Sie den folgenden Code, und klicken Sie auf **Speichern**.
 
 ```powershell
 # Set these variables to the proper values for your environment
-$o365AutomationCredential = "<Office 365 account>"
+$automationCredential = "<work or school account>"
 $fromEmail = "<from email address>"
 $toEmail = "<to email address>"
 $smtpServer = "<smtp.office365.com>"
@@ -100,8 +99,8 @@ $storageAccountName = "<storage account name>"
 $storageAccountResourceGroup = "<resource group name>"
 $storageAccountContainer = "<container name>"
 
-# Get credentials for Office 365 account
-$cred = Get-AutomationPSCredential -Name $o365AutomationCredential
+# Get credentials for work or school account
+$cred = Get-AutomationPSCredential -Name $automationCredential
 
 # Get the connection "AzureRunAsConnection "
 $servicePrincipalConnection=Get-AutomationConnection -Name $runAsConnectionName

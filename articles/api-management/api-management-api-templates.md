@@ -11,19 +11,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 9d75dff413e7b6e61d38b95e08bf9c891b583014
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.custom: devx-track-python
+ms.openlocfilehash: b63f38609b4b61130e515dd118e8ced9f201defd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073819"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87851713"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-Vorlagen in Azure API Management
 
 Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des Entwicklerportals mit einem Satz von Vorlagen anzupassen, die den Inhalt konfigurieren. Unter Verwendung dieser Vorlagen können Sie die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und dem Editor Ihrer Wahl (beispielsweise [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) sowie verschiedenen lokalisierten [Zeichenfolgenressourcen](api-management-template-resources.md#strings), [Glyph-Ressourcen](api-management-template-resources.md#glyphs) und [Seitensteuerelementen](api-management-page-controls.md) an Ihre Bedürfnisse anpassen.  
-  
+
 Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im Entwicklerportal anpassen.  
   
 -   [API-Liste](#APIList)  
@@ -39,14 +40,16 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund von kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund von kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](./api-management-developer-portal-templates.md).  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-## <a name="APIList"></a> API-Liste  
+## <a name="api-list"></a><a name="APIList"></a> API-Liste  
  Mit der Vorlage für die **API-Liste** können Sie den Text der API-Listenseite im Entwicklerportal anpassen.  
   
- ![Entwicklerportal-API-Liste](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM-Entwicklerportal API-Vorlagenliste")  
+ ![Entwicklerportal-API-Liste](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "Vorlagen im APIM-Entwicklerportal: API-Liste")  
   
 ### <a name="default-template"></a>Standardvorlage  
   
@@ -87,7 +90,7 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
   
 ### <a name="data-model"></a>Datenmodell  
   
-|Eigenschaft|Typ|BESCHREIBUNG|  
+|Eigenschaft|type|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
 |`apis`|Sammlung von [API summary](api-management-template-data-model-reference.md#APISummary)-Entitäten.|Die für den aktuellen Benutzer sichtbaren APIs.|  
   
@@ -111,10 +114,10 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
 }  
 ```  
   
-## <a name="Product"></a> Vorgang  
+## <a name="operation"></a><a name="Product"></a> Vorgang  
  Mit der Vorlage für den **Vorgang** können Sie den Text der Vorgangsseite im Entwicklerportal anpassen.  
   
- ![Vorgangsseite im Entwicklerportal](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "Vorgangsseite mit Vorlagen des APIM-Entwicklerportals")  
+ ![Betriebsseite im Entwicklerportal](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "Vorlagen im APIM-Entwicklerportal: Betriebsseite")  
   
 ### <a name="default-template"></a>Standardvorlage  
   
@@ -342,14 +345,14 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
   
 ### <a name="data-model"></a>Datenmodell  
   
-|Eigenschaft|Typ|BESCHREIBUNG|  
+|Eigenschaft|type|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
-|`apiId`|Zeichenfolge|Die ID der aktuellen API.|  
-|`apiName`|Zeichenfolge|Der Name der API.|  
-|`apiDescription`|Zeichenfolge|Eine Beschreibung der API.|  
+|`apiId`|string|Die ID der aktuellen API.|  
+|`apiName`|string|Der Name der API.|  
+|`apiDescription`|string|Eine Beschreibung der API.|  
 |`api`|Entität [API summary](api-management-template-data-model-reference.md#APISummary).|Die aktuelle API.|  
 |`operation`|[Vorgang](api-management-template-data-model-reference.md#Operation)|Der aktuell angezeigte Vorgang.|  
-|`sampleUrl`|Zeichenfolge|Die URL für den aktuellen Vorgang.|  
+|`sampleUrl`|string|Die URL für den aktuellen Vorgang.|  
 |`operationMenu`|[Vorgangsmenü](api-management-template-data-model-reference.md#Menu)|Ein Menü mit Vorgängen für diese API.|  
 |`consoleUrl`|URI|Der URI für die Schaltfläche **Ausprobieren**.|  
 |`samples`|Sammlung von [Code sample](api-management-template-data-model-reference.md#Sample)-Entitäten.|Die Codebeispiele für den aktuellen Vorgang.|  
@@ -641,10 +644,10 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
 }  
 ```  
   
-## <a name="CodeSamples"></a> Codebeispiele  
+## <a name="code-samples"></a><a name="CodeSamples"></a> Codebeispiele  
  Mit den folgenden Vorlagen können Sie den Text der einzelnen Codebeispiele auf der Vorgangsseite anpassen.  
   
- ![Codebeispiele für Vorlagen im Entwicklerportal](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "Codebeispiele für Vorlagen im APIM-Entwicklerportal")  
+ ![Codebeispiele für Vorlagen im Entwicklerportal](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "Vorlagen im APIM-Entwicklerportal: Codebeispiele")  
   
 -   [Curl](#Curl)  
   
@@ -662,7 +665,7 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
   
 -   [Ruby](#Ruby)  
   
-### <a name="Curl"></a> Curl  
+### <a name="curl"></a><a name="Curl"></a> Curl  
  Mit der Vorlage **DocumentationSamplesCurl** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -715,7 +718,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-### <a name="CSharp"></a> C#  
+### <a name="c"></a><a name="CSharp"></a> C#  
  Mit der Vorlage **DocumentationSamplesCsharp** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -894,7 +897,7 @@ namespace CSHttpClientSample
 }  
 ```  
   
-### <a name="Stub"></a> Java  
+### <a name="java"></a><a name="Stub"></a> Java  
  Mit der Vorlage **DocumentationSamplesJava** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -990,7 +993,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="JavaScript"></a> JavaScript  
+### <a name="javascript"></a><a name="JavaScript"></a> JavaScript  
  Mit der Vorlage **DocumentationSamplesJs** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -1079,7 +1082,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="ObjectiveC"></a> Objective C  
+### <a name="objective-c"></a><a name="ObjectiveC"></a> Objective C  
  Mit der Vorlage **DocumentationSamplesObjc** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -1191,7 +1194,7 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-### <a name="PHP"></a> PHP  
+### <a name="php"></a><a name="PHP"></a> PHP  
  Mit der Vorlage **DocumentationSamplesPhp** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -1281,7 +1284,7 @@ catch (HttpException $ex)
 }  
 ```  
   
-### <a name="Python"></a> Python  
+### <a name="python"></a><a name="Python"></a> Python  
  Mit der Vorlage **DocumentationSamplesPython** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -1399,7 +1402,7 @@ except Exception as e:
 }  
 ```  
   
-### <a name="Ruby"></a> Ruby  
+### <a name="ruby"></a><a name="Ruby"></a> Ruby  
  Mit der Vorlage **DocumentationSamplesRuby** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  

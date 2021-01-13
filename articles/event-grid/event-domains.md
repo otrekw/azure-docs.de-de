@@ -1,18 +1,14 @@
 ---
 title: Ereignisdomänen in Azure Event Grid
-description: Beschreibt, wie Ereignisdomänen verwendet werden, um Themen in Azure Event Grid zu verwalten.
-services: event-grid
-author: banisadr
-ms.service: event-grid
-ms.author: babanisa
+description: Dieser Artikel beschreibt, wie Sie Ereignisdomänen verwenden, um den Fluss benutzerdefinierter Ereignisse für Ihre verschiedenen Geschäftsorganisationen, Kunden oder Anwendungen zu verwalten.
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: ef0a9213d095d0b7ae4343e2af145236a7e005a1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.date: 07/07/2020
+ms.openlocfilehash: 9b313784cd006087f3c2f1354053540cc9224782
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305407"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328826"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Grundlegendes zu Ereignisdomänen für die Verwaltung von Event Grid-Themen
 
@@ -31,7 +27,7 @@ Ereignisdomänen stellen Ihnen die Architektur, die Azure-Dienste (wie Storage u
 
 ### <a name="example-use-case"></a>Beispiel eines Anwendungsfalls
 
-Ereignisdomänen lassen sich am einfachsten an einem Beispiel veranschaulichen. Nehmen wir an, Sie betreiben Contoso Construction Machinery, ein Unternehmen, das Traktoren, Bagger und anderes schweres Gerät herstellt. Als Teil des Geschäftsbetriebs übermitteln Sie Echtzeitinformationen zur Ausrüstungswartung, zur Systemintegrität und zu Vertragsaktualisierungen an Kunden. Alle diese Informationen werden an verschiedene Endpunkte weitergeleitet (z.B. an Ihre App, an Kundenendpunkte und andere Infrastrukturen, die Kunden eingerichtet haben).
+Ereignisdomänen lassen sich am einfachsten an einem Beispiel veranschaulichen. Angenommen, Sie betreiben Contoso Construction Machinery, ein Unternehmen, das Traktoren, Bagger und anderes schweres Gerät herstellt. Als Teil des Geschäftsbetriebs übermitteln Sie Echtzeitinformationen zur Ausrüstungswartung, zur Systemintegrität und zu Vertragsaktualisierungen an Kunden. Alle diese Informationen werden an verschiedene Endpunkte weitergeleitet (z.B. an Ihre App, an Kundenendpunkte und andere Infrastrukturen, die Kunden eingerichtet haben).
 
 Ereignisdomänen ermöglichen es Ihnen, Contoso Construction Machinery als eine einzige Ereigniseinheit zu modellieren. Jeder Ihrer Kunden wird als ein Thema in der Domäne dargestellt. Authentifizierung und Autorisierung werden mit Azure Active Directory durchgeführt. Jeder Ihrer Kunden kann sein Thema abonnieren und sich seine Ereignisse zustellen lassen. Verwalteter Zugriff über die Ereignisdomäne stellt sicher, dass die Kunden nur auf ihr jeweiliges Thema zugreifen können.
 
@@ -41,15 +37,15 @@ Außerdem erhalten Sie einen einzigen Endpunkt, in dem Sie alle Ihre Kundenereig
 
 ## <a name="access-management"></a>Zugriffsverwaltung
 
-Mit einer Domäne erhalten Sie über die rollenbasierte Zugriffssteuerung (RBAC) in Azure differenzierte Autorisierungs- und Authentifizierungskontrolle über jedes Thema. Mit diesen Rollen können Sie jeden Mandanten in Ihrer Anwendung auf die Themen beschränken, auf die Sie ihm Zugriff gewähren möchten.
+Mit einer Domäne erhalten Sie über die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) differenzierte Autorisierungs- und Authentifizierungskontrolle über jedes Thema. Mit diesen Rollen können Sie jeden Mandanten in Ihrer Anwendung auf die Themen beschränken, auf die Sie ihm Zugriff gewähren möchten.
 
-RBAC in Ereignisdomänen funktioniert auf dieselbe Weise wie die [verwaltete Zugriffssteuerung](security-authentication.md#management-access-control) im Rest von Event Grid und Azure. Verwenden Sie RBAC, um benutzerdefinierte Rollendefinitionen in Ereignisdomänen zu erstellen und zu erzwingen.
+Azure RBAC in Ereignisdomänen funktioniert auf dieselbe Weise wie die [verwaltete Zugriffssteuerung](security-authorization.md) im Rest von Event Grid und Azure. Verwenden Sie Azure RBAC, um benutzerdefinierte Rollendefinitionen in Ereignisdomänen zu erstellen und zu erzwingen.
 
 ### <a name="built-in-roles"></a>Integrierte Rollen
 
-Event Grid verfügt über zwei integrierte Rollendefinitionen, um die Nutzung von RBAC in Ereignisdomänen zu vereinfachen. Diese Rollen sind **EventGrid EventSubscription-Mitwirkender (Vorschau)** und **EventGrid EventSubscription-Leser (Vorschau)** . Sie können diese Rollen zu Benutzern zuweisen, die Themen in der Ereignisdomäne abonnieren müssen. Sie können die Rollenzuweisung auf das Thema beschränken, das Benutzer abonnieren müssen.
+Event Grid verfügt über zwei integrierte Rollendefinitionen, um die Nutzung von Azure RBAC in Ereignisdomänen zu vereinfachen. Diese Rollen sind **EventGrid EventSubscription-Mitwirkender (Vorschau)** und **EventGrid EventSubscription-Leser (Vorschau)** . Sie können diese Rollen zu Benutzern zuweisen, die Themen in der Ereignisdomäne abonnieren müssen. Sie können die Rollenzuweisung auf das Thema beschränken, das Benutzer abonnieren müssen.
 
-Weitere Informationen zu diesen Rollen finden Sie unter [Integrierte Rollen für Event Grid](security-authentication.md#built-in-roles).
+Weitere Informationen zu diesen Rollen finden Sie unter [Integrierte Rollen für Event Grid](security-authorization.md#built-in-roles).
 
 ## <a name="subscribing-to-topics"></a>Abonnieren von Themen
 

@@ -1,28 +1,29 @@
 ---
-title: Kopieren von Daten aus DB2 mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus DB2 mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus DB2 mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 05/26/2020
 ms.author: jingwang
-ms.openlocfilehash: d89b4018da7c50127fc38219c6cb799a89509258
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: f890e4c47a427b6ca8c07463d6795f0813ef5bbd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092123"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638192"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopieren von Daten aus DB2 mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-onprem-db2-connector.md)
 > * [Aktuelle Version](connector-db2.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer DB2-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -35,7 +36,7 @@ Dieser DB2-Datenbankconnector wird für die folgenden Aktivitäten unterstützt:
 
 Sie können Daten aus einer DB2-Datenbank in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Der DB2-Connector unterstützt insbesondere die folgenden IBM DB2-Plattformen und -Versionen mit Distributed Relational Database Architecture (DRDA) SQL Access Manager (SQLAM) Version 9, 10 und 11:
+Der DB2-Connector unterstützt insbesondere die folgenden IBM DB2-Plattformen und -Versionen mit den Versionen 9, 10 und 11 von Distributed Relational Database Architecture (DRDA) SQL Access Manager (SQLAM).  Dabei wird das DDM-/DRDA-Protokoll verwendet.
 
 * IBM DB2 für z/OS 12.1
 * IBM DB2 für z/OS 11.1
@@ -47,10 +48,8 @@ Der DB2-Connector unterstützt insbesondere die folgenden IBM DB2-Plattformen un
 * IBM DB2 für LUW 10.5
 * IBM DB2 für LUW 10.1
 
-> [!TIP]
-> Wenn die Fehlermeldung „Das einer Anforderung zum Ausführen einer SQL-Anweisung entsprechende Paket wurde nicht gefunden. SQLSTATE=51002 SQLCODE=-805“ angezeigt wird, ist die Ursache dafür, dass für einen normalen Benutzer unter diesem Betriebssystem ein erforderliches Paket nicht erstellt wird. Befolgen Sie basierend auf Ihrem DB2-Servertyp die folgenden Anweisungen:
-> - DB2 für i (AS400): Lassen Sie vor der Verwendung der Kopieraktivität einen Poweruser die Sammlung für den Anmeldebenutzer erstellen. Befehl: `create collection <username>`
-> - DB2 für z/OS oder LUW: Verwenden Sie ein Konto mit weitreichenden Berechtigungen (Poweruser oder Administrator mit Paketberechtigungen und den Berechtigungen BIND, BINDADD und GRANT EXECUTE TO PUBLIC), um die Kopieraktivität einmal auszuführen. Anschließend wird das erforderliche Paket während des Kopiervorgangs automatisch erstellt. Anschließend können Sie für die folgenden Kopiervorgänge wieder das normale Benutzerkonto verwenden.
+>[!TIP]
+>Der DB2-Connector basiert auf Microsoft OLE DB-Anbieter für DB2. Informationen zur Problembehandlung bei DB2-Connector-Fehlern finden Sie unter [Datenanbieter-Fehlercodes](/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -71,14 +70,70 @@ Folgende Eigenschaften werden für den mit DB2 verknüpften Dienst unterstützt:
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Db2** | Ja |
-| server |Name des DB2-Servers. Sie können die Portnummer hinter dem Servernamen und einem Semikolon angeben, z.B.: `server:port`. |Ja |
-| database |Name der DB2-Datenbank. |Ja |
-| authenticationType |Typ der Authentifizierung für die Verbindung mit der DB2-Datenbank.<br/>Zulässiger Wert: **Basic**. |Ja |
-| username |Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit der DB2-Datenbank an. |Ja |
-| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
+| connectionString | Geben Sie Informationen an, die für die Verbindungsherstellung mit der DB2-Instanz erforderlich sind.<br/> Sie können auch das Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
+Typische Eigenschaften in der Verbindungszeichenfolge:
+
+| Eigenschaft | Beschreibung | Erforderlich |
+|:--- |:--- |:--- |
+| server |Name des DB2-Servers. Sie können die Portnummer hinter dem Servernamen und einem Semikolon angeben, z.B.: `server:port`.<br>Vom DB2-Connector werden das DDM-/DRDA-Protokoll und standardmäßig der Port 50000 verwendet, sofern nichts anderes angegeben ist. Der Port, der von Ihrer speziellen DB2-Datenbank verwendet wird, kann sich je nach Version und Ihren Einstellungen unterscheiden. Für DB2 LUW wird beispielsweise der Standardport 50000 verwendet, für AS400 ist der Standardport dagegen 446 oder 448, wenn TLS aktiviert ist. Informationen zur typischen Portkonfiguration finden Sie in den folgenden DB2-Dokumenten: [DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html), [DB2 iSeries](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm) und [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html). |Ja |
+| database |Name der DB2-Datenbank. |Ja |
+| authenticationType |Typ der Authentifizierung für die Verbindung mit der DB2-Datenbank.<br/>Zulässiger Wert: **Basic** . |Ja |
+| username |Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit der DB2-Datenbank an. |Ja |
+| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
+| packageCollection | Geben Sie an, wo die benötigten Pakete beim Abfragen der Datenbank automatisch von ADF erstellt werden. Ist dies nicht festgelegt, wird von Data Factory „{username}“ als Standardwert verwendet. | Nein |
+| certificateCommonName | Wenn Sie Verschlüsselung mit Secure Sockets Layer (SSL) oder Transport Layer Security (TLS) verwenden, müssen Sie einen Wert für den allgemeinen Namen des Zertifikats eingeben. | Nein |
+
+> [!TIP]
+> Wenn Sie die Fehlermeldung `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805` erhalten, ist der Grund, dass ein erforderliches Paket nicht für den Benutzer erstellt wurde. Standardmäßig versucht ADF, ein Paket unter der Sammlung mit dem Namen des Benutzers, den Sie zum Herstellen der Verbindung mit DB2 verwendet haben, zu erstellen. Geben Sie die Paketsammlungseigenschaft an, um festzulegen, wo die erforderlichen Pakete beim Abfragen der Datenbank von ADF erstellt werden sollen.
+
 **Beispiel:**
+
+```json
+{
+    "name": "Db2LinkedService",
+    "properties": {
+        "type": "Db2",
+        "typeProperties": {
+            "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;password=<password>;packageCollection=<packagecollection>;certificateCommonName=<certname>;"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+**Beispiel: Speichern des Kennworts in Azure Key Vault**
+
+```json
+{
+    "name": "Db2LinkedService",
+    "properties": {
+        "type": "Db2",
+        "typeProperties": {
+            "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;packageCollection=<packagecollection>;certificateCommonName=<certname>;",
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+Wenn Sie den verknüpften DB2-Dienst mit der folgenden Nutzlast verwendet haben, wird er weiterhin unverändert unterstützt. Es wird jedoch empfohlen, zukünftig die neue Version zu verwenden.
+
+**Vorherige Nutzlast:**
 
 ```json
 {
@@ -113,7 +168,7 @@ Zum Kopieren von Daten aus DB2 werden die folgenden Eigenschaften unterstützt:
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **Db2Table** | Ja |
 | schema | Name des Schemas. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
-| table | Name der Tabelle. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
+| table | Der Name der Tabelle. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
 | tableName | Name der Tabelle mit Schema. Diese Eigenschaft wird aus Gründen der Abwärtskompatibilität weiterhin unterstützt. Verwenden Sie `schema` und `table` für eine neue Workload. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
@@ -147,7 +202,7 @@ Beim Kopieren von Daten aus DB2 werden die folgenden Eigenschaften im Abschnitt 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **Db2Source** | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 
@@ -194,7 +249,7 @@ Beim Kopieren von Daten aus DB2 werden die folgenden Zuordnungen von DB2-Datenty
 | Blob |Byte[] |
 | Char |String |
 | Clob |String |
-| Date |DateTime |
+| Date |Datetime |
 | DB2DynArray |String |
 | DbClob |String |
 | Decimal |Decimal |
@@ -210,7 +265,7 @@ Beim Kopieren von Daten aus DB2 werden die folgenden Zuordnungen von DB2-Datenty
 | Real |Single |
 | SmallInt |Int16 |
 | Time |TimeSpan |
-| Timestamp |DateTime |
+| Timestamp |Datetime |
 | VarBinary |Byte[] |
 | VarChar |String |
 | VarGraphic |String |
@@ -221,4 +276,4 @@ Beim Kopieren von Daten aus DB2 werden die folgenden Zuordnungen von DB2-Datenty
 Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

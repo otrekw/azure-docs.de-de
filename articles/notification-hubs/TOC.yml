@@ -11,15 +11,22 @@
   items:
     - name: 'Erstellen von Notification Hubs: Azure-Portal'
       href: create-notification-hub-portal.md
-    - name: 'Konfigurieren von Notification Hubs: Azure-Portal'
+    - name: 'Erstellen von Notification Hubs: Azure-Befehlszeilenschnittstelle'
+      href: create-notification-hub-azure-cli.md
+    - name: 'Erstellen von Notification Hubs: ARM-Vorlage'
+      displayName: Resource Manager
+      href: create-notification-hub-template.md
+    - name: Konfigurieren eines Notification Hubs
       href: configure-notification-hub-portal-pns-settings.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Android
       items:
         - name: Firebase Cloud Messaging
           items:
-            - name: Senden von Pushbenachrichtigungen an alle Registrierungen
+            - name: Senden von Pushbenachrichtigungen an alle Registrierungen (SDK-Version 1.0.0-preview1)
+              href: android-sdk.md
+            - name: Senden von Pushbenachrichtigungen an alle Registrierungen (SDK-Version 0.6)
               href: notification-hubs-android-push-notification-google-fcm-get-started.md
             - name: Senden von Pushbenachrichtigungen an bestimmte Geräte
               href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
@@ -37,12 +44,16 @@
               href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
     - name: iOS
       items:
+        - name: Notification Hubs-Updates für iOS 13
+          href: push-notification-updates-ios-13.md
         - name: Senden von Pushbenachrichtigungen an iOS-Apps
           items:
-            - name: Objective-C
-              href: notification-hubs-ios-apple-push-notification-apns-get-started.md
-            - name: Swift
-              href: notification-hubs-ios-push-notifications-swift-apps-get-started.md
+            - name: Voraussetzungen für iOS-Tutorials
+              href: ios-sdk-get-started.md
+            - name: Objective-C (Version 3.0.0-preview1)
+              href: ios-sdk-300.md
+            - name: Objective-C (Version 2.0.4)
+              href: ios-sdk-204.md
         - name: Senden von Pushbenachrichtigungen an bestimmte Geräte
           href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
         - name: Senden von Pushbenachrichtigungen an bestimmte Benutzer
@@ -77,6 +88,8 @@
       href: samples-powershell.md
 - name: Konzepte
   items:
+    - name: Transport Layer Security (TLS)
+      href: notification-hubs-tls12.md
     - name: Anleitung für eine unternehmensbezogene Pusharchitektur
       href: notification-hubs-enterprise-push-notification-architecture.md
     - name: Geräteregistrierungen
@@ -100,7 +113,7 @@
       href: notification-hubs-send-push-notifications-scheduled.md
     - name: Bereitstellen und Verwalten von Notification Hubs mit Azure PowerShell
       href: notification-hubs-deploy-and-manage-powershell.md
-    - name: Sicheres Senden von Pushbenachrichtigungen an Benutzer
+    - name: Senden von sicheren Benachrichtigungen an Benutzer
       href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
     - name: Exportieren und Importieren von Registrierungen in einem Massenvorgang
       href: export-modify-registrations-bulk.md
@@ -131,15 +144,19 @@
     - name: Registrieren bei einem Anwendungs-Back-End
       href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
     - name: Verwenden der tokenbasierten Authentifizierung bei Apple-Geräten
-      href: notification-hubs-push-notification-http2-token-authentification.md
+      href: notification-hubs-push-notification-http2-token-authentication.md
     - name: Problembehandlung für verworfene Benachrichtigungen
       href: notification-hubs-push-notification-fixer.md
     - name: Senden von Pushbenachrichtigungen mithilfe von Baidu Cloud Push
       href: notification-hubs-baidu-china-android-notifications-get-started.md
+    - name: Verwenden von APNS-VoIP über Notification Hubs
+      href: voip-apns.md
 - name: Verweis
   items:
     - name: .NET
       href: /dotnet/api/microsoft.azure.notificationhubs
+    - name: Azure CLI
+      href: /cli/azure/ext/notification-hub/notification-hub
     - name: PowerShell
       href: /powershell/module/az.notificationhubs
     - name: REST
@@ -158,8 +175,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/notification-hubs/'
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: /answers/topics/azure-notification-hubs.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-notificationhub'
     - name: Anfordern eines Features

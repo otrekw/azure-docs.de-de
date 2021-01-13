@@ -1,25 +1,24 @@
 ---
-title: Einrichten der Sicherheitsinformation (Vorschauversion) zur Verwendung von Telefonanrufen – Azure Active Directory | Microsoft-Dokumentation
-description: So richten Sie Ihre Sicherheitsinformation ein, um Ihre Identität mithilfe von Telefonanrufen zu bestätigen.
+title: Einrichten Ihrer Telefonnummer als Überprüfungsmethode – Azure AD
+description: Erfahren Sie, wie Sie Ihre Seite mit den Sicherheitsinformationen (Preview) einrichten, um Ihre Identität mithilfe Ihrer Telefonnummer und eines mobilen Geräts als Überprüfungsmethode zu verifizieren.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/13/2019
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbac4f364dedc28f7d5f3e100481a56bde70b4d3
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.author: curtand
+ms.openlocfilehash: 7500b6b146a627dcdebacd9d2e2c7c61bc43c105
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382913"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83744446"
 ---
-# <a name="set-up-security-info-preview-to-use-phone-calls"></a>Einrichten der Sicherheitsinformation (Vorschauversion) zur Verwendung von Telefonanrufen
+# <a name="set-up-a-phone-number-as-your-verification-method"></a>Einrichten einer Telefonnummer als Überprüfungsmethode
 
 Mit diesen Schritten können Sie Ihre Methoden für die zweistufige Überprüfung und die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformation** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
 
@@ -30,7 +29,20 @@ Wenn Sie direkt nach der Anmeldung mit Ihrem Geschäfts-, Schul- oder Unikonto z
 > [!Note]
 > Für die Sicherheitsinformation werden Nebenstellen nicht unterstützt. Selbst bei der Angabe im richtigen Format (+1 4255551234X12345) werden Nebenstellen vor dem Anruf entfernt.
 >
-> Wird keine Telefonoption angezeigt, lässt Ihre Organisation unter Umständen die Nutzung einer Telefonnummer für die Überprüfung nicht zu. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an Ihren Administrator wenden, um weitere Unterstützung zu erhalten.
+> Wird keine Telefonoption angezeigt, lässt Ihre Organisation unter Umständen die Nutzung dieser Option für die Überprüfung nicht zu. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an den Helpdesk Ihrer Organisation wenden, um weitere Unterstützung zu erhalten.
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Authentifizierung mit Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
+
+Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
+
+| Methode | Syntaxelemente |
+| ------ | -------- |
+| Authenticator-App | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Textnachrichten | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Telefonanrufe | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Sicherheitsschlüssel | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| E-Mail-Konto | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
+| Sicherheitsfragen | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
 
 ## <a name="set-up-phone-calls-from-the-security-info-page"></a>Einrichten von Telefonanrufen auf der Seite „Sicherheitsinformation“
 
@@ -41,7 +53,7 @@ Je nach den Einstellungen Ihrer Organisation können Sie Telefonanrufe als einer
 
 ### <a name="to-set-up-phone-calls"></a>Einrichten von Telefonanrufen
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf.
 
     ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile-page.png)
 
@@ -53,7 +65,7 @@ Je nach den Einstellungen Ihrer Organisation können Sie Telefonanrufe als einer
 
     ![Feld „Methode hinzufügen“ mit ausgewählter Option „Telefon“](media/security-info/securityinfo-myprofile-addphonetext.png)
 
-4. Geben Sie auf der Seite **Telefon** die Telefonnummer für Ihr Mobilgerät ein, wählen **Anrufen**, und wählen Sie dann **Weiter** aus.
+4. Geben Sie auf der Seite **Telefon** die Telefonnummer für Ihr Mobilgerät ein, wählen Sie **Anrufen** aus, und wählen Sie dann **Weiter** aus.
 
     ![Telefonnummer hinzufügen und Telefonanrufe wählen](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
 
@@ -90,11 +102,11 @@ Wenn Sie Telefonanrufe als Standardmethode für das Anmelden bei Ihrem Geschäft
 
     ![Link zum Ändern der Standardanmeldemethode](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. Wählen Sie aus der Dropdownliste der verfügbaren Methoden die Option **Telefon – ( *_Ihre_Telefonnummer_* ) anrufen** aus, und klicken Sie dann auf **Bestätigen**.
+2. Wählen Sie aus der Dropdownliste der verfügbaren Methoden die Option **Telefon – (*_Ihre_Telefonnummer_*) anrufen** aus, und klicken Sie dann auf **Bestätigen**.
 
     ![Standardmäßige Anmeldemethode auswählen](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-    Die Standardmethode für Anmeldungen ändert sich zu **Telefon – ( *_Ihre_Telefonnummer_* ) anrufen**.
+    Die Standardmethode für Anmeldungen ändert sich zu **Telefon – (*_Ihre_Telefonnummer_*) anrufen**.
 
 ## <a name="additional-security-info-methods"></a>Weitere Methoden für Sicherheitsinformationen
 
@@ -115,6 +127,6 @@ Basierend auf der Aktion, die Sie ausführen möchten, stehen zusätzliche Mögl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](user-help-reset-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
+- Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](active-directory-passwords-update-your-own-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
 
 - Der Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) enthält Tipps zur Problembehandlung bei Anmeldeproblemen.

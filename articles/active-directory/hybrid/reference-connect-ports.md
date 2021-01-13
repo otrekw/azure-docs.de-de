@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/02/2017
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9277e35fceb382fbccd009e5bbfe63ce57b8361
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: da318840426d1c0b94eab06b89ff3152df9d26fe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305174"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80331095"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Erforderliche Ports und Protokolle für die Hybrid-Identität
 Das folgende Dokument ist eine technische Referenz zu den erforderlichen Ports und Protokollen für die Implementierung einer Hybrid-Identitätslösung. Sehen Sie sich die folgende Abbildung und die entsprechende Tabelle an.
@@ -35,31 +35,31 @@ In dieser Tabelle werden die Ports und Protokolle beschrieben, die für die Komm
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |DNS-Suchen in der Zielgesamtstruktur |
 | Kerberos |88 (TCP/UDP) |Kerberos-Authentifizierung für die AD-Gesamtstruktur |
-| MS-RPC |135 (TCP/UDP) |Wird bei der anfänglichen Konfiguration des Azure AD Connect-Assistenten beim Binden an die AD-Gesamtstruktur sowie bei der Kennwortsynchronisierung verwendet |
+| MS-RPC |135 (TCP) |Wird bei der anfänglichen Konfiguration des Azure AD Connect-Assistenten beim Binden an die AD-Gesamtstruktur sowie bei der Kennwortsynchronisierung verwendet |
 | LDAP |389 (TCP/UDP) |Wird zum Importieren von Daten aus AD verwendet. Daten werden per Kerberos Sign & Seal verschlüsselt. |
-| SMB | 445 (TCP/UDP) |Wird bei nahtlosem SSO zum Erstellen eines Computerkontos in der Active Directory-Gesamtstruktur verwendet. |
-| LDAP/SSL |636 (TCP/UDP) |Wird zum Importieren von Daten aus AD verwendet. Die Datenübertragung ist signiert und verschlüsselt. Gilt nur bei Verwendung von SSL. |
-| RPC |49152- 65535 (Random High RPC-Port) (TCP/UDP) |Wird bei der anfänglichen Konfiguration von Azure AD Connect beim Binden an die AD-Gesamtstrukturen und bei der Kennwortsynchronisierung verwendet. Weitere Informationen finden Sie unter [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017) und [KB224196](https://support.microsoft.com/kb/224196). |
-|WinRM  | 5985 (TCP/UDP) |Wird nur verwendet, wenn Sie AD FS mithilfe von gMSA im Azure AD Connect-Assistenten installieren.|
-|AD DS-Webdienste | 9389 (TCP/UDP) |Wird nur verwendet, wenn Sie AD FS mithilfe von gMSA im Azure AD Connect-Assistenten installieren. |
+| SMB | 445 (TCP) |Wird bei nahtlosem SSO zum Erstellen eines Computerkontos in der Active Directory-Gesamtstruktur verwendet. |
+| LDAP/SSL |636 (TCP/UDP) |Wird zum Importieren von Daten aus AD verwendet. Die Datenübertragung ist signiert und verschlüsselt. Gilt nur bei Verwendung von TLS. |
+| RPC |49152–65535 (zufälliger RPC-Port im hohen Bereich) (TCP) |Wird bei der anfänglichen Konfiguration von Azure AD Connect beim Binden an die AD-Gesamtstrukturen und bei der Kennwortsynchronisierung verwendet. Weitere Informationen finden Sie unter [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017) und [KB224196](https://support.microsoft.com/kb/224196). |
+|WinRM  | 5985 (TCP) |Wird nur verwendet, wenn Sie AD FS mithilfe von gMSA im Azure AD Connect-Assistenten installieren.|
+|AD DS-Webdienste | 9389 (TCP) |Wird nur verwendet, wenn Sie AD FS mithilfe von gMSA im Azure AD Connect-Assistenten installieren. |
 
 ## <a name="table-2---azure-ad-connect-and-azure-ad"></a>Tabelle 2: Azure AD Connect und Azure AD
 In dieser Tabelle werden die Ports und Protokolle beschrieben, die für die Kommunikation zwischen dem Azure AD Connect-Server und Azure AD erforderlich sind.
 
 | Protocol | Ports | BESCHREIBUNG |
 | --- | --- | --- |
-| HTTP |80 (TCP/UDP) |Wird zum Herunterladen von Zertifikatsperrlisten zur Überprüfung von SSL-Zertifikaten verwendet |
-| HTTPS |443 (TCP/UDP) |Wird zum Synchronisieren mit Azure AD verwendet |
+| HTTP |80 (TCP) |Wird zum Herunterladen von Zertifikatsperrlisten (CRLs, Certificate Revocation Lists) zur Überprüfung von TLS/SSL-Zertifikaten verwendet. |
+| HTTPS |443 (TCP) |Wird zum Synchronisieren mit Azure AD verwendet |
 
-Eine Liste der URLs und IP-Adressen, die in der Firewall geöffnet sein müssen, finden Sie unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
+Eine Liste der URLs und IP-Adressen, die in der Firewall geöffnet sein müssen, finden Sie unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) und [Azure AD Connect-Konnektivität](tshoot-connect-connectivity.md#troubleshoot-connectivity-issues-in-the-installation-wizard).
 
 ## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>Tabelle 3: Azure AD Connect und AD FS-Verbund-/WAP-Server
 In dieser Tabelle werden die Ports und Protokolle beschrieben, die für die Kommunikation zwischen dem Azure AD Connect-Server und AD FS-Verbund-/WAP-Servern erforderlich sind.  
 
 | Protocol | Ports | BESCHREIBUNG |
 | --- | --- | --- |
-| HTTP |80 (TCP/UDP) |Wird zum Herunterladen von Zertifikatsperrlisten zur Überprüfung von SSL-Zertifikaten verwendet |
-| HTTPS |443 (TCP/UDP) |Wird zum Synchronisieren mit Azure AD verwendet |
+| HTTP |80 (TCP) |Wird zum Herunterladen von Zertifikatsperrlisten (CRLs, Certificate Revocation Lists) zur Überprüfung von TLS/SSL-Zertifikaten verwendet. |
+| HTTPS |443 (TCP) |Wird zum Synchronisieren mit Azure AD verwendet |
 | WinRM |5985 |WinRM-Listener |
 
 ## <a name="table-4---wap-and-federation-servers"></a>Tabelle 4: WAP- und Verbundserver
@@ -67,14 +67,14 @@ In dieser Tabelle werden die Ports und Protokolle beschrieben, die für die Komm
 
 | Protocol | Ports | BESCHREIBUNG |
 | --- | --- | --- |
-| HTTPS |443 (TCP/UDP) |Wird für die Authentifizierung verwendet |
+| HTTPS |443 (TCP) |Wird für die Authentifizierung verwendet |
 
 ## <a name="table-5---wap-and-users"></a>Tabelle 5: WAP und Benutzer
 In dieser Tabelle werden die Ports und Protokolle beschrieben, die für die Kommunikation zwischen Benutzern und den WAP-Servern erforderlich sind.
 
 | Protocol | Ports | BESCHREIBUNG |
 | --- | --- | --- |
-| HTTPS |443 (TCP/UDP) |Wird für die Geräteauthentifizierung verwendet |
+| HTTPS |443 (TCP) |Wird für die Geräteauthentifizierung verwendet |
 | TCP |49443 (TCP) |Wird für die Zertifikatauthentifizierung verwendet |
 
 ## <a name="table-6a--6b---pass-through-authentication-with-single-sign-on-sso-and-password-hash-sync-with-single-sign-on-sso"></a>Tabellen 6a und 6b: Passthrough-Authentifizierung mit einmaligem Anmelden (SSO) und Kennworthashsynchronisierung mit einmaligem Anmelden (SSO)

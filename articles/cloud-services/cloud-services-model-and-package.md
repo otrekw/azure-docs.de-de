@@ -2,17 +2,17 @@
 title: Was ist ein Clouddienstmodell, und wie kann es gepackt werden? | Microsoft Docs
 description: Beschreibung des Clouddienstmodells (.csdef, .cscfg) und der Paketdatei (.cspkg) in Azure
 services: cloud-services
-author: georgewallace
+author: tanmaygore
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 47d031e339b3677e0bf6ddcbad9456041c53c6e2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 180295599082a762fc525c4740079ceefc0954a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359558"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077183"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Was ist das Clouddienstmodell, und wie kann es gepackt werden?
 Ein Clouddienst wird aus drei Komponenten erstellt: aus der Dienstdefinition *(.csdef)* , der Dienstkonfiguration *(.cscfg)* und einem Dienstpaket *(.cspkg)* . Die beiden Dateien **ServiceDefinition.csdef** und **ServiceConfig.cscfg** sind XML-basiert und beschreiben die Struktur und Konfiguration des Clouddiensts; zusammen werden sie als Modell bezeichnet. Die Datei **ServicePackage.cspkg** ist eine ZIP-Datei, die auf der Grundlage der Datei **ServiceDefinition.csdef** generiert wird und unter anderem alle erforderlichen binärbasierten Abhängigkeiten enthält. In Azure wird ein Clouddienst aus der Datei **ServicePackage.cspkg** sowie der Datei **ServiceConfig.cscfg** erstellt.
@@ -97,7 +97,7 @@ enthält die Definitionen für Endpunkte, die von Rolleninstanzen für die Kommu
 **ConfigurationSettings**  
 enthält die Einstellungsdefinitionen für Funktionen einer bestimmten Rolle.
 
-**Certificates**  
+**Zertifikate**  
 enthält die Definitionen für Zertifikate, die für eine Rolle erforderlich sind. Das Codebeispiel oben enthält ein Zertifikat, das für die Konfiguration von Azure Connect verwendet wird.
 
 **LocalResources**  
@@ -142,7 +142,7 @@ konfiguriert die Anzahl der ausgeführten Instanzen für die Rolle. Um zu verhin
 **ConfigurationSettings**  
 konfiguriert die Einstellungen für die ausgeführten Instanzen einer Rolle. Der Name der `<Setting>` -Elemente muss mit den Einstellungsdefinitionen in der Dienstdefinitionsdatei übereinstimmen.
 
-**Certificates**  
+**Zertifikate**  
 konfiguriert die Zertifikate, die vom Dienst verwendet werden. Im Codebeispiel oben wird das Zertifikat für das RemoteAccess-Modul definiert. Der Wert des *thumbprint* -Attributs muss auf den Fingerabdruck des zu verwendenden Zertifikats festgelegt werden.
 
 <p/>
@@ -216,6 +216,9 @@ Die [Azure-Laufzeitbibliothek](/previous-versions/azure/reference/mt419365(v=azu
 <a name="cspkg"></a>
 
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
+> [!NOTE]
+> Die maximale Paketgröße, die bereitgestellt werden kann, beträgt 600 MB.
+
 Um eine Anwendung als Clouddienst in Azure bereitzustellen, müssen Sie zunächst die Anwendung im entsprechenden Format packen. Als Alternative zu Visual Studio können Sie das Befehlszeilentool **CSPack** (wird mit dem [Azure SDK](https://azure.microsoft.com/downloads/)installiert) verwenden, um die Paketdatei zu erstellen.
 
 **CSPack** verwendet den Inhalt der Dienstdefinitionsdatei und Dienstkonfigurationsdatei, um den Inhalt des Pakets zu definieren. **CSPack** generiert eine Anwendungspaketdatei (.cspkg), die Sie über das [Azure-Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)in Azure hochladen können. Standardmäßig erhält das Paket den Namen `[ServiceDefinitionFileName].cspkg`, durch Verwendung der Option `/out` von **CSPack** können Sie jedoch auch einen anderen Namen angeben.
@@ -259,7 +262,7 @@ cspack [DirectoryName]\[ServiceDefinition]
 
 Die Variablen sind dabei wie folgt definiert:
 
-| Variable | Wert |
+| Variable | value |
 | --- | --- |
 | \[DirectoryName\] |Das Unterverzeichnis unter dem Stammverzeichnis des Projekts, das die CSDEF-Datei des Azure-Projekts enthält. |
 | \[ServiceDefinition\] |Der Name der Dienstdefinitionsdatei. Standardmäßig heißt diese Datei "ServiceDefinition.csdef". |
@@ -286,6 +289,6 @@ Ich verwende Visual Studio und möchte ...
 [deploy]: cloud-services-how-to-create-deploy-portal.md
 [remotedesktop]: cloud-services-role-enable-remote-desktop-new-portal.md
 [vs_remote]: cloud-services-role-enable-remote-desktop-visual-studio.md
-[vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
-[vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
-[vs_create]: ../vs-azure-tools-azure-project-create.md
+[vs_deploy]: /visualstudio/azure/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio
+[vs_reconfigure]: /visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service
+[vs_create]: /visualstudio/azure/vs-azure-tools-azure-project-create

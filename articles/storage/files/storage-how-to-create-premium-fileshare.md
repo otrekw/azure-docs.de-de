@@ -1,39 +1,43 @@
 ---
 title: Erstellen einer Azure-Premium-Dateifreigabe
-description: In diesem Artikel erfahren Sie, wie Sie eine Azure-Premium-Dateifreigabe erstellen.
+description: Hier erfahren Sie, wie Sie über das Azure-Portal, im Azure PowerShell-Modul oder mit der Azure CLI eine Azure Premium-Dateifreigabe erstellen.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
-ms.date: 05/05/2019
+ms.topic: how-to
+ms.date: 08/26/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 795f18365c4b4846d18eddf3212059040bf9e319
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 1ec8e4a945f8b8277d05c11bf3673d2e4ab15f9a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260218"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626791"
 ---
-# <a name="how-to-create-an-premium-azure-file-share"></a>So erstellen Sie eine Azure-Premium-Dateifreigabe
+# <a name="how-to-create-an-azure-premium-file-share"></a>Erstellen einer Azure Premium-Dateifreigabe
+
 Premium-Dateifreigaben werden auf SSD-Speichermedien (Solid-State Disk) angeboten und eignen sich für E/A-intensive Workloads, z. B. Hosten von Datenbanken und High Performance Computing (HPC). Premium-Dateifreigaben werden in einem speziell dafür vorgesehenen Speicherkontotyp gehostet, der als FileStorage-Konto bezeichnet wird. Premium-Dateifreigaben sind für hochleistungsfähige Anwendungen auf Unternehmensniveau konzipiert, die eine konsistent niedrige Latenz, hohe IOPS-Leistung und hohe Durchsatzraten bieten.
 
-In diesem Artikel wird gezeigt, wie Sie diesen neuen Kontotyp über das [Azure-Portal](https://portal.azure.com/), Azure PowerShell und die Azure-Befehlszeilenschnittstelle (Azure CLI) erstellen.
+In diesem Artikel wird gezeigt, wie Sie diesen neuen Kontotyp über das [Azure-Portal](https://portal.azure.com/), im Azure PowerShell-Modul und mit der Azure CLI erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um auf Azure-Ressourcen, einschließlich Azure-Premium-Dateifreigaben zugreifen zu können, benötigen Sie ein Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+- Falls Sie die Azure CLI verwenden möchten, [installieren Sie die neueste Version](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Wenn Sie das Azure PowerShell-Modul verwenden möchten, [installieren Sie die neueste Version](/powershell/azure/install-az-ps?view=azps-4.6.0).
 
-## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Erstellen einer Premium-Dateifreigabe über das Azure-Portal
+## <a name="create-a-filestorage-storage-account"></a>Erstellen eines FileStorage-Speicherkontos
+
+Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Wahlmöglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden. Premium-Dateifreigaben erfordern ein FileStorage-Konto.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-### <a name="create-a-filestorage-storage-account"></a>Erstellen eines FileStorage-Speicherkontos
-
 Jetzt können Sie Ihr Speicherkonto erstellen.
-
-Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Wahlmöglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden. In diesem Artikel wird gezeigt, wie Sie eine neue Ressourcengruppe erstellen.
 
 1. Wählen Sie im Azure-Portal im linken Menü **Speicherkonten** aus.
 
@@ -46,6 +50,9 @@ Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourc
 1. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
 1. Wählen Sie einen Standort für Ihr Speicherkonto aus, oder verwenden Sie den Standardstandort.
 1. Wählen Sie für **Leistung** den Wert **Premium** aus.
+
+    Sie müssen **Premium** auswählen, damit **FileStorage** in der Dropdownliste **Kontoart** verfügbar ist.
+
 1. Wählen Sie **Kontoart** und dann **FileStorage** aus.
 1. Behalten Sie für **Replikation** den Standardwert **Lokal redundanter Speicher (LRS)** bei.
 
@@ -56,42 +63,9 @@ Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourc
 
 Sobald Ihre Speicherkontoressource erstellt wurde, navigieren Sie dorthin.
 
-### <a name="create-a-premium-file-share"></a>Erstellen einer Premium-Dateifreigabe
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Scrollen Sie im linken Menü für das Speicherkonto zum Abschnitt **Dateidienst**, und wählen Sie **Files**.
-1. Wählen Sie **Dateifreigabe** aus, um eine Premium-Dateifreigabe zu erstellen.
-1. Geben Sie einen Namen und das gewünschte Kontingent für Ihre Dateifreigabe ein, und wählen Sie **Erstellen** aus.
-
-> [!NOTE]
-> Die bereitgestellten Freigabegrößen werden durch das Kontingent angegeben. Dateifreigaben werden nach der bereitgestellten Größe abgerechnet. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/storage/files/).
-
-   ![Erstellen einer Premium-Dateifreigabe](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
-
-### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Wenn Sie die Ressourcen bereinigen möchten, die im Rahmen dieses Artikels erstellt wurden, können Sie einfach die Ressourcengruppe löschen. Durch das Löschen der Ressourcengruppe werden auch das zugeordnete Speicherkonto sowie alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind.
-
-## <a name="create-a-premium-file-share-using-powershell"></a>Erstellen einer Premium-Dateifreigabe mithilfe von PowerShell
-
-### <a name="create-an-account-using-powershell"></a>Erstellen eines Kontos mithilfe von PowerShell
-
-Installieren Sie zunächst die aktuelle Version des [PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget)-Moduls.
-
-Aktualisieren Sie anschließend Ihr PowerShell-Modul, melden Sie sich bei Ihrem Azure-Abonnement an, erstellen Sie eine Ressourcengruppe und dann ein Speicherkonto.
-
-### <a name="upgrade-your-powershell-module"></a>Aktualisieren Ihres PowerShell-Moduls
-
-Um aus PowerShell mit einer Premium-Dateifreigabe interagieren zu können, müssen Sie Version 1.4.0 des Az.Storage-Moduls bzw. das neueste Az.Storage-Modul installieren.
-
-Öffnen Sie zunächst eine PowerShell-Sitzung mit erhöhten Berechtigungen.
-
-Installieren Sie das Modul „Az.Storage“:
-
-```powershell
-Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
-```
-
-### <a name="sign-in-to-your-azure-subscription"></a>Melden Sie sich bei Ihrem Azure-Abonnement an.
+### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Verwenden Sie den Befehl `Connect-AzAccount`, und folgen Sie den Anweisungen auf dem Bildschirm, um sich zu authentifizieren.
 
@@ -119,34 +93,13 @@ Wenn Sie ein FileStorage-Speicherkonto mit PowerShell erstellen möchten, verwen
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
 ```
 
-### <a name="create-a-premium-file-share"></a>Erstellen einer Premium-Dateifreigabe
-
-Da Sie jetzt über ein FileStorage-Konto verfügen, können Sie eine Premium-Dateifreigabe erstellen. Verwenden Sie dafür das Cmdlet [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare).
-
-> [!NOTE]
-> Die bereitgestellten Freigabegrößen werden durch das Kontingent angegeben. Dateifreigaben werden nach der bereitgestellten Größe abgerechnet. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/storage/files/).
-
-```powershell
-New-AzStorageShare `
-   -Name myshare `
-   -Context $storageAcct.Context
-```
-
-### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Verwenden Sie den Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup), um die Ressourcengruppe und die zugeordneten Ressourcen (einschließlich des neuen Speicherkontos) zu entfernen: 
-
-```powershell
-Remove-AzResourceGroup -Name $resourceGroup
-```
-
-## <a name="create-a-premium-file-share-using-azure-cli"></a>Erstellen einer Premium-Dateifreigabe mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Melden Sie sich zum Starten von Azure Cloud Shell beim [Azure-Portal](https://portal.azure.com) an.
 
-Wenn Sie sich bei Ihrer lokalen Installation der CLI anmelden möchten, sollten Sie zuerst sicherstellen, dass Sie über die aktuelle Version verfügen, und anschließend den Anmeldebefehl ausführen:
+Wenn Sie sich bei Ihrer lokalen Installation der CLI anmelden möchten, stellen Sie zuerst sicher, dass Sie über die aktuelle Version verfügen, und melden sich dann erst an:
 
-```cli
+```azurecli
 az login
 ```
 
@@ -177,38 +130,89 @@ az storage account create `
 
 Speicherkontoschlüssel steuern den Zugriff auf Ressourcen in einem Speicherkonto. In diesem Artikel verwenden wir den Schlüssel zum Erstellen einer Premium-Dateifreigabe. Die Schlüssel werden automatisch erstellt, wenn Sie ein Speicherkonto erstellen. Sie können die Speicherkontoschlüssel für Ihr Speicherkonto mit dem Befehl [az storage account keys list](/cli/azure/storage/account/keys) abrufen:
 
-```azurecli-interactive 
+```azurecli-interactive
 STORAGEKEY=$(az storage account keys list \
     --resource-group "myResourceGroup" \
     --account-name $STORAGEACCT \
     --query "[0].value" | tr -d '"')
 ```
+---
 
-### <a name="create-a-premium-file-share"></a>Erstellen einer Premium-Dateifreigabe
+## <a name="create-a-premium-file-share"></a>Erstellen einer Premium-Dateifreigabe
 
-Da Sie jetzt über ein FileStorage-Konto verfügen, können Sie eine Premium-Dateifreigabe erstellen. Verwenden Sie dafür den Befehl [az storage share create](/cli/azure/storage/share).
+Nachdem Sie ein FileStorage-Konto erstellt haben, können Sie jetzt in diesem Konto eine Premium-Dateifreigabe erstellen.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Scrollen Sie im linken Menü für das Speicherkonto zum Abschnitt **Dateidienst**, und wählen Sie **Files**.
+1. Wählen Sie **Dateifreigabe** aus, um eine Premium-Dateifreigabe zu erstellen.
+1. Geben Sie einen Namen und das gewünschte Kontingent für Ihre Dateifreigabe ein, und wählen Sie **Erstellen** aus.
 
 > [!NOTE]
-> Die bereitgestellten Freigabegrößen werden durch das Kontingent angegeben. Dateifreigaben werden nach der bereitgestellten Größe abgerechnet. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/storage/files/).
+> Die möglichen Freigabegrößen werden durch das Kontingent bestimmt, die Abrechnung erfolgt gemäß der bereitgestellten Größe. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/storage/files/).
+
+   ![Erstellen einer Premium-Dateifreigabe](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Im Azure PowerShell-Modul verwenden Sie das Cmdlet [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) zum Erstellen einer Premium-Dateifreigabe.
+
+> [!NOTE]
+> Die möglichen Freigabegrößen werden durch das Kontingent bestimmt, die Abrechnung erfolgt gemäß der bereitgestellten Größe. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/storage/files/).
+
+```powershell
+New-AzStorageShare `
+   -Name myshare `
+   -EnabledProtocol SMB `
+   -Context $storageAcct.Context
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+In der Azure CLI verwenden Sie den Befehl [az storage share create](/cli/azure/storage/share) zum Erstellen einer Premium-Dateifreigabe.
+
+> [!NOTE]
+> Die möglichen Freigabegrößen werden durch das Kontingent bestimmt, die Abrechnung erfolgt gemäß der bereitgestellten Größe. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/storage/files/).
 
 ```azurecli-interactive
 az storage share create \
     --account-name $STORAGEACCT \
     --account-key $STORAGEKEY \
+    --enabled-protocol SMB \
     --name "myshare" 
 ```
+---
 
-### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Wenn Sie die Ressourcen bereinigen möchten, die im Rahmen dieses Artikels erstellt wurden, löschen Sie die Ressourcengruppe. Durch das Löschen der Ressourcengruppe werden auch das zugeordnete Speicherkonto sowie alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Wenn Sie die Ressourcen bereinigen möchten, die im Rahmen dieses Artikels erstellt wurden, löschen Sie die Ressourcengruppe. Durch das Löschen der Ressourcengruppe werden auch das zugeordnete Speicherkonto sowie alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind.
+
+Verwenden Sie den Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup), um die Ressourcengruppe und die zugeordneten Ressourcen (einschließlich des neuen Speicherkontos) zu entfernen: 
+
+```powershell
+Remove-AzResourceGroup -Name $resourceGroup
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Wenn Sie die Ressourcen bereinigen möchten, die im Rahmen dieses Artikels erstellt wurden, löschen Sie die Ressourcengruppe. Durch das Löschen der Ressourcengruppe werden auch das zugeordnete Speicherkonto sowie alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind.
 
 Verwenden Sie den Befehl [az group delete](/cli/azure/group), um die Ressourcengruppe und die zugeordneten Ressourcen (einschließlich des neuen Speicherkontos) zu entfernen.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie eine Premium-Dateifreigabe erstellt. Wenn Sie sich über die von diesem Konto gebotene Leistung informieren möchten, lesen Sie den Abschnitt „Leistungsstufe“ im Planungshandbuch.
 
 > [!div class="nextstepaction"]
-> [Leistungsstufen von Dateifreigaben](storage-files-planning.md#file-share-performance-tiers)
+> [Speicherebenen](storage-files-planning.md#storage-tiers)

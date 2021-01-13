@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric EventStore | Microsoft-Dokumentation
-description: Informationen zu EventStore von Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric-EventStore
+description: Informieren Sie sich über EventStore von Azure Service Fabric. Dabei handelt es sich um eine Möglichkeit, jederzeit den Status eines Clusters oder einer Workload einsehen und überwachen zu können.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: e7ae4c77f958bacabea50b7193817cd41ea54aa9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0b6258e160794eaf7d0c05775f8fd3b796e3ba47
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449784"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91354818"
 ---
 # <a name="eventstore-overview"></a>EventStore-Übersicht
 
@@ -35,7 +26,7 @@ EventStore ist ein zustandsbehafteter Service Fabric-Dienst, der Ereignisse vom 
 * Sicherstellen, dass am Cluster vorgenommene Verwaltungsaktionen ordnungsgemäß verarbeitet werden.
 * Abrufen einer „Momentaufnahme“ der Interaktion von Service Fabric mit der betreffenden Entität.
 
-![EventStore](media/service-fabric-diagnostics-eventstore/eventstore.png)
+![Screenshot: Registerkarte „EREIGNISSE“ des Bereichs „Knoten“ mit mehreren Ereignissen, einschließlich eines NodeDown-Ereignisses.](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
 Unter [Service Fabric-Ereignisse](service-fabric-diagnostics-event-generation-operational.md) finden Sie eine vollständige Auflistung der in EventStore verfügbaren Ereignisse.
 
@@ -55,7 +46,7 @@ Der EventStore-Dienst kann nach Ereignissen abgefragt werden, die in Ihrem Clust
 * Partitionsreplikate: Ereignisse von allen Replikaten/Instanzen in einer bestimmten, durch `partitionId` identifizierten Partition.
 * Partitionsreplikat: Ereignisse von einem bestimmten Replikat/einer bestimmten Instanz, das bzw. die durch `replicaId` und `partitionId` identifiziert wird.
 
-Um mehr über die API zu erfahren, lesen Sie die [API-Referenz zu EventStore](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
+Um mehr über die API zu erfahren, lesen Sie die [API-Referenz zu EventStore](/rest/api/servicefabric/sfclient-index-eventsstore).
 
 Der EventStore-Dienst hat auch die Möglichkeit, Ereignisse in Ihrem Cluster zu korrelieren. Durch den Blick auf Ereignisse, die gleichzeitig von unterschiedlichen Entitäten geschrieben wurden und sich möglicherweise gegenseitig beeinträchtigt haben, kann der EventStore-Dienst diese Ereignisse verknüpfen und beim Identifizieren von Ursachen für Aktivitäten in Ihrem Cluster helfen. Wenn beispielsweise eine Anwendung ohne veranlasste Änderung fehlerhaft wird, sucht EventStore auch nach anderen Ereignissen, die von der Plattform bereitgestellt werden, und kann diese mit einem `Error`- oder `Warning`-Ereignis korrelieren. Das beschleunigt die Fehlererkennung und Analyse der Hauptursachen.
 
@@ -135,5 +126,5 @@ Wenn Sie Version 6.4 verwenden, können Sie Ihre Azure Resource Manager-Vorlage
 * Erste Schritte mit der EventStore-API: [Verwenden der EventStore-APIs in Azure Service Fabric-Clustern](service-fabric-diagnostics-eventstore-query.md)
 * Weitere Informationen zur Liste der von EventStore bereitgestellten Ereignisse: [Service Fabric-Ereignisse](service-fabric-diagnostics-event-generation-operational.md)
 * Eine Übersicht über Überwachung und Diagnose in Service Fabric finden Sie unter [Überwachungs- und Diagnosefunktionen für Service Fabric](service-fabric-diagnostics-overview.md).
-* Anzeigen der vollständigen Liste der API-Aufrufe: [REST-API-Referenz zu EventStore](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
+* Anzeigen der vollständigen Liste der API-Aufrufe: [REST-API-Referenz zu EventStore](/rest/api/servicefabric/sfclient-index-eventsstore)
 * Weitere Informationen zum Überwachen Ihres Clusters finden Sie unter [Überwachen des Clusters und der Plattform](service-fabric-diagnostics-event-generation-infra.md).

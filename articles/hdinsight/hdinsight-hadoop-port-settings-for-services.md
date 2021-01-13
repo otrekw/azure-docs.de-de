@@ -1,38 +1,38 @@
 ---
 title: Ports für Hadoop-Dienste in HDInsight – Azure
-description: Dadurch wird eine Liste der Ports bereitgestellt, die von Apache Hadoop-Diensten in Azure HDInsight verwendet werden.
+description: Dieser Artikel enthält eine Liste mit Ports, die von Apache Hadoop-Diensten in Azure HDInsight verwendet werden.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1fe66c1c171e779f48f4cc7c6767307feaafbd5f
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.topic: how-to
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: e3e2ca2eca0d258a14365edc97b98d0c827b0b6f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733425"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546057"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Ports für Apache Hadoop-Dienste in HDInsight
 
-Dieses Dokument enthält eine Liste mit den Ports für Apache Hadoop-Dienste, die in Linux-basierten HDInsight-Clustern ausgeführt werden. Außerdem enthält es Informationen zu Ports, die zum Herstellen einer Verbindung mit dem Cluster per SSH verwendet werden.
+Dieses Dokument enthält eine Liste mit den Ports für Apache Hadoop-Dienste, die in HDInsight-Clustern ausgeführt werden. Außerdem enthält es Informationen zu Ports, die zum Herstellen einer Verbindung mit dem Cluster per SSH verwendet werden.
 
 ## <a name="public-ports-vs-non-public-ports"></a>Öffentliche Ports im Vergleich mit nicht öffentlichen Ports
 
-Für Linux-basierte HDInsight-Cluster werden nur drei Ports öffentlich im Internet verfügbar gemacht: 22, 23 und 443. Diese Ports werden zum sicheren Zugreifen auf den Cluster per SSH und auf Dienste verwendet, die über das sichere HTTPS-Protokoll bereitgestellt werden.
+Für Linux-basierte HDInsight-Cluster werden nur drei Ports im Internet öffentlich verfügbar gemacht: 22, 23 und 443. Diese Ports sichern den Clusterzugriff mithilfe von SSH und Diensten, die über das sichere HTTPS-Protokoll verfügbar gemacht werden.
 
-Intern wird HDInsight von mehreren Azure Virtual Machines (Knoten im Cluster) implementiert, die in einem Azure Virtual Network ausgeführt werden. Aus dem virtuellen Netzwerk können Sie auf Ports zugreifen, die nicht über das Internet verfügbar gemacht werden. Wenn Sie beispielsweise eine Verbindung mit einem der Hauptknoten per SSH herstellen, können Sie vom Hauptknoten dann direkt auf Dienste zugreifen, die auf den Clusterknoten ausgeführt werden.
+HDInsight wird von mehreren Azure Virtual Machines (Clusterknoten) implementiert, die in einem Azure Virtual Network ausgeführt werden. Aus dem virtuellen Netzwerk können Sie auf Ports zugreifen, die nicht über das Internet verfügbar gemacht werden. Wenn Sie über SSH eine Verbindung mit dem Hauptknoten herstellen, können Sie auf Dienste, die auf den Clusterknoten ausgeführt werden, direkt zugreifen.
 
 > [!IMPORTANT]  
-> Wenn Sie kein virtuelles Azure-Netzwerk als eine Konfigurationsoption für HDInsight angeben, wird automatisch eines erstellt. Sie können diesem virtuellen Netzwerk jedoch nicht mit anderen Computern (z.B. anderen virtuellen Azure-Computern oder Ihrem Client-Entwicklungscomputer) beitreten.
+> Wenn Sie kein virtuelles Azure-Netzwerk als eine Konfigurationsoption für HDInsight angeben, wird automatisch eines erstellt. Sie können in dieses virtuelle Netzwerk aber keine anderen Computer (z. B. virtuelle Azure-Computer oder Ihren Cliententwicklungscomputer) einbinden.
 
 Um für weitere Computer den Beitritt zum virtuellen Netzwerk durchzuführen, müssen Sie zuerst das virtuelle Netzwerk erstellen und beim Erstellen des HDInsight-Clusters dann angeben. Weitere Informationen finden Sie unter [Planen eines virtuellen Netzwerks für HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
 ## <a name="public-ports"></a>Öffentliche Ports
 
-Alle Knoten eines HDInsight-Clusters befinden sich in einem Azure Virtual Network, und darauf kann aus dem Internet nicht direkt zugegriffen werden. Ein öffentliches Gateway ermöglicht den Internetzugriff auf die folgenden Ports, die für alle HDInsight-Clustertypen gleich sind:
+Alle Knoten in einem HDInsight-Cluster befinden sich in einem Azure Virtual Network. Auf die Knoten kann aus dem Internet nicht direkt zugegriffen werden. Ein öffentliches Gateway ermöglicht den Internetzugriff auf die folgenden Ports, die für alle HDInsight-Clustertypen gleich sind:
 
 | Dienst | Port | Protocol | BESCHREIBUNG |
 | --- | --- | --- | --- |
@@ -49,12 +49,13 @@ Für spezielle Clustertypen ist Folgendes verfügbar:
 
 | Dienst | Port | Protocol | Clustertyp | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |hbase |HBase-REST-API. Siehe [Erste Schritte mit Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| `Stargate` |443 |HTTPS |hbase |HBase-REST-API. Siehe [Erste Schritte mit Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Spark-REST-API. Siehe [Remoteübermittlung von Apache Spark-Aufträgen mit Apache Livy](spark/apache-spark-livy-rest-interface.md) |
 | Spark Thrift-Server |443 |HTTPS |Spark |Zum Übermitteln von Hive-Abfragen verwendeter Spark Thrift-Server. Siehe [Verwenden von Beeline mit Apache Hive in HDInsight](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Storm-Webbenutzeroberfläche. Siehe [Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md) |
+| Kafka-REST-Proxy |443 |HTTPS |Kafka |Kafka-REST-API. Weitere Informationen finden Sie unter [Interagieren mit Apache Kafka-Clustern in Azure HDInsight mithilfe eines REST-Proxys](kafka/rest-proxy.md). |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 
 Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen authentifiziert werden:
 
@@ -73,7 +74,7 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 
 ### <a name="ambari"></a>Ambari
 
-| Dienst | Nodes | Port | URL-Pfad | Protocol | 
+| Dienst | Nodes | Port | URL-Pfad | Protocol |
 | --- | --- | --- | --- | --- |
 | Ambari-Webbenutzeroberfläche | Hauptknoten | 8080 | / | HTTP |
 | Ambari-REST-API | Hauptknoten | 8080 | /api/v1 | HTTP |
@@ -88,7 +89,7 @@ Beispiele:
 | --- | --- | --- | --- | --- |
 | NameNode-Webbenutzeroberfläche |Hauptknoten |30070 |HTTPS |Webbenutzeroberfläche zum Anzeigen des Status |
 | NameNode-Metadatendienst |Hauptknoten |8020 |IPC |Dateisystem-Metadaten |
-| DataNode |Alle Workerknoten |30075 |HTTPS |Webbenutzeroberfläche zum Anzeigen von Status, Protokollen usw. |
+| DataNode |Alle Workerknoten |30075 |HTTPS |Webbenutzeroberfläche zum Anzeigen von Status, Protokollen und so weiter. |
 | DataNode |Alle Workerknoten |30010 |&nbsp; |Datenübertragung |
 | DataNode |Alle Workerknoten |30020 |IPC |Metadatenvorgänge |
 | Sekundärer NameNode |Hauptknoten |50090 |HTTP |Prüfpunkt für NameNode-Metadaten |
@@ -99,7 +100,7 @@ Beispiele:
 | --- | --- | --- | --- | --- |
 | Resource Manager-Webbenutzeroberfläche |Hauptknoten |8088 |HTTP |Webbenutzeroberfläche für Resource Manager |
 | Resource Manager-Webbenutzeroberfläche |Hauptknoten |8090 |HTTPS |Webbenutzeroberfläche für Resource Manager |
-| Resource Manager-Administratoroberfläche |Hauptknoten |8141 |IPC |Für Anwendungsübermittlungen (Hive, Hive-Server, Pig usw.) |
+| Resource Manager-Administratoroberfläche |Hauptknoten |8141 |IPC |Für Anwendungsübermittlungen (Hive, Hive-Server, Pig und so weiter) |
 | Resource Manager-Planer |Hauptknoten |8030 |HTTP |Administratoroberfläche |
 | Resource Manager-Anwendungsschnittstelle |Hauptknoten |8050 |HTTP |Adresse der Anwendungs-Manager-Schnittstelle |
 | NodeManager |Alle Workerknoten |30050 |&nbsp; |Adresse des Container-Managers |
@@ -155,8 +156,9 @@ Beispiele:
 
 | Dienst | Nodes | Port | Protocol | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
-| Broker |Workerknoten |9092 |[Kafka Wire Protocol](https://kafka.apache.org/protocol.html) |Für die Clientkommunikation |
+| Broker |Workerknoten |9092 |Kafka Wire Protocol |Für die Clientkommunikation |
 | &nbsp; |Zookeeper-Knoten |2181 |&nbsp; |Port, der von Clients für die Verbindungsherstellung mit ZooKeeper verwendet wird |
+| REST-Proxy | Kafka-Verwaltungsknoten |9400 |HTTPS |[Kafka-REST-Spezifikation](/rest/api/hdinsight-kafka-rest-proxy/) |
 
 ### <a name="spark-ports"></a>Spark-Ports
 

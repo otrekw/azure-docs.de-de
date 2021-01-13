@@ -1,19 +1,19 @@
 ---
-title: Modellieren von Beziehungen im Azure Storage-Tabellenentwurf | Microsoft Docs
-description: Hier erhalten Sie grundlegende Informationen zum Modellierungsprozess beim Entwerfen Ihrer Tabellenspeicherlösung.
+title: Modellieren von Beziehungen im Azure Table Storage-Entwurf | Microsoft-Dokumentation
+description: 'Hier finden Sie grundlegende Informationen zum Modellierungsprozess beim Entwerfen Ihrer Azure Table Storage-Lösung. Erfahren Sie mehr über 1: n-, 1:1- und Vererbungsbeziehungen.'
 services: storage
-author: MarkMcGeeAtAquent
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 5d83e61282d2f21a3016997e324d0f58eff15e78
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3023b478ef7a4aaf6d9239e997bdf63282b56210
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502502"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88271191"
 ---
 # <a name="modeling-relationships"></a>Modellieren von Beziehungen
 In diesem Artikel wird der Modellierungsprozess erörtert, um Sie beim Entwerfen Ihrer Azure Table Storage-Lösungen zu unterstützen.
@@ -51,7 +51,7 @@ In der folgenden Tabelle werden die Vor- und Nachteile der oben genannten einzel
 <td>
 <ul>
 <li>Sie können die Abteilungsentität mit einem einzelnen Vorgang aktualisieren.</li>
-<li>Sie können eine EGT zur Beibehaltung der Konsistenz verwenden, wenn Sie eine Anforderung zum Ändern der Abteilungsentität haben, wenn Sie eine Mitarbeiterentität aktualisieren, einfügen oder löschen. Beispiel: Wenn Sie für jede Abteilung eine Abteilungsmitarbeiterzahl verwalten.</li>
+<li>Sie können eine Entitätsgruppentransaktion* (EGT) zur Beibehaltung der Konsistenz verwenden, wenn Sie eine Anforderung zum Ändern der Abteilungsentität haben, wenn Sie eine Mitarbeiterentität aktualisieren, einfügen oder löschen. Beispiel: Wenn Sie für jede Abteilung eine Abteilungsmitarbeiterzahl verwalten.</li>
 </ul>
 </td>
 <td>
@@ -92,6 +92,9 @@ In der folgenden Tabelle werden die Vor- und Nachteile der oben genannten einzel
 </td>
 </tr>
 </table>
+
+*Weitere Informationen finden Sie unter [Entitätsgruppentransaktionen](table-storage-design.md#entity-group-transactions).  
+
 
 Wie Sie zwischen diesen Optionen wählen und welche Vor- und Nachteile am wichtigsten sind, hängt von Ihren speziellen Anwendungsszenarien ab. Beispiele: Wie oft ändern Sie Abteilungsentitäten? Benötigen alle Abfragen für Mitarbeiter die Zusatzinformationen für die Abteilung? Wie nahe liegen Sie an den Skalierbarkeitsgrenzen auf Ihren Partitionen oder Ihrem Speicherkonto?  
 

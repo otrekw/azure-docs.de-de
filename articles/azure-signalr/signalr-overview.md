@@ -1,17 +1,18 @@
 ---
 title: Was ist Azure SignalR Service?
-description: Enthält eine Übersicht über Azure SignalR Service.
+description: Informieren Sie sich über typische Anwendungsszenarien für die Verwendung von Azure SignalR Service, und lernen Sie die wichtigsten Vorteile von Azure SignalR Service kennen.
 author: sffamily
 ms.service: signalr
 ms.topic: overview
-ms.date: 06/20/2019
+ms.custom: devx-track-dotnet
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: e7bdc62f7fa46bbacce7f264d8f331ea64b05430
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 92da400616ace9f24da121d81798d5ebd9222e35
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273692"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "88921884"
 ---
 # <a name="what-is-azure-signalr-service"></a>Was ist Azure SignalR Service?
 
@@ -72,6 +73,6 @@ SignalR Service ermöglicht es dem Server, Nachrichten an eine bestimmte Verbind
 
 Es gibt viele verschiedene Möglichkeiten für die Programmierung mit Azure SignalR Service, wie z. B.:
 
-- **[ Skalieren einer ASP.NET Core SignalR-App](signalr-concept-scale-aspnet-core.md)** : Integrieren Sie den Azure SignalR-Dienst in eine ASP.NET Core SignalR-Anwendung, um durch horizontale Hochskalierung Hunderttausende von Verbindungen zu ermöglichen.
+- **[Skalieren einer ASP.NET Core SignalR-App](signalr-concept-scale-aspnet-core.md)** : Integrieren Sie den Azure SignalR-Dienst in eine ASP.NET Core SignalR-Anwendung, um durch Aufskalierung Hunderttausende von Verbindungen zu ermöglichen.
 - **[Erstellen von serverlosen Echtzeitanwendungen](signalr-concept-azure-functions.md)** : Verwenden Sie die Integration von Azure Functions in den Azure SignalR-Dienst, um serverlose Echtzeitanwendungen in Sprachen wie JavaScript, C# und Java zu erstellen.
 - **[Senden von Nachrichten vom Server an Clients über die REST API](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md)** : Der Azure SignalR-Dienst bietet eine REST-API, um es Anwendungen zu ermöglichen, Nachrichten an mit dem SignalR-Dienst verbundene Clients in allen REST-fähigen Programmiersprachen zu senden.

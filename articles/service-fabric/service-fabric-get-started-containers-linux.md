@@ -1,32 +1,22 @@
 ---
-title: Erstellen einer Azure Service Fabric-Containeranwendung unter Linux | Microsoft-Dokumentation
+title: Erstellen einer Azure Service Fabric-Containeranwendung unter Linux
 description: Erstellen Sie Ihre erste Linux-Containeranwendung unter Azure Service Fabric. Erstellen Sie ein Docker-Image mit Ihrer Anwendung, übertragen Sie es per Push an eine Containerregistrierung, erstellen Sie eine Service Fabric-Containeranwendung, und stellen Sie diese bereit.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/4/2019
-ms.author: atsenthi
-ms.openlocfilehash: 2bb9a5e8e42901f22d9f68d691684614c7161620
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.custom: devx-track-python
+ms.openlocfilehash: 0481cc2d36f7882bbd8eea9b984c3dc388de5dee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650669"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534079"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Linux
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Zum Ausführen einer vorhandenen Anwendung eines Linux-Containers in einem Service Fabric-Cluster sind keine Änderungen an Ihrer Anwendung erforderlich. In diesem Artikel wird schrittweise beschrieben, wie Sie ein Docker-Image mit einer Python [Flask](http://flask.pocoo.org/)-Webanwendung erstellen und in einem Service Fabric-Cluster bereitstellen. Außerdem stellen Sie Ihre Containeranwendung per [Azure Container Registry](/azure/container-registry/) bereit. In diesem Artikel werden grundlegende Kenntnisse von Docker vorausgesetzt. Weitere Informationen zu Docker finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/understanding-docker/).
+Zum Ausführen einer vorhandenen Anwendung eines Linux-Containers in einem Service Fabric-Cluster sind keine Änderungen an Ihrer Anwendung erforderlich. In diesem Artikel wird schrittweise beschrieben, wie Sie ein Docker-Image mit einer Python [Flask](http://flask.pocoo.org/)-Webanwendung erstellen und in einem Service Fabric-Cluster bereitstellen. Außerdem stellen Sie Ihre Containeranwendung per [Azure Container Registry](../container-registry/index.yml) bereit. In diesem Artikel werden grundlegende Kenntnisse von Docker vorausgesetzt. Weitere Informationen zu Docker finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/understanding-docker/).
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf eine Linux-Entwicklungsumgebung.  Die Service Fabric-Clusterruntime und die Docker-Runtime müssen unter dem gleichen Betriebssystem ausgeführt werden.  Sie können Linux-Container nicht in einem Windows-Cluster ausführen.
@@ -36,6 +26,8 @@ Zum Ausführen einer vorhandenen Anwendung eines Linux-Containers in einem Servi
   * [Service Fabric-SDK und -Tools](service-fabric-get-started-linux.md)
   * [Docker CE für Linux](https://docs.docker.com/engine/installation/#prior-releases). 
   * [Service Fabric-Befehlszeilenschnittstelle](service-fabric-cli.md)
+
+* Einen Linux-Cluster mit drei oder mehr Knoten.
 
 * Eine Registrierung in Azure Container Registry – erstellen Sie in Ihrem Azure-Abonnement eine [Containerregistrierung](../container-registry/container-registry-get-started-portal.md). 
 
@@ -95,10 +87,17 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
-## <a name="build-the-image"></a>Erstellen des Image
-Führen Sie den Befehl `docker build` aus, um das Image zu erstellen, mit dem Ihre Webanwendung ausgeführt wird. Öffnen Sie ein PowerShell-Fenster, und navigieren Sie zu *c:\temp\helloworldapp*. Führen Sie den folgenden Befehl aus:
+## <a name="login-to-docker-and-build-the-image"></a>Anmelden bei Docker und Erstellen des Images
 
-```bash
+Nun erstellen Sie das Image, mit dem Ihre Webanwendung ausgeführt wird. Beim Pullen von öffentlichen Images aus Docker (wie `python:2.7-slim` in unserer Dockerfile-Datei) besteht eine bewährte Methode darin, sich mit Ihrem Docker Hub-Konto zu authentifizieren, anstatt einen anonymen Pull Request zu erstellen.
+
+> [!NOTE]
+> Beim Ausführen von häufigen anonymen Pull Requests wird möglicherweise ein Docker-Fehler wie `ERROR: toomanyrequests: Too Many Requests.` oder `You have reached your pull rate limit.` angezeigt. Authentifizieren Sie sich bei Docker Hub, um diese Fehler zu verhindern. Weitere Informationen finden Sie unter [Verwalten öffentlicher Inhalte mit Azure Container Registry](../container-registry/buffer-gate-public-content.md).
+
+Öffnen Sie ein PowerShell-Fenster, und navigieren Sie zu dem Verzeichnis, das die Dockerfile-Datei enthält. Führen Sie anschließend die folgenden Befehle aus:
+
+```
+docker login
 docker build -t helloworldapp .
 ```
 
@@ -223,7 +222,7 @@ Ab dem neuesten Aktualisierungsrelease v6.4 können Sie festlegen, dass Docker-H
 
 Die Anweisung **HEALTHCHECK**, die auf die tatsächliche Prüfung zur Überwachung der Containerintegrität verweist, muss in der Dockerfile-Datei enthalten sein, die beim Generieren des Containerimages verwendet wurde.
 
-![HealthCheckHealthy][1]
+![Screenshot mit Details des bereitgestellten Dienstpakets „NodeServicePackage“][1]
 
 ![HealthCheckUnhealthyApp][2]
 
@@ -260,7 +259,7 @@ Stellen Sie eine Verbindung mit dem lokalen Service Fabric-Cluster her.
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-Verwenden Sie das in den Vorlagen bereitgestellte Installationsskript, https://github.com/Azure-Samples/service-fabric-containers/ um das Anwendungspaket in den Imagespeicher des Clusters zu kopieren, den Anwendungstyp zu registrieren und eine Instanz der Anwendung zu erstellen.
+Verwenden Sie das in den Vorlagen bereitgestellte Installationsskript, https://github.com/Azure-Samples/service-fabric-containers/um das Anwendungspaket in den Imagespeicher des Clusters zu kopieren, den Anwendungstyp zu registrieren und eine Instanz der Anwendung zu erstellen.
 
 
 ```bash
@@ -274,7 +273,7 @@ Stellen Sie eine Verbindung mit dem ausgeführten Container her. Öffnen Sie ein
 ![Hello World!][hello-world]
 
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 Verwenden Sie das in der Vorlage bereitgestellte Deinstallationsskript, um die Anwendungsinstanz aus dem lokalen Entwicklungscluster zu löschen und die Registrierung des Anwendungstyps aufzuheben.
 
 ```bash
@@ -381,7 +380,7 @@ Dies sind die vollständigen Dienst- und Anwendungsmanifeste, die in diesem Arti
 Führen Sie zum Hinzufügen eines weiteren Containerdiensts zu einer Anwendung, die bereits mit Yeoman erstellt wurde, die folgenden Schritte aus:
 
 1. Legen Sie das Verzeichnis auf den Stamm der vorhandenen Anwendung fest. Beispiel: `cd ~/YeomanSamples/MyApplication`, wenn `MyApplication` die von Yeoman erstellte Anwendung ist.
-2. Führen Sie `yo azuresfcontainer:AddService` aus.
+2. Ausführen von `yo azuresfcontainer:AddService`
 
 <a id="manually"></a>
 
@@ -421,7 +420,7 @@ Sie können den Service Fabric-Cluster so konfigurieren, dass er nicht verwendet
           },
           {
                 "name": "ContainerImagesToSkip",
-                "value": "microsoft/windowsservercore|microsoft/nanoserver|microsoft/dotnet-frameworku|..."
+                "value": "mcr.microsoft.com/windows/servercore|mcr.microsoft.com/windows/nanoserver|mcr.microsoft.com/dotnet/framework/aspnet|..."
           }
           ...
           }

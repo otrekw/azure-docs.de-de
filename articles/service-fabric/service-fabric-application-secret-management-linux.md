@@ -1,25 +1,16 @@
 ---
-title: Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen in Azure Service Fabric-Linux-Clustern | Microsoft-Dokumentation
+title: Einrichten eines Verschlüsselungszertifikats auf Linux-Clustern
 description: Es wird beschrieben, wie Sie ein Verschlüsselungszertifikat einrichten und Geheimnisse in Linux-Clustern verschlüsseln.
-services: service-fabric
-documentationcenter: .net
 author: shsha
-manager: ''
-editor: ''
-ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/04/2019
 ms.author: shsha
-ms.openlocfilehash: 9589d6ea69a2293d592a9e63f2b726f1a620bb9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126986"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "78969030"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen in Linux-Clustern
 In diesem Artikel wird veranschaulicht, wie Sie ein Verschlüsselungszertifikat einrichten und zum Verschlüsseln von Geheimnissen in Linux-Clustern verwenden. Informationen zur Vorgehensweise für Windows-Cluster finden Sie unter [Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen in Windows-Clustern][secret-management-windows-specific-link].
@@ -45,7 +36,7 @@ Der folgende Codeausschnitt kann zum Verschlüsseln eines Geheimnisses verwendet
 
 ```console
 user@linux:$ echo "Hello World!" > plaintext.txt
-user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
+user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 Die resultierende Base64-codierte Zeichenfolge, die in „encrypted.txt“ ausgegeben wird, enthält sowohl den geheimen Chiffretext als auch Informationen zum Zertifikat, das für die Verschlüsselung verwendet wurde. Sie können die Gültigkeit überprüfen, indem Sie mit OpenSSL die Entschlüsselung durchführen.

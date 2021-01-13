@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: lahugh
 ms.openlocfilehash: 0ca6e38a9c9b5b92041e7f5b0fe964de58ef8f55
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70128054"
 ---
 ## <a name="get-account-credentials"></a>Abrufen der Kontoanmeldeinformationen

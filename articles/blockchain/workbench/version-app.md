@@ -1,21 +1,15 @@
 ---
-title: Versionsverwaltung für die Blockchainanwendung in Azure Blockchain Workbench (Vorschauversion)
+title: 'Versionsverwaltung für die Blockchain-App: Azure Blockchain Workbench'
 description: Erfahren Sie, wie Sie Anwendungsversionen in Azure Blockchain Workbench (Vorschauversion) verwenden.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 09/05/2019
-ms.topic: article
-ms.service: azure-blockchain
+ms.date: 11/20/2019
+ms.topic: how-to
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 33ecb6dea48117edd876b90eda54768785f25c20
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 2a70112fd0ab6e2f664ca48265c121936b01e58b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843881"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85209877"
 ---
 # <a name="azure-blockchain-workbench-preview-application-versioning"></a>Versionsverwaltung für die Azure Blockchain Workbench-Anwendung (Vorschauversion)
 

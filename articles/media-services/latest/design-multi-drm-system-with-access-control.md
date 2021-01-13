@@ -1,6 +1,6 @@
 ---
-title: Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung – Azure Media Services | Microsoft-Dokumentation
-description: Erfahren Sie mehr über die Lizenzierung des Microsoft Smooth Streaming Client Porting Kit.
+title: Multi-DRM-Inhaltsschutzsystem – Azure Media Services v3
+description: In diesem Artikel erhalten Sie eine detaillierte Beschreibung, wie Sie ein Multi-DRM-Inhaltsschutzsystem mit Azure Media Services entwerfen.
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -10,18 +10,20 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/21/2018
+ms.topic: conceptual
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: ffbf53c0bb0aaf2832afecc2d0df935f04eeff19
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310329"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89298197"
 ---
-# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung 
+# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Das Entwerfen und Erstellen eines DRM-Subsystems (Digital Rights Management) für eine Over-The-Top-Lösung (OTT) oder eine Onlinestreaminglösung ist eine komplexe Aufgabe. Anbieter von Internet- oder Onlinevideodiensten übertragen diese Aufgabe in der Regel spezialisierten DRM-Dienstanbietern. Ziel dieses Dokuments ist es, einen Referenzentwurf und eine Referenzimplementierung eines kompletten DRM-Subsystems in einer OTT- oder Onlinestreaminglösung zu präsentieren.
 
@@ -202,10 +204,10 @@ Die Implementierung umfasst die folgenden Schritte:
 
     | **DRM-System** | **Browser** | **Ergebnis für berechtigten Benutzer** | **Ergebnis für nicht berechtigten Benutzer** |
     | --- | --- | --- | --- |
-    | **PlayReady** |Microsoft Edge oder Internet Explorer 11 unter Windows 10 |Erfolg |Fail |
-    | **Widevine** |Chrome, Firefox, Opera |Erfolg |Fail |
-    | **FairPlay** |Safari unter macOS      |Erfolg |Fail |
-    | **AES-128** |Meisten modernen Browser  |Erfolg |Fail |
+    | **PlayReady** |Microsoft Edge oder Internet Explorer 11 unter Windows 10 |Erfolg |Fehler |
+    | **Widevine** |Chrome, Firefox, Opera |Erfolg |Fehler |
+    | **FairPlay** |Safari unter macOS      |Erfolg |Fehler |
+    | **AES-128** |Meisten modernen Browser  |Erfolg |Fehler |
 
 Informationen zum Einrichten von Azure AD für einen ASP.NET MVC-Player finden Sie unter [Integrate an Azure Media Services OWIN MVC-based app with Azure Active Directory and restrict content key delivery based on JWT claims](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/) (Integrieren einer Azure Media Services-OWIN MVC-basierten App in Azure Active Directory und Einschränken der Übermittlung von Inhaltsschlüsseln auf Grundlage von JWT-Ansprüchen).
 
@@ -213,8 +215,8 @@ Weitere Informationen finden Sie unter [JWT token authentication in Azure Media 
 
 Informationen zu Azure AD:
 
-* Informationen für Entwickler bietet das [Entwicklerhandbuch zu Azure Active Directory](../../active-directory/develop/v1-overview.md).
-* Informationen für Administratoren finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](../../active-directory/fundamentals/active-directory-administer.md).
+* Informationen für Entwickler bietet das [Entwicklerhandbuch zu Azure Active Directory](../../active-directory/develop/v2-overview.md).
+* Informationen für Administratoren finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](../../active-directory/fundamentals/active-directory-whatis.md).
 
 ### <a name="some-issues-in-implementation"></a>Mögliche Probleme bei der Implementierung
 
@@ -222,8 +224,10 @@ Falls bei der Implementierung Probleme auftreten, verwenden Sie die folgenden In
 
 * Die Aussteller-URL muss auf „/“ enden. Die Zielgruppe muss die Anwendungsclient-ID des Players sein. Fügen Sie hier ebenfalls einen Schrägstrich („/“) am Ende der Aussteller-URL ein.
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```
 
     Im [JWT-Decoder](http://jwt.calebb.net/) sollten **aud** und **iss** wie im JWT angezeigt werden:
 
@@ -235,11 +239,15 @@ Falls bei der Implementierung Probleme auftreten, verwenden Sie die folgenden In
 
 * Verwenden Sie den richtigen Aussteller, wenn Sie den dynamischen CENC-Schutz einrichten.
 
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```
 
     Folgendes funktioniert nicht:
 
-        <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```
 
     Bei der GUID handelt es sich um die Azure AD-Mandanten-ID. Sie finden die GUID im Azure-Portal im Popupmenü **Endpunkte**.
 
@@ -249,7 +257,7 @@ Falls bei der Implementierung Probleme auftreten, verwenden Sie die folgenden In
 
 * Legen Sie beim Erstellen der Einschränkungsanforderungen den richtigen TokenType fest.
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    `objTokenRestrictionTemplate.TokenType = TokenType.JWT;`
 
     Da Sie zusätzlich zu SWT (ACS) Unterstützung für JWT (Azure AD) hinzufügen, ist „TokenType.JWT“ der standardmäßige TokenType. Wenn Sie SWT/ACS verwenden, müssen Sie „TokenType.SWT“ festlegen.
 

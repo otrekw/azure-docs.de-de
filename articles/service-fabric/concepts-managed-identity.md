@@ -1,78 +1,69 @@
 ---
-title: 'Service Fabric: Übersicht über die verwaltete Identität | Microsoft-Dokumentation'
-description: Dieser Artikel bietet eine Übersicht über die verwaltete Identität.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
+title: Verwaltete Identitäten für Azure
+description: Erfahren Sie mehr über die Verwendung von verwalteten Identitäten für Azure mit Service Fabric.
 ms.topic: conceptual
-ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: d63fd3d1b778c691d053f13fbf0fbb2ed5ccb3e3
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.date: 12/09/2019
+ms.openlocfilehash: 28c992792d4572a43e12f5d32855f8411b0f4c6f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968282"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574750"
 ---
-# <a name="managed-identity-for-service-fabric-application-preview"></a>Verwaltete Identität für die Service Fabric-Anwendung (Vorschau)
+# <a name="using-managed-identities-for-azure-with-service-fabric"></a>Verwenden verwalteter Identitäten für Azure mit Service Fabric
 
-Eine gängige Herausforderung beim Erstellen von Cloudanwendungen ist die Verwaltung der Anmeldeinformationen im Code, die für die Authentifizierung bei Clouddiensten erforderlich sind. Der Schutz von Anmeldeinformationen ist wichtig, da sie nie auf Entwicklerarbeitsstationen angezeigt und nicht in die Quellcodeverwaltung eingecheckt werden. Die Funktion „Verwaltete Identität“ für Azure-Ressourcen in Azure Active Directory (Azure AD) löst dieses Problem. Mit dieser Funktion wird in Azure AD eine automatisch verwaltete Identität für Azure-Dienste bereitgestellt. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt, einschließlich Key Vault. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
+Eine gängige Herausforderung beim Entwickeln von Cloudanwendungen ist die sichere Verwaltung der Anmeldeinformationen in Ihrem Code für die Authentifizierung bei verschiedenen Diensten, ohne diese lokal auf einer Entwicklerarbeitsstation oder in der Quellcodeverwaltung zu speichern. *Verwaltete Identitäten für Azure* lösen dieses Problem für alle Ihre Ressourcen in Azure Active Directory (Azure AD), indem sie automatisch verwaltete Identitäten in Azure AD bereitstellen. Sie können die Identität eines Diensts für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt, einschließlich Key Vault. Hierfür müssen keine Anmeldeinformationen im Code gespeichert werden.
 
-Die Funktion „Verwaltete Identität“ für Azure-Ressourcen ist in Azure AD mit einem Azure-Abonnement kostenlos. Es fallen keine zusätzlichen Kosten an.
+*Verwaltete Identitäten für Azure-Ressourcen* sind in Azure AD für Azure-Abonnements kostenlos. Es fallen keine zusätzlichen Kosten an.
 
 > [!NOTE]
-> „Verwaltete Identität für Azure-Ressourcen“ ist der neue Name des Diensts, der früher als „Verwaltete Dienstidentität“ (Managed Service Identity, MSI) bezeichnet wurde.
+> *Verwaltete Identitäten für Azure* ist der neue Name für den Dienst, der früher als „Verwaltete Dienstidentität“ (Managed Service Identity, MSI) bezeichnet wurde.
 
-## <a name="terminology"></a>Begriff
+## <a name="concepts"></a>Konzepte
 
-Die folgenden Begriffe werden in der gesamten Dokumentation für die verwaltete Identität für Azure-Ressourcen verwendet:
+Verwaltete Identitäten für Azure basieren auf verschiedenen wichtigen Konzepten:
 
-- **Client-ID:** ein eindeutiger, in Azure AD generierter Bezeichner, der während der ersten Bereitstellung an eine Anwendung und einen Dienstprinzipal gebunden wird (siehe auch [Anwendungs-ID](/azure/active-directory/develop/developer-glossary#application-id-client-id))
+- **Client-ID:** ein eindeutiger, in Azure AD generierter Bezeichner, der während der ersten Bereitstellung an eine Anwendung und einen Dienstprinzipal gebunden wird (siehe auch [Anwendungs-ID](../active-directory/develop/developer-glossary.md#application-id-client-id))
 
 - **Prinzipal-ID:** die Objekt-ID des Dienstprinzipalobjekts für die verwaltete Identität, mit der der rollenbasierte Zugriff auf eine Azure-Ressource gewährt wird
 
 - **Dienstprinzipal:** ein Azure Active Directory-Objekt, das die Projektion einer AAD-Anwendung in einem bestimmten Mandanten darstellt (siehe auch [Dienstprinzipalobjekt](../active-directory/develop/developer-glossary.md#service-principal-object))
 
+Es gibt zwei Arten von verwalteten Identitäten:
 
-## <a name="about-managed-identities-in-azure"></a>Informationen zu verwalteten Identitäten in Azure
+- Eine **vom System zugewiesene verwaltete Identität** wird direkt für eine Azure-Dienstinstanz aktiviert.  Der Lebenszyklus einer vom System zugewiesenen Identität ist für die Azure-Dienstinstanz eindeutig, für die sie aktiviert wurde.
+- Eine **vom Benutzer zugewiesene verwaltete Identität** wird als eigenständige Azure-Ressource erstellt. Die Identität kann mindestens einer Azure-Dienstinstanz zugewiesen werden und wird separat von den Lebenszyklen dieser Instanzen verwaltet.
 
-- [Typen der verwalteten Identität (MI) in Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-work)
-
-- [Funktionsweise einer vom System zugewiesenen verwalteten Identität in Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-a-system-assigned-managed-identity-works-with-an-azure-vm)
-
-- [Funktionsweise einer vom Benutzer zugewiesenen verwalteten Identität in Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-a-user-assigned-managed-identity-works-with-an-azure-vm)
-
+Weitere Informationen zu den Unterschieden zwischen den Typen verwalteter Identitäten finden Sie unter [Wie funktionieren verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Unterstützte Szenarien für Service Fabric-Anwendungen
 
-Verwaltete Identitäten für Service Fabric werden nur in Service Fabric-Clustern unterstützt, die in Azure bereitgestellt werden, und auch nur für Anwendungen, die als Azure-Ressourcen bereitgestellt werden. Anwendungen, die nicht als Azure-Ressourcen bereitgestellt werden, kann keine Identität zugewiesen werden. Konzeptionell besteht die Unterstützung für verwaltete Identitäten in Azure Service Fabric-Clustern aus zwei Phasen:
+Verwaltete Identitäten für Service Fabric werden nur in Service Fabric-Clustern unterstützt, die in Azure bereitgestellt werden, und auch nur für Anwendungen, die als Azure-Ressourcen bereitgestellt werden. Einer Anwendung, die nicht als Azure-Ressourcen bereitgestellt wird, kann keine Identität zugewiesen werden. Konzeptionell besteht die Unterstützung für verwaltete Identitäten in einem Azure Service Fabric-Cluster aus zwei Phasen:
 
 1. Zuweisen mindestens einer verwalteten Identität zu der Anwendungsressource. Einer Anwendung können jeweils eine einzelne vom System zugewiesene Identität und/oder bis zu 32 vom Benutzer zugewiesene Identitäten zugewiesen werden.
 
 2. Zuordnen einer der Identitäten, die der Anwendung zugewiesen sind, zu einem einzelnen Dienst, der die Anwendung enthält, in der Anwendungsdefinition
 
-Die vom System zugewiesene Identität einer Anwendung ist eindeutig für diese Anwendung. Eine vom Benutzer zugewiesene Identität ist eine eigenständige Ressource, die mehreren Anwendungen zugewiesen werden kann. Innerhalb einer Anwendung kann eine einzelne (vom System oder vom Benutzer zugewiesene) Identität mehreren Diensten der Anwendung zugewiesen werden, jedem einzelnen Dienst kann jedoch nur eine einzige Identität zugewiesen werden. Schließlich muss einem Dienst explizit eine Identität zugewiesen werden, um auf diese Funktion zugreifen zu können. Tatsächlich ermöglicht die Zuordnung der Identitäten einer Anwendung zu den zugehörigen einzelnen Diensten eine Isolation in der Anwendung. In einem Dienst kann nur die ihm zugewiesene Identität verwendet werden (und überhaupt keine Identität, wenn dem Dienst keine Identität explizit zugewiesen wurde).  
+Die vom System zugewiesene Identität einer Anwendung ist eindeutig für diese Anwendung. Eine vom Benutzer zugewiesene Identität ist eine eigenständige Ressource, die mehreren Anwendungen zugewiesen werden kann. Innerhalb einer Anwendung kann eine einzelne (vom System oder vom Benutzer zugewiesene) Identität mehreren Diensten der Anwendung zugewiesen werden, jedem einzelnen Dienst kann jedoch nur eine einzige Identität zugewiesen werden. Schließlich muss einem Dienst explizit eine Identität zugewiesen werden, um auf diese Funktion zugreifen zu können. Tatsächlich ermöglicht die Zuordnung der Identitäten einer Anwendung zu den zugehörigen einzelnen Diensten eine Isolation in der Anwendung. In einem Dienst kann nur die ihm zugewiesene Identität verwendet werden.  
 
-Folgende Szenarien werden für die Vorschauversion unterstützt:
+Zurzeit werden die folgenden Szenarien für dieses Feature unterstützt:
 
-   - Bereitstellen einer neuen Anwendung mit einem oder mehreren Diensten und einer oder mehreren zugewiesenen Identitäten
+- Bereitstellen einer neuen Anwendung mit einem oder mehreren Diensten und einer oder mehreren zugewiesenen Identitäten
 
-   - Zuweisen einer oder mehrerer verwalteten Identitäten zu einer vorhandenen Anwendung, um auf Azure-Ressourcen zuzugreifen. Dabei muss die Anwendung selbst als Azure-Ressource bereitgestellt werden.
-
+- Zuweisen mindestens einer verwalteten Identität zu einer vorhandenen (in Azure bereitgestellten) Anwendung, um auf Azure-Ressourcen zuzugreifen
 
 Die folgenden Szenarien werden nicht unterstützt oder nicht empfohlen. Beachten Sie, dass diese Aktionen möglicherweise nicht blockiert werden, aber zu Ausfällen in Ihren Anwendungen führen können:
 
-   - Entfernen oder Ändern der Identitäten, die einer Anwendung zugewiesen sind. Wenn Sie Änderungen vornehmen möchten, übermitteln Sie separate Bereitstellungen, um zunächst die Zuweisung einer neuen Identität hinzuzufügen und dann eine zuvor zugewiesene Identität zu entfernen. Das Entfernen einer Identität aus einer vorhandenen Anwendung kann unerwünschte Auswirkungen haben und z. B. die Anwendung in einen nicht aktualisierbaren Zustand bringen. Die Anwendung kann vollständig gelöscht werden, wenn das Entfernen einer Identität erforderlich ist. Beachten Sie, dass dadurch die der Anwendung zugeordnete vom System zugewiesene Identität gelöscht wird (sofern definiert) und alle Zuordnungen mit den der Anwendung vom Benutzer zugewiesenen Identitäten entfernt werden.
+- Entfernen oder Ändern der Identitäten, die einer Anwendung zugewiesen sind. Wenn Sie Änderungen vornehmen möchten, übermitteln Sie separate Bereitstellungen, um zunächst die Zuweisung einer neuen Identität hinzuzufügen und dann eine zuvor zugewiesene Identität zu entfernen. Das Entfernen einer Identität aus einer vorhandenen Anwendung kann unerwünschte Auswirkungen haben und z. B. die Anwendung in einen nicht aktualisierbaren Zustand bringen. Die Anwendung kann vollständig gelöscht werden, wenn das Entfernen einer Identität erforderlich ist. Beachten Sie, dass dadurch die der Anwendung zugeordnete vom System zugewiesene Identität gelöscht wird (sofern definiert) und alle Zuordnungen mit den der Anwendung vom Benutzer zugewiesenen Identitäten entfernt werden.
 
->
-> [!NOTE]
->
-> Diese Funktion befindet sich in der Vorschauphase. Daher kann sie häufigen Änderungen unterliegen und ist möglicherweise nicht für Produktionsbereitstellungen geeignet.
+- Die Unterstützung für verwaltete Identitäten durch Service Fabric ist zurzeit nicht in [AzureServiceTokenProvider](../key-vault/general/service-to-service-authentication.md) integriert.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Bereitstellen eines neuen Azure Service Fabric-Clusters mit Unterstützung für verwaltete Identitäten](./configure-new-azure-service-fabric-enable-managed-identity.md) 
-* [Aktivieren der Unterstützung für verwaltete Identitäten in einem vorhandenen Azure Service Fabric-Cluster](./configure-existing-cluster-enable-managed-identity-token-service.md)
-* [Bereitstellen einer Azure Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-* [Bereitstellen einer Azure Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Nutzen der verwalteten Identität einer Service Fabric-Anwendung aus dem Dienstcode](./how-to-managed-identity-service-fabric-app-code.md)
-* [Gewähren des Zugriffs auf andere Azure-Ressourcen für eine Azure Service Fabric-Anwendung](./how-to-grant-access-other-resources.md)
+
+- [Bereitstellen eines neuen Azure Service Fabric-Clusters mit Unterstützung für verwaltete Identitäten](./configure-new-azure-service-fabric-enable-managed-identity.md)
+- [Aktivieren Sie die Unterstützung der verwalteten Identität in einem bereits vorhandenen Azure Service Fabric-Cluster.](./configure-existing-cluster-enable-managed-identity-token-service.md)
+- [Bereitstellen einer Azure Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+- [Bereitstellen einer Azure Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+- [Nutzen der verwalteten Identität einer Service Fabric-Anwendung aus dem Dienstcode](./how-to-managed-identity-service-fabric-app-code.md)
+- [Gewähren des Zugriffs auf andere Azure-Ressourcen für eine Azure Service Fabric-Anwendung](./how-to-grant-access-other-resources.md)
+- [Deklarieren und Verwenden von Anwendungsgeheimnissen als KeyVaultReferences](./service-fabric-keyvault-references.md)

@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 7b511ab0c3093747d6e713754c04533e5f25b6ad
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 8bac53cd08629e8b0a9cb91e596856c0ae6b5a2f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087403"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289113"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>Der Zugriff auf Data Lake-Speicherdateien in Azure HDInsight ist nicht möglich
 
@@ -32,7 +32,7 @@ Der Benutzer hat möglicherweise Berechtigungen des Dienstprinzipals für Dateie
 
 ### <a name="resolution"></a>Lösung
 
-1. Überprüfen Sie, ob der Dienstprinzipal über „x“-Berechtigungen zum Durchlaufen des Pfads verfügt. Weitere Informationen finden Sie unter [Berechtigungen](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html). dfs-Beispielbefehl zum Überprüfen des Zugriffs auf Dateien/Ordner im Data Lake Speicherkonto:
+1. Überprüfen Sie, ob der Dienstprinzipal über „x“-Berechtigungen zum Durchlaufen des Pfads verfügt. Weitere Informationen finden Sie unter [Berechtigungen](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html). `dfs`-Beispielbefehl zum Überprüfen des Zugriffs auf Dateien/Ordner im Data Lake Speicherkonto:
 
     ```
     hdfs dfs -ls /<path to check access>
@@ -54,13 +54,13 @@ Token Refresh failed - Received invalid http response: 500
 
 Das für den Dienstprinzipalzugriff angegebene Zertifikat ist möglicherweise abgelaufen.
 
-1. Greifen Sie über SSH auf den Hauptknoten zu. Überprüfen Sie den Zugriff auf das Speicherkonto mit dem folgenden dfs-Befehl:
+1. Greifen Sie über SSH auf den Hauptknoten zu. Überprüfen Sie den Zugriff auf das Speicherkonto mit dem folgenden `dfs`-Befehl:
 
     ```
     hdfs dfs -ls /
     ```
 
-1. Vergewissern Sie sich, dass die Fehlermeldung in etwa wie folgt aussieht:
+1. Vergewissern Sie sich, dass die Fehlermeldung in etwa der folgenden Ausgabe entspricht:
 
     ```
     {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
@@ -161,16 +161,10 @@ Invoke-AzureRmResourceAction `
 
 ```
 
-Erstellen Sie zum Zuweisen eines vorhandenen Zertifikats ein Zertifikat, und halten Sie die PFX-Datei und das Kennwort bereit. Ordnen Sie das Zertifikat dem Dienstprinzipal zu, mit dem der Cluster erstellt wurde, und halten Sie die AppId bereit.
+Erstellen Sie zum Zuweisen eines vorhandenen Zertifikats ein Zertifikat, und halten Sie die PFX-Datei und das Kennwort bereit. Ordnen Sie das Zertifikat anhand der AppId dem Dienstprinzipal zu, mit dem der Cluster erstellt wurde.
 
 Führen Sie den PowerShell-Befehl aus, nachdem Sie die Parameter durch die tatsächlichen Werte ersetzt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
-
-* Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
-
-* Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
-
-* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

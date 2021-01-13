@@ -1,27 +1,27 @@
 ---
-title: Konvertieren einer Linux-VM in Azure von nicht verwalteten Datenträgern in verwaltete Datenträger – Azure Managed Disks | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie mithilfe der Azure CLI im Resource Manager-Bereitstellungsmodell eine Konvertierung von Linux-VMs von nicht verwalteten Datenträgern in verwaltete Datenträger ausgeführt wird.
+title: Konvertieren einer Linux-VM von nicht verwalteten Datenträgern zu verwalteten Datenträgern
+description: Konvertieren einer Linux-VM von nicht verwalteten Datenträgern zu verwalteten Datenträgern mithilfe der Azure-Befehlszeilenschnittstelle
 author: roygara
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: a0157e75d0c8d2c2493792bcd8d30a856f8072b6
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 89035d26e05ca4b93dc271f02fef1afea24b0f20
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696074"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88815333"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konvertieren einer Linux-VM von nicht verwalteten Datenträgern in verwaltete Datenträger
 
-Wenn Sie über vorhandene virtuelle Linux-Computer (VMs) verfügen, die nicht verwaltete Datenträger verwenden, können Sie die VMs konvertieren, sodass [verwaltete Azure-Datenträger](../linux/managed-disks-overview.md) verwendet werden. Bei diesem Prozess werden sowohl der Betriebssystemdatenträger als auch alle anderen angefügten Datenträger konvertiert.
+Wenn Sie über vorhandene virtuelle Linux-Computer (VMs) verfügen, die nicht verwaltete Datenträger verwenden, können Sie die VMs konvertieren, sodass [verwaltete Azure-Datenträger](../managed-disks-overview.md) verwendet werden. Bei diesem Prozess werden sowohl der Betriebssystemdatenträger als auch alle anderen angefügten Datenträger konvertiert.
 
 In diesem Artikel wird beschrieben, wie Sie VMs über die Azure-Befehlszeilenschnittstelle konvertieren. Wenn Sie die Befehlszeilenschnittstelle installieren oder aktualisieren müssen, finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli) Informationen dazu. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-* Lesen Sie die [häufig gestellten Fragen zu Managed Disks](faq-for-disks.md#migrate-to-managed-disks).
+* Lesen Sie die [häufig gestellten Fragen zu Managed Disks](../faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
@@ -104,4 +104,4 @@ Nach Abschluss der Migration wird die VM angehalten und neu gestartet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Speicheroptionen finden Sie in der [Übersicht über Managed Disks](../windows/managed-disks-overview.md).
+Weitere Informationen zu Speicheroptionen finden Sie in der [Übersicht über Managed Disks](../managed-disks-overview.md).

@@ -1,83 +1,101 @@
 ---
-title: Überwachen der Azure Event Grid-Nachrichtenübermittlung
-description: Beschreibt, wie die Übermittlung von Azure Event Grid-Nachrichten überwacht wird.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
+title: Anzeigen von Azure Event Grid-Metriken und Festlegen von Warnungen
+description: In diesem Artikel wird beschrieben, wie Sie im Azure-Portal Metriken für Azure Event Grid-Themen und Abonnements anzeigen und Warnungen hierfür erstellen.
 ms.topic: conceptual
-ms.date: 01/22/2019
-ms.author: spelluru
-ms.openlocfilehash: fdd18b833794c25cb90188ba8bc418d4785492ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/07/2020
+ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824158"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008955"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Überwachen der Event Grid-Nachrichtenübermittlung 
+In diesem Artikel wird beschrieben, wie Sie über das Portal Metriken für Event Grid-Themen und Abonnements anzeigen und Warnungen hierfür erstellen. 
 
-Dieser Artikel beschreibt, wie Sie im Portal den Status von Ereignisübermittlungen einsehen können.
-
-Event Grid bietet permanente Übermittlung. Jede Nachricht wird für jedes Abonnement mindestens einmal übermittelt. Ereignisse werden sofort an den registrierten Webhook des jeweiligen Abonnements gesendet. Wenn ein Webhook den Eingang eines Ereignisses nicht innerhalb von 60 Sekunden nach dem ersten Übermittlungsversuch bestätigt, wiederholt Event Grid die Übermittlung des Ereignisses.
-
-Informationen zu Ereignisübermittlungen und Wiederholungen finden Sie unter [Event Grid – Übermittlung und Wiederholung von Nachrichten](delivery-and-retry.md).
-
-## <a name="delivery-metrics"></a>Übermittlungsmetriken
+## <a name="metrics"></a>Metriken
 
 Das Portal zeigt Metriken für den Status der Übermittlung von Ereignisnachrichten an.
 
-Für Themen gibt es diese Metriken:
+In den folgenden Themen finden Sie einige der Metriken:
 
 * **Veröffentlichung erfolgreich**: Das Ereignis wurde erfolgreich an das Thema gesendet und mit einer Antwort des Typs 2xx verarbeitet.
 * **Fehler beim Veröffentlichen**: Das Ereignis wurde an das Thema gesendet, aber mit einem Fehlercode abgelehnt.
 * **Ohne Übereinstimmung**: Das Ereignis wurde erfolgreich im Thema veröffentlicht, stimmt aber mit keinem Ereignisabonnement überein. Das Ereignis wurde gelöscht.
 
-Für Abonnements gibt es diese Metriken:
+Für Abonnements sind hier einige Metriken aufgeführt:
 
 * **Übermittlung erfolgreich**: Das Ereignis wurde erfolgreich an den Endpunkt des Abonnements übermittelt und hat eine Antwort des Typs 2xx erhalten.
-* **Übermittlungsfehler**: Das Ereignis wurde erfolgreich an den Endpunkt des Abonnements übermittelt, hat aber eine Antwort des Typs 4xx oder 5xx erhalten.
+* **Übermittlungsfehler**: Jedes Mal, wenn der Dienst eine Übermittlung versucht und der Ereignishandler keinen 2xx-Erfolgscode zurückgibt, wird der Zähler **Übermittlungsfehler** erhöht. Wenn Sie versuchen, dasselbe Ereignis mehrmals zu übermitteln, und dies fehlschlägt, wird der Zähler **Übermittlungsfehler** für jeden Fehler erhöht.
 * **Abgelaufene Ereignisse**: Das Ereignis wurde nicht übermittelt, und alle Wiederholungsversuche wurden gesendet. Das Ereignis wurde gelöscht.
 * **Übereinstimmende Ereignisse**: Das Ereignis im Thema stimmt mit dem Ereignisabonnement überein.
 
-## <a name="event-subscription-status"></a>Status des Ereignisabonnements
+    > [!NOTE]
+    > Die vollständige Liste der Metriken finden Sie unter [Von Azure Event Grid unterstützte Metriken](metrics.md).
 
-Wenn Sie Metriken für ein Ereignisabonnement anzeigen möchten, können Sie entweder nach Abonnementtyp oder nach Abonnements für eine bestimmte Ressource suchen.
+## <a name="view-custom-topic-metrics"></a>Anzeigen von Metriken für benutzerdefinierte Themen
 
-Um nach Ereignisabonnementtyp zu suchen, wählen Sie **Alle Dienste** aus.
+Wenn Sie ein benutzerdefiniertes Thema veröffentlicht haben, können Sie die Metriken dafür anzeigen. 
 
-![Auswählen von „Alle Dienste“](./media/monitor-event-delivery/all-services.png)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+2. Geben Sie in der Suchleiste des Themas **Event Grid-Themen** ein, und wählen Sie dann **Event Grid-Themen** aus der Dropdownliste aus. 
 
-Suchen Sie nach **Event Grid**, und wählen Sie die Option **Event Grid-Abonnements** aus.
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Event Grid-Themen suchen und auswählen":::
+3. Wählen Sie in der Themenliste das benutzerdefinierte Thema aus. 
 
-![Suchen nach Ereignisabonnements](./media/monitor-event-delivery/search-and-select.png)
+    :::image type="content" source="./media/monitor-event-delivery/select-custom-topic.png" alt-text="Benutzerdefiniertes Thema auswählen":::
+4. Zeigen Sie die Metriken für das benutzerdefinierte Ereignisthema auf der Seite **Event Grid-Thema** an. In der folgenden Abbildung ist der Abschnitt **Grundlagen**, in dem die Ressourcengruppe, das Abonnement usw. angezeigt werden, minimiert. 
 
-Filtern Sie nach dem Typ des Ereignisses, des Abonnements und des Standorts. Wählen Sie **Metriken** für das Abonnement aus, um diese anzuzeigen.
+    :::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics.png" alt-text="Ereignismetriken anzeigen":::
 
-![Filtern von Ereignisabonnements](./media/monitor-event-delivery/filter-events.png)
+Auf der Registerkarte **Metriken** auf der Seite **Event Grid-Thema** können Sie Diagramme mit unterstützten Metriken erstellen.
 
-Zeigen Sie die Metriken für das Ereignisthema und Abonnement an.
+:::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Seite „Themen“ – „Metriken“":::
 
-![Anzeigen von Ereignismetriken](./media/monitor-event-delivery/subscription-metrics.png)
+Weitere Informationen zu Metriken finden Sie unter [Metriken in Azure Monitor](../azure-monitor/platform/data-platform-metrics.md).
 
-Um nach den Metriken für eine bestimmte Ressource zu suchen, wählen Sie die entsprechende Ressource aus. Wählen Sie dann **Ereignisse** aus.
+Beispiel: Metrikendiagramm für die Metrik **Veröffentlichte Ereignisse**.
 
-![Auswählen von Ereignissen für eine Ressource](./media/monitor-event-delivery/select-events.png)
+:::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics-example.png" alt-text="Metrik „Veröffentlichte Ereignisse“":::
 
-Daraufhin werden die Metriken für die Abonnements für diese Ressource angezeigt.
 
-## <a name="custom-event-status"></a>Benutzerdefinierter Ereignisstatus
+## <a name="view-subscription-metrics"></a>Anzeigen von Metriken für Abonnements
+1. Navigieren Sie zur Seite **Event Grid-Thema**, indem Sie die Schritte aus dem vorherigen Abschnitt ausführen. 
+2. Wählen Sie das Abonnement im unteren Bereich aus, wie im folgenden Beispiel gezeigt. 
 
-Wenn Sie ein benutzerdefiniertes Thema veröffentlicht haben, können Sie die Metriken dafür anzeigen. Wählen Sie die Ressourcengruppe für das Thema aus, und wählen Sie dann das Thema aus.
+    :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="Ereignisabonnement auswählen":::    
 
-![Auswählen eines benutzerdefinierten Themas](./media/monitor-event-delivery/select-custom-topic.png)
+    Sie können auch in der Suchleiste des Azure-Portals nach **Event Grid-Abonnements** suchen und **Thementyp**, **Abonnement** und **Speicherort** auswählen, um ein Ereignisabonnement anzuzeigen. 
 
-Zeigen Sie die Metriken für das benutzerdefinierte Ereignisthema an.
+    :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="Ereignisabonnement auf der Seite „Event Grid-Abonnements“ auswählen":::        
 
-![Anzeigen von Ereignismetriken](./media/monitor-event-delivery/custom-topic-metrics.png)
+    Wählen Sie für benutzerdefinierte Themen **Event Grid-Themen** unter **Thementyp** aus. Wählen Sie für Systemthemen den Typ der Azure-Ressource aus, z. B. **Speicherkonten (BLOB, GPv2)** . 
+3. Die Metriken für das Abonnement werden auf der Homepage für das Abonnement in einem Diagramm angezeigt. Sie können die Metriken **Allgemein**, **Fehler**, **Latenz** und **Unzustellbare Nachrichten** für die letzte Stunde, 6 Stunden, 12 Stunden, 1 Tag, 7 Tage und 30 Tage anzeigen. 
+
+    :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="Metriken auf der Homepage des Abonnements":::    
+
+## <a name="view-system-topic-metrics"></a>Anzeigen von Systemthemenmetriken
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+2. Geben Sie in der Suchleiste des Themas **Event Grid-Systemthemen** ein, und wählen Sie dann **Event Grid-Systemthemen** aus der Dropdownliste aus. 
+
+    :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Event Grid-Systemthemen suchen und auswählen":::
+3. Wählen Sie in der Themenliste das Systemthema aus. 
+
+    :::image type="content" source="./media/monitor-event-delivery/select-system-topic.png" alt-text="Systemthema auswählen":::
+4. Zeigen Sie die Metriken für das Systemthema auf der Seite **Event Grid-Thema** an. In der folgenden Abbildung ist der Abschnitt **Grundlagen**, in dem die Ressourcengruppe, das Abonnement usw. angezeigt werden, minimiert. 
+
+    :::image type="content" source="./media/monitor-event-delivery/system-topic-overview-metrics.png" alt-text="Metriken für Systemthemen auf der Übersichtsseite anzeigen":::
+
+Auf der Registerkarte **Metriken** auf der Seite **Event Grid-Thema** können Sie Diagramme mit unterstützten Metriken erstellen.
+
+:::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="Seite „Systemthema“ – „Metriken“":::
+
+Weitere Informationen zu Metriken finden Sie unter [Metriken in Azure Monitor](../azure-monitor/platform/data-platform-metrics.md).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie in folgenden Artikeln:
 
-* Informationen zu Ereignisübermittlungen und Wiederholungen finden Sie unter [Event Grid – Übermittlung und Wiederholung von Nachrichten](delivery-and-retry.md).
-* Eine Einführung in Event Grid finden Sie unter [Informationen zu Event Grid](overview.md).
-* Um sich schnell mit der Verwendung von Event Grid vertraut zu machen, lesen Sie [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure Event Grid](custom-event-quickstart.md).
+- Informationen zum Erstellen von Warnungen zu Metriken und Aktivitätsprotokollvorgängen finden Sie im [Artikel zum Festlegen von Warnungen](set-alerts.md).
+- Informationen zu Ereignisübermittlungen und Wiederholungen finden Sie unter [Event Grid – Übermittlung und Wiederholung von Nachrichten](delivery-and-retry.md).

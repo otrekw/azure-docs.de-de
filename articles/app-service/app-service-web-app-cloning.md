@@ -1,25 +1,16 @@
 ---
-title: Klonen einer App mit PowerShell – Azure App Service
-description: Erfahren Sie, wie Sie Ihre App Service-App mithilfe von PowerShell in eine neue App klonen.
-services: app-service\web
-documentationcenter: ''
-author: ahmedelnably
-manager: stefsch
-editor: ''
+title: Klonen der App mit PowerShell
+description: Erfahren Sie, wie Sie Ihre App Service-App mithilfe von PowerShell in eine neue App klonen. Es wird eine Reihe von Klonszenarien behandelt, einschließlich Traffic Manager-Integration.
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2016
-ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 47efcfc4bf2b0268d6720b659786300e751e861d
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 92e893fe9f74d51856faf39d3e4800dd5a8155db
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983697"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88815384"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Klonen der Azure App Service-App mit PowerShell
 
@@ -116,6 +107,8 @@ Das folgende Beispiel zeigt, wie nach der Zusammenstellung der Traffic Manager-I
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileId $TMProfileID
 ```
+> [!NOTE]
+> Wenn Sie einen Fehler mit dem Hinweis erhalten, dass bei der SSL-Überprüfung für den Traffic Manager-Hostnamen ein Fehler auftritt, wird empfohlen, beim Klonvorgang das Attribut „-IgnoreCustomHostNames“ im PowerShell-Cmdlet oder das Portal zu verwenden.
 
 ## <a name="current-restrictions"></a>Aktuelle Einschränkungen
 Hier finden Sie die bekannten Einschränkungen für das App-Klonen:
@@ -131,10 +124,10 @@ Hier finden Sie die bekannten Einschränkungen für das App-Klonen:
 * Ausgehende IP-Adressen ändern sich beim Klonen in eine andere Skalierungseinheit.
 * Nicht für Linux-Apps verfügbar
 
-### <a name="references"></a>Referenzen
+### <a name="references"></a>References
 * [Klonen in App Service](app-service-web-app-cloning.md)
 * [Sichern einer App in Azure App Service](manage-backup.md)
 * [Azure-Ressourcen-Manager-Unterstützung für Azure Traffic Manager – Vorschau](../traffic-manager/traffic-manager-powershell-arm.md)
 * [Einführung in die App Service-Umgebung](environment/intro.md)
-* [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../azure-resource-manager/manage-resources-powershell.md)
+* [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../azure-resource-manager/management/manage-resources-powershell.md)
 

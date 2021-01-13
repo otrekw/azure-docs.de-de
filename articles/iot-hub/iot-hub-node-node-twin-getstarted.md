@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte mit der Azure IoT Hub-Gerätezwillingen (Node) | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mithilfe von Azure IoT Hub-Gerätezwillingen Tags hinzufügen und eine IoT Hub-Abfrage verwenden. Sie verwenden die Azure IoT SDKs für Node.js, um die simulierte Geräte-App und eine Dienst-App zu implementieren, die die Tags hinzufügt und die IoT Hub-Abfrage ausführt.
+description: Erfahren Sie, wie Sie mithilfe von Azure IoT Hub-Gerätezwillingen Tags hinzufügen und eine IoT Hub-Abfrage verwenden. Sie verwenden die Azure IoT SDKs für Node.js, um die simulierte Geräte-App und eine Dienst-App zu implementieren, die die Tags hinzufügt und die IoT Hub-Abfrage ausführt.
 author: fsautomata
 ms.service: iot-hub
 services: iot-hub
@@ -8,12 +8,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
-ms.openlocfilehash: 02ff65b27e03db9e9a48910e23d8ebf46de905a5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.custom: mqtt, devx-track-js
+ms.openlocfilehash: 65ced3812072bd2650fc36bbb7a7b0f3f75e0def
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060730"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91336784"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Erste Schritte mit Gerätezwillingen (Node.js)
 
@@ -37,7 +38,9 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 

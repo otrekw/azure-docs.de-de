@@ -8,28 +8,37 @@ manager: daveba
 editor: curtand
 ms.assetid: 8dd4e998-747b-4c52-b8d3-3900fe77d88f
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 03/20/2019
+ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c0d3055512145396f204fdb17e9375f65a0db3
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562333"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89279413"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßig mit neuen Features und Funktionen. In diesem Artikel werden die veröffentlichten Versionen und Features beschrieben.  
 
 > [!NOTE]
-> Connect Health-Agents werden automatisch aktualisiert, wenn die neue Version veröffentlicht wird. Stellen Sie im Azure-Portal sicher, dass die Einstellungen für die automatische Aktualisierung aktiviert sind. 
+> Connect Health-Agents werden automatisch aktualisiert, wenn die neue Version veröffentlicht wird. Stellen Sie im Azure-Portal sicher, dass die Einstellungen für die automatische Aktualisierung aktiviert sind.
 >
 
-Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-Installation integriert. Weitere Informationen zum Releaseverlauf von Azure AD Connect finden Sie [hier](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history). Featurefeedback können Sie über den [Benutzerfeedbackkanal für Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) abgeben.
+Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-Installation integriert. Weitere Informationen zum Releaseverlauf von Azure AD Connect finden Sie [hier](./reference-connect-version-history.md). Featurefeedback können Sie über den [Benutzerfeedbackkanal für Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) abgeben.
+
+## <a name="april-2020"></a>April 2020
+**Agent-Aktualisierung**
+
+- Azure AD Connect Health-Agent für AD FS (Version 3.1.77.0)
+
+   1.   Fehlerbehebung für die Warnung "Ungültiger Dienstprinzipalname für AD FS-Dienst", für den die Warnung fehlerhaft ausgegeben wurde.
+
 
 ## <a name="july-2019"></a>Juli 2019
 **Agent-Aktualisierung**
@@ -41,13 +50,13 @@ Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-In
    1. Hinzufügen des TestWindowsTransport-Tests und Entfernen von WsTrust-Endpunktprüfungen im CheckOffice365Endpoints-Test
    2. Protokollieren von Betriebssystem- und .NET-Informationen
    3. Die Uploadgröße für die RP-Konfigurationsmeldung wurde auf 1 MB erhöht.
-   4. Fehlerbehebungen
+   4. Behebung von Programmfehlern
    
 * Azure AD Connect Health-Agent für AD DS (Version 3.1.56.0) 
    1. Protokollieren von Betriebssystem- und .NET-Informationen 
-   2. Fehlerbehebungen
+   2. Behebung von Programmfehlern
 
-## <a name="may-2019"></a>Mai 2019
+## <a name="may-2019"></a>Mai 2019
 **Agent-Aktualisierung:** 
 * Azure AD Connect Health-Agent für AD FS (Version 3.1.51.0) 
    1. Fehlerbehebung, um zwischen mehreren Anmeldungen zu unterscheiden, die die gleiche Clientanforderungs-ID verwenden
@@ -216,7 +225,7 @@ Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-In
 ## <a name="november-2015"></a>November 2015
 **Neue Features:**
 
-* Unterstützung für die [rollenbasierte Zugriffssteuerung](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
+* Unterstützung für die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-azure-rbac)
 
 **Neue Vorschaufeatures:**
 
@@ -251,5 +260,4 @@ Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-In
 * Einfachere Agent-Bereitstellung mit den Anmeldeinformationen für globale Azure AD-Administratoren  
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum [Überwachen Ihrer lokalen Identitätsinfrastruktur und Synchronisierung von Diensten in der Cloud](whatis-hybrid-identity-health.md)
-
+Weitere Informationen zum [Überwachen Ihrer lokalen Identitätsinfrastruktur und Synchronisierung von Diensten in der Cloud](./whatis-azure-ad-connect.md)

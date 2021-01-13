@@ -1,153 +1,183 @@
 ---
-title: Azure Backup für SQL Server-Workloads mit Azure Backup Server
-description: Eine Einführung in die Sicherung von SQL Server-Datenbanken mithilfe von Azure Backup Server
-ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
+title: Sichern von SQL Server mithilfe von Azure Backup Server
+description: Dieser Artikel enthält Informationen zur Konfiguration für die Sicherung von SQL Server-Datenbanken mithilfe von Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.author: dacurwin
-ms.openlocfilehash: 72de5857786f284bfc4afda1db093d5343bd7a43
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 29813741e88ad5f2bc5109be87939abf7cc11502
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954478"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91316918"
 ---
-# <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Sichern von SQL Server in Azure mit Azure Backup Server
-Dieser Artikel führt Sie durch die Konfigurationsschritte für die Sicherung von SQL Server-Datenbanken mithilfe von Microsoft Azure Backup Server (MABS).
+# <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Sichern von SQL Server in Azure mithilfe von Azure Backup Server
 
-Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und aus Azure umfasst drei Schritte:
+In diesem Artikel erfahren Sie, wie Sie Sicherungen von SQL Server-Datenbanken mithilfe von Microsoft Azure Backup Server (MABS) einrichten.
 
-1. Erstellen einer Sicherungsrichtlinie zum Schutz von SQL Server-Datenbanken mithilfe von Azure
-2. Bedarfsgesteuertes Erstellen von Sicherungskopien in Azure
-3. Wiederherstellen der Datenbank aus Azure
+Das Sichern und Wiederherstellen einer SQL Server-Datenbank unter Verwendung von Azure umfasst Folgendes:
+
+1. Erstellen einer Sicherungsrichtlinie zum Schutz von SQL Server-Datenbanken in Azure
+1. Bedarfsgesteuertes Erstellen von Sicherungskopien in Azure
+1. Wiederherstellen der Datenbank in Azure
+
+## <a name="prerequisites-and-limitations"></a>Voraussetzungen und Einschränkungen
+
+* Wenn Sie über eine Datenbank mit Dateien auf einer Remotedateifreigabe verfügen, werden die darauf enthaltenen Daten nicht geschützt und ein Fehler mit der ID 104 ausgegeben. Der Schutz von SQL Server-Daten auf einer Remotedateifreigabe wird von MABS nicht unterstützt.
+* Datenbanken, die auf SMB-Remotefreigaben gespeichert sind, können von MABS nicht geschützt werden.
+* Stellen Sie sicher, dass die [Replikate der Verfügbarkeitsgruppe als schreibgeschützt konfiguriert sind](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server).
+* Sie müssen das Systemkonto **NTAuthority\System** der Systemadministratorgruppe in SQL Server explizit hinzufügen.
+* Wenn Sie für eine teilweise eigenständige Datenbank eine Wiederherstellung an einem anderen Speicherort durchführen, müssen Sie sicherstellen, dass für die SQL-Zielinstanz die Funktion für [eigenständige Datenbanken](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable) aktiviert wurde.
+* Wenn Sie für eine Filestream-Datenbank eine Wiederherstellung an einem anderen Speicherort durchführen, müssen Sie sicherstellen, dass für die SQL-Zielinstanz die Funktion für [Filestream-Datenbanken](/sql/relational-databases/blob/enable-and-configure-filestream) aktiviert wurde.
+* Schutz für SQL Server AlwaysOn:
+  * Verfügbarkeitsgruppen werden von MABS beim Ausführen von Abfragen während der Erstellung von Schutzgruppen erkannt.
+  * Ein Failover wird von MABS erkannt, und die Datenbank wird weiterhin geschützt.
+  * Mehrere Standorte umfassende Clusterkonfigurationen für eine Instanz von SQL Server werden von MABS unterstützt.
+* Wenn Sie Datenbanken schützen, für die die Funktion „AlwaysOn“ verwendet wird, gelten für MABS folgende Einschränkungen:
+  * Die Sicherungsrichtlinie für Verfügbarkeitsgruppen, die in SQL Server auf Basis der Sicherungseinstellungen festgelegt wird, wird von MABS wie folgt berücksichtigt:
+    * Sekundär bevorzugen: Sicherungen müssen für ein sekundäres Replikat ausgeführt werden, es sei denn, das primäre Replikat ist als einziges Replikat online. Wenn mehrere sekundäre Replikate verfügbar sind, wird der Knoten mit der höchsten Sicherungspriorität für die Sicherung ausgewählt. Wenn nur das primäre Replikat verfügbar ist, muss die Sicherung für das primäre Replikat stattfinden.
+    * Nur sekundäre: Die Sicherung darf nicht für das primäre Replikat ausgeführt werden. Wenn nur das primäre Replikat online ist, darf keine Sicherung ausgeführt werden.
+    * Primär: Sicherungen müssen immer für das primäre Replikat ausgeführt werden.
+    * Beliebiges Replikat: Sicherungen können für ein beliebiges Verfügbarkeitsreplikat in der Verfügbarkeitsgruppe ausgeführt werden. Der Knoten, von dem aus die Sicherung erfolgen soll, basiert auf den Sicherungsprioritäten für die einzelnen Knoten.
+  * Beachten Sie Folgendes:
+    * Sicherungen können für jedes lesbare Replikat erfolgen, d h. für ein primäres, ein synchrones sekundäres oder ein asynchrones sekundäres Replikat.
+    * Wenn ein Replikat von der Sicherung ausgeschlossen ist, etwa weil **Replikat ausschließen** aktiviert oder das Replikat als nicht lesbar gekennzeichnet wurde, wird dieses Replikat unter keiner der Optionen für die Sicherung ausgewählt.
+    * Wenn mehrere Replikate verfügbar und lesbar sind, wird der Knoten mit der höchsten Sicherungspriorität für die Sicherung ausgewählt.
+    * Bei einem Sicherungsfehler auf dem ausgewählten Knoten ist der Sicherungsvorgang fehlerhaft.
+    * Die Wiederherstellung am ursprünglichen Speicherort wird nicht unterstützt.
+* Sicherungsprobleme bei SQL Server 2014 oder höher:
+  * SQL Server 2014 wurde durch eine neue Funktion zum Erstellen einer [Datenbank für lokale SQL Server-Instanzen in Windows Azure Blob Storage](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) erweitert. Diese Konfiguration kann nicht mithilfe von MABS geschützt werden.
+  * Die Sicherungseinstellung „Sekundär bevorzugen“ verursacht bei Verwendung der Option „SQL AlwaysOn“ einige bekannte Probleme. Von MABS wird immer eine Sicherung für das sekundäre Replikat ausgeführt. Wenn kein sekundäres Replikat gefunden wird, tritt bei der Sicherung ein Fehler auf.
 
 ## <a name="before-you-start"></a>Vorbereitung
-Bevor Sie beginnen, stellen Sie sicher, [dass Azure Backup Server installiert und vorbereitet wurde](backup-azure-microsoft-azure-backup.md).
 
-## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>Erstellen einer Sicherungsrichtlinie zum Schutz von SQL Server-Datenbanken mithilfe von Azure
-1. Klicken Sie auf der Azure Backup Server-Benutzeroberfläche auf den Arbeitsbereich **Schutz**.
-2. Klicken Sie im Menüband auf **Neu** , um eine neue Schutzgruppe zu erstellen.
+Vergewissern Sie sich zunächst, dass [Azure Backup Server installiert und vorbereitet](backup-azure-microsoft-azure-backup.md) ist.
 
-    ![Erstellen einer Schutzgruppe](./media/backup-azure-backup-sql/protection-group.png)
-3. MABS zeigt den Startbildschirm mit Hinweisen zum Erstellen einer **Schutzgruppe**an. Klicken Sie auf **Weiter**.
-4. Wählen Sie **Server**.
+## <a name="create-a-backup-policy"></a>Erstellen einer Sicherungsrichtlinie
 
-    ![Auswählen des Schutzgruppentyp – "Server"](./media/backup-azure-backup-sql/pg-servers.png)
-5. Erweitern Sie den SQL Server-Computer, auf dem die zu sichernden Datenbanken vorhanden sind. MABS zeigt verschiedene Datenquellen, die auf diesem Server gesichert werden können. Erweitern Sie **Alle SQL-Freigaben** , und wählen Sie die Datenbanken aus, die Sie sichern möchten (in diesem Fall wurden die Datenbanken "ReportServer$MSDPM2012" und "ReportServer$MSDPM2012TempDB" ausgewählt). Klicken Sie auf **Weiter**.
+Erstellen Sie als Erstes eine Sicherungsrichtlinie, um SQL Server-Datenbanken in Azure zu schützen:
 
-    ![Auswählen einer SQL-Datenbank](./media/backup-azure-backup-sql/pg-databases.png)
-6. Geben Sie einen Namen für die Schutzgruppe an, und aktivieren Sie das Kontrollkästchen **Ich möchte Onlineschutz** .
+1. Wählen Sie in Azure Backup Server den Arbeitsbereich **Schutz** aus.
+1. Wählen Sie **Neu** aus, um eine Schutzgruppe zu erstellen.
 
-    ![Datenschutzmethode: kurzfristig auf Datenträger und online in Azure](./media/backup-azure-backup-sql/pg-name.png)
-7. Geben Sie auf dem Bildschirm **Kurzfristige Ziele angeben** alle erforderlichen Informationen ein, um Sicherungspunkte auf dem Datenträger zu erstellen.
+    ![Erstellen einer Schutzgruppe in Azure Backup Server](./media/backup-azure-backup-sql/protection-group.png)
+1. Lesen Sie auf der Startseite den Leitfaden zum Erstellen einer Schutzgruppe. Wählen Sie **Weiter**aus.
+1. Wählen Sie als Schutzgruppentyp die Option **Server** aus.
 
-    In diesem Beispiel wurde die **Beibehaltungsdauer** auf *5 Tage* und die **Synchronisierungshäufigkeit** auf einmal alle *15 Minuten*festgelegt. Dieser Wert gibt die Häufigkeit der Sicherung an. Der Wert für **Schnelle vollständige Sicherung** ist auf *20:00* festgelegt.
+    ![Auswählen des Schutzgruppentyps „Server“](./media/backup-azure-backup-sql/pg-servers.png)
+1. Erweitern Sie die SQL Server-Instanz, auf der sich die zu sichernden Datenbanken befinden. Daraufhin werden die Datenquellen des Servers angezeigt, die gesichert werden können. Erweitern Sie **Alle SQL-Freigaben**, und wählen Sie die Datenbanken aus, die Sie sichern möchten. In diesem Beispiel werden die Datenbanken „ReportServer$MSDPM2012“ und „ReportServer$MSDPM2012TempDB“ ausgewählt. Wählen Sie **Weiter** aus.
 
-    ![Kurzfristige Ziele](./media/backup-azure-backup-sql/pg-shortterm.png)
+    ![Auswählen einer SQL Server-Datenbank](./media/backup-azure-backup-sql/pg-databases.png)
+1. Benennen Sie die Schutzgruppe, und wählen Sie anschließend **Ich möchte Onlineschutz** aus.
+
+    ![Auswählen einer Datenschutzmethode (kurzfristiger Datenträgerschutz oder Azure-Onlineschutz)](./media/backup-azure-backup-sql/pg-name.png)
+1. Geben Sie auf der Seite **Kurzfristige Ziele angeben** alle erforderlichen Informationen ein, um Sicherungspunkte für den Datenträger zu erstellen.
+
+    In diesem Beispiel wird *Beibehaltungsdauer* auf **5 Tage** festgelegt. Die **Synchronisierungsfrequenz** für die Sicherung wird auf *15 Minuten* festgelegt. Der Wert für **Schnelle vollständige Sicherung** wird auf *20:00* festgelegt.
+
+    ![Einrichten kurzfristiger Ziele für den Sicherungsschutz](./media/backup-azure-backup-sql/pg-shortterm.png)
 
    > [!NOTE]
-   > Jeden Tag um 20:00 Uhr wird (in diesem Beispiel) ein Sicherungspunkt erstellt, indem die seit dem Sicherungspunkt am Vortag um 20:00 Uhr geänderten Daten übertragen werden. Dieser Vorgang wird als **Schnelle vollständige Sicherung** bezeichnet. Die Transaktionsprotokolle werden alle 15 Minuten synchronisiert. Falls um 21:00 Uhr die Datenbank wiederhergestellt werden muss, wird der Punkt erstellt, indem die Protokolle seit dem letzten vollständigen Sicherungspunkt (in diesem Fall 20:00 Uhr) wiedergegeben werden.
+   > In diesem Beispiel wird täglich um 20:00 Uhr ein Sicherungspunkt erstellt. Die Daten, die sich seit dem letzten Sicherungspunkt (also seit 20:00 Uhr des Vortags) geändert haben, werden übertragen. Dieser Vorgang wird als **Schnelle vollständige Sicherung** bezeichnet. Die Transaktionsprotokolle werden zwar alle 15 Minuten synchronisiert, falls die Datenbank jedoch um 21:00 Uhr wiederhergestellt werden muss, werden zur Erstellung des Punkts die Protokolle seit dem letzten vollständigen Sicherungspunkt (in diesem Beispiel: 20:00 Uhr) wiedergegeben.
    >
    >
 
-8. Klicken Sie unten auf der Seite auf **Weiter**
+1. Wählen Sie **Weiter** aus. MABS zeigt den gesamten verfügbaren Speicherplatz an. Außerdem wird der potenziell beanspruchte Speicherplatz angezeigt.
 
-    MABS zeigt den verfügbaren Gesamtspeicherplatz sowie die wahrscheinliche Festplattenspeicherbelegung an.
+    ![Einrichten der Datenträgerzuordnung in MABS](./media/backup-azure-backup-sql/pg-storage.png)
 
-    ![Datenträgerzuordnung](./media/backup-azure-backup-sql/pg-storage.png)
+    MABS erstellt standardmäßig ein Volume pro Datenquelle (SQL Server-Datenbank). Das Volume wird für die Erstsicherungskopie verwendet. In dieser Konfiguration wird der MABS-Schutz durch die Verwaltung logischer Datenträger (Logical Disk Manager, LDM) auf maximal 300 Datenquellen (SQL Server-Datenbanken) beschränkt. Um diese Einschränkung zu umgehen, wählen Sie **Daten im DPM-Speicherpool zusammenstellen** aus. Mit dieser Option verwendet MABS ein einzelnes Volume für mehrere Datenquellen. Dadurch kann MABS bis zu 2.000 SQL Server-Datenbanken schützen.
 
-    MABS erstellt standardmäßig ein Volume pro Datenquelle (SQL Server-Datenbank), das zum Erstellen der anfänglichen Sicherungskopie verwendet wird. Bei diesem Ansatz ist der MABS-Schutz durch die Verwaltung logischer Datenträger auf maximal 300 Datenquellen (SQL Server-Datenbanken) beschränkt. Um diese Einschränkung zu umgehen, wählen Sie die Option **Daten im DPM-Speicherpool zusammenstellen**aus. Bei Auswahl dieser Option verwendet MABS ein einzelnes Volume für mehrere Datenquellen, sodass MABS bis zu 2000 SQL-Datenbanken schützen kann.
+    Wenn Sie **Volumes automatisch erweitern** auswählen, kann MABS auf die zunehmende Größe des Sicherungsvolumens durch wachsende Produktionsdaten reagieren. Wenn Sie die Option **Volumes automatisch erweitern** nicht auswählen, beschränkt MABS den Sicherungsspeicher auf die Datenquellen in der Schutzgruppe.
+1. Administratoren können die Erstsicherung mithilfe der Option **Automatisch über das Netzwerk** automatisch über das Netzwerk übertragen und die gewünschte Übertragungszeit auswählen. Alternativ kann die Option **Manuell** verwendet werden, um die Sicherung manuell zu übertragen. Wählen Sie **Weiter**aus.
 
-    Wenn die Option **Volumes automatisch erweitern** ausgewählt wird, kann MABS der Anforderung nach größeren Sicherungsvolumes aufgrund steigender Produktionsdaten Rechnung tragen. Wenn Sie die Option **Volumes automatisch erweitern** nicht auswählen, beschränkt MABS den verwendeten Sicherungsspeicher auf die Datenquellen in der Schutzgruppe.
-9. Administratoren können diese anfängliche Sicherung manuell (nicht über das Netzwerk) übertragen, um nicht zu viel Bandbreite zu belegen, oder die Daten über das Netzwerk senden. Sie können auch konfigurieren, zu welchem Zeitpunkt die anfängliche Übertragung stattfinden kann. Klicken Sie auf **Weiter**.
+    ![Auswählen der Replikaterstellungsmethode in MABS](./media/backup-azure-backup-sql/pg-manual.png)
 
-    ![Methode für die anfängliche Replikation](./media/backup-azure-backup-sql/pg-manual.png)
+    Für die Erstsicherungskopie muss die gesamte Datenquelle (SQL Server-Datenbank) übertragen werden. Die Sicherungsdaten werden vom Produktionsserver (SQL Server-Computer) zu MABS verschoben. Bei umfangreichen Sicherungen kommt es unter Umständen zu einer Überlastung der Bandbreite, wenn die Daten über das Netzwerk übertragen werden. Aus diesem Grund können Administratoren die Option **Manuell** auswählen, um die Erstsicherung mithilfe von Wechselmedien zu übertragen. Alternativ können sie die Option **Automatisch über das Netzwerk** verwenden und die Daten zu einem bestimmten Zeitpunkt automatisch über das Netzwerk übertragen.
 
-    Die anfängliche Sicherungskopie erfordert eine Übertragung der gesamten Datenquelle (SQL Server-Datenbank) vom Produktionsserver (SQL Server-Computer) zu MABS. Der Umfang dieser Daten kann sehr groß sein, und die Übertragung der Daten über das Netzwerk überschreitet möglicherweise die Bandbreite. Aus diesem Grund können Administratoren auswählen, die anfängliche Sicherung zu übertragen: **Manuell** (mithilfe von Wechselmedien), um eine Überlastung der Bandbreite zu vermeiden, oder **Automatisch über das Netzwerk** (zu einem bestimmten Zeitpunkt).
+    Im Anschluss an die Erstsicherung werden inkrementelle Sicherungen auf der Grundlage der Erstsicherungskopie erstellt. Inkrementelle Sicherungen sind im Allgemeinen klein und lassen sich problemlos über das Netzwerk übertragen.
+1. Wählen Sie aus, wann eine Konsistenzprüfung ausgeführt werden soll. Wählen Sie **Weiter**aus.
 
-    Sobald die anfängliche Sicherung abgeschlossen ist, werden nur noch inkrementelle Sicherungen basierend auf der anfänglichen Sicherungskopie erstellt. Inkrementelle Sicherungen sind im Allgemeinen klein und lassen sich problemlos über das Netzwerk übertragen.
-10. Wählen Sie aus, wann die Konsistenzprüfung ausgeführt werden soll, und klicken Sie auf **Weiter**.
+    ![Auswählen des Zeitpunkts für eine Konsistenzprüfung](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    ![Konsistenzprüfung](./media/backup-azure-backup-sql/pg-consistent.png)
+    MABS kann eine Konsistenzprüfung ausführen, um die Integrität des Sicherungspunkts zu überprüfen. Hierbei wird die Prüfsumme der Sicherungsdatei auf dem Produktionsserver (in diesem Beispiel: der SQL Server-Computer) und der gesicherten Daten für diese Datei in MABS berechnet. Sollte bei der Überprüfung ein Konflikt gefunden werden, wird davon ausgegangen, dass die gesicherte Datei in MABS beschädigt ist. MABS sendet daraufhin die von dem Prüfsummenkonflikt betroffenen Datenblöcke, um die gesicherten Daten zu korrigieren. Da die Konsistenzprüfung ein ressourcenintensiver Vorgang ist, können Administratoren wählen, ob die Prüfung zu einem bestimmten Zeitpunkt oder automatisch ausgeführt werden soll.
+1. Wählen Sie die Datenquellen aus, die in Azure geschützt werden sollen. Wählen Sie **Weiter**aus.
 
-    MABS kann eine Konsistenzprüfung durchführen, um die Integrität des Sicherungspunkts zu prüfen. Hierbei wird die Prüfsumme der Sicherungsdatei auf dem Produktionsserver (in diesem Szenario der SQL Server-Computer) und der gesicherten Daten für diese Datei auf MABS berechnet. Im Falle eines Konflikts wird davon ausgegangen, dass die gesicherte Datei auf MABS beschädigt ist. MABS korrigiert die gesicherten Daten, indem die Datenblöcke gesendet werden, die nicht der Prüfsumme entsprechen. Da die Konsistenzprüfung ein ressourcenintensiver Vorgang ist, haben Administratoren die Möglichkeit, diese zeitlich zu planen oder automatisch ausführen zu lassen.
-11. Um Onlineschutz für die Datenquellen festzulegen, wählen Sie die Datenbanken aus, die Sie mit Azure schützen möchten. Klicken Sie dann auf **Weiter**.
+    ![Auswählen von Datenquellen, die in Azure geschützt werden sollen](./media/backup-azure-backup-sql/pg-sqldatabases.png)
+1. Administratoren können Sicherungszeitpläne und Aufbewahrungsrichtlinien auswählen, die den Richtlinien ihrer Organisation entsprechen.
 
-    ![Auswählen der Datenquellen](./media/backup-azure-backup-sql/pg-sqldatabases.png)
-12. Administratoren können Sicherungszeitpläne und Aufbewahrungsrichtlinien auswählen, die den Richtlinien ihrer Organisation entsprechen.
+    ![Auswählen von Zeitplänen und Aufbewahrungsrichtlinien](./media/backup-azure-backup-sql/pg-schedule.png)
 
-    ![Planung und Aufbewahrung](./media/backup-azure-backup-sql/pg-schedule.png)
+    In diesem Beispiel werden Sicherungen täglich um 12:00 Uhr und um 20:00 Uhr erstellt.
 
-    In diesem Beispiel werden Sicherungen einmal täglich um 12:00 Uhr und um 20:00 Uhr ausgeführt (unterer Bildschirmbereich).
-
-    > [!NOTE]
-    > Es ist eine bewährte Methode, einige kurzfristige Wiederherstellungspunkte auf einem Datenträger zur Hand zu haben, um eine schnelle Wiederherstellung zu ermöglichen. Diese Wiederherstellungspunkte werden für die „Wiederherstellung operativer Funktionen“ verwendet. Azure ist dank hoher SLAs und garantierter Verfügbarkeit eine gute Wahl als Offsitestandort.
+    > [!TIP]
+    > Speichern Sie einige kurzfristige Wiederherstellungspunkte auf Ihrem Datenträger, um eine schnelle Wiederherstellung zu ermöglichen. Diese Wiederherstellungspunkte werden für die Wiederherstellung operativer Funktionen verwendet. Azure ist dank hoher SLAs und garantierter Verfügbarkeit eine gute Wahl für einen Offsitestandort.
     >
+    > Verwenden Sie Data Protection Manager (DPM), um Azure-Sicherungen im Anschluss an die lokalen Datenträgersicherungen zu planen. Bei dieser Vorgehensweise wird die aktuelle Datenträgersicherung in Azure kopiert.
     >
 
-    **Bewährte Methode:** Stellen Sie sicher, dass Azure Backup-Sicherungen so geplant sind, dass sie nach Abschluss der lokalen Datenträgersicherungen mithilfe von DPM ausgeführt werden. Auf diese Weise wird sichergestellt, dass die neueste Datenträgersicherung nach Azure kopiert wird.
+1. Wählen Sie den Zeitplan für die Aufbewahrungsrichtlinie. Weitere Informationen zur Funktionsweise der Aufbewahrungsrichtlinie finden Sie im Artikel [Verschieben langfristiger Speicher von Bändern in die Azure-Cloud](backup-azure-backup-cloud-as-tape.md).
 
-13. Wählen Sie den Zeitplan für die Aufbewahrungsrichtlinie. Ausführliche Informationen zur Funktionsweise der Aufbewahrungsrichtlinie finden Sie im Artikel [Verwenden von Azure Backup als Ersatz für Ihre Bandinfrastruktur](backup-azure-backup-cloud-as-tape.md).
-
-    ![Aufbewahrungsrichtlinie](./media/backup-azure-backup-sql/pg-retentionschedule.png)
+    ![Auswählen einer Aufbewahrungsrichtlinie in MABS](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
     In diesem Beispiel:
 
-    * Sicherungen einmal täglich um 12:00 Uhr und um 20:00 Uhr ausgeführt (unterer Bildschirmbereich) und für 180 Tage beibehalten.
-    * Die Sicherung am Samstag um 12:00 Uhr wird 104 Wochen lang beibehalten.
-    * Die Sicherung am letzten Samstag um 12:00 Uhr wird 60 Monate lang beibehalten.
-    * Die Sicherung am letzten Samstag im März um 12:00 Uhr wird 10 Jahre lang beibehalten.
-14. Klicken Sie auf **Weiter** , und wählen Sie die geeignete Option zum Übertragen der anfänglichen Sicherung nach Azure aus. Sie können zwischen den Optionen **Automatisch über das Netzwerk** und **Offlinesicherung** wählen.
+    * Sicherungen werden täglich um 12:00 Uhr und um 20:00 Uhr erstellt. Sie werden 180 Tage aufbewahrt.
+    * Die Sicherung von Samstag, 12:00 Uhr, wird 104 Wochen aufbewahrt.
+    * Die Sicherung von 12:00 Uhr am letzten Samstag des Monats wird 60 Monate aufbewahrt.
+    * Die Sicherung von 12:00 Uhr am letzten Samstag im März wird zehn Jahre aufbewahrt.
 
-    * **Automatisch über das Netzwerk** werden die Sicherungsdaten gemäß dem für die Sicherung ausgewählten Zeitplan nach Azure übertragen.
-    * Die Funktionsweise der Option **Offlinesicherung** wird unter [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md)beschrieben.
+    Wählen Sie nach der Wahl einer Aufbewahrungsrichtlinie **Weiter** aus.
+1. Wählen Sie aus, wie die Erstsicherungskopie an Azure übertragen werden soll.
 
-    Wählen Sie die geeignete Übertragungsmethode zum Senden der anfänglichen Sicherungskopie an Azure, und klicken Sie auf **Weiter**.
-15. Nachdem Sie die Richtliniendetails auf dem Bildschirm **Zusammenfassung** überprüft haben, klicken Sie auf die Schaltfläche **Gruppe erstellen**, um den Workflow abzuschließen. Sie können anschließend auf die Schaltfläche **Schließen** klicken und den Auftragsfortschritt im Arbeitsbereich "Überwachung" verfolgen.
+    * Bei der Option **Automatisch über das Netzwerk** werden die Daten gemäß Ihrem Sicherungszeitplan an Azure übertragen.
+    * Weitere Informationen zur **Offlinesicherung** finden Sie in der [Übersicht über die Offlinesicherung](offline-backup-overview.md).
 
-    ![Erstellen der Schutzgruppe – in Bearbeitung](./media/backup-azure-backup-sql/pg-summary.png)
+    Wählen Sie nach der Wahl eines Übertragungsmechanismus **Weiter** aus.
+1. Überprüfen Sie auf der Seite **Zusammenfassung** die Richtliniendetails. Wählen Sie anschließend **Gruppe erstellen** aus. Sie können **Schließen** auswählen und den Auftragsstatus im Arbeitsbereich **Überwachung** verfolgen.
 
-## <a name="on-demand-backup-of-a-sql-server-database"></a>Bedarfsgesteuerte Sicherung einer SQL Server-Datenbank
-Anhand der zuvor beschriebenen Schritte wurde eine Sicherungsrichtlinie eingerichtet, ein "Wiederherstellungspunkt" wird jedoch erst bei Ausführung der ersten Sicherung erstellt. Statt darauf zu warten, dass der Scheduler in Aktion tritt, können Sie mithilfe der nachstehenden Schritte manuell einen Wiederherstellungspunkt erstellen.
+    ![Status der Schutzgruppenerstellung](./media/backup-azure-backup-sql/pg-summary.png)
 
-1. Warten Sie, bis der Status der Datenbank für die Schutzgruppe als **OK** angezeigt wird, bevor Sie den Wiederherstellungspunkt erstellen.
+## <a name="create-on-demand-backup-copies-of-a-sql-server-database"></a>Bedarfsgesteuertes Erstellen von Sicherungskopien einer SQL Server-Datenbank
 
-    ![Schutzgruppenmitglieder](./media/backup-azure-backup-sql/sqlbackup-recoverypoint.png)
-2. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie **Wiederherstellungspunkt erstellen**.
+Ein Wiederherstellungspunkt wird erstellt, wenn die erste Sicherung durchgeführt wird. Die Erstellung eines Wiederherstellungspunkts kann auch manuell ausgelöst werden, anstatt auf die Ausführung des Schedulers zu warten:
+
+1. Vergewissern Sie sich in der Schutzgruppe, dass der Status der Datenbank **OK** lautet.
+
+    ![Schutzgruppe mit Datenbankstatus](./media/backup-azure-backup-sql/sqlbackup-recoverypoint.png)
+1. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie **Wiederherstellungspunkt erstellen** aus.
 
     ![Erstellen eines Onlinewiederherstellungspunkts](./media/backup-azure-backup-sql/sqlbackup-createrp.png)
-3. Wählen Sie im Dropdownmenü die Option **Onlineschutz**, und klicken Sie auf **OK**. Dies löst die Erstellung eines Wiederherstellungspunkts in Azure aus.
+1. Wählen Sie im Dropdownmenü die Option **Onlineschutz** aus. Wählen Sie anschließend **OK** aus, um die Erstellung eines Wiederherstellungspunkts in Azure zu starten.
 
-    ![Wiederherstellungspunkt erstellen](./media/backup-azure-backup-sql/sqlbackup-azure.png)
-4. Sie können den Auftragsfortschritt im Arbeitsbereich **Überwachung** verfolgen. Dort wird ein in Bearbeitung befindlicher Auftrag angezeigt, ähnlich wie in der nächsten Abbildung.
+    ![Starten der Erstellung eines Wiederherstellungspunkts in Azure](./media/backup-azure-backup-sql/sqlbackup-azure.png)
+1. Der Status des Auftrags kann im Arbeitsbereich **Überwachung** verfolgt werden.
 
-    ![Konsole für die Überwachung](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
+    ![Anzeigen des Auftragsstatus im Arbeitsbereich „Überwachung“](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>Wiederherstellen einer SQL Server-Datenbank aus Azure
-Die folgenden Schritte sind erforderlich, um eine geschützte Entität (SQL Server-Datenbank) aus Azure wiederherzustellen.
 
-1. Öffnen Sie die Verwaltungskonsole auf dem DPM-Server. Navigieren Sie zum Arbeitsbereich **Wiederherstellung** , in dem die mit DPM gesicherten Server angezeigt werden. Suchen Sie nach der erforderlichen Datenbank (in diesem Fall "ReportServer$MSDPM2012"). Wählen Sie unter **Wiederherstellung von** eine Uhrzeit aus, die auf **Online** endet.
+So stellen Sie eine geschützte Entität (beispielsweise eine SQL Server-Datenbank) aus Azure wieder her:
 
-    ![Auswählen eines Wiederherstellungspunkts](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
-2. Klicken Sie mit der rechten Maustaste auf den Datenbanknamen und anschließend auf **Wiederherstellen**.
+1. Öffnen Sie die DPM-Serververwaltungskonsole. Navigieren Sie zum Arbeitsbereich **Wiederherstellung**, um die von DPM gesicherten Server anzuzeigen. Wählen Sie die Datenbank aus (in diesem Beispiel: ReportServer$MSDPM2012). Wählen Sie unter **Wiederherstellungszeit** einen Wert aus, die mit **Online** endet.
 
-    ![Wiederherstellen aus Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. DPM zeigt die Details zum Wiederherstellungspunkt an. Klicken Sie auf **Weiter**. Um die Datenbank zu überschreiben, wählen Sie den Wiederherstellungstyp **In ursprünglicher Instanz von SQL Server wiederherstellen**aus. Klicken Sie auf **Weiter**.
+    ![Wählen Sie einen Wiederherstellungspunkt](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
+1. Klicken Sie mit der rechten Maustaste auf den Datenbanknamen, und wählen Sie **Wiederherstellen** aus.
 
-    ![Wiederherstellung am ursprünglichen Speicherort](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
+    ![Wiederherstellen einer Datenbank aus Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
+1. DPM zeigt die Details zum Wiederherstellungspunkt an. Wählen Sie **Weiter** aus. Um die Datenbank zu überschreiben, wählen Sie den Wiederherstellungstyp **In ursprünglicher Instanz von SQL Server wiederherstellen**aus. Wählen Sie **Weiter**aus.
 
-    In diesem Beispiel erlaubt DPM die Wiederherstellung der Datenbank auf eine andere SQL Server-Instanz oder in einen eigenständigen Netzwerkordner.
-4. Auf dem Bildschirm **Wiederherstellungsoptionen angeben** können Sie Optionen auswählen, z.B. „Netzwerk-Bandbreiteneinschränkung“, um die Bandbreitenbelegung bei der Wiederherstellung zu drosseln. Klicken Sie auf **Weiter**.
-5. Im Bildschirm **Zusammenfassung** werden alle bisher konfigurierten Wiederherstellungsoptionen angezeigt. Klicken Sie auf **Wiederherstellen**.
+    ![Wiederherstellen einer Datenbank am ursprünglichen Speicherort](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
-    Der Wiederherstellungsstatus zeigt an, dass die Datenbank wiederhergestellt wird. Sie können auf **Schließen** klicken, um den Assistenten zu schließen und den Fortschritt im Arbeitsbereich **Überwachung** zu verfolgen.
+    In diesem Beispiel ermöglicht DPM die Wiederherstellung der Datenbank in einer anderen SQL Server-Instanz oder in einen eigenständigen Netzwerkordner.
+1. Auf der Seite **Wiederherstellungsoptionen angeben** können Sie die Wiederherstellungsoptionen auswählen. So können Sie beispielsweise **Netzwerk-Bandbreiteneinschränkung** auswählen, um die von der Wiederherstellung beanspruchte Bandbreite zu drosseln. Wählen Sie **Weiter**aus.
+1. Auf der Seite **Zusammenfassung** wird die aktuelle Wiederherstellungskonfiguration angezeigt. Wählen Sie **Wiederherstellen** aus.
 
-    ![Auslösen der Wiederherstellung](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
+    Der Wiederherstellungsstatus zeigt, dass die Datenbank wiederhergestellt wird. Sie können **Schließen** auswählen, um den Assistenten zu schließen und den Fortschritt im Arbeitsbereich **Überwachung** zu verfolgen.
 
-    Nach Abschluss der Wiederherstellung ist die wiederhergestellte Datenbank anwendungskonsistent.
+    ![Starten des Wiederherstellungsprozesses](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
 
-### <a name="next-steps"></a>Nächste Schritte:
-•    [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)
+    Nach Abschluss der Wiederherstellung ist die wiederhergestellte Datenbank mit der Anwendung konsistent.
+
+### <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen finden Sie unter [Azure Backup – häufig gestellte Fragen](backup-azure-backup-faq.md).

@@ -1,26 +1,20 @@
 ---
-title: Verwalten von VM-Skalierungsgruppen mit der Azure CLI | Microsoft-Dokumentation
+title: Verwalten von Virtual Machine Scale Sets mit der Azure CLI
 description: Gängige Azure CLI-Befehle für die Verwaltung von VM-Skalierungsgruppen (etwa zum Starten und Beenden einer Instanz oder zum Ändern der Kapazität der Skalierungsgruppe).
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: management
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: b49182ebdcc93c4a51a55f27c3e0bf7a45307b7f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.reviewer: mimckitt
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: d954f7cdda4cae65f822489828226e0364d0fc29
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618080"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570529"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Verwalten einer VM-Skalierungsgruppe mit der Azure CLI
 Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von verschiedenen Aufgaben im Lebenszyklus zu erstellen. In diesem Artikel werden einige der gängigen Azure CLI-Befehle behandelt, mit denen Sie diese Aufgaben durchführen können.
@@ -55,6 +49,20 @@ az vmss get-instance-view \
     --instance-id 0
 ```
 
+Sie können auch ausführliche *instanceView*-Informationen für alle Instanzen in einem API-Befehl abrufen, um die API-Einschränkung bei großen Installationen zu vermeiden. Geben Sie eigene Werte für `--resource-group`, `--subscription` und `--name` an.
+
+```azurecli
+az vmss list-instances \
+    --expand instanceView \
+    --select instanceView \
+    --resource-group <resourceGroupName> \
+    --subscription <subID> \
+    --name <vmssName>
+```
+
+```rest
+GET "https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSSName>/virtualMachines?api-version=2019-03-01&%24expand=instanceView"
+```
 
 ## <a name="list-connection-information-for-vms"></a>Auflisten von Verbindungsinformationen für virtuelle Computer
 Wenn Sie eine Verbindung mit den virtuellen Computern in einer Skalierungsgruppe herstellen möchten, stellen Sie eine SSH- oder RDP-Verbindung mit einer zugewiesenen öffentlichen IP-Adresse und Portnummer her. Standardmäßig werden dem Azure-Lastenausgleich, der den Datenverkehr von Remoteverbindungen an die einzelnen virtuellen Computer weiterleitet, Regeln für die Netzwerkadressübersetzung (Network Address Translation, NAT) hinzugefügt. Verwenden Sie [az vmss list-instance-connection-info](/cli/azure/vmss), um die Adresse und die Ports für die Verbindungsherstellung mit VM-Instanzen in einer Skalierungsgruppe aufzulisten. Im folgenden Beispiel werden Verbindungsinformationen für VM-Instanzen in der Skalierungsgruppe namens *myScaleSet* und in der Ressourcengruppe *myResourceGroup* aufgeführt. Geben Sie für diese Namen Ihre eigenen Werte an:

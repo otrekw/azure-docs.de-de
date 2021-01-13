@@ -1,21 +1,16 @@
 ---
-title: Verwenden von Azure Blockchain Workbench-Daten mit SQL Server Management Studio
+title: Abfragen von Azure Blockchain Workbench-Daten mit SQL Server Management Studio
 description: Informationen Sie zum Herstellen einer Verbindung mit der SQL-Datenbank von Azure Blockchain Workbench aus SQL Server Management Studio heraus.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/09/2019
-ms.topic: article
+ms.date: 11/20/2019
+ms.topic: how-to
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: db43dd04da601650b3592dc74cdd804fae394c00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16e7f9a6c36ea42e1d0a4144e680baebee5a6c21
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510911"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009465"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Verwenden von Azure Blockchain Workbench-Daten mit SQL Server Management Studio
 
@@ -23,7 +18,7 @@ Microsoft SQL Server Management Studio bietet die Möglichkeit zum schnellen Sch
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Laden Sie [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) herunter.
+* Laden Sie [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) herunter.
 
 ## <a name="connecting-sql-server-management-studio-to-data-in-azure-blockchain-workbench"></a>Verbinden von SQL Server Management Studio mit Daten in Azure Blockchain Workbench
 

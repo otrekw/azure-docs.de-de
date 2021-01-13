@@ -1,29 +1,22 @@
 ---
-title: Kopieren einer Linux-VM mit Azure CLI | Microsoft-Dokumentation
+title: Kopieren einer Linux-VM mit Azure CLI
 description: Erfahren Sie, wie Sie eine Kopie Ihrer Azure Linux-VM mithilfe von Azure CLI und Managed Disks erstellen.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 770569d2-23c1-4a5b-801e-cddcd1375164
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 5a77152aea00ca094a78dc0173d48bc8e276cce5
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.custom: legacy, devx-track-azurecli
+ms.openlocfilehash: f92f286fc9d9438331617cb567272a331834af42
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668073"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735396"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Erstellen einer Kopie Ihrer Linux-VM mithilfe von Azure CLI und Managed Disks
 
-In diesem Artikel erfahren Sie, wie Sie eine Kopie des virtuellen Azure-Computers (VM) unter Linux mit der Azure CLI und dem Azure Resource Manager-Bereitstellungsmodell erstellen. 
+In diesem Artikel erfahren Sie, wie Sie eine Kopie Ihres virtuellen Azure-Computers (Virtual Machine, VM) unter Linux mi der Azure CLI erstellen. Informationen zum Kopieren, Erstellen, Speichern und Freigeben von VM-Images finden Sie unter [Shared Image Galleries](../shared-images-cli.md).
 
 Sie können auch [einen virtuellen Computer aus einer VHD hochladen und erstellen](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -50,7 +43,7 @@ az vm deallocate \
 
 Zum Kopieren eines virtuellen Computers erstellen Sie eine Kopie der zugrunde liegenden virtuellen Festplatte. Dieser Prozess erstellt eine spezialisierte VHD als verwalteten Datenträger, der die gleiche Konfiguration und die gleichen Einstellungen wie die Quell-VM aufweist.
 
-Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über Azure Managed Disks](../windows/managed-disks-overview.md). 
+Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über Azure Managed Disks](../managed-disks-overview.md). 
 
 1.  Listen Sie die einzelnen virtuellen Computer und den Namen des dazugehörigen Betriebssystemdatenträgers mit [az vm list](/cli/azure/vm#az-vm-list) auf. Im folgenden Beispiel werden alle virtuellen Computer in der Ressourcengruppe *myResourceGroup* aufgelistet:
     
@@ -133,4 +126,4 @@ az vm create --resource-group myResourceGroup \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Verwendung der Azure-CLI für die Verwaltung des neuen virtuellen Computers finden Sie unter [Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus](../azure-cli-arm-commands.md).
+Erfahren Sie, wie Sie einen [Katalog mit freigegebenen Images](../shared-images-cli.md) zum Verwalten von VM-Images verwenden.

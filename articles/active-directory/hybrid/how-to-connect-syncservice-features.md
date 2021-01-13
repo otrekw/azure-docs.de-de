@@ -11,28 +11,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 06/25/2018
+ms.topic: how-to
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be67a6f287e2d6e77070928cbe12542857696011
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 261ab5d0f039705a2566b7c28ff4c06778bb661a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347538"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410537"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Features des Azure AD Connect-Synchronisierungsdiensts
 
 Das Synchronisierungsfeature von Azure AD Connect besteht aus zwei Komponenten:
 
-* Der lokalen Komponente **Azure AD Connect-Synchronisierung**, die auch als **Synchronisierungsmodul** bezeichnet wird.
+* Der lokalen Komponente **Azure AD Connect-Synchronisierung** , die auch als **Synchronisierungsmodul** bezeichnet wird.
 * Dem Service in Azure AD, der auch als **Azure AD Connect-Synchronisierungsdienst**
 
 In diesem Thema wird erläutert, wie die folgenden Features des **Azure AD Connect-Synchronisierungsdiensts** funktionieren und wie Sie diese mit Windows PowerShell konfigurieren können.
 
-Diese Einstellungen werden vom [Azure Active Directory-Modul für Windows PowerShell](https://aka.ms/aadposh)konfiguriert. Laden Sie es herunter, und installieren Sie es separat von Azure AD Connect. Die in diesem Thema dokumentierten Cmdlets wurden in der [Version von März 2016 (Build 9031.1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1)eingeführt. Wenn Sie nicht über die in diesem Thema dokumentierten Cmdlets verfügen oder diese nicht zu den gleichen Ergebnissen führen, stellen Sie sicher, dass Sie die neueste Version ausführen.
+Diese Einstellungen werden vom [Azure Active Directory-Modul für Windows PowerShell](/previous-versions/azure/jj151815(v=azure.100))konfiguriert. Laden Sie es herunter, und installieren Sie es separat von Azure AD Connect. Die in diesem Thema dokumentierten Cmdlets wurden in der [Version von März 2016 (Build 9031.1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1)eingeführt. Wenn Sie nicht über die in diesem Thema dokumentierten Cmdlets verfügen oder diese nicht zu den gleichen Ergebnissen führen, stellen Sie sicher, dass Sie die neueste Version ausführen.
 
 Führen Sie zum Anzeigen der Konfiguration in Ihrem Azure AD-Verzeichnis `Get-MsolDirSyncFeatures`aus.  
 ![Get-MsolDirSyncFeatures – Ergebnis](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)
@@ -62,7 +62,7 @@ Die folgenden Einstellungen werden von Azure AD Connect konfiguriert und können
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Ermöglicht es, ein Attribut unter Quarantäne zu stellen, falls es sich um ein Duplikat eines anderen Objekts handelt, damit nicht der Export des gesamten Objekts mit einem Fehler abgebrochen wird. |
 | Kennworthashsynchronisierung |[Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](how-to-connect-password-hash-synchronization.md) |
 |Passthrough-Authentifizierung|[Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung](how-to-connect-pta.md)|
-| UnifiedGroupWriteback |[Vorschau: Gruppenrückschreiben](how-to-connect-preview.md#group-writeback) |
+| UnifiedGroupWriteback |Gruppenrückschreiben|
 | UserWriteback |Derzeit nicht unterstützt. |
 
 ## <a name="duplicate-attribute-resiliency"></a>Resilienz bei doppelten Attributen
@@ -89,14 +89,16 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 ## <a name="synchronize-userprincipalname-updates"></a>Synchronisieren von userPrincipalName-Updates
 
-Früher wurden Updates des userPrincipalName-Attributs mithilfe des Synchronisierungsdiensts vom lokalen Standort blockiert, sofern nicht die beiden folgenden Bedingungen erfüllt waren:
+Früher wurden Updates des UserPrincipalName-Attributs mithilfe des Synchronisierungsdiensts vom lokalen Standort blockiert, sofern nicht die beiden folgenden Bedingungen erfüllt waren:
 
 * Der Benutzer ist verwaltet (kein Verbundbenutzer).
 * Dem Benutzer wurde keine Lizenz zugewiesen.
 
-Weitere Informationen finden Sie unter [Benutzernamen in Office 365, Azure oder Intune stimmen nicht mit lokaler UPN oder alternativen Benutzernamen überein](https://support.microsoft.com/kb/2523192).
+> [!NOTE]
+> Seit März 2019 ist das Synchronisieren von UPN-Änderungen für Verbundbenutzerkonten zulässig.
+> 
 
-Durch die Aktivierung dieses Features kann die Synchronisierungsengine den userPrincipalName aktualisieren, wenn dieser lokal geändert wird und Sie die Kennworthashsynchronisierung oder Pass-Through-Authentifizierung verwenden. Wenn Sie einen Verbund verwenden, wird das Feature nicht unterstützt.
+Durch die Aktivierung dieses Features kann die Synchronisierungsengine den userPrincipalName aktualisieren, wenn dieser lokal geändert wird und Sie die Kennworthashsynchronisierung oder Pass-Through-Authentifizierung verwenden.
 
 Dieses Feature ist standardmäßig für neu erstellte Azure AD-Verzeichnisse aktiviert. Sie können ermitteln, ob das Feature aktiviert ist, indem Sie Folgendes ausführen:  
 

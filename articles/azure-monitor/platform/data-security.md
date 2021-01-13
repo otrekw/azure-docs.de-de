@@ -1,27 +1,20 @@
 ---
 title: Log Analytics-Datensicherheit | Microsoft-Dokumentation
 description: Erfahren Sie, wie Log Analytics Ihre Privatsphäre und Daten schützt.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: a33bb05d-b310-4f2c-8f76-f627e600c8e7
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/04/2019
-ms.author: magoedte
-ms.openlocfilehash: 407aaf15808d1d1420fd1a3804651d29a407d4b3
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+author: bwren
+ms.author: bwren
+ms.date: 11/11/2020
+ms.openlocfilehash: 87cdecd29d684c712853970c8246002132d274ac
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68606674"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094334"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics-Datensicherheit
-Dieses Dokument dient der Bereitstellung von spezifischen Informationen zu Log Analytics, einem Feature von Azure Monitor, in Ergänzung der Informationen im [Azure Trust Center](../../security/fundamentals/trust-center.md).  
+Dieses Dokument dient der Bereitstellung von spezifischen Informationen zu Log Analytics, einem Feature von Azure Monitor, in Ergänzung der Informationen im [Azure Trust Center](https://www.microsoft.com/en-us/trust-center?rtc=1).  
 
 In diesem Artikel wird erläutert, wie Daten von Log Analytics gesammelt, verarbeitet und geschützt werden. Sie können Agents verwenden, um die Verbindung mit dem Webdienst herzustellen, mit System Center Operations Manager betriebliche Daten sammeln oder Daten aus Azure-Diagnosen für die Verwendung durch Log Analytics abrufen. 
 
@@ -33,6 +26,12 @@ Der Log Analytics-Dienst verwaltet Ihre Daten in der Cloud sicher mithilfe der f
 * Incident Management
 * Compliance
 * Sicherheitsstandard-Zertifizierungen
+
+Sie können auch zusätzliche Sicherheitsfunktionen verwenden, die in Azure Monitor und Log Analytics integriert sind. Diese Funktionen erfordern mehr Administratorverwaltung. 
+* Kundenseitig verwaltete Schlüssel (Sicherheitsschlüssel)
+* Privater Azure-Speicher
+* Private Link-Netzwerk 
+* Von Azure Lockbox festgelegte Zugriffslimits für den Azure-Support
 
 Sollten Sie Fragen, Vorschläge oder Probleme im Zusammenhang mit den folgenden Informationen (einschließlich unserer Sicherheitsrichtlinien) haben, können Sie sich über die [Azure-Supportoptionen](https://azure.microsoft.com/support/options/) mit uns in Verbindung setzen.
 
@@ -49,9 +48,9 @@ Es wird nicht empfohlen, Ihren Agent explizit so einzurichten, dass nur TLS 1.2 
 |Plattform/Sprache | Support | Weitere Informationen |
 | --- | --- | --- |
 |Linux | Linux-Distributionen greifen zur Unterstützung von TLS 1.2 tendenziell auf [OpenSSL](https://www.openssl.org) zurück.  | Überprüfen Sie anhand des [OpenSSL-Änderungsprotokolls](https://www.openssl.org/news/changelog.html), ob Ihre Version von OpenSSL unterstützt wird.|
-| Windows 8.0 bis 10 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) verwenden.  |
-| Windows Server 2012 bis 2016 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) verwenden. |
-| Windows 7 SP1 und Windows Server 2008 R2 SP1 | Wird unterstützt, ist jedoch standardmäßig deaktiviert. | Details zur Aktivierung finden Sie auf der Seite [Transport Layer Security (TLS) registry settings (Registrierungseinstellungen für Transport Layer Security (TLS))](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
+| Windows 8.0 bis 10 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](/windows-server/security/tls/tls-registry-settings) verwenden.  |
+| Windows Server 2012 bis 2016 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](/windows-server/security/tls/tls-registry-settings) verwenden. |
+| Windows 7 SP1 und Windows Server 2008 R2 SP1 | Wird unterstützt, ist jedoch standardmäßig deaktiviert. | Details zur Aktivierung finden Sie auf der Seite [Transport Layer Security (TLS) registry settings (Registrierungseinstellungen für Transport Layer Security (TLS))](/windows-server/security/tls/tls-registry-settings).  |
 
 ## <a name="data-segregation"></a>Trennung von Daten
 Nachdem Ihre Daten vom Log Analytics-Dienst erfasst wurden, werden sie für jede Komponente des Diensts logisch getrennt verwaltet. Sämtliche Daten werden nach Arbeitsbereich gekennzeichnet. Dieser Kennzeichnung wird während des gesamten Datenlebenszyklus beibehalten und auf jeder Ebene des Diensts erzwungen. Die Daten werden in einer dedizierten Datenbank im Speichercluster in der ausgewählten Region gespeichert.
@@ -73,14 +72,14 @@ Die folgende Tabelle enthält einige der verfügbaren Lösungen sowie Beispiele 
 
 Die folgende Tabelle zeigt Beispiele für Datentypen:
 
-| **Datentyp** | **Felder** |
+| **Datentyp** | **Fields** |
 | --- | --- |
 | Warnung |AlertName, AlertDescription, BaseManagedEntityId, ProblemId, IsMonitorAlert, RuleId, ResolutionState, Priority, Severity, Category, Owner, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
 | Konfiguration |CustomerID, AgentID, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
 | Ereignis |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Hinweis:** Wenn Sie Ereignisse mit benutzerdefinierten Feldern in das Windows-Ereignisprotokoll schreiben, werden diese per Log Analytics gesammelt. |
 | Metadaten |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
 | Leistung |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
-| Zustand |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
+| State |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Physische Sicherheit
 Der Log Analytics-Dienst wird von Microsoft-Mitarbeitern verwaltet. Alle Aktivitäten werden protokolliert und können überwacht werden. Log Analytics wird als Azure-Dienst betrieben und erfüllt sämtliche Compliance- und Sicherheitsanforderungen in Azure. Ausführliche Informationen über die physische Sicherheit der Azure-Ressourcen finden Sie auf Seite 18 des Dokuments [Microsoft Azure Security Overview (Microsoft Azure-Sicherheitsübersicht)](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Physische Zugriffsrechte auf sichere Bereiche werden innerhalb eines Geschäftstags für jeden Benutzer geändert, der keine Verantwortung mehr für den Log Analytics-Dienst trägt, einschließlich der Übertragung und Beendigung. Informieren Sie sich über die globale physische Infrastruktur, die wir in [Microsoft-Rechenzentren](https://azure.microsoft.com/global-infrastructure/) verwenden.
@@ -128,7 +127,7 @@ Azure Log Analytics erfüllt folgende Anforderungen:
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
 * [Payment Card Industry (PCI-Compliance) Data Security Standard (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) des PCI Security Standards Council
 * [Service Organization Controls (SOC) 1 Typ 1 und SOC 2 Typ 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2)
-* [HIPAA und HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) für Unternehmen mit einem HIPAA-Geschäftspartnervertrag
+* [HIPAA und HITECH](/compliance/regulatory/offering-hipaa-hitech) für Unternehmen mit einem HIPAA-Geschäftspartnervertrag
 * Windows Common Engineering Criteria
 * Vertrauenswürdige Datenverarbeitung von Microsoft
 * Als Azure-Dienst müssen die Komponenten, die von Log Analytics verwendet werden, die Azure-Konformitätsbestimmungen einhalten. Weitere Informationen erhalten Sie unter [Microsoft Trust Center – Compliance](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx).
@@ -155,10 +154,10 @@ Für Operations Manager wird über die Operation Manager-Verwaltungsgruppe eine 
 
 Die gesamte Kommunikation zwischen verbundenen Systemen und dem Log Analytics-Dienst ist verschlüsselt. Das TLS (HTTPS)-Protokoll wird für die Verschlüsselung verwendet.  Das Microsoft SDL-Verfahren stellt sicher, dass Log Analytics nach den neuesten Fortschritten bei kryptografischen Protokollen aktualisiert wird.
 
-Jeder Agent-Typ sammelt Daten für Log Analytics. Die Art der gesammelten Daten ist abhängig von der Art der verwendeten Lösungen. Eine Zusammenfassung der Datensammlung finden Sie unter [Add Log Analytics solutions from the Solutions Gallery (Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog)](../../azure-monitor/insights/solutions.md). Darüber hinaus stehen ausführlichere Sammlungs-Informationen für die meisten Lösungen zur Verfügung. Eine Lösung ist ein Bündel von vordefinierten Ansichten, Protokollsuchabfragen, Datensammlungsregeln und Verarbeitungslogik. Nur Administratoren können Log Analytics zum Importieren einer Lösung verwenden. Nach dem Importieren der Lösung wird diese auf die Operations Manager-Verwaltungsserver (sofern verwendet) und dann in die ausgewählten Agents verschoben. Anschließend sammeln die Agents die Daten.
+Jeder Agent-Typ sammelt Daten für Log Analytics. Die Art der gesammelten Daten ist abhängig von der Art der verwendeten Lösungen. Eine Zusammenfassung der Datensammlung finden Sie unter [Add Log Analytics solutions from the Solutions Gallery (Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog)](../insights/solutions.md). Darüber hinaus stehen ausführlichere Sammlungs-Informationen für die meisten Lösungen zur Verfügung. Eine Lösung ist ein Bündel von vordefinierten Ansichten, Protokollsuchabfragen, Datensammlungsregeln und Verarbeitungslogik. Nur Administratoren können Log Analytics zum Importieren einer Lösung verwenden. Nach dem Importieren der Lösung wird diese auf die Operations Manager-Verwaltungsserver (sofern verwendet) und dann in die ausgewählten Agents verschoben. Anschließend sammeln die Agents die Daten.
 
 ## <a name="2-send-data-from-agents"></a>2. Senden von Daten von Agents
-Sie registrieren alle Agent-Typen mit einem Registrierungsschlüssel. Eine sichere Verbindung zwischen dem Agent und Log Analytics-Dienst wird mithilfe der zertifikatbasierten Authentifizierung und SSL an Port 443 hergestellt. Log Analytics verwendet einen geheimen Speicher zum Generieren und Verwalten von Schlüsseln. Private Schlüssel werden alle 90 Tage rotiert und in Azure gespeichert. Sie werden von Azure-Operatoren verwaltet, die Gesetze und Compliance-Vorschriften strikt einhalten.
+Sie registrieren alle Agent-Typen mit einem Registrierungsschlüssel. Eine sichere Verbindung zwischen dem Agent und Log Analytics-Dienst wird mithilfe der zertifikatbasierten Authentifizierung und TLS an Port 443 hergestellt. Log Analytics verwendet einen geheimen Speicher zum Generieren und Verwalten von Schlüsseln. Private Schlüssel werden alle 90 Tage rotiert und in Azure gespeichert. Sie werden von Azure-Operatoren verwaltet, die Gesetze und Compliance-Vorschriften strikt einhalten.
 
 In Operations Manager wird über die mit einem Log Analytics-Arbeitsbereich registrierte Verwaltungsgruppe eine sichere HTTPS-Verbindung mit einem Operations Manager-Verwaltungsserver hergestellt.
 
@@ -168,7 +167,7 @@ Wenn jeder Agent Daten an eine Operations Manager-Verwaltungsgruppe meldet, die 
 
 Zwischengespeicherte Daten des Windows-Agents oder des Agents des Verwaltungsservers sind durch den Anmeldeinformationsspeicher des Betriebssystems geschützt. Wenn der Dienst die Daten innerhalb von zwei Stunden nicht verarbeiten kann, platzieren die Agents die Daten in einer Warteschlange. Wenn die Warteschlange voll ist, beginnt der Agent, Datentypen zu löschen, beginnend mit Leistungsdaten. Die Begrenzung für die Agent-Warteschlange ist ein Registrierungsschlüssel, den Sie bei Bedarf ändern können. Die gesammelten Daten werden komprimiert und unter Umgehung der Datenbanken der Operations Manager-Verwaltungsgruppe an den Dienst gesendet, sodass keine weitere Last hinzugefügt wird. Nach dem Senden werden die gesammelten Daten aus dem Cache entfernt.
 
-Wie oben beschrieben, werden die Daten von dem Verwaltungsserver oder den direkt verbundenen Agents über SSL an Microsoft Azure-Rechenzentren gesendet. Optional können Sie ExpressRoute verwenden, um zusätzliche Sicherheit für die Daten bereitzustellen. ExpressRoute ist eine Möglichkeit, direkt aus Ihrem vorhandenen WAN mit Azure zu verbinden, z.B. ein Multi-Protocol Label Switching-VPN (MPLS), das von einem Netzwerkdienstanbieter bereitgestellt wird. Weitere Informationen finden Sie unter [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+Wie oben beschrieben, werden die Daten von dem Verwaltungsserver oder den direkt verbundenen Agents über TLS an Microsoft Azure-Rechenzentren gesendet. Optional können Sie ExpressRoute verwenden, um zusätzliche Sicherheit für die Daten bereitzustellen. ExpressRoute ist eine Möglichkeit, direkt aus Ihrem vorhandenen WAN mit Azure zu verbinden, z.B. ein Multi-Protocol Label Switching-VPN (MPLS), das von einem Netzwerkdienstanbieter bereitgestellt wird. Weitere Informationen finden Sie unter [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Empfangen und Verarbeiten von Daten durch den Log Analytics-Dienst
 Der Log Analytics-Dienst stellt sicher, dass eingehende Daten aus einer vertrauenswürdigen Quelle stammen, indem Zertifikate und die Integrität der Daten mittels Azure-Authentifizierung überprüft werden. Die nicht verarbeiteten Rohdaten werden dann in einem Azure Event Hub in der Region gespeichert, in der die Daten schließlich im Ruhezustand gespeichert werden. Die Art der gespeicherten Daten ist abhängig von der Art der importierten und zum Sammeln von Daten verwendeten Lösungen. Der Log Analytics-Dienst verarbeitet dann die Rohdaten und erfasst sie in der Datenbank.
@@ -178,8 +177,17 @@ Die Beibehaltungsdauer der gesammelten Daten, die in der Datenbank gespeichert s
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Verwenden von Log Analytics für den Datenzugriff
 Für den Zugriff auf Ihren Log Analytics-Arbeitsbereich melden Sie sich über das zuvor eingerichtete Unternehmenskonto oder Microsoft-Konto im Azure-Portal an. Der gesamte Datenverkehr zwischen dem Portal und dem Log Analytics-Dienst erfolgt über einen sicheren HTTPS-Kanal. Bei Verwendung des Portals wird eine Sitzungs-ID auf dem Client des Benutzers (Webbrowser) generiert, und die Daten werden in einem lokalen Cache gespeichert, bis die Sitzung beendet wird. Wenn die Sitzung beendet ist, wird der Cache gelöscht. Clientseitige Cookies enthalten keine persönlich identifizierbaren Informationen und werden nicht automatisch entfernt. Sitzungscookies sind „HTTPOnly“ markiert und gesichert. Nach einer vorher festgelegten Zeit im Leerlauf wird die Sitzung im Azure-Portal beendet.
 
-## <a name="next-steps"></a>Nächste Schritte
-* Im [Schnellstart zu virtuellen Azure-Computern](../../azure-monitor/learn/quick-collect-azurevm.md) erfahren Sie, wie Sie mit Log Analytics Daten für Ihre virtuellen Azure-Computer sammeln.  
 
-*  Wenn Sie Daten von physischen oder virtuellen Windows- oder Linux-Computern in Ihrer Umgebung sammeln möchten, finden Sie entsprechende Informationen im [Schnellstart für Linux-Computer](../../azure-monitor/learn/quick-collect-linux-computer.md) bzw. im [Schnellstart für Windows-Computer](../../azure-monitor/learn/quick-collect-windows-computer.md).
+## <a name="additional-security-features"></a>Zusätzliche Sicherheitsfunktionen
+Mithilfe dieser zusätzlichen Sicherheitsfunktionen können Sie Ihre Azure Monitor-/Log Analytics-Umgebung noch weiter sichern. Diese Funktionen erfordern mehr Administratorverwaltung. 
+- [Kundenseitig verwaltete Schlüssel (Sicherheitsschlüssel)](customer-managed-keys.md): Mithilfe von kundenseitig verwalteten Schlüsseln können Sie Daten verschlüsseln, die an Ihre Log Analytics-Arbeitsbereiche gesendet werden. Dies erfordert die Verwendung von Azure Key Vault. 
+- [Privater/kundenseitig verwalteter Speicher](private-storage.md): Verwalten Sie Ihr persönlich verschlüsseltes Speicherkonto, und weisen Sie Log Analytics an, dieses zum Speichern von Überwachungsdaten zu verwenden. 
+- [Private Link-Netzwerk](private-link-security.md): Mit Azure Private Link können Sie Azure-PaaS-Dienste (einschließlich Azure Monitor) über private Endpunkte sicher mit Ihrem virtuellen Netzwerk verknüpfen. 
+- [Azure Kunden-Lockbox](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview): Kunden-Lockbox für Microsoft Azure bietet eine Oberfläche, auf der Kunden Anforderungen für den Zugriff auf Kundendaten prüfen und dann genehmigen oder ablehnen können. Das Feature wird in Fällen verwendet, in denen ein Microsoft-Techniker während einer Supportanfrage auf Kundendaten zugreifen muss.
+
+
+## <a name="next-steps"></a>Nächste Schritte
+* Im [Schnellstart zu virtuellen Azure-Computern](../learn/quick-collect-azurevm.md) erfahren Sie, wie Sie mit Log Analytics Daten für Ihre virtuellen Azure-Computer sammeln.  
+
+*  Wenn Sie Daten von physischen oder virtuellen Windows- oder Linux-Computern in Ihrer Umgebung sammeln möchten, finden Sie entsprechende Informationen im [Schnellstart für Linux-Computer](../learn/quick-collect-linux-computer.md) bzw. im [Schnellstart für Windows-Computer](../learn/quick-collect-windows-computer.md).
 

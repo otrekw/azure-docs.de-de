@@ -1,24 +1,24 @@
 ---
 title: Ausführen von Azure Table Storage-Vorgängen mit PowerShell | Microsoft-Dokumentation
-description: Ausführen von Azure Table Storage-Vorgängen mit PowerShell.
-services: cosmos-db
+description: Hier erfahren Sie, wie Sie häufige Aufgaben wie das Erstellen, Abfragen und Löschen von Daten im Azure Table Storage-Konto mithilfe von PowerShell ausführen.
 author: roygara
-ms.service: cosmos-db
+ms.service: storage
 ms.topic: article
 ms.date: 04/05/2019
 ms.author: rogarana
-ms.subservice: cosmosdb-table
-ms.openlocfilehash: b1cae7dc553ce324349e66f1bcb8a281d7c7c7e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: tables
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9a7502d48095fe18b983c1971d5145f51e766c95
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101291"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306908"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Ausführen von Azure Table Storage-Vorgängen mit Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-Azure Table Storage ist ein NoSQL-Datenspeicher, den Sie zum Speichern und Abfragen umfangreicher strukturierter, nicht relationaler Datasets verwenden können. Die Hauptkomponenten des Diensts sind Tabellen, Entitäten und Eigenschaften. Eine Tabelle ist eine Sammlung von Entitäten. Eine Entität ist ein Satz von Eigenschaften. Jede Entität kann über bis zu 252 Eigenschaften verfügen, bei denen es sich um Name-Wert-Paare handelt. In diesem Artikel wird vorausgesetzt, dass Sie bereits mit den Konzepten des Azure Table Storage-Diensts vertraut sind. Ausführliche Informationen finden Sie unter [Understanding the Table Service Data Model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) (Grundlegendes zum Tabellenspeicherdienst-Datenmodell) und [Erste Schritte mit Azure Table Storage mit .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md).
+Azure Table Storage ist ein NoSQL-Datenspeicher, den Sie zum Speichern und Abfragen umfangreicher strukturierter, nicht relationaler Datasets verwenden können. Die Hauptkomponenten des Diensts sind Tabellen, Entitäten und Eigenschaften. Eine Tabelle ist eine Sammlung von Entitäten. Eine Entität ist ein Satz von Eigenschaften. Jede Entität kann über bis zu 252 Eigenschaften verfügen, bei denen es sich um Name-Wert-Paare handelt. In diesem Artikel wird vorausgesetzt, dass Sie bereits mit den Konzepten des Azure Table Storage-Diensts vertraut sind. Ausführliche Informationen finden Sie unter [Understanding the Table Service Data Model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) (Grundlegendes zum Tabellenspeicherdienst-Datenmodell) und [Erste Schritte mit Azure Table Storage mit .NET](../../cosmos-db/tutorial-develop-table-dotnet.md).
 
 In dieser Anleitung werden gängige Azure Table Storage-Vorgänge behandelt. Folgendes wird vermittelt: 
 
@@ -118,7 +118,7 @@ $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 ## <a name="reference-cloudtable-property-of-a-specific-table"></a>Verweisen auf die CloudTable-Eigenschaft einer bestimmten Tabelle
 
 > [!IMPORTANT]
-> Die Verwendung von „CloudTable“ ist obligatorisch, wenn Sie mit dem PowerShell-Modul **AzureTable** arbeiten. Rufen Sie den Befehl **Get-AzTableTable** auf, um den Verweis auf dieses Objekt abzurufen. Dieser Befehl erstellt auch die Tabelle, wenn sie nicht bereits existiert.
+> Die Verwendung von „CloudTable“ ist obligatorisch, wenn Sie mit dem PowerShell-Modul **AzureTable** arbeiten. Rufen Sie den Befehl **Get-AzStorageTable** auf, um den Verweis auf dieses Objekt abzurufen. Dieser Befehl erstellt auch die Tabelle, wenn sie nicht bereits existiert.
 
 Um Operationen für eine Tabelle unter Verwendung von **AzTable** ausführen zu können, benötigen Sie einen Verweis auf die „CloudTable“-Eigenschaft einer bestimmten Tabelle.
 

@@ -3,7 +3,7 @@ title: Referenz zu Überwachungsaktivitäten von Azure Active Directory (Azure A
 description: Hier finden Sie eine Übersicht über die Überwachungsaktivitäten, die in Ihren Überwachungsprotokollen in Azure Active Directory (Azure AD) protokolliert werden können.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/24/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaa60a7737b7781a21e23516d139332f10bdf448
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306001"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89231145"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenz zu Überwachungsaktivitäten von Azure AD
 
@@ -35,8 +35,8 @@ Die Architektur für die Berichterstellung in Azure AD umfasst die folgenden Kom
     - [Überwachungsprotokolle:](concept-audit-logs.md) Ermöglichen die Nachverfolgung sämtlicher Änderungen, die von verschiedenen Features in Azure AD vorgenommen wurden. 
     
 - **Sicherheitsberichte** 
-    - [Riskante Anmeldungen:](concept-risky-sign-ins.md) Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. 
-    - [Benutzer mit Risikomarkierung:](concept-user-at-risk.md) Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. 
+    - [Riskante Anmeldungen:](../identity-protection/overview-identity-protection.md) Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. 
+    - [Benutzer mit Risikomarkierung:](../identity-protection/overview-identity-protection.md) Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. 
 
 Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachungsprotokollen protokolliert werden können:
 
@@ -135,11 +135,11 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Anwendungsverwaltung|AdminPolicyDatas-SetResources|
 |Anwendungsverwaltung|AdminUserJourneys-GetResources|
 |Anwendungsverwaltung|AdminUserJourneys-RemoveResources|
-|Authentication|AdminUserJourneys-SetResources|
-|Authentication|Create IdentityProvider (IdentityProvider-Element erstellen)|
-|Authentication|Create V1 application (V1-Anwendung erstellen)|
-|Authentication|Create V2 application (V2-Anwendung erstellen)|
-|Authentication|Create a custom domains in the tenant (Benutzerdefinierte Domäne im Mandanten erstellen)|
+|Authentifizierung|AdminUserJourneys-SetResources|
+|Authentifizierung|Create IdentityProvider (IdentityProvider-Element erstellen)|
+|Authentifizierung|Create V1 application (V1-Anwendung erstellen)|
+|Authentifizierung|Create V2 application (V2-Anwendung erstellen)|
+|Authentifizierung|Create a custom domains in the tenant (Benutzerdefinierte Domäne im Mandanten erstellen)|
 |Authorization|Create a new AdminUserJourney (Neues AdminUserJourney-Element erstellen)|
 |Authorization|Create localized resource json (Lokalisierten JSON-Ressourcencode erstellen)|
 |Authorization|Create new Custom IDP (Neuen benutzerdefinierten IDP erstellen)|
@@ -370,8 +370,8 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Anwendungsverwaltung|Edit Terms Of Use (Nutzungsbedingungen bearbeiten)|
 |Anwendungsverwaltung|Publish Terms Of Use (Nutzungsbedingungen veröffentlichen)|
 |Anwendungsverwaltung|Unpublish Terms Of Use (Veröffentlichung der Nutzungsbedingungen aufheben)|
-|Anwendungsverwaltung|Add application SSL certificate (Anwendungs-SSL-Zertifikat hinzufügen)|
-|Anwendungsverwaltung|Delete SSL binding (SSL-Bindung löschen)|
+|Anwendungsverwaltung|TLS-/SSL-Zertifikat der Anwendung hinzufügen|
+|Anwendungsverwaltung|TLS-Bindung löschen|
 |Anwendungsverwaltung|Register connector (Connector registrieren)|
 |Anwendungsverwaltung|AdminPolicyDatas-RemoveResources|
 |Anwendungsverwaltung|AdminPolicyDatas-SetResources|

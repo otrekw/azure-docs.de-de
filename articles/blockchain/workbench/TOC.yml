@@ -5,7 +5,7 @@
   items:
     - name: Info zu Azure Blockchain Workbench
       href: overview.md
-- name: Lernprogramme
+- name: Tutorials
   expanded: true
   items:
     - name: Erstellen einer Blockchain-App
@@ -14,7 +14,7 @@
       href: use.md
 - name: Konzepte
   items:
-    - name: Architecture
+    - name: Aufbau
       href: architecture.md
     - name: Integrationsmuster
       href: integration-patterns.md
@@ -52,22 +52,24 @@
     - name: Messaging-API
       href: messages-overview.md
     - name: REST-API
-      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
+      href: /rest/api/azure-blockchain-workbench
 - name: Ressourcen
   items:
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: Codebeispiele
       href: 'https://github.com/Azure-Samples/blockchain'
-    - name: Community
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: /answers/topics/azure-blockchain-workbench.html
+    - name: Communityunterstützung
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
-    - name: Supportforum
-      href: 'https://aka.ms/workbenchforum'
+    - name: Stack Overflow-Support
+      href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-workbench'
     - name: Produktfeedback
       href: 'https://aka.ms/blockchainuservoice'
 - name: Lösungsvorlagen
   items:
     - name: Ethereum-PoA-Konsortium
       href: ../templates/ethereum-poa-deployment.md
-    - name: Hyperledger – Fabric-Konsortium
-      href: ../templates/hyperledger-fabric-consortium-blockchain.md
+    - name: 'Hyperledger Fabric-Konsortium: Azure Kubernetes Service'
+      href: ../templates/hyperledger-fabric-consortium-azure-kubernetes-service.md

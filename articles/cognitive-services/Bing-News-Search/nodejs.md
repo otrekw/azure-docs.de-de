@@ -8,19 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 501ae6107232287011388bb67e64a1ae3fe5f7e3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.custom: seodec2018, devx-track-js
+ms.openlocfilehash: a3241fc72fc1add8381f7681b4df6df9173683ac
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423729"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351315"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit Node.js und der REST-API der Bing-News-Suche
 
-Verwenden Sie diesen Schnellstart, um die Bing-Bildersuche-API zum ersten Mal aufzurufen und eine JSON-Antwort zu erhalten. Diese einfache JavaScript-Anwendung sendet eine Suchabfrage an die API und zeigt die Rohdatenergebnisse an.
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Bing-News-Suche-API zum ersten Mal aufzurufen. Diese einfache JavaScript-Anwendung sendet eine Suchabfrage an die API und zeigt die JSON-Antwort an.
 
 Diese Anwendung ist zwar in JavaScript geschrieben und wird in Node.js ausgeführt, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
 
@@ -29,12 +34,9 @@ Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Sam
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Die aktuelle Version von [Node.js](https://nodejs.org/en/download/)
-
-* Die [JavaScript-Bibliothek für Anforderungen](https://github.com/request/request)
+* Die [JavaScript-Bibliothek für Anforderungen](https://github.com/request/request).
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
-
-Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 
 ## <a name="create-and-initialize-the-application"></a>Erstellen und Initialisieren der Anwendung
 
@@ -45,7 +47,8 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
     let https = require('https');
     ```
 
-2. Erstellen Sie Variablen für den API-Endpunkt, den Bildersuche-API-Pfad, Ihren Abonnementschlüssel und einen Suchbegriff.
+2. Erstellen Sie Variablen für den API-Endpunkt, den News-API-Suchpfad, Ihren Abonnementschlüssel und einen Suchbegriff. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird. 
+
     ```javascript
     let subscriptionKey = 'enter key here';
     let host = 'api.cognitive.microsoft.com';
@@ -55,38 +58,42 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
 
 ## <a name="handle-and-parse-the-response"></a>Verarbeiten und Analysieren der Antwort
 
-1. Definieren Sie eine Funktion mit der Bezeichnung `response_handler`, die einen HTTP-Aufruf, `response`, als Parameter verwendet. Führen Sie innerhalb dieser Funktion die folgenden Schritte aus:
+1. Definieren Sie eine Funktion mit der Bezeichnung `response_handler`, die einen HTTP-Aufruf (`response`) als Parameter verwendet. 
 
-    1. Definieren Sie eine Variable, die den Text der JSON-Antwort enthält.  
-        ```javascript
-        let response_handler = function (response) {
-            let body = '';
-        };
-        ```
+   In den folgenden Schritten fügen Sie dieser Funktion Code hinzu.
 
-    2. Speichern Sie den Text der Antwort, wenn das Flag **data** aufgerufen wird.
-        ```javascript
-        response.on('data', function (d) {
-            body += d;
-        });
-        ```
+2. Definieren Sie eine Variable, die den Text der JSON-Antwort enthält.  
 
-    3. Wenn ein Flag vom Typ **end** angezeigt wird, können der JSON-Code und Header angezeigt werden.
+    ```javascript
+    let response_handler = function (response) {
+        let body = '';
+    };
+    ```
 
-        ```javascript
-        response.on('end', function () {
-            console.log('\nRelevant Headers:\n');
-            for (var header in response.headers)
-                // header keys are lower-cased by Node.js
-                if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                     console.log(header + ": " + response.headers[header]);
-            body = JSON.stringify(JSON.parse(body), null, '  ');
-            console.log('\nJSON Response:\n');
-            console.log(body);
-         });
-        ```
+3. Speichern Sie den Text der Antwort, wenn das Flag `data` aufgerufen wird.
 
-## <a name="json-response"></a>JSON-Antwort
+    ```javascript
+    response.on('data', function (d) {
+        body += d;
+    });
+    ```
+
+3. Wenn ein Flag vom Typ `end` angezeigt wird, können der JSON-Code und Header angezeigt werden.
+
+    ```javascript
+    response.on('end', function () {
+        console.log('\nRelevant Headers:\n');
+        for (var header in response.headers)
+            // header keys are lower-cased by Node.js
+            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                 console.log(header + ": " + response.headers[header]);
+        body = JSON.stringify(JSON.parse(body), null, '  ');
+        console.log('\nJSON Response:\n');
+        console.log(body);
+     });
+    ```
+
+## <a name="example-json-response"></a>JSON-Beispielantwort
 
 Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 

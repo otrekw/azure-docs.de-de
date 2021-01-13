@@ -1,28 +1,28 @@
 ---
-title: Migrieren von Azure-Integrationsressourcen von Azure Deutschland zu Azure weltweit
+title: Migrieren von Azure-Integrationsressourcen – Azure Deutschland zu Azure weltweit
 description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Integrationsressourcen von Azure Deutschland zu Azure weltweit.
+ms.topic: article
+ms.date: 10/16/2020
 author: gitralf
-services: germany
-cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 8/15/2018
-ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 1de27216085ae304ea61a2c731a7be4a19d2f63a
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b70d425aa54267d13ce25cb7113898b6bb9da0d4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272550"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95998116"
 ---
 # <a name="migrate-integration-resources-to-global-azure"></a>Migrieren von Integrationsressourcen zu Azure weltweit
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 Dieser Artikel enthält Informationen dazu, wie Sie Azure-Integrationsressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
 ## <a name="service-bus"></a>Service Bus
 
-Azure Service Bus-Dienste haben keine Datenexport- und -importfunktionen. Um Service Bus-Ressourcen von Azure Deutschland zu Azure weltweit zu migrieren, können Sie die Ressourcen [als eine Azure Resource Manager-Vorlage](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates) exportieren. Passen Sie dann die exportierte Vorlage für Azure weltweit an, und erstellen Sie die Ressourcen erneut.
+Azure Service Bus-Dienste haben keine Datenexport- und -importfunktionen. Um Service Bus-Ressourcen von Azure Deutschland zu Azure weltweit zu migrieren, können Sie die Ressourcen [als eine Azure Resource Manager-Vorlage](../azure-resource-manager/templates/export-template-portal.md) exportieren. Passen Sie dann die exportierte Vorlage für Azure weltweit an, und erstellen Sie die Ressourcen erneut.
 
 > [!NOTE]
 > Bei einem Exportieren einer Resource Manager-Vorlage werden die Daten (z. B. Nachrichten) nicht kopiert. Bei einem Exportieren einer Vorlage werden nur die Metadaten neu erstellt.
@@ -54,7 +54,7 @@ New-AzServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace
 ```
 
 ```powershell
-New-AzServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace> -Queue <queuename> -Name <name of Authorization rule> -RegenerateKey <PrimaryKey/SecondaryKey> -KeyValue <string - key value>
+New-AzServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace> -Queue <queuename> -Name <name of Authorization rule> -RegenerateKey <PrimaryKey/SecondaryKey> -KeyValue <string - key value>
 ```
 
 ```powershell
@@ -72,7 +72,7 @@ New-AzServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace
 Endpoint=sb://myBFProdnamespaceName.**servicebus.cloudapi.de**/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXx=
 ```
 
-**Azure weltweit**
+**Globale Azure-Umgebung**
 
 ```cmd
 Endpoint=sb://myProdnamespaceName.**servicebus.windows.net**/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXx=
@@ -80,17 +80,17 @@ Endpoint=sb://myProdnamespaceName.**servicebus.windows.net**/;SharedAccessKeyNam
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/) durcharbeiten.
-- Machen Sie sich damit vertraut, wie Sie [Resource Manager-Vorlagen exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Service Bus](../service-bus-messaging/index.yml) durcharbeiten.
+- Machen Sie sich damit vertraut, wie Sie [Resource Manager-Vorlagen exportieren](../azure-resource-manager/templates/export-template-portal.md), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/management/overview.md).
 - Lesen Sie die [Übersicht über Service Bus](../service-bus-messaging/service-bus-messaging-overview.md).
 
 ## <a name="logic-apps"></a>Logic Apps
 
-Der Azure Logic Apps-Dienst ist in Azure Deutschland nicht verfügbar. Azure Scheduler (verfügbar) ist allerdings bald veraltet. Verwenden Sie Logic Apps, um Planungsaufträge in Azure weltweit zu erstellen.
+Azure Logic Apps ist in Azure Deutschland nicht verfügbar. Sie können aber Planungsaufträge stattdessen mithilfe von Logic Apps im globalen Azure erstellen. Azure Scheduler war zwar in Azure Deutschland verfügbar, wird jedoch eingestellt.
 
 Weitere Informationen finden Sie unter:
 
-- Machen Sie sich mit Funktionen in Azure Logic Apps vertraut, indem Sie die [Logic Apps-Tutorials](https://docs.microsoft.com/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow) durcharbeiten.
+- Erfahren Sie mehr, indem Sie die [Tutorials zu Azure Logic Apps](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md) durcharbeiten.
 - Lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -99,12 +99,12 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 
 - [Compute](./germany-migration-compute.md)
 - [Netzwerk](./germany-migration-networking.md)
-- [Speicher](./germany-migration-storage.md)
+- [Storage](./germany-migration-storage.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
 - [Analyse](./germany-migration-analytics.md)
 - [IoT](./germany-migration-iot.md)
 - [Identität](./germany-migration-identity.md)
-- [Sicherheit](./germany-migration-security.md)
+- [Security](./germany-migration-security.md)
 - [Verwaltungstools](./germany-migration-management-tools.md)
 - [Medien](./germany-migration-media.md)

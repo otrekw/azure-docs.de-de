@@ -2,26 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit Confluence SAML SSO by Microsoft | Microsoft-Dokumentation'
 description: In diesem Artikel erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Confluence SAML SSO by Microsoft konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1ad1cf90-52bc-4b71-ab2b-9a5a1280fb2d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1384a8c9cfc4da9e8757c26bdb3e92defdb73708
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: adee491625cec3b4a22cc7b3d1f3ba17595d9e87
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743673"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673249"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit Confluence SAML SSO by Microsoft
 
@@ -31,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie Confluence SAML SSO by Microsoft in Azu
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Confluence SAML SSO by Microsoft anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="description"></a>Beschreibung:
 
@@ -53,6 +48,9 @@ Um die Azure AD-Integration mit Confluence SAML SSO by Microsoft konfigurieren z
 > [!NOTE]
 > Zum Testen der Schritte in diesem Tutorial wird empfohlen, keine Produktionsumgebung von Confluence zu verwenden. Testen Sie die Integration zuerst in der Entwicklungs- oder Stagingumgebung der Anwendung, und verwenden Sie erst danach die Produktionsumgebung.
 
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
+
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
@@ -64,20 +62,8 @@ Für die ersten Schritte benötigen Sie Folgendes:
 Zum aktuellen Zeitpunkt werden die folgenden Confluence-Versionen unterstützt:
 
 - Confluence: 5.0 bis 5.10
-- Confluence: 6.0.1
-- Confluence: 6.1.1
-- Confluence: 6.2.1
-- Confluence: 6.3.4
-- Confluence: 6.4.0
-- Confluence: 6.5.0
-- Confluence: 6.6.2
-- Confluence: 6.7.0
-- Confluence: 6.8.1
-- Confluence: 6.9.0
-- Confluence: 6.10.0
-- Confluence: 6.11.0
-- Confluence: 6.12.0
-- Confluence: 6.15.3
+- Confluence: 6.0.1 bis 6.15.9
+- Confluence: 7.0.1 bis 7.9.3
 
 > [!NOTE]
 > Beachten Sie, dass unser Confluence-Plug-In auch unter Ubuntu Version 16.04 funktioniert.
@@ -147,7 +133,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -173,11 +159,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf die **Add-Ons**.
 
-    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon1.png)
+    ![Screenshot, in dem das „Zahnrad“-Symbol ausgewählt und im Dropdownmenü die Option „Add-ons“ hervorgehoben ist](./media/confluencemicrosoft-tutorial/addon1.png)
 
 1. Laden Sie das Plug-In aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56503) herunter. Laden Sie das von Microsoft bereitgestellte Plug-In manuell mithilfe des Menüs **Add-On hochladen** hoch. Das Herunterladen von Plug-Ins wird unter [Microsoft-Servicevertrag](https://www.microsoft.com/servicesagreement/) beschrieben.
 
-    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon12.png)
+    ![Screenshot der Seite „Manage add-ons“ mit ausgewählter Aktion „Upload add-on“](./media/confluencemicrosoft-tutorial/addon12.png)
 
 1. Führen Sie die folgenden Schritte aus, um das Reverseproxy- oder Lastenausgleichsszenario von Confluence auszuführen:
 
@@ -188,19 +174,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
+    ![Screenshot der Datei „server.xml“, in der das Attribut zum „Connector“-Port hinzugefügt ist](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
 
     b. Ändern Sie **Basis-URL** in **Systemeinstellungen** gemäß Proxy/Lastenausgleich.
 
-    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
+    ![Screenshot der Seite „Administration – Settings“ mit hervorgehobener „Base URL“](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
 
 1. Sobald das Plug-In installiert ist, wird es im Abschnitt **Add-Ons verwalten** unter **User Installed** (Vom Benutzer installiert) angezeigt. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
 
-    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon13.png)
+    ![Screenshot des Abschnitts „User Installed“ mit hervorgehobener Schaltfläche „Configure“](./media/confluencemicrosoft-tutorial/addon15.png)
 
 1. Führen Sie auf der Konfigurationsseite die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon53.png)
+    ![Screenshot mit der Konfigurationsseite für einmaliges Anmelden](./media/confluencemicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Stellen Sie sicher, dass der App nur ein Zertifikat zugeordnet wird, um einen Fehler bei der Auflösung der Metadaten zu vermeiden. Bei mehreren Zertifikaten erhält der Administrator nach dem Auflösen der Metadaten eine Fehlermeldung.
@@ -210,6 +196,8 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     1. Kopieren Sie die Werte von **Bezeichner, Antwort-URL und Anmelde-URL**. Fügen Sie sie anschließend in die Textfelder **Bezeichner, Antwort-URL und Anmelde-URL** bzw. im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ein.
 
     1. Geben Sie in **Login Button Name** (Name der Anmeldeschaltfläche) den Schaltflächennamen ein, der auf dem Anmeldebildschirm für Ihre Benutzer angezeigt werden soll.
+
+    1. Geben Sie unter **Login Button Description** (Beschreibung der Anmeldeschaltfläche) die Schaltflächenbeschreibung ein, die auf dem Anmeldebildschirm für Ihre Benutzer angezeigt werden soll.
 
     1. Wählen Sie unter **SAML User ID Locations** (Speicherorte der SAML-Benutzer-ID) entweder die Option **User ID is in the NameIdentifier element of the Subject statement** (Benutzer-ID ist im NameIdentifier-Element der Subject-Anweisung enthalten) oder **User ID is in an Attribute element** (Benutzer-ID ist in einem Attribute-Element enthalten) aus.  Diese ID muss die Confluence-Benutzer-ID sein. Wenn die Benutzer-ID nicht übereinstimmt, ist eine Anmeldung nicht möglich. 
 
@@ -233,7 +221,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     1. Klicken Sie auf die Schaltfläche **Save**, um die Änderungen zu speichern.
 
        > [!NOTE]
-       > Weitere Informationen zur Installation und Problembehandlung finden Sie im [Administratorhandbuch zum MS Confluence SSO-Connector](../ms-confluence-jira-plugin-adminguide.md). Es enthält außerdem [FAQs](../ms-confluence-jira-plugin-faq.md) zur weiteren Unterstützung.
+       > Weitere Informationen zur Installation und Problembehandlung finden Sie im [Administratorhandbuch zum MS Confluence SSO-Connector](./ms-confluence-jira-plugin-adminguide.md). Es enthält außerdem [FAQs](./ms-confluence-jira-plugin-adminguide.md) zur weiteren Unterstützung.
 
 ### <a name="create-confluence-saml-sso-by-microsoft-test-user"></a>Erstellen eines Confluence SAML SSO by Microsoft-Testbenutzers
 
@@ -249,7 +237,7 @@ Um es Azure AD-Benutzern zu ermöglichen, sich auf dem lokalen Confluence-Server
 
 1. Klicken Sie im Abschnitt „Benutzer“ auf die Registerkarte **Benutzer hinzufügen**. Führen Sie auf der Dialogfeldseite **Benutzer hinzufügen** die folgenden Schritte aus:
 
-    ![Mitarbeiter hinzufügen](./media/confluencemicrosoft-tutorial/user2.png)
+    ![Screenshot des Fensters „Confluence administration“ mit ausgewählter Registerkarte „Add Users“ und eingegebenen „Add a User“-Informationen](./media/confluencemicrosoft-tutorial/user2.png)
 
     a. Geben Sie im Textfeld **Username** (Benutzername) die E-Mail-Adresse des Benutzers ein, etwa von B. Simon.
 
@@ -267,14 +255,14 @@ Um es Azure AD-Benutzern zu ermöglichen, sich auf dem lokalen Confluence-Server
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Confluence SAML SSO by Microsoft“ klicken, sollten Sie automatisch bei Ihrer Confluence SAML SSO by Microsoft-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Confluence SAML SSO by Microsoft“ klicken, sollten Sie automatisch bei Ihrer Confluence SAML SSO by Microsoft-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Confluence SAML SSO by Microsoft mit Azure AD ausprobieren](https://aad.portal.azure.com/)

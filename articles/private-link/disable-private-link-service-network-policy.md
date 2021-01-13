@@ -2,17 +2,17 @@
 title: 'Deaktivieren von Netzwerkrichtlinien für die Quell-IP-Adresse eines Azure Private Link-Diensts '
 description: Erfahren Sie, wie Sie Netzwerkrichtlinien für Azure Private Link deaktivieren.
 services: private-link
-author: KumudD
+author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: b2003b9c7520cfa3e82576fd3430063c20d452ff
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.author: allensu
+ms.openlocfilehash: 1062f126da8be6b37f6b52eee520425b3edcde16
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104577"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84744339"
 ---
 # <a name="disable-network-policies-for-private-link-service-source-ip"></a>Deaktivieren von Netzwerkrichtlinien für die Quell-IP-Adresse eines Private Link-Diensts
 
@@ -24,15 +24,15 @@ Befolgen Sie die nachfolgenden Schritte, um Netzwerkrichtlinien eines Private Li
 
 ## <a name="using-azure-powershell"></a>Verwenden von Azure PowerShell
 In diesem Abschnitt wird beschrieben, wie Sie Subnetzrichtlinien für private Endpunkte mit Azure PowerShell deaktivieren können.
+Ersetzen Sie im Code „default“ durch den Namen des virtuellen Subnetzes.
 
 ```azurepowershell
+$virtualSubnetName = "default"
 $virtualNetwork= Get-AzVirtualNetwork `
   -Name "myVirtualNetwork" ` 
-  -ResourceGroupName "myResourceGroup"  
+  -ResourceGroupName "myResourceGroup"
    
-($virtualNetwork ` 
-  | Select -ExpandProperty subnets ` 
-  | Where-Object  {$_.Name -eq 'default'} ).privateLinkServiceNetworkPolicies = "Disabled" 
+($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq $virtualSubnetName} ).privateLinkServiceNetworkPolicies = "Disabled"  
  
 $virtualNetwork | Set-AzVirtualNetwork 
 ```

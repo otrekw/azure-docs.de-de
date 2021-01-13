@@ -1,21 +1,22 @@
 ---
-title: VM-Momentaufnahmenerweiterung unter Linux für Azure Backup | Microsoft-Dokumentation
-description: Durchführen von anwendungskonsistenten Sicherungen des virtuellen Computers aus Azure Backup mit der VM-Momentaufnahmenerweiterung
+title: VM-Momentaufnahmenerweiterung unter Linux für Azure Backup
+description: Durchführen von anwendungskonsistenten Sicherungen des virtuellen Computers aus Azure Backup mit der VM-Momentaufnahmenerweiterung unter Linux
 services: backup, virtual-machines-linux
 documentationcenter: ''
-author: trinadhk
+author: trinadhkotturu
 manager: gwallace
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: e0e959647231fb87c023dcb5c4c48a205259de74
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2bf653bb42351c9ab4811fde695c8f821fd42d7c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705844"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966767"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>VM-Momentaufnahmenerweiterung unter Linux für Azure Backup
 
@@ -23,14 +24,12 @@ ms.locfileid: "67705844"
 
 Azure Backup bietet Unterstützung für die Sicherung von Workloads von einer lokalen Umgebung in der Cloud sowie die Sicherung von Cloudressourcen in einem Recovery Services-Tresor. Azure Backup führt mithilfe der VM-Momentaufnahmenerweiterung eine anwendungskonsistente Sicherung der virtuellen Azure-Computer durch, ohne dass die VM heruntergefahren werden muss. Die VM-Momentaufnahmenerweiterung unter Linux wird von Microsoft im Rahmen des Azure Backup-Diensts veröffentlicht und unterstützt. Azure Backup installiert die Erweiterung als Teil der ersten geplanten Sicherung, die nach der Aktivierung der Sicherung ausgelöst wird. Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen, Konfigurationen und Bereitstellungsoptionen für die VM-Momentaufnahmenerweiterung.
 
+Die VMSnapshot-Erweiterung wird im Azure-Portal nur für nicht verwaltete VMs angezeigt.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="operating-system"></a>Betriebssystem
 Eine Liste der unterstützten Betriebssysteme finden Sie unter [Von Azure Backup unterstützte Betriebssysteme](../../backup/backup-azure-arm-vms-prepare.md#before-you-start).
-
-### <a name="internet-connectivity"></a>Internetkonnektivität
-
-Um die VM-Momentaufnahmenerweiterung verwenden zu können, muss der virtuelle Zielcomputer bei der Sicherung eines virtuellen Computers mit dem Internet verbunden sein.
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
@@ -64,12 +63,12 @@ Der folgende JSON-Code zeigt das Schema für die VM-Momentaufnahmenerweiterung. 
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| NAME | Wert/Beispiel | Datentyp |
+| Name | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | Zeichenfolge |
 | commandStartTimeUTCTicks | 6.36458E+17 | Zeichenfolge |
-| locale | en-us | Zeichenfolge |
+| locale | de-de | Zeichenfolge |
 | objectStr | Encoding of sas uri array- "blobSASUri": ["https:\/\/sopattna5365.blob.core.windows.net\/vhds\/vmubuntu1404ltsc201652903941.vhd?sv=2014-02-14&sr=b&sig=TywkROXL1zvhXcLujtCut8g3jTpgbE6JpSWRLZxAdtA%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", "https:\/\/sopattna8461.blob.core.windows.net\/vhds\/vmubuntu1404ltsc-20160629-122418.vhd?sv=2014-02-14&sr=b&sig=5S0A6YDWvVwqPAkzWXVy%2BS%2FqMwzFMbamT5upwx05v8Q%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", "https:\/\/sopattna8461.blob.core.windows.net\/bootdiagnostics-vmubuntu1-deb58392-ed5e-48be-9228-ff681b0cd3ee\/vmubuntu1404ltsc-20160629-122541.vhd?sv=2014-02-14&sr=b&sig=X0Me2djByksBBMVXMGIUrcycvhQSfjYvqKLeRA7nBD4%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", "https:\/\/sopattna5365.blob.core.windows.net\/vhds\/vmubuntu1404ltsc-20160701-163922.vhd?sv=2014-02-14&sr=b&sig=oXvtK2IXCNqWv7fpjc7TAzFDpc1GoXtT7r%2BC%2BNIAork%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", "https:\/\/sopattna5365.blob.core.windows.net\/vhds\/vmubuntu1404ltsc-20170705-124311.vhd?sv=2014-02-14&sr=b&sig=ZUM9d28Mvvm%2FfrhJ71TFZh0Ni90m38bBs3zMl%2FQ9rs0%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw"] | Zeichenfolge |
 | logsBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | Zeichenfolge |
 | statusBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | Zeichenfolge |

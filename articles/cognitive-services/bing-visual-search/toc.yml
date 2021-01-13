@@ -1,5 +1,5 @@
 - name: Visuelle Bing-Suche – Dokumentation
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Übersicht
   items:
     - name: Was ist die API für die visuelle Bing-Suche?
@@ -12,7 +12,7 @@
     - name: REST-API
       expanded: true
       items:
-        - name: 'Verwenden von C#'
+        - name: Verwenden von C#
           href: quickstarts/csharp.md
         - name: Verwenden von Java
           href: quickstarts/java.md
@@ -24,23 +24,21 @@
           href: quickstarts/ruby.md
         - name: Verwenden von Go
           href: quickstarts/go.md
-    - name: SDK
+    - name: Clientbibliothek
       expanded: true
       items:
-        - name: 'Verwenden von C#'
-          href: visual-search-sdk-c-sharp.md
-        - name: Verwenden von Node.js
-          href: visual-search-sdk-node.md
-        - name: Verwenden von Python
-          href: visual-search-sdk-python.md
-        - name: Verwenden von Java
-          href: visual-search-sdk-java.md
-- name: Lernprogramme
+        - name: Clientbibliotheken der visuellen Bing-Suche
+          href: ./quickstarts/client-libraries.md
+- name: Tutorials
   items:
     - name: Hochladen eines Bilds
       href: tutorial-visual-search-image-upload.md
     - name: Zuschneiden und Durchsuchen eines Bildbereichs
       href: tutorial-visual-search-crop-area-results.md
+    - name: Suchen ähnlicher Bilder in vorherigen Suchvorgängen
+      href: tutorial-visual-search-insights-token.md
+    - name: Erstellen einer Einzelseiten-Web-App
+      href: tutorial-bing-visual-search-single-page-app.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -63,36 +61,34 @@
     - name: Ändern der Größe und Zuschneiden von Miniaturansichten
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md
-    - name: Suchen nach einem Bild mithilfe von Bildauswertungstoken
-      href: tutorial-visual-search-insights-token.md
-    - name: Erstellen einer Einzelseiten-Web-App
-      href: tutorial-bing-visual-search-single-page-app.md
 - name: Verweis
   items:
     - name: REST-API v7
-      href: 'https://aka.ms/bingvisualsearchreferencedoc'
+      href: /rest/api/cognitiveservices/bingvisualsearch/images/visualsearch
     - name: SDKs
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/cognitiveservices/bing-visual-search-readme?view=azure-dotnet
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable'
+          href: /java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python'
+          href: /python/api/azure-cognitiveservices-search-visualsearch/?view=azure-python
+        - name: Node.js
+          href: /javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest
     - name: Verwenden und Anzeigen von Anforderungen
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
 - name: Ressourcen
   items:
-    - name: Sprach- und Regionsunterstützung
+    - name: Sprachunterstützung
       href: language-support.md
     - name: Abrufen des kostenlosen Zugriffsschlüssels
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: Testen
       href: 'https://aka.ms/bingvisualsearchtryforfree'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/bing-search'
     - name: Aussagen von Benutzern
       href: 'https://cognitive.uservoice.com/forums/555907-bing-search'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

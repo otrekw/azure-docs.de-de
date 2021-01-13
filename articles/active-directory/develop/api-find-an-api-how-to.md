@@ -1,26 +1,21 @@
 ---
-title: Suchen einer bestimmten API, die für eine benutzerdefinierte Anwendung benötigt wird | Microsoft-Dokumentation
+title: Suchen nach einer API für eine benutzerdefiniert entwickelte App | Azure
 description: Konfigurieren der Berechtigungen, die für den Zugriff auf eine bestimmte API in einer benutzerdefinierten Azure AD-Anwendung benötigt werden
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2492a9346585698132e7fd9cfcde068ffd60ebc5
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8c3d79211ce594ec4c175aa6f6b5f8df3a7c4ba8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476165"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88115542"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>Suchen einer bestimmten API, die für eine benutzerdefinierte Anwendung benötigt wird
 
@@ -36,6 +31,4 @@ Wenn Sie Ihrer App-Registrierung Berechtigungen hinzufügen, können Sie für ve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
--   [Grundlegendes zum Azure Active Directory-Anwendungsmanifest](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)
-
-
+- [Grundlegendes zum Azure Active Directory-Anwendungsmanifest](./reference-app-manifest.md)

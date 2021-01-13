@@ -1,27 +1,27 @@
 ---
-title: Wiederherstellen oder dauerhaftes Löschen eines kürzlich gelöschten Benutzers – Azure Active Directory | Microsoft-Dokumentation
+title: Wiederherstellen oder dauerhaftes Entfernen gelöschter Benutzer – Azure AD
 description: Vorgehensweise beim Anzeigen von wiederherstellbaren Benutzern, Wiederherstellen eines gelöschten Benutzers oder endgültigen Löschen eines Benutzers mithilfe von Azure Active Directory.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
-ms.date: 04/01/2018
+ms.topic: how-to
+ms.date: 10/23/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9864634020ad115a48bdb70a6736733919d0f0d3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bd4d42e1cafa58aaf6a47188c9e86c24ac175047
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561670"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514388"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Wiederherstellen oder Entfernen eines kürzlich gelöschten Benutzers mit Azure Active Directory
-Nachdem Sie einen Benutzer gelöscht haben, verbleibt das Konto 30 Tage lang im angehaltenen Zustand. Während dieses Zeitfensters von 30 Tagen kann das Benutzerkonto mit allen zugehörigen Eigenschaften wiederhergestellt werden. Nachdem die 30 Tage verstrichen sind, wird der Benutzer automatisch und endgültig gelöscht.
+Nachdem Sie einen Benutzer gelöscht haben, verbleibt das Konto 30 Tage lang im angehaltenen Zustand. Während dieses Zeitfensters von 30 Tagen kann das Benutzerkonto mit allen zugehörigen Eigenschaften wiederhergestellt werden. Nachdem die 30 Tage verstrichen sind, wird der permanente Löschvorgang automatisch gestartet.
 
 Sie können Ihre wiederherstellbaren Benutzer anzeigen, einen gelöschten Benutzer wiederherstellen oder einen Benutzer endgültig löschen, indem Sie im Azure-Portal Azure Active Directory (Azure AD) verwenden.
 
@@ -77,10 +77,10 @@ Sie können einen Benutzer endgültig aus Ihrer Organisation löschen, ohne auf 
 
 2. Wählen Sie **Endgültig löschen** aus.
 
-    ![Seite „Benutzer – Gelöschte Benutzer“ mit hervorgehobener Option „Endgültig löschen“](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
+    ![Seite „Benutzer – Gelöschte Benutzer“ mit hervorgehobener Option „Benutzer löschen“](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie Ihre Benutzer wiederhergestellt oder gelöscht haben, können Sie die folgenden grundlegenden Prozesse ausführen:
+Nachdem Sie die Benutzer wiederhergestellt oder gelöscht haben, können Sie folgenden Aktionen ausführen:
 
 - [Hinzufügen oder Löschen von Benutzern](add-users-azure-active-directory.md)
 
@@ -88,6 +88,6 @@ Nachdem Sie Ihre Benutzer wiederhergestellt oder gelöscht haben, können Sie di
 
 - [Hinzufügen oder Ändern von Profilinformationen](active-directory-users-profile-azure-portal.md)
 
-- [Hinzufügen von Gastbenutzern aus einer anderen Organisation](../b2b/what-is-b2b.md)
+- [Hinzufügen von Gastbenutzern aus einer anderen Organisation](../external-identities/what-is-b2b.md)
 
-Weitere Informationen zu anderen verfügbaren Aufgaben der Benutzerverwaltung finden Sie in der [Dokumentation zur Azure AD-Benutzerverwaltung](../users-groups-roles/index.yml).
+Weitere Informationen zu anderen verfügbaren Aufgaben der Benutzerverwaltung finden Sie in der [Dokumentation zur Azure AD-Benutzerverwaltung](../enterprise-users/index.yml).

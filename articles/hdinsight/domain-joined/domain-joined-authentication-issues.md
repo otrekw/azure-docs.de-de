@@ -1,18 +1,18 @@
 ---
 title: Authentifizierungsprobleme in Azure HDInsight
 description: Authentifizierungsprobleme in Azure HDInsight
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/09/2019
-ms.openlocfilehash: 3d2ba5965fef19a36faa8b9bbef235fd4117c20f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 08/24/2020
+ms.openlocfilehash: 9f10597023314aed8640ee5a7499a77f952c3694
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71071954"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284415"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Authentifizierungsprobleme in Azure HDInsight
 
@@ -82,7 +82,7 @@ Warten Sie ungefähr 30 Minuten, und beenden Sie alle Anwendungen, die mögliche
 
 ---
 
-## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant oder unauthorized_client, 50053
+## <a name="invalid_grant-or-unauthorized_client-50053-2"></a>invalid_grant oder unauthorized_client, 50053 (#2)
 
 ### <a name="issue"></a>Problem
 
@@ -154,7 +154,7 @@ Möglichkeiten zur Ermittlung des `sAMAccountName`:
 
 * Wenn Sie sich als lokaler Ambari-Administrator bei Ambari anmelden können, sehen Sie sich die Liste der Benutzer an.
 
-* Wenn Sie über einen [in die Domäne eingebundenen Windows-Computer](../../active-directory-domain-services/manage-domain.md) verfügen, können Sie die Windows AD-Standardtools zum Browsen verwenden. Hierfür ist ein funktionierendes Konto in der Domäne erforderlich.
+* Wenn Sie über einen [in die Domäne eingebundenen Windows-Computer](../../active-directory-domain-services/tutorial-create-management-vm.md) verfügen, können Sie die Windows AD-Standardtools zum Browsen verwenden. Hierfür ist ein funktionierendes Konto in der Domäne erforderlich.
 
 * Im Hauptknoten können Sie mithilfe von SAMBA-Befehlen suchen. Dies erfordert eine gültige Kerberos-Sitzung (erfolgreiches kinit). net ads search "(userPrincipalName=bob*)"
 
@@ -194,12 +194,24 @@ Stellen Sie sicher, dass Sie sich mit dem Benutzernamen, dessen Identität zum A
 
 ---
 
+## <a name="error-fetching-access-token"></a>Fehler beim Abrufen des Zugriffstokens
+
+### <a name="issue"></a>Problem
+
+Benutzer erhält Fehlermeldung `Error fetching access token`.
+
+### <a name="cause"></a>Ursache
+
+Dieser Fehler tritt zeitweilig auf, wenn Benutzer versuchen, mithilfe von ACLs auf ADLS Gen2 zuzugreifen, und das Kerberos-Token abgelaufen ist.
+
+### <a name="resolution"></a>Lösung
+
+* Bereinigen Sie für Azure Data Lake Storage Gen1 den Browsercache, und melden Sie sich erneut bei Ambari an.
+
+* Führen Sie für Azure Data Lake Storage Gen2 `/usr/lib/hdinsight-common/scripts/RegisterKerbTicketAndOAuth.sh <upn>` für den Benutzer aus, als der sich der Benutzer anmelden möchte.
+
+---
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
-
-* Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
-
-* Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
-
-* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

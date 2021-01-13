@@ -5,36 +5,174 @@
   items:
     - name: Was ist Azure Active Directory?
       href: active-directory-whatis.md
+    - name: Vergleichen von Azure AD mit ADDS
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Neuerungen in Azure Active Directory
       href: whats-new.md
+    - name: Neuigkeiten in Microsoft 365 Government
+      href: whats-new-microsoft-365-government.md
+    - name: Archiv für Neuerungen in Azure AD
+      href: whats-new-archive.md
 - name: Schnellstarts
+  expanded: true
   items:
     - name: Zugreifen auf das Portal und Erstellen eines Mandanten
       href: active-directory-access-create-new-tenant.md
     - name: Anzeigen Ihrer Gruppen mit zugewiesenen Mitgliedern
       href: active-directory-groups-view-azure-portal.md
 - name: Konzepte
+  expanded: true
   items:
-    - name: Identity Secure Score
-      href: identity-secure-score.md
-    - name: Gruppen und Zugriffsverwaltung
-      href: active-directory-manage-groups.md
-    - name: Gruppenbasierte Lizenzierung
-      href: active-directory-licensing-whatis-azure-portal.md
-    - name: Azure AD-Architektur
-      href: active-directory-architecture.md
-    - name: Standardbenutzerberechtigungen
-      href: users-default-permissions.md
-    - name: 'Bereitstellung 30, 90 und höher'
-      href: active-directory-deployment-checklist-p2.md
-    - name: Identitätsdatenspeicher für die EU
-      href: active-directory-data-storage-eu.md
-    - name: Neuigkeiten in Microsoft 365 Government
-      href: whats-new-microsoft-365-government.md
+    - name: Sicherheit
+      items:
+        - name: Sichere externe Zusammenarbeit
+          items:
+            - name: Übersicht über den sicheren externen Zugriff
+              href: secure-external-access-resources.md
+            - name: 1. Ermitteln des Sicherheitsstatus
+              href: 1-secure-access-posture.md
+            - name: 2. Ermitteln des aktuellen Status
+              href: 2-secure-access-current-state.md
+            - name: 3. Erstellen eines Sicherheitsplans
+              href: 3-secure-access-plan.md
+            - name: 4. Schützen des Zugriffs mit Gruppen
+              href: 4-secure-access-groups.md
+            - name: 5. Schützen des Zugriffs mit B2B-Zusammenarbeit
+              href: 5-secure-access-b2b.md
+            - name: 6. Schützen des Zugriffs mit Berechtigungsverwaltung
+              href: 6-secure-access-entitlement-managment.md
+            - name: 7. Schützen des Zugriffs mit bedingtem Zugriff
+              href: 7-secure-access-conditional-access.md
+            - name: 8. Schützen des Zugriffs mit Vertraulichkeitsbezeichnungen
+              href: 8-secure-access-sensitivity-labels.md
+            - name: '9. Schützen des Zugriffs auf Teams, SharePoint und OneDrive'
+              href: 9-secure-access-teams-sharepoint.md
+        - name: "Schützen von Microsoft\_365 vor lokalen Angriffen"
+          href: protect-m365-from-on-premises-attacks.md
+        - name: MFA aktivieren
+          href: concept-fundamentals-mfa-get-started.md
+        - name: Standardwerte für die Sicherheit
+          href: concept-fundamentals-security-defaults.md
+        - name: Blockieren älterer Authentifizierungsmethoden
+          href: concept-fundamentals-block-legacy-authentication.md
+        - name: Identity Secure Score
+          href: identity-secure-score.md
+        - name: Sichern von Remoteworkern
+          href: concept-secure-remote-workers.md
+    - name: Gruppen und Benutzer
+      items:
+        - name: Gruppen und Zugriffsverwaltung
+          href: active-directory-manage-groups.md
+        - name: Gruppenbasierte Lizenzierung
+          href: active-directory-licensing-whatis-azure-portal.md
+        - name: Standardbenutzerberechtigungen
+          href: users-default-permissions.md
+    - name: Aufbau
+      items:
+        - name: Azure AD-Architektur
+          href: active-directory-architecture.md
+        - name: Integrieren all Ihrer Apps in Azure AD
+          href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: Authentifizierungs- und Bereitstellungsprotokolle
+          items:
+            - name: Übersicht
+              href: auth-sync-overview.md
+            - name: Headerbasierte Authentifizierung
+              href: auth-header-based.md
+            - name: LDAP-Authentifizierung
+              href: auth-ldap.md
+            - name: "OAuth\_2.0-Authentifizierung"
+              href: auth-oauth2.md
+            - name: Open ID Connect-Authentifizierung
+              href: auth-oidc.md
+            - name: Kennwortbasierte Authentifizierung
+              href: auth-password-based-sso.md
+            - name: RADIUS-Authentifizierung
+              href: auth-radius.md
+            - name: Remotedesktopgateway-Authentifizierung
+              href: auth-remote-desktop-gateway.md
+            - name: SAML-Authentifizierung
+              href: auth-saml.md
+            - name: SSH-Authentifizierung
+              href: auth-ssh.md
+            - name: 'Windows-Authentifizierung: KCD'
+              href: auth-kcd.md
+            - name: Verzeichnissynchronisierung
+              href: sync-directory.md
+            - name: LDAP-Synchronisierung
+              href: sync-ldap.md
+            - name: SCIM-Synchronisierung
+              href: sync-scim.md
+        - name: Erstellen resilienter Lösungen
+          items:
+            - name: Übersicht
+              href: resilience-overview.md
+            - name: Infrastrukturleitfaden
+              items:
+                - name: Infrastrukturübersicht
+                  href: resilience-in-infrastructure.md
+                - name: Verwaltung von Anmeldeinformationen
+                  href: resilience-in-credentials.md
+                - name: Gerätestatus
+                  href: resilience-with-device-states.md
+                - name: Fortlaufende Zugriffsevaluierung
+                  href: resilience-with-continuous-access-evaluation.md
+                - name: Authentifizierung von externen Benutzern
+                  href: resilience-b2b-authentication.md
+                - name: Hybridauthentifizierung
+                  href: resilience-in-hybrid.md
+                - name: Anwendungsproxy
+                  href: resilience-on-premises-access.md
+            - name: Leitfaden zu Azure AD B2C
+              items:
+                - name: 'Azure AD B2C: Einführung in die Resilienz'
+                  href: resilience-b2c.md
+                - name: Ablauf für Endbenutzer
+                  href: resilient-end-user-experience.md
+                - name: Schnittstellen mit externen Prozessen
+                  href: resilient-external-processes.md
+                - name: Best Practices für Azure AD B2C-Entwickler
+                  href: resilience-b2c-developer-best-practices.md
+                - name: Überwachung und Analyse
+                  href: resilience-with-monitoring-alerting.md
+            - name: Leitfaden für die Anwendungsentwicklung
+              items:
+                - name: Entwicklung – Übersicht
+                  href: resilience-app-development-overview.md
+                - name: Clientanwendungen
+                  href: resilience-client-app.md
+                - name: Daemonanwendungen
+                  href: resilience-daemon-app.md
+        - name: In Azure verwendete Zertifizierungsstellen
+          href: certificate-authorities.md
+    - name: Bereitstellungshandbuch
+      items:
+        - name: 'Bereitstellung 30, 90 und höher'
+          href: active-directory-deployment-checklist-p2.md
+        - name: Azure Active Directory-Bereitstellungspläne
+          href: active-directory-deployment-plans.md
+    - name: Datenspeicher
+      items:
+        - name: Identitätsdatenspeicher für Europa
+          href: active-directory-data-storage-eu.md
+        - name: Identitätsdatenspeicher für Australien und Neuseeland
+          href: active-directory-data-storage-australia-newzealand.md
+    - name: Referenz zu Azure AD-Vorgängen
+      items:
+        - name: Einführung
+          href: active-directory-ops-guide-intro.md
+        - name: Identitäts- und Zugriffsverwaltung
+          href: active-directory-ops-guide-iam.md
+        - name: Authentifizierungsverwaltung
+          href: active-directory-ops-guide-auth.md
+        - name: Identitätsgovernance
+          href: active-directory-ops-guide-govern.md
+        - name: Operationen (Operations)
+          href: active-directory-ops-guide-ops.md
 - name: Anleitungen
   expanded: true
   items:
-    - name: Organisation
+    - name: Organization
       items:
         - name: Registrieren für Azure AD als Organisation
           href: sign-up-organization.md
@@ -44,6 +182,10 @@
           href: add-custom-domain.md
         - name: Hinzufügen eines Unternehmensbrandings
           href: customize-branding.md
+        - name: Konfigurieren von „Angemeldet bleiben?“
+          href: keep-me-signed-in.md
+        - name: Ermitteln der Mandanten-ID
+          href: active-directory-how-to-find-tenant.md
         - name: Zuordnen eines Azure-Abonnements
           href: active-directory-how-subscriptions-associated-directory.md
         - name: Hinzufügen Ihrer Datenschutzinformationen
@@ -62,6 +204,8 @@
           href: active-directory-groups-settings-azure-portal.md
         - name: Hinzufügen oder Entfernen von Gruppenbesitzern
           href: active-directory-accessmanagement-managing-group-owners.md
+        - name: Verwalten des Zugriffs auf Ressourcen mit Gruppen
+          href: active-directory-manage-groups.md
     - name: Benutzer
       items:
         - name: Hinzufügen oder Löschen eines neuen Benutzers
@@ -76,13 +220,10 @@
           href: license-users-groups.md
         - name: Wiederherstellen eines gelöschten Benutzers
           href: active-directory-users-restore.md
-- name: Ressourcen
+- name: Problembehandlung
+  expanded: true
   items:
     - name: Erhalten von Support für Azure Active Directory
       href: active-directory-troubleshooting-support-howto.md
     - name: Häufig gestellte Fragen zu Azure Active Directory
       href: active-directory-faq.md
-    - name: Azure Active Directory-Bereitstellungspläne
-      href: active-directory-deployment-plans.md
-    - name: Archiv für Neuerungen in Azure AD
-      href: whats-new-archive.md

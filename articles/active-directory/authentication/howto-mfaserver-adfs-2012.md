@@ -4,19 +4,19 @@ description: In diesem Artikel werden die ersten Schritte mit Azure Multi-Factor
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b38918dc6b80539ef8852aa408cda501958c9b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6fd1bf4f9c463973d70f5289f7a82f372d0156cb
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057446"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742544"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Konfigurieren von Azure Multi-Factor Authentication-Server zur Verwendung mit AD FS unter Windows Server
 
@@ -25,7 +25,13 @@ Wenn Sie Active Directory-Verbunddienste (AD FS) verwenden und Cloudressourcen o
 In diesem Artikel wird die Verwendung von Azure Multi-Factor Authentication-Server mit AD FS unter Windows Server 2012 R2 oder Windows Server 2016 beschrieben. Weitere Informationen finden Sie unter [Sichern von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server mit AD FS 2.0](howto-mfaserver-adfs-2.md).
 
 > [!IMPORTANT]
-> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
+> Seit dem 1. Juli 2019 bietet Microsoft für neue Bereitstellungen keine MFA-Server mehr an. Neue Kunden, die für die Anmeldung der Benutzer mehrstufige Authentifizierung anfordern möchten, sollten cloudbasierte Multi-Factor Authentication von Azure AD verwenden.
+>
+> Informationen zu den ersten Schritten mit der cloudbasierten MFA finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Wenn Sie die cloudbasierte MFA verwenden, finden Sie weitere Informationen unter [Sichern von Cloudressourcen mit Azure AD Multi-Factor Authentication und AD FS](howto-mfa-adfs.md).
+>
+> Bestandskunden, die ihren MFA-Server vor dem 1. Juli 2019 aktiviert haben, können weiterhin die neuesten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
 
 ## <a name="secure-windows-server-ad-fs-with-azure-multi-factor-authentication-server"></a>Schützen von AD FS unter Windows Server mit Azure Multi-Factor Authentication-Server
 
@@ -84,7 +90,7 @@ An diesem Punkt ist Multi-Factor Authentication-Server als zusätzlicher Authent
 Führen Sie die folgenden Schritte aus, um die Datei „MultiFactorAuthenticationAdfsAdapter.config“ zu bearbeiten:
 
 1. Legen Sie den Knoten **UseWebServiceSdk** auf **true** fest.  
-2. Legen Sie den Wert für **WebServiceSdkUrl** auf die URL des Multi-Factor Authentication-Webdienst-SDKs fest. Beispiel: *https:\/\/contoso.com/\<Zertifikatname>/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, wobei *\<Zertifikatname>* der Name Ihres Zertifikats ist.  
+2. Legen Sie den Wert für **WebServiceSdkUrl** auf die URL des Multi-Factor Authentication-Webdienst-SDKs fest. Beispiel: *https:\/\/contoso.com/\<certificatename>/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, wobei *\<certificatename>* der Name Ihres Zertifikats ist.  
 3. Bearbeiten Sie das Skript „Register-MultiFactorAuthenticationAdfsAdapter.ps1“, indem Sie `-ConfigurationFilePath &lt;path&gt;` am Ende des Befehls `Register-AdfsAuthenticationProvider` hinzufügen, wobei *&lt;path&gt;* der vollständige Pfad zur Datei „MultiFactorAuthenticationAdfsAdapter.config“ ist.
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>Konfigurieren des Webdienst-SDKs mit einem Benutzernamen und einem Kennwort
@@ -98,7 +104,7 @@ Das Webdienst-SDK kann auf zwei Arten konfiguriert werden: mit einem Benutzernam
 
 Falls Sie keine Kombination aus Benutzername und Kennwort verwenden möchten, gehen Sie wie folgt vor, um das Webdienst-SDK mit einem Clientzertifikat zu konfigurieren.
 
-1. Beziehen Sie für den Server mit dem Webdienst-SDK ein Clientzertifikat von einer Zertifizierungsstelle. Informationen dazu finden Sie [hier](https://technet.microsoft.com/library/cc770328.aspx).  
+1. Beziehen Sie für den Server mit dem Webdienst-SDK ein Clientzertifikat von einer Zertifizierungsstelle. Informationen dazu finden Sie [hier](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770328(v=ws.10)).  
 2. Importieren Sie das Clientzertifikat auf dem Server mit dem Webdienst-SDK in den persönlichen Zertifikatspeicher des lokalen Computers. Vergewissern Sie sich, dass das öffentliche Zertifikat der Zertifizierungsstelle im Zertifikatspeicher für die vertrauenswürdigen Stammzertifikate enthalten ist.  
 3. Exportieren Sie den öffentlichen und privaten Schlüssel des Clientzertifikats in eine PFX-Datei.  
 4. Exportieren Sie den öffentlichen Schlüssel im Base64-Format in eine CER-Datei.  
@@ -120,7 +126,7 @@ Falls Sie keine Kombination aus Benutzername und Kennwort verwenden möchten, ge
 20. Legen Sie „Clientzertifikate“ auf **Akzeptieren** fest, und klicken Sie auf **Übernehmen**.  
 21. Kopieren Sie die zuvor exportierte PFX-Datei auf den Server, auf dem der AD FS-Adapter ausgeführt wird.  
 22. Importieren Sie die PFX-Datei in den persönlichen Zertifikatspeicher des lokalen Computers.  
-23. Klicken Sie mit der rechten Maustaste, wählen Sie **Private Schlüssel verwalten**aus, und gewähren Sie dem Konto, das Sie für die Anmeldung beim Active Directory-Verbunddienst verwendet haben, Lesezugriff.  
+23. Klicken Sie mit der rechten Maustaste, wählen Sie **Private Schlüssel verwalten** aus, und gewähren Sie dem Konto, das Sie für die Anmeldung beim Active Directory-Verbunddienst verwendet haben, Lesezugriff.  
 24. Öffnen Sie das Clientzertifikat, und kopieren Sie den Fingerabdruck aus der Registerkarte **Details** .  
 25. Legen Sie in der Datei „MultiFactorAuthenticationAdfsAdapter.config“ das Element **WebServiceSdkCertificateThumbprint** auf die im vorherigen Schritt kopierte Zeichenfolge fest.  
 

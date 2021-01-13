@@ -1,19 +1,19 @@
 ---
-title: 'Azure VMware-Lösung von CloudSimple: Einrichten von Firewalltabellen und -regeln'
+title: 'Azure VMware Solution by CloudSimple: Einrichten von Firewalltabellen und -regeln'
 description: Beschreibt, wie Firewalltabellen und -regeln für die private Cloud eingerichtet werden, um den Datenverkehr für Subnetze und VLANs einzuschränken.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 798f95281740213ac23892eb3b54ff780ca18395
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 32dcfb0c6cd26b5f34afad328db8f383fa1c2a6f
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772341"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895630"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Einrichten von Firewalltabellen und -regeln für private Clouds
 
@@ -33,6 +33,9 @@ Mit Firewalltabellen und den zugehörigen Regeln können Sie Einschränkungen f�
 4. Geben Sie einen Namen für die Tabelle ein.
 5. Eine Standardregel für die Tabelle wird aufgeführt. Klicken Sie auf **Create New Rule** (Neue Regel erstellen), um eine zusätzliche Regel zu erstellen. Details dazu finden Sie im folgenden Verfahren.
 6. Klicken Sie zum Speichern der Firewalltabelle auf **Done** (Fertig).
+
+> [!IMPORTANT]
+> Sie können bis zu zwei Firewalltabellen pro privater Cloud erstellen.
 
 ## <a name="firewall-rules"></a>Firewallregeln
 
@@ -62,7 +65,10 @@ Firewallregeln legen fest, wie die Firewall bestimmte Arten von Datenverkehr beh
 
 3. Klicken Sie auf **Done** (Fertig), um die Regel zu speichern und sie der Liste der Regeln für die Firewalltabelle hinzuzufügen.
 
-## <a name="attach-vlanssubnets"></a>Attach VLANs/Subnets (VLANs/Subnetze anzufügen)
+> [!IMPORTANT]
+> Jede Firewalltabelle kann bis zu 10 eingehende und 20 ausgehende Regeln aufweisen. Diese Grenzwerte können durch [Kontaktaufnahme mit dem Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) erhöht werden.
+
+## <a name="attach-vlanssubnets"></a><a name="attach-vlans-subnet"></a>Anfügen von VLANs/Subnetzen
 
 Nachdem Sie eine Firewalltabelle definiert haben, können Sie die Subnetze angeben, die den Regeln in der Tabelle unterliegen.
 
@@ -70,4 +76,4 @@ Nachdem Sie eine Firewalltabelle definiert haben, können Sie die Subnetze angeb
 2. Öffnen Sie die Registerkarte **Attached VLANs/Subnet** (Angefügte(s) VLANs/Subnetz).
 3. Klicken Sie auf **Attach to a VLAN/Subnet** (An ein VLAN/Subnetz anfügen).
 4. Wählen Sie die private Cloud und das VLAN aus. Der zugehörige Subnetzname und der CIDR-Block werden angezeigt.
-5. Klicken Sie auf **Submit**.
+5. Klicken Sie auf **Submit**(Senden).

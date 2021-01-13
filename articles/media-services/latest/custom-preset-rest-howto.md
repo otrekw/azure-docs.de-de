@@ -3,23 +3,25 @@ title: Codieren der benutzerdefinierten Transformation mit Media Services, Versi
 description: In diesem Thema wird gezeigt, wie mit Azure Media Services v3 eine benutzerdefinierte Transformation mithilfe von REST codiert wird.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: how-to
 ms.custom: ''
-ms.date: 05/14/2019
-ms.author: juliako
-ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2656bf93cb9c29ded4b9dde49f0caba91c1654b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761793"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89295630"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>Codieren mit einer benutzerdefinierten Transformation: REST
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bei der Codierung mit Azure Media Services können Sie mit einer der empfohlenen integrierten Voreinstellungen, basierend auf in der Branche bewährten Vorgehensweisen, schnell einsteigen, wie im [Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos über REST](stream-files-tutorial-with-rest.md#create-a-transform) gezeigt. Sie können auch eine benutzerdefinierte Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen entwickeln.
 
@@ -32,14 +34,14 @@ Beim Erstellen von benutzerdefinierten Voreinstellungen gelten die folgenden Üb
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md) <br/>Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos. 
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md) <br/>Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos. 
 - [Konfigurieren Sie Postman für Azure Media Services-REST-API-Aufrufe](media-rest-apis-with-postman.md).<br/>Befolgen Sie dabei unbedingt den letzten Schritt im Thema [Abrufen von Azure AD-Token](media-rest-apis-with-postman.md#get-azure-ad-token). 
 
 ## <a name="define-a-custom-preset"></a>Definieren einer benutzerdefinierten Voreinstellung
 
 Im folgenden Beispiel wird der Anforderungstext einer neuen Transformation definiert. Es werden mehrere Ausgaben definiert, die bei Verwendung dieser Transformation generiert werden sollen. 
 
-In diesem Beispiel wird zuerst eine AacAudio-Ebene für die Audiocodierung hinzugefügt, sowie zwei H264Video-Ebenen für die Videocodierung. In den Videoebenen weisen wir Bezeichnungen zu, damit sie in den Ausgabedateinamen verwendet werden können. Als Nächstes soll die Ausgabe auch Miniaturansichten enthalten. Im Beispiel unten geben wir Bilder im PNG-Format, die mit 50% der Auflösung vom Videoeingang generiert wurden, und mit drei Zeitstempeln an – {25%, 50%, 75%} der Länge des Videoeingangs. Schließlich geben wir das Format für die Ausgabedateien an – eine für Video+Audio und eine andere für die Miniaturansichten. Weil wir mehrere H264-Ebenen haben, müssen wir Makros verwenden, die eindeutige Namen pro Ebene generieren. Wir können entweder ein `{Label}`- oder ein `{Bitrate}`-Makro verwenden; im Beispiel wird ersteres verwendet.
+In diesem Beispiel wird zuerst eine AacAudio-Ebene für die Audiocodierung hinzugefügt, sowie zwei H264Video-Ebenen für die Videocodierung. In den Videoebenen weisen wir Bezeichnungen zu, damit sie in den Ausgabedateinamen verwendet werden können. Als Nächstes soll die Ausgabe auch Miniaturansichten enthalten. Im Beispiel unten geben wir Bilder im PNG-Format, die mit 50% der Auflösung vom Videoeingang generiert wurden, und mit drei Zeitstempeln an – {25%, 50%, 75%} der Länge des Videoeingangs. Schließlich geben wir das Format für die Ausgabedateien an – eine für Video+Audio und eine andere für die Miniaturansichten. Weil wir mehrere H264-Ebenen haben, müssen wir Makros verwenden, die eindeutige Namen pro Ebene generieren. Wir können entweder ein `{Label}`- oder ein `{Bitrate}`-Makro verwenden. Im Beispiel wird erstere Option verwendet.
 
 ```json
 {
@@ -133,7 +135,7 @@ In diesem Beispiel wird zuerst eine AacAudio-Ebene für die Audiocodierung hinzu
 
 ## <a name="create-a-new-transform"></a>Erstellen einer neuen Transformation  
 
-In diesem Beispiel wird eine **Transformation** erstellt, die auf der benutzerdefinierten Voreinstellung basiert, die zuvor festgelegt wurde. Beim Erstellen einer Transformation sollten Sie zunächst mit der Methode [Get](https://docs.microsoft.com/rest/api/media/transforms/get) überprüfen, ob bereits eine Transformation vorhanden ist. Wenn eine Transformation vorhanden ist, verwenden Sie diese. 
+In diesem Beispiel wird eine **Transformation** erstellt, die auf der benutzerdefinierten Voreinstellung basiert, die zuvor festgelegt wurde. Beim Erstellen einer Transformation sollten Sie zunächst mit der Methode [Get](/rest/api/media/transforms/get) überprüfen, ob bereits eine Transformation vorhanden ist. Wenn eine Transformation vorhanden ist, verwenden Sie diese. 
 
 Wählen Sie in der heruntergeladenen Sammlung von Postman **Transforms and Jobs** (Transformationen und Aufträge)->**Create or update Transform** (Transformation erstellen oder aktualisieren) aus.
 
@@ -151,4 +153,4 @@ Damit die Transformation in Media Services auf das angegebene Video oder die ang
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Azure Media Services API (Azure Media Services-API)](https://docs.microsoft.com/rest/api/media/).
+Weitere Informationen finden Sie unter [Azure Media Services API (Azure Media Services-API)](/rest/api/media/).

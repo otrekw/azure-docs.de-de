@@ -3,22 +3,23 @@ title: Betriebsmodell von SAP HANA in Azure (große Instanzen) | Microsoft-Dokum
 description: Betriebsmodell von SAP HANA in Azure (große Instanzen)
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a8ea845dd53048766abc337a1351a408ea7f1bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 73cec422f581daac66f61476ecd4d934b50096eb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099690"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967634"
 ---
 # <a name="operations-model-and-responsibilities"></a>Funktionsprinzipien und Zuständigkeiten
 
@@ -34,9 +35,9 @@ Die folgende Liste enthält weitere Details zu den einzelnen Schichten und Ihren
 
 **Netzwerk**: Alle internen Netzwerke für das Umfeld der großen Instanz unter SAP HANA. Sie sind verantwortlich für den Zugriff auf den Speicher, die Konnektivität zwischen den Instanzen (für horizontale Skalierung und andere Funktionen), die Konnektivität mit der Landschaft und die Konnektivität mit Azure, wenn die SAP-Anwendungsschicht auf VMs gehostet wird. Darüber hinaus sind Sie für die WAN-Konnektivität zwischen Azure-Rechenzentren zur Replikation für die Notfallwiederherstellung zuständig. Alle Netzwerke sind nach Mandanten partitioniert und unterliegen der Quality of Service (QoS).
 
-**Speicher**: Der virtualisierte partitionierte Speicher für alle Volumes, die von den SAP HANA-Servern sowie für Momentaufnahmen benötigt werden. 
+**Speicher:** Der virtualisierte partitionierte Speicher für alle Volumes, die von den SAP HANA-Servern sowie für Momentaufnahmen benötigt werden. 
 
-**Server**: Die dedizierten physischen Server zum Ausführen der SAP HANA-Datenbanken, die den Mandanten zugewiesen sind. Der Server der SKU-Klasse Typ I sind hardwareabstrahiert. Mit diesen Servertypen wird die Serverkonfiguration erfasst und in Profilen verwaltet, die von einer physischen Hardware auf eine andere physische Hardware verschoben werden können. Eine solche (manuelle) Verschiebung eines Profils durch Vorgänge ist mit der Azure-Dienstreparatur vergleichbar. Die Server der Typ-II-Klasse-SKU bieten keine solchen Funktionen.
+**Server:** Die dedizierten physischen Server zum Ausführen der SAP HANA-Datenbanken, die den Mandanten zugewiesen sind. Der Server der SKU-Klasse Typ I sind hardwareabstrahiert. Mit diesen Servertypen wird die Serverkonfiguration erfasst und in Profilen verwaltet, die von einer physischen Hardware auf eine andere physische Hardware verschoben werden können. Eine solche (manuelle) Verschiebung eines Profils durch Vorgänge ist mit der Azure-Dienstreparatur vergleichbar. Die Server der Typ-II-Klasse-SKU bieten keine solchen Funktionen.
 
 **SDDC:** Die Verwaltungssoftware, die zum Verwalten von Rechenzentren als softwaredefinierte Entitäten verwendet wird. Sie ermöglicht Microsoft das Zusammenfassen von Ressourcen in Pools aus Skalierungs-, Verfügbarkeits- und Leistungsgründen.
 
@@ -57,13 +58,13 @@ Die zugrunde liegende Infrastruktur von HANA (große Instanz) bietet Funktionen 
 
 **Middleware:** Hauptsächlich die SAP HANA-Instanz. Verwaltung, Betrieb und Überwachung liegen in Ihrer Verantwortung. Sie können die bereitgestellten Funktionen zur Verwendung von Speichermomentaufnahmen für die Sicherung und Wiederherstellung sowie die Notfallwiederherstellung nutzen. Diese Funktionen werden von der Infrastruktur bereitgestellt. Zu Ihren Zuständigkeiten gehören auch das Entwickeln einer Hochverfügbarkeits- oder Notfallwiederherstellungslösung mit diesen Funktionen, deren Nutzung und die Überwachung der erfolgreichen Ausführung von Speichermomentaufnahmen.
 
-**Daten**: Ihre von SAP HANA verwalteten Daten und andere Daten, beispielsweise Sicherungsdateien auf Volumes oder Dateifreigaben. Zu Ihren Zuständigkeiten zählen die Überwachung des freien Speicherplatzes und die Verwaltung des Inhalts auf den Volumes. Sie sind auch für die Überwachung der erfolgreichen Ausführung von Sicherungen von Datenträgervolumes und Speichermomentaufnahmen verantwortlich. Die erfolgreiche Ausführung der Datenreplikation an Notfallwiederherstellungsstandorten liegt in der Verantwortung von Microsoft.
+**Daten:** Ihre von SAP HANA verwalteten Daten und andere Daten, beispielsweise Sicherungsdateien auf Volumes oder Dateifreigaben. Zu Ihren Zuständigkeiten zählen die Überwachung des freien Speicherplatzes und die Verwaltung des Inhalts auf den Volumes. Sie sind auch für die Überwachung der erfolgreichen Ausführung von Sicherungen von Datenträgervolumes und Speichermomentaufnahmen verantwortlich. Die erfolgreiche Ausführung der Datenreplikation an Notfallwiederherstellungsstandorten liegt in der Verantwortung von Microsoft.
 
 **Anwendungen:** Die SAP-Anwendungsinstanzen oder bei Nicht-SAP-Anwendungen die Anwendungsschicht dieser Anwendungen. Ihre Zuständigkeiten umfassen die Bereitstellung, Verwaltung, Ausführung und Überwachung dieser Anwendungen. Sie sind verantwortlich für die Kapazitätsplanung für den CPU-Ressourcenverbrauch, die Arbeitsspeichernutzung, die Azure Storage-Nutzung und die Netzwerk-Bandbreitennutzung innerhalb virtueller Netzwerke. Sie sind auch für die Kapazitätsplanung für den Ressourcenverbrauch zwischen virtuellen Netzwerken und SAP HANA in Azure (große Instanzen) zuständig.
 
 **WANs:** Die Verbindungen, die Sie zwischen lokalen Systemen und Azure-Bereitstellungen für Workloads herstellen. Alle Kunden mit HANA (große Instanz) verwenden Azure ExpressRoute für die Konnektivität. Diese Verbindung ist nicht Teil von SAP HANA in Azure (große Instanzen). Sie sind für die Einrichtung dieser Verbindung zuständig.
 
-**Archive**: Möglicherweise möchten Sie Datenkopien mit Ihren eigenen Methoden in Speicherkonten archivieren. Die Archivierung erfordert Verwaltungsaufwand, Konformität, Kosten und Vorgänge. Sie sind für die Erstellung von Archivkopien und Sicherungen in Azure sowie für die konforme Speicherung verantwortlich.
+**Archiv:** Möglicherweise möchten Sie Datenkopien mit Ihren eigenen Methoden in Speicherkonten archivieren. Die Archivierung erfordert Verwaltungsaufwand, Konformität, Kosten und Vorgänge. Sie sind für die Erstellung von Archivkopien und Sicherungen in Azure sowie für die konforme Speicherung verantwortlich.
 
 Informationen hierzu finden Sie in der [SLA für SAP HANA in Azure (große Instanzen)](https://azure.microsoft.com/support/legal/sla/sap-hana-large/).
 

@@ -2,22 +2,28 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: 'Azure Blueprint: Übersicht'
+    - name: Was ist Azure Blueprint?
       displayName: 'templates, policy, definition, assignment, rbac'
-      href: overview.md
+      href: ./overview.md
 - name: Schnellstarts
   expanded: true
   items:
     - name: Erstellen einer Blaupause – Portal
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-portal.md
-    - name: Erstellen einer Blaupause – PowerShell
+      href: ./create-blueprint-portal.md
+    - name: Erstellen einer Blaupause – Azure PowerShell
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-powershell.md
+      href: ./create-blueprint-powershell.md
+    - name: Erstellen einer Blaupause – Azure CLI
+      displayName: 'publish, assign, track, unassign, delete'
+      href: ./create-blueprint-azurecli.md
     - name: Erstellen einer Blaupause – REST-API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
-- name: Lernprogramme
+    - name: Erstellen einer Blaupause – ARM-Vorlage
+      displayName: 'assign, compliance, resource manager'
+      href: ../../azure-resource-manager/templates/deploy-to-subscription.md?toc=/azure/governance/blueprints/toc.json&bc=/azure/governance/blueprints/breadcrumb/toc.json#azure-blueprints
+- name: Tutorials
   items:
     - name: Erstellen aus einem Blaupausenbeispiel
       displayName: 'template, resource group, rbac, role assignment'
@@ -25,11 +31,28 @@
     - name: Schützen neuer Ressourcen mit Blaupausen-Ressourcensperren
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
+    - name: 'Inhalt: Steuern mehrerer Abonnements mithilfe von Azure Blueprints'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/10-govern-subscriptions-azure-blueprints
 - name: Beispiele
   items:
     - name: Index
       displayName: 'list, examples'
       href: ./samples/index.md
+    - name: Vergleichstest für die Azure-Sicherheit
+      displayName: 'standards, azure, benchmark'
+      href: ./samples/azure-security-benchmark.md
+    - name: ISM PROTECTED der australischen Regierung
+      items:
+        - name: Übersicht
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/index.md
+        - name: Steuerungszuordnung
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/control-mapping.md
+        - name: Schritte zum Bereitstellen
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/deploy.md
     - name: Canada Federal PBMM
       items:
         - name: Übersicht
@@ -42,11 +65,55 @@
           displayName: 'standards, canada, federal, pbmm'
           href: ./samples/canada-federal-pbmm/deploy.md
     - name: CIS Microsoft Azure Foundations Benchmark
+      displayName: 'standards, cis'
+      href: ./samples/cis-azure-1-1-0.md
+    - name: "DoD-Auswirkungsstufe\_4"
       items:
         - name: Übersicht
-          href: ./samples/cis-azure-1.1.0/index.md
-        - name: Empfehlungszuordnung
-          href: ./samples/cis-azure-1.1.0/control-mapping.md
+          displayName: 'standards, DoD, IL4'
+          href: ./samples/dod-impact-level-4/index.md
+        - name: Steuerungszuordnung
+          displayName: 'standards, DoD, IL4'
+          href: ./samples/dod-impact-level-4/control-mapping.md
+        - name: Schritte zum Bereitstellen
+          displayName: 'standards, DoD, IL4'
+          href: ./samples/dod-impact-level-4/deploy.md
+    - name: "DoD-Auswirkungsstufe\_5"
+      items:
+        - name: Übersicht
+          displayName: 'standards, DoD, IL5'
+          href: ./samples/dod-impact-level-5/index.md
+        - name: Steuerungszuordnung
+          displayName: 'standards, DoD, IL5'
+          href: ./samples/dod-impact-level-5/control-mapping.md
+        - name: Schritte zum Bereitstellen
+          displayName: 'standards, DoD, IL5'
+          href: ./samples/dod-impact-level-5/deploy.md
+    - name: FedRAMP Moderate
+      items:
+        - name: Übersicht
+          displayName: 'standards, fedramp, moderate'
+          href: ./samples/fedramp-m/index.md
+        - name: Steuerungszuordnung
+          displayName: 'standards, fedramp, moderate'
+          href: ./samples/fedramp-m/control-mapping.md
+        - name: Schritte zum Bereitstellen
+          displayName: 'standards, fedramp, moderate'
+          href: ./samples/fedramp-m/deploy.md
+    - name: FedRAMP High
+      items:
+        - name: Übersicht
+          displayName: 'standards, fedramp, high'
+          href: ./samples/fedramp-h/index.md
+        - name: Steuerungszuordnung
+          displayName: 'standards, fedramp, high'
+          href: ./samples/fedramp-h/control-mapping.md
+        - name: Schritte zum Bereitstellen
+          displayName: 'standards, fedramp, high'
+          href: ./samples/fedramp-h/deploy.md
+    - name: HIPAA HITRUST 9.2
+      displayName: 'standards, HIPAA HITRUST'
+      href: ./samples/hipaa-hitrust-9-2.md
     - name: IRS 1075
       items:
         - name: Übersicht
@@ -55,6 +122,9 @@
         - name: Steuerungszuordnung
           displayName: 'standards, irs, 1075'
           href: ./samples/irs-1075/control-mapping.md
+        - name: Schritte zum Bereitstellen
+          displayName: 'standards, irs, 1075'
+          href: ./samples/irs-1075/deploy.md
     - name: ISO 27001
       items:
         - name: Übersicht
@@ -88,17 +158,23 @@
         - name: Schritte zum Bereitstellen
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001-ase-sql-workload/deploy.md
-    - name: NIST SP 800-53 Rev4
+    - name: Medien
       items:
         - name: Übersicht
-          displayName: 'standards, nist, 800-53, rev 4'
-          href: ./samples/nist-sp-800-53-rev4/index.md
+          displayName: 'standards, Media MPAA'
+          href: ./samples/media/index.md
         - name: Steuerungszuordnung
-          displayName: 'standards, nist, 800-53, rev 4'
-          href: ./samples/nist-sp-800-53-rev4/control-mapping.md
+          displayName: 'standards, Media'
+          href: ./samples/media/control-mapping.md
         - name: Schritte zum Bereitstellen
-          displayName: 'standards, nist, 800-53, rev 4'
-          href: ./samples/nist-sp-800-53-rev4/deploy.md
+          displayName: 'standards, Media'
+          href: ./samples/media/deploy.md
+    - name: NIST SP 800-53 R4
+      displayName: 'standards, nist, 800-53, rev 4'
+      href: ./samples/nist-sp-800-53-r4.md
+    - name: NIST SP 800-171 R2
+      displayName: 'standards, nist, 800-171, rev 2'
+      href: ./samples/nist-sp-800-171-r2.md
     - name: PCI-DSS v3.2.1
       items:
         - name: Übersicht
@@ -162,7 +238,7 @@
     - name: Reihenfolge der Blaupausenbereitstellung
       displayName: customize
       href: ./concepts/sequencing-order.md
-    - name: Ressourcensperrung in Blaupausen
+    - name: Ressourcensperre in Azure Blueprints
       displayName: 'mode, state, read only, edit, denyAssignments'
       href: ./concepts/resource-locking.md
 - name: Anleitungen
@@ -184,10 +260,12 @@
 - name: Problembehandlung
   displayName: 'errors, violation'
   href: ./troubleshoot/general.md
-- name: Referenzen
+- name: Verweis
   items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
-      href: '/powershell/module/az.blueprint/#blueprint'
+      href: /powershell/module/az.blueprint/#blueprint
     - name: Azure SDK für .NET
       href: /dotnet/api/overview/azure/blueprints/management
     - name: REST
@@ -202,13 +280,15 @@
   items:
     - name: 'GitHub: Azure Blueprints-Beispiele'
       href: 'https://github.com/Azure/azure-blueprints'
+    - name: Microsoft Q&A (Fragen und Antworten) für Azure Blueprints
+      href: /answers/topics/azure-blueprints.html
+    - name: YouTube-Kanal zu Governance
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
+    - name: 'Azure Friday: Übersicht über Azure Blueprints'
+      href: 'https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: UserVoice
-      href: 'https://feedback.azure.com/forums/915958-azure-governance'
-    - name: YouTube-Kanal zu Governance
-      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-    - name: 'Azure Friday: Übersicht über Azure Blueprints'
-      href: 'https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints'
+      href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345058'

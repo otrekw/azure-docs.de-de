@@ -3,131 +3,89 @@ title: Vordefinierte Ordinal-Entität – LUIS
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erhalten Sie Informationen zur vorgefertigten Ordinalentität in Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 06/25/2019
-ms.author: diberry
-ms.openlocfilehash: 51f1082034a710ed9d0f78b79bc6ae469771459e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.topic: reference
+ms.date: 10/14/2019
+ms.openlocfilehash: 1fa86c8960ea9f32163ebd7991260a19ef7a5d79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933468"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91535456"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Vordefinierte Ordinal-Entität für eine LUIS-App
-Eine Ordnungszahl ist eine numerische Darstellung eines Objekts in einer Menge: `first`, `second`, `third`. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit Ordnungszahlen hinzufügen. Die Ordinalentität wird in [vielen Kulturen](luis-reference-prebuilt-entities.md) unterstützt. 
+Eine Ordnungszahl ist eine numerische Darstellung eines Objekts in einer Menge: `first`, `second`, `third`. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit Ordnungszahlen hinzufügen. Die Ordinalentität wird in [vielen Kulturen](luis-reference-prebuilt-entities.md) unterstützt.
 
 ## <a name="types-of-ordinal"></a>Ordinaltypen
 Die Entität „ordinal“ wird über das GitHub-Repository [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) verwaltet.
 
 ## <a name="resolution-for-prebuilt-ordinal-entity"></a>Auflösung der vorgefertigten Ordinalentität
 
-### <a name="api-version-2x"></a>API-Version 2.x
+Die folgenden Entitätsobjekte werden für die Abfrage zurückgegeben:
 
-Im folgenden Beispiel wird die Auflösung der Entität **builtin.ordinal** veranschaulicht.
+`Order the second option`
 
-```json
-{
-  "query": "Order the second option",
-  "topScoringIntent": {
-    "intent": "OrderFood",
-    "score": 0.9993253
-  },
-  "intents": [
-    {
-      "intent": "OrderFood",
-      "score": 0.9993253
-    },
-    {
-      "intent": "None",
-      "score": 0.05046708
-    }
-  ],
-  "entities": [
-    {
-      "entity": "second",
-      "type": "builtin.ordinal",
-      "startIndex": 10,
-      "endIndex": 15,
-      "resolution": {
-        "value": "2"
-      }
-    }
-  ]
-}
-```
-
-### <a name="preview-api-version-3x"></a>Vorschau-API-Version 3.x
+#### <a name="v3-response"></a>[V3-Antwort](#tab/V3)
 
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
 
 ```json
-{
-    "query": "Order the second option",
-    "prediction": {
-        "normalizedQuery": "order the second option",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.7124502
-            }
-        },
-        "entities": {
-            "ordinal": [
-                {
-                    "offset": 2,
-                    "relativeTo": "start"
-                }
-            ]
-        }
-    }
+"entities": {
+    "ordinal": [
+        2
+    ]
 }
 ```
-
+#### <a name="v3-verbose-response"></a>[Ausführliche V3-Antwort](#tab/V3-verbose)
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
 
 ```json
-{
-    "query": "Order the second option",
-    "prediction": {
-        "normalizedQuery": "order the second option",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.7124502
-            }
-        },
-        "entities": {
-            "ordinal": [
-                {
-                    "offset": 2,
-                    "relativeTo": "start"
-                }
-            ],
-            "$instance": {
-                "ordinal": [
-                  {
-                    "type": "builtin.ordinal",
-                    "text": "second",
-                    "startIndex": 10,
-                    "length": 6,
-                    "modelTypeId": 2,
-                    "modelType": "Prebuilt Entity Extractor",
-                    "recognitionSources": [
-                        "model"
-                    ]
-                  }
+"entities": {
+    "ordinal": [
+        2
+    ],
+    "$instance": {
+        "ordinal": [
+            {
+                "type": "builtin.ordinal",
+                "text": "second",
+                "startIndex": 10,
+                "length": 6,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
 
+#### <a name="v2-response"></a>[V2-Antwort](#tab/V2)
+
+Im folgenden Beispiel wird die Auflösung der Entität **builtin.ordinal** veranschaulicht.
+
+```json
+"entities": [
+  {
+    "entity": "second",
+    "type": "builtin.ordinal",
+    "startIndex": 10,
+    "endIndex": 15,
+    "resolution": {
+      "value": "2"
+    }
+  }
+]
+```
+* * *
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die Entitäten [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), [phone number](luis-reference-prebuilt-phonenumber.md) und [temperature](luis-reference-prebuilt-temperature.md). 
+Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
+
+Erfahren Sie mehr über die Entitäten [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), [phone number](luis-reference-prebuilt-phonenumber.md) und [temperature](luis-reference-prebuilt-temperature.md).

@@ -5,13 +5,13 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 346f63109e673692d425ede6bdbcb6f633af80bb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857393"
 ---
-**.NET-Back-End (C#)** :
+**.NET-Back-End (C#):**
   
 1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Serverprojekt, klicken Sie auf **NuGet-Pakete verwalten**, und suchen Sie nach `Microsoft.Azure.NotificationHubs`. Klicken Sie anschließend auf **Installieren**. Dadurch wird die Notification Hubs-Bibliothek zum Senden von Benachrichtigungen von Ihrem Back-End installiert.
 2. Öffnen Sie im Visual Studio-Projekt des Back-Ends **Controller** > **TodoItemController.cs**. Fügen Sie am Anfang der Datei die folgenden `using` -Anweisung hinzu:
@@ -21,7 +21,7 @@ ms.locfileid: "68857393"
     using Microsoft.Azure.NotificationHubs;
     ```
 
-3. Ersetzen Sie die `PostTodoItem` -Methode durch den folgenden Code:  
+3. Ersetzen Sie die `PostTodoItem`-Methode durch den folgenden Code:  
 
     ```csharp
     public async Task<IHttpActionResult> PostTodoItem(TodoItem item)

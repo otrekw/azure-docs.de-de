@@ -1,19 +1,19 @@
 ---
-title: 'Konfigurieren eines VNET-Gateways für ExpressRoute – klassisch: Azure PowerShell | Microsoft-Dokumentation'
+title: 'Azure ExpressRoute: Hinzufügen eines Gateways zu einem VNET: klassisch'
 description: Konfigurieren Sie ein VNet-Gateway für ein über das klassische Bereitstellungsmodell bereitgestelltes virtuelles Netzwerk, indem Sie PowerShell für die ExpressRoute-Konfiguration verwenden.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
-ms.topic: article
-ms.date: 11/05/2018
-ms.author: charwen
+ms.topic: how-to
+ms.date: 12/06/2019
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 101e03d07a15e9058ef236a575251b052017db32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0f42a7d030f45be1b96728fdcac7a13cf797ed34
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60365148"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89396402"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute mit PowerShell (klassisch)
 > [!div class="op_single_selector"]
@@ -32,7 +32,9 @@ Dieser Artikel führt Sie durch die Schritte, die zum Hinzufügen, Ändern der G
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-beginning"></a>Vorbereitungen
-Stellen Sie sicher, dass Sie die für diese Konfiguration erforderlichen Azure PowerShell-Cmdlets installiert haben (1.0.2 oder höher). Wenn Sie die Cmdlets noch nicht installiert haben, müssen Sie dies tun, bevor Sie mit der Konfiguration beginnen. Weitere Informationen zum Installieren von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+Stellen Sie sicher, dass Sie die für diese Konfiguration erforderlichen Azure PowerShell-Cmdlets installiert haben.
+
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 [!INCLUDE [expressroute-gateway-classic-ps](../../includes/expressroute-gateway-classic-ps-include.md)]
 

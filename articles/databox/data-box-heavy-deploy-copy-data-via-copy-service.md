@@ -1,5 +1,5 @@
 ---
-title: Tutorial zum Kopieren von Daten auf Ihr Azure Data Box Heavy-Gerät mithilfe des Datenkopierdiensts | Microsoft-Dokumentation
+title: 'Tutorial: Kopieren von Daten auf Azure Data Box Heavy mit dem Datenkopierdienst'
 description: In diesem Tutorial erfahren Sie, wie Sie mit dem Datenkopierdienst Daten auf Ihr Azure Data Box Heavy-Gerät kopieren.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: adc28ea5f74ad16d4387d246ef73618a53ea26e1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 601e5cf15c47b16c53ff9ca81a56cb613bcfc3f5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595819"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006558"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Tutorial: Kopieren von Daten auf Azure Data Box Heavy (Vorschauversion) mithilfe des Datenkopierdiensts
 
@@ -64,7 +64,7 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
     |**Zielspeicherkonto**    |Wählen Sie in der Liste das Zielspeicherkonto aus, in das die Daten hochgeladen werden sollen.         |
     |**Zieltyp**       |Wählen Sie den Zielspeichertyp in der Liste aus: **Blockblob**, **Seitenblob** oder **Azure Files**.        |
     |**Zielcontainer/-freigabe**    |Geben Sie den Namen des Containers oder der Freigabe an, in den bzw. die Daten in Ihrem Zielspeicherkonto hochgeladen werden sollen. Hierbei kann es sich um einen Freigabenamen oder um einen Containernamen handeln. Verwenden Sie beispielsweise `myshare` oder `mycontainer`. Der Name kann auch das Format `sharename\directory_name` oder `containername\virtual_directory_name` haben.        |
-    |**Mit Muster übereinstimmende Dateien kopieren**    | Sie können das gewünschte Dateinamenmuster eingeben. Dabei haben Sie zwei Optionen:<ul><li>**Verwenden von Platzhalterausdrücken:** In Platzhalterausdrücken werden nur `*` und `?` unterstützt. Beispiel: Der Ausdruck `*.vhd` entspricht allen Dateien mit der Erweiterung `.vhd`. Analog dazu entspricht `*.dl?` allen Dateien, die entweder die Erweiterung `.dl` haben oder mit `.dl` beginnen, etwa `.dll`. `*foo` entspricht allen Dateien, deren Name mit `foo` endet.<br>Platzhalterausdrücke können direkt in das Feld eingegeben werden. Der in das Feld eingegebene Wert wird standardmäßig als Platzhalterausdruck behandelt.</li><li>**Verwenden von regulären Ausdrücken:** POSIX-basierte reguläre Ausdrücke werden unterstützt. Der reguläre Ausdruck `.*\.vhd` entspricht beispielsweise allen Dateien mit der Erweiterung `.vhd`. Wenn Sie regulärer Ausdrücke verwenden möchten, geben Sie das Muster (`<pattern>`) direkt als `regex(<pattern>)` an. Weitere Informationen zu regulären Ausdrücken finden Sie unter [Sprachelemente für reguläre Ausdrücke – Kurzübersicht](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
+    |**Mit Muster übereinstimmende Dateien kopieren**    | Sie können das gewünschte Dateinamenmuster eingeben. Dabei haben Sie zwei Optionen:<ul><li>**Verwenden von Platzhalterausdrücken:** In Platzhalterausdrücken werden nur `*` und `?` unterstützt. Beispiel: Der Ausdruck `*.vhd` entspricht allen Dateien mit der Erweiterung `.vhd`. Analog dazu entspricht `*.dl?` allen Dateien, die entweder die Erweiterung `.dl` haben oder mit `.dl` beginnen, etwa `.dll`. `*foo` entspricht allen Dateien, deren Name mit `foo` endet.<br>Platzhalterausdrücke können direkt in das Feld eingegeben werden. Der in das Feld eingegebene Wert wird standardmäßig als Platzhalterausdruck behandelt.</li><li>**Verwenden von regulären Ausdrücken:** POSIX-basierte reguläre Ausdrücke werden unterstützt. Der reguläre Ausdruck `.*\.vhd` entspricht beispielsweise allen Dateien mit der Erweiterung `.vhd`. Wenn Sie regulärer Ausdrücke verwenden möchten, geben Sie das Muster (`<pattern>`) direkt als `regex(<pattern>)` an. Weitere Informationen zu regulären Ausdrücken finden Sie unter [Sprachelemente für reguläre Ausdrücke – Kurzübersicht](/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
     |**Dateioptimierung**              |Wenn dieses Feature aktiviert ist, werden Dateien, die kleiner als 1 MB sind, während der Erfassung gepackt. Dieses Packen beschleunigt das Kopieren kleiner Dateien. Es spart darüber hinaus viel Zeit, wenn die Anzahl von Dateien deutlich über der Anzahl von Verzeichnissen liegt.        |
  
 4. Wählen Sie **Starten** aus. Die Eingaben werden überprüft. Ist die Überprüfung erfolgreich, wird der Auftrag gestartet. Es dauert möglicherweise ein paar Minuten, bis der Auftrag gestartet wird.
@@ -111,7 +111,7 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
 
 6. Während der Auftragsausführung gilt für die Seite **Daten kopieren** Folgendes:
 
-    - In der Spalte **Status** wird der Status des Kopierauftrags angezeigt. Mögliche Statuswerte:
+    - In der Spalte **Status** wird der Status des Kopierauftrags angezeigt. Der Status kann Folgendes sein:
         - **Wird ausgeführt**
         - **Fehler**
         - **Erfolgreich**
@@ -147,4 +147,3 @@ Im nächsten Tutorial erfahren Sie, wie Sie Ihr Data Box Heavy-Gerät an Micro
 
 > [!div class="nextstepaction"]
 > [Tutorial: Zurücksenden von Azure Data Box Heavy und Überprüfen des Datenuploads in Azure (Vorschauversion)](./data-box-heavy-deploy-picked-up.md)
-

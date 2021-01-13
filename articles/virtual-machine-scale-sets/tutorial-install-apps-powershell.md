@@ -1,27 +1,20 @@
 ---
-title: Tutorial – Installieren von Anwendungen in einer Skalierungsgruppe mit Azure PowerShell | Microsoft-Dokumentation
+title: 'Tutorial: Installieren von Anwendungen in einer Skalierungsgruppe mit Azure PowerShell'
 description: Es wird beschrieben, wie Sie Azure PowerShell zum Installieren von Anwendungen in VM-Skalierungsgruppen mit der benutzerdefinierten Skripterweiterung verwenden.
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: powershell
 ms.date: 11/08/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 6877ba6240806f3213cadc66fdc74d89b2e9ba31
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: e783f7f0a9be413679e509e4d6124d50bb811821
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877988"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87059293"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>Tutorial: Installieren von Anwendungen in VM-Skalierungsgruppen mit Azure PowerShell
 
@@ -32,7 +25,7 @@ Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müss
 > * Verwenden der benutzerdefinierten Skripterweiterung von Azure
 > * Aktualisieren einer ausgeführten Anwendung in einer Skalierungsgruppe
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -42,7 +35,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="what-is-the-azure-custom-script-extension"></a>Was ist die benutzerdefinierte Skripterweiterung von Azure?
 Die benutzerdefinierte Skripterweiterung lädt Skripts auf Azure-VMs herunter und führt sie aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Skripts können aus Azure Storage oder GitHub heruntergeladen oder dem Azure-Portal zur Laufzeit für die Erweiterung bereitgestellt werden.
 
-Die Erweiterung für benutzerdefinierte Skripts ist in Azure Resource Manager-Vorlagen integriert. Sie kann auch mit der Azure CLI, mit Azure PowerShell, mit dem Azure-Portal oder der REST-API verwendet werden. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/windows/extensions-customscript.md).
+Die Erweiterung für benutzerdefinierte Skripts ist in Azure Resource Manager-Vorlagen integriert. Sie kann auch mit der Azure CLI, mit Azure PowerShell, mit dem Azure-Portal oder der REST-API verwendet werden. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/extensions/custom-script-windows.md).
 
 Wenn Sie die benutzerdefinierte Skripterweiterung in Aktion sehen möchten, können Sie eine Skalierungsgruppe erstellen, mit der der IIS-Webserver installiert und der Hostname einer VM-Instanz der Skalierungsgruppe ausgegeben wird. Mit der Definition der benutzerdefinierten Skripterweiterung wird ein Beispielskript von GitHub heruntergeladen, die erforderlichen Pakete werden installiert, und anschließend wird der Hostname der VM-Instanz auf eine einfache HTML-Seite geschrieben.
 

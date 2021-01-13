@@ -3,18 +3,19 @@ title: Schlüsselbegriffserkennung – Kubernetes – Schritte zum Konfigurieren
 titleSuffix: Azure Cognitive Services
 description: Schlüsselbegriffserkennung – Kubernetes – Schritte zum Konfigurieren und Bereitstellen
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
-ms.date: 09/19/2019
-ms.author: dapine
-ms.openlocfilehash: 5ec535fe2ce23a2ead1163e870aae97fd104ef09
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 27c78566877f27e80ae5ae27c5250f228c7ae676
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130069"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017858"
 ---
 ### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>Bereitstellen des Containers für die Schlüsselbegriffserkennung für einen AKS-Cluster
 
@@ -32,7 +33,7 @@ ms.locfileid: "71130069"
 
     Nachdem dieser Befehl ausgeführt wurde, wird eine Meldung ähnlich der folgenden ausgegeben:
 
-    ```console
+    ```output
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
@@ -44,7 +45,7 @@ ms.locfileid: "71130069"
 
 1. Öffnen Sie den Text-Editor Ihrer Wahl. In diesem Beispiel wird Visual Studio Code verwendet.
 
-    ```azurecli
+    ```console
     code .
     ```
 
@@ -66,6 +67,13 @@ ms.locfileid: "71130069"
             image: mcr.microsoft.com/azure-cognitive-services/keyphrase
             ports:
             - containerPort: 5000
+            resources:
+              requests:
+                memory: 2Gi
+                cpu: 1
+              limits:
+                memory: 4Gi
+                cpu: 1
             env:
             - name: EULA
               value: "accept"
@@ -91,12 +99,12 @@ ms.locfileid: "71130069"
 1. Führen Sie den Kubernetes-Befehl `apply` mit der Datei *keyphrase.yaml* als Ziel aus:
 
     ```console
-    kuberctl apply -f keyphrase.yaml
+    kubectl apply -f keyphrase.yaml
     ```
 
     Nachdem der Befehl die Bereitstellungskonfiguration erfolgreich angewendet hat, wird eine Meldung ähnlich der folgenden Ausgabe angezeigt:
 
-    ```console
+    ```output
     deployment.apps "keyphrase" created
     service "keyphrase" created
     ```
@@ -108,7 +116,7 @@ ms.locfileid: "71130069"
 
     Die Ausgabe für den Ausführungsstatus des Pods:
 
-    ```console
+    ```output
     NAME                         READY     STATUS    RESTARTS   AGE
     keyphrase-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
@@ -121,7 +129,7 @@ ms.locfileid: "71130069"
 
     Die Ausgabe für den Ausführungsstatus des *keyphrase*-Diensts im Pod:
 
-    ```console
+    ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
     kubernetes   ClusterIP      10.0.0.1      <none>           443/TCP          2m
     keyphrase    LoadBalancer   10.0.100.64   168.61.156.180   5000:31234/TCP   2m

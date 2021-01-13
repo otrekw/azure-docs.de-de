@@ -4,14 +4,14 @@ description: In diesem Artikel wird erläutert, wie eine Data Catalog-Instanz un
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: b0972be2b8a6e05d3d90cde7354b4890ea95cbe4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 6a429c09b6f8082c95e29bcea62d27ec4fb46fd3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976761"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017303"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>Schützen des Zugriffs auf Data Catalog und Datenobjekte
 

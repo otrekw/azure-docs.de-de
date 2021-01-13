@@ -2,7 +2,7 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Übersicht zu Azure-Richtlinien
+    - name: Was ist Azure Policy?
       displayName: 'rbac, assign, initiative, parameters, count'
       href: overview.md
 - name: Schnellstarts
@@ -10,17 +10,32 @@
   items:
     - name: Zuweisen einer Richtlinie – Portal
       displayName: 'assign, compliance'
-      href: assign-policy-portal.md
-    - name: Zuweisen einer Richtlinie – PowerShell
-      displayName: 'assign, compliance'
-      href: assign-policy-powershell.md
+      href: ./assign-policy-portal.md
     - name: Zuweisen einer Richtlinie – Azure CLI
       displayName: 'assign, compliance'
-      href: assign-policy-azurecli.md
-    - name: Zuweisen einer Richtlinie – Vorlage
-      displayName: 'assign, compliance, resource manager, ARM'
-      href: assign-policy-template.md
-- name: Lernprogramme
+      href: ./assign-policy-azurecli.md
+    - name: 'Zuweisen einer Richtlinie: Azure PowerShell'
+      displayName: 'assign, compliance'
+      href: ./assign-policy-powershell.md
+    - name: 'Zuweisen einer Richtlinie: .NET'
+      displayName: 'assign, compliance'
+      href: ./assign-policy-dotnet.md
+    - name: 'Zuweisen einer Richtlinie: JavaScript'
+      displayName: 'assign, compliance'
+      href: ./assign-policy-javascript.md
+    - name: 'Zuweisen einer Richtlinie: Python'
+      displayName: 'assign, compliance'
+      href: ./assign-policy-python.md
+    - name: 'Zuweisen einer Richtlinie: REST'
+      displayName: 'armclient, postman'
+      href: ./assign-policy-rest-api.md
+    - name: 'Zuweisen einer Richtlinie: ARM-Vorlage'
+      displayName: 'assign, compliance, resource manager'
+      href: ./assign-policy-template.md
+    - name: 'Zuweisen einer Richtlinie: Terraform'
+      displayName: 'assign, compliance, hcl, provider'
+      href: ./assign-policy-terraform.md
+- name: Tutorials
   items:
     - name: Erstellen und Verwalten einer Azure-Richtlinie
       displayName: 'assign, definition, compliance, exempt, exclusion'
@@ -28,258 +43,128 @@
     - name: Erstellen einer benutzerdefinierten Richtliniendefinition
       displayName: 'disabled, parameters, rule, mode'
       href: ./tutorials/create-custom-policy-definition.md
-    - name: 'Praxislab: Erkunden von Azure Policy'
-      displayName: 'create, policy, training, learn'
-      href: 'https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy'
+    - name: Verwalten der Tag-Governance
+      displayName: 'modify, append, effects'
+      href: ./tutorials/govern-tags.md
+    - name: "Implementieren von Azure\_Policy-as-Code mit GitHub"
+      displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
+      href: ./tutorials/policy-as-code-github.md
+    - name: 'Inhalt: Steuern und Überwachen Ihrer Ressourcen mithilfe von Azure Policy'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/8-control-audit-resources-azure-policy
 - name: Beispiele
   items:
     - name: Index
-      displayName: 'list, examples'
+      displayName: 'list, builtins'
       href: ./samples/index.md
-    - name: Allgemein
+    - name: Integrierte Richtlinien
+      href: ./samples/built-in-policies.md
+    - name: Integrierte Initiativen
+      href: ./samples/built-in-initiatives.md
+    - name: Verwendungsmuster
       items:
-        - name: Benennung
-          items:
-            - name: Zulassen mehrerer Namensmuster
-              displayName: 'deny, indexed'
-              href: samples/allow-multiple-name-patterns.md
-            - name: Ähnliches Muster erfordern
-              displayName: 'deny, indexed'
-              href: samples/enforce-like-pattern.md
-            - name: Übereinstimmungsmuster erfordern
-              displayName: 'deny, indexed'
-              href: samples/enforce-match-pattern.md
-            - name: Tagübereinstimmungsmuster erfordern
-              displayName: 'deny, all'
-              href: samples/enforce-tag-match-pattern.md
+        - name: Logische Operatoren
+          href: ./samples/pattern-logical-operators.md
+        - name: Felder
+          href: ./samples/pattern-fields.md
+        - name: Parameter
+          href: ./samples/pattern-parameters.md
+        - name: Details zu Auswirkungen
+          href: ./samples/pattern-effect-details.md
         - name: '`Tags`'
-          items:
-            - name: Anwenden von Tags und den zugehörigen Standardwerten
-              displayName: 'append, builtin, concat'
-              href: samples/apply-tag-default-value.md
-            - name: Richtlinieninitiative zur Abrechnung von Tags
-              href: samples/billing-tags-policy-initiative.md
-            - name: Enforce tag and its value (Tag und zugehörigen Wert erzwingen)
-              displayName: 'deny, concat, builtin'
-              href: samples/enforce-tag-value.md
-            - name: Erzwingen eines Tags und des zugehörigen Werts in Ressourcengruppen
-              displayName: 'deny, concat'
-              href: samples/enforce-tag-on-resource-groups.md
-        - name: Standorte
-          items:
-            - name: Allowed locations (Zulässige Speicherorte)
-              displayName: 'deny, builtin, location'
-              href: samples/allowed-locations.md
-        - name: Ressourcentypen
-          items:
-            - name: Zulässige Ressourcentypen
-              displayName: 'deny, builtin, resourceTypes'
-              href: samples/allowed-resource-types.md
-            - name: Not allowed resource types (Unzulässige Ressourcentypen)
-              displayName: 'deny, builtin, resourceTypes'
-              href: samples/not-allowed-resource-types.md
-    - name: Compute
+          href: ./samples/pattern-tags.md
+        - name: value-Operator
+          href: ./samples/pattern-value-operator.md
+        - name: count-Operator
+          href: ./samples/pattern-count-operator.md
+        - name: Gruppieren in Initiative
+          href: ./samples/pattern-group-with-initiative.md
+        - name: Bereitstellen von Ressourcen
+          href: ./samples/pattern-deploy-resources.md
+    - name: Integrationen zur Einhaltung gesetzlicher Bestimmungen
       items:
-        - name: Virtuelle Computer
-          items:
-            - name: Zulassen eines benutzerdefinierten VM-Images aus einer Ressourcengruppe
-              displayName: 'deny, concat, ExistingResourceGroups'
-              href: samples/allow-custom-vm-image.md
-            - name: Zulässige SKUs für Speicherkonten und virtuelle Computer
-              displayName: 'initiative, vmSKUs, storageSKUs'
-              href: samples/allowed-skus-storage.md
-            - name: Genehmigte VM-Images
-              displayName: deny
-              href: samples/allowed-custom-images.md
-            - name: 'Überwachung, wenn keine Erweiterung vorhanden ist'
-              displayName: auditIfNotExists
-              href: samples/audit-extension-not-exist.md
-            - name: Nicht zulässige VM-Erweiterungen
-              displayName: deny
-              href: samples/not-allowed-vm-extension.md
-        - name: VM-Skalierungsgruppen
-          items:
-            - name: Überwachen einer VM mithilfe eines verwalteten Datenträgers
-              displayName: audit
-              href: samples/create-vm-managed-disk.md
-            - name: Erstellen einer VM mithilfe eines verwalteten Datenträgers
-              displayName: deny
-              href: samples/use-managed-disk-vm.md
-            - name: Verweigern des Hybridnutzungsvorteils
-              displayName: deny
-              href: samples/deny-hybrid-use.md
-            - name: Zulassen von nur einem bestimmten VM-Plattformimage
-              displayName: deny
-              href: samples/allow-certain-vm-image.md
-    - name: Data Lake
-      items:
-        - name: Erzwingen der Data Lake Store-Verschlüsselung
-          displayName: deny
-          href: samples/enforce-data-lake-store-encryption.md
-    - name: Gastkonfiguration
-      items:
-        - name: 'Überwachen von Anwendungen, die nicht unter Linux installiert sind'
-          displayName: 'audit, vm'
-          href: samples/guest-configuration-applications-installed-linux.md
-    - name: Schlüsseltresore
-      items:
-        - name: Überwachen von Tresoren auf Instanzen ohne Endpunkte im virtuellen Netzwerk
-          displayName: 'audit, KeyVault, indexed'
-          href: samples/keyvault-no-vnet-rules.md
-    - name: Überwachung
-      items:
-        - name: Überwachen der Diagnoseeinstellung
-          displayName: 'auditIfNotExists, resourceTypes'
-          href: samples/audit-diagnostic-setting.md
-    - name: Netzwerk
-      items:
-        - name: Netzwerkschnittstellen
-          items:
-            - name: NSG X auf jedem Netzwerkadapter
-              displayName: deny
-              href: samples/nsg-on-nic.md
-            - name: Verwenden eines zulässigen Subnetzes für VM-Netzwerkschnittstellen
-              displayName: deny
-              href: samples/use-approved-subnet-vm-nics.md
-            - name: Verwenden eines genehmigten virtuellen Netzwerks für VM-Netzwerkschnittstellen
-              displayName: 'deny, concat'
-              href: samples/use-approved-vnet-vm-nics.md
-        - name: Virtuelle Netzwerke
-          items:
-            - name: Zulässige Anwendungsgateway-SKUs
-              displayName: deny
-              href: samples/allowed-app-gateway-sku.md
-            - name: Zulässige VNET-Gateway-SKUs
-              displayName: deny
-              href: samples/allowed-vnet-gateway-sku.md
-            - name: Zulässige Load Balancer-SKUs
-              displayName: deny
-              href: samples/allowed-load-balancer-skus.md
-            - name: Kein Netzwerkpeering an ein ER-Netzwerk
-              displayName: 'deny, all, concat, ExistingResourceGroups'
-              href: samples/no-peering-express-route-network.md
-            - name: Keine benutzerdefinierten Routingtabellen
-              displayName: 'deny, all'
-              href: samples/no-user-defined-route-table.md
-            - name: NSG X in jedem Subnetz
-              displayName: 'deny, all'
-              href: samples/nsg-on-subnet.md
-            - name: Verwenden eines zulässigen Subnetzes für VM-Netzwerkschnittstellen
-              displayName: deny
-              href: samples/use-approved-subnet-vm-nics.md
-            - name: Verwenden eines genehmigten virtuellen Netzwerks für VM-Netzwerkschnittstellen
-              displayName: deny
-              href: samples/use-approved-vnet-vm-nics.md
-        - name: Netzwerksicherheitsgruppen
-          items:
-            - name: NSG X auf jedem Netzwerkadapter
-              displayName: deny
-              href: samples/nsg-on-nic.md
-            - name: NSG X in jedem Subnetz
-              displayName: 'deny, all'
-              href: samples/nsg-on-subnet.md
-        - name: ExpressRoute
-          items:
-            - name: Zulässige ExpressRoute-Bandbreiten
-              displayName: deny
-              href: samples/allowed-express-route-bandwidth.md
-            - name: Zulässige ExpressRoute-SKUs
-              displayName: deny
-              href: samples/allowed-express-route-skus.md
-            - name: Zulässige ExpressRoute-Peeringstandorte
-              displayName: 'deny, Location'
-              href: samples/allowed-express-route-peering.md
-        - name: Komponenten zur Netzwerküberwachung
-          items:
-            - name: 'Überwachen, ob Komponenten zur Netzwerküberwachung nicht für die Region aktiviert sind'
-              displayName: 'auditIfNotExists, Location'
-              href: samples/network-watcher-not-enabled.md
-        - name: Anwendungsgateways
-          items:
-            - name: Zulässige Anwendungsgateway-SKUs
-              displayName: deny
-              href: samples/allowed-app-gateway-sku.md
-    - name: SQL
-      items:
-        - name: SQL-Server
-          items:
-            - name: Überwachen bei nicht vorhandenem Azure Active Directory-Administrator
-              displayName: auditIfNotExists
-              href: samples/audit-no-aad-admin.md
-            - name: Überwachen der Einstellung für die Bedrohungserkennung auf Serverebene
-              displayName: auditIfNotExists
-              href: samples/audit-sql-server-threat-detection-setting.md
-            - name: Überwachen der SQL Server-Überwachungseinstellungen
-              displayName: 'auditIfNotExists, builtin'
-              href: samples/sql-server-audit.md
-            - name: Überwachen der Überwachungsseinstellung auf SQL Server-Ebene
-              displayName: auditIfNotExists
-              href: samples/audit-sql-server-audit-setting.md
-            - name: Require SQL Server version 12.0 (SQL Server-Version 12.0 fordern)
-              displayName: 'deny, builtin'
-              href: samples/require-sql-12.md
-        - name: SQL-DATENBANKEN
-          items:
-            - name: Zulässige SQL-Datenbank-SKUs
-              displayName: deny
-              href: samples/allowed-sql-db-skus.md
-            - name: Überwachen der Einstellung für die Bedrohungserkennung auf SQL-Datenbank-Ebene
-              displayName: auditIfNotExists
-              href: samples/audit-db-threat-detection-setting.md
-            - name: Überwachen der SQL-Datenbank-Verschlüsselung
-              displayName: 'auditIfNotExists, disabled, indexed, builtin'
-              href: samples/sql-database-encryption-audit.md
-            - name: Überwachungseinstellung zur Überwachung auf SQL-Datenbank-Ebene
-              displayName: auditIfNotExists
-              href: samples/audit-sql-db-audit-setting.md
-    - name: Storage
-      items:
-        - name: Zulässige SKUs für Speicherkonto und virtuelle Computer
-          displayName: 'initiative, vmSKUs, storageSKUs'
-          href: samples/allowed-skus-storage.md
-        - name: Allowed storage account SKUs (Zulässige Speicherkonto-SKUs)
-          displayName: 'deny, builtin, storageSKUs'
-          href: samples/allowed-storage-account-skus.md
-        - name: Verweigern des kalten Zugriffstierings für Speicherkonten
-          displayName: 'deny, all'
-          href: samples/deny-cool-access-tiering.md
-        - name: Gewährleisten eines HTTPS-Datenverkehrs ausschließlich für Speicherkonten
-          displayName: 'deny, all'
-          href: samples/ensure-https-storage-account.md
-        - name: Gewährleisten der Verschlüsselung von Speicherdateien
-          displayName: 'deny, all'
-          href: samples/ensure-storage-file-encryption.md
+        - name: Vergleichstest für die Azure-Sicherheit
+          href: ./samples/azure-security-benchmark.md
+        - name: CIS Microsoft Azure Foundations Benchmark
+          href: ./samples/cis-azure-1-1-0.md
+        - name: HIPAA HITRUST 9.2
+          href: ./samples/hipaa-hitrust-9-2.md
+        - name: NIST SP 800-53 R4
+          href: ./samples/nist-sp-800-53-r4.md
+        - name: NIST SP 800-171 R2
+          href: ./samples/nist-sp-800-171-r2.md
 - name: Konzepte
   items:
-    - name: Struktur von Azure Policy-Definitionen
+    - name: Definitionsstruktur
       displayName: 'parameters, location, rule, alias, initiatives'
       href: ./concepts/definition-structure.md
-    - name: Grundlegendes zu Richtlinienauswirkungen
+    - name: Verstehen von Effekten
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
-    - name: Azure Policy-Zuweisungsstruktur
+    - name: Bereich
+      displayName: 'location, notScope, exemption, waiver, save'
+      href: ./concepts/scope.md
+    - name: Struktur der Initiative
+      displayName: 'parameters, groups, domains, policies'
+      href: ./concepts/initiative-definition-structure.md
+    - name: Zuweisungsstruktur
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
+    - name: Ausnahmenstruktur
+      displayName: 'waiver, mitigated, compliance'
+      href: ./concepts/exemption-structure.md
     - name: Auswerten der Auswirkung einer neuen Richtlinie
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
-    - name: Azure Policy für Kubernetes
-      displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
-      href: ./concepts/rego-for-aks.md
+    - name: Empfohlene Richtlinien
+      displayName: 'VMs, virtual machines'
+      href: ./concepts/recommended-policies.md
+    - name: Einhaltung gesetzlicher Bestimmungen
+      displayName: 'standards, domains, controls'
+      href: ./concepts/regulatory-compliance.md
+    - name: "Entwerfen von Workflows für Azure\_Policy-as-Code"
+      displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
+      href: ./concepts/policy-as-code.md
+    - name: Kubernetes-Integration
+      items:
+        - name: Azure Policy für Kubernetes
+          displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
+          href: ./concepts/policy-for-kubernetes.md
+        - name: Schützen von Pods mit Azure Policy
+          displayName: 'aks, psp, rego, opa'
+          href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Überwachen virtueller Computer mit der Gastkonfiguration
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline für Azure-Sicherheitsvergleichstest
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: Anleitungen
   items:
+    - name: Azure Policy-Erweiterung für VS Code
+      displayName: visual studio code
+      href: ./how-to/extension-for-vscode.md
     - name: Programmgesteuertes Erstellen von Richtlinien
       displayName: 'assign, definition'
       href: ./how-to/programmatically-create.md
     - name: Erstellen von Richtlinien für Arrayeigenschaften
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
-    - name: Erstellen einer Gastkonfigurationsrichtlinie
-      displayName: 'powershell, dsc, chef, linux, windows'
-      href: ./how-to/guest-configuration-create.md
+    - name: Exportieren von Azure Policy-Ressourcen
+      displayName: 'github, json, definition'
+      href: ./how-to/export-resources.md
+    - name: Gastkonfiguration
+      items:
+        - name: Erstellen einer Gastkonfigurationsrichtlinie unter Windows
+          displayName: 'powershell, dsc, chef, windows'
+          href: ./how-to/guest-configuration-create.md
+        - name: Erstellen einer Gastkonfigurationsrichtlinie unter Linux
+          displayName: 'powershell, dsc, chef, linux'
+          href: ./how-to/guest-configuration-create-linux.md
+        - name: Erstellen einer Gastkonfigurationsrichtlinie aus einer Gruppenrichtlinie
+          displayName: 'powershell, dsc, grouppolicy, windows'
+          href: ./how-to/guest-configuration-create-group-policy.md
     - name: Abrufen von Konformitätsdaten
       displayName: 'evaluation, scan, summarize, query, events, log analytics'
       href: ./how-to/get-compliance-data.md
@@ -289,37 +174,91 @@
     - name: Korrigieren nicht konformer Ressourcen
       displayName: 'managed identity, task, definition, roleDefinitionIds'
       href: ./how-to/remediate-resources.md
-    - name: Aktivieren von Azure Monitor für VMs (Vorschauversion)
-      displayName: 'insights, log analytics, builtin'
-      href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json
+    - name: Azure-Schlüsseltresor-Integration
+      items:
+        - name: Integrieren von Key Vault in Azure Policy
+          displayName: 'key vault, certificate, key'
+          href: ../../key-vault/general/azure-policy.md?bc=/azure/governance/policy/breadcrumb/toc.json&toc=/azure/governance/policy/toc.json
+    - name: Azure Lighthouse-Integration
+      items:
+        - name: Bedarfsorientiertes Bereitstellen einer Richtlinie
+          displayName: 'lighthouse, scale, deploy'
+          href: ../../lighthouse/how-to/policy-at-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+        - name: 'Bereitstellen einer Richtlinie, die gewartet werden kann'
+          displayName: 'lighthouse, scale, remediate'
+          href: ../../lighthouse/how-to/deploy-policy-remediation.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+    - name: Azure Monitor-Integration
+      items:
+        - name: Bereitstellen von Azure Monitor im großen Stil
+          displayName: 'monitor, diagnostic settings, dependency agent'
+          href: ../../azure-monitor/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+        - name: Aktivieren von Azure Monitor für VMs (Vorschauversion)
+          displayName: 'monitor, insights, log analytics, builtin'
+          href: ../../azure-monitor/insights/vminsights-enable-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+    - name: Integration von Azure Storage
+      items:
+        - name: Überwachen von TLS mit Azure Policy
+          href: ../../storage/common/transport-layer-security-configure-minimum-version.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json#use-azure-policy-to-enforce-the-minimum-tls-version
+    - name: Integration von Azure Web Application Firewall
+      items:
+        - name: Integrieren von WAF in Azure Policy
+          href: ../../web-application-firewall/shared/waf-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+- name: Problembehandlung
+  items:
+    - name: Häufige Probleme
+      href: ./troubleshoot/general.md
+    - name: Bekannte Probleme
+      href: 'https://github.com/azure/azure-policy#known-issues'
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/policy
     - name: Azure PowerShell
       items:
         - name: Richtlinie
-          href: '/powershell/module/az.resources/#policies'
+          href: /powershell/module/az.resources#policy
         - name: Policy Insights
-          href: '/powershell/module/az.policyinsights#policy_insights'
+          href: /powershell/module/az.policyinsights
         - name: Gastkonfiguration
           href: 'https://www.powershellgallery.com/packages/Az.GuestConfiguration'
     - name: Azure SDK für .NET
       items:
-        - name: Arbeitsaufträge
+        - name: Zuweisungen
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: Richtliniendefinitionen
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - name: Azure SDK für Java
+      items:
+        - name: Zuweisungen
+          href: /java/api/com.microsoft.azure.management.resources.policyassignment
+        - name: Richtliniendefinitionen
+          href: /java/api/com.microsoft.azure.management.resources.PolicyDefinitions
+    - name: Azure SDK für JavaScript
+      items:
+        - name: Richtlinie
+          href: /javascript/api/@azure/arm-policy
+        - name: Policy Insights
+          href: /javascript/api/@azure/arm-policyinsights
+    - name: Azure SDK für Python
+      items:
+        - name: Richtlinie
+          href: /python/api/azure-mgmt-resource/azure.mgmt.resource.policy
+        - name: Richtlinienclient
+          href: /python/api/azure-mgmt-resource/azure.mgmt.resource.policyclient
+        - name: Policy Insights
+          href: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - name: REST
       items:
         - name: Events
           href: /rest/api/policy-insights/policyevents
         - name: Zustände
           href: /rest/api/policy-insights/policystates
-        - name: Arbeitsaufträge
+        - name: Zuweisungen
           href: /rest/api/resources/policyassignments
         - name: Richtliniendefinitionen
           href: /rest/api/resources/policydefinitions
+        - name: Richtlinienausnahmen
+          href: /rest/api/resources/policyexemptions
         - name: Initiativendefinitionen
           href: /rest/api/resources/policysetdefinitions
         - name: Durch Richtlinie überwachte Ressourcen
@@ -330,33 +269,65 @@
           href: /rest/api/guestconfiguration/
     - name: Resource Manager-Vorlagen
       items:
-        - name: Arbeitsaufträge
+        - name: Zuweisungen
           href: /azure/templates/microsoft.authorization/policyassignments
         - name: Richtliniendefinitionen
           href: /azure/templates/microsoft.authorization/policydefinitions
         - name: Initiativendefinitionen
           href: /azure/templates/microsoft.authorization/policysetdefinitions
+    - name: Terraform-Ressourcen
+      items:
+        - name: Zuweisung
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_assignment.html'
+        - name: Definition
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_definition.html'
+        - name: Initiative (Satzdefinition)
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_set_definition.html'
+        - name: Wiederherstellung
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_remediation.html'
 - name: Ressourcen
   items:
     - name: GitHub – Azure Policy-Beispiele
       href: 'https://github.com/Azure/azure-policy'
-    - name: Video – Build 2018
-      href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
-    - name: YouTube-Kanal zu Governance
-      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-    - name: Videos zur Gastkonfiguration
+    - name: Communitytools
       items:
-        - name: Erste Schritte
-          href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
-        - name: Grundlegendes zu Initiativen
-          href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'
-        - name: Zuweisen der Richtlinie
-          href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
-        - name: Problembehandlungsaufgabe
-          href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
+        - name: GitHub – Repository zu Community-Richtlinien
+          href: 'https://github.com/Azure/Community-Policy'
+        - name: GitHub-Aktion für die Azure Policy-Konformitätsprüfung
+          href: 'https://github.com/marketplace/actions/azure-policy-compliance-scan'
+        - name: "Azure\_Governance-Dashboard für CCO"
+          href: 'https://github.com/Azure/ccodashboard/blob/master/README.md#cco-azure-governance-dashboard-report-pages'
+        - name: AzAdvertizer
+          href: 'https://www.azadvertizer.net/'
+        - name: Azure Governance-Schnellansicht
+          href: 'https://github.com/julianhayward/azure-mg-sub-governance-reporting'
+        - name: Azure Policy-Skripts für Azure Monitor
+          href: 'https://github.com/JimGBritt/AzurePolicy/tree/master/AzureMonitor/Scripts'
+    - name: Feedback und Support
+      items:
+        - name: Microsoft Q&A (Fragen und Antworten) für Azure Policy
+          href: /answers/topics/azure-policy.html
+        - name: Azure-Supportticket
+          href: 'https://azure.microsoft.com/support/create-ticket/'
+        - name: UserVoice
+          href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345055'
+    - name: Videos
+      items:
+        - name: YouTube-Kanal zu Governance
+          href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
+        - name: Video – Ignite 2019
+          href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
+        - name: Videos zur Gastkonfiguration
+          items:
+            - name: Erste Schritte
+              href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
+            - name: Grundlegendes zu Initiativen
+              href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'
+            - name: Zuweisen der Richtlinie
+              href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
+            - name: Problembehandlungsaufgabe
+              href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: UserVoice
-      href: 'https://feedback.azure.com/forums/915958-azure-governance'

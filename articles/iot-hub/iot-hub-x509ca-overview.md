@@ -8,12 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- 'Role: System Architecture'
+ms.openlocfilehash: 455f1f3e1c8181646fbe165d0f1aea6a2fb2fb13
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257577"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150696"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Geräteauthentifizierung mit X.509-Zertifikaten
 
@@ -23,6 +27,8 @@ Dieser Artikel beschreibt, wie Zertifikate von X.509-Zertifizierungsstellen (Cer
 * Registrieren des X.509-Zertifizierungsstellenzertifikats bei IoT Hub
 * Signieren von Geräten mit X.509-Zertifikaten
 * Authentifizieren von Geräten, die von der X.509-Zertifizierungsstelle signiert sind
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="overview"></a>Übersicht
 
@@ -50,7 +56,7 @@ Der Besitzer eines X.509-Zertifikats kann kryptografisch eine Zwischenzertifizie
 
 ![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
 
-Beim Gerätezertifikat (auch als „untergeordnetes Zertifikat“ bezeichnet) muss der *Antragstellername* auf die **Geräte-ID** festgelegt werden, die bei der Registrierung des IoT-Geräts im Azure IoT Hub verwendet wurde. Diese Einstellung ist für die Authentifizierung erforderlich.
+Beim Gerätezertifikat (auch als „untergeordnetes Zertifikat“ bezeichnet) muss der *Antragstellername* auf die **Geräte-ID** (`CN=deviceId`) festgelegt werden, die bei der Registrierung des IoT-Geräts im Azure IoT Hub verwendet wurde. Diese Einstellung ist für die Authentifizierung erforderlich.
 
 Hier erfahren Sie, wie Sie [eine Zertifikatkette erstellen](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), wie es beim Signieren von Geräten üblich ist.
 
@@ -84,4 +90,4 @@ Hier erfahren Sie, wie Sie [diesen Schritt der Geräteverbindung](iot-hub-securi
 
 Erfahren Sie mehr über [den Wert der X.509-CA-Authentifizierung](iot-hub-x509ca-concept.md) in IoT.
 
-Nutzen Sie zum Einstieg den [IoT Hub Device Provisioning-Dienst](https://docs.microsoft.com/azure/iot-dps/).
+Nutzen Sie zum Einstieg den [IoT Hub Device Provisioning-Dienst](../iot-dps/index.yml).

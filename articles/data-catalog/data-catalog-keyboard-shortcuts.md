@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 72d1ce0ded61b1143f99769319892981f3cd1c10
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "69014452"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Tastenkombinationen für Azure Data Catalog
@@ -18,33 +18,33 @@ ms.locfileid: "69014452"
 ## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Tastenkombinationen für das Data Catalog-Datenquellen-Registrierungstool
 
 ### <a name="general-keyboard-shortcuts"></a>Allgemeine Tastenkombinationen
-| Vorgang | Drücken Sie |
+| Vorgang | Tastenkombination |
 | --- | --- |
-| Zu den einzelnen Steuerelementen auf der Seite gelangen |TAB |
+| Zu den einzelnen Steuerelementen auf der Seite gelangen |Registerkarte |
 | Option wählen |EINGABE- oder LEERTASTE |
 | Seite maximieren |WINDOWS-TASTE+NACH-OBEN-TASTE |
 | Seite wiederherstellen/minimieren |WINDOWS-TASTE+NACH-UNTEN-TASTE |
 | Seitenmenü öffnen |ALT+LEERTASTE |
 
 ### <a name="authentication-page"></a>Authentifizierungsseite
-| Vorgang | Drücken Sie |
+| Vorgang | Tastenkombination |
 | --- | --- |
 | Beim Dienst anmelden |ALT+S |
 
 ### <a name="data-source-selection-page"></a>Seite zur Datenquellenauswahl
-| Vorgang | Drücken Sie |
+| Vorgang | Tastenkombination |
 | --- | --- |
 | Zur nächsten Seite wechseln (sofern aktiviert) |ALT+N |
 | Ausgewählten Typ ändern, wenn eine Kachel im Fokus ist |NACH-LINKS, -OBEN, -RECHTS ODER -UNTEN-TASTE |
 
 ### <a name="data-source-connection-page"></a>Seite für Datenquellenverbindung
-| Vorgang | Drücken Sie |
+| Vorgang | Tastenkombination |
 | --- | --- |
 | Zur vorherigen Seite wechseln (sofern aktiviert) |ALT+P |
 | Schaltfläche „Verbinden“ auswählen |ALT+C |
 
 ### <a name="connection-context-page"></a>Seite mit dem Verbindungskontext
-| Vorgang | Drücken Sie |
+| Vorgang | Tastenkombination |
 | --- | --- |
 | Schaltfläche „Registrieren“ (sofern aktiviert) |ALT+R |
 | Kontrollkästchen „Vorschau einschließen“ (falls verfügbar). |ALT+P |
@@ -54,20 +54,20 @@ ms.locfileid: "69014452"
 | Ausgewählte Elemente für **Verfügbare Objekte** oder **Zu registrierende Objekte** verschieben |LEERTASTE |
 
 ### <a name="publish-progress-page"></a>Seite „Status veröffentlichen“
-| Vorgang | Drücken Sie |
+| Vorgang | Tastenkombination |
 | --- | --- |
 | Schaltfläche „Abbrechen“ |ALT+C |
 | Schaltfläche „Weitere Objekte registrieren“ |ALT+R |
 | Schaltfläche „Portal anzeigen“ |ALT+V |
 
 ### <a name="publish-progress-page"></a>Seite „Status veröffentlichen“
-| Vorgang | Drücken Sie |
+| Vorgang | Tastenkombination |
 | --- | --- |
 | Schaltfläche „Speichern“ (sofern aktiviert) |ALT+S |
 | Schaltfläche „Abbrechen“ |ALT+C |
 
 ## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>Tastenkombinationen für das Data Catalog-Portal
-| Vorgang | Drücken Sie |
+| Vorgang | Tastenkombination |
 | --- | --- |
 | Navigieren |TAB und UMSCHALT+TAB |
 | Auf ein Element klicken |LEERTASTE oder EINGABETASTE |

@@ -1,82 +1,89 @@
 ---
-title: Einrichten von Device Provisioning im Azure-Portal | Microsoft-Dokumentation
-description: Azure-Schnellstart – Einrichten des Azure IoT Hub Device Provisioning-Diensts im Azure-Portal
+title: 'Schnellstart: Einrichten von IoT Hub Device Provisioning Service im Azure-Portal'
+description: 'Schnellstart: Einrichten von Azure IoT Hub Device Provisioning Service (DPS) im Azure-Portal'
 author: wesmc7777
 ms.author: wesmc
-ms.date: 07/12/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 0b16c6da0066ac4e919c1bef031d3206a359aae6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 644635d1ab7b0a43c8df3e10bbbd02d1ea67a94a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818118"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297231"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Schnellstart: Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal
 
-Diese Schritte veranschaulichen, wie Sie die Azure-Cloudressourcen im Portal für die Bereitstellung Ihrer Geräte einrichten. Dieser Artikel enthält Schritte für die Erstellung Ihres IoT Hub, die Erstellung eines neuen IoT Hub Device Provisioning-Diensts und die Verknüpfung der beiden Dienste. 
+Der IoT Hub Device Provisioning Service kann mit IoT Hub verwendet werden, um die JIT-Bereitstellung im gewünschten IoT-Hub ohne manuelles Eingreifen zu ermöglichen, sodass Kunden Millionen von IoT-Geräten sicher und skalierbar bereitstellen können. Der Azure IOT Hub Device Provisioning Service unterstützt IoT-Geräte mit TPM, symmetrischem Schlüssel und X.509-Zertifikatauthentifizierungen. Weitere Informationen finden Sie unter [Bereitstellung von Geräten mit dem Azure IoT Hub Device Provisioning Service](./about-iot-dps.md).
+
+In diesem Schnellstart erfahren Sie, wie Sie den IoT Hub Device Provisioning Service im Azure-Portal einrichten, um Ihre Geräte mit den folgenden Schritten bereitzustellen:
+
+* Erstellen eines IoT Hubs mit dem Azure-Portal
+* Erstellen eines IoT Hub Device Provisioning-Diensts und Abrufen des ID-Bereichs mit dem Azure-Portal
+* Verknüpfen von IoT Hub mit dem Device Provisioning-Dienst
+
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 
-## <a name="create-a-new-instance-for-the-iot-hub-device-provisioning-service"></a>Erstellen einer neuen Instanz für den IoT Hub Device Provisioning-Dienst
+## <a name="create-a-new-iot-hub-device-provisioning-service"></a>Erstellen eines neuen IoT Hub Device Provisioning Service
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
+1. Wählen Sie die Schaltfläche **+ Ressource erstellen** erneut aus.
 
-2. Verwenden Sie die Option *Marketplace durchsuchen*, um den Marketplace nach dem **Device Provisioning-Dienst** zu durchsuchen. Wählen Sie den **IoT Hub Device Provisioning-Dienst** aus, und klicken Sie auf die Schaltfläche **Erstellen**. 
+2. Verwenden Sie die Option *Marketplace durchsuchen*, um den Marketplace nach **Device Provisioning Service** zu durchsuchen. Wählen Sie **IoT Hub Device Provisioning Service** und dann die Schaltfläche **Erstellen** aus. 
 
-3. Geben Sie folgende Informationen für Ihre neue Instanz des Device Provisioning-Diensts an, und klicken Sie anschließend auf **Erstellen**.
+3. Geben Sie folgende Informationen für Ihre neue Device Provisioning Service-Instanz an, und wählen Sie **Erstellen** aus.
 
-    * **Name:** Geben Sie einen eindeutigen Namen für Ihre neue Instanz des Device Provisioning-Diensts an. Wenn der eingegebene Name verfügbar ist, wird ein grünes Häkchen angezeigt.
-    * **Abonnement:** Wählen Sie das Abonnement aus, das Sie zum Erstellen dieser Instanz des Device Provisioning-Diensts verwenden möchten.
-    * **Ressourcengruppe:** In diesem Feld können Sie eine neue Ressourcengruppe erstellen oder eine bereits vorhandene Ressourcengruppe für die neue Instanz auswählen. Wählen Sie die Ressourcengruppe aus, die auch die weiter oben erstellte IoT Hub-Instanz enthält (beispielsweise **TestResources**). Wenn Sie alle verwandten Ressourcen in einer Gruppe zusammenfassen, können Sie sie zusammen verwalten. Wenn Sie beispielsweise die Ressourcengruppe löschen, werden alle Ressourcen in dieser Gruppe gelöscht. Weitere Informationen finden Sie unter [Verwalten von Azure Resource Manager-Ressourcengruppen](../azure-resource-manager/manage-resource-groups-portal.md).
+    * **Name:** Geben Sie einen eindeutigen Namen für Ihre neue Device Provisioning Service-Instanz an. Wenn der eingegebene Name verfügbar ist, wird ein grünes Häkchen angezeigt.
+    * **Abonnement:** Wählen Sie das Abonnement aus, das Sie zum Erstellen dieser Device Provisioning Service-Instanz verwenden möchten.
+    * **Ressourcengruppe:** In diesem Feld können Sie eine neue Ressourcengruppe erstellen oder eine bereits vorhandene Ressourcengruppe für die neue Instanz auswählen. Wählen Sie die Ressourcengruppe aus, die auch die weiter oben erstellte IoT Hub-Instanz enthält (beispielsweise **TestResources**). Wenn Sie alle verwandten Ressourcen in einer Gruppe zusammenfassen, können Sie sie zusammen verwalten. Wenn Sie beispielsweise die Ressourcengruppe löschen, werden alle Ressourcen in dieser Gruppe gelöscht. Weitere Informationen finden Sie unter [Verwalten von Azure Resource Manager-Ressourcengruppen](../azure-resource-manager/management/manage-resource-groups-portal.md).
     * **Standort:** Wählen Sie den Standort aus, der Ihren Geräten am nächsten ist.
 
-      ![Eingeben grundlegender Informationen zur Instanz Ihres Device Provisioning-Diensts auf dem Portalblatt](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
+      ![Eingeben grundlegender Informationen zu Ihrer Device Provisioning Service-Instanz auf dem Portalblatt](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
-4. Klicken Sie auf die Benachrichtigungsschaltfläche, um die Erstellung der Ressourceninstanz zu überwachen. Klicken Sie nach erfolgreicher Bereitstellung des Diensts auf **An Dashboard anheften** und anschließend auf **Zu Ressource wechseln**.
+4. Wählen Sie die Benachrichtigungsschaltfläche aus, um die Erstellung der Ressourceninstanz zu überwachen. Wählen Sie nach erfolgreicher Bereitstellung des Diensts die Option **An Dashboard anheften** und dann **Zu Ressource wechseln** aus.
 
     ![Überwachen der Bereitstellungsbenachrichtigung](./media/quick-setup-auto-provision/pin-to-dashboard.png)
 
-## <a name="link-the-iot-hub-and-your-device-provisioning-service"></a>Verknüpfen von IoT Hub und Ihrem Device Provisioning-Dienst
+## <a name="link-the-iot-hub-and-your-device-provisioning-service"></a>Verknüpfen des IoT-Hubs und Ihres Gerätebereitstellungsdiensts
 
-In diesem Abschnitt fügen Sie der Instanz des Device Provisioning-Diensts eine Konfiguration hinzu. Diese Konfiguration legt die IoT Hub-Instanz fest, für die Geräte bereitgestellt werden.
+In diesem Abschnitt fügen Sie der Device Provisioning Service-Instanz eine Konfiguration hinzu. Diese Konfiguration legt die IoT Hub-Instanz fest, für die Geräte bereitgestellt werden.
 
-1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf die Schaltfläche **Alle Ressourcen**. Wählen Sie die Instanz des Device Provisioning-Diensts aus, die Sie im vorherigen Abschnitt erstellt haben.  
+1. Wählen Sie im Azure-Portal im Menü links die Schaltfläche **Alle Ressourcen** aus. Wählen Sie die Instanz des Device Provisioning-Diensts aus, die Sie im vorherigen Abschnitt erstellt haben. 
 
-2. Wählen Sie auf dem Zusammenfassungsblatt des Device Provisioning-Diensts die Option **Linked IoT hubs** (Verknüpfte IoT Hubs). Klicken Sie oben auf die Schaltfläche **+ Hinzufügen**. 
+    Ist Ihr Menü mit dem **Flyout**-Modus anstelle des **angedockten Modus** in den Portaleinstellungen konfiguriert, müssen Sie oben links auf die drei Linien klicken, um das Portalmenü links zu öffnen.  
 
-3. Geben Sie auf der Seite **Verknüpfung zu IoT Hub hinzufügen** die folgenden Informationen an, um Ihre neue Instanz des Device Provisioning-Diensts mit einer IoT Hub-Instanz zu verknüpfen. Klicken Sie anschließend auf **Speichern**. 
+2. Wählen Sie im Menü von Device Provisioning Service die Option **Verknüpfte IoT Hubs** aus. Wählen Sie oben die Schaltfläche **+ Hinzufügen** aus. 
 
-    * **Abonnement:** Wählen Sie das Abonnement mit der IoT Hub-Instanz aus, die Sie mit Ihrer neuen Instanz des Device Provisioning-Diensts verknüpfen möchten.
-    * **IoT Hub:** Wählen Sie die IoT Hub-Instanz aus, die Sie mit Ihrer neuen Instanz des Device Provisioning-Diensts verknüpfen möchten.
+3. Geben Sie auf der Seite **Verknüpfung zu IoT Hub hinzufügen** die folgenden Informationen an, um Ihre neue Instanz des Device Provisioning-Diensts mit einer IoT Hub-Instanz zu verknüpfen. Wählen Sie dann **Speichern** aus. 
+
+    * **Abonnement:** Wählen Sie das Abonnement mit dem IoT-Hub aus, den Sie mit Ihrer neuen Device Provisioning Service-Instanz verknüpfen möchten.
+    * **IoT Hub:** Wählen Sie den IoT-Hub aus, den Sie mit Ihrer neuen Device Provisioning Service-Instanz verknüpfen möchten.
     * **Zugriffsrichtlinie:** Wählen Sie **iothubowner** als Anmeldeinformationen für die Verknüpfung mit der IoT Hub-Instanz aus.  
 
-      ![Verknüpfen des Hubnamens mit der Instanz des Device Provisioning-Diensts auf dem Portalblatt](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
+      ![Verknüpfen des Hubnamens mit der Device Provisioning Service-Instanz auf dem Portalblatt](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
 
-3. Der ausgewählte Hub sollte jetzt unter dem Blatt **Linked IoT hubs** (Verknüpfte IoT Hubs) angezeigt werden. Unter Umständen müssen Sie auf **Aktualisieren** klicken, um **Linked IoT hubs** (Verknüpfte IoT Hubs) anzuzeigen.
-
+3. Der ausgewählte Hub sollte jetzt unter dem Blatt **Linked IoT hubs** (Verknüpfte IoT Hubs) angezeigt werden. Möglicherweise müssen Sie **Aktualisieren** auswählen, damit sie angezeigt wird.
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Andere Schnellstartanleitungen in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Wenn Sie planen, mit den nachfolgenden Schnellstarts oder Tutorials fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts im Azure-Portal zu löschen.
+Andere Schnellstarts in dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie planen, mit den nachfolgenden Schnellstarts oder Tutorials fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts im Azure-Portal zu löschen.
 
-1. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und wählen Sie Ihren Device Provisioning-Dienst aus. Klicken Sie im oberen Bereich des Blatts **Alle Ressourcen** auf **Löschen**.  
-2. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Alle Ressourcen**, und wählen Sie Ihre IoT Hub-Instanz aus. Klicken Sie im oberen Bereich des Blatts **Alle Ressourcen** auf **Löschen**.  
+1. Wählen Sie im Azure-Portal im Menü links **Alle Ressourcen** und dann Ihren Gerätebereitstellungsdienst aus. Wählen Sie oben im Bereich mit den Gerätedetails **Löschen** aus.  
+2. Wählen Sie im linken Menü im Azure-Portal **Alle Ressourcen** und dann Ihren IoT-Hub aus. Wählen Sie oben im Bereich mit den Hubdetails **Löschen** aus.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine IoT Hub-Instanz und eine Instanz des Device Provisioning-Diensts bereitgestellt und die beiden Ressourcen verknüpft. Sie können mit dem Schnellstart zur Erstellung eines simulierten Geräts fortfahren, um zu erfahren, wie Sie diese Einrichtung zum Bereitstellen eines simulierten Geräts verwenden.
+In diesem Schnellstart haben Sie einen IoT-Hub und einen Gerätebereitstellungsdienst bereitgestellt und die beiden Ressourcen verknüpft. Sie können mit dem Schnellstart zur Erstellung eines simulierten Geräts fortfahren, um zu erfahren, wie Sie diese Einrichtung zum Bereitstellen eines simulierten Geräts verwenden.
 
 > [!div class="nextstepaction"]
-> [Schnellstart zum Erstellen eines simulierten Geräts](./quick-create-simulated-device.md)
+> [Schnellstart zum Erstellen eines simulierten Geräts](./quick-create-simulated-device-symm-key.md)

@@ -1,25 +1,20 @@
 ---
-title: Erzwingen der Sicherheit mit Richtlinien auf virtuellen Windows-Computern in Azure | Microsoft-Dokumentation
+title: Erzwingen der Sicherheit mit Richtlinien auf virtuellen Windows-Computern in Azure
 description: Anwenden einer Richtlinie auf einen virtuellen Windows-Computer des Azure Resource Manager
-services: virtual-machines-windows
-documentationcenter: ''
-author: singhkays
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 0b71ba54-01db-43ad-9bca-8ab358ae141b
+author: mimckitt
+manager: vashan
 ms.service: virtual-machines-windows
+ms.subservice: security
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/02/2017
-ms.author: kasing
-ms.openlocfilehash: 172906c3b03b7c001763e8c374487a3ff33c8f07
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: mimckitt
+ms.openlocfilehash: fb847a8935a438b4d2668733e87571aefdca26a1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088946"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87288287"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Anwenden von Richtlinien auf virtuelle Windows-Computer mit Azure Resource Manager
 Mithilfe von Richtlinien kann eine Organisation verschiedene Konventionen und Regeln im gesamten Unternehmen durchsetzen. Die Durchsetzung des gewünschten Verhaltens hilft dabei, Risiken zu mindern, und trägt gleichzeitig zum Erfolg des Unternehmens bei. In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-Richtlinien verwenden können, um das gewünschte Verhalten für die virtuellen Computer Ihrer Organisation zu definieren.
@@ -36,7 +31,6 @@ Um sicherzustellen, dass virtuelle Computer für Ihre Organisation mit einer Anw
       {
         "field": "type",
         "in": [
-          "Microsoft.Compute/disks",
           "Microsoft.Compute/virtualMachines",
           "Microsoft.Compute/VirtualMachineScaleSets"
         ]

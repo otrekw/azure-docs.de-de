@@ -1,36 +1,36 @@
 ---
-title: Verwalten gleichzeitiger Schreibvorgänge bei Ressourcen – Azure Search
-description: Verwenden Sie die optimistische Nebenläufigkeit, um während der Ausführung von Update- und Löschvorgängen Konflikte in Azure Search-Indizes, Indexern und Datenquellen zu vermeiden.
-author: HeidiSteen
+title: Verwalten gleichzeitiger Schreibvorgänge bei Ressourcen
+titleSuffix: Azure Cognitive Search
+description: Verwenden Sie die optimistische Nebenläufigkeit, um während der Ausführung von Update- und Löschvorgängen Konflikte in Indizes, Indexern und Datenquellen der kognitiven Azure-Suche zu vermeiden.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 07/21/2017
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 67f2dad016d3958dc10ba87e785d31694a1c94f5
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1cb8d578c05166f88ed7e91681dd6b5f15b1e3e5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656720"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358642"
 ---
-# <a name="how-to-manage-concurrency-in-azure-search"></a>Verwalten der Parallelität in Azure Search
+# <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Verwalten der Parallelität in der kognitiven Azure-Suche
 
-Beim Verwalten von Azure Search-Ressourcen wie Indizes und Datenquellen ist es wichtig, dass Ressourcen auf sichere Weise aktualisiert werden, insbesondere wenn unterschiedliche Komponenten Ihrer Anwendung gleichzeitig auf Ressourcen zugreifen. Wenn zwei Clients eine Ressource gleichzeitig unkoordiniert aktualisieren, können Racebedingungen auftreten. Um dies zu verhindern, folgt Azure Search dem *Modell der optimistischen Nebenläufigkeit*. Es gibt keine Sperren für eine Ressource. Stattdessen ist für jede Ressource, die durch die Ressourcenversion angegeben wird, ein ETag vorhanden, damit Sie Anforderungen erstellen können, die ein versehentliches Überschreiben verhindern.
+Beim Verwalten von Ressourcen der kognitiven Azure-Suche wie Indizes und Datenquellen ist es wichtig, dass Ressourcen auf sichere Weise aktualisiert werden, insbesondere wenn unterschiedliche Komponenten der Anwendung gleichzeitig auf Ressourcen zugreifen. Wenn zwei Clients eine Ressource gleichzeitig unkoordiniert aktualisieren, können Racebedingungen auftreten. Um dies zu verhindern, folgt die kognitive Azure-Suche dem *Modell der optimistischen Nebenläufigkeit*. Es gibt keine Sperren für eine Ressource. Stattdessen ist für jede Ressource, die durch die Ressourcenversion angegeben wird, ein ETag vorhanden, damit Sie Anforderungen erstellen können, die ein versehentliches Überschreiben verhindern.
 
 > [!Tip]
-> Der konzeptionelle Code in einer [C#-Beispiellösung](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) dient der Erläuterung der Funktionsweise der Parallelitätssteuerung in Azure Search. Mit dem Code werden Bedingungen erstellt, die die Parallelitätssteuerung aufrufen. Den meisten Entwickler genügt es, das [Codefragment unten](#samplecode) durchzulesen. Wenn Sie es jedoch ausführen möchten, bearbeiten Sie die Datei „appsettings.json“, indem Sie den Dienstnamen und einen Admin-API-Schlüssel hinzufügen. Wenn die Dienst-URL von `http://myservice.search.windows.net` lautet, ist der Dienstname `myservice`.
+> Der konzeptionelle Code in einer [C#-Beispiellösung](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) dient der Erläuterung der Funktionsweise der Parallelitätssteuerung in der kognitiven Azure-Suche. Mit dem Code werden Bedingungen erstellt, die die Parallelitätssteuerung aufrufen. Den meisten Entwickler genügt es, das [Codefragment unten](#samplecode) durchzulesen. Wenn Sie es jedoch ausführen möchten, bearbeiten Sie die Datei „appsettings.json“, indem Sie den Dienstnamen und einen Admin-API-Schlüssel hinzufügen. Wenn die Dienst-URL von `http://myservice.search.windows.net` lautet, ist der Dienstname `myservice`.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Die optimistische Nebenläufigkeit ist über Prüfungen von Zugriffsbedingungen in API-Aufrufen implementiert, die in Indizes, Indexer, Datenquellen und synonymMap-Ressourcen schreiben.
 
-Alle Ressourcen verfügen über ein [*Entity Tag (ETag)* ](https://en.wikipedia.org/wiki/HTTP_ETag), das Informationen zur Objektversion bereitstellt. Indem Sie zuerst das ETag überprüfen, können Sie in typischen Workflows (abrufen, lokal ändern, aktualisieren) gleichzeitige Updates vermeiden, indem Sie sicherstellen, dass das ETag der Ressource mit dem der lokalen Kopie übereinstimmt.
+Alle Ressourcen verfügen über ein [*Entity Tag (ETag)*](https://en.wikipedia.org/wiki/HTTP_ETag), das Informationen zur Objektversion bereitstellt. Indem Sie zuerst das ETag überprüfen, können Sie in typischen Workflows (abrufen, lokal ändern, aktualisieren) gleichzeitige Updates vermeiden, indem Sie sicherstellen, dass das ETag der Ressource mit dem der lokalen Kopie übereinstimmt.
 
-+ Die REST-API verwendet ein [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) im Anforderungsheader.
-+ Das ETag wird vom .NET SDK über ein accessCondition-Objekt festgelegt, wobei der [If-Match | If-Match-None-Header](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) für die Ressource gesetzt wird. Alle Objekte, die von [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) erben, besitzen ein accessCondition-Objekt.
++ Die REST-API verwendet ein [ETag](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) im Anforderungsheader.
++ Das ETag wird vom .NET SDK über ein accessCondition-Objekt festgelegt, wobei der [If-Match | If-Match-None-Header](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) für die Ressource gesetzt wird. Objekte, die ETags verwenden, z. B. [SynonymMap.ETag](/dotnet/api/azure.search.documents.indexes.models.synonymmap.etag) und [SearchIndex.ETag](/dotnet/api/azure.search.documents.indexes.models.searchindex.etag), weisen ein accessCondition-Objekt auf.
 
 Jedes Mal, wenn Sie eine Ressource aktualisieren, ändert sich dessen ETag automatisch. Wenn Sie die Parallelitätsverwaltung implementieren, fügen Sie lediglich eine Vorbedingung für die Updateanforderung hinzu, die verlangt, dass die Remoteressource das gleiche ETag wie die Kopie der Ressource hat, die Sie auf dem Client geändert haben. Wenn ein gleichzeitig ausgeführter Prozess die Remoteressource bereits geändert hat, stimmt das ETag nicht mit der Vorbedingung überein und die Anforderung gibt den Fehler „HTTP 412“ aus. Wenn Sie das .NET SDK verwenden, erfolgt dies in Form einer `CloudException`, bei der die `IsAccessConditionFailed()`-Erweiterungsmethode „true“ zurückgibt.
 
@@ -45,13 +45,13 @@ Der folgende Code veranschaulicht accessCondition-Prüfungen bei Updatevorgänge
 + Updatefehler, wenn die Ressource nicht mehr vorhanden ist
 + Updatefehler, wenn sich die Ressourcenversion geändert hat
 
-### <a name="sample-code-from-dotnetetagsexplainer-programhttpsgithubcomazure-samplessearch-dotnet-getting-startedtreemasterdotnetetagsexplainer"></a>Beispielcode aus dem [DotNetETagsExplainer-Programm](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
+### <a name="sample-code-from-dotnetetagsexplainer-program"></a>Beispielcode aus dem [DotNetETagsExplainer-Programm](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
 
-```
+```csharp
     class Program
     {
         // This sample shows how ETags work by performing conditional updates and deletes
-        // on an Azure Search index.
+        // on an Azure Cognitive Search index.
         static void Main(string[] args)
         {
             IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
@@ -62,14 +62,14 @@ Der folgende Code veranschaulicht accessCondition-Prüfungen bei Updatevorgänge
             Console.WriteLine("Deleting index...\n");
             DeleteTestIndexIfExists(serviceClient);
 
-            // Every top-level resource in Azure Search has an associated ETag that keeps track of which version
+            // Every top-level resource in Azure Cognitive Search has an associated ETag that keeps track of which version
             // of the resource you're working on. When you first create a resource such as an index, its ETag is
             // empty.
             Index index = DefineTestIndex();
             Console.WriteLine(
                 $"Test index hasn't been created yet, so its ETag should be blank. ETag: '{index.ETag}'");
 
-            // Once the resource exists in Azure Search, its ETag will be populated. Make sure to use the object
+            // Once the resource exists in Azure Cognitive Search, its ETag will be populated. Make sure to use the object
             // returned by the SearchServiceClient! Otherwise, you will still have the old object with the
             // blank ETag.
             Console.WriteLine("Creating index...\n");
@@ -129,9 +129,9 @@ Der folgende Code veranschaulicht accessCondition-Prüfungen bei Updatevorgänge
             serviceClient.Indexes.Delete("test", accessCondition: AccessCondition.GenerateIfExistsCondition());
 
             // This is slightly better than using the Exists method since it makes only one round trip to
-            // Azure Search instead of potentially two. It also avoids an extra Delete request in cases where
+            // Azure Cognitive Search instead of potentially two. It also avoids an extra Delete request in cases where
             // the resource is deleted concurrently, but this doesn't matter much since resource deletion in
-            // Azure Search is idempotent.
+            // Azure Cognitive Search is idempotent.
 
             // And we're done! Bye!
             Console.WriteLine("Complete.  Press any key to end application...\n");
@@ -170,10 +170,11 @@ Der folgende Code veranschaulicht accessCondition-Prüfungen bei Updatevorgänge
 
 Ein Entwurfsmuster für die Implementierung der optimistischen Nebenläufigkeit muss eine Schleife enthalten, in der die Zugriffsbedingungsprüfung, ein Test der Zugriffsbedingung und optional ein Abruf der aktualisierten Ressource wiederholt werden, bevor versucht wird, die Änderungen erneut anzuwenden.
 
-Dieser Codeausschnitt veranschaulicht das Hinzufügen einer synonymMap zu einem bereits vorhandenen Index. Dieser Code stammt aus [Synonyme – C#-Beispiel für Azure Search](search-synonyms-tutorial-sdk.md).
+Dieser Codeausschnitt veranschaulicht das Hinzufügen einer synonymMap zu einem bereits vorhandenen Index. Dieser Code stammt aus [Synonyme – C#-Beispiel für die kognitive Azure-Suche](search-synonyms-tutorial-sdk.md).
 
 Im Codeausschnitt wird der Index „hotels“ abgerufen, in einem Updatevorgang die Objektversion überprüft, eine Ausnahme ausgelöst, wenn der Vorgang fehlschlägt, und der Vorgang dann (bis zu drei Mal) wiederholt, wobei zunächst der Index vom Server abgerufen wird, um die aktuelle Version zu erhalten.
 
+```csharp
         private static void EnableSynonymsInHotelsIndexSafely(SearchServiceClient serviceClient)
         {
             int MaxNumTries = 3;
@@ -204,7 +205,7 @@ Im Codeausschnitt wird der Index „hotels“ abgerufen, in einem Updatevorgang 
             index.Fields.First(f => f.Name == "tags").SynonymMaps = new[] { "desc-synonymmap" };
             return index;
         }
-
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -217,6 +218,6 @@ Versuchen Sie, eines der folgenden Beispiele so zu ändern, dass es ETags oder A
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Allgemeine HTTP-Anforderung und Antwort-Header](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-[HTTP-Statuscodes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[Indexvorgänge (REST-API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[Allgemeine HTTP-Anforderung und Antwort-Header](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
+[HTTP-Statuscodes](/rest/api/searchservice/http-status-codes)
+[Indexvorgänge (REST-API)](/rest/api/searchservice/index-operations)

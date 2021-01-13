@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: a929f5bc-03e2-4b01-b925-973db236f19f
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: bb1a56d204a46f89213f20e317494120f0ea565e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 84fd1a2d3d0dc4ce6960469ea3212b8ca1d4d07c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60580597"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023022"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Deaktivieren und Löschen eines StorSimple Virtual Array
 
@@ -30,15 +30,15 @@ Wenn Sie ein StorSimple Virtual Array deaktivieren, trennen Sie die Verbindung z
 * Deaktivieren eines Geräts 
 * Löschen eines deaktivierten Geräts
 
-Die in diesem Artikel veröffentlichten Informationen gelten nur für StorSimple Virtual Arrays. Informationen zur 8000-Serie finden Sie unter [Deaktivieren und Löschen eines Geräts](storsimple-deactivate-and-delete-device.md).
+Die in diesem Artikel veröffentlichten Informationen gelten nur für StorSimple Virtual Arrays. Informationen zur 8000-Serie finden Sie unter [Deaktivieren und Löschen eines Geräts](./storsimple-8000-deactivate-and-delete-device.md).
 
 ## <a name="when-to-deactivate"></a>Wann sollte deaktiviert werden?
 
 Die Deaktivierung ist ein ENDGÜLTIGER Vorgang und kann nicht rückgängig gemacht werden. Ein deaktiviertes Gerät kann nicht erneut für den StorSimple-Geräte-Manager-Dienst registriert werden. In den folgenden Fällen müssen Sie ein StorSimple Virtual Array möglicherweise deaktivieren und löschen:
 
-* **Geplantes Failover:** Ihr Gerät ist online, und Sie planen das Failover für dieses Gerät. Dies kann erforderlich sein, wenn Sie ein Upgrade auf ein größeres Gerät planen. Nachdem die Dateneigentümerschaft übertragen wurde und das Failover abgeschlossen ist, wird das Quellgerät automatisch gelöscht.
-* **Nicht geplantes Failover:** Ihr Gerät ist offline, und Sie müssen ein Failover für dieses Gerät ausführen. Dieses Szenario kann während eines Notfalls eintreten, wenn es zu einem Ausfall im Datencenter kommt und Ihr primäres Gerät nicht verfügbar ist. Sie planen, das Failover über das Gerät auf ein sekundäres Gerät durchzuführen. Nachdem die Dateneigentümerschaft übertragen wurde und das Failover abgeschlossen ist, wird das Quellgerät automatisch gelöscht.
-* **Außer Betrieb setzen:** Sie möchten das Gerät außer Betrieb setzen. Dazu müssen Sie das Gerät zunächst deaktivieren und anschließend löschen. Wenn Sie ein Gerät deaktivieren, sind die lokal gespeicherten Daten nicht mehr zugänglich. Sie können nur auf Daten zugreifen und sie wiederherstellen, die in der Cloud gespeichert sind. Wenn Sie planen, die Gerätedaten nach der Deaktivierung aufzubewahren, sollten Sie eine Cloudmomentaufnahme aller Daten erstellen, bevor Sie ein Gerät deaktivieren. Mithilfe einer solchen Cloudmomentaufnahme können Sie alle Daten zu einem späteren Zeitpunkt wiederherstellen.
+* **Geplantes Failover**: Ihr Gerät ist online, und Sie planen das Failover für dieses Gerät. Dies kann erforderlich sein, wenn Sie ein Upgrade auf ein größeres Gerät planen. Nachdem die Dateneigentümerschaft übertragen wurde und das Failover abgeschlossen ist, wird das Quellgerät automatisch gelöscht.
+* **Ungeplantes Failover**: Ihr Gerät ist offline, und Sie planen das Failover für dieses Gerät. Dieses Szenario kann während eines Notfalls eintreten, wenn es zu einem Ausfall im Datencenter kommt und Ihr primäres Gerät nicht verfügbar ist. Sie planen, das Failover über das Gerät auf ein sekundäres Gerät durchzuführen. Nachdem die Dateneigentümerschaft übertragen wurde und das Failover abgeschlossen ist, wird das Quellgerät automatisch gelöscht.
+* **Außer Betrieb setzen**: Sie möchten das Gerät außer Betrieb setzen. Dazu müssen Sie das Gerät zunächst deaktivieren und anschließend löschen. Wenn Sie ein Gerät deaktivieren, sind die lokal gespeicherten Daten nicht mehr zugänglich. Sie können nur auf Daten zugreifen und sie wiederherstellen, die in der Cloud gespeichert sind. Wenn Sie planen, die Gerätedaten nach der Deaktivierung aufzubewahren, sollten Sie eine Cloudmomentaufnahme aller Daten erstellen, bevor Sie ein Gerät deaktivieren. Mithilfe einer solchen Cloudmomentaufnahme können Sie alle Daten zu einem späteren Zeitpunkt wiederherstellen.
 
 ## <a name="deactivate-a-device"></a>Deaktivieren eines Geräts
 
@@ -90,5 +90,4 @@ Führen Sie die folgenden Schritte aus, um das Gerät zu löschen.
 
 * Informationen zum Failover finden Sie unter [Notfallwiederherstellung und Gerätefailover für das StorSimple Virtual Array](storsimple-virtual-array-failover-dr.md).
 
-* Weitere Informationen zum Verwenden des StorSimple-Geräte-Manager-Diensts finden Sie unter [Use the StorSimple Device Manager service to administer your StorSimple Virtual Array (Verwalten des StorSimple Virtual Array mithilfe des StorSimple Manager-Diensts)](storsimple-virtual-array-manager-service-administration.md). 
-
+* Weitere Informationen zum Verwenden des StorSimple-Geräte-Manager-Diensts finden Sie unter [Use the StorSimple Device Manager service to administer your StorSimple Virtual Array (Verwalten des StorSimple Virtual Array mithilfe des StorSimple Manager-Diensts)](storsimple-virtual-array-manager-service-administration.md).

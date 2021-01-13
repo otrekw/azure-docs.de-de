@@ -1,30 +1,23 @@
 ---
-title: 'Bewährte Methoden und Problembehandlung für Node.js: Azure App Service'
-description: Machen Sie sich mit den bewährten Methoden und Problembehandlungsschritten für Node-Anwendungen in Azure App Service vertraut.
-services: app-service\web
-documentationcenter: nodejs
-author: ranjithr
-manager: wadeh
-editor: ''
+title: Bewährte Methoden und Problembehandlung bei Node.js
+description: Erfahren Sie etwas über bewährte Methoden und Problembehandlungsschritte für Node.js-Anwendungen, die in Azure App Service ausgeführt werden.
+author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: ranjithr
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 5dae268e2c659bcd39c7b274f2f12c64b4504353
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 370b84f451e22c20c798018951a7a801e0bba826
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719782"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763943"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure App Service unter Windows
 
-In diesem Artikel werden die bewährten Methoden und Problembehandlungsschritte für [Node-Anwendungen](app-service-web-get-started-nodejs.md) beschrieben, die in Azure App Service (mit [iisnode](https://github.com/azure/iisnode)) ausgeführt werden.
+In diesem Artikel werden die bewährten Methoden und Problembehandlungsschritte für [Windows-Node.js-Anwendungen](quickstart-nodejs.md?pivots=platform-windows) beschrieben, die in Azure App Service (mit [iisnode](https://github.com/azure/iisnode)) ausgeführt werden.
 
 > [!WARNING]
 > Gehen Sie mit Bedacht vor, wenn Sie für Ihre Produktionswebsite Schritte zur Problembehandlung ausführen. Es wird empfohlen, die Problembehandlung für Ihre App nicht in der Produktionsumgebung durchzuführen, sondern z.B. in Ihrem Stagingslot. Nachdem das Problem behoben wurde, können Sie den Stagingslot dann durch Ihren Produktionsslot austauschen.
@@ -90,11 +83,11 @@ Für das Streaming von Anwendungen müssen Sie außerdem responseBufferLimit fü
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-Eine durch Semikolons getrennte Liste mit Dateien, die auf Änderungen überprüft werden. Jede Änderung einer Datei bewirkt, dass die Anwendung „recycelt“ wird. Jeder Eintrag besteht aus einem optionalen Verzeichnisnamen und einem erforderlichen Dateinamen. Diese Namen gelten relativ zu dem Verzeichnis, in dem sich der Haupteinstiegspunkt der Anwendung befindet. Platzhalter sind nur im Dateinamenteil zulässig. Der Standardwert lautet `*.js;iisnode.yml`.
+Eine durch Semikolons getrennte Liste mit Dateien, die auf Änderungen überprüft werden. Jede Änderung einer Datei bewirkt, dass die Anwendung „recycelt“ wird. Jeder Eintrag besteht aus einem optionalen Verzeichnisnamen und einem erforderlichen Dateinamen. Diese Namen gelten relativ zu dem Verzeichnis, in dem sich der Haupteinstiegspunkt der Anwendung befindet. Platzhalter sind nur im Dateinamenteil zulässig. Der Standardwert ist `*.js;iisnode.yml`
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-Der Standardwert ist „false“. Wenn diese Einstellung aktiviert ist, kann die Node-Anwendung eine Verbindung mit einer benannten Pipe herstellen (Umgebungsvariable IISNODE\_CONTROL\_PIPE) und eine „recycle“-Nachricht senden. Dies bewirkt, dass w3wp korrekt recycelt wird.
+Der Standardwert ist „FALSE“. Wenn diese Einstellung aktiviert ist, kann die Node-Anwendung eine Verbindung mit einer benannten Pipe herstellen (Umgebungsvariable IISNODE\_CONTROL\_PIPE) und eine „recycle“-Nachricht senden. Dies bewirkt, dass w3wp korrekt recycelt wird.
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
@@ -106,7 +99,7 @@ Der Standardwert ist 0. Dies bedeutet, dass das Feature aktiviert ist. Wenn ein 
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-Der Standardwert ist „false“. Wenn „true“ festgelegt ist, fügt iisnode jeder gesendeten HTTP-Antwort den HTTP-Antwortheader `iisnode-debug` hinzu. Der Headerwert `iisnode-debug` ist eine URL. Sie können einzelne Teile der Diagnoseinformationen ermitteln, indem Sie sich das URL-Fragment ansehen. Wenn Sie eine Visualisierung wünschen, öffnen Sie die URL in einem Browser.
+Der Standardwert ist „FALSE“. Wenn „true“ festgelegt ist, fügt iisnode jeder gesendeten HTTP-Antwort den HTTP-Antwortheader `iisnode-debug` hinzu. Der Headerwert `iisnode-debug` ist eine URL. Sie können einzelne Teile der Diagnoseinformationen ermitteln, indem Sie sich das URL-Fragment ansehen. Wenn Sie eine Visualisierung wünschen, öffnen Sie die URL in einem Browser.
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
@@ -114,7 +107,7 @@ Mit dieser Einstellung wird die Protokollierung von stdout und stderr durch iisn
 
 ### <a name="deverrorsenabled"></a>devErrorsEnabled
 
-Der Standardwert ist „false“. Bei der Festlegung auf „true“ zeigt iisnode den HTTP-Statuscode und win32-Fehlercode in Ihrem Browser an. Der win32-Code ist hilfreich beim Debuggen bestimmter Problemtypen.
+Der Standardwert ist „FALSE“. Bei der Festlegung auf „true“ zeigt iisnode den HTTP-Statuscode und win32-Fehlercode in Ihrem Browser an. Der win32-Code ist hilfreich beim Debuggen bestimmter Problemtypen.
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (nicht für aktive Produktionswebsite aktivieren)
 
@@ -128,13 +121,13 @@ Weitere Informationen zum Debuggen finden Sie unter [Debug node.js applications 
 
 Viele Anwendungen stellen im Rahmen ihres normalen Betriebs ausgehende Verbindungen her. Wenn beispielsweise eine Anforderung empfangen wird, nimmt Ihre Knoten-App in der Regel Kontakt mit einer REST-API an einem anderen Ort auf, um Informationen zur Verarbeitung der Anforderung zu erhalten. Es ist ratsam, für http- oder https-Aufrufe einen Keep-Alive-Agent zu verwenden. Sie können zum Durchführen dieser ausgehenden Aufrufe das agentkeepalive-Modul als Keep-Alive-Agent verwenden.
 
-Das agentkeepalive-Modul stellt sicher, dass Sockets auf Ihrer Azure-Web-App-VM wieder verwendet werden. Das Erstellen eines neuen Sockets für jede ausgehende Anforderung erzeugt zusätzlichen Mehraufwand für Ihre Anwendung. Durch die Wiederverwendung von Sockets für ausgehende Anforderungen wird sichergestellt, dass Ihre Anwendung die pro VM zugeordnete maximale Anzahl von Sockets (maxSockets) nicht überschreitet. Die Empfehlung für Azure App Service lautet, den maxSockets-Wert für agentKeepAlive auf insgesamt 160 Sockets pro VM (4 Instanzen von „node.exe“ \* 40 maxSockets/Instanz) festzulegen.
+Das agentkeepalive-Modul stellt sicher, dass Sockets auf Ihrer Azure-Web-App-VM wieder verwendet werden. Das Erstellen eines neuen Sockets für jede ausgehende Anforderung erzeugt zusätzlichen Mehraufwand für Ihre Anwendung. Durch die Wiederverwendung von Sockets für ausgehende Anforderungen wird sichergestellt, dass Ihre Anwendung die pro VM zugeordnete maximale Anzahl von Sockets (maxSockets) nicht überschreitet. Die Empfehlung für Azure App Service lautet, den maxSockets-Wert für agentKeepAlive auf insgesamt 128 Sockets pro VM (4 Instanzen von „node.exe“ \* 32 maxSockets/Instanz) festzulegen.
 
 Beispielkonfiguration für [agentKeepAlive](https://www.npmjs.com/package/agentkeepalive):
 
 ```nodejs
 let keepaliveAgent = new Agent({
-    maxSockets: 40,
+    maxSockets: 32,
     maxFreeSockets: 10,
     timeout: 60000,
     keepAliveTimeout: 300000
@@ -147,7 +140,7 @@ let keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>Der CPU-Verbrauch meiner Node-Anwendung ist zu hoch.
 
-Möglicherweise erhalten Sie von Azure App Service in Ihrem Portal eine Empfehlung zum hohen CPU-Verbrauch. Sie können auch Monitore einrichten, mit denen bestimmte [Metriken](web-sites-monitor.md) überwacht werden. Sehen Sie sich beim Überprüfen der CPU-Nutzung im [Azure-Portal-Dashboard](../azure-monitor/app/web-monitor-performance.md)die MAX-Werte für die CPU an, damit Ihnen die Spitzenwerte nicht entgehen.
+Möglicherweise erhalten Sie von Azure App Service in Ihrem Portal eine Empfehlung zum hohen CPU-Verbrauch. Sie können auch Monitore einrichten, mit denen bestimmte [Metriken](web-sites-monitor.md) überwacht werden. Sehen Sie sich beim Überprüfen der CPU-Nutzung im [Azure-Portal-Dashboard](../azure-monitor/platform/metrics-charts.md)die MAX-Werte für die CPU an, damit Ihnen die Spitzenwerte nicht entgehen.
 Falls Sie der Meinung sind, dass der CPU-Verbrauch Ihrer Anwendung zu hoch ist, und den Grund dafür nicht kennen, können Sie zur Überprüfung ein Profil für Ihre Node-Anwendung erstellen.
 
 #### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>Profilerstellung für die Node-Anwendung in Azure App Service mit V8-Profiler
@@ -177,9 +170,9 @@ Wechseln Sie zur Website der Debugging-Konsole unter `https://yoursite.scm.azure
 
 Wechseln Sie in das Verzeichnis „site/wwwroot“. Es wird eine Eingabeaufforderung wie im folgenden Beispiel angezeigt:
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
+![Screenshot: Verzeichnis „site/wwwroot“ und Eingabeaufforderung](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
-Führen Sie den Befehl `npm install v8-profiler`aus.
+Führen Sie den Befehl `npm install v8-profiler` aus.
 
 Dieser Befehl installiert v8-profiler im Verzeichnis „node\_modules“ und für alle Abhängigkeiten.
 Bearbeiten Sie nun die Datei „server.js“, um das Profil für Ihre Anwendung zu erstellen.
@@ -210,17 +203,17 @@ http.createServer(function (req, res) {
 
 Mit dem obigen Code wird das Profil für die WriteConsoleLog-Funktion erstellt, und anschließend wird die Profilausgabe in die Datei „profile.cpuprofile“ im Verzeichnis „site/wwwroot“ geschrieben. Senden Sie eine Anforderung an die Anwendung. Sie sehen, dass unter „site/wwwroot“ die Datei „profile.cpuprofile“ erstellt wird.
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
+![Screenshot: Datei „profile.cpuprofile“](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
 Laden Sie diese Datei herunter, und öffnen Sie sie mit den F12-Tools von Chrome. Drücken Sie in Chrome die F12-TASTE, und wählen Sie anschließend die Registerkarte **Profile**. Wählen Sie die Schaltfläche **Laden**. Wählen Sie die Datei „profile.cpuprofile“ aus, die Sie heruntergeladen haben. Klicken Sie auf das Profil, das Sie gerade geladen haben.
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
+![Screenshot: Die von Ihnen geladene Datei „profile.cpuprofile“](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
 Sie sehen, dass 95% der Zeit von der WriteConsoleLog-Funktion verbraucht wurde. Die Ausgabe enthält auch die genauen Zeilennummern und Quelldateien, die das Problem verursacht haben.
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>Der Arbeitsspeicherverbrauch meiner Node-Anwendung ist zu hoch
 
-Wenn Ihre Anwendung zu viel Arbeitsspeicher verbraucht, wird für Azure App Service im Portal ein entsprechender Hinweis angezeigt. Sie können Monitore einrichten, mit denen bestimmte [Metriken](web-sites-monitor.md) überwacht werden. Sehen Sie sich beim Überprüfen der Arbeitsspeichernutzung im [Azure-Portal-Dashboard](../azure-monitor/app/web-monitor-performance.md) die MAX-Werte für den Arbeitsspeicher an, damit Ihnen die Spitzenwerte nicht entgehen.
+Wenn Ihre Anwendung zu viel Arbeitsspeicher verbraucht, wird für Azure App Service im Portal ein entsprechender Hinweis angezeigt. Sie können Monitore einrichten, mit denen bestimmte [Metriken](web-sites-monitor.md) überwacht werden. Sehen Sie sich beim Überprüfen der Arbeitsspeichernutzung im [Azure-Portal-Dashboard](../azure-monitor/platform/metrics-charts.md) die MAX-Werte für den Arbeitsspeicher an, damit Ihnen die Spitzenwerte nicht entgehen.
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Erkennung von Arbeitsspeicherverlusten und Heap-Diff für „node.js“
 
@@ -232,7 +225,7 @@ Sie können `memwatch` genau wie v8-profiler installieren und Ihren Code bearbei
 Es gibt einige Gründe, die dazu führen können, dass „node.exe“ zufällig beendet wird:
 
 1. Ihre Anwendung löst nicht abgefangene Ausnahmen aus. Suchen Sie in der Datei „d:\\home\\LogFiles\\Application\\logging-errors.txt“ nach Details zur ausgelösten Ausnahme. Diese Datei enthält die Stapelüberwachung, die zum Debuggen und Beheben von Anwendungsfehlern verwendet werden kann.
-2. Ihre Anwendung verbraucht zu viel Arbeitsspeicher, und dies wirkt sich auf den Start anderer Prozesse aus. Wenn der gesamte VM-Arbeitsspeicher nahe bei 100 % liegt, werden Ihre „node.exe“-Instanzen möglicherweise vom Prozess-Manager beendet. Der Prozess-Manager beendet einige Prozesse, damit andere Prozesse ausgeführt werden können. Erstellen Sie zum Beheben dieses Problems ein Profil zur Erkennung von Arbeitsspeicherverlusten für Ihre Anwendung. Falls die Anwendung viel Arbeitsspeicher benötigt, skalieren Sie zentral auf eine größere VM hoch (dadurch wird der für die VM verfügbare RAM erhöht).
+2. Ihre Anwendung verbraucht zu viel Arbeitsspeicher, und dies wirkt sich auf den Start anderer Prozesse aus. Wenn der gesamte VM-Arbeitsspeicher nahe bei 100 % liegt, werden Ihre „node.exe“-Instanzen möglicherweise vom Prozess-Manager beendet. Der Prozess-Manager beendet einige Prozesse, damit andere Prozesse ausgeführt werden können. Erstellen Sie zum Beheben dieses Problems ein Profil zur Erkennung von Arbeitsspeicherverlusten für Ihre Anwendung. Falls die Anwendung viel Arbeitsspeicher benötigt, skalieren Sie auf eine größere VM hoch (dadurch wird der für die VM verfügbare RAM erhöht).
 
 ### <a name="my-node-application-does-not-start"></a>Meine Node-Anwendung startet nicht
 
@@ -280,9 +273,9 @@ NODE.exe verfügt über eine Einstellung namens `NODE_PENDING_PIPE_INSTANCES`. I
 
 Unter den unten angegebenen Links finden Sie weitere Informationen zu „node.js“-Anwendungen für Azure App Service.
 
-* [Erste Schritte mit Node.js-Web-Apps in Azure App Service](app-service-web-get-started-nodejs.md)
-* [Debuggen einer Node.js-Web-App in Azure App Service](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
+* [Erste Schritte mit Node.js-Web-Apps in Azure App Service](quickstart-nodejs.md)
+* [Debuggen einer Node.js-Web-App in Azure App Service](/archive/blogs/azureossds/debugging-node-js-apps-on-azure-app-services)
 * [Verwenden von Node.js-Modulen mit Azure-Anwendungen](../nodejs-use-node-modules-azure-apps.md)
-* [Azure App Service-Web-Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Azure App Service-Web-Apps: Node.js](/archive/blogs/silverlining/windows-azure-websites-node-js)
 * [Node.js Developer Center (in englischer Sprache)](../nodejs-use-node-modules-azure-apps.md)
 * [Exploring the Super Secret Kudu Debug Console (Erkunden der geheimen Kudu-Debugkonsole)](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

@@ -1,22 +1,25 @@
 ---
-title: Arbeiten mit der in die JavaScript-Sprache integrierten Abfrage-API in Azure Cosmos DB
+title: Arbeiten mit der in JavaScript integrierten Abfrage-API in gespeicherten Prozeduren und Triggern in Azure Cosmos DB
 description: In diesem Artikel werden die Konzepte für die in die JavaScript-Sprache integrierte Abfrage-API zum Erstellen von gespeicherten Prozeduren und Triggern in Azure Cosmos DB vorgestellt.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: mjbrown
+ms.date: 05/07/2020
+ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 01e5e95da3c19c03d07c7f3c1d716f5f1e97de98
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.custom: devx-track-js
+ms.openlocfilehash: b2563a9af0e0ca6943059698e29d139143780d93
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717592"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340973"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>JavaScript-Abfrage-API in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Neben Abfragen über die SQL-API in Azure Cosmos DB können Sie mithilfe des [serverseitigen Cosmos DB SDK](https://azure.github.io/azure-cosmosdb-js-server/) auch optimierte Abfragen über eine JavaScript-Schnittstelle ausführen. Für die Verwendung dieser JavaScript-Schnittstelle sind keine SQL-Sprachkenntnisse erforderlich. Mit der JavaScript-Abfrage-API können Sie programmgesteuert Abfragen erstellen, indem Sie unter Verwendung einer Syntax, die mit den integrierten und weit verbreiteten JavaScript-Bibliotheken von ECMAScript5 wie Lodash vergleichbar ist, Prädikatfunktionen an eine Funktionsaufrufsequenz übergeben. Abfragen werden von der JavaScript-Runtime analysiert und unter Verwendung von Azure Cosmos DB-Indizes effizient ausgeführt.
+Zusätzlich zum Ausführen von Abfragen mithilfe der SQL-API in Azure Cosmos DB bietet das [serverseitige Cosmos DB SDK](https://github.com/Azure/azure-cosmosdb-js-server/) eine JavaScript-Schnittstelle zum Ausführen optimierter Abfragen in gespeicherten Prozeduren und Triggern in Cosmos DB. Für die Verwendung dieser JavaScript-Schnittstelle sind keine SQL-Sprachkenntnisse erforderlich. Mit der JavaScript-Abfrage-API können Sie programmgesteuert Abfragen erstellen, indem Sie unter Verwendung einer Syntax, die mit den integrierten und weit verbreiteten JavaScript-Bibliotheken von ECMAScript5 wie Lodash vergleichbar ist, Prädikatfunktionen an eine Funktionsaufrufsequenz übergeben. Abfragen werden von der JavaScript-Runtime analysiert und unter Verwendung von Azure Cosmos DB-Indizes effizient ausgeführt.
 
 ## <a name="supported-javascript-functions"></a>Unterstützte JavaScript-Funktionen
 
@@ -42,7 +45,7 @@ Die folgenden JavaScript-Konstrukte werden nicht für Azure Cosmos DB-Indizes op
 - Ablaufsteuerung (z.B. wenn, für, während)
 - Funktionsaufrufe
 
-Weitere Informationen finden Sie in der [Cosmos DB-Dokumentation für serverseitiges JavaScript](https://azure.github.io/azure-cosmosdb-js-server/).
+Weitere Informationen finden Sie in der [Cosmos DB-Dokumentation für serverseitiges JavaScript](https://github.com/Azure/azure-cosmosdb-js-server/).
 
 ## <a name="sql-to-javascript-cheat-sheet"></a>Cheat Sheet für SQL und JavaScript
 
@@ -54,11 +57,11 @@ In der folgenden Tabelle sind verschiedene SQL-Abfragen und die entsprechenden J
 |**SQL**|**JavaScript-Abfrage-API**|**Beschreibung**|
 |---|---|---|
 |SELECT *<br>FROM docs| __.map(function(doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;return doc;<br>});|Alle Dokumente (umgebrochen mit Fortsetzungstoken) bleiben unverändert.|
-|SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs.message AS msg,<br>&nbsp;&nbsp;&nbsp;docs.actions <br>FROM docs|__.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;id: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;msg: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;actions:doc.actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projiziert die ID, Meldung (Alias für „msg“) und Aktion aus allen Dokumenten.|
+|SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs.message AS msg,<br>&nbsp;&nbsp;&nbsp;docs.actions <br>FROM docs|__.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actions:doc.actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projiziert die ID, Meldung (Alias für „msg“) und Aktion aus allen Dokumenten.|
 |SELECT *<br>FROM docs<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return doc.id ==="X998_Y998";<br>});|Fragt Dokumente mit dem folgenden Prädikat ab: id = "X998_Y998".|
-|SELECT *<br>FROM docs<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS(docs.Tags, 123)|__.filter(function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return x.Tags &amp;& x.Tags.indexOf(123) &amp;amp;gt; -1;<br>});|Fragt Dokumente mit einer Tags-Eigenschaft ab, wobei „Tags“ ein Array mit dem Wert 123 ist.|
-|SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs.message AS msg<br>FROM docs<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;return doc.id ==="X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;return {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;id: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;msg: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.value();|Fragt Dokumente mit einem Prädikat, id = "X998_Y998", ab und projiziert anschließend die ID und die Meldung (Alias für „msg“).|
-|SELECT VALUE tag<br>FROM docs<br>JOIN tag IN docs.Tags<br>ORDER BY docs._ts|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;return doc.Tags &amp;& Array.isArray(doc.Tags);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.sortBy(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;return doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.pluck("Tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;.flatten()<br>&nbsp;&nbsp;&nbsp;&nbsp;.value()|Filtert nach Dokumenten mit einer Array-Eigenschaft „Tags“, sortiert die resultierenden Dokumente anhand der Zeitstempel-Systemeigenschaft „_ts“ und projiziert und vereinfacht anschließend das Tags-Array.|
+|SELECT *<br>FROM docs<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS(docs.Tags, 123)|__.filter(function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return x.Tags &amp;& x.Tags.indexOf(123) &amp;gt; -1;<br>});|Fragt Dokumente mit einer Tags-Eigenschaft ab, wobei „Tags“ ein Array mit dem Wert 123 ist.|
+|SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs.message AS msg<br>FROM docs<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return doc.id ==="X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.value();|Fragt Dokumente mit einem Prädikat, id = "X998_Y998", ab und projiziert anschließend die ID und die Meldung (Alias für „msg“).|
+|SELECT VALUE tag<br>FROM docs<br>JOIN tag IN docs.Tags<br>ORDER BY docs._ts|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;return doc.Tags &amp;& Array.isArray(doc.Tags);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.sortBy(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.pluck("Tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;.flatten()<br>&nbsp;&nbsp;&nbsp;&nbsp;.value()|Filtert nach Dokumenten mit einer Array-Eigenschaft „Tags“, sortiert die resultierenden Dokumente anhand der Zeitstempel-Systemeigenschaft „_ts“ und projiziert und vereinfacht anschließend das Tags-Array.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

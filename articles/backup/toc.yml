@@ -2,8 +2,12 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist Azure Backup?
+    - name: Übersicht zu Azure Backup
       href: backup-overview.md
+    - name: Neuerungen in Azure Backup
+      href: whats-new.md
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/backup/'
 - name: Schnellstarts
   expanded: true
   items:
@@ -13,57 +17,65 @@
       href: quick-backup-vm-powershell.md
     - name: Sichern einer VM – CLI
       href: quick-backup-vm-cli.md
-    - name: 'Sichern einer VM: Resource Manager-Vorlage'
-      displayName: ARM
+    - name: 'Sichern eines virtuellen Computers: ARM-Vorlage'
+      displayName: Resource Manager
       href: quick-backup-vm-template.md
-- name: Lernprogramme
+- name: Tutorials
   items:
-    - name: Sichern virtueller Azure-Computer nach Skalierung
+    - name: Sichern von mehreren Azure-VMs
       href: tutorial-backup-vm-at-scale.md
-    - name: Wiederherstellen eines Datenträgers
+    - name: Sichern virtueller Azure-Computer mit PowerShell
+      href: tutorial-backup-azure-vm.md
+    - name: Wiederherstellen eines virtuellen Computers mit der Azure CLI
       href: tutorial-restore-disk.md
     - name: Wiederherstellen einzelner Dateien
       href: tutorial-restore-files.md
     - name: Sichern von SQL Server auf virtuellen Azure-Computern
       href: tutorial-sql-backup.md
-    - name: "Sichern von Azure\_Files-Dateifreigaben"
-      href: tutorial-backup-azure-files.md
+    - name: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
+      href: tutorial-backup-sap-hana-db.md
     - name: Sichern von Windows Server
       href: tutorial-backup-windows-server-to-azure.md
     - name: Wiederherstellen von Dateien auf Windows Server
       href: tutorial-backup-restore-files-windows-server.md
-- name: Beispiele
-  items:
-    - name: Azure PowerShell
-      href: powershell-backup-samples.md
-    - name: Resource Manager-Vorlagen
-      href: backup-rm-template-samples.md
+    - name: "SAP HANA-Datenbanken auf virtuellen Azure-Computern\_– mithilfe der CLI"
+      items:
+        - name: "Sichern von SAP HANA-Datenbanken\_– CLI"
+          href: tutorial-sap-hana-backup-cli.md
+        - name: "Wiederherstellen von SAP HANA-Datenbanken\_– CLI"
+          href: tutorial-sap-hana-restore-cli.md
+        - name: "Verwalten von gesicherten SAP HANA-Datenbanken\_– CLI"
+          href: tutorial-sap-hana-manage-cli.md
 - name: Konzepte
   items:
     - name: Supportmatrizen
       items:
         - name: Matrix zur Azure Backup-Unterstützung
           href: backup-support-matrix.md
+        - name: Supportmatrix für Backup Center
+          href: backup-center-support-matrix.md
         - name: Supportmatrix für die Azure-VM-Sicherung
           href: backup-support-matrix-iaas.md
         - name: Supportmatrix für DPM/Azure Backup Server (MABS)
           href: backup-support-matrix-mabs-dpm.md
         - name: Supportmatrix für den MARS-Agent
           href: backup-support-matrix-mars-agent.md
-    - name: Sicherheit
-      items:
-        - name: Rollenbasierte Access Control
-          href: backup-rbac-rs-vault.md
-        - name: Sicherheit für Cloudworkloads
-          href: backup-azure-security-feature-cloud.md
-        - name: Sicherheit für Hybrid-Sicherungen
-          href: backup-azure-security-feature.md
-        - name: Integrierte Sicherheitskontrollen
-          href: backup-security-controls.md
+        - name: "Supportmatrix für die SQL\_Server-Sicherung"
+          href: sql-support-matrix.md
+        - name: "Unterstützungsmatrix für SAP\_HANA-Sicherungen"
+          href: sap-hana-backup-support-matrix.md
+        - name: Supportmatrix für Sicherungen von Azure-Dateifreigaben
+          href: azure-file-share-support-matrix.md
+        - name: Active Directory-Domänencontroller
+          href: active-directory-backup-restore.md
+        - name: Unterstützte VM-SKUs für Azure Policy
+          href: backup-azure-policy-supported-skus.md
     - name: Häufig gestellte Fragen (FAQ)
       items:
         - name: 'Häufig gestellte Fragen: Recovery Services-Tresore'
           href: backup-azure-backup-faq.md
+        - name: 'Häufig gestellte Fragen: Backup Center'
+          href: backup-center-faq.yml
         - name: 'Häufig gestellte Fragen: Azure-VM-Sicherung'
           href: backup-azure-vm-backup-faq.md
         - name: 'Häufig gestellte Fragen: MARS-Agent'
@@ -72,25 +84,187 @@
           href: backup-azure-files-faq.md
         - name: 'Häufig gestellte Fragen: Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern'
           href: faq-backup-sql-server.md
+        - name: 'Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern'
+          href: sap-hana-faq-backup-azure-vm.md
         - name: 'Häufig gestellte Fragen: Azure Backup Server und DPM'
           href: backup-azure-dpm-azure-server-faq.md
         - name: Häufig gestellte Fragen zur Azure Backup-Monitorwarnung
           href: backup-azure-monitor-alert-faq.md
     - name: Sichern der Architektur
       href: backup-architecture.md
-    - name: Konfigurieren der Offlinesicherung
-      href: backup-azure-backup-import-export.md
-    - name: Offlinesicherung für DPM und Azure Backup Server
-      href: backup-azure-backup-server-import-export-.md
-    - name: Ersetzen der Bandbibliothek
-      href: backup-azure-backup-cloud-as-tape.md
-- name: Anleitung
+    - name: Leitfaden und bewährte Methoden
+      href: guidance-best-practices.md
+    - name: Glossarbegriffe
+      href: azure-backup-glossary.md
+- name: Anleitungen
   items:
-    - name: Azure Backup Server
+    - name: Tresore
       items:
-        - name: Azure Backup Server-Schutzmatrix
-          href: backup-mabs-protection-matrix.md
-        - name: Installieren oder Aktualisieren
+        - name: Recovery Services-Tresor
+          items:
+            - name: Übersicht
+              href: backup-azure-recovery-services-vault-overview.md
+            - name: Erstellen
+              href: backup-create-rs-vault.md
+            - name: Löschen
+              href: backup-azure-delete-vault.md
+            - name: Move
+              href: backup-azure-move-recovery-services-vault.md
+            - name: Verwalten
+              href: backup-azure-manage-windows-server.md
+        - name: Sicherungstresor
+          items:
+            - name: Übersicht
+              href: backup-vault-overview.md
+    - name: Backup Center
+      items:
+        - name: Übersicht
+          href: backup-center-overview.md
+        - name: Überwachen und Betreiben
+          href: backup-center-monitor-operate.md
+        - name: Gewinnen von Erkenntnissen
+          href: backup-center-obtain-insights.md
+        - name: Verwalten der Umgebung
+          href: backup-center-govern-environment.md
+        - name: Ausführen von Aktionen
+          href: backup-center-actions.md
+    - name: Azure VM Backup
+      items:
+        - name: Übersicht
+          href: backup-azure-vms-introduction.md
+        - name: Backup
+          items:
+            - name: Sichern und Wiederherstellen von virtuellen Azure-Computern mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
+              href: backup-instant-restore-capability.md
+            - name: Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
+              href: backup-during-vm-creation.md
+            - name: Sichern eines virtuellen Azure-Computers über die VM-Einstellungen
+              href: backup-azure-vms-first-look-arm.md
+            - name: Einrichten eines Tresors und Aktivieren der Sicherung für virtuelle Azure-Computer
+              href: backup-azure-arm-vms-prepare.md
+            - name: Sichern verschlüsselter virtueller Azure-Computer
+              href: backup-azure-vms-encryption.md
+            - name: Konfigurieren von App-konsistenten Sicherungen von virtuellen Azure-Computern unter Linux
+              href: backup-azure-linux-app-consistent.md
+            - name: Selektive Datenträgersicherung
+              href: selective-disk-backup-restore.md
+        - name: Restore
+          items:
+            - name: Informationen zur Wiederherstellung von Azure-VMs
+              href: about-azure-vm-restore.md
+            - name: Wiederherstellen virtueller Azure-Computer im Portal
+              href: backup-azure-arm-restore-vms.md
+            - name: Wiederherstellen von Dateien aus Azure-VM-Sicherungen
+              href: backup-azure-restore-files-from-vm.md
+            - name: Wiederherstellen verschlüsselter virtueller Computer
+              href: backup-azure-vms-encryption.md
+            - name: Wiederherstellen von Schlüsseln und Geheimnissen für verschlüsselte virtuelle Computer
+              href: backup-azure-restore-key-secret.md
+        - name: Verwalten
+          items:
+            - name: Verwalten von Azure-VM-Sicherungen
+              href: backup-azure-manage-vms.md
+            - name: Verwalten von Wiederherstellungspunkten
+              href: manage-recovery-points.md
+            - name: Ändern der Sicherungsrichtlinie mit der Azure CLI
+              href: modify-vm-policy-cli.md
+    - name: Sicherung einer SQL Server-Datenbank auf einem virtuellen Azure-Computer
+      items:
+        - name: Übersicht
+          href: backup-azure-sql-database.md
+        - name: Backup
+          items:
+            - name: "Sichern mehrerer SQL\_Server-VMs über den Tresor"
+              href: backup-sql-server-database-azure-vms.md
+            - name: Sichern einer SQL Server-VM über den VM-Bereich
+              href: backup-sql-server-vm-from-vm-pane.md
+        - name: Restore
+          href: restore-sql-database-azure-vm.md
+        - name: Verwalten
+          href: manage-monitor-sql-database-backup.md
+    - name: Sicherung von Azure Database for PostgreSQL
+      items:
+        - name: Backup
+          href: backup-azure-database-postgresql.md
+    - name: Windows-Sicherung mit MARS-Agent
+      items:
+        - name: Übersicht
+          href: backup-azure-about-mars.md
+        - name: Installation oder Upgrade
+          items:
+            - name: Installieren eines MARS-Agents
+              href: install-mars-agent.md
+            - name: Durchführen eines Upgrades für den MARS-Agent
+              href: upgrade-mars-agent.md
+        - name: Backup
+          items:
+            - name: Sichern von Windows Server-Dateien und -Ordnern
+              href: backup-windows-with-mars-agent.md
+            - name: Sichern des Systemstatus von Windows Server
+              href: backup-azure-system-state.md
+        - name: Restore
+          items:
+            - name: Wiederherstellen von Dateien aus Azure für Windows Server
+              href: backup-azure-restore-windows-server.md
+            - name: Wiederherstellen des Systemstatus von Windows Server
+              href: backup-azure-restore-system-state.md
+        - name: Verwalten
+          href: backup-azure-manage-mars.md
+    - name: Sichern von Azure-Dateifreigaben
+      items:
+        - name: Übersicht
+          href: azure-file-share-backup-overview.md
+        - name: Über das Azure-Portal
+          items:
+            - name: Backup
+              href: backup-afs.md
+            - name: Restore
+              href: restore-afs.md
+            - name: Verwalten
+              href: manage-afs-backup.md
+        - name: Mit der Azure-Befehlszeilenschnittstelle
+          items:
+            - name: Backup
+              href: backup-afs-cli.md
+            - name: Restore
+              href: restore-afs-cli.md
+            - name: Verwalten
+              href: manage-afs-backup-cli.md
+        - name: Mit PowerShell
+          items:
+            - name: Backup
+              href: backup-azure-afs-automation.md
+            - name: Restore
+              href: restore-afs-powershell.md
+            - name: Verwalten
+              href: manage-afs-powershell.md
+        - name: Mit der REST-API
+          items:
+            - name: Backup
+              href: backup-azure-file-share-rest-api.md
+            - name: Restore
+              href: restore-azure-file-share-rest-api.md
+            - name: Verwalten
+              href: manage-azure-file-share-rest-api.md
+    - name: "Sicherung einer SAP\_HANA-Datenbank auf einem virtuellen Azure-Computer"
+      items:
+        - name: Übersicht
+          href: sap-hana-db-about.md
+        - name: Backup
+          href: backup-azure-sap-hana-database.md
+        - name: Restore
+          href: sap-hana-db-restore.md
+        - name: Verwalten
+          href: sap-hana-db-manage.md
+    - name: Azure Backup Server (MABS)
+      items:
+        - name: Schutzmatrizen
+          items:
+            - name: MABS V3 UR1-Schutzmatrix
+              href: backup-mabs-protection-matrix.md
+            - name: MABS V3 RTM-Schutzmatrix
+              href: microsoft-azure-backup-server-protection-v3.md
+        - name: Installation oder Upgrade
           items:
             - name: Installieren von Azure Backup Server
               href: backup-azure-microsoft-azure-backup.md
@@ -98,7 +272,7 @@
               href: backup-mabs-add-storage.md
             - name: Neuerungen in MABS
               href: backup-mabs-whats-new-mabs.md
-            - name: Versionshinweise für MABS V3
+            - name: Versionshinweise für MABS
               href: backup-mabs-release-notes-v3.md
             - name: Unbeaufsichtigte Installation
               href: backup-mabs-unattended-install.md
@@ -120,6 +294,8 @@
           href: backup-azure-alternate-dpm-server.md
         - name: Wiederherstellen von VMware-VMs mit Azure Backup Server
           href: restore-azure-backup-server-vmware.md
+        - name: Sichern des MABS-Servers
+          href: backup-the-mabs-server.md
     - name: Azure Backup Server in Azure Stack
       items:
         - name: Installieren von Azure Backup Server
@@ -130,51 +306,7 @@
           href: backup-mabs-sharepoint-azure-stack.md
         - name: Schützen einer SQL Server-Datenbank
           href: backup-mabs-sql-azure-stack.md
-    - name: Azure-Dateifreigaben
-      items:
-        - name: Sichern von Azure-Dateifreigaben
-          href: backup-azure-files.md
-    - name: Sichern von Azure-VMs
-      items:
-        - name: Informationen zur Sicherung von Azure-VMs
-          href: backup-azure-vms-introduction.md
-        - name: Sichern und Wiederherstellen von virtuellen Azure-Computern mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
-          href: backup-instant-restore-capability.md
-        - name: Sichern von Azure-VMs
-          items:
-            - name: Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
-              href: backup-during-vm-creation.md
-            - name: Sichern eines virtuellen Azure-Computers über die VM-Einstellungen
-              href: backup-azure-vms-first-look-arm.md
-            - name: Einrichten eines Tresors und Aktivieren der Sicherung für virtuelle Azure-Computer
-              href: backup-azure-arm-vms-prepare.md
-            - name: Sichern verschlüsselter virtueller Azure-Computer
-              href: backup-azure-vms-encryption.md
-            - name: Konfigurieren von App-konsistenten Sicherungen von virtuellen Azure-Computern unter Linux
-              href: backup-azure-linux-app-consistent.md
-        - name: Verwalten und Überwachen von Azure-VM-Sicherungen
-          items:
-            - name: Verwalten von Azure-VM-Sicherungen
-              href: backup-azure-manage-vms.md
-        - name: Wiederherstellen virtueller Azure-Computer
-          items:
-            - name: Wiederherstellen virtueller Azure-Computer im Portal
-              href: backup-azure-arm-restore-vms.md
-            - name: Wiederherstellen von Dateien aus Azure-VM-Sicherungen
-              href: backup-azure-restore-files-from-vm.md
-            - name: Wiederherstellen verschlüsselter virtueller Computer
-              href: backup-azure-vms-encryption.md
-            - name: Wiederherstellen von Schlüsseln und Geheimnissen für verschlüsselte virtuelle Computer
-              href: backup-azure-restore-key-secret.md
-    - name: Konfigurieren von Azure Backup-Berichten
-      items:
-        - name: Konfigurieren von Azure Backup-Berichten
-          href: backup-azure-configure-reports.md
-        - name: Datenmodell für Azure Backup-Berichte
-          href: backup-azure-reports-data-model.md
-        - name: Log Analytics-Datenmodell für Azure Backup
-          href: backup-azure-log-analytics-data-model.md
-    - name: Data Protection Manager
+    - name: Data Protection Manager (DPM)
       items:
         - name: Vorbereiten von DPM-Workloads im Azure-Portal
           href: backup-azure-dpm-introduction.md
@@ -186,78 +318,127 @@
           href: backup-azure-backup-sql.md
         - name: Verwenden von DPM zum Sichern einer SharePoint-Farm
           href: backup-azure-backup-sharepoint.md
-    - name: Mithilfe von Azure PowerShell
+        - name: Ersetzen der Bandbibliothek
+          href: backup-azure-backup-cloud-as-tape.md
+    - name: Offlinesicherung
       items:
-        - name: Virtuelle Azure-Computer im Azure-Portal
-          href: backup-azure-vms-automation.md
-        - name: DPM im Azure-Portal
-          href: backup-dpm-automation.md
-        - name: Windows Server im Azure-Portal
-          href: backup-client-automation.md
-        - name: Azure-Dateifreigaben im Azure-Portal
-          href: backup-azure-afs-automation.md
-        - name: SQL in Azure-VM-Sicherungen
-          href: backup-azure-sql-automation.md
-    - name: Verwenden der Azure Backup-REST-API
+        - name: Übersicht
+          href: offline-backup-overview.md
+        - name: Offlinesicherung mit Azure Data Box (MARS)
+          href: offline-backup-azure-data-box.md
+        - name: Offlinesicherung mit Azure Data Box (DPM/MABS)
+          href: offline-backup-azure-data-box-dpm-mabs.md
+        - name: Offlinesicherung mit Import/Export (MARS)
+          href: backup-azure-backup-import-export.md
+        - name: Offlinesicherung mit Import/Export (DPM/MABS)
+          href: backup-azure-backup-server-import-export.md
+        - name: Offlinesicherung für DPM und MABS (vorherige Versionen)
+          href: offline-backup-server-previous-versions.md
+    - name: Überwachung und Warnungen
       items:
-        - name: Erstellen eines Recovery Services-Tresors
-          href: backup-azure-arm-userestapi-createorupdatevault.md
-        - name: Erstellen und Aktualisieren einer Sicherungsrichtlinie
-          href: backup-azure-arm-userestapi-createorupdatepolicy.md
-        - name: Sichern von Azure-VMs
-          href: backup-azure-arm-userestapi-backupazurevms.md
-        - name: Wiederherstellen virtueller Azure-Computer
-          href: backup-azure-arm-userestapi-restoreazurevms.md
-        - name: Verwalten von Azure Backup-Aufträgen
-          href: backup-azure-arm-userestapi-managejobs.md
-    - name: Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
+        - name: Verwenden des Backup-Explorers
+          href: monitor-azure-backup-with-backup-explorer.md
+        - name: Verwenden des Azure-Portals
+          href: backup-azure-monitoring-built-in-monitor.md
+        - name: Verwenden von Azure Monitor
+          href: backup-azure-monitoring-use-azuremonitor.md
+    - name: Berichte
       items:
-        - name: Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
-          href: backup-azure-sql-database.md
-        - name: Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
-          href: backup-sql-server-database-azure-vms.md
-        - name: Wiederherstellen von SQL Server-Datenbanken auf virtuellen Azure-Computern
-          href: restore-sql-database-azure-vm.md
-        - name: Verwalten von gesicherten SQL Server-Datenbanken
-          href: manage-monitor-sql-database-backup.md
-    - name: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
-      href: backup-azure-sap-hana-database.md
-    - name: Windows Server
+        - name: Konfigurieren von Azure Backup-Berichten
+          items:
+            - name: Konfigurieren von Azure Backup-Berichten
+              href: configure-reports.md
+        - name: Konfigurieren von Diagnoseereignissen für Recovery Services-Tresore
+          items:
+            - name: Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
+              href: backup-azure-diagnostic-events.md
+            - name: Log Analytics-Datenmodell für ressourcenspezifische Diagnoseereignisse
+              href: backup-azure-reports-data-model.md
+            - name: "Log\_Analytics-Datenmodell für Azure Backup (Modus „Azure-Diagnose“)"
+              href: backup-azure-diagnostics-mode-data-model.md
+    - name: Automation
       items:
-        - name: Sichern von Windows Server-Dateien und -Ordnern
-          href: backup-configure-vault.md
-        - name: Sichern des Systemstatus von Windows Server
-          href: backup-azure-system-state.md
-        - name: Wiederherstellen von Dateien aus Azure für Windows Server
-          href: backup-azure-restore-windows-server.md
-        - name: Wiederherstellen des Systemstatus von Windows Server
-          href: backup-azure-restore-system-state.md
-    - name: Recovery Services-Tresor
+        - name: Integrierte Azure Policy-Instanz für Azure Backup
+          items:
+            - name: Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von Azure Policy
+              href: backup-azure-auto-enable-backup.md
+            - name: Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
+              href: azure-policy-configure-diagnostics.md
+        - name: PowerShell
+          items:
+            - name: Virtuelle Azure-Computer
+              href: backup-azure-vms-automation.md
+            - name: Data Protection Manager (DPM)
+              href: backup-dpm-automation.md
+            - name: Windows Server mit dem MARS-Agent
+              href: backup-client-automation.md
+            - name: SQL in Azure-VM-Sicherungen
+              href: backup-azure-sql-automation.md
+            - name: Azure PowerShell-Beispiele
+              href: powershell-backup-samples.md
+        - name: Verwenden der Azure Backup-REST-API
+          items:
+            - name: Erstellen eines Recovery Services-Tresors
+              href: backup-azure-arm-userestapi-createorupdatevault.md
+            - name: Aktualisieren der Konfigurationen für den Recovery Services-Tresor
+              href: use-restapi-update-vault-properties.md
+            - name: Erstellen und Aktualisieren einer Sicherungsrichtlinie
+              href: backup-azure-arm-userestapi-createorupdatepolicy.md
+            - name: Sichern von Azure-VMs
+              href: backup-azure-arm-userestapi-backupazurevms.md
+            - name: Wiederherstellen virtueller Azure-Computer
+              href: backup-azure-arm-userestapi-restoreazurevms.md
+            - name: Verwalten von Azure Backup-Aufträgen
+              href: backup-azure-arm-userestapi-managejobs.md
+        - name: Resource Manager-Vorlagen
+          href: backup-rm-template-samples.md
+    - name: Sicherheit
       items:
-        - name: Übersicht über Recovery Services-Tresore
-          href: backup-azure-recovery-services-vault-overview.md
-        - name: Erstellen eines Recovery Services-Tresors
-          href: backup-create-rs-vault.md
-        - name: Löschen eines Recovery Services-Tresors
-          href: backup-azure-delete-vault.md
-        - name: Verschieben eines Recovery Services-Tresors
-          href: backup-azure-move-recovery-services-vault.md
-        - name: Überwachen und Verwalten von Recovery Services-Tresoren
-          href: backup-azure-manage-windows-server.md
+        - name: Übersicht
+          href: security-overview.md
+        - name: Rollenbasierte Zugriffssteuerung in Azure
+          href: backup-rbac-rs-vault.md
+        - name: Vorläufiges Löschen
+          items:
+            - name: Übersicht
+              href: backup-azure-security-feature-cloud.md
+            - name: Für virtuelle Computer
+              href: soft-delete-virtual-machines.md
+            - name: Für SQL Server und SAP HANA auf virtuellen Azure-Computern
+              href: soft-delete-sql-saphana-in-azure-vm.md
+        - name: Löschen des Schutzes für Azure-Dateifreigaben
+          href: soft-delete-azure-file-share.md
+        - name: Sicherheit für Hybrid-Sicherungen
+          href: backup-azure-security-feature.md
+        - name: Private Endpunkte
+          href: private-endpoints.md
+        - name: Verschlüsselung in Azure Backup
+          href: backup-encryption.md
+        - name: Verschlüsselung mithilfe kundenseitig verwalteter Schlüssel
+          href: encryption-at-rest-with-cmk.md
+        - name: Transport Layer Security
+          href: transport-layer-security.md
+        - name: Sicherheitskontrollen von Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Problembehandlung
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
+        - name: Azure VM-Dateiwiederherstellung
+          href: backup-azure-vm-file-recovery-troubleshoot.md
         - name: Timeout bei Azure Backup-Agent oder VM-Erweiterung
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
+        - name: Azure Backup-Agent
+          href: backup-azure-mars-troubleshoot.md
         - name: Langsame Sicherung der Dateien und Ordner
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
         - name: Azure Backup Server
           href: backup-azure-mabs-troubleshoot.md
         - name: System Center DPM
           href: backup-azure-scdpm-troubleshooting.md
-        - name: Azure Backup-Agent
-          href: backup-azure-mars-troubleshoot.md
         - name: Azure-Dateifreigabe
           href: troubleshoot-azure-files.md
         - name: SQL Server
@@ -266,36 +447,35 @@
           href: backup-azure-sap-hana-database-troubleshoot.md
         - name: Systemstatus
           href: backup-azure-system-state-troubleshoot.md
-    - name: Überwachen von Azure Backup-Workloads
-      items:
-        - name: Verwenden des Azure-Portals
-          href: backup-azure-monitoring-built-in-monitor.md
-        - name: Verwenden von Azure Monitor
-          href: backup-azure-monitoring-use-azuremonitor.md
 - name: Verweis
   items:
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
-    - name: Azure-Befehlszeilenschnittstelle
-      href: /cli/azure/backup?view=azure-cli-latest
-    - name: PowerShell
+    - name: Azure CLI
+      href: /cli/azure/backup
+    - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
+    - name: 'PowerShell: Azure Backup-Agent'
+      href: /powershell/module/msonlinebackup
     - name: REST – Sicherung
       href: /rest/api/backup/
     - name: REST – Recovery Services-Tresors
       href: /rest/api/recoveryservices/
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.recoveryservices/allversions
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
+    - name: Compliance
+      href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup'
-    - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/backup/'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: /answers/topics/azure-backup.html
     - name: Preisrechner
-      href: 'https://azure.microsoft.com/pricing/calculator/'
+      href: azure-backup-pricing.md
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=backup'
     - name: Videos

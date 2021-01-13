@@ -1,24 +1,23 @@
 ---
-title: Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation – Azure Active Directory | Microsoft-Dokumentation
+title: Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation – AD
 description: Hier erfahren Sie, wie Sie Ihr geschäftliches Gerät in das Netzwerk der Organisation einbinden.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 08/03/2018
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62faa47c116cceb941f575a9f76052e8bc57f036
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243268"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536969"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation
 Binden Sie Ihr unternehmenseigenes Windows 10-Gerät in das Netzwerk Ihrer Organisation ein, sodass Sie auf möglicherweise eingeschränkte Ressourcen zugreifen können.
@@ -28,9 +27,9 @@ Wenn Sie Ihr Windows 10-Gerät in das Netzwerk Ihrer Organisation einbinden, ges
 
 - Ihr Gerät wird von Windows beim Netzwerk Ihrer Organisation registriert, sodass Sie über Ihr persönliches Konto auf Ihre Ressourcen zugreifen können. Nachdem Ihr Gerät registriert wurde, wird es von Windows in das Netzwerk eingebunden, sodass Sie den Benutzernamen und das Kennwort Ihrer Organisation zum Anmelden und für den Zugriff auf eingeschränkte Ressourcen verwenden können.
 
-- Abhängig von der Entscheidung Ihrer Organisation werden Sie möglicherweise dazu aufgefordert, eine zweistufige Überprüfung entweder durch [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) oder [Sicherheitsinformation](user-help-security-info-overview.md) einzurichten.
+- Abhängig von der Entscheidung Ihrer Organisation werden Sie möglicherweise dazu aufgefordert, eine zweistufige Überprüfung entweder durch [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) oder [Sicherheitsinformation](./security-info-setup-signin.md) einzurichten.
 
-- Optional, basierend auf der Entscheidung Ihrer Organisation, werden Sie automatisch in der Verwaltung mobiler Geräte, wie z.B. bei Microsoft Intune, registriert. Weitere Informationen zum Registrieren in Microsoft Intune finden Sie unter [Registrieren Ihres Geräts bei Intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
+- Optional, basierend auf der Entscheidung Ihrer Organisation, werden Sie automatisch in der Verwaltung mobiler Geräte, wie z.B. bei Microsoft Intune, registriert. Weitere Informationen zum Registrieren in Microsoft Intune finden Sie unter [Registrieren Ihres Geräts bei Intune](/intune-user-help/enroll-your-device-in-intune-all).
 
 - Führen Sie den Anmeldevorgang mithilfe der automatischen Anmeldung mit Ihrem Organisationskonto durch.
 
@@ -49,22 +48,22 @@ Wenn Ihr Gerät ganz neu ist und noch nicht eingerichtet wurde, können Sie es m
 
 4. Genehmigen Sie Ihr Gerät auf Ihrem mobilen Gerät, sodass es Zugriff auf Ihr Konto hat. 
 
-    ![Bildschirm mit Benachrichtigung an das mobile Gerät](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
+    ![Screenshot der Benachrichtigungsanzeige „Kennwort eingeben“](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
 
 5. Führen Sie den OOBE-Vorgang aus. Legen Sie dabei Ihre Datenschutzeinstellungen fest, und richten Sie ggf. Windows Hello ein.
 
     Ihr Gerät ist nun in das Netzwerk Ihrer Organisation eingebunden.
 
-## <a name="to-make-sure-youre-joined"></a>So stellen Sie sicher, dass Sie eingebunden sind
+## <a name="to-make-sure-youre-joined-new-device"></a>Überprüfen der Einbindung (neues Gerät)
 Um sicherzustellen, dass Sie eingebunden wurden, können Sie Ihre Einstellungen überprüfen.
 
 1. Öffnen Sie **Einstellungen**, und klicken Sie dann auf **Konten**.
 
     ![Konten auf dem Bildschirm „Einstellungen“](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *\<Ihre_Organisation>* Azure AD**.
+2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *\<your_organization>* Azure AD**.
 
-    ![Bildschirm „Auf Arbeits- oder Schulkonto zugreifen“ mit verbundenem Contoso-Konto](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
+    ![Screenshot des Fensters „Auf Arbeits- oder Schulkonto zugreifen“ mit ausgewähltem Konto „Mit der Azure AD-Instanz von (Ihre Organisation) verbunden“](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
 
 ## <a name="to-join-an-already-configured-windows-10-device"></a>So binden Sie ein bereits konfiguriertes Windows 10-Gerät ein
@@ -107,7 +106,7 @@ Um sicherzustellen, dass Sie eingebunden wurden, können Sie Ihre Einstellungen 
 
     ![Konten auf dem Bildschirm „Einstellungen“](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *\<Ihre_Organisation>* Azure AD**.
+2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *\<your_organization>* Azure AD**.
 
     ![Bildschirm „Auf Arbeits- oder Schulkonto zugreifen“ mit verbundenem Contoso-Konto](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
@@ -116,4 +115,4 @@ Nachdem Sie Ihr Gerät in das Netzwerk der Organisation eingebunden haben, sollt
 
 - Wenn in Ihrer Organisation gewünscht wird, dass Sie sich mit Ihrem persönlichen Gerät, also etwa mit Ihrem Telefon, registrieren, finden Sie die entsprechenden Informationen unter [Register your personal device on your organization's network (Registrieren des persönlichen Geräts im Netzwerk der eigenen Organisation)](user-help-register-device-on-network.md).
 
-- Wenn Ihre Organisation mithilfe von Microsoft Intune verwaltet wird und Sie Fragen zur Registrierung, Anmeldung und zu einem anderen Problem im Zusammenhang mit Intune haben, finden Sie die Antworten im [Inhalt der Intune-Benutzerhilfe](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).
+- Wenn Ihre Organisation mithilfe von Microsoft Intune verwaltet wird und Sie Fragen zur Registrierung, Anmeldung und zu einem anderen Problem im Zusammenhang mit Intune haben, finden Sie die Antworten im [Inhalt der Intune-Benutzerhilfe](/intune-user-help/use-managed-devices-to-get-work-done).

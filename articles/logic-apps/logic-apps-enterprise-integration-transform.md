@@ -1,21 +1,19 @@
 ---
-title: Transformieren von XML zwischen Formaten – Azure Logic Apps | Microsoft-Dokumentation
+title: Transformieren von XML zwischen Formaten
 description: Erstellen von Transformationen oder Zuordnungen zum Konvertieren von XML zwischen Formaten in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: add01429-21bc-4bab-8b23-bc76ba7d0bde
 ms.date: 07/08/2016
-ms.openlocfilehash: 4ebd96613378bbd907beb5109343a2427b1300b0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 038c1d4c0f0b5ffd7b9aabea2de32e3a44e3b221
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60427297"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654131"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Erstellen von Zuordnungen zum Transformieren von XML zwischen Formaten in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -38,13 +36,13 @@ Nachdem Sie die Transformation/Zuordnung in Ihr Integrationskonto hochgeladen ha
 
 Sobald die Voraussetzungen erfüllt sind, können Sie Ihre Logik-App erstellen:  
 
-1. Erstellen Sie eine Logik-App, und [verknüpfen Sie sie mit Ihrem Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md "Erfahren Sie, wie Sie ein Integrationskonto mit einer Logik-App verknüpfen."), das die Zuordnung enthält.
+1. Erstellen Sie eine Logik-App, und [verknüpfen Sie sie mit Ihrem Integrationskonto](./logic-apps-enterprise-integration-create-integration-account.md "Weitere Informationen zum Verknüpfen eines Integrationskontos mit einer Logik-App"), das die Zuordnung enthält.
 2. Fügen Sie Ihrer Logik-App einen **Anforderungstrigger** hinzu.  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
+   ![Screenshot der Dropdownliste „Von Microsoft verwaltete APIs anzeigen“ mit ausgewähltem Anforderungstrigger. Das Dropdown befindet sich in einer Logik-App, die mithilfe des Visual Studio Enterprise Integration SDK erstellt wurde.](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. Fügen Sie die Aktion **XML transformieren** hinzu, indem Sie zuerst **Aktion hinzufügen**  auswählen.  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
+   ![Screenshot der im Bildschirm des Anforderungstriggers ausgewählten Schaltfläche „Aktion hinzufügen“.](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
 4. Geben Sie *transformieren* in das Suchfeld ein, um die Aktion herauszufiltern, die Sie verwenden möchten.  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
+   ![Screenshot, der zeigt, wie Sie in der Dropdownliste „Von Microsoft verwaltete APIs anzeigen“ nach der Aktion „XML transformieren“ suchen, damit sie dem Anforderungstrigger hinzugefügt werden kann.](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. Wählen Sie die Aktion **XML transformieren** aus.   
 6. Fügen Sie den XML-**INHALT** hinzu, der transformiert werden soll. Sie können beliebige XML-Daten verwenden, die Sie in der HTTP-Anforderung als **INHALT** empfangen. Wählen Sie in diesem Beispiel den Text der HTTP-Anforderung aus, die die Logik-App ausgelöst hat.
 
@@ -53,9 +51,9 @@ Sobald die Voraussetzungen erfüllt sind, können Sie Ihre Logik-App erstellen:
  
 
 7. Wählen Sie den Namen der **ZUORDNUNG** aus, mit deren Hilfe die Transformation erfolgen soll. Die Zuordnung muss bereits in Ihrem Integrationskonto enthalten sein. In einem früheren Schritt haben Sie Ihrer Logik-App bereits Zugriff auf Ihr Integrationskonto gewährt, das Ihre Zuordnung enthält.      
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
+   ![Screenshot der Felder „Inhalt und Zuordnung“ im Bildschirm „XML transformieren“ für den Anforderungstrigger.](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. Speichern Sie Ihre Arbeit.  
-    ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
+    ![Screenshot der Schaltfläche „Speichern“ im Logic Apps-Designer.](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
 An diesem Punkt ist das Einrichten der Zuordnung abgeschlossen. In einer realen Anwendung werden die transformierten Daten in einer branchenspezifischen Anwendung wie Salesforce gespeichert. Sie können problemlos eine Aktion zum Senden der Ausgabe der Transformation an Salesforce hinzufügen. 
 
@@ -97,17 +95,17 @@ Die Transformationsaktion unterstützt auch Zuordnungen oder Transformationen mi
     <![CDATA[public double circumference(int radius){ XsltHelper helper = new XsltHelper(); return helper.circumference(radius); }]]>
   </msxsl:script>
   <xsl:template match="data">
-     <circles>
-        <xsl:for-each select="circle">
-            <circle>
-                <xsl:copy-of select="node()"/>
-                    <circumference>
-                        <xsl:value-of select="user:circumference(radius)"/>
-                    </circumference>
-            </circle>
-        </xsl:for-each>
-     </circles>
-    </xsl:template>
+   <circles>
+    <xsl:for-each select="circle">
+      <circle>
+        <xsl:copy-of select="node()"/>
+          <circumference>
+            <xsl:value-of select="user:circumference(radius)"/>
+          </circumference>
+      </circle>
+    </xsl:for-each>
+   </circles>
+  </xsl:template>
     </xsl:stylesheet>
   ```
 
@@ -136,6 +134,5 @@ Die Antwort der Transformation beginnt standardmäßig mit der Bytereihenfolge-M
 
 
 ## <a name="learn-more"></a>Weitere Informationen
-* [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")  
-* [Weitere Informationen zu Zuordnungen](../logic-apps/logic-apps-enterprise-integration-maps.md "Informationen zu Zuordnungen für die Unternehmensintegration")  
-
+* [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Erfahren Sie mehr zum Enterprise Integration Pack.")  
+* [Weitere Informationen über Zuordnungen](../logic-apps/logic-apps-enterprise-integration-maps.md "Weitere Informationen zu Zuordnungen für die Unternehmensintegration")  

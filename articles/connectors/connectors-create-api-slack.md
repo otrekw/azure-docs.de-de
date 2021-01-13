@@ -1,22 +1,18 @@
 ---
-title: Herstellen einer Verbindung mit Slack über Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit Slack aus Azure Logic Apps
 description: Automatisieren von Aufgaben und Workflows, die Dateien überwachen und Kanäle, Gruppen und Nachrichten in Ihrem Slack-Konto mithilfe von Azure Logic Apps überwachen und verwalten
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 2606fdc15194264bc3d84496d2de258adfc314be
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 75f4cea0e5cd2b0bf42c28cbd81e199115834e11
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050795"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87283961"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Überwachen und Verwalten von Slack mit Azure Logic Apps
 
@@ -74,9 +70,10 @@ Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Bes
 
 ## <a name="get-support"></a>Support
 
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A für Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
+

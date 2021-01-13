@@ -3,20 +3,20 @@ title: Docker-Containereinstellungen – LUIS
 titleSuffix: Azure Cognitive Services
 description: Die Runtimeumgebung für LUIS-Container wird über die Argumente des Befehls `docker run` konfiguriert. LUIS verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.author: dapine
-ms.openlocfilehash: 9760475886ecb0f20d9f0f3981eab8246643da21
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: a4f2b07edc6c290fa030621a4dc400ab50890bba
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101984"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001162"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurieren von Docker-Containern für Language Understanding 
 
@@ -29,12 +29,12 @@ Dieser Container hat die folgenden Konfigurationseinstellungen:
 |Erforderlich|Einstellung|Zweck|
 |--|--|--|
 |Ja|[ApiKey](#apikey-setting)|Wird zum Nachverfolgen von Abrechnungsinformationen verwendet.|
-|Nein|[ApplicationInsights](#applicationinsights-setting)|Ermöglicht das Hinzufügen von Unterstützung für [Azure Application Insights](https://docs.microsoft.com/azure/application-insights)-Telemetriedaten in Ihrem Container.|
+|Nein|[ApplicationInsights](#applicationinsights-setting)|Ermöglicht das Hinzufügen von Unterstützung für [Azure Application Insights](/azure/application-insights)-Telemetriedaten in Ihrem Container.|
 |Ja|[Abrechnung](#billing-setting)|Gibt den Endpunkt-URI der Dienstressource in Azure an.|
 |Ja|[Eula](#eula-setting)| Gibt an, dass Sie die Lizenz für den Container akzeptiert haben.|
 |Nein|[Fluentd](#fluentd-settings)|Schreibt Protokoll- und optional auch Metrikdaten auf einen Fluentd-Server.|
 |Nein|[HTTP-Proxy](#http-proxy-credentials-settings)|Konfigurieren Sie einen HTTP-Proxy für ausgehende Anforderungen.|
-|Nein|[Protokollierung](#logging-settings)|Bietet Unterstützung für die ASP.NET Core-Protokollierung für Ihren Container. |
+|Nein|[Logging](#logging-settings)|Bietet Unterstützung für die ASP.NET Core-Protokollierung für Ihren Container. |
 |Ja|[Mounts](#mount-settings)|Liest und schreibt Daten vom Hostcomputer in den Container und umgekehrt.|
 
 > [!IMPORTANT]
@@ -64,12 +64,9 @@ Diese Einstellung finden Sie hier:
 * Azure-Portal: Übersicht über **Cognitive Services**, mit der Bezeichnung `Endpoint`
 * LUIS-Portal: Einstellungsseite für **Schlüssel und Endpunkt** als Teil des Endpunkt-URI.
 
-Denken Sie daran, die `luis/v2.0`-Weiterleitung wie in der folgenden Tabelle dargestellt in die URL einzubeziehen:
-
-
-|Erforderlich| NAME | Datentyp | BESCHREIBUNG |
-|--|------|-----------|-------------|
-|Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
+| Erforderlich | Name | Datentyp | BESCHREIBUNG |
+|----------|------|-----------|-------------|
+| Ja      | `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](luis-container-howto.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
@@ -97,10 +94,10 @@ Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Be
 
 In der folgenden Tabelle werden die unterstützten Einstellungen beschrieben.
 
-|Erforderlich| NAME | Datentyp | BESCHREIBUNG |
+|Erforderlich| Name | Datentyp | BESCHREIBUNG |
 |-------|------|-----------|-------------|
-|Ja| `Input` | Zeichenfolge | Das Ziel der Eingabeeinbindung. Standardwert: `/input`. Dies ist der Speicherort der LUIS-Paketdateien. <br><br>Beispiel:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Nein| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Dazu gehören auch LUIS-Abfrageprotokolle und -Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Ja| `Input` | String | Das Ziel der Eingabeeinbindung. Standardwert: `/input`. Dies ist der Speicherort der LUIS-Paketdateien. <br><br>Beispiel:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Nein| `Output` | String | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Dazu gehören auch LUIS-Abfrageprotokolle und -Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“
 
@@ -109,8 +106,6 @@ Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veransc
 * In diesen Beispielen wird das Verzeichnis auf dem Laufwerk `C:` verwendet, um Berechtigungskonflikte in Windows zu vermeiden. Wenn Sie ein bestimmtes Verzeichnis als Eingabeverzeichnis verwenden möchten, müssen Sie dem Docker-Dienst möglicherweise die erforderliche Berechtigung gewähren. 
 * Ändern Sie die Reihenfolge der Argumente nur, wenn Sie mit Docker-Containern sehr gut vertraut sind.
 * Wenn Sie ein anderes Betriebssystem verwenden, verwenden Sie beim Einbinden die richtige Konsole/das richtige Terminal, die richtige Ordnersyntax und das richtige Zeilenfortsetzungszeichen für Ihr System. In diesen Beispielen wird von einer Windows-Konsole mit dem Zeilenfortsetzungszeichen `^` ausgegangen. Da der Container ein Linux-Betriebssystem ist, verwendet die Zieleinbindung eine linuxartige Ordnersyntax.
-
-Denken Sie daran, die `luis/v2.0`-Weiterleitung wie in der folgenden Tabelle dargestellt in die URL einzubeziehen.
 
 Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 

@@ -5,17 +5,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 06/20/2019
+ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 53ccd439429dc7df311e086d79f7234e26fd8b0e
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: ba715d510dc296ffa8f9c0ee58841f284416a118
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302308"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86027329"
 ---
-> [!IMPORTANT]
-> Ihr Speicherkontoschlüssel ähnelt dem Stammkennwort für das Speicherkonto. Achten Sie darauf, den Kontoschlüssel immer gut zu schützen. Geben Sie ihn nicht an andere Benutzer weiter, vermeiden Sie das Hartcodieren, und speichern Sie ihn nicht als Klartext, auf den andere Benutzer Zugriff haben. Generieren Sie Ihren Kontoschlüssel über das Azure-Portal neu, wenn Sie der Meinung sind, dass er nicht mehr sicher ist.
->
-> SAS-Token (Shared Access Signature) sind wichtig zum Schutz nur der Kontozugriffsschlüssel. Durch Bereitstellung von Granularität gewährt SAS Clients Zugriff auf die Ressourcen in Ihrem Speicherkonto und sollte nicht öffentlich freigegeben werden. Sollte eine Freigabe aus Problembehandlungsgründen erforderlich sein, ziehen Sie die Verwendung einer editierten Version von Protokolldateien oder ggf. das Löschen von SAS-Token aus den Protokolldateien in Betracht, und stellen Sie sicher, dass die Screenshots keine SAS-Informationen enthalten.
+## <a name="protect-your-access-keys"></a>Schützen Ihrer Zugriffsschlüssel
+
+Ihre Speicherkonto-Zugriffsschlüssel ähneln einem Stammkennwort für das Speicherkonto. Achten Sie darauf, die Zugriffsschlüssel immer gut zu schützen. Verwenden Sie Azure Key Vault zum sicheren Verwalten und Rotieren Ihrer Schlüssel. Geben Sie Zugriffsschlüssel nicht an andere Benutzer weiter, vermeiden Sie das Hartcodieren, und speichern Sie die Schlüssel nicht als Klartext, auf den andere Benutzer Zugriff haben. Rotieren Sie die Schlüssel, wenn Sie glauben, dass sie möglicherweise gefährdet sind.
+
+> [!NOTE]
+> Microsoft empfiehlt nach Möglichkeit die Verwendung von Azure Active Directory (Azure AD) zum Autorisieren von Anforderungen an Blob- und Warteschlangendaten anstelle eines gemeinsam verwendeten Schlüssels. Azure AD bietet überlegene Sicherheit und Benutzerfreundlichkeit gegenüber dem gemeinsam verwendeten Schüssel. Weitere Informationen zur Autorisierung des Datenzugriffs mit Azure AD finden Sie unter [Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](../articles/storage/common/storage-auth-aad.md).

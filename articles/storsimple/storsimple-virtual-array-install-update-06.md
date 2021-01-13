@@ -1,6 +1,6 @@
 ---
 title: Installieren von Update 0.6 in StorSimple Virtual Array | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie die Webbenutzeroberfläche der StorSimple Virtual Array-Lösung verwenden, um Updates und Hotfixes über das Azure-Portal anzuwenden.
+description: Hier wird beschrieben, wie Sie die Webbenutzeroberfläche der StorSimple Virtual Array-Lösung verwenden, um Update 0.6 über das Azure-Portal und die Hotfixmethode anzuwenden.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 5f0be5d8378cd1640d3052f2e56c8161e2c0b203
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4b379bb76eaf7587c53ec55972ccee3f54a55f22
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62116890"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534244"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>Installieren von Update 0.6 in StorSimple Virtual Array
 
@@ -30,6 +30,7 @@ Dieser Artikel beschreibt die erforderlichen Schritte zum Installieren von Updat
 Außerdem wird empfohlen, die Volumes oder Freigaben vor dem Anwenden eines Updates auf dem Host und dann auf dem Gerät offline zu nehmen. Dadurch wird das Risiko einer Datenbeschädigung minimiert. Nachdem die Volumes oder Freigaben offline sind, sollten Sie auch eine manuelle Sicherung des Geräts durchführen.
 
 > [!IMPORTANT]
+>
 > - Update 0.6 entspricht der Softwareversion **10.0.10293.0** auf Ihrem Gerät. Informationen zu Neuigkeiten in diesem Update finden Sie in den [Versionsanmerkungen zum Update 0.6](storsimple-virtual-array-update-06-release-notes.md).
 >
 > - Wenn Sie Update 0.2 oder höher ausführen, empfehlen wir, die Updates über das Azure-Portal zu installieren. Wenn Sie Update 0.1 oder GA-Softwareversionen ausführen, müssen Sie die Hotfixmethode über die lokale Webbenutzeroberfläche verwenden, um Update 0.6 zu installieren.
@@ -96,26 +97,26 @@ Verwenden Sie diese Methode zum Installieren von Updates auf einem Gerät, auf d
 
 1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung** > **Softwareupdate**. Notieren Sie sich die Softwareversion, die Sie ausführen. Wenn Sie Version **10.0.10290.0** ausführen, müssen Sie den MDS-Agent in Schritt 6 nicht aktualisieren.
    
-    ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update-05/update1m.png)
+    ![Der Screenshot zeigt die im Menü „Wartung“ ausgewählte Option „Softwareupdate“.](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. Geben Sie in **Updatedateipfad**den Dateinamen für das Update oder den Hotfix ein. Sie können auch zur Installationsdatei des Updates oder Hotfixes navigieren, sofern sie auf einer Netzwerkfreigabe abgelegt wurde. Klicken Sie auf **Anwenden**.
+2. Geben Sie in **Updatedateipfad** den Dateinamen für das Update oder den Hotfix ein. Sie können auch zur Installationsdatei des Updates oder Hotfixes navigieren, sofern sie auf einer Netzwerkfreigabe abgelegt wurde. Klicken Sie auf **Anwenden**.
    
-    ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update-05/update2m.png)
+    ![Der Screenshot zeigt auf der Seite „Softwareupdate“ das Textfeld „Updatedateipfad“.](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
 3. Es wird eine Warnung angezeigt. Da das virtuelle Array ein Gerät mit einem Einzelknoten ist, wird das Gerät nach dem Anwenden des Updates neu gestartet, und es kommt zu einer Ausfallzeit. Klicken Sie auf das Häkchensymbol.
    
-   ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update-05/update3m.png)
+   ![Der Screenshot zeigt ein Dialogfeld mit einer Warnung zur Ausfallzeit.](./media/storsimple-virtual-array-install-update-05/update3m.png)
 
 4. Das Update wird gestartet. Nachdem das Gerät erfolgreich aktualisiert wurde, wird es neu gestartet. Auf die lokale Benutzeroberfläche kann währenddessen nicht zugegriffen werden.
    
-    ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update-05/update5m.png)
+    ![Der Screenshot zeigt eine Erfolgsmeldung für das Update.](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
 5. Nach dem Neustart wird die Seite **Anmelden** angezeigt. Um sicherzustellen, dass die Gerätesoftware aktualisiert wurde, wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung** >  **Softwareupdate**. Die angezeigte Softwareversion sollte **10.0.0.0.0.10293** für Update 0.6 lauten.
    
    > [!NOTE]
    > Die Softwareversionen werden in der lokalen Webbenutzeroberfläche und im Azure-Portal etwas unterschiedlich angegeben. Beispiel: Die lokale Webbenutzeroberfläche gibt **10.0.0.0.0.10293** an, und das Azure-Portal **10.0.10293.0**, obwohl es sich um dieselbe Version handelt.
    
-    ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update-06/update6m.png)
+    ![Der Screenshot zeigt die Seite „Softwareupdate“ mit der aktuellen Softwareversion.](./media/storsimple-virtual-array-install-update-06/update6m.png)
 
 6. Überspringen Sie diesen Schritt, wenn Sie vor diesem Update StorSimple Virtual Array Update 0.5 (**10.0.10290.0**) ausgeführt haben. Sie haben sich die Softwareversion in Schritt 1 notiert, bevor Sie mit dem Update begonnen haben. Wenn Sie Update 0.5 ausführen, ist der MDS-Agent bereits auf dem neuesten Stand.
 

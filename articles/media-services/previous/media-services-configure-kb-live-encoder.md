@@ -14,18 +14,19 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 7bb3db4861842e145689682035adc3c691538adf
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: ab73b22e927ad1bbcc8a07173e1548157de03cdd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297797"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89258094"
 ---
-# <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Verwenden des Haivision KB-Liveencoders zum Senden eines Single-Bitrate-Livedatenstroms  
+# <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Verwenden des Haivision KB-Liveencoders zum Senden eines Single-Bitrate-Livedatenstroms
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Haivision](media-services-configure-kb-live-encoder.md)
-> * [Tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 
 In diesem Thema wird beschrieben, wie Sie den [Haivision KB-Liveencoder](https://www.haivision.com/products/kb-series/) zum Senden eines Single-Bitrate-Livedatenstroms an AMS-Kanäle konfigurieren, für die Livecodierung aktiviert ist. Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Live Encoding mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).

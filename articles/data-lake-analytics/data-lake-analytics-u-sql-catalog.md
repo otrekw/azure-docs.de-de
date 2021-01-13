@@ -1,20 +1,16 @@
 ---
-title: Erste Schritte mit dem U-SQL-Katalog in Azure Data Lake Analytics
-description: Erfahren Sie, wie Sie den U-SQL-Katalog für die gemeinsame Nutzung von Code und Daten verwenden können.
-services: data-lake-analytics
+title: Verwenden des U-SQL-Katalogs in Azure Data Lake Analytics
+description: Erfahren Sie, wie Sie den U-SQL-Katalog für die gemeinsame Nutzung von Code und Daten verwenden können. Erstellen Sie Tabellenwertfunktionen, Ansichten und Tabellen, und führen Sie Abfragen aus.
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
-ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
-ms.topic: conceptual
+ms.reviewer: jasonh
+ms.topic: how-to
 ms.date: 05/09/2017
-ms.openlocfilehash: a6faa7037ccbacc0547401dd52bb3b19abd1c474
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f92aadc8ccf18dd91b5dd4b35285f60b174e4cf7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813349"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220073"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Erste Schritte mit dem U-SQL-Katalog in Azure Data Lake Analytics
 
@@ -24,7 +20,7 @@ Im vorherigen U-SQL-Skript haben Sie die Verwendung von EXTRACT zum Lesen aus de
 
 Im folgenden Skript wird eine Tabellenwertfunktion mit dem Namen `Searchlog()` in der Standarddatenbank und im Standardschema erstellt:
 
-```
+```usql
 DROP FUNCTION IF EXISTS Searchlog;
 
 CREATE FUNCTION Searchlog()
@@ -55,7 +51,7 @@ END;
 
 Das folgende Skript veranschaulicht, wie Sie die im obigen Skript definierte Tabellenwertfunktion verwenden:
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -76,7 +72,7 @@ Wenn ein einzelner Abfrageausdruck vorhanden ist, können Sie anstelle einer Tab
 
 Im folgenden Skript wird eine Ansicht mit dem Namen `SearchlogView` in der Standarddatenbank und im Standardschema erstellt:
 
-```
+```usql
 DROP VIEW IF EXISTS SearchlogView;
 
 CREATE VIEW SearchlogView AS  
@@ -93,7 +89,7 @@ USING Extractors.Tsv();
 
 Das folgende Skript veranschaulicht die Verwendung der definierten Ansicht:
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -108,12 +104,12 @@ OUTPUT @res
     USING Outputters.Csv();
 ```
 
-## <a name="create-tables"></a>Erstellen von Tabellen.
+## <a name="create-tables"></a>Erstellen von Tabellen
 Ähnlich wie bei relationalen Datenbanktabellen ermöglicht U-SQL Ihnen die Erstellung einer Tabelle mit einem vordefinierten Schema. Sie können auch eine Tabelle erstellen und das Schema aus der Abfrage ableiten, mit der die Tabelle aufgefüllt wird (auch als CREATE TABLE AS SELECT oder CTAS bezeichnet).
 
 Erstellen Sie mithilfe des folgenden Skripts eine Datenbank und zwei Tabellen:
 
-```
+```usql
 DROP DATABASE IF EXISTS SearchLogDb;
 CREATE DATABASE SearchLogDb;
 USE DATABASE SearchLogDb;
@@ -147,7 +143,7 @@ Sie können Tabellen wie die im obigen Skript erstellten auf die gleiche Weise w
 
 Um aus den Tabellen zu lesen, ändern Sie das zuvor verwendete Transformationsskript:
 
-```
+```usql
 @rs1 =
     SELECT
         Region,

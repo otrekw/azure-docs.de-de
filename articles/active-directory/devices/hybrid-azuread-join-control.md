@@ -4,19 +4,19 @@ description: Hier erfahren Sie, wie Sie eine kontrollierte Überprüfung von Azu
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 38754b9e349e27afcff58dac27a616e3e4fb5319
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851789"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860931"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Kontrollierte Überprüfung der Azure AD-Hybrideinbindung
 
@@ -33,7 +33,7 @@ Voraussetzungen für eine kontrollierte Überprüfung von Azure AD Hybrid Join 
 1. Entfernen Sie den Eintrag des Dienstverbindungspunkts (Service Connection Point, SCP) aus Active Directory (AD), sofern vorhanden.
 1. Konfigurieren Sie mithilfe eines Gruppenrichtlinienobjekts (Group Policy Object, GPO) die clientseitige Registrierungseinstellung für SCP auf Ihren in die Domäne eingebundenen Computern.
 1. Bei Verwendung von AD FS müssen Sie mithilfe eines Gruppenrichtlinienobjekts auch die clientseitige Registrierungseinstellung für SCP auf Ihrem AD FS-Server konfigurieren.  
-
+1. Möglicherweise müssen Sie auch in Azure AD Connect die [Synchronisierungsoptionen anpassen](../hybrid/how-to-connect-post-installation.md#additional-tasks-available-in-azure-ad-connect), um die Gerätesynchronisierung zu aktivieren. 
 
 
 ### <a name="clear-the-scp-from-ad"></a>Entfernen des SCP aus AD
@@ -43,7 +43,7 @@ Verwenden Sie zum Ändern der SCP-Objekte in AD den Schnittstellen-Editor der Ac
 1. Starten Sie die Desktopanwendung **ADSI Edit** als Unternehmensadministrator auf einer Verwaltungsarbeitsstation oder auf einem Domänencontroller.
 1. Stellen Sie eine Verbindung mit dem **Konfigurationsnamenskontext** Ihrer Domäne her.
 1. Navigieren Sie zu **CN=Configuration,DC=contoso,DC=com** > **CN=Services** > **CN=Device Registration Configuration**.
-1. Klicken Sie unter **CN=Device Registration Configuration** mit der rechten Maustaste auf das Blattobjekt, und wählen Sie **Eigenschaften** aus.
+1. Klicken Sie mit der rechten Maustaste auf das Blattobjekt **CN=62a0ff2e-97b9-4513-943f-0d221bd30080**, und wählen Sie **Eigenschaften** aus.
    1. Wählen Sie im Fenster **Attribut-Editor** die Option **Schlüsselwörter** aus, und klicken Sie auf **Bearbeiten**
    1. Wählen Sie nacheinander die Werte **azureADId** und **azureADName** aus, und klicken Sie auf **Entfernen**
 1. Schließen Sie **ADSI Edit**.
@@ -79,16 +79,16 @@ Verwenden Sie das folgende Beispiel, um ein Gruppenrichtlinienobjekt (Group Poli
 
 ### <a name="configure-ad-fs-settings"></a>Konfigurieren von AD FS-Einstellungen
 
-Bei Verwendung von AD FS müssen Sie gemäß der weiter oben angegebenen Anleitung zunächst den clientseitigen SCP konfigurieren. Dabei muss das Gruppenrichtlinienobjekt allerdings mit Ihren AD FS-Servern verknüpft werden. Das SCP-Objekt definiert die Autoritätsquelle für Geräteobjekte. Dabei kann es sich um die lokale Umgebung oder um Azure AD handeln. Wenn dieses Objekt für Active Directory-Verbunddienste (AD FS) konfiguriert ist, wird die Quelle für Geräteobjekte als Azure AD eingerichtet.
+Bei Verwendung von AD FS müssen Sie gemäß der weiter oben angegebenen Anleitung zunächst den clientseitigen SCP konfigurieren. Dabei muss das Gruppenrichtlinienobjekt allerdings mit Ihren AD FS-Servern verknüpft werden. Das SCP-Objekt definiert die Autoritätsquelle für Geräteobjekte. Dabei kann es sich um die lokale Umgebung oder um Azure AD handeln. Wenn der clientseitige SCP für AD FS konfiguriert ist, wird die Quelle für Geräteobjekte als Azure AD eingerichtet.
 
 > [!NOTE]
-> Wenn Sie auf Ihren AD FS-Servern den clientseitigen SCP nicht konfiguriert haben, wird als Quelle für Geräteidentitäten die lokale Umgebung verwendet, und AD FS beginnt nach einem bestimmten Zeitraum damit, Geräteobjekte aus dem lokalen Verzeichnis zu löschen.
+> Wenn Sie den clientseitigen SCP nicht auf Ihren AD FS-Servern konfigurieren konnten, wird die Quelle für Geräteidentitäten als lokal betrachtet. AD FS beginnt dann nach Ablauf des im Attribut „MaximumInactiveDays“ der AD FS-Geräteregistrierung festgelegten Zeitraums mit dem Löschen von Geräteobjekten aus dem lokalen Verzeichnis. AD FS-Geräteregistrierungsobjekte können mithilfe des [Cmdlets „Get-AdfsDeviceRegistration“](/powershell/module/adfs/get-adfsdeviceregistration) gefunden werden.
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Kontrollierte Überprüfung von Azure AD Hybrid Join für kompatible Windows-Geräte
 
 Zur Registrierung von kompatiblen Windows-Geräten müssen Organisationen [Microsoft Workplace Join für Computer installieren, auf denen nicht Windows 10 ausgeführt wird](https://www.microsoft.com/download/details.aspx?id=53554) (verfügbar im Microsoft Download Center).
 
-Sie können das Paket mithilfe eines Softwareverteilungssystems wie  [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager) bereitstellen. Das Paket unterstützt die Standardoptionen für die Installation im Hintergrund unter Verwendung des quiet-Parameters. Configuration Manager Current Branch bietet zusätzliche Vorteile gegenüber früheren Versionen, z.B. die Möglichkeit zur Nachverfolgung abgeschlossener Registrierungen.
+Sie können das Paket mithilfe eines Softwareverteilungssystems wie  [Microsoft Endpoint Configuration Manager](/configmgr/) bereitstellen. Das Paket unterstützt die Standardoptionen für die Installation im Hintergrund unter Verwendung des quiet-Parameters. Configuration Manager Current Branch bietet zusätzliche Vorteile gegenüber früheren Versionen, z.B. die Möglichkeit zur Nachverfolgung abgeschlossener Registrierungen.
 
 Das Installationsprogramm erstellt einen geplanten Task für das System, der im Kontext des Benutzers ausgeführt wird. Der Task wird ausgelöst, wenn sich der Benutzer bei Windows anmeldet. Nach der Authentifizierung durch Azure AD verknüpft die Aufgabe das Gerät unter Verwendung der Benutzeranmeldeinformationen mit Azure AD.
 

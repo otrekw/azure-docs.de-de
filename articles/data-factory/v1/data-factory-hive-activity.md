@@ -1,10 +1,10 @@
 ---
-title: Transformieren von Daten mit der Hive-Aktivität – Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Hive-Aktivität in Azure Data Factory verwenden können, um Hive-Abfragen in einem bedarfsgesteuerten/eigenen HDInsight-Cluster auszuführen.
+title: Transformieren von Daten mit der Hive-Aktivität – Azure
+description: Erfahren Sie, wie Sie die Hive-Aktivität in Azure Data Factory v1 verwenden können, um Hive-Abfragen in einem bedarfsgesteuerten/eigenen HDInsight-Cluster auszuführen.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: 80083218-743e-4da8-bdd2-60d1c77b1227
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 8a7e6748f450ae398a05097ac6b192d074f5f1f7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8a44838076b80c1b745937cf44f241c40ce6e5c2
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139534"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510157"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Hive-Aktivität in Azure Data Factory 
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
@@ -26,8 +26,8 @@ ms.locfileid: "70139534"
 > * [MapReduce-Aktivität](data-factory-map-reduce.md)
 > * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 > * [Spark-Aktivität](data-factory-spark.md)
-> * [Machine Learning-Batchausführungsaktivität](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning-Ressourcenaktualisierungsaktivität](data-factory-azure-ml-update-resource-activity.md)
+> * [Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md)
 > * [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
 > * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
@@ -38,7 +38,7 @@ ms.locfileid: "70139534"
 Die HDInsight Hive-Aktivität in einer Data Factory-[Pipeline](data-factory-create-pipelines.md) wendet Hive-Abfragen auf [Ihren eigenen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) oder einen [bedarfsgesteuerten](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows-/Linux-basierten HDInsight-Cluster an. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
 
 > [!NOTE] 
-> Wenn Sie noch nicht mit Azure Data Factory vertraut sind, sollten Sie zunächst den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md) lesen und anschließend das Tutorial zum Thema [Erstellen Ihrer ersten Datenpipeline](data-factory-build-your-first-pipeline.md) durcharbeiten, bevor Sie diesen Artikel lesen. 
+> Wenn Sie noch nicht mit Azure Data Factory vertraut sind, lesen Sie zunächst den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md), und durchlaufen Sie anschließen das Tutorial [Erstellen Ihrer ersten Pipeline](data-factory-build-your-first-pipeline.md), bevor Sie diesen Artikel lesen. 
 
 ## <a name="syntax"></a>Syntax
 
@@ -137,38 +137,39 @@ Um dieses Hive-Skript in einer Data Factory-Pipeline auszuführen, müssen Sie f
    > 
 5. Erstellen Sie eine Pipeline mit der HDInsightHive-Aktivität. Die Aktivität verarbeitet/transformiert die Daten.
 
-    ```JSON   
-    {   
-        "name": "HiveActivitySamplePipeline",
-        "properties": {
-        "activities": [
-            {
-                "name": "HiveActivitySample",
-                "type": "HDInsightHive",
-                "inputs": [
-                {
-                    "name": "HiveSampleIn"
-                }
-                ],
-                "outputs": [
-                {
-                    "name": "HiveSampleOut"
-                }
-                ],
-                "linkedServiceName": "HDInsightLinkedService",
-                "typeproperties": {
-                    "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
-                    "scriptLinkedService": "StorageLinkedService"
-                },
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                }
-            }
-            ]
+  ```json
+  {
+    "name": "HiveActivitySamplePipeline",
+       "properties": {
+    "activities": [
+      {
+        "name": "HiveActivitySample",
+        "type": "HDInsightHive",
+        "inputs": [
+        {
+          "name": "HiveSampleIn"
         }
+        ],
+             "outputs": [
+               {
+                "name": "HiveSampleOut"
+               }
+             ],
+             "linkedServiceName": "HDInsightLinkedService",
+             "typeproperties": {
+                 "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
+                 "scriptLinkedService": "StorageLinkedService"
+             },
+              "scheduler": {
+          "frequency": "Hour",
+                   "interval": 1
+             }
+           }
+      ]
     }
-    ```
+  }
+  ```
+
 6. Stellen Sie die Pipeline bereit. Weitere Informationen finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md) . 
 7. Überwachen Sie die Pipeline mithilfe der Überwachungs- und Verwaltungsansichten von Data Factory. Weitere Informationen finden Sie im Artikel [Überwachen und Verwalten von Data Factory-Pipelines](data-factory-monitor-manage-pipelines.md) . 
 
@@ -177,9 +178,9 @@ In diesem Beispiel werden die Spielprotokolle täglich in Azure Blob Storage erf
 
 Gehen Sie folgendermaßen vor, um parametrisierte Hive-Skripts zu verwenden:
 
-* Legen Sie die Parameter in **defines**fest.
+* Legen Sie die Parameter in **defines** fest.
 
-    ```JSON  
+  ```JSON  
     {
         "name": "HiveActivitySamplePipeline",
           "properties": {
@@ -241,10 +242,10 @@ Gehen Sie folgendermaßen vor, um parametrisierte Hive-Skripts zu verwenden:
         SUM(Duration)
     FROM HiveSampleIn Group by ProfileID
     ```
-  ## <a name="see-also"></a>Siehe auch
+  ## <a name="see-also"></a>Weitere Informationen
 * [Pig-Aktivität](data-factory-pig-activity.md)
 * [MapReduce-Aktivität](data-factory-map-reduce.md)
 * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 * [Invoke Spark programs (Aufrufen von Spark-Programmen)](data-factory-spark.md)
-* [Invoke R scripts (Aufrufen von R-Skripts)](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [Invoke R scripts (Aufrufen von R-Skripts)](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

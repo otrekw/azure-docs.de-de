@@ -1,25 +1,19 @@
 ---
-title: Erstellen und Verwalten einer Windows-VM in Azure mithilfe von Python | Microsoft-Dokumentation
+title: Erstellen und Verwalten einer Windows-VM in Azure mithilfe von Python
 description: Erfahren Sie, wie Sie Python zum Erstellen und Verwalten einer Windows-VM in Azure verwenden.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.workload: infrastructure
+ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: fcbf4e054359534f924b401f2f42e1d4c33890be
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: devx-track-python
+ms.openlocfilehash: a7117d30eb1774753f21e82ad5f812a7309d8386
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102477"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483095"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Erstellen und Verwalten von Windows-VMs in Azure mithilfe von Python
 
@@ -38,7 +32,7 @@ Die Ausführung dieser Schritte dauert etwa 20 Minuten.
 
 ## <a name="create-a-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts
 
-1. Wenn Sie dies noch nicht getan haben, installieren Sie [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wählen Sie auf der Seite „Workloads“ **Python-Entwicklung** aus, und klicken Sie dann auf **Installieren**. In der Zusammenfassung können Sie sehen, dass **Python 3 64-Bit (3.6.0)** automatisch für Sie ausgewählt wurde. Wenn Sie Visual Studio bereits installiert haben, können Sie die Python-Workload mit dem Visual Studio-Startprogramm hinzufügen.
+1. Wenn Sie dies noch nicht getan haben, installieren Sie [Visual Studio](/visualstudio/install/install-visual-studio). Wählen Sie auf der Seite „Workloads“ **Python-Entwicklung** aus, und klicken Sie dann auf **Installieren**. In der Zusammenfassung können Sie sehen, dass **Python 3 64-Bit (3.6.0)** automatisch für Sie ausgewählt wurde. Wenn Sie Visual Studio bereits installiert haben, können Sie die Python-Workload mit dem Visual Studio-Startprogramm hinzufügen.
 2. Klicken Sie nach dem Installieren und Starten von Visual Studio auf **Datei** > **Neu** > **Projekt**.
 3. Klicken Sie auf **Vorlagen** > **Python** > **Python-Anwendung**, geben Sie *myPythonProject* als Namen für das Projekt ein, wählen Sie den Speicherort des Projekts aus, und klicken Sie dann auf **OK**.
 
@@ -125,7 +119,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="create-the-vm-and-supporting-resources"></a>Erstellen der VM und der unterstützenden Ressourcen
 
-Alle Ressourcen müssen in einer [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) enthalten sein.
+Alle Ressourcen müssen in einer [Ressourcengruppe](../../azure-resource-manager/management/overview.md) enthalten sein.
 
 1. Um eine Ressourcengruppe zu erstellen, fügen Sie diese Funktion nach den Variablen in der PY-Datei hinzu:
 
@@ -171,7 +165,7 @@ Alle Ressourcen müssen in einer [Ressourcengruppe](../../azure-resource-manager
     input('Availability set created. Press enter to continue...')
     ```
 
-Eine öffentliche [IP-Adresse](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) ist für die Kommunikation mit dem virtuellen Computer erforderlich.
+Eine öffentliche [IP-Adresse](../../virtual-network/public-ip-addresses.md) ist für die Kommunikation mit dem virtuellen Computer erforderlich.
 
 1. Um eine öffentliche IP-Adresse für den virtuellen Computer zu erstellen, fügen Sie diese Funktion nach den Variablen in der PY-Datei hinzu:
 
@@ -470,7 +464,7 @@ Sie können einen virtuellen Computer beenden und sämtliche Einstellungen beibe
 
 ### <a name="resize-the-vm"></a>Ändern der Größe der VM
 
-Viele Aspekte der Bereitstellung müssen berücksichtigt werden, wenn Sie die Größe für den virtuellen Computer festlegen. Weitere Informationen finden Sie unter [VM-Größen](sizes.md).
+Viele Aspekte der Bereitstellung müssen berücksichtigt werden, wenn Sie die Größe für den virtuellen Computer festlegen. Weitere Informationen finden Sie unter [VM-Größen](../sizes.md).
 
 1. Um die Größe des virtuellen Computers zu ändern, fügen Sie diese Funktion nach den Variablen in der PY-Datei hinzu:
 
@@ -498,7 +492,7 @@ Viele Aspekte der Bereitstellung müssen berücksichtigt werden, wenn Sie die Gr
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Hinzufügen eines Datenträgers zur VM
 
-Virtuelle Computer können über einen oder mehrere [Datenträger](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) verfügen, die als VHDs gespeichert werden.
+Virtuelle Computer können über einen oder mehrere [Datenträger](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) verfügen, die als VHDs gespeichert werden.
 
 1. Um einen Datenträger zum virtuellen Computer hinzuzufügen, fügen Sie diese Funktion nach den Variablen in der PY-Datei hinzu: 
 
@@ -572,6 +566,5 @@ Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es s
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Falls bei der Bereitstellung Probleme aufgetreten sind, empfiehlt sich unter Umständen die Lektüre des Artikels [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../../resource-manager-troubleshoot-deployments-portal.md).
-- Erfahren Sie mehr über die [Azure Python-Bibliothek](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python).
-
+- Falls bei der Bereitstellung Probleme aufgetreten sind, empfiehlt sich unter Umständen die Lektüre des Artikels [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../../azure-resource-manager/templates/deployment-history.md).
+- Erfahren Sie mehr über die [Azure Python-Bibliothek](/python/api/overview/azure/?view=azure-python).

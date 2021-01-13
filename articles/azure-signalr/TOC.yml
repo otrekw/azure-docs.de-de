@@ -13,28 +13,35 @@
       href: signalr-quickstart-dotnet.md
     - name: Azure Functions – JavaScript
       href: signalr-quickstart-azure-functions-javascript.md
-    - name: 'Azure Functions – C#'
+    - name: Azure Functions – C#
       href: signalr-quickstart-azure-functions-csharp.md
     - name: 'Azure Functions: Java'
       href: signalr-quickstart-azure-functions-java.md
     - name: 'Azure Functions: Python'
       href: signalr-quickstart-azure-functions-python.md
+    - name: "Azure SignalR Service-Bereitstellung\_– ARM-Vorlage"
+      href: signalr-quickstart-azure-signalr-service-arm-template.md
+      displayName: deploy azure resource manager template
     - name: REST-API
       href: signalr-quickstart-rest-api.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen einer serverlosen Echtzeit-App mit Authentifizierung
       href: signalr-tutorial-authenticate-azure-functions.md
+    - name: "Erstellen einer Blazor\_Server-Chat-App"
+      href: signalr-tutorial-build-blazor-server-chat-app.md
 - name: Beispiele
   items:
     - name: Codebeispiele
       href: 'https://github.com/aspnet/AzureSignalR-samples'
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: signalr-reference-cli.md
 - name: Konzepte
   items:
     - name: Ausführliche Informationen zu Azure SignalR Service
       href: signalr-concept-internals.md
+    - name: Dienstmodus
+      href: concept-service-mode.md
     - name: Skalieren von ASP.NET Core SignalR
       href: signalr-concept-scale-aspnet-core.md
     - name: Serverlos
@@ -45,6 +52,24 @@
           href: signalr-concept-serverless-development-config.md
         - name: Referenz zu SignalR Service-Bindungen für Azure Functions
           href: ../azure-functions/functions-bindings-signalr-service.md
+        - name: Upstreameinstellungen
+          href: concept-upstream.md
+    - name: Verfügbarkeit
+      items:
+        - name: Ordnungsgemäßes Herunterfahren des App-Servers
+          href: server-graceful-shutdown.md
+    - name: Sicherheit
+      items:
+        - name: Authorization
+          items:
+            - name: Autorisieren des Zugriffs mit Azure Active Directory
+              href: authorize-access-azure-active-directory.md
+        - name: Authentifizierung
+          items:
+            - name: Authentifizieren über eine Anwendung
+              href: authenticate-application.md
+            - name: Authentifizieren mit einer verwalteten Identität
+              href: authenticate-managed-identity.md
     - name: Hochverfügbarkeit
       items:
         - name: Resilienz und Notfallwiederherstellung
@@ -53,40 +78,69 @@
       href: signalr-concept-messages-and-connections.md
     - name: Überlegungen zur Leistung
       href: signalr-concept-performance.md
-    - name: Authentication
+    - name: Authentifizierung
       href: signalr-concept-authenticate-oauth.md
     - name: Behandlung von Ereignissen
       href: signalr-concept-event-grid-integration.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
 - name: Anleitungen
   items:
     - name: Skalieren
       items:
+        - name: Einzelne Instanz
+          href: signalr-howto-scale-signalr.md
         - name: Mehrere Instanzen
           href: signalr-howto-scale-multi-instances.md
-    - name: Schützen
+    - name: Sicher
       items:
         - name: Zugriffsschlüsselrotation
           href: signalr-howto-key-rotation.md
+        - name: Verwenden von Azure-Diensttags
+          href: howto-service-tags.md
+        - name: Verwenden von privaten Azure-Endpunkten
+          href: howto-private-endpoints.md
+        - name: Verwalten der Netzwerkzugriffssteuerung
+          href: howto-network-access-control.md
+        - name: Verwenden der verwalteten Identität
+          href: howto-use-managed-identity.md
     - name: Integrieren
       items:
         - name: Azure Functions-Bindungen
           href: signalr-concept-azure-functions.md
         - name: Event Grid-Integration
           href: signalr-howto-event-grid-integration.md
-- name: Referenzen
+    - name: Überwachen
+      items:
+        - name: Verwenden von Diagnoseprotokollen zum Überwachen von SignalR Service
+          href: signalr-howto-diagnostic-logs.md
+        - name: Überwachen der Konformität mithilfe von Azure Policy
+          href: signalr-howto-azure-policy.md
+    - name: Problembehandlung
+      items:
+        - name: Leitfäden zur Problembehandlung
+          href: signalr-howto-troubleshoot-guide.md
+        - name: Methoden zur Problembehandlung
+          href: signalr-howto-troubleshoot-method.md
+- name: References
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: signalr-reference-cli.md
     - name: REST-API
       href: 'https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md'
     - name: ASP.NET Core SignalR
-      href: 'https://docs.microsoft.com/aspnet/core/signalr'
+      href: /aspnet/core/signalr
     - name: Azure SignalR Service-Protokoll
       href: 'https://github.com/Azure/azure-signalr/blob/dev/specs/ServiceProtocol.md'
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Lösungen
-      href: 'https://docs.microsoft.com/azure/architecture/'
+      href: /azure/architecture/
     - name: Kundenstimmen
       href: 'https://customers.microsoft.com/en-us/search?sq=signalr'
     - name: Roadmap für SignalR
@@ -98,7 +152,7 @@
     - name: Häufig gestellte Fragen
       href: signalr-resource-faq.md
     - name: SignalR Service-Einschränkungen auf Abonnementebene
-      href: 'https://docs.microsoft.com/azure/azure-subscription-service-limits#signalr-service-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: Videos

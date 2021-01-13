@@ -1,6 +1,6 @@
 ---
 title: Hochverfügbarkeit – Azure-Dienst für dedizierte HSMs | Microsoft-Dokumentation
-description: Hochverfügbarkeitsbeispiel für Azure-Dienst für dedizierte HSMs und grundlegende Überlegungen
+description: Hier erfahren Sie mehr über die grundlegenden Überlegungen zur Hochverfügbarkeit im Zusammenhang mit Azure Dedicated HSM. Dieser Artikel enthält ein Beispiel.
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 8f8fa2f12825fe88218fe7033a1721cb49fc7335
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882252"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88189849"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure-Dienst für dedizierte HSMs – Hochverfügbarkeit
 

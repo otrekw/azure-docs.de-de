@@ -1,25 +1,24 @@
 ---
-title: Diagnostizieren der lokalen Konnektivität über VPN Gateway mit Azure Network Watcher | Microsoft Docs
+title: Diagnostizieren der lokalen Konnektivität über VPN Gateway
+titleSuffix: Azure Network Watcher
 description: Dieser Artikel beschreibt die Durchführung einer Diagnose der lokalen Konnektivität über VPN-Gateways mithilfe der Azure Network Watcher-Ressource zur Problembehandlung.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 05335cb6949928244e10641ebe82008275830e67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 9014f24918013872ce102d094f62fd5703594ddc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754070"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961854"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostizieren der lokalen Konnektivität über VPN-Gateways
 
@@ -36,12 +35,12 @@ Sie möchten eine Site-to-Site-Verbindung zwischen Azure und dem lokalen Netzwer
 
 1. Virtual Network-Gateway: VPN Gateway in Azure
 1. Gateway des lokalen Netzwerks: die Darstellung des [lokalen VPN-Gateways (FortiGate)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) in der Azure-Cloud
-1. Site-to-Site-Verbindung (routenbasiert): [Verbindung zwischen VPN Gateway und dem lokalen Router](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
+1. Site-to-Site-Verbindung (routenbasiert): [Verbindung zwischen VPN Gateway und dem lokalen Router](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)
 1. [Konfigurieren von FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-Eine ausführliche Hilfestellung zum Konfigurieren einer Standort-zu-Standort-Konfiguration finden Sie unter: [Erstellen eines VNET mit einer Standort-zu-Standort-Verbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Eine Schritt-für-Schritt-Anleitung zum Konfigurieren einer Standort-zu-Standort-Konfiguration finden Sie unter [Erstellen eines VNET mit einer Standort-zu-Standort-Verbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-Ein wichtiger Konfigurationsschritt ist die Konfiguration der IPsec-Kommunikationsparameter. Eine fehlerhafte Konfiguration führt zum Verlust der Verbindung zwischen dem lokalen Netzwerk und Azure. Derzeit sind Azure VPN Gateway-Instanzen für die Unterstützung der folgenden IPsec-Parameter für Phase 1 konfiguriert. Beachten Sie, dass diese Einstellungen wie bereits erwähnt nicht geändert werden können.  Wie Sie in der Tabelle unten sehen können, unterstützt Azure VPN Gateway die Verschlüsselungsalgorithmen AES256, AES128 und 3DES.
+Ein wichtiger Konfigurationsschritt ist die Konfiguration der IPsec-Kommunikationsparameter. Eine fehlerhafte Konfiguration führt zum Verlust der Verbindung zwischen dem lokalen Netzwerk und Azure. Derzeit sind Azure VPN Gateway-Instanzen für die Unterstützung der folgenden IPsec-Parameter für Phase 1 konfiguriert. Wie Sie in der Tabelle unten sehen können, unterstützt Azure VPN Gateway die Verschlüsselungsalgorithmen AES256, AES128 und 3DES.
 
 ### <a name="ike-phase-1-setup"></a>IKE Phase 1-Einrichtung
 
@@ -52,7 +51,7 @@ Ein wichtiger Konfigurationsschritt ist die Konfiguration der IPsec-Kommunikatio
 | Authentifizierungsmethode |Vorab ausgetauschter Schlüssel |Vorab ausgetauschter Schlüssel |
 | Verschlüsselungsalgorithmen |AES256 AES128 3DES |AES256 3DES |
 | Hashalgorithmus |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
-| Phase 1 Sicherheitszuordnung (SA) Lebensdauer (Zeit) |28\.800 Sekunden |10\.800 Sekunden |
+| Phase 1 Sicherheitszuordnung (SA) Lebensdauer (Zeit) |28.800 Sekunden |28.800 Sekunden |
 
 Als Benutzer müssen Sie FortiGate konfigurieren. Eine Beispielkonfiguration finden Sie auf [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt). Ohne es zu wissen, haben Sie FortiGate für die Verwendung des Hashalgorithmus SHA-512 konfiguriert. Da dieser Algorithmus für richtlinienbasierte Verbindungen nicht unterstützt wird, funktioniert Ihre VPN-Verbindung nicht.
 
@@ -81,7 +80,7 @@ Das Azure Network Watcher-Feature zur Problembehandlung ermöglicht es Ihnen, Pr
 
 ### <a name="gateway"></a>Gateway
 
-| Fehlertyp | `Reason` | Protokoll|
+| Fehlertyp | `Reason` | Log|
 |---|---|---|
 | NoFault | Es wurde kein Fehler erkannt. |Ja|
 | GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein|
@@ -96,7 +95,7 @@ Das Azure Network Watcher-Feature zur Problembehandlung ermöglicht es Ihnen, Pr
 
 ### <a name="connection"></a>Verbindung
 
-| Fehlertyp | `Reason` | Protokoll|
+| Fehlertyp | `Reason` | Log|
 |---|---|---|
 | NoFault | Es wurde kein Fehler erkannt. |Ja|
 | GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein|

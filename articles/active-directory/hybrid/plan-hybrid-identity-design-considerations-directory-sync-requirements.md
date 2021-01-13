@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 500d226fcb60646becc49144f206dcb0dee49bd8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381160"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89278393"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Ermitteln der Anforderungen an die Verzeichnissynchronisierung
 Bei der Synchronisierung geht es um das Bereitstellen einer Identität für Benutzer in der Cloud, und zwar basierend auf ihrer lokalen Identität. Benutzer müssen unabhängig davon, ob sie das synchronisierte Konto für die Authentifizierung oder die Verbundauthentifizierung verwenden, über eine Identität in der Cloud verfügen.  Diese Identität muss regelmäßig verwaltet und aktualisiert werden.  Die Updates können viele Formen annehmen – von der Änderung des Titels bis zur Änderung des Kennworts.  
@@ -64,7 +64,7 @@ Außerdem müssen Sie die Sicherheitsanforderungen und Einschränkungen der Verz
   * Können Sie die erforderlichen Firewallports öffnen, um die Synchronisierung zu unterstützen?
 * Verfügen Sie für den Synchronisierungsserver über einen Plan für die Notfallwiederherstellung?
 * Verfügen Sie über ein Konto mit den richtigen Berechtigungen für alle Gesamtstrukturen, für die eine Synchronisierung durchgeführt werden soll?
-  * Falls Sie in Ihrem Unternehmen diese Frage nicht beantworten können, helfen Ihnen die Informationen im Abschnitt „Berechtigungen für die Kennwortsynchronisierung“ des Artikels [Installieren des Azure Active Directory-Synchronisierungsdiensts](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) weiter. Mit diesen Informationen können Sie ermitteln, ob bereits ein Konto mit diesen Berechtigungen vorhanden ist oder ob Sie ein Konto erstellen müssen.
+  * Falls Sie in Ihrem Unternehmen diese Frage nicht beantworten können, helfen Ihnen die Informationen im Abschnitt „Berechtigungen für die Kennwortsynchronisierung“ des Artikels [Installieren des Azure Active Directory-Synchronisierungsdiensts](/previous-versions/azure/azure-services/dn757602(v=azure.100)#BKMK_CreateAnADAccountForTheSyncService) weiter. Mit diesen Informationen können Sie ermitteln, ob bereits ein Konto mit diesen Berechtigungen vorhanden ist oder ob Sie ein Konto erstellen müssen.
 * Kann der Synchronisierungsserver auf alle Gesamtstrukturen zugreifen, wenn bei Ihnen mehrere Gesamtstrukturen an der Synchronisierung beteiligt sind?
 
 > [!NOTE]
@@ -77,4 +77,3 @@ Außerdem müssen Sie die Sicherheitsanforderungen und Einschränkungen der Verz
 
 ## <a name="see-also"></a>Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](plan-hybrid-identity-design-considerations-overview.md)
-

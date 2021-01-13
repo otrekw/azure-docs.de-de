@@ -1,33 +1,32 @@
 ---
-title: Aktualisieren Ihrer Gruppeninformationen im Portal „Meine Apps“ – Azure Active Directory | Microsoft-Dokumentation
+title: Aktualisieren Ihrer Gruppeninformationen im Portal „Meine Apps“ – Azure AD
 description: Erfahren Sie, wie Sie Ihre gruppenbezogenen Informationen anzeigen und aktualisieren können, einschließlich der Anzeige der Gruppen, die Sie besitzen, der Erstellung neuer Gruppen, der Anzeige der Gruppen, deren Mitglied Sie bereits sind, und des Beitritts zu allen Gruppen, denen Sie noch nicht angehören.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.topic: end-user-help
+ms.date: 10/19/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a11b43d040dec838de350c23614ae42b6756ec6e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: cff1298f12d26b1260213d75701c282e0a82511d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383165"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004149"
 ---
-# <a name="update-your-groups-info-from-the-my-apps-portal"></a>Aktualisieren Ihrer Gruppeninformationen im Portal „Meine Apps“
+# <a name="update-your-groups-info-on-the-my-apps-portal"></a>Aktualisieren Ihrer Gruppeninformationen im Portal „Meine Apps“
 
-Sie können Ihr Geschäfts-, Schul- oder Unikonto mit dem webbasierten Portal **Meine Apps** verwenden, um viele der cloudbasierten Apps Ihrer Organisation anzuzeigen und zu starten, bestimmte Profil- und Kontoinformationen zu aktualisieren, Informationen zu Ihren **Gruppen** anzuzeigen und **Zugriffsüberprüfungen** für Ihre Apps und Gruppen durchzuführen. Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich an Ihren Helpdesk.
+Sie können über Ihr Geschäfts-, Schul- oder Unikonto beim webbasierten Portal **Meine Apps** viele der cloudbasierten Apps Ihrer Organisation anzeigen und starten, bestimmte Profil- und Kontoinformationen aktualisieren, Informationen zu Ihren **Gruppen** anzeigen sowie **Zugriffsüberprüfungen** für Ihre Apps und Gruppen durchführen. Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich an Ihren Helpdesk.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Dieser Inhalt richtet sich an Benutzer. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](https://docs.microsoft.com/azure/active-directory/manage-apps) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
+>Dieser Inhalt richtet sich an Benutzer. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](../manage-apps/index.yml) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
 
 ## <a name="view-your-groups-information"></a>Anzeigen von Informationen zu Ihren Gruppen
 
@@ -45,17 +44,15 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Anzeigen der Kachel **Gruppen*
 
     Die Seite **Apps** wird mit allen im Besitz Ihrer Organisation befindlichen Cloud-Apps angezeigt, die Ihnen zur Verfügung stehen.
 
-    ![Seite „Apps“ im Portal „Meine Apps“](media/my-apps-portal/my-apps-portal-apps-page-groups-tile.png)
+    ![Seite „Apps“ im Portal „Meine Apps“](media/my-apps-portal-end-user-groups/my-apps-home-large.png)
 
-3. Wählen Sie die Kachel **Gruppen** aus, um Ihre gruppenbezogenen Informationen anzuzeigen.
+3. Wählen Sie im Pulldownmenü **Meine Apps** die Option **Meine Gruppen** aus, um Ihre gruppenbezogenen Informationen anzuzeigen.
 
-    ![Seite „Gruppen“ mit Gruppen in Ihrem Besitz und deren Mitglied Sie sind](media/my-apps-portal/my-apps-portal-groups-page.png)
-
-4. Basierend auf Ihren Berechtigungen haben Sie auf der Seite **Gruppen** folgende Möglichkeiten:
+4. Basierend auf Ihren Berechtigungen können Sie auf der Seite **Meine Gruppen** folgende Aktionen ausführen:
 
     - **Überprüfen der Gruppen, deren Besitzer Sie sind.** Sie können im Bereich **Gruppen in meinem Besitz** Informationen zu allen Gruppen anzeigen, die Sie innerhalb Ihrer Organisation besitzen. Wenn Sie einen bestimmten Gruppennamen auswählen, erhalten Sie weitere Informationen zur Gruppe, einschließlich Gruppentyp, Anzahl der Mitglieder, Richtlinie für Beitritt und Liste der aktiven Mitglieder.
 
-    - **Erstellen einer neuen Gruppe.** Erstellen Sie im Bereich**Gruppen in meinem Besitz** eine neue Gruppe mit Ihnen als Besitzer. Die einzelnen Schritte finden Sie in diesem Artikel im Abschnitt [Erstellen einer neuen Gruppe](#create-a-new-group).
+    - **Erstellen einer neuen Gruppe.** Erstellen Sie im Bereich **Gruppen in meinem Besitz** eine neue Gruppe mit Ihnen als Besitzer. Die einzelnen Schritte finden Sie in diesem Artikel im Abschnitt [Erstellen einer neuen Gruppe](#create-a-new-group).
 
     - **Bearbeiten einer vorhandenen Gruppe**. Bearbeiten Sie die Details Ihrer eigenen Gruppen. Die einzelnen Schritte finden Sie in diesem Artikel im Abschnitt [Bearbeiten einer vorhandenen Gruppe](#edit-an-existing-group).
 
@@ -91,15 +88,13 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Anzeigen der Kachel **Gruppen*
 
     - **Gruppenrichtlinie.** Wählen Sie, ob entweder jeder der Gruppe beitreten darf oder ob nur der Besitzer der Gruppe Mitglieder hinzufügen darf.
 
-3. Klicken Sie auf **Erstellen**.
+3. Wählen Sie **Erstellen** aus.
 
     Die neue Gruppe wird mit Ihnen als Besitzer erstellt und in der Liste **Gruppen in meinem Besitz** angezeigt. Da Sie der Besitzer sind, wird auch diese Gruppe in der Liste **Meine Gruppenmitgliedschaften** angezeigt.
 
 ## <a name="edit-an-existing-group"></a>Bearbeiten einer vorhandenen Gruppe
 
 Nachdem Sie eine Gruppe erstellt haben, können Sie ihre Details bearbeiten, d.h. vorhandene Informationen aktualisieren.
-
-### <a name="to-edit-your-details"></a>So bearbeiten Sie die Gruppendetails
 
 1. Wählen Sie auf der Seite **Gruppen** die Gruppe aus, die Sie bearbeiten möchten, und wählen Sie dann auf der Seite *&lt;Gruppenname&gt;* die Option **Details bearbeiten** aus.
 
@@ -109,9 +104,7 @@ Nachdem Sie eine Gruppe erstellt haben, können Sie ihre Details bearbeiten, d.h
 
 ## <a name="add-or-remove-a-member"></a>Hinzufügen oder Entfernen eines Mitglieds
 
-Bei Ihren eigenen Gruppen können Sie Mitglieder hinzufügen und entfernen.
-
-### <a name="to-add-or-remove-a-member"></a>So können Sie ein Mitglied hinzufügen oder entfernen
+Für Gruppen in Ihrem Besitz können Sie Mitglieder hinzufügen und entfernen.
 
 1. Wählen Sie die Gruppe aus, der Sie Mitglieder hinzufügen möchten, und klicken Sie anschließend auf der Seite *&lt;Gruppenname&gt;* auf **+** .
 
@@ -131,8 +124,6 @@ Bei Ihren eigenen Gruppen können Sie Mitglieder hinzufügen und entfernen.
 
 Wenn Ihre Organisation dies zulässt, können Sie eine Office 365-Gruppe erneuern und damit deren Ablaufdatum verlängern.
 
-### <a name="to-renew-a-group"></a>So verlängern Sie eine Gruppe
-
 1. Wählen Sie die Office 365-Gruppe aus, die Sie verlängern möchten, und wählen Sie dann **Gruppe verlängern** aus.
 
     ![Verlängern einer Office 365-Gruppe und deren Ablaufdatum](media/my-apps-portal/my-apps-portal-renew-group-link.png)
@@ -145,8 +136,6 @@ Wenn Ihre Organisation dies zulässt, können Sie eine Office 365-Gruppe erneuer
 
 Sie können Ihre eigenen Gruppen jederzeit löschen. Wenn Sie eine Gruppe versehentlich gelöscht haben, müssen Sie jedoch neu erstellen und Mitglieder wieder hinzufügen.
 
-### <a name="to-delete-the-group"></a>So löschen Sie die Gruppe
-
 1. Wählen Sie die Gruppe aus, die Sie dauerhaft löschen möchten, und klicken Sie dann auf der Seite *&lt;Gruppenname&gt;* auf **Gruppe löschen**.
 
     ![Seite „<Gruppenname>“ mit hervorgehobenem Link zum Löschen der Gruppe](media/my-apps-portal/my-apps-portal-delete-group-link.png)
@@ -157,9 +146,7 @@ Sie können Ihre eigenen Gruppen jederzeit löschen. Wenn Sie eine Gruppe verseh
 
 ## <a name="join-an-existing-group"></a>Beitreten zu einer vorhandenen Gruppe
 
-Auf der Seite **Gruppen** können Sie einer bereits vorhandenen Gruppe beitreten.
-
-### <a name="to-join-or-leave-a-group"></a>So können Sie einer Gruppe beitreten oder sie verlassen
+Auf der Seite **Gruppen** können Sie einer bereits vorhandenen Gruppe beitreten oder diese verlassen.
 
 1. Wählen Sie auf der Seite **Gruppen** im Bereich **Meine Gruppenmitgliedschaften** den Befehl **Gruppe beitreten** aus.
 
@@ -173,12 +160,12 @@ Auf der Seite **Gruppen** können Sie einer bereits vorhandenen Gruppe beitreten
 
 3. Wenn Sie einer Gruppe versehentlich beigetreten sind oder Sie nicht mehr daran teilnehmen möchten, können Sie auf der Seite **Gruppen beitreten** den Gruppennamen auswählen und dann auf **Gruppe verlassen** klicken.
 
-    ![Seite „Gruppen beitreten“ mit hervorgehobener Schaltfläche „Gruppe verlassen“](media/my-apps-portal/my-apps-portal-leave-group-link.png)    
+    ![Seite „Gruppen beitreten“ mit hervorgehobener Schaltfläche „Gruppe verlassen“](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](my-apps-portal-end-user-access.md)
 
-- [Ändern Ihrer Profilinformationen](my-apps-portal-end-user-update-profile.md)
+- [Ändern Ihrer Profilinformationen](./my-account-portal-settings.md)
 
 - [Durchführen eigener Zugriffsüberprüfungen](my-apps-portal-end-user-access-reviews.md)

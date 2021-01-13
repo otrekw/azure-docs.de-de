@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2017
-ms.author: barclayn
-ms.openlocfilehash: 5635a9e1403731eabc20a04be880fd0aeb24d729
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.author: terrylan
+ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727336"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80548585"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Erstellen eines Tickets beim Support für Sicherheitsereignisse
 

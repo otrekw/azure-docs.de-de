@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd4743bc38c3b2b4b9495b33535b4b73f48d1372
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71176677"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86144695"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Technischer Einblick
 
@@ -45,6 +45,9 @@ Das nahtlose einmalige Anmelden wird mithilfe von Azure AD Connect wie [hier](ho
 
 >[!IMPORTANT]
 > Das Computerkonto `AZUREADSSOACC` muss aus Sicherheitsgründen stark geschützt werden. Nur Domänen-Admins sollten das Computerkonto verwalten können. Stellen Sie sicher, dass Kerberos-Delegierung für das Computerkonto deaktiviert ist und dass kein anderes Konto in Active Directory über Delegierungsberechtigungen für das `AZUREADSSOACC`-Computerkonto verfügt. Speichern Sie das Computerkonto in einer Organisationseinheit, in der es vor versehentlichem Löschen geschützt ist und auf die nur Domänenadministratoren zugreifen können. Der Kerberos-Entschlüsselungsschlüssel für das Computerkonto sollte ebenfalls vertraulich behandelt werden. Es wird dringend empfohlen, den [Rollover des Kerberos-Entschlüsselungsschlüssels](how-to-connect-sso-faq.md) für das Computerkonto `AZUREADSSOACC` mindestens alle 30 Tage durchzuführen.
+
+>[!IMPORTANT]
+> Das nahtlose einmalige Anmelden unterstützt die Verschlüsselungstypen AES256_HMAC_SHA1, AES128_HMAC_SHA1 und RC4_HMAC_MD5 für Kerberos. Es wird empfohlen, den Verschlüsselungstyp für das Konto „AzureADSSOAcc$“ auf „AES256_HMAC_SHA1“ oder einen der AES-Typen vs. RC4 festzulegen, um die Sicherheit zu erhöhen. Der Verschlüsselungstyp wird im „msDS-SupportedEncryptionTypes“-Attribut des Kontos in Ihrer Active Directory-Instanz gespeichert.  Wenn der Verschlüsselungstyp des Kontos „AzureADSSOAcc$“ auf „RC4_HMAC_MD5“ festgelegt ist und Sie ihn in einen der AES-Verschlüsselungstypen ändern möchten, stellen Sie sicher, dass Sie zuerst einen Rollover für den Kerberos-Entschlüsselungsschlüssel des Kontos „AzureADSSOAcc$“ (wie im [FAQ-Dokument](how-to-connect-sso-faq.md) unter der relevanten Frage erläutert) ausführen, weil andernfalls kein nahtloses einmaliges Anmelden erfolgt.
 
 Nach der Einrichtung funktioniert das nahtlose einmalige Anmelden genauso wie jede andere Anmeldung, die die integrierte Windows-Authentifizierung (IWA) verwendet.
 
@@ -95,7 +98,7 @@ Das folgende Diagramm veranschaulicht die dafür notwendigen Schritte und Kompon
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [**Schnellstart:** ](how-to-connect-sso-quick-start.md) Einrichten und Ausführen des nahtlosen einmaligen Anmeldens von Azure AD
+- [**Schnellstart**](how-to-connect-sso-quick-start.md): Einrichten und Ausführen der nahtlosen SSO mit Azure AD
 - [**Häufig gestellte Fragen:** ](how-to-connect-sso-faq.md) Antworten auf häufig gestellte Fragen
 - [**Problembehandlung**](tshoot-connect-sso.md) – Beheben von häufig auftretenden Problemen mit diesem Feature
 - [**UserVoice:** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen

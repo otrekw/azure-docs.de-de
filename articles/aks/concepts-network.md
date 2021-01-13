@@ -1,18 +1,15 @@
 ---
 title: Konzepte – Netzwerke in Azure Kubernetes Service (AKS)
 description: Lernen Sie Netzwerke in Azure Kubernetes Service (AKS) kennen, einschließlich kubenet- und Azure CNI-Netzwerke, Eingangscontroller, Lastenausgleichsmodule und statische IP-Adressen.
-services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.author: mlearned
-ms.openlocfilehash: 967ca233169e2a2a213534d5b60bef2e3f44b6a9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.date: 06/11/2020
+ms.custom: fasttrack-edit
+ms.openlocfilehash: edb195fae2e05a1f746c10482576f7e0b1bff7c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69969651"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88243903"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netzwerkkonzepte für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -29,7 +26,7 @@ In diesem Artikel werden die wichtigsten Konzepte vorgestellt, mit denen Sie Net
 
 Um den Zugriff auf Ihre Anwendungen oder die gegenseitige Kommunikation von Anwendungskomponenten zu erlauben, stellt Kubernetes eine Abstraktionsschicht für virtuelle Netzwerke bereit. Kubernetes-Knoten sind mit einem virtuellen Netzwerk verbunden und können eingehende und ausgehende Konnektivität für Pods bereitstellen. Die Komponente *kube-proxy*, die auf jedem Knoten ausgeführt wird, stellt diese Netzwerkfunktionen bereit.
 
-In Kubernetes werden Pods von *Diensten* logisch gruppiert, um den direkten Zugriff über eine IP-Adresse oder einen DNS-Namen und an einem bestimmten Port zu erlauben. Sie können Datenverkehr auch über einen *Lastenausgleich* verteilen. Ein komplexeres Routing von Anwendungsdatenverkehr kann auch mit *Eingangscontrollern* erzielt werden. Die Sicherheit und das Filtern des Netzwerkdatenverkehrs für Pods kann mit Kubernetes-*Netzwerkrichtlinien* (in AKS in der Vorschauversion) ermöglicht werden.
+In Kubernetes werden Pods von *Diensten* logisch gruppiert, um den direkten Zugriff über eine IP-Adresse oder einen DNS-Namen und an einem bestimmten Port zu erlauben. Sie können Datenverkehr auch über einen *Lastenausgleich* verteilen. Ein komplexeres Routing von Anwendungsdatenverkehr kann auch mit *Eingangscontrollern* erzielt werden. Die Sicherheit und das Filtern des Netzwerkdatenverkehrs für Pods kann mit Kubernetes-*Netzwerkrichtlinien* ermöglicht werden.
 
 Außerdem trägt die Azure-Plattform zur Vereinfachung der virtuellen Netzwerke für AKS-Cluster bei. Wenn Sie einen Kubernetes-Lastenausgleich erstellen, wird die zugrunde liegende Azure Load Balancer-Ressource erstellt und konfiguriert. Wenn Sie Netzwerkports für Pods öffnen, werden die entsprechenden Regeln für Azure-Netzwerksicherheitsgruppen konfiguriert. Für das HTTP-Anwendungsrouting kann Azure auch *externes DNS* konfigurieren, wenn neue Eingangsrouten konfiguriert werden.
 
@@ -66,7 +63,7 @@ In AKS können Sie einen Cluster bereitstellen, der eines der beiden folgenden N
 
 ### <a name="kubenet-basic-networking"></a>Kubenet-Netzwerke – „Basic“ (Grundlegend)
 
-Die Netzwerkoption *kubenet* ist die Standardkonfiguration für die AKS-Clustererstellung. Mit *kubenet* erhalten Knoten eine IP-Adresse aus dem Azure Virtual Network-Subnetz. Pods erhalten eine IP-Adresse von einem logisch unterschiedlichen Adressraum zum Subnetz des virtuellen Azure-Netzwerks der Knoten. Die Netzwerkadressübersetzung (NAT, Network Address Translation) wird dann so konfiguriert, dass die Pods Ressourcen im virtuellen Azure-Netzwerk erreichen können. Die Quell-IP-Adresse des Datenverkehrs wird mit NAT in die primäre IP-Adresse des Knotens übersetzt.
+Die Netzwerkoption *kubenet* ist die Standardkonfiguration für die AKS-Clustererstellung. Mit *kubenet* erhalten Knoten eine IP-Adresse aus dem Subnetz des virtuellen Azure-Netzwerks. Pods erhalten eine IP-Adresse von einem logisch unterschiedlichen Adressraum zum Subnetz des virtuellen Azure-Netzwerks der Knoten. Die Netzwerkadressübersetzung (NAT, Network Address Translation) wird dann so konfiguriert, dass die Pods Ressourcen im virtuellen Azure-Netzwerk erreichen können. Die Quell-IP-Adresse des Datenverkehrs wird mit NAT in die primäre IP-Adresse des Knotens übersetzt.
 
 Knoten verwenden das Kubernetes-Plug-In [kubenet][kubenet]. Sie können die Azure-Plattform die virtuellen Netzwerke für Sie erstellen und konfigurieren lassen oder Ihren AKS-Cluster in einem bestehenden Subnetz des virtuellen Netzwerks bereitstellen. Auch hier wird NAT nur von den Knoten, die eine routingfähige IP-Adresse erhalten, und den Pods verwendet, um mit anderen Ressourcen außerhalb des AKS-Clusters zu kommunizieren. Dieser Ansatz reduziert die Anzahl der IP-Adressen, die Sie in Ihrem Netzwerkadressraum für die Verwendung von Pods reservieren müssen, erheblich.
 
@@ -75,6 +72,8 @@ Weitere Informationen finden Sie unter [Konfigurieren von kubernet-Netzwerken f�
 ### <a name="azure-cni-advanced-networking"></a>Azure CNI-Netzwerke – „Advanced“ (Erweitert)
 
 Mit Azure CNI erhält jeder Pod eine IP-Adresse aus dem Subnetz und kann direkt angesprochen werden. Diese IP-Adressen müssen in Ihrem Netzwerkadressraum eindeutig sein und im Voraus geplant werden. Jeder Knoten verfügt über einen Konfigurationsparameter für die maximale Anzahl von Pods, die er unterstützt. Die entsprechende Anzahl von IP-Adressen pro Knoten wird dann im Voraus für diesen Knoten reserviert. Dieser Ansatz erfordert mehr Planung, da andernfalls die IP-Adressen ausgehen können oder der Cluster in einem größeren Subnetz neu erstellt werden muss, wenn die Anforderungen Ihrer Anwendung zunehmen.
+
+Anders als bei Kubenet wird der Datenverkehr zu Endpunkten in demselben virtuellen Netzwerk nicht per NAT zur primären IP-Adresse des Knotens geleitet. Die Quelladresse für den Datenverkehr im virtuellen Netzwerk ist die Pod-IP-Adresse. Datenverkehr außerhalb des virtuellen Netzwerks wird weiterhin per NAT zur primären IP-Adresse des Knotens geleitet.
 
 Knoten verwenden das Kubernetes-Plug-In [Azure Container Networking Interface (CNI)][cni-networking].
 
@@ -92,7 +91,7 @@ Sowohl kubenet als auch Azure CNI bieten Netzwerkkonnektivität für Ihre AKS-Cl
     * Erfordert eine manuelle Verwaltung und Wartung von benutzerdefinierten Routen (UDRs)
     * Maximal 400 Knoten pro Cluster
 * **Azure CNI**
-    * Pods erhalten vollständige virtuelle Netzwerkkonnektivität und können direkt von außerhalb des Clusters erreicht werden.
+    * Pods erhalten vollständige VM-Konnektivität und können direkt über die private IP-Adresse aus verbundenen Netzwerken erreicht werden.
     * Erfordert mehr IP-Adressraum
 
 Folgende Unterschiede treten im Verhalten von kubenet und Azure CNI auf:
@@ -107,6 +106,8 @@ Folgende Unterschiede treten im Verhalten von kubenet und Azure CNI auf:
 | Zugriff auf Ressourcen, die von Dienstendpunkten geschützt werden                                             | Unterstützt | Unterstützt |
 | Verfügbarmachen von Kubernetes-Diensten über einen Lastenausgleichsdienst, App Gateway oder einen Eingangscontroller | Unterstützt | Unterstützt |
 | Standard: Azure DNS und private Zonen                                                          | Unterstützt | Unterstützt |
+
+DNS wird sowohl mit Kubenet- als auch mit Azure-CNI-Plug-Ins von CoreDNS angeboten, einer Bereitstellung, die in AKS mit eigener automatischer Skalierung ausgeführt wird. Weitere Informationen zu CoreDNS in Kubernetes finden Sie unter [Anpassen des DNS-Dienst](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). CoreDNS ist standardmäßig so konfiguriert, dass unbekannte Domänen an die Knoten-DNS-Server weitergeleitet werden, also an die DNS-Funktionalität der Azure Virtual Network-Instanz, in der der AKS-Cluster bereitgestellt wird. Daher können Azure DNS und private Zonen für Pods verwendet werden, die in AKS ausgeführt werden.
 
 ### <a name="support-scope-between-network-models"></a>Supportumfang der Netzwerkmodelle
 
@@ -130,9 +131,11 @@ Wenn Sie einen Dienst des Typs "LoadBalancer" erstellen, wird eine zugrunde lieg
 
 In AKS können Sie mit NGINX (oder ähnlich) eine Dateneingangsressource erstellen oder die AKS-Funktion für das HTTP-Anwendungsrouting verwenden. Wenn Sie das HTTP-Anwendungsrouting für einen AKS-Cluster aktivieren, erstellt die Azure-Plattform den Eingangscontroller und einen *externen DNS-Controller*. Wenn in Kubernetes neue Eingangsressourcen erstellt werden, werden in einer clusterspezifischen DNS-Zone die erforderlichen DNS-A-Einträge erstellt. Weitere Informationen finden Sie unter [Bereitstellen von HTTP-Anwendungsrouting][aks-http-routing].
 
+Mit dem ACIG-Add-On (Application Gateway Ingress Controller, Application Gateway-Eingangscontroller) können AKS-Kunden den nativen L7-Lastenausgleich von Application Gateway nutzen, um Cloudsoftware im Internet verfügbar zu machen. AGIC überwacht den Kubernetes-Cluster, auf dem er gehostet wird, und aktualisiert fortlaufend eine Application Gateway-Instanz, sodass ausgewählte Dienste im Internet bereitgestellt werden. Weitere Informationen zum ACIG-Add-On für AKS finden Sie unter [Was ist der Application Gateway-Eingangscontroller?][agic-overview].
+
 Ein weiteres allgemeines Feature des Dateneingangs ist die SSL/TLS-Terminierung. Bei großen Webanwendungen, auf die über HTTPS zugegriffen wird, kann die TLS-Terminierung durch die Eingangsressource erfolgen und braucht nicht innerhalb der Anwendung verarbeitet zu werden. Um die automatische Generierung und Konfiguration der TLS-Zertifizierung bereitzustellen, können Sie die Eingangsressource für die Verwendung von Anbietern wie Let's Encrypt konfigurieren. Weitere Informationen zum Konfigurieren eines NGINX-Eingangscontrollers mit Let's Encrypt finden Sie unter [Eingang und TLS][aks-ingress-tls].
 
-Sie können den Eingangscontroller auch so konfigurieren, dass die Quell-IP des Clients bei Anforderungen an Container im AKS-Cluster beibehalten wird. Wenn die Anforderung eines Clients über den Eingangscontroller an einen Container im AKS-Cluster weitergeleitet wird, ist die ursprüngliche Quell-IP dieser Anforderung für den Zielcontainer nicht verfügbar. Wenn Sie die *Beibehaltung der Clientquell-IP* aktivieren, ist die Quell-IP für den Client im Anforderungsheader unter *X-Forwarded-For* verfügbar. Wenn Sie die Beibehaltung der Clientquell-ID auf dem Eingangscontroller verwenden, können Sie kein SSL-Pass-Through verwenden. Die Beibehaltung der Clientquell-ID und SSL-Pass-Through-können mit anderen Diensten verwendet werden, z. B. dem *LoadBalancer*-Typ.
+Sie können den Eingangscontroller auch so konfigurieren, dass die Quell-IP des Clients bei Anforderungen an Container im AKS-Cluster beibehalten wird. Wenn die Anforderung eines Clients über den Eingangscontroller an einen Container im AKS-Cluster weitergeleitet wird, ist die ursprüngliche Quell-IP dieser Anforderung für den Zielcontainer nicht verfügbar. Wenn Sie die *Beibehaltung der Clientquell-IP* aktivieren, ist die Quell-IP für den Client im Anforderungsheader unter *X-Forwarded-For* verfügbar. Wenn Sie die Beibehaltung der Clientquell-IP auf dem Eingangscontroller verwenden, können Sie kein TLS-Pass-Through verwenden. Die Beibehaltung der Clientquell-ID und TLS-Pass-Through-können mit anderen Diensten verwendet werden, z. B. dem *LoadBalancer*-Typ.
 
 ## <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
 
@@ -173,7 +176,7 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 
 <!-- LINKS - Internal -->
 [aks-http-routing]: http-application-routing.md
-[aks-ingress-tls]: ingress.md
+[aks-ingress-tls]: ./ingress-tls.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
 [aks-configure-advanced-networking]: configure-azure-cni.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
@@ -181,6 +184,7 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
+[agic-overview]: ../application-gateway/ingress-controller-overview.md
 [use-network-policies]: use-network-policies.md
 [operator-best-practices-network]: operator-best-practices-network.md
 [support-policies]: support-policies.md

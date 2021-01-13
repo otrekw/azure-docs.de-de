@@ -1,7 +1,7 @@
 ---
 title: Firewallregeln auf Serverebene
 description: Firewallregeln auf Serverebene
-keywords: sql connection,connection string
+keywords: SQL-Verbindung,Verbindungszeichenfolge
 services: sql-database
 author: dalechen
 manager: craigg
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 8d0f9899dbb7599340b8d15ca010a0157011fb9e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67178170"
 ---
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.

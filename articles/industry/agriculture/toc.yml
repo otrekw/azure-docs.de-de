@@ -1,0 +1,53 @@
+- name: Übersicht
+  items:
+    - name: Was ist Azure FarmBeats?
+      href: overview-azure-farmbeats.md
+- name: Tutorials
+  expanded: true
+  items:
+    - name: Struktur für Bodenfeuchtigkeit generieren
+      href: generate-soil-moisture-map-in-azure-farmbeats.md
+    - name: Erfassen historischer Telemetriedaten
+      href: ingest-historical-telemetry-data-in-azure-farmbeats.md
+    - name: Abfragen erfasster Telemetriedaten
+      href: query-telemetry-data-from-azure-farmbeats.md
+- name: Konzepte
+  items:
+    - name: Integrationsmuster
+      href: integration-patterns-in-azure-farmbeats.md
+    - name: Integration von Partnern für Sensordaten
+      href: sensor-partner-integration-in-azure-farmbeats.md
+    - name: Integration von Partnern für Wetterdaten
+      href: weather-partner-integration-in-azure-farmbeats.md
+    - name: Integration eines Partnerunternehmens für Bilder
+      href: imagery-partner-integration-in-azure-farmbeats.md
+- name: Anleitungen
+  items:
+    - name: Installieren von Azure FarmBeats
+      href: install-azure-farmbeats.md
+    - name: Verwalten von Benutzern
+      href: manage-users-in-azure-farmbeats.md
+    - name: Verwalten landwirtschaftlicher Betriebe
+      href: manage-farms-in-azure-farmbeats.md
+    - name: Sensordaten abrufen
+      href: get-sensor-data-from-sensor-partner.md
+    - name: Abrufen von Wetterdaten
+      href: get-weather-data-from-weather-partner.md
+    - name: Generieren von Karten
+      href: generate-maps-in-azure-farmbeats.md
+    - name: Regeln konfigurieren und Warnungen verwalten
+      href: configure-rules-alerts-in-azure-farmbeats.md
+    - name: Abrufen von Drohnenbildern
+      href: get-drone-imagery-in-azure-farmbeats.md
+    - name: Notfallwiederherstellung
+      href: disaster-recovery-for-farmbeats.md
+- name: Problembehandlung
+  items:
+    - name: Problembehandlung in Azure FarmBeats
+      href: troubleshoot-azure-farmbeats.md
+- name: Verweis
+  items:
+    - name: Verweis
+      href: references-for-azure-farmbeats.md
+    - name: REST-API
+      href: rest-api-in-azure-farmbeats.md

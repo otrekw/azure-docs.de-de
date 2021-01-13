@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 84e1dd77c6e873dc2facb5126bbddf795192b60d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cfe75edcf338f5248baf396147a5b77803fbfb3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257745"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655933"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Abfragen von Avro-Daten mit Azure Data Lake Analytics
 
@@ -20,9 +20,9 @@ In diesem Artikel geht es um die Abfrage von Avro-Daten für ein effizientes Rou
 
 Die Herausforderung: Wenn Azure IoT Hub Nachrichten an Azure Blob Storage weiterleitet, schreibt IoT Hub den Inhalt standardmäßig im Avro-Format, das sowohl eine Nachrichtentext- als auch eine Nachrichteneigenschaft aufweist. Das Avro-Format wird für keinen anderen Endpunkt verwendet. Obwohl das Avro-Format hervorragend für die Beibehaltung von Daten und Nachrichten geeignet ist, ist es schwierig für Abfragedaten zu verwenden. Im Vergleich dazu lassen sich Daten im JSON- oder CSV-Format wesentlich einfacher abfragen. IoT Hub unterstützt jetzt das Schreiben von Daten in Blobspeicher sowohl im JSON- als auch im Avro-Format.
 
-Weitere Informationen finden Sie unter [Verwenden von Azure Blob Storage als Routingendpunkt](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+Weitere Informationen finden Sie unter [Verwenden von Azure Storage als Routingendpunkt](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 
-Um nicht relationale Big Data-Anforderungen und Formate zu unterstützen und dies in den Griff zu bekommen, können Sie viele der Big Data-Muster sowohl für die Transformation als auch für die Skalierung von Daten verwenden. Eines der Muster, „Zahlung pro Abfrage“, ist Azure Data Lake Analytics, der Themenschwerpunkt dieses Artikels. Obwohl Sie die Abfrage einfach in Hadoop oder anderen Lösungen ausführen können, ist Data Lake Analytics meist besser für diesen „Zahlung pro Abfrage“-Ansatz geeignet.
+Um nicht relationale Big Data-Anforderungen und Formate zu unterstützen{1}{2}und dies in den Griff zu bekommen, können Sie viele der Big Data-Muster sowohl für die Transformation als auch für die Skalierung von Daten verwenden. Eines der Muster, „Zahlung pro Abfrage“, ist Azure Data Lake Analytics, der Themenschwerpunkt dieses Artikels. Obwohl Sie die Abfrage einfach in Hadoop oder anderen Lösungen ausführen können, ist Data Lake Analytics meist besser für diesen „Zahlung pro Abfrage“-Ansatz geeignet.
 
 In U-SQL gibt es einen „Extraktor“ für Avro. Weitere Informationen finden Sie im [Beispiel zu U-SQL Avro](https://github.com/Azure/usql/tree/master/Examples/AvroExamples).
 
@@ -56,7 +56,7 @@ In diesem Abschnitt fragen Sie Avro-Daten ab und exportieren Sie in eine CSV-Dat
 
 6. Erstellen Sie in Visual Studio ein U-SQL-Projekt.
 
-   Erstellen eines U-SQL-Projekts (./media/iot-hub-query-avro-data/query-avro-data-6.png)
+   ![Erstellen eines U-SQL-Projekts](./media/iot-hub-query-avro-data/query-avro-data-6.png)
 
 7. Fügen Sie den Inhalt des folgenden Skripts in die neu erstellte Datei ein. Ändern Sie die drei hervorgehobenen Abschnitte: Ihr Data Lake Analytics-Konto, die zugehörigen DLL-Dateipfade und den richtigen Pfad Ihres Speicherkontos.
 
@@ -154,10 +154,10 @@ In diesem Abschnitt fragen Sie Avro-Daten ab und exportieren Sie in eine CSV-Dat
         
         @cnt =
             SELECT message["message"] AS iotmessage,
-                   message["event"] AS msgevent,
-                   message["object"] AS msgobject,
-                   message["status"] AS msgstatus,
-                   message["host"] AS msghost
+                message["event"] AS msgevent,
+                message["object"] AS msgobject,
+                message["status"] AS msgstatus,
+                message["host"] AS msghost
             FROM @jsonify;
             
         OUTPUT @cnt TO @output_file USING Outputters.Text();
@@ -171,7 +171,7 @@ In diesem Abschnitt fragen Sie Avro-Daten ab und exportieren Sie in eine CSV-Dat
 
 In diesem Artikel haben Sie erfahren, wie Avro-Daten für ein effizientes Routing von Nachrichten von Azure IoT Hub zu Azure-Diensten abgefragt werden.
 
-Beispiele für vollständige End-to-End-Lösungen, die IoT Hub nutzen, finden Sie in der [Dokumentation zu Azure IoT Solution Accelerators](/azure/iot-accelerators).
+Beispiele für vollständige End-to-End-Lösungen, die IoT Hub nutzen, finden Sie in der [Dokumentation zu Azure IoT Solution Accelerators](../iot-accelerators/index.yml).
 
 Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md).
 

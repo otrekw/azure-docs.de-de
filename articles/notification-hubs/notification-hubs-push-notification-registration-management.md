@@ -12,20 +12,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 07/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: 0725b4fc80fc3a41491bdb9ed084d33b36b490b8
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7807d28da459656938acb399eb8c621e4c292372
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213093"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89001568"
 ---
 # <a name="registration-management"></a>Registrierungsverwaltung
-
-## <a name="overview"></a>Übersicht
 
 In diesem Thema wird erläutert, wie Geräte bei Notification Hubs registriert werden, um Pushbenachrichtigungen zu empfangen. Nach einem allgemeinen Überblick über Registrierungen werden in diesem Thema die beiden Hauptmuster zum Registrieren von Geräten vorgestellt: die direkte Registrierung beim Notification Hub über das Gerät und die Registrierung über ein Anwendungs-Back-End.
 
@@ -42,7 +41,7 @@ Bei einer Registrierung wird das PNS-Handle (Platform Notification Service) für
 
 ### <a name="installations"></a>Installationen
 
-Eine Installation ist eine erweiterte Registrierung, die einen Behälter von Eigenschaften umfasst, die sich auf Pushvorgänge beziehen. Dies ist der neueste und beste Ansatz zum Registrieren Ihrer Geräte. Bisher wird er jedoch noch nicht vom clientseitigen .NET SDK ([Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) unterstützt.  Wenn Sie die Registrierung über das Client-Gerät selbst durchführen, müssen Sie daher die [Notification Hubs-REST-API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) zur Unterstützung von Installationen verwenden. Wenn Sie einen Back-End-Dienst verwenden, sollten Sie auch das [Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)verwenden können.
+Eine Installation ist eine erweiterte Registrierung, die einen Behälter von Eigenschaften umfasst, die sich auf Pushvorgänge beziehen. Dies ist der neueste und beste Ansatz zum Registrieren Ihrer Geräte. Bisher wird er jedoch noch nicht vom clientseitigen .NET SDK ([Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) unterstützt.  Wenn Sie die Registrierung über das Client-Gerät selbst durchführen, müssen Sie daher die [Notification Hubs-REST-API](/rest/api/notificationhubs/create-overwrite-installation) zur Unterstützung von Installationen verwenden. Wenn Sie einen Back-End-Dienst verwenden, sollten Sie auch das [Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)verwenden können.
 
 Im Folgenden sind die wichtigsten Vorteile bei der Verwendung von Installationen beschrieben:
 
@@ -50,7 +49,7 @@ Im Folgenden sind die wichtigsten Vorteile bei der Verwendung von Installationen
 - Das Installationsmodell unterstützt ein spezielles Tagformat (`$InstallationId:{INSTALLATION_ID}`), das das direkte Senden von Benachrichtigungen an das spezifische Gerät ermöglicht. Wenn der Code der App beispielsweise eine Installations-ID von `joe93developer` für dieses spezifische Gerät zulässt, kann ein Entwickler dieses Gerät als Ziel zum Senden einer Benachrichtigung an das `$InstallationId:{joe93developer}`-Tag verwenden. So können Sie ein spezifisches Gerät als Ziel verwenden, ohne zusätzlichen Code schreiben zu müssen.
 - Mithilfe von Installationen können Sie zudem Registrierungsteilupdates durchführen. Das Teilupdate einer Installation wird mit einer PATCH-Methode unter Verwendung des [JSON-Patch-Standards](https://tools.ietf.org/html/rfc6902)angefordert. Dies ist nützlich, wenn Sie Tags für die Registrierung aktualisieren möchten. Sie müssen nicht die gesamte Registrierung auflösen und dann alle vorherigen Tags erneut senden.
 
-Eine Installation kann folgende Eigenschaften enthalten. Eine vollständige Liste der Installationseigenschaften finden Sie unter [Erstellen oder Überschreiben einer Installation mit der REST-API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) oder [Installationseigenschaften](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation).
+Eine Installation kann folgende Eigenschaften enthalten. Eine vollständige Liste der Installationseigenschaften finden Sie unter [Erstellen oder Überschreiben einer Installation mit der REST-API](/rest/api/notificationhubs/create-overwrite-installation) oder [Installationseigenschaften](/dotnet/api/microsoft.azure.notificationhubs.installation).
 
 ```json
 // Example installation format to show some supported properties
@@ -100,7 +99,7 @@ Registrierungen und Installationen müssen ein gültiges PNS-Handle für jedes G
 
 Wenn Sie [Vorlagen](notification-hubs-templates-cross-platform-push-messages.md)verwenden möchten, sollte die Geräteinstallation auch alle Vorlagen, die dem jeweiligen Gerät zugeordnet sind, in einem JSON-Format enthalten (siehe Beispiel oben). Mithilfe der Vorlagennamen können unterschiedliche Vorlagen problemlos auf dasselbe Gerät abzielen.
 
-Jeder Vorlagenname ist einem Vorlagentext und einer optionalen Gruppe von Tags zugeordnet. Darüber hinaus kann jede Plattform zusätzliche Vorlageneigenschaften aufweisen. Für den Windows Store (mit WNS) und Windows Phone 8 (mit MPNS) kann die Vorlage einen zusätzlichen Satz von Headern enthalten. Bei APNs können Sie eine Ablaufeigenschaft auf eine Konstante oder auf einen Vorlagenausdruck festlegen. Eine vollständige Liste der Installationseigenschaften finden Sie im Thema [Erstellen oder Überschreiben einer Installation mit REST](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) .
+Jeder Vorlagenname ist einem Vorlagentext und einer optionalen Gruppe von Tags zugeordnet. Darüber hinaus kann jede Plattform zusätzliche Vorlageneigenschaften aufweisen. Für den Windows Store (mit WNS) und Windows Phone 8 (mit MPNS) kann die Vorlage einen zusätzlichen Satz von Headern enthalten. Bei APNs können Sie eine Ablaufeigenschaft auf eine Konstante oder auf einen Vorlagenausdruck festlegen. Eine vollständige Liste der Installationseigenschaften finden Sie im Thema [Erstellen oder Überschreiben einer Installation mit REST](/rest/api/notificationhubs/create-overwrite-installation) .
 
 ### <a name="secondary-tiles-for-windows-store-apps"></a>Sekundäre Kacheln für Windows Store-Apps
 
@@ -112,7 +111,7 @@ Das SecondaryTiles-Wörterbuch verwendet dieselbe TileId, die zum Erstellen des 
 
 Wenn die Geräteregistrierung über Client-Apps verwaltet wird, ist das Back-End nur für das Senden von Benachrichtigungen verantwortlich. Client-Apps sorgen dafür, dass PNS-Handles auf dem neuesten Stand bleiben, und registrieren Tags. Dieses Muster wird in der folgenden Abbildung veranschaulicht.
 
-![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
+![Registrierung auf dem Gerät](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
 Zuerst ruft das Gerät das PNS-Handle aus dem PNS ab und registriert sich dann direkt beim Notification Hub. Wenn die Registrierung erfolgreich verläuft, kann das App-Back-End eine zielgerichtete Benachrichtigung an diese Registrierung senden. Weitere Informationen zum Senden von Benachrichtigungen finden Sie unter [Weiterleitung und Tagausdrücke](notification-hubs-tags-segment-push-message.md).
 
@@ -121,88 +120,88 @@ In diesem Fall verwenden Sie nur Lauschrechte, um über das Gerät auf die Notif
 Die Registrierung über das Gerät ist die einfachste Methode, birgt aber auch Nachteile:
 
 - Eine Client-App kann ihre Tags nur aktualisieren, wenn die App aktiv ist. Angenommen, ein Benutzer verfügt über zwei Geräte, die Tags im Zusammenhang mit Sportmannschaften registrieren. Wenn sich das erste Gerät für ein zusätzliches Tag (z. B. Borussia Dortmund) registriert, empfängt das zweite Gerät erst Benachrichtigungen zu Borussia Dortmund, wenn die App auf dem zweiten Gerät ein zweites Mal ausgeführt wird. Allgemeiner ausgedrückt bedeutet dies, dass die Verwaltung von Tags möglichst über das Back-End erfolgen sollte, wenn Tags für mehrere Geräte gelten.
-- Da Apps gehackt werden können, muss die Registrierung mit besonderer Sorgfalt auf bestimmte Tags beschränkt werden (wie im Abschnitt „Sicherheit auf Tagebene“ erläutert).
+- Da Apps gehackt werden können, muss die Registrierung mit besonderer Sorgfalt auf bestimmte Tags beschränkt werden (wie im Artikel [Sicherheit](notification-hubs-push-notification-security.md) erläutert).
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Beispielcode zur Registrierung bei einem Notification Hub über ein Gerät mithilfe einer Installation
 
-Momentan wird dieser Vorgang nur bei Verwendung der [Notification Hubs-REST-API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation)unterstützt.
+Momentan wird dieser Vorgang nur bei Verwendung der [Notification Hubs-REST-API](/rest/api/notificationhubs/create-overwrite-installation)unterstützt.
 
 Die Installation kann auch mit der PATCH-Methode unter Verwendung des [JSON-Patch-Standards](https://tools.ietf.org/html/rfc6902) aktualisiert werden.
 
-```
+```csharp
 class DeviceInstallation
 {
     public string installationId { get; set; }
     public string platform { get; set; }
     public string pushChannel { get; set; }
     public string[] tags { get; set; }
-}
 
-private async Task<HttpStatusCode> CreateOrUpdateInstallationAsync(DeviceInstallation deviceInstallation,
+    private async Task<HttpStatusCode> CreateOrUpdateInstallationAsync(DeviceInstallation deviceInstallation,
         string hubName, string listenConnectionString)
-{
-    if (deviceInstallation.installationId == null)
-        return HttpStatusCode.BadRequest;
-
-    // Parse connection string (https://msdn.microsoft.com/library/azure/dn495627.aspx)
-    ConnectionStringUtility connectionSaSUtil = new ConnectionStringUtility(listenConnectionString);
-    string hubResource = "installations/" + deviceInstallation.installationId + "?";
-    string apiVersion = "api-version=2015-04";
-
-    // Determine the targetUri that we will sign
-    string uri = connectionSaSUtil.Endpoint + hubName + "/" + hubResource + apiVersion;
-
-    //=== Generate SaS Security Token for Authorization header ===
-    // See, https://msdn.microsoft.com/library/azure/dn495627.aspx
-    string SasToken = connectionSaSUtil.getSaSToken(uri, 60);
-
-    using (var httpClient = new HttpClient())
     {
-        string json = JsonConvert.SerializeObject(deviceInstallation);
+        if (deviceInstallation.installationId == null)
+            return HttpStatusCode.BadRequest;
 
-        httpClient.DefaultRequestHeaders.Add("Authorization", SasToken);
+        // Parse connection string (https://msdn.microsoft.com/library/azure/dn495627.aspx)
+        ConnectionStringUtility connectionSaSUtil = new ConnectionStringUtility(listenConnectionString);
+        string hubResource = "installations/" + deviceInstallation.installationId + "?";
+        string apiVersion = "api-version=2015-04";
 
-        var response = await httpClient.PutAsync(uri, new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
-        return response.StatusCode;
+        // Determine the targetUri that we will sign
+        string uri = connectionSaSUtil.Endpoint + hubName + "/" + hubResource + apiVersion;
+
+        //=== Generate SaS Security Token for Authorization header ===
+        // See https://msdn.microsoft.com/library/azure/dn495627.aspx
+        string SasToken = connectionSaSUtil.getSaSToken(uri, 60);
+
+        using (var httpClient = new HttpClient())
+        {
+            string json = JsonConvert.SerializeObject(deviceInstallation);
+
+            httpClient.DefaultRequestHeaders.Add("Authorization", SasToken);
+
+            var response = await httpClient.PutAsync(uri, new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
+            return response.StatusCode;
+        }
     }
-}
 
-var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+    var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
-string installationId = null;
-var settings = ApplicationData.Current.LocalSettings.Values;
+    string installationId = null;
+    var settings = ApplicationData.Current.LocalSettings.Values;
 
-// If we have not stored an installation id in application data, create and store as application data.
-if (!settings.ContainsKey("__NHInstallationId"))
-{
-    installationId = Guid.NewGuid().ToString();
-    settings.Add("__NHInstallationId", installationId);
-}
+    // If we have not stored an installation ID in application data, create and store as application data.
+    if (!settings.ContainsKey("__NHInstallationId"))
+    {
+        installationId = Guid.NewGuid().ToString();
+        settings.Add("__NHInstallationId", installationId);
+    }
 
-installationId = (string)settings["__NHInstallationId"];
+    installationId = (string)settings["__NHInstallationId"];
 
-var deviceInstallation = new DeviceInstallation
-{
-    installationId = installationId,
-    platform = "wns",
-    pushChannel = channel.Uri,
-    //tags = tags.ToArray<string>()
-};
+    var deviceInstallation = new DeviceInstallation
+    {
+        installationId = installationId,
+        platform = "wns",
+        pushChannel = channel.Uri,
+        //tags = tags.ToArray<string>()
+    };
 
-var statusCode = await CreateOrUpdateInstallationAsync(deviceInstallation, 
+    var statusCode = await CreateOrUpdateInstallationAsync(deviceInstallation, 
                     "<HUBNAME>", "<SHARED LISTEN CONNECTION STRING>");
 
-if (statusCode != HttpStatusCode.Accepted)
-{
-    var dialog = new MessageDialog(statusCode.ToString(), "Registration failed. Installation Id : " + installationId);
-    dialog.Commands.Add(new UICommand("OK"));
-    await dialog.ShowAsync();
-}
-else
-{
-    var dialog = new MessageDialog("Registration successful using installation Id : " + installationId);
-    dialog.Commands.Add(new UICommand("OK"));
-    await dialog.ShowAsync();
+    if (statusCode != HttpStatusCode.Accepted)
+    {
+        var dialog = new MessageDialog(statusCode.ToString(), "Registration failed. Installation Id : " + installationId);
+        dialog.Commands.Add(new UICommand("OK"));
+        await dialog.ShowAsync();
+    }
+    else
+    {
+        var dialog = new MessageDialog("Registration successful using installation Id : " + installationId);
+        dialog.Commands.Add(new UICommand("OK"));
+        await dialog.ShowAsync();
+    }
 }
 ```
 
@@ -210,19 +209,19 @@ else
 
 Durch diese Methoden wird eine Registrierung für das Gerät erstellt oder aktualisiert, auf dem sie aufgerufen werden. Dies bedeutet, dass zum Aktualisieren des Handles oder der Tags die gesamte Registrierung überschrieben werden muss. Wie bereits erwähnt, sind Registrierungen temporär. Daher sollten die aktuellen Tags, die ein bestimmtes Gerät benötigt, immer an einem zuverlässigen Ort gespeichert sein.
 
-```
+```csharp
 // Initialize the Notification Hub
 NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
-// The Device id from the PNS
+// The Device ID from the PNS
 var pushChannel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
-// If you are registering from the client itself, then store this registration id in device
-// storage. Then when the app starts, you can check if a registration id already exists or not before
+// If you are registering from the client itself, then store this registration ID in device
+// storage. Then when the app starts, you can check if a registration ID already exists or not before
 // creating.
 var settings = ApplicationData.Current.LocalSettings.Values;
 
-// If we have not stored a registration id in application data, store in application data.
+// If we have not stored a registration ID in application data, store in application data.
 if (!settings.ContainsKey("__NHRegistrationId"))
 {
     // make sure there are no existing registrations for this push handle (used for iOS and Android)    
@@ -265,7 +264,7 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 
 Zum Verwalten von Registrierungen über das Back-End muss zusätzlicher Code geschrieben werden. Bei jedem Start muss die App auf dem Gerät das aktualisierte PNS-Handle (zusammen mit den Tags und Vorlagen) für das Back-End bereitstellen, und das Back-End muss dieses Handle im Notification Hub aktualisieren. Dieses Verfahren wird in der folgenden Abbildung veranschaulicht.
 
-![](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
+![Registrierungsverwaltung](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
 Die Vorteile der Verwaltung von Registrierungen über das Back-End liegen darin, dass Tags für Registrierungen selbst dann geändert werden können, wenn die entsprechende App auf dem Gerät inaktiv ist, und dass die Client-App authentifiziert werden kann, bevor ihrer Registrierung ein Tag hinzugefügt wird.
 
@@ -275,7 +274,7 @@ Das Clientgerät ruft sein PNS-Handle und die relevanten Installationseigenschaf
 
 Die Installation kann auch mit der PATCH-Methode unter Verwendung des [JSON-Patch-Standards](https://tools.ietf.org/html/rfc6902) aktualisiert werden.
 
-```
+```csharp
 // Initialize the Notification Hub
 NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
@@ -321,7 +320,7 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
 
 Über das App-Back-End können Sie grundlegende CRUDS-Vorgänge für Registrierungen ausführen. Beispiel:
 
-```
+```csharp
 var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
 
 // create a registration description object of the correct type, e.g.
@@ -330,7 +329,7 @@ var reg = new WindowsRegistrationDescription(channelUri, tags);
 // Create
 await hub.CreateRegistrationAsync(reg);
 
-// Get by id
+// Get by ID
 var r = await hub.GetRegistrationAsync<RegistrationDescription>("id");
 
 // update

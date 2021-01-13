@@ -1,29 +1,29 @@
 ---
-title: Durchführen einer Zugriffsüberprüfung für Gruppen oder Anwendungen – Azure Active Directory | Microsoft-Dokumentation
+title: Durchführen einer Zugriffsüberprüfung von Gruppen und Anwendungen – Azure AD
 description: Erfahren Sie, wie Sie eine Gruppenmitglieder oder den Anwendungszugriff betreffende Zugriffsüberprüfung in Azure Active Directory-Zugriffsüberprüfungen durchführen.
 services: active-directory
 documentationcenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 12/07/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97c405032368ffd06f5808bc4518302d2f6d66b9
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: e6491de18e65c5071ac0972e7ff49d1253cbd402
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489147"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779543"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Durchführen einer Gruppen oder Anwendungen betreffenden Zugriffsüberprüfung in Azure AD-Zugriffsüberprüfungen
+# <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Durchführen einer Zugriffsüberprüfung für Gruppen und Anwendungen in Azure AD-Zugriffsüberprüfungen
 
 Als Administrator [erstellen Sie eine Zugriffsüberprüfung für Gruppen oder Anwendungen](create-access-review.md), und Prüfer [führen dann die Zugriffsüberprüfung durch](perform-access-review.md). In diesem Artikel wird beschrieben, wie Sie die Ergebnisse der Zugriffsüberprüfung anzeigen und anwenden.
 
@@ -34,7 +34,7 @@ Als Administrator [erstellen Sie eine Zugriffsüberprüfung für Gruppen oder An
 - Azure AD Premium P2
 - Globaler Administrator, Benutzeradministrator, Sicherheitsadministrator oder Sicherheitsleseberechtigter
 
-Weitere Informationen finden Sie unter [Welche Benutzer benötigen Lizenzen?](access-reviews-overview.md#which-users-must-have-licenses).
+Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-overview.md#license-requirements).
 
 ## <a name="view-an-access-review"></a>Anzeigen einer Zugriffsüberprüfung
 
@@ -46,11 +46,19 @@ Sie können den Status nachverfolgen, während die Prüfer die Überprüfungen d
 
 1. Klicken Sie in der Liste auf eine Zugriffsüberprüfung.
 
-    Navigieren Sie zu einer Zugriffsüberprüfung, um eine Reihe von geplanten Zugriffsüberprüfungen anzuzeigen. Die anstehenden Prüfungen werden unter „Geplante Überprüfung“ angezeigt.
+    Um zukünftige Ausführungen einer Zugriffsüberprüfung anzuzeigen, navigieren Sie zu dieser Zugriffsüberprüfung, und wählen Sie „Geplante Überprüfungen“ aus.
 
     Auf der Seite **Übersicht** können Sie den Status verfolgen. Zugriffsrechte werden im Verzeichnis erst geändert, wenn die Überprüfung abgeschlossen ist.
 
     ![Fortschritt der Zugriffsüberprüfungen](./media/complete-access-review/overview-progress.png)
+    
+    Wenn Sie eine Zugriffsüberprüfung für den Gastzugriff für Microsoft 365-Gruppen (Vorschau) anzeigen, werden auf dem Blatt „Übersicht“ alle Gruppen in der Überprüfung aufgelistet.  
+
+   ![Überprüfen des Gastzugriffs für Microsoft 365-Gruppen](./media/complete-access-review/review-guest-access-across-365-groups.png)
+
+    Klicken Sie auf eine Gruppe, um den Fortschritt der Überprüfung für diese Gruppe anzuzeigen.
+
+   ![Details zur Überprüfung des Gastzugriffs für Microsoft 365-Gruppen](./media/complete-access-review/progress-group-review.png)
 
 1. Klicken Sie auf die Schaltfläche **Beenden**, wenn Sie eine Zugriffsüberprüfung beenden möchten, bevor dafür das geplante Enddatum erreicht wurde.
 
@@ -74,7 +82,7 @@ Die konfigurierte automatische Anwendung einer Überprüfung oder die Auswahl vo
 
 Klicken Sie auf die Seite **Ergebnisse**, um die Ergebnisse für eine einmalige Zugriffsüberprüfung anzuzeigen. Geben Sie im Suchfeld den Anzeigenamen oder Benutzerprinzipalnamen eines Benutzers ein, dessen Zugriff überprüft wurde, um nur den Zugriff dieses Benutzers anzuzeigen.
 
-![Abrufen der Ergebnisse für eine Zugriffsüberprüfung](./media/complete-access-review/retrieve-results.png)
+![Abrufen der Ergebnisse für eine Zugriffsüberprüfung](./media/complete-access-review/retrieve-results.png) 
 
 Klicken Sie zum Anzeigen des Status einer aktiven Serienzugriffsüberprüfung auf die Seite **Ergebnisse**.
 
@@ -89,6 +97,6 @@ Klicken Sie auf die Schaltfläche **Herunterladen**, wenn Sie alle Ergebnisse ei
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Manage user access with Azure AD access reviews (Verwalten des Benutzerzugriffs mit Azure AD-Zugriffsüberprüfungen)](manage-user-access-with-access-reviews.md)
-- [Manage guest access with Azure AD access reviews](manage-guest-access-with-access-reviews.md) (Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen)
+- [Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen](manage-guest-access-with-access-reviews.md)
 - [Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md)
 - [Erstellen einer Zugriffsüberprüfung von Benutzern in der Azure AD-Administratorrolle](../privileged-identity-management/pim-how-to-start-security-review.md)

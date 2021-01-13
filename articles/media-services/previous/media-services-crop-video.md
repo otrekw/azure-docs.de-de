@@ -1,6 +1,6 @@
 ---
 title: Zuschneiden von Videos mit Media Encoder Standard – Azure | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, wie Videos mit Media Encoder Standard zugeschnitten werden.
+description: Zuschneiden ist der Prozess der Auswahl eines rechteckigen Fensters innerhalb des Videoframes und die ausschließliche Codierung der Pixel innerhalb dieses Fensters. In diesem Artikel wird gezeigt, wie Videos mit Media Encoder Standard zugeschnitten werden.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 03d68cc3a60abba8b7189a9d03fbc21d7606f736
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 4264d1c0d83f14da02b26107d336521250fcf13b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69016612"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89257856"
 ---
-# <a name="crop-videos-with-media-encoder-standard"></a>Zuschneiden von Videos mit Media Encoder Standard  
+# <a name="crop-videos-with-media-encoder-standard"></a>Zuschneiden von Videos mit Media Encoder Standard
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 Mit Media Encoder Standard (MES) können Sie Ihr Eingabevideo zuschneiden. Zuschneiden ist der Prozess der Auswahl eines rechteckigen Fensters innerhalb des Videoframes und die ausschließliche Codierung der Pixel innerhalb dieses Fensters. Das folgende Diagramm veranschaulicht diesen Prozess.
 
@@ -43,89 +45,91 @@ Für das im Diagramm gezeigte Beispiel gilt Folgendes:
 5. Die Aufgabe in der Codierungsphase ist das Erstellen von drei Ebenen mit den Auflösungen 1440 x 1080, 960 x 720 und 480 x 360.
 
 ### <a name="json-preset"></a>JSON-Voreinstellung
+
+```json
+{
+  "Version": 1.0,
+  "Sources": [
     {
-      "Version": 1.0,
-      "Sources": [
-        {
-          "Streams": [],
-          "Filters": {
-            "Crop": {
-                "X": 240,
-                "Y": 0,
-                "Width": 1440,
-                "Height": 1080
-            }
-          },
-          "Pad": true
+      "Streams": [],
+      "Filters": {
+        "Crop": {
+          "X": 240,
+          "Y": 0,
+          "Width": 1440,
+          "Height": 1080
         }
-      ],
-      "Codecs": [
+      },
+      "Pad": true
+    }
+  ],
+  "Codecs": [
+    {
+      "KeyFrameInterval": "00:00:02",
+      "H264Layers": [
         {
-          "KeyFrameInterval": "00:00:02",
-          "H264Layers": [
-            {
-              "Profile": "Auto",
-              "Level": "auto",
-              "Bitrate": 3400,
-              "MaxBitrate": 3400,
-              "BufferWindow": "00:00:05",
-              "Width": 1440,
-              "Height": 1080,
-              "BFrames": 3,
-              "ReferenceFrames": 3,
-              "AdaptiveBFrame": true,
-              "Type": "H264Layer",
-              "FrameRate": "0/1"
-            },
-            {
-              "Profile": "Auto",
-              "Level": "auto",
-              "Bitrate": 2250,
-              "MaxBitrate": 2250,
-              "BufferWindow": "00:00:05",
-              "Width": 960,
-              "Height": 720,
-              "BFrames": 3,
-              "ReferenceFrames": 3,
-              "AdaptiveBFrame": true,
-              "Type": "H264Layer",
-              "FrameRate": "0/1"
-            },
-            {
-              "Profile": "Auto",
-              "Level": "auto",
-              "Bitrate": 1250,
-              "MaxBitrate": 1250,
-              "BufferWindow": "00:00:05",
-              "Width": 480,
-              "Height": 360,
-              "BFrames": 3,
-              "ReferenceFrames": 3,
-              "AdaptiveBFrame": true,
-              "Type": "H264Layer",
-              "FrameRate": "0/1"
-            }
-          ],
-          "Type": "H264Video"
+          "Profile": "Auto",
+          "Level": "auto",
+          "Bitrate": 3400,
+          "MaxBitrate": 3400,
+          "BufferWindow": "00:00:05",
+          "Width": 1440,
+          "Height": 1080,
+          "BFrames": 3,
+          "ReferenceFrames": 3,
+          "AdaptiveBFrame": true,
+          "Type": "H264Layer",
+          "FrameRate": "0/1"
         },
         {
-          "Profile": "AACLC",
-          "Channels": 2,
-          "SamplingRate": 48000,
-          "Bitrate": 128,
-          "Type": "AACAudio"
+          "Profile": "Auto",
+          "Level": "auto",
+          "Bitrate": 2250,
+          "MaxBitrate": 2250,
+          "BufferWindow": "00:00:05",
+          "Width": 960,
+          "Height": 720,
+          "BFrames": 3,
+          "ReferenceFrames": 3,
+          "AdaptiveBFrame": true,
+          "Type": "H264Layer",
+          "FrameRate": "0/1"
+        },
+        {
+          "Profile": "Auto",
+          "Level": "auto",
+          "Bitrate": 1250,
+          "MaxBitrate": 1250,
+          "BufferWindow": "00:00:05",
+          "Width": 480,
+          "Height": 360,
+          "BFrames": 3,
+          "ReferenceFrames": 3,
+          "AdaptiveBFrame": true,
+          "Type": "H264Layer",
+          "FrameRate": "0/1"
         }
       ],
-      "Outputs": [
-        {
-          "FileName": "{Basename}_{Width}x{Height}_{VideoBitrate}.mp4",
-          "Format": {
-            "Type": "MP4Format"
-          }
-        }
-      ]
+      "Type": "H264Video"
+    },
+    {
+      "Profile": "AACLC",
+      "Channels": 2,
+      "SamplingRate": 48000,
+      "Bitrate": 128,
+      "Type": "AACAudio"
     }
-
+  ],
+  "Outputs": [
+    {
+      "FileName": "{Basename}_{Width}x{Height}_{VideoBitrate}.mp4",
+      "Format": {
+        "Type": "MP4Format"
+      }
+    }
+  ]
+}
+```
 
 ## <a name="restrictions-on-cropping"></a>Einschränkungen beim Zuschneiden
 Das Zuschneiden ist eine manuelle Aufgabe. Sie müssen Ihr Eingabevideo in ein geeignetes Schneidetool hochladen, in dem Sie die gewünschten Frames auswählen, den Cursor zum Bestimmen der Offsets für das Zuschnittrechteck positionieren, die Codierungsvoreinstellung bestimmen, die für das jeweilige Video optimiert ist, usw. Aufgabe dieses Features ist nicht das Ermöglichen von Aufgaben wie automatische Erkennung und Entfernen von schwarzen Letterbox-/Pillarbox-Rändern in Ihrem Eingabevideo.

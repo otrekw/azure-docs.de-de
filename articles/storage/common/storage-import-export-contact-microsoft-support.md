@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Supportanfragen bei Problemen im Zusammenhang mit
 services: storsimple
 author: alkohli
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8361c32860d48b78c778ea5106ba04715fcc5f3c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: fdee5420fa6a50974250c45260a3727755bfcba7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621055"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542591"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Öffnen eines Supporttickets für einen Import/Export-Auftrag
 
@@ -26,7 +26,7 @@ Wenn Probleme mit Ihrem Import/Export-Dienst auftreten, können Sie eine Service
 
 Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
 
-1. Navigieren Sie zu Ihrem Import/Export-Auftrag. Navigieren Sie zum Abschnitt **SUPPORT + PROBLEMBEHANDLUNG**, und klicken Sie anschließend auf **Neue Supportanfrage**.
+1. Navigieren Sie zu Ihrem Import/Export-Auftrag. Navigieren Sie zum Abschnitt **SUPPORT + PROBLEMBEHANDLUNG**, und wählen Sie anschließend **Neue Supportanfrage** aus.
      
     ![Grundlagen](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
@@ -40,7 +40,7 @@ Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
         - Wenn Sie **Blob** wählen, wählen Sie **Ressource**, **Containernamen** (optional) und **Supportplan** aus.
             ![Auswählen der Option „Blob“](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
         - Wenn Sie **Datei** auswählen, wählen Sie **Ressource**, **Dateifreigabenamen** (optional) und **Supportplan** aus. ![Auswählen der Option „Datei“](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. Klicken Sie auf **Weiter**.
+    4. Wählen Sie **Weiter** aus.
 
 3. Wählen Sie unter **Neue Supportanfrage** Schritt 2 **Problem** aus. Führen Sie unter **Problem** folgende Schritte aus:
     
@@ -49,22 +49,22 @@ Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
     3. Wählen Sie für **Kategorie** die Option **Import – Export** aus.
     4. Geben Sie einen **Titel** für das Problem und weitere **Details** an.
     5. Geben Sie Startdatum und -uhrzeit des Problems an.
-    6. Klicken Sie unter **Dateiupload** auf das Ordnersymbol, um zu weiteren Dateien zu navigieren, die hochgeladen werden sollen.
+    6. Wählen Sie unter **Dateiupload** das Ordnersymbol aus, um zu weiteren Dateien zu navigieren, die hochgeladen werden sollen.
     7. Aktivieren Sie **Diagnoseinformationen freigeben**.
-    8. Klicken Sie auf **Weiter**.
+    8. Wählen Sie **Weiter** aus.
 
        ![Problem](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
-4. Klicken Sie unter **Neue Supportanfrage** auf Schritt 3 **Kontaktinformationen**. Führen Sie unter **Kontaktinformationen** folgende Schritte aus:
+4. Wählen Sie in **Neue Supportanfrage** die Option **Schritt 3: Kontaktinformationen** aus. Führen Sie unter **Kontaktinformationen** folgende Schritte aus:
 
    1. Geben Sie in **Kontaktoptionen** Ihre bevorzugte Kontaktmethode (telefonisch oder per E-Mail) und die Sprache ein. Die Antwortzeit wird die anhand Ihres Abonnementplans automatisch ausgewählt.
    2. Geben Sie in den „Kontaktinformationen“ Ihren Namen, Ihre E-Mail-Adresse, einen optionalen Kontakt und das Land/die Region ein. Aktivieren Sie das Kontrollkästchen **Kontaktänderungen für zukünftige Supportanfragen speichern**.
-   3. Klicken Sie auf **Create**.
+   3. Klicken Sie auf **Erstellen**.
    
        ![Kontaktinformationen](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
       Microsoft Support verwendet diese Informationen, um Ihnen weitere Informationen, Diagnosen und Problemlösungen zur Verfügung zu stellen.
-      Nach dem Übermitteln Ihrer Anfrage setzt sich baldmöglichst ein Supporttechniker mit Ihnen in Verbindung, um Ihre Anfrage zu bearbeiten.
+      Nach dem Übermitteln Ihrer Anfrage setzt sich ein Supporttechniker mit Ihnen in Verbindung, um Ihre Anfrage zu bearbeiten.
 
 ## <a name="manage-a-support-request"></a>Erstellen einer Supportanfrage
 
@@ -74,17 +74,17 @@ Nach dem Erstellen einer Supportanfrage können Sie den Lebenszyklus des Tickets
 
 1. Um zur Hilfe- und Supportseite zu gelangen, navigieren Sie zu **Durchsuchen > Hilfe und Support**.
 
-    ![Verwalten von Supportanfragen](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
+    ![Der Screenshot zeigt das Dialogfeld „Hilfe“.](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
 
 2. Die Tabelle **Kürzlich gesendete Supportanfragen** wird unter **Hilfe + Support** angezeigt.
 
-    ![Verwalten von Supportanfragen](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
+    ![Der Screenshot zeigt die Seite „Hilfe und Support“ mit Ihrer Supportanfrage in einem geöffneten Status.](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
 
-3. Klicken Sie auf eine Supportanfrage. Sie können den Status und die Details dieser Anfrage anzeigen. Klicken Sie auf **+ Neue Nachricht**, wenn Sie diese Anforderung nachverfolgen möchten.
+3. Klicken Sie auf eine Supportanfrage. Sie können den Status und die Details dieser Anfrage anzeigen. Wählen Sie **+ Neue Nachricht** aus, wenn Sie diese Anfrage nachverfolgen möchten.
 
-    ![Verwalten von Supportanfragen](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
+    ![Der Screenshot zeigt die Option „Neue Nachricht“, die für diese Anfrage ausgewählt wurde.](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über das [Behandeln von Problemen mit dem Azure Import/Export-Tool](storage-import-export-tool-troubleshooting-v1.md).
+Erfahren Sie, wie Sie [den Azure Import/Export-Dienst zum Übertragen von Daten in und aus Azure Storage verwenden](storage-import-export-service.md).

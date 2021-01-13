@@ -1,27 +1,23 @@
 ---
-title: 'Beispiel: Blaupause „Canada Federal PBMM“ – Steuerungszuordnung'
-description: Steuerungszuordnung des Blaupausenbeispiels „Canada Federal PBMM“ zu Azure Policy.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 09/04/2019
+title: Steuerungen des Blaupausenbeispiels „Canada Federal PBMM“
+description: Steuerungszuordnung der Blaupausenbeispiele „Canada Federal PBMM“ Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
+ms.date: 11/05/2020
 ms.topic: sample
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 64f0517eece5efcd928b18c7f040fb88c3c36546
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 34c9b723b3c8a74b7a1f842e0144a826f55373ea
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309537"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420443"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels „Canada Federal PBMM“
 
-In diesem Artikel wird erläutert, wie das Azure Blueprints-Blaupausenbeispiel „Canada Federal PBMM“ (Protected B, Medium Integrity, Medium Availability) den Canada Federal PBMM-Steuerungen zugeordnet wird. Weitere Informationen zu den Steuerungen finden Sie unter [Canada Federal PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4).
+In diesem Artikel wird erläutert, wie das Azure Blueprints-Blaupausenbeispiel „Canada Federal PBMM“ (Protected B, Medium Integrity, Medium Availability) den Canada Federal PBMM-Steuerungen zugeordnet wird. Weitere Informationen zu den Steuerungen finden Sie unter [Canada Federal PBMM](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html).
 
 Die folgenden Zuordnungen gelten für die Steuerungen für **Canada Federal PBMM**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Suchen Sie anschließend die integrierte Richtlinieninitiative **\[Vorschauversion\]: Audit Canada Federal PBMM controls** ([Vorschauversion] Überwachen von Canada Federal PBMM-Steuerungen).
 
 > [!IMPORTANT]
-> Jede Steuerung unten ist mindestens einer [Azure Policy](../../../policy/overview.md)-Definition zugeordnet. Diese Richtlinien können Ihnen bei der [Konformitätsbewertung](../../../policy/how-to/get-compliance-data.md) mit der Steuerung helfen. Es gibt jedoch oft keine 1:1- oder vollständige Übereinstimmung zwischen einer Steuerung und einer bzw. mehreren Richtlinien. Daher bezieht sich **Konform** in Azure Policy nur auf die Richtlinien selbst und gewährleistet nicht die vollständige Konformität mit allen Anforderungen einer Steuerung. Außerdem enthält der Kompatibilitätsstandard Steuerungen, die derzeit von keiner Azure Policy-Definition abgedeckt werden. Daher ist die Konformität in Azure Policy nur eine partielle Ansicht Ihres gesamten Konformitätsstatus. Die Zuordnungen zwischen Steuerungen und Azure Policy-Definitionen für dieses Konformitätsblaupausenbeispiel können sich im Laufe der Zeit ändern. Den Änderungsverlauf finden Sie im [GitHub-Commit-Verlauf](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/canada-federal-pbmm/control-mapping.md).
+> Jede Steuerung unten ist einer oder mehreren [Azure Policy](../../../policy/overview.md)-Definitionen zugeordnet. Diese Richtlinien können Ihnen bei der [Konformitätsbewertung](../../../policy/how-to/get-compliance-data.md) mit der Steuerung helfen. Es gibt jedoch oft keine 1:1- oder vollständige Übereinstimmung zwischen einer Steuerung und einer bzw. mehreren Richtlinien. Daher bezieht sich **Konform** in Azure Policy nur auf die Richtlinien selbst und gewährleistet nicht die vollständige Konformität mit allen Anforderungen einer Steuerung. Außerdem enthält der Kompatibilitätsstandard Steuerungen, die derzeit von keiner Azure Policy-Definition abgedeckt werden. Daher ist die Konformität in Azure Policy nur eine partielle Ansicht Ihres gesamten Konformitätsstatus. Die Zuordnungen zwischen Steuerungen und Azure Policy-Definitionen für dieses Konformitätsblaupausenbeispiel können sich im Laufe der Zeit ändern. Den Änderungsverlaufs finden Sie im [GitHub-Commit-Verlauf](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/canada-federal-pbmm/control-mapping.md).
 
 ## <a name="location-constraints"></a>Standorteinschränkungen
 
@@ -43,17 +39,16 @@ Diese Blaupause hilft Ihnen bei der Überprüfung von Konten, die u. U. nicht d
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) Kontoverwaltung | Rollenbasierte Schemas
 
-In Azure ist die [rollenbasierte Zugriffssteuerung ](../../../../role-based-access-control/overview.md) (RBAC) zur Verwaltung des Zugriffs auf Azure-Ressourcen implementiert. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Mit dieser Blaupause werden auch [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, um die Verwendung der Azure Active Directory-Authentifizierung für SQL Server-Instanzen und Service Fabric zu überwachen. Die Verwendung der Azure Active Directory-Authentifizierung ermöglicht eine vereinfachte Verwaltung von Berechtigungen und eine zentralisierte Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft-Diensten. Mit dieser Blaupause wird zudem eine Azure Policy-Definition zugewiesen, um die Verwendung von benutzerdefinierten RBAC-Regeln zu überwachen. Wenn Sie wissen, wo benutzerdefinierte RBAC-Regeln implementiert sind, können Sie den Bedarf und die ordnungsgemäße Implementierung überprüfen, da benutzerdefinierte RBAC-Regeln fehleranfällig sind.
+In Azure ist die [rollenbasierte Azure-Zugriffssteuerung (Azure RBAC)](../../../../role-based-access-control/overview.md) zur Verwaltung des Zugriffs auf Azure-Ressourcen implementiert. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Mit dieser Blaupause werden auch [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, um die Verwendung der Azure Active Directory-Authentifizierung für SQL Server-Instanzen und Service Fabric zu überwachen. Die Verwendung der Azure Active Directory-Authentifizierung ermöglicht eine vereinfachte Verwaltung von Berechtigungen und eine zentralisierte Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft-Diensten. Mit dieser Blaupause wird zudem eine Azure Policy-Definition zugewiesen, um die Verwendung von benutzerdefinierten Azure RBAC-Regeln zu überwachen. Wenn Sie wissen, wo benutzerdefinierte Azure RBAC-Regeln implementiert sind, können Sie den Bedarf und die ordnungsgemäße Implementierung überprüfen, da benutzerdefinierte Azure RBAC-Regeln fehleranfällig sind.
 
 - Ein Azure Active Directory-Administrator sollte für SQL-Server-Instanzen bereitgestellt werden
 - Service Fabric-Cluster sollten nur Azure Active Directory für die Clientauthentifizierung verwenden.
 
 ## <a name="ac-4-information-flow-enforcement"></a>AC-4 Erzwingung des Datenflusses
 
-Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross Origin Resource Sharing, CORS) kann das Anfordern von App Services-Ressourcen von einer externen Domäne ermöglichen. Microsoft empfiehlt, nur erforderlichen Domänen die Interaktion mit Ihrer API, Funktion und Webanwendungen zu ermöglichen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, die Ihnen hilft, die Zugriffsbeschränkungen für CORS-Ressourcen in Azure Security Center zu überwachen.
-Das Verstehen von CORS-Implementierungen kann Ihnen helfen, zu überprüfen, ob Informationsflusssteuerungen implementiert sind.
+Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross Origin Resource Sharing, CORS) kann das Anfordern von App Services-Ressourcen von einer externen Domäne ermöglichen. Microsoft empfiehlt, nur erforderlichen Domänen die Interaktion mit Ihrer API, Funktion und Webanwendungen zu ermöglichen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, die Ihnen hilft, die Zugriffsbeschränkungen für CORS-Ressourcen in Azure Security Center zu überwachen. Das Verstehen von CORS-Implementierungen kann Ihnen helfen, zu überprüfen, ob Informationsflusssteuerungen implementiert sind.
 
-- Nicht jeder Ressource den Zugriff auf Ihre Webanwendung über CORS gestatten
+- CORS sollte nicht jeder Ressource Zugriff auf Ihre Webanwendungen erteilen.
 
 ## <a name="ac-5-separation-of-duties"></a>AC-5 Aufgabentrennung
 
@@ -61,48 +56,43 @@ Bei nur einem Azure-Abonnementbesitzer ist keine administrative Redundanz mögli
 
 - Maximal 3 Besitzer sollten für Ihr Abonnement festgelegt sein.
 - Ihrem Abonnement sollte mehr als ein Besitzer zugewiesen sein.
-- Windows-VMs überwachen, bei denen die Gruppe „Administratoren“ beliebige der angegebenen Mitglieder enthält
-- Windows-VMs überwachen, bei denen die Gruppe „Administratoren“ nicht alle der angegebenen Mitglieder enthält
-- Anforderungen zum Überwachen von Windows-VMs bereitstellen, bei denen die Gruppe „Administratoren“ beliebige der angegebenen Mitglieder enthält
-- Anforderungen zum Überwachen von Windows-VMs bereitstellen, bei denen die Gruppe „Administratoren“ nicht alle der angegebenen Mitglieder enthält
+- Windows-Computer überwachen, auf denen die angegebenen Mitglieder in der Administratorengruppe enthalten sind
+- Windows-Computer überwachen, auf denen angegebene Mitglieder in der Administratorengruppe fehlen
 
 ## <a name="ac-6-least-privilege"></a>AC-6 Ansatz der geringsten Rechte
 
-In Azure ist die [rollenbasierte Zugriffssteuerung ](../../../../role-based-access-control/overview.md) (RBAC) zur Verwaltung des Zugriffs auf Azure-Ressourcen implementiert. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zu, um Konten zu überwachen, die zur Überprüfung priorisiert werden sollten. Die Überprüfung dieser Kontoindikatoren kann Ihnen helfen, sicherzustellen, dass die Steuerungen mit den geringsten Rechten implementiert sind.
+In Azure ist die [rollenbasierte Azure-Zugriffssteuerung (Azure RBAC)](../../../../role-based-access-control/overview.md) zur Verwaltung des Zugriffs auf Azure-Ressourcen implementiert. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zu, um Konten zu überwachen, die zur Überprüfung priorisiert werden sollten. Die Überprüfung dieser Kontoindikatoren kann Ihnen helfen, sicherzustellen, dass die Steuerungen mit den geringsten Rechten implementiert sind.
 
 - Maximal 3 Besitzer sollten für Ihr Abonnement festgelegt sein.
 - Ihrem Abonnement sollte mehr als ein Besitzer zugewiesen sein.
-- Windows-VMs überwachen, bei denen die Gruppe „Administratoren“ beliebige der angegebenen Mitglieder enthält
-- Windows-VMs überwachen, bei denen die Gruppe „Administratoren“ nicht alle der angegebenen Mitglieder enthält
-- Anforderungen zum Überwachen von Windows-VMs bereitstellen, bei denen die Gruppe „Administratoren“ beliebige der angegebenen Mitglieder enthält
-- Anforderungen zum Überwachen von Windows-VMs bereitstellen, bei denen die Gruppe „Administratoren“ nicht alle der angegebenen Mitglieder enthält
+- Windows-Computer überwachen, auf denen die angegebenen Mitglieder in der Administratorengruppe enthalten sind
+- Windows-Computer überwachen, auf denen angegebene Mitglieder in der Administratorengruppe fehlen
 
 ## <a name="ac-7-security-attributes"></a>AC-7 Sicherheitsattribute
 
 Die Advanced Data Security-Funktion zur Datenermittlung und -klassifizierung für Azure SQL-Datenbank bietet Funktionen zum Ermitteln, Klassifizieren, Bezeichnen und Schützen sensibler Daten in Ihren Datenbanken. Das Feature kann Einblicke in den Zustand Ihrer Datenbankklassifizierung bereitstellen und den Zugriff auf sensible Daten innerhalb der Datenbank und außerhalb ihrer Grenzen verfolgen. Mit Advanced Data Security kann sichergestellt werden, dass Informationen den entsprechenden Sicherheitsattributen Ihrer Organisation zugeordnet werden. Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zu, um die Verwendung von Advanced Data Security auf SQL-Servern zu überprüfen und zu erzwingen.
 
-- Advanced Data Security muss für Ihre verwalteten SQL-Instanzen aktiviert werden.
+- Advanced Data Security muss für SQL Managed Instance aktiviert sein
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 - Bereitstellen von Advanced Data Security auf SQL-Servern
 
 ## <a name="ac-17-1-remote-access--automated-monitoring--control"></a>AC-17 (1) Remotezugriff | Automatisierte Überwachung/Steuerung
 
-Diese Blaupause hilft Ihnen durch das Zuweisen von [Azure Policy](../../../policy/overview.md)-Definitionen bei der Überwachung und Steuerung des Remotezugriffs. Diese überwachen, dass das Remotedebuggen für die Azure App Service-Anwendung deaktiviert ist. Richtliniendefinitionen überwachen virtuelle Linux-Computer, die Remoteverbindungen von Konten ohne Kennwörter zulassen. Diese Blaupause weist auch eine Azure Policy-Definition zu, mit der Sie den uneingeschränkten Zugriff auf Speicherkonten überwachen können. Die Überwachung dieser Indikatoren kann Ihnen helfen, sicherzustellen, dass Remotezugriffsmethoden Ihrer Sicherheitsrichtlinie entsprechen.
+Mit dieser Blaupause können Sie den Remotezugriff überwachen und steuern. Dazu weisen Sie [Azure Policy](../../../policy/overview.md)-Definitionen zu, um zu überwachen, ob Remotedebuggen für die Azure App Service-Anwendung deaktiviert ist. Diese Blaupause weist darüber hinaus Richtliniendefinitionen zum Überwachen virtueller Linux-Computer zu, die Remoteverbindungen von Konten ohne Kennwörter zulassen. Die Blaupause weist auch eine Azure Policy-Definition zu, mit der Sie den uneingeschränkten Zugriff auf Speicherkonten überwachen können. Die Überwachung dieser Indikatoren kann Ihnen helfen, sicherzustellen, dass Remotezugriffsmethoden Ihrer Sicherheitsrichtlinie entsprechen.
 
-- \[Vorschau\]: Linux-VMs überwachen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
-- \[Vorschau\]: Anforderungen zum Überwachen von Linux-VMs bereitstellen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
-- Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
-- Remotedebuggen für API-App deaktivieren
-- Remotedebuggen sollte für Funktions-Apps deaktiviert werden
-- Remotedebuggen muss für Webanwendung deaktiviert werden
+- Überwachungsergebnisse von Linux-VMs anzeigen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
+- Netzwerkzugriff auf Speicherkonten einschränken
+- Remotedebuggen sollte für API-Apps deaktiviert sein.
+- Remotedebuggen sollte für Funktions-Apps deaktiviert sein.
+- Remotedebuggen sollte für Webanwendungen deaktiviert sein.
 
 ## <a name="au-3-2-content-of-audit-records"></a>AU-3 (2) Inhalt von Überwachungsdatensätzen
 
 Von Azure Monitor erfasste Protokolldaten werden in einem Log Analytics-Arbeitsbereich gespeichert, um eine zentrale Konfiguration und Verwaltung zu ermöglichen. Mit dieser Blaupause können Sie sicherstellen, dass Ereignisse protokolliert werden, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die die Bereitstellung des Log Analytics-Agent auf virtuellen Azure-Computern überwachen und erzwingen.
 
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
+- Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs
 
@@ -111,8 +101,8 @@ Von Azure Monitor erfasste Protokolldaten werden in einem Log Analytics-Arbeitsb
 Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zu, die Überprüfungs- und Ereignisprotokollierungskonfigurationen überwachen. Die Überwachung dieser Konfigurationen kann einen Indikator für einen Ausfall oder eine Fehlkonfiguration eines Überprüfungssystems bereitstellen und Ihnen helfen, Korrekturmaßnahmen zu ergreifen.
 
 - Überwachen der Diagnoseeinstellung
-- Überwachungseinstellungen auf SQL Server-Ebene überwachen
-- Advanced Data Security muss für Ihre verwalteten Instanzen aktiviert werden.
+- Die Überwachung in SQL Server muss aktiviert werden.
+- Advanced Data Security muss für SQL Managed Instance aktiviert sein
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) Prüfung, Analyse und Berichterstellung in Bezug auf die Überwachung | Zentrale Überprüfung und Analyse
@@ -120,23 +110,25 @@ Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen z
 Von Azure Monitor erfasste Protokolldaten werden in einem Log Analytics-Arbeitsbereich gespeichert, um eine zentrale Berichterstattung und Analyse zu ermöglichen. Mit dieser Blaupause können Sie sicherstellen, dass Ereignisse protokolliert werden, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die die Bereitstellung des Log Analytics-Agent auf virtuellen Azure-Computern überwachen und erzwingen.
 
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
+- Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs
 
 ## <a name="au-12-audit-generation"></a>AU-12 Generierung von Überwachungsdatensätzen
 
-Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokolliert werden, indem Sie [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, die die Einstellungen des Überwachungsprotokolls auf Azure-Ressourcen überprüfen. Diese Richtliniendefinitionen überprüfen und erzwingen die Bereitstellung des Log Analytics-Agents auf virtuellen Azure-Computern und die Konfiguration von Überprüfungseinstellungen für andere Azure-Ressourcentypen. Diese Richtliniendefinitionen überprüfen auch die Konfiguration von Diagnoseprotokollen, um Einblick in Vorgänge zu erhalten, die innerhalb von Azure-Ressourcen ausgeführt werden. Darüber hinaus werden Überprüfung und Advanced Data Security auf SQL-Servern konfiguriert.
+Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokolliert werden, indem Sie [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, die die Einstellungen des Überwachungsprotokolls auf Azure-Ressourcen überprüfen.
+Diese Richtliniendefinitionen überprüfen und erzwingen die Bereitstellung des Log Analytics-Agents auf virtuellen Azure-Computern und die Konfiguration von Überprüfungseinstellungen für andere Azure-Ressourcentypen. Diese Richtliniendefinitionen überprüfen auch die Konfiguration von Diagnoseprotokollen, um Einblick in Vorgänge zu erhalten, die innerhalb von Azure-Ressourcen ausgeführt werden. Darüber hinaus werden Überprüfung und Advanced Data Security auf SQL-Servern konfiguriert.
 
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
+- Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
+
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs
 - Überwachen der Diagnoseeinstellung
-- Überwachungseinstellungen auf SQL Server-Ebene überwachen
-- Advanced Data Security muss für Ihre verwalteten Instanzen aktiviert werden.
+- Die Überwachung in SQL Server muss aktiviert werden.
+- Advanced Data Security muss für SQL Managed Instance aktiviert sein
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 - Bereitstellen von Advanced Data Security auf SQL-Servern
 - Bereitstellen von Überwachung auf SQL-Server-Instanzen
@@ -144,15 +136,15 @@ Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokollier
 
 ## <a name="cm-7-5-least-functionality--authorized-software--whitelisting"></a>CM-7 (5) Mindestfunktionalität | Autorisierte Software und Whitelists
 
-Die adaptive Anwendungssteuerung im Azure Security Center ist eine intelligente, automatisierte End-to-End-Whitelistlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Mit Anwendungssteuerung können Sie Listen von genehmigten Anwendungen für Ihre virtuellen Computer erstellen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungswhitelist empfohlen wird, aber noch nicht konfiguriert wurde.
+Die adaptive Anwendungssteuerung im Azure Security Center ist eine intelligente, automatisierte End-to-End-Zulassungslistenlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Mit Anwendungssteuerung können Sie Listen von genehmigten Anwendungen für Ihre virtuellen Computer erstellen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungszulassungsliste empfohlen wird, aber noch nicht konfiguriert wurde.
 
-- Die adaptive Anwendungssteuerung sollte auf virtuellen Computern aktiviert werden.
+- Adaptive Anwendungssteuerung zum Definieren sicherer Anwendungen muss auf Computern aktiviert sein
 
 ## <a name="cm-11-user-installed-software"></a>CM-11 Von Benutzern installierte Software
 
-Die adaptive Anwendungssteuerung im Azure Security Center ist eine intelligente, automatisierte End-to-End-Whitelistlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Mit Anwendungssteuerung können Sie die Einhaltung von Software-Einschränkungsrichtlinien durchsetzen und überwachen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungswhitelist empfohlen wird, aber noch nicht konfiguriert wurde.
+Die adaptive Anwendungssteuerung im Azure Security Center ist eine intelligente, automatisierte End-to-End-Zulassungslistenlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Mit Anwendungssteuerung können Sie die Einhaltung von Software-Einschränkungsrichtlinien durchsetzen und überwachen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungszulassungsliste empfohlen wird, aber noch nicht konfiguriert wurde.
 
-- Die adaptive Anwendungssteuerung sollte auf virtuellen Computern aktiviert werden.
+- Adaptive Anwendungssteuerung zum Definieren sicherer Anwendungen muss auf Computern aktiviert sein
 
 ## <a name="cp-7-alternate-processing-site"></a>CP-7 Alternativer Verarbeitungsstandort
 
@@ -165,48 +157,42 @@ Azure Site Recovery repliziert Workloads, die auf virtuellen Computern ausgefüh
 Mit dieser Blaupause können Sie den privilegierten Zugriff einschränken und steuern, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, um Konten mit Besitzer- und/oder Schreibberechtigungen ohne aktivierte mehrstufige Authentifizierung zu überwachen. Über die mehrstufige Authentifizierung können Konten geschützt werden, auch wenn bestimmte Authentifizierungsinformationen kompromittiert sind. Durch die Überwachung von Konten ohne aktivierte mehrstufige Authentifizierung können Sie die Konten identifizieren, die möglicherweise eher kompromittiert werden.
 
 - MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.
-- MFA sollte für Konten mit Schreibberechtigungen für Ihr Abonnement aktiviert werden.
+- MFA sollte für Konten mit Schreibrechten für Ihr Abonnement aktiviert werden
 
 ## <a name="ia-5-authenticator-management"></a>IA-5 Authentifikatorverwaltung
 
 Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zum Überwachen virtueller Linux-Computer zu, die Remoteverbindungen von Konten ohne Kennwörter zulassen und/oder deren passwd-Datei falsche Berechtigungen enthält. Diese Blaupause weist auch Richtliniendefinitionen zu, die die Konfiguration des Kennwortverschlüsselungstyps für virtuelle Windows-Computer überwacht. Durch Überwachung dieser Indikatoren können Sie sicherstellen, dass die Systemauthentifikatoren die Identifizierung und Authentifizierungsrichtlinien Ihrer Organisation einhalten.
 
-- \[Vorschau\]: Linux-VMs überwachen, bei denen die passwd-Dateiberechtigungen nicht auf 0644 festgelegt sind
-- \[Vorschau\]: Linux-VMs überwachen, die Konten ohne Kennwörter verwenden
-- \[Vorschau\]: Anforderungen zum Überwachen von Linux-VMs bereitstellen, bei denen die passwd-Dateiberechtigungen nicht auf 0644 festgelegt sind
-- \[Vorschau\]: Anforderungen zum Überwachen von Linux-VMs bereitstellen, die Konten ohne Kennwörter verwenden
+- Überwachungsergebnisse von Linux-VMs anzeigen, bei denen die passwd-Dateiberechtigungen nicht auf 0644 festgelegt sind
+- Überwachungsergebnisse von Linux-VMs anzeigen, die Konten ohne Kennwörter verwenden
 
 ## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) Authentifikatorverwaltung |Kennwortbasierte Authentifizierung
 
 Mit dieser Blaupause können Sie sichere Kennwörter erzwingen, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, mit denen virtuelle Windows-Computer überwacht werden, auf denen keine Mindestsicherheitsanforderungen oder andere Anforderungen für Kennwörter erzwungen werden. Aufgrund der Informationen zu virtuellen Computern, die gegen die Richtlinie zur Kennwortsicherheit verstoßen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass die Kennwörter für alle Benutzerkonten auf virtuellen Computern mit der Kennwortrichtlinie Ihrer Organisation konform sind.
 
-- \[Vorschau\]: Windows-VMs überwachen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
-- \[Vorschau\]: Windows-VMs überwachen, für die kein maximales Kennwortalter von 70 Tagen gilt
-- \[Vorschau\]: Windows-VMs überwachen, die kein Mindestkennwortalter von 1 Tag verwenden
-- \[Vorschau\]: Windows-VMs überwachen, auf denen nicht die Einstellung für die Kennwortkomplexität aktiviert ist
-- \[Vorschau\]: Windows-VMs überwachen, für die keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, für die kein maximales Kennwortalter von 70 Tagen gilt
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die kein Mindestkennwortalter von 1 Tag verwenden
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, auf denen nicht die Einstellung für die Kennwortkomplexität aktiviert ist
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, für die keine Mindestkennwortlänge von 14 Zeichen gilt
+- Überwachungsergebnisse von Windows-VMs anzeigen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
+- Überwachungsergebnisse von Windows-VMs anzeigen, für die kein maximales Kennwortalter von 70 Tagen gilt
+- Überwachungsergebnisse von Windows-VMs anzeigen, für die kein minimales Kennwortalter von 1 Tag gilt
+- Überwachungsergebnisse von Windows-VMs anzeigen, auf denen nicht die Einstellung für die Kennwortkomplexität aktiviert ist
+- Überwachungsergebnisse von Windows-VMs anzeigen, für die keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
 
 ## <a name="ia-8-100-identification-and-authentication-non-organizational-users--identity-and-credential-assurance-levels"></a>IA-8 (100) Identifikation und Authentifizierung (organisationsfremde Benutzer) | Vertrauensgrade für Identität und Anmeldeinformationen
 
 Mit dieser Blaupause können Sie den privilegierten Zugriff einschränken und steuern, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, um Konten mit Besitzer- und/oder Schreibberechtigungen ohne aktivierte mehrstufige Authentifizierung zu überwachen. Über die mehrstufige Authentifizierung können Konten geschützt werden, auch wenn bestimmte Authentifizierungsinformationen kompromittiert sind. Durch die Überwachung von Konten ohne aktivierte mehrstufige Authentifizierung können Sie die Konten identifizieren, die möglicherweise eher kompromittiert werden.
 
 - MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.
-- MFA sollte für Konten mit Schreibberechtigungen für Ihr Abonnement aktiviert werden.
+- MFA sollte für Konten mit Schreibrechten für Ihr Abonnement aktiviert werden
 
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 Überprüfung auf Sicherheitsrisiken
 
-Mit dieser Blaupause können Sie Sicherheitsrisiken im Informationssystem verwalten, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die Sicherheitsrisiken des Betriebssystems, SQL-Sicherheitsrisiken und Sicherheitsrisiken von virtuellen Computern in Azure Security Center überwachen. Azure Security Center umfasst Funktionen zur Berichterstellung, über die Sie in Echtzeit Einblick in den Sicherheitsstatus von bereitgestellten Azure-Ressourcen erhalten. Diese Blaupause weist außerdem Richtliniendefinitionen zu, die Advanced Data Security auf SQL-Servern überprüfen und erzwingen. Erweiterte Datensicherheit umfasst Sicherheitsrisikobewertung und erweiterte Funktionen zum Schutz vor Bedrohungen, damit Sie Sicherheitsrisiken in Ihren bereitgestellten Ressourcen besser verstehen.
+Mit dieser Blaupause können Sie Sicherheitsrisiken im Informationssystem verwalten, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die Sicherheitsrisiken des Betriebssystems, SQL-Sicherheitsrisiken und Sicherheitsrisiken von virtuellen Computern in Azure Security Center überwachen.
+Azure Security Center umfasst Funktionen zur Berichterstellung, über die Sie in Echtzeit Einblick in den Sicherheitsstatus von bereitgestellten Azure-Ressourcen erhalten. Diese Blaupause weist außerdem Richtliniendefinitionen zu, die Advanced Data Security auf SQL-Servern überprüfen und erzwingen. Erweiterte Datensicherheit umfasst Sicherheitsrisikobewertung und erweiterte Funktionen zum Schutz vor Bedrohungen, damit Sie Sicherheitsrisiken in Ihren bereitgestellten Ressourcen besser verstehen.
 
-- Advanced Data Security muss für Ihre verwalteten Instanzen aktiviert werden.
+- Advanced Data Security muss für SQL Managed Instance aktiviert sein
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 - Bereitstellen von Advanced Data Security auf SQL-Servern
 - Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen sollten beseitigt werden.
-- Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre virtuellen Computer sollten beseitigt werden.
+- Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer sollten beseitigt werden.
 - Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden.
 - Sicherheitsrisiken sollten durch eine Lösung zur Sicherheitsrisikobewertung beseitigt werden.
 
@@ -218,35 +204,32 @@ Die DDoS-Standard-Tarif (Distributed Denial of Service) von Azure bietet mehr Fe
 
 ## <a name="sc-7-boundary-protection"></a>SC-7 Schutz von Grenzen
 
-Mit dieser Blaupause können Sie die Systemgrenze verwalten und steuern, indem eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen wird, die Empfehlungen für die Härtung von Netzwerksicherheitsgruppen in Azure Security Center überprüft. Azure Security Center analysiert Datenverkehrsmuster von virtuellen Computern mit Internetanbindung und gibt Empfehlungen für Netzwerksicherheitsgruppen-Regeln, um die potenzielle Angriffsfläche zu reduzieren.
-Mit dieser Blaupause werden außerdem Richtliniendefinitionen zugewiesen, die nicht geschützte Endpunkte, Anwendungen und Speicherkonten überwachen. Endpunkte und Anwendungen, die nicht durch eine Firewall geschützt sind, sowie Speicherkonten mit uneingeschränktem Zugriff können einen unbeabsichtigten Zugriff auf Informationen im Informationssystem ermöglichen.
+Mit dieser Blaupause können Sie die Systemgrenze verwalten und steuern, indem eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen wird, die Empfehlungen für die Härtung von Netzwerksicherheitsgruppen in Azure Security Center überprüft. Azure Security Center analysiert Datenverkehrsmuster von virtuellen Computern mit Internetanbindung und gibt Empfehlungen für Netzwerksicherheitsgruppen-Regeln, um die potenzielle Angriffsfläche zu reduzieren. Mit dieser Blaupause werden außerdem Richtliniendefinitionen zugewiesen, die nicht geschützte Endpunkte, Anwendungen und Speicherkonten überwachen. Endpunkte und Anwendungen, die nicht durch eine Firewall geschützt sind, sowie Speicherkonten mit uneingeschränktem Zugriff können einen unbeabsichtigten Zugriff auf Informationen im Informationssystem ermöglichen.
 
-- NSG-Regeln für VMs mit Internetzugriff sollten verstärken werden.
+- Auf virtuelle Computer mit Internetzugang müssen Empfehlungen zur adaptiven Netzwerkhärtung angewendet werden.
 - Zugriff über Endpunkt mit Internetzugriff sollte eingeschränkt werden
-- Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
-- Die NSG-Regeln für Webanwendungen in IaaS sollten verstärkt werden.
+- Netzwerkzugriff auf Speicherkonten einschränken
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) Schutz von Grenzen | Zugriffspunkte
 
 Mit Just-In-Time-Zugriff (JIT) auf virtuelle Computer wird eingehender Datenverkehr auf den virtuellen Azure-Computern gesperrt, um die Gefährdung durch Angriffe zu reduzieren und bei Bedarf einfachen Zugriff auf Verbindungen mit virtuellen Computern bereitzustellen. JIT-Zugriff auf virtuelle Computer hilft Ihnen, die Anzahl von externen Verbindungen mit Ihren Ressourcen in Azure zu begrenzen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, die Ihnen bei der Überwachung virtueller Computer hilft, die Just-In-Time-Zugriff unterstützen können, aber noch nicht konfiguriert wurden.
 
-- Die Just-In-Time-Netzwerkzugriffssteuerung sollte auf virtuelle Computer angewendet werden.
+- Azure DDoS Protection Standard muss aktiviert sein
 
 ## <a name="sc-7-4-boundary-protection--external-telecommunications-services"></a>SC-7 (4) Schutz von Grenzen | Externe Telekommunikationsdienste
 
 Mit Just-In-Time-Zugriff (JIT) auf virtuelle Computer wird eingehender Datenverkehr auf den virtuellen Azure-Computern gesperrt, um die Gefährdung durch Angriffe zu reduzieren und bei Bedarf einfachen Zugriff auf Verbindungen mit virtuellen Computern bereitzustellen. JIT-Zugriff auf virtuelle Computer hilft Ihnen bei der Verwaltung von Ausnahmen von Ihrer Datenverkehrsflussrichtlinie, indem die Zugriffsanforderungs- und Genehmigungsprozesse vereinfacht werden. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, die Ihnen bei der Überwachung virtueller Computer hilft, die Just-In-Time-Zugriff unterstützen können, aber noch nicht konfiguriert wurden.
 
-- Die Just-In-Time-Netzwerkzugriffssteuerung sollte auf virtuelle Computer angewendet werden.
+- Azure DDoS Protection Standard muss aktiviert sein
 
 ## <a name="sc-8-1-transmission-confidentiality-and-integrity--cryptographic-or-alternate-physical-protection"></a>SC-8 (1) Vertraulichkeit und Integrität von übertragenen Informationen | Kryptografischer oder alternativer physischer Schutz
 
 Mithilfe dieser Blaupause können Sie die Vertraulichkeit und Integrität übertragener Informationen schützen. Weisen Sie dazu [Azure Policy](../../../policy/overview.md)-Definitionen zu, mit denen der für Kommunikationsprotokolle implementierte Kryptografiemechanismus überwacht werden kann. Die Sicherstellung der ordnungsgemäßen Verschlüsselung kann Sie bei der Erfüllung der Anforderungen Ihrer Organisation oder beim Schutz von Informationen vor nicht autorisierter Offenlegung und Änderung unterstützen.
 
 - Auf API-Apps sollte nur über HTTPS zugegriffen werden können
-- Windows-Webserver überwachen, die keine sicheren Kommunikationsprotokolle verwenden
-- Anforderungen zum Überwachen von Windows-Webservern bereitstellen, die keine sicheren Kommunikationsprotokolle verwenden
+- Überwachungsergebnisse von Windows-Webservern anzeigen, die keine sicheren Kommunikationsprotokolle verwenden
 - Zugriff auf Funktions-App nur über HTTPS gestatten
-- Nur sichere Verbindungen mit Ihrer Redis Cache-Instanz sollten aktiviert werden
+- Für Azure Cache for Redis dürfen nur sichere Verbindungen aktiviert sein
 - Zugriff auf Webanwendung nur über HTTPS gestatten
 - Sichere Übertragung in Speicherkonten sollte aktiviert werden.
 
@@ -254,7 +237,7 @@ Mithilfe dieser Blaupause können Sie die Vertraulichkeit und Integrität übert
 
 Mit dieser Blaupause können Sie die Richtlinie zur Verwendung von kryptografischen Steuerungen zum Schutz von ruhenden Informationen erzwingen, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die spezifische kryptografische Steuerungen erzwingen und die Verwendung schwacher kryptografischer Einstellungen überwachen. Wenn Sie wissen, wo Ihre Azure-Ressourcen möglicherweise nicht optimale kryptografische Konfigurationen aufweisen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass die Ressourcen entsprechend Ihrer Richtlinie zur Informationssicherheit konfiguriert sind. Für die von dieser Blaupause zugewiesenen Richtlinien gilt insbesondere Folgendes: Sie erfordern eine Verschlüsselung für Data Lake-Speicherkonten, sie erfordern eine transparente Datenverschlüsselung für SQL-Datenbanken, sie überwachen die fehlende Verschlüsselung für SQL-Datenbanken, VM-Datenträger und Variablen von Automation-Konten.
 
-- Advanced Data Security muss für Ihre verwalteten Instanzen aktiviert werden.
+- Advanced Data Security muss für SQL Managed Instance aktiviert sein
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 - Bereitstellen von Advanced Data Security auf SQL-Servern
 - Bereitstellen der transparenten SQL DB-Datenbankverschlüsselung
@@ -268,9 +251,9 @@ Mit dieser Blaupause können Sie Fehler im Informationssystem verwalten, indem [
 
 - Automatische Patches für Betriebssystemimages in Virtual Machine Scale Sets voraussetzen
 - Systemupdates für VM-Skalierungsgruppen sollten installiert werden.
-- Systemupdates sollten auf Ihren virtuellen Computern installiert sein.
+- Systemupdates sollten auf Ihren Computern installiert sein.
 - Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen sollten beseitigt werden.
-- Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre virtuellen Computer sollten beseitigt werden.
+- Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer sollten beseitigt werden.
 - Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden.
 - Sicherheitsrisiken sollten durch eine Lösung zur Sicherheitsrisikobewertung beseitigt werden.
 
@@ -294,15 +277,15 @@ Diese Blaupause hilft Ihnen bei der Verwaltung des Endpunktschutzes, einschließ
 Diese Blaupause hilft Ihnen bei der Überwachung Ihres Systems, indem sie die Protokollierung und Datensicherheit für alle Azure-Ressourcen überprüft und erzwingt. Insbesondere weisen die Richtlinien Überwachung zu und erzwingen die Bereitstellung des Log Analytics-Agent sowie erweiterte Sicherheitseinstellungen für SQL-Datenbanken, Speicherkonten und Netzwerkressourcen. Diese Funktionen helfen Ihnen beim Erkennen von anomalem Verhalten und Indikatoren für Angriffe, sodass Sie geeignete Maßnahmen ergreifen können.
 
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
+- Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs
-- Advanced Data Security muss für Ihre verwalteten Instanzen aktiviert werden.
+- Advanced Data Security muss für SQL Managed Instance aktiviert sein
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 - Bereitstellen von Advanced Data Security auf SQL-Servern
 - Bereitstellen von Advanced Threat Protection für Speicherkonten
-- Bereitstellen von Auditing auf SQL-Servern
+- Bereitstellen von Überwachung auf SQL-Server-Instanzen
 - Bereitstellen von Network Watcher beim Erstellen virtueller Netzwerke
 - Bereitstellen von Bedrohungserkennung auf SQL-Servern
 

@@ -1,30 +1,30 @@
 ---
-title: Informationen zu Azure-Point-to-Site-VPN-Verbindungen | Microsoft-Dokumentation
+title: Informationen zu Azure-Point-to-Site-VPN-Verbindungen | VPN Gateway
 description: Dieser Artikel enthält Informationen zu P2S-Verbindungen (Point-to-Site) und erleichtert Ihnen die Entscheidung, welcher P2S-VPN-Gateway-Authentifizierungstyp verwendet werden sollte.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: f1e014bb14b2b5c1ae924f4371e08aa8bf8698f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 795b6f13913590041b463115c0be65a6201fedab
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056474"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654063"
 ---
 # <a name="about-point-to-site-vpn"></a>Informationen zu Point-to-Site-VPN
 
 Mit einer P2S-VPN-Gatewayverbindung (Point-to-Site) können Sie von einem einzelnen Clientcomputer aus eine sichere Verbindung mit Ihrem virtuellen Netzwerk herstellen. Eine P2S-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Diese Lösung ist nützlich für Telearbeiter, die an einem Remotestandort (beispielsweise zu Hause oder in einer Konferenz) eine Verbindung mit Azure-VNETs herstellen möchten. Wenn nur einige wenige Clients eine Verbindung mit einem VNET herstellen müssen, ist ein P2S-VPN (und nicht ein S2S-VPN) ebenfalls eine nützliche Lösung. Dieser Artikel gilt für das Resource Manager-Bereitstellungsmodell.
 
-## <a name="protocol"></a>Welches Protokoll verwendet P2S?
+## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>Welches Protokoll verwendet P2S?
 
 P2S-VPN kann eins der folgenden Protokolle verwenden:
 
-* **OpenVPN®-Protokoll**, ein auf SSL/TLS basierendes VPN-Protokoll. Eine SSL-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von SSL verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. OpenVPN kann zum Herstellen einer Verbindung von Android-, iOS- (Versionen 11.0 und höher), Windows-, Linux- und Mac-Geräten (OSX-Version 10.13 und höher) verwendet werden.
+* **OpenVPN®-Protokoll**, ein auf SSL/TLS basierendes VPN-Protokoll. Eine TLS-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von TLS verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. OpenVPN kann zum Herstellen einer Verbindung von Android-, iOS- (Versionen 11.0 und höher), Windows-, Linux- und Mac-Geräten (OSX-Version 10.13 und höher) verwendet werden.
 
-* Secure Socket Tunneling-Protokoll (SSTP), ein proprietäres SSL-basiertes VPN-Protokoll. Eine SSL-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von SSL verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. SSTP wird nur auf Windows-Geräten unterstützt. Azure unterstützt alle Versionen von Windows, die über SSTP verfügen (Windows 7 und höher).
+* Secure Socket Tunneling-Protokoll (SSTP), ein proprietäres TLS-basiertes VPN-Protokoll. Eine TLS-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von TLS verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. SSTP wird nur auf Windows-Geräten unterstützt. Azure unterstützt alle Versionen von Windows, die über SSTP verfügen (Windows 7 und höher).
 
 * IKEv2-VPN, eine standardbasierte IPsec-VPN-Lösung. IKEv2-VPN kann zum Herstellen einer Verbindung von Mac-Geräten (OSX-Version 10.11 und höher) verwendet werden.
 
@@ -33,7 +33,7 @@ P2S-VPN kann eins der folgenden Protokolle verwenden:
 >IKEv2 und OpenVPN für P2S sind ausschließlich für das Resource Manager-Bereitstellungsmodell verfügbar. Für das klassische Bereitstellungsmodell sind sie nicht verfügbar.
 >
 
-## <a name="authentication"></a>Wie werden P2S-VPN-Clients authentifiziert?
+## <a name="how-are-p2s-vpn-clients-authenticated"></a><a name="authentication"></a>Wie werden P2S-VPN-Clients authentifiziert?
 
 Bevor Azure eine P2S-VPN-Verbindung akzeptiert, muss zunächst der Benutzer authentifiziert werden. Azure bietet zwei Mechanismen zum Authentifizieren eines Benutzers, der eine Verbindung herstellt.
 
@@ -43,21 +43,32 @@ Bei Verwendung der nativen Azure-Zertifikatauthentifizierung wird der Benutzer, 
 
 Die Überprüfung des Clientzertifikats wird vom VPN-Gateway durchgeführt und erfolgt während der Herstellung der P2S-VPN-Verbindung. Das Stammzertifikat ist für die Überprüfung erforderlich und muss in Azure hochgeladen werden.
 
+### <a name="authenticate-using-native-azure-active-directory-authentication"></a>Authentifizieren mit der nativen Azure Active Directory-Authentifizierung
+
+Die Azure AD-Authentifizierung ermöglicht Benutzern das Herstellen einer Verbindung mit Azure mit ihren Azure Active Directory-Anmeldeinformationen. Die native Azure AD-Authentifizierung wird nur für das OpenVPN-Protokoll und Windows 10 unterstützt und erfordert die Verwendung von [Azure VPN Client](https://go.microsoft.com/fwlink/?linkid=2117554).
+
+Mit der nativen Azure AD-Authentifizierung können Sie den bedingten Zugriff von Azure AD sowie die Multi-Factor Authentication-Funktionen (MFA) für VPN nutzen.
+
+Auf einer hohen Ebene müssen Sie die folgenden Schritte ausführen, um die Azure AD-Authentifizierung zu konfigurieren:
+
+1. [Konfigurieren eines Azure AD-Mandanten](openvpn-azure-ad-tenant.md)
+
+2. [Aktivieren der Azure AD-Authentifizierung im Gateway](openvpn-azure-ad-tenant.md#enable-authentication)
+
+3. [Herunterladen und Konfigurieren von Azure VPN Client](https://go.microsoft.com/fwlink/?linkid=2117554)
+
+
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Authentifizieren mit Active Directory-Domänenserver (AD)
 
-Die AD-Domänenauthentifizierung ermöglicht Benutzern das Herstellen einer Verbindung mit Azure mit ihren Anmeldeinformationen für die Organisationsdomäne. Dafür ist ein RADIUS-Server erforderlich, der in den AD-Server integriert wird. Organisationen können auch ihre vorhandene RADIUS-Bereitstellung nutzen.   
-  
-Der RADIUS-Server kann lokal oder im Azure-VNET bereitgestellt werden. Während der Authentifizierung fungiert das Azure-VPN-Gateway als Vermittler und leitet Authentifizierungsnachrichten zwischen dem RADIUS-Server und dem Gerät weiter, das eine Verbindung herstellt. Die Erreichbarkeit des Gateways durch den RADIUS-Server ist daher wichtig. Wenn sich der RADIUS-Server in der lokalen Umgebung befindet, ist aus Gründen der Erreichbarkeit eine VPN-S2S-Verbindung zwischen Azure und dem lokalen Standort erforderlich.  
-  
+Die AD-Domänenauthentifizierung ermöglicht Benutzern das Herstellen einer Verbindung mit Azure mit ihren Anmeldeinformationen für die Organisationsdomäne. Dafür ist ein RADIUS-Server erforderlich, der in den AD-Server integriert wird. Organisationen können auch ihre vorhandene RADIUS-Bereitstellung nutzen.
+  
+Der RADIUS-Server kann lokal oder im Azure-VNET bereitgestellt werden. Während der Authentifizierung fungiert das Azure-VPN-Gateway als Vermittler und leitet Authentifizierungsnachrichten zwischen dem RADIUS-Server und dem Gerät weiter, das eine Verbindung herstellt. Die Erreichbarkeit des Gateways durch den RADIUS-Server ist daher wichtig. Wenn sich der RADIUS-Server in der lokalen Umgebung befindet, ist aus Gründen der Erreichbarkeit eine VPN-S2S-Verbindung zwischen Azure und dem lokalen Standort erforderlich.  
+  
 Der RADIUS-Server kann auch in AD-Zertifikatdienste integriert werden. Dadurch können Sie den RADIUS-Server und Ihre Unternehmenszertifikatbereitstellung für die P2S-Zertifikatauthentifizierung als Alternative zur Azure-Zertifikatauthentifizierung verwenden. Der Vorteil besteht darin, dass Sie keine Stammzertifikate und gesperrten Zertifikate in Azure hochladen müssen.
 
 Ein RADIUS-Server kann auch in andere externe Identitätssysteme integriert werden. Dadurch ergeben sich zahlreiche Authentifizierungsoptionen für P2S-VPNs, einschließlich Optionen für die mehrstufige Authentifizierung.
 
->[!NOTE]
->Das **OpenVPN®-Protokoll** wird mit der RADIUS-Authentifizierung nicht unterstützt.
->
-
-![Point-to-Site](./media/point-to-site-about/p2s.png "Point-to-Site")
+![Diagramm: Point-to-Site-VPN mit einer lokalen Website](./media/point-to-site-about/p2s.png)
 
 ## <a name="what-are-the-client-configuration-requirements"></a>Welche Anforderungen an die Clientkonfiguration müssen erfüllt sein?
 
@@ -76,7 +87,7 @@ Die ZIP-Datei enthält zudem die Werte einiger wichtiger Einstellungen in Azure,
 >[!INCLUDE [TLS version changes](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="gwsku"></a>Welche Gateway-SKUs unterstützen P2S-VPN?
+## <a name="which-gateway-skus-support-p2s-vpn"></a><a name="gwsku"></a>Welche Gateway-SKUs unterstützen P2S-VPN?
 
 [!INCLUDE [aggregate throughput sku](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -86,48 +97,48 @@ Die ZIP-Datei enthält zudem die Werte einiger wichtiger Einstellungen in Azure,
 >Die Basic-SKU unterstützt keine IKEv2- oder RADIUS-Authentifizierung.
 >
 
-## <a name="IKE/IPsec policies"></a>Welche IKE/IPsec-Richtlinien werden in VPN-Gateways für P2S konfiguriert?
+## <a name="what-ikeipsec-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="IKE/IPsec policies"></a>Welche IKE/IPsec-Richtlinien werden in VPN-Gateways für P2S konfiguriert?
 
 
 **IKEv2**
 
-|**Verschlüsselung** | **Integrität** | **PRF** | **DH-Gruppe** |
-|---        | ---           | ---       | ---   |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_24 |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_14 |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_ECP384 |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_ECP256 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_24 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_14 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_ECP384 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_ECP256 |
-|AES256     |   SHA384      | SHA384    | GROUP_24 |
-|AES256     |   SHA384      | SHA384    | GROUP_14 |
-|AES256     |   SHA384      | SHA384    | GROUP_ECP384 |
-|AES256     |   SHA384      | SHA384    | GROUP_ECP256 |
-|AES256     |   SHA256      | SHA256    | GROUP_24 |
-|AES256     |   SHA256      | SHA256    | GROUP_14 |
-|AES256     |   SHA256      | SHA256    | GROUP_ECP384 |
-|AES256     |   SHA256      | SHA256    | GROUP_ECP256 |
-|AES256     |   SHA256      | SHA256    | GROUP_2 |
+| **Verschlüsselung** | **Integrität** | **PRF** | **DH-Gruppe** |
+|--|--|--|--|
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_ECP256 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA384 | SHA384 | GROUP_24 |
+| AES256 | SHA384 | SHA384 | GROUP_14 |
+| AES256 | SHA384 | SHA384 | GROUP_ECP384 |
+| AES256 | SHA384 | SHA384 | GROUP_ECP256 |
+| AES256 | SHA256 | SHA256 | GROUP_24 |
+| AES256 | SHA256 | SHA256 | GROUP_14 |
+| AES256 | SHA256 | SHA256 | GROUP_ECP384 |
+| AES256 | SHA256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA256 | SHA256 | GROUP_2 |
 
 **IPsec**
 
-|**Verschlüsselung** | **Integrität** | **PFS-Gruppe** |
-|---        | ---           | ---       |
-|GCM_AES256 | GCM_AES256 | GROUP_NONE |
-|GCM_AES256 | GCM_AES256 | GROUP_24 |
-|GCM_AES256 | GCM_AES256 | GROUP_14 |
-|GCM_AES256 | GCM_AES256 | GROUP_ECP384 |
-|GCM_AES256 | GCM_AES256 | GROUP_ECP256 |
-| AES256    | SHA256 | GROUP_NONE |
-| AES256    | SHA256 | GROUP_24 |
-| AES256    | SHA256 | GROUP_14 |
-| AES256    | SHA256 | GROUP_ECP384 |
-| AES256    | SHA256 | GROUP_ECP256 |
-| AES256    | SHA1 | GROUP_NONE |
+| **Verschlüsselung** | **Integrität** | **PFS-Gruppe** |
+|--|--|--|
+| GCM_AES256 | GCM_AES256 | GROUP_NONE |
+| GCM_AES256 | GCM_AES256 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | GROUP_ECP256 |
+| AES256 | SHA256 | GROUP_NONE |
+| AES256 | SHA256 | GROUP_24 |
+| AES256 | SHA256 | GROUP_14 |
+| AES256 | SHA256 | GROUP_ECP384 |
+| AES256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA1 | GROUP_NONE |
 
-## <a name="TLS policies"></a>Welche TLS-Richtlinien werden in VPN-Gateways für P2S konfiguriert?
+## <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>Welche TLS-Richtlinien werden in VPN-Gateways für P2S konfiguriert?
 **TLS**
 
 |**Richtlinien** |
@@ -145,10 +156,7 @@ Die ZIP-Datei enthält zudem die Werte einiger wichtiger Einstellungen in Azure,
 |TLS_RSA_WITH_AES_128_CBC_SHA256 |
 |TLS_RSA_WITH_AES_256_CBC_SHA256 |
 
-
-
-
-## <a name="configure"></a>Wie konfiguriere ich eine P2S-Verbindung?
+## <a name="how-do-i-configure-a-p2s-connection"></a><a name="configure"></a>Wie konfiguriere ich eine P2S-Verbindung?
 
 Eine P2S-Konfiguration erfordert einige bestimmte Schritte. Die folgenden Artikel enthalten die Schritte, anhand derer Sie eine P2S-Konfiguration durchführen können, und Links zur Konfiguration der VPN-Clientgeräte:
 
@@ -158,17 +166,15 @@ Eine P2S-Konfiguration erfordert einige bestimmte Schritte. Die folgenden Artike
 
 * [Konfigurieren von OpenVPN](vpn-gateway-howto-openvpn.md)
 
-## <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a>Wie entferne ich die Konfiguration einer P2S-Verbindung?
+### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>Entfernen der Konfiguration einer P2S-Verbindung
 
-Eine P2S-Konfiguration kann über die Azure CLI und den folgenden Befehl entfernt werden: 
-
-`az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"`
+Eine entsprechende Anleitung finden Sie weiter unten in den [häufig gestellten Fragen](#removeconfig).
  
-## <a name="faqcert"></a>Häufig gestellte Fragen zur nativen Azure-Zertifikatauthentifizierung
+## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>Häufig gestellte Fragen zur nativen Azure-Zertifikatauthentifizierung
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="faqradius"></a>Häufig gestellte Fragen zur RADIUS-Authentifizierung
+## <a name="faq-for-radius-authentication"></a><a name="faqradius"></a>Häufig gestellte Fragen zur RADIUS-Authentifizierung
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 

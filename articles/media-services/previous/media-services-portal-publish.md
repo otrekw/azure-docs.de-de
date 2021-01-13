@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 5f242018abfb15cea1b76cbcaad00942ec25d78d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 9f86f7a0a7eaef7c0dc244a2e089596de3779eae
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69015075"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018957"
 ---
-# <a name="publish-content-in-the-azure-portal"></a>Veröffentlichen von Inhalten im Azure-Portal  
+# <a name="publish-content-in-the-azure-portal"></a>Veröffentlichen von Inhalten im Azure-Portal
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -37,24 +40,24 @@ ms.locfileid: "69015075"
 
 Damit Sie Benutzern eine URL zum Streamen oder Herunterladen Ihrer Inhalte zur Verfügung stellen können, müssen Sie zunächst einen Locator erstellen, um das Medienobjekt zu veröffentlichen. Locator bieten Zugriff auf Medienobjektdateien. Azure Media Services unterstützt zwei Arten von Locators: 
 
-* **Streaminglocators (OnDemandOrigin)** . Streaminglocators werden für adaptives Streaming verwendet. Beispiele für adaptives Streaming sind Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming und Dynamic Adaptive Streaming über HTTP (DASH oder MPEG-DASH). Für die Erstellung eines Streaminglocators muss Ihr Medienobjekt eine ISM-Datei enthalten. Beispiel: http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest.
+* **Streaminglocators (OnDemandOrigin)** . Streaminglocators werden für adaptives Streaming verwendet. Beispiele für adaptives Streaming sind Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming und Dynamic Adaptive Streaming über HTTP (DASH oder MPEG-DASH). Für die Erstellung eines Streaminglocators muss Ihr Medienobjekt eine ISM-Datei enthalten. Beispiel: `http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest`.
 * **Progressive Locators (Shared Access Signature, SAS)** . Progressive Locators werden verwendet, um Videos per progressivem Download bereitzustellen.
 
 Eine HLS-Streaming-URL können Sie erstellen, indem Sie *(format=m3u8-aapl)* an die URL anhängen:
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)`
 
 Eine Streaming-URL für die Wiedergabe von Smooth Streaming-Medienobjekten hat das folgende Format:
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest`
 
 Eine MPEG-DASH-Streaming-URL können Sie erstellen, indem Sie *(format=mpd-time-csf)* an die URL anhängen:
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)`
 
 Eine SAS-URL hat das folgende Format:
 
-    {blob container name}/{asset name}/{file name}/{shared access signature}
+`{blob container name}/{asset name}/{file name}/{shared access signature}`
 
 Weitere Informationen finden Sie unter [Übermitteln von Inhalten an Kunden](media-services-deliver-content-overview.md).
 
@@ -63,7 +66,7 @@ Weitere Informationen finden Sie unter [Übermitteln von Inhalten an Kunden](med
 > 
 > 
 
-Das Ablaufdatum eines Locators können Sie mithilfe einer [REST-API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) oder [.NET-API](https://go.microsoft.com/fwlink/?LinkID=533259) aktualisieren. 
+Das Ablaufdatum eines Locators können Sie mithilfe einer [REST-API](/rest/api/media/operations/locator#update_a_locator) oder [.NET-API](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator) aktualisieren. 
 
 > [!NOTE]
 > Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.
@@ -97,4 +100,3 @@ Folgende Überlegungen sollten berücksichtigt werden:
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
-

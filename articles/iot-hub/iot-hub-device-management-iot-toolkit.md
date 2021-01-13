@@ -1,5 +1,5 @@
 ---
-title: Azure IoT-Geräteverwaltung mit Azure IoT-Tools für Visual Studio Code | Microsoft-Dokumentation
+title: Azure IoT-Geräteverwaltung mit Azure IoT Tools für VS Code
 description: Verwenden Sie die Azure IoT-Tools für Visual Studio Code für die Geräteverwaltung mit Azure IoT Hub, indem direkte Methoden und gewünschte Eigenschaften von Gerätezwillingen verwendet werden.
 author: formulahendry
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: f5697e0b51e8349de62e71be1471beb76aa48765
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838722"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81688096"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Verwenden der Azure IoT-Tools für Visual Studio Code für die Geräteverwaltung mit Azure IoT Hub
 
@@ -48,7 +48,7 @@ Führen Sie die Azure IoT-Tools für Visual Studio Code mit unterschiedlichen Ve
 * Ein aktives Azure-Abonnement.
 * Ein Azure IoT Hub in Ihrem Abonnement.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure IoT Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools), oder [öffnen Sie diesen Link in Visual Studio Code](vscode:extension/vsciot-vscode.azure-iot-tools).
+* [Azure IoT Tools für VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) oder kopieren Sie diese URL, und fügen Sie sie in ein Browserfenster ein: `vscode:extension/vsciot-vscode.azure-iot-tools`.
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Anmeldung zum Zugreifen auf Ihren IoT Hub
 
@@ -56,7 +56,7 @@ Führen Sie die Azure IoT-Tools für Visual Studio Code mit unterschiedlichen Ve
 
 2. Klicken Sie im Kontextmenü auf **IoT Hub auswählen**.
 
-3. In der unteren rechten Ecke wird ein Popupfenster angezeigt, mit der Sie sich zum ersten Mal bei Azure anmelden können.
+3. In der unteren rechten Ecke wird ein Popupfenster angezeigt, über das Sie sich zum ersten Mal bei Azure anmelden können.
 
 4. Nachdem Sie sich angemeldet haben, wird Ihre Liste der Azure-Abonnements angezeigt. Wählen Sie dann „Azure-Abonnement“ und „IoT Hub“ aus.
 
@@ -71,7 +71,7 @@ Führen Sie die Azure IoT-Tools für Visual Studio Code mit unterschiedlichen Ve
 
 2. Geben Sie den Methodennamen und die Nutzlast im Eingabefeld ein.
 
-3. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT Hub Toolkit** angezeigt.
+3. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT Hub** angezeigt.
 
 ## <a name="read-device-twin"></a>Lesen des Gerätezwillings
 
@@ -95,7 +95,7 @@ Um eine Nachricht von Ihrem IoT Hub zu Ihrem Gerät zu senden, gehen Sie folgend
 
 2. Geben Sie die Nachricht in das Eingabefeld ein.
 
-3. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT Hub Toolkit** angezeigt.
+3. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT Hub** angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

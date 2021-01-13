@@ -1,6 +1,6 @@
 ---
-title: Erweiterungen und Features für virtuelle Azure-Computer für Linux | Microsoft-Dokumentation
-description: Sie erhalten einen Überblick über die Erweiterungen für virtuelle Azure-Computer, gruppiert nach den bereitgestellten oder verbesserten Funktionen.
+title: Azure-VM-Erweiterungen und Features für Linux
+description: Erfahren Sie, welche Erweiterungen für virtuelle Azure-Computer unter Linux verfügbar sind, gruppiert nach den bereitgestellten oder verbesserten Funktionen.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -9,17 +9,18 @@ editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 52f5d0ec-8f75-49e7-9e15-88d46b420e63
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: f66ec2ea9d0c042b698db1725980e981a27a55d0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 129897d3288a900803efbfba8abf86c276077fa8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169002"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966070"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
 
@@ -32,7 +33,7 @@ Dieser Artikel enthält eine Übersicht der VM-Erweiterungen, erläutert Vorauss
 Es sind verschiedene Azure VM-Erweiterungen für jeweils spezifische Anwendungsfälle verfügbar. Beispiele hierfür sind:
 
 - Anwenden von gewünschten Statuskonfigurationen mit PowerShell auf eine VM mithilfe der DSC-Erweiterung für Linux. Weitere Informationen finden Sie unter [Azure Desired State configuration extension](https://github.com/Azure/azure-linux-extensions/tree/master/DSC) (Azure-Erweiterung für die gewünschte Statuskonfiguration).
-- Konfigurieren der Überwachung einer VM mit der VM-Erweiterung „Microsoft Monitoring Agent“. Weitere Informationen finden Sie unter [Überwachen einer Linux-VM](../linux/tutorial-monitoring.md).
+- Konfigurieren der Überwachung einer VM mit der VM-Erweiterung „Microsoft Monitoring Agent“. Weitere Informationen finden Sie unter [Überwachen einer Linux-VM](../linux/tutorial-monitor.md).
 - Konfigurieren der Überwachung Ihrer Azure-Infrastruktur mit der Chef- oder Datadog-Erweiterung. Weitere Informationen finden Sie in der [Chef-Dokumentation](https://docs.chef.io/azure_portal.html) oder im [Datadog-Blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 Über prozessspezifische Erweiterungen hinaus ist sowohl für virtuelle Windows- als auch für virtuelle Linux-Computer eine benutzerdefinierte Skripterweiterung verfügbar. Die benutzerdefinierte Skripterweiterung für Linux ermöglicht die Ausführung beliebiger Bash-Skripts auf virtuellen Computern. Benutzerdefinierte Skripts sind beim Entwerfen von Azure-Bereitstellungen nützlich, die Konfiguration über das Maß hinaus erfordern, das mithilfe von Azure-Tools erreicht werden kann. Weitere Informationen finden Sie unter [Benutzerdefinierte Skripterweiterung für Linux-VMs](custom-script-linux.md).
@@ -65,7 +66,7 @@ Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository herunterg
 > [!IMPORTANT]
 > Wenn Sie den Zugriff auf *168.63.129.16* mit der Gastfirewall blockiert haben, schlagen die Erweiterungen unabhängig von den gerade beschriebenen Szenarios fehl.
 
-Agents können nur zum Herunterladen von Erweiterungspaketen und für Statusberichte verwendet werden. Wenn z.B. bei der Installation einer Erweiterung ein Skript aus GitHub heruntergeladen werden muss (Custom Script) oder Zugriff auf Azure Storage (Azure Backup) notwendig ist, müssen zusätzliche Firewallports/Netzwerksicherheitsgruppen-Ports geöffnet werden. Verschiedene Erweiterungen haben verschiedene Voraussetzungen, da es sich bei ihnen um eigenständige Anwendungen handelt. Für Erweiterungen, die Zugriff auf Azure Storage benötigen, können Sie den Zugriff über Azure-NSG-Diensttags für [Storage](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) gewähren.
+Agents können nur zum Herunterladen von Erweiterungspaketen und für Statusberichte verwendet werden. Wenn z.B. bei der Installation einer Erweiterung ein Skript aus GitHub heruntergeladen werden muss (Custom Script) oder Zugriff auf Azure Storage (Azure Backup) notwendig ist, müssen zusätzliche Firewallports/Netzwerksicherheitsgruppen-Ports geöffnet werden. Verschiedene Erweiterungen haben verschiedene Voraussetzungen, da es sich bei ihnen um eigenständige Anwendungen handelt. Für Erweiterungen, die Zugriff auf Azure Storage benötigen, können Sie den Zugriff über Azure-NSG-Diensttags für [Storage](../../virtual-network/network-security-groups-overview.md#service-tags) gewähren.
 
 Für Anfragen zum Umleiten von Datenverkehr verfügt der Linux-Agent über Proxyserverunterstützung. Diese Proxyserverunterstützung gilt jedoch nicht für Erweiterungen. Sie müssen jede einzelne Erweiterung für die Arbeit mit einem Proxy konfigurieren.
 
@@ -83,7 +84,7 @@ Azure-VM-Erweiterungen können auf vorhandenen VMs ausgeführt werden, was nütz
 
 Die folgenden Methoden können verwendet werden, um eine Erweiterung für eine vorhandene VM auszuführen.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Azure VM-Erweiterungen können mit dem Befehl [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) für einen vorhandenen virtuellen Computer ausgeführt werden. Im folgenden Beispiel wird die Erweiterung für benutzerdefinierte Skripts für einen virtuellen Computer mit dem Namen *myVM* in der Ressourcengruppe *myResourceGroup* ausgeführt. Ersetzen Sie den Ressourcengruppennamen, den VM-Namen und das auszuführende Skript (https:\//raw.githubusercontent.com/me/project/hello.sh) im Beispiel durch Ihre eigenen Informationen. 
 
@@ -115,7 +116,7 @@ Das folgende Bild zeigt die Installation der benutzerdefinierten Linux-Skripterw
 
 ### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 
-VM-Erweiterungen können einer Azure Resource Manager-Vorlage hinzugefügt und mit der Bereitstellung der Vorlage ausgeführt werden. Wenn Sie eine Erweiterung mithilfe einer Vorlage bereitstellen, können Sie vollständig konfigurierte Azure-Bereitstellungen erstellen. Beispielsweise stammt der folgende JSON-Code aus einer Resource Manager-Vorlage, die einen Satz von VMs mit Lastenausgleich und einer Azure SQL-Datenbank bereitstellt und dann auf jeder VM eine .NET Core-Anwendung installiert. Die VM-Erweiterung erledigt die Softwareinstallation.
+VM-Erweiterungen können einer Azure Resource Manager-Vorlage hinzugefügt und mit der Bereitstellung der Vorlage ausgeführt werden. Wenn Sie eine Erweiterung mithilfe einer Vorlage bereitstellen, können Sie vollständig konfigurierte Azure-Bereitstellungen erstellen. Beispielsweise stammt der folgende JSON-Code aus einer Resource Manager-Vorlage, die einen Satz von VMs mit Lastenausgleich und Azure SQL-Datenbank bereitstellt und dann auf jeder VM eine .NET Core-Anwendung installiert. Die VM-Erweiterung erledigt die Softwareinstallation.
 
 Weitere Informationen finden Sie in der vollständigen [Resource Manager-Vorlage](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
@@ -259,7 +260,7 @@ In der vorhergehenden Beispielausgabe ist die Version des übergeordneten Prozes
 
 Die Zielversion des Agents ist die automatisch aktualisierte Version.
 
-Es wird dringend empfohlen, die automatische Aktualisierung für den Agent immer zu aktivieren: [AutoUpdate.Enabled=y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). Ist diese Funktion nicht aktiviert, müssen Sie den Agent manuell aktualisieren und erhalten keine Fehlerbehebungen und Sicherheitsupdates.
+Es wird dringend empfohlen, die automatische Aktualisierung für den Agent immer zu aktivieren: [AutoUpdate.Enabled=y](./update-linux-agent.md). Ist diese Funktion nicht aktiviert, müssen Sie den Agent manuell aktualisieren und erhalten keine Fehlerbehebungen und Sicherheitsupdates.
 
 #### <a name="extension-updates"></a>Updates für Erweiterungen
 
@@ -336,7 +337,7 @@ Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
 
 1. Um das Protokoll des Linux-Agents zu überprüfen, sollten Sie die Aktivität bei der Bereitstellung der Erweiterung in */var/log/waagent.log* untersuchen.
 
-2. Überprüfen Sie die Protokolle der eigentlichen Erweiterung in */var/log/azure/\<NameDerErweiterung>* , um weitere Informationen zu erhalten.
+2. Überprüfen Sie die Protokolle der eigentlichen Erweiterung in */var/log/azure/\<extensionName>* , um weitere Informationen zu erhalten.
 
 3. Lesen Sie die Abschnitte zur Problembehandlung in der Dokumentation zu Erweiterungen für Fehlercodes, bekannten Problemen usw.
 
@@ -405,7 +406,7 @@ Sie können eine Erweiterung auch im Azure-Portal wie folgt entfernen:
 
 | Name der Erweiterung | BESCHREIBUNG | Weitere Informationen |
 | --- | --- | --- |
-| Benutzerdefinierte Skripterweiterung für Linux |Führt Skripts auf einem virtuellen Azure-Computer aus |[Benutzerdefinierte Skripterweiterung für Linux](custom-script-linux.md) |
+| Benutzerdefinierte Skripterweiterung für Linux |Ausführen von Skripts für virtuelle Azure-Computer |[Benutzerdefinierte Skripterweiterung für Linux](custom-script-linux.md) |
 | Erweiterungen für den Zugriff auf virtuelle Computer |Wiedererlangen des Zugriffs auf einen virtuellen Azure-Computer |[Erweiterungen für den Zugriff auf virtuelle Computer](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
 | Azure-Diagnoseerweiterung |Verwalten der Azure-Diagnose |[Azure-Diagnoseerweiterung](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Erweiterung für den Zugriff auf virtuelle Azure-Computer |Verwalten von Benutzern und Anmeldeinformationen |[Erweiterungen für den Zugriff auf virtuelle Computer für Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |

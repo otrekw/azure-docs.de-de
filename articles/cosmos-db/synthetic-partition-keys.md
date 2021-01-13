@@ -1,19 +1,21 @@
 ---
-title: Erstellen eines synthetischen Partitionsschlüssel in Azure Cosmos DB zum gleichmäßigen Verteilen Ihrer Daten und Workloads
-description: Erfahren Sie, wie Sie synthetische Partitionsschlüssel in Ihren Azure Cosmos-Containern verwenden.
-author: rimman
+title: Erstellen eines synthetischen Partitionsschlüssels in Azure Cosmos DB
+description: Hier erfahren Sie, wie Sie synthetische Partitionsschlüssel in Azure Cosmos-Containern verwenden, um die Daten und die Arbeitsauslastung gleichmäßig auf die Partitionsschlüssel zu verteilen.
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: rimman
-ms.openlocfilehash: bf60c674f9f43c01a3090efa3ac1f0e2e0674efa
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.date: 12/03/2019
+author: markjbrown
+ms.author: mjbrown
+ms.openlocfilehash: 6b8bc44f1ba5624c37620205aaa574e618ef395f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467833"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340650"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Erstellen eines synthetischen Partitionsschlüssels
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Es hat sich bewährt, mit einem Partitionsschlüssel mit vielen (hunderten oder tausenden) unterschiedlichen Werten zu arbeiten. Ziel ist es, Ihre Daten und die Workload gleichmäßig auf die Elemente zu verteilen, die diesen Partitionsschlüsselwerten zugeordnet sind. Wenn in den Daten keine solche Eigenschaft enthalten ist, können Sie einen *synthetischen Partitionsschlüssel* erstellen. In diesem Artikel werden einige grundlegende Verfahren zum Generieren synthetischer Partitionsschlüssel für Ihre Cosmos-Container beschrieben.
 
@@ -58,7 +60,7 @@ Mit dieser Strategie werden die Schreibvorgänge gleichmäßig auf die Partition
 
 Weitere Informationen zum Konzept der Partitionierung finden Sie in den folgenden Artikeln:
 
-* Erfahren Sie mehr über [logische Partitionen](partition-data.md).
+* Erfahren Sie mehr über [logische Partitionen](partitioning-overview.md).
 * Erfahren Sie mehr über das [Bereitstellen von Durchsatz für Cosmos-Container und -Datenbanken](set-throughput.md).
 * Erfahren Sie mehr über das [Bereitstellen von Durchsatz für einen Azure Cosmos-Container](how-to-provision-container-throughput.md).
 * Erfahren Sie mehr über das [Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos](how-to-provision-database-throughput.md).

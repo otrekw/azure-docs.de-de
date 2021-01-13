@@ -1,21 +1,21 @@
 ---
-title: Data Factory – Funktionen und Systemvariablen | Microsoft Docs
+title: Data Factory – Funktionen und Systemvariablen
 description: Enthält eine Liste der Funktionen und Systemvariablen von Azure Data Factory.
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 243923fba5b81ef68d6e4e560182d228e3b8ad1a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9b5f91655367e866858a04b941cec4ee61dfe180
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139758"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495649"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – Funktionen und Systemvariablen
 > [!NOTE]
@@ -28,7 +28,7 @@ Dieser Artikel enthält Informationen zu Funktionen und Variablen, die von Azure
 | Variablenname | BESCHREIBUNG | Objektbereich | JSON-Bereich und Anwendungsfälle |
 | --- | --- | --- | --- |
 | WindowStart |Anfang des Zeitfensters der aktuellen Aktivitätsausführung |activity |<ol><li>Geben Sie Abfragen zur Datenauswahl an. Informationen finden Sie in den Artikeln zu Connectors, auf die im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) verwiesen wird).</li> |
-| WindowEnd |Ende des Zeitfensters der aktuellen Aktivitätsausführung |Aktivität |Identisch mit „WindowStart“ |
+| WindowEnd |Ende des Zeitfensters der aktuellen Aktivitätsausführung |activity |Identisch mit „WindowStart“ |
 | SliceStart |Anfang des Zeitfensters für den zu erstellenden Datenslice |activity<br/>dataset |<ol><li>Geben Sie bei der Arbeit mit [Azure-Blob](data-factory-azure-blob-connector.md) und [Dateisystem-Datasets](data-factory-onprem-file-system-connector.md) dynamische Pfade und Dateinamen an.</li><li>Geben Sie Eingabeabhängigkeiten mit Data Factory-Funktionen in der Auflistung der Aktivitätseingaben an.</li></ol> |
 | SliceEnd |Ende des Zeitfensters für den aktuellen Datenslice |activity<br/>dataset |Identisch mit „SliceStart“ |
 
@@ -70,12 +70,12 @@ Im folgenden Beispiel wird die **sqlReaderQuery**-Eigenschaft in einer JSON-Date
 }
 ```
 
-Informationen zu verschiedenen verfügbaren Formatierungsoptionen (beispielsweise „yy“ oder „yyyy“) finden Sie im Thema [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](https://msdn.microsoft.com/library/8kb3ddd4.aspx). 
+Informationen zu verschiedenen verfügbaren Formatierungsoptionen (beispielsweise „yy“ oder „yyyy“) finden Sie im Thema [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](/dotnet/standard/base-types/custom-date-and-time-format-strings). 
 
 ### <a name="functions"></a>Functions
 In den folgenden Tabellen werden alle Funktionen in Azure Data Factory aufgelistet:
 
-| Category (Kategorie) | Funktion | Parameter | BESCHREIBUNG |
+| Category | Funktion | Parameter | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | Time |AddHours(X,Y) |X: Datetime <br/><br/>Y: int |Fügt Y Stunden der angegebenen Uhrzeit X hinzu. <br/><br/>Beispiel: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Time |AddMinutes(X,Y) |X: Datetime <br/><br/>Y: int |Fügt Y Minuten zu X hinzu.<br/><br/>Beispiel: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
@@ -85,14 +85,14 @@ In den folgenden Tabellen werden alle Funktionen in Azure Data Factory aufgelist
 | Date |AddQuarters(X,Y) |X: Datetime <br/><br/>Y: int |Fügt Y * 3 Monate zu X hinzu<br/><br/>Beispiel: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
 | Date |AddWeeks(X,Y) |X: Datetime<br/><br/>Y: int |Addiert Y * 7 Tage zu X<br/><br/>Beispiel: 15.09.2013 12:00:00 PM + 1 Woche = 22.09.2013 12:00:00 PM<br/><br/>Sie können auch Wochen subtrahieren, indem Sie Y als negative Zahl angeben.<br/><br/>Beispiel: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
 | Date |AddYears(X,Y) |X: Datetime<br/><br/>Y: int |Fügt Y Jahre zu X hinzu.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>Sie können auch Jahre subtrahieren, indem Sie Y als negative Zahl angeben.<br/><br/>Beispiel: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
-| Datum |Day(X) |X: Datetime |Ruft die Komponente "Tag" von X ab.<br/><br/>Beispiel: `Day of 9/15/2013 12:00:00 PM is 9`. |
+| Date |Day(X) |X: Datetime |Ruft die Komponente "Tag" von X ab.<br/><br/>Beispiel: `Day of 9/15/2013 12:00:00 PM is 9`. |
 | Date |DayOfWeek(X) |X: Datetime |Ruft den Tag der Komponente "Woche" von X ab.<br/><br/>Beispiel: `DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`. |
 | Date |DayOfYear(X) |X: Datetime |Ruft den Tag des Jahres ab, der von der Komponente "Jahr" von X dargestellt wird.<br/><br/>Beispiele:<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
 | Date |DaysInMonth(X) |X: Datetime |Ruft die Tage des Monats ab, die von der Komponente "Monat" des Parameters X dargestellt werden.<br/><br/>Beispiel: `DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`. |
 | Date |EndOfDay(X) |X: Datetime |Ruft die Datum/Uhrzeit-Angabe ab, die das Ende des Tages (Komponente "Tag") von X darstellt.<br/><br/>Beispiel: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
 | Date |EndOfMonth(X) |X: Datetime |Ruft das Ende des Monats ab, das von der Komponente "Monat" des Parameters X dargestellt wird. <br/><br/>Beispiel: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (Datum/Uhrzeit-Angabe, die das Ende des Monats September darstellt) |
 | Date |StartOfDay(X) |X: Datetime |Ruft den Beginn des Tages ab, der von der Komponente "Tag" des Parameters X dargestellt wird.<br/><br/>Beispiel: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
-| Datetime |From(X) |X: Zeichenfolge |Analysieren der Zeichenfolge X in einen Datum/Uhrzeit-Wert. |
+| Datetime |From(X) |X: String |Analysieren der Zeichenfolge X in einen Datum/Uhrzeit-Wert. |
 | Datetime |Ticks(X) |X: Datetime |Ruft die Zeiteinheitseigenschaft des Parameters X ab. Eine Zeiteinheit entspricht 100 Nanosekunden. Der Wert dieser Eigenschaft stellt die Anzahl der Zeiteinheiten dar, die seit Mitternacht am 1. Januar 0001 verstrichen sind. |
 | Text |Format(X) |X: Zeichenfolgenvariable |Formatiert den Text (verwenden Sie `\\'` in Kombination mit dem Escapezeichen `'`)|
 
@@ -227,5 +227,4 @@ Um Daten vom vorherigen Tag statt von dem durch „SliceStart“ dargestellten T
 }
 ```
 
-Informationen zu verschiedenen verfügbaren Formatierungsoptionen (beispielsweise „yy“ oder „yyyy“) finden Sie im Thema [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](https://msdn.microsoft.com/library/8kb3ddd4.aspx). 
-
+Informationen zu verschiedenen verfügbaren Formatierungsoptionen (beispielsweise „yy“ oder „yyyy“) finden Sie im Thema [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](/dotnet/standard/base-types/custom-date-and-time-format-strings).

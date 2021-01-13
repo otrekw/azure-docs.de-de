@@ -1,23 +1,24 @@
 ---
-title: Behandlung von Problemen beim SAP HANA 2.0 HSR-Pacemaker-Setup für die horizontale Skalierung mit SLES 12 SP3 auf virtuellen Azure-Computern | Microsoft-Dokumentation
+title: SAP HANA – Horizontale Skalierung von HSR-Pacemaker mit SLES auf Azure VMs – Problembehandlung | Microsoft-Dokumentation
 description: Dieser Leitfaden erläutert die Überprüfung und Problembehandlung einer komplexen SAP HANA-Hochverfügbarkeitskonfiguration für die horizontale Skalierung basierend auf der SAP HANA-Systemreplikation (HSR) und Pacemaker unter SLES 12 SP3, die auf virtuellen Azure-Computern ausgeführt wird.
 services: virtual-machines-linux
 documentationcenter: ''
-author: hermannd
-manager: gwallace
+author: hermanndms
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 299fba8a082f19f17ab581a6ac2bfac9fd3f8cf1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 87758100299eb170a7950a1a7a2c6bd2029b27fb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099662"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621551"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Überprüfen und Problembehandlung beim Setup der SAP HANA-Hochverfügbarkeitskonfiguration zur horizontalen Skalierung unter SLES 12 SP3 
 
@@ -44,6 +45,9 @@ Alle Tests für die horizontale Skalierung mit SAP HANA in Kombination mit der S
 SUSE hat eine [ausführliche Beschreibung dieses leistungsoptimierten Setups][sles-hana-scale-out-ha-paper] veröffentlicht.
 
 Sie finden die VM-Typen, die für die horizontale Skalierung mit SAP HANA unterstützt werden, im [SAP HANA-zertifizierten IaaS-Verzeichnis][sap-hana-iaas-list].
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf die Begriffe *Master* und *Slave*, die von Microsoft nicht mehr verwendet werden. Sobald diese Begriffe aus der Software entfernt wurden, werden sie auch aus diesem Artikel gelöscht.
 
 Bei der horizontalen Skalierung mit SAP HANA in Kombination mit mehreren Subnetzen und virtuellen Netzwerkkarten sowie der Einrichtung der HSR gab es ein technisches Problem. Es ist zwingend erforderlich, dass Sie die neuesten Patches von SAP HANA 2.0 verwenden, bei denen dieses Problem behoben wurde. Folgende SAP HANA-Versionen werden unterstützt: 
 
@@ -172,7 +176,7 @@ Die **corosync**-Konfigurationsdatei muss auf jedem Knoten im Cluster, einschlie
 
 Der Inhalt von **corosync.conf** vom Testsystem dient als Beispiel.
 
-Der erste Abschnitt ist **totem**, wie unter [Clusterinstallation](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), Schritt 11, beschrieben. Sie können den Wert für **mcastaddr** ignorieren. Übernehmen Sie einfach den vorhandenen Eintrag. Die Einträge für **token** und **consensus** müssen gemäß der [Microsoft Azure-SAP HANA-Dokumentation][sles-pacemaker-ha-guide] festgelegt werden.
+Der erste Abschnitt ist **totem**, wie unter [Clusterinstallation](./high-availability-guide-suse-pacemaker.md#cluster-installation), Schritt 11, beschrieben. Sie können den Wert für **mcastaddr** ignorieren. Übernehmen Sie einfach den vorhandenen Eintrag. Die Einträge für **token** und **consensus** müssen gemäß der [Microsoft Azure-SAP HANA-Dokumentation][sles-pacemaker-ha-guide] festgelegt werden.
 
 <pre><code>
 totem {
@@ -279,7 +283,7 @@ systemctl restart corosync
 
 ## <a name="sbd-device"></a>SBD-Gerät
 
-Die Einrichtung eines SBD-Geräts auf einer Azure-VM wird unter [SBD-Umgrenzung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing) beschrieben.
+Die Einrichtung eines SBD-Geräts auf einer Azure-VM wird unter [SBD-Umgrenzung](./high-availability-guide-suse-pacemaker.md#sbd-fencing) beschrieben.
 
 Überprüfen Sie als Erstes auf der SBD-Server-VM, ob für jeden Knoten im Cluster ACL-Einträge vorhanden sind. Führen Sie den folgenden Befehl auf der SBD-Server-VM aus:
 
@@ -422,7 +426,7 @@ Aufseiten der Ziel-VM (in diesem Beispiel **hso-hana-vm-s2-2**) finden Sie unter
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-Überprüfen Sie, ob die Einträge in **/etc/sysconfig/sbd** der Beschreibung in [Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing) entsprechen. Überprüfen Sie, ob die Starteinstellung in **/etc/iscsi/iscsid.conf** auf „automatic“ festgelegt ist.
+Überprüfen Sie, ob die Einträge in **/etc/sysconfig/sbd** der Beschreibung in [Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure](./high-availability-guide-suse-pacemaker.md#sbd-fencing) entsprechen. Überprüfen Sie, ob die Starteinstellung in **/etc/iscsi/iscsid.conf** auf „automatic“ festgelegt ist.
 
 Die folgenden Einträge **/etc/sysconfig/sbd** sind wichtig. Passen Sie den Wert **id** nach Bedarf an:
 
@@ -550,7 +554,7 @@ Last change: Wed Sep 12 07:46:54 2018 by root via cibadmin on hso-hana-vm-s2-1
 7 nodes configured
 17 resources configured
 
-              *** Resource management is DISABLED ***
+              **_ Resource management is DISABLED _*_
   The cluster will not attempt to start, stop or recover services
 
 Online: [ hso-hana-dm hso-hana-vm-s1-0 hso-hana-vm-s1-1 hso-hana-vm-s1-2 hso-hana-vm-s2-0 hso-hana-vm-s2-1 hso-hana-vm-s2-2 ]
@@ -586,7 +590,7 @@ crm configure property maintenance-mode=false
 </code></pre>
 
 
-Mit einem weiteren **crm** Befehl wird die vollständige Clusterkonfiguration in einem Editor geöffnet, sodass Sie sie bearbeiten können. Nachdem die Änderungen gespeichert wurden, startet der Cluster die entsprechenden Aktionen:
+Mit einem weiteren _ *crm**-Befehl wird die vollständige Clusterkonfiguration in einem Editor geöffnet, sodass Sie sie bearbeiten können. Nachdem die Änderungen gespeichert wurden, startet der Cluster die entsprechenden Aktionen:
 
 <pre><code>
 crm configure edit
@@ -656,7 +660,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>Failover oder Übernahme
 
-Wie im Abschnitt mit [wichtigen Hinweisen](#important-notes) erwähnt, sollten Sie kein standardmäßiges ordnungsgemäßes Herunterfahren verwenden, um das Clusterfailover oder die SAP HANA-HSR-Übernahme zu testen. Stattdessen wird empfohlen, einen Kernelwarnhinweis auszulösen, eine Ressourcenmigration zu erzwingen oder möglichst alle Netzwerke auf der Betriebssystemebene einer VM herunterzufahren. Eine andere Methode ist der Befehl **crm \<Knoten\> standby**. Informationen hierzu finden Sie im [SUSE-Dokument][sles-12-ha-paper]. 
+Wie im Abschnitt mit [wichtigen Hinweisen](#important-notes) erwähnt, sollten Sie kein standardmäßiges ordnungsgemäßes Herunterfahren verwenden, um das Clusterfailover oder die SAP HANA-HSR-Übernahme zu testen. Stattdessen wird empfohlen, einen Kernelwarnhinweis auszulösen, eine Ressourcenmigration zu erzwingen oder möglichst alle Netzwerke auf der Betriebssystemebene einer VM herunterzufahren. Eine andere Methode ist der Befehl **crm \<node\> standby**. Informationen hierzu finden Sie im [SUSE-Dokument][sles-12-ha-paper]. 
 
 Mit den folgenden drei Beispielbefehlen können Sie ein Clusterfailover erzwingen:
 
@@ -682,7 +686,7 @@ Außerdem kann es hilfreich sein, den Status der SAP HANA-Landschaft mit einem S
 
 Es gibt einige Wiederholungen, um unnötige Failover zu vermeiden. Der Cluster reagiert nur, wenn sich der Status von **Ok** (Rückgabewert **4**) in **error** (Rückgabewert **1**) ändert. Es ist daher korrekt, wenn die Ausgabe von **SAPHanaSR-showAttr** einen virtuellen Computer mit dem Status **offline** zeigt. Es gibt jedoch noch keine Aktivität für den Wechsel zwischen primärem und sekundärem Knoten. Es wird nur dann eine Clusteraktivität ausgelöst, wenn SAP HANA einen Fehler zurückgibt.
 
-Sie können den Integritätsstatus der SAP HANA-Landschaft als Benutzer **\<HANA-SID\>adm** überwachen, indem Sie das SAP-Python-Skript wie folgt aufrufen. Möglicherweise müssen Sie den Pfad anpassen:
+Sie können den Integritätsstatus der SAP HANA-Landschaft als Benutzer **\<HANA SID\>adm** überwachen, indem Sie das SAP-Python-Skript wie folgt aufrufen. Möglicherweise müssen Sie den Pfad anpassen:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -979,4 +983,3 @@ Dieser letzte Screenshot zeigt den Abschnitt **Details** eines einzelnen Überga
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Leitfaden zur Problembehandlung wird die Hochverfügbarkeit für SAP HANA in einer Konfiguration für die horizontale Skalierung beschrieben. Eine weitere wichtige Komponente in einer SAP-Landschaft neben der Datenbank ist der SAP NetWeaver-Stapel. Informieren Sie sich über [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs mit SUSE Linux Enterprise Server][sap-nw-ha-guide-sles].
-

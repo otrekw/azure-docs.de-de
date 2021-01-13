@@ -2,26 +2,25 @@
 title: include file
 description: include file
 services: functions
-author: ggailey777
-manager: jeconnoc
+author: craigshoemaker
+manager: gwallace
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/04/2018
-ms.author: glenga
+ms.date: 01/28/2020
+ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 2940ff60f2fd16d04ae0d6c0f29b972b88678bfb
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: bcc55156ca1d03614a4ff9767d6cf3f2603c06ca
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654233"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025488"
 ---
-Der folgenden Tabelle können Sie entnehmen, wie Sie Unterstützung für diese Bindung in den einzelnen Entwicklungsumgebungen hinzufügen.
+Fügen Sie Ihrer bevorzugten Entwicklungsumgebung mithilfe der folgenden Methoden Unterstützung hinzu.
 
-| Entwicklungsumgebung               | Hinzufügen von Unterstützung in <br>Functions 2.x  |
-|----------------------|----------------|
-|Lokale Entwicklung – C#-Klassenbibliothek       | [Paket installieren](../articles/azure-functions/functions-bindings-register.md#vs) |
-|Lokale Entwicklung – C#-Skript, JavaScript, F#, Java und Python |[Erweiterung registrieren](../articles/azure-functions/functions-bindings-register.md#extension-bundles)         |
-|Entwicklung im Portal| Installieren beim Hinzufügen einer Ausgabebindung    |
-
-Informationen zum Aktualisieren der vorhandenen Bindungserweiterungen im Portal ohne erneute Veröffentlichung Ihres Funktions-App-Projekts finden Sie unter [Manually install or update Azure Functions binding extensions from the portal](../articles/azure-functions/install-update-binding-extensions-manual.md) (Manuelles Installieren oder Aktualisieren von Azure Functions-Bindungserweiterungen über das Portal).
+| Entwicklungsumgebung  | Anwendungstyp      | So fügen Sie Unterstützung hinzu |
+|--------------------------|-----------------------|----------------|
+| Visual Studio            | C#-Klassenbibliothek      | [Installieren des NuGet-Pakets](../articles/azure-functions/functions-bindings-register.md#vs) |
+| Visual Studio Code       | Basierend auf [Kerntools](../articles/azure-functions/functions-run-local.md) | [Registrieren des Erweiterungspakets](../articles/azure-functions/functions-bindings-register.md#extension-bundles)<br><br>Die Installation der [Azure Tools-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) wird empfohlen. |
+| Beliebiger anderer Editor/IDE     | Basierend auf [Kerntools](../articles/azure-functions/functions-run-local.md) | [Registrieren des Erweiterungspakets](../articles/azure-functions/functions-bindings-register.md#extension-bundles) |
+| Azure-Portal             | Nur online im Portal | Wird beim Hinzufügen einer Bindung installiert.<br /><br /> Informationen zum Aktualisieren vorhandener Bindungserweiterungen, ohne Ihre Funktions-App erneut veröffentlichen zu müssen, finden Sie unter [Aktualisieren Ihrer Erweiterungen](../articles/azure-functions/functions-bindings-register.md). |

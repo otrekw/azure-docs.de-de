@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: b634f871670d252aadaf2d2a672c4d5f43a6e5d9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073333"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84689986"
 ---
 # <a name="azure-api-management-template-resources"></a>Ressourcen von Azure API Management-Vorlagen
 Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung in Entwicklerportalvorlagen.  
@@ -27,9 +27,11 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
   
 -   [Glyphenressourcen](#glyphs)  
 
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="strings"></a> Zeichenfolgenressourcen  
+##  <a name="string-resources"></a><a name="strings"></a> Zeichenfolgenressourcen  
  API Management enthält einen umfassenden Satz von Zeichenfolgenressourcen zur Verwendung im Entwicklerportal. Diese Ressourcen wurden für alle Sprachen lokalisiert, die von API Management unterstützt werden. Im Standardsatz der Vorlagen werden diese Ressourcen für Seitenkopfzeilen, Bezeichnungen und alle konstanten Zeichenfolgen verwendet, die im Entwicklerportal angezeigt werden. Geben Sie zum Verwenden einer Zeichenfolgenressource wie im folgenden Beispiel in Ihren Vorlagen das Ressourcenzeichenfolgen-Präfix gefolgt vom Zeichenfolgennamen an.  
   
 ```  
@@ -81,7 +83,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
   
 -   [CommonStrings](#CommonStrings)  
   
--   [Documentation](#Documentation)  
+-   [Dokumentation](#Documentation)  
   
 -   [ErrorPageStrings](#ErrorPageStrings)  
   
@@ -109,13 +111,13 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
   
 -   [UserProfile](#UserProfile)  
   
-###  <a name="ApisStrings"></a> ApisStrings  
+###  <a name="apisstrings"></a><a name="ApisStrings"></a> ApisStrings  
   
 |Name|Text|  
 |----------|----------|  
 |PageTitleApis|APIs|  
   
-###  <a name="AppDetailsStrings"></a> AppDetailsStrings  
+###  <a name="appdetailsstrings"></a><a name="AppDetailsStrings"></a> AppDetailsStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -124,29 +126,29 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |WebApplicationsScreenshotAlt|Screenshot|  
 |WebApplicationsScreenshotsHeader|Screenshots|  
   
-###  <a name="ApplicationListStrings"></a> ApplicationListStrings  
+###  <a name="applicationliststrings"></a><a name="ApplicationListStrings"></a> ApplicationListStrings  
   
 |Name|Text|  
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Are you sure that you want to remove application? (Möchten Sie die Anwendung entfernen?)|  
 |WebDevelopersAppNotPublished|Not published (Nicht veröffentlicht)|  
 |WebDevelopersAppNotSubmitted|Not submitted (Nicht gesendet)|  
-|WebDevelopersAppTableCategoryHeader|Category (Kategorie)|  
+|WebDevelopersAppTableCategoryHeader|Category|  
 |WebDevelopersAppTableNameHeader|Name|  
-|WebDevelopersAppTableStateHeader|State (Zustand)|  
+|WebDevelopersAppTableStateHeader|State|  
 |WebDevelopersEditLink|Edit (Bearbeiten)|  
 |WebDevelopersRegisterAppLink|Register application (Anwendung registrieren)|  
 |WebDevelopersRemoveLink|Remove (Entfernen)|  
 |WebDevelopersSubmitLink|Submit (Senden)|  
 |WebDevelopersYourApplicationsHeader|Your applications (Ihre Anwendungen)|  
   
-###  <a name="AppStrings"></a> AppStrings  
+###  <a name="appstrings"></a><a name="AppStrings"></a> AppStrings  
   
 |Name|Text|  
 |----------|----------|  
-|WebApplicationsHeader|Applications (Anwendungen)|  
+|WebApplicationsHeader|Anwendungen|  
   
-###  <a name="CommonResources"></a> CommonResources  
+###  <a name="commonresources"></a><a name="CommonResources"></a> CommonResources  
   
 |Name|Text|  
 |----------|----------|  
@@ -157,7 +159,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |AzureActiveDirectory|Azure Active Directory|  
 |HttpLargeRequestMessage|Http Request Body too large. (HTTP-Anforderungstext ist zu groß.)|  
   
-###  <a name="CommonStrings"></a> CommonStrings  
+###  <a name="commonstrings"></a><a name="CommonStrings"></a> CommonStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -181,7 +183,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |TablePlaceholderNothingToDisplay|There is no data for the selected period and scope (Es sind keine Daten für den ausgewählten Zeitraum und Bereich vorhanden.)|  
 |ButtonLabelClose|Close (Schließen)|  
   
-###  <a name="Documentation"></a> Documentation  
+###  <a name="documentation"></a><a name="Documentation"></a> Documentation  
   
 |Name|Text|  
 |----------|----------|  
@@ -329,7 +331,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |SectionHeadingCodeSamples|Codebeispiele|  
 |TextblockOpenidConnectHeaderDescription|OpenID Connect-ID-Token erhalten von <i\>{0}</i\>. Unterstützte Gewährungstypen: <i\>{1}</i\>.|  
   
-###  <a name="ErrorPageStrings"></a> ErrorPageStrings  
+###  <a name="errorpagestrings"></a><a name="ErrorPageStrings"></a> ErrorPageStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -347,7 +349,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |TitlePotentialCause|Potential cause (Mögliche Ursache)|  
 |TitlePotentialSolution|It's possibly just a temporary issue, a few things to try (Unter Umständen ist es nur ein vorübergehendes Problem. Sie können es mit folgenden Schritten probieren:)|  
   
-###  <a name="IssuesStrings"></a> IssuesStrings  
+###  <a name="issuesstrings"></a><a name="IssuesStrings"></a> IssuesStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -358,7 +360,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |WebIssuesSignIn|Anmelden|  
 |WebIssuesStatusReportedBy|Status: {0} &#124; Gemeldet von {1}|  
   
-###  <a name="NotFoundStrings"></a> NotFoundStrings  
+###  <a name="notfoundstrings"></a><a name="NotFoundStrings"></a> NotFoundStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -373,7 +375,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |TitlePotentialCause|Potential cause (Mögliche Ursache)|  
 |TitlePotentialSolution|Potential solution (Mögliche Lösung)|  
   
-###  <a name="ProductDetailsStrings"></a> ProductDetailsStrings  
+###  <a name="productdetailsstrings"></a><a name="ProductDetailsStrings"></a> ProductDetailsStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -395,13 +397,13 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |TextblockSubscriptionDescription|A new subscription will be created as follows: (Ein neues Abonnement wird wie folgt erstellt:)|  
 |TextblockSubscriptionLimitReached|Subscriptions limit reached. (Grenzwert für Abonnements wurde erreicht.)|  
   
-###  <a name="ProductsStrings"></a> ProductsStrings  
+###  <a name="productsstrings"></a><a name="ProductsStrings"></a> ProductsStrings  
   
 |Name|Text|  
 |----------|----------|  
 |PageTitleProducts|Produkte|  
   
-###  <a name="ProviderInfoStrings"></a> ProviderInfoStrings  
+###  <a name="providerinfostrings"></a><a name="ProviderInfoStrings"></a> ProviderInfoStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -409,7 +411,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |TextboxExternalIdentitiesSigninInvitation|Alternatively, sign in with (Als Alternative ist die Anmeldung möglich mit)|  
 |TextboxExternalIdentitiesSigninInvitationPrimary|Sign in with: (Anmelden mit:)|  
   
-###  <a name="SigninResources"></a> SigninResources  
+###  <a name="signinresources"></a><a name="SigninResources"></a> SigninResources  
   
 |Name|Text|  
 |----------|----------|  
@@ -430,9 +432,9 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |WebAuthenticationEmailHasBeenRevertedNotice|You email already exist. (Ihre E-Mail-Adresse ist bereits vorhanden.) Request has been reverted (Anforderung wurde zurückgesetzt)|  
 |ValidationErrorEmailAlreadyExists|Email already exist (E-Mail-Adresse ist bereits vorhanden.)|  
 |ValidationErrorEmailInvalid|Invalid e-mail address (Ungültige E-Mail-Adresse)|  
-|TextboxLabelEmail|E-Mail|  
+|TextboxLabelEmail|Email|  
 |ValidationErrorEmailRequired|Email is required. (E-Mail-Adresse ist erforderlich.)|  
-|WebAuthenticationErrorNoticeHeader|Error|  
+|WebAuthenticationErrorNoticeHeader|Fehler|  
 |WebAuthenticationFieldLengthErrorMessage|{0} darf maximal eine Länge von {1} haben|  
 |TextboxLabelEmailFirstName|Vorname|  
 |ValidationErrorFirstNameRequired|First name is required. (Vorname ist erforderlich.)|  
@@ -505,7 +507,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |DialogHeadingTermsOfUse|Terms of Use (Nutzungsbedingungen)|  
 |ValidationMessageConsentNotAccepted|You must agree to the Terms of Use before you can proceed. (Sie müssen den Nutzungsbedingungen zustimmen, bevor Sie fortfahren können.)|  
   
-###  <a name="SigninStrings"></a> SigninStrings  
+###  <a name="signinstrings"></a><a name="SigninStrings"></a> SigninStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -517,7 +519,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |WebAuthenticationSigninTitle|Anmelden|  
 |WebAuthenticationSignUpNow|Jetzt anmelden|  
   
-###  <a name="SignupStrings"></a> SignupStrings  
+###  <a name="signupstrings"></a><a name="SignupStrings"></a> SignupStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -527,7 +529,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |WebAuthenticationSigninNow|Sign in now (Melden Sie sich jetzt an)|  
 |ButtonLabelSignup|Registrieren|  
   
-###  <a name="SubscriptionListStrings"></a> SubscriptionListStrings  
+###  <a name="subscriptionliststrings"></a><a name="SubscriptionListStrings"></a> SubscriptionListStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -542,7 +544,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |WebDevelopersSubscriptionRequested|Angefordert am {0}|  
 |WebDevelopersSubscriptionRequestedState|Requested (Angefordert)|  
 |WebDevelopersSubscriptionTableNameHeader|Name|  
-|WebDevelopersSubscriptionTableStateHeader|Zustand|  
+|WebDevelopersSubscriptionTableStateHeader|State|  
 |WebDevelopersUsageStatisticsLink|Analytics reports (Analytics-Berichte)|  
 |WebDevelopersYourSubscriptions|Your subscriptions (Ihre Abonnements)|  
 |SubscriptionPropertyLabelRequestedDate|Requested on (Angefordert am)|  
@@ -550,7 +552,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |PageTitleRenameSubscription|Rename subscription (Abonnement umbenennen)|  
 |SubscriptionPropertyLabelName|Abonnementname|  
   
-###  <a name="SubscriptionStrings"></a> SubscriptionStrings  
+###  <a name="subscriptionstrings"></a><a name="SubscriptionStrings"></a> SubscriptionStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -559,23 +561,23 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |ButtonLabelHideKey|Hide (Ausblenden)|  
 |ButtonLabelRegenerateKey|Regenerate (Neu generieren)|  
 |InformationMessageKeyWasRegenerated|Are you sure that you want to regenerate this key? (Sind Sie sicher, dass Sie diesen Schlüssel neu generieren möchten?)|  
-|ButtonLabelShowKey|Sendung|  
+|ButtonLabelShowKey|Show (Anzeigen)|  
   
-###  <a name="UpdateProfileStrings"></a> UpdateProfileStrings  
+###  <a name="updateprofilestrings"></a><a name="UpdateProfileStrings"></a> UpdateProfileStrings  
   
 |Name|Text|  
 |----------|----------|  
 |ButtonLabelUpdateProfile|Update profile (Profil aktualisieren)|  
 |PageTitleUpdateProfile|Update account information (Kontoinformationen aktualisieren)|  
   
-###  <a name="UserProfile"></a> UserProfile  
+###  <a name="userprofile"></a><a name="UserProfile"></a> UserProfile  
   
 |Name|Text|  
 |----------|----------|  
 |ButtonLabelChangeAccountInfo|Change account information (Kontoinformationen ändern)|  
 |ButtonLabelChangePassword|Kennwort ändern|  
 |ButtonLabelCloseAccount|Close account (Konto schließen)|  
-|TextboxLabelEmail|E-Mail|  
+|TextboxLabelEmail|Email|  
 |TextboxLabelEmailFirstName|Vorname|  
 |TextboxLabelEmailLastName|Nachname|  
 |TextboxLabelNotificationsSenderEmail|Notifications sender email (E-Mail-Adresse Benachrichtigungsabsender)|  
@@ -592,7 +594,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |ValidationMessageSubscriptionNameRequired|Der Abonnementname darf nicht leer sein.|  
 |ApiManagementUserLimitReached|This service has reached the maximum number of allowed users. (Für diesen Dienst wurde die maximale Anzahl von zulässigen Benutzern erreicht.) Please upgrade to a higher pricing tier. (Führen Sie ein Upgrade auf einen höheren Tarif durch.)|  
   
-##  <a name="glyphs"></a> Glyphenressourcen  
+##  <a name="glyph-resources"></a><a name="glyphs"></a> Glyphenressourcen  
  Für Vorlagen des API Management-Entwicklerportals können die Glyphen unter [Glyphicons from Bootstrap](https://getbootstrap.com/components/#glyphicons) (Glyphensymbole von Bootstrap) verwendet werden. Dieser Satz mit Glyphen enthält mehr als 250 Glyphen im Schriftartformat aus dem [Glyphicon](https://glyphicons.com/)-Halflings-Satz. Verwenden Sie folgende Syntax, um einen Glyphen aus diesem Satz zu verwenden.  
   
 ```html  

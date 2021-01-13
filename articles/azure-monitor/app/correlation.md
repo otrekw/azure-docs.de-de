@@ -1,45 +1,40 @@
 ---
 title: Korrelation der Azure Application Insights-Telemetrie | Microsoft-Dokumentation
 description: Korrelation der Application Insights-Telemetrie
-services: application-insights
-documentationcenter: .net
-author: lgayhardt
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.author: lagayhar
-ms.openlocfilehash: bb28171ceca9861fb5cc0b7be1db9ab58ef72a1b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.custom: devx-track-python, devx-track-csharp
+ms.openlocfilehash: 20e9ed7e83ff3359651acebc11a939a998f2889d
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124119"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607914"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
-In der Welt der Mikroservices müssen für jeden logischen Vorgang Aufgaben mit den verschiedenen Dienstkomponenten durchgeführt werden. Jede dieser Komponenten kann separat von [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) überwacht werden. Die Web-App-Komponente kommuniziert mit der Authentifizierungsanbieterkomponente, um die Anmeldeinformationen des Benutzers zu überprüfen, und mit der API-Komponente, um Daten zur Visualisierung abzurufen. Die API-Komponente kann Daten von anderen Diensten abfragen und mithilfe von Cacheanbieterkomponenten die Abrechnungskomponente über diesen Aufruf benachrichtigen. Application Insights unterstützt verteilte Telemetriekorrelation, mit der Sie erkennen können, welche Komponente für Fehler oder Leistungsbeeinträchtigungen verantwortlich ist.
+In der Welt der Mikroservices müssen für jeden logischen Vorgang Aufgaben mit den verschiedenen Dienstkomponenten durchgeführt werden. Sie können jede dieser Komponenten separat mit [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) überwachen. Application Insights unterstützt verteilte Telemetriekorrelation, mit der Sie erkennen können, welche Komponente für Fehler oder Leistungsbeeinträchtigungen verantwortlich ist.
 
-In diesem Artikel wird das von Application Insights verwendete Datenmodell erläutert, mit dem die von mehreren Komponenten gesendeten Telemetriedaten korreliert werden. Es werden Techniken und Protokolle zur Kontextpropagierung erläutert. Darüber hinaus wird auch die Implementierung von Korrelationskonzepten in verschiedenen Sprachen und auf verschiedenen Plattformen behandelt.
+In diesem Artikel wird das von Application Insights verwendete Datenmodell erläutert, mit dem die von mehreren Komponenten gesendeten Telemetriedaten korreliert werden. Es werden Techniken und Protokolle zur Kontextpropagierung erläutert. Darüber hinaus wird auch die Implementierung von Korrelationstaktiken in verschiedenen Sprachen und auf verschiedenen Plattformen behandelt.
 
 ## <a name="data-model-for-telemetry-correlation"></a>Datenmodell für Telemetriekorrelation
 
-Application Insights definiert ein [Datenmodell](../../azure-monitor/app/data-model.md) für die verteilte Telemetriekorrelation. Um die Telemetrie mit dem logischen Vorgang zu verknüpfen, ist jedes Telemetrieelement mit einem Kontextfeld namens `operation_Id` versehen. Dieser Bezeichner wird von jedem Telemetrieelement in der verteilten Ablaufverfolgung gemeinsam genutzt. Selbst bei einem Verlust von Telemetriedaten von einer einzelnen Ebene können Sie weiterhin Telemetriedaten zuordnen, die von anderen Komponenten gemeldet wurden.
+Application Insights definiert ein [Datenmodell](../../azure-monitor/app/data-model.md) für die verteilte Telemetriekorrelation. Um die Telemetrie mit einem logischen Vorgang zu verknüpfen, ist jedes Telemetrieelement mit einem Kontextfeld namens `operation_Id` versehen. Dieser Bezeichner wird von jedem Telemetrieelement in der verteilten Ablaufverfolgung gemeinsam genutzt. Selbst wenn Ihnen Telemetriedaten von einer einzelnen Ebene verloren gehen, können Sie weiterhin Telemetriedaten zuordnen, die von anderen Komponenten gemeldet wurden.
 
-Der verteilte logische Vorgang besteht in der Regel aus einem Satz von kleineren Vorgängen, nämlich den Anforderungen, die von einer der Komponenten verarbeitet werden. Diese Vorgänge werden von einer [Anforderungstelemetrie](../../azure-monitor/app/data-model-request-telemetry.md) definiert. Jede Anforderungstelemetrie verfügt über eine eigene `id`, die diese eindeutig und global identifiziert. Für sämtliche Telemetrieelemente (z.B. Ablaufverfolgungen und Ausnahmen), die dieser Anforderung zugeordnet sind, sollte die `operation_parentId` auf den Wert der Anforderungs-`id` festgelegt werden.
+Der verteilte logische Vorgang besteht in der Regel aus einem Satz von kleineren Vorgängen, nämlich den Anforderungen, die von einer der Komponenten verarbeitet werden. Diese Vorgänge werden von einer [Anforderungstelemetrie](../../azure-monitor/app/data-model-request-telemetry.md) definiert. Jedes Anforderungstelemetrieelement verfügt über eine eigene `id`, die es eindeutig und global identifiziert. Für sämtliche Telemetrieelemente (z.B. Ablaufverfolgungen und Ausnahmen), die der Anforderung zugeordnet sind, sollte die `operation_parentId` auf den Wert der Anforderungs-`id` festgelegt werden.
 
 Alle ausgehenden Vorgänge wie HTTP-Aufrufe an andere Komponenten werden durch eine [Abhängigkeitstelemetrie](../../azure-monitor/app/data-model-dependency-telemetry.md) dargestellt. Abhängigkeitstelemetrien definieren zudem ihre eigene `id`, die global eindeutig ist. Anforderungsabhängigkeiten, die durch diese Anforderungstelemetrie initiiert werden, verwenden diese `id` als `operation_parentId`.
 
 Sie können eine Ansicht des verteilten logischen Vorgangs mit `operation_Id`, `operation_parentId` und `request.id` mit `dependency.id` erstellen. Diese Felder definieren auch die Kausalitätsreihenfolge der Telemetrieaufrufe.
 
-In Microserviceumgebungen können Ablaufverfolgungen von Komponenten an unterschiedliche Speicherelemente weitergeleitet werden. Jede Komponente kann einen eigenen Instrumentierungsschlüssel in Application Insights aufweisen. Um Telemetriedaten für den logischen Vorgang abzurufen, ruft die Benutzeroberfläche von Application Insights Daten von jedem Speicherelement ab. Wenn die Anzahl der Speicherelemente sehr groß ist, benötigen Sie einen Hinweis, wo Sie als Nächstes suchen sollen. Zur Behebung dieses Problems definiert das Application Insights-Datenmodell zwei Felder: `request.source` und `dependency.target`. Das erste Feld identifiziert die Komponente, die die Abhängigkeitsanforderung initiiert hat, und das zweite Feld identifiziert die Komponente, die die Antwort des Abhängigkeitsaufrufs zurückgegeben hat.
+In Microserviceumgebungen können Ablaufverfolgungen von Komponenten an unterschiedliche Speicherelemente weitergeleitet werden. Jede Komponente kann einen eigenen Instrumentierungsschlüssel in Application Insights aufweisen. Um Telemetriedaten für den logischen Vorgang abzurufen, ruft Application Insights Daten von jedem Speicherelement ab. Wenn die Anzahl der Speicherelemente groß ist, benötigen Sie einen Hinweis, wo Sie als Nächstes suchen sollen. Zur Behebung dieses Problems definiert das Application Insights-Datenmodell zwei Felder: `request.source` und `dependency.target`. Das erste Feld identifiziert die Komponente, die die Abhängigkeitsanforderung initiiert hat. Das zweite Feld identifiziert die Komponente, die die Antwort des Abhängigkeitsaufrufs zurückgegeben hat.
 
 ## <a name="example"></a>Beispiel
 
-Sehen Sie sich ein Beispiel für eine Anwendung namens Stock Prices an, die den aktuellen Marktpreis eines Aktienkurses mithilfe der externen API `Stock` angibt. Die Anwendung Stock Prices enthält die Seite `Stock page`, die vom Clientwebbrowser mit `GET /Home/Stock` geöffnet wird. Die Anwendung fragt die API `Stock` mit dem HTTP-Aufruf `GET /api/stock/value` ab.
+Schauen wir uns ein Beispiel an. Eine Anwendung namens Stock Prices gibt den aktuellen Marktpreis einer Aktie mithilfe einer externen API mit dem Namen Stock an. Die Anwendung Stock Prices enthält die Seite „Stock“, die vom Clientwebbrowser mit `GET /Home/Stock` geöffnet wird. Die Anwendung fragt die Stock-API mit dem HTTP-Aufruf `GET /api/stock/value` ab.
 
 Sie können die daraus resultierenden Telemetriedaten durch Ausführen einer Abfrage analysieren:
 
@@ -58,58 +53,45 @@ Beachten Sie, dass in den Ergebnissen alle Telemetrieelemente die Stamm-`operati
 | request    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | dependency | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
-Wenn der Aufruf `GET /api/stock/value` an einen externen Dienst erfolgt, sollten Sie die Identität dieses Servers herausfinden, damit Sie das Feld `dependency.target` entsprechend festlegen können. Wenn der externe Dienst keine Überwachung unterstützt, wird `target` auf den Hostnamen des Diensts festgelegt (z.B. `stock-prices-api.com`). Wenn sich dieser Dienst jedoch durch Zurückgeben eines vordefinierten HTTP-Headers identifiziert, enthält `target` die Dienstidentität, mit der Application Insights verteilte Ablaufverfolgungen durch Abfragen von Telemetriedaten von diesem Dienst erstellen kann.
+Wenn der Aufruf `GET /api/stock/value` an einen externen Dienst erfolgt, müssen Sie die Identität dieses Servers kennen, damit Sie das Feld `dependency.target` entsprechend festlegen können. Wenn der externe Dienst keine Überwachung unterstützt, wird `target` auf den Hostnamen des Diensts festgelegt (z.B. `stock-prices-api.com`). Wenn sich dieser Dienst jedoch durch Zurückgeben eines vordefinierten HTTP-Headers identifiziert, enthält `target` die Dienstidentität, mit der Application Insights verteilte Ablaufverfolgungen durch Abfragen von Telemetriedaten von diesem Dienst erstellen kann.
 
-## <a name="correlation-headers"></a>Korrelations-Header
+## <a name="correlation-headers-using-w3c-tracecontext"></a>Korrelationsheader mit W3C TraceContext
 
-Wir arbeiten an einem RFC-Vorschlag für das [Korrelations-HTTP-Protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Diese Vorschläge definieren zwei Header:
+Application Insights geht zum [W3C Trace-Context](https://w3c.github.io/trace-context/) über, der Folgendes definiert:
+
+- `traceparent`: Trägt die global eindeutige Vorgangs-ID und den eindeutigen Bezeichner des Aufrufs.
+- `tracestate`: Trägt einen systemspezifischen Ablaufverfolgungskontext.
+
+Die neueste Version des Application Insights SDK unterstützt das Trace-Context-Protokoll, aber möglicherweise müssen Sie sich explizit dafür entscheiden. (Abwärtskompatibilität mit dem vorherigen Korrelationsprotokoll, das vom Application Insights SDK unterstützt wird, bleibt erhalten.)
+
+Das [Korrelations-HTTP-Protokoll, das auch als „Request-ID“ bezeichnet wird](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md), ist veraltet. Dieses Protokoll definiert zwei Header:
 
 - `Request-Id`: Enthält die global eindeutige ID des Aufrufs.
 - `Correlation-Context`: Enthält die Sammlung von Name/Wert-Paaren der Eigenschaften von verteilten Ablaufverfolgungen.
 
-Der Standard definiert außerdem zwei Schemas für `Request-Id`-Generierungen: flache und hierarchische Schemas. Beim flachen Schema ist ein bekannter `Id`-Schlüssel für die Sammlung `Correlation-Context` definiert.
+Application Insights definiert ferner die [Erweiterung](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) für das Korrelations-HTTP-Protokoll. Er verwendet Name/Wert-Paare für `Request-Context`, die die vom unmittelbaren Aufrufer oder Aufgerufenen verwendete Sammlung von Eigenschaften propagieren. Das Application Insights SDK legt mithilfe dieses Headers die Felder `dependency.target` und `request.source` fest.
 
-Application Insights definiert die [Erweiterung](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) für das Korrelations-HTTP-Protokoll. Er verwendet Name/Wert-Paare für `Request-Context`, die die vom unmittelbaren Aufrufer oder Aufgerufenen verwendete Sammlung von Eigenschaften propagieren. Das Application Insights SDK legt mithilfe dieses Header die Felder `dependency.target` und `request.source` fest.
+Der [W3C Trace-Context](https://w3c.github.io/trace-context/) und Application Insights-Datenmodelle sind in folgender Weise zugeordnet:
 
-### <a name="w3c-distributed-tracing"></a>W3C – verteilte Ablaufverfolgung
+| Application Insights                   | W3C TraceContext                                      |
+|------------------------------------    |-------------------------------------------------|
+| `Id` der `Request` und `Dependency`     | [parent-id](https://w3c.github.io/trace-context/#parent-id)                                     |
+| `Operation_Id`                         | [trace-id](https://w3c.github.io/trace-context/#trace-id)                                           |
+| `Operation_ParentId`                   | [parent-id](https://w3c.github.io/trace-context/#parent-id) der übergeordneten Spanne dieser Spanne. Wenn es sich um eine Stammspanne handelt, muss dieses Feld leer sein.     |
 
-Wir gehen über zum [W3C-Format für verteilte Ablaufverfolgung](https://w3c.github.io/trace-context/). Dieses definiert:
+Weitere Informationen finden Sie unter [Application Insights-Telemetriedatenmodell](../../azure-monitor/app/data-model.md).
 
-- `traceparent`: Trägt die global eindeutige Vorgangs-ID und den eindeutigen Bezeichner des Aufrufs.
-- `tracestate`: Trägt einen für das Ablaufverfolgungssystem spezifischen Kontext.
+### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>Aktivieren der Unterstützung der verteilten W3C-Ablaufverfolgung für .NET-Apps
 
-#### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>Aktivieren der Unterstützung für die verteilte Ablaufverfolgung von W3C für klassische ASP.NET-Apps
+Die W3C TraceContext-basierte verteilte Ablaufverfolgung ist in allen aktuellen .NET Framework/.NET Core SDKs standardmäßig aktiviert, zusammen mit der Abwärtskompatibilität mit dem „Request-Id“-Legacyprotokoll.
 
-Dieses Feature steht ab Version 2.8.0-beta1 in den Paketen `Microsoft.ApplicationInsights.Web` und `Microsoft.ApplicationInsights.DependencyCollector` zur Verfügung.
-Standardmäßig ist es deaktiviert. Um es zu aktivieren, ändern Sie `ApplicationInsights.config`:
+### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Aktivieren der Unterstützung für die verteilte Ablaufverfolgung von W3C für Java-Apps
 
-- Fügen Sie unter `RequestTrackingTelemetryModule` das `EnableW3CHeadersExtraction`-Element mit dem Wert `true` hinzu.
-- Fügen Sie unter `DependencyTrackingTelemetryModule` das `EnableW3CHeadersInjection`-Element mit dem Wert `true` hinzu.
-- Fügen Sie `W3COperationCorrelationTelemetryInitializer` unter `TelemetryInitializers` hinzu, ähnlich wie im Folgenden: 
+#### <a name="java-30-agent"></a>Java 3.0-Agent
 
-```xml
-<TelemetryInitializers>
-  <Add Type="Microsoft.ApplicationInsights.Extensibility.W3C.W3COperationCorrelationTelemetryInitializer, Microsoft.ApplicationInsights"/>
-   ...
-</TelemetryInitializers> 
-```
+  Der Java 3.0-Agent unterstützt standardmäßig W3C, und es ist keine zusätzliche Konfiguration erforderlich. 
 
-#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>Aktivieren der Unterstützung für die verteilte Ablaufverfolgung von W3C für ASP.NET Core-Apps
-
-Dieses Feature befindet sich in `Microsoft.ApplicationInsights.AspNetCore` Version 2.5.0-beta1 und `Microsoft.ApplicationInsights.DependencyCollector` Version 2.8.0-beta1.
-Standardmäßig ist es deaktiviert. Um es zu aktivieren, legen Sie `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` auf `true` fest:
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddApplicationInsightsTelemetry(o => 
-        o.RequestCollectionOptions.EnableW3CDistributedTracing = true );
-    // ....
-}
-```
-
-#### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Aktivieren der Unterstützung für die verteilte Ablaufverfolgung von W3C für Java-Apps
-
+#### <a name="java-sdk"></a>Java-SDK
 - **Eingangskonfiguration**
 
   - Fügen Sie für Java EE-Apps dem Tag `<TelemetryModules>` in „ApplicationInsights.xml“ Folgendes hinzu:
@@ -120,6 +102,7 @@ public void ConfigureServices(IServiceCollection services)
        <Param name ="enableW3CBackCompat" value = "true" />
     </Add>
     ```
+
   - Für Spring Boot-Apps fügen Sie die folgenden Eigenschaften hinzu:
 
     - `azure.application-insights.web.enable-W3C=true`
@@ -145,122 +128,167 @@ public void ConfigureServices(IServiceCollection services)
 > [!IMPORTANT]
 > Stellen Sie sicher, dass die Eingangs- und Ausgangskonfiguration genau gleich sind.
 
-#### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>Aktivieren der Unterstützung der verteilten W3C-Ablaufverfolgung für Web-Apps
+### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>Aktivieren der Unterstützung der verteilten W3C-Ablaufverfolgung für Web-Apps
 
-Dieses Feature befindet sich in `Microsoft.ApplicationInsights.JavaScript`. Standardmäßig ist es deaktiviert. Um es zu aktivieren, verwenden Sie die Konfiguration von `distributedTracingMode`. AI_AND_W3C wird für Abwärtskompatibilität mit beliebigen mit älteren Application Insights-Versionen instrumentierten Diensten bereitgestellt:
+Dieses Feature befindet sich in `Microsoft.ApplicationInsights.JavaScript`. Standardmäßig ist es deaktiviert. Um es zu aktivieren, verwenden Sie die Konfiguration von `distributedTracingMode`. AI_AND_W3C wird für Abwärtskompatibilität mit beliebigen mit älteren Diensten bereitgestellt, die von Application Insights instrumentiert werden.
 
-- **NPM-Setup (bei Verwendung von Snippet-Setup ignorieren)**
+- **[npm-basiertes Setup](./javascript.md#npm-based-setup)**
 
-  ```javascript
-  import { ApplicationInsights, DistributedTracingModes } from '@microsoft/applicationinsights-web';
-
-  const appInsights = new ApplicationInsights({ config: {
-    instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
+Fügen Sie die folgende Konfiguration hinzu:
+  ```JavaScript
     distributedTracingMode: DistributedTracingModes.W3C
-    /* ...Other Configuration Options... */
-  } });
-  appInsights.loadAppInsights();
   ```
-  
-- **Snippet-Setup (bei Verwendung von NPM-Setup ignorieren)**
 
+- **[Ausschnittbasiertes Setup](./javascript.md#snippet-based-setup)**
+
+Fügen Sie die folgende Konfiguration hinzu:
   ```
-  <script type="text/javascript">
-  var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){i[e]=function(){var n=arguments;i.queue.push(function(){i[e].apply(i,n)})}}var i={config:e};i.initialize=!0;var a=document,t=window;setTimeout(function(){var n=a.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",a.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{i.cookie=a.cookie}catch(e){}i.queue=[],i.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var o="Track"+r[0];if(n("start"+o),n("stop"+o),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var s=t[r];t[r]=function(e,n,a,t,o){var c=s&&s(e,n,a,t,o);return!0!==c&&i["_"+r]({message:e,url:n,lineNumber:a,columnNumber:t,error:o}),c},e.autoExceptionInstrumented=!0}return i}
-  (
-    {
-      instrumentationKey:"INSTRUMENTATION_KEY",
       distributedTracingMode: 2 // DistributedTracingModes.W3C
-      /* ...Other Configuration Options... */
-    }
-  );
-  window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
-  </script>
   ```
+> [!IMPORTANT] 
+> Alle Konfigurationen, die zum Aktivieren der Korrelation erforderlich sind, finden Sie in der [Dokumentation zur JavaScript-Korrelation](./javascript.md#enable-correlation).
 
-## <a name="opentracing-and-application-insights"></a>OpenTracing und Application Insights
+## <a name="telemetry-correlation-in-opencensus-python"></a>Telemetriekorrelation in OpenCensus Python
 
-Die [OpenTracing-Datenmodellspezifikation](https://opentracing.io/) und Application Insights-Datenmodelle sind in folgender Weise zugeordnet:
+OpenCensus Python unterstützt [W3C Trace-Context](https://w3c.github.io/trace-context/), ohne dass eine zusätzliche Konfiguration erforderlich ist.
 
-| Application Insights                  | OpenTracing                                       |
-|------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `Span` mit `span.kind = server`                  |
-| `Dependency`                          | `Span` mit `span.kind = client`                  |
-| `Id` der `Request` und `Dependency`    | `SpanId`                                          |
-| `Operation_Id`                        | `TraceId`                                         |
-| `Operation_ParentId`                  | `Reference` vom Typ `ChildOf` (die übergeordnete Spanne)   |
+Das OpenCensus-Datenmodell zu Referenzzwecken finden Sie [hier](https://github.com/census-instrumentation/opencensus-specs/tree/master/trace).
 
-Weitere Informationen finden Sie unter [Application Insights-Telemetriedatenmodell](../../azure-monitor/app/data-model.md). 
+### <a name="incoming-request-correlation"></a>Korrelation eingehender Anforderungen
 
-Definitionen von OpenTracing-Konzepten finden Sie in den [Spezifikationen](https://github.com/opentracing/specification/blob/master/specification.md) und [semantischen Konventionen](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) für OpenTracing.
+OpenCensus Python korreliert W3C Trace-Context-Header von eingehenden Anforderungen mit den Spannen, die aus den Anforderungen selbst generiert werden. OpenCensus führt dies automatisch mit Integrationen für die folgenden gängigen Webanwendungsframeworks aus: Flask, Django und Pyramid. Sie müssen lediglich die W3C Trace-Context-Header mit dem [korrekten Format](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) auffüllen und mit der Anforderung senden. Hier eine Flask-Beispielanwendung zur Veranschaulichung:
+
+```python
+from flask import Flask
+from opencensus.ext.azure.trace_exporter import AzureExporter
+from opencensus.ext.flask.flask_middleware import FlaskMiddleware
+from opencensus.trace.samplers import ProbabilitySampler
+
+app = Flask(__name__)
+middleware = FlaskMiddleware(
+    app,
+    exporter=AzureExporter(),
+    sampler=ProbabilitySampler(rate=1.0),
+)
+
+@app.route('/')
+def hello():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run(host='localhost', port=8080, threaded=True)
+```
+
+Mit diesem Code wird eine Flask-Beispielanwendung auf dem lokalen Computer ausgeführt, der an Port `8080` lauscht. Zum Korrelieren des Ablaufverfolgungskontexts senden Sie eine Anforderung an den Endpunkt. In diesem Beispiel können Sie einen `curl`-Befehl verwenden:
+```
+curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
+```
+Durch einen Blick auf das [Format des Kontextheaders für die Ablaufverfolgung](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) können Sie die folgenden Informationen ableiten:
+
+`version`: `00`
+
+`trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736`
+
+`parent-id/span-id`: `00f067aa0ba902b7`
+
+`trace-flags`: `01`
+
+Wenn Sie sich den Anforderungseintrag ansehen, der an Azure Monitor gesendet wurde, sind dort Felder enthalten, die mit den Informationen des Ablaufverfolgungsheaders aufgefüllt wurden. Diese Daten sind in der Azure Monitor Application Insights-Ressource unter „Protokolle (Analytics)“ zu finden.
+
+![Anfordern von Telemetriedaten in „Protokolle (Analytics)“](./media/opencensus-python/0011-correlation.png)
+
+Das Feld `id` hat das Format `<trace-id>.<span-id>`. Hierbei wird `trace-id` aus dem in der Anforderung übergebenen Ablaufverfolgungsheader entnommen, und `span-id` ist ein generiertes 8-Byte-Array für diese Spanne.
+
+Das Feld `operation_ParentId` hat das Format `<trace-id>.<parent-id>`. Hierbei werden sowohl `trace-id` als auch `parent-id` aus dem in der Anforderung übergebenen Ablaufverfolgungsheader entnommen.
+
+### <a name="log-correlation"></a>Protokollkorrelation
+
+Mit OpenCensus Python können Sie Protokolle korrelieren, indem Sie Protokolldatensätzen eine Ablaufverfolgungs-ID, eine Spannen-ID und ein Stichprobenflag hinzufügen. Sie fügen diese Attribute hinzu, indem Sie die OpenCensus-[Protokollintegration](https://pypi.org/project/opencensus-ext-logging/) installieren. `LogRecord`-Objekten von Python werden die folgenden Attribute hinzugefügt: `traceId`, `spanId` und `traceSampled`. Beachten Sie, dass dies nur für Protokollierungen wirksam wird, die nach der Integration erstellt werden.
+
+Hier eine Beispielanwendung zur Veranschaulichung:
+
+```python
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+logger = logging.getLogger(__name__)
+logger.warning('Before the span')
+with tracer.span(name='hello'):
+    logger.warning('In the span')
+logger.warning('After the span')
+```
+Bei Ausführung dieses Codes wird Folgendes in der Konsole ausgegeben:
+```
+2019-10-17 11:25:59,382 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 Before the span
+2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
+2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
+```
+Beachten Sie, dass für die Protokollnachricht, die innerhalb der Spanne liegt, eine `spanId` vorhanden ist. Diese entspricht der `spanId`, die zur Spanne mit dem Namen `hello` gehört.
+
+Sie können die Protokolldaten mithilfe von `AzureLogHandler`exportieren. [hier finden Sie weitere Informationen](./opencensus-python.md#logs)
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetriekorrelation in .NET
 
-Im Lauf der Zeit wurden in .NET verschiedene Möglichkeiten zur Korrelation von Telemetrie- und Diagnoseprotokollen definiert:
+.NET-Runtime unterstützt die verteilte Telemetriekorrelation mithilfe von [Activity](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) und [DiagnosticSource](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md).
 
-- `System.Diagnostics.CorrelationManager` ermöglicht die Nachverfolgung von [LogicalOperationStack und ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx). 
-- `System.Diagnostics.Tracing.EventSource` und die Ereignisablaufverfolgung für Windows (ETW) definieren die [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx)-Methode.
-- `ILogger` verwendet [Protokollbereiche](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes). 
-- Windows Communication Foundation (WCF) und HTTP bieten eine Propagierung des Kontexts „aktuell“.
-
-Allerdings wurde durch diese Methoden nicht die Unterstützung für automatische verteilte Ablaufverfolgung aktiviert. `DiagnosticSource` ist eine Möglichkeit zur Unterstützung von automatischen computerübergreifenden Korrelationen. .NET-Bibliotheken unterstützen Diagnosequellen und ermöglichen die automatische computerübergreifende Propagierung des Korrelationskontexts durch die Übertragungsmethode, z.B. HTTP.
-
-Im [Leitfaden zu Aktivitäten](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) in `DiagnosticSource` werden die Grundlagen von Nachverfolgungsaktivitäten erläutert.
-
-ASP.NET Core 2.0 unterstützt die Extraktion von HTTP-Headern und das Starten einer neuen Aktivität.
-
-`System.Net.HttpClient` ab Version 4.1.0 unterstützt die automatische Injektion der Korrelations-HTTP-Header und die Nachverfolgung des HTTP-Aufrufs als Aktivität.
-
-Für das klassische ASP.NET ist das neue HTTP-Modul [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) verfügbar. Dieses Modul implementiert Telemetriekorrelationen mithilfe von `DiagnosticSource`. Es startet Aktivitäten basierend auf den eingehenden Anforderungsheadern. Außerdem korreliert es Telemetriedaten aus den verschiedenen Phasen der Anforderungsverarbeitung, selbst in Fällen, in denen jede Phase der Verarbeitung von Internetinformationsdienste (Internet Information Services, IIS) in einem anderen verwalteten Thread ausgeführt wird.
-
-Das Application Insights SDK ab Version 2.4.0-beta1 verwendet `DiagnosticSource` und `Activity`, um Telemetriedaten zu sammeln und mit der aktuellen Aktivität zu verknüpfen.
+Das Application Insights .NET SDK verwendet `DiagnosticSource` und `Activity` , um Telemetriedaten zu sammeln und zu korrelieren.
 
 <a name="java-correlation"></a>
-## <a name="telemetry-correlation-in-the-java-sdk"></a>Telemetriekorrelation im Java SDK
+## <a name="telemetry-correlation-in-java"></a>Telemetriekorrelation in Java
 
-Das [Application Insights SDK für Java](../../azure-monitor/app/java-get-started.md) unterstützt ab Version 2.0.0 die automatische Korrelation von Telemetriedaten. Das SDK füllt `operation_id` automatisch für alle Telemetriedaten (z.B. Ablaufverfolgungen, Ausnahmen und benutzerdefinierte Ereignisse) auf, die im Zusammenhang mit einer Anforderung ausgegeben werden. Es sorgt auch dafür, dass die Korrelationsheader (weiter oben beschrieben) für Dienst-zu-Dienst-Aufrufe über HTTP weitergeben werden, wenn der [Java SDK-Agent](../../azure-monitor/app/java-agent.md) konfiguriert ist.
+Die automatische Korrelation von Telemetriedaten wird vom [Java-Agent](./java-in-process-agent.md) und vom [Java SDK](../../azure-monitor/app/java-get-started.md) (Version 2.0.0 oder höher) unterstützt. Das SDK füllt `operation_id` automatisch für alle Telemetriedaten (z.B. Ablaufverfolgungen, Ausnahmen und benutzerdefinierte Ereignisse) auf, die im Zusammenhang mit einer Anforderung ausgegeben werden. Es gibt außerdem die Korrelationsheader (weiter oben beschrieben) für Dienst-zu-Dienst-Aufrufe über HTTP weiter, wenn der [Java SDK-Agent](../../azure-monitor/app/java-agent.md) konfiguriert ist.
 
 > [!NOTE]
-> Für die Korrelationsfunktion werden nur Aufrufe unterstützt, die über Apache HttpClient erfolgen. Wenn Sie mit Spring Rest Template oder Feign arbeiten, können beide aufgesetzt auf Apache HttpClient verwendet werden.
+> Der Java-Agent von Application Insights erfasst automatisch Anforderungen und Abhängigkeiten für JMS, Kafka, Netty/Webflux usw. Beim Java SDK werden für die Korrelationsfunktion nur Aufrufe unterstützt, die per Apache HttpClient erfolgen. Die automatische Kontextweitergabe über verschiedene Messagingtechnologien (z. B. Kafka, RabbitMQ und Azure Service Bus) wird im SDK nicht unterstützt. 
 
-Derzeit wird die automatische Kontextweitergabe über verschiedene Messagingtechnologien (z.B. Kafka, RabbitMQ oder Azure Service Bus) nicht unterstützt. Es ist jedoch möglich, solche Szenarien manuell mithilfe der APIs `trackDependency` und `trackRequest` zu schreiben. In diesen APIs entsprechen Telemetriedaten den Abhängigkeiten einer Nachricht, die von einem Producer in die Warteschlange eingereiht wird, und die Anforderung entspricht einer Nachricht, die von einem Consumer verarbeitet wird. In diesem Fall müssen sowohl `operation_id` als auch `operation_parentId` in den Eigenschaften der Nachricht weitergegeben werden.
+> [!NOTE]
+> Um benutzerdefinierte Telemetriedaten zu erfassen, müssen Sie die Anwendung mit dem Java 2.6 SDK instrumentieren. 
 
-### <a name="telemetry-correlation-in-asynchronous-java-application"></a>Telemetriekorrelation in asynchroner Java-Anwendung
+### <a name="role-names"></a>Rollennamen
 
-Zum Korrelieren von Telemetriedaten in einer asynchronen Spring Boot-Anwendung folgen Sie [diesem](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications) ausführlichen Artikel. Er enthält Anweisungen für das Instrumentieren von [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) und [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html) für Spring. 
+Sie möchten möglicherweise die Art und Weise anpassen, wie Komponentennamen in der [Anwendungsübersicht](../../azure-monitor/app/app-map.md) angezeigt werden. Dazu können Sie `cloud_RoleName` manuell festlegen, indem Sie eine der folgenden Aktionen ausführen:
 
+- Legen Sie für den Application Insights Java-Agent 3.0 den Cloudrollennamen wie folgt fest:
 
-<a name="java-role-name"></a>
-## <a name="role-name"></a>Rollenname
+    ```json
+    {
+      "role": {
+        "name": "my cloud role name"
+      }
+    }
+    ```
+    Sie können den Cloudrollennamen auch mithilfe der Umgebungsvariablen `APPLICATIONINSIGHTS_ROLE_NAME` festlegen.
 
-Gelegentlich möchten Sie möglicherweise die Art und Weise anpassen, wie Komponentennamen in der [Anwendungsübersicht](../../azure-monitor/app/app-map.md) angezeigt werden. Dazu können Sie `cloud_RoleName` manuell festlegen, indem Sie eine der folgenden Aktionen ausführen:
+- Mit dem Application Insights Java SDK 2.5.0 und höher können Sie `cloud_RoleName` angeben, indem Sie der Datei „ApplicationInsights.xml“ den Eintrag `<RoleName>` hinzufügen:
 
-- Bei Verwendung von Spring Boot mit dem Application Insights Spring Boot-Startprogramm besteht die einzige erforderliche Änderung darin, Ihren benutzerdefinierten Namen für die Anwendung in der Datei „application.properties“ festzulegen.
+  ```XML
+  <?xml version="1.0" encoding="utf-8"?>
+  <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+     <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+     <RoleName>** Your role name **</RoleName>
+     ...
+  </ApplicationInsights>
+  ```
+
+- Bei Verwendung von Spring Boot mit Application Insights Spring Boot Starter müssen Sie nur Ihren benutzerdefinierten Namen für die Anwendung in der Datei „application.properties“ festlegen:
 
   `spring.application.name=<name-of-app>`
 
-  Der Spring Boot-Starter weist `cloudRoleName` automatisch den Wert zu, den Sie für die `spring.application.name`-Eigenschaft eingeben.
-
-- Wenn Sie `WebRequestTrackingFilter` verwenden, legt der `WebAppNameContextInitializer` automatisch den Anwendungsnamen fest. Fügen Sie Folgendes zu Ihrer Konfigurationsdatei (ApplicationInsights.xml) hinzu:
-
-  ```XML
-  <ContextInitializers>
-    <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
-  </ContextInitializers>
-  ```
-
-- Wenn Sie die Cloudkontextklasse verwenden:
-
-  ```Java
-  telemetryClient.getContext().getCloud().setRole("My Component Name");
-  ```
+  Spring Boot Starter weist `cloudRoleName` automatisch den Wert zu, den Sie für die `spring.application.name`-Eigenschaft eingeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Schreiben Sie [benutzerdefinierte Telemetriedaten](../../azure-monitor/app/api-custom-events-metrics.md).
-- Informationen zu Szenarien mit erweiterter Korrelation in ASP.NET Core und ASP.NET finden Sie im Artikel zum [Nachverfolgen von benutzerdefinierten Vorgängen](custom-operations-tracking.md).
-- Erfahren Sie mehr über das [Festlegen von cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name) für andere SDKs.
-- Integrieren Sie alle Komponenten Ihres Microservices in Application Insights. Sehen Sie sich die [unterstützten Plattformen](../../azure-monitor/app/platforms.md) an.
-- Lesen Sie die Informationen zu den Application Insights-Typen im [Datenmodell](../../azure-monitor/app/data-model.md).
-- Informationen zum [Erweitern und Filtern von Telemetriedaten](../../azure-monitor/app/api-filtering-sampling.md).
+- Informationen zu Szenarien mit erweiterter Korrelation in ASP.NET Core und ASP.NET finden Sie unter [Nachverfolgen von benutzerdefinierten Vorgängen](custom-operations-tracking.md).
+- Erfahren Sie mehr über das [Festlegen von cloud_RoleName](./app-map.md#set-or-override-cloud-role-name) für andere SDKs.
+- Integrieren Sie alle Komponenten Ihres Microservices in Application Insights. Sehen Sie sich die [unterstützten Plattformen](./platforms.md) an.
+- Lesen Sie die Informationen zu den Application Insights-Typen im [Datenmodell](./data-model.md).
+- Informationen zum [Erweitern und Filtern von Telemetriedaten](./api-filtering-sampling.md).
 - Lesen Sie die [Konfigurationsreferenz für Application Insights](configuration-with-applicationinsights-config.md).

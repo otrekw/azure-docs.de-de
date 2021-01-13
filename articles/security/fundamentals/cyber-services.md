@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
-ms.author: barclayn
-ms.openlocfilehash: 7821fdc0dfda5db8d660a38a59efc774e30b9f4a
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.author: terrylan
+ms.openlocfilehash: 14ff56c32fb1fb6ef2fef862e50277e8ef3e5b81
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727455"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412883"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Microsoft-Dienste in der Sicherheit im Internet
 
@@ -32,12 +32,12 @@ Unser Team aus technischen Spezialisten besteht aus geschulten Experten, die üb
 
 Hier erfahren Sie mehr über die Leistungen von Microsoft-Dienste:
 
-* [Microsoft Security Risk Assessment](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-security-risk-assessment-solution-brief.pdf)
+* [Microsoft Security Risk Assessment](https://download.microsoft.com/download/5/D/0/5D06F4EA-EAA1-4224-99E2-0C0F45E941D0/Microsoft%20Security%20Risk%20Asessment%20Datasheet.pdf)
 * [Microsoft Services Dynamic Identity Framework](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/dynamic-identity-framework-identity-assessment-datasheet.pdf)
-* [Offline Assessment for Active Directory Security](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/offline-assessment-for-active-directory-security-datasheet.pdf)
-* [Enhanced Security Administration Environment](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
+* [Offline Assessment for Active Directory Security](https://download.microsoft.com/download/1/C/1/1C15BA51-840E-498D-86C6-4BD35D33C79E/Prerequisites_Offline_AD.pdf)
+* [Enhanced Security Administration Environment](https://download.microsoft.com/download/A/C/5/AC5D21A6-E04B-4DC4-B1F2-AE060319A4D7/Premier_Support_for_Security/Popis/Enhanced-Security-Admin-Environment-Solution-Datasheet-%5BEN%5D.pdf)
 * [Azure Active Directory Implementation Services](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
-* [POP - Securing Lateral Account Movement (SLAM) Credential Theft Mitigation](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
-* [Respond and recover after a security incident](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
+* [POP - Securing Lateral Account Movement (SLAM) Credential Theft Mitigation](/azure-advanced-threat-protection/use-case-lateral-movement-path)
+* [Respond and recover after a security incident](/microsoft-365/compliance/gdpr-breach-microsoft-support-professional-services#data-protection-incident-response-overview)
 
 [Erfahren Sie mehr](https://aka.ms/cyberserv) über die Sicherheits-Consulting Services der Microsoft-Dienste.

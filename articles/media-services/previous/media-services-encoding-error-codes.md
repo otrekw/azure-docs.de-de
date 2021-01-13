@@ -14,23 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e56dbe1d1236a567ed6f59acfcca325a6c9ee7e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64709528"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89269028"
 ---
 # <a name="encoding-error-codes"></a>Verschlüsselungsfehlercodes
 
-Die folgende Tabelle enthält die Fehlercodes, die zurückgegeben werden können, wenn bei der Ausführung einer Codieraufgabe ein Fehler auftritt.  Verwenden Sie zum Abrufen von Fehlerdetails im .NET-Code die [ErrorDetails](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) -Klasse. Verwenden Sie zum Abrufen von Fehlerdetails im REST-Code die [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) -REST-API.
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
+Die folgende Tabelle enthält die Fehlercodes, die zurückgegeben werden können, wenn bei der Ausführung einer Codieraufgabe ein Fehler auftritt.  Verwenden Sie zum Abrufen von Fehlerdetails im .NET-Code die [ErrorDetails](/previous-versions/azure/jj126075(v=azure.100)) -Klasse. Verwenden Sie zum Abrufen von Fehlerdetails im REST-Code die [ErrorDetail](/rest/api/media/operations/errordetail) -REST-API.
 
 | ErrorDetail.Code | Mögliche Ursachen des Fehlers |
 | --- | --- |
 | Unknown |Unbekannter Fehler beim Ausführen der Aufgabe |
 | ErrorDownloadingInputAssetMalformedContent |Kategorie von Fehlern, die Fehler beim Herunterladen von Eingabe-Assets abdeckt, z. B. fehlerhafte Dateinamen, Dateien mit Nulllänge, falsche Formate usw. |
 | ErrorDownloadingInputAssetServiceFailure |Kategorie von Fehlern, die Probleme auf der Dienstseite abdeckt, z. B. Netzwerk- oder Speicherfehler beim Herunterladen. |
-| ErrorParsingConfiguration |Kategorie von Fehlern, bei denen die Aufgabe \<siehe cref="MediaTask.PrivateData"/> (Konfiguration) nicht gültig ist, z.B. wenn die Konfiguration keine gültige Systemvoreinstellung ist oder ungültige XML-Daten enthält. |
+| ErrorParsingConfiguration |Kategorie von Fehlern, bei denen die Aufgabe \<see cref="MediaTask.PrivateData"/> (Konfiguration) nicht gültig ist, z.B. wenn die Konfiguration keine gültige Systemvoreinstellung ist oder ungültige XML-Daten enthält. |
 | ErrorExecutingTaskMalformedContent |Kategorie von Fehlern während der Ausführung der Aufgabe, wenn Probleme in den Eingabemediendateien zu Fehlern führen. |
 | ErrorExecutingTaskUnsupportedFormat |Kategorie von Fehlern, bei denen die bereitgestellten Dateien mit dem Medienprozessor nicht verarbeitet werden können: keine Unterstützung des Medienformats oder fehlende Übereinstimmung mit der Konfiguration. Beispiel: Der Versuch, eine Audioausgabe für ein Asset zu erstellen, die nur Video ermöglicht. |
 | ErrorProcessingTask |Kategorie anderer Fehler, die für den Medienprozessor beim Verarbeiten der Aufgabe auftreten und sich nicht auf den Inhalt beziehen. |

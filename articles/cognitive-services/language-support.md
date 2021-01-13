@@ -6,95 +6,64 @@ services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 06/16/2019
+ms.topic: conceptual
+ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: cd31215f578062548c67f8d14e724dc49f73b21c
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 5cde7e677bd0121954b01cf9bb8defe45111a5b2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775003"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369187"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Unterstützung für natürliche Sprachen in Azure Cognitive Services
 
-Mit Azure Cognitive Services können Sie Anwendungen erstellen, die sehen und hören und mit Ihren Benutzern sprechen und diese verstehen können. Zwischen diesen Diensten werden mehr als drei Dutzend Sprachen unterstützt, sodass Benutzer auf natürliche Weise mit Ihrer Anwendung kommunizieren können.
+Mit Azure Cognitive Services können Sie Anwendungen erstellen, die sehen und hören und mit Ihren Benutzern sprechen und diese verstehen können. Zwischen diesen Diensten werden mehr als drei Dutzend Sprachen unterstützt, sodass Benutzer auf natürliche Weise mit Ihrer Anwendung kommunizieren können. Verwenden Sie die folgenden Links, um die Sprachverfügbarkeit nach Dienst anzuzeigen.
 
-Dieser Artikel ist in zwei Abschnitte unterteilt. Im ersten werden die Hauptsprachen aufgeführt, die allgemein in Azure Cognitive Services unterstützt werden. Der zweite Abschnitt konzentriert sich auf die Unterstützung weiterer Sprachen für die einzelnen Dienste. Die verfügbaren Sprachen können je nach Land, Region und Markt variieren.
+Die folgenden Cognitive Services-Instanzen sind sprachunabhängig und weisen keine auf menschlicher Sprache basierenden Einschränkungen auf.
 
-## <a name="core-languages"></a>Hauptsprachen
+* [Anomalieerkennung (Vorschau)](./anomaly-detector/index.yml)
+* [Custom Vision](./Custom-Vision-Service/index.yml)
+* [Gesichtserkennung](./face/index.yml)
+* [Personalisierung](./personalizer/index.yml)
 
-Diese Hauptsprechen werden in Azure Cognitive Services unterstützt:
+## <a name="vision"></a>Bildanalyse
 
-* Chinesisch
-* Englisch
-* Französisch
-* Deutsch
-* Italienisch
-* Japanisch
-* Koreanisch¹
-* Portugiesisch
-* Spanisch
+* [Maschinelles Sehen](./computer-vision/language-support.md)
+* [Formularerkennung (Vorschauversion)](./form-recognizer/language-support.md)
+* [Freihanderkennung (Vorschauversion)](./ink-recognizer/language-support.md)
+* [Video Indexer](../media-services/video-indexer/language-identification-model.md#guidelines-and-limitations)
 
-> [!NOTE]
-> 1 LUIS und Video Indexer: Die Spracherkennung (Sprache zu Text) wird nicht unterstützt.
+## <a name="language"></a>Sprache
 
-## <a name="additional-language-availability-by-service"></a>Verfügbarkeit weiterer Sprachen nach Dienst
+* [Plastischer Reader](./immersive-reader/language-support.md)
+* [Language Understanding (LUIS)](./luis/luis-language-support.md)
+* [QnA Maker](./qnamaker/overview/language-support.md)
+* [Textanalyse](./text-analytics/language-support.md)
+* [Translator](./translator/language-support.md)
 
-In diesen Tabellen ist die Verfügbarkeit von Sprachen nach Dienstkategorie angegeben. Die Hauptsprachen sind nicht enthalten. Verwenden Sie die folgenden Links, um mehr über die Unterstützung weiterer Sprachen nach Land, Region und Markt zu erfahren.
+## <a name="speech"></a>Spracheingabe
 
-### <a name="vision"></a>Bildanalyse
+* [Speech Services: Spracherkennung](./speech-service/language-support.md#speech-to-text)
+* [Speech-Dienst: Sprachausgabe](./speech-service/language-support.md#text-to-speech)
+* [Speech Services: Sprachübersetzung](./speech-service/language-support.md#speech-translation)
 
-| | Arabisch | Bulgarisch | Katalanisch | Kroatisch | Tschechisch | Dänisch | Niederländisch | Estnisch | Finnisch | Griechisch | Hindi | Ungarisch | Isländisch | Indonesisch | Lettisch | Litauisch | Malaiisch | Norwegisch | Polnisch | Rumänisch | Russisch | Serbisch | Slowakisch | Slowenisch | Schwedisch | Tamilisch | Thailändisch | Türkisch | Ukrainisch | Vietnamesisch |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [Maschinelles Sehen: OCR](https://docs.microsoft.com/azure/cognitive-services/computer-vision/faq) | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [Video Indexer: Spracherkennung](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview) | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [Video Indexer: Sprachübersetzung](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+## <a name="search"></a>Suchen,
 
-### <a name="speech"></a>Spracheingabe
+* [Benutzerdefinierte Bing-Suche](./bing-custom-search/language-support.md)
+* [Bing-Bildersuche](./bing-image-search/language-support.md)
+* [Bing-News-Suche](./bing-news-search/language-support.md)
+* [Bing-Vorschlagssuche](./bing-autosuggest/language-support.md)
+* [Bing-Rechtschreibprüfung](./bing-spell-check/language-support.md)
+* [Visuelle Bing-Suche](./bing-visual-search/language-support.md)
+* [Bing-Websuche](./bing-web-search/language-support.md)
 
-| | Arabisch | Bulgarisch | Katalanisch | Kroatisch | Tschechisch | Dänisch | Niederländisch | Estnisch | Finnisch | Griechisch | Hindi | Ungarisch | Isländisch | Indonesisch | Lettisch | Litauisch | Malaiisch | Norwegisch | Polnisch | Rumänisch | Russisch | Serbisch | Slowakisch | Slowenisch | Schwedisch | Tamilisch | Thailändisch | Türkisch | Ukrainisch | Vietnamesisch |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [Custom Speech Service](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/customspeech-how-to-topics/cognitive-services-custom-speech-change-locale) | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [Speech Services: Spracherkennung](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#speech-to-text) | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [Speech-Dienst: Sprachausgabe](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#text-to-speech) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: |
-| [Speech Services: Sprachübersetzung](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#speech-translation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+## <a name="decision"></a>Entscheidung
 
-### <a name="language"></a>Sprache
-
-| | Arabisch | Bulgarisch | Katalanisch | Kroatisch | Tschechisch | Dänisch | Niederländisch | Estnisch | Finnisch | Griechisch | Hindi | Ungarisch | Isländisch | Indonesisch | Lettisch | Litauisch | Malaiisch | Norwegisch | Polnisch | Rumänisch | Russisch | Serbisch | Slowakisch | Slowenisch | Schwedisch | Tamilisch | Thailändisch | Türkisch | Ukrainisch | Vietnamesisch |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [Bing-Rechtschreibprüfung](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages) | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/languages-supported) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Textübersetzung](https://docs.microsoft.com/azure/cognitive-services/translator/languages) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
-
-### <a name="search"></a>Suchen,
-
-| | Arabisch | Bulgarisch | Katalanisch | Kroatisch | Tschechisch | Dänisch | Niederländisch | Estnisch | Finnisch | Griechisch | Hindi | Ungarisch | Isländisch | Indonesisch | Lettisch | Litauisch | Malaiisch | Norwegisch | Polnisch | Rumänisch | Russisch | Serbisch | Slowakisch | Slowenisch | Schwedisch | Tamilisch | Thailändisch | Türkisch | Ukrainisch | Vietnamesisch |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [Bing-Websuche](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/supported-countries-markets) | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [Bing-Bildersuche](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/supported-countries-markets) | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [Bing-News-Suche](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/supported-countries-markets) | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [Bing-Vorschlagssuche](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest/bing-autosuggest-supported-languages) | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [Visuelle Bing-Suche](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/supported-countries-markets) | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [Benutzerdefinierte Bing-Suche](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/supported-countries-markets) | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
-
-### <a name="decision"></a>Entscheidung
-
-| | Arabisch | Bulgarisch | Katalanisch | Kroatisch | Tschechisch | Dänisch | Niederländisch | Estnisch | Finnisch | Griechisch | Hindi | Ungarisch | Isländisch | Indonesisch | Lettisch | Litauisch | Malaiisch | Norwegisch | Polnisch | Rumänisch | Russisch | Serbisch | Slowakisch | Slowenisch | Schwedisch | Tamilisch | Thailändisch | Türkisch | Ukrainisch | Vietnamesisch |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [Content Moderator: Textfilterung](https://docs.microsoft.com/azure/cognitive-services/content-moderator/text-moderation-api-languages) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-
-Die folgenden Cognitive Services-Instanzen sind sprachunabhängig, und für sie gelten keine auf der Sprache basierenden Einschränkungen.
-
-* [Personalizer (Vorschau)](https://docs.microsoft.com/azure/cognitive-services/personalizer/)
-* [Anomalieerkennung (Vorschau)](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/overview)
-
+* [Content Moderator](./content-moderator/language-support.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Was ist Cognitive Services?](welcome.md)
+* [Was ist Cognitive Services?](./what-are-cognitive-services.md)
 * [Erstellen eines Kontos](cognitive-services-apis-create-account.md)

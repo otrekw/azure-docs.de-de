@@ -3,7 +3,7 @@ title: Was ist Azure Notification Hubs?
 description: Erfahren Sie, wie Sie mit Azure Notification Hubs Pushbenachrichtigungsfunktionen hinzuzufügen.
 author: sethmanheim
 manager: femila
-editor: jwargo
+editor: tjsomasundaram
 services: notification-hubs
 documentationcenter: ''
 ms.assetid: fcfb0ce8-0e19-4fa8-b777-6b9f9cdda178
@@ -13,47 +13,50 @@ ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/30/2019
+ms.date: 03/23/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: f92c9ac6942bfad8df57bb3887d1ba5b7c7190af
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: b8ac964c62ac4b30e9280e4ae921297ba860d7c2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213109"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "86529929"
 ---
 # <a name="what-is-azure-notification-hubs"></a>Was ist Azure Notification Hubs?
 
-Azure Notification Hubs bietet ein benutzerfreundliches, horizontal skalierbares Pushmodul, mit dem Sie von einem beliebigen Back-End (cloudbasiert oder lokal) Benachrichtigungen an sämtliche Plattformen (iOS, Android, Windows, Kindle, Baidu usw.) senden können. Notification Hubs eignet sich sowohl für Unternehmens- als auch Privatkundenszenarien. Es folgen einige Beispielszenarios:
+Azure Notification Hubs bietet eine benutzerfreundliche, horizontal skalierbare Push-Engine, mit der Sie von einem beliebigen (cloudbasierten oder lokalen) Back-End aus Benachrichtigungen an eine beliebige Plattform (iOS, Android, Windows usw.) senden können. Notification Hubs eignet sich sowohl für Unternehmens- als auch Privatkundenszenarien. Es folgen einige Beispielszenarios:
 
 - Senden von Benachrichtigungen zu brandaktuellen Nachrichten an Millionen von Empfängern mit niedriger Latenz
 - Senden standortbasierter Gutscheine an interessierte Kundengruppen
 - Senden von Ereignisbenachrichtigungen an Benutzer oder Gruppen für Medien-/Sport-/Finanz-/Spieleanwendungen
 - Pushübertragung von Werbeinhalten an Anwendungen, um Kunden anzusprechen und zum Kauf anzuregen
-- Benachrichtigen von Benutzer zu Unternehmensereignissen wie neue Nachrichten und Arbeitselementen
+- Informieren von Benutzern über Unternehmensereignisse (beispielsweise neue Nachrichten und Arbeitselemente)
 - Senden von Codes für die mehrstufige Authentifizierung
 
 ## <a name="what-are-push-notifications"></a>Was sind Pushbenachrichtigungen?
 
-Pushbenachrichtigungen sind eine Form der Kommunikation zwischen einer App und Benutzern, bei der Benutzer mobiler Apps zu bestimmten gewünschten Informationen benachrichtigt werden, meist in einem Popupfenster oder Dialogfeld auf einem mobilen Gerät. Benutzer haben im Allgemeinen die Wahl, die Nachricht anzuzeigen oder zu verwerfen. Bei Anzeige wird die mobile Anwendung geöffnet, die die Benachrichtigung kommuniziert hat. Einige Benachrichtigungen sind stumm – sie werden für die Verarbeitung hinter den Kulissen an die App übermittelt, die dann entscheidet, was zu tun ist.
+Pushbenachrichtigungen sind eine Form der Kommunikation zwischen einer App und Benutzern, bei der Benutzer mobiler Apps über bestimmte gewünschte Informationen benachrichtigt werden (meist in einem Popupfenster oder Dialogfeld auf einem mobilen Gerät). Benutzer haben im Allgemeinen die Wahl, die Nachricht anzuzeigen oder zu verwerfen. Bei Anzeige wird die mobile Anwendung geöffnet, die die Benachrichtigung kommuniziert hat. Einige Benachrichtigungen sind stumm; sie werden für die Verarbeitung im Hintergrund an die App übermittelt, die dann entscheidet, was zu tun ist.
 
 Pushbenachrichtigungen sind bei Privatkunden-Apps zum Steigern der App-Nutzung und bei Unternehmens-Apps zum Verbreiten aktueller Geschäftsinformationen von Bedeutung. Dies ist die beste Lösung für die Kommunikation zwischen App und Benutzer, da sie für Mobilgeräte energieeffizient, für die Absender von Benachrichtigungen flexibel und verfügbar ist, wenn entsprechende Apps nicht aktiv sind.
+
+> [!NOTE]
+> Für Azure Notification Hubs werden VoIP-Pushbenachrichtigungen (Voice over IP) nicht offiziell unterstützt. In [diesem Artikel](voip-apns.md) wird aber beschrieben, wie Sie APNS-VoIP-Benachrichtigungen über Azure Notification Hubs nutzen können.
 
 Weitere Informationen zu Pushbenachrichtigungen für einige gängige Plattformen finden Sie in den folgenden Themen:
 
 - [Android](https://developer.android.com/guide/topics/ui/notifiers/notifications.html)
 - [iOS](https://developer.apple.com/notifications/)
-- [Windows](https://msdn.microsoft.com/library/windows/apps/hh779725.aspx)
+- [Windows](/previous-versions/windows/apps/hh779725(v=win.10))
 
-## <a name="how-push-notifications-work"></a>Funktionsweise von Pushbenachrichtigungen
+## <a name="how-do-push-notifications-work"></a>Funktionsweise von Pushbenachrichtigungen
 
-Pushbenachrichtigungen werden über plattformspezifische Infrastrukturen übermittelt, die *Platform Notification Systems* (PNS, Plattformbenachrichtigungssystem) genannt werden. Sie bieten schlanke Pushfunktionen für die Übermittlung von Nachrichten an ein Gerät mittels eines bereitgestellten Handles und haben keine gemeinsame Schnittstelle. Zum Senden einer Benachrichtigung an alle Benutzer der Android-, iOS- und Windows-Versionen einer App muss der Entwickler separat mit APNS (Apple Push Notification Service), FCM (Firebase Cloud Messaging) und WNS (Windows Notification Service) arbeiten.
+Pushbenachrichtigungen werden über plattformspezifische Infrastrukturen übermittelt, die *Platform Notification Systems* (PNS, Plattformbenachrichtigungssystem) genannt werden. Sie bieten einfache Pushfunktionen für die Übermittlung von Nachrichten an ein Gerät mittels eines bereitgestellten Handles und haben keine gemeinsame Schnittstelle. Zum Senden einer Benachrichtigung an alle Benutzer der Android-, iOS- und Windows-Versionen einer App muss der Entwickler separat mit APNS (Apple Push Notification Service), FCM (Firebase Cloud Messaging) und WNS (Windows Notification Service) arbeiten.
 
 Aus allgemeiner Sicht funktionieren Pushbenachrichtigungen wie folgt:
 
-1. Eine Anwendung entscheidet, dass sie Benachrichtigungen empfangen möchte, daher wendet sie sich an das Plattformbenachrichtigungssystem der Zielplattform, auf der die App ausgeführt wird, und fordert ein eindeutiges und temporäres Push-Handle an. Der Handletyp hängt vom System ab (WNS verwendet z.B URIs, während APNS mit Token arbeitet).
+1. Eine Anwendung, die eine Benachrichtigung empfangen möchte, kontaktiert das Plattformbenachrichtigungssystem der Zielplattform, auf der die App ausgeführt wird, und fordert ein eindeutiges und temporäres Push-Handle an. Der Handletyp hängt vom System ab (WNS verwendet z.B URIs, während APNS mit Token arbeitet).
 2. Die Client-App speichert dieses Handle zur späteren Verwendung im Back-End oder Anbieter.
 3. Um eine Pushbenachrichtigung zu senden, nimmt das Back-End der App über den Handle Kontakt mit dem PNS auf, um eine bestimmte Client-App als Ziel zu wählen.
 4. Das PNS leitet die Benachrichtigung an das vom Handle angegebene Gerät weiter.
@@ -64,7 +67,7 @@ Aus allgemeiner Sicht funktionieren Pushbenachrichtigungen wie folgt:
 
 PNS-Systeme sind leistungsstark. Der App-Entwickler hat jedoch immer noch sehr viel Arbeit, selbst wenn er nur allgemeine Pushbenachrichtigungsszenarien wie das Übertragungen von Pushbenachrichtigungen an in Segmente eingeteilte Benutzer implementieren möchte.
 
-Pushbenachrichtigungen erfordern eine komplexe Infrastruktur, die nicht in Bezug zur Hauptgeschäftslogik der Anwendung steht. Es folgen einige der Herausforderungen an die Infrastruktur:
+Zum Senden von Pushbenachrichtigungen ist eine komplexe Infrastruktur erforderlich, die nicht mit der Hauptgeschäftslogik der Anwendung zusammenhängt. Im Anschluss sind einige der Herausforderungen im Zusammenhang mit der Infrastruktur aufgeführt:
 
 - **Plattformabhängigkeit**
   - Das Back-End erfordert komplexe und schwer zu verwaltende plattformabhängige Logik zum Senden von Benachrichtigungen an Geräte auf verschiedenen Plattformen, da PNS-Systeme nicht vereinheitlicht sind.
@@ -76,36 +79,36 @@ Pushbenachrichtigungen erfordern eine komplexe Infrastruktur, die nicht in Bezug
 
 ## <a name="why-use-azure-notification-hubs"></a>Gründe für die Verwendung von Azure Notification Hubs
 
-Notification Hubs nimmt Ihnen die gesamte Komplexität des eigenständigen Bereitstellens von Pushbenachrichtigungen von Ihrem App-Back-End ab. Die horizontal skalierte Pushbenachrichtigungsinfrastruktur für mehrere Plattformen reduziert den Code für Pushvorgänge und vereinfacht Ihr Back-End. Bei Notification Hubs sind Geräte lediglich zuständig für das Registrieren ihrer PNS-Handles bei einem Hub, während das Back-End Nachrichten an Benutzer oder Interessengruppen sendet (siehe die folgende Abbildung):
+Notification Hubs nimmt Ihnen die gesamte Komplexität im Zusammenhang mit dem Senden von Pushbenachrichtigungen über Ihr App-Back-End ab. Die horizontal skalierte Pushbenachrichtigungsinfrastruktur für mehrere Plattformen reduziert den Code für Pushvorgänge und vereinfacht Ihr Back-End. Bei Notification Hubs sind Geräte lediglich zuständig für das Registrieren ihrer PNS-Handles bei einem Hub, während das Back-End Nachrichten an Benutzer oder Interessengruppen sendet (siehe die folgende Abbildung):
 
 ![Notification Hubs-Diagramm](./media/notification-hubs-overview/notification-hub-diagram.png)
 
-Notification Hubs ist Ihre einsatzbereite Push-Engine mit den folgenden Vorteilen:
+Notification Hubs ist eine sofort einsatzbereite Push-Engine mit den folgenden Vorteilen:
 
 - **Plattformübergreifend**
-  - Unterstützung für alle wichtigen Pushplattformen, einschließlich iOS, Android, Windows, Kindle und Baidu.
+  - Unterstützung aller wichtigen Pushplattformen.
   - Eine gemeinsame Schnittstelle für Pushbenachrichtigungen an alle Plattformen in plattformspezifischen oder plattformunabhängigen Formaten ohne plattformspezifische Aufgaben.
   - Zentrale Verwaltung von Gerätehandles.
 - **Back-End-übergreifend**
-  - Cloud oder lokal
+  - Cloudbasiert oder lokal.
   - .NET, Node.js, Java, Python usw.
 - **Umfangreiche Bereitstellungsmuster**
   - Übertragung an eine oder mehrere Plattformen: Über einen einzigen API-Aufruf können Sie Millionen von Geräten auf verschiedenen Plattformen erreichen.
   - Push an Gerät: Sie können Benachrichtigungen an einzelne Geräte richten.
-  - Push an Benutzer: Die Features „Tags“ und „Vorlagen“ helfen Ihnen, alle Geräte eines Benutzers auf verschiedenen Plattformen zu erreichen.
-  - Push an Segment mit dynamischen Tags: Das Feature „Tags“ hilft Ihnen, Geräte zu segmentieren und sie per Push gemäß Ihren Anforderungen zu erreichen, ganz gleich, ob Sie an ein Segment oder an einen Ausdruck von Segmenten senden (Beispiel: aktiv UND lebt in Stuttgart NICHT neuer Benutzer). Anstatt auf Veröffentlichung/Abonnements beschränkt zu sein, können Sie Gerätetags jederzeit und überall aktualisieren.
-  - Lokalisierte Pushbenachrichtigungen: Das Feature „Vorlagen“ verhilft Ihnen zu einer Lokalisierung, ohne sich auf den Back-End-Code auszuwirken.
+  - Push an Benutzer: Tags und Vorlagen helfen Ihnen dabei, alle Geräte eines Benutzers auf verschiedenen Plattformen zu erreichen.
+  - Push an Segment mit dynamischen Tags: Das Feature „Tags“ hilft Ihnen dabei, Geräte zu segmentieren und sie per Push gemäß Ihren Anforderungen zu erreichen, ganz gleich, ob Sie eine Benachrichtigung an ein Segment oder an einen Ausdruck von Segmenten senden (Beispiel: aktiv UND lebt in Stuttgart NICHT neuer Benutzer). Sie können Gerätetags jederzeit und überall aktualisieren, anstatt auf Veröffentlichen/Abonnieren beschränkt zu sein.
+  - Lokalisierte Pushbenachrichtigungen: Das Feature „Vorlagen“ verhilft Ihnen zu einer Lokalisierung ohne Auswirkungen auf den Back-End-Code.
   - Automatische Pushbenachrichtigungen: Sie können das Push-Pull-Muster aktivieren, indem Sie automatische Benachrichtigungen an Geräte senden, um auszulösen, dass sie bestimmte Pullvorgänge oder Aktionen ausführen.
-  - Geplante Pushbenachrichtigungen: Sie können jederzeit das Senden von Benachrichtigungen planen.
+  - Geplante Pushbenachrichtigungen: Sie können das Senden von Benachrichtigungen für einen beliebigen Zeitpunkt planen.
   - Direkte Pushbenachrichtigungen: Sie können das Registrieren von Geräten beim Notification Hubs-Dienst überspringen und direkte Pushbenachrichtigungen im Batch an eine Liste von Gerätehandles auslösen.
   - Personalisierte Pushbenachrichtigungen: Pushvariablen für Geräte helfen Ihnen beim Senden gerätespezifischer, personalisierter Pushbenachrichtigungen mit angepassten Schlüssel-Wert-Paaren.
 - **Umfangreiche Telemetrie**
-  - Allgemeine Telemetriedaten zu Pushbenachrichtigungen, Geräten, Fehlern und Betrieb stehen im Azure-Portal und programmgesteuert zur Verfügung.
-  - Nachrichtenbasierte Telemetrie dient zum Nachverfolgen jedes Pushvorgangs von Ihrem anfänglichen Anforderungsaufruf an den Notification Hubs-Dienst, der die Pushbenachrichtigungen als Batch erfolgreich verarbeitet.
-  - Das Feedback zum Plattformbenachrichtigungssystem dient zum Kommunizieren des gesamten Feedbacks zum Plattformbenachrichtigungssystem, um das Debuggen zu erleichtern.
+  - Allgemeine Telemetriedaten zu Pushbenachrichtigungen, Geräten, Fehlern und Betrieb stehen sowohl im Azure-Portal als auch programmgesteuert zur Verfügung.
+  - Nachrichtenspezifische Telemetriedaten ermöglichen die Nachverfolgung jedes Pushvorgangs vom ursprünglichen Anforderungsaufruf bis zum erfolgreichen Senden der Pushbenachrichtigungen durch den Notification Hubs-Dienst.
+  - Im PNS-Feedback wird das gesamte Feedback von Plattformbenachrichtigungssystemen kommuniziert, um Sie beim Debuggen zu unterstützen.
 - **Skalierbarkeit**
   - Senden Sie Nachrichten schnell an Millionen von Geräten, ohne die Architektur umzubauen oder ein Sharding von Geräten durchzuführen.
-- **Sicherheit**
+- **Security**
   - Gemeinsamer geheimer Zugriffsschlüssel (Shared Access Secret, SAS) oder Verbundauthentifizierung.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -117,16 +120,16 @@ Informationen zu den ersten Schritten beim Erstellen und Verwenden eines Benachr
 
 [How customers are using Notification Hubs]: https://azure.microsoft.com/services/notification-hubs
 [Notification Hubs tutorials and guides]: https://azure.microsoft.com/documentation/services/notification-hubs
-[iOS]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started
-[Android]: https://azure.microsoft.com/documentation/articles/notification-hubs-android-get-started
-[Windows Universal]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started
-[Windows Phone]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-phone-get-started
-[Kindle]: https://azure.microsoft.com/documentation/articles/notification-hubs-kindle-get-started
-[Xamarin.iOS]: https://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-ios-get-started
-[Xamarin.Android]: https://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-android-get-started
-[Microsoft.WindowsAzure.Messaging.NotificationHub]: https://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx
-[Microsoft.ServiceBus.Notifications]: https://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx
-[App Service Mobile Apps]: https://azure.microsoft.com/documentation/articles/app-service-mobile-value-prop/
+[iOS]: ./notification-hubs-push-notification-fixer.md
+[Android]: ./notification-hubs-android-push-notification-google-gcm-get-started.md
+[Windows Universal]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[Windows Phone]: ./notification-hubs-windows-mobile-push-notifications-mpns.md
+[Kindle]: ./notification-hubs-android-push-notification-google-fcm-get-started.md
+[Xamarin.iOS]: ./xamarin-notification-hubs-ios-push-notification-apns-get-started.md
+[Xamarin.Android]: ./xamarin-notification-hubs-push-notifications-android-gcm.md
+[Microsoft.WindowsAzure.Messaging.NotificationHub]: /previous-versions/azure/reference/dn339221(v=azure.100)
+[Microsoft.ServiceBus.Notifications]: /previous-versions/azure/
+[App Service Mobile Apps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [templates]: notification-hubs-templates-cross-platform-push-messages.md
 [Azure portal]: https://portal.azure.com
 [tags]: (https://msdn.microsoft.com/library/azure/dn530749.aspx)

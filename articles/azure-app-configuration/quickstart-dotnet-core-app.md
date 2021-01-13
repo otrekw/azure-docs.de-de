@@ -1,25 +1,19 @@
 ---
 title: Schnellstart für Azure App Configuration mit .NET Core | Microsoft-Dokumentation
-description: Schnellstartanleitung für die Verwendung von Azure App Configuration mit .NET Core-Apps
+description: In dieser Schnellanleitung erstellen Sie mit Azure App Configuration eine .NET Core-App, um die Speicherung und Verwaltung von Anwendungseinstellungen getrennt von Ihrem Code zu zentralisieren.
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: .NET Core
-ms.workload: tbd
-ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 149542965737b2703bc18e985bfaf4d90c8dab29
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.custom: devx-track-csharp
+ms.date: 09/28/2020
+ms.author: alkemper
+ms.openlocfilehash: 1a5e756e05543d9f19775f4e2d1abcee82794f9e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709411"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932063"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Schnellstart: Erstellen einer .NET Core-App mit App Configuration
 
@@ -27,14 +21,14 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine .NET 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-- [.NET Core SDK](https://dotnet.microsoft.com/download)
+- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/dotnet)
+- [.NET Core SDK](https://dotnet.microsoft.com/download) – auch in [Azure Cloud Shell](https://shell.azure.com) verfügbar.
 
-## <a name="create-an-app-configuration-store"></a>Erstellen eines App-Konfigurationsspeichers
+## <a name="create-an-app-configuration-store"></a>Erstellen eines App Configuration-Speichers
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
+7. Wählen Sie **Konfigurations-Explorer** > **Erstellen** > **Schlüssel-Wert** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
     | Schlüssel | Wert |
     |---|---|
@@ -42,25 +36,33 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine .NET 
 
     Lassen Sie **Bezeichnung** und **Inhaltstyp** vorerst leer.
 
+8. Wählen Sie **Übernehmen**.
+
 ## <a name="create-a-net-core-console-app"></a>Erstellen einer .NET Core-Konsolen-App
 
-Sie verwenden die [.NET Core-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/dotnet/core/tools/), um ein neues Projekt für eine .NET Core-Konsolen-App zu erstellen. Der Vorteil bei Verwendung der .NET Core-CLI gegenüber Visual Studio ist, dass sie für alle Windows-, macOS- und Linux-Plattformen verfügbar ist.
+Sie verwenden die [.NET Core-Befehlszeilenschnittstelle (CLI)](/dotnet/core/tools/), um ein neues Projekt für eine .NET Core-Konsolen-App zu erstellen. Der Vorteil bei Verwendung der .NET Core-CLI gegenüber Visual Studio ist, dass sie für alle Windows-, macOS- und Linux-Plattformen verfügbar ist.  Verwenden Sie alternativ die vorinstallierten Tools, die in [Azure Cloud Shell](https://shell.azure.com) verfügbar sind.
 
 1. Erstellen Sie einen neuen Ordner für Ihr Projekt.
 
-2. Führen Sie im neuen Ordner den folgenden Befehl aus, um ein neues Konsolen-App-Projekt vom Typ „ASP.NET Core “ zu erstellen:
+2. Führen Sie im neuen Ordner den folgenden Befehl aus, um ein neues Konsolen-App-Projekt vom Typ „.NET Core“ zu erstellen:
 
-        dotnet new console
+    ```dotnetcli
+    dotnet new console
+    ```
 
-## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App-Konfigurationsspeicher
+## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App Configuration-Speicher
 
 1. Fügen Sie einen Verweis auf das NuGet-Paket `Microsoft.Extensions.Configuration.AzureAppConfiguration` hinzu, indem Sie den folgenden Befehl ausführen:
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 2.0.0-preview-009470001-1371
+    ```dotnetcli
+    dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
+    ```
 
 2. Führen Sie den folgenden Befehl aus, um Pakete für Ihr Projekt wiederherzustellen:
 
-        dotnet restore
+    ```dotnetcli
+    dotnet restore
+    ```
 
 3. Öffnen Sie *Program.cs*, und fügen Sie einen Verweis auf den App Configuration-Anbieter für .NET Core hinzu.
 
@@ -84,25 +86,37 @@ Sie verwenden die [.NET Core-Befehlszeilenschnittstelle (CLI)](https://docs.mic
 
 ## <a name="build-and-run-the-app-locally"></a>Lokales Erstellen und Ausführen der App
 
-1. Legen Sie eine Umgebungsvariable mit dem Namen **ConnectionString** fest, und geben Sie dafür den Zugriffsschlüssel für Ihren App-Konfigurationsspeicher an. Führen Sie bei Verwendung einer Windows-Eingabeaufforderung den folgenden Befehl aus, und starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird:
+1. Legen Sie eine Umgebungsvariable mit dem Namen **ConnectionString** fest, und geben Sie dafür den Zugriffsschlüssel für Ihren App Configuration-Speicher an. Führen Sie an der Befehlszeile den folgenden Befehl aus:
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```cmd
+    setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Führen Sie bei Verwendung von Windows PowerShell den folgenden Befehl aus:
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```azurepowershell
+    $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     Führen Sie bei Verwendung von macOS oder Linux den folgenden Befehl aus:
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+    export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
+
+    Starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird. Geben Sie den Wert der Umgebungsvariablen aus, um zu überprüfen, ob er richtig festgelegt wurde.
 
 2. Führen Sie den folgenden Befehl aus, um die Konsolen-App zu erstellen:
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 3. Führen Sie nach der erfolgreichen Erstellung den folgenden Befehl aus, um die App lokal auszuführen:
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -110,7 +124,7 @@ Sie verwenden die [.NET Core-Befehlszeilenschnittstelle (CLI)](https://docs.mic
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie über den [App-Konfigurationsanbieter](https://go.microsoft.com/fwlink/?linkid=2074664) einen neuen App-Konfigurationsspeicher erstellt und mit einer .NET Core-Konsolen-App verwendet. Weitere Informationen zur Verwendung von App Configuration finden Sie im nächsten Tutorial, in dem es um die Authentifizierung geht.
+In diesem Schnellstart haben Sie über den [Anbieter App Configuration](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) einen neuen App Configuration-Speicher erstellt und mit einer .NET Core-Konsolen-App verwendet. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre .NET Core-App für das dynamische Aktualisieren der Konfigurationseinstellungen konfigurieren.
 
 > [!div class="nextstepaction"]
-> [Integration der verwalteten Identität](./howto-integrate-azure-managed-service-identity.md)
+> [Tutorial: Verwenden der dynamischen Konfiguration in einer .NET Framework-App](./enable-dynamic-configuration-dotnet-core.md)

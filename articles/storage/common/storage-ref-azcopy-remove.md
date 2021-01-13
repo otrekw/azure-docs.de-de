@@ -4,20 +4,20 @@ description: Dieser Artikel enthält Referenzinformationen zum Befehl „azcopy 
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0cc366ab2cdad9c7258dca905d8f4a06472119fe
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: d79b647d216fe28241e5891def574ab598304828
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196796"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89078219"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
-Löscht Entitäten aus Azure Storage Blob, Datei und Azure Data Lake Storage Gen2.
+Löscht Blobs oder Dateien aus einem Azure Storage-Konto.
 
 ## <a name="synopsis"></a>Zusammenfassung
 
@@ -25,66 +25,97 @@ Löscht Entitäten aus Azure Storage Blob, Datei und Azure Data Lake Storage Gen
 azcopy remove [resourceURL] [flags]
 ```
 
+## <a name="related-conceptual-articles"></a>Verwandte konzeptionelle Artikel
+
+- [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
+- [Übertragen von Daten mit AzCopy und Blobspeicher](storage-use-azcopy-blobs.md)
+- [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
+- [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
+
 ## <a name="examples"></a>Beispiele
 
-Entfernen Sie einen einzelnen Blob mit SAS:
+Entfernen eines einzelnen Blobs mithilfe eines SAS-Tokens:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
-Entfernen Sie ein gesamtes virtuelles Verzeichnis mit einer SAS (Shared Access Signature):
-
+Entfernen eines gesamten virtuellen Verzeichnisses mithilfe eines SAS-Tokens:
+ 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
 ```
 
-Entfernen Sie nur die obersten Blobs in einem virtuellen Verzeichnis, aber nicht die zugehörigen Unterverzeichnisse:
+Entfernen Sie nur die Blobs innerhalb eines virtuellen Verzeichnisses, aber entfernen Sie keine Unterverzeichnisse oder Blobs innerhalb dieser Unterverzeichnisse:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-Entfernen Sie eine Teilmenge von Blobs in einem virtuellen Verzeichnis (z.B. nur JPG- und PDF-Dateien oder wenn der Blobname „exactName“ lautet):
+Entfernen Sie eine Teilmenge von Blobs in einem virtuellen Verzeichnis (Beispiel: Entfernen Sie nur JPG- und PDF-Dateien oder wenn der Blobname `exactName` lautet):
 
 ```azcopy
-azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --include="*.jpg;*.pdf;exactName"
+azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --include-pattern="*.jpg;*.pdf;exactName"
 ```
 
-Entfernen Sie ein gesamtes virtuelles Verzeichnis, doch schließen Sie bestimmte Blobs aus dem Umfang aus (z.B. alle Blobs, die mit „foo“ beginnen oder mit „bar“ enden):
+Entfernen Sie ein gesamtes virtuelles Verzeichnis, doch schließen Sie bestimmte Blobs aus dem Umfang aus (z. B. alle Blobs, die mit „foo“ beginnen oder mit „bar“ enden):
 
 ```azcopy
-azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --exclude="foo*;*bar"
+azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --exclude-pattern="foo*;*bar"
 ```
 
-Entfernen Sie eine einzelne Datei aus Data Lake Storage Gen2 (Einschließen und Ausschließen wird nicht unterstützt):
+Entfernen Sie bestimmte Blobs und virtuelle Verzeichnisse, indem Sie ihre relativen Pfade (NICHT URL-codiert) in eine Datei einfügen:
+
+```azcopy
+azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/dir]" --recursive=true --list-of-files=/usr/bar/list.txt
+- file content:
+    dir1/dir2
+    blob1
+    blob2
+```
+Entfernen Sie eine einzelne Datei aus einem Blob Storage-Konto, das über einen hierarchischen Namespace verfügt („include“/„exclude“ nicht unterstützt):
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/file]?[SAS]"
 ```
 
-Entfernen Sie ein einzelnes Verzeichnis aus Data Lake Storage Gen2 (Einschließen und Ausschließen wird nicht unterstützt):
+Entfernen Sie ein einzelnes Verzeichnis aus einem Blob Storage-Konto, das über einen hierarchischen Namespace verfügt („include“/„exclude“ nicht unterstützt):
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory]?[SAS]"
 ```
 
-## <a name="options"></a>Optionen
+## <a name="options"></a>Tastatur
 
-|Option|BESCHREIBUNG|
-|--|--|
-|–exclude string|Schließen Sie Dateien aus, in denen der Name der Musterliste entspricht. Beispiel: *.jpg;* .pdf;exactName|
-|-h, --help|Zeigt Hilfeinhalt zum Befehl „remove“.|
-|–include string|Schließen Sie nur Dateien ein, in denen der Name der Musterliste entspricht. Beispiel: *.jpg;* .pdf;exactName|
-|–log-level string|Definieren Sie die Protokollausführlichkeit für die Protokolldatei. Folgende Ebenen sind verfügbar: INFO (alle Anforderungen/Antworten), WARNUNG (langsame Antworten), FEHLER (nur fehlgeschlagene Anforderungen) und KEINE (keine Ausgabeprotokolle). (Standardwert: „Info“)|
-|–recursive|Überprüfen Sie Unterverzeichnisse rekursiv, wenn Sie zwischen Verzeichnissen synchronisieren.|
+**--delete-snapshots**-Zeichenfolge: Standardmäßig schlagen Löschvorgänge fehl, wenn ein Blob über Momentaufnahmen verfügt. Geben Sie `include` an, um das Stammblob und alle zugehörigen Momentaufnahmen zu entfernen. Alternativ können Sie auch `only` angeben, um nur die Momentaufnahmen zu entfernen und den Stammblob zu behalten.
+
+**--exclude-path** string  Schließt diese Pfade beim Entfernen aus. Diese Option unterstützt keine Platzhalterzeichen (*). Überprüft das Präfix des relativen Pfads. Beispiel: `myFolder;myFolder/subDirName/file.pdf`
+
+**--exclude-pattern string**   Schließt Dateien aus, deren Name der Musterliste entspricht. Beispiel: `*.jpg`;`*.pdf`;`exactName`
+
+**--force-if-read-only**  Erzwingt beim Löschen von Azure Files-Dateien oder -Ordnern, dass der Löschvorgang ausgeführt wird, auch wenn für das vorhandene Objekt das Nur-Lese-Attribut festgelegt ist.
+
+**--help**  Hilfe zu „remove“.
+
+**--include-path** string  Schließt nur diese Pfade beim Entfernen ein. Diese Option unterstützt keine Platzhalterzeichen (*). Überprüft das Präfix des relativen Pfads. Beispiel: `myFolder;myFolder/subDirName/file.pdf`
+
+**--include-pattern** string  Schließt nur Dateien ein, deren Name der Musterliste entspricht. Beispiel: *`.jpg`;* `.pdf`;`exactName`
+
+**--list-of-files** string  Definiert den Speicherort einer Datei, die die Liste der zu löschenden Dateien und Verzeichnisse enthält. Die relativen Pfade sollten durch Zeilenumbrüche getrennt werden, und die Pfade sollten NICHT URL-codiert sein. 
+
+**--list-of-versions** string  Gibt eine Datei an, bei der jede Versions-ID in einer separaten Zeile steht. Stellen Sie sicher, dass die Quelle auf ein einzelnes Blob verweisen muss und dass alle in der Datei mit diesem Flag angegebenen Versions-IDs nur zum Quellblob gehören dürfen. Die angegebenen Versions-IDs des angegebenen Blobs werden aus Azure Storage gelöscht. 
+
+**--log-level** string  Definiert, wie ausführlich die Protokolldatei sein soll. Verfügbare Ebenen umfassen: `INFO`(alle Anforderungen/Antworten), `WARNING`(langsame Antworten), `ERROR`(nur fehlerhafte Anforderungen) und `NONE`(keine Ausgabeprotokolle). (Standard `INFO`) (Standard `INFO`)
+
+**--recursive**  Überprüft Unterverzeichnisse bei der Synchronisierung zwischen Verzeichnissen rekursiv.
 
 ## <a name="options-inherited-from-parent-commands"></a>Von übergeordneten Befehlen geerbte Optionen
 
 |Option|BESCHREIBUNG|
 |---|---|
-|–cap-mbps uint32|Begrenzt die Übertragungsrate, in Megabit pro Sekunde. Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.|
-|–output-type string|Format der Befehlsausgabe. Folgende Optionen sind verfügbar: „text“, „json“. Der Standardwert lautet „text“.|
+|--cap-mbps float|Begrenzt die Übertragungsrate (in Megabit pro Sekunde). Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.|
+|–output-type string|Format der Befehlsausgabe. Folgende Optionen sind verfügbar: „text“ und „json“. Der Standardwert lautet „text“.|
+|--trusted-microsoft-suffixes-Zeichenfolge   |Gibt zusätzliche Domänensuffixe an, an die Azure Active Directory-Anmeldetoken gesendet werden können.  Der Standardwert ist ' *.core.windows.net;* .core.chinacloudapi.cn; *.core.cloudapi.de;* .core.usgovcloudapi.net'. Alle hier aufgelisteten Werte werden zum Standardwert hinzugefügt. Aus Sicherheitsgründen sollten Sie hier nur Microsoft Azure-Domänen platzieren. Trennen Sie mehrere E-Mail-Adressen durch Semikolons voneinander.|
 
 ## <a name="see-also"></a>Weitere Informationen
 

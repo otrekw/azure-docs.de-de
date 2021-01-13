@@ -1,30 +1,19 @@
 ---
-title: Überwachen und Diagnostizieren von Windows-Containern auf Service Fabric in Azure | Microsoft-Dokumentation
+title: Überwachen und Diagnostizieren von Windows-Containern
 description: In diesem Tutorial konfigurieren Sie Azure Monitor-Protokolle für die Überwachung und Diagnose von Windows-Containern in Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 856e2859c778c9f23bc093c2283571a1440ef701
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: cf14cce631a505a951ec4d9c0955431b9a98527e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68598770"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840675"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Tutorial: Überwachen von Windows-Containern unter Service Fabric mit Azure Monitor-Protokollen
 
-Dieser dritte Teil einer Tutorialreihe führt Sie schrittweise durch die Einrichtung von Azure Monitor-Protokollen für die Überwachung Ihrer in Service Fabric orchestrierten Windows-Container.
+Dieser dritte Teil einer Tutorialreihe führt Sie schrittweise durch das Konfigurieren von Azure Monitor-Protokollen für die Überwachung Ihrer in Service Fabric orchestrierten Windows-Container.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -47,7 +36,7 @@ Bevor Sie mit diesem Tutorial beginnen, sollten folgende Voraussetzungen erfüll
 Falls Sie die im ersten Teil dieses Tutorials [bereitgestellte Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) verwendet haben, sollte sie die folgenden Ergänzungen einer generischen Service Fabric Azure Resource Manager-Vorlage enthalten. Falls Sie über einen eigenen Cluster verfügen, den Sie zur Überwachung von Containern mit Azure Monitor-Protokollen einrichten möchten, gehen Sie wie folgt vor:
 
 * Nehmen Sie die folgenden Änderungen an Ihrer Resource Manager-Vorlage vor.
-* Stellen Sie sie mithilfe von PowerShell bereit, um Ihren Cluster durch [Bereitstellen der Vorlage](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) zu aktualisieren. Azure Resource Manager erkennt, dass die Ressource vorhanden ist, und gibt sie als Upgrade aus.
+* Stellen Sie sie mithilfe von PowerShell bereit, um Ihren Cluster durch [Bereitstellen der Vorlage](./service-fabric-cluster-creation-via-arm.md) zu aktualisieren. Azure Resource Manager erkennt, dass die Ressource vorhanden ist, und gibt sie als Upgrade aus.
 
 ### <a name="adding-azure-monitor-logs-to-your-cluster-template"></a>Hinzufügen von Azure Monitor-Protokollen zu Ihrer Clustervorlage
 
@@ -186,7 +175,7 @@ Nehmen Sie die folgenden Änderungen in Ihrer *template.json*-Datei vor:
     },
     ```
 
-[Hier](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) finden Sie eine (in Teil 1 dieses Tutorials verwendete) Beispielvorlage, die alle diese Änderungen enthält und Ihnen bei Bedarf als Referenz zur Verfügung steht. Diese Änderungen fügen Ihrer Ressourcengruppe einen Log Analytics-Arbeitsbereich hinzu. Der Arbeitsbereich wird zum Erfassen von Service Fabric-Plattformereignissen aus den Speichertabellen konfiguriert, die mit dem [Microsoft Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md)-Agent konfiguriert wurden. Der Log Analytics-Agent (Microsoft Monitoring Agent) wurde auch jedem Knoten in Ihrem Cluster als VM-Erweiterung hinzugefügt. Das bedeutet Folgendes: Wenn Sie Ihren Cluster skalieren, wird der Agent automatisch auf jedem Computer konfiguriert und mit demselben Arbeitsbereich verknüpft.
+[Hier](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/d2ffa318581fc23ac7f1b0ab2b52db1a0d7b4ba7/5-VM-Windows-OMS-UnSecure/sfclusteroms.json) finden Sie eine (in Teil 1 dieses Tutorials verwendete) Beispielvorlage, die alle diese Änderungen enthält und Ihnen bei Bedarf als Referenz zur Verfügung steht. Diese Änderungen fügen Ihrer Ressourcengruppe einen Log Analytics-Arbeitsbereich hinzu. Der Arbeitsbereich wird zum Erfassen von Service Fabric-Plattformereignissen aus den Speichertabellen konfiguriert, die mit dem [Microsoft Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md)-Agent konfiguriert wurden. Der Log Analytics-Agent (Microsoft Monitoring Agent) wurde auch jedem Knoten in Ihrem Cluster als VM-Erweiterung hinzugefügt. Das bedeutet Folgendes: Wenn Sie Ihren Cluster skalieren, wird der Agent automatisch auf jedem Computer konfiguriert und mit demselben Arbeitsbereich verknüpft.
 
 Stellen Sie die Vorlage mit den neuen Änderungen zum Aktualisieren Ihres aktuellen Clusters bereit. Nach Abschluss des Vorgangs sollten die Log Analytics-Ressourcen in Ihrer Ressourcengruppe angezeigt werden. Wenn der Cluster bereit ist, stellen Sie die Containeranwendung darauf bereit. Im nächsten Schritt richten wir die Containerüberwachung ein.
 
@@ -196,19 +185,17 @@ Um Informationen zum Einrichten der Containerlösung in Ihrem Arbeitsbereich zu 
 
 ![Hinzufügen der Containerlösung](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-Wählen Sie bei Aufforderung zur Eingabe des *Log Analytics-Arbeitsbereichs* den Arbeitsbereich aus, der in der Ressourcengruppe erstellt wurde, und klicken Sie auf **Erstellen**. Dadurch wird Ihrem Arbeitsbereich eine *Containerüberwachungslösung* hinzugefügt, sodass der von der Vorlage bereitgestellte Log Analytics-Agent automatisch veranlasst wird, mit dem Sammeln von Docker-Protokollen und -Statistiken zu beginnen. 
+Wählen Sie bei Aufforderung zur Eingabe des *Log Analytics-Arbeitsbereichs* den Arbeitsbereich aus, der in der Ressourcengruppe erstellt wurde, und wählen Sie **Erstellen** aus. Dadurch wird Ihrem Arbeitsbereich eine *Containerüberwachungslösung* hinzugefügt und der von der Vorlage bereitgestellte Log Analytics-Agent veranlasst, mit dem Sammeln von Docker-Protokollen und -Statistiken zu beginnen.
 
-Navigieren Sie zurück zu *Ihrer Ressourcengruppe*, wo Sie jetzt die neu hinzugefügte Überwachungslösung finden sollten. Wenn Sie darauf klicken, sollte auf der Landing Page die Anzahl der von Ihnen ausgeführten Containerimages angezeigt werden.
+Navigieren Sie zurück zu *Ihrer Ressourcengruppe*, wo Sie jetzt die neu hinzugefügte Überwachungslösung finden sollten. Wenn Sie sie auswählen, sollte auf der Landing Page die Anzahl der von Ihnen ausgeführten Containerimages angezeigt werden.
 
-*Beachten Sie, dass 5 Instanzen des fabrikam-Containers aus [Teil 2](service-fabric-host-app-in-a-container.md) des Tutorials* ausgeführt werden.
+*Beachten Sie, dass fünf Instanzen des fabrikam-Containers aus [Teil 2](service-fabric-host-app-in-a-container.md) des Tutorials ausgeführt wurden.*
 
 ![Landing Page für Containerlösung](./media/service-fabric-tutorial-monitoring-wincontainers/solution-landing.png)
 
-Wenn Sie auf **Container Monitor Solution** klicken, gelangen Sie zu einem ausführlicheren Dashboard, auf dem Sie durch mehrere Bereiche scrollen sowie Abfragen in Azure Monitor-Protokollen ausführen können.
+Wenn Sie **Container Monitor Solution** auswählen, gelangen Sie zu einem ausführlicheren Dashboard, auf dem Sie durch mehrere Bereiche scrollen sowie Abfragen in Azure Monitor-Protokollen ausführen können.
 
-*Beachten Sie, dass ab September 2017 einige Updates der Lösung durchgeführt werden – ignorieren Sie alle Fehlermeldungen, die Sie vielleicht über Kubernetes-Ereignisse erhalten, da wir an der Integration mehrerer Orchestratoren in derselben Lösung arbeiten.*
-
-Da der Agent Docker-Protokolle erfasst, werden standardmäßig *stdout* und *stderr* angezeigt. Wenn Sie nach rechts scrollen, sehen Sie Containerimagebestand, Status, Metriken und Beispielabfragen, die Sie ausführen könnten, um weitere nützliche Daten zu erhalten.
+Da der Agent Docker-Protokolle erfasst, werden standardmäßig *stdout* und *stderr* angezeigt. Wenn Sie horizontal scrollen, sehen Sie Containerimagebestand, Status, Metriken und Beispielabfragen, die Sie ausführen könnten, um weitere nützliche Daten zu erhalten.
 
 ![Containerlösungsdashboard](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
 
@@ -218,12 +205,12 @@ Durch Klicken auf einen der folgenden Bereiche gelangen Sie zu der Kusto-Abfrage
 
 ## <a name="configure-log-analytics-agent-to-pick-up-performance-counters"></a>Konfigurieren des Log Analytics-Agents zum Erfassen von Leistungsindikatoren
 
-Ein weiterer Vorteil der Verwendung des Log Analytics-Agent besteht darin, dass die Leistungsindikatoren geändert werden können, die Sie über die Log Analytics-Benutzeroberfläche erfassen möchten, anstatt jedes Mal den Azure-Diagnose-Agent konfigurieren und ein Upgrade auf Basis der Resource Manager-Vorlage durchführen zu müssen. Klicken Sie hierzu auf der Landing Page Ihrer Containerüberwachungslösung (oder Service Fabric-Lösung) auf **OMS-Arbeitsbereich**.
+Ein weiterer Vorteil der Verwendung des Log Analytics-Agent besteht darin, dass die Leistungsindikatoren geändert werden können, die Sie über die Log Analytics-Benutzeroberfläche erfassen möchten, anstatt jedes Mal den Azure-Diagnose-Agent konfigurieren und ein Upgrade auf Basis der Resource Manager-Vorlage durchführen zu müssen. Wählen Sie hierzu auf der Landing Page Ihrer Containerüberwachungslösung (oder Service Fabric-Lösung) die Option **OMS-Arbeitsbereich** aus.
 
 Daraufhin gelangen Sie zu Ihrem Log Analytics-Arbeitsbereich. Dort können Sie Ihre Lösungen anzeigen, benutzerdefinierte Dashboards erstellen sowie den Log Analytics-Agent konfigurieren. 
-* Klicken Sie zum Öffnen des Menüs mit den erweiterten Einstellungen auf **Erweiterte Einstellungen**.
-* Klicken Sie auf **Verbundene Quellen** > **Windows-Server**, um sicherzustellen: *5 Windows-Computer sind verbunden*.
-* Klicken Sie auf **Daten** > **Windows-Leistungsindikatoren**, um neue Leistungsindikatoren zu suchen und hinzuzufügen. Hier sehen Sie eine Liste mit den Empfehlungen aus Azure Monitor-Protokollen für Leistungsindikatoren, die Sie erfassen können, sowie die Option zum Suchen nach anderen Indikatoren. Vergewissern Sie sich, dass die Leistungsindikatoren **Processor(_Total)\%Prozessorzeit** und **Memory(*)\Verfügbare MB** erfasst werden.
+* Wählen Sie zum Öffnen des Menüs mit den erweiterten Einstellungen **Erweiterte Einstellungen** aus.
+* Wählen Sie **Verbundene Quellen** > **Windows-Server** aus, um sicherzustellen, dass *fünf Windows-Computer verbunden sind*.
+* Wählen Sie **Daten** > **Windows-Leistungsindikatoren** aus, um neue Leistungsindikatoren zu suchen und hinzuzufügen. Hier sehen Sie eine Liste mit den Empfehlungen aus Azure Monitor-Protokollen für Leistungsindikatoren, die Sie erfassen können, sowie die Option zum Suchen nach anderen Indikatoren. Vergewissern Sie sich, dass die Leistungsindikatoren **Processor(_Total)\%Prozessorzeit** und **Memory(*)\Verfügbare MB** erfasst werden.
 
 **Aktualisieren** Sie Ihre Containerüberwachungslösung nach einigen Minuten. Daraufhin sollten Daten zur *Computerleistung* eingehen. Dies hilft Ihnen zu verstehen, wie Ihre Ressourcen verwendet werden. Sie können diese Metriken auch für entsprechende Entscheidungen zur Skalierung Ihrer Cluster verwenden, oder um zu überprüfen, ob ein Cluster Ihre Last wie erwartet ausgleicht.
 
@@ -240,9 +227,9 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Verwenden eines Log Analytics-Arbeitsbereichs zum Anzeigen und Abfragen von Protokollen Ihrer Container und Knoten
 > * Konfigurieren des Log Analytics-Agents für die Erfassung von Container- und Knotenmetriken
 
-Nun haben Sie die Überwachung für Ihre Containeranwendung eingerichtet und können Folgendes versuchen:
+Nun haben Sie die Überwachung für Ihre Containeranwendung konfiguriert und können Folgendes versuchen:
 
-* Richten Sie mithilfe einer ähnlichen Vorgehensweise Azure Monitor-Protokolle für einen Linux-Cluster ein. Nutzen Sie [diese Vorlage](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux), um Änderungen in der Resource Manager-Vorlage vorzunehmen.
-* Konfigurieren Sie Azure Monitor-Protokolle für die Einrichtung von [automatisierten Warnungen](../log-analytics/log-analytics-alerts.md) zur Unterstützung bei der Erkennung und Diagnose.
+* Konfigurieren Sie mithilfe einer ähnlichen Vorgehensweise wie in diesem Tutorial Azure Monitor-Protokolle für einen Linux-Cluster. Nutzen Sie [diese Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS), um Änderungen in der Resource Manager-Vorlage vorzunehmen.
+* Konfigurieren Sie Azure Monitor-Protokolle für die Einrichtung von [automatisierten Warnungen](../azure-monitor/platform/alerts-overview.md) zur Unterstützung bei der Erkennung und Diagnose.
 * Untersuchen Sie die Service Fabric-Liste der [empfohlen Leistungsindikatoren](service-fabric-diagnostics-event-generation-perf.md), um Ihre Cluster zu konfigurieren.
-* Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokollen vertraut.
+* Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../azure-monitor/log-query/log-query-overview.md) in Azure Monitor-Protokollen vertraut.

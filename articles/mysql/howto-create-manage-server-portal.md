@@ -1,126 +1,107 @@
 ---
-title: Erstellen und Verwalten eines Servers mit Azure-Datenbank für MySQL im Azure-Portal
-description: In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal schnell einen neuen Azure Database for MySQL-Server erstellen und verwalten.
-author: ajlam
-ms.author: andrela
+title: Verwalten eines Servers – Azure-Portal – Azure Database for MySQL
+description: Erfahren Sie, wie Sie Azure Database for MySQL-Server aus dem Azure-Portal verwalten.
+author: savjani
+ms.author: pariks
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: fdcb302d3a14b02ea86fb92c8dbf822ef3f42177
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.topic: how-to
+ms.date: 3/18/2020
+ms.openlocfilehash: e29e823834ec813a8389cea220cffc7633aa7103
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142272"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541452"
 ---
-# <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Erstellen und Verwalten eines Servers mit Azure-Datenbank für MySQL im Azure-Portal
-In diesem Artikel wird beschrieben, wie Sie auf schnelle Weise einen neuen Server für eine Azure Database for MySQL erstellen können. Außerdem erhalten Sie Informationen zum Verwalten des Servers mithilfe des Azure-Portals. Die Serververwaltung umfasst das Anzeigen von Serverdetails und Datenbanken, das Zurücksetzen des Kennworts, das Skalieren von Ressourcen und das Löschen des Servers.
+# <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Erstellen eines Servers für Azure Database for MySQL über das Azure-Portal
 
-## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+In diesem Artikel erfahren Sie, wie Sie Ihre Azure Database for MySQL-Server verwalten. Zu den Verwaltungsaufgaben gehören die Compute- und Speicherskalierung, das Zurücksetzen des Administratorkennworts und das Anzeigen von Serverdetails.
 
-## <a name="create-an-azure-database-for-mysql-server"></a>Erstellen eines Servers für Azure-Datenbank für MySQL
-Führen Sie die folgenden Schritte aus, um einen Azure Database for MySQL-Server mit dem Namen „mydemoserver“ zu erstellen.
+## <a name="sign-in"></a>Anmelden
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Wählen Sie auf der Seite „Neu“ die Option **Datenbanken** und anschließend auf der Seite „Datenbanken“ die Option **Azure Database for MySQL** aus.
+## <a name="create-a-server"></a>Erstellen eines Servers
 
-    > Ein Server mit Azure-Datenbank für MySQL wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](./concepts-pricing-tiers.md) erstellt. Die Datenbank wird in einer Azure-Ressourcengruppe und auf einem Server mit Azure-Datenbank für MySQL erstellt.
+Wechseln Sie zum [Schnellstart](quickstart-create-mysql-server-database-using-azure-portal.md), um zu erfahren, wie ein Azure Database for MySQL-Server erstellt wird, und wie Sie damit beginnen können.
 
-   ![create-new-server](./media/howto-create-manage-server-portal/create-new-server.png)
+## <a name="scale-compute-and-storage"></a>Skalieren von Compute und Speicher
 
-3. Tragen Sie folgende Informationen in das Formular „Azure Database for MySQL“ ein:
+Nach der Servererstellung können Sie zwischen den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ skalieren, wenn sich Ihre Anforderungen ändern. Sie können Compute und Speicher auch skalieren, indem Sie virtuelle Kerne vergrößern oder verkleinern. Der Speicher kann zentral hochskaliert werden (ein zentrales Herunterskalieren ist jedoch nicht möglich).
 
-    | **Formularfeld** | **Feldbeschreibung** |
-    |----------------|-----------------------|
-    | *Servername* | mydemoserver (Servername ist global eindeutig) |
-    | *Abonnement* | mysubscription (im Dropdownmenü auswählen) |
-    | *Ressourcengruppe* | myresourcegroup (neue Ressourcengruppe erstellen oder eine bereits vorhandene verwenden) |
-    | *Quelle auswählen* | Blank (einen leeren MySQL-Server erstellen) |
-    | *Serveradministratoranmeldung* | myadmin (Administratorkontoname einrichten) |
-    | *Kennwort* | Kennwort des Administratorkontos festlegen |
-    | *Kennwort bestätigen* | Kennwort des Administratorkontos bestätigen |
-    | *Location* | Asien, Südosten (zwischen „Europa, Norden“ und „USA, Westen“ auswählen) |
-    | *Version* | 5.7 (Serverversion für Azure Database for MySQL auswählen) |
+### <a name="scale-between-general-purpose-and-memory-optimized-tiers"></a>Skalieren zwischen den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“
 
-   ![create-new-server](./media/howto-create-manage-server-portal/form-field.png)
+Sie können von „Universell“ zu „Arbeitsspeicheroptimiert“ skalieren und umgekehrt. Ein Wechsel in den und aus dem Basic-Tarif nach der Servererstellung wird nicht unterstützt.
 
-4. Klicken Sie auf **Tarif**, um die Dienstebene und die Leistungsstufe für Ihren neuen Server anzugeben. Wählen Sie die Registerkarte **Allgemein** aus. *Gen 5*, *2 virtuelle Kerne*, *5 GB* und *7 Tage* sind die Standardwerte für **Computegeneration**, **Virtuelle Kerne**, **Speicher** und **Aufbewahrungszeit für Sicherung**. Sie können diese Schieberegler unverändert lassen. Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus.
+1. Wählen Sie Ihren Server im Azure-Portal aus. Wählen Sie im Abschnitt **Einstellungen** die Option **Tarif** aus.
 
-   ![Servertarif erstellen](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
+2. Wählen Sie je nach Skalierung **Universell** oder **Arbeitsspeicheroptimiert** aus.
 
-5. Klicken Sie auf **Erstellen**, um den Server bereitzustellen. Die Bereitstellung dauert einige Minuten.
+   :::image type="content" source="./media/howto-create-manage-server-portal/change-pricing-tier.png" alt-text="Screenshot des Azure-Portals für die Auswahl der Dienstebenen „Basic“, „Universell“ oder „Arbeitsspeicheroptimiert“ in Azure Database for MySQL":::
 
-    > Wählen Sie die Option **An das Dashboard anheften** aus, um das leichte Nachverfolgen Ihrer Bereitstellungen zu ermöglichen.
+   > [!NOTE]
+   > Das Ändern der Tarife löst einen Neustart des Servers aus.
 
-## <a name="update-an-azure-database-for-mysql-server"></a>Aktualisieren eines Servers mit Azure-Datenbank für MySQL
-Nach der Bereitstellung des neuen Servers stehen dem Benutzer mehrere Optionen zum Konfigurieren des vorhandenen Servers zur Verfügung. Hierzu zählen beispielsweise das Zurücksetzen des Administratorkennworts, das Ändern des Tarifs und das zentrale Hoch- oder Herunterskalieren des Servers durch eine Änderung der virtuellen Kerne oder des Speichers.
+3. Wählen Sie **OK** aus, um die Änderungen zu speichern.
 
-### <a name="change-the-administrator-user-password"></a>Ändern des Administratorbenutzerkennworts
-1. Klicken Sie auf dem Serverblatt **Übersicht** auf **Kennwort zurücksetzen**, um das Fenster für die Kennwortzurücksetzung anzuzeigen.
+### <a name="scale-vcores-up-or-down"></a>Zentrales Hoch- oder Herunterskalieren von virtuellen Kernen
 
-   ![Übersicht](./media/howto-create-manage-server-portal/overview.png)
-
-2. Geben Sie ein neues Kennwort ein, und bestätigen Sie das Kennwort wie unten gezeigt im Fenster:
-
-   ![Kennwort zurücksetzen](./media/howto-create-manage-server-portal/reset-password.png)
-
-3. Klicken Sie auf **OK**, um das neue Kennwort zu speichern.
-
-### <a name="change-the-pricing-tier"></a>Ändern des Tarifs
-> [!NOTE]
-> Es wird nur die Skalierung von „Universell“ auf „Arbeitsspeicheroptimiert“ (und umgekehrt) unterstützt. Beachten Sie, dass der Wechsel in den und aus dem Basic-Tarif nach der Servererstellung in Azure Database for MySQL nicht unterstützt wird.
-> 
-1. Klicken Sie unter **Einstellungen** auf **Tarif**.
-2. Wählen Sie den **Tarif** aus, zu dem Sie wechseln möchten.
-
-    ![change-pricing-tier](./media/howto-create-manage-server-portal/change-pricing-tier.png)
-
-4. Klicken Sie zum Speichern der Änderungen auf **OK**. 
-
-### <a name="scale-vcores-updown"></a>Zentrales Hoch-/Herunterskalieren von virtuellen Kernen
-
-1. Klicken Sie unter **Einstellungen** auf **Tarif**.
+1. Wählen Sie Ihren Server im Azure-Portal aus. Wählen Sie im Abschnitt **Einstellungen** die Option **Tarif** aus.
 
 2. Ändern Sie die Einstellung **Virtuelle Kerne**, indem Sie den Schieberegler auf den gewünschten Wert ziehen.
 
-    ![Skalieren von Computeressourcen](./media/howto-create-manage-server-portal/scale-compute.png)
+    :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Screenshot des Azure-Portals für die Auswahl der Option für die virtuellen Kerne in Azure Database for MySQL":::
 
-3. Klicken Sie zum Speichern der Änderungen auf **OK**.
+    > [!NOTE]
+    > Das Skalieren der virtuellen Kerne löst einen Neustart des Servers aus.
+
+3. Wählen Sie **OK** aus, um die Änderungen zu speichern.
 
 ### <a name="scale-storage-up"></a>Zentrales Hochskalieren des Speichers
 
-1. Klicken Sie unter **Einstellungen** auf **Tarif**.
+1. Wählen Sie Ihren Server im Azure-Portal aus. Wählen Sie im Abschnitt **Einstellungen** die Option **Tarif** aus.
 
 2. Ändern Sie die Einstellung **Speicher**, indem Sie den Schieberegler auf den gewünschten Wert ziehen.
 
-    ![Skalieren des Speichers](./media/howto-create-manage-server-portal/scale-storage.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Screenshot des Azure-Portal für die Auswahl der Speicherskalierung in Azure Database for MySQL":::
 
-3. Klicken Sie zum Speichern der Änderungen auf **OK**.
+   > [!NOTE]
+   > Der Speicher kann nicht herunterskaliert werden.
 
-## <a name="delete-an-azure-database-for-mysql-server"></a>Löschen eines Servers mit Azure-Datenbank für MySQL
+3. Wählen Sie **OK** aus, um die Änderungen zu speichern.
 
-1. Klicken Sie auf dem Serverblatt **Übersicht** auf die Schaltfläche **Löschen**, um die Bestätigungsaufforderung zum Löschen zu öffnen.
+## <a name="update-admin-password"></a>Aktualisieren des Administratorkennworts
 
-    ![delete](./media/howto-create-manage-server-portal/delete.png)
+Sie können das Kennwort für die Administratorrolle über das Azure-Portal ändern.
 
-2. Geben Sie den Namen des Servers in das Eingabefeld für die doppelte Bestätigung ein.
+1. Wählen Sie Ihren Server im Azure-Portal aus. Wählen Sie im Fenster **Übersicht** die Option **Kennwort zurücksetzen** aus.
 
-    ![Löschen bestätigen](./media/howto-create-manage-server-portal/confirm.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Screenshot des Azure-Portals für das Zurücksetzen des Kennworts in Azure Database for MySQL":::
 
-3. Klicken Sie auf die Schaltfläche **Löschen**, um das Löschen des Servers zu bestätigen. Warten Sie, bis auf der Benachrichtigungsleiste das Popup „MySQL-Server erfolgreich gelöscht“ angezeigt wird.
+2. Geben Sie ein neues Kennwort ein, und bestätigen Sie es. Im Textfeld werden Sie nach den Anforderungen an die Kennwortkomplexität gefragt.
 
-## <a name="list-the-azure-database-for-mysql-databases"></a>Auflisten der Datenbanken von Azure-Datenbank für MySQL
-Scrollen Sie auf dem Serverblatt **Übersicht** nach unten, bis die Datenbankkachel im unteren Bereich angezeigt wird. In der Tabelle werden alle auf dem Server vorhandenen Datenbanken aufgeführt.
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Screenshot des Azure-Portals für das Zurücksetzen des Kennworts und das Speichern in Azure Database for MySQL":::
 
-   ![show-databases](./media/howto-create-manage-server-portal/show-databases.png)
+3. Wählen Sie **OK** aus, um das neue Kennwort zu speichern.
 
-## <a name="show-details-of-an-azure-database-for-mysql-server"></a>Anzeigen von Details zu einem Server mit Azure-Datenbank für MySQL
-Klicken Sie unter **Einstellungen** auf **Eigenschaften**, um detaillierte Informationen zum Server anzuzeigen.
+## <a name="delete-a-server"></a>Löschen eines Servers
 
-![properties](./media/howto-create-manage-server-portal/properties.png)
+Sie können Ihren Server löschen, wenn Sie ihn nicht mehr benötigen.
+
+1. Wählen Sie Ihren Server im Azure-Portal aus. Wählen Sie im Fenster **Übersicht** die Option **Löschen** aus.
+
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Screenshot des Azure-Portals für das Löschen des Servers in Azure Database for MySQL":::
+
+2. Geben Sie den Namen des Servers in das Eingabefeld ein, um zu bestätigen, dass dies der Server ist, den Sie löschen möchten.
+
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Screenshot des Azure-Portals für das Bestätigen der Löschung des Servers in Azure Database for MySQL":::
+
+   > [!NOTE]
+   > Das Löschen eines Servers kann nicht mehr rückgängig gemacht werden.
+
+3. Klicken Sie auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Schnellstart: Erstellen eines Azure Database for MySQL-Servers mithilfe des Azure-Portals](./quickstart-create-mysql-server-database-using-azure-portal.md)
+- Informieren Sie sich über das [Sichern und Wiederherstellen eines Servers](howto-restore-server-portal.md).
+- Erfahren Sie mehr über die [Überwachungs- und Optimierungsoptionen in Azure Database for MySQL](concepts-monitoring.md).

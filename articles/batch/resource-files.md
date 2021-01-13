@@ -1,25 +1,20 @@
 ---
-title: Erstellen und Verwenden von Ressourcendateien – Azure Batch | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure Batch-Ressourcendateien aus verschiedenen Eingabequellen erstellen.
-services: batch
-author: laurenhughes
-manager: gwallace
-ms.service: batch
-ms.topic: article
-ms.date: 03/14/2019
-ms.author: lahugh
-ms.openlocfilehash: 9c55b22d1cb85fb645087cf48b54f9d5ac12d58f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+title: Erstellen und Verwenden von Ressourcendateien
+description: Erfahren Sie, wie Sie Batch-Ressourcendateien aus verschiedenen Eingabequellen erstellen. Dieser Artikel behandelt einige gängige Methoden, wie Ressourcendateien erstellt und auf einer VM platziert werden.
+ms.date: 03/18/2020
+ms.topic: how-to
+ms.openlocfilehash: 84a5e9780b4fa0abfec5b736e04d385f14716873
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322182"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109288"
 ---
 # <a name="creating-and-using-resource-files"></a>Erstellen und Verwenden von Ressourcendateien
 
-Eine Azure Batch-Aufgabe erfordert oft eine Form von Daten zur Verarbeitung. Sie können diese Daten Ihrem virtuellen Batch-Computer über eine Aufgabe mithilfe von Ressourcendateien bereitstellen. Ressourcendateien werden von allen Arten von Aufgaben unterstützt: Aufgaben, Startaufgaben, Aufgaben für die Arbeitsvorbereitung, Aufgaben für die Freigabe von Aufträgen, etc. Dieser Artikel behandelt einige gängige Methoden, wie man Ressourcendateien erstellt und auf einer VM platziert.  
+Eine Azure Batch-Aufgabe erfordert oft eine Form von Daten zur Verarbeitung. Sie können diese Daten Ihrem virtuellen Batch-Computer über eine Aufgabe mithilfe von Ressourcendateien bereitstellen. Ressourcendateien werden von allen Arten von Aufgaben unterstützt: Aufgaben, Startaufgaben, Aufgaben für die Arbeitsvorbereitung, Aufgaben für die Freigabe von Aufträgen, etc. Dieser Artikel behandelt einige gängige Methoden, wie Ressourcendateien erstellt und auf einem virtuellen Computer platziert werden.  
 
-Ressourcendateien sind ein Mechanismus, um Daten auf eine VM im Batch zu übertragen, aber die Art der Daten und wie sie verwendet werden, ist flexibel. Es gibt jedoch einige gängige Anwendungsfälle:
+Ressourcendateien übertragen Daten auf einen virtuellen Computer im Batch, aber die Art der Daten und wie sie verwendet werden, ist flexibel. Es gibt jedoch einige gängige Anwendungsfälle:
 
 1. Bereitstellung allgemeiner Dateien auf jeder VM mithilfe von Ressourcendateien in einer Startaufgabe
 1. Bereitstellung von Eingabedaten für die Verarbeitung durch Aufgaben
@@ -38,7 +33,7 @@ Optionen für die Erstellung einer Ressourcendatei:
 
 ### <a name="storage-container-url"></a>Speichercontainer-URL
 
-Die Verwendung einer Speichercontainer-URL bedeutet, dass Sie mit den richtigen Berechtigungen auf Dateien in jedem Speichercontainer in Azure zugreifen können.
+Die Verwendung einer Speichercontainer-URL bedeutet, dass Sie mit den richtigen Berechtigungen auf Dateien in jedem Speichercontainer in Azure zugreifen können. 
 
 In diesem C#-Beispiel wurden die Dateien bereits als Blobspeicher in einen Azure-Speichercontainer hochgeladen. Um auf die Daten zuzugreifen, die für die Erstellung einer Ressourcendatei benötigt werden, müssen wir zunächst Zugriff auf den Speichercontainer erhalten.
 
@@ -55,7 +50,7 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 > [!NOTE]
 > Für den Containerzugriff müssen Sie sowohl `Read`- als auch `List`-Berechtigungen haben, wohingegen Sie beim Blobzugriff nur `Read`-Berechtigungen benötigen.
 
-Nachdem die Berechtigungen konfiguriert sind, erstellen Sie das SAS-Token und formatieren Sie die SAS-URL für den Zugriff auf den Speichercontainer. Generieren Sie unter Verwendung der formatierten SAS-URL für den Speichercontainer eine Ressourcendatei mit [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet).
+Nachdem die Berechtigungen konfiguriert sind, erstellen Sie das SAS-Token und formatieren Sie die SAS-URL für den Zugriff auf den Speichercontainer. Generieren Sie unter Verwendung der formatierten SAS-URL für den Speichercontainer eine Ressourcendatei mit [`FromStorageContainerUrl`](/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl).
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -66,11 +61,11 @@ string containerSasUrl = String.Format("{0}{1}", container.Uri, sasToken);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ```
 
-Eine Alternative zum Generieren einer SAS-URL ist die Aktivierung eines anonymen öffentlichen Lesezugriffs auf einen Container und dessen Blobs in Azure Blob Storage. Auf diese Weise können Sie schreibgeschützten Zugriff auf diese Ressourcen gewähren, ohne Ihren Kontoschlüssel freizugeben und eine SAS zu erfordern. Öffentlicher Lesezugriff wird in der Regel für Szenarien verwendet, in denen bestimmte Blobs stets für anonymen Lesezugriff zur Verfügung stehen sollen. Wenn dieses Szenario zu Ihrer Lösung passt, lesen Sie den Artikel [Anonymer Zugriff auf Blobs](../storage/blobs/storage-manage-access-to-resources.md), um mehr über die Verwaltung des Zugriffs auf Ihre Blobdaten zu erfahren.
+Eine Alternative zum Generieren einer SAS-URL ist die Aktivierung eines anonymen öffentlichen Lesezugriffs auf einen Container und dessen Blobs in Azure Blob Storage. Auf diese Weise können Sie schreibgeschützten Zugriff auf diese Ressourcen gewähren, ohne Ihren Kontoschlüssel freizugeben und eine SAS zu erfordern. Öffentlicher Lesezugriff wird in der Regel für Szenarien verwendet, in denen bestimmte Blobs stets für anonymen Lesezugriff zur Verfügung stehen sollen. Wenn dieses Szenario zu Ihrer Lösung passt, lesen Sie den Artikel [Anonymer Zugriff auf Blobs](../storage/blobs/anonymous-read-access-configure.md), um mehr über die Verwaltung des Zugriffs auf Ihre Blobdaten zu erfahren.
 
 ### <a name="storage-container-name"></a>Speichercontainername
 
-Anstatt eine SAS-URL zu konfigurieren und zu erstellen, können Sie den Namen Ihres Azure-Speichercontainers verwenden, um auf Ihre Blobdaten zuzugreifen. Der verwendete Speichercontainer muss sich im Azure-Speicherkonto befinden, das mit Ihrem Batch-Konto verknüpft ist, das als Autostorage-Konto bekannt ist. Mit dem Speichercontainernamen eines Autostorage-Kontos können Sie die Konfiguration und Erstellung einer SAS-URL für den Zugriff auf einen Speichercontainer umgehen.
+Anstatt eine SAS-URL zu konfigurieren und zu erstellen, können Sie den Namen Ihres Azure-Speichercontainers verwenden, um auf Ihre Blobdaten zuzugreifen. Der von Ihnen verwendete Speichercontainer muss sich in dem mit Ihrem Batch-Konto verknüpften Azure-Speicherkonto befinden. Dieses Speicherkonto wird als Autostorage-Konto bezeichnet. Die Verwendung des Autostorage-Containers ermöglicht es Ihnen, die Konfiguration und Erstellung einer SAS-URL für den Zugriff auf einen Speichercontainer zu umgehen.
 
 In diesem Beispiel gehen wir davon aus, dass sich die Daten, die für die Erstellung von Ressourcendateien verwendet werden sollen, bereits in einem Azure-Speicherkonto befinden, das mit Ihrem Batch-Konto verknüpft ist. Wenn Sie kein Autostorage-Konto haben, lesen Sie die Schritte unter [Erstellen eines Batch-Kontos](batch-account-create-portal.md) für Details zur Erstellung und Verknüpfung eines Kontos.
 
@@ -98,13 +93,13 @@ Jede Azure Batch-Aufgabe verwendet Dateien unterschiedlich, weshalb Batch über 
 
 Ihre Batch-Auftrag kann mehrere Aufgaben enthalten, die alle die gleichen allgemeinen Dateien verwenden. Wenn allgemeine Aufgabendateien für viele Tasks gemeinsam genutzt werden, kann die Verwendung eines Anwendungspakets zur Aufnahme der Dateien anstelle von Ressourcendateien eine bessere Option sein. Anwendungspakete bieten eine Optimierung der Downloadgeschwindigkeit. Außerdem werden Daten in Anwendungspaketen zwischen den Aufgaben zwischengespeichert, sodass Anwendungspakete eine gute Wahl für Ihre Lösung sein können, wenn sich Ihre Aufgabendateien nicht oft ändern. Mit Anwendungspaketen müssen Sie nicht mehrere Ressourcendateien manuell verwalten oder SAS-URLs generieren, um auf die Dateien in Azure Storage zuzugreifen. Batch funktioniert im Hintergrund mit Azure Storage zum Speichern von Anwendungspaketen und zum Bereitstellen der Pakete auf Serverknoten.
 
-Wenn jede Aufgabe viele Dateien hat, die für diesen Task einzigartig sind, sind Ressourcendateien wahrscheinlich die beste Option. Aufgaben, die eindeutige Dateien verwenden, müssen oft aktualisiert oder ersetzt werden, was mit dem Inhalt der Anwendungspakete nicht so einfach ist. Ressourcendateien bieten zusätzliche Flexibilität beim Aktualisieren, Hinzufügen oder Bearbeiten einzelner Dateien.
+Wenn jede Aufgabe über viele für diese Aufgabe eindeutige Dateien verfügt, sind Ressourcendateien die beste Option, da Aufgaben, die eindeutige Dateien verwenden, oft aktualisiert oder ersetzt werden müssen und dies bei den Inhalten von Anwendungspaketen nicht einfach zu bewerkstelligen ist. Ressourcendateien bieten zusätzliche Flexibilität beim Aktualisieren, Hinzufügen oder Bearbeiten einzelner Dateien.
 
 ### <a name="number-of-resource-files-per-task"></a>Anzahl von Ressourcendateien pro Aufgabe
 
-Wenn mehrere hundert Ressourcendateien für eine Aufgabe angegeben sind, kann Batch die Aufgabe ablehnen, weil sie zu groß ist. Es ist am besten, Ihre Aufgaben klein zu halten, indem Sie die Anzahl der Ressourcendateien in der Aufgabe selbst minimieren.
+Wenn mehrere hundert Ressourcendateien für eine Aufgabe angegeben sind, kann die Aufgabe von Batch abgelehnt werden, weil sie zu groß ist. Es ist am besten, Ihre Aufgaben klein zu halten, indem Sie die Anzahl der Ressourcendateien in der Aufgabe selbst minimieren.
 
-Wenn es keine Möglichkeit gibt, die Anzahl der Dateien zu minimieren, die Ihre Aufgabe benötigt, können Sie die Aufgabe optimieren, indem Sie eine einzelne Ressourcendatei erstellen, die auf einen Speichercontainer mit Ressourcendateien verweist. Legen Sie dazu Ihre Ressourcendateien in einen Azure Storage-Container und verwenden Sie die verschiedenen „Container“-Modi von Ressourcendateien. Verwenden Sie die Optionen für das Blobpräfix, um Sammlungen von Dateien anzugeben, die für Ihre Aufgaben heruntergeladen werden sollen.
+Wenn es keine Möglichkeit gibt, die Anzahl der Dateien zu minimieren, die Ihre Aufgabe benötigt, können Sie die Aufgabe optimieren, indem Sie eine einzelne Ressourcendatei erstellen, die auf einen Speichercontainer mit Ressourcendateien verweist. Legen Sie dazu Ihre Ressourcendateien in einen Azure Storage-Container und verwenden Sie die verschiedenen „Container“-[Methoden](/dotnet/api/microsoft.azure.batch.resourcefile#methods) für Ressourcendateien. Verwenden Sie die Optionen für das Blobpräfix, um Sammlungen von Dateien anzugeben, die für Ihre Aufgaben heruntergeladen werden sollen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

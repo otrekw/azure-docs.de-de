@@ -3,24 +3,26 @@ title: 'Streamen von Videodateien mit Azure Media Services: Node.js | Microsoft-
 description: Führen Sie die in diesem Tutorial beschriebenen Schritte aus, um ein neues Azure Media Services-Konto zu erstellen, eine Datei zu codieren und in Azure Media Player zu streamen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 keywords: azure media services, streamen
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: fa9fbf3bac55ca0b26c3644b7f6818fa96088612
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.custom: mvc, devx-track-js
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 38207ac47d2e58c689f1933a6ade6d5c86cd44ad
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639391"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91268671"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos – Node.js
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Dieses Tutorial zeigt, wie einfach es ist, Videos zu codieren und mit deren Streaming für eine Vielzahl von Browsern und Geräten mit Azure Media Services zu beginnen. Ein Eingabeinhalt kann über HTTPS-URLs, SAS-URLs oder Pfade zu Dateien in Azure Blob Storage angegeben werden.
 
@@ -35,8 +37,8 @@ Am Ende des Tutorials sind Sie in der Lage, ein Video zu streamen.
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Installieren von [Node.js](https://nodejs.org/en/download/)
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)<br/>Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
-- Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](access-api-cli-how-to.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)<br/>Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
+- Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](./access-api-howto.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
 
 ## <a name="download-and-configure-the-sample"></a>Herunterladen und Konfigurieren des Beispiels
 
@@ -48,7 +50,7 @@ Klonen Sie mit dem folgenden Befehl ein GitHub-Repository auf Ihren Computer, da
 
 Das Beispiel befindet sich im Ordner [StreamFilesSample](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/master/AMSv3Samples/StreamFilesSample).
 
-Öffnen Sie [index.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L25) in Ihrem heruntergeladenen Projekt. Ersetzen Sie die `endpoint config`-Werte durch Anmeldeinformationen, die Sie durch den [Zugriff auf APIs](access-api-cli-how-to.md) abgerufen haben.
+Öffnen Sie [index.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L25) in Ihrem heruntergeladenen Projekt. Ersetzen Sie die `endpoint config`-Werte durch Anmeldeinformationen, die Sie durch den [Zugriff auf APIs](./access-api-howto.md) abgerufen haben.
 
 Mit dem Beispiel werden die folgenden Aktionen durchgeführt:
 
@@ -72,7 +74,7 @@ Mit dem Beispiel werden die folgenden Aktionen durchgeführt:
 
 Nach der Ausführung sollte etwa folgende Ausgabe angezeigt werden:
 
-![Ausführen](./media/stream-files-nodejs-quickstart/run.png)
+![Screenshot: Befehlsfenster mit der Ausgabe der StreamFileSample-Beispiel-App und den URLs von drei Dateien, die in das lokale Verzeichnis heruntergeladen werden](./media/stream-files-nodejs-quickstart/run.png)
 
 ## <a name="test-with-azure-media-player"></a>Testen mit Azure Media Player
 
@@ -101,7 +103,7 @@ az group delete --name amsResourceGroup
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Auftragsfehlercodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+[Auftragsfehlercodes](/rest/api/media/jobs/get#joberrorcode)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

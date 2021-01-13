@@ -1,27 +1,22 @@
 ---
 title: Datentreuhänder für Azure Deutschland | Microsoft-Dokumentation
-description: Dieser Artikel enthält Informationen zum Datentreuhändermodell.
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
+description: Dieser Artikel enthält Informationen zum Datentreuhändermodell. Darüber hinaus finden Sie hier relevante Links.
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/07/2017
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 6513e0fc9a1576cd3c856ca5e8ea76c34e6ae832
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: 333b15293b81295a603f3df3af46a27560bb4a20
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685182"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122161"
 ---
 # <a name="data-trustee-principle"></a>Das Microsoft Datentreuhänderprinzip
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 Microsoft hat Azure Deutschland entwickelt, um die Anforderungen von Kunden und potenziellen Kunden in der Europäischen Union (European Union, EU), der Europäischen Freihandelszone (European Free Trade Association, EFTA) und dem Vereinigten Königreich (United Kingdom, UK) zu erfüllen. Diese Anforderungen beziehen sich unter anderem darauf, Bedenken hinsichtlich Sicherheit und Schutz von Onlinedaten gerecht zu werden. Azure Deutschland umfasst branchenführende Clouddienste, die *unter Anwendung spezieller Sicherheitsmaßnahmen vollständig in Deutschland gehostet und betrieben werden*.
 
@@ -34,8 +29,6 @@ Der deutsche Datentreuhänder ist ein unabhängiges Unternehmen mit Hauptsitz in
 Microsoft verwaltet alle Aspekte von Betrieb und Bereitstellung der Azure Deutschland-Dienste, die keinen Zugriff auf Kundendaten erfordern. Es wird sichergestellt, dass keine Verbindung mit anderen globalen Clouddiensten von Microsoft besteht. Microsoft bleibt seinen Kunden gegenüber verantwortlich für die Erfüllung der Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) und für die meisten betrieblichen Aspekte, die keinen Zugriff auf Kundendaten erfordern.
 
 Dagegen ist der deutsche Datentreuhänder für alle Aufgaben und Prozesse verantwortlich, die physischen oder logischen Zugriff auf die Infrastruktur und Daten der Kunden in Deutschland erfordern. Der Datentreuhänder regelt alle Zugriffe auf Kundendaten, die nicht vom Kunden oder von Endbenutzern eingeleitet werden. 
-
-
 
 Die folgenden Merkmale sind charakteristisch für Azure Deutschland:
 

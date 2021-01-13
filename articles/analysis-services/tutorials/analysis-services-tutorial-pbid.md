@@ -1,21 +1,20 @@
 ---
-title: 'Tutorial: Herstellen einer Verbindung mit Azure Analysis Services unter Verwendung von Power BI Desktop | Microsoft-Dokumentation'
+title: 'Tutorial: Verbinden von Azure Analysis Services mit Power BI Desktop | Microsoft-Dokumentation'
 author: minewiskan
-manager: kfile
-description: Hier erfahren Sie, wie Sie eine Verbindung zwischen Azure Analysis Services und Power BI Desktop herstellen.
+description: In diesem Tutorial erfahren Sie, wie Sie einen Analysis Services-Servernamen aus dem Azure-Portal abrufen und dann mit Power BI Desktop eine Verbindung mit dem Server herstellen können.
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: daebc3e720eec8d958697288922c788a44156778
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 46805427e6d00e858cf869eef68bf68549f57fb9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932383"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018116"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>Tutorial: Herstellen einer Verbindung mit Power BI Desktop
+# <a name="tutorial-connect-with-power-bi-desktop"></a>Tutorial: Herstellen einer Verbindung unter Verwendung von Power BI Desktop
 
 In diesem Tutorial verwenden Sie Power BI Desktop, um eine Verbindung mit der Beispielmodelldatenbank „adventureworks“ auf Ihrem Server herzustellen. Die auszuführenden Aufgaben simulieren eine typische Benutzerverbindung mit dem Modell sowie die Erstellung eines einfachen Berichts auf der Grundlage von Modelldaten.
 
@@ -71,4 +70,4 @@ Kopieren Sie den Servernamen über **Azure-Portal** > Server > **Übersicht** > 
 Wenn Sie den Bericht nicht mehr benötigen, speichern Sie ihn nicht (oder löschen Sie die Datei, falls Sie den Bericht bereits gespeichert haben).
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie gelernt, wie Sie unter Verwendung von Power BI Desktop eine Verbindung mit einem Datenmodell auf einem Server herstellen und einen einfachen Bericht erstellen. Informationen zur Erstellung eines Datenmodells finden Sie bei Bedarf im Tutorial [Adventure Works Internet Sales: tabellarische Datenmodellierung](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) in der Dokumentation zu SQL Server Analysis Services.
+In diesem Tutorial haben Sie gelernt, wie Sie unter Verwendung von Power BI Desktop eine Verbindung mit einem Datenmodell auf einem Server herstellen und einen einfachen Bericht erstellen. Informationen zur Erstellung eines Datenmodells finden Sie bei Bedarf im Tutorial [Adventure Works Internet Sales: tabellarische Datenmodellierung](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) in der Dokumentation zu SQL Server Analysis Services.

@@ -1,23 +1,17 @@
 ---
-title: Erstellen einer Blockchainanwendung in Blockchain Workbench
-description: Tutorial zum Erstellen einer Blockchainanwendung in der Vorschauversion von Azure Blockchain Workbench
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 09/05/2019
+title: 'Erstellen einer Blockchainanwendung: Azure Blockchain Workbench'
+description: Tutorial mit einer Beschreibung der Erstellung einer Blockchainanwendung in der Vorschauversion von Azure Blockchain Workbench.
+ms.date: 08/24/2020
 ms.topic: tutorial
-ms.service: azure-blockchain
-ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: adc47ecb06c0e2dbfcae7b85aeec284027315e5b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.reviewer: ravastra
+ms.openlocfilehash: add790a069d2e0ea66d84bbd632825cf9331fd38
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845155"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88784027"
 ---
-# <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Tutorial: Erstellen einer Blockchainanwendung in Blockchain Workbench
+# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Tutorial: Erstellen einer Blockchainanwendung in Azure Blockchain Workbench
 
 Mithilfe von Azure Blockchain Workbench können Sie Blockchainanwendungen erstellen, die mehrere Workflows darstellen, die durch Konfigurations- und intelligenten Vertragscode definiert werden.
 
@@ -46,7 +40,7 @@ Führen Sie die Schritte zum Erstellen der Anwendungsdateien aus, oder [laden Si
 
 ## <a name="configuration-file"></a>Konfigurationsdatei
 
-Konfigurationsmetadaten definieren die allgemeinen Workflows und das Interaktionsmodell der Blockchainanwendung. Zudem stellen die Konfigurationsmetadaten die Workflowstufen und das Interaktionsmodell der Blockchainanwendung dar.
+Konfigurationsmetadaten definieren die allgemeinen Workflows und das Interaktionsmodell der Blockchainanwendung. Zudem stellen die Konfigurationsmetadaten die Workflowstufen und das Interaktionsmodell der Blockchainanwendung dar. Weitere Informationen zum Inhalt von Konfigurationsdateien finden Sie unter [Referenz zur Azure Blockchain-Workflowkonfiguration](configuration.md).
 
 1. Erstellen Sie in Ihrem bevorzugten Editor eine Datei namens `HelloBlockchain.json`.
 2. Fügen Sie die folgende JSON-Funktion hinzu, um die Konfiguration der Blockchainanwendung zu definieren.
@@ -218,8 +212,6 @@ Der Abschnitt zu den Anwendungsrollen definiert die Benutzerrollen, die innerhal
 
 Workflows definieren eine oder mehrere Stufen und Aktionen des Vertrages. Im Anforderung/Antwort-Szenario ist die erste Stufe (Zustand) des Workflows ein Anforderer (Rolle), der eine Aktion (Übergang) ausführt, um eine Anforderung (Funktion) zu senden. Die nächste Stufe (Zustand) ist ein Antwortdienst (Rolle), der eine Aktion (Übergang) ausführt, um eine Antwort (Funktion) zu senden. Der Workflow einer Anwendung kann Eigenschaften, Funktionen und Zustände beinhalten, die den Ablauf eines Vertrages beschreiben.
 
-Weitere Informationen zum Inhalt von Konfigurationsdateien finden Sie unter [Referenz zur Azure Blockchain-Workflowkonfiguration](configuration.md).
-
 ## <a name="smart-contract-code-file"></a>Datei mit intelligentem Vertragscode
 
 Intelligente Verträge stellen die Geschäftslogik der Blockchainanwendung dar. Blockchain Workbench unterstützt derzeit Ethereum für den Blockchainledger. Ethereum verwendet [Solidity](https://solidity.readthedocs.io) als Programmiersprache, um selbstverstärkende Geschäftslogik für intelligente Verträge zu schreiben.
@@ -335,7 +327,7 @@ Um eine Blockchainanwendung zu Blockchain Workbench hinzuzufügen, laden Sie die
 Die Bereitstellung der Blockchainanwendung kann einige Minuten in Anspruch nehmen. Wenn die Bereitstellung abgeschlossen ist, wird die neue Anwendung unter **Anwendungen** angezeigt. 
 
 > [!NOTE]
-> Sie können Blockchainanwendungen auch über die [Azure Blockchain Workbench-REST-API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench) erstellen.
+> Sie können Blockchainanwendungen auch über die [Azure Blockchain Workbench-REST-API](/rest/api/azure-blockchain-workbench) erstellen.
 
 ## <a name="add-blockchain-application-members"></a>Hinzufügen von Mitgliedern zu einer Blockchainanwendung
 

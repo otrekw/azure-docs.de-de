@@ -4,19 +4,19 @@ description: Erstellen einer benutzerdefinierten Richtlinie für bedingten Zugri
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 08/16/2019
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 884d96fae226497991f5642072d040ccd81134b0
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 2e2b6b3e9a6bdead4e4da7f1a829698d86cfbf52
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576033"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366172"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Bedingter Zugriff: Vorschreiben der MFA für die Azure-Verwaltung
 
@@ -24,7 +24,7 @@ Organisationen verwenden verschiedenste Azure-Dienste und verwalten diese mit Az
 
 * Azure-Portal
 * Azure PowerShell
-* Azure-Befehlszeilenschnittstelle
+* Azure CLI
 
 Diese Tools bieten Zugriff mit umfassenden Berechtigungen auf Ressourcen, die die abonnementweiten Konfigurationen, Diensteinstellungen und die Abonnementabrechnung ändern können. Um diese Ressourcen mit umfassenden Berechtigungen zu schützen, empfiehlt Microsoft, die mehrstufige Authentifizierung für jeden Benutzer zu erfordern, der auf diese Ressourcen zugreift.
 
@@ -32,30 +32,33 @@ Diese Tools bieten Zugriff mit umfassenden Berechtigungen auf Ressourcen, die di
 
 Richtlinien für bedingten Zugriff sind leistungsstarke Tools, daher wird empfohlen, die folgenden Konten von Ihrer Richtlinie auszuschließen:
 
-* **Notfallzugriffs**- oder **Break-Glass**-Konten, um eine mandantenweite Kontosperrung zu vermeiden. In dem unwahrscheinlichen Fall, dass alle Administratoren aus dem Mandanten ausgeschlossen sind, können Sie sich mit Ihrem Administratorkonto für den Notfallzugriff beim Mandanten anmelden und Maßnahmen ergreifen, um den Zugriff wiederherzustellen.
-   * Weitere Informationen finden Sie im Artikel [Verwalten von Konten für den Notfallzugriff in Azure AD](../users-groups-roles/directory-emergency-access.md).
-* **Dienstkonten** und **Dienstprinzipale**, z. B. das Konto für die Azure AD Connect-Synchronisierung. Dienstkonten sind nicht interaktive Konten, die an keinen bestimmten Benutzer gebunden sind. Sie werden normalerweise von Back-End-Diensten verwendet und ermöglichen den programmgesteuerten Zugriff auf Anwendungen. Dienstkonten sollten ausgeschlossen werden, weil die MFA nicht programmgesteuert abgeschlossen werden kann.
-   * Wenn Ihre Organisation diese Konten in Skripts oder Code verwendet, sollten Sie in Betracht ziehen, diese durch  [verwaltete Identitäten](../managed-identities-azure-resources/overview.md) zu ersetzen. Als vorübergehende Problemumgehung können Sie diese spezifischen Konten aus der Basisrichtlinie ausschließen.
+* **Notfallzugriffs** - oder **Break-Glass** -Konten, um eine mandantenweite Kontosperrung zu vermeiden. In dem unwahrscheinlichen Fall, dass alle Administratoren aus dem Mandanten ausgeschlossen sind, können Sie sich mit Ihrem Administratorkonto für den Notfallzugriff beim Mandanten anmelden und Maßnahmen ergreifen, um den Zugriff wiederherzustellen.
+   * Weitere Informationen finden Sie im Artikel [Verwalten von Konten für den Notfallzugriff in Azure AD](../roles/security-emergency-access.md).
+* **Dienstkonten** und **Dienstprinzipale** , z. B. das Konto für die Azure AD Connect-Synchronisierung. Dienstkonten sind nicht interaktive Konten, die an keinen bestimmten Benutzer gebunden sind. Sie werden normalerweise von Back-End-Diensten verwendet, die den programmgesteuerten Zugriff auf Anwendungen ermöglichen, können aber auch zu Verwaltungszwecken für die Anmeldung bei Systemen genutzt werden. Derartige Dienstkonten sollten ausgeschlossen werden, weil die MFA nicht programmgesteuert abgeschlossen werden kann. Aufrufe von Dienstprinzipalen werden durch den bedingten Zugriff nicht blockiert.
+   * Wenn Ihre Organisation diese Konten in Skripts oder Code verwendet, sollten Sie in Betracht ziehen, diese durch [verwaltete Identitäten](../managed-identities-azure-resources/overview.md) zu ersetzen. Als vorübergehende Problemumgehung können Sie diese spezifischen Konten aus der Basisrichtlinie ausschließen.
 
 ## <a name="create-a-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff
 
-Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten Zugriff, nach der die zugewiesenen Administratorrollen eine mehrstufige Authentifizierung durchführen müssen.
+Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten Zugriff, nach der Benutzer mit Zugriff auf die [Microsoft Azure Management](concept-conditional-access-cloud-apps.md#microsoft-azure-management)-App mehrstufige Authentifizierung durchführen müssen.
 
-1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Conditional Access-Administrator an.
-1. Navigieren Sie zu **Azure Active Directory** > **Bedingter Zugriff**.
-1. Wählen Sie **Neue Richtlinie**.
+1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff** .
+1. Wählen Sie **Neue Richtlinie** .
 1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
 1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.
    1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** aus.
    1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
-   1. Wählen Sie **Fertig**aus.
+   1. Wählen Sie **Fertig** aus.
 1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Apps auswählen** aus. Wählen Sie dann **Microsoft Azure-Verwaltung** und anschließend **Auswählen** sowie **Fertig** aus.
-1. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen**, dann **Mehrstufige Authentifizierung erforderlich** und anschließend **Auswählen** aus.
+1. Lassen Sie unter **Bedingungen** > **Client-Apps (Vorschau)** unter der Option **Wählen Sie die Client-Apps aus, auf die diese Richtlinie angewendet wird.** alle Standardwerte aktiviert, und klicken Sie auf **Fertig** .
+1. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen** , dann **Mehrstufige Authentifizierung erforderlich** und anschließend **Auswählen** aus.
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md)
+
+[Bestimmen der Auswirkung durch Verwendung des reinen Berichtsmodus des bedingten Zugriffs](howto-conditional-access-insights-reporting.md)
 
 [Simulieren des Anmeldeverhaltens mit dem Was-wäre-wenn-Tool für den bedingten Zugriff](troubleshoot-conditional-access-what-if.md)

@@ -1,117 +1,177 @@
 ---
 title: Häufig gestellte Fragen zum Sichern von Azure Files
-description: Dieser Artikel enthält ausführliche Informationen dazu, wie Sie Ihre Azure-Dateifreigaben schützen.
-author: dcurwin
-ms.author: dacurwin
-ms.date: 07/29/2019
-ms.topic: tutorial
-ms.service: backup
-manager: carmonm
-ms.openlocfilehash: 05b591137a53e60b3197feb7f57564a8d4af7a44
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Schützen von Azure-Dateifreigaben mit dem Azure Backup-Dienst.
+ms.date: 04/22/2020
+ms.topic: conceptual
+ms.openlocfilehash: e2b6afb25e189ee2848f25c0ba59d843baf37090
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624276"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940834"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
-In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
+
+In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Sie können auch auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-backup.html) Fragen zum Azure Backup-Dienst posten.
 
 Verwenden Sie die Links auf der rechten Seite unter **In diesem Artikel**, um sich einen Überblick über die Abschnitte dieses Artikels zu verschaffen.
 
 ## <a name="configuring-the-backup-job-for-azure-files"></a>Konfigurieren des Sicherungsauftrags für Azure Files
 
-### <a name="why-cant-i-see-some-of-my-storage-accounts-i-want-to-protect-that-contain-valid-azure-file-shares-br"></a>Warum werden einige Speicherkonten nicht angezeigt, die geschützt werden sollen und gültige Azure-Dateifreigaben enthalten? <br/>
-Während der Vorschauphase unterstützt die Sicherung für Azure-Dateifreigaben nicht alle Arten von Speicherkonten. Die Liste mit den unterstützten Speicherkonten finden Sie [hier](troubleshoot-azure-files.md#limitations-for-azure-file-share-backup-during-preview). Das gesuchte Speicherkonto kann auch bereits geschützt oder in einem anderen Tresor registriert sein. [Heben Sie die Registrierung beim Tresor auf](troubleshoot-azure-files.md#configuring-backup), um das Speicherkonto in anderen Tresoren für den Schutz zu ermitteln.
+### <a name="why-cant-i-see-some-of-my-storage-accounts-that-i-want-to-protect-which-contain-valid-azure-file-shares"></a>Warum werden einige Speicherkonten nicht angezeigt, die geschützt werden sollen und gültige Azure-Dateifreigaben enthalten?
 
-### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>Warum werden beim Konfigurieren der Sicherung einige Azure-Dateifreigaben im Speicherkonto nicht angezeigt? <br/>
+Sehen Sie in der [Unterstützungsmatrix für die Sicherung von Azure-Dateifreigaben](azure-file-share-support-matrix.md) nach, um sicherzustellen, dass das Speicherkonto einem der unterstützten Speicherkontotypen angehört. Es ist ferner möglich, dass das Speicherkonto, nach dem Sie suchen, bereits geschützt oder bei einem anderen Tresor registriert ist. [Heben Sie die Registrierung des Speicherkontos beim Tresor auf](manage-afs-backup.md#unregister-a-storage-account), um das Speicherkonto in anderen Tresoren für den Schutz zu ermitteln.
+
+### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup"></a>Warum werden beim Konfigurieren der Sicherung einige Azure-Dateifreigaben im Speicherkonto nicht angezeigt?
+
 Überprüfen Sie, ob die Azure-Dateifreigabe bereits in demselben Recovery Services-Tresor geschützt wird oder vor Kurzem gelöscht wurde.
 
-### <a name="can-i-protect-file-shares-connected-to-a-sync-group-in-azure-files-sync-br"></a>Kann ich Dateifreigaben schützen, die mit einer Synchronisierungsgruppe in Azure Files Sync verbunden sind? <br/>
-Ja. Die Schutzfunktion für Azure-Dateifreigaben, die mit Synchronisierungsgruppen verbunden sind, ist aktiviert und Teil einer öffentlichen Vorschauversion.
+### <a name="can-i-protect-file-shares-connected-to-a-sync-group-in-azure-files-sync"></a>Kann ich Dateifreigaben schützen, die mit einer Synchronisierungsgruppe in Azure Files Sync verbunden sind?
 
-### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-did-not-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Beim Sichern von Dateifreigaben habe ich auf ein Speicherkonto geklickt, um die darin enthaltenen Dateifreigaben zu ermitteln. Ich habe sie jedoch nicht geschützt. Wie schütze ich diese Dateifreigaben mit einem anderen Tresor?
-Wenn Sie beim Sichern ein Speicherkonto auswählen, um die darin enthaltenen Dateifreigaben zu ermitteln, wird das Speicherkonto bei dem Tresor registriert, über den der Vorgang ausgeführt wird. Falls Sie die Dateifreigaben bei einem anderen Tresor registrieren möchten, [heben Sie die Registrierung des ausgewählten Speicherkontos bei diesem Tresor auf](troubleshoot-azure-files.md#configuring-backup).
+Ja. Der Schutz von Azure-Dateifreigaben, die mit Synchronisierungsgruppen verbunden sind, ist aktiviert.
+
+### <a name="when-trying-to-back-up-file-shares-i-selected-a-storage-account-to-discover-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Beim Sichern von Dateifreigaben habe ich ein Speicherkonto ausgewählt, um die darin enthaltenen Dateifreigaben zu ermitteln. Ich habe sie jedoch nicht geschützt. Wie schütze ich diese Dateifreigaben mit einem anderen Tresor?
+
+Wenn Sie beim Sichern ein Speicherkonto auswählen, um die darin enthaltenen Dateifreigaben zu ermitteln, wird das Speicherkonto bei dem Tresor registriert, über den der Vorgang ausgeführt wird. Falls Sie die Dateifreigaben bei einem anderen Tresor registrieren möchten, [heben Sie die Registrierung des ausgewählten Speicherkontos bei diesem Tresor auf](manage-afs-backup.md#unregister-a-storage-account).
+
+### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>Warum kann ich den Tresor nicht ändern, um die Sicherung für die Dateifreigabe zu konfigurieren?
+
+Wenn das Speicherkonto bereits bei einem Tresor registriert ist oder andere Dateifreigaben im Speicherkonto mithilfe eines Tresors geschützt sind, kann der Tresor nicht geändert werden. Alle Dateifreigaben in einem Speicherkonto können nur durch denselben Tresor geschützt werden. Wenn Sie den Tresor ändern möchten, müssen Sie im verbundenen Tresor den [Schutz für alle Dateifreigaben im Speicherkonto beenden](manage-afs-backup.md#stop-protection-on-a-file-share), die [Registrierung des Speicherkontos aufheben](manage-afs-backup.md#unregister-a-storage-account) und dann einen anderen Tresor für den Schutz auswählen.
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Kann ich den Tresor ändern, in dem ich meine Dateifreigaben sichere?
-Ja. Sie müssen jedoch im verknüpften Tresor den [Schutz beenden](backup-azure-files.md#stop-protecting-an-azure-file-share), [die Registrierung dieses Speicherkontos aufheben](troubleshoot-azure-files.md#configuring-backup) und es dann über einen anderen Tresor schützen.
 
-### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>An welchen geografischen Standorten kann ich Azure-Dateifreigaben sichern? <br/>
-Die Sicherung für Azure-Dateifreigaben befindet sich derzeit in der Vorschauphase und ist nur an folgenden geografischen Standorten verfügbar:
-- Australien, Osten (AE)
-- Australien, Südosten (ASE)
-- Brasilien, Süden (BRS)
-- Kanada, Mitte (CNC)
-- Kanada, Osten (CE)
-- USA, Mitte (CUS)
-- Asien, Osten (EA)
-- USA, Osten (EUS)
-- USA, Osten 2 (EUS2)
-- Japan, Osten (JPE)
-- Japan, Westen (JPW)
-- Indien, Mitte (INC)
-- Indien, Süden (INS)
-- Südkorea, Mitte (KRC)
-- Korea, Süden (KRS)
-- USA, Norden-Mitte (NCUS)
-- Europa, Norden (NE)
-- USA, Süden-Mitte (SCUS)
-- Asien, Südosten (SEA)
-- Vereinigtes Königreich, Süden (UKS)
-- Vereinigtes Königreich, Westen (UKW)
-- Europa, Westen (WE)
-- USA, Westen (WUS)
-- USA, Westen-Mitte (WCUS)
-- USA, Westen 2 (WUS 2)
-- US Gov Arizona (UGA)
-- US Gov Texas (UGT)
-- US Gov Virginia (UGV)
-
-Schreiben Sie an [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com), wenn Sie die Version an einem bestimmten geografischen Standort verwenden müssen, der oben nicht aufgeführt ist.
-
-### <a name="how-many-azure-file-shares-can-i-protect-in-a-vaultbr"></a>Wie viele Azure-Dateifreigaben kann ich in einem Tresor schützen?<br/>
-Während der Vorschauphase können Sie Azure-Dateifreigaben aus bis zu 50 Speicherkonten pro Tresor schützen. Sie können auch bis zu 200 Azure-Dateifreigaben in einem einzelnen Tresor schützen.
+Ja. Sie müssen jedoch im verknüpften Tresor [den Schutz einer Dateifreigabe beenden](manage-afs-backup.md#stop-protection-on-a-file-share), die [Registrierung dieses Speicherkontos aufheben](manage-afs-backup.md#unregister-a-storage-account) und es dann über einen anderen Tresor schützen.
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Kann ich zwei verschiedene Dateifreigaben im gleichen Speicherkonto in verschiedenen Tresoren schützen?
+
 Nein. Alle Dateifreigaben in einem Speicherkonto können nur durch denselben Tresor geschützt werden.
 
 ## <a name="backup"></a>Backup
 
-### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Wie viele geplante Sicherungen kann ich pro Dateifreigabe konfigurieren?
-Azure Backup unterstützt derzeit das Konfigurieren geplanter einmaliger täglicher Sicherungen von Azure-Dateifreigaben. 
+### <a name="what-should-i-do-if-my-backups-start-failing-due-to-the-maximum-limit-reached-error"></a>Wie ist vorzugehen, wenn Sicherungen aufgrund des erreichten Grenzwerts Fehler aufzuweisen beginnen?
 
-### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>Wie viele bedarfsgesteuerte Sicherungen kann ich pro Dateifreigabe erstellen? <br/>
-Für eine Dateifreigabe können jeweils bis zu 200 Momentaufnahmen vorhanden sein. In die Berechnung dieses Grenzwerts werden auch Momentaufnahmen einbezogen, die mit Azure Backup erstellt werden. Dies wird durch Ihre Richtlinie definiert. Falls für Ihre Sicherungen nach dem Erreichen des Grenzwerts Fehler auftreten, sollten Sie bedarfsgesteuerte Wiederherstellungspunkte löschen, damit die Erstellung von Sicherungen wieder erfolgreich ist.
-
+Für eine Dateifreigabe können jeweils bis zu 200 Momentaufnahmen vorhanden sein. In die Berechnung dieses Grenzwerts werden auch Momentaufnahmen einbezogen, die mit Azure Backup erstellt werden. Dies wird durch Ihre Richtlinie definiert. Falls für Ihre Sicherungen nach dem Erreichen des Grenzwerts Fehler auftreten, sollten Sie bedarfsgesteuerte Momentaufnahmen löschen, damit die Erstellung von Sicherungen wieder erfolgreich ist.
 
 ## <a name="restore"></a>Restore
 
-### <a name="can-i-recover-from-a-deleted-azure-file-share-br"></a>Kann die Wiederherstellung auf der Grundlage einer gelöschten Azure-Dateifreigabe erfolgen? <br/>
-Beim Löschen einer Azure-Dateifreigabe wird die Liste mit den Sicherungen angezeigt, die gelöscht werden, und Sie werden zum Bestätigen aufgefordert. Eine gelöschte Azure-Dateifreigabe kann nicht wiederhergestellt werden.
+### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>Kann die Wiederherstellung auf der Grundlage einer gelöschten Azure-Dateifreigabe erfolgen?
 
-### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share-br"></a>Kann ich Sicherungen wiederherstellen, wenn ich den Schutz für eine Azure-Dateifreigabe beendet habe? <br/>
+Wenn sich die Dateifreigabe im Status „Vorläufig gelöscht“ befindet, müssen Sie zuerst den Löschvorgang der Dateifreigabe rückgängig machen, um den Wiederherstellungsvorgang auszuführen. Durch das Rückgängigmachen des Löschvorgangs wird die Dateifreigabe wieder in den aktiven Status versetzt, der eine Wiederherstellung zu einem beliebigen Zeitpunkt ermöglicht. Um zu erfahren, wie Sie die Dateifreigabe aus dem gelöschten Zustand wiederherstellen, besuchen Sie [diesen Link](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share), oder sehen Sie sich das [Skript zum Wiederherstellen einer Dateifreigabe](./scripts/backup-powershell-script-undelete-file-share.md) an. Wenn die Dateifreigabe dauerhaft gelöscht wird, können Sie Inhalte und Momentaufnahmen nicht wiederherstellen.
+
+### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>Kann ich Sicherungen wiederherstellen, wenn ich den Schutz für eine Azure-Dateifreigabe beendet habe?
+
 Ja. Wenn Sie beim Beenden des Schutzes die Option **Sicherungsdaten beibehalten** ausgewählt haben, können Sie alle vorhandenen Wiederherstellungspunkte wiederherstellen.
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Was geschieht, wenn ich einen laufenden Wiederherstellungsauftrag abbreche?
-Wenn ein laufender Wiederherstellungsauftrag abgebrochen wird, wird der Wiederherstellungsvorgang beendet, und alle vor dem Abbruch wiederhergestellten Dateien verbleiben ohne Rollbacks am konfigurierten Ziel (ursprünglicher oder alternativer Speicherort). 
 
+Wenn ein laufender Wiederherstellungsauftrag abgebrochen wird, wird der Wiederherstellungsvorgang beendet, und alle vor dem Abbruch wiederhergestellten Dateien verbleiben ohne Rollbacks am konfigurierten Ziel (ursprünglicher oder alternativer Speicherort).
 
 ## <a name="manage-backup"></a>Verwalten von Sicherungen
 
-### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares-br"></a>Kann ich PowerShell zum Konfigurieren/Verwalten/Wiederherstellen von Sicherungen von Azure-Dateifreigaben verwenden? <br/>
+### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>Kann ich PowerShell zum Konfigurieren/Verwalten/Wiederherstellen von Sicherungen von Azure-Dateifreigaben verwenden?
+
 Ja. Informationen hierzu finden Sie in der ausführlichen Dokumentation unter [diesem Link](backup-azure-afs-automation.md).
 
-### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-it-br"></a>Kann ich auf die von Azure Backup erstellten Momentaufnahmen zugreifen und sie einbinden? <br/>
-Auf alle von Azure Backup erstellten Momentaufnahmen kann im Portal, über PowerShell oder mithilfe der CLI über die Funktion zum Anzeigen von Momentaufnahmen zugegriffen werden. Weitere Informationen zu Azure Files-Freigabemomentaufnahmen finden Sie unter [Übersicht über Freigabemomentaufnahmen für Azure Files (Vorschauversion)](../storage/files/storage-snapshots-files.md).
+### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>Kann ich auf die von Azure Backup erstellten Momentaufnahmen zugreifen und sie einbinden?
 
-### <a name="what-is-the-maximum-retention-i-can-configure-for-backups-br"></a>Was ist die maximale Aufbewahrungsdauer, die ich für Sicherungen konfigurieren kann? <br/>
-Bei der Sicherung von Azure-Dateifreigaben können Sie Richtlinien mit einem Aufbewahrungszeitraum von bis zu 180 Tagen konfigurieren. Mit der [Option für die bedarfsgesteuerte Sicherung in PowerShell](backup-azure-afs-automation.md#trigger-an-on-demand-backup) können Sie einen Wiederherstellungspunkt jedoch sogar bis zu zehn Jahre aufbewahren.
+Auf alle von Azure Backup erstellten Momentaufnahmen kann im Portal, über PowerShell oder mithilfe der CLI über die Funktion zum Anzeigen von Momentaufnahmen zugegriffen werden. Weitere Informationen zu Azure Files-Freigabemomentaufnahmen finden Sie unter [Übersicht über Freigabemomentaufnahmen für Azure Files](../storage/files/storage-snapshots-files.md).
 
-### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share-br"></a>Was passiert, wenn ich die Sicherungsrichtlinie für eine Azure-Dateifreigabe ändere? <br/>
-Wenn eine neue Richtlinie auf Dateifreigaben angewendet wird, werden der Zeitplan und die Aufbewahrung der neuen Richtlinie beachtet. Bei einer Ausweitung der Aufbewahrung werden bereits vorhandene Wiederherstellungspunkte markiert, um sie gemäß der neuen Richtlinie aufzubewahren. Bei einer Verkürzung der Aufbewahrung werden sie im Rahmen der nächsten Bereinigung gelöscht.
+### <a name="what-happens-after-i-move-a-backed-up-file-share-to-a-different-subscription"></a>Was geschieht, nachdem ich eine gesicherte Dateifreigabe in ein anderes Abonnement verschoben habe?
 
-## <a name="see-also"></a>Weitere Informationen
-Diese Informationen beziehen sich nur auf das Sichern von Azure Files. Wenn Sie weitere Informationen zu anderen Bereichen von Azure Backup benötigen, sehen Sie sich die folgenden Artikel mit häufig gestellten Fragen zu Backup an:
--  [Häufig gestellte Fragen zum Recovery Services-Tresor](backup-azure-backup-faq.md)
--  [Häufig gestellte Fragen zur Azure-VM-Sicherung](backup-azure-vm-backup-faq.md)
--  [Häufig gestellte Fragen zur Sicherung von Dateien/Ordnern mit dem Azure Backup-Agent](backup-azure-file-folder-backup-faq.md)
+Sobald eine Dateifreigabe in ein anderes Abonnement verschoben wurde, wird sie von Azure Backup als neue Dateifreigabe betrachtet. Die empfohlenen Schritte lauten wie folgt:
+ 
+Szenario: Angenommen, Sie verfügen über eine Dateifreigabe *DF1* im Abonnement *A1*, die mithilfe des Tresors *T1* geschützt wird. Jetzt möchten Sie Ihre Dateifreigabe in das Abonnement *A2* verschieben.
+ 
+1.  Verschieben Sie das gewünschte Speicherkonto und die Dateifreigabe (DF1) in das andere Abonnement (A2).
+2.  Lösen Sie im Tresor T1 den Vorgang „Beendigung des Schutzes mit Datenlöschung“ für DF1 aus.
+3.  Heben Sie die Registrierung des Speicherkontos auf, das DF1 aus dem Tresor T1 hostet.
+4.  Konfigurieren Sie die Sicherung für DF1, jetzt in A2 verschoben, mit einem Tresor (T2) im Abonnement A2 neu. 
+ 
+Beachten Sie, dass die Momentaufnahmen, die mit T1 erstellt wurden, nach der Neukonfiguration der Sicherung mit T2 nicht mehr von Azure Backup verwaltet werden. Daher müssen Sie diese Momentaufnahmen entsprechend Ihren Anforderungen manuell löschen.
+
+### <a name="can-i-move-my-backed-up-file-share-to-a-different-resource-group"></a>Kann ich meine gesicherte Dateifreigabe in eine andere Ressourcengruppe verschieben?
+ 
+Ja. Sie können Ihre gesicherte Dateifreigabe in eine andere Ressourcengruppe verschieben. Allerdings müssen Sie die Sicherung für die Dateifreigabe neu konfigurieren, da sie sonst von Azure Backup als neue Ressource behandelt wird. Außerdem werden die Momentaufnahmen, die vor dem Verschieben der Ressourcengruppe erstellt wurden, nicht mehr von Azure Backup verwaltet. Daher müssen Sie diese Momentaufnahmen entsprechend Ihren Anforderungen manuell löschen.
+
+### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Welche maximale Aufbewahrungsdauer kann ich für Sicherungen konfigurieren?
+
+Ausführliche Informationen zur maximalen Aufbewahrung finden Sie in der [Unterstützungsmatrix](azure-file-share-support-matrix.md). Azure Backup führt eine Echtzeitberechnung der Anzahl von Momentaufnahmen durch, wenn Sie beim Konfigurieren der Sicherungsrichtlinie die Aufbewahrungswerte eingeben. Sobald die Anzahl der Momentaufnahmen, die Ihren definierten Aufbewahrungswerten entsprechen, 200 überschreitet, zeigt das Portal eine Warnung an, die Sie auffordert, Ihre Aufbewahrungswerte anzupassen. Dadurch wird die maximale Anzahl Momentaufnahmen, die von Azure Files für eine beliebige Dateifreigabe unterstützt werden, zu keiner Zeit überschritten.
+
+### <a name="what-is-the-impact-on-existing-recovery-points-and-snapshots-when-i-modify-the-backup-policy-for-an-azure-file-share-to-switch-from-daily-policy-to-gfs-policy"></a>Welche Auswirkung hat es auf vorhandene Wiederherstellungspunkte und Momentaufnahmen, wenn ich die Backup-Richtlinie für eine Azure-Dateifreigabe von „Tägliche Richtlinie“ in „GFS-Richtlinie“ ändere?
+
+Bei der Umstellung von einer täglichen Richtlinie auf eine GFS-Richtlinie (mit wöchentlicher/monatlicher/jährlicher Aufbewahrung) ergibt sich das folgende Verhalten:
+
+- **Aufbewahrung**: Wenn Sie beim Ändern der Richtlinie die wöchentliche, monatliche bzw. jährliche Aufbewahrung hinzufügen, werden alle zukünftigen Wiederherstellungspunkte, die im Rahmen der geplanten Sicherung erstellt werden, gemäß der neuen Richtlinie mit Tags gekennzeichnet. Alle vorhandenen Wiederherstellungspunkte werden weiterhin als tägliche Wiederherstellungspunkte angesehen und daher nicht mit Tags als „Wöchentlich“, „Monatlich“ bzw. „Jährlich“ gekennzeichnet.
+
+- **Bereinigung von Momentaufnahmen und Wiederherstellungspunkten**:
+
+  - Bei einer Erweiterung der täglichen Aufbewahrung wird das Ablaufdatum der vorhandenen Wiederherstellungspunkte gemäß dem Wert für die tägliche Aufbewahrung aktualisiert, der in der neuen Richtlinie konfiguriert ist.
+  - Bei einer Reduzierung der täglichen Aufbewahrung werden die vorhandenen Wiederherstellungspunkte und Momentaufnahmen so gekennzeichnet, dass sie beim nächsten Bereinigungslauf gelöscht werden (basierend auf dem Wert für die tägliche Aufbewahrung, der in der neuen Richtlinie konfiguriert ist). Das Löschen wird dann entsprechend durchgeführt.
+
+Hier ist ein Beispiel für diesen Vorgang angegeben:
+
+#### <a name="existing-policy-p1"></a>Vorhandene Richtlinie [P1]
+
+|Aufbewahrungstyp |Zeitplan |Aufbewahrung  |
+|---------|---------|---------|
+|Täglich    |    Jeden Tag um 20 Uhr    |  100 Tage       |
+
+#### <a name="new-policy-modified-p1"></a>Neue Richtlinie [P1 geändert]
+
+| Aufbewahrungstyp | Zeitplan                       | Aufbewahrung |
+| -------------- | ------------------------------ | --------- |
+| Täglich          | Jeden Tag um 21 Uhr              | 50 Tage   |
+| Wöchentlich         | Sonntags um 21 Uhr              | 3 Wochen   |
+| Monatlich        | Am letzten Montag um 21 Uhr         | 1 Monat   |
+| Jährlich         | Im Januar am dritten Sonntag um 21 Uhr | 4 Jahre   |
+
+#### <a name="impact"></a>Auswirkung
+
+1. Das Ablaufdatum der vorhandenen Wiederherstellungspunkte wird gemäß dem Wert für tägliche Aufbewahrung angepasst, der in der neuen Richtlinie enthalten ist (50 Tage). Daher werden alle Wiederherstellungspunkte, die älter als 50 Tage sind, als zu löschend gekennzeichnet.
+
+2. Die vorhandenen Wiederherstellungspunkte werden basierend auf der neuen Richtlinie nicht als „Wöchentlich“, „Monatlich“ bzw. „Jährlich“ gekennzeichnet.
+
+3. Alle zukünftigen Sicherungen werden gemäß dem neuen Zeitplan ausgelöst (um 21 Uhr).
+
+4. Das Ablaufdatum aller zukünftigen Wiederherstellungspunkte wird anhand der neuen Richtlinie ausgerichtet.
+
+>[!NOTE]
+>Die Richtlinienänderungen wirken sich nur auf die Wiederherstellungspunkte aus, die im Rahmen der geplanten Ausführung des Sicherungsauftrags erstellt werden. Bei bedarfsgesteuerten Sicherungen richtet sich die Aufbewahrung nach dem Wert für **Aufbewahren bis**, der bei der Durchführung des Sicherungsvorgangs angegeben wurde.
+
+### <a name="what-is-the-impact-on-existing-recovery-points-when-i-modify-an-existing-gfs-policy"></a>Welche Auswirkung ergibt sich für die vorhandenen Wiederstellungspunkte, wenn ich eine vorhandene GFS-Richtlinie ändere?
+
+Wenn eine neue Richtlinie auf Dateifreigaben angewendet wird, werden alle zukünftigen geplanten Sicherungen gemäß dem Zeitplan erstellt, der in der geänderten Richtlinie konfiguriert ist.  Die Aufbewahrung aller vorhandenen Wiederherstellungspunkte basiert auf den neuen konfigurierten Werten für die Aufbewahrung. Wenn die Aufbewahrung erweitert wird, werden vorhandene Wiederherstellungspunkte so gekennzeichnet, dass sie gemäß der neuen Richtlinie aufbewahrt werden. Bei einer Reduzierung der Aufbewahrung werden sie für die Löschung im Rahmen des nächsten Bereinigungsauftrags gekennzeichnet und dann entsprechend gelöscht.
+
+Hier ist ein Beispiel für diesen Vorgang angegeben:
+
+#### <a name="existing-policy-p2"></a>Vorhandene Richtlinie [P2]
+
+| Aufbewahrungstyp | Zeitplan           | Aufbewahrung |
+| -------------- | ------------------ | --------- |
+| Täglich          | Jeden Tag um 20 Uhr | 50 Tage   |
+| Wöchentlich         | Montags um 20 Uhr  | 3 Wochen   |
+
+#### <a name="new-policy-modified-p2"></a>Neue Richtlinie [P2 geändert]
+
+| Aufbewahrungstyp | Zeitplan               | Aufbewahrung |
+| -------------- | ---------------------- | --------- |
+| Täglich          | Jeden Tag um 21 Uhr     | 10 Tage   |
+| Wöchentlich         | Montags um 21 Uhr      | Zwei Wochen   |
+| Monatlich        | Am letzten Montag um 21 Uhr | 2 Monate  |
+
+#### <a name="impact-of-change"></a>Auswirkung der Änderung
+
+1. Das Ablaufdatum der vorhandenen täglichen Wiederherstellungspunkte wird am neuen Wert für die tägliche Aufbewahrung ausgerichtet (zehn Tage). Dies bedeutet, dass alle täglichen Wiederherstellungspunkte gelöscht werden, die älter als zehn Tage sind.
+
+2. Das Ablaufdatum der vorhandenen wöchentlichen Wiederherstellungspunkte wird am neuen Wert für die wöchentliche Aufbewahrung ausgerichtet (zwei Wochen). Dies bedeutet, dass alle wöchentlichen Wiederherstellungspunkte gelöscht werden, die älter als zwei Wochen sind.
+
+3. Die monatlichen Wiederherstellungspunkte werden erst bei zukünftigen Sicherungen anhand der Konfiguration der neuen Richtlinie erstellt.
+
+4. Das Ablaufdatum aller zukünftigen Wiederherstellungspunkte wird anhand der neuen Richtlinie ausgerichtet.
+
+>[!NOTE]
+>Die Richtlinienänderungen wirken sich nur auf die Wiederherstellungspunkte aus, die im Rahmen des geplanten Sicherungsvorgangs erstellt werden. Bei bedarfsgesteuerten Sicherungen richtet sich die Aufbewahrung nach dem Wert für **Aufbewahren bis**, der bei der Durchführung des Sicherungsvorgangs angegeben wurde.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Behandeln von Problemen beim Sichern von Azure-Dateifreigaben](troubleshoot-azure-files.md)

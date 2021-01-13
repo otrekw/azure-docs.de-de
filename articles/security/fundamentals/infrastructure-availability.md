@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c50c4faf47caf0a7519d61fdc8989ec9fd809d78
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68727231"
 ---
 # <a name="azure-infrastructure-availability"></a>Verfügbarkeit der Azure-Infrastruktur

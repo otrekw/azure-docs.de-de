@@ -1,25 +1,23 @@
 ---
-title: Visualisieren von Netzwerk-Datenverkehrsmustern mithilfe von Azure Network Watcher und Open Source-Tools | Microsoft-Dokumentation
+title: Visualisieren von Netzwerk-Datenverkehrsmustern mithilfe von Open Source-Tools
+titleSuffix: Azure Network Watcher
 description: Auf dieser Seite wird beschrieben, wie Sie die Network Watcher-Paketerfassung mit CapAnalysis zum Visualisieren von Mustern im eingehenden und ausgehenden VM-Datenverkehr verwenden.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 936d881b-49f9-4798-8e45-d7185ec9fe89
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 3a0ae782d3fe97752ca8b9e786c3c2672f554277
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64936021"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84738633"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Visualisieren von Mustern im eingehenden und ausgehenden VM-Datenverkehr mithilfe von Open Source-Tools
 
@@ -49,7 +47,7 @@ Sie können eine mit Network Watcher erstellte Paketerfassung direkt hochladen, 
 
 Achten Sie beim Angeben eines Links zu CapAnalysis darauf, ein SAS-Token an die Speicherblob-URL anzufügen.  Navigieren Sie hierzu vom Speicherkonto zu „Shared Access Signature“, geben Sie die zulässigen Berechtigungen an, und klicken Sie auf die Schaltfläche „SAS generieren“, um ein Token zu erstellen. Anschließend können Sie das SAS-Token an die Speicherblob-URL der Paketerfassung anfügen.
 
-Die sich ergebende URL sieht dann in etwa wie folgt aus: http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
+Die sich ergebende URL sieht dann in etwa wie folgt aus: `http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
 ### <a name="analyzing-packet-captures"></a>Analysieren von Paketerfassungen
@@ -68,7 +66,7 @@ CapAnalysis umfasst verschiedene Optionen zum Visualisieren Ihrer Paketerfassung
 
     ![CapAnalysis-Protokollübersicht][6]
 
-1. Statistiken
+1. Statistik
 
     In diesem Bereich können Sie die Statistiken zum Netzwerkdatenverkehr anzeigen: gesendete und empfangene Bytes von Quell- und Ziel-IP-Adressen, Datenflüsse für die einzelnen Quell- und Ziel-IP-Adressen, das für verschiedene Datenflüsse verwendete Protokoll und die Dauer der Datenflüsse.
 

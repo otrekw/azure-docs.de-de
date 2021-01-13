@@ -1,6 +1,6 @@
 ---
 title: Azure-Produktionsnetzwerk
-description: Dieser Artikel enthält eine allgemeine Beschreibung des Azure-Produktionsnetzwerks.
+description: Erfahren Sie etwas über das Azure-Produktionsnetzwerk. Weitere Informationen finden Sie unter den Sicherheitszugriffsmethoden und Schutzmechanismen zum Herstellen einer Verbindung mit dem Netzwerk.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 7c0748e4ff1531649274834cb1e602c228f102e8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 724c2ee2d74ca9cab11280e92faac71c2cb2218e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726689"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87543808"
 ---
 # <a name="the-azure-production-network"></a>Das Azure-Produktionsnetzwerk
 Zu den Benutzern des Azure-Produktionsnetzwerks gehören sowohl externe Kunden, die auf ihre eigenen Azure-Anwendungen zugreifen, als auch interne Azure-Supportmitarbeiter, die das Produktionsnetzwerk verwalten. In diesem Artikel werden die Sicherheitszugriffsmethoden und Schutzmechanismen besprochen, mit denen Verbindungen zum Azure-Produktionsnetzwerk hergestellt werden können.

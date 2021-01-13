@@ -1,20 +1,18 @@
 ---
 title: Vertikales Hoch- und Herunterskalieren in Azure Stream Analytics-Aufträgen
 description: In diesem Artikel wird beschrieben, wie Sie einen Stream Analytics-Auftrag skalieren, indem Sie Eingabedaten partitionieren, die Abfrage optimieren und Streamingeinheiten für den Auftrag festlegen.
-services: stream-analytics
 author: JSeb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: fe4d37563af159f566bc3fb03a3cfe136e7cb734
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c12c4b9f4a3757a3974e4aff7699d0265bfd7840
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621725"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124372"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Skalieren eines Azure Stream Analytics-Auftrags zur Erhöhung des Durchsatzes
 In diesem Artikel erfahren Sie, wie Sie eine Stream Analytics-Abfrage zur Steigerung des Durchsatzes für Stream Analytics-Aufträge optimieren. Im folgenden Leitfaden wird erläutert, wie Sie Ihren Auftrag zur Verarbeitung höherer Lasten skalieren und von einer größeren Menge an Systemressourcen (z.B. Bandbreite, CPU-Ressourcen, Arbeitsspeicher) profitieren können.
@@ -25,7 +23,7 @@ Hierfür sollten Sie folgende Artikel gelesen haben:
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>Fall 1: Ihre Abfrage ist prinzipiell über alle Eingabepartitionen hinweg vollständig parallelisierbar.
 Wenn Ihre Abfrage prinzipiell über alle Eingabepartitionen hinweg vollständig parallelisierbar ist, können Sie folgende Schritte durchführen:
 1.  Erstellen Sie mithilfe des Schlüsselworts **PARTITION BY** eine Abfrage mit hohem Parallelitätsgrad. Einzelheiten finden Sie [auf dieser Seite](stream-analytics-parallelization.md) im Abschnitt „Aufträge mit hohem Parallelitätsgrad“.
-2.  Je nach den in der Abfrage verwendeten Ausgabetypen sind einige Ausgaben möglicherweise nicht parallelisierbar oder erfordern weitere Konfigurationen im Hinblick auf einen hohen Parallelitätsgrad. So sind z.B. SQL-, SQL DW- und Power BI-Ausgaben nicht parallelisierbar. Ausgaben werden immer zusammengeführt, bevor sie an die Ausgabesenke gesendet werden. Blobs, Tabellen, ADLS, Service Bus und Azure-Funktionen werden automatisch parallelisiert. Bei CosmosDB und beim Event Hub muss der PartitionKey-Konfigurationssatz dem Feld **PARTITION BY** entsprechen (in der Regel „PartitionId“). Achten Sie bei Event Hubs insbesondere darauf, dass die Anzahl der Partitionen für alle Eingaben der Anzahl der Partitionen für alle Ausgaben entspricht, um eine Überkreuzung zwischen den Partitionen zu verhindern. 
+2.  Je nach den in der Abfrage verwendeten Ausgabetypen sind einige Ausgaben möglicherweise nicht parallelisierbar oder erfordern weitere Konfigurationen im Hinblick auf einen hohen Parallelitätsgrad. Beispielsweise ist die Power BI-Ausgabe nicht parallelisierbar. Ausgaben werden immer zusammengeführt, bevor sie an die Ausgabesenke gesendet werden. Blobs, Tabellen, ADLS, Service Bus und Azure-Funktionen werden automatisch parallelisiert. SQL- und Azure Synapse Analytics-Ausgaben verfügen über eine Option zur Parallelisierung. Beim Event Hub muss der PartitionKey-Konfigurationssatz dem Feld **PARTITION BY** entsprechen (in der Regel „PartitionId“). Achten Sie bei Event Hubs insbesondere darauf, dass die Anzahl der Partitionen für alle Eingaben der Anzahl der Partitionen für alle Ausgaben entspricht, um eine Überkreuzung zwischen den Partitionen zu verhindern. 
 3.  Führen Sie Ihre Abfrage mit **6 SUs** (d.h. der Gesamtkapazität eines einzelnen Computeknotens) aus, um den maximal erreichbaren Durchsatz zu messen, und messen Sie bei Verwendung von **GROUP BY** die Anzahl der Gruppen (Kardinalität), die der Auftrag verarbeiten kann. Zu den allgemeinen Symptomen, die bei Erreichen der Systemressourcenlimits durch den Auftrag auftreten, zählen Folgende:
     - Die Metrik „Speichereinheitnutzung in %“ liegt bei über 80 %. Dies weist auf eine hohe Speicherauslastung hin. Die Faktoren, die zur Erhöhung dieser Metrik beitragen, werden [hier](stream-analytics-streaming-unit-consumption.md) beschrieben. 
     -   Der Ausgabezeitstempel liegt gegenüber der Gesamtbetrachtungszeit im Rückstand. Je nach Abfragelogik kann der Ausgabezeitstempel eine Logikabweichung von der Gesamtbetrachtungszeit aufweisen. Diese sollten jedoch in ungefähr derselben Geschwindigkeit verlaufen. Wenn der Ausgabezeitstempel immer weiter zurückfällt, weist dies auf eine Überlastung des Systems hin. Dies kann die Folge einer Drosselung nachgeschalteter Ausgabesenken oder einer hohen CPU-Auslastung sein. Zurzeit stellen wir nicht die Metrik „CPU-Auslastung“ bereit, sodass es schwierig sein kann, zwischen beiden Ursachen zu differenzieren.
@@ -40,11 +38,11 @@ Wenn Ihre Abfrage prinzipiell über alle Eingabepartitionen hinweg vollständig 
 
 ## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>Fall 2: Ihre Abfrage weist keinen hohen Parallelitätsgrad auf.
 Wenn Ihre Abfrage keinen hohen Parallelitätsgrad aufweist, können Sie folgende Schritte durchführen.
-1.  Beginnen Sie zuerst mit einer Abfrage ohne **PARTITION BY**, um die Komplexität der Partitionierung gering zu halten, und führen Sie Ihre Abfrage mit 6 SUs aus, um wie in [Fall 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions) die maximale Last zu messen.
+1.  Beginnen Sie zuerst mit einer Abfrage ohne **PARTITION BY** , um die Komplexität der Partitionierung gering zu halten, und führen Sie Ihre Abfrage mit 6 SUs aus, um wie in [Fall 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions) die maximale Last zu messen.
 2.  Wenn Sie Ihre erwartete Last im Hinblick auf den Durchsatz erreichen können, sind Sie fertig. Alternativ können Sie denselben Auftrag mit 3 SUs und 1 SU messen lassen, um die minimale Anzahl von SUs zu ermitteln, die für Ihr Szenario funktioniert.
 3.  Wenn Sie den gewünschten Durchsatz nicht erreichen können, versuchen Sie, Ihre Abfrage möglichst in mehrere Schritte zu unterteilen, sofern dies noch nicht geschehen ist. Weisen Sie dann bis zu 6 SUs pro Schritt in der Abfrage zu. Beispiel: Wenn die Abfrage 3 Schritte aufweist, weisen Sie in der Option „Skalieren“ 18 SUs zu.
 4.  Bei der Ausführung eines solchen Auftrags verlagert Stream Analytics jeden Schritt in einen eigenen Knoten mit dedizierten Ressourcen von 6 SUs. 
-5.  Wenn Sie Ihr Lastziel dennoch nicht erreicht haben, können Sie versuchen, **PARTITION BY** beginnend mit den Schritten näher an der Eingabe zu verwenden. Für den Operator **GROUP BY**, der normalerweise nicht partitionierbar ist, können Sie das lokale bzw. globale Aggregatmuster verwenden, um eine partitionierte **GROUP BY**-Abfrage gefolgt von einer nicht partitionierten **GROUP BY**-Abfrage durchzuführen. Beispiel: Sie möchten alle 3 Minuten die Anzahl der Fahrzeuge zählen, die die einzelnen Mautstellen passieren, und die Menge der Daten ermitteln, die mit 6 SUs verarbeitet werden können. In diesem Fall lautet die Abfrage wie folgt:
+5.  Wenn Sie Ihr Lastziel dennoch nicht erreicht haben, können Sie versuchen, **PARTITION BY** beginnend mit den Schritten näher an der Eingabe zu verwenden. Für den Operator **GROUP BY** , der normalerweise nicht partitionierbar ist, können Sie das lokale bzw. globale Aggregatmuster verwenden, um eine partitionierte **GROUP BY** -Abfrage gefolgt von einer nicht partitionierten **GROUP BY** -Abfrage durchzuführen. Beispiel: Sie möchten alle 3 Minuten die Anzahl der Fahrzeuge zählen, die die einzelnen Mautstellen passieren, und die Menge der Daten ermitteln, die mit 6 SUs verarbeitet werden können. In diesem Fall lautet die Abfrage wie folgt:
 
 Abfrage:
 
@@ -80,13 +78,13 @@ In bestimmten Anwendungsfällen mit ISVs ist es kosteneffizienter, Daten von meh
 
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Weitere Unterstützung finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](/rest/api/streamanalytics/)
 
 <!--Image references-->
 
@@ -99,10 +97,9 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 <!--Link references-->
 
 [microsoft.support]: https://support.microsoft.com
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
-
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

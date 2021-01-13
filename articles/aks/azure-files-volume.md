@@ -1,18 +1,16 @@
 ---
-title: Erstellen eines statischen Volumes für mehrere Pods in Azure Kubernetes Service (AKS)
+title: Manuelles Erstellen von Azure Files-Freigaben
+titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie manuell ein Volume mit Azure Files für die Verwendung mit mehreren parallelen Pods in Azure Kubernetes Service (AKS) erstellen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: 009da6c16d446f2b0d4d3f402c1c1ec63dde34d8
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 89976211763f5d4729718c4e4c6503650f27f7cc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018732"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126272"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes mit Azure Files-Freigabe in Azure Kubernetes Service (AKS)
 
@@ -24,11 +22,11 @@ Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Speicheroptionen f
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 
-Bevor Sie eine Azure Files-Freigabe als Kubernetes-Volume verwenden können, müssen Sie ein Azure Storage-Konto und die Dateifreigabe erstellen. Die folgenden Befehle erstellen die Ressourcengruppe *myAKSShare*, ein Speicherkonto und die Azure Files-Freigabe *aksshare*:
+Bevor Sie eine Azure Files-Freigabe als Kubernetes-Volume verwenden können, müssen Sie ein Azure Storage-Konto und die Dateifreigabe erstellen. Die folgenden Befehle erstellen die Ressourcengruppe *myAKSShare* , ein Speicherkonto und die Azure Files-Freigabe *aksshare* :
 
 ```azurecli-interactive
 # Change these four parameters as needed for your own environment
@@ -44,7 +42,7 @@ az group create --name $AKS_PERS_RESOURCE_GROUP --location $AKS_PERS_LOCATION
 az storage account create -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -l $AKS_PERS_LOCATION --sku Standard_LRS
 
 # Export the connection string as an environment variable, this is used when creating the Azure file share
-export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -o tsv`
+export AZURE_STORAGE_CONNECTION_STRING=$(az storage account show-connection-string -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -o tsv)
 
 # Create the file share
 az storage share create -n $AKS_PERS_SHARE_NAME --connection-string $AZURE_STORAGE_CONNECTION_STRING
@@ -71,7 +69,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>Einbinden der Dateifreigabe als Volume
 
-Um die Azure Files-Freigabe in den Pod einzubinden, konfigurieren Sie das Volume in der Containerspezifikation. Erstellen Sie eine neue Datei namens „`azure-files-pod.yaml`“ mit folgendem Inhalt. Wenn Sie den Namen oder den geheimen Namen der Files-Freigabe geändert haben, aktualisieren Sie *shareName* und *secretName*. Aktualisieren Sie bei Bedarf den Wert `mountPath`. Dies ist der Pfad, unter dem die Files-Freigabe im Pod eingebunden wird. Geben Sie für Windows Server-Container (derzeit in der Vorschau in AKS) einen *mountPath* gemäß Windows-Pfadkonvention an, z. B. *D:* .
+Um die Azure Files-Freigabe in den Pod einzubinden, konfigurieren Sie das Volume in der Containerspezifikation. Erstellen Sie eine neue Datei namens „`azure-files-pod.yaml`“ mit folgendem Inhalt. Wenn Sie den Namen oder den geheimen Namen der Files-Freigabe geändert haben, aktualisieren Sie *shareName* und *secretName*. Aktualisieren Sie bei Bedarf den Wert `mountPath`. Dies ist der Pfad, unter dem die Files-Freigabe im Pod eingebunden wird. Geben Sie für Windows Server-Container einen *mountPath* gemäß Windows-Pfadkonvention an (z. B. *D:* ).
 
 ```yaml
 apiVersion: v1
@@ -80,7 +78,7 @@ metadata:
   name: mypod
 spec:
   containers:
-  - image: nginx:1.15.5
+  - image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     name: mypod
     resources:
       requests:
@@ -112,7 +110,7 @@ Sie verfügen nun über einen ausgeführten Pod mit einer Azure Files-Freigabe, 
 Containers:
   mypod:
     Container ID:   docker://86d244cfc7c4822401e88f55fd75217d213aa9c3c6a3df169e76e8e25ed28166
-    Image:          nginx:1.15.5
+    Image:          mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     Image ID:       docker-pullable://nginx@sha256:9ad0746d8f2ea6df3a17ba89eca40b48c47066dfab55a75e08e2b70fc80d929e
     State:          Running
       Started:      Sat, 02 Mar 2019 00:05:47 +0000
@@ -135,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Einbindungsoptionen
 
-Der Standardwert für *fileMode* und *dirMode* lautet bei Kubernetes-Version 1.9.1 und höher *0755*. Wenn Sie einen Cluster mit Kubernetes-Version 1.8.5 oder höher verwenden und das persistente Volume statisch erstellen, müssen die Einbindungsoptionen im *PersistentVolume*-Objekt angegeben werden. Im folgenden Beispiel wird *0777* festgelegt:
+Der Standardwert für *fileMode* und *dirMode* lautet bei Kubernetes-Version 1.9.1 und höher *0755*. Wenn Sie einen Cluster mit Kubernetes-Version 1.8.5 oder höher verwenden und das Objekt für das persistente Volume statisch erstellen, müssen die Einbindungsoptionen im *PersistentVolume* -Objekt angegeben werden. Im folgenden Beispiel wird *0777* festgelegt:
 
 ```yaml
 apiVersion: v1
@@ -163,7 +161,7 @@ spec:
 
 Bei Verwendung eines Clusters der Version 1.8.0 bis 1.8.4 kann ein Sicherheitskontext angegeben werden, indem der Wert *runAsUser* auf *0* festgelegt wird. Weitere Informationen zum Sicherheitskontext für Pods finden Sie unter [Konfigurieren eines Sicherheitskontexts][kubernetes-security-context].
 
-Zum Aktualisieren Ihrer Einbindungsoptionen erstellen Sie eine Datei *azurefile-mount-options-pv.yaml* mit einem *PersistentVolume*-Objekt. Beispiel:
+Zum Aktualisieren Ihrer Einbindungsoptionen erstellen Sie eine Datei *azurefile-mount-options-pv.yaml* mit einem *PersistentVolume* -Objekt. Beispiel:
 
 ```yaml
 apiVersion: v1
@@ -189,7 +187,7 @@ spec:
   - nobrl
 ```
 
-Erstellen Sie eine Datei *azurefile-mount-options-pvc.yaml* mit einem *PersistentVolumeClaim*-Objekt, das *PersistentVolume* verwendet. Beispiel:
+Erstellen Sie eine Datei *azurefile-mount-options-pvc.yaml* mit einem *PersistentVolumeClaim* -Objekt, das *PersistentVolume* verwendet. Beispiel:
 
 ```yaml
 apiVersion: v1
@@ -236,6 +234,8 @@ Aktualisieren Sie die Containerspezifikation so, dass auf *PersistentVolumeClaim
 Entsprechenden bewährte Methoden finden Sie unter [Bewährte Methoden für die Speicherung und Sicherungen in AKS][operator-best-practices-storage].
 
 Weitere Informationen zur Interaktion von AKS-Clustern mit Azure Files finden Sie beim [Kubernetes-Plug-In für Azure Files][kubernetes-files].
+
+Informationen zu Speicherklassenparametern finden Sie unter [Statische Bereitstellung („Bring Your Own File Share“)](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#static-provisionbring-your-own-file-share).
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

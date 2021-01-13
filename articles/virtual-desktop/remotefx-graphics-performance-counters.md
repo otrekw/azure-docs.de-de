@@ -1,18 +1,17 @@
 ---
 title: Diagnostizieren von Problemen mit der Grafikleistung in Remotedesktop – Azure
 description: Dieser Artikel beschreibt, wie Sie Leistungsindikatoren in RemoteFX-Grafik in Remotedesktopprotokoll-Sitzungen verwenden, um Leistungsprobleme mit Grafiken in Windows Virtual Desktop zu diagnostizieren.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: de849701365438b21244d1e46ae657495d16c307
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+manager: lizross
+ms.openlocfilehash: dc5c6499fa47a1e32a517032d5cc2a97b3f2677f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816406"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88007165"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnostizieren von Problemen mit der Grafikleistung in Remotedesktop
 
@@ -24,7 +23,7 @@ Sie benötigen den Namen der Remotesitzung, um Grafikleistungsindikatoren zu ide
 
 1. Öffnen Sie die Windows-Eingabeaufforderung aus der Remotesitzung.
 2. Führen Sie den Befehl **qwinsta** aus, und suchen Sie den Namen Ihrer Sitzung.
-    - Wenn die Sitzung auf einem virtuellen Computer (VM) mit mehreren Sitzungen gehostet wird: Ihrer Instanz jedes Leistungsindikators wird das gleiche Suffix angehängt, das auch Ihr Sitzungsname hat (z.B. “rdp-tcp 37”).
+    - Wenn die Sitzung auf einem virtuellen Computer (VM) mit mehreren Sitzungen gehostet wird: Ihrer Instanz jedes Leistungsindikators wird die gleiche Nummer als Suffix vorangestellt, die Ihrem Sitzungsnamen vorangestellt ist, z. B. „rdp-tcp 37“.
     - Wenn die Sitzung auf einem virtuellen Computer gehostet wird, der virtuelle Grafikprozessoren (vGPU) unterstützt: Ihre Instanz jedes Leistungsindikators wird auf dem Server und nicht auf Ihrem virtuellen Computer gespeichert. Ihre Instanzen der Leistungsindikatoren enthalten den Namen des virtuellen Computers anstelle der Zahl im Sitzungsnamen, z.B. „Win8 Enterprise VM“.
 
 >[!NOTE]
@@ -69,15 +68,15 @@ Ein hoher Wert bei einem der Leistungsindikatoren „Übersprungene Frames/Sekun
 
 Wenn der Wert des Leistungsindikators „Ausgabeframes/Sekunde“ dem des Leistungsindikators „Eingabeframes/Sekunde“ entspricht, aber dennoch ungewöhnliche Verzögerungen oder Unterbrechungen auftreten, kann die durchschnittliche Codierungszeit die Ursache des Problems sein. Die Codierung ist ein synchroner Vorgang, der auf dem Server im Szenario mit einer Einzelsitzung (vGPU) und auf dem virtuellen Computer im Szenario mit mehreren Sitzungen stattfindet. Die durchschnittliche Codierungszeit sollte unter 33 ms liegen. Beträgt die durchschnittliche Codierungszeit weniger als 33 ms und treten dennoch Leistungsprobleme auf, kann ein Problem mit der verwendeten App oder dem verwendeten Betriebssystem vorliegen.
 
-Weitere Informationen zum Diagnostizieren von Problemen im Zusammenhang mit einer App finden Sie unter [Leistungsindikatoren für verzögerte Benutzereingabe](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters).
+Weitere Informationen zum Diagnostizieren von Problemen im Zusammenhang mit einer App finden Sie unter [Leistungsindikatoren für verzögerte Benutzereingabe](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/).
 
-Da RDP eine durchschnittliche Codierungszeit von 33 ms unterstützt, wird eine Eingabeframerate von bis zu 30 Frames pro Sekunde unterstützt. Beachten Sie, dass 33 ms die maximale unterstützte Framerate ist. In vielen Fällen ist die Framerate für den Benutzer geringer, je nachdem, wie oft ein Frame für RDP von der Quelle bereitgestellt wird. Beispielsweise erfordern Aufgaben wie das Ansehen eines Videos eine volle Eingangsbildrate von 30 Frames/Sekunde, aber weniger rechenintensive Aufgaben wie das seltene Bearbeiten eines Dokuments führen ohne Beeinträchtigung der Benutzerfreundlichkeit zu einem viel niedrigeren Wert für die Eingangsbildrate in Frames/Sekunde.
+Da RDP eine durchschnittliche Codierungszeit von 33 ms unterstützt, wird eine Eingabeframerate von bis zu 30 Frames pro Sekunde unterstützt. Beachten Sie, dass 33 ms die maximale unterstützte Framerate ist. In vielen Fällen ist die Framerate für den Benutzer geringer, je nachdem, wie oft ein Frame für RDP von der Quelle bereitgestellt wird. Beispielsweise erfordern Aufgaben wie das Ansehen eines Videos eine volle Eingangsbildrate von 30 Frames/Sekunde, aber weniger rechenintensive Aufgaben wie das seltene Bearbeiten eines Dokuments führen ohne Beeinträchtigung der Benutzerfreundlichkeit zu einem viel niedrigeren Wert für die Eingangsbildrate in Frames/Sekunde.
 
 ### <a name="addressing-poor-frame-quality"></a>Behandeln von schlechter Framequalität
 
 Mit dem Leistungsindikator „Framequalität“ können Sie Probleme der Framequalität diagnostizieren. Dieser Leistungsindikator gibt die Qualität des Ausgabeframes als Prozentsatz der Qualität des Quellframes an. Der Qualitätsverlust ist möglicherweise auf RemoteFX zurückzuführen oder bereits in der Grafikquelle vorhanden sein. Wenn RemoteFX den Qualitätsverlust verursacht, kann das Problem fehlende Netzwerk- oder Serverressourcen zum Senden von Inhalten mit höherer Genauigkeit sein.
 
-## <a name="mitigation"></a>Lösung
+## <a name="mitigation"></a>Minderung
 
 Wenn Serverressourcen den Engpass verursachen, versuchen Sie die Leistung mit einem der folgenden Ansätze zu verbessern:
 
@@ -101,6 +100,6 @@ Wenn Clientressourcen den Engpass verursachen, versuchen Sie die Leistung mit ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Erstellen eines GPU-optimierten virtuellen Azure-Computers finden Sie unter [Konfigurieren der Beschleunigung durch Graphics Processing Units (GPU) für die Windows Virtual Desktop-Umgebung (Vorschauversion)](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu).
-- Eine Übersicht über die Problembehandlung und Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview).
-- Weitere Informationen zum Vorschaudienst finden Sie unter [Umgebung der Windows Desktop-Vorschau](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Informationen zum Erstellen eines GPU-optimierten virtuellen Azure-Computers finden Sie unter [Konfigurieren der Beschleunigung durch Graphics Processing Units (GPU) für die Windows Virtual Desktop-Umgebung](configure-vm-gpu.md).
+- Eine Übersicht über die Problembehandlung und Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](troubleshoot-set-up-overview.md).
+- Weitere Informationen zum Dienst finden Sie unter [Windows Desktop-Umgebung](environment-setup.md).

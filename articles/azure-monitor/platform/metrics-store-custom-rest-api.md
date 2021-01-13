@@ -1,26 +1,25 @@
 ---
-title: Senden benutzerdefinierter Metriken für eine Azure-Ressource an den Azure Monitor-Metrikspeicher mithilfe einer REST-API
+title: Senden von Metriken an die Azure Monitor-Metrikdatenbank mithilfe einer REST-API
 description: Senden benutzerdefinierter Metriken für eine Azure-Ressource an den Azure Monitor-Metrikspeicher mithilfe einer REST-API
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: aa842979bf86410e9dab97d6209f336eb6b02bd3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c315cc8c9dfcfa66999ff263fab95f414061e54e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253867"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87321257"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Senden benutzerdefinierter Metriken für eine Azure-Ressource an den Azure Monitor-Metrikspeicher mithilfe einer REST-API
 
 In diesem Artikel erfahren Sie, wie Sie benutzerdefinierte Metriken für Azure-Ressourcen über eine REST-API an den Metrikenspeicher von Azure Monitor senden können. Sobald sich die Metriken in Azure Monitor befinden, können Sie die gleichen Aktionen für sie ausführen wie für die Standardmetriken. Beispiele wären etwa das Erstellen von Diagrammen und Warnungen sowie das Weiterleiten an andere externe Tools.  
 
 >[!NOTE]  
->Die REST-API gestattet nur das Senden von benutzerdefinierten Metriken für Azure-Ressourcen. Sie können mit [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md) Metriken für Ressourcen in verschiedenen Umgebungen oder lokal senden.    
+>Die REST-API gestattet nur das Senden von benutzerdefinierten Metriken für Azure-Ressourcen. Sie können mit [Application Insights](../app/api-custom-events-metrics.md) Metriken für Ressourcen in verschiedenen Umgebungen oder lokal senden.    
 
 
 ## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Erstellen und Autorisieren eines Dienstprinzipals zur Ausgabe von Metriken 
@@ -94,7 +93,7 @@ Sollte im Rahmen des Prozesses eine Fehlermeldung angezeigt werden, berücksicht
 1. Sie können Metriken nicht für ein Abonnement oder eine Ressourcengruppe als Ihre Azure-Ressource ausgeben. 
 1. Dem Speicher können keine Metriken hinzugefügt werden, die älter als 20 Minuten sind. Der Metrikspeicher ist für die Benachrichtigung und Diagrammerstellung in Echtzeit optimiert. 
 2. Die Anzahl von Dimensionsnamen muss mit den Werten übereinstimmen (und umgekehrt). Überprüfen Sie die Werte. 
-2. Möglicherweise geben Sie Metriken für Regionen aus, die keine benutzerdefinierten Metriken unterstützen. Weitere Informationen finden Sie unter [Unterstützte Regionen](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
+2. Möglicherweise geben Sie Metriken für Regionen aus, die keine benutzerdefinierten Metriken unterstützen. Weitere Informationen finden Sie unter [Unterstützte Regionen](./metrics-custom-overview.md#supported-regions). 
 
 
 
@@ -118,5 +117,5 @@ Sollte im Rahmen des Prozesses eine Fehlermeldung angezeigt werden, berücksicht
 
  
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über [benutzerdefinierte Metriken](../../azure-monitor/platform/metrics-custom-overview.md).
+- Erfahren Sie mehr über [benutzerdefinierte Metriken](./metrics-custom-overview.md).
 

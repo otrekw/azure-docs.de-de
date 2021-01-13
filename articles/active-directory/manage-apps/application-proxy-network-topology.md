@@ -1,10 +1,10 @@
 ---
-title: Aspekte der Netzwerktopologie bei Verwendung des Azure AD-Anwendungsproxys | Microsoft-Dokumentation
+title: Aspekte der Netzwerktopologie bei Verwendung des Azure AD-Anwendungsproxys
 description: Es werden die Aspekte der Netzwerktopologie beschrieben, die bei Verwendung des Azure AD-Anwendungsproxys wichtig sind.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7320df63885f562b4724285a3ca5c3cf6ea2a52
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1d814a3ce62d7e9b3ce04953e05293d17ecc08d4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381441"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84764467"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Aspekte der Netzwerktopologie bei Verwendung des Azure Active Directory-Anwendungsproxys
 
@@ -41,7 +41,7 @@ Wenn eine Anwendung über den Azure AD-Anwendungsproxy veröffentlicht wird, fli
 
 Wenn Sie sich für einen Azure AD-Mandanten registrieren, wird die Region Ihres Mandanten durch Ihre Angabe von Land/Region bestimmt. Bei Aktivierung des Anwendungsproxys werden die Instanzen des Anwendungsproxydiensts für Ihren Mandanten in derselben Region wie Ihr Azure AD-Mandant bzw. in der nächstgelegenen Region ausgewählt oder erstellt.
 
-Wenn das Land oder die Region Ihres Azure AD-Mandanten beispielsweise das Vereinigte Königreich ist, werden für alle Anwendungsproxyconnectors Dienstinstanzen in EU-Rechenzentren verwendet. Dies bedeutet auch, der Datenverkehr für Ihre Benutzer über die Instanzen des Anwendungsproxydiensts an diesem Standort geleitet wird, wenn sie versuchen, auf veröffentlichte Anwendungen zuzugreifen.
+Wenn das Land oder die Region Ihres Azure AD-Mandanten beispielsweise das Vereinigte Königreich ist, werden für alle Anwendungsproxyconnectors Dienstinstanzen in europäischen Rechenzentren verwendet. Dies bedeutet auch, der Datenverkehr für Ihre Benutzer über die Instanzen des Anwendungsproxydiensts an diesem Standort geleitet wird, wenn sie versuchen, auf veröffentlichte Anwendungen zuzugreifen.
 
 ## <a name="considerations-for-reducing-latency"></a>Reduzieren der Wartezeit
 
@@ -162,15 +162,15 @@ Der Connector kann im Azure-Datencenter angeordnet werden. Da der Connector weit
 
 ### <a name="use-case-5"></a>Anwendungsfall 5
 
-**Szenario:** Die App wird im Netzwerk einer Organisation in der EU ausgeführt, während sich die Anwendungsproxyinstanz und die meisten Benutzer in den USA befinden.
+**Szenario:** Die App wird im Netzwerk einer Organisation in Europa ausgeführt, während sich die Anwendungsproxyinstanz und die meisten Benutzer in den USA befinden.
 
 **Empfehlung:** Platzieren Sie den Connector in der Nähe der App. Da Benutzer in den USA auf eine Anwendungsproxyinstanz zugreifen, die sich in derselben Region befindet, sind die Kosten für Hop 1 nicht übermäßig hoch. Hop 3 ist optimiert. Erwägen Sie die Verwendung von ExpressRoute zur Optimierung von Hop 2.
 
-![Das Diagramm zeigt, dass sich Benutzer und Proxy in den USA und Connector und App in der EU befinden](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
+![Benutzer und Proxy in den USA, Connector und App in Europa](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 
-In dieser Situation können Sie auch eine andere Variante verwenden. Wenn sich die meisten Benutzer der Organisation in den USA befinden, ist die Wahrscheinlichkeit hoch, dass auch Ihr Netzwerk bis in die USA reicht. Platzieren Sie den Connector in den USA, und verwenden Sie die dedizierte interne Unternehmensnetzwerkleitung zur Anwendung in der EU. Auf diese Weise werden die Hops 2 und 3 optimiert.
+In dieser Situation können Sie auch eine andere Variante verwenden. Wenn sich die meisten Benutzer der Organisation in den USA befinden, ist die Wahrscheinlichkeit hoch, dass auch Ihr Netzwerk bis in die USA reicht. Platzieren Sie den Connector in den USA, und verwenden Sie die dedizierte interne Unternehmensnetzwerkleitung zur Anwendung in Europa. Auf diese Weise werden die Hops 2 und 3 optimiert.
 
-![Das Diagramm zeigt, dass sich Benutzer, Proxy und Connector in den USA befinden und die App in der EU](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
+![Benutzer, Proxy und Connector in den USA, App in Europa](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

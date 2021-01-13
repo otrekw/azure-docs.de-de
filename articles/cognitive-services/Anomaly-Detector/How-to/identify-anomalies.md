@@ -3,19 +3,19 @@ title: Verwenden der Anomalieerkennungs-API für Zeitreihendaten
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Anomalien in Ihren Daten entweder als Batch oder beim Streaming von Daten erkennen können.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.author: aahi
-ms.openlocfilehash: c7b3d9b66d74f16dc0938c888456d673b9cd4b77
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 10/01/2019
+ms.author: mbullwin
+ms.openlocfilehash: 74f891ba7f5b400b5782565e670539167f4e2464
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882883"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703431"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Gewusst wie: Verwenden der Anomalieerkennungs-API für Zeitreihendaten  
 
@@ -26,7 +26,7 @@ Die [Anomalieerkennungs-API](https://westus2.dev.cognitive.microsoft.com/docs/se
 Die Anomalieerkennungs-API stellt Erkennungsmodi bereit: Batch und Streaming.
 
 > [!NOTE]
-> Die folgenden Anforderungs-URLs müssen mit dem entsprechenden Endpunkt für Ihr Abonnement kombiniert werden. Beispiel: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
+> Die folgenden Anforderungs-URLs müssen mit dem entsprechenden Endpunkt für Ihr Abonnement kombiniert werden. Beispiel: `https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
 
 
 ### <a name="batch-detection"></a>Batcherkennung
@@ -71,4 +71,4 @@ Die folgenden Beispiele zeigen ein Ergebnis der Anomalieerkennungs-API bei versc
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Was ist die Anomalieerkennungs-API?](../overview.md)
-* [Schnellstart: Erkennen von Anomalien in Ihren Zeitreihendaten mit der Anomalieerkennungs-REST-API](../quickstarts/detect-data-anomalies-csharp.md)
+* [Schnellstart: Verwenden der Anomalieerkennungs-Clientbibliothek](../quickstarts/client-libraries.md)

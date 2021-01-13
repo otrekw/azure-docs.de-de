@@ -1,20 +1,20 @@
 ---
 title: Schnellstart für Microsoft Azure Data Box Heavy | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Azure Data Box Heavy über das Azure-Portal schnell bereitstellen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure Data Box Heavy mithilfe des Azure-Portals bereitstellen, und erhalten Informationen zum Verkabeln, Konfigurieren und Kopieren von Daten für den Upload in Azure.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: b2ebb4c5a0df360cede084a90ebe5da041a08aa0
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 3a7f9179822720b0e5ffc21bc560b4c6ccad9463
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241379"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347421"
 ---
 ::: zone target = "docs"
 
@@ -39,11 +39,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 ### <a name="for-service"></a>Für den Dienst
 
-Stellen Sie Folgendes sicher, bevor Sie beginnen:
-
-- Sie besitzen ein Microsoft Azure-Speicherkonto mit Anmeldeinformationen für den Zugriff.
-- Das Abonnement, das Sie für den Data Box-Dienst verwenden, lautet [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) oder [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
-- Sie haben Zugriff auf das Abonnement (als Besitzer oder Mitwirkender), um eine Data Box Heavy-Bestellung erstellen zu können.
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>Für das Gerät
 
@@ -58,12 +54,13 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
     - Bei 10-GBit/s-Kabeln benötigen Sie ein SFP+-Kabel, das auf der einen Seite mit einem 10-G-Switch verbunden ist und an dem Ende, das mit dem Gerät verbunden wird, über einen QSFP+-auf-SFP+-Adapter (oder über den QSA-Adapter) verfügt.
 - Die Netzkabel sind in einem Fach auf der Rückseite des Geräts enthalten.
 
-
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
-## <a name="order"></a>Reihenfolge
+## <a name="order"></a>Order
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Dieser Schritt dauert ungefähr fünf Minuten.
 
@@ -74,11 +71,82 @@ Dieser Schritt dauert ungefähr fünf Minuten.
 
 Nachdem der Auftrag erstellt wurde, wird das Gerät für den Versand vorbereitet.
 
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Verwenden Sie die folgenden Azure CLI-Befehle, um einen Data Box Heavy-Auftrag zu erstellen.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+1. Führen Sie den Befehl [az group create](/cli/azure/group#az_group_create) aus, um eine Ressourcengruppe zu erstellen, oder verwenden Sie eine vorhandene Ressourcengruppe:
+
+   ```azurecli
+   az group create --name databox-rg --location westus 
+   ```
+
+1. Verwenden Sie den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create), um ein Speicherkonto zu erstellen, oder verwenden Sie ein vorhandenes Speicherkonto:
+
+   ```azurecli
+   az storage account create --resource-group databox-rg --name databoxtestsa
+   ```
+
+1. Führen Sie den Befehl [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) aus, um einen Data Box-Auftrag mit dem Wert `DataBoxHeavy` für **--sku** zu erstellen:
+
+   ```azurecli
+   az databox job create --resource-group databox-rg --name databoxheavy-job \
+       --location westus --sku DataBoxHeavy --contact-name "Jim Gan" --phone 4085555555 \
+       --city Sunnyvale --email-list JimGan@contoso.com --street-address1 "1020 Enterprise Way" \
+       --postal-code 94089 --country US --state-or-province CA --storage-account databoxtestsa \
+       --staging-storage-account databoxtestsa --resource-group-for-managed-disk rg-for-md
+   ```
+
+   > [!NOTE]
+   > Stellen Sie sicher, dass Ihr Abonnement Data Box Heavy unterstützt.
+
+1. Führen Sie den Befehl [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) aus, um einen Auftrag zu aktualisieren, wie im folgenden Beispiel zum Ändern des Namens und der E-Mail-Adresse des Kontakts gezeigt:
+
+   ```azurecli
+   az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
+   ```
+
+   Führen Sie den Befehl [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) aus, um Informationen zum Auftrag abzurufen:
+
+   ```azurecli
+   az databox job show --resource-group databox-rg --name databox-job
+   ```
+
+   Verwenden Sie den Befehl [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list), um alle Data Box-Aufträge für eine Ressourcengruppe anzuzeigen:
+
+   ```azurecli
+   az databox job list --resource-group databox-rg
+   ```
+
+   Führen Sie den Befehl [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) aus, um einen Auftrag abzubrechen:
+
+   ```azurecli
+   az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
+   ```
+
+   Führen Sie den Befehl [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) aus, um einen Auftrag zu löschen:
+
+   ```azurecli
+   az databox job delete –resource-group databox-rg --name databox-job
+   ```
+
+1. Verwenden Sie den Befehl [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials), um Anmeldeinformationen für einen Data Box-Auftrag aufzulisten:
+
+   ```azurecli
+   az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
+   ```
+
+Nachdem der Auftrag erstellt wurde, wird das Gerät für den Versand vorbereitet.
+
+---
+
 ::: zone-end
 
 ::: zone target = "chromeless"
 
-# <a name="cable-and-connect-to-your-device"></a>Verkabeln und Herstellen einer Verbindung mit Ihrem Gerät
+## <a name="cable-and-connect-to-your-device"></a>Verkabeln und Herstellen einer Verbindung mit Ihrem Gerät
 
 Nachdem Sie die Voraussetzungen überprüft haben, können Sie Ihr Gerät verkabeln und eine Verbindung herstellen.
 
@@ -129,7 +197,7 @@ Die Dauer dieses Vorgangs hängt von der Datenmenge und der Geschwindigkeit des 
  
 1. Kopieren Sie die Daten auf beide Geräteknoten, indem Sie beide 40-Gbit/s-Datenschnittstellen parallel verwenden.
 
-    - Wenn Sie mit einem Windows-Host arbeiten, verwenden Sie ein SMB-kompatibles Dateikopierprogramm wie [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
+    - Wenn Sie mit einem Windows-Host arbeiten, verwenden Sie ein SMB-kompatibles Dateikopierprogramm wie [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)).
     - Verwenden Sie bei einem NFS-Host den Befehl `cp` oder `rsync` zum Kopieren der Daten.
 2. Stellen Sie eine Verbindung mit den Freigaben auf dem Gerät über diesen Pfad her: `\\<IP address of your device>\ShareName`. Um die Anmeldeinformationen für den Freigabezugriff zu erhalten, wechseln Sie auf der lokalen Webbenutzeroberfläche der Data Box Heavy zur Seite **Verbindung herstellen und Daten kopieren**.
 3. Stellen Sie sicher, dass die Namen der Freigaben und Ordner sowie die Daten den Vorgaben entsprechen, die unter [Azure Storage and Data Box Heavy service limits](data-box-heavy-limits.md) (Für Azure Storage und den Data Box Heavy-Dienst geltende Einschränkungen, in englischer Sprache) beschrieben sind.
@@ -138,7 +206,7 @@ Die Dauer dieses Vorgangs hängt von der Datenmenge und der Geschwindigkeit des 
 
 Der Zeitraum, der für die Durchführung dieses Vorgangs erforderlich ist, hängt von Ihrer Datengröße ab.
 
-1. Nachdem das Kopieren der Daten ohne Fehler abgeschlossen wurde, wechseln Sie auf der lokalen Webbenutzeroberfläche zur Seite **Für den Versand vorbereiten**, und beginnen Sie mit der Versandvorbereitung.
+1. Nachdem das Kopieren der Daten ohne Fehler abgeschlossen wurde, wechseln Sie auf der lokalen Webbenutzeroberfläche zur Seite **Für den Versand vorbereiten** , und beginnen Sie mit der Versandvorbereitung.
 2. Nachdem **Für den Versand vorbereiten** auf beiden Knoten erfolgreich abgeschlossen wurde, deaktivieren Sie das Gerät auf der lokalen Webbenutzeroberfläche.
 
 ## <a name="ship-to-azure"></a>Senden an Azure
@@ -164,9 +232,9 @@ Der Zeitraum, der für die Durchführung dieses Vorgangs erforderlich ist, häng
 
 Dieser Schritt dauert zwei bis drei Minuten.
 
-- Im Azure-Portal können Sie den Data Box Heavy-Auftrag stornieren, bevor er verarbeitet wurde. Nachdem der Auftrag verarbeitet wurde, kann er nicht mehr storniert werden. Der Auftrag wird abgearbeitet, bis er den Status „Abgeschlossen“ erreicht hat. Navigieren Sie zum Stornieren des Auftrags zu **Übersicht**, und klicken Sie in der Befehlsleiste auf **Stornieren**.
+- Im Azure-Portal können Sie den Data Box Heavy-Auftrag stornieren, bevor er verarbeitet wurde. Nachdem der Auftrag verarbeitet wurde, kann er nicht mehr storniert werden. Der Auftrag wird abgearbeitet, bis er den Status „Abgeschlossen“ erreicht hat. Navigieren Sie zum Stornieren des Auftrags zu **Übersicht** , und klicken Sie in der Befehlsleiste auf **Stornieren**.
 
-- Sie können einen Auftrag löschen, wenn im Azure-Portal dafür der Status **Abgeschlossen** oder **Abgebrochen** angezeigt wird. Navigieren Sie zum Löschen des Auftrags zu **Übersicht**, und klicken dann in der Befehlsleiste auf **Löschen**.
+- Sie können einen Auftrag löschen, wenn im Azure-Portal dafür der Status **Abgeschlossen** oder **Abgebrochen** angezeigt wird. Navigieren Sie zum Löschen des Auftrags zu **Übersicht** , und klicken dann in der Befehlsleiste auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

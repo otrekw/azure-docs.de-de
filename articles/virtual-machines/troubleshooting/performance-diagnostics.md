@@ -1,7 +1,7 @@
 ---
 title: Leistungsdiagnose für virtuelle Azure-Computer | Microsoft-Dokumentation
 description: Hier finden Sie eine Einführung in die Azure-Leistungsdiagnose für Windows.
-services: virtual-machines-windows'
+services: virtual-machines-windows
 documentationcenter: ''
 author: anandhms
 manager: cshepard
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 16be3d1695608165405a3490b686a01ba6a2a62c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 70d1a52ff3326fcd3a628cc7f0f9d91edc9274e7
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080598"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655389"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Leistungsdiagnose für virtuelle Azure-Computer
 
@@ -33,18 +33,35 @@ Sie können die Leistungsdiagnose direkt über das Azure-Portal ausführen, in d
 
 ### <a name="windows"></a>Windows
 
-Windows 10, Windows 8, Windows 8 Enterprise, Windows 8 Pro, Windows 8.1, Windows Server 2016, Windows Server 2012, Windows Server 2012 Datacenter, Windows Server 2012 R2, Windows Server 2012 R2 Datacenter, Windows Server 2012 R2 Standard, Windows Server 2012 Standard, Windows Server 2008 R2, Windows Server 2008 R2 Datacenter, Windows Server 2008 R2 Enterprise, Windows Server 2008 R2 Foundation, Windows Server 2008 R2 SP1, Windows Server 2008 R2 Standard.
+* Windows Server 2019
+* Windows Server 2016
+* Windows Server 2012 R2
+* Windows Server 2012
+* Windows Server 2008 R2
+* Windows 10
+* Windows 8.1
+* Windows 8
 
 ### <a name="linux"></a>Linux
 
-Oracle Linux Server 6.10 [`*`], 7.3, 7.6, 7.5 (Oracle-Database-Ee 13.8 [Marketplace-Image]), CentOS 6.5 [`*`], 7.6, RHEL 7.2, 7.5, 8.0 [`*`], Ubuntu 14.04, 16.04, 18.04, Debian 8, 9, 10 [`*`], SLES 12 SP4 [`*`]
+- Aktuell werden folgende Distributionen unterstützt:
+
+    | Distribution               | Version                                         |
+    |----------------------------|-------------------------------------------------|
+    | Oracle Linux Server        | 6.10 [`*`], 7.3, 7.5, 7.6, 7.7, 7.8 |
+    | CentOS                     | 6.5 [`*`], 7.6, 7.7, 7.8                                    |
+    | RHEL                       | 7.2, 7.5, 8.0 [`*`], 8.1, 8.2                               |
+    | Ubuntu                     | 14.04, 16.04, 18.04, 20.04                               |
+    | Debian                     | 8, 9, 10 [`*`]                                    |
+    | SLES                       | 12 SP4 [`*`], 12 SP5 [`*`], 15 [`*`], 15 SP1 [`*`], 15 SP2 [`*`]                                      |
+    |                            |                                                   |
 
 >[!Note]
 >[`*`] Siehe [Bekannte Probleme](how-to-use-perfinsights-linux.md#known-issues)
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>Installieren und Ausführen der Leistungsdiagnose auf Ihrer VM
 
-Die Leistungsdiagnose installiert eine VM-Erweiterung, die ein Diagnosetool namens PerfInsights ausführt. PerfInsights ist sowohl für [Windows](https://aka.ms/perfinsights) als auch für [Linux](https://aka.ms/perfinsightslinux) verfügbar. Um die Leistungsdiagnose zu installieren und auszuführen, gehen Sie folgendermaßen vor:
+Die Leistungsdiagnose installiert eine VM-Erweiterung, die ein Diagnosetool namens PerfInsights ausführt. PerfInsights ist sowohl für [Windows](./how-to-use-perfinsights.md) als auch für [Linux](./how-to-use-perfinsights-linux.md) verfügbar. Um die Leistungsdiagnose zu installieren und auszuführen, gehen Sie folgendermaßen vor:
 
 1. Wählen Sie in der linken Spalte **Virtuelle Computer** aus.
 1. Wählen Sie aus der Liste der VM-Namen den virtuellen Computer aus, auf dem Sie die Diagnose ausführen möchten.
@@ -74,16 +91,16 @@ Die Leistungsdiagnose installiert eine VM-Erweiterung, die ein Diagnosetool name
 Im Azure-Portal stehen die folgenden Analyseszenarien zur Verfügung. Wählen Sie je nach auftretendem Leistungsproblem eine geeignete Analyseoption aus. Wählen Sie die Dauer und die Ablaufverfolgungsoptionen für die Analyse aus.
 
 * **Schnelle Leistungsanalyse**  
-    Überprüft die VM auf bekannte Probleme, analysiert bewährte Methoden und sammelt Diagnosedaten. Die Analyse dauert mehrere Minuten. Weitere Informationen zu [Windows](https://aka.ms/perfinsights/quick) oder [Linux](https://aka.ms/perfinsightslinux/quick)
+    Überprüft die VM auf bekannte Probleme, analysiert bewährte Methoden und sammelt Diagnosedaten. Die Analyse dauert mehrere Minuten. Weitere Informationen zu [Windows](./how-to-use-perfinsights.md) oder [Linux](./how-to-use-perfinsights-linux.md)
 
 * **Leistungsanalyse**  
-    Umfasst alle Überprüfungen in der schnellen Leistungsanalyse und überwacht einen hohen Ressourcenverbrauch. Verwenden Sie diese Version, um allgemeine Leistungsprobleme zu beheben, beispielsweise hohe Auslastung von CPU, Arbeitsspeicher und Datenträgerspeicher. Die Analyse nimmt je nach ausgewählter Dauer 30 Sekunden bis 15 Minuten in Anspruch. Weitere Informationen zu [Windows](https://aka.ms/perfinsights/vmslow) oder [Linux](https://aka.ms/perfinsightslinux/vmslow)
+    Umfasst alle Überprüfungen in der schnellen Leistungsanalyse und überwacht einen hohen Ressourcenverbrauch. Verwenden Sie diese Version, um allgemeine Leistungsprobleme zu beheben, beispielsweise hohe Auslastung von CPU, Arbeitsspeicher und Datenträgerspeicher. Die Analyse nimmt je nach ausgewählter Dauer 30 Sekunden bis 15 Minuten in Anspruch. Weitere Informationen zu [Windows](./how-to-use-perfinsights.md) oder [Linux](./how-to-use-perfinsights-linux.md)
 
 * **Erweiterte Leistungsanalyse** `*`  
-    Enthält alle Überprüfungen der Leistungsanalyse und erfasst mindestens eine der Ablaufverfolgungen, wie in den folgenden Abschnitten beschrieben. Verwenden Sie dieses Szenario, um komplexe Probleme zu beheben, die zusätzliche Ablaufverfolgungen erfordern. Je nach Größe der VM und den ausgewählten Ablaufverfolgungsoptionen erhöht die Ausführung dieses Szenarios über einen längeren Zeitraum die Gesamtgröße der Diagnoseausgabe. Die Ausführung der Analyse nimmt je nach ausgewählter Dauer 30 Sekunden bis 15 Minuten in Anspruch. [Weitere Informationen](https://aka.ms/perfinsights/advanced)
+    Enthält alle Überprüfungen der Leistungsanalyse und erfasst mindestens eine der Ablaufverfolgungen, wie in den folgenden Abschnitten beschrieben. Verwenden Sie dieses Szenario, um komplexe Probleme zu beheben, die zusätzliche Ablaufverfolgungen erfordern. Je nach Größe der VM und den ausgewählten Ablaufverfolgungsoptionen erhöht die Ausführung dieses Szenarios über einen längeren Zeitraum die Gesamtgröße der Diagnoseausgabe. Die Ausführung der Analyse nimmt je nach ausgewählter Dauer 30 Sekunden bis 15 Minuten in Anspruch. [Weitere Informationen](./how-to-use-perfinsights.md)
 
 * **Azure Files-Analyse** `*`  
-    Enthält alle Überprüfungen der Leistungsanalyse und erfasst eine Netzwerkablaufverfolgung sowie SMB-Indikatoren. Verwenden Sie dieses Szenario, um Probleme mit der Leistung von Azure Files zu beheben. Die Ausführung der Analyse nimmt je nach ausgewählter Dauer 30 Sekunden bis 15 Minuten in Anspruch. [Weitere Informationen](https://aka.ms/perfinsights/azurefiles)
+    Enthält alle Überprüfungen der Leistungsanalyse und erfasst eine Netzwerkablaufverfolgung sowie SMB-Indikatoren. Verwenden Sie dieses Szenario, um Probleme mit der Leistung von Azure Files zu beheben. Die Ausführung der Analyse nimmt je nach ausgewählter Dauer 30 Sekunden bis 15 Minuten in Anspruch. [Weitere Informationen](./how-to-use-perfinsights.md)
 
 >[!Note]
 >[`*`] Diese Analyseszenarien werden nur unter Windows unterstützt.
@@ -122,7 +139,7 @@ Verwenden Sie die Symbolleistenschaltfläche **Einstellungen**, um das Speicherk
 
 ## <a name="review-insights-and-performance-diagnostics-report"></a>Überprüfen von Erkenntnissen und Leistungsdiagnosebericht
 
-Jede Diagnoseausführung enthält eine Liste mit Erkenntnissen und Empfehlungen, betroffene Ressourcen, Protokolldateien, weitere relevante Diagnoseinformationen, die gesammelt wurden, und einen Bericht für die Offlineanzeige. Eine vollständige Liste aller unter [Windows](how-to-use-perfinsights.md#what-kind-of-information-is-collected-by-perfinsights) oder [Linux](how-to-use-perfinsights-linux.md#what-kind-of-information-is-collected-by-perfinsights) gesammelten Diagnosedaten finden Sie unter **Welche Informationen werden von PerfInsights gesammelt?** .
+Jede Diagnoseausführung enthält eine Liste mit Erkenntnissen und Empfehlungen, betroffene Ressourcen, Protokolldateien, weitere relevante Diagnoseinformationen, die gesammelt wurden, und einen Bericht für die Offlineanzeige. Eine vollständige Liste aller unter [Windows](how-to-use-perfinsights.md#what-kind-of-information-is-collected-by-perfinsights) oder [Linux](how-to-use-perfinsights-linux.md#what-kind-of-information-is-collected-by-perfinsights) gesammelten Diagnosedaten finden Sie unter **Welche Informationen werden von PerfInsights gesammelt?**.
 
 ### <a name="select-a-performance-diagnostics-report"></a>Auswählen eines Leistungsdiagnoseberichts
 
@@ -170,10 +187,10 @@ Sie können die Informationen zum Speicherkonto über die Schaltfläche „Einst
 
 Es gibt verschiedene Möglichkeiten, den Diagnosebericht für Microsoft freizugeben.
 
-**Option 1:** Den neuesten Bericht automatisch freigeben  
+**Option 1**: Den neuesten Bericht automatisch freigeben  
 Wenn Sie ein Supportticket bei Microsoft eröffnen, ist es wichtig, den Leistungsdiagnosebericht freizugeben. Wenn Sie angegeben haben, dass diese Informationen nach dem Ausführen der Diagnose für Microsoft freigegeben werden (indem Sie das Kontrollkästchen **Ich stimme der Übermittlung von Diagnoseinformationen an Microsoft zu**, kann Microsoft bis zu 30 Tage nach dem Datum der Ausführung über einen SAS-Link zur ZIP-Ausgabedatei auf den Bericht in Ihrem Speicherkonto zugreifen. Dem Supporttechniker steht nur der neueste Bericht zur Verfügung.
 
-**Option 2:** Generieren einer Shared Access Signature (SAS) für die komprimierte Datei mit dem Diagnosebericht  
+**Option 2**: Generieren einer Shared Access Signature (SAS) für die komprimierte Datei mit dem Diagnosebericht  
 Sie können mithilfe von Shared Access Signatures einen Link zur komprimierten Datei mit dem Bericht an andere Personen weitergeben. Gehen Sie dazu folgendermaßen vor:
 
 1. Navigieren Sie im Azure-Portal zu dem Speicherkonto, in dem die Diagnosedaten gespeichert sind.
@@ -184,7 +201,7 @@ Sie können mithilfe von Shared Access Signatures einen Link zur komprimierten D
 1. Klicken Sie auf **Blob-SAS-Token und URL generieren**.
 1. Kopieren Sie die **Blob-SAS-URL**, und geben Sie sie an den Supporttechniker weiter.
 
-**Option 3:** Herunterladen des Berichts aus dem Speicherkonto
+**Option 3**: Herunterladen des Berichts aus dem Speicherkonto
 
 Sie können eine komprimierte Ausgabedatei mit einem Leistungsdiagnosebericht auch ermitteln, indem Sie die Schritte 1–4 aus Option 2 durchführen. Laden Sie die Datei herunter. Senden Sie sie dann per E-Mail an den Supporttechniker, oder fragen Sie den Techniker nach einem Speicherort, in den Sie die Datei hochladen können.  
 

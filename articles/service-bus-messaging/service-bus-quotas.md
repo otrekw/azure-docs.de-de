@@ -1,25 +1,14 @@
 ---
-title: Microsoft Azure Service Bus – Kontingente und Grenzwerte | Microsoft Docs
-description: Grenzwerte und Kontingente für Azure Service Bus entdecken.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 2b1e266f-be81-48f1-9874-50fcb40ecca2
-ms.service: service-bus-messaging
-ms.devlang: na
+title: Microsoft Azure Service Bus – Kontingente und Grenzwerte
+description: 'In diesem Artikel werden die grundlegenden Kontingente und Drosselungsschwellenwerte in Azure Service Bus-Messaging aufgelistet. Beispiel: Maximale Anzahl von Namespaces pro Abonnement.'
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/01/2018
-ms.author: aschhab
-ms.openlocfilehash: f9c9059a5f66c6ba1c2e9d9dd637c0675fc7e220
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/23/2020
+ms.openlocfilehash: dd7d4d5b9f9d4034b4d4524fa1e0503c0ea713d2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861894"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85337085"
 ---
 # <a name="service-bus-quotas"></a>Service Bus-Kontingente
 In diesem Abschnitt werden die grundlegenden Kontingente und Drosselungsschwellenwerte in Azure Service Bus-Messaging aufgelistet.

@@ -1,0 +1,56 @@
+- name: Dokumentation zu Azure Education Hub
+  href: ./index.yml
+- name: Übersicht
+  items:
+    - name: Was ist Education Hub?
+      href: about-education-hub.md
+- name: Schnellstarts
+  items:
+    - name: Zugreifen auf Education Hub
+      href: access-education-hub.md
+    - name: Erste Schritte mit Education Hub
+      href: get-started-education-hub.md
+    - name: Einrichten eines Kurses und Erstellen eines Classrooms
+      href: set-up-course-classroom.md
+- name: Anleitungen
+  items:
+    - name: Verwalten Ihrer Ausbildungsförderung
+      href: hub-overview-page.md
+    - name: Erstellen einer Zuweisung und Zuordnen von Guthaben
+      href: create-assignment-allocate-credit.md
+- name: Support
+  items:
+    - name: Service Desk
+      href: educator-service-desk.md
+- name: Azure Dev Tools für den Unterricht
+  items:
+    - name: Übersicht
+      items:
+        - name: Was ist Azure Dev Tools für den Unterricht?
+          href: azure-dev-tools-teaching/about-program.md
+        - name: Azure for Students
+          href: azure-dev-tools-teaching/azure-students-program.md
+        - name: Azure for Students Starter
+          href: azure-dev-tools-teaching/azure-students-starter-program.md
+    - name: Schnellstarts
+      items:
+        - name: Registrieren oder Verlängern eines Abonnements
+          href: azure-dev-tools-teaching/enroll-renew-subscription.md
+        - name: Einrichten des Zugriffs
+          href: azure-dev-tools-teaching/set-up-access.md
+    - name: Anleitungen
+      items:
+        - name: Verwalten von Kursteilnehmern
+          href: azure-dev-tools-teaching/manage-students.md
+        - name: Herunterladen von Software
+          href: azure-dev-tools-teaching/download-software.md
+    - name: Problembehandlung
+      items:
+        - name: Fehler beim Anmelden
+          href: azure-dev-tools-teaching/troubleshoot-login.md
+- name: Ressourcen
+  items:
+    - name: Häufig gestellte Fragen
+      href: azure-dev-tools-teaching/program-faq.md
+    - name: Support
+      href: azure-dev-tools-teaching/program-support.md

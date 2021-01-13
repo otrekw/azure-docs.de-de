@@ -1,32 +1,36 @@
 ---
-title: Installieren und Ausführen von Containern – Gesichtserkennungs-API
+title: Installieren und Ausführen von Docker-Containern für die Gesichtserkennungs-API
 titleSuffix: Azure Cognitive Services
-description: In diesem Schritt-für-Schritt-Tutorial laden Sie Container für die Gesichtserkennung herunter, installieren diese und führen Sie anschließend aus.
+description: Verwenden Sie den Docker-Container für die Gesichtserkennungs-API, um menschliche Gesichter in Bildern zu erkennen und zu identifizieren.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: dapine
-ms.openlocfilehash: f2bf5766dc09b85f276349a5e72f1bc3b8ba23b3
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.date: 07/16/2020
+ms.author: aahi
+keywords: Lokal, Docker, Container, Identifizieren
+ms.openlocfilehash: 64169069bc0a1ccd126d1b79ee89a5666e1caeb1
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316368"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861054"
 ---
-# <a name="install-and-run-face-containers"></a>Installieren und Ausführen von Containern für die Gesichtserkennung
+# <a name="install-and-run-face-containers-preview"></a>Installieren und Ausführen von Containern für die Gesichtserkennung (Vorschauversion)
 
-Die Azure Cognitive Services-Gesichtserkennung bietet einen standardisierten Linux-Container für Docker, der menschliche Gesichter in Bildern erkennt. Sie identifiziert auch zugehörige Attribute wie Gesichtsmerkmale (z. B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung anhand einer Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter auf demselben Bild oder auf verschiedenen Bildern identisch sind. Die Gesichtserkennung kann auch Gesichter anhand einer Datenbank vergleichen, um zu prüfen, ob bereits ein ähnliches oder identisches Gesicht vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren.
+> [!IMPORTANT]
+> Der Grenzwert für Benutzer von Gesichtserkennungscontainern wurde erreicht. Wir akzeptieren derzeit keine neuen Anträge für den Gesichtserkennungscontainer.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Die Gesichtserkennungs-API von Azure Cognitive Services bietet einen Linux-Docker-Container, der menschliche Gesichter in Bildern erkennt und analysiert. Sie identifiziert auch zugehörige Attribute wie Gesichtsmerkmale (z. B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung anhand einer Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter auf demselben Bild oder auf verschiedenen Bildern identisch sind. Die Gesichtserkennung kann auch Gesichter anhand einer Datenbank vergleichen, um zu prüfen, ob bereits ein ähnliches oder identisches Gesicht vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zur Verwendung des Containers für die Gesichtserkennungs-API müssen die folgenden Voraussetzungen erfüllt sein:
+Zur Verwendung des Containers für den Gesichtserkennungsdienst müssen die folgenden Voraussetzungen erfüllt sein.
 
 |Erforderlich|Zweck|
 |--|--|
@@ -36,17 +40,13 @@ Zur Verwendung des Containers für die Gesichtserkennungs-API müssen die folgen
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Anfordern des Zugriffs auf die private Containerregistrierung
-
-[!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
-
 ### <a name="the-host-computer"></a>Der Hostcomputer
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>Containeranforderungen und -empfehlungen
 
-In der folgenden Tabelle werden die Mindestanforderungen und empfohlenen Werte für CPU-Kerne und Arbeitsspeicher beschrieben, die jedem Container für die Gesichtserkennungs-API zugeordnet werden müssen.
+In der folgenden Tabelle werden die Mindestanforderungen und empfohlenen Werte für CPU-Kerne und Arbeitsspeicher beschrieben, die jedem Container für den Gesichtserkennungsdienst zugeordnet werden müssen.
 
 | Container | Minimum | Empfohlen | Transaktionen pro Sekunde<br>(Minimum, Maximum)|
 |-----------|---------|-------------|--|
@@ -59,7 +59,7 @@ Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, 
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Abrufen des Containerimages mit dem Befehl „docker pull“
 
-Es stehen Containerimages für die Gesichtserkennungs-API zur Verfügung. 
+Es stehen Containerimages für den Gesichtserkennungsdienst zur Verfügung. 
 
 | Container | Repository |
 |-----------|------------|
@@ -132,23 +132,19 @@ Wenn Sie den Container mit einer [Ausgabenbereitstellung](./face-resource-contai
 
 ## <a name="billing"></a>Abrechnung
 
-Der Container für die Gesichtserkennungs-API sendet Abrechnungsinformationen an Azure und verwendet dafür eine Ressource vom Typ „Gesichtserkennungs-API“ in Ihrem Azure-Konto. 
+Der Container für den Gesichtserkennungsdienst sendet Abrechnungsinformationen an Azure und verwendet dafür eine Ressource vom Typ „Gesichtserkennung“ in Ihrem Azure-Konto. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Weitere Informationen zu diesen Optionen finden Sie unter [Konfigurieren von Containern](./face-resource-container-config.md).
 
-<!--blogs/samples/video coures -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
-
 ## <a name="summary"></a>Zusammenfassung
 
-In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Installieren und Ausführen von Containern für die Gesichtserkennungs-API kennengelernt. Zusammenfassung:
+In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Installieren und Ausführen von Containern für den Gesichtserkennungsdienst kennengelernt. Zusammenfassung:
 
 * Containerimages werden aus Azure Container Registry heruntergeladen.
 * Containerimages werden in Docker ausgeführt.
-* Sie können entweder die REST-API oder das SDK verwenden, um Vorgänge in Containern für die Gesichtserkennungs-API über den Host-URI des Containers aufzurufen.
+* Sie können entweder die REST-API oder das SDK verwenden, um Vorgänge in Containern für den Gesichtserkennungsdienst über den Host-URI des Containers aufzurufen.
 * Bei der Instanziierung eines Containers müssen Sie Abrechnungsinformationen angeben.
 
 > [!IMPORTANT]

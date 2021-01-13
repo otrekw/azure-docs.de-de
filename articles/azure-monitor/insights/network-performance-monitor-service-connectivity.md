@@ -1,24 +1,17 @@
 ---
-title: Netzwerkleistungsmonitor-Lösung in Azure Log Analytics | Microsoft-Dokumentation
+title: Netzwerkleistungsmonitor-Lösung mit Dienstkonnektivitätmonitor – Azure Log Analytics
 description: Verwenden Sie den Dienstkonnektivitätsmonitor von Netzwerkleistungsmonitor, um die Netzwerkkonnektivität an einem beliebigen Endpunkt zu überwachen, der über einen geöffneten TCP-Port verfügt.
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/20/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: c5285ac95a2f5813949f22aae3849fd7f55b1ada
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 02/20/2018
+ms.openlocfilehash: 18c07266cec68aaf6e95fe4085b9d21244fecff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052093"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761038"
 ---
 # <a name="service-connectivity-monitor"></a>Dienstkonnektivitätsmonitor
 
@@ -26,8 +19,8 @@ Mit dem Dienstkonnektivitätsmonitor von [Netzwerkleistungsmonitor](network-perf
 
 Der Dienstkonnektivitätsmonitor ermöglicht Folgendes: 
 
-- Überwachen der Netzwerkkonnektivität Ihrer Anwendungen und Netzwerkdienste von mehreren Zweigstellen oder Standorten. Zu den Anwendungen und Netzwerkdiensten gehören Office 365, Dynamics CRM, interne Line-of-Business-Anwendungen und SQL-Datenbanken.
-- Ausführen integrierter Tests zur Überwachung der Netzwerkkonnektivität mit Office 365- und Dynamics 365-Endpunkten 
+- Überwachen der Netzwerkkonnektivität Ihrer Anwendungen und Netzwerkdienste von mehreren Zweigstellen oder Standorten. Zu den Anwendungen und Netzwerkdiensten gehören Microsoft 365, Dynamics CRM, interne Line-of-Business-Anwendungen und SQL-Datenbanken.
+- Ausführen integrierter Tests zur Überwachung der Netzwerkkonnektivität mit Microsoft 365- und Dynamics 365-Endpunkten 
 - Ermitteln von Antwortzeiten, Netzwerkwartezeiten und Paketverlusten beim Herstellen der Verbindung mit dem Endpunkt
 - Ermitteln, ob eine mangelhafte Anwendungsleistung auf das Netzwerk oder auf ein Problem beim Anwendungsanbieter zurückzuführen ist
 - Erkennen von Hotspots im Netzwerk, die möglicherweise die Leistung der Anwendung beeinträchtigen, durch Betrachtung der Hop-spezifischen Wartezeiten auf einer Topologiekarte
@@ -64,7 +57,7 @@ Beginnen Sie mit der Erstellung Ihrer Tests zur Überwachung der Netzwerkkonnekt
 
     * Wählen Sie **Web** aus, wenn Sie die Konnektivität mit einem Dienst überwachen möchten, der auf HTTP/S-Anforderungen reagiert, etwa outlook.office365.com oder bing.com.<br>
     * Wählen Sie **Netzwerk** aus, wenn Sie die Konnektivität mit einem Dienst überwachen möchten, der auf TCP-Anforderungen, aber nicht auf HTTP/S-Anforderungen reagiert, etwa einem SQL-Server, FTP-Server oder SSH-Port. 
-    * Beispiel:  Um einen Webtest für ein Blobspeicherkonto zu erstellen, wählen Sie **Web** aus und geben Sie das Ziel als „*yourstorageaccount*.blob.core.windows.net“ ein. Mit [diesem Link](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints) können Sie auf ähnliche Weise Tests für einen anderen Tabellenspeicher, einen Queue Storage oder Azure Files erstellen.
+    * Beispiel: Um einen Webtest für ein Blobspeicherkonto zu erstellen, wählen Sie **Web** aus und geben Sie das Ziel als „*yourstorageaccount*.blob.core.windows.net“ ein. Mit [diesem Link](../../storage/common/storage-account-overview.md#storage-account-endpoints) können Sie auf ähnliche Weise Tests für einen anderen Tabellenspeicher, einen Queue Storage oder Azure Files erstellen.
 4. Wenn Sie keine Netzwerkmessung durchführen möchten, z.B. von Netzwerklatenz, Paketverlusten oder Topologieermittlung, deaktivieren Sie das Kontrollkästchen **Netzwerkmessungen durchführen**. Zur optimalen Nutzung der Funktion sollten Sie das Kontrollkästchen aktiviert lassen. 
 5. Geben Sie unter **Ziel** die URL/den FQDN/die IP-Adresse ein, für die bzw. den Sie die Netzwerkkonnektivität überwachen möchten.
 6. Geben Sie unter **Portnummer** die Portnummer des Zieldiensts ein. 
@@ -106,7 +99,7 @@ Ermitteln Sie, ob die mangelhafte Anwendungsleistung auf das Netzwerk oder auf e
 
 Nachdem Sie festgestellt haben, dass das Problem auf das Netzwerk zurückzuführen ist, wählen Sie den Ansichtslink **Topologie** aus, um den problematischen Hop auf der Topologiekarte zu ermitteln. In der folgenden Abbildung ist ein Beispiel angegeben. Von der Gesamtwartezeit von 105 ms zwischen Knoten und Anwendungsendpunkt entfallen 96 ms auf den rot markierten Hop. Nachdem Sie den problematischen Hop identifiziert haben, können Sie Korrekturmaßnahmen ergreifen. 
 
-![Dienstkonnektivitätsmonitor-Tests](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
+![Endpunkttopologie des Dienstkonnektivitätsmonitors](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>Diagnose 
 
@@ -140,4 +133,5 @@ Für die Region „US Government Virginia“ sind nur DOD-URLs in NPM integriert
 | MS-Teams | gov.teams.microsoft.us | 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Mit [Protokollsuchen](../../azure-monitor/log-query/log-query-overview.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.
+Mit [Protokollsuchen](../log-query/log-query-overview.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.
+

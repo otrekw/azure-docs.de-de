@@ -1,31 +1,27 @@
 ---
 title: 'Empfangen von Ereignissen unter Verwendung von Event Processor Host: Azure Event Hubs | Microsoft-Dokumentation'
 description: Dieser Artikel beschreibt den Event Processor Host in Azure Event Hubs, der die parallele Verwaltung von Prüfpunkten, Leases und das Lesen von Ereignissen vereinfacht.
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 07/16/2019
-ms.author: shvija
-ms.openlocfilehash: 312800482405530d57ce7b0b1e77b91c2ad069ce
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.date: 06/23/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a05f2172b266301919d0a800fb863b8f0dbe5884
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772156"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89319501"
 ---
 # <a name="event-processor-host"></a>Ereignisprozessorhost
+> [!NOTE]
+> Dieser Artikel bezieht sich auf die alte Version des Azure Event Hubs SDK. Eine aktuelle Version des SDK finden Sie unter [Ausgleichen der Partitionsauslastung über mehrere Instanzen der Anwendung hinweg](event-processor-balance-partition-load.md). Informationen dazu, wie Sie Ihren Code zu der neueren Version des SDK migrieren, finden Sie in diesen Migrationsleitfäden. 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
+> - [Java-Skript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
 
 Azure Event Hubs ist ein leistungsfähiger Dienst zur Erfassung von Telemetriedaten, der zum Streamen von Millionen von Ereignissen zu geringen Kosten verwendet werden kann. In diesem Artikel wird beschrieben, wie erfasste Ereignisse mithilfe des *Ereignisprozessorhosts* (Event Processor Host, EPH) genutzt und verarbeitet werden. Dabei handelt es sich um einen intelligenten Consumer-Agent, der die Verwaltung von Prüfpunkten, Leasing und parallelen Ereignislesern vereinfacht.  
 
-Der Schlüssel zur Skalierung in Event Hubs ist das Konzept der partitionierten Consumer. Im Gegensatz zum Muster der [konkurrierenden Consumer](https://msdn.microsoft.com/library/dn568101.aspx) ermöglicht das Muster der partitionierten Consumer hohe Skalierbarkeit durch Beseitigen des Konfliktengpasses und Vereinfachen der End-to-End-Parallelität.
+Der Schlüssel zur Skalierung in Event Hubs ist das Konzept der partitionierten Consumer. Im Gegensatz zum Muster der [konkurrierenden Consumer](/previous-versions/msp-n-p/dn568101(v=pandp.10)) ermöglicht das Muster der partitionierten Consumer hohe Skalierbarkeit durch Beseitigen des Konfliktengpasses und Vereinfachen der End-to-End-Parallelität.
 
 ## <a name="home-security-scenario"></a>Szenario zur Haussicherheit
 
@@ -91,6 +87,8 @@ Anschließend wird eine [EventProcessorHost](/dotnet/api/microsoft.azure.eventhu
 
 Schließlich registrieren die Consumer die [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)-Instanz bei dem Event Hubs-Dienst. Die Registrierung einer Ereignisprozessorklasse mit einer Instanz von EventProcessorHost startet die Ereignisverarbeitung. Durch die Registrierung wird der Event Hubs-Dienst angewiesen, dass eine Verarbeitung der Ereignisse aus einigen zugehörigen Partitionen durch die Consumeranwendung zu erwarten ist, uns dass der [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)-Implementierungscode bei jedem Übertragen von zu verarbeitenden Ereignissen aufgerufen werden soll. 
 
+> [!NOTE]
+> Bei „consumerGroupName“ muss die Groß-/Kleinschreibung beachtet werden.  Änderungen an „consumerGroupName“ können dazu führen, dass alle Partitionen ab Beginn des Streams gelesen werden.
 
 ### <a name="example"></a>Beispiel
 
@@ -154,18 +152,18 @@ Wie zuvor erläutert, wird das Konzept der automatischen Skalierung von [EventPr
 
 Zusätzlich verwendet eine Überladung von [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) ein [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_)-Objekt als Parameter. Verwenden Sie diesen Parameter, um das Verhalten von [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) zu steuern. [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions) definiert vier Eigenschaften und ein Ereignis:
 
-- [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize): Die maximale Größe der Sammlung, die bei einem Aufruf von [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) empfangen werden soll. Mit dieser Größe wird nicht die minimale, sondern nur die maximale Größe definiert. Wenn weniger zu empfangende Nachrichten vorliegen, wird **ProcessEventsAsync** mit den jeweiligen verfügbaren Nachrichten ausgeführt.
-- [PrefetchCount](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount): Ein Wert, der vom zugrunde liegenden AMQP-Kanal verwendet wird, um zu ermitteln, wie viele Nachrichten der Client maximal empfangen soll. Dieser Wert muss größer oder gleich [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize) sein.
+- [MaxBatchSize:](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize) die maximale Größe der Sammlung, die bei einem Aufruf von [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) empfangen werden soll. Mit dieser Größe wird nicht die minimale, sondern nur die maximale Größe definiert. Wenn weniger zu empfangende Nachrichten vorliegen, wird **ProcessEventsAsync** mit den jeweiligen verfügbaren Nachrichten ausgeführt.
+- [PrefetchCount:](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount) ein Wert, der von dem zugrunde liegenden AMQP-Kanal verwendet wird, um zu ermitteln, wie viele Nachrichten der Client maximal empfangen soll. Dieser Wert muss größer oder gleich [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize) sein.
 - [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): Wenn dieser Parameter auf **TRUE** festgelegt ist, wird [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) aufgerufen, wenn für den zugrunde liegenden Aufruf zum Empfangen von Ereignissen für eine Partition ein Timeout auftritt. Diese Methode eignet sich für zeitbasierte Aktionen während inaktiver Zeiträume der Partition.
-- [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): Ermöglicht das Festlegen eines Funktionszeigers oder Lambdaausdrucks, der aufgerufen wird, um den anfänglichen Offset anzugeben, wenn ein Leser mit dem Lesen einer Partition beginnt. Ohne Angabe dieses Offsets beginnt der Leser bei dem ältesten Ereignis, es sei denn, eine JSON-Datei mit einem Offset wurde bereits in dem Speicherkonto gespeichert, das für den Konstruktor [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) angegeben ist. Diese Methode ist nützlich, wenn Sie das Verhalten für den Start des Lesers ändern möchten. Wenn diese Methode aufgerufen wird, enthält der Objektparameter die Partitions-ID, für die der Leser gestartet wird.
-- [ExceptionReceivedEventArgs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs): Ermöglicht, dass Sie Benachrichtigungen zu allen zugrunde liegenden Ausnahmen empfangen, die in [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) auftreten. Wenn Vorgänge nicht wie erwartet ausgeführt werden, ist dieses Ereignis ein guter Ausgangspunkt für die Überprüfung.
+- [InitialOffsetProvider:](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider) ermöglicht das Festlegen eines Funktionszeigers oder Lambdaausdrucks, der aufgerufen wird, um den anfänglichen Offset anzugeben, wenn ein Leser mit dem Lesen einer Partition beginnt. Ohne Angabe dieses Offsets beginnt der Leser bei dem ältesten Ereignis, es sei denn, eine JSON-Datei mit einem Offset wurde bereits in dem Speicherkonto gespeichert, das für den Konstruktor [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) angegeben ist. Diese Methode ist nützlich, wenn Sie das Verhalten für den Start des Lesers ändern möchten. Wenn diese Methode aufgerufen wird, enthält der Objektparameter die Partitions-ID, für die der Leser gestartet wird.
+- [ExceptionReceivedEventArgs:](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs) ermöglicht, dass Sie Benachrichtigungen über alle zugrunde liegenden Ausnahmen empfangen, die in [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) auftreten. Wenn Vorgänge nicht wie erwartet ausgeführt werden, ist dieses Ereignis ein guter Ausgangspunkt für die Überprüfung.
 
 ## <a name="epoch"></a>Epochen
 
 So funktioniert der Empfang von Epochen:
 
 ### <a name="with-epoch"></a>Mit Epochen
-Bei „epoch“ handelt es sich um einen eindeutigen Bezeichner (epoch-Wert), den der Dienst verwendet, um den Besitz von Partitionen oder Leases zu erzwingen. Mithilfe der [CreateEpochReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet)-Methode können Sie einen epochenbasierten Empfänger erstellen. Der Empfänger wird für eine bestimmte Event Hub-Partition aus der angegebenen Consumergruppe erstellt.
+Bei „epoch“ handelt es sich um einen eindeutigen Bezeichner (epoch-Wert), den der Dienst verwendet, um den Besitz von Partitionen oder Leases zu erzwingen. Mithilfe der [CreateEpochReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet)-Methode können Sie einen epochenbasierten Empfänger erstellen. Der Empfänger wird für eine bestimmte Event Hub-Partition aus der angegebenen Consumergruppe erstellt.
 
 Mithilfe des Epochenfeatures können Benutzer sicherstellen, dass immer nur ein Empfänger in einer Consumergruppe vorhanden ist. Hierfür gelten folgende Regeln:
 
@@ -174,7 +172,7 @@ Mithilfe des Epochenfeatures können Benutzer sicherstellen, dass immer nur ein 
 - Wenn ein Empfänger mit einem epoch-Wert von e1 vorhanden ist, ein neuer Empfänger mit einem epoch-Wert von e2 erstellt wird und „e1 > e2“ gilt, schlägt die Erstellung des Empfängers mit dem Wert e2 mit folgender Fehlermeldung fehl: A receiver with epoch e1 already exists. (Ein Empfänger mit dem epoch-Wert e1 ist bereits vorhanden.)
 
 ### <a name="no-epoch"></a>Ohne Epochen
-Mithilfe der [CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet)-Methode können Sie einen nicht auf Epochen basierenden Empfänger erstellen. 
+Mithilfe der [CreateReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet)-Methode können Sie einen nicht auf Epochen basierenden Empfänger erstellen. 
 
 In einigen Szenarios bei der Streamverarbeitung müssen Benutzer mehrere Empfänger in einer Consumergruppe erstellen. Für solche Szenarios besteht die Möglichkeit, einen Empfänger ohne epoch-Wert zu erstellen. In diesem Fall sind bis zu fünf gleichzeitige Empfänger in der Consumergruppe möglich.
 
@@ -194,7 +192,11 @@ Es wird nicht empfohlen, einen Empfänger mit epoch-Wert zu erstellen und dann i
 
 Nachdem Sie sich mit dem Ereignisprozessorhost vertraut gemacht haben, finden Sie in den folgenden Artikeln weitere Informationen zu Event Hubs:
 
-* Erste Schritte mit einem [Event Hubs-Tutorial](event-hubs-dotnet-standard-getstarted-send.md)
+- Erste Schritte mit Event Hubs
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Programmierleitfaden für Event Hubs](event-hubs-programming-guide.md)
 * [Verfügbarkeit und Konsistenz in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)

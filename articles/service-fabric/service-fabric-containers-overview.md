@@ -1,25 +1,14 @@
 ---
-title: Übersicht über Service Fabric und Container | Microsoft-Dokumentation
+title: 'Service Fabric und Container: Übersicht'
 description: Der Artikel enthält eine Übersicht über Service Fabric und die Nutzung von Containern zur Bereitstellung von Microserviceanwendungen. Dieser Artikel enthält eine Übersicht über die Verwendungsweise von Containern sowie über die verfügbaren Funktionen in Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 8/8/2018
-ms.author: atsenthi
-ms.openlocfilehash: 2ed3a9d4b1ec219d22a9e01e7acec5d7e950289b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 7/9/2020
+ms.openlocfilehash: cd0ec7dd2247fdd791df362fa34542178c17df4d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599765"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87091656"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric und Container
 
@@ -48,10 +37,10 @@ Container werden direkt oberhalb des Kernels ausgeführt und verfügen über ein
 
 Im Vergleich zu virtuellen Computern haben Container die folgenden Vorteile:
 
-* **Klein:** Für Container werden ein einzelner Speicherbereich und Ebenenversionen und -Updates verwendet, um die Effizienz zu steigern.
-* **Schnell**: Container müssen nicht ein gesamtes Betriebssystem starten. Daher ist ihr Start deutlich schneller und erfolgt üblicherweise innerhalb weniger Sekunden.
-* **Portabilität**: Ein in einem Container enthaltenes Anwendungsimage kann so portiert werden, dass es in der Cloud, lokal, auf virtuellen Computern oder direkt auf physischen Computern ausgeführt werden kann.
-* **Ressourcenkontrolle**: Ein Container kann die physischen Ressourcen beschränken, die er auf seinem Host nutzen kann.
+* **Geringe Größe**: Für Container werden nur ein Speicherbereich und Ebenen und Updates verwendet, um die Effizienz zu steigern.
+* **Schnell:** Container müssen nicht ein gesamtes Betriebssystem starten. Daher ist ihr Start deutlich schneller und erfolgt üblicherweise innerhalb weniger Sekunden.
+* **Portabilität:** Ein in einem Container enthaltenes Anwendungsimage kann für die Ausführung in der Cloud oder lokal, auf virtuellen Computern oder direkt auf physischen Computern portiert werden.
+* **Ressourcenkontrolle:** Ein Container kann die physischen Ressourcen beschränken, die er auf seinem Host verbrauchen kann.
 
 ### <a name="container-types-and-supported-environments"></a>Containertypen und unterstützte Umgebungen
 
@@ -64,7 +53,7 @@ Ein Linux-basiertes Tutorial finden Sie unter [Erstellen Ihrer ersten Service Fa
 
 #### <a name="windows-server-containers"></a>Windows Server-Container
 
-Unter Windows Server 2016 werden zwei verschiedene Arten von Containern bereitgestellt, die sich anhand des Isolationsgrads unterscheiden. Windows Server-Container und Docker-Container ähneln sich, da beide über eine Namespace- und Dateisystemisolation verfügen, den Kernel aber gemeinsam mit dem Host nutzen, auf dem sie ausgeführt werden. Unter Linux wurde diese Isolation üblicherweise mit „cgroups“ und Namespaces erzielt. Windows Server-Container verhalten sich ähnlich.
+Unter Windows Server 2016 und höher werden zwei verschiedene Arten von Containern bereitgestellt, die sich durch den Isolationsgrad unterscheiden. Windows Server-Container und Docker-Container ähneln sich, da beide über eine Namespace- und Dateisystemisolation verfügen, den Kernel aber gemeinsam mit dem Host nutzen, auf dem sie ausgeführt werden. Unter Linux wurde diese Isolation üblicherweise mit „cgroups“ und Namespaces erzielt. Windows Server-Container verhalten sich ähnlich.
 
 Windows-Container mit Hyper-V-Unterstützung bieten mehr Isolation und Sicherheit, da kein Container den Betriebssystemkernel mit anderen Containern oder mit dem Host gemeinsam verwendet. Aufgrund dieses höheren Grads an Sicherheitsisolation sind für Hyper-V aktivierte Container für potenziell kritischere Szenarios mit mehreren Mandanten geeignet.
 Ein Windows-basiertes Tutorial finden Sie unter [Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows](service-fabric-get-started-containers.md).
@@ -76,15 +65,18 @@ In der folgenden Abbildung sind die unterschiedlichen Arten der Virtualisierung 
 
 In den folgenden typischen Beispielen ist ein Container eine gute Wahl:
 
-* **IIS-Lift und -Shift**: Sie können eine vorhandene [ASP.NET MVC](https://www.asp.net/mvc)-App in einem Container platzieren, statt sie zu ASP.NET Core zu migrieren. Diese ASP.NET MVC-Apps sind von Internetinformationsdiensten (Internet Information Services, IIS) abhängig. Sie können diese Anwendungen in Containerimages aus dem vorab erstellten IIS-Image verpacken und mit Service Fabric bereitstellen. Informationen zu Windows-Containern finden Sie unter [Container Images on Windows Server (Containerimages unter Windows Server)](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server).
+* **IIS-Lift und -Shift:** Sie können eine vorhandene [ASP.NET MVC](https://www.asp.net/mvc)-App in einem Container platzieren statt sie zu ASP.NET Core zu migrieren. Diese ASP.NET MVC-Apps sind von Internetinformationsdiensten (Internet Information Services, IIS) abhängig. Sie können diese Anwendungen in Containerimages aus dem vorab erstellten IIS-Image verpacken und mit Service Fabric bereitstellen. Informationen zu Windows-Containern finden Sie unter [Container Images on Windows Server (Containerimages unter Windows Server)](/virtualization/windowscontainers/quick-start/quick-start-windows-server).
 
-* **Mischen Sie Container und Service Fabric-Microservices**: Verwenden Sie ein vorhandenes Containerimage für einen Teil Ihrer Anwendung. Beispielsweise können Sie den [NGINX-Container](https://hub.docker.com/_/nginx/) für das Web-Front-End Ihrer Anwendung und zustandsbehaftete Dienste für die rechenintensiveren Back-End-Vorgänge verwenden.
+* **Mischen von Containern und Service Fabric-Microservices:** Verwenden Sie ein vorhandenes Containerimage für einen Teil Ihrer Anwendung. Beispielsweise können Sie den [NGINX-Container](https://hub.docker.com/_/nginx/) für das Web-Front-End Ihrer Anwendung und zustandsbehaftete Dienste für die rechenintensiveren Back-End-Vorgänge verwenden.
 
-* **Reduzieren Sie die Auswirkungen der Beeinträchtigung durch andere Dienste („Noisy Neighbors“)** : Sie können die Möglichkeit zur Ressourcenkontrolle von Containern verwenden, um die Ressourcen einzuschränken, die ein Dienst auf einem Host verwendet. Wenn Dienste eine große Menge von Ressourcen nutzen und die Leistung anderer Dienste beeinträchtigen (z.B. ein Abfragevorgang mit langer Ausführungsdauer), können Sie diese Dienste in Containern mit Ressourcenkontrolle anordnen.
+* **Reduzieren der Auswirkungen der Beeinträchtigung durch andere Dienste („Noisy Neighbors):** Sie können die Funktion zur Ressourcenkontrolle für Container verwenden, um die Ressourcen einzuschränken, die ein Dienst auf einem Host verwendet. Wenn Dienste eine große Menge von Ressourcen nutzen und die Leistung anderer Dienste beeinträchtigen (z.B. ein Abfragevorgang mit langer Ausführungsdauer), können Sie diese Dienste in Containern mit Ressourcenkontrolle anordnen.
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric-Unterstützung für Container
 
-Service Fabric unterstützt die Bereitstellung von Docker-Containern in Linux- und Windows Server-Containern unter Windows Server 2016 zusammen mit der Unterstützung für den Hyper-V-Isolationsmodus. 
+Service Fabric unterstützt die Bereitstellung von Docker-Containern in Linux- und Windows Server-Containern unter Windows Server 2016 und höher zusammen mit der Unterstützung für den Hyper-V-Isolationsmodus.
+
+> [!NOTE]
+> Container werden für lokale Service Fabric-Cluster mit einem einzigen Knoten nicht unterstützt (weder Linux-Cluster in OneBox noch Windows-Cluster in lokalen Service Fabric-Installationen).
 
 Service Fabric stellt ein [Anwendungsmodell](service-fabric-application-model.md) bereit, in dem ein Container einen Anwendungshost darstellt, in dem mehrere Dienstreplikate angeordnet werden. Service Fabric unterstützt darüber hinaus das [Szenario einer ausführbaren Gastanwendungsdatei](service-fabric-guest-executables-introduction.md), bei dem Sie nicht die integrierten Service Fabric-Programmiermodelle verwenden, sondern stattdessen eine vorhandene in einer beliebigen Sprache oder einem beliebigen Framework geschriebene Anwendung in einem Container packen. Dieses Szenario ist der gängigste Anwendungsfall für Container.
 
@@ -101,7 +93,7 @@ Service Fabric stellt mehrere Containerfunktionen für die Erstellung von Anwend
 * Möglichkeit zum Festlegen von Sicherheitsanmeldeinformationen für den Container.
 * Auswahl verschiedener Netzwerkmodi für Container.
 
-Unter [Azure für Container](https://docs.microsoft.com/azure/containers/) finden Sie eine umfassende Übersicht über die Containerunterstützung in Azure, etwa Informationen zum Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service und einer privaten Docker-Registrierung in Azure Container Registry und vieles mehr.
+Unter [Azure für Container](../containers/index.yml) finden Sie eine umfassende Übersicht über die Containerunterstützung in Azure, etwa Informationen zum Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service und einer privaten Docker-Registrierung in Azure Container Registry und vieles mehr.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -109,6 +101,6 @@ In diesem Artikel haben Sie mehr über die Unterstützung erfahren, die Service 
 
 [Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Linux](service-fabric-get-started-containers-linux.md)  
 [Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows](service-fabric-get-started-containers.md)  
-[Weitere Informationen zu Windows-Containern](https://docs.microsoft.com/virtualization/windowscontainers/about/)
+[Weitere Informationen zu Windows-Containern](/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

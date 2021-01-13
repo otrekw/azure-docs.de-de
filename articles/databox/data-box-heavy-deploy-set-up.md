@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Einrichten von Azure Data Box Heavy | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie Azure Data Box Heavy verkabeln und die Verbindung herstellen.
+description: In diesem Tutorial erfahren Sie, wie Sie Ihr Azure Data Box Heavy-Gerät verkabeln, eine Verbindung mit Azure Data Box Heavy herstellen und Azure Data Box Heavy einschalten.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 3b27a4788bd144a8d2d423af1fa23ef09c5379f8
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: c38ff7e642017afe5f220ae26d3a04c2c0b706ee
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772849"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920941"
 ---
 ::: zone target = "docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "70772849"
 
 ::: zone target = "chromeless"
 
-# <a name="get-started-with-azure-data-box-heavy"></a>Erste Schritte mit Azure Data Box Heavy
+## <a name="get-started-with-azure-data-box-heavy"></a>Erste Schritte mit Azure Data Box Heavy
 
 ::: zone-end
 
@@ -100,7 +100,7 @@ Gehen Sie zur Verkabelung Ihres Geräts wie folgt vor:
 
 Gehen Sie wie folgt vor, um die Netzwerkverkabelung für einen der Knoten des Geräts vorzunehmen:
 
-1. Verbinden Sie den Hostcomputer über ein Cat 6-Netzwerkkabel vom Typ RJ45 (blaues Kabel in der Abbildung) mit dem 1-GBit/s-Verwaltungsanschluss.
+1. Verbinden Sie den Hostcomputer über ein Cat 6-Netzwerkkabel vom Typ RJ45 (Kabel oben rechts in der Abbildung, angeschlossen an den Anschluss MGMT) mit dem 1-GBit/s-Verwaltungsanschluss.
 2. Verwenden Sie das QSFP+-Kupferkabel (Glasfaser oder Kupfer), um mindestens eine Netzwerkschnittstelle mit 40 GBit/s (bevorzugt gegenüber 1 GBit/s) für die Datenübertragung anzuschließen. Verwenden Sie bei Verwendung eines 10-GBit/s-Switchs ein SFP+-Kabel mit einem QSFP+-auf-SFP+-Adapter (QSA-Adapter), um die 40-GBit/s-Netzwerkschnittstelle für die Datenübertragung anzuschließen.
 
     ![Data Box Heavy: verkabelte Anschlüsse](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)

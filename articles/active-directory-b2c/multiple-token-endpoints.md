@@ -1,21 +1,22 @@
 ---
-title: Migrieren von OWIN-basierten Web-APIs zu auf b2clogin.com – Azure Active Directory B2C
+title: Migrieren von OWIN-basierten Web-APIs zu b2clogin.com
+titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie eine .NET-Web-API für die Unterstützung mehrerer Tokenaussteller aktivieren können, während Sie Ihre Anwendungen zu b2clogin.com migrieren.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a8a6b4f90fe3f1e60341cc59e7d81870c82e843b
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: c362ce256259606c85af0a7e13ccde1715bb012b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533767"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953932"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Migrieren einer OWIN-basierten Web-API zu b2clogin.com
 
@@ -32,7 +33,7 @@ Die folgenden Abschnitte enthalten ein Beispiel für das Aktivieren mehrerer Aus
 
 Sie benötigen die folgenden Azure AD B2C-Ressourcen, bevor Sie mit den Schritten dieses Artikels fortfahren können:
 
-* In Ihrem Mandanten erstellte [Benutzerflows](tutorial-create-user-flows.md) oder [benutzerdefinierte Richtlinien](active-directory-b2c-get-started-custom.md)
+* In Ihrem Mandanten erstellte [Benutzerflows](tutorial-create-user-flows.md) oder [benutzerdefinierte Richtlinien](custom-policy-get-started.md)
 
 ## <a name="get-token-issuer-endpoints"></a>Abrufen von Tokenausstellerendpunkten
 
@@ -87,7 +88,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 In diesem Abschnitt aktualisieren Sie den Code, um anzugeben, dass beide Tokenausstellerendpunkte gültig sind.
 
 1. Öffnen Sie die Projektmappe **B2C-WebAPI-DotNet.sln** in Visual Studio.
-1. Öffnen Sie im Projekt **TaskService** die Datei *TaskService\\App_Start\\ **Startup.Auth.cs*** im Editor.
+1. Öffnen Sie im Projekt **TaskService** die Datei „TaskService\\App_Start\\**Startup.Auth.cs**“ im Editor.
 1. Fügen Sie am Anfang der Datei die folgende `using`-Anweisung hinzu:
 
     `using System.Collections.Generic;`
@@ -106,7 +107,7 @@ In diesem Abschnitt aktualisieren Sie den Code, um anzugeben, dass beide Tokenau
     };
     ```
 
-`TokenValidationParameters` wird von MSAL.NET angegeben und von der OWIN-Middleware im nächsten Codeabschnitt von *Startup.Auth.cs* verwendet. Bei Angabe mehrerer gültiger Aussteller wird der OWIN-Anwendungspipeline mitgeteilt, dass beide Tokenendpunkte gültige Aussteller sind.
+`TokenValidationParameters` wird von MSAL.NET angegeben und von der OWIN-Middleware im nächsten Codeabschnitt von „Startup.Auth.cs“ verwendet. Bei Angabe mehrerer gültiger Aussteller wird der OWIN-Anwendungspipeline mitgeteilt, dass beide Tokenendpunkte gültige Aussteller sind.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -122,7 +123,7 @@ Wie bereits zuvor erwähnt, bieten andere OWIN-Bibliotheken in der Regel eine ä
 
 Beide URIs werden von Ihrer Web-API unterstützt. Nun müssen Sie Ihre Webanwendung so aktualisieren, dass sie Token vom Endpunkt „b2clogin.com“ abruft.
 
-Sie können die Beispielwebanwendung beispielsweise zur Verwendung des neuen Endpunkts konfigurieren. Ändern Sie dazu den Wert `ida:AadInstance` in der Datei *TaskWebApp\\**Web.config*** des Projekts **TaskWebApp**.
+So können Sie beispielsweise die Beispielwebanwendung zur Verwendung des neuen Endpunkts konfigurieren, indem Sie den Wert `ida:AadInstance` in der Datei *TaskWebApp\\**Web.config** des Projekts „* TaskWebApp“ ändern.
 
 Ändern Sie den Wert `ida:AadInstance` in der Datei *Web.config* von TaskWebApp so, dass auf `{your-b2c-tenant-name}.b2clogin.com` anstelle von `login.microsoftonline.com` verwiesen wird.
 
@@ -146,13 +147,13 @@ Werden die Endpunktzeichenfolgen während der Ausführung der Web-App erstellt, 
 
 In diesem Artikel wurde eine Methode zum Konfigurieren einer Web-API vorgestellt, die die Microsoft OWIN-Middleware (Katana) implementiert, um Token von mehreren Ausstellerendpunkten zu akzeptieren. Wie Sie vielleicht bemerkt haben, enthalten die Dateien *Web.Config* der Projekte „TaskService“ und „TaskWebApp“ verschiedene andere Zeichenfolgen, die geändert werden müssen, wenn Sie diese Projekte für Ihren eigenen Mandanten erstellen und ausführen möchten. Sie können diese Projekte gerne anpassen, wenn Sie sie in Aktion sehen möchten, eine ausführliche Anleitung ist jedoch nicht Gegenstand dieses Artikels.
 
-Weitere Informationen zu den verschiedenen Arten von Sicherheitstoken, die von Azure AD B2C ausgegeben werden, finden Sie in der [Übersicht über Token in Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
+Weitere Informationen zu den verschiedenen Arten von Sicherheitstoken, die von Azure AD B2C ausgegeben werden, finden Sie in der [Übersicht über Token in Azure Active Directory B2C](tokens-overview.md).
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip
 [sample-repo]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi
 
 <!-- LINKS - Internal -->
-[katana]: https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/
-[validissuers]: https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters.validissuers
-[tokenvalidationparameters]: https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters
+[katana]: /aspnet/aspnet/overview/owin-and-katana/
+[validissuers]: /dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters.validissuers
+[tokenvalidationparameters]: /dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters

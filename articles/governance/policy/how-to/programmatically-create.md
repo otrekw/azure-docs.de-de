@@ -1,24 +1,20 @@
 ---
 title: Programmgesteuertes Erstellen von Richtlinien
-description: In diesem Artikel wird das programmgesteuerte Erstellen und Verwalten von Richtlinien für Azure Policy Schritt für Schritt beschrieben.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 01/31/2019
-ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 695e04dcbc7762c85dd0dd9aaff6e5fd9fe99348
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+description: In diesem Artikel wird Schritt für Schritt das programmgesteuerte Erstellen und Verwalten von Richtlinien für Azure Policy per Azure-Befehlszeilenschnittstelle, Azure PowerShell und REST-API beschrieben.
+ms.date: 08/17/2020
+ms.topic: how-to
+ms.openlocfilehash: 86c1b60608780cba4d8ae27e3c82ace458f09a26
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155578"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920014"
 ---
 # <a name="programmatically-create-policies"></a>Programmgesteuertes Erstellen von Richtlinien
 
 In diesem Artikel wird das programmgesteuerte Erstellen und Verwalten von Richtlinien Schritt für Schritt beschrieben. Mit Azure Policy-Definitionen werden verschiedene Regeln und Auswirkungen für Ihre Ressourcen erzwungen. Durch die Erzwingung wird sichergestellt, dass die Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel bleiben.
 
-Weitere Informationen zur Konformität finden Sie unter [Abrufen von Konformitätsdaten](getting-compliance-data.md).
+Weitere Informationen zur Konformität finden Sie unter [Abrufen von Konformitätsdaten](get-compliance-data.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,7 +30,7 @@ Stellen Sie zunächst sicher, dass die folgenden Voraussetzungen erfüllt sind:
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
    ```
 
-   Weitere Informationen zum Registrieren und Anzeigen von Ressourcenanbietern finden Sie unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/resource-manager-supported-services.md).
+   Weitere Informationen zum Registrieren und Anzeigen von Ressourcenanbietern finden Sie unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/management/resource-providers-and-types.md).
 
 1. Installieren Sie die Azure CLI, falls Sie dies noch nicht getan haben. Sie finden die aktuelle Version unter [Installieren der Azure CLI unter Windows](/cli/azure/install-azure-cli-windows).
 
@@ -96,10 +92,10 @@ Im ersten Schritt zur besseren Sichtbarkeit Ihrer Ressourcen werden Richtlinien 
 
    - Ressource: `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Ressourcengruppe: `/subscriptions/{subId}/resourceGroups/{rgName}`
-   - Abonnement: `/subscriptions/{subId}/`
+   - Abonnement: `/subscriptions/{subId}`
    - Verwaltungsgruppe: `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Weitere Informationen zum Verwalten von Ressourcenrichtlinien unter Verwendung des Azure Resource Manager-PowerShell-Moduls finden Sie unter [Az.Resources](/powershell/module/az.resources/#policies).
+Weitere Informationen zum Verwalten von Ressourcenrichtlinien unter Verwendung des Resource Manager-PowerShell-Moduls finden Sie unter [Az.Resources](/powershell/module/az.resources/#policies).
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Erstellen und Zuweisen einer Richtliniendefinition per ARMClient
 
@@ -137,10 +133,10 @@ Verwenden Sie das folgende Verfahren, um eine Richtliniendefinition zu erstellen
 
    ```console
    # For defining a policy in a subscription
-   armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+   armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2019-09-01" @<path to policy definition JSON file>
 
    # For defining a policy in a management group
-   armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+   armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2019-09-01" @<path to policy definition JSON file>
    ```
 
    Ersetzen Sie „{subscriptionId}“ durch die ID Ihres Abonnements oder „{managementGroupId}“ durch die ID Ihrer [Verwaltungsgruppe](../../management-groups/overview.md).
@@ -166,7 +162,7 @@ Verwenden Sie das folgende Verfahren, um eine Richtlinienzuweisung zu erstellen 
 1. Erstellen Sie die Richtlinienzuweisung, indem Sie den folgenden Aufruf verwenden:
 
    ```console
-   armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2017-06-01-preview" @<path to Assignment JSON file>
+   armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2019-09-01" @<path to Assignment JSON file>
    ```
 
    Ersetzen Sie die in &lt;&gt; gesetzten Angaben durch Ihre eigenen Werte.
@@ -207,12 +203,12 @@ Verwenden Sie das folgende Verfahren, um eine Richtliniendefinition zu erstellen
    ```
 
    Mit dem Befehl wird die Richtliniendefinition _Audit Storage Accounts Open to Public Networks_ erstellt.
-   Weitere Informationen zu anderen Parametern, die Sie verwenden können, finden Sie unter [az policy definition create](/cli/azure/policy/definition#az-policy-definition-create).
+   Weitere Informationen zu anderen Parametern, die Sie verwenden können, finden Sie unter [az policy definition create](/cli/azure/policy/definition#az_policy_definition_create).
 
    `az policy definition creation` speichert die Richtliniendefinition standardmäßig im ausgewählten Abonnement des Sitzungskontexts bei Aufruf ohne Speicherortparameter. Um die Definition an einem anderen Speicherort zu speichern, verwenden Sie die folgenden Parameter:
 
-   - **--subscription** zum Speichern in einem anderen Abonnement. Dieser Parameter erfordert einen _GUID-Wert_ für die Abonnement-ID oder einen _Zeichenfolgenwert_ für den Namen des Abonnements.
-   - **--management-group** zum Speichern in einer Verwaltungsgruppe. Dies erfordert einen _Zeichenfolgenwert_.
+   - **subscription** zum Speichern in einem anderen Abonnement. Dieser Parameter erfordert einen _GUID-Wert_ für die Abonnement-ID oder einen _Zeichenfolgenwert_ für den Namen des Abonnements.
+   - **management-group** zum Speichern in einer Verwaltungsgruppe. Dies erfordert einen _Zeichenfolgenwert_.
 
 1. Verwenden Sie den folgenden Befehl, um eine Richtlinienzuweisung zu erstellen. Ersetzen Sie die in &lt;&gt; gesetzten Angaben durch Ihre eigenen Werte.
 
@@ -220,7 +216,7 @@ Verwenden Sie das folgende Verfahren, um eine Richtliniendefinition zu erstellen
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   Die Parameter **--scope** für `az policy assignment create` kann mit einer Verwaltungsgruppe, einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource verwendet werden. Der Parameter verwendet einen vollständigen Ressourcenpfad. Das Muster für **--scope** für die einzelnen Container ist unten aufgeführt. Ersetzen Sie `{rName}`, `{rgName}`, `{subId}` und `{mgName}` durch Ihre(n) Ressourcennamen, Ressourcengruppennamen, Abonnement-ID bzw. Namen der Verwaltungsgruppe. `{rType}` wird durch den **Ressourcentyp** der Ressource ersetzt, z. B. `Microsoft.Compute/virtualMachines` für eine VM.
+   Der Parameter **scope** für `az policy assignment create` kann mit einer Verwaltungsgruppe, einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource verwendet werden. Der Parameter verwendet einen vollständigen Ressourcenpfad. Das Muster für **scope** für die einzelnen Container ist unten aufgeführt. Ersetzen Sie `{rName}`, `{rgName}`, `{subId}` und `{mgName}` durch Ihre(n) Ressourcennamen, Ressourcengruppennamen, Abonnement-ID bzw. Namen der Verwaltungsgruppe. `{rType}` wird durch den **Ressourcentyp** der Ressource ersetzt, z. B. `Microsoft.Compute/virtualMachines` für eine VM.
 
    - Ressource: `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Ressourcengruppe: `/subscriptions/{subID}/resourceGroups/{rgName}`
@@ -239,7 +235,7 @@ Die ID für die Richtliniendefinition, die Sie erstellt haben, sollte in etwa wi
 "/subscription/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks"
 ```
 
-Weitere Informationen zum Verwalten von Ressourcenrichtlinien mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure CLI-Ressourcenrichtlinien](/cli/azure/policy?view=azure-cli-latest).
+Weitere Informationen zum Verwalten von Ressourcenrichtlinien mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure CLI-Ressourcenrichtlinien](/cli/azure/policy).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -247,6 +243,6 @@ Weitere Informationen zu den in diesem Artikel verwendeten Befehlen und Abfragen
 
 - [Azure-REST-API-Ressourcen](/rest/api/resources/)
 - [Azure PowerShell-Module](/powershell/module/az.resources/#policies)
-- [Befehle für Azure CLI-Richtlinien](/cli/azure/policy?view=azure-cli-latest)
+- [Befehle für Azure CLI-Richtlinien](/cli/azure/policy)
 - [Azure-Ressourcenanbieter „Policy Insights“ – REST-API-Referenz](/rest/api/policy-insights)
 - [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md)

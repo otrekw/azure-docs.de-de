@@ -1,25 +1,26 @@
 ---
-title: Kopieren von Daten aus Azure Database for MariaDB mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Azure Database for MariaDB
 description: Es wird beschrieben, wie Daten aus Azure Database for MariaDB mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.author: jingwang
-ms.openlocfilehash: 370cafb5d73878e49315014c2fc1bdf8cd8a85e2
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: c433fc5d919a57476097257cac1b7176a9da598d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090492"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81410691"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Kopieren von Daten aus Azure Database for MariaDB mithilfe von Azure Data Factory 
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Azure Database for MariaDB zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -47,7 +48,7 @@ Folgende Eigenschaften werden für den verknüpften Azure Database for MariaDB-D
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureMariaDB** | Ja |
-| connectionString | Eine Verbindungszeichenfolge zum Herstellen einer Verbindung mit Azure Database for MariaDB. Diese finden Sie im Azure-Portal unter Ihrer Azure Database for MariaDB-Instanz -> Verbindungszeichenfolgen > ADO.NET. <br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch das Kennwort in Azure Key Vault speichern und die `pwd`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| connectionString | Eine Verbindungszeichenfolge zum Herstellen einer Verbindung mit Azure Database for MariaDB. Diese finden Sie im Azure-Portal unter Ihrer Azure Database for MariaDB-Instanz -> Verbindungszeichenfolgen > ADO.NET. <br/> Sie können auch das Kennwort in Azure Key Vault speichern und die `pwd`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 **Beispiel:**
@@ -58,10 +59,7 @@ Folgende Eigenschaften werden für den verknüpften Azure Database for MariaDB-D
     "properties": {
         "type": "AzureMariaDB",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; Pwd={your_password}; SslMode=Preferred;"
-            }
+            "connectionString": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; Pwd={your_password}; SslMode=Preferred;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -79,10 +77,7 @@ Folgende Eigenschaften werden für den verknüpften Azure Database for MariaDB-D
     "properties": {
         "type": "AzureMariaDB",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; SslMode=Preferred;"
-            },
+            "connectionString": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; SslMode=Preferred;",
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -109,7 +104,7 @@ Zum Kopieren von Daten aus Azure Database for MariaDB werden die folgenden Eigen
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **AzureMariaDBTable** | Ja |
-| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
+| tableName | Der Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -139,7 +134,7 @@ Beim Kopieren von Daten aus Azure Database for MariaDB werden die folgenden Eige
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureMariaDBSource** | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

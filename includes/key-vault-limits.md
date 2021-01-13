@@ -1,17 +1,17 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: key-vault
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 04/21/2020
 ms.author: jroth
-ms.openlocfilehash: 0b9d87fd7929607da8407ae5bbfb2f6dd6d69dab
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e4abbeadb0d30911d99fff57c0e99a3e427a6d8d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178496"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028387"
 ---
-#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Schlüsseltransaktionen (maximale Transaktionen innerhalb von 10 Sekunden pro Tresor und Region<sup>1</sup>):
+### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Schlüsseltransaktionen (maximale Transaktionen innerhalb von 10 Sekunden pro Tresor und Region<sup>1</sup>):
 
 |Schlüsseltyp|HSM-Schlüssel<br>Erstellungsschlüssel|HSM-Schlüssel<br>Alle anderen Transaktionen|Softwareschlüssel<br>Erstellungsschlüssel|Softwareschlüssel<br>Alle anderen Transaktionen|
 |:---|---:|---:|---:|---:|
@@ -34,11 +34,22 @@ ms.locfileid: "67178496"
 > - 125 GET-Transaktionen für RSA 4.096-Bit-HSM-Schlüssel
 > - 124 GET-Transaktionen für RSA 4.096-Bit-HSM-Schlüssel und 8 GET-Transaktionen für RSA 2.048-Bit-HSM-Schlüssel
 
-#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Geheimnisse, Schlüssel für verwaltete Speicherkonten und Tresortransaktionen:
+### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Geheimnisse, Schlüssel für verwaltete Speicherkonten und Tresortransaktionen:
+
 | Transaktionstyp | Maximal zulässige Transaktionen innerhalb von 10 Sekunden pro Tresor und Region<sup>1</sup> |
 | --- | --- |
 | Alle Transaktionen |2\.000 |
 
-Informationen zur Handhabung der Drosselung bei Überschreiten dieser Grenzwerte finden Sie unter [Anleitung zur Drosselung von Azure Key Vault](../articles/key-vault/key-vault-ovw-throttling.md).
+Informationen zur Handhabung der Drosselung bei Überschreiten dieser Grenzwerte finden Sie unter [Anleitung zur Drosselung von Azure Key Vault](../articles/key-vault/general/overview-throttling.md).
 
 <sup>1</sup> Für alle Transaktionsarten gilt als abonnementweiter Grenzwert das Fünffache des Schlüsseltresorlimits. „HSM – andere Transaktionen“ pro Abonnement ist beispielsweise auf 5.000 Transaktionen in 10 Sekunden pro Abonnent beschränkt.
+
+### <a name="azure-private-link-integration"></a>Azure Private Link-Integration
+
+> [!NOTE]
+> Die Anzahl der Schlüsseltresore mit den pro Abonnement aktivierten privaten Endpunkten ist ein anpassbarer Grenzwert. Der gezeigte Grenzwert ist der Standardwert. Wenn Sie eine Erhöhung des Grenzwerts für Ihren Dienst beantragen möchten, senden Sie eine E-Mail an akv-privatelink@microsoft.com. Wir genehmigen diese Anträge je nach Fall.
+
+| Resource | Begrenzung |
+| -------- | ----- |
+| Private Endpunkte pro Schlüsseltresor | 64 |
+| Schlüsseltresore mit privaten Endpunkten pro Abonnement | 400 |

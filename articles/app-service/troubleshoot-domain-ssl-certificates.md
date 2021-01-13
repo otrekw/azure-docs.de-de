@@ -1,48 +1,41 @@
 ---
-title: 'Problembehandlung bei Domänen- und SSL-Zertifikaten: Azure App Service | Microsoft-Dokumentation'
-description: Problembehandlung bei Domänen- und SSL-Zertifikaten in Azure App Service
-services: app-service\web
-documentationcenter: ''
+title: Behandeln von Problemen mit Domänen und TLS/SSL-Zertifikaten
+description: Hier finden Sie Lösungen für häufige Probleme, die beim Konfigurieren einer Domäne oder eines TLS/SSL-Zertifikats in Azure App Service auftreten können.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: a6c3b8485a3243d7c89ab409a2fb83b1b045c9ba
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 691cbd79e82432c8e919dcbb51642a76000296dc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121978"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607608"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Problembehandlung bei Domänen- und SSL-Zertifikaten in Azure App Service
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Problembehandlung bei Domänen- und TLS/SSL-Zertifikaten in Azure App Service
 
-In diesem Artikel werden häufige Probleme aufgelistet, die beim Konfigurieren einer Domäne oder eines SSL-Zertifikats für Ihre Web-Apps in Azure App Service auftreten können. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme beschrieben.
+In diesem Artikel werden häufige Probleme aufgelistet, die beim Konfigurieren einer Domäne oder eines TLS/SSL-Zertifikats für Ihre Web-Apps in Azure App Service auftreten können. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme beschrieben.
 
 Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) mit Azure-Experten in Verbindung setzen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie die Option **Support erhalten**.
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="certificate-problems"></a>Probleme mit Zertifikaten
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-an-app"></a>Sie können keine SSL-Zertifikatbindung zu einer App hinzufügen 
+### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>Sie können keine TLS/SSL-Zertifikatbindung zu einer App hinzufügen 
 
 #### <a name="symptom"></a>Symptom
 
-Wenn Sie eine SSL-Bindung hinzufügen, erhalten Sie die folgende Fehlermeldung:
+Wenn Sie eine TLS-Bindung hinzufügen, erhalten Sie die folgende Fehlermeldung:
 
 „Fehler beim Hinzufügen der SSL-Bindung. Das Zertifikat für den vorhandenen VIP kann nicht festgelegt werden, da ein anderer VIP dieses Zertifikat bereits verwendet.“
 
 #### <a name="cause"></a>Ursache
 
-Dieses Problem kann auftreten, wenn Sie App-übergreifend mehrere IP-basierte SSL-Bindungen für dieselbe IP-Adresse verwenden. Beispiel: App A verfügt über eine IP-basierte SSL-Bindung mit einem alten Zertifikat. App B verwendet für dieselbe IP-Adresse eine IP-basiertes SSL-Bindung mit einem neuen Zertifikat. Wenn Sie die SSL-Bindung der App mit dem neuen Zertifikat aktualisieren, kommt es zu diesem Fehler, weil dieselbe IP-Adresse für eine andere App verwendet wird. 
+Dieses Problem kann auftreten, wenn Sie App-übergreifend mehrere IP-basierte SSL-Bindungen für dieselbe IP-Adresse verwenden. Beispiel: App A verfügt über eine IP-basierte SSL-Bindung mit einem alten Zertifikat. App B verwendet für dieselbe IP-Adresse eine IP-basiertes SSL-Bindung mit einem neuen Zertifikat. Wenn Sie die TLS-Bindung der App mit dem neuen Zertifikat aktualisieren, kommt es zu diesem Fehler, weil dieselbe IP-Adresse für eine andere App verwendet wird. 
 
 #### <a name="solution"></a>Lösung 
 
@@ -57,7 +50,7 @@ Verwenden Sie zur Problembehebung eine der folgenden Methoden:
 
 Wenn Sie versuchen, ein Zertifikat zu löschen, erhalten Sie die folgende Fehlermeldung:
 
-„Das Zertifikat kann nicht gelöscht werden, da es derzeit in einer SSL-Bindung verwendet wird. Die SSL-Bindung muss entfernt werden, bevor Sie das Zertifikat löschen können.“
+„Das Zertifikat kann nicht gelöscht werden, da es derzeit in einer TLS/SSL-Bindung verwendet wird. Die TLS-Bindung muss entfernt werden, bevor Sie das Zertifikat löschen können.“
 
 #### <a name="cause"></a>Ursache
 
@@ -65,17 +58,17 @@ Dieses Problem kann auftreten, wenn eine weitere App das Zertifikat verwendet.
 
 #### <a name="solution"></a>Lösung
 
-Entfernen Sie die SSL-Bindung für dieses Zertifikat aus den Apps. Versuchen Sie anschließend, das Zertifikat zu löschen. Wenn Sie das Zertifikat immer noch nicht löschen können, löschen Sie den Cache Ihres Internet-Browsers, und öffnen Sie das Azure-Portal erneut in einem neuen Browserfenster. Versuchen Sie anschließend, das Zertifikat zu löschen.
+Entfernen Sie die TLS-Bindung für dieses Zertifikat aus den Apps. Versuchen Sie anschließend, das Zertifikat zu löschen. Wenn Sie das Zertifikat immer noch nicht löschen können, löschen Sie den Cache Ihres Internet-Browsers, und öffnen Sie das Azure-Portal erneut in einem neuen Browserfenster. Versuchen Sie anschließend, das Zertifikat zu löschen.
 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>Sie können ein App Service-Zertifikat nicht erwerben. 
 
 #### <a name="symptom"></a>Symptom
-Sie können über das Azure-Portal kein [Azure App Service-Zertifikat](./web-sites-purchase-ssl-web-site.md) erwerben.
+Sie können über das Azure-Portal kein [Azure App Service-Zertifikat](./configure-ssl-certificate.md#import-an-app-service-certificate) erwerben.
 
 #### <a name="cause-and-solution"></a>Ursache und Lösung
 Dieses Problem kann aus einem der folgenden Gründe auftreten:
 
-- Der App Service-Plan ist „Free“ oder „Shared“. In diesen Tarifen wird SSL nicht unterstützt. 
+- Der App Service-Plan ist „Free“ oder „Shared“. In diesen Tarifen wird TLS nicht unterstützt. 
 
     **Lösung**: Führen Sie ein Upgrade des App Service-Plans der App auf den Tarif „Standard“ durch.
 
@@ -126,7 +119,7 @@ Im Internet-Browser ist möglicherweise immer noch die alte IP-Adresse für Ihre
 
 **Lösung für Ursache 2**
 
-Löschen Sie den Browser-Cache. Bei Windows-Geräten können Sie den Befehl `ipconfig /flushdns` ausführen. Überprüfen Sie mithilfe von [WhatsmyDNS.net](https://www.whatsmydns.net/), ob Ihre Domäne auf die IP-Adresse der App zeigt. 
+Löschen Sie den Browser-Cache. Bei Windows-Geräten können Sie den Befehl `ipconfig /flushdns` ausführen. Überprüfen Sie mithilfe von [WhatsmyDNS.net](https://www.whatsmydns.net/), ob Ihre Domäne auf die IP-Adresse der App zeigt.
 
 ### <a name="you-cant-add-a-subdomain"></a>Sie können keine Unterdomäne hinzufügen. 
 
@@ -137,7 +130,7 @@ Sie können einer App keinen neuen Hostnamen hinzufügen, um eine Unterdomäne z
 #### <a name="solution"></a>Lösung
 
 - Lassen Sie Ihren Abonnementadministrator überprüfen, ob Sie Berechtigungen zum Hinzufügen von Hostnamen zur App haben.
-- Wenn Sie weitere Unterdomänen benötigen, empfiehlt es sich, dass Sie für das Domänenhosting zu Azure Domain Name Service (DNS) wechseln. Wenn Sie Azure DNS verwenden, können Sie Ihrer App 500 Hostnamen hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen einer Unterdomäne](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
+- Wenn Sie weitere Unterdomänen benötigen, empfiehlt es sich, dass Sie für das Domänenhosting zu Azure Domain Name Service (DNS) wechseln. Wenn Sie Azure DNS verwenden, können Sie Ihrer App 500 Hostnamen hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen einer Unterdomäne](/archive/blogs/waws/mapping-a-custom-subdomain-to-an-azure-website).
 
 ### <a name="dns-cant-be-resolved"></a>DNS kann nicht aufgelöst werden
 
@@ -171,7 +164,7 @@ Wurde Ihre Domäne vor weniger als sieben Tagen gelöscht, wurde der Löschvorga
 
 ## <a name="domain-problems"></a>Probleme mit Domänen
 
-### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>Sie haben ein SSL-Zertifikat für die falsche Domäne erworben.
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>Sie haben ein TLS/SSL-Zertifikat für die falsche Domäne erworben.
 
 #### <a name="symptom"></a>Symptom
 
@@ -191,7 +184,7 @@ Das App Service-Zertifikat wurde erneuert, aber die App, die das App Service-Zer
 
 #### <a name="cause"></a>Ursache 
 App Service synchronisiert Ihr Zertifikat innerhalb von 48 Stunden. Wenn Sie ein Zertifikat aktualisieren oder wechseln, ruft die Anwendung manchmal weiterhin das alte Zertifikat und nicht das neu aktualisierte Zertifikat ab. Dies liegt daran, dass der Auftrag zum Synchronisieren der Zertifikatsressource noch nicht ausgeführt wurde. Klicken Sie auf „Synchronisieren“. Der Synchronisierungsvorgang aktualisiert automatisch die Hostnamenbindungen für das Zertifikat in App Service, ohne dass es zu Downtime für Ihre Apps kommt.
- 
+
 #### <a name="solution"></a>Lösung
 
 Sie können eine Synchronisierung des Zertifikats erzwingen:
@@ -207,17 +200,17 @@ Für das App Service-Zertifikat ist zuerst eine Überprüfung der Domäne erford
 
 #### <a name="solution"></a>Lösung
 Überprüfen Sie Ihre Domäne manuell durch Hinzufügen eines TXT-Eintrags:
- 
-1.  Wechseln Sie zum DNS-Anbieter (Domain Name Service), der Ihre Domäne (Domänennamen) hostet.
-2.  Fügen Sie einen TXT-Eintrag für Ihre Domäne hinzu, in dem der Wert des Domänentokens verwendet wird, das im Azure-Portal angezeigt wird. 
+
+1. Wechseln Sie zum DNS-Anbieter (Domain Name Service), der Ihre Domäne (Domänennamen) hostet.
+1. Fügen Sie einen TXT-Eintrag für Ihre Domäne hinzu, in dem der Wert des Domänentokens verwendet wird, das im Azure-Portal angezeigt wird. 
 
 Warten Sie einige Minuten, bis die DNS-Daten weitergegeben wurden, und wählen Sie dann die Schaltfläche **Aktualisieren** aus, um die Überprüfung auszulösen. 
 
 Als Alternative können Sie die HTML-Webseitenmethoden verwenden, um Ihre Domäne manuell zu überprüfen. Diese Methode ermöglicht es der Zertifizierungsstelle, den Domänenbesitz für die Domäne zu bestätigen, für die das Zertifikat ausgestellt ist.
 
-1.  Erstellen Sie eine HTML-Datei namens „{Domänenüberprüfungstoken}.html“. Der Inhalt dieser Datei muss der Wert des Domänenüberprüfungstokens sein.
-3.  Laden Sie diese Datei in das Stammverzeichnis des Webservers hoch, der Ihre Domäne hostet.
-4.  Wählen Sie **Aktualisieren** aus, um den Status des Zertifikats zu prüfen. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
+1. Erstellen Sie eine HTML-Datei namens „{Domänenüberprüfungstoken}.html“. Der Inhalt dieser Datei muss der Wert des Domänenüberprüfungstokens sein.
+1. Laden Sie diese Datei in das Stammverzeichnis des Webservers hoch, der Ihre Domäne hostet.
+1. Wählen Sie **Aktualisieren** aus, um den Status des Zertifikats zu prüfen. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
 
 Beispiel: Sie erwerben ein Standardzertifikat für azure.com mit dem Domänenüberprüfungstoken „1234abcd“. Eine Webanforderung, die für https://azure.com/1234abcd.html gestellt wird, sollte „1234abcd“ zurückgeben. 
 
@@ -268,7 +261,7 @@ Dieses Problem tritt aus einem der folgenden Gründe auf:
 
     |Eintragstyp|Host|Verweist auf|
     |------|------|-----|
-    |Eine Datei|@|IP-Adresse für App|
+    |Ein|@|IP-Adresse für App|
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
@@ -312,11 +305,11 @@ Nach dem Erwerb einer Domäne fallen fünf Tage lang keine Gebühren an. In dies
 
 **Kann ich die Domäne für eine andere Azure App Service-App in meinem Abonnement verwenden?**
 
-Ja. Wenn Sie im Azure-Portal das Blatt „Benutzerdefinierte Domänen und SSL“ aufrufen, werden die von Ihnen erworbenen Domänen angezeigt. Sie können Ihre App so konfigurieren, dass eine dieser Domänen verwendet wird.
+Ja. Wenn Sie im Azure-Portal das Blatt „Benutzerdefinierte Domänen und TLS“ aufrufen, werden die von Ihnen erworbenen Domänen angezeigt. Sie können Ihre App so konfigurieren, dass eine dieser Domänen verwendet wird.
 
 **Kann ich eine Domäne aus einem Abonnement in ein anderes übertragen?**
 
-Sie können mit dem PowerShell-Cmdlet [Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) eine Domäne in ein anderes Abonnement bzw. in eine andere Ressourcengruppe übertragen.
+Sie können mit dem PowerShell-Cmdlet [Move-AzResource](/powershell/module/az.Resources/Move-azResource) eine Domäne in ein anderes Abonnement bzw. in eine andere Ressourcengruppe übertragen.
 
 **Wie kann ich meine benutzerdefinierte Domäne verwalten, falls ich aktuell nicht über eine Azure App Service-App verfüge?**
 
@@ -324,6 +317,6 @@ Sie können Ihre Domäne auch ohne eine App Service-Web-App verwalten. Die Domä
 
 **Kann ich eine Web-App mit einer benutzerdefinierten Domäne in anderes Abonnement oder von einer App Service-Umgebung v1 in eine App Service-Umgebung v2 übertragen?**
 
-Ja, können Sie Ihre Web-App aus einem Abonnement in ein anderes übertragen. Führen Sie dazu die Schritte im Leitfaden [Verschieben von Ressourcen in Azure](../azure-resource-manager/resource-group-move-resources.md) aus. Beim Übertragen einer Web-App müssen einige Einschränkungen berücksichtigt werden. Weitere Informationen finden Sie unter [Einschränkungen beim Verschieben von App Service-Ressourcen](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+Ja, können Sie Ihre Web-App aus einem Abonnement in ein anderes übertragen. Führen Sie dazu die Schritte im Leitfaden [Verschieben von Ressourcen in Azure](../azure-resource-manager/management/move-resource-group-and-subscription.md) aus. Beim Übertragen einer Web-App müssen einige Einschränkungen berücksichtigt werden. Weitere Informationen finden Sie unter [Einschränkungen beim Verschieben von App Service-Ressourcen](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
 Nach dem Übertragen der Web-App sollten die Hostnamensbindungen der Domänen innerhalb der Einstellung für die benutzerdefinierten Domänen beibehalten werden. Zum Konfigurieren der Hostnamensbindungen sind keine zusätzlichen Schritte erforderlich.

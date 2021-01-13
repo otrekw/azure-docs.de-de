@@ -1,5 +1,5 @@
 ---
-title: Erstellen virtueller Azure-Computer mit beschleunigtem Netzwerkbetrieb | Microsoft-Dokumentation
+title: Erstellen eines virtuellen Azure-Computers mit beschleunigtem Netzwerkbetrieb mithilfe der Azure CLI
 description: Weitere Informationen finden Sie unter „Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb“.
 services: virtual-network
 documentationcenter: na
@@ -10,20 +10,20 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 1e5513b28c1ae64fc8c87bb7a949596feab4623e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bccbfed96dd6cd87bdfe986baf4b52817a160ac0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873420"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533360"
 ---
-# <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb
+# <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb mithilfe der Azure CLI
 
 In diesem Tutorial erfahren Sie, wie Sie einen virtuellen Linux-Computer (VM) mit beschleunigtem Netzwerkbetrieb erstellen. Informationen zum Erstellen einer Windows-VM mit beschleunigtem Netzwerkbetrieb finden Sie unter [Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb](create-vm-accelerated-networking-powershell.md). Der beschleunigte Netzwerkbetrieb ermöglicht die E/A-Virtualisierung mit Einzelstamm (Single Root I/O Virtualization, SR-IOV) in einer VM und somit eine erhebliche Steigerung der Netzwerkleistung. Über diesen für Hochleistung konzipierten Pfad wird der Host des Datenpfads umgangen, um Latenzen, Jitter und CPU-Auslastung zu verringern. So können mit unterstützten VM-Typen die anspruchsvollsten Netzwerkworkloads genutzt werden. Die folgende Abbildung zeigt die Kommunikation zwischen zwei VMs mit und ohne beschleunigten Netzwerkbetrieb:
 
@@ -48,19 +48,22 @@ Die folgenden Distributionen werden standardmäßig aus dem Azure-Katalog unters
 * **RHEL 7.4 oder höher**
 * **CentOS 7.4 oder höher**
 * **CoreOS Linux**
-* **Debian „Stretch“ mit Backports-Kernel**
+* **Debian „Stretch“ mit Backports-Kernel, Debian „Buster“ oder höher**
 * **Oracle Linux 7.4 und höher mit Red Hat Compatible Kernel (RHCK)**
 * **Oracle Linux 7.5 und höher mit UEK-Version 5**
-* **FreeBSD 10.4, 11.1 und 12.0**
+* **FreeBSD 10.4, 11.1 und 12.0 oder höher**
 
 ## <a name="limitations-and-constraints"></a>Einschränkungen
 
 ### <a name="supported-vm-instances"></a>Unterstützte VM-Instanzen
 Der beschleunigte Netzwerkbetrieb wird in den meisten universellen, computeoptimierten Instanzgrößen mit mindestens 2 vCPUs unterstützt.  Folgende Reihen werden unterstützt: D/DSv2 und F/Fs
 
-Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 4 vCPUs unterstützt. Folgende Reihen werden unterstützt: D/Dsv3, E/Esv3, Fsv2, Lsv2, Ms/Mms und Ms/Mmsv2.
+Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 4 vCPUs unterstützt. Folgende Reihen werden unterstützt: D/Dsv3, D/Dsv4, Dd/Ddv4, Da/Dasv4, E/Esv3, E/Esv4, Ed/Edsv4, Ea/Easv4, Fsv2, Lsv2, Ms/Mms und Ms/Mmsv2.
 
 Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+### <a name="custom-images"></a>Custom Images
+Wenn Sie ein benutzerdefiniertes Image verwenden und dieses den beschleunigten Netzwerkbetrieb unterstützt, stellen Sie sicher, dass Sie über die erforderlichen Treiber verfügen, damit Mellanox ConnectX-3- und ConnectX-4 LX-Netzwerkadapter in Azure unterstützt werden.
 
 ### <a name="regions"></a>Regions
 Verfügbar in allen öffentlichen Azure-Regionen und in Azure Government-Clouds
@@ -77,7 +80,7 @@ Virtuelle Computer (klassisch) können nicht mit beschleunigtem Netzwerkbetrieb 
 ## <a name="portal-creation"></a>Erstellung über das Portal
 In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers mit beschleunigtem Netzwerkbetrieb mithilfe der Azure-Befehlszeilenschnittstelle dargestellt, Sie können jedoch auch [über das Azure-Portal einen virtuellen Computer mit beschleunigtem Netzwerkbetrieb erstellen](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie einen virtuellen Computer im Portal erstellen, wählen Sie im Blatt **Virtuellen Computer erstellen** die Registerkarte **Netzwerkbetrieb** aus.  Auf dieser Registerkarte gibt es eine Option für **Beschleunigter Netzwerkbetrieb**.  Wenn Sie ein [unterstütztes Betriebssystem](#supported-operating-systems) und eine [unterstützte VM-Größe](#supported-vm-instances) ausgewählt haben, wird diese Option automatisch auf „Ein“ gesetzt.  Wenn nicht, wird die Option für „Beschleunigter Netzwerkbetrieb“ auf „Aus“ festgelegt, und dem Benutzer wird der Grund angezeigt, warum der beschleunigte Netzwerkbetrieb nicht aktiviert wird.   
 
-* *Hinweis:* Nur unterstützte Betriebssysteme können über das Portal aktiviert werden.  Wenn Sie ein benutzerdefiniertes Image verwenden und Ihr Image den beschleunigten Netzwerkbetrieb unterstützt, erstellen Sie Ihre VM mit CLI oder Powershell. 
+* *Hinweis:* Nur unterstützte Betriebssysteme können über das Portal aktiviert werden.  Wenn Sie ein benutzerdefiniertes Image verwenden und Ihr Image den beschleunigten Netzwerkbetrieb unterstützt, erstellen Sie Ihre VM mit CLI oder PowerShell. 
 
 Nach dem Erstellen des virtuellen Computers können Sie sich vergewissern, dass der beschleunigte Netzwerkbetrieb aktiviert ist, indem Sie den Anweisungen unter [Bestätigen der Aktivierung des beschleunigten Netzwerkbetriebs](#confirm-that-accelerated-networking-is-enabled) folgen.
 
@@ -174,7 +177,7 @@ Eine Liste aller VM-Größen und -Eigenschaften finden Sie unter [Größen für 
 
 Nachdem die VM erstellt wurde, wird eine ähnliche Ausgabe wie die folgende Beispielausgabe zurückgegeben. Notieren Sie sich **publicIpAddress**. Diese Adresse wird später verwendet, um auf die VM zuzugreifen.
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -205,7 +208,7 @@ Geben Sie in der Bash-Shell `uname -r` ein, und vergewissern Sie sich, dass es s
 
 Vergewissern Sie sich, dass mithilfe des Befehls `lspci` das Mellanox VF-Gerät für die VM verfügbar gemacht wurde. Die zurückgegebene Ausgabe sieht in etwa wie folgt aus:
 
-```bash
+```output
 0000:00:00.0 Host bridge: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX Host bridge (AGP disabled) (rev 03)
 0000:00:07.0 ISA bridge: Intel Corporation 82371AB/EB/MB PIIX4 ISA (rev 01)
 0000:00:07.1 IDE interface: Intel Corporation 82371AB/EB/MB PIIX4 IDE (rev 01)
@@ -216,7 +219,7 @@ Vergewissern Sie sich, dass mithilfe des Befehls `lspci` das Mellanox VF-Gerät 
 
 Suchen Sie mithilfe des Befehl `ethtool -S eth0 | grep vf_` nach der Aktivität für die VF (virtuelle Funktion). Wenn Sie eine Ausgabe ähnlich wie die folgende Beispielausgabe erhalten, ist der beschleunigte Netzwerkbetrieb aktiviert und funktioniert.
 
-```bash
+```output
 vf_rx_packets: 992956
 vf_rx_bytes: 2749784180
 vf_tx_packets: 2656684

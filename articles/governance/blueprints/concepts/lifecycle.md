@@ -1,23 +1,18 @@
 ---
 title: Grundlegendes zum Lebenszyklus einer Blaupause
-description: Erfahren Sie mehr über den Lebenszyklus einer Blaupause und Details zu jeder einzelnen Phase.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 07/30/2019
+description: Erfahren Sie mehr über den Lebenszyklus einer Blaupausendefinition und die Details zu den einzelnen Phasen, einschließlich dem Aktualisieren und Entfernen von Blaupausenzuweisungen.
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 6112f6f2834f02cec970af886360844c5314150d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: c1de2cf869362154b112c3eef74ed1fb0db3a993
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678988"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89049705"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Grundlegendes zum Lebenszyklus von Azure Blueprints
 
-Wie viele Ressourcen in Azure weist eine Blaupause in Azure Blueprints einen typischen und natürlichen Lebenszyklus auf. Sie werden erstellt, bereitgestellt und schließlich gelöscht, wenn sie nicht mehr benötigt werden oder nicht mehr von Relevanz sind.
-Blueprints unterstützt Vorgänge für Standardlebenszyklen. Auf deren Grundlage werden dann zusätzliche Statusebenen bereitgestellt, die allgemeine Continuous Integration- und Continuous Deployment-Pipelines für Organisationen unterstützen, die ihre Infrastruktur als Code verwalten – ein zentraler Aspekt von DevOps.
+Wie viele Ressourcen in Azure weist eine Blaupause in Azure Blueprints einen typischen und natürlichen Lebenszyklus auf. Sie werden erstellt, bereitgestellt und schließlich gelöscht, wenn sie nicht mehr benötigt werden oder nicht mehr von Relevanz sind. Azure Blueprints unterstützt Vorgänge für Standardlebenszyklen. Auf deren Grundlage werden dann zusätzliche Statusebenen bereitgestellt, die allgemeine Continuous Integration- und Continuous Deployment-Pipelines für Organisationen unterstützen, die ihre Infrastruktur als Code verwalten – ein zentraler Aspekt von DevOps.
 
 Um einen Überblick über Blaupausen und ihre einzelnen Phasen zu vermitteln, wird ein Standardlebenszyklus vorgestellt:
 
@@ -39,8 +34,7 @@ Erstellen und bearbeiten Sie eine Blaupause mit dem [Azure-Portal](../create-blu
 
 ## <a name="publishing-a-blueprint"></a>Veröffentlichen einer Blaupause
 
-Nachdem Sie alle geplanten Änderungen an einer Blaupause im Modus **Entwurf** vorgenommen haben, kann sie **veröffentlicht** und für die Zuweisung verfügbar gemacht werden. Die Blaupausenversion mit dem Modus **Veröffentlicht** kann nicht geändert werden.
-Einmal **veröffentlicht**, wird die Blaupause mit einem anderen Symbol als Blaupausen im Modus **Entwurf** angezeigt. Die Versionsnummer wird in der Spalte **Neueste Version** angezeigt.
+Nachdem Sie alle geplanten Änderungen an einer Blaupause im Modus **Entwurf** vorgenommen haben, kann sie **veröffentlicht** und für die Zuweisung verfügbar gemacht werden. Die Blaupausenversion mit dem Modus **Veröffentlicht** kann nicht geändert werden. Einmal **veröffentlicht**, wird die Blaupause mit einem anderen Symbol als Blaupausen im Modus **Entwurf** angezeigt. Die Versionsnummer wird in der Spalte **Neueste Version** angezeigt.
 
 Veröffentlichen Sie eine Blaupause mit dem [Azure-Portal](../create-blueprint-portal.md#publish-a-blueprint) oder der [REST-API](../create-blueprint-rest-api.md#publish-a-blueprint).
 
@@ -83,18 +77,18 @@ Die Hauptblaupause kann ebenfalls gelöscht werden. Wenn Sie die zentrale Blaupa
 
 Löschen Sie eine Blaupause mit dem [Azure-Portal](../create-blueprint-portal.md#delete-a-blueprint) oder der [REST-API](../create-blueprint-rest-api.md#delete-a-blueprint).
 
-## <a name="assignments"></a>Arbeitsaufträge
+## <a name="assignments"></a>Zuweisungen
 
 Es gibt mehrere Punkte im Lebenszyklus, an denen einem Abonnement eine Blaupause zugewiesen werden kann. Wenn sich eine Blaupausenversion im Modus **Veröffentlicht** befindet, kann diese Version einem Abonnement zugewiesen werden. Dank dieses Lebenszyklus können Versionen einer Blaupause verwendet und aktiv zugewiesen werden, während eine neuere Version entwickelt wird.
 
-Wenn Blaupausenversionen zugewiesen werden, sollte unbedingt beachtet werden, welchen Elementen sie zugewiesen werden und welche Parameter ihnen zugewiesen wurden. Die Parameter können entweder statisch oder dynamisch sein. Weitere Informationen finden Sie im Artikel zu [statischen und dynamischen Parametern](parameters.md).
+Wenn Blaupausenversionen zugewiesen werden, sollte unbedingt beachtet werden, welchen Elementen sie zugewiesen werden und welche Parameter ihnen zugewiesen wurden. Die Parameter können entweder statisch oder dynamisch sein. Weitere Informationen finden Sie im Artikel zu [statischen und dynamischen Parametern](./parameters.md).
 
 ### <a name="updating-assignments"></a>Aktualisieren von Zuweisungen
 
 Wenn eine Blaupause zugewiesen ist, kann die Zuweisung aktualisiert werden. Es gibt verschiedene Gründe für das Aktualisieren einer vorhandenen Zuweisung:
 
-- Hinzufügen oder Entfernen einer [Ressourcensperre](resource-locking.md)
-- Ändern des Wertes von [dynamischen Parametern](parameters.md#dynamic-parameters)
+- Hinzufügen oder Entfernen einer [Ressourcensperre](./resource-locking.md)
+- Ändern des Wertes von [dynamischen Parametern](./parameters.md#dynamic-parameters)
 - Durchführen eines Upgrades auf eine neuere Blaupausenversion mit dem Status **Veröffentlicht**
 
 Erfahren Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
@@ -103,7 +97,7 @@ Erfahren Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-ex
 
 Wenn die Blaupause nicht mehr benötigt wird, kann ihre Zuweisung in der Verwaltungsgruppe oder dem Abonnement aufgehoben werden. Bei der Aufhebung der Blaupausenzuweisung wird Folgendes durchgeführt:
 
-- Entfernen der [Ressourcensperre der Blaupause](resource-locking.md)
+- Entfernen der [Ressourcensperre der Blaupause](./resource-locking.md)
 - Löschen des Blaupausenzuweisungsobjekts
 - (Bedingt:) Wenn eine **vom System zugewiesene verwaltete Identität** verwendet wurde, wird sie ebenfalls gelöscht.
 
@@ -112,8 +106,8 @@ Wenn die Blaupause nicht mehr benötigt wird, kann ihre Zuweisung in der Verwalt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](parameters.md) vertraut.
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](sequencing-order.md) anpassen können.
-- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](resource-locking.md) können.
+- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](./parameters.md) vertraut.
+- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](./sequencing-order.md) anpassen können.
+- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](./resource-locking.md) können.
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
 - Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).

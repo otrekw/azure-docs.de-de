@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen des Containernetzwerks mit Azure Virtual Network | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie das CNI-Plug-In (Container Network Interface) von Azure Virtual Network für Kubernetes-Cluster, die Sie selbst oder mithilfe von AKS-Engine bereitstellen, und für Docker-Container bereitstellen.
+description: Erfahren Sie, wie Sie das CNI-Plug-In (Container Network Interface) von Azure Virtual Network für Kubernetes-Cluster bereitstellen.
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -10,18 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 657c23ad410d7aade17b3153f02ba0138edf4250
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104096"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87289582"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Bereitstellen des Container Network Interface-Plug-Ins von Azure Virtual Network
 
@@ -159,17 +159,17 @@ Die CNI-Netzwerkkonfigurationsdatei wird im JSON-Format beschrieben. Sie ist unt
 
 - **cniVersion**: Das CNI-Plug-In von Azure Virtual Network unterstützt Version 0.3.0 und 0.3.1 der  [CNI-Spezifikation](https://github.com/containernetworking/cni/blob/master/SPEC.md).
 - **name:** Name des Netzwerks. Diese Eigenschaft kann auf einen beliebigen eindeutigen Wert festgelegt werden.
-- **Typ**: Name des Netzwerk-Plug-Ins. Legen Sie diese Eigenschaft auf  *azure-vnet* fest.
+- **Typ**: Name des Netzwerk-Plug-Ins. Legen Sie diese Eigenschaft auf *azure-vnet* fest.
 - **mode**: Betriebsmodus. Dieses Feld ist optional. Es wird lediglich der Modus „bridge“ unterstützt. Weitere Informationen finden Sie unter  [Operational Modes](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md) (Betriebsmodi).
 - **bridge**: Name der Brücke, über die Container mit einem virtuellen Netzwerk verbunden werden. Dieses Feld ist optional. Wenn kein Wert angegeben ist, wählt das Plug-In basierend auf dem Index der Masterschnittstelle automatisch einen eindeutigen Namen aus.
-- **ipam type**: Name des IPAM-Plug-Ins. Legen Sie diese Eigenschaft immer auf  *azure-vnet-ipam* fest.
+- **ipam type**: Name des IPAM-Plug-Ins. Legen Sie diese Eigenschaft immer auf *azure-vnet-ipam* fest.
 
 ## <a name="download-and-install-the-plug-in"></a>Herunterladen und Installieren des Plug-Ins
 
 Laden Sie das Plug-In von [GitHub](https://github.com/Azure/azure-container-networking/releases) herunter. Laden Sie die neueste Version für die verwendete Plattform herunter:
 
-- **Linux:** [azure-vnet-cni-linux-amd64-\<Versionsnr.\>.tgz](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-linux-amd64-v1.0.12-rc3.tgz)
-- **Windows:** [azure-vnet-cni-windows-amd64-\<Versionsnr.\>.zip](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-windows-amd64-v1.0.12-rc3.zip)
+- **Linux**: [azure-vnet-cni-linux-amd64-\<version no.\>.tgz](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-linux-amd64-v1.0.12-rc3.tgz)
+- **Windows**: [azure-vnet-cni-windows-amd64-\<version no.\>.zip](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-windows-amd64-v1.0.12-rc3.zip)
 
 Kopieren Sie das Installationsskript für [Linux](https://github.com/Azure/azure-container-networking/blob/master/scripts/install-cni-plugin.sh) oder [Windows](https://github.com/Azure/azure-container-networking/blob/master/scripts/Install-CniPlugin.ps1) auf Ihren Computer. Speichern Sie das Skript in einem Verzeichnis mit dem Namen `scripts` auf dem Computer, und geben Sie der Datei unter Linux den Namen `install-cni-plugin.sh` und unter Windows den Namen `install-cni-plugin.ps1`. Führen Sie zum Installieren des Plug-Ins das der verwendeten Plattform entsprechende Skript aus, und geben Sie dabei die Version des verwendeten Plug-Ins an. Sie können beispielsweise *v1.0.12-rc3* angeben:
 

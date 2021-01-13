@@ -4,8 +4,6 @@ description: Azure PowerShell-Skriptbeispiel – Verwalten des Webdatenverkehrs 
 services: application-gateway
 documentationcenter: networking
 author: vhorne
-manager: jpconnock
-editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: sample
@@ -13,13 +11,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: b9b34f124d1260fe17d1f43c6e97f20fd116c5f8
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: a4f1961f9c7d79a95a0e8f4cc3fc18bdeac2f36f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65202835"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89078706"
 ---
 # <a name="manage-web-traffic-with-azure-powershell"></a>Verwalten von Webdatenverkehr mithilfe von Azure PowerShell
 
@@ -69,6 +67,6 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche PowerShell-Skriptbeispiele zu Anwendungsgateways finden Sie in der [Dokumentation zu Azure Application Gateway](../powershell-samples.md).

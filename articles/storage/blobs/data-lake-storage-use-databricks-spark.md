@@ -1,21 +1,22 @@
 ---
-title: 'Tutorial: Zugreifen auf Azure-Daten vom Typ „Data Lake Storage Gen2“ mit Azure Databricks unter Verwendung von Spark | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Data Lake Storage Gen2, Azure Databricks und Spark | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie Spark-Abfragen in einem Azure Databricks-Cluster ausführen, um auf Daten in einem Azure-Speicherkonto vom Typ „Data Lake Storage Gen2“ zuzugreifen.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 66394600963cf154b3cb1fe661968f4ded2ec225
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: devx-track-python
+ms.openlocfilehash: 5fce5871b4bd6c3e2353f7df04018e88b86ec4c7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992264"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912517"
 ---
-# <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Tutorial: Zugreifen auf Daten vom Typ „Data Lake Storage Gen2“ mit Azure Databricks unter Verwendung von Spark
+# <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Tutorial: Azure Data Lake Storage Gen2, Azure Databricks und Spark
 
 In diesem Tutorial erfahren Sie, wie Sie Ihren Azure Databricks-Cluster mit Daten in einem Azure-Speicherkonto verbinden, für das Azure Data Lake Storage Gen2 aktiviert ist. Diese Verbindung ermöglicht die native Ausführung von Datenabfragen und -analysen über Ihren Cluster.
 
@@ -32,22 +33,22 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 * Erstellen Sie ein Azure Data Lake Storage Gen2-Konto.
 
-  Siehe [Erstellen eines Azure-Kontos vom Typ „Data Lake Storage Gen2“](data-lake-storage-quickstart-create-account.md).
+  Lesen Sie die Informationen unter [Erstellen eines Speicherkontos für die Verwendung mit Azure Data Lake Storage Gen2](create-data-lake-storage-account.md).
 
-* Vergewissern Sie sich, dass Ihrem Benutzerkonto die Rolle [Mitwirkender an Storage-Blobdaten](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) zugewiesen ist.
+* Vergewissern Sie sich, dass Ihrem Benutzerkonto die Rolle [Mitwirkender an Storage-Blobdaten](../common/storage-auth-aad-rbac-portal.md) zugewiesen ist.
 
-* Installieren Sie AzCopy v10. Weitere Informationen finden Sie unter [Übertragen von Daten mit AzCopy v10 (Vorschau)](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+* Installieren Sie AzCopy v10. Weitere Informationen finden Sie unter [Übertragen von Daten mit AzCopy v10 (Vorschau)](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-* Erstellen eines Dienstprinzipals Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Erstellen eines Dienstprinzipals Unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   Bei den Schritten in diesem Artikel müssen einige bestimmte Aktionen ausgeführt werden.
 
-  :heavy_check_mark: Achten Sie beim Ausführen der Schritte im Abschnitt [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) des Artikels darauf, dem Dienstprinzipal die Rolle **Mitwirkender an Storage-Blobdaten** zuzuweisen.
+  :heavy_check_mark: Achten Sie beim Ausführen der Schritte im Abschnitt [Zuweisen der Anwendung zu einer Rolle](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) des Artikels darauf, dem Dienstprinzipal die Rolle **Mitwirkender an Storage-Blobdaten** zuzuweisen.
 
   > [!IMPORTANT]
   > Achten Sie darauf, die Rolle im Kontext des Data Lake Storage Gen2-Kontos zuzuweisen. Sie können eine Rolle der übergeordneten Ressourcengruppe oder dem übergeordneten Abonnement zuweisen. In diesem Fall tritt jedoch ein Berechtigungsfehler auf, bis die Rollenzuweisungen an das Speicherkonto weitergegeben wurden.
 
-  :heavy_check_mark: Fügen Sie beim Ausführen der Schritte im Abschnitt [Abrufen von Werten für die Anmeldung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) des Artikels die Werte für Mandanten-ID, App-ID und Kennwort in eine Textdatei ein. Sie benötigen sie in Kürze.
+  :heavy_check_mark: Fügen Sie beim Ausführen der Schritte im Abschnitt [Abrufen von Werten für die Anmeldung](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) des Artikels die Werte für Mandanten-ID, App-ID und Clientgeheimnis in eine Textdatei ein. Sie benötigen sie in Kürze.
 
 ### <a name="download-the-flight-data"></a>Herunterladen der Flugdaten
 
@@ -75,7 +76,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Dienst über das Azure-
     |---------|---------|
     |**Arbeitsbereichsname**     | Geben Sie einen Namen für Ihren Databricks-Arbeitsbereich an.  |
     |**Abonnement**     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |
-    |**Ressourcengruppe**     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). |
+    |**Ressourcengruppe**     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md). |
     |**Location**     | Wählen Sie **USA, Westen 2** aus. Informationen zu weiteren verfügbaren Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).       |
     |**Tarif**     |  Wählen Sie **Standard** aus.     |
 
@@ -95,17 +96,15 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Dienst über das Azure-
 
 3. Geben Sie auf der Seite **Neuer Cluster** die erforderlichen Werte an, um einen Cluster zu erstellen.
 
-    ![Erstellen eines Databricks-Spark-Clusters in Azure](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Erstellen eines Databricks-Spark-Clusters in Azure")
+    ![Erstellen eines Databricks Spark-Clusters in Azure](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Erstellen eines Databricks Spark-Clusters in Azure")
 
-4. Geben Sie Werte für die folgenden Felder an, und übernehmen Sie bei den anderen Feldern die Standardwerte:
+    Geben Sie Werte für die folgenden Felder an, und übernehmen Sie bei den anderen Feldern die Standardwerte:
 
-    * Geben Sie einen Namen für den Cluster ein.
+    - Geben Sie einen Namen für den Cluster ein.
+     
+    - Aktivieren Sie das Kontrollkästchen **Terminate after 120 minutes of inactivity** (Nach 120 Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
 
-    * Erstellen Sie für diesen Artikel einen Cluster mit der Runtime **5.1**.
-
-    * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden). Falls der Cluster nicht verwendet wird, geben Sie an, nach wie vielen Minuten er beendet werden soll.
-
-    * Klicken Sie auf **Cluster erstellen**. Wenn der Cluster ausgeführt wird, können Sie Notebooks an den Cluster anfügen und Spark-Aufträge ausführen.
+4. Klicken Sie auf **Cluster erstellen**. Wenn der Cluster ausgeführt wird, können Sie Notebooks an den Cluster anfügen und Spark-Aufträge ausführen.
 
 ## <a name="ingest-data"></a>Erfassen von Daten
 
@@ -131,7 +130,7 @@ Kopieren Sie mithilfe von AzCopy Daten aus Ihrer *CSV*-Datei in Ihr Data Lake St
 
    * Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
-   * Ersetzen Sie den Platzhalter `<container-name>` durch einen beliebigen Namen, den Sie für Ihren Container verwenden möchten.
+   * Ersetzen Sie den Platzhalter `<container-name>` durch den Namen eines Containers in Ihrem Speicherkonto.
 
 ## <a name="create-a-container-and-mount-it"></a>Erstellen und Einbinden eines Containers
 
@@ -153,7 +152,7 @@ In diesem Abschnitt erstellen Sie einen Container und einen Ordner in Ihrem Spei
     configs = {"fs.azure.account.auth.type": "OAuth",
            "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
            "fs.azure.account.oauth2.client.id": "<appId>",
-           "fs.azure.account.oauth2.client.secret": "<password>",
+           "fs.azure.account.oauth2.client.secret": "<clientSecret>",
            "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant>/oauth2/token",
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
@@ -163,20 +162,7 @@ In diesem Abschnitt erstellen Sie einen Container und einen Ordner in Ihrem Spei
     extra_configs = configs)
     ```
 
-18. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `appId`, `password`, `tenant` und `storage-account-name` durch die Werte, die Sie bei der Vorbereitung dieses Tutorials gesammelt haben. Ersetzen Sie den Platzhalterwert `container-name` durch den Namen, den Sie dem Container im vorherigen Schritt gegeben haben.
-
-Verwenden Sie die nachstehenden Werte zum Ersetzen der genannten Platzhalter.
-
-   * `appId` und `password` stammen aus der App, die Sie im Rahmen der Dienstprinzipalerstellung bei Active Directory registriert haben.
-
-   * `tenant-id` stammt aus Ihrem Abonnement.
-
-   * `storage-account-name` ist der Name Ihres Azure Data Lake Storage Gen2-Speicherkontos.
-
-   * Ersetzen Sie den Platzhalter `container-name` durch einen beliebigen Namen, den Sie für Ihren Container verwenden möchten.
-
-   > [!NOTE]
-   > In einer Produktionsumgebung empfiehlt es sich, Ihr Kennwort in Azure Databricks zu speichern. Fügen Sie dem Codeblock dann einen Suchschlüssel anstelle des Kennworts hinzu. Sehen Sie sich nach Abschluss dieses Schnellstarts die Beispiele für diesen Ansatz im Artikel [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) auf der Azure Databricks-Website an.
+18. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `appId`, `clientSecret`, `tenant` und `storage-account-name` durch die Werte, die Sie bei der Vorbereitung dieses Tutorials gesammelt haben. Ersetzen Sie den Platzhalterwert `container-name` durch den Namen des Containers.
 
 19. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
 
@@ -198,7 +184,7 @@ flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
 print("Done")
 ```
 
-## <a name="explore-data"></a>Erkunden von Daten
+## <a name="explore-data"></a>Durchsuchen von Daten
 
 Fügen Sie in einer neuen Zelle den folgenden Code ein, um eine Liste mit CSV-Dateien abzurufen, die per AzCopy hochgeladen wurden.
 
@@ -218,7 +204,7 @@ dbutils.fs.ls("/mnt/flightdata/parquet/flights")
 
 Anhand dieser Codebeispiele haben Sie die hierarchische Struktur von HDFS unter Verwendung von Daten untersucht, die in einem Speicherkonto gespeichert sind, für das Azure Data Lake Storage Gen2 aktiviert ist.
 
-## <a name="query-the-data"></a>Abfragen von Daten
+## <a name="query-the-data"></a>Abfragen der Daten
 
 Als Nächstes können Sie damit beginnen, die Daten abzufragen, die Sie in Ihr Speicherkonto hochgeladen haben. Geben Sie die folgenden Codeblöcke unter **Cmd 1** ein, und drücken Sie **CMD+EINGABE**, um das Python-Skript auszuführen.
 

@@ -1,26 +1,20 @@
 ---
-title: Ändern einer Azure-VM-Skalierungsgruppe | Microsoft-Dokumentation
+title: Ändern einer Azure-VM-Skalierungsgruppe
 description: Erfahren Sie, wie Sie eine Azure-VM-Skalierungsgruppe mit den REST-APIs, Azure PowerShell und der Azure CLI ändern und aktualisieren.
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
-ms.author: manayar
-ms.openlocfilehash: 71899a9d6782c4700c287458c85ec83bd1516a4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: management
+ms.date: 03/10/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: c255a3d68b1a24e25c1c0e308faa3fd364a15861
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803134"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358740"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Ändern einer VM-Skalierungsgruppe
 
@@ -318,7 +312,7 @@ Um vorhandene virtuelle Computer zu aktualisieren, müssen Sie für jeden virtue
 >[!NOTE]
 > Für Service Fabric-Cluster kann nur der Modus *Automatisch* verwendet werden, das Update wird jedoch anders gehandhabt. Weitere Informationen finden Sie unter [Service Fabric-Anwendungsupgrades](../service-fabric/service-fabric-application-upgrade.md).
 
-Eine der Änderungen, die an globalen Skalierungsgruppeneigenschaften vorgenommen werden, entspricht nicht der Upgraderichtlinie. Änderungen am Skalierungsgruppen-Betriebssystemprofil (z.B. Administratorbenutzername und -kennwort) können nur in API-Versionen ab *2017-12-01* geändert werden. Diese Änderungen gelten nur für virtuelle Computer, die nach der Änderung im Skalierungsgruppenmodell erstellt wurden. Um vorhandene virtuelle Computer zu aktualisieren, müssen Sie ein Reimaging aller vorhandenen virtuellen Computer durchführen. Für dieses Reimaging können Sie Folgendes verwenden:
+Eine der Änderungen, die an globalen Skalierungsgruppeneigenschaften vorgenommen werden, entspricht nicht der Upgraderichtlinie. Änderungen am Betriebssystem- und Datenträgerprofil von Skalierungsgruppen (z. B. Administratorbenutzername und -kennwort) können nur in API-Versionen ab *2017-12-01* geändert werden. Diese Änderungen gelten nur für virtuelle Computer, die nach der Änderung im Skalierungsgruppenmodell erstellt wurden. Um vorhandene virtuelle Computer zu aktualisieren, müssen Sie ein Reimaging aller vorhandenen virtuellen Computer durchführen. Für dieses Reimaging können Sie Folgendes verwenden:
 
 - REST-API mit [compute/virtualmachinescalesets/reimage](/rest/api/compute/virtualmachinescalesets/reimage) wie folgt:
 
@@ -326,13 +320,13 @@ Eine der Änderungen, die an globalen Skalierungsgruppeneigenschaften vorgenomme
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/reimage?api-version={apiVersion}
     ```
 
-- Azure PowerShell mit [Set-AzVmssVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm):
+- Azure PowerShell mit [Set-AzVmssVm](/powershell/module/az.compute/set-azvmssvm):
 
     ```powershell
     Set-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
     ```
 
-- Azure CLI mit [az vmss reimage](https://docs.microsoft.com/cli/azure/vmss):
+- Azure CLI mit [az vmss reimage](/cli/azure/vmss):
 
     ```azurecli
     az vmss reimage --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -356,12 +350,12 @@ Einige Eigenschaften können mit Ausnahmen je nach aktuellem Wert geändert werd
 
 - **singlePlacementGroup:** Wenn für singlePlacementGroup die Option „true“ festgelegt ist, kann diese in „false“ geändert werden. Wenn für „singlePlacementGroup“ jedoch „false“ festgelegt ist, kann die Einstellung **nicht** in „true“ geändert werden.
 - **Subnetz:** Das Subnetz einer Skalierungsgruppe kann geändert werden, solange sich das ursprüngliche und das neue Subnetz im selben virtuellen Netzwerk befinden.
+- **imageReferenceSku:** Imageverweis-SKU kann für unterstützte [Linux-Distributionen](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros), Server-/Clientimages unter Windows und Images ohne [Planinformationen](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage#view-plan-properties) aktualisiert werden. 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>Eigenschaften, für die zur Änderung die Aufhebung der Zuordnung erforderlich ist
 Einige Eigenschaften können nur in bestimmte Werte geändert werden, wenn die Zuordnung der virtuellen Computer in der Skalierungsgruppe aufgehoben wird. Zu diesen Eigenschaften zählen folgende:
 
-- **SKU-Name:** Wird die neue VM-SKU auf der Hardware, auf der sich die Skalierungsgruppe derzeit befindet, nicht unterstützt, müssen Sie die Zuordnung der virtuellen Computer in der Skalierungsgruppe aufheben, bevor Sie den SKU-Namen ändern. Weitere Informationen finden Sie unter [Ändern der Größe einer Azure-VM](../virtual-machines/windows/resize-vm.md).
-
+- **SKU-Name:** Wird die neue VM-SKU auf der Hardware, auf der sich die Skalierungsgruppe derzeit befindet, nicht unterstützt, müssen Sie die Zuordnung der virtuellen Computer in der Skalierungsgruppe aufheben, bevor Sie den SKU-Namen ändern. Weitere Informationen finden Sie unter [Ändern der Größe einer Azure-VM](../virtual-machines/windows/resize-vm.md). 
 
 ## <a name="vm-specific-updates"></a>VM-spezifische Updates
 Bestimmte Änderungen können statt auf die globalen Skalierungsgruppeneigenschaften auf spezifische virtuelle Computer angewendet werden. Derzeit wird als VM-spezifische Aktualisierung nur das Anfügen von Datenträgern an virtuelle Computer in der Skalierungsgruppe bzw. das Trennen dieser Datenträger unterstützt. Dieses Feature befindet sich in der Vorschauphase. Weitere Informationen finden Sie in der [Vorschaudokumentation](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).
@@ -375,12 +369,12 @@ Wenn eine Anwendung über Erweiterungen in einer Skalierungsgruppe bereitgestell
 Anwendungen werden häufig auch über ein benutzerdefiniertes Image bereitgestellt. Dieses Szenario wird im folgenden Abschnitt behandelt.
 
 ### <a name="os-updates"></a>Betriebssystemupdates
-Bei Verwendung von Azure-Plattformimages können Sie das Image durch Ändern von *imageReference* aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate).)
+Bei Verwendung von Azure-Plattformimages können Sie das Image durch Ändern von *imageReference* aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](/rest/api/compute/virtualmachinescalesets/createorupdate).)
 
 >[!NOTE]
 > Bei Plattformimages wird als Imagereferenzversion häufig „aktuelle Version“ angegeben. Beim Erstellen, horizontalen Hochskalieren und Durchführen eines Reimagings werden die virtuellen Computer mit der neuesten verfügbaren Version erstellt. Das bedeutet jedoch **nicht**, dass das Betriebssystemimage im Lauf der Zeit automatisch aktualisiert wird, wenn neue Imageversionen veröffentlicht werden. Es befindet sich derzeit ein separates Feature in der Vorschau, das automatische Betriebssystemupgrades bereitstellt. Weitere Informationen finden Sie in der [Dokumentation zu automatischen Betriebssystemupgrades](virtual-machine-scale-sets-automatic-upgrade.md).
 
-Bei Verwendung von benutzerdefinierten Images können Sie das Image durch Aktualisieren der *imageReference*-ID aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate).)
+Bei Verwendung von benutzerdefinierten Images können Sie das Image durch Aktualisieren der *imageReference*-ID aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](/rest/api/compute/virtualmachinescalesets/createorupdate).)
 
 ## <a name="examples"></a>Beispiele
 
@@ -439,7 +433,7 @@ Angenommen, Sie besitzen eine Skalierungsgruppe mit Azure Load Balancer und möc
     Update-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -virtualMachineScaleSet $vmss
     ```
 
-- Azure-Befehlszeilenschnittstelle:
+- Azure CLI:
 
     ```azurecli
     # Remove the load balancer backend pool from the scale set model

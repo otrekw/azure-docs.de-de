@@ -1,25 +1,30 @@
 ---
 title: 'Schnellstart: Vorschlagen von Suchabfragen mit der Bing-Vorschlagssuche-REST-API und Ruby'
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie schnell loslegen und mit der Bing-Vorschlagssuche-API Suchbegriffe in Echtzeit vorschlagen können.
+description: Hier erfahren Sie, wie Sie schnell loslegen und mit der Bing-Vorschlagssuche-API und Ruby Suchbegriffe in Echtzeit vorschlagen können.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: b395c9202ce6d67b76bc0dc6e203a0db275b4fa1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: abd0c842985bbfe957f8d6bec344209d52ce6b12
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565782"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338689"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Schnellstart: Vorschlagen von Suchabfragen mit der Bing-Vorschlagssuche-REST-API und Ruby
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-API aufrufen und die JSON-Antwort erhalten. Diese einfache Ruby-Anwendung sendet eine partielle Suchabfrage an die API und gibt Suchvorschläge zurück. Diese Anwendung ist zwar in Ruby geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-API aufrufen und die JSON-Antwort lesen. Diese einfache Ruby-Anwendung sendet eine partielle Suchabfrage an die API und gibt Suchvorschläge zurück. Diese Anwendung ist zwar in Ruby geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -38,7 +43,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-A
     require 'json'
     ```
 
-2. Erstellen Sie Variablen für Ihren API-Host und -Pfad, Ihren [Marktcode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine partielle Suchabfrage.
+2. Erstellen Sie Variablen für Ihren API-Host und -Pfad, Ihren [Marktcode](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und die partielle Suchabfrage. Verwenden Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md), der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```ruby
     subscriptionKey = 'enter your key here'
@@ -48,7 +53,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-A
     query = 'sail'
     ```
 
-3. Erstellen Sie eine Parameterzeichenfolge, indem Sie Ihren Marktcode an den Parameter `?mkt=` und Ihre Abfrage an den Parameter `&q=` anfügen. Erstellen Sie dann Ihren Anforderungs-URI, indem Sie den API-Host und -Pfad mit der Parameterzeichenfolge kombinieren.
+3. Erstellen Sie eine Parameterzeichenfolge, indem Sie Ihren Marktcode an den Parameter `mkt=` und Ihre Abfrage an den Parameter `q=` anfügen. Erstellen Sie dann Ihren Anforderungs-URI, indem Sie den API-Host und -Pfad mit der Parameterzeichenfolge kombinieren.
 
     ```ruby
     params = '?mkt=' + mkt + '&q=' + query
@@ -154,4 +159,4 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Worum handelt es sich bei der Bing-Vorschlagssuche?](../get-suggested-search-terms.md)
-- [Referenz für die Bing-Vorschlagssuche-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Referenz für die Bing-Vorschlagssuche-API V7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

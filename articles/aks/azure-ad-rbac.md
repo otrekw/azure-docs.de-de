@@ -1,22 +1,20 @@
 ---
-title: Steuern von Clusterressourcen per RBAC und Azure AD in Azure Kubernetes Service
-description: Es wird beschrieben, wie Sie die Azure Active Directory-Gruppenmitgliedschaft verwenden, um den Zugriff auf Clusterressourcen per rollenbasierter Zugriffssteuerung (RBAC) in Azure Kubernetes Service (AKS) zu beschränken.
+title: Verwenden von Azure AD und Kubernetes RBAC für Cluster
+titleSuffix: Azure Kubernetes Service
+description: Es wird beschrieben, wie Sie die Azure Active Directory-Gruppenmitgliedschaft verwenden, um den Zugriff auf Clusterressourcen per rollenbasierter Zugriffssteuerung von Kubernetes (Kubernetes RBAC) in Azure Kubernetes Service (AKS) zu beschränken.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
-ms.date: 04/16/2019
-ms.author: mlearned
-ms.openlocfilehash: fba54fd23fefbe0029b9a809b23568490f05b23e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 07/21/2020
+ms.openlocfilehash: 89bf785a082ff479dcd824a773123fcd061dc22d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616163"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576110"
 ---
-# <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Steuern des Zugriffs auf Clusterressourcen per rollenbasierter Zugriffssteuerung und mit Azure Active Directory-Identitäten in Azure Kubernetes Service
+# <a name="control-access-to-cluster-resources-using-kubernetes-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Steuern des Zugriffs auf Clusterressourcen per rollenbasierter Zugriffssteuerung von Kubernetes und mit Azure Active Directory-Identitäten in Azure Kubernetes Service
 
-Azure Kubernetes Service (AKS) kann für die Verwendung von Azure Active Directory (AD) für die Benutzerauthentifizierung konfiguriert werden. In dieser Konfiguration melden Sie sich an einem AKS-Cluster über ein Azure AD-Authentifizierungstoken an. Sie können auch die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Kubernetes konfigurieren, um den Zugriff auf Clusterressourcen anhand der Identität oder Gruppenmitgliedschaft eines Benutzers zu beschränken.
+Azure Kubernetes Service (AKS) kann für die Verwendung von Azure Active Directory (AD) für die Benutzerauthentifizierung konfiguriert werden. In dieser Konfiguration melden Sie sich an einem AKS-Cluster über ein Azure AD-Authentifizierungstoken an. Sie können auch die rollenbasierte Zugriffssteuerung von Kubernetes (Kubernetes RBAC) konfigurieren, um den Zugriff auf Clusterressourcen anhand der Identität oder Gruppenmitgliedschaft eines Benutzers zu beschränken.
 
 In diesem Artikel wird veranschaulicht, wie Sie die Azure AD-Gruppenmitgliedschaft verwenden, um den Zugriff auf Namespaces und Clusterressourcen per Kubernetes RBAC in einem AKS-Cluster zu steuern. In Azure werden Beispielgruppen und -benutzer erstellt, und anschließend werden im AKS-Cluster Rollen und Rollenbindungen (RoleBindings) erstellt, um die entsprechenden Berechtigungen zum Erstellen und Anzeigen von Ressourcen zu gewähren.
 
@@ -24,7 +22,7 @@ In diesem Artikel wird veranschaulicht, wie Sie die Azure AD-Gruppenmitgliedscha
 
 In diesem Artikel wird davon ausgegangen, dass Sie über einen vorhandenen AKS-Cluster mit aktivierter Azure AD-Integration verfügen. Falls Sie einen AKS-Cluster benötigen, lesen Sie die Informationen unter [Integrieren von Azure Active Directory in AKS][azure-ad-aks-cli].
 
-Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
+Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="create-demo-groups-in-azure-ad"></a>Erstellen von Demogruppen in Azure AD
 
@@ -81,7 +79,7 @@ az role assignment create \
 
 ## <a name="create-demo-users-in-azure-ad"></a>Erstellen von Demobenutzern in Azure AD
 
-Nachdem wir in Azure AD zwei Beispielgruppen für Anwendungsentwickler und Websitezuverlässigkeits-Techniker erstellt haben, können wir jetzt zwei Beispielbenutzer erstellen. Um am Ende des Artikels die RBAC-Integration zu testen, melden Sie sich mit diesen Konten am AKS-Cluster an.
+Nachdem wir in Azure AD zwei Beispielgruppen für Anwendungsentwickler und Websitezuverlässigkeits-Techniker erstellt haben, können wir jetzt zwei Beispielbenutzer erstellen. Um am Ende des Artikels die Integration von Kubernetes RBAC zu testen, melden Sie sich mit diesen Konten am AKS-Cluster an.
 
 Erstellen Sie das erste Benutzerkonto in Azure AD mit dem Befehl [az ad user create][az-ad-user-create].
 
@@ -131,7 +129,7 @@ Erstellen Sie im AKS-Cluster einen Namespace, indem Sie den Befehl [kubectl crea
 kubectl create namespace dev
 ```
 
-In Kubernetes werden mit *Rollen* die zu gewährenden Berechtigungen definiert, und mit *RoleBindings* (Rollenbindungen) werden sie auf die gewünschten Benutzer bzw. Gruppen angewendet. Diese Zuweisungen können auf einen bestimmten Namespace oder im gesamten Cluster angewendet werden. Weitere Informationen finden Sie unter [Verwenden von RBAC-Autorisierung][rbac-authorization].
+In Kubernetes werden mit *Rollen* die zu gewährenden Berechtigungen definiert, und mit *RoleBindings* (Rollenbindungen) werden sie auf die gewünschten Benutzer bzw. Gruppen angewendet. Diese Zuweisungen können auf einen bestimmten Namespace oder im gesamten Cluster angewendet werden. Weitere Informationen finden Sie unter [Verwenden der Kubernetes RBAC-Autorisierung][rbac-authorization].
 
 Erstellen Sie zuerst eine Rolle für den Namespace *dev*. Mit dieser Rolle wird Vollzugriff auf den Namespace gewährt. In Produktionsumgebungen können Sie für unterschiedliche Benutzer oder Gruppen präzisere Berechtigungen angeben.
 
@@ -139,7 +137,7 @@ Erstellen Sie eine Datei mit dem Namen `role-dev-namespace.yaml`, und fügen Sie
 
 ```yaml
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: dev-user-full-access
   namespace: dev
@@ -170,7 +168,7 @@ Erstellen Sie nun ein RoleBinding-Element für die Gruppe *appdev*, um die zuvor
 
 ```yaml
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: dev-user-access
   namespace: dev
@@ -204,7 +202,7 @@ Erstellen Sie eine Datei mit dem Namen `role-sre-namespace.yaml`, und fügen Sie
 
 ```yaml
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: sre-user-full-access
   namespace: sre
@@ -235,7 +233,7 @@ Erstellen Sie ein RoleBinding-Element für die Gruppe *opssre*, um die zuvor ers
 
 ```yaml
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: sre-user-access
   namespace: sre
@@ -268,13 +266,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ov
 Planen Sie einen grundlegenden NGINX-Pod, indem Sie den Befehl [kubectl run][kubectl-run] im Namespace *dev* verwenden:
 
 ```console
-kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
+kubectl run nginx-dev --image=nginx --namespace dev
 ```
 
 Geben Sie an der Anmeldeaufforderung die Anmeldeinformationen für Ihr eigenes `appdev@contoso.com`-Konto ein, das Sie zu Beginn dieses Artikels erstellt haben. Nach der erfolgreichen Anmeldung wird das Kontotoken für weitere `kubectl`-Befehle zwischengespeichert. Die NGINX-Planung ist erfolgreich, wie die folgende Beispielausgabe zeigt:
 
 ```console
-$ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
+$ kubectl run nginx-dev --image=nginx --namespace dev
 
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code B24ZD6FP8 to authenticate.
 
@@ -315,7 +313,7 @@ Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cann
 Versuchen Sie auf die gleiche Weise, einen Pod in einem anderen Namespace zu planen, z. B. in *sre*. Die Gruppenmitgliedschaft des Benutzers wird nicht an einer Kubernetes-Rolle und einem RoleBinding-Element ausgerichtet, um diese Berechtigungen zu gewähren. Dies ist in der folgenden Beispielausgabe dargestellt:
 
 ```console
-$ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace sre
+$ kubectl run nginx-dev --image=nginx --namespace sre
 
 Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cannot create resource "pods" in API group "" in the namespace "sre"
 ```
@@ -333,14 +331,14 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ov
 Versuchen Sie, Pods im zugewiesenen Namespace *sre* zu planen und anzuzeigen. Melden Sie sich bei entsprechender Aufforderung mit Ihren eigenen `opssre@contoso.com`-Anmeldeinformationen an, die Sie zu Beginn dieses Artikels erstellt haben:
 
 ```console
-kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre
+kubectl run nginx-sre --image=nginx --namespace sre
 kubectl get pods --namespace sre
 ```
 
 Wie in der folgenden Beispielausgabe dargestellt, ist das Erstellen und Anzeigen der Pods erfolgreich:
 
 ```console
-$ kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre
+$ kubectl run nginx-sre --image=nginx --namespace sre
 
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BM4RHP3FD to authenticate.
 
@@ -356,7 +354,7 @@ Versuchen Sie nun, Pods außerhalb des zugewiesenen SRE-Namespace anzuzeigen bzw
 
 ```console
 kubectl get pods --all-namespaces
-kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace dev
+kubectl run nginx-sre --image=nginx --namespace dev
 ```
 
 Für diese `kubectl`-Befehle treten Fehler auf, wie in der folgenden Beispielausgabe zu sehen. Über die Gruppenmitgliedschaft des Benutzers und die Kubernetes-Rolle und RoleBindings werden keine Berechtigungen zum Erstellen oder Verwalten von Ressourcen in anderen Namespaces gewährt:
@@ -365,7 +363,7 @@ Für diese `kubectl`-Befehle treten Fehler auf, wie in der folgenden Beispielaus
 $ kubectl get pods --all-namespaces
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot list pods at the cluster scope
 
-$ kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace dev
+$ kubectl run nginx-sre --image=nginx --namespace dev
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot create pods in the namespace "dev"
 ```
 
@@ -412,5 +410,5 @@ Best Practices zur Identitäts- und Ressourcenkontrolle finden Sie unter [Best P
 [az-ad-user-create]: /cli/azure/ad/user#az-ad-user-create
 [az-ad-group-member-add]: /cli/azure/ad/group/member#az-ad-group-member-add
 [az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show
-[rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md

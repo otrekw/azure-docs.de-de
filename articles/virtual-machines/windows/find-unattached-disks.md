@@ -1,18 +1,18 @@
 ---
-title: Suchen und Löschen von nicht angefügten verwalteten und nicht verwalteten Azure-Datenträgern | Microsoft-Dokumentation
+title: Suchen und Löschen von nicht angefügten verwalteten und nicht verwalteten Azure-Datenträgern
 description: Informationen zum Suchen und Löschen von nicht angefügten verwalteten und nicht verwalteten Azure-Datenträgern (VHDs/Seitenblobs) über Azure PowerShell
 author: roygara
 ms.service: virtual-machines-windows
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0de0e68bb8419894386641c827bdbc40ed142d3f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 4f217a53c23df4f161207aaceb528680ddcddbe7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698686"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972797"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Suchen und Löschen von nicht angefügten verwalteten und nicht verwalteten Azure-Datenträgern
 
@@ -20,7 +20,7 @@ Beim Löschen eines virtuellen Computers (VM) in Azure werden standardmäßig Da
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>Verwaltete Datenträger: Suchen und Löschen nicht angefügter Datenträger
 
-Das folgende Skript sucht nach nicht angefügten [verwalteten Datenträgern](managed-disks-overview.md), indem es den Wert der **ManagedBy**-Eigenschaft untersucht. Wenn ein verwalteter Datenträger an einen virtuellen Computer angefügt ist, enthält die **ManagedBy**-Eigenschaft die Ressourcen-ID des virtuellen Computers. Wenn ein verwalteter Datenträger nicht angefügt ist, ist die **ManagedBy**-Eigenschaft NULL. Das Skript überprüft alle verwalteten Datenträger in einem Azure-Abonnement. Wenn das Skript einen verwalteten Datenträger findet, dessen **ManagedBy**-Eigenschaft den Wert NULL hat, legt das Skript fest, dass der Datenträger nicht angefügt ist.
+Das folgende Skript sucht nach nicht angefügten [verwalteten Datenträgern](../managed-disks-overview.md), indem es den Wert der **ManagedBy**-Eigenschaft untersucht. Wenn ein verwalteter Datenträger an einen virtuellen Computer angefügt ist, enthält die **ManagedBy**-Eigenschaft die Ressourcen-ID des virtuellen Computers. Wenn ein verwalteter Datenträger nicht angefügt ist, ist die **ManagedBy**-Eigenschaft NULL. Das Skript überprüft alle verwalteten Datenträger in einem Azure-Abonnement. Wenn das Skript einen verwalteten Datenträger findet, dessen **ManagedBy**-Eigenschaft den Wert NULL hat, legt das Skript fest, dass der Datenträger nicht angefügt ist.
 
 >[!IMPORTANT]
 >Führen Sie zunächst das Skript aus, indem Sie die **deleteUnattachedDisks**-Variable auf „0“ festlegen. Auf diese Weise können Sie alle nicht angefügten verwalteten Datenträger suchen und anzeigen.
@@ -49,17 +49,17 @@ foreach ($md in $managedDisks) {
 
 ## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Nicht verwaltete Datenträger: Suchen und Löschen nicht angefügter Datenträger
 
-Nicht verwaltete Datenträger sind VHD-Dateien, die als [Seitenblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) in [Azure Storage-Konten](../../storage/common/storage-create-storage-account.md) gespeichert sind. Das folgende Skript sucht nach nicht angefügten nicht verwalteten Datenträgern (Seitenblobs) durch Untersuchen des Werts der **LeaseStatus**-Eigenschaft. Wenn ein nicht verwalteter Datenträger an einen virtuellen Computer angefügt ist, weist die **LeaseStatus**-Eigenschaft den Wert **Locked** auf. Wenn ein nicht verwalteter Datenträger nicht angefügt ist, weist die **LeaseStatus**-Eigenschaft den Wert **Unlocked** auf. Das Skript überprüft alle nicht verwalteten Datenträger in allen Azure Storage-Konten in einem Azure-Abonnement. Wenn das Skript einen nicht verwalteten Datenträger findet, dessen **LeaseStatus**-Eigenschaft den Wert **Unlocked** hat, geht das Skript davon aus, dass der Datenträger nicht angefügt ist.
+Nicht verwaltete Datenträger sind VHD-Dateien, die als [Seitenblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) in [Azure Storage-Konten](../../storage/common/storage-account-overview.md) gespeichert sind. Das folgende Skript sucht nach nicht angefügten nicht verwalteten Datenträgern (Seitenblobs) durch Untersuchen des Werts der **LeaseStatus**-Eigenschaft. Wenn ein nicht verwalteter Datenträger an einen virtuellen Computer angefügt ist, weist die **LeaseStatus**-Eigenschaft den Wert **Locked** auf. Wenn ein nicht verwalteter Datenträger nicht angefügt ist, weist die **LeaseStatus**-Eigenschaft den Wert **Unlocked** auf. Das Skript überprüft alle nicht verwalteten Datenträger in allen Azure Storage-Konten in einem Azure-Abonnement. Wenn das Skript einen nicht verwalteten Datenträger findet, dessen **LeaseStatus**-Eigenschaft den Wert **Unlocked** hat, geht das Skript davon aus, dass der Datenträger nicht angefügt ist.
 
 >[!IMPORTANT]
->Führen Sie zunächst das Skript aus, indem Sie die **deleteUnattachedVHDs**-Variable auf „0“ festlegen. Auf diese Weise können Sie alle nicht angefügten nicht verwalteten VHDs suchen und anzeigen.
+>Führen Sie zunächst das Skript aus, indem Sie die **deleteUnattachedVHDs**-Variable auf `$false` festlegen. Auf diese Weise können Sie alle nicht angefügten nicht verwalteten VHDs suchen und anzeigen.
 >
->Nachdem Sie alle nicht angefügten Datenträger überprüft haben, führen Sie das Skript erneut aus, legen die **deleteUnattachedVHDs**-Variable dabei jedoch auf „1“ fest. Auf diese Weise können Sie alle nicht angefügten nicht verwalteten Datenträger löschen.
+>Nachdem Sie alle nicht angefügten Datenträger überprüft haben, führen Sie das Skript erneut aus, legen die **deleteUnattachedVHDs**-Variable dabei jedoch auf `$true` fest. Auf diese Weise können Sie alle nicht angefügten nicht verwalteten Datenträger löschen.
 
 ```azurepowershell-interactive
-# Set deleteUnattachedVHDs=1 if you want to delete unattached VHDs
-# Set deleteUnattachedVHDs=0 if you want to see the Uri of the unattached VHDs
-$deleteUnattachedVHDs=0
+# Set deleteUnattachedVHDs=$true if you want to delete unattached VHDs
+# Set deleteUnattachedVHDs=$false if you want to see the Uri of the unattached VHDs
+$deleteUnattachedVHDs=$false
 $storageAccounts = Get-AzStorageAccount
 foreach($storageAccount in $storageAccounts){
     $storageKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccount.ResourceGroupName -Name $storageAccount.StorageAccountName)[0].Value
@@ -71,7 +71,7 @@ foreach($storageAccount in $storageAccounts){
         $blobs | Where-Object {$_.BlobType -eq 'PageBlob' -and $_.Name.EndsWith('.vhd')} | ForEach-Object { 
             #If a Page blob is not attached as disk then LeaseStatus will be unlocked
             if($_.ICloudBlob.Properties.LeaseStatus -eq 'Unlocked'){
-                    if($deleteUnattachedVHDs -eq 1){
+                    if($deleteUnattachedVHDs){
                         Write-Host "Deleting unattached VHD with Uri: $($_.ICloudBlob.Uri.AbsoluteUri)"
                         $_ | Remove-AzStorageBlob -Force
                         Write-Host "Deleted unattached VHD with Uri: $($_.ICloudBlob.Uri.AbsoluteUri)"
@@ -87,4 +87,4 @@ foreach($storageAccount in $storageAccounts){
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Informationen zu Azure Storage-Konten](../../storage/common/storage-create-storage-account.md) und [Identifizieren verwaister Datenträger mit PowerShell](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/).
+Weitere Informationen finden Sie unter [Löschen von Speicherkonten](../../storage/common/storage-account-create.md#delete-a-storage-account) und [Identifizieren verwaister Datenträger mit PowerShell](/archive/blogs/ukplatforms/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell).

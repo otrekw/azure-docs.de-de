@@ -1,26 +1,29 @@
 ---
-title: Geocodierungsabdeckung in Azure Maps | Microsoft-Dokumentation
-description: Erfahren Sie mehr über Geocodierungsabdeckung in Azure Maps
-author: walsehgal
-ms.author: v-musehg
-ms.date: 03/22/2019
+title: Geocodierungsabdeckung im Microsoft Azure Maps-Suchdienst
+description: Sehen Sie, welche Regionen von der Azure Maps-Suche abgedeckt werden. Zu den Geocodierungskategorien zählen Adresspunkte, Hausnummern, Straße, Ort und Points of Interest.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/28/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: a5e5f4ab286289e223a2fe10ff8cf45f43309f04
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: philmea
+ms.openlocfilehash: 3cf27319fa84ff5d693e74e90664b7a86f4d934a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785939"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897210"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocodierungsabdeckung in Azure Maps
 
-Bei der Suche nach einem Ort mit Azure Maps nimmt der Suchdienst Ihre Suchbegriffe entgegen und gibt die Koordinaten (Breiten- und Längengrad) zurück – dieser Prozess wird als „Geocodierung“ bezeichnet. Maps bietet allerdings nicht für alle Regionen und Länder das gleiche Maß an Informationen und Genauigkeit. Bestimmen Sie anhand dieses Artikels, nach welcher Art von Orten Sie zuverlässig in den einzelnen Regionen suchen können. 
+Der Azure Maps-[Suchdienst](/rest/api/maps/search) unterstützt Geocodierung, was bedeutet, dass Ihre API-Anforderung Suchbegriffe wie eine Adresse oder den Namen eines Orts enthalten kann, woraufhin das Ergebnis als Koordinaten mit Breiten- und Längengraden zurückgegeben wird. Beispielsweise empfängt die [API zum Abrufen von Suchadressen](/rest/api/maps/search/getsearchaddress) von Azure Maps Abfragen, die Standortinformationen enthalten, und gibt Ergebnisse als Koordinaten mit Breiten- und Längengraden zurück.
+
+Der Azure Maps-[Suchdienst](/rest/api/maps/search) bietet allerdings nicht für alle Regionen und Länder das selbe Maß an Informationen und Genauigkeit. Bestimmen Sie anhand dieses Artikels, nach welcher Art von Orten Sie zuverlässig in den einzelnen Regionen suchen können.
 
 Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abdeckung der Straßendaten und der Geocodierungsgenauigkeit des Geocodierungsdiensts ab. Die jeweilige Unterstützung der Geocodierung in den einzelnen Ländern/Regionen wird mit den folgenden Kategorisierungen angegeben.
-* **Adresspunkte:** Adressendaten können innerhalb des Adresspakets (Eigenschaftsgrenze) in eine Längen- und Breitenkoordinate aufgelöst werden. Dies wird manchmal als „hausgenau“ bezeichnet. Dies ist die höchste verfügbare Genauigkeit für Adressen. 
+
+* **Adresspunkte:** Adressdaten können innerhalb des Adresspakets (Eigenschaftsgrenze) in Koordinaten mit Breiten-/Längengraden aufgelöst werden. Adresspunkte werden oft als „hausgenau" bezeichnet. Dies ist die höchste verfügbare Genauigkeit für Adressen.
 * **Hausnummern:** Adressen werden in eine Längen- und Breitenkoordinate in der Straße interpoliert.
 * **Straße:** Adressen werden in die Längen- und Breitenkoordinate der Straße mit der Adresse aufgelöst. Die Hausnummer wird möglicherweise nicht verarbeitet.
 * **Ort:** Ortsnamen werden nicht unterstützt.
@@ -41,7 +44,7 @@ Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abde
 | Bolivien                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Bonaire, Sint Eustatius und Saba                   |                 |                |              |      ✓     |          ✓         |
 | Brasilien                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Kanada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Canada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kaimaninseln                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Chile                                               |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kolumbien                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -84,7 +87,7 @@ Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abde
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Britische Jungferninseln                              |                 |                |              |      ✓     |          ✓         |
-| Daten Jungferninseln                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| USA Jungferninseln                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>Asien-Pazifik
 
@@ -127,7 +130,6 @@ Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abde
 | Pakistan                                            |                 |                |              |      ✓     |          ✓         |
 | Palau                                               |                 |                |              |      ✓     |          ✓         |
 | Papua-Neuguinea                                    |                 |                |              |      ✓     |          ✓         |
-| Paracel-Inseln                                     |                 |                |              |      ✓     |                    |
 | Philippinen                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Pitcairninseln                                            |                 |                |              |      ✓     |          ✓         |
 | Samoa                                               |                 |                |              |      ✓     |          ✓         |
@@ -135,7 +137,6 @@ Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abde
 | Singapur                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Salomonen                                     |                 |                |              |      ✓     |          ✓         |
 | Südliche Kurilen                                     |        ✓        |                |              |      ✓     |          ✓         |
-| Spratly-Inseln                                     |                 |                |              |      ✓     |                    |
 | Sri Lanka                                           |                 |                |              |      ✓     |          ✓         |
 | Taiwan                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Thailand                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
@@ -212,10 +213,9 @@ Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abde
 | Türkei                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Turkmenistan                                        |                 |                |              |      ✓     |          ✓         |
 | Ukraine                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Vereinigtes Königreich                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| United Kingdom                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Usbekistan                                          |                 |                |              |      ✓     |          ✓         |
 | Vatikanstadt                                        |                 |                |       ✓      |      ✓     |          ✓         |
-
 
 ## <a name="middle-east-and-africa"></a>Naher Osten und Afrika
 
@@ -297,11 +297,8 @@ Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abde
 | Sambia                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Simbabwe                                            |                 |                |       ✓      |      ✓     |          ✓         |
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure Maps-Geocodierung finden Sie auf den [Suchen](https://docs.microsoft.com/rest/api/maps/search)-Referenzseiten.
-
-Erfahren Sie mehr über die [Abdeckungsbereiche des Verkehrsinfodiensts von Maps](traffic-coverage.md). 
-
+Weitere Informationen zur Azure Maps-Geocodierung:
+> [!div class="nextstepaction"]
+> [Azure Maps-Suchdienst](/rest/api/maps/search)

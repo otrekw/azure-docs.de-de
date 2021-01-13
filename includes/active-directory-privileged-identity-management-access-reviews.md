@@ -2,18 +2,18 @@
 title: include file
 description: include file
 services: active-directory
-author: rolyon
+author: barclayn
 ms.service: active-directory
 ms.topic: include
-ms.date: 04/29/2019
-ms.author: rolyon
+ms.date: 12/07/2020
+ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cbcd4b459faa3bf67f591cc7afab0bf0027062e1
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476249"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842340"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Erstellen einer oder mehrerer Zugriffsüberprüfungen
 
@@ -36,13 +36,14 @@ ms.locfileid: "67476249"
     ![Benutzerbereich zum Überprüfen der Rollenmitgliedschaft](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
-    > Bei der Auswahl mehrerer Rollen werden mehrere Zugriffsüberprüfungen erstellt. Bei der Auswahl von fünf Rollen werden z. B. fünf separate Zugriffsüberprüfungen erstellt.
+    > - Die hier ausgewählten Rollen enthalten [permanente und berechtigte Rollen](../articles/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md).
+    > - Bei der Auswahl mehrerer Rollen werden mehrere Zugriffsüberprüfungen erstellt. Bei der Auswahl von fünf Rollen werden z. B. fünf separate Zugriffsüberprüfungen erstellt.
 
-    Wenn Sie eine Zugriffsüberprüfung für Azure AD-Rollen erstellen, sieht die Liste der zu überprüfenden Mitgliedschaften in etwa wie im folgenden Beispiel aus:
+    Wenn Sie eine Zugriffsüberprüfung für **Azure AD-Rollen** erstellen, sieht die Liste der zu überprüfenden Mitgliedschaften in etwa wie im folgenden Beispiel aus.
 
     ![Bereich „Mitgliedschaft überprüfen“ mit aufgeführten Azure AD-Rollen, die Sie auswählen können](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
-    Wenn Sie eine Zugriffsüberprüfung für Azure-Ressourcenrollen erstellen, sieht die Liste der zu überprüfenden Mitgliedschaften in etwa wie im folgenden Beispiel aus:
+    Wenn Sie eine Zugriffsüberprüfung für **Azure-Ressourcenrollen** erstellen, sieht die Liste der zu überprüfenden Mitgliedschaften in etwa wie in der folgenden Abbildung aus.
 
     ![Bereich „Mitgliedschaft überprüfen“ mit aufgeführten Azure-Ressourcenrollen, die Sie auswählen können](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 
@@ -52,6 +53,7 @@ ms.locfileid: "67476249"
 
     - **Ausgewählte Benutzer**: Verwenden Sie diese Option, wenn Sie nicht wissen, wer Zugriff benötigt. Mit dieser Option können Sie die Überprüfungsdurchführung einem Ressourcenbesitzer oder Gruppen-Manager zuweisen.
     - **Mitglieder (selbst)** : Mit dieser Option können Benutzer ihre Rollenzuweisungen selbst überprüfen.
+    - **(Vorschau:) Manager:** Verwenden Sie diese Option, wenn der Vorgesetzte des Benutzers seine Rollenzuweisung überprüfen soll. Wenn Sie „(Vorschau:) Manager“ auswählen, haben Sie auch die Möglichkeit, einen Fallbackprüfer anzugeben. Fallbackprüfer werden aufgefordert, eine Überprüfung für einen Benutzer durchzuführen, wenn für diesen kein Vorgesetzter (Manager) im Verzeichnis angegeben ist.
 
 ### <a name="upon-completion-settings"></a>Einstellungen nach Abschluss
 
@@ -81,3 +83,6 @@ ms.locfileid: "67476249"
 1. Legen Sie **E-Mail-Benachrichtigungen** auf **Aktivieren** fest, damit Azure AD beim Start einer Zugriffsüberprüfung E-Mail-Benachrichtigungen an die Prüfer und beim Abschluss einer Überprüfung Benachrichtigungen an Administratoren sendet.
 
 1. Legen Sie **Erinnerungen** auf **Aktivieren** fest, damit Azure AD Erinnerungen zu laufenden Zugriffsüberprüfungen an Prüfer sendet, die ihre Überprüfung noch nicht abgeschlossen haben.
+1. Der Inhalt der an Prüfer gesendeten E-Mail wird automatisch basierend auf den Überprüfungsdetails generiert, z. B. Name der Überprüfung, Name der Ressource, Fälligkeitsdatum usw. Wenn Sie eine Möglichkeit benötigen, zusätzliche Informationen wie etwa weitere Anweisungen oder Kontaktinformationen mitzuteilen, können Sie diese Informationen in die **E-Mail mit zusätzlichen Inhalten für Prüfer** einfügen. Diese E-Mail wird in die Einladung sowie in Erinnerungs-E-Mails an die zugewiesenen Prüfer einbezogen. Diese Informationen werden in der folgenden Abbildung im hervorgehobenen Abschnitt angezeigt.
+
+    ![Inhalt der an Prüfer gesendeten E-Mail mit Hervorhebungen](./media/active-directory-privileged-identity-management-access-reviews/email-info.png)

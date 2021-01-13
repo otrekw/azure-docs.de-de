@@ -1,27 +1,28 @@
 ---
-title: Vorbereiten der Azure-Infrastruktur für SAP-Hochverfügbarkeit mit einem Windows-Failovercluster und einer Dateifreigabe für SAP ASCS-/SCS-Instanzen | Microsoft Docs
+title: Azure-Infrastruktur für SAP ASCS/SCS HA mit WSFC und Dateifreigabe | Microsoft-Dokumentation
 description: Vorbereiten der Azure-Infrastruktur für SAP-Hochverfügbarkeit mit einem Windows-Failovercluster und einer Dateifreigabe für SAP ASCS-/SCS-Instanzen
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 2ce38add-1078-4bb9-a1da-6f407a9bc910
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
-ms.author: rclaus
+ms.date: 08/12/2020
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9b7ac97cb190073966f9be450e9f9e04014fbd7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 62803bd450db351290bbc12d650d23a4148a4536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078051"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022342"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Vorbereiten der Azure-Infrastruktur für SAP-Hochverfügbarkeit mit einem Windows-Failovercluster und einer Dateifreigabe für SAP ASCS-/SCS-Instanzen
 
@@ -39,8 +40,8 @@ ms.locfileid: "70078051"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -57,11 +58,7 @@ ms.locfileid: "70078051"
 [sap-ascs-high-availability-multi-sid-wsfc]:sap-ascs-high-availability-multi-sid-wsfc.md
 
 [sap-high-availability-infrastructure-wsfc-shared-disk]:sap-high-availability-infrastructure-wsfc-shared-disk.md
-[sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]:sap-high-availability-infrastructure-wsfc-shared-disk.md#47d5300a-a830-41d4-83dd-1a0d1ffdbe6a
-[sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]:sap-high-availability-infrastructure-wsfc-shared-disk.md#b22d7b3b-4343-40ff-a319-097e13f62f9e
-[sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]:sap-high-availability-infrastructure-wsfc-shared-disk.md#84c019fe-8c58-4dac-9e54-173efd4b2c30
-[sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]:sap-high-availability-infrastructure-wsfc-shared-disk.md#7a8f3e9b-0624-4051-9e41-b73fff816a9e
-[sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]:sap-high-availability-infrastructure-wsfc-shared-disk.md#f19bd997-154d-4583-a46e-7f5a69d0153c
+[sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]:sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716
 [sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]:sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716
 [sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]:sap-high-availability-infrastructure-wsfc-shared-disk.md#e69e9a34-4601-47a3-a41c-d2e11c626c0c
 [sap-high-availability-installation-wsfc-file-share]:sap-high-availability-installation-wsfc-file-share.md
@@ -203,7 +200,7 @@ ms.locfileid: "70078051"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -228,7 +225,7 @@ Bevor Sie die Installation starten, lesen Sie den folgenden Artikel:
 
 **Tabelle 1**: ASCS/SCS-Cluster
 
-| SAP \<SID > | SAP ASCS/SCS-Instanznummer |
+| SAP \<SID> | SAP ASCS/SCS-Instanznummer |
 | --- | --- |
 | PR1 | 00 |
 
@@ -250,19 +247,11 @@ Bevor Sie die Installation starten, lesen Sie den folgenden Artikel:
 
 Um die Azure-Infrastruktur vorzubereiten, führen Sie die folgenden Schritte aus:
 
-* [Vorbereiten der Infrastruktur für Architekturvorlage 1, 2 und 3][sap-high-availability-infrastructure-wsfc-shared-disk]
+* [Bereitstellen der VMs][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* [Erstellen eines virtuellen Azure-Netzwerks][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]
+* [Erstellen und Konfigurieren einer Azure Load Balancer-Instanz für SAP ASCS][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]
 
-* [Festlegen der erforderlichen DNS-IP-Adressen][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]
-
-* [Festlegen der statischen IP-Adressen für die virtuellen SAP-Computer][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]
-
-* [Festlegen der statischen IP-Adresse für den internen Azure Load Balancer][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]
-
-* [Festlegen von Standardregeln für den ASCS-/SCS-Lastenausgleich für den internen Azure Load Balancer][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]
-
-* [Ändern der Standardregeln für den ASCS/SCS-Lastenausgleich für den internen Azure Load Balancer][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]
+* [Bei Verwendung von Enqueue Replication Server 2 (ERS2): Ausführen der Azure Load Balancer-Konfiguration für ERS2][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules] 
 
 * [Hinzufügen virtueller Windows-Computer zur Domäne][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]
 
@@ -271,9 +260,9 @@ Um die Azure-Infrastruktur vorzubereiten, führen Sie die folgenden Schritte aus
 * Da Sie Windows Server 2016 verwenden, wird empfohlen, einen [Azure-Cloudzeugen][deploy-cloud-witness] zu konfigurieren.
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Manuelles Bereitstellen des Dateiserverclusters mit horizontaler Hochskalierung 
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Manuelles Bereitstellen des Dateiserverclusters mit horizontaler Hochskalierung 
 
-Sie können den Microsoft-Dateiservercluster mit horizontaler Hochskalierung manuell bereitstellen, wie es im Blog zum Thema [Direkte Speicherplätze in Azure][ms-blog-s2d-in-azure] beschrieben ist, indem Sie den folgenden Code ausführen:  
+Sie können den Microsoft-Dateiservercluster mit horizontaler Hochskalierung manuell bereitstellen, wie es im Blog zum Thema [Direkte Speicherplätze in Azure][ms-blog-s2d-in-azure] beschrieben ist, indem Sie den folgenden Code ausführen:  
 
 
 ```powershell
@@ -324,7 +313,7 @@ Wir empfehlen die Verwendung von Managed Disks.
 
 ![Abbildung 1: Bildschirm der Benutzeroberfläche für die Resource Manager-Vorlage für Dateiserver mit horizontaler Skalierung und verwaltete Datenträger][sap-ha-guide-figure-8010]
 
-_**Abbildung 1**: Bildschirm der Benutzeroberfläche für die Resource Manager-Vorlage für Dateiserver mit horizontaler Skalierung und verwaltete Datenträger_
+_**Abbildung 1**: Bildschirm der Benutzeroberfläche für die Resource Manager-Vorlage für Dateiserver mit horizontaler Skalierung und verwaltete Datenträger_
 
 Führen Sie in der Vorlage die folgenden Schritte aus:
 1. Geben Sie im Feld **VM-Anzahl** eine minimale Anzahl von **2** ein.
@@ -348,7 +337,7 @@ Nachdem Sie die Installation des Windows-Clusters für den Dateiserver mit horiz
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
-- RoutingHistoryLength = 30
+- RouteHistoryLength = 30
 
 Diese Einstellungen wurden bei Kunden getestet und stellen einen guten Kompromiss dar. Sie sind robust genug, ermöglichen aber gleichzeitig ein ausreichend schnelles Failover unter echten Fehlerbedingungen oder bei einem VM-Ausfall.
 

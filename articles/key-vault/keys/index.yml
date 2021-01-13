@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Dokumentation zu Schlüsseln
+summary: Mit Azure Key Vault können Microsoft Azure-Anwendungen und -Benutzer Schlüssel speichern und verwenden. Es werden mehrere Schlüsseltypen und Algorithmen unterstützt, und für Schlüssel von hohem Wert wird die Verwendung von Hardwaresicherheitsmodulen (Hardware Security Modules, HSM) ermöglicht.
+metadata:
+  title: Schlüssel
+  description: Mit Azure Key Vault können Microsoft Azure-Anwendungen und -Benutzer Schlüssel speichern und verwenden. Es werden mehrere Schlüsseltypen und Algorithmen unterstützt, und für Schlüssel von hohem Wert wird die Verwendung von Hardwaresicherheitsmodulen (Hardware Security Modules, HSM) ermöglicht.
+  services: key-vault
+  ms.service: key-vault
+  ms.subservice: keys
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 04/07/2020
+  ms.openlocfilehash: d3be7d18f55400cf5f9bf85c6fcb767bee05044f
+  ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 01/08/2021
+  ms.locfileid: "98028436"
+landingContent:
+- title: Schlüssel
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was sind Key Vault-Schlüssel?
+      url: about-keys.md
+    - text: Wichtige Neuigkeiten zu vorläufigem Löschen
+      url: ../general/soft-delete-change.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure PowerShell
+      url: quick-create-powershell.md
+    - text: Portal
+      url: quick-create-portal.md
+    - text: .NET
+      url: quick-create-net.md
+    - text: Python
+      url: quick-create-python.md
+    - text: Node.js
+      url: quick-create-node.md
+    - text: Java
+      url: quick-create-java.md
+    - text: Vorlage
+      url: quick-create-template.md
+- title: Tutorials
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Importieren von durch HSM geschützten Schlüsseln (Übersicht)
+      url: hsm-protected-keys.md
+- title: Clientbibliotheken für Key Vault-Schlüssel
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET-Clientbibliothek
+      url: /dotnet/api/azure.security.keyvault.keys?view=azure-dotnet
+    - text: Python-Clientbibliothek
+      url: /python/api/overview/azure/keyvault-keys-readme?view=azure-python
+    - text: Java-Clientbibliothek
+      url: https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html
+    - text: Node.js-Clientbibliothek
+      url: /javascript/api/@azure/keyvault-keys/?view=azure-node-latest
+- title: Weitere Informationen zu Key Vault
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Übersicht über Key Vault
+      url: ../general/overview.md
+    - text: Grundlegende Konzepte
+      url: ../general/basic-concepts.md
+    - text: Sicherheitsübersicht
+      url: ../general/security-overview.md
+    - text: 'Vorläufiges Löschen: Übersicht'
+      url: ../general/soft-delete-overview.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Verwalten von Geheimnissen in Ihren Server-Apps mit Azure Key Vault
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

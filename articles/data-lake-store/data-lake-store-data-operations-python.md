@@ -4,15 +4,16 @@ description: Erfahren Sie, wie Sie das Python SDK für das Data Lake Storage Gen
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f2ee982e2c1e1c363a391779721f848b8ae6afd5
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom: devx-track-python
+ms.openlocfilehash: 8ca455a802b180163579f67104a61f455dd54f94
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088889"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109220"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit Python
 > [!div class="op_single_selector"]
@@ -39,11 +40,11 @@ Zum Verwenden von Data Lake Storage Gen1 mit Python müssen Sie drei Module inst
 
 * Das Modul `azure-mgmt-resource`, in dem Azure-Module für Active Directory usw. enthalten sind.
 * Das Modul `azure-mgmt-datalake-store`, das die Kontoverwaltungsvorgänge für Azure Data Lake Storage Gen1 enthält. Weitere Informationen zu diesem Modul finden Sie in der [Referenz zum Modul azure-mgmt-datalake-store](/python/api/azure-mgmt-datalake-store/).
-* Das Modul `azure-datalake-store`, das die Dateisystemvorgänge für Azure Data Lake Storage Gen1 enthält. Weitere Informationen zu diesem Modul finden Sie in der [Referenz zum Modul azure-datalake-store file-system](https://azure-datalake-store.readthedocs.io/en/latest/).
+* Das Modul `azure-datalake-store`, das die Dateisystemvorgänge für Azure Data Lake Storage Gen1 enthält. Weitere Informationen zu diesem Modul finden Sie in der [Referenz zum Modul azure-datalake-store file-system](/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 Verwenden Sie die folgenden Befehle, um die Module zu installieren:
 
-```
+```console
 pip install azure-mgmt-resource
 pip install azure-mgmt-datalake-store
 pip install azure-datalake-store
@@ -55,7 +56,7 @@ pip install azure-datalake-store
 
 2. Fügen Sie die folgenden Zeilen hinzu, um die erforderlichen Module zu importieren:
 
-   ```
+   ```python
    ## Use this only for Azure AD service-to-service authentication
    from azure.common.credentials import ServicePrincipalCredentials
 
@@ -93,39 +94,48 @@ In diesem Abschnitt werden die unterschiedlichen Möglichkeiten zur Authentifizi
 
 Der folgende Codeausschnitt erstellt zunächst den Data Lake Storage Gen1-Kontoclient. Er verwendet das Clientobjekt zum Erstellen eines Data Lake Storage Gen1-Kontos. Schließlich erstellt der Codeausschnitt ein Dateisystem-Clientobjekt.
 
-    ## Declare variables
-    subscriptionId = 'FILL-IN-HERE'
-    adlsAccountName = 'FILL-IN-HERE'
+```python
+## Declare variables
+subscriptionId = 'FILL-IN-HERE'
+adlsAccountName = 'FILL-IN-HERE'
 
-    ## Create a filesystem client object
-    adlsFileSystemClient = core.AzureDLFileSystem(adlCreds, store_name=adlsAccountName)
+## Create a filesystem client object
+adlsFileSystemClient = core.AzureDLFileSystem(adlCreds, store_name=adlsAccountName)
+```
 
 ## <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
 
-    ## Create a directory
-    adlsFileSystemClient.mkdir('/mysampledirectory')
+```python
+## Create a directory
+adlsFileSystemClient.mkdir('/mysampledirectory')
+```
 
 ## <a name="upload-a-file"></a>Hochladen einer Datei
 
-
-    ## Upload a file
-    multithread.ADLUploader(adlsFileSystemClient, lpath='C:\\data\\mysamplefile.txt', rpath='/mysampledirectory/mysamplefile.txt', nthreads=64, overwrite=True, buffersize=4194304, blocksize=4194304)
+```python
+## Upload a file
+multithread.ADLUploader(adlsFileSystemClient, lpath='C:\\data\\mysamplefile.txt', rpath='/mysampledirectory/mysamplefile.txt', nthreads=64, overwrite=True, buffersize=4194304, blocksize=4194304)
+```
 
 
 ## <a name="download-a-file"></a>Herunterladen einer Datei
 
-    ## Download a file
-    multithread.ADLDownloader(adlsFileSystemClient, lpath='C:\\data\\mysamplefile.txt.out', rpath='/mysampledirectory/mysamplefile.txt', nthreads=64, overwrite=True, buffersize=4194304, blocksize=4194304)
+```python
+## Download a file
+multithread.ADLDownloader(adlsFileSystemClient, lpath='C:\\data\\mysamplefile.txt.out', rpath='/mysampledirectory/mysamplefile.txt', nthreads=64, overwrite=True, buffersize=4194304, blocksize=4194304)
+```
 
 ## <a name="delete-a-directory"></a>Löschen eines Verzeichnisses
 
-    ## Delete a directory
-    adlsFileSystemClient.rm('/mysampledirectory', recursive=True)
+```python
+## Delete a directory
+adlsFileSystemClient.rm('/mysampledirectory', recursive=True)
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Kontoverwaltungsvorgänge für Data Lake Storage Gen1 mit Python](data-lake-store-get-started-python.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Python-Referenz zu Azure Data Lake Storage Gen1 (Dateisystem)](https://azure-datalake-store.readthedocs.io/en/latest)
+* [Python-Referenz zu Azure Data Lake Storage Gen1 (Dateisystem)](/python/api/azure-datalake-store/azure.datalake.store.core)
 * [Mit Azure Data Lake Storage Gen1 kompatible Open-Source-Big Data-Anwendungen](data-lake-store-compatible-oss-other-applications.md)

@@ -1,27 +1,27 @@
 ---
-title: Problembehandlung bei der Fehlermeldung „Der Wechsel von hier nach dort ist nicht möglich.“ – Azure Active Directory | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zum Behandeln der möglichen Ursachen für die Fehlermeldung „Der Wechsel von hier nach dort ist nicht möglich.“.
+title: Fehlerbehebungen für den Fehler „Der Wechsel von hier nach dort ist nicht möglich“ – Azure AD
+description: Hier finden Sie potenzielle Korrekturen für die Fehlermeldung „Der Wechsel von hier nach dort ist nicht möglich“.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 10/10/2018
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a317680a39d4594aacdf84ccdf963bb84bfbf07b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: df3941c895ce67862eb53b8e96bc7a6d53c1ed02
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473802"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88799416"
 ---
-# <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>Mögliche Ursachen für die Fehlermeldung „Der Wechsel von hier nach dort ist nicht möglich.“
+# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>Mögliche Korrekturen für die Fehlermeldung „Der Wechsel von hier nach dort ist nicht möglich“
+
 Beim Zugriff auf interne Web-Apps oder Dienste Ihrer Organisation wird unter Umständen die Fehlermeldung **Der Wechsel von hier nach dort ist nicht möglich.** angezeigt. Diese Meldung bedeutet, dass Ihre Organisation eine Richtlinie eingerichtet hat, die Ihr Gerät davon abhält, auf die Ressourcen Ihrer Organisation zuzugreifen. Es kann sein, dass Sie sich zur Behebung dieses Problems letztendlich an den Helpdesk wenden müssen, vorher gibt es aber noch ein paar Dinge, die Sie versuchen können.
 
 ## <a name="make-sure-youre-using-a-supported-browser"></a>Vergewissern Sie sich, dass Sie einen unterstützten Browser verwenden.
@@ -29,7 +29,7 @@ Wenn die Meldung **Der Wechsel von hier nach dort ist nicht möglich.** den Hinw
 
 ![Fehlermeldung im Zusammenhang mit der Browserunterstützung](media/user-help-device-remediation/browser-version.png)
 
-Zur Behebung dieses Problems müssen Sie einen unterstützten Browser für Ihr Betriebssystem installieren und ausführen. Unter Windows 10 werden unter anderem Microsoft Edge, Internet Explorer und Google Chrome unterstützt. Benutzer anderer Betriebssysteme finden [hier](../conditional-access/technical-reference.md#supported-browsers) eine umfassende Liste der unterstützten Browser.
+Zur Behebung dieses Problems müssen Sie einen unterstützten Browser für Ihr Betriebssystem installieren und ausführen. Unter Windows 10 werden unter anderem Microsoft Edge, Internet Explorer und Google Chrome unterstützt. Benutzer anderer Betriebssysteme finden [hier](../conditional-access/concept-conditional-access-conditions.md#supported-browsers) eine umfassende Liste der unterstützten Browser.
 
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>Vergewissern Sie sich, dass Sie ein unterstütztes Betriebssystem verwenden.
 Vergewissern Sie sich, dass Sie eine unterstützte Version des Betriebssystems verwenden:
@@ -68,6 +68,6 @@ Falls Ihr Gerät nicht in das Netzwerk Ihrer Organisation eingebunden ist, haben
 - **Registrieren Sie Ihr persönliches Gerät für die Arbeit.** Registrieren Sie Ihr persönliches Gerät, in der Regel ein Smartphone oder ein Tablet, im Netzwerk Ihrer Organisation. Nach der Registrierung Ihres Geräts können Sie damit auf die geschützten Ressourcen Ihrer Organisation zugreifen. Weitere Informationen und eine ausführliche Anleitung finden Sie unter [Registrieren Ihres persönlichen Geräts im Netzwerk Ihrer Organisation](user-help-register-device-on-network.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Was ist das MyApps-Portal?](active-directory-saas-access-panel-introduction.md)
+- [Was ist das MyApps-Portal?](./my-apps-portal-end-user-access.md)
 
 - [Anmelden per Smartphone anstelle Ihres Kennworts](user-help-auth-app-sign-in.md)

@@ -1,7 +1,7 @@
 ---
 title: Konfigurieren von DHCPv6 für virtuelle Linux-Computer
-titlesuffix: Azure Load Balancer
-description: Vorgehensweise beim Konfigurieren von DHCPv6 für virtuelle Linux-Computer.
+titleSuffix: Azure Load Balancer
+description: In diesem Artikel erhalten Sie Informationen zum Konfigurieren von DHCPv6 für virtuelle Linux-Computer.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: 3e987b6718ead6b7014ec302d1a186dabef11126
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d8bd62bab627beb70a8fcba276bf8c2eca309c45
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274926"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006745"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurieren von DHCPv6 für virtuelle Linux-Computer
 
@@ -38,31 +38,38 @@ Dieses Dokument beschreibt, wie DHCPv6 aktiviert wird, damit der virtuelle Linux
 
 1. Bearbeiten Sie die Datei */etc/dhcp/dhclient6.conf*, und fügen Sie die folgende Zeile hinzu:
 
-        timeout 10;
+    ```config
+    timeout 10;
+    ```
 
 2. Bearbeiten Sie die Netzwerkkonfiguration für die Schnittstelle „eth0“ mit der folgenden Konfiguration:
 
    * Bearbeiten Sie für **Ubuntu 12.04 und 14.04** die Datei */etc/network/interfaces.d/eth0.cfg*. 
    * Bearbeiten Sie für **Ubuntu 16.04** die Datei */etc/network/interfaces.d/50-cloud-init.cfg*.
 
-         iface eth0 inet6 auto
-             up sleep 5
-             up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
+    ```config
+    iface eth0 inet6 auto
+        up sleep 5
+        up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
+    ```
 
 3. Erneuern Sie die IPv6-Adresse:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
+
 Ab Ubuntu 17.10 ist [NETPLAN]( https://netplan.io) der Standardmechanismus für die Netzwerkkonfiguration.  Zum Zeitpunkt der Installation/Instanziierung liest NETPLAN die Netzwerkkonfiguration aus YAML-Konfigurationsdateien, die sich an folgendem Speicherort befinden: /{lib,etc,run}/netplan/*.yaml.
 
 Beziehen Sie für jede Ethernet-Schnittstelle in Ihrer Konfiguration eine *dhcp6:true*-Anweisung ein.  Beispiel:
-  
-        network:
-          version: 2
-          ethernets:
-            eno1:
-              dhcp6: true
+
+```config
+network:
+  version: 2
+  ethernets:
+    eno1:
+      dhcp6: true
+```
 
 Während des frühen Starts schreibt NETPLAN „network renderer“ die Konfiguration in „/run“, um die Steuerung der Geräte an den angegebenen Netzwerkdaemon zu übergeben. Referenzinformationen zu NETPLAN finden Sie unter https://netplan.io/reference.
  
@@ -70,13 +77,17 @@ Während des frühen Starts schreibt NETPLAN „network renderer“ die Konfigur
 
 1. Bearbeiten Sie die Datei */etc/dhcp/dhclient6.conf*, und fügen Sie die folgende Zeile hinzu:
 
-        timeout 10;
+    ```config
+    timeout 10;
+    ```
 
 2. Bearbeiten Sie die Datei */etc/network/interfaces*, und fügen Sie die folgende Konfiguration hinzu:
 
-        iface eth0 inet6 auto
-            up sleep 5
-            up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
+    ```config
+    iface eth0 inet6 auto
+        up sleep 5
+        up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
+    ```
 
 3. Erneuern Sie die IPv6-Adresse:
 
@@ -88,12 +99,16 @@ Während des frühen Starts schreibt NETPLAN „network renderer“ die Konfigur
 
 1. Bearbeiten Sie die Datei */etc/sysconfig/network*, und fügen Sie die folgenden Parameter hinzu:
 
-        NETWORKING_IPV6=yes
+    ```config
+    NETWORKING_IPV6=yes
+    ```
 
 2. Bearbeiten Sie die Datei */etc/sysconfig/network-scripts/ifcfg-eth0*, und fügen Sie die folgenden beiden Parameter hinzu:
 
-        IPV6INIT=yes
-        DHCPV6C=yes
+    ```config
+    IPV6INIT=yes
+    DHCPV6C=yes
+    ```
 
 3. Erneuern Sie die IPv6-Adresse:
 
@@ -113,9 +128,11 @@ Bei aktuellen Images von SUSE Linux Enterprise Server (SLES) und openSUSE in Azu
 
 2. Bearbeiten Sie die Datei */etc/sysconfig/network/ifcfg-eth0*, und fügen Sie die folgenden Parameter hinzu:
 
-        DHCLIENT6_MODE='managed'
+    ```config
+    DHCLIENT6_MODE='managed'
+    
 
-3. Erneuern Sie die IPv6-Adresse:
+3. Renew the IPv6 address:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -127,11 +144,15 @@ Bei aktuellen SLES- und openSUSE-Images in Azure ist DHCPv6 vorkonfiguriert. Wen
 
 1. Bearbeiten Sie die Datei */etc/sysconfig/network/ifcfg-eth0*, und ersetzen Sie den Parameter `#BOOTPROTO='dhcp4'` durch den folgenden Wert:
 
-        BOOTPROTO='dhcp'
+    ```config
+    BOOTPROTO='dhcp'
+    ```
 
 2. Bearbeiten Sie die Datei */etc/sysconfig/network/ifcfg-eth0*, indem Sie den folgenden Parameter hinzufügen:
 
-        DHCLIENT6_MODE='managed'
+    ```config
+    DHCLIENT6_MODE='managed'
+    ```
 
 3. Erneuern Sie die IPv6-Adresse:
 
@@ -145,11 +166,13 @@ Bei aktuellen CoreOS-Images in Azure ist DHCPv6 vorkonfiguriert. Wenn Sie diese 
 
 1. Bearbeiten Sie die Datei */etc/systemd/network/10_dhcp.network*:
 
-        [Match]
-        eth0
+    ```config
+    [Match]
+    eth0
 
-        [Network]
-        DHCP=ipv6
+    [Network]
+    DHCP=ipv6
+    ```
 
 2. Erneuern Sie die IPv6-Adresse:
 

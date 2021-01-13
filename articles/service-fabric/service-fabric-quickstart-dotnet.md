@@ -1,26 +1,15 @@
 ---
-title: Erstellen einer .NET-App unter Service Fabric in Azure | Microsoft-Dokumentation
+title: Schnelles Erstellen einer .NET-App unter Service Fabric in Azure
 description: In diesem Schnellstart erstellen Sie eine .NET-Anwendung für Azure, indem Sie die Service Fabric Reliable Services-Beispielanwendung verwenden.
-services: service-fabric
-documentationcenter: .net
-author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: azure-vs
 ms.date: 06/26/2019
-ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 02c77d1a34a4dec8732b5fa2edb4d7a55e079c28
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 15e2180e44acaa5ebefb403b2da3755396a45ba4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225193"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575889"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Schnellstart: Bereitstellen einer .NET Reliable Services-Anwendung in Service Fabric
 
@@ -60,6 +49,8 @@ Nachdem Sie die Laufzeit, SDKs, Visual Studio-Tools und Docker installiert haben
 > Docker muss beim Erstellen des Clusters ausgeführt werden, damit der Cluster mit aktivierten Containerfunktionen erstellt wird. Wenn Docker nicht ausgeführt wird, müssen Sie den Cluster erneut erstellen, um Containerfunktionen zu aktivieren.
 > Die Anweisung, Docker beim Erstellen des Clusters auszuführen, ist zwar für diesen bestimmten Schnellstart nicht erforderlich, ist jedoch als bewährte Methode angegeben.
 > Testen Sie, ob Docker ausgeführt wird, indem Sie ein Terminalfenster öffnen und `docker ps` ausführen, um zu sehen, ob ein Fehler auftritt. Wenn in der Antwort kein Fehler angegeben wird, wird Docker ausgeführt, und Sie sind bereit, einen Cluster zu erstellen.
+>
+> [Einrichten von Windows 10 oder Windows Server für Container](/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. Öffnen Sie als Administrator ein neues PowerShell-Fenster mit erhöhten Rechten.
 2. Führen Sie den folgenden PowerShell-Befehl aus, um einen Entwicklungscluster zu erstellen:

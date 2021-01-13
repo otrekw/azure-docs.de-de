@@ -1,29 +1,27 @@
 ---
 title: Entität vom Typ „Simple“ – LUIS
 titleSuffix: Azure Cognitive Services
-description: Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept beschreibt und im Kontext des maschinellen Lernens erworben wurde. Da es sich bei einfachen Entitäten normalerweise um Namen handelt, z.B. Unternehmensnamen, Produktnamen oder andere Namen, fügen Sie eine Liste mit Ausdrücken hinzu, wenn Sie eine einfache Entität verwenden, um das Signal für die verwendeten Namen zu verstärken.
+description: Eine einfache Entität beschreibt ein einzelnes Konzept aus dem Machine Learning-Kontext. Fügen Sie eine Auszugsliste hinzu, wenn Sie eine einfache Entität verwenden, um die Ergebnisse zu verbessern.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/24/2019
-ms.author: diberry
-ms.openlocfilehash: c1514b6cd512924a162a524d11e888055fa06514
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 09/29/2019
+ms.openlocfilehash: 384d3df2de551e7c79f13a0fe47ffb26c7825f1b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563201"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91539285"
 ---
-# <a name="simple-entity"></a>Entität vom Typ „Simple“ 
+# <a name="simple-entity"></a>Entität vom Typ „Simple“
 
-Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept beschreibt und im Kontext des maschinellen Lernens erworben wurde. Da es sich bei einfachen Entitäten normalerweise um Namen handelt, z.B. Unternehmensnamen, Produktnamen oder andere Namen, sollten Sie wie folgt vorgehen: Fügen Sie eine [Liste mit Ausdrücken](luis-concept-feature.md) hinzu, wenn Sie eine einfache Entität verwenden, um das Signal für die verwendeten Namen zu verstärken. 
+Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept beschreibt und aus dem Machine Learning-Kontext erworben wurde. Da es sich bei einfachen Entitäten normalerweise um Namen handelt, z.B. Unternehmensnamen, Produktnamen oder andere Namen, sollten Sie wie folgt vorgehen: Fügen Sie eine [Liste mit Ausdrücken](luis-concept-feature.md) hinzu, wenn Sie eine einfache Entität verwenden, um das Signal für die verwendeten Namen zu verstärken.
 
 **Diese Entität ist gut geeignet, wenn Folgendes gilt**:
 
-* Die Daten sind nicht einheitlich formatiert, aber weisen auf denselben Sachverhalt hin. 
+* Die Daten sind nicht einheitlich formatiert, aber weisen auf denselben Sachverhalt hin.
 
 ![Entität vom Typ „Simple“](./media/luis-concept-entities/simple-entity.png)
 
@@ -34,6 +32,8 @@ Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept b
 In der vorherigen Äußerung wird `Bob Jones` als die einfache Entität `Customer` bezeichnet.
 
 Die vom Endpunkt zurückgegebenen Daten enthalten den Namen der Entität, den in der Äußerung ermittelten Text, den Speicherort des erkannten Texts und die Bewertung:
+
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 ```JSON
 "entities": [
@@ -47,10 +47,50 @@ Die vom Endpunkt zurückgegebenen Daten enthalten den Namen der Entität, den in
 ]
 ```
 
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+
+Dies ist der JSON-Code, wenn `verbose=false` in der Abfragezeichenfolge festgelegt ist:
+
+```json
+"entities": {
+    "Customer": [
+        "Bob Jones"
+    ]
+}```
+
+This is the JSON if `verbose=true` is set in the query string:
+
+```json
+"entities": {
+    "Customer": [
+        "Bob Jones"
+    ],
+    "$instance": {
+        "Customer": [
+            {
+                "type": "Customer",
+                "text": "Bob Jones",
+                "startIndex": 0,
+                "length": 9,
+                "score": 0.9339134,
+                "modelTypeId": 1,
+                "modelType": "Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+* * *
+
 |Datenobjekt|Name der Entität|Wert|
 |--|--|--|
 |Entität vom Typ „Simple“|`Customer`|`bob jones`|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem [Tutorial](luis-quickstart-primary-and-secondary-data.md) werden maschinell gelernte Daten einer Stellenbezeichnung mithilfe einer **einfachen Entität** aus einer Äußerung extrahiert. Um die Genauigkeit beim Extrahieren zu erhöhen, fügen Sie der einfachen Entität eine [Begriffsliste](luis-concept-feature.md) mit spezifischen Ausdrücken hinzu.
+> [!div class="nextstepaction"]
+> [Informieren Sie sich über die Mustersyntax.](reference-pattern-syntax.md)

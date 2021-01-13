@@ -3,23 +3,27 @@ title: 'Schnellstart: Cassandra-API mit .NET – Azure Cosmos DB'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Cassandra-API von Azure Cosmos DB eine Profilanwendung mit dem Azure-Portal und .NET erstellen.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-author: SnehaGunda
-ms.author: sngun
+author: TheovanKraay
+ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 1afdc0319ae26fcd6c8cb3ada0b4aa8c31fe1fbb
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.date: 10/01/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 13706b900c64b1d0aa5ce03fc95442e8dfc41051
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861307"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099826"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Cassandra-App mit dem .NET-SDK und Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
-> * [Java](create-cassandra-java.md)
+> * [.NET Core](create-cassandra-dotnet-core.md)
+> * [Java v3](create-cassandra-java.md)
+> * [Java v4](create-cassandra-java-v4.md)
 > * [Node.js](create-cassandra-nodejs.md)
 > * [Python](create-cassandra-python.md)
 >  
@@ -33,7 +37,7 @@ Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehr
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternativ können Sie [Azure Cosmos DB ohne Azure-Abonnement testen](https://azure.microsoft.com/try/cosmosdb/) – kostenlos und ohne Verpflichtung.
 
 Zudem benötigen Sie: 
-* Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
+* Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 * Installieren Sie [Git](https://www.git-scm.com/), um das Beispiel zu klonen.
 
 <a id="create-account"></a>
@@ -94,7 +98,7 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie der Code die Datenb
 * Fügen Sie Benutzerentitäten ein. Verwenden Sie hierzu das IMapper-Objekt mit einer neuen Sitzung, die eine Verbindung mit dem Keyspace „uprofile“ herstellt.
 
     ```csharp
-    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
+    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
     ```
     
 * Fragen Sie alle Benutzerinformationen ab.
@@ -118,31 +122,31 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option **Verbindungszeichenfolge** aus.
 
-    Verwenden Sie die Schaltfläche ![Schaltfläche „Kopieren“](./media/create-cassandra-dotnet/copy.png) auf der rechten Seite des Bildschirms, um den Benutzernamen zu kopieren.
+1. Verwenden Sie die Schaltfläche :::image type="icon" source="./media/create-cassandra-dotnet/copy.png"::: auf der rechten Seite des Bildschirms, um den Benutzernamen zu kopieren.
 
-    ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Verbindungszeichenfolge“](./media/create-cassandra-dotnet/keys.png)
+   :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Verbindungszeichenfolge“":::
 
-2. Öffnen Sie in Visual Studio die Datei „Program.cs“. 
+1. Öffnen Sie in Visual Studio die Datei „Program.cs“. 
 
-3. Ersetzen Sie `<FILLME>` in Zeile 13 durch den Benutzernamen aus dem Portal.
+1. Ersetzen Sie `<FILLME>` in Zeile 13 durch den Benutzernamen aus dem Portal.
 
     Zeile 13 von „Program.cs“ sollte nun in etwa wie folgt aussehen: 
 
     `private const string UserName = "cosmos-db-quickstart";`
 
-3. Kehren Sie zum Portal zurück, und kopieren Sie das Kennwort. Ersetzen Sie `<FILLME>` in Zeile 14 durch das Kennwort aus dem Portal.
+1. Kehren Sie zum Portal zurück, und kopieren Sie den Wert für das Kennwort. Ersetzen Sie `<FILLME>` in Zeile 14 durch das Kennwort aus dem Portal.
 
     Zeile 14 von „Program.cs“ sollte nun in etwa wie folgt aussehen: 
 
     `private const string Password = "2Ggkr662ifxz2Mg...==";`
 
-4. Kehren Sie zum Portal zurück, und kopieren Sie den Kontaktpunkt. Ersetzen Sie `<FILLME>` in Zeile 15 durch den Kontaktpunkt aus dem Portal.
+1. Kehren Sie zum Portal zurück, und kopieren Sie den Kontaktpunkt. Ersetzen Sie `<FILLME>` in Zeile 15 durch den Kontaktpunkt aus dem Portal.
 
     Zeile 15 von „Program.cs“ sollte nun in etwa wie folgt aussehen: 
 
     `private const string CassandraContactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com"; //  DnsName`
 
-5. Speichern Sie die Datei "Program.cs".
+1. Speichern Sie die Datei "Program.cs".
     
 ## <a name="run-the-net-app"></a>Ausführen der .NET-App
 
@@ -155,13 +159,13 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
     ```
 3. Drücken Sie STRG+F5, um die Anwendung auszuführen. Ihre App wird im Konsolenfenster angezeigt. 
 
-    ![Anzeigen und Überprüfen der Ausgabe](./media/create-cassandra-dotnet/output.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Anzeigen und Überprüfen der Ausgabe":::
 
     Drücken Sie STRG+C, um die Programmausführung zu beenden und das Konsolenfenster zu schließen. 
     
-4. Öffnen Sie im Azure-Portal den **Daten-Explorer**, um diese neuen Daten abzufragen, zu ändern und zu verwenden.
+4. Öffnen Sie im Azure-Portal den **Daten-Explorer** , um diese neuen Daten abzufragen, zu ändern und zu verwenden.
 
-    ![Anzeigen der Daten im Daten-Explorer](./media/create-cassandra-dotnet/data-explorer.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Anzeigen der Daten im Daten-Explorer":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
 

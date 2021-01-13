@@ -1,22 +1,25 @@
 ---
 title: Grundlegendes zu Azure IoT Hub-Modulzwillingen | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Synchronisieren von Status und Daten zwischen IoT Hub und Ihren Geräten mithilfe von Modulzwillingen'
-author: chrissie926
+author: nehsin
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/26/2018
-ms.author: menchi
-ms.openlocfilehash: cd0a9a66f3014a39a73cf04badfc67cd2ff4c3de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/29/2020
+ms.author: nehsin
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 6e728eaf8335a102e38a3b4b07ab5e504d452294
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61363461"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996466"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Verstehen und Verwenden von Modulzwillingen in IoT Hub
 
-In diesem Artikel wird vorausgesetzt, dass Sie bereits den Artikel [Verstehen und Verwenden von Gerätezwillingen in IoT Hub](iot-hub-devguide-device-twins.md) gelesen haben. In IoT Hub können unter jeder Geräteidentität bis zu 20 Modulidentitäten erstellt werden. Jede Modulidentität generiert implizit einen Modulzwilling. Modulzwillinge weisen Ähnlichkeiten mit Gerätezwillingen auf und stellen JSON-Dokumente dar, in denen Modulstatusinformationen wie Metadaten, Konfigurationen und Zustände gespeichert werden. Azure IoT Hub pflegt einen Modulzwilling für jedes Modul, das Sie mit IoT Hub verbinden. 
+In diesem Artikel wird vorausgesetzt, dass Sie bereits den Artikel [Verstehen und Verwenden von Gerätezwillingen in IoT Hub](iot-hub-devguide-device-twins.md) gelesen haben. In IoT Hub können unter jeder Geräteidentität bis zu 50 Modulidentitäten erstellt werden. Jede Modulidentität generiert implizit einen Modulzwilling. Modulzwillinge weisen Ähnlichkeiten mit Gerätezwillingen auf und stellen JSON-Dokumente dar, in denen Modulstatusinformationen wie Metadaten, Konfigurationen und Zustände gespeichert werden. Azure IoT Hub pflegt einen Modulzwilling für jedes Modul, das Sie mit IoT Hub verbinden. 
 
 Auf der Geräteseite können Sie mithilfe der IoT Hub-Geräte-SDKs Module erstellen, die jeweils eine unabhängige Verbindung mit IoT Hub herstellen. Durch diese Funktionalität können Sie separate Namespaces für unterschiedliche Komponenten auf Ihrem Gerät verwenden. Ein Beispiel: Angenommen, Sie verfügen über einen Verkaufsautomaten mit drei verschiedene Sensoren. Jeder Sensor wird von einer anderen Abteilung in Ihrem Unternehmen gesteuert. Sie können für jeden Sensor jeweils ein eigenes Modul erstellen. Dadurch kann jede Abteilung nur Aufträge oder direkte Methoden an den Sensor senden, den sie steuert, was zur Vermeidung von Konflikten und Benutzerfehlern beiträgt.
 
@@ -26,7 +29,7 @@ Auf der Geräteseite können Sie mithilfe der IoT Hub-Geräte-SDKs Module erstel
 
 Dieser Artikel beschreibt Folgendes:
 
-* Die Struktur des Modulzwillings: *Tags*, *gewünschte Eigenschaften* und *gemeldete Eigenschaften*.
+* Die Struktur des Modulzwillings: *Tags* , *gewünschte Eigenschaften* und *gemeldete Eigenschaften* .
 * Die Vorgänge, die Module und Back-Ends für Modulzwillinge ausführen können.
 
 Weitere Informationen zur Verwendung von gemeldeten Eigenschaften, D2C-Nachrichten und Dateiuploads finden Sie bei Bedarf im [Leitfaden zur D2C-Kommunikation](iot-hub-devguide-d2c-guidance.md).
@@ -45,7 +48,7 @@ Der Lebenszyklus eines Modulzwillings ist mit der entsprechenden [Modulidentitä
 
 Ein Modulzwilling ist ein JSON-Dokument, das Folgendes enthält:
 
-* **Tags**. Ein Abschnitt des JSON-Dokuments, in dem das Lösungs-Back-End Lese- und Schreibvorgänge ausführen kann. Tags sind für Module auf dem Gerät nicht sichtbar. Tags werden zu Abfragezwecken festgelegt.
+* **Tags** . Ein Abschnitt des JSON-Dokuments, in dem das Lösungs-Back-End Lese- und Schreibvorgänge ausführen kann. Tags sind für Module auf dem Gerät nicht sichtbar. Tags werden zu Abfragezwecken festgelegt.
 
 * **Gewünschte Eigenschaften** Werden in Verbindung mit gemeldeten Eigenschaften zum Synchronisieren von Modulkonfigurationen oder -zuständen verwendet. Das Lösungs-Back-End kann gewünschte Eigenschaften festlegen, die von der Modul-App gelesen werden können. Die Modul-App kann auch Benachrichtigungen über Änderungen an den gewünschten Eigenschaften erhalten.
 
@@ -168,15 +171,15 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
     }
     ```
 
-* **Ersetzen gewünschter Eigenschaften**. Dieser Vorgang ermöglicht dem Lösungs-Back-End, alle vorhandenen gewünschten Eigenschaften vollständig zu überschreiben und ein neues JSON-Dokument für `properties/desired` bereitzustellen.
+* **Ersetzen gewünschter Eigenschaften** . Dieser Vorgang ermöglicht dem Lösungs-Back-End, alle vorhandenen gewünschten Eigenschaften vollständig zu überschreiben und ein neues JSON-Dokument für `properties/desired` bereitzustellen.
 
-* **Ersetzen von Tags**. Dieser Vorgang ermöglicht es dem Lösungs-Back-End, alle vorhandenen Tags vollständig zu überschreiben und ein neues JSON-Dokument für `tags` bereitzustellen.
+* **Ersetzen von Tags** . Dieser Vorgang ermöglicht es dem Lösungs-Back-End, alle vorhandenen Tags vollständig zu überschreiben und ein neues JSON-Dokument für `tags` bereitzustellen.
 
-* **Zwillingsbenachrichtigungen empfangen**. Mit diesem Vorgang kann das Lösungs-Back-End benachrichtigt werden, wenn der Zwilling geändert wird. Zu diesem Zweck muss Ihre IoT-Lösung eine Route erstellen die Datenquelle auf *twinChangeEvents* festlegen. Standardmäßig werden keine Zwillingsbenachrichtigungen gesendet, und es existieren noch keine solchen Routen. Wenn die Änderungsrate zu hoch ist, oder andere Gründe wie interne Fehler vorliegen, sendet der IoT Hub möglicherweise nur eine Benachrichtigung, die alle Änderungen enthält. Wenn Ihre Anwendung zuverlässige Prüfungen und Protokolle aller Zwischenzustände benötigt, sollten Sie D2C-Nachrichten verwenden. Die Zwillingsbenachrichtung umfasst Eigenschaften und einen Textkörper.
+* **Zwillingsbenachrichtigungen empfangen** . Mit diesem Vorgang kann das Lösungs-Back-End benachrichtigt werden, wenn der Zwilling geändert wird. Zu diesem Zweck muss Ihre IoT-Lösung eine Route erstellen die Datenquelle auf *twinChangeEvents* festlegen. Standardmäßig werden keine Zwillingsbenachrichtigungen gesendet, und es existieren noch keine solchen Routen. Wenn die Änderungsrate zu hoch ist, oder andere Gründe wie interne Fehler vorliegen, sendet der IoT Hub möglicherweise nur eine Benachrichtigung, die alle Änderungen enthält. Wenn Ihre Anwendung zuverlässige Prüfungen und Protokolle aller Zwischenzustände benötigt, sollten Sie D2C-Nachrichten verwenden. Die Zwillingsbenachrichtung umfasst Eigenschaften und einen Textkörper.
 
   - Eigenschaften
 
-    | NAME | Wert |
+    | Name | Wert |
     | --- | --- |
     $content-type | Anwendung/json |
     $iothub-enqueuedtime |  Uhrzeit, zu der die Benachrichtigung gesendet wurde |
@@ -186,7 +189,7 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
     moduleId | ID des Moduls |
     hubName | Name des IoT Hub |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601)-Zeitstempel des Vorgangs |
-    iothub-message-schema | deviceLifecycleNotification |
+    iothub-message-schema | twinChangeNotification |
     opType | "replaceTwin" oder "updateTwin" |
 
     Nachrichtensystemeigenschaften ist das Symbol `$` vorangestellt.
@@ -214,7 +217,7 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
     }
     ```
 
-Alle oben genannten Vorgänge unterstützen die [optimistische Nebenläufigkeit](iot-hub-devguide-device-twins.md#optimistic-concurrency) und erfordern die Berechtigung **ServiceConnect**, wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) definiert.
+Alle oben genannten Vorgänge unterstützen die [optimistische Nebenläufigkeit](iot-hub-devguide-device-twins.md#optimistic-concurrency) und erfordern die Berechtigung **ServiceConnect** , wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) definiert.
 
 Zusätzlich zu diesen Vorgängen kann das Lösungs-Back-End die Modulzwillinge über eine SQL-ähnliche [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md) abfragen.
 
@@ -224,11 +227,11 @@ Die Modul-App führt mithilfe folgender atomarer Vorgänge Aktionen für den Mod
 
 * **Abrufen des Modulzwillings:** Dieser Vorgang gibt das Dokument für den Modulzwilling für das derzeit verbundene Modul zurück (einschließlich Tags sowie gewünschter und gemeldeter Systemeigenschaften).
 
-* **Teilweises Aktualisieren gemeldeter Eigenschaften**. Dieser Vorgang ermöglicht die partielle Aktualisierung der gemeldeten Eigenschaften des derzeit verbundenen Moduls. Dabei wird das gleiche JSON-Updateformat wie bei der partiellen Aktualisierung der gewünschten Eigenschaften durch das Lösungs-Back-End verwendet.
+* **Teilweises Aktualisieren gemeldeter Eigenschaften** . Dieser Vorgang ermöglicht die partielle Aktualisierung der gemeldeten Eigenschaften des derzeit verbundenen Moduls. Dabei wird das gleiche JSON-Updateformat wie bei der partiellen Aktualisierung der gewünschten Eigenschaften durch das Lösungs-Back-End verwendet.
 
-* **Beobachten gewünschter Eigenschaften**. Das derzeit verbundene Modul kann auf Wunsch benachrichtigt werden, sobald die gewünschten Eigenschaften aktualisiert werden. Das Modul erhält die gleiche Form der Aktualisierung (partielle oder vollständige Ersetzung), die durch das Lösungs-Back-End ausgeführt wird.
+* **Beobachten gewünschter Eigenschaften** . Das derzeit verbundene Modul kann auf Wunsch benachrichtigt werden, sobald die gewünschten Eigenschaften aktualisiert werden. Das Modul erhält die gleiche Form der Aktualisierung (partielle oder vollständige Ersetzung), die durch das Lösungs-Back-End ausgeführt wird.
 
-Alle oben genannten Vorgänge erfordern die Berechtigung **ModuleConnect**, wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) definiert.
+Alle oben genannten Vorgänge erfordern die Berechtigung **ModuleConnect** , wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) definiert.
 
 Die [Azure IoT-Geräte-SDKs](iot-hub-devguide-sdks.md) vereinfachen die Verwendung der oben beschriebenen Vorgänge, die mit vielen Sprachen und Plattformen erstellt wurden.
 
@@ -236,39 +239,61 @@ Die [Azure IoT-Geräte-SDKs](iot-hub-devguide-sdks.md) vereinfachen die Verwendu
 
 Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mit den folgenden Einschränkungen:
 
-* Alle Schlüssel in JSON-Objekten sind UTF-8 UNICODE-Zeichenfolgen mit 64 Bytes, bei denen die Groß- und Kleinschreibung berücksichtigt werden muss. UNICODE-Steuerzeichen (Segmente C0 und C1) sowie `.` und `$` gehören nicht zu den zulässigen Zeichen.
+* **Schlüssel** : Alle Schlüssel in JSON-Objekten sind UTF-8-codiert, die Groß-/Kleinschreibung muss beachtet werden, und ihre Länge beträgt bis zu 1 KB. UNICODE-Steuerzeichen (Segmente C0 und C1) sowie `.`, `$` und „SP“ gehören nicht zu den zulässigen Zeichen.
 
-* Alle Werte in JSON-Objekten können die folgenden JSON-Typen aufweisen: boolescher Wert, Zahl, Zeichenfolge, Objekt. Arrays sind nicht zulässig. Der maximale Wert für ganze Zahlen ist 4503599627370495 und der minimale Wert für ganze Zahlen ist -4503599627370496.
+* **Werte** : Alle Werte in JSON-Objekten können die folgenden JSON-Typen aufweisen: boolescher Wert, Zahl, Zeichenfolge, Objekt. Arrays werden ebenfalls unterstützt.
 
-* Alle JSON-Objekte in Tags, gewünschten und gemeldeten Eigenschaften können eine maximale Tiefe von 5 haben. Das folgende Objekt ist z.B. gültig:
+    * Ganze Zahlen können den Minimalwert „-4503599627370496“ und den Maximalwert „4503599627370495“ haben.
 
-    ```json
-    {
-        ...
-        "tags": {
-            "one": {
-                "two": {
-                    "three": {
-                        "four": {
-                            "five": {
-                                "property": "value"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        ...
-    }
-    ```
+    * Zeichenfolgenwerte sind UTF-8-codiert und können eine maximale Länge von 4 Bytes haben.
 
-* Alle Zeichenfolgenwerte können höchstens 512Byte lang sein.
+* **Tiefe** : Die maximale Tiefe von JSON-Objekten in Tags, gewünschten Eigenschaften und gemeldeten Eigenschaften ist „10“. Das folgende Objekt beispielsweise ist gültig:
+
+   ```json
+   {
+       ...
+       "tags": {
+           "one": {
+               "two": {
+                   "three": {
+                       "four": {
+                           "five": {
+                               "six": {
+                                   "seven": {
+                                       "eight": {
+                                           "nine": {
+                                               "ten": {
+                                                   "property": "value"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       },
+       ...
+   }
+   ```
 
 ## <a name="module-twin-size"></a>Größe des Modulzwillings
 
-IoT Hub erzwingt eine Größenbegrenzung von je 8 KB für die jeweiligen Gesamtwerte von `tags`, `properties/desired` und `properties/reported`, ausgenommen schreibgeschützte Elemente.
+IoT Hub erzwingt eine Größenbeschränkung von 8 KB auf den Wert `tags` und eine Größenbeschränkung von jeweils 32 KB auf die Werte `properties/desired` und `properties/reported`. In diesen Summen sind keine schreibgeschützten Elemente wie `$etag`, `$version` und `$metadata/$lastUpdated` enthalten.
 
-Die Größe wird durch Zusammenzählen aller Zeichen mit Ausnahme von UNICODE-Steuerzeichen (Segmente C0 und C1) und Leerzeichen außerhalb von Zeichenfolgenkonstanten berechnet.
+Die Größe von Zwillingen wird folgendermaßen berechnet:
+
+* Für jede Eigenschaft im JSON-Dokument berechnet IoT Hub kumulativ und addiert die Länge des Eigenschaftenschlüssels und Eigenschaftswerts.
+
+* Eigenschaftenschlüssel werden als UTF8-codierte Zeichenfolgen betrachtet.
+
+* Einfache Eigenschaftswerte werden als UTF8-codierte Zeichenfolgen, numerische Werte (8 Bytes) oder boolesche Werte (4 Bytes) betrachtet.
+
+* Die Größe der UTF8-codierten Zeichenfolgen wird berechnet, indem alle Zeichen gezählt werden – ausgenommen UNICODE-Steuerzeichen (Segmente C0 und C1).
+
+* Komplexe Eigenschaftswerte (geschachtelte Objekte) werden basierend auf der Aggregatgröße der darin enthaltenen Eigenschaftenschlüssel und Eigenschaftswerte berechnet.
 
 IoT Hub gibt für alle Vorgänge, die die Größe dieser Dokumente über den Grenzwert hinaus erhöhen würden, einen Fehler zurück.
 

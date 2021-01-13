@@ -1,26 +1,25 @@
 ---
 title: Erste Schritte mit der automatischen Skalierung in Azure
 description: Informationen zum Skalieren Ihrer Ressource Web-App, Clouddienst, virtueller Computer oder VM-Skalierungsgruppe in Azure.
-author: rajram
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/07/2017
-ms.author: rajram
 ms.subservice: autoscale
-ms.openlocfilehash: 0535c84a8ee0776c2c35a46d3c7510a2cd615cf6
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: ee36db3f657365036bb68f641be53fd434f1b64b
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60788493"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694924"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
 
-Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](../../api-management/api-management-key-concepts.md).
 
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>Ermitteln der Einstellungen der automatischen Skalierung in Abonnements
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4u7ts]
+
 Sie können alle Ressourcen ermitteln, für die die automatische Skalierung in Azure Monitor angewendet wird. Befolgen Sie die folgenden Schritte für eine ausführliche exemplarische Vorgehensweise:
 
 1. Öffnen Sie das [Azure-Portal][1].
@@ -34,8 +33,8 @@ Sie können alle Ressourcen ermitteln, für die die automatische Skalierung in A
 Zu jeder Ressource finden Sie die aktuelle Anzahl der Instanzen sowie den jeweiligen Autoskalierungsstatus. Der Autoskalierungsstatus kann wie folgt lauten:
 
 - **Nicht konfiguriert:** Sie haben die automatische Skalierung für diese Ressource noch nicht aktiviert.
-- **Aktiviert:** Sie haben die automatische Skalierung für diese Ressource aktiviert.
-- **Deaktiviert**: Sie haben die automatische Skalierung für diese Ressource deaktiviert.
+- **Enabled**: Sie haben die automatische Skalierung für diese Ressource aktiviert.
+- **Disabled**: Sie haben die automatische Skalierung für diese Ressource deaktiviert.
 
 ## <a name="create-your-first-autoscale-setting"></a>Erstellen Ihrer ersten Autoskalierungseinstellung
 
@@ -46,7 +45,7 @@ Nun können Sie eine einfache schrittweise exemplarische Vorgehensweise zum Erst
   ![Skalierungseinstellung für die neue Web-App][5]
 1. Geben Sie einen Namen für die Skalierungseinstellung an, und klicken Sie dann auf **Regel hinzufügen**. Beachten Sie die Optionen für die Skalierungsregel, die auf der rechten Seite als Kontextbereich geöffnet wird. Standardmäßig wird die Option zum Skalieren der Anzahl Ihrer Instanzen auf „1“ festgelegt, wenn der CPU-Prozentsatz der Ressource 70 % überschreitet. Behalten Sie die Standardwerte bei, und klicken Sie auf **Hinzufügen**.
   ![Erstellen der Skalierungseinstellung für eine Web-App][6]
-1. Nun haben Sie Ihre erste Skalierungsregel erstellt. Beachten Sie, dass die UX bewährte Methoden empfiehlt und angibt, dass empfohlen wird, mindestens eine Skala in der Regel einzufügen. Gehen Sie dazu wie folgt vor:
+1. Nun haben Sie Ihre erste Skalierungsregel erstellt. Beachten Sie, dass die UX bewährte Methoden empfiehlt und angibt, dass empfohlen wird, mindestens eine Regel zum Abskalieren zu verwenden. Gehen Sie folgendermaßen vor:
 
     a. Klicken Sie auf **Hinzufügen einer Regel**
 
@@ -114,6 +113,53 @@ Nun können Sie die Anzahl der Instanzen festlegen, die manuell skaliert werden 
 
 Sie können immer zur automatischen Skalierung zurückkehren, indem Sie auf **Automatische Skalierung aktivieren** und dann auf **Speichern** klicken.
 
+## <a name="route-traffic-to-healthy-instances-app-service"></a>Weiterleiten von Datenverkehr an fehlerfreie Instanzen (App Service)
+
+Wenn Sie auf mehrere Instanzen aufskalieren, kann App Service Integritätsprüfungen für Ihre Instanzen durchführen, damit Datenverkehr nur an die fehlerfreien Instanzen weitergeleitet wird. Öffnen Sie hierzu im Portal Ihre App Service-Instanz, und wählen Sie dann **Integrität überprüfen** unter **Überwachung** aus. Wählen Sie **Aktivieren** aus, und geben Sie einen gültigen URL-Pfad für die Anwendung an, z. B. `/health` oder `/api/health`. Klicken Sie auf **Speichern**.
+
+Um die Funktion mit ARM-Vorlagen zu aktivieren, legen Sie die Eigenschaft `healthcheckpath` der `Microsoft.Web/sites`-Ressource auf den Pfad der Integritätsüberprüfung für Ihren Standort fest, z. B. `"/api/health/"`. Zum Deaktivieren der Funktion legen Sie die Eigenschaft wieder auf eine leere Zeichenfolge (`""`) fest.
+
+### <a name="health-check-path"></a>Pfad der Integritätsüberprüfung
+
+Der Pfad muss innerhalb einer Minute mit einem Statuscode zwischen 200 und 299 (einschließlich) antworten. Sollte der Pfad nicht innerhalb einer Minute antworten oder einen Statuscode außerhalb des Bereichs zurückgeben, gilt die Instanz als fehlerhaft. App Service folgt nicht den Umleitungen von 30x (301, 302, 307 usw.) zum Pfad der Integritätsüberprüfung. Diese Statuscodes gelten als **fehlerhaft**. Die Integritätsüberprüfung ist in die Authentifizierungs- und Autorisierungsfeatures von App Service integriert. Das System erreicht den Endpunkt auch dann, wenn diese Sicherheitsfeatures aktiviert sind. Wenn Sie ein eigenes Authentifizierungssystem verwenden, muss der Pfad der Integritätsüberprüfung anonymen Zugriff zulassen. Wenn für den Standort „Nur HTTP **S**“ aktiviert ist, wird die Anforderung einer Integritätsprüfung über HTTP **S** gesendet.
+
+Der Pfad der Integritätsüberprüfung sollte die kritischen Komponenten der Anwendung überprüfen. Wenn Ihre Anwendung z. B. von einer Datenbank und einem Messagingsystem abhängig ist, sollte der Endpunkt der Integritätsüberprüfung eine Verbindung mit diesen Komponenten herstellen. Wenn die Anwendung keine Verbindung mit einer kritischen Komponente herstellen kann, sollte der Pfad einen Antwortcode auf 500-Ebene zurückgeben, um damit anzugeben, dass die App fehlerhaft ist.
+
+#### <a name="security"></a>Sicherheit 
+
+Entwicklungsteams in großen Unternehmen müssen häufig Sicherheitsanforderungen für die verfügbar gemachten APIs erfüllen. Um den Endpunkt der Integritätsprüfung zu sichern, sollten Sie zunächst Features wie [IP-Einschränkungen](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule), [Clientzertifikate](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule) oder ein virtuelles Netzwerk verwenden, um den Zugriff auf die Anwendung einzuschränken. Sie können den Endpunkt der Integritätsprüfung selbst sichern, indem Sie anfordern, dass der `User-Agent` der eingehenden Anforderung `ReadyForRequest/1.0` entspricht. Der Benutzer-Agent kann nicht manipuliert werden, da die Anforderung bereits durch die vorherigen Sicherheitsfeatures gesichert wurde.
+
+### <a name="behavior"></a>Verhalten
+
+Wenn der Pfad der Integritätsprüfung angegeben ist, sendet App Service auf allen Instanzen ein Ping an den Pfad. Wenn nach 5 Pings kein erfolgreicher Antwortcode empfangen wird, gilt diese Instanz als fehlerhaft. Fehlerhafte Instanzen werden von der Load Balancer-Rotation ausgeschlossen, wenn Sie auf 2 oder mehr Instanzen aufskaliert haben und mindestens den [Basic-Tarif](../../app-service/overview-hosting-plans.md) verwenden. Sie können die erforderliche Anzahl fehlerhafter Pings mit der App-Einstellung `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` konfigurieren. Diese App-Einstellung kann auf eine beliebige Ganzzahl zwischen 2 und 10 festgelegt werden. Wenn sie beispielsweise auf `2` festgelegt wird, werden die Instanzen nach zwei fehlgeschlagenen Pings aus dem Lastenausgleich entfernt. Wenn Sie darüber hinaus zentral oder horizontal hochskalieren, pingt App Service den Pfad der Integritätsüberprüfung, um sicherzustellen, dass die neuen Instanzen für Anforderungen bereit sind, bevor sie zum Lastenausgleich hinzugefügt werden.
+
+> [!NOTE]
+> Denken Sie daran, dass der App Service-Plan auf mindestens 2 Instanzen aufskaliert und **mindestens der Basic-Tarif** verwendet werden muss, damit der Lastenausgleichsausschluss erfolgt. Wenn Sie nur über eine Instanz verfügen, wird diese auch dann nicht aus dem Lastenausgleich entfernt, wenn sie fehlerhaft ist. 
+
+Außerdem wird der Pfad der Integritätsüberprüfung gepingt, wenn Instanzen hinzugefügt oder neu gestartet werden, z. B. bei Aufskalierungen, manuellen Neustarts oder beim Bereitstellen von Code über die SCM-Site. Wenn bei der Integritätsprüfung während dieser Vorgänge ein Fehler auftritt, werden die fehlerhaften Instanzen nicht dem Lastenausgleich hinzugefügt. Dadurch wird verhindert, dass sich diese Vorgänge negativ auf die Verfügbarkeit Ihrer Anwendung auswirken.
+
+Bei Verwendung der Integritätsprüfung werden die verbleibenden fehlerfreien Instanzen möglicherweise stärker ausgelastet. Um zu vermeiden, dass die verbleibenden Instanzen überlastet werden, wird nicht mehr als die Hälfte der Instanzen ausgeschlossen. Wenn z. B. ein App Service-Plan auf vier Instanzen aufskaliert wird und drei fehlerhaft sind, werden höchstens zwei von der Lastenausgleichsrotation ausgeschlossen. Die anderen beiden Instanzen (1 fehlerfrei und 1 fehlerhaft) empfangen weiterhin Anforderungen. Sollten im ungünstigsten Fall alle Instanzen fehlerhaft sein, wird keine Instanz ausgeschlossen. Wenn Sie dieses Verhalten überschreiben möchten, können Sie die App-Einstellung `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` auf einen Wert zwischen `0` und `100` festlegen. Ein höherer Wert führt dazu, dass mehr fehlerhafte Instanzen entfernt werden. (Der Standardwert ist „50“.)
+
+Wenn bei den Integritätsprüfungen für alle Apps einer Instanz eine Stunde lang Fehler auftreten, wird die Instanz ersetzt. Pro Stunde wird höchstens eine Instanz ersetzt, wobei der Maximalwert bei drei Instanzen pro Tag und App Service-Plan liegt.
+
+### <a name="monitoring"></a>Überwachung
+
+Nachdem Sie den Pfad der Integritätsüberprüfung der Anwendung angegeben haben, können Sie die Integrität Ihres Standorts mithilfe von Azure Monitor überwachen. Klicken Sie im Portal auf dem Blatt **Integrität überprüfen** auf der oberen Symbolleiste auf **Metriken**. Daraufhin wird ein neues Blatt geöffnet, auf dem Sie den Verlauf des Integritätsstatus der Site anzeigen und eine neue Warnungsregel erstellen können. Weitere Informationen zum Überwachen Ihrer Standorte finden Sie im [Handbuch zu Azure Monitor](../../app-service/web-sites-monitor.md).
+
+## <a name="moving-autoscale-to-a-different-region"></a>Verschieben der Autoskalierung in eine andere Region
+In diesem Abschnitt wird beschrieben, wie Sie die Autoskalierung von Azure in eine andere Region im selben Abonnement und in derselben Ressourcengruppe verschieben. Sie können die Einstellungen für die Autoskalierung mithilfe der REST-API verschieben.
+### <a name="prerequisite"></a>Voraussetzungen
+1. Stellen Sie sicher, dass das Abonnement und die Ressourcengruppe verfügbar sind und die Details in der Quell- und der Zielregion identisch sind.
+1. Stellen Sie sicher, dass die Autoskalierung von Azure in der [Azure-Zielregion für das Verschieben](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all) verfügbar ist.
+
+### <a name="move"></a>Move
+Erstellen Sie mithilfe der [REST-API](/rest/api/monitor/autoscalesettings/createorupdate) eine Autoskalierungseinstellung in der neuen Umgebung. Die in der Zielregion erstellte Einstellung für die Autoskalierung ist eine Kopie der Autoskalierungseinstellung in der Quellregion.
+
+[Diagnoseeinstellungen](./diagnostic-settings.md), die in Verbindung mit der Autoskalierungseinstellung in der Quellregion erstellt wurden, können nicht verschoben werden. Sie müssen die Diagnoseeinstellungen nach Abschluss der Erstellung der Autoskalierungseinstellungen in der Zielregion neu erstellen. 
+
+### <a name="learn-more-about-moving-resources-across-azure-regions"></a>Weitere Informationen zum Verschieben von Ressourcen zwischen Azure-Regionen
+Weitere Informationen zum Verschieben von Ressourcen zwischen Regionen und zur Notfallwiederherstellung in Azure finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen einer Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Autoskalierungs-Vorgänge zum horizontalen Herunterskalieren und horizontalen Hochskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind, zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
@@ -122,7 +168,7 @@ Sie können immer zur automatischen Skalierung zurückkehren, indem Sie auf **Au
 [1]:https://portal.azure.com
 [2]: ./media/autoscale-get-started/azure-monitor-launch.png
 [3]: ./media/autoscale-get-started/discover-autoscale-azure-monitor.png
-[4]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-dotnet
+[4]: ../../app-service/quickstart-dotnetcore.md
 [5]: ./media/autoscale-get-started/scale-setting-new-web-app.png
 [6]: ./media/autoscale-get-started/create-scale-setting-web-app.png
 [7]: ./media/autoscale-get-started/scale-in-recommendation.png
@@ -133,4 +179,3 @@ Sie können immer zur automatischen Skalierung zurückkehren, indem Sie auf **Au
 [12]: ./media/autoscale-get-started/scale-definition-json.png
 [13]: ./media/autoscale-get-started/disable-autoscale.png
 [14]: ./media/autoscale-get-started/set-manualscale.png
-

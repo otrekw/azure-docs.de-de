@@ -1,0 +1,164 @@
+---
+title: Analysieren von Daten mit Azure Machine Learning
+description: Verwenden Sie Azure Machine Learning, um ein Predictive Machine Learning-Modell basierend auf in Azure Synapse gespeicherten Daten zu erstellen.
+services: synapse-analytics
+author: mlee3gsd
+manager: craigg
+ms.service: synapse-analytics
+ms.topic: conceptual
+ms.subservice: machine-learning
+ms.date: 07/15/2020
+ms.author: martinle
+ms.reviewer: igorstan
+ms.custom: seo-lt-2019
+tag: azure-Synapse
+ms.openlocfilehash: ea4038e88d41a089958d4199e4c5a00f0d2acabd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015565"
+---
+# <a name="analyze-data-with-azure-machine-learning"></a>Analysieren von Daten mit Azure Machine Learning
+
+In diesem Tutorial wird [Azure Machine Learning-Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) verwendet, um ein Predictive Machine Learning-Modell zu erstellen. Das Modell basiert auf den in Azure Synapse gespeicherten Daten. Das Szenario für das Tutorial besteht darin vorherzusagen, ob ein Kunde wahrscheinlich ein Fahrrad kauft oder nicht, damit Adventure Works, der Fahrradladen, eine gezielte Marketingkampagne erstellen kann.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Zum Durchlaufen dieses Tutorials benötigen Sie Folgendes:
+
+* einen SQL-Pool, der mit AdventureWorksDW-Beispieldaten vorab geladen wurde. Informationen zur Bereitstellung dieses SQL-Pools finden Sie unter [Erstellen eines SQL-Pools](create-data-warehouse-portal.md). Wählen Sie darin die Option zum Laden der Beispieldaten. Wenn Sie bereits ein Data Warehouse aber noch keine Beispieldaten haben, können Sie [Beispieldaten manuell laden](load-data-from-azure-blob-storage-using-polybase.md).
+* einen Azure Machine Learning-Arbeitsbereich. Folgen Sie [diesem Tutorial](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace), um einen neuen zu erstellen.
+
+## <a name="get-the-data"></a>Abrufen von Daten
+
+Die verwendeten Daten befinden sich in „AdventureWorksDW“ in der Ansicht „dbo.vTargetMail“. Um den Datenspeicher in diesem Tutorial verwenden zu können, werden die Daten zuerst in das Azure Data Lake Storage-Konto exportiert, da Azure Synapse zurzeit keine Datasets unterstützt. Azure Data Factory kann zum Exportieren von Daten aus dem Data Warehouse in Azure Data Lake Storage mithilfe der [Kopieraktivität](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) genutzt werden. Verwenden Sie die folgende Abfrage für den Import:
+
+```sql
+SELECT [CustomerKey]
+  ,[GeographyKey]
+  ,[CustomerAlternateKey]
+  ,[MaritalStatus]
+  ,[Gender]
+  ,cast ([YearlyIncome] as int) as SalaryYear
+  ,[TotalChildren]
+  ,[NumberChildrenAtHome]
+  ,[EnglishEducation]
+  ,[EnglishOccupation]
+  ,[HouseOwnerFlag]
+  ,[NumberCarsOwned]
+  ,[CommuteDistance]
+  ,[Region]
+  ,[Age]
+  ,[BikeBuyer]
+FROM [dbo].[vTargetMail]
+```
+
+Sobald die Daten in Azure Data Lake Storage zur Verfügung stehen, werden Datenspeicher in Azure Machine Learning verwendet, um [eine Verbindung mit Azure Storage-Diensten herzustellen](https://docs.microsoft.com/azure/machine-learning/how-to-access-data). Führen Sie die folgenden Schritte aus, um einen Datenspeicher und ein entsprechendes Dataset zu erstellen:
+
+1. Starten Sie Azure Machine Learning Studio entweder über das Azure-Portal, oder melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com/) an.
+
+1. Klicken Sie im linken Bereich des Abschnitts **Verwalten** auf **Datenspeicher** und dann auf **Neuer Datenspeicher**.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/datastores-tab.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle":::
+
+1. Geben Sie einen Namen für den Datenspeicher an, wählen Sie den Typ „Azure Blob Storage“ aus, und geben Sie den Speicherort und die Anmeldeinformationen an. Klicken Sie dann auf **Erstellen**.
+
+1. Klicken Sie anschließend im Abschnitt **Ressourcen** im linken Bereich auf **Datasets**. Wählen Sie **Dataset erstellen** mit der Option **Aus Datenspeicher** aus.
+
+1. Geben Sie den Namen des Datasets an, und wählen Sie als Typ **Tabellarisch** aus. Klicken Sie dann auf **Weiter**, um den Vorgang fortzusetzen.
+
+1. Wählen Sie im Abschnitt **Datenspeicher auswählen oder erstellen** die Option **Zuvor erstellter Datenspeicher** aus. Wählen Sie den zuvor erstellten Datenspeicher aus. Klicken Sie auf „Weiter“, und geben Sie Einstellungen für Pfad und Datei an. Vergessen Sie nicht, die Spaltenüberschrift anzugeben, wenn es eine in den Dateien gibt.
+
+1. Klicken Sie abschließend auf **Erstellen**, um das Dataset zu erstellen.
+
+## <a name="configure-designer-experiment"></a>Konfigurieren des Designerexperiments
+
+Führen Sie als Nächstes die folgenden Schritte für die Designerkonfiguration aus:
+
+1. Klicken Sie im Abschnitt **Autor** im linken Bereich auf die Registerkarte **Designer**.
+
+1. Wählen Sie **Easy-to-use-prebuild modules** (Benutzerfreundliche vorgefertigte Module) aus, um eine neue Pipeline zu erstellen.
+
+1. Geben Sie im Bereich „Einstellungen“ rechts den Namen der Pipeline an.
+
+1. Wählen Sie außerdem in der Schaltfläche „Einstellungen“ für einen zuvor bereitgestellten Cluster einen Zielcomputecluster für das gesamte Experiment aus. Schließen Sie den Bereich „Einstellungen“.
+
+## <a name="import-the-data"></a>Importieren der Daten
+
+1. Wählen Sie im linken Bereich unter dem Suchfeld die Unterregisterkarte **Datasets** aus.
+
+1. Ziehen Sie das zuvor erstellte Dataset in den Zeichenbereich.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/import-dataset.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle":::
+
+## <a name="clean-the-data"></a>Bereinigen der Daten
+
+Löschen Sie Spalten, die für das Modell nicht relevant sind, um die Daten zu bereinigen. Führen Sie dafür die folgenden Schritte aus:
+
+1. Wählen Sie im linken Bereich die Unterregisterkarte **Module** aus.
+
+1. Ziehen Sie unter **Datentransformation > Manipulation** das Modul **Select Columns in Dataset** in den Zeichenbereich. Verbinden Sie dieses Modul mit dem Modul **Dataset**.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-in.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-out.png":::
+
+1. Klicken Sie auf das Modul, um den Eigenschaftenbereich zu öffnen. Klicken Sie auf „Spalte bearbeiten“, um anzugeben, welche Spalten gelöscht werden sollen.
+
+1. Schließen Sie zwei Spalten aus: „CustomerAlternateKey“ und „GeographyKey“. Klicken Sie unten auf der Seite auf **Speichern**.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/drop-columns.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle":::
+
+## <a name="build-the-model"></a>Erstellen des Modells
+
+Die Daten werden „80–20“ aufgeteilt: 80 % zum Trainieren eines Machine Learning-Modells und 20 % zum Testen des Modells. In diesem binären Klassifizierungsproblem werden „Two-Class“-Algorithmen verwendet.
+
+1. Ziehen Sie das Modul **Split Data** in den Zeichenbereich.
+
+1. Geben Sie im Eigenschaftenbereich für **Fraction of rows in the first output dataset** (Anteil der Zeilen im ersten Ausgabedataset) den Wert „0,8“ ein.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/split-data.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle":::
+
+1. Ziehen Sie das Modul **Two-Class Boosted Decision Tree** in den Zeichenbereich.
+
+1. Ziehen Sie das Modul **Train Model** in den Zeichenbereich. Nehmen Sie Eingaben vor, indem Sie es mit den Modulen **Two-Class Boosted Decision Tree** (ML-Algorithmus) und **Split Data** (Daten zum Trainieren des Algorithmus) verbinden.
+
+1. Wählen Sie beim Modul „Train Model“ im Bereich „Eigenschaften“ die Option **Label column** (Spalte beschriften) und dann „Spalte bearbeiten“ aus. Wählen Sie die Spalte **BikeBuyer** (Fahrradkäufer) als die vorherzusagende Spalte und dann **Speichern** aus.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/label-column.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle":::
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle":::
+
+## <a name="score-the-model"></a>Bewertung des Modells
+
+Testen Sie jetzt die Leistung des Modells bei Testdaten. Es werden zwei verschiedene Algorithmen verglichen, um zu sehen, welche Leistung besser ist. Führen Sie dafür die folgenden Schritte aus:
+
+1. Ziehen Sie das Modul **Score Model** in den Zeichenbereich, und verbinden Sie es mit den Modulen **Train Model** und **Split Data**.
+
+1. Ziehen Sie **Two-Class Averaged Perceptron** (Gemitteltes Perzeptron mit zwei Klassen) in den Experimentbereich. Sie werden jetzt die Leistung dieses Algorithmus mit dem Modul „Two-Class Boosted Decision Tree“ vergleichen.
+
+1. Kopieren Sie die Module **Train Model** und **Score Model**, und fügen Sie sie im Zeichenbereich ein.
+
+1. Ziehen Sie das Modul **Evaluate Model** in den Zeichenbereich, um die beiden Algorithmen zu vergleichen.
+
+1. Klicken Sie auf **Übermitteln**, um die Pipelineausführung einzurichten.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-in.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-out.png":::
+
+1. Sobald die Ausführung abgeschlossen ist, klicken Sie mit der rechten Maustaste auf das Modul **Evaluate Model**, und klicken Sie auf **Visualize Evaluation results** (Auswertungsergebnisse visualisieren).
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/result-visualize-zoomed-out.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle":::
+
+Folgende Metriken stehen zur Verfügung: ROC-Kurve, Genauigkeit-Trefferquote-Diagramm und Prognosegütekurve. Beim Blick auf diese Metriken sehen Sie, dass mit dem ersten Modell eine bessere Leistung als mit dem zweiten erzielt wurde. Wenn Sie sich anschauen möchten, was das erste Modell vorhergesagt hat, klicken Sie mit der rechten Maustaste auf das Modul „Score Model“, und klicken Sie auf das Dataset „Visualize Scored“, um die vorhergesagten Ergebnisse anzuzeigen.
+
+Wie Sie sehen können, wurden Ihrem Testdatensatz zwei weitere Spalten hinzugefügt.
+
+* Bewertete Wahrscheinlichkeiten: Die Wahrscheinlichkeit, dass es sich bei einem Kunden um einen Fahrradkäufer handelt.
+* Bewertete Beschriftungen: die vom Modell vorgenommene Klassifizierung – Fahrradkäufer (1) oder kein Fahrradkäufer (0). Der Wahrscheinlichkeitsschwellenwert für die Beschriftung ist auf 50 Prozent festgelegt, kann aber angepasst werden.
+
+Durch einen Vergleich der Spalte „BikeBuyer“ (tatsächliche Werte) mit „Bewertete Beschriftungen“ (Vorhersage) können Sie die Leistung des Modells ermitteln. Als Nächstes können Sie anhand dieses Modells Vorhersagen für neue Kunden treffen. Sie können [dieses Modell als Webdienst veröffentlichen](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) oder Ergebnisse in Azure Synapse zurückschreiben.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zu Azure Machine Learning finden Sie unter [Einführung in Machine Learning in Azure](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).
+
+[Hier](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) erfahren Sie mehr über die integrierte Bewertung im Data Warehouse.

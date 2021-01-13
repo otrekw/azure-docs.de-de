@@ -1,20 +1,20 @@
 ---
-title: Was sind parallele Dokumente? - Custom Translator
+title: Was sind parallele Dokumente? – Custom Translator
 titleSuffix: Azure Cognitive Services
 description: Parallele Dokumente sind Dokumentpaare, bei denen ein Dokument die Übersetzung des anderen enthält. Das eine Dokument des Paars enthält also die Sätze in der Ausgangssprache und das andere die entsprechenden Sätze in der Zielsprache.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: fb54df2e1eb89d30e62ae80355635356343994ee
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6477432636db9592d9b0d9c1f90f5eee7d6e00db
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595451"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369000"
 ---
 # <a name="what-are-parallel-documents"></a>Was sind parallele Dokumente?
 
@@ -23,7 +23,7 @@ Es spielt keine Rolle, welche Sprache als „Quelle“ markiert ist und welche a
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
-Sie benötigen mindestens 10.000 eindeutige parallele Sätze zum Trainieren eines Systems. Als bewährte Methode empfehlen wir, kontinuierlich weitere parallele Inhalte hinzuzufügen und das Training erneut auszuführen, um die Qualität des Übersetzungssystems zu verbessern.
+Sie benötigen mindestens 10.000 eindeutige zugeordnete parallele Sätze, um ein System zu trainieren. Durch diese Einschränkung wird sichergestellt, dass Ihre parallelen Sätze genügend eindeutiges Vokabular zum erfolgreichen Trainieren eines Übersetzungsmodells enthalten. Es empfiehlt sich, kontinuierlich weitere parallele Inhalte hinzuzufügen und das Training erneut auszuführen, um die Qualität Ihres Übersetzungssystems zu verbessern. Weitere Informationen finden Sie unter [Satzpaarbildung und -zuordnung in parallelen Dokumenten](./sentence-alignment.md).
 
 Gemäß den Bestimmungen von Microsoft dürfen in Custom Translator hochgeladene Dokumente die Copyright-, Schutz- und Urheberrechte von Dritten nicht verletzen. Weitere Informationen finden Sie in den [Nutzungsbestimmungen](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
 Durch das Hochladen eines Dokuments über das Portal ändern sich die Rechte am geistigen Eigentum des Dokuments selbst nicht.

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 3cf136c5ddec8f4998d15c597914e1f806453945
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 85d7114f419266124d0d23368b24700af025758a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631582"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961038"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>Ändern der DATA 0-Netzwerkschnittstelleneinstellungen auf einem StorSimple-Gerät der 8000-Serie
 
@@ -64,9 +64,8 @@ Sie können die DATA 0-Netzwerkschnittstelle auch mithilfe des Cmdlets `Set-Hcs
    * Feste IPv4-Adresse für Controller 0
    * Feste IPv4-Adresse für Controller 1
      
-     Weitere Informationen zur Verwendung dieses Cmdlets finden Sie in der [Cmdlet-Referenz für Windows PowerShell für StorSimple](https://technet.microsoft.com/library/dn688161.aspx).
+     Weitere Informationen zur Verwendung dieses Cmdlets finden Sie in der [Cmdlet-Referenz für Windows PowerShell für StorSimple](/previous-versions/windows/powershell-scripting/dn688161(v=wps.630)).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Um Netzwerkschnittstellen nicht als DATA 0 zu konfigurieren, können Sie die Option zum [Konfigurieren von Netzwerkeinstellungen im Azure-Portal](storsimple-8000-modify-device-config.md) verwenden. 
-* Wenn beim Konfigurieren der Netzwerkschnittstellen Probleme auftreten, lesen Sie die Informationen unter [Beheben von Bereitstellungsproblemen](storsimple-troubleshoot-deployment.md).
-
+* Wenn beim Konfigurieren der Netzwerkschnittstellen Probleme auftreten, lesen Sie die Informationen unter [Beheben von Bereitstellungsproblemen](./storsimple-8000-troubleshoot-deployment.md).

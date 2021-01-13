@@ -1,370 +1,179 @@
 ---
-title: Erzwingen der App-Schutzrichtlinie für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs in Azure Active Directory | Microsoft-Dokumentation
+title: App-Schutzrichtlinien mit bedingtem Zugriff – Azure Active Directory
 description: Erfahren Sie, wie Sie die App-Schutzrichtlinie für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs in Azure Active Directory erzwingen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 4/4/2019
+ms.topic: how-to
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: spunukol
+ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e8b7cc1f3a8431986ffbaac604ec5863236f112
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 672a3f95efad24c07379fafe8b22088dc731c2df
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357103"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881160"
 ---
-# <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Erzwingen der App-Schutzrichtlinie für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs (Vorschauversion)
+# <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Gewusst wie: Erzwingen einer App-Schutzrichtlinie und einer genehmigten Client-App für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
-Ihre Mitarbeiter verwenden mobile Geräte sowohl für private als auch für berufliche Zwecke. Während Sie einerseits die Produktivität der Mitarbeiter sicherstellen möchten, sollten Sie andererseits Datenverluste vermeiden. Mit dem bedingten Zugriff mit Azure Active Directory (Azure AD) können Sie Ihre Unternehmensdaten schützen, indem Sie den Zugriff auf Ihre Cloud-Apps einschränken. Verwenden Sie Client-Apps zuerst mit einer Schutzrichtlinie für Anwendungen.
+Viele Menschen verwenden mobile Geräte sowohl für private als auch für berufliche Zwecke. Organisationen möchten natürlich sicherstellen, dass die Mitarbeiter produktiv arbeiten können, aber gleichzeitig auch verhindern, dass Datenverluste durch potenziell unsichere Anwendungen vermieden werden. Mit bedingtem Zugriff können Organisationen den Zugriff auf genehmigte (modern authentifizierungsfähige) Client-Apps mithilfe von Intune-App-Schutzrichtlinien einschränken, die auf solche Apps angewandt werden.
 
-In diesem Artikel wird das Konfigurieren von Richtlinien für bedingten Zugriff erläutert, bei denen vor dem Erteilen des Zugriffs auf Daten eine App-Schutzrichtlinie erforderlich ist.
+Dieser Artikel enthält drei Szenarien zum Konfigurieren von Richtlinien für den bedingten Zugriff auf Ressourcen wie Microsoft 365, Exchange Online und SharePoint.
 
-## <a name="overview"></a>Übersicht
+- [Szenario 1: Microsoft 365-Apps erfordern genehmigte Apps mit App-Schutzrichtlinien.](#scenario-1-microsoft-365-apps-require-approved-apps-with-app-protection-policies)
+- [Szenario 2: Browser-Apps erfordern genehmigte Apps mit App-Schutzrichtlinien.](#scenario-2-browser-apps-require-approved-apps-with-app-protection-policies)
+- [Szenario 3: Exchange Online und SharePoint erfordern eine genehmigte Client-App und eine App-Schutzrichtlinie.](#scenario-3-exchange-online-and-sharepoint-require-an-approved-client-app-and-app-protection-policy)
 
-Mit dem [bedingten Zugriff von Azure AD](overview.md) können Sie präzise steuern, wie autorisierte Benutzer auf Ihre Ressourcen zugreifen können. Sie können z.B. den Zugriff auf Ihre Cloud-Apps auf vertrauenswürdige Geräte beschränken.
+Bei bedingtem Zugriff sind diese Client-Apps bekanntermaßen durch eine App-Schutzrichtlinie geschützt. Weitere Informationen zu App-Schutzrichtlinien finden Sie im Artikel [Übersicht über App-Schutzrichtlinien](/intune/apps/app-protection-policy).
 
-Zum Schutz Ihrer Unternehmensdaten können Sie [Intune-Richtlinien für den App-Schutz](https://docs.microsoft.com/intune/app-protection-policy) verwenden. Die Schutzrichtlinien für Intune-Apps erfordern keine MDM-Lösung (mobile Geräteverwaltung). Sie können die Daten Ihres Unternehmens mit oder ohne Registrierung von Geräten in einer Geräteverwaltungslösung schützen.
-
-Der bedingte Zugriff von Azure Active Directory beschränkt den Zugriff auf Ihre Cloud-Apps auf Clientanwendungen, die Intune an Azure AD als Empfänger einer App-Schutzrichtlinie gemeldet hat. Sie können zum Beispiel den Zugriff auf Exchange Online auf die Outlook-App beschränken, die eine Intune-App-Schutzrichtlinie aufweist.
-
-In der Terminologie des bedingten Zugriffs sind diese Client-Apps bekanntermaßen durch eine *App-Schutzrichtlinie* geschützt.  
-
-![Bedingter Zugriff](./media/app-protection-based-conditional-access/05.png)
-
-Eine Liste der durch Richtlinien geschützten Client-Apps finden Sie unter [App-Schutzrichtlinie als Voraussetzung](technical-reference.md#approved-client-app-requirement).
-
-Sie können Richtlinien für auf App-Schutz basierenden bedingten Zugriff mit anderen Richtlinien wie etwa [gerätebasierten Richtlinien für bedingten Zugriff](require-managed-devices.md) kombinieren. Auf diese Weise können Sie die Flexibilität beim Schutz von Daten für private und Unternehmensgeräte bereitstellen.
+> [!WARNING]
+> Nicht alle Anwendungen werden als genehmigte Anwendungen unterstützt oder unterstützen Anwendungsschutzrichtlinien. Eine Liste der qualifizierten Client-Apps finden Sie unter [App-Schutzrichtlinie als Voraussetzung](concept-conditional-access-grant.md#require-app-protection-policy).
 
 > [!NOTE]
-> App-Schutzrichtlinien für bedingten Zugriff können nicht auf B2B-Benutzer angewendet werden, da die einladende Organisation keinen Einblick in die Organisation des B2B-Benutzers hat.
+> Die Option „Eine der ausgewählten Steuerungen anfordern“ unter den Zugriffserteilungssteuerungen funktioniert wie eine ODER-Klausel. Sie wird innerhalb einer Richtlinie verwendet, um Benutzern die Verwendung von Apps zu ermöglichen, welche die Zugriffserteilungssteuerungen **App-Schutzrichtlinie erforderlich** bzw. **Genehmigte Client-App erforderlich** unterstützen. **App-Schutzrichtlinie erforderlich** wird erzwungen, wenn eine App in beiden Richtlinien unterstützt wird. Weitere Informationen zu den Apps, welche die Zugriffserteilungssteuerung **App-Schutzrichtlinie erforderlich** unterstützen, finden Sie unter [App-Schutzrichtlinie als Voraussetzung](concept-conditional-access-grant.md#require-app-protection-policy).
 
-## <a name="benefits-of-app-protection-based-conditional-access-requirement"></a>Vorteile des auf App-Schutz basierenden bedingten Zugriffs als Voraussetzung
+## <a name="scenario-1-microsoft-365-apps-require-approved-apps-with-app-protection-policies"></a>Szenario 1: Microsoft 365-Apps erfordern genehmigte Apps mit App-Schutzrichtlinien.
 
-Ähnlich wie bei Compliance, die von Intune für iOS und Android für ein verwaltetes Gerät gemeldet wird, teilt Intune Azure AD jetzt mit, ob eine App-Schutzrichtlinie angewendet wird. Für den bedingten Zugriff kann diese Richtlinie als Zugriffsüberprüfung verwendet werden. Diese neue Richtlinie für bedingten Zugriff, die App-Schutzrichtlinie, erhöht die Sicherheit. Sie schützt vor Administratorfehlern, z. B.:
+In diesem Szenario hat Contoso beschlossen, dass der gesamte mobile Zugriff auf Microsoft 365-Ressourcen genehmigte Client-Apps wie Outlook Mobile oder OneDrive erfordert, die durch eine App-Schutzrichtlinie geschützt sind. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
 
-- Benutzer ohne Intune-Lizenz.
-- Benutzer, die keine Schutzrichtlinie für die Intune-App erhalten können.
-- Apps mit Intune-App-Schutzrichtlinie, die nicht für den Erhalt einer Richtlinie konfiguriert sind.
+Organisationen müssen die folgenden Schritte ausführen, um die Verwendung einer genehmigten Client-App auf mobilen Geräten zu erzwingen.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+**Schritt 1: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Microsoft 365**
 
-In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind:
-
-- Der technischen Referenz [App-Schutzrichtlinie als Voraussetzung](technical-reference.md#app-protection-policy-requirement)
-- Der technischen Referenz [Genehmigte Client-App als Voraussetzung](technical-reference.md#approved-client-app-requirement)
-- Den grundlegenden Konzepten des [bedingten Zugriffs in Azure Active Directory](overview.md).
-- Der Vorgehensweise zum [Konfigurieren einer Richtlinie zum bedingten Zugriff](app-based-mfa.md).
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-Um eine Richtlinie für auf App-Schutz basierenden bedingten Zugriff erstellen zu können, müssen Sie:
-
-- Über ein Enterprise Mobility + Security- oder ein Azure Active Directory Premium-Abonnement und Intune verfügen
-- Sicherstellen, dass die Benutzer für Enterprise Mobility + Security oder Azure AD + Intune lizenziert sind
-- Sicherstellen, dass die Client-App in Intune für den Erhalt einer App-Schutzrichtlinie konfiguriert ist
-- Sicherstellen, dass die Benutzer in Intune für den Erhalt einer Intune-App-Schutzrichtlinie konfiguriert wurden
-
-## <a name="app-protection-based-policy-for-exchange-online"></a>Auf App-Schutz basierende Richtlinie für Exchange Online
-
-Dieses Szenario besteht aus einer Richtlinie für auf App-Schutz basierenden bedingten Zugriff für den Zugriff auf Exchange Online.
-
-### <a name="scenario-playbook"></a>Szenario-Playbook
-
-Annahmen für den Benutzer in diesem Szenario:
-
-- Er konfiguriert E-Mails mithilfe einer nativen E-Mail-Anwendung unter iOS oder Android, um eine Verbindung mit Exchange herzustellen.
-- Er erhält eine E-Mail mit dem Hinweis, dass der Zugriff nur über die Outlook-App möglich ist.
-- Er lädt die Anwendung über den Link herunter.
-- Er öffnet die Outlook-Anwendung und meldet sich mit Azure AD-Anmeldeinformationen an.
-- Er wird aufgefordert, entweder die **Microsoft Authenticator-App** oder das **Intune-Unternehmensportal** zu installieren, um den Vorgang fortzusetzen.
-- Er installiert die Anwendung und kehrt zur Outlook-App zurück, um den Vorgang fortzusetzen.
-- Er wird aufgefordert, ein Gerät zu registrieren.
-- Er kann eine Intune-App-Schutzrichtlinie erhalten.
-- Er kann auf E-Mails zugreifen.
-
-Alle Intune App-Schutzrichtlinien müssen für die Anwendung gelten, um auf Unternehmensdaten zugreifen zu können. Die Richtlinien fordern den Benutzer möglicherweise auf, die Anwendung neu zu starten oder eine zusätzliche PIN zu verwenden. Dies ist der Fall, wenn die Richtlinien für die Anwendung und die Plattform konfiguriert sind.
-
-### <a name="configuration"></a>Konfiguration
-
-**Schritt 1: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Exchange Online**
-
-Für die Richtlinie zum bedingten Zugriff in diesem Schritt konfigurieren Sie folgende Komponenten:
-
-![Bedingter Zugriff](./media/app-protection-based-conditional-access/01.png)
-
-1. Geben Sie den Namen Ihrer Richtlinie für den bedingten Zugriff ein.
-1. Wählen Sie unter **Zuweisungen** in **Benutzer und Gruppen** mindestens einen Benutzer oder eine Gruppe für jede Richtlinie für bedingten Zugriff aus.
-1. Wählen Sie in **Cloud-Apps** die Option **Office 365 Exchange Online** aus.
-
-   ![Bedingter Zugriff](./media/app-protection-based-conditional-access/07.png)
-
-1. Konfigurieren Sie in **Bedingungen** die Optionen **Geräteplattformen** und **Client-Apps (Vorschau)** :
-   1. Wählen Sie in **Geräteplattformen** die Optionen **Android** und **iOS** aus.
-
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/03.png)
-
-   1. Wählen Sie in **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Clients** und **Clients mit moderner Authentifizierung** aus.
-
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/91.png)
-
-1. Wählen Sie unter **Zugriffssteuerungen** die Option **App-Schutzrichtlinie erforderlich (Vorschau)** aus.
-
-   ![Bedingter Zugriff](./media/app-protection-based-conditional-access/05.png)
+1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
+1. Wählen Sie **Neue Richtlinie**.
+1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
+1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.
+   1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** oder bestimmte **Benutzer und Gruppen** aus, auf die Sie diese Richtlinie anwenden möchten. 
+   1. Wählen Sie **Fertig** aus.
+1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Office 365** aus.
+1. Wählen Sie unter **Bedingungen** die Option **Geräteplattformen** aus.
+   1. Legen Sie **Konfigurieren** auf **Ja** fest.
+   1. Schließen Sie **Android** und **iOS** ein.
+1. Klicken Sie unter **Bedingungen** auf **Client-Apps**.
+   1. Legen Sie **Konfigurieren** auf **Ja** fest.
+   1. Wählen Sie **Mobile Apps und Desktopclients** aus, und deaktivieren Sie alle anderen Optionen.
+1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die folgenden Optionen aus:
+   - **Genehmigte Client-App erforderlich**
+   - **App-Schutzrichtlinie erforderlich**
+   - **Eine der ausgewählten Steuerungen anfordern**
+1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
+1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 
 **Schritt 2: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Exchange Online mit ActiveSync (EAS)**
 
 Für die Richtlinie zum bedingten Zugriff in diesem Schritt konfigurieren Sie folgende Komponenten:
 
-![Bedingter Zugriff](./media/app-protection-based-conditional-access/06.png)
-
-1. Geben Sie den Namen Ihrer Richtlinie für den bedingten Zugriff ein.
-1. Wählen Sie unter **Zuweisungen** in **Benutzer und Gruppen** mindestens einen Benutzer oder eine Gruppe für jede Richtlinie für bedingten Zugriff aus.
-1. Wählen Sie in **Cloud-Apps** die Option **Office 365 Exchange Online** aus.
-
-   ![Bedingter Zugriff](./media/app-protection-based-conditional-access/07.png)
-
-1. Konfigurieren Sie in **Bedingungen** die Option **Client-Apps (Vorschau)** . 
-
-   1. Wählen Sie in **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Apps** und **Exchange ActiveSync-Clients** aus.
-
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/92.png)
-
-   1. Wählen Sie unter **Zugriffssteuerungen** die Option **App-Schutzrichtlinie erforderlich (Vorschau)** aus.
-
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/05.png)
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
+1. Wählen Sie **Neue Richtlinie**.
+1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
+1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.
+   1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** oder bestimmte **Benutzer und Gruppen** aus, auf die Sie diese Richtlinie anwenden möchten. 
+   1. Wählen Sie **Fertig** aus.
+1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Office 365 Exchange Online** aus.
+1. Klicken Sie unter **Bedingungen** auf **Client-Apps**:
+   1. Legen Sie **Konfigurieren** auf **Ja** fest.
+   1. Wählen Sie **Exchange ActiveSync-Clients** aus, und deaktivieren Sie alle anderen Optionen.
+1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die Option **Zugriff erteilen**, **App-Schutzrichtlinie erforderlich** aus, und wählen Sie dann **Auswählen** aus.
+1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
+1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 
 **Schritt 3: Konfigurieren der Intune-App-Schutzrichtlinie für iOS- und Android-Clientanwendungen**
 
-![Bedingter Zugriff](./media/app-protection-based-conditional-access/09.png)
-
-Weitere Informationen finden Sie unter [Schützen von Apps und Daten mit Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
-
-## <a name="app-protection-based-or-compliant-device-policy-for-exchange-online"></a>Auf App-Schutz basierende Richtlinie oder Richtlinie für konforme Geräte für Exchange Online
-
-Dieses Szenario besteht aus einer Richtlinie für auf App-Schutz basierenden bedingten Zugriff oder einer Richtlinie für bedingten Zugriff für konforme Geräte für den Zugriff auf Exchange Online.
-
-### <a name="scenario-playbook"></a>Szenario-Playbook
-
-Annahmen für dieses Szenario:
- 
-- Ein Benutzer ist bereits mit Unternehmensgeräten oder ohne registriert.
-- Benutzer, die nicht bei Azure AD registriert sind und eine durch eine App geschützte Anwendung verwenden, müssen ein Gerät registrieren, um auf Ressourcen zugreifen zu können.
-- Registrierte Benutzer, die die durch eine App geschützte Anwendung verwenden, müssen das Gerät nicht erneut registrieren.
-- Der Benutzer kann eine Intune-App-Schutzrichtlinie erhalten, wenn er nicht registriert ist.
-- Der Benutzer kann mit Outlook und einer Intune-App-Schutzrichtlinie auf E-Mails zugreifen, wenn er nicht registriert ist.
-- Der Benutzer kann mit Outlook auf E-Mails zugreifen, wenn das Gerät registriert ist.
-
-### <a name="configuration"></a>Konfiguration
-
-**Schritt 1: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Exchange Online**
-
-Für die Richtlinie zum bedingten Zugriff in diesem Schritt konfigurieren Sie folgende Komponenten:
-
-![Bedingter Zugriff](./media/app-protection-based-conditional-access/62.png)
-
-1. Geben Sie den Namen Ihrer Richtlinie für den bedingten Zugriff ein.
-1. Wählen Sie unter **Zuweisungen** in **Benutzer und Gruppen** mindestens einen Benutzer oder eine Gruppe für jede Richtlinie für bedingten Zugriff aus.
-1. Wählen Sie in **Cloud-Apps** die Option **Office 365 Exchange Online** aus. 
-
-   ![Bedingter Zugriff](./media/app-protection-based-conditional-access/07.png)
-
-1. Konfigurieren Sie in **Bedingungen** die Optionen **Geräteplattformen** und **Client-Apps (Vorschau)** . 
- 
-   1. Wählen Sie in **Geräteplattformen** die Optionen **Android** und **iOS** aus.
-
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/03.png)
-
-   1. Wählen Sie in **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Clients** und **Clients mit moderner Authentifizierung** aus.
-
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/91.png)
-
-5. Wählen Sie unter **Zugriffssteuerungen** die folgenden Optionen aus:
-   - **Markieren des Geräts als kompatibel erforderlich**
-   - **App-Schutzrichtlinie erforderlich (Vorschau)**
-   - **Eine der ausgewählten Steuerungen anfordern**   
- 
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/11.png)
-
-**Schritt 2: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Exchange Online mit ActiveSync**
-
-Für die Richtlinie zum bedingten Zugriff in diesem Schritt konfigurieren Sie folgende Komponenten:
-
-![Bedingter Zugriff](./media/app-protection-based-conditional-access/06.png)
-
-1. Geben Sie den Namen Ihrer Richtlinie für den bedingten Zugriff ein.
-1. Wählen Sie unter **Zuweisungen** in **Benutzer und Gruppen** mindestens einen Benutzer oder eine Gruppe für jede Richtlinie für bedingten Zugriff aus.
-1. Wählen Sie in **Cloud-Apps** die Option **Office 365 Exchange Online** aus. 
-
-   ![Bedingter Zugriff](./media/app-protection-based-conditional-access/07.png)
-
-1. Konfigurieren Sie in **Bedingungen** die Option **Client-Apps (Vorschau)** . 
-
-   Wählen Sie in **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Apps** und **Exchange ActiveSync-Clients** aus.
-
-   ![Bedingter Zugriff](./media/app-protection-based-conditional-access/92.png)
-
-1. Wählen Sie unter **Zugriffssteuerungen** die folgenden Optionen aus:
-   - **Markieren des Geräts als kompatibel erforderlich**
-   - **App-Schutzrichtlinie erforderlich (Vorschau)**
-   - **Eine der ausgewählten Steuerungen anfordern**
-
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/11.png)
-
-**Schritt 3: Konfigurieren der Intune-App-Schutzrichtlinie für iOS- und Android-Clientanwendungen**
-
-![Bedingter Zugriff](./media/app-protection-based-conditional-access/09.png)
-
-Weitere Informationen finden Sie unter [Schützen von Apps und Daten mit Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
-
-## <a name="app-protection-based-and-compliant-device-policy-for-exchange-online"></a>Auf App-Schutz basierende Richtlinie und Richtlinie für konforme Geräte für Exchange Online
-
-Dieses Szenario besteht aus einer Richtlinie für auf App-Schutz basierenden bedingten Zugriff und einer Richtlinie für bedingten Zugriff für konforme Geräte für den Zugriff auf Exchange Online.
-
-### <a name="scenario-playbook"></a>Szenario-Playbook
-
-Annahmen für den Benutzer in diesem Szenario:
- 
-- Er konfiguriert E-Mails mithilfe einer nativen E-Mail-Anwendung unter iOS oder Android, um eine Verbindung mit Exchange herzustellen.
-- Er erhält eine E-Mail mit dem Hinweis, dass das Gerät für den Zugriff registriert werden muss.
-- Er lädt das Intune-Unternehmensportal herunter und meldet sich beim Portal an.
-- Er ruft seine E-Mails ab und wird zur Verwendung der Outlook-App aufgefordert.
-- Er lädt die Outlook-App herunter.
-- Er öffnet die Outlook-App und gibt die bei der Registrierung verwendeten Anmeldeinformationen ein.
-- Er kann eine Intune-App-Schutzrichtlinie erhalten.
-- Er kann mit Outlook und einer Intune-App-Schutzrichtlinie auf E-Mails zugreifen.
-
-Alle Intune-App-Schutzrichtlinien werden aktiviert, bevor der Zugriff auf Unternehmensdaten gewährt wird. Die Richtlinien fordern den Benutzer möglicherweise auf, die Anwendung neu zu starten oder eine zusätzliche PIN zu verwenden. Dies ist der Fall, wenn die Richtlinien für die Anwendung und die Plattform konfiguriert sind.
-
-### <a name="configuration"></a>Konfiguration
-
-**Schritt 1: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Exchange Online**
-
-Für die Richtlinie zum bedingten Zugriff in diesem Schritt konfigurieren Sie folgende Komponenten:
-
-![Bedingter Zugriff](./media/app-protection-based-conditional-access/01.png)
-
-1. Geben Sie den Namen Ihrer Richtlinie für den bedingten Zugriff ein.
-1. Wählen Sie unter **Zuweisungen** in **Benutzer und Gruppen** mindestens einen Benutzer oder eine Gruppe für jede Richtlinie für bedingten Zugriff aus.
-1. Wählen Sie in **Cloud-Apps** die Option **Office 365 Exchange Online** aus. 
-
-   ![Bedingter Zugriff](./media/app-protection-based-conditional-access/07.png)
-
-1. Konfigurieren Sie in **Bedingungen** die Optionen **Geräteplattformen** und **Client-Apps (Vorschau)** . 
-   1. Wählen Sie in **Geräteplattformen** die Optionen **Android** und **iOS** aus.
-
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/03.png)
-
-   1. Wählen Sie in **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Clients** und **Clients mit moderner Authentifizierung** aus.
-
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/91.png)
-
-1. Wählen Sie unter **Zugriffssteuerungen** die folgenden Optionen aus:
-   - **Markieren des Geräts als kompatibel erforderlich**
-   - **App-Schutzrichtlinie erforderlich (Vorschau)**
-   - **Alle ausgewählten Kontrollen anfordern**   
- 
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/13.png)
-
-**Schritt 2: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Exchange Online mit ActiveSync**
-
-Für die Richtlinie zum bedingten Zugriff in diesem Schritt konfigurieren Sie folgende Komponenten:
-
-![Bedingter Zugriff](./media/app-protection-based-conditional-access/06.png)
-
-1. Geben Sie den Namen Ihrer Richtlinie für den bedingten Zugriff ein.
-1. Wählen Sie unter **Zuweisungen** in **Benutzer und Gruppen** mindestens einen Benutzer oder eine Gruppe für jede Richtlinie für bedingten Zugriff aus.
-1. Wählen Sie in **Cloud-Apps** die Option **Office 365 Exchange Online** aus. 
-
-   ![Bedingter Zugriff](./media/app-protection-based-conditional-access/07.png)
-
-1. Konfigurieren Sie in **Bedingungen** die Option **Client-Apps (Vorschau)** . 
-
-   Wählen Sie in **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Apps** und **Exchange ActiveSync-Clients** aus.
-
-   ![Bedingter Zugriff](./media/app-protection-based-conditional-access/92.png)
-
-1. Wählen Sie unter **Zugriffssteuerungen** die folgenden Optionen aus:
-   - **Markieren des Geräts als kompatibel erforderlich**
-   - **App-Schutzrichtlinie erforderlich (Vorschau)**
-   - **Alle ausgewählten Kontrollen anfordern**   
- 
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/13.png)
-
-**Schritt 3: Konfigurieren der Intune-App-Schutzrichtlinie für iOS- und Android-Clientanwendungen**
-
-![Bedingter Zugriff](./media/app-protection-based-conditional-access/09.png)
-
-Weitere Informationen finden Sie unter [Schützen von Apps und Daten mit Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
-
-## <a name="app-protection-based-or-app-based-policy-for-exchange-online-and-sharepoint-online"></a>Auf App-Schutz basierende Richtlinie oder App-basierte Richtlinie für Exchange Online und SharePoint Online
-
-Dieses Szenario besteht aus einer auf App-Schutz basierenden Richtlinie oder einer Richtlinie für genehmigte Apps für den Zugriff auf Exchange Online und SharePoint Online.
-
-### <a name="scenario-playbook"></a>Szenario-Playbook
-
-Annahmen für den Benutzer in diesem Szenario:
-
-- Er konfiguriert die Clientanwendungen, die entweder in der Liste der Apps enthalten sind, die eine App-Schutzrichtlinie als Voraussetzung oder genehmigte Apps als Voraussetzung unterstützen.  
-- Er verwendet Clientanwendungen, die die Anforderung „App-Schutzrichtlinie als Voraussetzung“ erfüllen und eine Intune App-Schutzrichtlinie erhalten können.
-- Er verwendet Clientanwendungen, die die Richtlinienanforderung für genehmigte Apps (genehmigte Client-App als Voraussetzung) erfüllen, die Intune App-Schutzrichtlinien unterstützt.
-- Er öffnet die Anwendung zum Zugreifen auf E-Mails oder Dokumente.
-- Er öffnet die Outlook-Anwendung und meldet sich mit Azure AD-Anmeldeinformationen an.
-- Er wird aufgefordert, entweder Microsoft Authenticator für iOS oder das Intune-Unternehmensportal für Android zu installieren, sofern dies noch nicht erfolgt ist.
-- Er installiert die Anwendung und kann zur Outlook-App zurückkehren, um den Vorgang fortzusetzen.
-- Er wird aufgefordert, ein Gerät zu registrieren.
-- Er kann eine Intune-App-Schutzrichtlinie erhalten.
-- Er kann mit Outlook und einer Intune-App-Schutzrichtlinie auf E-Mails zugreifen.
-- Er kann mit einer App auf Websites und Dokumente zugreifen, die nicht in der Liste der Apps enthalten ist, für die eine App-Schutzrichtlinie als Voraussetzung gilt, sondern in der Liste der Apps enthalten ist, die genehmigte Apps als Voraussetzung unterstützen.
-
-Alle Intune-App-Schutzrichtlinien sind erforderlich, bevor der Zugriff auf Unternehmensdaten gewährt wird. Die Richtlinien fordern den Benutzer möglicherweise auf, die Anwendung neu zu starten oder eine zusätzliche PIN zu verwenden. Dies ist der Fall, wenn die Richtlinien für die Anwendung und die Plattform konfiguriert sind.
-
-**Anmerkungen**
-
-- Sie können dieses Szenario verwenden, wenn Sie Richtlinien für auf App-Schutz basierenden bedingten Zugriff und Richtlinien für App-basierten bedingten Zugriff unterstützen möchten.
-- Bei dieser *ODER*-Richtlinie werden Apps, für die eine App-Schutzrichtlinie als Voraussetzung gilt, vor Apps für den Zugriff ausgewertet, für die eine genehmigte Client-App als Voraussetzung gilt.
-
-### <a name="configuration"></a>Konfiguration
-
-**Schritt 1: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Exchange Online**
-
-Für die Richtlinie zum bedingten Zugriff in diesem Schritt konfigurieren Sie folgende Komponenten:
-
-![Bedingter Zugriff](./media/app-protection-based-conditional-access/62.png)
-
-1. Geben Sie den Namen Ihrer Richtlinie für den bedingten Zugriff ein.
-1. Wählen Sie unter **Zuweisungen** in **Benutzer und Gruppen** mindestens einen Benutzer oder eine Gruppe für jede Richtlinie für bedingten Zugriff aus.
-1. Wählen Sie in **Cloud-Apps** die Option **Office 365 Exchange Online** aus. 
-
-   ![Bedingter Zugriff](./media/app-protection-based-conditional-access/02.png)
-
-1. Konfigurieren Sie in **Bedingungen** die Optionen **Geräteplattformen** und **Client-Apps (Vorschau)** . 
-   1. Wählen Sie in **Geräteplattformen** die Optionen **Android** und **iOS** aus.
-
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/03.png)
-
-   1. Wählen Sie in **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Clients** und **Clients mit moderner Authentifizierung** aus.
-
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/91.png)
-
-1. Wählen Sie unter **Zugriffssteuerungen** die folgenden Optionen aus:
+Die Schritte zum Erstellen von App-Schutzrichtlinien für Android und iOS finden Sie im Artikel [Erstellen und Zuweisen von App-Schutzrichtlinien](/intune/apps/app-protection-policies). 
+
+## <a name="scenario-2-browser-apps-require-approved-apps-with-app-protection-policies"></a>Szenario 2: Browser-Apps erfordern genehmigte Apps mit App-Schutzrichtlinien.
+
+In diesem Szenario hat Contoso entschieden, dass der gesamte mobile Webbrowserzugriff auf Microsoft 365-Ressourcen genehmigte Client-Apps wie Edge für iOS und Android erfordert, die durch eine App-Schutzrichtlinie geschützt sind. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
+
+Organisationen müssen die folgenden Schritte ausführen, um die Verwendung einer genehmigten Client-App auf mobilen Geräten zu erzwingen.
+
+**Schritt 1: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Microsoft 365**
+
+1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
+1. Wählen Sie **Neue Richtlinie**.
+1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
+1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.
+   1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** oder bestimmte **Benutzer und Gruppen** aus, auf die Sie diese Richtlinie anwenden möchten. 
+   1. Wählen Sie **Fertig** aus.
+1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Office 365** aus.
+1. Wählen Sie unter **Bedingungen** die Option **Geräteplattformen** aus.
+   1. Legen Sie **Konfigurieren** auf **Ja** fest.
+   1. Schließen Sie **Android** und **iOS** ein.
+1. Klicken Sie unter **Bedingungen** auf **Client-Apps**.
+   1. Legen Sie **Konfigurieren** auf **Ja** fest.
+   1. Wählen Sie **Browser** aus, und deaktivieren Sie alle anderen Optionen.
+1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die folgenden Optionen aus:
    - **Genehmigte Client-App erforderlich**
-   - **App-Schutzrichtlinie erforderlich (Vorschau)**
+   - **App-Schutzrichtlinie erforderlich**
    - **Eine der ausgewählten Steuerungen anfordern**
- 
-      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/12.png)
+1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
+1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 
 **Schritt 2: Konfigurieren der Intune-App-Schutzrichtlinie für iOS- und Android-Clientanwendungen**
 
-![Bedingter Zugriff](./media/app-protection-based-conditional-access/09.png)
+Die Schritte zum Erstellen von App-Schutzrichtlinien für Android und iOS finden Sie im Artikel [Erstellen und Zuweisen von App-Schutzrichtlinien](/intune/apps/app-protection-policies). 
 
-Weitere Informationen finden Sie unter [Schützen von Apps und Daten mit Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
+## <a name="scenario-3-exchange-online-and-sharepoint-require-an-approved-client-app-and-app-protection-policy"></a>Szenario 3: Exchange Online und SharePoint erfordern eine genehmigte Client-App und eine App-Schutzrichtlinie.
+
+In diesem Szenario hat Contoso beschlossen, dass Benutzer auf mobilen Geräten nur auf E-Mail- und SharePoint-Daten zugreifen dürfen, sofern sie eine genehmigte Client-App wie Outlook Mobile verwenden, die vor dem Erteilen des Zugriffs durch eine App-Schutzrichtlinie geschützt wird. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
+
+Organisationen müssen die folgenden drei Schritte ausführen, um die Verwendung einer genehmigten Client-App auf mobilen Geräten und von Exchange ActiveSync-Clients zu erzwingen.
+
+**Schritt 1: Richtlinie für auf Android und iOS basierende moderne Authentifizierungsclients, die die Verwendung einer genehmigten Client-App-Schutzrichtlinie für den Zugriff auf Exchange Online und SharePoint erfordern.**
+
+1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
+1. Wählen Sie **Neue Richtlinie**.
+1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
+1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.
+   1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** oder bestimmte **Benutzer und Gruppen** aus, auf die Sie diese Richtlinie anwenden möchten. 
+   1. Wählen Sie **Fertig** aus.
+1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Optionen **Office 365 Exchange Online** und **Office 365 SharePoint Online** aus.
+1. Wählen Sie unter **Bedingungen** die Option **Geräteplattformen** aus.
+   1. Legen Sie **Konfigurieren** auf **Ja** fest.
+   1. Schließen Sie **Android** und **iOS** ein.
+1. Klicken Sie unter **Bedingungen** auf **Client-Apps**.
+   1. Legen Sie **Konfigurieren** auf **Ja** fest.
+   1. Wählen Sie **Mobile Apps und Desktopclients** aus, und deaktivieren Sie alle anderen Optionen.
+1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die folgenden Optionen aus:
+   - **Genehmigte Client-App erforderlich**
+   - **App-Schutzrichtlinie erforderlich**
+   - **Eine der ausgewählten Steuerungen anfordern**
+1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
+1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
+
+**Schritt 2: Richtlinie für Exchange ActiveSync-Clients, die die Verwendung einer genehmigten Client-App erfordern.**
+
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
+1. Wählen Sie **Neue Richtlinie**.
+1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
+1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.
+   1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** oder bestimmte **Benutzer und Gruppen** aus, auf die Sie diese Richtlinie anwenden möchten. 
+   1. Wählen Sie **Fertig** aus.
+1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Office 365 Exchange Online** aus.
+1. Klicken Sie unter **Bedingungen** auf **Client-Apps**:
+   1. Legen Sie **Konfigurieren** auf **Ja** fest.
+   1. Wählen Sie **Exchange ActiveSync-Clients** aus, und deaktivieren Sie alle anderen Optionen.
+1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die Option **Zugriff erteilen**, **App-Schutzrichtlinie erforderlich** aus, und wählen Sie dann **Auswählen** aus.
+1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
+1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
+
+**Schritt 3: Konfigurieren der Intune-App-Schutzrichtlinie für iOS- und Android-Clientanwendungen**
+
+Die Schritte zum Erstellen von App-Schutzrichtlinien für Android und iOS finden Sie im Artikel [Erstellen und Zuweisen von App-Schutzrichtlinien](/intune/apps/app-protection-policies). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, finden Sie Informationen unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](app-based-mfa.md).
-- Wenn Sie bereit sind, Richtlinien für den bedingten Zugriff für Ihre Umgebung zu konfigurieren, helfen Ihnen die Informationen unter [Best Practices für den bedingten Zugriff in Azure Active Directory](best-practices.md) weiter.
+[Was ist bedingter Zugriff?](overview.md)
+
+[Bedingter Zugriff auf Komponenten](concept-conditional-access-policies.md)
+
+[Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md)
+

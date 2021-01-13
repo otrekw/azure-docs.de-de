@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e5acb8e0f8805da7f14bbce58b4bfd2acdc24f23
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178747"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010696"
 ---
-# <a name="secure-your-internet-of-things-iot-deployment"></a>Schützen Ihrer IoT-Bereitstellung (Internet der Dinge)
-
 Dieser Artikel bietet weitere Details zum Schützen Ihrer auf Azure IoT basierenden IoT-Infrastruktur (Internet of Things, Internet der Dinge). Geboten werden Links zu Details auf Implementierungsebene für die Konfiguration und Bereitstellung der einzelnen Komponenten. Darüber hinaus finden Sie Vergleiche, um aus verschiedenen konkurrierenden Methoden die gewünschte zu wählen.
 
 Der Schutz der Azure IoT-Bereitstellung kann in die folgenden drei Bereiche unterteilt werden:
@@ -79,7 +77,7 @@ Beim Herstellen einer sicheren TLS-Verbindung mit IoT Hub authentifiziert sich d
 
 ## <a name="securing-the-connection"></a>Schützen der Verbindung
 
-Die Internetverbindung zwischen IoT-Gerät und IoT Hub wird standardmäßig mit TLS (Transport Layer Security) geschützt. Azure IoT unterstützt [TLS 1.2](https://tools.ietf.org/html/rfc5246), TLS 1.1 und TLS 1.0 in der angegebenen Reihenfolge. Unterstützung für TLS 1.0 wird nur zum Zweck der Abwärtskompatibilität geboten. Verwenden Sie möglichst TLS 1.2, da diese Version die höchste Sicherheit bietet.
+Die Internetverbindung zwischen IoT-Gerät und IoT Hub wird standardmäßig mit TLS (Transport Layer Security) geschützt. Azure IoT unterstützt [TLS 1.2](https://tools.ietf.org/html/rfc5246), TLS 1.1 und TLS 1.0 in der angegebenen Reihenfolge. Unterstützung für TLS 1.0 wird nur zum Zweck der Abwärtskompatibilität geboten. Über die [TLS-Unterstützung in IoT Hub](../articles/iot-hub/iot-hub-tls-support.md) können Sie herausfinden, wie Sie Ihren Hub für die Verwendung von TLS 1.2 konfigurieren, da diese Version die höchste Sicherheit bietet.
 
 ## <a name="securing-the-cloud"></a>Schützen der Cloud
 
@@ -103,13 +101,13 @@ Von Azure IoT Hub erfasste Daten können von einer Vielzahl von Diensten wie Azu
 
 * [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): Ein skalierbarer, vollständig indizierter Datenbankdienst für semistrukturierte Daten, mit dem die Metadaten für die bereitgestellten Geräte verwaltet werden, z.B. Attribute, Konfiguration und Sicherheitseigenschaften. Azure Cosmos DB bietet eine Verarbeitung mit hoher Leistung und hohem Durchsatz, eine schemaagnostische Indizierung von Daten und eine umfassende SQL-Abfrageschnittstelle.
 
-* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): Datenstromverarbeitung in Echtzeit in der Cloud. Dadurch wird eine schnelle Entwicklung und Bereitstellung einer kostengünstigen Analyselösung ermöglicht, mit der Sie in Echtzeit – basierend auf Geräte-, Sensor-, Infrastruktur- und Anwendungsdaten – wichtige Einblicke erhalten. Die Daten aus diesem vollständig verwalteten Dienst können auf beliebige Volumina skaliert werden, während trotzdem ein hoher Durchsatz, eine geringe Latenz und Resilienz erzielt werden.
+* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): Datenstromverarbeitung in Echtzeit in der Cloud, mit der eine schnelle Entwicklung und Bereitstellung einer kostengünstigen Analyselösung ermöglicht wird, mit der Sie in Echtzeit basierend auf Geräte-, Sensor-, Infrastruktur- und Anwendungsdaten wichtige Einblicke erhalten. Die Daten aus diesem vollständig verwalteten Dienst können auf beliebige Volumina skaliert werden, während trotzdem ein hoher Durchsatz, eine geringe Latenz und Resilienz erzielt werden.
 
-* [Azure App Services](https://azure.microsoft.com/services/app-service/): Eine Cloudplattform für leistungsstarke mobile und Web-Apps, für die eine Verbindung mit cloudbasierten oder lokalen Datenquellen hergestellt werden kann. Entwickeln Sie benutzerfreundliche mobile Apps für iOS, Android und Windows. Profitieren Sie von einer Integration in Ihre SaaS- (Software as a Service) und Unternehmensanwendungen und vom standardmäßigen Zugriff auf Dutzende von cloudbasierten Diensten und Unternehmensanwendungen. Programmieren Sie in Ihrer bevorzugten Sprache und IDE, z.B. .NET, Node.js, PHP, Python oder Java, um schneller als je zuvor Web-Apps und APIs zu entwickeln.
+* [Azure App Services](https://azure.microsoft.com/services/app-service/): Cloudplattform für leistungsstarke mobile Apps und Web-Apps, für die eine Verbindung mit cloudbasierten oder lokalen Datenquellen hergestellt werden kann. Entwickeln Sie benutzerfreundliche mobile Apps für iOS, Android und Windows. Profitieren Sie von einer Integration in Ihre SaaS- (Software as a Service) und Unternehmensanwendungen und vom standardmäßigen Zugriff auf Dutzende von cloudbasierten Diensten und Unternehmensanwendungen. Programmieren Sie in Ihrer bevorzugten Sprache und IDE, z.B. .NET, Node.js, PHP, Python oder Java, um schneller als je zuvor Web-Apps und APIs zu entwickeln.
 
 * [Logic Apps](https://azure.microsoft.com/services/app-service/logic/): Das Logic Apps-Feature von Azure App Service dient als Hilfe bei der Integration Ihrer IoT-Lösung in Ihre vorhandenen branchenspezifischen Systeme und bei der Automatisierung von Workflowprozessen. Mit Logik-Apps können Entwickler Workflows entwerfen, die über einen Auslöser gestartet werden und dann eine Reihe von Schritten ausführen – Regeln und Aktionen, für die leistungsfähige Connectors zur Integration in Ihre Geschäftsprozesse eingesetzt werden. Logik-Apps ermöglichen standardmäßig Verbindungen mit einem umfassenden Ökosystem von SaaS-, cloudbasierten und lokalen Anwendungen.
 
-* [Azure Blob Storage](https://azure.microsoft.com/services/storage/): Ein zuverlässiger, kostengünstiger Cloudspeicher für die Daten, die von Ihren Geräten an die Cloud gesendet werden.
+* [Azure Blob Storage](https://azure.microsoft.com/services/storage/): zuverlässiger, kostengünstiger Cloudspeicher für die Daten, die von Ihren Geräten an die Cloud gesendet werden.
 
 ## <a name="conclusion"></a>Zusammenfassung
 

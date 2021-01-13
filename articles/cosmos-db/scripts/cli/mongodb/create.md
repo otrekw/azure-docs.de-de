@@ -6,19 +6,20 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 9/25/2019
-ms.openlocfilehash: ee9b2a40a5913af131db47ec1f4c2c065b27468a
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.date: 07/29/2020
+ms.openlocfilehash: 183ba81ffc6ecbe58a35758f09075abe1c514a29
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71275037"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566009"
 ---
 # <a name="create-a-database-and-collection-for-mongodb-api-for-azure-cosmos-db-using-azure-cli"></a>Erstellen einer Datenbank und Sammlung für die MongoDB-API für Azure Cosmos DB mit der Azure-Befehlszeilenschnittstelle (Azure CLI)
+[!INCLUDE[appliesto-mongodb-api](../../../includes/appliesto-mongodb-api.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, ist es für dieses Thema erforderlich, die Azure CLI-Version 2.0.73 oder höher auszuführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.9.1 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="sample-script"></a>Beispielskript
 

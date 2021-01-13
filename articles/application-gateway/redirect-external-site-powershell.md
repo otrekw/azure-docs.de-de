@@ -1,23 +1,19 @@
 ---
-title: Erstellen eines Anwendungsgateways mit externer Umleitung – Azure PowerShell | Microsoft-Dokumentation
+title: Externe Umleitung mithilfe von PowerShell
+titleSuffix: Azure Application Gateway
 description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell ein Anwendungsgateway erstellen, das Webdatenverkehr an eine externe Website umleitet.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/24/2018
+ms.topic: how-to
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 914d75f69b35f9f14503f232c2cf65519037d470
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b2bb50fc2ad8084d79097fe7acb449821d0a4da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729620"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91331062"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit externer Umleitung durch Azure PowerShell
 
@@ -25,12 +21,11 @@ Sie können mit Azure PowerShell [eine Umleitung des Webdatenverkehrs](multiple-
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Listeners und einer Umleitungsregel
-> * Erstellen eines Anwendungsgateways
+* Einrichten des Netzwerks
+* Erstellen eines Listeners und einer Umleitungsregel
+* Erstellen eines Anwendungsgateways
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -161,9 +156,4 @@ Daraufhin sollte *bing.com* in Ihrem Browser aufgerufen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Listeners und einer Umleitungsregel
-> * Erstellen eines Anwendungsgateways
+- [Erstellen eines Anwendungsgateways mit interner Umleitung mithilfe von Azure PowerShell](redirect-internal-site-powershell.md)

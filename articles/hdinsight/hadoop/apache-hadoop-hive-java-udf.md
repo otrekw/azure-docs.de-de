@@ -1,19 +1,19 @@
 ---
-title: 'Benutzerdefinierte Java-Funktion (UDF) mit Apache Hive in HDInsight: Azure'
+title: Benutzerdefinierte Java-Funktion (UDF) mit Apache Hive – Azure HDInsight
 description: Hier erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur Verwendung mit Apache Hive erstellen. Diese benutzerdefinierte Beispielfunktion (UDF) konvertiert eine Tabelle von Textzeichenfolgen in Kleinbuchstaben.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: 24c2e8b9600b3d622d3d6b42b3bc3615a87ff853
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: how-to
+ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
+ms.date: 11/20/2019
+ms.openlocfilehash: 1e0c16ee7aa66847cc6f3f4618b8090b7ce86663
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686625"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533783"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Verwenden einer benutzerdefinierten Java-Funktion mit Apache Hive in HDInsight
 
@@ -22,9 +22,9 @@ Hier erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](./apache-hadoop-linux-tutorial-get-started.md).
-* [Java Developer Kit (JDK), Version 8](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK), Version 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * Ordnungsgemäße [Installation](https://maven.apache.org/install.html) von [Apache Maven](https://maven.apache.org/download.cgi) (gemäß Apache).  Maven ist ein Projekterstellungssystem für Java-Projekte.
-* Das [URI-Schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihren primären Clusterspeicher. Dies ist „wasb://“ für Azure Storage, „abfs://“ für Azure Data Lake Storage Gen2 oder „adl://“ für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage oder Data Lake Storage Gen2 aktiviert ist, lautet der URI „wasbs://“ bzw. „abfss://“. Siehe auch die Informationen zur [sicheren Übertragung](../../storage/common/storage-require-secure-transfer.md).
+* Das [URI-Schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihren primären Clusterspeicher. Dies ist „wasb://“ für Azure Storage, „abfs://“ für Azure Data Lake Storage Gen2 oder „adl://“ für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI `wasbs://`.  Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../../storage/common/storage-require-secure-transfer.md).
 
 * Ein Text-Editor oder eine Java-IDE
 
@@ -32,6 +32,7 @@ Hier erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) 
     > Wenn Sie die Python-Dateien auf einem Windows-Client erstellen, müssen Sie einen Editor verwenden, der als Zeilenende LF verwendet. Wenn Sie nicht sicher sind, ob der Editor LF oder CRLF verwendet, finden Sie im Abschnitt [Problembehandlung](#troubleshooting) Schritte für das Entfernen des CR-Zeichens.
 
 ## <a name="test-environment"></a>Testumgebung
+
 Für diesen Artikel wurde ein Computer unter Windows 10 verwendet.  Die Befehle wurden an einer Eingabeaufforderung ausgeführt, und die verschiedenen Dateien wurden mit dem Windows-Editor bearbeitet. Nehmen Sie die Ihrer Umgebung entsprechenden Änderungen vor.
 
 Geben Sie an einer Eingabeaufforderung die folgenden Befehle ein, um eine Arbeitsumgebung zu erstellen:
@@ -233,26 +234,30 @@ Ersetzen Sie `sshuser` in den folgenden Befehlen durch den tatsächlichen Benutz
 
     Durch diese Abfrage wird der Status in der Tabelle ausgewählt und die Zeichenfolge in Kleinbuchstaben umgewandelt. Beide werden dann zusammen mit dem unveränderten Namen angezeigt. Die Ausgabe sieht in etwa wie folgt aus:
 
-        +---------------+---------------+--+
-        |  exampleudf   |     state     |
-        +---------------+---------------+--+
-        | california    | California    |
-        | pennsylvania  | Pennsylvania  |
-        | pennsylvania  | Pennsylvania  |
-        | pennsylvania  | Pennsylvania  |
-        | colorado      | Colorado      |
-        | colorado      | Colorado      |
-        | colorado      | Colorado      |
-        | utah          | Utah          |
-        | utah          | Utah          |
-        | colorado      | Colorado      |
-        +---------------+---------------+--+
+    ```output
+    +---------------+---------------+--+
+    |  exampleudf   |     state     |
+    +---------------+---------------+--+
+    | california    | California    |
+    | pennsylvania  | Pennsylvania  |
+    | pennsylvania  | Pennsylvania  |
+    | pennsylvania  | Pennsylvania  |
+    | colorado      | Colorado      |
+    | colorado      | Colorado      |
+    | colorado      | Colorado      |
+    | utah          | Utah          |
+    | utah          | Utah          |
+    | colorado      | Colorado      |
+    +---------------+---------------+--+
+    ```
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Bei der Ausführung des Hive-Auftrags kann ein ähnlicher Fehler wie der folgende Text auftreten:
 
-    Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+```output
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+```
 
 Dieses Problem kann durch die Zeilenenden in der Python-Datei verursacht werden. Viele Windows-Editoren verwenden als Zeilenende standardmäßig CRLF, Linux-Anwendung erwarten jedoch i. d. R. LF.
 

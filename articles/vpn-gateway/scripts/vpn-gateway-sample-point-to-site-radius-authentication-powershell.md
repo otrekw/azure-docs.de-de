@@ -3,18 +3,18 @@ title: 'Azure PowerShell-Skriptbeispiel: Konfigurieren einer Point-to-Site-VPN-V
 description: Konfigurieren Sie eine P2S-VPN-Verbindung mit RADIUS-Authentifizierung per Benutzername/Kennwort. In diesem Artikel wird PowerShell verwendet.
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 05/30/2018
 ms.author: alzam
-ms.openlocfilehash: 703ffac5775c979199afdd44afe0941b1416369b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 626881d0ba6320b1eb4645105ee56a69a2b249ba
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66113677"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660303"
 ---
 # <a name="create-a-vpn-gateway-and-add-point-to-site-configuration-using-powershell"></a>Erstellen eines VPN-Gateways und Hinzufügen einer P2S-Konfiguration mithilfe von PowerShell
 
@@ -102,11 +102,11 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Erstellen Sie ein virtuelles Netzwerk. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Erstellt eine öffentliche IP-Adresse. |
 | [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Erstellt eine neue Gateway-IP-Konfiguration. |
-| [New-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein VPN-Gateway. |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein VPN-Gateway. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe und alle darin enthaltenen Ressourcen. |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Legt die Subnetzkonfiguration für das virtuelle Netzwerk fest. |
 | [Set-AzVirtualNetworkGateway](/powershell/module/az.network/set-azvirtualnetworkgateway) | Legt die Konfiguration für das VPN-Gateway fest. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).

@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70012582"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006592"
 ---
 # <a name="create-a-netapp-account"></a>Erstellen eines NetApp-Kontos
 Nach der Erstellung eines NetApp-Kontos können Sie einen Kapazitätspool einrichten und anschließend ein Volume erstellen. Neue NetApp-Konten werden über das Blatt „Azure NetApp Files“ erstellt.
@@ -54,7 +54,7 @@ Sie müssen außerdem Ihr Abonnement registriert haben, um den NetApp-Ressourcen
      ![Neues NetApp-Konto](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
-5. Klicken Sie auf **Create**.     
+5. Klicken Sie auf **Erstellen**.     
    Das erstellte NetApp-Konto wird nun auf dem Blatt „Azure NetApp Files“ angezeigt. 
 
 > [!NOTE] 

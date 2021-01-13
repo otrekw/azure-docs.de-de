@@ -3,13 +3,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
+ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: 8a567dbbd8c5e752b8d9294623a5f4d3f37e5a05
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: e9cedbe90518ba32d752b0fa9d5afb37042a9eea
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906808"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375689"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -125,7 +126,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>Erstellen einer Funktion zum Analysieren der Antwort
 
-Mit dieser einfachen Funktion wird die JSON-Antwort vom Textübersetzungsdienst analysiert und übersichtlicher gemacht.
+Mit dieser einfachen Funktion wird die JSON-Antwort vom Translator-Dienst analysiert und übersichtlicher gemacht.
 
 ```java
 // This function prettifies the json response.
@@ -189,7 +190,7 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die API-Referenz an, um zu erfahren, welche Möglichkeiten die Textübersetzungs-API bietet.
+Machen Sie sich anhand der API-Referenz mit den Möglichkeiten von Translator vertraut.
 
 > [!div class="nextstepaction"]
 > [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

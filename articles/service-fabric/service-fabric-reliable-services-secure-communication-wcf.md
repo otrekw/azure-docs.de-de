@@ -1,25 +1,17 @@
 ---
-title: Schützen der WFC-basierten Dienstkommunikation in Azure Service Fabric | Microsoft-Dokumentation
+title: Sichern der WCF-basierten Dienstkommunikation
 description: Hier erfahren Sie, wie Sie die WFC-basierte Kommunikation für Reliable Services schützen, die in einem Azure Service Fabric-Cluster ausgeführt werden.
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 04/20/2017
-ms.author: chackdan
-ms.openlocfilehash: 4e41638472307f0f88e92413d98b669b27572f54
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: pepogors
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e8b5e5944d58e9bf3291b3870027257b2c87ad24
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872120"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89012669"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>Schützen der WFC-basierten Kommunikation für einen Dienst
 Sicherheit ist einer der wichtigsten Aspekte der Kommunikation. Das Reliable Services-Anwendungsframework stellt einige fertige Kommunikationsstapel und Tools bereit, die Sie verwenden können, um die Sicherheit zu verbessern. In diesem Artikel erfahren Sie, wie Sie die Sicherheit bei Verwendung von Dienstremoting verbessern können.
@@ -129,4 +121,4 @@ Wir verwenden ein vorhandenes [Beispiel](service-fabric-reliable-services-commun
         client => client.Channel.Add(2, 3)).Result;
     ```
 
-Lesen Sie als Nächstes den Artikel [Web-API mit OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md).
+Lesen Sie als Nächstes den Artikel [Web-API mit OWIN in Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md).

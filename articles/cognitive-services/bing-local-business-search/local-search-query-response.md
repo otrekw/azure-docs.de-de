@@ -1,5 +1,5 @@
 ---
-title: Senden und Verwenden von Abfragen und Antworten der API für die Bing-Suche nach ortsansässigen Unternehmen
+title: 'Senden und Verwenden von API-Abfragen und -Antworten: Bing-Suche für ortsansässige Unternehmen'
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erfahren Sie, wie Sie Suchabfragen mit der API für die Bing-Suche nach ortsansässigen Unternehmen senden und verwenden.
 services: cognitive-services
@@ -10,14 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
-ms.openlocfilehash: 31f81d76ff433d5f2e634b9a8f5fac50f8425f49
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 70a33774ac82312660d887fb86f7e2a482c30a0c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906355"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487166"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Senden und Verwenden von Abfragen und Antworten der API für die Bing-Suche nach ortsansässigen Unternehmen
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Sie können mit der API für die Bing-Suche nach ortsansässigen Unternehmen lokale Ergebnisse abrufen, indem Sie eine Suchabfrage an ihren Endpunkt senden und den erforderlichen Header `Ocp-Apim-Subscription-Key` angeben. Die Suche lässt sich anhand der verfügbaren [Header](local-search-reference.md#headers) und [Parameter](local-search-reference.md#query-parameters) sowie durch Angeben von [geografischen Begrenzungen](specify-geographic-search.md) des zu durchsuchenden Bereichs und [Kategorien](local-search-query-response.md) der zurückgegebenen Orte anpassen.
 

@@ -1,27 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Uberflip | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in Uberflip | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Uberflip konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 754b1f5b-6694-4fd6-9e1e-9fad769c64db
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 8760606c981f494b38d4eb8ac1b2cd50ceb8582c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6bf3eccec70619bf73397e315c6d851f753ec52f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852106"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521831"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Tutorial: Azure Active Directory-Integration mit Uberflip
+# <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Tutorial: Azure Active Directory-Integration in Uberflip
 
 In diesem Tutorial erfahren Sie, wie Sie Uberflip in Azure Active Directory (Azure AD) integrieren.
 
@@ -31,7 +28,7 @@ Die Integration von Uberflip in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Uberflip anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten: im Azure-Portal.
 
-Details zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Details zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -58,7 +55,7 @@ Zum Konfigurieren der Integration von Uberflip in Azure AD müssen Sie Uberflip 
 
    ![Die Option „Azure Active Directory“](common/select-azuread.png)
 
-1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
 
    ![Bereich „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -99,7 +96,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Uberfli
 
 1. Wählen Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** die Option **Bearbeiten** (Stiftsymbol), um den Bereich **Grundlegende SAML-Konfiguration** zu öffnen.
 
-   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+   ![Screenshot: „Grundlegende SAML-Konfiguration“ zum Eingeben einer Antwort-URL](common/edit-urls.png)
 
 1. Führen Sie im Bereich **Grundlegende SAML-Konfiguration** einen der folgenden Schritte aus, je nachdem, welchen SSO-Modus Sie konfigurieren möchten:
 
@@ -116,9 +113,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Uberfli
 
      `https://app.uberflip.com/users/login`
 
-     ![SSO-Informationen zur Domäne und zu den URLs für Uberflip](common/both-signonurl.png)
+     ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/both-signonurl.png)
 
-1. Klicken Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um die **Verbundmetadaten-XML** aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+1. Klicken Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen** , um die **Verbundmetadaten-XML** aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
    ![Downloadoption für Verbundmetadaten-XML](common/metadataxml.png)
 
@@ -152,9 +149,9 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 
     1. Geben Sie in das Feld **Name** den Namen **BSimon** ein.
   
-    1. Geben Sie in das Feld **Benutzername** den Eintrag **BSimon\@\<IhreUnternehmensdomäne>.\<Erweiterung>** ein. Beispiel: **BSimon\@contoso.com**
+    1. Geben Sie in das Feld **Benutzername** den Namen **BSimon\@\<yourcompanydomain>.\<extension>** ein. Beispiel: **BSimon\@contoso.com**
 
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort**.
 
     1. Klicken Sie auf **Erstellen**.
 
@@ -166,7 +163,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 
     ![Bereich für Unternehmensanwendungen](common/enterprise-applications.png)
 
-1. Wählen Sie in der Anwendungsliste **Uberflip**aus.
+1. Wählen Sie in der Anwendungsliste **Uberflip** aus.
 
     ![Uberflip in der Anwendungsliste](common/all-applications.png)
 
@@ -195,12 +192,12 @@ Ein Benutzer namens B. Simon wird jetzt in Uberflip erstellt. Sie müssen nichts
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Portals „Meine Apps“.
 
-Bei der Auswahl von **Uberflip** im Portal „Meine Apps“ sollten Sie automatisch beim Uberflip-Abonnement angemeldet werden, für das Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Bei der Auswahl von **Uberflip** im Portal „Meine Apps“ sollten Sie automatisch beim Uberflip-Abonnement angemeldet werden, für das Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [Liste der Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](./tutorial-list.md)
 
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-* [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [Was ist bedingter Zugriff?](../conditional-access/overview.md)

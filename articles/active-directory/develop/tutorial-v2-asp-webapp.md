@@ -1,35 +1,42 @@
 ---
-title: 'Azure AD v2.0 – ASP.NET-Webserver: Erste Schritte | Microsoft-Dokumentation'
-description: Informationen zum Implementieren einer Microsoft-Anmeldung in einer ASP.NET-Lösung mithilfe einer herkömmlichen webbrowserbasierten Anwendung und des OpenID Connect-Standards
+title: 'Tutorial: Erstellen einer ASP.NET-Web-App, die Microsoft Identity Platform für die Authentifizierung verwendet'
+titleSuffix: Microsoft identity platform
+description: In diesem Tutorial erstellen Sie eine ASP.NET-Webanwendung, die Microsoft Identity Platform und die OWIN-Middleware verwendet, um die Benutzeranmeldung zu ermöglichen.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1ce7197a195b37787d1a43a44efd8438154e9f9
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40
+ms.openlocfilehash: 4dca1fa0e823b482044d35f98412187af2fa72ed
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113648"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507760"
 ---
-# <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
+# <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Tutorial: Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
 
-Diese Anleitung veranschaulicht das Implementieren der Anmeldung bei Microsoft mithilfe einer ASP.NET MVC-Lösung mit einer herkömmlichen browserbasierten Anwendung und OpenID Connect.
+In diesem Tutorial erstellen Sie eine ASP.NET MVC-Web-App, in der Benutzer über die OWIN-Middleware (Open Web Interface for .NET) und die Microsoft Identity Platform angemeldet werden.
 
-Am Ende dieser Anleitung kann Ihre Anwendung Anmeldungen von persönlichen Konten (etwa outlook.com und live.com) akzeptieren. Darüber hinaus können sich Geschäfts-, Schul- und Unikonten von Unternehmen oder Organisationen, die in Azure Active Directory (Azure AD) integriert wurden, bei Ihrer App anmelden.
+Am Ende dieser Anleitung kann Ihre Anwendung Anmeldungen von persönlichen Konten (etwa outlook.com und live.com) akzeptieren. Darüber hinaus können sich Geschäfts-, Schul- und Unikonten von Unternehmen oder Organisationen, die in Microsoft Identity Platform integriert wurden, bei Ihrer App anmelden.
 
-> Für diesen Leitfaden wird Microsoft Visual Studio 2019 benötigt.  Sie haben beides nicht?  Sie können Visual Studio 2019 [hier](https://www.visualstudio.com/downloads/) kostenlos herunterladen.
+Dieses Tutorial umfasst folgende Punkte:
+
+> [!div class="checklist"]
+> * Erstellen eines Projekts namens *ASP.NET-Webanwendung* in Visual Studio
+> * Hinzufügen der offenen Webschnittstelle für die .NET (OWIN)-Middlewarekomponenten
+> * Hinzufügen von Code zum Unterstützen der Benutzeranmeldung und -abmeldung
+> * Registrieren der App im Azure-Portal
+> * Testen der App
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) mit installierter Workload **ASP.NET und Webentwicklung**
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Funktionsweise der über diesen Leitfaden generierten Beispiel-App
 
@@ -62,7 +69,7 @@ In diesem Abschnitt werden das Installieren und Konfigurieren der Authentifizier
 
 ## <a name="add-authentication-components"></a>Hinzufügen von Authentifizierungskomponenten
 
-1. In Visual Studio: Klicken Sie auf **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
+1. In Visual Studio: Navigieren Sie zu **Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
 2. Fügen Sie *NuGet-Pakete für OWIN-Middleware* hinzu, indem Sie im Fenster „Paket-Manager-Konsole“ Folgendes eingeben:
 
     ```powershell
@@ -71,10 +78,8 @@ In diesem Abschnitt werden das Installieren und Konfigurieren der Authentifizier
     Install-Package Microsoft.Owin.Host.SystemWeb
     ```
 
-<!--start-collapse-->
-> ### <a name="about-these-libraries"></a>Informationen zu diesen Bibliotheken
-> Diese Bibliotheken ermöglichen einmaliges Anmelden (Single Sign-On, SSO) mithilfe von OpenID Connect über die cookiebasierte Authentifizierung. Nachdem die Authentifizierung abgeschlossen ist und das Token, das den Benutzer darstellt, an Ihre Anwendung gesendet wurde, erstellt die OWIN-Middleware ein Sitzungscookie. Der Browser verwendet dann dieses Cookie bei nachfolgenden Anforderungen, damit der Benutzer sein Kennwort nicht erneut eingeben muss. Außerdem ist keine weitere Überprüfung erforderlich.
-<!--end-collapse-->
+### <a name="about-these-libraries"></a>Informationen zu diesen Bibliotheken
+Diese Bibliotheken ermöglichen einmaliges Anmelden (Single Sign-On, SSO) mithilfe von OpenID Connect über die cookiebasierte Authentifizierung. Nachdem die Authentifizierung abgeschlossen ist und das Token, das den Benutzer darstellt, an Ihre Anwendung gesendet wurde, erstellt die OWIN-Middleware ein Sitzungscookie. Der Browser verwendet dann dieses Cookie bei nachfolgenden Anforderungen, damit der Benutzer sein Kennwort nicht erneut eingeben muss. Außerdem ist keine weitere Überprüfung erforderlich.
 
 ## <a name="configure-the-authentication-pipeline"></a>Konfigurieren der Authentifizierungspipeline
 
@@ -105,7 +110,7 @@ Die folgenden Schritte dienen zum Erstellen der Startup-Klasse der OWIN-Middlewa
     ```csharp
     public class Startup
     {
-        // The Client ID is used by the application to uniquely identify itself to Azure AD.
+        // The Client ID is used by the application to uniquely identify itself to Microsoft identity platform.
         string clientId = System.Configuration.ConfigurationManager.AppSettings["ClientId"];
 
         // RedirectUri is the URL where the user will be redirected to after they sign in.
@@ -114,11 +119,11 @@ Die folgenden Schritte dienen zum Erstellen der Startup-Klasse der OWIN-Middlewa
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Azure Active Directory v2.0 endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
-        /// Configure OWIN to use OpenIdConnect 
+        /// Configure OWIN to use OpenIdConnect
         /// </summary>
         /// <param name="app"></param>
         public void Configuration(IAppBuilder app)
@@ -172,10 +177,9 @@ Die folgenden Schritte dienen zum Erstellen der Startup-Klasse der OWIN-Middlewa
 > Zur Vereinfachung dieser Schnellstartanleitung wird `ValidateIssuer = false` festgelegt. In echten Anwendungen müssen Sie den Aussteller überprüfen.
 > Informationen dazu finden Sie in den Beispielen.
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>Weitere Informationen
-> Die Parameter, die Sie in *OpenIDConnectAuthenticationOptions* bereitstellen, dienen als Koordinaten für die Anwendung zur Kommunikation mit Azure AD. Da die OpenID Connect-Middleware im Hintergrund Cookies verwendet, müssen Sie außerdem die Cookieauthentifizierung einrichten, wie im Code oben gezeigt. Der *ValidateIssuer*-Wert weist OpenIdConnect an, den Zugriff nicht auf eine bestimmte Organisation zu beschränken.
-<!--end-collapse-->
+### <a name="more-information"></a>Weitere Informationen
+
+Die Parameter, die Sie in *OpenIDConnectAuthenticationOptions* bereitstellen, dienen als Koordinaten für die Anwendung zur Kommunikation mit Microsoft Identity Platform. Da die OpenID Connect-Middleware im Hintergrund Cookies verwendet, müssen Sie außerdem die Cookieauthentifizierung einrichten, wie im Code oben gezeigt. Der *ValidateIssuer*-Wert weist OpenIdConnect an, den Zugriff nicht auf eine bestimmte Organisation zu beschränken.
 
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Hinzufügen eines Controllers zum Verarbeiten von An- und Abmeldeanforderungen
 
@@ -209,7 +213,7 @@ Führen Sie die folgenden Schritte zum Erstellen eines neuen Controllers aus, um
                 OpenIdConnectAuthenticationDefaults.AuthenticationType);
         }
     }
-    
+
     /// <summary>
     /// Send an OpenID Connect sign-out request.
     /// </summary>
@@ -267,10 +271,8 @@ Erstellen Sie in Visual Studio eine neue Ansicht, um die Schaltfläche „Anmeld
     </html>
     ```
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>Weitere Informationen
-> Auf dieser Seite wird eine Anmeldeschaltfläche im SVG-Format mit schwarzem Hintergrund hinzugefügt:<br/>![Bei Microsoft anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Weitere Anmeldeschaltflächen finden Sie in den [Brandingrichtlinien](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Brandingrichtlinien").
-<!--end-collapse-->
+### <a name="more-information"></a>Weitere Informationen
+Auf dieser Seite wird eine Anmeldeschaltfläche im SVG-Format mit schwarzem Hintergrund hinzugefügt:<br/>![Schaltfläche „Anmelden mit Microsoft“](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Weitere Anmeldeschaltflächen finden Sie in den [Brandingrichtlinien](./howto-add-branding-in-azure-ad-apps.md "Brandingrichtlinien").
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Hinzufügen eines Controllers zum Anzeigen von Ansprüchen des Benutzers
 Dieser Controller veranschaulicht die Verwendungen des `[Authorize]`-Attributs, um einen Controller zu schützen. Dieses Attribut beschränkt den Zugriff auf den Controller, indem nur authentifizierte Benutzer zugelassen werden. Der folgende Code verwendet das Attribut zum Anzeigen von Benutzeransprüchen, die als Teil der Anmeldung abgerufen wurden:
@@ -292,28 +294,26 @@ Dieser Controller veranschaulicht die Verwendungen des `[Authorize]`-Attributs, 
         public ActionResult Index()
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
-    
-            //You get the user’s first and last name below:
+
+            //You get the user's first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
-    
+
             // The 'preferred_username' claim can be used for showing the username
             ViewBag.Username = userClaims?.FindFirst("preferred_username")?.Value;
-    
+
             // The subject/ NameIdentifier claim can be used to uniquely identify the user across the web
             ViewBag.Subject = userClaims?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-    
+
             // TenantId is the unique Tenant Id - which represents an organization in Azure AD
             ViewBag.TenantId = userClaims?.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid")?.Value;
-    
+
             return View();
         }
     }
     ```
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>Weitere Informationen
-> Aufgrund der Verwendung des `[Authorize]`-Attributs können alle Methoden dieses Controllers nur ausgeführt werden, wenn der Benutzer authentifiziert ist. Wenn der Benutzer nicht authentifiziert ist und versucht, auf den Controller zuzugreifen, löst OWIN eine Authentifizierungsaufforderung aus und zwingt den Benutzer, sich zu authentifizieren. Der vorherige Code sucht in der Liste der Ansprüche nach bestimmten Benutzerattributen, die im ID-Token des Benutzers enthalten sind. Diesen Attribute enthalten den vollständigen Namen des Benutzers und den Benutzername sowie die GUID des Antragstellers. Sie enthalten auch die *Mandanten-ID*, die die ID der Organisation des Benutzers darstellt. 
-<!--end-collapse-->
+### <a name="more-information"></a>Weitere Informationen
+Aufgrund der Verwendung des `[Authorize]`-Attributs können alle Methoden dieses Controllers nur ausgeführt werden, wenn der Benutzer authentifiziert ist. Wenn der Benutzer nicht authentifiziert ist und versucht, auf den Controller zuzugreifen, löst OWIN eine Authentifizierungsaufforderung aus und zwingt den Benutzer, sich zu authentifizieren. Der vorherige Code sucht in der Liste der Ansprüche nach bestimmten Benutzerattributen, die im ID-Token des Benutzers enthalten sind. Diese Attribute enthalten den vollständigen Namen des Benutzers und den Benutzername sowie die GUID des Antragstellers. Sie enthalten auch die *Mandanten-ID*, die die ID der Organisation des Benutzers darstellt.
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>Erstellen einer Ansicht zum Anzeigen der Ansprüche des Benutzers
 
@@ -370,18 +370,19 @@ Führen Sie zur schnellen Registrierung Ihrer Anwendung die folgenden Schritte a
 Führen Sie die folgenden Schritte aus, um Ihre Anwendung zu registrieren und Ihrer Projektmappe manuell die Registrierungsinformationen Ihrer App hinzuzufügen:
 
 1. Öffnen Sie Visual Studio, und führen Sie die folgenden Schritte aus:
-   1. Wählen Sie im Projektmappen-Explorer das Projekt aus, und zeigen Sie das Fenster „Eigenschaften“ an. (Drücken Sie F4, wenn es nicht angezeigt wird.)
+   1. Wählen Sie im Projektmappen-Explorer das Projekt aus, und zeigen Sie das Eigenschaftenfenster an. (Drücken Sie F4, wenn es nicht angezeigt wird.)
    1. Ändern Sie „SSL aktiviert“ in `True`.
    1. Klicken Sie mit der rechten Maustaste in Visual Studio auf das Projekt, und wählen Sie **Eigenschaften** und dann die Registerkarte **Web** aus. Ändern Sie im Abschnitt **Server** die Einstellung **Projekt-URL** in die **SSL-URL**.
-   1. Kopieren Sie die SSL-URL. Sie fügen diese URL im nächsten Schritt der Liste mit den Umleitungs-URLs im Registrierungsportal hinzu.<br/><br/>![Projekteigenschaften](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
-1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, wählen Sie rechts oben Ihr Konto aus, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-1. Navigieren Sie auf der Microsoft Identity Platform für Entwickler zur Seite [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908).
-1. Wählen Sie **Neue Registrierung** aus.
-1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen für Ihre Anwendung ein:
-   1. Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise **ASPNET-Tutorial**).
-   1. Fügen Sie die SSL-URL, die Sie in Schritt 1 aus Visual Studio kopiert haben (z. B. `https://localhost:44368/`) unter **Antwort-URL** hinzu, und wählen Sie **Registrieren** aus.
-1. Wählen Sie das Menü **Authentifizierung** und dann **ID-Token** unter **Implizite Genehmigung** aus. Wählen Sie dann **Speichern** aus.
+   1. Kopieren Sie die SSL-URL. Im nächsten Schritt fügen Sie diese URL im Registrierungsportal zur Liste der Umleitungs-URIs hinzu.<br/><br/>![Projekteigenschaften](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `ASPNET-Tutorial`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+1. Fügen Sie die in Schritt 1 aus Visual Studio kopierte SSL-URL (z. B. `https://localhost:44368/`) unter **Umleitungs-URI** hinzu.
+1. Wählen Sie **Registrieren**.
+1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
+1. Wählen Sie im Abschnitt **Implizite Genehmigung** die Option **ID-Token** aus, und wählen Sie dann **Speichern** aus.
 1. Fügen Sie im Stammordner der Datei „web.config“ im Abschnitt `configuration\appSettings` Folgendes hinzu:
 
     ```xml
@@ -400,22 +401,22 @@ Um Ihre Anwendung in Visual Studio zu testen, drücken Sie F5, um das Projekt au
 
 Wenn Sie Ihren Test ausführen möchten, verwenden Sie für die Anmeldung ein Azure AD-Konto (Geschäfts-, Schul- oder Unikonto) oder ein persönliches Microsoft-Konto (<span>live.</span>com oder <span>outlook.</span>com).
 
-![Bei Microsoft anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![Schaltfläche „Anmelden mit Microsoft“ auf der Anmeldeseite im Browser](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
 ![Mit einem Microsoft-Konto anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-<!--start-collapse-->
-> ###  <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
->  Anwendungen, die sich in die Microsoft Identity Platform integrieren lassen, folgen einem bestimmten Autorisierungsmodell, mit dem Benutzer und Administratoren den Zugriff auf Daten steuern können. Nachdem sich ein Benutzer für den Zugriff auf diese Anwendung mit Azure AD authentifiziert hat, wird er aufgefordert, seine Zustimmung für die von der Anwendung angeforderten Berechtigungen zu erteilen („Ihr grundlegendes Profil anzeigen“ und „Zugriff auf Daten beibehalten, für die Sie Zugriff erteilt haben“). Wenn der Benutzer diese Berechtigungen akzeptiert hat, wird er zu den Anwendungsergebnissen weitergeleitet. In folgenden Fällen wird dem Benutzer jedoch unter Umständen stattdessen die Seite **Need admin consent** (Administratoreinwilligung erforderlich) angezeigt:
->  > - Der Anwendungsentwickler fügt zusätzliche Berechtigungen hinzu, für die die **Administratoreinwilligung** erforderlich ist.
->  > - Der Mandant wurde (unter **Unternehmensanwendungen > Benutzereinstellungen**) so konfiguriert, dass Benutzer Apps den Zugriff auf Unternehmensdaten in ihrem Namen nicht gestatten können.
->
-> Weitere Informationen finden Sie unter [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent).
-<!--end-collapse-->
+#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
 
-#### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
+Anwendungen, die sich in die Microsoft Identity Platform integrieren lassen, folgen einem bestimmten Autorisierungsmodell, mit dem Benutzer und Administratoren den Zugriff auf Daten steuern können. Nachdem sich ein Benutzer mit Microsoft Identity Platform für den Zugriff auf diese Anwendung authentifiziert hat, wird er aufgefordert, seine Zustimmung für die von der Anwendung angeforderten Berechtigungen zu erteilen („Ihr grundlegendes Profil anzeigen“ und „Zugriff auf Daten beibehalten, für die Sie Zugriff erteilt haben“). Wenn der Benutzer diese Berechtigungen akzeptiert hat, wird er zu den Anwendungsergebnissen weitergeleitet. In folgenden Fällen wird dem Benutzer jedoch unter Umständen stattdessen die Seite **Need admin consent** (Administratoreinwilligung erforderlich) angezeigt:
 
-Nachdem Sie sich angemeldet haben, wird der Benutzer zur Startseite Ihrer Website umgeleitet. Die Startseite ist die HTTPS-URL, die im Microsoft-Anwendungsregistrierungsportal in Ihre Anwendungsregistrierungsinformationen eingegeben wurde. Auf der Startseite werden die Willkommensnachricht *„Hallo \<Benutzer>“* , ein Link zum Abmelden und ein Link zum Anzeigen der Benutzeransprüche angezeigt. Über den Link für die Benutzeransprüche gelangen Sie zum zuvor erstellten Claims-Controller.
+- Der Anwendungsentwickler fügt zusätzliche Berechtigungen hinzu, für die die **Administratoreinwilligung** erforderlich ist.
+- Der Mandant wurde (unter **Unternehmensanwendungen > Benutzereinstellungen**) so konfiguriert, dass Benutzer Apps den Zugriff auf Unternehmensdaten in ihrem Namen nicht gestatten können.
+
+Weitere Informationen finden Sie unter [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](./v2-permissions-and-consent.md).
+
+### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
+
+Nachdem Sie sich angemeldet haben, wird der Benutzer zur Startseite Ihrer Website umgeleitet. Die Startseite ist die HTTPS-URL, die im Microsoft-Anwendungsregistrierungsportal in Ihre Anwendungsregistrierungsinformationen eingegeben wurde. Auf der Startseite werden die Willkommensnachricht *„Hallo \<user>“* , ein Link zum Abmelden und ein Link zum Anzeigen der Benutzeransprüche angezeigt. Über den Link für die Benutzeransprüche gelangen Sie zum zuvor erstellten Claims-Controller.
 
 ### <a name="view-the-users-claims"></a>Anzeigen der Ansprüche des Benutzers
 
@@ -425,14 +426,14 @@ Um die Benutzeransprüche anzuzeigen, wählen Sie den Link zum Navigieren zur Co
 
 Nachdem Sie die Controlleransicht aufgerufen haben, sollten Sie eine Tabelle mit den grundlegenden Eigenschaften des Benutzers sehen:
 
-|Eigenschaft |Wert |BESCHREIBUNG |
+|Eigenschaft |Wert |Beschreibung |
 |---|---|---|
-|**Name** |Vollständiger Name des Benutzers | Vor- und Nachname des Benutzers
+|**Name** |Vollständiger Name des Benutzers | Dies ist der Vorname und der Nachname des Benutzers.
 |**Benutzername** |Benutzer<span>@domain.com</span> | Der zur Identifizierung des Benutzers verwendete Benutzername|
 |**Subject** |Subject |Eine Zeichenfolge, die den Benutzer im Internet eindeutig identifiziert|
-|**Tenant ID** |Guid | Eine **GUID**, die die Azure AD-Organisation des Benutzers eindeutig identifiziert|
+|**Tenant ID** |Guid | Dies ist eine **GUID**, die die Azure AD-Organisation des Benutzers eindeutig identifiziert.|
 
-Darüber hinaus sollten Sie eine Tabelle aller Ansprüche sehen, die in der Authentifizierungsanforderung enthalten sind. Weitere Informationen finden Sie in der [Liste der im Azure AD-ID-Token enthaltenen Ansprüche](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
+Darüber hinaus sollten Sie eine Tabelle aller Ansprüche sehen, die in der Authentifizierungsanforderung enthalten sind. Weitere Informationen finden Sie in der [Liste der in einem ID-Token enthaltenen Ansprüche](./id-tokens.md).
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Testen des Zugriffs auf eine Methode mit einem Authorize-Attribut (optional)
 
@@ -447,18 +448,17 @@ Sie werden für die Verwendung der geschützten Controlleransicht zur Authentifi
 
 ## <a name="advanced-options"></a>Erweiterte Optionen
 
-<!--start-collapse-->
 ### <a name="protect-your-entire-website"></a>Schutz der gesamten Website
+
 Zum Schutz der gesamten Website fügen Sie in der Datei **Global.asax** unter der Methode `Application_Start`dem Filter `GlobalFilters` das `AuthorizeAttribute`-Attribut hinzu:
 
 ```csharp
 GlobalFilters.Filters.Add(new AuthorizeAttribute());
 ```
-<!--end-collapse-->
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>Einschränken des Anmeldezugriffs auf Ihre Anwendung
 
-Wenn Sie die Anwendung nach dieser Anleitung erstellen, akzeptiert Ihre Anwendung standardmäßig sowohl Anmeldungen von persönlichen Konten (z. B. outlook.com, live.com u. a.) als auch von Geschäfts-, Schul- und Unikonten von Unternehmen oder Organisationen, die in Azure AD integriert wurden. Diese Option wird für SaaS-Anwendungen empfohlen.
+Wenn Sie die Anwendung nach dieser Anleitung erstellen, akzeptiert Ihre Anwendung standardmäßig sowohl Anmeldungen von persönlichen Konten (z. B. outlook.com, live.com u. a.) als auch von Geschäfts-, Schul- und Unikonten von Unternehmen oder Organisationen, die in Microsoft Identity Platform integriert wurden. Diese Option wird für SaaS-Anwendungen empfohlen.
 
 Um den Anmeldezugriff des Benutzers auf Ihre Anwendung einzuschränken, stehen mehrere Optionen zur Verfügung:
 
@@ -477,27 +477,13 @@ Sie können den Anmeldezugriff auf die Benutzerkonten beschränken, die in einer
 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>Option 3: Überprüfen von Ausstellern mithilfe einer benutzerdefinierten Methode
 
-Sie können eine benutzerdefinierte Methode implementieren, um Aussteller mit dem **IssuerValidator**-Parameter zu überprüfen. Weitere Informationen zur Verwendung dieses Parameters finden Sie im Artikel zur [TokenValidationParameters-Klasse](/previous-versions/visualstudio/dn464192(v=vs.114)).
-
-## <a name="next-steps"></a>Nächste Schritte
-
-Lesen Sie, wie Web-Apps Web-APIs anrufen können.
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart-guide"></a>Informationen zum Erstellen der in dieser Schnellstartanleitung verwendeten Anwendung
-
-Informieren Sie sich ausführlicher über Web-Apps, die Web-APIs mit Microsoft Identity Platform aufrufen:
-
-> [!div class="nextstepaction"]
-> [Aufrufen von Web-APIs durch Web-Apps](scenario-web-app-sign-user-overview.md)
-
-Lesen Sie, wie Sie Web-Apps erstellen, die Microsoft Graph aufrufen:
-
-> [!div class="nextstepaction"]
-> [Erstellen von ASP.NET-MVC-Apps mit Microsoft Graph](https://docs.microsoft.com/graph/tutorials/aspnet)
+Sie können eine benutzerdefinierte Methode implementieren, um Aussteller mit dem **IssuerValidator**-Parameter zu überprüfen. Weitere Informationen zur Verwendung dieses Parameters finden Sie im Artikel zur [TokenValidationParameters-Klasse](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters).
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-Helfen Sie uns, Microsoft Identity Platform zu verbessern. Teilen Sie uns Ihre Meinung mit, indem Sie eine Umfrage mit zwei Fragen beantworten:
+## <a name="next-steps"></a>Nächste Schritte
+
+Informieren Sie sich über das Aufrufen geschützter Web-APIs durch Web-Apps mit Microsoft Identity Platform:
 
 > [!div class="nextstepaction"]
-> [Umfrage zu Microsoft Identity Platform](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
+> [Aufrufen von Web-APIs durch Web-Apps](scenario-web-app-sign-user-overview.md)

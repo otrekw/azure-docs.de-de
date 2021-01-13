@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: eb55d993ad8960f821c2b72f0a53602166b7cc7e
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "69900603"
 ---
 Für ruhende Daten:

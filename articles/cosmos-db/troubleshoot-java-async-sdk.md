@@ -1,22 +1,37 @@
 ---
-title: Diagnose und Problembehandlung des Azure Cosmos DB Java Async SDK
-description: Verwenden Sie Features wie clientseitige Protokollierung und andere Tools von Drittanbietern, um Probleme im Zusammenhang mit Azure Cosmos DB zu erkennen, zu diagnostizieren und zu beheben.
-author: moderakh
+title: Diagnose und Problembehandlung beim Azure Cosmos DB Async Java SDK v2
+description: Verwenden Sie Features wie clientseitige Protokollierung und andere Tools von Drittanbietern, um Azure Cosmos DB-Probleme in Async Java SDK v2 zu erkennen, zu diagnostizieren und zu beheben.
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 04/30/2019
-ms.author: moderakh
+ms.date: 05/11/2020
+ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-java
+ms.openlocfilehash: b39a74bd06f942cf21d201c8cef48bc6dfc57d46
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519979"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548085"
 ---
-# <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Behandeln von Problemen bei der Verwendung des Java Async SDK mit Azure Cosmos DB-SQL-API-Konten
+# <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>Behandeln von Problemen bei der Verwendung des Azure Cosmos DB Async Java SDK v2 mit SQL-API-Konten
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
+> [!div class="op_single_selector"]
+> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Async Java SDK v2](troubleshoot-java-async-sdk.md)
+> * [.NET](troubleshoot-dot-net-sdk.md)
+> 
+
+> [!IMPORTANT]
+> Dies ist *nicht* das neueste Java SDK für Azure Cosmos DB! Sie sollten ein Upgrade Ihres Projekts auf das [Azure Cosmos DB Java SDKv4](sql-api-sdk-java-v4.md) durchführen und dann den [Leitfaden zur Problembehandlung](troubleshoot-java-sdk-v4-sql.md) für das Azure Cosmos DB Java SDK v4 lesen. Befolgen Sie für ein Upgrade die Anweisungen in den Anleitungen [Migrieren zum Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) und [Gegenüberstellung von Reactor und RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md). 
+>
+> In diesem Artikel wird nur die Problembehandlung für das Azure Cosmos DB Async Java SDK v2 behandelt. Weitere Informationen finden Sie in den [Versionshinweisen](sql-api-sdk-async-java.md) zum Azure Cosmos DB Async Java SDK v2, im [Maven-Repository](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) und in den [Leistungstipps](performance-tips-async-java.md).
+>
+
 Dieser Artikel behandelt allgemeine Probleme, Problemumgehungen, Diagnoseschritte und Tools bei der Verwendung des [Java Async SDK](sql-api-sdk-async-java.md) mit Azure Cosmos DB-SQL-API-Konten.
 Das Java Async SDK bietet eine clientseitige logische Darstellung für den Zugriff auf die Azure Cosmos DB-SQL-API. Dieser Artikel beschreibt hilfreiche Tools und Vorgehensweisen für Problemfälle.
 
@@ -27,7 +42,7 @@ Beginnen Sie mit dieser Liste:
 * Überprüfen Sie die [Leistungstipps](performance-tips-async-java.md), und implementieren Sie die Empfehlungen.
 * Lesen Sie den Rest dieses Artikels, falls Sie keine Lösung gefunden haben. Reichen Sie anschließend ein [GitHub-Problem](https://github.com/Azure/azure-cosmosdb-java/issues) ein.
 
-## <a name="common-issues-workarounds"></a>Häufig auftretende Probleme und Problemumgehungen
+## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Häufig auftretende Probleme und Problemumgehungen
 
 ### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>Netzwerkprobleme, Netty-Lesetimeoutfehler, niedriger Durchsatz, hohe Latenz
 
@@ -38,27 +53,27 @@ Beginnen Sie mit dieser Liste:
 #### <a name="connection-throttling"></a>Verbindungsdrosselung
 Eine Verbindungsdrosselung kann entweder aufgrund eines [Verbindungslimit auf einem Hostcomputer] oder aufgrund von [Azure SNAT-Portauslastung (PAT)] auftreten.
 
-##### <a name="connection-limit-on-host"></a>Verbindungslimit auf einem Hostcomputer
+##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>Verbindungslimit auf einem Hostcomputer
 Bei einigen Linux-Systemen (beispielsweise Red Hat) gilt eine Obergrenze für die Gesamtzahl geöffneter Dateien. Da Sockets in Linux als Dateien implementiert werden, schränkt dies auch die Gesamtanzahl von Verbindungen ein.
-Führen Sie den folgenden Befehl aus:
+Führen Sie den folgenden Befehl aus.
 
 ```bash
 ulimit -a
 ```
 Die maximal zulässige Anzahl geöffneter Dateien (nofile) muss mindestens doppelt so hoch sein wie die Größe Ihres Verbindungspools. Weitere Informationen finden Sie unter [Leistungstipps für Azure Cosmos DB und Async Java](performance-tips-async-java.md).
 
-##### <a name="snat"></a>Azure SNAT-Portauslastung (PAT)
+##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT-Portauslastung (PAT)
 
-Wenn Ihre App auf einem virtuellen Azure-Computer ohne öffentliche IP-Adresse bereitgestellt wird, werden standardmäßig [Azure SNAT-Ports](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) verwendet, um Verbindungen mit beliebigen Endpunkten außerhalb Ihres virtuellen Computers herzustellen. Die Anzahl zulässiger Verbindungen des virtuellen Computers mit dem Azure Cosmos DB-Endpunkt wird durch die [Azure SNAT-Konfiguration](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) eingeschränkt.
+Wenn Ihre App auf einem virtuellen Azure-Computer ohne öffentliche IP-Adresse bereitgestellt wird, werden standardmäßig [Azure SNAT-Ports](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) verwendet, um Verbindungen mit beliebigen Endpunkten außerhalb Ihres virtuellen Computers herzustellen. Die Anzahl zulässiger Verbindungen des virtuellen Computers mit dem Azure Cosmos DB-Endpunkt wird durch die [Azure SNAT-Konfiguration](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) eingeschränkt.
 
  Azure SNAT-Ports werden nur verwendet, wenn Ihr virtueller Computer eine private IP-Adresse besitzt und ein Prozess auf dem virtuellen Computer versucht, eine Verbindung mit einer öffentlichen IP-Adresse herzustellen. Es gibt zwei Problemumgehungen, um die Einschränkung durch Azure SNAT zu vermeiden:
 
-* Fügen Sie Ihren Azure Cosmos DB-Dienstendpunkt dem Subnetz Ihres virtuellen Netzwerks von Azure Virtual Machines hinzu. Weitere Informationen finden Sie unter [Azure Virtual Network-Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
+* Fügen Sie Ihren Azure Cosmos DB-Dienstendpunkt dem Subnetz Ihres virtuellen Netzwerks von Azure Virtual Machines hinzu. Weitere Informationen finden Sie unter [Azure Virtual Network-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
-    Wenn der Dienstendpunkt aktiviert ist, werden die Anforderungen nicht mehr von einer öffentlichen IP-Adresse an Azure Cosmos DB gesendet. Stattdessen wird die Identität des virtuellen Netzwerks und des Subnetzes gesendet. Diese Änderung kann zu Firewallproblemen führen, wenn nur öffentliche IP-Adressen zulässig sind. Wenn Sie eine Firewall verwenden und den Dienstendpunkt aktivieren, fügen Sie der Firewall mithilfe von [VNET-ACLs](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) ein Subnetz hinzu.
+    Wenn der Dienstendpunkt aktiviert ist, werden die Anforderungen nicht mehr von einer öffentlichen IP-Adresse an Azure Cosmos DB gesendet. Stattdessen wird die Identität des virtuellen Netzwerks und des Subnetzes gesendet. Diese Änderung kann zu Firewallproblemen führen, wenn nur öffentliche IP-Adressen zulässig sind. Wenn Sie eine Firewall verwenden und den Dienstendpunkt aktivieren, fügen Sie der Firewall mithilfe von [VNET-ACLs](/previous-versions/azure/virtual-network/virtual-networks-acl) ein Subnetz hinzu.
 * Weisen Sie Ihrem virtuellen Azure-Computer eine öffentliche IP-Adresse zu.
 
-##### <a name="cant-connect"></a>Dienst nicht erreichbar – Firewall
+##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Dienst nicht erreichbar – Firewall
 ``ConnectTimeoutException`` gibt an, dass das SDK den Dienst nicht erreichen kann.
 Im direkten Modus erhalten Sie möglicherweise einen Fehler ähnlich dem folgenden:
 ```
@@ -80,6 +95,9 @@ Das SDK verwendet für die Kommunikation mit Azure Cosmos DB die [Netty](https:/
 Die Netty-E/A-Threads sind nur für nicht blockierende Netty-E/A-Aufgaben vorgesehen. Das SDK gibt das API-Aufrufergebnis für einen der Netty-E/A-Threads an den Code der App zurück. Wenn die App nach dem Empfang von Ergebnissen im Netty-Thread einen länger dauernden Vorgang ausführt, stehen dem SDK möglicherweise nicht genügend E/A-Threads für interne E/A-Aufgaben zur Verfügung. Eine solche App-Programmierung kann zu niedrigem Durchsatz, hoher Wartezeit und zu `io.netty.handler.timeout.ReadTimeoutException`-Fehlern führen. Wechseln Sie zur Problemumgehung den Thread, wenn Sie wissen, dass der Vorgang länger dauert.
 
 Sehen Sie sich beispielsweise den folgenden Codeausschnitt an. Möglicherweise wird im Netty-Thread eine Aufgabe ausgeführt, die mehr als nur ein paar Millisekunden dauert. In diesem Fall kann es vorkommen, dass für die Verarbeitung von E/A-Aufgaben kein Netty-E/A-Thread mehr vorhanden ist. Dies führt dann zu einem ReadTimeoutException-Fehler.
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-readtimeout"></a>Async Java SDK v2 (Maven com.microsoft.azure::azure-cosmosdb)
+
 ```java
 @Test
 public void badCodeWithReadTimeoutException() throws Exception {
@@ -131,13 +149,19 @@ public void badCodeWithReadTimeoutException() throws Exception {
     assertThat(failureCount.get()).isGreaterThan(0);
 }
 ```
-   Ändern Sie zur Problemumgehung den Thread für die Ausführung zeitaufwendiger Aufgaben. Definieren Sie eine Singletoninstanz des Schedulers für Ihre App.
-   ```java
+Ändern Sie zur Problemumgehung den Thread für die Ausführung zeitaufwendiger Aufgaben. Definieren Sie eine Singletoninstanz des Schedulers für Ihre App.
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>Async Java SDK v2 (Maven com.microsoft.azure::azure-cosmosdb)
+
+```java
 // Have a singleton instance of an executor and a scheduler.
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
-   ```
-   Unter Umständen müssen zeitaufwendige Aufgaben (etwa rechenintensive Aufgaben oder blockierende E/A-Vorgänge) ausgeführt werden. Verlagern Sie den Thread in diesem Fall mithilfe der API `.observeOn(customScheduler)` auf einen durch `customScheduler` bereitgestellten Worker.
+```
+Unter Umständen müssen zeitaufwendige Aufgaben (etwa rechenintensive Aufgaben oder blockierende E/A-Vorgänge) ausgeführt werden. Verlagern Sie den Thread in diesem Fall mithilfe der API `.observeOn(customScheduler)` auf einen durch `customScheduler` bereitgestellten Worker.
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-applycustomscheduler"></a>Async Java SDK v2 (Maven com.microsoft.azure::azure-cosmosdb)
+
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);
@@ -157,9 +181,9 @@ Durch die Verwendung von `observeOn(customScheduler)` geben Sie den Netty-E/A-Th
 ### <a name="request-rate-too-large"></a>Anforderungsrate zu groß
 Hierbei handelt es sich um einen serverseitigen Fehler. Er gibt an, dass Sie den bereitgestellten Durchsatz verbraucht haben. Wiederholen Sie den Vorgang zu einem späteren Zeitpunkt. Sollte dieser Fehler häufiger auftreten, empfiehlt sich unter Umständen eine Erhöhung des Sammlungsdurchsatzes.
 
-### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Fehler beim Herstellen einer Verbindung mit dem Azure Cosmos DB-Emulator
+### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Fehler beim Herstellen einer Verbindung mit dem Azure Cosmos DB-Emulator
 
-Das HTTPS-Zertifikat des Azure Cosmos DB-Emulators ist selbstsigniert. Importieren Sie das Emulatorzertifikat in eine Java TrustStore-Instanz, damit das SDK mit dem Emulator verwendet werden kann. Weitere Informationen finden Sie unter [Exportieren der Azure Cosmos DB-Emulatorzertifikate für die Verwendung mit Java, Python und Node.js](local-emulator-export-ssl-certificates.md).
+Das HTTPS-Zertifikat des Azure Cosmos DB-Emulators ist selbstsigniert. Importieren Sie das Emulatorzertifikat in eine Java TrustStore-Instanz, damit das SDK mit dem Emulator verwendet werden kann. Weitere Informationen finden Sie unter [Exportieren der Azure Cosmos DB-Emulatorzertifikate](local-emulator-export-ssl-certificates.md).
 
 ### <a name="dependency-conflict-issues"></a>Probleme durch Abhängigkeitskonflikte
 
@@ -196,7 +220,7 @@ Nachdem Sie identifiziert haben, dass RxJava-1.2.2 eine transitive Abhängigkeit
 Weitere Informationen finden Sie in der [Anleitung zum Ausschließen transitiver Abhängigkeiten](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html).
 
 
-## <a name="enable-client-sice-logging"></a>Aktivieren von Client-SDK-Protokollierung
+## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>Aktivieren von Client-SDK-Protokollierung
 
 Das Java Async SDK verwendet SLF4j als Protokollierungsfassade, die die Anmeldung bei gängigen Protokollierungsframeworks wie log4j und logback unterstützt.
 
@@ -235,7 +259,7 @@ log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 
 Weitere Informationen finden Sie im [Leitfaden zur sfl4j-Protokollierung](https://www.slf4j.org/manual.html).
 
-## <a name="netstats"></a>Netzwerkstatistiken des Betriebssystems
+## <a name="os-network-statistics"></a><a name="netstats"></a>Netzwerkstatistiken des Betriebssystems
 Führen Sie den Befehl „netstat“ aus, um einen Überblick darüber zu erhalten, wie viele Verbindungen sich im Zustand `ESTABLISHED`, `CLOSE_WAIT` usw. befinden.
 
 Unter Linux können Sie den folgenden Befehl ausführen:
@@ -253,5 +277,3 @@ Viele Verbindungen mit dem Azure Cosmos DB-Endpunkt befinden sich möglicherweis
 [Enable client SDK logging]: #enable-client-sice-logging
 [Verbindungslimit auf einem Hostcomputer]: #connection-limit-on-host
 [Azure SNAT-Portauslastung (PAT)]: #snat
-
-

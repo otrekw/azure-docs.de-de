@@ -1,191 +1,152 @@
 ---
-title: 'Konfigurieren einer Anwendung für den Zugriff auf Web-APIs: Microsoft Identity Platform'
-description: Es wird beschrieben, wie Sie bei der Microsoft Identity Platform registrierte Anwendung so konfigurieren, dass sie Umleitungs-URIs, Anmeldeinformationen oder Berechtigungen für den Zugriff auf Web-APIs enthält.
+title: 'Schnellstart: Konfigurieren einer App für den Zugriff auf eine Web-API | Azure'
+titleSuffix: Microsoft identity platform
+description: In dieser Schnellstartanleitung konfigurieren Sie eine App-Registrierung, die eine Web-API auf der Microsoft Identity Platform darstellt, um den bereichsbezogenen Ressourcenzugriff (Berechtigungen) für Clientanwendungen zu ermöglichen.
 services: active-directory
-documentationcenter: ''
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2019
-ms.author: ryanwi
-ms.custom: aaddev
+ms.date: 09/03/2020
+ms.author: marsma
+ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937fca5698378a8c877b4a981557f87d06170e9a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 2630984d54134ca8fca94fdc1960265ba71935a6
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879395"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031299"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs
+# <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf eine Web-API
 
-Damit eine Webanwendung oder vertrauliche Clientanwendung an einem Flow zur Autorisierungsgenehmigung teilnehmen kann, bei dem eine Authentifizierung (und das Abrufen eines Zugriffstokens) erforderlich ist, benötigt sie sichere Anmeldeinformationen. Die Standardauthentifizierungsmethode im Azure-Portal ist „Client-ID + geheimer Schlüssel“.
+In dieser Schnellstartanleitung stellen Sie eine bei der Microsoft Identity Platform registrierte Client-App mit bereichsbezogenem, berechtigungsbasiertem Zugriff auf Ihre eigene Web-API bereit. Außerdem ermöglichen Sie der Client-App den Zugriff auf Microsoft Graph.
 
-Bevor ein Client Zugriff auf eine Web-API erhält, die durch eine Ressourcenanwendung (z.B. Microsoft Graph-API) bereitgestellt wird, stellt das Zustimmungs-Framework außerdem sicher, dass dem Client die erforderlichen Berechtigungen basierend auf den angeforderten Berechtigungen erteilt werden. Standardmäßig können alle Anwendungen Berechtigungen aus der Microsoft Graph-API wählen. Die [Graph-API-Berechtigung „Anmelden und Benutzerprofil lesen“](https://developer.microsoft.com/graph/docs/concepts/permissions_reference#user-permissions) ist standardmäßig ausgewählt. Sie können für jede gewünschte Web-API zwischen [zwei Arten von Berechtigungen](developer-glossary.md#permissions) wählen:
-
-* **Anwendungsberechtigungen**: Ihre Clientanwendung benötigt direkten Zugriff auf die Web-API als sie selbst (kein Benutzerkontext). Für diese Art von Berechtigung ist die Zustimmung des Administrators erforderlich, und sie steht nicht für öffentliche Clientanwendungen (Desktop und mobil) zur Verfügung.
-* **Delegierte Berechtigungen**: Ihre Clientanwendung benötigt als angemeldeter Benutzer Zugriff auf die Web-API. Der Zugriff ist aber durch die ausgewählte Berechtigung eingeschränkt. Diese Art von Berechtigung kann von einem Benutzer erteilt werden, sofern für die Berechtigung nicht die Zustimmung durch einen Administrator erforderlich ist.
-
-  > [!NOTE]
-  > Durch Hinzufügen einer delegierten Berechtigung zu einer Anwendung erteilen Sie den Benutzern im Mandanten nicht automatisch Ihre Zustimmung. Benutzer müssen den zusätzlichen delegierten Berechtigungen weiterhin zur Laufzeit manuell zustimmen, sofern der Administrator nicht im Namen aller Benutzer die Zustimmung erteilt hat.
-
-In dieser Schnellstartanleitung wird veranschaulicht, wie Sie Ihre App für folgende Zwecke konfigurieren:
-
-* [Hinzufügen von Umleitungs-URIs zur Anwendung](#add-redirect-uris-to-your-application)
-* [Konfigurieren von erweiterten Einstellungen für Ihre Anwendung](#configure-advanced-settings-for-your-application)
-* [Ändern der unterstützten Kontotypen](#modify-supported-account-types)
-* [Hinzufügen von Anmeldeinformationen zu Ihrer Webanwendung](#add-credentials-to-your-web-application)
-* [Hinzufügen von Zugriffsberechtigungen für Web-APIs](#add-permissions-to-access-web-apis)
+Wenn Sie die Bereiche einer Web-API in der Registrierung Ihrer Client-App angeben, kann die Client-App ein Zugriffstoken mit diesen Bereichen von der Microsoft Identity Platform abrufen. Innerhalb des Codes kann die Web-API dann berechtigungsbasierten Zugriff auf die zugehörigen Ressourcen basierend auf den im Zugriffstoken enthaltenen Bereichen bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie zunächst sicher, dass die folgenden Voraussetzungen erfüllt sind:
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [ein kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Abschluss von [Schnellstart: Registrieren einer Anwendung](quickstart-register-app.md)
+* Abschluss von [Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen einer Web-API](quickstart-configure-app-expose-web-apis.md)
 
-* Sie sind über die Unterstützung von [Berechtigungen und Zustimmung](v2-permissions-and-consent.md) informiert. Hiermit sollten Sie vertraut sein, wenn Sie Anwendungen erstellen, die von anderen Benutzern oder Anwendungen verwendet werden müssen.
-* Sie verfügen über einen Mandanten, unter dem Anwendungen registriert wurden.
-  * Wenn Sie keine Apps registriert haben, sollten Sie sich darüber informieren, [wie Sie Anwendungen bei der Microsoft Identity Platform registrieren](quickstart-register-app.md).
+## <a name="add-permissions-to-access-your-web-api"></a>Hinzufügen von Berechtigungen für den Zugriff auf Ihre Web-API
 
-## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Anmelden beim Azure-Portal und Auswählen der App
+Im ersten Szenario gewähren Sie einer Client-App Zugriff auf Ihre eigene Web-API. Sie müssen sowohl die Client-App als auch die Web-API als Teil der Voraussetzungen registriert haben. Wenn Sie noch nicht sowohl eine Client-App als auch eine Web-API registriert haben, führen Sie die unter [Voraussetzungen](#prerequisites) beschriebenen Schritte aus.
 
-Sie müssen die folgenden Schritte ausführen, bevor Sie die App konfigurieren können:
+Im folgenden Diagramm ist dargestellt, wie die beiden App-Registrierungen zueinander in Beziehung stehen. In diesem Abschnitt fügen Sie der Registrierung der Client-App Berechtigungen hinzu.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
-1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen** aus.
-1. Wählen Sie die Anwendung aus, die Sie konfigurieren möchten. Nachdem Sie die App ausgewählt haben, wird die Seite **Übersicht** oder die Hauptseite für die Registrierung angezeigt.
-1. Führen Sie die Schritte zum Konfigurieren Ihrer Anwendung für den Zugriff auf Web-APIs aus:
-    * [Hinzufügen von Umleitungs-URIs zur Anwendung](#add-redirect-uris-to-your-application)
-    * [Konfigurieren von erweiterten Einstellungen für Ihre Anwendung](#configure-advanced-settings-for-your-application)
-    * [Ändern der unterstützten Kontotypen](#modify-supported-account-types)
-    * [Hinzufügen von Anmeldeinformationen zu Ihrer Webanwendung](#add-credentials-to-your-web-application)
-    * [Hinzufügen von Zugriffsberechtigungen für Web-APIs](#add-permissions-to-access-web-apis)
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/diagram-01-app-permission-to-api-scopes.svg" alt-text="Liniendiagramm mit einer Web-API mit verfügbar gemachten Bereichen auf der rechten Seite und einer Client-App auf der linken Seite mit diesen als Berechtigungen ausgewählten Bereichen" border="false":::
 
-## <a name="add-redirect-uris-to-your-application"></a>Hinzufügen von Umleitungs-URIs zur Anwendung
+Nachdem Sie sowohl die Client-App als auch die Web-API registriert und die API durch das Erstellen von Bereichen verfügbar gemacht haben, können Sie die Berechtigungen der Client-App für die API konfigurieren, indem Sie die folgenden Schritte ausführen:
 
-Fügen Sie Ihrer Anwendung wie folgt einen Umleitungs-URI hinzu:
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im oberen Menü den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, der die Registrierung der Client-App enthält.
+1. Wählen Sie **Azure Active Directory** > **App-Registrierungen** aus, und wählen Sie dann Ihre Client Anwendung aus (*nicht* Ihre Web-API).
+1. Wählen Sie über die Option **API-Berechtigungen** > **Berechtigung hinzufügen** > **Meine APIs** aus.
+1. Wählen Sie die Web-API aus, die Sie als Teil der Voraussetzungen registriert haben.
 
-1. Wählen Sie auf der Seite **Übersicht** der App den Abschnitt **Authentifizierung**.
-1. Führen Sie diese Schritte aus, um einen benutzerdefinierten Umleitungs-URI für Web-Apps und öffentliche Clientanwendungen hinzuzufügen:
-   1. Suchen Sie nach dem Abschnitt **Umleitungs-URI**.
-   1. Wählen Sie den Typ der zu erstellenden Anwendung aus: **Web** oder **Öffentlicher Client (Mobilgerät und Desktop)** .
-   1. Geben Sie den Umleitungs-URI für Ihre Anwendung ein.
-      * Geben Sie für Webanwendungen die Basis-URL Ihrer Anwendung an. `http://localhost:31544` kann beispielsweise die URL für eine Webanwendung sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden.
-      * Geben Sie für öffentliche Anwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. `https://MyFirstApp`.
+    Die Option **Delegierte Berechtigungen** ist standardmäßig ausgewählt. Delegierte Berechtigungen sind für Client-Apps geeignet, die als angemeldeter Benutzer auf eine Web-API zugreifen und deren Zugriff auf die Berechtigungen beschränkt werden sollte, die Sie im nächsten Schritt auswählen. Übernehmen Sie für dieses Beispiel die ausgewählte Option **Delegierte Berechtigungen**.
 
-1. Führen Sie diese Schritte aus, um eine Auswahl aus den vorgeschlagenen Umleitungs-URIs für öffentliche Clients (Mobilgerät, Desktop) zu treffen:
-    1. Suchen Sie nach dem Abschnitt mit den Vorschlägen zu **Umleitungs-URIs für öffentliche Clients (Mobilgerät, Desktop)** .
-    1. Wählen Sie die passenden Umleitungs-URIs für Ihre Anwendung aus, indem Sie die Kontrollkästchen verwenden.
+    **Anwendungsberechtigungen** sind für Anwendungen vom Typ „Dienst“ oder „Daemon“ vorgesehen, die als solche auf eine Web-API zugreifen müssen, ohne dass eine Benutzerinteraktion für die Anmeldung oder Zustimmung erforderlich ist. Sofern Sie keine Anwendungsrollen für Ihre Web-API definiert haben, ist diese Option deaktiviert.
+1. Erweitern Sie unter **Berechtigungen auswählen** die Ressource, deren Bereiche Sie für Ihre Web-API definiert haben, und wählen Sie die Berechtigungen aus, über die die Client-App im Namen des angemeldeten Benutzers verfügen soll.
 
-> [!NOTE]
-> Testen Sie die neue Benutzeroberfläche für die **Authentifizierung**, auf der Sie Einstellungen für Ihre Anwendung basierend auf der Zielplattform oder dem Zielgerät konfigurieren können.
->
-> Um diese Ansicht anzuzeigen, wählen Sie auf der Standardseite für die **Authentifizierung** die Option **Neue Benutzeroberfläche ausprobieren** aus.
->
-> ![Klicken auf „Neue Benutzeroberfläche ausprobieren“ zum Anzeigen der Ansicht für die Plattformkonfiguration](./media/quickstart-update-azure-ad-app-preview/authentication-try-new-experience-cropped.png)
->
-> Dadurch gelangen Sie zur [neuen Seite **Plattformkonfigurationen**](#configure-platform-settings-for-your-application).
+    Wenn Sie die im vorherigen Schnellstart angegebenen Beispielbereichsnamen verwendet haben, sollten **Employees.Read.All** und **Employees.Write.All** angezeigt werden.
+    Wählen Sie **Employees.Read.All** oder eine andere Berechtigung aus, die Sie ggf. beim Ausführen der Schritte für die Voraussetzungen erstellt haben.
+1. Wählen Sie **Berechtigungen hinzufügen** aus, um den Vorgang abzuschließen.
 
-### <a name="configure-advanced-settings-for-your-application"></a>Konfigurieren von erweiterten Einstellungen für Ihre Anwendung
+Nachdem Sie Ihrer API Berechtigungen hinzugefügt haben, sollten die ausgewählten Berechtigungen unter **Konfigurierte Berechtigungen** angezeigt werden. In der folgenden Abbildung sehen Sie beispielhaft, dass die delegierte Berechtigung *Employees.Read.All* zur Registrierung der Client-App hinzugefügt wurde.
 
-Je nachdem, welche Anwendung Sie registrieren, müssen Sie möglicherweise einige zusätzliche Einstellungen konfigurieren, wie z.B. folgende:
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Der Bereich „Konfigurierte Berechtigungen“ im Azure-Portal mit der neu hinzugefügten Berechtigung":::
 
-* **Abmelde-URL**
-* Bei Einzelseiten-Apps können Sie **Implizite Genehmigung** aktivieren und die Token auswählen, die vom Autorisierungsendpunkt ausgegeben werden sollen.
-* Bei Desktop-Apps, die Token per integrierter Windows-Authentifizierung, Gerätecodeflow oder Benutzername/Kennwort im Abschnitt **Standardclienttyp** erhalten, legen Sie die Einstellung **Anwendung als öffentlichen Client behandeln** auf **Ja** fest.
-* Bei Legacy-Apps, die das Live SDK für die Integration in den Microsoft-Kontodienst verwendet haben, konfigurieren Sie **Live SDK-Unterstützung**. Für neue Apps ist diese Einstellung nicht erforderlich.
-* **Standardclienttyp**
+Möglicherweise sehen Sie auch die Berechtigung *User.Read* für die Microsoft Graph-API. Diese Berechtigung wird automatisch hinzugefügt, wenn Sie eine App im Azure-Portal registrieren.
 
-### <a name="modify-supported-account-types"></a>Ändern der unterstützten Kontotypen
+## <a name="add-permissions-to-access-microsoft-graph"></a>Hinzufügen von Berechtigungen für den Zugriff auf Microsoft Graph
 
-**Unterstützte Kontotypen** geben an, wer die Anwendung verwenden oder auf die API zugreifen darf.
+Zusätzlich zum Zugriff auf Ihre eigene Web-API im Namen des angemeldeten Benutzers muss Ihre Anwendung möglicherweise auch auf die in Microsoft Graph gespeicherten Daten des Benutzers (oder andere Daten) zugreifen oder diese ändern. Möglicherweise verfügen Sie auch über eine Dienst- oder Daemon-App, die als solche auf Microsoft Graph zugreifen muss und Vorgänge ohne Benutzerinteraktion ausführt.
 
-Sobald Sie bei der ersten Registrierung der Anwendung [die unterstützten Kontotypen konfiguriert](quickstart-register-app.md) haben, können Sie diese Einstellung nur in folgenden Fällen mithilfe des Anwendungsmanifest-Editors ändern:
+### <a name="delegated-permission-to-microsoft-graph"></a>Delegierte Berechtigung für Microsoft Graph
 
-* Sie ändern den Kontotyp von **AzureADMyOrg** oder **AzureADMultipleOrgs** in **AzureADandPersonalMicrosoftAccount** oder umgekehrt.
-* Sie ändern den Kontotyp von **AzureADMyOrg** in **AzureADMultipleOrgs** oder umgekehrt.
+Konfigurieren Sie die delegierte Berechtigung für Microsoft Graph, damit Ihre Clientanwendung Vorgänge im Namen des angemeldeten Benutzers ausführen kann, z. B. das Lesen seiner E-Mail oder das Ändern seines Profils. Standardmäßig werden die Benutzer Ihrer Client-App bei der Anmeldung aufgefordert, den delegierten Berechtigungen zuzustimmen, die Sie für die App konfiguriert haben.
 
-So ändern Sie die unterstützten Kontotypen für eine vorhandene App-Registrierung:
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im oberen Menü den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, der die Registrierung der Client-App enthält.
+1. Wählen Sie **Azure Active Directory** > **App-Registrierungen** aus, und wählen Sie dann Ihre Client Anwendung aus.
+1. Wählen Sie **API-Berechtigungen** > **Berechtigung hinzufügen** > **Microsoft Graph** aus.
+1. Wählen Sie **Delegierte Berechtigungen** aus. Microsoft Graph macht viele Berechtigungen verfügbar, wobei die am häufigsten verwendeten Berechtigungen am Anfang der Liste angezeigt werden.
+1. Wählen Sie unter **Berechtigungen auswählen** die folgenden Berechtigungen aus:
 
-* Lesen Sie die Anweisungen unter [Konfigurieren des Anwendungsmanifests](reference-app-manifest.md), und aktualisieren Sie den `signInAudience`-Schlüssel.
+    | Berechtigung       | BESCHREIBUNG                                         |
+    |------------------|-----------------------------------------------------|
+    | `email`          | Anzeigen der E-Mail-Adresse des Benutzers                           |
+    | `offline_access` | Zugriff auf Daten beibehalten, für die Sie der App Zugriff erteilt haben |
+    | `openid`         | Anmelden von Benutzern                                       |
+    | `profile`        | Anzeigen des grundlegenden Benutzerprofils                           |
+1. Wählen Sie **Berechtigungen hinzufügen** aus, um den Vorgang abzuschließen.
 
-## <a name="configure-platform-settings-for-your-application"></a>Konfigurieren von Plattformeinstellungen für Ihre Anwendung
+Wenn Sie Berechtigungen konfigurieren, werden die Benutzer Ihrer App bei der Anmeldung aufgefordert, ihre Zustimmung zu erteilen, damit Ihre App in ihrem Namen auf die Ressourcen-API zugreifen kann.
 
-[![Konfigurieren von Einstellungen für Ihre App basierend auf der Plattform oder dem Gerät](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
+Als Administrator können Sie auch die Zustimmung im Namen *aller* Benutzer erteilen, damit diese nicht dazu aufgefordert werden. Die Administratoreinwilligung wird weiter unten im Abschnitt [Weitere Informationen zu API-Berechtigungen und zur Administratoreinwilligung](#more-on-api-permissions-and-admin-consent) dieses Artikels erläutert.
 
-Um Anwendungseinstellungen basierend auf der Plattform oder dem Gerät zu konfigurieren, gehen Sie folgendermaßen vor:
+### <a name="application-permission-to-microsoft-graph"></a>Anwendungsberechtigung für Microsoft Graph
 
-1. Klicken Sie auf der Seite **Plattformkonfigurationen** auf **Plattform hinzufügen**, und wählen Sie eine der verfügbaren Optionen aus.
+Konfigurieren Sie Anwendungsberechtigungen für eine Anwendung, die sich ohne Benutzerinteraktion oder Zustimmung als sie selbst authentifizieren muss. Anwendungsberechtigungen werden in der Regel von Hintergrunddiensten oder Daemon-Apps verwendet, die „monitorlos“ auf eine API zugreifen, und von Web-APIs, die auf eine andere (nachgeschaltete) API zugreifen.
 
-   ![Seite zum Konfigurieren von Plattformen](./media/quickstart-update-azure-ad-app-preview/authentication-platform-configurations-configure-platforms.png)
+In den folgenden Schritten erteilen Sie die Berechtigung für die Microsoft Graph-Berechtigung *Files.Read.All* als Beispiel.
 
-1. Geben Sie die Einstellungsinformationen für die von Ihnen ausgewählte Plattform ein.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im oberen Menü den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, der die Registrierung der Client-App enthält.
+1. Wählen Sie **Azure Active Directory** > **App-Registrierungen** aus, und wählen Sie dann Ihre Client Anwendung aus.
+1. Wählen Sie **API-Berechtigungen** > **Berechtigung hinzufügen** > **Microsoft Graph** > **Anwendungsberechtigungen** aus.
+1. Alle von Microsoft Graph verfügbar gemachten Berechtigungen werden unter **Berechtigungen auswählen** angezeigt.
+1. Wählen Sie die Berechtigung(en) aus, die Sie Ihrer Anwendung erteilen möchten. Beispielsweise verfügen Sie möglicherweise über eine Daemon-App, die Dateien in Ihrer Organisation überprüft und bei bestimmten Dateitypen oder -namen eine Warnung ausgibt.
 
-   | Plattform                | Auswahl              | Konfigurationseinstellungen            |
-   |-------------------------|----------------------|-----------------------------------|
-   | **Webanwendungen**    | **Web**              | Geben Sie den **Umleitungs-URI** für Ihre Anwendung ein. |
-   | **Mobile Anwendungen** | **iOS**              | Geben Sie die **Bundle-ID** der App ein, die Sie in Xcode in der Datei „Info.plist“ oder in den Buildeinstellungen finden. Durch Hinzufügen der Bundle-ID wird automatisch ein Umleitungs-URI für die Anwendung erstellt. |
-   |                         | **Android**          | * Geben Sie den **Paketnamen** der App an, den Sie in der AndroidManifest.xml-Datei finden.<br/>* Generieren Sie den **Signaturhash**, und geben Sie ihn ein. Durch Hinzufügen des Signaturhashs wird automatisch ein Umleitungs-URI für die Anwendung erstellt.  |
-   | **Desktop + Geräte**   | **Desktop + Geräte** | * Optional. Wählen Sie einen der **vorgeschlagenen Umleitungs-URIs** aus, wenn Sie Apps für Desktops und Geräte erstellen.<br/>* Optional. Geben Sie einen **benutzerdefinierten Umleitungs-URI** ein, an den Benutzer als Antwort auf Authentifizierungsanforderungen von Azure AD umgeleitet werden. Verwenden Sie beispielsweise `https://localhost` für .NET Core-Anwendungen, bei denen eine Interaktion erwünscht ist. |
+    Erweitern Sie unter **Berechtigungen auswählen** die Option **Dateien**, und wählen Sie dann die Berechtigung *Files.Read.All* aus.
+1. Wählen Sie **Berechtigungen hinzufügen** aus.
 
-   > [!IMPORTANT]
-   > Bei mobilen Anwendungen, die nicht die neueste MSAL oder keinen Broker verwenden, müssen Sie die Umleitungs-URIs für diese Anwendungen unter **Desktop + Geräte** konfigurieren.
+Einige Berechtigungen (wie z. B. die Microsoft Graph-Berechtigung *Files.Read.All*) erfordern die Zustimmung des Administrators. Sie erteilen die Administratoreinwilligung, indem Sie die Schaltfläche **Administratoreinwilligung erteilen** auswählen, die weiter unten im Abschnitt [Schaltfläche „Administratorzustimmung“](#admin-consent-button) erläutert wird.
 
-1. Je nach ausgewählter Plattform können Sie möglicherweise weitere Einstellungen konfigurieren. Bei **Web-Apps** haben Sie folgende Möglichkeiten:
-    * Hinzufügen weiterer Umleitungs-URIs
-    * Konfigurieren einer **impliziten Genehmigung**, um die Token auszuwählen, die vom Autorisierungsendpunkt ausgegeben werden sollen:
-        * Wählen Sie bei Einzelseiten-Apps sowohl **Zugriffstoken** als auch **ID-Token** aus.
-        * Wählen Sie bei Web-Apps **ID-Token** aus.
+### <a name="configure-client-credentials"></a>Konfigurieren von Clientanmeldeinformationen
 
-## <a name="add-credentials-to-your-web-application"></a>Hinzufügen von Anmeldeinformationen zu Ihrer Webanwendung
+Apps, die Anwendungsberechtigungen verwenden, authentifizieren sich mit ihren eigenen Anmeldeinformationen als sie selbst, ohne dass eine Benutzerinteraktion erforderlich ist. Bevor Ihre Anwendung (oder API) auf Microsoft Graph, Ihre eigene Web-API oder eine beliebige andere API mithilfe von Anwendungsberechtigungen zugreifen kann, müssen Sie die Anmeldeinformationen dieser Client-App konfigurieren.
 
-Fügen Sie Ihrer Webanwendung wie folgt Anmeldeinformationen hinzu:
+Weitere Informationen zum Konfigurieren der Anmeldeinformationen einer App finden Sie im Abschnitt [Hinzufügen von Anmeldeinformationen](quickstart-register-app.md#add-credentials) des [Schnellstarts: Registrieren einer Anwendung bei der Microsoft Identity Platform](quickstart-register-app.md).
 
-1. Wählen Sie auf der Seite **Übersicht** der App den Abschnitt **Certificates & secrets** (Zertifikate und Geheimnisse).
+## <a name="more-on-api-permissions-and-admin-consent"></a>Weitere Informationen zu API-Berechtigungen und zur Administratoreinwilligung
 
-1. Führen Sie diese Schritte aus, um ein Zertifikat hinzuzufügen:
+Der Bereich **API-Berechtigungen** einer App-Registrierung enthält eine Tabelle [Konfigurierte Berechtigungen](#configured-permissions) und möglicherweise auch eine Tabelle [Weitere gewährte Berechtigungen](#other-permissions-granted). Beide Tabellen sowie die [Schaltfläche „Administratorzustimmung“](#admin-consent-button) werden in den folgenden Abschnitten beschrieben.
 
-    1. Wählen Sie **Zertifikat hochladen**.
-    1. Wählen Sie die Datei aus, die Sie hochladen möchten. Die Datei muss einen der folgenden Dateitypen aufweisen: CER, PEM, CRT.
-    1. Wählen Sie **Hinzufügen**.
+### <a name="configured-permissions"></a>Konfigurierte Berechtigungen
 
-1. Führen Sie diese Schritte aus, um einen geheimen Clientschlüssel hinzuzufügen:
+Die Tabelle **Konfigurierte Berechtigungen** im Bereich **API-Berechtigungen** enthält die Liste der Berechtigungen, die Ihre Anwendung zum Ausführen grundlegender Vorgänge benötigt: die Liste *erforderlicher Ressourcenzugriff* (Required Resource Access, RRA). Benutzer oder ihre Administratoren müssen diesen Berechtigungen zustimmen, bevor sie Ihre App verwenden können. Andere optionale Berechtigungen können später zur Laufzeit (mit dynamischer Zustimmung) angefordert werden.
 
-    1. Wählen Sie **Neuer geheimer Clientschlüssel**.
-    1. Fügen Sie eine Beschreibung für Ihren geheimen Clientschlüssel hinzu.
-    1. Wählen Sie eine Dauer aus.
-    1. Wählen Sie **Hinzufügen**.
+Dies ist die Liste der Mindestberechtigungen, denen die Benutzer für Ihre App zustimmen müssen. Es gibt möglicherweise weitere Berechtigungen, aber diese hier werden immer benötigt. Aus Sicherheitsgründen und um die Verwendung Ihrer App für Benutzer und Administratoren angenehmer zu gestalten, sollten Sie nie etwas anfordern, das Sie nicht benötigen.
 
-> [!NOTE]
-> Nach dem Speichern der Konfigurationsänderungen enthält die Spalte ganz rechts den Wert für den geheimen Clientschlüssel. **Kopieren Sie den Wert** zur Verwendung im Code Ihrer Clientanwendung, da er nach dem Verlassen dieser Seite nicht mehr zugänglich ist.
+Sie können die in dieser Tabelle angezeigten Berechtigungen hinzufügen oder entfernen, indem Sie die oben beschriebenen Schritte ausführen oder aus [Weitere gewährte Berechtigungen](#other-permissions-granted) (im nächsten Abschnitt beschrieben). Als Administrator können Sie die Administratorzustimmung für den vollständigen Satz der in der Tabelle aufgeführten Berechtigungen einer API erteilen und die Zustimmung für einzelne Berechtigungen widerrufen.
 
-## <a name="add-permissions-to-access-web-apis"></a>Hinzufügen von Zugriffsberechtigungen für Web-APIs
+### <a name="other-permissions-granted"></a>Weitere gewährte Berechtigungen
 
-Fügen Sie Berechtigungen für den Zugriff auf Ressourcen-APIs von Ihrem Client wie folgt hinzu:
+Möglicherweise wird im Bereich **API-Berechtigungen** auch eine Tabelle mit dem Titel **Weitere gewährte Berechtigungen für {Mandant}** angezeigt. In der Tabelle **Weitere gewährte Berechtigungen für {Mandant}** werden Berechtigungen angezeigt, die dem Mandanten erteilt, aber nicht explizit für das Anwendungsobjekt konfiguriert wurden. Diese Berechtigungen wurden dynamisch angefordert und gewährt. Dieser Abschnitt wird nur angezeigt, wenn mindestens eine entsprechende Berechtigung vorhanden ist.
 
-1. Wählen Sie auf der Seite **Übersicht** der App die Option **API-Berechtigungen**.
-1. Wählen Sie die Schaltfläche **Berechtigung hinzufügen**.
-1. Standardmäßig ermöglicht Ihnen die Ansicht die Auswahl von **Microsoft-APIs**. Wählen Sie den Abschnitt mit den APIs aus, die für Sie interessant sind:
-    * **Microsoft-APIs**: Sie können Berechtigungen für Microsoft-APIs auswählen, z.B. Microsoft Graph.
-    * **Von meiner Organisation verwendete APIs**: Sie können Berechtigungen für APIs auswählen, die von Ihrer Organisation verfügbar gemacht wurden, oder APIs, für die Ihre Organisation die Integration durchgeführt hat.
-    * **Meine APIs**: Sie können Berechtigungen für APIs auswählen, die Sie verfügbar gemacht haben.
-1. Nachdem Sie die APIs ausgewählt haben, wird die Seite **API-Berechtigungen anfordern** angezeigt. Wenn die API sowohl delegierte Berechtigungen als auch Anwendungsberechtigungen verfügbar macht, können Sie auswählen, welche Art von Berechtigung für Ihre Anwendung erforderlich ist.
-1. Wählen Sie abschließend die Option **Berechtigungen hinzufügen**. Sie gelangen zurück auf die Seite **API-Berechtigungen**, auf der die Berechtigungen gespeichert und der Tabelle hinzugefügt wurden.
+Sie können den vollständigen Satz der Berechtigungen einer API oder einzelne Berechtigungen, die in dieser Tabelle enthalten sind, zur Tabelle **Konfigurierte Berechtigungen** hinzufügen. Als Administrator können Sie in diesem Abschnitt die Administratoreinwilligung für APIs oder einzelne Berechtigungen widerrufen.
+
+### <a name="admin-consent-button"></a>Schaltfläche „Administratorzustimmung“
+
+Mithilfe der Schaltfläche **Administratoreinwilligung erteilen für {Mandant}** kann ein Administrator eine Administratoreinwilligung für die Berechtigungen erteilen, die für die Anwendung konfiguriert sind. Wenn Sie die Schaltfläche auswählen, wird ein Dialogfeld angezeigt, in dem Sie die Einwilligungsaktion bestätigen müssen.
+
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="Hervorgehobene Schaltfläche „Administratoreinwilligung erteilen“ im Bereich „Konfigurierte Berechtigungen“ im Azure-Portal":::
+
+Nachdem Sie die Einwilligung erteilt haben, werden die Berechtigungen, für die eine Administratoreinwilligung erforderlich ist, als erteilt angezeigt:
+
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="Tabelle „Konfigurierte Berechtigungen“ im Azure-Portal mit erteilter Administratoreinwilligung für die Berechtigung „Files.Read.All“":::
+
+Die Schaltfläche **Administratoreinwilligung erteilen** ist *deaktiviert*, wenn Sie kein Administrator sind oder für die Anwendung keine Berechtigungen konfiguriert wurden. Wenn Sie über Berechtigungen verfügen, die erteilt, aber noch nicht konfiguriert wurden, werden Sie nach dem Auswählen der Schaltfläche für die Administratoreinwilligung aufgefordert, zu entscheiden, wie mit diesen Berechtigungen verfahren werden soll. Sie können diese Berechtigungen den konfigurierten Berechtigungen hinzufügen oder entfernen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die anderen Schnellstartanleitungen zur App-Verwaltung an:
+In der nächsten Schnellstartanleitung der Reihe erfahren Sie, wie Sie konfigurieren, welche Kontotypen auf Ihre Anwendung zugreifen können. Beispielsweise möchten Sie den Zugriff auf die Benutzer in Ihrer Organisation (ein Mandant) beschränken oder Benutzer in anderen Azure AD-Mandanten (mehrere Mandanten) und diejenigen mit persönlichen Microsoft-Konten (MSA) zulassen.
 
-* [Registrieren einer Anwendung bei der Microsoft Identity Platform](quickstart-register-app.md)
-* [Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs](quickstart-configure-app-expose-web-apis.md)
-* [Ändern der von einer Anwendung unterstützten Konten](quickstart-modify-supported-accounts.md)
-* [Entfernen einer bei der Microsoft Identity Platform registrierten Anwendung](quickstart-remove-app.md)
-
-Um mehr über die beiden Azure AD-Objekte, die eine registrierte Anwendung darstellen, und die Beziehung zwischen ihnen zu erfahren, lesen Sie [Anwendungsobjekte und Dienstprinzipalobjekte](app-objects-and-service-principals.md).
-
-Weitere Informationen zu den Brandingrichtlinien, die Sie bei der Entwicklung von Anwendungen mit Azure Active Directory verwenden sollten, finden Sie unter [Brandingrichtlinien für Anwendungen](howto-add-branding-in-azure-ad-apps.md).
+> [!div class="nextstepaction"]
+> [Ändern der von einer Anwendung unterstützten Konten](quickstart-modify-supported-accounts.md)

@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Kopieren von Daten über SMB auf Azure Data Box Heavy | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie Daten über SMB auf Ihr Azure Data Box Heavy-Gerät kopieren.
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe des SMB über die lokale Webbenutzeroberfläche eine Verbindung herstellen und Daten von Ihrem Hostcomputer auf Ihr Azure Data Box Heavy-Gerät kopieren.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 475e628901a96334976dbdbbaa8b362197ec3bc3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 77dc64d9660f9a0bf66559c4a5a976362cf1acd0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914047"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951637"
 ---
 ::: zone target = "docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "70914047"
 
 ::: zone target = "chromeless"
 
-# <a name="copy-data-to-azure-data-box-heavy"></a>Kopieren von Daten auf Azure Data Box Heavy
+## <a name="copy-data-to-azure-data-box-heavy"></a>Kopieren von Daten auf Azure Data Box Heavy
 
 ::: zone-end
 
@@ -80,7 +80,7 @@ Unter Freigaben für Azure Files:
 
 Die folgende Tabelle enthält den UNC-Pfad zu den Freigaben auf Ihrem Data Box Heavy-Gerät und die Azure Storage-Pfad-URL für den Datenupload. Die endgültige URL des Azure Storage-Pfads kann aus dem UNC-Freigabepfad abgeleitet werden.
  
-|                   |                                                            |
+| Storage           | UNC-Pfad                                                                       |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure-Blockblobs | <li>UNC-Pfad zu den Freigaben: `\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Azure Storage-URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure-Seitenblobs  | <li>UNC-Pfad zu den Freigaben: `\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Azure Storage-URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -97,11 +97,11 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden
 
 1. Zunächst müssen Sie sich authentifizieren und eine Sitzung starten. Navigieren Sie zu **Verbindung herstellen und Daten kopieren**. Klicken Sie auf **Get credentials** (Anmeldeinformationen abrufen), um die Anmeldeinformationen für den Zugriff auf die mit Ihrem Speicherkonto verknüpften Freigaben abzurufen.
 
-    ![Abrufen der Anmeldeinformationen für Freigaben 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
+    ![Abrufen der Anmeldeinformationen für Freigaben](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
 
 2. Kopieren Sie im Dialogfeld „Auf Freigabe zugreifen und Daten kopieren“ den **Benutzernamen** und das **Kennwort** für die Freigabe. Klicken Sie auf **OK**.
     
-    ![Abrufen der Anmeldeinformationen für Freigaben 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
+    ![Abrufen der Anmeldeinformationen für Freigaben 2](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
 3. Öffnen Sie ein Befehlsfenster, um über Ihren Hostcomputer auf die Freigaben zuzugreifen, die mit Ihrem Speicherkonto (*databoxe2etest* im folgenden Beispiel) verknüpft sind. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
@@ -122,7 +122,7 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden
 
 4. Drücken Sie WINDOWS-TASTE+R. Geben Sie im Fenster **Ausführen** die `\\<device IP address>` an. Klicken Sie auf **OK**, um den Datei-Explorer zu öffnen.
     
-    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer 2](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
+    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
 
     Die Freigaben sollten jetzt als Ordner angezeigt werden.
     
@@ -171,7 +171,7 @@ Nachdem Sie eine Verbindung mit der SMB-Freigabe hergestellt haben, beginnen Sie
     ```
     Die Attribute werden in der folgenden Tabelle beschrieben.
     
-    |Attribut  |BESCHREIBUNG  |
+    |attribute  |BESCHREIBUNG  |
     |---------|---------|
     |/e      |Kopiert Unterverzeichnisse, einschließlich der leeren Verzeichnisse.         |
     |/r:     |Gibt die Anzahl von Wiederholungsversuchen für fehlerhafte Kopiervorgänge an.         |

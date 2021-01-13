@@ -1,18 +1,17 @@
 ---
-title: Informationen zur Notfallwiederherstellung von virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+title: VMware-Notfallwiederherstellung mit Azure Site Recovery
 description: Dieser Artikel bietet eine Übersicht über die Notfallwiederherstellung von virtuellen VMware-Computern mit dem Dienst Azure Site Recovery.
-author: raynew
+author: rayne-wiselman
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 9/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: dca8174caabf4799c338d780a78ba58f1af5a2f1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: dfbdff01064b483085233ece47d1d3b635b68743
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814308"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87021459"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Informationen zur Notfallwiederherstellung von virtuellen VMware-Computern in Azure
 
@@ -22,8 +21,11 @@ Dieser Artikel bietet eine Übersicht über die Notfallwiederherstellung von lok
 
 Eine Strategie für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) hilft Ihnen, Ihren Geschäftsbetrieb am Laufen zu halten. Mit einer BCDR-Strategie bleiben Daten bei geplanten und unerwarteten Ausfallzeiten gesichert und verfügbar. Zudem wird sichergestellt, dass Anwendungen weiter ausgeführt werden. Neben den Features der BCDR-Plattform wie z.B. Regionspaaren und der Speicherung mit Hochverfügbarkeit bietet Azure auch Recovery Services als Bestandteil Ihrer BCDR-Lösung. Recovery Services umfasst Folgendes: 
 
-- [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) sichert lokale Daten und Daten von virtuellen Azure-Computern. Sie können Dateien und Ordner, bestimmte Workloads oder einen vollständigen virtuellen Computer sichern. 
+- [Azure Backup](../backup/backup-overview.md) sichert lokale Daten und Daten von virtuellen Azure-Computern. Sie können Dateien und Ordner, bestimmte Workloads oder einen vollständigen virtuellen Computer sichern. 
 - [Azure Site Recovery](site-recovery-overview.md) bietet Datenresilienz und Notfallwiederherstellung für Anwendungen und Workloads, die auf lokalen Computern oder virtuellen Azure-IaaS-Computern ausgeführt werden. Site Recovery orchestriert die Replikation und führt bei Ausfällen ein Failover in Azure aus. Zudem wird die Wiederherstellung aus Azure an Ihrem primären Standort durchgeführt. 
+
+> [!NOTE]
+> Site Recovery speichert Kundendaten nur in der Zielregion, in der die Notfallwiederherstellung für die Quellcomputer eingerichtet wurde, und verschiebt sie nicht aus dieser Region. Kunden können auf Wunsch einen Recovery Services-Tresor aus einer anderen Region auswählen. Der Recovery Services-Tresor enthält Metadaten, aber keine tatsächlichen Kundendaten.
 
 ## <a name="how-does-site-recovery-do-disaster-recovery"></a>Wie wird die Notfallwiederherstellung mithilfe von Site Recovery durchgeführt?
 

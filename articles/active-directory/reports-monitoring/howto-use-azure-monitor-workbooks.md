@@ -1,27 +1,30 @@
 ---
-title: Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte | Microsoft-Dokumentation
+title: Azure Monitor-Arbeitsmappen für Berichte | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte verwenden.
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: 4066725c-c430-42b8-a75b-fe2360699b82
 ms.service: active-directory
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
-ms.author: chadam
+ms.date: 10/30/2019
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 288fa54a1a6dd4eb05f953a4490bf7736d6d7ff8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 76dc7693b1773038d610f9ed42eddad2c81e3eaf
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931253"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126633"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte
+
+> [!IMPORTANT]
+> Um die zugrunde liegenden Abfragen in dieser Arbeitsmappe zu optimieren, klicken Sie auf „Bearbeiten“, klicken Sie auf das Symbol „Einstellungen“, und wählen Sie den Arbeitsbereich aus, in dem diese Abfragen ausgeführt werden sollen. Für Arbeitsmappen werden standardmäßig alle Arbeitsbereiche ausgewählt, an die Sie die Azure AD-Protokolle weiterleiten. 
 
 Möchten Sie:
 
@@ -31,11 +34,21 @@ Möchten Sie:
 
 - Wissen, welche Benutzer sich über Legacyauthentifizierungen bei Ihrer Umgebung anmelden? (Durch [Blockieren der Legacyauthentifizierung](../conditional-access/block-legacy-authentication.md) können Sie den Schutz Ihres Mandanten verbessern.)
 
-Damit Sie diese Fragen beantworten können, stellt Active Directory Arbeitsmappen für die Überwachung bereit. [Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) kombinieren Text, Analyseabfragen, Metriken und Parameter zu umfassenden interaktiven Berichten. 
+- Müssen Sie die Auswirkungen der Richtlinien für bedingten Zugriff im Mandanten verstehen?
+
+- Möchten Sie Anmeldeprotokollabfragen, die Arbeitsmappenberichte zur Anzahl der Benutzer, denen der Zugriff gewährt oder verweigert wurde, sowie zur Anzahl der Benutzer, die beim Zugriff auf Ressourcen die Richtlinien für bedingten Zugriff umgangen haben, überprüfen können?
+
+- Möchten Sie mehr über die Arbeitsmappendetails pro Bedingung wissen, sodass die Auswirkung einer Richtlinie pro Bedingung kontextualisiert werden kann, einschließlich Geräteplattform, Gerätestatus, Client-App, Anmelderisiko, Standort und Anwendung?
+
+- Gewinnen Sie tiefere Einblicke in Anmeldeprotokollabfragen, die Arbeitsmappenberichte zur Anzahl der Benutzer, denen der Zugriff gewährt oder verweigert wurde, sowie zur Anzahl der Benutzer, die beim Zugriff auf Ressourcen die Richtlinien für bedingten Zugriff umgangen haben.
+
+- Damit Sie diese Fragen beantworten können, stellt Azure Active Directory Arbeitsmappen für die Überwachung bereit. [Azure Monitor-Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md) kombinieren Text, Analyseabfragen, Metriken und Parameter zu umfassenden interaktiven Berichten.
+
+
 
 Dieser Artikel:
 
-- Setzt voraus, dass Sie mit dem [Erstellen interaktiver Berichte mit Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) vertraut sind.
+- Setzt voraus, dass Sie mit dem [Erstellen interaktiver Berichte mit Monitor-Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md) vertraut sind.
 
 - Erläutert die Verwendung von Monitor-Arbeitsmappen, um die Auswirkungen Ihrer Richtlinien für bedingten Zugriff verstehen, Anmeldefehler beheben und Legacyauthentifizierungen identifizieren zu können.
  
@@ -45,18 +58,24 @@ Dieser Artikel:
 
 Zum Verwenden von Monitor-Arbeitsmappen benötigen Sie:
 
-- Einen Azure Active Directory-Mandanten mit einer Premium-Lizenz (P1 oder P2). Wie Sie eine Premium-Lizenz erhalten, erfahren Sie [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
+- Einen Azure Active Directory-Mandanten mit einer Premium-Lizenz (P1 oder P2). Wie Sie eine Premium-Lizenz erhalten, erfahren Sie [hier](../fundamentals/active-directory-get-started-premium.md).
 
-- Einen [Log Analytics-Arbeitsbereich](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+- Einen [Log Analytics-Arbeitsbereich](../../azure-monitor/learn/quick-create-workspace.md).
+
+- [Zugriff](../../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions) auf den Log Analytics-Arbeitsbereich
+- Folgende Rollen in Azure Active Directory (beim Zugriff auf Log Analytics über das Azure Active Directory-Portal)
+    - Sicherheitsadministrator
+    - Sicherheitsleseberechtigter
+    - Berichtsleseberechtigter
+    - Globaler Administrator
 
 ## <a name="roles"></a>Rollen
-Sie müssen Mitglied einer der folgenden Rollen sein und über [Zugriff auf den zugrunde liegenden Log Analytics-Arbeitsbereich](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) verfügen, um die Arbeitsmappen verwalten zu können:
+Sie müssen Mitglied einer der folgenden Rollen sein und über [Zugriff auf den zugrunde liegenden Log Analytics-Arbeitsbereich](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) verfügen, um die Arbeitsmappen verwalten zu können:
 -   Globaler Administrator
 -   Sicherheitsadministrator
 -   Sicherheitsleseberechtigter
--   Report Reader (Leseberechtigter für Berichte)
+-   Berichtsleseberechtigter
 -   Anwendungsadministrator
-
 
 ## <a name="workbook-access"></a>Arbeitsmappenzugriff 
 
@@ -64,16 +83,11 @@ So greifen Sie auf Arbeitsmappen zu
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Klicken Sie im linken Navigationsmenü auf **Azure Active Directory**.
+1. Navigieren Sie zu **Azure Active Directory** > **Überwachung** > **Arbeitsmappen**. 
 
-3. Wählen Sie im Abschnitt **Überwachung** die Option **Arbeitsmappen** aus. 
+1. Wählen Sie einen Bericht oder eine Vorlage aus, oder wählen Sie auf der Symbolleiste **Öffnen** aus. 
 
-    ![„Einblicke“ auswählen](./media/howto-use-azure-monitor-workbooks/41.png)
-
-4. Wählen Sie einen Bericht oder eine Vorlage aus, oder wählen Sie auf der Symbolleiste **Öffnen** aus. 
-
-    ![„Öffnen“ auswählen](./media/howto-use-azure-monitor-workbooks/42.png)
-
+![Suchen der Azure Monitor-Arbeitsmappen in Azure AD](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
 
 ## <a name="sign-in-analysis"></a>Analyse der Anmeldungen
 
@@ -83,7 +97,7 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 
 - Alle Anmeldungen
 
-- Erfolgreich
+- Erfolg
 
 - Benutzeraktion ausstehend
 
@@ -91,7 +105,7 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 
 Sie können jeden Trend nach den folgenden Kategorien filtern:
 
-- Zeitbereich
+- Uhrzeitbereich
 
 - Apps
 
@@ -102,11 +116,11 @@ Sie können jeden Trend nach den folgenden Kategorien filtern:
 
 Für jeden Trend erhalten Sie eine Aufschlüsselung nach folgenden Kategorien:
 
-- Location
+- Standort
 
     ![Anmeldungen nach Ort](./media/howto-use-azure-monitor-workbooks/45.png)
 
-- Gerät
+- Sicherungsmedium
 
     ![Anmeldungen nach Gerät](./media/howto-use-azure-monitor-workbooks/46.png)
 
@@ -120,12 +134,12 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 
 - Alle Anmeldungen
 
-- Erfolgreich
+- Erfolg
 
 
 Sie können jeden Trend nach den folgenden Kategorien filtern:
 
-- Zeitbereich
+- Uhrzeitbereich
 
 - Apps
 
@@ -149,7 +163,7 @@ Wählen Sie für den Zugriff auf die Arbeitsmappe für Anmeldungen nach [Richtli
 
 Mit dieser Arbeitsmappe werden die Trends für deaktivierte Anmeldungen angezeigt. Sie können jeden Trend nach den folgenden Kategorien filtern:
 
-- Zeitbereich
+- Uhrzeitbereich
 
 - Apps
 
@@ -160,14 +174,46 @@ Mit dieser Arbeitsmappe werden die Trends für deaktivierte Anmeldungen angezeig
 
 Für deaktivierte Anmeldungen erhalten Sie eine Aufschlüsselung nach dem Status des bedingten Zugriffs.
 
-![Status des bedingten Zugriffs](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
+![Screenshot: Status des bedingten Zugriffs und kürzlich erfolgte Anmeldungen](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
+## <a name="conditional-access-insights"></a>Erkenntnisse zum bedingten Zugriff
+
+### <a name="overview"></a>Übersicht
+
+Arbeitsmappen enthalten Anmeldeprotokollabfragen, mit denen IT-Administratoren die Auswirkung von Richtlinien für bedingten Zugriff im Mandanten überwachen können. Sie können berichten, wie vielen Benutzern der Zugriff gewährt oder verweigert wurde. Die Arbeitsmappe enthält Informationen darüber, wie viele Benutzer die Richtlinien für bedingten Zugriff umgangen haben, auf Grundlage der Attribute der Benutzer zum Zeitpunkt der Anmeldung. Sie enthält Informationen pro Bedingung, sodass die Auswirkung einer Richtlinie pro Bedingung, einschließlich Geräteplattform, Gerätestatus, Client-App, Anmelderisiko, Standort und Anwendung, kontextualisiert werden kann.
+
+### <a name="instructions"></a>Anleitungen 
+Um auf die Arbeitsmappe für Erkenntnisse zum bedingten Zugriff zuzugreifen, wählen Sie im Abschnitt „Bedingter Zugriff“ die Arbeitsmappe **Erkenntnisse zum bedingten Zugriff** aus. In dieser Arbeitsmappe werden die erwarteten Auswirkungen der einzelnen Richtlinien für bedingten Zugriff im Mandanten angezeigt. Wählen Sie in der Dropdownliste eine oder mehrere Richtlinien für bedingten Zugriff aus, und schränken Sie den Bereich der Arbeitsmappe ein, indem Sie die folgenden Filter anwenden: 
+
+- **Zeitbereich**
+
+- **Benutzer**
+
+- **Apps**
+
+- **Datenansicht**
+
+![Screenshot: Bereich „Bedingter Zugriff“, in dem Sie eine Richtlinie für bedingten Zugriff auswählen können](./media/howto-use-azure-monitor-workbooks/access-insights.png)
 
 
+In „Zusammenfassung der Auswirkungen“ wird die Anzahl der Benutzer oder Anmeldungen angezeigt, für die die ausgewählten Richtlinien ein bestimmtes Ergebnis hatten. „Gesamt“ gibt die Anzahl der Benutzer oder Anmeldungen an, für die die ausgewählten Richtlinien im ausgewählten Zeitbereich ausgewertet wurden. Klicken Sie auf eine Kachel, um die Daten in der Arbeitsmappe nach dem entsprechenden Ergebnistyp zu filtern. 
 
+![Screenshot: Kacheln zum Filtern von Ergebnissen z. B. nach Gesamtzahl oder nach erfolgreichen und fehlerhaften Anmeldungen](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
 
+In dieser Arbeitsmappe werden auch die Auswirkungen der ausgewählten Richtlinien nach sechs einzelnen Bedingungen untergliedert angezeigt: 
+- **Gerätestatus**
+- **Geräteplattform**
+- **Client-Apps**
+- **Anmelderisiko**
+- **Location**
+- **Anwendungen**
 
+![Screenshot: Details nach Verwendung des Filters für die Gesamtzahl der Anmeldungen](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+
+Sie können auch einzelne Anmeldungen untersuchen, die nach den in der Arbeitsmappe ausgewählten Parametern gefiltert sind. Suchen Sie nach einzelnen Benutzern, sortiert nach Anmeldehäufigkeit, und zeigen Sie die entsprechenden Anmeldeereignisse an. 
+
+![Screenshot: Individuelle Anmeldungen, die Sie überprüfen können](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 ## <a name="sign-ins-by-grant-controls"></a>Anmeldungen nach Steuerelementen zur Rechteerteilung
 
@@ -186,7 +232,7 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für deaktivierte Anmeldunge
 
 Sie können jeden Trend nach den folgenden Kategorien filtern:
 
-- Zeitbereich
+- Uhrzeitbereich
 
 - Apps
 
@@ -204,7 +250,7 @@ Für jeden Trend erhalten Sie eine Aufschlüsselung nach App und Protokoll.
 
 ## <a name="sign-ins-failure-analysis"></a>Analyse der Anmeldungsfehler
 
-Verwenden Sie die Arbeitsmappe zur **Analyse der Anmeldungsfehler**, um Fehler in folgenden Bereichen zu beheben:
+Verwenden Sie die Arbeitsmappe zur **Analyse der Anmeldungsfehler** , um Fehler in folgenden Bereichen zu beheben:
 
 - Anmeldungen
 - Richtlinien für bedingten Zugriff
@@ -217,7 +263,7 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 
 - Alle Anmeldungen
 
-- Erfolgreich
+- Erfolg
 
 - Ausstehende Aktion
 
@@ -226,7 +272,7 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 
 Sie können jeden Trend nach den folgenden Kategorien filtern:
 
-- Zeitbereich
+- Uhrzeitbereich
 
 - Apps
 
@@ -252,4 +298,4 @@ Damit Sie Probleme mit Anmeldungen beheben können, bietet Azure Monitor Ihnen e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erstellen interaktiver Berichte mit Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
+[Erstellen interaktiver Berichte mit Monitor-Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md).

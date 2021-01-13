@@ -1,21 +1,23 @@
 ---
 title: Azure Cosmos DB-Tabellen-API – .NET SDK und Ressourcen
-description: Wichtige Informationen zur Azure Cosmos DB-Tabellen-API einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen in den einzelnen Versionen.
-author: wmengmsft
-ms.author: wmeng
+description: Ausführliche Informationen zur Azure Cosmos DB-Tabellen-API für .NET einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen in den einzelnen Versionen.
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 5e98c40384207c77b4ea7e9557a7d1ebebd95e47
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: ea5f3fca18e6a5781bf46112134ae4efc7159106
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058589"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101203"
 ---
-# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>.NET-API für Azure Cosmos DB-Tabellen: Download und Versionshinweise
+# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB-Tabellen-.NET-API: Herunterladen und Versionshinweise
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
@@ -26,8 +28,8 @@ ms.locfileid: "71058589"
 
 |   |   |
 |---|---|
-|**SDK-Download**|[NuGet](https://aka.ms/acdbtablenuget)|
-|**Schnellstart**|[Azure Cosmos DB: Erstellen einer App mit .NET und der Tabellen-API](create-table-dotnet.md)|
+|**SDK-Download**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)|
+|**Schnellstart**|[Azure Cosmos DB: Build a .NET application using the Table API](create-table-dotnet.md) (Azure Cosmos DB: Erstellen einer .NET-Anwendung mit der Tabellen-API)|
 |**Tutorial**|[Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET](tutorial-develop-table-dotnet.md)|
 |**Aktuelles unterstütztes Framework**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
@@ -39,40 +41,40 @@ ms.locfileid: "71058589"
 
 ## <a name="release-notes"></a>Versionshinweise
 
-### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
+### <a name="212"></a><a name="2.1.2"></a>2.1.2
 
-* Fehlerbehebungen
+* Behebung von Programmfehlern
 
-### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+### <a name="210"></a><a name="2.1.0"></a>2.1.0
 
-* Fehlerbehebungen
+* Behebung von Programmfehlern
 
-### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+### <a name="200"></a><a name="2.0.0"></a>2.0.0
 
 * Unterstützung für Schreibvorgänge in mehreren Regionen hinzugefügt.
 * NuGet-Paketabhängigkeiten für Microsoft.Azure.DocumentDB, Microsoft.OData.Core, Microsoft.OData.Edm, Microsoft.Spatial korrigiert.
 
-### <a name="a-name113113"></a><a name="1.1.3"/>1.1.3
+### <a name="113"></a><a name="1.1.3"></a>1.1.3
 
 * NuGet-Paketabhängigkeiten für Microsoft.Azure.Storage.Common und Microsoft.Azure.DocumentDB korrigiert.
 * Fehlerkorrekturen bei der Tabellenserialisierung, wenn JsonConvert.DefaultSettings konfiguriert ist.
 
-### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+### <a name="111"></a><a name="1.1.1"></a>1.1.1
 
 * Überprüfung falsch formatierter ETAGs im Direktmodus wurde hinzugefügt.
 * LINQ-Abfragefehler im Gateway-Modus wurde behoben.
 * Synchrone APIs werden jetzt im Threadpool mit SynchronizationContext ausgeführt.
 
-### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+### <a name="110"></a><a name="1.1.0"></a>1.1.0
 
 * Hinzufügen von TableQueryMaxItemCount, TableQueryEnableScan, TableQueryMaxDegreeOfParallelism und TableQueryContinuationTokenLimitInKb zu TableRequestOptions
 * Fehlerbehebungen
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 
 * Release zur allgemeinen Verfügbarkeit
 
-### <a name="a-name010-preview090-preview"></a><a name="0.1.0-preview"/>0.9.0-preview
+### <a name="090-preview"></a><a name="0.1.0-preview"></a>0.9.0-preview
 
 * Erste Vorschauversion
 
@@ -82,12 +84,9 @@ Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher b
 
 Die Bibliothek `Microsoft.Azure.CosmosDB.Table` ist derzeit nur für .NET Framework verfügbar. Sie befindet sich im Wartungsmodus und wird demnächst eingestellt. Neue Features, Funktionen und Optimierungen werden nur der .NET Standard-Bibliothek [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) hinzugefügt. Daher wird ein Upgrade auf [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) empfohlen.
 
-Das Vorschaupaket [WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) ist veraltet. Das SDK WindowsAzure.Storage-PremiumTable wird am 15. November 2018 eingestellt. Ab diesem Zeitpunkt werden Anforderungen an das eingestellte SDK nicht mehr zugelassen. 
+Das Vorschaupaket [WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) ist veraltet. Das SDK WindowsAzure.Storage-PremiumTable wird am 15. November 2018 eingestellt. Ab diesem Zeitpunkt werden Anforderungen an das eingestellte SDK nicht mehr zugelassen.
 
-Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
-<br/>
-
-| Version | Herausgabedatum | Deaktivierungstermine |
+| Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |
 | [2.1.2](#2.1.2) |16. September 2019| |
 | [2.1.0](#2.1.0) |22. Januar 2019|01. April 2020 |
@@ -95,7 +94,7 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 | [1.1.3](#1.1.3) |17. Juli 2018|01. Dezember 2019 |
 | [1.1.1](#1.1.1) |26. März 2018|01. Dezember 2019 |
 | [1.1.0](#1.1.0) |21. Februar 2018|01. Dezember 2019 |
-| [1.0.0](#1.0.0) |15. November 2017|15. November 2019 |
+| [1.0.0](#1.0.0) |15. November 2017|15. November 2019 |
 | 0.9.0-preview |11. November 2017 |11. November 2019 |
 
 ## <a name="troubleshooting"></a>Problembehandlung

@@ -2,27 +2,23 @@
 title: 'Tutorial: Azure Active Directory-Integration mit 15Five | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und 15Five konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2fb301c2-7d7a-4046-8ee1-7dc9e7684806
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 219af24aceea9291e34a9854d230b5dc6bd85fdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79c6a5959d000217dcb69370b0e0ac4ccc18ccdd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107574"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673901"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-15five"></a>Tutorial: Azure Active Directory-Integration mit 15Five
+# <a name="tutorial-azure-active-directory-integration-with-15five"></a>Lernprogramm: Azure Active Directory-Integration mit 15Five
 
 In diesem Tutorial erfahren Sie, wie Sie 15Five in Azure Active Directory (Azure AD) integrieren.
 Die Integration von 15Five in Azure AD bietet die folgenden Vorteile:
@@ -31,7 +27,7 @@ Die Integration von 15Five in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei 15Five anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -67,7 +63,7 @@ Zum Konfigurieren der Integration von 15Five in Azure AD müssen Sie 15Five aus 
 
 4. Geben Sie im Suchfeld **15Five** ein, wählen Sie im Ergebnisbereich **15Five** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![15Five in der Ergebnisliste](common/search-new-app.png)
+    ![15Five in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -147,13 +143,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -191,7 +187,7 @@ Damit sich Azure AD-Benutzer bei 15Five anmelden können, müssen sie in 15Five 
 
 2. Wechseln Sie zu **Manage Company**.
 
-    ![Manage Company](./media/15five-tutorial/ic784675.png "Manage Company")
+    ![Manage Company (Unternehmen verwalten)](./media/15five-tutorial/ic784675.png "Manage Company")
 
 3. Wechseln Sie zu **People \> Add People** (Personen > Personen hinzufügen).
 
@@ -199,11 +195,11 @@ Damit sich Azure AD-Benutzer bei 15Five anmelden können, müssen sie in 15Five 
 
 4. Führen Sie im Abschnitt **Add New Person** (Neue Person hinzufügen) die folgenden Schritte aus:
 
-    ![Neue Person hinzufügen](./media/15five-tutorial/ic784677.png "neue Person hinzufügen")
+    ![Add New Person (Neue Person hinzufügen)](./media/15five-tutorial/ic784677.png "Add New Person")
 
     a. Geben Sie in die entsprechenden Textfelder **Vorname**, **Nachname**, **Titel** und **E-Mail-Adresse** eines gültigen Azure Active Directory-Kontos ein, das Sie bereitstellen möchten.
 
-    b. Klicken Sie auf **Done**.
+    b. Klicken Sie auf **Fertig**.
 
     > [!NOTE]
     > Der Besitzer des Azure AD-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
@@ -212,12 +208,12 @@ Damit sich Azure AD-Benutzer bei 15Five anmelden können, müssen sie in 15Five 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „15Five“ klicken, sollten Sie automatisch bei der 15Five-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „15Five“ klicken, sollten Sie automatisch bei der 15Five-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

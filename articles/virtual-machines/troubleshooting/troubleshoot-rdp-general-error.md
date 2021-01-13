@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7fc0fbf3362d18284ad6a80afa6396b6be1270a9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: f2a1a5f3eaf79a345b0d33f43d260fe6aa15236b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058000"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87439246"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Beheben eines allgemeinen RDP-Fehlers auf einer Azure-VM
 
@@ -60,7 +60,7 @@ Der RDP-Listener ist falsch konfiguriert.
 
 ## <a name="solution"></a>Lösung
 
-Um dieses Problem zu lösen [sichern Sie den Betriebssystemdatenträger](../windows/snapshot-copy-managed-disk.md), [fügen Sie den Betriebssystemdatenträger an eine Wiederherstellungs-VM an](troubleshoot-recovery-disks-portal-windows.md), und führen Sie dann die folgenden Schritte aus.
+Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung, bevor Sie die unten angegebenen Schritte ausführen. Um dieses Problem zu beheben, verwenden Sie die serielle Konsole, oder reparieren Sie die VM offline.
 
 ### <a name="serial-console"></a>Serielle Konsole
 
@@ -78,29 +78,37 @@ Um dieses Problem zu lösen [sichern Sie den Betriebssystemdatenträger](../wind
 
 #### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>Schritt 2: Überprüfen der Werte des RDP-Registrierungsschlüssels:
 
-1. Überprüfen Sie, ob das RDP durch Richtlinien deaktiviert wurde.
+1. Überprüfen Sie, ob das RDP durch Gruppenrichtlinien deaktiviert wurde.
 
-      ```
-      REM Get the local policy 
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server " /v fDenyTSConnections
+    ```
+    REM Get the group policy setting
+    reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
+    ```
+    Wenn die Gruppenrichtlinie besagt, dass RDP deaktiviert ist (fDenyTSConnections-Wert ist 0x1), führen Sie den folgenden Befehl aus, um den TermService-Dienst zu aktivieren. Wenn der Registrierungsschlüssel nicht gefunden wird, gibt es keine Gruppenrichtlinie, die zum Deaktivieren des RDP konfiguriert ist. Sie können mit dem nächsten Schritt fortfahren.
 
-      REM Get the domain policy if any
-      reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
-      ```
+    ```
+    REM update the fDenyTSConnections value to enable TermService service
+    reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+    ```
+    > [!NOTE]
+    > Mit diesem Schritt wird der TermService-Dienst vorübergehend aktiviert. Die Änderung wird zurückgesetzt, wenn die Gruppenrichtlinieneinstellungen aktualisiert werden. Um das Problem zu beheben, müssen Sie prüfen, ob der TermService-Dienst durch die lokale Gruppenrichtlinie oder die Domänengruppenrichtlinie deaktiviert ist, und dann die Richtlinieneinstellungen entsprechend aktualisieren.
+    
+2. Überprüfen Sie die aktuelle Remoteverbindungskonfiguration.
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections
+    ```
+    Wenn der Befehl 0x1 zurückgibt, lässt die VM keine Remoteverbindung zu. Lassen Sie dann die Remoteverbindung mit dem folgenden Befehl zu:
+     ```
+     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+     ```
+    
+1. Überprüfen Sie die aktuelle Konfiguration des Terminalservers.
 
-      - Wenn eine Domänenrichtlinie existiert, ist das Setup in der lokalen Richtlinie außer Kraft gesetzt.
-      - Wenn die Domänenrichtlinie angibt, dass RDP deaktiviert (1) ist, aktualisieren Sie die AD-Richtlinie im Domänencontroller.
-      - Wenn die Domänenrichtlinie angibt, dass RDP aktiviert (0) ist, ist kein Update erforderlich.
-      - Wenn keine Domänenrichtlinie vorhanden ist und die lokale Richtlinie angibt, dass RDP deaktiviert (1) ist, aktivieren Sie RDP mithilfe des folgenden Befehls: 
-      
-            reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-                  
-
-2. Überprüfen Sie die aktuelle Konfiguration des Terminalservers.
-
-      ```
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
-      ```
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
+    ```
 
       Wenn der Befehl „0“ zurückgibt, ist der Terminalserver deaktiviert. Aktivieren Sie in diesem Fall den Terminalserver wie folgt:
 
@@ -175,9 +183,9 @@ Weitere Informationen finden Sie unter [Häufiges Trennen der Remotedesktopverbi
 
 #### <a name="step-1-turn-on-remote-desktop"></a>Schritt 1: Aktivieren des Remotedesktops
 
-1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](./troubleshoot-recovery-disks-portal-windows.md).
 2. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
-3. Stellen Sie sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Notieren Sie sich den Laufwerkbuchstaben des angefügten Betriebssystemdatenträgers.
+3. Stellen Sie sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Beachten Sie den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
 4. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
 5. Öffnen Sie eine Eingabeaufforderungssitzung mit erhöhten Rechten (**Als Administrator ausführen**). Führen Sie die folgenden Skripts aus. In diesem Skript wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie diesen durch den entsprechenden Wert für Ihren virtuellen Computer.
 

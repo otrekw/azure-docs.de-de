@@ -1,53 +1,69 @@
 ---
-title: Suchexplorer-Tool zum Abfragen von Daten im Azure-Portal – Azure Search
-description: Verwenden Sie die im Azure-Portal verfügbaren Tools wie den Suchexplorer, um Indizes in Azure Search abzufragen. Geben Sie Suchbegriffe oder vollqualifizierte Suchzeichenfolgen mit erweiterter Syntax ein.
+title: Suchexplorer-Abfragetool im Azure-Portal
+titleSuffix: Azure Cognitive Search
+description: In diesem Schnellstart im Azure-Portal verwenden Sie den Suchexplorer, um die Abfragesyntax zu lernen, Abfrageausdrücke zu testen oder ein Suchdokument zu untersuchen. Der Suchexplorer fragt Indizes in Azure Cognitive Search ab.
 manager: nitinme
 author: HeidiSteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: e941e487adaac38c4ec3bd61a58b4b0c61f4c80a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.date: 09/25/2020
+ms.openlocfilehash: adcd07ad370ad9f1301caa41c494a33958743dd8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649969"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91398407"
 ---
-# <a name="search-explorer-for-querying-data-in-azure-search"></a>Suchexplorer zum Abfragen von Daten in Azure Search 
+# <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Schnellstart: Verwenden des Suchexplorers zum Ausführen von Abfragen im Portal
 
-In diesem Artikel erfahren Sie, wie Sie einen vorhandenen Azure Search-Index mithilfe des **Suchexplorers** im Azure-Portal abfragen. Mit dem Suchexplorer können Sie einfache oder vollständige Lucene-Abfragezeichenfolgen an einen beliebigen Index in Ihrem Dienst übermitteln. 
+Der **Suchexplorer** ist ein integriertes Abfragetool, das zum Ausführen von Abfragen über einen Suchindex in Azure Cognitive Search verwendet wird. Mit diesem Tool können Sie problemlos Abfragesyntax erlernen, einen Abfrage- oder Filterausdruck testen oder eine Datenaktualisierung bestätigen, indem Sie überprüfen, ob neue Inhalte im Index vorhanden sind.
 
-   ![Befehl für den Suchexplorer im Portal](./media/search-explorer/search-explorer-cmd2.png "Befehl für den Suchexplorer im Portal")
+In diesem Schnellstart wird der Suchexplorer anhand eines vorhandenen Index veranschaulicht. Anforderungen werden mit der [Search-REST-API](/rest/api/searchservice/) formuliert, und Antworten werden als JSON-Dokumente zurückgegeben.
 
+## <a name="prerequisites"></a>Voraussetzungen
 
-Hilfe zu den ersten Schritten finden Sie unter [So starten Sie den Suchexplorer](#start-search-explorer).
+Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
-## <a name="basic-search-strings"></a>Grundlegende Suchzeichenfolgen
++ Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/).
 
-In den folgenden Beispielen wird vom integrierten Beispielimmobilienindex ausgegangen. Hilfe zum Erstellen dieses Index finden Sie unter [Schnellstart: Importieren, Indizieren und Abfragen im Azure-Portal](search-get-started-portal.md).
++ Ein Azure Cognitive Search-Dienst. [Erstellen Sie einen Dienst](search-create-service-portal.md), oder wechseln Sie in Ihrem aktuellen Abonnement [zu einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
-### <a name="example-1---empty-search"></a>Beispiel 1: leere Suche
++ *realestate-us-sample-index* wird für diesen Schnellstart verwendet. Verwenden Sie den [**Datenimport**](search-import-data-portal.md)-Assistenten, um den Index zu erstellen. Wenn Sie im ersten Schritt nach der Datenquelle gefragt werden, wählen Sie **Beispiele** und dann die Datenquelle **realestate-us-sample** aus. Übernehmen Sie zum Erstellen des Index alle Standardeinstellungen des Assistenten.
 
-Führen Sie für einen ersten Blick auf Ihre Inhalte eine leere Suche aus, indem Sie ohne Angabe von Begriffen auf **Suchen** klicken. Eine leere Suche ist eine sinnvolle erste Abfrage, da sie vollständige Dokumente zurückgibt, sodass Sie sich mit dem Aufbau des Dokuments vertraut machen können. Bei einer leeren Suche gibt es keinen Suchrang, und die Dokumente werden in beliebiger Reihenfolge (`"@search.score": 1` für alle Dokumente) zurückgegeben. Standardmäßig werden in einer Suchanforderung 50 Dokumente zurückgegeben.
+## <a name="start-search-explorer"></a>Starten des Suchexplorers
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) im Dashboard die Seite mit dem Suchdienst, oder [suchen Sie Ihren Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
+
+1. Öffnen Sie den Suchexplorer über die Befehlsleiste:
+
+   :::image type="content" source="media/search-explorer/search-explorer-cmd2.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
+
+    Oder verwenden Sie die eingebettete Registerkarte **Suchexplorer** in einem geöffneten Index:
+
+   :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
+
+## <a name="unspecified-query"></a>Abfrage ohne Angabe
+
+Führen Sie für einen ersten Blick auf den Inhalt eine leere Suche aus, indem Sie ohne Angabe von Begriffen auf **Suchen** klicken. Eine leere Suche ist eine sinnvolle erste Abfrage, da sie vollständige Dokumente zurückgibt, sodass Sie sich mit dem Aufbau des Dokuments vertraut machen können. Bei einer leeren Suche gibt es keinen Suchrang, und die Dokumente werden in beliebiger Reihenfolge (`"@search.score": 1` für alle Dokumente) zurückgegeben. Standardmäßig werden in einer Suchanforderung 50 Dokumente zurückgegeben.
 
 Die äquivalente Syntax für eine leere Suche ist `*` oder `search=*`.
-
-   ```Input
+   
+   ```http
    search=*
    ```
 
    **Ergebnisse**
    
-   ![Beispiel für eine leere Abfrage](./media/search-explorer/search-explorer-example-empty.png "Beispiel für unqualifizierte oder leere Abfrage")
+   :::image type="content" source="media/search-explorer/search-explorer-example-empty.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
-### <a name="example-2---free-text-search"></a>Beispiel 2: Freitextsuche
+## <a name="free-text-search"></a>Freitextsuche
 
-Freiformabfragen mit oder ohne Operatoren sind nützlich zum Simulieren von benutzerdefinierten Abfragen, die von einer benutzerdefinierten App an Azure Search gesendet werden. Beachten Sie, dass bei der Angabe von Abfragebegriffen oder -ausdrücken der Suchrang eine Rolle spielt. Im folgenden Beispiel wird eine Freitextsuche veranschaulicht.
+Freiformabfragen mit oder ohne Operatoren sind nützlich zum Simulieren von benutzerdefinierten Abfragen, die von einer benutzerdefinierten App an die kognitive Azure-Suche gesendet werden. Nur die Felder, die in der Indexdefinition als **Durchsuchbar** gekennzeichnet sind, werden auf Übereinstimmungen überprüft. 
 
-   ```Input
+Beachten Sie, dass bei der Angabe von Suchkriterien wie z. B. Abfragebegriffen oder -ausdrücken der Suchrang eine Rolle spielt. Im folgenden Beispiel wird eine Freitextsuche veranschaulicht.
+
+   ```http
    Seattle apartment "Lake Washington" miele OR thermador appliance
    ```
 
@@ -55,90 +71,75 @@ Freiformabfragen mit oder ohne Operatoren sind nützlich zum Simulieren von benu
 
    Sie können die Ergebnisse mit STRG+F nach bestimmten Begriffen durchsuchen.
 
-   ![Beispiel für Freitextabfrage](./media/search-explorer/search-explorer-example-freetext.png "Beispiel für Freitextabfrage")
+   :::image type="content" source="media/search-explorer/search-explorer-example-freetext.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
-### <a name="example-3---count-of-matching-documents"></a>Beispiel 3: Anzahl übereinstimmender Dokumente 
+## <a name="count-of-matching-documents"></a>Anzahl übereinstimmender Dokumente 
 
-Fügen Sie **$count** hinzu, um die Anzahl der Übereinstimmungen in einem Index abzurufen. Bei einer leeren Suche ist die Anzahl die Gesamtanzahl der Dokumente im Index. Bei einer qualifizierten Suche ist es die Anzahl der Dokumente, die der eingegebenen Abfrage entsprechen.
+Fügen Sie **$count=true** hinzu, um die Anzahl der Übereinstimmungen in einem Index abzurufen. Bei einer leeren Suche ist die Anzahl die Gesamtanzahl der Dokumente im Index. Bei einer qualifizierten Suche ist es die Anzahl der Dokumente, die der eingegebenen Abfrage entsprechen.
 
-   ```Input1
+   ```http
    $count=true
    ```
+
    **Ergebnisse**
 
-   ![Beispiel für die Anzahl der Dokumente](./media/search-explorer/search-explorer-example-count.png "Beispiel für die Anzahl der übereinstimmenden Dokumente")
+   :::image type="content" source="media/search-explorer/search-explorer-example-count.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
-### <a name="example-4---restrict-fields-in-search-results"></a>Beispiel 4: Beschränken der Felder in den Suchergebnissen
+## <a name="limit-fields-in-search-results"></a>Beschränken der Felder in den Suchergebnissen
 
-Fügen Sie **$select** hinzu, um die Ergebnisse auf die explizit benannten Felder zu beschränken und damit die Lesbarkeit der Ausgabe im **Suchexplorer** zu erhöhen. Um die Suchzeichenfolge und **$count=true** beizubehalten, stellen Sie den Argumenten das Präfix **&** voran. 
+Fügen Sie [ **$select**](search-query-odata-select.md) hinzu, um die Ergebnisse auf die explizit benannten Felder zu beschränken und damit die Lesbarkeit der Ausgabe im **Suchexplorer** zu erhöhen. Um die Suchzeichenfolge und **$count=true** beizubehalten, stellen Sie den Argumenten das Präfix **&** voran. 
 
-   ```Input
+   ```http
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true
    ```
 
    **Ergebnisse**
 
-   ![Beispiel für das Beschränken der Felder](./media/search-explorer/search-explorer-example-selectfield.png "Beschränken der Felder in den Suchergebnissen")
+   :::image type="content" source="media/search-explorer/search-explorer-example-selectfield.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
-### <a name="example-5---return-next-batch-of-results"></a>Beispiel 5: Zurückgeben des nächsten Batches von Ergebnissen
+## <a name="return-next-batch-of-results"></a>Zurückgeben des nächsten Batches von Ergebnissen
 
-Azure Search gibt die ersten 50 Übereinstimmungen basierend auf dem Suchrang zurück. Um den nächsten Satz von übereinstimmenden Dokumenten abzurufen, fügen Sie **$top=100,&$skip=50** an, um das Resultset auf 100 Dokumente zu vergrößern (Standardwert 50, Höchstwert 1.000) und die ersten 50 Dokumente zu überspringen. Denken Sie daran, dass Sie Suchkriterien angeben müssen, z.B. einen Abfragebegriff oder -ausdruck, um priorisierte Ergebnisse zu erhalten. Beachten Sie, dass sich die Suchbewertungen verringern, je weiter Sie in die Suchergebnisse vordringen.
+Die kognitive Azure-Suche gibt die ersten 50 Übereinstimmungen basierend auf dem Suchrang zurück. Um den nächsten Satz von übereinstimmenden Dokumenten abzurufen, fügen Sie **$top=100,&$skip=50** an, um das Resultset auf 100 Dokumente zu vergrößern (Standardwert 50, Höchstwert 1.000) und die ersten 50 Dokumente zu überspringen. Denken Sie daran, dass Sie Suchkriterien angeben müssen, z.B. einen Abfragebegriff oder -ausdruck, um priorisierte Ergebnisse zu erhalten. Beachten Sie, dass sich die Suchbewertungen verringern, je weiter Sie in die Suchergebnisse vordringen.
 
-   ```Input
+   ```http
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true&$top=100&$skip=50
    ```
 
    **Ergebnisse**
 
-   ![Batchsuchergebnisse](./media/search-explorer/search-explorer-example-topskip.png "Zurückgeben des nächsten Batches von Suchergebnissen")
+   :::image type="content" source="media/search-explorer/search-explorer-example-topskip.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>Filterausdrücke (größer als, kleiner als, gleich)
 
-Verwenden Sie den Parameter **$filter**, wenn Sie anstelle einer Freitextsuche präzise Kriterien angeben möchten. In diesem Beispiel wird für die Anzahl von Schlafzimmern nach einem Wert größer als 3 gesucht:
+Verwenden Sie den Parameter [ **$filter**](search-query-odata-filter.md), wenn Sie anstelle einer Freitextsuche präzise Kriterien angeben möchten. Das Feld muss im Index als **Filterbar**  gekennzeichnet sein. In diesem Beispiel wird für die Anzahl von Schlafzimmern nach einem Wert größer als 3 gesucht:
 
-   ```Input
+   ```http
    search=seattle condo&$filter=beds gt 3&$count=true
    ```
    
    **Ergebnisse**
 
-   ![Filterausdruck](./media/search-explorer/search-explorer-example-filter.png "Filtern nach Kriterien")
+   :::image type="content" source="media/search-explorer/search-explorer-example-filter.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
 ## <a name="order-by-expressions"></a>Sortierausdrücke
 
-Fügen Sie **$orderby** hinzu, um die Ergebnisse nach einem anderen Feld als der Suchbewertung zu sortieren. Als Beispielausdruck zum Testen können Sie den folgenden verwenden:
+Fügen Sie [ **$orderby**](search-query-odata-orderby.md) hinzu, um die Ergebnisse nach einem anderen Feld als der Suchbewertung zu sortieren. Das Feld muss im Index als **Sortierbar**  gekennzeichnet sein. Als Beispielausdruck zum Testen können Sie den folgenden verwenden:
 
-   ```Input
+   ```http
    search=seattle condo&$select=listingId,beds,price&$filter=beds gt 3&$count=true&$orderby=price asc
    ```
    
    **Ergebnisse**
 
-   ![orderby-Ausdruck](./media/search-explorer/search-explorer-example-ordery.png "Ändern der Sortierreihenfolge")
+   :::image type="content" source="media/search-explorer/search-explorer-example-ordery.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
-Die Ausdrücke **$filter** und **$orderby** sind OData-Konstrukte. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
+Die Ausdrücke **$filter** und **$orderby** sind OData-Konstrukte. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
 
 <a name="start-search-explorer"></a>
 
-## <a name="how-to-start-search-explorer"></a>So starten Sie den Suchexplorer
+## <a name="takeaways"></a>Wesentliche Punkte
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) im Dashboard die Seite mit dem Suchdienst, oder [suchen Sie Ihren Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in der Liste mit den Diensten.
-
-2. Klicken Sie auf der Dienstübersichtsseite auf **Suchexplorer**.
-
-   ![Befehl für den Suchexplorer im Portal](./media/search-explorer/search-explorer-cmd2.png "Befehl für den Suchexplorer im Portal")
-
-3. Wählen Sie den abzufragenden Index aus.
-
-   ![Auswählen des abzufragenden Index](./media/search-explorer/search-explorer-changeindex-se2.png "Auswählen des abzufragenden Index")
-
-4. Legen Sie optional die API-Version fest. Standardmäßig wird die aktuelle allgemein verfügbare API-Version ausgewählt. Sie können jedoch eine Vorschauversion oder eine ältere API auswählen, wenn die Syntax, die Sie verwenden möchten, versionsspezifisch ist.
-
-5. Nachdem der Index und die API-Version ausgewählt wurden, geben Sie Suchbegriffe oder die vollqualifizierten Abfrageausdrücke in der Suchleiste ein und klicken auf **Suchen**, um die Suche auszuführen.
-
-   ![Eingeben der Suchbegriffe und Klicken auf „Suchen“](./media/search-explorer/search-explorer-query-string-example.png "Eingeben der Suchbegriffe und Klicken auf „Suchen“")
-
-Tipps für die Suche im **Suchexplorer**:
+In diesem Schnellstart haben Sie den **Suchexplorer** verwendet, um einen Index mithilfe der REST-API abzufragen.
 
 + Ergebnisse werden als ausführliche JSON-Dokumente zurückgegeben, sodass Sie den Dokumentaufbau und den Inhalt vollständig anzeigen können. Sie können in den Beispielen gezeigte Abfrageausdrücke verwenden, um die zurückgegebenen Felder einzuschränken.
 
@@ -146,14 +147,19 @@ Tipps für die Suche im **Suchexplorer**:
 
 + Freiformabfragen ähneln der Eingabe in kommerziellen Webbrowsern und eignen sich zum Testen der Endbenutzererfahrung. Beim integrierten Beispielimmobilienindex könnten Sie z.B. „Seattle apartments lake washington“ eingeben und dann mit STRG+F Begriffe in den Suchergebnissen finden. 
 
-+ Abfrage- und Filterausdrücke müssen in einer Syntax formuliert sein, die von Azure Search unterstützt wird. Der Standardwert ist eine [einfache Syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), Sie können aber optional für leistungsstarke Abfragen die [vollständige Lucene-Syntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) verwenden. [Filterausdrücke](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) folgen einer OData-Syntax.
++ Abfrage- und Filterausdrücke werden in einer Syntax formuliert, die von Azure Cognitive Search unterstützt wird. Der Standardwert ist eine [einfache Syntax](/rest/api/searchservice/simple-query-syntax-in-azure-search), Sie können aber optional für leistungsstarke Abfragen die [vollständige Lucene-Syntax](/rest/api/searchservice/lucene-query-syntax-in-azure-search) verwenden. [Filterausdrücke](/rest/api/searchservice/odata-expression-syntax-for-azure-search) folgen einer OData-Syntax.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+
+Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
+
+Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf maximal drei Indizes, Indexer und Datenquellen. Sie können einzelne Elemente über das Portal löschen, um unter dem Limit zu bleiben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Ressourcen enthalten zusätzliche Informationen und Beispiele für die Abfragesyntax:
+Um mehr über Abfragestrukturen und -syntax zu erfahren, verwenden Sie Postman oder ein gleichwertiges Tool, um Abfrageausdrücke zu erstellen, die mehr Teile der API nutzen. Die [Search-REST-API](/rest/api/searchservice/) ist besonders hilfreich für das Lernen und Erkunden.
 
- + [Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
- + [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
- + [Lucene-Abfragebeispiele](search-query-lucene-examples.md) 
- + [OData-Filterausdruckssyntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) 
+> [!div class="nextstepaction"]
+> [Erstellen einer einfachen Abfrage in Postman](search-query-simple-examples.md)

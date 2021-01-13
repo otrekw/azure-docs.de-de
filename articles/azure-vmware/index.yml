@@ -1,0 +1,138 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure VMware Solution
+summary: Hier erfahren Sie, wie Sie Azure VMware Solution zum Bereitstellen einer privaten VMware-Cloud in Azure verwenden.
+metadata:
+  title: Dokumentation zu Azure VMware Solution
+  description: Hier erfahren Sie, wie Sie Azure VMware Solution zum Bereitstellen einer privaten VMware-Cloud in Azure verwenden.
+  ms.service: azure-vmware
+  ms.topic: landing-page
+  author: dikamath
+  ms.author: dikamath
+  ms.date: 11/19/2020
+  ms.openlocfilehash: c460df29183cbf40bee1f539435669121b3ee6ed
+  ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 12/04/2020
+  ms.locfileid: "96608417"
+landingContent:
+- title: Informationen zu Azure VMware Solution
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure VMware Solution?
+      url: introduction.md
+  - linkListType: concept
+    links:
+    - text: Private Cloud und Cluster
+      url: concepts-private-clouds-clusters.md
+    - text: Private Cloudnetzwerke und Interkonnektivität
+      url: concepts-networking.md
+    - text: Speicher in privaten Clouds
+      url: concepts-storage.md
+    - text: Zugriff und Identität für private Clouds
+      url: concepts-identity.md
+    - text: Rollenbasierte Zugriffssteuerung (vSphere)
+      url: concepts-role-based-access-control.md
+    - text: Überwachen und Reparieren von privaten Clouds
+      url: concepts-monitor-repair-private-cloud.md
+    - text: Upgrades für private Clouds
+      url: concepts-upgrades.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 0. Planen der Bereitstellung
+      url: production-ready-deployment-steps.md
+    - text: 1. Bereitstellen von Azure VMware Solution
+      url: deploy-azure-vmware-solution.md
+    - text: 2. Herstellen einer Verbindung mit lokalen Ressourcen
+      url: azure-vmware-solution-on-premises.md
+    - text: 3. Bereitstellen und Konfigurieren von HCX
+      url: tutorial-deploy-vmware-hcx.md
+  - linkListType: tutorial
+    links:
+    - text: Checkliste für die Netzwerkplanung
+      url: tutorial-network-checklist.md
+    - text: Erstellen einer privaten Cloud
+      url: tutorial-create-private-cloud.md
+    - text: Zugreifen auf eine private Cloud
+      url: tutorial-access-private-cloud.md
+    - text: Konfigurieren der Netzwerkeinstellungen
+      url: tutorial-configure-networking.md
+    - text: Erstellen eines NSX-T-Netzwerksegments
+      url: tutorial-nsx-t-network-segment.md
+    - text: Peering zwischen lokaler Umgebung und privater Cloud
+      url: tutorial-expressroute-global-reach-private-cloud.md
+    - text: Skalieren einer privaten Cloud
+      url: tutorial-scale-private-cloud.md
+- title: Erweitern von Azure VMware Solution
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Aktivieren von Azure VMware Solution
+      url: enable-azure-vmware-solution.md
+    - text: Einsparen von Kosten mit einer reservierten Instanz
+      url: reserved-instance.md
+    - text: Migrationsbewertung
+      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
+    - text: Verwalten von DHCP
+      url: manage-dhcp.md
+    - text: Bereitstellen der Notfallwiederherstellung für virtuelle Computer
+      url: disaster-recovery-for-virtual-machines.md
+    - text: Bereitstellen einer VM über die Inhaltsbibliothek
+      url: ./deploy-vm-content-library.md
+    - text: Einrichten des GitHub Enterprise-Servers
+      url: github-enterprise-server.md
+    - text: Nutzung öffentlicher IP-Adressen
+      url: public-ip-usage.md
+    - text: Erstellen eines IPsec-Tunnels
+      url: create-ipsec-tunnel.md
+- title: Native Azure-Integration
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: API Management
+      url: concepts-api-management.md
+    - text: Hub-and-Spoke-Modell
+      url: concepts-hub-and-spoke.md
+    - text: Azure Security Center
+      url: azure-security-integration.md
+    - text: Azure Backup Server
+      url: set-up-backup-server-for-azure-vmware-solution.md
+    - text: Lebenszyklusverwaltung auf virtuellen Computern
+      url: lifecycle-management-of-azure-vmware-solution-vms.md
+    - text: Application Gateway
+      url: protect-azure-vmware-solution-with-application-gateway.md
+    - text: Traffic Manager
+      url: deploy-traffic-manager-balance-workloads.md
+- title: VMware Solutions
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Einrichten von vRealize-Vorgängen
+      url: vrealize-operations-for-azure-vmware-solution.md
+    - text: Bereitstellen von VMware Horizon
+      url: azure-vmware-solution-horizon.md
+- title: VMware-Ökosystem
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sicherungslösungen für virtuelle Computer
+      url: ecosystem-back-up-vms.md
+- title: Ressourcen
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/ext/vmware/vmware
+    - text: Azure PowerShell
+      url: /powershell/module/az.vmware
+    - text: Häufig gestellte Fragen
+      url: faq.md
+- title: Problembehandlung
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Öffnen einer Supportanfrage für Bereitstellungsfehler
+      url: fix-deployment-provisioning-failures.md

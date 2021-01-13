@@ -9,16 +9,16 @@ metadata:
   ms.subservice: domain-services
   ms.topic: landing-page
   ms.collection: collection
-  author: iainfoulds
-  ms.author: iainfou
+  author: justinha
+  ms.author: justinha
   manager: daveba
   ms.date: 08/01/2019
-  ms.openlocfilehash: f5fa27e19da6bb64b7e214ec32cbfbf0a417118e
-  ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+  ms.openlocfilehash: be9c98f680d01999d1b27983eb17124d5d522804
+  ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/23/2019
-  ms.locfileid: "70010561"
+  ms.lasthandoff: 12/05/2020
+  ms.locfileid: "96619694"
 landingContent:
 - title: Informationen zu Azure AD Domain Services
   linkLists:
@@ -74,7 +74,7 @@ landingContent:
       url: check-health.md
     - text: Konfigurieren von E-Mail-Benachrichtigungen
       url: notifications.md
-    - text: Aktivieren von Sicherheitsüberwachungen (Vorschau)
+    - text: Aktivieren von Sicherheitsüberwachungen
       url: security-audit-events.md
 - title: Einbinden virtueller Computer in eine Domäne
   linkLists:
@@ -88,6 +88,8 @@ landingContent:
       url: join-ubuntu-linux-vm.md
     - text: Red Hat Enterprise Linux
       url: join-rhel-linux-vm.md
+    - text: SUSE Linux Enterprise
+      url: join-suse-linux-vm.md
 - title: Problembehandlung
   linkLists:
   - linkListType: how-to-guide

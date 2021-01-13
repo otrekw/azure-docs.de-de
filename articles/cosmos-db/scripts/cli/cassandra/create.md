@@ -6,19 +6,20 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-ms.date: 9/25/2019
-ms.openlocfilehash: 4a6870da399049010c3f10a38916b6d36e72bcc7
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.date: 07/29/2020
+ms.openlocfilehash: 5078567b081f0546f26406ab07bd8bd78cd3a756
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71275187"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566060"
 ---
 # <a name="create-an-azure-cosmos-cassandra-api-account-keyspace-and-table-using-azure-cli"></a>Erstellen eines Kontos, eines Keyspace und einer Tabelle für die Azure Cosmos-Cassandra-API mit der Azure-Befehlszeilenschnittstelle (Azure CLI)
+[!INCLUDE[appliesto-cassandra-api](../../../includes/appliesto-cassandra-api.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, ist es für dieses Thema erforderlich, die Azure CLI-Version 2.0.73 oder höher auszuführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.9.1 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="sample-script"></a>Beispielskript
 

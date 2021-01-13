@@ -1,5 +1,5 @@
 - name: 'Bing-Such-API für ortsansässige Unternehmen: Dokumentation'
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
   expanded: true
   items: null
 - name: Übersicht
@@ -15,11 +15,11 @@
     - name: REST-API
       expanded: true
       items:
-        - name: 'Verwenden von C#'
+        - name: Verwenden von C#
           href: quickstarts/local-quickstart.md
         - name: Verwenden von Java
           href: quickstarts/local-search-java-quickstart.md
-        - name: Verwenden von Node
+        - name: Verwenden von Node.js
           href: quickstarts/local-search-node-quickstart.md
         - name: Verwenden von Python
           href: quickstarts/local-search-python-quickstart.md
@@ -41,8 +41,8 @@
 - name: Ressourcen
   items:
     - name: Ausprobieren von Cognitive Services
-      href: 'https://azure.microsoft.com/en-us/try/cognitive-services/?api=bing-web-search-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: Preisinformationen
-      href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/'
-    - name: Compliance
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/'
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

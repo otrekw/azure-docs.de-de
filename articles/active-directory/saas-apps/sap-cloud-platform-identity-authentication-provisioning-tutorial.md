@@ -2,32 +2,28 @@
 title: 'Tutorial: Konfigurieren von SAP Cloud Platform Identity Authentication für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in SAP Cloud Platform Identity Authentication konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: f49b5738-c769-403b-8f29-84ddeea7fbf1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: f570cb6f945f403e77a36374cc9f82edb7b640c9
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 419f25ee3df471bc2fc4526254f5677b8bd71856
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174537"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342732"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von SAP Cloud Platform Identity Authentication für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die in SAP Cloud Platform Identity Authentication und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in SAP Cloud Platform Identity Authentication zu konfigurieren.
 
 > [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
+> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Dieser Connector befindet sich derzeit in der Public Preview-Phase. Weitere Informationen zu den allgemeinen Nutzungsbedingungen von Microsoft Azure für Previewfunktionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -58,7 +54,10 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
     ![SAP Cloud Platform Identity Authentication-Verwaltungskonsole](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
 
-2.  Erstellen Sie einen Administratorbenutzer, und wählen Sie den Benutzer aus.  
+2.  Klicken Sie im linken Bereich auf die Schaltfläche **+Hinzufügen**, um der Liste einen neuen Administrator hinzuzufügen. Wählen Sie **System hinzufügen** aus, und geben Sie den Namen des Systems ein.   
+
+> [!NOTE]
+> Der Administratorbenutzer in SAP Cloud Platform Identity Authentication muss vom Typ **System** sein. Die Erstellung eines Standardadministrators kann bei der Bereitstellung zu Fehlern vom Typ *Nicht autorisiert* führen.   
 
 3.  Aktivieren Sie unter „Autorisierungen konfigurieren“ die Umschaltfläche für **Benutzer verwalten** und **Gruppen verwalten**.
 
@@ -95,7 +94,7 @@ Vor dem Konfigurieren von SAP Cloud Platform Identity Authentication für die au
 In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren von Benutzern und/oder Gruppen in SAP Cloud Platform Identity Authentication auf der Grundlage von Benutzer- und/oder Gruppenzuweisungen in Azure AD erläutert.
 
 > [!TIP]
-> Sie können auch das SAML-basierte einmalige Anmelden für SAP Cloud Platform Identity Authentication aktivieren. Folgen Sie dazu den Anweisungen im [Tutorial für einmaliges Anmelden mit SAP Cloud Platform Identity Authentication](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
+> Sie können auch das SAML-basierte einmalige Anmelden für SAP Cloud Platform Identity Authentication aktivieren. Folgen Sie dazu den Anweisungen im [Tutorial für einmaliges Anmelden mit SAP Cloud Platform Identity Authentication](./sap-hana-cloud-platform-identity-authentication-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
 
 ### <a name="to-configure-automatic-user-provisioning-for-sap-cloud-platform-identity-authentication-in-azure-ad"></a>Gehen Sie wie folgt vor, um die automatische Benutzerbereitstellung für SAP Cloud Platform Identity Authentication in Azure AD zu konfigurieren:
 
@@ -109,11 +108,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://<tenantID>.accounts.ondemand.com/service/scim ` ein. Geben Sie die zuvor abgerufenen Werte von **Benutzer-ID** und **Kennwort** in **Administratorbenutzername** bzw. **Administratorkennwort** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit SAP Cloud Platform Identity Authentication herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, stellen Sie sicher, dass Ihr SAP Cloud Platform Identity Authentication-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
 
@@ -133,7 +132,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![SAP Cloud Platform Identity Authentication-Benutzerattribute](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/userattributes.png)
 
-10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Um den Azure AD-Bereitstellungsdienst für SAP Cloud Platform Identity Authentication zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
@@ -149,14 +148,17 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zum Bereitstellungsaktivitätsbericht folgen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst für SAP Cloud Platform Identity Authentication ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
+
+## <a name="connector-limitations"></a>Connector-Einschränkungen
+
+* Der SCIM-Endpunkt von SAP Cloud Platform Identity Authentication erfordert, dass bestimmte Attribute ein spezifisches Format aufweisen. Weitere Informationen zu diesen Attributen und deren spezifischem Format finden Sie [hier](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/b10fc6a9a37c488a82ce7489b1fab64c.html#).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
-
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../app-provisioning/check-status-user-account-provisioning.md)

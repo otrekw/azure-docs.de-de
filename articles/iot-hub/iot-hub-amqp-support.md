@@ -7,12 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: robinsh
-ms.openlocfilehash: b53bb0f04bf6a739b588b14febd622f6bf7a6a63
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354898"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81730752"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Kommunikation mit Ihrem IoT-Hub mithilfe des Protokolls AMQP
 
@@ -262,7 +265,7 @@ Die folgenden Linkpfade werden als Gerätevorgänge unterstützt:
 | Erstellt von | Verknüpfungstyp | Verknüpfungspfad | BESCHREIBUNG |
 |------------|-----------|-----------|-------------|
 | Geräte | Empfängerlink | `/devices/<deviceID>/messages/devicebound` | An Geräte gerichtete Cloud-zu-Gerät-Nachrichten werden von jedem Zielgerät über diesen Link empfangen. |
-| Geräte | Senderlink | `/devices/<deviceID>messages/events` | Von einem Gerät gesendete Gerät-zu-Cloud-Nachrichten werden über diesen Link gesendet. |
+| Geräte | Senderlink | `/devices/<deviceID>/messages/events` | Von einem Gerät gesendete Gerät-zu-Cloud-Nachrichten werden über diesen Link gesendet. |
 | Geräte | Senderlink | `/messages/serviceBound/feedback` | Von Geräten über diesen Link an den Dienst gesendetes Cloud-zu-Gerät-Nachrichtenfeedback. |
 
 ### <a name="receive-cloud-to-device-commands-device-client"></a>Empfangen von Cloud-zu-Gerät-Befehlen (Geräteclient)

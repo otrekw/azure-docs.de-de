@@ -5,45 +5,47 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/30/2018
+ms.date: 10/20/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a601b0c40f84832101e97a7abf7dd7418a0a5c69
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a66596ecb926c1bf3c6b61cc99e1eb1b56e99158
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673354"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "92328431"
 ---
-Sie können ein VNET wie im Folgenden beschrieben mit dem Resource Manager-Bereitstellungsmodell im Azure-Portal erstellen. Weitere Informationen zu virtuellen Netzwerken finden Sie in der [Übersicht über Azure Virtual Network](../articles/virtual-network/virtual-networks-overview.md).
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Geben Sie in **Nach Ressourcen, Diensten und Dokumenten suchen (G+/)** den Begriff *virtuelles Netzwerk* ein.
 
->[!NOTE]
->Um das VNET mit einem lokalen Standort zu verbinden, legen Sie in Zusammenarbeit mit dem Administrator des lokalen Netzwerks einen IP-Adressbereich fest, den Sie speziell für dieses virtuelle Netzwerk verwenden können. Wenn ein Adressbereich auf beiden Seiten der VPN-Verbindung und somit doppelt vorhanden ist, wird Datenverkehr nicht wie erwartet weitergeleitet. Wenn Sie für dieses VNet eine Verbindung mit einem anderen VNet herstellen möchten, darf sich der Adressraum außerdem nicht mit dem anderen VNet überlappen. Planen Sie Ihre Netzwerkkonfiguration entsprechend.
->
->
+   ![Navigieren zur Seite mit den Ressourcen des virtuellen Netzwerks](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace.png "Navigieren zur Seite mit den Ressourcen des virtuellen Netzwerks")
+1. Wählen Sie aus den **Marketplace**-Ergebnissen das Ergebnis **Virtual Network** aus.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressource erstellen**. Die Seite **Neu** wird geöffnet.
+   ![Virtuelles Netzwerk auswählen](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace-results.png "Navigieren zur Seite mit den Ressourcen des virtuellen Netzwerks")
+1. Wählen Sie auf der Seite **Virtuelles Netzwerk** die Option **Erstellen** aus.
 
-2. Geben Sie *virtuelles Netzwerk* in das Feld **Marketplace durchsuchen** ein, und wählen Sie in der zurückgegebenen Liste den Eintrag **Virtuelles Netzwerk** aus. Die Seite **Virtuelles Netzwerk** wird geöffnet.
+   ![Seite „Virtuelles Netzwerk“](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet-click-create.png "Wählen Sie „Erstellen“ aus.")
+1. Nachdem Sie **Erstellen** ausgewählt haben, wird die Seite **Virtuelles Netzwerk erstellen** geöffnet.
+1. Konfigurieren Sie auf der Registerkarte **Grundlagen** die VNET-Einstellungen **Projektdetails** und **Instanzendetails**.
 
-   ![Zur Seite mit den Ressourcen des virtuellen Netzwerks navigieren](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal700.png "Zur Seite mit den Ressourcen des virtuellen Netzwerks navigieren")
-
-3. Wählen Sie unten auf der Seite in der Liste **Bereitstellungsmodell auswählen** die Option **Resource Manager** aus, und klicken Sie anschließend auf **Erstellen**. Die Seite **Virtuelles Netzwerk erstellen** wird geöffnet.
-
-   ![Seite „Virtuelles Netzwerk erstellen“](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet.png "Seite „Virtuelles Netzwerk erstellen“")
-
-4. Konfigurieren Sie auf der Seite **Virtuelles Netzwerk erstellen** die VNET-Einstellungen. Beim Ausfüllen der Felder ändert sich das rote Ausrufezeichen in ein grünes Häkchen, sobald die eingegebenen Zeichen überprüft wurden. Einige Werte werden automatisch eingetragen und können durch eigene Werte ersetzt werden:
-
-   - **Name**: Geben Sie den Namen für Ihr virtuelles Netzwerk ein.
-
-   - **Adressraum**: Geben Sie den Adressraum ein. Falls Sie mehrere Adressräume hinzufügen möchten, geben Sie hier den ersten Adressraum ein. Sie können später weitere Adressräume hinzufügen, nachdem Sie das VNET erstellt haben.
+   ![Registerkarte „Grundlagen“:](./media/vpn-gateway-basic-vnet-rm-portal-include/basics.png "Registerkarte „Grundlagen“") Beim Ausfüllen der Felder wird ein grünes Häkchen angezeigt, nachdem die eingegebenen Zeichen überprüft wurden. Einige Werte werden automatisch eingetragen und können durch eigene Werte ersetzt werden:
 
    - **Abonnement**: Vergewissern Sie sich, dass das richtige Abonnement angegeben ist. Das Abonnement kann über die Dropdownliste geändert werden.
+   - **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus, oder klicken Sie auf **Neu erstellen**, um eine zu erstellen. Weitere Informationen zu Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht](../articles/azure-resource-manager/management/overview.md#resource-groups).
+   - **Name**: Geben Sie den Namen für Ihr virtuelles Netzwerk ein.
+   - **Region**: Wählen Sie den Standort für Ihr VNET aus. Der Standort gibt an, wo sich die in diesem VNET bereitgestellten Ressourcen befinden.
 
-   - **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus, oder geben Sie einen Namen ein, um eine neue Ressourcengruppe zu erstellen. Verwenden Sie für eine neue Ressourcengruppe einen Namen, der zu Ihren geplanten Konfigurationswerten passt. Weitere Informationen zu Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
+1. Konfigurieren Sie auf der Registerkarte **IP-Adressen** die Werte. Die in den nachstehenden Beispielen dargestellten Werte dienen zu Demonstrationszwecken. Passen Sie diese Werte entsprechend Ihren erforderlichen Einstellungen an.
 
-   - **Standort**: Wählen Sie den Standort für Ihr VNET aus. Der Standort gibt an, wo sich die in diesem VNET bereitgestellten Ressourcen befinden.
+   ![Registerkarte „IP-Adressen“](./media/vpn-gateway-basic-vnet-rm-portal-include/addresses.png "Registerkarte „IP-Adressen“")  
+   - **IPv4-Adressraum:** Standardmäßig wird automatisch ein Adressraum erstellt. Sie können auf den Adressraum klicken, um ihn an Ihre eigenen Werte anzupassen. Darüber hinaus können Sie zusätzliche Adressräume hinzufügen.
+   - **Subnetz**: Wenn Sie den Standardadressraum verwenden, wird automatisch ein Standardsubnetz erstellt. Wenn Sie den Adressraum ändern, müssen Sie ein Subnetz hinzufügen. Wählen Sie **+ Subnetz hinzufügen** aus, um das Fenster **Subnetz hinzufügen** zu öffnen. Konfigurieren Sie die folgenden Einstellungen, und wählen Sie dann **Hinzufügen** aus, um die Werte hinzuzufügen:
+      - **Subnetzname**: In diesem Beispiel haben wir dem Subnetz den Namen „FrontEnd“ gegeben.
+      - **Subnetzadressbereich:** Der Adressbereich für dieses Subnetz.
 
-   - **Subnetz**: Fügen Sie den **Namen** und **Adressbereich** des Subnetzes hinzu. Sie können später weitere Subnetze hinzufügen, nachdem Sie das VNET erstellt haben. 
-     
-5. Klicken Sie auf **Erstellen**.
+1. Behalten Sie auf der Registerkarte **Sicherheit** vorläufig die Standardwerte bei:
+
+   - **DDoS Protection**: Basic
+   - **Firewall**: Disabled
+1. Wählen Sie **Bewerten + erstellen** aus, um die Einstellungen für das virtuelle Netzwerk zu überprüfen.
+1. Nachdem die Einstellungen überprüft wurden, wählen Sie **Erstellen** aus.

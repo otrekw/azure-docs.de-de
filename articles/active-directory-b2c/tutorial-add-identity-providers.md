@@ -1,34 +1,36 @@
 ---
-title: 'Tutorial: Hinzufügen von Identitätsanbietern zu Ihren Anwendungen – Azure Active Directory B2C'
-description: Erfahren Sie, wie Sie Ihren Anwendungen in Azure Active Directory B2C mithilfe des Azure-Portals Identitätsanbieter hinzufügen.
+title: 'Tutorial: Hinzufügen von Identitätsanbietern zu Ihren Apps'
+titleSuffix: Azure AD B2C
+description: In diesem Tutorial erfahren Sie, wie Sie Ihren Anwendungen in Azure Active Directory B2C mithilfe des Azure-Portals Identitätsanbieter hinzufügen.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
-ms.date: 07/08/2019
-ms.author: marsma
+ms.topic: tutorial
+ms.date: 07/30/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bc7828b7926ea6e7f2d6bc3891ee231972ae3208
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 166bdb7a2cf15a84e1b826a9a798042c568bb227
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063247"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608230"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Tutorial: Hinzufügen von Identitätsanbietern zu Ihren Anwendungen in Azure Active Directory B2C
 
-Sie können Benutzern in Ihren Anwendungen die Anmeldung mit verschiedenen Identitätsanbietern ermöglichen. Ein *Identitätsanbieter* erstellt und verwaltet die Identitätsinformationen und stellt gleichzeitig Authentifizierungsdienste für Anwendungen bereit. Sie können die von Azure Active Directory B2C (Azure AD B2C) unterstützten Identitätsanbieter über das Azure-Portal Ihren [Benutzerflows](active-directory-b2c-reference-policies.md) hinzufügen.
+Sie können Benutzern in Ihren Anwendungen die Anmeldung mit verschiedenen Identitätsanbietern ermöglichen. Ein *Identitätsanbieter* erstellt und verwaltet die Identitätsinformationen und stellt gleichzeitig Authentifizierungsdienste für Anwendungen bereit. Sie können die von Azure Active Directory B2C (Azure AD B2C) unterstützten Identitätsanbieter über das Azure-Portal Ihren [Benutzerflows](user-flow-overview.md) hinzufügen.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Erstellen der Identitätsanbieteranwendungen
-> * Hinzufügen der Identitätsanbieter zu Ihrem Mandanten
+> * Hinzufügen der Identitätsanbieter zu Ihrem Mandanten (sowohl in Facebook als auch in Azure Active Directory)
 > * Hinzufügen der Identitätsanbieter zu Ihrem Benutzerflow
 
-In der Regel verwenden Sie nur einen Identitätsanbieter in Ihren Anwendungen, Sie haben aber die Möglichkeit, weitere hinzuzufügen. In diesem Tutorial erfahren Sie, wie Sie Ihrer Anwendung Azure AD und Facebook als Identitätsanbieter hinzufügen. Das Hinzufügen dieser beiden Identitätsanbieter zu Ihrer Anwendung ist optional. Sie können auch andere Identitätsanbieter wie etwa [Amazon](active-directory-b2c-setup-amzn-app.md), [GitHub](active-directory-b2c-setup-github-app.md), [Google](active-directory-b2c-setup-goog-app.md), [LinkedIn](active-directory-b2c-setup-li-app.md), [Microsoft](active-directory-b2c-setup-msa-app.md) oder [Twitter](active-directory-b2c-setup-twitter-app.md) hinzufügen.
+In der Regel verwenden Sie nur einen Identitätsanbieter in Ihren Anwendungen, Sie haben aber die Möglichkeit, weitere hinzuzufügen. In diesem Tutorial erfahren Sie, wie Sie Ihrer Anwendung Azure AD und Facebook als Identitätsanbieter hinzufügen. Das Hinzufügen dieser beiden Identitätsanbieter zu Ihrer Anwendung ist optional. Sie können auch andere Identitätsanbieter wie etwa [Amazon](identity-provider-amazon.md), [GitHub](identity-provider-github.md), [Google](identity-provider-google.md), [LinkedIn](identity-provider-linkedin.md), [Microsoft](identity-provider-microsoft-account.md) oder [Twitter](identity-provider-twitter.md) hinzufügen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -78,7 +80,7 @@ Um ein Facebook-Konto als Identitätsanbieter in Azure AD B2C verwenden zu könn
 1. Wählen Sie **Settings** > **Basic** (Einstellungen > Allgemeines) aus.
 1. Wählen Sie eine **Kategorie**, z.B. `Business and Pages`. Dieser Wert ist für Facebook erforderlich, wird aber von Azure AD B2C nicht verwendet.
 1. Wählen Sie unten auf der Seite die Option **Add Platform** (Plattform hinzufügen) und dann **Website** aus.
-1. Geben Sie für **Website-URL** `https://your-tenant-name.b2clogin.com/` ein, und ersetzen Sie `your-tenant-name` durch Ihren Mandantennnamen.
+1. Geben Sie für **Website-URL**`https://your-tenant-name.b2clogin.com/` ein, und ersetzen Sie `your-tenant-name` durch Ihren Mandantennnamen.
 1. Geben Sie unter **Privacy Policy URL** (Datenrichtlinien-URL) eine URL ein, z.B. `http://www.contoso.com/`. Die Datenschutzrichtlinien-URL ist eine von Ihnen verwaltete Seite mit Datenschutzinformationen für Ihre Anwendung.
 1. Klicken Sie auf **Save changes** (Änderungen speichern).
 1. Notieren Sie sich im oberen Bereich der Seite den Wert von **App ID** (App-ID).
@@ -98,19 +100,21 @@ Nach der Erstellung der Anwendung für den betreffenden Identitätsanbieter füg
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 1. Wählen Sie **Identitätsanbieter** und dann **Neuer OpenID Connect-Anbieter** aus.
 1. Geben Sie einen **Namen** ein. Geben Sie beispielsweise *Contoso Azure AD* ein.
-1. Geben Sie für **Metadaten-URL** die folgende URL ein, und ersetzen Sie dabei `your-AD-tenant-domain` durch den Domänennamen Ihres Azure AD-Mandanten.
+1. Geben Sie für **Metadaten-URL** die folgende URL ein, und ersetzen Sie dabei `{tenant}` durch den Domänennamen Ihres Azure AD-Mandanten.
 
     ```
-    https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
+    https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
     ```
 
-    Beispiel: `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
+    Beispiel: `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
+    Beispiel: `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`.
 
 1. Geben Sie für **Client-ID** die zuvor notierte Anwendungs-ID ein.
 1. Geben Sie im Feld **Geheimer Clientschlüssel** den zuvor notierten geheimen Clientschlüssel ein.
-1. Belassen Sie die Standardwerte für **Bereich**, **Antworttyp** und **Antwortmodus**.
-1. (Optional) Geben Sie einen Wert für **Domänenhinweis** ein. Beispiel: *ContosoAD*. [Domänenhinweise](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) sind in der Authentifizierungsanforderung einer Anwendung enthaltene Anweisungen. Sie können verwendet werden, um die beschleunigte Anmeldung des Benutzers auf der Anmeldeseite seines Verbundidentitätsanbieters zu ermöglichen. Sie können auch von einer Anwendung für mehrere Mandanten verwendet werden, um den Benutzer beschleunigt direkt zur organisationsspezifischen Azure AD-Anmeldeseite für ihren Mandanten zu leiten.
-1. Geben Sie unter **Identitätsanbieter für die Anspruchszuordnung** die folgenden Werte für die Anspruchszuordnung ein:
+1. Geben Sie für den **Bereich** das `openid profile` ein.
+1. Übernehmen Sie die Standardwerte für **Antworttyp** und **Antwortmodus**.
+1. (Optional) Geben Sie als **Domänenhinweis** die Zeichenfolge `contoso.com` ein. Weitere Informationen finden Sie unter [Einrichten einer direkten Anmeldung mit Azure Active Directory B2C](direct-signin.md#redirect-sign-in-to-a-social-provider).
+1. Wählen Sie unter **Zuordnung von Identitätsanbieteransprüchen** die folgenden Ansprüche aus:
 
     * **Benutzer-ID**: *oid*
     * **Anzeigename**: *name*
@@ -132,7 +136,7 @@ Nach der Erstellung der Anwendung für den betreffenden Identitätsanbieter füg
 
 In dem Tutorial, das Sie im Rahmen der Voraussetzungen abgeschlossen haben, haben Sie einen Benutzerflow mit dem Namen *B2C_1_signupsignin1* für die Registrierung und Anmeldung erstellt. In diesem Abschnitt fügen Sie die Identitätsanbieter dem Benutzerflow *B2C_1_signupsignin1* hinzu.
 
-1. Wählen Sie **Benutzerflows (Richtlinien)** und dann den Benutzerflow *B2C_1_signupsignin1* aus.
+1. Wählen Sie **Benutzerflows** und dann den Benutzerflow *B2C_1_signupsignin1* aus.
 2. Wählen Sie **Identitätsanbieter** und dann die von Ihnen hinzugefügten Identitätsanbieter **Facebook** und **Contoso Azure AD** aus.
 3. Wählen Sie **Speichern** aus.
 

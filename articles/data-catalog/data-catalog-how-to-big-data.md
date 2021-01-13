@@ -4,14 +4,14 @@ description: Anleitungsartikel, der die Muster zur Verwendung von Azure Data Cat
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 88dc85003fa2a3e41d8a31055ff8ba9b0fcc7492
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e79e5e16b300fd02b9c9124f9677747834f22813
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300584"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009431"
 ---
 # <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>Katalogisieren von Big Data in Azure Data Catalog
 
@@ -19,7 +19,7 @@ ms.locfileid: "71300584"
 
 **Microsoft Azure Data Catalog** ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenquellen von Unternehmen dient. Der Dienst unterstützt Benutzer beim Ermitteln, Nachvollziehen und Verwenden von Datenquellen und Unternehmen dabei, mehr Nutzen aus ihren vorhandenen Datenquellen, wie z.B. Big Data, zu ziehen.
 
-**Azure Data Catalog** unterstützt die Registrierung von Azure-Blobspeicher-Blobs und -Verzeichnissen sowie Hadoop HDFS-Dateien und -Verzeichnisse. Die teilweise strukturierte Art dieser Datenquellen bietet enorme Flexibilität. Doch um den größten Nutzen aus ihrer Registrierung bei **Azure Data Catalog** zu ziehen, müssen Benutzer berücksichtigen, wie die Datenquellen organisiert sind.
+**Azure Data Catalog** unterstützt die Registrierung von Azure Storage-Blobs und -Verzeichnissen sowie Hadoop HDFS-Dateien und -Verzeichnisse. Die teilweise strukturierte Art dieser Datenquellen bietet enorme Flexibilität. Doch um den größten Nutzen aus ihrer Registrierung bei **Azure Data Catalog** zu ziehen, müssen Benutzer berücksichtigen, wie die Datenquellen organisiert sind.
 
 ## <a name="directories-as-logical-data-sets"></a>Verzeichnisse als logische Datensätze
 
@@ -60,7 +60,7 @@ Ein Beispiel für dieses Muster könnte sein:
 
 Wenn ein Analytiker oder Datenwissenschaftler mit den in größeren Verzeichnisstrukturen enthaltenen Daten arbeitet, können die Daten in diesen Verweisdateien dazu verwendet werden, detailliertere Informationen zu Entitäten bereitzustellen, die nur durch den Namen oder die ID im größeren Datensatz bezeichnet werden.
 
-In diesem Muster ist es sinnvoll, die einzelnen Verweisdatendateien bei **Azure Data Catalog**zu registrieren. Jede Datei stellt einen Datensatz dar, und jede kann einzeln kommentiert und ermittelt werden.
+In diesem Muster ist es sinnvoll, die einzelnen Verweisdatendateien bei **Azure Data Catalog** zu registrieren. Jede Datei stellt einen Datensatz dar, und jede kann einzeln kommentiert und ermittelt werden.
 
 ## <a name="alternate-patterns"></a>Alternative Muster
 

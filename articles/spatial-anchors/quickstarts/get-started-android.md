@@ -1,19 +1,19 @@
 ---
-title: 'Schnellstart: Erstellen einer Android-App mit Azure Spatial Anchors | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen einer Android-App'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mit Spatial Anchors eine Android-App erstellen.
-author: craigktreasure
-manager: aliemami
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 40969362e339770f18374ff22af5b3fe63908e65
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b7be4e257fc884c655fe380f69b08797a907fbbb
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845733"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96022648"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Schnellstart: Erstellen einer Android-App mit Azure Spatial Anchors
 
@@ -33,26 +33,26 @@ Sie lernen Folgendes:
 Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes verfügen:
 
 - Einen Windows- oder macOS-Computer mit <a href="https://developer.android.com/studio/" target="_blank">mindestens Android Studio 3.4</a>.
-  - Unter Windows benötigen Sie auch <a href="https://git-scm.com/download/win" target="_blank">Git für Windows</a>.
-  - Unter macOS muss Git über Homebrew installiert werden. Geben Sie den folgenden Befehl in einer einzelnen Zeile am Terminal ein: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Führen Sie dann `brew install git` aus.
+  - Unter Windows benötigen Sie auch <a href="https://git-scm.com/download/win" target="_blank">Git für Windows</a> und <a href="https://git-lfs.github.com/">Git LFS</a>.
+  - Unter macOS muss Git über Homebrew installiert werden. Geben Sie den folgenden Befehl in einer einzelnen Zeile am Terminal ein: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Führen Sie dann `brew install git` und `brew install git-lfs` aus.
   - Zum Erstellen des NDK-Beispiels müssen Sie auch NDK und die SDK Tools für CMake 3.6 oder höher in Android Studio installieren.
 - Ein <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">für Entwickler geeignetes</a> und <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore-fähiges</a> Android-Gerät.
   - Möglicherweise sind zusätzliche Gerätetreiber erforderlich, damit Ihr Computer mit Ihrem Android-Gerät kommunizieren kann. Weitere Informationen und Anweisungen finden Sie [hier](https://developer.android.com/studio/run/device.html).
-- Ihre App muss für ARCore **1.8** geeignet sein.
+- Ihre App muss für ARCore **1.11.0** geeignet sein.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
 ## <a name="open-the-sample-project"></a>Öffnen des Beispielprojekts
 
-# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
+# <a name="java"></a>[Java](#tab/openproject-java)
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Laden Sie `arcore_c_api.h` [hier](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.8.0/libraries/include/arcore_c_api.h) herunter, und legen Sie das Projekt unter `Android\NDK\libraries\include` ab.
+Laden Sie `arcore_c_api.h`[hier](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) herunter, und legen Sie das Projekt unter `Android\NDK\libraries\include` ab.
 
 Initialisieren Sie im neu geklonten Repository Submodule, indem Sie den folgenden Befehl ausführen:
 
@@ -64,11 +64,11 @@ git submodule update --init --recursive
 
 Öffnen Sie Android Studio.
 
-# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
+# <a name="java"></a>[Java](#tab/openproject-java)
 
 Wählen Sie **Open an existing Android Studio project** (Vorhandenes Android Studio-Projekt öffnen), und wählen Sie das Projekt unter `Android/Java/` aus.
 
-# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 Wählen Sie **Open an existing Android Studio project** (Vorhandenes Android Studio-Projekt öffnen), und wählen Sie das Projekt unter `Android/NDK/` aus.
 
@@ -78,7 +78,7 @@ Wählen Sie **Open an existing Android Studio project** (Vorhandenes Android Stu
 
 Im nächsten Schritt wird die App zur Verwendung des Kontobezeichners und Kontoschlüssels konfiguriert. Diese haben Sie beim [Einrichten der Spatial Anchors-Ressource](#create-a-spatial-anchors-resource) in einen Text-Editor kopiert.
 
-# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
+# <a name="java"></a>[Java](#tab/openproject-java)
 
 Öffnen Sie `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
 
@@ -86,13 +86,17 @@ Suchen Sie nach dem Feld `SpatialAnchorsAccountKey`, und ersetzen Sie `Set me` d
 
 Suchen Sie nach dem Feld `SpatialAnchorsAccountId`, und ersetzen Sie `Set me` durch den Kontobezeichner.
 
-# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+Suchen Sie nach dem Feld `SpatialAnchorsAccountDomain`, und ersetzen Sie `Set me` durch die Kontodomäne.
+
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 Öffnen Sie `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
 
 Suchen Sie nach dem Feld `SpatialAnchorsAccountKey`, und ersetzen Sie `Set me` durch den Kontoschlüssel.
 
 Suchen Sie nach dem Feld `SpatialAnchorsAccountId`, und ersetzen Sie `Set me` durch den Kontobezeichner.
+
+Suchen Sie nach dem Feld `SpatialAnchorsAccountDomain`, und ersetzen Sie `Set me` durch die Kontodomäne.
 
 ---
 

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: a0c394df-957b-49b3-a283-38824f8847fd
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 9ac87bbf5089dd20b8c6eeec0b970a7767b3dcda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57cd9b55f529bde3f6bcb0a25a95c70333f6d8dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723941"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005774"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts, um eine Supportanfrage für StorSimple Virtual Array zu erstellen
 
@@ -35,7 +35,7 @@ Je nach [Supportplan](https://azure.microsoft.com/support/plans/) können Sie Su
 
 1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst. Wechseln Sie auf dem Dienstübersichtsblatt in den Abschnitt **Support + Problembehandlung**, und klicken Sie anschließend auf **Neue Supportanfrage**.
    
-    ![Neue Supportanfrage](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
+    ![Screenshot: Bereich „Grundeinstellungen“ für eine neue Supportanfrage](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
 2. Gehen Sie auf dem Blatt **Grundeinstellungen** wie folgt vor:
 
@@ -49,11 +49,11 @@ Je nach [Supportplan](https://azure.microsoft.com/support/plans/) können Sie Su
 
 3. Wählen Sie in **Schritt 2** den **Schweregrad**, und geben Sie an, ob das Problem das Array oder den StorSimple-Geräte-Manager-Dienst betrifft. Wählen Sie außerdem eine **Kategorie** für das Problem, und geben Sie weitere **Details** dazu an.
    
-    ![Neue Supportanfrage](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
+    ![Screenshot: Bereich „Problem“, in dem Sie den Problemtyp, die Kategorie und die Details für Ihre Supportanfrage eingeben können](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
 4. Geben Sie in **Schritt 3** Ihre Kontaktinformationen an. Microsoft Support verwendet diese Informationen, um Ihnen weitere Informationen, Diagnosen und Problemlösungen zur Verfügung zu stellen.
    
-    ![Neue Supportanfrage](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
+    ![Screenshot: Bereich „Kontaktinformationen“](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
 
 ## <a name="manage-a-support-request"></a>Erstellen einer Supportanfrage
 

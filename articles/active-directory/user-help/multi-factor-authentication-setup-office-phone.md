@@ -2,21 +2,20 @@
 title: 'Einrichten einer Bürotelefonnummer als Methode für die zweistufige Überprüfung: Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie eine Bürotelefonnummer als Methode für die zweistufige Überprüfung einrichten.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: overview
+ms.topic: end-user-help
 ms.date: 08/12/2019
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adbb913fc8ec6376f1c5f47708da4fd7df740ff
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.author: curtand
+ms.openlocfilehash: 9dd9853bae324a047c673852f14d2b4c1639d914
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619851"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83739208"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>Einrichten einer Bürotelefonnummer als Methode für die zweistufige Überprüfung
 
@@ -52,6 +51,6 @@ Nach der Einrichtung der Methode für die zweistufige Überprüfung können Sie 
 
 - [Verwalten von App-Kennwörtern](multi-factor-authentication-end-user-app-passwords.md)
 
-- [Der Anmeldevorgang mit Azure Multi-Factor Authentication](multi-factor-authentication-end-user-signin.md)
+- [Anmelden per zweistufiger Überprüfung](multi-factor-authentication-end-user-signin.md)
 
 - [Hilfe bei der zweistufigen Überprüfung](multi-factor-authentication-end-user-troubleshoot.md)

@@ -1,30 +1,26 @@
 ---
-title: Azure Event Grid-Ereignisschema für Event Hubs
+title: Azure-Event Hubs als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Event Hubs-Ereignisse bereitgestellt werden
-services: event-grid
-author: spelluru
-ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
-ms.author: spelluru
-ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: conceptual
+ms.date: 07/07/2020
+ms.openlocfilehash: 960aa1fe7184e1d02d28fdc135907119fee8f123
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60561827"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86113682"
 ---
-# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Azure Event Grid-Ereignisschema für Event Hubs
+# <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure Event Hubs als Event Grid-Quelle
 
 In diesem Artikel werden die Eigenschaften und das Schema für Event Hubs-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
-Eine Liste der Beispielskripts und Tutorials finden Sie unter [Event Hubs-Ereignisquelle](event-sources.md#event-hubs).
+## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
 
 ### <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 Event Hubs gibt den Ereignistyp **Microsoft.EventHub.CaptureFileCreated** aus, wenn eine Erfassungsdatei erstellt wird.
 
-## <a name="example-event"></a>Beispielereignis
+### <a name="example-event"></a>Beispielereignis
 
 In diesem Beispielereignis ist das Schema eines Event Hubs-Ereignisses dargestellt, das ausgelöst wird, wenn eine Datei über das Feature „Erfassen“ gespeichert wird: 
 
@@ -53,34 +49,40 @@ In diesem Beispielereignis ist das Schema eines Event Hubs-Ereignisses dargestel
 ]
 ```
 
-## <a name="event-properties"></a>Ereigniseigenschaften
+### <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | string | Eindeutiger Bezeichner für das Ereignis. |
-| data | object | Event Hub-Ereignisdaten. |
-| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| data | Objekt (object) | Event Hub-Ereignisdaten. |
+| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| fileUrl | string | Der Pfad zur Erfassungsdatei. |
-| fileType | string | Der Dateityp der Erfassungsdatei. |
-| partitionId | string | Die Shard-ID. |
+| fileUrl | Zeichenfolge | Der Pfad zur Erfassungsdatei. |
+| fileType | Zeichenfolge | Der Dateityp der Erfassungsdatei. |
+| partitionId | Zeichenfolge | Die Shard-ID. |
 | sizeInBytes | integer | Die Dateigröße. |
 | eventCount | integer | Die Anzahl der Ereignisse in der Datei. |
 | firstSequenceNumber | integer | Die kleinste Sequenznummer aus der Warteschlange. |
 | lastSequenceNumber | integer | Die größte Sequenznummer aus der Warteschlange. |
-| firstEnqueueTime | string | Die erste Zeit aus der Warteschlange. |
-| lastEnqueueTime | string | Die letzte Zeit aus der Warteschlange. |
+| firstEnqueueTime | Zeichenfolge | Die erste Zeit aus der Warteschlange. |
+| lastEnqueueTime | Zeichenfolge | Die letzte Zeit aus der Warteschlange. |
+
+## <a name="tutorials-and-how-tos"></a>Tutorials und Vorgehensweisen
+
+|Titel  |BESCHREIBUNG  |
+|---------|---------|
+| [Tutorial: Streamen von Big Data in ein Data Warehouse](event-grid-event-hubs-integration.md) | Wenn Event Hubs eine Capture-Datei erstellt, sendet Event Grid ein Ereignis an eine Funktions-App. Die App ruft die Capture-Datei ab und migriert Daten zu einem Data Warehouse. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

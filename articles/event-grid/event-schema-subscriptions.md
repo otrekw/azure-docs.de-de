@@ -1,20 +1,16 @@
 ---
-title: Ereignisschema des Azure Event Grid-Abonnements
+title: Azure-Abonnement als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Abonnementereignisse bereitgestellt werden
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: reference
-ms.date: 01/12/2019
-ms.author: spelluru
-ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/07/2020
+ms.openlocfilehash: 72b1a73bf418b417cd29f88063781e7b45979998
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60561675"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86105896"
 ---
-# <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure Event Grid-Ereignisschema für Abonnements
+# <a name="azure-subscription-as-an-event-grid-source"></a>Azure-Abonnement als Event Grid-Quelle
 
 In diesem Artikel werden die Eigenschaften und das Schema für Azure-Abonnementereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
@@ -28,13 +24,14 @@ Zur programmgesteuerten Verarbeitung von Ereignissen können Sie Ereignisse sort
 
 Der Betreff des Ereignisses ist die Ressourcen-ID der Ressource, die das Ziel des Vorgangs ist. Geben Sie zum Filtern von Ereignissen für eine Ressource beim Erstellen des Ereignisabonnements die Ressourcen-ID an. Verwenden Sie zum Filtern nach einem Ressourcentyp einen Wert im folgenden Format: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-Eine Liste von Beispielskripts und Tutorials finden Sie in den Informationen zur [Ereignisquelle für Azure-Abonnements](event-sources.md#azure-subscriptions).
 
-## <a name="available-event-types"></a>Verfügbare Ereignistypen
+## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
+
+### <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 Azure-Abonnements geben Verwaltungsereignisse von Azure Resource Manager aus, beispielsweise wenn ein virtueller Computer erstellt oder ein Speicherkonto gelöscht wird.
 
-| Ereignistypen | BESCHREIBUNG |
+| Ereignistyp | BESCHREIBUNG |
 | ---------- | ----------- |
 | Microsoft.Resources.ResourceActionCancel | Wird ausgelöst, wenn eine Aktion für eine Ressource abgebrochen wird. |
 | Microsoft.Resources.ResourceActionFailure | Wird ausgelöst, wenn eine Aktion für eine Ressource fehlschlägt. |
@@ -46,7 +43,7 @@ Azure-Abonnements geben Verwaltungsereignisse von Azure Resource Manager aus, be
 | Microsoft.Resources.ResourceWriteFailure | Wird ausgelöst, wenn ein Erstellungs- oder Aktualisierungsvorgang fehlschlägt. |
 | Microsoft.Resources.ResourceWriteSuccess | Wird ausgelöst, wenn ein Erstellungs- oder Aktualisierungsvorgang erfolgreich ausgeführt wurde. |
 
-## <a name="example-event"></a>Beispielereignis
+### <a name="example-event"></a>Beispielereignis
 
 Im folgenden Beispiel wird das Schema für das Ereignis **ResourceWriteSuccess** veranschaulicht. Das gleiche Schema wird für die Ereignisse **ResourceWriteFailure** und **ResourceWriteCancel** verwendet, nur mit anderen Werten für `eventType`.
 
@@ -230,35 +227,43 @@ Im folgenden Beispiel wird das Schema für ein **ResourceActionSuccess**-Ereigni
 }]
 ```
 
-## <a name="event-properties"></a>Ereigniseigenschaften
+### <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | string | Eindeutiger Bezeichner für das Ereignis. |
-| data | object | Abonnementereignisdaten. |
-| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| data | Objekt (object) | Abonnementereignisdaten. |
+| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| authorization | object | Die angeforderte Autorisierung für den Vorgang. |
-| claims | object | Die Eigenschaften der Ansprüche. Weitere Informationen finden Sie auf der Seite zur [JWT-Spezifikation](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
-| correlationId | string | Eine Vorgangs-ID für die Problembehandlung. |
-| httpRequest | object | Die Details des Vorgangs. Dieses Objekt ist nur enthalten, wenn eine vorhandene Ressource aktualisiert oder eine Ressource gelöscht wird. |
-| resourceProvider | string | Der Ressourcenanbieter für den Vorgang. |
-| resourceUri | string | Der URI der Ressource im Vorgang. |
-| operationName | string | Der Vorgang, der übernommen wurde. |
-| status | string | Der Status des Vorgangs. |
-| subscriptionId | string | Die Abonnement-ID der Ressource. |
-| tenantId | string | Die Mandanten-ID der Ressource. |
+| authorization | Objekt (object) | Die angeforderte Autorisierung für den Vorgang. |
+| claims | Objekt (object) | Die Eigenschaften der Ansprüche. Weitere Informationen finden Sie auf der Seite zur [JWT-Spezifikation](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| correlationId | Zeichenfolge | Eine Vorgangs-ID für die Problembehandlung. |
+| httpRequest | Objekt (object) | Die Details des Vorgangs. Dieses Objekt ist nur enthalten, wenn eine vorhandene Ressource aktualisiert oder eine Ressource gelöscht wird. |
+| resourceProvider | Zeichenfolge | Der Ressourcenanbieter für den Vorgang. |
+| resourceUri | Zeichenfolge | Der URI der Ressource im Vorgang. |
+| operationName | Zeichenfolge | Der Vorgang, der übernommen wurde. |
+| status | Zeichenfolge | Der Status des Vorgangs. |
+| subscriptionId | Zeichenfolge | Die Abonnement-ID der Ressource. |
+| tenantId | Zeichenfolge | Die Mandanten-ID der Ressource. |
+
+## <a name="tutorials-and-how-tos"></a>Tutorials und Anleitungen
+|Titel |BESCHREIBUNG  |
+|---------|---------|
+| [Tutorial: Azure Automation mit Event Grid und Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Erstellen Sie einen virtuellen Computer, der ein Ereignis gesendet. Das Ereignis löst ein Automation-Runbook, das den virtuellen Computer markiert, sowie eine Nachricht aus, die an einen Microsoft Teams-Kanal gesendet wird. |
+| [Gewusst wie: Abonnieren von Ereignissen über das Portal](subscribe-through-portal.md) | Verwenden Sie das Portal, um Ereignisse für ein Azure-Abonnement zu abonnieren. |
+| [Azure CLI: Abonnieren von Ereignissen für ein Azure-Abonnement](./scripts/event-grid-cli-azure-subscription.md) |Beispielskript, mit dem ein Event Grid-Abonnement für ein Azure-Abonnement erstellt wird und Ereignisse an einen WebHook gesendet werden. |
+| [PowerShell: Abonnieren von Ereignissen für ein Azure-Abonnement](./scripts/event-grid-powershell-azure-subscription.md)| Beispielskript, mit dem ein Event Grid-Abonnement für ein Azure-Abonnement erstellt wird und Ereignisse an einen WebHook gesendet werden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

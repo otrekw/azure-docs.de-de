@@ -7,12 +7,12 @@ manager: craigg
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2018
-ms.openlocfilehash: 75ff34910383b30c9fd967ff568d087c2492856f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c2de10f5fbacd689a9ae92eb1f7295cccea3fb6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66143222"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87279260"
 ---
 # <a name="azure-database-for-postgresql-migration-partners"></a>Azure Database for PostgreSQL – Migrationspartner
 Zur umfassenden Unterstützung Ihrer Azure Database for PostgreSQL-Lösung können Sie aus einer breiten Vielfalt branchenführender Partner und Tools wählen. In diesem Artikel sind Partner von Microsoft aufgeführt, die Lösungen für die Migration anbieten, die Azure Database for PostgreSQL unterstützen.
@@ -28,7 +28,7 @@ Zur umfassenden Unterstützung Ihrer Azure Database for PostgreSQL-Lösung könn
 | ![Pactera][6] |**Pactera**<br>Pactera ist ein international agierendes Unternehmen, das weltweit führenden Unternehmen Beratungs-, Digitalisierungs- und Technologiedienste sowie Dienste für den Betrieb bietet. Es verschafft Kunden einen Wettbewerbsvorteil in verschiedensten Gebieten – von der Entwicklung, seinem ursprünglichen Wirkungsbereich, bis hin zu neuesten Technologien für die digitale Transformation. Die bewährten Methoden und Tools stellen sicher, dass Ihre Daten sicher, authentisch und präzise sind.|[Website][pactera_website]<br>[Twitter][pactera_twitter]<br>[Kontakt][pactera_contact] | |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu weiteren Partnern von Microsoft finden Sie auf der [Microsoft Partner-Website](https://partner.microsoft.com/en-US/).
+Weitere Informationen zu weiteren Partnern von Microsoft finden Sie auf der [Microsoft Partner-Website](https://partner.microsoft.com/).
 
 <!--Image references-->
 [1]: ./media/partner-migration-postgresql/SNP_Logo.png
@@ -44,7 +44,7 @@ Weitere Informationen zu weiteren Partnern von Microsoft finden Sie auf der [Mic
 [pragmatic-works_website]:https://pragmaticworks.com//
 [infosys_website]:https://www.infosys.com/
 [credativ_website]:https://www.credativ.com/postgresql-competence-center/microsoft-azure
-[pactera_website]:https://en.pactera.com/service/azure-data-platform-services/
+[pactera_website]:https://en.pactera.com/
 
 <!--Get Started Links-->
 <!--Datasheet Links-->

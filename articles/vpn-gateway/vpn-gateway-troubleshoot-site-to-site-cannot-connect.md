@@ -1,25 +1,18 @@
 ---
-title: 'Problembehandlung: Azure-Site-to-Site-VPN-Verbindung kann nicht hergestellt werden | Microsoft-Dokumentation'
+title: 'Problembehandlung bei Azure-Site-to-Site-VPN-Verbindungen, die nicht hergestellt werden können titleSuffix: Azure VPN Gateway'
 description: In diesem Artikel erfahren Sie, was Sie tun können, wenn die Site-to-Site-VPN-Verbindung plötzlich getrennt wird und nicht mehr hergestellt werden kann.
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: e196c4b512de3fac97347e4c252b697ed6818227
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 674b8ab8266921a4eef8bbf212f3c556b1e587d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058873"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658348"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Problembehandlung: Azure-Site-to-Site-VPN-Verbindung kann nicht hergestellt werden und reagiert nicht mehr
 
@@ -29,7 +22,7 @@ Nach dem Konfigurieren einer Site-to-Site-VPN-Verbindung zwischen einem lokalen 
 
 ## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 
-Um das Problem zu beheben, versuchen Sie zunächst [das VPN-Gateway von Azure ](vpn-gateway-resetgw-classic.md) und den Tunnel des lokalen VPN-Geräts zurückzusetzen. Sollte das Problem weiterhin bestehen, gehen Sie folgendermaßen vor, um die Ursache des Problems zu identifizieren.
+Um das Problem zu beheben, versuchen Sie zunächst [das VPN-Gateway von Azure ](./reset-gateway.md) und den Tunnel des lokalen VPN-Geräts zurückzusetzen. Sollte das Problem weiterhin bestehen, gehen Sie folgendermaßen vor, um die Ursache des Problems zu identifizieren.
 
 ### <a name="prerequisite-step"></a>Voraussetzung
 
@@ -53,7 +46,7 @@ Vergleichen Sie den gemeinsam verwendeten Schlüssel des lokalen VPN-Geräts und
 
 Verwenden Sie zum Anzeigen des gemeinsamen Schlüssels für die Azure-VPN-Verbindung eine der folgenden Methoden:
 
-**Azure-Portal**
+**Azure portal**
 
 1. Gehen Sie zu der von Ihnen erstellen VPN-Gateway-Site-to-Site-Verbindung.
 
@@ -67,18 +60,22 @@ Verwenden Sie zum Anzeigen des gemeinsamen Schlüssels für die Azure-VPN-Verbin
 
 Für das Azure Resource Manager-Bereitstellungsmodell:
 
-    Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group name>
+```azurepowershell
+Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group name>
+```
 
 Für das klassische Bereitstellungsmodell:
 
-    Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
+```azurepowershell
+Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
+```
 
 ### <a name="step-3-verify-the-vpn-peer-ips"></a>Schritt 3: Überprüfen Sie die VPN-Peer-IP-Adressen
 
 -   Die IP-Definition im Objekt **Lokales Netzwerkgateway** in Azure muss mit der IP-Adresse des lokalen Geräts übereinstimmen.
 -   Die Azure-Gateway-IP-Definition, die auf dem lokalen Gerät festgelegt ist, muss der Azure-Gateway-IP-Adresse entsprechen.
 
-### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>Schritt 4: Überprüfen Sie die UDR und die NSG im Gatewaysubnetz
+### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>Schritt 4. Überprüfen Sie die UDR und die NSG im Gatewaysubnetz
 
 Suchen und Entfernen Sie benutzerdefiniertes routing (UDR) oder Netzwerksicherheitsgruppen (NSG) auf dem Gatewaysubnetz, und testen Sie dann das Ergebnis. Wenn das Problem behoben wurde, überprüfen Sie die vom UDR oder den NSG angewendeten Einstellungen.
 

@@ -8,12 +8,13 @@ ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 04206a45a3322a1b0d28e3dfeed65225773e9038
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: monitoring
+ms.openlocfilehash: 5465fa63a3dff71de2e370281df9351e2bac76c7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844841"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790524"
 ---
 # <a name="storage-analytics"></a>Speicheranalyse
 
@@ -23,11 +24,9 @@ Zum Verwenden der Speicheranalyse müssen Sie sie einzeln für jeden zu überwac
 
 Die aggregierten Daten werden in einem bekannten BLOB (zur Protokollierung) und in bekannten Tabellen (als Metrik) gespeichert. Der Zugriff erfolgt über APIs für den BLOB-Dienst und Tabellendienst.
 
-Bei der Speicheranalyse ist die Menge der gespeicherten Daten auf 20 TB beschränkt. Diese Beschränkung gilt unabhängig vom Gesamtlimit für Ihr Speicherkonto. Weitere Informationen zu Speicherkontobegrenzungen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md).
+Bei der Speicheranalyse ist die Menge der gespeicherten Daten auf 20 TB beschränkt. Diese Beschränkung gilt unabhängig vom Gesamtlimit für Ihr Speicherkonto. Weitere Informationen zu Speicherkontogrenzwerten finden Sie unter [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](scalability-targets-standard-account.md).
 
 Eine ausführliche Anleitung zum Verwenden der Speicheranalyse sowie weiterer Tools, um Azure Storage-bezogene Probleme zu identifizieren, zu diagnostizieren und zu beheben, finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="billing-for-storage-analytics"></a>Abrechnung von Speicheranalysen
 
@@ -38,11 +37,11 @@ Die folgenden Aktionen der Speicheranalyse sind gebührenpflichtig:
 * Anforderungen zum Erstellen von Blobs für die Protokollierung
 * Anforderungen zum Erstellen von Tabellenentitäten für Metriken
 
-Wenn Sie eine Datenbeibehaltungsrichtlinie konfiguriert haben und die Speicheranalyse ältere Protokollierungs- und Metrikdaten löscht, werden Ihnen keine Löschtransaktionen in Rechnung gestellt. Löschtransaktionen von einem Client sind jedoch gebührenpflichtig. Weitere Informationen zu Aufbewahrungsrichtlinien finden Sie unter [Festlegen einer Beibehaltungsrichtlinie für Speicheranalysedaten](https://msdn.microsoft.com/library/azure/hh343263.aspx).
+Wenn Sie eine Datenbeibehaltungsrichtlinie konfiguriert haben und die Speicheranalyse ältere Protokollierungs- und Metrikdaten löscht, werden Ihnen keine Löschtransaktionen in Rechnung gestellt. Löschtransaktionen von einem Client sind jedoch gebührenpflichtig. Weitere Informationen zu Aufbewahrungsrichtlinien finden Sie unter [Festlegen einer Beibehaltungsrichtlinie für Speicheranalysedaten](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy).
 
 ### <a name="understanding-billable-requests"></a>Grundlegendes zu gebührenpflichtigen Anforderungen
 
-Jede Anforderung, die an den Speicherdienst eines Kontos erfolgt, ist entweder gebührenpflichtig oder nicht. Storage Analytics protokolliert jede einzelne an einen Dienst gerichtete Anforderung, einschließlich einer Statusmeldung, die angibt, wie die Anforderung behandelt wurde. Entsprechend speichert die Speicheranalyse Metriken sowohl für einen Dienst als auch für die API-Vorgänge dieses Diensts, einschließlich der Prozentsätze und Anzahl bestimmter Statusmeldungen. Diese gesamten Funktionen können Ihnen helfen, die gebührenpflichtigen Anforderungen zu analysieren, Verbesserungen an der Anwendung vorzunehmen und Probleme bei den Anforderungen an Dienste zu diagnostizieren. Weitere Informationen zur Abrechnung finden Sie unter [Understanding Azure Storage Billing - Bandwidth, Transactions, and Capacity](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)(Grundlagen zur Abrechnung von Azure-Speicher – Bandbreite, Transaktionen und Kapazität, in englischer Sprache).
+Jede Anforderung, die an den Speicherdienst eines Kontos erfolgt, ist entweder gebührenpflichtig oder nicht. Storage Analytics protokolliert jede einzelne an einen Dienst gerichtete Anforderung, einschließlich einer Statusmeldung, die angibt, wie die Anforderung behandelt wurde. Entsprechend speichert die Speicheranalyse Metriken sowohl für einen Dienst als auch für die API-Vorgänge dieses Diensts, einschließlich der Prozentsätze und Anzahl bestimmter Statusmeldungen. Diese gesamten Funktionen können Ihnen helfen, die gebührenpflichtigen Anforderungen zu analysieren, Verbesserungen an der Anwendung vorzunehmen und Probleme bei den Anforderungen an Dienste zu diagnostizieren. Weitere Informationen zur Abrechnung finden Sie unter [Understanding Azure Storage Billing - Bandwidth, Transactions, and Capacity](/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)(Grundlagen zur Abrechnung von Azure-Speicher – Bandbreite, Transaktionen und Kapazität, in englischer Sprache).
 
 Wenn Sie Speicheranalysedaten überprüfen, können Sie anhand der Tabellen im Thema [Protokollierte Speicheranalysevorgänge und Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) bestimmen, welche Anforderungen gebührenpflichtig sind. Anschließend können Sie die Protokolle und Metrikdaten mit den Statusmeldungen vergleichen, um zu ermitteln, ob Ihnen eine bestimmte Anforderung in Rechnung gestellt wurde. Sie können auch die Tabellen im vorherigen Thema verwenden, um die Verfügbarkeit für einen Speicherdienst oder einen einzelnen API-Vorgang zu bestimmen.
 

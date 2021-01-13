@@ -3,23 +3,23 @@ title: Azure AD-App-Proxy und Qlik Sense | Microsoft-Dokumentation
 description: Aktivieren Sie den Anwendungsproxy über das Azure-Portal, und installieren Sie die Connectors für den Reverseproxy.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/06/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f54e08e6c3b7b673541f124a90f32dbc860fa44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9696d48db7d051f3a8bdf16f93438fb71f025dc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65859535"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84760047"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Anwendungsproxy und Qlik Sense 
 Die Partnerschaft von Azure Active Directory-Anwendungsproxy und Qlik Sense soll sicherstellen, dass Sie mit dem Anwendungsproxy problemlos Remotezugriff für Ihre Qlik Sense-Bereitstellung bereitstellen können.  
@@ -42,8 +42,8 @@ Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführli
 3. Wählen Sie oben auf dem Blatt **Hinzufügen** aus. 
 4. Wählen Sie **Lokale Anwendung** aus. 
 5. Füllen Sie die Pflichtfelder mit Informationen zur neuen App aus. Befolgen Sie diese Anleitung für die folgenden Einstellungen: 
-   - **Interne URL**: Diese Anwendung muss über eine interne URL verfügen, die die Qlik Sense-URL selbst ist. Beispiel: **https&#58;//demo.qlikemm.com:4244** 
-   - **Methode für die Vorauthentifizierung**: Azure Active Directory (empfohlen, aber nicht erforderlich) 
+   - **Interne URL:** Diese Anwendung muss über eine interne URL verfügen, die die Qlik Sense-URL selbst ist. Beispiel: **https&#58;//demo.qlikemm.com:4244** 
+   - **Methode für die Vorauthentifizierung:** Azure Active Directory (empfohlen, aber nicht erforderlich) 
 1. Klicken Sie unten auf dem Blatt auf **Hinzufügen**. Ihre Anwendung wird hinzugefügt, das Schnellstartmenü wird geöffnet. 
 2. Wählen Sie im Schnellstartmenü **Zuweisen eines Benutzers zu Testzwecken** aus, und fügen Sie der Anwendung mindestens einen Benutzer hinzu. Stellen Sie sicher, dass dieses Testkonto auf die lokale Anwendung zugreifen kann. 
 3. Wählen Sie **Zuweisen** aus, um die Zuweisung des Testbenutzers zu speichern. 
@@ -52,7 +52,7 @@ Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführli
 ### <a name="application-2"></a>Anwendung 2: 
 Führen Sie die gleichen Schritte aus wie für Anwendung 1 – mit folgenden Ausnahmen: 
 
-**Schritt 5**: Die interne URL sollte jetzt die Qlik Sense-URL mit dem von der Anwendung verwendeten Authentifizierungsport sein. Die Standardeinstellung ist **4244** für HTTPS und 4248 für HTTP. Beispiel: **https&#58;//demo.qlik.com:4244**</br></br> 
+**Schritt 5**: Die interne URL sollte jetzt die Qlik Sense-URL mit dem von der Anwendung verwendeten Authentifizierungsport sein. Der Standardwert beträgt **4244** für HTTPS und **4248** für HTTP für QlikSense-Releases vor April 2018. Der Standardwert für QlikSense-Releases nach April 2018 lautet **443** für HTTPS und **80** für HTTP.  Beispiel: **https&#58;//demo.qlik.com:4244**</br></br>
 **Schritt 10:** Richten Sie nicht SSO ein, und lassen Sie das **einmalige Anmelden deaktiviert**.
  
  

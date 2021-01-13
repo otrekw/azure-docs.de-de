@@ -10,50 +10,50 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 09/19/2019
-  ms.openlocfilehash: 7f40abe01042c5b55437f57f69a27a69421f5cf8
-  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+  ms.openlocfilehash: 77c73159d604a137af470f137d261b5a172d6875
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71168580"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91978389"
 landingContent:
 - title: Neueste Features
   linkLists:
   - linkListType: whats-new
     links:
-    - text: Dedizierte Hosts (Vorschauversion)
-      url: dedicated-hosts.md
-    - text: Näherungsplatzierungsgruppen (Vorschauversion)
+    - text: Spot-VMs
+      url: ../spot-vms.md
+    - text: Dedizierte Hosts
+      url: ../dedicated-hosts.md
+    - text: Näherungsplatzierungsgruppen
       url: proximity-placement-groups.md
-    - text: Kurzlebige Datenträger
-      url: ephemeral-os-disks.md
 - title: Erste Schritte
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Azure-Befehlszeilenschnittstelle
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli
+    - text: Azure CLI
+      url: ./quick-create-cli.md
     - text: Azure-Portal
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal
+      url: ./quick-create-portal.md
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-powershell
+      url: ./quick-create-powershell.md
 - title: Ausführliche Leitfäden
   linkLists:
   - linkListType: tutorial
     links:
     - text: Erstellen und Verwalten von virtuellen Linux-Computern
-      url: /azure/virtual-machines/linux/tutorial-manage-vm
+      url: ./tutorial-manage-vm.md
     - text: VM-Datenträger
-      url: /azure/virtual-machines/linux/tutorial-manage-disks
+      url: ./tutorial-manage-disks.md
     - text: Automatisieren der VM-Konfiguration
-      url: /azure/virtual-machines/linux/tutorial-automate-vm-deployment
+      url: ./tutorial-automate-vm-deployment.md
     - text: Erstellen von benutzerdefinierten VM-Images
-      url: /azure/virtual-machines/linux/tutorial-custom-images
+      url: ./tutorial-custom-images.md
     - text: Verwalten virtueller Computer mit virtuellen Netzwerken
-      url: /azure/virtual-machines/linux/tutorial-virtual-network
+      url: ./tutorial-virtual-network.md
 - title: Eigenverantwortliches Training
   linkLists:
   - linkListType: learn
     links:
     - text: " Erstellen eines virtuellen Linux-Computers in Azure"
-      url: https://docs.microsoft.com/learn/modules/create-linux-virtual-machine-in-azure/
+      url: /learn/modules/create-linux-virtual-machine-in-azure/

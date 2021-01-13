@@ -1,44 +1,33 @@
 ---
-title: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric | Microsoft-Dokumentation
-description: Verwenden Sie das Feature für regelmäßige Sicherungen und Wiederherstellungen von Service Fabric, um eine regelmäßige Datensicherung Ihrer Anwendungsdaten zu ermöglichen.
-services: service-fabric
-documentationcenter: .net
-author: hrushib
-manager: chackdan
-editor: hrushib
-ms.assetid: FAADBCAB-F0CF-4CBC-B663-4A6DCCB4DEE1
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Regelmäßiges Sichern/Wiederherstellen in eigenständigem Azure Service Fabric
+description: Verwenden Sie das Feature für regelmäßige Sicherungen und Wiederherstellungen eines eigenständigen Service Fabric, um eine regelmäßige Datensicherung Ihrer Anwendungsdaten zu ermöglichen.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 5/24/2019
-ms.author: hrushib
-ms.openlocfilehash: f992aed6eba775052483b1657d04dead18b2b2ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d20882ba5f7f31ef453c5d28f8bc37155cc99abd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059174"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91538584"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric
+# <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Regelmäßiges Sichern und Wiederherstellen in einer eigenständigen Service Fabric-Umgebung
 > [!div class="op_single_selector"]
 > * [Cluster in Azure](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [Eigenständige Cluster](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
 > 
 
-Service Fabric ist eine Plattform für verteilte Systeme, die das Entwickeln und Verwalten zuverlässiger, verteilter auf Microservices basierender Cloudanwendungen vereinfacht. Sie ermöglicht die Ausführung von zustandslosen und zustandsbehafteten Microservices. Zustandsbehaftete Dienste können einen änderbaren, autoritativen Zustand über die Anforderung und die Antwort oder eine vollständige Transaktion hinaus beibehalten. Wenn ein zustandsbehafteter Dienst für längere Zeit ausfällt oder Informationen aufgrund eines Notfalls verloren gehen, muss der Dienst möglicherweise mit einer aktuellen Sicherung des Zustands wiederhergestellt werden, damit er wieder verfügbar ist, nachdem er erneut gestartet wurde.
+Service Fabric ist eine Plattform für verteilte Systeme, die das Entwickeln und Verwalten zuverlässiger verteilter Cloudanwendungen vereinfacht, die auf Microservices basieren. Sie ermöglicht die Ausführung von zustandslosen und zustandsbehafteten Microservices. Zustandsbehaftete Dienste können einen änderbaren, autoritativen Zustand über die Anforderung und die Antwort oder eine vollständige Transaktion hinaus beibehalten. Wenn ein zustandsbehafteter Dienst für längere Zeit ausfällt oder Informationen aufgrund eines Notfalls verloren gehen, muss der Dienst möglicherweise mit einer aktuellen Sicherung des Zustands wiederhergestellt werden, damit er nach dem Starten wieder verfügbar ist.
 
 Service Fabric repliziert den Zustand über mehrere Knoten, um sicherzustellen, dass der Dienst hoch verfügbar ist. Auch wenn ein Knoten im Cluster ausfällt, bleibt der Dienst verfügbar. In bestimmten Fällen ist es jedoch noch immer wünschenswert, dass die Dienstdaten auch bei größeren Ausfällen zuverlässig bleiben.
  
-Ein Dienst könnte Daten beispielsweise zum Schutz vor folgenden Szenarien sichern:
+Ein Dienst muss seine Daten möglicherweise z. B. zum Schutz vor folgenden Szenarios sichern:
 - Dauerhafter Verlust eines gesamten Service Fabric-Clusters.
 - Dauerhafter Verlust eines Großteils der Replikate einer Dienstpartition
 - Administrative Fehler, durch die der Zustand versehentlich gelöscht oder beschädigt wird. Ein Administrator mit ausreichenden Berechtigungen löscht z.B. versehentlich den Dienst.
 - Fehler im Dienst, die zu einer Beschädigung von Daten führen. Dies kann beispielsweise bei einem Dienstcode-Upgrade geschehen, bei dem fehlerhafte Daten in eine Reliable Collection geschrieben werden. In diesem Fall müssen unter Umständen der Code und die Daten in einen früheren Zustand zurückversetzt werden.
 - Offline-Datenverarbeitung. Es kann zweckmäßig sein, Daten für Business Intelligence separat von dem Dienst, der die Daten generiert, offline zu verarbeiten.
 
-Service Fabric bietet eine integrierte API zum [Sichern und Wiederherstellen](service-fabric-reliable-services-backup-restore.md) des Diensts zu einem bestimmten Zeitpunkt. Anwendungsentwickler können diese APIs verwenden, um den Zustand des Diensts in regelmäßigen Abständen zu sichern. Wenn Dienstadministratoren eine Sicherung zu einem bestimmten Zeitpunkt von außerhalb des Diensts auslösen möchten, wie z.B. vor dem Upgrade der Anwendung, müssen Entwickler zudem das Sichern (und Wiederherstellen) als API über den Dienst verfügbar machen. Für das Verwalten von Sicherungen fallen zusätzliche Kosten an. Sie möchten beispielsweise jede halbe Stunde fünf inkrementelle Sicherungen und dann eine vollständige Sicherung erstellen. Nach der vollständigen Sicherung können Sie die vorherigen inkrementellen Sicherungen löschen. Dieser Ansatz erfordert zusätzlichen Code, der zu zusätzlichen Kosten während der Anwendungsentwicklung führt.
+Service Fabric bietet eine integrierte API für [Zeitpunktsicherung und -wiederherstellung](service-fabric-reliable-services-backup-restore.md). Anwendungsentwickler können diese APIs verwenden, um den Zustand des Diensts in regelmäßigen Abständen zu sichern. Wenn Dienstadministratoren eine Sicherung zu einem bestimmten Zeitpunkt von außerhalb des Diensts auslösen möchten (z. B. vor dem Upgrade der Anwendung), müssen Entwickler zudem das Sichern (und Wiederherstellen) über den Dienst mithilfe einer API ermöglichen. Für das Verwalten von Sicherungen fallen zusätzliche Kosten an. Sie möchten beispielsweise jede halbe Stunde fünf inkrementelle Sicherungen und dann eine vollständige Sicherung erstellen. Nach der vollständigen Sicherung können Sie die vorherigen inkrementellen Sicherungen löschen. Dieser Ansatz erfordert zusätzlichen Code, der zu zusätzlichen Kosten während der Anwendungsentwicklung führt.
 
 Die Sicherung der Anwendungsdaten in regelmäßigen Abständen ist eine grundlegende Notwendigkeit beim Verwalten einer verteilten Anwendung und zum Schutz vor Datenverlusten oder einer längeren Beeinträchtigung der Verfügbarkeit des Diensts. Service Fabric bietet einen optionalen Dienst für Sicherungen und Wiederherstellungen, mit dem Sie die regelmäßige Sicherung der statusbehafteten zuverlässigen Dienste (einschließlich der Actordienste) konfigurieren können, ohne zusätzlichen Code schreiben zu müssen. Damit wird auch das Wiederherstellen der zuvor erstellten Sicherungen vereinfacht. 
 
@@ -48,7 +37,7 @@ Service Fabric stellt einen Satz von APIs für die folgende Funktionalität im Z
     - Azure Storage
     - Dateifreigabe (lokal)
 - Auflisten von Sicherungen
-- Auslösen einer Ad-hoc-Sicherung einer Partition
+- Auslösen einer ungeplanten Sicherung einer Partition
 - Wiederherstellen einer Partition mithilfe der vorherigen Sicherung
 - Zeitweiliges Aussetzen von Sicherungen
 - Verwalten der Aufbewahrung von Sicherungen (demnächst)
@@ -57,14 +46,14 @@ Service Fabric stellt einen Satz von APIs für die folgende Funktionalität im Z
 * Service Fabric-Cluster mit Fabric-Version 6.4 oder höher. Informieren Sie sich in diesem [Artikel](service-fabric-cluster-creation-for-windows-server.md) über die Schritte zum Herunterladen des erforderlichen Pakets.
 * X.509-Zertifikat für die Verschlüsselung der Geheimnisse, die für die Verbindung mit dem Speicher zum Speichern von Sicherungen benötigt werden. Informieren Sie sich in diesem [Artikel](service-fabric-windows-cluster-x509-security.md) darüber, wie Sie ein selbstsigniertes X.509-Zertifikat abrufen oder erstellen.
 
-* Service Fabric-Anwendung für statusbehaftete zuverlässige Dienste, die mit dem Service Fabric SDK, Version 3.0 oder höher, erstellt wurde. Für Anwendungen für .NET Core 2.0 muss die Anwendung mit dem Service Fabric SDK, Version 3.1 oder höher, erstellt werden.
-* Installieren Sie das Microsoft.ServiceFabric.Powershell.Http-Modul [Vorschau], um Konfigurationsaufrufe vorzunehmen.
+* Service Fabric-Anwendung für statusbehaftete zuverlässige Dienste, die mit dem Service Fabric SDK, Version 3.0 oder höher, erstellt wurde. Anwendungen für .NET Core 2.0 sollten mit Version 3.1 oder höher des Service Fabric-SDK erstellt worden sein.
+* Installieren Sie das Modul „Microsoft.ServiceFabric.PowerShell.Http“ [Vorschau], um Konfigurationsaufrufe vorzunehmen.
 
 ```powershell
-    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+    Install-Module -Name Microsoft.ServiceFabric.PowerShell.Http -AllowPrerelease
 ```
 
-* Stellen Sie mit dem Befehl `Connect-SFCluster` sicher, dass der Cluster verbunden ist, bevor Sie Konfigurationsanforderungen mit dem Microsoft.ServiceFabric.Powershell.Http-Modul vornehmen.
+* Stellen Sie mit dem Befehl `Connect-SFCluster` sicher, dass eine Verbindung mit dem Cluster besteht, bevor Sie Konfigurationsanforderungen mit dem Modul „Microsoft.ServiceFabric.PowerShell.Http“ vornehmen.
 
 ```powershell
 
@@ -115,11 +104,13 @@ Zuerst müssen Sie den _Dienst für Sicherungen und Wiederherstellungen_ in Ihre
     }
     ```
 
-4. Nachdem Sie die Clusterkonfigurationsdatei mit den vorhergehenden Änderungen aktualisiert haben, wenden Sie die Änderungen an und schließen die Bereitstellung/das Upgrade ab. Anschließend wird der _Dienst für Sicherungen und Wiederherstellungen_ im Cluster gestartet. Der URI für diesen Dienst lautet `fabric:/System/BackupRestoreService`, und Sie finden den Dienst im Abschnitt mit Systemdiensten im Service Fabric Explorer. 
+4. Wenn Sie die Clusterkonfigurationsdatei mit den vorstehenden Änderungen aktualisiert haben, wenden Sie die Änderungen an, und schließen die Bereitstellung/das Upgrade ab. Anschließend wird der _Dienst für Sicherungen und Wiederherstellungen_ im Cluster gestartet. Der URI für diesen Dienst lautet `fabric:/System/BackupRestoreService`, und Sie finden den Dienst im Abschnitt mit Systemdiensten im Service Fabric Explorer. 
+
+
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Aktivieren der regelmäßigen Sicherung für den zuverlässigen zustandsbehafteten Dienst und Reliable Actors
 Jetzt erläutern wir schrittweise das Aktivieren der regelmäßigen Sicherung für den zuverlässigen zustandsbehafteten Dienst und Reliable Actors. Diese Schritte setzen Folgendes voraus:
-- Der Cluster wurde mit dem _Dienst für Sicherungen und Wiederherstellungen_ eingerichtet.
+- Der Cluster wurde mit dem Sicherungs- und Wiederherstellungsdienst konfiguriert.
 - Ein zuverlässiger zustandsbehafteter Dienst wurde im Cluster bereitgestellt. Für diese Schnellstartanleitung lautet der Anwendungs-URI `fabric:/SampleApp`, und der URI für den zuverlässigen zustandsbehafteten Dienst, der zu dieser Anwendung gehört, lautet `fabric:/SampleApp/MyStatefulService`. Dieser Dienst wird mit einer einzelnen Partition bereitgestellt, und die Partitions-ID ist `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7`.  
 
 ### <a name="create-backup-policy"></a>Erstellen der Sicherungsrichtlinie
@@ -129,14 +120,14 @@ Der erste Schritt ist das Erstellen der Sicherungsrichtlinie, die den Sicherungs
 Erstellen Sie die Dateifreigabe für den Sicherungsspeicher, und gewähren Sie allen Computern von Service Fabric-Knoten Lese-/Schreibzugriff auf diese Dateifreigabe. In diesem Beispiel wird vorausgesetzt, dass die Freigabe mit dem Namen `BackupStore` auf `StorageServer` vorhanden ist.
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell mit dem Microsoft.ServiceFabric.Powershell.Http-Modul
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell mit dem Modul „Microsoft.ServiceFabric.PowerShell.Http“
 
 ```powershell
 
 New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrementalBackups 20 -FrequencyBased -Interval 00:15:00 -FileShare -Path '\\StorageServer\BackupStore' -Basic -RetentionDuration '10.00:00:00'
 
 ```
-#### <a name="rest-call-using-powershell"></a>REST-Aufruf mithilfe von Powershell
+#### <a name="rest-call-using-powershell"></a>Rest-Aufruf mithilfe von PowerShell
 
 Führen Sie das folgende PowerShell-Skript zum Aufrufen der erforderlichen REST-API aus, um die neue Richtlinie zu erstellen.
 
@@ -170,17 +161,27 @@ $url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ```
 
+#### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+
+1. Navigieren Sie in Service Fabric Explorer zur Registerkarte „Sicherungen“, und wählen Sie „Aktionen“ > „Sicherungsrichtlinie erstellen“ aus.
+
+    ![Sicherungsrichtlinie erstellen][6]
+
+2. Geben Sie alle Informationen ein. Bei eigenständigen Clustern sollte „FileShare“ ausgewählt werden.
+
+    ![Erstellen einer Dateifreigabe für eine Sicherungsrichtlinie][7]
+
 ### <a name="enable-periodic-backup"></a>Aktivieren der regelmäßigen Sicherung
 Nach dem Definieren der Richtlinie zum Erfüllen der Datenschutzanforderungen der Anwendung muss die Sicherungsrichtlinie mit der Anwendung verknüpft werden. Je nach Anforderungen kann die Sicherungsrichtlinie einer Anwendung, einem Dienst oder einer Partition zugeordnet werden.
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell mit dem Microsoft.ServiceFabric.Powershell.Http-Modul
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell mit dem Modul „Microsoft.ServiceFabric.PowerShell.Http“
 
 ```powershell
 Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupPolicy1'
 ```
 
-#### <a name="rest-call-using-powershell"></a>REST-Aufruf mithilfe von Powershell
+#### <a name="rest-call-using-powershell"></a>Rest-Aufruf mithilfe von PowerShell
 Führen Sie das folgende PowerShell-Skript zum Aufrufen der erforderlichen REST-API aus, um die Sicherungsrichtlinie mit dem Namen `BackupPolicy1`, die im obigen Schritt erstellt wurde, der Anwendung `SampleApp` zuzuordnen.
 
 ```powershell
@@ -194,6 +195,16 @@ $url = "http://localhost:19080/Applications/SampleApp/$/EnableBackup?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ``` 
 
+#### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+
+1. Wählen Sie eine Anwendung aus, und navigieren Sie zur Aktion. Klicken Sie auf „Anwendungssicherung aktivieren/aktualisieren“.
+
+    ![Aktivieren der Anwendungssicherung][3] 
+
+2. Wählen Sie schließlich die gewünschte Richtlinie aus, und klicken Sie auf *Sicherung aktivieren*.
+
+    ![Auswählen der Richtlinie][4]
+
 ### <a name="verify-that-periodic-backups-are-working"></a>Sicherstellen, dass die regelmäßigen Sicherungen funktionieren
 
 Nach Aktivieren der Sicherung für die Anwendung werden alle Partitionen, die zu zuverlässigen statusbehafteten Diensten und Reliable Actors unter der Anwendung gehören, in regelmäßigen Abständen gemäß der zugeordneten Sicherungsrichtlinie gesichert.
@@ -204,13 +215,13 @@ Nach Aktivieren der Sicherung für die Anwendung werden alle Partitionen, die zu
 
 Sicherungen, die mit allen Partitionen verknüpft sind, die zu zuverlässigen statusbehafteten Diensten und Reliable Actors der Anwendung gehören, können mithilfe der _GetBackups_-API aufgelistet werden. Je nach Anforderung können die Sicherungen für eine Anwendung, einen Dienst oder eine Partition aufgelistet werden.
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell mit dem Microsoft.ServiceFabric.Powershell.Http-Modul
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell mit dem Modul „Microsoft.ServiceFabric.PowerShell.Http“
 
 ```powershell
     Get-SFApplicationBackupList -ApplicationId WordCount     
 ```
 
-#### <a name="rest-call-using-powershell"></a>REST-Aufruf mithilfe von Powershell
+#### <a name="rest-call-using-powershell"></a>Rest-Aufruf mithilfe von PowerShell
 
 Führen Sie das folgende PowerShell-Skript zum Aufrufen der HTTP-API aus, um die für alle Partitionen in der Anwendung `SampleApp` erstellten Sicherungen aufzulisten.
 
@@ -263,13 +274,23 @@ CreationTimeUtc         : 2018-04-01T20:09:44Z
 FailureError            : 
 ```
 
+#### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+
+Um Sicherungen in Service Fabric Explorer anzuzeigen, navigieren Sie zu einer Partition, und wählen Sie die Registerkarte „Sicherungen“ aus.
+
+![Aufzählen von Sicherungen][5]
+
 ## <a name="limitation-caveats"></a>Einschränkungen/ Vorbehalte
 - Service Fabric PowerShell-Cmdlets befinden sich im Vorschaumodus.
 - Keine Unterstützung für Service Fabric-Cluster unter Linux.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Grundlegendes zur Konfiguration der regelmäßigen Sicherung](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [REST-API-Referenz zu Sicherung/Wiederherstellung](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [REST-API-Referenz zu Sicherung/Wiederherstellung](/rest/api/servicefabric/sfclient-index-backuprestore)
 
-[0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent.png
-
+[0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event.png
+[3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
+[4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
+[5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png
+[6]: ./media/service-fabric-backuprestoreservice/create-bp.png
+[7]: ./media/service-fabric-backuprestoreservice/create-bp-fileshare.png

@@ -1,95 +1,115 @@
 ### YamlMime:Landing
 title: Dokumentation zur Anwendungsverwaltung
-summary: Azure Active Directory bietet einen sicheren und nahtlosen Zugriff auf cloudbasierte und lokale Anwendungen. Darüber hinaus müssen die Kennwörter nicht verwaltet werden. Ihre Endbenutzer können sich einmal anmelden, um Zugriff auf Office 365 und Tausende andere Anwendungen zu erhalten. In unseren Schnellstarts, Tutorials und Anleitungen erfahren Sie, wie Sie Anwendungen verwalten und bereitstellen.
+summary: Azure Active Directory ist ein Identitäts- und Zugriffsverwaltungssystem (Identity and Access Management, IAM). Es stellt einen zentralen Ort zum Speichern von Informationen zu digitalen Identitäten bereit. Sie können Ihre Softwareanwendungen so konfigurieren, dass sie Azure AD als Speicherort für die Benutzerinformationen verwenden.
 metadata:
   title: Dokumentation zur Anwendungsverwaltung
-  description: Azure Active Directory bietet einen sicheren und nahtlosen Zugriff auf cloudbasierte und lokale Anwendungen. Darüber hinaus müssen die Kennwörter nicht verwaltet werden. Ihre Endbenutzer können sich einmal anmelden, um Zugriff auf Office 365 und Tausende andere Anwendungen zu erhalten. In unseren Schnellstarts, Tutorials und Anleitungen erfahren Sie, wie Sie Anwendungen verwalten und bereitstellen.
+  description: Azure AD ist ein Identitäts- und Zugriffsverwaltungsystem (Identity and Access Management, IAM). Es stellt einen zentralen Ort zum Speichern von Informationen zu digitalen Identitäten bereit. Sie können Ihre Softwareanwendungen so konfigurieren, dass sie Azure AD als Speicherort für die Benutzerinformationen verwenden.
   ms.service: active-directory
-  ms.subservice: manage-apps
+  ms.subservice: app-mgmt
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 08/16/2019
-  author: msmimart
-  ms.author: mimart
+  ms.date: 09/28/2020
+  author: kenwith
+  ms.author: kenwith
   manager: celested
-  ms.openlocfilehash: acb99eab233836f46c1e1dfe4c857fb2e80ed3de
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.openlocfilehash: 66d2691d1e8c10c21b419cc5c6672179f89171a9
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70127544"
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92372445"
 landingContent:
-- title: Informationen zur Anwendungsverwaltung
+- title: Informationen zu App-Verwaltung
   linkLists:
   - linkListType: overview
     links:
     - text: Worum handelt es sich bei der Anwendungsverwaltung?
       url: what-is-application-management.md
-- title: Verwalten von Cloud-Apps und einmaligem Anmelden
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Grundlegendes zu einmaligem Anmelden
+    - text: Worum handelt es sich beim einmaligen Anmelden?
       url: what-is-single-sign-on.md
-    - text: Endbenutzererfahrungen
-      url: end-user-experiences.md
+- title: Erste Schritte
+  linkLists:
   - linkListType: quickstart
     links:
-    - text: Hinzufügen einer Katalog-App
+    - text: Anzeigen Ihrer Apps
+      url: view-applications-portal.md
+    - text: Hinzufügen einer App
       url: add-application-portal.md
-  - linkListType: how-to-guide
-    links:
-    - text: Hinzufügen einer nicht im Katalog enthaltenen App
-      url: add-non-gallery-app.md
-    - text: Einmaliges Anmelden konfigurieren
-      url: configure-single-sign-on-non-gallery-applications.md
-    - text: Zuweisen eines Benutzers oder einer Gruppe zu einer App
-      url: assign-user-or-group-access-portal.md
-- title: Bereitstellen von Benutzern und Gruppen für eine App
+- title: Hinzufügen und Konfigurieren von Apps
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: Worum handelt es sich bei automatischer Benutzerbereitstellung?
-      url: user-provisioning.md
-  - linkListType: concept
-    links:
-    - text: Bereitstellen von Benutzern und Gruppen mithilfe von SCIM
-      url: use-scim-to-provision-users-and-groups.md
-  - linkListType: how-to-guide
-    links:
-    - text: Konfigurieren der automatischen Benutzerbereitstellung
-      url: configure-automatic-user-provisioning-portal.md
-    - text: Anpassen von Attributzuordnungen
-      url: customize-application-attributes.md
-    - text: Überprüfen des Bereitstellungsstatus
-      url: application-provisioning-when-will-provisioning-finish-specific-user.md
-  - linkListType: reference
-    links:
-    - text: Schreiben von Ausdrücken für Attributzuordnungen
-      url: functions-for-customizing-application-data.md
-- title: Veröffentlichen lokaler Apps mit dem Anwendungsproxy
+    - text: Hinzufügen einer App
+      url: add-application-portal.md
+    - text: Konfigurieren einer App
+      url: add-application-portal-configure.md
+- title: Verwalten von Apps
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: Was ist der Anwendungsproxy?
+    - text: Bewährte Methoden
+      url: application-management-fundamentals.md
+    - text: Häufige Szenarien
+      url: common-scenarios.md
+- title: Grundlegendes zum einmaligen Anmelden
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Konzepte für einmaliges Anmelden
+      url: what-is-single-sign-on.md
+    - text: Optionen für einmaliges Anmelden
+      url: sso-options.md
+- title: Einwilligung für die App
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Konfigurieren der Benutzereinwilligung
+      url: configure-user-consent.md
+    - text: Konfigurieren der Administratoreinwilligung
+      url: configure-admin-consent-workflow.md
+- title: Migrieren von Apps
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Migrationsressourcen
+      url: migration-resources.md
+    - text: Migrieren einer AD FS-App zu Azure
+      url: migrate-adfs-apps-to-azure.md
+- title: Verwenden lokaler Apps
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Was ist ein Anwendungsproxy?
       url: what-is-application-proxy.md
-  - linkListType: concept
-    links:
-    - text: Planen für den Anwendungsproxy
+    - text: Anwendungsproxybereitstellung
       url: application-proxy-deployment-plan.md
-  - linkListType: tutorial
+- title: Sichern von Apps
+  linkLists:
+  - linkListType: learn
     links:
-    - text: Hinzufügen einer lokalen App
-      url: application-proxy-add-on-premises-application.md
-  - linkListType: how-to-guide
+    - text: Verwalten des Zugriffs auf Apps
+      url: what-is-access-management.md
+    - text: Verwalten von Mandanteneinschränkungen
+      url: tenant-restrictions.md
+- title: Konfigurieren von „Meine Apps“
+  linkLists:
+  - linkListType: learn
     links:
-    - text: Konfigurieren von Connectors mit Proxyservern
-      url: application-proxy-configure-connectors-with-proxy-servers.md
-    - text: Konfigurieren einer benutzerdefinierten Startseite
-      url: application-proxy-configure-custom-home-page.md
-  - linkListType: deploy
+    - text: Planen einer Bereitstellung von „Meine Apps“
+      url: access-panel-deployment-plan.md
+    - text: Erstellen von Sammlungen
+      url: access-panel-collections.md
+- title: Entwickeln neuer Apps
+  linkLists:
+  - linkListType: learn
     links:
-    - text: Veröffentlichen des Remotedesktops mit dem Anwendungsproxy
-      url: application-proxy-integrate-with-remote-desktop-services.md
-    - text: Aktivieren des Remotezugriffs auf SharePoint per Azure AD-Anwendungsproxy
-      url: application-proxy-integrate-with-sharepoint-server.md
+    - text: Leitfaden für Entwickler
+      url: developer-guidance-for-integrating-applications.md
+    - text: Grundlegendes zur Plattform
+      url: ../develop/v2-overview.md
+- title: Neu in der Dokumentation
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Neues in der Dokumentation
+      url: whats-new-docs.md

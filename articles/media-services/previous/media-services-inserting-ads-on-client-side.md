@@ -1,6 +1,6 @@
 ---
 title: Einfügen von Anzeigen auf Clientseite | Microsoft Docs
-description: In diesem Thema wird gezeigt, wie Anzeigen auf Clientseite eingefügt werden.
+description: In diesem Artikel wird veranschaulicht, wie Sie Anzeigen in Ihre Medien auf der Clientseite einfügen.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 49c836f5e9189104ba77e8f3d865f4db199c4060
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 70db1ff63e3c2a7e7806e5ef3c55b4e4af4a5259
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002974"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89263568"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Einfügen von Anzeigen auf Clientseite
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Dieser Artikel enthält Informationen zum Einfügen verschiedener Typen von Anzeigen auf Clientseite.
 
 Informationen zu Untertiteln und der Unterstützung von Werbeeinblendungen in Livestreaming-Videos finden Sie unter [Standards für unterstützte Untertitel und für Werbeeinblendungen](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).
@@ -31,7 +35,7 @@ Informationen zu Untertiteln und der Unterstützung von Werbeeinblendungen in Li
 > 
 > 
 
-## <a id="insert_ads_into_media"></a>Einfügen von Werbeeinblendungen in Ihre Medien
+## <a name="inserting-ads-into-your-media"></a><a id="insert_ads_into_media"></a>Einfügen von Werbeeinblendungen in Ihre Medien
 Azure Media Services bietet Unterstützung für das Einfügen von Werbeeinblendungen mithilfe der Windows Media-Plattform: Player-Frameworks. Player-Frameworks mit Unterstützung für Werbeeinblendungen sind für Windows 8, Silverlight, Windows Phone 8 und iOS-Geräte verfügbar. Jedes Player-Framework enthält Beispielcode, der zeigt, wie eine Playeranwendung implementiert werden kann. Es gibt drei verschiedene Arten von Anzeigen, die Sie in Ihre Medien einfügen können:
 
 * **Linear** : Werbeeinblendungen auf dem kompletten Frame, die das Hauptvideo unterbrechen
@@ -160,7 +164,7 @@ Nicht lineare Werbeeinblendungen werden ebenfalls in einem `<Creative>`-Element 
     </Creative>
 ```
 
-Das <**NonLinearAds**>-Element kann ein oder mehrere <**NonLinear**>-Elemente enthalten, von denen jedes eine nicht lineare Werbeeinblendung beschreiben kann. Das <**NonLinear**>-Element gibt die Ressource für die nicht lineare Werbeeinblendung an. Die Ressource kann vom Typ <**StaticResource**>, <**IFrameResource**> oder <**HTMLResource**> sein. \< **StaticResource** > beschreibt eine Nicht-HTML-Ressource und definiert ein creativeType-Attribut, das angibt, wie die Ressource angezeigt wird:
+Das <**NonLinearAds**>-Element kann ein oder mehrere <**NonLinear**>-Elemente enthalten, von denen jedes eine nicht lineare Werbeeinblendung beschreiben kann. Das <**NonLinear**>-Element gibt die Ressource für die nicht lineare Werbeeinblendung an. Die Ressource kann vom Typ <**StaticResource**>, <**IFrameResource**> oder <**HTMLResource**> sein. \<**StaticResource**> beschreibt eine Nicht-HTML-Ressource und definiert ein creativeType-Attribut, das angibt, wie die Ressource angezeigt wird:
 
 Image/gif, image/jpeg, image/png: Die Ressource wird in einem HTML-<**img**>-Tag angezeigt.
 
@@ -356,8 +360,8 @@ Im Code wird eine ausführbare Werbeeinheit erstellt, die in einer Laufzeitumgeb
 
 ```xml
     <MediaFiles>
-       <MediaFile id="1" delivery="progressive" type=”application/x-shockwaveflash”
-                  width=”640” height=”480” apiFramework=”VPAID”>
+       <MediaFile id="1" delivery="progressive" type="application/x-shockwaveflash"
+                  width="640" height="480" apiFramework="VPAID">
            <!-- CDATA wrapped URI to executable ad -->
        </MediaFile>
     </MediaFiles>
@@ -405,7 +409,7 @@ In diesem Beispiel wird "AdSchedulerPlugin" verwendet, um zu definieren, wann ei
     </mmppf:MediaPlayer>
 ```
 
-Weitere Informationen zu "AdSchedulerPlugin" finden Sie unter [Advertising in the Player Framework on Windows 8 and Windows Phone 8](https://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
+Weitere Informationen zu "AdSchedulerPlugin" finden Sie unter [Ankündigen im Player Framework für Windows 8 und Windows Phone 8](https://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
 
 ### <a name="adschedulingpage"></a>AdSchedulingPage
 In diesem Beispiel wird ebenfalls "AdSchedulerPlugin" verwendet. Geplant werden drei Werbeeinblendungen: eine Pre-Roll-, eine Mid-Roll- und eine Post-Roll-Werbeeinblendung. Der URI für die VAST-Datei für die einzelnen Werbeeinblendungen wird in einem `<RemoteAdSource>`-Element angegeben.
@@ -586,7 +590,7 @@ In diesem Beispiel wird „VmapSchedulerPlugin“ verwendet, um Werbeeinblendung
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>Implementieren eines iOS-Videoplayers mit Unterstützung für Werbeeinblendungen
-Microsoft Media-Plattform: Player Framework für iOS enthält eine Sammlung von Beispielanwendungen, die zeigen, wie Sie eine Videoplayeranwendung mithilfe des Frameworks implementieren. Sie können das Player Framework und die Beispiele unter [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)herunterladen. Die GitHub-Seite enthält einen Link zu einem Wiki, das zusätzliche Informationen zum Player Framework und eine Einführung in das Playerbeispiel enthält: [Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
+Microsoft Media-Plattform: Player Framework für iOS enthält eine Sammlung von Beispielanwendungen, die zeigen, wie Sie eine Videoplayeranwendung mithilfe des Frameworks implementieren. Sie können das Player Framework und die Beispiele unter [Azure Media Player Framework](https://github.com/CloudMetal/azure-media-player-framework)herunterladen. Die GitHub-Seite enthält einen Link zu einem Wiki, das zusätzliche Informationen zum Player Framework und eine Einführung in das Playerbeispiel enthält: [Azure Media Player Wiki](https://github.com/CloudMetal/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
 
 ### <a name="scheduling-ads-with-vmap"></a>Planen von Werbeeinblendungen mit VMAP
 Das folgende Beispiel zeigt, wie Sie Werbeeinblendungen mithilfe einer VMAP-Datei planen.
@@ -848,7 +852,3 @@ Das folgende Beispiel zeigt, wie eine Mid-Roll-Overlay-Werbeeinblendung geplant 
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
-## <a name="see-also"></a>Siehe auch
-[Entwickeln von Videoplayeranwendungen](media-services-develop-video-players.md)
-

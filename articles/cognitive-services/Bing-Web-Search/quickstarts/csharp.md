@@ -8,35 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 10/19/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 20cb5f65ed33bc3e737bbba902ed2d891eaf83be
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.custom: seodec2018, devx-track-csharp
+ms.openlocfilehash: 201fcf80e26aaaed78e1f6a78eb0dab5a345ba50
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823373"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350601"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Schnellstart: Suchen im Internet unter Verwendung von Bing-Websuche-REST-API und C#
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Websuche-API erstmals aufrufen und die JSON-Antwort empfangen. Diese C#-Anwendung sendet eine Suchanforderung an die API und zeigt die Antwort an. Diese Anwendung ist zwar in C# geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Websuche-API zum ersten Mal aufzurufen. Diese C#-Anwendung sendet eine Suchanforderung an die API und zeigt die JSON-Antwort an. Die Anwendung ist zwar in C# geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
+
+In diesem Beispielprogramm in dieser Schnellstartanleitung werden nur .NET Core-Klassen verwendet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Im Folgenden sind die Tools aufgeführt, die Sie zum Ausführen dieser Schnellstartanleitung benötigen:
 
-* Windows: [Visual Studio 2017 oder höher](https://www.visualstudio.com/downloads/)
-* Linux/macOS: [Mono](https://www.mono-project.com/)  
-* Abonnementschlüssel
-
-In diesem Beispielprogramm werden nur .NET Core-Klassen verwendet.
+* Windows: [Visual Studio 2017 oder höher](https://www.visualstudio.com/downloads/)
+* Linux/macOS: [Visual Studio Code](https://code.visualstudio.com/) und [.NET Core](https://dotnet.microsoft.com/download)
+* [Ein kostenloses Azure-Abonnement](https://azure.microsoft.com/free/dotnet)
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-dependencies"></a>Erstellen eines Projekts und Deklarieren von Abhängigkeiten
 
-Erstellen Sie in Visual Studio oder Mono ein neues Projekt. Verwenden Sie anschließend diesen Code, um die erforderlichen Namespaces und Typen zu importieren.
+Erstellen Sie in Visual Studio oder VS Code ein Konsolenprojekt. Verwenden Sie den folgenden Code, um die erforderlichen Namespaces und Typen zu importieren:
 
 ```csharp
 using System;
@@ -62,7 +67,13 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>Definieren von Variablen
 
-Bevor wir fortfahren können, müssen einige Variablen festgelegt werden. Vergewissern Sie sich, dass `uriBase` gültig ist, und ersetzen Sie den Wert `accessKey` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto. Sie können die Suchabfrage auch anpassen, indem Sie den Wert für `searchTerm` ersetzen. Vergessen Sie nicht, diesen Code wie oben bereits erwähnt der Klasse `Program` hinzuzufügen.
+Bevor wir fortfahren können, müssen einige Variablen festgelegt werden. Fügen Sie diesen Code zu der im vorigen Abschnitt erstellten `Program`-Klasse hinzu: 
+
+1. Für den `uriBase`-Wert können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird. 
+
+2. Vergewissern Sie sich, dass `uriBase` gültig ist, und ersetzen Sie den Wert `accessKey` durch einen Abonnementschlüssel aus Ihrem Azure-Konto. 
+
+3. Optional können Sie die Suchabfrage auch anpassen, indem Sie den Wert für `searchTerm` ersetzen. 
 
 ```csharp
 // Enter a valid subscription key.
@@ -78,9 +89,9 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>Deklarieren der Main-Methode
 
-Die Methode `Main()` ist erforderlich und die erste Methode, die beim Programmstart aufgerufen wird. In dieser Anwendung wird mit der Main-Methode das `accessKey`-Element überprüft, eine Anforderung gesendet und die Antwort ausgegeben.
+Die Methode `Main()` ist erforderlich. Es ist die erste Methode, die beim Starten des Programms aufgerufen wird. In dieser Anwendung wird mit der Main-Methode das `accessKey`-Element überprüft, eine Anforderung gesendet und die Antwort ausgegeben.
 
-Beachten Sie, dass `main()` von Methoden abhängig ist, die in den nächsten Abschnitten erstellt werden.
+Die `main()`-Methode ist abhängig von Methoden, die Sie in den nächsten Abschnitten erstellen.
 
 ```csharp
 static void Main()
@@ -109,7 +120,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>Erstellen einer Struktur für Suchergebnisse
 
-Diese Struktur gibt Suchergebnisse mit relevanten Headern zurück. Sie wird aufgerufen, wenn eine Anforderung an die Bing-Websuche-API gesendet wird, um ein Ergebnisobjekt zu erstellen.
+Erstellen Sie eine Struktur, die Suchergebnisse mit relevanten Headern zurückgibt. Sie wird aufgerufen, wenn Sie eine Anforderung an die Bing-Websuche-API senden, um ein Ergebnisobjekt zu erstellen.
 
 ```csharp
 // Returns search results with headers.
@@ -158,7 +169,7 @@ static SearchResult BingWebSearch(string searchQuery)
 
 ## <a name="format-the-response"></a>Formatieren der Antwort
 
-Mit dieser Methode wird die JSON-Antwort formatiert. Dies umfasst hauptsächlich das Hinzufügen von Einzügen und Zeilenumbrüchen.
+Mit dieser Methode wird die JSON-Antwort formatiert, und zwar hauptsächlich, indem Einzüge und Zeilenumbrüche hinzugefügt werden.
 
 ```csharp
 /// <summary>
@@ -235,9 +246,9 @@ static string JsonPrettyPrint(string json)
 
 ## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
 
-Der letzte Schritt ist das Ausführen Ihres Codes! [Auf GitHub finden Sie Beispielcode](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs), falls Sie Ihren Code mit unserem Code vergleichen möchten.
+Der letzte Schritt ist das Ausführen Ihres Codes. [Auf GitHub finden Sie Beispielcode](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs), falls Sie Ihren Code mit unserem Code vergleichen möchten.
 
-## <a name="sample-response"></a>Beispiel für eine Antwort
+## <a name="example-json-response"></a>JSON-Beispielantwort
 
 Antworten der Bing-Websuche-API werden im JSON-Format zurückgegeben. Diese Beispielantwort wurde gekürzt, damit nur ein Ergebnis angezeigt wird.  
 
@@ -259,9 +270,9 @@ Antworten der Bing-Websuche-API werden im JSON-Format zurückgegeben. Diese Beis
         "snippet": "Knock down barriers between you and your ideas. Enable natural and contextual interaction with tools that augment users' experiences via the power of machine-based AI. Plug them in and bring your ideas to life.",
         "deepLinks": [
           {
-            "name": "Face API",
+            "name": "Face",
             "url": "https://azure.microsoft.com/services/cognitive-services/face/",
-            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face API from Microsoft Azure. ... Cognitive Services; Face API;"
+            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using the Face service from Microsoft Azure. ... Cognitive Services; Face service;"
           },
           {
             "name": "Text Analytics",
@@ -366,6 +377,6 @@ Antworten der Bing-Websuche-API werden im JSON-Format zurückgegeben. Diese Beis
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Einseitige Web-App für die Bing-Websuche](../tutorial-bing-web-search-single-page-app.md)
+> [Tutorial: Einzelseiten-App für die Bing-Websuche-API](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

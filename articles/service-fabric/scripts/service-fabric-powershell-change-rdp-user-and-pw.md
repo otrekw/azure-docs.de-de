@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-Beispielskript – Aktualisieren des RDP-Benutzernamens und des zugehörigen Kennworts | Microsoft-Dokumentation
+title: Aktualisieren des RDP-Benutzernamens und -Kennworts in PowerShell
 description: Azure PowerShell-Beispielskript – Aktualisieren des RDP-Benutzernamens und des zugehörigen Kennworts für alle Service Fabric-Clusterknoten eines bestimmten Knotentyps
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 2618d9100c81cdb35b4a3a82436e94068a9f9bf0
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: bcf619e2251f5c1b641190549da45f721835ce0e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035515"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87076149"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Aktualisieren des Administratorbenutzernamens und des zugehörigen Kennworts für die VMs in einem Cluster
 
@@ -27,7 +27,7 @@ Jeder [Knotentyp](../service-fabric-cluster-nodetypes.md) in einem Service Fabri
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview). 
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/). 
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -43,8 +43,12 @@ Das Skript verwendet die folgenden Befehle: Jeder Befehl in der Tabelle ist mit 
 | [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)| Fügt der VM-Skalierungsgruppe eine Erweiterung hinzu|
 | [Update-AzVmss](/powershell/module/az.compute/update-azvmss)|Aktualisiert den Zustand einer VM-Skalierungsgruppe in den Zustand eines lokalen VMSS-Objekts|
 
+## <a name="duration"></a>Duration
+
+Bei einem einzelnen Knotentyp mit fünf Knoten dauert die Änderung des Benutzernamens und Kennworts beispielsweise 45 bis 60 Minuten. 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Azure PowerShell-Beispiele für Azure Service Fabric finden Sie unter [Azure PowerShell-Beispiele](../service-fabric-powershell-samples.md).

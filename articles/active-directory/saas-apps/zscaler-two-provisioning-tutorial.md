@@ -2,32 +2,28 @@
 title: 'Tutorial: Konfigurieren von Zscaler Two für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
 description: In diesem Tutorial wird beschrieben, wie Sie Azure Active Directory zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Zscaler Two konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 0a250fcd-6ca1-47c2-a780-7a6278186a69
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: e254cae22e3991aebc23188b8947f0e7efd9c5f5
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 1c63639321966cbb73f5c47524f408d17ba46c3a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515414"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936557"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler Two für die automatische Benutzerbereitstellung
 
 In diesem Tutorial wird beschrieben, wie Sie Azure Active Directory (Azure AD) zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern bzw. Gruppen in Zscaler Two konfigurieren.
 
 > [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie Antworten auf häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../active-directory-saas-app-provisioning.md).
+> Das Tutorial enthält eine Beschreibung des Connectors, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie Antworten auf häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -64,7 +60,7 @@ Geben Sie im Suchfeld **Zscaler Two** ein. Wählen Sie in den Ergebnissen **Zsca
 
 Für Azure AD-Benutzer muss der Zugriff auf ausgewählte Apps zugewiesen werden, bevor diese die Apps nutzen können. Im Kontext der automatischen Benutzerbereitstellung werden nur Benutzer oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen sind.
 
-Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf Zscaler Two benötigen. Nachdem Sie die Entscheidung getroffen haben, können Sie diese Benutzer und Gruppen Zscaler Two zuweisen, indem Sie die Anleitung unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) befolgen.
+Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf Zscaler Two benötigen. Nachdem Sie die Entscheidung getroffen haben, können Sie diese Benutzer und Gruppen Zscaler Two zuweisen, indem Sie die Anleitung unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md) befolgen.
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-two"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Zscaler Two
 
@@ -78,6 +74,9 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 > [!TIP]
 > Es kann auch ratsam sein, SAML-basiertes einmaliges Anmelden für Zscaler Two zu aktivieren. Befolgen Sie hierfür die Anleitung im [Tutorial für einmaliges Anmelden mit Zscaler Two](zscaler-two-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, aber diese beiden Features ergänzen sich gegenseitig.
+
+> [!NOTE]
+> Beim Bereitstellen oder Aufheben der Bereitstellung von Benutzern und Gruppen wird empfohlen, die Bereitstellung in regelmäßigen Abständen neu zu starten, um sicherzustellen, dass die Gruppenmitgliedschaften ordnungsgemäß aktualisiert werden. Durch einen Neustart wird der Dienst gezwungen, alle Gruppen neu auszuwerten und die Mitgliedschaften zu aktualisieren. 
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen** > **Zscaler Two**:
 
@@ -123,7 +122,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Zscaler Two synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Zscaler Two für Updatevorgänge verwendet werden. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
 
-    ![Attributzuordnungen](./media/zscaler-two-provisioning-tutorial/user-attribute-mappings.png)
+    ![Screenshot: Abschnitt „Attributzuordnungen“ mit sieben Zuordnungen](./media/zscaler-two-provisioning-tutorial/user-attribute-mappings.png)
 
 12. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Groups to Zscaler Two** (Azure Active Directory-Gruppen mit Zscaler Two synchronisieren):
 
@@ -131,9 +130,9 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 13. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Zscaler Two synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Zscaler Two für Updatevorgänge verwendet. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
 
-    ![Attributzuordnungen](./media/zscaler-two-provisioning-tutorial/group-attribute-mappings.png)
+    ![Screenshot: Attributzuordnungen mit drei Zuordnungen](./media/zscaler-two-provisioning-tutorial/group-attribute-mappings.png)
 
-14. Wenn Sie Bereichsfilter konfigurieren möchten, hilft Ihnen die Anleitung unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](./../active-directory-saas-scoping-filters.md) weiter.
+14. Wenn Sie Bereichsfilter konfigurieren möchten, hilft Ihnen die Anleitung unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) weiter.
 
 15. Ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**, wenn Sie den Azure AD-Bereitstellungsdienst für Zscaler Two aktivieren möchten:
 
@@ -149,16 +148,16 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 Bei diesem Vorgang wird die Erstsynchronisierung aller Benutzer und Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Sie können den Fortschritt im Abschnitt **Synchronisierungsdetails** überwachen. Außerdem können Sie die Links zu einem Bericht zu den Bereitstellungsaktivitäten verwenden. Darin werden alle Aktionen beschrieben, die vom Azure AD-Bereitstellungsdienst für Zscaler Two durchgeführt werden.
 
-Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../active-directory-saas-provisioning-reporting.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-two-provisioning-tutorial/tutorial-general-01.png

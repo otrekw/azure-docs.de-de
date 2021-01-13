@@ -1,6 +1,6 @@
 ---
 title: Importieren einer API-App als API mit dem Azure-Portal | Microsoft-Dokumentation
-description: Dieses Tutorial veranschaulicht, wie Sie API Management (APIM) verwenden, um API-Apps als API zu importieren.
+description: Dieser Artikel veranschaulicht, wie Sie API Management (APIM) verwenden, um API-Apps als API zu importieren.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
-ms.date: 11/22/2017
+ms.topic: article
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 484621668b582953d49c366336a49970d82c3fbf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 41209233ec59f578db4ff7fd344bb96aefeb975e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073267"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994739"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Importieren einer API-App als API
 
@@ -32,17 +32,17 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
-+ Stellen Sie sicher, dass Ihr Abonnement eine API-App enthält. Weitere Informationen finden Sie in der [App Service-Dokumentation](https://docs.microsoft.com/azure/app-service/).
++ Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
++ Stellen Sie sicher, dass Ihr Abonnement eine API-App enthält. Weitere Informationen finden Sie in der [App Service-Dokumentation](../app-service/index.yml).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Importieren und Veröffentlichen einer Back-End-API
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Importieren und Veröffentlichen einer Back-End-API
 
-1. Wählen Sie unter **API MANAGEMENT** die Option **APIs** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrem API Management-Dienst, und wählen Sie im Menü **APIs** aus.
 2. Wählen Sie in der Liste **Neue API hinzufügen** die Option **API-App** aus.
 
-    ![Eine API-App](./media/import-api-app-as-api/api-app.png)
+    ![API-App](./media/import-api-app-as-api/api-app.png)
 3. Klicken Sie auf **Durchsuchen**, um die Liste der API-Apps in Ihrem Abonnement anzuzeigen.
 4. Wählen Sie die App aus. APIM sucht den Swagger, der der ausgewählten App zugeordnet ist, ruft ihn ab und importiert ihn. 
 
@@ -56,9 +56,10 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
     * **Starter**
     * **Unbegrenzt**   
-7. Klicken Sie auf **Erstellen**.
+7. Geben Sie weitere API-Einstellungen ein. Sie können die Werte während der Erstellung festlegen oder später über die Registerkarte **Einstellungen** konfigurieren. Die Einstellungen werden im Tutorial [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md#import-and-publish-a-backend-api) erläutert.
+8. Klicken Sie auf **Erstellen**.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testen der neuen APIM-API im Azure-Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Testen der neuen API im Azure-Portal
 
 Vorgänge können direkt aus dem Azure-Portal aufgerufen werden. Dies ist ein einfacher Weg, die Vorgänge einer API anzuzeigen und zu testen.  
 
@@ -70,21 +71,6 @@ Vorgänge können direkt aus dem Azure-Portal aufgerufen werden. Dies ist ein ei
 1. Klicken Sie auf **Senden**.
 
     Das Back-End antwortet mit **200 OK** und einigen Daten.
-
-## <a name="call-operation"></a>Aufrufen einer Operation aus dem Entwicklerportal
-
-Vorgänge können auch im **Entwicklerportal** aufgerufen werden, um APIs zu testen. 
-
-1. Wählen Sie die API aus, die Sie im Schritt „Importieren und Veröffentlichen einer Back-End-API“ erstellt haben.
-2. Klicken Sie auf **Entwicklerportal**.
-
-    Die Website „Entwicklerportal“ wird geöffnet.
-3. Wählen Sie die **API** aus, die Sie erstellt haben.
-4. Klicken Sie auf den Vorgang, den Sie testen möchten.
-5. Klicken Sie auf **Ausprobieren**.
-6. Klicken Sie auf **Senden**.
-    
-    Nach dem Aufruf der Operation zeigt das Entwicklerportal den **Antwortstatus**, die **Antwortheader** sowie den **Antwortinhalt** an.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

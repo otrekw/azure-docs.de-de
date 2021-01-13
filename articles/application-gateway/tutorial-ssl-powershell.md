@@ -1,41 +1,41 @@
 ---
-title: Erstellen eines Anwendungsgateways mit SSL-Terminierung – Azure PowerShell
-description: Hier erfahren Sie, wie Sie mit Azure PowerShell ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Terminierung hinzufügen.
+title: TLS-Terminierung mit PowerShell
+titleSuffix: Azure Application Gateway
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell ein Anwendungsgateway erstellen und ein Zertifikat für die TLS-Terminierung hinzufügen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 7/31/2019
+ms.topic: how-to
+ms.date: 11/14/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 70447e01fc248e889662c5ec15cb65b1c0cc4848
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 2bd57344f0bd7f3b97c523f9378a5820c1a90a84
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688099"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396565"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit SSL-Terminierung mithilfe von Azure PowerShell
+# <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit TLS-Terminierung mithilfe von Azure PowerShell
 
-Sie können mit Azure PowerShell ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die [SSL-Terminierung](ssl-overview.md) erstellen, das eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) als Back-End-Server verwendet. In diesem Beispiel enthält die Skalierungsgruppe zwei VM-Instanzen, die zum standardmäßigen Back-End-Pool des Anwendungsgateways hinzugefügt werden. 
+Sie können mit Azure PowerShell ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die [TLS-/SSL-Terminierung](ssl-overview.md) erstellen, das eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/overview.md) als Back-End-Server verwendet. In diesem Beispiel enthält die Skalierungsgruppe zwei VM-Instanzen, die zum standardmäßigen Back-End-Pool des Anwendungsgateways hinzugefügt werden. 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Erstellen eines selbstsignierten Zertifikats
-> * Einrichten eines Netzwerks
-> * Erstellen eines Anwendungsgateways mit dem Zertifikat
-> * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
+* Erstellen eines selbstsignierten Zertifikats
+* Einrichten eines Netzwerks
+* Erstellen eines Anwendungsgateways mit dem Zertifikat
+* Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Für diesen Artikel ist Version 1.0.0 oder höher des Azure PowerShell-Moduls erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Für diesen Artikel ist Version 1.0.0 oder höher des Azure PowerShell-Moduls erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
 
-Für die Produktion sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat importieren. Für diesen Artikel erstellen Sie mit [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) ein selbstsigniertes Zertifikat. Sie können [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) mit dem zurückgegebenen Fingerabdruck verwenden, um eine PFX-Datei aus dem Zertifikat zu exportieren.
+Für die Produktion sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat importieren. Für diesen Artikel erstellen Sie mit [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) ein selbstsigniertes Zertifikat. Sie können [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) mit dem zurückgegebenen Fingerabdruck verwenden, um eine PFX-Datei aus dem Zertifikat zu exportieren.
 
 ```powershell
 New-SelfSignedCertificate `
@@ -144,7 +144,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>Erstellen des Standardlisteners und einer Regel
 
-Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr entsprechend an den Back-End-Pool weiterleiten kann. In diesem Beispiel erstellen Sie einen grundlegenden Listener, der an der Stamm-URL auf HTTPS-Datenverkehr lauscht. 
+Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an den Back-End-Pool weiterleiten kann. In diesem Beispiel erstellen Sie einen grundlegenden Listener, der an der Stamm-URL auf HTTPS-Datenverkehr lauscht. 
 
 Erstellen Sie mit [New-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) ein Zertifikatobjekt und anschließend mit [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) und der Front-End-Konfiguration, dem Front-End-Port und dem zuvor erstellten Zertifikat einen Listener mit dem Namen *mydefaultListener*. Für den Listener ist eine Regel erforderlich, damit bekannt ist, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) eine grundlegende Regel namens *rule1*.
 

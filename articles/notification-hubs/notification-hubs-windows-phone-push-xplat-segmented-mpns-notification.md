@@ -12,19 +12,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 88326b07a96dcc8ce7a72f8709a88c2662f48707
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 67700ec643a27f8ae5c581fe9de8e3295a1925e5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213392"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88998236"
 ---
-# <a name="tutorial-push-notifications-to-specific-windows-phone-devices-by-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Windows Phone-Geräte mit Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Windows-Telefone mit Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -241,7 +241,7 @@ Der erste Schritt besteht daraus, Benutzeroberflächenelemente zur vorhandenen H
     }
     ```
 
-    Diese Methode erstellt eine Liste mit Kategorien und verwendet die `Notifications`-Klasse, um die Liste im lokalen Speicher zu speichern und die entsprechenden Tags bei Ihrem Benachrichtigungs-Hub zu registrieren. Wenn Kategorien geändert werden, wird die Registrierung mit neuen Kategorien neu erstellt.
+    Diese Methode erstellt eine Liste mit Kategorien und verwendet die Klasse `Notifications`, um die Liste im lokalen Speicher zu speichern und die entsprechenden Tags bei Ihrem Benachrichtigungs-Hub zu registrieren. Wenn Kategorien geändert werden, wird die Registrierung mit neuen Kategorien neu erstellt.
 
 Die App kann jetzt verschiedene Kategorien in einem lokalen Speicher auf dem Gerät speichern und beim Notification Hub registrieren, wenn der Benutzer die Auswahl der Kategorien ändert.
 
@@ -332,5 +332,5 @@ In diesem Tutorial haben Sie gelernt, wie Sie Pushbenachrichtigungen an bestimmt
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Notification Hubs How-To for Windows Phone]: ??

@@ -2,26 +2,17 @@
 title: include file
 description: include file
 services: backup
-author: rayne-wiselman
+author: dcurwin
 ms.service: backup
 ms.topic: include
 ms.date: 12/07/2018
-ms.author: raynew
+ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 9e9c09c1825f5c8383a708e8bd343146396f878e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 7cf6e0c53337b7d4b08b694040c4f0b151a41103
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178491"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563083"
 ---
-Für Azure Backup gelten die folgenden Beschränkungen.
-
-| **Begrenzung** | **Standard** |
-| --- | --- |
-| Server oder Computer, die in einem Tresor registriert werden können. | Windows Server/Windows Client/System Center Data Protection Manager: 50 verwendet. <br/><br/> IaaS-VMs: 1.000.  |
-| Die Größe einer Datenquelle im Tresorspeicher. |54.400GB Maximum. Die Beschränkung gilt nicht für IaaS-VM-Sicherungen. |
-| Sicherungstresore in einem Azure-Abonnement. |500 Tresore pro Region. |
-| Planen täglicher Sicherungen. |Windows Server/Client: Drei pro Tag.<br/> System Center DPM: Zwei pro Tag. <br/> IaaS-VMs: Eine pro Tag.  |
-| Datenträger, die für die Sicherung an einen virtuellen Azure-Computer angeschlossen sind. | 16 |
-| Einzelner Datenträger, der für die Sicherung an einen virtuellen Azure-Computer angeschlossen ist.| 4\.095GB|
+Eine Zusammenfassung der Einstellungen und Einschränkungen für die Azure Backup-Unterstützung finden Sie unter [Supportmatrix für Azure Backup](../articles/backup/backup-support-matrix.md).

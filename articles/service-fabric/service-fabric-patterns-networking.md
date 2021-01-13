@@ -1,25 +1,14 @@
 ---
-title: Netzwerkmuster für Azure Service Fabric | Microsoft-Dokumentation
+title: Netzwerkmuster für Azure Service Fabric
 description: In diesem Thema werden häufige Netzwerkmuster für Service Fabric sowie die Vorgehensweise zum Erstellen eines Clusters mithilfe der Netzwerkfeatures von Azure beschrieben.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/19/2018
-ms.author: atsenthi
-ms.openlocfilehash: 90b2a1954d60f1e86ab61afb264483177f4aca3b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 20bd5e931307725016c3e2ad69dae91214b2caab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073947"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87421466"
 ---
 # <a name="service-fabric-networking-patterns"></a>Netzwerkmuster für Service Fabric
 Sie können Ihre Azure Service Fabric-Cluster in andere Azure-Netzwerkfeatures integrieren. In diesem Artikel erfahren Sie, wie Sie Cluster erstellen, die folgende Features nutzen:
@@ -30,6 +19,8 @@ Sie können Ihre Azure Service Fabric-Cluster in andere Azure-Netzwerkfeatures i
 - [Interner und externer Lastenausgleich](#internalexternallb)
 
 Service Fabric wird in einer standardmäßigen VM-Skalierungsgruppe ausgeführt. Alle Funktionen, die Sie in einer VM-Skalierungsgruppe verwenden können, können Sie mit einem Service Fabric-Cluster verwenden. Die Netzwerkabschnitte der Azure Resource Manager-Vorlagen für VM-Skalierungsgruppen und Service Fabric sind identisch. Sobald Sie ein vorhandenes virtuelles Netzwerk bereitgestellt haben, ist es einfach, andere Netzwerkfeatures wie Azure ExpressRoute, Azure-VPN-Gateway, eine Netzwerksicherheitsgruppe und Peering virtueller Netzwerke zu integrieren.
+
+### <a name="allowing-the-service-fabric-resource-provider-to-query-your-cluster"></a>Zulassen, dass der Service Fabric-Ressourcenanbieter Ihren Cluster abfragt
 
 Service Fabric unterscheidet sich in einem Aspekt von anderen Netzwerkfeatures. Das [Azure-Portal](https://portal.azure.com) verwendet intern den Service Fabric-Ressourcenanbieter, um Informationen über Knoten und Anwendungen von einem Cluster abzurufen. Der Service Fabric-Ressourcenanbieter erfordert öffentlich zugänglichen eingehenden Zugriff auf den HTTP-Gatewayport (standardmäßig Port 19080) auf dem Verwaltungsendpunkt. [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) verwendet den Verwaltungsendpunkt zur Verwaltung Ihres Clusters. Der Service Fabric-Ressourcenanbieter verwendet diesen Port außerdem zur Abfrage von Informationen über Ihren Cluster, um sie im Azure-Portal anzuzeigen. 
 
@@ -109,6 +100,8 @@ In den Beispielen in diesem Artikel wird die Service Fabric-template.json verwen
             },*/
     ```
 
+   Sie können auch den Parameter „virtualNetworkName“ auskommentieren, damit Sie im Azure-Portal auf dem Blatt für die Clusterbereitstellung nicht zweimal zur Eingabe des Namens des virtuellen Netzwerks aufgefordert werden.
+
 2. Kommentieren Sie das Attribut `nicPrefixOverride` von `Microsoft.Compute/virtualMachineScaleSets` aus, da Sie das vorhandene Subnetz verwenden und diese Variable in Schritt 1 deaktiviert haben.
 
     ```json
@@ -180,7 +173,7 @@ In den Beispielen in diesem Artikel wird die Service Fabric-template.json verwen
     C:>\Users\users>ping NOde1000000 -n 1
     ```
 
-Ein weiteres Beispiel, das nicht für Service Fabric spezifisch ist, finden Sie [hier](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet).
+Ein weiteres Beispiel, das nicht für Service Fabric spezifisch ist, finden Sie [hier](https://github.com/gbowerman/azure-myriad/tree/main/existing-vnet).
 
 
 <a id="staticpublicip"></a>
@@ -293,7 +286,7 @@ Nach der Bereitstellung sehen Sie, dass Ihr Lastenausgleich an die öffentliche 
 <a id="internallb"></a>
 ## <a name="internal-only-load-balancer"></a>Rein interner Lastenausgleich
 
-Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Service Fabric-Vorlage durch einen rein internen Lastenausgleich. Informationen zu Konsequenzen für das Azure-Portal und den Service Fabric-Ressourcenanbieter finden Sie im vorherigen Abschnitt.
+Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Service Fabric-Vorlage durch einen rein internen Lastenausgleich. Informationen zu Konsequenzen für das Azure-Portal und den Service Fabric-Ressourcenanbieter finden Sie [oben in diesem Artikel](#allowing-the-service-fabric-resource-provider-to-query-your-cluster).
 
 1. Entfernen Sie den `dnsName`-Parameter. (Er ist nicht erforderlich.)
 
@@ -391,7 +384,7 @@ Nach der Bereitstellung verwendet Ihr Lastenausgleich die private statische IP-A
 <a id="internalexternallb"></a>
 ## <a name="internal-and-external-load-balancer"></a>Interner und externer Lastenausgleich
 
-In diesem Szenario beginnen Sie mit dem vorhandenen externen Lastenausgleich mit einem einzigen Knotentyp und fügen einen internen Lastenausgleich für den gleichen Knotentyp hinzu. Ein Back-End-Port, der einem Back-End-Adresspool angefügt ist, kann nur einem einzelnen Lastenausgleich zugewiesen werden. Wählen Sie, welcher Lastenausgleich Ihre Anwendungsports und welcher Lastenausgleich Ihre Verwaltungsendpunkte (Ports 19000 und 19080) enthalten soll. Wenn Sie die Verwaltungsendpunkte auf den internen Lastenausgleich legen, beachten Sie die weiter oben in diesem Artikel erläuterten Service Fabric-Ressourcenanbieter-Einschränkungen. In unserem Beispiel verbleiben die Verwaltungsendpunkte auf dem externen Lastenausgleich. Sie können auch einen Port 80-Anwendungsport hinzufügen und auf dem internen Lastenausgleich platzieren.
+In diesem Szenario beginnen Sie mit dem vorhandenen externen Lastenausgleich mit einem einzigen Knotentyp und fügen einen internen Lastenausgleich für den gleichen Knotentyp hinzu. Ein Back-End-Port, der einem Back-End-Adresspool angefügt ist, kann nur einem einzelnen Lastenausgleich zugewiesen werden. Wählen Sie, welcher Lastenausgleich Ihre Anwendungsports und welcher Lastenausgleich Ihre Verwaltungsendpunkte (Ports 19000 und 19080) enthalten soll. Wenn Sie die Verwaltungsendpunkte auf den internen Lastenausgleich legen, beachten Sie die [weiter oben in diesem Artikel](#allowing-the-service-fabric-resource-provider-to-query-your-cluster) erläuterten Service Fabric-Ressourcenanbieter-Einschränkungen. In unserem Beispiel verbleiben die Verwaltungsendpunkte auf dem externen Lastenausgleich. Sie können auch einen Port 80-Anwendungsport hinzufügen und auf dem internen Lastenausgleich platzieren.
 
 In einem Zwei-Knotentypen-Cluster befindet sich ein Knotentyp auf dem externen Lastenausgleich. Der andere Knotentyp befindet sich auf dem internen Lastenausgleich. Um einen Zwei-Knotentypen-Cluster zu verwenden, wandeln Sie in der im Portal erstellten Zwei-Knotentypen-Vorlage (mit zwei Lastenausgleichsmodulen) den zweiten Lastenausgleich in einen internen Lastenausgleich um. Weitere Informationen finden Sie unter [Rein interner Lastenausgleich](#internallb).
 
@@ -607,10 +600,9 @@ Nach der Bereitstellung sehen Sie zwei Lastenausgleichsmodule in der Ressourceng
 
 ## <a name="notes-for-production-workloads"></a>Anmerkungen zu Produktionsworkloads
 
-Die oben genannten GitHub-Vorlagen sind für die Verwendung mit der Standard-SKU für Azure Load Balancer Standard (SLB), der SKU „Basic“, konzipiert. Dieser SLB verfügt über keine SLA. Für Produktionsworkloads sollte daher die Standard-SKU verwendet werden. Weitere Informationen dazu finden Sie unter [Azure Load Balancer Standard: Übersicht](/azure/load-balancer/load-balancer-standard-overview). Jeder Service Fabric Cluster, der die Standard-SKU für SLB verwendet, muss sicherstellen, dass jeder Knotentyp über eine Regel verfügt, die ausgehenden Datenverkehr an Port 443 zulässt. Dies ist erforderlich, um die Clustereinrichtung abzuschließen, und jede Bereitstellung ohne diese Regel schlägt fehl. Im Beispiel oben für einen „nur internen“ Load Balancer muss der Vorlage ein zusätzlicher externer Load Balancer mit einer Regel hinzugefügt werden, die ausgehenden Datenverkehr für Port 443 zulässt.
+Die oben genannten GitHub-Vorlagen sind für die Verwendung mit der Standard-SKU für Azure Load Balancer Standard (SLB), der SKU „Basic“, konzipiert. Dieser SLB verfügt über keine SLA. Für Produktionsworkloads sollte daher die Standard-SKU verwendet werden. Weitere Informationen dazu finden Sie unter [Azure Load Balancer Standard: Übersicht](../load-balancer/load-balancer-overview.md). Jeder Service Fabric Cluster, der die Standard-SKU für SLB verwendet, muss sicherstellen, dass jeder Knotentyp über eine Regel verfügt, die ausgehenden Datenverkehr an Port 443 zulässt. Dies ist erforderlich, um die Clustereinrichtung abzuschließen, und jede Bereitstellung ohne diese Regel schlägt fehl. Im Beispiel oben für einen „nur internen“ Load Balancer muss der Vorlage ein zusätzlicher externer Load Balancer mit einer Regel hinzugefügt werden, die ausgehenden Datenverkehr für Port 443 zulässt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen eines Clusters](service-fabric-cluster-creation-via-arm.md)
 
 Nach der Bereitstellung sehen Sie zwei Lastenausgleichsmodule in der Ressourcengruppe. Wenn Sie die Lastenausgleichsmodule durchsuchen, sehen Sie die öffentliche IP-Adresse und die Verwaltungsendpunkte (Ports 19000 und 19080), die der öffentlichen IP-Adresse zugewiesen sind. Sie können auch die statische interne IP-Adresse und den Anwendungsendpunkt (Port 80) sehen, die dem internen Lastenausgleich zugewiesen sind. Beide Lastenausgleichsmodule verwenden den gleichen VM-Skalierungsgruppen-Back-End-Pool.
-

@@ -1,21 +1,21 @@
 ---
 title: Verwenden eines Containers für maschinelles Sehen mit Kubernetes und Helm
 titleSuffix: Azure Cognitive Services
-description: Stellen Sie den Container für maschinelles Sehen in einer Azure Container Instance bereit, und testen Sie diesen in einem Webbrowser.
+description: Erfahren Sie, wie Sie den Container für maschinelles Sehen mithilfe von Kubernetes und Helm bereitstellen.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.author: dapine
-ms.openlocfilehash: 7560f2395447e81dcd01e1d3e092b39b129b4ce3
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 11/23/2020
+ms.author: aahi
+ms.openlocfilehash: d79c52c05d09eedab2dd964acb544c9cdb405380
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129829"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562598"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Verwenden eines Containers für maschinelles Sehen mit Kubernetes und Helm
 
@@ -25,13 +25,12 @@ Eine Möglichkeit zur lokalen Verwaltung Ihrer Container für maschinelles Sehen
 
 Die folgenden Voraussetzungen müssen erfüllt sein, damit Container für maschinelles Sehen lokal verwendet werden können:
 
-|Erforderlich|Zweck|
-|--|--|
+| Erforderlich | Zweck |
+|----------|---------|
 | Azure-Konto | Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][free-azure-account] erstellen, bevor Sie beginnen. |
-| Zugriff auf die Containerregistrierung | Kubernetes benötigt Zugriff auf die Containerregistrierung, um die Docker-Images in den Cluster pullen zu können. Sie müssen zunächst [Zugriff auf die Containerregistrierung anfordern][vision-preview-access]. |
 | Kubernetes-Befehlszeilenschnittstelle | Mithilfe der [Kubernetes-Befehlszeilenschnittstelle][kubernetes-cli] werden die gemeinsam genutzten Anmeldeinformationen aus der Containerregistrierung verwaltet. Kubernetes wird außerdem vor Helm (Kubernetes-Paket-Manager) benötigt. |
-| Helm-Befehlszeilenschnittstelle | Im Rahmen der Installation der [Helm-CLI][helm-install] müssen Sie auch Helm initialisieren, wodurch [Tiller][tiller-install] installiert wird. |
-| Ressource für maschinelles Sehen |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ **Maschinelles Sehen** sowie den zugehörigen API-Schlüssel und Endpunkt-URI. Beide Werte stehen auf der Übersichts- und auf der Schlüsselseite der Ressource zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{API_KEY}** : Einer der beiden verfügbaren Ressourcenschlüssel auf der Seite **Schlüssel**<br><br>**{ENDPOINT_URI}** : Der Endpunkt, der auf der **Übersichtsseite** angegeben ist|
+| Helm-Befehlszeilenschnittstelle | Installieren Sie die [Helm-Befehlszeilenschnittstelle][helm-install]. Sie wird zum Installieren eines Helm-Charts (Containerpaketdefinition) verwendet. |
+| Ressource für maschinelles Sehen |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ **Maschinelles Sehen** sowie den zugehörigen API-Schlüssel und Endpunkt-URI. Beide Werte stehen auf der Übersichts- und auf der Schlüsselseite der Ressource zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{API_KEY}** : Einer der beiden verfügbaren Ressourcenschlüssel auf der Seite **Schlüssel**<br><br>**{ENDPOINT_URI}** : Der Endpunkt, der auf der Seite **Übersicht** angegeben ist|
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -45,98 +44,89 @@ Die folgenden Voraussetzungen müssen erfüllt sein, damit Container für maschi
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>Herstellen einer Verbindung mit dem Kubernetes-Cluster
 
-Für den Hostcomputer muss ein verfügbarer Kubernetes-Cluster vorhanden sein. Das Konzept der Bereitstellung eines Kubernetes-Clusters für einen Hostcomputer wird im Tutorial [Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)](../../aks/tutorial-kubernetes-deploy-cluster.md) erläutert.
-
-### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Weitergeben von Docker-Anmeldeinformationen an den Kubernetes-Cluster
-
-Damit der Kubernetes-Cluster die konfigurierten Images mittels `docker pull` aus der Containerregistrierung `containerpreview.azurecr.io` pullen kann, müssen die Docker-Anmeldeinformationen in den Cluster übertragen werden. Führen Sie den Befehl [`kubectl create`][kubectl-create] wie weiter unten gezeigt aus, um ein *Docker-Registrierungsgeheimnis* auf der Grundlage der Anmeldeinformationen zu erstellen, die im Rahmen der Vorbereitung für den Zugriff auf die Containerregistrierung angegeben wurden.
-
-Führen Sie über die Befehlszeilenschnittstelle Ihrer Wahl den folgenden Befehl aus. Ersetzen Sie dabei `<username>`, `<password>` und `<email-address>` durch die Anmeldeinformationen der Containerregistrierung.
-
-```console
-kubectl create secret docker-registry containerpreview \
-    --docker-server=containerpreview.azurecr.io \
-    --docker-username=<username> \
-    --docker-password=<password> \
-    --docker-email=<email-address>
-```
-
-> [!NOTE]
-> Falls Sie bereits über Zugriff auf die Containerregistrierung `containerpreview.azurecr.io` verfügen, können Sie stattdessen auch ein Kubernetes-Geheimnis mit dem generischen Flag erstellen. Der folgende Befehl wird für den JSON-Code Ihrer Docker-Konfiguration ausgeführt:
-> ```console
->  kubectl create secret generic containerpreview \
->      --from-file=.dockerconfigjson=~/.docker/config.json \
->      --type=kubernetes.io/dockerconfigjson
-> ```
-
-Nach erfolgreicher Erstellung des Geheimnisses wird in der Konsole Folgendes ausgegeben:
-
-```console
-secret "containerpreview" created
-```
-
-Vergewissern Sie sich, dass das Geheimnis erstellt wurde, indem Sie den Befehl [`kubectl get`][kubectl-get] mit dem Flag `secrets` ausführen:
-
-```console
-kuberctl get secrets
-```
-
-Der Befehl `kubectl get secrets` gibt alle konfigurierten Geheimnisse zurück:
-
-```console
-NAME                  TYPE                                  DATA      AGE
-containerpreview      kubernetes.io/dockerconfigjson        1         30s
-```
+Für den Hostcomputer muss ein verfügbarer Kubernetes-Cluster vorhanden sein. Das Konzept der Bereitstellung eines Kubernetes-Clusters für einen Hostcomputer wird im Tutorial [Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)](../../aks/tutorial-kubernetes-deploy-cluster.md) erläutert. Weitere Informationen zu Bereitstellungen finden Sie in der [Kubernetes-Dokumentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>Konfigurieren von Helm-Chart-Werten für die Bereitstellung
 
-# <a name="readtabread"></a>[Lesen](#tab/read)
-
-Erstellen Sie zunächst einen Ordner namens *read*, kopieren Sie dann den folgenden YAML-Inhalt und fügen Sie ihn in eine neue Datei namens *Chart.yml* ein.
+Erstellen Sie zunächst einen Ordner mit dem Namen *read*. Fügen Sie dann den folgenden YAML-Inhalt in eine neue Datei mit dem Namen `chart.yaml` ein:
 
 ```yaml
-apiVersion: v1
+apiVersion: v2
 name: read
 version: 1.0.0
-description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
+description: A Helm chart to deploy the Read OCR container to a Kubernetes cluster
+dependencies:
+- name: rabbitmq
+  condition: read.image.args.rabbitmq.enabled
+  version: ^6.12.0
+  repository: https://kubernetes-charts.storage.googleapis.com/
+- name: redis
+  condition: read.image.args.redis.enabled
+  version: ^6.0.0
+  repository: https://kubernetes-charts.storage.googleapis.com/
 ```
 
-Kopieren Sie zum Konfigurieren der Standardwerte des Helm-Charts den folgenden YAML-Code, und fügen Sie ihn in eine Datei namens `values.yaml` ein. Ersetzen Sie die Kommentare `# {ENDPOINT_URI}` und `# {API_KEY}` durch Ihre eigenen Werte.
+Kopieren Sie zum Konfigurieren der Standardwerte des Helm-Charts den folgenden YAML-Code, und fügen Sie ihn in eine Datei namens `values.yaml` ein. Ersetzen Sie die Kommentare `# {ENDPOINT_URI}` und `# {API_KEY}` durch Ihre eigenen Werte. Konfigurieren Sie bei Bedarf resultExpirationPeriod, Redis und RabbitMQ.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
-
 read:
   enabled: true
   image:
     name: cognitive-services-read
-    registry: containerpreview.azurecr.io/
-    repository: microsoft/cognitive-services-read
-    tag: latest
-    pullSecret: containerpreview # Or an existing secret
+    registry:  mcr.microsoft.com/
+    repository: azure-cognitive-services/vision/read
+    tag: 3.2-preview.1
     args:
       eula: accept
       billing: # {ENDPOINT_URI}
       apikey: # {API_KEY}
+      
+      # Result expiration period setting. Specify when the system should clean up recognition results.
+      # For example, resultExpirationPeriod=1, the system will clear the recognition result 1hr after the process.
+      # resultExpirationPeriod=0, the system will clear the recognition result after result retrieval.
+      resultExpirationPeriod: 1
+      
+      # Redis storage, if configured, will be used by read container to store result records.
+      # A cache is required if multiple read containers are placed behind load balancer.
+      redis:
+        enabled: false # {true/false}
+        password: password
+
+      # RabbitMQ is used for dispatching tasks. This can be useful when multiple read containers are
+      # placed behind load balancer.
+      rabbitmq:
+        enabled: false # {true/false}
+        rabbitmq:
+          username: user
+          password: password
 ```
 
 > [!IMPORTANT]
-> Ohne Angabe der Werte `billing` und `apikey` laufen die Dienste nach 15 Minuten ab. Dies führt dann dazu, dass die Überprüfung nicht erfolgreich ist, da die Dienste nicht zur Verfügung stehen.
+> - Ohne Angabe der Werte `billing` und `apikey` laufen die Dienste nach 15 Minuten ab. Ebenso führt die Überprüfung zu Fehlern, da die Dienste nicht verfügbar sind.
+> 
+> - Wenn Sie mehrere Lesecontainer hinter einem Lastenausgleich bereitstellen (z. B. unter Docker Compose oder Kubernetes), benötigen Sie einen externen Cache. Da der Verarbeitungscontainer und der GET-Anforderungscontainer möglicherweise nicht identisch sind, werden die Ergebnisse in einem externen Cache gespeichert und dort für die Container freigegeben. Ausführliche Informationen zu Cacheeinstellungen finden Sie unter [Konfigurieren von Docker-Containern für maschinelles Sehen](./computer-vision-resource-container-config.md).
+>
 
 Erstellen Sie den Ordner *templates* unter dem Verzeichnis *read*. Kopieren Sie den folgenden YAML-Code, und fügen Sie ihn in eine Datei mit dem Namen `deployment.yaml` ein. Die `deployment.yaml`-Datei dient als Helm-Vorlage.
 
 > Vorlagen generieren Manifestdateien, die Beschreibungen von Ressourcen im YAML-Format darstellen, die von Kubernetes verstanden werden können. [- Leitfaden zur Vorlage für Helm-Charts][chart-template-guide]
 
 ```yaml
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: read
+  labels:
+    app: read-deployment
 spec:
+  selector:
+    matchLabels:
+      app: read-app
   template:
     metadata:
       labels:
-        app: read-app
+        app: read-app       
     spec:
       containers:
       - name: {{.Values.read.image.name}}
@@ -150,14 +140,23 @@ spec:
           value: {{.Values.read.image.args.billing}}
         - name: apikey
           value: {{.Values.read.image.args.apikey}}
+        args:        
+        - ReadEngineConfig:ResultExpirationPeriod={{ .Values.read.image.args.resultExpirationPeriod }}
+        {{- if .Values.read.image.args.rabbitmq.enabled }}
+        - Queue:RabbitMQ:HostName={{ include "rabbitmq.hostname" . }}
+        - Queue:RabbitMQ:Username={{ .Values.read.image.args.rabbitmq.rabbitmq.username }}
+        - Queue:RabbitMQ:Password={{ .Values.read.image.args.rabbitmq.rabbitmq.password }}
+        {{- end }}      
+        {{- if .Values.read.image.args.redis.enabled }}
+        - Cache:Redis:Configuration={{ include "redis.connStr" . }}
+        {{- end }}
       imagePullSecrets:
-      - name: {{.Values.read.image.pullSecret}}
-
+      - name: {{.Values.read.image.pullSecret}}      
 --- 
 apiVersion: v1
 kind: Service
 metadata:
-  name: read
+  name: read-service
 spec:
   type: LoadBalancer
   ports:
@@ -166,104 +165,40 @@ spec:
     app: read-app
 ```
 
+Kopieren Sie die folgenden Hilfsfunktionen in `helpers.tpl`, und fügen Sie sie in denselben Ordner *templates* ein. `helpers.tpl` definiert nützliche Funktionen zum Generieren der Helm-Vorlage.
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff Slave, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
+
+```yaml
+{{- define "rabbitmq.hostname" -}}
+{{- printf "%s-rabbitmq" .Release.Name -}}
+{{- end -}}
+
+{{- define "redis.connStr" -}}
+{{- $hostMaster := printf "%s-redis-master:6379" .Release.Name }}
+{{- $hostSlave := printf "%s-redis-slave:6379" .Release.Name -}}
+{{- $passWord := printf "password=%s" .Values.read.image.args.redis.password -}}
+{{- $connTail := "ssl=False,abortConnect=False" -}}
+{{- printf "%s,%s,%s,%s" $hostMaster $hostSlave $passWord $connTail -}}
+{{- end -}}
+```
 Die Vorlage gibt einen Lastenausgleichsdienst und die Bereitstellung Ihres Containers/Bilds für das Lesen an.
-
-# <a name="recognize-texttabrecognize-text"></a>[Texterkennung](#tab/recognize-text)
-
-Erstellen Sie zunächst einen Ordner namens *text-recognizer*, kopieren Sie den folgenden YAML-Inhalt und fügen Sie ihn in eine neue Datei namens `Chart.yml` ein.
-
-```yaml
-apiVersion: v1
-name: text-recognizer
-version: 1.0.0
-description: A Helm chart to deploy the microsoft/cognitive-services-recognize-text to a Kubernetes cluster
-```
-
-Kopieren Sie zum Konfigurieren der Standardwerte des Helm-Charts den folgenden YAML-Code, und fügen Sie ihn in eine Datei namens `values.yaml` ein. Ersetzen Sie die Kommentare `# {ENDPOINT_URI}` und `# {API_KEY}` durch Ihre eigenen Werte.
-
-```yaml
-# These settings are deployment specific and users can provide customizations
-
-recognizeText:
-  enabled: true
-  image:
-    name: cognitive-services-recognize-text
-    registry: containerpreview.azurecr.io/
-    repository: microsoft/cognitive-services-recognize-text
-    tag: latest
-    pullSecret: containerpreview # Or an existing secret
-    args:
-      eula: accept
-      billing: # {ENDPOINT_URI}
-      apikey: # {API_KEY}
-```
-
-> [!IMPORTANT]
-> Ohne Angabe der Werte `billing` und `apikey` laufen die Dienste nach 15 Minuten ab. Dies führt dann dazu, dass die Überprüfung nicht erfolgreich ist, da die Dienste nicht zur Verfügung stehen.
-
-Erstellen Sie den Ordner *templates* unter dem Verzeichnis *text-recognizer*. Kopieren Sie den folgenden YAML-Code, und fügen Sie ihn in eine Datei mit dem Namen `deployment.yaml` ein. Die `deployment.yaml`-Datei dient als Helm-Vorlage.
-
-> Vorlagen generieren Manifestdateien, die Beschreibungen von Ressourcen im YAML-Format darstellen, die von Kubernetes verstanden werden können. [- Leitfaden zur Vorlage für Helm-Charts][chart-template-guide]
-
-```yaml
-apiVersion: apps/v1beta1
-kind: Deployment
-metadata:
-  name: text-recognizer
-spec:
-  template:
-    metadata:
-      labels:
-        app: text-recognizer-app
-    spec:
-      containers:
-      - name: {{.Values.recognizeText.image.name}}
-        image: {{.Values.recognizeText.image.registry}}{{.Values.recognizeText.image.repository}}
-        ports:
-        - containerPort: 5000
-        env:
-        - name: EULA
-          value: {{.Values.recognizeText.image.args.eula}}
-        - name: billing
-          value: {{.Values.recognizeText.image.args.billing}}
-        - name: apikey
-          value: {{.Values.recognizeText.image.args.apikey}}
-      imagePullSecrets:
-      - name: {{.Values.recognizeText.image.pullSecret}}
-
---- 
-apiVersion: v1
-kind: Service
-metadata:
-  name: text-recognizer
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 5000
-  selector:
-    app: text-recognizer-app
-```
-
-Die Vorlage gibt einen Lastenausgleichsdienst und die Bereitstellung Ihres Containers/Bilds für die Texterkennung an.
-
-***
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Das Kubernetes-Paket (Helm-Chart)
 
-Das *Helm-Chart* enthält die Konfiguration, die angibt, welche Docker-Images aus der Containerregistrierung `containerpreview.azurecr.io` gepullt werden sollen.
+Das *Helm-Chart* enthält die Konfiguration, die angibt, welche Docker-Images aus der Containerregistrierung `mcr.microsoft.com` gepullt werden sollen.
 
 > Bei einem [Helm-Chart][helm-charts] handelt es sich um eine Sammlung von Dateien, die eine zusammengehörige Gruppe von Kubernetes-Ressourcen beschreiben. Ein einzelnes Chart kann sowohl für eine einfache Bereitstellung (beispielsweise eines Memcached-Pods) als auch für komplexere Bereitstellungen (etwa eines vollständigen Web-App-Stapels mit HTTP-Servern, Datenbanken, Caches und Ähnlichem) verwendet werden.
 
-Die bereitgestellten *Helm-Charts* pullen die Docker-Images des Diensts für maschinelles Sehen und den entsprechenden Dienst aus der Containerregistrierung `containerpreview.azurecr.io`.
+Die bereitgestellten *Helm-Charts* pullen die Docker-Images des Diensts für maschinelles Sehen und den entsprechenden Dienst aus der Containerregistrierung `mcr.microsoft.com`.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Installieren des Helm-Charts für den Kubernetes-Cluster
-
-# <a name="readtabread"></a>[Lesen](#tab/read)
 
 Zum Installieren des *Helm-Charts* muss der Befehl [`helm install`][helm-install-cmd] ausgeführt werden. Stellen Sie sicher, dass Sie den Installationsbefehl im Verzeichnis über dem Ordner `read` ausführen.
 
 ```console
-helm install read --name read
+helm install read ./read
 ```
 
 Die Ausgabe nach einer erfolgreichen Installation kann beispielsweise wie folgt aussehen:
@@ -297,7 +232,7 @@ kubectl get all
 Die Ausgabe sollte in etwa wie folgt aussehen:
 
 ```console
-λ kubectl get all
+kubectl get all
 NAME                        READY   STATUS    RESTARTS   AGE
 pod/read-57cb76bcf7-45sdh   1/1     Running   0          17s
 
@@ -312,61 +247,104 @@ NAME                              DESIRED   CURRENT   READY   AGE
 replicaset.apps/read-57cb76bcf7   1         1         1       17s
 ```
 
-# <a name="recognize-texttabrecognize-text"></a>[Texterkennung](#tab/recognize-text)
+## <a name="deploy-multiple-v3-containers-on-the-kubernetes-cluster"></a>Bereitstellen mehrerer V3-Container auf dem Kubernetes-Cluster
 
-Zum Installieren des *Helm-Charts* muss der Befehl [`helm install`][helm-install-cmd] ausgeführt werden. Stellen Sie sicher, dass Sie den Installationsbefehl im Verzeichnis über dem Ordner `text-recognizer` ausführen.
+Ab V3 des Containers können Sie die Container parallel auf Aufgaben- und Seitenebene verwenden.
 
-```console
-helm install text-recognizer --name text-recognizer
+Entwurfsbedingt verfügt jeder V3-Container über einen Verteiler und einen Erkennungsworker. Der Verteiler ist dafür verantwortlich, eine mehrseitige Aufgabe in mehrere einzelne Unteraufgaben mit nur einer Seite aufzuteilen. Der Erkennungsworker ist für die Erkennung eines Dokuments mit nur einer Seite optimiert. Um Parallelität auf Seitenebene zu erreichen, stellen Sie mehrere V3-Container hinter einem Load Balancer bereit, und lassen Sie die Container einen universellen Speicher und eine universelle Warteschlange freigeben. 
+
+> [!NOTE] 
+> Zurzeit werden nur Azure Storage und die Azure-Warteschlange unterstützt. 
+
+Der Container, der die Anforderung empfängt, kann die Aufgabe in einseitige untergeordnete Aufgaben aufteilen und sie der universellen Warteschlange hinzufügen. Jeder Erkennungsworker aus einem Container mit geringerer Auslastung kann einseitige Unteraufgaben aus der Warteschlange nutzen, eine Erkennung durchführen und das Ergebnis in den Speicher hochladen. Der Durchsatz kann je nach Anzahl der bereitgestellten Container bis zu `n` Mal verbessert werden.
+
+Kopieren Sie den folgenden YAML-Code, und fügen Sie ihn in eine Datei mit dem Namen `deployment.yaml` ein. Ersetzen Sie die Kommentare `# {ENDPOINT_URI}` und `# {API_KEY}` durch Ihre eigenen Werte. Ersetzen Sie den `# {AZURE_STORAGE_CONNECTION_STRING}`-Kommentar durch Ihre Azure Storage-Verbindungszeichenfolge. Konfigurieren Sie `replicas` auf die gewünschte Anzahl, die im folgenden Beispiel auf `3` festgelegt ist.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: read
+  labels:
+    app: read-deployment
+spec:
+  selector:
+    matchLabels:
+      app: read-app
+  replicas: # {NUMBER_OF_READ_CONTAINERS}
+  template:
+    metadata:
+      labels:
+        app: read-app
+    spec:
+      containers:
+      - name: cognitive-services-read
+        image: mcr.microsoft.com/azure-cognitive-services/vision/read
+        ports:
+        - containerPort: 5000
+        env:
+        - name: EULA
+          value: accept
+        - name: billing
+          value: # {ENDPOINT_URI}
+        - name: apikey
+          value: # {API_KEY}
+        - name: Storage__ObjectStore__AzureBlob__ConnectionString
+          value: # {AZURE_STORAGE_CONNECTION_STRING}
+        - name: Queue__Azure__ConnectionString
+          value: # {AZURE_STORAGE_CONNECTION_STRING}
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-cognitive-service-read
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+    targetPort: 5000
+  selector:
+    app: read-app
 ```
 
-Die Ausgabe nach einer erfolgreichen Installation kann beispielsweise wie folgt aussehen:
+Führen Sie den folgenden Befehl aus. 
 
 ```console
-NAME:   text-recognizer
-LAST DEPLOYED: Thu Aug 22 13:24:06 2019
-NAMESPACE: default
-STATUS: DEPLOYED
-
-RESOURCES:
-==> v1/Pod(related)
-NAME                              READY  STATUS             RESTARTS  AGE
-text-recognizer-57cb76bcf7-45sdh  0/1    ContainerCreating  0         0s
-
-==> v1/Service
-NAME             TYPE          CLUSTER-IP    EXTERNAL-IP  PORT(S)         AGE
-text-recognizer  LoadBalancer  10.110.44.86  localhost    5000:31301/TCP  0s
-
-==> v1beta1/Deployment
-NAME             READY  UP-TO-DATE  AVAILABLE  AGE
-text-recognizer  0/1    1           0          0s
+kubectl apply -f deployment.yaml
 ```
 
-Der Kubernetes-Bereitstellungsvorgang kann mehrere Minuten dauern. Vergewissern Sie sich durch Ausführen des folgenden Befehls, dass die Pods und Dienste ordnungsgemäß bereitgestellt wurden und verfügbar sind:
+Nachfolgend finden Sie eine Beispielausgabe, die bei erfolgreicher Bereitstellungsausführung angezeigt werden kann:
+
+```console
+deployment.apps/read created
+service/azure-cognitive-service-read created
+```
+
+Der Kubernetes-Bereitstellungsvorgang kann mehrere Minuten dauern. Vergewissern Sie sich, dass die Pods und Dienste ordnungsgemäß bereitgestellt wurden und verfügbar sind, und führen Sie dann den folgenden Befehl aus:
 
 ```console
 kubectl get all
 ```
 
-Die Ausgabe sollte in etwa wie folgt aussehen:
+Eine Konsolenausgabe ähnlich der folgenden sollte angezeigt werden:
 
 ```console
-λ kubectl get all
-NAME                                   READY   STATUS    RESTARTS   AGE
-pod/text-recognizer-57cb76bcf7-45sdh   1/1     Running   0          17s
+kubectl get all
+NAME                       READY   STATUS    RESTARTS   AGE
+pod/read-6cbbb6678-58s9t   1/1     Running   0          3s
+pod/read-6cbbb6678-kz7v4   1/1     Running   0          3s
+pod/read-6cbbb6678-s2pct   1/1     Running   0          3s
 
-NAME                      TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
-service/kubernetes        ClusterIP      10.96.0.1      <none>        443/TCP          45h
-service/text-recognizer   LoadBalancer   10.110.44.86   localhost     5000:31301/TCP   17s
+NAME                                   TYPE           CLUSTER-IP   EXTERNAL-IP    PORT(S)          AGE
+service/azure-cognitive-service-read   LoadBalancer   10.0.134.0   <none>         5000:30846/TCP   17h
+service/kubernetes                     ClusterIP      10.0.0.1     <none>         443/TCP          78d
 
-NAME                              READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/text-recognizer   1/1     1            1           17s
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/read   3/3     3            3           3s
 
-NAME                                         DESIRED   CURRENT   READY   AGE
-replicaset.apps/text-recognizer-57cb76bcf7   1         1         1       17s
+NAME                             DESIRED   CURRENT   READY   AGE
+replicaset.apps/read-6cbbb6678   3         3         3       3s
 ```
-
-***
 
 <!--  ## Validate container is running -->
 
@@ -382,20 +360,18 @@ Ausführlichere Informationen zum Installieren von Anwendungen mit Helm in Azure
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free
 [git-download]: https://git-scm.com/downloads
-[azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [docker-engine]: https://www.docker.com/products/docker-engine
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
 [helm-install]: https://helm.sh/docs/using_helm/#installing-helm
-[helm-install-cmd]: https://helm.sh/docs/helm/#helm-install
-[tiller-install]: https://helm.sh/docs/install/#installing-tiller
-[helm-charts]: https://helm.sh/docs/developing_charts
+[helm-install-cmd]: https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package
+[helm-charts]: https://helm.sh/docs/topics/charts/
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [helm-test]: https://helm.sh/docs/helm/#helm-test
 [chart-template-guide]: https://helm.sh/docs/chart_template_guide
 
 <!-- LINKS - internal -->
-[vision-preview-access]: computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry
 [vision-container-host-computer]: computer-vision-how-to-install-containers.md#the-host-computer
 [installing-helm-apps-in-aks]: ../../aks/kubernetes-helm.md
 [cog-svcs-containers]: ../cognitive-services-container-support.md

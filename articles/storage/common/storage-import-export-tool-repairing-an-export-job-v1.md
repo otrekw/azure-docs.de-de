@@ -1,19 +1,19 @@
 ---
 title: Reparieren eines Exportauftrags in Azure Import/Export (V1) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie einen Exportauftrag reparieren, der mithilfe des Azure Import/Export-Diensts erstellt und ausgeführt wurde.
-author: muralikk
+author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
-ms.author: muralikk
+ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 915cf1e66ec400e0d2461873d9fb3d66be9883fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35738db5b7bd4a1ac7aaf94e2dc5f1d26a075cdf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477942"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791833"
 ---
 # <a name="repairing-an-export-job"></a>Reparieren eines Exportauftrags
 Nach Abschluss eines Exportauftrags können Sie das Microsoft Azure Import/Export-Tool lokal ausführen, um folgende Vorgänge durchzuführen:  
@@ -24,7 +24,7 @@ Nach Abschluss eines Exportauftrags können Sie das Microsoft Azure Import/Expor
   
 Sie müssen über eine Verbindung mit Azure Storage verfügen, um diese Funktion zu verwenden.  
   
-Der Befehl zum Reparieren eines Exportauftrags lautet **RepairExport**.
+Der Befehl zum Reparieren eines Exportauftrags lautet **RepairExport** .
 
 ## <a name="repairexport-parameters"></a>RepairExport-Parameter
 
@@ -32,15 +32,15 @@ Die folgenden Parameter können mit **RepairExport** angegeben werden:
   
 |Parameter|BESCHREIBUNG|  
 |---------------|-----------------|  
-|**/r:&lt;Reparaturdatei\>**|Erforderlich. Pfad zur Reparaturdatei, die den Status der Reparatur verfolgt und das Fortsetzen einer unterbrochenen Reparatur ermöglicht. Jedes Laufwerk muss über genau eine Reparaturdatei verfügen. Wenn Sie mit der Reparatur eines bestimmten Laufwerks beginnen, wird der Pfad zu einer noch nicht vorhandenen Reparaturdatei übergeben. Zum Fortsetzen einer unterbrochenen Reparatur müssen Sie den Namen einer vorhandenen Reparaturdatei übergeben. Die Reparaturdatei für das Ziellaufwerk muss immer angegeben werden.|  
-|**/logdir:&lt;Protokollverzeichnis\>**|Optional. Das Protokollverzeichnis. In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Wird kein Protokollverzeichnis angegeben, wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|  
-|**/d:&lt;Zielverzeichnis\>**|Erforderlich. Das zu überprüfende und zu reparierende Verzeichnis. Dies ist normalerweise das Stammverzeichnis des Exportlaufwerks, könnte aber auch eine Netzwerkdateifreigabe sein, die eine Kopie der exportierten Dateien enthält.|  
-|**/bk:&lt;BitLocker-Schlüssel\>**|Optional. Sie müssen den BitLocker-Schlüssel angeben, wenn das Tool ein verschlüsseltes Laufwerk entsperren soll, auf dem die exportierten Dateien gespeichert sind.|  
+|**/r:&lt;Reparaturdatei\>**|Erforderlich. Pfad zur Reparaturdatei, die den Status der Reparatur verfolgt und das Fortsetzen einer unterbrochenen Reparatur ermöglicht. Jedes Laufwerk muss über genau eine Reparaturdatei verfügen. Wenn Sie mit der Reparatur eines bestimmten Laufwerks beginnen, übergeben Sie den Pfad zu einer noch nicht vorhandenen Reparaturdatei. Zum Fortsetzen einer unterbrochenen Reparatur müssen Sie den Namen einer vorhandenen Reparaturdatei übergeben. Geben Sie immer die Reparaturdatei für das entsprechende Ziellaufwerk an.|  
+|**/logdir:&lt;Protokollverzeichnis\>**|Optional. Das Protokollverzeichnis In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Wird kein Protokollverzeichnis angegeben, wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|  
+|**/d:&lt;Zielverzeichnis\>**|Erforderlich. Das zu überprüfende und zu reparierende Verzeichnis. Dieses Verzeichnis ist normalerweise das Stammverzeichnis des Exportlaufwerks, könnte aber auch eine Netzwerkdateifreigabe sein, die eine Kopie der exportierten Dateien enthält.|  
+|**/bk:&lt;BitLocker-Schlüssel\>**|Optional. Geben Sie den BitLocker-Schlüssel an, wenn das Tool ein verschlüsseltes Laufwerk entsperren soll, auf dem die exportierten Dateien gespeichert sind.|  
 |**/sn:&lt;Speicherkontoname\>**|Erforderlich. Der Name des Speicherkontos für den Exportauftrag.|  
-|**/sk:&lt;Speicherkontoschlüssel\>**|Nur **Erforderliche**, wenn keine Container-SAS angegeben wurde. Der Kontoschlüssel des Speicherkontos für den Exportauftrag.|  
-|**/csas:&lt;Container-SAS\>**|Nur **Erforderliche**, wenn kein Speicherkontoschlüssel angegeben wurde. Die Container-SAS für den Zugriff auf die Blobs, die dem Exportauftrag zugeordnet sind.|  
+|**/sk:&lt;Speicherkontoschlüssel\>**|Nur **Erforderlich** , wenn keine Container-SAS angegeben wurde. Der Kontoschlüssel des Speicherkontos für den Exportauftrag.|  
+|**/csas:&lt;Container-SAS\>**|Nur **Erforderlich** , wenn kein Speicherkontoschlüssel angegeben wurde. Die Container-SAS für den Zugriff auf die Blobs, die dem Exportauftrag zugeordnet sind.|  
 |**/CopyLogFile:&lt;Laufwerk-Kopierprotokolldatei\>**|Erforderlich. Der Pfad zur Kopierprotokolldatei des Laufwerks. Die Datei wird vom Windows Azure Import/Export-Dienst generiert und kann aus dem Blobspeicher heruntergeladen werden, der dem Auftrag zugeordnet ist. Die Kopierprotokolldatei enthält Informationen zu fehlerhaften Blobs oder Dateien, die repariert werden müssen.|  
-|**/ManifestFile:&lt;Laufwerkmanifestdatei\>**|Optional. Der Pfad zur Manifestdatei des Exportlaufwerks. Diese Datei wird vom Windows Azure Import/Export-Dienst erstellt und auf dem Exportlaufwerk sowie optional in einem Blob im Speicherkonto gespeichert, das dem Auftrag zugeordnet ist.<br /><br /> Der Inhalt der Dateien auf dem Exportlaufwerk wird mit den in dieser Datei enthaltenen MD5-Hashes überprüft. Alle ermittelten beschädigten Dateien werden heruntergeladen und erneut in die Zielverzeichnisse geschrieben.|  
+|**/ManifestFile:&lt;Laufwerkmanifestdatei\>**|Optional. Der Pfad zur Manifestdatei des Exportlaufwerks. Diese Datei wird vom Windows Azure Import/Export-Dienst erstellt und auf dem Exportlaufwerk gespeichert. Optional wird sie in einem Blob im Speicherkonto gespeichert, das dem Auftrag zugeordnet ist.<br /><br /> Der Inhalt der Dateien auf dem Exportlaufwerk wird mit den in dieser Datei enthaltenen MD5-Hashes überprüft. Alle beschädigten Dateien werden heruntergeladen und erneut in die Zielverzeichnisse geschrieben.|  
   
 ## <a name="using-repairexport-mode-to-correct-failed-exports"></a>Verwenden des RepairExport-Modus zum Beheben fehlerhafter Exporte  
 Sie können das Azure Import/Export-Tool zum Herunterladen von Dateien verwenden, die nicht exportiert werden konnten. Die Kopierprotokolldatei enthält eine Liste der Dateien, die nicht exportiert werden konnten.  
@@ -51,13 +51,13 @@ Exportfehler können folgende Ursachen haben:
   
 -   Der Speicherkontoschlüssel wurde während des Übertragungsprozesses geändert  
   
-Zum Ausführen des Tools im **RepairExport**-Modus müssen Sie das Laufwerk mit den exportierten Dateien zuerst mit Ihrem Computer verbinden. Anschließend führen Sie das Azure Import/Export-Tool aus und geben den Pfad zu diesem Laufwerk mit dem Parameter `/d` an. Sie müssen auch den Pfad zur heruntergeladenen Kopierprotokolldatei des Laufwerks angeben. Das folgende Befehlszeilenbeispiel führt das Tool aus, um alle Dateien zu reparieren, die nicht exportiert werden konnten:  
+Zum Ausführen des Tools im **RepairExport** -Modus müssen Sie zuerst das Laufwerk, das die exportierten Dateien enthält, an den Computer anschließen. Anschließend führen Sie das Azure Import/Export-Tool aus und geben den Pfad zu diesem Laufwerk mit dem Parameter `/d` an. Sie müssen auch den Pfad zur heruntergeladenen Kopierprotokolldatei des Laufwerks angeben. Das folgende Befehlszeilenbeispiel führt das Tool aus, um alle Dateien zu reparieren, die nicht exportiert werden konnten:  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log  
 ```  
   
-Das folgende Beispiel einer Kopierprotokolldatei zeigt, dass ein Block im Blob nicht exportiert werden konnte:  
+Das folgende Beispiel ist eine Kopierprotokolldatei, die zeigt, dass ein Block im Blob nicht exportiert werden konnte:  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -79,9 +79,9 @@ Das folgende Beispiel einer Kopierprotokolldatei zeigt, dass ein Block im Blob n
 Die Kopierprotokolldatei gibt an, dass während des Herunterladens eines der Blöcke des Blobs in die Datei auf dem Exportlaufwerk durch den Windows Azure Import/Export-Dienst ein Fehler aufgetreten ist. Die anderen Komponenten der Datei wurden erfolgreich heruntergeladen, und die Dateilänge wurde ordnungsgemäß festgelegt. In diesem Fall öffnet das Tool die Datei auf dem Laufwerk, lädt den Block aus dem Speicherkonto herunter und schreibt ihn in den Dateibereich ab Offset 65536 mit der Länge 65536.  
   
 ## <a name="using-repairexport-to-validate-drive-contents"></a>Verwenden von „RepairExport“ zum Überprüfen der Laufwerkinhalte  
-Sie können Azure Import/Export auch mit der **RepairExport**-Option verwenden, um zu überprüfen, ob der Inhalt auf dem Laufwerk richtig ist. Die Manifestdatei auf den einzelnen Exportlaufwerken enthält MD5s für den Inhalt des Laufwerks.  
+Sie können das Azure-Import-/Exporttool auch zusammen mit der Option **RepairExport** verwenden, um den Inhalt des Laufwerks auf seine Richtigkeit zu überprüfen. Die Manifestdatei auf den einzelnen Exportlaufwerken enthält MD5s für den Inhalt des Laufwerks.  
   
-Der Azure Import/Export-Dienst kann die Manifestdateien auch während des Exportvorgangs in ein Speicherkonto speichern. Der Speicherort der Manifestdateien ist nach Abschluss des Auftrags über den [Get Job](/rest/api/storageimportexport/jobs)-Vorgang verfügbar. Weitere Informationen zum Format der Manifestdatei eines Laufwerks finden Sie unter [Format der Manifestdatei des Import/Export-Diensts](storage-import-export-file-format-metadata-and-properties.md).  
+Der Azure Import/Export-Dienst kann die Manifestdateien auch während des Exportvorgangs in ein Speicherkonto speichern. Der Speicherort der Manifestdateien ist nach Abschluss des Auftrags über den [Get Job](/rest/api/storageimportexport/jobs)-Vorgang verfügbar. Weitere Informationen zum Format der Manifestdatei eines Laufwerks finden Sie unter [Format der Manifestdatei des Import/Export-Diensts](/previous-versions/azure/storage/common/storage-import-export-file-format-metadata-and-properties).  
   
 Im folgenden Beispiel wird gezeigt, wie Sie das Azure Import/Export-Tool mit den Parametern **/ManifestFile** und **/CopyLogFile** ausführen:  
   
@@ -89,7 +89,7 @@ Im folgenden Beispiel wird gezeigt, wie Sie das Azure Import/Export-Tool mit den
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log /ManifestFile:G:\9WM35C3U.manifest  
 ```  
   
-Es folgt ein Beispiel für eine Manifestdatei:  
+Im folgenden Beispiel ist eine Manifestdatei dargestellt:  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -153,7 +153,6 @@ Alle Komponenten, die die Überprüfung nicht bestehen, werden vom Tool herunter
 ## <a name="next-steps"></a>Nächste Schritte
  
 * [Einrichten des Azure Import/Export-Tools](storage-import-export-tool-setup-v1.md)   
-* [Vorbereiten von Festplatten für einen Importauftrag](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [Vorbereiten von Festplatten für einen Importauftrag](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import-v1)   
 * [Überprüfen des Auftragsstatus mit Protokollkopiedateien](storage-import-export-tool-reviewing-job-status-v1.md)   
-* [Reparieren eines Importauftrags](storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [Behandeln von Problemen mit dem Azure Import/Export-Tool](storage-import-export-tool-troubleshooting-v1.md)
+* [Reparieren eines Importauftrags](storage-import-export-tool-repairing-an-import-job-v1.md)

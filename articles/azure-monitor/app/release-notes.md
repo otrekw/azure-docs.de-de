@@ -1,34 +1,48 @@
 ---
 title: Versionshinweise für Azure Application Insights |Microsoft Docs
 description: Die neuesten Updates für Application Insights-SDKs.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 9cd2ecdb-c2b9-4e4a-b6aa-beb0c2ca4ffc
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/17/2017
-ms.author: mbullwin
-ms.openlocfilehash: ad8aa9f5e37ab4d3df730cbb58fec0994bcbd509
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-dotnet
+ms.date: 07/27/2020
+ms.openlocfilehash: 0f5cebcb2711ca63833b6c7e285483f4e3ca6eb1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255967"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88934275"
 ---
-# <a name="sdk-release-notes---application-insights"></a>SDK-Versionshinweise – Application Insights
-Hier finden Sie detaillierte Versionsinformationen und Updateanweisungen für unsere SDKs:
+# <a name="release-notes---application-insights"></a>Versionshinweise – Application Insights
 
-* [ASP.NET Web Server SDK](https://github.com/Microsoft/ApplicationInsights-server-dotnet/releases)
-* [.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
-* [.NET-Protokollierungsadapter](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/releases)
-* [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnet5/releases)
-* [Java](https://github.com/Microsoft/ApplicationInsights-Java)
-* [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/commits/master)
-* [Andere Plattformen](https://github.com/Microsoft/ApplicationInsights-Home)
+Auf dieser Seite finden Sie Informationen dazu, wo Sie detaillierte Versionshinweise zu Updates und Fehlerbehebungen der einzelnen Application Insights-SDKs finden.
+
+## <a name="sdk"></a>SDK 
+
+* .NET SDKs
+    - Versionen ab 2.12: [.NET SDKs (einschließlich ASP.NET, ASP.NET Core und Protokollierungsadaptern)](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
+    - Ältere Releases:
+      - [ASP.NET Web Server SDK](https://github.com/Microsoft/ApplicationInsights-server-dotnet/releases)
+      - [.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
+      - [.NET-Protokollierungsadapter](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/releases)
+      - [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnet5/releases)
+* [Java](https://github.com/Microsoft/ApplicationInsights-Java/releases)
+* [JavaScript](https://github.com/microsoft/ApplicationInsights-JS/releases)
+* [Python Azure Monitor Exporter](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/CHANGELOG.md)
 
 Lesen Sie auch unsere [Blogs](https://azure.microsoft.com/blog/tag/application-insights/) und [Dienstupdates](https://azure.microsoft.com/updates/?service=application-insights), in denen wichtige Verbesserungen beim Application Insights-Dienst zusammengefasst sind.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Erste Schritte mit der Überwachung ohne Code:
+
+* [Virtueller Azure-Computer und Azure-VM-Skalierungsgruppe – Auf IIS gehostete Apps](./azure-vm-vmss-apps.md)
+* [IIS-Server](./monitor-performance-live-website-now.md)
+* [Azure-Web-Apps](./azure-web-apps.md)
+
+Erste Schritte mit der codebasierten Überwachung:
+
+* [ASP.NET](./asp-net.md)
+* [ASP.NET Core](./asp-net-core.md)
+* [Java](./java-get-started.md)
+* [Node.js](./nodejs.md)
+* [Python](./opencensus-python.md)
 

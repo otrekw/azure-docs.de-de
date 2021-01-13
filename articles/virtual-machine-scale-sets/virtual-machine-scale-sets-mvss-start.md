@@ -1,29 +1,23 @@
 ---
-title: Informationen zu Vorlagen für VM-Skalierungsgruppen | Microsoft-Dokumentation
-description: Informationen zum Erstellen einer Vorlage für eine grundlegende Skalierungsgruppe für VM-Skalierungsgruppen
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: drewm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+title: Informationen zu Vorlagen für VM-Skalierungsgruppen
+description: Erfahren Sie, wie Sie anhand mehrerer Schritte eine einfache Skalierungsgruppenvorlage für Azure-VM-Skalierungsgruppen erstellen.
+author: mimckitt
+ms.author: mimckitt
+ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: template
 ms.date: 04/26/2019
-ms.author: manayar
-ms.openlocfilehash: 267c715de67df57abd30ac18966b8b3b8440810c
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 55c826b4baf38732684aaa0465aeaab6a45564db
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376110"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87831497"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Informationen zu Vorlagen für VM-Skalierungsgruppen
-[Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) sind eine hervorragende Möglichkeit, Gruppen aufeinander bezogener Ressourcen bereitzustellen. In dieser Reihe von Tutorials wird gezeigt, wie Sie eine Vorlage für eine grundlegende Skalierungsgruppe erstellen und für verschiedene Szenarien anpassen. Alle Beispiele stammen aus diesem [GitHub-Repository](https://github.com/gatneil/mvss).
+[Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/overview.md#template-deployment-process) sind eine hervorragende Möglichkeit, Gruppen aufeinander bezogener Ressourcen bereitzustellen. In dieser Reihe von Tutorials wird gezeigt, wie Sie eine Vorlage für eine grundlegende Skalierungsgruppe erstellen und für verschiedene Szenarien anpassen. Alle Beispiele stammen aus diesem [GitHub-Repository](https://github.com/gatneil/mvss).
 
 Hier wird eine einfache Vorlage verwendet. Umfassendere Beispiele für Skalierungsgruppenvorlagen finden Sie, indem Sie im [GitHub-Repository mit Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) nach Ordnern suchen, die die Zeichenfolge `vmss` enthalten.
 
@@ -75,7 +69,7 @@ Alle Ressourcen erfordern die Eigenschaften `type`, `name`, `apiVersion` und `lo
 ```
 
 ## <a name="specify-location"></a>Angeben des Speicherorts
-Zum Angeben des Speicherorts für das virtuelle Netzwerk verwenden wir eine [Resource Manager-Vorlagenfunktion](../azure-resource-manager/resource-group-template-functions.md). Diese Funktion muss wie folgt in Anführungszeichen und eckige Klammern eingeschlossen werden: `"[<template-function>]"`. Verwenden Sie in diesem Fall die Funktion `resourceGroup`. Sie nimmt keine Argumente an und gibt ein JSON-Objekt mit Metadaten über die Ressourcengruppe zurück, in der diese Bereitstellung bereitgestellt wird. Die Ressourcengruppe wird zum Zeitpunkt der Bereitstellung vom Benutzer festgelegt. Dieser Wert wird anschließend mit `.location` in dieses JSON-Objekt indiziert, um den Speicherort aus dem JSON-Objekt abzurufen.
+Zum Angeben des Speicherorts für das virtuelle Netzwerk verwenden wir eine [Resource Manager-Vorlagenfunktion](../azure-resource-manager/templates/template-functions.md). Diese Funktion muss wie folgt in Anführungszeichen und eckige Klammern eingeschlossen werden: `"[<template-function>]"`. Verwenden Sie in diesem Fall die Funktion `resourceGroup`. Sie nimmt keine Argumente an und gibt ein JSON-Objekt mit Metadaten über die Ressourcengruppe zurück, in der diese Bereitstellung bereitgestellt wird. Die Ressourcengruppe wird zum Zeitpunkt der Bereitstellung vom Benutzer festgelegt. Dieser Wert wird anschließend mit `.location` in dieses JSON-Objekt indiziert, um den Speicherort aus dem JSON-Objekt abzurufen.
 
 ```json
        "location": "[resourceGroup().location]",
@@ -121,7 +115,7 @@ In diesem Fall gibt es nur ein Element in der Liste: das virtuelle Netzwerk aus 
 ## <a name="specify-scale-set-properties"></a>Angeben von Eigenschaften der Skalierungsgruppe
 Skalierungsgruppen verfügen über viele Eigenschaften zum Anpassen der virtuellen Computer in der Skalierungsgruppe. Eine vollständige Liste dieser Eigenschaften finden Sie in der [Vorlagenreferenz](/azure/templates/microsoft.compute/virtualmachinescalesets). In diesem Tutorial werden nur einige häufig verwendete Eigenschaften festgelegt.
 ### <a name="supply-vm-size-and-capacity"></a>Angeben der Größe und der Kapazität der virtuellen Computer
-Für die Skalierungsgruppe muss festgelegt werden, welche Größe der virtuelle Computer haben soll („SKU-Name“) und wie viele solcher virtueller Computer erstellt werden sollen („SKU-Kapazität“). Welche Größen für virtuelle Computer verfügbar sind, erfahren Sie unter [Größen für virtuelle Windows-Computer](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes).
+Für die Skalierungsgruppe muss festgelegt werden, welche Größe der virtuelle Computer haben soll („SKU-Name“) und wie viele solcher virtueller Computer erstellt werden sollen („SKU-Kapazität“). Welche Größen für virtuelle Computer verfügbar sind, erfahren Sie unter [Größen für virtuelle Windows-Computer](../virtual-machines/sizes.md).
 
 ```json
        "sku": {

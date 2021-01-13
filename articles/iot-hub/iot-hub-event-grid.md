@@ -1,37 +1,41 @@
 ---
 title: Azure IoT Hub und Event Grid | Microsoft-Dokumentation
 description: Lösen Sie mit Azure Event Grid Prozesse auf der Basis von Aktionen aus, die in IoT Hub auftreten.
-author: kgremban
+author: robinsh
 manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: kgremban
-ms.openlocfilehash: f411771fbf39a99642506253fc025d6b29840423
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.author: robinsh
+ms.custom:
+- amqp
+- mqtt
+- 'Role: Cloud Development'
+ms.openlocfilehash: 0e0ca8a787145fb40087a2d99be85607404eebfa
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648637"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152134"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagieren auf IoT Hub-Ereignisse mithilfe von Event Grid zum Auslösen von Aktionen
 
-Azure IoT Hub ist in Azure Event Grid integriert, sodass Sie Ereignisbenachrichtigungen an andere Dienste senden und nachfolgende Prozesse auslösen können. Konfigurieren Sie Ihre Geschäftsanwendungen zum Lauschen auf IoT Hub-Ereignisse, sodass Sie zuverlässig, skalierbar und sicher auf kritische Ereignisse reagieren können. Erstellen Sie beispielsweise eine Anwendung, die bei jeder Registrierung eines neuen IoT-Geräts bei Ihrem IoT-Hub eine Datenbank aktualisiert, einen Akkordzettel erstellt und eine E-Mail-Benachrichtigung generiert.
+Azure IoT Hub ist in Azure Event Grid integriert, sodass Sie Ereignisbenachrichtigungen an andere Dienste senden und nachfolgende Prozesse auslösen können. Konfigurieren Sie Ihre Geschäftsanwendungen zum Lauschen auf IoT Hub-Ereignisse, sodass Sie zuverlässig, skalierbar und sicher auf kritische Ereignisse reagieren können.  Erstellen Sie beispielsweise eine Anwendung, die bei jeder Registrierung eines neuen IoT-Geräts bei Ihrem IoT-Hub eine Datenbank aktualisiert, einen Akkordzettel erstellt und eine E-Mail-Benachrichtigung generiert.
 
-[Azure Event Grid](../event-grid/overview.md) ist ein vollständig verwalteter Ereignisroutingdienst, der ein Veröffentlichen-Abonnieren-Modell verwendet. Event Grid verfügt über integrierte Unterstützung für Azure-Dienste wie [Azure Functions](../azure-functions/functions-overview.md) und [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) und kann mithilfe von Webhooks Ereigniswarnungen an Nicht-Azure-Dienste übermitteln. Eine vollständige Liste der Ereignishandler, die Event Grid unterstützt, finden Sie unter [Einführung in Azure Event Grid](../event-grid/overview.md).
+[Azure Event Grid](../event-grid/overview.md) ist ein vollständig verwalteter Ereignisroutingdienst, der ein Veröffentlichen-Abonnieren-Modell verwendet. Event Grid verfügt über integrierte Unterstützung für Azure-Dienste wie [Azure Functions](../azure-functions/functions-overview.md) und [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und kann mithilfe von Webhooks Ereigniswarnungen an Nicht-Azure-Dienste übermitteln. Eine vollständige Liste der Ereignishandler, die Event Grid unterstützt, finden Sie unter [Einführung in Azure Event Grid](../event-grid/overview.md).
 
 ![Azure Event Grid-Architektur](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-Die Event Grid-Integration ist für IoT-Hubs verfügbar, die sich in den Regionen befinden, in denen Event Grid unterstützt wird. Alle Geräteereignisse mit Ausnahme von Gerätetelemetrieereignissen sind allgemein verfügbar. Gerätetelemetrieereignisse stehen in der öffentlichen Vorschauversion zur Verfügung, und zwar in allen Regionen mit Ausnahme von „USA, Osten“, „USA, Westen“, „Europa, Westen“, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china) und [Azure Deutschland](https://azure.microsoft.com/global-infrastructure/germany/). Die aktuelle Liste der Regionen finden Sie unter [Einführung in Azure Event Grid](../event-grid/overview.md).
+Die Event Grid-Integration ist für IoT-Hubs verfügbar, die sich in den Regionen befinden, in denen Event Grid unterstützt wird. Die aktuelle Liste der Regionen finden Sie unter [Einführung in Azure Event Grid](../event-grid/overview.md).
 
 ## <a name="event-types"></a>Ereignistypen
 
 IoT Hub veröffentlicht die folgenden Ereignistypen:
 
-| Ereignistypen | BESCHREIBUNG |
+| Ereignistyp | BESCHREIBUNG |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | Wird ausgelöst, wenn ein Gerät bei einem IoT Hub registriert wird. |
 | Microsoft.Devices.DeviceDeleted | Wird ausgelöst, wenn ein Gerät aus einem IoT Hub gelöscht wird. |
@@ -69,6 +73,8 @@ Das folgende Beispiel zeigt das Schema eines Ereignisses „Gerät verbunden“:
   "metadataVersion": "1"
 }]
 ```
+
+
 
 ### <a name="device-telemetry-schema"></a>Schema der Gerätetelemetrie
 
@@ -160,6 +166,10 @@ Das folgende Beispiel zeigt das Schema eines von einem Gerät erstellten Ereigni
 }]
 ```
 
+
+> [!WARNING]
+> Die einem Geräteerstellungsereignis zugeordneten *Zwillingsdaten* sind eine Standardkonfiguration und *sollten nicht* für den tatsächlichen `authenticationType` und andere Geräteeigenschaften in einem neu erstellten Gerät verwendet werden. Verwenden Sie für `authenticationType` und andere Geräteeigenschaften in einem neu erstellten Gerät die in Azure IoT SDKs bereitgestellte Registrierungs-Manager-API.
+
 Eine ausführliche Beschreibung der einzelnen Eigenschaften finden Sie unter [Azure Event Grid-Ereignisschema für IoT Hub](../event-grid/event-schema-iot-hub.md).
 
 ## <a name="filter-events"></a>Filtern von Ereignissen
@@ -174,15 +184,21 @@ Der Betreff von IoT-Ereignissen verwendet das Format:
 devices/{deviceId}
 ```
 
-Event Grid ermöglicht auch das Filtern nach Attributen jedes Ereignisses, einschließlich des Dateninhalts. Dadurch können Sie auswählen, welche Ereignisse auf der Grundlage von Inhalten der Telemetrienachricht übermittelt werden sollen. Beispiele hierfür finden Sie unter [erweiterte Filterung](../event-grid/event-filtering.md#advanced-filtering). Zum Filtern des Telemetrienachrichtentexts müssen Sie contentType in den Nachrichten-[Systemeigenschaften](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties) auf **application/json** und contentEncoding auf **UTF-8** festlegen. Bei beiden Eigenschaften wird die Groß-/Kleinschreibung nicht beachtet.
+Event Grid ermöglicht auch das Filtern nach Attributen jedes Ereignisses, einschließlich des Dateninhalts. Dadurch können Sie auswählen, welche Ereignisse auf der Grundlage von Inhalten der Telemetrienachricht übermittelt werden sollen. Beispiele hierfür finden Sie unter [erweiterte Filterung](../event-grid/event-filtering.md#advanced-filtering). Zum Filtern des Telemetrienachrichtentexts müssen Sie contentType in den Nachrichten-[Systemeigenschaften](./iot-hub-devguide-routing-query-syntax.md#system-properties) auf **application/json** und contentEncoding auf **UTF-8** festlegen. Bei beiden Eigenschaften wird die Groß-/Kleinschreibung nicht beachtet.
 
-Bei nicht telemetriebezogenen Ereignissen wie „DeviceConnected“, „DeviceDisconnected“, „DeviceCreated“ und „DeviceDeleted“ kann die Event Grid-Filterung beim Erstellen des Abonnements verwendet werden. Bei Telemetrieereignissen können Benutzer – zusätzlich zum Filtern in Event Grid – über die Abfrage des Nachrichtenroutings auch nach Gerätezwillingen, Nachrichteneigenschaften und Textkörper filtern. Wir erstellen in IoT Hub eine Standard-[Route](iot-hub-devguide-messages-d2c.md), die auf Ihrem Event Grid-Abonnement für Gerätetelemetrie basiert. Diese einzelne Route kann alle Ihre Event Grid-Abonnements verarbeiten. Wenn Sie Nachrichten vor dem Senden von Telemetriedaten filtern möchten, können Sie Ihre [Routingabfrage](iot-hub-devguide-routing-query-syntax.md) aktualisieren. Beachten Sie, dass die Routingabfrage nur auf einen Nachrichtenkörper im JSON-Format angewendet werden kann. Darüber hinaus müssen Sie contentType in den Nachrichten-[Systemeigenschaften](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties) auf **application/json** und contentEncoding auf **UTF-8** festlegen.
+Bei nicht telemetriebezogenen Ereignissen wie „DeviceConnected“, „DeviceDisconnected“, „DeviceCreated“ und „DeviceDeleted“ kann die Event Grid-Filterung beim Erstellen des Abonnements verwendet werden. Bei Telemetrieereignissen können Benutzer – zusätzlich zum Filtern in Event Grid – über die Abfrage des Nachrichtenroutings auch nach Gerätezwillingen, Nachrichteneigenschaften und Textkörper filtern. 
+
+Wenn Sie Telemetrieereignisse über Event Grid abonnieren, erstellt IoT Hub eine Standardnachrichtenroute für das Senden von Gerätenachrichten zum Datenquellentyp an Event Grid. Weitere Informationen zum Nachrichtenrouting finden Sie unter [IoT Hub-Nachrichtenrouting](iot-hub-devguide-messages-d2c.md). Diese Route wird im Portal unter „IOT Hub“ > „Nachrichtenrouting“ angezeigt. Unabhängig von der Anzahl der für Telemetrieereignisse erstellten Event Grid-Abonnements wird nur eine Route zu Event Grid erstellt. Wenn Sie also mehrere Abonnements mit verschiedenen Filtern benötigen, können Sie in diesen Abfragen den OR-Operator auf derselben Route verwenden. Das Erstellen und Löschen der Route wird durch das Abonnement von Telemetrieereignissen über Event Grid gesteuert. Sie können mithilfe von IoT Hub-Nachrichtenrouting keine Route zu Event Grid erstellen oder löschen.
+
+Wenn Sie Nachrichten vor dem Senden von Telemetriedaten filtern möchten, können Sie Ihre [Routingabfrage](iot-hub-devguide-routing-query-syntax.md) aktualisieren. Beachten Sie, dass die Routingabfrage nur auf einen Nachrichtenkörper im JSON-Format angewendet werden kann. Darüber hinaus müssen Sie contentType in den Nachrichten-[Systemeigenschaften](./iot-hub-devguide-routing-query-syntax.md#system-properties) auf **application/json** und contentEncoding auf **UTF-8** festlegen.
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Beschränkungen bei den Ereignissen „Gerät verbunden“ und „Gerät getrennt“
 
-Um die Ereignisse „Gerät verbunden“ und „Gerät getrennt“ zu erhalten, müssen Sie den D2C-Link oder den C2D-Link für Ihr Gerät öffnen. Wenn Ihr Gerät das MQTT-Protokoll verwendet, hält IoT Hub den C2D-Link geöffnet. Bei AMQP können Sie den C2D-Link öffnen, indem Sie die [ReceiveAsync-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) aufrufen.
+Damit Geräteverbindungsstatus-Ereignisse empfangen werden, muss ein Gerät einen D2C-Vorgang zum Senden von Telemetrie oder einen C2D-Vorgang zum Empfangen von Nachrichten bei IoT Hub ausführen. Beachten Sie jedoch: Wenn ein Gerät für die Verbindung mit IoT Hub das AMQP-Protokoll verwendet, empfiehlt sich der C2D-Vorgang zum Empfangen einer Nachricht. Andernfalls werden die Benachrichtigungen zum Verbindungszustand möglicherweise um einige Minuten verzögert. Wenn Ihr Gerät das MQTT-Protokoll verwendet, hält IoT Hub den C2D-Link geöffnet. Bei AMQP können Sie den C2D-Link öffnen, indem Sie die Receive Async-API für das IoT Hub-C#-SDK oder den [Geräteclient für AMQP](iot-hub-amqp-support.md#device-client) aufrufen.
 
-Der D2C-Link ist offen, wenn Sie Telemetriedaten senden. Wenn die Geräteverbindung instabil ist, das Gerät also häufig verbunden und getrennt wird, wird nicht jeder einzelne Verbindungsstatus gesendet. Der Verbindungsstatus, für den einmal pro Minute eine Momentaufnahme erstellt wird, wird aber veröffentlicht. Bei einem Ausfall von IoT Hub wird der Geräteverbindungsstatus veröffentlicht, sobald der Ausfall beendet ist. Wenn das Gerät während dieses Ausfalls getrennt wird, wird das Ereignis „Gerät getrennt“ innerhalb von 10 Minuten veröffentlicht.
+Der D2C-Link ist offen, wenn Sie Telemetriedaten senden. 
+
+Wenn die Geräteverbindung instabil ist und das Gerät häufig verbunden und getrennt wird, wird nicht jeder einzelne Verbindungsstatus gesendet. Stattdessen wird der aktuelle Verbindungsstatus als regelmäßig abgerufene Momentaufnahme veröffentlicht, bis die Verbindung wieder instabil wird. Wenn dasselbe Verbindungszustandsereignis mit unterschiedlichen Folgenummern oder unterschiedliche Verbindungszustandsereignissen empfangen werden, bedeutet dies, dass sich der Geräteverbindungsstatus geändert hat.
 
 ## <a name="tips-for-consuming-events"></a>Tipps zum Nutzen von Ereignissen
 
@@ -204,4 +220,4 @@ Anwendungen, die IoT Hub-Ereignisse behandeln, sollten diesen empfohlenen Method
 
 * [Vergleichen der Unterschiede zwischen dem Routing von IoT Hub-Ereignissen und Nachrichten](iot-hub-event-grid-routing-comparison.md)
 
-* [Hier erfahren Sie, wie Sie IoT-Telemetrieereignisse verwenden, um mithilfe von Azure Maps (und IoT Hub Nachrichtenweiterleitung) räumliche IoT-Analysen implementieren.](../azure-maps/tutorial-iot-hub-maps.md#filter-events-using-iot-hub-message-routing)
+* [Erfahren Sie, wie Sie IoT-Telemetrieereignisse verwenden, um mithilfe von Azure Maps räumliche IoT-Analysen zu implementieren.](../azure-maps/tutorial-iot-hub-maps.md)

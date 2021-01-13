@@ -2,27 +2,27 @@
 title: Verwalten von DNS-Ressourceneintragssätzen und -Einträgen in Azure DNS
 description: Mit Azure DNS können Sie beim Hosten Ihrer Domäne DNS-Ressourceneintragssätze und -Einträge verwalten.
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/6/2018
-ms.author: victorh
-ms.openlocfilehash: 891adfacde6e46b1d8fe8e2f6b5fb39c90ce27a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rohink
+ms.openlocfilehash: 22ceba69ecf865d906021068a39a9d273b842ca2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61296377"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965730"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal
 
 In diesem Artikel wird gezeigt, wie Sie Ressourceneintragssätze und Einträge für die DNS-Zone im Azure-Portal verwalten.
 
-Es ist wichtig, den Unterschied zwischen DNS-Ressourceneintragssätzen und einzelnen DNS-Ressourceneinträgen zu verstehen. Bei einem Ressourceneintragssatz handelt es sich um die Sammlung von Einträgen in einer Zone, die den gleichen Namen und den gleichen Typ aufweisen. Weitere Informationen finden Sie unter [Erstellen von DNS-Ressourceneintragssätzen und -Einträgen mit dem Azure-Portal](dns-getstarted-create-recordset-portal.md).
+Es ist wichtig, den Unterschied zwischen DNS-Ressourceneintragssätzen und einzelnen DNS-Ressourceneinträgen zu verstehen. Bei einem Ressourceneintragssatz handelt es sich um die Sammlung von Einträgen in einer Zone, die den gleichen Namen und den gleichen Typ aufweisen. Weitere Informationen finden Sie unter [Erstellen von DNS-Ressourceneintragssätzen und -Einträgen mit dem Azure-Portal](./dns-getstarted-portal.md).
 
 ## <a name="create-a-new-record-set-and-record"></a>Erstellen eines neuen Ressourceneintragssatzes und eines Eintrags
 
-Weitere Informationen zum Erstellen eines Ressourceneintragssatzes im Azure-Portal finden Sie unter [Erstellen von DNS-Ressourceneintragssätzen und -Einträgen mit dem Azure-Portal](dns-getstarted-create-recordset-portal.md).
+Weitere Informationen zum Erstellen eines Ressourceneintragssatzes im Azure-Portal finden Sie unter [Erstellen von DNS-Ressourceneintragssätzen und -Einträgen mit dem Azure-Portal](./dns-getstarted-portal.md).
 
 ## <a name="view-a-record-set"></a>Anzeigen eines Ressourceneintragssatzes
 
@@ -50,7 +50,7 @@ Sie können einem Ressourceneintragssatz bis zu 20 Einträge hinzufügen. Ein R
 
 Nachdem der Eintrag gespeichert wurde, spiegeln die Werte auf dem Blatt **DNS-Zone** den neuen Eintrag wider.
 
-## <a name="update-a-record"></a>Update a record (Datensatz aktualisieren)
+## <a name="update-a-record"></a>{1}Update a record{2} (Datensatz aktualisieren)
 
 Wenn Sie einen Eintrag innerhalb eines vorhandenen Ressourceneintragssatzes aktualisieren, hängt vom Eintragstyp ab, welche Felder Sie aktualisieren können.
 
@@ -77,7 +77,7 @@ Sie können Einträge mit dem Azure-Portal aus einem Ressourceneintragssatz entf
 3. Klicken Sie oben auf dem Blatt auf **Speichern** , um Ihre Einstellungen zu speichern.
 4. Nachdem der Eintrag entfernt wurde, zeigen die Werte für den Eintrag auf dem Blatt **DNS-Zone** an, dass der Eintrag entfernt wurde.
 
-## <a name="delete"></a>Löschen eines Ressourceneintragssatzes
+## <a name="delete-a-record-set"></a><a name="delete"></a>Löschen eines Ressourceneintragssatzes
 
 1. Klicken Sie auf dem Blatt **Eigenschaften des Ressourceneintragssatzes** Ihres Ressourceneintragssatzes auf **Entfernen**.
 

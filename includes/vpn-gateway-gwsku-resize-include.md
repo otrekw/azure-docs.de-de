@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/15/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f6fd4039614dbd7c1a2b2c6ba8403502a6420fe3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a3ae2a876d6a3772d941fec0b8a1ea3f537e60c3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177974"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010803"
 ---
-Wenn Sie für die aktuellen SKUs („VpnGw1“, „VpnGw2“ und „VPNGW3“) die Größe Ihrer Gateway-SKU anpassen möchten, um ein Upgrade auf eine leistungsfähigere SKU durchzuführen, können Sie das PowerShell-Cmdlet `Resize-AzVirtualNetworkGateway` verwenden. Sie können mit diesem Cmdlet auch ein Downgrade der Gateway-SKU-Größe durchführen. Verwenden Sie bei Verwendung der Basic-Gateway-SKU stattdessen [diese Anweisungen](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize), um die Größe Ihres Gateways anzupassen.
+Sie können das PowerShell-Cmdlet `Resize-AzVirtualNetworkGateway` zum Aktualisieren oder Herabstufen einer Generation1- oder Generation2-SKU verwenden (die Größe aller VpnGw-SKUs kann mit Ausnahme von Basic-SKUs geändert werden). Verwenden Sie bei Verwendung der Basic-Gateway-SKU stattdessen [diese Anweisungen](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize), um die Größe Ihres Gateways anzupassen.
 
 Im folgenden PowerShell-Beispiel wird das Ändern der Größe einer Gateway-SKU in „VpnGw2“ veranschaulicht.
 
@@ -23,5 +23,3 @@ Im folgenden PowerShell-Beispiel wird das Ändern der Größe einer Gateway-SKU 
 $gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku VpnGw2
 ```
-
-Sie können die Größe eines Gateways auch über das Azure-Portal anpassen. Wählen Sie hierzu auf der Seite **Konfiguration** für Ihr Gateway für virtuelle Netzwerke in der Dropdownliste eine andere SKU aus.

@@ -2,26 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Darwinbox | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Darwinbox konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3614b11f-e3de-4abf-8e29-22a3c4971ee8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91b1be75b06b4281ee5d03675d9d33db00a5aaf7
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 70c77caebfd8f9bfd36c7384255cf7b66416a379
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013795"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012032"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Darwinbox
 
@@ -30,8 +25,7 @@ In diesem Tutorial erfahren Sie, wie Sie Darwinbox in Azure Active Directory (Az
 * Steuern Sie in Azure AD, wer Zugriff auf Darwinbox hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Darwinbox anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,6 +33,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Ein Darwinbox-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
+
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -67,8 +64,8 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Darwinbo
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für Darwinbox](#configure-darwinbox-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Darwinbox-Testbenutzers](#create-darwinbox-test-user)** , um eine Entsprechung von B. Simon in Darwinbox zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Konfigurieren des einmaligen Anmeldens für Darwinbox](#configure-darwinbox-sso)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Darwinbox-Testbenutzers](#create-darwinbox-test-user)**, um eine Entsprechung von B. Simon in Darwinbox zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -83,12 +80,12 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.darwinbox.in/`.
+   1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.darwinbox.in/`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.darwinbox.in/adfs/module.php/saml/sp/metadata.php/<CUSTOMID>`.
+   1. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.darwinbox.in/adfs/module.php/saml/sp/metadata.php/<CUSTOMID>`.
 
-    > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Diese Werte erhalten Sie vom [Supportteam für den Darwinbox-Client](https://darwinbox.com/contact-us.php). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+      > [!NOTE]
+      > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Diese Werte erhalten Sie vom [Supportteam für den Darwinbox-Client](https://darwinbox.com/contact-us.php). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -108,7 +105,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -134,21 +131,42 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Darwinbox** müssen S
 
 ### <a name="create-darwinbox-test-user"></a>Erstellen eines Darwinbox-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Darwinbox einen Benutzer namens B. Simon. Wenden Sie sich an das  [Darwinbox-Supportteam](https://darwinbox.com/contact-us.php), um die Benutzer auf der Darwinbox-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Darwinbox einen Benutzer namens B. Simon. Wenden Sie sich an das [Darwinbox-Supportteam](https://darwinbox.com/contact-us.php), um die Benutzer auf der Darwinbox-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Darwinbox“ klicken, sollten Sie automatisch bei der Darwinbox-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Darwinbox“ klicken, sollten Sie automatisch bei der Darwinbox-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+
+## <a name="test-sso-for-darwinbox-mobile"></a>Testen des einmaligen Anmeldens für Darwinbox (Mobilanwendung)
+
+1. Öffnen Sie die Darwinbox-Mobilanwendung. Klicken Sie auf **Enter Organization URL** (Organisations-URL eingeben), geben Sie Ihre Organisations-URL in das Textfeld ein, und klicken Sie auf die Pfeilschaltfläche.
+
+    ![Screenshot der mobilen Darwinbox-App, in der „Enter Organization U R L“ (Organisations-U R L eingeben) ausgewählt und eine Beispielorganisation sowie die Pfeilschaltfläche hervorgehoben sind](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+
+1. Wenn Sie über mehrere Domänen verfügen, klicken Sie auf die gewünschte Domäne.
+
+    ![Screenshot des Bildschirms „Choose your domain“ (Domäne auswählen), auf dem eine Beispieldomäne ausgewählt ist](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+
+1. Geben Sie Ihre Azure AD-E-Mail-Adresse in die Darwinbox-Anwendung ein, und klicken Sie auf **Next** (Weiter).
+
+    ![Screenshot des Bildschirms „Anmelden“, auf dem die Schaltfläche „Weiter“ hervorgehoben ist](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+
+1. Geben Sie Ihr Azure AD-Kennwort in die Darwinbox-Anwendung ein, und klicken Sie auf **Sign in** (Anmelden).
+
+    ![Screenshot des Bildschirms „Kennwort eingeben“, auf dem die Schaltfläche „Weiter“ hervorgehoben ist](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+
+1. Nach erfolgreicher Anmeldung wird die Startseite der Anwendung angezeigt:
+
+    ![Mobile Darwinbox-App](media/darwinbox-tutorial/DarwinboxMobile05.jpg)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Darwinbox mit Azure AD ausprobieren](https://aad.portal.azure.com/)
-

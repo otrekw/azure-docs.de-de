@@ -1,25 +1,19 @@
 ---
 title: Übersicht über das Oracle-Notfallwiederherstellungsszenario in der Azure-Umgebung | Microsoft-Dokumentation
 description: Ein Notfallwiederherstellungsszenario für eine Oracle Database 12c-Datenbank in Ihrer Azure-Umgebung.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: romitgirdhar
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: f6f678f91e74ea9b0b68127c1786fee745508b99
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: kegorman
+ms.reviewer: cynthn
+ms.openlocfilehash: b8da0b5c55b291af42d9a30db23d6f55f7c0bf2d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101464"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022784"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Notfallwiederherstellungsszenario für eine Oracle Database 12c-Datenbank in einer Azure-Umgebung
 
@@ -49,7 +43,7 @@ Hier ein Überblick über den Aufbau von Azure:
 - Jumpbox, Anwendungsdienst, Datenbank und VPN-Gateway befinden sich in separaten Subnetzen
 - Netzwerksicherheitsgruppe (Network Security Group, NSG) wird auf den Anwendungs- und Datenbanksubnetzen erzwungen
 
-![Screenshot der DR-Topologieseite](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![Diagramm mit primären und DR-Standorten in Azure.](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
 ## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>Szenario 2: Lokaler primärer Standort und DR-Standort in Azure
 
@@ -75,10 +69,10 @@ Hier ein Überblick über den Aufbau von Azure:
 - Eine NSG-Richtlinie/Regel, um den eingehenden TCP-Port 1521 (oder einen benutzerdefinierten) zuzulassen
 - Eine NSG-Richtlinie/Regel, damit nur die lokale/n IP-Adresse/n (Datenbank oder Anwendung) auf das virtuelle Netzwerk zugreifen kann/können
 
-![Screenshot der DR-Topologieseite](./media/oracle-disaster-recovery/oracle_topology_02.png)
+![Diagramm: Direkte Verbindungen zwischen dem lokalen Standort und Azure, für die TCP-Ports in der Firewall geöffnet sein müssen.](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
-### <a name="approach-2-site-to-site-vpn"></a>Ansatz 2: Standort-zu-Standort-VPN-Verbindung
-Das Site-to-Site-VPN ist ein besserer Ansatz. Weitere Informationen zum Einrichten eines VPN finden Sie unter [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung per CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli).
+### <a name="approach-2-site-to-site-vpn"></a>Ansatz 2: Site-to-Site-VPN
+Das Site-to-Site-VPN ist ein besserer Ansatz. Weitere Informationen zum Einrichten eines VPN finden Sie unter [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung per CLI](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md).
 
 #### <a name="topology"></a>Topologie
 
@@ -100,10 +94,10 @@ Hier ein Überblick über den Aufbau von Azure:
 - [Entwerfen und Implementieren einer Oracle-Datenbank in Azure](oracle-design.md)
 - [Konfigurieren von Oracle Data Guard](configure-oracle-dataguard.md)
 - [Konfigurieren von Oracle Golden Gate](configure-oracle-golden-gate.md)
-- [Sichern und Wiederherstellen einer Oracle-Datenbank](oracle-backup-recovery.md)
+- [Sichern und Wiederherstellen einer Oracle-Datenbank](./oracle-overview.md)
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Erstellen von hoch verfügbaren virtuellen Computern](../../linux/create-cli-complete.md)
+- [Tutorial: Erstellen eines hoch verfügbaren virtuellen Computers](../../linux/create-cli-complete.md)
 - [Erkunden der Azure CLI-Beispiele für die Bereitstellung virtueller Computer](../../linux/cli-samples.md)

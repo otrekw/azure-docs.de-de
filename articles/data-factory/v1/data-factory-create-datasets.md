@@ -1,25 +1,25 @@
 ---
-title: Erstellen von Datasets in Azure Data Factory | Microsoft-Dokumentation
+title: Erstellen von Datasets in Azure Data Factory
 description: Anhand von Beispielen, in denen Eigenschaften wie „offset“ und „anchorDateTime“ verwendet werden, wird beschrieben, wie Sie Datasets in Azure Data Factory erstellen.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: af5de469b4c4ca57979b80e691e9a5d12b573bec
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9bf6ff2971de57338dc299d48e24f6ffebd4b6b5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140121"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495938"
 ---
-# <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+# <a name="datasets-in-azure-data-factory-version-1"></a>Datasets in Azure Data Factory (Version 1)
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-create-datasets.md)
 > * [Version 2 (aktuelle Version)](../concepts-datasets-linked-services.md)
 
@@ -32,13 +32,13 @@ In diesem Artikel ist beschrieben, was Datasets sind, wie sie im JSON-Format def
 > Wenn Sie noch nicht mit Data Factory vertraut sind, sollten Sie [Einführung in Azure Data Factory](data-factory-introduction.md) lesen, um eine Übersicht zu erhalten. Wenn Sie keine praktische Erfahrung mit dem Erstellen von Data Factorys haben, können Sie sich ein besseres Verständnis aneignen, indem Sie das [Tutorial zu Datentransformation](data-factory-build-your-first-pipeline.md) und das [Tutorial zu Datenverschiebung](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) lesen.
 
 ## <a name="overview"></a>Übersicht
-Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer **Pipeline** handelt es sich um eine logische Gruppierung von **Aktivitäten**, die zusammen eine Aufgabe bilden. Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie könnten z.B. mit einer Kopieraktivität Daten aus einer lokalen SQL Server-Instanz in eine Instanz von Azure Blob Storage kopieren. Anschließend könnten Sie eine Hive-Aktivität verwenden, die ein Hive-Skript für einen Azure HDInsight-Cluster ausführt, um Daten aus dem Blob Storage zu verarbeiten, um Ausgabedaten zu produzieren. Schließlich könnten Sie die Ausgabedaten mit einer zweiten Kopieraktivität in ein Azure SQL Data Warehouse kopieren, auf Basis dessen Business Intelligence-Berichtslösungen (BI) erstellt werden. Weitere Informationen zu Pipelines und Aktivitäten finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](data-factory-create-pipelines.md).
+Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer **Pipeline** handelt es sich um eine logische Gruppierung von **Aktivitäten**, die zusammen eine Aufgabe bilden. Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können beispielsweise eine Kopieraktivität zum Kopieren von Daten aus einer SQL Server-Datenbank in Azure Blob Storage verwenden. Anschließend könnten Sie eine Hive-Aktivität verwenden, die ein Hive-Skript für einen Azure HDInsight-Cluster ausführt, um Daten aus dem Blob Storage zu verarbeiten, um Ausgabedaten zu produzieren. Schließlich könnten Sie die Ausgabedaten mit einer zweiten Kopieraktivität in Azure Synapse Analytics kopieren, auf dessen Basis Business Intelligence-Berichtslösungen (BI) erstellt werden. Weitere Informationen zu Pipelines und Aktivitäten finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](data-factory-create-pipelines.md).
 
 Eine Aktivität kann über null oder mehr **Eingabedatasets** verfügen und ein oder mehrere Ausgabedatasets erstellen. Ein Eingabedataset entspricht der Eingabe für eine Aktivität in der Pipeline, und ein Ausgabedataset entspricht der Ausgabe für die Aktivität. Datasets bestimmen Daten in verschiedenen Datenspeichern, z.B. Tabellen, Dateien, Ordnern und Dokumenten. Ein Azure-Blobdataset kann beispielsweise den Blobcontainer und -ordner in Blob Storage angeben, aus dem die Pipeline die Daten lesen soll.
 
 Bevor Sie ein Dataset erstellen, erstellen Sie einen **verknüpften Dienst**, um Ihren Datenspeicher mit der Data Factory zu verknüpfen. Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. Datasets bestimmen Daten in den verknüpften Datenspeichern, z.B. SQL-Tabellen, Dateien, Ordnern und Dokumenten. Ein mit Azure Storage verknüpfter Dienst verbindet z.B. ein Speicherkonto mit der Data Factory. Ein Azure-Blob-Dataset stellt den Blobcontainer und den Ordner dar, der die zu verarbeitenden Eingabeblobs enthält.
 
-Hier ist ein Beispielszenario. Um Daten aus Blob Storage in eine SQL-Datenbank zu kopieren, erstellen Sie zwei verknüpfte Dienste: Azure Storage und Azure SQL-Datenbank. Erstellen Sie anschließend zwei Datasets: Azure-Blobdataset (das sich auf den mit Azure Storage verknüpften Dienst bezieht) und Azure SQL-Tabellendataset (das sich auf den mit Azure SQL-Datenbank verknüpften Dienst bezieht). Die mit Azure Storage und Azure SQL-Datenbank verknüpften Dienste enthalten Verbindungszeichenfolgen, die Data Factory zur Laufzeit verwendet, um die Verbindung mit Ihrem Azure Storage bzw. mit Ihrer Instanz von Azure SQL-Datenbank herzustellen. Das Azure-Blobdataset gibt den Blobcontainer und Blobordner an, der die Eingabeblobs in Ihrer Blob Storage-Instanz enthält. Das Azure SQL-Tabellendataset gibt die SQL-Tabelle in Ihrer SQL-Datenbank an, in die die Daten kopiert werden sollen.
+Hier ist ein Beispielszenario. Erstellen Sie zwei verknüpfte Dienste, um Daten aus dem Blobspeicher in SQL-Datenbank zu kopieren: Azure Storage und Azure SQL-Datenbank. Erstellen Sie anschließend zwei Datasets: Azure-Blobdataset (das sich auf den mit Azure Storage verknüpften Dienst bezieht) und Azure SQL-Tabellendataset (das sich auf den mit Azure SQL-Datenbank verknüpften Dienst bezieht). Die mit Azure Storage und Azure SQL-Datenbank verknüpften Dienste enthalten Verbindungszeichenfolgen, die Data Factory zur Laufzeit verwendet, um die Verbindung mit Ihrem Azure Storage bzw. mit Ihrer Instanz von Azure SQL-Datenbank herzustellen. Das Azure-Blobdataset gibt den Blobcontainer und Blobordner an, der die Eingabeblobs in Ihrer Blob Storage-Instanz enthält. Das Azure SQL-Tabellendataset gibt die SQL-Tabelle in Ihrer SQL-Datenbank an, in die die Daten kopiert werden sollen.
 
 Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpftem Dienst in der Data Factory an:
 
@@ -141,7 +141,7 @@ Wie Sie sehen, definiert der verknüpfte Dienst das Herstellen einer Verbindung 
 > [!IMPORTANT]
 > Falls ein Dataset nicht von der Pipeline erzeugt wird, sollte es als **external** markiert werden. Diese Einstellung gilt im Allgemeinen für Eingaben der ersten Aktivität in einer Pipeline.
 
-## <a name="Type"></a> Dataset: type
+## <a name="dataset-type"></a><a name="Type"></a> Dataset: type
 Der Typ des Datasets hängt von dem Datenspeicher ab, den Sie verwenden. In der folgenden Tabelle finden Sie eine Liste der von Data Factory unterstützten Datenspeicher. Klicken Sie auf einen Datenspeicher, um Informationen zum Erstellen eines verknüpften Diensts und eines Datasets für diesen Datenspeicher zu erhalten.
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
@@ -175,7 +175,7 @@ Im vorherigen Abschnitt ist im Beispiel der Typ des Datasets auf **AzureSqlTable
 }
 ```
 
-## <a name="Structure"></a>Dataset: structure
+## <a name="dataset-structure"></a><a name="Structure"></a>Dataset: structure
 Der Abschnitt **structure** ist optional. In ihm ist das Schema des Datasets in einer Sammlung der Namen und Datentypen der Spalten definiert. Im Abschnitt „structure“ legen Sie Typinformationen fest, die zum Konvertieren von Typen und Zuordnen von Spalten von der Quelle zum Ziel bereitgestellt werden. Im folgenden Beispiel hat das Dataset drei Spalten: `slicetimestamp`, `projectname` und `pageviews`. Die Spalten haben jeweils den folgenden Typ: „String“, „String“, „Decimal“.
 
 ```json
@@ -274,14 +274,14 @@ Das folgende Dataset wird monatlich am dritten Tage jedes Monats um 8:00 Uhr ers
 }
 ```
 
-## <a name="Policy"></a>Dataset: policy
+## <a name="dataset-policy"></a><a name="Policy"></a>Dataset: policy
 Der Abschnitt **policy** in der Datasetdefinition definiert die Kriterien oder die Bedingung, die die Datasetslices erfüllen müssen.
 
 ### <a name="validation-policies"></a>Überprüfungsrichtlinien
 | Richtlinienname | BESCHREIBUNG | Angewendet auf | Erforderlich | Standard |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |Überprüft, ob die Daten in **Azure Blob Storage** die minimalen Größenanforderungen (in MB) erfüllen. |Azure Blob Storage |Nein |Nicht verfügbar |
-| minimumRows |Überprüft, ob die Daten in einer **Azure SQL-Datenbank** oder einer **Azure-Tabelle** die minimale Anzahl von Zeilen enthalten. |<ul><li>Azure SQL-Datenbank</li><li>Azure-Tabelle</li></ul> |Nein |Nicht verfügbar |
+| minimumRows |Überprüft, ob die Daten in einer **Azure SQL-Datenbank** oder einer **Azure-Tabelle** die minimale Anzahl von Zeilen enthalten. |<ul><li>Azure SQL-Datenbank</li><li>Azure-Tabelle</li></ul> |Nein |Nicht verfügbar |
 
 #### <a name="examples"></a>Beispiele
 **minimumSizeMB:**
@@ -314,7 +314,7 @@ Externe Datasets werden nicht durch eine Pipeline erstellt, die in der Data Fact
 
 Ein Dataset sollte, sofern es nicht von Data Factory erzeugt wird, es als **extern** markiert werden. Diese Einstellung gilt im Allgemeinen für die Eingaben der ersten Aktivität in einer Pipeline, wenn weder Aktivitäts- noch Pipelineverkettung genutzt wird.
 
-| NAME | BESCHREIBUNG | Erforderlich | Standardwert |
+| Name | BESCHREIBUNG | Erforderlich | Standardwert |
 | --- | --- | --- | --- |
 | dataDelay |Die Zeitspanne, um die die Prüfung der Verfügbarkeit der externen Daten für den angegebenen Slice verzögert wird. Beispielsweise können Sie eine stündliche Überprüfung verzögern, indem Sie diese Einstellung verwenden.<br/><br/>Die Einstellung gilt nur für die aktuelle Zeit. Beispiel: Wenn es gerade 13:00 Uhr ist und dieser Wert 10 Minuten beträgt, beginnt die Überprüfung um 13:10 Uhr.<br/><br/>Diese Einstellung wirkt sich nicht auf Slices in der Vergangenheit aus. Slices mit **Segmentendzeit** + **dataDelay** < **Jetzt** werden ohne Verzögerung verarbeitet.<br/><br/>Zeiträume, die länger als 23 Stunden 59 Minuten sind, müssen im Format `day.hours:minutes:seconds` angegeben werden. Um beispielsweise 24 Stunden anzugeben, verwenden Sie nicht 24:00:00. Verwenden Sie stattdessen 1.00:00:00. Wenn Sie 24:00:00 verwenden, wird dies als 24 Tage (24.00:00:00) gewertet. Für 1 Tag und 4 Stunden geben Sie „1:04:00:00“ an. |Nein |0 |
 | retryInterval |Die Wartezeit zwischen einem Fehler und dem nächsten Versuch. Diese Einstellung gilt für die aktuelle Zeit. Wenn beim vorherigen Versuch ein Fehler auftrat, wird der nächste Versuch nach Verstreichen des **retryInterval**-Zeitraums durchgeführt. <br/><br/>Wenn es gerade 13:00 Uhr ist, beginnt der erste Versuch. Wenn die Ausführung der ersten Überprüfung 1 Minute gedauert hat und ein Fehler aufgetreten ist, findet die nächste Wiederholung um 13:00 + 1 Min. (Dauer) + 1 Min. (Wiederholungsintervall) = 13:02 Uhr statt. <br/><br/>Für Slices in der Vergangenheit gibt es keine Verzögerung. Der erneute Versuch erfolgt sofort. |Nein |00:01:00 (1 Minute) |

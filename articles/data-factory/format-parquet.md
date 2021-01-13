@@ -1,22 +1,23 @@
 ---
-title: Parquet-Format in Azure Data Factory | Microsoft-Dokumentation
+title: Parquet-Format in Azure Data Factory
 description: In diesem Thema wird der Umgang mit dem Parquet-Format in Azure Data Factory beschrieben.
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: 572547f4e22a4fcb63a030e64ca95a0b9d3eff00
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734479"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011607"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Parquet-Format in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Beachten Sie diesen Artikel, wenn Sie die **Parquet-Dateien analysieren oder die Daten im Parquet-Format schreiben** möchten. 
 
@@ -30,7 +31,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Die „type“-Eigenschaft des Datasets muss auf **Parquet** festgelegt werden. | Ja      |
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften. **Informationen hierzu finden Sie im Abschnitt „Dataset-Eigenschaften“ des Artikels über Connectors**. | Ja      |
-| compressionCodec | Der Codec für die Komprimierung, der beim Schreiben in Parquet-Dateien verwendet werden soll. Beim Lesen von Parquet-Dateien bestimmt Data Factory den Codec für die Komprimierung automatisch anhand der Dateimetadaten.<br>Unterstützte Typen sind „**none**“, „**gzip**“, „**snappy**“ (Standard) und „**lzo**“. Hinweis: LZO wird derzeit von der Kopieraktivität nicht unterstützt. | Nein       |
+| compressionCodec | Der Codec für die Komprimierung, der beim Schreiben in Parquet-Dateien verwendet werden soll. Beim Lesen aus Parquet-Dateien bestimmen Data Factorys den Codec für die Komprimierung automatisch anhand der Dateimetadaten.<br>Unterstützte Typen sind „**none**“, „**gzip**“, „**snappy**“ (Standard) und „**lzo**“. Hinweis: LZO wird derzeit von der Kopieraktivität nicht für das Lesen/Schreiben von Parquet-Dateien unterstützt. | Nein       |
 
 > [!NOTE]
 > Ein Leerzeichen im Spaltennamen wird für Parquet-Dateien nicht unterstützt.
@@ -65,7 +66,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 ### <a name="parquet-as-source"></a>Parquet als Quelle
 
-Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktivität unterstützt.
+Die folgenden Eigenschaften werden im Abschnitt **\_source\*** der Kopieraktivität unterstützt.
 
 | Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -74,37 +75,106 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktiv
 
 ### <a name="parquet-as-sink"></a>Parquet als Senke
 
-Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivität unterstützt.
+Die folgenden Eigenschaften werden im Abschnitt **\_sink\*** der Kopieraktivität unterstützt.
 
 | Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **ParquetSink** festgelegt werden. | Ja      |
+| type          | Die „type“-Eigenschaft der Senke der Kopieraktivität muss auf **ParquetSink** festgelegt werden. | Ja      |
+| formatSettings | Eine Gruppe von Eigenschaften. Weitere Informationen zu **Parquet-Schreibeinstellungen** finden Sie in der Tabelle unten. |    Nein      |
 | storeSettings | Eine Gruppe von Eigenschaften für das Schreiben von Daten in einen Datenspeicher. Jeder dateibasierte Connector verfügt unter `storeSettings` über eigene unterstützte Schreibeinstellungen. **Informationen hierzu finden Sie im Abschnitt über die Eigenschaften der Kopieraktivität im Artikel über Connectors**. | Nein       |
+
+Unterstützte **Parquet-Schreibeinstellungen** unter `formatSettings`:
+
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich                                              |
+| ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
+| Typ          | Der Typ von „formatSettings“ muss auf **ParquetWriteSettings** festgelegt werden. | Ja                                                   |
+| maxRowsPerFile | Wenn Sie Daten in einen Ordner schreiben, können Sie auswählen, in mehrere Dateien zu schreiben, und die maximale Anzahl von Zeilen pro Datei angeben.  | Nein |
+| fileNamePrefix | Anwendbar, wenn `maxRowsPerFile` konfiguriert ist.<br> Geben Sie das Dateinamenpräfix beim Schreiben von Daten in mehrere Dateien an, das zu diesem Muster führt: `<fileNamePrefix>_00000.<fileExtension>`. Wenn keine Angabe erfolgt, wird das Dateinamenpräfix automatisch generiert. Diese Eigenschaft findet keine Anwendung, wenn die Quelle ein dateibasierter Speicher oder ein [Datenspeicher mit aktivierter Partitionsoption](copy-activity-performance-features.md) ist.  | Nein |
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
 
-Ausführliche Informationen hierzu finden Sie unter [Quellentransformation](data-flow-source.md) und [Senkentransformation](data-flow-sink.md) in Mapping Data Flow.
+Bei Zuordnungsdatenflüssen können Sie in den folgenden Datenspeichern das Parquet-Format lesen und schreiben: [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
 
-## <a name="data-type-support"></a>Unterstützung von Datentypen
+### <a name="source-properties"></a>Quelleigenschaften
 
-Komplexe Parquet-Datentypen (wie MAP, LIST und STRUCT) werden derzeit nicht unterstützt.
+In der folgenden Tabelle sind die von einer Parquet-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten.
+
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Format | Das Format muss `parquet` sein | ja | `parquet` | format |
+| Platzhalterpfade | Alle Dateien, die dem Platzhalterpfad entsprechen, werden verarbeitet. Überschreibt den Ordner und den Dateipfad, die im Dataset festgelegt sind. | nein | String[] | wildcardPaths |
+| Partitionsstammpfad | Für partitionierte Dateidaten können Sie einen Partitionsstammpfad eingeben, um partitionierte Ordner als Spalten zu lesen. | nein | String | partitionRootPath |
+| Liste mit den Dateien | Gibt an, ob Ihre Quelle auf eine Textdatei verweist, in der die zu verarbeitenden Dateien aufgelistet sind. | nein | `true` oder `false` | fileList |
+| Spalte, in der der Dateiname gespeichert wird | Erstellt eine neue Spalte mit dem Namen und Pfad der Quelldatei. | nein | String | rowUrlColumn |
+| Nach Abschluss | Löscht oder verschiebt die Dateien nach der Verarbeitung. Dateipfad beginnt mit dem Containerstamm | nein | Löschen: `true` oder `false` <br> Verschieben: `[<from>, <to>]` | purgeFiles <br> moveFiles |
+| Nach der letzten Änderung filtern | Filtern Sie Dateien nach dem Zeitpunkt ihrer letzten Änderung. | nein | Timestamp | modifiedAfter <br> modifiedBefore |
+| Finden keiner Dateien zulässig | „true“ gibt an, dass kein Fehler ausgelöst wird, wenn keine Dateien gefunden werden. | nein | `true` oder `false` | ignoreNoFilesFound |
+
+### <a name="source-example"></a>Quellbeispiel
+
+Das folgende Bild ist ein Beispiel für eine Parquet-Quellkonfiguration bei Zuordnungsdatenflüssen.
+
+![Parquet-Quelle](media/data-flow/parquet-source.png)
+
+Das zugehörige Datenflussskript ist:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    rowUrlColumn: 'fileName',
+    format: 'parquet') ~> ParquetSource
+```
+
+### <a name="sink-properties"></a>Senkeneigenschaften
+
+In der folgenden Tabelle sind die von einer Parquet-Senke unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten.
+
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Format | Das Format muss `parquet` sein | ja | `parquet` | format |
+| Ordner löschen | Wenn der Zielordner vor dem Schreiben gelöscht wird. | nein | `true` oder `false` | truncate |
+| Dateinamenoption | Das Namensformat der geschriebenen Daten. Standardmäßig eine Datei pro Partition im Format `part-#####-tid-<guid>`. | nein | Muster: String <br> Pro Partition: String[] <br> Wie Daten in Spalte: String <br> Ausgabe in eine einzelne Datei: `['<fileName>']` | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+
+### <a name="sink-example"></a>Senkenbeispiel
+
+Das folgende Bild ist ein Beispiel für eine Parquet-Senkenkonfiguration bei Zuordnungsdatenflüssen.
+
+![Parquet-Senke](media/data-flow/parquet-sink.png)
+
+Das zugehörige Datenflussskript ist:
+
+```
+ParquetSource sink(
+    format: 'parquet',
+    filePattern:'output[n].parquet',
+    truncate: true,
+    allowSchemaDrift: true,
+    validateSchema: false,
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> ParquetSink
+```
+
+## <a name="data-type-support"></a>Datentypunterstützung
+
+Komplexe Parquet-Datentypen (z. B. MAP, LIST, STRUCT) werden derzeit nur in Datenflüssen, aber nicht in der Kopieraktivität unterstützt. Wenn Sie komplexe Typen in Datenflüssen verwenden möchten, importieren Sie das Dateischema nicht in das Dataset und lassen das Schema im Dataset leer. Importieren Sie dann die Projektion in die Quelltransformation.
 
 ## <a name="using-self-hosted-integration-runtime"></a>Verwendung der selbstgehosteten Integration Runtime
 
 > [!IMPORTANT]
-> Wenn Sie bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime, z.B. zwischen lokalen Datenspeichern und der Cloud, Parquet-Dateien nicht **unverändert** kopieren, müssen Sie die **64-Bit-Version der JRE 8 (Java Runtime Environment) oder OpenJDK** auf Ihrem IR-Computer installieren. Weitere Details finden Sie im folgenden Absatz.
+> Wenn Sie Parquet-Dateien bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime (etwa zwischen lokalen Datenspeichern und der Cloud) nicht **unverändert** kopieren, müssen Sie auf Ihrem IR-Computer die **64-Bit-Version der JRE 8 (Java Runtime Environment) oder OpenJDK** sowie **Microsoft Visual C++ 2010 Redistributable Package** installieren. Weitere Details finden Sie im nächsten Absatz.
 
 Für Kopiervorgänge in der selbstgehosteten Integration Runtime mit Serialisierung/Deserialisierung von Parquet-Dateien sucht ADF die Java Runtime Environment, indem es zunächst die Registrierung *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* auf JRE überprüft. Wird diese nicht gefunden, wird im nächsten Versuch die Systemvariable *`JAVA_HOME`* auf OpenJDK überprüft.
 
 - **Für JRE:** Die 64-Bit-Integration Runtime erfordert die 64-Bit-JRE. Diese steht [hier](https://go.microsoft.com/fwlink/?LinkId=808605) zur Verfügung.
-- **Für OpenJDK:** Die Unterstützung ist seit Version 3.13 der Integration Runtime verfügbar. Packen Sie die Datei „jvm.dll“ zusammen mit allen anderen erforderlichen OpenJDK-Assemblys in einem selbstgehosteten IR-Computer, und legen Sie die Umgebungsvariable JAVA_HOME des Systems entsprechend fest.
+- **Für OpenJDK:** Die Unterstützung ist seit der IR-Version 3.13 verfügbar. Packen Sie die Datei „jvm.dll“ zusammen mit allen anderen erforderlichen OpenJDK-Assemblys in einem selbstgehosteten IR-Computer, und legen Sie die Umgebungsvariable JAVA_HOME des Systems entsprechend fest.
+- **So installieren Sie Microsoft Visual C++ 2010 Redistributable Package:** Visual C++ 2010 Redistributable Package ist bei Installationen mit selbstgehosteter Integration Runtime nicht installiert. Diese steht [hier](https://www.microsoft.com/download/details.aspx?id=14632) zur Verfügung.
 
 > [!TIP]
 > Wenn Sie Daten mit der selbstgehosteten Integration Runtime in das/aus dem Parquet-Format kopieren und ein Fehler mit dem Text „Fehler beim Aufrufen von Java, Meldung: **java.lang.OutOfMemoryError:Java-Heapspeicher**“ auftritt, können Sie auf dem Computer, auf dem sich die selbstgehosteten IR befindet, eine Umgebungsvariable `_JAVA_OPTIONS` hinzufügen, um die min./max. Heapgröße für JVM anzupassen, sodass eine solche Kopie möglich ist, und dann die Pipeline erneut ausführen.
 
 ![JVM-Heapgröße für selbstgehostete IR festlegen](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Beispiel: Legen Sie für die Variable `_JAVA_OPTIONS` den Wert `-Xms256m -Xmx16g` fest. Das Flag `Xms` gibt den anfänglichen Speicherzuweisungspool für eine Java Virtual Machine (JVM) an, während `Xmx` den maximalen Speicherzuweisungspool angibt. Das bedeutet, dass die JVM mit einer Speichergröße von `Xms` gestartet wird und eine maximale Speichergröße von `Xmx` verwenden kann. Standardmäßig verwendet ADF mindestens 64 MB und maximal 1 G.
+Beispiel: Legen Sie für die Variable `_JAVA_OPTIONS` den Wert `-Xms256m -Xmx16g` fest. Das Flag `Xms` gibt den anfänglichen Speicherzuweisungspool für eine Java Virtual Machine (JVM) an, während `Xmx` den maximalen Speicherzuweisungspool angibt. Das bedeutet, dass die JVM mit einer Speichergröße von `Xms` gestartet wird und eine maximale Speichergröße von `Xmx` verwenden kann. Standardmäßig verwendet ADF zwischen 64 MB und 1 GB.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

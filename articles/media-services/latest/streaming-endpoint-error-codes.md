@@ -1,7 +1,7 @@
 ---
 title: Fehler im Zusammenhang mit Azure Media Services-Paketerstellung und -Ursprung | Microsoft-Dokumentation
 description: In diesem Thema werden Fehler beschrieben, die beim Azure Media Services-Streamingendpunkt-Dienst (Ursprung) auftreten können.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,17 +10,17 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: error-reference
 ms.date: 05/07/2019
-ms.author: juliako
-ms.openlocfilehash: ebcda6026f79bc88df91471d8be88316ba57bfc6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: inhenkel
+ms.openlocfilehash: 8442c52052a2016da002d392c6fe0834b3813229
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411361"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89295324"
 ---
-# <a name="streaming-endpoint-origin-errors"></a>Fehler beim Streamingendpunkt (Ursprung) 
+# <a name="streaming-endpoint-origin-errors"></a>Fehler beim Streamingendpunkt (Ursprung)
 
 In diesem Thema werden Fehler beschrieben, die beim Azure Media Services-[Streamingendpunkt-Dienst](streaming-endpoint-concept.md) auftreten können.
 
@@ -200,9 +200,9 @@ Im Artikel [Azure Media Services-Community](media-services-community.md) finden 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Verschlüsselungsfehlercodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+- [Verschlüsselungsfehlercodes](/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services-Konzepte](concepts-overview.md)
-- [Kontingente und Einschränkungen](limits-quotas-constraints.md)
+- [Kontingente und Grenzwerte](limits-quotas-constraints.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

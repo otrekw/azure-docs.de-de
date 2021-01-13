@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: ''
 ms.custom: include file
-ms.openlocfilehash: 37748258b1e9b7f922934edd715202cacbb793e0
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 96a0f9f2c0340620bbd4ab9ba51f3de66dc75752
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178463"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80334763"
 ---
-| Resource | Standard/maximales Limit |
+| Resource | Begrenzung |
 | --- | --- |
 | Profile pro Abonnement |200 |
 | Endpunkte pro Profil |200 |

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
-ms.openlocfilehash: aa69d8b07d31b5cf0386e34c113475cbf4191891
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 483fa81b409e1bd740af85b431a86b6c814831e6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60319546"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002713"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>Lokale StorSimple-Volumes: Häufig gestellte Fragen (FAQ)
 ## <a name="overview"></a>Übersicht
@@ -48,8 +48,8 @@ Da ein Teil des lokalen Speicherplatzes auf dem Gerät zum Hosten des Arbeitssat
 
 | Bereitgestellte Kapazität lokaler Volumes | Verfügbare Kapazität für mehrstufige Volumes – 8100 | Verfügbare Kapazität für mehrstufige Volumes – 8600 |
 | --- | --- | --- |
-| 0 |200 TB |500 TB |
-| 1 TB |176,5 TB |477,8 TB |
+| 0 |200 TB |500 TB |
+| 1 TB |176,5 TB |477,8 TB |
 | 4 TB |105,9 TB |411,1 TB |
 | 8,5 TB |0 TB |311,1 TB |
 | 10 TB |Nicht verfügbar |277,8 TB |
@@ -68,7 +68,7 @@ Da ein Teil des lokalen Speicherplatzes auf dem Gerät zum Hosten des Arbeitssat
 
 **A.** Lokale Volumes eignen sich für Workloads, die jederzeit lokale Garantien für Daten erfordern und empfindlich auf Cloudlatenzen reagieren. Wenn Sie die Nutzung lokaler Volumes für Ihre Workloads in Betracht ziehen, berücksichtigen Sie Folgendes:
 
-* Lokale Volumes werden mit vollständiger Speicherzuweisung bereitgestellt. Die Erstellung lokaler Volumes wirkt sich auf den verfügbaren Platz für mehrstufige Volumes aus. Aus diesem Grund wird empfohlen, mit kleineren Volumes zu beginnen und bei steigenden Speicheranforderungen zentral hochzuskalieren.
+* Lokale Volumes werden mit vollständiger Speicherzuweisung bereitgestellt. Die Erstellung lokaler Volumes wirkt sich auf den verfügbaren Platz für mehrstufige Volumes aus. Aus diesem Grund wird empfohlen, mit kleineren Volumes zu beginnen und bei steigenden Speicheranforderungen hochzuskalieren.
 * Die Bereitstellung lokaler Volumes ist ein zeitintensiver Vorgang, bei dem unter Umständen vorhandene Daten von mehrstufigen Volumes in die Cloud übertragen werden. Dies kann zu einer Beeinträchtigung der Leistung auf diesen Volumes führen.
 * Die Bereitstellung von lokalen Volumes ist ein zeitaufwendiger Vorgang. Die tatsächliche Dauer hängt von mehreren Faktoren ab: der Größe des Volumes, das bereitgestellt wird, den Daten auf Ihrem Gerät und der verfügbaren Bandbreite. Wenn Sie Ihre vorhandenen Volumes nicht in der Cloud gesichert haben, dauert die Volumeerstellung länger. Es wird empfohlen, vor dem Bereitstellen eines lokalen Volumes Cloudmomentaufnahmen Ihrer vorhandenen Volumes zu erstellen.
 * Sie können vorhandene mehrstufige Volumes in lokale Volumes konvertieren. Bei dieser Konvertierung muss auf dem Gerät Platz für das geplante lokale Volume geschaffen werden (zudem müssen ggf. ausgelagerte Daten aus der Cloud geladen werden). Dies ist ein zeitaufwendiger Vorgang, der von den oben besprochenen Faktoren abhängig ist. Sie sollten Ihre vorhandenen Volumes vor der Konvertierung sichern, da der Prozess langsamer ist, wenn vorhandene Volumes nicht gesichert wurden. Während dieses Vorgangs treten auf dem Gerät möglicherweise Leistungseinbußen auf.

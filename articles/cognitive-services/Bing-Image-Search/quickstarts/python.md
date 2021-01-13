@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Suchen nach Bildern – Bing-Bildersuche-REST-API und Python'
+title: 'Schnellstart: Suchen nach Bildern mithilfe der Bing-Bildersuche-REST-API und Python'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung, um Bildsuchanforderungen mithilfe von Python an die Bing-Bildersuche-REST-API zu senden und JSON-Antworten zu empfangen.
 services: cognitive-services
@@ -8,21 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/26/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 9f43b056275ba83630e711ff1a512cb73e84216a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.custom: seodec2018, devx-track-python
+ms.openlocfilehash: 0d0f3e3578f1fe40794ec5697291d35e3d277419
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034625"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341732"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Schnellstart: Suchen nach Bildern mithilfe der Bing-Bildersuche-REST-API und Python
 
-In diesem Schnellstart erfahren Sie, wie Sie Suchanforderungen an die Bing-Bildersuche-API senden. Diese Python-Anwendung sendet eine Suchabfrage an die API und zeigt die URL des ersten Bilds in den Ergebnissen an. Diese Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Sie können dieses Beispiel als Jupyter Notebook in [MyBinder](https://mybinder.org) ausführen, indem Sie auf das Binder-Badge klicken:
+In diesem Schnellstart erfahren Sie, wie Sie Suchanforderungen an die Bing-Bildersuche-API senden. Diese Python-Anwendung sendet eine Suchabfrage an die API und zeigt die URL des ersten Bilds in den Ergebnissen an. Die Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel.
+
+Um dieses Beispiel als Jupyter Notebook in [MyBinder](https://mybinder.org) auszuführen, wählen Sie das Badge zum **Starten von Binder** aus:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
@@ -40,7 +45,7 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
 
 ## <a name="create-and-initialize-the-application"></a>Erstellen und Initialisieren der Anwendung
 
-1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor eine neue Python-Datei, und importieren Sie die folgenden Module: Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Suchendpunkt und den Suchbegriff.
+1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor eine neue Python-Datei, und importieren Sie die folgenden Module: Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Suchendpunkt und den Suchbegriff. Für `search_url` können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```python
     import requests
@@ -61,18 +66,19 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
 
 ## <a name="create-and-send-a-search-request"></a>Erstellen und Senden einer Suchanforderung
 
-1. Erstellen Sie ein Wörterbuch für die Parameter der Suchanforderung. Fügen Sie dem Parameter `q` Ihren Suchbegriff hinzu. Verwenden Sie „public“ (öffentlich) für den Parameter `license`, um nach Bildern in der öffentlichen Domäne zu suchen. Verwenden Sie „photo“ (Foto) für `imageType`, um ausschließlich nach Fotos zu suchen.
+1. Erstellen Sie ein Wörterbuch für die Parameter der Suchanforderung. Fügen Sie dem Parameter `q` Ihren Suchbegriff hinzu. Legen Sie den Parameter `license` auf `public` fest, um nach Bildern in der öffentlichen Domäne zu suchen. Legen Sie `imageType` auf `photo` fest, um ausschließlich nach Fotos zu suchen.
 
     ```python
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. Rufen Sie mithilfe der Bibliothek `requests` die Bing-Bildersuche-API auf. Fügen Sie der Anforderung Ihren Header und die Parameter hinzu, und geben Sie die Antwort als JSON-Objekt zurück. 
+2. Rufen Sie mithilfe der Bibliothek `requests` die Bing-Bildersuche-API auf. Fügen Sie der Anforderung Ihren Header und die Parameter hinzu, und geben Sie die Antwort als JSON-Objekt zurück. Die URLs zu verschiedenen Miniaturbildern können Sie aus dem Feld `thumbnailUrl` der Antwort abrufen.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
     search_results = response.json()
+    thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
     ```
 
 ## <a name="view-the-response"></a>Anzeigen der Antwort
@@ -80,6 +86,8 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
 1. Erstellen Sie mithilfe der matplotlib-Bibliothek eine neue Abbildung mit vier Spalten und vier Zeilen. 
 
 2. Durchlaufen Sie die Zeilen und Spalten der Abbildung, und fügen Sie jedem Bereich mithilfe der Methode `Image.open()` der PIL-Bibliothek ein Miniaturbild hinzu. 
+
+3. Verwenden Sie `plt.show()`, um die Abbildung zu zeichnen und die Bilder anzuzeigen.
 
     ```python
     f, axes = plt.subplots(4, 4)
@@ -90,9 +98,9 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
             image = Image.open(BytesIO(image_data.content))        
             axes[i][j].imshow(image)
             axes[i][j].axis("off")
+    plt.show()
     ```
 
-3. Verwenden Sie `plt.show()`, um die Abbildung zu zeichnen und die Bilder anzuzeigen.
 
 ## <a name="example-json-response"></a>JSON-Beispielantwort
 
@@ -148,7 +156,6 @@ Antworten der Bing-Bildersuche-API werden im JSON-Format zurückgegeben. Diese B
 > [Tutorial: Einseitige Web-App für die Bing-Bildersuche](../tutorial-bing-image-search-single-page-app.md)
 
 * [Was ist die Bing-Bildersuche-API?](../overview.md)  
-* [Details zu den Preisen](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) für die Bing-Suche-APIs 
-* [Abrufen eines kostenlosen Cognitive Services-Zugriffsschlüssels](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentation zu Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
-* [Referenz zur Bing-Bildersuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Details zu den Preisen für die Bing-Suche-APIs](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
+* [Dokumentation zu Azure Cognitive Services](../../index.yml)
+* [Referenz zur Bing-Bildersuche-API](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

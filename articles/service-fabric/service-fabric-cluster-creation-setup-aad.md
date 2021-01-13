@@ -1,34 +1,30 @@
 ---
-title: Einrichten von Azure Active Directory für Service Fabric-Clientauthentifizierung | Microsoft-Dokumentation
+title: Einrichten von Azure Active Directory für die Clientauthentifizierung
 description: Hier erfahren Sie, wie Azure Active Directory (Azure AD) für die Authentifizierung von Clients für Service Fabric-Cluster eingerichtet wird.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/28/2019
-ms.author: atsenthi
-ms.openlocfilehash: 6c195357c4a037534307571a53589b2ae861d88b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 537a81a090828d3fcc9dde6032f1d4eb2df9b4e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67486021"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86258763"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Einrichten von Azure Active Directory für die Clientauthentifizierung
 
-Für in Azure ausgeführte Cluster wird Azure Active Directory (Azure AD) zum Sichern des Zugriffs auf Verwaltungsendpunkte empfohlen.  In diesem Artikel wird die Einrichtung von Azure AD zum Authentifizieren von Clients für einen Service Fabric-Cluster beschrieben. Diese muss vor dem [Erstellen des Clusters](service-fabric-cluster-creation-via-arm.md) erfolgen.  Mit Azure AD können Organisationen (so genannte Mandanten) den Benutzerzugriff auf Anwendungen verwalten. Bei den Anwendungen wird zwischen Anwendungen mit webbasierter Anmeldebenutzeroberfläche und Anwendungen mit nativer Clientumgebung unterschieden. 
+Für in Azure ausgeführte Cluster wird Azure Active Directory (Azure AD) zum Sichern des Zugriffs auf Verwaltungsendpunkte empfohlen. In diesem Artikel wird die Einrichtung von Azure AD zum Authentifizieren von Clients für einen Service Fabric-Cluster beschrieben.
 
-Service Fabric-Cluster bieten unterschiedliche Einstiegspunkte für ihre Verwaltungsfunktionen. Hierzu zählen etwa [Service Fabric Explorer][service-fabric-visualizing-your-cluster] (webbasiert) und [Visual Studio][service-fabric-manage-application-in-visual-studio]. Daher erstellen Sie zwei Azure AD-Anwendungen, um den Zugriff auf den Cluster zu steuern: eine Webanwendung und eine native Anwendung.  Nachdem die Anwendungen erstellt wurden, weisen Sie Benutzer zu schreibgeschützten Rollen und Administratorrollen zu.
+In diesem Artikel wird der Begriff „Anwendung“ verwendet, um sich auf [Azure Active Directory-Anwendungen](../active-directory/develop/developer-glossary.md#client-application) zu beziehen, nicht auf Service Fabric-Anwendungen. Die Unterscheidung wird bei Bedarf vorgenommen. Mit Azure AD können Organisationen (so genannte Mandanten) den Benutzerzugriff auf Anwendungen verwalten.
+
+Service Fabric-Cluster bieten unterschiedliche Einstiegspunkte für ihre Verwaltungsfunktionen. Hierzu zählen etwa [Service Fabric Explorer][service-fabric-visualizing-your-cluster] (webbasiert) und [Visual Studio][service-fabric-manage-application-in-visual-studio]. Daher werden Sie zwei Azure AD-Anwendungen erstellen, um den Zugriff auf den Cluster zu steuern: eine Webanwendung und eine native Anwendung. Nachdem die Anwendungen erstellt wurden, weisen Sie Benutzer zu schreibgeschützten Rollen und Administratorrollen zu.
 
 > [!NOTE]
-> Vor der Clustererstellung müssen folgende Schritte ausgeführt werden. Da in den Skripts Clusternamen und Endpunkte erwartet werden, sollte es sich bei den Werten nicht um bereits erstellte, sondern um geplante Werte handeln.
+> Vor der Clustererstellung müssen folgende Schritte unter Linux ausgeführt werden. Unter Windows haben Sie auch die Möglichkeit, die [Azure AD-Authentifizierung für einen bestehenden Cluster zu konfigurieren](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md).
+
+> [!NOTE]
+> Es ist ein [bekanntes Problem](https://github.com/microsoft/service-fabric/issues/399), dass Anwendungen und Knoten in Linux AAD-fähigen Clustern nicht im Azure-Portal angezeigt werden können.
+
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie bereits einen Mandanten erstellt haben. Lesen Sie andernfalls zunächst den Artikel [Einrichten eines Azure Active Directory-Mandanten][active-directory-howto-tenant].
@@ -57,7 +53,7 @@ Die Mandanten-ID (*TenantId*) können Sie mithilfe des PowerShell-Befehls `Get-A
 
 *ClusterName* wird als Präfix für durch das Skript erstellte Azure AD-Anwendungen verwendet. Der Wert muss nicht exakt dem tatsächlichen Clusternamen entsprechen. Er dient lediglich zur Vereinfachung der Zuordnung von Azure AD-Artefakten zu dem Service Fabric-Cluster, mit dem sie verwendet werden.
 
-*WebApplicationReplyUrl* ist der Standardendpunkt, den Azure AD nach Abschluss des Anmeldeprozesses an Ihre Benutzer zurückgibt. Legen Sie diesen Endpunkt auf den Service Fabric Explorer-Endpunkt für Ihren Cluster fest. Dies ist standardmäßig folgender Wert:
+*WebApplicationReplyUrl* ist der Standardendpunkt, den Azure AD nach Abschluss des Anmeldeprozesses an Ihre Benutzer zurückgibt. Legen Sie diesen Endpunkt auf den Service Fabric Explorer-Endpunkt für Ihren Cluster fest. Wenn Sie Azure AD-Anwendungen erstellen, um einen bestehenden Cluster darzustellen, stellen Sie sicher, dass diese URL mit dem Endpunkt Ihres bestehenden Clusters übereinstimmt. Wenn Sie Anwendungen für einen neuen Cluster erstellen, planen Sie den Endpunkt, den Ihr Cluster haben wird, und achten Sie darauf, nicht den Endpunkt eines bestehenden Clusters zu verwenden. Standardmäßig ist der Service Fabric Explorer-Endpunkt:
 
 https://&lt;Cluster-Domäne&gt;:19080/Explorer
 
@@ -66,7 +62,7 @@ Sie werden aufgefordert, sich bei einem Konto anzumelden, das über Administrato
    * *Clustername*\_Cluster
    * *Clustername*\_Client
 
-Das Skript gibt den für die Azure Resource Manager-Vorlage erforderlichen JSON-Code aus, wenn Sie [den Cluster erstellen](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access). Es empfiehlt sich daher, das PowerShell-Fenster geöffnet zu lassen.
+Das Skript gibt den für die Azure Resource Manager-Vorlage erforderlichen JSON-Code aus, wenn Sie [Ihren AAD-aktivierten Cluster erstellen](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access). Es empfiehlt sich daher, das PowerShell-Fenster geöffnet zu lassen.
 
 ```json
 "azureActiveDirectory": {
@@ -108,9 +104,19 @@ Wenn Sie versuchen, sich in Service Fabric Explorer bei Azure AD anzumelden, wir
 Die Cluster(web)anwendung für Service Fabric Explorer versucht, sich bei Azure AD zu authentifizieren, und gibt im Rahmen der Anforderung die Rückgabe-URL für die Umleitung an. Die URL ist jedoch nicht in der Liste **ANTWORT-URL** der Azure AD-Anwendung enthalten.
 
 #### <a name="solution"></a>Lösung
-Klicken Sie auf der AAD-Seite auf „App-Registrierungen“, wählen Sie Ihre Clusteranwendung aus, und klicken Sie dann auf die Schaltfläche **Antwort-URLs**. Fügen Sie auf der Seite „Antwort-URLs“ die URL von Service Fabric Explorer zur Liste hinzu, oder ersetzen Sie eines der Elemente in der Liste. Speichern Sie anschließend Ihre Änderung.
+Wählen Sie auf der Registrierungsseite der Azure AD-App für Ihren Cluster die Option **Authentifizierung**, und fügen Sie unter dem Abschnitt **URIs umleiten** die Service Fabric Explorer-URL zur Liste hinzu. Speichern Sie die Änderung.
 
-![Antwort-URL für Webanwendung][web-application-reply-url]
+![Antwort-URL der Webanwendung][web-application-reply-url]
+
+### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>Beim Herstellen einer Verbindung mit dem Cluster mithilfe von Azure AD Authentifizierung über PowerShell wird ein Fehler ausgegeben, wenn Sie sich anmelden: „AADSTS50011“
+#### <a name="problem"></a>Problem
+Wenn Sie versuchen, mithilfe von Azure AD über PowerShell eine Verbindung mit einem Service Fabric-Cluster herzustellen, gibt die Anmeldeseite einen Fehler zurück: „AADSTS50011: The reply url specified in the request does not match the reply urls configured for the application: &lt;guid&gt;.“ (Die in der Anforderung angegebene Antwort-URL stimmt nicht mit den für die Anwendung konfigurierten URLs überein.)
+
+#### <a name="reason"></a>`Reason`
+Ähnlich wie beim vorherigen Problem versucht PowerShell, sich bei Azure AD zu authentifizieren, wodurch eine Umleitungs-URL bereitgestellt wird, die nicht in der Liste **Antwort-URLs** der Azure AD-Anwendung aufgeführt ist.  
+
+#### <a name="solution"></a>Lösung
+Verwenden Sie den gleichen Vorgang wie für das vorherige Problem. Die URL muss aber auf `urn:ietf:wg:oauth:2.0:oob` festgelegt werden, eine spezielle Umleitung für Befehlszeilenauthentifizierung.
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>Herstellen der Clusterverbindung unter Verwendung der Azure AD-Authentifizierung über PowerShell
 Verwenden Sie das folgende PowerShell-Befehlsbeispiel, um eine Service Fabric-Clusterverbindung herzustellen:
@@ -119,13 +125,13 @@ Verwenden Sie das folgende PowerShell-Befehlsbeispiel, um eine Service Fabric-Cl
 Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalInSec 10 -AzureActiveDirectory -ServerCertThumbprint <thumbprint>
 ```
 
-Weitere Informationen finden Sie unter [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster).
+Weitere Informationen finden Sie unter [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster).
 
 ### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>Kann ich den gleichen Azure AD-Mandanten in mehreren Clustern verwenden?
 Ja. Denken Sie jedoch daran, die URL von Service Fabric Explorer Ihrer Cluster(web)anwendung hinzuzufügen. Andernfalls funktioniert Service Fabric Explorer nicht.
 
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Warum benötige ich ein Serverzertifikat, auch wenn Azure AD aktiviert ist?
-„FabricClient“ und „FabricGateway“ führen eine wechselseitige Authentifizierung durch. Bei der Azure AD-Authentifizierung stellt die Azure AD-Integration die Identität des Clients für den Server bereit, und das Serverzertifikat dient zum Überprüfen der Serveridentität. Weitere Informationen zu Service Fabric-Zertifikaten finden Sie unter [X.509-Zertifikate und Service Fabric][x509-certificates-and-service-fabric].
+„FabricClient“ und „FabricGateway“ führen eine wechselseitige Authentifizierung durch. Bei der Azure AD-Authentifizierung stellt die Azure AD-Integration die Identität des Clients für den Server bereit, und das Serverzertifikat dient für den Client zum Überprüfen der Serveridentität. Weitere Informationen zu Service Fabric-Zertifikaten finden Sie unter [X.509-Zertifikate und Service Fabric][x509-certificates-and-service-fabric].
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nach dem Einrichten von Azure Active Directory-Anwendungen und dem Festlegen von Rollen für Benutzer [konfigurieren Sie einen Cluster und stellen ihn bereit](service-fabric-cluster-creation-via-arm.md).

@@ -1,11 +1,10 @@
 ---
-title: 'Tutorial: Diagnostizieren eines Problems mit der Kommunikation zwischen Netzwerken – Azure-Portal | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie ein Kommunikationsproblem zwischen einem virtuellen Azure-Netzwerk und einem mit diesem über ein Gateway für virtuelle Azure-Netzwerke verbundenen lokalen oder anderen virtuellen Netzwerk mit der VPN-Diagnosefunktion von Network Watcher diagnostizieren.
+title: 'Tutorial: Diagnostizieren eines Problems mit der Kommunikation zwischen Netzwerken mit dem Azure-Portal'
+titleSuffix: Azure Network Watcher
+description: In diesem Tutorial erfahren Sie, wie Sie ein Kommunikationsproblem zwischen einem virtuellen Azure-Netzwerk und einem mit diesem über ein Gateway für virtuelle Azure-Netzwerke verbundenen lokalen oder anderen virtuellen Netzwerk mit der VPN-Diagnosefunktion von Network Watcher diagnostizieren.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: I need to determine why resources in a virtual network can't communicate with resources in a different network.
 ms.service: network-watcher
 ms.devlang: na
@@ -13,14 +12,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: e4dc66a5ca6e18b12586b5b03742fba3d6c3d6c4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 25c58f99f56a4328527d1dd970e3ade21eb51819
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704216"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90987178"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Tutorial: Diagnostizieren eines Problems mit der Kommunikation zwischen Netzwerken mit dem Azure-Portal
 
@@ -52,7 +51,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 Wenn Sie bereits eine Network Watcher-Instanz in der Region „USA, Osten“ aktiviert haben, fahren Sie mit [Diagnostizieren eines Gateways](#diagnose-a-gateway) fort.
 
-1. Wählen Sie im Portal die Option **Alle Dienste** aus. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wenn **Network Watcher** in den Ergebnissen angezeigt wird, wählen Sie ihn aus.
+1. Klicken Sie im Portal auf **Alle Dienste**. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wenn **Network Watcher** in den Ergebnissen angezeigt wird, wählen Sie ihn aus.
 2. Wählen Sie die **Regionen** aus, um sie zu erweitern, und wählen Sie dann **...** rechts von **USA, Osten** aus (siehe folgende Abbildung):
 
     ![Aktivieren von Network Watcher](./media/diagnose-communication-problem-between-networks/enable-network-watcher.png)
@@ -74,12 +73,12 @@ Wenn Sie bereits eine Network Watcher-Instanz in der Region „USA, Osten“ akt
 8. Während der Testausführung wird **Wird ausgeführt** in der Spalte **PROBLEMBEHANDLUNGSSTATUS** angezeigt, wo in der vorherigen Abbildung **Nicht gestartet** angezeigt wird. Der Test nimmt möglicherweise einige Minuten in Anspruch.
 9. Zeigen Sie den Status eines abgeschlossenen Tests an. Die folgende Abbildung zeigt die Statusergebnisse eines abgeschlossenen Diagnosetests:
 
-    ![Status](./media/diagnose-communication-problem-between-networks/status.png)
+    ![Screenshot: Statusergebnisse eines Diagnosetests (in diesem Beispiel „Fehlerhaft“), einschließlich Zusammenfassung und Details](./media/diagnose-communication-problem-between-networks/status.png)
 
     Für den **PROBLEMBEHANDLUNGSSTATUS** wird **Fehlerhaft** angezeigt, außerdem sehen Sie eine **Zusammenfassung** des Problems und eine Beschreibung im **Detail** auf der Registerkarte **Status**.
 10. Bei Auswahl der Registerkarte **Aktion** bietet die VPN-Diagnose zusätzliche Informationen. In dem in der folgenden Abbildung gezeigten Beispiel teilt die VPN-Diagnose Ihnen mit, dass Sie die Integrität jeder Verbindung überprüfen sollten:
 
-    ![Aktion](./media/diagnose-communication-problem-between-networks/action.png)
+    ![Screenshot: Registerkarte „Aktion“ mit zusätzlichen Informationen](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>Diagnostizieren einer Gatewayverbindung
 
@@ -87,7 +86,7 @@ Ein Gateway ist über eine Gatewayverbindung mit anderen Netzwerken verbunden. G
 
 1. Schließen Sie Schritt 7 von [Diagnostizieren eines Gateways](#diagnose-a-gateway) erneut ab, und wählen Sie nun eine Verbindung aus. Im folgenden Beispiel wird eine Verbindung mit dem Namen **VNet1toSite1** getestet:
 
-    ![Verbindung](./media/diagnose-communication-problem-between-networks/connection.png)
+    ![Screenshot: Starten der Problembehandlung für eine ausgewählte Verbindung](./media/diagnose-communication-problem-between-networks/connection.png)
 
     Der Test dauert mehrere Minuten.
 2. Nachdem der Test der Verbindung abgeschlossen ist, erhalten Sie Ergebnisse, die den Ergebnissen in den folgenden Abbildungen auf den Registerkarten **Status** und **Aktion** ähneln:
@@ -108,7 +107,7 @@ Wenn Sie mithilfe des Skripts ein VPN-Gateway in den [Voraussetzungen](#prerequi
 
 1. Geben Sie oben im Portal *TestRG1* im Feld **Suche** ein. Wenn Sie **TestRG1** in den Suchergebnissen finden, wählen Sie dies aus.
 2. Wählen Sie die Option **Ressourcengruppe löschen**.
-3. Geben Sie *TestRG1* für **GEBEN SIE DEN RESSOURCENGRUPPENNAMEN EIN:**, und wählen Sie **Löschen** aus.
+3. Geben Sie *TestRG1* für **GEBEN SIE DEN RESSOURCENGRUPPENNAMEN EIN:** , und wählen Sie **Löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

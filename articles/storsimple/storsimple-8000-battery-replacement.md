@@ -1,30 +1,22 @@
 ---
-title: Austauschen von Akkus bei Microsoft Azure-Geräten der StorSimple 8000-Serie | Microsoft-Dokumentation
+title: Austauschen von Akkus bei Geräten der Microsoft Azure StorSimple 8000-Serie
 description: Beschreibt das Entfernen, Ersetzen und Warten des Notfallakkus auf dem StorSimple-Gerät.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 4ebf3f28d40e0461d140a3fe74fb940720f26db6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17a6a07d117557cdee23634bd211a14cf90d49e3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693753"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023770"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Ersetzen des Notfallakkus auf dem StorSimple-Gerät
 
 ## <a name="overview"></a>Übersicht
-Die Stromversorgungs- und Kühleinheit (PCM) im primären Gehäuse des Microsoft Azure StorSimple-Geräts verfügt über einen zusätzlichen Akku. Dieser Akku stellt die Stromversorgung bereit, damit das StorSimple-Gerät Daten speichern kann, wenn ein Stromausfall im primären Gehäuse auftritt. Dieser Akku wird als *Notfallakku*bezeichnet. Der Notfallakku ist nur für das primäre Gehäuse Ihres StorSimple-Geräts vorhanden (das EBOD-Gehäuse enthält keinen Notfallakku).
+Die Stromversorgungs- und Kühleinheit (PCM) im primären Gehäuse des Microsoft Azure StorSimple-Geräts verfügt über einen zusätzlichen Akku. Dieser Akku stellt die Stromversorgung bereit, damit das StorSimple-Gerät Daten speichern kann, wenn ein Stromausfall im primären Gehäuse auftritt. Dieser Akku wird als *Notfallakku* bezeichnet. Der Notfallakku ist nur für das primäre Gehäuse Ihres StorSimple-Geräts vorhanden (das EBOD-Gehäuse enthält keinen Notfallakku).
 
 In diesem Tutorial werden folgende Punkte erläutert:
 
@@ -67,7 +59,7 @@ Der Notfallakku für Ihr StorSimple-Gerät ist eine vor Ort austauschbare Kompon
    | 3 |Batterieausfall |
    | 4 |PCM OK |
    | 5 |Stromausfall (Gleichstrom) |
-   | 6 |Akku fehlerfrei |
+   | 6 |Batterie betriebsbereit |
 3. Um das PCM mit dem fehlerhaften Akku zu entfernen, führen Sie die Schritte unter [Entfernen eines PCM](storsimple-8000-power-cooling-module-replacement.md#remove-a-pcm)aus.
 4. Heben Sie bei entferntem PCM das Akkumodul nach oben, und drehen Sie den Griff, wie in der folgenden Abbildung dargestellt, um den Akku zu entfernen.
    

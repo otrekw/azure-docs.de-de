@@ -1,27 +1,17 @@
 ---
-title: Ändern der Größe eines virtuellen Linux-Computers mit der Azure CLI | Microsoft-Dokumentation
-description: So skalieren Sie einen virtuellen Linux-Computer zentral hoch oder herunter, indem Sie die VM-Größe ändern.
-services: virtual-machines-linux
-documentationcenter: na
-author: mikewasson
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: e163f878-b919-45c5-9f5a-75a64f3b14a0
+title: Ändern der Größe einer Linux-VM mit Azure CLI
+description: So skalieren Sie einen virtuellen Linux-Computer hoch oder herunter, indem Sie die VM-Größe ändern.
+author: DavidCBerry13
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.topic: how-to
 ms.date: 02/10/2017
-ms.author: mwasson
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 46baa3d4dbcd466944d7a91e446e380c89f53f2b
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.author: daberry
+ms.openlocfilehash: a93b1dcfe803fdead0d741553c45894f1675372b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671734"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87372262"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Ändern der Größe eines virtuellen Linux-Computers über die Azure CLI 
 
@@ -56,9 +46,9 @@ Zum Ändern der Größe eines virtuellen Computers muss die neueste [Azure CLI](
    > Die Aufhebung der Zuordnung der VM gibt auch jegliche dynamische IP-Adressen frei, die der VM zugewiesen sind. Das Betriebssystem und die Datenträger sind nicht betroffen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Führen Sie mehrere VM-Instanzen aus, und skalieren Sie diese zentral hoch, um zusätzliche Skalierbarkeit zu erhalten. Weitere Informationen finden Sie unter [Automatisches Skalieren von Linux-Computern in einer VM-Skalierungsgruppe][scale-set]. 
+Führen Sie mehrere VM-Instanzen aus, und skalieren Sie diese auf, um zusätzliche Skalierbarkeit zu erhalten. Weitere Informationen finden Sie unter [Automatisches Skalieren von Linux-Computern in einer VM-Skalierungsgruppe][scale-set]. 
 
 <!-- links -->
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
-[scale-set]: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md 
+[scale-set]: ../../virtual-machine-scale-sets/tutorial-autoscale-cli.md 
 [vm-sizes]:sizes.md

@@ -1,34 +1,27 @@
 ---
-title: Erstellen eines virtuellen Windows-Computers in einer Zone – Azure PowerShell | Microsoft-Dokumentation
+title: Erstellen eines virtuellen Windows-Computers in einer Zone mit Azure PowerShell
 description: Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit Azure PowerShell
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 8e850de9314ba2de678ebe1aa25b4ffc251bf59f
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 95d97605f00a3a80c097eb16695c9d296e17c33d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173842"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87825241"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit PowerShell
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell einen virtuellen Azure-Computer unter Windows Server 2016 in einer Azure-Verfügbarkeitszone erstellen. Eine [Verfügbarkeitszone](../../availability-zones/az-overview.md) ist eine physisch separate Zone in einer Azure-Region. Verwenden Sie Verfügbarkeitszonen, um Ihre Apps und Daten vor einem unwahrscheinlichen Fehler oder Ausfall eines gesamten Rechenzentrums zu schützen.
 
-Um eine Verfügbarkeitszone verwenden zu können, muss der virtuelle Computer in einer [unterstützten Azure-Region](../../availability-zones/az-overview.md#services-support-by-region) erstellt werden.
+Um eine Verfügbarkeitszone verwenden zu können, muss der virtuelle Computer in einer [unterstützten Azure-Region](../../availability-zones/az-region.md) erstellt werden.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -39,9 +32,9 @@ Connect-AzAccount
 ```
 
 ## <a name="check-vm-sku-availability"></a>Überprüfen der VM-SKU-Verfügbarkeit
-Die Verfügbarkeit von VM-Größen bzw. SKUs kann je nach Region und Zone variieren. Als Hilfe bei der Planung zur Verwendung von Verfügbarkeitszonen können Sie die verfügbaren VM-SKUs nach Azure-Region und -Zone auflisten. Hierdurch wird sichergestellt, dass Sie eine geeignete VM-Größe wählen und die gewünschte zonenübergreifende Resilienz erzielen. Weitere Informationen zu den verschiedenen VM-Typen und -Größen finden Sie unter [Übersicht über VM-Größen](sizes.md).
+Die Verfügbarkeit von VM-Größen bzw. SKUs kann je nach Region und Zone variieren. Als Hilfe bei der Planung zur Verwendung von Verfügbarkeitszonen können Sie die verfügbaren VM-SKUs nach Azure-Region und -Zone auflisten. Hierdurch wird sichergestellt, dass Sie eine geeignete VM-Größe wählen und die gewünschte zonenübergreifende Resilienz erzielen. Weitere Informationen zu den verschiedenen VM-Typen und -Größen finden Sie unter [Übersicht über VM-Größen](../sizes.md).
 
-Sie können die verfügbaren VM-SKUs mit dem Befehl [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) anzeigen. Im folgenden Beispiel werden die verfügbaren VM-SKUs in der Region *eastus2* aufgeführt:
+Sie können die verfügbaren VM-SKUs mit dem Befehl [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) anzeigen. Im folgenden Beispiel werden die verfügbaren VM-SKUs in der Region *eastus2* aufgeführt:
 
 ```powershell
 Get-AzComputeResourceSku | where {$_.Locations.Contains("eastus2")};
@@ -68,7 +61,7 @@ virtualMachines   Standard_E4_v3   eastus2  {1, 2, 3}
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
-Erstellen Sie mit [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus2* erstellt. 
+Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus2* erstellt. 
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location EastUS2
@@ -89,7 +82,7 @@ $vnet = New-AzVirtualNetwork -ResourceGroupName myResourceGroup -Location eastus
 
 # Create a public IP address in an availability zone and specify a DNS name
 $pip = New-AzPublicIpAddress -ResourceGroupName myResourceGroup -Location eastus2 -Zone 2 `
-    -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "mypublicdns$(Get-Random)"
+    -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "mypublicdns$(Get-Random)" -Sku Standard
 ```
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Erstellen Sie eine Netzwerksicherheitsgruppe und eine Netzwerksicherheitsgruppen-Regel. 
@@ -112,7 +105,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName myResourceGroup -Location e
 ```
 
 ### <a name="create-a-network-card-for-the-virtual-machine"></a>Erstellen einer Netzwerkkarte für den virtuellen Computer 
-Erstellen Sie mit [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) eine Netzwerkkarte für den virtuellen Computer. Die Netzwerkkarte verbindet die VM mit einem Subnetz, einer Netzwerksicherheitsgruppe und einer öffentlichen IP-Adresse.
+Erstellen Sie mit [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) eine Netzwerkkarte für den virtuellen Computer. Die Netzwerkkarte verbindet die VM mit einem Subnetz, einer Netzwerksicherheitsgruppe und einer öffentlichen IP-Adresse.
 
 ```powershell
 # Create a virtual network card and associate with public IP address and NSG
@@ -135,7 +128,7 @@ $vmConfig = New-AzVMConfig -VMName myVM -VMSize Standard_DS1_v2 -Zone 2 | `
     -Skus 2016-Datacenter -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
 ```
 
-Erstellen Sie mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) den virtuellen Computer.
+Erstellen Sie mit [New-AzVM](/powershell/module/az.compute/new-azvm) den virtuellen Computer.
 
 ```powershell
 New-AzVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
@@ -143,7 +136,7 @@ New-AzVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
 
 ## <a name="confirm-zone-for-managed-disk"></a>Bestätigen der Zone für den verwalteten Datenträger
 
-Sie haben die IP-Adressressource des virtuellen Computers in der gleichen Verfügbarkeitszone erstellt wie den virtuellen Computer. Die verwaltete Datenträgerressource für den virtuellen Computer wird in der gleichen Verfügbarkeitszone erstellt. Dies kann mit [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) überprüft werden:
+Sie haben die IP-Adressressource des virtuellen Computers in der gleichen Verfügbarkeitszone erstellt wie den virtuellen Computer. Die verwaltete Datenträgerressource für den virtuellen Computer wird in der gleichen Verfügbarkeitszone erstellt. Dies kann mit [Get-AzDisk](/powershell/module/az.compute/get-azdisk) überprüft werden:
 
 ```powershell
 Get-AzDisk -ResourceGroupName myResourceGroup
@@ -177,4 +170,4 @@ Tags               : {}
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie einen virtuellen Computer in einer Verfügbarkeitszone erstellen. Erfahren Sie mehr über die [Verfügbarkeit](availability.md) virtueller Azure-Computer.
+In diesem Artikel haben Sie gelernt, wie Sie einen virtuellen Computer in einer Verfügbarkeitszone erstellen. Erfahren Sie mehr über die [Verfügbarkeit](../availability.md) virtueller Azure-Computer.

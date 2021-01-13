@@ -1,29 +1,22 @@
 ---
 title: Sammeln von Daten von einem virtuellen Azure-Computer mit Azure Monitor | Microsoft-Dokumentation
 description: Informationen zum Aktivieren der Log Analytics-Agent-VM-Erweiterung und Aktivieren der Sammlung von Daten von Ihren Azure-VMs mit Log Analytics.
-services: log-analytics
-documentationcenter: log-analytics
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: quickstart
+author: bwren
+ms.author: bwren
 ms.date: 08/19/2019
-ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 8e44908baea506efa488899c90e9022acc6e30b8
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, sec-javascript-october2019
+ms.openlocfilehash: 6cc9c6af4592956b6498e826ef65b556e5780f34
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992147"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186829"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Sammeln von Daten von einem virtuellen Azure-Computer mit Azure Monitor
 
-[Azure Monitor](../overview.md) kann Daten direkt von Ihren virtuellen Azure-Computern zur detaillierten Analyse und Korrelation in einem Log Analytics-Arbeitsbereich sammeln. Wenn Sie die Log Analytics-VM-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) und [Linux](../../virtual-machines/extensions/oms-linux.md) installieren, kann Azure Monitor Daten von Ihren virtuellen Azure-Computern sammeln. Diese Schnellstartanleitung zeigt Ihnen, wie Sie mit der VM-Erweiterung in wenigen einfachen Schritten Daten von Ihren Azure-Linux-VMs oder Azure-Windows-VMs konfigurieren und sammeln.  
+[Azure Monitor](../overview.md) kann Daten direkt von Ihren virtuellen Azure-Computern zur Analyse von Details und Korrelationen in einem Log Analytics-Arbeitsbereich sammeln. Wenn Sie die Log Analytics-VM-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) und [Linux](../../virtual-machines/extensions/oms-linux.md) installieren, kann Azure Monitor Daten von Ihren virtuellen Azure-Computern sammeln. Diese Schnellstartanleitung zeigt Ihnen, wie Sie mit der VM-Erweiterung in wenigen einfachen Schritten Daten von Ihren Azure-Linux-VMs oder Azure-Windows-VMs konfigurieren und sammeln.  
  
 Dieser Schnellstart setzt voraus, dass Sie über einen virtuellen Azure-Computer verfügen. Wenn nicht, können Sie mit unseren VM-Schnellstarts [eine Windows-VM erstellen](../../virtual-machines/windows/quick-create-portal.md) oder [eine Linux-VM erstellen](../../virtual-machines/linux/quick-create-cli.md).
 
@@ -35,7 +28,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics-Arbeitsbereiche** aus.
 
-    ![Azure-Portal](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Azure-Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Wählen Sie die Option **Erstellen** und anschließend Optionen für die folgenden Elemente aus:
 
@@ -45,7 +38,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
    * Wählen Sie den **Speicherort** für die Bereitstellung Ihrer virtuellen Computer aus.  Weitere Informationen finden Sie auf der Seite zur [Verfügbarkeit von Log Analytics in den einzelnen Regionen](https://azure.microsoft.com/regions/services/).
    * Wenn Sie einen Arbeitsbereich in einem neuen Abonnement erstellen, das nach dem 2. April 2018 erstellt wurde, wird automatisch der Tarif *Pro GB* verwendet. In diesem Fall ist keine Tarifauswahloption verfügbar.  Wenn Sie einen Arbeitsbereich für ein Abonnement erstellen, das vor dem 2. April erstellt oder mit einer vorhandenen EA-Registrierung verknüpft wurde, wählen Sie Ihren bevorzugten Tarif aus.  Weitere Informationen zu den einzelnen Tarifen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
   
-        ![Erstellen des Log Analytics-Ressourcenblatts](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![Erstellen des Log Analytics-Ressourcenblatts](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. Wählen Sie nach dem Bereitstellen der erforderlichen Informationen im Bereich **Log Analytics-Arbeitsbereich** die Option **OK** aus.  
 
@@ -80,7 +73,7 @@ Azure Monitor kann Ereignisse aus den Windows-Ereignisprotokollen oder Linux-Sys
 
 1. Wählen Sie **Erweiterte Einstellungen**.
 
-    ![Erweiterte Einstellungen für Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Erweiterte Einstellungen für Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
 
 2. Wählen Sie **Daten** und dann **Windows-Ereignisprotokolle**.
 
@@ -94,7 +87,7 @@ Azure Monitor kann Ereignisse aus den Windows-Ereignisprotokollen oder Linux-Sys
 
 7. Wenn Sie die Windows-Leistungsindikatoren zum ersten Mal für einen neuen Log Analytics-Arbeitsbereich konfigurieren, haben Sie die Möglichkeit, schnell mehrere allgemeine Indikatoren zu erstellen. Diese werden in einer Liste aufgeführt, und neben jedem Indikator finden Sie ein Kontrollkästchen.
 
-    ![Standardmäßige Windows-Leistungsindikatoren ausgewählt](media/quick-collect-azurevm/windows-perfcounters-default.png)
+    ![Screenshot des Bereichs „Windows-Leistungsindikatoren“ mit einer Liste ausgewählter Indikatoren und der ausgewählten Schaltfläche „Ausgewählte Leistungsindikatoren hinzufügen“](media/quick-collect-azurevm/windows-perfcounters-default.png)
 
     Wählen Sie **Ausgewählte Leistungsindikatoren hinzufügen** aus.  Sie werden hinzugefügt und mit einem Stichprobenintervall von zehn Sekunden voreingestellt.
   
@@ -114,7 +107,7 @@ Azure Monitor kann Ereignisse aus den Windows-Ereignisprotokollen oder Linux-Sys
 
 6. Wenn Sie die Linux-Leistungsindikatoren zum ersten Mal für einen neuen Log Analytics-Arbeitsbereich konfigurieren, haben Sie die Möglichkeit, schnell mehrere allgemeine Indikatoren zu erstellen. Diese werden in einer Liste aufgeführt, und neben jedem Indikator finden Sie ein Kontrollkästchen.
 
-    ![Standardmäßige Windows-Leistungsindikatoren ausgewählt](media/quick-collect-azurevm/linux-perfcounters-default.png)
+    ![Screenshot des Bereichs „Linux-Leistungsindikatoren“ mit einer Liste ausgewählter Indikatoren und der ausgewählten Schaltfläche „Ausgewählte Leistungsindikatoren hinzufügen“](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     Wählen Sie **Nachstehende Konfiguration auf meine Computer anwenden**  und dann **Ausgewählte Leistungsindikatoren hinzufügen** aus.  Sie werden hinzugefügt und mit einem Stichprobenintervall von zehn Sekunden voreingestellt.  
 
@@ -148,4 +141,4 @@ Jetzt sammeln Sie Betriebs- und Leistungsdaten von Ihren Windows- oder Linux-VMs
 Um zu erfahren, wie Sie die Daten anzeigen und analysieren, fahren Sie mit dem Tutorial fort.
 
 > [!div class="nextstepaction"]
-> [Anzeigen oder Analysieren der Daten in Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Anzeigen oder Analysieren der Daten in Log Analytics](../log-query/log-analytics-tutorial.md)

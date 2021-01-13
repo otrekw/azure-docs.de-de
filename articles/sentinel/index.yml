@@ -9,15 +9,15 @@ metadata:
   ms.subservice: azure-sentinel
   ms.topic: landing-page
   ms.collection: collection
-  author: rkarlin
-  ms.author: rkarlin
-  ms.date: 25/09/2019
-  ms.openlocfilehash: 8f8815645b7dfcdcc5e1ed5212ecd1ec298f8644
-  ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+  author: yelevin
+  ms.author: yelevin
+  ms.date: 06/25/2020
+  ms.openlocfilehash: d4e86295020ab68c6769ac34d6259bd78cf9934e
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/26/2019
-  ms.locfileid: "71316483"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "85374558"
 landingContent:
 - title: Informationen zu Azure Sentinel
   linkLists:
@@ -41,7 +41,7 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Herstellen einer Verbindung mit Azure AD
+    - text: Herstellen einer Verbindung mit Azure Active Directory
       url: connect-azure-active-directory.md
     - text: Herstellen einer Verbindung mit Azure Information Protection
       url: connect-azure-information-protection.md

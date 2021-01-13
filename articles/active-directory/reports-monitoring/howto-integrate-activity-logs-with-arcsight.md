@@ -1,28 +1,28 @@
 ---
-title: Integrieren von Azure Active Directory-Protokollen in ArcSight mit Azure Monitor | Microsoft-Dokumentation
+title: Integrieren von Protokollen in ArcSight mit Azure Monitor | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Azure Active Directory-Protokolle mit Azure Monitor in ArcSight integrieren.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: b37bef0d-982e-4e28-86b2-6c61ca524ae1
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/19/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e4f0f81c5f135e885fe06d4fb4fa67514e8781b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: fc7bcab04da005fd0d46d18e7b708dcb1c9d58e5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988161"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89230516"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Integrieren von Azure Active Directory-Protokollen in ArcSight mit Azure Monitor
 
@@ -33,10 +33,10 @@ In diesem Artikel erfahren Sie, wie Azure AD-Protokolle mithilfe von Azure Monit
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Sie benötigen Folgendes, um dieses Feature verwenden zu können:
-* Ein Azure Event Hub, der Azure AD-Aktivitätsprotokolle enthält. Erfahren Sie, [wie Sie Aktivitätsprotokolle an einen Event Hub streamen](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+* Ein Azure Event Hub, der Azure AD-Aktivitätsprotokolle enthält. Erfahren Sie, [wie Sie Aktivitätsprotokolle an einen Event Hub streamen](./tutorial-azure-monitor-stream-logs-to-event-hub.md). 
 * Eine konfigurierte Instanz von ArcSight Syslog NG Daemon SmartConnector (SmartConnector) oder ArcSight Load Balancer. Wenn die Ereignisse an ArcSight Load Balancer gesendet werden, werden sie anschließend von Load Balancer an den SmartConnector gesendet.
 
-Laden Sie den [Konfigurationsleitfaden für ArcSight SmartConnector für den Azure Monitor-Event Hub](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf) herunter, und öffnen Sie ihn. Dieser Leitfaden enthält die Schritte zum Installieren und Konfigurieren von ArcSight SmartConnector für Azure Monitor. 
+Laden Sie den [Konfigurationsleitfaden für ArcSight SmartConnector für den Azure Monitor-Event Hub](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292) herunter, und öffnen Sie ihn. Dieser Leitfaden enthält die Schritte zum Installieren und Konfigurieren von ArcSight SmartConnector für Azure Monitor. 
 
 ## <a name="integrate-azure-ad-logs-with-arcsight"></a>Integrieren von Azure AD-Protokollen in ArcSight
 
@@ -53,10 +53,10 @@ Laden Sie den [Konfigurationsleitfaden für ArcSight SmartConnector für den Azu
     * Die Anwendungseinstellungen aus Ihrer Bereitstellung werden in den Anwendungseinstellungen in Azure-Funktions-Apps dauerhaft gespeichert. 
     * In Azure wird eine neue Ressourcengruppe für ArcSight erstellt, die eine Azure AD-Anwendung für den ArcSight-Connector und Speicherkonten mit den zugeordneten Dateien im CEF-Format umfasst.
 
-4. Führen Sie abschließend die Schritte nach der Bereitstellung im Abschnitt **Post-Deployment Configurations** (Konfigurationsschritte nach der Bereitstellung) des Konfigurationsleitfadens durch. In diesem Abschnitt werden die zusätzlichen Konfigurationsschritte erläutert, die bei Verwendung eines App Service-Plans verhindern, dass die Funktions-Apps nach einem Zeitlimit in den Leerlauf wechseln. Zudem wird beschrieben, wie Sie das Streamen von Diagnoseprotokollen aus dem Event Hub konfigurieren und das SysLog NG Daemon SmartConnector-Keystorezertifikat aktualisieren, um es einem neu erstellten Speicherkonto zuzuordnen.
+4. Führen Sie abschließend die Schritte nach der Bereitstellung im Abschnitt **Post-Deployment Configurations** (Konfigurationsschritte nach der Bereitstellung) des Konfigurationsleitfadens durch. In diesem Abschnitt werden die zusätzlichen Konfigurationsschritte erläutert, die bei Verwendung eines App Service-Plans verhindern, dass die Funktions-Apps nach einem Zeitlimit in den Leerlauf wechseln. Zudem wird beschrieben, wie Sie das Streamen von Ressourcenprotokollen aus dem Event Hub konfigurieren und das SysLog NG Daemon SmartConnector-Keystorezertifikat aktualisieren, um es einem neu erstellten Speicherkonto zuzuordnen.
 
 5. Ferner wird im Konfigurationsleitfaden die Anpassung von Connectoreigenschaften in Azure sowie das Aktualisieren und Deinstallieren des Connectors erläutert. Es gibt auch einen Abschnitt zu Möglichkeiten der Leistungssteigerung, darunter das Upgrade auf einen [Azure Consumption-Plan](https://azure.microsoft.com/pricing/details/functions) und die Konfiguration von ArcSight Load Balancer, wenn die Ereignislast die Kapazitäten eines einzelnen Syslog NG Daemon SmartConnectors übersteigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Konfigurationsleitfaden für ArcSight SmartConnector für den Azure Monitor-Event Hub](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)
+[Konfigurationsleitfaden für ArcSight SmartConnector für den Azure Monitor-Event Hub](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)

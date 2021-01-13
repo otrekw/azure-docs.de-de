@@ -1,5 +1,5 @@
 ---
-title: Einrichten der Zielumgebung für die Notfallwiederherstellung von lokalen physischen Servern in Azure | Microsoft-Dokumentation
+title: Einrichten der Zielumgebung für physische Server in Azure Site Recovery
 description: Dieser Artikel beschreibt, wie Sie die Azure-Zielumgebung für die Notfallwiederherstellung von physischen Servern mithilfe von Azure Site Recovery einrichten.
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 41220ccdca945610d7d8ca87af0857114e2cef85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 685f04b27cd315b04ef5c45e155e825eebe2747b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60949066"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "73953897"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Vorbereiten des Ziels (VMware nach Azure)
 

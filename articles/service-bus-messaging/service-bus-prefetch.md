@@ -1,24 +1,14 @@
 ---
 title: Vorabruf von Azure Service Bus-Nachrichten | Microsoft-Dokumentation
-description: Verbessern Sie die Leistung durch den Vorabruf von Azure Service Bus-Nachrichten.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+description: Verbessern Sie die Leistung durch den Vorabruf von Azure Service Bus-Nachrichten. Nachrichten sind direkt für den lokalen Abruf verfügbar, bevor die Anwendung sie anfordert.
 ms.topic: article
-ms.date: 08/30/2018
-ms.author: aschhab
-ms.openlocfilehash: c63e6bf66e4832a1a5b0b5e6fc3dfbbf02d1e490
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/23/2020
+ms.openlocfilehash: 05e23b0590f0c04171efda8fb561b4c2664ed096
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125847"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85341050"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Vorabruf von Azure Service Bus-Nachrichten
 

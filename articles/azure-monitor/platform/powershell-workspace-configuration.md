@@ -1,49 +1,53 @@
 ---
-title: Verwenden von PowerShell zum Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs | Microsoft-Dokumentation
+title: Erstellen und Konfigurieren von Log Analytics mit PowerShell
 description: In Log Analytics-Arbeitsbereichen in Azure Monitor werden Daten von Servern in Ihrer lokalen oder Cloudinfrastruktur gespeichert. Sie können Computerdaten aus dem Azure-Speicher sammeln, wenn sie von Azure-Diagnose generiert werden.
-services: log-analytics
-author: bwren
-ms.service: log-analytics
-ms.devlang: powershell
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/19/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: ec72b0b9f2cdc932c7fb0c8a6fd8daecbc470c09
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 05/26/2020
+ms.openlocfilehash: d0bbde0ee4fd0eaf7387abaf6d548dc563e5b715
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779973"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86515443"
 ---
-# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Verwalten von Log Analytics-Arbeitsbereichen in Azure Monitor mithilfe von PowerShell
+# <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs in Azure Monitor mithilfe von PowerShell
+Dieser Artikel enthält zwei Codebeispiele, die zeigen, wie ein Log Analytics-Arbeitsbereich in Azure Monitor erstellt und konfiguriert wird.  
 
-Mit den [PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) können Sie verschiedene Funktionen für einen Log Analytics-Arbeitsbereich in Azure Monitor über eine Befehlszeile oder in einem Skript ausführen.  Beispiele für die Aufgaben, die Sie mit PowerShell ausführen können:
-
-* Erstellen eines Arbeitsbereichs
-* Hinzufügen oder Entfernen einer Lösung
-* Importieren und Exportieren von gespeicherten Suchvorgängen
-* Erstellen einer Computergruppe
-* Aktivieren der Sammlung von IIS-Protokollen auf Computern mit installiertem Windows-Agent
-* Sammeln von Leistungsindikatoren von Windows- und Linux-Computern
-* Sammeln von Ereignissen aus Syslog auf Linux-Computern
-* Sammeln von Ereignissen aus Windows-Ereignisprotokollen
-* Sammeln von benutzerdefinierten Ereignisprotokollen
-* Hinzufügen des Log Analytics-Agents auf virtuellen Azure-Computern
-* Konfiguration von Log Analytics zum Indizieren der Daten, die mit der Azure-Diagnose gesammelt werden
-
-Dieser Artikel enthält zwei Codebeispiele, die einige der Funktionen veranschaulicht, die Sie mit PowerShell ausführen können.  In der [Referenz zu den PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) finden Sie noch weitere Funktionen.
 
 > [!NOTE]
 > Log Analytics wurde früher als Operational Insights bezeichnet, daher wird dieser Name in den Cmdlets verwendet.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesen Beispielen wird Version 1.0.0 oder höher des Az.OperationalInsights-Moduls verwendet.
 
+## <a name="create-workspace"></a>Arbeitsbereich erstellen
+Das folgende Beispielskript erstellt einen Arbeitsbereich ohne Konfiguration von Datenquellen. 
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs
-Das folgende Beispielskript veranschaulicht Folgendes:
+```powershell
+$ResourceGroup = "my-resource-group"
+$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique across all Azure subscriptions - Get-Random helps with this for the example code
+$Location = "westeurope"
+
+# Create the resource group if needed
+try {
+    Get-AzResourceGroup -Name $ResourceGroup -ErrorAction Stop
+} catch {
+    New-AzResourceGroup -Name $ResourceGroup -Location $Location
+}
+
+# Create the workspace
+New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
+```
+
+## <a name="create-workspace-and-configure-data-sources"></a>Erstellen eines Arbeitsbereichs und Konfigurieren von Datenquellen
+
+Das folgende Beispielskript erstellt einen Arbeitsbereich und konfiguriert mehrere Datenquellen. Diese Datenquellen sind nur erforderlich, wenn Sie virtuelle Computer mit dem [Log Analytics-Agent](log-analytics-agent.md) überwachen.
+
+Dieses Skript führt die folgenden Funktionen aus:
 
 1. Erstellen eines Arbeitsbereichs
 2. Auflisten der verfügbaren Lösungen
@@ -59,10 +63,19 @@ Das folgende Beispielskript veranschaulicht Folgendes:
 12. Sammeln eines benutzerdefinierten Protokolls
 
 ```powershell
-
-$ResourceGroup = "oms-example"
-$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique - Get-Random helps with this for the example code
+$ResourceGroup = "my-resource-group"
+$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique across all Azure subscriptions - Get-Random helps with this for the example code
 $Location = "westeurope"
+
+# Create the resource group if needed
+try {
+    Get-AzResourceGroup -Name $ResourceGroup -ErrorAction Stop
+} catch {
+    New-AzResourceGroup -Name $ResourceGroup -Location $Location
+}
+
+# Create the workspace
+New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
 
 # List of solutions to enable
 $Solutions = "Security", "Updates", "SQLAssessment"
@@ -160,7 +173,7 @@ New-AzOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -Worksp
 Enable-AzOperationalInsightsIISLogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Linux Perf
-New-AzOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Logical Disk" -InstanceName "*"  -CounterNames @("% Used Inodes", "Free Megabytes", "% Used Space", "Disk Transfers/sec", "Disk Reads/sec", "Disk Reads/sec", "Disk Writes/sec") -IntervalSeconds 20  -Name "Example Linux Disk Performance Counters"
+New-AzOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Logical Disk" -InstanceName "*"  -CounterNames @("% Used Inodes", "Free Megabytes", "% Used Space", "Disk Transfers/sec", "Disk Reads/sec", "Disk Writes/sec") -IntervalSeconds 20  -Name "Example Linux Disk Performance Counters"
 Enable-AzOperationalInsightsLinuxPerformanceCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Linux Syslog
@@ -178,99 +191,34 @@ New-AzOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroupName 
 New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
 
 ```
+
+> [!NOTE]
+> Das Format für den **CustomLogRawJson**-Parameter, der die Konfiguration für ein benutzerdefiniertes Protokoll definiert, kann komplex sein. Verwenden Sie [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0), um die Konfiguration für ein vorhandenes benutzerdefiniertes Protokoll abzurufen. Die **Eigenschaften**-Eigenschaft ist die Konfiguration, die für den **CustomLogRawJson**-Parameter erforderlich ist.
+
 Im obigen Beispiel wurde regexDelimiter als „\\n“ für den Zeilenumbruch definiert. Das Protokolltrennzeichen kann auch ein Zeitstempel sein.  Diese Formate werden unterstützt:
 
-| Format | Das RegEx-Format von JSON verwendet zwei \\ für jedes „\“ in einem standardmäßigen RegEx, also muss \\ beim Testen in einer RegEx-App zu „\“ reduziert werden. | | |
-| --- | --- | --- | --- |
-| `YYYY-MM-DD HH:MM:SS` | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
-| `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\d)|[0-9])/(([0-3]\\d)|(\\d))/((\\d{2})|(\\d{4}))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\s(AM|PM|am|pm)` | | |
+| Format | Das RegEx-Format von JSON verwendet zwei `\\` für jedes `\` in einem standardmäßigen RegEx, also muss `\\` beim Testen in einer RegEx-App zu `\` reduziert werden. |
+| --- | --- |
+| `YYYY-MM-DD HH:MM:SS` | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` |
+| `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\d)|[0-9])/(([0-3]\\d)|(\\d))/((\\d{2})|(\\d{4}))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\s(AM|PM|am|pm)` |
 | `dd/MMM/yyyy HH:MM:SS` | `(([0-2][1-9]|[3][0-1])\\/(Jan|Feb|Mar|May|Apr|Jul|Jun|Aug|Oct|Sep|Nov|Dec|jan|feb|mar|may|apr|jul|jun|aug|oct|sep|nov|dec)\\/((19|20)[0-9][0-9]))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9])` |
-| `MMM dd yyyy HH:MM:SS` | `(((?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Sept|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)).*?((?:(?:[0-2]?\\d{1})|(?:[3][01]{1})))(?![\\d]).*?((?:(?:[1]{1}\\d{1}\\d{1}\\d{1})|(?:[2]{1}\\d{3})))(?![\\d]).*?((?:(?:[0-1][0-9])|(?:[2][0-3])|(?:[0-9])):(?:[0-5][0-9])(?::[0-5][0-9])?(?:\\s?(?:am|AM|pm|PM))?))` | | |
-| `yyMMdd HH:mm:ss` | `([0-9]{2}([0][1-9]|[1][0-2])([0-2][0-9]|[3][0-1])\\s\\s?([0-1]?[0-9]|[2][0-3]):[0-5][0-9]:[0-5][0-9])` | | |
-| `ddMMyy HH:mm:ss` | `(([0-2][0-9]|[3][0-1])([0][1-9]|[1][0-2])[0-9]{2}\\s\\s?([0-1]?[0-9]|[2][0-3]):[0-5][0-9]:[0-5][0-9])` | | |
-| `MMM d HH:mm:ss` | `(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s\\s?([0]?[1-9]|[1-2][0-9]|[3][0-1])\\s([0-1]?[0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9])` | | |
-| `MMM  d HH:mm:ss` <br> zwei Leerzeichen nach MMM | `(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s\\s([0]?[1-9]|[1-2][0-9]|[3][0-1])\\s([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])` | | |
-| `MMM d HH:mm:ss` | `(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0]?[1-9]|[1-2][0-9]|[3][0-1])\\s([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])` | | |
-| `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> dabei ist „+“ ein „+“ oder ein „-“ <br> dabei ist „zzzz“ der Zeitversatz | `(([0-2][1-9]|[3][0-1])\\/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\/((19|20)[0-9][0-9]):([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\s[\\+|\\-][0-9]{4})` | | |
-| `yyyy-MM-ddTHH:mm:ss` <br> Das „T“ steht für den Buchstaben „T“ | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
+| `MMM dd yyyy HH:MM:SS` | `(((?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Sept|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)).*?((?:(?:[0-2]?\\d{1})|(?:[3][01]{1})))(?![\\d]).*?((?:(?:[1]{1}\\d{1}\\d{1}\\d{1})|(?:[2]{1}\\d{3})))(?![\\d]).*?((?:(?:[0-1][0-9])|(?:[2][0-3])|(?:[0-9])):(?:[0-5][0-9])(?::[0-5][0-9])?(?:\\s?(?:am|AM|pm|PM))?))` |
+| `yyMMdd HH:mm:ss` | `([0-9]{2}([0][1-9]|[1][0-2])([0-2][0-9]|[3][0-1])\\s\\s?([0-1]?[0-9]|[2][0-3]):[0-5][0-9]:[0-5][0-9])` |
+| `ddMMyy HH:mm:ss` | `(([0-2][0-9]|[3][0-1])([0][1-9]|[1][0-2])[0-9]{2}\\s\\s?([0-1]?[0-9]|[2][0-3]):[0-5][0-9]:[0-5][0-9])` |
+| `MMM d HH:mm:ss` | `(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s\\s?([0]?[1-9]|[1-2][0-9]|[3][0-1])\\s([0-1]?[0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9])` |
+| `MMM  d HH:mm:ss` <br> zwei Leerzeichen nach MMM | `(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s\\s([0]?[1-9]|[1-2][0-9]|[3][0-1])\\s([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])` |
+| `MMM d HH:mm:ss` | `(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0]?[1-9]|[1-2][0-9]|[3][0-1])\\s([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])` |
+| `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> dabei ist „+“ ein „+“ oder ein „-“ <br> dabei ist „zzzz“ der Zeitversatz | `(([0-2][1-9]|[3][0-1])\\/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\/((19|20)[0-9][0-9]):([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\s[\\+|\\-][0-9]{4})` |
+| `yyyy-MM-ddTHH:mm:ss` <br> Das „T“ steht für den Buchstaben „T“ | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` |
 
-## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Konfigurieren von Log Analytics zum Senden der Azure-Diagnose
-Für die Überwachung von Azure-Ressourcen ohne Agents müssen die Ressourcen Azure-Diagnose aktiviert haben und zum Schreiben in einen Log Analytics-Arbeitsbereich konfiguriert worden sein. Bei diesem Ansatz werden Daten direkt an den Arbeitsbereich gesendet, und Daten müssen nicht in ein Speicherkonto geschrieben werden. Unterstützte Ressourcen:
-
-| Ressourcentyp | Protokolle | metrics |
-| --- | --- | --- |
-| Anwendungsgateways    | Ja | Ja |
-| Automation-Konten     | Ja | |
-| Batch-Konten          | Ja | Ja |
-| Data Lake Analytics     | Ja | |
-| Data Lake Store         | Ja | |
-| Elastischer SQL-Pool        |     | Ja |
-| Event Hub-Namespace     |     | Ja |
-| IoT Hubs                |     | Ja |
-| Key Vault               | Ja | |
-| Load Balancer          | Ja | |
-| Logic Apps              | Ja | Ja |
-| Netzwerksicherheitsgruppen | Ja | |
-| Azure Cache for Redis             |     | Ja |
-| Suchdienste         | Ja | Ja |
-| Service Bus-Namespace   |     | Ja |
-| SQL (v12)               |     | Ja |
-| Websites               |     | Ja |
-| Webserverfarmen        |     | Ja |
-
-Ausführliche Informationen zu den verfügbaren Metriken finden Sie unter [Supported metrics with Azure Monitor](../../azure-monitor/platform/metrics-supported.md) (Von Azure Monitor unterstützte Metriken).
-
-Ausführliche Informationen zu den verfügbaren Protokollen finden Sie unter [Supported services and schema for Diagnostic Logs](../../azure-monitor/platform/diagnostic-logs-schema.md) (Unterstützte Dienste und Schema für Diagnoseprotokolle).
-
-```powershell
-$workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
-
-$resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
-
-Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
-```
-
-Sie können mit dem vorherigen Cmdlet auch Protokolle von Ressourcen in verschiedenen Abonnements sammeln. Das Cmdlet kann abonnementübergreifend verwendet werden, da Sie die ID der Ressource, die Protokolle erstellt, und des Arbeitsbereichs angeben, an den die Protokolle gesendet werden.
-
-
-## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>Konfigurieren eines Log Analytics-Arbeitsbereichs zum Erfassen der Azure-Diagnose aus dem Speicher
-Damit Sie Protokolldaten in einer ausgeführten Instanz eines klassischen Clouddiensts oder eines Service Fabric-Clusters erfassen können, müssen Sie die Daten zunächst in den Azure-Speicher schreiben. Dann wird ein Log Analytics-Arbeitsbereich konfiguriert, um die Protokolle aus dem Speicherkonto zu sammeln. Unterstützte Ressourcen:
-
-* Azure Cloud Services (Web- und Workerrollen)
-* Service Fabric-Cluster
-
-Das folgende Beispiel veranschaulicht die Vorgehensweise:
-
-1. Auflisten der vorhandenen Speicherkonten und Speicherorte, aus denen der Arbeitsbereich Daten indiziert
-2. Erstellen einer Konfiguration zum Lesen aus einem Speicherkonto
-3. Aktualisieren der neu erstellten Konfiguration zum Indizieren von Daten von zusätzlichen Speicherorten
-4. Löschen der neu erstellten Konfiguration
-
-```powershell
-# validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
-$workspace = (Get-AzOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
-
-# Update these two lines with the storage account resource ID and the storage account key for the storage account you want the workspace to index
-$storageId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
-$key = "abcd=="
-
-# List existing insights
-Get-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name
-
-# Create a new insight
-New-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -StorageAccountResourceId $storageId -StorageAccountKey $key -Tables @("WADWindowsEventLogsTable") -Containers @("wad-iis-logfiles")
-
-# Update existing insight
-Set-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -Tables @("WADWindowsEventLogsTable", "WADETWEventTable") -Containers @("wad-iis-logfiles")
-
-# Remove the insight
-Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight"
-
-```
-
-Sie können mit dem vorherigen Skript auch Protokolle aus Speicherkonten in verschiedenen Abonnements sammeln. Das Skript kann abonnementübergreifend verwendet werden, da Sie die Speicherkontoressourcen-ID und einen entsprechenden Zugriffsschlüssel bereitstellen. Wenn Sie den Zugriffsschlüssel ändern, müssen Sie die Speicherdetails aktualisieren, sodass sie den neuen Schlüssel enthalten.
+## <a name="troubleshooting"></a>Problembehandlung
+Wenn Sie einen Arbeitsbereich erstellen, der in den letzten 14 Tagen gelöscht wurde und sich im [Zustand des vorläufigen Löschens](./delete-workspace.md#soft-delete-behavior) befindet, kann der Vorgang je nach Arbeitsbereichskonfiguration ein anderes Ergebnis aufweisen:
+1. Wenn Sie denselben Arbeitsbereichsnamen, dieselbe Ressourcengruppe, dasselbe Abonnement und dieselbe Region wie beim gelöschten Arbeitsbereich angeben, wird der Arbeitsbereich einschließlich Daten, Konfiguration und verbundener Agents wiederhergestellt.
+2. Wenn Sie denselben Arbeitsbereichsnamen, aber andere Werte für Ressourcengruppe, Abonnement oder Region verwenden, erhalten Sie eine Fehlermeldung des Typs *Der Arbeitsbereichsname „Arbeitsbereichname“ ist nicht eindeutig* oder *Konflikt*. Wenn Sie das vorläufige Löschen außer Kraft setzen, den Arbeitsbereich dauerhaft löschen und einen neuen, gleichnamigen Arbeitsbereich erstellen möchten, gehen Sie folgendermaßen vor, um den Arbeitsbereich zunächst wiederherzustellen und dann dauerhaft zu löschen:
+   * [Wiederherstellen](./delete-workspace.md#recover-workspace) Ihres Arbeitsbereichs
+   * [Dauerhaftes Löschen](./delete-workspace.md#permanent-workspace-delete) Ihres Arbeitsbereichs
+   * Erstellen eines neuen Arbeitsbereichs mit demselben Arbeitsbereichsnamen
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) .
-
+* [PowerShell-Cmdlets für Log Analytics](/powershell/module/az.operationalinsights/) .

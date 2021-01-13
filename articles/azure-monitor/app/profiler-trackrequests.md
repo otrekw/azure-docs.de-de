@@ -1,23 +1,18 @@
 ---
 title: Schreiben von Code zum Verfolgen von Anforderungen mit Azure Application Insights | Microsoft-Dokumentation
 description: Schreiben Sie Code zum Verfolgen von Anforderungen mit Application Insights, damit Sie Profile für Ihre Anforderungen abrufen können.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 4782e560b580b7f565724dbb35ed9876bffdc256
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: aaa1d6df9faa20b1a561bfccdfea682af7645c18
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730853"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88930246"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Schreiben von Code zum Verfolgen von Anforderungen mit Application Insights
 
@@ -37,7 +32,7 @@ Gehen Sie folgendermaßen vor, um Anforderungen manuell zu verfolgen:
         ```
       Weitere Informationen zu dieser globalen Konfiguration des Instrumentierungsschlüssels finden Sie unter [Verwenden von Service Fabric mit Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
 
-  1. Schließen Sie zu instrumentierende Codepassagen in eine `StartOperation<RequestTelemetry>` **using**-Anweisung ein, wie im folgenden Beispiel gezeigt:
+  1. Schließen Sie zu instrumentierende Codepassagen in eine **using**-Anweisung mit `StartOperation<RequestTelemetry>` ein, wie im folgenden Beispiel gezeigt:
 
         ```csharp
         using Microsoft.ApplicationInsights;

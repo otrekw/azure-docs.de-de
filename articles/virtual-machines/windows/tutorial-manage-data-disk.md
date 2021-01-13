@@ -1,27 +1,21 @@
 ---
-title: Tutorial – Verwalten von Azure-Datenträgern mit Azure PowerShell | Microsoft-Dokumentation
+title: 'Tutorial: Verwalten von Azure-Datenträgern mit Azure PowerShell'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Erstellen und Verwalten von Azure-Datenträgern für VMs verwenden.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: disks
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.subservice: disks
-ms.openlocfilehash: f44ea76ed22ab4feacc6ee37b165bbc33f7ddafc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e3d81bfaba572361304224932fadb7da5b1cc3f8
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101597"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912886"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Tutorial: Verwalten von Azure-Datenträgern mit Azure PowerShell
 
@@ -44,13 +38,13 @@ Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach d
 
 Beim Erstellen eines virtuellen Azure-Computers werden zwei Datenträger automatisch an den virtuellen Computer angefügt. 
 
-**Betriebssystem-Datenträger**: Betriebssystem-Datenträger können mit einer Größe von bis zu 4 TB konfiguriert werden und hosten das Betriebssystem des virtuellen Computers.  Dem Betriebssystem-Datenträger wird standardmäßig der Laufwerkbuchstabe *C:* zugewiesen. Die Konfiguration der Datenträgerzwischenspeicherung des Betriebssystem-Datenträgers ist für die Leistung des Betriebssystems optimiert. Der Betriebssystem-Datenträger **sollte keine** Anwendungen oder Daten hosten. Verwenden Sie für Anwendungen und Daten einen Datenträger. Dies wird weiter unten in diesem Artikel ausführlich erläutert.
+**Betriebssystem-Datenträger**: Betriebssystem-Datenträger können mit einer Größe von bis zu 4 TB konfiguriert werden und hosten das Betriebssystem des virtuellen Computers. Wenn Sie einen neuen virtuellen Computer auf der Grundlage eines [Azure Marketplace](https://azure.microsoft.com/marketplace/)-Images erstellen, hat der Betriebssystemdatenträger in der Regel eine Größe von 127 GB. (Bei manchen Images ist der Betriebssystemdatenträger allerdings kleiner.) Dem Betriebssystem-Datenträger wird standardmäßig der Laufwerkbuchstabe *C:* zugewiesen. Die Konfiguration der Datenträgerzwischenspeicherung des Betriebssystem-Datenträgers ist für die Leistung des Betriebssystems optimiert. Der Betriebssystem-Datenträger **sollte keine** Anwendungen oder Daten hosten. Verwenden Sie für Anwendungen und Daten einen Datenträger. Dies wird weiter unten in diesem Artikel ausführlich erläutert.
 
-**Temporärer Datenträger:** Temporäre Datenträger verwenden ein Solid State Drive, das sich auf demselben Azure-Host wie der virtuelle Computer befindet. Temporäre Datenträger sind äußerst leistungsfähig und können für Vorgänge wie die temporäre Datenverarbeitung verwendet werden. Wenn der virtuelle Computer jedoch auf einen neuen Host verschoben wird, werden alle auf einem temporären Datenträger gespeicherten Daten entfernt. Die Größe des temporären Datenträgers richtet sich nach der [Größe des virtuellen Computers](sizes.md). Temporären Datenträgern wird standardmäßig der Laufwerkbuchstabe *D:* zugewiesen.
+**Temporärer Datenträger**: Temporäre Datenträger verwenden ein Solid State Drive, das sich auf dem gleichen Azure-Host wie der virtuelle Computer befindet. Temporäre Datenträger sind äußerst leistungsfähig und können für Vorgänge wie die temporäre Datenverarbeitung verwendet werden. Wenn der virtuelle Computer jedoch auf einen neuen Host verschoben wird, werden alle auf einem temporären Datenträger gespeicherten Daten entfernt. Die Größe des temporären Datenträgers richtet sich nach der [Größe des virtuellen Computers](../sizes.md). Temporären Datenträgern wird standardmäßig der Laufwerkbuchstabe *D:* zugewiesen.
 
 ## <a name="azure-data-disks"></a>Azure-Datenträger
 
-Zum Installieren von Anwendungen und zum Speichern von Daten können weitere Datenträger hinzugefügt werden. Datenträger sollten in allen Fällen verwendet werden, in denen eine dauerhafte und dynamische Datenspeicherung erforderlich ist. Die Größe eines virtuellen Computers bestimmt die Anzahl der Datenträger, die an den virtuellen Computer angefügt werden können. Für jede vCPU eines virtuellen Computers können vier Datenträger angefügt werden.
+Zum Installieren von Anwendungen und zum Speichern von Daten können weitere Datenträger hinzugefügt werden. Datenträger sollten in allen Fällen verwendet werden, in denen eine dauerhafte und dynamische Datenspeicherung erforderlich ist. Die Größe eines virtuellen Computers bestimmt die Anzahl der Datenträger, die an den virtuellen Computer angefügt werden können.
 
 ## <a name="vm-disk-types"></a>VM-Datenträgertypen
 
@@ -58,21 +52,22 @@ In Azure stehen zwei Arten von Datenträgern zur Verfügung.
 
 **Standarddatenträger:** Basieren auf Festplatten und stellen eine kostengünstige, leistungsstarke Speicherlösung dar. Standarddatenträger sind ideal für eine kostengünstige Entwicklungs- und Testworkload.
 
-**Premium-Datenträger:** Zeichnen sich durch SSD-basierte hohe Leistung und geringe Wartezeit aus. Sie eignen sich hervorragend für virtuelle Computer, auf denen die Produktionsworkload ausgeführt wird. Storage Premium unterstützt virtuelle Computer der DS-, DSv2-, GS- und FS-Serie. Premium-Datenträger gibt es in fünf Varianten (P10, P20, P30, P40, P50). Der Datenträgertyp wird durch die Größe des Datenträgers vorgegeben. Bei der Auswahl einer Datenträgergröße wird der Wert auf den nächsten Datenträgertyp aufgerundet. Wenn die Größe beispielsweise unterhalb von 128 GB liegt, lautet der Datenträgertyp P10, und bei einer Größe zwischen 129 GB und 512 GB lautet der Datenträgertyp P20.
-
-### <a name="premium-disk-performance"></a>Leistung von Premium-Datenträgern
+**Premium-Datenträger:** Zeichnen sich durch SSD-basierte hohe Leistung und geringe Wartezeit aus. Sie eignen sich hervorragend für virtuelle Computer, auf denen die Produktionsworkload ausgeführt wird. VM-Größen mit dem Buchstaben **S** im [Namen der Größe](../vm-naming-conventions.md) unterstützen in der Regel Storage Premium. Virtuelle Computer der DS-, DSv2-, GS- und Fs-Serie etwa unterstützen Storage Premium. Bei Auswahl einer Datenträgergröße wird der Wert auf den nächsten Datenträgertyp aufgerundet. Liegt die Größe des Datenträgers beispielsweise über 64 GB, aber unter 128 GB, ist der Datenträgertyp P10. 
+<br>
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
-In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. An einen virtuellen Standard_GS5-Computer können beispielsweise 64 Datenträger angefügt werden. Wenn jeder dieser Datenträger die Größe P30 hat, kann eine maximale Größe von 80.000 IOPS erreicht werden. Ausführliche Informationen zur maximalen IOPS-Anzahl pro VM finden Sie unter [Größen für virtuelle Windows-Computer in Azure](./sizes.md).
+Im Gegensatz zu einem Standard-Speicherdatenträger sind bei der Bereitstellung eines Storage Premium-Datenträgers die Kapazität, die IOPS und der Durchsatz dieses Datenträgers garantiert. Wenn Sie beispielsweise einen P50-Datenträger erstellen, stellt Azure eine Speicherkapazität von 4.095 GB, 7.500 IOPS und einen Durchsatz von 250 MB/s für diesen Datenträger bereit. Die Anwendung kann die Kapazität und Leistung ganz oder teilweise nutzen. SSD Premium-Datenträger sind dafür ausgelegt, Wartezeiten im niedrigen einstelligen Millisekundenbereich sowie die in der vorherigen Tabelle beschriebenen IOPS und Durchsätze 99,9 % der Zeit bereitzustellen.
+
+In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. An einen virtuellen Standard_GS5-Computer können beispielsweise 64 Datenträger angefügt werden. Wenn jeder dieser Datenträger die Größe P30 hat, kann eine maximale Größe von 80.000 IOPS erreicht werden. Ausführliche Informationen zur maximalen IOPS-Anzahl pro VM finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../sizes.md).
 
 ## <a name="create-and-attach-disks"></a>Erstellen und Anfügen von Datenträgern
 
 Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein. Erstellen Sie, falls erforderlich, mit den folgenden Befehlen einen virtuellen Computer.
 
-Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) den Benutzernamen und das Kennwort für das Administratorkonto auf dem virtuellen Computer fest:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) den Benutzernamen und das Kennwort für das Administratorkonto auf dem virtuellen Computer fest:
 
 
-Erstellen Sie mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) den virtuellen Computer. Sie werden aufgefordert, einen Benutzernamen und ein Kennwort für das Administratorkonto des virtuellen Computers einzugeben.
+Erstellen Sie mit [New-AzVM](/powershell/module/az.compute/new-azvm) den virtuellen Computer. Sie werden aufgefordert, einen Benutzernamen und ein Kennwort für das Administratorkonto des virtuellen Computers einzugeben.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -86,7 +81,7 @@ New-AzVm `
 ```
 
 
-Erstellen Sie mit [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) die Erstkonfiguration. Im folgenden Beispiel wird ein Datenträger mit einer Größe von 128 GB erstellt.
+Erstellen Sie mit [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) die Erstkonfiguration. Im folgenden Beispiel wird ein Datenträger mit einer Größe von 128 GB erstellt.
 
 ```azurepowershell-interactive
 $diskConfig = New-AzDiskConfig `
@@ -95,7 +90,7 @@ $diskConfig = New-AzDiskConfig `
     -DiskSizeGB 128
 ```
 
-Erstellen Sie den Datenträger mit dem Befehl [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk).
+Erstellen Sie den Datenträger mit dem Befehl [New-AzDisk](/powershell/module/az.compute/new-azdisk).
 
 ```azurepowershell-interactive
 $dataDisk = New-AzDisk `
@@ -104,13 +99,13 @@ $dataDisk = New-AzDisk `
     -Disk $diskConfig
 ```
 
-Rufen Sie mit dem Befehl [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) die VM ab, der Sie den Datenträger hinzufügen möchten.
+Rufen Sie mit dem Befehl [Get-AzVM](/powershell/module/az.compute/get-azvm) die VM ab, der Sie den Datenträger hinzufügen möchten.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
-Fügen Sie den Datenträger mit dem Befehl [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) zur VM-Konfiguration hinzu.
+Fügen Sie den Datenträger mit dem Befehl [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) zur VM-Konfiguration hinzu.
 
 ```azurepowershell-interactive
 $vm = Add-AzVMDataDisk `
@@ -121,7 +116,7 @@ $vm = Add-AzVMDataDisk `
     -Lun 1
 ```
 
-Aktualisieren Sie die VM mit dem Befehl [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk).
+Aktualisieren Sie die VM mit dem Befehl [Update-AzVM](/powershell/module/az.compute/add-azvmdatadisk).
 
 ```azurepowershell-interactive
 Update-AzVM -ResourceGroupName "myResourceGroupDisk" -VM $vm

@@ -1,45 +1,45 @@
 ---
-title: 'Azure HPC Cache-Datenerfassung (Vorschau): Skript für paralleles Kopieren'
+title: 'Azure HPC Cache-Datenerfassung: Skript für paralleles Kopieren'
 description: Verwenden eines Skript für paralleles Kopieren zum Verschieben von Daten in ein Blobspeicherziel in Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
-ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: 852b4e692a4316c7701c8c179039104bee561949
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.topic: how-to
+ms.date: 10/30/2019
+ms.author: v-erkel
+ms.openlocfilehash: ff7b15a36c5ef19a1fa6ffdca7697dd6ba97c29f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180959"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87092353"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC Cache-Datenerfassung (Vorschau): Methode mit Skript für paralleles Kopieren
+# <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Azure HPC Cache-Datenerfassung: Methode mit Skript für paralleles Kopieren
 
 Dieser Artikel enthält Anweisungen zum Erstellen des ``parallelcp``-Skripts und für seine Verwendung zum Verschieben von Daten in einen Blobspeichercontainer für die Verwendung mit Azure HPC Cache.
 
-Weitere Informationen zum Verschieben von Daten in einen Blobspeicher für Ihren Azure HPC Cache finden Sie unter [Verschieben von Daten in Azure Blob Storage für Azure HPC Cache](hpc-cache-ingest.md).
+Weitere Informationen zum Verschieben von Daten in einen Blobspeicher für Ihren Azure HPC Cache-Dienst finden Sie unter [Verschieben von Daten in Azure Blob Storage](hpc-cache-ingest.md).
 
 ## <a name="create-the-parallelcp-script"></a>Erstellen des parallelcp-Skripts
 
 Das folgende Skript fügt die ausführbare Datei `parallelcp` hinzu. (Dieses Skript ist für Ubuntu vorgesehen. Wenn Sie eine andere Distribution verwenden, müssen Sie ``parallel`` separat installieren.)
 
 ```bash
-sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM 
+sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM
 #!/bin/bash
 
-display_usage() { 
-    echo -e "\nUsage: \$0 SOURCE_DIR DEST_DIR\n" 
-} 
+display_usage() {
+    echo -e "\nUsage: \$0 SOURCE_DIR DEST_DIR\n"
+}
 
-if [  \$# -le 1 ] ; then 
+if [  \$# -le 1 ] ; then
     display_usage
     exit 1
-fi 
- 
-if [[ ( \$# == "--help") ||  \$# == "-h" ]] ; then 
+fi
+
+if [[ ( \$# == "--help") ||  \$# == "-h" ]] ; then
     display_usage
     exit 0
-fi 
+fi
 
 SOURCE_DIR="\$1"
 DEST_DIR="\$2"

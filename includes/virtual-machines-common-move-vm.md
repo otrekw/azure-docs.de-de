@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 61990e785741799fcbcd4e6df965953bd9944f4d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c3f485765e0bbbb91de0938261b587c27bf414bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178063"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74875499"
 ---
 ## <a name="use-the-azure-portal-to-move-a-vm-to-a-different-subscription"></a>Verschieben eines virtuellen Computers in ein anderes Abonnement mithilfe des Azure-Portals
 Sie können eine VM und die dazugehörigen Ressourcen mithilfe des Azure-Portals in ein anderes Abonnement verschieben.
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Klicken Sie auf **Durchsuchen** > **Ressourcengruppen**, und wählen Sie die Ressourcengruppe mit der VM aus, die Sie verschieben möchten.
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um die Ressourcengruppe mit der zu verschiebenden VM zu verwalten. Suchen Sie nach **Ressourcengruppen**, und wählen Sie diese Option aus.
+2. Wählen Sie die Ressourcengruppe mit der VM aus, die Sie verschieben möchten.
 3. Klicken Sie oben auf der Seite für die Ressourcengruppe auf **Verschieben** und dann auf **In ein anderes Abonnement verschieben**. Die Seite **Ressourcen verschieben** wird geöffnet.
 4. Wählen Sie alle Ressourcen aus, die verschoben werden sollen. In den meisten Fällen sollten Sie alle aufgeführten zugehörigen Ressourcen verschieben.
 5. Wählen Sie das **Abonnement** aus, in das Sie den virtuellen Computer verschieben möchten.
@@ -29,9 +29,9 @@ Sie können eine VM und die dazugehörigen Ressourcen mithilfe des Azure-Portals
 ## <a name="use-the-azure-portal-to-move-a-vm-to-another-resource-group"></a>Verschieben einer VM in eine andere Ressourcengruppe mithilfe des Azure-Portals
 Sie können einen virtuellen Computer und die dazugehörigen Ressourcen mithilfe des Azure-Portals in eine andere Ressourcengruppe verschieben.
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Klicken Sie auf **Durchsuchen** > **Virtuelle Computer**, und wählen Sie in der Liste den zu verschiebenden virtuellen Computer aus.
-3. Klicken Sie auf der Seite für die VM neben der Bezeichnung für die Ressourcengruppe auf **Ändern**. Die Seite **Ressourcen verschieben** wird geöffnet.
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um die Ressourcengruppe mit der zu verschiebenden VM zu verwalten. Suchen Sie nach **Ressourcengruppen**, und wählen Sie diese Option aus.
+2. Wählen Sie die Ressourcengruppe mit der VM aus, die Sie verschieben möchten.
+3. Wählen Sie oben auf der Seite für die Ressourcengruppe **Verschieben** und dann **In eine andere Ressourcengruppe verschieben** aus. Die Seite **Ressourcen verschieben** wird geöffnet.
 4. Wählen Sie alle Ressourcen aus, die verschoben werden sollen. In den meisten Fällen sollten Sie alle aufgeführten zugehörigen Ressourcen verschieben.
 5. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder geben Sie einen Namen ein, um eine neue Ressourcengruppe zu erstellen.
 6. Bestätigen Sie anschließend den Hinweis, dass neue Ressourcen-IDs erstellt werden und nach dem Verschieben für den virtuellen Computer verwendet werden müssen, und wählen Sie **OK**.

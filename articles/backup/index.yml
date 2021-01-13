@@ -1,69 +1,162 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentation zum Azure Backup-Dienst
+summary: Der Azure Backup-Dienst bietet einfache, sichere und kostengünstige Lösungen, um Ihre Daten zu sichern und aus der Microsoft Azure-Cloud wiederherzustellen.
 metadata:
-  title: 'Dokumentation für Azure Backup – Tutorials, API-Referenz | Microsoft-Dokumentation'
-  description: 'Mit Azure Backup können Sie die Daten für lokale Server, virtuelle Computer, virtualisierte Workloads, SQL-Server, SharePoint-Server usw. sichern. In unseren Schnellstarts, Tutorials und Beispielen wird beschrieben, wie Sie Ihre Daten sichern und wiederherstellen.'
-  services: backup
-  author: dcurwin
-  manager: carmonm
+  title: Dokumentation zu Azure Backup
+  description: Der Azure Backup-Dienst bietet einfache, sichere und kostengünstige Lösungen, um Ihre Daten zu sichern und aus der Microsoft Azure-Cloud wiederherzustellen.
   ms.service: backup
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 05/22/2018
+  author: dcurwin
   ms.author: dacurwin
-abstract:
-  description: 'Verwenden Sie Azure Backup zum Sichern der Daten für lokale Server, virtuelle Computer, virtualisierte Workloads, SQL-Server, SharePoint-Server usw. In unseren Schnellstarts, Tutorials und Beispielen wird beschrieben, wie Sie Ihre Daten sichern und wiederherstellen.'
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Es wird beschrieben, wie Sie in Azure einen virtuellen Azure-Computer sichern.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Azure-Portal
-            href: quick-backup-vm-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: quick-backup-vm-powershell
-          - image:
-              src: 'https://docs.microsoft.com/media/common/cli.svg'
-            text: Azure-Befehlszeilenschnittstelle
-            href: quick-backup-vm-cli
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Es wird beschrieben, wie Sie virtuelle Computer in Azure oder unter Windows Server sichern und wiederherstellen.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-backup-vm-at-scale">Sichern von mehreren Azure-VMs</a>
-          - html: <a href="tutorial-restore-disk">Wiederherstellen eines Datenträgers und Erstellen einer wiederhergestellten VM</a>
-          - html: <a href="tutorial-restore-files">Wiederherstellen von Dateien auf einem virtuellen Computer in Azure</a>
-          - html: <a href="tutorial-backup-windows-server-to-azure">Sichern einer Windows Server-Instanz in Azure</a>
-          - html: <a href="tutorial-backup-restore-files-windows-server">Wiederherstellen von Dateien aus Azure auf einer Windows Server-Instanz</a>
-  - title: Beispiele
-    items:
-      - type: paragraph
-        text: 'Verwenden Sie die folgenden Beispiele, um Ihre Daten in Azure zu schützen.'
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/backup/powershell-backup-samples">Azure PowerShell</a>
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Befehlszeile
-            html: <p><a href="/powershell/module/az.recoveryservices">Azure PowerShell</a></p><p><a href="/cli/azure/backup?view=azure-cli-latest">Azure-Befehlszeilenschnittstelle</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/backup/">API-Referenz zu Azure Backup</a></p>
+  ms.date: 12/01/2019
+  ms.openlocfilehash: 4716d537a6a3e402a4f399be8d64c9fd51edc292
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91620119"
+landingContent:
+- title: Weitere Informationen zu Azure Backup
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Backup?
+      url: backup-overview.md
+  - linkListType: concept
+    links:
+    - text: Matrix zur Azure Backup-Unterstützung
+      url: backup-support-matrix.md
+    - text: Azure Backup-Architektur
+      url: backup-architecture.md
+- title: Erste Schritte mit Azure Backup
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Sichern eines virtuellen Computers über das Azure-Portal
+      url: quick-backup-vm-portal.md
+    - text: Sichern eines virtuellen Computers mit PowerShell
+      url: quick-backup-vm-powershell.md
+    - text: Sichern eines virtuellen Computers mit der Azure CLI
+      url: quick-backup-vm-cli.md
+    - text: Sichern eines virtuellen Computers mit einer Resource Manager-Vorlage
+      url: quick-backup-vm-template.md
+- title: Ausprobieren dieser Schritt-für-Schritt-Tutorials
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Sichern von Azure-VMs
+      url: tutorial-backup-vm-at-scale.md
+    - text: Sichern einer SQL Server-Instanz auf einem virtuellen Azure-Computer
+      url: tutorial-sql-backup.md
+    - text: Sichern von Dateien und Ordnern unter Windows Server
+      url: tutorial-backup-windows-server-to-azure.md
+    - text: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer
+      url: tutorial-backup-sap-hana-db.md
+- title: Informationen zu den neuen Features in Azure Backup
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Backup Center
+      url: backup-center-overview.md
+    - text: Sichern von Azure Database for PostgreSQL
+      url: backup-azure-database-postgresql.md
+    - text: Selektive Datenträgersicherung und -wiederherstellung für virtuelle Azure-Computer
+      url: selective-disk-backup-restore.md
+    - text: Regionsübergreifende Wiederherstellung für SQL Server-Datenbanken auf virtuellen Azure-Computern
+      url: restore-sql-database-azure-vm.md#cross-region-restore
+    - text: Unterstützung für die Sicherung virtueller Computer mit bis zu 32 Datenträgern
+      url: backup-support-matrix-iaas.md#vm-storage-support
+    - text: Vorläufiges Löschen für Azure Backup
+      url: backup-azure-security-feature-cloud.md
+    - text: Wiederherstellen von SQL Server auf virtuellen Azure-Computern in Dateiform
+      url: restore-sql-database-azure-vm.md#restore-as-files
+- title: Sichern von Azure-VMs
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Informationen zur Sicherung von Azure-VMs
+      url: backup-azure-vms-introduction.md
+    - text: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
+      url: backup-support-matrix-iaas.md
+    - text: 'Häufig gestellte Fragen: Azure-VM-Sicherung'
+      url: backup-azure-vm-backup-faq.md
+    - text: Verwalten von Azure-VM-Sicherungen
+      url: backup-azure-manage-vms.md
+- title: Sichern von SQL Server auf virtuellen Azure-Computern
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Informationen zur Sicherung von SQL Server auf virtuellen Azure-Computern
+      url: backup-azure-sql-database.md
+    - text: 'Häufig gestellte Fragen: Sicherung von SQL Server auf virtuellen Azure-Computern'
+      url: faq-backup-sql-server.md
+    - text: Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
+      url: backup-sql-server-database-azure-vms.md
+    - text: Verwalten und Überwachen gesicherter SQL Server-Datenbanken
+      url: manage-monitor-sql-database-backup.md
+- title: Sichern von SAP HANA auf virtuellen Azure-Computern
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
+      url: backup-azure-sap-hana-database.md
+    - text: Verwalten und Überwachen gesicherter SAP HANA-Datenbanken
+      url: sap-hana-db-manage.md
+    - text: 'Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern'
+      url: sap-hana-faq-backup-azure-vm.md
+    - text: Unterstützungsmatrix für die Sicherung von SAP HANA-Datenbanken auf virtuellen Azure-Computern
+      url: sap-hana-backup-support-matrix.md
+- title: Sichern von Azure Files-Freigaben
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Sichern und Wiederherstellen von Azure-Dateifreigaben
+      url: backup-afs.md
+    - text: 'Häufig gestellte Fragen: Sichern von Azure Files'
+      url: backup-azure-files-faq.md
+- title: Sichern mit dem MARS-Agent (Microsoft Azure Recovery Services)
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Sichern von Windows-Computern mit dem Azure Backup-MARS-Agent
+      url: backup-windows-with-mars-agent.md
+    - text: Verwalten von MARS-Agent-Sicherungen mit dem Azure Backup-Dienst
+      url: backup-azure-manage-mars.md
+    - text: Supportmatrix für den MARS-Agent
+      url: backup-support-matrix-mars-agent.md
+    - text: 'Häufig gestellte Fragen: MARS-Agent'
+      url: backup-azure-file-folder-backup-faq.md
+- title: Sichern mit Microsoft Azure Backup Server (MABS) und DPM
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: MABS-Schutzmatrix
+      url: backup-mabs-protection-matrix.md
+    - text: MABS-/DPM-Unterstützungsmatrix
+      url: backup-support-matrix-mabs-dpm.md
+    - text: 'Häufig gestellte Fragen: MABS und DPM'
+      url: backup-azure-dpm-azure-server-faq.md
+    - text: Installieren und Aktualisieren von MABS
+      url: backup-azure-microsoft-azure-backup.md
+- title: Verwalten im gewünschten Umfang
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwalten im großen Stil mit Backup Center
+      url: backup-center-monitor-operate.md
+    - text: Steuern im gewünschten Umfang mit Azure Policy
+      url: backup-azure-auto-enable-backup.md
+    - text: Überwachen und Betreiben im gewünschten Umfang mit dem Backup-Explorer
+      url: monitor-azure-backup-with-backup-explorer.md
+    - text: Analysieren im gewünschten Umfang mit Sicherungsberichten
+      url: configure-reports.md
+- title: Erkunden der Ressourcen für Azure Backup
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Preise für Azure Backup
+      url: azure-backup-pricing.md
+    - text: Updates zum Azure Backup-Dienst
+      url: https://azure.microsoft.com/updates/?product=backup
+    - text: 'Frageseite von Microsoft Q&A (Fragen und Antworten): Azure Backup'
+      url: /answers/topics/azure-backup.html

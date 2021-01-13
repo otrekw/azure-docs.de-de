@@ -1,23 +1,24 @@
 ---
 title: Erstellen, Ändern oder Löschen des Präfix einer öffentlichen Azure-IP-Adresse
 titlesuffix: Azure Virtual Network
-description: Erfahren Sie, wie Sie das Präfix einer öffentlichen IP-Adresse erstellen, ändern oder löschen.
+description: Hier erhalten Sie Informationen zu Präfixen öffentlicher IP-Adressen und dazu, wie Sie diese erstellen, ändern und löschen. Sie erfahren außerdem, wo Sie weitere Informationen finden.
 services: virtual-network
 documentationcenter: na
-author: anavinahar
+author: asudbring
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
-ms.author: anavin
-ms.openlocfilehash: 26d8ee34c735cab8f1033a9aad897ec0b1bed524
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 3b86f9bcbc863a78fd5f8f748e973a20ea709636
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952682"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573169"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Erstellen, Ändern oder Löschen des Präfix einer öffentlichen IP-Adresse
 
@@ -41,15 +42,15 @@ Für Präfixe öffentlicher IP-Adressen fällt eine Gebühr an. Weitere Informat
 ## <a name="create-a-public-ip-address-prefix"></a>Erstellen des Präfix einer öffentlichen IP-Adresse
 
 1. Wählen Sie in der linken oberen Ecke des Portals die Option **+ Ressource erstellen** aus.
-2. Geben Sie im Feld *Marketplace durchsuchen* den Begriff *Präfix einer öffentlichen IP-Adresse* ein. Wenn **Präfix einer öffentlichen IP-Adresse** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
+2. Geben Sie im Feld *Marketplace durchsuchen* den Begriff *Präfix für öffentliche IP-Adresse* ein. Wenn **Präfix einer öffentlichen IP-Adresse** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
 3. Klicken Sie unter **Präfix einer öffentlichen IP-Adresse** auf **Erstellen**.
 4. Geben Sie unter **Präfix einer öffentlichen IP-Adresse erstellen** Werte für folgende Einstellungen ein, oder wählen Sie Werte aus, und klicken Sie dann auf **Erstellen**:
 
    |Einstellung|Erforderlich?|Details|
    |---|---|---|
-   |Abonnement|Ja|Muss im selben [Abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) wie die Ressource vorhanden sein, der Sie die öffentliche IP-Adresse zuordnen möchten|
-   |Ressourcengruppe|Ja|Kann in derselben oder in einer anderen [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) wie die Ressource vorhanden sein, der Sie die öffentliche IP-Adresse zuordnen möchten|
-   |NAME|Ja|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
+   |Subscription|Ja|Muss im selben [Abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) wie die Ressource vorhanden sein, der Sie die öffentliche IP-Adresse zuordnen möchten|
+   |Resource group|Ja|Kann in derselben oder in einer anderen [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) wie die Ressource vorhanden sein, der Sie die öffentliche IP-Adresse zuordnen möchten|
+   |Name|Ja|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
    |Region|Ja|Muss in der gleichen [Region](https://azure.microsoft.com/regions) wie die öffentlichen IP-Adressen vorhanden sein, die Sie aus dem Bereich zuweisen.|
    |Präfixgröße|Ja| Die benötigte Größe des Präfix. /28- oder 16-IP-Adressen sind der Standard.
 
@@ -59,6 +60,9 @@ Für Präfixe öffentlicher IP-Adressen fällt eine Gebühr an. Weitere Informat
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
 |PowerShell|[New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
+
+>[!NOTE]
+>In Regionen mit Verfügbarkeitszonen können Sie PowerShell- oder CLI-Befehle verwenden, um ein Präfix für eine öffentliche IP-Adresse zu erstellen: nicht zonal, mit einer bestimmten Zone verknüpft oder zur Verwendung von Zonenredundanz.  Wenn kein Zonenparameter bereitgestellt wird, wird für API-Version 2020-08-01 oder höher ein nicht zonales öffentliches IP-Adresspräfix erstellt. Für ältere API-Versionen als 2020-08-01 wird ein zonenredundantes öffentliches IP-Adresspräfix erstellt. 
 
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>Erstellen einer statischen öffentlichen IP-Adresse aus einem Präfix
 Sobald Sie ein Präfix erstellt haben, müssen Sie statische IP-Adressen aus dem Präfix erstellen. Führen Sie dazu die folgenden Schritte aus.
@@ -70,7 +74,7 @@ Sobald Sie ein Präfix erstellt haben, müssen Sie statische IP-Adressen aus dem
 
    |Einstellung|Erforderlich?|Details|
    |---|---|---|
-   |NAME|Ja|Der Name der öffentlichen IP-Adresse muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
+   |Name|Ja|Der Name der öffentlichen IP-Adresse muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
    |Leerlaufzeitüberschreitung (Minuten)|Nein|Gibt an, wie viele Minuten eine TCP- oder HTTP-Verbindung geöffnet bleiben soll, ohne dass Clients Keep-Alive-Meldungen senden müssen. |
    |DNS-Namensbezeichnung|Nein|Muss in der Azure-Region, in der Sie den Namen erstellen, eindeutig sein (über alle Abonnements und Kunden hinweg). Azure registriert den Namen und die IP-Adresse automatisch im DNS, sodass Sie über den Namen eine Verbindung mit der Ressource herstellen können. Azure fügt ein Standardsubnetz wie etwa *location.cloudapp.azure.com* (wobei „location“ der Standort ist, den Sie auswählen) an den von Ihnen bereitgestellten Namen an, um den vollqualifizierten DNS-Namen zu erstellen. Weitere Informationen finden Sie unter [Verwenden von Azure DNS mit einer öffentlichen Azure-IP-Adresse](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
 
@@ -87,7 +91,7 @@ Alternativ können Sie die folgenden CLI- und PS-Befehle mit den Parametern --pu
 2. Wählen Sie den Namen des Präfix der öffentlichen IP-Adresse aus, das Sie anzeigen oder aus der Liste löschen oder dessen Einstellungen Sie ändern möchten.
 3. Führen Sie eine der folgenden Aktionen aus, je nachdem, ob Sie das Präfix der öffentlichen IP-Adresse anzeigen, löschen oder ändern möchten.
    - **Anzeigen**: Der Abschnitt **Übersicht** enthält wichtige Einstellungen für das Präfix der öffentlichen IP-Adresse.
-   - **Löschen**: Klicken Sie im Abschnitt **Übersicht** auf **Löschen**, um das Präfix der öffentlichen IP-Adresse zu löschen. Wenn Adressen innerhalb des Präfix mit öffentlichen IP-Adressressourcen verknüpft sind, müssen Sie zuerst die öffentlichen IP-Adressressourcen löschen. Informationen dazu finden Sie unter [Löschen einer öffentlichen IP-Adresse](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
+   - **Löschen:** Klicken Sie im Abschnitt **Übersicht** auf **Löschen**, um das Präfix der öffentlichen IP-Adresse zu löschen. Wenn Adressen innerhalb des Präfix mit öffentlichen IP-Adressressourcen verknüpft sind, müssen Sie zuerst die öffentlichen IP-Adressressourcen löschen. Informationen dazu finden Sie unter [Löschen einer öffentlichen IP-Adresse](virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address).
 
 **Befehle**
 
@@ -100,7 +104,7 @@ Alternativ können Sie die folgenden CLI- und PS-Befehle mit den Parametern --pu
 
 Zum Durchführen von Aufgaben für Präfixe öffentlicher IP-Adressen muss Ihr Konto der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, der die entsprechenden, in der folgenden Tabelle aufgeführten Aktionen zugewiesen wurden:
 
-| Aktion                                                            | NAME                                                           |
+| Aktion                                                            | Name                                                           |
 | ---------                                                         | -------------                                                  |
 | Microsoft.Network/publicIPPrefixes/read                           | Lesen des Präfix einer öffentlichen IP-Adresse                                |
 | Microsoft.Network/publicIPPrefixes/write                          | Erstellen oder Aktualisieren des Präfix einer öffentlichen IP-Adresse                    |

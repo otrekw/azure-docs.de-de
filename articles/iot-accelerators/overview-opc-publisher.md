@@ -1,6 +1,6 @@
 ---
 title: Was ist OPC Publisher? – Azure | Microsoft-Dokumentation
-description: Übersicht über OPC Publisher
+description: Dieser Artikel enthält eine Übersicht über die Features von Azure OPC Publisher. Sie ermöglicht Ihnen das Veröffentlichen von codierten JSON-Telemetriedaten mithilfe einer JSON-Nutzlast auf Azure IoT Hub.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
@@ -8,14 +8,20 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: c738e927a352373d7f5a4aeb5697e07134a98cba
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 49ca12ed4f408e2a3fce1c8e59f541778f35311e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603664"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281778"
 ---
 # <a name="what-is-opc-publisher"></a>Was ist OPC Publisher?
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den derzeit aktuellen Inhalt lesen.
 
 OPC Publisher ist eine Referenzimplementierung, die Folgendes veranschaulicht:
 
@@ -41,6 +47,8 @@ OPC Publisher unterstützt die Batchverarbeitung von Daten, die an IoT Hub gesen
 
 Diese Anwendung verwendet den OPC Foundation OPC UA-Referenzstapel als NuGet-Pakete. Unter [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) finden Sie die Lizenzierungsbedingungen.
 
-### <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie erfahren haben, was OPC Publisher ist, wird als nächster Schritt das [Konfigurieren von OPC Publisher](howto-opc-publisher-configure.md) vorgeschlagen.
+Nachdem Sie erfahren haben, was OPC Publisher ist, wird als Nächstes das folgende Tutorial vorgeschlagen:
+
+[Konfigurieren von OPC Publisher](howto-opc-publisher-configure.md)

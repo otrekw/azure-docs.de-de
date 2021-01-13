@@ -1,24 +1,15 @@
 ---
-title: Azure Service Fabric – Setup des Reverseproxys | Microsoft-Dokumentation
-description: Grundlegendes zum Einrichten und Konfigurieren des Reverseproxys in Service Fabric.
-services: service-fabric
-documentationcenter: na
-author: jimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
+title: Einrichten von Reverseproxys in Azure Service Fabric
+description: Informieren Sie sich, wie Sie den Reverseproxydienst für eine Azure Service Fabric-Anwendung einrichten und konfigurieren.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/13/2018
-ms.author: chackdan
-ms.openlocfilehash: 826e7e953bd713bb623ec469b45c56012601490b
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.author: pepogors
+ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030821"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86256345"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Einrichten und Konfigurieren des Reverseproxys in Service Fabric
 Der Reverseproxy ist ein optionaler Azure Service Fabric-Dienst, mit dessen Hilfe in einem Service Fabric-Cluster ausgeführte Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren können. Weitere Informationen finden Sie unter [Reverseproxy in Azure Service Fabric](service-fabric-reverseproxy.md). In diesem Artikel wird das Einrichten und Konfigurieren eines Reverseproxys in Ihrem Cluster veranschaulicht. 
@@ -29,10 +20,10 @@ Das Azure-Portal bietet eine Option, mit der Sie beim Erstellen eines neuen Serv
 
 Um den Reverseproxy beim [Erstellen eines Clusters mithilfe des Azure-Portals](./service-fabric-cluster-creation-via-portal.md) zu konfigurieren, gehen Sie folgendermaßen vor:
 
-1. Wählen Sie in **Schritt 2: Clusterkonfiguration** unter **Knotentypkonfiguration** die Option **Reverseproxy aktivieren** aus.
+1. Geben Sie in **Step 2: Clusterkonfiguration** unter **Knotentypkonfiguration** die Option **Reverseproxy aktivieren** aus.
 
    ![Aktivieren des Reverseproxys im Portal](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. (Optional) Um einen sicheren Reverseproxy zu konfigurieren, müssen Sie ein SSL-Zertifikat konfigurieren. Wählen Sie in **Schritt 3: Sicherheit** unter **Clustersicherheitseinstellungen konfigurieren** für **Konfigurationstyp** die Option **Benutzerdefiniert** aus. Wählen Sie dann unter **Reverseproxy-SSL-Zertifikat** die Option **SSL-Zertifikat für Reverseproxy einschließen** aus, und geben Sie die Details Ihres Zertifikats ein.
+2. (Optional:) Um einen sicheren Reverseproxy zu konfigurieren, müssen Sie ein TLS/SSL-Zertifikat konfigurieren. Wählen Sie in **Schritt 3: Sicherheit** unter **Clustersicherheitseinstellungen konfigurieren** für **Konfigurationstyp** die Option **Benutzerdefiniert** aus. Wählen Sie dann unter **Reverseproxy-SSL-Zertifikat** die Option **SSL-Zertifikat für Reverseproxy einschließen** aus, und geben Sie die Details Ihres Zertifikats ein.
 
    ![Konfigurieren eines sicheren Reverseproxys im Portal](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -44,13 +35,13 @@ Für Cluster unter Azure können Sie den Service Fabric-Reverseproxy über die A
 
 Für einen neuen Cluster können Sie [eine benutzerdefinierte Resource Manager-Vorlage erstellen](service-fabric-cluster-creation-via-arm.md) oder eine Beispielvorlage verwenden. 
 
-Sie finden die Resource Manager-Beispielvorlagen, mit denen Sie einen sicheren Reverseproxy für einen Azure-Cluster konfigurieren können, auf GitHub in den [Beispielvorlagen für einen sicheren Reverseproxy](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample). In der Infodatei finden Sie unter [Konfigurieren des HTTPS-Reverseproxys in einem sicheren Cluster](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) Anweisungen und Vorlagen zum Konfigurieren eines sicheren Reverseproxys mit einem Zertifikat und zum Umgang mit einem Zertifikatrollover.
+Sie finden die Resource Manager-Beispielvorlagen, mit denen Sie einen sicheren Reverseproxy für einen Azure-Cluster konfigurieren können, auf GitHub in den [Beispielvorlagen für einen sicheren Reverseproxy](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample). In der Infodatei finden Sie unter [Konfigurieren des HTTPS-Reverseproxys in einem sicheren Cluster](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) Anweisungen und Vorlagen zum Konfigurieren eines sicheren Reverseproxys mit einem Zertifikat und zum Umgang mit einem Zertifikatrollover.
 
-Für einen vorhandenen Cluster können Sie die Resource Manager-Vorlage für die Ressourcengruppe des Clusters mit [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) oder [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) exportieren.
+Für einen vorhandenen Cluster können Sie die Resource Manager-Vorlage für die Ressourcengruppe des Clusters mit [Azure-Portal](../azure-resource-manager/templates/export-template-portal.md), [PowerShell](../azure-resource-manager/management/manage-resources-powershell.md) oder [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/management/manage-resources-cli.md) exportieren.
 
 Nachdem Sie die Resource Manager-Vorlage erstellt haben, aktivieren Sie den Reverseproxy mit den folgenden Schritten:
 
-1. Definieren Sie im Abschnitt [parameters](../azure-resource-manager/resource-group-authoring-templates.md) der Vorlage einen Port für den Reverseproxy.
+1. Definieren Sie im Abschnitt [parameters](../azure-resource-manager/templates/template-syntax.md) der Vorlage einen Port für den Reverseproxy.
 
     ```json
     "SFReverseProxyPort": {
@@ -61,7 +52,7 @@ Nachdem Sie die Resource Manager-Vorlage erstellt haben, aktivieren Sie den Reve
         }
     },
     ```
-2. Geben Sie den Port für jedes der nodetype-Objekte in [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) im [Ressourcentypenabschnitt](../azure-resource-manager/resource-group-authoring-templates.md) an.
+2. Geben Sie den Port für jedes der nodetype-Objekte in [**Microsoft.ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) im Abschnitt [Ressourcentypen](../azure-resource-manager/templates/template-syntax.md) an.
 
     Der Port wird anhand des Parameternamens reverseProxyEndpointPort identifiziert.
 
@@ -83,7 +74,7 @@ Nachdem Sie die Resource Manager-Vorlage erstellt haben, aktivieren Sie den Reve
         ...
     }
     ```
-3. Um SSL-Zertifikate für den Port des Reverseproxys zu konfigurieren, fügen Sie das Zertifikat der ***reverseProxyCertificate***-Eigenschaft in **Microsoft.ServiceFabric/clusters** im [Ressourcentypenabschnitt](../resource-group-authoring-templates.md) hinzu.
+3. Um TLS/SSL-Zertifikate für den Port des Reverseproxys zu konfigurieren, fügen Sie das Zertifikat der ***reverseProxyCertificate***-Eigenschaft in **Microsoft.ServiceFabric/clusters** im Abschnitt [Resource type](../azure-resource-manager/templates/template-syntax.md) hinzu.
 
     ```json
     {
@@ -107,7 +98,7 @@ Nachdem Sie die Resource Manager-Vorlage erstellt haben, aktivieren Sie den Reve
     ```
 
 ### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>Unterstützung für Reverseproxyzertifikate, die sich vom Clusterzertifkat unterscheiden
- Wenn das Reverseproxyzertifikat sich von dem Zertifikat unterscheidet, das den Cluster schützt, sollte das zuvor angegebene Zertifikat auf dem virtuellen Computer installiert und der Zugriffssteuerungsliste (Access Control List, ACL) hinzugefügt worden sein, damit Service Fabric darauf zugreifen kann. Dies kann in [**Microsoft.Compute/virtualMachineScaleSets**](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets) im [Ressourcentypenabschnitt](../resource-group-authoring-templates.md) erfolgen. Fügen Sie das Zertifikat für die Installation dem osProfile hinzu. Der Erweiterungsabschnitt der Vorlage kann das Zertifikat in der ACL aktualisieren.
+ Wenn das Reverseproxyzertifikat sich von dem Zertifikat unterscheidet, das den Cluster schützt, sollte das zuvor angegebene Zertifikat auf dem virtuellen Computer installiert und der Zugriffssteuerungsliste (Access Control List, ACL) hinzugefügt worden sein, damit Service Fabric darauf zugreifen kann. Dies kann in [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets) im Abschnitt [Ressourcentypen](../azure-resource-manager/templates/template-syntax.md) erfolgen. Fügen Sie das Zertifikat für die Installation dem osProfile hinzu. Der Erweiterungsabschnitt der Vorlage kann das Zertifikat in der ACL aktualisieren.
 
   ```json
   {
@@ -261,50 +252,50 @@ Wenn Sie den Reverseproxy für einen eigenständigen Cluster öffentlich verfüg
 
 ### <a name="expose-the-reverse-proxy-via-resource-manager-templates"></a>Verfügbarmachen des Reverseproxys über Azure Resource Manager-Vorlagen
 
-Die folgende JSON-Code verweist auf die gleiche Vorlage, die in [Aktivieren des Reverseproxys über Azure Resource Manager-Vorlagen](#enable-reverse-proxy-via-azure-resource-manager-templates) verwendet wird. In diesem Abschnitt des Dokuments finden Sie Informationen zum Erstellen einer Resource Manager-Vorlage oder Exportieren einer Vorlage für einen vorhandenen Cluster.  Die Änderungen werden in [**Microsoft.Network/loadBalancers**](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers) im [Ressourcentypenabschnitt](../resource-group-authoring-templates.md) vorgenommen.
+Die folgende JSON-Code verweist auf die gleiche Vorlage, die in [Aktivieren des Reverseproxys über Azure Resource Manager-Vorlagen](#enable-reverse-proxy-via-azure-resource-manager-templates) verwendet wird. In diesem Abschnitt des Dokuments finden Sie Informationen zum Erstellen einer Resource Manager-Vorlage oder Exportieren einer Vorlage für einen vorhandenen Cluster.  Die Änderungen werden in [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers) im Abschnitt [Ressourcentypen](../azure-resource-manager/templates/template-syntax.md) vorgenommen.
 
-    ```json
-    {
-        "apiVersion": "[variables('lbApiVersion')]",
-        "type": "Microsoft.Network/loadBalancers",
+```json
+{
+    "apiVersion": "[variables('lbApiVersion')]",
+    "type": "Microsoft.Network/loadBalancers",
+    ...
+    ...
+    "loadBalancingRules": [
         ...
-        ...
-        "loadBalancingRules": [
-            ...
-            {
-                "name": "LBSFReverseProxyRule",
-                "properties": {
-                    "backendAddressPool": {
-                        "id": "[variables('lbPoolID0')]"
-                    },
-                    "backendPort": "[parameters('SFReverseProxyPort')]",
-                    "enableFloatingIP": "false",
-                    "frontendIPConfiguration": {
-                        "id": "[variables('lbIPConfig0')]"
-                    },
-                    "frontendPort": "[parameters('SFReverseProxyPort')]",
-                    "idleTimeoutInMinutes": "5",
-                    "probe": {
-                        "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
-                    },
-                    "protocol": "tcp"
-                }
+        {
+            "name": "LBSFReverseProxyRule",
+            "properties": {
+                "backendAddressPool": {
+                    "id": "[variables('lbPoolID0')]"
+                },
+                "backendPort": "[parameters('SFReverseProxyPort')]",
+                "enableFloatingIP": "false",
+                "frontendIPConfiguration": {
+                    "id": "[variables('lbIPConfig0')]"
+                },
+                "frontendPort": "[parameters('SFReverseProxyPort')]",
+                "idleTimeoutInMinutes": "5",
+                "probe": {
+                    "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
+                },
+                "protocol": "tcp"
             }
-        ],
-        "probes": [
-            ...
-            {
-                "name": "SFReverseProxyProbe",
-                "properties": {
-                    "intervalInSeconds": 5,
-                    "numberOfProbes": 2,
-                    "port":     "[parameters('SFReverseProxyPort')]",
-                    "protocol": "tcp"
-                }
-            }  
-        ]
-    }
-    ```
+        }
+    ],
+    "probes": [
+        ...
+        {
+            "name": "SFReverseProxyProbe",
+            "properties": {
+                "intervalInSeconds": 5,
+                "numberOfProbes": 2,
+                "port":     "[parameters('SFReverseProxyPort')]",
+                "protocol": "tcp"
+            }
+        }  
+    ]
+}
+```
 
 
 ## <a name="customize-reverse-proxy-behavior-using-fabric-settings"></a>Anpassen des Reverseproxyverhaltens mit Fabric-Einstellungen

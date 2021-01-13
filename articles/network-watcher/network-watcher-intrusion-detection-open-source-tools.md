@@ -1,25 +1,24 @@
 ---
-title: Durchführen der Erkennung von Netzwerkangriffen mit Azure Network Watcher und Open Source-Tools | Microsoft-Dokumentation
+title: Durchführen der Erkennung von Netzwerkangriffen mit Open Source-Tools
+titleSuffix: Azure Network Watcher
 description: In diesem Artikel wird beschrieben, wie Sie Azure Network Watcher und Open Source-Tools zum Durchführen der Erkennung von Netzwerkangriffen verwenden.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: b5dc885611c6654c1dc1d236e41ed75ef2717cc1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 6834f9cc8202f49f53c20f3941945bba4a4b2efd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65605706"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026745"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Durchführen der Erkennung von Netzwerkangriffen mit Network Watcher und Open Source-Tools
 
@@ -39,7 +38,7 @@ Beide Open Source-Tools können auf einem virtuellen Azure-Computer eingerichtet
 
 ### <a name="install-suricata"></a>Installieren von Suricata
 
-Informationen zu allen anderen Installationsmethoden finden Sie unter https://suricata.readthedocs.io/en/latest/install.html
+Informationen zu allen anderen Installationsmethoden finden Sie unter https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
 
 1. Führen Sie im Befehlszeilenterminal Ihrer VM die folgenden Befehle aus:
 
@@ -81,7 +80,7 @@ Die von Suricata generierten Protokolle enthalten zwar wertvolle Informationen z
 
 #### <a name="install-elasticsearch"></a>Installieren von Elasticsearch
 
-1. Elastic Stack ab Version 5.0 erfordert Java 8. Führen Sie den Befehl `java -version` aus, um Ihre Version zu überprüfen. Wenn Java nicht installiert ist, lesen Sie die Dokumentation zu den [von Azure unterstützten JDKs](https://aka.ms/azure-jdks).
+1. Elastic Stack ab Version 5.0 erfordert Java 8. Führen Sie den Befehl `java -version` aus, um Ihre Version zu überprüfen. Wenn Java nicht installiert ist, lesen Sie die Dokumentation zu den [von Azure unterstützten JDKs](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 1. Laden Sie das richtige Binärpaket für Ihr System herunter:
 
@@ -210,7 +209,7 @@ Weitere Anweisungen zum Installieren von Elasticsearch finden Sie auf der Seite 
     sudo chmod 775 /var/log/suricata/eve.json
     ```
 
-1. Führen Sie zum Starten von Logstash den folgenden Befehl aus:
+1. Führen Sie zum Starten von Logstash folgenden Befehl aus:
 
     ```
     sudo /etc/init.d/logstash start
@@ -247,7 +246,7 @@ Für diesen Artikel stellen wir ein Beispieldashboard bereit, in dem Sie Trends 
 
 1. Navigieren Sie auf der Registerkarte **Management** (Verwaltung) von Kibana zu **Saved Objects** (Gespeicherte Objekte), und importieren Sie alle drei Dateien. Sie können dann auf der Registerkarte **Dashboard** das Beispieldashboard öffnen und laden.
 
-Sie können auch eigene Visualisierungen und Dashboards erstellen, die auf die für Sie relevanten Metriken zugeschnitten sind. Weitere Informationen zum Erstellen von Kibana-Visualisierungen finden Sie in der [offiziellen Dokumentation](https://www.elastic.co/guide/en/kibana/current/visualize.html) von Kibana.
+Sie können auch eigene Visualisierungen und Dashboards erstellen, die auf die für Sie relevanten Metriken zugeschnitten sind. Weitere Informationen zum Erstellen von Kibana-Visualisierungen finden Sie in der [offiziellen Dokumentation](https://www.tutorialspoint.com/kibana/kibana_create_visualization.htm) von Kibana.
 
 ![Kibana-Dashboard][2]
 

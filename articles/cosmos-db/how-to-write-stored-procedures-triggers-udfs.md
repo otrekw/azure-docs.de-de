@@ -1,32 +1,35 @@
 ---
 title: Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB
 description: Erfahren Sie, wie Sie gespeicherte Prozeduren, Triggern und benutzerdefinierte Funktionen in Azure Cosmos DB definieren.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: mjbrown
-ms.openlocfilehash: bec28874bbd67ece4b29f6975e8c7fdcea457bd5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.subservice: cosmosdb-sql
+ms.topic: how-to
+ms.date: 06/16/2020
+ms.author: tisande
+ms.custom: devx-track-js
+ms.openlocfilehash: 18cedad34a6ca7d9a0ba18cd01c082f2878380a8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092838"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339817"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB bietet eine in die Sprache integrierte transaktionale Ausführung von JavaScript, mit der Sie **gespeicherte Prozeduren**, **Trigger** und **benutzerdefinierte Funktionen** (User Defined Functions, UDFs) schreiben können. Wenn Sie die SQL-API in Azure Cosmos DB verwenden, können Sie die gespeicherten Prozeduren, Trigger und UDFs in der JavaScript-Sprache definieren. Sie können Ihre Logik in JavaScript schreiben und in der Datenbank-Engine ausführen. Sie können Trigger, gespeicherte Prozeduren und UDFs im [Azure-Portal](https://portal.azure.com/), mithilfe der [in die JavaScript-Sprache integrierten Abfrage-API in Azure Cosmos DB](javascript-query-api.md) und mit den [SQL-API-Client-SDKs von Cosmos DB](sql-api-dotnet-samples.md) erstellen und ausführen. 
+Azure Cosmos DB bietet eine in die Sprache integrierte transaktionale Ausführung von JavaScript, mit der Sie **gespeicherte Prozeduren** , **Trigger** und **benutzerdefinierte Funktionen** (User Defined Functions, UDFs) schreiben können. Wenn Sie die SQL-API in Azure Cosmos DB verwenden, können Sie die gespeicherten Prozeduren, Trigger und UDFs in der JavaScript-Sprache definieren. Sie können Ihre Logik in JavaScript schreiben und in der Datenbank-Engine ausführen. Sie können Trigger, gespeicherte Prozeduren und UDFs im [Azure-Portal](https://portal.azure.com/), mithilfe der [in die JavaScript-Sprache integrierten Abfrage-API in Azure Cosmos DB](javascript-query-api.md) und mit den [SQL-API-Client-SDKs von Cosmos DB](sql-api-dotnet-samples.md) erstellen und ausführen. 
 
 Um eine gespeicherte Prozedur, einen Trigger und einer benutzerdefinierte Funktion aufzurufen, müssen Sie das entsprechende Element registrieren. Weitere Informationen finden Sie unter [Arbeiten mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md).
 
 > [!NOTE]
 > Wenn Sie eine gespeicherte Prozedur in partitionierten Containern ausführen, muss in den Anforderungsoptionen ein Partitionsschlüsselwert angegeben werden. Gespeicherte Prozeduren gelten immer für einen bestimmten Partitionsschlüssel. Elemente, die einen anderen Partitionsschlüsselwert aufweisen, sind in der gespeicherten Prozedur nicht sichtbar. Dies gilt auch für Trigger.
+> [!Tip]
+> Cosmos unterstützt die Bereitstellung von Containern mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen. Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Containers mit serverseitiger Funktionalität](./manage-with-templates.md#create-sproc).
 
-## <a id="stored-procedures"></a>Schreiben gespeicherter Prozeduren
+## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>Schreiben gespeicherter Prozeduren
 
 Gespeicherte Prozeduren werden mithilfe von JavaScript geschrieben und können Elemente in einem Azure Cosmos-Container erstellen, aktualisieren, lesen, abfragen und löschen. Gespeicherte Prozeduren werden pro Auflistung registriert und können auf beliebige Dokumente und Anhänge angewendet werden, die sich in dieser Auflistung befinden.
-
-**Beispiel**
 
 Hier ist eine einfache gespeicherte Prozedur, die die Antwort „Hello World“ zurückgibt.
 
@@ -46,31 +49,52 @@ Das Kontextobjekt bietet Zugriff auf alle Vorgänge, die in Azure Cosmos DB ausg
 
 Nachdem eine gespeicherte Prozedur geschrieben wurde, muss sie bei einer Auflistung registriert werden. Weitere Informationen finden Sie im Artikel [Verwenden von gespeicherten Prozeduren in Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#stored-procedures).
 
-### <a id="create-an-item"></a>Erstellen eines Elements mithilfe einer gespeicherten Prozedur
+### <a name="create-an-item-using-stored-procedure"></a><a id="create-an-item"></a>Erstellen eines Elements mithilfe einer gespeicherten Prozedur
 
-Wenn Sie ein Element mithilfe einer gespeicherten Prozedur erstellen, wird dieses Element in den Azure Cosmos-Container eingefügt, und es wird eine ID für das neu erstellte Element zurückgegeben. Das Erstellen eines Elements ist ein asynchroner Vorgang und hängt von den JavaScript-Rückruffunktionen ab. Die Rückruffunktion verfügt über zwei Parameter: einen für das Fehlerobjekt für den Fall eines Fehlers im Vorgang und einen anderen für einen Rückgabewert, in diesem Fall für das erstellte Objekt. Innerhalb des Rückrufs können Sie entweder die Ausnahme behandeln oder einen Fehler auslösen. Für den Fall, dass kein Rückruf bereitgestellt wird und ein Fehler auftritt, löst die Azure Cosmos DB-Laufzeitumgebung einen Fehler aus. 
+Wenn Sie ein Element mithilfe einer gespeicherten Prozedur erstellen, wird dieses Element in den Azure Cosmos-Container eingefügt, und es wird eine ID für das neu erstellte Element zurückgegeben. Das Erstellen eines Elements ist ein asynchroner Vorgang und hängt von den JavaScript-Rückruffunktionen ab. Die Rückruffunktion verfügt über zwei Parameter: einen für das Fehlerobjekt für den Fall eines Fehlers im Vorgang und einen anderen für einen Rückgabewert, in diesem Fall für das erstellte Objekt. Innerhalb des Rückrufs können Sie entweder die Ausnahme behandeln oder einen Fehler auslösen. Für den Fall, dass kein Rückruf bereitgestellt wird und ein Fehler auftritt, löst die Azure Cosmos DB-Laufzeitumgebung einen Fehler aus.
 
 Die gespeicherte Prozedur enthält auch einen Parameter zum Festlegen der Beschreibung. Hierbei handelt es sich um einen booleschen Wert. Wenn der Parameter auf TRUE festgelegt wird und die Beschreibung fehlt, löst die gespeicherte Prozedur eine Ausnahme aus. Andernfalls wird der Rest der gespeicherten Prozedur weiter ausgeführt.
 
-Die folgende gespeicherte Beispielprozedur akzeptiert ein neues Azure Cosmos-Element als Eingabe, fügt es in den Azure Cosmos-Container ein und gibt die ID für das neu erstellte Element zurück. In diesem Beispiel nutzen wir das To-Do-Listen-Beispiel aus der [Schnellstartanleitung: Erstellen einer .NET-Web-App mit Azure Cosmos DB unter Verwendung der SQL-API und des Azure-Portals](create-sql-api-dotnet.md).
+Die folgende exemplarische gespeicherte Prozedur akzeptiert ein Array neuer Azure Cosmos-Elemente als Eingabe, fügt sie in den Azure Cosmos-Container ein und gibt die Anzahl der eingefügten Elemente zurück. In diesem Beispiel nutzen wir das To-Do-Listen-Beispiel aus der [Schnellstartanleitung: Erstellen einer .NET-Web-App mit Azure Cosmos DB unter Verwendung der SQL-API und des Azure-Portals](create-sql-api-dotnet.md).
 
 ```javascript
-function createToDoItem(itemToCreate) {
+function createToDoItems(items) {
+    var collection = getContext().getCollection();
+    var collectionLink = collection.getSelfLink();
+    var count = 0;
 
-    var context = getContext();
-    var container = context.getCollection();
+    if (!items) throw new Error("The array is undefined or null.");
 
-    var accepted = container.createDocument(container.getSelfLink(),
-        itemToCreate,
-        function (err, itemCreated) {
-            if (err) throw new Error('Error' + err.message);
-            context.getResponse().setBody(itemCreated.id)
-        });
-    if (!accepted) return;
+    var numItems = items.length;
+
+    if (numItems == 0) {
+        getContext().getResponse().setBody(0);
+        return;
+    }
+
+    tryCreate(items[count], callback);
+
+    function tryCreate(item, callback) {
+        var options = { disableAutomaticIdGeneration: false };
+
+        var isAccepted = collection.createDocument(collectionLink, item, options, callback);
+
+        if (!isAccepted) getContext().getResponse().setBody(count);
+    }
+
+    function callback(err, item, options) {
+        if (err) throw err;
+        count++;
+        if (count >= numItems) {
+            getContext().getResponse().setBody(count);
+        } else {
+            tryCreate(items[count], callback);
+        }
+    }
 }
 ```
 
-### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Arrays als Eingabeparameter für gespeicherte Prozeduren 
+### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Arrays als Eingabeparameter für gespeicherte Prozeduren
 
 Beim Definieren einer gespeicherten Prozedur im Azure-Portal werden Eingabeparameter immer als Zeichenfolge an die gespeicherte Prozedur gesendet. Selbst wenn Sie ein Array von Zeichenfolgen als Eingabe übergeben, wird das Array in eine Zeichenfolge konvertiert und an die gespeicherte Prozedur gesendet. Zur Umgehung dieses Problems können Sie eine Funktion in Ihrer gespeicherten Prozedur definieren, mit der die Zeichenfolge als Array analysiert wird. Der folgende Code zeigt, wie Sie einen Zeichenfolgen-Eingabeparameter als Array analysieren:
 
@@ -85,7 +109,7 @@ function sample(arr) {
 }
 ```
 
-### <a id="transactions"></a>Transaktionen in gespeicherten Prozeduren
+### <a name="transactions-within-stored-procedures"></a><a id="transactions"></a>Transaktionen in gespeicherten Prozeduren
 
 Sie können Transaktionen mithilfe einer gespeicherten Prozedur in Elementen innerhalb eines Containers implementieren. Das folgende Beispiel verwendet Transaktionen in einer Football-Spiele-App, um Spieler in einem einzigen Vorgang zwischen zwei Mannschaften zu transferieren. Die gespeicherte Prozedur versucht, die beiden Azure Cosmos-Elemente zu lesen, die jeweils den als Argument übergebenen Spieler-IDs entsprechen. Wenn beide Spieler gefunden werden, aktualisiert die gespeicherte Prozedur die Elemente, indem die Mannschaften getauscht werden. Wenn im Verlauf des Vorgangs Fehler auftreten, löst die gespeicherte Prozedur eine JavaScript-Ausnahme aus, die die Transaktion implizit abbricht.
 
@@ -99,12 +123,12 @@ function tradePlayers(playerId1, playerId2) {
     var player1Document, player2Document;
 
     // query for players
-    var filterQuery = 
-    {     
+    var filterQuery =
+    {
         'query' : 'SELECT * FROM Players p where p.id = @playerId1',
         'parameters' : [{'name':'@playerId1', 'value':playerId1}] 
     };
-            
+
     var accept = container.queryDocuments(container.getSelfLink(), filterQuery, {},
         function (err, items, responseOptions) {
             if (err) throw new Error("Error" + err.message);
@@ -112,10 +136,10 @@ function tradePlayers(playerId1, playerId2) {
             if (items.length != 1) throw "Unable to find both names";
             player1Item = items[0];
 
-            var filterQuery2 = 
-            {     
+            var filterQuery2 =
+            {
                 'query' : 'SELECT * FROM Players p where p.id = @playerId2',
-                'parameters' : [{'name':'@playerId2', 'value':playerId2}] 
+                'parameters' : [{'name':'@playerId2', 'value':playerId2}]
             };
             var accept2 = container.queryDocuments(container.getSelfLink(), filterQuery2, {},
                 function (err2, items2, responseOptions2) {
@@ -153,7 +177,7 @@ function tradePlayers(playerId1, playerId2) {
 }
 ```
 
-### <a id="bounded-execution"></a>Gebundene Ausführung innerhalb von gespeicherten Prozeduren
+### <a name="bounded-execution-within-stored-procedures"></a><a id="bounded-execution"></a>Gebundene Ausführung innerhalb von gespeicherten Prozeduren
 
 Im Folgenden finden Sie ein Beispiel einer gespeicherten Prozedur, die Elemente per Massenvorgang in einen Azure Cosmos-Container importiert. Die gespeicherte Prozedur verarbeitet die gebundene Ausführung, indem sie den booleschen Rückgabewert von `createDocument` prüft und dann die Anzahl der Elemente verwendet, die bei jedem Aufruf der gespeicherten Prozedur eingefügt werden, um den batchübergreifenden Fortschritt nachzuverfolgen und zu übernehmen.
 
@@ -208,11 +232,61 @@ function bulkImport(items) {
 }
 ```
 
-## <a id="triggers"></a>Schreiben von Triggern
+### <a name="async-await-with-stored-procedures"></a><a id="async-promises"></a>Asynchrones await mit gespeicherten Prozeduren
+
+Im Folgenden finden Sie ein Beispiel für eine gespeicherte Prozedur, die asynchrones await mit Zusagen mithilfe einer Hilfsfunktion verwendet. Die gespeicherte Prozedur fragt ein Element ab und ersetzt es.
+
+```javascript
+function async_sample() {
+    const ERROR_CODE = {
+        NotAccepted: 429
+    };
+
+    const asyncHelper = {
+        queryDocuments(sqlQuery, options) {
+            return new Promise((resolve, reject) => {
+                const isAccepted = __.queryDocuments(__.getSelfLink(), sqlQuery, options, (err, feed, options) => {
+                    if (err) reject(err);
+                    resolve({ feed, options });
+                });
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+            });
+        },
+
+        replaceDocument(doc) {
+            return new Promise((resolve, reject) => {
+                const isAccepted = __.replaceDocument(doc._self, doc, (err, result, options) => {
+                    if (err) reject(err);
+                    resolve({ result, options });
+                });
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+            });
+        }
+    };
+
+    async function main() {
+        let continuation;
+        do {
+            let { feed, options } = await asyncHelper.queryDocuments("SELECT * from c", { continuation });
+
+            for (let doc of feed) {
+                doc.newProp = 1;
+                await asyncHelper.replaceDocument(doc);
+            }
+
+            continuation = options.continuation;
+        } while (continuation);
+    }
+
+    main().catch(err => getContext().abort(err));
+}
+```
+
+## <a name="how-to-write-triggers"></a><a id="triggers"></a>Schreiben von Triggern
 
 Azure Cosmos DB unterstützt vorangestellte und nachgestellte Trigger. Vorangestellte Trigger werden vor dem Ändern eines Datenbankelements ausgeführt, nachgestellte Trigger danach.
 
-### <a id="pre-triggers"></a>Vorangestellte Trigger
+### <a name="pre-triggers"></a><a id="pre-triggers"></a>Vorangestellte Trigger
 
 Das folgende Beispiel zeigt, wie ein vorangestellter Trigger zum Überprüfen der Eigenschaften eines Azure Cosmos-Elements verwendet werden kann, das erstellt wird. In diesem Beispiel nutzen wir das To-Do-Listen-Beispiel aus der [Schnellstartanleitung: Erstellen einer .NET-Web-App mit Azure Cosmos DB unter Verwendung der SQL-API und des Azure-Portals](create-sql-api-dotnet.md), um eine Timestamp-Eigenschaft zu einem neu hinzugefügten Element hinzuzufügen, falls dieses keine solche Eigenschaft enthält.
 
@@ -241,7 +315,7 @@ Wenn Trigger registriert werden, können Sie die Vorgänge angeben, mit denen si
 
 Beispiele für das Registrieren und Aufrufen eines vorangestellten Triggers finden Sie in den Artikeln [Vorangestellte Trigger](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) und [Nachgestellte Trigger](how-to-use-stored-procedures-triggers-udfs.md#post-triggers). 
 
-### <a id="post-triggers"></a>Nachgestellte Trigger
+### <a name="post-triggers"></a><a id="post-triggers"></a>Nachgestellte Trigger
 
 Das folgende Beispiel zeigt einen nachgestellten Trigger. Dieser Trigger fragt das Metadatenelement ab und aktualisiert es mit den Details zum neu erstellten Element.
 
@@ -283,7 +357,7 @@ Ein wichtiger Aspekt, den es zu beachten gilt, ist die transaktionale Ausführun
 
 Beispiele für das Registrieren und Aufrufen eines vorangestellten Triggers finden Sie in den Artikeln [Vorangestellte Trigger](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) und [Nachgestellte Trigger](how-to-use-stored-procedures-triggers-udfs.md#post-triggers). 
 
-## <a id="udfs"></a>Schreiben von benutzerdefinierten Funktionen
+## <a name="how-to-write-user-defined-functions"></a><a id="udfs"></a>Schreiben von benutzerdefinierten Funktionen
 
 Das folgende Beispiel erstellt eine benutzerdefinierte Funktion, um die Einkommenssteuer für verschiedene Einkommensgruppen zu berechnen. Diese benutzerdefinierte Funktion wird dann innerhalb einer Abfrage verwendet. Nehmen wir für dieses Beispiel an, dass ein Container namens „Incomes“ mit folgenden Eigenschaften vorhanden ist:
 
@@ -313,6 +387,17 @@ function tax(income) {
 ```
 
 Beispiele für das Registrieren und Verwenden einer benutzerdefinierten Funktion finden Sie im Artikel [Verwenden von benutzerdefinierten Funktionen in Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#udfs).
+
+## <a name="logging"></a>Protokollierung 
+
+Wenn Sie gespeicherte Prozeduren, Trigger oder benutzerdefinierte Funktionen verwenden, können Sie die Schritte mithilfe des Befehls `console.log()` protokollieren. Mit diesem Befehl konzentriert sich eine Zeichenfolge auf das Debuggen, wenn `EnableScriptLogging` wie im folgenden Beispiel gezeigt auf TRUE festgelegt ist:
+
+```javascript
+var response = await client.ExecuteStoredProcedureAsync(
+document.SelfLink,
+new RequestOptions { EnableScriptLogging = true } );
+Console.WriteLine(response.ScriptLog);
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

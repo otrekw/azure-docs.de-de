@@ -1,19 +1,21 @@
 ---
 title: Skalare Ausdrücke in SQL-Abfragen in Azure Cosmos DB
-description: Erfahren Sie mehr über die SQL-Syntax mit skalaren Ausdrücken für Azure Cosmos DB.
+description: Erfahren Sie etwas über die SQL-Syntax bei skalaren Ausdrücken für Azure Cosmos DB. Außerdem wird in diesem Artikel beschrieben, wie skalare Ausdrücke mithilfe von Operatoren zu komplexen Ausdrücken zusammengefasst werden.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: c35ad65a584f8ee95142e9bc85a58b5b6cd99744
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 34df2d2f4a2209cca93c3f7ac12dcd203bf4a089
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003538"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339630"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skalare Ausdrücke in SQL-Abfragen in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Die [SELECT-Klausel](sql-query-select.md) unterstützt skalare Ausdrücke. Ein skalarer Ausdruck ist eine Kombination aus Symbolen und Operatoren, die ausgewertet werden können, um einen einzelnen Wert zu erhalten. Skalare Ausdrücke können beispielsweise Konstanten, Eigenschaftenverweise, Arrayelementverweise, Aliasverweise oder Funktionsaufrufe sein. Skalare Ausdrücke können mit Operatoren in komplexen Ausdrücken kombiniert werden.
 
@@ -55,7 +57,7 @@ Die [SELECT-Klausel](sql-query-select.md) unterstützt skalare Ausdrücke. Ein s
 - `input_alias`  
   
    Stellt einen Wert dar, der von dem `input_alias` definiert wird, der in der `FROM` Klausel eingeführt wird.  
-  Dieser Wert ist garantiert nicht **undefiniert** –**undefinierte** Werte in der Eingabe werden übersprungen.  
+  Dieser Wert ist garantiert nicht **undefiniert** – **undefinierte** Werte in der Eingabe werden übersprungen.  
   
 - `<scalar_expression>.property_name`  
   
@@ -97,7 +99,7 @@ Die [SELECT-Klausel](sql-query-select.md) unterstützt skalare Ausdrücke. Ein s
   
    Stellt einen Wert des angegebenen Parameternamens dar. Das erste Zeichen eines Parameternamens muss ein einzelnes „\@“ sein.  
   
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
   
   Beim Aufrufen einer integrierten oder benutzerdefinierten Skalarfunktion müssen alle Argumente definiert werden. Wenn eines der Argumente undefiniert ist, wird die Funktion nicht aufgerufen, und das Ergebnis ist undefiniert.  
   
@@ -111,7 +113,7 @@ Die [SELECT-Klausel](sql-query-select.md) unterstützt skalare Ausdrücke. Ein s
     SELECT ((2 + 11 % 7)-2)/3
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [{
@@ -126,7 +128,7 @@ Das Ergebnis des skalaren Ausdrucks in der folgenden Abfrage ist ein boolescher 
     FROM Families f
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [

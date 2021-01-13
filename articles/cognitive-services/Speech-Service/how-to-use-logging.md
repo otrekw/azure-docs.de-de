@@ -1,7 +1,7 @@
 ---
-title: Speech SDK-Protokollierung – Speech Service
+title: Speech SDK-Protokollierung – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
-description: Aktivieren Sie die Protokollierung im Speech SDK.
+description: Erfahren Sie, wie Sie die Anmeldung im Speech SDK (C++, C#, Python, Objective-C, Java) aktivieren.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 31ff21e33860f75d91d01e80e3ee77bd7192f780
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: f044596cf084e68b6c9ca10e3da4fbdf4c8c2062
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559474"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026521"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Aktivieren der Protokollierung im Speech SDK
 
@@ -67,7 +68,7 @@ StorageFile logFile = await storageFolder.CreateFileAsync("logfile.txt", Creatio
 config.SetProperty(PropertyId.Speech_LogFilename, logFile.Path);
 ```
 
-Weitere Informationen zur Dateizugriffsberechtigung für UWP-Anwendungen finden Sie [hier](https://docs.microsoft.com/windows/uwp/files/file-access-permissions).
+Weitere Informationen zur Dateizugriffsberechtigung für UWP-Anwendungen finden Sie [hier](/windows/uwp/files/file-access-permissions).
 
 ### <a name="android"></a>Android
 

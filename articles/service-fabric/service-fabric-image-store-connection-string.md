@@ -1,25 +1,16 @@
 ---
-title: Verbindungszeichenfolge für den Azure Service Fabric-Imagespeicher | Microsoft-Dokumentation
-description: Grundlegendes zur Imagespeicher-Verbindungszeichenfolge
-services: service-fabric
-documentationcenter: .net
+title: Verbindungszeichenfolge für den Azure Service Fabric-Imagespeicher
+description: Erfahren Sie mehr über die Imagespeicher-Verbindungszeichenfolge einschließlich ihrer Verwendungszwecke und Anwendungen in einem Service Fabric-Cluster.
 author: alexwun
-manager: chackdan
-editor: ''
-ms.assetid: 00f8059d-9d53-4cb8-b44a-b25149de3030
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: 4a56b48c0041e963b89312c59335b45cabacc1bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8fc0239dd18fc7071823a129a7dbc4f102023d66
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720194"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86246196"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>Grundlegendes zur ImageStoreConnectionString-Einstellung
 
@@ -47,7 +38,7 @@ Der Dateisystemanbieter wird während der Entwicklung anstelle des Imagespeicher
 
 Darüber hinaus sollte weder der Dateisystemanbieter noch der Azure Storage-Anbieter als Methode für die gemeinsame Verwendung eines Imagespeichers durch mehrere Cluster verwendet werden – dies führt zu einer Beschädigung der Clusterkonfigurationsdaten, da die einzelnen Cluster widersprüchliche Daten in den Imagespeicher schreiben können. Verwenden Sie zum Freigeben von bereitgestellten Anwendungspaketen zwischen mehreren Clustern stattdessen [SFPKG][12]-Dateien. Diese können in beliebige externe Speicher mit einem Download-URI hochgeladen werden.
 
-„ImageStoreConnectionString“ ist zwar konfigurierbar, Sie verwenden jedoch einfach die Standardeinstellung. Beim Veröffentlichen in Azure mithilfe von Visual Studio wird der Parameter automatisch entsprechend für Sie festgelegt. Für die programmgesteuerte Bereitstellung für in Azure gehostete Cluster lautet die Verbindungszeichenfolge immer „fabric:ImageStore“. Im Zweifelsfall kann ihr Wert jedoch immer durch das Abrufen des Clustermanifests über [PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest), [.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx) oder [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest) überprüft werden. Sowohl lokale Test- als auch Produktionscluster sollten immer auch für die Verwendung des Anbieters für den Imagespeicherdienst konfiguriert werden.
+„ImageStoreConnectionString“ ist zwar konfigurierbar, Sie verwenden jedoch einfach die Standardeinstellung. Beim Veröffentlichen in Azure mithilfe von Visual Studio wird der Parameter automatisch entsprechend für Sie festgelegt. Für die programmgesteuerte Bereitstellung für in Azure gehostete Cluster lautet die Verbindungszeichenfolge immer „fabric:ImageStore“. Im Zweifelsfall kann ihr Wert jedoch immer durch das Abrufen des Clustermanifests über [PowerShell](/powershell/module/servicefabric/get-servicefabricclustermanifest), [.NET](/previous-versions/azure/reference/mt161375(v=azure.100)) oder [REST](/rest/api/servicefabric/get-a-cluster-manifest) überprüft werden. Sowohl lokale Test- als auch Produktionscluster sollten immer auch für die Verwendung des Anbieters für den Imagespeicherdienst konfiguriert werden.
 
 ### <a name="next-steps"></a>Nächste Schritte
 [Bereitstellen und Entfernen von Anwendungen mit PowerShell][10]

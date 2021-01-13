@@ -1,6 +1,6 @@
 ---
-title: Azure-VMware-Lösung von CloudSimple – private Clouds
-description: Erfahren Sie mehr über private CloudSimple-Clouds und CloudSimple-Konzepte.
+title: Azure VMware Solution by CloudSimple – private Clouds
+description: Hier erfahren Sie mehr über CloudSimple-Konzepte und -Vorteile, u. a. über die vollständige VMware-Betriebskontinuität und die Kompatibilität mit vorhandenen Tools, Fähigkeiten und Prozessen.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4fb930603455ed1a5df5d357fcab669f41a0c28c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: e2096e8c0ebfb233c7449510bf0bc8e80b56231e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877947"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88140716"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>Übersicht über private CloudSimple-Clouds
 
@@ -37,7 +37,7 @@ Dank dieser Kompatibilität können Ihre Teams, Workloads in der Azure-Cloud ver
 
 * Netzwerk
 * Sicherheit  
-* Datenschutz  
+* Schutz von Daten  
 * Audit
 
 CloudSimple verwaltet die Infrastruktur und alle erforderlichen Netzwerk- und Verwaltungsdienste. Mit dem CloudSimple-Dienst kann sich Ihr das Team auf Folgendes konzentrieren:
@@ -75,7 +75,7 @@ Sie können eine private Cloud mit erworbenen Knoten mit nutzungsbasierter Bezah
 
 Sie können die private Cloud über die folgenden Verbindungen mit Ihrer lokalen Umgebung und dem Azure-Netzwerk verbinden:
 
-* Schützen
+* Sicher
 * Privates VPN
 * Azure ExpressRoute
 

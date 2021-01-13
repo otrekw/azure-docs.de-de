@@ -1,25 +1,17 @@
 ---
-title: Starten und Beenden von Clusterknoten zum Testen von Azure Service Fabric-Apps | Microsoft-Dokumentation
+title: Starten und Beenden von Clusterknoten
 description: Erfahren Sie, wie Sie Fault Injection zum Testen einer Service Fabric-Anwendung durch Starten und Beenden von Clusterknoten verwenden.
-services: service-fabric
-documentationcenter: .net
 author: LMWF
-manager: rsinha
-editor: ''
-ms.assetid: f4e70f6f-cad9-4a3e-9655-009b4db09c6d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: df0e53736c08fd2c26c467def7328e85f2989f26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9c31040ec13084f9e4b08bbc9a347e4ad44975bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718137"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89021254"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Ersetzen der APIs zum Starten und Beenden von Knoten durch die Knotenübergangs-API
 
@@ -45,7 +37,7 @@ Wir haben diese Probleme in einem neuen Satz von APIs behoben.  Die neue Knoten�
 Wenn die Knotenübergangs-API bei ihrem Aufruf keine Ausnahme auslöst, hat das System den asynchronen Vorgang akzeptiert und führt ihn aus.  Ein erfolgreicher Aufruf bedeutet nicht, dass der Vorgang bereits abgeschlossen ist.  Um Informationen zum aktuellen Status des Vorgangs zu erhalten, rufen Sie die Knotenübergangsstatus-API (verwaltet: [GetNodeTransitionProgressAsync()][gntp]) mit der GUID auf, die beim Aufrufen der Knotenübergangs-API für diesen Vorgang verwendet wurde.  Die Knotenübergangsstatus-API gibt ein „NodeTransitionProgress“-Objekt zurück.  Die „State“-Eigenschaft dieses Objekts gibt den aktuellen Status des Vorgangs an.  Wenn der Status „Running“ ist, wird der Vorgang ausgeführt.  Wenn er „Completed“ ist, wurde der Vorgang ohne Fehler abgeschlossen.  Wenn er „Faulted“ ist, gab es ein Problem bei der Ausführung des Vorgangs.  Die „Exception“-Eigenschaft der „Result“-Eigenschaft gibt an, welcher Fehler vorliegt.  Weitere Informationen zur State-Eigenschaft finden Sie unter https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate. Codebeispiele finden Sie unten im Abschnitt „Beispielverwendung“.
 
 
-**Unterscheidung zwischen einem beendeten Knoten und einem ausgefallenen Knoten**: Wenn ein Knoten mithilfe der Knotenübergangs-API *beendet* wurde, wird in der Ausgabe einer Knotenabfrage (verwaltet: [GetNodeListAsync()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) angezeigt, dass bei diesem Knoten der Wert der *IsStopped*-Eigenschaft „true“ ist.  Beachten Sie, dass sich dies vom Wert der *NodeStatus*-Eigenschaft unterscheidet, der *Down* lautet.  Wenn die *NodeStatus*-Eigenschaft den Wert *Down* aufweist, aber *IsStopped* FALSE ist, wurde der Knoten nicht mithilfe der Knotenübergangs-API beendet, sondern weist aus einem anderen Grund den Status *Down* auf.  Wenn die *IsStopped*-Eigenschaft „true“ ist und die *NodeStatus*-Eigenschaft den Wert *Down* hat, wurde der Knoten mithilfe der Knotenübergangs-API beendet.
+**Unterscheidung zwischen einem beendeten Knoten und einem ausgefallenen Knoten**: Wenn ein Knoten mithilfe der Knotenübergangs-API *beendet* wurde, wird in der Ausgabe einer Knotenabfrage (verwaltet: [GetNodeListAsync()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) angezeigt, dass bei diesem Knoten der Wert der *IsStopped*-Eigenschaft TRUE ist.  Beachten Sie, dass sich dies vom Wert der *NodeStatus*-Eigenschaft unterscheidet, der *Down* lautet.  Wenn die *NodeStatus*-Eigenschaft den Wert *Down* aufweist, aber *IsStopped* FALSE ist, wurde der Knoten nicht mithilfe der Knotenübergangs-API beendet, sondern weist aus einem anderen Grund den Status *Down* auf.  Wenn die *IsStopped*-Eigenschaft „true“ ist und die *NodeStatus*-Eigenschaft den Wert *Down* hat, wurde der Knoten mithilfe der Knotenübergangs-API beendet.
 
 Durch Starten eines *beendeten* Knotens mithilfe der Knotenübergangs-API wird der Knoten wieder zum normalen Mitglied des Clusters.  Die Ausgabe der Knotenabfrage-API zeigt *IsStopped* als FALSE und *NodeStatus* als nicht „Down“ an (sondern z.B. „Up“).
 
@@ -280,11 +272,11 @@ Durch Starten eines *beendeten* Knotens mithilfe der Knotenübergangs-API wird d
         }
 ```
 
-[stopnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN
-[stopnodeps]: https://msdn.microsoft.com/library/mt125982.aspx
-[startnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN
-[startnodeps]: https://msdn.microsoft.com/library/mt163520.aspx
-[nodequery]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient
-[nodequeryps]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode
-[snt]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient
-[gntp]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient
+[stopnode]: /dotnet/api/system.fabric.fabricclient.faultmanagementclient
+[stopnodeps]: /previous-versions/azure/mt125982(v=azure.100)
+[startnode]: /dotnet/api/system.fabric.fabricclient.faultmanagementclient
+[startnodeps]: /previous-versions/azure/mt163520(v=azure.100)
+[nodequery]: /dotnet/api/system.fabric.fabricclient.queryclient
+[nodequeryps]: /powershell/module/servicefabric/get-servicefabricnode
+[snt]: /dotnet/api/system.fabric.fabricclient.testmanagementclient
+[gntp]: /dotnet/api/system.fabric.fabricclient.testmanagementclient

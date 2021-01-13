@@ -1,21 +1,16 @@
 ---
-title: 'Azure Service Fabric: Gewähren des Zugriffs auf andere Azure-Ressourcen für eine Service Fabric-Anwendung| Microsoft-Dokumentation'
+title: Gewähren des Zugriffs auf andere Azure-Ressourcen für eine Anwendung
 description: In diesem Artikel wird erläutert, wie Sie Ihrer Service Fabric-Anwendung, die verwaltete Identitäten nutzen kann, Zugriff auf andere Azure-Ressourcen gewähren, die die Azure Active Directory-basierte Authentifizierung unterstützen.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2019
-ms.author: atsenthi
-ms.openlocfilehash: 467b202cf6b981969316a2646aac99f788f7a2f4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 12/09/2019
+ms.openlocfilehash: c7560294fbf6d122396b6a5a8ffd3ee93bc89048
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091196"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507454"
 ---
-# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Gewähren des Zugriffs auf Azure-Ressourcen für die verwaltete Identität einer Service Fabric-Anwendung (Vorschau)
+# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>Gewähren des Zugriffs auf Azure-Ressourcen für die verwaltete Identität einer Service Fabric-Anwendung
 
 Bevor eine Anwendung ihre verwaltete Identität für den Zugriff auf andere Ressourcen nutzen kann, müssen dieser Identität Berechtigungen in der geschützten Azure-Ressource gewährt werden, auf die zugegriffen werden soll. Das Gewähren von Berechtigungen ist in der Regel eine Verwaltungsaktion auf der Steuerungsebene des Azure-Diensts, der im Besitz der geschützten Ressource ist. Diese Aktion wird über den Azure Resource Manager ausgeführt, der alle anwendbaren rollenbasierten Zugriffsüberprüfungen erzwingt.
 
@@ -107,7 +102,7 @@ Vom System zugewiesene verwaltete Identitäten:
     }
 ```
 
-Weitere Informationen finden Sie unter [Tresore: Aktualisieren der Zugriffsrichtlinie](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).
+Weitere Informationen finden Sie unter [Tresore: Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)

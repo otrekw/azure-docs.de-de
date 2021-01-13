@@ -1,6 +1,6 @@
 ---
 title: Netzwerkdurchsatz virtueller Azure-Computer | Microsoft-Dokumentation
-description: Informationen zum Netzwerkdurchsatz virtueller Azure-Computer.
+description: Erfahren Sie mehr über den Netzwerkdurchsatz von Azure Virtual Machine, einschließlich der Zuweisung von Bandbreite an einen virtuellen Computer.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: f5694e18d5743118e2b6e73708dd3acb17151198
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f0bad935c7c3d44f57dd171f714f31856bc2089c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361312"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Netzwerkdurchsatz virtueller Computer
 
@@ -54,19 +54,19 @@ Datenübertragungen zwischen Endpunkten erfordern die Erstellung von mehreren Fl
 
 ## <a name="flow-limits-and-recommendations"></a>Grenzwerte und Empfehlungen für Flows
 
-Zurzeit unterstützt der Azure-Netzwerkstapel 250.000 Netzwerkflows insgesamt mit guter Leistung für virtuelle Computer mit mehr als 8 CPU-Kernen und 100.000 Flows insgesamt mit guter Leistung für virtuelle Computer mit weniger als 8 CPU-Kernen. Bei Überschreibung dieses Grenzwerts nimmt die Leistung bei weiteren Flows ab. Dies gilt bis zur absoluten Obergrenze von 1 Mio. Flows – 500.000 ein- und 500.000 ausgehend –, ab der weitere Flows verworfen werden.
+Zurzeit unterstützt der Azure-Netzwerkstapel 250.000 Netzwerkflows insgesamt mit guter Leistung für virtuelle Computer mit mehr als 8 CPU-Kernen und 100.000 Flows insgesamt mit guter Leistung für virtuelle Computer mit weniger als 8 CPU-Kernen. Jenseits dieses Grenzwerts nimmt die Leistung für weitere Flows nach und nach ab. Dies gilt bis zur absoluten Obergrenze von 500.000 Flows (250.000 eingehend und 250.000 ausgehend), ab der weitere Flows verworfen werden.
 
-||VMs mit weniger als 8 CPU-Kernen|VMs mit mehr als 8 CPU-Kernen|
-|---|---|---|
+| Leistungsstufe | VMs mit weniger als 8 CPU-Kernen | VMs mit mehr als 8 CPU-Kernen |
+| ----------------- | --------------------- | --------------------- |
 |<b>Gute Leistung</b>|100.000 Flows |250.000 Flows|
 |<b>Abgeminderte Leistung</b>|Über 100.000 Flows|Über 250.000 Flows|
-|<b>Grenzwert für Flows</b>|1 Mio. Flows|1 Mio. Flows|
+|<b>Grenzwert für Flows</b>|500.000 Flows|500.000 Flows|
 
 In [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) stehen Metriken zum Nachverfolgen der Anzahl von Netzwerkflows und der Rate der Erstellung von Flows auf Ihren virtuellen Computern oder VMSS-Instanzen zur Verfügung.
 
-![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+![Screenshot: Seite „Metriken“ von Azure Monitor mit einem Liniendiagramm und Summen für eingehende und ausgehende Flows](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
-Die Raten für die Verbindungsherstellung und -beendigung können sich ebenfalls auf die Netzwerkleistung auswirken, da für die Verbindungsherstellung und -beendigung CPU-Ressourcen mit der Paketverarbeitung geteilt werden. Es wird empfohlen, Benchmarktests für Ihre Workloads mit den zu erwartenden Datenverkehrsmustern durchzuführen und die Workloads entsprechend den Leistungsanforderungen zu erweitern. 
+Die Raten für die Verbindungsherstellung und -beendigung können sich ebenfalls auf die Netzwerkleistung auswirken, da für die Verbindungsherstellung und -beendigung CPU-Ressourcen mit der Paketverarbeitung geteilt werden. Es wird empfohlen, Benchmarktests für Ihre Workloads mit den zu erwartenden Datenverkehrsmustern durchzuführen und die Workloads entsprechend den Leistungsanforderungen aufzuskalieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

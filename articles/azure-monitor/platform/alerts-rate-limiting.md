@@ -1,19 +1,17 @@
 ---
-title: Ratenlimits für SMS, E-Mail-Nachrichten, Azure-App-Pushbenachrichtigungen und Webhooks
+title: Ratenlimits für SMS, E-Mails und Pushbenachrichtigungen
 description: Es wird erläutert, wie Azure die Anzahl der möglichen SMS-, E-Mail-, Azure App-Push- oder Webhookbenachrichtigungen aus einer Aktionsgruppe beschränkt.
 author: dkamstra
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
-ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 11fd6a2c58671cc5d0bcf0593239eb9e62aca834
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39b9fd8396601d777aa802a147bee3acc4a22cd0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60346647"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87045300"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge
 Das Ratenlimit führt zu einer Unterbrechung der Benachrichtigungen, wenn zu viele an eine bestimmte Telefonnummer, E-Mail-Adresse oder an ein Gerät gesendet werden. Das Ratenlimit stellt sicher, dass Warnungen verwaltbar und verfolgbar sind.
@@ -34,5 +32,4 @@ Folgende Ratenlimits gelten:
 ## <a name="next-steps"></a>Nächste Schritte ##
 * Erfahren Sie mehr über das [SMS-Warnungsverhalten in Aktionsgruppen](alerts-sms-behavior.md).
 * Verschaffen Sie sich eine [Übersicht über Aktivitätsprotokollwarnungen](alerts-overview.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
-* Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Dienstintegritätsbenachrichtigung gesendet wird](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
-
+* Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Dienstintegritätsbenachrichtigung gesendet wird](../../service-health/alerts-activity-log-service-notifications-portal.md).

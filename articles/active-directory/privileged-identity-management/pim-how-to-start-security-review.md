@@ -1,55 +1,53 @@
 ---
-title: Erstellen einer Zugriffsüberprüfung für Azure AD-Rollen in PIM – Azure Active Directory | Microsoft-Dokumentation
+title: Erstellen einer Zugriffsüberprüfung für Azure AD-Rollen in PIM – Azure AD | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung für Azure AD-Rollen in Azure AD Privileged Identity Management (PIM) erstellen.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/27/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2069f0161ea2600a62ab123206d0ebe3c00642c3
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 9d9fdc44681c8773d7b6f724174a74e76e57939e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804365"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369759"
 ---
-# <a name="create-an-access-review-of-azure-ad-roles-in-pim"></a>Erstellen einer Zugriffsüberprüfung für Azure AD-Rollen in PIM
+# <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Erstellen einer Zugriffsüberprüfung für Azure AD-Rollen in Privileged Identity Management
 
-Für Mitarbeiter kann sich der Zugriff auf privilegierte Azure AD-Rollen im Laufe der Zeit ändern. Daher sollten Sie den Zugriff in regelmäßigen Abständen überprüfen, um das mit veralteten Rollenzuweisungen verbundene Risiko zu verringern. Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie Zugriffsüberprüfungen für privilegierte Azure AD-Rollen erstellen. Sie können auch wiederholte Zugriffsüberprüfungen konfigurieren, die automatisch ausgeführt werden.
+Daher sollten Sie den Zugriff in regelmäßigen Abständen überprüfen, um das mit veralteten Rollenzuweisungen verbundene Risiko zu verringern. Mit Azure AD Privileged Identity Management (PIM) können Sie Zugriffsüberprüfungen für privilegierte Azure AD-Rollen erstellen. Sie können auch wiederholte Zugriffsüberprüfungen konfigurieren, die automatisch ausgeführt werden.
 
 In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüfungen für privilegierte Azure AD-Rollen erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[Administrator für privilegierte Rollen](../roles/permissions-reference.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>Öffnen von Zugriffsüberprüfungen
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Benutzer an, der ein Mitglied der Rolle „Administrator für privilegierte Rollen“ ist.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Benutzer an, der Mitglied der Rolle „Administrator für privilegierte Rollen“ ist.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
+1. Öffnen Sie **Azure AD Privileged Identity Management** .
 
-1. Klicken Sie im linken Menü auf **Azure AD-Rollen**, und klicken Sie dann auf **Zugriffsüberprüfungen**.
+1. Wählen Sie **Azure AD-Rollen** aus.
 
-1. Klicken Sie unter „Verwalten“ auf **Zugriffsüberprüfungen**.
+1. Wählen Sie unter „Verwalten“ die Option **Zugriffsüberprüfungen** und anschließend **Neu** aus.
 
     ![Azure AD-Rollen: Liste der Zugriffsüberprüfungen mit dem Status aller Überprüfungen](./media/pim-how-to-start-security-review/access-reviews.png)
 
-
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
-
 
 ## <a name="start-the-access-review"></a>Starten der Zugriffsüberprüfung
 
-Klicken Sie nach dem Festlegen der Einstellungen für eine Zugriffsüberprüfung auf **Starten**. Die Zugriffsüberprüfung wird in der Liste mit einer Angabe des Status angezeigt.
+Wählen Sie nach dem Festlegen der Einstellungen für eine Zugriffsüberprüfung die Option **Starten** aus. Die Zugriffsüberprüfung wird in der Liste mit einer Angabe des Status angezeigt.
 
 ![Liste der Zugriffsüberprüfungen mit dem Status gestarteter Überprüfungen](./media/pim-how-to-start-security-review/access-reviews-list.png)
 
@@ -65,7 +63,7 @@ Führen Sie bei einer einmaligen Überprüfung nach Ablauf des Zeitraums für di
 
 Um eine Serie von Zugriffsüberprüfungen zu verwalten, navigieren Sie zur Zugriffsüberprüfung. Dort finden Sie unter den geplanten Überprüfungen die anstehenden Überprüfungen, und Sie können das Enddatum bearbeiten oder Prüfer entsprechend hinzufügen/entfernen.
 
-Basierend auf Ihrer Auswahl unter **Einstellungen nach Abschluss** wird nach dem Enddatum der Überprüfung oder bei manueller Beendigung der Überprüfung die automatische Anwendung ausgeführt. Der Status der Überprüfung ändert sich von **Abgeschlossen** über Zwischenzustände wie **Wird angewandt** schließlich in den Status **Angewandt**. Erwartungsgemäß sollten abgelehnte Benutzer (sofern vorhanden) innerhalb weniger Minuten aus den Rollen entfernt werden.
+Basierend auf Ihrer Auswahl unter **Einstellungen nach Abschluss** wird nach dem Enddatum der Überprüfung oder bei manueller Beendigung der Überprüfung die automatische Anwendung ausgeführt. Der Status der Überprüfung ändert sich von **Abgeschlossen** über Zwischenzustände wie **Wird angewandt** schließlich in den Status **Angewandt** . Erwartungsgemäß sollten abgelehnte Benutzer (sofern vorhanden) innerhalb weniger Minuten aus den Rollen entfernt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

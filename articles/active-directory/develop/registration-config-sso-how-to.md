@@ -1,27 +1,22 @@
 ---
-title: Konfigurieren des einmaliges Anmeldens für Anwendungen | Microsoft-Dokumentation
+title: Konfigurieren des einmaliges Anmeldens für Anwendungen
 description: Konfigurieren des einmaliges Anmeldens für eine mit Azure AD entwickelte und registrierte benutzerdefinierte Anwendung
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbc9f20903d65fbde161d26ed3e194e63d341ccb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 465adbb71abaa45160399ecba2ebfb692a8307c2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320959"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88120676"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>Konfigurieren des einmaliges Anmeldens für eine Anwendung
 
@@ -31,20 +26,20 @@ Die Aktivierung der einmaligen Verbundanmeldung in Ihrer App wird beim Verbund m
 
 * Wenn Sie eine mobile App erstellen, sind möglicherweise zusätzliche Konfigurationen erforderlich, um Broker-SSO oder Nicht-Broker-SSO zu aktivieren.
 
-Informationen für Android-Geräte finden Sie unter [Aktivieren von App-übergreifendem SSO in Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android).<br>
+Informationen für Android-Geräte finden Sie unter [Aktivieren von App-übergreifendem SSO in Android](../azuread-dev/howto-v1-enable-sso-android.md).<br>
 
-Informationen für iOS-Geräte finden Sie unter [Aktivieren von App-übergreifendem SSO in iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios).
+Informationen für iOS-Geräte finden Sie unter [Aktivieren von App-übergreifendem SSO in iOS](../azuread-dev/howto-v1-enable-sso-ios.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Azure AD-SSO](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
+[Azure AD-SSO](../manage-apps/what-is-single-sign-on.md)<br>
 
-[Aktivieren von App-übergreifendem SSO in Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
+[Aktivieren von App-übergreifendem SSO in Android](../azuread-dev/howto-v1-enable-sso-android.md)<br>
 
-[Aktivieren von App-übergreifendem SSO in iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
+[Aktivieren von App-übergreifendem SSO in iOS](../azuread-dev/howto-v1-enable-sso-ios.md)<br>
 
-[Integrieren von Apps in Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
+[Integrieren von Apps in Azure AD](./quickstart-register-app.md)<br>
 
-[Genehmigen und Zuweisen von Berechtigungen für konvergierte Azure AD V2.0-Apps](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](./v2-permissions-and-consent.md)<br>
 
 [Azure AD bei Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

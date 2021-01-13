@@ -1,23 +1,22 @@
 ---
-title: Anmerkungen zu dieser Version des Datenverwaltungsgateways | Microsoft Docs
+title: Versionshinweise für Datenverwaltungsgateway
 description: Versionshinweise für Datenverwaltungsgateway
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 865bfdae199bca7ebee888be527db239d34511d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486463"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001625"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Versionshinweise für Datenverwaltungsgateway
 > [!NOTE]
@@ -40,18 +39,18 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 ## <a name="earlier-versions"></a>Frühere Versionen
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>Verbesserungen
-- Sie können DNS-Einträge hinzufügen, um Service Bus auf die Positivliste zu setzen, anstatt alle Azure-IP-Adressen der Firewall auf eine Positivliste zu setzen (sofern erforderlich). Sie finden den entsprechenden DNS-Eintrag im Azure-Portal („Data Factory“ > „Verfassen und bereitstellen“ > „Gateways“ > „serviceUrls“ (in JSON)).
-- Der HDFS-Connector unterstützt jetzt das selbstsignierte öffentliche Zertifikat, indem zugelassen wird, dass die SSL-Validierung übersprungen wird.
+- Sie können DNS-Einträge hinzufügen, um Service Bus zuzulassen, anstatt alle Azure-IP-Adressen durch Ihre Firewall zuzulassen (falls erforderlich). Sie finden den entsprechenden DNS-Eintrag im Azure-Portal („Data Factory“ > „Verfassen und bereitstellen“ > „Gateways“ > „serviceUrls“ (in JSON)).
+- Der HDFS-Connector unterstützt jetzt das selbstsignierte öffentliche Zertifikat, indem das Überspringen der TLS-Validierung zugelassen wird.
 - Behoben: Problem aufgrund eines Offlinezustands des Gateways während des Updates (aufgrund von Uhrabweichungen)
 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>Verbesserungen
--   Sie können DNS-Einträge hinzufügen, um Service Bus auf die Positivliste zu setzen, statt alle Azure IP-Adressen der Firewall auf eine Positivliste zu setzen (sofern erforderlich). Ausführlichere Informationen finden Sie hier.
+-   Sie können DNS-Einträge hinzufügen, um Service Bus zuzulassen, anstatt alle Azure-IP-Adressen durch Ihre Firewall zuzulassen (falls erforderlich). Ausführlichere Informationen finden Sie hier.
 -   Sie können jetzt Daten in einen bzw. aus einem einzelnen Blockblob von bis zu 4,75 TB kopieren. Dies ist die unterstützte maximale Größe eines Blockblobs. (Der frühere Grenzwert betrug 195 GB.)
 -   Behoben: Fehler „Nicht genügend Arbeitsspeicher“ beim Entzippen mehrerer kleiner Dateien während der Kopieraktivität.
--   Behoben: Fehler „Index außerhalb des gültigen Bereichs“ beim Kopieren aus DocumentDB in eine lokale SQL Server-Instanz mit der Idempotenz-Funktion.
--   Behoben: SQL-Bereinigungsskript funktioniert nicht bei lokaler SQL Server-Instanz mit dem Assistenten zum Kopieren.
+-   Behoben: Fehler „Index außerhalb des gültigen Bereichs“ beim Kopieren aus DocumentDB in SQL Server mit der Idempotenz-Funktion.
+-   Behoben: SQL-Bereinigungsskript funktioniert nicht bei SQL Server mit dem Assistenten zum Kopieren.
 -   Behoben: Spaltenname mit Leerzeichen am Ende funktioniert nicht in Kopieraktivität.
 
 ## <a name="28662833"></a>2.8.66283.3
@@ -75,7 +74,7 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 
 
 ## <a name="2561641"></a>2.5.6164.1
-### <a name="enhancements"></a>Verbesserungen
+### <a name="enhancements"></a>Erweiterungen
 - Verbesserte und stabilere Gatewayregistrierung: Während der Gatewayregistrierung kann nun der Fortschrittsstatus nachverfolgt werden. Die Registrierung wird dadurch benutzerfreundlicher.
 - Optimierter Vorgang zur Gatewaywiederherstellung: Sie können das Gateway auch ohne die Gatewaysicherungsdatei mit diesem Update wiederherstellen. Dazu müssen Sie die Anmeldeinformationen für den verknüpften Dienst im Portal zurücksetzen.
 - Fehlerbehebung
@@ -112,7 +111,7 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 *  Der DB2-Treiber unterstützt nun z/OS und DB2 für i (AS/400) sowie die bereits unterstützten Plattformen (Linux, Unix und Windows).
 *  Unterstützt die Verwendung von Azure Cosmos DB als Quelle oder Ziel für lokale Datenspeicher.
 *  Unterstützt das Kopieren von Daten in kalte bzw. heiße Blobspeicher (und umgekehrt) sowie das bereits unterstützte allgemeine Speicherkonto.
-*  Ermöglicht die Verbindung mit einer lokalen SQL Server-Instanz über ein Gateway mit Remoteanmeldeberechtigungen.  
+*  Ermöglicht die Verbindung mit einer SQL Server-Instanz über ein Gateway mit Remoteanmeldeberechtigungen.  
 
 ## <a name="2060131"></a>2.0.6013.1
 
@@ -127,7 +126,7 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
     *  Neu organisierte und vereinfachte Steuerelemente.
 
     *  Sie können Daten aus einem Speicher mithilfe des [codefreien Kopiertools](data-factory-copy-data-wizard-tutorial.md) kopieren. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie allgemeine Details zu diesem Feature.
-*  Sie können das Datenverwaltungsgateway nutzen, um Daten direkt aus einer lokalen SQL Server-Datenbank in Azure Machine Learning zu erfassen.
+*  Sie können das Datenverwaltungsgateway nutzen, um Daten direkt aus einer SQL Server-Datenbank in Azure Machine Learning zu erfassen.
 
 *  Leistungsverbesserungen
 
@@ -135,7 +134,7 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 
 ## <a name="11259531"></a>1.12.5953.1
 
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ## <a name="11159181"></a>1.11.5918.1
 
@@ -149,13 +148,13 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 
     * Verbessern Sie die Leistung beim Laden großer Tabellen von lokalen Servern in Kopierszenarieren ohne Code.
 
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ## <a name="11058921"></a>1.10.5892.1
 
 *  Leistungsverbesserungen
 
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ## <a name="1958652"></a>1.9.5865.2
 
@@ -166,78 +165,78 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 *  PowerShell-Skript für Aktivierung/Deaktivierung der automatischen Aktualisierung
 *  Unterstützung für JSON-Format  
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ## <a name="1858221"></a>1.8.5822.1
 
 *  Verbesserung der Problembehandlung
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1757951"></a>1.7.5795.1
 
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1757641"></a>1.7.5764.1
 
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1657351"></a>1.6.5735.1
 
 *  Unterstützung für lokale HDFS-Quelle/Senke
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1656961"></a>1.6.5696.1
 
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1656761"></a>1.6.5676.1
 
 *  Unterstützung für Diagnosetools im Konfigurations-Manager
 *  Unterstützung für Tabellenspalten für tabellarische Datenquellen für Azure Data Factory
-*  SQL-DW-Unterstützung für Azure Data Factory
+*  Unterstützung von Azure Synapse Analytics für Azure Data Factory
 *  Reclusive-Unterstützung in BlobSource und FileSource für Azure Data Factory
 *  Unterstützung von CopyBehavior – MergeFiles, PreserveHierarchy und FlattenHierarchy in BlobSink und FileSink mit binärer Kopie für Azure Data Factory
 *  Unterstützung für Kopieraktivität mit Fortschrittsbericht für Azure Data Factory
 *  Unterstützung für Überprüfung der Datenquellenverbindung für Azure Data Factory
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1656721"></a>1.6.5672.1
 
 *  Unterstützung des Tabellennamens für ODBC-Datenquelle für Azure Data Factory
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1656581"></a>1.6.5658.1
 
 *  Unterstützung der Dateisenke für Azure Data Factory
 *  Unterstützung für Beibehaltung der Hierarchie in binärer Kopie für Azure Data Factory
 *  Unterstützung der Kopieraktivität-Idempotenz für Azure Data Factory
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1656401"></a>1.6.5640.1
 
 *  Unterstützung von drei weiteren Datenquellen für Azure Data Factory (ODBC, OData, HDFS)
 *  Unterstützung für Anführungszeichen im CSV-Parser für Azure Data Factory
 *  Unterstützung der Komprimierung (BZip2)
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1556121"></a>1.5.5612.1
 
 *  Unterstützung von fünf relationalen Datenbanken für Azure Data Factory (MySQL, PostgreSQL, DB2, Teradata und Sybase)
 *  Unterstützung der Komprimierung (Gzip und Deflate)
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1455491"></a>1.4.5549.1
 
 *  Unterstützung von Oracle-Datenquellen für Azure Data Factory hinzugefügt
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1454921"></a>1.4.5492.1
 

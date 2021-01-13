@@ -1,22 +1,15 @@
 ---
-title: Vorbereiten auf eine Änderung der SSL-IP-Adresse – Azure App Service
+title: Vorbereitung einer Änderung der SSL-IP-Adresse
 description: Erfahren Sie, wie Sie vorgehen, wenn Ihre SSL-IP-Adresse geändert werden soll, damit Ihre App nach der Änderung weiterhin funktioniert.
-services: app-service\web
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6c8c86ff6212acc31e961d6ae62836ca2b7b7380
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dcfe11bcab25f6267a557de5faf7befab467bc29
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61268899"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020958"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Vorbereitung auf eine Änderung der SSL-IP-Adresse
 
@@ -32,7 +25,7 @@ Wenn Sie eine Benachrichtigung erhalten haben, dass die SSL-IP-Adresse Ihrer Azu
 
 4.  Klicken Sie unter der Überschrift **Einstellungen** im linken Navigationsbereich auf **SSL-Einstellungen**.
 
-1. Wählen Sie im Abschnitt „SSL-Bindungen“ den Eintrag für den Hostnamen aus. Wählen Sie in dem geöffneten Editor im Dropdownmenü **SSL-Typ** die Option **SNI SSL** aus, und klicken Sie auf **Bindung hinzufügen**. Wenn die Meldung zum erfolgreich durchgeführten Vorgang angezeigt wird, wurde die vorhandene IP-Adresse freigegeben.
+1. Wählen Sie im Abschnitt „TLS/SSL-Bindungen“ den Eintrag für den Hostnamen aus. Wählen Sie in dem geöffneten Editor im Dropdownmenü **SSL-Typ** die Option **SNI SSL** aus, und klicken Sie auf **Bindung hinzufügen**. Wenn die Meldung zum erfolgreich durchgeführten Vorgang angezeigt wird, wurde die vorhandene IP-Adresse freigegeben.
 
 6.  Wählen Sie im Abschnitt **SSL-Bindungen** wieder den gleichen Eintrag für den Hostnamen mit dem Zertifikat aus. Wählen Sie nun im Editor im Dropdownmenü **SSL-Typ** die Option **IP-basierte SSL** aus, und klicken Sie auf **Bindung hinzufügen**. Wenn die Meldung zum erfolgreich durchgeführten Vorgang angezeigt wird, haben Sie eine neue IP-Adresse abgerufen.
 
@@ -52,4 +45,4 @@ Wenn Sie eine Benachrichtigung erhalten haben, dass die SSL-IP-Adresse Ihrer Azu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurde erläutert, wie Sie sich auf eine Änderung der IP-Adresse vorbereiten, die von Azure veranlasst wurde. Weitere Informationen zu IP-Adressen in Azure App Service finden Sie unter [SSL und SSL-IP-Adressen in Azure App Service](overview-inbound-outbound-ips.md).
+In diesem Artikel wurde erläutert, wie Sie sich auf eine Änderung der IP-Adresse vorbereiten, die von Azure veranlasst wurde. Weitere Informationen zu IP-Adressen in Azure App Service finden Sie unter [Ein- und ausgehende IP-Adressen in Azure App Service](overview-inbound-outbound-ips.md).

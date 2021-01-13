@@ -1,30 +1,30 @@
 ---
-title: Leitlinien für die Leistungsoptimierung von Azure Data Lake Storage Gen2 Storm | Microsoft-Dokumentation
-description: Leitlinien für die Leistungsoptimierung von Azure Data Lake Storage Gen2 Storm
+title: 'Optimieren der Leistung: Storm, HDInsight und Azure Data Lake Storage Gen2 | Microsoft-Dokumentation'
+description: Machen Sie sich mit den Richtlinien zum Optimieren der Leistung einer Azure Storm-Topologie in einem Azure HDInsight-Cluster und von Azure Data Lake Storage Gen2 vertraut.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: ed13735b4da4818e969c4dddff68b55af6e71a15
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4db85357ee970d13d6b4fcce195cae66932bed18
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855428"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912789"
 ---
-# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Leitfaden zur Leistungsoptimierung für Storm in HDInsight und Azure Data Lake Storage Gen2
+# <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Optimieren der Leistung: Storm, HDInsight und Azure Data Lake Storage Gen2
 
 Es werden die Faktoren beschrieben, die berücksichtigt werden sollten, wenn Sie die Leistung einer Azure Storm-Topologie optimieren. Beispielsweise ist es wichtig, die Arbeitsschritte der Spouts und Bolts zu verstehen (ob der E/A- bzw. Arbeitsspeicheraufwand hoch ist). In diesem Artikel werden verschiedene Richtlinien der Leistungsoptimierung behandelt, z.B. die Problembehandlung für allgemeine Probleme.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Ein Azure Data Lake Storage Gen2-Konto**. Anweisungen zum Erstellen eines solchen Kontos finden Sie unter [Schnellstart: Erstellen eines Speicherkontos für die Analyse](data-lake-storage-quickstart-create-account.md).
-* Einen **Azure HDInsight-Cluster** mit Zugriff auf ein Data Lake Storage Gen2-Konto. Siehe [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
-* **Ausführung eines Storm-Clusters in Data Lake Storage Gen2**. Weitere Informationen finden Sie unter [Storm in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
+* **Ein Azure Data Lake Storage Gen2-Konto**. Anweisungen zum Erstellen eines solchen Kontos finden Sie unter [Schnellstart: Erstellen eines Speicherkontos für die Analyse](../common/storage-account-create.md).
+* Einen **Azure HDInsight-Cluster** mit Zugriff auf ein Data Lake Storage Gen2-Konto. Siehe [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
+* **Ausführung eines Storm-Clusters in Data Lake Storage Gen2**. Weitere Informationen finden Sie unter [Storm in HDInsight](../../hdinsight/storm/apache-storm-overview.md).
 * **Leitlinien für die Leistungsoptimierung von Data Lake Storage Gen2**.  Allgemeine Leistungskonzepte finden Sie unter [Leitfaden für die Leistungsoptimierung von Data Lake Storage Gen2](data-lake-storage-performance-tuning-guidance.md).   
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>Optimieren der Parallelität der Topologie
@@ -63,7 +63,7 @@ Angenommen, es werden acht Bolt-Threads pro Kern verwendet. Bei 64 Kernen bedeut
 Nachdem Sie über die grundlegende Topologie verfügen, können Sie überlegen, ob Sie Parameter optimieren möchten:
 * **Anzahl von JVMs pro Workerknoten:** Wenn Sie eine große Datenstruktur haben (z.B. eine Suchtabelle), die Sie im Arbeitsspeicher hosten, wird für jede JVM eine separate Kopie benötigt. Alternativ dazu können Sie die Datenstruktur über viele Threads hinweg nutzen, wenn Sie eine geringere Zahl von JVMs verwenden. Für den Ein-/Ausgang des Bolts macht die Anzahl von JVMs keinen so großen Unterschied wie die Anzahl von Threads aus, die für diese JVMs hinzugefügt werden. Der Einfachheit halber ist es ratsam, eine JVM pro Worker zu verwenden. Aber je nachdem, was der Zweck Ihres Bolts ist oder welche Anwendungsverarbeitung Sie benötigen, müssen Sie diese Anzahl ggf. ändern.
 * **Anzahl von Spout Executors:** Da im vorherigen Beispiel Bolts zum Schreiben in Data Lake Storage Gen2 verwendet werden, ist die Anzahl von Spouts für die Boltleistung nicht direkt relevant. Je nach Verarbeitungs- oder E/A-Aufwand im Spout kann es ratsam sein, die Spouts zu optimieren, um die beste Leistung zu erzielen. Achten Sie darauf, dass Sie über genügend Spouts verfügen, um die Bolts auszulasten. Die Ausgaberaten der Spouts sollten mit dem Durchsatz der Bolts übereinstimmen. Die tatsächliche Konfiguration hängt vom Spout ab.
-* **Anzahl von Aufgaben:** Jeder Bolt wird als einzelner Thread ausgeführt. Weitere Aufgaben pro Bolt führen nicht zu einer Erhöhung der Parallelität. Es ergibt sich nur dann ein Vorteil, wenn Ihr Prozess zur Bestätigung des Tupels einen Großteil Ihrer Bolt-Ausführungsdauer einnimmt. Wir empfehlen, viele Tupel in einem größeren Anfügepaket zu gruppieren, bevor Sie eine Bestätigung vom Bolt senden. In den meisten Fällen führen mehrere Aufgaben also nicht zu weiteren Vorteilen.
+* **Anzahl von Aufgaben:** Jeder Bolt wird als einzelner Thread ausgeführt. Weitere Aufgaben pro Bolt führen nicht zu einer Erhöhung der Parallelität. Es ergibt sich nur dann ein Vorteil, wenn Ihr Prozess zur Bestätigung des Tupels einen Großteil Ihrer Bolt-Ausführungsdauer einnimmt. Es wird empfohlen, viele Tupel in einem größeren Anfügepaket zu gruppieren, bevor Sie eine Bestätigung vom Bolt senden. In den meisten Fällen führen mehrere Aufgaben also nicht zu weiteren Vorteilen.
 * **Lokale oder Shuffle-Gruppierung:** Wenn diese Einstellung aktiviert ist, werden Tupel in demselben Workerprozess an Bolts gesendet. Auf diese Weise werden die prozessübergreifende Kommunikation und Netzwerkaufrufe reduziert. Dies wird für die meisten Topologien empfohlen.
 
 Dieses einfache Szenario ist ein guter Ausgangspunkt. Führen Sie einen Test mit Ihren eigenen Daten durch, um die vorherigen Parameter zu optimieren und so eine optimale Leistung zu erzielen.
@@ -114,6 +114,6 @@ Um zu prüfen, ob eine Drosselung vorliegt, müssen Sie die Debugprotokollierung
 2. Überwachen Sie die Protokolle der Storm-Topologie auf Workerknoten (unter „/var/log/storm/worker-artifacts/&lt;Topologiename&gt;/&lt;Port&gt;/worker.log“) auf Data Lake Storage Gen2-Drosselungsausnahmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zur weiteren Leistungsoptimierung für Storm finden Sie in [diesem Blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/).
+Informationen zur weiteren Leistungsoptimierung für Storm finden Sie in [diesem Blog](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs).
 
 Ein weiteres Beispiel, das Sie ausführen können, finden Sie [auf GitHub](https://github.com/hdinsight/storm-performance-automation).

@@ -1,20 +1,15 @@
 ---
-title: 'Schnellstart: Erstellen einer privaten Docker-Registrierung in Azure – PowerShell'
-description: Hier lernen Sie, wie Sie schnell eine private Docker-Containerregistrierung in Azure mit PowerShell erstellen können.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: 'Schnellstart: Erstellen einer Registrierung – PowerShell'
+description: Hier erfahren Sie, wie Sie schnell eine private Docker-Registrierung über PowerShell in Azure Container Registry erstellen.
 ms.topic: quickstart
 ms.date: 01/22/2019
-ms.author: danlep
-ms.custom: seodec18, mvc
-ms.openlocfilehash: f99b4ee6dd11a109d1c563c84debc2157cb03337
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.custom: seodec18, mvc, devx-track-azurepowershell
+ms.openlocfilehash: 91d4209ccf558bf7c8038d8a753ec038428bc484
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68309495"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020003"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Schnellstart: Erstellen einer privaten Containerregistrierung mit Azure PowerShell
 
@@ -56,7 +51,7 @@ Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 un
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-In dieser Schnellstartanleitung erstellen Sie eine Registrierung vom Typ *Basic*. Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Dienstebenen finden Sie unter [Azure Container Registry-SKUs][container-registry-skus].
+In dieser Schnellstartanleitung erstellen Sie eine Registrierung vom Typ *Basic*. Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Dienstebenen finden Sie unter [Container Registry-Dienstebenen][container-registry-skus].
 
 ## <a name="log-in-to-registry"></a>Anmelden bei der Registrierung
 
@@ -91,7 +86,10 @@ Remove-AzResourceGroup -Name myResourceGroup
 In dieser Schnellstartanleitung haben Sie mit Azure PowerShell eine Azure Container Registry-Instanz erstellt, ein Containerimage per Push übertragen und das Image per Pull aus der Registrierung abgerufen und ausgeführt. Fahren Sie mit den Azure Container Registry-Tutorials fort, um eingehendere Informationen zu ACR zu erhalten.
 
 > [!div class="nextstepaction"]
-> [Tutorials zu Azure Container Registry][container-registry-tutorial-quick-task]
+> [Tutorials zu Azure Container Registry][container-registry-tutorial-prepare-registry]
+
+> [!div class="nextstepaction"]
+> [Tutorials zu Azure Container Registry Tasks][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -110,3 +108,4 @@ In dieser Schnellstartanleitung haben Sie mit Azure PowerShell eine Azure Contai
 [Remove-AzResourceGroup]: /powershell/module/az.resources/remove-azresourcegroup
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
+[container-registry-tutorial-prepare-registry]: container-registry-tutorial-prepare-registry.md

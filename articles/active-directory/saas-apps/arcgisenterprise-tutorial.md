@@ -1,26 +1,22 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit ArcGIS Enterprise | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit ARcGIS Enterprise | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und ArcGIS Enterprise konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 24809e9d-a4aa-4504-95a9-e4fcf484f431
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9642dc67a3707862009efa59d99f0cef54b9b878
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7578972b054747c75cdbbc2371fc0bf35c6039a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106685"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672558"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Tutorial: Azure Active Directory-Integration in ArcGIS Enterprise
 
@@ -31,7 +27,7 @@ Die Integration von ArcGIS Enterprise in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei ArcGIS Enterprise angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -41,11 +37,12 @@ Um die Azure AD-Integration mit ArcGIS Enterprise konfigurieren zu können, ben�
 * Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 * ArcGIS Enterprise-Abonnement, für das einmaliges Anmelden aktiviert ist
 
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
+
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
-
-
 
 * ArcGIS Enterprise unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
 * ArcGIS Enterprise unterstützt die **Just-in-Time**-Benutzerbereitstellung.
@@ -71,7 +68,7 @@ Zum Konfigurieren der Integration von ArcGIS Enterprise in Azure AD müssen Sie 
 
 4. Geben Sie im Suchfeld **ArcGIS Enterprise** ein, wählen Sie im Ergebnisbereich **ArcGIS Enterprise** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![ArcGIS Enterprise in der Ergebnisliste](common/search-new-app.png)
+    ![ArcGIS Enterprise in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -81,10 +78,10 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei [Anwendungsname] müssen Sie die folgenden Schritte ausgeführt werden:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für ArcGIS Enterprise](#configure-arcgis-enterprise-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+2. **[Konfigurieren des einmaligen Anmeldens für ArcGIS Enterprise](#configure-arcgis-enterprise-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines ArcGIS Enterprise-Testbenutzers](#create-arcgis-enterprise-test-user)** , um eine Entsprechung von Britta Simon in ArcGIS Enterprise zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+5. **[Erstellen eines ArcGIS Enterprise-Testbenutzers](#create-arcgis-enterprise-test-user)**, um eine Entsprechung von Britta Simon in ArcGIS Enterprise zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
@@ -107,7 +104,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für ArcGIS Enterprise](common/idp-intiated.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners und einer Antwort-URL sowie zum Klicken auf „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `<EXTERNAL_DNS_NAME>.portal`
 
@@ -115,7 +112,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     c. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für ArcGIS Enterprise](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
@@ -128,31 +125,40 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 ### <a name="configure-arcgis-enterprise-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für ArcGIS Enterprise
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der ArcGIS Enterprise-Unternehmenswebsite als Administrator an.
+1. Wenn Sie die Konfiguration in ArcGIS Enterprise automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
 
-2. Wählen Sie **Organisation > EINSTELLUNGEN BEARBEITEN**.
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
 
-    ![ArcGIS Enterprise-Konfiguration](./media/arcgisenterprise-tutorial/configure1.png)
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **ArcGIS Enterprise einrichten**, um zur Anwendung ArcGIS Enterprise weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei ArcGIS Enterprise anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 7.
 
-3. Wählen Sie die Registerkarte **Security** (Sicherheit) aus.
+    ![Einrichtungskonfiguration](common/setup-sso.png)
 
-    ![ArcGIS Enterprise-Konfiguration](./media/arcgisenterprise-tutorial/configure2.png)
+1. Wenn Sie ArcGIS Enterprise manuell einrichten möchten, melden Sie sich bei der ArcGIS Enterprise-Unternehmenswebsite als Administrator an.
 
-4. Führen Sie einen Bildlauf nach unten zum Abschnitt **Enterprise-Anmeldungen über SAML** aus, und wählen Sie **ENTERPRISE-ANMELDUNG FESTLEGEN** aus.
 
-    ![ArcGIS Enterprise-Konfiguration](./media/arcgisenterprise-tutorial/configure3.png)
+1. Wählen Sie **Organisation > EINSTELLUNGEN BEARBEITEN**.
 
-5. Führen Sie im Abschnitt **Festlegen des Identitätsanbieters** die folgenden Schritte aus:
+    ![Screenshot: Registerkarte „Organisation“ für ArcGIS Enterprise mit hervorgehobener Option „Einstellungen bearbeiten“](./media/arcgisenterprise-tutorial/configure1.png)
 
-    ![ArcGIS Enterprise-Konfiguration](./media/arcgisenterprise-tutorial/configure4.png)
+1. Wählen Sie die Registerkarte **Security** (Sicherheit) aus.
+
+    ![Screenshot: Ausgewählte Registerkarte „Sicherheit“](./media/arcgisenterprise-tutorial/configure2.png)
+
+1. Führen Sie einen Bildlauf nach unten zum Abschnitt **Enterprise-Anmeldungen über SAML** aus, und wählen Sie **ENTERPRISE-ANMELDUNG FESTLEGEN** aus.
+
+    ![Screenshot: Abschnitt „Enterprise Logins via SAML“ (Unternehmensanmeldungen über SAML) mit der Option „Set Enterprise Login“ (Unternehmensanmeldung festlegen)](./media/arcgisenterprise-tutorial/configure3.png)
+
+1. Führen Sie im Abschnitt **Festlegen des Identitätsanbieters** die folgenden Schritte aus:
+
+    ![Screenshot: Abschnitt „Set Identity Provider“ (Identitätsanbieter festlegen) zum Ausführen der hier beschriebenen Schritte](./media/arcgisenterprise-tutorial/configure4.png)
 
     a. Geben Sie einen Namen wie **Azure Active Directory-Test** in das Textfeld **Name** ein.
 
     b. Fügen Sie im Textfeld **URL** den Wert der **Verbundmetadaten-URL der App** ein, den Sie aus dem Azure-Portal kopiert haben.
 
     c. Klicken Sie auf **Erweiterte Einstellungen anzeigen**, und kopieren Sie den Wert **Entitäts-ID** und fügen Sie ihn in das Textfeld **Bezeichner** im Abschnitt **ArcGIS-Enterprise-Domäne und URLs** im Azure-Portal ein.
-    
-    ![ArcGIS Enterprise-Konfiguration](./media/arcgisenterprise-tutorial/configure5.png)
+
+    ![Screenshot: Abrufen der Entitäts-ID und Aktualisieren des Identitätsanbieters](./media/arcgisenterprise-tutorial/configure5.png)
 
     d. Klicken Sie auf **IDENTITÄTSANBIETER AKTUALISIEREN**.
 
@@ -173,13 +179,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -212,19 +218,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt wird in ArcGIS Enterprise ein Benutzer namens Britta Simon erstellt. ArcGIS Enterprise unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn ein Benutzer noch nicht in ArcGIS Enterprise vorhanden ist, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 > [!Note]
-> Wenn Sie einen Benutzer manuell erstellen müssen, können Sie sich an das [ArcGIS Enterprise-Supportteam](mailto:support@esri.com) wenden.
+> Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [ArcGIS Enterprise-Supportteam](mailto:support@esri.com).
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „ArcGIS Enterprise“ klicken, sollten Sie automatisch bei Ihrer ArcGIS Enterprise-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „ArcGIS Enterprise“ klicken, sollten Sie automatisch bei Ihrer ArcGIS Enterprise-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

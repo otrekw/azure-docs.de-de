@@ -1,46 +1,53 @@
 ---
-title: Erste Schritte mit der Microsoft Identity Platform – Windows Desktop | Microsoft-Dokumentation
-description: Es wird beschrieben, wie eine Windows Desktop .NET-Anwendung (XAML) ein Zugriffstoken abrufen und eine API aufrufen kann, die per Microsoft Identity Platform geschützt ist.
+title: 'Tutorial: Erstellen einer Windows Presentation Foundation (WPF)-App, die Microsoft Identity Platform für die Authentifizierung verwendet | Azure'
+titleSuffix: Microsoft identity platform
+description: In diesem Tutorial erstellen Sie eine WPF-Anwendung, die Microsoft Identity Platform zum Anmelden von Benutzern und zum Abrufen eines Zugriffstokens verwendet, um im Namen der Benutzer die Microsoft Graph-API aufzurufen.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f816091e3e8682069a950ff6f6eb839e285bb2f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5fb7c0df653048adcffceda4d8a384be823b5c3a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512448"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507692"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Aufrufen der Microsoft Graph-API aus einer Windows Desktop-App
+# <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Tutorial: Aufrufen der Microsoft Graph-API aus einer Windows Desktop-App
 
-In diesem Leitfaden wird gezeigt, wie eine native Windows Desktop .NET-Anwendung (XAML) mit einem Zugriffstoken die Microsoft Graph-API aufruft. Die App kann auch auf andere APIs zugreifen, die Zugriffstoken von einem v2.0-Endpunkt für Microsoft Identity Platform für Entwickler erfordern. Diese Plattform hieß früher Azure AD.
+In diesem Tutorial erstellen Sie eine native Windows Desktop .NET-App (XAML-App), die Benutzer anmeldet und ein Zugriffstoken abruft, um die Microsoft Graph-API aufzurufen. 
 
-Am Ende dieses Leitfadens kann Ihre Anwendung eine geschützte API aufrufen, die persönliche Konten (outlook.com, live.com und andere) verwendet. Die Anwendung kann auch Geschäfts-, Schul- und Unikonten aus Unternehmen oder Organisationen nutzen, die Azure Active Directory verwenden.  
+Am Ende dieses Leitfadens kann Ihre Anwendung eine geschützte API aufrufen, die persönliche Konten (outlook.com, live.com und andere) verwendet. Die Anwendung kann auch Geschäfts-, Schul- und Unikonten aus Unternehmen oder Organisationen nutzen, die Azure Active Directory verwenden.
 
-> [!NOTE]
-> Für diesen Leitfaden wird Visual Studio 2015 Update 3, Visual Studio 2017 oder Visual Studio 2019 vorausgesetzt. Haben Sie keine dieser Versionen? Sie können Visual Studio 2019 [hier](https://www.visualstudio.com/downloads/) kostenlos herunterladen.
+Dieses Tutorial umfasst folgende Punkte:
+
+> [!div class="checklist"]
+> * Erstellen eines *Windows Presentation Foundation (WPF)* -Projekts in Visual Studio
+> * Installieren der Microsoft Authentication Library (MSAL) für .NET
+> * Registrieren der Anwendung im Azure-Portal
+> * Hinzufügen von Code zur Unterstützung der Benutzeranmeldung und -abmeldung
+> * Hinzufügen von Code zum Aufrufen der Microsoft Graph-API
+> * Testen der App
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Funktionsweise der über diesen Leitfaden generierten Beispiel-App
 
 ![Zeigt, wie die in diesem Tutorial generierte Beispiel-App funktioniert](./media/active-directory-develop-guidedsetup-windesktop-intro/windesktophowitworks.svg)
 
-Die in diesem Leitfaden erstellte Beispielanwendung ermöglicht einer Windows Desktop-Anwendung das Abfragen der Microsoft Graph-API oder einer Web-API, die Token von einem Microsoft Identity Platform-Endpunkt akzeptiert. In diesem Szenario fügen Sie HTTP-Anforderungen ein Token über den Autorisierungsheader hinzu. Tokenabruf und -erneuerung werden von der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) gehandhabt.
+Die in diesem Leitfaden erstellte Beispielanwendung ermöglicht einer Windows Desktop-Anwendung das Abfragen der Microsoft Graph-API oder einer Web-API, die Token von einem Microsoft Identity Platform-Endpunkt akzeptiert. In diesem Szenario fügen Sie HTTP-Anforderungen ein Token über den Autorisierungsheader hinzu. Tokenabruf und -erneuerung werden von der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) gehandhabt.
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Verarbeiten des Beziehens von Token für den Zugriff auf geschützte Web-APIs
 
-Nach der Authentifizierung des Benutzers empfängt die Beispielanwendung ein Token, mit dem eine per Microsoft Identity Platform für Entwickler geschützte Microsoft Graph-API oder Web-API abgefragt werden kann.
+Nach der Authentifizierung des Benutzers empfängt die Beispielanwendung ein Token, mit dem eine per Microsoft Identity Platform für Entwickler geschützte Microsoft Graph-API oder Web-API abgefragt werden kann.
 
 APIs wie Microsoft Graph erfordern ein Token, um den Zugriff auf bestimmte Ressourcen zu ermöglichen. Ein Token ist beispielsweise erforderlich, um das Profil eines Benutzers zu lesen, auf den Kalender eines Benutzers zuzugreifen oder eine E-Mail zu senden. Ihre Anwendung kann unter Verwendung von MSAL ein Zugriffstoken anfordern, um auf diese Ressourcen durch Angeben von API-Bereichen zuzugreifen. Dieses Zugriffstoken wird dann dem HTTP-Autorisierungsheader für jeden Aufruf hinzugefügt, der für die geschützte Ressource erfolgt.
 
@@ -50,7 +57,7 @@ MSAL nimmt Ihrer Anwendung die Verwaltung der Zwischenspeicherung und Aktualisie
 
 In dieser Anleitung werden die folgenden NuGet-Pakete verwendet:
 
-|Bibliothek|BESCHREIBUNG|
+|Bibliothek|Beschreibung|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL.NET)|
 
@@ -79,7 +86,7 @@ Gehen Sie zum Erstellen der Anwendung wie folgt vor:
     Install-Package Microsoft.Identity.Client -Pre
     ```
 
-    > [!NOTE] 
+    > [!NOTE]
     > Dieser Befehl installiert die Microsoft-Authentifizierungsbibliothek. MSAL übernimmt die Erfassung, Zwischenspeicherung und Aktualisierung von Benutzertoken für den Zugriff auf die durch Azure Active Directory v2.0 geschützten APIs.
     >
 
@@ -97,18 +104,17 @@ Gehen Sie zur schnellen Registrierung Ihrer Anwendung wie folgt vor:
 ### <a name="option-2-advanced-mode"></a>Option 2: Erweiterter Modus
 
 Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformationen Ihrer Projektmappe hinzufügen möchten, führen Sie folgende Schritte aus:
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
-1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-1. Navigieren Sie zur Seite [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) von Microsoft Identity Platform für Entwickler.
-1. Wählen Sie **Neue Registrierung** aus.
-   - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `Win-App-calling-MsGraph`).
-   - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** aus.
-   - Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
-1. Wählen Sie in der Liste mit den Seiten für die App die Option **Authentifizierung** aus.
-   1. Wählen Sie im Abschnitt **Umleitungs-URIs** in der Liste der Umleitungs-URIs Folgendes aus:
-   1. Wählen Sie in der **TYPE**-Spalte **Öffentlicher Client (Mobilgerät und Desktop)** aus.
-   1. Geben Sie in der Spalte **UMLEITUNGS-URI** den Wert `urn:ietf:wg:oauth:2.0:oob` ein.
-1. Wählen Sie **Speichern** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `Win-App-calling-MsGraph`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis (beliebiges Azure AD-Verzeichnis, mehrere Mandanten) und persönliche Microsoft-Konten (z. B. Skype, Xbox)** aus.
+1. Wählen Sie **Registrieren**.
+1. Wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Plattform hinzufügen** aus.
+1. Wählen Sie **Mobilgerät- und Desktopanwendungen** aus.
+1. Wählen Sie **https://login.microsoftonline.com/common/oauth2/nativeclient** im Abschnitt **Umleitungs-URIs** aus.
+1. Wählen Sie **Konfigurieren** aus.
 1. Öffnen Sie in Visual Studio die Datei *App.xaml.cs*, und ersetzen Sie im folgenden Codeausschnitt `Enter_the_Application_Id_here` durch die Anwendungs-ID, die Sie soeben registriert und kopiert haben.
 
     ```csharp
@@ -138,7 +144,7 @@ In diesem Schritt erstellen Sie eine Klasse zur Handhabung der Interaktion mit M
                 .Build();
         }
 
-        // Below are the clientId (Application Id) of your app registration and the tenant information. 
+        // Below are the clientId (Application Id) of your app registration and the tenant information.
         // You have to replace:
         // - the content of ClientID with the Application Id for your app registration
         // - the content of Tenant by the information about the accounts allowed to sign-in in your application:
@@ -158,7 +164,7 @@ In diesem Schritt erstellen Sie eine Klasse zur Handhabung der Interaktion mit M
 
 ## <a name="create-the-application-ui"></a>Erstellen der Anwendungsbenutzeroberfläche
 
-In diesem Abschnitt erfahren Sie, wie eine Anwendung einen geschützten Back-End-Server wie Microsoft Graph abfragen kann. 
+In diesem Abschnitt erfahren Sie, wie eine Anwendung einen geschützten Back-End-Server wie Microsoft Graph abfragen kann.
 
 Die Datei *MainWindow.xaml* sollte als Teil Ihrer Projektvorlage automatisch erstellt werden. Öffnen Sie diese Datei, und ersetzen Sie den Knoten *\<Grid>* Ihrer Anwendung durch den folgenden Code:
 
@@ -253,14 +259,14 @@ In diesem Abschnitt nutzen Sie die MSAL, um ein Token für die Microsoft Graph-A
                 this.SignOutButton.Visibility = Visibility.Visible;
             }
         }
+        }
     ```
 
-<!--start-collapse-->
 ### <a name="more-information"></a>Weitere Informationen
 
 #### <a name="get-a-user-token-interactively"></a>Interaktives Abrufen eines Benutzertokens
 
-Das Aufrufen der `AcquireTokenInteractive`-Methode führt zu einem Fenster, in dem Benutzer zum Anmelden aufgefordert werden. Bei Anwendungen müssen sich Benutzer interaktiv anmelden, wenn sie zum ersten Mal auf eine geschützte Ressource zugreifen müssen. Die Anmeldung kann auch erforderlich sein, wenn bei dem automatischen Vorgang zum Beziehen eines Tokens ein Fehler auftritt (beispielsweise bei einem abgelaufenen Kennwort des Benutzers).
+Das Aufrufen der `AcquireTokenInteractive`-Methode führt zu einem Fenster, in dem Benutzer zum Anmelden aufgefordert werden. Bei Anwendungen müssen sich Benutzer in der Regel interaktiv anmelden, wenn sie zum ersten Mal auf eine geschützte Ressource zugreifen müssen. Die Anmeldung kann auch erforderlich sein, wenn bei dem automatischen Vorgang zum Beziehen eines Tokens ein Fehler auftritt (beispielsweise bei einem abgelaufenen Kennwort des Benutzers).
 
 #### <a name="get-a-user-token-silently"></a>Automatisches Abrufen eines Benutzertokens
 
@@ -268,14 +274,13 @@ Die `AcquireTokenSilent`-Methode dient zum Verwalten des Abrufens und Erneuerns 
 
 Für die `AcquireTokenSilent`-Methode tritt schließlich ein Fehler auf. Gründe für den Fehler können sein, dass der Benutzer sich entweder abgemeldet oder sein Kennwort auf einem anderen Gerät geändert hat. Wenn die MSAL feststellt, dass das Problem durch Anfordern einer interaktiven Aktion gelöst werden kann, löst sie eine `MsalUiRequiredException`-Ausnahme aus. Ihre Anwendung kann diese Ausnahme auf zwei Arten handhaben:
 
-* Sie kann sofort `AcquireTokenInteractive` aufrufen. Dieser Aufruf führt dazu, dass der Benutzer zum Anmelden aufgefordert wird. Dieses Muster wird in der Regel in Onlineanwendungen verwendet, in denen keine Offlineinhalte für den Benutzer verfügbar sind. Das Beispiel, das in diesem Setup mit Anleitung generiert wird, basiert auf diesem Muster. Sie können dies bei der ersten Ausführung des Beispiels in Aktion sehen. 
+* Sie kann sofort `AcquireTokenInteractive` aufrufen. Dieser Aufruf führt dazu, dass der Benutzer zum Anmelden aufgefordert wird. Dieses Muster wird in der Regel in Onlineanwendungen verwendet, in denen keine Offlineinhalte für den Benutzer verfügbar sind. Das Beispiel, das in diesem Setup mit Anleitung generiert wird, basiert auf diesem Muster. Sie können dies bei der ersten Ausführung des Beispiels in Aktion sehen.
 
-* Da bisher noch kein Benutzer die Anwendung genutzt hat, enthält `PublicClientApp.Users.FirstOrDefault()` einen NULL-Wert, und es wird die Ausnahme `MsalUiRequiredException` ausgelöst. 
+* Da bisher noch kein Benutzer die Anwendung genutzt hat, enthält `PublicClientApp.Users.FirstOrDefault()` einen NULL-Wert, und es wird die Ausnahme `MsalUiRequiredException` ausgelöst.
 
 * Der Code im Beispiel behandelt die Ausnahme dann durch das Aufrufen von `AcquireTokenInteractive`. Dies führt dazu, dass der Benutzer zum Anmelden aufgefordert wird.
 
 * Stattdessen kann für Benutzer auch ein visueller Hinweis gegeben werden, dass eine interaktive Anmeldung erforderlich ist, damit diese den richtigen Zeitpunkt für die Anmeldung auswählen können. Oder die Anwendung kann später noch einmal versuchen, `AcquireTokenSilent` auszuführen. Dieses Muster wird häufig verwendet, wenn Benutzer andere Anwendungsfunktionen ohne Störungen nutzen können, z.B. wenn Offlineinhalte in der Anwendung verfügbar sind. In diesem Fall können Benutzer entscheiden, wann sie sich anmelden, um entweder auf die geschützte Ressource zuzugreifen oder die veralteten Informationen zu aktualisieren. Alternativ dazu kann die Anwendung auch versuchen, `AcquireTokenSilent` erneut auszuführen, wenn das Netzwerk nach einem kurzzeitigen Ausfall wiederhergestellt wurde.
-<!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>Aufrufen der Microsoft Graph-API mit dem zuvor bezogenen Token
 
@@ -308,11 +313,9 @@ public async Task<string> GetHttpContentWithToken(string url, string token)
 }
 ```
 
-<!--start-collapse-->
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>Weitere Informationen zum Richten eines REST-Aufrufs an eine geschützte API
 
 In dieser Beispielanwendung verwenden Sie die `GetHttpContentWithToken`-Methode zum Senden einer HTTP `GET`-Anforderung an eine geschützte Ressource, für die ein Token erforderlich ist, und zum anschließenden Zurückgeben des Inhalts an den Aufrufer. Diese Methode fügt das abgerufene Token in den HTTP-Autorisierungsheader ein. In diesem Beispiel ist die Ressource der Endpunkt *me* der Microsoft Graph-API, der die Profilinformationen des Benutzers anzeigt.
-<!--end-collapse-->
 
 ## <a name="add-a-method-to-sign-out-a-user"></a>Hinzufügen einer Methode zum Abmelden eines Benutzers
 
@@ -324,7 +327,7 @@ Fügen Sie Ihrer Datei `MainWindow.xaml.cs` die folgende Methode hinzu, um einen
 /// </summary>
 private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 {
-    var accounts = await App.PublicClientApp.GetAccountsAsync(); 
+    var accounts = await App.PublicClientApp.GetAccountsAsync();
 
     if (accounts.Any())
     {
@@ -343,13 +346,11 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 }
 ```
 
-<!--start-collapse-->
 ### <a name="more-information-about-user-sign-out"></a>Weitere Informationen zur Abmeldung von Benutzern
 
 Die `SignOutButton_Click`-Methode entfernt Benutzer aus dem MSAL-Benutzercache. Hierdurch wird die MSAL praktisch angewiesen, den aktuellen Benutzer zu vergessen, sodass eine künftige Anforderung zum Abrufen eines Tokens nur erfolgreich ist, wenn diese interaktiv gestaltet wird.
 
 Die Anwendung in diesem Beispiel unterstützt zwar einzelne Benutzer, aber die MSAL verfügt über Unterstützung für Szenarien, bei denen mehrere Konten gleichzeitig angemeldet werden können. Ein Beispiel hierfür ist eine E-Mail-Anwendung, in der ein Benutzer mehrere Konten besitzt.
-<!--end-collapse-->
 
 ## <a name="display-basic-token-information"></a>Anzeigen grundlegender Informationen zum Token
 
@@ -370,15 +371,15 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 }
 ```
 
-<!--start-collapse-->
 ### <a name="more-information"></a>Weitere Informationen
 
 Zusätzlich zu dem Zugriffstoken, das nach der Anmeldung des Benutzers zum Aufrufen der Microsoft Graph-API verwendet wird, wird mit der MSAL auch ein ID-Token bezogen. Dieses Token enthält eine kleine Teilmenge von Informationen zu den Benutzern. Die `DisplayBasicTokenInfo`-Methode zeigt die grundlegenden Informationen an, die im Token enthalten sind. Dies sind beispielsweise der Anzeigename und die ID des Benutzers sowie das Ablaufdatum des Tokens und die Zeichenfolge, die das Zugriffstoken selbst darstellt. Wenn Sie mehrmals auf die Schaltfläche *Microsoft Graph-API* klicken, sehen Sie, dass dasselbe Token für nachfolgende Anforderungen wiederverwendet wurde. Sie können auch feststellen, dass das Ablaufdatum verlängert wurde, wenn die MSAL entscheidet, dass es Zeit ist, das Token zu verlängern.
-<!--end-collapse-->
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
 
-Helfen Sie uns, Microsoft Identity Platform zu verbessern. Teilen Sie uns Ihre Meinung mit, indem Sie eine kurze Umfrage mit zwei Fragen beantworten.
+## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie in unserer mehrteiligen Szenarioreihe mehr über das Entwickeln von Desktop-Apps, die geschützte Web-APIs abrufen:
 
 > [!div class="nextstepaction"]
-> [Umfrage zu Microsoft Identity Platform](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
+> [Szenario: Desktop-App, die Web-APIs aufruft](scenario-desktop-overview.md)

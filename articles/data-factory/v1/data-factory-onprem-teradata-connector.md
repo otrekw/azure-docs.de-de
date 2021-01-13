@@ -1,27 +1,26 @@
 ---
-title: Verschieben von Daten aus Teradata mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Verschieben von Daten aus Teradate mithilfe von Azure Data Factory
 description: Informationen zum Teradata-Connector für den Data Factory-Dienst, mit dem Sie Daten aus einer Teradata-Datenbank verschieben können
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8e7fcff6fa4dcea1af15efa2cb4ed3a743c9c402
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836117"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019598"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Verschieben von Daten aus Teradate mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-onprem-teradata-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-teradata.md)
 
@@ -46,7 +45,7 @@ Damit das Datenverwaltungsgateway eine Verbindung mit der Teradata-Datenbank her
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen Teradata-Datenspeicher verschiebt.
 
-- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 - Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
@@ -67,7 +66,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OnPremisesTeradata**. |Ja |
 | server |Name des Teradata-Servers. |Ja |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der Teradata-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |Ja |
-| userName |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
+| username |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein |
 | gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen Teradata-Datenbank verwenden soll. |Ja |
 
@@ -85,7 +84,7 @@ Wenn die Quelle vom Typ **RelationalSource** (wozu Teradata gehört) ist, sind i
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. |Ja |
+| Abfrage |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. |Ja |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus Teradata in ein Azure-Blob
 Das folgende Beispiel zeigt JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus Teradata in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
@@ -283,7 +282,7 @@ Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activ
 
 Beim Verschieben von Daten in Teradata werden die folgenden Zuordnungen zwischen Teradata und .NET verwendet:
 
-| Typ "Teradata-Datenbank" | Typ ".NET Framework" |
+| Typ "Teradata-Datenbank" | .NET Framework-Typ |
 | --- | --- |
 | Char |String |
 | Clob |String |
@@ -300,10 +299,10 @@ Beim Verschieben von Daten in Teradata werden die folgenden Zuordnungen zwischen
 | Integer |Int32 |
 | Number |Double |
 | SmallInt |Int16 |
-| Date |DateTime |
+| Date |Datetime |
 | Time |TimeSpan |
 | Time With Time Zone |String |
-| Timestamp |DateTime |
+| Timestamp |Datetime |
 | Timestamp With Time Zone |DateTimeOffset |
 | Interval Day |TimeSpan |
 | Interval Day To Hour |TimeSpan |

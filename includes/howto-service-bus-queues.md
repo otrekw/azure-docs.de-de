@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: spelluru
 ms.openlocfilehash: d3d33c87dc1adf65a53b71cc4c833e7f4a191670
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "67178331"
 ---
 ## <a name="what-are-service-bus-queues"></a>Was sind Service Bus-Warteschlangen?

@@ -1,32 +1,65 @@
 ---
-title: Untersuchen von Java-Ablaufverfolgungsprotokollen in Azure Application Insights | Microsoft-Dokumentation
+title: Untersuchen von Java-Ablaufverfolgungsprotokollen in Azure Application Insights
 description: Durchsuchen von Log4J- oder Logback-Ablaufverfolgungen in Application Insights
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/18/2019
-ms.author: mbullwin
-ms.openlocfilehash: 2703c97dc78983ef294b3aa50f7ace879c96f66d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: fb91662dfcdeb404f51f91c1fef893dc72dcac73
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061232"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601049"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights
+
+> [!IMPORTANT]
+> Der empfohlene Ansatz zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Befolgen Sie die Leitlinien für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md).
+
 Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version 1.2 bzw. 2.0) verwenden, werden Ihre Ablaufverfolgungsprotokolle automatisch an Application Insights gesendet. Hier können Sie sie durchsuchen und untersuchen.
 
-## <a name="install-the-java-sdk"></a>Installieren des Java SDK
+> [!TIP]
+> Sie müssen den Application Insights-Instrumentierungsschlüssel nur einmal für Ihre Anwendung festlegen. Wenn Sie ein Framework wie Java Spring verwenden, haben Sie den Schlüssel möglicherweise bereits an anderer Stelle in der Konfiguration Ihrer App registriert.
 
-Befolgen Sie die Anweisungen zum Installieren des [Application Insights SDK für Java][java], falls noch nicht geschehen.
+## <a name="using-the-application-insights-java-agent"></a>Verwenden des Java-Agents von Application Insights
 
-## <a name="add-logging-libraries-to-your-project"></a>Hinzufügen von Protokollierungsbibliotheken zu Ihrem Projekt
+Standardmäßig erfasst der Application Insights-Java-Agent automatisch die Protokollierung, die auf der Ebene `WARN` und höher ausgeführt wird.
+
+Sie können den Schwellenwert für die erfasste Protokollierung mithilfe der Datei `AI-Agent.xml` ändern:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn>
+         <Logging threshold="info"/>
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
+```
+
+Sie können die durch den Java-Agent erfasste Protokollierung mithilfe der Datei `AI-Agent.xml` deaktivieren:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn>
+         <Logging enabled="false"/>
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
+```
+
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>Alternativ können Sie (ohne Verwendung des Java-Agents) auch die folgenden Anweisungen befolgen.
+
+### <a name="install-the-java-sdk"></a>Installieren des Java SDK
+
+Führen Sie die Anweisungen zum Installieren des [Application Insights SDK für Java][java] durch, sofern dies noch nicht geschehen ist.
+
+### <a name="add-logging-libraries-to-your-project"></a>Hinzufügen von Protokollierungsbibliotheken zu Ihrem Projekt
 *Wählen Sie die geeignete Methode für Ihr Projekt.*
 
 #### <a name="if-youre-using-maven"></a>Wenn Sie Maven verwenden...
@@ -107,7 +140,7 @@ Befolgen Sie die Richtlinien für die manuelle Installation des Application Insi
 | Log4J v1. 2 |[JAR-Datei für Log4J-v1.2-Appender](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
-## <a name="add-the-appender-to-your-logging-framework"></a>Hinzufügen des Appenders zu Ihrem Protokollierungsframework
+### <a name="add-the-appender-to-your-logging-framework"></a>Hinzufügen des Appenders zu Ihrem Protokollierungsframework
 Zum Starten von Ablaufverfolgungen führen Sie den relevanten Codeausschnitt mit der Konfigurationsdatei für Log4J oder Logback zusammen: 
 
 *Logback*
@@ -167,7 +200,6 @@ Nachdem Sie das Projekt so konfiguriert haben, dass Ablaufverfolgungen an Applic
 
 <!--Link references-->
 
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[diagnostic]: ./diagnostic-search.md
 [java]: java-get-started.md
-
 

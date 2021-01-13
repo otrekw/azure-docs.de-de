@@ -1,23 +1,22 @@
 ---
-title: Bereitstellen eines Geräts mithilfe des Azure IoT Hub Device Provisioning-Diensts (.NET) | Microsoft-Dokumentation
-description: Bereitstellen Ihres Geräts für eine einzelne IoT Hub-Instanz mithilfe des Azure IoT Hub Device Provisioning-Diensts (.NET)
+title: 'Tutorial: Bereitstellen eines Geräts mithilfe von Azure IoT Hub Device Provisioning Service (.NET)'
+description: In diesem Tutorial erfahren Sie, wie Sie Ihr Gerät mithilfe von Azure IoT Hub Device Provisioning Service (DPS) und .NET für einen einzelnen IoT-Hub bereitstellen.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: csharp
-ms.custom: mvc
-ms.openlocfilehash: 4a6a074c3f677023928fefa5c09eb305b5441dfe
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303979"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966563"
 ---
-# <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Registrieren des Geräts für eine IoT Hub-Instanz mithilfe des Azure IoT Hub Device Provisioning-Diensts (.NET)
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Tutorial: Registrieren des Geräts für eine IoT Hub-Instanz mithilfe des Azure IoT Hub Device Provisioning-Diensts (.NET)
 
 Im vorherigen Tutorial haben Sie erfahren, wie ein Gerät eingerichtet wird, um eine Verbindung mit Ihrem Device Provisioning-Dienst herzustellen. In diesem Tutorial wird beschrieben, wie Sie diesen Dienst zum Bereitstellen Ihres Geräts auf einem einzelnen IoT Hub verwenden, indem Sie sowohl die **_Individuelle Registrierung_** als auch **_Registrierungsgruppen_** nutzen. Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
@@ -43,12 +42,12 @@ In diesem Tutorial wird der Zeitraum während des bzw. direkt nach dem Hardwareh
 Bei diesem Schritt werden die einzigartigen Sicherheitsartefakte des Geräts zum Device Provisioning-Dienst hinzugefügt. Zu diesen Sicherheitsartefakten gehören Folgende:
 
 - Für TPM-basierte Geräte:
-    - Der *Endorsement Key*, der für jeden TPM-Chip oder jede TPM-Simulation eindeutig ist. Weitere Informationen finden Sie im Artikel [Grundlegendes zum TPM Endorsement Key](https://technet.microsoft.com/library/cc770443.aspx).
+    - Der *Endorsement Key*, der für jeden TPM-Chip oder jede TPM-Simulation eindeutig ist. Weitere Informationen finden Sie im Artikel [Grundlegendes zum TPM Endorsement Key](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11)).
     - Die *Registrierungs-ID*, die zur eindeutigen Identifizierung eines Geräts im Namespace/Bereich verwendet wird. Diese ist eventuell mit der Geräte-ID identisch. Die ID ist für jedes Gerät erforderlich. Bei TPM-basierten Geräten kann die Registrierungs-ID vom TMP selbst abgeleitet werden, z.B. ein SHA-256-Hash des TPM Endorsement Key.
 
 - Für X.509-basierte Geräte:
-    - Das [für das Gerät ausgestellte X.509-Zertifikat](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx), entweder in Form einer *PEM*- oder einer *CER*-Datei. Für die individuelle Registrierung müssen Sie für Ihr X.509-System das *untergeordnete Zertifikat* verwenden, für Registrierungsgruppen dagegen das *Stammzertifikat* oder ein gleichwertiges *Signaturzertifikat*.
-    - Die *Registrierungs-ID*, die zur eindeutigen Identifizierung eines Geräts im Namespace/Bereich verwendet wird. Diese ist eventuell mit der Geräte-ID identisch. Die ID ist für jedes Gerät erforderlich. Für X.509-basierte Geräte wird die Registrierungs-ID vom allgemeinen Namen des Zertifikats (Common Name, CN) abgeleitet. Weitere Informationen zu diesen Anforderungen finden Sie im Artikel mit den [Konzepten für Geräte](https://docs.microsoft.com/azure/iot-dps/concepts-device).
+    - Das [für das Gerät ausgestellte X.509-Zertifikat](/windows/win32/seccertenroll/about-x-509-public-key-certificates), entweder in Form einer *PEM*- oder einer *CER*-Datei. Für die individuelle Registrierung müssen Sie für Ihr X.509-System das *untergeordnete Zertifikat* verwenden, für Registrierungsgruppen dagegen das *Stammzertifikat* oder ein gleichwertiges *Signaturzertifikat*.
+    - Die *Registrierungs-ID*, die zur eindeutigen Identifizierung eines Geräts im Namespace/Bereich verwendet wird. Diese ist eventuell mit der Geräte-ID identisch. Die ID ist für jedes Gerät erforderlich. Für X.509-basierte Geräte wird die Registrierungs-ID vom allgemeinen Namen des Zertifikats (Common Name, CN) abgeleitet. Weitere Informationen zu diesen Anforderungen finden Sie im Artikel mit den [Konzepten für Geräte](./concepts-service.md).
 
 Es gibt zwei Möglichkeiten zum Registrieren des Geräts beim Device Provisioning-Dienst:
 

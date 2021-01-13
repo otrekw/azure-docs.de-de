@@ -1,26 +1,17 @@
 ---
-title: 'Tutorial: Aktualisieren einer in Azure Service Fabric Mesh ausgeführten App | Microsoft-Dokumentation'
+title: 'Tutorial: Upgraden einer in Azure Service Fabric Mesh ausgeführten App'
 description: In diesem Tutorial erfahren Sie, wie Sie eine in Service Fabric Mesh ausgeführte Service Fabric-Anwendung aktualisieren.
-services: service-fabric-mesh
-documentationcenter: .net
-author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
+author: georgewallace
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 3567ede82f2eebf602e95dcd012f5c88a40af796
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.author: gwallace
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 331830c50206d14f7894aa837b483656de4222f2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337628"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747851"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Tutorial: Aktualisieren einer in Service Fabric Mesh ausgeführten Service Fabric-Anwendung
 
@@ -59,7 +50,7 @@ In diesem Tutorial wird die Beispiel-To-Do-Liste verwendet, die [zuvor bereitges
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-In der Bereitstellungsvorlage für die Anwendungsressource weist jeder Dienst die Eigenschaft *cpu* auf, mit der Sie die angeforderten CPU-Ressourcen festlegen können. Eine Anwendung kann aus mehreren zusammen bereitgestellten und verwalteten Diensten bestehen, wobei jeder Dienst eine eindeutige *cpu*-Einstellung aufweist. Wenn Sie die Anzahl von CPU-Ressourcen des Web-Front-End-Diensts erhöhen möchten, ändern Sie in der Bereitstellungsvorlage oder in der Parameterdatei den Wert *cpu*.  Führen Sie anschließend ein Upgrade der Anwendung durch.
+In der Bereitstellungsvorlage für die Anwendungsressource weist jeder Dienst die Eigenschaft *cpu* auf, mit der Sie die angeforderten CPU-Ressourcen festlegen können. Eine Anwendung kann aus mehreren zusammen bereitgestellten und verwalteten Diensten bestehen, wobei jeder Dienst eine eindeutige *cpu* -Einstellung aufweist. Wenn Sie die Anzahl von CPU-Ressourcen des Web-Front-End-Diensts erhöhen möchten, ändern Sie in der Bereitstellungsvorlage oder in der Parameterdatei den Wert *cpu* .  Führen Sie anschließend ein Upgrade der Anwendung durch.
 
 ### <a name="modify-the-deployment-template-parameters"></a>Ändern der Bereitstellungsvorlagenparameter
 
@@ -89,7 +80,7 @@ Der Parameter *frontEndCpu* wird im Abschnitt *parameters* der [Bereitstellungsv
 }
 ```
 
-Die Eigenschaft *codePackages->resources->requests->cpu* des WebFrontEnd-Diensts verweist auf den Parameter *frontEndCpu*:
+Die Eigenschaft *codePackages->resources->requests->cpu* des WebFrontEnd-Diensts verweist auf den Parameter *frontEndCpu* :
 
 ```json
     "services": [

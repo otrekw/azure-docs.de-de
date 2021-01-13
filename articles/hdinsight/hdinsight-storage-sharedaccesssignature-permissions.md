@@ -1,47 +1,45 @@
 ---
 title: Beschränken des Zugriffs mit Shared Access Signatures – Azure HDInsight
-description: Erfahren Sie, wie Sie mit Shared Access Signatures den HDInsight-Zugriff auf Daten in Azure-Speicherblobs einschränken.
+description: Erfahren Sie, wie Sie mit Shared Access Signatures den HDInsight-Zugriff auf Daten in Azure-Blobspeicher einschränken.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 04/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: 7f7f6fe31afe35d9ccfd6ee33617bd7e4fbe46b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: how-to
+ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
+ms.date: 04/28/2020
+ms.openlocfilehash: 141db7feee987b7fffc578e19c60bd94ad56d239
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409558"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511636"
 ---
-# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight
+# <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Shared Access Signatures von Azure-Blobspeicher zum Einschränken des Zugriffs auf Daten in HDInsight
 
-HDInsight hat vollen Zugriff auf Daten in Azure Storage-Konten, die mit dem Cluster verbunden sind. Sie können Shared Access Signatures für den Blobcontainer verwenden, um den Zugriff auf die Daten einzuschränken. Shared Access Signatures (SAS) sind ein Feature von Azure Storage-Konten, das das Einschränken des Zugriffs auf Daten ermöglicht. Sie können beispielsweise einen schreibgeschützten Zugriff auf Daten bieten.
+HDInsight hat vollen Zugriff auf Daten in Azure-Blobspeicherkonten, die mit dem Cluster verbunden sind. Sie können Shared Access Signatures für den Blobcontainer verwenden, um den Zugriff auf die Daten einzuschränken. Shared Access Signatures (SAS) sind ein Feature von Azure-Blobspeicherkonten, das das Einschränken des Zugriffs auf Daten ermöglicht. Sie können beispielsweise einen schreibgeschützten Zugriff auf Daten bieten.
 
 > [!IMPORTANT]  
-> Erwägen Sie für eine Lösung mit Apache Ranger die Verwendung von in die Domäne eingebundenem HDInsight. Weitere Informationen finden Sie im Dokument [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)](./domain-joined/apache-domain-joined-configure.md).
+> Erwägen Sie für eine Lösung mit Apache Ranger die Verwendung von in die Domäne eingebundenem HDInsight. Weitere Informationen finden Sie im Dokument [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).
 
 > [!WARNING]  
 > HDInsight benötigt vollen Zugriff auf den Standardspeicher für den Cluster.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement.
-
 * Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Ein vorhandener [Speichercontainer](../storage/blobs/storage-quickstart-blobs-portal.md).  
 
-* Bei der Verwendung von PowerShell benötigen Sie das [Az-Modul](https://docs.microsoft.com/powershell/azure/overview).
+* Bei Verwendung von PowerShell benötigen Sie das [Az-Modul](/powershell/azure/).
 
-* Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden möchten, diese aber noch nicht installiert haben, lesen Sie [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden möchten, diese aber noch nicht installiert haben, lesen Sie [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 * Bei Verwendung von [Python](https://www.python.org/downloads/), Version 2.7 oder höher.
 
 * Bei Verwendung von C# muss die Version von Visual Studio 2013 oder höher sein.
 
-* Das [URI-Schema](./hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihr Speicherkonto. Dies ist `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage oder Data Lake Storage Gen2 aktiviert ist, lautet der URI `wasbs://` bzw. `abfss://`. Siehe auch die Informationen zur [sicheren Übertragung](../storage/common/storage-require-secure-transfer.md).
+* Das URI-Schema für Ihr Speicherkonto. Dieses Schema ist `wasb://` für Azure-Blobspeicher, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure-Blobspeicher aktiviert ist, lautet der URI `wasbs://`.
 
 * Ein vorhandener HDInsight-Cluster, dem eine Shared Access Signature hinzugefügt werden kann. Falls nicht, können Sie mit Azure PowerShell einen Cluster erstellen und während der Clustererstellung eine Shared Access Signature hinzufügen.
 
@@ -56,11 +54,11 @@ HDInsight hat vollen Zugriff auf Daten in Azure Storage-Konten, die mit dem Clus
 
 Es gibt zwei Arten von Shared Access Signatures:
 
-* Ad-hoc: Startzeit, Ablaufzeit und Berechtigungen für die SAS werden direkt im SAS-URI angegeben.
+* `Ad hoc`: Startzeit, Ablaufzeit und Berechtigungen für die SAS werden direkt im SAS-URI angegeben.
 
-* Gespeicherte Zugriffsrichtlinie: Eine gespeicherte Zugriffsrichtlinie wird für einen Ressourcencontainer definiert (also etwa für einen Blobcontainer). Eine Richtlinie kann verwendet werden, um Einschränkungen für eine oder mehrere SAS zu verwalten. Wenn Sie eine SAS mit einer gespeicherten Zugriffsrichtlinie verknüpfen, erbt die SAS die Einschränkungen (Startzeit, Ablaufzeit und Berechtigungen) dieser gespeicherten Zugriffsrichtlinie.
+* `Stored access policy`: Eine gespeicherte Zugriffsrichtlinie wird für einen Ressourcencontainer definiert (also etwa für einen Blobcontainer). Eine Richtlinie kann verwendet werden, um Einschränkungen für eine oder mehrere SAS zu verwalten. Wenn Sie eine SAS mit einer gespeicherten Zugriffsrichtlinie verknüpfen, erbt die SAS die Einschränkungen (Startzeit, Ablaufzeit und Berechtigungen) dieser gespeicherten Zugriffsrichtlinie.
 
-Der Unterschied zwischen diesen beiden Formen ist wichtig für ein Schlüsselszenario: Widerruf. Eine SAS ist eine URL und kann daher von beliebiger Stelle verwendet werden, unabhängig davon, wer die SAS ursprünglich angefordert hatte. Wenn eine SAS veröffentlicht wird, kann diese von beliebiger Stelle weltweit verwendet werden. Auf diese Weise verteilte SAS sind gültig, bis eines von vier Ereignissen eintritt:
+Der Unterschied zwischen diesen beiden Formen ist wichtig für ein Schlüsselszenario: Widerruf. Eine SAS ist eine URL, daher kann sie von jedem Benutzer verwendet werden, der die SAS erhält. Es spielt keine Rolle, wer sie ursprünglich angefordert hat. Wenn eine SAS veröffentlicht wird, kann diese von beliebiger Stelle weltweit verwendet werden. Auf diese Weise verteilte SAS sind gültig, bis eines von vier Ereignissen eintritt:
 
 1. Die Ablaufzeit der SAS wird erreicht.
 
@@ -78,21 +76,21 @@ Der Unterschied zwischen diesen beiden Formen ist wichtig für ein Schlüsselsze
 
 Es wird empfohlen, stets gespeicherte Zugriffsrichtlinien zu verwenden. Bei Verwendung gespeicherter Richtlinien können Sie Signaturen aufheben oder bei Bedarf das Ablaufdatum verlängern. In den Schritten in diesem Dokument werden gespeicherte Zugriffsrichtlinien zum Generieren von SAS verwendet.
 
-Weitere Informationen zu Shared Access Signatures finden Sie unter [Grundlagen zum SAS-Modell](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Weitere Informationen zu Shared Access Signatures finden Sie unter [Grundlagen zum SAS-Modell](../storage/common/storage-sas-overview.md).
 
 ## <a name="create-a-stored-policy-and-sas"></a>Erstellen einer gespeicherte Richtlinie und einer SAS
 
-Speichern Sie das SAS-Token, das am Ende jeder Methode erstellt wird. Das Token sieht etwa wie folgt aus:
+Speichern Sie das SAS-Token, das am Ende jeder Methode erstellt wird. Das Token ähnelt der folgenden Ausgabe:
 
 ```output
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
 ```
 
-### <a name="using-powershell"></a>Verwenden von PowerShell
+### <a name="using-powershell"></a>PowerShell
 
 Ersetzen Sie `RESOURCEGROUP`, `STORAGEACCOUNT` und `STORAGECONTAINER` durch die entsprechenden Werte für Ihren vorhandenen Speichercontainer. Ändern Sie das Verzeichnis in `hdinsight-dotnet-python-azure-storage-shared-access-signature-master`, oder überarbeiten Sie den `-File`-Parameter so, dass er den absoluten Pfad für `Set-AzStorageblobcontent` enthält. Geben Sie den folgenden PowerShell-Befehl ein:
 
-```PowerShell
+```powershell
 $resourceGroupName = "RESOURCEGROUP"
 $storageAccountName = "STORAGEACCOUNT"
 $containerName = "STORAGECONTAINER"
@@ -175,7 +173,7 @@ Die Verwendung von Variablen in diesem Abschnitt basiert auf einer Windows-Umgeb
 
 2. Legen Sie den abgerufenen Primärschlüssel auf eine Variable zur späteren Verwendung fest. Ersetzen Sie `PRIMARYKEY` durch den im vorherigen Schritt abgerufenen Wert, und geben Sie dann den folgenden Befehl ein:
 
-    ```azurecli
+    ```console
     #set variable for primary key
     set AZURE_STORAGE_KEY=PRIMARYKEY
     ```
@@ -190,7 +188,7 @@ Die Verwendung von Variablen in diesem Abschnitt basiert auf einer Windows-Umgeb
     az storage container policy list --container-name %AZURE_STORAGE_CONTAINER% --account-key %AZURE_STORAGE_KEY% --account-name %AZURE_STORAGE_ACCOUNT%
 
     # Generate a shared access signature for the container
-    az storage container generate-sas --name myPolicyCLI --account-key %AZURE_STORAGE_KEY% --account-name %AZURE_STORAGE_ACCOUNT%
+    az storage container generate-sas --name %AZURE_STORAGE_CONTAINER% --policy-name myPolicyCLI --account-key %AZURE_STORAGE_KEY% --account-name %AZURE_STORAGE_ACCOUNT%
 
     # Reversal
     # az storage container policy delete --container-name %AZURE_STORAGE_CONTAINER% --name myPolicyCLI --account-key %AZURE_STORAGE_KEY% --account-name %AZURE_STORAGE_ACCOUNT%
@@ -205,7 +203,7 @@ Die Verwendung von Variablen in diesem Abschnitt basiert auf einer Windows-Umgeb
 
 Möglicherweise müssen Sie `pip install --upgrade azure-storage` ausführen, wenn Sie die Fehlermeldung `ImportError: No module named azure.storage` erhalten.
 
-### <a name="using-c"></a>Verwenden von C#
+### <a name="using-c"></a>Verwenden von C\#
 
 1. Öffnen Sie die Projektmappe in Visual Studio.
 
@@ -213,28 +211,26 @@ Möglicherweise müssen Sie `pip install --upgrade azure-storage` ausführen, we
 
 3. Wählen Sie **Einstellungen** aus, und fügen Sie Werte für die folgenden Einträge hinzu:
 
-   * StorageConnectionString: Die Verbindungszeichenfolge für das Speicherkonto, für das eine gespeicherte Richtlinie und SAS erstellt werden soll. Das Format muss `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` sein, wobei `myaccount` der Name Ihres Speicherkontos und `mykey` der Schlüssel des Speicherkontos ist.
-
-   * ContainerName: Der Container im Speicherkonto, auf den Sie den Zugriff beschränken möchten.
-
-   * SASPolicyName: Der zu verwendende Name für die gespeicherte Richtlinie, die erstellt wird.
-
-   * FileToUpload: Der Pfad zu einer Datei, die in den Container hochgeladen wird.
+    |Element |BESCHREIBUNG |
+    |---|---|
+    |StorageConnectionString|Die Verbindungszeichenfolge für das Speicherkonto, für das eine gespeicherte Richtlinie und SAS erstellt werden soll. Das Format muss `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` sein, wobei `myaccount` der Name Ihres Speicherkontos und `mykey` der Schlüssel des Speicherkontos ist.|
+    |ContainerName|Der Container im Speicherkonto, auf den Sie den Zugriff beschränken möchten.|
+    |SASPolicyName|Der zu verwendende Name für die gespeicherte Richtlinie, die erstellt wird.|
+    |FileToUpload|Der Pfad zu einer Datei, die in den Container hochgeladen wird.|
 
 4. Führen Sie das Projekt aus. Speichern Sie die SAS-Richtlinientoken, den Speicherkontonamen und den Containernamen. Diese Werte werden verwendet, wenn Sie das Speicherkonto mit Ihrem HDInsight-Cluster verknüpfen.
 
 ## <a name="use-the-sas-with-hdinsight"></a>Verwenden der SAS mit HDInsight
 
-Wenn Sie einen HDInsight-Cluster erstellen, müssen Sie ein primäres Speicherkonto angeben. Optional können Sie zusätzliche Speicherkonten angeben. Beide Methoden zum Hinzufügen von Speicher benötigen Vollzugriff auf die Speicherkonten und Container, die verwendet werden.
+Beim Erstellen eines HDInsight-Clusters müssen Sie ein primäres Speicherkonto angeben. Sie können auch zusätzliche Speicherkonten angeben. Beide Methoden zum Hinzufügen von Speicher benötigen Vollzugriff auf die Speicherkonten und Container, die verwendet werden.
 
-Fügen Sie der Konfiguration für den Cluster von **core-site** einen benutzerdefinierten Eintrag hinzu, um eine Shared Access Signature zum Begrenzen des Zugriffs auf einen Container zu verwenden. Sie können den Eintrag während der Erstellung des Clusters mithilfe von PowerShell hinzufügen oder nach der Clustererstellung mittels Ambari.
+Verwenden Sie eine Shared Access Signature, um den Containerzugriff einzuschränken. Fügen Sie der Konfiguration **core-site** für den Cluster einen benutzerdefinierten Eintrag hinzu. Sie können den Eintrag während der Erstellung des Clusters mithilfe von PowerShell hinzufügen oder nach der Clustererstellung mittels Ambari.
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>Erstellen eines Clusters, der die SAS verwendet
 
 Ersetzen Sie `CLUSTERNAME`, `RESOURCEGROUP`, `DEFAULTSTORAGEACCOUNT`, `STORAGECONTAINER`, `STORAGEACCOUNT` und `TOKEN` durch die entsprechenden Werte. Geben Sie diese PowerShell-Befehle ein:
 
 ```powershell
-
 $clusterName = 'CLUSTERNAME'
 $resourceGroupName = 'RESOURCEGROUP'
 
@@ -285,11 +281,10 @@ $defaultStorageContext = New-AzStorageContext `
                                 -StorageAccountName $defaultStorageAccountName `
                                 -StorageAccountKey $defaultStorageAccountKey
 
-
 # Create a blob container. This holds the default data store for the cluster.
 New-AzStorageContainer `
     -Name $clusterName `
-    -Context $defaultStorageContext 
+    -Context $defaultStorageContext
 
 # Cluster login is used to secure HTTPS services hosted on the cluster
 $httpCredential = Get-Credential `
@@ -302,9 +297,9 @@ $sshCredential = Get-Credential `
     -UserName "sshuser"
 
 # Create the configuration for the cluster
-$config = New-AzHDInsightClusterConfig 
+$config = New-AzHDInsightClusterConfig
 
-$config = $config | Add-AzHDInsightConfigValues `
+$config = $config | Add-AzHDInsightConfigValue `
     -Spark2Defaults @{} `
     -Core @{"fs.azure.sas.$SASContainerName.$SASStorageAccountName.blob.core.windows.net"=$SASToken}
 
@@ -358,29 +353,29 @@ Wenn Sie bereits einen Cluster haben, können Sie die SAS der **core-site**-Konf
 
 1. Öffnen Sie die Ambari-Webbenutzeroberfläche für den Cluster. Die Adresse für diese Seite lautet `https://YOURCLUSTERNAME.azurehdinsight.net`. Authentifizieren Sie sich bei Aufforderung am Cluster mithilfe des Administratornamens (admin) und des Kennworts, das Sie beim Erstellen des Clusters verwendet haben.
 
-2. Wählen Sie links auf der Ambari-Webbenutzeroberfläche **HDFS** und dann in der Mitte der Seite die Registerkarte **Configs** aus.
+1. Navigieren Sie zu **HDFS** > **Configs** > **Advanced** > **Custom core-site** (HDFS > Konfigurationen > Erweitert > Benutzerdefinierte core-site).
 
-3. Wählen Sie die Registerkarte **Advanced** aus, und scrollen Sie zum Abschnitt **Custom core-site**.
+1. Erweitern Sie den Abschnitt **Custom core-site** (Benutzerdefinierte core-site), scrollen Sie zum Seitenende, und wählen Sie **Add property...** (Eigenschaft hinzufügen) aus. Verwenden Sie für **Key** (Schlüssel) und **Value** (Wert) die folgenden Werte:
 
-4. Erweitern Sie den Abschnitt **Custom core-site**, scrollen Sie zum Seitenende, und klicken Sie auf den Link **Add property...** . Verwenden Sie für die Felder **Key** und **Value** die folgenden Werte:
+    * **Schlüssel**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Value**: Die von einer der zuvor ausgeführten Methoden zurückgegebene SAS.
 
-   * **Schlüssel**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-   * **Value**: Die von einer der zuvor ausgeführten Methoden zurückgegebene SAS.
+    Ersetzen Sie `CONTAINERNAME` durch den Containernamen, den Sie mit der C#- oder SAS-Anwendung verwendet haben. Ersetzen Sie `STORAGEACCOUNTNAME` durch den Namen des von Ihnen verwendeten Speicherkontos.
 
-     Ersetzen Sie `CONTAINERNAME` durch den Containernamen, den Sie mit der C#- oder SAS-Anwendung verwendet haben. Ersetzen Sie `STORAGEACCOUNTNAME` durch den Namen des von Ihnen verwendeten Speicherkontos.
+    Wählen Sie **Hinzufügen** aus, um diesen Schlüssel und diesen Wert zu speichern.
 
-5. Klicken Sie auf die Schaltfläche **Add**, um diesen Schlüssel und Wert zu speichern. Klicken Sie dann auf die Schaltfläche **Save**, um die Konfigurationsänderungen zu speichern. Fügen Sie bei Aufforderung eine Beschreibung der Änderung hinzu (z.B. „Hinzufügen des SAS-Speicherzugriffs“), und klicken Sie anschließend auf **Speichern**.
+1. Klicken Sie auf die Schaltfläche **Speichern**, um die Konfigurationsänderungen zu speichern. Fügen Sie bei Aufforderung eine Beschreibung der Änderung hinzu (z. B. „Hinzufügen des SAS-Speicherzugriffs“), und wählen Sie anschließend **Speichern** aus.
 
-    Klicken Sie auf **OK** , wenn die Änderungen abgeschlossen sind.
+    Wählen Sie **OK** aus, wenn die Änderungen abgeschlossen sind.
 
    > [!IMPORTANT]  
    > Sie müssen mehrere Dienste neu starten, damit die Änderung wirksam wird.
 
-6. Wählen Sie auf der Ambari-Webbenutzeroberfläche in der Liste auf der linken Seite **HDFS** und dann in der Dropdownliste **Service Actions** (Dienstaktionen) auf der rechten Seite **Restart All Affected** (Alle betroffenen Dienste neu starten) aus. Klicken Sie bei entsprechender Aufforderung auf __Confirm Restart All__ (Neustart aller Dienste bestätigen).
+1. Die Dropdownliste **Neu starten** wird angezeigt. Wählen Sie in der Dropdownliste **Restart All Affected** (Alle betroffenen neu starten) und anschließend die Option __Confirm Restart All__ (Alle neu starten bestätigen) aus.
 
-    Wiederholen Sie diesen Vorgang für MapReduce2 und YARN.
+    Wiederholen Sie diesen Vorgang für **MapReduce2** und **YARN**.
 
-7. Sobald diese Dienste neu gestartet wurden, wählen Sie sie nacheinander aus und deaktivieren den Wartungsmodus in der Dropdownliste **Service Actions** (Dienstaktionen).
+1. Sobald diese Dienste neu gestartet wurden, wählen Sie sie nacheinander aus und deaktivieren den Wartungsmodus in der Dropdownliste **Service Actions** (Dienstaktionen).
 
 ## <a name="test-restricted-access"></a>Testen des eingeschränkten Zugriffs
 
@@ -405,7 +400,7 @@ Befolgen Sie die folgenden Schritte zum Überprüfen, ob Sie Elemente im SAS-Spe
 3. Geben Sie den folgenden Befehl an, um sicherzustellen, dass Sie den Inhalt der Datei lesen können. Ersetzen Sie `SASCONTAINER` und `SASACCOUNTNAME` wie im vorherigen Schritt. Ersetzen Sie `sample.log` durch den Namen der Datei, die im vorherigen Befehl angezeigt wurde:
 
     ```bash
-    hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
+    hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
     ```
 
     Dieser Befehl listet den Inhalt der Datei auf.
@@ -426,7 +421,9 @@ Befolgen Sie die folgenden Schritte zum Überprüfen, ob Sie Elemente im SAS-Spe
 
     Sie erhalten eine Meldung wie den folgenden Text:
 
-        put: java.io.IOException
+    ```output
+    put: java.io.IOException
+    ```
 
     Dieser Fehler tritt auf, weil der Speicherort nur einen Lese- und Auflistungszugriff zulässt. Geben Sie den folgenden Befehl an, um die Daten im Standardspeicher des Clusters abzulegen, der Schreibzugriff zulässt:
 
@@ -440,7 +437,5 @@ Befolgen Sie die folgenden Schritte zum Überprüfen, ob Sie Elemente im SAS-Spe
 
 Nachdem Sie erfahren haben, wie Sie Ihrem HDInsight-Cluster Speicher mit eingeschränktem Zugriff hinzufügen, können Sie sich mit anderen Möglichkeiten des Arbeitens mit Daten in Ihrem Cluster vertraut machen:
 
-* [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
-* [Verwenden von Apache Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
-* [Verwenden von MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
-
+* [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
+* [Autorisieren von Benutzern für Apache Ambari-Ansichten](hdinsight-authorize-users-to-ambari.md)

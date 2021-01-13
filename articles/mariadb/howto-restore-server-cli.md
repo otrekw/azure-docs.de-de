@@ -1,35 +1,33 @@
 ---
-title: Sichern und Wiederherstellen eines Servers in Azure Database for MariaDB
+title: Sichern und Wiederherstellen – Azure-Befehlszeilenschnittstelle – Azure Database for MariaDB
 description: Erfahren Sie, wie Sie einen Server in Azure Database for MariaDB mit der Azure-Befehlszeilenschnittstelle sichern und wiederherstellen.
-author: rachel-msft
-ms.author: raagyema
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
-ms.topic: conceptual
-ms.date: 11/10/2018
-ms.openlocfilehash: 409fe7b76306036cad19980459ca718c87118d8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: how-to
+ms.date: 3/27/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a6e46efd7f998437c3998df9a989ef9e1500e888
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171390"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539582"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MariaDB mit der Azure CLI
 
-## <a name="backup-happens-automatically"></a>Automatische Sicherung
-
 Azure Database for MariaDB-Server werden regelmäßig gesichert, um Wiederherstellungsfeatures zu ermöglichen. Mithilfe dieses Features können Sie für den Server und alle dazugehörigen Datenbanken einen Zustand zu einem früheren Zeitpunkt auf einem neuen Server wiederherstellen.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
+- Sie benötigen einen [Azure Database for MariaDB-Server und eine Datenbank](quickstart-create-mariadb-server-database-using-azure-cli.md).
 
-- Einen [Azure Database for MariaDB-Server und eine Datenbank](quickstart-create-mariadb-server-database-using-azure-cli.md)
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-> [!IMPORTANT]
-> Diese Anleitung setzt die Verwendung von Azure CLI-Version 2.0 oder höher voraus. Geben Sie zum Bestätigen der Version an der Eingabeaufforderung von Azure CLI `az --version` ein. Informationen zum Ausführen einer Installation oder eines Upgrades finden Sie unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+- Für diesen Leitfaden ist mindestens Version 2.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="set-backup-configuration"></a>Festlegen der Sicherungskonfiguration
 
@@ -71,18 +69,20 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 Für den Befehl `az mariadb server restore` sind folgende Parameter erforderlich:
 
-| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
+| Einstellung | Vorgeschlagener Wert | BESCHREIBUNG  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
+| resource-group |  myresourcegroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
 | name | mydemoserver-restored | Der Name des neuen Servers, der durch den Befehl „restore“ erstellt wird. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Wählen Sie einen Zeitpunkt aus, dessen Zustand wiederhergestellt werden soll. Datum und Zeit müssen innerhalb des Aufbewahrungszeitraums für Sicherungen des Quellservers liegen. Verwenden Sie das Datums- und Zeitformat nach ISO 8601. Beispielsweise können Sie Ihre eigene lokale Zeitzone wie `2018-03-13T05:59:00-08:00` verwenden. Sie können z.B. auch das UTC-Zulu-Format verwenden, `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | Der Name oder die ID des Quellservers, über den die Wiederherstellung durchgeführt wird. |
 
 Wenn Sie den Zustand eines Servers zu einem früheren Zeitpunkt wiederherstellen, wird ein neuer Server erstellt. Der ursprüngliche Server und seine Datenbanken aus dem angegebenen Zeitpunkt werden auf den neuen Server kopiert.
 
-Die Werte zum Standort und Tarif des wiederhergestellten Servers bleiben mit denen des ursprünglichen Servers identisch.
+Die Werte zum Standort und Tarif des wiederhergestellten Servers bleiben mit denen des ursprünglichen Servers identisch. 
 
-Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
+Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden. Der neue Server verfügt über den gleichen Serveradministrator-Anmeldenamen (und das dazugehörige Kennwort), der für den vorhandenen Server bei der Initiierung der Wiederherstellung gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
+
+Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die VNET-Dienstendpunkte auf, die auf dem ursprünglichen Server vorhanden waren. Diese Regeln müssen separat für diesen neuen Server eingerichtet werden. Firewallregeln vom ursprünglichen Server werden wiederhergestellt.
 
 ## <a name="geo-restore"></a>Geowiederherstellung
 
@@ -111,7 +111,7 @@ az mariadb server georestore --resource-group newresourcegroup --name mydemoserv
 
 Für den Befehl `az mariadb server georestore` sind folgende Parameter erforderlich:
 
-| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
+| Einstellung | Vorgeschlagener Wert | BESCHREIBUNG  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Der Name der Ressourcengruppe, zu der der neue Server gehören soll.|
 |name | mydemoserver-georestored | Der Name des neuen Servers. |
@@ -119,12 +119,14 @@ Für den Befehl `az mariadb server georestore` sind folgende Parameter erforderl
 |location | eastus | Der Speicherort des neuen Servers. |
 |sku-name| GP_Gen5_8 | Dieser Parameter legt Tarif, Computegeneration und Anzahl der virtuellen Kerne des neuen Servers fest. GP_Gen5_8 wird einem Gen 5-Server vom Typ „Allgemein“ mit acht virtuellen Kernen zugeordnet.|
 
->[!Important]
->Beim Erstellen von einer Geowiederherstellung erbt ein neuer Server Speichergröße und Tarif vom Quellserver. Diese Werte können während der Erstellung nicht geändert werden. Sobald der neue Server erstellt ist, kann die Speichergröße zentral hochskaliert werden.
+Beim Erstellen von einer Geowiederherstellung erbt ein neuer Server Speichergröße und Tarif vom Quellserver. Diese Werte können während der Erstellung nicht geändert werden. Sobald der neue Server erstellt ist, kann die Speichergröße zentral hochskaliert werden.
 
-Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
+Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden. Der neue Server verfügt über den gleichen Serveradministrator-Anmeldenamen (und das dazugehörige Kennwort), der für den vorhandenen Server bei der Initiierung der Wiederherstellung gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
+
+Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die VNET-Dienstendpunkte auf, die auf dem ursprünglichen Server vorhanden waren. Diese Regeln müssen separat für diesen neuen Server eingerichtet werden. Firewallregeln vom ursprünglichen Server werden wiederhergestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über die [Sicherungen](concepts-backup.md) des Diensts.
-- Informieren Sie sich über die Optionen in Bezug auf die [Geschäftskontinuität](concepts-business-continuity.md).
+- Weitere Informationen zu den [Sicherungen](concepts-backup.md)
+- Weitere Informationen zu [Replikaten](concepts-read-replicas.md)
+- Weitere Informationen zu den Optionen für [Geschäftskontinuität](concepts-business-continuity.md)

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6e636a039302d2ea61c7135bff1fceb4763f25df
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736293"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151454"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog-Terminologie
 
@@ -39,7 +39,7 @@ Strukturelle Metadaten sind die Metadaten, die aus einer Datenquelle extrahiert 
 
 ## <a name="descriptive-metadata"></a>Beschreibende Metadaten
 
-Beschreibende Metadaten sind Metadaten, mit denen der Zweck oder die Absicht eines Datenassets beschrieben wird. Normalerweise werden beschreibende Metadaten von Katalogbenutzern über das Azure Data Catalog-Portal hinzugefügt, aber sie können auch während der Registrierung aus der Datenquelle extrahiert werden. Mit dem Azure Data Catalog-Registrierungstool werden beispielsweise Beschreibungen aus der Description-Eigenschaft in SQL Server Analysis Services und SQL Server Reporting Services sowie aus der [erweiterten ms_description-Eigenschaft](https://technet.microsoft.com/library/ms190243.aspx) in SQL Server-Datenbanken extrahiert, sofern diese Eigenschaften mit Werten aufgefüllt wurden.
+Beschreibende Metadaten sind Metadaten, mit denen der Zweck oder die Absicht eines Datenassets beschrieben wird. Normalerweise werden beschreibende Metadaten von Katalogbenutzern über das Azure Data Catalog-Portal hinzugefügt, aber sie können auch während der Registrierung aus der Datenquelle extrahiert werden. Mit dem Azure Data Catalog-Registrierungstool werden beispielsweise Beschreibungen aus der Description-Eigenschaft in SQL Server Analysis Services und SQL Server Reporting Services sowie aus der [erweiterten ms_description-Eigenschaft](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)) in SQL Server-Datenbanken extrahiert, sofern diese Eigenschaften mit Werten aufgefüllt wurden.
 
 ## <a name="request-access"></a>Zugriff anfordern
 
@@ -73,7 +73,7 @@ Jede dieser Perspektiven ist sehr wertvoll, und mit Azure Data Catalog kann jede
 
 Ein Experte ist ein Benutzer, der in Bezug auf ein Datenasset über eine fundierte "Expertensicht" verfügt. Alle Benutzer können sich selbst oder andere Benutzer als Experten für ein Asset hinzufügen. Die Angabe als Experte ist in Azure Data Catalog nicht mit weiteren Privilegien verbunden. Sie ermöglicht Benutzern beim Prüfen der beschreibenden Metadaten eines Assets das einfache Finden der Angaben, die voraussichtlich am nützlichsten sind.
 
-## <a name="owner"></a>Owner (Besitzer)
+## <a name="owner"></a>Besitzer
 
 Ein Besitzer ist ein Benutzer mit zusätzlichen Berechtigungen zum Verwalten eines Datenassets in Azure Data Catalog. Benutzer können registrierte Datenassets in Besitz nehmen, und Besitzer können andere Benutzer als Mitbesitzer hinzufügen. Weitere Informationen finden Sie unter [Verwalten von Datenassets](data-catalog-how-to-manage.md).  
 
@@ -86,4 +86,4 @@ Die Registrierung umfasst das Extrahieren der Metadaten eines Datenassets aus ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Schnellstart: Erstellen einer Azure Data Catalog-Instanz](data-catalog-get-started.md) 
+[Schnellstart: Erstellen einer Azure Data Catalog-Instanz](data-catalog-get-started.md)

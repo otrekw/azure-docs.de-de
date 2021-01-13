@@ -1,19 +1,21 @@
 ---
 title: Optimieren der Durchsatzkosten in Azure Cosmos DB
 description: In diesem Artikel wird erläutert, wie Sie für die in Azure Cosmos DB gespeicherten Daten die Durchsatzkosten optimieren.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.author: rimman
-ms.openlocfilehash: d874f1ba8823ceddbef378decde127cef4ff8885
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.date: 02/07/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 86de3e1199b00dff4e03f3b4292f86e6c19ea491
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020110"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296538"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Durch das Angebot eines Modells mit bereitgestelltem Durchsatz bietet Azure Cosmos DB vorhersagbare Leistung in jeder Größenordnung. Das vorzeitige Reservieren oder Bereitstellen von Durchsatz verhindert den „Noisy-Neighbor“-Effekt für die Leistung. Sie geben die genaue Durchsatzmenge an, die Sie benötigen, und Azure Cosmos DB garantiert den konfigurierten Durchsatz (durch SLA zugesichert).
 
@@ -25,7 +27,7 @@ Sie können Durchsatz für Datenbanken oder Container bereitstellen, und jede St
 
 * Wenn Sie Durchsatz für eine Datenbank bereitstellen, können alle Container (z. B. Sammlungen/Tabellen/Diagramme) in dieser Datenbank auf Basis der Last den Durchsatz gemeinsam nutzen. Auf Datenbankebene reservierter Durchsatz wird ungleichmäßig gemeinsam genutzt und richtet sich nach der Workload einer bestimmten Containergruppe.
 
-* Wenn Sie Durchsatz für einen Container bereitstellen, ist der Durchsatz für diesen Container garantiert und wird durch SLA zugesichert. Die Auswahl eines logischen Partitionsschlüssels ist dabei entscheidend für die gleichmäßige Verteilung der Last über alle logischen Partitionen eines Containers. Ausführlichere Informationen finden Sie in den Artikeln [Partitionieren](partitioning-overview.md) und [Horizontale Skalierung](partition-data.md).
+* Wenn Sie Durchsatz für einen Container bereitstellen, ist der Durchsatz für diesen Container garantiert und wird durch SLA zugesichert. Die Auswahl eines logischen Partitionsschlüssels ist dabei entscheidend für die gleichmäßige Verteilung der Last über alle logischen Partitionen eines Containers. Ausführlichere Informationen finden Sie in den Artikeln [Partitionieren](partitioning-overview.md) und [Horizontale Skalierung](partitioning-overview.md).
 
 Die folgenden Richtlinien können bei der Entscheidung für eine Durchsatzbereitstellungsstrategie hilfreich sein:
 
@@ -57,9 +59,9 @@ Wie aus der folgenden Tabelle hervorgeht, können Sie je nach API-Auswahl Durchs
 |----|----|----|
 |SQL-API|Datenbank|Container|
 |Azure Cosmos DB-API für MongoDB|Datenbank|Collection|
-|Cassandra-API|Keyspace|Table|
+|Cassandra-API|Keyspace|Tabelle|
 |Gremlin-API|Datenbankkonto|Graph|
-|Tabelle-API|Datenbankkonto|Table|
+|Tabelle-API|Datenbankkonto|Tabelle|
 
 Durch Bereitstellen des Durchsatzes auf verschiedenen Ebenen können Sie Ihre Kosten anhand der Merkmale Ihrer Workload optimieren. Wie bereits erwähnt, können Sie programmgesteuert und jederzeit den bereitgestellten Durchsatz erhöhen oder reduzieren – entweder für einzelne Container oder kollektiv für eine Gruppe von Containern. Durch das elastische Skalieren des Durchsatzes entsprechend der Workloadveränderungen bezahlen Sie nur den Durchsatz, den Sie konfiguriert haben. Wenn Ihr Container oder Ihre Containergruppe über mehrere Regionen verteilt ist, wird der für den Container oder die Containergruppe konfigurierte Durchsatz für alle Regionen garantiert.
 
@@ -77,9 +79,9 @@ HTTP Status 429,
 
 Die nativen SDKs (.NET/.NET Core, Java, Node.js und Python) fangen diese Antwort implizit ab, berücksichtigen den vom Server angegebenen Header vom Typ „retry-after“ und wiederholen die Anforderung. Sofern nicht mehrere Clients gleichzeitig auf Ihr Konto zugreifen, wird die nächste Wiederholung erfolgreich ausgeführt.
 
-Wenn Sie insgesamt mehr als einen Client haben, der beständig die Anforderungsrate überschreitet, reicht die standardmäßige Wiederholungsanzahl (derzeit auf 9 festgelegt) möglicherweise nicht aus. In diesem Fall löst der Client die Ausnahme `DocumentClientException` mit dem Statuscode 429 für die Anwendung aus. Die standardmäßige Wiederholungsanzahl kann durch Festlegen der Wiederholungsoptionen (`RetryOptions`) für die ConnectionPolicy-Instanz geändert werden. `DocumentClientException` mit dem Statuscode 429 wird standardmäßig nach einer kumulierten Wartezeit von 30 Sekunden zurückgegeben, wenn die Anforderung weiterhin die Anforderungsrate übersteigt. Dies gilt auch, wenn die aktuelle Wiederholungsanzahl unter der maximalen Wiederholungsanzahl liegt – ganz gleich, ob es sich dabei um den Standardwert (9) oder um einen benutzerdefinierten Wert handelt. 
+Wenn Sie insgesamt mehr als einen Client haben, der beständig die Anforderungsrate überschreitet, reicht die standardmäßige Wiederholungsanzahl (derzeit auf 9 festgelegt) möglicherweise nicht aus. In diesen Fällen löst der Client die Ausnahme `RequestRateTooLargeException` mit dem Statuscode 429 für die Anwendung aus. Die standardmäßige Wiederholungsanzahl kann durch Festlegen der Wiederholungsoptionen (`RetryOptions`) für die ConnectionPolicy-Instanz geändert werden. `RequestRateTooLargeException` mit dem Statuscode 429 wird standardmäßig nach einer kumulierten Wartezeit von 30 Sekunden zurückgegeben, wenn die Anforderung weiterhin die Anforderungsrate übersteigt. Dies gilt auch, wenn die aktuelle Wiederholungsanzahl unter der maximalen Wiederholungsanzahl liegt – ganz gleich, ob es sich dabei um den Standardwert (9) oder um einen benutzerdefinierten Wert handelt. 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) ist auf 3 festgelegt. Daher wird hier, wenn für einen Anforderungsvorgang aufgrund der Überschreitung des reservierten Durchsatzes für den Container ein Ratenlimit gilt, der Anforderungsvorgang dreimal wiederholt, bevor die Ausnahme für die Anwendung ausgelöst wird. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) ist auf 60 festgelegt. In diesem Fall wird die Ausnahme ausgelöst, wenn die kumulative Wiederholungswartezeit (in Sekunden) seit der ersten Anforderung 60 Sekunden übersteigt.
+[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?preserve-view=true&view=azure-dotnet) ist auf 3 festgelegt. Daher wird hier, wenn für einen Anforderungsvorgang aufgrund der Überschreitung des reservierten Durchsatzes für den Container ein Ratenlimit gilt, der Anforderungsvorgang dreimal wiederholt, bevor die Ausnahme für die Anwendung ausgelöst wird. [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) ist auf 60 festgelegt. In diesem Fall wird die Ausnahme ausgelöst, wenn die kumulative Wiederholungswartezeit (in Sekunden) seit der ersten Anforderung 60 Sekunden übersteigt.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -111,19 +113,19 @@ Außerdem sollten Sie, wenn Sie Azure Cosmos DB verwenden und wissen, dass Sie b
 
 ## <a name="optimize-by-changing-indexing-policy"></a>Optimieren durch Ändern der Indizierungsrichtlinie 
 
-Standardmäßig indiziert Azure Cosmos DB automatisch jede Eigenschaft von jedem Datensatz. Dies soll die Entwicklung erleichtern und eine ausgezeichnete Leistung für viele verschiedene Arten von Ad-hoc-Abfragen sicherstellen. Bei großen Datensätzen mit Tausenden von Eigenschaften ist eine Indizierung jeder Eigenschaft mit den daraus entstehenden Durchsatzkosten wahrscheinlich nicht praktikabel, besonders wenn Sie nur 10 oder 20 dieser Eigenschaften abfragen. Nachdem Sie nun erfahren haben, wie Sie Ihre spezielle Workload in den Griff bekommen können, empfehlen wir eine Optimierung Ihres Indizierungsrichtlinie. Umfassende Informationen zur Indizierungsrichtlinie von Azure Cosmos DB finden Sie [hier](indexing-policies.md). 
+Standardmäßig indiziert Azure Cosmos DB automatisch jede Eigenschaft von jedem Datensatz. Dies soll die Entwicklung erleichtern und eine ausgezeichnete Leistung für viele verschiedene Arten von Ad-hoc-Abfragen sicherstellen. Bei großen Datensätzen mit Tausenden von Eigenschaften ist eine Indizierung jeder Eigenschaft mit den daraus entstehenden Durchsatzkosten wahrscheinlich nicht praktikabel, besonders wenn Sie nur 10 oder 20 dieser Eigenschaften abfragen. Nachdem Sie nun erfahren haben, wie Sie Ihre spezielle Workload in den Griff bekommen können, empfehlen wir eine Optimierung Ihres Indizierungsrichtlinie. Umfassende Informationen zur Indizierungsrichtlinie von Azure Cosmos DB finden Sie [hier](index-policy.md). 
 
 ## <a name="monitoring-provisioned-and-consumed-throughput"></a>Überwachen des bereitgestellten und verbrauchten Durchsatzes 
 
 Sie können die Gesamtanzahl der bereitgestellten Anforderungseinheiten (RUs), die Anzahl der ratenbegrenzten Anforderungen sowie die Anzahl der verbrauchten Anforderungseinheiten im Azure-Portal überwachen. Die folgende Abbildung zeigt eine Nutzungsmetrik als Beispiel:
 
-![Überwachen von Anforderungseinheiten im Azure-Portal](./media/optimize-cost-throughput/monitoring.png)
+:::image type="content" source="./media/optimize-cost-throughput/monitoring.png" alt-text="Überwachen von Anforderungseinheiten im Azure-Portal":::
 
 Sie können auch Warnungen festlegen, um zu überprüfen, ob die Menge der ratenbegrenzten Anforderungen einen bestimmten Schwellenwert überschreitet. Ausführlichere Informationen finden Sie unter [Überwachen von Azure Cosmos DB](use-metrics.md). Diese Warnungen können eine E-Mail an die Kontoadministratoren senden oder einen benutzerdefinierten HTTP-Webhook oder eine Azure-Funktion anrufen, um automatisch den bereitgestellten Durchsatz zu erhöhen. 
 
 ## <a name="scale-your-throughput-elastically-and-on-demand"></a>Elastische Skalierung des Durchsatzes nach Bedarf 
 
-Da Ihnen der bereitgestellte Durchsatz in Rechnung gestellt wird, können Sie durch Anpassen des bereitgestellten Durchsatzes an Ihre Anforderungen die Gebühren für nicht genutzten Durchsatz vermeiden. Sie können den bereitgestellten Durchsatz jederzeit und nach Bedarf zentral hoch- oder herunterskalieren.  
+Da Ihnen der bereitgestellte Durchsatz in Rechnung gestellt wird, können Sie durch Anpassen des bereitgestellten Durchsatzes an Ihre Anforderungen die Gebühren für nicht genutzten Durchsatz vermeiden. Sie können den bereitgestellten Durchsatz jederzeit und nach Bedarf zentral hoch- oder herunterskalieren. Wenn Ihre Durchsatzanforderungen sehr vorhersagbar sind, können Sie Azure Functions und einen Trigger mit Timer verwenden, um den [Durchsatz nach einem bestimmten Zeitplan zu erhöhen oder zu verringern](scale-on-schedule.md). 
 
 * Die Überwachung des Verbrauchs Ihrer Anforderungseinheiten (RUs) und der Anteil der ratenbegrenzten Anforderung lässt möglicherweise erkennen, dass Sie den bereitgestellten Durchsatz im Verlauf des Tages oder der Woche nicht konstant zu halten brauchen. Sie erhalten möglicherweise weniger Datenverkehr bei Nacht oder am Wochenende. Im Azure-Portal, mit den nativen SDKs oder der REST-API von Azure Cosmos DB können Sie jederzeit den bereitgestellten Durchsatz skalieren. Die REST-API von Azure Cosmos DB stellt Endpunkte für die programmgesteuerte Aktualisierung der Leistungsstufe für Ihre Container bereit und macht es somit einfach, den Durchsatz von Ihrem Code je nach Tageszeit oder Wochentag anzupassen. Der Vorgang erfolgt ohne Ausfallzeit und wird in der Regel in weniger als einer Minute wirksam. 
 
@@ -135,7 +137,7 @@ Da Ihnen der bereitgestellte Durchsatz in Rechnung gestellt wird, können Sie du
 
 Führen Sie die folgenden Schritte aus, um den bereitgestellten Durchsatz für eine neue Workload zu ermitteln: 
 
-1. Führen Sie eine erste grobe Evaluierung mit der Kapazitätsplanung aus, und passen Sie Ihre Schätzungen mithilfe von Azure Cosmos-Explorer im Azure-Portal an. 
+1. Führen Sie mit dem Capacity Planner eine erste ungefähre Evaluierung durch, und passen Sie Ihre Schätzungen mithilfe des Azure Cosmos DB-Explorers im Azure-Portal an. 
 
 2. Es wird empfohlen, die Container mit einem höheren Durchsatz als erwartet zu erstellen, und sie dann bei Bedarf zentral herunterzuskalieren. 
 
@@ -155,7 +157,7 @@ Die folgenden Schritte sollen Ihnen dabei helfen, Ihre Lösungen beim Einsatz vo
 
 1. Wenn Sie den bereitgestellten Durchsatz für Container und Datenbanken erheblich überdimensioniert haben, sollten Sie das Verhältnis der bereitgestellten zu den verbrauchten Anforderungseinheiten überprüfen und die Workloads optimieren.  
 
-2. Eine Methode zum Schätzen des von der Anwendung benötigten reservierten Durchsatzes besteht darin, für typische Vorgänge mit einem von Ihrer Anforderung verwendeten repräsentativen Azure Cosmos-Container bzw. einer Datenbank die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl der Vorgänge zu schätzen, die höchstwahrscheinlich pro Sekunde ausgeführt werden. Stellen Sie sicher, dass auch typische Abfragen und deren Nutzung gemessen und berücksichtigt werden. Informationen zum Schätzen der Anforderungskosten von Abfragen (entweder programmgesteuert oder mithilfe des Portals) finden Sie unter [Optimieren der Kosten von Abfragen](online-backup-and-restore.md). 
+2. Eine Methode zum Schätzen des von der Anwendung benötigten reservierten Durchsatzes besteht darin, für typische Vorgänge mit einem von Ihrer Anforderung verwendeten repräsentativen Azure Cosmos-Container bzw. einer Datenbank die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl der Vorgänge zu schätzen, die höchstwahrscheinlich pro Sekunde ausgeführt werden. Stellen Sie sicher, dass auch typische Abfragen und deren Nutzung gemessen und berücksichtigt werden. Informationen zum Schätzen der Anforderungskosten von Abfragen (entweder programmgesteuert oder mithilfe des Portals) finden Sie unter [Optimieren der Kosten von Abfragen](./optimize-cost-reads-writes.md). 
 
 3. Als weitere Möglichkeit zum Abrufen von Vorgängen und deren Kosten in Anforderungseinheiten können Sie Azure Monitor-Protokolle aktivieren, eine Analyse, die Vorgänge/Dauer und die Anforderungsgebühr detailliert aufschlüsselt. Azure Cosmos DB gibt die Anforderungsgebühren für jeden Vorgang an. Daher kann jede Vorgangsgebühr separat von der Antwort gespeichert und anschließend für eine Analyse verwendet werden. 
 
@@ -181,6 +183,5 @@ Als Nächstes können Sie mithilfe der folgenden Artikel mehr über die Kostenop
 * Weitere Informationen unter [Erläuterungen zu Ihrer Azure Cosmos DB-Rechnung](understand-your-bill.md)
 * Weitere Informationen unter [Optimieren der Speicherkosten](optimize-cost-storage.md)
 * Weitere Informationen unter [Optimieren der Kosten für Lese- und Schreibvorgänge](optimize-cost-reads-writes.md)
-* Weitere Informationen unter [Optimieren der Kosten von Abfragen](optimize-cost-queries.md)
+* Weitere Informationen unter [Optimieren der Kosten von Abfragen](./optimize-cost-reads-writes.md)
 * Weitere Informationen unter [Optimieren der Kosten bei Cosmos-Konten mit mehreren Regionen](optimize-cost-regions.md)
-

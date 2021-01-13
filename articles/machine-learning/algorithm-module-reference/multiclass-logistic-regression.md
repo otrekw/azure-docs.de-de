@@ -1,24 +1,24 @@
 ---
 title: Logistische Regression mit mehreren Klassen Modulreferenz
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit dem Modul „Multiclass Logistic Regression“ (Logistische Regression mit mehreren Klassen) in Azure Machine Learning Service ein logistisches Regressionsmodell erstellen, mit dem Sie mehrere Werte vorhersagen können.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mit dem Modul Multiclass Logistic Regression im Azure Machine Learning-Designer mehrere Werte vorhersagen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: d51bc48944204b4c7c50790949927849869f26fc
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 04/22/2020
+ms.openlocfilehash: e2bbc28735bcbfd952c4941453956acd0568ea67
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128631"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420732"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Modul „Multiclass Logistic Regression“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul, um ein logistisches Regressionsmodell zu erstellen, mit dem Sie mehrere Werte vorhersagen können.
 
@@ -28,19 +28,19 @@ Azure Machine Learning bietet auch ein [Two-Class Logistic Regression](./two-cla
 
 ## <a name="about-multiclass-logistic-regression"></a>Informationen zur logistischen Regression mit mehreren Klassen
 
-Die logistische Regression ist eine bekannte Statistikmethode, die zur Vorhersage der Wahrscheinlichkeit eines Ergebnisses verwendet wird und für Klassifizierungsaufgaben geeignet ist. Der Algorithmus prognostiziert die Wahrscheinlichkeit des Auftretens eines Ereignisses, indem er Daten einer logistischen Funktion anpasst. 
+Die logistische Regression ist eine bekannte Statistikmethode, die zur Vorhersage der Wahrscheinlichkeit eines Ergebnisses verwendet wird und für Klassifizierungsaufgaben geeignet ist. Der Algorithmus prognostiziert die Wahrscheinlichkeit des Vorkommens eines Ereignisses, indem er Daten an eine logistische Funktion anpasst. 
 
 Bei der logistischen Regression mit mehreren Klassen kann der Klassifizierer zur Vorhersage mehrerer Ergebnisse verwendet werden.
 
 ## <a name="configure-a-multiclass-logistic-regression"></a>Konfigurieren einer logistischen Regression mit mehreren Klassen
 
-1. Fügen Sie das Modul **Multiclass Logistic Regression** Ihrem Experiment hinzu.
+1. Fügen Sie das Modul **Multiclass Logistic Regression** Ihrer Pipeline hinzu.
 
-2. Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) festlegen.
+2. Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.
 
     + **Single Parameter** (Einzelner Parameter): Verwenden Sie diese Option, wenn Sie wissen, wie Sie das Modell konfigurieren möchten, und geben Sie einen bestimmten Satz von Werten als Argumente an.
 
-    + **Parameter Range** (Parameterbereich): Verwenden Sie diese Option, wenn Sie nicht sicher sind, welche Parameter am besten geeignet sind, und einen Parametersweep verwenden möchten.
+    + **Parameter Range** (Parameterbereich): Wählen Sie diese Option, wenn Sie nicht sicher sind, welche Parameter am besten geeignet sind, und einen Parametersweep ausführen möchten. Wählen Sie einen Wertebereich aus, über den iteriert werden soll. Anschließend iteriert das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) über alle möglichen Kombinationen der von Ihnen angegebenen Einstellungen, um die Hyperparameter zur Erzielung der optimalen Ergebnisse zu bestimmen.  
 
 3. **Optimization tolerance** (Optimierungstoleranz), geben Sie den Schwellenwert für die Optimierungskonvergenz an. Wenn die Verbesserung zwischen Iterationen kleiner als der Schwellenwert ist, wird der Algorithmus beendet und das aktuelle Modell zurückgegeben.
 
@@ -52,19 +52,26 @@ Bei der logistischen Regression mit mehreren Klassen kann der Klassifizierer zur
 
      Für logistische Regressionsmodelle wurden verschiedene lineare Kombinationen von L1- und L2-Begriffen entwickelt, z.B. [Regularisierung mit elastischem Netz](https://wikipedia.org/wiki/Elastic_net_regularization).
 
-6. **Random number seed** (Startwert der Zufallszahlen): Geben Sie einen ganzzahligen Wert als Ausgangswert für den Algorithmus ein, wenn die Ergebnisse in den Ausführungen wiederholbar sein sollen. Andernfalls wird ein Systemtaktwert als Startwert verwendet, was in den Ausführungen desselben Experiments zu geringfügig unterschiedlichen Ergebnissen führen kann.
+6. **Random number seed** (Zufälliger Startwert): Geben Sie einen ganzzahligen Wert als Ausgangswert für den Algorithmus ein, wenn die Ergebnisse in den Ausführungen wiederholbar sein sollen. Andernfalls wird ein Systemtaktwert als Startwert verwendet. Dies kann in den Ausführungen derselben Pipeline zu geringfügig unterschiedlichen Ergebnissen führen.
 
-8. Stellen Sie eine Verbindung mit einem bezeichneten Dataset und einem der Trainingsmodule her:
+8. Verbinden Sie ein bezeichnetes Dataset, und trainieren Sie das Modell:
 
-    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie das Modul [Train Model](./train-model.md) verwenden.
+    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie ein mit Tags versehenes Dataset und das Modul [Train Model](train-model.md) (Modell trainieren) verbinden.  
+  
+    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Parameter Range** (Parameterbereich) festlegen, verbinden Sie ein markiertes Dataset, und trainieren Sie das Modell mithilfe des Moduls [Tune Model Hyperparameters](tune-model-hyperparameters.md).  
+  
+    > [!NOTE]
+    > 
+    > Wenn Sie einen Parameterbereich an das Modul [Train Model](train-model.md) übergeben, wird nur der Standardwert in der Liste der Einzelparameter verwendet.  
+    > 
+    > Wenn Sie einen einzelnen Satz von Parameterwerten an das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) übergeben und ein Bereich von Einstellungen für jeden Parameter erwartet wird, werden die Werte ignoriert und stattdessen die Standardwerte für den Learner verwendet.  
+    > 
+    > Wenn Sie die Option **Parameter Range** (Parameterbereich) auswählen und einen einzelnen Wert für einen beliebigen Parameter eingeben, wird dieser angegebene einzelne Wert während des gesamten Löschvorgangs verwendet, auch wenn andere Parameter in einem Wertebereich geändert werden.
 
-9. Führen Sie das Experiment aus.
+9. Übermitteln Sie die Pipeline.
 
-## <a name="results"></a>Ergebnisse
-
-Nach Abschluss des Trainings können Sie eine Zusammenfassung der Parameter des Modells sowie der aus dem Training gewonnenen Featuregewichtungen sehen, wenn Sie mit der rechten Maustaste auf die Ausgabe des Moduls [Train Model](./train-model.md) klicken und **Visualize** (Visualisieren) auswählen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

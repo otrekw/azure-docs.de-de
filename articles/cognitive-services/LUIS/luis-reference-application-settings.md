@@ -1,41 +1,32 @@
 ---
 title: 'Anwendungseinstellungen: LUIS'
-titleSuffix: Azure Cognitive Services
-description: Machen Sie sich mit den Anwendungseinstellungen für Language Understanding-Apps vertraut.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
+description: Anwendungseinstellungen für Language Understanding-Apps von Azure Cognitive Services werden in der App und im Portal gespeichert.
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 07/16/2019
-ms.author: diberry
-ms.openlocfilehash: 6d516590b90efd937789fa0847b707d2521f6459
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.topic: reference
+ms.date: 05/04/2020
+ms.openlocfilehash: 0578e3c3c952a475c6beb01ffcf354e19eda6e26
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932590"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91319162"
 ---
-# <a name="application-settings"></a>Anwendungseinstellungen
+# <a name="app-and-version-settings"></a>App- und Versionseinstellungen
 
-Diese Anwendungseinstellungen werden in der [exportierten](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) App gespeichert und mit den REST-APIs [aktualisiert](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings). Wenn Sie die Einstellungen Ihrer App-Version ändern, wird der Trainingsstatus Ihrer App auf „Untrainiert“ zurückgesetzt.
+Diese Einstellungen werden in der [exportierten](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) App gespeichert und mithilfe der REST-APIs oder über das LUIS-Portal aktualisiert.
 
-|Einstellung|Standardwert|Notizen|
-|--|--|--|
-|NormalizePunctuation|True|Entfernt die Interpunktion.|
-|NormalizeDiacritics|True|Entfernt diakritische Zeichen.|
+Wenn Sie die Einstellungen Ihrer App-Version ändern, wird der Trainingsstatus Ihrer App auf „Untrainiert“ zurückgesetzt.
 
-## <a name="diacritics-normalization"></a>Normalisierung von diakritischen Zeichen 
+[!INCLUDE [App and version settings](includes/app-version-settings.md)]
 
-Aktivieren Sie die Äußerungsnormalisierung für diakritische Zeichen für Ihre LUIS-JSON-App-Datei im Parameter `settings`.
 
-```JSON
-"settings": [
-    {"name": "NormalizeDiacritics", "value": "true"}
-] 
-```
+Textreferenz und Beispiele enthalten Folgendes:
+
+* [Interpunktion](#punctuation-normalization)
+* [Diakritische Zeichen](#diacritics-normalization)
+
+## <a name="diacritics-normalization"></a>Normalisierung von diakritischen Zeichen
 
 Anhand der folgenden Äußerungen wird veranschaulicht, wie sich die Normalisierung von diakritischen Zeichen auf Äußerungen auswirkt:
 
@@ -61,7 +52,7 @@ Anhand der folgenden Äußerungen wird veranschaulicht, wie sich die Normalisier
 |`ó`|`o`|
 |`ô`|`o`|
 |`õ`|`o`|
-|`ú`|`u`| 
+|`ú`|`u`|
 |||
 
 #### <a name="dutch-nl-nl-diacritics"></a>Diakritische Zeichen: Niederländisch `nl-nl`
@@ -77,7 +68,7 @@ Anhand der folgenden Äußerungen wird veranschaulicht, wie sich die Normalisier
 |`í`|`i`|
 |`ó`|`o`|
 |`ö`|`o`|
-|`ú`|`u`| 
+|`ú`|`u`|
 |`ü`|`u`|
 |||
 
@@ -91,24 +82,24 @@ Gilt sowohl für den französischen als auch für den kanadischen Unterkulturber
 |`à`|`a`|
 |`è`|`e`|
 |`ù`|`u`|
-|`â`|`a`| 
-|`ê`|`e`| 
-|`î`|`i`| 
-|`ô`|`o`| 
-|`û`|`u`| 
-|`ç`|`c`| 
-|`ë`|`e`| 
-|`ï`|`i`| 
-|`ü`|`u`| 
-|`ÿ`|`y`| 
+|`â`|`a`|
+|`ê`|`e`|
+|`î`|`i`|
+|`ô`|`o`|
+|`û`|`u`|
+|`ç`|`c`|
+|`ë`|`e`|
+|`ï`|`i`|
+|`ü`|`u`|
+|`ÿ`|`y`|
 
 #### <a name="german-de-de-diacritics"></a>Diakritische Zeichen: Deutsch `de-de`
 
 |Einstellung „false“ für diakritische Zeichen|Einstellung „true“ für diakritische Zeichen|
 |--|--|
 |`ä`|`a`|
-|`ö`|`o`| 
-|`ü`|`u`| 
+|`ö`|`o`|
+|`ü`|`u`|
 
 #### <a name="italian-it-it-diacritics"></a>Diakritische Zeichen: Italienisch `it-it`
 
@@ -117,11 +108,11 @@ Gilt sowohl für den französischen als auch für den kanadischen Unterkulturber
 |`à`|`a`|
 |`è`|`e`|
 |`é`|`e`|
-|`ì`|`i`| 
-|`í`|`i`| 
-|`î`|`i`| 
-|`ò`|`o`| 
-|`ó`|`o`| 
+|`ì`|`i`|
+|`í`|`i`|
+|`î`|`i`|
+|`ò`|`o`|
+|`ó`|`o`|
 |`ù`|`u`|
 |`ú`|`u`|
 
@@ -133,26 +124,17 @@ Gilt sowohl für Spanisch als auch für Mexikanisch (Kanada).
 |-|-|
 |`á`|`a`|
 |`é`|`e`|
-|`í`|`i`| 
-|`ó`|`o`| 
+|`í`|`i`|
+|`ó`|`o`|
 |`ú`|`u`|
 |`ü`|`u`|
 |`ñ`|`u`|
 
-
 ## <a name="punctuation-normalization"></a>Normalisierung der Interpunktion
 
-Aktivieren Sie die Äußerungsnormalisierung für die Interpunktion für Ihre LUIS-JSON-App-Datei im Parameter `settings`.
+Anhand der folgenden Äußerungen wird veranschaulicht, wie sich die Interpunktion auf Äußerungen auswirkt:
 
-```JSON
-"settings": [
-    {"name": "NormalizePunctuation", "value": "true"}
-] 
-```
-
-Anhand der folgenden Äußerungen wird veranschaulicht, wie sich diakritische Zeichen auf Äußerungen auswirken:
-
-|Einstellung „false“ für diakritische Zeichen|Einstellung „true“ für diakritische Zeichen|
+|Wenn die Interpunktion auf „False“ festgelegt ist|Wenn die Interpunktion auf „True“ festgelegt ist|
 |--|--|
 |`Hmm..... I will take the cappuccino`|`Hmm I will take the cappuccino`|
 |||
@@ -163,8 +145,8 @@ Die folgende Interpunktion wird entfernt, wenn `NormalizePunctuation` auf „tru
 
 |Interpunktion|
 |--|
-|`-`| 
-|`.`| 
+|`-`|
+|`.`|
 |`'`|
 |`"`|
 |`\`|
@@ -183,3 +165,7 @@ Die folgende Interpunktion wird entfernt, wenn `NormalizePunctuation` auf „tru
 |`}`|
 |`+`|
 |`¡`|
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Machen Sie sich mit den [Konzepten](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) von diakritischen Zeichen und Interpunktion vertraut.

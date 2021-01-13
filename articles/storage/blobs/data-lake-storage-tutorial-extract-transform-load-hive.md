@@ -1,30 +1,30 @@
 ---
-title: 'Tutorial: Ausführen von ETL-Vorgängen (Extrahieren, Transformieren und Laden) mithilfe von Apache Hive in Azure HDInsight'
+title: 'Tutorial: Extrahieren, Transformieren und Laden von Daten mit Azure HDInsight'
 description: In diesem Tutorial erfahren Sie, wie Sie Daten aus einem unformatierten CSV-Dataset extrahieren, mithilfe von Apache Hive in Azure HDInsight transformieren und die transformierten Daten dann mit Sqoop in eine Azure SQL-Datenbank laden.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/21/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f58785b17a1e6236636744c32dac07a6c9ed138d
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 7640b7a6053532360da4c908089aecfe163bd3de
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992249"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912653"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Apache Hive in Azure HDInsight
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mit Azure HDInsight
 
-In diesem Tutorial führen Sie einen ETL-Vorgang durch: Daten extrahieren, transformieren und laden. Sie verwenden eine unformatierte CSV-Datendatei, importieren diese Datei in einen Azure HDInsight-Cluster, transformieren sie mit Apache Hive und laden sie mit Apache Sqoop in eine Azure SQL-Datenbank.
+In diesem Tutorial führen Sie einen ETL-Vorgang durch: Daten extrahieren, transformieren und laden. Sie verwenden eine unformatierte CSV-Datendatei, importieren diese Datei in einen Azure HDInsight-Cluster, transformieren sie mit Apache Hive und laden sie mit Apache Sqoop in Azure SQL-Datenbank.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Extrahieren und Hochladen der Daten in einen HDInsight-Cluster
 > * Transformieren der Daten mithilfe von Apache Hive
-> * Laden der Daten in eine Azure SQL-Datenbank mithilfe von Sqoop
+> * Laden der Daten in Azure SQL-Datenbank mithilfe von Sqoop
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -32,15 +32,15 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 * **Ein Azure Data Lake Storage Gen2-Speicherkonto, das für HDInsight konfiguriert ist**
 
-    Siehe [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2).
+    Siehe [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 * **Ein Linux-basierter Hadoop-Cluster in HDInsight**
 
-    Weitere Informationen finden Sie unter [Schnellstart: Erste Schritte mit Apache Hadoop und Apache Hive in Azure HDInsight im Azure-Portal](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
+    Weitere Informationen finden Sie unter [Schnellstart: Erste Schritte mit Apache Hadoop und Apache Hive in Azure HDInsight im Azure-Portal](../../hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md).
 
-* **Azure SQL-Datenbank**: Sie verwenden eine Azure SQL-Datenbank als Zieldatenspeicher. Wenn Sie keine SQL-Datenbank besitzen, finden Sie Informationen unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../../sql-database/sql-database-get-started.md).
+* **Azure SQL-Datenbank**: Sie verwenden Azure SQL-Datenbank als Zieldatenspeicher. Sollten Sie über keine Datenbank in SQL-Datenbank verfügen, helfen Ihnen die Informationen unter [Erstellen einer Datenbank in Azure SQL-Datenbank im Azure-Portal](../../azure-sql/database/single-database-create-quickstart.md) weiter.
 
-* **Azure CLI**: Wenn Sie die Azure-Befehlszeilenschnittstelle (Azure CLI) nicht installiert haben, finden Sie alle erforderlichen Informationen unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* **Azure CLI**: Wenn Sie die Azure-Befehlszeilenschnittstelle (Azure CLI) nicht installiert haben, finden Sie alle erforderlichen Informationen unter [Installieren der Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 * **Ein SSH-Client (Secure Shell):** Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Apache Hadoop) per SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -50,7 +50,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 2. Wählen Sie auf der Website die folgenden Werte aus:
 
-   | NAME | Wert |
+   | Name | Wert |
    | --- | --- |
    | Filter Year |2013 |
    | Filter Period |January |
@@ -224,7 +224,7 @@ Im Rahmen des Apache Hive-Auftrags importieren Sie die Daten aus der CSV-Datei i
 
 ## <a name="create-a-sql-database-table"></a>Erstellen einer SQL-Datenbanktabelle
 
-Für diesen Vorgang benötigen Sie den Servernamen Ihrer SQL-Datenbank. Führen Sie die folgenden Schritte aus, um den Servernamen festzustellen.
+Für diesen Vorgang benötigen Sie den Servernamen aus SQL-Datenbank. Führen Sie die folgenden Schritte aus, um den Servernamen festzustellen.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 
@@ -234,7 +234,7 @@ Für diesen Vorgang benötigen Sie den Servernamen Ihrer SQL-Datenbank. Führen 
 
 4. Filtern Sie nach dem Namen der Datenbank, die Sie verwenden möchten. Der Servername befindet sich in der Spalte **Servername**.
 
-    ![Abrufen von Details für den Azure SQL-Server](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Abrufen von Details für den Azure SQL-Server")
+    ![Abrufen der Details zum SQL-Server](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Abrufen der Details zum SQL-Server")
 
     Es gibt viele Möglichkeiten, eine Verbindung mit der SQL-Datenbank herzustellen und eine Tabelle zu erstellen. Die folgenden Schritte verwenden [FreeTDS](https://www.freetds.org/) aus dem HDInsight-Cluster.
 
@@ -244,12 +244,12 @@ Für diesen Vorgang benötigen Sie den Servernamen Ihrer SQL-Datenbank. Führen 
    sudo apt-get --assume-yes install freetds-dev freetds-bin
    ```
 
-6. Stellen Sie nach Abschluss der Installation mithilfe des folgenden Befehls eine Verbindung mit dem SQL-Datenbank-Server her.
+6. Nachdem die Installation abgeschlossen ist, verwenden Sie den folgenden Befehl, um eine Verbindung mit SQL-Datenbank herzustellen.
 
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
-   * Ersetzen Sie den Platzhalter `<server-name>` durch den Namen des SQL-Datenbank-Servers.
+   * Ersetzen Sie den Platzhalter `<server-name>` durch den logischen SQL-Servernamen.
 
    * Ersetzen Sie den Platzhalter `<admin-login>` durch den Administratoranmeldenamen für SQL-Datenbank.
 
@@ -300,7 +300,7 @@ Für diesen Vorgang benötigen Sie den Servernamen Ihrer SQL-Datenbank. Führen 
 
 ## <a name="export-and-load-the-data"></a>Exportieren und Laden der Daten
 
-In den vorherigen Abschnitten haben Sie die transformierten Daten unter `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` kopiert. In diesem Abschnitt verwenden Sie Sqoop, um die Daten aus `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` in die Tabelle zu exportieren, die Sie in der Azure SQL-Datenbank erstellt haben.
+In den vorherigen Abschnitten haben Sie die transformierten Daten unter `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` kopiert. In diesem Abschnitt verwenden Sie Sqoop, um die Daten aus `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` in die Tabelle zu exportieren, die Sie in Azure SQL-Datenbank erstellt haben.
 
 1. Verwenden Sie den folgenden Befehl, um zu überprüfen, ob Sqoop Ihre SQL-Datenbank erreichen kann:
 
@@ -344,4 +344,4 @@ In diesem Tutorial wurden nur Ressourcen verwendet, die bereits vorhanden waren.
 Weitere Informationen zum Arbeiten mit Daten in HDInsight finden Sie im folgenden Artikel:
 
 > [!div class="nextstepaction"]
-> [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

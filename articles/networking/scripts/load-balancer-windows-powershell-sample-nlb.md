@@ -1,32 +1,30 @@
 ---
-title: 'Azure PowerShell-Skriptbeispiel: Lastenausgleich für den Datenverkehr zu virtuellen Computern für Hochverfügbarkeit | Microsoft-Dokumentation'
+title: 'Lastenausgleich für Datenverkehr zu VMs zur Erzielung von Hochverfügbarkeit: Azure PowerShell'
 description: 'Azure PowerShell-Skriptbeispiel: Lastenausgleich für den Datenverkehr zu virtuellen Computern für Hochverfügbarkeit'
 services: load-balancer
 documentationcenter: load-balancer
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 282a9d0b1ae5afb873d9f3736550dff52e16bc12
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e8663a5c86a4d3a247209fb7aedaa422eb6ec9e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160533"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89079012"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>Lastenausgleich für den Datenverkehr zu virtuellen Computern für Hochverfügbarkeit
 
 Dieses Beispielskript erstellt alle Komponenten, die zum Ausführen mehrerer Windows-VMs in einer Konfiguration mit hoher Verfügbarkeit und Lastenausgleich benötigt werden. Nach dem Ausführen dieses Skripts verfügen Sie über drei virtuelle Computer, die in einer Azure-Verfügbarkeitsgruppe zusammengefasst und über eine Azure Load Balancer-Instanz zugänglich sind.
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,6 +66,6 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/overview).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/).
 
 Zusätzliche Netzwerk-PowerShell-Skriptbeispiele finden Sie unter [Azure-Dokumentation für Netzwerke – Übersicht](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

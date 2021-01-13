@@ -1,49 +1,767 @@
 ---
 title: Liste der Updates für das Azure-Gastbetriebssystem | Microsoft-Dokumentation
-description: Liste der Updates für Azure-Gastbetriebssystemreleases
+description: In diesem Artikel werden die Microsoft Security Response Center-Updates aufgelistet, die auf verschiedene Azure-Gastbetriebssysteme angewendet wurden. Überprüfen Sie, ob ein Update für das Gastbetriebssystem gültig ist, das Sie verwenden.
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: yohaddad
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/20/2019
-ms.author: raiye
-ms.openlocfilehash: 6168e877022eccd9cbe818c20e81266cc3ea1f69
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 12/21/2020
+ms.author: yohaddad
+ms.openlocfilehash: 7f683b5002fd31b599ae6fadeb82e5c6f5ce56a0
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169367"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708905"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
 
-## <a name="september-2019-guest-os"></a>Gastbetriebssystem für September 2019
+## <a name="december-2020-guest-os"></a>Gastbetriebssystem für Dezember 2020
+>[!NOTE] 
 
->[!NOTE]
->Das Gastbetriebssystem für September wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für September enthalten. Änderungen der Liste vorbehalten.
+>Das Gastbetriebssystem für Dezember wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Dezember enthalten. Änderungen der Liste vorbehalten. 
 
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-|  Release 19-09   |  [4516046]  |  Internet Explorer   |  2.90, 3.77, 4.70  |  10. September 2019  |
-|  Release 19-09   |  [4516115]  |  Blinken   |  2.90, 3.77, 4.70, 5.35, 6.11  |  10. September 2019  |
-|  Release 19-09   |  [4512578]  |  Letztes kumulatives Update   |  6.11  |  10. September 2019  |
-|  Release 19-09   |  [4514366]  |  .NET Framework 3.5 und 4.7.2   |  6.11  |  10. September 2019  |
-|  Release 19-09   |  [4516044]  |  Letztes kumulatives Update   |  5.35  |  10. September 2019  |
-|  Release 19-09   |  [4516064]  |  Windows-Sicherheit   |  4,7  |  10. September 2019  |
-|  Release 19-09   |  [4514350]  |  .NET Framework 3.5   |  4,7  |  10. September 2019  |
-|  Release 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  4,7  |  10. September 2019  |
-|  Release 19-09   |  [4516062]  |  Windows-Sicherheit   |  3.77  |  10. September 2019  |
-|  Release 19-09   |  [4514349]  |  .NET Framework 3.5   |  3.77  |  10. September 2019  |
-|  Release 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  3.77  |  10. September 2019  |
-|  Release 19-09   |  [4516033]  |  Windows-Sicherheit   |  2,9  |  12. September 2019  |
-|  Release 19-09   |  [4512488]  |  Nicht sicherheitsrelevant   |  4,7  |  13. Aug 2019  |
-|  Release 19-09   |  [4512518]  |  Nicht sicherheitsrelevant   |  3.77  |  13. Aug 2019  |
-|  Release 19-09   |  [4512506]  |  Nicht sicherheitsrelevant   |  2,9  |  13. Aug 2019  |
+|  Rel 20-12 |  [4592440]  |  Letztes kumulatives Update | 6.26 | 8\. Dezember 2020 |
+|  Rel 20-12 |  [4580325]  |  Flash-Update | 3.92, 4.85, 5.50, 6.26 | 13. Oktober 2020 |
+|  Rel 20-12 |  [4586768]  |  Kumulative IE-Updates | 2.105, 3.92, 4.85 | 10. November 2020 |
+|  Rel 20-12 |  [4593226]  |  Letztes kumulatives Update | 5.50 | 8\. Dezember 2020 |
+|  Rel 20-12 |  [4052623]  |  Defender | 5.50, 6.26 | 13. Dezember 2020 |
+|  Rel 20-12 |  [4578952]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 2.105 | 10. November 2020 |
+|  Rel 20-12 |  [4578955]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 2.105 | 10. November 2020 |
+|  Rel 20-12 |  [4578953]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 4.85 | 10. November 2020 |
+|  Rel 20-12 |  [4578956]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 4.85 | 10. November 2020 |
+|  Rel 20-12 |  [4578950]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 3.92 | 10. November 2020 |
+|  Rel 20-12 |  [4578954]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 3.92 | 10. November 2020 |
+|  Rel 20-12 |  [4578966]  |  Kumulatives Update für .NET Framework 3.5 und 4.7.2 | 6.26 | 13. Oktober 2020 |
+|  Rel 20-12 |  [4592471]  |  Monatlicher Rollup | 2.105 | 8\. Dezember 2020 |
+|  Rel 20-12 |  [4592468]  |  Monatlicher Rollup | 3.92 | 8\. Dezember 2020 |
+|  Rel 20-12 |  [4592484]  |  Monatlicher Rollup | 4.85 | 8\. Dezember 2020 |
+|  Rel 20-12 |  [4566426]  |  Wartungsstapelaktualisierung | 3.92 | 14. Jul 2020 |
+|  Rel 20-12 |  [4566425]  |  Wartungsstapelaktualisierung | 4.85 | 14. Jul 2020 |
+|  Rel 20-12 OOB |  [4578013]  |  Eigenständiges Sicherheitsupdate | 4.85 | 19. August 2020 |
+|  Rel 20-12 |  [4576750]  |  Wartungsstapelaktualisierung | 5.50 | 8\. September 2020 |
+|  Rel 20-12 |  [4592510]  |  Wartungsstapelaktualisierung | 2.105 | 8\. Dezember 2020 |
+|  Rel 20-12 |  [4587735]  |  Wartungsstapelaktualisierung | 6.26 | 10. November 2020 |
+|  Rel 20-12 |  [4494175]  |  Microcode | 5.50 | 1\. September 2020 |
+|  Rel 20-12 |  [4494174]  |  Microcode | 6.26 | 3\. September 2020 |
+
+[4592440]: https://support.microsoft.com/kb/4592440
+[4580325]: https://support.microsoft.com/kb/4580325
+[4586768]: https://support.microsoft.com/kb/4586768
+[4593226]: https://support.microsoft.com/kb/4593226
+[4052623]: https://support.microsoft.com/kb/4052623
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4578966]: https://support.microsoft.com/kb/4578966
+[4592471]: https://support.microsoft.com/kb/4592471
+[4592468]: https://support.microsoft.com/kb/4592468
+[4592484]: https://support.microsoft.com/kb/4592484
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4592510]: https://support.microsoft.com/kb/4592510
+[4587735]: https://support.microsoft.com/kb/4587735
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
+
+## <a name="november-2020-guest-os"></a>Gastbetriebssystem für November 2020
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-11 OOB |  [4594442]  |  Letztes kumulatives Update | [6.25] | 17. November 2020 |
+|  Rel 20-11 OOB |  [4594441]  |  Letztes kumulatives Update | [5,49] | 19. November 2020 |
+|  Rel 20-11 |  [4580325]  |  Flash-Update | [3.91], [4.84], [5.49], [6.25] | 13. Oktober 2020 |
+|  Rel 20-11 |  [4586768]  |  Kumulatives IE-Update | [2.104], [3.91], [4.84] | 10. November 2020 |
+|  Rel 20-11 |  [4578952]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [2.104] | 10. November 2020 |
+|  Rel 20-11 |  [4578955]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [2.104] | 10. November 2020 |
+|  Rel 20-11 |  [4578953]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [4.84] | 10. November 2020 |
+|  Rel 20-11 |  [4578956]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [4.84] | 10. November 2020 |
+|  Rel 20-11 |  [4578950]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [3,91] | 10. November 2020 |
+|  Rel 20-11 |  [4578954]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [3,91] | 10. November 2020 |
+|  Rel 20-11 |  [4578966]  |  Kumulatives Update für .NET Framework 3.5 und 4.7.2 | [6.25] | 13. Oktober 2020 |
+|  Rel 20-11 |  [4586827]  |  Monatlicher Rollup | [2.104] | 10. November 2020 |
+|  Rel 20-11 |  [4586834]  |  Monatlicher Rollup | [3,91] | 10. November 2020 |
+|  Rel 20-11 |  [4586845]  |  Monatlicher Rollup | [4.84] | 10. November 2020 |
+|  Rel 20-11 |  [4566426]  |  Wartungsstapelaktualisierung | [3,91] | 14. Jul 2020 |
+|  Rel 20-11 |  [4566425]  |  Wartungsstapelaktualisierung | [4.84] | 14. Jul 2020 |
+|  Rel 20-11 OOB |  [4578013]  |  Eigenständiges Sicherheitsupdate | [4.84] | 19. August 2020 |
+|  Rel 20-11 |  [4576750]  |  Wartungsstapelaktualisierung | [5,49] | 8\. September 2020 |
+|  Rel 20-11 |  [4580970]  |  Wartungsstapelaktualisierung | [2.104] | 13. Oktober 2020 |
+|  Rel 20-11 |  [4587735]  |  Wartungsstapelaktualisierung | [6.25] | 10. November 2020 |
+|  Rel 20-11 |  [4494175]  |  Microcode | [5,49] | 1\. September 2020 |
+|  Rel 20-11 |  [4494174]  |  Microcode | [6.25] | 3\. September 2020 |
+
+[4594442]: https://support.microsoft.com/kb/4594442
+[4594441]: https://support.microsoft.com/kb/4594441
+[4580325]: https://support.microsoft.com/kb/4580325
+[4586768]: https://support.microsoft.com/kb/4586768
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4578966]: https://support.microsoft.com/kb/4578966
+[4586827]: https://support.microsoft.com/kb/4586827
+[4586834]: https://support.microsoft.com/kb/4586834
+[4586845]: https://support.microsoft.com/kb/4586845
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4580970]: https://support.microsoft.com/kb/4580970
+[4587735]: https://support.microsoft.com/kb/4587735
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+[2.104]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,91]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4.84]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,49]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6.25]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+
+
+
+## <a name="october-2020-guest-os"></a>Gastbetriebssystem für Oktober 2020
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-10 |  [4577010]  |  Kumulatives IE-Update | [2.103], [3.90], [4.83] | 8\. September 2020 |
+|  Rel 20-10 |  [4580325]  |  Flash-Update | [3.90], [4.83], [5.48], [6.24] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4577668]  |  Letztes kumulatives Update | [6.24] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4580346]  |  Letztes kumulatives Update | [5.48] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4580970]  |  Wartungsstapelaktualisierung | [2.103] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4580345]  |  Monatlicher Rollup | [2.103] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4578952]  |  .NET Framework 3.5.1: Sicherheits- und Qualitätsrollup | [2.103] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4578955]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [2.103] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4566426]  |  Wartungsstapelaktualisierung | [3,90] | 14. Jul 2020 |
+|  Rel 20-10 |  [4580382]  |  Monatlicher Rollup | [3,90] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4578950]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [3,90] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4578954]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [3,90] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4566425]  |  Wartungsstapelaktualisierung | [4.83] | 14. Jul 2020 |
+|  Rel 20-10 |  [4580347]  |  Monatlicher Rollup | [4.83] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4578953]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [4.83] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4578956]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [4.83] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4578013]  |  Eigenständiges Sicherheitsupdate | [4.83] | 19. August 2020 |
+|  Rel 20-10 |  [4576750]  |  Wartungsstapelaktualisierung | [5.48] | 8\. September 2020 |
+|  Rel 20-10 |  [4494175]  |  Microcode | [5.48] | 1\. September 2020 |
+|  Rel 20-10 |  [4577667]  |  Wartungsstapelaktualisierung | [6.24] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4578966]  |  Kumulatives Update für .NET Framework 3.5 und 4.7.2 | [6.24] | 13. Oktober 2020 |
+|  Rel 20-10 |  [4494174]  |  Microcode | [6.24] | 3\. September 2020 |
+
+
+[4577010]: https://support.microsoft.com/kb/4577010
+[4580325]: https://support.microsoft.com/kb/4580325
+[4577668]: https://support.microsoft.com/kb/4577668
+[4580346]: https://support.microsoft.com/kb/4580346
+[4580970]: https://support.microsoft.com/kb/4580970
+[4580345]: https://support.microsoft.com/kb/4580345
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4566426]: https://support.microsoft.com/kb/4566426
+[4580382]: https://support.microsoft.com/kb/4580382
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4566425]: https://support.microsoft.com/kb/4566425
+[4580347]: https://support.microsoft.com/kb/4580347
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4494175]: https://support.microsoft.com/kb/4494175
+[4577667]: https://support.microsoft.com/kb/4577667
+[4578966]: https://support.microsoft.com/kb/4578966
+[4494174]: https://support.microsoft.com/kb/4494174
+[2.103]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,90]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4.83]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5.48]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6.24]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+
+
+## <a name="september-2020-guest-os"></a>Gastbetriebssystem für September 2020
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-09 |  [4577010]  |  Internet Explorer | [2.102], [3.89], [4.82] | 8\. September 2020 |
+|  Rel 20-09 |  [4561600]  |  Flash-Update | [3.89], [4.82], [5.47], [6.23] | 8\. September 2020 |
+|  Rel 20-09 |  [4577015]  |  Letztes kumulatives Update | [5,47] | 8\. September 2020 |
+|  Rel 20-09 |  [4570333]  |  Letztes kumulatives Update | [6,23] | 8\. September 2020 |
+|  Rel 20-09 |  [4570673]  |  Wartungsstapelaktualisierung | [2.102] | 8\. September 2020 |
+|  Rel 20-09 |  [4577051]  |  Monatlicher Rollup | [2.102] | 8\. September 2020 |
+|  Rel 20-09 |  [4569767]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [2.102] | 8\. September 2020 |
+|  Rel 20-09 |  [4569780]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [2.102] | 8\. September 2020 |
+|  Rel 20-09 |  [4566426]  |  Wartungsstapelaktualisierung | [3.89] | 8\. September 2020 |
+|  Rel 20-09 |  [4577038]  |  Monatlicher Rollup | [3.89] | 8\. September 2020 |
+|  Rel 20-09 |  [4569765]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [3.89] | 8\. September 2020 |
+|  Rel 20-09 |  [4569779]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [3.89] | 8\. September 2020 |
+|  Rel 20-09 |  [4566425]  |  Wartungsstapelaktualisierung | [2.102] | 8\. September 2020 |
+|  Rel 20-09 |  [4577066]  |  Monatlicher Rollup | [2.102] | 8\. September 2020 |
+|  Rel 20-09 |  [4569768]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [2.102] | 8\. September 2020 |
+|  Rel 20-09 |  [4569778]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [2.102] | 8\. September 2020 |
+|  Rel 20-09 |  [4578013]  |  Sicherheitsupdate | [2.102] | 8\. September 2020 |
+|  Rel 20-09 |  [4576750]  |  Wartungsstapelaktualisierung | [5,47] | 8\. September 2020 |
+|  Rel 20-09 |  [4494175]  |  Microcode | [5,47] | 8\. September 2020 |
+|  Rel 20-09 |  [4570332]  |  Wartungsstapelaktualisierung | [6,23] | 8\. September 2020 |
+|  Rel 20-09 |  [4570720]  |  Kumulatives Update für .NET Framework 3.5 und 4.7.2 | [6,23] | 8\. September 2020 |
+|  Rel 20-09 |  [4494174]  |  Microcode | [6,23] | 8\. September 2020 |
+
+[4577010]: https://support.microsoft.com/kb/4577010
+[4561600]: https://support.microsoft.com/kb/4561600
+[4577015]: https://support.microsoft.com/kb/4577015
+[4570333]: https://support.microsoft.com/kb/4570333
+[4570673]: https://support.microsoft.com/kb/4570673
+[4577051]: https://support.microsoft.com/kb/4577051
+[4569767]: https://support.microsoft.com/kb/4569767
+[4569780]: https://support.microsoft.com/kb/4569780
+[4566426]: https://support.microsoft.com/kb/4566426
+[4577038]: https://support.microsoft.com/kb/4577038
+[4569765]: https://support.microsoft.com/kb/4569765
+[4569779]: https://support.microsoft.com/kb/4569779
+[4566425]: https://support.microsoft.com/kb/4566425
+[4577066]: https://support.microsoft.com/kb/4577066
+[4569768]: https://support.microsoft.com/kb/4569768
+[4569778]: https://support.microsoft.com/kb/4569778
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4494175]: https://support.microsoft.com/kb/4494175
+[4570332]: https://support.microsoft.com/kb/4570332
+[4570720]: https://support.microsoft.com/kb/4570720
+[4494174]: https://support.microsoft.com/kb/4494174
+[2.102]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3.89]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4.82]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,47]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,23]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+
+## <a name="august-2020-guest-os"></a>Gastbetriebssystem August 2020
+
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-08 |  [4571687]  |  Kumulatives IE-Update | [2.101], [3.88], [4.81] | 11. August 2020 |
+|  Rel 20-08 |  [4561600]  |  Flash-Update | [3.88], [4.81], [5.46], [6.22] | 9\. Juni 2020 |
+|  Rel 20-08 |  [4571694]  |  Letztes kumulatives Update | [6,22] | 11. August 2020 |
+|  Rel 20-08 |  [4565349]  |  Letztes kumulatives Update | [5.46] | 11. August 2020 |
+|  Rel 20-08 |  [4570673]  |  Wartungsstapelaktualisierung | [2.101] | 11. August 2020 |
+|  Rel 20-08 |  [4571729]  |  Monatlicher Rollup | [2.101] | 11. August 2020 |
+|  Rel 20-08 |  [4569767]  |  .NET Framework 3.5.1: Sicherheits- und Qualitätsrollup | [2.101] | 11. August 2020 |
+|  Rel 20-08 |  [4569780]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [2.101] | 11. August 2020 |
+|  Rel 20-08 |  [4569765]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [3.88] | 11. August 2020 |
+|  Rel 20-08 |  [4569779]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [3.88] | 11. August 2020 |
+|  Rel 20-08 |  [4566426]  |  Wartungsstapelaktualisierung | [3.88] | 14. Jul 2020 |
+|  Rel 20-08 |  [4571736]  |  Monatlicher Rollup | [3.88] | 11. August 2020 |
+|  Rel 20-08 |  [4566425]  |  Wartungsstapelaktualisierung | [4.81] | 14. Jul 2020 |
+|  Rel 20-08 |  [4571703]  |  Monatlicher Rollup | [4.81] | 11. August 2020 |
+|  Rel 20-08 |  [4569768]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [4.81] | 11. August 2020 |
+|  Rel 20-08 |  [4569778]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [4.81] | 11. August 2020 |
+|  Rel 20-08 |  [4494175]  |  Microcode | [5.46] | 25. Feb 2020 |
+|  Rel 20-08 |  [4565912]  |  Wartungsstapelaktualisierung | [5.46] | 14. Jul 2020 |
+|  Rel 20-08 |  [4569776]  |  Kumulatives Update für .NET Framework 3.5 und 4.7.2 | [6,22] | 11. August 2020 |
+|  Rel 20-08 |  [4566424]  |  Wartungsstapelaktualisierung | [6,22] | 11. August 2020 |
+
+
+[4571687]: https://support.microsoft.com/kb/4571687
+[4561600]: https://support.microsoft.com/kb/4561600
+[4571694]: https://support.microsoft.com/kb/4571694
+[4565349]: https://support.microsoft.com/kb/4565349
+[4570673]: https://support.microsoft.com/kb/4570673
+[4571729]: https://support.microsoft.com/kb/4571729
+[4569767]: https://support.microsoft.com/kb/4569767
+[4569780]: https://support.microsoft.com/kb/4569780
+[4569765]: https://support.microsoft.com/kb/4569765
+[4569779]: https://support.microsoft.com/kb/4569779
+[4566426]: https://support.microsoft.com/kb/4566426
+[4571736]: https://support.microsoft.com/kb/4571736
+[4566425]: https://support.microsoft.com/kb/4566425
+[4571703]: https://support.microsoft.com/kb/4571703
+[4569768]: https://support.microsoft.com/kb/4569768
+[4569778]: https://support.microsoft.com/kb/4569778
+[4494175]: https://support.microsoft.com/kb/4494175
+[4565912]: https://support.microsoft.com/kb/4565912
+[4569776]: https://support.microsoft.com/kb/4569776
+[4566424]: https://support.microsoft.com/kb/4566424
+[2.101]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3.88]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4.81]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5.46]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,22]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+
+
+## <a name="july-2020-guest-os"></a>Gastbetriebssystem für Juli 2020
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-07 |  [4565479]  |  Internet Explorer | [2.100], [3.87], [4.80] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565511]  |  Letztes kumulatives Update | [5,45] | 14. Jul 2020 |
+|  Rel 20-07 |  [4558998]  |  Letztes kumulatives Update | [6,21] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565524]  |  Monatlicher Rollup | [2.100] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565616]  |  Monatlicher Rollup | [2.100] | 16. Jul 2020 |
+|  Rel 20-07 |  [4565354]  |  Wartungsstapelaktualisierung | [2.100] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565612]  |  Monatlicher Rollup | [2.100] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565615]  |  Monatlicher Rollup | [3,87] | 14. Jul 2020 |
+|  Rel 20-07 |  [4566426]  |  Wartungsstapelaktualisierung | [3,87] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565537]  |  Monatlicher Rollup | [3,87] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565610]  |  Monatlicher Rollup | [3,87] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565541]  |  Monatlicher Rollup | [4.80] | 14. Jul 2020 |
+|  Rel 20-07 |  [4566425]  |  Wartungsstapelaktualisierung | [4.80] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565614]  |  Monatlicher Rollup | [4.80] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565613]  |  Monatlicher Rollup | [4.80] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565912]  |  Wartungsstapelaktualisierung | [5,45] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565628]  |  Monatlicher Rollup | [5,45] | 14. Jul 2020 |
+|  Rel 20-07 |  [4494175]  |  Microcode | [5,45] | 25. Feb 2020 |
+|  Rel 20-07 |  [4565632]  |  Monatlicher Rollup | [6,21] | 14. Jul 2020 |
+|  Rel 20-07 |  [4558997]  |  Wartungsstapelaktualisierung | [6,21] | 14. Jul 2020 |
+|  Rel 20-07 |  [4494174]  |  Microcode | [6,21] | 25. Feb 2020 |
+
+
+[4565479]: https://support.microsoft.com/kb/4565479
+[4565511]: https://support.microsoft.com/kb/4565511
+[4558998]: https://support.microsoft.com/kb/4558998
+[4565524]: https://support.microsoft.com/kb/4565524
+[4565616]: https://support.microsoft.com/kb/4565616
+[4565354]: https://support.microsoft.com/kb/4565354
+[4565612]: https://support.microsoft.com/kb/4565612
+[4565615]: https://support.microsoft.com/kb/4565615
+[4566426]: https://support.microsoft.com/kb/4566426
+[4565537]: https://support.microsoft.com/kb/4565537
+[4565610]: https://support.microsoft.com/kb/4565610
+[4565541]: https://support.microsoft.com/kb/4565541
+[4566425]: https://support.microsoft.com/kb/4566425
+[4565614]: https://support.microsoft.com/kb/4565614
+[4565613]: https://support.microsoft.com/kb/4565613
+[4565912]: https://support.microsoft.com/kb/4565912
+[4565628]: https://support.microsoft.com/kb/4565628
+[4494175]: https://support.microsoft.com/kb/4494175
+[4565632]: https://support.microsoft.com/kb/4565632
+[4558997]: https://support.microsoft.com/kb/4558997
+[4494174]: https://support.microsoft.com/kb/4494174
+[2.100]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,87]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4.80]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,45]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,21]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+
+
+## <a name="june-2020-guest-os"></a>Gastbetriebssystem für Juni 2020
+
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  [2.99], [3.86], [4.79]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561616]  |  Letztes kumulatives Update  |  [5.44]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561608]  |  Letztes kumulatives Update  |  [6.20]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562030]  |  Wartungsstapelaktualisierung  |  [2,99]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561643]  |  Monatlicher Rollup  |  [2,99]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562252]  |  Wartungsstapelaktualisierung  |  [3,86]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561612]  |  Monatlicher Rollup  |  [3,86]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561600]  |  Blinken  |  [3.86], [4.79], [5.44], [6.20]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562253]  |  Wartungsstapelaktualisierung  |  [4,79]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561666]  |  Monatlicher Rollup  |  [4,79]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562561]  |  Wartungsstapelaktualisierung  |  [5.44]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562562]  |  Wartungsstapelaktualisierung  |  [6.20]  |  9\. Juni 2020  |
+
+
+
+[4561603]: https://support.microsoft.com/kb/4561603
+[4561616]: https://support.microsoft.com/kb/4561616
+[4561608]: https://support.microsoft.com/kb/4561608
+[4562030]: https://support.microsoft.com/kb/4562030
+[4561643]: https://support.microsoft.com/kb/4561643
+[4562252]: https://support.microsoft.com/kb/4562252
+[4561612]: https://support.microsoft.com/kb/4561612
+[4561600]: https://support.microsoft.com/kb/4561600
+[4562253]: https://support.microsoft.com/kb/4562253
+[4561666]: https://support.microsoft.com/kb/4561666
+[4562561]: https://support.microsoft.com/kb/4562561
+[4562562]: https://support.microsoft.com/kb/4562562
+[2,99]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3.86]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,79]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5.44]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6.20]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+
+
+## <a name="may-2020-guest-os"></a>Gastbetriebssystem für Mai 2020
+
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-05  |  [4556798]  |  Internet Explorer   |  [2.98], [3.85], [4.78]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4556813]  |  Letztes kumulatives Update   |  [5.43]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4551853]  |  Letztes kumulatives Update   |  [6.19]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4552940]  |  Monatlicher Rollup   |  [2.98]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4556836]  |  Monatlicher Rollup   |  [2.98]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4555449]  |  Wartungsstapelaktualisierung   |  [2.98]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4552920]  |  Monatlicher Rollup   |  [2.98]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4552979]  |  Monatlicher Rollup   |  [3.85]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4556840]  |  Monatlicher Rollup   |  [3.85]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4552947]  |  Monatlicher Rollup   |  [3.85]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4552982]  |  Monatlicher Rollup   |  [3.85]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4552946]  |  Monatlicher Rollup   |  [4.78]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4556846]  |  Monatlicher Rollup   |  [4.78]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4550994]  |  Wartungsstapelaktualisierung   |  [5.43]  |  14. April 2020  |
+|  Rel 20-05  |  [4552924]  |  Monatlicher Rollup   |  [6.19]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4549947]  |  Wartungsstapelaktualisierung   |  [6.19]  |  14. April 2020  |
+
+
+[4556798]: https://support.microsoft.com/kb/4556798
+[4556813]: https://support.microsoft.com/kb/4556813
+[4551853]: https://support.microsoft.com/kb/4551853
+[4552940]: https://support.microsoft.com/kb/4552940
+[4556836]: https://support.microsoft.com/kb/4556836
+[4555449]: https://support.microsoft.com/kb/4555449
+[4552920]: https://support.microsoft.com/kb/4552920
+[4552979]: https://support.microsoft.com/kb/4552979
+[4556840]: https://support.microsoft.com/kb/4556840
+[4552947]: https://support.microsoft.com/kb/4552947
+[4552982]: https://support.microsoft.com/kb/4552982
+[4552946]: https://support.microsoft.com/kb/4552946
+[4556846]: https://support.microsoft.com/kb/4556846
+[4550994]: https://support.microsoft.com/kb/4550994
+[4552924]: https://support.microsoft.com/kb/4552924
+[4549947]: https://support.microsoft.com/kb/4549947
+[2.98]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3.85]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4.78]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5.43]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6.19]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+
+
+## <a name="april-2020-guest-os"></a>Gastbetriebssystem April 2020
+
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-04   |  [4550965]  |  Windows-Sicherheit   |  [2.97]  |  14. April 2020  |
+|  Rel 20-04   |  [4550905]  |  Internet Explorer   |  [2.97], [3.84], [4.77]  |  14. April 2020  |
+|  Rel 20-04   |  [4550971]  |  Windows-Sicherheit   |  [3.84]  |  14. April 2020  |
+|  Rel 20-04   |  [4550970]  |  Windows-Sicherheit   |  [4.77]  |  14. April 2020  |
+|  Rel 20-04   |  [4550929]  |  Letztes kumulatives Update   |  [5.42]  |  14. April 2020  |
+|  Rel 20-04   |  [4549949]  |  Letztes kumulatives Update   |  [6.18]  |  14. April 2020  |
+|  Rel 20-04   |  [4540688]  |  Monatlicher Rollup   |  [2.97]  |  10. März 2020  |
+|  Rel 20-04   |  [4550735]  |  Wartungsstapelaktualisierung   |  [2.97]  |  10. März 2020  |
+|  Rel 20-04   |  [4540726]  |  Wartungsstapelaktualisierung   |  [3.84]  |  10. März 2020  |
+|  Rel 20-04   |  [4541510]  |  Monatlicher Rollup   |  [3.84]  |  10. März 2020  |
+|  Rel 20-04   |  [4541509]  |  Monatlicher Rollup   |  [4.77]  |  10. März 2020  |
+|  Rel 20-04   |  [4540725]  |  Wartungsstapelaktualisierung   |  [4.77]  |  10. März 2020  |
+|  Rel 20-04   |  [4540723]  |  Wartungsstapelaktualisierung   |  [5.42]  |  10. März 2020  |
+|  Rel 20-04   |  [4539571]  |  Wartungsstapelaktualisierung   |  [6.18]  |  10. März 2020  |
+
+
+[4550965]: https://support.microsoft.com/kb/4550965
+[4550905]: https://support.microsoft.com/kb/4550905
+[4550971]: https://support.microsoft.com/kb/4550971
+[4550970]: https://support.microsoft.com/kb/4550970
+[4550929]: https://support.microsoft.com/kb/4550929
+[4549949]: https://support.microsoft.com/kb/4549949
+[4540688]: https://support.microsoft.com/kb/4540688
+[4550735]: https://support.microsoft.com/kb/4550735
+[4540726]: https://support.microsoft.com/kb/4540726
+[4541510]: https://support.microsoft.com/kb/4541510
+[4541509]: https://support.microsoft.com/kb/4541509
+[4540725]: https://support.microsoft.com/kb/4540725
+[4540723]: https://support.microsoft.com/kb/4540723
+[4539571]: https://support.microsoft.com/kb/4539571
+[2.97]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3.84]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4.77]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5.42]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6.18]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+
+
+## <a name="march-2020-guest-os"></a>Gastbetriebssystem für März 2020
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-03  |  [4541500]  |  Windows-Sicherheit  | [2.96] | 10. März 2020 |
+|  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2.96], [3.83], [4.76] | 10. März 2020 |
+|  Rel 20-03  |  [4540694]  |  Windows-Sicherheit  | [3.83] | 10. März 2020 |
+|  Rel 20-03  |  [4541505]  |  Windows-Sicherheit  | [4.76] | 10. März 2020 |
+|  Rel 20-03  |  [4540670]  |  Letztes kumulatives Update  | [5.41] | 10. März 2020 |
+|  Rel 20-03  |  [4538461]  |  Letztes kumulatives Update  | [6.17] | 10. März 2020 |
+|  Rel 20-03  |  [4537820]  |  Monatlicher Rollup  | [2.96] | 11. Februar 2020 |
+|  Rel 20-03  |  [4537814]  |  Monatlicher Rollup  | [3.83] | 11. Februar 2020 |
+|  Rel 20-03  |  [4537821]  |  Monatlicher Rollup  | [4.76] | 11. Februar 2020 |
+
+[4541500]: https://support.microsoft.com/kb/4541500 
+[4540671]: https://support.microsoft.com/kb/4540671 
+[4540694]: https://support.microsoft.com/kb/4540694 
+[4541505]: https://support.microsoft.com/kb/4541505 
+[4540670]: https://support.microsoft.com/kb/4540670 
+[4538461]: https://support.microsoft.com/kb/4538461 
+[4537820]: https://support.microsoft.com/kb/4537820  
+[4537814]: https://support.microsoft.com/kb/4537814 
+[4537821]: https://support.microsoft.com/kb/4537821 
+
+[6.17]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5.41]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4.76]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3.83]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2.96]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+
+
+## <a name="february-2020-guest-os"></a>Gastbetriebssystem für Februar 2020
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-02  |  [4537767]  |  Internet Explorer  |  [2.95], [3.82], [4.75]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4537813]  |  Windows-Sicherheit  |  [2.95]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4537794]  |  Windows-Sicherheit  |  [3.82]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4537803]  |  Windows-Sicherheit  |  [4.75]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4537764]  |  Letztes kumulatives Update  |  [5.40]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4532691]  |  Letztes kumulatives Update  |  [6.16]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4534310]  |  Monatlicher Rollup  |  [2.95]  |  14. Januar 2020  |
+|  Rel 20-02  |  [4536952]  |  Wartungsstapelaktualisierung  |  [2.95]  |  14. Januar 2020  |
+|  Rel 20-02  |  [4537829]  |  Wartungsstapelaktualisierung  |  [2.95]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4538483]  |  Erweiterte Sicherheitsupdates  |  [2.95]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4537820]  |  Monatlicher Rollup  |  [2.95]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4537759]  |  Sicherheitsupdate (Flash)  |  [3.82], [4.75]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4534283]  |  Monatlicher Rollup  |  [3.82]  |  14. Januar 2020  |
+|  Rel 20-02  |  [4532920]  |  Wartungsstapelaktualisierung  |  [3.82]  |  10. Dezember 2020  |
+|  Rel 20-02  |  [4534297]  |  Nicht sicherheitsrelevant  |  [4.75]  |  14. Januar 2020  |
+
+[4537767]: https://support.microsoft.com/kb/4537767
+[4537813]: https://support.microsoft.com/kb/4537813
+[4537794]: https://support.microsoft.com/kb/4537794
+[4537803]: https://support.microsoft.com/kb/4537803
+[4537764]: https://support.microsoft.com/kb/4537764
+[4532691]: https://support.microsoft.com/kb/4532691
+[4534310]: https://support.microsoft.com/kb/4534310
+[4536952]: https://support.microsoft.com/kb/4536952
+[4537829]: https://support.microsoft.com/kb/4537829
+[4538483]: https://support.microsoft.com/kb/4538483
+[4537820]: https://support.microsoft.com/kb/4537820
+[4537759]: https://support.microsoft.com/kb/4537759
+[4534283]: https://support.microsoft.com/kb/4534283
+[4532920]: https://support.microsoft.com/kb/4532920
+[4534297]: https://support.microsoft.com/kb/4534297
+
+[6.16]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5.40]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4.75]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3.82]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2.95]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+
+
+## <a name="january-2020-guest-os"></a>Gastbetriebssystem für Januar 2020
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-01  |  [4532960]  |  Windows-Sicherheit  | [2.94] | 14. Januar 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [2.94] | 14. Januar 2020 |
+|  Rel 20-01  |  [4534314]  |  Windows-Sicherheit  | [2.94] | 14. Januar 2020 |
+|  Rel 20-01  |  [4532958]  |  Windows-Sicherheit  | [3.81] | 14. Januar 2020 |
+|  Rel 20-01  |  [4532963]  |  Windows-Sicherheit  | [3.81] | 14. Januar 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [3.81] | 14. Januar 2020 |
+|  Rel 20-01  |  [4534288]  |  Windows-Sicherheit  | [3.81] | 14. Januar 2020 |
+|  Rel 20-01  |  [4532961]  |  Windows-Sicherheit  | [4.74] | 14. Januar 2020 |
+|  Rel 20-01  |  [4532962]  |  Windows-Sicherheit  | [4.74] | 14. Januar 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [4.74] | 14. Januar 2020 |
+|  Rel 20-01  |  [4534309]  |  Windows-Sicherheit  | [4.74] | 14. Januar 2020 |
+|  Rel 20-01  |  [4494175]  |  Microcode v3  | [5.39] | 29. August 2019 |
+|  Rel 20-01  |  [4534271]  |  LCU  | [5.39] | 14. Januar 2020 |
+|  Rel 20-01  |  [4494174]  |  Microcode v4  | [6.15] | 29. August 2019 |
+|  Rel 20-01  |  [4532947]  |  Windows-Sicherheit  | [6.15] | 14. Januar 2020 |
+|  Rel 20-01  |  [4534273]  |  LCU  | [6.15] | 14. Januar 2020 |
+|  Rel 20-01  |  [4530734]  |  Monatlicher Rollup  | [2.94] | 10. Dezember 2019 |
+|  Rel 20-01  |  [4530691]  |  Monatlicher Rollup   | [3.81] | 10. Dezember 2019 |
+|  Rel 20-01  |  [4530702]  |  Monatlicher Rollup  | [4.74] | 10. Dezember 2019 |
+
+[4532960]: https://support.microsoft.com/kb/4532960
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534314]: https://support.microsoft.com/kb/4534314
+[4532958]: https://support.microsoft.com/kb/4532958
+[4532963]: https://support.microsoft.com/kb/4532963
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534288]: https://support.microsoft.com/kb/4534288
+[4532961]: https://support.microsoft.com/kb/4532961
+[4532962]: https://support.microsoft.com/kb/4532962
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534309]: https://support.microsoft.com/kb/4534309
+[4494175]: https://support.microsoft.com/kb/4494175
+[4534271]: https://support.microsoft.com/kb/4534271
+[4494174]: https://support.microsoft.com/kb/4494174
+[4532947]: https://support.microsoft.com/kb/4532947
+[4534273]: https://support.microsoft.com/kb/4534273
+[4530734]: https://support.microsoft.com/kb/4530734
+[4530691]: https://support.microsoft.com/kb/4530691
+[4530702]: https://support.microsoft.com/kb/4530702
+[6.15]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5.39]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4.74]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3.81]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2.94]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+
+
+## <a name="december-2019-guest-os"></a>Gastbetriebssystem für Dezember 2019
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Release 19-12  |  [4530692]  |  Windows-Sicherheit  | [2.93] | 10. Dezember 2019 |
+|  Release 19-12  |  [4530677]  |  Internet Explorer  | [2.93] | 10. Dezember 2019 |
+|  Release 19-12  |  [4530677]  |  Internet Explorer  | [3.80] | 10. Dezember 2019 |
+|  Release 19-12  |  [4530698]  |  Windows-Sicherheit  | [3.80] | 10. Dezember 2019 |
+|  Release 19-12  |  [4530730]  |  Windows-Sicherheit  | [4.73] | 10. Dezember 2019 |
+|  Release 19-12  |  [4530677]  |  Internet Explorer  | [4.73] | 10. Dezember 2019 |
+|  Release 19-12  |  [4530689]  |  Letztes kumulatives Update  | [5.38] | 10. Dezember 2019 |
+|  Release 19-12  |  [4530715]  |  Letztes kumulatives Update  | [6.14] | 10. Dezember 2019 |
+|  Release 19-12  |  [4525235]  |  Nicht sicherheitsrelevant  | [2.93] | 12. November 2019 |
+|  Release 19-12  |  [4531786]  |  Wartungsstapelaktualisierung  | [2.93] | 10. Dezember 2019 |
+|  Release 19-12  |  [4525246]  |  Nicht sicherheitsrelevant  | [3.80] | 12. November 2019 |
+|  Release 19-12  |  [4523208]  |  Wartungsstapelaktualisierung  | [3.80] | 12. November 2019 |
+|  Release 19-12  |  [4525243]  |  Nicht sicherheitsrelevant  | [4.73] | 12. November 2019 |
+|  Release 19-12  |  [4524445]  |  Wartungsstapelaktualisierung  | [4.73] | 12. November 2019 |
+|  Release 19-12  |  [4520724]  |  Wartungsstapelaktualisierung  | [5.38] | 12. November 2019 |
+|  Release 19-12  |  [4523204]  |  ServicingStackUpdate  | [6.14] | 12. November 2019 |
+
+[4530692]: https://support.microsoft.com/kb/4530692
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530698]: https://support.microsoft.com/kb/4530698
+[4530730]: https://support.microsoft.com/kb/4530730
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530689]: https://support.microsoft.com/kb/4530689
+[4530715]: https://support.microsoft.com/kb/4530715
+[4525235]: https://support.microsoft.com/kb/4525235
+[4531786]: https://support.microsoft.com/kb/4531786
+[4525246]: https://support.microsoft.com/kb/4525246
+[4523208]: https://support.microsoft.com/kb/4523208
+[4525243]: https://support.microsoft.com/kb/4525243
+[4524445]: https://support.microsoft.com/kb/4524445
+[4520724]: https://support.microsoft.com/kb/4520724
+[4523204]: https://support.microsoft.com/kb/4523204
+[6.14]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5.38]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4.73]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3.80]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2.93]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+
+
+
+## <a name="november-2019-guest-os"></a>Gastbetriebssystem für November 2019
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Release 19-11   |  [4525106]  |  Internet Explorer   |  [2.92]  |  12. November 2019  |
+|  Release 19-11   |  [4525233]  |  Windows-Sicherheit   |  [2.92]  |  12. November 2019  |
+|  Release 19-11   |  [4525106]  |  Internet Explorer   |  [3.79]  |  12. November 2019  |
+|  Release 19-11   |  [4525253]  |  Windows-Sicherheit   |  [3.79]  |  12. November 2019  |
+|  Release 19-11   |  [4525106]  |  Internet Explorer   |  [4.72]  |  12. November 2019  |
+|  Release 19-11   |  [4525250]  |  Windows-Sicherheit   |  [4.72]  |  12. November 2019  |
+|  Release 19-11   |  [4525236]  |  Letztes kumulatives Update   |  [5.37]  |  12. November 2019  |
+|  Release 19-11   |  [4523205]  |  Letztes kumulatives Update   |  [6.13]  |  12. November 2019  |
+|  Release 19-11   |  [4519976]  |  Nicht sicherheitsrelevant   |  [2.92]  |  8\. Oktober 2019  |
+|  Release 19-11   |  [4520007]  |  Nicht sicherheitsrelevant   |  [3.79]  |  8\. Oktober 2019  |
+|  Release 19-11   |  [4521857]  |  ServicingStackUpdate   |  [3.79]  |  8\. Oktober 2019  |
+|  Release 19-11   |  [4520005]  |  Nicht sicherheitsrelevant   |  [4.72]  |  8\. Oktober 2019  |
+|  Release 19-11   |  [4521864]  |  ServicingStackUpdate   |  [4.72]  |  8\. Oktober 2019  |
+|  Release 19-11   |  [4521858]  |  ServicingStackUpdate   |  [5.37]  |  8\. Oktober 2019  |
+|  Release 19-11   |  [4521862]  |  ServicingStackUpdate   |  [6.13]  |  8\. Oktober 2019  |
+
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525233]: https://support.microsoft.com/kb/4525233
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525253]: https://support.microsoft.com/kb/4525253
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525250]: https://support.microsoft.com/kb/4525250
+[4525236]: https://support.microsoft.com/kb/4525236
+[4523205]: https://support.microsoft.com/kb/4523205
+[4519976]: https://support.microsoft.com/kb/4519976
+[4520007]: https://support.microsoft.com/kb/4520007
+[4521857]: https://support.microsoft.com/kb/4521857
+[4520005]: https://support.microsoft.com/kb/4520005
+[4521864]: https://support.microsoft.com/kb/4521864
+[4521858]: https://support.microsoft.com/kb/4521858
+[4521862]: https://support.microsoft.com/kb/4521862
+[6.13]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5.37]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4.72]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3.79]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2.92]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+
+
+## <a name="october-2019-guest-os"></a>Gastbetriebssystem für Oktober 2019
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Release 19-10   |  [4520003]  |  Windows-Sicherheit   |  [2.91]  |  8\. Oktober 2019  |
+|  Release 19-10   |  [4519985]  |  Windows-Sicherheit   |  [3.78]  |  8\. Oktober 2019  |
+|  Release 19-10   |  [4519990]  |  Windows-Sicherheit   |  [4.71]  |  8\. Oktober 2019  |
+|  Release 19-10   |  [4519998]  |  Letztes kumulatives Update   |  [5.36]  |  8\. Oktober 2019  |
+|  Release 19-10   |  [4519338]  |  Letztes kumulatives Update   |  [6.12]  |  8\. Oktober 2019  |
+|  Release 19-10   |  [4519974]  |  Internet Explorer   |  [2.91], [3.78], [4.71]  |  8\. Oktober 2019  |
+|  Release 19-10   |  [4516065]  |  Nicht sicherheitsrelevant   |  [2.91]  |  10. September 2019  |
+|  Release 19-10   |  [4516655]  |  SSU   |  [2.91]  |  10. September 2019  |
+|  Release 19-10   |  [4516055]  |  Nicht sicherheitsrelevant   |  [3.78]  |  10. September 2019  |
+|  Release 19-10   |  [4512939]  |  SSU   |  [3.78]  |  10. September 2019  |
+|  Release 19-10   |  [4514370]  |  .NET Framework 3.5   |  [3.78]  |  10. September 2019  |
+|  Release 19-10   |  [4514368]  |  .NET Framework 4.5.2   |  [3.78]  |  10. September 2019  |
+|  Release 19-10   |  [4516067]  |  Nicht sicherheitsrelevant   |  [4.71]  |  10. September 2019  |
+|  Release 19-10   |  [4512938]  |  SSU   |  [4.71]  |  10. September 2019  |
+|  Release 19-10   |  [4514371]  |  .NET Framework 3.5   |  [4.71]  |  10. September 2019  |
+|  Release 19-10   |  [4514367]  |  .NET Framework 4.5.2   |  [4.71]  |  10. September 2019  |
+|  Release 19-10   |  [4512574]  |  SSU   |  [5.36]  |  10. September 2019  |
+|  Release 19-10   |  [4512577]  |  SSU   |  [6.12]  |  10. September 2019  |
+
+[4520003]: https://support.microsoft.com/kb/4520003
+[4519985]: https://support.microsoft.com/kb/4519985
+[4519990]: https://support.microsoft.com/kb/4519990
+[4519998]: https://support.microsoft.com/kb/4519998
+[4519338]: https://support.microsoft.com/kb/4519338
+[4519974]: https://support.microsoft.com/kb/4519974
+[4516065]: https://support.microsoft.com/kb/4516065
+[4516655]: https://support.microsoft.com/kb/4516655
+[4516055]: https://support.microsoft.com/kb/4516055
+[4512939]: https://support.microsoft.com/kb/4512939
+[4514370]: https://support.microsoft.com/kb/4514370
+[4514368]: https://support.microsoft.com/kb/4514368
+[4516067]: https://support.microsoft.com/kb/4516067
+[4512938]: https://support.microsoft.com/kb/4512938
+[4514371]: https://support.microsoft.com/kb/4514371
+[4514367]: https://support.microsoft.com/kb/4514367
+[4512574]: https://support.microsoft.com/kb/4512574
+[4512577]: https://support.microsoft.com/kb/4512577
+
+[6.12]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5.36]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4.71]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3.78]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2.91]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+
+
+## <a name="september-2019-guest-os"></a>Gastbetriebssystem für September 2019
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Release 19-09   |  [4516046]  |  Internet Explorer   |  [2.90], [3.77], [4.70]  |  10. September 2019  |
+|  Release 19-09   |  [4516115]  |  Blinken   |  [2.90], [3.77], [4.70], [5.35], [6.11]  |  10. September 2019  |
+|  Release 19-09   |  [4512578]  |  Letztes kumulatives Update   |  [6.11]  |  10. September 2019  |
+|  Release 19-09   |  [4514366]  |  .NET Framework 3.5 und 4.7.2   |  [6.11]  |  10. September 2019  |
+|  Release 19-09   |  [4516044]  |  Letztes kumulatives Update   |  [5.35]  |  10. September 2019  |
+|  Release 19-09   |  [4516064]  |  Windows-Sicherheit   |  [4.70]  |  10. September 2019  |
+|  Release 19-09   |  [4514350]  |  .NET Framework 3.5   |  [4.70]  |  10. September 2019  |
+|  Release 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  [4.70]  |  10. September 2019  |
+|  Release 19-09   |  [4516062]  |  Windows-Sicherheit   |  [3.77]  |  10. September 2019  |
+|  Release 19-09   |  [4514349]  |  .NET Framework 3.5   |  [3.77]  |  10. September 2019  |
+|  Release 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  [3.77]  |  10. September 2019  |
+|  Release 19-09   |  [4516033]  |  Windows-Sicherheit   |  [2.90]  |  12. September 2019  |
+|  Release 19-09   |  [4512488]  |  Nicht sicherheitsrelevant   |  [4.70]  |  13. Aug 2019  |
+|  Release 19-09   |  [4512518]  |  Nicht sicherheitsrelevant   |  [3.77]  |  13. Aug 2019  |
+|  Release 19-09   |  [4512506]  |  Nicht sicherheitsrelevant   |  [2.90]  |  13. Aug 2019  |
 
 [4516046]: https://support.microsoft.com/kb/4516046
 [4516115]: https://support.microsoft.com/kb/4516115
@@ -60,34 +778,39 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [4512488]: https://support.microsoft.com/kb/4512488
 [4512518]: https://support.microsoft.com/kb/4512518
 [4512506]: https://support.microsoft.com/kb/4512506
+[6.11]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5.35]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4.70]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3.77]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2.90]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="august-2019-guest-os"></a>Gastbetriebssystem für August 2019
 
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-|  Release 19-08   |  [4512482]  |  Windows-Sicherheit   |  [3.76]  |  13. Aug 2019  |
-|  Release 19-08   |  [4494175]  |  Microcodeupdate   |  [5.34]  |  18. Juni 2019  |
-|  Release 19-08   |  [4512517]  |  Letztes kumulatives Update   |  [5.34]  |  13. Aug 2019  |
-|  Release 19-08   |  [4494174]  |  Microcodeupdate   |  [6.1]  |  18. Juni 2019  |
-|  Release 19-08   |  [4511553]  |  Letztes kumulatives Update   |  [6.1]  |  13. Aug 2019  |
-|  Release 19-08   |  [4512486]  |  Windows-Sicherheit   |  [2.89]  |  13. Aug 2019  |
-|  Release 19-08   |  [4512489]  |  Windows-Sicherheit   |  [4.69]  |  13. Aug 2019  |
-|  Release 19-08   |  [4511872]  |  Internet Explorer    |  [2.89], [3.76], [4.69]  |  15. Aug 2019  |
-|  Release 19-08   |  [4507449]  |  Nicht sicherheitsrelevant   |  [2.89]  |  9\. Juli 2019  |
-|  Release 19-08   |  [4507000]  |  NET 4.5.2; nicht sicherheitsrelevant   |  [3.76]  |  12. Aug. 2019  |
-|  Release 19-08   |  [4507002]  |  NET 3.5; nicht sicherheitsrelevant   |  [3.76]  |  12. Aug. 2019  |
-|  Release 19-08   |  [4507462]  |  Nicht sicherheitsrelevant   |  [3.76]  |  9\. Juli 2019  |
-|  Release 19-08   |  [4506999]  |  NET 4.5.2; nicht sicherheitsrelevant    |  [4.69]  |  12. Aug. 2019  |
-|  Release 19-08   |  [4507005]  |  NET 3.5; nicht sicherheitsrelevant    |  [4.69]  |  12. Aug. 2019  |
-|  Release 19-08   |  [4507448]  |  Nicht sicherheitsrelevant   |  [4.69]  |  9\. Juli 2019  |
-|  Release 19-08   |  [4509091]  |  Wartungsstapelaktualisierung   |  [5.34]  |  9\. Juli 2019  |
-|  Release 19-08   |  [4509095]  |  Wartungsstapelaktualisierung   |  [6.1]  |  9\. Juli 2019  |
-|  Release 19-08   |  [4512937]  |  Wartungsstapelaktualisierung   |  [6.1]  |  29. Juli 2019  |
-|  Release 19-08   |  [4507004]  |  .NET 3.5.1; nicht sicherheitsrelevant    |  [2.89]  |  12. Aug. 2019  |
-|  Release 19-08   |  [4504418]  |  Wartungsstapelaktualisierung   |  [3.76], [4.69]  |  11. Juli 2019  |
-|  Release 19-08   |  [4507001]  |  NET 4.5.2; nicht sicherheitsrelevant   |  [2.89]  |  12. Aug. 2019  |
-|  Release 19-08   |  [4507704]  |  Sommerzeiteinstellung in Windows für Brasilien und Marokko   |  [2.89], [3.76], [4.69], [5.34]  |  13. Aug 2019  |
+|  Release 19-08   |  [4512482]  |  Windows-Sicherheit   |  [3.76]  |  13. Aug 2019  |
+|  Release 19-08   |  [4494175]  |  Microcodeupdate   |  [5.34]  |  18. Juni 2019  |
+|  Release 19-08   |  [4512517]  |  Letztes kumulatives Update   |  [5.34]  |  13. Aug 2019  |
+|  Release 19-08   |  [4494174]  |  Microcodeupdate   |  [6.1]  |  18. Juni 2019  |
+|  Release 19-08   |  [4511553]  |  Letztes kumulatives Update   |  [6.1]  |  13. Aug 2019  |
+|  Release 19-08   |  [4512486]  |  Windows-Sicherheit   |  [2.89]  |  13. Aug 2019  |
+|  Release 19-08   |  [4512489]  |  Windows-Sicherheit   |  [4.69]  |  13. Aug 2019  |
+|  Release 19-08   |  [4511872]  |  Internet Explorer    |  [2.89], [3.76], [4.69]  |  15. Aug 2019  |
+|  Release 19-08   |  [4507449]  |  Nicht sicherheitsrelevant   |  [2.89]  |  9\. Juli 2019  |
+|  Release 19-08   |  [4507000]  |  NET 4.5.2; nicht sicherheitsrelevant   |  [3.76]  |  12. Aug. 2019  |
+|  Release 19-08   |  [4507002]  |  NET 3.5; nicht sicherheitsrelevant   |  [3.76]  |  12. Aug. 2019  |
+|  Release 19-08   |  [4507462]  |  Nicht sicherheitsrelevant   |  [3.76]  |  9\. Juli 2019  |
+|  Release 19-08   |  [4506999]  |  NET 4.5.2; nicht sicherheitsrelevant    |  [4.69]  |  12. Aug. 2019  |
+|  Release 19-08   |  [4507005]  |  NET 3.5; nicht sicherheitsrelevant    |  [4.69]  |  12. Aug. 2019  |
+|  Release 19-08   |  [4507448]  |  Nicht sicherheitsrelevant   |  [4.69]  |  9\. Juli 2019  |
+|  Release 19-08   |  [4509091]  |  Wartungsstapelaktualisierung   |  [5.34]  |  9\. Juli 2019  |
+|  Release 19-08   |  [4509095]  |  Wartungsstapelaktualisierung   |  [6.1]  |  9\. Juli 2019  |
+|  Release 19-08   |  [4512937]  |  Wartungsstapelaktualisierung   |  [6.1]  |  29. Juli 2019  |
+|  Release 19-08   |  [4507004]  |  .NET 3.5.1; nicht sicherheitsrelevant    |  [2.89]  |  12. Aug. 2019  |
+|  Release 19-08   |  [4504418]  |  Wartungsstapelaktualisierung   |  [3.76], [4.69]  |  11. Juli 2019  |
+|  Release 19-08   |  [4507001]  |  NET 4.5.2; nicht sicherheitsrelevant   |  [2.89]  |  12. Aug. 2019  |
+|  Release 19-08   |  [4507704]  |  Sommerzeiteinstellung in Windows für Brasilien und Marokko   |  [2.89], [3.76], [4.69], [5.34]  |  13. Aug 2019  |
 
 [4512482]: https://support.microsoft.com/kb/4512482
 [4494175]: https://support.microsoft.com/kb/4494175
@@ -112,30 +835,30 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [4507001]: https://support.microsoft.com/kb/4507001
 [4507704]: https://support.microsoft.com/kb/4507704
 
-[6.1]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5.34]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4.69]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3.76]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2.89]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6.1]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5.34]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4.69]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3.76]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2.89]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="july-2019-guest-os"></a>Gastbetriebssystem für Juli 2019
 
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-|  Release 19-07   |  [4507434]  |  Internet Explorer   |  2.88, 3.75, 4.68  |  9\. Juli 2019  |
-|  Release 19-07   |  [4506966]  |  .NET 4.5.2 – Sicherheit   |  2,88  |  9\. Juli 2019  |
-|  Release 19-07   |  [4506976]  |  .NET 3.5.1 – Sicherheit   |  2,88  |  9\. Juli 2019  |
-|  Release 19-07   |  [4507456]  |  Windows-Sicherheit   |  2,88  |  9\. Juli 2019  |
-|  Release 19-07   |  [4506965]  |  .NET 4.5.2 – Sicherheit   |  3,75  |  9\. Juli 2019  |
-|  Release 19-07   |  [4506974]  |  .NET 3.5 – Sicherheit   |  3,75  |  9\. Juli 2019  |
-|  Release 19-07   |  [4507464]  |  Windows-Sicherheit   |  3,75  |  9\. Juli 2019  |
-|  Release 19-07   |  [4506964]  |  .NET 4.5.2 – Sicherheit   |  4.68  |  9\. Juli 2019  |
-|  Release 19-07   |  [4506977]  |  .NET 3.5 – Sicherheit   |  4.68  |  9\. Juli 2019  |
-|  Release 19-07   |  [4507457]  |  Windows-Sicherheit   |  4.68  |  9\. Juli 2019  |
-|  Release 19-07   |  [4507460]  |  Windows-Sicherheit   |  5.33  |  9\. Juli 2019  |
-|  Release 19-07   |  [4506998]  |  .NET 3.5 und .NET 4.7.2 – Sicherheit   |  6.9  |  9\. Juli 2019  |
-|  Release 19-07   |  [4507469]  |  Windows-Sicherheit   |  6.9  |  9\. Juli 2019  |
+|  Release 19-07   |  [4507434]  |  Internet Explorer   |  2.88, 3.75, 4.68  |  9\. Juli 2019  |
+|  Release 19-07   |  [4506966]  |  .NET 4.5.2 – Sicherheit   |  2,88  |  9\. Juli 2019  |
+|  Release 19-07   |  [4506976]  |  .NET 3.5.1 – Sicherheit   |  2,88  |  9\. Juli 2019  |
+|  Release 19-07   |  [4507456]  |  Windows-Sicherheit   |  2,88  |  9\. Juli 2019  |
+|  Release 19-07   |  [4506965]  |  .NET 4.5.2 – Sicherheit   |  3,75  |  9\. Juli 2019  |
+|  Release 19-07   |  [4506974]  |  .NET 3.5 – Sicherheit   |  3,75  |  9\. Juli 2019  |
+|  Release 19-07   |  [4507464]  |  Windows-Sicherheit   |  3,75  |  9\. Juli 2019  |
+|  Release 19-07   |  [4506964]  |  .NET 4.5.2 – Sicherheit   |  4.68  |  9\. Juli 2019  |
+|  Release 19-07   |  [4506977]  |  .NET 3.5 – Sicherheit   |  4.68  |  9\. Juli 2019  |
+|  Release 19-07   |  [4507457]  |  Windows-Sicherheit   |  4.68  |  9\. Juli 2019  |
+|  Release 19-07   |  [4507460]  |  Windows-Sicherheit   |  5.33  |  9\. Juli 2019  |
+|  Release 19-07   |  [4506998]  |  .NET 3.5 und .NET 4.7.2 – Sicherheit   |  6.9  |  9\. Juli 2019  |
+|  Release 19-07   |  [4507469]  |  Windows-Sicherheit   |  6.9  |  9\. Juli 2019  |
 |  –  |  [4503537]  |  Juni 2019: Wartungsstapelaktualisierung für (Server 2016)   |  5.33  |  14. Mai 2019  |
 |  –  |  [4504369]  |  Juni 2019: Wartungsstapelaktualisierung für (Server 2019)   |  6.9  |  14. Mai 2019  |
 |  –  |  [4503292]  |  Juni 2019: Nicht sicherheitsrelevant (Server 2008 R2)   |  2,88  |  20. Mai 2019  |
@@ -167,15 +890,15 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-|  Release 19-06   |  [4503327]  |  Sicherheitsupdates für Windows 10   |  6,8  |  11. Juni 2019  |
-|  Release 19-06   |  [4503267]  |  Sicherheitsupdates für Windows 10   |  5.32  |  11. Juni 2019  |
-|  Release 19-06   |  [4503290]  |  Windows-Sicherheit   |  4.67  |  11. Juni 2019  |
-|  Release 19-06   |  [4503263]  |  Windows-Sicherheit   |  3.74  |  11. Juni 2019  |
-|  Release 19-06   |  [4503269]  |  Windows-Sicherheit   |  2,87  |  11. Juni 2019  |
-|  Release 19-06   |  [4494174]  |  Microcodeupdate   |  6,8  |  11. Juni 2019  |
-|  Release 19-06   |  [4494175]  |  Microcodeupdate   |  5.32  |  3\. Juni 2019  |
-|  Release 19-06   |  [4503308]  |  Blinken   |  3.74, 4.67, 5.32, 6.8  |  11. Juni 2019  |
-|  Release 19-06   |  [4503259]  |  Internet Explorer   |  2.87, 3.74, 4.67  |  13. Juni 2019  |
+|  Release 19-06   |  [4503327]  |  Sicherheitsupdates für Windows 10   |  6,8  |  11. Juni 2019  |
+|  Release 19-06   |  [4503267]  |  Sicherheitsupdates für Windows 10   |  5.32  |  11. Juni 2019  |
+|  Release 19-06   |  [4503290]  |  Windows-Sicherheit   |  4.67  |  11. Juni 2019  |
+|  Release 19-06   |  [4503263]  |  Windows-Sicherheit   |  3.74  |  11. Juni 2019  |
+|  Release 19-06   |  [4503269]  |  Windows-Sicherheit   |  2,87  |  11. Juni 2019  |
+|  Release 19-06   |  [4494174]  |  Microcodeupdate   |  6,8  |  11. Juni 2019  |
+|  Release 19-06   |  [4494175]  |  Microcodeupdate   |  5.32  |  3\. Juni 2019  |
+|  Release 19-06   |  [4503308]  |  Blinken   |  3.74, 4.67, 5.32, 6.8  |  11. Juni 2019  |
+|  Release 19-06   |  [4503259]  |  Internet Explorer   |  2.87, 3.74, 4.67  |  13. Juni 2019  |
 |  –  |  [4499164]  |  Mai 2019; nicht sicherheitsrelevant  |  2,87  |  14. Mai 2019  |
 |  –  |  [4495606]  |  Mai 2019, .NET 3.5; nicht sicherheitsrelevant  |  2,87  |  14. Mai 2019  |
 |  –  |  [4495596]  |  Mai 2019, .NET 4.5; nicht sicherheitsrelevant  |  2,87  |  20. Mai 2019  |
@@ -185,8 +908,6 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 |  –  |  [4499151]  |  Mai 2019; nicht sicherheitsrelevant  |  4.67  |  14. Mai 2019  |
 |  –  |  [4495608]  |  Mai 2019, .NET 3.5; nicht sicherheitsrelevant  |  4.67  |  14. Mai 2019  |
 |  –  |  [4495592]  |  Mai 2019, .NET 4.5.2; nicht sicherheitsrelevant  |  4.67  |  14. Mai 2019  |
-|  –  |  [4495610]  |  Mai 2019, .NET 4.8; kumulativ  |  6,8  |  14. Mai 2019  |
-|  –  |  [4495618]  |  Mai 2019, .NET 4.8; kumulativ  |  6,8  |  14. Mai 2019  |
 |  –  |  [4501226]  |  DST-Zeitzonenupdates für Marokko und palästinensische Autonomiegebiete  |  2.87, 3.74, 4.67  |  23. Mai 2019  |
 |  –  |  [4490128]  |  DST-Zeitzonenupdates für São Tomé und Príncipe und Qyzylorda  |  2.87, 3.74, 4.67  |  17. April 2019  |
 
@@ -208,8 +929,6 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [4499151]: https://support.microsoft.com/kb/KB4499151
 [4495608]: https://support.microsoft.com/kb/KB4495608
 [4495592]: https://support.microsoft.com/kb/KB4495592
-[4495610]: https://support.microsoft.com/kb/KB4495610
-[4495618]: https://support.microsoft.com/kb/KB4495618
 [4501226]: https://support.microsoft.com/kb/KB4501226
 [4490128]: https://support.microsoft.com/kb/KB4490128
 
@@ -217,26 +936,26 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-|  Rel 19-05   |  [4498206]  |  Internet Explorer-Rollup für Mai   |  2.86, 3.73, 4.66  |  14. Mai 2019  |
-|  Rel 19-05   |  [4505050]  |  Internet Explorer-Rollup für Mai   |  2.86, 3.73, 4.66  |  18. Mai 2019  |
-|  Rel 19-05   |  [4497932]  |  Flash-Update für Mai   |  3.73, 4.66, 5.31  |  14. Mai 2019  |
-|  Rel 19-05   |  [4499175]  |  Sicherheitsrelevanter Rollup für Mai   |  2.86  |  14. Mai 2019  |
-|  Rel 19-05   |  [4495612]  |  Sicherheitsrelevanter Rollup für .NET 3.5 für Mai   |  2.86  |  14. Mai 2019  |
-|  Rel 19-05   |  [4495593]  |  Sicherheitsrelevanter Rollup für .NET 4.5.2 für Mai   |  2.86  |  14. Mai 2019  |
-|  Rel 19-05   |  [4499158]  |  Sicherheitsrelevanter Rollup für Mai   |  3.73  |  14. Mai 2019  |
-|  Rel 19-05   |  [4495607]  |  Sicherheitsrelevanter Rollup für .NET 3.5 für Mai   |  3.73  |  14. Mai 2019  |
-|  Rel 19-05   |  [4495591]  |  Sicherheitsrelevanter Rollup für .NET 4.5.2 für Mai   |  3.73  |  14. Mai 2019  |
-|  Rel 19-05   |  [4492872]  |  Internet Explorer-Rollup   |  3.73  |  16. April 2019  |
-|  Rel 19-05   |  [4499165]  |  Sicherheitsrelevanter Rollup für März   |  4.66  |  14. Mai 2019  |
-|  Rel 19-05   |  [4495615]  |  Sicherheitsrelevanter Rollup für .NET 3.5 für Mai   |  4.66  |  14. Mai 2019  |
-|  Rel 19-05   |  [4495589]  |  Sicherheitsrelevanter Rollup für .NET 4.5.2 für Mai   |  4.66  |  14. Mai 2019  |
-|  Rel 19-05   |  [4498947]  |  SSU für Mai   |  5.31  |  14. Mai 2019  |
-|  Rel 19-05   |  [4494175]  |  Microcodeupdate für Mai   |  5.31  |  14. Mai 2019  |
-|  Rel 19-05   |  [4505052]  |  Sicherheitsrelevanter Rollup für Mai   |  5.31  |  19. Mai 2019  |
-|  Rel 19-05   |  [4499728]  |  SSU für Mai   |  6.7  |  19. Mai 2019  |
-|  Rel 19-05   |  [4505056]  |  Sicherheitsrelevanter Rollup für Mai   |  6.7  |  19. Mai 2019  |
-|  Rel 19-05   |  [4494174]  |  Microcodeupdate für Mai   |  6.7  |  14. Mai 2019  |
-|  Rel 19-05   |  [4495590]  |  Sicherheitsrelevanter Rollup für .NET für Mai   |  6.7  |  14. Mai 2019  |
+|  Rel 19-05   |  [4498206]  |  Internet Explorer-Rollup für Mai   |  2.86, 3.73, 4.66  |  14. Mai 2019  |
+|  Rel 19-05   |  [4505050]  |  Internet Explorer-Rollup für Mai   |  2.86, 3.73, 4.66  |  18. Mai 2019  |
+|  Rel 19-05   |  [4497932]  |  Flash-Update für Mai   |  3.73, 4.66, 5.31  |  14. Mai 2019  |
+|  Rel 19-05   |  [4499175]  |  Sicherheitsrelevanter Rollup für Mai   |  2.86  |  14. Mai 2019  |
+|  Rel 19-05   |  [4495612]  |  Sicherheitsrelevanter Rollup für .NET 3.5 für Mai   |  2.86  |  14. Mai 2019  |
+|  Rel 19-05   |  [4495593]  |  Sicherheitsrelevanter Rollup für .NET 4.5.2 für Mai   |  2.86  |  14. Mai 2019  |
+|  Rel 19-05   |  [4499158]  |  Sicherheitsrelevanter Rollup für Mai   |  3.73  |  14. Mai 2019  |
+|  Rel 19-05   |  [4495607]  |  Sicherheitsrelevanter Rollup für .NET 3.5 für Mai   |  3.73  |  14. Mai 2019  |
+|  Rel 19-05   |  [4495591]  |  Sicherheitsrelevanter Rollup für .NET 4.5.2 für Mai   |  3.73  |  14. Mai 2019  |
+|  Rel 19-05   |  [4492872]  |  Internet Explorer-Rollup   |  3.73  |  16. April 2019  |
+|  Rel 19-05   |  [4499165]  |  Sicherheitsrelevanter Rollup für März   |  4.66  |  14. Mai 2019  |
+|  Rel 19-05   |  [4495615]  |  Sicherheitsrelevanter Rollup für .NET 3.5 für Mai   |  4.66  |  14. Mai 2019  |
+|  Rel 19-05   |  [4495589]  |  Sicherheitsrelevanter Rollup für .NET 4.5.2 für Mai   |  4.66  |  14. Mai 2019  |
+|  Rel 19-05   |  [4498947]  |  SSU für Mai   |  5.31  |  14. Mai 2019  |
+|  Rel 19-05   |  [4494175]  |  Microcodeupdate für Mai   |  5.31  |  14. Mai 2019  |
+|  Rel 19-05   |  [4505052]  |  Sicherheitsrelevanter Rollup für Mai   |  5.31  |  19. Mai 2019  |
+|  Rel 19-05   |  [4499728]  |  SSU für Mai   |  6.7  |  19. Mai 2019  |
+|  Rel 19-05   |  [4505056]  |  Sicherheitsrelevanter Rollup für Mai   |  6.7  |  19. Mai 2019  |
+|  Rel 19-05   |  [4494174]  |  Microcodeupdate für Mai   |  6.7  |  14. Mai 2019  |
+|  Rel 19-05   |  [4495590]  |  Sicherheitsrelevanter Rollup für .NET für Mai   |  6.7  |  14. Mai 2019  |
 
 [4498206]: https://support.microsoft.com/kb/4498206
 [4505050]: https://support.microsoft.com/kb/4505050
@@ -348,8 +1067,8 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 19-02 | [4483484] | .NET 3.5 – Sicherheit | 4.63 | 12. Februar 2019 |
 | Rel 19-02 | [4483472] | .NET 4.5.2 – Sicherheit | 4.63 | 12. Februar 2019 |
 | Rel 19-02 | [4487026] | Windows-Sicherheit | 5.28 | 12. Februar 2019 |
-| Rel 19-02 | [4487044] | Windows-Sicherheit | 6.4. | 12. Februar 2019 |
-| Rel 19-02 | [4483452] | .NET 3.5, 4.7.2 – Sicherheit | 6.4. | 12. Februar 2019 |
+| Rel 19-02 | [4487044] | Windows-Sicherheit | 6.4 | 12. Februar 2019 |
+| Rel 19-02 | [4483452] | .NET 3.5, 4.7.2 – Sicherheit | 6.4 | 12. Februar 2019 |
 | – | [4480970] | Nicht sicherheitsrelevantes Rollup für Januar | 2.83 | 8\. Januar 2019 |
 | – | [4483483] | Nicht sicherheitsrelevantes .NET 3.5.1-Rollup für Januar  | 2.83 | 8\. Januar 2019 |
 | – | [4480059] | Nicht sicherheitsrelevantes .NET 4.5.2-Rollup für Januar  | 2.83 | 8\. Januar 2019 |
@@ -454,8 +1173,8 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 18-12 | [4470199] | Internet Explorer  | 2.81, 3.68, 4.61 | 11. Dezember 2018 |
 | – | [4468323] | Zeitzonenupdate    | 2.81, 3.68, 4.61 | 13. Dezember 2018 |
 | – | [4467107] | Nicht sicherheitsrelevanter Rollup für November   | 2.81 | 13. November 2018 |
-| – | [4467701] | Nicht sicherheitsrelevanter Rollup für November     | 3.68 | 13. November 2018 |
-| – | [4467697] | Nicht sicherheitsrelevanter Rollup für November     | 4.61 | 13. November 2018 |
+| – | [4467701] | Nicht sicherheitsrelevanter Rollup für November | 3.68 | 13. November 2018 |
+| – | [4467697] | Nicht sicherheitsrelevanter Rollup für November | 4.61 | 13. November 2018 |
 
 [4471321]: https://support.microsoft.com/kb/4471321
 [4471328]: https://support.microsoft.com/kb/4471328
@@ -1585,9 +2304,9 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [4014567]: https://support.microsoft.com/kb/4014567
 [4015550]: https://support.microsoft.com/kb/4015550
 [4013418]: https://support.microsoft.com/kb/4013418
-[4022345]: https://technet.microsoft.com/library/security/4022345.aspx
-[4022344]: https://technet.microsoft.com/library/security/4022344.aspx
-[4021279]: https://technet.microsoft.com/library/security/4021279.aspx
+[4022345]: /security-updates/SecurityAdvisories/2017/4022345
+[4022344]: /security-updates/SecurityAdvisories/2017/4022344
+[4021279]: /security-updates/SecurityAdvisories/2017/4021279
 
 
 [4015217]: https://support.microsoft.com/kb/4015217
@@ -1626,7 +2345,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [3211320]: https://support.microsoft.com/kb/3211320
 
 
-[3216771]: https://technet.microsoft.com/library/security/MS17-004
+[3216771]: /security-updates/SecurityBulletins/2017/ms17-004
 
 [3204059]: https://support.microsoft.com/kb/3204059
 [3204062]: https://support.microsoft.com/kb/3204062
@@ -1755,7 +2474,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [3133977]: https://support.microsoft.com/kb/3133977
 [3133681]: https://support.microsoft.com/kb/3133681
 [3123245]: https://support.microsoft.com/kb/3123245
-[Disable RC4]: https://blogs.msdn.microsoft.com/azuresecurity/2016/04/12/azure-cipher-suite-change-removes-rc4-support/
+[Disable RC4]: /archive/blogs/azuresecurity/azure-cipher-suite-change-removes-rc4-support
 
 
 [3148531]: https://support.microsoft.com/kb/3148531
@@ -1860,7 +2579,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [3077657]: https://support.microsoft.com/kb/3077657
 [3057154]: https://support.microsoft.com/kb/3057154
 
-[MS15-034]: https://technet.microsoft.com/library/security/MS15-034
+[MS15-034]: /security-updates/SecurityBulletins/2015/ms15-034
 
 [3042553]: https://support.microsoft.com/en-us/kb/3042553/
 
@@ -1905,37 +2624,37 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [3002657]: https://support.microsoft.com/kb/3002657
 [3035126]: https://support.microsoft.com/kb/3035126
 
-[3049563]: https://support.microsoft.com/kb/3049563
-[3057110]: https://support.microsoft.com/kb/3057110
-[3046002]: https://support.microsoft.com/kb/3046002
-[3057134]: https://support.microsoft.com/kb/3057134
-[3055642]: https://support.microsoft.com/kb/3055642
-[3057191]: https://support.microsoft.com/kb/3057191
-[3050514]: https://support.microsoft.com/kb/3050514
-[3057263]: https://support.microsoft.com/kb/3057263
-[3051768]: https://support.microsoft.com/kb/3051768
-[3061518]: https://support.microsoft.com/kb/3061518
+[3049563]:https://support.microsoft.com/kb/3049563
+[3057110]:https://support.microsoft.com/kb/3057110
+[3046002]:https://support.microsoft.com/kb/3046002
+[3057134]:https://support.microsoft.com/kb/3057134
+[3055642]:https://support.microsoft.com/kb/3055642
+[3057191]:https://support.microsoft.com/kb/3057191
+[3050514]:https://support.microsoft.com/kb/3050514
+[3057263]:https://support.microsoft.com/kb/3057263
+[3051768]:https://support.microsoft.com/kb/3051768
+[3061518]:https://support.microsoft.com/kb/3061518
 
-[3038314]: https://support.microsoft.com/kb/3038314
-[3042553]: https://support.microsoft.com/kb/3042553
-[3046306]: https://support.microsoft.com/kb/3046306
-[3046269]: https://support.microsoft.com/kb/3046269
-[3049576]: https://support.microsoft.com/kb/3049576
-[3046482]: https://support.microsoft.com/kb/3046482
-[3045711]: https://support.microsoft.com/kb/3045711
-[3048010]: https://support.microsoft.com/kb/3048010
-[3047234]: https://support.microsoft.com/kb/3047234
-[3045755]: https://support.microsoft.com/kb/3045755
-[3030377]: https://support.microsoft.com/kb/3030377
-[3039976]: https://support.microsoft.com/kb/3039976
+[3038314]:https://support.microsoft.com/kb/3038314
+[3042553]:https://support.microsoft.com/kb/3042553
+[3046306]:https://support.microsoft.com/kb/3046306
+[3046269]:https://support.microsoft.com/kb/3046269
+[3049576]:https://support.microsoft.com/kb/3049576
+[3046482]:https://support.microsoft.com/kb/3046482
+[3045711]:https://support.microsoft.com/kb/3045711
+[3048010]:https://support.microsoft.com/kb/3048010
+[3047234]:https://support.microsoft.com/kb/3047234
+[3045755]:https://support.microsoft.com/kb/3045755
+[3030377]:https://support.microsoft.com/kb/3030377
+[3039976]:https://support.microsoft.com/kb/3039976
 
-[3058515]: https://support.microsoft.com/kb/3058515
-[3033890]: https://support.microsoft.com/kb/3033890
-[3059317]: https://support.microsoft.com/kb/3059317
-[3057839]: https://support.microsoft.com/kb/3057839
-[3062577]: https://support.microsoft.com/kb/3062577
-[3063858]: https://support.microsoft.com/kb/3063858
+[3058515]:https://support.microsoft.com/kb/3058515
+[3033890]:https://support.microsoft.com/kb/3033890
+[3059317]:https://support.microsoft.com/kb/3059317
+[3057839]:https://support.microsoft.com/kb/3057839
+[3062577]:https://support.microsoft.com/kb/3062577
+[3063858]:https://support.microsoft.com/kb/3063858
 
 
-[archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx
+[archive]: /previous-versions/azure/
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-explanation

@@ -1,25 +1,14 @@
 ---
-title: Beschreibung von Azure Service Fabric-Apps und -Diensten | Microsoft Docs
+title: Beschreibung von Azure Service Fabric-Apps und -Diensten
 description: Beschreibt, wie Manifeste zum Definieren von Service Fabric-Anwendungen und -Diensten verwendet werden.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: mani-ramaswamy
-ms.assetid: 17a99380-5ed8-4ed9-b884-e9b827431b02
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/12/2019
-ms.author: atsenthi
-ms.openlocfilehash: a5e452bf3dc9f35c345a5f27af829904b4839ece
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977128"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86248219"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-Anwendungs- und -Dienstmanifeste
 In diesem Artikel wird beschrieben, wie Service Fabric-Anwendungen und -Dienste mit den Dateien „ApplicationManifest.xml“ und „ServiceManifest.xml“ definiert und mit Versionsangaben versehen werden.  Ausführlichere Beispiele finden Sie unter [Beispiele für Anwendungs- und Dienstmanifeste](service-fabric-manifest-examples.md).  Eine Dokumentation des XML-Schemas für diese Manifestdateien finden Sie unter [ServiceFabricServiceModel.xsd – Schemadokumentation](service-fabric-service-model-schema.md).
@@ -100,7 +89,7 @@ Ein Service Fabric-Dienst**endpunkt** ist ein Beispiel für eine Service Fabric-
 
  
 > [!WARNING]
-> Statische Ports sollten sich nicht mit dem im ClusterManifest angegebenen Anwendungsportbereich überschneiden. Wenn Sie einen statischen Port angeben, weisen Sie ihn außerhalb des Anwendungsportbereichs zu, andernfalls führt dies zu Portkonflikten. Mit Release 6.5CU2 werden wir eine **Integritätswarnung** ausgeben, wenn wir einen solchen Konflikt erkennen, aber die Bereitstellung in Übereinstimmung mit dem ausgelieferten 6.5-Verhalten fortsetzen. Es ist jedoch möglich, dass wir die Anwendungsbereitstellung ab den nächsten Hauptversionen unterbinden.
+> Statische Ports sollten sich nicht mit dem im Clustermanifest angegebenen Anwendungsportbereich überschneiden. Wenn Sie einen statischen Port angeben, weisen Sie ihn außerhalb des Anwendungsportbereichs zu, andernfalls führt dies zu Portkonflikten. Mit Release 6.5CU2 werden wir eine **Integritätswarnung** ausgeben, wenn wir einen solchen Konflikt erkennen, aber die Bereitstellung in Übereinstimmung mit dem ausgelieferten 6.5-Verhalten fortsetzen. Es ist jedoch möglich, dass wir die Anwendungsbereitstellung ab den nächsten Hauptversionen unterbinden.
 >
 
 <!--
@@ -168,7 +157,7 @@ Wie bei Dienstmanifesten sind **Version** -Attribute unstrukturierte Zeichenfolg
 
 **Zertifikate** (im vorhergehenden Beispiel nicht festgelegt) deklariert die zum [Einrichten von HTTPS-Endpunkten](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) oder zum [Verschlüsseln der geheimen Schlüssel im Anwendungsmanifest](service-fabric-application-secret-management.md) verwendeten Zertifikate.
 
-**Platzierungseinschränkungen** sind Anweisungen, mit denen Sie definieren, an welcher Stelle Dienste ausgeführt werden sollen. Diese Anweisungen werden an einzelne Dienste angefügt, die Sie für mindestens eine Knoteneigenschaft auswählen. Weitere Informationen finden Sie unter [Syntax von Platzierungseinschränkungen und Knoteneigenschaften](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax).
+**Platzierungseinschränkungen** sind Anweisungen, mit denen Sie definieren, an welcher Stelle Dienste ausgeführt werden sollen. Diese Anweisungen werden an einzelne Dienste angefügt, die Sie für mindestens eine Knoteneigenschaft auswählen. Weitere Informationen finden Sie unter [Syntax von Platzierungseinschränkungen und Knoteneigenschaften](./service-fabric-cluster-resource-manager-cluster-description.md#placement-constraints-and-node-property-syntax).
 
 **Richtlinien** (im vorherigen Beispiel nicht festgelegt) beschreibt die Richtlinien für die Protokollsammlung, das [standardmäßige Ausführungskonto](service-fabric-application-runas-security.md), die [Integrität](service-fabric-health-introduction.md#health-policies) und den [Sicherheitszugriff](service-fabric-application-runas-security.md), die auf Anwendungsebene festzulegen sind. Dazu gehört auch, ob die Dienste Zugriff auf die Service Fabric-Runtime haben.
 
@@ -203,6 +192,3 @@ For more information about other features supported by application manifests, re
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-application-model/cluster-imagestore-apptypes.png
 [cluster-application-instances]: media/service-fabric-application-model/cluster-application-instances.png
-
-
-

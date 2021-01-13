@@ -1,23 +1,28 @@
 ---
 title: 'Tutorial: Erstellen einer benutzerdefinierten Suchwebseite – benutzerdefinierte Bing-Suche'
 titleSuffix: Azure Cognitive Services
-description: Hier wird beschrieben, wie eine Instanz der benutzerdefinierten Bing-Suche konfiguriert und in eine Webseite integriert wird.
+description: In diesem Tutorial wird beschrieben, wie eine Instanz der benutzerdefinierten Bing-Suche konfiguriert und in eine Webseite integriert wird.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: aee84a4d9203d80b81f773df30d68c3539e5ec7c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a789cb3fde05d12a8793196043f1c246bbab6559
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564707"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342412"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Tutorial: Erstellen einer benutzerdefinierten Suchwebseite
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Die benutzerdefinierte Bing-Suche ermöglicht das Erstellen einer maßgeschneiderten Suchbenutzeroberfläche für Themen, die Sie interessieren. Wenn Sie beispielsweise Besitzer einer Kampfsportwebsite sind, die eine Suchbenutzeroberfläche bietet, können Sie die Domänen, Unterwebsites und Webseiten angeben, die Bing durchsucht. Ihre Benutzer sehen Suchergebnisse, die auf den Inhalt zugeschnitten sind, für den sie sich interessieren, anstatt durch allgemeine Suchergebnisse blättern zu müssen, die möglicherweise irrelevante Inhalte enthalten. 
 
@@ -26,7 +31,7 @@ Dieses Tutorial zeigt, wie eine benutzerdefinierte Suchinstanz konfiguriert und 
 Die folgenden Aufgaben werden beschrieben:
 
 > [!div class="checklist"]
-> - Erstellen einer benutzerdefinierten Suchinstanz
+> - Erstellen einer Instanz für die benutzerdefinierte Suche
 > - Hinzufügen aktiver Einträge
 > - Hinzufügen blockierter Einträge
 > - Hinzufügen angehefteter Einträge
@@ -34,18 +39,18 @@ Die folgenden Aufgaben werden beschrieben:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Um dem Tutorial folgen zu können, benötigen Sie einen Abonnementschlüssel für die API für die benutzerdefinierte Bing-Suche.  Unter [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) erfahren Sie, wie Sie einen Schlüssel erhalten.
+- Um dem Tutorial folgen zu können, benötigen Sie einen Abonnementschlüssel für die API für die benutzerdefinierte Bing-Suche.  Sie müssen im Azure-Portal eine [Ressource für die benutzerdefinierte Bing-Suche erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch), um einen Schlüssel zu erhalten.
 - Falls Sie Visual Studio 2017 oder höher noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden.
 
 ## <a name="create-a-custom-search-instance"></a>Erstellen einer Instanz für die benutzerdefinierte Suche
 
-So erstellen Sie eine benutzerdefinierte Bing-Suchinstanz:
+Erstellen Sie wie folgt eine Instanz für die benutzerdefinierte Bing-Suche:
 
 1. Öffnen Sie einen Internetbrowser.  
   
 2. Navigieren Sie zum benutzerdefinierten Such[portal](https://customsearch.ai).  
   
-3. Melden Sie sich mit einem Microsoft-Konto (MSA) am Portal an. Wenn Sie kein MSA besitzen, klicken Sie auf **Microsoft-Konto erstellen**. Wenn Sie das Portal zum ersten Mal nutzen, werden Sie nach Berechtigungen für den Zugriff auf Ihre Daten gefragt. Klicken Sie auf **Ja**.  
+3. Melden Sie sich mit einem Microsoft-Konto (MSA) am Portal an. Klicken Sie auf **Microsoft-Konto erstellen**, wenn Sie kein MSA besitzen. Wenn Sie das Portal zum ersten Mal nutzen, werden Sie nach Berechtigungen für den Zugriff auf Ihre Daten gefragt. Klicken Sie auf **Ja**.  
   
 4. Klicken Sie nach der Anmeldung auf **Neue benutzerdefinierte Suche**. Geben Sie im Fenster **Neue benutzerdefinierte Suchinstanz erstellen** einen Namen ein, der sinnvoll ist und den Typ des Inhalts beschreibt, den die Suche zurückgibt. Sie können den Namen jederzeit ändern.  
   
@@ -60,11 +65,11 @@ So erstellen Sie eine benutzerdefinierte Bing-Suchinstanz:
 
 Um Ergebnisse von bestimmten Websites oder URLs einzuschließen, fügen Sie diese der Registerkarte **Aktiv** hinzu.
 
-1.  Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Aktiv**, und geben Sie die URL mindestens einer Website ein, die Sie in die Suche einbeziehen möchten.
+1. Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Aktiv**, und geben Sie die URL mindestens einer Website ein, die Sie in die Suche einbeziehen möchten.
 
     ![Screenshot der Registerkarte „Aktiv“ des Definitions-Editors](../media/customSrchEditor.png)
 
-2.  Um zu bestätigen, dass Ihre Instanz Ergebnisse zurückgibt, geben Sie eine Abfrage im Vorschaubereich auf der rechten Seite ein. Bing gibt nur Ergebnisse für öffentliche Websites zurück, die Bing indiziert hat.
+2. Um zu bestätigen, dass Ihre Instanz Ergebnisse zurückgibt, geben Sie eine Abfrage im Vorschaubereich auf der rechten Seite ein. Bing gibt nur Ergebnisse für öffentliche Websites zurück, die Bing indiziert hat.
 
 ## <a name="add-blocked-entries"></a>Hinzufügen blockierter Einträge
 
@@ -79,7 +84,7 @@ Um Ergebnisse von bestimmten Websites oder URLs auszuschließen, fügen Sie dies
 
 ## <a name="add-pinned-entries"></a>Hinzufügen angehefteter Einträge
 
-Um eine bestimmte Webseite am Anfang der Suchergebnisse anzuheften, fügen Sie auf der Registerkarte **Angeheftet** die Webseite und den Abfragebegriff hinzu. Die Registerkarte **Angeheftet** enthält eine Liste mit Webseiten- und Abfragebegriffpaaren, die die Webseite angeben, die als oberstes Ergebnis für eine bestimmte Abfrage angezeigt wird. Die Webseite wird nur dann angeheftet, wenn die Abfragezeichenfolge des Benutzers basierend auf der Übereinstimmungsbedingung der Pin mit der Abfragezeichenfolge der Pin übereinstimmt. Nur indizierte Webseiten werden in Suchvorgängen angezeigt. Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Suche](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
+Um eine bestimmte Webseite am Anfang der Suchergebnisse anzuheften, fügen Sie auf der Registerkarte **Angeheftet** die Webseite und den Abfragebegriff hinzu. Die Registerkarte **Angeheftet** enthält eine Liste mit Webseiten- und Abfragebegriffpaaren, die die Webseite angeben, die als oberstes Ergebnis für eine bestimmte Abfrage angezeigt wird. Die Webseite wird nur dann angeheftet, wenn die Abfragezeichenfolge des Benutzers basierend auf der Übereinstimmungsbedingung der Pin mit der Abfragezeichenfolge der Pin übereinstimmt. Nur indizierte Webseiten werden in Suchvorgängen angezeigt. Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Bing-Suche](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
 
 1. Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Angeheftet**, und geben Sie die Webseite und den Abfragebegriff der Webseite ein, die als oberstes Ergebnis zurückgegeben werden soll.  
   
@@ -116,9 +121,9 @@ Die benutzerdefinierte Suche stellt eine gehostete Benutzeroberfläche zum Rende
 
    ![Screenshot des Schritts der erweiterten Konfigurationen der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
-5. Wählen Sie Ihre Abonnementschlüssel in den Dropdownlisten aus. Alternativ können Sie den Abonnementschlüssel manuell eingeben. Informationen zum Abrufen von Schlüsseln finden Sie unter [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api).  
+5. Wählen Sie Ihre Abonnementschlüssel in den Dropdownlisten aus. Alternativ können Sie den Abonnementschlüssel manuell eingeben.
   
-   ![Screenshot des Schritts der zusätzlichen Konfigurationen der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-subscription-key.png)
+   ![Screenshot: Abonnementschlüssel der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -144,7 +149,7 @@ Im weiteren Verlauf dieses Tutorials wird **Option 1: JavaScript-Codeausschnitt*
   
 4. Wählen Sie im Fenster **Neue ASP.NET Core-Webanwendung** die Option **Webanwendung** aus, und klicken Sie auf **OK**.  
   
-   ![Screenshot des Fensters des neuen Projekts](./media/custom-search-new-webapp.png)  
+   ![Screenshot: Fenster „Neue ASP.NET Core-Webanwendung“](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>Bearbeiten von „Index.cshtml“
 

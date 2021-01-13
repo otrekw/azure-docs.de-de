@@ -3,16 +3,16 @@ title: Entwickeln für Azure Files mit C++ | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie C++-Anwendungen und -Dienste entwickeln, die Azure Files zum Speichern von Dateidaten verwenden.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 97af40bd1f57acb5b26d3b6216984dfb8e3a5181
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: bb74ab16e51fbb3a157757353d5743e889f993dd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699802"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629698"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Entwickeln für Azure Files mit C++
 
@@ -32,7 +32,7 @@ In diesem Tutorial erfahren Sie, wie Sie grundlegende Vorgänge in Azure Files a
 * Erstellen eines SAS-Schlüssels (Shared Access Signature) für eine Datei, die eine für die Freigabe definierte SAS-Richtlinie verwendet
 
 > [!Note]  
-> Da der Zugriff auf Azure Files über SMB möglich ist, können Sie einfache Anwendungen schreiben, die über die standardmäßigen E/A-Klassen und -Funktionen von C++ auf die Azure-Dateifreigabe zugreifen. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, die das Azure Storage C++ SDK verwenden, das über die [Datei-REST-API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) mit Azure Files kommuniziert.
+> Da der Zugriff auf Azure Files über SMB möglich ist, können Sie einfache Anwendungen schreiben, die über die standardmäßigen E/A-Klassen und -Funktionen von C++ auf die Azure-Dateifreigabe zugreifen. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, die das Azure Storage C++ SDK verwenden, das über die [Datei-REST-API](/rest/api/storageservices/file-service-rest-api) mit Azure Files kommuniziert.
 
 ## <a name="create-a-c-application"></a>Erstellen einer C++-Anwendung
 
@@ -40,7 +40,7 @@ Zum Erstellen der Beispiele müssen Sie die Azure Storage-Clientbibliothek 2.4.0
 
 Zum Installieren der Azure Storage-Clientbibliothek 2.4.0 für C++ können Sie eine der folgenden Methoden verwenden:
 
-* **Linux:** Befolgen Sie die Anweisungen auf der Seite [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) (Infodatei zur Azure Storage-Clientbibliothek für C++).
+* **Linux:** Befolgen Sie die Anweisungen auf der Seite [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) (in englischer Sprache).
 * **Windows:** Klicken Sie in Visual Studio auf **Extras &gt; NuGet-Paket-Manager &gt; Paket-Manager-Konsole**. Geben Sie im Fenster der [NuGet-Paket-Manager-Konsole](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein, und drücken Sie die **EINGABETASTE**:
   
 

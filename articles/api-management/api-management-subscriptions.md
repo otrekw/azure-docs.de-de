@@ -1,6 +1,6 @@
 ---
 title: Abonnements in Azure API Management | Microsoft-Dokumentation
-description: Erfahren Sie mehr über das Konzept von Abonnements in Azure API Management.
+description: Erfahren Sie mehr über das Konzept von Abonnements in Azure API Management. Consumer erhalten Zugriff auf APIs mithilfe von Abonnements in Azure API Management.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 9144af131e1427d0b3226655c871921ac1d91665
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: cdc7668b06308bd5532f4885d0e1365fc34ae989
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073418"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511245"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Abonnements in Azure API Management
 
@@ -33,7 +33,7 @@ Um einen Abonnementschlüssel für den API-Zugriff zu erhalten, ist ein Abonneme
 > API Management unterstützt auch andere Mechanismen zum Schützen des Zugriffs auf APIs, einschließlich der folgenden Beispiele:
 > - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
 > - [Clientzertifikate](api-management-howto-mutual-certificates-for-clients.md)
-> - [IP-Whitelisting](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
+> - [Beschränkung für Aufrufer-IP](./api-management-access-restriction-policies.md#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>Bereich von Abonnements
 
@@ -41,7 +41,7 @@ Abonnements können verschiedenen Bereichen zugeordnet werden: einem Produkt, al
 
 ### <a name="subscriptions-for-a-product"></a>Abonnements für ein Produkt
 
-Traditionell wurden Abonnements in APIM als Bereich immer einem einzelnen [API-Produkt](api-management-terminology.md) zugeordnet. Entwickler fanden die Liste der Produkte im Entwicklerportal. Dann sendeten sie Abonnementanforderungen für die Produkte, die sie verwenden wollten. Nachdem eine Abonnementanforderung genehmigt wurde – entweder automatisch oder durch den API-Herausgeber – können die Entwickler die Schlüssel darin für den Zugriff auf alle APIs im Produkt verwenden. Zurzeit werden im Entwicklerportal nur die Produktbereichsabonnements unter dem Benutzerprofilabschnitt angezeigt. 
+Traditionell wurden Abonnements in APIM als Bereich immer einem einzelnen [API-Produkt](api-management-terminology.md) zugeordnet. Entwickler fanden die Liste der Produkte im Entwicklerportal. Dann sendeten sie Abonnementanforderungen für die Produkte, die sie verwenden wollten. Nachdem eine Abonnementanforderung genehmigt wurde – entweder automatisch oder durch den API-Herausgeber – können die Entwickler die Schlüssel darin für den Zugriff auf alle APIs im Produkt verwenden. Derzeit zeigt das Entwicklerportal die Abonnements auf Produktebene nur im Abschnitt mit dem Benutzerprofil an. 
 
 ![Produktabonnements](./media/api-management-subscriptions/product-subscription.png)
 

@@ -1,26 +1,19 @@
 ---
-title: 'Schnellstart: Erstellen eines virtuellen Linux-Computers im Azure-Portal | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des Azure-Portals einen virtuellen Linux-Computer erstellen.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
+title: 'Schnellstart: Erstellen eines virtuellen Linux-Computers im Azure-Portal'
+description: In diesem Schnellstart erfahren Sie, wie Sie mithilfe des Azure-Portals einen virtuellen Linux-Computer erstellen.
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 8/20/2019
+ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0c05eb59c42700394f755f226405f16a47edc73c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091553"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016045"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Linux-Computers im Azure-Portal
 
@@ -28,70 +21,62 @@ Virtuelle Azure-Computer (VMs) können über das Azure-Portal erstellt werden. D
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="create-ssh-key-pair"></a>Erstellen eines SSH-Schlüsselpaars
-
-Für diesen Schnellstart benötigen Sie ein SSH-Schlüsselpaar. Falls Sie bereits über ein SSH-Schlüsselpaar verfügen, können Sie diesen Schritt überspringen.
-
-Öffnen Sie eine Bash-Shell, und verwenden [ssh-keygen](https://www.ssh.com/ssh/keygen/), um ein SSH-Schlüsselpaar zu erstellen. Sollte auf Ihrem Computer keine Bash-Shell zur Verfügung stehen, können Sie auch [Azure Cloud Shell](https://shell.azure.com/bash) verwenden.
-
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im Menü oben auf der Seite das Symbol `>_` aus, um Cloud Shell zu öffnen.
-1. Vergewissern Sie sich, dass in CloudShell oben links **Bash** angezeigt wird. Wird „PowerShell“ angezeigt, wählen Sie im Dropdownmenü **Bash** und anschließend **Bestätigen** aus, um zur Bash-Shell zu wechseln.
-1. Geben Sie zum Erstellen des SSH-Schlüssels `ssh-keygen -t rsa -b 2048` ein. 
-1. Sie werden zur Eingabe einer Datei aufgefordert, in der das Schlüsselpaar gespeichert werden soll. Drücken Sie einfach die **EINGABETASTE**, um den Standardspeicherort zu verwenden (in Klammern angegeben). 
-1. Sie werden zur Eingabe einer Passphrase aufgefordert. Sie können eine Passphrase für Ihren SSH-Schlüssel eingeben, oder drücken Sie die **EINGABETASTE**, um ohne Passphrase fortzufahren.
-1. Der Befehl `ssh-keygen` generiert öffentliche und private Schlüssel mit dem Standardnamen `id_rsa` in `~/.ssh directory`. Der Befehl gibt den vollständigen Pfad des öffentlichen Schlüssels zurück. Verwenden Sie den Pfad des öffentlichen Schlüssels, um mit `cat` durch Eingabe von `cat ~/.ssh/id_rsa.pub` seinen Inhalt anzuzeigen.
-1. Kopieren Sie die Ausgabe dieses Befehls, und speichern Sie sie zur späteren Verwendung in diesem Artikel. Dabei handelt es sich um Ihren öffentlichen Schlüssel. Sie benötigen ihn, wenn Sie Ihr Administratorkonto für die Anmeldung bei Ihrem virtuellen Computer konfigurieren.
-
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, falls Sie dies noch nicht getan haben.
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-1. Klicken Sie links oben im Azure-Portal auf **Ressource erstellen**.
+1. Geben Sie in das Suchfeld **virtuelle Computer** ein.
+1. Wählen Sie unter **Dienste** die Option **Virtuelle Computer** aus.
+1. Wählen Sie auf der Seite **Virtuelle Computer** die Option **Hinzufügen** aus. Die Seite **Virtuellen Computer erstellen** wird geöffnet.
+1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neu erstellen** für „Ressourcengruppe“ aus. Geben Sie als Namen *myResourceGroup* ein. 
 
-1. Wählen Sie unter **Beliebt** die Option **Ubuntu Server 18.04 LTS** aus.
+    ![Screenshot: Abschnitt „Projektdetails“, der zeigt, wo Sie das Azure-Abonnement und die Ressourcengruppe für den virtuellen Computer auswählen](./media/quick-create-portal/project-details.png)
 
-1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neu erstellen** unter **Ressourcengruppe**  aus. Geben Sie *myResourceGroup* als Namen der Ressourcengruppe ein, und wählen Sie dann **OK** aus. 
+1. Geben Sie unter **Instanzdetails** die Zeichenfolge *myVM* als **Namen des virtuellen Computers** ein, wählen Sie *USA, Osten* als Ihre **Region** aus, und wählen Sie *Ubuntu 18.04 LTS* als **Image** aus. Behalten Sie die restlichen Standardwerte bei.
 
-    ![Erstellen einer neuen Ressourcengruppe für Ihre VM](./media/quick-create-portal/project-details.png)
+    ![Screenshot: Abschnitt „Instanzdetails“, in dem Sie einen Namen für den virtuellen Computer angeben und Region, Image und Größe für ihn auswählen](./media/quick-create-portal/instance-details.png)
 
-1. Geben Sie unter **Instanzdetails** *myVM* als **Namen des virtuellen Computers** ein, und wählen Sie *USA, Osten* als Ihre **Region** aus. Behalten Sie die restlichen Standardwerte bei.
+1. Wählen Sie unter **Administratorkonto** die Option **Öffentlicher SSH-Schlüssel** aus.
 
-    ![Abschnitt „Instanzdetails“](./media/quick-create-portal/instance-details.png)
+1. Geben Sie in **Benutzername** die Zeichenfolge *azureuser* ein.
 
-1. Wählen Sie unter **Administratorkonto** die Option **Öffentlicher SSH-Schlüssel** aus, geben Sie Ihren Benutzernamen ein, und fügen Sie Ihren öffentlichen Schlüssel ein. Entfernen Sie in Ihrem öffentlichen Schlüssel alle führenden bzw. nachgestellten Leerzeichen.
+1. Für **Öffentliche SSH-Schlüsselquelle** belassen Sie die Voreinstellung **Neues Schlüsselpaar generieren**, und geben Sie dann *myKey* für den **Schlüsselpaarnamen** ein.
 
-    ![Administratorkonto](./media/quick-create-portal/administrator-account.png)
+    ![Screenshot: Abschnitt „Administratorkonto“, in dem Sie einen Authentifizierungstyp auswählen und die Administratoranmeldeinformationen angeben](./media/quick-create-portal/administrator-account.png)
 
 1. Wählen Sie unter **Regeln für eingehende Ports** > **Öffentliche Eingangsports** die Option **Ausgewählte Ports zulassen** aus, und wählen Sie dann **SSH (22)** und **HTTP-(80)** aus der Dropdownliste aus. 
 
-    ![Öffnen von Ports für RDP und HTTP](./media/quick-create-portal/inbound-port-rules.png)
+    ![Screenshot: Abschnitt „Regeln für eingehende Ports“, in dem Sie festlegen, an welchen Ports eingehende Verbindungen zulässig sind](./media/quick-create-portal/inbound-port-rules.png)
 
 1. Belassen Sie die übrigen Standardeinstellungen, und wählen Sie dann die Schaltfläche **Überprüfen + erstellen** am unteren Rand der Seite aus.
 
 1. Auf der Seite zum **Erstellen eines virtuellen Computers** werden die Details des virtuellen Computers angezeigt, den Sie erstellen möchten. Klicken Sie auf **Erstellen**, wenn Sie so weit sind.
 
-Die Bereitstellung des virtuellen Computers dauert ein paar Minuten. Fahren Sie nach Abschluss der Bereitstellung mit dem nächsten Abschnitt fort.
+1. Wenn das Fenster **Neues Schlüsselpaar generieren** geöffnet wird, wählen Sie **Privaten Schlüssel herunterladen und Ressource erstellen** aus. Ihre Schlüsseldatei wird als **myKey.pem** heruntergeladen. Vergewissern Sie sich, dass Sie wissen, wo die `.pem`-Datei heruntergeladen wurde. Sie benötigen im nächsten Schritt den Pfad zu dieser Datei.
 
-    
+1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
+
+1. Wählen Sie auf der Seite für Ihren neuen virtuellen Computer (VM) die öffentliche IP-Adresse aus, und kopieren Sie sie in die Zwischenablage.
+
+
+    ![Screenshot, der zeigt, wie die IP-Adresse für den virtuellen Computer kopiert wird](./media/quick-create-portal/ip-address.png)
+
 ## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
 
 Stellen Sie eine SSH-Verbindung mit dem virtuellen Computer her.
 
-1. Klicken Sie auf der Seite „Übersicht“ des virtuellen Computers auf die Schaltfläche **Verbinden**. 
+1. Wenn Sie auf einem Macintosh- oder Linux-Computer arbeiten, öffnen Sie eine Bash-Eingabeaufforderung. Wenn Sie sich auf einem Windows-Computer befinden, öffnen Sie eine PowerShell-Eingabeaufforderung. 
 
-    ![Portal 9](./media/quick-create-portal/portal-quick-start-9.png)
+1. Öffnen Sie an Ihrer Eingabeaufforderung eine SSH-Verbindung mit Ihrem virtuellen Computer. Ersetzen Sie die IP-Adresse durch die Ihres virtuellen Computers, und ersetzen Sie den Pfad zur `.pem` durch den Pfad, in den die Schlüsseldatei heruntergeladen wurde.
 
-2. Übernehmen Sie auf der Seite zum **Herstellen der Verbindung mit dem virtuellen Computer** die Standardoptionen, um basierend auf der IP-Adresse eine Verbindung über den Port 22 herzustellen. Unter **Login using VM local account** (Anmelden mit einem lokalen VM-Konto) wird ein Verbindungsbefehl angezeigt. Wählen Sie die Schaltfläche aus, um den Befehl zu kopieren. Das folgende Beispiel zeigt den Befehl für die SSH-Verbindung:
+```console
+ssh -i .\Downloads\myKey1.pem azureuser@10.111.12.123
+```
 
-    ```bash
-    ssh azureuser@10.111.12.123
-    ```
-
-3. Verwenden Sie die gleiche Bash-Shell, die Sie auch zum Erstellen Ihres SSH-Schlüsselpaars verwendet haben. (Sie können Cloud Shell wieder öffnen, und zwar durch erneutes Auswählen von `>_` oder Aufrufen von https://shell.azure.com/bash) Fügen Sie dann den SSH-Verbindungsbefehl ein, um eine SSH-Sitzung zu erstellen.
+> [!TIP]
+> Der von Ihnen erstellte SSH-Schlüssel kann bei der nächsten Erstellung einer VM in Azure verwendet werden. Wählen Sie einfach die Option **In Azure gespeicherten Schlüssel verwenden** für **Öffentliche SSH-Schlüsselquelle** aus, wenn Sie das nächste Mal einen virtuellen Computer erstellen. Der private Schlüssel befindet sich bereits auf Ihrem Computer, sodass Sie nichts herunterladen müssen.
 
 ## <a name="install-web-server"></a>Installieren des Webservers
 
@@ -109,7 +94,7 @@ Geben Sie abschließend `exit` ein, um die SSH-Sitzung zu verlassen.
 
 Verwenden Sie einen beliebigen Webbrowser, um die Standardwillkommensseite von NGINX anzuzeigen. Geben Sie die öffentliche IP-Adresse Ihres virtuellen Computers als Webadresse ein. Die öffentliche IP-Adresse finden Sie auf der Übersichtsseite für den virtuellen Computer sowie in der weiter oben verwendeten SSH-Verbindungszeichenfolge.
 
-![NGINX-Standardwebsite](./media/quick-create-portal/nginx.png)
+![Screenshot der NGINX-Standardwebsite in einem Browser](./media/quick-create-portal/nginx.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

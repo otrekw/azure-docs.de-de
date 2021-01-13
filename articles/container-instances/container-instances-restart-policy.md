@@ -1,19 +1,14 @@
 ---
-title: Verwenden von Neustartrichtlinien mit Aufgaben in Containern in Azure Container Instances
+title: Neustartrichtlinie für Aufgaben mit einmaliger Ausführung
 description: Hier erfahren Sie, wie Sie mit Azure Container Instances Aufgaben ausführen, die bis zum Abschluss ausgeführt werden, z.B. bei Build-, Test- oder Image-Rendering-Aufträgen.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
-ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: 4fe5d9a20249a17030e0ccfa34f6a4f183be0d82
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 08/11/2020
+ms.openlocfilehash: 336a31a03cdc9dfdfebe79ef47b59ef90053f523
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325677"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88798940"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Ausführen von Aufgaben in Containern mit Neustartrichtlinien
 
@@ -32,6 +27,8 @@ Wenn Sie eine [Containergruppe](container-instances-container-groups.md) in Azur
 | `Always` | Container in der Containergruppe werden immer neu gestartet. Dies ist die **Standardeinstellung**, wenn beim Erstellen des Containers keine Neustartrichtlinie angegeben wird. |
 | `Never` | Container in der Containergruppe werden nie neu gestartet. Die Container werden höchstens einmal ausgeführt. |
 | `OnFailure` | Container in der Containergruppe werden nur dann neu gestartet, wenn bei dem im Container ausgeführten Prozess ein Fehler auftritt (d.h., wenn er mit einem Exitcode ungleich Null beendet wird). Die Container werden mindestens einmal ausgeführt. |
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="specify-a-restart-policy"></a>Angeben einer Neustartrichtlinie
 
@@ -62,7 +59,10 @@ az container create \
 Azure Container Instances startet den Container und beendet ihn dann, wenn die Anwendung (oder wie in diesem Fall das Skript) beendet wird. Wenn Azure Container Instances einen Container beendet, dessen Neustartrichtlinie `Never` oder `OnFailure` lautet, wird der Status des Containers auf **Beendet** festgelegt. Der Status eines Containers kann mithilfe des Befehls [az container show][az-container-show] überprüft werden:
 
 ```azurecli-interactive
-az container show --resource-group myResourceGroup --name mycontainer --query containers[0].instanceView.currentState.state
+az container show \
+    --resource-group myResourceGroup \
+    --name mycontainer \
+    --query containers[0].instanceView.currentState.state
 ```
 
 Beispielausgabe:
@@ -92,13 +92,13 @@ Ausgabe:
  ('HAMLET', 386)]
 ```
 
-Dieses Beispiel zeigt die Ausgabe, die das Skript an STDOUT gesendet hat. Die in Containern ausgeführten Aufgaben schreiben ihre Ausgabe allerdings möglicherweise in permanenten Speicher, um sie später abrufen zu können. Dies kann beispielsweise eine [Azure-Dateifreigabe](container-instances-mounting-azure-files-volume.md) sein.
+Dieses Beispiel zeigt die Ausgabe, die das Skript an STDOUT gesendet hat. Die in Containern ausgeführten Aufgaben schreiben ihre Ausgabe allerdings möglicherweise in permanenten Speicher, um sie später abrufen zu können. Dies kann beispielsweise eine [Azure-Dateifreigabe](./container-instances-volume-azure-files.md) sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Aufgabenbasierte Szenarien, z. B. Batchverarbeitung eines großen Datasets mit mehreren Containern, können von benutzerdefinierten [Umgebungsvariablen](container-instances-environment-variables.md) oder [Befehlszeilen](container-instances-start-command.md) zur Laufzeit profitieren.
 
-Details zum dauerhaften Speichern der Ausgabe von Containern, die bis zum Abschluss ausgeführt werden, finden Sie unter [Einbinden einer Azure-Dateifreigabe in Azure Container Instances](container-instances-mounting-azure-files-volume.md).
+Details zum dauerhaften Speichern der Ausgabe von Containern, die bis zum Abschluss ausgeführt werden, finden Sie unter [Einbinden einer Azure-Dateifreigabe in Azure Container Instances](./container-instances-volume-azure-files.md).
 
 <!-- LINKS - External -->
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount

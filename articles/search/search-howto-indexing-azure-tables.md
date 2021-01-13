@@ -1,38 +1,38 @@
 ---
-title: Indizieren der Inhalte des Azure Table Storage für die Volltextsuche – Azure Search
-description: Erfahren Sie, wie im Azure Table Storage gespeicherte Daten mit dem Azure Search-Indexer indiziert werden.
-ms.date: 05/02/2019
-author: mgottein
+title: Suche über Azure Table Storage-Inhalte
+titleSuffix: Azure Cognitive Search
+description: Erfahren Sie, wie in Azure Table Storage gespeicherte Daten mit dem Indexer der kognitiven Azure-Suche indiziert werden.
 manager: nitinme
+author: mgottein
 ms.author: magottei
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: dffb0a41dbf33cd86014115b089036d69a8e4718
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 07/11/2020
+ms.openlocfilehash: 2c67cd4d071660da2ca5714623695ca434329263
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648183"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275182"
 ---
-# <a name="index-azure-table-storage-with-azure-search"></a>Indizieren von Azure Table Storage mit Azure Search
-In diesem Artikel wird beschrieben, wie Sie Azure Search zum Indizieren von Daten verwenden, die in Azure Table Storage gespeichert sind.
+# <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Indizieren von Tabellen aus Azure Blob Storage mit der kognitiven Azure-Suche
+
+In diesem Artikel wird beschrieben, wie Sie die kognitive Azure-Suche zum Indizieren von Daten verwenden, die in Azure Table Storage gespeichert sind.
 
 ## <a name="set-up-azure-table-storage-indexing"></a>Einrichten der Indizierung von Azure Table Storage
 
 Sie können einen Azure Table Storage-Indexer mithilfe der folgenden Ressourcen einrichten:
 
-* [Azure-Portal](https://ms.portal.azure.com)
-* Azure Search [REST-API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Mit dem Azure Search [.NET SDK](https://aka.ms/search-sdk)
+* [Azure portal](https://ms.portal.azure.com)
+* [REST-API](/rest/api/searchservice/Indexer-operations) für die kognitive Azure-Suche
+* [.NET SDK](/dotnet/api/overview/azure/search) für die kognitive Azure-Suche
 
 Hier wird der Ablauf unter Verwendung der REST-API veranschaulicht. 
 
 ### <a name="step-1-create-a-datasource"></a>Schritt 1: Erstellen einer Datenquelle
 
-Eine Datenquelle gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien zur Aktivierung von Azure Search fest, um Änderungen an den Daten effizient identifizieren zu können.
+Eine Datenquelle gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien zur Aktivierung der kognitiven Azure-Suche fest, um Änderungen an den Daten effizient identifizieren zu können.
 
 Für die Tabellenindizierung muss die Datenquelle über die folgenden Eigenschaften verfügen:
 
@@ -49,7 +49,8 @@ Für die Tabellenindizierung muss die Datenquelle über die folgenden Eigenschaf
 
 So erstellen Sie eine Datenquelle
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -59,19 +60,21 @@ So erstellen Sie eine Datenquelle
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
+```
 
-Weitere Informationen zur API für das Erstellen einer Datenquelle finden Sie unter [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source) (Erstellen einer Datenquelle).
+Weitere Informationen zur API für das Erstellen einer Datenquelle finden Sie unter [Create Data Source](/rest/api/searchservice/create-data-source) (Erstellen einer Datenquelle).
 
 <a name="Credentials"></a>
 #### <a name="ways-to-specify-credentials"></a>Möglichkeiten zum Angeben von Anmeldeinformationen ####
 
 Sie können die Anmeldeinformationen für die Tabelle mit einer der folgenden Methoden angeben: 
 
+- **Verbindungszeichenfolge für verwaltete Identitäten:** `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` Diese Verbindungszeichenfolge erfordert keinen Kontoschlüssel, Sie müssen jedoch die Anweisungen zum [Einrichten einer Verbindung mit einem Azure Storage-Konto mithilfe einer verwalteten Identität](search-howto-managed-identities-storage.md) befolgen.
 - **Verbindungszeichenfolge für den Vollzugriff auf ein Speicherkonto**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Sie können die Verbindungszeichenfolge über das Azure-Portal abrufen, indem Sie auf dem **Blatt des Speicherkontos** zu  > **Einstellungen** > **Schlüssel** (für klassische Speicherkonten) oder zu **Einstellungen** > **Zugriffsschlüssel** (für Speicherkonten von Azure Resource Manager) wechseln.
 - **Verbindungszeichenfolge für die Shared Access Signature eines Speicherkontos**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` Die Shared Access Signature muss über Listen- und Leseberechtigungen für Container (in diesem Fall Tabellen) und Objekte (Tabellenzeilen) verfügen.
 -  **Shared Access Signature für eine Tabelle**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` Die Shared Access Signature sollte über Abfrageberechtigungen (Lesen) für die Tabelle verfügen.
 
-Weitere Informationen zu Shared Access Signatures (SAS) finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Weitere Informationen zu Shared Access Signatures (SAS) finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/common/storage-sas-overview.md).
 
 > [!NOTE]
 > Bei Verwendung von SAS-Anmeldeinformationen müssen Sie die Anmeldedaten für die Datenquellen in regelmäßigen Abständen mit erneuerten Signaturen aktualisieren, um den Ablauf zu verhindern. Wenn SAS-Anmeldeinformationen ablaufen, zeigt der Indexer eine Fehlermeldung wie „Die in der Verbindungszeichenfolge angegebenen Anmeldeinformationen sind ungültig oder abgelaufen“ an.  
@@ -81,7 +84,8 @@ Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstruk
 
 So erstellen Sie einen Index
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -92,15 +96,17 @@ So erstellen Sie einen Index
             { "name": "SomeColumnInMyTable", "type": "Edm.String", "searchable": true }
           ]
     }
+```
 
-Weitere Informationen zum Erstellen von Indizes finden Sie unter [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) (Erstellen eines Index).
+Weitere Informationen zum Erstellen von Indizes finden Sie unter [Create Index](/rest/api/searchservice/create-index) (Erstellen eines Index).
 
 ### <a name="step-3-create-an-indexer"></a>Schritt 3: Erstellen eines Indexers
 Ein Indexer verbindet eine Datenquelle mit einem Zielsuchindex und stellt einen Zeitplan zur Automatisierung der Datenaktualisierung bereit. 
 
 Nach der Erstellung von Index und Datenquelle können Sie den Indexer erstellen:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -110,23 +116,24 @@ Nach der Erstellung von Index und Datenquelle können Sie den Indexer erstellen:
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Dieser Indexer wird alle zwei Stunden ausgeführt. (Das Zeitplanintervall ist auf „PT2H“ festgelegt.) Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall beträgt fünf Minuten. Der Zeitplan ist optional. Ohne Zeitplan wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie einen Indexer bei Bedarf jederzeit ausführen.   
 
-Weitere Informationen zur API für das Erstellen eines Indexers finden Sie unter [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-indexer) (Erstellen eines Indexers).
+Weitere Informationen zur API für das Erstellen eines Indexers finden Sie unter [Create Data Source](/rest/api/searchservice/create-indexer) (Erstellen eines Indexers).
 
-Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Indexerzeitpläne für Azure Search](search-howto-schedule-indexers.md).
+Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche](search-howto-schedule-indexers.md).
 
 ## <a name="deal-with-different-field-names"></a>Behandeln von unterschiedlichen Feldnamen
-Die Feldnamen in Ihrem vorhandenen Index unterscheiden sich manchmal von den Eigenschaftennamen in Ihrer Tabelle. Sie können Feldzuordnungen verwenden, um die Eigenschaftennamen der Tabelle den Feldnamen in Ihrem Suchindex zuzuordnen. Weitere Informationen zu Feldzuordnungen finden Sie unter [Durch Azure Search-Indexerfeldzuordnungen werden die Unterschiede zwischen Datenquellen und Suchindizes überbrückt](search-indexer-field-mappings.md).
+Die Feldnamen in Ihrem vorhandenen Index unterscheiden sich manchmal von den Eigenschaftennamen in Ihrer Tabelle. Sie können Feldzuordnungen verwenden, um die Eigenschaftennamen der Tabelle den Feldnamen in Ihrem Suchindex zuzuordnen. Weitere Informationen zu Feldzuordnungen finden Sie unter [Durch Indexerfeldzuordnungen der kognitiven Azure-Suche werden die Unterschiede zwischen Datenquellen und Suchindizes überbrückt](search-indexer-field-mappings.md).
 
 ## <a name="handle-document-keys"></a>Behandeln von Dokumentschlüsseln
-In Azure Search wird ein Dokument mit dem Dokumentschlüssel eindeutig identifiziert. Jeder Suchindex muss über genau ein Schlüsselfeld vom Typ `Edm.String`verfügen. Das Schlüsselfeld ist für jedes Dokument erforderlich, das dem Index hinzugefügt wird. (Es ist gleichzeitig das einzige erforderliche Feld.)
+In der kognitiven Azure-Suche wird ein Dokument mit dem Dokumentschlüssel eindeutig identifiziert. Jeder Suchindex muss über genau ein Schlüsselfeld vom Typ `Edm.String`verfügen. Das Schlüsselfeld ist für jedes Dokument erforderlich, das dem Index hinzugefügt wird. (Es ist gleichzeitig das einzige erforderliche Feld.)
 
-Da Tabellenzeilen über einen Verbundschlüssel verfügen, generiert Azure Search ein synthetisches Feld mit dem Namen `Key`, bei dem es sich um eine Verkettung von Partitionsschlüssel- und Zeilenschlüsselwerten handelt. Wenn der Partitionsschlüssel einer Zeile beispielsweise `PK1` lautet und der Zeilenschlüssel den Wert `RK1` hat, hat das `Key`-Feld den Wert `PK1RK1`.
+Da Tabellenzeilen über einen Verbundschlüssel verfügen, generiert die kognitive Azure-Suche das synthetische Feld `Key`, bei dem es sich um eine Verkettung von Partitionsschlüssel- und Zeilenschlüsselwerten handelt. Wenn der Partitionsschlüssel einer Zeile beispielsweise `PK1` lautet und der Zeilenschlüssel den Wert `RK1` hat, hat das `Key`-Feld den Wert `PK1RK1`.
 
 > [!NOTE]
-> Der Wert von `Key` kann unter Umständen Zeichen enthalten, die in Dokumentschlüsseln ungültig sind, z.B. Bindestriche. Ungültige Zeichen können Sie mit der `base64Encode`-[Feldzuordnungsfunktion](search-indexer-field-mappings.md#base64EncodeFunction) behandeln. Verwenden Sie in diesem Fall auch die URL-sichere Base64-Codierung beim Übergeben von Dokumentschlüsseln in API-Aufrufen (z.B. Suche).
+> Der Wert von `Key` kann unter Umständen Zeichen enthalten, die in Dokumentschlüsseln ungültig sind, z.B. Bindestriche. Ungültige Zeichen können Sie mit der -`base64Encode` [Feldzuordnungsfunktion](search-indexer-field-mappings.md#base64EncodeFunction) behandeln. Verwenden Sie in diesem Fall auch die URL-sichere Base64-Codierung beim Übergeben von Dokumentschlüsseln in API-Aufrufen (z.B. Suche).
 >
 >
 
@@ -135,7 +142,8 @@ Wenn Sie für einen Tabellenindexer die Ausführung nach einem Zeitplan einricht
 
 Um anzugeben, dass bestimmte Dokumente aus dem Index entfernt werden müssen, können Sie eine Strategie für vorläufiges löschen verwenden. Anstatt eine Zeile zu löschen, fügen Sie eine Eigenschaft hinzu, um anzugeben, dass sie gelöscht ist, und richten Sie eine Richtlinie zur Erkennung einer vorläufigen Löschung für die Datenquelle ein. Bei der folgenden Richtlinie wird eine Zeile beispielsweise als gelöscht angesehen, wenn sie über die `IsDeleted`-Eigenschaft mit dem Wert `"true"` verfügt:
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
+```http
+    PUT https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -146,11 +154,12 @@ Um anzugeben, dass bestimmte Dokumente aus dem Index entfernt werden müssen, k�
         "container" : { "name" : "table name", "query" : "<query>" },
         "dataDeletionDetectionPolicy" : { "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", "softDeleteColumnName" : "IsDeleted", "softDeleteMarkerValue" : "true" }
     }   
+```
 
 <a name="Performance"></a>
 ## <a name="performance-considerations"></a>Überlegungen zur Leistung
 
-Azure Search verwendet standardmäßig folgenden Abfragefilter: `Timestamp >= HighWaterMarkValue`. Da Azure-Tabellen keinen sekundären Index im `Timestamp`-Feld besitzen, erfordert dieser Abfragetyp einen vollständigen Tabellenscan und ist daher bei großen Tabellen langsam.
+In der kognitiven Azure-Suche wird standardmäßig folgender Abfragefilter verwendet: `Timestamp >= HighWaterMarkValue`. Da Azure-Tabellen keinen sekundären Index im `Timestamp`-Feld besitzen, erfordert dieser Abfragetyp einen vollständigen Tabellenscan und ist daher bei großen Tabellen langsam.
 
 
 Hier lernen Sie zwei Möglichkeiten zum Verbessern der Tabellenindizierungsleistung kennen. Beide Vorgehensweisen basieren auf der Verwendung von Tabellenpartitionen: 
@@ -162,9 +171,9 @@ Hier lernen Sie zwei Möglichkeiten zum Verbessern der Tabellenindizierungsleist
 
 - Wenn Ihre Daten nach der Zeit partitioniert sind (wenn Sie beispielsweise jeden Tag oder jede Woche eine neue Partition erstellen), ziehen Sie folgenden Ansatz in Betracht: 
     - Verwenden Sie eine Abfrage dieser Form: `(PartitionKey ge <TimeStamp>) and (other filters)`. 
-    - Überwachen Sie den Indexerverlauf mit der [API zum Abrufen des Indexerstatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status), und aktualisieren Sie regelmäßig die `<TimeStamp>`-Bedingung der Abfrage basierend auf dem aktuellen Markierungswert für die Obergrenze. 
+    - Überwachen Sie den Indexerverlauf mit der [API zum Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status), und aktualisieren Sie regelmäßig die `<TimeStamp>`-Bedingung der Abfrage basierend auf dem aktuellen Markierungswert für die Obergrenze. 
     - Wenn Sie eine vollständige Neuindizierung auslösen müssen, müssen Sie mit diesem Ansatz die Datenquellenabfrage zusätzlich zum Indexer zurücksetzen. 
 
 
-## <a name="help-us-make-azure-search-better"></a>Helfen Sie uns bei der Verbesserung von Azure Search
+## <a name="help-us-make-azure-cognitive-search-better"></a>Helfen Sie uns bei der Verbesserung der kognitiven Azure-Suche
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, ob Sie sich Features wünschen oder Verbesserungsvorschläge haben.

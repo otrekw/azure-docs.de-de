@@ -1,21 +1,25 @@
 ---
-title: Konfigurieren der Dienstparameter in Azure Database for MySQL
+title: Konfigurieren von Serverparametern – Azure-Befehlszeilenschnittstelle – Azure Database for MySQL
 description: In diesem Artikel wird beschrieben, wie Sie mit der Azure CLI-Befehlszeile die Dienstparameter in Azure Database for MySQL konfigurieren.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
-ms.topic: conceptual
-ms.date: 07/18/2018
-ms.openlocfilehash: b0d7bbdc3e1dcad6f6cecb57b15e2e5df6b3fd28
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: how-to
+ms.date: 10/1/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a5a84d93400e713f66545387fd146148ee735c06
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525429"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541537"
 ---
-# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Anpassen der Serverkonfigurationsparameter mithilfe der Azure CLI
+# <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-cli"></a>Konfigurieren von Serverparametern in Azure Database for MySQL mit der Azure CLI
 Sie können Konfigurationsparameter für einen Azure Database for MySQL-Server mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) auflisten, anzeigen und aktualisieren. Auf Serverebene ist eine Teilmenge der Engine-Konfigurationen verfügbar und kann geändert werden. 
+
+>[!Note]
+> Serverparameter können global auf Serverebene aktualisiert werden. Verwenden Sie dazu die [Azure CLI](./howto-configure-server-parameters-using-cli.md), [PowerShell](./howto-configure-server-parameters-using-powershell.md) oder das [Azure-Portal](./howto-server-parameters.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
@@ -51,18 +55,29 @@ az mysql server configuration set --name slow_query_log --resource-group myresou
 ```
 Dieser Code setzt die Konfiguration **slow\_query\_log** auf den Standardwert **OFF** zurück. 
 
+## <a name="setting-parameters-not-listed"></a>Nicht aufgeführte Einstellungsparameter
+Wenn der Serverparameter, den Sie aktualisieren möchten, nicht im Azure-Portal aufgeführt ist, können Sie den Parameter optional mithilfe von `init_connect` auf Verbindungsebene festlegen. Damit werden die Serverparameter für jeden Client festgelegt, der sich mit dem Server verbindet. 
+
+Aktualisieren Sie den Serverkonfigurationsparameter **init\_connect** des Servers **mydemoserver.mysql.database.azure.com** in der Ressourcengruppe **myresourcegroup**, um Werte wie den Zeichensatz festzulegen.
+```azurecli-interactive
+az mysql server configuration set --name init_connect --resource-group myresourcegroup --server mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
+```
+
 ## <a name="working-with-the-time-zone-parameter"></a>Arbeiten mit dem Zeitzonenparameter
 
 ### <a name="populating-the-time-zone-tables"></a>Auffüllen der Zeitzonentabellen
 
-Die Zeitzonentabellen auf Ihrem Server können durch Aufrufen der gespeicherten Prozedur `az_load_timezone` über ein Tool wie die MySQL-Befehlszeile oder MySQL Workbench aufgefüllt werden.
+Die Zeitzonentabellen auf Ihrem Server können durch Aufrufen der gespeicherten Prozedur `mysql.az_load_timezone` über ein Tool wie die MySQL-Befehlszeile oder MySQL Workbench aufgefüllt werden.
 
 > [!NOTE]
-> Wenn Sie den Befehl `az_load_timezone` in MySQL Workbench ausführen, müssen Sie möglicherweise zuerst den sicheren Aktualisierungsmodus mit `SET SQL_SAFE_UPDATES=0;` deaktivieren.
+> Wenn Sie den Befehl `mysql.az_load_timezone` in MySQL Workbench ausführen, müssen Sie möglicherweise zuerst den sicheren Aktualisierungsmodus mit `SET SQL_SAFE_UPDATES=0;` deaktivieren.
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
+
+> [!IMPORTANT]
+> Sie sollten den Server neu starten, um sicherzustellen, dass die Zeitzonentabellen ordnungsgemäß aufgefüllt werden. Um den Server neu zu starten, verwenden Sie das [Azure-Portal](howto-restart-server-portal.md) oder die [Befehlszeilenschnittstelle](howto-restart-server-cli.md).
 
 Um die verfügbaren Zeitzonenwerte anzuzeigen, führen Sie den folgenden Befehl aus:
 

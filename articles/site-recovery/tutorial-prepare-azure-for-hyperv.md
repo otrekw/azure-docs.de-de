@@ -1,21 +1,21 @@
 ---
-title: Vorbereiten von Azure-Ressourcen für die Notfallwiederherstellung von lokalen Computern
+title: Vorbereiten von Azure für die Hyper-V-Notfallwiederherstellung mit Azure Site Recovery
 description: Hier erfahren Sie, wie Sie Azure für die Notfallwiederherstellung lokaler virtueller Hyper-V-Computer mit Azure Site Recovery vorbereiten.
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6064c32e14ffba7edd51c2dae7787067d14e33c9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: f4f040288574a9ddfc5f7c56878c7f1e795b09a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814327"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88653850"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Notfallwiederherstellung von lokalen Computern
+# <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Vorbereiten von Azure-Ressourcen für die Hyper-V-Notfallwiederherstellung
 
  [Azure Site Recovery](site-recovery-overview.md) unterstützt Business Continuity & Disaster Recovery (BCDR), indem die Verfügbarkeit von Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet und koordiniert die Notfallwiederherstellung von lokalen Computern sowie virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
 
@@ -32,7 +32,7 @@ In diesem Tutorial wird gezeigt, wie Sie Azure-Komponenten vorbereiten, wenn Sie
 > * Erstellen Sie einen Recovery Services-Tresor, in dem Metadaten und Konfigurationsinformationen für virtuelle Computer und andere Replikationskomponenten gespeichert werden.
 > * Richten Sie ein Azure-Netzwerk ein. Wenn virtuelle Azure-Computer nach einem Failover erstellt werden, werden sie mit diesem Netzwerk verbunden.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/), bevor Sie beginnen.
 
 ## <a name="sign-in"></a>Anmelden
 
@@ -63,7 +63,7 @@ Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs we
 9. Wählen Sie unter **Standort** den geografischen Standort für das Speicherkonto aus. Verwenden Sie für dieses Tutorial **Europa, Westen**.
 10. Wählen Sie **Erstellen**, um das Speicherkonto zu erstellen.
 
-   ![Speicherkonto erstellen](media/tutorial-prepare-azure/create-storageacct.png)
+   ![Screenshot: Optionen zum Erstellen eines Speicherkontos](media/tutorial-prepare-azure/create-storageacct.png)
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -74,7 +74,7 @@ Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs we
 3. Wählen Sie unter **Standort** die Region aus, in der sich der Tresor befinden soll. Verwenden Sie für dieses Tutorial **Europa, Westen**.
 4. Wählen Sie **An Dashboard anheften** > **Erstellen**, um über das Dashboard schnell auf den Tresor zuzugreifen.
 
-![Erstellen eines neuen Tresors](./media/tutorial-prepare-azure/new-vault-settings.png)
+![Screenshot: Seite „Recovery Services-Tresor erstellen“](./media/tutorial-prepare-azure/new-vault-settings.png)
 
 Der neue Tresor wird unter **Dashboard** > **Alle Ressourcen** und auf der Hauptseite **Recovery Services-Tresore** angezeigt.
 
@@ -91,15 +91,15 @@ Wenn die Azure-VMs nach einem Failover aus dem Speicher erstellt werden, werden 
 7. Behalten Sie die Standardoptionen des DDoS-Basisschutzes ohne Dienstendpunkt im Netzwerk bei.
 8. Klicken Sie auf **Erstellen**.
 
-![Erstellen eines virtuellen Netzwerks](media/tutorial-prepare-azure/create-network.png)
+![Screenshot: Optionen zum Erstellen eines virtuellen Netzwerks](media/tutorial-prepare-azure/create-network.png)
 
 Die Erstellung des virtuellen Netzwerks dauert ein paar Sekunden. Nach der Erstellung wird es auf dem Dashboard im Azure-Portal angezeigt.
 
 ## <a name="useful-links"></a>Nützliche Links
 
 Sie erhalten Informationen zu folgenden Themen:
-- [Azure-Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-- [Verwaltete Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)
+- [Azure-Netzwerke](../virtual-network/virtual-networks-overview.md)
+- [Verwaltete Datenträger](../virtual-machines/managed-disks-overview.md)
 
 
 

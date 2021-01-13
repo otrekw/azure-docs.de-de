@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und dem Azure-Portal | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie einem Benutzer mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) im Azure-Portal Zugriff auf Azure-Ressourcen gewähren.
+title: 'Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit dem Azure-Portal – Azure RBAC'
+description: In diesem Tutorial erfahren Sie, wie Sie einem Benutzer mit dem Azure-Portal und der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) Zugriff auf Azure-Ressourcen gewähren.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: 5786f7b48477fa705b43e3a953ac15b2c768bd71
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c6736bb2642ff08d0aa3cda536ef1599324efded
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854251"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85362012"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und dem Azure-Portal
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit dem Azure-Portal
 
-Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung (RBAC)](overview.md) verwaltet. In diesem Tutorial gewähren Sie einem Benutzer Zugriff, um virtuelle Computer in einer Ressourcengruppe zu erstellen und zu verwalten.
+Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](overview.md) verwaltet. In diesem Tutorial gewähren Sie einem Benutzer Zugriff, um virtuelle Computer in einer Ressourcengruppe zu erstellen und zu verwalten.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -58,11 +58,11 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="grant-access"></a>Gewähren von Zugriff
 
-In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung.
+In Azure RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung.
 
 1. Klicken Sie in der Liste der **Ressourcengruppen** auf die neue Ressourcengruppe **rbac-resource-group**.
 
-1. Klicken Sie auf **Zugriffssteuerung (IAM)**.
+1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
 1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die aktuelle Liste mit den Rollenzuweisungen anzuzeigen.
 
@@ -72,7 +72,9 @@ In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung.
 
    Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
 
-   ![Menü „Hinzufügen“](./media/role-assignments-portal/add-menu.png)
+   ![Menü „Rollenzuweisung hinzufügen“](./media/shared/add-role-assignment-menu.png)
+
+    Der Bereich „Rollenzuweisung hinzufügen“ wird geöffnet.
 
    ![Bereich „Rollenzuweisung hinzufügen“](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 
@@ -88,7 +90,7 @@ In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung.
 
 ## <a name="remove-access"></a>Zugriff entfernen
 
-In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen.
+In Azure RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen.
 
 1. Fügen Sie in der Liste der Rollenzuweisungen ein Häkchen neben dem Benutzer mit der Rolle „Mitwirkender für virtuelle Computer“ hinzu.
 
@@ -98,7 +100,7 @@ In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen.
 
 1. Klicken Sie in der angezeigten Meldung zum Entfernen der Rollenzuweisung auf **Ja**.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 1. Klicken Sie in der Navigationsliste auf **Ressourcengruppen**.
 
@@ -115,5 +117,4 @@ In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen.
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und Azure PowerShell](tutorial-role-assignments-user-powershell.md)
-
+> [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mithilfe von Azure PowerShell](tutorial-role-assignments-user-powershell.md)

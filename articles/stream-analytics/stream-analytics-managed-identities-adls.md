@@ -1,20 +1,20 @@
 ---
-title: Authentifizieren eines Azure Stream Analytics-Auftrags für die Azure Data Lake Storage Gen1-Ausgabe
+title: Authentifizieren von Azure Stream Analytics für Azure Data Lake Storage Gen1
 description: In diesem Artikel wird die Verwendung von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Azure Data Lake Storage Gen1-Ausgabe beschrieben.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 695591fedfacb34742335a6e9d6ca32a9c77eb7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82c5a246dca69c0723394e41058c4fc123bbb84e
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66148505"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571945"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Authentifizieren von Stream Analytics bei Azure Data Lake Storage Gen1 mithilfe verwalteter Identitäten
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Authentifizieren von Stream Analytics bei Azure Data Lake Storage Gen1 mithilfe verwalteter Identitäten (Vorschau)
 
 Azure Stream Analytics unterstützt die Authentifizierung über verwaltete Identitäten für die Azure Data Lake Storage Gen1-Ausgabe. Bei einer Identität handelt es sich um eine in Azure Active Directory registrierte verwaltete Anwendung, die einen bestimmten Stream Analytics-Auftrag repräsentiert und für die Authentifizierung bei einer Zielressource verwendet werden kann. Verwaltete Identitäten beseitigen die Einschränkungen benutzerbasierter Authentifizierungsmethoden, wie etwa die Notwendigkeit einer erneuten Authentifizierung aufgrund von Kennwortänderungen oder Token, die alle 90 Tage ablaufen. Darüber hinaus helfen verwaltete Identitäten bei der Automatisierung von Stream Analytics-Auftragsbereitstellungen, deren Ausgabe in Azure Data Lake Storage Gen1 erfolgt.
 
@@ -174,6 +174,10 @@ Dieser Artikel veranschaulicht drei Methoden, um eine verwaltete Identität für
    ```
 
    Weitere Informationen zum oben gezeigten PowerShell-Befehl finden Sie in der Dokumentation zu [Set-AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry).
+
+## <a name="remove-managed-identity"></a>Entfernen der verwalteten Identität
+
+Die für einen Stream Analytics-Auftrag erstellte verwaltete Identität wird nur gelöscht, wenn der Auftrag gelöscht wird. Es gibt keine Möglichkeit, die verwaltete Identität zu löschen, ohne den Auftrag zu löschen. Wenn Sie die verwaltete Identität nicht mehr verwenden möchten, können Sie die Authentifizierungsmethode für die Ausgabe ändern. Die verwaltete Identität bleibt weiterhin bestehen, bis der Auftrag gelöscht wird, und wird verwendet, wenn Sie sich noch einmal mithilfe einer verwalteten Identität authentifizieren.
 
 ## <a name="limitations"></a>Einschränkungen
 Diese Funktion unterstützt die folgenden Punkte nicht:

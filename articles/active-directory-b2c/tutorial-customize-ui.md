@@ -1,25 +1,26 @@
 ---
-title: 'Tutorial: Anpassen der Benutzeroberfläche – Azure Active Directory B2C | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie die Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C mithilfe des Azure-Portals anpassen.
+title: 'Tutorial: Anpassen der Benutzeroberfläche'
+titleSuffix: Azure AD B2C
+description: In diesem Tutorial erfahren Sie, wie Sie die Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C mithilfe des Azure-Portals anpassen.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 02/01/2019
-ms.author: marsma
+ms.topic: tutorial
+ms.date: 07/30/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 08edf6e841dc7d389573d5e5b5ea7e043f750e76
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 036e9e6bf58d837c698a6092770ef581f77bc20c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291108"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108245"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Tutorial: Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
-Für weitere gängige Benutzerfunktionen wie etwa Registrierung, Anmeldung und Profilbearbeitung können Sie [Benutzerflows](active-directory-b2c-reference-policies.md) in Azure Active Directory B2C (Azure AD B2C) verwenden. Die Informationen in diesem Tutorial helfen Ihnen beim [Anpassen der Benutzeroberfläche (UI)](customize-ui-overview.md) dieser Erfahrungen unter Verwendung Ihrer eigenen HTML- und CSS-Dateien.
+Für weitere gängige Benutzerfunktionen wie etwa Registrierung, Anmeldung und Profilbearbeitung können Sie [Benutzerflows](user-flow-overview.md) in Azure Active Directory B2C (Azure AD B2C) verwenden. Die Informationen in diesem Tutorial helfen Ihnen beim [Anpassen der Benutzeroberfläche (UI)](customize-ui-with-html.md) dieser Erfahrungen unter Verwendung Ihrer eigenen HTML- und CSS-Dateien.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -138,7 +139,7 @@ In diesem Tutorial speichern Sie die Dateien, die Sie im Speicherkonto erstellt 
 ## <a name="update-the-user-flow"></a>Aktualisieren des Benutzerflows
 
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-2. Wählen Sie **Benutzerflows (Richtlinien)** und dann den Benutzerflow *B2C_1_signupsignin1* aus.
+2. Wählen Sie **Benutzerflows** und dann den Benutzerflow *B2C_1_signupsignin1* aus.
 3. Wählen Sie **Seitenlayouts** aus, und klicken Sie dann unter **Einheitliche Seite für Registrierung oder Anmeldung** bei **Benutzerdefinierten Seiteninhalt verwenden** auf **Ja**.
 4. Geben Sie unter **Benutzerdefinierter Seiten-URI** den URI für die Datei *custom-ui.html* ein, die Sie zuvor gespeichert haben.
 5. Klicken Sie am oberen Rand der Seite auf **Speichern**.
@@ -165,4 +166,4 @@ In diesem Artikel haben Sie Folgendes gelernt:
 > * Testen der angepassten Benutzeroberfläche
 
 > [!div class="nextstepaction"]
-> [Sprachanpassung in Azure Active Directory B2C](active-directory-b2c-reference-language-customization.md)
+> [Anpassen der Benutzeroberfläche in Azure Active Directory B2C](customize-ui-with-html.md)

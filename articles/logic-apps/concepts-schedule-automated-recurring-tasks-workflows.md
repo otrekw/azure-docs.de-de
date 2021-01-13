@@ -2,19 +2,16 @@
 title: Planen von wiederkehrenden Aufgaben und Workflows in Azure Logic Apps
 description: Übersicht über die Planung von wiederkehrenden automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: deli, klam, LADocs
+ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/25/2019
-ms.openlocfilehash: 7716c477cea2200e6fee901f7b5f63cd4b833bd7
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.date: 03/25/2020
+ms.openlocfilehash: 27763536b859b7bc3e9aa0a7c490cb510c0fda41
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68232681"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588453"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Planen und Ausführen von wiederkehrenden automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps
 
@@ -51,13 +48,13 @@ Dieser Artikel beschreibt die Funktionen für die integrierten Zeitplantrigger u
 
 ## <a name="schedule-triggers"></a>Zeitplantrigger
 
-Sie können Ihren Logik-App-Workflow mit dem Trigger „Serie“ oder „Gleitendes Fenster“ starten, was mit keinem bestimmten Dienst oder System wie etwa Office 365 Outlook oder SQL Server verknüpft ist. Diese Trigger starten Ihren Workflow und führen ihn gemäß den von Ihnen angegebenen Wiederholungseinstellungen aus. Sie können das Intervall und die Häufigkeit auswählen, z.B. die Anzahl von Sekunden, Minuten und Stunden für beide Trigger oder die Anzahl von Tagen, Wochen oder Monaten für den Serientrigger. Sie können auch Startdatum und -uhrzeit sowie die Zeitzone festlegen. Bei jeder Triggerauslösung erstellt Logic Apps eine neue Workflowinstanz für Ihre Logik-App und führt diese aus.
+Sie können Ihren Logik-App-Workflow mit dem Trigger „Serie“ oder „Gleitendes Fenster“ starten, was mit keinem bestimmten Dienst oder System verknüpft ist. Diese Trigger starten Ihren Workflow und führen ihn gemäß den von Ihnen angegebenen Wiederholungseinstellungen aus. Sie können das Intervall und die Häufigkeit auswählen, z. B. die Anzahl von Sekunden, Minuten, Stunden, Tagen oder Monaten. Sie können auch Startdatum und -uhrzeit sowie die Zeitzone festlegen. Bei jeder Triggerauslösung erstellt Logic Apps eine neue Workflowinstanz für Ihre Logik-App und führt diese aus.
 
 Im Folgenden finden Sie die Unterschiede zwischen den beiden Triggern:
 
-* **Serie**: Führt Ihren Workflow in regelmäßigen Intervallen aus, basierend auf dem von Ihnen angegebenen Zeitplan. Wenn Wiederholungen nicht ausgeführt werden, verarbeitet der Serientrigger diese fehlenden Wiederholungen nicht, sondern startet die Wiederholungen beim nächsten geplanten Intervall neu. Sie können Startdatum und -uhrzeit sowie die Zeitzone festlegen. Wenn Sie „Tag“ auswählen, können Sie die genaue Tageszeit in Stunden und Minuten angeben, z.B. jeden Tag um 14:30 Uhr. Wenn Sie „Woche“ auswählen, können Sie auch bestimmte Wochentage angeben, z.B. Mittwoch und Samstag. Weitere Informationen finden Sie unter [Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Serientrigger](../connectors/connectors-native-recurrence.md).
+* **Serie**: Führt Ihren Workflow in regelmäßigen Intervallen aus, basierend auf dem von Ihnen angegebenen Zeitplan. Wenn Wiederholungen nicht ausgeführt werden, beispielsweise wegen Unterbrechungen oder deaktivierten Workflows, verarbeitet der Serientrigger diese fehlenden Wiederholungen nicht, sondern startet die Wiederholungen beim nächsten geplanten Intervall neu. Sie können Startdatum und -uhrzeit sowie die Zeitzone festlegen. Wenn Sie „Tag“ auswählen, können Sie die genaue Tageszeit in Stunden und Minuten angeben, z.B. jeden Tag um 14:30 Uhr. Wenn Sie „Woche“ auswählen, können Sie auch bestimmte Wochentage angeben, z.B. Mittwoch und Samstag. Weitere Informationen finden Sie unter [Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Serientrigger](../connectors/connectors-native-recurrence.md).
 
-* **Gleitendes Fenster**: Führt Ihren Workflow in regelmäßigen Intervallen aus, wobei Daten in kontinuierlichen Blöcken verarbeitet werden. Wenn Wiederholungen nicht ausgeführt werden, kehrt der Trigger „Gleitendes Fenster“ zurück und verarbeitet die fehlenden Wiederholungen. Sie können ein Startdatum und eine Startuhrzeit, eine Zeitzone und einen Zeitraum angeben, um den jede Wiederholung in Ihrem Workflow verzögert werden soll. Diese Trigger bietet keine Optionen zum Angeben von Tagen, Wochen, Monaten, Wochentagen oder der genauen Uhrzeit in Stunden und Minuten. Weitere Informationen finden Sie unter [Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Trigger „Gleitendes Fenster“](../connectors/connectors-native-sliding-window.md).
+* **Gleitendes Fenster**: Führt Ihren Workflow in regelmäßigen Intervallen aus, wobei Daten in kontinuierlichen Blöcken verarbeitet werden. Wenn Wiederholungen nicht ausgeführt werden, beispielsweise wegen Unterbrechungen oder deaktivierten Workflows, kehrt der Trigger „Gleitendes Fenster“ zurück und verarbeitet die fehlenden Wiederholungen. Sie können ein Startdatum und eine Startuhrzeit, eine Zeitzone und einen Zeitraum angeben, um den jede Wiederholung in Ihrem Workflow verzögert werden soll. Diese Trigger unterstützt keine erweiterten Zeitpläne, z. B. genaue Uhrzeiten in Stunden und Minuten oder bestimmte Tage der Woche. Weitere Informationen finden Sie unter [Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Trigger „Gleitendes Fenster“](../connectors/connectors-native-sliding-window.md).
 
 <a name="schedule-actions"></a>
 
@@ -82,13 +79,23 @@ Die folgenden Muster veranschaulichen, wie Sie die Wiederholung mit dem Startdat
 | Startuhrzeit liegt in Gegenwart oder Zukunft | Die erste Workload wird zur angegebenen Startuhrzeit ausgeführt. <p>Zukünftige Workloads werden basierend auf Berechnungen der letzten Ausführungszeit ausgeführt. | Die erste Workload wird *frühestens* zur Startuhrzeit basierend auf dem Zeitplan ausgeführt, der anhand der Startuhrzeit berechnet wurde. <p>Zukünftige Workloads werden basierend auf dem angegebenen Zeitplan ausgeführt. <p>**Hinweis:** Wenn Sie eine Wiederholung mit einem Zeitplan angeben, aber keine Stunden oder Minuten für den Zeitplan, werden zukünftige Ausführungszeiten anhand der Stunden bzw. Minuten der ersten Ausführungszeit berechnet. |
 ||||
 
+> [!IMPORTANT]
+> Wenn Wiederholungen keine erweiterten Zeitplanungsoptionen angeben, basieren zukünftige Wiederholungen auf der letzten Laufzeit.
+> Die Startzeiten für diese Wiederholungen können sich aufgrund von Faktoren wie Wartezeiten während Speicheraufrufen verschieben. Um sicherzustellen, dass Ihre Logik-App keine Wiederholung verpasst, insbesondere wenn die Häufigkeit im Bereich von Tagen oder länger liegt, verwenden Sie eine dieser Optionen:
+> 
+> * Geben Sie eine Startzeit für die Wiederholung an.
+> 
+> * Geben Sie die Stunden und Minuten an, zu denen die Wiederholung ausgeführt werden soll, indem Sie die Eigenschaften **Zu diesen Stunden** und **Zu diesen Minuten** verwenden.
+> 
+> * Verwenden Sie den Trigger [Gleitendes Fenster](../connectors/connectors-native-sliding-window.md) anstelle des Triggers „Wiederholung“.
+
 *Beispiel für eine Startuhrzeit in der Vergangenheit mit Wiederholung, aber ohne Zeitplan*
 
 Annahme: Das aktuelle Datum ist der 8. September 2017, die aktuelle Uhrzeit ist 13:00 Uhr. Sie geben den 7. September 2017 als Startdatum und 14:00 Uhr als Startuhrzeit (also einen Zeitpunkt in der Vergangenheit) sowie eine Wiederholung an, die alle zwei Tage ausgeführt wird.
 
-| Startzeit | Die aktuelle Zeit | Serie | Schedule |
+| Startzeit | Die aktuelle Zeit | Serie | Zeitplan |
 |------------|--------------|------------|----------|
-| 2017-09-**07**T14:00:00Z <br>(**07**.09.2017 um 14:00 Uhr) | 2017-09-**08**T13:00:00Z <br>(**08**.09.2017 um 13:00 Uhr) | Alle zwei Tage | {keine} |
+| 2017-09-**07** T14:00:00Z <br>(**07**.09.2017 um 14:00 Uhr) | 2017-09-**08** T13:00:00Z <br>(**08**.09.2017 um 13:00 Uhr) | Alle zwei Tage | {keine} |
 |||||
 
 Für den Serientrigger berechnet die Logic Apps-Engine die Ausführungszeiten basierend auf der Startuhrzeit, verwirft vergangene Ausführungszeiten, verwendet die nächste in der Zukunft liegende Startuhrzeit für die erste Ausführung und berechnet zukünftige Ausführungen basierend auf der letzten Ausführungszeit.
@@ -108,7 +115,7 @@ Diese Wiederholung sieht wie folgt aus:
 
 | Startzeit | Erste Ausführungszeit | Zukünftige Ausführungszeiten |
 |------------|----------------|------------------|
-| 2017-09-**07** um 14:00 Uhr | 2017-09-**07** um 14:00 Uhr | 2017-09-**09** um 14:00 Uhr </br>2017-09-**11** um 14:00 Uhr </br>2017-09-**13** um 14:00 Uhr </br>2017-09-**15** um 14:00 Uhr </br>usw. |
+| 2017-09-**07** um 14:00 Uhr | 2017-09-**08** um 13:00 (aktuelle Zeit) | 2017-09-**09** um 14:00 Uhr </br>2017-09-**11** um 14:00 Uhr </br>2017-09-**13** um 14:00 Uhr </br>2017-09-**15** um 14:00 Uhr </br>usw. |
 ||||
 
 Es gilt also: Unabhängig davon, wie weit die angegebene Startzeit zurückliegt – z.B. am **05**.09.2017 um 14:00 Uhr oder am **01**.09.2017 um 14:00 Uhr –, wird für die erste Ausführung immer die angegebene Startzeit verwendet.
@@ -119,29 +126,28 @@ Es gilt also: Unabhängig davon, wie weit die angegebene Startzeit zurückliegt 
 
 Im Folgenden finden Sie einige Beispiele für Serien, die Sie für die Trigger einrichten können, die die Optionen unterstützen:
 
-| Trigger | Serie | Intervall | Frequency | Startzeit | An diesen Tagen | Zu diesen Stunden | Zu diesen Minuten | Hinweis |
+| Trigger | Serie | Intervall | Häufigkeit | Startzeit | An diesen Tagen | Zu diesen Stunden | Zu diesen Minuten | Hinweis |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Serie, <br>Schiebefenster | Ausführung alle 15 Minuten (ohne Startdatum und -uhrzeit) | 15 | Minute | {keine} | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird sofort gestartet, und anschließend werden basierend auf der letzten Ausführungszeit zukünftige Wiederholungen berechnet. |
-| Serie, <br>Schiebefenster | Ausführung alle 15 Minuten (mit Startdatum und -uhrzeit) | 15 | Minute | *startDate*T*startTime*Z | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet, und anschließend werden basierend auf der letzten Ausführungszeit zukünftige Wiederholungen berechnet. |
-| Serie, <br>Schiebefenster | Ausführung einmal pro Stunde zur vollen Stunde (mit Startdatum und -uhrzeit) | 1 | Hour | *startDate*Thh:00:00Z | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet. Zukünftige Wiederholungen werden jede Stunde beim Minutenwert „00“ ausgeführt. Die Berechnung erfolgt aus der Startzeit. <p>Wenn für die Häufigkeit „Week“ (Woche) oder „Month“ (Monat) ausgewählt wurde, wird der Zeitplan nur an einem Tag der Woche bzw. einem Tag des Monats ausgeführt. |
+| Serie, <br>Schiebefenster | Ausführung alle 15 Minuten (mit Startdatum und -uhrzeit) | 15 | Minute | *startDate* T *startTime* Z | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet, und anschließend werden basierend auf der letzten Ausführungszeit zukünftige Wiederholungen berechnet. |
+| Serie, <br>Schiebefenster | Ausführung einmal pro Stunde zur vollen Stunde (mit Startdatum und -uhrzeit) | 1 | Hour | *startDate* Thh:00:00Z | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet. Zukünftige Wiederholungen werden jede Stunde beim Minutenwert „00“ ausgeführt. Die Berechnung erfolgt aus der Startzeit. <p>Wenn für die Häufigkeit „Week“ (Woche) oder „Month“ (Monat) ausgewählt wurde, wird der Zeitplan nur an einem Tag der Woche bzw. einem Tag des Monats ausgeführt. |
 | Serie, <br>Schiebefenster | Ausführung täglich einmal pro Stunde (ohne Startdatum und -uhrzeit) | 1 | Hour | {keine} | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird sofort gestartet, und anschließend werden basierend auf der letzten Ausführungszeit zukünftige Wiederholungen berechnet. <p>Wenn für die Häufigkeit „Week“ (Woche) oder „Month“ (Monat) ausgewählt wurde, wird der Zeitplan nur an einem Tag der Woche bzw. einem Tag des Monats ausgeführt. |
-| Serie, <br>Schiebefenster | Ausführung täglich einmal pro Stunde (mit Startdatum und -uhrzeit) | 1 | Hour | *startDate*T*startTime*Z | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet, und anschließend werden basierend auf der letzten Ausführungszeit zukünftige Wiederholungen berechnet. <p>Wenn für die Häufigkeit „Week“ (Woche) oder „Month“ (Monat) ausgewählt wurde, wird der Zeitplan nur an einem Tag der Woche bzw. einem Tag des Monats ausgeführt. |
-| Serie, <br>Schiebefenster | Ausführung einmal pro Stunde jeweils 15 Minuten nach der vollen Stunde (mit Startdatum und -uhrzeit) | 1 | Hour | *startDate*T00:15:00Z | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet. Zukünftige Wiederholungen werden jede Stunde beim Minutenwert „15“ ausgeführt. Die Berechnung erfolgt aus der Startzeit, die Ausführungen finden also um 00:15 Uhr, 01:15 Uhr, 02:15 Uhr usw. statt. |
+| Serie, <br>Schiebefenster | Ausführung täglich einmal pro Stunde (mit Startdatum und -uhrzeit) | 1 | Hour | *startDate* T *startTime* Z | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet, und anschließend werden basierend auf der letzten Ausführungszeit zukünftige Wiederholungen berechnet. <p>Wenn für die Häufigkeit „Week“ (Woche) oder „Month“ (Monat) ausgewählt wurde, wird der Zeitplan nur an einem Tag der Woche bzw. einem Tag des Monats ausgeführt. |
+| Serie, <br>Schiebefenster | Ausführung einmal pro Stunde jeweils 15 Minuten nach der vollen Stunde (mit Startdatum und -uhrzeit) | 1 | Hour | *startDate* T00:15:00Z | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet. Zukünftige Wiederholungen werden jede Stunde beim Minutenwert „15“ ausgeführt. Die Berechnung erfolgt aus der Startzeit, die Ausführungen finden also um 00:15 Uhr, 01:15 Uhr, 02:15 Uhr usw. statt. |
 | Serie | Ausführung einmal pro Stunde jeweils 15 Minuten nach der vollen Stunde (ohne Startdatum und -uhrzeit) | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Dieser Zeitplan wird um 00:15, 1:15, 2:15 usw. ausgeführt. Außerdem entspricht dieser Zeitplan der Häufigkeit „Hour“ (Stunde) mit einer Startuhrzeit von „15“ Minuten. |
 | Serie | Ausführung alle 15 Minuten beim angegebenen Minutenwert (ohne Startdatum und -uhrzeit). | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Dieser Zeitplan wird erst gestartet, wenn die nächste angegebene 15-Minuten-Marke erreicht ist. |
-| Serie | Ausführung täglich um 8:00 Uhr (ohne Startdatum und -uhrzeit) | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8 | {keine} | Dieser Zeitplan wird täglich um 8:00 Uhr basierend auf dem angegebenen Zeitplan ausgeführt. |
-| Serie | Ausführung täglich um 8:00 Uhr (mit Startdatum und -uhrzeit) | 1 | Day (Tag) | *startDate*T08:00:00Z | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird täglich um 8:00 Uhr basierend auf der angegebenen Startuhrzeit ausgeführt. | 
-| Serie | Ausführung täglich um 8:30 Uhr (ohne Startdatum und -uhrzeit) | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8 | 30 | Dieser Zeitplan wird täglich um 8:30 Uhr basierend auf dem angegebenen Zeitplan ausgeführt. |
-| Serie | Ausführung täglich um 8:30 Uhr (mit Startdatum und -uhrzeit) | 1 | Day (Tag) | *startDate*T08:30:00Z | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird am angegebenen Startdatum um 8:30 Uhr gestartet. |
-| Serie | Ausführung täglich um 8:30 und 16:30 Uhr | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8, 16 | 30 | |
-| Serie | Ausführung täglich um 8:30 Uhr, 8:45 Uhr, 16:30 Uhr und 16:45 Uhr | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8, 16 | 30, 45 | |
-| Serie | Ausführung jeden Samstag um 17:00 Uhr (ohne Startdatum und -uhrzeit) | 1 | Woche | {keine} | „Saturday“ (Samstag) | 17 | 00 | Dieser Zeitplan wird jeden Samstag um 17:00 Uhr ausgeführt. |
-| Serie | Ausführung jeden Samstag um 17:00 Uhr (mit Startdatum und -uhrzeit) | 1 | Woche | *startDate*T17:00:00Z | „Saturday“ (Samstag) | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet, also hier am 9. September 2017 um 17:00 Uhr. Zukünftige Wiederholungen werden jeden Samstag um 17:00 Uhr ausgeführt. |
-| Serie | Ausführung jeden Dienstag und Donnerstag um 17:00 Uhr | 1 | Woche | {keine} | „Tuesday“ (Dienstag), „Thursday“ (Donnerstag) | 17 | {keine} | Dieser Zeitplan wird jeden Dienstag und Donnerstag um 17:00 Uhr ausgeführt. |
-| Serie | Ausführung einmal pro Stunde während der Geschäftszeiten | 1 | Woche | {keine} | Wählen Sie alle Tage mit Ausnahme von Samstag und Sonntag aus. | Wählen Sie die gewünschten Stunden des Tages aus. | Wählen Sie die gewünschten Minuten der Stunde aus. | Wenn Ihre Geschäftszeiten beispielsweise den Zeitraum von 8:00 bis 17:00 Uhr umfassen, wählen Sie „8, 9, 10, 11, 12, 13, 14, 15, 16, 17“ als Stunden des Tages aus. <p>Wählen Sie bei einer Geschäftszeit von 8:30 bis 17:30 Uhr die obigen Stunden des Tages sowie „30“ als Minuten der Stunde aus. |
-| Serie | Ausführung einmal pro Tag an Wochenenden | 1 | Woche | {keine} | „Saturday“ (Samstag), „Sunday“ (Sonntag) | Wählen Sie die gewünschten Stunden des Tages aus. | Wählen Sie wie gewünscht die Minuten der Stunde aus. | Dieser Zeitplan wird jeden Samstag und Sonntag basierend auf dem angegebenen Zeitplan ausgeführt. |
-| Serie | Ausführung alle zwei Wochen nur am Montag im Abstand von 15 Minuten | 2 | Woche | {keine} | „Monday“ (Montag) | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Dieser Zeitplan wird jeden zweiten Montag jeweils zur 15-Minuten-Marke ausgeführt. |
-| Serie | Ausführung jeden Monat | 1 | Month (Monat) | *startDate*T*startTime*Z | {nicht verfügbar} | {nicht verfügbar} | {nicht verfügbar} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur angegebenen Uhrzeit gestartet. Zukünftige Wiederholungen werden basierend auf Startdatum und -uhrzeit berechnet. Wenn Sie Startdatum und -uhrzeit nicht angeben, werden in diesem Zeitplan das Datum und die Uhrzeit der Erstellung verwendet. |
+| Serie | Ausführung täglich um 8 Uhr *plus* die Minutenmarkierung, zu der Sie Ihre Logik-App speichern. | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8 | {keine} | Ohne Startdatum und -uhrzeit wird dieser Zeitplan auf Grundlage des Zeitpunkts ausgeführt, zu dem Sie die Logik-App speichern (PUT-Vorgang). |
+| Serie | Ausführung täglich um 8:00 Uhr (mit Startdatum und -uhrzeit) | 1 | Day (Tag) | *startDate* T08:00:00Z | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet. Zukünftige Vorkommen werden täglich um 8:00 Uhr ausgeführt. | 
+| Serie | Ausführung täglich um 8:00 Uhr (ohne Startdatum und -uhrzeit) | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8 | 00 | Dieser Zeitplan wird jeden Tag um 8:00 Uhr ausgeführt. |
+| Serie | Ausführung täglich um 8:00 Uhr und 16:00 Uhr | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8, 16 | 0 | |
+| Serie | Ausführung täglich um 8:30 Uhr, 8:45 Uhr, 16:30 Uhr und 16:45 Uhr. | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8, 16 | 30, 45 | |
+| Serie | Ausführung jeden Samstag um 17:00 Uhr (ohne Startdatum und -uhrzeit) | 1 | Week | {keine} | „Saturday“ (Samstag) | 17 | 0 | Dieser Zeitplan wird jeden Samstag um 17:00 Uhr ausgeführt. |
+| Serie | Ausführung jeden Samstag um 17:00 Uhr (mit Startdatum und -uhrzeit) | 1 | Week | *startDate* T17:00:00Z | „Saturday“ (Samstag) | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet, also hier am 9. September 2017 um 17:00 Uhr. Zukünftige Wiederholungen werden jeden Samstag um 17:00 Uhr ausgeführt. |
+| Serie | Ausführung jeden Dienstag und Donnerstag um 17 Uhr *plus* die Minutenmarkierung, zu der Sie Ihre Logik-App speichern.| 1 | Week | {keine} | „Tuesday“ (Dienstag), „Thursday“ (Donnerstag) | 17 | {keine} | |
+| Serie | Ausführung einmal pro Stunde während der Geschäftszeiten. | 1 | Week | {keine} | Wählen Sie alle Tage mit Ausnahme von Samstag und Sonntag aus. | Wählen Sie die gewünschten Stunden des Tages aus. | Wählen Sie die gewünschten Minuten der Stunde aus. | Wenn Ihre Geschäftszeiten beispielsweise den Zeitraum von 8:00 Uhr bis 17:00 Uhr umfassen, wählen Sie „8, 9, 10, 11, 12, 13, 14, 15, 16, 17“ als Stunden des Tages *plus* „0“ als Minuten der Stunde aus. |
+| Serie | Ausführung einmal pro Tag an Wochenenden | 1 | Week | {keine} | „Saturday“ (Samstag), „Sunday“ (Sonntag) | Wählen Sie die gewünschten Stunden des Tages aus. | Wählen Sie wie gewünscht die Minuten der Stunde aus. | Dieser Zeitplan wird jeden Samstag und Sonntag basierend auf dem angegebenen Zeitplan ausgeführt. |
+| Serie | Ausführung alle zwei Wochen nur am Montag im Abstand von 15 Minuten | 2 | Week | {keine} | „Monday“ (Montag) | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Dieser Zeitplan wird jeden zweiten Montag jeweils zur 15-Minuten-Marke ausgeführt. |
+| Serie | Ausführung jeden Monat | 1 | Month (Monat) | *startDate* T *startTime* Z | {nicht verfügbar} | {nicht verfügbar} | {nicht verfügbar} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur angegebenen Uhrzeit gestartet. Zukünftige Wiederholungen werden basierend auf Startdatum und -uhrzeit berechnet. Wenn Sie Startdatum und -uhrzeit nicht angeben, werden in diesem Zeitplan das Datum und die Uhrzeit der Erstellung verwendet. |
 | Serie | Ausführung jede Stunde an einem Tag des Monats | 1 | Month (Monat) | {siehe Hinweis} | {nicht verfügbar} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | {siehe Hinweis} | Wenn Sie Startdatum und -uhrzeit nicht angeben, werden in diesem Zeitplan das Datum und die Uhrzeit der Erstellung verwendet. Geben Sie die Minuten der Stunde oder eine Startuhrzeit an, oder verwenden Sie die Uhrzeit der Erstellung, um die Minuten für den Zeitplan der Wiederholung zu steuern. Wenn die Startuhrzeit oder die Uhrzeit der Erstellung beispielsweise 8:25 Uhr lautet, wird dieser Zeitplan um 8:25, 9:25, 10:25 usw. ausgeführt. |
 |||||||||
 

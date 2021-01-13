@@ -1,18 +1,19 @@
 ---
-title: Konfigurieren der Dienstparameter in Azure Database for PostgreSQL (Einzelserver)
-description: In diesem Artikel wird beschrieben, wie Sie mit der Azure CLI-Befehlszeile die Dienstparameter in Azure Database for PostgreSQL (Einzelserver) konfigurieren.
-author: rachel-msft
-ms.author: raagyema
+title: Konfigurieren von Parametern – Azure Database for PostgreSQL (Einzelserver)
+description: In diesem Artikel wird beschrieben, wie Sie mit der Azure-Befehlszeilenschnittstelle die Postgres-Parameter in Azure Database for PostgreSQL (Einzelserver) konfigurieren.
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: f276247076438a03973148b5cf65ddbeb409b024
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4231f348f99073406fcb6a5bef9bf0f84cacf2eb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274779"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005570"
 ---
 # <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Anpassen der Serverkonfigurationsparameter für Azure Database for PostgreSQL (Einzelserver) mithilfe der Azure-Befehlszeilenschnittstelle
 Sie können Konfigurationsparameter für einen Azure PostgreSQL-Server mithilfe der Befehlszeilenschnittstelle (Azure CLI) auflisten, anzeigen und aktualisieren. Auf Serverebene ist eine Teilmenge der Engine-Konfigurationen verfügbar und kann geändert werden. 

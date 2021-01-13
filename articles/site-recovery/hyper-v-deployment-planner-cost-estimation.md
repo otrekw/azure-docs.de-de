@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60947199"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999211"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht zur Kostenvorkalkulation 
 
@@ -28,7 +28,7 @@ Die Zusammenfassung erleichtert das Verständnis der Kosten, die für Speicher, 
  
 Sie können die Kosten entweder monatlich oder jährlich anzeigen. Erfahren Sie mehr zu [unterstützten Zielregionen](./hyper-v-deployment-planner-cost-estimation.md#supported-target-regions) und [unterstützten Währungen](./hyper-v-deployment-planner-cost-estimation.md#supported-currencies).
 
-**Cost by components** (Kosten nach Komponenten): Die Gesamtkosten für die Notfallwiederherstellung sind in vier Komponenten unterteilt: Compute-, Speicher- und Netzwerkkosten sowie Azure Site Recovery-Lizenzkosten. Die Kosten werden basierend auf dem Verbrauch berechnet, zu dem es während der Replikation und des DR-Drills kommt. Für die Berechnungen werden die Bereiche Compute, Speicher (Premium und Standard), die zwischen dem lokalen Standort und Azure konfigurierte ExpressRoute/VPN-Verbindung und die Site Recovery-Lizenz herangezogen.
+**Cost by components** (Kosten nach Komponenten): Die Gesamtkosten für die Notfallwiederherstellung sind in vier Komponenten unterteilt: Compute-, Speicher-, Netzwerk- und Site Recovery-Lizenzkosten. Die Kosten werden basierend auf dem Verbrauch berechnet, zu dem es während der Replikation und des DR-Drills kommt. Für die Berechnungen werden die Bereiche Compute, Speicher (Premium und Standard), die zwischen dem lokalen Standort und Azure konfigurierte ExpressRoute/VPN-Verbindung und die Site Recovery-Lizenz herangezogen.
 
 **Cost by states** (Kosten nach Zustand): Die Kategorie für die Gesamtkosten der Notfallwiederherstellung basieren auf zwei unterschiedlichen Zuständen: Replikation und DR-Drill. 
 
@@ -52,16 +52,16 @@ Im ersten Abschnitt werden die Kosten für die Notfallwiederherstellung nach Kom
 
 **Compute**: Die Kosten für IaaS-VMs, die in Azure zu Notfallwiederherstellungszwecken ausgeführt werden. Hierin sind VMs enthalten, die mit Site Recovery bei DR-Drills (Testfailovern) erstellt werden. Außerdem sind die in Azure ausgeführten VMs enthalten, z.B. SQL Server mit Always On-Verfügbarkeitsgruppen und Domänencontrollern oder Domänennamenservern.
 
-**Speicher**: Die Kosten für den Azure-Speicherverbrauch für Notfallwiederherstellungszwecke. Hierin ist die Speichernutzung für Replikationsvorgänge und DR-Drills enthalten.
+**Storage**: Die Kosten für den Azure-Speicherverbrauch für Notfallwiederherstellungszwecke. Hierin ist die Speichernutzung für Replikationsvorgänge und DR-Drills enthalten.
 
-**Network** (Netzwerk): Die Kosten für die ExpressRoute- und Site-to-Site-VPN-Verbindung für Notfallwiederherstellungszwecke. 
+**Netzwerk:** Die Kosten für die ExpressRoute- und Site-to-Site-VPN-Verbindung für Notfallwiederherstellungszwecke. 
 
 **Azure Site Recovery-Lizenz**: Die Site Recovery-Lizenzkosten für alle kompatiblen VMs. Wenn Sie eine VM manuell in die Tabelle für die ausführliche Kostenanalyse eingegeben haben, sind auch die Site Recovery-Lizenzkosten für diese VM enthalten.
 
 ### <a name="overall-dr-costs-by-states"></a>Overall DR costs by states (Gesamtkosten der Notfallwiederherstellung nach Zuständen)
 Die Gesamtkosten der Notfallwiederherstellung werden basierend auf zwei unterschiedlichen Zuständen kategorisiert: Replikation und DR-Drill.
 
-**Replication** (Replikation): Die Kosten, die während der Replikation anfallen. Hierin sind die Kosten für Speicher, Netzwerk und die Site Recovery-Lizenz enthalten. 
+**Replikation**: Die Kosten, die während der Replikation anfallen. Hierin sind die Kosten für Speicher, Netzwerk und die Site Recovery-Lizenz enthalten. 
 
 **DR-Drill**: Die Kosten, die bei DR-Drills anfallen. Bei DR-Drills startet Site Recovery virtuelle Computer. Die Kosten für DR-Drills decken die Compute- und Speicherkosten für die ausgeführten VMs ab.
 
@@ -78,7 +78,7 @@ Wählen Sie je nach Ihren Anforderungen die passende Einstellung aus.
 
 **VPN Gateway type** (Typ des VPN-Gateways): Wählen Sie das Azure VPN-Gateway aus, sofern ein solches in Ihrer Umgebung vorhanden ist. Standardmäßig ist „NA“ (Nicht verfügbar) festgelegt.
 
-**Target Region** (Zielregion): Angegebene Azure-Region für die Notfallwiederherstellung. Der im Bericht verwendete Preis für Compute, Speicher, Netzwerk und Lizenz basiert auf den Azure-Preisen für diese Region. 
+**Zielregion**: Angegebene Azure-Region für die Notfallwiederherstellung. Der im Bericht verwendete Preis für Compute, Speicher, Netzwerk und Lizenz basiert auf den Azure-Preisen für diese Region. 
 
 ### <a name="vm-running-on-azure"></a>VM running on Azure (VM unter Azure)
 Es kann beispielsweise sein, dass Sie über einen Domänencontroller oder eine DNS- oder SQL Server-VM mit Always On-Verfügbarkeitsgruppen verfügen, die in Azure für die Notfallwiederherstellung ausgeführt werden. Sie können die Anzahl von VMs und die Größe angeben, um die entsprechenden Computingkosten in den DR-Gesamtkosten zu berücksichtigen. 
@@ -90,7 +90,7 @@ Wenn Sie ein Azure-Partner oder Kunde sind und Ihnen ein allgemeiner Rabatt auf 
 In dieser Tabelle werden die Anzahl von Windows-VMs und anderen VMs sowie die dazugehörigen Computekosten für DR-Drills angezeigt.
 
 ### <a name="settings"></a>Einstellungen 
-**Using managed disk** (Verwalteten Datenträger verwenden): Diese Einstellung gibt an, ob bei DR-Drills ein verwalteter Datenträger verwendet wird. Die Option ist standardmäßig auf **Ja**festgelegt. Wenn Sie **-UseManagedDisks** auf **No** festlegen, wird der Preis für den nicht verwalteten Datenträger für die Kostenkalkulation verwendet.
+**Using managed disk** (Verwalteten Datenträger verwenden): Diese Einstellung gibt an, ob bei DR-Drills ein verwalteter Datenträger verwendet wird. Die Option ist standardmäßig auf **Ja** festgelegt. Wenn Sie **-UseManagedDisks** auf **No** festlegen, wird der Preis für den nicht verwalteten Datenträger für die Kostenkalkulation verwendet.
 
 **Currency**: Die Währung, in der der Bericht erstellt wird.
 
@@ -129,7 +129,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
 1. Wählen Sie **Re-calculate cost** (Kosten erneut berechnen), um die Kosten zu aktualisieren.
 
-**VM Name** (VM-Name): Der Name der VM.
+**VM Name:** Der Name der VM.
 
 **Number of VMs** (Anzahl von VMs): Die Anzahl von VMs, die mit der Konfiguration übereinstimmen. Sie können die Anzahl von vorhandenen VMs aktualisieren, wenn für eine ähnliche Konfiguration mit VMs keine Profilerstellung durchgeführt wird, sondern wenn diese geschützt werden.
 
@@ -149,7 +149,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
 **Data redundancy** (Datenredundanz): Lokal redundanter Speicher, georedundanter Speicher oder schreibgeschützter georedundanter Speicher. Standardmäßig wird lokal redundanter Speicher verwendet. Sie können den Typ basierend auf Ihrem Speicherkonto für bestimmte VMs ändern, oder Sie können den neuen Typ auf alle VMs anwenden. Ändern Sie den Typ der obersten Zeile, und wählen Sie die Option **Auf alle anwenden**. Die Speicherkosten für die Replikation werden basierend auf dem Preis für die Datenredundanz berechnet, die Sie ausgewählt haben. 
 
-**Azure Hybrid Use Benefit** (Azure-Hybridnutzungsvorteil): Sie können den Azure-Hybridvorteil auf virtuelle Windows-Computer anwenden, falls zutreffend. Die Option ist standardmäßig auf **Ja**festgelegt. Sie können die Einstellung für bestimmte VMs ändern oder alle VMs aktualisieren. Wählen Sie **Apply to all** (Auf alle anwenden).
+**Azure Hybrid Use Benefit** (Azure-Hybridnutzungsvorteil): Sie können den Azure-Hybridvorteil auf virtuelle Windows-Computer anwenden, falls zutreffend. Die Option ist standardmäßig auf **Ja** festgelegt. Sie können die Einstellung für bestimmte VMs ändern oder alle VMs aktualisieren. Wählen Sie **Apply to all** (Auf alle anwenden).
 
 **Total Azure consumption** (Azure-Gesamtverbrauch): Die Compute-, Speicher- und Site Recovery-Lizenzkosten für Ihre Notfallwiederherstellung. Basierend auf Ihrer Auswahl werden die Kosten entweder monatlich oder jährlich angezeigt.
 
@@ -167,16 +167,16 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Unterstützte Währungen
 Der Site Recovery-Bereitstellungsplaner kann den Kostenbericht für die folgenden Währungen erstellen:
 
-|Currency|NAME||Currency|NAME||Currency|NAME|
+|Währung|Name|Währung|Name|Währung|Name|
 |---|---|---|---|---|---|---|---|
-|ARS|Argentinische Pesos ($)||AUD|Australischer Dollar ($)||BRL|Brasilianischer Real (R$)|
-|CAD|Kanadischer Dollar ($)||CHF|Schweizer Franken (CHF)||DKK|Dänische Krone (kr)|
-|EUR|Euro (€)||GBP|Britisches Pfund (£)||HKD|Hongkong-Dollar (HK$)|
-|IDR|Indonesische Rupiah (Rp)||INR|Indische Rupie (₹)||JPY|Japanischer Yen (¥)|
-|KRW|Südkoreanische Won (₩)||MXN|Mexikanischer Peso (MX$)||MYR|Malaysischer Ringgit (RM$)|
+|ARS|Argentinische Pesos ($)|AUD|Australischer Dollar ($)|BRL|Brasilianischer Real (R$)|
+|CAD|Kanadischer Dollar ($)|CHF|Schweizer Franken (CHF)|DKK|Dänische Krone (kr)|
+|EUR|Euro (€)|GBP|Britisches Pfund (£)|HKD|Hongkong-Dollar (HK$)|
+|IDR|Indonesische Rupiah (Rp)|INR|Indische Rupie (₹)|JPY|Japanischer Yen (¥)|
+|KRW|Südkoreanische Won (₩)|MXN|Mexikanischer Peso (MX$)|MYR|Malaysischer Ringgit (RM$)|
 |NOK|Norwegische Krone (kr)||NZD|Neuseeländischer Dollar ($)||RUB|Russische Rubel (руб)|
-|SAR|Saudi-Riyal (SR)||SEK|Schwedische Krone (kr)||TWD|Taiwanesische Dollar (NT$)|
-|TRY|Türkische Lira (TL)||USD| US-Dollar ($)||ZAR|Südafrikanischer Rand (R)|
+|SAR|Saudi-Riyal (SR)|SEK|Schwedische Krone (kr)|TWD|Taiwanesische Dollar (NT$)|
+|TRY|Türkische Lira (TL)|USD| US-Dollar ($)|ZAR|Südafrikanischer Rand (R)|
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich unter [Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure](hyper-v-azure-tutorial.md) darüber, wie Sie Hyper-V-VMs in Azure mit Site Recovery schützen.

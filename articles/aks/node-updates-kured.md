@@ -1,24 +1,22 @@
 ---
-title: Aktualisieren und Neustarten von Linux-Knoten mit kured in Azure Kubernetes Service (AKS)
+title: Verarbeiten der Neustarts von Linux-Knoten mit kured
+titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Linux-Knoten mit kured in Azure Kubernetes Service (AKS) aktualisiert und automatisch neu gestartet werden
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.author: mlearned
-ms.openlocfilehash: 580d1316c2bfc6514a148ed6fba78a8e77bd880e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 35c9e76c234e4b09fbb090eda363506ee3e11130
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67614901"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88164239"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Anwenden von Sicherheits- und Kernelupdates auf Linux-Knoten in Azure Kubernetes Service (AKS)
 
 Sicherheitsupdates werden automatisch auf Linux-Knoten in AKS angewendet, um Ihre Cluster zu schützen. Diese Updates enthalten Sicherheitsfixes für das Betriebssystem oder Kernelupdates. Einige dieser Updates erfordern den Neustart eines Knotens, um den Vorgang abzuschließen. AKS startet diese Linux-Knoten nicht automatisch neu, um das Update abzuschließen.
 
-Der Prozess, Windows Server-Knoten (derzeit in der Vorschau in AKS) aktuell zu halten, ist ein wenig anders. Windows Server-Knoten werden nicht täglich aktualisiert. Stattdessen führen Sie ein AKS-Upgrade aus, das neue Knoten mit dem neuesten Basisimage und den neuesten Patches für Windows Server bereitstellt. Weitere Informationen zu AKS-Clustern, die Windows Server-Knoten verwenden, finden Sie unter [Durchführen eines Upgrades für einen Knotenpool][nodepool-upgrade].
+Der Prozess, mit dem Windows Server-Knoten aktuell gehalten werden, ist ein wenig anders. Windows Server-Knoten werden nicht täglich aktualisiert. Stattdessen führen Sie ein AKS-Upgrade aus, das neue Knoten mit dem neuesten Basisimage und den neuesten Patches für Windows Server bereitstellt. Weitere Informationen zu AKS-Clustern, die Windows Server-Knoten verwenden, finden Sie unter [Durchführen eines Upgrades für einen Knotenpool][nodepool-upgrade].
 
 In diesem Artikel erfahren Sie, wie Sie mit dem Open-Source-Daemon [kured (KUbernetes REboot Daemon)][kured] nach Linux-Knoten suchen, die einen Neustart erfordern, und dann automatisch die Neuplanung der ausgeführten Pods und den Knotenneustart verarbeiten.
 
@@ -54,13 +52,23 @@ Sie können während eines Upgrades nicht die gleiche Kubernetes-Version behalte
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>Bereitstellen von kured in einem AKS-Cluster
 
-Zum Bereitstellen des `kured`-DaemonSet wenden Sie das folgende Beispiel-YAML-Manifest von der GitHub-Projektseite an. Dieses Manifest erstellt eine Rolle und eine Clusterrolle, Bindungen und ein Dienstkonto. Dann wird das DaemonSet mit `kured`, Version 1.1.0, bereitgestellt. Diese Version unterstützt AKS-Cluster, Version 1.9 oder höher.
+Installieren Sie zur Bereitstellung des `kured` DaemonSets das folgende offizielle Kured Helm-Chart. Dies erstellt eine Rolle und eine Clusterrolle, Bindungen und ein Dienstkonto. Dann wird das DaemonSet mit `kured` bereitgestellt.
 
 ```console
-kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
+# Add the Kured Helm repository
+helm repo add kured https://weaveworks.github.io/kured
+
+# Update your local Helm chart repository cache
+helm repo update
+
+# Create a dedicated namespace where you would like to deploy kured into
+kubectl create namespace kured
+
+# Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
+helm install kured kured/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Sie können auch zusätzliche Parameter für `kured` konfigurieren, z.B. die Integration in Prometheus oder Slack. Weitere Informationen zu zusätzlichen Konfigurationsparametern finden Sie in der [kured-Installationsdokumentation][kured-install].
+Sie können auch zusätzliche Parameter für `kured` konfigurieren, z.B. die Integration in Prometheus oder Slack. Weitere Informationen zu zusätzlichen Konfigurationsparametern finden Sie im [Kured Helm-Chart][kured-install].
 
 ## <a name="update-cluster-nodes"></a>Aktualisieren von Clusterknoten
 
@@ -99,7 +107,7 @@ Weitere Informationen zu AKS-Clustern, die Windows Server-Knoten verwenden, fin
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
-[kured-install]: https://github.com/weaveworks/kured#installation
+[kured-install]: https://github.com/weaveworks/kured/tree/master/charts/kured
 [kubectl-get-nodes]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- LINKS - internal -->

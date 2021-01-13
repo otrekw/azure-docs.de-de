@@ -7,15 +7,14 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 ms.localizationpriority: high
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: fc3145ee0b60402026389863b94d21da4b3e4123
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: abe09cf10e241ec95ceed767e7038cde07667fc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70307761"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322732"
 ---
 ::: zone target="docs"
 
@@ -69,7 +68,12 @@ Stellen Sie sicher, dass sich Ihre Daten in den Speicherkonten befinden, bevor S
 
       ![Ressourcengruppe für verwaltete Datenträger](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
-  - Wenn Sie eine VHDX oder eine dynamische oder differenzierende VHD kopiert haben, wird die VHDX bzw. VHD als Blockblob in das Stagingspeicherkonto hochgeladen. Wechseln Sie zu Ihrem **Stagingspeicherkonto > Blobs**, und wählen Sie den geeigneten Container aus: StandardSSD, StandardHDD oder PremiumSSD. Die VHDX/VHDs sollten als Blockblobs in Ihrem Stagingspeicherkonto angezeigt werden.
+    > [!NOTE]
+    > Wird ein Seitenblob während eines Datenkopiervorgangs nicht in einen verwalteten Datenträger konvertiert, bleibt es im Speicherkonto, und Ihnen wird der Speicher in Rechnung gestellt.
+
+  -  Wenn Sie eine VHDX oder eine dynamische oder differenzierende VHD kopiert haben, wird die VHDX bzw. VHD als Blockblob in das Stagingspeicherkonto hochgeladen. Wechseln Sie zu Ihrem **Stagingspeicherkonto > Blobs**, und wählen Sie den geeigneten Container aus: StandardSSD, StandardHDD oder PremiumSSD. Die VHDX/VHDs sollten als Blockblobs in Ihrem Stagingspeicherkonto angezeigt werden.
+  
+
   
 ::: zone-end
 
@@ -101,7 +105,7 @@ Führen Sie die folgenden Schritte aus, um sich zu vergewissern, dass die Daten 
 
 ## <a name="erasure-of-data-from-data-box-disk"></a>Löschen von Daten vom Data Box-Datenträger
 
-Nachdem der Kopiervorgang abgeschlossen ist und Sie überprüft haben, dass sich die Daten im Azure-Speicherkonto befinden, werden die Datenträger gemäß dem NIST-Standard auf sichere Weise gelöscht.
+Nachdem die Daten in Azure hochgeladen wurden, löscht Data Box Disk die Daten auf den Datenträgern gemäß dem Standard [NIST SP 800-88](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
 
 ::: zone target="docs"
 
@@ -117,7 +121,7 @@ In diesem Tutorial haben Sie Informationen zu Azure Data Box-Datenträgern erhal
 Fahren Sie mit dem nächsten Artikel zur Vorgehensweise fort, um zu erfahren, wie Sie den Data Box-Datenträger über das Azure-Portal verwalten.
 
 > [!div class="nextstepaction"]
-> [Use Azure portal to administer Azure Data Box Disk](./data-box-portal-ui-admin.md) (Verwenden des Azure-Portals zum Verwalten des Azure Data Box-Datenträgers)
+> [Verwalten von Data Box Disk über das Azure-Portal](./data-box-portal-ui-admin.md)
 
 ::: zone-end
 

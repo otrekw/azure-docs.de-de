@@ -1,19 +1,14 @@
 ---
-title: Azure Container Registry-Webhooks
-description: Erfahren Sie, wie Sie Webhooks verwenden, um Ereignisse auszulösen, wenn in einem Ihrer Registrierungsrepositorys bestimmte Aktionen stattfinden.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Webhooks zum Reagieren auf Registrierungsaktionen
+description: Erfahren Sie, wie Sie Webhooks verwenden, um Ereignisse auszulösen, wenn in einem Ihrer Registrierungsrepositorys Push- oder Pull-Aktionen stattfinden.
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: danlep
-ms.openlocfilehash: 59e8d4979e7be02d6097e1c3eccc44e64da87e95
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311590"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004482"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Verwenden von Azure Container Registry-Webhooks
 
@@ -23,7 +18,7 @@ Ausführliche Informationen zu Webhookanforderungen finden Sie unter [Referenz z
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Containerregistrierung: Erstellen Sie in Ihrem Azure-Abonnement eine Containerregistrierung. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md) oder die [Azure CLI](container-registry-get-started-azure-cli.md). Die [Azure Container Registry-SKUs](container-registry-skus.md) haben unterschiedliche Kontingente für Webhooks.
+* Azure-Containerregistrierung: Erstellen Sie in Ihrem Azure-Abonnement eine Containerregistrierung. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md) oder die [Azure CLI](container-registry-get-started-azure-cli.md). Die [Azure Container Registry-Dienstebenen](container-registry-skus.md) haben unterschiedliche Kontingente für Webhooks.
 * Docker CLI: Installieren Sie die [Docker-Engine](https://docs.docker.com/engine/installation/), um Ihren lokalen Computer als Docker-Host einzurichten und auf die Befehle der Docker CLI zuzugreifen.
 
 ## <a name="create-webhook---azure-portal"></a>Erstellen von Webhooks – Azure-Portal
@@ -37,16 +32,16 @@ Ausführliche Informationen zu Webhookanforderungen finden Sie unter [Referenz z
 | Wert | BESCHREIBUNG |
 |---|---|
 | Webhookname | Der Name, den Sie dem Webhook geben möchten. Er darf nur Buchstaben und Zahlen enthalten und muss 5 bis 50 Zeichen lang sein. |
-| Location | Geben Sie für eine [georeplizierte](container-registry-geo-replication.md) Registrierung die Azure-Region des Registrierungsreplikats an. 
+| Standort | Geben Sie für eine [georeplizierte](container-registry-geo-replication.md) Registrierung die Azure-Region des Registrierungsreplikats an. 
 | Dienst-URI | Der URI, an den der Webhook POST-Benachrichtigungen senden soll. |
 | Benutzerdefinierte Header | Header, die Sie zusammen mit der POST-Anforderung übergeben möchten. Diese müssen im Format „Schlüssel: Wert“ vorliegen. |
 | Triggeraktionen | Aktionen, die den Webhook auslösen. Zu den Aktionen gehören Pushvorgänge für Images, Löschen von Images, Pushvorgänge für Helm-Diagramme, Löschen von Helm-Diagrammen und Quarantäne für Images. Sie können eine oder mehrere Aktionen auswählen, um den Webhook auszulösen. |
 | Status | Der Status des Webhooks nach der Erstellung. Der Webhook ist standardmäßig aktiviert. |
-| Bereich | Der Bereich, in dem der Webhook funktioniert. Wenn nichts anderes angegeben ist, gilt der Bereich für alle Ereignisse in der Registrierung. Der Bereich kann im Format „repository:tag“ für ein Repository oder ein Tag oder mit „respository:*“ für alle Tags in einem Repository angegeben werden. |
+| `Scope` | Der Bereich, in dem der Webhook funktioniert. Wenn nichts anderes angegeben ist, gilt der Bereich für alle Ereignisse in der Registrierung. Der Bereich kann im Format „repository:tag“ für ein Repository oder ein Tag oder mit „respository:*“ für alle Tags in einem Repository angegeben werden. |
 
 Beispielformular für Webhook:
 
-![ACR-Webhookerstellungsoberfläche im Azure-Portal](./media/container-registry-webhook/webhook.png)
+![Screenshot: Benutzeroberfläche für die Erstellung von ACR-Webhooks im Azure-Portal](./media/container-registry-webhook/webhook.png)
 
 ## <a name="create-webhook---azure-cli"></a>Erstellen von Webhooks – Azure-Befehlszeilenschnittstelle (CLI)
 
@@ -68,7 +63,7 @@ Vor der Verwendung des Webhooks können Sie ihn mithilfe der Schaltfläche **Pin
 
 ![ACR-Webhookerstellungsoberfläche im Azure-Portal](./media/container-registry-webhook/webhook-02.png)
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Um einen ACR-Webhook über die Azure-Befehlszeilenschnittstelle zu testen, verwenden Sie den Befehl [az acr webhook ping](/cli/azure/acr/webhook#az-acr-webhook-ping).
 
@@ -88,7 +83,7 @@ az acr webhook list-events --registry mycontainerregistry08 --name myacrwebhook0
 
 Jeder Webhook kann gelöscht werden, indem Sie den Webhook und dann die Schaltfläche **Löschen** im Azure-Portal auswählen.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 az acr webhook delete --registry mycontainerregistry --name myacrwebhook01

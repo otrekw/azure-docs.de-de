@@ -1,5 +1,5 @@
 ---
-title: Übersicht über die Unterstützung mehrerer Mandanten für die Notfallwiederherstellung von VMware-VMs in Azure (CSP) mit Azure Site Recovery | Microsoft-Dokumentation
+title: Notfallwiederherstellung von virtuellen VMware-Computern für mehrere Mandanten mit Azure Site Recovery
 description: Dieser Artikel enthält eine Übersicht über die Azure Site Recovery-Unterstützung für die VMware-Notfallwiederherstellung in Azure in einer Umgebung mit mehreren Mandanten über das CSP-Programm.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64e40341ec56a2e1c561b2bcbb5e584830c14015
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718066"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145581"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Übersicht über die Unterstützung mehrerer Mandanten für die VMware-Notfallwiederherstellung in Azure mit CSP
 
@@ -24,11 +24,11 @@ Dieser Artikel enthält eine Übersicht über die Implementierung und Verwaltung
 
 Es gibt drei wesentliche Modelle mit mehreren Mandanten:
 
-* **Anbieter von gemeinsam genutzten Hostingdiensten**: Der Partner besitzt die physische Infrastruktur und arbeitet mit gemeinsam genutzten Ressourcen (vCenter, Rechenzentren, physischem Speicher usw.), um die VMs mehrerer Mandanten in derselben Infrastruktur zu hosten. Der Partner kann die Verwaltung der Notfallwiederherstellung als verwalteten Dienst bereitstellen, oder der Mandant kann die Notfallwiederherstellung als Self-Service-Lösung betreiben.
+* **Anbieter von gemeinsam genutzten Hostingdiensten** : Der Partner besitzt die physische Infrastruktur und arbeitet mit gemeinsam genutzten Ressourcen (vCenter, Rechenzentren, physischem Speicher usw.), um die VMs mehrerer Mandanten in derselben Infrastruktur zu hosten. Der Partner kann die Verwaltung der Notfallwiederherstellung als verwalteten Dienst bereitstellen, oder der Mandant kann die Notfallwiederherstellung als Self-Service-Lösung betreiben.
 
-* **Anbieter von dedizierten Hostingdiensten**: Der Partner besitzt die physische Infrastruktur, verwendet aber dedizierte Ressourcen (mehrere vCenter-Server, physische Datenspeicher usw.), um die virtuellen Computer der einzelnen Mandanten jeweils in einer separaten Infrastruktur zu hosten. Der Partner kann die Verwaltung der Notfallwiederherstellung als verwalteten Dienst bereitstellen, oder der Mandant kann diese als Self-Service-Lösung betreiben.
+* **Anbieter von dedizierten Hostingdiensten** : Der Partner besitzt die physische Infrastruktur, verwendet aber dedizierte Ressourcen (mehrere vCenter-Server, physische Datenspeicher usw.), um die virtuellen Computer der einzelnen Mandanten jeweils in einer separaten Infrastruktur zu hosten. Der Partner kann die Verwaltung der Notfallwiederherstellung als verwalteten Dienst bereitstellen, oder der Mandant kann diese als Self-Service-Lösung betreiben.
 
-* **Anbieter verwalteter Dienste**: Der Kunde besitzt die physische Infrastruktur, in der die VMs gehostet werden, während der Partner für die Aktivierung und Verwaltung der Notfallwiederherstellung zuständig ist.
+* **Anbieter verwalteter Dienste** : Der Kunde besitzt die physische Infrastruktur, in der die VMs gehostet werden, während der Partner für die Aktivierung und Verwaltung der Notfallwiederherstellung zuständig ist.
 
 ## <a name="shared-hosting-services-provider-hsp"></a>Shared Hosting Services Provider (SHSP)
 
@@ -56,9 +56,9 @@ Ein horizontal skalierter Verarbeitungsserver wird ebenfalls vom Partner gesteue
 
 Jeder Konfigurationsserver im Szenario mit mehreren Mandanten verwendet zwei Konten:
 
-- **vCenter-Zugriffskonto**: Dieses Konto dient zum Ermitteln von Mandanten-VMs. Diesem sind vCenter-Zugriffsberechtigungen zugewiesen. Um Zugriffslücken zu vermeiden, wird empfohlen, dass Partner diese Anmeldeinformationen selbst in das Konfigurationstool eingeben.
+- **vCenter-Zugriffskonto** : Dieses Konto dient zum Ermitteln von Mandanten-VMs. Diesem sind vCenter-Zugriffsberechtigungen zugewiesen. Um Zugriffslücken zu vermeiden, wird empfohlen, dass Partner diese Anmeldeinformationen selbst in das Konfigurationstool eingeben.
 
-- **VM-Zugriffskonto**: Dieses Konto dient zum Installieren des Mobilitätsdienst-Agents auf den VMs des Mandanten mittels automatischer Übertragung mithilfe von Push. Hierbei handelt es sich in der Regel um ein Domänenkonto, das ein Mandant ggf. für einen Partner bereitstellt, oder ein Konto, das der Partner direkt verwaltet. Wenn ein Mandant die Details nicht direkt an den Partner weitergeben möchte, kann die Eingabe der Anmeldeinformationen im Rahmen eines zeitlich begrenzten Zugriffs auf den Konfigurationsserver ermöglicht werden. Alternativ kann der Mandant die Mobility Service-Agents in Zusammenarbeit mit dem Partner manuell installieren.
+- **VM-Zugriffskonto** : Dieses Konto dient zum Installieren des Mobilitätsdienst-Agents auf den VMs des Mandanten mittels automatischer Übertragung mithilfe von Push. Hierbei handelt es sich in der Regel um ein Domänenkonto, das ein Mandant ggf. für einen Partner bereitstellt, oder ein Konto, das der Partner direkt verwaltet. Wenn ein Mandant die Details nicht direkt an den Partner weitergeben möchte, kann die Eingabe der Anmeldeinformationen im Rahmen eines zeitlich begrenzten Zugriffs auf den Konfigurationsserver ermöglicht werden. Alternativ kann der Mandant die Mobility Service-Agents in Zusammenarbeit mit dem Partner manuell installieren.
 
 ## <a name="vcenter-account-requirements"></a>Anforderungen an das vCenter-Konto
 
@@ -72,14 +72,14 @@ Konfigurieren Sie den Konfigurationsserver mit einem Konto, dem eine besondere R
 
 ### <a name="create-a-vcenter-account"></a>Erstellen eines vCenter-Kontos
 
-1. Erstellen Sie eine neue Rolle durch Klonen der vordefinierten Rolle *Schreibgeschützt*, und geben Sie ihr einen passenden Namen (z.B. „Azure_Site_Recovery“ wie in diesem Beispiel).
+1. Erstellen Sie eine neue Rolle durch Klonen der vordefinierten Rolle *Schreibgeschützt* , und geben Sie ihr einen passenden Namen (z.B. „Azure_Site_Recovery“ wie in diesem Beispiel).
 2. Weisen Sie dieser Rolle die folgenden Berechtigungen zu:
 
-   * **Datenspeicher**: Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren
-   * **Netzwerk**: Netzwerk zuweisen
-   * **Ressource**: VM zu Ressourcenpool zuweisen, ausgeschaltete VM migrieren, eingeschaltete VM migrieren
-   * **Aufgaben**: Aufgabe erstellen, Aufgabe aktualisieren
-   * **VM – Konfiguration**: Alle
+   * **Datenspeicher** : Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren
+   * **Netzwerk:** Netzwerk zuweisen
+   * **Ressource:** VM zu Ressourcenpool zuweisen, ausgeschaltete VM migrieren, eingeschaltete VM migrieren
+   * **Tasks** : Aufgabe erstellen, Aufgabe aktualisieren
+   * **VM – Konfiguration** : All
    * **VM – Interaktion** > Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren
    * **VM – Bestand** > Aus vorhandenen erstellen, Neu erstellen, Registrieren, Registrierung aufheben
    * **VM – Bereitstellung** > Download virtueller Computer zulassen, Upload von Dateien virtueller Computer zulassen
@@ -89,7 +89,7 @@ Konfigurieren Sie den Konfigurationsserver mit einem Konto, dem eine besondere R
 
 3. Weisen Sie dem vCenter-Konto (das im Konfigurationsserver des Mandanten verwendet wird) für verschiedene Objekte Zugriffsebenen wie folgt zu:
 
->| Object | Rolle | Anmerkungen |
+>| Object | Role | Bemerkungen |
 >| --- | --- | --- |
 >| vCenter | Schreibgeschützt | Nur erforderlich, um vCenter den Zugriff zum Verwalten verschiedener Objekten zu gewähren. Sie können diese Berechtigung aufheben, wenn das Konto keinem Mandanten zur Verfügung gestellt wird oder nicht für Verwaltungsvorgänge in vCenter verwendet wird. |
 >| Datacenter | Azure_Site_Recovery |  |
@@ -126,7 +126,7 @@ Um Notfallwiederherstellungsvorgänge ausschließlich auf das Failover zu beschr
 
 Wie im folgenden Diagramm dargestellt, ist der architektonische Unterschied bei einer dedizierten Hostinglösung, dass die Infrastruktur jedes Mandanten allein für den jeweiligen Mandanten eingerichtet ist.
 
-![Architektur beim SHPS-Modell](./media/vmware-azure-multi-tenant-overview/dedicated-hosting-scenario.png)  
+![Diagramm des architektonischen Unterschieds bei einer dedizierten Hostinglösung, bei der die Infrastruktur jedes Mandanten allein für den jeweiligen Mandanten eingerichtet wird](./media/vmware-azure-multi-tenant-overview/dedicated-hosting-scenario.png)  
 **Dediziertes Hostingszenario mit mehreren vCentern**
 
 ## <a name="managed-service-solution"></a>MSP-Lösung (Managed Services Provider, Managed Services Provider)

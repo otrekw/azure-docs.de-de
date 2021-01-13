@@ -1,6 +1,6 @@
 ---
-title: Vorlagen
-description: In diesem Thema werden Vorlagen für Azure Notification Hubs erläutert.
+title: Azure Notification Hubs-Vorlagen
+description: Erfahren Sie mehr über die Verwendung von Vorlagen für Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,14 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 54c53fee260062960d6bce9c1822971c935d88d1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212988"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86219962"
 ---
-# <a name="templates"></a>Vorlagen
+# <a name="notification-hubs-templates"></a>Notification Hubs-Vorlagen
 
 Mithilfe von Vorlagen kann eine Clientanwendung das genaue Format der Benachrichtigungen angeben, die sie empfangen möchte. Die Verwendung von Vorlagen bietet einer App viele verschiedene Vorteile, einschließlich der folgenden:
 
@@ -62,7 +62,7 @@ Das Notification Hubs-Vorlagenfeature ermöglicht einer Client-App das Erstellen
 
 Das Verfahren wird in der folgenden Abbildung veranschaulicht.
 
-![](./media/notification-hubs-templates/notification-hubs-hello.png)
+![Diagramm, das den Prozess für die plattformübergreifende Verwendung von Vorlagen veranschaulicht](./media/notification-hubs-templates/notification-hubs-hello.png)
 
 Die Vorlage für die Registrierung der iOS-Client-App sieht wie folgt aus:
 
@@ -121,7 +121,7 @@ Die an den Notification Hub gesendete Nachricht enthält die folgenden Eigenscha
 
 Durch die Verwendung dieses Musters sendet das Back-End nur eine einzelne Nachricht und muss keine bestimmten Personalisierungsoptionen für die App-Benutzer speichern. Dieses Szenario wird in der folgenden Abbildung veranschaulicht.
 
-![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
+![Diagramm, das zeigt, wie das Back-End nur eine einzelne Nachricht an jede Plattform sendet](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
 ## <a name="how-to-register-templates"></a>Registrieren von Vorlagen
 
@@ -170,3 +170,7 @@ Wie zuvor erläutert, müssen Ausdrücke bei Verwendung der Verkettung in geschw
   </visual>
 </tile>
 ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Informationen zu Azure Notification Hubs](notification-hubs-push-notification-overview.md)

@@ -1,23 +1,26 @@
 ---
-title: Aufrufen von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen mithilfe von Azure Cosmos DB SDKs
+title: Registrieren und Verwenden von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB-SDKs
 description: Erfahren Sie, wie Sie gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen mithilfe von Azure Cosmos DB SDKs registrieren und aufrufen.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 09/17/2019
-ms.author: mjbrown
-ms.openlocfilehash: 3cc144c1b8748710f0500b6ca2a418cd8bf5a2b7
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.subservice: cosmosdb-sql
+ms.topic: how-to
+ms.date: 06/16/2020
+ms.author: tisande
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
+ms.openlocfilehash: 022a45199cfc2d467b1d0d408e86cb5d621070d9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104830"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339848"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Registrieren und Verwenden von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Die SQL-API in Azure Cosmos DB unterstützt das Registrieren und Aufrufen von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen (User-Defined Functions, UDFs), die in JavaScript geschrieben wurden. Sie können die SDKs für SQL API [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md) oder [Python](sql-api-sdk-python.md) verwenden, um gespeicherte Prozeduren zu registrieren und aufzurufen. Sobald Sie gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen definiert haben, können Sie diese laden und im [Azure-Portal](https://portal.azure.com/) mit dem Daten-Explorer anzeigen.
 
-## <a id="stored-procedures"></a>Ausführen gespeicherter Prozeduren
+## <a name="how-to-run-stored-procedures"></a><a id="stored-procedures"></a>Ausführen gespeicherter Prozeduren
 
 Gespeicherte Prozeduren werden mit JavaScript geschrieben. Sie können Elemente in einem Azure Cosmos-Container erstellen, aktualisieren, lesen, abfragen und löschen. Weitere Informationen zum Schreiben von gespeicherten Prozeduren in Azure Cosmos DB finden Sie im Artikel [Schreiben von gespeicherten Prozeduren in Azure Cosmos DB](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures).
 
@@ -31,7 +34,7 @@ Die folgenden Beispiele zeigen, wie Sie eine gespeicherte Prozedur mithilfe der 
 Das folgende Beispiel zeigt, wie Sie mit dem .NET SDK V2 eine gespeicherte Prozedur registrieren:
 
 ```csharp
-string storedProcedureId = "spCreateToDoItem";
+string storedProcedureId = "spCreateToDoItems";
 StoredProcedure newStoredProcedure = new StoredProcedure
    {
        Id = storedProcedureId,
@@ -45,17 +48,25 @@ StoredProcedure createdStoredProcedure = response.Resource;
 Der folgende Code zeigt, wie Sie mit dem .NET SDK V2 eine gespeicherte Prozedur aufrufen:
 
 ```csharp
-dynamic newItem = new
+dynamic[] newItems = new dynamic[]
 {
-    category = "Personal",
-    name = "Groceries",
-    description = "Pick up strawberries",
-    isComplete = false
+    new {
+        category = "Personal",
+        name = "Groceries",
+        description = "Pick up strawberries",
+        isComplete = false
+    },
+    new {
+        category = "Personal",
+        name = "Doctor",
+        description = "Make appointment for check up",
+        isComplete = false
+    }
 };
 
 Uri uri = UriFactory.CreateStoredProcedureUri("myDatabase", "myContainer", "spCreateToDoItem");
 RequestOptions options = new RequestOptions { PartitionKey = new PartitionKey("Personal") };
-var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newItem);
+var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, new[] { newItems });
 ```
 
 ### <a name="stored-procedures---net-sdk-v3"></a>Gespeicherte Prozeduren – .NET SDK V3
@@ -63,25 +74,34 @@ var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newI
 Das folgende Beispiel zeigt, wie Sie mit dem .NET SDK V3 eine gespeicherte Prozedur registrieren:
 
 ```csharp
-StoredProcedureResponse storedProcedureResponse = await client.GetContainer("database", "container").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
+string storedProcedureId = "spCreateToDoItems";
+StoredProcedureResponse storedProcedureResponse = await client.GetContainer("myDatabase", "myContainer").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
 {
-    Id = "spCreateToDoItem",
-    Body = File.ReadAllText(@"..\js\spCreateToDoItem.js")
+    Id = storedProcedureId,
+    Body = File.ReadAllText($@"..\js\{storedProcedureId}.js")
 });
 ```
 
 Der folgende Code zeigt, wie Sie mit dem .NET SDK V3 eine gespeicherte Prozedur aufrufen:
 
 ```csharp
-dynamic newItem = new
+dynamic[] newItems = new dynamic[]
 {
-    category = "Personal",
-    name = "Groceries",
-    description = "Pick up strawberries",
-    isComplete = false
+    new {
+        category = "Personal",
+        name = "Groceries",
+        description = "Pick up strawberries",
+        isComplete = false
+    },
+    new {
+        category = "Personal",
+        name = "Doctor",
+        description = "Make appointment for check up",
+        isComplete = false
+    }
 };
 
-var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItem);
+var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), new[] { newItems });
 ```
 
 ### <a name="stored-procedures---java-sdk"></a>Gespeicherte Prozeduren – Java SDK
@@ -92,8 +112,8 @@ Das folgende Beispiel zeigt, wie Sie mit dem Java SDK eine gespeicherte Prozedur
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
 StoredProcedure newStoredProcedure = new StoredProcedure(
     "{" +
-        "  'id':'spCreateToDoItem'," +
-        "  'body':" + new String(Files.readAllBytes(Paths.get("..\\js\\spCreateToDoItem.js"))) +
+        "  'id':'spCreateToDoItems'," +
+        "  'body':" + new String(Files.readAllBytes(Paths.get("..\\js\\spCreateToDoItems.js"))) +
     "}");
 //toBlocking() blocks the thread until the operation is complete and is used only for demo.  
 StoredProcedure createdStoredProcedure = asyncClient.createStoredProcedure(containerLink, newStoredProcedure, null)
@@ -104,8 +124,10 @@ Der folgende Code zeigt, wie Sie mit dem Java SDK eine gespeicherte Prozedur auf
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
-String sprocLink = String.format("%s/sprocs/%s", containerLink, "spCreateToDoItem");
+String sprocLink = String.format("%s/sprocs/%s", containerLink, "spCreateToDoItems");
 final CountDownLatch successfulCompletionLatch = new CountDownLatch(1);
+
+List<ToDoItem> ToDoItems = new ArrayList<ToDoItem>();
 
 class ToDoItem {
     public String category;
@@ -120,16 +142,26 @@ newItem.name = "Groceries";
 newItem.description = "Pick up strawberries";
 newItem.isComplete = false;
 
+ToDoItems.add(newItem)
+
+newItem.category = "Personal";
+newItem.name = "Doctor";
+newItem.description = "Make appointment for check up";
+newItem.isComplete = false;
+
+ToDoItems.add(newItem)
+
 RequestOptions requestOptions = new RequestOptions();
 requestOptions.setPartitionKey(new PartitionKey("Personal"));
 
-Object[] storedProcedureArgs = new Object[] { newItem };
+Object[] storedProcedureArgs = new Object[] { ToDoItems };
 asyncClient.executeStoredProcedure(sprocLink, requestOptions, storedProcedureArgs)
     .subscribe(storedProcedureResponse -> {
         String storedProcResultAsString = storedProcedureResponse.getResponseAsString();
         successfulCompletionLatch.countDown();
         System.out.println(storedProcedureResponse.getActivityId());
     }, error -> {
+        successfulCompletionLatch.countDown();
         System.err.println("an error occurred while executing the stored procedure: actual cause: "
                 + error.getMessage());
     });
@@ -143,8 +175,8 @@ Das folgende Beispiel zeigt, wie Sie mit dem JavaScript SDK eine gespeicherte Pr
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
-const sprocId = "spCreateToDoItem";
-await container.storedProcedures.create({
+const sprocId = "spCreateToDoItems";
+await container.scripts.storedProcedures.create({
     id: sprocId,
     body: require(`../js/${sprocId}`)
 });
@@ -160,39 +192,55 @@ const newItem = [{
     isComplete: false
 }];
 const container = client.database("myDatabase").container("myContainer");
-const sprocId = "spCreateToDoItem";
-const {body: result} = await container.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
+const sprocId = "spCreateToDoItems";
+const {body: result} = await container.scripts.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
 ```
 
 ### <a name="stored-procedures---python-sdk"></a>Gespeicherte Prozeduren – Python SDK
 
-Das folgende Beispiel zeigt, wie Sie mit dem Python SDK eine gespeicherte Prozedur registrieren:
+Das folgende Beispiel zeigt, wie Sie mit dem Python-SDK eine gespeicherte Prozedur registrieren:
 
 ```python
-with open('../js/spCreateToDoItem.js') as file:
+import azure.cosmos.cosmos_client as cosmos_client
+
+url = "your_cosmos_db_account_URI"
+key = "your_cosmos_db_account_key"
+database_name = 'your_cosmos_db_database_name'
+container_name = 'your_cosmos_db_container_name'
+
+with open('../js/spCreateToDoItems.js') as file:
     file_contents = file.read()
-container_link = 'dbs/myDatabase/colls/myContainer'
-sproc_definition = {
+
+sproc = {
     'id': 'spCreateToDoItem',
     'serverScript': file_contents,
 }
-sproc = client.CreateStoredProcedure(container_link, sproc_definition)
+client = cosmos_client.CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+created_sproc = container.scripts.create_stored_procedure(body=sproc) 
 ```
 
-Der folgende Code zeigt, wie Sie mit dem Python SDK eine gespeicherte Prozedur aufrufen:
+Der folgende Code zeigt, wie Sie mit dem Python-SDK eine gespeicherte Prozedur aufrufen:
 
 ```python
-sproc_link = 'dbs/myDatabase/colls/myContainer/sprocs/spCreateToDoItem'
-new_item = [{
-    'category':'Personal',
-    'name':'Groceries',
-    'description':'Pick up strawberries',
-    'isComplete': False
-}]
-client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
+import uuid
+
+new_id= str(uuid.uuid4())
+
+# Creating a document for a container with "id" as a partition key.
+
+new_item =   {
+      "id": new_id, 
+      "category":"Personal",
+      "name":"Groceries",
+      "description":"Pick up strawberries",
+      "isComplete":False
+   }
+result = container.scripts.execute_stored_procedure(sproc=created_sproc,params=[[new_item]], partition_key=new_id) 
 ```
 
-## <a id="pre-triggers"></a>Ausführen von vorangestellten Triggern
+## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>Ausführen von vorangestellten Triggern
 
 Die folgenden Beispiele zeigen, wie Sie einen vorangestellten Trigger mithilfe der Azure Cosmos DB SDKs registrieren und aufrufen. Informieren Sie sich unter [Beispiel für vorangestellte Trigger](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers), da die Quelle für diesen vorangestellten Trigger als `trgPreValidateToDoItemTimestamp.js` gespeichert ist.
 
@@ -328,29 +376,37 @@ await container.items.create({
 Der folgende Code zeigt, wie Sie mit dem Python SDK einen vorangestellten Trigger registrieren:
 
 ```python
+import azure.cosmos.cosmos_client as cosmos_client
+
+url = "your_cosmos_db_account_URI"
+key = "your_cosmos_db_account_key"
+database_name = 'your_cosmos_db_database_name'
+container_name = 'your_cosmos_db_container_name'
+
 with open('../js/trgPreValidateToDoItemTimestamp.js') as file:
     file_contents = file.read()
-container_link = 'dbs/myDatabase/colls/myContainer'
+
 trigger_definition = {
     'id': 'trgPreValidateToDoItemTimestamp',
     'serverScript': file_contents,
     'triggerType': documents.TriggerType.Pre,
-    'triggerOperation': documents.TriggerOperation.Create
+    'triggerOperation': documents.TriggerOperation.All
 }
-trigger = client.CreateTrigger(container_link, trigger_definition)
+client = cosmos_client.CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+trigger = container.scripts.create_trigger(trigger_definition)
 ```
 
 Der folgende Code zeigt, wie Sie mit dem Python SDK einen vorangestellten Trigger aufrufen:
 
 ```python
-container_link = 'dbs/myDatabase/colls/myContainer'
 item = {'category': 'Personal', 'name': 'Groceries',
         'description': 'Pick up strawberries', 'isComplete': False}
-client.CreateItem(container_link, item, {
-                  'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
+container.create_item(item, {'pre_trigger_include': 'trgPreValidateToDoItemTimestamp'})
 ```
 
-## <a id="post-triggers"></a>Ausführen von nachgestellten Triggern
+## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>Ausführen von nachgestellten Triggern
 
 Die folgenden Beispiele zeigen, wie Sie einen nachgestellten Trigger mithilfe der Azure Cosmos DB SDKs registrieren. Informieren Sie sich unter [Beispiel für nachgestellte Trigger](how-to-write-stored-procedures-triggers-udfs.md#post-triggers), da die Quelle für diesen nachgestellten Trigger als `trgPostUpdateMetadata.js` gespeichert ist.
 
@@ -475,29 +531,37 @@ await container.items.create(item, {postTriggerInclude: [triggerId]});
 Der folgende Code zeigt, wie Sie mit dem Python SDK einen nachgestellten Trigger registrieren:
 
 ```python
-with open('../js/trgPostUpdateMetadata.js') as file:
+import azure.cosmos.cosmos_client as cosmos_client
+
+url = "your_cosmos_db_account_URI"
+key = "your_cosmos_db_account_key"
+database_name = 'your_cosmos_db_database_name'
+container_name = 'your_cosmos_db_container_name'
+
+with open('../js/trgPostValidateToDoItemTimestamp.js') as file:
     file_contents = file.read()
-container_link = 'dbs/myDatabase/colls/myContainer'
+
 trigger_definition = {
-    'id': 'trgPostUpdateMetadata',
+    'id': 'trgPostValidateToDoItemTimestamp',
     'serverScript': file_contents,
     'triggerType': documents.TriggerType.Post,
-    'triggerOperation': documents.TriggerOperation.Create
+    'triggerOperation': documents.TriggerOperation.All
 }
-trigger = client.CreateTrigger(container_link, trigger_definition)
+client = cosmos_client.CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+trigger = container.scripts.create_trigger(trigger_definition)
 ```
 
 Der folgende Code zeigt, wie Sie mit dem Python SDK einen nachgestellten Trigger aufrufen:
 
 ```python
-container_link = 'dbs/myDatabase/colls/myContainer'
-item = {'name': 'artist_profile_1023', 'artist': 'The Band',
-        'albums': ['Hellujah', 'Rotators', 'Spinning Top']}
-client.CreateItem(container_link, item, {
-                  'postTriggerInclude': 'trgPostUpdateMetadata'})
+item = {'category': 'Personal', 'name': 'Groceries',
+        'description': 'Pick up strawberries', 'isComplete': False}
+container.create_item(item, {'post_trigger_include': 'trgPreValidateToDoItemTimestamp'})
 ```
 
-## <a id="udfs"></a>Arbeiten mit benutzerdefinierten Funktionen
+## <a name="how-to-work-with-user-defined-functions"></a><a id="udfs"></a>Arbeiten mit benutzerdefinierten Funktionen
 
 Die folgenden Beispiele zeigen, wie Sie eine benutzerdefinierte Funktion mithilfe der Azure Cosmos DB SDKs registrieren. Informieren Sie sich unter [Beispiel für benutzerdefinierte Funktionen](how-to-write-stored-procedures-triggers-udfs.md#udfs), da die Quelle für diese benutzerdefinierte Funktion als `udfTax.js` gespeichert ist.
 
@@ -619,22 +683,30 @@ const {result} = await container.items.query(sql).toArray();
 Der folgende Code zeigt, wie Sie mit dem Python SDK eine benutzerdefinierte Funktion registrieren:
 
 ```python
+import azure.cosmos.cosmos_client as cosmos_client
+
+url = "your_cosmos_db_account_URI"
+key = "your_cosmos_db_account_key"
+database_name = 'your_cosmos_db_database_name'
+container_name = 'your_cosmos_db_container_name'
+
 with open('../js/udfTax.js') as file:
     file_contents = file.read()
-container_link = 'dbs/myDatabase/colls/myContainer'
 udf_definition = {
     'id': 'Tax',
     'serverScript': file_contents,
 }
-udf = client.CreateUserDefinedFunction(container_link, udf_definition)
+client = cosmos_client.CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+udf = container.scripts.create_user_defined_function(udf_definition)
 ```
 
 Der folgende Code zeigt, wie Sie mit dem Python SDK eine benutzerdefinierte Funktion aufrufen:
 
 ```python
-container_link = 'dbs/myDatabase/colls/myContainer'
-results = list(client.QueryItems(
-    container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
+results = list(container.query_items(
+    'query': 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

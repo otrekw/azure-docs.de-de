@@ -1,25 +1,27 @@
 ---
-title: Verschlüsseln von Anmeldeinformationen in Azure Data Factory | Microsoft-Dokumentation
+title: Verschlüsseln von Anmeldeinformationen in Azure Data Factory
 description: Erhalten Sie Informationen zum Verschlüsseln und Speichern von Anmeldeinformationen für Ihre lokalen Datenspeicher auf einem Computer mit selbstgehosteter Integrationslaufzeit.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 8e705a4430f6ccee847dc7d41ef80456a6dc4ea5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd775c5a3bf367600a4537a9409a9bb8f902f588
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66155130"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "82628979"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Verschlüsseln von Anmeldeinformationen für lokale Datenspeicher in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Sie können Anmeldeinformationen für Ihre lokalen Datenspeicher (verknüpfte Dienste mit vertraulichen Informationen) auf einem Computer mit selbstgehosteter Integrationslaufzeit verschlüsseln und speichern. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -36,10 +38,7 @@ Ersetzen Sie `<servername>`, `<databasename>`, `<username>` und `<password>` dur
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<servername>;Database=<databasename>;User ID=<username>;Password=<password>;Timeout=60"
-            }
+            "connectionString": "Server=<servername>;Database=<databasename>;User ID=<username>;Password=<password>;Timeout=60"
         },
         "connectVia": {
             "type": "integrationRuntimeReference",

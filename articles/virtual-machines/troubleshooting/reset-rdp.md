@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 80bcac36271d86334e11cb3cd161cd96777e6fe5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058442"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87832449"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Zurücksetzen von Remotedesktopdienste oder dem zugehörigen Administratorkennwort auf einer Windows-VM
 Wenn Sie keine Verbindung mit einem virtuellen Windows-Computer herstellen können, können Sie Ihr lokales Administratorkennwort oder die Konfiguration von Remotedesktopdienste zurücksetzen (für Windows-Domänencontroller nicht unterstützt). Verwenden Sie zum Zurücksetzen des Kennworts entweder das Azure-Portal oder die VM-Zugriffserweiterung in Azure PowerShell. Setzen Sie das Kennwort für diesen lokalen Administrator zurück, nachdem Sie sich am virtuellen Computer angemeldet haben.  
-Wenn Sie PowerShell verwenden, sollten Sie sicherstellen, dass das [neueste PowerShell-Modul installiert und konfiguriert](/powershell/azure/overview) ist und Sie bei Ihrem Azure-Abonnement angemeldet sind. Sie können diese Schritte auch für virtuelle Computer durchführen, die mit dem [klassischen Bereitstellungsmodell](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp) erstellt wurden.
+Wenn Sie PowerShell verwenden, sollten Sie sicherstellen, dass das [neueste PowerShell-Modul installiert und konfiguriert](/powershell/azure/) ist und Sie bei Ihrem Azure-Abonnement angemeldet sind. Sie können diese Schritte auch für virtuelle Computer durchführen, die mit dem [klassischen Bereitstellungsmodell](/previous-versions/azure/virtual-machines/windows/classic/reset-rdp) erstellt wurden.
 
 Sie können Remotedesktopdienste und die Anmeldeinformationen wie folgt zurücksetzen:
 
@@ -55,11 +55,11 @@ Mit diesem Prozess wird der Remotedesktopdienst auf der VM aktiviert, und es wir
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Zurücksetzen mit der VMAccess-Erweiterung und PowerShell
 
-Stellen Sie zunächst mit dem Cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) sicher, dass das [neueste PowerShell-Modul installiert und konfiguriert ist](/powershell/azure/overview) und Sie bei Ihrem Azure-Abonnement angemeldet sind.
+Stellen Sie zunächst mit dem Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) sicher, dass das [neueste PowerShell-Modul installiert und konfiguriert ist](/powershell/azure/) und Sie bei Ihrem Azure-Abonnement angemeldet sind.
 
 ### <a name="reset-the-local-administrator-account-password"></a>**Zurücksetzen des Kennworts eines lokalen Administratorkontos**
 
-- Sie setzen das Administratorkennwort oder den Benutzernamen mithilfe des PowerShell-Cmdlets [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) zurück. Die Einstellung `typeHandlerVersion` muss 2.0 oder höher lauten, da Version 1 veraltet ist. 
+- Sie setzen das Administratorkennwort oder den Benutzernamen mithilfe des PowerShell-Cmdlets [Set-AzVMAccessExtension](/powershell/module/az.compute/set-azvmaccessextension) zurück. Die Einstellung `typeHandlerVersion` muss 2.0 oder höher lauten, da Version 1 veraltet ist. 
 
     ```powershell
     $SubID = "<SUBSCRIPTION ID>" 
@@ -77,7 +77,7 @@ Stellen Sie zunächst mit dem Cmdlet [Connect-AzAccount](https://docs.microsoft.
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**Zurücksetzen der Konfiguration für Remotedesktopdienste**
 
-1. Sie setzen den Remotezugriff auf Ihren virtuellen Computer mit dem PowerShell-Cmdlet [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) zurück. Im folgenden Beispiel wird die Zugriffserweiterung `myVMAccess` in der VM `myVM` in der Ressourcengruppe `myResourceGroup` zurückgesetzt:
+1. Sie setzen den Remotezugriff auf Ihren virtuellen Computer mit dem PowerShell-Cmdlet [Set-AzVMAccessExtension](/powershell/module/az.compute/set-azvmaccessextension) zurück. Im folgenden Beispiel wird die Zugriffserweiterung `myVMAccess` in der VM `myVM` in der Ressourcengruppe `myResourceGroup` zurückgesetzt:
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
@@ -94,7 +94,6 @@ Stellen Sie zunächst mit dem Cmdlet [Connect-AzAccount](https://docs.microsoft.
 
 - [Informationen zu Azure-VM-Erweiterungen und -Features](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-- [Herstellen einer Verbindung mit einem virtuellen Azure-Computer über RDP oder SSH](https://msdn.microsoft.com/library/azure/dn535788.aspx)
+- [Herstellen einer Verbindung mit einem virtuellen Azure-Computer über RDP oder SSH](/previous-versions/azure/dn535788(v=azure.100))
 
 - [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-

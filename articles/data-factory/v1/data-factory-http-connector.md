@@ -1,33 +1,31 @@
 ---
-title: Verschieben von Daten aus einer HTTP-Quelle – Azure | Microsoft-Dokumentation
+title: Verschieben von Daten aus einer HTTP-Quelle – Azure
 description: Informationen zum Verschieben von Daten aus einer lokalen oder in der Cloud gehosteten HTTP-Quelle mithilfe von Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 22d6999b2a69aceb4421cea070d784f693bdf9c4
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 653a53d6bb5c69cd95fd5e9a2483b51de8293b40
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839292"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608577"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Verschieben von Daten aus einer HTTP-Quelle mithilfe von Azure Data Factory
 
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-http-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-http.md)
 
 > [!NOTE]
 > Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Azure Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [HTTP-Connector in V2](../connector-http.md).
-
 
 Dieser Artikel beschreibt, wie die Kopieraktivität in Azure Data Factory verwendet wird, um Daten von einem lokalen bzw. einem in der Cloud gehosteten HTTP-Endpunkt in einen unterstützten Senkendatenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel [Verschieben von Daten mit der Kopieraktivität](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet. Der Artikel listet auch die Datenspeicher auf, die die Kopieraktivität als Quellen und Senken unterstützt.
 
@@ -56,7 +54,7 @@ In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verk
 | type | Die **type**-Eigenschaft muss auf **Http** festgelegt werden. | Ja |
 | url | Die Basis-URL zum Webserver. | Ja |
 | authenticationType | Gibt den Authentifizierungstyp an. Zulässige Werte: **Anonymous**, **Basic**, **Digest**, **Windows** und **ClientCertificate**. <br><br> Weitere Eigenschaften und JSON-Beispiele für diese Authentifizierungstypen finden Sie in den späteren Abschnitten in diesem Artikel. | Ja |
-| enableServerCertificateValidation | Gibt an, ob die SSL-Serverzertifikatüberprüfung aktiviert werden soll, wenn die Quelle ein HTTPS-Webserver ist. Wenn der HTTPS-Server ein selbstsigniertes Zertifikat verwendet, legen Sie diesen Parameter auf **FALSE** fest. | Nein<br /> (der Standardwert ist **TRUE**) |
+| enableServerCertificateValidation | Gibt an, ob die TLS/SSL-Serverzertifikatüberprüfung aktiviert werden soll, wenn die Quelle ein HTTPS-Webserver ist. Wenn der HTTPS-Server ein selbstsigniertes Zertifikat verwendet, legen Sie diesen Parameter auf **FALSE** fest. | Nein<br /> (der Standardwert ist **TRUE**) |
 | gatewayName | Der Name der Instanz des Datenverwaltungsgateways, die für die Verbindung mit einer lokalen HTTP-Quelle verwendet werden soll. | Ja, wenn Daten aus einer lokalen HTTP-Quelle kopiert werden. |
 | encryptedCredential | Die verschlüsselten Anmeldeinformation für den Zugriff auf den HTTP-Endpunkt. Der Wert wird automatisch generiert, wenn Sie die Authentifizierungsinformationen im Kopier-Assistenten oder über das Dialogfeld **ClickOnce** konfigurieren. | Nein<br /> (Betrifft nur das Kopieren von Daten von einem lokalen HTTP-Server.) |
 
@@ -123,7 +121,6 @@ Dieser verknüpfte Dienst verbindet Ihre Data Factory mit einem lokalen HTTP-Ser
             "url": "https://en.wikipedia.org/wiki/",
             "certThumbprint": "thumbprint of certificate",
             "gatewayName": "gateway name"
-
         }
     }
 }
@@ -172,13 +169,13 @@ Der Abschnitt **typeProperties** ist bei jeder Art von Dataset unterschiedlich. 
 
 ```json
 {
-    "name": "HttpSourceDataInput",
+  "name": "HttpSourceDataInput",
     "properties": {
-        "type": "Http",
+    "type": "Http",
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
-            "relativeUrl": "XXX/test.xml",
-            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+          "relativeUrl": "XXX/test.xml",
+          "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
         },
         "external": true,
         "availability": {
@@ -199,7 +196,7 @@ Der Abschnitt **typeProperties** ist bei jeder Art von Dataset unterschiedlich. 
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
             "relativeUrl": "/XXX/test.xml",
-           "requestMethod": "Post",
+       "requestMethod": "Post",
             "requestBody": "body for POST HTTP request"
         },
         "external": true,
@@ -284,14 +281,14 @@ Durch Festlegen von **external** auf **TRUE** wird der Data Factory-Dienst infor
 
 ```json
 {
-    "name": "HttpSourceDataInput",
+  "name": "HttpSourceDataInput",
     "properties": {
-        "type": "Http",
+    "type": "Http",
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
             "relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)",
-            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-        },
+        "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+    },
         "external": true,
         "availability": {
             "frequency": "Hour",

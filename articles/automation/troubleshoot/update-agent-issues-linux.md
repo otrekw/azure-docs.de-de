@@ -1,48 +1,51 @@
 ---
-title: Grundlegende Informationen zu den Linux-Agent-Überprüfungsergebnissen in der Azure-Updateverwaltung
-description: Erfahren Sie, wie Sie Fehler mit dem Updateverwaltungs-Agent beheben können.
+title: Beheben von Problemen mit dem Linux Update-Agent in Azure Automation
+description: In diesem Artikel erfahren Sie, wie Sie Fehler und Probleme mit dem Linux Update-Agent in der Updateverwaltung beheben können.
 services: automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/22/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: c37d8be8862e75a6520ccefe4b9df93dd993b2a8
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: f1351b29a0102a374b75d832687d66c3b5572c75
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477111"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83680862"
 ---
-# <a name="understand-the-linux-agent-check-results-in-update-management"></a>Grundlegende Informationen zu den Linux-Agent-Überprüfungsergebnissen in der Updateverwaltung
+# <a name="troubleshoot-linux-update-agent-issues"></a>Beheben von Problemen mit dem Linux Update-Agent
 
-Es gibt viele mögliche Gründe dafür, dass Ihr Computer in der Updateverwaltung nicht als **Bereit** angezeigt wird. In der Updateverwaltung können Sie die Integrität eines Hybrid Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. In diesem Artikel wird erläutert, wie Sie die Problembehandlung für Azure-Computer im Azure-Portal und für Azure-fremde Computer im [Offlineszenario](#troubleshoot-offline) ausführen.
+Es gibt viele mögliche Gründe dafür, warum Ihr Computer in der Updateverwaltung nicht als „bereit“ (fehlerfrei) angezeigt wird. Sie können die Integrität eines Linux-Hybrid Runbook Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. Im Folgenden finden Sie die drei Bereitschaftszustände eines Computers:
 
-In der folgende Liste finden Sie die drei Bereitschaftszustände, in denen sich ein Computer befinden kann:
-
-* **Bereit**: Der Update-Agent ist bereitgestellt und wurde vor weniger als 1 Stunde zuletzt angezeigt.
-* **Getrennt**: Der Update-Agent ist bereitgestellt und wurde vor mehr als 1 Stunde zuletzt angezeigt.
-* **Nicht konfiguriert**: Der Update-Agent wurde nicht gefunden oder hat das Onboarding noch nicht abgeschlossen.
+* Bereit: Der Hybrid Runbook Worker ist bereitgestellt und wurde vor weniger als einer Stunde zuletzt gesehen.
+* Nicht verbunden: Der Hybrid Runbook Worker ist bereitgestellt und wurde vor über einer Stunde zuletzt gesehen.
+* Nicht konfiguriert: Der Hybrid Runbook Worker wurde nicht gefunden, oder die Bereitstellung wurde nicht abgeschlossen.
 
 > [!NOTE]
-> Möglicherweise gibt es eine kleine Verzögerung zwischen der Anzeige des Azure-Portals und dem aktuellen Zustand des Computers.
+> Möglicherweise gibt es eine kleine Verzögerung zwischen der Anzeige im Azure-Portal und dem aktuellen Zustand eines Computers.
+
+In diesem Artikel wird erläutert, wie Sie die Problembehandlung für Azure-Computer im Azure-Portal und für Nicht-Azure-Computer im [Offlineszenario](#troubleshoot-offline) ausführen. 
+
+> [!NOTE]
+> Das Problembehandlungsskript leitet Datenverkehr zurzeit nicht über einen Proxyserver weiter, wenn ein solcher konfiguriert ist.
 
 ## <a name="start-the-troubleshooter"></a>Starten der Problembehandlung
 
-Klicken Sie für Azure-Computer im Portal unter der Spalte **Bereitschaft des Update-Agents** auf den Link **Problembehandlung**, um die Seite **Problembehandlung von Update-Agent** zu öffnen. Bei Azure-fremden Computern gelangen Sie über den Link zu diesem Artikel. In der Offlineanleitung erfahren Sie, wie Sie Probleme mit einem Nicht-Azure-Computer behandeln.
+Klicken Sie für Azure-Computer im Portal unter der Spalte **Update-Agent-Bereitschaft** auf den Link **Problembehandlung**, um die Seite „Troubleshoot Update Agent“ (Problembehandlung von Update-Agent) zu öffnen. Bei Azure-fremden Computern gelangen Sie über den Link zu diesem Artikel. Eine Anleitung für die Problembehandlung bei Nicht-Azure-Computern finden Sie im Abschnitt „Offlineproblembehandlung“.
 
-![Seite „VM-Liste“](../media/update-agent-issues-linux/vm-list.png)
+![Seite mit VM-Liste](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
-> Für die Überprüfungen muss die VM ausgeführt werden. Wenn die VM nicht ausgeführt wird, wird eine Schaltfläche angezeigt, mit der Sie die **VM starten** können.
+> Für die Überprüfungen muss die VM ausgeführt werden. Wenn die VM nicht ausgeführt wird, wird **VM starten** angezeigt.
 
-Klicken Sie auf der Seite **Problembehandlung von Update-Agent** auf **Überprüfungen ausführen**. Die Problembehandlung verwendet [Befehl ausführen](../../virtual-machines/linux/run-command.md), um ein Skript auf einem Computer auszuführen, mit dem die Abhängigkeiten überprüft werden, die der Agent aufweist. Wenn die Problembehandlung abgeschlossen ist, werden die Ergebnisse der Überprüfungen zurückgegeben.
+Klicken Sie auf der Seite „Troubleshoot Update Agent“ (Problembehandlung von Update-Agent) auf **Run Checks** (Überprüfungen ausführen), um mit der Problembehandlung zu beginnen. Die Problembehandlung verwendet [Befehl ausführen](../../virtual-machines/linux/run-command.md), um ein Skript auf dem Computer auszuführen, mit dem Abhängigkeiten überprüft werden. Wenn die Problembehandlung abgeschlossen ist, werden die Ergebnisse der Überprüfungen zurückgegeben.
 
 ![Seite „Problembehandlung“](../media/update-agent-issues-linux/troubleshoot-page.png)
 
-Nach Abschluss werden die Ergebnisse im Fenster zurückgegeben. Die verschiedenen Überprüfungsabschnitte liefern Informationen zu den Aspekten, die jede Überprüfung untersucht.
+Wenn die Überprüfungen abgeschlossen sind, werden die Ergebnisse im Fenster zurückgegeben. Die verschiedenen Überprüfungsabschnitte liefern Informationen zu den Aspekten, die jede Überprüfung untersucht.
 
 ![Seite mit Überprüfungen des Update-Agents](../media/update-agent-issues-linux/update-agent-checks.png)
 
@@ -54,21 +57,20 @@ Die Betriebssystemprüfung untersucht, ob der Hybrid Runbook Worker unter einem 
 
 |Betriebssystem  |Notizen  |
 |---------|---------|
-|CentOS 6 (x86/x64) und 7 (x64)      | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen. Für klassifizierungsbasiertes Patchen muss yum Sicherheitsdaten zurückgeben, über die CentOS nicht standardmäßig verfügt.         |
+|CentOS 6 (x86/x64) und 7 (x64)      | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen. Für klassifizierungsbasiertes Patchen muss „yum“ Sicherheitsdaten zurückgeben, über die CentOS nicht standardmäßig verfügt.         |
 |Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
 |Ubuntu 14.04 LTS, 16.04 LTS und 18.04 LTS (x86/x64)      |Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.         |
 
 ## <a name="monitoring-agent-service-health-checks"></a>Integritätsüberprüfungen für den Monitoring Agent-Dienst
 
-### <a name="oms-agent"></a>OMS-Agent
+### <a name="log-analytics-agent"></a>Log Analytics-Agent
 
-Durch diese Überprüfungen wird sichergestellt, dass der OMS-Agent für Linux installiert ist. Anweisungen zum Installieren finden Sie unter [Installieren des Agents für Linux](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
-).
+Durch diese Überprüfung wird sichergestellt, dass der Log Analytics-Agent für Linux installiert ist. Anweisungen zum Installieren finden Sie unter [Installieren des Agents für Linux](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux).
 
-### <a name="oms-agent-status"></a>OMS-Agent-Status
+### <a name="log-analytics-agent-status"></a>Status des Log Analytics-Agents
 
-Durch diese Überprüfungen wird sichergestellt, dass der OMS-Agent für Linux ausgeführt wird. Wenn der Agent nicht aktiv ist, können Sie den folgenden Befehl ausführen, um ihn neu zu starten. Weitere Informationen zur Problembehandlung für den Agent finden Sie unter [Problembehandlung für Linux-Hybrid Runbook Worker](hybrid-runbook-worker.md#linux).
+Durch diese Überprüfung wird sichergestellt, dass der Log Analytics-Agent für Linux ausgeführt wird. Wenn der Agent nicht aktiv ist, können Sie den folgenden Befehl ausführen, um ihn neu zu starten. Weitere Informationen zur Problembehandlung für den Agent finden Sie unter [Problembehandlung für Hybrid Runbook Worker – Linux](hybrid-runbook-worker.md#linux).
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
@@ -76,15 +78,18 @@ sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ### <a name="multihoming"></a>Multi-Homing
 
-Durch diese Überprüfung wird ermittelt, ob der Agent Meldungen an mehrere Arbeitsbereiche ausgibt. Multi-Homing wird von der Updateverwaltung nicht unterstützt.
+Durch diese Überprüfung wird ermittelt, ob der Agent Meldungen an mehrere Arbeitsbereiche ausgibt. Die Updateverwaltung unterstützt kein Multi-Homing.
 
 ### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
 
-Hiermit wird überprüft, ob der OMS-Agent für Linux über das Hybrid Runbook Worker-Paket verfügt. Dieses Paket ist erforderlich, damit die Updateverwaltung funktioniert.
+Hiermit wird überprüft, ob der Log Analytics-Agent für Linux über das Hybrid Runbook Worker-Paket verfügt. Dieses Paket ist erforderlich, damit die Updateverwaltung funktioniert. Weitere Informationen finden Sie unter [Der Log Analytics-Agent für Linux wird nicht ausgeführt](hybrid-runbook-worker.md#oms-agent-not-running).
+
+Die Updateverwaltung lädt Hybrid Runbook Worker-Pakete vom Endpunkt für Vorgänge herunter. Wenn der Hybrid Runbook Worker nicht ausgeführt wird und die Überprüfung des [Endpunkts für Vorgänge](#operations-endpoint) fehlschlägt, kann das Update daher fehlschlagen.
 
 ### <a name="hybrid-runbook-worker-status"></a>Hybrid Runbook Worker-Status
 
-Durch diese Überprüfung wird sichergestellt, dass der Hybrid Runbook Worker auf dem Computer ausgeführt wird. Die folgenden Prozesse sollten vorhanden sein, wenn der Hybrid Runbook Worker ordnungsgemäß ausgeführt wird. Weitere Informationen finden Sie unter [Problembehandlung für den Log Analytics-Agent für Linux](hybrid-runbook-worker.md#oms-agent-not-running).
+Durch diese Überprüfung wird sichergestellt, dass der Hybrid Runbook Worker auf dem Computer ausgeführt wird. Die Prozesse im folgenden Beispiel sollten vorhanden sein, wenn der Hybrid Runbook Worker ordnungsgemäß ausgeführt wird.
+
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -100,15 +105,15 @@ Durch diese Überprüfung wird sichergestellt, dass der Computer Zugriff auf das
 
 ### <a name="registration-endpoint"></a>Registrierungsendpunkt
 
-Bei dieser Überprüfung wird untersucht, ob der Agent ordnungsgemäß mit dem Agent-Dienst kommunizieren kann.
+Durch diese Überprüfung wird festgestellt, ob der Hybrid Runbook Worker im Log Analytics-Arbeitsbereich ordnungsgemäß mit Azure Automation kommunizieren kann.
 
-Die Proxy- und Firewallkonfigurationen müssen die Kommunikation des Hybrid Runbook Worker-Agents mit dem Registrierungsendpunkt zulassen. Eine Liste der Adressen und zu öffnenden Ports finden Sie unter [Netzwerkplanung für Hybrid Worker](../automation-hybrid-runbook-worker.md#network-planning).
+Die Proxy- und Firewallkonfigurationen müssen die Kommunikation des Hybrid Runbook Worker-Agents mit dem Registrierungsendpunkt zulassen. Eine Liste der Adressen und zu öffnenden Ports finden Sie unter [Netzwerkplanung](../automation-hybrid-runbook-worker.md#network-planning).
 
 ### <a name="operations-endpoint"></a>Endpunkt für Vorgänge
 
-Bei dieser Überprüfung wird untersucht, ob der Agent ordnungsgemäß mit dem Auftragsruntime-Datendienst kommunizieren kann.
+Bei dieser Überprüfung wird untersucht, ob der Log Analytics-Agent ordnungsgemäß mit dem Auftragsruntime-Datendienst kommunizieren kann.
 
-Die Proxy- und Firewallkonfigurationen müssen die Kommunikation des Hybrid Runbook Worker-Agents mit dem Auftragsruntime-Datendienst zulassen. Eine Liste der Adressen und zu öffnenden Ports finden Sie unter [Netzwerkplanung für Hybrid Worker](../automation-hybrid-runbook-worker.md#network-planning).
+Die Proxy- und Firewallkonfigurationen müssen die Kommunikation des Hybrid Runbook Worker-Agents mit dem Auftragsruntime-Datendienst zulassen. Eine Liste der Adressen und zu öffnenden Ports finden Sie unter [Netzwerkplanung](../automation-hybrid-runbook-worker.md#network-planning).
 
 ### <a name="log-analytics-endpoint-1"></a>Log Analytics-Endpunkt 1
 
@@ -122,7 +127,7 @@ Durch diese Überprüfung wird sichergestellt, dass der Computer Zugriff auf die
 
 Durch diese Überprüfung wird sichergestellt, dass der Computer Zugriff auf die Endpunkte hat, die vom Log Analytics-Agent benötigt werden.
 
-## <a name="troubleshoot-offline"></a>Offlineproblembehandlung
+## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Offlineproblembehandlung
 
 Sie können die Problembehandlung offline auf einem Hybrid Runbook Worker ausführen, indem Sie das Skript lokal ausführen. Das Python-Skript [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) finden Sie im Script Center. Hier sehen Sie eine Beispielausgabe dieses Skripts:
 
@@ -179,5 +184,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Behandlung weiterer Probleme mit Ihren Hybrid Runbook Workern finden Sie unter [Problembehandlung für Hybrid Runbook Worker](hybrid-runbook-worker.md).
-
+[Beheben von Hybrid Runbook Worker-Problemen](hybrid-runbook-worker.md)

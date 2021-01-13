@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 09/12/2019
-  ms.openlocfilehash: e1104c8caf1080aab3b6c5300dcbe4cd04d6b61a
-  ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+  ms.date: 06/23/2020
+  ms.openlocfilehash: aaa2115609e08077ad29e5e8b9eefb4d8a65147e
+  ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/12/2019
-  ms.locfileid: "70962491"
+  ms.lasthandoff: 11/24/2020
+  ms.locfileid: "95805644"
 landingContent:
 - title: Informationen zu Service Bus-Messaging
   linkLists:
@@ -33,13 +33,17 @@ landingContent:
       url: service-bus-azure-and-service-bus-queues-compared-contrasted.md
     - text: Service Bus-Warteschlangen, -Themen und -Abonnements
       url: service-bus-queues-topics-subscriptions.md
+  - linkListType: architecture
+    links:
+    - text: Referenzarchitektur für Warteschlangen und Ereignisse
+      url: /azure/architecture/reference-architectures/enterprise-integration/queues-events
 - title: Erstellen einer Service Bus-Warteschlange
   linkLists:
   - linkListType: quickstart
     links:
     - text: Azure-Portal
       url: service-bus-quickstart-portal.md
-    - text: Azure-Befehlszeilenschnittstelle
+    - text: Azure CLI
       url: service-bus-quickstart-cli.md
     - text: Azure PowerShell
       url: service-bus-quickstart-powershell.md
@@ -62,7 +66,7 @@ landingContent:
     - text: Java
       url: service-bus-java-how-to-use-queues.md
     - text: Node.js
-      url: service-bus-nodejs-how-to-use-queues-new-package.md
+      url: service-bus-nodejs-how-to-use-queues.md
     - text: Python
       url: service-bus-python-how-to-use-queues.md
     - text: PHP
@@ -78,7 +82,7 @@ landingContent:
     - text: Java
       url: service-bus-java-how-to-use-topics-subscriptions.md
     - text: Node.js
-      url: service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md
+      url: service-bus-nodejs-how-to-use-topics-subscriptions.md
     - text: Python
       url: service-bus-python-how-to-use-topics-subscriptions.md
     - text: PHP
@@ -101,7 +105,7 @@ landingContent:
       url: service-bus-resource-manager-overview.md
     - text: Problembehandlung bei Ausnahmen
       url: service-bus-messaging-exceptions.md
-- title: Schützen
+- title: Sicher
   linkLists:
   - linkListType: how-to-guide
     links:

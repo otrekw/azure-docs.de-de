@@ -1,49 +1,44 @@
 ---
 title: Leitfaden für die Veröffentlichung von Containerangeboten im Azure Marketplace
-description: In diesem Artikel werden die Anforderungen für die Veröffentlichung von Containern im Marketplace beschrieben.
+description: In diesem Artikel werden die Anforderungen für die Veröffentlichung von Containerangeboten im Azure Marketplace beschrieben.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
-manager: nunoc
 ms.service: marketplace
-ms.topic: article
-ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: 41a09be36262ff09c383b8ccb64a94230a11d3f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: keferna
+ms.author: keferna
+ms.date: 11/30/2020
+ms.openlocfilehash: 83c575aa40b80d9a8e39263e89a5e7860c8f8774
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937913"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95741660"
 ---
-# <a name="containers-offer-publishing-guide"></a>Leitfaden für die Veröffentlichung von Containerangeboten
+# <a name="publishing-guide-for-azure-container-offers"></a>Leitfaden für die Veröffentlichung von Azure-Containerangeboten
 
-Containerangebote erleichtern Ihnen die Veröffentlichung Ihres Containerimages im Azure Marketplace. Informieren Sie sich in diesem Handbuch über die Anforderungen für dieses Angebot. 
+Azure-Containerangebote erleichtern Ihnen die Veröffentlichung Ihres Containerimages im Azure Marketplace. Informieren Sie sich in diesem Handbuch über die Anforderungen für diesen Angebotstyp.
 
-Hierbei handelt es sich um Transaktionsangebote, die über den Marketplace bereitgestellt und abgerechnet werden. Die Benutzer sehen hier den Aktionsaufruf „Jetzt kaufen“.
+Azure-Containerangebote sind Transaktionsangebote, die über den Azure Marketplace bereitgestellt und abgerechnet werden. Den Benutzern wird die Listenoption „Jetzt kaufen“ angezeigt.
 
-Verwenden Sie den Angebotstyp „Container“, wenn Ihre Lösung ein Docker-Container-Image ist, das als Kubernetes-basierter Azure Container Service bereitgestellt wird.
+Verwenden Sie den Angebotstyp Azure Container, wenn Ihre Lösung ein Docker-Container-Image ist, das als Kubernetes-basierte Azure Container-Instanz eingerichtet wird.
 
->[!NOTE]
->Z.B. ein Kubernetes-basierter Azure Container Cervice wie Azure Kubernetes Service oder Azure Container Instances, die Wahl der Azure-Kunden für eine Kubernetes-basierte Containerlaufzeit.  
+> [!NOTE]
+> Eine Azure Container-Instanz ist eine Laufzeit-Docker-Instanz, mit der sich Container in Azure besonders schnell und einfach ausführen lassen, ohne dass Sie dazu virtuelle Computer verwalten oder einen übergeordneten Dienst einführen müssen. Container-Instanzen können direkt in Azure bereitgestellt oder von Azure Kubernetes Services oder Azure Kubernetes Service Engine orchestriert werden.  
 
 Microsoft unterstützt derzeit kostenlose und Bring-Your-Own-License-Lizenzierungsmodelle (BYOL).
 
-## <a name="containers-offer"></a>Containerangebot
+## <a name="container-offer-requirements"></a>Anforderungen für Containerangebote
 
 | Anforderung | Details |  
 |:--- |:--- |  
-| Abrechnung und Messung | Es wird entweder das kostenlose oder BYOL-Abrechnungsmodell unterstützt. |  
-| Auf Grundlage von Dockerfile erstelltes Image | Containerimages müssen auf der Docker-Imagespezifikation basieren und auf der Grundlage einer Dockerfile-Datei erstellt werden.<ul> <li>Weitere Informationen zum Erstellen von Docker-Images finden Sie im Abschnitt zur Verwendung auf [docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage).</li> </ul> |  
-| Hosten in ACR | Containerimages müssen in einem ACR-Repository (Azure Container Registry) gehostet werden.<ul> <li>Weitere Informationen zum Arbeiten mit ACR finden Sie im „Schnellstart: Erstellen einer Containerregistrierung mit dem Azure-Portal“ auf [docs.microsoft.com/de-de/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).</li> </ul> |  
-| Imagemarkierung | Containerimages müssen mindestens 1 Tag enthalten (maximale Tags: 16).<ul> <li>Weitere Informationen zum Markieren eines Images finden Sie auf der Docker-Tag-Seite auf [docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag).</li> </ul> |  
+| Abrechnung und Messung | Es wird entweder das kostenlose oder BYOL-Abrechnungsmodell unterstützt.<br><br> |  
+| Auf Grundlage einer Dockerfile erstelltes Image | Containerimages müssen auf der Docker-Imagespezifikation basieren und auf der Grundlage einer Dockerfile-Datei erstellt werden.<br> <br>Weitere Informationen zum Entwickeln von Docker-Images finden Sie im Abschnitt zur Verwendung in der [Dockerfile-Referenz](https://docs.docker.com/engine/reference/builder/#usage).<br><br> |  
+| Hosten in einem Azure Container Registry-Repository | Containerimages müssen in einem Azure Container Registry-Repository gehostet werden.<br> <br>Weitere Informationen zum Arbeiten mit Azure Container Registry finden Sie unter [Schnellstart: Erstellen einer privaten Containerregistrierung über das Azure-Portal](../container-registry/container-registry-get-started-portal.md).<br><br> |  
+| Imagemarkierung | Containerimages müssen mindestens ein Tag enthalten (maximale Taganzahl: 16).<br><br>Weitere Informationen zum Markieren eines Images finden Sie auf der Seite `docker tag` auf der Website zur [Docker-Dokumentation](https://docs.docker.com/engine/reference/commandline/tag).<br><br> |  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Falls Sie dies noch nicht getan haben, 
+- Informationen zum Vorbereiten von technischen Ressourcen für ein Containerangebot finden Sie unter [Erstellen von technischen Ressourcen für Azure-Container](create-azure-container-technical-assets.md).
 
-- [Registrieren Sie](https://azuremarketplace.microsoft.com/sell) beim Marketplace.
-
-Wenn Sie registriert sind und ein neues Angebot erstellen oder an einem vorhandenen arbeiten,
-
-- [melden Sie sich beim Cloud-Partnerportal an](https://cloudpartner.azure.com), um Ihr Angebot zu erstellen oder zu vervollständigen.
-- Weitere Informationen finden Sie unter [Container](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer).
+- Weitere Informationen zum Erstellen eines Azure-Containerangebots finden Sie unter [Erstellen eines Azure-Containerangebots in Azure Marketplace](create-azure-container-offer.md).

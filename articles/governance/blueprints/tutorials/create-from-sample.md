@@ -1,24 +1,20 @@
 ---
-title: Erstellen einer Umgebung anhand eines Blaupausenbeispiels
-description: Verwenden Sie ein Blaupausenbeispiel, um eine Blaupausendefinition zu erstellen, die zwei Ressourcengruppen einrichtet und eine Rollenzuweisung für jede dieser Ressourcengruppen konfiguriert.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 03/05/2019
+title: 'Tutorial: Blaupausenbeispiel für neue Umgebung'
+description: In diesem Tutorial verwenden Sie ein Blaupausenbeispiel, um eine Blaupausendefinition zu erstellen, mit der zwei Ressourcengruppen eingerichtet werden und eine Rollenzuweisung für jede dieser Ressourcengruppen konfiguriert wird.
+ms.date: 08/27/2020
 ms.topic: tutorial
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 137764cba91ab94adef4719a0d34b6fb9e6efe29
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 891240dcafe0cbfbfab4ff1fd415cba4abf682a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232616"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89048731"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Tutorial: Erstellen einer Umgebung anhand eines Blaupausenbeispiels
 
 Beispielblaupausen enthalten Beispiele für die Aufgaben, die mit Azure Blueprints ausgeführt werden können. Jedes Blaupausenbeispiel dient einer bestimmten Absicht bzw. einem spezifischen Zweck, erstellt aber nicht selbst eine vollständige Umgebung. Jedes Blaupausenbeispiel ist als Ausgangspunkt für die Erkundung von Azure Blueprints vorgesehen und enthält verschiedene Kombinationen von Artefakten, Designs und Parametern.
 
-Im folgenden Tutorial wird die Blaupause **Ressourcengruppen mit RBAC** verwendet, um verschiedene Aspekte des Diensts Azure Blueprints vorzustellen. Folgende Schritte werden erläutert:
+Im folgenden Tutorial wird das Blaupausenbeispiel **Ressourcengruppen mit RBAC** verwendet, um verschiedene Aspekte des Diensts Azure Blueprints vorzustellen. Folgende Schritte werden erläutert:
 
 > [!div class="checklist"]
 > - Erstellen einer neuen Blaupausendefinition anhand des Beispiels
@@ -39,12 +35,12 @@ Implementieren Sie zuerst das Blaupausenbeispiel. Beim Importieren wird basieren
 
 1. Klicken Sie links auf der Seite **Erste Schritte** unter _Blaupause erstellen_ auf die Schaltfläche **Erstellen**.
 
-1. Suchen Sie unter _Weitere Beispiele_ nach dem Blaupausenbeispiel **Ressourcengruppen mit RBAC**, und wählen Sie **Dieses Beispiel verwenden** aus.
+1. Suchen Sie unter _Weitere Beispiele_ nach dem Blaupausenbeispiel **Ressourcengruppen mit RBAC**, und wählen Sie es aus.
 
 1. Geben Sie die _Grundlagen_ des Blaupausenbeispiels ein:
 
    - **Name der Blaupause**: Geben Sie einen Namen für Ihre Kopie des Blaupausenbeispiels ein. In diesem Tutorial verwenden Sie den Namen _two-rgs-with-role-assignments_.
-   - **Speicherort der Definition**: Klicken Sie auf die Schaltfläche mit den Auslassungspunkten, und wählen Sie die Verwaltungsgruppe oder das Abonnement aus, in der bzw. dem Sie Ihre Kopie des Beispiels speichern möchten.
+   - **Definitionsspeicherort**: Klicken Sie auf die Schaltfläche mit den Auslassungspunkten, und wählen Sie die Verwaltungsgruppe oder das Abonnement aus, in der bzw. dem Sie Ihre Kopie des Beispiels speichern möchten.
 
 1. Wählen Sie oben auf der Seite die Registerkarte _Artefakte_ oder unten auf der Seite die Option **Weiter: Artefakte** aus.
 
@@ -64,7 +60,7 @@ Ihre Kopie des Blaupausenbeispiels wurde jetzt in Ihrer Umgebung erstellt. Sie w
 
 1. Wählen Sie links die Seite **Blaupausendefinitionen** aus. Suchen Sie mithilfe der Filter nach der Blaupausendefinition _two-rgs-with-role-assignments_, und wählen Sie sie aus.
 
-1. Wählen Sie oben auf der Seite die Option **Blaupause veröffentlichen** aus. Geben Sie im neuen Bereich auf der rechten Seite für Ihre Kopie des Blaupausenbeispiels _1.0_ als **Version** an. Diese Eigenschaft ist hilfreich, wenn Sie später Änderungen vornehmen. Geben Sie **Änderungshinweise** ein, z. B. „Erste mit dem Blaupausenbeispiel ‚Ressourcengruppen mit RBAC‘ veröffentlichte Version“. Klicken Sie dann unten auf der Seite auf **Veröffentlichen**.
+1. Wählen Sie oben auf der Seite die Option **Blaupause veröffentlichen** aus. Geben Sie im neuen Bereich auf der rechten Seite für Ihre Kopie des Blaupausenbeispiels _1.0_ als **Version** an. Diese Eigenschaft ist hilfreich, wenn Sie später Änderungen vornehmen. Geben Sie **Änderungshinweise** ein, z. B. „Erste mit dem Blaupausenbeispiel ‚Ressourcengruppen mit RBAC‘ veröffentlichte Version“. Wählen Sie dann unten auf der Seite **Veröffentlichen** aus.
 
 In diesem Schritt kann die Blaupause einem Abonnement zugewiesen werden. Nach der Veröffentlichung können noch Änderungen vorgenommen werden. Zur Nachverfolgung der Unterschiede zwischen verschiedenen Versionen der gleichen Blaupausendefinition müssen weitere Änderungen mit einem neuen Wert für **Version** veröffentlicht werden.
 
@@ -85,10 +81,10 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
    - Grundlagen
 
      - **Abonnements**: Wählen Sie mindestens eines der Abonnements in der Verwaltungsgruppe aus, in der Sie die Kopie des Blaupausenbeispiels gespeichert haben. Wenn Sie mehrere Abonnements auswählen, wird für jedes Abonnement eine Zuweisung mit den eingegebenen Parametern erstellt.
-     - **Zuweisungsname**: Der Name wird basierend auf dem Namen der Blaupausendefinition vorab aufgefüllt.
+     - **Zuweisungsname:** Der Name wird basierend auf dem Namen der Blaupausendefinition vorab aufgefüllt.
      - **Standort**: Wählen Sie eine Region aus, in der die verwaltete Identität erstellt werden soll. Azure Blueprint verwendet diese verwaltete Identität zum Bereitstellen aller Artefakte in der zugewiesenen Blaupause. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../../active-directory/managed-identities-azure-resources/overview.md).
        Wählen Sie für dieses Tutorial die Region _USA, Osten 2_ aus.
-     - **Version der Blaupausendefinition**: Wählen Sie die Version _1.0_ mit dem Status **Veröffentlicht** Ihrer Kopie der Beispielblaupausendefinition aus.
+     - **Version der Blaupausendefinition:** Wählen Sie die Version _1.0_ mit dem Status **Veröffentlicht** Ihrer Kopie der Beispielblaupausendefinition aus.
 
    - Zuweisung sperren
 
@@ -104,12 +100,12 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
 
      |Artefaktname|Artefakttyp|Parametername|Wert|BESCHREIBUNG|
      |-|-|-|-|-|
-     |Ressourcengruppe „ProdRG“|Resource group|NAME|ProductionRG|Definiert den Namen der ersten Ressourcengruppe.|
-     |Ressourcengruppe „ProdRG“|Resource group|Location|USA, Westen 2|Legt den Ort der ersten Ressourcengruppe fest.|
+     |Ressourcengruppe „ProdRG“|Resource group|Name|ProductionRG|Definiert den Namen der ersten Ressourcengruppe.|
+     |Ressourcengruppe „ProdRG“|Resource group|Position|USA, Westen 2|Legt den Ort der ersten Ressourcengruppe fest.|
      |Mitwirkender|Rollenzuweisung|Benutzer oder Gruppe|{Ihre ID}|Definiert, welchem Benutzer oder welcher Gruppe die Rollenzuweisung _Mitwirkender_ in der ersten Ressourcengruppe gewährt wird.|
-     |Ressourcengruppe „PreProdRG“|Resource group|NAME|PreProductionRG|Definiert den Namen der zweiten Ressourcengruppe.|
-     |Ressourcengruppe „PreProdRG“|Resource group|Location|USA (Westen)|Legt den Ort der zweiten Ressourcengruppe fest.|
-     |Owner (Besitzer)|Rollenzuweisung|Benutzer oder Gruppe|{Ihre ID}|Definiert, welchem Benutzer oder welcher Gruppe die Rollenzuweisung _Besitzer_ in der zweiten Ressourcengruppe gewährt wird.|
+     |Ressourcengruppe „PreProdRG“|Resource group|Name|PreProductionRG|Definiert den Namen der zweiten Ressourcengruppe.|
+     |Ressourcengruppe „PreProdRG“|Resource group|Position|USA (Westen)|Legt den Ort der zweiten Ressourcengruppe fest.|
+     |Besitzer|Rollenzuweisung|Benutzer oder Gruppe|{Ihre ID}|Definiert, welchem Benutzer oder welcher Gruppe die Rollenzuweisung _Besitzer_ in der zweiten Ressourcengruppe gewährt wird.|
      |Leser|Rollenzuweisung|Benutzer oder Gruppe|{Ihre ID}|Definiert, welchem Benutzer oder welcher Gruppe die Rollenzuweisung _Leser_ in der zweiten Ressourcengruppe gewährt wird.|
 
 1. Nachdem Sie alle Parameter eingegeben haben, wählen Sie unten auf der Seite die Option **Zuweisen** aus.
@@ -126,7 +122,7 @@ Durch die Blaupausenzuweisung werden die in der Blaupausendefinition definierten
 
 1. Wählen Sie links die Seite **Zugewiesene Blaupausen** aus. Suchen Sie mithilfe der Filter nach der Blaupausenzuweisung _Assignment-two-rgs-with-role-assignments_, und wählen Sie sie aus.
 
-   Auf dieser Seite sehen Sie, dass die Zuweisung erfolgreich war. Zudem wird eine Liste der erstellten Ressourcen mit ihrem Blaupausensperrzustand angezeigt. Wenn die Zuweisung aktualisiert wird, werden in der Dropdownliste **Zuweisungsvorgang** Details zur Bereitstellung jeder Definitionsversion angezeigt. Sie können in der Liste auf jede erstellte Ressource klicken, um die Eigenschaftenseite der jeweiligen Ressource zu öffnen.
+   Auf dieser Seite sehen Sie, dass die Zuweisung erfolgreich war. Zudem wird eine Liste der erstellten Ressourcen mit ihrem Blaupausensperrzustand angezeigt. Wenn die Zuweisung aktualisiert wird, werden in der Dropdownliste **Zuweisungsvorgang** Details zur Bereitstellung jeder Definitionsversion angezeigt. Sie können in der Liste jede erstellte Ressource auswählen, um die Eigenschaftenseite der jeweiligen Ressource zu öffnen.
 
 1. Wählen Sie die Ressourcengruppe **ProductionRG** aus.
 
@@ -187,9 +183,7 @@ Löschen Sie nach Abschluss dieses Tutorials die folgenden Ressourcen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](../concepts/lifecycle.md).
-- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](../concepts/parameters.md) vertraut.
-- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](../concepts/resource-locking.md) können.
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](../concepts/sequencing-order.md) anpassen können.
-- Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
-- Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).
+In diesem Tutorial wurde beschrieben, wie Sie eine neue Blaupause aus einer Beispieldefinition erstellen. Weitere Informationen zu Azure Blueprints finden Sie im Artikel zum Lebenszyklus von Blaupausen.
+
+> [!div class="nextstepaction"]
+> [Informationen zum Lebenszyklus von Blaupausen](../concepts/lifecycle.md)

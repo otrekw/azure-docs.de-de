@@ -1,5 +1,6 @@
 ---
-title: Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstellen in Azure API Management | Microsoft-Dokumentation
+title: Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstellen in API Management
+titleSuffix: Azure API Management
 description: Erfahren Sie, wie Sie Sichern und Wiederherstellen zur Notfallwiederherstellung in Azure API Management verwenden.
 services: api-management
 documentationcenter: ''
@@ -10,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: c566dc28338a47c1bf24066436c21544eb7c5c7d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 25356e7101293fc27d4107b3a618cfc481aee969
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072449"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779582"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -67,15 +68,14 @@ Alle Aufgaben, die Sie mithilfe von Azure Resource Manager für Ressourcen ausf�
 4. Geben Sie einen Namen für die Anwendung ein.
 5. Wählen Sie als Anwendungstyp **Nativ** aus.
 6. Geben Sie eine Platzhalter-URL wie z.B. `http://resources` für den **Umleitungs-URI** ein, da es sich um ein Pflichtfeld handelt. Der Wert wird jedoch später nicht verwendet. Klicken Sie auf das Kontrollkästchen, um die Anwendung zu speichern.
-7. Klicken Sie auf **Create**.
+7. Klicken Sie auf **Erstellen**.
 
 ### <a name="add-an-application"></a>Hinzufügen einer Anwendung
 
-1. Nachdem die Anwendung erstellt wurde, klicken Sie auf **Einstellungen**.
-2. Klicken Sie auf **Erforderliche Berechtigungen**.
-3. Klicken Sie auf **+Hinzufügen**.
-4. Drücken Sie **API auswählen**.
-5. Wählen Sie **Windows** **Azure-Dienstverwaltungs-API** aus.
+1. Klicken Sie nach dem Erstellen der Anwendung auf **API-Berechtigungen**.
+2. Klicken Sie auf **+ Add a permission** (+ Berechtigung hinzufügen).
+4. Klicken Sie auf **Select Microsoft APIs** (Microsoft-APIs auswählen).
+5. Klicken Sie auf **Azure Service Management** (Azure-Dienstverwaltung).
 6. Drücken Sie **Auswählen**.
 
     ![Hinzufügen von Berechtigungen](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
@@ -124,14 +124,14 @@ Ersetzen Sie `{tenant id}`, `{application id}` und `{redirect uri}` entsprechend
 
     Wenn die Werte angegeben wurden, sollte im Codebeispiel ein Token ähnlich dem folgenden Beispiel zurückgegeben werden:
 
-    ![Tokenverschlüsselung][api-management-arm-token]
+    ![Token][api-management-arm-token]
 
     > [!NOTE]
     > Das Token kann nach einer bestimmten Zeit ablaufen. Führen Sie das Codebeispiel erneut aus, um ein neues Token zu generieren.
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Aufrufen der Sicherungs- und Wiederherstellungsvorgänge
 
-Die REST-APIs sind [API Management-Dienst – Backup](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup) und [API Management-Dienst – Restore](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore).
+Die REST-APIs sind [API Management-Dienst – Backup](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup) und [API Management-Dienst – Restore](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore).
 
 Legen Sie vor dem Aufrufen der in den folgenden Abschnitten beschriebenen Vorgänge zur Sicherung und Wiederherstellung den Autorisierungsanforderungsheader für den REST-Aufruf fest.
 
@@ -139,7 +139,7 @@ Legen Sie vor dem Aufrufen der in den folgenden Abschnitten beschriebenen Vorgä
 request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
-### <a name="step1"></a>Sichern eines API Management-Diensts
+### <a name="back-up-an-api-management-service"></a><a name="step1"> </a>Sichern eines API Management-Diensts
 
 Zum Sichern eines API Management-Diensts führen Sie die folgende HTTP-Anforderung aus:
 
@@ -147,12 +147,12 @@ Zum Sichern eines API Management-Diensts führen Sie die folgende HTTP-Anforderu
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
 ```
 
-Hierbei gilt:
+Dabei gilt:
 
 -   `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, den Sie sichern möchten
 -   `resourceGroupName` – der Name der Ressourcengruppe Ihres Azure API Management-Diensts
 -   `serviceName` – der Name des zu sichernden API Management-Diensts zum Zeitpunkt seiner Erstellung
--   `api-version` – durch `2018-06-01-preview` ersetzen
+-   `api-version` – durch `2019-12-01` ersetzen
 
 Geben Sie im Hauptteil der Anforderung das Azure-Zielspeicherkonto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen an:
 
@@ -169,18 +169,7 @@ Legen Sie für den `Content-Type`-Anforderungsheader den Wert `application/json`
 
 Die Sicherung ist ein länger anhaltender Vorgang, der bis zum Abschluss mehrere Minuten dauern kann. Falls die Anforderung erfolgreich war und der Sicherungsvorgang eingeleitet wurde, erhalten Sie den `202 Accepted` Antwortstatuscode mit einem `Location`-Header. Senden Sie GET-Anforderungen der URL im `Location` -Header, um den Status des Vorgangs zu ermitteln. Während der Sicherung erhalten Sie weiterhin den Statuscode „202 Accepted“. Mit dem Antwortcode `200 OK` wird der erfolgreiche Abschluss des Sicherungsvorgangs angezeigt.
 
-Beachten Sie die folgenden Einschränkungen für Sicherungsanforderungen:
-
--   Der im Hauptteil der Anforderung angegebene **Container** **muss vorhanden sein**.
--   Vermeiden Sie während der Sicherung **Änderungen in der Dienstverwaltung**, wie z.B. SKU-Upgrades oder Herabstufungen, Änderungen im Domänennamen usw.
--   Die Wiederherstellung einer Sicherung nach ihrer Erstellung **wird nur 30 Tage lange garantiert**.
--   **Nutzungsdaten** zum Erstellen von Analyseberichten sind in der Sicherung **nicht enthalten**. Verwenden Sie [Azure API Management REST API][azure api management rest api] , um regelmäßig Analyseberichte zur Aufbewahrung abzurufen.
--   Darüber hinaus sind die folgenden Elemente nicht Bestandteil der Sicherungsdaten: benutzerdefinierte SSL-Zertifikate für Domänen und alle vom Kunden hochgeladenen Zwischen- oder Stammzertifikate, Inhalte des Entwicklerportals und Integrationseinstellungen für virtuelle Netzwerke.
--   Die Häufigkeit, mit der Sie Dienstsicherungen durchführen, wirkt sich auf das Ziel Ihres Wiederherstellungspunkts aus. Um die Auswirkungen zu minimieren, empfehlen wir, regelmäßige Sicherungen zu implementieren und bei Bedarf Sicherungen durchzuführen, wenn Sie Änderungen an Ihrem API Management-Dienst vorgenommen haben.
--   **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Sicherungsvorgangs vorgenommen werden, sind ggf. **nicht in der Sicherung enthalten und gehen verloren**.
--   Sie müssen den Zugriff von der Steuerungsebene auf das Azure Storage-Konto **zulassen**. Kunden müssen die folgenden eingehenden IP-Adressen in ihrem Storage-Konto für das Backup öffnen. 
-    > 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 13.64.39.16/32, 40.81.47.216/32, 51.145.179.78/32, 52.142.95.35/32, 40.90.185.46/32, 20.40.125.155/32
-### <a name="step2"></a>Wiederherstellen eines API Management-Diensts
+### <a name="restore-an-api-management-service"></a><a name="step2"> </a>Wiederherstellen eines API Management-Diensts
 
 Zum Wiederherstellen eines API Management-Diensts aus einer zuvor erstellten Sicherung führen Sie die folgende HTTP-Anforderung aus:
 
@@ -188,12 +177,12 @@ Zum Wiederherstellen eines API Management-Diensts aus einer zuvor erstellten Sic
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
 ```
 
-Hierbei gilt:
+Dabei gilt:
 
 -   `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, in den Sie eine Sicherung erstellen
 -   `resourceGroupName` – Name der Ressourcengruppe mit dem Azure-API Management-Dienst, in dem Sie eine Sicherung wiederherstellen
 -   `serviceName` – der Name des wiederherzustellenden API Management-Diensts zum Zeitpunkt seiner Erstellung
--   `api-version` – durch `2018-06-01-preview` ersetzen
+-   `api-version` – durch `api-version=2019-12-01` ersetzen
 
 Geben Sie im Anforderungstext den Speicherort der Sicherungsdatei an. Fügen Sie das Azure-Zielspeicherkonto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen an:
 
@@ -218,7 +207,29 @@ Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> Sicherungs- und Wiederherstellungsvorgänge können außerdem mithilfe der PowerShell-Befehle _Backup-AzApiManagement_ bzw. _Restore-AzApiManagement_ ausgeführt werden.
+> Sicherungs- und Wiederherstellungsvorgänge können außerdem mithilfe der PowerShell-Befehle [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) bzw. [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) ausgeführt werden.
+
+## <a name="constraints-when-making-backup-or-restore-request"></a>Einschränkungen beim Durchführen von Backup- oder Wiederherstellungsanforderungen
+
+-   Der im Hauptteil der Anforderung angegebene **Container** **muss vorhanden sein**.
+-   Vermeiden Sie während der Sicherung **Verwaltungsänderungen im Dienst** wie beispielsweise SKU-Upgrades oder Herabstufungen, Änderungen am Domänennamen usw.
+-   Die Wiederherstellung einer Sicherung nach ihrer Erstellung **wird nur 30 Tage lange garantiert**.
+-   **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Sicherungsvorgangs vorgenommen werden, sind ggf. **nicht in der Sicherung enthalten und gehen verloren**.
+-   Wenn das Azure Storage-Konto für die [Firewall][azure-storage-ip-firewall] aktiviert ist, muss der Kunde die Gruppe von [Azure API Management-IP-Adressen der Steuerungsebene][control-plane-ip-address] in seinem Speicherkonten für Sicherungen oder Wiederherstellungen **zulassen**, damit es funktioniert. Das Azure Storage-Konto kann sich in einer beliebigen Azure-Region befinden, mit Ausnahme derjenigen, in der sich der API Management-Dienst befindet. Wenn sich der API Management-Dienst beispielsweise in der Region „USA, Westen“ befindet, kann sich das Azure Storage-Konto in der Region „USA, Westen 2“ befinden, und der Kunde muss die IP-Adresse 13.64.39.16 der Steuerungsebene (API Management-IP-Adresse der Steuerungsebene für „USA, Westen“) in der Firewall öffnen. Der Grund dafür ist, dass für Anforderungen an Azure Storage keine Übersetzung in eine öffentliche IP-Adresse über „Compute“ (Azure API Management-Steuerungsebene) in derselben Azure-Region erfolgt. Bei regionsübergreifenden Speicheranforderungen wird eine Übersetzung in die öffentliche IP-Adresse durchgeführt.
+-   [Ursprungsübergreifende Ressourcenfreigabe (CORS, Cross-Origin Resource Sharing)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) sollte für den BLOB-Dienst im Azure Storage-Konto **nicht** aktiviert sein.
+-   **Die SKU** des wiederherzustellenden Diensts **muss** mit der SKU des gesicherten Diensts übereinstimmen.
+
+## <a name="what-is-not-backed-up"></a>Nicht gesicherte Elemente
+-   **Nutzungsdaten** zum Erstellen von Analyseberichten sind in der Sicherung **nicht enthalten**. Verwenden Sie [Azure API Management REST API][azure api management rest api] , um regelmäßig Analyseberichte zur Aufbewahrung abzurufen.
+-   [TLS/SSL-Zertifikate für die benutzerdefinierte Domäne](configure-custom-domain.md)
+-   [Benutzerdefiniertes Zertifizierungsstellenzertifikat](api-management-howto-ca-certificates.md), wozu Zwischen- oder Stammzertifikate gehören, die vom Kunden hochgeladen wurden.
+-   Integrationseinstellungen für [virtuelle Netzwerke](api-management-using-with-vnet.md)
+-   Konfiguration der [verwalteten Identität](api-management-howto-use-managed-service-identity.md)
+-   [Azure Monitor-Diagnosekonfiguration](api-management-howto-use-azure-monitor.md)
+-   Einstellungen für [Protokolle und Verschlüsselungsverfahren](api-management-howto-manage-protocols-ciphers.md)
+-   Inhalt des [Entwicklerportals](api-management-howto-developer-portal.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management).
+
+Die Häufigkeit, mit der Sie Dienstsicherungen durchführen, wirkt sich auf das Ziel Ihres Wiederherstellungspunkts aus. Um die Auswirkungen zu minimieren, empfehlen wir, regelmäßige Sicherungen zu implementieren und bei Bedarf Sicherungen durchzuführen, wenn Sie Änderungen an Ihrem API Management-Dienst vorgenommen haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -226,12 +237,12 @@ Sehen Sie sich die folgenden Ressourcen für verschiedene Vorgehensweisen für d
 
 -   [Replicate Azure API Management Accounts (in englischer Sprache)](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Automating API Management Backup and Restore with Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps) (Automatisieren der Sicherung und Wiederherstellung von API Management mit Logic Apps)
--   [Azure API Management: Sichern und Wiederherstellen der Konfiguration](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
+-   [Azure API Management: Sichern und Wiederherstellen der Konfiguration](/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration)
      _–der Ansatz von Stuart entspricht nicht der offiziellen Anleitung, ist aber sehr interessant._
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2
-[azure api management rest api]: https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest
+[azure api management rest api]: /rest/api/apimanagement/apimanagementrest/api-management-rest
 [api-management-add-aad-application]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-add-aad-application.png
 [api-management-aad-permissions]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-permissions.png
 [api-management-aad-permissions-add]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-permissions-add.png
@@ -240,3 +251,5 @@ Sehen Sie sich die folgenden Ressourcen für verschiedene Vorgehensweisen für d
 [api-management-aad-resources]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-resources.png
 [api-management-arm-token]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-arm-token.png
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
+[control-plane-ip-address]: api-management-using-with-vnet.md#control-plane-ips
+[azure-storage-ip-firewall]: ../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range

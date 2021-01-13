@@ -1,24 +1,26 @@
 ---
-title: Until-Aktivität in Azure Data Factory | Microsoft-Dokumentation
+title: Until-Aktivität in Azure Data Factory
 description: Die Until-Aktivität führt eine Reihe von Aktivitäten in einer Schleife aus, bis die der Aktivität zugeordnete Bedingung als „true“ ausgewertet wird oder ein Timeout auftritt.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 80eebf0813b6403d5e1e8ff510003f7f0f57c821
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ab3644b11273017ea6e4e5a395a7d3cc3a201217
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142451"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485977"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Until-Aktivität in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Die Until-Aktivität erfüllt die gleiche Funktion wie eine do-until-Schleifenstruktur in Programmiersprachen. Sie führt eine Reihe von Aktivitäten in einer Schleife aus, bis die der Aktivität zugeordnete Bedingung als „true“ ausgewertet wird. In Data Factory können Sie einen Timeoutwert für die Until-Aktivität angeben. 
 
 ## <a name="syntax"></a>Syntax
@@ -53,10 +55,10 @@ Die Until-Aktivität erfüllt die gleiche Funktion wie eine do-until-Schleifenst
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Der Name der `Until`-Aktivität. | Zeichenfolge | Ja
-type | Muss auf **Until** festgelegt werden. | Zeichenfolge | Ja
+name | Der Name der `Until`-Aktivität. | String | Ja
+type | Muss auf **Until** festgelegt werden. | String | Ja
 expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ausdruck  | Ja
-timeout | Für die do-until-Schleife tritt nach der hier angegebenen Zeit ein Timeout auf. | Eine Zeichenfolge. `d.hh:mm:ss` oder `hh:mm:ss`. Standardwert: sieben Tage. Maximalwert: 90 Tage | Nein
+timeout | Für die do-until-Schleife tritt nach der hier angegebenen Zeit ein Timeout auf. | Eine Zeichenfolge. `d.hh:mm:ss` oder `hh:mm:ss`. Standardwert: sieben Tage. Maximalwert: 90 Tage. | Nein
 activities | Reihe von Aktivitäten, die ausgeführt werden, bis der Ausdruck als `true` ausgewertet wird. | Array von Aktivitäten |  Ja
 
 ## <a name="example-1"></a>Beispiel 1
@@ -65,7 +67,7 @@ activities | Reihe von Aktivitäten, die ausgeführt werden, bis der Ausdruck al
 > Dieser Abschnitt enthält die JSON-Definitionen und PowerShell-Beispielbefehle zum Ausführen der Pipeline. Eine exemplarische Vorgehensweise mit einer ausführlichen Anleitung zum Erstellen einer Data Factory-Pipeline mithilfe von Azure PowerShell und JSON-Definitionen finden Sie unter [Erstellen einer Data Factory und Pipeline mithilfe von PowerShell](quickstart-create-data-factory-powershell.md).
 
 ### <a name="pipeline-with-until-activity"></a>Pipeline mit Until-Aktivität
-In diesem Beispiel enthält die Pipeline zwei Aktivitäten: **Until** und **Wait**. Die Wait-Aktivität führt nach der angegebenen Wartezeit die Web-Aktivität in der Schleife aus. Weitere Informationen zu Ausdrücken und Funktionen in Data Factory finden Sie unter [Ausdrücke und Funktionen in Azure Data Factory](control-flow-expression-language-functions.md). 
+In diesem Beispiel besitzt die Pipeline zwei Aktivitäten: **Until** und **Wait**. Die Wait-Aktivität führt nach der angegebenen Wartezeit die Web-Aktivität in der Schleife aus. Weitere Informationen zu Ausdrücken und Funktionen in Data Factory finden Sie unter [Ausdrücke und Funktionen in Azure Data Factory](control-flow-expression-language-functions.md). 
 
 ```json
 {
@@ -199,10 +201,7 @@ Die Pipeline in diesem Beispiel kopiert Daten aus einem Eingabeordner im Rahmen 
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }
@@ -249,7 +248,7 @@ Die Pipeline legt für **folderPath** entweder den Wert des Parameters **outputP
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bei diesen Befehlen wird davon ausgegangen, dass Sie die JSON-Dateien im folgenden Ordner gespeichert haben: C:\ADF. 
+Bei diesen Befehlen wird davon ausgegangen, dass Sie die JSON-Dateien im Ordner „C:\ADF“ gespeichert haben. 
 
 ```powershell
 Connect-AzAccount

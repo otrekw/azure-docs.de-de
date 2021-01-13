@@ -1,0 +1,45 @@
+---
+title: 'Versionshinweise: Azure Event Grid IoT Edge | Microsoft-Dokumentation'
+description: Versionshinweise zu Azure Event Grid in IoT Edge
+ms.date: 07/08/2020
+ms.topic: article
+ms.openlocfilehash: a7582750f5230f02c784b14f50dfc6efa7af8698
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86171413"
+---
+# <a name="release-notes-azure-event-grid-on-iot-edge"></a>Versionshinweise: Azure Event Grid in IoT Edge
+
+## <a name="100-preview1"></a>1.0.0-preview1
+
+Erstes Release von Azure Event Grid in IoT Edge. Enthaltene Features:
+
+* Themenerstellung
+* Erstellung von Ereignisabonnements
+* Erweiterte Filter
+* Ausgabebatches
+* Wiederholungsrichtlinien
+* Veröffentlichen zwischen Modulen
+* Veröffentlichen in Webhook als Ziel
+* Veröffentlichen in IoT Edge Hub als Ziel
+* Veröffentlichen im Clouddienst Azure Event Grid als Ziel
+* Persistenter Zustand für Metadaten
+* Integration des Blob Storage-Moduls
+
+Tags: `1.0.0-preview1`
+
+## <a name="100-preview2"></a>1.0.0-preview2
+
+In Vorschauversion 2 von Azure Event Grid in IoT Edge wurden hinzugefügt:
+
+* Konfigurierbares Speichern von Ereignissen auf Datenträgern
+* Metriken für Themen
+* Metriken für Ereignisabonnements
+* Veröffentlichen in Event Hubs als Ziel
+* Veröffentlichen in Service Bus-Warteschlangen als Ziel
+* Veröffentlichen in Service Bus-Themen als Ziel
+* Veröffentlichen in Storage-Warteschlangen als Ziel
+
+Tags: `1.0.0-preview2`, `1.0`, `latest`

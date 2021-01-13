@@ -1,27 +1,21 @@
 ---
-title: Geplante Ereignisse für Linux-VMs in Azure | Microsoft-Dokumentation
+title: Scheduled Events für Linux-VMs in Azure
 description: Planen Sie Ereignisse mit dem Azure-Metadatendienst für Ihre virtuellen Linux-Computer.
-services: virtual-machines-windows, virtual-machines-linux, cloud-services
-documentationcenter: ''
-author: ericrad
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: na
+author: EricRadzikowskiMSFT
+ms.service: virtual-machines-linux
+ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 02/22/2018
+ms.date: 06/01/2020
 ms.author: ericrad
-ms.openlocfilehash: d427544ab9396211e4cbb247527a0eb848f42926
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.reviewer: mimckitt
+ms.openlocfilehash: 99528d1575056917b68bcb38f41a24d065822827
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091277"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792802"
 ---
-# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events für Linux-VMs
+# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Instance Metadata Service: Scheduled Events für Linux-VMs
 
 Scheduled Events ist ein Azure-Metadatendienst, der Ihren Anwendungen Zeit zur Vorbereitung auf die Wartung virtueller Computer gibt. Er stellt Informationen zu geplanten Wartungsereignissen (z.B. Neustart) bereit, damit Ihre Anwendung sich darauf vorbereiten und Unterbrechungen begrenzen kann. Der Dienst steht für alle Azure-VM-Typen zur Verfügung, einschließlich PaaS und IaaS unter Windows und Linux. 
 
@@ -45,10 +39,10 @@ Mit dem Feature für geplante Ereignisse kann Ihre Anwendung erkennen, wann eine
 
 Geplante Ereignisse umfasst Ereignisse in den folgenden Anwendungsfällen:
 
-- [Von der Plattform ausgelöste Wartung](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (z. B. Neustart des virtuellen Computers, Livemigration oder Updates für den Host mit Speicherbeibehaltung)
-- Heruntergestufte Hardware
+- [Von der Plattform ausgelöste Wartung](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json) (z. B. Neustart des virtuellen Computers, Livemigration oder Updates für den Host mit Speicherbeibehaltung)
+- Der virtuelle Computer wird auf [heruntergestufter Hosthardware](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events) ausgeführt, deren baldiger Ausfall erwartet wird.
 - Benutzerinitiierte Wartung (z.B. Neustart oder erneute Bereitstellung eines virtuellen Computers durch den Benutzer)
-- [Entfernung von VMs mit niedriger Priorität](https://azure.microsoft.com/blog/low-priority-scale-sets) in Skalierungsgruppen
+- Instanzentfernungen von [Spot-VM](../spot-vms.md) und [Spot-Skalierungsgruppen](../../virtual-machine-scale-sets/use-spot.md)
 
 ## <a name="the-basics"></a>Die Grundlagen  
 
@@ -60,25 +54,33 @@ Geplante Ereignisse werden übermittelt an:
 - Eigenständige virtuelle Computer
 - Alle VMs in einem Clouddienst
 - Alle VMs in einer Verfügbarkeitsgruppe
+- Alle VMs in einer Verfügbarkeitszone 
 - Alle VMs in einer Gruppe für die Skalierungsgruppenplatzierung 
+
+> [!NOTE]
+> Für VMs in einer Verfügbarkeitszone gilt, dass geplante Ereignisse an einzelne VMs in der Zone gesendet werden.
+> Haben Sie z. B. 100 VMs in einer Verfügbarkeitsgruppe, und wird eine dieser VMs aktualisiert, wird das geplante Ereignis an alle 100 gesendet. Haben Sie dagegen 100 einzelne VMs in einer Zone, wird das Ereignis nur an die VM gesendet, die betroffen ist.
 
 Überprüfen Sie deshalb anhand des Felds `Resources` in einem Ereignis, welche VMs betroffen sein werden.
 
 ### <a name="endpoint-discovery"></a>Endpunktermittlung
 Für virtuelle Computer in VNETs ist der Metadatendienst über eine statische, nicht routingfähige IP-Adresse (`169.254.169.254`) verfügbar. Der vollständige Endpunkt für die neueste Version von Scheduled Events ist wie folgt: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01`
 
 Wenn der virtuelle Computer nicht innerhalb eines virtuellen Netzwerks erstellt wird (Standard für Clouddienste und klassische virtuelle Computer), ist zusätzliche Logik erforderlich, um die zu verwendende IP-Adresse zu ermitteln. In diesem Beispiel erfahren Sie, wie Sie [den Hostendpunkt ermitteln](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 
 ### <a name="version-and-region-availability"></a>Version und regionale Verfügbarkeit
-Das Feature für geplante Ereignisse ist versionsspezifisch. Die Versionen sind obligatorisch. Die aktuelle Version ist `2017-11-01`.
+Das Feature für geplante Ereignisse ist versionsspezifisch. Die Versionen sind obligatorisch. Die aktuelle Version ist `2019-01-01`.
 
 | Version | Releasetyp | Regions | Versionsinformationen | 
 | - | - | - | - | 
-| 2017-11-01 | Allgemeine Verfügbarkeit | Alle | <li> Unterstützung für die Entfernung von VMs mit niedriger Priorität hinzugefügt (EventType 'Preempt')<br> | 
-| 2017-08-01 | Allgemeine Verfügbarkeit | Alle | <li> Ein vorangestellter Unterstrich wurde aus Ressourcennamen virtueller Iaas-Computer entfernt.<br><li>Der Metadatenheader wird als Voraussetzung für alle Anforderungen erzwungen. | 
-| 2017-03-01 | Vorschau | Alle | <li>Erste Version
+| 2019-08-01 | Allgemeine Verfügbarkeit | All | <li> EventSource-Unterstützung hinzugefügt |
+| 01.04.2019 | Allgemeine Verfügbarkeit | All | <li> Unterstützung der Ereignisbeschreibung hinzugefügt |
+| 2019-01-01 | Allgemeine Verfügbarkeit | All | <li> Unterstützung für EventType „Terminate“ von VM-Skalierungsgruppen hinzugefügt |
+| 2017-11-01 | Allgemeine Verfügbarkeit | All | <li> Unterstützung für die Entfernung von Spot-VMs hinzugefügt (EventType „Preempt“)<br> | 
+| 2017-08-01 | Allgemeine Verfügbarkeit | All | <li> Ein vorangestellter Unterstrich wurde aus Ressourcennamen virtueller Iaas-Computer entfernt.<br><li>Der Metadatenheader wird als Voraussetzung für alle Anforderungen erzwungen. | 
+| 2017-03-01 | Vorschau | All | <li>Erste Veröffentlichung |
 
 
 > [!NOTE] 
@@ -104,7 +106,7 @@ Sie können geplante Ereignisse abfragen, indem Sie den folgenden Aufruf ausfüh
 
 #### <a name="bash"></a>Bash
 ```
-curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
 Eine Antwort enthält ein Array geplanter Ereignisse. Ein leeres Array bedeutet, dass derzeit keine Ereignisse geplant sind.
@@ -115,11 +117,13 @@ Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereigni
     "Events": [
         {
             "EventId": {eventID},
-            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt",
+            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt" | "Terminate",
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
-            "NotBefore": {timeInUTC},              
+            "NotBefore": {timeInUTC},       
+            "Description": {eventDescription},
+            "EventSource" : "Platform" | "User",
         }
     ]
 }
@@ -129,11 +133,13 @@ Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereigni
 |Eigenschaft  |  BESCHREIBUNG |
 | - | - |
 | EventId | Global eindeutiger Bezeichner für dieses Ereignis <br><br> Beispiel: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Auswirkungen dieses Ereignisses <br><br> Werte: <br><ul><li> `Freeze`: Das Anhalten des virtuellen Computers für einige Sekunden ist geplant. Der Prozessor und die Netzwerkverbindung werden möglicherweise angehalten, es gibt jedoch keine Auswirkungen auf den Arbeitsspeicher oder geöffnete Dateien.<li>`Reboot`: Der Neustart der VM ist geplant (der flüchtige Arbeitsspeicher geht verloren). <li>`Redeploy`: Das Verschieben der VM auf einen anderen Knoten ist geplant (kurzlebige Datenträger gehen verloren). <li>`Preempt`: Virtueller Computer mit niedriger Priorität wird gelöscht (kurzlebige Datenträger gehen verloren).|
+| EventType | Auswirkungen dieses Ereignisses <br><br> Werte: <br><ul><li> `Freeze`: Das Anhalten des virtuellen Computers für einige Sekunden ist geplant. Der Prozessor und die Netzwerkverbindung werden möglicherweise angehalten, es gibt jedoch keine Auswirkungen auf den Arbeitsspeicher oder geöffnete Dateien.<li>`Reboot`: Der Neustart der VM ist geplant (der flüchtige Arbeitsspeicher geht verloren). <li>`Redeploy`: Das Verschieben der VM auf einen anderen Knoten ist geplant (kurzlebige Datenträger gehen verloren). <li>`Preempt`: Spot-VM wird gelöscht (kurzlebige Datenträger gehen verloren). <li> `Terminate`: Das Löschen des virtuellen Computers ist geplant. |
 | ResourceType | Typ der Ressource, auf die sich dieses Ereignis auswirkt. <br><br> Werte: <ul><li>`VirtualMachine`|
-| Ressourcen| Liste der Ressourcen, auf die sich dieses Ereignis auswirkt. Die Liste enthält garantiert Computer aus maximal einer [Updatedomäne](manage-availability.md), muss jedoch nicht alle Computer in dieser Domäne enthalten. <br><br> Beispiel: <br><ul><li> [„FrontEnd_IN_0“, „BackEnd_IN_0“] |
+| Ressourcen| Liste der Ressourcen, auf die sich dieses Ereignis auswirkt. Die Liste enthält garantiert Computer aus maximal einer [Updatedomäne](../manage-availability.md), muss jedoch nicht alle Computer in dieser Domäne enthalten. <br><br> Beispiel: <br><ul><li> [„FrontEnd_IN_0“, „BackEnd_IN_0“] |
 | EventStatus | Status dieses Ereignisses <br><br> Werte: <ul><li>`Scheduled`: Dieses Ereignis erfolgt nach dem in der `NotBefore`-Eigenschaft angegebenen Zeitpunkt.<li>`Started`: Dieses Ereignis wurde gestartet.</ul> `Completed` oder ein ähnlicher Status wird nie angegeben. Das Ergebnis wird nicht länger zurückgegeben, wenn es abgeschlossen wurde.
 | NotBefore| Zeitpunkt, nach dem dieses Ereignis gestartet werden kann. <br><br> Beispiel: <br><ul><li> Mo., 19. September 2016 18:29:47 GMT  |
+| Beschreibung | Beschreibung dieses Ereignisses. <br><br> Beispiel: <br><ul><li> Der Hostserver befindet sich im Wartungsmodus. |
+| EventSource | Initiator des Ereignisses. <br><br> Beispiel: <br><ul><li> `Platform`: Dieses Ereignis wird durch die Plattform initiiert. <li>`User`: Dieses Ereignis wurde durch den Benutzer initiiert. |
 
 ### <a name="event-scheduling"></a>Ereigniszeitplanung
 Jedes Ereignis wird, basierend auf dem Ereignistyp, mit einer minimalen Vorlaufzeit geplant. Diese Zeit ist in der `NotBefore`-Eigenschaft eines Ereignisses angegeben. 
@@ -144,6 +150,14 @@ Jedes Ereignis wird, basierend auf dem Ereignistyp, mit einer minimalen Vorlaufz
 | Reboot | 15 Minuten |
 | Erneute Bereitstellung | 10 Minuten |
 | Preempt | 30 Sekunden |
+| Terminate | [Vom Benutzer konfigurierbar](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 bis 15 Minuten |
+
+> [!NOTE] 
+> In einigen Fällen kann Azure den Hostausfall aufgrund von heruntergestufter Hardware vorhersagen und versucht, die Unterbrechung Ihres Diensts durch Planen einer Migration zu minimieren. Betroffene virtuelle Computer erhalten ein geplantes Ereignis mit einer `NotBefore`-Angabe, die in der Regel einige Tage in der Zukunft liegt. Der tatsächliche Zeitpunkt variiert je nach der vorhergesagten Risikobewertung des Ausfalls. Azure versucht, wenn möglich 7 Tage im Voraus zu benachrichtigen, aber der tatsächliche Zeitpunkt variiert und kann früher sein, wenn die Vorhersage lautet, dass eine hohe Wahrscheinlichkeit besteht, dass die Hardware bald ausfallen wird. Um das Risiko für Ihren Dienst zu verringern, falls vor der vom System initiierten Migration die Hardware ausfällt, empfehlen wir Ihnen, Ihren virtuellen Computer so bald wie möglich selbst erneut bereitzustellen.
+
+### <a name="polling-frequency"></a>Abrufhäufigkeit
+
+Sie können den Endpunkt beliebig häufig (oder selten) auf Updates abfragen. Je mehr Zeit zwischen den Anforderungen vergeht, desto mehr Zeit verlieren Sie möglicherweise für das Reagieren auf ein bevorstehendes Ereignis. Die meisten Ereignisse werden 5 bis 15 Minuten im Voraus angekündigt, manchmal bleibt jedoch nur ein Vorlauf von 30 Sekunden. Damit Sie so viel Zeit wie möglich haben, um Abhilfemaßnahmen zu ergreifen, empfiehlt es sich, den Dienst einmal pro Sekunde abzufragen.
 
 ### <a name="start-an-event"></a>Starten eines Ereignisses 
 
@@ -162,7 +176,7 @@ Das folgende JSON-Beispiel wird im `POST`-Anforderungstext erwartet. Die Anforde
 
 #### <a name="bash-sample"></a>Bash-Beispiel
 ```
-curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
+curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
 ```
 
 > [!NOTE] 
@@ -176,20 +190,20 @@ Im folgenden Beispiel fragt der Metadatenserver geplante Ereignisse ab und geneh
 #!/usr/bin/python
 
 import json
-import urllib2
 import socket
-import sys
+import urllib2
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01"
-headers = "{Metadata:true}"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01"
 this_host = socket.gethostname()
 
+
 def get_scheduled_events():
-   req = urllib2.Request(metadata_url)
-   req.add_header('Metadata', 'true')
-   resp = urllib2.urlopen(req)
-   data = json.loads(resp.read())
-   return data
+    req = urllib2.Request(metadata_url)
+    req.add_header('Metadata', 'true')
+    resp = urllib2.urlopen(req)
+    data = json.loads(resp.read())
+    return data
+
 
 def handle_scheduled_events(data):
     for evt in data['Events']:
@@ -198,23 +212,29 @@ def handle_scheduled_events(data):
         resources = evt['Resources']
         eventtype = evt['EventType']
         resourcetype = evt['ResourceType']
-        notbefore = evt['NotBefore'].replace(" ","_")
+        notbefore = evt['NotBefore'].replace(" ", "_")
+    description = evt['Description']
+    eventSource = evt['EventSource']
         if this_host in resources:
-            print "+ Scheduled Event. This host " + this_host + " is scheduled for " + eventtype + " not before " + notbefore
+            print("+ Scheduled Event. This host " + this_host +
+                " is scheduled for " + eventtype + 
+        " by " + eventSource + 
+        " with description " + description +
+        " not before " + notbefore)
             # Add logic for handling events here
 
 
 def main():
-   data = get_scheduled_events()
-   handle_scheduled_events(data)
+    data = get_scheduled_events()
+    handle_scheduled_events(data)
+
 
 if __name__ == '__main__':
-  main()
-  sys.exit(0)
+    main()
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte 
 - Auf Azure Friday können Sie eine [Demo zu Scheduled Events](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) ansehen. 
 - Überprüfen Sie die Codebeispiele für Scheduled Events im [GitHub-Repository „Azure Instance Metadata Scheduled Events“](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
 - Erfahren Sie mehr über die verfügbaren APIs im [Instanz-Metadatendienst](instance-metadata-service.md).
-- Erfahren Sie mehr über [Geplante Wartung für virtuelle Linux-Computer in Azure](planned-maintenance.md).
+- Erfahren Sie mehr über [Geplante Wartung für virtuelle Linux-Computer in Azure](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json).

@@ -11,18 +11,18 @@ Customer intent: I want to filter network traffic to virtual machines that perfo
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 08031bc2ac29ea77374e21c4ce6f7bcf6151bcad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: c0b0d366518b786b33048d2d2f182abd787856ad
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730034"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89075102"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe unter Verwendung von PowerShell
 
@@ -35,7 +35,7 @@ Sie können eingehenden und ausgehenden Netzwerkdatenverkehr im Subnetz eines vi
 * Bereitstellen von virtuellen Computern in einem Subnetz
 * Testen von Datenverkehrsfiltern
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -304,4 +304,4 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 In diesem Artikel haben Sie eine Netzwerksicherheitsgruppe erstellt und dem Subnetz eines virtuellen Netzwerks zugeordnet. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksicherheitsgruppen – Übersicht](security-overview.md) sowie unter [Verwalten einer Netzwerksicherheitsgruppe](manage-network-security-group.md).
 
-Azure leitet standardmäßig Datenverkehr zwischen Subnetzen weiter. Sie können Datenverkehr zwischen Subnetzen stattdessen auch über einen virtuellen Computer weiterleiten, der als Firewall dient. Informationen dazu finden Sie unter [Erstellen einer Routingtabelle](tutorial-create-route-table-powershell.md).
+Azure leitet standardmäßig Datenverkehr zwischen Subnetzen weiter. Sie können Datenverkehr zwischen Subnetzen aber beispielsweise auch über einen virtuellen Computer weiterleiten, der als Firewall fungiert. Informationen dazu finden Sie unter [Erstellen einer Routingtabelle](tutorial-create-route-table-powershell.md).

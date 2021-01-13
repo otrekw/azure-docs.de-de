@@ -4,20 +4,20 @@ description: In diesem Artikel wird erläutert, wie Traffic Manager so konfiguri
 services: traffic-manager
 manager: twooley
 documentationcenter: ''
-author: asudbring
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: allensu
-ms.openlocfilehash: 5e9b02a4145d86b86ea3ba0d509d06b7c148cc6d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: duau
+ms.openlocfilehash: 46d71a38b79f449084f7353527f2dfb05d5b92a4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048474"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994909"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>Konfigurieren der leistungsorientierten Routingmethode für Datenverkehr
 
@@ -25,7 +25,7 @@ Mit der Routingmethode für Leistungsdatenverkehr können Sie Datenverkehr zu de
 
 ##  <a name="to-configure-performance-routing-method"></a>So konfigurieren Sie die Routingmethode „Leistung“
 
-1. Melden Sie sich in einem Browser beim [Azure-Portal](https://portal.azure.com) an. Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free/) registrieren. 
+1. Melden Sie sich im Browser beim [Azure-Portal](https://portal.azure.com) an. Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free/) registrieren. 
 2. Suchen Sie auf der Suchleiste des Portals die **Traffic Manager-Profile**, und klicken Sie dann auf den Namen des Profils, für das Sie die Routingmethode konfigurieren möchten.
 3. Stellen Sie auf dem Blatt **Traffic Manager-Profil** sicher, dass die Clouddienste sowie die Websites, die Ihre Konfiguration beinhalten soll, vorhanden sind.
 4. Klicken Sie im Abschnitt **Einstellungen** auf **Konfiguration**, und nehmen Sie auf dem Blatt **Konfiguration** die folgenden Einstellungen vor:
@@ -37,7 +37,7 @@ Mit der Routingmethode für Leistungsdatenverkehr können Sie Datenverkehr zu de
 5.  Testen Sie wie folgt die Änderungen in Ihrer Konfiguration:
     1.  Suchen Sie auf der Suchleiste des Portals nach dem Namen des Traffic Manager-Profils, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
     2.  Klicken Sie auf dem Blatt **Traffic Manager-Profil** auf **Übersicht**.
-    3.  Auf dem Blatt **Traffic Manager-Profil** wird der DNS-Name des neu erstellten Traffic Manager-Profils angezeigt. Dieser kann von beliebigen Clients (etwa durch Navigation in einem Webbrowser) für das Routing zum richtigen Endpunkt nach Maßgabe des Routingtyps verwendet werden. In diesem Fall werden alle Anforderungen im Netzwerk des Clients an den Endpunkt mit der kürzesten Wartezeit geleitet.
+    3.  Auf dem Blatt **Traffic Manager-Profil** wird der DNS-Name Ihres neu erstellten Traffic Manager-Profils angezeigt. Dieser kann von beliebigen Clients (etwa durch Navigation in einem Webbrowser) für das Routing zum richtigen Endpunkt nach Maßgabe des Routingtyps verwendet werden. In diesem Fall werden alle Anforderungen im Netzwerk des Clients an den Endpunkt mit der kürzesten Wartezeit geleitet.
 6. Sobald das Traffic Manager-Profil funktionsfähig ist, bearbeiten Sie den DNS-Eintrag auf dem autoritativen DNS-Server, damit Ihre Unternehmensdomäne auf den Namen der Traffic Manager-Domäne verweisen kann.
 
 ![Konfigurieren der leistungsorientierten Routingmethode für Datenverkehr mit Traffic Manager][1]

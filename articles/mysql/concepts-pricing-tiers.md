@@ -1,29 +1,28 @@
 ---
-title: Tarife in Azure Database for MySQL
-description: In diesem Artikel werden die Tarife in Azure Database for MySQL beschrieben.
-author: jan-eng
-ms.author: janeng
+title: Tarife – Azure Database for MySQL
+description: Erfahren Sie mehr über die verschiedenen Tarife für Azure Database for MySQL einschließlich Computegeneration, Speichertypen, Speichergröße, V-Kerne, Arbeitsspeicher und Aufbewahrungszeiträume für Sicherungen.
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: 83581b22389efe5c9c19689e3116b39ea049ccdc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.date: 10/14/2020
+ms.openlocfilehash: c70e4a097a56b76089a26510bcf33b4c7c24c266
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694201"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018714"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL – Tarife
 
 Sie können eine Azure Database for MySQL-Serverinstanz basierend auf drei unterschiedlichen Tarifen erstellen: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Die Tarife unterscheiden sich anhand der bereitstellbaren Menge an Rechenleistung in V-Kernen, des Arbeitsspeichers pro V-Kern und der zum Speichern der Daten verwendeten Speichertechnologie. Alle Ressourcen werden auf der MySQL-Serverebene bereitgestellt. Ein Server kann über eine oder mehrere Datenbanken verfügen.
 
-|    | **Basic** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
+| attribute   | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 |:---|:----------|:--------------------|:---------------------|
 | Computegeneration | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | V-Kerne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
-| Arbeitsspeicher pro V-Kern | 2 GB | 5 GB | 10 GB |
-| Speichergröße | 5 GB bis 1 TB | 5 GB bis 4 TB | 5 GB bis 4 TB |
-| Speichertyp | Azure-Standardspeicher | Azure Storage Premium | Azure Storage Premium |
+| Arbeitsspeicher pro V-Kern | 2 GB | 5 GB | 10 GB |
+| Speichergröße | 5 GB bis 1 TB | 5 GB bis 16 TB | 5 GB bis 16 TB |
 | Aufbewahrungszeitraum von Datenbanksicherungen | 7 bis 35 Tage | 7 bis 35 Tage | 7 bis 35 Tage |
 
 Um einen Tarif auszuwählen, verwenden Sie die folgende Tabelle als Ausgangspunkt.
@@ -31,7 +30,7 @@ Um einen Tarif auszuwählen, verwenden Sie die folgende Tabelle als Ausgangspunk
 | Tarif | Zielworkloads |
 |:-------------|:-----------------|
 | Basic | Workloads mit geringen Anforderungen an Rechen- und E/A-Leistung. Beispiele hierfür sind Server, die für die Entwicklung, für Tests oder für kleine, selten verwendete Anwendungen verwendet werden. |
-| Allgemeiner Zweck | Geeignet für die meisten Unternehmensworkloads mit gängigen Compute- und Arbeitsspeicheranforderungen und skalierbarem E/A-Durchsatz. Hierzu zählen beispielsweise zum Hosten von Web- und mobilen Apps verwendete Server und andere Unternehmensanwendungen.|
+| Universell | Geeignet für die meisten Unternehmensworkloads mit gängigen Compute- und Arbeitsspeicheranforderungen und skalierbarem E/A-Durchsatz. Hierzu zählen beispielsweise zum Hosten von Web- und mobilen Apps verwendete Server und andere Unternehmensanwendungen.|
 | Arbeitsspeicheroptimiert | Geeignet für Hochleistungs-Datenbankworkloads, für die In-Memory-Leistung erforderlich ist, um eine schnellere Transaktionsverarbeitung und höhere Parallelität zu erzielen. Hierzu zählen beispielsweise Server für die Verarbeitung von Echtzeitdaten und leistungsstarke Transaktions- oder Analyse-Apps.|
 
 Nach der Servererstellung können Sie die Anzahl von virtuellen Kernen, die Hardwaregeneration und den Tarif (mit Ausnahme eines Wechsels zu oder von Basic) innerhalb weniger Sekunden ändern. Außerdem haben Sie die Möglichkeit, die Speichermenge einzeln zu erhöhen und den Aufbewahrungszeitraum für Sicherungen zu erhöhen oder zu verringern, ohne dass bei der Anwendung Ausfallzeiten auftreten. Der Sicherungsspeichertyp kann nach der Servererstellung nicht mehr geändert werden. Weitere Informationen finden Sie im Abschnitt [Skalieren von Ressourcen](#scale-resources).
@@ -44,46 +43,33 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 
 Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die für Ihren Azure Database for MySQL-Server zur Verfügung steht. Der Speicher wird für die Datenbankdateien, temporären Dateien, Transaktionsprotokolle und MySQL-Serverprotokolle verwendet. Außerdem wird durch die Gesamtmenge an bereitgestelltem Speicher die E/A-Kapazität Ihres Servers definiert.
 
-|    | **Basic** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
+| Speicherattribut   | Basic | Allgemeiner Zweck | Arbeitsspeicheroptimiert |
 |:---|:----------|:--------------------|:---------------------|
-| Speichertyp | Azure-Standardspeicher | Azure Storage Premium | Azure Storage Premium |
-| Speichergröße | 5 GB bis 1 TB | 5 GB bis 4 TB | 5 GB bis 4 TB |
+| Speichertyp | Storage Basic | Allgemeiner Speicher | Allgemeiner Speicher |
+| Speichergröße | 5 GB bis 1 TB | 5 GB bis 16 TB | 5 GB bis 16 TB |
 | Speicherinkrementgröße | 1 GB | 1 GB | 1 GB |
-| IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 6.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 6.000 IOPS |
+| IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS |
+
+> [!NOTE]
+> In den folgenden Regionen wird die Speicherung von bis zu 16 TB und 20.000 IOPS unterstützt: „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, Brasilien, Süden“, „USA, Westen“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Australien, Osten“, „Australien, Südosten“, „USA, Westen 2“, „USA, Westen-Mitte“, „Kanada, Osten“ und „Kanada, Mitte“.
+>
+> Alle anderen Regionen unterstützen bis zu 4 TB Speicherplatz und bis zu 6.000 IOPS.
+>
 
 Während und nach der Erstellung des Servers können Sie zusätzliche Speicherkapazität hinzufügen und dem System erlauben, den Speicher auf der Grundlage des Speicherbedarfs Ihrer Workload automatisch zu vergrößern. 
 
 >[!NOTE]
-> Speicher kann nur zentral hochskaliert, aber nicht herunterskaliert werden.
+> Der Speicher kann nur zentral hochskaliert und nicht herunterskaliert werden.
 
 Der Tarif „Basic“ umfasst keine IOPS-Garantie. Für die Tarife „Allgemein“ und „Arbeitsspeicheroptimiert“ wird der IOPS-Wert gegenüber der bereitgestellten Speichergröße in einem Verhältnis von 3:1 skaliert.
 
 Sie können Ihren E/A-Verbrauch im Azure-Portal oder mit Azure CLI-Befehlen überwachen. Die wichtigen zu überwachenden Metriken sind das [Speicherlimit, der Speicherprozentsatz, der genutzte Speicher und der E/A-Prozentsatz](concepts-monitoring.md).
 
-### <a name="large-storage-preview"></a>Großspeicher (Vorschauversion)
-
-Wir erhöhen die Speicherlimits für die Tarife „Universell“ und „Arbeitsspeicheroptimiert“. Neu erstellte Server, für die die Vorschauversion verwendet wird, können bis zu 16 TB an Speicher bereitstellen. Der IOPS-Wert kann im Verhältnis 3:1 auf bis zu 20.000 IOPS skaliert werden. Wie beim derzeit allgemein verfügbaren Speicher auch, können Sie nach der Erstellung des Servers zusätzliche Speicherkapazität hinzufügen und dem System erlauben, den Speicher auf Grundlage des Speicherbedarfs Ihrer Workload automatisch zu vergrößern.
-
-|              | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
-|:-------------|:--------------------|:---------------------|
-| Speichertyp | Azure Storage Premium | Azure Storage Premium |
-| Speichergröße | 32 GB bis 16 TB| 32 GB bis 16 TB |
-| Speicherinkrementgröße | 1 GB | 1 GB |
-| IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS| 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS |
-
-> [!IMPORTANT]
-> Großspeicher befindet sich in den folgenden Regionen derzeit in der öffentlichen Vorschauphase: „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Westen“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Australien, Osten“, „Australien, Südosten“.
->
-> Für großen Speicher (Vorschauversion) wird Folgendes derzeit nicht unterstützt:
->
-> * Geografisch redundante Sicherungen
-> * Regionsübergreifende Replikation
-
 ### <a name="reaching-the-storage-limit"></a>Erreichen der Speicherbegrenzung
 
-Server mit weniger als 100 GB bereitgestelltem Speicher werden als schreibgeschützt gekennzeichnet, wenn der freie Speicher weniger als 512 MB oder fünf Prozent der bereitgestellten Speichergröße beträgt. Server mit mehr als 100 GB bereitgestelltem Speicher werden als schreibgeschützt gekennzeichnet, wenn der freie Speicher weniger als 5 GB beträgt.
+Server mit 100 GB oder weniger bereitgestelltem Speicher werden als schreibgeschützt gekennzeichnet, wenn der freie Speicher weniger als fünf Prozent der bereitgestellten Speichergröße beträgt. Server mit mehr als 100 GB bereitgestelltem Speicher werden als schreibgeschützt gekennzeichnet, wenn der freie Speicher weniger als 5 GB beträgt.
 
-Wenn Sie also beispielsweise 110 GB Speicher bereitgestellt haben und die tatsächliche Auslastung 105 GB überschreitet, wird der Server als schreibgeschützt gekennzeichnet. Wenn Sie andererseits 5 GB Speicher bereitgestellt haben, wird der Server als schreibgeschützt gekennzeichnet, wenn der freie Speicher unter 512 MB sinkt.
+Wenn Sie also beispielsweise 110 GB Speicher bereitgestellt haben und die tatsächliche Auslastung 105 GB überschreitet, wird der Server als schreibgeschützt gekennzeichnet. Wenn Sie andererseits 5 GB Speicher bereitgestellt haben, wird der Server als schreibgeschützt gekennzeichnet, wenn der freie Speicher unter 256 MB sinkt.
 
 Während der Dienst versucht, den Server als schreibgeschützt zu kennzeichnen, werden alle neuen Schreibtransaktionsanforderungen blockiert, und bestehende aktive Transaktionen werden weiterhin ausgeführt. Wenn der Server als schreibgeschützt festgelegt ist, führen alle nachfolgenden Schreibvorgänge und die Transaktionscommits zu einem Fehler. Leseabfragen werden weiterhin ununterbrochen fortgesetzt. Nachdem Sie den bereitgestellten Speicher erhöht haben, ist der Server für die erneute Annahme von Schreibtransaktionen bereit.
 
@@ -91,15 +77,15 @@ Sie sollten die automatische Speichervergrößerung aktivieren oder eine Benachr
 
 ### <a name="storage-auto-grow"></a>Automatische Speichervergrößerung
 
-Die automatische Speichervergrößerung verhindert, dass der Server nicht mehr über genügend Speicherplatz verfügt und schreibgeschützt wird. Wenn die automatische Speichervergrößerung aktiviert ist, wird der Speicher automatisch ohne Beeinträchtigung der Workload vergrößert. Bei Servern mit weniger als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um 5 GB erhöht, sobald der freie Speicher unter 1 GB oder zehn Prozent des bereitgestellten Speichers sinkt. Bei Servern mit mehr als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um fünf Prozent erhöht, sobald der freie Speicherplatz unter fünf Prozent der bereitgestellten Speichergröße sinkt. Dabei gelten die maximalen, oben beschriebenen Speichergrenzwerte.
+Die automatische Speichervergrößerung verhindert, dass der Server nicht mehr über genügend Speicherplatz verfügt und schreibgeschützt wird. Wenn die automatische Speichervergrößerung aktiviert ist, wird der Speicher automatisch ohne Beeinträchtigung der Workload vergrößert. Bei Servern mit 100 GB oder weniger bereitgestelltem Speicher wird die bereitgestellte Speichergröße um 5 GB erhöht, sobald der freie Speicher unter zehn Prozent des bereitgestellten Speichers sinkt. Bei Servern mit mehr als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um fünf Prozent erhöht, sobald der freie Speicherplatz unter 10 GB der bereitgestellten Speichergröße sinkt. Dabei gelten die maximalen, oben beschriebenen Speichergrenzwerte.
 
-Wenn Sie also beispielsweise 1.000 GB Speicher bereitgestellt haben und die tatsächliche Auslastung 950 GB überschreitet, wird die Speichergröße des Servers auf 1.050 GB erhöht. Bei 10 GB bereitgestelltem Speicher wird die Speichergröße alternativ auf 15 GB erhöht, wenn weniger als 1 GB Speicher frei ist.
+Wenn Sie also beispielsweise 1000 GB Speicher bereitgestellt haben und die tatsächliche Auslastung 990 GB überschreitet, wird die Speichergröße des Servers auf 1050 GB erhöht. Bei 10 GB bereitgestelltem Speicher wird die Speichergröße alternativ auf 15 GB erhöht, wenn weniger als 1 GB Speicher frei ist.
 
-Beachten Sie, dass der Speicher nur zentral hochskaliert, aber nicht herunterskaliert werden kann.
+Beachten Sie, dass der Speicher nur zentral hochskaliert und nicht herunterskaliert werden kann.
 
-## <a name="backup"></a>Backup
+## <a name="backup-storage"></a>Sicherungsspeicher 
 
-Der Dienst erstellt automatisch Sicherungen Ihres Servers. Die Mindestaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Sie können eine Aufbewahrungsdauer von bis zu 35 Tagen festlegen. Die Aufbewahrungsdauer kann während der Lebensdauer des Servers jederzeit angepasst werden. Sie können zwischen lokal redundanten und georedundanten Sicherungen wählen. Georedundante Sicherungen werden auch in der [geografisch gepaarten Region](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) gespeichert, die zur Erstellungsregion Ihres Servers gehört (Regionspaar). Diese Redundanz sorgt in einem Notfall für Schutz. Sie haben auch die Möglichkeit, Ihren Server in einer beliebigen anderen Azure-Region, in der der Dienst verfügbar ist, mit georedundanten Sicherungen wiederherzustellen. Es ist nicht möglich, zwischen den beiden Sicherungsspeicheroptionen zu wechseln, sobald der Server erstellt ist.
+Bei Azure Database for MySQL werden bis zu 100% Ihres bereitgestellten Serverspeichers ohne zusätzliche Kosten als Sicherungsspeicher hinzugefügt. Alle Sicherungsspeicher, die Sie über diesen Betrag hinaus verwenden, werden in GB pro Monat abgerechnet. Beispiel: Wenn Sie einen Server mit 250 GB bereitstellen, verfügen Sie über 250 GB an zusätzlichem Speicher, der kostenlos für Serversicherungen zur Verfügung steht. Speicher für Sicherungen, die die 250 GB überschreiten, wird gemäß dem [Preismodell](https://azure.microsoft.com/pricing/details/mysql/) abgerechnet. Informationen zu Faktoren, die sich auf die Sicherungsspeichernutzung sowie die Überwachung und Steuerung der Sicherungsspeicherkosten beziehen, finden Sie in der [Dokumentation zur Sicherung](concepts-backup.md).
 
 ## <a name="scale-resources"></a>Skalieren von Ressourcen
 
@@ -117,4 +103,4 @@ Aktuelle Preisinformationen finden Sie auf der Seite [Azure-Datenbank für MySQL
 
 - Informieren Sie sich, wie Sie [im Portal einen MySQL-Server erstellen](howto-create-manage-server-portal.md).
 - Weitere Informationen zu [Dienstgrenzwerten](concepts-limits.md).
-- Weitere Informationen zum [horizontalen Hochskalieren mit Lesereplikaten](howto-read-replicas-portal.md).
+- Weitere Informationen zum [Aufskalieren mit Lesereplikaten](howto-read-replicas-portal.md).

@@ -1,9 +1,9 @@
 ---
 title: Verwenden vorhandener Player für die Wiedergabe Ihrer Inhalte – Azure | Microsoft-Dokumentation
-description: In diesem Thema finden Sie vorhandene Player, die Sie zum Wiedergeben Ihrer Inhalte verwenden können.
+description: In diesem Artikel finden Sie vorhandene Player, die Sie zum Wiedergeben Ihrer Inhalte verwenden können.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 7e9fcf89-0fb6-4fa4-96cb-666320684d69
@@ -12,19 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0da8ce396ce07b7c9859fcfccb5cb524c0ce21c1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.date: 11/17/2020
+ms.author: inhenkel
+ms.openlocfilehash: f15e2553ec3f3beed4dae809cc6c37f01837a40c
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69015290"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302905"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Wiedergabe Ihrer Inhalte mit vorhandenen Playern
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Azure Media Services unterstützt zahlreiche gängige Streamingformate wie Smooth Streaming, HTTP Live Streaming und MPEG-Dash. In diesem Thema finden Sie Verweise auf vorhandene Player, die Sie zum Testen von Datenströmen verwenden können.
 
-### <a name="the-azure-portal-media-services-content-player"></a>Der Media Services-Inhaltsplayer im Azure-Portal
+## <a name="the-azure-portal-media-services-content-player"></a>Der Media Services-Inhaltsplayer im Azure-Portal
+
 Im **Azure** -Portal wird ein Inhaltsplayer bereitgestellt, mit dem Sie Ihre Videos testen können.
 
 Klicken Sie auf den gewünschten Videoinhalt (vergewissern Sie sich, dass er [veröffentlicht](media-services-portal-publish.md)wurde), und klicken Sie auf die Schaltfläche **Abspielen** am unteren Rand des Portals.
@@ -32,8 +36,6 @@ Klicken Sie auf den gewünschten Videoinhalt (vergewissern Sie sich, dass er [ve
 Folgende Überlegungen sollten berücksichtigt werden:
 
 * Der **MEDIA SERVICES-INHALTSPLAYER** gibt die Inhalt vom standardmäßigen Streamingendpunkt wieder. Wenn Sie die Wiedergabe von einem anderen Streamingendpunkt starten möchten, verwenden Sie einen anderen Player. Beispiel: [Azure Media Player](https://aka.ms/azuremediaplayer).
-
-![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Azure Media Player
 
@@ -46,33 +48,27 @@ Verwenden Sie [Azure Media Player](https://aka.ms/azuremediaplayer) zum Wiederge
 
 ### <a name="flash-player"></a>Flash Player
 
-#### <a name="aes-encrypted-with-token"></a>AES-verschlüsselt mit Token
-
-[https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
-
 #### <a name="playready-with-token"></a>PlayReady mit Token
 
-[https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
+[http://reference.dashif.org/dash.js/nightly/samples/dash-if-reference-player/index.html](http://reference.dashif.org/dash.js/nightly/samples/dash-if-reference-player/index.html)
 
 ### <a name="dash-players"></a>DASH-Player
 
-[https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
+[DASH-Player](http://players.akamai.com/players/dashjs)
 
 [https://dashif.org](https://dashif.org)
 
 ### <a name="other"></a>Andere
+
 Sie können zum Testen von HLS-URLs auch Folgendes verwenden:
 
 * **Safari** auf einem iOS-Gerät oder
 * **3ivx HLS Player** unter Windows.
 
-## <a name="developing-video-players"></a>Entwickeln von Videoplayern
-Informationen zum Entwickeln eigener Player finden Sie unter [Entwickeln von Videoplayern](media-services-develop-video-players.md)
-
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
+
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geben
-[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-[AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png
+[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

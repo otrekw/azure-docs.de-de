@@ -1,28 +1,24 @@
 ---
-title: Azure PowerShell-Beispielskript – Rotieren von Speicherkonto-Zugriffsschlüsseln | Microsoft-Dokumentation
+title: Rotieren von Speicherkonto-Zugriffsschlüsseln mit PowerShell
+titleSuffix: Azure Storage
 description: Erstellen Sie ein Azure Storage-Konto, und rufen Sie dann einen der Zugriffsschlüssel für das Konto ab, und rotieren Sie ihn.
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+ms.subservice: blobs
+ms.devlang: powershell
 ms.topic: sample
-ms.date: 06/13/2017
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 0aae733f94ab4a217ca41ca3de6df2e5da47df50
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7d8585b5d05012ab2aff2580d41fecf6423b509c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244350"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89070427"
 ---
-# <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Erstellen eines Speicherkontos und Rotieren der Zugriffsschlüssel für das Konto
+# <a name="rotate-storage-account-access-keys-with-powershell"></a>Rotieren von Speicherkonto-Zugriffsschlüsseln mit PowerShell
 
 Mit diesem Skript wird ein Azure Storage-Konto erstellt, der primäre Zugriffsschlüssel des neuen Speicherkontos wird angezeigt, und dann wird der Schlüssel erneuert (rotiert).
 
@@ -34,7 +30,7 @@ Mit diesem Skript wird ein Azure Storage-Konto erstellt, der primäre Zugriffssc
 
 [!code-powershell[main](../../../powershell_scripts/storage/rotate-storage-account-keys/rotate-storage-account-keys.ps1 "Rotate storage account keys")]
 
-## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
+## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, das Speicherkonto und alle zugehörigen Ressourcen zu entfernen.
 
@@ -56,6 +52,6 @@ In diesem Skript werden die folgenden Befehle verwendet, um das Speicherkonto zu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Weitere PowerShell-Skriptbeispiele für Speicher finden Sie in den [PowerShell-Beispielen für Azure Blob Storage](../blobs/storage-samples-blobs-powershell.md).

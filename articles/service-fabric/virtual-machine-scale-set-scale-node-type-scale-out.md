@@ -1,31 +1,20 @@
 ---
-title: Hinzufügen eines Knotentyps zu einem Azure Service Fabric-Cluster | Microsoft-Dokumentation
+title: Hinzufügen eines Knotentyps zu einem Azure Service Fabric-Cluster
 description: In diesem Artikel erfahren Sie, wie ein Service Fabric-Cluster durch Hinzufügen einer VM-Skalierungsgruppe skaliert wird.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/13/2019
-ms.author: atsenthi
-ms.openlocfilehash: 1414e656a358af1e258c823cc7ec747fefa986ba
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: efd329c07b4881c6710d4173857b4186965438d8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598691"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88719324"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Skalieren eines Service Fabric-Clusters durch Hinzufügen einer VM-Skalierungsgruppe
 In diesem Artikel wird beschrieben, wie Sie einen Azure Service Fabric-Cluster skalieren, indem Sie einem vorhandenen Cluster einen neuen Knotentyp hinzufügen. Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern als Gruppe bereitstellen und verwalten können. Jeder Knotentyp, der in einem Azure-Cluster definiert ist, wird [als separate Skalierungsgruppe eingerichtet](service-fabric-cluster-nodetypes.md). Jeder Knotentyp kann dann separat verwaltet werden. Nachdem Sie einen Service Fabric-Cluster erstellt haben, können Sie einen Cluster horizontal skalieren, indem Sie einem vorhandenen Cluster einen neuen Knotentyp (VM-Skalierungsgruppe) hinzufügen.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
 
 ## <a name="add-an-additional-scale-set-to-an-existing-cluster"></a>Hinzufügen einer weiteren Skalierungsgruppe zu einem vorhandenen Cluster
-Das Hinzufügen eines neuen Knotentyps (durch eine VM-Skalierungsgruppe gesichert) zu einem vorhandenen Cluster lässt sich mit der [Durchführung eines Upgrades für den primären Knotentyp](service-fabric-scale-up-node-type.md) vergleichen. Der Unterschied ist lediglich, dass Sie nicht die gleiche NodeTypeRef-Eigenschaft verwenden, aktiv verwendete VM-Skalierungsgruppen natürlich nicht deaktivieren und dass die Clusterverfügbarkeit nicht verloren geht, wenn der primäre Knotentyp nicht aktualisiert wird. 
+Das Hinzufügen eines neuen Knotentyps (durch eine VM-Skalierungsgruppe gesichert) zu einem vorhandenen Cluster lässt sich mit der [Durchführung eines Upgrades für den primären Knotentyp](service-fabric-scale-up-primary-node-type.md) vergleichen. Der Unterschied ist lediglich, dass Sie nicht die gleiche NodeTypeRef-Eigenschaft verwenden, aktiv verwendete VM-Skalierungsgruppen natürlich nicht deaktivieren und dass die Clusterverfügbarkeit nicht verloren geht, wenn der primäre Knotentyp nicht aktualisiert wird. 
 
 Die NodeTypeRef-Eigenschaft wird in den Eigenschaften der Service Fabric-Erweiterung der VM-Skalierungsgruppe deklariert:
 ```json
@@ -64,7 +53,7 @@ Außerdem müssen Sie diesen neuen Knotentyp der Service Fabric-Clusterressource
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie, wie der [primäre Knotentyp zentral hochskaliert wird](service-fabric-scale-up-node-type.md).
+* Erfahren Sie, wie der [primäre Knotentyp hochskaliert wird](service-fabric-scale-up-primary-node-type.md).
 * Machen Sie sich mit der [Skalierbarkeit von Anwendungen](service-fabric-concepts-scalability.md) vertraut.
 * [Skalieren eines Service Fabric-Clusters](service-fabric-tutorial-scale-cluster.md) (horizontal hoch oder herunter)
 * [Programmgesteuertes Skalieren eines Service Fabric-Clusters](service-fabric-cluster-programmatic-scaling.md) (per Azure Fluent-Compute-SDK)

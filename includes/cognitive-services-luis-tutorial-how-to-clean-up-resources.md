@@ -2,19 +2,19 @@
 title: include file
 description: include file
 services: cognitive-services
-author: diberry
-manager: cgronlun
-ms.custom: include file
+author: aahill
+manager: nitinme
+ms.custom: seodec18, include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 07/26/2018
-ms.author: diberry
-ms.openlocfilehash: f89a2f6eb3d105d45df1bbbc4a0e8fffe4f7d9c5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 12/29/2020
+ms.author: aahi
+ms.openlocfilehash: c583cb508522e08c77f2c9acaee264665ae1d62a
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178397"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820638"
 ---
-Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie hierzu im Menü oben links die Option **Meine Apps**. Klicken Sie in der Liste rechts vom App-Namen auf die Auslassungspunkte (***...***) und anschließend auf **Löschen**. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus. 
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie hierzu im Menü oben links die Option **Meine Apps**. Wählen Sie in der App-Liste rechts vom App-Namen die Auslassungspunkte (**_..._ *_) und dann die Option* Löschen** aus. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus. 

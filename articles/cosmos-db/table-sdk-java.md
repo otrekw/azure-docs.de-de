@@ -1,21 +1,24 @@
 ---
 title: Azure Cosmos DB-Tabellen-API für Java
-description: Wichtige Informationen zur Azure Cosmos DB-Tabellen-API einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen in den einzelnen Versionen.
+description: Ausführliche Informationen zur Azure Cosmos DB-Tabellen-API für Java einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen in den einzelnen Versionen.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: java
 ms.topic: reference
 ms.date: 11/20/2018
-author: wmengmsft
-ms.author: wmeng
-ms.openlocfilehash: c98cd6054b2e48f4c0c886528653e6d3fda96a34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+author: sakash279
+ms.author: akshanka
+ms.custom: devx-track-java
+ms.openlocfilehash: a94064be54c1d957d6e7acb030ffae6a39634f55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480196"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101186"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB-Tabellen-API für Java: Versionshinweise und Ressourcen
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -36,7 +39,7 @@ ms.locfileid: "66480196"
 
 ## <a name="release-notes"></a>Versionshinweise
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * Release zur allgemeinen Verfügbarkeit
 
 ## <a name="release-and-retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
@@ -44,7 +47,7 @@ Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher 
 
 Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher wird empfohlen, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren. 
 
-| Version | Herausgabedatum | Deaktivierungstermine |
+| Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |15. November 2017 |--- |
 

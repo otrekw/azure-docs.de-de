@@ -1,22 +1,22 @@
 ---
-title: Erstellen der ersten Data Factory (Azure-Portal) | Microsoft Docs
+title: Erstellen Ihrer ersten Data Factory (Azure-Portal)
 description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Beispielpipeline mit dem Data Factory-Editor im Azure-Portal.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: b60f6adf6c13bc86fb4c4604dda7d4b92963b7ca
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 360fbc3e1bfe7890f1f3b05899eb95ce7a3a72c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140572"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496619"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Tutorial: Erstellen der ersten Data Factory mit dem Azure-Portal
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "70140572"
 > Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar ist. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Schnellstart: Erstellen einer Data Factory mit Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 > [!WARNING]
-> Der JSON-Editor im Azure-Portal zum Erstellen und Bereitstellen von Pipelines für ADF v1 wird am 31. Juli 2019 deaktiviert. Nach dem 31. Juli 2019 können Sie zum Erstellen und Bereitstellen von Pipelines für ADF v1 weiterhin [Powershell-Cmdlets für ADF v1](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2), das [ADF v1 .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet) und [REST-APIs für ADF v1](https://docs.microsoft.com/rest/api/datafactory/) verwenden.
+> Der JSON-Editor im Azure-Portal zum Erstellen und Bereitstellen von Pipelines für ADF v1 wird am 31. Juli 2019 deaktiviert. Nach dem 31. Juli 2019 können Sie zum Erstellen und Bereitstellen von Pipelines für ADF v1 weiterhin [Powershell-Cmdlets für ADF v1](/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2), das [ADF v1 .NET SDK](/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet) und [REST-APIs für ADF v1](/rest/api/datafactory/) verwenden.
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe des [Azure-Portals](https://portal.azure.com/) Ihre erste Data Factory erstellen. Falls Sie das Tutorial mit anderen Tools/SDKs absolvieren möchten, wählen Sie in der Dropdownliste eine andere Option aus. 
 
@@ -110,7 +110,7 @@ In diesem Schritt verknüpfen Sie Ihr Speicherkonto mit Ihrer Data Factory. In d
 
    ![Mit Storage verknüpfter Dienst](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. Ersetzen Sie **account name** durch den Namen Ihres Speicherkontos. Ersetzen Sie **account key** durch den Zugriffsschlüssel Ihres Speicherkontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Verwalten von Speicherkonten](../../storage/common/storage-account-manage.md#access-keys) in den Informationen zum Anzeigen, Kopieren und erneuten Generieren von Speicherzugriffsschlüsseln.
+1. Ersetzen Sie **account name** durch den Namen Ihres Speicherkontos. Ersetzen Sie **account key** durch den Zugriffsschlüssel Ihres Speicherkontos. Weitere Informationen zum Abrufen der Speicherzugriffsschlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../../storage/common/storage-account-keys-manage.md).
 
 1. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen.
 
@@ -161,7 +161,7 @@ In diesem Schritt verknüpfen Sie einen bedarfsgesteuerten HDInsight-Cluster mit
 
      c. Der HDInsight-Cluster erstellt einen Standardcontainer im Blobspeicher, den Sie in der JSON-Eigenschaft angegeben haben (**linkedServiceName**). HDInsight löscht diesen Container nicht, wenn der Cluster gelöscht wird. Dieses Verhalten ist beabsichtigt. Beim bedarfsgesteuerten verknüpften HDInsight-Dienst wird jedes Mal ein HDInsight-Cluster erstellt, wenn ein Slice verarbeitet wird. Dies gilt nur dann nicht, wenn ein aktiver Cluster (**timeToLive**) vorhanden ist. Der Cluster wird nach Abschluss der Verarbeitung automatisch gelöscht.
 
-     Wenn mehr Slices verarbeitet werden, werden in Ihrem Blobspeicher viele Container angezeigt. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Die Namen dieser Container basieren auf dem folgenden Muster: „adf**ihrdatafactoryname**-**nameverknüpfterdienst**-datumuhrzeitstempel“. Verwenden Sie Tools wie den [Azure Storage-Explorer](https://storageexplorer.com/), um Container in Ihrem Blobspeicher zu löschen.
+     Wenn mehr Slices verarbeitet werden, werden in Ihrem Blobspeicher viele Container angezeigt. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Die Namen dieser Container basieren auf dem folgenden Muster: „adf **ihrdatafactoryname**-**nameverknüpfterdienst**-datumuhrzeitstempel“. Verwenden Sie Tools wie den [Azure Storage-Explorer](https://storageexplorer.com/), um Container in Ihrem Blobspeicher zu löschen.
 
      Weitere Informationen finden Sie unter [Bedarfsgesteuerter verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 
@@ -171,7 +171,7 @@ In diesem Schritt verknüpfen Sie einen bedarfsgesteuerten HDInsight-Cluster mit
 
 1. Vergewissern Sie sich, dass in der Strukturansicht auf der linken Seite **AzureStorageLinkedService** und **HDInsightOnDemandLinkedService** angezeigt werden.
 
-    ![Strukturansicht mit verknüpften Diensten](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
+    ![Screenshot der Verknüpfung von „AzureStorageLinkedService“ and „HDInsightOnDemandLinkedService“](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
 In diesem Schritt erstellen Sie Datasets, um die Eingabe- und Ausgabedaten für die Hive-Verarbeitung darzustellen. Diese Datasets verweisen auf „AzureStorageLinkedService“, den Sie zuvor in diesem Tutorial erstellt haben. Der verknüpfte Dienst verweist auf ein Speicherkonto. Datasets geben den Container, den Ordner und den Dateinamen im Speicher mit Eingabe- und Ausgabedaten an.   
@@ -432,7 +432,7 @@ In diesem Tutorial haben Sie eine Data Factory zum Verarbeiten von Daten erstell
 * Erstellen einer Pipeline mit einer HDInsight Hive-Aktivität
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (HDInsight-Aktivität) erstellt, die ein Hive-Skript in einem bedarfsgesteuerten HDInsight-Cluster ausführt. Informationen zum Kopieren von Daten aus einem Blobspeicher in eine SQL-Datenbank mit einer Copy-Aktivität finden Sie unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (HDInsight-Aktivität) erstellt, die ein Hive-Skript in einem bedarfsgesteuerten HDInsight-Cluster ausführt. Informationen zum Kopieren von Daten aus einem Blobspeicher in Azure SQL-Datenbank mithilfe einer Copy-Aktivität finden Sie unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 | Thema | BESCHREIBUNG |

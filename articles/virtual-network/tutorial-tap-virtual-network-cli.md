@@ -1,5 +1,5 @@
 ---
-title: Erstellen, Ändern oder Löschen eines TAP eines virtuellen Netzwerks – Azure CLI | Microsoft-Dokumentation
+title: Erstellen, Ändern oder Löschen eines VNet TAP – Azure-Befehlszeilenschnittstelle
 description: In diesem Artikel erfahren Sie, wie Sie einen TAP eines virtuellen Netzwerks mithilfe der Azure CLI erstellen, ändern oder löschen.
 services: virtual-network
 documentationcenter: na
@@ -10,17 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 3d95a9ea555cceda82530eb5c487eeb993c1a678
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 8e3a56e4a6eb1fb6eb633021178ef78f8ac7287d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743189"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014787"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Arbeiten mit einem TAP eines virtuellen Netzwerks über die Azure CLI
 
@@ -86,6 +87,7 @@ Lesen Sie die [Voraussetzungen](virtual-network-tap-overview.md#prerequisites), 
       --query id \
       --out tsv)
       ```
+
    - Erstellen Sie mit der ID der Front-End-IP-Konfiguration als Ziel und einer optionalen Porteigenschaft den TAP für ein virtuelles Netzwerk. Der Port gibt den Zielport in der Front-End-IP-Konfiguration an, an der der TAP-Datenverkehr empfangen wird:  
 
       ```azurecli-interactive
@@ -140,7 +142,7 @@ Lesen Sie die [Voraussetzungen](virtual-network-tap-overview.md#prerequisites), 
 
 ## <a name="delete-the-tap-configuration-on-a-network-interface"></a>Löschen der TAP-Konfiguration für eine Netzwerkschnittstelle
 
-   ```azure-cli-interactive
+   ```azurecli-interactive
    az network nic vtap-config delete \
    --resource-group myResourceGroup \
    --nic myNetworkInterface \

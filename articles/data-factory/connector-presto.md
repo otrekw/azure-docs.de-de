@@ -1,30 +1,27 @@
 ---
-title: Kopieren von Daten aus Presto mithilfe von Azure Data Factory (Vorschau) | Microsoft-Dokumentation
+title: Kopieren von Daten aus Presto mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus Presto mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: f584112ae10493a5aed8a74fe62783bcbf1bc2a1
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: af05983432c0f76a88ff82a3638d86a971ef77f5
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089738"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680705"
 ---
-# <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Kopieren von Daten aus Presto mithilfe von Azure Data Factory (Vorschau)
+# <a name="copy-data-from-presto-using-azure-data-factory"></a>Kopieren von Daten aus Presto mithilfe von Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Presto zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
-
-> [!IMPORTANT]
-> Dieser Connector befindet sich derzeit in der Vorschauversion. Sie können ihn ausprobieren und uns Feedback geben. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/), wenn Sie in Ihrer Lösung eine Abhängigkeit von Connectors verwenden möchten, die sich in der Vorschauphase befinden.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -50,18 +47,18 @@ Folgende Eigenschaften werden für den mit Presto verknüpften Dienst unterstüt
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Presto** | Ja |
-| host | IP-Adresse oder Hostname des Presto-Servers. (z.B. 192.168.222.160)  | Ja |
-| serverVersion | Die Version des Presto-Servers. (z.B. 0.148-t)  | Ja |
+| host | IP-Adresse oder Hostname des Presto-Servers. (Beispiel: 192.168.222.160)  | Ja |
+| serverVersion | Die Version des Presto-Servers. (Beispiel: 0.148-t)  | Ja |
 | catalog | Der Katalogkontext für alle Anforderungen an den Server.  | Ja |
 | port | Der TCP-Port, den der Presto-Server verwendet, um auf Clientverbindungen zu lauschen. Der Standardwert ist 8080.  | Nein |
 | authenticationType | Der Authentifizierungsmechanismus, der für die Verbindung mit dem Presto-Server verwendet werden soll. <br/>Zulässige Werte sind: **Anonym**, **LDAP** | Ja |
 | username | Der Benutzername, der für die Verbindung mit dem Presto-Server verwendet werden soll.  | Nein |
 | password | Das Kennwort, das zum Benutzernamen gehört. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
-| enableSsl | Gibt an, ob die Verbindungen mit dem Server mit SSL verschlüsselt werden. Der Standardwert ist „false“.  | Nein |
-| trustedCertPath | Der vollständige Pfad der PEM-Datei mit vertrauenswürdigen Zertifizierungsstellenzertifikaten zur Überprüfung des Servers beim Verbindungsaufbau über SSL. Diese Eigenschaft kann nur festgelegt werden, wenn SSL in einer selbstgehostetem IR verwendet wird. Der Standardwert ist die Datei „cacerts.pem“, die mit der IR installiert wird.  | Nein |
-| useSystemTrustStore | Gibt an, ob ein Zertifizierungsstellenzertifikat aus dem Vertrauensspeicher des Systems oder aus einer angegebenen PEM-Datei verwendet werden soll. Der Standardwert ist „false“.  | Nein |
-| allowHostNameCNMismatch | Gibt an, ob ein von der Zertifizierungsstelle ausgestellter SSL-Zertifikatsname erforderlich ist, der mit dem Hostnamen des Servers übereinstimmt, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert ist „false“.  | Nein |
-| allowSelfSignedServerCert | Gibt an, ob vom Server selbstsignierte Zertifikate zugelassen werden. Der Standardwert ist „false“.  | Nein |
+| enableSsl | Gibt an, ob Verbindungen mit dem Server mit TLS verschlüsselt werden. Der Standardwert ist „FALSE“.  | Nein |
+| trustedCertPath | Der vollständige Pfad der PEM-Datei mit vertrauenswürdigen Zertifizierungsstellenzertifikaten zur Überprüfung des Servers beim Verbindungsaufbau über TLS. Diese Eigenschaft kann nur festgelegt werden, wenn TLS in einer selbstgehosteten IR verwendet wird. Der Standardwert ist die Datei „cacerts.pem“, die mit der IR installiert wird.  | Nein |
+| useSystemTrustStore | Gibt an, ob ein Zertifizierungsstellenzertifikat aus dem Vertrauensspeicher des Systems oder aus einer angegebenen PEM-Datei verwendet werden soll. Der Standardwert ist „FALSE“.  | Nein |
+| allowHostNameCNMismatch | Gibt an, ob der Name eines von der Zertifizierungsstelle ausgestellten TLS-/SSL-Zertifikats mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert ist „FALSE“.  | Nein |
+| allowSelfSignedServerCert | Gibt an, ob vom Server selbstsignierte Zertifikate zugelassen werden. Der Standardwert ist „FALSE“.  | Nein |
 | timeZoneID | Die lokale Zeitzone, die von der Verbindung verwendet wird. Gültige Werte für diese Option sind in der Zeitzonendatenbank der IANA angegeben. Der Standardwert ist die Zeitzone des Systems.  | Nein |
 
 **Beispiel:**
@@ -98,7 +95,7 @@ Legen Sie zum Kopieren von Daten aus Presto die „type“-Eigenschaft des Datas
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **PrestoObject** | Ja |
 | schema | Name des Schemas. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
-| table | Name der Tabelle. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
+| table | Der Name der Tabelle. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
 | tableName | Name der Tabelle mit Schema. Diese Eigenschaft wird aus Gründen der Abwärtskompatibilität weiterhin unterstützt. Verwenden Sie `schema` und `table` für eine neue Workload. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
@@ -129,7 +126,7 @@ Legen Sie zum Kopieren von Daten aus Presto den Quelltyp in der Kopieraktivität
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **PrestoSource** | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

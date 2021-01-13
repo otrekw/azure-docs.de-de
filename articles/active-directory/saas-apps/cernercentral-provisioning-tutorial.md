@@ -1,26 +1,21 @@
 ---
-title: 'Tutorial: Konfigurieren von Cerner Central für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Benutzerbereitstellung für Cerner Central – Azure AD'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen von Benutzern in einer Liste in Cerner Central konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61e88e0fe7e6eec5b3cdfd03755a186744b77b47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f82cab1172e7293e2a5910d35280eefb30ed49e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964205"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357452"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cerner Central für die automatische Benutzerbereitstellung
 
@@ -28,7 +23,7 @@ Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Cerner Central und Azure AD
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Azure Active Directory-Mandant
 * Einen Cerner Central-Mandanten
@@ -121,15 +116,15 @@ Sie müssen für die Bereitstellung von Benutzerkonten in Cerner Central ein Cer
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Cerner Central im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Cerner Central-App ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Cerner Central: Publishing identity data using Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD) (Cerner Central: Veröffentlichung von Identitätsdaten mithilfe von Azure AD)
 * [Tutorial: Konfigurieren von Cerner Central für einmaliges Anmelden mit Azure Active Directory](cernercentral-tutorial.md)
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen](../app-provisioning/check-status-user-account-provisioning.md).

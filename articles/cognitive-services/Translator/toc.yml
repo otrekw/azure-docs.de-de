@@ -1,28 +1,16 @@
-- name: Dokumentation zur Textübersetzung
+- name: Dokumentation zu Translator
   href: index.yml
-- name: Textübersetzungs-API
+- name: Übersetzer
   items:
-    - name: Übersicht
+    - name: Worum handelt es sich bei Translator?
+      href: translator-info-overview.md
+    - name: Schnellstart
+      href: quickstart-translator.md
+    - name: Sprachunterstützung
+      href: language-support.md
+    - name: Tutorials
       items:
-        - name: Was ist die Textübersetzungs-API?
-          href: translator-info-overview.md
-    - name: Schnellstarts
-      items:
-        - name: Text übersetzen
-          href: quickstart-translate.md
-        - name: Transliteration von Text
-          href: quickstart-transliterate.md
-        - name: Sprache erkennen
-          href: quickstart-detect.md
-        - name: Nachschlagen von Wortübersetzungen
-          href: quickstart-dictionary.md
-        - name: Abrufen der unterstützten Sprachen
-          href: quickstart-languages.md
-        - name: Bestimmen der Satzlänge
-          href: quickstart-sentences.md
-    - name: Lernprogramme
-      items:
-        - name: 'Erstellen einer WPF-App für Textübersetzung (C#)'
+        - name: Erstellen einer WPF-App für Translator (C#)
           href: tutorial-wpf-translation-csharp.md
         - name: Erstellen einer Flask-Übersetzungs-App (Python)
           href: tutorial-build-flask-app-translation-synthesis.md
@@ -34,8 +22,8 @@
           href: character-counts.md
     - name: Anleitungen
       items:
-        - name: Registrieren für die Textübersetzungs-API
-          href: translator-text-how-to-signup.md
+        - name: Registrieren für Translator
+          href: ./translator-how-to-signup.md
         - name: Migrieren zu Version 3 der Text-API
           href: migrate-to-v3.md
         - name: Hinzufügen der Filterung für anstößige Ausdrücke
@@ -50,7 +38,7 @@
           href: firewalls.md
     - name: Beispiele
       items:
-        - name: 'C#'
+        - name: C#
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp'
         - name: Java
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Java'
@@ -66,50 +54,38 @@
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Ruby'
     - name: Verweis
       items:
-        - name: Referenz für Version 3 der Textübersetzungs-API
+        - name: "Referenz zu Version\_3 von Translator"
           href: reference/v3-0-reference.md
-          items:
-            - name: Languages
-              href: reference/v3-0-languages.md
-            - name: Translate
-              href: reference/v3-0-translate.md
-            - name: Transliterate
-              href: reference/v3-0-transliterate.md
-            - name: Detect
-              href: reference/v3-0-detect.md
-            - name: BreakSentence
-              href: reference/v3-0-break-sentence.md
-            - name: Wörterbuchsuche
-              href: reference/v3-0-dictionary-lookup.md
-            - name: Wörterbuchbeispiele
-              href: reference/v3-0-dictionary-examples.md
-        - name: Referenz für Version 2 der Textübersetzungs-API (veraltet)
-          href: reference/v2-0-reference.md
-          items:
-            - name: Transformieren von Text
-              href: transform-text.md
-            - name: Verwenden der CTF-Berichterstellung (Collaborative Translation Framework)
-              href: ctf-reporting.md
-            - name: Zurückgeben von N besten Übersetzungen
-              href: return-n-best-translations.md
+        - name: Languages
+          href: reference/v3-0-languages.md
+        - name: Translate
+          href: reference/v3-0-translate.md
+        - name: Transliterate
+          href: reference/v3-0-transliterate.md
+        - name: Detect
+          href: reference/v3-0-detect.md
+        - name: BreakSentence
+          href: reference/v3-0-break-sentence.md
+        - name: Wörterbuchsuche
+          href: reference/v3-0-dictionary-lookup.md
+        - name: Wörterbuchbeispiele
+          href: reference/v3-0-dictionary-examples.md
+        - name: Anforderungsgrenzwerte
+          href: request-limits.md
     - name: Ressourcen
       items:
+        - name: Support- und Hilfeoptionen
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: Codebeispiele auf GitHub
           href: 'https://aka.ms/TranslatorGitHub'
         - name: Häufig gestellte Fragen
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: Sprach- und Regionsunterstützung
-          href: language-support.md
         - name: Preise
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: Regionale Verfügbarkeit
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-        - name: Compliance
+        - name: Kompatibilität
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: Anforderungsgrenzwerte
-          href: request-limits.md
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: Benutzerdefinierter Translator
   items:
     - name: Übersicht
@@ -162,15 +138,15 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: Ressourcen
       items:
-        - name: Sprachunterstützung
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
+        - name: Support- und Hilfeoptionen
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: Glossar
           href: custom-translator/glossary.md
         - name: Häufig gestellte Fragen
           href: custom-translator/faq.md
         - name: Preise
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
-        - name: Compliance
+        - name: Kompatibilität
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+        - name: Verschlüsselung
+          href: translator-encryption-of-data-at-rest.md

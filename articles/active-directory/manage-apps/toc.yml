@@ -3,77 +3,104 @@
 - name: Übersicht
   expanded: true
   items:
-    - name: Worum handelt es sich bei Cloud-App-Verwaltung und einmaligem Anmelden?
+    - name: Worum handelt es sich bei der Anwendungsverwaltung?
       href: what-is-application-management.md
-    - name: Worum handelt es sich bei automatischer Benutzerbereitstellung?
-      href: user-provisioning.md
-    - name: Worum handelt es sich beim Anwendungsproxy für lokale Apps?
-      href: what-is-application-proxy.md
+    - name: 'Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?'
+      href: what-is-single-sign-on.md
+    - name: Neues in der Dokumentation
+      href: whats-new-docs.md
 - name: Schnellstarts
+  expanded: true
   items:
-    - name: Hinzufügen einer Cloud-App aus dem Katalog
-      href: add-application-portal.md
-    - name: Anzeigen Ihrer Unternehmensanwendungen
+    - name: Anzeigen Ihrer Apps
       href: view-applications-portal.md
-- name: Lernprogramme
+    - name: Hinzufügen einer App
+      href: add-application-portal.md
+    - name: Konfigurieren einer App
+      href: add-application-portal-configure.md
+    - name: Zuweisen von Benutzern zu einer App
+      href: add-application-portal-assign-users.md
+    - name: Einrichten des SAML-basierten einmaligen Anmeldens
+      href: add-application-portal-setup-sso.md
+    - name: Einrichten des OIDC-basierten einmaligen Anmeldens
+      href: add-application-portal-setup-oidc-sso.md
+    - name: Löschen einer App
+      href: delete-application-portal.md
+- name: Tutorials
   items:
-    - name: Tutorials für SaaS-Apps
+    - name: Liste der Tutorials für die App-Integration
       href: /azure/active-directory/saas-apps/
     - name: Hinzufügen einer lokalen App mit dem Anwendungsproxy
       href: application-proxy-add-on-premises-application.md
+- name: Beispiele
+  items:
+    - name: Azure PowerShell-Beispiele für den Anwendungsproxy
+      href: application-proxy-powershell-samples.md
 - name: Konzepte
   expanded: true
   items:
-    - name: Cloud-Apps und einmaliges Anmelden
+    - name: Bewährte Methoden für die App-Verwaltung
+      href: application-management-fundamentals.md
+    - name: Allgemeine App-Verwaltungsszenarien
+      href: common-scenarios.md
+    - name: Planen der Integration von Cloud-Apps
       items:
-        - name: Planen der Integration von Cloud-Apps
-          items:
-            - name: Erste Schritte bei der App-Integration
-              href: plan-an-application-integration.md
-            - name: Planen der Bereitstellung eines Zugriffsbereichs
-              href: access-panel-deployment-plan.md
-            - name: Leitfaden für Entwickler
-              href: developer-guidance-for-integrating-applications.md
-        - name: Einmaliges Anmelden
-          items:
-            - name: Worum handelt es sich beim einmaligen Anmelden?
-              href: what-is-single-sign-on.md
-            - name: Aktivieren von SSO für Ihre mehrinstanzenfähige Anwendung
-              href: isv-sso-content.md
-            - name: Erstellen eines Azure-Mandanten für eine mehrinstanzenfähige Anwendung
-              href: isv-tenant-multi-tenant-app.md
-            - name: Auswählen eines Verbunds mit mehreren Mandanten
-              href: isv-choose-multi-tenant-federation.md
-            - name: Dokumentation für mehrinstanzenfähige Anwendung erstellen
-              href: isv-create-sso-documentation.md
-            - name: Planen einer Bereitstellung für einmaliges Anmelden
-              href: plan-sso-deployment.md
-        - name: One-Click-SSO
-          items:
-            - name: Was ist One-Click-SSO?
-              href: one-click-sso-tutorial.md
-        - name: Anwendungssicherheit
-          items:
-            - name: Optionen für den App-Zugriff
-              href: what-is-access-management.md
-            - name: Optionen für die Zertifikatsignatur
-              href: certificate-signing-options.md
-            - name: Verwalten von Zertifikaten
-              href: manage-certificates-for-federated-single-sign-on.md
-            - name: Mandanteneinschränkungen
-              href: tenant-restrictions.md
-            - name: Konfigurieren der SAML-Tokenverschlüsselung (Vorschauversion)
-              href: howto-saml-token-encryption.md
-            - name: Endbenutzerportale
-              href: end-user-experiences.md
-    - name: Automatische Benutzerbereitstellung
+        - name: Erste Schritte bei der App-Integration
+          href: plan-an-application-integration.md
+        - name: Planen für nicht im Katalog aufgeführte Apps
+          href: non-gallery-apps.md
+        - name: Planen einer Bereitstellung von „Meine Apps“
+          href: access-panel-deployment-plan.md
+        - name: Leitfaden für Entwickler
+          href: developer-guidance-for-integrating-applications.md
+    - name: Einmaliges Anmelden
       items:
-        - name: Automatisieren der Bereitstellung für SCIM-fähige Apps
-          href: use-scim-to-provision-users-and-groups.md
+        - name: Planen einer Bereitstellung für einmaliges Anmelden
+          href: plan-sso-deployment.md
+        - name: Optionen für einmaliges Anmelden
+          href: sso-options.md
+        - name: Einmaliges Anmelden mit lokalen Apps
+          href: application-proxy-config-sso-how-to.md
+        - name: OIDC-basiertes SSO
+          href: configure-oidc-single-sign-on.md
+        - name: SAML-basiertes SSO
+          href: configure-saml-single-sign-on.md
+        - name: SAML-basiertes einmaliges Anmelden (lokale Apps)
+          href: application-proxy-configure-single-sign-on-on-premises-apps.md
+        - name: Kennwortbasiertes einmaliges Anmelden
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: Kennwortbasiertes einmaliges Anmelden (lokale Apps)
+          href: application-proxy-configure-single-sign-on-password-vaulting.md
+        - name: Auf Verknüpfungen basiertes SSO
+          href: configure-linked-sign-on.md
+        - name: Headerbasiertes einmaliges Anmelden (lokale Apps)
+          href: application-proxy-configure-single-sign-on-with-headers.md
+        - name: Kerberos-basiertes einmaliges Anmelden (lokale Apps)
+          href: application-proxy-configure-single-sign-on-with-kcd.md
+        - name: Einmaliges Anmelden mit einem Klick
+          href: one-click-sso-tutorial.md
+    - name: Anwendungssicherheit
+      items:
+        - name: Optionen für den App-Zugriff
+          href: what-is-access-management.md
+        - name: Optionen für die Zertifikatsignatur
+          href: certificate-signing-options.md
+        - name: Verwalten von Zertifikaten
+          href: manage-certificates-for-federated-single-sign-on.md
+        - name: Mandanteneinschränkungen
+          href: tenant-restrictions.md
+        - name: Konfigurieren der SAML-Tokenverschlüsselung
+          href: howto-saml-token-encryption.md
+        - name: Endbenutzerportale
+          href: end-user-experiences.md
+        - name: Sichtbarkeit und Steuerung von Cloud-Apps
+          href: cloud-app-security.md
     - name: Anwendungsproxy für lokale Apps
       items:
         - name: Anwendungsproxy
           href: application-proxy.md
+        - name: Worum handelt es sich beim Anwendungsproxy für lokale Apps?
+          href: what-is-application-proxy.md
         - name: Planen der Bereitstellung eines Anwendungsproxys
           href: application-proxy-deployment-plan.md
         - name: Connectors
@@ -89,227 +116,135 @@
         - name: Vergleichen von Remotezugriffslösungen
           href: application-proxy-migration.md
 - name: Anleitungen
-  expanded: true
+  expanded: false
   items:
-    - name: Cloud-Apps und einmaliges Anmelden
+    - name: Zuweisen von Benutzern und Verwalten des Zugriffs auf Apps
       items:
-        - name: Hinzufügen einer Cloud-App
-          items:
-            - name: Hinzufügen einer Katalog-App
-              href: add-gallery-app.md
-            - name: Hinzufügen einer nicht im Katalog enthaltenen App
-              href: add-non-gallery-app.md
-            - name: Ändern des App-Namens oder -Logos
-              href: change-name-or-logo-portal.md
-        - name: Einmaliges Anmelden konfigurieren
-          items:
-            - name: Konfigurieren des SAML-basierten einmaligen Anmeldens
-              items:
-                - name: Konfigurieren des SAML-basierten einmaligen Anmeldens
-                  href: configure-single-sign-on-non-gallery-applications.md
-                - name: Anpassen von Benutzerattributen und Ansprüchen
-                  items:
-                    - name: Konfigurieren von Gruppenansprüchen
-                      href: /azure/active-directory/hybrid/how-to-connect-fed-group-claims?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Konfigurieren von Rollenansprüchen
-                      href: /azure/active-directory/develop/active-directory-enterprise-app-role-management?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Anpassen von Ansprüchen im Portal
-                      href: /azure/active-directory/develop/active-directory-saml-claims-customization?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Anpassen von Ansprüchen mit PowerShell
-                      href: /azure/active-directory/develop/active-directory-claims-mapping?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Konfigurieren optionaler Ansprüche
-                      href: /azure/active-directory/develop/active-directory-optional-claims?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Konfigurieren der Tokengültigkeitsdauer
-                      href: /azure/active-directory/develop/active-directory-configurable-token-lifetimes?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: Konfigurieren der kennwortbasierten Anmeldung
-              href: configure-password-single-sign-on-non-gallery-applications.md
-            - name: Konfigurieren der Anmeldung über Link
-              href: configure-linked-sign-on.md
-        - name: Zuweisen von Benutzern und Verwalten des Zugriffs auf Apps
+        - name: Einwilligung und Berechtigungen
           items:
             - name: Konfigurieren der Benutzereinwilligung
               href: configure-user-consent.md
-            - name: Methoden zum Zuweisen von Benutzern und Gruppen zu einer App
-              href: methods-for-assigning-users-and-groups.md
-            - name: Zuweisen eines Benutzers zu einer App
-              href: assign-user-or-group-access-portal.md
-            - name: Verwenden des Self-Service-App-Zugriffs
-              href: access-panel-manage-self-service-access.md
-            - name: Methoden zum Entfernen des Benutzerzugriffs auf eine App
-              href: methods-for-removing-user-access.md
-            - name: Entfernen des Benutzer- oder Gruppenzugriffs
-              href: remove-user-or-group-access-portal.md
-            - name: Ausblenden einer App für einen Benutzer
-              href: hide-application-from-user-portal.md
-            - name: Deaktivieren der Benutzeranmeldung
-              href: disable-user-sign-in-portal.md
-            - name: Konfigurieren der Self-Service-App-Zuweisung
-              href: manage-self-service-access.md
-            - name: 'Startbereichsermittlung (Home Realm Discovery, HDR)'
-              href: configure-authentication-for-federated-users-portal.md
-        - name: Migrieren von Apps zu Azure AD
-          items:
-            - name: Migrationsressourcen
-              href: migration-resources.md
-            - name: Migrieren einer ADFS-App zu Azure
-              href: migrate-adfs-apps-to-azure.md
-        - name: Problembehandlung
-          items:
-            - name: Behandeln von Problemen beim Hinzufügen von Apps
-              items:
-                - name: 'Allgemeine Probleme: Katalog-Apps'
-                  href: adding-gallery-app-common-problems.md
-                - name: 'Allgemeine Probleme: Nicht-Katalog-Apps'
-                  href: adding-non-gallery-app-common-problems.md
-            - name: Problembehandlung für Benutzeranmeldung
-              items:
-                - name: Unerwartete Zustimmungsaufforderung
-                  href: application-sign-in-unexpected-user-consent-prompt.md
-                - name: Benutzerzustimmungsfehler
-                  href: application-sign-in-unexpected-user-consent-error.md
-                - name: Probleme beim Anmelden über das benutzerdefinierte Portal
-                  href: application-sign-in-other-problem-deeplink.md
-                - name: Probleme beim Anmelden über den Zugriffsbereich
-                  href: application-sign-in-other-problem-access-panel.md
-                - name: Fehler auf der Anwendungsanmeldeseite
-                  href: application-sign-in-problem-application-error.md
-                - name: 'Problem beim einmaligen Anmelden per Kennwort: Nicht-Katalog-App'
-                  href: application-sign-in-problem-password-sso-non-gallery.md
-                - name: 'Problem beim einmaligen Anmelden per Kennwort: Katalog-App'
-                  href: application-sign-in-problem-password-sso-gallery.md
-                - name: Problem bei der Anmeldung bei einer Microsoft-App
-                  href: application-sign-in-problem-first-party-microsoft.md
-                - name: 'Problem bei der einmaligen Verbundanmeldung: Nicht-Katalog-App'
-                  href: application-sign-in-problem-federated-sso-non-gallery.md
-                - name: 'Problem bei der einmaligen Verbundanmeldung: Katalog-App'
-                  href: application-sign-in-problem-federated-sso-gallery.md
-                - name: Problem mit einer benutzerdefinierten App
-                  href: application-sign-in-problem-custom-dev.md
-            - name: Behandeln von Problemen beim einmaligen Anmelden
-              items:
-                - name: 'Allgemeine Probleme beim Konfigurieren eines Verbunds: Katalog-Apps'
-                  href: configure-federated-single-sign-on-gallery-applications-problems.md
-                - name: 'Allgemeine Probleme beim Konfigurieren eines Verbunds: Nicht-Katalog-Apps'
-                  href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-                - name: 'Allgemeine Probleme beim Konfigurieren von Kennwörtern: Katalog-Apps'
-                  href: configure-password-single-sign-on-gallery-applications-problems.md
-                - name: 'Allgemeine Probleme beim Konfigurieren von Kennwörtern: Nicht-Katalog-Apps'
-                  href: configure-password-single-sign-on-non-gallery-applications-problems.md
-            - name: Problembehandlung für App-Liste und -Zuweisung
-              items:
-                - name: Verwalten der Anwendungsliste für Ihren Mandanten
-                  href: application-types.md
-                - name: Unerwarteter Benutzer zugewiesen
-                  href: ways-users-get-assigned-to-applications.md
-            - name: Problembehandlung für den Zugriffsbereich
-              items:
-                - name: Verwalten der Browsererweiterung
-                  href: manage-access-panel-browser-extension.md
-                - name: App wird nicht angezeigt
-                  href: access-panel-troubleshoot-application-not-appearing.md
-                - name: App wird unerwartet angezeigt
-                  href: access-panel-troubleshoot-unexpected-application.md
-                - name: Anmeldung nicht möglich
-                  href: access-panel-troubleshoot-web-sign-in-problem.md
-                - name: Fehler beim Installieren der Browsererweiterung
-                  href: access-panel-extension-problem-installing.md
-                - name: Fehler beim Verwenden des Self-Service-App-Zugriffs
-                  href: access-panel-troubleshoot-self-service-access.md
-    - name: Automatische Benutzerbereitstellung
+            - name: Konfigurieren der Gruppenbesitzereinwilligung
+              href: configure-user-consent-groups.md
+            - name: Konfigurieren von Berechtigungsklassifizierungen
+              href: configure-permission-classifications.md
+            - name: Verwalten von Richtlinien für die App-Zustimmung
+              href: manage-app-consent-policies.md
+            - name: Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
+              href: configure-admin-consent-workflow.md
+            - name: Verwalten und Bewerten von Anforderungen zur Einwilligung
+              href: manage-consent-requests.md
+            - name: Erteilen einer mandantenweiten Administratoreinwilligung
+              href: grant-admin-consent.md
+            - name: 'Überprüfen von Berechtigungen, die Apps erteilt wurden'
+              href: manage-application-permissions.md
+        - name: Verwalten der Benutzerzuweisung für eine App
+          href: assign-user-or-group-access-portal.md
+        - name: Erstellen von Auflistungen in „Meine Apps“
+          href: access-panel-collections.md
+        - name: Verwenden des Self-Service-App-Zugriffs
+          href: access-panel-manage-self-service-access.md
+        - name: Methoden zum Entfernen des Benutzerzugriffs auf eine App
+          href: methods-for-removing-user-access.md
+        - name: Ausblenden einer App für einen Benutzer
+          href: hide-application-from-user-portal.md
+        - name: Deaktivieren der Benutzeranmeldung
+          href: disable-user-sign-in-portal.md
+        - name: Konfigurieren der Self-Service-App-Zuweisung
+          href: manage-self-service-access.md
+        - name: 'Startbereichsermittlung (Home Realm Discovery, HDR)'
+          href: configure-authentication-for-federated-users-portal.md
+    - name: "Migrieren der Identitätsverwaltung zu Azure\_AD"
       items:
-        - name: Benutzerbereitstellung konfigurieren
-          items:
-            - name: Benutzerbereitstellung für Katalog-Apps
-              href: application-provisioning-config-how-to.md
-            - name: Aktivieren der automatischen Benutzerbereitstellung für mehrinstanzenfähige Apps
-              href: isv-automatic-provisioning-multi-tenant-apps.md
-            - name: Konfigurieren der automatischen Benutzerbereitstellung
-              href: configure-automatic-user-provisioning-portal.md
-            - name: Anpassen von Anwendungsattributen
-              href: Customize-application-attributes.md
-            - name: Bereichsfilter
-              href: define-conditional-rules-for-provisioning-user-accounts.md
-            - name: Überspringen des Löschvorgangs für Benutzer außerhalb des Gültigkeitsbereichs
-              href: skip-out-of-scope-deletions.md
-            - name: Überprüfen des Bereitstellungsstatus
-              href: application-provisioning-when-will-provisioning-finish-specific-user.md
-            - name: Berichte zur automatischen Benutzerbereitstellung
-              href: check-status-user-account-provisioning.md
-            - name: Exportieren und Importieren Ihrer Konfiguration
-              href: export-import-provisioning-configuration.md
-        - name: Problembehandlung bei der Benutzerbereitstellung
-          items:
-            - name: Problembehandlung bei der Benutzerbereitstellung
-              href: application-provisioning-config-problem.md
-            - name: Bereitstellungsprotokolle
-              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: 'Synchronisieren eines Attributs für die Zuordnung: Katalog-App'
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: 'Dauert Stunden: Katalog-App'
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Problem beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung in einer Katalog-App
-              href: application-provisioning-config-problem-storage-limit.md
-            - name: 'Benutzer werden nicht bereitgestellt: Katalog-App'
-              href: application-provisioning-config-problem-no-users-provisioned.md
-            - name: 'Falsche Benutzer bereitgestellt : Katalog-App'
-              href: application-provisioning-config-problem-wrong-users-provisioned.md
-    - name: Anwendungsproxy für lokale Apps
+        - name: Migrationsressourcen
+          href: migration-resources.md
+        - name: "Migrieren einer AD\_FS-App zu Azure"
+          href: migrate-adfs-apps-to-azure.md
+        - name: "Verwenden des AD\_FS-Anwendungsaktivitätsberichts (Vorschau)"
+          href: migrate-adfs-application-activity.md
+    - name: Konfigurieren von lokalen Connectors
       items:
-        - name: Konfigurieren von Connectors
+        - name: Konfigurieren mit Proxyservern
+          href: application-proxy-configure-connectors-with-proxy-servers.md
+        - name: 'Registrieren des Connectors: Installation im Hintergrund'
+          href: application-proxy-register-connector-powershell.md
+    - name: Konfigurieren des lokalen App-Zugriffs
+      items:
+        - name: Konfigurieren von Ansprüche unterstützenden Apps
+          href: application-proxy-configure-for-claims-aware-applications.md
+        - name: Gewähren des Zugriffs auf lokale APIs für mobile Apps und Desktop-Apps
+          href: application-proxy-secure-api-access.md
+        - name: Konfigurieren von mobilen Client-Apps und Desktopclient-Apps
+          href: application-proxy-configure-native-client-application.md
+        - name: Konfigurieren einer benutzerdefinierten Startseite
+          href: application-proxy-configure-custom-home-page.md
+        - name: Übersetzen von Inline-Links
+          href: application-proxy-configure-hard-coded-link-translation.md
+        - name: Konfigurieren der Cookie-Einstellungen
+          href: application-proxy-configure-cookie-settings.md
+        - name: Veröffentlichen mithilfe von Platzhaltern
+          href: application-proxy-wildcard.md
+        - name: Entfernen von personenbezogenen Daten
+          href: application-proxy-remove-personal-data.md
+        - name: Konfigurieren einer benutzerdefinierten Domäne
+          href: application-proxy-configure-custom-domain.md
+        - name: Sichern von Legacy-Apps
           items:
-            - name: Konfigurieren mit Proxyservern
-              href: application-proxy-configure-connectors-with-proxy-servers.md
-            - name: 'Registrieren des Connectors: Installation im Hintergrund'
-              href: application-proxy-register-connector-powershell.md
-        - name: Konfigurieren von Anwendungszugriff
+            - name: Sichern des Hybridzugriffs mit Azure AD
+              href: secure-hybrid-access.md
+            - name: Integration von F5 und Azure AD
+              href: f5-aad-integration.md
+            - name: Bereitstellung von F5 BIG-IP VE in Azure IaaS
+              href: f5-bigip-deployment-guide.md
+            - name: F5 Big-IP mit Azure AD für kennwortloses VPN
+              href: f5-aad-password-less-vpn.md
+        - name: Veröffentlichen von exemplarische Vorgehensweisen
           items:
-            - name: Konfigurieren von Ansprüche unterstützenden Apps
-              href: application-proxy-configure-for-claims-aware-applications.md
-            - name: Gewähren des Zugriffs auf lokale APIs für mobile Apps und Desktop-Apps
-              href: application-proxy-secure-api-access.md
-            - name: Konfigurieren von mobilen Client-Apps und Desktopclient-Apps
-              href: application-proxy-configure-native-client-application.md
-            - name: Konfigurieren einer benutzerdefinierten Startseite
-              href: application-proxy-configure-custom-home-page.md
-            - name: Übersetzen von Inline-Links
-              href: application-proxy-configure-hard-coded-link-translation.md
-            - name: Konfigurieren der Cookie-Einstellungen
-              href: application-proxy-configure-cookie-settings.md
-            - name: Veröffentlichen mithilfe von Platzhaltern
-              href: application-proxy-wildcard.md
-            - name: Entfernen von personenbezogenen Daten
-              href: application-proxy-remove-personal-data.md
-            - name: Konfigurieren einer benutzerdefinierten Domäne
-              href: application-proxy-configure-custom-domain.md
-            - name: Einmaliges Anmelden mit Anwendungsproxy
-              items:
-                - name: 'Eingeschränkte Kerberos-Delegierung (Kerberos Constrained Delegation, KCD)'
-                  href: application-proxy-configure-single-sign-on-with-kcd.md
-                - name: Kennworttresore
-                  href: application-proxy-configure-single-sign-on-password-vaulting.md
-                - name: Header
-                  href: application-proxy-configure-single-sign-on-with-ping-access.md
-                - name: SAML SSO
-                  href: application-proxy-configure-single-sign-on-on-premises-apps.md
-            - name: Veröffentlichen von exemplarische Vorgehensweisen
-              items:
-                - name: Integrieren in Azure AD Domain Services
-                  href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
-                - name: Integrieren mit Power BI
-                  href: application-proxy-integrate-with-power-bi.md
-                - name: Integrieren mit Cloud App Security
-                  href: application-proxy-integrate-with-microsoft-cloud-application-security.md
-                - name: Integrieren mit Remotedesktop
-                  href: application-proxy-integrate-with-remote-desktop-services.md
-                - name: Integrieren mit SharePoint
-                  href: application-proxy-integrate-with-sharepoint-server.md
-                - name: Integrieren mit Teams
-                  href: application-proxy-integrate-with-teams.md
-                - name: Integrieren mit Tableau
-                  href: application-proxy-integrate-with-tableau.md
-                - name: Integrieren mit Qlik
-                  href: application-proxy-qlik.md
-        - name: Problembehandlung von Anwendungsproxys
+            - name: Integrieren in den Anwendungsproxy auf einem NDES-Server
+              href: active-directory-app-proxy-protect-ndes.md
+            - name: Integrieren in den Anwendungsproxy mithilfe von PingAccess
+              href: application-proxy-ping-access-publishing-guide.md
+            - name: Integrieren in Azure AD Domain Services
+              href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
+            - name: Integrieren mit Power BI
+              href: application-proxy-integrate-with-power-bi.md
+            - name: Integrieren mit Cloud App Security
+              href: application-proxy-integrate-with-microsoft-cloud-application-security.md
+            - name: Integrieren mit Remotedesktop
+              href: application-proxy-integrate-with-remote-desktop-services.md
+            - name: Integrieren mit SharePoint
+              href: application-proxy-integrate-with-sharepoint-server.md
+            - name: Integrieren mit Teams
+              href: application-proxy-integrate-with-teams.md
+            - name: Integrieren mit Tableau
+              href: application-proxy-integrate-with-tableau.md
+            - name: Integrieren mit Qlik
+              href: application-proxy-qlik.md
+    - name: Problembehandlung
+      items:
+        - name: Behandeln von Problemen beim Hinzufügen von Apps
+          href: troubleshoot-adding-apps.md
+        - name: Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden
+          href: troubleshoot-password-based-sso.md
+        - name: Problembehandlung bei SAML-basiertem einmaligem Anmelden
+          href: troubleshoot-saml-based-sso.md
+        - name: Debuggen des SAML-basierten einmaligen Anmeldens
+          href: debug-saml-sso-issues.md
+        - name: Problembehandlung für Benutzeranmeldung
+          items:
+            - name: Unerwartete Zustimmungsaufforderung
+              href: application-sign-in-unexpected-user-consent-prompt.md
+            - name: Benutzerzustimmungsfehler
+              href: application-sign-in-unexpected-user-consent-error.md
+            - name: Probleme beim Anmelden über „Meine Apps“
+              href: application-sign-in-other-problem-access-panel.md
+            - name: Fehler auf der Anwendungsanmeldeseite
+              href: application-sign-in-problem-application-error.md
+            - name: Problem bei der Anmeldung bei einer Microsoft-App
+              href: application-sign-in-problem-first-party-microsoft.md
+            - name: Problem beim einmaligen Anmelden
+              href: application-sign-in-problem-federated-sso-gallery.md
+        - name: Problembehandlung für lokale Apps
           items:
             - name: Problembehandlung für Anwendungsproxys
               href: application-proxy-troubleshoot.md
@@ -323,20 +258,16 @@
               href: application-proxy-page-load-speed-problem.md
             - name: Links auf der Anwendungsseite funktionieren nicht
               href: application-proxy-page-links-broken-problem.md
-            - name: Für die App zu öffnende Ports
-              href: application-proxy-connectivity-ports-how-to.md
             - name: Kein funktionierender Connector in einer Connectorguppe für meine App
               href: application-proxy-connectivity-no-working-connector.md
             - name: Konfigurieren im Verwaltungsportal
               href: application-proxy-config-how-to.md
-            - name: Konfigurieren des einmaligen Anmeldens für meine App
-              href: application-proxy-config-sso-how-to.md
             - name: Problem beim Erstellen einer App im Verwaltungsportal
               href: application-proxy-config-problem.md
             - name: Konfigurieren der eingeschränkten Kerberos-Delegierung
               href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
             - name: Konfigurieren mit PingAccess
-              href: application-proxy-back-end-ping-access-how-to.md
+              href: ./application-proxy-ping-access-publishing-guide.md
             - name: Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“
               href: application-proxy-sign-in-bad-gateway-timeout-error.md
             - name: Problem beim Installieren des Anwendungsproxy-Agent-Connectors
@@ -347,26 +278,22 @@
               href: application-proxy-understand-cors-issues.md
 - name: Verweis
   items:
-    - name: Automatische Benutzerbereitstellung
-      items:
-        - name: Schreiben von Ausdrücken für Attributzuordnungen
-          href: functions-for-customizing-application-data.md
-    - name: Azure AD Connect-Bereitstellungs-Agent
-      items:
-        - name: Versionsverlauf des Bereitstellungs-Agents
-          href: provisioning-agent-release-version-history.md
-    - name: Anwendungsproxy für lokale Apps
-      items:
-        - name: Versionsverlauf des Anwendungsproxys
-          href: application-proxy-release-version-history.md
+    - name: 'Anwendungsproxy: häufig gestellte Fragen'
+      href: application-proxy-faq.md
+    - name: Versionsverlauf des Anwendungsproxys
+      href: application-proxy-release-version-history.md
+    - name: Gründe für die Anzeige von Apps in Unternehmensanwendungen
+      href: application-types.md
+    - name: Gründe für die Zuweisung von Benutzern zu einer App
+      href: ways-users-get-assigned-to-applications.md
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen für Entwickler
-      href: /azure/active-directory/develop/developer-support-help-options?context=azure/active-directory/manage-apps/context/manage-apps-context
+      href: ../develop/developer-support-help-options.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
     - name: Azure-Feedbackforum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: /answers/topics/azure-active-directory.html
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/active-directory'
     - name: Dienstupdates

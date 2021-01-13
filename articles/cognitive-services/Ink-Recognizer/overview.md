@@ -3,22 +3,24 @@ title: Was ist die Freihanderkennung? – Freihanderkennungs-API
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie die Freihanderkennung in Anwendungen, Websites, Tools und andere Lösungen integrieren, um Freihandschriftdaten zu erkennen und als Eingabe zu nutzen.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 07/24/2019
-ms.author: erhopf
-ms.openlocfilehash: c90d656539a2ed64b416dc9b8e7e11e205b98ee6
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.date: 08/24/2020
+ms.author: aahi
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6c1a720e7e9bd9c71f925f104ca7fc70a1a5ef59
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478371"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89051065"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Was ist die Freihanderkennungs-API?
 
+[!INCLUDE [ink-recognizer-deprecation](includes/deprecation-note.md)]
 
 Der Cognitive Service Freihanderkennung bietet eine cloudbasierte-REST-API zum Analysieren und Erkennen von Freihandschriftinhalten. Im Gegensatz zu Diensten, die optische Zeichenerkennung (OCR) verwenden, erfordert die API Freihandschriftdaten als Eingabe. Freihandschriftdaten sind zeitlich geordnete Gruppen von 2D-Punkten (X,Y-Koordinaten), die die Bewegung von Eingabetools wie digitalen Stiften oder Fingern darstellen. Anschließend erkennt sie Formen und handschriftlichen Inhalt aus der Eingabe und gibt eine JSON-Antwort zurück, die alle erkannten Entitäten enthält.
 
@@ -28,7 +30,7 @@ Der Cognitive Service Freihanderkennung bietet eine cloudbasierte-REST-API zum A
 
 Mit der Freihanderkennungs-API können Sie handschriftlichen Inhalt in Ihren Anwendungen leicht erkennen. 
 
-|Feature  |BESCHREIBUNG  |
+|Funktion  |BESCHREIBUNG  |
 |---------|---------|
 | Handschrifterkennung | Erkennen von handschriftlichem Inhalt in 63 [Kernsprachen und Gebietsschemas](language-support.md). | 
 | Layouterkennung | Rufen Sie strukturelle Informationen über den Inhalt von Freihandschrifteingaben ab. Schlüsseln Sie den Inhalt in Schreibregionen, Absätze, Zeilen, Wörter, Listen mit Aufzählungszeichen auf. Ihre Anwendungen können dann mit den Layoutinformationen zusätzliche Funktionen wie automatische Listenformatierung und Formausrichtung erstellen. |
@@ -43,7 +45,7 @@ Die Freihanderkennungs-API ist ein RESTful-Webdienst und kann somit problemlos i
 
 Nach der Registrierung:
 
-1. [Formatieren](concepts/send-ink-data.md#sending-ink-data) Sie Ihre Freihandschriftdaten in gültigem JSON-Code.
+1. [Formatieren](concepts/send-ink-data.md#sending-ink-data) Sie Ihre Freihandschriftdaten in gültigem JSON-Code. Die API akzeptiert bis zu 1.500 Freihandstriche pro Anforderung. 
 1. Senden Sie eine Anforderung mit Ihren Daten an die Freihanderkennungs-API.
 1. Analysieren Sie die zurückgegebene JSON-Nachricht, um die API-Antwort zu verarbeiten.
 
@@ -52,9 +54,9 @@ Nach der Registrierung:
 Probieren Sie einen Schnellstart in den folgenden Sprachen aus, um mit dem Senden von Aufrufen an die Freihanderkennungs-API zu beginnen.
 * [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
-* [JavaScript](quickstarts/csharp.md)
+* [JavaScript](quickstarts/javascript.md)
 
-Um zu sehen, wie die Freihanderkennungs-API in einer Freihandschriftinhalte-App funktioniert, sehen Sie sich die folgenden Beispielanwendungen auf GitHub an:
+Sehen Sie sich in den folgenden Beispielanwendungen auf GitHub an, wie die Freihanderkennungs-API in einer Freihandschriftinhalte-App funktioniert:
 * [C# und universelle Windows-Plattform (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# und Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [JavaScript-Webbrowser-App](https://go.microsoft.com/fwlink/?linkid=2089908)       

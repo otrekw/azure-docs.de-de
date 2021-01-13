@@ -1,18 +1,18 @@
 ---
-title: Einrichten der IP-Adressierung zum Herstellen einer Verbindung mit einem sekundären lokalen Standort nach einem Failover mit Azure Site Recovery
+title: Einrichten der IP-Adressierung nach einem Failover auf einen sekundären Standort mit Azure Site Recovery
 description: Hier wird beschrieben, wie die IP-Adressierung für die Verbindung mit virtuellen Computern an einem sekundären lokalen Standort nach einer Notfallwiederherstellung und einem Failover mit Azure Site Recovery eingerichtet wird.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: f158c6b71bb53d6b683577401e625e24808eb7eb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813685"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87495942"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Einrichten der IP-Adressierung zum Herstellen einer Verbindung mit einem sekundären lokalen Standort nach einem Failover
 
@@ -22,8 +22,8 @@ Nach dem Failover von Hyper-V-VMs in VMM-Clouds (System Center Virtual Machine M
 
 Nach einem Failover gibt es mehrere Möglichkeiten, die IP-Adressierung für virtuelle Replikatcomputer zu behandeln: 
 
-- **Beibehalten derselben IP-Adresse nach einem Failover**: In diesem Szenario besitzt der replizierte virtuelle Computer die gleiche IP-Adresse wie der primäre virtuelle Computer. Dies vereinfacht netzwerkbezogene Probleme nach dem Failover, erfordert jedoch einige Infrastrukturarbeiten.
-- **Verwenden einer anderen IP-Adresse nach einem Failover**: In diesem Szenario erhält die VM nach einem Failover eine neue IP-Adresse. 
+- **Beibehalten der gleichen IP-Adresse nach einem Failover**: In diesem Szenario besitzt der replizierte virtuelle Computer die gleiche IP-Adresse wie der primäre virtuelle Computer. Dies vereinfacht netzwerkbezogene Probleme nach dem Failover, erfordert jedoch einige Infrastrukturarbeiten.
+- **Verwenden einer anderen IP-Adresse nach dem Failover**: In diesem Szenario erhält der virtuelle Computer nach einem Failover eine neue IP-Adresse. 
  
 
 ## <a name="retain-the-ip-address"></a>Beibehalten der IP-Adresse
@@ -63,11 +63,11 @@ Die folgende Abbildung zeigt die Subnetze vor und nach dem Failover.
 
 **Vor dem Failover**
 
-![Vor dem Failover](./media/hyper-v-vmm-networking/network-design2.png)
+![Diagramm: Subnetze vor dem Failover](./media/hyper-v-vmm-networking/network-design2.png)
 
 **Nach dem Failover**
 
-![Nach dem Failover](./media/hyper-v-vmm-networking/network-design3.png)
+![Diagramm: Subnetze nach dem Failover](./media/hyper-v-vmm-networking/network-design3.png)
 
 Nach dem Failover weist Site Recovery eine IP-Adresse für jede Netzwerkschnittstelle auf dem virtuellen Computer zu. Die Adresse wird aus dem statischen IP-Adresspool im relevanten Netzwerk für jede VM-Instanz zugewiesen.
 
@@ -79,12 +79,12 @@ Nach dem Failover weist Site Recovery eine IP-Adresse für jede Netzwerkschnitts
 
 Nachdem Sie den Schutz für einen virtuellen Computer aktiviert haben, können Sie das folgende Beispielskript verwenden, um die Adresse zu überprüfen, die dem virtuellen Computer zugewiesen wurde. Diese IP-Adresse wird als Failover-IP-Adresse festgelegt und dem virtuellen Computer zum Zeitpunkt des Failovers zugewiesen:
 
-    ```
-    $vm = Get-SCVirtualMachine -Name <VM_NAME>
-    $na = $vm[0].VirtualNetworkAdapters>
-    $ip = Get-SCIPAddress -GrantToObjectID $na[0].id
-    $ip.address 
-    ```
+```powershell
+$vm = Get-SCVirtualMachine -Name <VM_NAME>
+$na = $vm[0].VirtualNetworkAdapters>
+$ip = Get-SCIPAddress -GrantToObjectID $na[0].id
+$ip.address
+```
 
 ## <a name="use-a-different-ip-address"></a>Verwenden einer anderen IP-Adresse
 
@@ -93,7 +93,7 @@ In diesem Szenario werden die IP-Adressen von VMs, für die ein Failover durchge
 - Verwenden Sie niedrige TTL-Werte für Intranetanwendungen.
 - Verwenden Sie das folgende Skript in einem Site Recovery-Wiederherstellungsplan, um den DNS-Server rechtzeitig zu aktualisieren. Wenn Sie die dynamische DNS-Registrierung verwenden, benötigen Sie das Skript nicht.
 
-    ```
+    ```powershell
     param(
     string]$Zone,
     [string]$name,
@@ -118,11 +118,11 @@ In diesem Beispiel sind am primären und am sekundären Standort verschiedene IP
 
 **Vor dem Failover**
 
-![Andere IP-Adresse: vor dem Failover](./media/hyper-v-vmm-networking/network-design10.png)
+![Diagramm: Verschiedene IP-Adressen vor dem Failover](./media/hyper-v-vmm-networking/network-design10.png)
 
 **Nach dem Failover**
 
-![Andere IP-Adresse: nach dem Failover](./media/hyper-v-vmm-networking/network-design11.png)
+![Diagramm: Verschiedene IP-Adressen nach dem Failover](./media/hyper-v-vmm-networking/network-design11.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

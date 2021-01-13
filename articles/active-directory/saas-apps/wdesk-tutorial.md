@@ -2,88 +2,72 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Wdesk | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Wdesk konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 06900a91-a326-4663-8ba6-69ae741a536e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/28/2019
+ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 0f614838ae44b5c4263bc9eac81e43fd13f87baa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 11539e7d6e685703810537cf69e0e7ed3ec0be4c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087291"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609087"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>Tutorial: Azure Active Directory-Integration mit Wdesk
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Wdesk
 
-In diesem Tutorial erfahren Sie, wie Sie Wdesk in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Wdesk in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Wdesk in Azure Active Directory (Azure AD) integrieren. Die Integration von Wdesk in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Wdesk hat.
-* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Wdesk anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Steuern Sie in Azure AD, wer Zugriff auf Wdesk hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Wdesk anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Wdesk konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein Wdesk-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Wdesk-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Wdesk unterstützt **SP-** und **IDP-initiiertes** einmaliges Anmelden.
+* Nach dem Konfigurieren von Wdesk können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="adding-wdesk-from-the-gallery"></a>Hinzufügen von Wdesk aus dem Katalog
 
 Zum Konfigurieren der Integration von Wdesk in Azure AD müssen Sie Wdesk aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Um Wdesk aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
-
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
-
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
-
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
-
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
-
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
-
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
-
-4. Geben Sie im **Wdesk** ein, wählen Sie im Ergebnisbereich **Wdesk** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
-
-     ![Wdesk in der Ergebnisliste](common/search-new-app.png)
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Wdesk** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Wdesk** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Wdesk mithilfe eines Testbenutzers namens **Britta Simon**.
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Wdesk eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Wdesk müssen Sie die folgenden Bausteine ausführen:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Wdesk die folgenden Schritte aus:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Wdesk](#configure-wdesk-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Wdesk-Testbenutzers](#create-wdesk-test-user)** , um eine Entsprechung von Britta Simon in Wdesk zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Wdesk](#configure-wdesk-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Wdesk-Testbenutzers](#create-wdesk-test-user)** , um eine Entsprechung von B. Simon in Wdesk zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
@@ -103,7 +87,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Wdesk d
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Wdesk](common/idp-intiated.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners und einer Antwort-URL sowie zum Klicken auf „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
 
@@ -111,7 +95,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Wdesk d
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Wdesk](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
 
@@ -131,42 +115,6 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Wdesk d
     b. Azure AD-Bezeichner
 
     c. Abmelde-URL
-
-### <a name="configure-wdesk-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Wdesk
-
-1. Melden Sie sich in einem anderen Webbrowserfenster als Sicherheitsadministrator bei Wdesk an.
-
-2. Klicken Sie links unten auf **Admin**, und wählen Sie **Account Admin** (Kontoadministrator) aus:
- 
-     ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
-
-3. Navigieren Sie in Wdesk Admin zu **Security** (Sicherheit) und dann zu **SAML** > **SAML Settings** (SAML-Einstellungen):
-
-    ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
-
-4. Aktivieren Sie unter **General Settings** (Allgemeine Einstellungen) die Option **Enable SAML Single Sign On** (SAML Single Sign On aktivieren):
-
-    ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
-
-5. Führen Sie unter **Service Provider Details** (Dienstanbieterdetails) die folgenden Schritte aus:
-
-    ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
-
-      a. Kopieren Sie die **Anmelde-URL**, und fügen Sie sie im Azure-Portal in das Textfeld **Anmelde-URL** ein.
-   
-      b. Kopieren Sie die **Metadaten-URL**, und fügen Sie sie im Azure-Portal in das Textfeld **Bezeichner** ein.
-       
-      c. Kopieren Sie die **Consumer-URL**, und fügen Sie sie im Azure-Portal in das Textfeld **Antwort-URL** ein.
-   
-      d. Klicken Sie im Azure-Portal auf **Speichern**, um die Änderungen zu speichern.      
-
-6. Klicken Sie auf **Configure IdP Settings** (IdP-Einstellungen konfigurieren), um das Dialogfeld **Edit IdP Settings** (IdP-Einstellungen bearbeiten) zu öffnen. Klicken Sie auf **Choose File** (Datei auswählen), um die Datei **Metadata.xml**, die Sie im Azure-Portal gespeichert haben, zu suchen und hochzuladen.
-    
-    ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
-  
-7. Klicken Sie auf **Änderungen speichern**.
-
-    ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -190,7 +138,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -218,6 +166,46 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
+## <a name="configure-wdesk-sso"></a>Konfigurieren des einmaligen Anmeldens für Wdesk
+
+1. Melden Sie sich in einem anderen Webbrowserfenster als Sicherheitsadministrator bei Wdesk an.
+
+1. Klicken Sie links unten auf **Admin**, und wählen Sie **Account Admin** (Kontoadministrator) aus:
+ 
+    ![Der Screenshot zeigt die im Menü „Admin“ ausgewählte Option „Account Admin“.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+
+1. Navigieren Sie in Wdesk Admin zu **Security** (Sicherheit) und dann zu **SAML** > **SAML Settings** (SAML-Einstellungen):
+
+    ![Der Screenshot zeigt die auf der Registerkarte „SAML“ ausgewählte Option „SAML Settings“.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
+
+1. Aktivieren Sie unter **SAML User ID Settings** (Einstellungen für die SAML-Benutzer-ID) das Kontrollkästchen **SAML User ID is Wdesk Username** (SAML-Benutzer-ID entspricht Wdesk-Benutzername).
+
+    ![Der Screenshot zeigt „SAML User ID Settings“, unter denen Sie „SAML User ID is Wdesk Username“ aktivieren können.](./media/wdesk-tutorial/wdesk-username.png)
+
+4. Aktivieren Sie unter **General Settings** (Allgemeine Einstellungen) die Option **Enable SAML Single Sign On** (SAML Single Sign On aktivieren):
+
+    ![Der Screenshot zeigt „Edit SAML Settings“ (SAML-Einstellungen bearbeiten ), unter denen Sie „Enable SAML Single Sign On“ aktivieren können.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
+
+5. Führen Sie unter **Service Provider Details** (Dienstanbieterdetails) die folgenden Schritte aus:
+
+    ![Der Screenshot zeigt „Service Provider Details“, unter denen Sie die beschriebenen Werte eingeben können.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
+
+    1. Kopieren Sie die **Anmelde-URL**, und fügen Sie sie im Azure-Portal in das Textfeld **Anmelde-URL** ein.
+
+    1. Kopieren Sie die **Metadaten-URL**, und fügen Sie sie im Azure-Portal in das Textfeld **Bezeichner** ein.
+
+    1. Kopieren Sie die **Consumer-URL**, und fügen Sie sie im Azure-Portal in das Textfeld **Antwort-URL** ein.
+
+    1. Klicken Sie im Azure-Portal auf **Speichern**, um die Änderungen zu speichern.      
+
+1. Klicken Sie auf **Configure IdP Settings** (IdP-Einstellungen konfigurieren), um das Dialogfeld **Edit IdP Settings** (IdP-Einstellungen bearbeiten) zu öffnen. Klicken Sie auf **Choose File** (Datei auswählen), um die Datei **Metadata.xml**, die Sie im Azure-Portal gespeichert haben, zu suchen und hochzuladen.
+    
+    ![Der Screenshot zeigt „Edit IdP Settings“, über das Sie Metadaten hochladen können.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
+  
+1. Klicken Sie auf **Änderungen speichern**.
+
+    ![Der Screenshot zeigt die Schaltfläche „Änderungen speichern“.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
+
 ### <a name="create-wdesk-test-user"></a>Erstellen eines Wdesk-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Wdesk anmelden können, müssen sie in Wdesk bereitgestellt werden. Im Fall von Wdesk ist die Bereitstellung eine manuelle Aufgabe.
@@ -228,43 +216,44 @@ Damit sich Azure AD-Benutzer bei Wdesk anmelden können, müssen sie in Wdesk b
 
 2. Navigieren Sie zu **Admin** > **Account Admin** (Kontoadministrator).
 
-     ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+     ![Der Screenshot zeigt die im Menü „Admin“ ausgewählte Option „Account Admin“.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
 3. Klicken Sie unter **People** (Personen) auf **Members** (Mitglieder).
 
 4. Klicken Sie nun auf **Add Member** (Mitglied hinzufügen), um das Dialogfeld **Add Member** (Mitglied hinzufügen) zu öffnen. 
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/wdesk-tutorial/createuser1.png)  
+    ![Der Screenshot zeigt die Registerkarte „Members“, auf der Sie „Add Member“ auswählen können.](./media/wdesk-tutorial/createuser1.png)  
 
-5. Geben Sie im Textfeld **User** (Benutzer) den Benutzernamen des Benutzers (z. B. brittasimon@contoso.com) ein, und klicken Sie dann auf **Continue** (Weiter).
+5. Geben Sie im Textfeld **User** (Benutzer) den Benutzernamen des Benutzers (z. B. b.simon@contoso.com) ein, und klicken Sie dann auf **Continue** (Weiter).
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/wdesk-tutorial/createuser3.png)
+    ![Der Screenshot zeigt das Dialogfeld „Add Member“, in dem Sie einen Benutzer eingeben können.](./media/wdesk-tutorial/createuser3.png)
 
 6.  Geben Sie die Details wie folgt ein:
   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/wdesk-tutorial/createuser4.png)
+    ![Der Screenshot zeigt das Dialogfeld „Add Member“, in dem Sie grundlegende Informationen zu einem Benutzer eingeben können.](./media/wdesk-tutorial/createuser4.png)
  
-    a. Geben Sie im Textfeld **E-mail** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z. B. brittasimon@contoso.com.
+    a. Geben Sie im Textfeld **E-mail** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z. B. b.simon@contoso.com.
 
-    b. Geben Sie im Textfeld **First Name** (Vorname) den Vornamen des Benutzers ein, z.B. **Britta**.
+    b. Geben Sie im Textfeld **First name** (Vorname) den Vornamen des Benutzers ein, z. B. **B**.
 
     c. Geben Sie im Textfeld **Last Name** (Nachname) den Nachnamen des Benutzers ein, z.B. **Simon**.
 
 7. Klicken Sie auf die Schaltfläche **Save Member** (Mitglied speichern).  
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/wdesk-tutorial/createuser5.png)
+    ![Der Screenshot zeigt das Senden einer Begrüßungs-E-Mail über die Schaltfläche „Save Member“.](./media/wdesk-tutorial/createuser5.png)
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
+### <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Wdesk“ klicken, sollten Sie automatisch bei der Wdesk-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Wdesk“ klicken, sollten Sie automatisch bei der Wdesk-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)
 
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

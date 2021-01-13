@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65139290"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90084735"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect-Synchronisierung: Scheduler
 In diesem Thema wird der integrierte Scheduler in Azure AD Connect-Synchronisierung (Synchronisierungsmodul) beschrieben.
@@ -39,6 +39,14 @@ Der Scheduler ist für zwei Tasks zuständig:
 * **Wartungstasks**. Erneuern von Schlüsseln und Zertifikaten für das Zurücksetzen von Kennwörtern und für den Geräteregistrierungsdienst (Device Registration Service, DRS). Löschen alter Einträge im Vorgangsprotokoll.
 
 Der Scheduler selbst wird immer ausgeführt, kann jedoch so konfiguriert werden, dass er nur einen oder keinen dieser Tasks ausführt. Wenn Sie beispielsweise einen eigenen Prozess für den Synchronisierungszyklus verwenden, können Sie diesen Task im Scheduler deaktivieren, den Wartungstask aber weiterhin ausführen.
+
+>[!IMPORTANT]
+>Standardmäßig wird alle 30 Minuten ein Synchronisierungszyklus ausgeführt. Wenn Sie den Synchronisierungszyklus geändert haben, müssen Sie sicherstellen, dass mindestens alle sieben Tage ein Synchronisierungszyklus ausgeführt wird. 
+>
+>* Eine Deltasynchronisierung muss spätestens sieben Tagen nach der letzten Deltasynchronisierung erfolgen.
+>* Eine Deltasynchronisierung nach einer vollständigen Synchronisierung muss spätestens sieben Tage nach Abschluss der letzten vollständigen Synchronisierung durchgeführt werden.
+>
+>Andernfalls kann es zu Synchronisierungsproblemen kommen, die eine vollständige Synchronisierung erfordern. Das gilt auch für Server im Stagingmodus.
 
 ## <a name="scheduler-configuration"></a>Schedulerkonfiguration
 Um die aktuellen Konfigurationseinstellungen anzuzeigen, wechseln Sie zu PowerShell, und führen Sie `Get-ADSyncScheduler`aus. Die Ausgabe ähnelt der folgenden Abbildung:
@@ -152,18 +160,21 @@ Beispiel:  Wenn Sie Änderungen an den Synchronisierungsregeln für den Connecto
 ## <a name="stop-the-scheduler"></a>Beenden des Schedulers
 Wenn der Scheduler gerade einen Synchronisierungszyklus ausführt, müssen Sie diesen beenden. Dies ist zum Beispiel der Fall, wenn Sie beim Starten des Installations-Assistenten den folgenden Fehler erhalten:
 
-![SyncCycleRunningError](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
+![Screenshot mit der Fehlermeldung „Konfigurationsänderung nicht möglich“](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
 
 Während ein Synchronisierungszyklus ausgeführt wird, sind Änderungen an der Konfiguration nicht möglich. Sie können warten, bis der Scheduler den Prozess beendet hat. Sie können den Prozess aber auch beenden, um Ihre Änderungen sofort vorzunehmen. Das Beenden des aktuellen Zyklus ist ungefährlich, und ausstehende Änderungen werden bei der nächsten Ausführung verarbeitet.
 
 1. Weisen Sie den Scheduler zunächst mit dem PowerShell-Cmdlet `Stop-ADSyncSyncCycle` an, den aktuellen Zyklus zu beenden.
-2. Wenn Sie einen älteren Build als 1.1.281 verwenden, wird der aktuelle Task des aktuellen Connectors durch das Beenden des Schedulers nicht unterbrochen. Um ein Beenden des Connectors zu erzwingen, führen Sie folgende Aktionen aus:  ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+2. Wenn Sie einen älteren Build als 1.1.281 verwenden, wird der aktuelle Task des aktuellen Connectors durch das Beenden des Schedulers nicht unterbrochen. Um ein Beenden des Connectors zu erzwingen, führen Sie folgende Aktionen aus: 
+
+   ![Screenshot mit Synchronization Service Manager mit ausgewählten Connectors und einem laufenden Connector mit hervorgehobener Auswahl „Stop“](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+
    * Starten Sie den **Synchronisierungsdienst** über das Startmenü. Wechseln Sie zu **Connectors**, markieren Sie den Connector mit dem Status **Wird ausgeführt**, und wählen Sie unter „Aktionen“ die Option **Beenden** aus.
 
 Der Scheduler ist noch immer aktiv und wird bei der nächsten Gelegenheit wieder gestartet.
 
 ## <a name="custom-scheduler"></a>Benutzerdefinierter Scheduler
-Die in diesem Abschnitt dokumentierten Cmdlets stehen nur in Build [1.1.130.0](reference-connect-version-history.md#111300) und höher zur Verfügung.
+Die in diesem Abschnitt dokumentierten Cmdlets stehen nur in Build [1.1.130.0](reference-connect-version-history.md) und höher zur Verfügung.
 
 Wenn der integrierte Scheduler Ihre Anforderungen nicht erfüllt, können Sie die Connectors mithilfe von PowerShell planen.
 

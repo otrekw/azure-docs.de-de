@@ -3,25 +3,25 @@ title: Problembehandlung beim Status "Heruntergestuft" in Azure Traffic Manager
 description: Problembehandlung bei Traffic Manager-Profilen, bei denen der Status "Heruntergestuft" angezeigt wird.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
-manager: dcscontentpm
+author: duongau
+manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: rohink
-ms.openlocfilehash: 8f043b11c9319d61c4413d01b008b324103ca6c3
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.author: duau
+ms.openlocfilehash: 83dc432a1f88b443d500bf9a977abfed69211156
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155215"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003853"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Problembehandlung beim Status "Heruntergestuft" in Traffic Manager
 
-In diesem Artikel wird beschrieben, wie Probleme bei einem Azure Traffic Manager-Profil mit dem Status „Heruntergestuft“ behoben werden können. Der erste Schritt bei der Problembehandlung eines beeinträchtigten Status von Azure Traffic Manager besteht darin, die Diagnoseprotokollierung zu aktivieren.  Weitere Informationen erhalten Sie unter [Aktivieren von Diagnoseprotokollen](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs). Für dieses Szenario nehmen wir an, Sie haben ein Traffic Manager-Profil konfiguriert, das auf einige Ihrer in cloudapp.net gehosteten Dienste verweist. Wenn die Integrität von Traffic Manager den Status **Heruntergestuft** anzeigt, könnte der Status einer oder mehrerer Endpunkte **Heruntergestuft** sein:
+In diesem Artikel wird beschrieben, wie Probleme bei einem Azure Traffic Manager-Profil mit dem Status „Heruntergestuft“ behoben werden können. Der erste Schritt bei der Problembehandlung eines beeinträchtigten Zustands von Azure Traffic Manager besteht darin, die Protokollierung zu aktivieren.  Weitere Informationen erhalten Sie unter [Aktivieren der Ressourcenprotokollierung in Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs). Für dieses Szenario nehmen wir an, Sie haben ein Traffic Manager-Profil konfiguriert, das auf einige Ihrer in cloudapp.net gehosteten Dienste verweist. Wenn die Integrität von Traffic Manager den Status **Heruntergestuft** anzeigt, könnte der Status einer oder mehrerer Endpunkte **Heruntergestuft** sein:
 
 ![Heruntergestufter Endpunktstatus](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
@@ -56,9 +56,11 @@ Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirectio
 
 Beispielausgabe:
 
-    StatusCode StatusDescription
-    ---------- -----------------
-           301 Moved Permanently
+```output
+StatusCode StatusDescription
+---------- -----------------
+        301 Moved Permanently
+```
 
 Wie Sie sehen, haben wir eine Umleitungsantwort erhalten. Wie bereits erwähnt, gelten alle Statuscodes außer „200“ als Fehler. Somit ändert Traffic Manager den Endpunktstatus in „Offline“. Sie können dieses Problem beheben, indem Sie die Konfiguration der Website überprüfen, um sicherzustellen, dass vom Testpfad der richtige Statuscode zurückgegeben wird. Konfigurieren Sie den Traffic Manager-Test so, dass er auf einen Pfad verweist, der eine Antwort „200“ zurückgibt.
 

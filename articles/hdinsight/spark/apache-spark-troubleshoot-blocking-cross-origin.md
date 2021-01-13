@@ -1,5 +1,5 @@
 ---
-title: Fehler 404 auf Jupyter-Server aufgrund von blockierender ursprungsübergreifender API in Azure HDInsight
+title: 'Jupyter 404-Fehler: „Blockieren der ursprungsübergreifenden API“ – Azure HDInsight'
 description: Fehler 404 ("Nicht gefunden") auf Jupyter-Server aufgrund von blockierender ursprungsübergreifender API in Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,16 +7,16 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: f5ac70381f0879a896e96cb37a70c1b1a1f0b5da
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: f2000c3938e7366dd85f36b8de9a8425e91fab8a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091002"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287948"
 ---
 # <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Szenario: Fehler 404 ("Nicht gefunden") auf Jupyter-Server aufgrund von blockierender ursprungsübergreifender API in Azure HDInsight
 
-Dieser Artikel beschreibt Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Verwendung von Apache Spark-Komponenten in Azure HDInsight-Clustern.
+In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Verwendung von Apache Spark-Komponenten in Azure HDInsight-Clustern beschrieben.
 
 ## <a name="issue"></a>Problem
 
@@ -25,7 +25,7 @@ Wenn Sie auf den Jupyter-Dienst in HDInsight zugreifen, wird Ihnen die Fehlermel
 ```log
 [W 2018-08-21 17:43:33.352 NotebookApp] 404 PUT /api/contents/PySpark/notebook.ipynb (10.16.0.144) 4504.03ms referer=https://pnhr01hdi-corpdir.msappproxy.net/jupyter/notebooks/PySpark/notebook.ipynb
 Blocking Cross Origin API request.  
-Origin: https://xxx.xxx.xxx, Host: hn0-pnhr01.j101qxjrl4zebmhb0vmhg044xe.ax.internal.cloudapp.net:8001
+Origin: https://xxx.xxx.xxx, Host: pnhr01.j101qxjrl4zebmhb0vmhg044xe.ax.internal.cloudapp.net:8001
 ```
 
 Möglicherweise finden Sie im Jupyter-Protokoll im Feld „Origin“ auch eine IP-Adresse.
@@ -57,10 +57,4 @@ Dies ist weniger sicher als die vorherige Einstellung. Es wird jedoch davon ausg
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
-
-* Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
-
-* Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
-
-* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

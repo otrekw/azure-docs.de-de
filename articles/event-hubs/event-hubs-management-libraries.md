@@ -1,21 +1,15 @@
 ---
 title: Verwaltungsbibliotheken – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zu der Bibliothek, die Sie zum Verwalten von Azure Event Hubs-Namespaces und -Entitäten über .NET verwenden können.
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: dotnet
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 431fe04461f422274697d1e91c4b56e914ce2d4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/23/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 74392fbf0b2c0b81898410af8027a4f13fc52b67
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746657"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89013995"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs-Verwaltungsbibliotheken
 
@@ -33,7 +27,7 @@ Zur Verwendung von Event Hubs-Verwaltungsbibliotheken müssen Sie zunächst eine
 
 * [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../active-directory/develop/howto-create-service-principal-portal.md)
 * [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
+* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](/cli/azure/create-an-azure-service-principal-azure-cli)
 
 In diesen Tutorials erhalten Sie Werte für `AppId` (Client-ID), `TenantId` und `ClientSecret` (Authentifizierungsschlüssel). Diese werden von den Verwaltungsbibliotheken für die Authentifizierung verwendet. Für die Ressourcengruppe, für die die Ausführung erfolgen soll, müssen Sie über **Besitzer**-Berechtigungen verfügen.
 

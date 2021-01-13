@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 02/21/2019
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 8c87e14071b3bb40421ab655c172df739570e295
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6dc201af2271909de15af9bac1a2e2bb68faed1a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178546"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91401011"
 ---
 Die folgenden Einschränkungen gelten für Daten, die in Azure verschoben werden.
 
@@ -18,3 +18,7 @@ Die folgenden Einschränkungen gelten für Daten, die in Azure verschoben werden
 - Eine unter Freigabeordnern erstellte leere Verzeichnishierarchie (ohne jegliche Dateien) wird nicht in die Blobcontainer hochgeladen.
 - Sie können die Daten mithilfe von Drag & Drop mit dem Datei-Explorer oder über die Befehlszeile kopieren. Wenn die Gesamtgröße der kopierten Dateien über 10GB liegt, sollten Sie ein Programm zum Massenkopieren wie z.B. Robocopy oder rsync verwenden. Die Tools zum Massenkopieren wiederholen den Kopiervorgang bei vorübergehenden Fehlern und bieten zusätzliche Resilienz.
 - Wenn die dem Azure-Speichercontainer zugeordnete Freigabe Blobs hochlädt, die nicht mit dem Typ der zum Zeitpunkt der Erstellung für die Freigabe definierten Blobs übereinstimmen, werden solche Blobs nicht aktualisiert. Sie erstellen z.B. eine Freigabe für Blockblobs auf dem Gerät. Ordnen Sie die Freigabe einem vorhandenen Cloudcontainer mit Seitenblobs zu. Aktualisieren Sie diese Freigabe zum Herunterladen der Dateien. Ändern Sie einige der aktualisierten Dateien, die in der Cloud bereits als Seitenblobs gespeichert sind. Es treten Uploadfehler auf.
+- Das Umbenennen einer Datei, die in den Freigaben erstellt wurde, wird nicht unterstützt.
+- Durch das Löschen einer Datei aus einer Freigabe wird der Eintrag im Speicherkonto nicht gelöscht.
+- Wenn Sie Daten mithilfe von rsync kopieren, wird die Option `rsync -a` nicht unterstützt.
+

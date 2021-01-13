@@ -2,18 +2,18 @@
 title: Verwalten von Datenbankrollen und Benutzern in Azure Analysis Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Datenbankrollen und Benutzer auf einem Analysis Services-Server in Azure verwalten.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2a6c63c4ae58079c79a9d344f1e2550e4768088f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: references_regions
+ms.openlocfilehash: 56f98d41fc73cdd2be0923de66a5af09c875a050
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932241"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013592"
 ---
 # <a name="manage-database-roles-and-users"></a>Verwalten von Datenbankrollen und Benutzern
 
@@ -26,14 +26,13 @@ Folgende Rollenberechtigungen stehen zur Verfügung:
 *  **Verarbeiten:** Benutzer können eine Verbindung mit Verarbeitungsvorgängen in der Datenbank herstellen und diese durchführen sowie Daten der Modelldatenbank analysieren.
 *  **Lesen:** Benutzer können über eine Clientanwendung eine Verbindung mit Daten der Modelldatenbank herstellen und diese analysieren.
 
-Wenn Sie ein Projekt für ein tabellarisches Modell erstellen, erstellen Sie mit dem Rollen-Manager in SQL Server Data Tools (SSDT) Rollen und fügen diesen Rollen Benutzer oder Gruppen hinzu. Bei Bereitstellung auf einem Server verwenden Sie SQL Server Management Studio (SSMS), [Analysis Services-PowerShell-Cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) oder die [Tabular Model Scripting Language](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL), um Rollen und Benutzermitglieder hinzuzufügen oder zu entfernen.
+Wenn Sie ein Projekt für ein tabellarisches Modell erstellen, erstellen Sie mit dem Rollen-Manager in Visual Studio mit Analysis Services-Projekten Rollen und fügen diesen Rollen Benutzer oder Gruppen hinzu. Bei Bereitstellung auf einem Server verwenden Sie SQL Server Management Studio (SSMS), [Analysis Services-PowerShell-Cmdlets](/analysis-services/powershell/analysis-services-powershell-reference) oder die [Tabular Model Scripting Language](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL), um Rollen und Benutzermitglieder hinzuzufügen oder zu entfernen.
 
-Bei **Sicherheitsgruppen** muss [E-Mail-aktiviert](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) und die `MailEnabled`-Eigenschaft auf `True` festgelegt sein. Verwenden Sie `obj:groupid@tenantid` beim Angeben einer Gruppe nach E-Mail-Adresse.
+Verwenden Sie beim Hinzufügen einer **Sicherheitsgruppe** `obj:groupid@tenantid`.
 
-
-## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>So fügen Sie Rollen und Benutzer in SSDT hinzu oder verwalten diese  
+## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>So fügen Sie Rollen und Benutzer in Visual Studio hinzu oder verwalten diese  
   
-1.  Klicken Sie in SSDT > **Explorer für tabellarische Modelle** mit der rechten Maustaste auf **Rollen**.  
+1.  Klicken Sie im **Explorer für tabellarische Modelle** mit der rechten Maustaste auf **Rollen**.  
   
 2.  Klicken Sie im **Rollen-Manager** auf **Neu**.  
   
@@ -45,10 +44,10 @@ Bei **Sicherheitsgruppen** muss [E-Mail-aktiviert](https://docs.microsoft.com/ex
   
     |Berechtigung|BESCHREIBUNG|  
     |----------------|-----------------|  
-    |**Keine**|Mitglieder können das Modellschema nicht ändern und keine Daten abfragen.|  
+    |**None**|Mitglieder können das Modellschema nicht lesen oder ändern und keine Daten abfragen.|  
     |**Lesen**|Mitglieder können (basierend auf Zeilenfiltern) Daten abfragen, jedoch das Modellschema nicht ändern.|  
     |**Lesen und Verarbeiten**|Mitglieder können Daten (basierend auf Zeilenfiltern) abfragen sowie Prozesse ausführen und alle Vorgänge verarbeiten, jedoch das Modellschema nicht ändern.|  
-    |**Prozess**|Mitglieder können Prozesse ausführen und alle Vorgänge verarbeiten. Sie können das Modellschema nicht ändern und keine Daten abfragen.|  
+    |**Prozess**|Mitglieder können die Vorgänge Verarbeiten und Alles verarbeiten ausführen. Können das Modellschema nicht lesen oder ändern und keine Daten abfragen.|  
     |**Administrator**|Mitglieder können das Modellschema ändern und alle Daten abfragen.|   
   
 5.  Wenn die erstellte Rolle über die Berechtigung „Lesen“ oder „Lesen und Verarbeiten“ verfügt, können Sie mit einer DAX-Formel Zeilenfilter hinzufügen. Klicken Sie auf die Registerkarte **Zeilenfilter**, und wählen Sie eine Tabelle aus. Klicken Sie dann auf das Feld **DAX-Filter**, und geben Sie eine DAX-Formel ein.
@@ -75,7 +74,7 @@ Zum Hinzufügen von Rollen und Benutzern zu einer bereitgestellten Modelldatenba
    |Berechtigung|BESCHREIBUNG|  
    |----------------|-----------------|  
    |**Vollzugriff (Administrator)**|Mitglieder können das Modellschema ändern, Prozesse ausführen und alle Daten abfragen.| 
-   |**Datenbank verarbeiten**|Mitglieder können Prozesse ausführen und alle Vorgänge verarbeiten. Sie können das Modellschema nicht ändern und keine Daten abfragen.|  
+   |**Datenbank verarbeiten**|Mitglieder können die Vorgänge Verarbeiten und Alles verarbeiten ausführen. Sie können weder das Modellschema ändern noch Daten abfragen.|  
    |**Lesen**|Mitglieder können (basierend auf Zeilenfiltern) Daten abfragen, jedoch das Modellschema nicht ändern.|  
   
 4. Klicken Sie auf **Mitgliedschaft**, und geben Sie einen Benutzer oder eine Gruppe nach E-Mail-Adresse in Ihrem Azure AD-Mandanten ein.
@@ -86,7 +85,7 @@ Zum Hinzufügen von Rollen und Benutzern zu einer bereitgestellten Modelldatenba
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>So fügen Sie Rollen und Benutzer mit einem TMSL-Skript hinzu oder verwalten diese
 
-Sie können ein TMSL-Skript im XMLA-Fenster in SSMS oder mithilfe von PowerShell ausführen. Verwenden Sie den Befehl [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) und das Objekt [Roles](https://docs.microsoft.com/bi-reference/tmsl/roles-object-tmsl).
+Sie können ein TMSL-Skript im XMLA-Fenster in SSMS oder mithilfe von PowerShell ausführen. Verwenden Sie den Befehl [CreateOrReplace](/analysis-services/tmsl/createorreplace-command-tmsl) und das Objekt [Roles](/analysis-services/tmsl/roles-object-tmsl).
 
 **TMSL-Beispielskript**
 
@@ -120,25 +119,25 @@ In diesem Beispiel werden der Rolle „Analyst“ ein externer B2B-Benutzer und 
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>So fügen Sie Rollen und Benutzer mit PowerShell hinzu oder verwalten diese
 
-Das [SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)-Modul bietet aufgabenspezifische Cmdlets für die Datenbankverwaltung und das allgemeine Cmdlet „Invoke-ASCmd“, das TMSL-Abfragen (Tabular Model Scripting Language) und -Skripts akzeptiert. Die folgenden Cmdlets werden zum Verwalten von Datenbankrollen und Benutzern verwendet.
+Das [SqlServer](/analysis-services/powershell/analysis-services-powershell-reference)-Modul bietet aufgabenspezifische Cmdlets für die Datenbankverwaltung und das allgemeine Cmdlet „Invoke-ASCmd“, das TMSL-Abfragen (Tabular Model Scripting Language) und -Skripts akzeptiert. Die folgenden Cmdlets werden zum Verwalten von Datenbankrollen und Benutzern verwendet.
   
 |Cmdlet|BESCHREIBUNG|
 |------------|-----------------| 
-|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Hinzufügen eines Mitglieds zu einer Datenbankrolle.| 
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Entfernen eines Mitglieds aus einer Datenbankrolle.|   
-|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Ausführen eines TMSL-Skripts.|
+|[Add-RoleMember](/powershell/module/sqlserver/Add-RoleMember)|Hinzufügen eines Mitglieds zu einer Datenbankrolle.| 
+|[Remove-RoleMember](/powershell/module/sqlserver/remove-rolemember)|Entfernen eines Mitglieds aus einer Datenbankrolle.|   
+|[Invoke-ASCmd](/powershell/module/sqlserver/invoke-ascmd)|Ausführen eines TMSL-Skripts.|
 
 ## <a name="row-filters"></a>Zeilenfilter  
 
-Zeilenfilter definieren, welche Zeilen in einer Tabelle von Mitgliedern einer bestimmten Rolle abgefragt werden können. Zeilenfilter werden mithilfe von DAX-Formeln für jede Tabelle in einem Modell definiert.  
+Zeilenfilter definieren, welche Zeilen in einer Tabelle von Mitgliedern einer bestimmten Rolle abgefragt werden können. Zeilenfilter werden für jede Tabelle in einem Modell mithilfe von DAX-Formeln definiert.  
   
 Zeilenfilter können nur für Rollen mit den Berechtigungen „Lesen“ und „Lesen und Verarbeiten“ definiert werden. Wenn für eine bestimmte Tabelle kein Zeilenfilter definiert ist, können Mitglieder standardmäßig alle Zeilen in der Tabelle abfragen, sofern keine Kreuzfilterung aus einer anderen Tabelle gilt.
   
- Zeilenfilter erfordern eine DAX-Formel, die als TRUE- oder FALSE-Wert ausgewertet werden muss, um die Zeilen zu definieren, die von Mitgliedern dieser bestimmten Rolle abgefragt werden können. Zeilen, die in der DAX-Formel nicht enthalten sind, können nicht abgefragt werden. Bei der Tabelle „Customers“ mit dem Zeilenfilterausdruck *=Customers[Country]="USA"* können Mitglieder der Rolle „Sales“ beispielsweise nur Kunden in den USA anzeigen.  
+ Zeilenfilter erfordern eine DAX-Formel, die als TRUE- oder FALSE-Wert ausgewertet werden muss, um die Zeilen zu definieren, die von Mitgliedern dieser bestimmten Rolle abgefragt werden können. Zeilen, die in der DAX-Formel nicht enthalten sind, können nicht abgefragt werden. Bei der Tabelle „Customers“ mit dem Zeilenfilterausdruck *=Customers [Country] = "USA"* können Mitglieder der Rolle „Sales“ beispielsweise nur Kunden in den USA anzeigen.  
   
-Zeilenfilter gelten für die angegebenen Zeilen und zugehörige Zeilen. Wenn für eine Tabelle mehrere Beziehungen definiert sind, wenden Filter Sicherheitseinstellungen für die jeweils aktive Beziehung an. Zeilenfilter überschneiden sich mit anderen für zugehörige Tabellen definierte Zeilenfiltern, z.B.:  
+Zeilenfilter gelten für die angegebenen Zeilen und zugehörige Zeilen. Wenn eine Tabelle über mehrere Beziehungen verfügt, wird die Sicherheit für die aktive Beziehung mithilfe von Filtern gewährleistet. Zeilenfilter überschneiden sich mit anderen für zugehörige Tabellen definierte Zeilenfiltern, z.B.:  
   
-|Table|DAX-Ausdruck|  
+|Tabelle|DAX-Ausdruck|  
 |-----------|--------------------|  
 |Region|=Region[Country]="USA"|  
 |ProductCategory|=ProductCategory[Name]="Bicycles"|  
@@ -152,5 +151,4 @@ Zeilenfilter gelten für die angegebenen Zeilen und zugehörige Zeilen. Wenn fü
 
   [Verwalten von Serveradministratoren](analysis-services-server-admins.md)   
   [Verwalten von Azure Analysis Services mit PowerShell](analysis-services-powershell.md)  
-  [TMSL-Referenz (Tabular Model Scripting Language)](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)
-
+  [TMSL-Referenz (Tabular Model Scripting Language)](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)

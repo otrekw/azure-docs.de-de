@@ -1,18 +1,18 @@
 ---
-title: Funktionen für Kundendatenanforderungen
+title: Features für Kundendatenanforderungen für Azure DPS-Geräte
+description: Dieser Artikel erläutert für Administratoren das Exportieren oder Löschen personenbezogener Daten bei persönlichen Geräten, die im Azure Device Provisioning Service (DPS) verwaltet werden.
 author: dominicbetts
 ms.author: dobett
-manager: timlt
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5dd027c886e8102e77ddefe93817daee0e1ec29b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75a2762a0937efbceaa168f8a2d6409e2e3a7ae4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626433"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967226"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Zusammenfassung der Features für Kundendatenanforderungen
 
@@ -62,6 +62,6 @@ Exportvorgänge für Registrierungen und Registrierungsdatensätze können auch 
 
 ## <a name="links-to-additional-documentation"></a>Links zu zusätzlicher Dokumentation
 
-Die vollständige Dokumentation zu Device Provisioning Service-APIs finden Sie unter [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps).
+Die vollständige Dokumentation zu Device Provisioning Service-APIs finden Sie unter [https://docs.microsoft.com/rest/api/iot-dps](/rest/api/iot-dps).
 
 [Features für Kundendatenanforderungen](../iot-hub/iot-hub-customer-data-requests.md) in Azure IoT Hub.

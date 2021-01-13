@@ -1,36 +1,28 @@
 ---
-title: Konfigurationen für VPN-Partnergeräte für das Verbinden mit Azure-VPN-Gateways | Microsoft-Dokumentation
+title: Konfigurationen für VPN-Partnergeräte für die Verbindung zu Azure-VPN-Gateways
 description: Dieser Artikel bietet eine Übersicht über die Konfigurationen von VPN-Partnergeräten für die Verbindung mit Azure-VPN-Gateways.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
-manager: rossort
-editor: ''
-tags: ''
-ms.assetid: a8bfc955-de49-4172-95ac-5257e262d7ea
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/20/2017
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 7d3a32b5f2b2742a36716bac9747f20c47c98858
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 01ceb067f589ef04b04ff0bf05e2971ee30f407c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150186"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89400159"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Übersicht über Konfigurationen von VPN-Partnergeräten
 Dieser Artikel bietet eine Übersicht über das Konfigurieren von lokalen VPN-Geräten für die Verbindung mit Azure-VPN-Gateways. Um sich mit denselben Parametern mit verschiedenen lokalen VPN-Geräten zu verbinden, werden ein virtuelles Azure-Beispielnetzwerk und die VPN-Gatewayeinrichtung verwendet.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="device-requirements"></a>Geräteanforderungen
 Azure-VPN-Gateways verwenden für Site-to-Site-VPN-Tunnel (S2S) Standard-IPsec/IKE-Protokollsammlungen. Eine Liste der IPsec-/IKE-Parameter und die Kryptografiealgorithmen für Azure-VPN-Gateways finden Sie unter [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md). Sie können auch die genauen Algorithmen und Schlüsselstärken für eine spezifische Verbindung angeben. Dies wird unter [Informationen zu kryptografischen Anforderungen](vpn-gateway-about-compliance-crypto.md) beschrieben.
 
-## <a name ="singletunnel"></a>Einmaliger VPN-Tunnel
+## <a name="single-vpn-tunnel"></a><a name ="singletunnel"></a>Einmaliger VPN-Tunnel
 Die erste Konfiguration im Beispiel besteht aus einem einmaligen Site-to-Site-VPN-Tunnel zwischen dem Azure-VPN-Gateway und einem lokalen VPN-Gerät. Als Option können Sie das [BGP (Border Gateway Protocol) für den VPN-Tunnel](#bgp) konfigurieren.
 
 ![Diagramm eines einzelnen S2S-VPN-Tunnels](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
@@ -119,7 +111,7 @@ $lng5gw  = Get-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1
 New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False
 ```
 
-### <a name ="policybased"></a>(Optional:) Verwenden einer benutzerdefinierten IPsec/IKE-Richtlinie mit UsePolicyBasedTrafficSelectors
+### <a name="optional-use-custom-ipsecike-policy-with-usepolicybasedtrafficselectors"></a><a name ="policybased"></a>(Optional:) Verwenden einer benutzerdefinierten IPsec/IKE-Richtlinie mit UsePolicyBasedTrafficSelectors
 Wenn Ihre VPN-Geräte keine „Any-to-any-Datenverkehrsselektoren“ unterstützen (wie z.B. routenbasierte oder VTI-basierte Konfiguration), erstellen Sie eine benutzerdefinierte IPsec/IKE-Richtlinie mit der Option [UsePolicyBasedTrafficSelectors](vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
 > [!IMPORTANT]
@@ -141,7 +133,7 @@ $lng5gw  = Get-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1
 New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False -IpsecPolicies $ipsecpolicy5 -UsePolicyBasedTrafficSelectors $True
 ```
 
-### <a name ="bgp"></a>(Optional:) Verwenden von BGB bei S2S-VPN-Verbindungen
+### <a name="optional-use-bgp-on-s2s-vpn-connection"></a><a name ="bgp"></a>(Optional:) Verwenden von BGB bei S2S-VPN-Verbindungen
 Wenn Sie die S2S-VPN-Verbindung erstellen, können Sie optional [BGP für das VPN-Gateway](vpn-gateway-bgp-resource-manager-ps.md) verwenden. Dieser Ansatz weist zwei Unterschiede auf:
 
 * Bei den lokalen Adresspräfixen kann es sich um eine einzelne Hostadresse handeln. Die lokale BGP-Peer-IP-Adresse wird wie folgt angegeben:

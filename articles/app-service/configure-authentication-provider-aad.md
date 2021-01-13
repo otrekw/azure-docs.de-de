@@ -1,128 +1,166 @@
 ---
-title: 'Konfigurieren der Azure Active Directory-Authentifizierung: Azure App Service'
-description: Erfahren Sie, wie Sie die Azure Active Directory-Authentifizierung für Ihre App Services-App konfigurieren.
-author: cephalin
-services: app-service
-documentationcenter: ''
-manager: gwallace
-editor: ''
+title: Konfigurieren von Azure AD-Authentifizierung
+description: Erfahren Sie, wie Sie die Azure Active Directory-Authentifizierung als Identitätsanbieter für Ihre App Services- oder Azure Functions-App konfigurieren.
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
-ms.service: app-service
-ms.workload: web,mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/03/2019
-ms.author: cephalin
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 8de464a00867dd397f28de1dc35cf264244f6905
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.date: 04/14/2020
+ms.custom: seodec18, fasttrack-edit, has-adal-ref
+ms.openlocfilehash: 0c06cb11d916b417cf577b7b8f3578749feddd62
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743256"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092226"
 ---
-# <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Konfigurieren Ihrer App Service-App zur Verwendung der Azure Active Directory-Anmeldung
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App zur Verwendung der Azure AD-Anmeldung
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
+In diesem Artikel wird gezeigt, wie Sie Azure App Service oder Azure Functions so konfigurieren, dass Azure Active Directory (Azure AD) als Authentifizierungsanbieter verwendet wird.
+
 > [!NOTE]
-> Derzeit wird AAD V2 (einschließlich MSAL) für Azure App Service und Azure Functions nicht unterstützt.
->
+> Der Flow mit Expresseinstellungen richtet eine Anwendungsregistrierung mit AAD v1 ein. Wenn Sie [Azure Active Directory v2.0](../active-directory/develop/v2-overview.md) verwenden möchten (einschließlich [MSAL](../active-directory/develop/msal-overview.md)), befolgen Sie die [erweiterten Konfigurationsanweisungen](#advanced).
 
-In diesem Artikel wird gezeigt, wie Sie Azure App Service so konfigurieren, dass Azure Active Directory als Authentifizierungsanbieter verwendet wird.
+Befolgen Sie diese bewährten Methoden, wenn Sie Ihre App und die Authentifizierung einrichten:
 
-Es empfiehlt sich, dass Sie jede App Service-App mit ihrer eigenen Registrierung konfigurieren, sodass die App ihre eigenen Berechtigungen und ihre eigene Einwilligung hat. Sie sollten auch die Verwendung separater App-Registrierungen für separate Bereitstellungsslots in Betracht ziehen. Dadurch wird gemeinsames Verwenden von Berechtigungen zwischen Umgebungen verhindert, sodass ein Problem in neuem Code, den Sie testen, die Produktion nicht beeinträchtigt.
+- Erteilen Sie jeder App Service-App eigene Berechtigungen und Einwilligung.
+- Konfigurieren Sie jede App Service-App mit eigener Registrierung.
+- Vermeiden Sie das Teilen von Berechtigungen zwischen Umgebungen, indem Sie separate App-Registrierungen für gesonderte Bereitstellungsslots verwenden. Wenn Sie neuen Code testen, kann diese Vorgehensweise dabei helfen, Probleme zu verhindern, die sich auf die Produktions-App auswirken können.
 
-## <a name="express"> </a>Konfigurieren mit Expresseinstellungen
+> [!NOTE]
+> Dieses Feature ist derzeit im Linux-Verbrauchsplan für Azure Functions nicht verfügbar.
 
-1. Navigieren Sie im [Azure-Portal] zu Ihrer App Service-App. Wählen Sie im linken Navigationsbereich **Authentifizierung/Autorisierung**.
-2. Wenn **Authentifizierung/Autorisierung** nicht aktiviert ist, wählen Sie **Ein**.
-3. Wählen Sie **Azure Active Directory** und dann unter **Verwaltungsmodus** die Option **Express**.
-4. Klicken Sie auf **OK**, um die App Service-App in Azure Active Directory zu registrieren. Dadurch wird eine neue App-Registrierung erstellt. Wenn Sie stattdessen eine vorhandene App-Registrierung auswählen möchten, klicken Sie auf **Vorhandene App auswählen**, und suchen Sie nach dem Namen einer zuvor erstellten Registrierung des Mandanten. Klicken Sie auf die App-Registrierung, um sie auszuwählen, und klicken Sie auf **OK**. Klicken Sie dann auf der Seite „Azure Active Directory-Einstellungen“ auf **OK**.
-Standardmäßig erfolgt die Authentifizierung über App Service, wobei jedoch der Zugriff auf die Inhalte Ihrer Website und APIs nicht autorisiert wird. Sie müssen die Benutzer in Ihrem App-Code autorisieren.
-5. (Optional) Um den Zugriff auf Ihre App auf Benutzer zu beschränken, die von Azure Active Directory authentifiziert werden, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** auf **Mit Azure Active Directory anmelden** fest. Dies erfordert, dass alle Anforderungen authentifiziert werden müssen. Alle nicht authentifizierten Anforderungen werden zur Authentifizierung an Azure Active Directory umgeleitet.
+## <a name="configure-with-express-settings"></a><a name="express"> </a>Konfigurieren mit Expresseinstellungen
 
-    > [!NOTE]
-    > Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite wünschen, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen. Bei solchen Anwendungen ist möglicherweise die Einstellung **Anonyme Anforderungen zulassen (keine Aktion)** vorzuziehen, wobei die App selbst die Anmeldung manuell startet, wie [hier](overview-authentication-authorization.md#authentication-flow) beschrieben.
-6. Klicken Sie auf **Speichern**.
+> [!NOTE]
+> Die Option **Express** steht für Government Clouds nicht zur Verfügung.
 
-## <a name="advanced"> </a>Konfigurieren mit erweiterten Einstellungen
+1. Suchen Sie im [Azure portal] die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus.
+2. Wählen Sie im linken Navigationsbereich **Authentifizierung/Autorisierung** > **Ein** aus.
+3. Wählen Sie **Azure Active Directory** > **Express** aus.
 
-Sie können Konfigurationseinstellungen auch manuell bereitstellen, wenn sich der Azure Active Directory-Mandant, den Sie verwenden möchten, von dem Mandanten unterscheidet, mit dem Sie sich bei Azure anmelden. Um die Konfiguration abzuschließen, müssen Sie zunächst eine Registrierung in Azure Active Directory erstellen, und App Service dann einige Registrierungsdetails liefern.
+   Wenn Sie stattdessen eine vorhandene App-Registrierung auswählen möchten:
 
-### <a name="register"> </a>Erstellen einer App-Registrierung in Azure AD für Ihre App Service-App
+   1. Wählen Sie **Vorhandene AD-App auswählen** aus, und klicken Sie dann auf **Azure AD-App**.
+   2. Wählen Sie eine vorhandene App-Registrierung aus, und klicken Sie auf **OK**.
 
-Wenn Sie eine App-Registrierung manuell erstellen, sind drei Informationen erforderlich, die Sie später beim Konfigurieren Ihrer App Service-App benötigen: die Client-ID, die Mandanten-ID und optional der geheime Clientschlüssel und der Anwendungs-ID-URI.
+4. Klicken Sie auf **OK**, um die App Service-App in Azure Active Directory zu registrieren. Eine neue App-Registrierung wird erstellt.
 
-1. Navigieren Sie im [Azure-Portal] zu Ihrer App Service-App, und notieren Sie die **URL** Ihrer App. Sie verwenden die URL, um die Registrierung Ihrer Azure Active Directory-App zu konfigurieren.
-1. Wählen Sie im [Azure-Portal] über das linke Menü die Option **Active Directory** > **App-Registrierungen** > **Neue Registrierung** aus. 
+    ![Express-Einstellungen in Azure Active Directory.](./media/configure-authentication-provider-aad/express-settings.png)
+
+5. (Optional:) Standardmäßig erfolgt die Authentifizierung über App Service, wobei jedoch der autorisierte Zugriff auf Ihre Websiteinhalte und APIs nicht eingeschränkt wird. Sie müssen die Benutzer in Ihrem App-Code autorisieren. Um den Zugriff auf Ihre App ausschließlich auf Benutzer zu beschränken, die von Azure Active Directory authentifiziert werden, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** auf **Mit Azure Active Directory anmelden** fest. Wenn Sie diese Funktion festlegen, erfordert Ihre App, dass alle Anforderungen authentifiziert werden. Sie leitet außerdem alle nicht authentifizierten Anforderungen zur Authentifizierung an Azure Active Directory um.
+
+    > [!CAUTION]
+    > Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite haben, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen. Bei solchen Anwendungen ist möglicherweise die Einstellung **Anonyme Anforderungen zulassen (keine Aktion)** vorzuziehen, wobei die App selbst die Anmeldung manuell startet. Weitere Informationen finden Sie unter [Authentifizierungsflow](overview-authentication-authorization.md#authentication-flow).
+6. Wählen Sie **Speichern** aus.
+
+Ein Beispiel für die Konfiguration der Azure AD-Anmeldung für eine Web-App, die auf Azure Storage und Microsoft Graph zugreift, finden Sie in [diesem Tutorial](scenario-secure-app-authentication-app-service.md).
+
+## <a name="configure-with-advanced-settings"></a><a name="advanced"> </a>Konfigurieren mit erweiterten Einstellungen
+
+Sie können App-Einstellungen manuell konfigurieren, wenn Sie eine App-Registrierung von einem anderen Azure AD-Mandanten verwenden möchten. Gehen Sie zum Abschließen dieser benutzerdefinierten Konfiguration wie folgt vor:
+
+1. Erstellen einer Registrierung in Azure AD.
+2. Bereitstellen einige Registrierungsdetails für den App Service.
+
+### <a name="create-an-app-registration-in-azure-ad-for-your-app-service-app"></a><a name="register"> </a>Erstellen einer App-Registrierung in Azure AD für Ihre App Service-App
+
+Sie benötigen die folgenden Informationen, wenn Sie Ihre App Service-App konfigurieren:
+
+- Client-ID
+- Mandanten-ID
+- Geheimer Clientschlüssel (optional)
+- Anwendungs-ID-URI
+
+Führen Sie die folgenden Schritte aus:
+
+1. Melden Sie sich beim [Azure portal] an, suchen Sie die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus. Notieren Sie sich die **URL** Ihrer App. Sie verwenden diese, um die Registrierung Ihrer Azure Active Directory-App zu konfigurieren.
+1. Wählen Sie **Azure Active Directory** > **App-Registrierungen** > **Neue Registrierung** aus.
 1. Geben Sie auf der Seite **Anwendung registrieren** einen **Namen** für Ihre App-Registrierung ein.
-1. Wählen Sie in **Umleitungs-URI** die Option **Web** aus, geben Sie die URL Ihrer App Service-App ein, und fügen Sie den Pfad `/.auth/login/aad/callback` an. Beispiel: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Klicken Sie anschließend auf **Erstellen**.
+1. Wählen Sie unter **Umleitungs-URIs** die Option **Web** aus, und geben Sie `<app-url>/.auth/login/aad/callback` ein. Beispiel: `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
+1. Klicken Sie auf **Erstellen**.
 1. Nachdem die App-Registrierung erstellt wurde, kopieren Sie die **Anwendungs-ID (Client)** und die **Verzeichnis-ID (Mandant)** , damit Sie diese später verwenden können.
-1. Wählen Sie **Branding** aus. Geben Sie in **URL der Startseite** die URL Ihrer App Service-App ein, und wählen Sie **Speichern** aus.
-1. Wählen Sie **Eine API verfügbar machen** > **Festlegen** aus. Fügen Sie die URL Ihrer App Service-App ein, und wählen Sie **Speichern** aus.
+1. Wählen Sie **Authentifizierung** aus. Aktivieren Sie unter **Implizite Genehmigung** die Option **ID-Token**, um OpenID Connect-Benutzeranmeldungen von App Service zuzulassen.
+1. (Optional) Wählen Sie **Branding** aus. Geben Sie in **URL der Startseite** die URL Ihrer App Service-App ein, und wählen Sie **Speichern** aus.
+1. Wählen Sie **Eine API verfügbar machen** > **Festlegen** aus. Fügen Sie für eine Einzelmandanten-App die URL Ihrer App Service-App ein, und wählen Sie **Speichern** aus, und fügen Sie für eine mehrinstanzenfähige App die URL ein, die auf einer von Mandanten verifizierten Domäne basiert, und wählen Sie dann **Speichern** aus.
 
-    > [!NOTE]
-    > Dieser Wert ist der **Anwendungs-ID-URI** der App-Registrierung. Wenn Sie beispielsweise möchten, dass eine Front-End-Web-App auf eine Back-End-API zugreift und die Back-End-API der Front-End-App explizit Zugriff gewährt, benötigen Sie den **Anwendungs-ID-URI** der *Front-End-App*, wenn Sie die App Service-App-Ressource für die *Back-End-API* konfigurieren.
-1. Wählen Sie **Bereich hinzufügen**. Geben Sie in **Bereichsname** den Namen *user_impersonation* ein. Geben Sie in die Textfelder den Namen und die Beschreibung für den Einwilligungsbereich ein, die Benutzern auf der Einwilligungsseite angezeigt werden sollen, etwa *Zugriff auf meine App*. Klicken Sie danach auf **Bereich hinzufügen**.
-1. (Optional) Um einen geheimen Clientschlüssel zu erstellen, wählen Sie **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel** > **Hinzufügen** aus. Kopieren Sie den Wert des geheimen Clientschlüssels, der auf der Seite angezeigt wird. Sobald Sie zu einer anderen Seite navigiert haben, wird er nicht mehr angezeigt.
-1. (Optional) Wenn Sie mehrere **Antwort-URLs** hinzufügen möchten, wählen Sie **Authentifizierung** im Menü aus.
+   > [!NOTE]
+   > Dieser Wert ist der **Anwendungs-ID-URI** der App-Registrierung. Wenn Ihre Web-App Zugriff auf eine API in der Cloud erfordert, benötigen Sie den **Anwendungs-ID-URI** der Web-App, wenn Sie die App Service-Cloudressource konfigurieren. Sie können dies beispielsweise verwenden, wenn der Clouddienst explizit Zugriff auf die Web-App gewähren soll.
 
-### <a name="secrets"> </a>Hinzufügen von Azure Active Directory-Informationen zu Ihrer App Service-App
+1. Wählen Sie **Bereich hinzufügen**.
+   1. Geben Sie in **Bereichsname** den Namen *user_impersonation* ein.
+   1. Geben Sie in die Textfelder den Namen und die Beschreibung für den Einwilligungsbereich ein, die Benutzern auf der Einwilligungsseite angezeigt werden sollen. Geben Sie z. B. *Zugriff auf meine App* ein.
+   1. Wählen Sie **Bereich hinzufügen** aus.
+1. (Optional) Um einen geheimen Clientschlüssel zu erstellen, wählen Sie **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel** > **Hinzufügen** aus. Kopieren Sie den Wert des geheimen Clientschlüssels, der auf der Seite angezeigt wird. Er wird nicht noch einmal angezeigt.
+1. (Optional) Wenn Sie mehrere **Antwort-URLs** hinzufügen möchten, wählen Sie **Authentifizierung** aus.
 
-1. Navigieren Sie im [Azure-Portal] zu Ihrer App Service-App. Wählen Sie im linken Menü die Option **Authentifizierung/Autorisierung** aus. Falls die Funktion „Authentifizierung/Autorisierung“ nicht aktiviert ist, wählen Sie **Ein** aus. 
+### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>Aktivieren von Azure Active Directory in Ihrer App Service-App
+
+1. Suchen Sie im [Azure portal] die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus.
+1. Wählen Sie im linken Bereich unter **Einstellungen** die Optionen **Authentifizierung/Autorisierung** > **Ein** aus.
 1. (Optional) Standardmäßig lässt die App Service Authentifizierung nicht authentifizierten Zugriff auf Ihre App zu. Um Benutzerauthentifizierung zu erzwingen, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** auf **Mit Azure Active Directory anmelden** fest.
-1. Wählen Sie unter „Authentifizierungsanbieter“ die Option **Azure Active Directory** aus.
+1. Wählen Sie unter **Authentifizierungsanbieter** die Option **Azure Active Directory** aus.
 1. Wählen Sie in **Verwaltungsmodus** die Option **Erweitert** aus, und konfigurieren Sie die App Service-Authentifizierung gemäß der folgenden Tabelle:
 
     |Feld|BESCHREIBUNG|
     |-|-|
     |Client-ID| Verwenden Sie die **Anwendungs-ID (Client)** der App-Registrierung. |
-    |Zertifikataussteller-ID| Verwenden Sie `https://login.microsoftonline.com/<tenant-id>`, und ersetzen Sie *\<tenant-id* durch die **Verzeichnis-ID (Mandant)** der App-Registrierung. |
+    |Aussteller-URL| Verwenden Sie `<authentication-endpoint>/<tenant-id>/v2.0`, und ersetzen Sie *\<authentication-endpoint>* durch den [Authentifizierungsendpunkt für Ihre Cloudumgebung](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (z. B. „https://login.microsoftonline.com“ für globales Azure), und ersetzen Sie *\<tenant-id>* durch die **Verzeichnis (Mandanten)-ID**, in der die App-Registrierung erstellt wurde. Dieser Wert wird verwendet, um Benutzer an den richtigen Azure AD-Mandanten umzuleiten sowie um die entsprechenden Metadaten herunterzuladen, um die entsprechenden Tokensignaturschlüssel und den Anspruchswert des Tokenausstellers zu ermitteln. Lassen Sie für Anwendungen, die Azure AD v1 verwenden, und für Azure Functions-Apps die Zeichenfolge `/v2.0` in der URL aus.|
     |Geheimer Clientschlüssel (optional)| Verwenden Sie den geheimen Clientschlüssel, den Sie in der App-Registrierung generiert haben.|
-    |Zulässige Tokenzielgruppen| Wenn dies eine *Back-End*-App ist und Sie Authentifizierungstoken von einer Front-End-App zulassen möchten, fügen Sie hier den **Anwendungs-ID-URI** der *Front-End*-App hinzu. |
+    |Zulässige Tokenzielgruppen| Wenn dies eine Cloud- oder Server-App ist und Sie Authentifizierungstoken von einer Web-App zulassen möchten, fügen Sie hier den **Anwendungs-ID-URI** der Web-App hinzu. Die konfigurierte **Client-ID** wird *immer* implizit als zulässige Zielgruppe angesehen. |
 
-    > [!NOTE]
-    > Die konfigurierte **Client-ID** wird *immer* implizit als zulässige Zielgruppe betrachtet, und zwar unabhängig davon, wie Sie die Option **Zulässige Tokenzielgruppen** konfiguriert haben.
-1. Wählen Sie **OK** aus, und wählen Sie anschließend **Speichern** aus.
+2. Wählen Sie **OK** und anschließend **Speichern** aus.
 
 Sie können nun Azure Active Directory für die Authentifizierung in Ihrer App Service-App verwenden.
 
 ## <a name="configure-a-native-client-application"></a>Konfigurieren einer nativen Clientanwendung
-Sie können native Clients registrieren, wenn Sie Anmeldungen mit einer Clientbibliothek, etwa der **Active Directory-Authentifizierungsbibliothek**, vornehmen möchten.
 
-1. Wählen Sie im [Azure-Portal] über das linke Menü die Option **Active Directory** > **App-Registrierungen** > **Neue Registrierung** aus. 
+Sie können native Clients registrieren, um in Ihrer App gehosteten Web-APIs die Authentifizierung mittel Clientbibliothek zu gestatten, etwa der **Active Directory-Authentifizierungsbibliothek**.
+
+1. Wählen Sie im [Azure portal] nacheinander **Active Directory** > **App-Registrierungen** > **Neue Registrierung** aus.
 1. Geben Sie auf der Seite **Anwendung registrieren** einen **Namen** für Ihre App-Registrierung ein.
-1. Wählen Sie in **Umleitungs-URI** die Option **Öffentlicher Client (Mobilgerät und Desktop)** aus, geben Sie die URL Ihrer App Service-App ein, und fügen Sie den Pfad `/.auth/login/aad/callback` an. Beispiel: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Klicken Sie anschließend auf **Erstellen**.
+1. Wählen Sie unter **Umleitungs-URI** die Option **Öffentlicher Client (Mobilgerät und Desktop)** aus, und geben Sie die URL `<app-url>/.auth/login/aad/callback` ein. Beispiel: `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 
     > [!NOTE]
-    > Für eine Windows-Anwendung verwenden Sie stattdessen die [Paket-SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) als URI.
+    > Für eine Microsoft Store-Anwendung verwenden Sie stattdessen die [Paket-SID](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid) als URI.
+1. Klicken Sie auf **Erstellen**.
 1. Sobald die App-Registrierung erstellt wurde, kopieren Sie den Wert von **Anwendungs-ID (Client)** .
-1. Wählen Sie über das linke Menü die Option **API-Berechtigungen** > **Berechtigung hinzufügen** > **Meine APIs** aus.
-1. Wählen Sie die App-Registrierung aus, die Sie zuvor für Ihre App Service-App erstellt haben. Wenn die App-Registrierung nicht angezeigt wird, überprüfen Sie, ob Sie den **user_impersonation**-Bereich in [Erstellen einer App-Registrierung in Azure AD für Ihre App Service-App](#register) hinzugefügt haben.
-1. Wählen Sie **user_impersonation** aus, und klicken Sie auf **Berechtigungen hinzufügen**.
+1. Wählen Sie über die Option **API-Berechtigungen** > **Berechtigung hinzufügen** > **Meine APIs** aus.
+1. Wählen Sie die App-Registrierung aus, die Sie zuvor für Ihre App Service-App erstellt haben. Wenn die App-Registrierung nicht angezeigt wird, stellen Sie sicher, dass Sie den Bereich **user_impersonation** in [Erstellen einer App-Registrierung in Azure AD für Ihre App Service-App](#register) hinzugefügt haben.
+1. Wählen Sie unter **Delegierte Berechtigungen** den Eintrag **user_impersonation** aus, und wählen Sie dann **Berechtigungen hinzufügen** aus.
 
-Sie haben nun eine native Clientanwendung konfiguriert, die auf Ihre App Service-App zugreifen kann.
+Sie haben nun eine native Clientanwendung konfiguriert, die im Auftrag eines Benutzers auf Ihre App Service-App zugreifen kann.
 
-## <a name="related-content"></a>Verwandte Inhalte
+## <a name="configure-a-daemon-client-application-for-service-to-service-calls"></a>Konfigurieren einer Daemon-Clientanwendung für Aufrufe zwischen Diensten
+
+Ihre Anwendung kann ein Token abrufen, um eine Web-API, die in Ihrer App Service- oder Funktions-App gehostet wird, in deren eigenen Namen (nicht im Namen eines Benutzers) aufzurufen. Dieses Szenario ist nützlich für nicht interaktive Daemon-Anwendungen, die Aufgaben ohne angemeldeten Benutzer ausführen. Es verwendet die Standardzuweisung für [Clientanmeldeinformationen](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md) von OAuth 2.0.
+
+1. Wählen Sie im [Azure portal] nacheinander **Active Directory** > **App-Registrierungen** > **Neue Registrierung** aus.
+1. Geben Sie auf der Seite **Anwendung registrieren** einen **Namen** für Ihre Daemon-App-Registrierung ein.
+1. Für eine Daemon-Anwendung benötigen Sie keinen Umleitungs-URI, sodass Sie diesen Wert leer lassen können.
+1. Klicken Sie auf **Erstellen**.
+1. Sobald die App-Registrierung erstellt wurde, kopieren Sie den Wert von **Anwendungs-ID (Client)** .
+1. Wählen Sie **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel** > **Hinzufügen** aus. Kopieren Sie den Wert des geheimen Clientschlüssels, der auf der Seite angezeigt wird. Er wird nicht noch einmal angezeigt.
+
+Sie können jetzt [ein Zugriffstoken mithilfe der Client-ID und des geheimen Clientschlüssels anfordern](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret), indem Sie den Parameter `resource` auf den **Anwendungs-ID-URI** der Ziel-App festlegen. Das resultierende Zugriffstoken kann dann der Ziel-App mithilfe des standardmäßigen [OAuth 2.0-Autorisierungsheaders](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#use-the-access-token-to-access-the-secured-resource) angezeigt werden, woraufhin die App Service-Authentifizierung/-Autorisierung das Token überprüft und wie üblich verwendet, um jetzt anzuzeigen, dass der Aufrufer (in diesem Fall eine Anwendung, kein Benutzer) authentifiziert ist.
+
+Im Moment ermöglicht dies _jeder_ Clientanwendung in Ihrem Azure AD-Mandanten, ein Zugriffstoken anzufordern und sich bei der Ziel-App zu authentifizieren. Wenn Sie außerdem bei der _Autorisierung_ erzwingen möchten, dass nur bestimmte Clientanwendungen zugelassen werden, müssen Sie einige zusätzliche Konfigurationen vornehmen.
+
+1. [Definieren Sie eine App-Rolle](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) im Manifest der App-Registrierung, die die App Service- oder Funktions-App darstellt, die Sie schützen möchten.
+1. Wählen Sie in der App-Registrierung, die den Client darstellt, der autorisiert werden muss, **API-Berechtigungen** > **Berechtigung hinzufügen** > **Meine APIs** aus.
+1. Wählen Sie die App-Registrierung aus, die Sie zuvor erstellt haben. Wenn die App-Registrierung nicht angezeigt wird, stellen Sie sicher, dass Sie [eine App-Rolle hinzugefügt haben](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md).
+1. Wählen Sie unter **Anwendungsberechtigungen** die zuvor erstellte App-Rolle aus, und wählen Sie dann **Berechtigungen hinzufügen** aus.
+1. Stellen Sie sicher, dass Sie auf **Administratoreinwilligung erteilen**, um die Clientanwendung zum Anfordern der Berechtigung zu autorisieren.
+1. Ähnlich wie im vorherigen Szenario (vor dem Hinzufügen jeglicher Rollen) können Sie jetzt [ein Zugriffstoken anfordern](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret) für dieselbe Ziel-`resource`, woraufhin das Zugriffstoken einen `roles`-Anspruch aufnimmt, der die App-Rollen enthält, die für die Clientanwendung autorisiert wurden.
+1. Im Code der App Service- oder Funktions-Ziel-App können Sie jetzt überprüfen, ob die erwarteten Rollen im Token vorhanden sind (dies wird nicht von der App Service-Authentifizierung/-Autorisierung durchgeführt). Weitere Informationen finden Sie unter [Zugriff auf Benutzeransprüche](app-service-authentication-how-to.md#access-user-claims).
+
+Sie haben nun eine Daemon-Clientanwendung konfiguriert, die unter Verwendung der eigenen Identität auf Ihre App Service-App zugreifen kann.
+
+## <a name="next-steps"></a><a name="related-content"> </a>Nächste Schritte
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-
-<!-- Images. -->
-
-[0]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-webapp-url.png
-[1]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-aad-app_registration.png
-[2]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-aad-app-registration-create.png
-[3]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-aad-app-registration-config-appidurl.png
-[4]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-aad-app-registration-config-replyurl.png
-[5]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-aad-endpoints.png
-[6]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-aad-endpoints-fedmetadataxml.png
-[7]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-webapp-auth.png
-[8]: ./media/configure-authentication-provider-aad/app-service-webapp-auth-config.png
-
-
-
+* [Tutorial: Hinzufügen der Authentifizierung zu Ihrer Web-App in Azure App Service](scenario-secure-app-authentication-app-service.md)
+* [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service](tutorial-auth-aad.md)
 <!-- URLs. -->
 
-[Azure-Portal]: https://portal.azure.com/
-[alternative method]:#advanced
+[Azure portal]: https://portal.azure.com/

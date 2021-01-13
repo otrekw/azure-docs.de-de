@@ -1,23 +1,22 @@
 ---
 title: Integration eines Power BI-Dashboards mit Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie Sie mit einem Power BI-Echtzeitdashboard Daten aus einem Azure Stream Analytics-Auftrag visualisieren.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: c415bdecdaf55f3068dcd804ab34de402fe7a31f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.topic: how-to
+ms.date: 11/16/2020
+ms.openlocfilehash: 4e3f31442c5fa645e27a640d8facf86aed20aa75
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612287"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006694"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics und Power BI: Ein Dashboard zur Echtzeitanalyse von Streamingdaten
 
-Azure Stream Analytics ermöglicht Ihnen die Nutzung von [Microsoft Power BI](https://powerbi.com/), einem der führenden Business Intelligence-Tools. In diesem Artikel erfahren Sie, wie Sie Business Intelligence-Tools erstellen können, indem Sie Power BI als Ausgabe für Ihre Azure Stream Analytics-Aufträge verwenden. Darüber hinaus erfahren Sie, wie Sie ein Echtzeitdashboard erstellen und verwenden.
+Azure Stream Analytics ermöglicht Ihnen die Nutzung von [Microsoft Power BI](https://powerbi.com/), einem der führenden Business Intelligence-Tools. In diesem Artikel erfahren Sie, wie Sie Business Intelligence-Tools erstellen können, indem Sie Power BI als Ausgabe für Ihre Azure Stream Analytics-Aufträge verwenden. Außerdem erfahren Sie, wie Sie ein Echtzeitdashboard erstellen und verwenden, das vom Stream Analytics-Auftrag laufend aktualisiert wird.
 
 Dieser Artikel ist eine Fortsetzung des Stream Analytics-Tutorials [Erste Schritte mit Azure Stream Analytics: Betrugserkennung in Echtzeit](stream-analytics-real-time-fraud-detection.md). Er baut auf dem in diesem Tutorial erstellten Workflow auf, und es wird eine Power BI-Ausgabe hinzugefügt, damit Sie betrügerische Telefonanrufe visualisieren können, die von einem Stream Analytics-Auftrag erkannt werden. 
 
@@ -29,7 +28,7 @@ Sie können sich ein [Video](https://www.youtube.com/watch?v=SGUpT-a99MA) ansehe
 Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 
 * Ein Azure-Konto.
-* Ein Konto für Power BI. Sie können ein Geschäfts-, Schul- oder Unikonto verwenden.
+* Ein Konto für Power BI Pro. Sie können ein Geschäfts-, Schul- oder Unikonto verwenden.
 * Eine abgeschlossene Version des Tutorials [Erste Schritte mit Azure Stream Analytics: Betrugserkennung in Echtzeit](stream-analytics-real-time-fraud-detection.md). Das Tutorial enthält eine App, mit der fiktive Metadaten für Telefonanrufe generiert werden. Im Tutorial erstellen Sie einen Event Hub und senden die Streamingdaten der Telefonanrufe an ihn. Sie schreiben eine Abfrage, mit der betrügerische Anrufe erkannt werden (Anrufe unter derselben Nummer zur gleichen Zeit an unterschiedlichen Orten). 
 
 
@@ -40,7 +39,10 @@ Im Tutorial zur Betrugsermittlung in Echtzeit wird die Ausgabe an Azure Blob Sto
 
 2. Wählen Sie im linken Menü unter **Auftragstopologie** **Ausgaben** aus. Wählen Sie dann **+ Hinzufügen** aus und anschließend **Power BI** aus dem Dropdownmenü.
 
-3. Wählen Sie **+ Hinzufügen** > **Power BI** aus. Geben Sie dann folgende Informationen in das Formular ein, und wählen Sie **Autorisieren** aus:
+3. Wählen Sie **+ Hinzufügen** > **Power BI** aus. Füllen Sie dann das Formular mit den folgenden Details aus, und wählen Sie **Autorisieren** aus, um eine eigene Benutzeridentität für die Verbindungsherstellung mit Power BI zu verwenden. (Das Token ist 90 Tage lang gültig.) 
+
+>[!NOTE]
+>Bei Produktionsaufträgen wird empfohlen, eine Verbindung herzustellen, um [verwaltete Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI zu verwenden](./powerbi-output-managed-identity.md).
 
    |**Einstellung**  |**Empfohlener Wert**  |
    |---------|---------|
@@ -57,16 +59,16 @@ Im Tutorial zur Betrugsermittlung in Echtzeit wird die Ausgabe an Azure Blob Sto
 
 4. Nachdem Sie **Autorisieren** ausgewählt haben, werden Sie in einem Popupfenster aufgefordert, Anmeldeinformationen für die Authentifizierung Ihres Power BI-Kontos anzugeben. Nachdem die Autorisierung erfolgreich abgeschlossen wurde, können Sie die Einstellungen speichern, indem Sie **Speichern** wählen.
 
-8. Klicken Sie auf **Create**.
+8. Klicken Sie auf **Erstellen**.
 
 Das Dataset wird mit den folgenden Einstellungen erstellt:
 
 * **defaultRetentionPolicy: BasicFIFO**: Für die Daten gilt FIFO, mit maximal 200.000 Zeilen.
-* **defaultMode: pushStreaming**: Das Dataset unterstützt sowohl Streamingkacheln als auch herkömmliche berichtsbasierte Visualisierungen (auch „Push“ genannt).
+* **defaultMode: hybrid**: Das Dataset unterstützt sowohl Streamingkacheln (auch „Push“ genannt) als auch herkömmliche berichtsbasierte Visuals. Bei Pushinhalten werden die Daten in diesem Fall laufend vom Stream Analytics-Auftrag aktualisiert, ohne dass eine Aktualisierung von Power BI-Seite geplant werden muss.
 
 Derzeit ist es nicht möglich, Datasets mit anderen Kennzeichen zu erstellen.
 
-Weitere Informationen zu Power BI-Datasets finden Sie in der [Power BI-REST-API](https://msdn.microsoft.com/library/mt203562.aspx)-Referenz.
+Weitere Informationen zu Power BI-Datasets finden Sie in der [Power BI-REST-API](/rest/api/power-bi/)-Referenz.
 
 
 ## <a name="write-the-query"></a>Schreiben der Abfrage
@@ -121,7 +123,7 @@ Dieser Abschnitt ist optional, wird aber empfohlen.
 
 4. Klicken Sie auf **Test**, und überprüfen Sie die Ergebnisse.
 
-## <a name="run-the-job"></a>Ausführen des Auftrags
+## <a name="run-the-job"></a>Ausführung des Auftrags.
 
 1. Stellen Sie sicher, dass die TelcoStreaming-App ausgeführt wird.
 
@@ -185,16 +187,6 @@ Der Stream Analytics-Auftrag beginnt mit der Suche nach betrügerischen Anrufen,
 
      ![Fertiges Power BI-Dashboard mit zwei Kacheln zu betrügerischen Anrufen](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
-
-## <a name="learn-more-about-power-bi"></a>Weitere Informationen zu Power BI
-
-In diesem Tutorial wird veranschaulicht, wie Sie für ein Dataset nur einige Arten von Visualisierungen erstellen. Mithilfe von Power BI können Sie weitere kundenspezifische Business Intelligence Tools für Ihr Unternehmen erstellen. Weitere Ideen finden Sie unter den folgenden Ressourcen:
-
-* Ein weiteres Beispiel für ein Power BI-Dashboard sehen Sie im Video [Erste Schritte mit Power BI](https://youtu.be/L-Z_6P56aas?t=1m58s) .
-* Weitere Informationen zur Konfiguration der Ausgabe von Stream Analytics-Aufträgen für Power BI und zur Verwendung von Power BI-Gruppen finden Sie im Abschnitt [Power BI](stream-analytics-define-outputs.md#power-bi) des Artikels zu [Stream Analytics-Ausgaben](stream-analytics-define-outputs.md). 
-* Allgemeine Informationen zur Verwendung von Power BI finden Sie unter [Dashboards in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
-
-
 ## <a name="learn-about-limitations-and-best-practices"></a>Einschränkungen und bewährte Methoden
 Derzeit können Sie Power BI etwa einmal pro Sekunde aufrufen. Das Streaming visueller Elemente unterstützt Pakete mit bis zu 15 KB. Darüber hinaus tritt beim Streaming visueller Elemente ein Fehler auf (Push funktioniert jedoch weiterhin). Aufgrund dieser Einschränkungen eignet sich Power BI perfekt für Anwendungsfälle, bei denen Azure Stream Analytics eine erhebliche Datenlastverringerung ermöglicht. Wir empfehlen die Verwendung eines rollierenden oder springenden Fensters, um sicherzustellen, dass der Datenpush nicht höher ist als ein Push pro Sekunde und Ihre Abfrage innerhalb der Durchsatzanforderungen liegt.
 
@@ -229,18 +221,16 @@ Mit dieser Konfiguration können Sie die ursprüngliche Abfrage wie folgt änder
 ```
 
 ### <a name="renew-authorization"></a>Erneuern der Autorisierung
-Wenn das Kennwort seit der Erstellung oder letzten Authentifizierung Ihres Auftrags geändert wurde, müssen Sie Ihr Power BI-Konto erneut authentifizieren. Wenn Azure Multi-Factor Authentication auf Ihrem Azure Active Directory (Azure AD)-Mandanten konfiguriert ist, müssen Sie die Power BI-Autorisierung ebenfalls alle zwei Wochen erneuern. Wenn Sie sie nicht erneuern, erhalten Sie unter Umständen keine Auftragsausgabe, oder in den Vorgangsprotokollen tritt ein `Authenticate user error` (Benutzerauthentifizierungsfehler) auf.
+Wenn das Kennwort seit der Erstellung oder letzten Authentifizierung Ihres Auftrags geändert wurde, müssen Sie Ihr Power BI-Konto erneut authentifizieren. Wenn Azure AD Multi-Factor Authentication auf Ihrem Azure Active Directory-Mandanten (Azure AD) konfiguriert ist, müssen Sie die Power BI-Autorisierung ebenfalls alle zwei Wochen erneuern. Wenn Sie sie nicht erneuern, erhalten Sie unter Umständen keine Auftragsausgabe, oder in den Vorgangsprotokollen tritt ein `Authenticate user error` (Benutzerauthentifizierungsfehler) auf.
 
 Wenn ein Auftrag gestartet wird, nachdem das Token abgelaufen ist, wird eine Fehlermeldung angezeigt, und die Ausführung des Auftrags ist nicht erfolgreich. Um dieses Problem zu beheben, halten Sie den laufenden Auftrag an, und wechseln Sie zur Power BI-Ausgabe. Klicken Sie auf den Link **Autorisierung erneuern**, und starten Sie den Auftrag ab der **Letzten Beendigungszeit** neu, um Datenverlust zu vermeiden.
 
 Nachdem die Autorisierung mit Power BI aktualisiert wurde, wird im Autorisierungsbereich eine grüne Benachrichtigung angezeigt, die darauf hinweist, dass das Problem gelöst ist.
 
-## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
-
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referenz zur Stream Analytics-Abfragesprache)
-* [Azure Stream Analytics Management REST API reference](https://msdn.microsoft.com/library/azure/dn835031.aspx) (Referenz zur Azure Stream Analytics-Verwaltungs-REST-API)
+* [Stream Analytics-Ausgaben](stream-analytics-define-outputs.md)
+* [Stream Analytics Query Language Reference](/stream-analytics-query/stream-analytics-query-language-reference) (Referenz zur Stream Analytics-Abfragesprache)
+* [Azure Stream Analytics Management REST API reference](/rest/api/streamanalytics/) (Referenz zur Azure Stream Analytics-Verwaltungs-REST-API)
+* [Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI](./powerbi-output-managed-identity.md)

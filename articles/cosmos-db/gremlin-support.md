@@ -1,23 +1,25 @@
 ---
-title: Unterstützung für Gremlin in Azure Cosmos DB
-description: Informieren Sie sich über die Sprache Gremlin von Apache TinkerPop. Erfahren Sie, welche Features und Schritte in Azure Cosmos DB verfügbar sind.
-author: LuisBosquez
+title: Unterstützung und Kompatibilität von Gremlin in Azure Cosmos DB mit TinkerPop-Features
+description: Informieren Sie sich über die Sprache Gremlin von Apache TinkerPop. Erfahren Sie, welche Features und Schritte in Azure Cosmos DB verfügbar sind und welche Kompatibilitätsunterschiede zur TinkerPop-Graph-Engine bestehen.
+author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 06/24/2019
-ms.author: lbosq
-ms.openlocfilehash: 159233da989a5bbec75dbd0a6cfe230b8a512979
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.date: 11/11/2020
+ms.author: sngun
+ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261293"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630750"
 ---
-# <a name="azure-cosmos-db-gremlin-graph-support"></a>Unterstützung für Gremlin-Diagramme in Azure Cosmos DB
-Azure Cosmos DB unterstützt die [Apache Tinkerpop](https://tinkerpop.apache.org)-Graphdurchlauf-Sprache, auch als [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) bezeichnet. Mithilfe der Gremlin-Sprache können Sie Diagrammentitäten (Vertices und Edges) erstellen, Eigenschaften innerhalb dieser Entitäten ändern, Abfragen und Traversierungen ausführen und Entitäten löschen. 
+# <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Unterstützung und Kompatibilität von Gremlin-Diagrammen in Azure Cosmos DB mit TinkerPop-Features
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
-Dieser Artikel enthält eine kurze exemplarische Vorgehensweise zu Gremlin und listet die Funktionen von Gremlin auf, die von der Gremlin-API unterstützt werden.
+Azure Cosmos DB unterstützt die [Apache Tinkerpop](https://tinkerpop.apache.org)-Graphdurchlauf-Sprache, auch als [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) bezeichnet. Mithilfe der Gremlin-Sprache können Sie Diagrammentitäten (Vertices und Edges) erstellen, Eigenschaften innerhalb dieser Entitäten ändern, Abfragen und Traversierungen ausführen und Entitäten löschen.
+
+Die Azure Cosmos DB Graph-Engine hält sich eng an die [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)-Spezifikation für die Durchlaufschritte, es gibt jedoch Azure Cosmos DB-spezifische Unterschiede bei der Implementierung. Dieser Artikel enthält eine kurze exemplarische Vorgehensweise zu Gremlin und listet die Funktionen von Gremlin auf, die von der Gremlin-API unterstützt werden.
 
 ## <a name="compatible-client-libraries"></a>Kompatible Clientbibliotheken
 
@@ -25,14 +27,16 @@ In der folgenden Tabelle werden gängige Gremlin-Treiber aufgeführt, die Sie f�
 
 | Download | `Source` | Erste Schritte | Unterstützte Connector-Version |
 | --- | --- | --- | --- |
-| [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET auf GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Erstellen von Graph mithilfe von .NET](create-graph-dotnet.md) | 3.4.0-RC2 |
+| [.NET](https://tinkerpop.apache.org/docs/3.4.6/reference/#gremlin-DotNet) | [Gremlin.NET auf GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Erstellen von Graph mithilfe von .NET](create-graph-dotnet.md) | 3.4.6 |
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Erstellen von Graph mithilfe von Java](create-graph-java.md) | 3.2.0 und höher |
-| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript auf GitHub](https://github.com/jbmusso/gremlin-javascript) | [Erstellen von Graph mithilfe von Node.js](create-graph-nodejs.md) | 3.3.4+ |
+| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript auf GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Erstellen von Graph mithilfe von Node.js](create-graph-nodejs.md) | 3.3.4+ |
 | [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python auf GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Erstellen von Graph mithilfe von Python](create-graph-python.md) | 3.2.7 |
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP auf GitHub](https://github.com/PommeVerte/gremlin-php) | [Erstellen von Graph mithilfe von PHP](create-graph-php.md) | 3.1.0 |
+| [Go Lang](https://github.com/supplyon/gremcos/) | [Go Lang](https://github.com/supplyon/gremcos/) | | Diese Bibliothek wird von externen Mitwirkenden erstellt. Das Azure Cosmos DB-Team bietet keine Unterstützung für die Bibliothek, und die Bibliothek wird nicht vom Azure Cosmos DB-Team gewartet. |
 | [Gremlin-Konsole](https://tinkerpop.apache.org/downloads.html) | [TinkerPop-Dokumente](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Erstellen von Graph mithilfe der Gremlin-Konsole](create-graph-gremlin-console.md) | 3.2.0 und höher |
 
 ## <a name="supported-graph-objects"></a>Unterstützte Graph-Objekte
+
 TinkerPop ist ein Standard, der eine große Bandbreite an Diagrammtechnologien abdeckt. Daher weist diese Standardterminologie auf, die beschreiben, welche Funktionen von einem Diagrammanbieter bereitgestellt werden. Azure Cosmos DB stellt eine beständige und beschreibbare Diagrammdatenbank mit hoher Parallelität dar, die über mehrere Server oder Cluster hinweg partitioniert werden kann. 
 
 Die folgende Tabelle enthält die TinkerPop-Funktionen, die von Azure Cosmos DB implementiert werden: 
@@ -46,11 +50,9 @@ Die folgende Tabelle enthält die TinkerPop-Funktionen, die von Azure Cosmos DB 
 | Edgefunktionen | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Unterstützen die Erstellung, Änderung und Löschung von Edges |
 | Edge-Eigenschafts-Funktionen | Properties, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Unterstützen die Erstellung, Änderung und Löschung von Edge-Eigenschaften |
 
-## <a name="gremlin-wire-format-graphson"></a>Gremlin-Sendeformat: GraphSON
+## <a name="gremlin-wire-format"></a>Gremlin-Sendeformat
 
-Azure Cosmos DB verwendet bei der Rückgabe von Ergebnissen aus Gremlin-Vorgängen das [GraphSON-Format](http://tinkerpop.apache.org/docs/current/reference/#graphson). Azure Cosmos DB unterstützt derzeit die Version „GraphSONv2“. GraphSON ist das Standardformat von Gremlin zur Darstellung von Vertices, Edges und (ein- und mehrwertigen) Eigenschaften mittels JSON.
-
-Der folgende Ausschnitt zeigt z.B. eine GraphSON-Darstellung eines Vertex in Azure Cosmos DB, der *an den Client zurückgegeben wurde*. 
+Azure Cosmos DB verwendet bei der Rückgabe von Ergebnissen aus Gremlin-Vorgängen das JSON-Format. Von Azure Cosmos DB wird aktuell das JSON-Format unterstützt. Der folgende Ausschnitt zeigt beispielsweise eine JSON-Darstellung eines Vertex, der von Azure Cosmos DB *an den Client zurückgegeben* wurde:
 
 ```json
   {
@@ -89,9 +91,9 @@ Der folgende Ausschnitt zeigt z.B. eine GraphSON-Darstellung eines Vertex in Azu
   }
 ```
 
-Die von GraphSON für Vertices verwendeten Eigenschaften sind nachfolgend beschrieben:
+Im Anschluss werden die Eigenschaften beschrieben, die im JSON-Format für Vertices verwendet werden:
 
-| Eigenschaft | BESCHREIBUNG | 
+| Eigenschaft | Beschreibung | 
 | --- | --- | --- |
 | `id` | Die ID für den Vertex. Muss eindeutig sein (in Kombination mit dem Wert von `_partition`, falls zutreffend). Wird kein Wert angegeben, wird automatisch eine GUID bereitgestellt. | 
 | `label` | Die Bezeichnung des Vertex. Diese Eigenschaft dient zur Beschreibung des Entitätstyps. |
@@ -102,7 +104,7 @@ Die von GraphSON für Vertices verwendeten Eigenschaften sind nachfolgend beschr
 
 Zudem enthalten Edges folgende Informationen, die die Navigation in anderen Teilen des Diagramms unterstützen können.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | `id` | Die ID für den Edge. Muss eindeutig sein (in Kombination mit dem Wert von `_partition`, falls zutreffend). |
 | `label` | Die Bezeichnung des Edge. Diese Eigenschaft ist optional, und dient zur Beschreibung des Beziehungstyps. |
@@ -111,14 +113,15 @@ Zudem enthalten Edges folgende Informationen, die die Navigation in anderen Teil
 
 Jede Eigenschaft kann mehrere Werte in einem Array speichern. 
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
-| `value` | Der Wert der Eigenschaft.
+| `value` | Wert der Eigenschaft
 
 ## <a name="gremlin-steps"></a>Gremlin-Schritte
+
 Sehen wir uns nun die Gremlin-Schritte an, die von Azure Cosmos DB unterstützt werden. Eine vollständige Referenz zu Gremlin finden Sie in der [TinkerPop-Referenz](https://tinkerpop.apache.org/docs/3.3.2/reference).
 
-| Schritt | BESCHREIBUNG | Dokumentation zu TinkerPop 3.2 |
+| Schritt | Beschreibung | Dokumentation zu TinkerPop 3.2 |
 | --- | --- | --- |
 | `addE` | Fügt einen Edge zwischen zwei Vertices hinzu | [addE-Schritt](https://tinkerpop.apache.org/docs/3.3.2/reference/#addedge-step) |
 | `addV` | Fügt einen Vertex zum Diagramm hinzu | [addV-Schritt](https://tinkerpop.apache.org/docs/3.3.2/reference/#addvertex-step) |
@@ -164,6 +167,61 @@ Sehen wir uns nun die Gremlin-Schritte an, die von Azure Cosmos DB unterstützt 
 
 Die von Azure Cosmos DB bereitgestellte, für Schreibvorgänge optimierte Engine unterstützt standardmäßig die automatische Indizierung aller Eigenschaften in Vertices und Edges. Daher werden Abfragen mit Filtern, Bereichsabfragen, Sortierungen oder Aggregate von Eigenschaften über den Index verarbeitet und effizient übermittelt. Weitere Informationen zur Indizierung in Azure Cosmos DB finden Sie in unserem Dokument unter [Schemagnostische Indizierung](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
+## <a name="behavior-differences"></a>Unterschiede im Verhalten
+
+* Die Azure Cosmos DB Graph-Engine führt einen Durchlauf mit ***breitenorientiertem Lastenausgleich** _ aus, während TinkerPop Gremlin einen Ansatz vom Typ „Tiefenorientierter Lastenausgleich“ verfolgt. Dieses Verhalten erzielt eine bessere Leistung in einem horizontal skalierbaren System wie Cosmos DB.
+
+## <a name="unsupported-features"></a>Nicht unterstützte Funktionen
+
+_ * **[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)** _ ist eine von der Programmiersprache unabhängige Spezifikation für Diagrammdurchläufe. Cosmos DB Graph unterstützt dies noch nicht. Verwenden Sie `GremlinClient.SubmitAsync()`, und übergeben Sie den Durchlauf als eine Textzeichenfolge.
+
+_ * **`property(set, 'xyz', 1)`** _: Das Festlegen der Kardinalität wird noch nicht unterstützt. Verwenden Sie stattdessen `property(list, 'xyz', 1)`. Weitere Informationen finden Sie unter [Vertex-Eigenschaften mit TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
+
+_ Der ***Schritt `match()`** _ ist derzeit nicht verfügbar. Dieser Schritt bietet deklarative Abfragefunktionen.
+
+_ ***Objekte als Eigenschaften** _ werden für Vertices und Edges nicht unterstützt. Eigenschaften können nur primitive Typen oder Arrays sein.
+
+_ ***Sortieren nach Arrayeigenschaften** _ (`order().by(<array property>)`) wird nicht unterstützt. Die Sortierung wird nur von primitiven Typen unterstützt.
+
+_ ***Nicht primitive JSON-Typen** _ werden nicht unterstützt. Verwenden Sie die Typen `string`, `number` oder `true`/`false`. `null`-Werte werden nicht unterstützt. 
+
+_ Das ***GraphSONv3** _-Serialisierungsmodul wird derzeit nicht unterstützt. Verwenden Sie das `GraphSONv2`-Serialisierungsmodul sowie Reader- und Writerklassen in der Verbindungskonfiguration. Das Format der von der Azure Cosmos DB Gremlin-API zurückgegebenen Ergebnisse ist nicht identisch mit dem GraphSON-Format. 
+
+_ **Lambdaausdrücke und -funktionen** werden derzeit nicht unterstützt. Dies umfasst die Funktionen `.map{<expression>}`, `.by{<expression>}` und `.filter{<expression>}`. Weitere Informationen und wie Sie sie mithilfe der Gremlin-Schritte neu schreiben können, finden Sie unter [A Note on Lambdas](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas) (Hinweis zu Lambdas).
+
+* ***Transaktionen** _ werden aufgrund der verteilten Natur des Systems nicht unterstützt.  Konfigurieren Sie ein geeignetes Konsistenzmodell für das Gremlin-Konto, um „Ihre eigenen Schreibvorgänge zu lesen“, und verwenden Sie optimistische Nebenläufigkeit, um Schreibvorgänge aufzulösen, zu einen Konflikt verursachen.
+
+## <a name="known-limitations"></a>Bekannte Einschränkungen
+
+_ **Indexverwendung für Gremlin-Abfragen mit Schritten vom Typ `.V()` während des Durchlaufs:** Aktuell wird nur beim ersten `.V()`-Aufruf eines Durchlaufs der Index genutzt, um alle angefügten Filter oder Prädikate aufzulösen. Bei späteren Aufrufen wird der Index nicht herangezogen, wodurch sich die Wartezeit und die Kosten der Abfrage erhöhen können.
+    
+Bei Verwendung der Standardindizierung werden von einer typischen Gremlin-Leseabfrage, die mit dem Schritt `.V()` beginnt, Parameter wie `.has()` oder `.where()` in den angefügten Filterschritten verwendet, um die Kosten und die Leistung der Abfrage zu optimieren. Beispiel:
+
+```java
+g.V().has('category', 'A')
+```
+
+Enthält die Gremlin-Abfrage allerdings mehrere Schritte vom Typ `.V()`, ist die Auflösung der Daten für die Abfrage möglicherweise nicht optimal. Ein Beispiel hierfür wäre etwa die folgende Abfrage:
+
+```java
+g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
+```
+
+Diese Abfrage gibt auf der Grundlage der Eigenschaft `category` zwei Gruppen von Vertices zurück. In diesem Fall wird nur beim ersten Aufruf (`g.V().has('category', 'A')`) der Index genutzt, um die Vertices auf der Grundlage der Werte ihrer Eigenschaften aufzulösen.
+
+Zur Umgehung dieses Problems können bei dieser Abfrage untergeordnete Durchlaufschritte wie `.map()` und `union()` verwendet werden. Beispiel:
+
+```java
+// Query workaround using .map()
+g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
+
+// Query workaround using .union()
+g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
+```
+
+Die Leistung der Abfragen kann mithilfe des [Gremlin`executionProfile()`-Schritts ](graph-execution-profile.md) überprüft werden.
+
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Erste Schritte zum Erstellen einer Diagrammanwendung [mithilfe unserer SDKs](create-graph-dotnet.md) 
 * Informieren Sie sich ausführlicher über die [Diagrammunterstützung](graph-introduction.md) in Azure Cosmos DB.

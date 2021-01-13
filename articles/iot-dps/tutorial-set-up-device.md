@@ -1,24 +1,24 @@
 ---
-title: Einrichten eines Geräts für den Azure IoT Hub Device Provisioning-Dienst
-description: Einrichten eines bereitzustellenden Geräts über den IoT Hub Device Provisioning-Dienst während des Geräteherstellungsprozesses
+title: 'Tutorial: Einrichten eines Geräts für Azure IoT Hub Device Provisioning Service'
+description: In diesem Tutorial erfahren Sie, wie Sie während des Geräteherstellungsprozesses ein bereitzustellendes Gerät über IoT Hub Device Provisioning Service (DPS) einrichten.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d5a4f6c7d7d19ced4f2cd9ff21b00e58703f795e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: dd82b8ac3a510d1b16b0d2f42d3e50803162a119
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65911683"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959797"
 ---
-# <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Einrichten eines bereitzustellenden Geräts mithilfe des Azure IoT Hub Device Provisioning-Diensts
+# <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Tutorial: Einrichten eines bereitzustellenden Geräts mithilfe des Azure IoT Hub Device Provisioning-Diensts
 
-Im vorherigen Tutorial haben Sie erfahren, wie Sie den Azure IoT Hub Device Provisioning-Dienst einrichten, um Ihre Geräte automatisch für IoT Hub bereitzustellen. In diesem Tutorial wird gezeigt, wie Sie Ihr Gerät während des Herstellungsprozesses einrichten und dadurch die automatische Bereitstellung mit IoT Hub ermöglichen. Ihr Gerät wird beim ersten Starten und Herstellen einer Verbindung mit dem Bereitstellungsdienst basierend auf seinem [Nachweismechanismus](concepts-device.md#attestation-mechanism) bereitgestellt. Dieses Tutorial enthält die folgenden Aufgaben:
+Im vorherigen Tutorial haben Sie erfahren, wie Sie den Azure IoT Hub Device Provisioning-Dienst einrichten, um Ihre Geräte automatisch für IoT Hub bereitzustellen. In diesem Tutorial wird gezeigt, wie Sie Ihr Gerät während des Herstellungsprozesses einrichten und dadurch die automatische Bereitstellung mit IoT Hub ermöglichen. Ihr Gerät wird beim ersten Starten und Herstellen einer Verbindung mit dem Bereitstellungsdienst basierend auf seinem [Nachweismechanismus](concepts-service.md#attestation-mechanism) bereitgestellt. Dieses Tutorial enthält die folgenden Aufgaben:
 
 > [!div class="checklist"]
 > * Erstellen eines plattformspezifischen Client-SDK für den Device Provisioning-Dienst
@@ -29,17 +29,18 @@ In diesem Tutorial wird vorausgesetzt, dass Sie bereits Ihre Instanz des Device 
 
 In diesem Tutorial wird das [Repository „Azure IoT SDKs and libraries for C“](https://github.com/Azure/azure-iot-sdk-c) (Azure IoT SDKs und -Bibliotheken für C) verwendet. Dieses Repository enthält das Client-SDK für den Device Provisioning-Dienst für C. Das SDK bietet derzeit TPM- und X.509-Unterstützung für Geräte in Windows- oder Ubuntu-Implementierungen. Dieses Tutorial basiert auf der Nutzung eines Windows-Bereitstellungsclients und setzt allgemeine Kenntnisse zu Visual Studio voraus. 
 
-Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](concepts-auto-provisioning.md), bevor Sie fortfahren. 
+Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Übersicht zur [Bereitstellung](about-iot-dps.md#provisioning-process), bevor Sie den Vorgang fortsetzen. 
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 oder höher mit aktivierter Workload [Desktopentwicklung mit C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
+Die folgenden Voraussetzungen gelten für eine Windows-Entwicklungsumgebung. Informationen zu Linux oder macOS finden Sie in der SDK-Dokumentation im entsprechenden Abschnitt unter [Vorbereiten Ihrer Entwicklungsumgebung](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md).
+
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 mit der aktivierten Workload [„Desktopentwicklung mit C++“](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development). Visual Studio 2015 und Visual Studio 2017 werden ebenfalls unterstützt.
+
 * Die neueste Version von [Git](https://git-scm.com/download/) ist installiert.
-
-
 
 ## <a name="build-a-platform-specific-version-of-the-sdk"></a>Erstellen einer plattformspezifischen Version des SDK
 
@@ -49,23 +50,26 @@ Das Client-SDK für den Device Provisioning-Dienst unterstützt Sie beim Impleme
 
     Wichtig: Die Voraussetzungen für Visual Studio (Visual Studio und die Workload „Desktopentwicklung mit C++“) müssen **vor** Beginn der Installation von `CMake` auf dem Computer installiert sein. Sobald die Voraussetzungen erfüllt sind und der Download überprüft wurde, installieren Sie das CMake-Buildsystem.
 
-1. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie den folgenden Befehl zum Klonen des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus:
-    
+2. Suchen Sie den Tagnamen für das [aktuelle Release](https://github.com/Azure/azure-iot-sdk-c/releases/latest) des SDK.
+
+3. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie die folgenden Befehle zum Klonen des aktuellen Releases des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus. Verwenden Sie das im vorherigen Schritt gefundene Tag als Wert für den Parameter `-b`:
+
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
+
     Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
 
-
-1. Erstellen Sie ein `cmake`-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. 
+4. Erstellen Sie ein `cmake`-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. Führen Sie die folgenden Befehle im Verzeichnis `azure-iot-sdk-c` aus:
 
     ```cmd/sh
-    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
 
-1. Erstellen Sie das SDK für Ihre Entwicklungsplattform basierend auf den Nachweismechanismen, die Sie verwenden möchten. Verwenden Sie einen der folgenden Befehle (achten Sie jeweils auf die beiden nachgestellten Punkte). CMake erstellt anschließend das Unterverzeichnis `/cmake` mit für Ihr Gerät spezifischem Inhalt:
+5. Erstellen Sie das SDK für Ihre Entwicklungsplattform basierend auf den Nachweismechanismen, die Sie verwenden möchten. Verwenden Sie einen der folgenden Befehle (achten Sie jeweils auf die beiden nachgestellten Punkte). CMake erstellt anschließend das Unterverzeichnis `/cmake` mit für Ihr Gerät spezifischem Inhalt:
  
     - Bei Geräten, die den TPM-Simulator für den Nachweis verwenden:
 
@@ -96,8 +100,9 @@ Je nachdem, ob Sie das SDK für die Verwendung eines Nachweismechanismus für ei
 
 - Für ein X.509-Gerät müssen Sie die Zertifikate abrufen, die für Ihre Geräte ausgestellt wurden. Der Bereitstellungsdienst macht zwei Arten von Registrierungseinträgen verfügbar, mit denen der Zugriff auf Geräte gesteuert wird, indem der X.509-Nachweismechanismus verwendet wird. Die benötigten Zertifikate richten sich nach den Registrierungstypen, die Sie verwenden.
 
-    1. Individuelle Registrierungen: Registrierung für ein bestimmtes einzelnes Gerät. Für diese Art von Registrierungseinträgen sind [Zertifikate für die endgültige Entität](concepts-security.md#end-entity-leaf-certificate) erforderlich.
-    1. Registrierungsgruppen: Für diese Art von Registrierungseinträgen sind Zwischen- oder Stammzertifikate erforderlich. Weitere Informationen finden Sie unter [Steuern des Gerätezugriffs auf den Bereitstellungsdienst mit X.509-Zertifikaten](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+    - Individuelle Registrierungen: Registrierung für ein bestimmtes einzelnes Gerät. Für diese Art von Registrierungseinträgen sind [Zertifikate für die endgültige Entität](concepts-x509-attestation.md#end-entity-leaf-certificate) erforderlich.
+    
+    - Registrierungsgruppen: Für diese Art von Registrierungseinträgen sind Zwischen- oder Stammzertifikate erforderlich. Weitere Informationen finden Sie unter [Steuern des Gerätezugriffs auf den Bereitstellungsdienst mit X.509-Zertifikaten](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
 ### <a name="simulated-devices"></a>Simulierte Geräte
 
@@ -212,4 +217,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie das Gerät auf I
 
 > [!div class="nextstepaction"]
 > [Bereitstellen des Geräts auf IoT Hub](tutorial-provision-device-to-hub.md)
-

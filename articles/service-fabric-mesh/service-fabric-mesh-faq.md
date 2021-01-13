@@ -1,20 +1,15 @@
 ---
-title: Allgemeine Fragen zu Azure Service Fabric Mesh | Microsoft-Dokumentation
+title: Allgemeine Fragen zu Azure Service Fabric Mesh
 description: Informationen zu häufig gestellten Fragen und Antworten zu Azure Service Fabric-Mesh.
-services: service-fabric-mesh
-keywords: ''
-author: chackdan
-ms.author: chackdan
+ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.service: service-fabric-mesh
-manager: jeanpaul.connock
-ms.openlocfilehash: 950f9ac89b9d3224db29b32fe2d1e403ccc98116
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143289"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86260118"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Häufig gestellte Fragen zu Service Fabric Mesh
 
@@ -51,8 +46,11 @@ Wenn dies geschieht, können Sie bestätigen, dass das System sie heruntergefahr
 
 Beispiel: 
 
-```cli
-~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
+```azurecli
+az mesh app show --resource-group myResourceGroup --name helloWorldApp
+```
+
+```output
 {
   "debugParams": null,
   "description": "Service Fabric Mesh HelloWorld Application!",
@@ -86,7 +84,6 @@ Wenn Sie zur Entwicklung einen Computer verwenden, auf dem das Windows Fall Crea
 Wenn Sie zur Entwicklung einen Computer verwenden, auf dem das Windows 10-Update vom April 2018 (Version 1803) installiert ist, können Sie entweder Docker-Images für Windows-Version 1709 oder 1803 verwenden.
 
 Die folgenden Images von Containerbetriebssystemen können beim Bereitstellen von Diensten verwendet werden:
-
 - Windows: windowsservercore und nanoserver
     - Windows Server 1709
     - Windows Server 1803
@@ -124,7 +121,7 @@ Verwenden Sie in Ihrem lokalen Entwicklungscluster `{serviceName}.{applicationNa
 
 Azure Mesh unterstützt zurzeit keine anwendungsübergreifende DNS-Auflösung.
 
-Informationen zu anderen bekannten DNS-Problemen bei der Ausführung eines Service Fabric-Entwicklungsclusters unter Windows 10 finden Sie hier: [Debuggen von Windows-Containern](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) und [Bekannte DNS-Probleme](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
+Informationen zu anderen bekannten DNS-Problemen bei der Ausführung eines Service Fabric-Entwicklungsclusters unter Windows 10 finden Sie hier: [Debuggen von Windows-Containern](../service-fabric/service-fabric-how-to-debug-windows-containers.md) und [Bekannte DNS-Probleme](../service-fabric/service-fabric-dnsservice.md#known-issues).
 
 ### <a name="networking"></a>Netzwerk
 
@@ -166,7 +163,7 @@ Verwenden Sie in Ihrem Anwendungsmodell die vollständige Ressourcen-ID für Net
 ]
 ```
 
-### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>Wenn ich horizontal hochskalieren, sind alle meine Container betroffen, einschließlich derjenigen, die aktuell ausgeführt werden
+### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>Wenn ich aufskaliere, sind alle meine Container betroffen, einschließlich derjenigen, die aktuell ausgeführt werden
 
 Dies ist ein Fehler, und eine Lösung wird zurzeit implementiert.
 

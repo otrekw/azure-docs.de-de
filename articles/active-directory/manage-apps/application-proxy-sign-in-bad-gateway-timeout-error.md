@@ -1,27 +1,27 @@
 ---
-title: Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der App-Proxy-App | Microsoft-Dokumentation
+title: Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der App-Proxy-App
 description: Informationen zum Beheben häufiger Probleme mit Azure AD-Anwendungsproxyanwendungen.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e54b54f592082ad998e1f5dfbdcb5ed30e6dc4a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0339e9f7688555b4d99c2d3255461b5675f642ff
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381403"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649550"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der Anwendungsproxyanwendung
 
@@ -50,7 +50,7 @@ Ein Gatewaytimeout tritt auf, wenn der Dienst versucht, den Connector zu erreich
 Der Fehler „Ungültiges Gateway“ gibt an, dass der Connector die Back-End-Anwendung nicht erreichen kann. Stellen Sie sicher, dass Sie die richtige Anwendung veröffentlicht haben. Häufige Ursachen dieses Fehlers sind Folgende:
 
 - Ein Tippfehler oder ein Fehler in der internen URL
-- Ein nicht veröffentlichtes Stammverzeichnis der Anwendung. Beispiel: <http://expenses/reimbursement> wird veröffentlicht, jedoch wird versucht, auf <http://expenses> zuzugreifen.
+- Ein nicht veröffentlichtes Stammverzeichnis der Anwendung. Beispiel: `http://expenses/reimbursement` wird veröffentlicht, jedoch wird versucht, auf `http://expenses` zuzugreifen.
 - Probleme mit der Konfiguration der eingeschränkten Kerberos-Delegierung (KCD)
 - Probleme mit der Back-End-Anwendung
 
@@ -71,7 +71,7 @@ Als ersten schnellen Schritt können Sie die interne URL überprüfen und korrig
 So überprüfen Sie, ob die Anwendung einer funktionierenden Connectorgruppe zugewiesen wurde
 
 1. Öffnen Sie die Anwendung im Verwaltungsportal, indem Sie zu **Azure Active Directory** navigieren und dann auf **Unternehmensanwendungen** und **Alle Anwendungen** klicken. Öffnen Sie die Anwendung, und wählen Sie dann im linken Menü **Anwendungsproxy** aus.
-1. Sehen Sie sich das Feld „Connectorgruppe“ an. Wenn keine aktiven Connectors in der Gruppe vorhanden sind, wird eine Warnung angezeigt. Wenn keine Warnungen angezeigt werden, setzen Sie den Vorgang fort und überprüfen, ob alle erforderlichen Ports zulässig sind.
+1. Sehen Sie sich das Feld „Connectorgruppe“ an. Wenn keine aktiven Connectors in der Gruppe vorhanden sind, wird eine Warnung angezeigt. Wenn keine Warnungen angezeigt werden, setzen Sie den Vorgang fort und überprüfen, ob alle [erforderlichen Ports](application-proxy-add-on-premises-application.md) zulässig sind.
 1. Wird die falsche Connectorgruppe angezeigt, wählen Sie die richtige Gruppe über die Dropdownliste aus, und bestätigen Sie, dass keine Warnungen mehr angezeigt werden. Wird die gewünschte Connectorgruppe angezeigt, klicken Sie auf die Warnung und öffnen die Seite zur Connectorverwaltung.
 1. Hier stehen Ihnen mehrere Möglichkeiten zur weiteren Problembehebung zur Verfügung:
 
@@ -83,11 +83,11 @@ Testen Sie nach dem Ausführen der Schritte die Anwendung erneut, um sicherzuste
 
 ## <a name="check-all-required-ports-are-open"></a>Überprüfen, ob alle erforderlichen Ports geöffnet sind
 
-Informationen zur Überprüfung, ob alle erforderlichen Ports geöffnet sind, finden Sie in der Dokumentation zum Öffnen von Ports. Wenn alle erforderlichen Ports geöffnet sind, fahren Sie mit dem nächsten Abschnitt fort.
+Überprüfen, ob alle erforderlichen Ports geöffnet sind Erforderliche Ports finden Sie im Abschnitt „Öffnen von Ports“ in [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md). Wenn alle erforderlichen Ports geöffnet sind, fahren Sie mit dem nächsten Abschnitt fort.
 
 ## <a name="check-for-other-connector-errors"></a>Überprüfen auf andere Connectorfehler
 
-Wenn keine der oben genannten Schritte das Problem beheben, sollten Sie im nächsten Schritt nach Problemen oder Fehlern mit dem Connector selbst suchen. Einige häufig auftretende Fehler sind im [Problembehandlungsdokument](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors) aufgeführt.
+Wenn keine der oben genannten Schritte das Problem beheben, sollten Sie im nächsten Schritt nach Problemen oder Fehlern mit dem Connector selbst suchen. Einige häufig auftretende Fehler sind im [Problembehandlungsdokument](./application-proxy-troubleshoot.md#connector-errors) aufgeführt.
 
 Sie können auch direkt auf die Connectorprotokolle zugreifen, um Fehler zu ermitteln. Eine Vielzahl der Fehlermeldungen enthält genauere Empfehlungen für Fehlerbehebungen. Informationen zum Anzeigen der Protokolle finden Sie in der [Dokumentation zu Connectors](application-proxy-connectors.md#under-the-hood).
 

@@ -1,96 +1,113 @@
 ---
-title: Sichern einer SAP HANA-Datenbank mit Azure Backup in Azure | Microsoft-Dokumentation
-description: In diesem Tutorial wird erläutert, wie Sie mit dem Azure Backup-Dienst eine SAP HANA-Datenbank in Azure sichern.
-author: dcurwin
-manager: carmonm
-ms.service: backup
+title: Sichern einer SAP HANA-Datenbank mit Azure Backup in Azure
+description: In diesem Artikel erfahren Sie, wie Sie eine SAP HANA-Datenbanken mit dem Azure Backup-Dienst auf virtuellen Azure-Computern sichern können.
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.author: dacurwin
-ms.openlocfilehash: 9f16a00bd8bc8e61aecbf6d6bd7f31e90f50140a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.date: 11/12/2019
+ms.openlocfilehash: 87111660983e2626d8f61ddc65fdc13394509a4f
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067102"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831634"
 ---
-# <a name="back-up-an-sap-hana-database-to-azure"></a>Sichern einer SAP HANA-Datenbank in Azure
+# <a name="back-up-sap-hana-databases-in-azure-vms"></a>Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
-[Azure Backup](backup-overview.md) unterstützt die Sicherung von SAP HANA-Datenbanken in Azure.
+SAP HANA-Datenbanken sind kritische Workloads, die eine niedrige Recovery Point Objective (RPO) und lange Aufbewahrungszeit erfordern. Sie können auf virtuellen Azure-Computern (VMs) ausgeführte SAP HANA-Datenbanken mithilfe von [Azure Backup](backup-overview.md) sichern.
 
-> [!NOTE]
-> Dieses Feature ist zurzeit als öffentliche Preview verfügbar. Es ist derzeit nicht für den Einsatz in Produktionsumgebungen bereit und verfügt nicht über eine garantierte SLA.
+In diesem Artikel wird veranschaulicht, wie SAP HANA-Datenbanken, die auf virtuellen Azure-Computern ausgeführt werden, in einem Azure Backup Recovery Services-Tresor gesichert werden.
 
-## <a name="scenario-support"></a>Unterstützung von Szenarien
+In diesem Artikel lernen Sie Folgendes:
+> [!div class="checklist"]
+>
+> * Erstellen und Konfigurieren eines Tresors
+> * Ermitteln von Datenbanken
+> * Konfigurieren von Sicherungen
+> * Ausführen eines bedarfsgesteuerten Sicherungsauftrag
 
-**Unterstützung** | **Details**
---- | ---
-**Unterstützte geografische Räume** | Australien, Südosten; Australien, Osten <br> Brasilien Süd <br> Kanada, Mitte; Kanada, Osten <br> Asien, Südosten; Asien, Osten <br> USA, Osten; USA, Osten 2; USA, Westen-Mitte; USA, Westen; USA, Westen 2, USA, Norden-Mitte; USA, Mitte; USA, Süden-Mitte<br> Indien, Mitte; Indien, Süden <br> „Japan, Osten“, „Japan, Westen“<br> Korea, Mitte, Korea, Süden <br> „Europa, Norden“, „Europa, Westen“ <br> Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen
-**Unterstützte VM-Betriebssysteme** | SLES 12 mit SP2, SP3 oder SP4.
-**Unterstützte HANA-Versionen** | SDC auf HANA 1.x, MDC auf HANA 2.x <= SPS04 Rev 42
+>[!NOTE]
+>Seit dem 1. August 2020 sind SAP HANA-Sicherungen für RHEL (7.4, 7.6, 7.7 und 8.1) allgemein verfügbar.
 
-### <a name="current-limitations"></a>Aktuelle Einschränkungen
-
-- Sie können nur auf Azure-VMs ausgeführte SAP HANA-Datenbanken sichern.
-- Sie können nur eine SAP HANA-Instanz sichern, die auf einer einzelnen Azure-VM ausgeführt wird. Mehrere HANA-Instanzen auf derselben Azure-VM werden derzeit nicht unterstützt.
-- Sie können nur Datenbanken im Modus für zentrales Hochskalieren sichern. Das horizontale Hochskalieren, d.h. eine HANA-Instanz auf mehreren Azure-VMs, wird derzeit nicht für die Sicherung unterstützt.
-- Sie können eine SAP HANA-Instanz mit Dynamic Tiering auf einem erweiterten Server nicht sichern, d.h. mit Dynamic Tiering auf einem anderen Knoten. Dies ist im Wesentlichen ein horizontales Hochskalieren, das nicht unterstützt wird.
-- Sie können eine SAP HANA-Instanz mit aktiviertem Dynamic Tiering auf demselben Server nicht sichern. Dynamic Tiering wird derzeit nicht unterstützt.
-- Die SAP HANA-Sicherung kann nur im Azure-Portal konfiguriert werden. Das Feature kann nicht mit PowerShell oder der Befehlszeilenschnittstelle konfiguriert werden.
-- Sie können Datenbankprotokolle alle 15 Minuten sichern. Protokollsicherungen werden erst nach dem erfolgreichen Abschluss einer vollständigen Sicherung der Datenbank übertragen.
-- Sie können vollständige und differenzielle Sicherungen ausführen. Inkrementelle Sicherungen werden derzeit nicht unterstützt.
-- Nachdem Sie die Sicherungsrichtlinie auf SAP HANA-Sicherungen angewendet haben, kann sie nicht mehr geändert werden. Wenn Sie Sicherungen mit unterschiedlichen Einstellungen ausführen möchten, müssen Sie eine neue Richtlinie erstellen oder eine andere Richtlinie zuweisen.
-  - Klicken Sie zum Erstellen einer neuen Richtlinie im Tresor auf **Richtlinien** > **Sicherungsrichtlinien** >  **+ Hinzufügen** > **SAP HANA in Azure-VM**, und legen Sie die Richtlinieneinstellungen fest.
-  - Wenn Sie eine andere Richtlinie zuweisen möchten, klicken Sie in den Eigenschaften des virtuellen Computers, auf dem die Datenbank ausgeführt wird, auf den Namen der aktuellen Richtlinie. Auf der Seite **Sicherungsrichtlinie** können Sie dann eine andere Richtlinie für die Sicherung auswählen.
+>[!NOTE]
+>**Die Workloads für vorläufiges Löschen für SQL Server auf virtuellen Azure-Computern und vorläufiges Löschen für SAP HANA auf virtuellen Azure-Computern** sind jetzt als Vorschauversion verfügbar.<br>
+>Schreiben Sie uns unter [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com), um sich für die Vorschauversion zu registrieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie vor dem Konfigurieren von Sicherungen unbedingt die folgenden Schritte aus:
+Informationen zum Einrichten der Datenbank für die Sicherung finden Sie in den Abschnitten zu den [Voraussetzungen](tutorial-backup-sap-hana-db.md#prerequisites) und den [Aufgaben des Vorregistrierungsskripts](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does).
 
-1. Installieren und aktivieren Sie auf dem virtuellen Computer, auf dem die SAP HANA-Datenbank ausgeführt wird, die im offiziellen SLES-Paket/auf den offiziellen SLES-Medien enthaltenen ODBC-Treiberpakete mithilfe von zypper. Gehen Sie dabei wie folgt vor:
+### <a name="establish-network-connectivity"></a>Herstellen der Netzwerkverbindung
 
-    ```unix
-    sudo zypper update
-    sudo zypper install unixODBC
-    ```
+Eine SAP HANA-Datenbank auf einem virtuellen Azure-Computer benötigt für alle Operationen die Verbindung zum Azure Backup-Dienst, zu Azure Storage und zu Azure Active Directory. Dies kann durch die Verwendung privater Endpunkte oder durch die Gewährung des Zugriffs auf die erforderlichen öffentlichen IP-Adressen oder FQDNs erreicht werden. Wenn keine ordnungsgemäße Verbindung zu den erforderlichen Azure-Diensten zugelassen wird, kann dies zu Fehlern bei Operationen wie der Datenbankermittlung, der Konfiguration von Sicherungen, der Durchführung von Sicherungen und der Wiederherstellung von Daten führen.
 
-2. Lassen Sie eine Verbindung des virtuellen Computers mit dem Internet zu, damit er Azure erreichen kann, wie [nachstehend](#set-up-network-connectivity) beschrieben.
+In der folgenden Tabelle sind die verschiedenen Alternativen zum Herstellen der Konnektivität aufgeführt:
 
-3. Führen Sie das Vorregistrierungsskript auf dem virtuellen Computer aus, auf dem HANA als Root-Benutzer installiert ist. Das Skript wird im [Portal](#discover-the-databases) im Flow bereitgestellt und ist erforderlich, um die [richtigen Berechtigungen](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions) einzurichten.
+| **Option**                        | **Vorteile**                                               | **Nachteile**                                            |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Private Endpunkte                 | Sicherungen über private IPs innerhalb des virtuellen Netzwerks möglich  <br><br>   Genau abgestimmte Zugriffssteuerung auf Netzwerk- und Tresorseite | Standardmäßige [Kosten](https://azure.microsoft.com/pricing/details/private-link/) für private Endpunkte |
+| NSG-Diensttags                  | Einfachere Verwaltung, da Bereichsänderungen automatisch zusammengeführt werden   <br><br>   Keine zusätzlichen Kosten | Nur mit NSGs möglich  <br><br>    Zugriff auf den gesamten Dienst |
+| FQDN-Tags von Azure Firewall          | Einfachere Verwaltung, da die erforderlichen FQDNs automatisch verwaltet werden | Nur mit Azure Firewall möglich                         |
+| Zugriff auf Dienst-FQDNs/-IPs | Keine zusätzlichen Kosten   <br><br>  Verwendung mit allen Netzwerksicherheits-Appliances und Firewalls möglich | Möglicherweise ist ein umfassender Satz von IP-Adressen oder FQDNs erforderlich.   |
+| Verwenden eines HTTP-Proxys                 | Zentraler Internetzugriffspunkt für VMs                       | Zusätzliche Kosten für das Ausführen einer VM mit der Proxysoftware         |
 
-### <a name="set-up-network-connectivity"></a>Einrichten der Netzwerkkonnektivität
+Weitere Informationen zur Verwendung dieser Optionen finden Sie unten:
 
-Der virtuelle SAP HANA-Computer benötigt für alle Vorgänge eine Verbindung, um auf die öffentlichen Azure-IP-Adressen zugreifen zu können. VM-Vorgänge (Ermitteln von Datenbanken, Konfigurieren von Sicherungen, Planen von Sicherungen, Zurücksetzen von Wiederherstellungspunkten usw.) können ohne Konnektivität nicht ausgeführt werden. Richten Sie Konnektivität ein, indem Sie Zugriff auf die IP-Adressbereiche für Azure-Rechenzentren gewähren: 
+#### <a name="private-endpoints"></a>Private Endpunkte
 
-- Sie können die [IP-Adressbereiche](https://www.microsoft.com/download/details.aspx?id=41653) für Azure-Rechenzentren herunterladen und dann Zugriff auf diese IP-Adressen gewähren.
-- Wenn Sie Netzwerksicherheitsgruppen (Network Security Groups, NSGs) verwenden, können Sie mit dem [Diensttag](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) „AzureCloud“ alle öffentlichen Azure-IP-Adressen zulassen. Mit dem Cmdlet [Set-AzureNetworkSecurityRule](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0) können Sie NSG-Regeln ändern.
-- Port 443 sollte in der Whitelist enthalten sein, da der Transport über HTTPS erfolgt.
+Private Endpunkte ermöglichen Ihnen, sichere Verbindungen von Servern in einem virtuellen Netzwerk mit Ihrem Recovery Services-Tresor herzustellen. Der private Endpunkt verwendet eine IP-Adresse aus dem VNET-Adressraum für Ihren Tresor. Der Netzwerkdatenverkehr zwischen Ihren Ressourcen innerhalb des virtuellen Netzwerks und dem Tresor wird über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbone-Netzwerk übertragen. Dadurch wird er vom öffentlichen Internet isoliert. Weitere Informationen zu privaten Endpunkten für Azure Backup finden Sie [hier](./private-endpoints.md).
 
-## <a name="onboard-to-the-public-preview"></a>Onboarding in die öffentliche Vorschau
+#### <a name="nsg-tags"></a>NSG-Tags
 
-Führen Sie das Onboarding in die öffentliche Vorschau wie folgt durch:
+Wenn Sie Netzwerksicherheitsgruppen (NSG) verwenden, können Sie den ausgehenden Zugriff auf Azure Backup mithilfe des Diensttags *AzureBackup* zulassen. Zusätzlich zum Tag „Azure Backup“ müssen Sie auch Konnektivität für Authentifizierung und Datenübertragung zulassen, indem Sie ähnliche [NSG-Regeln](../virtual-network/network-security-groups-overview.md#service-tags) für Azure AD (*AzureActiveDirectory*) und Azure Storage (*Storage*) erstellen.  Die folgenden Schritte beschreiben das Vorgehen zum Erstellen einer Regel für das Azure Backup-Tag:
 
-- Registrieren Sie im Portal Ihre Abonnement-ID bei dem Recovery Services-Dienstanbieter [gemäß der Beschreibung in diesem Artikel](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal). 
-- Führen Sie bei Verwendung von PowerShell das folgende Cmdlet aus. Der Vorgang sollte mit „Registered“ (Registriert) abgeschlossen werden.
+1. Navigieren Sie unter **Alle Dienste** zu **Netzwerksicherheitsgruppen**, und wählen Sie die Netzwerksicherheitsgruppe aus.
 
-    ```powershell
-    PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
+1. Wählen Sie unter **Einstellungen** die Option **Ausgangssicherheitsregeln** aus.
+
+1. Wählen Sie **Hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen einer neuen Regel ein, wie unter [Einstellungen zu Sicherheitsregeln](../virtual-network/manage-network-security-group.md#security-rule-settings) beschrieben. Stellen Sie sicher, dass die Option **Ziel** auf *Diensttag* und **Zieldiensttag** auf *AzureBackup* festgelegt wurde.
+
+1. Wählen Sie **Hinzufügen** aus, um die neu erstellte Ausgangssicherheitsregel zu speichern.
+
+Auf ähnliche Weise können Sie ausgehende NSG-Sicherheitsregeln für Azure Storage und Azure AD erstellen. Weitere Informationen zu Diensttags finden Sie in [diesem Artikel](../virtual-network/service-tags-overview.md).
+
+#### <a name="azure-firewall-tags"></a>Azure Firewall-Tags
+
+Wenn Sie Azure Firewall verwenden, erstellen Sie eine Anwendungsregel mithilfe des [Azure Firewall-FQDN-Tags](../firewall/fqdn-tags.md) *AzureBackup*. Dies erlaubt sämtlichen ausgehenden Zugriff auf Azure Backup.
+
+#### <a name="allow-access-to-service-ip-ranges"></a>Zulassen des Zugriffs auf Dienst-IP-Bereiche
+
+Wenn Sie sich dafür entscheiden, Zugriffsdienst-IPs zuzulassen, beziehen Sie sich auf die IP-Bereiche in der [hier](https://www.microsoft.com/download/confirmation.aspx?id=56519) verfügbaren JSON-Datei. Sie müssen den Zugriff auf IPs für Azure Backup, Azure Storage und Azure Active Directory zulassen.
+
+#### <a name="allow-access-to-service-fqdns"></a>Zugriff auf Dienst-FQDNs
+
+Sie können auch die folgenden FQDNs verwenden, um den Zugriff auf die erforderlichen Dienste von ihren Servern aus zuzulassen:
+
+| Dienst    | Domänennamen, auf die zugegriffen werden soll                             |
+| -------------- | ------------------------------------------------------------ |
+| Azure Backup  | `*.backup.windowsazure.com`                             |
+| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
+| Azure AD      | Gewähren des Zugriffs auf FQDNs gemäß Abschnitt 56 und 59, wie in [diesem Artikel](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) beschrieben |
+
+#### <a name="use-an-http-proxy-server-to-route-traffic"></a>Verwenden eines HTTP-Proxyservers für das Weiterleiten von Datenverkehr
+
+Wenn Sie eine SAP HANA-Datenbank auf einem virtuellen Azure-Computer sichern, verwendet die Sicherungserweiterung auf dem virtuellen Computer die HTTPS-APIs, um Verwaltungsbefehle an Azure Backup und Daten an Azure Storage zu senden. Die Sicherungserweiterung verwendet auch Azure AD zur Authentifizierung. Leiten Sie den Datenverkehr der Sicherungserweiterung für diese drei Dienste über den HTTP-Proxy weiter. Verwenden Sie die oben genannte Liste der IPs und FQDNs, um den Zugriff auf die erforderlichen Dienste zuzulassen. Authentifizierte Proxyserver werden nicht unterstützt.
+
+> [!NOTE]
+> Es gibt keine Servicelevel-Proxyunterstützung. Dies bedeutet, dass Datenverkehr über den Proxy von nur wenigen oder ausgewählten Diensten (Azure-Backupdienste) nicht unterstützt wird. Die gesamten Daten oder der Datenverkehr können entweder über den Proxy weitergeleitet werden oder nicht.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-the-databases"></a>Ermitteln der Datenbanken
 
-1. Klicken Sie im Tresor unter **Erste Schritte** auf **Sicherung**. Wählen Sie unter **Wo wird Ihre Workload ausgeführt?** den Eintrag **SAP HANA in Azure-VM** aus.
-2. Klicken Sie auf **Ermittlung starten**. Dadurch wird die Ermittlung nicht geschützter Linux-VMs in der Tresorregion initiiert.
+1. Wählen Sie im Tresor unter **Erste Schritte** die Option **Sicherung** aus. Wählen Sie unter **Wo wird Ihre Workload ausgeführt?** den Eintrag **SAP HANA in Azure-VM** aus.
+2. Wählen Sie **Ermittlung starten** aus. Dadurch wird die Ermittlung nicht geschützter Linux-VMs in der Tresorregion initiiert.
 
-   - Nach der Ermittlung werden nicht geschützte VMs im Portal nach Name und Ressourcengruppe sortiert angezeigt.
-   - Wenn ein virtueller Computer nicht wie erwartet aufgeführt wird, überprüfen Sie, ob er bereits in einem Tresor gesichert wird.
-   - Mehrere virtuelle Computer können den gleichen Namen aufweisen, gehören dann aber verschiedenen Ressourcengruppen an.
+   * Nach der Ermittlung werden nicht geschützte VMs im Portal nach Name und Ressourcengruppe sortiert angezeigt.
+   * Wenn ein virtueller Computer nicht wie erwartet aufgeführt wird, überprüfen Sie, ob er bereits in einem Tresor gesichert wird.
+   * Mehrere virtuelle Computer können den gleichen Namen aufweisen, gehören dann aber verschiedenen Ressourcengruppen an.
 
-3. Klicken Sie im Bereich **Virtuelle Computer auswählen** auf den Link zum Herunterladen des Skripts, das dem Azure Backup-Dienst die Berechtigungen zum Zugreifen auf die SAP HANA-VMs für die Ermittlung von Datenbanken erteilt.
+3. Wählen Sie im Bereich **Virtuelle Computer auswählen** den Link zum Herunterladen des Skripts aus, das dem Azure Backup-Dienst Berechtigungen zum Zugreifen auf die SAP HANA-VMs für die Ermittlung von Datenbanken erteilt.
 4. Führen Sie das Skript auf jedem virtuellen Computer aus, der die zu sichernden SAP HANA-Datenbanken hostet.
-5. Wählen Sie nach dem Ausführen des Skripts auf den VMs im Bereich **Virtuelle Computer auswählen** die VMs aus. Klicken Sie dann auf **DBs ermitteln**.
+5. Wählen Sie nach dem Ausführen des Skripts auf den VMs im Bereich **Virtuelle Computer auswählen** die VMs aus. Wählen Sie dann **DBs ermitteln** aus.
 6. Azure Backup ermittelt alle SAP HANA-Datenbanken auf dem virtuellen Computer. Während der Ermittlung registriert Azure Backup den virtuellen Computer beim Tresor und installiert eine Erweiterung auf dem VM. Für die Datenbank wird kein Agent installiert.
 
     ![Ermitteln von SAP HANA-Datenbanken](./media/backup-azure-sap-hana-database/hana-discover.png)
@@ -99,95 +116,112 @@ Führen Sie das Onboarding in die öffentliche Vorschau wie folgt durch:
 
 Aktivieren Sie jetzt die Sicherung.
 
-1. Klicken Sie unter „Schritt 2“ auf **Sicherung konfigurieren**.
+1. Wählen Sie in Schritt 2 **Sicherung konfigurieren** aus.
+
+    ![Konfiguration der Sicherung](./media/backup-azure-sap-hana-database/configure-backup.png)
 2. Wählen Sie unter **Zu sichernde Elemente auswählen** alle Datenbanken aus, die Sie schützen möchten, und wählen Sie dann **OK** aus.
+
+    ![Auswählen von Elementen für die Sicherung](./media/backup-azure-sap-hana-database/select-items.png)
 3. Wählen Sie **Sicherungsrichtlinie** > **Sicherungsrichtlinie auswählen** aus, und erstellen Sie eine neue Sicherungsrichtlinie für die Datenbanken gemäß den unten stehenden Anweisungen.
-4. Klicken Sie nach dem Erstellen der Richtlinie im Menü **Sicherung** auf **Sicherung aktivieren**.
+
+    ![Auswählen der Sicherungsrichtlinie](./media/backup-azure-sap-hana-database/backup-policy.png)
+4. Wählen Sie nach dem Erstellen der Richtlinie im Menü **Sicherung** die Option **Sicherung aktivieren** aus.
+
+    ![Aktivieren der Sicherung](./media/backup-azure-sap-hana-database/enable-backup.png)
 5. Verfolgen Sie den Fortschritt der Sicherungskonfiguration im Bereich **Benachrichtigungen** des Portals.
 
 ### <a name="create-a-backup-policy"></a>Erstellen einer Sicherungsrichtlinie
 
 Eine Sicherungsrichtlinie legt fest, wann Sicherungen erstellt und wie lange sie aufbewahrt werden.
 
-- Eine Richtlinie wird auf Tresorebene erstellt.
-- Mehrere Tresore können die gleiche Sicherungsrichtlinie verwenden. Allerdings müssen Sie die Sicherungsrichtlinie auf jeden Tresor anwenden.
+* Eine Richtlinie wird auf Tresorebene erstellt.
+* Mehrere Tresore können die gleiche Sicherungsrichtlinie verwenden. Allerdings müssen Sie die Sicherungsrichtlinie auf jeden Tresor anwenden.
+
+>[!NOTE]
+>Azure Backup passt Änderungen an der Sommer- oder Winterzeit bei der Sicherung einer auf einem virtuellen Azure-Computer ausgeführten SAP HANA-Datenbank nicht automatisch an.
+>
+>Ändern Sie die Richtlinie nach Bedarf manuell.
 
 Legen Sie die Richtlinieneinstellungen wie folgt fest:
 
 1. Geben Sie unter **Richtlinienname** einen Namen für die neue Richtlinie ein.
-2. Wählen Sie in **Richtlinie für vollständige Sicherung** für **Sicherungshäufigkeit** **Täglich** oder **Wöchentlich** aus.
-   - **Daily** (Täglich): Wählen Sie die Uhrzeit und die Zeitzone für den Beginn des Sicherungsauftrags aus.
-   
-       - Sie müssen eine vollständige Sicherung ausführen. Diese Option kann nicht deaktiviert werden.
-       - Klicken Sie auf **Vollständige Sicherung**, um die Richtlinie anzuzeigen.
-       - Sie können keine differenziellen Sicherungen für tägliche vollständige Sicherungen erstellen.
-       
-   - **Wöchentlich**: Wählen Sie den Wochentag, die Uhrzeit und die Zeitzone für die Ausführung des Sicherungsauftrags aus.
-3. Konfigurieren Sie unter **Beibehaltungsdauer** die Aufbewahrungseinstellungen für die vollständige Sicherung.
-    - Standardmäßig sind alle Optionen ausgewählt. Deaktivieren Sie alle Optionen für die Beibehaltungsdauer, die Sie nicht verwenden möchten, und legen Sie die gewünschten Grenzwerte fest.
-    - Die Mindestbeibehaltungsdauer beträgt für alle Sicherungstypen (vollständig/differenziell/Protokoll) sieben Tage.
-    - Wiederherstellungspunkte werden unter Berücksichtigung ihrer Beibehaltungsdauer mit einer Markierung versehen. Wenn Sie beispielsweise eine tägliche vollständige Sicherung wählen, wird pro Tag nur eine vollständige Sicherung ausgelöst.
-    - Die Sicherung für einen bestimmten Tag wird auf Grundlage der wöchentlichen Beibehaltungsdauer und der entsprechenden Einstellung markiert und beibehalten.
-    - Mit der monatlichen und jährlichen Beibehaltungsdauer verhält es sich ähnlich.
 
-4. Klicken Sie im Menü **Vollständige Sicherung** auf **OK**, um die Einstellungen zu übernehmen.
-5. Wählen Sie **Differenzielle Sicherung** aus, um eine Richtlinie für eine differenzielle Sicherung hinzuzufügen.
-6. Wählen Sie in **Richtlinie für differenzielle Sicherung** die Option **Aktivieren** aus, um die Einstellungen für Häufigkeit und Beibehaltung vorzunehmen.
-    - Pro Tag kann höchstens eine differenzielle Sicherung ausgelöst werden.
-    - Differenzielle Sicherungen können maximal 180 Tage aufbewahrt werden. Wenn Sie eine längere Aufbewahrung wünschen, müssen Sie vollständige Sicherungen verwenden.
+   ![Eingeben des Richtliniennamens](./media/backup-azure-sap-hana-database/policy-name.png)
+1. Wählen Sie in **Richtlinie für vollständige Sicherung** für **Sicherungshäufigkeit** **Täglich** oder **Wöchentlich** aus.
+   * **Daily** (Täglich): Wählen Sie die Uhrzeit und die Zeitzone für den Beginn des Sicherungsauftrags aus.
+       * Sie müssen eine vollständige Sicherung ausführen. Diese Option kann nicht deaktiviert werden.
+       * Klicken Sie auf **Vollständige Sicherung**, um die Richtlinie anzuzeigen.
+       * Sie können keine differenziellen Sicherungen für tägliche vollständige Sicherungen erstellen.
+   * **Wöchentlich**: Wählen Sie den Wochentag, die Uhrzeit und die Zeitzone für die Ausführung des Sicherungsauftrags aus.
+
+   ![Auswählen der Sicherungshäufigkeit](./media/backup-azure-sap-hana-database/backup-frequency.png)
+
+1. Konfigurieren Sie unter **Beibehaltungsdauer** die Aufbewahrungseinstellungen für die vollständige Sicherung.
+    * Standardmäßig sind alle Optionen ausgewählt. Deaktivieren Sie alle Optionen für die Beibehaltungsdauer, die Sie nicht verwenden möchten, und legen Sie die gewünschten Grenzwerte fest.
+    * Die Mindestaufbewahrungsdauer beträgt für alle Sicherungstypen (vollständig/differenziell/Protokoll) sieben Tage.
+    * Wiederherstellungspunkte werden unter Berücksichtigung ihrer Beibehaltungsdauer mit einer Markierung versehen. Wenn Sie beispielsweise eine tägliche vollständige Sicherung wählen, wird pro Tag nur eine vollständige Sicherung ausgelöst.
+    * Die Sicherung für einen bestimmten Tag wird auf Grundlage der wöchentlichen Beibehaltungsdauer und der entsprechenden Einstellung markiert und beibehalten.
+    * Mit der monatlichen und jährlichen Beibehaltungsdauer verhält es sich ähnlich.
+
+1. Wählen Sie im Menü **Richtlinie für vollständige Sicherung** **OK** aus, um die Einstellungen zu übernehmen.
+1. Wählen Sie **Differenzielle Sicherung** aus, um eine Richtlinie für eine differenzielle Sicherung hinzuzufügen.
+1. Wählen Sie in **Richtlinie für differenzielle Sicherung** die Option **Aktivieren** aus, um die Einstellungen für Häufigkeit und Beibehaltung vorzunehmen.
+    * Pro Tag kann höchstens eine differenzielle Sicherung ausgelöst werden.
+    * Differenzielle Sicherungen können maximal 180 Tage aufbewahrt werden. Wenn Sie eine längere Aufbewahrung wünschen, müssen Sie vollständige Sicherungen verwenden.
+
+    ![Richtlinie für differenzielle Sicherung](./media/backup-azure-sap-hana-database/differential-backup-policy.png)
 
     > [!NOTE]
-    > Inkrementelle Sicherungen werden derzeit nicht unterstützt. 
+    > Inkrementelle Sicherungen werden nun in der öffentlichen Vorschau unterstützt. Sie können entweder „differenziell“ oder „inkrementell“ für die tägliche Sicherung auswählen, aber nicht beide Optionen.
+1. Wählen Sie unter **Richtlinie zur inkrementellen Sicherung** die Option **Aktivieren** aus, um die Einstellungen für Häufigkeit und Beibehaltung vorzunehmen.
+    * Pro Tag kann höchstens eine inkrementelle Sicherung ausgelöst werden.
+    * Inkrementelle Sicherungen können maximal 180 Tage aufbewahrt werden. Wenn Sie eine längere Aufbewahrung wünschen, müssen Sie vollständige Sicherungen verwenden.
 
-7. Klicken Sie auf **OK**, um die Richtlinie zu speichern und zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
-8. Wählen Sie **Protokollsicherung** aus, um eine Richtlinie für eine Transaktionsprotokollsicherung hinzuzufügen.
-    - Wählen Sie unter **Protokollsicherung** die Option **Aktivieren** aus.
-    - Legen Sie die Häufigkeits- und Aufbewahrungssteuerelemente fest.
+    ![Richtlinie zur inkrementellen Sicherung](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
+
+1. Wählen Sie **OK** aus, um die Richtlinie zu speichern und zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
+1. Wählen Sie **Protokollsicherung** aus, um eine Richtlinie für eine Transaktionsprotokollsicherung hinzuzufügen.
+    * Wählen Sie unter **Protokollsicherung** die Option **Aktivieren** aus.  Diese Option kann nicht deaktiviert werden, da SAP HANA alle Protokollsicherungen verwaltet.
+    * Legen Sie die Häufigkeits- und Aufbewahrungssteuerelemente fest.
 
     > [!NOTE]
     > Protokollsicherungen werden erst nach dem erfolgreichen Abschluss einer vollständigen Sicherung übertragen.
 
-9. Klicken Sie auf **OK**, um die Richtlinie zu speichern und zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
-10. Klicken Sie nach dem Definieren der Sicherungsrichtlinie auf **OK**.
+1. Wählen Sie **OK** aus, um die Richtlinie zu speichern und zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
+1. Wählen Sie nach dem Definieren der Sicherungsrichtlinie **OK** aus.
 
+> [!NOTE]
+> Jede Protokollsicherung wird mit der vorherigen vollständigen Sicherung zu einer Wiederherstellungskette verkettet. Diese vollständige Sicherung wird aufbewahrt, bis die Aufbewahrungsdauer der letzten Protokollsicherung abgelaufen ist. Das kann bedeuten, dass die vollständige Sicherung für einen zusätzlichen Zeitraum aufbewahrt wird, um sicherzustellen, dass alle Protokolle wiederhergestellt werden können. Ein Beispiel: Ein Benutzer hat eine wöchentliche vollständige Sicherung, tägliche differenzielle Sicherungen und alle zwei Stunden ausgeführte Protokolle eingerichtet. Alle werden 30 Tage lang aufbewahrt. Die wöchentliche vollständige Sicherung kann aber erst vollständig bereinigt/gelöscht werden, wenn die nächste vollständige Sicherung verfügbar ist, also nach 30 + 7 Tagen. Angenommen, am 16. November erfolgt eine wöchentliche vollständige Sicherung. Gemäß der Aufbewahrungsrichtlinie wird diese bis zum 16. Dezember aufbewahrt. Die letzte Protokollsicherung hierfür erfolgt vor der nächsten geplanten vollständigen Sicherung, und zwar am 22. November. Solange dieses Protokoll bis zum 22. Dezember verfügbar ist, kann die vollständige Sicherung vom 16. November nicht gelöscht werden. Die vollständige Sicherung vom 16. November wird also bis zum 22. Dezember aufbewahrt.
 
 ## <a name="run-an-on-demand-backup"></a>Ausführen einer On-Demand-Sicherung
 
 Sicherungen werden gemäß dem Richtlinienzeitplan ausgeführt. Eine bedarfsgesteuerte Sicherung können Sie wie folgt ausführen:
 
+1. Wählen Sie im Tresormenü die Option **Sicherungselemente** aus.
+2. Wählen Sie unter **Sicherungselemente** den virtuellen Computer aus, auf dem die SAP HANA-Datenbank ausgeführt wird, und wählen Sie dann **Jetzt sichern** aus.
+3. Wählen Sie in **Jetzt sichern** den Sicherungstyp aus, den Sie durchführen möchten. Klicken Sie anschließend auf **OK**. Diese Sicherung wird gemäß der diesem Sicherungselement zugeordneten Richtlinie aufbewahrt.
+4. Überwachen Sie die Portalbenachrichtigungen. Sie können den Auftragsstatus im Dashboard des Tresors unter **Sicherungsaufträge** > **In Bearbeitung** überwachen. Je nach Größe Ihrer Datenbank kann das Erstellen der ersten Sicherung einige Zeit dauern.
 
-1. Klicken Sie im Tresormenü auf **Sicherungselemente**.
-2. Wählen Sie unter **Sicherungselemente** den virtuellen Computer aus, auf dem die SAP HANA-Datenbank ausgeführt wird, und klicken Sie dann auf **Jetzt sichern**.
-3. Verwenden Sie unter **Jetzt sichern** den Kalender, um den letzten Tag zur Beibehaltung des Wiederherstellungspunkts auszuwählen. Klicken Sie dann auf **OK**.
-4. Überwachen Sie die Portalbenachrichtigungen. Sie können den Auftragsstatus im Dashboard des Tresors unter **Sicherungsaufträge** > „In Bearbeitung“ überwachen. Je nach Größe Ihrer Datenbank kann das Erstellen der ersten Sicherung einige Zeit dauern.
+Standardmäßig werden bedarfsgesteuerte Sicherungen 45 Tage lang aufbewahrt.
 
 ## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>Ausführen einer SAP HANA Studio-Sicherung einer Datenbank, für die Azure Backup aktiviert ist
 
 Führen Sie die folgenden Schritte aus, wenn Sie (mit HANA Studio) eine lokale Sicherung einer Datenbank ausführen möchten, die mit Azure Backup gesichert wird:
 
-1. Warten Sie, bis alle vollständigen Sicherungen oder Protokollsicherungen für die Datenbank abgeschlossen sind. Überprüfen Sie den Status in SAP HANA Studio.
-2. Deaktivieren Sie Protokollsicherungen, und legen Sie den Sicherungskatalog auf das Dateisystem für die entsprechende Datenbank fest.
-3. Doppelklicken Sie hierzu auf **systemdb** > **Konfiguration** > **Datenbank auswählen** > **Filter (Protokoll)** .
-4. Legen Sie **enable_auto_log_backup** auf **No** fest.
-5. Legen Sie **log_backup_using_backint** auf **False** fest.
-6. Erstellen Sie eine vollständige Ad-hoc-Sicherung der Datenbank.
-7. Warten Sie, bis die vollständige Sicherung und die Katalogsicherung abgeschlossen sind.
-8. Stellen Sie die vorherigen Einstellungen für Azure wieder her:
-    - Legen Sie **enable_auto_log_backup** auf **Yes** fest.
-    - Legen Sie **log_backup_using_backint** auf **True** fest.
-
-
-## <a name="upgrading-protected-10-dbs-to-20"></a>Upgrade geschützter 1.0-Datenbanken auf 2.0
-
-Wenn Sie SAP HANA 1.0-Datenbanken schützen und ein Upgrade auf 2.0 durchführen möchten, führen Sie die unten beschriebenen Schritte aus.
-
-- Beenden Sie den Schutz mit Beibehaltung der Daten für die alte SDC-Datenbank.
-- Führen Sie das Vorregistrierungsskript mit den richtigen Details (SID und MDC) erneut aus. 
-- Registrieren Sie die Erweiterung erneut (Sicherung > Details anzeigen > relevante Azure-VM auswählen > erneut registrieren). 
-- Klicken Sie auf die erneute Ermittlung von Datenbanken für denselben virtuellen Computer. Es sollten daraufhin die neuen Datenbanken in Schritt 2 mit den richtigen Details (Systemdatenbank und Mandantendatenbank, nicht SDC) angezeigt werden. 
-- Schützen Sie diese neuen Datenbanken.
+1. Warten Sie, bis alle vollständigen Sicherungen oder Protokollsicherungen für die Datenbank abgeschlossen sind. Überprüfen Sie den Status in SAP HANA Studio/Cockpit.
+1. Deaktivieren Sie Protokollsicherungen, und legen Sie den Sicherungskatalog auf das Dateisystem für die entsprechende Datenbank fest.
+1. Doppelklicken Sie hierzu auf **systemdb** > **Konfiguration** > **Datenbank auswählen** > **Filter (Protokoll)** .
+1. Legen Sie **enable_auto_log_backup** auf **No** fest.
+1. Legen Sie **log_backup_using_backint** auf **False** fest.
+1. Legen Sie **catalog_backup_using_backint** auf **FALSE** fest.
+1. Erstellen Sie eine bedarfsgesteuerte vollständige Sicherung der Datenbank.
+1. Warten Sie, bis die vollständige Sicherung und die Katalogsicherung abgeschlossen sind.
+1. Stellen Sie die vorherigen Einstellungen für Azure wieder her:
+    * Legen Sie **enable_auto_log_backup** auf **Yes** fest.
+    * Legen Sie **log_backup_using_backint** auf **True** fest.
+    * Legen Sie **catalog_backup_using_backint** auf **True** fest.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erfahren Sie](backup-azure-sap-hana-database-troubleshoot.md), wie Sie häufige Fehler bei der Verwendung von SAP HANA-Sicherungen auf Azure-VMs beheben können.
-Erfahren Sie mehr über das [Sichern virtueller Azure-Computer](backup-azure-arm-vms-prepare.md).
+* Erfahren Sie, wie Sie [nur auf virtuellen Azure-Computern ausgeführte SAP HANA-Datenbanken wiederherstellen können](./sap-hana-db-restore.md).
+* [Verwalten und Überwachen gesicherter SAP HANA-Datenbanken](./sap-hana-db-manage.md)

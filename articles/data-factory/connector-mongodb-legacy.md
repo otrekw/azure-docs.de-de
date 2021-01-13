@@ -1,28 +1,29 @@
 ---
-title: Kopieren von Daten aus MongoDB mithilfe von Azure Data Factory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Daten aus MongoDB mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
+title: Kopieren von Daten aus MongoDB mithilfe von Legacy
+description: Erfahren Sie, wie Daten aus MongoDB mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline (Legacy) in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.author: jingwang
-ms.openlocfilehash: 77d0f632c763651004efa46edf027719040f4760
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 7cf4be078a7bee0bedbeac4326acb9ca290cde88
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967480"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91331980"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopieren von Daten aus MongoDB mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+# <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Kopieren von Daten aus MongoDB mithilfe von Azure Data Factory (Legacy)
+
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-on-premises-mongodb-connector.md)
 > * [Aktuelle Version](connector-mongodb.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer MongoDB-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -64,8 +65,8 @@ Folgende Eigenschaften werden für den mit MongoDB verknüpften Dienst unterstü
 | username |Benutzerkonto für den Zugriff auf MongoDB |Ja (wenn die Standardauthentifizierung verwendet wird) |
 | password |Kennwort für den Benutzer Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja (wenn die Standardauthentifizierung verwendet wird) |
 | authSource |Der Name der MongoDB-Datenbank, die Sie zum Überprüfen Ihrer Anmeldeinformationen zur Authentifizierung verwenden möchten |Nein. Bei der Standardauthentifizierung werden standardmäßig das Administratorkonto und die Datenbank verwendet, die mit der databaseName-Eigenschaft angegeben wird |
-| enableSsl | Gibt an, ob die Verbindungen mit dem Server mit SSL verschlüsselt werden. Der Standardwert ist „false“.  | Nein |
-| allowSelfSignedServerCert | Gibt an, ob vom Server selbstsignierte Zertifikate zugelassen werden. Der Standardwert ist „false“.  | Nein |
+| enableSsl | Gibt an, ob Verbindungen mit dem Server mit TLS verschlüsselt werden. Der Standardwert ist „FALSE“.  | Nein |
+| allowSelfSignedServerCert | Gibt an, ob vom Server selbstsignierte Zertifikate zugelassen werden. Der Standardwert ist „FALSE“.  | Nein |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 **Beispiel:**
@@ -131,7 +132,7 @@ Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unter
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **MongoDbSource** | Ja |
-| query |Verwendet die benutzerdefinierte SQL-92-Abfrage zum Lesen von Daten. Beispiel: select * from MyTable. |Nein (wenn „collectionName“ im Dataset angegeben ist) |
+| Abfrage |Verwendet die benutzerdefinierte SQL-92-Abfrage zum Lesen von Daten. Beispiel: select * from MyTable. |Nein (wenn „collectionName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 
@@ -180,7 +181,7 @@ Beim Kopieren von Daten aus MongoDB werden die folgenden Zuordnungen von MongoDB
 |:--- |:--- |
 | Binary |Byte[] |
 | Boolean |Boolean |
-| Date |DateTime |
+| Date |Datetime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
@@ -207,14 +208,14 @@ Virtuelle Tabellen beziehen sich auf die Daten in der echten Tabelle, sodass der
 
 Beispielsweise ist „ExampleTable“ in diesem Fall eine MongoDB-Tabelle, die eine Spalte (Invoices) mit einem Array von Objekten in jeder Zelle enthält sowie eine Spalte (Ratings) mit einem Array von skalaren Typen.
 
-| _id | Customer Name | Invoices | Service Level | Ratings |
+| _id | Customer Name | Invoices | Dienstebene | Ratings |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id:"123", item:"toaster", price:"456", discount:"0.2"}, {invoice_id:"124", item:"oven", price: "1235", discount: "0.2"}] |Silber |[5,6] |
 | 2222 |XYZ |[{invoice_id:"135", item:"fridge", price: "12543", discount: "0.0"}] |Gold |[1,2] |
 
 Der Treiber erzeugt mehrere virtuelle Tabellen, um diese einzelne Tabelle zu repräsentieren. Die erste virtuelle Tabelle ist die im Beispiel dargestellte Basistabelle mit dem Namen „ExampleTable“. Die Basistabelle enthält alle Daten der ursprünglichen Tabelle, aber die Daten aus den Arrays wurden ausgelassen und werden in den virtuellen Tabellen erweitert.
 
-| _id | Customer Name | Service Level |
+| _id | Customer Name | Dienstebene |
 | --- | --- | --- |
 | 1111 |ABC |Silber |
 | 2222 |XYZ |Gold |
@@ -227,11 +228,11 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, die die ursprüngliche
 
 **Tabelle „ExampleTable_Invoices“:**
 
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | price | Discount |
+| _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | Preis | Discount |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |toaster |456 |0.2 |
 | 1111 |1 |124 |oven |1235 |0.2 |
-| 2222 |0 |135 |fridge |12543 |0.0 |
+| 2222 |0 |135 |fridge |12543 |0,0 |
 
 **Tabelle „ExampleTable_Ratings“:**
 
@@ -243,4 +244,4 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, die die ursprüngliche
 | 2222 |1 |2 |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

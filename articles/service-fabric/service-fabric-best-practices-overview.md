@@ -1,25 +1,16 @@
 ---
-title: Bewährte Methoden für Azure Service Fabric-Anwendungen und -Cluster | Microsoft-Dokumentation
-description: Bewährte Methoden für die Verwaltung von Service Fabric-Clustern und -Anwendungen.
-services: service-fabric
-documentationcenter: .net
+title: Bewährte Methoden für Azure Service Fabric-Anwendungen und -Cluster
+description: Hier finden Sie bewährte Methoden und Entwurfsüberlegungen zur Verwaltung von Clustern, Apps und Diensten mit Azure Service Fabric.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2019
 ms.author: pepogors
-ms.openlocfilehash: 5fdbd3f15b11e4c3975ca29627d5984382bcf049
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 86a02fd489ca0eec61b798db7136f963277f6c82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206805"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86261089"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Bewährte Methoden für Azure Service Fabric-Anwendungen und -Cluster
 
@@ -36,7 +27,7 @@ In diesem Artikel finden Sie Links zu Best Practices für die Verwaltung von Azu
 ## <a name="compute-planning-and-scaling"></a>Computeplanung und -skalierung
 
 * [Bewährte Methoden für die Skalierung von Computeressourcen](service-fabric-best-practices-capacity-scaling.md)
-* [Planen der Computekapazität](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)
+* [Planen der Computekapazität](./service-fabric-cluster-capacity.md)
 
 ## <a name="infrastructure-as-code"></a>Infrastructure-as-Code
 
@@ -53,7 +44,7 @@ In diesem Artikel finden Sie Links zu Best Practices für die Verwaltung von Azu
 ## <a name="checklist"></a>Checkliste
 
 Setzen Sie nach der Implementierung der oben aufgeführten Methoden alle Best Practices in der Checkliste für die Produktionsbereitschaft um:
-* [Azure Service Fabric: Checkliste für die Produktionsbereitschaft](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
+* [Azure Service Fabric: Checkliste für die Produktionsbereitschaft](./service-fabric-production-readiness-checklist.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

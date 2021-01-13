@@ -1,11 +1,10 @@
 ---
-title: Tutorial – Sichern von virtuellen Linux-Computern im Azure-Portal | Microsoft-Dokumentation
+title: 'Tutorial: Sichern von virtuellen Linux-Computern im Azure-Portal'
 description: In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal zum Schützen Ihrer virtuellen Linux-Computer mit Azure Backup verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -15,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 890d4ab0dcbaa814b4ce3365025e4c35e4ba4c6b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 08e6491e1d8d94e8e6e9112e5a19682018103325
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103536"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400348"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Tutorial: Sichern und Wiederherstellen von Dateien für virtuelle Linux-Computer in Azure
 
@@ -35,18 +34,18 @@ Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicheru
 
 Wenn der Azure Backup-Dienst eine Sicherung initiiert, löst er die Sicherungserweiterung zum Erstellen einer Momentaufnahme aus. Der Azure Backup-Dienst verwendet unter Linux die Erweiterung _VMSnapshotLinux_. Die Erweiterung wird während der ersten VM-Sicherung installiert, wenn die VM ausgeführt wird. Wenn die VM nicht ausgeführt wird, erstellt der Backup-Dienst eine Momentaufnahme des zugrunde liegenden Speichers (da keine Schreibvorgänge der Anwendung erfolgen, während die VM beendet ist).
 
-Standardmäßig erstellt Azure Backup eine dateisystemkonsistente Sicherung für Linux-VMs, der Dienst kann aber auch für [anwendungskonsistente Sicherungen mithilfe des Pre-Skript- und Post-Skript-Frameworks](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) konfiguriert werden. Nachdem der Azure Backup-Dienst die Momentaufnahme erstellt hat, werden die Daten in den Sicherungstresor übertragen. Um die Effizienz zu maximieren, werden vom Dienst nur diejenigen Datenblöcke bestimmt und übertragen, die seit der vorherigen Sicherung geändert wurden.
+Standardmäßig erstellt Azure Backup eine dateisystemkonsistente Sicherung für Linux-VMs, der Dienst kann aber auch für [anwendungskonsistente Sicherungen mithilfe des Pre-Skript- und Post-Skript-Frameworks](../../backup/backup-azure-linux-app-consistent.md) konfiguriert werden. Nachdem der Azure Backup-Dienst die Momentaufnahme erstellt hat, werden die Daten in den Sicherungstresor übertragen. Um die Effizienz zu maximieren, werden vom Dienst nur diejenigen Datenblöcke bestimmt und übertragen, die seit der vorherigen Sicherung geändert wurden.
 
 Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt und ein Wiederherstellungspunkt erstellt.
 
 
-## <a name="create-a-backup"></a>Erstellen einer Sicherung
+## <a name="create-a-backup"></a>So erstellen Sie eine Sicherung
 Erstellen Sie eine geplante tägliche Sicherung in einem Recovery Services-Tresor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie im Menü auf der linken Seite **Virtuelle Computer** aus. 
 3. Wählen Sie in der Liste eine zu sichernde VM aus.
-4. Klicken Sie auf dem Blatt des virtuellen Computers im Abschnitt **Einstellungen** auf **Sicherung**. Das Blatt **Sicherung aktivieren** wird geöffnet.
+4. Klicken Sie auf dem Blatt des virtuellen Computers im Abschnitt **Vorgänge** auf **Sicherung**. Das Blatt **Sicherung aktivieren** wird geöffnet.
 5. Wenn kein **Recovery Services-Tresor** vorhanden ist, können Sie auf **Neu erstellen** klicken und den Namen für den neuen Tresor angeben. Ein neuer Tresor wird in derselben Ressourcengruppe und an demselben Standort wie der virtuelle Computer erstellt.
 6. Klicken Sie auf **Sicherungsrichtlinie**. In diesem Beispiel behalten Sie die Standardwerte bei. Klicken Sie auf **OK**.
 7. Klicken Sie auf dem Blatt **Sicherung aktivieren** auf **Sicherung aktivieren**. Dadurch wird eine tägliche Sicherung basierend auf dem Standardzeitplan erstellt.
@@ -64,20 +63,21 @@ Wenn Sie eine Datei versehentlich löschen oder daran Änderungen vornehmen, kö
 
 In diesem Beispiel wird beschrieben, wie Sie die nginx-Standardwebseite „/var/www/html/index.nginx-debian.html“ wiederherstellen. Die öffentliche IP-Adresse der VM in diesem Beispiel ist *13.69.75.209*. Sie können die IP-Adresse des virtuellen Computers wie folgt suchen:
 
- ```bash 
+ ```azurecli
  az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
  ```
 
  
 1. Öffnen Sie auf dem lokalen Computer einen Browser, und geben Sie die öffentliche IP-Adresse Ihres virtuellen Computers ein, um die nginx-Standardwebseite anzuzeigen.
 
-    ![nginx-Standardwebseite](./media/tutorial-backup-vms/nginx-working.png)
+    ![Screenshot mit der nginx-Standardwebseite](./media/tutorial-backup-vms/nginx-working.png)
 
 1. Stellen Sie eine SSH-Verbindung mit Ihrem virtuellen Computer her.
 
     ```bash
     ssh 13.69.75.209
     ```
+
 2. Löschen Sie „/var/www/html/index.nginx-debian.html“.
 
     ```bash
@@ -86,15 +86,15 @@ In diesem Beispiel wird beschrieben, wie Sie die nginx-Standardwebseite „/var/
     
 4. Aktualisieren Sie den Browser auf dem lokalen Computer durch Drücken von STRG+F5, um zu zeigen, dass diese nginx-Standardseite nicht mehr angezeigt wird.
 
-    ![nginx-Standardwebseite](./media/tutorial-backup-vms/nginx-broken.png)
+    ![Screenshot, der zeigt, dass die nginx-Standardseite nicht mehr angezeigt wird](./media/tutorial-backup-vms/nginx-broken.png)
     
 1. Melden Sie sich auf dem lokalen Computer beim [Azure-Portal](https://portal.azure.com/) an.
 6. Wählen Sie im Menü auf der linken Seite **Virtuelle Computer** aus. 
-7. Wählen Sie den virtuellen Computer in der Liste aus.
+7. Wählen Sie die VM in der Liste aus.
 8. Klicken Sie auf dem Blatt des virtuellen Computers im Abschnitt **Einstellungen** auf **Sicherung**. Das Blatt **Sicherung** wird geöffnet. 
 9. Wählen Sie im Menü oben auf dem Blatt die Option **Dateiwiederherstellung** aus. Das Blatt **Dateiwiederherstellung** wird geöffnet.
 10. Wählen Sie in **Schritt 1: Auswählen eines Wiederherstellungspunkts** in der Dropdownliste einen Wiederherstellungspunkt aus.
-11. Wählen Sie in **Schritt 2: Herunterladen des Skripts zum Suchen und Wiederherstellen von Dateien** die Schaltfläche **Ausführbare Datei herunterladen** aus. Speichern Sie die heruntergeladene Datei auf dem lokalen Computer.
+11. Geben Sie in **Step 2: Herunterladen des Skripts zum Suchen und Wiederherstellen von Dateien** die Schaltfläche **Ausführbare Datei herunterladen** aus. Speichern Sie die heruntergeladene Datei auf dem lokalen Computer.
 7. Klicken Sie auf **Skript herunterladen**, um die Skriptdatei lokal herunterzuladen.
 8. Öffnen Sie eine Bash-Eingabeaufforderung, und geben Sie Folgendes ein. Ersetzen Sie dabei *Linux_myVM_05-05-2017.sh* durch den richtigen Pfad und Dateinamen für das Skript, das Sie heruntergeladen haben, *Azureuser* durch den Benutzernamen für den virtuellen Computer und *13.69.75.209* durch die öffentliche IP-Adresse für Ihren virtuellen Computer.
     
@@ -122,7 +122,7 @@ In diesem Beispiel wird beschrieben, wie Sie die nginx-Standardwebseite „/var/
     
 12. Die Ausgabe des Skripts enthält den Pfad zum Bereitstellungspunkt. Die Ausgabe sieht in etwa wie folgt aus:
 
-    ```bash
+    ```output
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
                           
@@ -171,4 +171,3 @@ Im nächsten Tutorial erhalten Sie Informationen zur Überwachung virtueller Com
 
 > [!div class="nextstepaction"]
 > [Virtual machine governance with Azure PowerShell](tutorial-govern-resources.md) (Steuern von virtuellen Computern mit Azure PowerShell)
-

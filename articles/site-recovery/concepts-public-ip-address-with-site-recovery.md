@@ -1,5 +1,5 @@
 ---
-title: Verwenden von öffentlichen IP-Adressen nach einem Failover mit Azure Site Recovery | Microsoft-Dokumentation
+title: Zuweisen von öffentlichen IP-Adressen nach einem Failover mit Azure Site Recovery
 description: In diesem Artikel wird beschrieben, wie Sie öffentliche IP-Adressen mit Azure Site Recovery und Azure Traffic Manager für die Notfallwiederherstellung und Migration einrichten.
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 1f20818f0b899eede9fff05d71e98c8bffb94b0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01c2f61dcf024e8c9dbbd5b2ee11a479b3c16305
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101949"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86130281"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>Einrichten von öffentlichen IP-Adressen nach einem Failover
 
@@ -48,7 +48,7 @@ Weitere Informationen zu Failoverszenarios mit Traffic Manager:
 2. [Failover von Azure nach Azure](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) mit Traffic Manager 
 
 Die Einrichtung erfolgt wie folgt:
-- Erstellen Sie ein [Traffic Manager-Profil](../traffic-manager/traffic-manager-create-profile.md).
+- Erstellen Sie ein [Traffic Manager-Profil](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 - Erstellen Sie mithilfe der **prioritätsbasierten** Routingmethode zwei Endpunkte. Den **primären** Endpunkt für die Quelle und den **Failover**-Endpunkt für Azure. **Primary** erhält die Priorität 1 und **Failover** die Priorität 2.
 - Der **primäre** Endpunkt kann [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) oder eine [externe Quelle](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) sein, je nachdem, ob Ihre Quellumgebung sich innerhalb oder außerhalb von Azure befindet.
 - Der **Failover**-Endpunkt wird als **Azure**-Endpunkt erstellt. Verwenden Sie eine **statisch öffentliche IP-Adresse**, da diese bei einem Notfallereignis einen nach außen gerichteten Endpunkt für Traffic Manager darstellt.

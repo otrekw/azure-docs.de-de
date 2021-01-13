@@ -4,13 +4,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: a8f5fbaf7dbc566490e30fd99dcb078e671a6056
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b771b56c4513713ae2a6553f48f320f2d2d5f5cc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177837"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027764"
 ---
 > [!TIP]
-> Der Inhalt in diesem Artikel gilt für den ursprünglichen Azure-Tabellenspeicher. Jetzt ist aber ein Premiumangebot für Tabellenspeicher verfügbar. Dies ist die Azure Cosmos DB-Tabellen-API mit Tabellen mit optimiertem Durchsatz, globaler Verteilung und automatischen sekundären Indizes. Darüber hinaus bestehen einige [Funktionsunterschiede zwischen der Tabellen-API in Azure Cosmos DB und Azure-Tabellenspeicher](../articles/cosmos-db/faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior). Weitere Informationen sowie eine Möglichkeit zum Testen des Premiumangebots finden Sie unter [Einführung in Azure Cosmos DB: Tabelle-API](https://aka.ms/premiumtables). 
+> Der Inhalt in diesem Artikel gilt für den ursprünglichen Azure-Tabellenspeicher. Es gibt jedoch jetzt ein Premium-Angebot für Tabellenspeicher: die Azure Cosmos DB-Tabellen-API. Diese API bietet durchsatzoptimierte Tabellen, globale Verteilung und automatische sekundäre Indizes. Es gibt einige [Featureunterschiede zwischen der Tabellen-API in Azure Cosmos DB und Azure-Tabellenspeicher](../articles/cosmos-db/table-api-faq.md#table-api-vs-table-storage). Unter [Einführung in die Tabellen-API von Azure Cosmos DB](../articles/cosmos-db/table-introduction.md) erhalten Sie weitere Informationen und erfahren, wie Sie das Premiumangebot ausprobieren können. 
 >

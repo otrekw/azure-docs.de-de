@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 1ff7d430edd3f638ad5efcc5a89604e4ed732211
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: mqtt
+ms.openlocfilehash: 03e05eb2bc56a07c2bda3d3fb224012abb3c9e4a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400149"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735924"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Entwicklungsleitfaden für Azure IoT Hub
 
@@ -55,7 +56,7 @@ Dieses IoT Hub-Entwicklerhandbuch umfasst die folgenden Artikel:
 
 * Unter [Verwalten des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) wird das Sicherheitsmodell beschrieben, mit dem sowohl für Geräte als auch für Cloudkomponenten Zugriff auf IoT Hub-Funktionalität gewährt wird. Der Artikel enthält Informationen zum Verwenden von Token und X.509-Zertifikaten sowie Details zu den Berechtigungen, die Sie erteilen können.
 
-* [Verwenden von Gerätezwillingen zum Synchronisieren von Status und Konfigurationen](iot-hub-devguide-device-twins.md) beschreibt das Konzept der *Gerätezwillinge*. Zudem finden Sie in diesem Artikel auch Informationen zur Funktionalität von Gerätezwillingen, z. B. zur Synchronisierung eines Geräts mit dessen Gerätezwilling. Der Artikel enthält Informationen zu den Daten, die in einem Gerätezwilling gespeichert sind.
+* [Verwenden von Gerätezwillingen zum Synchronisieren von Status und Konfigurationen](iot-hub-devguide-device-twins.md) beschreibt das Konzept der *Gerätezwillinge* . Zudem finden Sie in diesem Artikel auch Informationen zur Funktionalität von Gerätezwillingen, z. B. zur Synchronisierung eines Geräts mit dessen Gerätezwilling. Der Artikel enthält Informationen zu den Daten, die in einem Gerätezwilling gespeichert sind.
 
 * [Aufrufen einer direkten Methode auf einem Gerät](iot-hub-devguide-direct-methods.md) beschreibt den Lebenszyklus einer direkten Methode. Der Artikel beschreibt, wie Sie Methoden für ein Gerät aus Ihrer Back-End-App aufrufen und die direkte Methode für Ihr Gerät anwenden.
 

@@ -4,28 +4,30 @@ description: Erfahren Sie, wie Sie SQL-Abfrageausführungsmetriken abrufen und e
 author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: girobins
-ms.openlocfilehash: 48b9a67de5c870a187ee008bd97265760ca6c341
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 66aefea441d78303ccd611d9df10eea985d61e7c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998367"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097395"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>Abrufen von SQL-Abfrageausführungsmetriken und Analysieren der Abfrageleistung mit dem .NET SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-In diesem Artikel wird veranschaulicht, wie Sie ein SQL-Abfrageleistungsprofil für Azure Cosmos DB erstellen. Die Profilerstellung kann mit dem aus dem .NET SDK abgerufenen Objekt `QueryMetrics` erfolgen. Dies wird hier näher erläutert. [QueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.querymetrics.aspx) ist ein stark typisiertes Objekt mit Informationen über die Back-End-Abfrageausführung. Diese Metriken werden im Artikel [Optimieren der Abfrageleistung](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) ausführlicher dokumentiert.
+In diesem Artikel wird veranschaulicht, wie Sie ein SQL-Abfrageleistungsprofil für Azure Cosmos DB erstellen. Die Profilerstellung kann mit dem aus dem .NET SDK abgerufenen Objekt `QueryMetrics` erfolgen. Dies wird hier näher erläutert. [QueryMetrics](/dotnet/api/microsoft.azure.documents.querymetrics) ist ein stark typisiertes Objekt mit Informationen über die Back-End-Abfrageausführung. Diese Metriken werden im Artikel [Optimieren der Abfrageleistung](./sql-api-query-metrics.md) ausführlicher dokumentiert.
 
 ## <a name="set-the-feedoptions-parameter"></a>Festlegen des FeedOptions-Parameters
 
-Alle Überladungen für [DocumentClient.CreateDocumentQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx) verwenden einen optionalen [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx)-Parameter. Durch diese Option kann die Abfrageausführung optimiert und parametrisiert werden. 
+Alle Überladungen für [DocumentClient.CreateDocumentQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentquery) verwenden einen optionalen [FeedOptions](/dotnet/api/microsoft.azure.documents.client.feedoptions)-Parameter. Durch diese Option kann die Abfrageausführung optimiert und parametrisiert werden. 
 
-Um die SQL-Abfrageausführungsmetriken erfassen zu können, müssen Sie den Parameter [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) in den [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) auf `true` festlegen. Wenn Sie `PopulateQueryMetrics` auf „true“ festlegen, enthält die `FeedResponse` die relevanten `QueryMetrics`. 
+Um die SQL-Abfrageausführungsmetriken erfassen zu können, müssen Sie den Parameter [PopulateQueryMetrics](/dotnet/api/microsoft.azure.documents.client.feedoptions.populatequerymetrics#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) in den [FeedOptions](/dotnet/api/microsoft.azure.documents.client.feedoptions) auf `true` festlegen. Wenn Sie `PopulateQueryMetrics` auf „true“ festlegen, enthält die `FeedResponse` die relevanten `QueryMetrics`. 
 
 ## <a name="get-query-metrics-with-asdocumentquery"></a>Abrufen von Abfragemetriken mit der AsDocumentQuery()-Methode
-Im folgenden Codebeispiel wird das Abrufen von Metriken mithilfe der [AsDocumentQuery()](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx)-Methode veranschaulicht:
+Im folgenden Codebeispiel wird das Abrufen von Metriken mithilfe der [AsDocumentQuery()](/dotnet/api/microsoft.azure.documents.linq.documentqueryable.asdocumentquery)-Methode veranschaulicht:
 
 ```csharp
 // Initialize this DocumentClient and Collection
@@ -62,7 +64,7 @@ while (documentQuery.HasMoreResults)
 ```
 ## <a name="aggregating-querymetrics"></a>Aggregieren von QueryMetrics
 
-Beachten Sie, dass im vorherigen Abschnitt mehrere Aufrufe der [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx)-Methode ausgeführt wurden. Jeder Aufruf gab ein `FeedResponse`-Objekt mit einem Wörterbuch von `QueryMetrics` zurück – eins für jede Fortsetzung der Abfrage. Im folgenden Beispiel ist das Aggregieren dieser `QueryMetrics` mithilfe von LINQ dargestellt:
+Beachten Sie, dass im vorherigen Abschnitt mehrere Aufrufe der [ExecuteNextAsync](/dotnet/api/microsoft.azure.documents.linq.idocumentquery-1.executenextasync)-Methode ausgeführt wurden. Jeder Aufruf gab ein `FeedResponse`-Objekt mit einem Wörterbuch von `QueryMetrics` zurück – eins für jede Fortsetzung der Abfrage. Im folgenden Beispiel ist das Aggregieren dieser `QueryMetrics` mithilfe von LINQ dargestellt:
 
 ```csharp
 List<QueryMetrics> queryMetricsList = new List<QueryMetrics>();
@@ -129,7 +131,7 @@ IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetri
 
 ## <a name="expensive-queries"></a>Ressourcenintensive Abfragen
 
-Sie können die von jeder Abfrage verbrauchten Anforderungseinheiten erfassen, um ressourcenintensive Abfragen oder Abfragen zu untersuchen, die einen hohen Durchsatz nutzen. Sie können die Anforderungsgebühr abrufen, indem Sie für das `FeedResponse`-Objekt die [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx)-Eigenschaft verwenden. Weitere Informationen zum Abrufen der Anforderungsgebühr mithilfe des Azure-Portals und verschiedener SDKs finden Sie im Artikel [Ermitteln der Gebühr für eine Anforderungseinheit](find-request-unit-charge.md).
+Sie können die von jeder Abfrage verbrauchten Anforderungseinheiten erfassen, um ressourcenintensive Abfragen oder Abfragen zu untersuchen, die einen hohen Durchsatz nutzen. Sie können die Anforderungsgebühr abrufen, indem Sie für das `FeedResponse`-Objekt die [RequestCharge](/dotnet/api/microsoft.azure.documents.client.feedresponse-1.requestcharge)-Eigenschaft verwenden. Weitere Informationen zum Abrufen der Anforderungsgebühr mithilfe des Azure-Portals und verschiedener SDKs finden Sie im Artikel [Ermitteln der Gebühr für eine Anforderungseinheit](find-request-unit-charge.md).
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -231,11 +233,11 @@ WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, 
 
 Diese Abfrage kann jetzt über den Index verarbeitet werden.
 
-Weitere Informationen zum Optimieren der Abfrageleistung finden Sie im Artikel [Optimieren der Abfrageleistung](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics).
+Weitere Informationen zum Optimieren der Abfrageleistung finden Sie im Artikel [Optimieren der Abfrageleistung](./sql-api-query-metrics.md).
 
-## <a id="References"></a>Referenzen
+## <a name="references"></a><a id="References"></a>Referenzen
 
-- [Azure Cosmos DB-SQL-Spezifikation](https://go.microsoft.com/fwlink/p/?LinkID=510612)
+- [Azure Cosmos DB-SQL-Spezifikation](./sql-query-getting-started.md)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 - [JSON](https://json.org/)
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 

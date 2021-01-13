@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 1f893f8e2ec03681697f15cd85685d4c99b13de6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898715"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151968"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Data Catalog
 Dieser Artikel bietet Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azure Data Catalog-Dienst.
@@ -55,7 +55,7 @@ Zum Übermitteln von Anfragen zu Features und anderem Feedback können Sie die [
 
 ## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>Warum erhalte ich den Fehler *Katalog bereits vorhanden*, wenn ich versuche, einen neuen Katalog zu erstellen?
 
-Wenn Sie Office 365 E5 mit Power BI Pro Lizenz erwerben, erstellt Microsoft automatisch einen Standardkatalog in der Region des Abonnements. Dieser Katalog verwendet die kostenlose SKU. Die Office 365/Power BI-Benutzerlizenz wird auf der Verwaltungsseite für Office 365 verwaltet. 
+Wenn Sie Office 365 E5 mit Power BI Pro Lizenz erwerben, erstellt Microsoft automatisch einen Standardkatalog in der Region des Abonnements. Dieser Katalog verwendet die kostenlose SKU. Die Office 365-/Power BI-Benutzerlizenz wird auf der Verwaltungsseite verwaltet. 
 
 Dieser Datenkatalogtyp verfügt jedoch nicht über eine **Administratoroption** und ist im **Azure-Portal** nicht sichtbar. Dieser Datenkatalogtyp kann nicht gelöscht werden. Ebenso ist es nicht zulässig, den Datenkatalog umzubenennen, und Sie können ihn nicht in eine andere Region verschieben. 
 
@@ -87,7 +87,7 @@ Die spezifischen Eigenschaften variieren je nach Datenquelle, aber im Allgemeine
 >
 
 > [!NOTE]
-> Für Datenquellen wie SQL Server Analysis Services, die über eine leistungsstarke **Description**-Eigenschaft verfügen, wird dieser Eigenschaftswert vom Data Catalog-Datenquellen-Registrierungstool extrahiert. Für relationale SQL Server-Datenbanken ohne leistungsstarke **Description**-Eigenschaft extrahiert das Data Catalog-Datenquellen-Registrierungstool den Wert aus der erweiterten **ms_description**-Eigenschaft für Objekte und Spalten. Weitere Informationen finden Sie unter [Verwenden von erweiterten Eigenschaften für Datenbankobjekte](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
+> Für Datenquellen wie SQL Server Analysis Services, die über eine leistungsstarke **Description**-Eigenschaft verfügen, wird dieser Eigenschaftswert vom Data Catalog-Datenquellen-Registrierungstool extrahiert. Für *lokale* relationale SQL Server-Datenbanken ohne leistungsstarke **Description**-Eigenschaft extrahiert das Data Catalog-Datenquellen-Registrierungstool den Wert aus der erweiterten **ms_description**-Eigenschaft für Objekte und Spalten. Diese Eigenschaft wird mit SQL Azure nicht unterstützt. Weitere Informationen finden Sie unter [Verwenden von erweiterten Eigenschaften für Datenbankobjekte](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)).
 >
 >
 
@@ -122,7 +122,7 @@ Data Catalog ist ein Clouddienst, der sowohl Clouddatenquellen als auch lokale D
 ## <a name="can-i-extract-more-or-richer-metadata-from-the-data-sources-i-register"></a>Können aus den von mir registrierten Datenquellen auch mehr oder umfangreichere Metadaten extrahiert werden?
 Wir arbeiten derzeit daran, die Funktionen von Data Catalog zu erweitern. Wenn zusätzliche Metadaten während der Registrierung aus der Datenquelle extrahiert werden sollen, können Sie dies in den [Azure-Foren für Feedback zu Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) vorschlagen (oder einen bereits vorhandenen Vorschlag unterstützen). 
 
-Falls Sie Spalten-/Schemametadaten, Vorschauversionen oder Datenprofile einbinden möchten, können Sie für Datenquellen, bei denen diese Metadaten nicht vom Datenquellen-Registrierungstool extrahiert werden, die Data Catalog-API zum Hinzufügen dieser Metadaten verwenden. Weitere Informationen finden Sie unter [Azure Data Catalog](https://docs.microsoft.com/rest/api/datacatalog/).
+Falls Sie Spalten-/Schemametadaten, Vorschauversionen oder Datenprofile einbinden möchten, können Sie für Datenquellen, bei denen diese Metadaten nicht vom Datenquellen-Registrierungstool extrahiert werden, die Data Catalog-API zum Hinzufügen dieser Metadaten verwenden. Weitere Informationen finden Sie unter [Azure Data Catalog](/rest/api/datacatalog/).
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>Wie kann ich die Sichtbarkeit der registrierten Datenobjekte so einschränken, dass nur bestimmte Personen sie ermitteln können?
 Wählen Sie die Datenobjekte in Data Catalog aus, und klicken Sie auf die Schaltfläche **Besitz übernehmen**. Besitzer von Datenobjekten in Data Catalog können die Einstellungen zur Sichtbarkeit ändern, um entweder für alle Benutzer die Ermittlung der im Besitz befindlichen Ressourcen zuzulassen oder die Sichtbarkeit auf bestimmte Benutzer zu beschränken. Weitere Informationen finden Sie unter [Verwalten von Datenobjekten in Azure Data Catalog](data-catalog-how-to-manage.md).

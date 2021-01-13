@@ -1,26 +1,26 @@
 ---
-title: Entwurf für Hochverfügbarkeit mit Azure ExpressRoute | Microsoft-Dokumentation
+title: 'Azure ExpressRoute: Entwerfen für Hochverfügbarkeit'
 description: Diese Seite enthält architektonische Empfehlungen für Hochverfügbarkeit bei Verwendung von Azure ExpressRoute.
-documentationcenter: na
-services: networking
-author: rambk
-manager: tracsman
+services: expressroute
+author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 06/28/2019
-ms.author: rambala
-ms.openlocfilehash: 4984b30daf6170873cad9472bfed2d879af57efe
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.author: duau
+ms.openlocfilehash: 3602c3944e8731263fbb55f024c276783950329f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67466643"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "92202360"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Entwurf für Hochverfügbarkeit mit ExpressRoute
 
 ExpressRoute wurde für Hochverfügbarkeit entwickelt, um Konnektivität für private Netzwerke mit Microsoft-Ressourcen auf Netzbetreiberniveau bereitzustellen. Das heißt, gibt es keine einzelne Fehlerquelle im ExpressRoute-Pfad im Microsoft-Netzwerk. Um die Verfügbarkeit zu maximieren, sollten auch das Kunden- und das Dienstanbietersegment Ihrer ExpressRoute-Verbindung auf Hochverfügbarkeit ausgelegt sein. In diesem Artikel werden zunächst Überlegungen zur Netzwerkarchitektur für den Aufbau einer robusten Netzwerkverbindung mit einer ExpressRoute-Verbindung angestellt, dann werden die Optimierungsmöglichkeiten untersucht, die Ihnen helfen, die Hochverfügbarkeit Ihrer ExpressRoute-Verbindung zu verbessern.
 
+>[!NOTE]
+>Die in diesem Artikel beschriebenen Konzepte gelten gleichermaßen, wenn eine ExpressRoute-Leitung innerhalb oder außerhalb eine Virtual WAN erstellt wird.
+>
 
 ## <a name="architecture-considerations"></a>Überlegungen zur Architektur
 
@@ -93,12 +93,8 @@ In diesem Artikel haben wir erläutert, wie Sie die Hochverfügbarkeit der Konne
 
 
 <!--Link References-->
-[zone redundant vgw]: https://docs.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways
-[conf zone redundant vgw]: https://docs.microsoft.com/azure/vpn-gateway/create-zone-redundant-vnet-gateway
-[Configure Global Reach]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-set-global-reach
-[BFD]: https://docs.microsoft.com/azure/expressroute/expressroute-bfd
-[DR]: https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering
-
-
-
-
+[zone redundant vgw]: ../vpn-gateway/about-zone-redundant-vnet-gateways.md
+[conf zone redundant vgw]: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+[Configure Global Reach]: ./expressroute-howto-set-global-reach.md
+[BFD]: ./expressroute-bfd.md
+[DR]: ./designing-for-disaster-recovery-with-expressroute-privatepeering.md

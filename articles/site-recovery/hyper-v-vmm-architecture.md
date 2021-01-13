@@ -1,23 +1,23 @@
 ---
-title: Architektur für die Hyper-V-Notfallwiederherstellung in einem sekundären lokalen Standort mit Azure Site Recovery
+title: Architektur für die Hyper-V-Notfallwiederherstellung an einem sekundären Standort mit Azure Site Recovery
 description: Dieser Artikel bietet einen Überblick über die Architektur für die Notfallwiederherstellung lokaler Hyper-V-VMs in einem sekundären System Center-VMM-Standort mit Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 2d8e9c3531e031538c593cfd60d83b4ae97b4f4c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 703a6afdc12c8a9863ff0f480ec7a577ec31ef77
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813730"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87495997"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektur – Hyper-V-Replikation an einem sekundären Standort
 
 Dieser Artikel beschreibt die Komponenten und Prozesse bei der Replikation lokaler virtueller Hyper-V-Computer (Virtual Machines, VMs) in System Center-VMM-Clouds (Virtual Machine Manager) an einem sekundären VMM-Standort mithilfe des Diensts [Azure Site Recovery](site-recovery-overview.md) über das Azure-Portal.
-
+a
 
 ## <a name="architectural-components"></a>Komponenten der Architektur
 
@@ -32,11 +32,11 @@ Die folgende Tabelle und Grafik bietet eine Übersicht der Komponenten, die für
 
 **Lokal-zu-lokal-Architektur**
 
-![Lokal zu lokal](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
+![Diagramm, das den Schutz zwischen lokalen Standorten anzeigt](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
 
 ## <a name="replication-process"></a>Replikationsprozess
 
-1. Wenn die erste Replikation ausgelöst wird, wird eine [Momentaufnahem der Hyper-V-VM](https://technet.microsoft.com/library/dd560637.aspx) erstellt.
+1. Wenn die erste Replikation ausgelöst wird, wird eine [Momentaufnahem der Hyper-V-VM](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10)) erstellt.
 2. Virtuelle Festplatten auf der VM werden nacheinander an den sekundären Standort repliziert.
 3. Falls während der ersten Replikation Datenträgeränderungen auftreten, werden die Änderungen mit dem Replication Tracker für Hyper-V-Replikate in Form von Hyper-V-Replikationsprotokollen (.hrl) nachverfolgt. Diese Protokolldateien befinden sich im gleichen Ordner wie die Datenträger. Jeder Datenträger verfügt über eine zugeordnete HRL-Datei, die an den sekundären Speicher gesendet wird. Beachten Sie, dass die Momentaufnahme- und Protokolldateien Festplattenressourcen belegen, während die anfängliche Replikation durchgeführt wird.
 4. Nach Abschluss der ersten Replikation wird die Momentaufnahme des virtuellen Computers gelöscht, und die Deltareplikation beginnt.

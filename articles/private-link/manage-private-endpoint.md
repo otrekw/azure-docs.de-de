@@ -2,17 +2,17 @@
 title: Verwalten einer Verbindung mit einem privaten Endpunkt in Azure
 description: Informationen zum Verwalten von Verbindungen mit einem privaten Endpunkt in Azure
 services: private-link
-author: KumudD
+author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 012b236e997ef9144eaab43862f5f4dd2b324fff
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.author: allensu
+ms.openlocfilehash: 2987cd1ff8c678f7079e13e8b9bc657817c066f1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104631"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95531371"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Verwalten einer Verbindung mit einem privatem Endpunkt
 Azure Private Link arbeitet an einem Ablaufmodell für den Genehmigungsaufruf, bei dem der Private Link-Dienstconsumer eine Verbindung mit dem Dienstanbieter anfordern kann, um den Dienst zu nutzen. Der Dienstanbieter kann dann entscheiden, ob er es dem Consumer gestattet, die Verbindung herzustellen. Azure Private Link ermöglicht es den Dienstanbietern, die private Endpunktverbindung über ihre Ressourcen zu verwalten. Dieser Artikel enthält Anweisungen zur Verwaltung der privaten Endpunktverbindungen.
@@ -20,8 +20,8 @@ Azure Private Link arbeitet an einem Ablaufmodell für den Genehmigungsaufruf, b
 ![Verwalten von privaten Endpunkten](media/manage-private-endpoint/manage-private-endpoint.png)
 
 Es gibt zwei Methoden zur Genehmigung von Verbindungen, aus denen ein Private Link-Dienstconsumer auswählen kann:
-- **Automatisch**: Wenn der Dienstconsumer über RBAC-Berechtigungen auf der Dienstanbieterressource verfügt, kann der Consumer die automatische Genehmigungsmethode auswählen. In diesem Fall ist keine Aktion des Dienstanbieters erforderlich, wenn die Anforderung die Ressource des Dienstanbieters erreicht, und die Verbindung wird automatisch genehmigt. 
-- **Manuell**: Im Gegensatz dazu kann der Consumer die manuelle Genehmigungsmethode auswählen, wenn der Dienstconsumer nicht über RBAC-Berechtigungen auf der Ressource des Dienstanbieters verfügt. In diesem Fall wird die Verbindungsanforderung auf den Dienstressourcen als **Ausstehend** angezeigt. Der Dienstanbieter muss die Anforderung manuell genehmigen, bevor Verbindungen hergestellt werden können. In manuellen Fällen kann der Dienstconsumer auch eine Nachricht mit der Anforderung angeben, dem Dienstanbieter mehr Kontext bereitzustellen. Der Dienstanbieter hat folgende Optionen für alle privaten Endpunktverbindungen zur Auswahl: **Genehmigt**, **Ablehnen**, **Entfernen**.
+- **Automatisch**: Wenn der Dienstconsumer über Azure RBAC-Berechtigungen für die Dienstanbieterressource verfügt, kann der Consumer die automatische Genehmigungsmethode auswählen. In diesem Fall ist keine Aktion des Dienstanbieters erforderlich, wenn die Anforderung die Ressource des Dienstanbieters erreicht, und die Verbindung wird automatisch genehmigt. 
+- **Manuell**: Im Gegensatz dazu kann der Consumer die manuelle Genehmigungsmethode auswählen, wenn der Dienstconsumer nicht über Azure RBAC-Berechtigungen für die Ressource des Dienstanbieters verfügt. In diesem Fall wird die Verbindungsanforderung auf den Dienstressourcen als **Ausstehend** angezeigt. Der Dienstanbieter muss die Anforderung manuell genehmigen, bevor Verbindungen hergestellt werden können. In manuellen Fällen kann der Dienstconsumer auch eine Nachricht mit der Anforderung angeben, dem Dienstanbieter mehr Kontext bereitzustellen. Der Dienstanbieter hat folgende Optionen für alle privaten Endpunktverbindungen zur Auswahl: **Genehmigt**, **Ablehnen**, **Entfernen**.
 
 Die folgende Tabelle zeigt die verschiedenen Aktionen des Dienstanbieters und die daraus resultierenden Verbindungszustände für private Endpunkte.  Der Dienstanbieter kann auch den Verbindungszustand der privaten Endpunktverbindung zu einem späteren Zeitpunkt ohne Eingriff des Consumers ändern. Durch die Aktion wird der Zustand des Endpunkts auf der Consumerseite aktualisiert. 
 

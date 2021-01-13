@@ -1,25 +1,16 @@
 ---
-title: Übersicht über Azure Service Fabric-Überwachung und -Diagnose | Microsoft-Dokumentation
+title: Übersicht über Azure Service Fabric-Überwachung und -Diagnose
 description: Erfahren Sie mehr über die Überwachung und Diagnose für Cluster, Anwendungen und Dienste von Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: a6c32058c68adbfd11a4cede6332b42076bea015
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25a50a2841a03929804be45be8012f9b5d0457ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60952067"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91357130"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Überwachung und Diagnose für Azure Service Fabric
 
@@ -48,7 +39,7 @@ Service Fabric bietet einen umfassenden Satz von sofort einsatzfähigen Ereignis
 
 * EventStore: EventStore ist eine Funktion der Plattform, die Ereignisse der Service Fabric-Plattform bereitstellt, die in Service Fabric Explorer und über die REST-API verfügbar sind. Sie können eine Momentaufnahmeansicht der Vorgänge in Ihrem Cluster für jede Entität (z.B. Knoten, Dienst, Anwendung und Abfrage) basierend auf dem Zeitpunkt des Ereignisses anzeigen. Weitere Informationen zu EventStore finden Sie auch unter [Übersicht über EventStore](service-fabric-diagnostics-eventstore.md).    
 
-![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
+![Screenshot: Registerkarte „EREIGNISSE“ des Bereichs „Knoten“ mit mehreren Ereignissen, einschließlich eines NodeDown-Ereignisses.](media/service-fabric-diagnostics-overview/eventstore.png)
 
 Die Diagnosen stehen bereits standardmäßig als umfassender Satz von Ereignissen zur Verfügung. Diese [Service Fabric-Ereignisse](service-fabric-diagnostics-events.md) stellen Aktionen dar, die von der Plattform für unterschiedliche Entitäten wie Knoten, Anwendungen, Dienste, Partitionen usw. ausgeführt wurden. Wenn im letzten der obigen Szenarien ein Knoten ausfällt, gibt die Plattform ein Ereignis vom Typ `NodeDown` aus, und Sie werden umgehend von Ihrem bevorzugten Überwachungstool informiert. Andere gängige Beispiele wären etwa `ApplicationUpgradeRollbackStarted` oder `PartitionReconfigured` während eines Failovers. **In Windows- und Linux-Clustern stehen jeweils die gleichen Ereignisse zur Verfügung.**
 
@@ -101,4 +92,4 @@ Wichtige Aspekte für jede Plattform sind unter anderem, wie gut Sie mit der Ben
 * Informieren Sie sich unter [Tutorial: Überwachen von Windows-Containern unter Service Fabric mit Azure Monitor-Protokollen](service-fabric-tutorial-monitoring-wincontainers.md) darüber, wie Sie Azure Monitor-Protokolle für die Überwachung von Containern einrichten.
 * Beispiele für Diagnoseprobleme und die entsprechenden Lösungen mit Service Fabric finden Sie unter [Diagnostizieren häufiger Szenarien mit Service Fabric](service-fabric-diagnostics-common-scenarios.md).
 * Informationen zu anderen Diagnoseprodukten, die in Service Fabric integriert werden können, finden Sie unter [Azure Service Fabric Monitoring Partners](service-fabric-diagnostics-partners.md) (Partner für Azure Service Fabric-Überwachung).
-* Informieren Sie sich über die allgemeinen Empfehlungen zur Überwachung von Azure-Ressourcen: [Überwachung und Diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). 
+* Informieren Sie sich über die allgemeinen Empfehlungen zur Überwachung von Azure-Ressourcen: [Überwachung und Diagnose](/azure/architecture/best-practices/monitoring). 

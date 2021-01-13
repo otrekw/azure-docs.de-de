@@ -1,18 +1,18 @@
 ---
-title: Auswählen einer Technologie für Echtzeitanalysen und -Streamingverarbeitung in Azure
+title: Auswählen einer Echtzeit- und Streamverarbeitungslösung in Azure
 description: Erfahren Sie, wie Sie die richtige Technologie für Echtzeitanalysen und -Streamingverarbeitung auswählen, um Ihre Anwendung in Azure zu erstellen.
-author: zhongc
-ms.author: zhongc
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: f46a35d971c008b61d4899e30101ea562d3cefea
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: a204aacc0061091e0a273581e766bb669d191f0b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483409"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90903705"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Auswählen einer Technologie für Echtzeitanalysen und -Streamingverarbeitung in Azure
 
@@ -42,10 +42,6 @@ Azure Stream Analytics verfügt über eine umfangreiche direkt verwendungsbereit
 
 ## <a name="when-to-use-other-technologies"></a>Verwendung anderer Technologien
 
-### <a name="you-need-to-input-from-or-output-to-kafka"></a>Notwendigkeit der Ein- oder Ausgabe in Kafka
-
-Azure Stream Analytics umfasst keinen Apache Kafka-Eingabeadapter oder -Ausgabeadapter. Wenn Ereignisse in Kafka eingehen oder an Kafka gesendet werden sollen und keine Notwendigkeit besteht, Ihren eigenen Kafka-Cluster auszuführen, können Sie Stream Analytics weiterhin verwenden, indem Sie Ereignisse über die Event Hubs-Kafka-API an Event Hubs senden, ohne den Absender von Ereignissen zu ändern. Wenn Sie Ihren eigenen Kafka-Cluster ausführen müssen, können Sie das strukturierte Spark-Streaming verwenden, das unter [Azure Databricks](../azure-databricks/index.yml) oder unter Storm in [Azure HDInsight](../hdinsight/storm/apache-storm-overview.md) vollständig unterstützt wird.
-
 ### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>UDFs, UDAs und benutzerdefinierte Deserialisierer in einer anderen Programmiersprache als JavaScript oder C#
 
 Azure Stream Analytics unterstützt benutzerdefinierte Funktionen (UDF) oder benutzerdefinierte Aggregate (UDA) in JavaScript für Cloudaufträge und in C# für IoT Edge-Aufträge. Benutzerdefinierte C#-Deserialisierer werden auch unterstützt. Wenn Sie einen Deserialisierer, eine benutzerdefinierte Funktion oder ein benutzerdefiniertes Aggregat in anderen Programmiersprachen (z. B. Java oder Python) implementieren möchten, können Sie das strukturierte Spark-Streaming verwenden. Sie können außerdem den **EventProcessorHost** von Event Hubs auf Ihren virtuellen Computern ausführen, um eine beliebige Streamingverarbeitung durchzuführen.
@@ -59,4 +55,4 @@ Azure Stream Analytics ist die proprietäre Technologie von Microsoft und steht 
 * [Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals](stream-analytics-quick-create-portal.md)
 * [Erstellen eines Stream Analytics-Auftrags mithilfe von Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Erstellen eines Stream Analytics-Auftrags mithilfe von Visual Studio](stream-analytics-quick-create-vs.md)
-* [Erstellen eines Stream Analytics-Auftrags mithilfe von Visual Studio Code](quick-create-vs-code.md)
+* [Erstellen eines Stream Analytics-Auftrags mithilfe von Visual Studio Code](quick-create-visual-studio-code.md)

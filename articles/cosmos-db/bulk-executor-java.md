@@ -1,34 +1,36 @@
 ---
-title: Verwenden der BulkExecutor-Java-Bibliothek zum Ausführen von Massenimport- und -aktualisierungsvorgängen in Azure Cosmos DB
-description: Massenimport und -aktualisierung von Azure Cosmos DB-Dokumenten mithilfe der BulkExecutor-Java-Bibliothek.
+title: Verwenden der BulkExecutor-Java-Bibliothek in Azure Cosmos DB zum Ausführen von Massenimport- und -aktualisierungsvorgängen
+description: Massenimport und -aktualisierung von Azure Cosmos DB-Dokumenten mithilfe der BulkExecutor-Java-Bibliothek
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: conceptual
-ms.date: 05/28/2019
+ms.topic: how-to
+ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: ef006e94ee22886f1129c7c9ca31e20503312fe3
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.custom: devx-track-java
+ms.openlocfilehash: 89d21e4464cb3c7578b68d68009065ab7848ed19
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616927"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092533"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Verwenden der BulkExecutor-Java-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Dieses Tutorial bietet Anleitungen zum Verwenden der BulkExecutor-Java-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Azure Cosmos DB-Dokumenten. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). In diesem Tutorial erstellen Sie eine Java-Anwendung, die zufällige Dokumente generiert. Diese werden per Massenvorgang in einen Azure Cosmos-Container importiert. Nach dem Importieren aktualisieren Sie per Massenvorgang einige Eigenschaften eines Dokuments. 
+Dieses Tutorial bietet Anleitungen zum Verwenden der Bulk Executor-Java-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Azure Cosmos DB-Dokumenten. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). In diesem Tutorial erstellen Sie eine Java-Anwendung, die zufällige Dokumente generiert. Diese werden per Massenvorgang in einen Azure Cosmos-Container importiert. Nach dem Importieren aktualisieren Sie per Massenvorgang einige Eigenschaften eines Dokuments. 
 
-Zurzeit wird die BulkExecutor-Bibliothek nur von Azure Cosmos DB-SQL-API- und Gremlin-API-Konten unterstützt. In diesem Artikel wird beschrieben, wie Sie die BulkExecutor-Java-Bibliothek mit SQL-API-Konten verwenden. Weitere Informationen zum Verwenden der BulkExecutor-.NET-Bibliothek mit der Gremlin-API finden Sie unter [Ausführen von Massenvorgängen in der Azure Cosmos DB Gremlin-API](bulk-executor-graph-dotnet.md).
+Zurzeit wird die BulkExecutor-Bibliothek nur von Azure Cosmos DB-SQL-API- und Gremlin-API-Konten unterstützt. In diesem Artikel wird beschrieben, wie Sie die BulkExecutor-Java-Bibliothek mit SQL-API-Konten verwenden. Weitere Informationen zum Verwenden der BulkExecutor-.NET-Bibliothek mit der Gremlin-API finden Sie unter [Ausführen von Massenvorgängen in der Azure Cosmos DB Gremlin-API](bulk-executor-graph-dotnet.md). Die beschriebene BulkExecutor-Bibliothek ist nur für [Azure Cosmos DB Java sync SDK v2](sql-api-sdk-java.md) verfügbar und wird aktuell als Lösung für die Unterstützung von Java-Massenvorgängen empfohlen. Für die Versionen 3.x und 4.x sowie für andere höhere SDK-Versionen ist sie nicht verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.  
 
-* Sie können [Azure Cosmos DB ohne Azure-Abonnement kostenlos und unverbindlich testen](https://azure.microsoft.com/try/cosmosdb/). Alternativ dazu können Sie den [Azure Cosmos DB-Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) mit dem Endpunkt `https://localhost:8081` verwenden. Den Primärschlüssel finden Sie unter [Authentifizieren von Anforderungen](local-emulator.md#authenticating-requests).  
+* Sie können [Azure Cosmos DB ohne Azure-Abonnement kostenlos und unverbindlich testen](https://azure.microsoft.com/try/cosmosdb/). Alternativ dazu können Sie den [Azure Cosmos DB-Emulator](./local-emulator.md) mit dem Endpunkt `https://localhost:8081` verwenden. Den Primärschlüssel finden Sie unter [Authentifizieren von Anforderungen](local-emulator.md#authenticate-requests).  
 
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)  
+* [Java Development Kit (JDK) 1.7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)  
   - Führen Sie unter Ubuntu `apt-get install default-jdk` aus, um das JDK zu installieren.  
 
   - Achten Sie darauf, dass die Umgebungsvariable „JAVA_HOME“ auf den Ordner verweist, in dem das JDK installiert ist.
@@ -43,7 +45,7 @@ Zurzeit wird die BulkExecutor-Bibliothek nur von Azure Cosmos DB-SQL-API- und G
 
 Beginnen Sie jetzt mit der Arbeit mit Code, indem Sie eine Java-Beispielanwendung von GitHub herunterladen. Diese Anwendung führt Massenvorgänge für Azure Cosmos DB-Daten aus. Um die Anwendung zu klonen, öffnen Sie eine Eingabeaufforderung, navigieren Sie zu dem Verzeichnis, in das Sie die Anwendung kopieren möchten, und führen Sie den folgenden Befehl aus:
 
-```
+```bash
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
@@ -51,7 +53,7 @@ Das geklonte Repository enthält zwei Beispiele „bulkimport“ und „bulkupda
 
 ## <a name="bulk-import-data-to-azure-cosmos-db"></a>Massenimport von Daten in Azure Cosmos DB
 
-1. Die Verbindungszeichenfolgen von Azure Cosmos DB werden als Argumente gelesen und Variablen zugewiesen, die in der Datei „CmdLineConfiguration.java“ definiert sind.  
+1. Die Verbindungszeichenfolgen von Azure Cosmos DB werden als Argumente gelesen und Variablen zugewiesen, die in der Datei „CmdLineConfiguration.java“ definiert sind.  
 
 2. Als Nächstes wird mit folgenden Anweisungen das DocumentClient-Objekt initialisiert:  
 
@@ -93,7 +95,7 @@ Das geklonte Repository enthält zwei Beispiele „bulkimport“ und „bulkupda
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
    ```
-   Die Massenimport-API akzeptiert eine Sammlung von JSON-serialisierten Dokumenten und weist die folgende Syntax auf – weitere Informationen finden Sie in der [API-Dokumentation](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
+   Die Massenimport-API akzeptiert eine Sammlung von JSON-serialisierten Dokumenten und weist die folgende Syntax auf – weitere Informationen finden Sie in der [API-Dokumentation](/java/api/com.microsoft.azure.documentdb.bulkexecutor):
 
    ```java
    public BulkImportResponse importAll(
@@ -118,28 +120,28 @@ Das geklonte Repository enthält zwei Beispiele „bulkimport“ und „bulkupda
    |int getNumberOfDocumentsImported()  |   Die Gesamtanzahl von Dokumenten, die von allen an den Massenimport-API-Aufruf gesendeten Dokumenten erfolgreich importiert wurden.      |
    |double getTotalRequestUnitsConsumed()   |  Die Gesamtanzahl von Anforderungseinheiten, die vom Massenimport-API-Aufruf verbraucht wurden.       |
    |Duration getTotalTimeTaken()   |    Die Gesamtzeit, die der Massenimport-API-Aufruf benötigt, um die Ausführung abzuschließen.     |
-   |List\<Ausnahme> getErrors() |  Ruft die Liste der Fehler ab, wenn einige der im Batch an den Massenimport-API-Aufruf übermittelten Dokumente nicht eingefügt werden konnten.       |
-   |List\<Objekt> getBadInputDocuments()  |    Die Liste der Dokumente mit ungültigem Format, die im Massenimport-API-Aufruf nicht erfolgreich importiert wurden. Benutzer sollten die zurückgegebenen Dokumente korrigieren und den Import wiederholen. Zu Dokumenten mit ungültigem Format gehören auch Dokumente, deren ID-Wert keine Zeichenfolge ist (NULL-Werte oder andere Datentypen werden als ungültig betrachtet).     |
+   |List\<Exception> getErrors() |  Ruft die Liste der Fehler ab, wenn einige der im Batch an den Massenimport-API-Aufruf übermittelten Dokumente nicht eingefügt werden konnten.       |
+   |List\<Object> getBadInputDocuments()  |    Die Liste der Dokumente mit ungültigem Format, die im Massenimport-API-Aufruf nicht erfolgreich importiert wurden. Benutzer sollten die zurückgegebenen Dokumente korrigieren und den Import wiederholen. Zu Dokumenten mit ungültigem Format gehören auch Dokumente, deren ID-Wert keine Zeichenfolge ist (NULL-Werte oder andere Datentypen werden als ungültig betrachtet).     |
 
 5. Wenn die Massenimportanwendung fertig ist, erstellen Sie das Befehlszeilenprogramm aus der Quelle, indem Sie den Befehl „mvn clean package“ ausführen. Dieser Befehl generiert eine JAR-Datei im Zielordner:  
 
-   ```java
+   ```bash
    mvn clean package
    ```
 
 6. Nachdem die Zielabhängigkeiten generiert wurden, können Sie die Anwendung für den Massenimport mithilfe des folgenden Befehls aufrufen:  
 
-   ```java
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB’s endpoint>*  -masterKey *<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   ```bash
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's primary key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
    Die Massenimportanwendung erstellt eine neue Datenbank und eine Sammlung mit dem Datenbanknamen, dem Sammlungsname und Durchsatzwerten, die in der App.config-Datei angegeben sind. 
 
 ## <a name="bulk-update-data-in-azure-cosmos-db"></a>Massenaktualisierung von Daten in Azure Cosmos DB
 
-Sie können vorhandene Dokumente mithilfe der BulkUpdateAsync-API aktualisieren. In diesem Beispiel legen Sie das Feld „Name“ auf einen neuen Wert fest und entfernen das Feld „Description“ aus den vorhandenen Dokumenten. Alle unterstützten Vorgänge zum Aktualisieren von Feldern finden Sie in der [API-Dokumentation](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor). 
+Sie können vorhandene Dokumente mithilfe der BulkUpdateAsync-API aktualisieren. In diesem Beispiel legen Sie das Feld „Name“ auf einen neuen Wert fest und entfernen das Feld „Description“ aus den vorhandenen Dokumenten. Alle unterstützten Vorgänge zum Aktualisieren von Feldern finden Sie in der [API-Dokumentation](/java/api/com.microsoft.azure.documentdb.bulkexecutor). 
 
-1. Definiert die Aktualisierungselemente zusammen mit den entsprechenden Vorgängen zum Aktualisieren von Feldern. In diesem Beispiel verwenden Sie SetUpdateOperation zum Aktualisieren des Felds „Name“ und UnsetUpdateOperation zum Entfernen des Felds „Description“ aus allen Dokumenten. Sie können auch andere Vorgänge ausführen, wie z.B. das inkrementelle Erhöhen eines Dokumentfelds um einen bestimmten Wert, das Verschieben bestimmter Werte in ein Arrayfeld oder das Entfernen eines bestimmten Werts aus einem Arrayfeld. Informationen zu den verschiedenen Methoden, die von der API für die Massenaktualisierung bereitgestellt werden, finden Sie in der [API-Dokumentation](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor).  
+1. Definiert die Aktualisierungselemente zusammen mit den entsprechenden Vorgängen zum Aktualisieren von Feldern. In diesem Beispiel verwenden Sie SetUpdateOperation zum Aktualisieren des Felds „Name“ und UnsetUpdateOperation zum Entfernen des Felds „Description“ aus allen Dokumenten. Sie können auch andere Vorgänge ausführen, wie z.B. das inkrementelle Erhöhen eines Dokumentfelds um einen bestimmten Wert, das Verschieben bestimmter Werte in ein Arrayfeld oder das Entfernen eines bestimmten Werts aus einem Arrayfeld. Informationen zu den verschiedenen Methoden, die von der API für die Massenaktualisierung bereitgestellt werden, finden Sie in der [API-Dokumentation](/java/api/com.microsoft.azure.documentdb.bulkexecutor).  
 
    ```java
    SetUpdateOperation<String> nameUpdate = new SetUpdateOperation<>("Name","UpdatedDocValue");
@@ -150,7 +152,7 @@ Sie können vorhandene Dokumente mithilfe der BulkUpdateAsync-API aktualisieren.
    updateOperations.add(descriptionUpdate);
 
    List<UpdateItem> updateItems = new ArrayList<>(cfg.getNumberOfDocumentsForEachCheckpoint());
-   IntStream.range(0, cfg.getNumberOfDocumentsForEachCheckpoint()).mapToObj(j -> {                      
+   IntStream.range(0, cfg.getNumberOfDocumentsForEachCheckpoint()).mapToObj(j -> {                        
     return new UpdateItem(Long.toString(prefix + j), Long.toString(prefix + j), updateOperations);
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
@@ -161,7 +163,7 @@ Sie können vorhandene Dokumente mithilfe der BulkUpdateAsync-API aktualisieren.
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
    ```
 
-   Die Massenaktualisierungs-API akzeptiert eine Sammlung von Elementen, die aktualisiert werden sollen. Jedes Aktualisierungselement gibt die Liste der Feldaktualisierungsvorgänge an, die für ein durch eine ID und einen Partitionsschlüsselwert identifiziertes Dokument ausgeführt werden sollen – weitere Einzelheiten finden Sie in der [API-Dokumentation](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
+   Die Massenaktualisierungs-API akzeptiert eine Sammlung von Elementen, die aktualisiert werden sollen. Jedes Aktualisierungselement gibt die Liste der Feldaktualisierungsvorgänge an, die für ein durch eine ID und einen Partitionsschlüsselwert identifiziertes Dokument ausgeführt werden sollen – weitere Einzelheiten finden Sie in der [API-Dokumentation](/java/api/com.microsoft.azure.documentdb.bulkexecutor):
 
    ```java
    public BulkUpdateResponse updateAll(
@@ -182,18 +184,19 @@ Sie können vorhandene Dokumente mithilfe der BulkUpdateAsync-API aktualisieren.
    |int getNumberOfDocumentsUpdated()  |   Die Gesamtanzahl von Dokumenten, die von allen an den Massenaktualisierungs-API-Aufruf gesendeten Dokumenten erfolgreich aktualisiert wurden.      |
    |double getTotalRequestUnitsConsumed() |  Die Gesamtanzahl von Anforderungseinheiten, die vom Massenaktualisierungs-API-Aufruf verbraucht wurden.       |
    |Duration getTotalTimeTaken()  |   Die Gesamtzeit, die der Massenaktualisierungs-API-Aufruf benötigt, um die Ausführung abzuschließen.      |
-   |List\<Ausnahme> getErrors()   |    Ruft die Liste der Fehler ab, wenn einige der im Batch an den Massenaktualisierungs-API-Aufruf übermittelten Dokumente nicht eingefügt werden konnten.      |
+   |List\<Exception> getErrors()   |       Ruft die Liste der Betriebs- oder Netzwerkprobleme im Zusammenhang mit dem Aktualisierungsvorgang ab.      |
+   |List\<BulkUpdateFailure> getFailedUpdates()   |       Ruft die Liste der Aktualisierungen, die nicht abgeschlossen werden konnten, zusammen mit den spezifischen Ausnahmen ab, die zu den Fehlern geführt haben.|
 
 3. Wenn die Massenaktualisierungsanwendung fertig ist, erstellen Sie das Befehlszeilenprogramm aus der Quelle, indem Sie den Befehl „mvn clean package“ ausführen. Dieser Befehl generiert eine JAR-Datei im Zielordner:  
 
-   ```
+   ```bash
    mvn clean package
    ```
 
 4. Nachdem die Zielabhängigkeiten generiert wurden, können Sie die Anwendung für die Massenaktualisierung mithilfe des folgenden Befehls aufrufen:
 
-   ```
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB’s endpoint>* -masterKey **<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   ```bash
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's primary key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
 ## <a name="performance-tips"></a>Leistungstipps 
@@ -203,7 +206,7 @@ Berücksichtigen Sie bei der Verwendung der BulkExecutor-Bibliothek die folgende
 * Um die beste Leistung zu erzielen, führen Sie Ihre Anwendung auf einem virtuellen Azure-Computer in der Region aus, die Sie für Ihre Cosmos DB-Kontoschreibvorgänge verwenden.  
 * So erzielen Sie einen höheren Durchsatz:  
 
-   * Legen Sie die JVM-Heapgröße auf einen Wert fest, der so hoch ist, dass Arbeitsspeicherprobleme bei der Verarbeitung einer großen Anzahl von Dokumenten vermieden werden. Empfohlene Heapgröße: max(3GB, 3 * sizeof(all documents passed to bulk import API in one batch)).  
+   * Legen Sie die JVM-Heapgröße auf einen Wert fest, der hoch genug ist, um Arbeitsspeicherprobleme bei der Verarbeitung einer großen Anzahl von Dokumenten zu vermeiden. Empfohlene Heapgröße: max(3GB, 3 * sizeof(all documents passed to bulk import API in one batch)).  
    * Es muss eine gewisse Vorverarbeitungszeit eingerechnet werden, daher erhalten Sie einen höheren Durchsatz, wenn Sie Massenvorgänge mit einer großen Anzahl von Dokumenten ausführen. Wenn Sie z.B. 10.000.000 Dokumente importieren möchten, sollten Sie eher 10 Massenimportvorgänge für 10 Batches mit jeweils 1.000.000 Dokumenten ausführen als 100 Massenimportvorgänge für 100 Batches mit jeweils 100.000 Dokumenten.  
 
 * Es empfiehlt sich, ein einzelnes DocumentBulkExecutor-Objekt für die gesamte Anwendung auf einem einzelnen virtuellen Computer zu instanziieren, das einem bestimmten Azure Cosmos-Container entspricht.  
@@ -213,5 +216,3 @@ Berücksichtigen Sie bei der Verwendung der BulkExecutor-Bibliothek die folgende
     
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zu Maven-Paketen und Versionshinweisen zur BulkExecutor-Java-Bibliothek finden Sie unter [Details zum BulkExecutor-SDK](sql-api-sdk-bulk-executor-java.md).
-
-

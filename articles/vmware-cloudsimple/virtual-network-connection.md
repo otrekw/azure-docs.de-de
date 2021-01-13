@@ -1,19 +1,19 @@
 ---
-title: Verbinden des virtuellen Azure-Netzwerks mit CloudSimple mithilfe von ExpressRoute
+title: Verbinden des virtuellen Azure-Netzwerks mit CloudSimple mithilfe von ExpressRoute – Azure VMware Solution by CloudSimple
 description: Beschreibt, wie Peeringinformationen für eine Verbindung zwischen dem virtuellen Azure-Netzwerk und Ihrer CloudSimple-Umgebung abgerufen werden.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00d49d763dedc5d86557dadd10f5d727e7893dbe
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 3fedfbe55fd8ea3d2b4cc910df631e40bc74e210
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563064"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899064"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>Verbinden des virtuellen Azure-Netzwerks mit CloudSimple mithilfe von ExpressRoute
 
@@ -25,20 +25,27 @@ Ein Autorisierungsschlüssel ist für die ExpressRoute-Verbindung zwischen Ihrer
 
 * Problemtyp: **Technisch**
 * Abonnement: **Wählen Sie das Abonnement aus, in dem der CloudSimple-Dienst bereitgestellt wird.**
-* Dienst: **VMware-Lösung von CloudSimple**
+* Dienst: **VMware Solution by CloudSimple**
 * Problemtyp: **Dienstanforderung**
 * Problemuntertyp: **Autorisierungsschlüssel für Azure VNET-Verbindung**
 * Antragsteller: **Anforderung eines Autorisierungsschlüssels für Azure VNET-Verbindung**
 
-## <a name="obtain-peering-information-for-azure-virtual-network-to-cloudsimple-connection"></a>Abrufen von Peeringinformationen für eine Verbindung zwischen dem virtuellen Azure-Netzwerk und CloudSimple
+## <a name="get-peering-information-from-cloudsimple-portal"></a>Abrufen von Informationen zum Peering aus dem CloudSimple-Portal
 
 Zum Einrichten der Verbindung müssen Sie eine Verbindung zwischen dem virtuellen Azure-Netzwerk und ihrer CloudSimple-Umgebung herstellen.  Als Teil dieses Verfahrens müssen Sie den Peerleitungs-URI und den Autorisierungsschlüssel angeben. Rufen Sie den URI und den Autorisierungsschlüssel aus dem [CloudSimple-Portal](access-cloudsimple-portal.md) ab.  Wählen Sie im seitlichen Menü **Network** (Netzwerk) aus, und wählen Sie dann **Azure Network Connection** (Azure-Netzwerkverbindung) aus. Oder wählen Sie im seitlichen Menü **Account** (Konto) aus, und wählen Sie dann **Azure Network Connection** (Azure-Netzwerkverbindung) aus.
 
-Beachten Sie die Kopiersymbole für den Peerleitungs-URI und für den Autorisierungsschlüssel für jede der Regionen. Gehen Sie für jede private Cloud, die Sie verbinden möchten, folgendermaßen vor:
+Kopieren Sie den Peerleitungs-URI und für den Autorisierungsschlüssel für jede der Regionen mithilfe des *Kopieren*-Symbols. Für jede CloudSimple-Region, die Sie verbinden möchten:
 
-* Klicken Sie auf **Copy** (Kopieren), um den URI zu kopieren. Fügen Sie ihn in eine Datei ein, aus der er dem Azure-Portal hinzugefügt werden kann.  
-* Klicken Sie auf **Copy** (Kopieren), um den Autorisierungsschlüssel zu kopieren und ebenfalls in die Datei einzufügen.
+1. Klicken Sie auf **Copy** (Kopieren), um den URI zu kopieren. Fügen Sie ihn in eine Datei ein, aus der er dem Azure-Portal hinzugefügt werden kann.  
+2. Klicken Sie auf **Copy** (Kopieren), um den Autorisierungsschlüssel zu kopieren und ebenfalls in die Datei einzufügen.
 
-![Seite „Verbindung mit virtuellem Netzwerk“](media/network-virt-conn-page.png)
+Kopieren Sie den Autorisierungsschlüssel und den Peerleitungs-URI, der sich im Zustand **Verfügbar** befindet.  Der Status **Verwendet** zeigt an, dass der Schlüssel bereits zum Erstellen einer virtuellen Netzwerkverbindung verwendet wurde.
+
+![Seite „Verbindung mit virtuellem Netzwerk“](media/virtual-network-connection.png)
 
 Weitere Informationen zum Einrichten der Verbindung zwischen dem virtuellen Azure-Netzwerk und CloudSimple finden Sie unter [Herstellen einer Verbindung aus Ihrer privaten CloudSimple-Cloudumgebung mit dem virtuellen Azure-Netzwerk mithilfe von ExpressRoute](azure-expressroute-connection.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Virtuelle Azure-Netzwerkverbindung zur Private Cloud](azure-expressroute-connection.md)
+* [Connect from on-premises to CloudSimple using ExpressRoute](on-premises-connection.md)

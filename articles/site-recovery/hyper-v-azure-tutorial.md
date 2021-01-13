@@ -1,19 +1,19 @@
 ---
-title: Einrichten der Notfallwiederherstellung für lokale Hyper-V-VMs (ohne VMM) in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+title: Einrichten der Hyper-V-Notfallwiederherstellung mit Azure Site Recovery
 description: Erfahren Sie, wie Sie die Notfallwiederherstellung für lokale Hyper-V-VMs (ohne VMM) in Azure mit Azure Site Recovery einrichten.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/07/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 44f72df28191d02a6d320671e0173eb1306e0c78
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845699"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87504227"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -25,19 +25,21 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Wählen Sie die Replikationsquelle und das Replikationsziel aus.
-> * Richten Sie die Quellreplikationsumgebung, einschließlich der lokalen Komponenten zur Sitewiederherstellung, und die Zielreplikationsumgebung ein.
+> * Richten Sie die Quellreplikationsumgebung ein, einschließlich der lokalen Site Recovery-Komponenten und der Zielreplikationsumgebung.
 > * Erstellen einer Replikationsrichtlinie
 > * Aktivieren der Replikation für eine VM
 
 > [!NOTE]
-> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie in den Artikeln im Abschnitt **Schrittanleitungen** der [Dokumentation zu Site Recovery](https://docs.microsoft.com/azure/site-recovery).
+> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie in den Artikeln im Abschnitt **Schrittanleitungen** der [Dokumentation zu Site Recovery](./index.yml).
+
+
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Dies ist das dritte Tutorial in einer Reihe. Es wird davon ausgegangen, dass Sie die Aufgaben in den vorherigen Tutorials bereits durchgearbeitet haben:
 
 1. [Vorbereiten von Azure](tutorial-prepare-azure.md)
-2. [Vorbereiten lokaler Hyper-V-Instanzen](tutorial-prepare-on-premises-hyper-v.md)
+2. [Vorbereiten lokaler Hyper-V-Instanzen](./hyper-v-prepare-on-premises-tutorial.md)
 
 ## <a name="select-a-replication-goal"></a>Auswählen eines Replikationsziels
 
@@ -49,14 +51,14 @@ Dies ist das dritte Tutorial in einer Reihe. Es wird davon ausgegangen, dass Sie
 6. Wählen Sie unter **Are you using System Center VMM to manage your Hyper-V hosts?** (Verwenden Sie System Center VMM für die Verwaltung Ihrer Hyper-V-Hosts?) die Option **Nein** aus.
 7. Klicken Sie auf **OK**.
 
-    ![Replikationsziel](./media/hyper-v-azure-tutorial/replication-goal.png)
+    ![Screenshot: Schutzzieloptionen unter „Infrastruktur vorbereiten“](./media/hyper-v-azure-tutorial/replication-goal.png)
 
 ## <a name="confirm-deployment-planning"></a>Bestätigen der Bereitstellungsplanung
 
 1. Falls Sie eine umfangreiche Bereitstellung planen, laden Sie unter **Bereitstellungsplanung** über den auf der Seite bereitgestellten Link den Bereitstellungsplaner für Hyper-V herunter. Weitere Informationen zur Hyper-V-Bereitstellungsplanung finden Sie [hier](hyper-v-deployment-planner-overview.md).
 2. In diesem Tutorial wird der Bereitstellungsplaner nicht benötigt. Wählen Sie unter **Haben Sie die Bereitstellungsplanung abgeschlossen?** die Option **Wird später durchgeführt** und dann **OK** aus.
 
-    ![Bereitstellungsplanung](./media/hyper-v-azure-tutorial/deployment-planning.png)
+    ![Screenshot: Optionen für die Bereitstellungsplanung unter „Infrastruktur vorbereiten“](./media/hyper-v-azure-tutorial/deployment-planning.png)
 
 ## <a name="set-up-the-source-environment"></a>Einrichten der Quellumgebung
 
@@ -66,17 +68,17 @@ Zum Einrichten der Quellumgebung erstellen Sie eine Hyper-V-Site und fügen dies
 2. Wählen Sie unter **Quelle vorbereiten** **+Hyper-V-Site** aus.
 3. Geben Sie unter **Hyper-V-Site erstellen** einen Namen für die Site an. Hier wird **ContosoHyperVSite** verwendet.
 
-    ![Hyper-V-Standort](./media/hyper-v-azure-tutorial/hyperv-site.png)
+    ![Screenshot: Auswahl des Hyper-V-Standorts unter „Infrastruktur vorbereiten“](./media/hyper-v-azure-tutorial/hyperv-site.png)
 
 4. Wählen Sie nach Erstellung der Site unter **Quelle vorbereiten** > **Schritt 1: Hyper-V-Site auswählen** die Site aus, die Sie erstellt haben.
 5. Wählen Sie **+ Hyper-V-Server** aus.
 
-    ![Hyper-V-Server](./media/hyper-v-azure-tutorial/hyperv-server.png)
+    ![Screenshot: Auswahl des Hyper-V-Servers unter „Infrastruktur vorbereiten“](./media/hyper-v-azure-tutorial/hyperv-server.png)
 
 6. Laden Sie das Installationsprogramm für den Microsoft Azure Site Recovery-Anbieter herunter.
 7. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen Schlüssel für die Anbieterinstallation. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
-    ![Herunterladen von Anbieter- und Registrierungsschlüssel](./media/hyper-v-azure-tutorial/download.png)
+    ![Screenshot: Optionen zum Herunterladen des Anbieters und des Registrierungsschlüssels](./media/hyper-v-azure-tutorial/download.png)
     
 
 ### <a name="install-the-provider"></a>Installieren des Anbieters
@@ -101,7 +103,7 @@ Wenn Sie einen Hyper-V Core Server betreiben, laden Sie die Setupdatei herunter,
 
     `AzureSiteRecoveryProvider.exe /x:. /q`
  
-2. Führen Sie `.\setupdr.exe /i`aus. Die Ergebnisse werden in „%Programdata%\ASRLogs\DRASetupWizard.log“ protokolliert.
+2. Führen Sie `.\setupdr.exe /i` aus. Die Ergebnisse werden in „%Programdata%\ASRLogs\DRASetupWizard.log“ protokolliert.
 
 3. Registrieren Sie den Server mithilfe dieses Befehls:
 
@@ -125,7 +127,7 @@ Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkon
 2. Geben Sie unter **Richtlinie erstellen und zuordnen**einen Richtliniennamen an. Hier wird **ContosoReplicationPolicy** verwendet.
 3. In diesem Tutorial behalten wir die Standardwerte bei:
     - **Kopierhäufigkeit** gibt an, wie oft Deltadaten nach der ersten Replikation repliziert werden. Die Standardhäufigkeit ist alle fünf Minuten.
-    - **Aufbewahrungszeitraum des Wiederherstellungspunkts** gibt an, dass Wiederherstellungspunkte zwei Stunden lang aufbewahrt werden.
+    - **Aufbewahrungszeitraum des Wiederherstellungspunkts** gibt an, dass Wiederherstellungspunkte zwei Stunden lang aufbewahrt werden. Der maximal zulässige Wert für die Aufbewahrung beim Schutz virtueller Computer, die auf Hyper-V-Hosts gehostet werden, beträgt 24 Stunden.
     - **App-konsistente Momentaufnahmehäufigkeit** gibt an, dass Wiederherstellungspunkte mit anwendungskonsistenten Momentaufnahmen jede Stunde erstellt werden sollen.
     - **Startzeit der ersten Replikation** gibt an, dass die erste Replikation sofort beginnen soll.
 4. Nachdem die Richtlinie erstellt wurde, wählen Sie **OK** aus. Wenn Sie eine neue Richtlinie erstellen, wird sie der angegebenen Hyper-V-Site automatisch zugeordnet. In diesem Tutorial ist das **ContosoHyperVSite**.

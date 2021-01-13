@@ -1,25 +1,15 @@
 ---
-title: Erstellen von Tasks zum Vorbereiten und Abschließen von Aufträgen auf Computeknoten – Azure Batch | Microsoft-Dokumentation
+title: Erstellen von Aufgaben zum Vorbereiten und Durchführen von Aufträgen auf Computeknoten
 description: Verwenden Sie Vorbereitungs- und Freigabeaufgaben auf Auftragsebene, um Datenübertragungen auf Azure Batch-Computeknoten zu minimieren und Knoten nach Abschluss des Auftrags zu bereinigen.
-services: batch
-documentationcenter: .net
-author: laurenhughes
-manager: gwallace
-editor: ''
-ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
-ms.service: batch
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
-ms.date: 02/27/2017
-ms.author: lahugh
-ms.custom: seodec18
-ms.openlocfilehash: 2dbdbc8b13a75b72ca09a319c6925d0835a52e13
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.topic: how-to
+ms.date: 02/17/2020
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 5b1084cfdd5995b7983badcdce71460f7bdec3d5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095120"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88919453"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Ausführen von Tasks zum Vorbereiten und Freigeben von Aufträgen auf Azure Batch-Computeknoten
 
@@ -54,26 +44,29 @@ Eventuell wollen Sie eine Kopie der von den Aufgaben generierten Protokolle oder
 
 > [!TIP]
 > Eine andere Möglichkeit zum Beibehalten von Protokollen und anderen Auftrags- und Aufgabenausgabedaten ist die Verwendung der Bibliothek [Azure Batch File Conventions](batch-task-output.md) (Azure Batch-Dateikonventionen).
-> 
-> 
+>
+>
 
 ## <a name="job-preparation-task"></a>Auftragsvorbereitungsaufgabe
-Vor der Ausführung der Aufgaben eines Auftrags führt Batch die Auftragsvorbereitungsaufgabe auf jedem Computeknoten aus, der zum Ausführen einer Aufgabe eingeplant ist. Standardmäßig wartet der Batch-Dienst, bis die Auftragsvorbereitungsaufgabe abgeschlossen ist, bevor er die geplanten Aufgaben auf dem Knoten ausführt. Sie können den Dienst allerdings auch dahingehend konfigurieren, dass er nicht wartet. Nach dem Neustart des Knotens wird die Auftragsvorbereitungsaufgabe erneut ausgeführt, aber Sie können dieses Verhalten auch deaktivieren.
 
-Die Auftragsvorbereitungsaufgabe wird nur auf Knoten ausgeführt, die zum Ausführen einer Aufgabe eingeplant sind. Das verhindert die unnötige Ausführung von Auftragsvorbereitungsaufgaben an Knoten, denen keine Aufgaben zugewiesen sind. Dies kann eintreten, wenn die Anzahl der Aufgaben für einen Auftrag geringer ist, als die Anzahl der Knoten in einem Pool. Dies gilt auch, wenn die [gleichzeitige Aufgabenausführung](batch-parallel-node-tasks.md) aktiviert ist. Einige Knoten bleiben unbeschäftigt, wenn die Gesamtzahl von Aufgaben geringer als die Gesamtzahl der möglichen zeitgleich ausgeführten Aufgaben ist. Indem Sie die Auftragsvorbereitungsaufgabe nicht auf Knoten im Leerlauf ausführen, können Sie bei den Gebühren für Datenübertragungen sparen.
+
+Vor der Ausführung der Aufgaben eines Auftrags führt Batch die Auftragsvorbereitungsaufgabe auf jedem Computeknoten aus, der zum Ausführen einer Aufgabe eingeplant ist. Standardmäßig wartet Batch, bis die Auftragsvorbereitungsaufgabe abgeschlossen ist, bevor die geplanten Aufgaben auf dem Knoten ausgeführt werden. Sie können den Dienst allerdings auch dahingehend konfigurieren, dass er nicht wartet. Wenn der Knoten neu gestartet wird, wird die Auftragsvorbereitungsaufgabe erneut ausgeführt. Sie können dieses Verhalten auch deaktivieren. Wenn Sie einen Auftrag mit einer Auftragsvorbereitungsaufgabe haben und eine Auftrags-Manager-Aufgabe konfiguriert ist, wird die Auftragsvorbereitungsaufgabe vor der Auftrags-Manager-Aufgabe ausgeführt, genauso wie bei allen anderen Tasks. Die Auftragsvorbereitungsaufgabe wird immer zuerst ausgeführt.
+
+Die Auftragsvorbereitungsaufgabe wird nur auf Knoten ausgeführt, die zum Ausführen einer Aufgabe eingeplant sind. Das verhindert die unnötige Ausführung von Auftragsvorbereitungsaufgaben an Knoten, denen keine Aufgaben zugewiesen sind.  Dies kann eintreten, wenn die Anzahl der Aufgaben für einen Auftrag geringer ist, als die Anzahl der Knoten in einem Pool. Dies gilt auch, wenn die [gleichzeitige Aufgabenausführung](batch-parallel-node-tasks.md) aktiviert ist. Einige Knoten bleiben unbeschäftigt, wenn die Gesamtzahl von Aufgaben geringer als die Gesamtzahl der möglichen zeitgleich ausgeführten Aufgaben ist. Indem Sie die Auftragsvorbereitungsaufgabe nicht auf Knoten im Leerlauf ausführen, können Sie bei den Gebühren für Datenübertragungen sparen.
 
 > [!NOTE]
 > [JobPreparationTask][net_job_prep_cloudjob] unterscheidet sich vom [CloudPool.StartTask][pool_starttask] insofern, dass „JobPreparationTask“ beim Start jedes Auftrags ausgeführt wird, während „StartTask“ nur ausgeführt wird, wenn ein Computeknoten einem Pool erstmals hinzugefügt oder neu gestartet wird.
-> 
-> 
+>
 
-## <a name="job-release-task"></a>Auftragsfreigabeaufgabe
+
+>## <a name="job-release-task"></a>Auftragsfreigabeaufgabe
+
 Nachdem ein Auftrag als abgeschlossen markiert wurde, wird die Auftragsfreigabeaufgabe auf jedem Knoten im Pool ausgeführt, der mindestens eine Aufgabe ausgeführt hat. Um einen Auftrag als abgeschlossen zu markieren, geben Sie eine Terminate-Anforderung aus. Der Batch-Dienst legt anschließend den Status des Auftrags auf *Wird beendet* fest, beendet alle aktiven bzw. ausgeführten Aufgaben im Zusammenhang mit dem Auftrag und führt die Auftragsfreigabeaufgabe aus. Danach wird der Status des Auftrags in *Abgeschlossen* geändert.
 
 > [!NOTE]
 > Beim Löschen eines Auftrags wird die Auftragsfreigabeaufgabe ebenfalls ausgeführt. Wurde ein Auftrag jedoch bereits zuvor beendet, wird die Freigabeaufgabe kein zweites Mal ausgeführt, wenn der Auftrag später gelöscht wird.
 
-Auftragsfreigabeaufgaben können maximal 15 Minuten lang ausgeführt werden, bevor Sie vom Batch-Dienst beendet werden. Weitere Informationen finden Sie in der [Referenzdokumentation zur REST-API](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask).
+Auftragsfreigabeaufgaben können maximal 15 Minuten lang ausgeführt werden, bevor Sie vom Batch-Dienst beendet werden. Weitere Informationen finden Sie in der [Referenzdokumentation zur REST-API](/rest/api/batchservice/job/add#jobreleasetask).
 > 
 > 
 
@@ -196,33 +189,33 @@ Dieser Beitrag im MSDN-Forum enthält eine Übersicht über mehrere Methoden zum
 
 Der Beitrag wurde von einem Mitglied des Azure Batch-Teams geschrieben und enthält Beschreibungen mehrerer Verfahren, die Sie zum Bereitstellen von Anwendungen und Daten auf Computeknoten verwenden können.
 
-[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[api_rest]: https://msdn.microsoft.com/library/azure/dn820158.aspx
+[api_net]: /dotnet/api/microsoft.azure.batch
+[api_net_listjobs]: /dotnet/api/microsoft.azure.batch.joboperations
+[api_rest]: /rest/api/batchservice/
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [portal]: https://portal.azure.com
 [job_prep_release_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/JobPrepRelease
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
-[net_batch_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
+[net_batch_client]: /dotnet/api/microsoft.azure.batch.batchclient
 [net_cloudjob]:https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_job_prep]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobpreparationtask.aspx
-[net_job_prep_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobpreparationtask.aspx
-[net_job_prep_resourcefiles]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobpreparationtask.resourcefiles.aspx
-[net_job_delete]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.deletejobasync.aspx
-[net_job_terminate]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.terminatejobasync.aspx
-[net_job_release]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobreleasetask.aspx
-[net_job_release_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobreleasetask.aspx
-[pool_starttask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.starttask.aspx
+[net_job_prep]: /dotnet/api/microsoft.azure.batch.jobpreparationtask
+[net_job_prep_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_job_prep_resourcefiles]: /dotnet/api/microsoft.azure.batch.jobpreparationtask
+[net_job_delete]: /previous-versions/azure/mt281411(v=azure.100)
+[net_job_terminate]: /previous-versions/azure/mt188985(v=azure.100)
+[net_job_release]: /dotnet/api/microsoft.azure.batch.jobreleasetask
+[net_job_release_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
+[pool_starttask]: /dotnet/api/microsoft.azure.batch.cloudpool
 
-[net_list_certs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.certificateoperations.listcertificates.aspx
-[net_list_compute_nodes]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listcomputenodes.aspx
-[net_list_job_schedules]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobscheduleoperations.listjobschedules.aspx
-[net_list_jobprep_status]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobpreparationandreleasetaskstatus.aspx
-[net_list_jobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[net_list_nodefiles]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listnodefiles.aspx
-[net_list_pools]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listpools.aspx
-[net_list_schedule_jobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobscheduleoperations.listjobs.aspx
-[net_list_task_files]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.listnodefiles.aspx
-[net_list_tasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listtasks.aspx
+[net_list_certs]: /dotnet/api/microsoft.azure.batch.certificateoperations
+[net_list_compute_nodes]: /dotnet/api/microsoft.azure.batch.pooloperations
+[net_list_job_schedules]: /dotnet/api/microsoft.azure.batch.jobscheduleoperations
+[net_list_jobprep_status]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_jobs]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_nodefiles]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_pools]: /dotnet/api/microsoft.azure.batch.pooloperations
+[net_list_schedule_jobs]: /dotnet/api/microsoft.azure.batch.jobscheduleoperations
+[net_list_task_files]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_list_tasks]: /dotnet/api/microsoft.azure.batch.joboperations
 
 [1]: ./media/batch-job-prep-release/portal-jobprep-01.png

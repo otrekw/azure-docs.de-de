@@ -1,30 +1,25 @@
 ---
-title: Behandeln von MSAL-Problemen für Objective-C | Microsoft Identity Platform
-description: Es wird beschrieben, wie Sie Probleme behandeln, die bei der Verwendung von SSL-Zertifikaten mit der MSAL.Objective-C-Bibliothek auftreten können.
+title: Beheben von TLS/SSL-Problemen (MSAL iOS/macOS) | Azure
+titleSuffix: Microsoft identity platform
+description: Erfahren Sie, wie Sie verschiedene Probleme behandeln, die bei der Verwendung von TLS/SSL-Zertifikaten mit der MSAL.Objective-C-Bibliothek auftreten können.
 services: active-directory
-documentationcenter: ''
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
-ms.author: twhitney
-ms.reviewer: ''
+ms.author: marsma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76892686beec8ea18d56166519353fb5a2495124
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 1507231c3ab395319d5ce95ec06dbb592c324aa6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269340"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80881076"
 ---
-# <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>Gewusst wie: Behandeln von SSL-Problemen mit der MSAL für iOS und macOS
+# <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>Gewusst wie: Behandeln von TLS/SSL-Problemen mit der MSAL für iOS und macOS
 
 Dieser Artikel enthält Informationen zur Behandlung von Problemen, die bei der Verwendung der [Microsoft Authentication Library (MSAL) für iOS und macOS](reference-v2-libraries.md) auftreten können.
 
@@ -32,15 +27,15 @@ Dieser Artikel enthält Informationen zur Behandlung von Problemen, die bei der 
 
 **Fehler 1200**: „Ein SSL-Fehler ist aufgetreten, und es kann keine sichere Verbindung mit dem Server hergestellt werden.“
 
-Dieser Fehler bedeutet, dass die Verbindung nicht sicher ist. Er tritt auf, wenn ein Zertifikat ungültig ist. Weitere Informationen, z. B. dazu, welcher Server die SSL-Überprüfung nicht bestanden hat, finden Sie im `userInfo`-Wörterbuch des Fehlerobjekts unter `NSURLErrorFailingURLErrorKey`.
+Dieser Fehler bedeutet, dass die Verbindung nicht sicher ist. Er tritt auf, wenn ein Zertifikat ungültig ist. Weitere Informationen, z. B. dazu, welcher Server die TLS-Überprüfung nicht bestanden hat, finden Sie im `userInfo`-Wörterbuch des Fehlerobjekts unter `NSURLErrorFailingURLErrorKey`.
 
 Dieser Fehler stammt aus der Netzwerkbibliothek von Apple. Eine vollständige Liste mit den NSURL-Fehlercodes ist in der Datei „NSURLError.h“ in den SDKs für macOS und iOS enthalten. Weitere Informationen zu diesem Fehler finden Sie auf der Seite zum Thema [Systemfehlercodes für URL-Ladevorgang](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes?language=objc).
 
 ## <a name="certificate-issues"></a>Zertifikatprobleme
 
-Wenn über die URL mit einem ungültigen Zertifikat eine Verbindung mit dem Server hergestellt wird, den Sie im Rahmen des Authentifizierungsablaufs nutzen möchten, ist ein guter Ansatz zum Diagnostizieren des Problems das Testen der URL per SSL-Überprüfungsdienst, z. B. [Qualys SSL Labs Analyzer](https://www.ssllabs.com/ssltest/analyze.html). Hiermit wird der Server anhand von unterschiedlichen Szenarien und Browsern getestet und eine Überprüfung auf viele bekannte Sicherheitsrisiken durchgeführt.
+Wenn über die URL mit einem ungültigen Zertifikat eine Verbindung mit dem Server hergestellt wird, den Sie im Rahmen des Authentifizierungsablaufs nutzen möchten, ist ein guter Ansatz zum Diagnostizieren des Problems das Testen der URL per SSL-Überprüfungsdienst, z. B. [SSL-Servertest](https://www.ssllabs.com/ssltest/analyze.html). Hiermit wird der Server anhand von unterschiedlichen Szenarien und Browsern getestet und eine Überprüfung auf viele bekannte Sicherheitsrisiken durchgeführt.
 
-Beim neuen Feature [App Transport Security (ATS)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) von Apple werden auf Apps, für die SSL-Zertifikate verwendet werden, standardmäßig strengere Sicherheitsrichtlinien angewendet. Für einige Betriebssysteme und Webbrowser werden einige dieser Richtlinien bereits standardmäßig angewendet. Aus Sicherheitsgründen empfehlen wir Ihnen, ATS nicht zu deaktivieren.
+Beim neuen Feature [App Transport Security (ATS)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) von Apple werden auf Apps, für die TLS/SSL-Zertifikate verwendet werden, standardmäßig strengere Sicherheitsrichtlinien angewendet. Für einige Betriebssysteme und Webbrowser werden einige dieser Richtlinien bereits standardmäßig angewendet. Aus Sicherheitsgründen empfehlen wir Ihnen, ATS nicht zu deaktivieren.
 
 Für Zertifikate mit Verwendung von SHA-1-Hashes bestehen bekannte Sicherheitsrisiken. Bei den meisten modernen Webbrowsern sind Zertifikate mit SHA-1-Hashes nicht zulässig.
 

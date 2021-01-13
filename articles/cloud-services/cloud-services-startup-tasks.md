@@ -2,17 +2,17 @@
 title: Ausführen von Startaufgaben in Azure Cloud Services | Microsoft Docs
 description: Startaufgaben helfen dabei, die Clouddienstumgebung für die App vorbereiten. Erfahren Sie, wie Startaufgaben funktionieren und erstellt werden.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: cea28aba4c57f69a030d05ac192f9578967cbc3f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359465"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020703"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Konfigurieren und Ausführen von Startaufgaben für einen Clouddienst
 Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet wird. Zu den Vorgängen, die Sie vielleicht ausführen möchten, gehören das Installieren von Komponenten, das Registrieren von COM-Komponenten, das Festlegen von Registrierungsschlüsseln und das Starten eines lang andauernden Prozesses.
@@ -23,7 +23,7 @@ Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet w
 > 
 
 ## <a name="how-startup-tasks-work"></a>Funktionsweise von Startaufgaben
-Startaufgaben sind Aktionen, die ausgeführt werden, bevor die Rollen beginnen. Sie werden in der Datei [ServiceDefinition.csdef] mithilfe des [Task]-Elements im[Starten]-Element definiert. Häufig sind Startaufgaben Batchdateien, aber es kann sich auch um Konsolenanwendungen handeln, oder um Batchdateien, die PowerShell-Skripts starten.
+Startaufgaben sind Aktionen, die ausgeführt werden, bevor die Rollen beginnen. Sie werden in der Datei [ServiceDefinition.csdef] mithilfe des [Aufgabe]-Elements im[Startup]-Element definiert. Häufig sind Startaufgaben Batchdateien, aber es kann sich auch um Konsolenanwendungen handeln, oder um Batchdateien, die PowerShell-Skripts starten.
 
 Startaufgaben erhalten ihre Informationen aus Umgebungsvariablen, und mit lokalem Speicher können Informationen aus einer Startaufgabe heraus übergeben werden. Eine Umgebungsvariable kann beispielsweise den Pfad zu einem Programm festlegen, das Sie installieren möchten, und Dateien können in den lokalen Speicher geschrieben werden, aus dem sie später von den Rollen gelesen werden können.
 
@@ -31,7 +31,7 @@ Die Startaufgabe kann Informationen und Fehler im angegebenen Verzeichnis protok
 
 Startaufgaben können auch mehrmals zwischen Neustarts ausgeführt werden. Beispielsweise wird die Startaufgabe bei jeder zyklischen Ausführung der Rolle ausgeführt, und die zyklische Rollenausführung ist nicht immer mit einem Neustart verbunden. Startaufgaben sollten so geschrieben werden, die sie ohne Probleme mehrmals ausgeführt werden können.
 
-Startaufgaben müssen mit dem **errorlevel** (oder Exitcode) Null (0) enden, damit der Startprozess abgeschlossen wird. Wenn eine Startaufgabe mit einem von Null abweichenden **errorlevel**beendet wird, wird die Rolle nicht gestartet.
+Startaufgaben müssen mit dem **errorlevel** (oder Exitcode) Null (0) enden, damit der Startprozess abgeschlossen wird. Wenn eine Startaufgabe mit einem von Null abweichenden **errorlevel** beendet wird, wird die Rolle nicht gestartet.
 
 ## <a name="role-startup-order"></a>Reihenfolge beim Starten einer Rolle
 Im Folgenden werden die Schritte beim Starten einer Rolle in Azure aufgeführt:
@@ -154,10 +154,10 @@ Erfahren Sie, wie Sie einige [allgemeine Startaufgaben](cloud-services-startup-t
 [Paket](cloud-services-model-and-package.md) des Clouddiensts erstellen.  
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Starten]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Laufzeit]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Umgebung]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
+[Aufgabe]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[Startup]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
+[Laufzeit]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[Umgebung]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
+[Variable]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
+[RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)

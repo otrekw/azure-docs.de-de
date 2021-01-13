@@ -11,20 +11,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 494ccc3b90b8c249ee935087dcf0f0b5264b02ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1d0507f7751305af5e626cbd7dd6e0dfd1a63a74
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386750"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973047"
 ---
-# <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory-Passthrough-Authentifizierung: Upgraden von Authentifizierungs-Agents der Vorschauversion
+# <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory-Passthrough-Authentifizierung – Upgrade von Authentifizierungs-Agents der Vorschau
 
 ## <a name="overview"></a>Übersicht
 
@@ -60,7 +60,7 @@ Um die Versionen der Authentifizierungs-Agents zu überprüfen, die im vorherige
 
 Stellen Sie vor dem Upgrade sicher, dass folgende Elemente vorhanden sind:
 
-1. **Erstellen Sie ein rein cloudbasiertes globales Administratorkonto**: Führen Sie ein Upgrade erst durch, wenn Sie über ein globales Administratorkonto verfügen, das nur in der Cloud verwendet wird. Dieses benötigen Sie für Notfallsituationen, in denen Ihre Passthrough-Authentifizierungs-Agents nicht ordnungsgemäß funktionieren. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../active-directory-users-create-azure-portal.md). Dieser Schritt ist unerlässlich und stellt sicher, dass Sie sich nicht aus Ihrem Mandanten aussperren.
+1. **Erstellen Sie ein rein cloudbasiertes globales Administratorkonto**: Führen Sie ein Upgrade erst durch, wenn Sie über ein globales Administratorkonto verfügen, das nur in der Cloud verwendet wird. Dieses benötigen Sie für Notfallsituationen, in denen Ihre Passthrough-Authentifizierungs-Agents nicht ordnungsgemäß funktionieren. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../fundamentals/add-users-azure-active-directory.md). Dieser Schritt ist unerlässlich und stellt sicher, dass Sie sich nicht aus Ihrem Mandanten aussperren.
 2.  **Stellen Sie Hochverfügbarkeit sicher**: Sofern noch nicht geschehen, installieren Sie einen zweiten eigenständigen Authentifizierungs-Agent, um Hochverfügbarkeit für Anmeldeanforderungen bereitzustellen. Folgen Sie [diesen Anweisungen](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>Aktualisieren des Authentifizierungs-Agents auf Ihrem Azure AD Connect-Server
@@ -68,10 +68,10 @@ Stellen Sie vor dem Upgrade sicher, dass folgende Elemente vorhanden sind:
 Sie müssen Azure AD Connect aktualisieren, bevor Sie ein Upgrade des Authentifizierungs-Agents auf dem gleichen Server durchführen. Führen Sie folgende Schritte sowohl auf dem primären Azure AD Connect-Server als auch auf dem Azure AD Connect-Stagingserver aus:
 
 1. **Aktualisieren Sie Azure AD Connect**: Befolgen Sie die Anweisungen in diesem [Artikel](how-to-upgrade-previous-version.md), und führen Sie ein Upgrade auf die neueste Azure AD Connect-Version durch.
-2. **Deinstallieren Sie die Vorschauversion des Authentifizierungs-Agents**: Laden Sie [dieses PowerShell-Skript](https://aka.ms/rmpreviewagent) herunter, und führen Sie es als Administrator auf dem Server aus.
-3. **Laden Sie die neueste Version des Authentifizierungs-Agents (Version 1.5.389.0 oder höher) herunter**: Melden Sie sich mit den Anmeldeinformationen des globalen Administrators für Ihren Mandanten beim [Azure Active Directory Admin Center](https://aad.portal.azure.com) an. Wählen Sie **Azure Active Directory -> Azure AD Connect -> Passthrough-Authentifizierung -> Agent herunterladen** aus. Akzeptieren Sie die [Nutzungsbedingungen](https://aka.ms/authagenteula), und laden Sie die neueste Version des Authentifizierungs-Agents herunter. Sie können den Authentifizierungs-Agent auch [hier](https://aka.ms/getauthagent) herunterladen.
-4. **Installieren Sie die aktuelle Version des Authentifizierungs-Agents**: Führen Sie die in Schritt 3 heruntergeladene ausführbare Datei aus. Stellen Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten bereit, wenn Sie dazu aufgefordert werden.
-5. **Stellen Sie sicher, dass die aktuelle Version installiert wurde**: Wechseln Sie wie oben gezeigt zu **Systemsteuerung -&gt; Programme -&gt; Programme und Funktionen**, und überprüfen Sie, ob ein Eintrag für **Microsoft Azure AD Connect-Authentifizierungs-Agent** vorhanden ist.
+2. **Deinstallieren Sie die Vorschauversion der Authentifizierungs-Agents**: Laden Sie [dieses PowerShell-Skript](https://aka.ms/rmpreviewagent) herunter, und führen Sie es als Administrator auf dem Server aus.
+3. **Laden Sie die neueste Version des Authentifizierungs-Agents (Versionen 1.5.389.0 oder höher) herunter:** Melden Sie sich mit den Anmeldeinformationen des globalen Administrators für Ihren Mandanten beim [Azure Active Directory-Admin Center](https://aad.portal.azure.com) an. Wählen Sie **Azure Active Directory -> Azure AD Connect -> Passthrough-Authentifizierung -> Agent herunterladen** aus. Akzeptieren Sie die [Nutzungsbedingungen](https://aka.ms/authagenteula), und laden Sie die neueste Version des Authentifizierungs-Agents herunter. Sie können den Authentifizierungs-Agent auch [hier](https://aka.ms/getauthagent) herunterladen.
+4. **Installieren Sie die neueste Version des Authentifizierungs-Agents**: Führen Sie die in Schritt 3 heruntergeladene ausführbare Datei aus. Stellen Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten bereit, wenn Sie dazu aufgefordert werden.
+5. **Überprüfen Sie, ob die neueste Version installiert wurde**: Wie oben gezeigt, wechseln Sie zu **Systemsteuerung -&gt; Programme -&gt; Programme und Funktionen**, und überprüfen Sie, ob ein Eintrag für **Microsoft Azure AD Connect-Authentifizierungs-Agent** vorhanden ist.
 
 >[!NOTE]
 >Nach Abschluss der vorherigen Schritte sehen Sie auf dem Blatt „Passthrough-Authentifizierung“ im [Azure Active Directory-Admin Center](https://aad.portal.azure.com) zwei Authentifizierungs-Agent-Einträge pro Server – einen Eintrag, der den Authentifizierungs-Agent als **Aktiv**, und einen, der ihn als **Inaktiv** anzeigt. Dies entspricht dem _erwarteten_ Verhalten. Der **Inaktiv**-Eintrag wird nach einigen Tagen automatisch gelöscht.
@@ -80,10 +80,10 @@ Sie müssen Azure AD Connect aktualisieren, bevor Sie ein Upgrade des Authentifi
 
 Führen Sie diese Schritte aus, um die Authentifizierungs-Agents auf anderen Servern zu aktualisieren (auf denen Azure AD Connect nicht installiert ist):
 
-1. **Deinstallieren Sie die Vorschauversion des Authentifizierungs-Agents**: Laden Sie [dieses PowerShell-Skript](https://aka.ms/rmpreviewagent) herunter, und führen Sie es als Administrator auf dem Server aus.
-2. **Laden Sie die neueste Version des Authentifizierungs-Agents (Version 1.5.389.0 oder höher) herunter**: Melden Sie sich mit den Anmeldeinformationen des globalen Administrators für Ihren Mandanten beim [Azure Active Directory Admin Center](https://aad.portal.azure.com) an. Wählen Sie **Azure Active Directory -> Azure AD Connect -> Passthrough-Authentifizierung -> Agent herunterladen** aus. Akzeptieren Sie die Nutzungsbedingungen des Diensts, und laden Sie die neueste Version herunter.
-3. **Installieren Sie die aktuelle Version des Authentifizierungs-Agents**: Führen Sie die in Schritt 2 heruntergeladene ausführbare Datei aus. Stellen Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten bereit, wenn Sie dazu aufgefordert werden.
-4. **Stellen Sie sicher, dass die aktuelle Version installiert wurde**: Wechseln Sie wie oben gezeigt zu **Systemsteuerung -&gt; Programme -&gt; Programme und Funktionen**, und überprüfen Sie, ob der Eintrag **Microsoft Azure AD Connect-Authentifizierungs-Agent** vorhanden ist.
+1. **Deinstallieren Sie die Vorschauversion der Authentifizierungs-Agents**: Laden Sie [dieses PowerShell-Skript](https://aka.ms/rmpreviewagent) herunter, und führen Sie es als Administrator auf dem Server aus.
+2. **Laden Sie die neueste Version des Authentifizierungs-Agents (Versionen 1.5.389.0 oder höher) herunter:** Melden Sie sich mit den Anmeldeinformationen des globalen Administrators für Ihren Mandanten beim [Azure Active Directory-Admin Center](https://aad.portal.azure.com) an. Wählen Sie **Azure Active Directory -> Azure AD Connect -> Passthrough-Authentifizierung -> Agent herunterladen** aus. Akzeptieren Sie die Nutzungsbedingungen des Diensts, und laden Sie die neueste Version herunter.
+3. **Installieren Sie die neueste Version des Authentifizierungs-Agents**: Führen Sie die in Schritt 2 heruntergeladene ausführbare Datei aus. Stellen Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten bereit, wenn Sie dazu aufgefordert werden.
+4. **Überprüfen Sie, ob die neueste Version installiert wurde**: Wie oben gezeigt, wechseln Sie zu **Systemsteuerung -&gt; Programme -&gt; Programme und Funktionen**, und überprüfen Sie, ob ein Eintrag für **Microsoft Azure AD Connect-Authentifizierungs-Agent** vorhanden ist.
 
 >[!NOTE]
 >Nach Abschluss der vorherigen Schritte sehen Sie auf dem Blatt „Passthrough-Authentifizierung“ im [Azure Active Directory-Admin Center](https://aad.portal.azure.com) zwei Authentifizierungs-Agent-Einträge pro Server – einen Eintrag, der den Authentifizierungs-Agent als **Aktiv**, und einen, der ihn als **Inaktiv** anzeigt. Dies entspricht dem _erwarteten_ Verhalten. Der **Inaktiv**-Eintrag wird nach einigen Tagen automatisch gelöscht.

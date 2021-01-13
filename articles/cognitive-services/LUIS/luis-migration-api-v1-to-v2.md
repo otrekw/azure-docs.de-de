@@ -3,26 +3,24 @@ title: Migration von API-Version 1 zu API-Version 2
 titleSuffix: Azure Cognitive Services
 description: Die Endpunkt- und Erstellungs-APIs der Version 1 von Language Understanding sind veraltet. In dieser Anleitung erfahren Sie, wie Sie zu den Endpunkt- und Erstellungs-APIs der Version 2 migrieren.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: 2f67bf0951ef8928297c71e8fc9f924cf05c63f4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 867ae2cc7567077786bb0840cd11c47b786be423
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932688"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018751"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Anleitung zur Migration von API-Version 1 zu API-Version 2 für LUIS-Apps
-Die [Endpunkt](https://aka.ms/v1-endpoint-api-docs)- und [Erstellungs](https://aka.ms/v1-authoring-api-docs)-APIs der Version 1 sind veraltet. In diesem Handbuch erfahren Sie, wie Sie zu den [Endpunkt](https://go.microsoft.com/fwlink/?linkid=2092356)- und [Erstellungs](https://go.microsoft.com/fwlink/?linkid=2092087)-APIs der Version 2 migrieren. 
+Die [Endpunkt](https://aka.ms/v1-endpoint-api-docs)- und [Erstellungs](https://aka.ms/v1-authoring-api-docs)-APIs der Version 1 sind veraltet. In diesem Handbuch erfahren Sie, wie Sie zu den [Endpunkt](https://go.microsoft.com/fwlink/?linkid=2092356)- und [Erstellungs](https://go.microsoft.com/fwlink/?linkid=2092087)-APIs der Version 2 migrieren.
 
 ## <a name="new-azure-regions"></a>Neue Azure-Regionen
-LUIS stellt neue [Regionen](https://aka.ms/LUIS-regions) für die LUIS-APIs bereit. LUIS bietet ein eigenes Portal für Regionsgruppen. Die Anwendung muss in derselben Region erstellt werden, die Sie abfragen möchten. Regionen werden von Anwendungen nicht automatisch migriert. Sie exportieren die App aus einer Region und importieren sie dann in eine andere, damit sie in einer neuen Region verfügbar ist.
+LUIS stellt neue [Regionen](./luis-reference-regions.md) für die LUIS-APIs bereit. LUIS bietet ein eigenes Portal für Regionsgruppen. Die Anwendung muss in derselben Region erstellt werden, die Sie abfragen möchten. Regionen werden von Anwendungen nicht automatisch migriert. Sie exportieren die App aus einer Region und importieren sie dann in eine andere, damit sie in einer neuen Region verfügbar ist.
 
 ## <a name="authoring-route-changes"></a>Erstellen von Routenänderungen
 Die Route der Erstellungs-API wurde von der Route **prog** zur Route **api** geändert.
@@ -112,7 +110,7 @@ Die Abonnementendpunkt-Schlüssel-APIs sind veraltet und geben den Fehler „410
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{Abonnementschlüssel}|
 
-Azure-[Endpunktschlüssel](luis-how-to-azure-subscription.md) werden im Azure-Portal generiert. Sie Weisen den Schlüssel auf der Seite **[Veröffentlichen](luis-how-to-azure-subscription.md)** einer LUIS-App zu. Sie müssen den tatsächlichen Schlüsselwert nicht kennen. LUIS verwendet für die Zuweisung den Namen des Abonnements. 
+Azure-[Endpunktschlüssel](luis-how-to-azure-subscription.md) werden im Azure-Portal generiert. Sie Weisen den Schlüssel auf der Seite **[Veröffentlichen](luis-how-to-azure-subscription.md)** einer LUIS-App zu. Sie müssen den tatsächlichen Schlüsselwert nicht kennen. LUIS verwendet für die Zuweisung den Namen des Abonnements.
 
 ## <a name="new-versioning-route"></a>Neue Versionsverwaltungsroute
 Die v2-Modell ist nun in einer [Version](luis-how-to-manage-versions.md) enthalten. Ein Versionsname umfasst 10 Zeichen in der Route. Die Standardversion ist 0.1.
@@ -145,7 +143,7 @@ LUIS schlägt Äußerungen von vorhandenen [Endpunktäußerungen](luis-how-to-re
 
 
 ## <a name="create-app-from-prebuilt-domains"></a>Erstellen einer App aus vordefinierten Domänen
-[Vordefinierte Domänen](luis-how-to-use-prebuilt-domains.md) stellen ein vordefiniertes Domänenmodell bereit. Mit vordefinierten Domänen können Sie Ihre LUIS-Anwendung schnell für gebräuchliche Domänen entwickeln. Diese API ermöglicht es Ihnen, eine neue App basierend auf einer vordefinierten Domäne zu erstellen. Die Antwort ist die neue App-ID.
+[Vordefinierte Domänen](./howto-add-prebuilt-models.md) stellen ein vordefiniertes Domänenmodell bereit. Mit vordefinierten Domänen können Sie Ihre LUIS-Anwendung schnell für gebräuchliche Domänen entwickeln. Diese API ermöglicht es Ihnen, eine neue App basierend auf einer vordefinierten Domäne zu erstellen. Die Antwort ist die neue App-ID.
 
 |v2-Route|Verb|
 |--|--|
@@ -153,22 +151,22 @@ LUIS schlägt Äußerungen von vorhandenen [Endpunktäußerungen](luis-how-to-re
 |/luis/api/v2.0/apps/customprebuiltdomains/{Kultur}  |get|
 
 ## <a name="importing-1x-app-into-2x"></a>Importieren einer 1.x-App in 2.x
-Der JSON-Code der exportierten 1.x-App enthält einige Bereiche, die Sie vor dem Importieren in [LUIS][LUIS] 2.0 ändern müssen. 
+Der JSON-Code der exportierten 1.x-App enthält einige Bereiche, die Sie vor dem Importieren in [LUIS][LUIS] 2.0 ändern müssen.
 
-### <a name="prebuilt-entities"></a>Vordefinierte Entitäten 
-Die [vordefinierten Entitäten](luis-prebuilt-entities.md) wurden geändert. Stellen Sie sicher, dass Sie die vordefinierten Entitäten von v2 verwenden. Dazu gehört die Verwendung von [datetimeV2](luis-reference-prebuilt-datetimev2.md) anstelle von datetime. 
+### <a name="prebuilt-entities"></a>Vordefinierte Entitäten
+Die [vordefinierten Entitäten](./howto-add-prebuilt-models.md) wurden geändert. Stellen Sie sicher, dass Sie die vordefinierten Entitäten von v2 verwenden. Dazu gehört die Verwendung von [datetimeV2](luis-reference-prebuilt-datetimev2.md) anstelle von datetime.
 
 ### <a name="actions"></a>Aktionen
-Die actions-Eigenschaft ist nicht mehr gültig. Sie sollte leer sein. 
+Die actions-Eigenschaft ist nicht mehr gültig. Sie sollte leer sein.
 
 ### <a name="labeled-utterances"></a>Bezeichnete Äußerungen
-In v1 konnten bezeichnete Äußerungen Leerzeichen am Anfang oder Ende des Worts oder Ausdrucks enthalten. Die Leerzeichen wurden entfernt. 
+In v1 konnten bezeichnete Äußerungen Leerzeichen am Anfang oder Ende des Worts oder Ausdrucks enthalten. Die Leerzeichen wurden entfernt.
 
 ## <a name="common-reasons-for-http-response-status-codes"></a>Häufige Ursachen für HTTP-Antwortstatuscodes
 Weitere Informationen finden Sie unter [LUIS-API-Antwortcodes](luis-reference-response-codes.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie die v2-API-Dokumentation zum Aktualisieren vorhandener REST-Aufrufe an die LUIS-[Endpunkt](https://go.microsoft.com/fwlink/?linkid=2092356)- und [Erstellungs](https://go.microsoft.com/fwlink/?linkid=2092087)-APIs. 
+Verwenden Sie die v2-API-Dokumentation zum Aktualisieren vorhandener REST-Aufrufe an die LUIS-[Endpunkt](https://go.microsoft.com/fwlink/?linkid=2092356)- und [Erstellungs](https://go.microsoft.com/fwlink/?linkid=2092087)-APIs.
 
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+[LUIS]: ./luis-reference-regions.md

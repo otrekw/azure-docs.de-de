@@ -1,27 +1,20 @@
 ---
-title: Azure CLI-Skriptbeispiel – Herstellen einer Verbindung einer App mit einem Speicherkonto | Microsoft-Dokumentation
-description: Azure CLI-Skriptbeispiel – Herstellen einer Verbindung einer App mit einem Speicherkonto
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'Über die CLI: Verbinden einer App mit einem Speicherkonto'
+description: Hier erfahren Sie, wie Sie die Azure CLI zum Automatisieren der Bereitstellung und Verwaltung Ihrer App Service-App verwenden. In diesem Beispiel wird gezeigt, wie Sie eine Verbindung zwischen einer App und einem Speicherkonto herstellen.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: bc8345b2-8487-40c6-a91f-77414e8688e6
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 57a1e9ad6bf377fa5148a4d5c716be00db786c84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 508fef1a7467af6874271b5ef37c30a9a16dec95
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136850"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006312"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account-using-cli"></a>Verbinden einer App Service-App mit einem Speicherkonto über CLI
 
@@ -46,15 +39,15 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 | Get-Help | Notizen |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Erstellt einen App Service-Plan. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Erstellt eine App Service-App. |
-| [`az storage account create`](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) | Erstellt ein Speicherkonto. |
-| [`az storage account show-connection-string`](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string) | Abrufen der Verbindungszeichenfolge für ein Speicherkonto |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Erstellt oder aktualisiert eine App-Einstellung für eine App Service-App. App-Einstellungen werden als Umgebungsvariablen für Ihre App verfügbar gemacht. |
+| [`az group create`](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Erstellt einen App Service-Plan. |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Erstellt eine App Service-App. |
+| [`az storage account create`](/cli/azure/storage/account#az-storage-account-create) | Erstellt ein Speicherkonto. |
+| [`az storage account show-connection-string`](/cli/azure/storage/account#az-storage-account-show-connection-string) | Abrufen der Verbindungszeichenfolge für ein Speicherkonto |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Erstellt oder aktualisiert eine App-Einstellung für eine App Service-App. App-Einstellungen werden als Umgebungsvariablen für Ihre App verfügbar gemacht. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
 Zusätzliche App Service-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure App Service](../samples-cli.md).

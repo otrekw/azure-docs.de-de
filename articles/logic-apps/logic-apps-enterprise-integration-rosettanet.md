@@ -1,22 +1,21 @@
 ---
-title: RosettaNet-Nachrichten für die B2B-Unternehmensintegration – Azure Logic Apps
+title: RosettaNet-Nachrichten für die B2B-Integration
 description: Austauschen von RosettaNet-Nachrichten in Azure Logic Apps mit dem Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 88e02f3fbbca8007fdf479bb973f50c42a878d6e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: f02cbdc7ca8822c5fcc91b106856d7f8f547536b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332254"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91565104"
 ---
-# <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Austauschen von RosettaNet-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps 
+# <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Austauschen von RosettaNet-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps
 
 [RosettaNet](https://resources.gs1us.org) ist ein Non-Profit-Konsortium, das Standardprozesse zum Teilen von Unternehmensinformationen etabliert hat. Diese Standards sind weitverbreitet in der Halbleiter-, Elektronik- und Logistikindustrie und kommen dort am häufigsten zum Einsatz. Das RosettaNet-Konsortium erstellt und verwaltet sogenannte Partner Interface Processes (PIPs), die geläufige Geschäftsprozessdefinitionen für alle RosettaNet-Nachrichtenwechsel zur Verfügung stellen. RosettaNet basiert auf XML und definiert Nachrichtenrichtlinien, Schnittstellen für Geschäftsprozesse und Implementierungsframeworks für die Kommunikation zwischen Unternehmen.
 
@@ -83,7 +82,7 @@ Befolgen Sie diese Schritte, um eine PIP-Prozesskonfiguration zu Ihrem Integrati
    | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|
    | **Name** | Ja | Ihr PIP-Name |
-   | **PIP-Code** | Ja | Der dreistellige PIP-Code (weitere Informationen unter [RosettaNet-PIPs](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips)) |
+   | **PIP-Code** | Ja | Der dreistellige PIP-Code (weitere Informationen unter [RosettaNet-PIPs](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips)) |
    | **PIP-Version** | Ja | Die PIP-Versionsnummer, die anhand des ausgewählten PIP-Codes bestimmt wird |
    ||||
 
@@ -198,12 +197,12 @@ Sie können Vorlagen für Logik-Apps zum Decodieren und Codieren von RosettaNet-
 
 1. Geben Sie die Informationen für die Eigenschaften der Aktion ein:
 
-   ![Aktionsdetails angeben](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
+   ![Screenshot: Hier können Sie die Informationen für die Eigenschaften der Aktion eingeben.](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
 
    | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|
    | **Meldung** | Ja | Die zu decodierende RosettaNet-Nachricht  |
-   | **Header** | Ja | Die HTTP-Header, die die Werte für die Version (die RNIF-Version) und den Antworttyp (Kommunikationsart zwischen Partnern, kann synchron oder asynchron sein) angeben |
+   | **Headers** | Ja | Die HTTP-Header, die die Werte für die Version (die RNIF-Version) und den Antworttyp (Kommunikationsart zwischen Partnern, kann synchron oder asynchron sein) angeben |
    | **Rolle** | Ja | Die Rolle des Hostpartners im PIP |
    ||||
 

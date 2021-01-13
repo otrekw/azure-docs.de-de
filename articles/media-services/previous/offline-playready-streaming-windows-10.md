@@ -14,21 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 3f742d4cd2a5285c7c52611a0c4c4735dedc2f19
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a26be590d5f7b467f57e8e18eac54ce57be24094
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844786"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89266594"
 ---
-# <a name="offline-playready-streaming-for-windows-10"></a>Offlinestreaming mit PlayReady für Windows 10  
+# <a name="offline-playready-streaming-for-windows-10"></a>Offlinestreaming mit PlayReady für Windows 10
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Media Services-Version aus:"]
 > * [Version 3](../latest/offline-plaready-streaming-for-windows-10.md)
 > * [Version 2](offline-playready-streaming-windows-10.md)
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Azure Media Services unterstützt Download und Offlinewiedergabe mit DRM-Schutz. In diesem Artikel wird die Offline-Unterstützung von Azure Media Services für PlayReady-Clients unter Windows 10 behandelt. In den folgenden Artikeln erfahren Sie mehr über die Unterstützung des Offlinemodus für Geräte mit iOS/FairPlay und Android/Widevine:
 
@@ -48,7 +51,7 @@ Die Herausforderung bei der Implementierung des Offlinemodus ist folgende:
 * MP4 wird von vielen Playern und Encodertools unterstützt, bietet aber keine Verbindung zwischen MP4-Container und DRM.
 * Auf lange Sicht ist CFF mit CENC die beste Wahl. Allerdings ist das Ökosystem zur Unterstützung von Tools und Playern derzeit noch nicht vorhanden. Wir brauchen aber heute eine Lösung.
  
-Unser Vorschlag: Das Smooth Streaming-Dateiformat ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) mit H264/AAC bietet eine Bindung mit PlayReady (AES-128-CTR). Die jeweilige Smooth Streaming-Datei im ISMV-Format (vorausgesetzt, das Audio wird im Video gemuxt) ist selbst eine fMP4-Datei und kann für die Wiedergabe verwendet werden. Wenn ein Smooth Streaming-Inhalt mittels PlayReady-verschlüsselt wird, wird jede ISMV-Datei zu einer mit PlayReady-geschützten, fragmentierten MP4-Datei. Wir können eine ISMV-Datei mit der gewünschten Bitrate auswählen und sie zum Download in MP4 umbenennen.
+Unser Vorschlag: Das Smooth Streaming-Dateiformat ([PIFF](/iis/media/smooth-streaming/protected-interoperable-file-format)) mit H264/AAC bietet eine Bindung mit PlayReady (AES-128-CTR). Die jeweilige Smooth Streaming-Datei im ISMV-Format (vorausgesetzt, das Audio wird im Video gemuxt) ist selbst eine fMP4-Datei und kann für die Wiedergabe verwendet werden. Wenn ein Smooth Streaming-Inhalt mittels PlayReady-verschlüsselt wird, wird jede ISMV-Datei zu einer mit PlayReady-geschützten, fragmentierten MP4-Datei. Wir können eine ISMV-Datei mit der gewünschten Bitrate auswählen und sie zum Download in MP4 umbenennen.
 
 Es gibt zwei Möglichkeiten, die mit PlayReady geschützte MP4-Datei für den progressiven Download bereitzustellen:
 
@@ -65,14 +68,14 @@ Nachstehend finden Sie zwei Sätze von Testmedienobjekten, von denen das erste d
 Medienobjekt 1:
 
 * URL für progressiven Download: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA-URL (AMS): [https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
+* PlayReady LA-URL (AMS): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
 
 Medienobjekt 2:
 
 * URL für progressiven Download: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA-URL (lokal): [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
+* PlayReady LA-URL (lokal): `https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
 
-Zum Testen der Wiedergabe habe ich eine universelle Windows-Anwendung unter Windows 10 verwendet. Unter [Windows-universal-samples](https://github.com/Microsoft/Windows-universal-samples) auf GitHub finden Sie ein einfaches Beispiel für einen Player namens [Adaptive Streaming Sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). Alles, was wir tun müssen, ist, den Code hinzuzufügen, damit wir das heruntergeladene Video auswählen und es anstelle der adaptiven Streamingquelle als Quelle verwenden können. Die Änderungen befinden sich im Ereignishandler für das Schaltflächenklickereignis.
+Zum Testen der Wiedergabe habe ich eine universelle Windows-Anwendung unter Windows 10 verwendet. Unter [Windows 10 Universal Sample](https://github.com/Microsoft/Windows-universal-samples) auf GitHub finden Sie ein einfaches Beispiel für einen Player namens [Adaptive Streaming Sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). Alles, was wir tun müssen, ist, den Code hinzuzufügen, damit wir das heruntergeladene Video auswählen und es anstelle der adaptiven Streamingquelle als Quelle verwenden können. Die Änderungen befinden sich im Ereignishandler für das Schaltflächenklickereignis.
 
 ```csharp
 private async void LoadUri_Click(object sender, RoutedEventArgs e)
@@ -125,6 +128,10 @@ Zusammengefasst haben wir den Offlinemodus in Azure Media Services erreicht:
 * Für den progressiven Download können Inhalte in Azure Media Services oder Azure Storage gehostet werden.
 * Die PlayReady-Lizenzübermittlung kann aus Azure Media Services oder einem anderen Dienst erfolgen.
 * Die vorbereiteten Smooth Streaming-Inhalte können weiterhin für Onlinestreaming über DASH oder Smooth Streaming mit PlayReady als DRM verwendet werden.
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

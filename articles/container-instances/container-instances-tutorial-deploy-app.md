@@ -1,20 +1,15 @@
 ---
-title: 'Tutorial: Bereitstellen einer Container-App in Azure Container Instances'
+title: 'Tutorial: Bereitstellen einer Container-App in einer Containerinstanz'
 description: Tutorial für Azure Container Instances (Teil 3 von 3) – Bereitstellen einer Containeranwendung in Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
-ms.custom: seodec18, mvc
-ms.openlocfilehash: e14a3ba50d75161afa3325b3b7bcbfe96ea24cc3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 2ea3d285f00d38df84587d9a7c15242fff38453b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325628"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87500571"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Tutorial: Bereitstellen einer Containeranwendung in Azure Container Instances
 
@@ -37,7 +32,9 @@ In diesem Abschnitt verwenden Sie die Azure CLI zum Bereitstellen des Images, da
 
 ### <a name="get-registry-credentials"></a>Abrufen von Registrierungsanmeldeinformationen
 
-Wenn Sie ein Image bereitstellen, das in einer privaten Containerregistrierung gehostet wird (wie im [zweiten Tutorial](container-instances-tutorial-prepare-acr.md)), müssen Sie Anmeldeinformationen für den Zugriff auf die Registrierung angeben. Wie in [Authentifizieren per Azure Container Registry über Azure Container Instances](../container-registry/container-registry-auth-aci.md) gezeigt, empfiehlt es sich in vielen Szenarien, einen Azure Active Directory-Dienstprinzipal mit *Pull*-Berechtigungen für Ihre Registrierung zu erstellen und zu konfigurieren. Dieser Artikel enthält Beispielskripts für die Erstellung eines Dienstprinzipals mit den erforderlichen Berechtigungen. Notieren Sie sich die Dienstprinzipal-ID und das dazugehörige Kennwort. Diese Anmeldeinformationen werden beim Bereitstellen des Containers benötigt.
+Wenn Sie ein Image bereitstellen, das in einer privaten Azure-Containerregistrierung gehostet wird (wie im [zweiten Tutorial](container-instances-tutorial-prepare-acr.md)), müssen Sie Anmeldeinformationen für den Zugriff auf die Registrierung angeben. 
+
+Eine bewährte Methode für viele Szenarien ist das Erstellen und Konfigurieren eines Azure Active Directory-Dienstprinzipals mit *Pull*-Berechtigungen für Ihre Registrierung. Beispielskripts zum Erstellen eines Dienstprinzipals mit den erforderlichen Berechtigungen finden Sie unter [Authentifizieren per Azure Container Registry über Azure Container Instances](../container-registry/container-registry-auth-aci.md). Notieren Sie sich die *Dienstprinzipal-ID* und das zugehörige *Kennwort*. Sie nutzen diese Anmeldeinformationen zum Zugreifen auf die Registrierung, wenn Sie den Container bereitstellen.
 
 Darüber hinaus benötigen Sie den vollständigen Namen des Anmeldeservers für die Containerregistrierung (ersetzen Sie `<acrName>` durch den Namen Ihrer Registrierung):
 
@@ -69,13 +66,12 @@ Führen Sie den Befehl [az container show][az-container-show] erneut aus, bis de
 
 Wenn die Bereitstellung erfolgreich war, zeigen Sie mit dem Befehl [az container show][az-container-show] den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) des Containers an:
 
-```bash
+```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
 Beispiel:
-```console
-$ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
+```output
 "aci-demo.eastus.azurecontainer.io"
 ```
 
@@ -91,8 +87,7 @@ az container logs --resource-group myResourceGroup --name aci-tutorial-app
 
 Beispielausgabe:
 
-```bash
-$ az container logs --resource-group myResourceGroup --name aci-tutorial-app
+```output
 listening on port 80
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"

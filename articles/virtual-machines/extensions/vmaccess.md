@@ -1,5 +1,5 @@
 ---
-title: Zurücksetzen des Zugriffs auf einen virtuellen Azure-Linux-Computer | Microsoft-Dokumentation
+title: Zurücksetzen des Zugriffs auf einen virtuellen Azure-Linux-Computer
 description: Informationen zum Verwalten von Benutzern und Zurücksetzen des Zugriffs auf Linux-VMs mithilfe der VMAccess-Erweiterung und der Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
@@ -9,24 +9,25 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 261a9646-1f93-407e-951e-0be7226b3064
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
-ms.openlocfilehash: 447c10037503c627092bb23e23b4fe1ee88ca45d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: e46f7f3d51d2841a2287c86f9e8dddd7460b1a5d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173949"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016436"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Verwalten von Administratoren, SSH und Überprüfen oder Reparieren von Datenträgern auf Linux-VMs mit der VMAccess-Erweiterung und der Azure CLI
 ## <a name="overview"></a>Übersicht
 Der Datenträger auf Ihrer Linux-VM zeigt Fehler an. Aus irgendeinem Grund haben Sie das Stammkennwort für Ihre Linux-VM zurückgesetzt oder Ihren privaten SSH-Schlüssel versehentlich gelöscht. Wenn dies früher zu Rechenzentrumszeiten geschah, mussten Sie dorthin fahren und den KVM öffnen, um an die Serverkonsole zu gelangen. Stellen Sie sich die Azure-VMAccess-Erweiterung als diesen KVM-Switch vor, mit dem Sie Zugriff auf die Konsole haben, um den Zugriff auf Linux zurückzusetzen oder Wartung auf Datenträgerebene durchzuführen.
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure VMAccess-Erweiterung einen Datenträger überprüfen oder reparieren, den Benutzerzugriff zurücksetzen, Administratorkonten verwalten oder die SSH-Konfiguration unter Linux aktualisieren, wenn die virtuellen Computer als virtuelle Azure Resource Manager ausgeführt werden. Wenn Sie klassisch bereitgestellte virtuelle Computer verwalten möchten, können Sie die Anweisungen in der [Dokumentation zu klassisch bereitgestellten virtuellen Computern](../linux/classic/reset-access-classic.md) befolgen. 
+In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure VMAccess-Erweiterung einen Datenträger überprüfen oder reparieren, den Benutzerzugriff zurücksetzen, Administratorkonten verwalten oder die SSH-Konfiguration unter Linux aktualisieren, wenn die virtuellen Computer als virtuelle Azure Resource Manager ausgeführt werden. Wenn Sie klassisch bereitgestellte virtuelle Computer verwalten möchten, können Sie die Anweisungen in der [Dokumentation zu klassisch bereitgestellten virtuellen Computern](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic) befolgen. 
  
 > [!NOTE]
 > Wenn Sie die VMAccess-Erweiterung verwenden, um das Kennwort Ihres virtuellen Computers nach der Installation der AAD-Anmeldeerweiterung zurückzusetzen, müssen Sie die AAD-Anmeldeerweiterung erneut ausführen, um die AAD-Anmeldung für Ihren Computer erneut zu aktivieren.
@@ -42,7 +43,7 @@ Die VMAccess-Erweiterung kann für folgende Linux-Distributionen ausgeführt wer
 | Debian | Debian 7.9+, 8.2+ |
 | Red Hat | RHEL 6.7+, 7.1+ |
 | Oracle Linux | 6.4+, 7.0+ |
-| SUSE | 11 und 12 |
+| Suse | 11 und 12 |
 | openSUSE | openSUSE Leap 42.2+ |
 | CentOS | CentOS 6.3+, 7.0+ |
 | CoreOS | 494.4.0+ |
@@ -66,7 +67,7 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **HINWEIS:** Der Befehl `az vm user update` fügt den Text des neuen öffentlichen Schlüssels an die Datei `~/.ssh/authorized_keys` für den Administratorbenutzer auf dem virtuellen Computer an. Vorhandene SSH-Schlüssel werden dadurch weder ersetzt noch entfernt. Vorherige, zur Bereitstellungszeit festgelegte Schlüssel oder nachfolgende Updates über die VMAccess-Erweiterung werden dadurch nicht entfernt.
+> **HINWEIS:** Der `az vm user update`-Befehl fügt den Text des neuen öffentlichen Schlüssels der `~/.ssh/authorized_keys`-Datei für den Administratorbenutzer auf dem virtuellen Computer an. Vorhandene SSH-Schlüssel werden dadurch weder ersetzt noch entfernt. Vorherige, zur Bereitstellungszeit festgelegte Schlüssel oder nachfolgende Updates über die VMAccess-Erweiterung werden dadurch nicht entfernt.
 
 ## <a name="reset-password"></a>Kennwort zurücksetzen
 Das folgende Beispiel setzt das Kennwort für den Benutzer `azureuser` auf dem virtuellen Computer `myVM` zurück:

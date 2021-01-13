@@ -1,5 +1,5 @@
 ---
-title: 'Einrichten von Apache Kafka in HDInsight mithilfe von Azure PowerShell: Schnellstart'
+title: 'Schnellstart: Erstellen eines Apache Kafka-Clusters mithilfe von Azure PowerShell: HDInsight'
 description: In dieser Schnellstartanleitung lernen Sie, wie Sie mithilfe von Azure PowerShell einen Apache Kafka-Cluster in Azure HDInsight erstellen. Darüber hinaus erfahren Sie mehr über Kafka-Themen, -Abonnenten und -Consumer.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 79224879dc0f23c7ad022134c6add087b90304b7
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 57cbfa356961aca778032b6e3552cffb88b6ab3d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123153"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533001"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Schnellstart: Erstellen eines Apache Kafka-Clusters in Azure HDInsight mithilfe von PowerShell
 
@@ -29,7 +29,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Das PowerShell-[Az-Modul](https://docs.microsoft.com/powershell/azure/overview) ist installiert.
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+* Das PowerShell-[Az-Modul](/powershell/azure/) ist installiert.
 
 * Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -131,13 +133,13 @@ New-AzHDInsightCluster `
 
 Das Erstellen des HDInsight-Clusters kann bis zu 20 Minuten dauern.
 
-Mit dem Parameter `-DisksPerWorkerNode` wird die Skalierbarkeit von Kafka in HDInsight konfiguriert. Kafka in HDInsight verwendet den lokalen Datenträger der virtuellen Computer im Cluster, um Daten zu speichern. Da Kafka sehr E/A-intensiv ist, wird [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) verwendet, um einen hohen Durchsatz zu ermöglichen und mehr Speicher pro Knoten bereitzustellen.
+Mit dem Parameter `-DisksPerWorkerNode` wird die Skalierbarkeit von Kafka in HDInsight konfiguriert. Kafka in HDInsight verwendet den lokalen Datenträger der virtuellen Computer im Cluster, um Daten zu speichern. Da Kafka sehr E/A-intensiv ist, wird [Azure Managed Disks](../../virtual-machines/managed-disks-overview.md) verwendet, um einen hohen Durchsatz zu ermöglichen und mehr Speicher pro Knoten bereitzustellen.
 
 Der Typ des verwalteten Datenträgers kann entweder __Standard__ (HDD) oder __Premium__ (SSD) sein. Der Typ des Datenträgers hängt von der VM-Größe ab, die von den Workerknoten (Kafka-Broker) verwendet werden. Premium-Datenträger werden automatisch mit virtuellen Computern der DS- und GS-Serie verwendet. Alle anderen virtuellen Computertypen verwenden den Standardtyp. Sie können den VM-Typ mit dem `-WorkerNodeSize`-Parameter festlegen. Weitere Informationen zu Parametern finden Sie in der Dokumentation [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster).
 
 Wenn Sie die Verwendung von mehr als 32 Workerknoten planen (entweder bei Erstellung des Clusters oder durch eine Skalierung des Clusters nach der Erstellung), müssen Sie mit dem `-HeadNodeSize`-Parameter eine VM-Größe von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) angeben. Weitere Informationen zu Knotengrößen und den damit verbundenen Kosten finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
+## <a name="connect-to-the-cluster"></a>Herstellen einer Verbindung mit dem Cluster
 
 1. Verwenden Sie zum Herstellen einer Verbindung mit dem primären Hauptknoten des Kafka-Clusters den folgenden Befehl. Ersetzen Sie `sshuser` durch den SSH-Benutzernamen. Ersetzen Sie `mykafka` durch den Namen des Kafka-Clusters:
 
@@ -145,7 +147,7 @@ Wenn Sie die Verwendung von mehr als 32 Workerknoten planen (entweder bei Erstel
     ssh sshuser@mykafka-ssh.azurehdinsight.net
     ```
 
-2. Wenn Sie zum ersten Mal eine Verbindung mit dem Cluster herstellen, zeigt der SSH-Client unter Umständen eine Warnung mit dem Hinweis an, dass die Echtheit des Hosts nicht bestätigt werden kann. Geben Sie in diesem Fall __Ja__ ein, und drücken Sie dann die __EINGABETASTE__, um den Host der Liste mit den vertrauenswürdigen Servern des SSH-Clients hinzuzufügen.
+2. Wenn Sie zum ersten Mal eine Verbindung mit dem Cluster herstellen, zeigt der SSH-Client unter Umständen eine Warnung mit dem Hinweis an, dass die Echtheit des Hosts nicht bestätigt werden kann. Geben Sie in diesem Fall __Ja__ ein, und drücken Sie dann die __EINGABETASTE__ , um den Host der Liste mit den vertrauenswürdigen Servern des SSH-Clients hinzuzufügen.
 
 3. Geben Sie nach Aufforderung das Kennwort für den SSH-Benutzer ein.
 
@@ -172,9 +174,9 @@ Welcome to Kafka on HDInsight.
 Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 ```
 
-## <a id="getkafkainfo"></a>Beschaffen der Apache Zookeeper- und Broker-Hostinformationen
+## <a name="get-the-apache-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>Beschaffen der Apache Zookeeper- und Broker-Hostinformationen
 
-Bei der Verwendung von Kafka müssen Ihnen die *Apache Zookeeper*- und die *Broker*-Hosts bekannt sein. Diese Hosts werden zusammen mit der Kafka-API und vielen Hilfsprogrammen verwendet, die in Kafka enthalten sind.
+Bei der Verwendung von Kafka müssen Ihnen die *Apache Zookeeper* - und die *Broker* -Hosts bekannt sein. Diese Hosts werden zusammen mit der Kafka-API und vielen Hilfsprogrammen verwendet, die in Kafka enthalten sind.
 
 In diesem Abschnitt rufen Sie die Hostinformationen aus der Apache Ambari-REST-API im Cluster ab.
 
@@ -230,9 +232,9 @@ In diesem Abschnitt rufen Sie die Hostinformationen aus der Apache Ambari-REST-A
 
 ## <a name="manage-apache-kafka-topics"></a>Verwalten von Apache Kafka-Themen
 
-Kafka speichert Datenströme in *Themen*. Mit dem Hilfsprogramm `kafka-topics.sh` können Sie Themen verwalten.
+Kafka speichert Datenströme in *Themen* . Mit dem Hilfsprogramm `kafka-topics.sh` können Sie Themen verwalten.
 
-* Führen Sie folgenden Befehl in der SSH-Verbindung aus, **um ein Thema zu erstellen**:
+* Führen Sie folgenden Befehl in der SSH-Verbindung aus, **um ein Thema zu erstellen** :
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
@@ -248,7 +250,7 @@ Kafka speichert Datenströme in *Themen*. Mit dem Hilfsprogramm `kafka-topics.sh
         
         In Regionen mit drei Fehlerdomänen ermöglicht der Replikationsfaktor 3 die Verteilung von Replikaten auf die Fehlerdomänen. In Regionen mit zwei Fehlerdomänen ermöglicht der Replikationsfaktor 4 die gleichmäßige Verteilung von Replikaten auf die Domänen.
         
-        Informationen zur Anzahl von Fehlerdomänen in einer Region finden Sie im Dokument [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+        Informationen zur Anzahl von Fehlerdomänen in einer Region finden Sie im Dokument [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
         Azure-Fehlerdomänen sind Kafka nicht bekannt. Beim Erstellen von Partitionsreplikaten für Themen kann es daher vorkommen, dass die Replikate nicht ordnungsgemäß für Hochverfügbarkeit verteilt werden.
 
@@ -258,9 +260,9 @@ Kafka speichert Datenströme in *Themen*. Mit dem Hilfsprogramm `kafka-topics.sh
 
         * Wenn ein neues Thema oder eine neue Partition erstellt wird
 
-        * Wenn Sie einen Cluster zentral hochskalieren
+        * Wenn Sie einen Cluster hochskalieren
 
-* Verwenden Sie den folgenden Befehl, **um Themen aufzulisten**:
+* Verwenden Sie den folgenden Befehl, **um Themen aufzulisten** :
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
@@ -287,7 +289,7 @@ Wenn Sie weitere Informationen zu den mit dem Hilfsprogramm `kafka-topics.sh` ve
 
 ## <a name="produce-and-consume-records"></a>Erstellen und Nutzen von Datensätzen
 
-Bei Kafka werden *Datensätze* in Themen gespeichert. Datensätze werden von *Producern* erstellt und von *Consumern* genutzt. Producer und Consumer kommunizieren mit dem *Kafka-Brokerdienst*. Jeder Workerknoten in Ihrem HDInsight-Cluster ist ein Kafka-Brokerhost.
+Bei Kafka werden *Datensätze* in Themen gespeichert. Datensätze werden von *Producern* erstellt und von *Consumern* genutzt. Producer und Consumer kommunizieren mit dem *Kafka-Brokerdienst* . Jeder Workerknoten in Ihrem HDInsight-Cluster ist ein Kafka-Brokerhost.
 
 Gehen Sie wie folgt vor, um Datensätze im zuvor erstellten Testthema zu speichern und sie anschließend mithilfe eines Consumers zu lesen:
 
@@ -299,7 +301,7 @@ Gehen Sie wie folgt vor, um Datensätze im zuvor erstellten Testthema zu speiche
    
     Nach diesem Befehl erreichen Sie eine leere Zeile.
 
-2. Geben Sie eine Textnachricht in die leere Zeile ein, und drücken Sie die EINGABETASTE. Geben Sie auf diese Weise mehrere Nachrichten ein, und drücken Sie anschließend **STRG+C**, um zur normalen Eingabeaufforderung zurückzukehren. Die einzelnen Zeilen werden jeweils als separater Datensatz an das Kafka-Thema gesendet.
+2. Geben Sie eine Textnachricht in die leere Zeile ein, und drücken Sie die EINGABETASTE. Geben Sie auf diese Weise mehrere Nachrichten ein, und drücken Sie anschließend **STRG+C** , um zur normalen Eingabeaufforderung zurückzukehren. Die einzelnen Zeilen werden jeweils als separater Datensatz an das Kafka-Thema gesendet.
 
 3. Verwenden Sie zum Lesen von Datensätzen aus dem Thema das Hilfsprogramm `kafka-console-consumer.sh` über die SSH-Verbindung:
    
@@ -311,7 +313,7 @@ Gehen Sie wie folgt vor, um Datensätze im zuvor erstellten Testthema zu speiche
 
     Falls Sie eine ältere Version von Kafka verwenden, ersetzen Sie `--bootstrap-server $KAFKABROKERS` durch `--zookeeper $KAFKAZKHOSTS`.
 
-4. Drücken Sie __STRG+C__, um den Consumer zu beenden.
+4. Drücken Sie __STRG+C__ , um den Consumer zu beenden.
 
 Sie können Producer und Consumer auch programmgesteuert erstellen. Ein Beispiel für die Verwendung dieser API finden Sie im Dokument [Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs](apache-kafka-producer-consumer-api.md).
 

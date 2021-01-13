@@ -1,58 +1,48 @@
 ### YamlMime:Landing
-title: Dokumentation zur Textübersetzung
-summary: Textübersetzung ist ein cloudbasierter Dienst zur maschinellen Übersetzung, mit dem Sie durch einen einfachen REST-API-Aufruf Text nahezu in Echtzeit übersetzen können. Die API verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Benutzerdefinierter Translator ist eine Erweiterung der Textübersetzungs-API und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit der Textübersetzungs-API oder mit Microsoft Speech Services übersetzt werden.
+title: Dokumentation zu Translator
+summary: Translator ist ein cloudbasierter Dienst zur maschinellen Übersetzung, mit dem Sie durch einen einfachen REST-API-Aufruf Text nahezu in Echtzeit übersetzen können. Der Dienst verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Benutzerdefinierter Translator ist eine Erweiterung von Translator und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit Translator oder mit Microsoft Speech Services übersetzt werden.
 metadata:
-  title: 'Dokumentation zur Textübersetzung: Schnellstarts, Tutorials, API-Referenz'
+  title: 'Dokumentation zu Translator: Schnellstarts, Tutorials, API-Referenz'
   titleSuffix: Azure Cognitive Services
-  description: Textübersetzung ist ein cloudbasierter Dienst zur maschinellen Übersetzung, mit dem Sie durch einen einfachen REST-API-Aufruf Text nahezu in Echtzeit übersetzen können. Die API verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Benutzerdefinierter Translator ist eine Erweiterung der Textübersetzungs-API und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit der Textübersetzungs-API oder mit Microsoft Speech Services übersetzt werden.
+  description: Translator ist ein cloudbasierter Dienst zur maschinellen Übersetzung, mit dem Sie durch einen einfachen REST-API-Aufruf Text nahezu in Echtzeit übersetzen können. Der Dienst verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Benutzerdefinierter Translator ist eine Erweiterung von Translator und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit Translator oder mit Microsoft Speech Services übersetzt werden.
   services: cognitive-services
   author: erhopf
   manager: nitinme
-  layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: translator-text
   ms.topic: landing-page
-  ms.date: 09/05/2019
+  ms.date: 10/14/2019
   ms.author: erhopf
-  ms.openlocfilehash: 7bbe487ff6ed545f40cccc5abb041f54ea5f319d
-  ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+  ms.custom: contperf-fy21q2
+  ms.openlocfilehash: f0f2e009220292d298848cf93c479639b2318062
+  ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/29/2019
-  ms.locfileid: "71672557"
+  ms.lasthandoff: 12/16/2020
+  ms.locfileid: "97588487"
 landingContent:
 - title: Übersetzer
   linkLists:
   - linkListType: overview
     links:
-    - text: Textübersetzungs-API
+    - text: Übersetzer
       url: translator-info-overview.md
     - text: Benutzerdefinierter Translator
       url: translator-info-overview.md
     - text: Preise
       url: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
-    - text: Compliance
+    - text: Kompatibilität
       url: https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/
     - text: Erstellen eines Abonnements
-      url: translator-text-how-to-signup.md
+      url: ./translator-how-to-signup.md
     - text: Häufig gestellte Fragen
       url: https://www.microsoft.com/translator/faq.aspx
-- title: Textübersetzungs-API
+- title: Erste Schritte
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Text übersetzen
-      url: quickstart-translate.md
-    - text: Transliteration von Text
-      url: quickstart-transliterate.md
-    - text: Spracherkennung
-      url: quickstart-detect.md
-    - text: Wörterbuchsuche
-      url: quickstart-dictionary.md
-    - text: Bestimmen der Satzlänge
-      url: quickstart-sentences.md
-    - text: Auflisten unterstützter Sprachen
-      url: quickstart-languages.md
+    - text: Schnellstart
+      url: quickstart-translator.md
   - linkListType: tutorial
     links:
     - text: Erstellen einer WPF-Übersetzungs-App, C#
@@ -61,11 +51,11 @@ landingContent:
       url: tutorial-build-flask-app-translation-synthesis.md
   - linkListType: reference
     links:
-    - text: Referenz zur Textübersetzungs-API (v3)
+    - text: Referenz zu Translator (v3)
       url: reference/v3-0-reference.md
     - text: Anforderungsgrenzwerte
       url: request-limits.md
-    - text: Sprach- und Regionsunterstützung
+    - text: Sprachunterstützung
       url: language-support.md
 - title: Benutzerdefinierter Translator
   linkLists:
@@ -103,7 +93,13 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Beispiele für GitHub
+    - text: Beispiele bei GitHub
       url: https://aka.ms/TranslatorGitHub
     - text: Stack Overflow
       url: https://stackoverflow.com/questions/tagged/microsoft-translator
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context

@@ -1,28 +1,21 @@
 ---
-title: Benutzerbindungsanalyse für Webanwendungen mit Azure Application Insights | Microsoft-Dokumentation
+title: Analysieren der Benutzervermerkdauer für Web-Apps mit Azure Application Insights
 description: Wie viele Benutzer kehren zu Ihrer App zurück?
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/03/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: bda79520dd86cc14161f6f22cd24feb2e35849ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 05/03/2017
+ms.reviewer: mbullwin
+ms.openlocfilehash: f7f6155d3230d234e1163ee12cd7685817331b93
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372613"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87323535"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Benutzerbindungsanalyse für Webanwendungen mit Azure Application Insights
 
-Mithilfe des Vermerkdauer-Features in [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) können Sie analysieren, wie viele Benutzer zu Ihrer App zurückkehren und wie oft sie bestimmte Aufgaben durchführen oder Ziele erreichen. Beispiel: Wenn Sie eine Spielewebsite betreiben, können Sie die Anzahl der Benutzer, die nach einem verlorenen Spiel zurückkehren, mit der Anzahl vergleichen, die nach einem gewonnenen Spiel zurückkehren. Mit diesem Wissen können Sie sowohl die Benutzererfahrung als auch Ihre Geschäftsstrategie verbessern.
+Mithilfe des Vermerkdauer-Features in [Azure Application Insights](./app-insights-overview.md) können Sie analysieren, wie viele Benutzer zu Ihrer App zurückkehren und wie oft sie bestimmte Aufgaben durchführen oder Ziele erreichen. Beispiel: Wenn Sie eine Spielewebsite betreiben, können Sie die Anzahl der Benutzer, die nach einem verlorenen Spiel zurückkehren, mit der Anzahl vergleichen, die nach einem gewonnenen Spiel zurückkehren. Mit diesem Wissen können Sie sowohl die Benutzererfahrung als auch Ihre Geschäftsstrategie verbessern.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -61,16 +54,15 @@ Oder im ASP.NET-Servercode:
    telemetry.TrackEvent("won game");
 ```
 
-[Erfahren Sie mehr über das Schreiben von benutzerdefinierten Ereignissen](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+[Erfahren Sie mehr über das Schreiben von benutzerdefinierten Ereignissen](./api-custom-events-metrics.md#trackevent).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) oder [Seitenansichten](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](./api-custom-events-metrics.md#trackevent) oder [Seitenansichten](./api-custom-events-metrics.md#page-views).
 - Wenn Sie bereits benutzerdefinierte Ereignisse oder Seitenansichten senden, finden Sie mithilfe der Nutzungstools heraus, wie Benutzer den Dienst verwenden.
     - [Benutzer, Sitzungen, Ereignisse](usage-segmentation.md)
     - [Trichter](usage-funnels.md)
     - [Benutzerabläufe](usage-flows.md)
-    - [Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)
+    - [Arbeitsmappen](../platform/workbooks-overview.md)
     - [Hinzufügen von Benutzerkontext](usage-send-user-context.md)
-
 

@@ -1,33 +1,34 @@
 ---
-title: Durchführen einer Zugriffsüberprüfung im Portal „Meine Apps“ – Azure Active Directory | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen zum Anzeigen und Verwalten des Sicherheitszugriffs für Apps und Gruppen Ihrer Organisation.
+title: 'Azure AD: Verwalten des Zugriffs Ihrer Organisation auf Apps und Gruppen'
+description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung durchführen, um den Sicherheitszugriff für Apps und Gruppen Ihrer Organisation über das Portal „Meine Apps“ zu verwalten.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.topic: end-user-help
+ms.date: 10/19/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6681720fc7c0fe04c99bf7957be14865c663dd67
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 8da9e97aaa2c6d99990df4221d8b6e99ab18ac83
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383154"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124811"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Durchführen einer Zugriffsüberprüfung im Portal „Meine Apps“
 
-Sie können Ihr Geschäfts-, Schul- oder Unikonto mit dem webbasierten Portal **Meine Apps** verwenden, um viele der cloudbasierten Apps Ihrer Organisation anzuzeigen und zu starten, bestimmte Profil- und Kontoinformationen zu aktualisieren, Informationen zu Ihren **Gruppen** anzuzeigen und **Zugriffsüberprüfungen** für Ihre Apps und Gruppen durchzuführen. Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich an Ihren Helpdesk.
+Sie können Ihr Geschäfts-, Schul- oder Unikonto mit dem webbasierten Portal **Meine Apps** für folgende Aufgaben verwenden, um Zugriffsüberprüfungen für Ihre Apps und Gruppen durchzuführen. Zugriffsüberprüfungen helfen Ihnen, veraltete oder sich ändernde Zugriffsanforderungen zu verwalten und sicherzustellen, dass diese überprüft und aktualisiert werden.
+
+Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich an Ihren Helpdesk.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Dieser Inhalt richtet sich an Benutzer. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](https://docs.microsoft.com/azure/active-directory/manage-apps) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
+>Dieser Inhalt richtet sich an Benutzer von **Meine Apps**. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](../manage-apps/index.yml) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
 
 ## <a name="manage-access-reviews"></a>Verwalten von Zugriffsüberprüfungen
 
@@ -36,7 +37,7 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Durchführen eigener Zugriffs�
 >[!Note]
 >Wenn die Kachel **Zugriffsüberprüfungen** nicht angezeigt wird, bedeutet dies, dass Sie nicht über die Berechtigung zum Durchführen von Zugriffsüberprüfungen verfügen oder dass keine ausstehenden Überprüfungen auf Ihre Genehmigung warten. Wenn Sie der Meinung sind, dass Sie Zugriff auf die Kachel haben müssten, wenden Sie sich an den Helpdesk, um Unterstützung zu erhalten.
 
-### <a name="to-perform-your-access-reviews"></a>So führen Sie Zugriffsüberprüfungen durch
+## <a name="to-perform-your-access-reviews"></a>So führen Sie Zugriffsüberprüfungen durch
 
 1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an.
 
@@ -44,7 +45,7 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Durchführen eigener Zugriffs�
 
     Die Seite **Apps** wird mit allen im Besitz Ihrer Organisation befindlichen Cloud-Apps angezeigt, die Ihnen zur Verfügung stehen.
 
-    ![Seite „Apps“ im Portal „Meine Apps“](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
+    ![Seite „Apps“ im Portal „Meine Apps“](media/my-apps-portal/my-apps-home.png)
 
 3. Wählen Sie die Kachel **Zugriffsüberprüfungen** aus, um eine Liste der Zugriffsüberprüfungen anzuzeigen, die auf Ihre Genehmigung warten.
 
@@ -57,7 +58,7 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Durchführen eigener Zugriffs�
     ![Seite „Zugriffsüberprüfung“ mit den Details zur Überprüfung](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >Wenn Sie Administrator sind und den Zugriff Ihrer Organisation auf Gruppen und Apps überprüfen können, wird eine andere Seite angezeigt. Weitere Informationen zum Überprüfen des Zugriffs auf Gruppen oder Apps für Ihre Organisation finden Sie unter [Prüfen des Zugriffs auf Gruppen und Anwendungen mit Azure AD-Zugriffsüberprüfungen](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
+    >Wenn Sie Administrator sind und den Zugriff Ihrer Organisation auf Gruppen und Apps überprüfen können, wird eine andere Seite angezeigt. Weitere Informationen zum Überprüfen des Zugriffs auf Gruppen oder Apps für Ihre Organisation finden Sie unter [Prüfen des Zugriffs auf Gruppen und Anwendungen mit Azure AD-Zugriffsüberprüfungen](../governance/perform-access-review.md).
 
 6. Wählen Sie **Ja** aus, um den Zugriff zu behalten, oder wählen Sie **Nein** aus, um Ihren Zugriff zu entfernen.
 
@@ -75,7 +76,5 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Durchführen eigener Zugriffs�
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](my-apps-portal-end-user-access.md)
-
-- [Ändern Ihrer Profilinformationen](my-apps-portal-end-user-update-profile.md)
-
+- [Ändern Ihrer Profilinformationen](./my-account-portal-settings.md)
 - [Anzeigen und Aktualisieren gruppenbezogener Informationen](my-apps-portal-end-user-groups.md)

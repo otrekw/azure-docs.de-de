@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/04/2019
 ms.author: spelluru
 ms.openlocfilehash: 6efcd46b174d34670a01bb7d5c440559bf0f116a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67178481"
 ---
 | Tarif              | Kostenlos         | Basic    | Standard   |

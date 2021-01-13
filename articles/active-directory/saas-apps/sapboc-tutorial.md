@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit SAP Analytics Cloud | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und SAP Analytics Cloud konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6c5e44f0-4e52-463f-b879-834d80a55cdf
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd01c86086c7491d22f655fcba5da237286412f
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 84b0a761b52baca4ae1ab81b3c67f18f6b14db92
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347799"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608832"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>Tutorial: Integrieren von SAP Analytics Cloud in Azure Active Directory
 
@@ -31,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie SAP Analytics Cloud in Azure Active Dir
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei SAP Analytics Cloud anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -85,17 +80,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
 
-    | |
-    |-|-|
-    | `https://<sub-domain>.sapanalytics.cloud/` |
-    | `https://<sub-domain>.sapbusinessobjects.cloud/` |
+    - `https://<sub-domain>.sapanalytics.cloud/`
+    - `https://<sub-domain>.sapbusinessobjects.cloud/`
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein:
-    
-    | |
-    |-|-|
-    | `<sub-domain>.sapbusinessobjects.cloud` |
-    | `<sub-domain>.sapanalytics.cloud` |
+
+    - `<sub-domain>.sapbusinessobjects.cloud`
+    - `<sub-domain>.sapanalytics.cloud`
 
     > [!NOTE] 
     > Die Werte in diesen URLs dienen nur Demonstrationszwecken. Aktualisieren Sie die Werte mit der tatsächlichen Anmelde-URL und der Bezeichner-URL. Die Anmelde-URL erhalten Sie vom [Supportteam für den SAP Analytics Cloud-Client](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/). Sie können die Bezeichner-URL abrufen, indem Sie die SAP Analytics Cloud-Metadaten aus der Verwaltungskonsole herunterladen. Dies wird weiter unten im Tutorial erläutert.
@@ -154,7 +145,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -192,33 +183,32 @@ So stellen Sie ein Benutzerkonto bereit:
 
     Führen Sie anschließend die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **USER ID** (BENUTZER-ID) die Benutzer-ID des Benutzers ein, z. B. **B**.
+    1. Geben Sie im Textfeld **USER ID** (BENUTZER-ID) die Benutzer-ID des Benutzers ein, z. B. **B**.
 
-    b. Geben Sie im Textfeld **FIRST NAME** (VORNAME) den Vornamen des Benutzers ein (z. B. **B**).
+    1. Geben Sie im Textfeld **FIRST NAME** (VORNAME) den Vornamen des Benutzers ein (z. B. **B**).
 
-    c. Geben Sie im Textfeld **LAST NAME** den Nachnamen des Benutzers ein (z.B. **Simon**).
+    1. Geben Sie im Textfeld **LAST NAME** den Nachnamen des Benutzers ein (z.B. **Simon**).
 
-    d. Geben Sie im Textfeld **DISPLAY NAME** (ANZEIGENAME) den vollständigen Namen des Benutzers ein (z. B. **B. Simon**).
+    1. Geben Sie im Textfeld **DISPLAY NAME** (ANZEIGENAME) den vollständigen Namen des Benutzers ein (z. B. **B. Simon**).
 
-    e. Geben Sie im Textfeld **E-MAIL** die E-Mail-Adresse des Benutzers ein, etwa `b.simon@contoso.com`.
+    1. Geben Sie im Textfeld **E-MAIL** die E-Mail-Adresse des Benutzers ein, z.B. `b.simon@contoso.com`.
 
-    f. Wählen Sie auf der Seite **Select Roles** die passende Rolle für den Benutzer, und wählen Sie dann **OK**.
+    1. Wählen Sie auf der Seite **Select Roles** die passende Rolle für den Benutzer, und wählen Sie dann **OK**.
 
-      ![Rolle wählen](./media/sapboc-tutorial/user3.png)
+        ![Rolle auswählen](./media/sapboc-tutorial/user3.png)
 
-    g. Wählen Sie das Symbol **Speichern** aus.
+    1. Wählen Sie das Symbol **Speichern** aus.
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „SAP Analytics Cloud“ klicken, sollten Sie automatisch bei der SAP Analytics Cloud-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „SAP Analytics Cloud“ klicken, sollten Sie automatisch bei der SAP Analytics Cloud-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)

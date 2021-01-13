@@ -1,87 +1,73 @@
 ---
-title: Aktivieren von InifinBand mit SR-IOV – Azure Virtual Machines | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie InfiniBand mit SR-IOV aktivieren.
-services: virtual-machines
-documentationcenter: ''
+title: 'Aktivieren von InifinBand auf HPC-VMs: Azure Virtual Machines | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie InfiniBand auf HPC-Azure-VMs aktivieren.
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
+ms.subservice: workloads
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 11/06/2020
 ms.author: amverma
-ms.openlocfilehash: 7218fceae71969f204c6c25ba4793a7c94341693
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.reviewer: cynthn
+ms.openlocfilehash: 2b2b9a8188bc83bba029755ffbbc590999cf9b3d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858490"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966988"
 ---
-# <a name="enable-infiniband-with-sr-iov"></a>Aktivieren von InfiniBand mit SR-IOV
+# <a name="enable-infiniband"></a>Aktivieren von InfiniBand
 
-Die einfachste und empfohlene Methode für die ersten Schritte mit IaaS-VMs für HPC besteht darin, das VM-Betriebssystemimage CentOS-HPC 7.6 zu verwenden. Wenn Sie Ihr benutzerdefiniertes VM-Image verwenden, lässt sich dieses am einfachsten mit InfiniBand (IB) konfigurieren, indem Sie Ihrer Bereitstellung die VM-Erweiterung „InfiniBandDriverLinux“ oder „InfiniBandDriverWindows“ hinzufügen.
-Informationen zur Verwendung dieser VM-Erweiterungen finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) (Linux) bzw. [hier](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances) (Windows).
+[RDMA-fähige](../../sizes-hpc.md#rdma-capable-instances) virtuelle Computer der [H-Serie](../../sizes-hpc.md) und der [N-Serie](../../sizes-gpu.md) kommunizieren über das InfiniBand-Netzwerk, das sich durch seine geringe Wartezeit und seine hohe Bandbreite auszeichnet. Die RDMA-Funktion über eine solche Verbindung ist entscheidend, um die Skalierbarkeit und Leistung von HPC- und KI-Workloads mit verteilten Knoten zu steigern. Die InfiniBand-fähigen virtuellen Computer der H- und N-Serie sind über einen blockierungsfreien Fat Tree mit einem Design mit geringem Durchmesser verbunden, um eine optimierte und konsistente RDMA-Leistung zu erzielen.
 
-Wenn Sie InfiniBand manuell auf SR-IOV-fähigen virtuellen Computern (derzeit aus der HB- und HC-Serie) konfigurieren möchten, führen Sie die folgenden Schritte aus. Diese Schritte gelten nur für RHEL/CentOS. Für Ubuntu (16.04 und 18.04) und SLES (12 SP4 und 15) reichen die integrierten Treiber aus.
+Es gibt verschiedene Möglichkeiten, InfiniBand für die dazu geeigneten VM-Größen zu aktivieren.
 
-## <a name="manually-install-ofed"></a>Manuelles Installieren von OFED
+## <a name="vm-images-with-infiniband-drivers"></a>VM-Images mit InfiniBand-Treibern
+Unter [Optimierung für Linux](configure.md#vm-images) finden Sie eine Liste der unterstützten VM-Images im Marketplace, die vorab mit InfiniBand-Treibern (für SR-IOV- oder Nicht-SR-IOV-VMs) geladen werden oder mit den entsprechenden Treibern konfiguriert werden können.
+Für [RDMA-fähige VMs](../../sizes-hpc.md#rdma-capable-instances), die SR-IOV unterstützen, ist die [CentOS-HPC-Version 7.6](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) oder eine höhere VM-Imageversion im Marketplace die einfachste Möglichkeit für die ersten Schritte.
+Die Ubuntu-VM-Images können mit den richtigen Treibern und mithilfe [dieser Anweisungen](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351) sowohl für SR-IOV-fähige als auch für nicht SR-IOV-fähige VMs konfiguriert werden.
 
-Installieren Sie die neuesten MLNX_OFED-Treiber für ConnectX-5 von [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26).
+## <a name="infiniband-driver-vm-extensions"></a>InfiniBand-Treibererweiterungen für VMs
+Unter Linux kann die [InfiniBandDriverLinux-VM-Erweiterung](../../extensions/hpc-compute-infiniband-linux.md) verwendet werden, um die Mellanox OFED-Treiber zu installieren und InfiniBand auf den SR-IOV-fähigen VMs der H- und N-Serie zu aktivieren.
 
-RHEL/CentOS (Beispiel für 7.6):
+Unter Windows installiert die VM-Erweiterung [InfiniBandDriverWindows](../../extensions/hpc-compute-infiniband-windows.md) Windows Network Direct-Treiber (auf VMs ohne SR-IOV) oder Mellanox OFED-Treiber (auf VMs mit SR-IOV), um RDMA-Konnektivität herzustellen. In bestimmten Bereitstellungen von A8- und A9-Instanzen wird die Erweiterung HpcVmDrivers automatisch hinzugefügt. Beachten Sie, dass die VM-Erweiterung „HpcVmDrivers“ eingestellt wird. Sie wird nicht mehr aktualisiert.
 
-```bash
-sudo yum install -y kernel-devel python-devel
-sudo yum install -y redhat-rpm-config rpm-build gcc-gfortran gcc-c++
-sudo yum install -y gtk2 atk cairo tcl tk createrepo
-wget --retry-connrefused --tries=3 --waitretry=5 http://content.mellanox.com/ofed/MLNX_OFED-4.5-1.0.1.0/MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
-tar zxvf MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
-sudo ./MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64/mlnxofedinstall --add-kernel-support
-```
+Um die VM-Erweiterung einer VM hinzuzufügen, können Sie [Azure PowerShell](/powershell/azure/)-Cmdlets verwenden. Weitere Informationen finden Sie unter [Erweiterungen und Features für virtuelle Computer](../../extensions/overview.md). Erweiterungen können auch für virtuelle Computer verwendet werden, die mit dem [klassischen Bereitstellungsmodell](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic) bereitgestellt wurden.
 
-Laden Sie für Windows die WinOF-2-Treiber für ConnectX-5 von [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34) herunter, und installieren Sie sie.
+## <a name="manual-installation"></a>Manuelle Installation
+[Mellanox OpenFabrics-Treiber (OFED)](https://www.mellanox.com/products/InfiniBand-VPI-Software) können manuell auf den [SR-IOV-fähigen](../../sizes-hpc.md#rdma-capable-instances) VMs der [H-Serie](../../sizes-hpc.md) und der [N-Serie](../../sizes-gpu.md) installiert werden.
 
-## <a name="enable-ipoib"></a>Aktivieren von IPoIB
+### <a name="linux"></a>Linux
+Die [OFED-Treiber für Linux](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed) können mithilfe des folgenden Beispiels installiert werden. Obwohl das Beispiel hier für RHEL/CentOS gilt, sind die Schritte allgemein und können für jedes kompatible Linux-Betriebssystem wie Ubuntu (16.04, 18.04, 19.04, 20.04) und SLES (12 SP4 and 15) verwendet werden. Weitere Beispiele für andere Distributionen finden Sie im [azhpc-images-Repository](https://github.com/Azure/azhpc-images/blob/master/ubuntu/ubuntu-18.x/ubuntu-18.04-hpc/install_mellanoxofed.sh). Die enthaltenen Treiber funktionieren ebenfalls, die Mellanox OFED-Treiber bieten aber mehr Features.
 
 ```bash
-sudo sed -i 's/LOAD_EIPOIB=no/LOAD_EIPOIB=yes/g' /etc/infiniband/openib.conf
-sudo /etc/init.d/openibd restart
-if [ $? -eq 1 ]
-then
-  sudo modprobe -rv  ib_isert rpcrdma ib_srpt
-  sudo /etc/init.d/openibd restart
-fi
+MLNX_OFED_DOWNLOAD_URL=http://content.mellanox.com/ofed/MLNX_OFED-5.0-2.1.8.0/MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64.tgz
+# Optionally verify checksum
+wget --retry-connrefused --tries=3 --waitretry=5 $MLNX_OFED_DOWNLOAD_URL
+tar zxvf MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64.tgz
+
+KERNEL=( $(rpm -q kernel | sed 's/kernel\-//g') )
+KERNEL=${KERNEL[-1]}
+# Uncomment the lines below if you are running this on a VM
+#RELEASE=( $(cat /etc/centos-release | awk '{print $4}') )
+#yum -y install http://olcentgbl.trafficmanager.net/centos/${RELEASE}/updates/x86_64/kernel-devel-${KERNEL}.rpm
+yum install -y kernel-devel-${KERNEL}
+./MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64/mlnxofedinstall --kernel $KERNEL --kernel-sources /usr/src/kernels/${KERNEL} --add-kernel-support --skip-repo
 ```
 
-## <a name="assign-an-ip-address"></a>Zuweisen einer IP-Adresse
+### <a name="windows"></a>Windows
+Laden Sie für Windows den [Mellanox OFED für Windows-Treiber](https://www.mellanox.com/products/adapter-software/ethernet/windows/winof-2) herunter, und installieren Sie ihn.
 
-Weisen Sie der ib0-Schnittstelle eine IP-Adresse zu. Hierzu haben Sie zwei Möglichkeiten:
+## <a name="enable-ip-over-infiniband-ib"></a>Aktivieren von IP über InfiniBand (IB)
+Wenn Sie MPI-Aufträge ausführen möchten, wird IPoIB in der Regel nicht benötigt. Die MPI-Bibliothek verwendet die Verbenschnittstelle für die IB-Kommunikation (es sei denn, Sie verwenden explizit den TCP/IP-Kanal der MPI-Bibliothek). Wenn Sie jedoch über eine App verfügen, die TCP/IP für die Kommunikation verwendet und die Sie über IB ausführen möchten, können Sie IPoIB über die IB-Schnittstelle verwenden. Verwenden Sie die folgenden Befehle (für RHEL/CentOS), um IP über InfiniBand zu aktivieren.
 
-- Weisen Sie die IP-Adresse manuell der ib0-Schnittstelle zu (als root-Benutzer).
-
-    ```bash
-    ifconfig ib0 $(sed '/rdmaIPv4Address=/!d;s/.*rdmaIPv4Address="\([0-9.]*\)".*/\1/' /var/lib/waagent/SharedConfig.xml)/16
-    ```
-
-OR
-
-- Verwenden Sie WALinuxAgent, um die IP-Adresse dauerhaft zuzuweisen.
-
-    ```bash
-    yum install -y epel-release
-    yum install -y python-pip
-    python -m pip install --upgrade pip setuptools wheel
-    wget "https://github.com/Azure/WALinuxAgent/archive/release-2.2.36.zip"
-    unzip release-2.2.36.zip
-    cd WALinuxAgent*
-    python setup.py install --register-service --force
-    sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
-    sed -i -e 's/# AutoUpdate.Enabled=y/AutoUpdate.Enabled=y/g' /etc/waagent.conf
-    systemctl restart waagent
-    ```
+```bash
+sudo sed -i -e 's/# OS.EnableRDMA=n/OS.EnableRDMA=y/g' /etc/waagent.conf
+sudo systemctl restart waagent
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich ausführlicher über [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) in Azure.
+- Weitere Informationen zur Installation verschiedener unterstützter MPI-Bibliotheken sowie zur optimalen Konfiguration auf der VM finden Sie unter [Einrichten von Message Passing Interface für HPC](setup-mpi.md).
+- Sehen Sie sich die [Übersicht über virtuelle Computer der HB-Serie](hb-series-overview.md) und die [Übersicht über virtuelle Computer der HC-Serie](hc-series-overview.md) an, um zu erfahren, wie Sie Workloads optimal konfigurieren, um die bestmögliche Leistung und Skalierbarkeit zu erzielen.
+- Informieren Sie sich in den [Tech Community-Blogs zu Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute) über die neuesten Ankündigungen, und machen Sie sich mit einigen HPC-Beispielen und Ergebnissen vertraut.
+- Eine allgemeinere Architekturübersicht zur Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).

@@ -1,24 +1,24 @@
 ---
-title: Filter für das Begrenzen von Suchergebnissen in einem Index – Azure Search
-description: Filtern Sie nach Benutzersicherheits-ID, Sprache, geografischem Standort oder numerischen Werten, um Suchergebnisse bei Abfragen in Azure Search, einem in Microsoft Azure gehosteten Cloudsuchdienst, zu reduzieren.
-author: HeidiSteen
+title: Filtern nach Suchergebnissen
+titleSuffix: Azure Cognitive Search
+description: Filtern Sie nach Benutzersicherheits-ID, Sprache, geografischem Standort oder numerischen Werten, um Suchergebnisse bei Abfragen in der kognitiven Azure-Suche, einem in Microsoft Azure gehosteten Cloudsuchdienst, zu reduzieren.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 06/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 49af6f1f535df098aa45cccd7e2d629ff6ccef50
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6d83e5c39f97db49e2cc9b77cc806cff0a1fa6de
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649851"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355983"
 ---
-# <a name="filters-in-azure-search"></a>Filter in Azure Search 
+# <a name="filters-in-azure-cognitive-search"></a>Filter in der kognitiven Azure-Suche 
 
-Ein *Filter* liefert Kriterien für die Auswahl von Dokumenten, die in einer Azure Search-Abfrage verwendet werden. Bei einer ungefilterten Suche werden alle Dokumente im Index durchsucht. Ein Filter begrenzt eine Suchabfrage auf eine Teilmenge von Dokumenten. Beispielsweise kann ein Filter die Volltextsuche auf Produkte einer bestimmten Marke oder mit einer Farbe beschränken, wenn der Preis über einer bestimmten Schwelle liegt.
+Ein *Filter* liefert Kriterien für die Auswahl von Dokumenten, die in einer Abfrage der kognitiven Azure-Suche verwendet werden. Bei einer ungefilterten Suche werden alle Dokumente im Index durchsucht. Ein Filter begrenzt eine Suchabfrage auf eine Teilmenge von Dokumenten. Beispielsweise kann ein Filter die Volltextsuche auf Produkte einer bestimmten Marke oder mit einer Farbe beschränken, wenn der Preis über einer bestimmten Schwelle liegt.
 
 Einige Suchumgebungen setzen Filterbedingungen im Rahmen der Implementierung durch. Sie können jedoch jederzeit Filter verwenden, wenn Sie die Suche mithilfe *wertbasierter* Kriterien einschränken möchten (z. B. die Suche nach dem Produkttyp "Bücher" auf die Kategorie "Sachbuch" von "Kiepenheuer & Witsch" begrenzen).
 
@@ -52,7 +52,7 @@ Wenn Sie Ihre Suchergebnissen eingrenzen möchten, sind Filter nicht die einzige
 
 + Der Parameter `$select` dient zur Angabe, welche Felder in ein Resultset aufgenommen werden sollen, wobei die Antwort vor dem Senden an die aufrufende Anwendung effektiv angepasst wird. Durch diesen Parameter wird weder die Abfrage optimiert noch die Dokumentsammlung verkleinert, aber wenn eine kleinere Antwort Ihr Ziel ist, sollten Sie diesen Parameter als Option in Betracht ziehen. 
 
-Weitere Informationen zu beiden Parametern finden Sie unter [Dokumente durchsuchen > Anforderung > Abfrageparameter](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
+Weitere Informationen zu beiden Parametern finden Sie unter [Dokumente durchsuchen > Anforderung > Abfrageparameter](/rest/api/searchservice/search-documents#query-parameters).
 
 
 ## <a name="how-filters-are-executed"></a>Ausführen von Filtern
@@ -62,8 +62,7 @@ Zur Abfragezeit akzeptiert ein Filterparser Kriterien als Eingabe, wandelt den A
 Die Filterung erfolgt zusammen mit Suche und bestimmt, welche Dokumente für den Dokumentabruf und die Relevanzbewertung in die nachgelagerte Verarbeitung einbezogen werden sollen. In Kombination mit einem Suchbegriff reduziert der Filter wirkungsvoll die Abrufmenge des nachfolgenden Suchvorgangs. Bei alleiniger Verwendung (z. B. wenn die Abfragezeichenfolge bei `search=*` leer ist) ist das Filterkriterium die einzige Eingabe. 
 
 ## <a name="defining-filters"></a>Definieren von Filtern
-
-Filter sind OData-Ausdrücke, die mittels einer in Azure Search unterstützten [Teilmenge der OData V4-Syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) definiert werden. 
+Filter sind OData-Ausdrücke, die mittels einer [in der kognitiven Azure-Suche unterstützten Teilmenge der OData V4-Syntax](/rest/api/searchservice/odata-expression-syntax-for-azure-search) definiert werden. 
 
 Sie können für jeden **Suchvorgang** einen Filter angeben. Doch der Filter selbst kann mehrere Felder, mehrere Kriterien und, wenn Sie eine **ismatch**-Funktion verwenden, mehrere Volltextsuchausdrücke enthalten. Bei einem mehrteiligen Filterausdruck können Sie Prädikate in beliebiger Reihenfolge angeben (gemäß den Regeln der Rangfolge von Operatoren). Es ergibt sich kein nennenswerter Leistungszuwachs, wenn Sie versuchen, Prädikate in einer bestimmten Reihenfolge neu anzuordnen.
 
@@ -73,14 +72,14 @@ Die folgenden Beispiele veranschaulichen prototypische Filterdefinitionen in meh
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2019-05-06
+GET https://[service name].search.windows.net/indexes/hotels/docs?api-version=2020-06-30&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
 
 # Option 2: Use filter for POST and pass it in the request body
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "*",
-    "filter": "baseRate lt 150",
-    "select": "hotelId,description"
+    "filter": "Rooms/any(room: room/BaseRate lt 150.0)",
+    "select": "HotelId, HotelName, Rooms/Description, Rooms/BaseRate"
 }
 ```
 
@@ -88,8 +87,8 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
     parameters =
         new SearchParameters()
         {
-            Filter = "baseRate lt 150",
-            Select = new[] { "hotelId", "description" }
+            Filter = "Rooms/any(room: room/BaseRate lt 150.0)",
+            Select = new[] { "HotelId", "HotelName", "Rooms/Description" ,"Rooms/BaseRate"}
         };
 
     var results = searchIndexClient.Documents.Search("*", parameters);
@@ -97,36 +96,36 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="filter-usage-patterns"></a>Filtern von Verwendungsmustern
 
-Die folgenden Beispiele veranschaulichen einige Verwendungsmuster für Filterszenarios. Weitere Vorschläge finden Sie unter [OData-Ausdruckssyntax > Beispiele](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+Die folgenden Beispiele veranschaulichen einige Verwendungsmuster für Filterszenarios. Weitere Vorschläge finden Sie unter [OData-Ausdruckssyntax > Beispiele](./search-query-odata-filter.md#examples).
 
 + Eigenständige **$filter**-Filter ohne Abfragezeichenfolge; nützlich, wenn der Filterausdruck Dokumente von Interesse vollständig qualifizieren kann. Ohne Abfragezeichenfolge gibt es keine lexikalische oder linguistische Analyse, Bewertung und Rangfolge. Beachten Sie, dass die Suchzeichenfolge nur ein Sternchen ist, und alle Dokumente abgeglichen werden.
 
    ```
-   search=*&$filter=(baseRate ge 60 and baseRate lt 300) and accommodation eq 'Hotel' and city eq 'Nogales'
+   search=*&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Honolulu'
    ```
 
-+ Kombination aus Abfragezeichenfolge und **$filter**, wobei der Filter die Teilmenge erstellt und die Abfragezeichenfolge die Begriffseingaben für die Volltextsuche über die gefilterte Teilmenge liefert. Das Verwenden eines Filters mit einer Abfragezeichenfolge ist das verbreitetste Verwendungsmuster.
++ Kombination aus Abfragezeichenfolge und **$filter**, wobei der Filter die Teilmenge erstellt und die Abfragezeichenfolge die Begriffseingaben für die Volltextsuche über die gefilterte Teilmenge liefert. Das Hinzufügen von Begriffen („Theater in Gehweite“) führt zu Suchbewertungen in den Ergebnissen, bei denen Dokumente, die am besten zu den Begriffen passen, höher eingestuft werden. Das Verwenden eines Filters mit einer Abfragezeichenfolge ist das verbreitetste Verwendungsmuster.
 
    ```
-   search=hotels ocean$filter=(baseRate ge 60 and baseRate lt 300) and city eq 'Los Angeles'
+  search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
    ```
 
 + Zusammengesetzte Abfragen, getrennt durch "or", jede mit eigenen Filterkriterien (z.B. 'beagles' in' dog' oder' siamese' in' cat'). Ausdrücke in Kombination mit `or` werden einzeln ausgewertet. Dabei stimmt die Vereinigung der Dokumente mit jedem Ausdruck überein, der in der Antwort zurückgesendet wird. Dieses Nutzungsmuster erfolgt über die `search.ismatchscoring`-Funktion. Sie können auch die nicht bewertende Version (`search.ismatch`) verwenden.
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
-   $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
+   $filter=search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
 
    # Match on 'luxury' or 'high-end' in the description field OR on category exactly equal to 'Luxury'.
-   $filter=search.ismatchscoring('luxury | high-end', 'description') or category eq 'Luxury'
+   $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
   Es ist auch möglich, die Volltextsuche über `search.ismatchscoring` mit den Filtern `and` anstelle von `or` zu kombinieren. Diese Funktion entspricht der Suche mit den Parametern `search` und `$filter` in einer Suchanforderung. Die folgenden beiden Abfragen erzielen beispielsweise das gleiche Ergebnis:
 
   ```
-  $filter=search.ismatchscoring('pool') and rating ge 4
+  $filter=search.ismatchscoring('pool') and Rating ge 4
 
-  search=pool&$filter=rating ge 4
+  search=pool&$filter=Rating ge 4
   ```
 
 Diese Artikel bieten eine umfassende Anleitung zu bestimmten Anwendungsfällen:
@@ -137,18 +136,18 @@ Diese Artikel bieten eine umfassende Anleitung zu bestimmten Anwendungsfällen:
 
 ## <a name="field-requirements-for-filtering"></a>Feldanforderungen für das Filtern
 
-In der REST-API ist „filterable“ (filterbar) für einfache Felder standardmäßig *aktiviert*. Filterbare Felder erhöhen die Indexgröße. Stellen Sie sicher, dass Sie `"filterable": false` für Felder festlegen, die Sie nicht in einem Filter verwenden möchten. Weitere Informationen zu Einstellungen für Felddefinitionen finden Sie unter [Erstellen eines Indexes](https://docs.microsoft.com/rest/api/searchservice/create-index).
+In der REST-API ist „filterable“ (filterbar) für einfache Felder standardmäßig *aktiviert*. Filterbare Felder erhöhen die Indexgröße. Stellen Sie sicher, dass Sie `"filterable": false` für Felder festlegen, die Sie nicht in einem Filter verwenden möchten. Weitere Informationen zu Einstellungen für Felddefinitionen finden Sie unter [Erstellen eines Indexes](/rest/api/searchservice/create-index).
 
-Im .NET SDK ist die Eigenschaft „filterable“ standardmäßig *deaktiviert*. Sie können Felder filterbar machen, indem Sie die Eigenschaft [IsFilterable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) des entsprechenden [Feld](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet)-Objekts auf `true` festlegen. Das ist auch deklarativ möglich, indem Sie das Attribut [IsFilterable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute) verwenden. Im folgenden Beispiel ist das Attribut auf die `BaseRate`-Eigenschaft einer Modellklasse festgelegt, die der Indexdefinition zugeordnet wird.
+Im .NET SDK ist die Eigenschaft „filterable“ standardmäßig *deaktiviert*. Sie können Felder filterbar machen, indem Sie die [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable)-Eigenschaft des entsprechenden [SearchField](/dotnet/api/azure.search.documents.indexes.models.searchfield)-Objekts auf `true` festlegen. Im folgenden Beispiel ist das Attribut auf die `BaseRate`-Eigenschaft einer Modellklasse festgelegt, die der Indexdefinition zugeordnet wird.
 
 ```csharp
-    [IsFilterable, IsSortable, IsFacetable]
-    public double? BaseRate { get; set; }
+[IsFilterable, IsSortable, IsFacetable]
+public double? BaseRate { get; set; }
 ```
 
 ### <a name="making-an-existing-field-filterable"></a>Aktivieren der Filterbarkeit für vorhandene Felder
 
-Sie können vorhandene Felder nicht so ändern, dass sie filterbar sind. Sie müssen stattdessen ein neues Feld hinzufügen oder den Index neu erstellen. Weitere Informationen zur Neuerstellung eines Indexes oder der Wiederauffüllung von Feldern finden Sie unter [How to rebuild an Azure Search index (Neuerstellen eines Azure Search-Indexes)](search-howto-reindex.md).
+Sie können vorhandene Felder nicht so ändern, dass sie filterbar sind. Sie müssen stattdessen ein neues Feld hinzufügen oder den Index neu erstellen. Weitere Informationen zur Neuerstellung eines Index oder der Wiederauffüllung von Feldern finden Sie unter [Neuerstellen eines Index für die kognitive Azure-Suche](search-howto-reindex.md).
 
 ## <a name="text-filter-fundamentals"></a>Grundlegendes zu Textfiltern
 
@@ -158,7 +157,7 @@ Bei Textzeichenfolgen wird Groß-/Kleinschreibung berücksichtigt. Es gibt keine
 
 ### <a name="approaches-for-filtering-on-text"></a>Ansätze zum Filtern von Text
 
-| Vorgehensweise | BESCHREIBUNG | Einsatzgebiete |
+| Vorgehensweise | BESCHREIBUNG | Verwendung |
 |----------|-------------|-------------|
 | [`search.in`](search-query-odata-search-in-function.md) | Eine Funktion, bei der ein Feld mit einer durch Trennzeichen getrennte Liste von Zeichenfolgen entspricht. | Dies wird für [Sicherheitsfilter](search-security-trimming-for-azure-search.md) und alle anderen Filter empfohlen, in denen viele unformatierte Textwerte mit einem Zeichenfolgenfeld verglichen werden. Die Funktion **search.in** ist auf Geschwindigkeit ausgelegt und viel schneller als das explizite Vergleichen des Felds mit jeder Zeichenfolge mithilfe von `eq` und `or`. | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Eine Funktion, die es erlaubt, Volltextsuchvorgänge mit strikt booleschen Filteroperationen im selben Filterausdruck zu kombinieren. | Verwenden Sie **search.ismatch** (oder das Äquivalent **search.ismatchscoring**), wenn Sie in einer Anforderung mehrere Suchfilterkombinationen möchten. Sie können sie auch für den Filter *enthält* verwenden, um auf eine Teilzeichenfolge innerhalb einer größeren Zeichenfolge zu filtern. |
@@ -195,12 +194,12 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-Weitere Beispiele finden Sie unter [OData-Filterausdrucksyntax > Beispiele](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+Weitere Beispiele finden Sie unter [OData-Filterausdrucksyntax > Beispiele](./search-query-odata-filter.md#examples).
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md)
-+ [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))
-+ [Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Unterstützte Datentypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)
++ [Funktionsweise der Volltextsuche in Azure Cognitive Search](search-lucene-query-architecture.md)
++ [Search Documents (Azure Search Service REST API)](/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))
++ [Einfache Abfragesyntax](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Lucene-Abfragesyntax](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Unterstützte Datentypen](/rest/api/searchservice/supported-data-types)

@@ -3,17 +3,17 @@ title: Allgemeine Verwaltungsaufgaben für Clouddienste | Microsoft-Dokumentatio
 description: Hier erfahren Sie mehr über die Verwaltung von Clouddiensten im Azure-Portal. In diesen Beispielen wird das Azure-Portal verwendet.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 8ec7784fb51d0fa4de2563f76444b0b5e5f34902
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 84e450a55f9482c3a713943adfcc4d7940ab873f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359596"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076707"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Verwalten von Clouddiensten im Azure-Portal
 Im Bereich **Clouddienste** des Azure-Portals haben Sie folgende Möglichkeiten:
@@ -77,13 +77,13 @@ Es gibt zwei wichtige Voraussetzungen für einen erfolgreichen Austausch von Ber
 
 - Wenn Sie eine statische IP-Adresse für Ihren Produktionsslot verwenden möchten, müssen Sie auch eine IP für den Stagingslot reservieren. Andernfalls tritt bei dem Austausch ein Fehler auf.
 
-- Alle Instanzen Ihrer Rollen müssen ausgeführt werden, bevor Sie den Austausch durchführen können. Sie können den Status Ihrer Instanzen im Azure-Portal auf dem Blatt **Übersicht** überprüfen. Alternativ können Sie den Befehl [Get-AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) in Windows PowerShell verwenden.
+- Alle Instanzen Ihrer Rollen müssen ausgeführt werden, bevor Sie den Austausch durchführen können. Sie können den Status Ihrer Instanzen im Azure-Portal auf dem Blatt **Übersicht** überprüfen. Alternativ können Sie den Befehl [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0) in Windows PowerShell verwenden.
 
 Beachten Sie, dass Updates von Gastbetriebssystemen und Dienstreparaturvorgänge auch dazu führen können, dass beim Austausch von Bereitstellungen ein Fehler auftritt. Weitere Informationen finden Sie unter [Behandeln von Problemen mit der Clouddienstbereitstellung](cloud-services-troubleshoot-deployment-problems.md).
 
 **Führt ein Austausch zu einer Ausfallzeit für die Anwendung? Wie sollte ich dabei vorgehen?**
 
-Wie im vorherigen Abschnitt beschrieben, erfolgt der Austausch von Bereitstellungen in der Regel schnell, da es sich nur um eine Konfigurationsänderung im Azure Load Balancer handelt. In einigen Fällen kann der Austausch jedoch zehn oder mehr Sekunden dauern und zu vorübergehenden Verbindungsausfällen führen. Um die Auswirkungen auf Ihre Kunden zu minimieren, ist es empfehlenswert, [Clientwiederholungslogik](../best-practices-retry-general.md) zu implementieren.
+Wie im vorherigen Abschnitt beschrieben, erfolgt der Austausch von Bereitstellungen in der Regel schnell, da es sich nur um eine Konfigurationsänderung im Azure Load Balancer handelt. In einigen Fällen kann der Austausch jedoch zehn oder mehr Sekunden dauern und zu vorübergehenden Verbindungsausfällen führen. Um die Auswirkungen auf Ihre Kunden zu minimieren, ist es empfehlenswert, [Clientwiederholungslogik](/azure/architecture/best-practices/transient-faults) zu implementieren.
 
 ## <a name="delete-deployments-and-a-cloud-service"></a>Löschen von Bereitstellungen und eines Clouddiensts
 Bevor Sie einen Cloud-Dienst löschen können, müssen Sie die einzelnen bestehenden Bereitstellungen löschen.
@@ -123,4 +123,4 @@ Oben auf dem Blatt **Übersicht** befindet sich eine Statusleiste. Wenn Sie auf 
 * [Allgemeine Konfiguration Ihres Clouddiensts](cloud-services-how-to-configure-portal.md)
 * Weitere Informationen zum [Bereitstellen eines Clouddiensts](cloud-services-how-to-create-deploy-portal.md)
 * [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name-portal.md)
-* Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
+* Konfigurieren von [TLS/SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)

@@ -1,26 +1,28 @@
 ---
-title: Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure CLI (Vorschau) – Azure Storage
-description: Erfahren Sie, wie Sie mithilfe der Azure CLI eine SAS für die Benutzerdelegierung mithilfe von Azure Active Directory-Anmeldeinformationen in Azure Storage erstellen.
+title: Verwenden der Azure CLI zum Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob
+titleSuffix: Azure Storage
+description: Hier erfahren Sie, wie Sie mit der Azure CLI eine SAS für die Benutzerdelegierung mit Azure Active Directory-Anmeldeinformationen erstellen.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 08/29/2019
+ms.topic: how-to
+ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 077fe69d80ec433d8e37f18e04120102fc8ca390
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 453eaa816ad48626b476fa392999f44e3c1a10cd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673318"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714563"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure CLI (Vorschau)
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure CLI
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Azure Active Directory-Anmeldeinformationen (Azure AD) verwenden, um eine SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure CLI (Vorschau) zu erstellen.
+In diesem Artikel wird beschrieben, wie Sie Azure Active Directory-Anmeldeinformationen (Azure AD) verwenden, um eine SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure CLI zu erstellen.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
@@ -28,15 +30,17 @@ In diesem Artikel wird beschrieben, wie Sie Azure Active Directory-Anmeldeinform
 
 Stellen Sie zunächst sicher, dass Sie die neueste Version der Azure CLI installiert haben, um die Azure CLI zum Sichern einer SAS mit Azure AD-Anmeldeinformationen verwenden zu können. Weitere Informationen zum Installieren der Azure CLI finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
+Um eine SAS für die Benutzerdelegierung mit der Azure CLI zu erstellen, vergewissern Sie sich, dass Version 2.0.78 oder höher installiert ist. Verwenden Sie den Befehl `az --version`, um Ihre installierte Version zu überprüfen.
+
 ## <a name="sign-in-with-azure-ad-credentials"></a>Anmeldung mit Azure AD-Anmeldeinformationen
 
 Melden Sie sich mit Ihren Azure AD-Anmeldeinformationen bei der Azure CLI an. Weitere Informationen finden Sie unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli).
 
-## <a name="assign-permissions-with-rbac"></a>Zuweisen von Berechtigungen mit RBAC
+## <a name="assign-permissions-with-azure-rbac"></a>Zuweisen von Berechtigungen mit Azure RBAC
 
 Um eine SAS für die Benutzerdelegierung aus Azure PowerShell zu erstellen, muss dem Azure AD-Konto, mit dem die Anmeldung bei der Azure CLI erfolgt, eine Rolle zugewiesen werden, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** beinhaltet. Diese Berechtigung ermöglicht es diesem Azure AD Konto, den *Benutzerdelegierungsschlüssel* anzufordern. Der Benutzerdelegierungsschlüssel wird zum Signieren der SAS für die Benutzerdelegierung verwendet. Die Rolle, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** bereitstellt, muss auf der Ebene des Speicherkontos, der Ressourcengruppe oder des Abonnements zugewiesen werden.
 
-Wenn Sie nicht über ausreichende Berechtigungen zum Zuweisen von RBAC-Rollen zu einem Azure AD-Sicherheitsprinzipal verfügen, müssen Sie möglicherweise den Kontobesitzer oder den Administrator bitten, die erforderlichen Berechtigungen zuzuweisen.
+Wenn Sie nicht über ausreichende Berechtigungen zum Zuweisen von Azure-Rollen zu einem Azure AD-Sicherheitsprinzipal verfügen, müssen Sie möglicherweise den Kontobesitzer oder den Administrator bitten, die erforderlichen Berechtigungen zuzuweisen.
 
 Im folgenden Beispiel wird die Rolle **Storage Blob Data Contributor** (Speicherblob-Datenmitwirkender) zugewiesen, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** beinhaltet. Die Rolle wird auf der Ebene des Speicherkontos festgelegt.
 
@@ -49,7 +53,7 @@ az role assignment create \
     --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-Weitere Informationen zu den integrierten Rollen, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** enthalten, finden Sie unter [Integrierte Rollen für Azure-Ressourcen](../../role-based-access-control/built-in-roles.md).
+Weitere Informationen zu den integrierten Rollen, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** enthalten, finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>Verwenden von Azure AD-Anmeldeinformationen zum Sichern einer SAS
 
@@ -126,7 +130,7 @@ az storage account revoke-delegation-keys \
 ```
 
 > [!IMPORTANT]
-> Sowohl der Benutzerdelegierungsschlüssel als auch die RBAC-Rollenzuweisungen werden von Azure Storage zwischengespeichert. Daher kann es zu einer Verzögerung zwischen der Initiierung des Sperrprozesses und dem Zeitpunkt kommen, zu dem eine SAS für die Benutzerdelegierung ungültig wird.
+> Sowohl der Benutzerdelegierungsschlüssel als auch die Azure-Rollenzuweisungen werden von Azure Storage zwischengespeichert. Daher kann es zu einer Verzögerung zwischen der Initiierung des Sperrprozesses und dem Zeitpunkt kommen, zu dem eine SAS für die Benutzerdelegierung ungültig wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

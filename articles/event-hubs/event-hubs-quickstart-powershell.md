@@ -1,22 +1,14 @@
 ---
-title: Erstellen einer Event Hub-Instanz mit PowerShell – Azure Event Hubs | Microsoft-Dokumentation
+title: 'Schnellstart: Erstellen einer Event Hub-Instanz mit PowerShell: Azure Event Hubs'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe von Azure PowerShell einen Event Hub erstellen und anschließend mithilfe des .NET Standard SDK Ereignisse senden und empfangen.
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: b3847f798fde8702d6d95450c68fbfbca4c97f9d
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.date: 06/23/2020
+ms.openlocfilehash: 1c81024a9195e463eeaaf384d5cbbd1e0054c485
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604468"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "88933952"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Schnellstart: Erstellen einer Event Hub-Instanz mit Azure PowerShell
 
@@ -36,7 +28,7 @@ Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponente
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bei der lokalen Verwendung von PowerShell müssen Sie die aktuelle Version ausführen, um diese Schnellstartanleitung durcharbeiten zu können. Wenn Sie eine Installation oder ein Upgrade durchführen müssen, helfen Ihnen die Informationen unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) weiter.
+Bei der lokalen Verwendung von PowerShell müssen Sie die aktuelle Version ausführen, um diese Schnellstartanleitung durcharbeiten zu können. Wenn Sie eine Installation oder ein Upgrade durchführen müssen, helfen Ihnen die Informationen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-az-ps) weiter.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -72,18 +64,17 @@ Glückwunsch! Sie haben Azure PowerShell verwendet, um einen Event Hubs-Namespac
 In diesem Artikel haben Sie den Event Hubs-Namespace erstellt und Beispielanwendungen verwendet, um Ereignisse von Ihrem Event Hub zu senden und zu empfangen. Schritt-für-Schritt-Anleitungen zum Senden von Ereignissen an einen Event Hub oder Empfangen von Ereignissen von einem Event Hub finden Sie in den Tutorials zum **Senden und Empfangen von Ereignissen**: 
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-- [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)
 - [Python](event-hubs-python-get-started-send.md)
-- [Node.js](event-hubs-node-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (nur senden)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (nur empfangen)](event-hubs-storm-getstarted-receive.md)
 
 
 [kostenloses Konto erstellen]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Install and Configure Azure PowerShell]: https://docs.microsoft.com/powershell/azure/install-az-ps
-[New-AzResourceGroup]: https://docs.microsoft.com/powershell/module/az.resources/new-Azresourcegroup
+[Install and Configure Azure PowerShell]: /powershell/azure/install-az-ps
+[New-AzResourceGroup]: /powershell/module/az.resources/new-azresourcegroup
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [3]: ./media/event-hubs-quickstart-powershell/sender1.png
 [4]: ./media/event-hubs-quickstart-powershell/receiver1.png

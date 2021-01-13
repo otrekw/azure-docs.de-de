@@ -1,48 +1,50 @@
 ---
-title: Filter und dynamische Azure Media Services-Manifeste | Microsoft-Dokumentation
-description: In diesem Thema wird erläutert, wie Sie Filter erstellen, mit denen Ihre Kunden bestimmte Abschnitte eines Streams streamen können. Media Services erstellt dynamische Manifeste, um dieses selektive Streaming zu erreichen.
+title: Filtern von Manifesten mithilfe von Dynamic Packager
+titleSuffix: Azure Media Services
+description: Erfahren Sie, wie Sie Filter mithilfe von Dynamic Packager erstellen, um Ihre Manifeste zu filtern und selektiv zu streamen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 07/11/2019
-ms.author: juliako
-ms.openlocfilehash: dc9f59894da071e956283591cf7206bc371650b7
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: acb30c1659c4c29e0af83da5594bdd9a7e3465d8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991430"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89299030"
 ---
-# <a name="pre-filtering-manifests-by-using-dynamic-packager"></a>Vorfiltern von Manifesten mithilfe des dynamischen Packagers
+# <a name="filter-your-manifests-using-dynamic-packager"></a>Filtern von Manifesten mithilfe von Dynamic Packager
 
-Bei der Bereitstellung von Inhalten mit Adaptive Bitrate Streaming auf Geräten müssen Sie häufig mehrere Versionen eines Manifests veröffentlichen, um bestimmte Gerätefunktionen oder eine verfügbare Netzwerkbandbreite als Ziel verwenden zu können. Der [dynamische Packager](dynamic-packaging-overview.md) gestattet es Ihnen, Filter anzugeben, die bestimmte Codecs, Auflösungen, Bitraten und Audiospurkombinationen unmittelbar ausfiltern können und so die Notwendigkeit beseitigen, mehrere Kopien erstellen zu müssen. Sie müssen lediglich eine neue URL mit einem bestimmten Satz von Filtern veröffentlichen, die für Ihre Zielgeräte (iOS, Android, SmartTV oder Browser) und die Netzwerkgegebenheiten (Szenarien mit hoher Bandbreite, mobiler Datenübertragung oder niedriger Bandbreite) konfiguriert sind. In diesem Fall können Clients das Streamen Ihrer Inhalte durch die Abfragezeichenfolge manipulieren (durch Angeben verfügbarer [Medienobjekt- oder Kontofilter](filters-concept.md)) und Filter verwenden, um bestimmte Abschnitte eines Datenstroms zu filtern.
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Einige Lieferszenarien erfordern, dass Sie sicherstellen, dass ein auf bestimmte Spuren nicht zugreifen kann. Beispielsweise, wenn Sie ein Manifest, das HD-Titel enthält, nicht in einem bestimmten Abonnententarif veröffentlichen möchten. Oder wenn Sie bestimmte Titel mit Adaptive Bitrate (ABR) entfernen möchten, um die Bereitstellungskosten auf einem bestimmten Gerät zu reduzieren, das von den zusätzlichen Spuren nicht profitieren würde. In diesem Fall könnten Sie beim Erstellen einem [Streaminglocator](streaming-locators-concept.md) eine Liste zuvor erstellter Filter zuordnen. In diesem Fall können Clients nicht manipulieren, wie der Inhalt gestreamt wird, weil dies im **Streaminglocator** definiert ist.
+Bei der Bereitstellung von Inhalten mit Adaptive Bitrate Streaming auf Geräten müssen Sie manchmal mehrere Versionen eines Manifests veröffentlichen, um bestimmte Gerätefunktionen oder eine verfügbare Netzwerkbandbreite als Ziel verwenden zu können. [Dynamic Packager](dynamic-packaging-overview.md) gestattet es Ihnen, Filter anzugeben, die bestimmte Codecs, Auflösungen, Bitraten und Audiospurkombinationen unmittelbar ausfiltern können. Durch diese Filterung entfällt die Notwendigkeit, mehrere Kopien zu erstellen. Sie müssen lediglich eine neue URL mit einem bestimmten Satz von Filtern veröffentlichen, die für Ihre Zielgeräte (iOS, Android, SmartTV oder Browser) und die Netzwerkgegebenheiten (Szenarien mit hoher Bandbreite, mobiler Datenübertragung oder niedriger Bandbreite) konfiguriert sind. In diesem Fall können Clients das Streamen Ihrer Inhalte durch die Abfragezeichenfolge manipulieren (durch Angeben verfügbarer [Medienobjekt- oder Kontofilter](filters-concept.md)) und Filter verwenden, um bestimmte Abschnitte eines Datenstroms zu filtern.
 
-Sie können die Filterung über bestimmte [Filter im Streaminglocator](filters-concept.md#associating-filters-with-streaming-locator) mit zusätzlichen, gerätespezifischen Filtern kombinieren, die Ihr Client in der URL angibt. Dies kann hilfreich sein, um zusätzliche Spuren einzuschränken – beispielsweise Metadaten- oder Ereignisdatenströme, Audiosprachen oder beschreibende Audiospuren. 
+Einige Lieferszenarien erfordern, dass Sie sicherstellen, dass ein Kunde auf bestimmte Spuren nicht zugreifen kann. Beispielsweise, wenn Sie ein Manifest, das HD-Titel enthält, nicht in einem bestimmten Abonnententarif veröffentlichen möchten. Oder Sie möchten bestimmte Titel mit Adaptive Bitrate (ABR) entfernen, um die Bereitstellungskosten auf einem bestimmten Gerät zu reduzieren, das von den zusätzlichen Spuren nicht profitieren würde. In diesem Fall könnten Sie beim Erstellen einem [Streaminglocator](streaming-locators-concept.md) eine Liste zuvor erstellter Filter zuordnen. Clients können dann nicht manipulieren, wie der Inhalt gestreamt wird, weil dies im **Streaminglocator** definiert ist.
 
-Diese Fähigkeit, verschiedene Filter in Ihrem Datenstrom angeben zu können, bietet eine leistungsstarke Lösung zur Manipulation **dynamischer Manifeste** für gezielte mehrfache Anwendungsfallszenarien auf Ihren Zielgeräten. In diesem Thema werden Konzepte im Zusammenhang mit **dynamischen Manifesten** erläutert. Außerdem sind Beispiele für Szenarien enthalten, in denen Sie dieses Feature möglicherweise verwenden möchten.
+Sie können die Filterung über bestimmte [Filter im Streaminglocator](filters-concept.md#associating-filters-with-streaming-locator) mit zusätzlichen, gerätespezifischen Filtern kombinieren, die Ihr Client in der URL angibt. Diese Kombination kann hilfreich sein, um zusätzliche Spuren einzuschränken – beispielsweise Metadaten- oder Ereignisdatenströme, Audiosprachen oder beschreibende Audiospuren.
+
+Diese Fähigkeit, verschiedene Filter in Ihrem Datenstrom angeben zu können, bietet eine leistungsstarke Lösung zur Manipulation **dynamischer Manifeste** für gezielte mehrfache Anwendungsfallszenarien auf Ihren Zielgeräten. In diesem Thema werden Konzepte im Zusammenhang mit **dynamischen Manifesten** erläutert. Außerdem sind Beispiele für Szenarien enthalten, in denen Sie dieses Feature verwenden können.
 
 > [!NOTE]
-> Dynamische Manifeste nehmen keine Änderungen am Medienobjekt und dem Standardmanifest für dieses Medienobjekt vor. 
-> 
+> Dynamische Manifeste nehmen keine Änderungen am Medienobjekt und dem Standardmanifest für dieses Medienobjekt vor.
 
-##  <a name="overview-of-manifests"></a>Übersicht über Manifeste
+## <a name="overview-of-manifests"></a>Übersicht über Manifeste
 
-Azure Media Services unterstützt die Protokolle HLS, MPEG DASH und Smooth Streaming. Als Teil der [dynamischen Paketerstellung](dynamic-packaging-overview.md) werden die Streamingclientmanifeste (HLS Master Playlist, DASH Media Presentation Description (MPD) und Smooth Streaming) basierend auf dem Formatselektor in der URL dynamisch generiert. Weitere Informationen finden Sie unter [Übermittlungsprotokolle](dynamic-packaging-overview.md#delivery-protocols). 
+Azure Media Services unterstützt die Protokolle HLS, MPEG DASH und Smooth Streaming. Als Teil der [dynamischen Paketerstellung](dynamic-packaging-overview.md) werden die Streamingclientmanifeste (HLS Master Playlist, DASH Media Presentation Description (MPD) und Smooth Streaming) basierend auf dem Formatselektor in der URL dynamisch generiert. Weitere Informationen finden Sie in den Übermittlungsprotokollen unter [Allgemeiner On-Demand-Workflow](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery).
 
 ### <a name="get-and-examine-manifest-files"></a>Abrufen und Untersuchen von Manifestdateien
 
 Sie geben eine Liste von Eigenschaftsbedingungen für die Filterung nach Spuren an, auf deren Grundlage Spuren Ihres Streams (Live oder Video on Demand (VOD)) in ein dynamisch erstelltes Manifest aufgenommen werden sollen. Um die Eigenschaften der Spuren abzurufen und zu untersuchen, müssen Sie zunächst das Smooth Streaming-Manifest laden.
 
-Im Tutorial [Hochladen, Codieren und Streamen von Dateien mit .NET](stream-files-tutorial-with-api.md#get-streaming-urls) erfahren Sie, wie Sie die Streaming-URLs mit .NET erstellen. Wenn Sie die App ausführen, zeigt einer der URLs auf das Smooth Streaming-Manifest: `https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest`.<br/> Kopieren Sie die URL, und fügen Sie sie in die Adressleiste eines Browsers ein. Die Datei wird heruntergeladen. Sie können die Datei in einem Text-Editor Ihrer Wahl öffnen.
+Im Tutorial [Hochladen, Codieren und Streamen von Dateien mit .NET](stream-files-tutorial-with-api.md#get-streaming-urls) erfahren Sie, wie Sie die Streaming-URLs mit .NET erstellen. Wenn Sie die App ausführen, zeigt einer der URLs auf das Smooth Streaming-Manifest: `https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest`.<br/> Kopieren Sie die URL, und fügen Sie sie in die Adressleiste eines Browsers ein. Die Datei wird heruntergeladen. Sie können sie in einem beliebigen Text-Editor öffnen.
 
 Ein REST-Beispiel finden Sie unter [Hochladen, Codieren und Streamen von Dateien mit REST](stream-files-tutorial-with-rest.md#list-paths-and-build-streaming-urls).
 
@@ -51,7 +53,7 @@ Ein REST-Beispiel finden Sie unter [Hochladen, Codieren und Streamen von Dateien
 Sie können mithilfe der [Azure Media Player-Demoseite](https://aka.ms/azuremediaplayer) die Bitrate eines Videostreams überwachen. Die Demoseite zeigt Diagnoseinformationen auf der Registerkarte **Diagnose** an:
 
 ![Azure Media Player-Diagnose][amp_diagnostics]
- 
+
 ### <a name="examples-urls-with-filters-in-query-string"></a>Beispiele: URLs mit Filtern in der Abfragezeichenfolge
 
 Sie können Filter auf ABR-Streamingprotokolle anwenden: HLS, MPEG-DASH und Smooth Streaming. Die folgende Tabelle zeigt einige Beispiele für URLs mit Filtern:
@@ -68,48 +70,48 @@ Sie können ein Medienobjekt in mehreren Codierungsprofilen (H.264 Baseline, H.
 
 Mit dynamischen Manifesten können Sie beispielsweise Geräteprofile für Mobiltelefone, Konsolen oder HD/SD erstellen und die für das jeweilige Profil gewünschten Spuren und Qualitätsversionen einschließen. Dies wird als „Wiedergabefilterung“ bezeichnet. Das folgende Diagramm zeigt ein entsprechendes Beispiel:
 
-![Beispiel für die Wiedergabefilterung][renditions2]
+![Beispiel für Wiedergabefilterung mit einem dynamischen Manifest][renditions2]
 
-Im folgenden Beispiel wurde ein Encoder zum Codieren eines Zwischenassets in sieben ISO-MP4s-Videowiedergaben (von 180p bis 1080p) verwendet. Das codierte Medienobjekt kann [dynamisch](dynamic-packaging-overview.md) in eines der folgenden Streamingprotokolle gepackt werden: HLS, MPEG-DASH und Smooth. 
+Im folgenden Beispiel wurde ein Encoder zum Codieren eines Zwischenassets in sieben ISO-MP4s-Videowiedergaben (von 180p bis 1080p) verwendet. Das codierte Medienobjekt kann [dynamisch](dynamic-packaging-overview.md) in eines der folgenden Streamingprotokolle gepackt werden: HLS, MPEG-DASH und Smooth.
 
 Der obere Bereich des folgenden Diagramms zeigt das HLS-Manifest für die Medienobjekte ohne Filter. (Es enthält alle sieben Wiedergabeversionen.)  Links unten zeigt das Diagramm ein HLS-Manifest, auf das ein Filter namens „ott“ angewendet wurde. Der Filter „ott“ gibt an, dass alle Bitraten unter 1 MBit/s entfernt werden sollen. Daher wurden in der Antwort die beiden untersten Qualitätsstufen entfernt. Rechts unten zeigt das Diagramm das HLS-Manifest, auf das ein Filter namens „mobile“ angewendet wurde. Der Filter „mobile“ gibt an, dass Wiedergaben mit einer Auflösung von mehr als 720p entfernt werden sollen. Daher wurden die beiden Wiedergaben mit 1080p entfernt.
 
-![Filtern der Wiedergabe][renditions1]
+![Wiedergabefilterung mit einem dynamischen Manifest][renditions1]
 
 ## <a name="removing-language-tracks"></a>Entfernen von Sprachspuren
-Ihre Medienobjekte können mehrere Audiosprachen enthalten, z. B. Englisch, Spanisch, Französisch usw. In der Regel verwaltet das Player-SDK die Auswahl der Standardaudiospur und verfügbare Audiospuren entsprechend der Benutzerauswahl.
+Ihre Medienobjekte können mehrere Audiosprachen enthalten, z.B. Englisch, Spanisch, Französisch usw. In der Regel verwaltet das Player-SDK die Auswahl der Standardaudiospur und verfügbare Audiospuren entsprechend der Benutzerauswahl.
 
 Die Entwicklung solcher Player-SDKs ist nicht ganz einfach, da hierbei verschiedene Implementierungen in verschiedenen gerätespezifischen Playerframeworks benötigt werden. Außerdem sind die Player-APIs auf manchen Plattformen eingeschränkt und umfassen keine Funktion zur Audioauswahl, sodass Benutzer die Standardaudiospur nicht auswählen oder ändern können. Mit Filtern für Medienobjekte können Sie das Verhalten steuern, indem Sie Filter erstellen, die nur die gewünschten Audiosprachen enthalten.
 
-![Filtern von Sprachspuren][language_filter]
+![Filtern von Sprachspuren mit einem dynamischen Manifest][language_filter]
 
 ## <a name="trimming-the-start-of-an-asset"></a>Kürzen des Starts eines Medienobjekts
 
-Bei den meisten Live-Streaming-Ereignissen führen Operatoren vor dem eigentlichen Ereignis einige Tests durch. Sie fügen z.B. die folgende Meldung vor dem Start des Ereignisses ein: „Programm beginnt in Kürze.“ 
+Bei den meisten Live-Streaming-Ereignissen führen Operatoren vor dem eigentlichen Ereignis einige Tests durch. Sie fügen z.B. die folgende Meldung vor dem Start des Ereignisses ein: „Programm beginnt in Kürze.“
 
-Wenn das Programm archiviert wird, werden auch die Test- und Meldungsdaten archiviert und in die Präsentation einbezogen. Diese Informationen sollten jedoch nicht auf den Clients angezeigt werden. Mit dynamischen Manifesten können Sie einen Filter für die Startzeit erstellen und die unerwünschten Daten aus dem Manifest entfernen.
+Wenn das Programm archiviert wird, werden auch die Test- und Meldungsdaten archiviert und in die Präsentation einbezogen. Diese Informationen sollten den Clients jedoch nicht angezeigt werden. Mit dynamischen Manifesten können Sie einen Filter für die Startzeit erstellen und die unerwünschten Daten aus dem Manifest entfernen.
 
-![Kürzen des Starts][trim_filter]
+![Kürzen des Starts eines Medienobjekts mit einem dynamischen Manifest][trim_filter]
 
 ## <a name="creating-subclips-views-from-a-live-archive"></a>Erstellen von Subclips (Ansichten) aus einem Livearchiv
 
-Viele Liveereignisse werden lange ausgeführt. Daher können Livearchive mehrere Ereignisse enthalten. Nach dem Ende des Liveereignisses möchten Sendeanstalten das Livearchiv möglicherweise in logische Sequenzen mit Programmstart und Programmende unterteilen. 
+Viele Liveereignisse werden lange ausgeführt. Daher können Livearchive mehrere Ereignisse enthalten. Nach dem Ende des Liveereignisses möchten Sendeanstalten das Livearchiv möglicherweise in logische Sequenzen mit Programmstart und Programmende unterteilen.
 
 Diese virtuellen Programme können separat ohne Nachbearbeitung des Livearchivs und ohne Erstellung separater Medienobjekte veröffentlicht werden (wobei kein Nutzen aus den vorhandenen, in den CDNs zwischengespeicherten Fragmenten gezogen wird). Beispiele für solche virtuellen Programme sind Halbzeiten eines Fußball- oder Basketballspiels, die Innings beim Baseball oder einzelne Wettbewerbe beliebiger Sportprogramme.
 
-Mit dynamischen Manifesten können Sie Filter mit Start- und Endzeiten sowie virtuelle Ansichten für Ihr Livearchiv erstellen. 
+Mit dynamischen Manifesten können Sie Filter mit Start- und Endzeiten sowie virtuelle Ansichten für Ihr Livearchiv erstellen.
 
-![Filter für Subclip][subclip_filter]
+![Subclipfilter mit einem dynamischen Manifest][subclip_filter]
 
 Hier sehen Sie das gefilterte Medienobjekt:
 
-![Skilaufen][skiing]
+![Gefiltertes Medienobjekt mit einem dynamischen Manifest][skiing]
 
 ## <a name="adjusting-the-presentation-window-dvr"></a>Anpassen des Präsentationsfensters (DVR)
 
-Zum gegenwärtigen Zeitpunkt umfasst Azure Media Services Umlaufarchive, bei denen eine Dauer zwischen 1 Minute und 25 Stunden konfiguriert werden kann. Durch Filter über Manifeste kann ein DVR-Gleitfenster über dem Archiv erstellt werden, ohne dass Medien gelöscht werden. Es gibt viele Szenarios, bei denen Sendeanstalten ein in der Größe begrenztes DVR-Fenster bereitstellen möchten, das sich am Rand des Livevideos bewegt, und gleichzeitig ein größeres Archivierungsfenster beibehalten möchten. Ein bestimmter Sender möchte eventuell die Daten verwenden, die sich außerhalb des DVR-Fensters befinden, um Clips hervorzuheben oder unterschiedliche DVR-Fenster für verschiedene Geräte bereitstellen. Auf den meisten Mobilgeräten werden beispielsweise keine großen DVR-Fenster verarbeitet. (Sie können ein 2-Minuten-Fenster für Mobilgeräte und ein 1-Stunden-Fenster für Desktopclients einrichten.)
+Zum gegenwärtigen Zeitpunkt umfasst Azure Media Services Umlaufarchive, bei denen eine Dauer zwischen 1 Minute und 25 Stunden konfiguriert werden kann. Durch Filter über Manifeste kann ein DVR-Gleitfenster über dem Archiv erstellt werden, ohne dass Medien gelöscht werden. Es gibt viele Szenarios, bei denen Sendeanstalten ein in der Größe begrenztes DVR-Fenster bereitstellen möchten, das sich am Rand des Livevideos bewegt, und gleichzeitig ein größeres Archivierungsfenster beibehalten möchten. Ein bestimmter Sender möchte ggf. die Daten verwenden, die sich außerhalb des DVR-Fensters befinden, um Clips hervorzuheben oder unterschiedliche DVR-Fenster für verschiedene Geräte bereitstellen. Auf den meisten Mobilgeräten werden beispielsweise keine großen DVR-Fenster verarbeitet. (Sie können ein 2-Minuten-Fenster für Mobilgeräte und ein 1-Stunden-Fenster für Desktopclients einrichten.)
 
-![DVR-Fenster][dvr_filter]
+![DVR-Fenster mit dynamischem Manifest][dvr_filter]
 
 ## <a name="adjusting-livebackoff-live-position"></a>Anpassen von LiveBackoff (Liveposition)
 
@@ -117,35 +119,34 @@ Mit der Filterung über Manifeste können mehrere Sekunden vom Rand eines Livepr
 
 Neben der Unterstützung für Werbespots kann mithilfe der LiveBackoff-Einstellung die Betrachterposition angepasst werden, sodass Clients weiterhin Fragmente vom Server empfangen, wenn sie den Rand des Livevideos erreichen. Dadurch tritt für Clients kein HTTP-Fehler vom Typ 404 oder 412 auf.
 
-![Filtern nach LiveBackoff][livebackoff_filter]
+![Filter für LiveBackoff mit dynamischem Manifest][livebackoff_filter]
 
 ## <a name="combining-multiple-rules-in-a-single-filter"></a>Kombinieren mehrerer Regeln in einem Filter
 
-Sie können mehrere Filterregeln in ein und demselben Filter kombinieren. Als Beispiel können Sie eine „Bereichsregel“ zum Entfernen von Meldungen aus einem Livearchiv definieren und zudem verfügbare Bitraten filtern. Wenn Sie mehrere Filterregeln anwenden, ist das Endergebnis die Schnittmenge aller Regeln.
+Sie können mehrere Filterregeln in ein und demselben Filter kombinieren. Beispielsweise können Sie eine „Bereichsregel“ zum Entfernen von Meldungen aus einem Livearchiv definieren und zudem verfügbare Bitraten filtern. Wenn Sie mehrere Filterregeln anwenden, ist das Endergebnis die Schnittmenge aller Regeln.
 
-![Mehrere Filterregeln][multiple-rules]
+![Mehrere Filterregeln mit dynamischem Manifest][multiple-rules]
 
 ## <a name="combining-multiple-filters-filter-composition"></a>Kombinieren mehrerer Filter (Filterkomposition)
 
 Sie können auch mehrere Filter in einer einzelnen URL kombinieren. Das folgende Szenario zeigt, warum es sinnvoll sein kann, Filter zu kombinieren:
 
 1. Sie müssen Ihre Videoqualitäten für mobile Geräte wie Android oder iPad filtern (um die Videoqualität einzuschränken). Zum Entfernen der unerwünschten Qualitätsstufen muss ein für die Geräteprofile geeigneter Kontofilter erstellt werden. Kontofilter können ohne weitere Zuordnung für alle Medienobjekte des gleichen Media Services-Kontos verwendet werden.
-1. Sie möchten außerdem die Start- und Endzeit Zeit eines Medienobjekts kürzen. Zu diesem Zweck erstellen Sie einen Medienobjektfilter und legen die Start-/Endzeit fest. 
+1. Sie möchten außerdem die Start- und Endzeit Zeit eines Medienobjekts kürzen. Um die Kürzung auszuführen, erstellen Sie einen Medienobjektfilter und legen die Start-/Endzeit fest.
 1. Sie möchten beide Filter kombinieren. Ohne Kombinierung müssen Sie den Qualitätsfilter dem Kürzungsfilter hinzufügen, was die Verwendung des Filters erschwert.
 
-
-Um Filter zu kombinieren, müssen Sie die Filternamen auf die Manifest-/Wiedergabelisten-URL festlegen (in einem durch Semikolons getrennten Format). Angenommen, Sie verfügen über einen Filter mit dem Namen *MyMobileDevice* zum Filtern der Qualitäten und über einen weiteren Filter mit dem Namen *MyStartTime* zum Festlegen einer bestimmten Startzeit. Sie können bis zu drei Filter kombinieren. 
+Um Filter zu kombinieren, legen Sie die Filternamen auf die Manifest-/Wiedergabelisten-URL fest (in einem durch Semikolons getrennten Format). Angenommen, Sie verfügen über einen Filter mit dem Namen *MyMobileDevice* zum Filtern der Qualitäten und über einen weiteren Filter mit dem Namen *MyStartTime* zum Festlegen einer bestimmten Startzeit. Sie können bis zu drei Filter kombinieren.
 
 Weitere Informationen finden Sie in [diesem Blogbeitrag](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
 ## <a name="considerations-and-limitations"></a>Überlegungen und Einschränkungen
 
-- Die Werte für **forceEndTimestamp**, **presentationWindowDuration** und **liveBackoffDuration** dürfen für einen VoD-Filter nicht festgelegt werden. Sie werden nur in Szenarien mit Livefiltern verwendet. 
--  Für dynamische Manifeste gelten GOP-Grenzen (Keyframes), sodass Kürzungen mit GOP-Genauigkeit erfolgen.
--  Sie können die gleichen Filternamen für Konto- und Medienobjektfilter verwenden. Medienobjektfilter haben Vorrang und überschreiben Kontofilter.
+- Die Werte für **forceEndTimestamp**, **presentationWindowDuration** und **liveBackoffDuration** dürfen für einen VoD-Filter nicht festgelegt werden. Sie werden nur in Szenarien mit Livefiltern verwendet.
+- Für dynamische Manifeste gelten GOP-Grenzen (Keyframes), sodass Kürzungen mit GOP-Genauigkeit erfolgen.
+- Sie können die gleichen Filternamen für Konto- und Medienobjektfilter verwenden. Medienobjektfilter haben Vorrang und überschreiben Kontofilter.
 - Wenn Sie einen Filter aktualisieren, kann es bis zu zwei Minuten dauern, bis die Regeln am Streamingendpunkt aktualisiert wurden. Falls Sie Filter verwendet haben, um den Inhalt bereitzustellen, und der Inhalt in Proxys und CDN-Caches zwischengespeichert wurde, können infolge der Aktualisierung dieser Filter Playerfehler auftreten. Es empfiehlt sich, den Cache nach der Filteraktualisierung zu leeren. Sollte das nicht möglich sein, empfiehlt sich die Verwendung eines anderen Filters.
 - Kunden müssen das Manifest manuell herunterladen und den exakten Wert von „startTimestamp“ und Zeitskala analysieren.
-    
+
     - Um die Eigenschaften der Spuren in einem Medienobjekt zu bestimmen, müssen Sie die [Manifestdatei abrufen und untersuchen](#get-and-examine-manifest-files).
     - Die Formel zum Festlegen der Zeitstempeleigenschaften für einen Medienobjektfilter sieht wie folgt aus: <br/>startTimestamp = &lt;Startzeit im Manifest&gt; +  &lt;erwartete Filterstartzeit in Sekunden&gt; × Zeitskala
 

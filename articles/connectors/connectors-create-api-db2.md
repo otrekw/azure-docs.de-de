@@ -1,25 +1,22 @@
 ---
-title: Herstellen einer Verbindung mit IBM DB2 – Azure Logic Apps
-description: Verwalten von Ressourcen IBM mit DB2-REST-APIs und Azure Logic Apps
+title: Zugriff auf und Verwalten von IBM DB2-Ressourcen
+description: Lesen, Bearbeiten, Aktualisieren und Verwalten von IBM DB2-Ressourcen durch Erstellen automatisierter Workflows mithilfe von Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: plarsen, LADocs
+ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
-ms.date: 08/23/2018
+ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: a7079115b381d094cec77f96015342b5bc568c27
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 765bb66b572f0c046222cfb617fe4caa80925256
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051033"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967400"
 ---
-# <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Verwalten von Ressourcen mit IBM DB2-REST-APIs und Azure Logic Apps
+# <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Zugreifen auf und Verwalten von IBM DB2-Ressourcen mithilfe von Azure Logic Apps
 
-Mit Azure Logic Apps und dem IBM DB2-Connector können Sie automatisierte Aufgaben und Workflows auf der Grundlage der in Ihrer DB2-Datenbank gespeicherten Ressourcen erstellen. Ihre Workflows können eine Verbindung zu den Ressourcen in Ihrer Datenbank herstellen, Ihre Datenbanktabellen auslesen und auflisten und Zeilen hinzufügen, ändern, löschen usw. Sie können Aktionen in Ihre Logik-Apps integrieren, die Antworten von Ihrer Datenbank erhalten und die Ausgabe für andere Aktionen verfügbar machen.
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [IBM DB2-Connector](/connectors/db2/) können Sie automatisierte Aufgaben und Workflows auf Grundlage der in Ihrer DB2-Datenbank gespeicherten Ressourcen erstellen. Ihre Workflows können eine Verbindung zu den Ressourcen in Ihrer Datenbank herstellen, Ihre Datenbanktabellen auslesen und auflisten und Zeilen hinzufügen, ändern, löschen usw. Sie können Aktionen in Ihre Logik-Apps integrieren, die Antworten von Ihrer Datenbank erhalten und die Ausgabe für andere Aktionen verfügbar machen.
 
 In diesem Artikel wird gezeigt, wie Sie eine Logik-App erstellen können, die verschiedene Datenbankvorgänge durchführt. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
@@ -31,7 +28,7 @@ Der IBM DB2-Connector unterstützt diese IBM DB2-Plattformen und -Versionen sowi
 
 | Plattform | Version | 
 |----------|---------|
-| IBM DB2 für z/OS | 11.1, 10.1 |
+| IBM DB2 für z/OS | 12, 11.1, 10.1 |
 | IBM DB2 für i | 7.3, 7.2, 7.1 |
 | IBM DB2 für LUW 11 | 11, 10.5 |
 |||
@@ -52,13 +49,13 @@ Der IBM DB2-Connector unterstützt diese Datenbankvorgänge, die den entsprechen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Ein IBM DB2-Datenbank, entweder cloudbasiert oder lokal
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Die Logik-App, in der Sie auf Ihre DB2-Datenbank zugreifen möchten. Dieser Connector ermöglicht nur Aktionen, daher müssen Sie zum Starten Ihrer Logik-App einen separaten Trigger wie einen **Wiederholungstrigger** verwenden.
+* Die Logik-App, in der Sie auf Ihre DB2-Datenbank zugreifen möchten. Dieser Connector stellt nur Aktionen bereit, daher müssen Sie zum Starten Ihrer Logik-App einen separaten Trigger auswählen, z.B. einen **Wiederholungstrigger**.
 In den Beispielen dieses Artikels wird der **Wiederholungstrigger** verwendet.
 
 <a name="add-db2-action"></a>
@@ -69,7 +66,7 @@ In den Beispielen dieses Artikels wird der **Wiederholungstrigger** verwendet.
 
 1. Wählen Sie unter dem Trigger die Option **Neuer Schritt** aus.
 
-1. Geben Sie im Suchfeld den Begriff „db2“ als Filter ein. Wählen Sie in diesem Beispiel in der Aktionsliste diese Aktion aus: **Tabellen abrufen (Vorschau)**
+1. Geben Sie im Suchfeld den Begriff „db2“ als Filter ein. Wählen Sie in diesem Beispiel in der Aktionsliste diese Aktion: **Tabellen abrufen (Vorschau)**
 
    ![Aktion select](./media/connectors-create-api-db2/select-db2-action.png)
 
@@ -160,7 +157,7 @@ Um einen Datensatz in einer DB2-Datenbanktabelle abzurufen, verwenden Sie die Ak
    | **Bereichs-ID** | Ja | Die ID für den gewünschten Datensatz, wie z.B. „99999“ in diesem Beispiel |
    ||||
 
-   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+   ![Screenshot: Aktion „Zeile abrufen (Vorschau)“ mit der geöffneten Liste „Tabellenname“ und dem ausgewählten Wert „AREA“](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
 
 1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
 
@@ -195,7 +192,7 @@ Um alle Datensätze in einer DB2-Datenbanktabelle abzurufen, verwenden Sie die A
 
 1. Öffnen Sie die Liste **Tabellenname** und wählen Sie die gewünschte Tabelle, in diesem Beispiel „AREA“:
 
-   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+   ![Screenshot: Aktion „Zeile abrufen (Vorschau)“ mit dem ausgewählten Wert „AREA“ in der Liste „Tabellenname“](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
 
 1. Um einen Filter oder eine Abfrage für die Ergebnisse anzugeben, wählen Sie **Erweiterte Optionen anzeigen**.
 
@@ -244,7 +241,7 @@ Um einen einzelnen Datensatz zu einer DB2-Datenbanktabelle hinzuzufügen, verwen
 
    Beispiel:
 
-   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+   ![Screenshot: Logik-App-Designer mit der Aktion „Insert row (Preview)“ (Zeile einfügen (Vorschau)) und Beispieleigenschaftswerten](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
 1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
 
@@ -292,7 +289,7 @@ Um einen einzelnen Datensatz in einer DB2-Datenbanktabelle zu aktualisieren, ver
 
    Beispiel:
 
-   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+   ![Screenshot: Logik-App-Designer mit der Aktion „Update row (Preview)“ (Zeile aktualisieren (Vorschau)), unter der Sie eine Tabelle auswählen](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
 1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
 
@@ -337,7 +334,7 @@ Um einen einzelnen Datensatz aus einer DB2-Datenbanktabelle zu löschen, verwend
 
    Beispiel:
 
-   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+   ![Screenshot: Logik-App-Designer mit der Aktion „Delete row (Preview)“ (Zeile löschen (Vorschau)), unter der Sie eine zu löschende Tabelle auswählen](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
 1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
 
@@ -362,8 +359,12 @@ Erweitern Sie die Aktion **Zeile löschen**.
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details wie Trigger, Aktionen und Limits, wie sie in der OpenAPI-Datei (ehemals Swagger) des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/db2/).
+Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/db2/).
+
+> [!NOTE]
+> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
+

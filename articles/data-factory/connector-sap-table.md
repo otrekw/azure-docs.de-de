@@ -1,30 +1,31 @@
 ---
-title: Kopieren von Daten aus einer SAP-Tabelle mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus einer SAP-Tabelle
 description: Erfahren Sie, wie Daten aus einer SAP-Tabelle mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
-ms.author: jingwang
-ms.openlocfilehash: 87f97d674b1dd4334ac0ca07648baa1e7cc6607a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom: seo-lt-2019
+ms.date: 09/01/2020
+ms.openlocfilehash: 4505deaa4cc11c00c7283ef686827d6893c2742a
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089561"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280423"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopieren von Daten aus einer SAP-Tabelle mithilfe von Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer SAP-Tabelle zu kopieren. Weitere Informationen finden Sie im Artikel [Übersicht über die Kopieraktivität](copy-activity-overview.md).
 
 >[!TIP]
->Informationen zur allgemeinen Unterstützung des SAP-Datenintegrationsszenarios durch ADF finden Sie im [Whitepaper zur SAP-Datenintegration mit Azure Data Factory](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf). Dort finden Sie auch eine detaillierte Einführung, einen Vergleich sowie Anleitungen.
+>Informationen zur allgemeinen Unterstützung des SAP-Datenintegrationsszenarios durch ADF finden Sie im [Whitepaper zur SAP-Datenintegration mit Azure Data Factory](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf). Dort finden Sie auch eine detaillierte Einführung in jeden SAP-Connector, einen Vergleich und Anleitungen.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -47,6 +48,14 @@ Dieser SAP-Tabellenconnector unterstützt insbesondere Folgendes:
 - Kopieren von Daten aus einer transparenten SAP-Tabelle, einer in einem Pool zusammengefassten Tabelle, einer gruppierten Tabelle und einer Sicht.
 - Kopieren von Daten mithilfe von Standardauthentifizierung oder Secure Network Communications (SNC), falls SNC konfiguriert ist.
 - Herstellen einer Verbindung mit einem SAP-Anwendungsserver oder einem SAP-Nachrichtenserver.
+- Abrufen von Daten über die standardmäßige oder benutzerdefinierte RFC.
+
+Die Version 7.01 oder höher verweist auf die SAP NetWeaver-Version statt auf die SAP ECC-Version. Beispielsweise verfügt SAP ECC 6.0 EHP 7 im Allgemeinen über die NetWeaver-Version > = 7.4. Falls Sie sich bezüglich Ihrer Umgebung unsicher sind, finden Sie hier die Schritte zur Bestätigung der Version aus Ihrem SAP-System:
+
+1. Stellen Sie per SAP GUI eine Verbindung mit dem SAP-System her. 
+2. Wechseln Sie zu **System** -> **Status**. 
+3. Überprüfen Sie die Version von SAP_BASIS, und stellen Sie sicher, dass sie mindestens 701 ist.  
+      ![Überprüfen von SAP_BASIS](./media/connector-sap-table/sap-basis.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -76,10 +85,10 @@ Folgende Eigenschaften werden für den mit SAP BW Open Hub verknüpften Dienst u
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | `type` | Die `type`-Eigenschaft muss auf `SapTable` festgelegt werden. | Ja |
-| `server` | Der Name des Servers, auf dem sich die SAP-Instanz befindet.<br/>Verwenden Sie ihn zum Herstellen einer Verbindung mit einem SAP-Anwendungsserver. | Nein |
+| `server` | Der Name des Servers, auf dem sich die SAP-Instanz befindet.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Anwendungsserver. | Nein |
 | `systemNumber` | Die Systemnummer des SAP-Systems.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Anwendungsserver.<br/>Zulässiger Wert: Eine zweistellige Dezimalzahl, die als Zeichenfolge angegeben wird. | Nein |
-| `messageServer` | Der Hostname des SAP-Nachrichtenservers.<br/>Verwenden Sie ihn zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
-| `messageServerService` | Der Dienstname oder die Portnummer des Nachrichtenservers.<br/>Verwenden Sie ihn bzw. sie zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
+| `messageServer` | Der Hostname des SAP-Nachrichtenservers.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
+| `messageServerService` | Der Dienstname oder die Portnummer des Nachrichtenservers.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
 | `systemId` | Die ID des SAP-Systems, in dem sich die Tabelle befindet.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
 | `logonGroup` | Die Anmeldegruppe für das SAP-System.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
 | `clientId` | Die ID des Clients im SAP-System.<br/>Zulässiger Wert: Eine dreistellige Dezimalzahl, die als Zeichenfolge angegeben wird. | Ja |
@@ -118,7 +127,7 @@ Folgende Eigenschaften werden für den mit SAP BW Open Hub verknüpften Dienst u
 }
 ```
 
-### <a name="example-2-connect-to-an-sap-message-server"></a>Beispiel 2: Herstellen einer Verbindung mit einem SAP-Nachrichtenserver
+### <a name="example-2-connect-to-an-sap-message-server"></a>Beispiel 2: Herstellen einer Verbindung mit einem SAP-Nachrichtenserver
 
 ```json
 {
@@ -145,7 +154,7 @@ Folgende Eigenschaften werden für den mit SAP BW Open Hub verknüpften Dienst u
 }
 ```
 
-### <a name="example-3-connect-by-using-snc"></a>Beispiel 3: Herstellen einer Verbindung mithilfe von SNC
+### <a name="example-3-connect-by-using-snc"></a>Beispiel 3: Herstellen einer Verbindung mithilfe von SNC
 
 ```json
 {
@@ -217,32 +226,34 @@ Beim Kopieren von Daten aus einer SAP-Tabelle werden die folgenden Eigenschaften
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | Die `type`-Eigenschaft muss auf `SapTableSource` festgelegt werden.         | Ja      |
 | `rowCount`                         | Die Anzahl der Zeilen, die abgerufen werden sollen.                              | Nein       |
-| `rfcTableFields`                   | Die Felder (Spalten), die aus der SAP-Tabelle kopiert werden sollen. Beispiel: `column0, column1`. | Nein       |
-| `rfcTableOptions`                  | Die Optionen zum Filtern der Zeilen in einer SAP-Tabelle. Beispiel: `COLUMN0 EQ 'SOMEVALUE'`. Sehen Sie sich dazu auch die Tabelle „SAP-Abfrageoperator“ weiter unten in diesem Artikel an. | Nein       |
-| `customRfcReadTableFunctionModule` | Ein benutzerdefiniertes RFC-Funktionsmodul, das zum Lesen von Daten aus einer SAP-Tabelle verwendet werden kann.<br>Mit einem benutzerdefinierten RFC-Funktionsmodul können Sie festlegen, wie die Daten aus Ihrem SAP-System abgerufen und an Data Factory zurückgegeben werden sollen. Beim benutzerdefinierten Funktionsmodul muss eine Schnittstelle (für Import, Export, Tabellen) implementiert worden sein, die mit `/SAPDS/RFC_READ_TABLE2` vergleichbar ist. Dabei handelt es sich um die von Data Factory verwendete Standardschnittstelle. | Nein       |
-| `partitionOption`                  | Der Partitionsmechanismus, der zum Lesen aus einer SAP-Tabelle verwendet wird. Folgende Optionen werden unterstützt: <ul><li>`None`</li><li>`PartitionOnInt` (normale ganze Zahl oder ganzzahlige Werte mit führenden Nullen, z.B. `0000012345`)</li><li>`PartitionOnCalendarYear` (4 Ziffern im Format „JJJJ“)</li><li>`PartitionOnCalendarMonth` (6 Ziffern im Format „JJJJMM“)</li><li>`PartitionOnCalendarDate` (8 Ziffern im Format „JJJJMMTT“)</li></ul> | Nein       |
+| `rfcTableFields`                 | Die Felder (Spalten), die aus der SAP-Tabelle kopiert werden sollen. Beispiel: `column0, column1`. | Nein       |
+| `rfcTableOptions`                | Die Optionen zum Filtern der Zeilen in einer SAP-Tabelle. Beispiel: `COLUMN0 EQ 'SOMEVALUE'`. Sehen Sie sich dazu auch die Tabelle „SAP-Abfrageoperator“ weiter unten in diesem Artikel an. | Nein       |
+| `customRfcReadTableFunctionModule` | Ein benutzerdefiniertes RFC-Funktionsmodul, das zum Lesen von Daten aus einer SAP-Tabelle verwendet werden kann.<br>Mit einem benutzerdefinierten RFC-Funktionsmodul können Sie festlegen, wie die Daten aus Ihrem SAP-System abgerufen und an Data Factory zurückgegeben werden sollen. Beim benutzerdefinierten Funktionsmodul muss eine Schnittstelle (für Import, Export, Tabellen) implementiert worden sein, die mit `/SAPDS/RFC_READ_TABLE2` vergleichbar ist. Dabei handelt es sich um die von Data Factory verwendete Standardschnittstelle.<br>Data Factory | Nein       |
+| `partitionOption`                  | Der Partitionsmechanismus, der zum Lesen aus einer SAP-Tabelle verwendet wird. Folgende Optionen werden unterstützt: <ul><li>`None`</li><li>`PartitionOnInt` (normale ganze Zahl oder ganzzahlige Werte mit führenden Nullen, z.B. `0000012345`)</li><li>`PartitionOnCalendarYear` (4 Ziffern im Format „JJJJ“)</li><li>`PartitionOnCalendarMonth` (6 Ziffern im Format „JJJJMM“)</li><li>`PartitionOnCalendarDate` (8 Ziffern im Format „JJJJMMTT“)</li><li>`PartitionOntime` (6 Ziffern im Format „HHMMSS“, z. B. `235959`)</li></ul> | Nein       |
 | `partitionColumnName`              | Der Name der Spalte, die zum Partitionieren der Daten verwendet wird.                | Nein       |
 | `partitionUpperBound`              | Der Höchstwert der in `partitionColumnName` angegebenen Spalte, der zum Fortsetzen der Partitionierung verwendet wird. | Nein       |
-| `partitionLowerBound`              | Der Mindestwert der in `partitionColumnName` angegebenen Spalte, der zum Fortsetzen der Partitionierung verwendet wird. | Nein       |
+| `partitionLowerBound`              | Der Mindestwert der in `partitionColumnName` angegebenen Spalte, der zum Fortsetzen der Partitionierung verwendet wird. (Hinweis: `partitionLowerBound` kann nicht „0“ sein, wenn die Partitionsoption `PartitionOnInt` lautet.) | Nein       |
 | `maxPartitionsNumber`              | Die maximale Anzahl von Partitionen, in welche die Daten aufgeteilt werden können.     | Nein       |
+| `sapDataColumnDelimiter` | Das als Trennzeichen verwendete einzelne Zeichen, das an SAP RFC übergeben wird, um die Ausgabedaten aufzuteilen. | Nein |
 
 >[!TIP]
 >Wenn Ihre SAP-Tabelle eine große Menge an Daten enthält, z.B. mehrere Milliarden Zeilen, verwenden Sie `partitionOption` und `partitionSetting`, um die Daten in kleinere Partitionen aufzuteilen. In diesem Fall werden die Daten pro Partition gelesen, und jede Datenpartition wird über einen einzelnen RFC-Aufruf von Ihrem SAP-Server abgerufen.<br/>
 <br/>
 >Bei dem Beispiel von `partitionOption` als `partitionOnInt` wird die Anzahl der Zeilen in jeder Partition mit dieser Formel berechnet: (Gesamtzahl der Zeilen zwischen `partitionUpperBound` und `partitionLowerBound`)/`maxPartitionsNumber`.<br/>
 <br/>
->Wenn Sie Datenpartitionen parallel laden möchten, um den Kopiervorgang zu beschleunigen, wird der Parallelitätsgrad durch die Einstellung [`parallelCopies`](copy-activity-performance.md#parallel-copy) in der Kopieraktivität gesteuert. Wenn Sie zum Beispiel `parallelCopies` auf vier festlegen, werden von Data Factory vier Abfragen gleichzeitig generiert und ausgeführt. Diese Abfragen basieren auf den von Ihnen angegebenen Partitionsoptionen und -einstellungen, und jede Abfrage ruft einen Teil der Daten aus Ihrer SAP-Tabelle ab. Es wird dringend empfohlen, `maxPartitionsNumber` als Vielfaches des Werts der `parallelCopies`-Eigenschaft anzugeben. Beim Kopieren von Daten in einen dateibasierten Datenspeicher wird außerdem empfohlen, unter Verwendung von „Mehrere Dateien“ in einen Ordner zu schreiben (Sie müssen nur den Ordnernamen angeben). In diesem Fall ist die Leistung besser als beim Schreiben in eine einzelne Datei.
+>Wenn Sie Datenpartitionen parallel laden möchten, um den Kopiervorgang zu beschleunigen, wird der Parallelitätsgrad durch die Einstellung [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) in der Kopieraktivität gesteuert. Wenn Sie zum Beispiel `parallelCopies` auf vier festlegen, werden von Data Factory vier Abfragen gleichzeitig generiert und ausgeführt. Diese Abfragen basieren auf den von Ihnen angegebenen Partitionsoptionen und -einstellungen, und jede Abfrage ruft einen Teil der Daten aus Ihrer SAP-Tabelle ab. Es wird dringend empfohlen, `maxPartitionsNumber` als Vielfaches des Werts der `parallelCopies`-Eigenschaft anzugeben. Beim Kopieren von Daten in einen dateibasierten Datenspeicher wird außerdem empfohlen, unter Verwendung von „Mehrere Dateien“ in einen Ordner zu schreiben (Sie müssen nur den Ordnernamen angeben). In diesem Fall ist die Leistung besser als beim Schreiben in eine einzelne Datei.
 
 In `rfcTableOptions` können Sie die folgenden allgemeinen SAP-Abfrageoperatoren zum Filtern von Zeilen verwenden:
 
 | Operator | BESCHREIBUNG |
 | :------- | :------- |
-| `EQ` | Ist gleich |
+| `EQ` | Gleich |
 | `NE` | Ungleich |
 | `LT` | Kleiner als |
 | `LE` | Kleiner als oder gleich |
 | `GT` | Größer als |
-| `GE` | Größer oder gleich |
+| `GE` | Größer als oder gleich |
+| `IN` | Wie in `TABCLASS IN ('TRANSP', 'INTTAB')` |
 | `LIKE` | Wie in `LIKE 'Emma%'` |
 
 ### <a name="example"></a>Beispiel

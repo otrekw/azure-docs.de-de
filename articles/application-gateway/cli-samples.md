@@ -1,25 +1,25 @@
 ---
 title: Azure CLI-Beispiele für Azure Application Gateway
-description: Azure CLI-Beispiele für Azure Application Gateway
+description: Dieser Artikel enthält Links zu Azure CLI-Beispielen, die die schnelle Bereitstellung einer Azure Application Gateway-Instanz mit unterschiedlichen Konfigurationen veranschaulichen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: sample
-ms.date: 08/07/2019
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: eac8569f16c84211c1e881a9cb8daab9d7e602b5
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 3f957d8b7512d2eddd6c9f4cc412a2cd1d05bb08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824500"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87497714"
 ---
 # <a name="azure-cli-examples-for-azure-application-gateway"></a>Azure CLI-Beispiele für Azure Application Gateway
 
 Die folgende Tabelle enthält Links zu Azure CLI-Skriptbeispielen für Azure Application Gateway.
 
-| | |
-|---|---|
+| Beispiel | BESCHREIBUNG |
+|-------- | ----------- |
 | [Verwalten von Webdatenverkehr](./scripts/create-vmss-cli.md) | Erstellt ein Anwendungsgateway und alle dazugehörigen Ressourcen. |
 | [Einschränken von Webdatenverkehr](./scripts/create-vmss-waf-cli.md) | Erstellt ein Anwendungsgateway, das Datenverkehr mithilfe von OWASP-Regeln einschränkt.|
-| | |

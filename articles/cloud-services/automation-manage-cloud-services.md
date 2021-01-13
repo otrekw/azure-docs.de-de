@@ -2,29 +2,26 @@
 title: Verwalten von Azure Cloud Services mithilfe von Azure Automation | Microsoft-Dokumentation
 description: Erfahren Sie, wie der Azure Automation-Dienst zur angemessenen Verwaltung von Azure-Clouddiensten verwendet werden kann.
 services: cloud-services, automation
-documentationcenter: ''
 author: jodoglevy
 manager: timlt
 editor: ''
 ms.assetid: 3789810a-2892-4eef-bf29-c781c1b5af48
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 1fc1ac9668454578ee137a2ddd1b85319fea0a28
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 67830f8c00d9f74f62883e0714ffe1c2bbbd6903
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945500"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075619"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Verwalten von Azure Cloud Services mithilfe von Azure Automation
 Dieser Leitfaden bietet eine Einführung in den Azure Automation-Dienst und zeigt, wie Azure Automation zur einfacheren Verwaltung Ihrer Azure Cloud Services genutzt werden kann.
 
 ## <a name="what-is-azure-automation"></a>Was ist Azure Automation?
-[Azure Automation](https://azure.microsoft.com/services/automation/) ist ein Azure-Dienst für die Vereinfachung der Cloudverwaltung durch eine  Prozessautomatisierung. Mit Azure Automation können zeitintensive, manuelle, fehleranfällige und häufig ausgeführte Aufgaben automatisiert werden, um Zuverlässigkeit und Effizienz zu steigern und eine schnellere Amortisierung für Ihre Organisation zu erzielen.
+[Azure Automation](https://azure.microsoft.com/services/automation/) ist ein Azure-Dienst für die Vereinfachung der Cloudverwaltung durch eine Prozessautomatisierung. Mit Azure Automation können zeitintensive, manuelle, fehleranfällige und häufig ausgeführte Aufgaben automatisiert werden, um Zuverlässigkeit und Effizienz zu steigern und eine schnellere Amortisierung für Ihre Organisation zu erzielen.
 
 Azure Automation bietet eine äußerst zuverlässige und hoch verfügbare Workflow-Ausführungs-Engine, die nach Ihren Anforderungen skaliert werden kann, wenn Ihre Organisation wächst. In Azure Automation können Prozesse manuell, durch Drittanbietersysteme oder in geplanten Intervallen gestartet werden, sodass Aufgaben genau nach Bedarf ausgeführt werden.
 
@@ -42,5 +39,4 @@ Beispiele für die Verwendung von Azure Automation für die Verwaltung von Azure
 Nachdem Sie sich nun mit den Grundlagen von Azure Automation und dessen Verwendung zum Verwalten von Azure Cloud Services vertraut gemacht haben, können Sie diese Links verwenden, um weitere Informationen zu Azure Automation zu erhalten.
 
 * [Übersicht über Azure Automation](../automation/automation-intro.md)
-* [Mein erstes Runbook](../automation/automation-first-runbook-graphical.md)
-* [Azure Automation Lernkurve](https://azure.microsoft.com/documentation/learning-paths/automation/)
+* [Mein erstes Runbook](../automation/learn/automation-tutorial-runbook-graphical.md)

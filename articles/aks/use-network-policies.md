@@ -1,18 +1,16 @@
 ---
-title: Sichere Pods mit Richtlinien für Netzwerke in Azure Kubernetes Service (AKS)
+title: Schützen des Datenverkehrs zwischen Pods mit einer Netzwerkrichtlinie
+titleSuffix: Azure Kubernetes Service
 description: Es wird beschrieben, wie Sie ein- und ausgehenden Datenverkehr bei Pods mittels Kubernetes-Netzwerkrichtlinien in Azure Kubernetes Service (AKS) schützen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 1339fe66a4925104d459c0491caccdd7db5998a7
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 598747c0d64db2ae62f740dca4c3e4141f2562f2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114458"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87050482"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)
 
@@ -22,7 +20,7 @@ In diesem Artikel wird veranschaulicht, wie Sie das Modul für Netzwerkrichtlini
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
+Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
 > [!TIP]
 > Wenn Sie die Funktion für Netzwerkrichtlinien während der Vorschauphase verwendet haben, empfehlen wir, dass Sie [einen neuen Cluster](#create-an-aks-cluster-and-enable-network-policy) erstellen.
@@ -48,21 +46,16 @@ Azure stellt zwei Verfahren zum Implementieren von Netzwerkrichtlinien bereit. S
 * Die eigene Richtlinienimplementierung von Azure, die als *Azure-Netzwerkrichtlinien* bezeichnet wird.
 * *Calico-Netzwerkrichtlinien*, eine von [Tigera][tigera] gegründete Open-Source-Netzwerk- und -Netzwerkrichtlinienlösung.
 
-Beide Implementierungen verwenden Linux *IPTables*, um die angegebenen Richtlinien durchzusetzen. Richtlinien werden in Mengen von zulässigen und unzulässigen IP-Paaren übersetzt. Diese Paare werden anschließend als IPTable-Filterregeln programmiert.
+Beide Implementierungen verwenden Linux *IPTables*, um die angegebenen Richtlinien durchzusetzen. Aus den Richtlinien werden zulässige und unzulässige IP-Adresspaare gebildet. Diese Paare werden anschließend als IPTable-Filterregeln programmiert.
 
-Netzwerkrichtlinien funktionieren nur mit der Option (erweitert) von Azure CNI. Implementierung unterscheidet sich für die zwei Optionen:
-
-* *Azure Netzwerkrichtlinien*: Das Azure CNI richtet eine Bridge im VM-Host für knoteninterne Netzwerke ein. Die Filterregeln werden angewendet, wenn die Pakete über die Bridge übergeben werden.
-* *Calico-Netzwerkrichtlinien*: Das Azure CNI richtet lokale Kernelrouten für den knoteninternen Datenverkehr ein. Die Richtlinien werden auf die Netzwerkschnittstelle des Pods angewendet.
-
-### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Unterschiede zwischen Azure- und Calico-Richtlinien und ihre Funktionen
+### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Unterschiede zwischen Azure- und Calico-Richtlinien und zwischen ihren Funktionen
 
 | Funktion                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | Unterstützte Plattformen                      | Linux                      | Linux                       |
-| Unterstützte Netzwerkoptionen             | Azure CNI                  | Azure CNI                   |
+| Unterstützte Netzwerkoptionen             | Azure CNI                  | Azure CNI und kubenet       |
 | Compliance mit Kubernetes-Spezifikation | Alle Richtlinientypen werden unterstützt |  Alle Richtlinientypen werden unterstützt |
-| Zusätzliche Funktionen                      | Keine                       | Erweitertes Richtlinienmodell, das aus globaler Netzwerkrichtlinie, globalem Netzwerksatz und Hostendpunkt besteht. Weitere Informationen zur Verwendung der `calicoctl`-Befehlszeilenschnittstelle zum Verwalten dieser erweiterten Funktionen finden Sie in der [calicoctl-Benutzerreferenz][calicoctl]. |
+| Zusätzliche Features                      | Keine                       | Erweitertes Richtlinienmodell, das aus globaler Netzwerkrichtlinie, globalem Netzwerksatz und Hostendpunkt besteht. Weitere Informationen zur Verwendung der `calicoctl`-Befehlszeilenschnittstelle zum Verwalten dieser erweiterten Funktionen finden Sie in der [calicoctl-Benutzerreferenz][calicoctl]. |
 | Support                                  | Unterstützt durch das Azure-Support- und Engineering-Team | Calico-Communitysupport. Weitere Informationen zu zusätzlichem kostenpflichtigem Support finden Sie unter [Project Calico support options][calico-support] (Supportoptionen für Project „Calico“). |
 | Protokollierung                                  | In IPTables hinzugefügte/gelöschte Regeln werden auf jedem Host unter */var/log/azure-npm.log* protokolliert. | Weitere Informationen finden Sie unter [Calico-Komponentenprotokolle][calico-logs]. |
 
@@ -74,9 +67,13 @@ Um Netzwerkrichtlinien in Aktion zu sehen, erstellen Sie eine Richtlinie, die Da
 * Lassen Sie Datenverkehr basierend auf Podbezeichnungen zu.
 * Lassen Sie Datenverkehr basierend auf dem Namespace zu.
 
-Erstellen wir zunächst einen AKS-Cluster, der Netzwerkrichtlinie unterstützt. Die Netzwerkrichtlinienfunktion kann nur aktiviert werden, wenn der Cluster erstellt wird. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren.
+Erstellen wir zunächst einen AKS-Cluster, der Netzwerkrichtlinien unterstützt. 
 
-Um eine Netzwerkrichtlinie mit einem AKS-Cluster zu verwenden, müssen Sie das [Azure CNI-Plug-In][azure-cni] verwenden und eigene virtuelle Netzwerke und Subnetze definieren. Detaillierte Informationen zur Planung der erforderlichen Subnetzadressbereiche finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)][use-advanced-networking].
+> [!IMPORTANT]
+>
+> Die Netzwerkrichtlinienfunktion kann nur aktiviert werden, wenn der Cluster erstellt wird. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren.
+
+Um eine Azure-Netzwerkrichtlinie zu verwenden, müssen Sie das [Azure CNI-Plug-In][azure-cni] verwenden und eigene virtuelle Netzwerke und Subnetze definieren. Detaillierte Informationen zur Planung der erforderlichen Subnetzadressbereiche finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)][use-advanced-networking]. Eine Calico-Netzwerkrichtlinie könnte entweder mit diesem selben Azure CNI-Plug-In oder mit dem Kubenet CNI-Plug-In verwendet werden.
 
 Das folgende Beispielskript:
 
@@ -84,7 +81,9 @@ Das folgende Beispielskript:
 * Erstellt einen Azure AD-Dienstprinzipal (Azure Active Directory) für die Verwendung mit dem AKS-Cluster.
 * Weist dem Dienstprinzipal des AKS-Clusters in einen virtuellen Netzwerk *Mitwirkender*-Berechtigungen zu.
 * Erstellt einen AKS-Cluster im definierten virtuellen Netzwerk und aktiviert die Netzwerkrichtlinie.
-    * Die *Azure*-Netzwerkrichtlinienoption wird verwendet. Um stattdessen Calico als Netzwerkrichtlinienoption zu verwenden, verwenden Sie den Parameter `--network-policy calico`.
+    * Die _Azure-Netzwerkrichtlinienoption_ wird verwendet. Um stattdessen Calico als Netzwerkrichtlinienoption zu verwenden, verwenden Sie den Parameter `--network-policy calico`. Hinweis: Calico könnte entweder mit `--network-plugin azure` oder mit `--network-plugin kubenet` verwendet werden.
+
+Beachten Sie, dass Sie anstelle eines Dienstprinzipals eine verwaltete Identität für Berechtigungen verwenden können. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
 
 Geben Sie Ihr eigenes sicheres *SP_PASSWORD* ein. Sie können die Variablen *RESOURCE_GROUP_NAME* und *CLUSTER_NAME* ersetzen:
 
@@ -147,7 +146,7 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 ## <a name="deny-all-inbound-traffic-to-a-pod"></a>Verweigern sämtlichen eingehenden Datenverkehrs zu einem Pod
 
-Bevor Sie Regeln zum Zulassen bestimmten Netzwerkdatenverkehrs definieren, erstellen Sie zuerst eine Netzwerkrichtlinie, um sämtlichen Datenverkehr abzulehnen. Diese Richtlinie bietet Ihnen einen Ausgangspunkt, um nur den gewünschten Datenverkehr auf die Whitelist zu setzen. Sie können auch deutlich erkennen, dass Datenverkehr bei Anwendung der Netzwerkrichtlinie verworfen wird.
+Bevor Sie Regeln zum Zulassen bestimmten Netzwerkdatenverkehrs definieren, erstellen Sie zuerst eine Netzwerkrichtlinie, um sämtlichen Datenverkehr abzulehnen. Diese Richtlinie bietet Ihnen einen Ausgangspunkt, um mit der Erstellung einer Zulassungsliste zu beginnen, die nur den gewünschten Datenverkehr zulässt. Sie können auch deutlich erkennen, dass Datenverkehr bei Anwendung der Netzwerkrichtlinie verworfen wird.
 
 Für die Beispielanwendungsumgebung und die Regeln für den Netzwerkdatenverkehr erstellen wir zunächst einen Namespace mit dem Namen *development* zur Ausführung der Beispielpods:
 
@@ -159,13 +158,13 @@ kubectl label namespace/development purpose=development
 Erstellen Sie einen Beispiel-Back-End-Pod, der NGINX ausführt. Dieser Back-End-Pod kann verwendet werden, um eine Beispielanwendung auf Back-End-Web-Basis zu simulieren. Erstellen Sie diesen Pod im *development* -Namespace, und öffnen Sie Port *80* für den Webdatenverkehr. Geben Sie dem Pod die Bezeichnung *app=webapp,role=backend*, damit wir im nächsten Abschnitt eine auf ihn zielgerichtete Netzwerkrichtlinie einfügen können:
 
 ```console
-kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80 --generator=run-pod/v1
+kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80
 ```
 
 Erstellen Sie einen weiteren Pod, und fügen Sie eine Terminalsitzung an, um zu testen, ob Sie die NGINX-Standardwebseite erreichen können:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können:
@@ -176,7 +175,7 @@ wget -qO- http://backend
 
 Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeben wird:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -208,26 +207,29 @@ spec:
   ingress: []
 ```
 
+Navigieren Sie zu [https://shell.azure.com](https://shell.azure.com), um Azure Cloud Shell in Ihrem Browser zu öffnen.
+
 Wenden Sie die Netzwerkrichtlinie über den Befehl [kubectl apply][kubectl-apply] an, und geben Sie den Namen Ihres YAML-Manifests an:
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
 ### <a name="test-the-network-policy"></a>Testen der Netzwerkrichtlinie
 
-
 Jetzt prüfen wir, ob Sie die NGINX-Webseite auf dem Back-End-Pod verwenden können. Erstellen Sie einen anderen Testpod, und fügen Sie an diesen eine Terminalsitzung an:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können. Legen Sie dieses Mal einen Timeoutwert auf *2* Sekunden fest. Die Netzwerkrichtlinie blockiert jetzt sämtlichen eingehenden Datenverkehr, damit die Seite nicht geladen werden kann. Dies ist im folgenden Beispiel dargestellt:
 
 ```console
-$ wget -qO- --timeout=2 http://backend
+wget -qO- --timeout=2 http://backend
+```
 
+```output
 wget: download timed out
 ```
 
@@ -268,14 +270,14 @@ spec:
 
 Wenden Sie die aktualisierte Netzwerkrichtlinie über den Befehl [kubectl apply][kubectl-apply] an, und geben Sie den Namen Ihres YAML-Manifests an:
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
 Planen Sie einen Pod mit der Bezeichnung *app=webapp,role=frontend*, und fügen Sie eine Terminalsitzung an:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
 ```
 
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können:
@@ -286,7 +288,7 @@ wget -qO- http://backend
 
 Da die Eingangsregel Datenverkehr mit Pods zulässt, die die Bezeichnungen *app: webapp,role: frontend* haben, wird der Datenverkehr vom Front-End-Pod zugelassen. Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeben wird:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -305,14 +307,16 @@ exit
 Die Netzwerkrichtlinie lässt Datenverkehr von Pods mit der Bezeichnung *app: webapp,role: frontend* zu, sollte aber den gesamten sonstigen Datenverkehr verweigern. Wir testen nun, ob ein anderer Pod ohne diese Bezeichnungen auf den Back-End-NGINX-Pod zugreifen kann. Erstellen Sie einen anderen Testpod, und fügen Sie an diesen eine Terminalsitzung an:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können. Die Netzwerkrichtlinie blockiert sämtlichen eingehenden Datenverkehr, damit die Seite nicht geladen werden kann. Dies ist im folgenden Beispiel dargestellt:
 
 ```console
-$ wget -qO- --timeout=2 http://backend
+wget -qO- --timeout=2 http://backend
+```
 
+```output
 wget: download timed out
 ```
 
@@ -336,7 +340,7 @@ kubectl label namespace/production purpose=production
 Planen Sie einen Testpod im *production*-Namespace mit der Bezeichnung *app=webapp,role=frontend*. Fügen Sie eine Terminalsitzung an:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
 ```
 
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können:
@@ -347,7 +351,7 @@ wget -qO- http://backend.development
 
 Da die Bezeichnungen für den Pod mit den derzeitigen Zulässigkeitsvorgaben der Netzwerkrichtlinie übereinstimmen, wird der Datenverkehr zugelassen. Die Netzwerkrichtlinie beachtet nicht die Namespaces, sondern nur die Podbezeichnungen. Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeben wird:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -391,7 +395,7 @@ In komplexeren Beispielen können Sie mehrere Eingangsregeln definieren, z. B. 
 
 Wenden Sie die aktualisierte Netzwerkrichtlinie über den Befehl [kubectl apply][kubectl-apply] an, und geben Sie den Namen Ihres YAML-Manifests an:
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
@@ -400,14 +404,16 @@ kubectl apply -f backend-policy.yaml
 Planen Sie einen weiteren Pod im *production*-Namespace, und fügen Sie eine Terminalsitzung an:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
 ```
 
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass die Netzwerkrichtlinie Datenverkehr nun ablehnt:
 
 ```console
-$ wget -qO- --timeout=2 http://backend.development
+wget -qO- --timeout=2 http://backend.development
+```
 
+```output
 wget: download timed out
 ```
 
@@ -420,7 +426,7 @@ exit
 Da der Datenverkehr vom *production*-Namespace jetzt abgelehnt wird, können Sie einen Testpod im *development*-Namespace planen und eine Terminalsitzung anfügen:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
 ```
 
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass die Netzwerkrichtlinie den Datenverkehr zulässt:
@@ -431,7 +437,7 @@ wget -qO- http://backend
 
 Der Datenverkehr wird zugelassen, da der Pod in dem Namespace geplant ist, der mit den derzeitigen Zulässigkeitsvorgaben der Netzwerkrichtlinie übereinstimmt. Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeben wird:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -468,14 +474,14 @@ Weitere Informationen zu Richtlinien finden Sie unter [Network Policies][kuberne
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.6/reference/calicoctl/
-[calico-support]: https://www.projectcalico.org/support
-[calico-logs]: https://docs.projectcalico.org/v3.6/maintenance/component-logs
+[calicoctl]: https://docs.projectcalico.org/reference/calicoctl/
+[calico-support]: https://www.tigera.io/tigera-products/calico/
+[calico-logs]: https://docs.projectcalico.org/maintenance/troubleshoot/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
-[use-advanced-networking]: configure-advanced-networking.md
+[use-advanced-networking]: configure-azure-cni.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [concepts-network]: concepts-network.md
 [az-feature-register]: /cli/azure/feature#az-feature-register

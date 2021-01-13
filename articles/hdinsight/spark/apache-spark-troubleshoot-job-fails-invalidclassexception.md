@@ -1,5 +1,5 @@
 ---
-title: Fehler bei Apache Spark-Auftrag mit InvalidClassException in Azure HDInsight
+title: Fehler „InvalidClassException“ aus Apache Spark – Azure HDInsight
 description: Apache Spark-Auftrag schlägt mit InvalidClassException, Klassenversionskonflikt in Azure HDInsight fehl
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: c32b6a5ed7e8c052096f6125a5246fc9685302d4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 6220c328d05e7cd68460b7bfd0708a9d393a290f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088689"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287891"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>Apache Spark-Auftrag schlägt mit InvalidClassException, Klassenversionskonflikt in Azure HDInsight fehl
 
@@ -34,7 +34,10 @@ org.apache.commons.lang3.time.FastDateFormat; local class incompatible: stream c
 
 ## <a name="cause"></a>Ursache
 
-Dieser Fehler kann durch Hinzufügen einer zusätzlichen JAR-Datei zur `spark.yarn.jars`-Konfiguration verursacht werden, die eine „shaded“ JAR-Datei ist, die eine andere Version des `commons-lang3`-Pakets enthält und einen Klassenkonflikt verursacht. Standardmäßig verwendet Spark 2.1/2/3 Version 3.5 von `commons-lang3`.
+Dieser Fehler kann durch Hinzufügen einer zusätzlichen JAR-Datei zur `spark.yarn.jars`-Konfiguration verursacht werden, insbesondere einer „schattierten“ (shaded) JAR-Datei, die eine andere Version des `commons-lang3`-Pakets enthält und einen Klassenkonflikt verursacht. Standardmäßig verwendet Spark 2.1/2/3 Version 3.5 von `commons-lang3`.
+
+> [!TIP]
+> Eine Bibliothek zu schattieren, bedeutet, den Inhalt der Bibliothek in Ihrer eigenen JAR-Datei zu speichern, wodurch das Paket geändert wird. Dies unterscheidet sich vom Verpacken der Bibliothek, bei dem die Bibliothek ohne erneutes Verpacken Ihrer eigenen JAR-Datei hinzugefügt wird.
 
 ## <a name="resolution"></a>Lösung
 
@@ -42,10 +45,4 @@ Entfernen Sie die JAR-Datei, oder kompilieren Sie die angepasste JAR-Datei (Azur
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
-
-* Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
-
-* Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
-
-* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

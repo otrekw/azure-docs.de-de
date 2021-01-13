@@ -1,28 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von Adobe Captivate Prime | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Adobe Captivate Prime | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Adobe Captivate Prime konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2f95b226-1465-47f4-b8b7-de4b0772abbc
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83124495b751b1e37ac23c7e9439e2dd8b78baa3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63bbec6de8f122178289cc313e5d938e3b926af2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107316"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673238"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>Tutorial: Azure Active Directory-Integration von Adobe Captivate Prime
+# <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>Tutorial: Azure Active Directory-Integration mit Adobe Captivate Prime
 
 In diesem Tutorial erfahren Sie, wie Sie Adobe Captivate Prime in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Adobe Captivate Prime in Azure AD bietet die folgenden Vorteile:
@@ -31,7 +27,7 @@ Die Integration von Adobe Captivate Prime in Azure AD bietet die folgenden Vorte
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Adobe Captivate Prime anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -67,7 +63,7 @@ Zum Konfigurieren der Integration von Adobe Captivate Prime in Azure AD müssen 
 
 4. Geben Sie im Suchfeld **Adobe Captivate Prime** ein, wählen Sie im Ergebnisbereich **Adobe Captivate Prime** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Adobe Captivate Prime in der Ergebnisliste](common/search-new-app.png)
+    ![Adobe Captivate Prime in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -148,13 +144,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -184,18 +180,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 ### <a name="create-adobe-captivate-prime-test-user"></a>Erstellen eines Adobe Captivate Prime-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Adobe Captivate Prime eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur Adobe Captivate Prime-Plattform vom [Adobe Captivate Prime-Supportteam](mailto:captivateprimesupport@adobe.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Adobe Captivate Prime eine Benutzerin namens Britta Simon. Arbeiten Sie mit dem [Adobe Captivate Prime-Supportteam](mailto:captivateprimesupport@adobe.com) zusammen, um die Benutzer zur Adobe Captivate Prime-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Adobe Captivate Prime“ klicken, sollten Sie automatisch bei der Adobe Captivate Prime-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Adobe Captivate Prime“ klicken, sollten Sie automatisch bei der Adobe Captivate Prime-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

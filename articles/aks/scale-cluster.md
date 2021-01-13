@@ -2,21 +2,18 @@
 title: Skalieren eines Azure Kubernetes Service-Clusters (AKS)
 description: Erfahren Sie, wie Sie die Anzahl der Knoten in einem Azure Kubernetes Service-Cluster (AKS) skalieren.
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: article
-ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: 9cc06df5d2a66ede18af52c13201c731c12e2049
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 09/16/2020
+ms.openlocfilehash: d5686a74ffe138af51d2319c839a3a5c5887f992
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614503"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90902947"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Skalieren der Anzahl der Knoten in einem Azure Kubernetes Service-Cluster (AKS)
 
-Wenn sich die Ressourcenanforderungen Ihrer Anwendungen ändern, können Sie einen AKS-Cluster manuell zur Ausführung einer anderen Anzahl von Knoten skalieren. Beim zentralen Herunterskalieren werden die Knoten sorgfältig [gesperrt und ausgeglichen][kubernetes-drain], um die Unterbrechung ausgeführter Anwendungen zu minimieren. Beim zentralen Hochskalieren wartet AKS, bis die Knoten vom Kubernetes-Cluster als `Ready` markiert wurden, bevor Pods für diese Knoten geplant werden.
+Wenn sich die Ressourcenanforderungen Ihrer Anwendungen ändern, können Sie einen AKS-Cluster manuell zur Ausführung einer anderen Anzahl von Knoten skalieren. Beim zentralen Herunterskalieren werden die Knoten sorgfältig [gesperrt und ausgeglichen][kubernetes-drain], um die Unterbrechung ausgeführter Anwendungen zu minimieren. Beim Hochskalieren wartet AKS, bis die Knoten vom Kubernetes-Cluster als `Ready` markiert wurden, bevor Pods für diese Knoten geplant werden.
 
 ## <a name="scale-the-cluster-nodes"></a>Skalieren der Clusterknoten
 
@@ -28,9 +25,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPo
 
 Die folgende Beispielausgabe zeigt, dass der *Name* *nodepool1* lautet:
 
-```console
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
-
+```output
 [
   {
     "count": 1,
@@ -44,7 +39,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query agent
 ]
 ```
 
-Verwenden Sie den Befehl [az aks scale][az-aks-scale], um die Clusterknoten zu skalieren. Das folgende Beispiel skaliert einen Cluster namens *myAKSCluster* auf einen einzelnen Knoten. Stellen Sie Ihren eigenen *--nodepool-name* aus dem vorherigen Befehl bereit, z.B. *nodepool1*:
+Verwenden Sie den Befehl [az aks scale][az-aks-scale], um die Clusterknoten zu skalieren. Das folgende Beispiel skaliert einen Cluster namens *myAKSCluster* auf einen einzelnen Knoten. Stellen Sie Ihren eigenen `--nodepool-name` aus dem vorherigen Befehl bereit, z.B. *nodepool1*:
 
 ```azurecli-interactive
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
@@ -72,9 +67,23 @@ Die folgende Beispielausgabe zeigt, dass der Cluster erfolgreich auf einen einzi
 }
 ```
 
+
+## <a name="scale-user-node-pools-to-0"></a>Skalieren von `User`-Knotenpools auf 0 (null)
+
+Im Unterschied zu `System`-Knotenpools, die immer ausgeführte Knoten erfordern, können Sie `User`-Knotenpools auf 0 (null) skalieren. Weitere Informationen zu den Unterschieden zwischen System- und Benutzerknotenpools finden Sie unter [System- und Benutzerknotenpools](use-system-pools.md).
+
+Um einen Benutzerpool auf 0 zu skalieren, können Sie den Befehl [az aks nodepool scale][az-aks-nodepool-scale] als Alternative zum obigen Befehl `az aks scale` verwenden und als Knotenanzahl 0 (null) festlegen.
+
+
+```azurecli-interactive
+az aks nodepool scale --name <your node pool name> --cluster-name myAKSCluster --resource-group myResourceGroup  --node-count 0 
+```
+
+Sie können für `User`-Knotenpools auch eine Autoskalierung auf 0 Knoten durchführen, indem Sie den Parameter `--min-count` der [automatischen Clusterskalierung](cluster-autoscaler.md) auf 0 (null) festlegen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie einen AKS-Cluster manuell skaliert, um die Anzahl von Knoten zu erhöhen oder zu verringern. Sie können auch die [Autoskalierung für Cluster][cluster-autoscaler] verwenden (derzeit in der Vorschau in AKS), um Ihren Cluster automatisch zu skalieren.
+In diesem Artikel haben Sie einen AKS-Cluster manuell skaliert, um die Anzahl von Knoten zu erhöhen oder zu verringern. Sie können auch die [Autoskalierung für Cluster][cluster-autoscaler] verwenden, um den Cluster automatisch zu skalieren.
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
@@ -84,3 +93,4 @@ In diesem Artikel haben Sie einen AKS-Cluster manuell skaliert, um die Anzahl vo
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
 [cluster-autoscaler]: cluster-autoscaler.md
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-scale&preserve-view=true

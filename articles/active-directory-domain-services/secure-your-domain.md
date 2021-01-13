@@ -1,24 +1,24 @@
 ---
-title: Schützen von Azure AD Domain Services | Microsoft-Dokumentation
+title: Schützen von Azure AD Domain Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie schwache Verschlüsselungen, alte Protokolle und die NTLM-Kennworthashsynchronisierung für eine verwaltete Azure AD DS-Domäne (Azure Active Directory Domain Services) deaktivieren.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 6b4665b5-4324-42ab-82c5-d36c01192c2a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: article
-ms.date: 09/09/2019
-ms.author: iainfou
-ms.openlocfilehash: db086c56c9f16f4691efaade03571bf8a36c6444
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.topic: how-to
+ms.date: 07/06/2020
+ms.author: justinha
+ms.openlocfilehash: a89c898e150facc9860d86e18a7acc42f5e0f441
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842627"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618857"
 ---
-# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>Deaktivieren von schwachen Verschlüsselungen und der Kennworthashsynchronisierung zum Schützen einer verwalteten Azure AD Domain Services-Domäne
+# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Deaktivieren von schwachen Verschlüsselungen und der Kennworthashsynchronisierung zum Schützen einer verwalteten Azure Active Directory Domain Services-Domäne
 
 Standardmäßig erlaubt Azure Active Directory Domain Services (Azure AD DS) die Verwendung von Verschlüsselungen wie NTLM v1 und TLS v1. Diese Verschlüsselungen sind möglicherweise für einige Legacyanwendungen erforderlich, gelten jedoch als schwach und können deaktiviert werden, wenn Sie sie nicht benötigen. Wenn Sie über eine lokale Hybridverbindung über Azure AD Connect verfügen, können Sie auch die NTLM-Kennworthashsynchronisierung deaktivieren.
 
@@ -33,7 +33,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie f
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * Bei Bedarf [erstellen und konfigurieren Sie eine Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance].
+    * [Erstellen und konfigurieren Sie eine verwaltete Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance], sofern erforderlich.
 * Installieren und konfigurieren Sie Azure PowerShell.
     * Führen Sie bei Bedarf die Anweisungen zum [Installieren des Azure PowerShell-Moduls und Verbinden mit Ihrem Azure-Abonnement](/powershell/azure/install-az-ps) aus.
     * Stellen Sie sicher, dass Sie sich mit dem Cmdlet [Connect-AzAccount][Connect-AzAccount] bei Ihrem Azure-Abonnement anmelden.
@@ -67,17 +67,22 @@ Definieren Sie als Nächstes *DomainSecuritySettings*, um die folgenden Sicherhe
 $securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled"}}
 ```
 
-Wenden Sie schließlich mithilfe des Cmdlets [Set-AzResource][Set-AzResource] die definierten Sicherheitseinstellungen auf die verwaltete Azure AD DS-Domäne an. Geben Sie die Azure AD DS-Ressource aus dem ersten Schritt und die Sicherheitseinstellungen aus dem vorherigen Schritt an.
+Wenden Sie schließlich mithilfe des Cmdlets [Set-AzResource][Set-AzResource] die definierten Sicherheitseinstellungen auf die verwaltete Domäne an. Geben Sie die Azure AD DS-Ressource aus dem ersten Schritt und die Sicherheitseinstellungen aus dem vorherigen Schritt an.
 
 ```powershell
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
 ```
 
-Es dauert einen Moment, bis die Sicherheitseinstellungen auf die verwaltete Azure AD DS-Domäne angewendet werden.
+Es dauert einen Moment, bis die Sicherheitseinstellungen auf die verwaltete Domäne angewendet werden.
+
+> [!IMPORTANT]
+> Nachdem Sie die Windows-Authentifizierung (NTLM) deaktiviert haben, führen Sie eine vollständige Kennworthashsynchronisierung in Azure AD Connect durch, um alle Kennworthashes aus der verwalteten Domäne zu entfernen. Wenn Sie die Windows-Authentifizierung deaktivieren, aber keine Kennworthashsynchronisierung erzwingen, werden NTLM-Kennworthashes für ein Benutzerkonto nur bei der nächsten Kennwortänderung entfernt. Dieses Verhalten ermöglicht es einem Benutzer, sich weiterhin anzumelden, wenn er die Anmeldeinformationen auf einem System zwischengespeichert hat, auf dem NTLM als Authentifizierungsmethode verwendet wird.
+>
+> Wenn sich der NTLM-Kennworthash von dem Kerberos-Kennworthash unterscheidet, funktioniert ein Fallback auf NTLM nicht. Zwischengespeicherte Anmeldeinformationen funktionieren auch nicht mehr, wenn der virtuelle Computer über eine Verbindung mit dem verwalteten Domänencontroller verfügt.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Synchronisierungsvorgang finden Sie unter [Synchronisieren von Objekten und Anmeldeinformationen in einer verwalteten Azure AD DS-Domäne][synchronization].
+Weitere Informationen zum Synchronisierungsvorgang finden Sie unter [Synchronisieren von Objekten und Anmeldeinformationen in einer verwalteten Domäne][synchronization].
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

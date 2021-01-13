@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 31f64a504156134b1d622705d5301d9cd5a5f5b1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058206"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88756825"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Behandeln von Problemen mit geänderten Gerätenamen von Linux-VMs
 
@@ -42,7 +42,7 @@ Das Problem tritt auf, weil die vom SCSI-Subsystem geplante Geräteüberprüfung
 
 Um dieses Problem zu beheben, können Sie die persistente Benennung verwenden. Für die persistente Benennung stehen vier Methoden zur Verfügung: nach der Dateisystembezeichnung, nach der UUID, nach der ID oder nach dem Pfad. Für Azure-Linux-VMs wird die Verwendung der Dateisystembezeichnung oder UUID empfohlen.
 
-Die meisten Verteilungen stellen die Parameter `fstab` **nofail** oder **nobootwait** bereit. Mit diesen Parametern kann ein System neu gestartet werden, wenn der Datenträger beim Start nicht bereitgestellt werden kann. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Distribution. Informationen zum Konfigurieren einer Linux-VM für die Verwendung einer UUID beim Hinzufügen eines Datenträgers finden Sie unter [Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk).
+Die meisten Verteilungen stellen die Parameter `fstab` **nofail** oder **nobootwait** bereit. Mit diesen Parametern kann ein System neu gestartet werden, wenn der Datenträger beim Start nicht bereitgestellt werden kann. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Distribution. Informationen zum Konfigurieren einer Linux-VM für die Verwendung einer UUID beim Hinzufügen eines Datenträgers finden Sie unter [Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers](../linux/add-disk.md#format-and-mount-the-disk).
 
 Beim Installieren des Azure Linux-Agents auf einer VM werden für die Erstellung einer Reihe symbolischer Verknüpfungen unter dem Pfad „/dev/disk/azure“ udev-Regeln verwendet. Anwendungen und Skripts ermitteln mithilfe von udev-Regeln Datenträger, die an die VM angefügt sind, sowie den Datenträgertyp und die Datenträger-LUNs.
 
@@ -52,101 +52,115 @@ Wenn Sie Ihr fstab bereits so bearbeitet haben, dass Ihr virtueller Computer nic
 
 Anwendungen verwenden LUNs, um alle angefügten Datenträger zu ermitteln und symbolische Verknüpfungen zu erstellen. Der Azure Linux-Agent enthält udev-Regeln, mit denen symbolische Verknüpfungen zwischen einer LUN und den Geräten erstellt werden:
 
-    $ tree /dev/disk/azure
+```console
+$ tree /dev/disk/azure
 
-    /dev/disk/azure
-    ├── resource -> ../../sdb
-    ├── resource-part1 -> ../../sdb1
-    ├── root -> ../../sda
-    ├── root-part1 -> ../../sda1
-    └── scsi1
-        ├── lun0 -> ../../../sdc
-        ├── lun0-part1 -> ../../../sdc1
-        ├── lun1 -> ../../../sdd
-        ├── lun1-part1 -> ../../../sdd1
-        ├── lun1-part2 -> ../../../sdd2
-        └── lun1-part3 -> ../../../sdd3
+/dev/disk/azure
+├── resource -> ../../sdb
+├── resource-part1 -> ../../sdb1
+├── root -> ../../sda
+├── root-part1 -> ../../sda1
+└── scsi1
+    ├── lun0 -> ../../../sdc
+    ├── lun0-part1 -> ../../../sdc1
+    ├── lun1 -> ../../../sdd
+    ├── lun1-part1 -> ../../../sdd1
+    ├── lun1-part2 -> ../../../sdd2
+    └── lun1-part3 -> ../../../sdd3
+```
 
 LUN-Informationen werden mit `lsscsi` oder einem ähnlichen Tool vom Linux-Gastkonto abgerufen:
 
-      $ sudo lsscsi
+```console
+$ sudo lsscsi
 
-      [1:0:0:0] cd/dvd Msft Virtual CD/ROM 1.0 /dev/sr0
+[1:0:0:0] cd/dvd Msft Virtual CD/ROM 1.0 /dev/sr0
 
-      [2:0:0:0] disk Msft Virtual Disk 1.0 /dev/sda
+[2:0:0:0] disk Msft Virtual Disk 1.0 /dev/sda
 
-      [3:0:1:0] disk Msft Virtual Disk 1.0 /dev/sdb
+[3:0:1:0] disk Msft Virtual Disk 1.0 /dev/sdb
 
-      [5:0:0:0] disk Msft Virtual Disk 1.0 /dev/sdc
+[5:0:0:0] disk Msft Virtual Disk 1.0 /dev/sdc
 
-      [5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
+[5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
+```
 
 Die Informationen zur Gast-LUN dienen in Kombination mit Azure-Abonnementmetadaten dazu, die VHD in Azure Storage mit den Partitionsdaten zu suchen. So können Sie die `az`-CLI z.B. für Folgendes verwenden:
 
-    $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
-    [
-    {
-    "caching": "None",
-      "createOption": "empty",
-    "diskSizeGb": 1023,
-      "image": null,
-    "lun": 0,
-    "managedDisk": null,
-    "name": "testVM-20170619-114353",
-    "vhd": {
-      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
-    }
-    },
-    {
-    "caching": "None",
-    "createOption": "empty",
-    "diskSizeGb": 512,
-    "image": null,
-    "lun": 1,
-    "managedDisk": null,
-    "name": "testVM-20170619-121516",
-    "vhd": {
-      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
-      }
-      }
-    ]
+```azurecli
+$ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
+[
+{
+"caching": "None",
+  "createOption": "empty",
+"diskSizeGb": 1023,
+  "image": null,
+"lun": 0,
+"managedDisk": null,
+"name": "testVM-20170619-114353",
+"vhd": {
+  "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
+}
+},
+{
+"caching": "None",
+"createOption": "empty",
+"diskSizeGb": 512,
+"image": null,
+"lun": 1,
+"managedDisk": null,
+"name": "testVM-20170619-121516",
+"vhd": {
+  "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
+  }
+  }
+]
+```
 
 ### <a name="discover-filesystem-uuids-by-using-blkid"></a>Erkunden des Dateisystem-UUIDs mit „blkid“
 
 Die Ausgabe von `blkid` oder ähnlichen Informationsquellen können mit Anwendungen oder Skripts gelesen oder unter dem Pfad „/dev“ symbolische Verknüpfungen erstellen. Die Ausgabe zeigt die UUIDs aller Datenträger an, die an die VM und die zugehörige Gerätedatei angefügt sind:
 
-    $ sudo blkid -s UUID
+```console
+$ sudo blkid -s UUID
 
-    /dev/sr0: UUID="120B021372645f72"
-    /dev/sda1: UUID="52c6959b-79b0-4bdd-8ed6-71e0ba782fb4"
-    /dev/sdb1: UUID="176250df-9c7c-436f-94e4-d13f9bdea744"
-    /dev/sdc1: UUID="b0048738-4ecc-4837-9793-49ce296d2692"
+/dev/sr0: UUID="120B021372645f72"
+/dev/sda1: UUID="52c6959b-79b0-4bdd-8ed6-71e0ba782fb4"
+/dev/sdb1: UUID="176250df-9c7c-436f-94e4-d13f9bdea744"
+/dev/sdc1: UUID="b0048738-4ecc-4837-9793-49ce296d2692"
+```
 
 Die udev-Regeln des Azure Linux-Agents erstellen unter dem Pfad „/dev/disk/azure“ eine Reihe symbolischer Verknüpfungen:
 
-    $ ls -l /dev/disk/azure
+```console
+$ ls -l /dev/disk/azure
 
-    total 0
-    lrwxrwxrwx 1 root root  9 Jun  2 23:17 resource -> ../../sdb
-    lrwxrwxrwx 1 root root 10 Jun  2 23:17 resource-part1 -> ../../sdb1
-    lrwxrwxrwx 1 root root  9 Jun  2 23:17 root -> ../../sda
-    lrwxrwxrwx 1 root root 10 Jun  2 23:17 root-part1 -> ../../sda1
+total 0
+lrwxrwxrwx 1 root root  9 Jun  2 23:17 resource -> ../../sdb
+lrwxrwxrwx 1 root root 10 Jun  2 23:17 resource-part1 -> ../../sdb1
+lrwxrwxrwx 1 root root  9 Jun  2 23:17 root -> ../../sda
+lrwxrwxrwx 1 root root 10 Jun  2 23:17 root-part1 -> ../../sda1
+```
 
 Anwendungen nutzen die Verknüpfungen dazu, den Startdatenträger und den (kurzlebigen) Ressourcendatenträger zu ermitteln. In Azure sollten die Anwendungen diese Partitionen unter den Pfaden „/dev/disk/azure/root-part1“ oder „/dev/disk/azure-resource-part1“ ermitteln.
 
 Zusätzliche Partitionen aus der `blkid`-Liste befinden sich auf einem Datenträger. Um den Gerätenamen zur Laufzeit zu ermitteln, erhalten Anwendungen die UUID für diese Partitionen und verwenden einen Pfad:
 
-    $ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
+```console
+$ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
 
-    lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
+lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
+```
 
 
 ### <a name="get-the-latest-azure-storage-rules"></a>Abrufen der neuesten Azure Storage-Regeln
 
 Um die neuesten Azure Storage-Regeln abzurufen, führen Sie die folgenden Befehle aus:
 
-    # sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
-    # sudo udevadm trigger --subsystem-match=block
+```console
+# sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
+# sudo udevadm trigger --subsystem-match=block
+```
 
 ## <a name="see-also"></a>Weitere Informationen
 

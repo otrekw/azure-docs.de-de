@@ -1,5 +1,5 @@
 ---
-title: Ausführen von benutzerdefinierten Skripts auf Linux-VMs in Azure | Microsoft-Dokumentation
+title: Ausführen von Version 1 der Azure-Erweiterung für benutzerdefinierte Skripts (veraltet) für Linux-VMs in Azure
 description: Automatisieren Sie Konfigurationsaufgaben für virtuelle Linux-Computer mithilfe der Erweiterung für benutzerdefinierte Skripts (v1).
 services: virtual-machines-linux
 documentationcenter: ''
@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: e5ef1bde9420104b596c22837048b054f918b3cc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: afce76c8f5330f7d73ff58cc9b9307af2b8832f4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092624"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962126"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Verwenden von Version 1 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 
@@ -58,7 +59,7 @@ Mit der Erweiterung können Sie unter Verwendung Ihrer Azure Blob Storage-Anmeld
 
 ### <a name="internet-connectivity"></a>Internetverbindung
 
-Wenn Sie ein Skript extern herunterladen möchten (etwa im Fall von GitHub oder Azure Storage), müssen zusätzliche Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden. Wenn sich Ihr Skript also beispielsweise in Azure Storage befindet, können Sie Zugriff über Azure-NSG-Diensttags für [Storage](../../virtual-network/security-overview.md#service-tags) gewähren.
+Wenn Sie ein Skript extern herunterladen möchten (etwa im Fall von GitHub oder Azure Storage), müssen zusätzliche Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden. Wenn sich Ihr Skript also beispielsweise in Azure Storage befindet, können Sie Zugriff über Azure-NSG-Diensttags für [Storage](../../virtual-network/network-security-groups-overview.md#service-tags) gewähren.
 
 Befindet sich Ihr Skript auf einem lokalen Server, müssen gegebenenfalls noch weitere Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden.
 
@@ -118,17 +119,17 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| NAME | Wert/Beispiel | Datentyp |
+| Name | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.OSTCExtensions | string |
-| type | CustomScriptForLinux | string |
-| typeHandlerVersion | 1.5 | int |
-| fileUris (Beispiel) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (Beispiel) | python MyPythonScript.py \<my-param1\> | string |
+| publisher | Microsoft.OSTCExtensions | Zeichenfolge |
+| type | CustomScriptForLinux | Zeichenfolge |
+| typeHandlerVersion | 1.5 | INT |
+| fileUris (Beispiel) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
+| commandToExecute (Beispiel) | python MyPythonScript.py \<my-param1\> | Zeichenfolge |
 | enableInternalDNSCheck | true | boolean |
-| storageAccountName (Beispiel) | examplestorageacct | string |
-| storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountName (Beispiel) | examplestorageacct | Zeichenfolge |
+| storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | Zeichenfolge |
 
 ### <a name="property-value-details"></a>Details zu Eigenschaftswerten
 
@@ -136,7 +137,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 * `enableInternalDNSCheck` (optional, boolescher Wert): Der Standardwert lautet „true“. Durch Festlegen auf „false“ wird die DNS-Prüfung deaktiviert.
 * `commandToExecute` (optional; Zeichenfolge): Das auszuführende Einstiegspunktskript.
 * `storageAccountName` (optional; Zeichenfolge): Der Name des Speicherkontos.
-* `storageAccountKey` (optional; Zeichenfolge): Der Zugriffsschlüssel des Speicherkontos.
+* `storageAccountKey` (optional, Zeichenfolge): der Zugriffsschlüssel des Speicherkontos.
 
 Die folgenden Werte können in öffentlichen oder geschützten Einstellungen festgelegt werden, aber nicht in beidem.
 
@@ -182,7 +183,7 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
 >[!NOTE]
 >Bei Eigenschaftennamen wird zwischen Groß- und Kleinschreibung unterschieden. Um Bereitstellungsprobleme zu vermeiden, verwenden Sie die Namen wie hier gezeigt.
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli"></a>Azure CLI
 
 Wenn Sie die Azure-Befehlszeilenschnittstelle zum Ausführen der Erweiterung für benutzerdefinierte Skripts verwenden, erstellen Sie eine Konfigurationsdatei oder mehrere Konfigurationsdateien. Es muss mindestens commandToExecute festgelegt sein.
 
@@ -274,7 +275,7 @@ Beim Ausführen der Erweiterung für benutzerdefinierte Skripts wird das Skript 
 
 Suchen Sie nach der Erweiterungsausführung. Diese sieht in etwa wie folgt aus:
 
-```text
+```output
 2018/04/26 15:29:44.835067 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Target handler state: enabled
 2018/04/26 15:29:44.867625 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] [Enable] current handler state is: notinstalled
 2018/04/26 15:29:44.959605 INFO Event: name=Microsoft.OSTCExtensions.CustomScriptForLinux, op=Download, message=Download succeeded, duration=59
@@ -305,7 +306,7 @@ Hinweise:
 
 Suchen Sie nach der jeweiligen Ausführung. Diese ähnelt der folgenden:
 
-```text
+```output
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Enable,transitioning,0,Launching the script...
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] sequence number is 0
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] setting file path is/var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2/config/0.settings
@@ -347,7 +348,7 @@ az vm extension list -g myResourceGroup --vm-name myVM
 
 Die Ausgabe sieht in etwa wie folgt aus:
 
-```azurecli
+```output
 Name                  ProvisioningState    Publisher                   Version  AutoUpgradeMinorVersion
 --------------------  -------------------  ------------------------  ---------  -------------------------
 CustomScriptForLinux  Succeeded            Microsoft.OSTCExtensions        1.5  True

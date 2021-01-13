@@ -1,7 +1,7 @@
 ---
 title: Sprachunterstützung – Bing-Websuche-API
 titleSuffix: Azure Cognitive Services
-description: Eine Liste der von der Bing-News-Suche-API unterstützten natürlichen Sprachen, Länder und Regionen.
+description: Eine Liste der von der Bing-Websuche-API unterstützten natürlichen Sprachen, Länder und Regionen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,23 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6de01d2c12454f43a2802b4a7a979b5f74b46f0e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882687"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340270"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Sprach- und Regionsunterstützung für die Bing-Websuche-API
 
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
 Die Bing-Websuche-API unterstützt über drei Dutzend Länder oder Regionen, viele davon mit mehreren Sprachen. Die Angabe eines Lands oder einer Region mit einer Abfrage dient dazu, Suchergebnisse auf Grundlage der Interessen des Lands oder der Region zu verfeinern. Die Ergebnisse können Links zu Bing enthalten, und diese Links können die Bing-Benutzeroberfläche entsprechend dem angegebenen Land bzw. der angegebenen Region oder der angegebenen Sprache lokalisieren.
 
-Sie können mit dem Abfrageparameter `cc` ein Land oder eine Region angeben. Bei der Angabe eines Lands oder einer Region müssen Sie mithilfe des [`Accept-Language`-Headers](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers) auch mindestens einen Sprachcode angeben. Unter [Märkte](#markets) finden Sie eine Aufstellung der in jedem Markt unterstützten Sprachen.
+Sie können mit dem Abfrageparameter `cc` ein Land oder eine Region angeben. Bei der Angabe eines Lands oder einer Region müssen Sie mithilfe des [`Accept-Language`-Headers](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers) auch mindestens einen Sprachcode angeben. Unter [Märkte](#markets) finden Sie eine Aufstellung der in jedem Markt unterstützten Sprachen.
 
 Alternativ können Sie den Markt mit dem Abfrageparameter `mkt` und einem Code aus der Tabelle **Märkte** angeben. Bei der Angabe eines Markts werden gleichzeitig ein Land oder eine Region und die bevorzugte Sprache angegeben. Mit dem Abfrageparameter `setLang` können Sie die Sprache ausdrücklich festlegen.
 
@@ -34,7 +39,7 @@ Alternativ können Sie den Markt mit dem Abfrageparameter `mkt` und einem Code a
 |Österreich|AT|
 |Belgien|BE|
 |Brasilien|BR|
-|Kanada|CA|
+|Canada|CA|
 |Chile|CL|
 |Dänemark|DK|
 |Finnland|FI|
@@ -50,7 +55,7 @@ Alternativ können Sie den Markt mit dem Abfrageparameter `mkt` und einem Code a
 |Mexiko|MX|
 |Niederlande|NL|
 |Neuseeland|NZ|
-|Norwegen|NO|
+|Norwegen|Nein|
 |China|CN|
 |Polen|PL|
 |Portugal|PT|
@@ -63,7 +68,7 @@ Alternativ können Sie den Markt mit dem Abfrageparameter `mkt` und einem Code a
 |Schweiz|CH|
 |Taiwan|TW|
 |Türkei|TR|
-|Vereinigtes Königreich|GB|
+|United Kingdom|GB|
 |USA|US|
 
 ## <a name="markets"></a>Märkte
@@ -76,8 +81,8 @@ Alternativ können Sie den Markt mit dem Abfrageparameter `mkt` und einem Code a
 |Belgien|Niederländisch|nl-BE|
 |Belgien|Französisch|fr-BE|
 |Brasilien|Portugiesisch|pt-BR|
-|Kanada|Englisch|en-CA|
-|Kanada|Französisch|fr-CA|
+|Canada|Englisch|en-CA|
+|Canada|Französisch|fr-CA|
 |Chile|Spanisch|es-CL|
 |Dänemark|Dänisch|da-DK|
 |Finnland|Finnisch|fi-FI|
@@ -107,8 +112,8 @@ Alternativ können Sie den Markt mit dem Abfrageparameter `mkt` und einem Code a
 |Schweiz|Deutsch|de-CH|
 |Taiwan|Chinesisch (traditionell)|zh-TW|
 |Türkei|Türkisch|tr-TR|
-|Vereinigtes Königreich|Englisch|en-GB|
-|USA|Englisch|en-US|
+|United Kingdom|Englisch|en-GB|
+|USA|Englisch|de-DE|
 |USA|Spanisch|es-US|
 
 ## <a name="next-steps"></a>Nächste Schritte

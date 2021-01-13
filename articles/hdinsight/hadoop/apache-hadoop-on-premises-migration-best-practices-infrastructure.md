@@ -1,19 +1,19 @@
 ---
-title: Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Infrastruktur
+title: 'Infrastruktur: Lokales Apache Hadoop zu Azure HDInsight'
 description: Erfahren Sie mehr zu Best Practices für die Infrastruktur bei der Migration von lokalen Hadoop-Clustern zu Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: e35917a7eb7b2e38fcc2689f6fe838ec6529428a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 12/06/2019
+ms.openlocfilehash: e412b82be911f0b4ba2e5cda51495cdcd7826917
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087448"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542300"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Best Practices für Infrastruktur
 
@@ -23,10 +23,17 @@ Dieser Artikel enthält Empfehlungen für die Verwaltung der Infrastruktur von A
 
 Die wichtigsten Entscheidungen für die Kapazitätsplanung von HDInsight-Clustern sind die folgenden:
 
-- **Region auswählen** – Die Azure-Region bestimmt, wo Ihr Cluster physisch bereitgestellt wird. Um die Latenz der Lese- und Schreibvorgänge zu minimieren, sollte sich der Cluster in der gleichen Region wie Ihre Daten befinden.
-- **Speicherort und Größe auswählen** – Der Standardspeicher muss sich in der gleichen Region wie der Cluster befinden. Für einen Cluster mit 48 Knoten wird empfohlen, 4 bis 8 Speicherkonten zu verwenden. Es mag bereits ausreichend Gesamtspeicher verfügbar sein, doch jedes Speicherkonto bietet zusätzliche Netzwerkbandbreite für die Serverknoten. Wenn Sie mehrere Speicherkonten haben, verwenden Sie für jedes Speicherkonto einen zufälligen Namen ohne Präfix. Die zufällige Benennung soll die Wahrscheinlichkeit alle Konten übergreifender Speicherengpässe (Drosselung) oder üblicher Fehler reduzieren. Verwenden Sie nur einen Container pro Speicherkonto, um die Leistung zu verbessern.
-- **VM-Größe und Typ auswählen (unterstützt jetzt die G-Serie)** – Jeder Clustertyp hat einen Satz von Knotentypen, und jeder Knotentyp hat bestimmte Optionen für VM-Größe und -Typ. Größe und Typ des virtuellen Computers richten sich nach CPU-Verarbeitungsleistung, RAM-Größe und Netzwerklatenz. Mit einer simulierten Workload kann für jeden Knotentyp die optimale VM-Größe und der richtige Typ ermittelt werden.
-- **Anzahl der Workerknoten auswählen** -Die anfängliche Anzahl von Workerknoten kann mit simulierten Workloads bestimmt werden. Der Cluster kann später durch Hinzufügen weiterer Workerknoten skaliert werden, um Spitzenlastanforderungen zu erfüllen. Der Cluster kann später herunterskaliert werden, wenn die zusätzlichen Workerknoten nicht benötigt werden.
+**Region**  
+Die Azure-Region bestimmt, wo der Cluster physisch bereitgestellt wird. Um die Latenz der Lese- und Schreibvorgänge zu minimieren, sollte sich der Cluster in der gleichen Region wie Ihre Daten befinden.
+
+**Speicherort und -größe**  
+Der Standardspeicher muss sich in derselben Region wie der Cluster befinden.  Für einen Cluster mit 48 Knoten wird empfohlen, 4 bis 8 Speicherkonten zu verwenden. Es mag bereits ausreichend Gesamtspeicher verfügbar sein, doch jedes Speicherkonto bietet zusätzliche Netzwerkbandbreite für die Serverknoten. Wenn Sie mehrere Speicherkonten haben, verwenden Sie für jedes Speicherkonto einen zufälligen Namen ohne Präfix. Die zufällige Benennung soll die Wahrscheinlichkeit alle Konten übergreifender Speicherengpässe (Drosselung) oder üblicher Fehler reduzieren. Verwenden Sie nur einen Container pro Speicherkonto, um die Leistung zu verbessern.
+
+**VM-Größe und -Typ (unterstützt jetzt die G-Serie)**  
+Jeder Clustertyp hat einen Satz von Knotentypen, und jeder Knotentyp hat bestimmte Optionen für VM-Größe und -Typ. Größe und Typ des virtuellen Computers richten sich nach CPU-Verarbeitungsleistung, RAM-Größe und Netzwerklatenz. Mit einer simulierten Workload kann für jeden Knotentyp die optimale VM-Größe und der richtige Typ ermittelt werden.
+
+**Anzahl der Workerknoten**  
+Die anfängliche Anzahl von Workerknoten kann mit den simulierten Workloads bestimmt werden. Der Cluster kann später durch Hinzufügen weiterer Workerknoten skaliert werden, um Spitzenlastanforderungen zu erfüllen. Der Cluster kann später herunterskaliert werden, wenn die zusätzlichen Workerknoten nicht benötigt werden.
 
 Weitere Informationen finden Sie im Artikel [Kapazitätsplanung für HDInsight-Cluster](../hdinsight-capacity-planning.md).
 
@@ -45,35 +52,35 @@ Anwendungen oder Komponenten, die in lokalen Clustern verfügbar waren, aber nic
 |**Anwendung**|**Integration**
 |---|---|
 |Luftströmung|IaaS- oder HDInsight-Edgeknoten
-|Alluxio|IaaS  
-|Arcadia|IaaS 
+|Alluxio|IaaS  
+|Arcadia|IaaS 
 |Atlas|Keine (nur HDP)
 |Datameer|HDInsight-Edgeknoten
 |Datastax (Cassandra)|IaaS (COSMOS DB als eine Alternative in Azure)
-|DataTorrent|IaaS 
-|Drill|IaaS 
+|DataTorrent|IaaS 
+|Drill|IaaS 
 |Ignite|IaaS
-|Jethro|IaaS 
-|Mapador|IaaS 
+|Jethro|IaaS 
+|Mapador|IaaS 
 |Mongo|IaaS (COSMOS DB als eine Alternative in Azure)
-|NiFi|IaaS 
+|NiFi|IaaS 
 |Presto|IaaS- oder HDInsight-Edgeknoten
-|Python 2|PaaS 
-|Python 3|PaaS 
-|R|PaaS 
-|SAS|IaaS 
+|Python 2|PaaS 
+|Python 3|PaaS 
+|R|PaaS 
+|SAS|IaaS 
 |Vertica|IaaS (SQLDW als eine Alternative in Azure)
-|Tableau|IaaS 
+|Tableau|IaaS 
 |Waterline|HDInsight-Edgeknoten
-|StreamSets|HDInsight-Edge 
-|Palantir|IaaS 
-|Sailpoint|Iaas 
+|StreamSets|HDInsight-Edge 
+|Palantir|IaaS 
+|Sailpoint|Iaas 
 
-Weitere Informationen finden Sie im Artikel [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).
+Weitere Informationen finden Sie im Artikel [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>Anpassen von HDInsight-Clustern mit Skriptaktionen
 
-HDInsight bietet eine Methode für die Clusterkonfiguration namens **Skriptaktion**. Eine Skriptaktion ist ein Bash-Skript, das auf den Knoten in einem HDInsight-Cluster ausgeführt wird und dazu verwendet werden kann, zusätzliche Komponenten zu installieren und Konfigurationseinstellungen zu ändern.
+HDInsight bietet eine Methode für die Clusterkonfiguration namens **Skriptaktion** . Eine Skriptaktion ist ein Bash-Skript, das auf den Knoten in einem HDInsight-Cluster ausgeführt wird und dazu verwendet werden kann, zusätzliche Komponenten zu installieren und Konfigurationseinstellungen zu ändern.
 
 Skriptaktionen müssen als URI gespeichert werden, der über den HDInsight-Cluster verfügbar ist. Sie können während oder nach der Clustererstellung verwendet werden und können auch auf die Ausführung auf bestimmten Knotentypen beschränkt werden.
 
@@ -102,7 +109,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>Anpassen von HDInsight-Konfigurationen mithilfe von Bootstrap
 
-Änderungen an Konfigurationen in den Konfigurationsdateien wie `core-site.xml`, `hive-site.xml` und `oozie-env.xml` können mit Bootstrap vorgenommen werden. Das folgende Skript ist ein Beispiel für die Verwendung des [AZ-Moduls](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) und des Cmdlets [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) von PowerShell:
+Änderungen an Konfigurationen in den Konfigurationsdateien wie `core-site.xml`, `hive-site.xml` und `oozie-env.xml` können mit Bootstrap vorgenommen werden. Das folgende Skript ist ein Beispiel für die Verwendung des [AZ-Moduls](/powershell/azure/new-azureps-module-az) und des Cmdlets [New-AzHDInsightClusterConfig](/powershell/module/az.hdinsight/new-azhdinsightcluster) von PowerShell:
 
 ```powershell
 # hive-site.xml configuration
@@ -145,7 +152,7 @@ Weitere Informationen finden Sie im Artikel [Verwenden leerer Edgeknoten in Apac
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Verwenden des Features zum Hoch- und Herunterskalieren von Clustern
 
-HDInsight bietet Flexibilität, indem Sie die Anzahl der Workerknoten in Ihren Clustern zentral hoch- und herunterskalieren können. So können Sie einen Cluster nach den Geschäftsstunden oder am Wochenende verkleinern und während der Spitzenbelastungen erweitern. Weitere Informationen finden Sie unter
+HDInsight bietet Flexibilität, indem Sie die Anzahl der Workerknoten in Ihren Clustern hoch- und herunterskalieren können. So können Sie einen Cluster nach den Geschäftsstunden oder am Wochenende verkleinern und während der Spitzenbelastungen erweitern. Weitere Informationen finden Sie unter
 
 * [Skalieren von HDInsight-Clustern](../hdinsight-scaling-best-practices.md)
 * [Skalieren von Clustern](../hdinsight-administer-use-portal-linux.md#scale-clusters)
@@ -160,7 +167,7 @@ Die Nutzung eines Azure Virtual Network mit HDInsight ermöglicht die folgenden 
 - Herstellen einer Verbindung für HDInsight mit Datenspeichern in einem Azure Virtual Network
 - Direktes Zugreifen auf Hadoop-Dienste, die nicht öffentlich über das Internet verfügbar sind (Beispiele: Kafka-APIs oder die HBase-Java-API)
 
-HDInsight kann entweder zu einem neuen oder vorhandenen Azure Virtual Network hinzugefügt werden. Wenn HDInsight zu einem bestehenden Virtual Network hinzugefügt wird, müssen die bestehenden Netzwerksicherheitsgruppen und benutzerdefinierten Routen aktualisiert werden, um uneingeschränkten Zugriff auf [mehrere IP-Adressen](../hdinsight-management-ip-addresses.md) im Azure-Rechenzentrum zu ermöglichen. Stellen Sie außerdem sicher, dass Sie den Datenverkehr zu den [Ports](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports), die von HDInsight-Diensten verwendet werden, nicht blockieren.
+HDInsight kann entweder zu einem neuen oder vorhandenen Azure Virtual Network hinzugefügt werden. Wenn HDInsight zu einem bestehenden Virtual Network hinzugefügt wird, müssen die bestehenden Netzwerksicherheitsgruppen und benutzerdefinierten Routen aktualisiert werden, um uneingeschränkten Zugriff auf [mehrere IP-Adressen](../hdinsight-management-ip-addresses.md) im Azure-Rechenzentrum zu ermöglichen. Stellen Sie außerdem sicher, dass Sie den Datenverkehr zu den [Ports](../control-network-traffic.md#required-ports), die von HDInsight-Diensten verwendet werden, nicht blockieren.
 
 > [!Note]  
 > Die Tunnelerzwingung wird derzeit von HDInsight nicht unterstützt. Die Tunnelerzwingung ist eine Subnetzeinstellung, bei der für ausgehenden Internetdatenverkehr der Umweg über ein Gerät zur Untersuchung und Protokollierung erzwungen wird. Entfernen Sie entweder die Tunnelerzwingung, bevor Sie HDInsight in einem Subnetz installieren, oder erstellen Sie ein neues Subnetz für HDInsight. HDInsight unterstützt auch keine Beschränkung der ausgehenden Netzwerkverbindung.
@@ -191,6 +198,4 @@ Weitere Informationen finden Sie im Artikel [Herstellen einer Verbindung von HDI
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie den nächsten Artikel in dieser Reihe:
-
-- [Best Practices für den Speicher bei der Migration von lokalen Hadoop-Clustern zu Azure HDInsight](apache-hadoop-on-premises-migration-best-practices-storage.md)
+Lesen Sie den nächsten Artikel in dieser Reihe: [Best Practices für den Speicher bei der Migration von lokalen Hadoop-Clustern zu Azure HDInsight](apache-hadoop-on-premises-migration-best-practices-storage.md)

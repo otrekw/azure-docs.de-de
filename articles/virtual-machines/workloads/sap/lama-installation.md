@@ -9,27 +9,28 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 1b8297a797f83935f16365a15d100ce88cadca30
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e3f541e28f47bb6456b441811d23baa9e020fde7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099535"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959151"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-Connector für Azure
 
-[1877727]: https://launchpad.support.sap.com/#/notes/1877727
-[2343511]: https://launchpad.support.sap.com/#/notes/2343511
-[2350235]: https://launchpad.support.sap.com/#/notes/2350235
-[2562184]: https://launchpad.support.sap.com/#/notes/2562184
-[2628497]: https://launchpad.support.sap.com/#/notes/2628497
-[2445033]: https://launchpad.support.sap.com/#/notes/2445033
-[2815988]: https://launchpad.support.sap.com/#/notes/2815988
+[1877727]:https://launchpad.support.sap.com/#/notes/1877727
+[2343511]:https://launchpad.support.sap.com/#/notes/2343511
+[2350235]:https://launchpad.support.sap.com/#/notes/2350235
+[2562184]:https://launchpad.support.sap.com/#/notes/2562184
+[2628497]:https://launchpad.support.sap.com/#/notes/2628497
+[2445033]:https://launchpad.support.sap.com/#/notes/2445033
+[2815988]:https://launchpad.support.sap.com/#/notes/2815988
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 [dbms-guide]:dbms-guide.md
@@ -69,18 +70,25 @@ Weitere Informationen finden Sie im auch [SAP-Hilfeportal für SAP LaMa](https:/
 * Wenn Sie sich bei verwalteten Hosts anmelden, stellen Sie sicher, dass die Bereitstellung von Dateisystemen weiterhin aufgehoben werden kann.  
   Wenn Sie sich auf einer Linux-VM anmelden und das Arbeitsverzeichnis in ein Verzeichnis in einem Bereitstellungspunkt ändern, z.B. „/usr/sap/AH1/ASCS00/exe“, kann die Bereitstellung des Volumes nicht aufgehoben werden, und das Verschieben oder Aufheben der Vorbereitung schlägt fehl.
 
+* Achten Sie darauf, CLOUD_NETCONFIG_MANAGE auf virtuellen Linux-Computern mit SLES zu deaktivieren. Weitere Informationen finden Sie in der SUSE-Knowledge Base unter [7023633](https://www.suse.com/support/kb/doc/?id=7023633).
+
 ## <a name="set-up-azure-connector-for-sap-lama"></a>Einrichten eines Azure-Connectors für SAP LaMa
 
-Der Azure-Connector ist seit SAP LaMa 3.0 SP05 im Lieferumfang des Tools inbegriffen. Es wird empfohlen, immer das neueste Unterstützungspaket und den neuesten Patch für SAP LaMa 3.0 zu installieren. Der Azure-Connector verwendet einen Dienstprinzipal zur Autorisierung bei Microsoft Azure. Sie können folgendermaßen einen Dienstprinzipal für SAP Landscape Management (LaMa) erstellen.
+Der Azure-Connector ist seit SAP LaMa 3.0 SP05 im Lieferumfang des Tools inbegriffen. Es wird empfohlen, immer das neueste Unterstützungspaket und den neuesten Patch für SAP LaMa 3.0 zu installieren.
+
+Der Azure-Connector nutzt die Azure Resource Manager-API zum Verwalten Ihrer Azure-Ressourcen. SAP LaMa kann sich über einen Dienstprinzipal oder eine verwaltete Identität bei dieser API authentifizieren. Wenn Ihre SAP LaMa-Instanz auf einem virtuellen Azure-Computer ausgeführt wird, empfehlen wir die Verwendung einer verwalteten Identität, wie im Kapitel [Verwenden einer verwalteten Identität zum Erhalten von Zugriff auf die Azure-API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) beschrieben. Wenn Sie einen Dienstprinzipal verwenden möchten, befolgen Sie die Schritte im Kapitel [Verwenden eines Dienstprinzipals zum Erhalten von Zugriff auf die Azure-API](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e).
+
+### <a name="use-a-service-principal-to-get-access-to-the-azure-api"></a><a name="913c222a-3754-487f-9c89-983c82da641e"></a>Verwenden eines Dienstprinzipals zum Erhalten von Zugriff auf die Azure-API
+
+Der Azure-Connector kann einen Dienstprinzipal für die Autorisierung bei Microsoft Azure verwenden. Sie können folgendermaßen einen Dienstprinzipal für SAP Landscape Management (LaMa) erstellen.
 
 1. Besuchen Sie https://portal.azure.com.
 1. Öffnen Sie das Blatt „Azure Active Directory“.
 1. Klicken Sie auf „App-Registrierungen“.
-1. Klicken Sie auf „Hinzufügen“.
-1. Geben Sie einen Namen ein, wählen Sie den Anwendungstyp „Web-App/API“, geben Sie eine Anmelde-URL ein (z. B. „http:\//localhost“), und klicken Sie auf „Erstellen“.
-1. Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein.
-1. Wählen Sie die neue App aus, und klicken Sie auf der Registerkarte „Einstellungen“ auf „Schlüssel“.
-1. Geben Sie eine Beschreibung für einen neuen Schlüssel ein, wählen Sie „Läuft nie ab“ aus, und klicken Sie auf „Speichern“.
+1. Klicken Sie auf „Neue Registrierung“.
+1. Geben Sie einen Namen ein, und klicken Sie auf „Registrieren“.
+1. Wählen Sie die neue App aus, und klicken Sie auf der Registerkarte „Einstellungen“ auf „Zertifikate & Geheimnisse“.
+1. Erstellen Sie einen neuen geheimen Clientschlüssel, geben Sie eine Beschreibung für einen neuen Schlüssel ein, wählen Sie aus, wann das Geheimnis ablaufen soll, und klicken Sie auf „Speichern“.
 1. Notieren Sie sich den Wert. Er dient als Kennwort für den Dienstprinzipal.
 1. Notieren Sie sich die Anwendungs-ID. Sie dient als Benutzername für den Dienstprinzipal.
 
@@ -96,17 +104,40 @@ Der Dienstprinzipal hat standardmäßig keine Zugriffsberechtigungen für Ihre A
 1. Klicken Sie auf Speichern.
 1. Wiederholen Sie die Schritte 3 bis 8 für alle Ressourcengruppen, die Sie in SAP LaMa verwenden möchten.
 
+### <a name="use-a-managed-identity-to-get-access-to-the-azure-api"></a><a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>Verwenden einer verwalteten Identität zum Erhalten von Zugriff auf die Azure-API
+
+Um eine verwaltete Identität verwenden zu können, muss Ihre SAP LaMa-Instanz auf einer Azure-VM ausgeführt werden, die über eine vom System oder Benutzer zugewiesene Identität verfügt. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../../active-directory/managed-identities-azure-resources/overview.md) und [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md).
+
+Die verwaltete Identität hat standardmäßig keine Zugriffsberechtigungen für Ihre Azure-Ressourcen. Sie müssen ihr Berechtigungen für den Zugriff darauf erteilen.
+
+1. Besuchen Sie https://portal.azure.com.
+1. Öffnen Sie das Blatt „Ressourcengruppen“.
+1. Wählen Sie die Ressourcengruppe aus, die Sie verwenden möchten.
+1. Klicken Sie auf „Zugriffssteuerung (IAM)“.
+1. Klicken Sie auf „Hinzufügen“ > „Rollenzuweisung hinzufügen“.
+1. Wählen Sie die Rolle „Mitwirkender“ aus.
+1. Wählen Sie für „Zugriff zuweisen zu“ die Option „Virtueller Computer“ aus.
+1. Wählen Sie den virtuellen Computer aus, auf dem Ihre SAP LaMa-Instanz ausgeführt wird.
+1. Klicken Sie auf Speichern.
+1. Wiederholen Sie die Schritte für alle Ressourcengruppen, die Sie in SAP LaMa verwenden möchten.
+
+Wählen Sie in Ihrer Azure-Connectorkonfiguration für SAP LaMa die Option „Verwaltete Identität verwenden“ aus, um die Verwendung der verwalteten Identität zu aktivieren. Wenn Sie eine vom System zugewiesene Identität verwenden möchten, muss das Feld „Benutzername“ leer bleiben. Wenn Sie eine von einem Benutzer zugewiesene Identität verwenden möchten, geben Sie die ID der vom Benutzer zugewiesenen Identität im Feld „Benutzername“ ein.
+
+### <a name="create-a-new-connector-in-sap-lama"></a>Erstellen eines neuen Connectors in SAP LaMa
+
 Öffnen Sie die SAP LaMa-Website, und navigieren Sie zu „Infrastructure“ (Infrastruktur). Wechseln Sie zur Registerkarte „Cloud Managers“ (Cloud-Manager), und klicken Sie auf „Add“ (Hinzufügen). Wählen Sie den Microsoft Azure-Cloudadapter aus, und klicken Sie auf „Next“ (Weiter). Geben Sie Folgendes ein:
 
 * Label (Bezeichnung): Wählen Sie einen Namen für die Connectorinstanz aus.
-* User Name (Benutzername): Dienstprinzipal-Anwendungs-ID
-* Password (Kennwort): Schlüssel/Kennwort des Dienstprinzipals
-* URL: Behalten Sie die Standardeinstellung https://management.azure.com/ bei.
+* User Name (Benutzername): Die Anwendungs-ID des Dienstprinzipals oder die ID der vom Benutzer zugewiesenen Identität des virtuellen Computers. Weitere Informationen finden Sie unter [Verwenden einer system- oder benutzerseitig zugewiesenen Identität].
+* Password (Kennwort): Schlüssel/Kennwort des Dienstprinzipals. Sie können dieses Feld leer lassen, wenn Sie eine vom System oder vom Benutzer zugewiesene Identität verwenden.
+* URL: Behalten Sie die Standardeinstellung `https://management.azure.com/` bei.
 * Monitoring Interval (Sekunden) (Überwachungsintervall (Sekunden)): Sollte mindestens 300 sein
+* Verwaltete Identität verwenden: SAP LaMa kann für die Authentifizierung bei der Azure-API eine vom System oder vom Benutzer zugewiesene Identität verwenden. Weitere Informationen finden Sie im Kapitel [Verwenden einer verwalteten Identität zum Erhalten von Zugriff auf die Azure-API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) in diesem Handbuch.
 * Subscription ID (Abonnement-ID): Azure-Abonnement-ID
 * Azure Active Directory Tenant ID (Azure Active Directory-Mandanten-ID): Die ID des Active Directory-Mandanten
 * Proxy host (Proxyhost): Hostname des Proxys, wenn SAP LaMa einen Proxy für die Internetverbindung benötigt
 * Proxy port (Proxyport): TCP-Port des Proxys
+* Speichertyp ändern, um Kosten zu sparen: Aktivieren Sie diese Einstellung, wenn der Azure-Adapter den Speichertyp der verwalteten Datenträger ändern soll, um Kosten zu sparen, wenn die Datenträger nicht verwendet werden. Für Datenträger, auf die in einer SAP-Instanzkonfiguration verwiesen wird, ändert der Adapter den Datenträgertyp bei einer Aufhebung der Vorbereitung der Instanz in Storage Standard und bei der Vorbereitung der Instanz in den ursprünglichen Speichertyp. Wenn Sie einen virtuellen Computer in SAP LaMa beenden, ändert der Adapter den Speichertyp aller angefügten Datenträger, einschließlich des Betriebssystemdatenträgers, in Storage Standard. Wenn Sie einen virtuellen Computer in SAP LaMa starten, ändert der Adapter den Speichertyp wieder in den ursprünglichen Speichertyp.
 
 Klicken Sie auf „Test Configuration“ (Konfiguration testen), um Ihre Eingabe zu überprüfen. Folgendes sollte angezeigt werden:
 
@@ -123,7 +154,7 @@ Es wird empfohlen, für alle VMs, die Sie mit SAP LaMa verwalten möchten, ein e
 > [!NOTE]
 > Wenn möglich, entfernen Sie alle Erweiterungen der VM, da sie lange Laufzeiten beim Trennen von Datenträgern von einer VM verursachen können.
 
-Überprüfen Sie, ob Benutzer „\<hanasid>adm“ und „\<sapsid>adm“ sowie die Gruppe „sapsys“ mit der gleichen ID und GID auf dem Zielcomputer vorhanden sind, oder verwenden Sie LDAP. Aktivieren und starten Sie den NFS-Server auf der VM, auf der SAP NetWeaver (A)SCS ausgeführt werden sollen.
+Vergewissern Sie sich, dass die Benutzer „\<hanasid>adm“ und „\<sapsid>adm“ sowie die Gruppe „sapsys“ mit der gleichen ID und GID auf dem Zielcomputer vorhanden sind, oder verwenden Sie LDAP. Aktivieren und starten Sie den NFS-Server auf der VM, auf der SAP NetWeaver (A)SCS ausgeführt werden sollen.
 
 ### <a name="manual-deployment"></a>Manuelle Bereitstellung
 
@@ -133,7 +164,7 @@ SAP LaMa kommuniziert mit dem SAP-Host-Agent mit dem virtuellen Computer. Wenn S
 
 Erstellen Sie eine neue VM mit einem unterstützten Betriebssystem (siehe SAP-Hinweis [2343511]). Fügen Sie den SAP-Instanzen zusätzliche IP-Konfigurationen hinzu. Jede Instanz benötigt mindestens eine IP-Adresse und muss mit einem virtuellen Hostnamen installiert werden.
 
-Die SAP NetWeaver ASCS-Instanz benötigt Datenträger für /sapmnt/\<SAPSID>, /usr/sap/\<SAPSID>, /usr/sap/trans und /usr/sap/\<sapsid>adm. Für die SAP NetWeaver-Anwendungsserver sind keine zusätzlichen Datenträger erforderlich. Alle Elemente mit Bezug auf die SAP-Instanz müssen auf der ASCS-Instanz gespeichert und über NFS exportiert werden. Ansonsten ist es derzeit nicht möglich, weitere Anwendungsserver über SAP LaMa hinzuzufügen.
+Die SAP NetWeaver ASCS-Instanz benötigt Datenträger für „/sapmnt/\<SAPSID>“, „/usr/sap/\<SAPSID>“, „/usr/sap/trans“ und „/usr/sap/\<sapsid>adm“. Für die SAP NetWeaver-Anwendungsserver sind keine zusätzlichen Datenträger erforderlich. Alle Elemente mit Bezug auf die SAP-Instanz müssen auf der ASCS-Instanz gespeichert und über NFS exportiert werden. Ansonsten ist es derzeit nicht möglich, weitere Anwendungsserver über SAP LaMa hinzuzufügen.
 
 ![SAP NetWeaver ASCS unter Linux](media/lama/sap-lama-ascs-app-linux.png)
 
@@ -151,7 +182,7 @@ Erstellen Sie eine neue VM mit einem Betriebssystem, das Oracle-Datenbanken unte
 
 Die Oracle-Datenbank benötigt Datenträger für/oracle, /home/oraod1 und /home/oracle.
 
-![Oracle-Datenbank unter Linux](media/lama/sap-lama-db-ora-lnx.png)
+![Diagramm: Oracle-Datenbank unter Linux und die erforderlichen Datenträger](media/lama/sap-lama-db-ora-lnx.png)
 
 #### <a name="manual-deployment-for-microsoft-sql-server"></a>Manuelles Bereitstellen für Microsoft SQL Server
 
@@ -182,7 +213,7 @@ Sie benötigen diese Komponenten, um die Vorlage bereitzustellen. So stellen Sie
 
 Die Vorlagen haben die folgenden Parameter:
 
-* sapSystemId: Die SAP-System-ID. Mit ihr wird das Datenträgerlayout erstellt (z.B. /usr/sap/\<sapsid>).
+* sapSystemId: Die SAP-System-ID. Hiermit wird das Datenträgerlayout erstellt (z. B. „/usr/sap/\<sapsid>“).
 
 * computerName: Der Computername der neuen VM. Dieser Parameter wird auch von SAP LaMa verwendet. Wenn Sie diese Vorlage verwenden, um eine neue VM als Teil einer Systemkopie bereitzustellen, wartet SAP LaMa, bis der Host mit diesem Computernamen erreicht werden kann.
 
@@ -230,14 +261,14 @@ In den folgenden Beispielen wird davon ausgegangen, dass Sie SAP HANA mit der Sy
 
 Bevor Sie SAP Software Provisioning Manager (SWPM) starten, müssen Sie die IP-Adresse des virtuellen Hostnamens von ASCS bereitstellen. Es wird empfohlen, „sapacext“ zu verwenden. Wenn Sie die IP-Adresse mit „sapacext“ bereitstellen, stellen Sie sicher, dass Sie die IP-Adresse nach einem Neustart erneut bereitstellen.
 
-![Linux][Logo_Linux] Linux
+![Linux-Logo][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-ascs -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Windows-Logo][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
@@ -246,7 +277,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-as
 
 Führen Sie SWPM aus, und verwenden Sie *ah1-ascs* als *ASCS-Instanzhostnamen*.
 
-![Linux][Logo_Linux] Linux  
+![Linux-Logo][Logo_Linux] Linux  
 Fügen Sie den folgenden Profilparameter dem SAP-Host-Agent-Profil hinzu, der sich unter /usr/sap/hostctrl/exe/host_profile befindet. Weitere Informationen finden Sie in SAP-Hinweis [2628497].
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
@@ -289,7 +320,7 @@ Innerhalb des NetApp-Kontos gibt der Kapazitätspool die Größe und den Typ der
 
 ![SAP LaMa – NetApp-Kapazitätspool wurde erstellt ](media/lama/sap-lama-capacitypool-list.png)
 
-Jetzt können die NFS-Volumes definiert werden. Da es Volumes für mehrere Systeme in einem einzigen Pool geben wird, sollte ein selbsterklärendes Benennungsschema ausgewählt werden. Durch das Hinzufügen der Sicherheits-ID (SID) können verwandte Volumes gruppiert werden. Für ASCS und die AS-Instanz sind die folgenden Bereitstellungen erforderlich: \<SID\>, /usr/sap/\<SID\> und /home/\<sid\>adm. Optionales „/usr/sap/trans“ für das zentrale Übertragungsverzeichnis, das mindestens von allen Systemen einer einzigen Landschaft verwendet wird.
+Jetzt können die NFS-Volumes definiert werden. Da es Volumes für mehrere Systeme in einem einzigen Pool geben wird, sollte ein selbsterklärendes Benennungsschema ausgewählt werden. Durch das Hinzufügen der Sicherheits-ID (SID) können verwandte Volumes gruppiert werden. Für ASCS und die AS-Instanz sind die folgenden Einbindungen erforderlich: „ */sapmnt/\<SID\>* “, „ */usr/sap/\<SID\>* “ und „ */home/\<sid\>adm*“. Optional wird */usr/sap/trans* für das zentrale Übertragungsverzeichnis benötigt, das mindestens von allen Systemen einer einzigen Landschaft verwendet wird.
 
 > [!NOTE]
 > Während der BETA-Phase muss der Name der Volumes im Abonnement eindeutig sein.
@@ -357,21 +388,21 @@ Führen Sie die Installation der Datenbankinstanz von SWPM auf der VM des Anwend
 
 Bevor Sie SAP Software Provisioning Manager (SWPM) starten, müssen Sie die IP-Adresse des virtuellen Hostnamens des Anwendungsservers bereitstellen. Es wird empfohlen, „sapacext“ zu verwenden. Wenn Sie die IP-Adresse mit „sapacext“ bereitstellen, stellen Sie sicher, dass Sie die IP-Adresse nach einem Neustart erneut bereitstellen.
 
-![Linux][Logo_Linux] Linux
+![Linux-Logo][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-di-0 -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Windows-Logo][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-di-0 -n 255.255.255.128
 ```
 
-Es wird empfohlen, den SAP NetWeaver-Profilparameter „dbs/hdb/hdb/hdb_use_ident“ zu verwenden, um die Identität festzulegen, mit der der Schlüssel im HDB-Benutzerstore gefunden wird. Sie können diesen Parameter nach der Installation der Datenbankinstanz mit SWPM manuell hinzufügen, oder SWPM folgendermaßen ausführen:
+Es wird empfohlen, den SAP NetWeaver-Profilparameter „dbs/hdb/hdb_use_ident“ zu verwenden, um die Identität festzulegen, mit der der Schlüssel im HDB-Benutzerstore gefunden wird. Sie können diesen Parameter nach der Installation der Datenbankinstanz mit SWPM manuell hinzufügen, oder SWPM folgendermaßen ausführen:
 
 ```bash
 # from https://blogs.sap.com/2015/04/14/sap-hana-client-software-different-ways-to-set-the-connectivity-data/
@@ -515,12 +546,12 @@ Verwenden Sie *as1-di-0* als *PAS-Instanzhostnamen* im Dialogfeld *Primäre Anwe
     Legen Sie den Profilparameter „OS_UNICODE=uc“ im Standardprofil des SAP-Systems fest, um dieses Problem zu umgehen.
 
 * Fehler beim Ausführen des „SAPinst“-Schritts: dCheckGivenServer
-  * Fehler beim Ausführen des „SAPinst“-Schritts: dCheckGivenServer", version="1.0", FEHLER: (Letzter vom Schritt gemeldeter Fehler: \<p> Installation wurde vom Benutzer abgebrochen. \</p>
+  * Fehler beim Ausführen des „SAPinst“-Schritts: dCheckGivenServer", version="1.0", FEHLER: (Letzter vom Schritt gemeldeter Fehler: \<p> Die Installation wurde vom Benutzer abgebrochen. \</p>
   * Lösung  
     Stellen Sie sicher, dass SWPM mit einem Benutzer ausgeführt wird, der Zugriff auf das Profil hat. Dieser Benutzer kann im Installations-Assistenten des Anwendungsservers konfiguriert werden.
 
 * Fehler beim Ausführen des „SAPinst“-Schritts: checkClient
-  * Fehler beim Ausführen des „SAPinst“-Schritts: checkClient", version = "1.0", FEHLER: (Letzter vom Schritt gemeldeter Fehler: \<p> Installation wurde vom Benutzer abgebrochen. \</p>)
+  * Fehler beim Ausführen des „SAPinst“-Schritts: checkClient", version = "1.0", FEHLER: (Letzter vom Schritt gemeldeter Fehler: \<p> Die Installation wurde vom Benutzer abgebrochen. \</p>)
   * Lösung  
     Überprüfen Sie, ob Microsoft ODBC Driver for SQL Server auf der VM installiert ist, auf der Sie den Anwendungsserver installieren möchten.
 

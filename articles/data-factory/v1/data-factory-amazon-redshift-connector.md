@@ -1,27 +1,26 @@
 ---
-title: Verschieben von Daten aus Amazon Redshift mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Verschieben von Daten von Amazon Redshift mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie mithilfe der Kopieraktivität von Azure Data Factory Daten aus Amazon Redshift verschieben.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3a1497211cc42c702537cbbdfea32ff71a400c7c
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: c0dcaec9c8e9a310af1fd6fc319e0784694610e2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836686"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463087"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Verschieben von Daten mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-amazon-redshift-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-amazon-redshift.md)
 
@@ -89,7 +88,7 @@ Wenn bei einer Kopieraktivität die Quelle den Typ **AmazonRedshiftSource** aufw
 | --- | --- | --- |
 | **query** | Verwendet die benutzerdefinierte Abfrage zum Lesen der Daten. |Nein (wenn die **tableName**-Eigenschaft eines DataSets angegeben wurde) |
 | **redshiftUnloadSettings** | Enthält bei Verwendung des Redshift-Befehls **UNLOAD** die Eigenschaftsgruppe. | Nein |
-| **s3LinkedServiceName** | Der Amazon S3-Speicher, der als vorläufiger Speicher verwendet werden soll. Der verknüpfte Dienst wird mithilfe eines Azure Data Factory-Namens des Typs **AwsAccessKey** angegeben. | Erforderlich, wenn Sie die **redshiftUnloadSettings**-Eigenschaft verwenden. |
+| **s3LinkedServiceName** | Der Amazon S3-Speicher, der als vorläufiger Speicher verwendet werden soll. Der verknüpfte Dienst wird mithilfe eines Azure Data Factory-Namens des Typs **AwsAccessKey** angegeben. | Erforderlich, wenn Sie die **RedshiftUnloadSettings**-Eigenschaft verwenden |
 | **bucketName** | Gibt den zu verwendenden Amazon S3-Bucket zum Speichern der vorläufigen Daten an. Bei fehlender Angabe dieser Eigenschaft generiert die Kopieraktivität automatisch einen Bucket. | Erforderlich, wenn Sie die **RedshiftUnloadSettings**-Eigenschaft verwenden |
 
 Alternativ können Sie auch den Typ **RelationalSource**, der Amazon Redshift enthält, mit der folgenden Eigenschaft im Abschnitt **typeProperties** verwenden. Beachten Sie, dass dieser Quelltyp den Redshift-Befehl **UNLOAD** nicht unterstützt.
@@ -102,13 +101,13 @@ Alternativ können Sie auch den Typ **RelationalSource**, der Amazon Redshift en
 
 Der Amazon Redshift-Befehl [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) wird die Ergebnisse einer Abfrage auf eine oder mehrere Dateien auf Amazon S3 entladen. Dieser Befehl wird von Amazon zum Kopieren großer Datasets aus Redshift empfohlen.
 
-**Beispiel: Kopieren von Daten aus Amazon Redshift in ein Azure SQL Data Warehouse**
+**Beispiel: Kopieren von Daten aus Amazon Redshift zu Azure Synapse Analytics**
 
-Dieses Beispiel kopiert Daten aus Amazon Redshift in ein Azure SQL Data Warehouse. Das Beispiel verwendet den Redshift-Befehl **UNLOAD**, gestaffelte Kopierdaten und Microsoft PolyBase.
+Dieses Beispiel kopiert Daten aus Amazon Redshift in Azure Synapse Analytics. Das Beispiel verwendet den Redshift-Befehl **UNLOAD**, gestaffelte Kopierdaten und Microsoft PolyBase.
 
-Für diesen Anwendungsfall entlädt die Kopieraktivität zuerst die Daten aus Amazon Redshift nach Amazon S3, entsprechend der Konfiguration der **redshiftUnloadSettings**-Option. Als Nächstes werden die Daten von Amazon S3 nach Azure Blob Storage kopiert, gemäß der **stagingSettings**-Option. Zum Schluss lädt PolyBase die Daten in SQL Data Warehouse. Sämtliche vorläufigen Formate werden von der Kopieraktivität verarbeitet.
+Für diesen Anwendungsfall entlädt die Kopieraktivität zuerst die Daten aus Amazon Redshift nach Amazon S3, entsprechend der Konfiguration der **redshiftUnloadSettings**-Option. Als Nächstes werden die Daten von Amazon S3 nach Azure Blob Storage kopiert, gemäß der **stagingSettings**-Option. Abschließend lädt PolyBase die Daten in Azure Synapse Analytics. Sämtliche vorläufigen Formate werden von der Kopieraktivität verarbeitet.
 
-![Workflow beim Kopieren aus Amazon Redshift nach SQL Data Warehouse](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
+![Workflow des Kopierens von Amazon Redshift zu Azure Synapse Analytics](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {
@@ -147,7 +146,7 @@ Das Beispiel enthält die folgenden Data Factory-Entitäten:
 * Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
 * Ein Eingabe-[DataSet](data-factory-create-datasets.md) vom Typ [RelationalTable](#dataset-properties)
 * Ein [Ausgabedataset](data-factory-create-datasets.md) vom Typ [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
-* Eine [Pipeline](data-factory-create-pipelines.md) mit einer Kopieraktivität, die die Eigenschaften [RelationalSource](#copy-activity-properties) und [BlobSink](data-factory-azure-blob-connector.md##copy-activity-properties) verwendet
+* Eine [Pipeline](data-factory-create-pipelines.md) mit einer Kopieraktivität, die die Eigenschaften [RelationalSource](#copy-activity-properties) und [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) verwendet
 
 Das Beispiel kopiert stündlich Daten aus einem Abfrageergebnis in Amazon Redshift in ein Azure-Blob. Die im Beispiel verwendeten JSON-Eigenschaften werden in den Abschnitten nach den Entitätsdefinitionen beschrieben.
 
@@ -332,16 +331,16 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | --- | --- |
 | SMALLINT |Int16 |
 | INTEGER |Int32 |
-| BIGINT |Int64 |
+| bigint |Int64 |
 | DECIMAL |Decimal |
-| REAL |Single |
+| real |Single |
 | DOUBLE PRECISION |Double |
-| Boolean |String |
-| CHAR |string |
-| VARCHAR |string |
-| DATE |DateTime |
-| TIMESTAMP |DateTime |
-| TEXT |string |
+| BOOLEAN |String |
+| CHAR |String |
+| VARCHAR |String |
+| DATE |Datetime |
+| timestamp |Datetime |
+| TEXT |String |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quell-DataSet zu Spalten im Senken-DataSet finden Sie unter [Zuordnen von DataSet-Spalten in Azure Data Factory](data-factory-map-columns.md).

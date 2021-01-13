@@ -9,22 +9,23 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 919e253b6d9ddf8d65f86897a299416e93f3e660
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d8f69f94c53227dc86fbbf9e9936a2fc3c97ec55
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099914"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967872"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Verbinden von Azure-VMs mit HANA (große Instanzen)
 
-Im Artikel [Was ist SAP HANA in Azure (große Instanzen)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) wird erwähnt, dass die minimale Bereitstellung von HANA (große Instanzen) mit der SAP-Anwendungsschicht in Azure wie folgt aussieht:
+Im Artikel [Was ist SAP HANA in Azure (große Instanzen)?](./hana-overview-architecture.md) wird erwähnt, dass die minimale Bereitstellung von HANA (große Instanzen) mit der SAP-Anwendungsschicht in Azure wie folgt aussieht:
 
 ![Mit SAP HANA in Azure (große Instanzen) und lokal verbundenes Azure-VNET](./media/hana-overview-architecture/image1-architecture.png)
 
@@ -94,13 +95,13 @@ Einige der IP-Adressbereiche, die für die Bereitstellung von HANA (große Insta
 
 Optionale IP-Adressbereiche, die später einmal an Microsoft übermittelt werden müssen:
 
-- Wenn Sie [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) verwenden, um direktes Routing von der lokalen Umgebung zu Einheiten vom Typ „HANA (große Instanz)“ zu ermöglichen, müssen Sie einen weiteren IP-Adressbereich vom Typ „/29“ reservieren. Dieser Bereich darf sich mit keinem der anderen IP-Adressbereiche überschneiden, die Sie zuvor definiert haben.
-- Wenn Sie [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) verwenden, um direktes Routing von einem Mandanten vom Typ „HANA (große Instanz)“ in einer Azure-Region zu einem anderen Mandanten vom Typ „HANA (große Instanz)“ in einer anderen Azure-Region zu ermöglichen, müssen Sie einen weiteren IP-Adressbereich vom Typ „/29“ reservieren. Dieser Bereich darf sich mit keinem der anderen IP-Adressbereiche überschneiden, die Sie zuvor definiert haben.
+- Wenn Sie [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) verwenden, um direktes Routing von der lokalen Umgebung zu Einheiten vom Typ „HANA (große Instanz)“ zu ermöglichen, müssen Sie einen weiteren IP-Adressbereich vom Typ „/29“ reservieren. Dieser Bereich darf sich mit keinem der anderen IP-Adressbereiche überschneiden, die Sie zuvor definiert haben.
+- Wenn Sie [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) verwenden, um direktes Routing von einem Mandanten vom Typ „HANA (große Instanz)“ in einer Azure-Region zu einem anderen Mandanten vom Typ „HANA (große Instanz)“ in einer anderen Azure-Region zu ermöglichen, müssen Sie einen weiteren IP-Adressbereich vom Typ „/29“ reservieren. Dieser Bereich darf sich mit keinem der anderen IP-Adressbereiche überschneiden, die Sie zuvor definiert haben.
 
 Weitere Informationen zu ExpressRoute Global Reach sowie zur Verwendung mit großen HANA-Instanzen finden Sie in den folgenden Dokumenten:
 
-- [SAP HANA-Netzwerkarchitektur (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
-- [Verbinden eines virtuellen Netzwerks mit großen HANA-Instanzen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
+- [SAP HANA-Netzwerkarchitektur (große Instanzen)](./hana-network-architecture.md)
+- [Verbinden eines virtuellen Netzwerks mit großen HANA-Instanzen](./hana-connect-vnet-express-route.md)
  
 Sie müssen die zuvor beschriebenen IP-Adressbereiche planen und definieren. Es müssen jedoch nicht alle an Microsoft übertragen werden. Sie müssen die folgenden IP-Adressbereiche für Microsoft angeben:
 

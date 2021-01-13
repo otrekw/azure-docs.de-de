@@ -1,29 +1,30 @@
 ---
-title: Implementieren der Facettennavigation in einer Kategorienhierarchie – Azure Search
-description: Fügen Sie die Facettennavigation Anwendungen hinzu, die in Azure Search integriert sind, einem in Microsoft Azure gehosteten Cloudsuchdienst.
-author: HeidiSteen
+title: Hinzufügen einer Kategoriehierarchie für die Facettennavigation
+titleSuffix: Azure Cognitive Search
+description: Fügen Sie die Facettennavigation für das selbstgesteuerte Filtern in Suchanwendungen hinzu, die in Azure Cognitive Search integriert sind.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 8e325abf1f58458d2fa035c8c8f081173efb0e65
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 05be5295ae5f8c73c916a21bba7dbc98ab0c5e87
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649892"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89002791"
 ---
-# <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Implementieren der Facettennavigation in Azure Search
+# <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementieren der Facettennavigation in der kognitiven Azure-Suche
+
 Bei der Facettennavigation handelt es sich um einen Filtermechanismus für die selbstständige Drilldownnavigation in Suchanwendungen. Der Begriff „Facettennavigation“ ist Ihnen zwar möglicherweise nicht bekannt, aber Sie haben diese wahrscheinlich bereits verwendet. Die Facettennavigation ist im Prinzip nichts weiter als die Kategorien, die zum Filtern der Ergebnisse verwendet werden.
 
- ![Azure Search-Demo „Job Portal“](media/search-faceted-navigation/azure-search-faceting-example.png "Azure Search-Demo „Job Portal“")
+ ![Demo „Job Portal“ für die kognitive Azure-Suche](media/search-faceted-navigation/azure-search-faceting-example.png "Demo „Job Portal“ für die kognitive Azure-Suche")
 
 Die Facettennavigation ist ein alternativer Einstiegspunkt für die Suche. Sie bietet eine praktische Alternative zum manuellen Eintippen komplexer Suchausdrücke. Facetten unterstützen Sie bei der Suche und stellen sicher, dass Sie Ergebnisse erhalten. Als Entwickler können Sie mithilfe von Facets besonders hilfreiche Suchkriterien für die Navigation in Ihrem Suchindex verfügbar machen. Bei Onlinehändlern basiert die Facettennavigation häufig auf Marken, Abteilungen (Kinderschuhe), Größe, Preis, Beliebtheit und Bewertungen. 
 
-Die Implementierung der Facettennavigation ist abhängig von der jeweiligen Suchtechnologie. In Azure Search wird die Facettennavigation zur Abfragezeit mithilfe von Feldern erstellt, die Sie zuvor in Ihrem Schema attributiert wurden.
+Die Implementierung der Facettennavigation ist abhängig von der jeweiligen Suchtechnologie. In der kognitiven Azure-Suche wird die Facettennavigation zur Abfragezeit mithilfe von Feldern erstellt, die Sie zuvor in Ihrem Schema attributiert wurden.
 
 -   In den von Ihrer Anwendung erstellten Abfragen müssen *Facettenabfrageparameter* gesendet werden, um die verfügbaren Facettenfilterwerte für das Dokumentresultset zu erhalten.
 
@@ -34,9 +35,9 @@ Bei Ihrer Anwendungsentwicklung entfällt ein Großteil der Arbeit auf die Erste
 ## <a name="sample-code-and-demo"></a>Beispielcode und Demo
 In diesem Artikel wird ein Stellenportal als Beispiel verwendet. Das Beispiel wird als eine ASP.NET MVC-Anwendung implementiert.
 
--   Die Arbeitsdemo können Sie online unter [Azure Search-Demo „Job Portal“](https://azjobsdemo.azurewebsites.net/) anzeigen und testen.
+- Die Arbeitsdemo können Sie online unter der [Demo „Job Portal“ für die kognitive Azure-Suche](https://aka.ms/azjobsdemo) anzeigen und testen.
 
--   Laden Sie den Code aus dem [Repository „Azure-Beispiele“ in GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) herunter.
+- Laden Sie den Code aus dem [Repository „Azure-Beispiele“ in GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) herunter.
 
 ## <a name="get-started"></a>Erste Schritte
 Wenn Sie noch keine Erfahrung mit der Suchentwicklung gesammelt haben, können Sie sich die Facettennavigation am besten als eine Lösung vorstellen, die die Möglichkeiten für die selbstständige Suche aufzeigt. Die Facettennavigation ist eine Art Drilldownsuche, die auf vordefinierten Filtern basiert, und dient zur schnellen Eingrenzung der Suchergebnisse durch Point-and-Click-Aktionen. 
@@ -47,13 +48,13 @@ Die Suchumgebung für die Facettennavigation ist iterativ und kann als Sequenz v
 
 Der Ausgangspunkt ist eine Anwendungsseite mit Facettennavigation (üblicherweise in einem Randbereich). Die Facettennavigation wird häufig als Baumstruktur mit Kontrollkästchen für die jeweiligen Werte oder mit anklickbarem Text dargestellt. 
 
-1. Die Facettennavigationsstruktur wird in einer an Azure Search gesendeten Abfrage mithilfe entsprechender Abfrageparameter angegeben. So kann die Abfrage beispielsweise `facet=Rating` enthalten und ggf. mit einer `:values`- oder `:sort`-Option versehen werden, um die Darstellung weiter zu verfeinern.
+1. Die Facettennavigationsstruktur wird in einer an die kognitive Azure-Suche gesendeten Abfrage mithilfe entsprechender Abfrageparameter angegeben. So kann die Abfrage beispielsweise `facet=Rating` enthalten und ggf. mit einer `:values`- oder `:sort`-Option versehen werden, um die Darstellung weiter zu verfeinern.
 2. Die Darstellungsschicht rendert unter Verwendung der in der Anforderung angegebenen Facetten eine Suchseite mit Facettennavigation.
 3. Bei Verwendung einer bewertungsbasierten Facettennavigationsstruktur klicken Sie auf „4“, um anzugeben, dass nur Produkte mit der Bewertung 4 oder höher angezeigt werden sollen. 
 4. Im Gegenzug sendet die Anwendung eine Abfrage mit `$filter=Rating ge 4` 
 5. Die Darstellungsschicht aktualisiert die Seite und zeigt ein reduziertes Resultset an, das nur Elemente enthält, die den neuen Kriterien entsprechen (in diesem Fall Produkte mit der Bewertung 4 oder höher).
 
-Eine Facette ist ein Abfrageparameter, darf aber nicht mit einer Abfrageeingabe verwechselt werden. Sie wird nie als Auswahlkriterium in einer Abfrage verwendet. Stellen Sie sich Facettenabfrageparameter stattdessen als Eingaben für die Navigationsstruktur vor, die in der Antwort zurückgegeben wird. Azure Search prüft für jeden angegebenen Facettenabfrageparameter, wie viele Dokumente in den Teilergebnissen für die einzelnen Facettenwerte enthalten sind.
+Eine Facette ist ein Abfrageparameter, darf aber nicht mit einer Abfrageeingabe verwechselt werden. Sie wird nie als Auswahlkriterium in einer Abfrage verwendet. Stellen Sie sich Facettenabfrageparameter stattdessen als Eingaben für die Navigationsstruktur vor, die in der Antwort zurückgegeben wird. Die kognitive Azure-Suche prüft für jeden angegebenen Facettenabfrageparameter, wie viele Dokumente in den Teilergebnissen für die einzelnen Facettenwerte enthalten sind.
 
 Beachten Sie `$filter` in Schritt 4. Der Filter ist ein wichtiger Aspekt der Facettennavigation. Facetten und Filter sind in der API zwar unabhängig, werden aber beide benötigt, um das gewünschte Ergebnis zu erzielen. 
 
@@ -63,7 +64,7 @@ Im Anwendungscode werden Facettenabfrageparameter für die Rückgabe der Facette
 
 ### <a name="query-basics"></a>Grundlagen der Abfrage
 
-In Azure Search wird eine Anforderung mithilfe von Abfrageparametern angegeben. (Eine Beschreibung der einzelnen Parameter finden Sie unter [Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).) Keiner der Abfrageparameter ist erforderlich, Sie benötigen jedoch mindestens einen, damit die Abfrage gültig ist.
+In der kognitiven Azure-Suche wird eine Anforderung mithilfe von Abfrageparametern angegeben. (Eine Beschreibung der einzelnen Parameter finden Sie unter [Durchsuchen von Dokumenten](/rest/api/searchservice/Search-Documents).) Keiner der Abfrageparameter ist erforderlich, Sie benötigen jedoch mindestens einen, damit die Abfrage gültig ist.
 
 Genauigkeit (d.h. die Möglichkeit zum Herausfiltern irrelevanter Treffer), wird durch mindestens einen der folgenden Ausdrücke erzielt:
 
@@ -78,7 +79,7 @@ Komplexe Suchausdrücke wirken sich nachteilig auf die Abfrageleistung aus. Nutz
 Die folgende Gegenüberstellung eines komplexen Suchausdrucks und eines Suchausdrucks mit Filterausdruck veranschaulicht, wie ein Filter für mehr Genauigkeit sorgt:
 
 -   `GET /indexes/hotel/docs?search=lodging budget +Seattle –motel +parking`
--   `GET /indexes/hotel/docs?search=lodging&$filter=City eq ‘Seattle’ and Parking and Type ne ‘motel’`
+-   `GET /indexes/hotel/docs?search=lodging&$filter=City eq 'Seattle' and Parking and Type ne 'motel'`
 
 In beiden Fällen handelt es sich um eine gültige Abfrage, mit der zweiten kann jedoch besser nach Unterkünften mit Parkmöglichkeiten in Seattle gesucht werden, bei denen es sich nicht um ein Motel handelt.
 -   Die erste Abfrage basiert darauf, dass in Zeichenfolgenfeldern wie „Name“, „Beschreibung“ oder in anderen Feldern mit durchsuchbaren Daten bestimmte Wörter verwendet oder nicht verwendet werden.
@@ -89,17 +90,17 @@ Stellen Sie in Anwendungen mit Facettennavigation sicher, dass jede Benutzerakti
 <a name="howtobuildit"></a>
 
 ## <a name="build-a-faceted-navigation-app"></a>Erstellen einer App mit Facettennavigation
-Sie implementieren die Facettennavigation mit Azure Search in Ihrem Anwendungscode, mit dem die Suchanforderung erstellt wird. Die Facettennavigation stützt sich auf Elemente im Schema, die Sie zuvor festgelegt haben.
+Sie implementieren die Facettennavigation mit der kognitiven Azure-Suche in Ihrem Anwendungscode, mit dem die Suchanforderung erstellt wird. Die Facettennavigation stützt sich auf Elemente im Schema, die Sie zuvor festgelegt haben.
 
 In Ihrem Suchindex ist das `Facetable [true|false]`-Indexattribut vordefiniert. Dieses wird auf bestimmte Felder festgelegt, um deren Verwendung in einer Facettennavigationsstruktur zu aktivieren oder zu deaktivieren. Ohne `"Facetable" = true` kann ein Feld nicht für die Facettennavigation verwendet werden.
 
-Die Darstellungsschicht in Ihrem Code stellt die Benutzeroberfläche bereit. Sie führt die Bestandteile der Facettennavigation (wie Beschriftung, Werte, Kontrollkästchen und die Anzahl) auf. Die REST-API von Azure Search ist plattformunabhängig und kann somit mit jeder beliebigen Programmiersprache und Plattform verwendet werden. Wichtig: Verwenden Sie Benutzeroberflächenelemente, die eine inkrementelle Aktualisierung unterstützen und bei denen jeweils der Benutzeroberflächenzustand aktualisiert wird, wenn weitere Facetten ausgewählt werden. 
+Die Darstellungsschicht in Ihrem Code stellt die Benutzeroberfläche bereit. Sie führt die Bestandteile der Facettennavigation (wie Beschriftung, Werte, Kontrollkästchen und die Anzahl) auf. Die REST-API für die kognitive Azure-Suche ist plattformunabhängig und kann somit mit jeder beliebigen Programmiersprache und Plattform verwendet werden. Wichtig: Verwenden Sie Benutzeroberflächenelemente, die eine inkrementelle Aktualisierung unterstützen und bei denen jeweils der Benutzeroberflächenzustand aktualisiert wird, wenn weitere Facetten ausgewählt werden. 
 
 Zur Abfragezeit erstellt Ihr Anwendungscode eine Anforderung mit `facet=[string]`. Dieser Anforderungsparameter gibt das Feld an, das der Facette zugrunde liegen soll. Eine Abfrage kann mehrere Facetten (Beispiel: `&facet=color&facet=category&facet=rating`) umfassen. Diese müssen jeweils durch ein kaufmännisches Und-Zeichen (&) voneinander getrennt werden.
 
 Der Anwendungscode muss auch einen `$filter` -Ausdruck konstruieren, um Klickereignisse in einer Facettennavigation zu behandeln. Der `$filter` -Ausdruck verwendet die Facettenwerte als Filterkriterien und grenzt so die Suchergebnisse ein.
 
-Azure Search gibt die Suchergebnisse basierend auf mindestens einem eingegeben Begriff sowie Aktualisierungen für die Facettennavigationsstruktur zurück. Bei der Facettennavigation in Azure Search handelt es sich um eine einstufige Konstruktion mit Facettenwerten und der jeweiligen Anzahl gefundener Ergebnisse.
+Die kognitive Azure-Suche gibt die Suchergebnisse basierend auf mindestens einem eingegeben Begriff sowie Aktualisierungen für die Facettennavigationsstruktur zurück. Bei der Facettennavigation in der kognitiven Azure-Suche handelt es sich um eine einstufige Konstruktion mit Facettenwerten und der jeweiligen Anzahl gefundener Ergebnisse.
 
 In den folgenden Abschnitten wird ausführlicher auf die Erstellung der einzelnen Komponenten eingegangen.
 
@@ -118,28 +119,28 @@ Die folgende Abbildung zeigt einen Teil des Schemas für die Beispiel-App „Job
   ...
   "name": "nycjobs",
   "fields": [
-    { “name”: "id",                 "type": "Edm.String",              "searchable": false, "filterable": false, ... "facetable": false, ... },
-    { “name”: "job_id",             "type": "Edm.String",              "searchable": false, "filterable": false, ... "facetable": false, ... },
-    { “name”: "agency",              "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
-    { “name”: "posting_type",        "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
-    { “name”: "num_of_positions",    "type": "Edm.Int32",              "searchable": false, "filterable": true, ...  "facetable": true, ...  },
-    { “name”: "business_title",      "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
-    { “name”: "civil_service_title", "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
-    { “name”: "title_code_no",       "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
-    { “name”: "level",               "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
-    { “name”: "salary_range_from",   "type": "Edm.Int32",              "searchable": false, "filterable": true, ...  "facetable": true, ...  },
-    { “name”: "salary_range_to",     "type": "Edm.Int32",              "searchable": false, "filterable": true, ...  "facetable": true, ...  },
-    { “name”: "salary_frequency",    "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
-    { “name”: "work_location",       "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
+    { "name": "id",                 "type": "Edm.String",              "searchable": false, "filterable": false, ... "facetable": false, ... },
+    { "name": "job_id",             "type": "Edm.String",              "searchable": false, "filterable": false, ... "facetable": false, ... },
+    { "name": "agency",              "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
+    { "name": "posting_type",        "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
+    { "name": "num_of_positions",    "type": "Edm.Int32",              "searchable": false, "filterable": true, ...  "facetable": true, ...  },
+    { "name": "business_title",      "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
+    { "name": "civil_service_title", "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
+    { "name": "title_code_no",       "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
+    { "name": "level",               "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
+    { "name": "salary_range_from",   "type": "Edm.Int32",              "searchable": false, "filterable": true, ...  "facetable": true, ...  },
+    { "name": "salary_range_to",     "type": "Edm.Int32",              "searchable": false, "filterable": true, ...  "facetable": true, ...  },
+    { "name": "salary_frequency",    "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
+    { "name": "work_location",       "type": "Edm.String",             "searchable": true,  "filterable": true, ...  "facetable": true, ...  },
 …
-    { “name”: "geo_location",        "type": "Edm.GeographyPoint",     "searchable": false, "filterable": true, ...  "facetable": false, ... },
-    { “name”: "tags",                "type": "Collection(Edm.String)", "searchable": true,  "filterable": true, ...  "facetable": true, ...  }
+    { "name": "geo_location",        "type": "Edm.GeographyPoint",     "searchable": false, "filterable": true, ...  "facetable": false, ... },
+    { "name": "tags",                "type": "Collection(Edm.String)", "searchable": true,  "filterable": true, ...  "facetable": true, ...  }
   ],
 …
 }
 ```
 
-Wie Sie im Beispielschema sehen können, ist `Facetable` für Zeichenfolgenfelder, die nicht als Facetten verwendet werden sollen (wie etwa ID-Werte), deaktiviert ist. Die Deaktivierung der Facettenerstellung für Elemente, die nicht als Facetten verwendet werden, verringert den Umfang des Index und verbessert in der Regel die Leistung.
+Wie Sie im Beispielschema sehen können, ist `Facetable` für Zeichenfolgenfelder deaktiviert, die nicht als Facetten verwendet werden sollen (wie etwa ID-Werte). Die Deaktivierung der Facettenerstellung für Elemente, die nicht als Facetten verwendet werden, verringert den Umfang des Index und verbessert in der Regel die Leistung.
 
 > [!TIP]
 > Es empfiehlt sich, für jedes Feld den vollständigen Indexattributsatz einzubeziehen. `Facetable` ist zwar standardmäßig für fast alle Felder aktiviert, das bewusste Festlegen der einzelnen Attribute kann jedoch beim Nachvollziehen der einzelnen Schemaentscheidungen hilfreich sein. 
@@ -167,7 +168,7 @@ Auf der Grundlage der Darstellungsschicht können Sie Anforderungen ermitteln, d
 
 Für die Facettennavigation gilt: Ihre Web- oder Anwendungsseite zeigt die Facettennavigationsstruktur an, erkennt Benutzereingaben auf der Seite und fügt die geänderten Elemente ein. 
 
-Bei Webanwendungen wird in der Darstellungsschicht üblicherweise AJAX verwendet, da damit inkrementelle Änderungen aktualisiert werden können. Alternativ können Sie auch ASP.NET MVC oder eine andere Visualisierungsplattform verwenden, die eine HTTP-Verbindung mit einem Azure Search-Dienst herstellen kann. Bei der in diesem Artikel verwendeten Beispielanwendung – der **Azure Search-Demo „Job Portal“** handelt es sich um eine ASP.NET MVC-Anwendung.
+Bei Webanwendungen wird in der Darstellungsschicht üblicherweise AJAX verwendet, da damit inkrementelle Änderungen aktualisiert werden können. Alternativ können Sie auch ASP.NET MVC oder eine andere Visualisierungsplattform verwenden, die eine HTTP-Verbindung mit einem Dienst für die kognitive Azure-Suche herstellen kann. Bei der in diesem Artikel verwendeten Beispielanwendung – der **Demo „Job Portal“ für die kognitive Azure-Suche** handelt es sich um eine ASP.NET MVC-Anwendung.
 
 In diesem Beispiel ist die Facettennavigation in Suchergebnisseite integriert. Das folgende Beispiel stammt aus der Datei `index.cshtml` der Beispielanwendung und zeigt die statische HTML-Struktur zum Anzeigen einer Facettennavigation auf der Suchergebnisseite. Die Liste der Facetten wird erstellt oder dynamisch neu erstellt, wenn Sie einen Suchbegriff übermitteln oder eine Facette aktivieren bzw. deaktivieren.
 
@@ -230,9 +231,9 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Ein Facettenabfrageparameter wird auf ein Feld festgelegt und kann abhängig vom Datentyp durch eine kommagetrennte Liste mit `count:<integer>`, `sort:<>`, `interval:<integer>` und `values:<list>` weiter parametrisiert werden. Für numerische Daten wird beim Einrichten von Bereichen eine Werteliste unterstützt. Ausführlichere Informationen zur Verwendung finden Sie unter [Dokumente durchsuchen (Azure Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
+Ein Facettenabfrageparameter wird auf ein Feld festgelegt und kann abhängig vom Datentyp durch eine kommagetrennte Liste mit `count:<integer>`, `sort:<>`, `interval:<integer>` und `values:<list>` weiter parametrisiert werden. Für numerische Daten wird beim Einrichten von Bereichen eine Werteliste unterstützt. Ausführlichere Informationen zur Verwendung finden Sie unter [Dokumente durchsuchen (API für die kognitive Azure-Suche)](/rest/api/searchservice/Search-Documents).
 
-Neben Facetten muss die von Ihrer Anwendung erstellte Anforderung auch Filter zum Einschränken der auf der Grundlage der Facettenwertauswahl infrage kommenden Dokumente erstellen. Für ein Fahrradgeschäft bietet Facettennavigation bietet Hinweise zu Fragen wie *Welche Farben, Hersteller und Fahrradtypen sind verfügbar?* . Filtern Sie Antworten auf Fragen wie *Welche Fahrräder in diesem Preisspanne sind rote Mountainbikes?* . Wenn Sie durch Klicken auf „Rot“ angeben, dass nur rote Produkte angezeigt werden sollen, enthält die nächste von der Anwendung gesendete Abfrage `$filter=Color eq ‘Red’`.
+Neben Facetten muss die von Ihrer Anwendung erstellte Anforderung auch Filter zum Einschränken der auf der Grundlage der Facettenwertauswahl infrage kommenden Dokumente erstellen. Für ein Fahrradgeschäft bietet Facettennavigation bietet Hinweise zu Fragen wie *Welche Farben, Hersteller und Fahrradtypen sind verfügbar?* . Filtern Sie Antworten auf Fragen wie *Welche Fahrräder in diesem Preisspanne sind rote Mountainbikes?* . Wenn Sie durch Klicken auf „Rot“ angeben, dass nur rote Produkte angezeigt werden sollen, enthält die nächste von der Anwendung gesendete Abfrage `$filter=Color eq 'Red'`.
 
 Mit dem folgenden Codeausschnitt von der `JobsSearch.cs`-Seite wird die Berufsbezeichnung dem Filter hinzugefügt, wenn Sie einen Wert aus der Berufsbezeichnungsfacette auswählen.
 
@@ -243,7 +244,7 @@ if (businessTitleFacet != "")
 
 <a name="tips"></a> 
 
-## <a name="tips-and-best-practices"></a>Tipps und bewährte Methoden
+## <a name="tips-and-best-practices"></a>Tipps und Best Practices
 
 ### <a name="indexing-tips"></a>Tipps zur Indizierung
 **Verbessern Sie die Indexeffizienz, indem Sie kein Suchfeld verwenden**
@@ -260,7 +261,7 @@ Bei numerischen Werten und DateTime-Werten können explizit Werte für das Facet
 
 **Standardmäßig können Sie nur über eine Ebene der Facettennavigation verfügen** 
 
-Wie bereits erwähnt wird die hierarchische Schachtelung von Facetten nicht direkt unterstützt. Standardmäßig unterstützt die Facettennavigation in Azure Search nur eine Ebene von Filtern. Diese Beschränkung lässt sich jedoch umgehen. Sie können eine hierarchische Facettenstruktur in einem Element vom Typ `Collection(Edm.String)` codieren, indem Sie pro Hierarchie jeweils einen Eintrag angeben. Die Implementierung dieser Umgehung ist nicht Gegenstand dieses Artikels. 
+Wie bereits erwähnt wird die hierarchische Schachtelung von Facetten nicht direkt unterstützt. Standardmäßig unterstützt die Facettennavigation in der kognitiven Azure-Suche nur eine Ebene von Filtern. Diese Beschränkung lässt sich jedoch umgehen. Sie können eine hierarchische Facettenstruktur in einem Element vom Typ `Collection(Edm.String)` codieren, indem Sie pro Hierarchie jeweils einen Eintrag angeben. Die Implementierung dieser Umgehung ist nicht Gegenstand dieses Artikels. 
 
 ### <a name="querying-tips"></a>Abfragetipps
 **Überprüfen von Feldern**
@@ -284,10 +285,12 @@ Bei einem facettenbasierten Drilldownvorgang sollen in der Regel nur Dokumente e
 
 Facettenergebnisse sind Dokumente in den Suchergebnissen, die einem Facettenbegriff entsprechen. Im folgenden Beispiel weisen 254 Elemente der Suchergebnisse für *cloud computing* auch den Inhaltstyp *interne Spezifikation* auf. Die Elemente schließen sich nicht zwingend gegenseitig aus. Erfüllt ein Element die Kriterien beider Filter, wird es in jedem Filter gezählt. Diese Duplizierung ist möglich, wenn die Facette auf Feldern vom Typ `Collection(Edm.String)` basiert, die häufig zur Implementierung von Dokumententags verwendet werden.
 
-        Search term: "cloud computing"
-        Content type
-           Internal specification (254)
-           Video (10) 
+```output
+Search term: "cloud computing"
+Content type
+   Internal specification (254)
+   Video (10)
+```
 
 Allgemein gilt: Wenn die Facettenergebnisse ständig zu umfangreich ausfallen, empfiehlt es sich, weitere Filter hinzuzufügen, um den Benutzern mehr Optionen zum Eingrenzen der Suche zu geben.
 
@@ -297,12 +300,12 @@ Allgemein gilt: Wenn die Facettenergebnisse ständig zu umfangreich ausfallen, e
 
 Jedes Facettenfeld in der Navigationsstruktur ist standardmäßig auf maximal zehn Werte beschränkt. Dieser Standardwert ist für Navigationsstrukturen sinnvoll, da die Werteliste dadurch überschaubar bleibt. Sie können den Standardwert überschreiben, indem Sie einen Zählwert zuweisen.
 
-* `&facet=city,count:5` gibt an, dass als Facettenergebnis nur die ersten fünf Städte aus den Topergebnissen zurückgegeben werden sollen. Angenommen, eine Beispielabfrage mit dem Suchbegriff „Flughafen“ weist 32 Treffer auf. Wenn für die Abfrage `&facet=city,count:5`angegeben ist, werden in den Facettenergebnissen nur die ersten fünf eindeutigen Städte mit den meisten Dokumenten in den Suchergebnissen berücksichtigt.
+* `&facet=city,count:5` gibt an, dass als Facettenergebnis nur die ersten fünf Städte aus den Topergebnissen zurückgegeben werden sollen. Angenommen, eine Beispielabfrage mit dem Suchbegriff „Flughafen“ weist 32 Treffer auf. Wenn für die Abfrage `&facet=city,count:5`angegeben ist, werden in den Facettenergebnissen nur die ersten fünf eindeutigen Städte mit den meisten Dokumenten in den Suchergebnissen berücksichtigt.
 
 Beachten Sie die Unterscheidung zwischen Facettenergebnissen und Suchergebnissen: Suchergebnisse umfassen alle Dokumente, die der Abfrage entsprechen. Facettenergebnisse sind die Übereinstimmungen für die einzelnen Facettenwerte. In unserem Beispiel umfassen die Suchergebnisse Städtenamen, die sich nicht in der Facettenklassifizierungsliste (in unserem Beispiel: fünf) befinden. Durch die Facettennavigation herausgefilterte Ergebnisse werden angezeigt, wenn Sie Facetten löschen oder zusätzliche Facetten neben Städtenamen auswählen. 
 
 > [!NOTE]
-> Die Erläuterung von `count` kann verwirrend sein, wenn mehrere Typen vorhanden sind. Die folgende Tabelle bietet einen kurzen Überblick über die Verwendung des Begriffs in Azure Search-API, Beispielcode und Dokumentation: 
+> Die Erläuterung von `count` kann verwirrend sein, wenn mehrere Typen vorhanden sind. Die folgende Tabelle bietet einen kurzen Überblick über die Verwendung des Begriffs in der API für die kognitive Azure-Suche, Beispielcode und Dokumentation. 
 
 * `@colorFacet.count`<br/>
   Im Darstellungscode wird die Facette mit einem count-Parameter versehen, um die Anzahl der Facettenergebnisse anzuzeigen. In den Facettenergebnissen gibt „count“ die Anzahl von Dokumenten an, die dem Facettenbegriff oder -bereich entsprechen.
@@ -317,7 +320,7 @@ Wenn Sie einer Facettenabfrage einen Filter hinzufügen, empfiehlt es sich unter
 
 **Stellen Sie sicher, dass Sie die genaue Facettenanzahl erhalten**
 
-Unter bestimmten Umständen kann es vorkommen, dass die Facettenanzahl nicht den Resultsets entspricht (siehe Forumsbeitrag [Facettennavigation in Azure Search](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)).
+Unter bestimmten Umständen kann es vorkommen, dass die Facettenanzahl nicht den Resultsets entspricht (mehr auf der Q&A-Seite von Microsoft unter [Facettennavigation in Azure Cognitive Search](/answers/topics/azure-cognitive-search.html)).
 
 Die Abweichung der Facettenanzahl kann auf die Sharding-Architektur zurückzuführen sein. Jeder Suchindex besitzt mehrere Shards, von denen jeweils die x relevantesten Facetten (auf der Grundlage der Dokumentanzahl) zurückgegeben werden. Diese werden dann zu einem einzelnen Ergebnis zusammengefasst. Falls nun für einige Shards viele und für andere Shards weniger Werte vorhanden sind, kann es vorkommen, dass einige Facettenwerte fehlen oder in den Ergebnissen nicht korrekt erfasst wurden.
 
@@ -326,14 +329,14 @@ Dieses Verhalten kann sich zwar jederzeit ändern, wenn Sie jedoch aktuell davon
 ### <a name="user-interface-tips"></a>Benutzeroberflächentipps
 **Hinzufügen von Beschriftungen für die einzelnen Felder in der Facettennavigation**
 
-Beschriftungen werden üblicherweise im HTML-Code oder im Formular definiert (`index.cshtml` in der Beispielanwendung). Azure Search verfügt über keine API für Facettennavigationsbeschriftungen oder andere Metadaten.
+Beschriftungen werden üblicherweise im HTML-Code oder im Formular definiert (`index.cshtml` in der Beispielanwendung). Die kognitive Azure-Suche verfügt über keine API für Facettennavigationsbeschriftungen oder andere Metadaten.
 
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>Filtern nach einem Bereich
-Die Verwendung von Facettenwertbereichen ist eine verbreitete Anforderung für Suchanwendungen. Bereiche werden für numerische Daten und für DateTime-Werte unterstützt. Weitere Informationen zu den einzelnen Ansätzen finden Sie unter [Dokumente durchsuchen (Azure Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
+Die Verwendung von Facettenwertbereichen ist eine verbreitete Anforderung für Suchanwendungen. Bereiche werden für numerische Daten und für DateTime-Werte unterstützt. Weitere Informationen zu den einzelnen Ansätzen finden Sie unter [Dokumente durchsuchen (API für die kognitive Azure-Suche)](/rest/api/searchservice/Search-Documents).
 
-Azure Search vereinfacht die Bereichserstellung durch zwei Bereichsberechnungsansätze. Bei beiden Ansätzen erstellt Azure Search die entsprechenden Bereiche auf der Grundlage Ihrer Eingaben. Wenn Sie also beispielsweise die Bereichswerte „10|20|30“ angeben, werden automatisch folgende Bereiche erstellt: 0–10, 10–20, 20–30. Ihre Anwendung kann optional alle leeren Intervalle entfernen. 
+Die kognitive Azure-Suche vereinfacht die Bereichserstellung durch zwei Bereichsberechnungsansätze. Bei beiden Ansätzen erstellt Azure Cognitive Search die entsprechenden Bereiche auf der Grundlage Ihrer Eingaben. Wenn Sie also beispielsweise die Bereichswerte „10|20|30“ angeben, werden automatisch folgende Bereiche erstellt: 0–10, 10–20, 20–30. Ihre Anwendung kann optional alle leeren Intervalle entfernen. 
 
 **Vorgehensweise 1: Verwenden des interval-Parameters**  
 Um Preisfacets in Schritten von 10 $ festzulegen, geben Sie Folgendes an: `&facet=price,interval:10`
@@ -345,9 +348,9 @@ Bei numerischen Daten können Sie eine Werteliste verwenden.  Sehen Sie sich die
 
 Verwenden Sie zum Angeben eines Facettenbereichs wie im vorhergehenden Screenshot eine Werteliste:
 
-    facet=listPrice,values:10|25|100|500|1000|2500
+> `facet=listPrice,values:10|25|100|500|1000|2500`
 
-Jeder Bereich wird mit „0“ als Ausgangspunkt und einem Wert aus der Liste als Endpunkt erstellt und anschließend um den vorherigen Bereich gekürzt, um eigenständige Intervalle zu erhalten. Dies wird im Rahmen der Facettennavigation von Azure Search durchgeführt. Sie müssen keinen Code schreiben, um die einzelnen Intervalle zu strukturieren.
+Jeder Bereich wird mit „0“ als Ausgangspunkt und einem Wert aus der Liste als Endpunkt erstellt und anschließend um den vorherigen Bereich gekürzt, um eigenständige Intervalle zu erhalten. Dies wird im Rahmen der Facettennavigation von der kognitiven Azure-Suche durchgeführt. Sie müssen keinen Code schreiben, um die einzelnen Intervalle zu strukturieren.
 
 ### <a name="build-a-filter-for-a-range"></a>Erstellen Sie einen Filter für einen Bereich
 Wenn Sie Dokumente auf der Grundlage eines von Ihnen ausgewählten Bereichs filtern möchten, können Sie die Filteroperatoren `"ge"` und `"lt"` in einem zweiteiligen Ausdruck verwenden, um die Endpunkte des Bereichs zu definieren. Beispiel: Wenn Sie für ein `listPrice`-Feld den Bereich 10–25 wählen, ist der Filter `$filter=listPrice ge 10 and listPrice lt 25`. Im Beispielcode legt der Filterausdruck die Endpunkte über die Parameter **priceFrom** und **priceTo** fest. 
@@ -357,21 +360,21 @@ Wenn Sie Dokumente auf der Grundlage eines von Ihnen ausgewählten Bereichs filt
 <a name="geofacets"></a> 
 
 ## <a name="filter-based-on-distance"></a>Filtern Sie nach Entfernung
-Filter, die den Benutzer bei der Wahl eines Geschäfts, Restaurants oder eines Ziels in Abhängigkeit von der Nähe zum aktuellen Standort unterstützen, sind weit verbreitet. Diese Art von Filter sieht zwar vielleicht wie eine Facettennavigation aus, ist aber nur ein Filter. Diese Option wird hier nur erwähnt, falls Sie nach Implementierungstipps für dieses spezielle Designproblem suchen.
+Filter, die den Benutzer bei der Wahl eines Geschäfts, Restaurants oder Ziels in Abhängigkeit von der Nähe zum aktuellen Standort unterstützen, sind weit verbreitet. Diese Art von Filter sieht zwar vielleicht wie eine Facettennavigation aus, ist aber nur ein Filter. Diese Option wird hier nur erwähnt, falls Sie nach Implementierungstipps für dieses spezielle Designproblem suchen.
 
-In Azure Search stehen zwei räumliche Funktionen zur Verfügung: **geo.distance** und **geo.intersects**.
+In der kognitiven Azure-Suche stehen zwei räumliche Funktionen zur Verfügung: **geo.distance** und **geo.intersects**.
 
 * Die **geo.distance**-Funktion gibt die Entfernung in Kilometern zwischen zwei Punkten zurück. Ein Punkt ist ein Feld, der andere ist eine Konstante, die als Teil des Filters übergeben wird. 
 * Die **geo.intersects**-Funktion gibt „true“ zurück, wenn sich ein bestimmter Punkt innerhalb eines bestimmten Polygons befindet. Der Punkt ist ein Feld, und das Polygon ist als Konstantenliste mit Koordinaten angegeben, die als Teil des Filters übergeben wird.
 
-Filterbeispiele finden Sie unter [OData-Ausdruckssyntax für Azure Search](query-odata-filter-orderby-syntax.md).
+Filterbeispiele finden Sie unter [OData-Ausdruckssyntax für die kognitive Azure-Suche](query-odata-filter-orderby-syntax.md).
 
 <a name="tryitout"></a>
 
 ## <a name="try-the-demo"></a>Testen Sie die Demo
-Die Azure Search-Demo „Job Portal“ enthält die Beispiele, auf die in diesem Artikel Bezug genommen wird.
+Die Demo „Job Portal“ für die kognitive Azure-Suche enthält die Beispiele, auf die in diesem Artikel Bezug genommen wird.
 
--   Die Arbeitsdemo können Sie online unter [Azure Search-Demo „Job Portal“](https://azjobsdemo.azurewebsites.net/) anzeigen und testen.
+-   Die Arbeitsdemo können Sie online unter der [Demo „Job Portal“ für die kognitive Azure-Suche](https://aka.ms/azjobsdemo) anzeigen und testen.
 
 -   Laden Sie den Code aus dem [Repository „Azure-Beispiele“ in GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) herunter.
 
@@ -396,10 +399,9 @@ Achten Sie bei der Arbeit mit Suchergebnissen auf die Veränderung der Abfrageko
 <a name="nextstep"></a>
 
 ## <a name="learn-more"></a>Weitere Informationen
-[Azure Search Deep Dive](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410) ist in diesem Zusammenhang interessant. Ab 45:25 wird die Implementierung von Facetten vorgeführt.
+Das [Video mit ausführlichen Informationen zur kognitiven Azure-Suche](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410) ist in diesem Zusammenhang interessant. Ab 45:25 wird die Implementierung von Facetten vorgeführt.
 
 Weitere Einblicke in die Entwurfsprinzipien der Facettennavigation erhalten Sie unter folgenden Links:
 
 * [Entwurfsmuster: Facettennavigation](https://alistapart.com/article/design-patterns-faceted-navigation)
 * [Front End Concerns When Implementing Faceted Search – Part 1 ](https://articles.uie.com/faceted_search2/) (Front-End-Aspekte bei der Implementierung von facettierten Suche – Teil 1)
-

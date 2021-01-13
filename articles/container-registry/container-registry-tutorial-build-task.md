@@ -1,24 +1,22 @@
 ---
-title: 'Tutorial: Automatisieren von Buildvorgängen für Containerimages – Azure Container Registry Tasks'
+title: 'Tutorial: Erstellen eines Images nach dem Codecommit'
 description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Container Registry Task so konfigurieren, dass automatisch Buildvorgänge für Containerimages in der Cloud ausgelöst werden, wenn Sie Quellcode in einem Git-Repository committen.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: tutorial
-ms.date: 05/04/2019
-ms.author: danlep
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 25a0ef528d67deb5ea71720d2ff8e4d62b3b98a5
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.date: 11/24/2020
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 7f2e6d7f304977d3e6d92a778dba5bf026343707
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744564"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562904"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages in der Cloud beim Committen von Quellcode
 
-Neben einer [Schnellaufgabe](container-registry-tutorial-quick-task.md) unterstützt ACR Tasks automatisierte Docker-Containerimagebuilds in der Cloud, wenn Sie Quellcode in ein Git-Repository committen.
+Neben einer [Schnellaufgabe](container-registry-tutorial-quick-task.md) unterstützt ACR Tasks automatisierte Docker-Containerimagebuilds in der Cloud, wenn Sie Quellcode in ein Git-Repository committen. Zu den unterstützten Git-Kontexten für ACR Tasks zählen GitHub und Azure Repos (öffentlich oder privat).
+
+> [!NOTE]
+> Derzeit unterstützt ACR Tasks keine Anforderungstrigger für Commit- oder Pullvorgänge in GitHub Enterprise-Repositorys.
 
 In diesem Tutorial erstellt und pusht Ihre ACR-Aufgabe ein einzelnes Containerimage, das in einer Dockerfile-Datei angegeben ist, wenn Sie Quellcode in ein Git-Repository committen. Informationen zum Erstellen einer [mehrstufigen Aufgabe](container-registry-tasks-multi-step.md), die mithilfe einer YAML-Datei Schritte zum Erstellen, Pushen und optionalen Testen mehrerer Container beim Codecommit definiert, finden Sie unter [Tutorial: Ausführen eines mehrstufigen Containerworkflows in der Cloud, wenn Sie Quellcode committen](container-registry-tutorial-multistep-task.md). Eine Übersicht über ACR Tasks finden Sie unter [Automatisieren von Betriebssystem- und Frameworkpatches mit ACR Tasks](container-registry-tasks-overview.md).
 
@@ -32,11 +30,8 @@ Dieses Tutorial umfasst folgende Punkte:
 
 In diesem Tutorial wird davon ausgegangen, dass Sie bereits die Schritte des [vorherigen Tutorials](container-registry-tutorial-quick-task.md) ausgeführt haben. Führen Sie bei Bedarf die Schritte im Abschnitt [Voraussetzungen](container-registry-tutorial-quick-task.md#prerequisites) des vorherigen Tutorials aus, bevor Sie mit diesem Tutorial fortfahren.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Wenn Sie die Azure CLI lokal verwenden möchten, muss bei Ihnen mindestens die Azure CLI-Version **2.0.46** installiert sein, und Sie müssen mit [az login][az-login] angemeldet sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Installieren und Aktualisieren der Befehlszeilenschnittstelle finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
-
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
 ## <a name="create-the-build-task"></a>Erstellen der Buildaufgabe
 
@@ -44,7 +39,7 @@ Nachdem Sie die erforderlichen Schritte abgeschlossen haben, um ACR Tasks das Le
 
 Füllen Sie zunächst die folgenden Shell-Umgebungsvariablen mit geeigneten Werten für Ihre Umgebung auf. Dieser Schritt ist zwar nicht zwingend erforderlich, vereinfacht aber das Ausführen der mehrzeiligen Azure CLI-Befehle in diesem Tutorial. Wenn Sie diese Umgebungsvariablen nicht angeben, müssen Sie sie später jedes Mal die einzelnen Werte manuell ersetzen, wenn sie in einem der Beispielbefehle vorkommen.
 
-```azurecli-interactive
+```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
 GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
@@ -52,7 +47,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 
 Führen Sie als Nächstes den folgenden Befehl vom Typ [az acr task create][az-acr-task-create] aus, um die Aufgabe zu erstellen:
 
-```azurecli-interactive
+```azurecli
 az acr task create \
     --registry $ACR_NAME \
     --name taskhelloworld \
@@ -62,19 +57,17 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-> [!IMPORTANT]
-> Wenn Sie in der Vorschauversion bereits Aufgaben mit dem Befehl `az acr build-task` erstellt haben, müssen diese Aufgaben mit dem Befehl [az acr task][az-acr-task] neu erstellt werden.
 
-Durch diese Aufgabe erstellt ACR Tasks jedes Mal, wenn Code in der Verzweigung *master* des durch `--context` angegebenen Repositorys committet wird, das Containerimage auf der Grundlage des Codes in dieser Verzweigung. Das von `--file` angegebene Dockerfile aus dem Repositorystamm wird verwendet, um das Image zu erstellen. Das Argument `--image` gibt für den Versionsteil des Imagetags den parametrisierten Wert `{{.Run.ID}}` an, um sicherzustellen, dass das erstellte Image einem bestimmten Build entspricht und eindeutig gekennzeichnet ist.
+Durch diesen Task erstellt ACR Tasks jedes Mal, wenn Code in den *main*-Branch des durch `--context` angegebenen Repositorys committet wird, das Containerimage auf der Grundlage des Codes in diesem Branch. Das von `--file` angegebene Dockerfile aus dem Repositorystamm wird verwendet, um das Image zu erstellen. Das Argument `--image` gibt für den Versionsteil des Imagetags den parametrisierten Wert `{{.Run.ID}}` an, um sicherzustellen, dass das erstellte Image einem bestimmten Build entspricht und eindeutig gekennzeichnet ist.
 
 Die Ausgabe einer erfolgreichen Ausführung des Befehls [az acr task create][az-acr-task-create] sieht in etwa wie folgt aus:
 
-```console
+```output
 {
   "agentConfiguration": {
     "cpu": 2
   },
-  "creationDate": "2018-09-14T22:42:32.972298+00:00",
+  "creationDate": "2010-11-19T22:42:32.972298+00:00",
   "id": "/subscriptions/<Subscription ID>/resourceGroups/myregistry/providers/Microsoft.ContainerRegistry/registries/myregistry/tasks/taskhelloworld",
   "location": "westcentralus",
   "name": "taskhelloworld",
@@ -110,7 +103,7 @@ Die Ausgabe einer erfolgreichen Ausführung des Befehls [az acr task create][az-
       {
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
-          "branch": "master",
+          "branch": "main",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node",
           "sourceControlAuthProperties": null,
           "sourceControlType": "GitHub"
@@ -130,62 +123,43 @@ Die Ausgabe einer erfolgreichen Ausführung des Befehls [az acr task create][az-
 
 Sie verfügen nun über eine Aufgabe, die Ihren Build definiert. Lösen Sie zum Testen der Buildpipeline manuell einen Buildvorgang aus, indem Sie den Befehl [az acr task run][az-acr-task-run] ausführen:
 
-```azurecli-interactive
+```azurecli
 az acr task run --registry $ACR_NAME --name taskhelloworld
 ```
 
-Der Befehl `az acr task run` streamt die Protokollausgabe standardmäßig an Ihre Konsole, wenn Sie den Befehl ausführen.
+Der Befehl `az acr task run` streamt die Protokollausgabe standardmäßig an Ihre Konsole, wenn Sie den Befehl ausführen. Die Ausgabe ist zusammengefasst, um die wichtigsten Schritte darzustellen.
 
-```console
-$ az acr task run --registry $ACR_NAME --name taskhelloworld
-
-2018/09/17 22:51:00 Using acb_vol_9ee1f28c-4fd4-43c8-a651-f0ed027bbf0e as the home volume
-2018/09/17 22:51:00 Setting up Docker configuration...
-2018/09/17 22:51:02 Successfully set up Docker configuration
-2018/09/17 22:51:02 Logging in to registry: myregistry.azurecr.io
-2018/09/17 22:51:03 Successfully logged in
-2018/09/17 22:51:03 Executing step: build
-2018/09/17 22:51:03 Obtaining source code and scanning for dependencies...
-2018/09/17 22:51:05 Successfully obtained source code and scanned for dependencies
+```output
+2020/11/19 22:51:00 Using acb_vol_9ee1f28c-4fd4-43c8-a651-f0ed027bbf0e as the home volume
+2020/11/19 22:51:00 Setting up Docker configuration...
+2020/11/19 22:51:02 Successfully set up Docker configuration
+2020/11/19 22:51:02 Logging in to registry: myregistry.azurecr.io
+2020/11/19 22:51:03 Successfully logged in
+2020/11/19 22:51:03 Executing step: build
+2020/11/19 22:51:03 Obtaining source code and scanning for dependencies...
+2020/11/19 22:51:05 Successfully obtained source code and scanned for dependencies
 Sending build context to Docker daemon  23.04kB
-Step 1/5 : FROM node:9-alpine
-9-alpine: Pulling from library/node
-Digest: sha256:8dafc0968fb4d62834d9b826d85a8feecc69bd72cd51723c62c7db67c6dec6fa
-Status: Image is up to date for node:9-alpine
- ---> a56170f59699
-Step 2/5 : COPY . /src
- ---> 5f574fcf5816
-Step 3/5 : RUN cd /src && npm install
- ---> Running in b1bca3b5f4fc
-npm notice created a lockfile as package-lock.json. You should commit this file.
-npm WARN helloworld@1.0.0 No repository field.
-
-up to date in 0.078s
-Removing intermediate container b1bca3b5f4fc
- ---> 44457db20dac
-Step 4/5 : EXPOSE 80
- ---> Running in 9e6f63ec612f
-Removing intermediate container 9e6f63ec612f
- ---> 74c3e8ea0d98
+Step 1/5 : FROM node:15-alpine
+[...]
 Step 5/5 : CMD ["node", "/src/server.js"]
  ---> Running in 7382eea2a56a
 Removing intermediate container 7382eea2a56a
  ---> e33cd684027b
 Successfully built e33cd684027b
 Successfully tagged myregistry.azurecr.io/helloworld:da2
-2018/09/17 22:51:11 Executing step: push
-2018/09/17 22:51:11 Pushing image: myregistry.azurecr.io/helloworld:da2, attempt 1
+2020/11/19 22:51:11 Executing step: push
+2020/11/19 22:51:11 Pushing image: myregistry.azurecr.io/helloworld:da2, attempt 1
 The push refers to repository [myregistry.azurecr.io/helloworld]
 4a853682c993: Preparing
 [...]
 4a853682c993: Pushed
 [...]
 da2: digest: sha256:c24e62fd848544a5a87f06ea60109dbef9624d03b1124bfe03e1d2c11fd62419 size: 1366
-2018/09/17 22:51:21 Successfully pushed image: myregistry.azurecr.io/helloworld:da2
-2018/09/17 22:51:21 Step id: build marked as successful (elapsed time in seconds: 7.198937)
-2018/09/17 22:51:21 Populating digests for step id: build...
-2018/09/17 22:51:22 Successfully populated digests for step id: build
-2018/09/17 22:51:22 Step id: push marked as successful (elapsed time in seconds: 10.180456)
+2020/11/19 22:51:21 Successfully pushed image: myregistry.azurecr.io/helloworld:da2
+2020/11/19 22:51:21 Step id: build marked as successful (elapsed time in seconds: 7.198937)
+2020/11/19 22:51:21 Populating digests for step id: build...
+2020/11/19 22:51:22 Successfully populated digests for step id: build
+2020/11/19 22:51:22 Step id: push marked as successful (elapsed time in seconds: 10.180456)
 The following dependencies were found:
 - image:
     registry: myregistry.azurecr.io
@@ -201,7 +175,7 @@ The following dependencies were found:
     git-head-revision: 68cdf2a37cdae0873b8e2f1c4d80ca60541029bf
 
 
-Run ID: da2 was successful after 27s
+Run ID: ca6 was successful after 27s
 ```
 
 ## <a name="trigger-a-build-with-a-commit"></a>Auslösen eines Buildvorgangs durch ein Commit
@@ -210,64 +184,59 @@ Nachdem Sie die Aufgabe manuell ausgeführt haben, um sie zu testen, können Sie
 
 Vergewissern Sie sich zunächst, dass Sie sich im Verzeichnis mit dem lokalen Klon des [Repositorys][sample-repo] befinden:
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
 Führen Sie als Nächstes die folgenden Befehle aus, um eine neue Datei zu erstellen, zu committen und an Ihr Fork des Repositorys auf GitHub zu pushen:
 
-```azurecli-interactive
+```console
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
-git push origin master
+git push origin main
 ```
 
 Wenn Sie den Befehl `git push` ausführen, werden Sie unter Umständen zur Eingabe Ihrer GitHub-Anmeldeinformationen aufgefordert. Geben Sie Ihren GitHub-Benutzernamen und als Kennwort das persönliche Zugriffstoken (Personal Access Token, PAT) ein, das Sie zuvor erstellt haben.
 
-```console
-$ git push origin master
+```azurecli
 Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
 
 Nachdem Sie einen Commit an Ihr Repository gepusht haben, wird der von ACR Tasks erstellte Webhook ausgelöst und initiiert einen Bildvorgang in Azure Container Registry. Zeigen Sie die Protokolle für die derzeit ausgeführte Aufgabe an, um den Buildstatus zu überprüfen und zu überwachen:
 
-```azurecli-interactive
+```azurecli
 az acr task logs --registry $ACR_NAME
 ```
 
 Die Ausgabe sieht in etwa wie im folgenden Beispiel aus und zeigt die derzeit (oder zuletzt) ausgeführte Aufgabe:
 
-```console
-$ az acr task logs --registry $ACR_NAME
+```output
 Showing logs of the last created run.
-Run ID: da4
+Run ID: ca7
 
 [...]
 
-Run ID: da4 was successful after 38s
+Run ID: ca7 was successful after 38s
 ```
 
 ## <a name="list-builds"></a>Auflisten der Builds
 
 Führen Sie den Befehl [az acr task list-runs][az-acr-task-list-runs] aus, um eine Liste mit den Aufgabenausführungen anzuzeigen, die ACR Tasks für Ihre Registrierung abgeschlossen hat:
 
-```azurecli-interactive
+```azurecli
 az acr task list-runs --registry $ACR_NAME --output table
 ```
 
 Die Ausgabe des Befehls sollte in etwa wie im folgenden Beispiel aussehen. Die Ausführungen durch ACR Tasks werden angezeigt, und die Spalte „TRIGGER“ (Auslöser) enthält „Git Commit“ für die zuletzt ausgeführte Aufgabe:
 
-```console
-$ az acr task list-runs --registry $ACR_NAME --output table
-
-RUN ID    TASK             PLATFORM    STATUS     TRIGGER     STARTED               DURATION
---------  --------------  ----------  ---------  ----------  --------------------  ----------
-da4       taskhelloworld  Linux       Succeeded  Git Commit  2018-09-17T23:03:45Z  00:00:44
-da3       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:55:35Z  00:00:35
-da2       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:50:59Z  00:00:32
-da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59Z  00:00:57
+```output
+RUN ID    TASK            PLATFORM    STATUS     TRIGGER    STARTED               DURATION
+--------  --------------  ----------  ---------  ---------  --------------------  ----------
+ca7       taskhelloworld  linux       Succeeded  Commit     2020-11-19T22:54:34Z  00:00:29
+ca6       taskhelloworld  linux       Succeeded  Manual     2020-11-19T22:51:47Z  00:00:24
+ca5                       linux       Succeeded  Manual     2020-11-19T22:23:42Z  00:00:23
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

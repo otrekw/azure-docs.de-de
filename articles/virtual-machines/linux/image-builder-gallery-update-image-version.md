@@ -1,24 +1,25 @@
 ---
-title: Erstellen einer neuen Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder (Vorschauversion)
-description: Erstellen Sie mit Azure Image Builder eine neue Imageversion aus einer vorhandenen Imageversion.
+title: Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder (Vorschauversion)
+description: Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder unter Linux.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2019
-ms.topic: article
+ms.date: 05/05/2020
+ms.topic: how-to
 ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 9155f6fc1243f0d2e4d63f2718ccfd6846ebbc50
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.subservice: imaging
+ms.reviewer: danis
+ms.openlocfilehash: 142b4a85826b9e9a95b17dc631045aab603f3859
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671501"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307329"
 ---
-# <a name="preview-create-a-new-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Vorschau: Erstellen einer neuen Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>Vorschau: Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder unter Linux
 
 In diesem Artikel erfahren Sie, wie Sie eine vorhandene Imageversion in einem [Katalog mit freigegebenen Images](shared-image-galleries.md) aktualisieren und als neue Imageversion im Katalog veröffentlichen.
 
-Wir verwenden zum Konfigurieren des Images eine JSON-Beispielvorlage. Wir verwenden die JSON-Datei [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json). 
+Wir verwenden zum Konfigurieren des Images eine JSON-Beispielvorlage. Wir verwenden die JSON-Datei [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json). 
 
 
 ## <a name="register-the-features"></a>Registrieren des Features
@@ -38,7 +39,8 @@ az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachine
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-
+az provider show -n Microsoft.KeyVault | grep registrationState
+az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
@@ -46,7 +48,8 @@ Wenn nicht „registered“ ausgegeben wird, führen Sie den folgenden Befehl au
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
 ```
 
@@ -55,10 +58,8 @@ az provider register -n Microsoft.Storage
 
 Wenn Sie Ihren Katalog mit freigegebenen Images anhand von [Erstellen eines ein Images und Verteilen des Images in einem Katalog mit freigegebenen Images](image-builder-gallery.md) erstellt haben, haben Sie bereits einige der benötigten Variablen erstellt. Richten Sie andernfalls nun einige Variablen ein, die in diesem Beispiel verwendet werden.
 
-In der Vorschauversion unterstützt Image Builder nur das Erstellen von benutzerdefinierten Images in derselben Ressourcengruppe, in der sich auch das verwaltete Quellimage befindet. Aktualisieren Sie den Namen der Ressourcengruppe in diesem Beispiel, sodass es sich um dieselbe Ressourcengruppe handelt, in der sich auch das verwaltete Quellimage befindet.
 
-
-```azurecli-interactive
+```console
 # Resource group name 
 sigResourceGroup=ibLinuxGalleryRG
 # Gallery location 
@@ -75,13 +76,13 @@ runOutputName=aibSIGLinuxUpdate
 
 Erstellen Sie eine Variable für Ihre Abonnement-ID. Diese können Sie mit `az account show | grep id` abrufen.
 
-```azurecli-interactive
+```console
 subscriptionID=<Subscription ID>
 ```
 
 Rufen Sie die Imageversion ab, die Sie aktualisieren möchten.
 
-```
+```azurecli
 sigDefImgVersionId=$(az sig image-version list \
    -g $sigResourceGroup \
    --gallery-name $sigName \
@@ -89,25 +90,24 @@ sigDefImgVersionId=$(az sig image-version list \
    --subscription $subscriptionID --query [].'id' -o json | grep 0. | tr -d '"' | tr -d '[:space:]')
 ```
 
-
-Wenn Sie bereits über einen eigenen Katalog mit freigegebenen Images verfügen und nicht nach dem vorherigen Beispiel vorgegangen sind, müssen Sie Image Builder Berechtigungen zum Zugreifen auf die Ressourcengruppe zuweisen, damit er auf den Katalog zugreifen kann.
-
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Erstellen einer vom Benutzer zugewiesene Identität und Festlegen von Berechtigungen für die Ressourcengruppe
+Da Sie im vorigen Beispiel die Benutzeridentität eingerichtet haben, müssen Sie nur deren Ressourcen-ID ermitteln, die dann an die Vorlage angefügt wird.
 
 ```azurecli-interactive
-az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
+#get identity used previously
+imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, 'aibBuiUserId')].id" -o tsv)
 ```
+
+Wenn Sie bereits über einen eigenen Katalog mit freigegebenen Images verfügen und nicht nach dem vorherigen Beispiel vorgegangen sind, müssen Sie Image Builder Berechtigungen zum Zugreifen auf die Ressourcengruppe zuweisen, damit er auf den Katalog zugreifen kann. Überprüfen Sie die Schritte im Beispiel [Erstellen und Verteilen eines Images an eine Shared Image Gallery](image-builder-gallery.md).
 
 
 ## <a name="modify-helloimage-example"></a>Ändern des Beispiels helloImage
-Sie können das verwendete Beispiel überprüfen, indem Sie die JSON-Datei [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) zusammen mit der [Image Builder-Vorlagenreferenz](image-builder-json.md) öffnen. 
+Sie können das verwendete Beispiel überprüfen, indem Sie die JSON-Datei [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) zusammen mit der [Image Builder-Vorlagenreferenz](image-builder-json.md) öffnen. 
 
 
 Laden Sie das JSON-Beispiel herunter, und konfigurieren Sie es mit Ihren Variablen. 
 
-```azurecli-interactive
+```console
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json -o helloImageTemplateforSIGfromSIG.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateforSIGfromSIG.json
 sed -i -e "s/<rgName>/$sigResourceGroup/g" helloImageTemplateforSIGfromSIG.json
@@ -117,6 +117,7 @@ sed -i -e "s%<sigDefImgVersionId>%$sigDefImgVersionId%g" helloImageTemplateforSI
 sed -i -e "s/<region1>/$location/g" helloImageTemplateforSIGfromSIG.json
 sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforSIGfromSIG.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIGfromSIG.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateforSIGfromSIG.json
 ```
 
 ## <a name="create-the-image"></a>Erstellen des Images
@@ -159,13 +160,13 @@ az vm create \
 
 Erstellen Sie eine SSH-Verbindung mit dem virtuellen Computer unter Verwendung seiner öffentlichen IP-Adresse.
 
-```azurecli-interactive
+```console
 ssh azureuser@<pubIp>
 ```
 
 Sie sollten sehen, dass das Image angepasst wurde. Es wird eine „Nachricht des Tages“ ausgegeben, sobald die SSH-Verbindung hergestellt wurde.
 
-```console
+```output
 *******************************************************
 **            This VM was built from the:            **
 **      !! AZURE VM IMAGE BUILDER Custom Image !!    **

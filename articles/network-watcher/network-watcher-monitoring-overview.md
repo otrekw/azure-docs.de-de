@@ -3,9 +3,7 @@ title: Azure Network Watcher | Microsoft-Dokumentation
 description: Enthält Informationen zu den Überwachungs-, Diagnose-, Metrik- und Protokollfunktionen von Azure Network Watcher in einem virtuellen Netzwerk.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
@@ -13,27 +11,27 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/24/2018
-ms.author: kumud
+ms.date: 01/04/2021
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: ddc577af945c01b94dae5a75725082e4e6689fd9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9b19beae43f1d4a5b0788d9d7662828355c3dd2c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697120"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895885"
 ---
 # <a name="what-is-azure-network-watcher"></a>Was ist Azure Network Watcher?
 
-Mit Azure Network Watcher werden Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung/Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereitgestellt.
+Mit Azure Network Watcher werden Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung/Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereitgestellt. Network Watcher ist für die Überwachung und Wiederherstellung der Netzwerkintegrität von IaaS-Produkten (Infrastructure-as-a-Service) konzipiert, etwa Virtual Machines, Virtual Network, Application Gateway, Lastenausgleichsmodule usw. Hinweis: Der Dienst ist nicht für die PaaS-Überwachung oder Webanalyse gedacht und kann dafür nicht verwendet werden. 
 
 ## <a name="monitoring"></a>Überwachung
 
-### <a name = "connection-monitor"></a>Überwachen der Kommunikation zwischen einem virtuellen Computer und einem Endpunkt
+### <a name="monitor-communication-between-a-virtual-machine-and-an-endpoint"></a><a name = "connection-monitor"></a>Überwachen der Kommunikation zwischen einem virtuellen Computer und einem Endpunkt
 
 Bei Endpunkten kann es sich um einen anderen virtuellen Computer (VM), einen vollqualifizierten Domänennamen (FQDN), einen URI (Uniform Resource Identifier) oder eine IPv4-Adresse handeln. Mit der Funktion *Verbindungsmonitor* wird die Kommunikation in regelmäßigen Abständen überwacht, und Sie werden über Änderungen der Erreichbarkeit, Latenz und Netzwerktopologie zwischen der VM und dem Endpunkt informiert. Beispielsweise verfügen Sie ggf. über eine Webserver-VM, die mit einer Datenbankserver-VM kommuniziert. Es kann sein, dass eine andere Person in Ihrer Organisation (ohne dass Ihnen dies bekannt ist) eine benutzerdefinierte Route oder Netzwerksicherheitsregel auf die Webserver- oder Datenbankserver-VM oder das Subnetz anwendet.
 
-Wenn ein Endpunkt nicht mehr erreichbar ist, werden Sie von der Problembehandlung der Verbindung über die Ursache informiert. Mögliche Ursachen sind ein Problem mit der DNS-Namensauflösung, die CPU, der Arbeitsspeicher oder die Firewall des Betriebssystems einer VM, der Hop-Typ einer benutzerdefinierten Route oder die Sicherheitsregel für die VM oder das Subnetz der ausgehenden Verbindung. Informieren Sie sich über [Sicherheitsregeln](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules) und [Hop-Typen von Routen](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) in Azure.
+Wenn ein Endpunkt nicht mehr erreichbar ist, werden Sie von der Problembehandlung der Verbindung über die Ursache informiert. Mögliche Ursachen sind ein Problem mit der DNS-Namensauflösung, die CPU, der Arbeitsspeicher oder die Firewall des Betriebssystems einer VM, der Hop-Typ einer benutzerdefinierten Route oder die Sicherheitsregel für die VM oder das Subnetz der ausgehenden Verbindung. Informieren Sie sich über [Sicherheitsregeln](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules) und [Hop-Typen von Routen](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) in Azure.
 
 Über den Verbindungsmonitor werden auch die Werte für die minimale, durchschnittliche und maximale Latenz angegeben, die im Laufe der Zeit ermittelt wurde. Wenn Sie die Latenz für eine Verbindung kennen, stellt sich unter Umständen heraus, dass Sie sie reduzieren können, indem Sie Ihre Azure-Ressourcen in andere Azure-Regionen verschieben. Informieren Sie sich über die Ermittlung der [relativen Latenzen zwischen Azure-Regionen und Internetdienstanbietern](#determine-relative-latencies-between-azure-regions-and-internet-service-providers) und die Überwachung der Kommunikation zwischen einer VM und einem Endpunkt per [Verbindungsmonitor](connection-monitor.md). Falls Sie eine Verbindung zu einem bestimmten Zeitpunkt und nicht für einen Zeitraum testen möchten (wie mit dem Verbindungsmonitor), können Sie die Funktion [Problembehandlung für Verbindung](#connection-troubleshoot) nutzen.
 
@@ -57,7 +55,7 @@ Wenn Sie eine VM bereitstellen, wendet Azure mehrere Standardsicherheitsregeln a
 
 Wenn Sie ein virtuelles Netzwerk erstellen, erstellt Azure mehrere ausgehende Standardrouten für Netzwerkdatenverkehr. Der ausgehende Datenverkehr aller Ressourcen, z.B. VMs, die in einem virtuellen Netzwerk bereitgestellt werden, wird basierend auf den Standardrouten von Azure weitergeleitet. Sie können die Standardrouten von Azure außer Kraft setzen oder zusätzliche Routen erstellen. Es kann sein, dass eine VM aufgrund einer bestimmten Route nicht mehr mit anderen Ressourcen kommunizieren kann. Mit der Funktion *Nächster Hop* können Sie eine IPv4-Quell- und -Zieladresse angeben. Bei „Nächster Hop“ wird die Kommunikation getestet, und Sie erhalten die Information, welche Art von nächstem Hop zum Weiterleiten des Datenverkehrs verwendet wird. Sie können eine Route dann entfernen, ändern oder hinzufügen, um ein Routingproblem zu beheben. Erfahren Sie mehr zur Funktion [Nächster Hop](diagnose-vm-network-routing-problem.md).
 
-### <a name="connection-troubleshoot"></a>Diagnostizieren ausgehender Verbindungen von einer VM
+### <a name="diagnose-outbound-connections-from-a-vm"></a><a name="connection-troubleshoot"></a>Diagnostizieren ausgehender Verbindungen von einer VM
 
 Mit der Funktion *Problembehandlung für Verbindung* können Sie eine Verbindung zwischen einer VM und einer anderen VM, einem FQDN, einem URI oder einer IPv4-Adresse testen. Bei diesem Test werden ähnliche Informationen wie bei Verwendung des [Verbindungsmonitors](#connection-monitor) zurückgegeben. Für die Verbindung wird aber ein bestimmter Zeitpunkt getestet, und sie wird nicht im Zeitverlauf überwacht, wie dies beim Verbindungsmonitor der Fall ist. Informieren Sie sich über die Problembehandlung von Verbindungen mit der Funktion [Problembehandlung für Verbindung](network-watcher-connectivity-overview.md).
 
@@ -79,7 +77,7 @@ Die geltenden Sicherheitsregeln für eine Netzwerkschnittstelle stellen eine Kom
 
 ## <a name="metrics"></a>Metriken
 
-Es gibt [Grenzwerte](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits) für die Anzahl von Netzwerkressourcen, die Sie in einem Azure-Abonnement und einer Region erstellen können. Wenn Sie die Grenzwerte erreicht haben, ist es nicht möglich, unter dem Abonnement oder in der Region weitere Ressourcen zu erstellen. Bei der Funktion *Limit für Netzwerkabonnement* wird eine Zusammenfassung dazu angezeigt, wie viele der einzelnen Netzwerkressourcen Sie für ein Abonnement und eine Region jeweils bereitgestellt haben und welche Grenzen für eine Ressource gelten. In der folgenden Abbildung ist die Teilausgabe für Netzwerkressourcen dargestellt, die in der Region „USA, Osten“ für ein Beispielabonnement bereitgestellt wurden:
+Es gibt [Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits) für die Anzahl von Netzwerkressourcen, die Sie in einem Azure-Abonnement und einer Region erstellen können. Wenn Sie die Grenzwerte erreicht haben, ist es nicht möglich, unter dem Abonnement oder in der Region weitere Ressourcen zu erstellen. Bei der Funktion *Limit für Netzwerkabonnement* wird eine Zusammenfassung dazu angezeigt, wie viele der einzelnen Netzwerkressourcen Sie für ein Abonnement und eine Region jeweils bereitgestellt haben und welche Grenzen für eine Ressource gelten. In der folgenden Abbildung ist die Teilausgabe für Netzwerkressourcen dargestellt, die in der Region „USA, Osten“ für ein Beispielabonnement bereitgestellt wurden:
 
 ![Grenzwerte für Abonnements](./media/network-watcher-monitoring-overview/subscription-limit.png)
 

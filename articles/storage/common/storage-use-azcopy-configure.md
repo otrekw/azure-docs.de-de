@@ -1,19 +1,19 @@
 ---
 title: Konfigurieren, Optimieren und Problembehandlung in AzCopy mit Azure Storage | Microsoft-Dokumentation
-description: Konfigurieren, Optimieren und Problembehandlung in AzCopy.
+description: Hier finden Sie Informationen zum Konfigurieren, Optimieren und Beheben von Problemen in AzCopy mit Azure Storage. Ändern Sie den Speicherort von Plan- und Protokolldateien, oder entfernen Sie Plan- und Protokolldateien. Ändern Sie die Standardprotokollebene.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/25/2019
+ms.topic: how-to
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 8a96c5b2d39967c8ee82f48e880bac9270a58c36
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 23c62562299768afb5f5d87bbcf4f7b19b3235ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844813"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897857"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurieren, Optimieren und Problembehandlung in AzCopy
 
@@ -21,58 +21,104 @@ AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs o
 
 > [!NOTE]
 > Wenn Sie nach Inhalten suchen, die Ihnen bei den ersten Schritten mit AzCopy helfen, sehen Sie in den folgenden Artikeln nach:
-> - [Übertragen von Daten mit AzCopy v10](storage-use-azcopy-v10.md)
+> - [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
 > - [Übertragen von Daten mit AzCopy und Blob Storage](storage-use-azcopy-blobs.md)
 > - [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
-> - [Kopieren von Daten aus Amazon S3-Buckets mit AzCopy](storage-use-azcopy-s3.md)
+> - [Übertragen von Daten mit AzCopy und Amazon S3-Buckets](storage-use-azcopy-s3.md)
 
 ## <a name="configure-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
 
-Um die Proxyeinstellungen für AzCopy zu konfigurieren, legen Sie die Umgebungsvariable `https_proxy` fest. Unter Windows ist diese Einstellung nicht erforderlich, da AzCopy Proxyeinstellungen automatisch erkennt. Falls Sie diese Einstellung unter Windows verwenden, wird dadurch die automatische Erkennung außer Kraft gesetzt.
+Um die Proxyeinstellungen für AzCopy zu konfigurieren, legen Sie die Umgebungsvariable `HTTPS_PROXY` fest. Unter Windows ist diese Einstellung nicht erforderlich, da AzCopy Proxyeinstellungen automatisch erkennt. Falls Sie diese Einstellung unter Windows verwenden, wird dadurch die automatische Erkennung außer Kraft gesetzt.
 
 | Betriebssystem | Get-Help  |
 |--------|-----------|
-| **Windows** | Verwenden Sie in einer Eingabeaufforderung: `set https_proxy=<proxy IP>:<proxy port>`<br> Verwenden Sie in PowerShell: `$env:https_proxy="<proxy IP>:<proxy port>"`|
-| **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **Windows** | Verwenden Sie in einer Eingabeaufforderung: `set HTTPS_PROXY=<proxy IP>:<proxy port>`<br> Verwenden Sie in PowerShell: `$env:HTTPS_PROXY="<proxy IP>:<proxy port>"`|
+| **Linux** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
+| **macOS** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
 
 AzCopy unterstützt zurzeit keine Proxys, für die eine Authentifizierung mit NTLM oder Kerberos erforderlich ist.
 
-## <a name="optimize-throughput"></a>Optimieren des Durchsatzes
+### <a name="bypassing-a-proxy"></a>Umgehen eines Proxys ###
 
-Mithilfe des Flags `cap-mbps` können Sie eine Obergrenze für die Durchsatzdatenrate festlegen. Mit dem folgenden Befehl wird der Durchsatz beispielsweise auf `10` Megabytes (MB) pro Sekunde begrenzt.
+Wenn AzCopy unter Windows ausgeführt wird und Sie angeben möchten, dass gar _kein_ Proxy verwendet werden soll (anstatt die Einstellungen automatisch zu erkennen), verwenden Sie diese Befehle. Mit diesen Einstellungen sucht AzCopy keinen Proxy und versucht auch nicht, einen zu verwenden.
+
+| Betriebssystem | Environment | Befehle  |
+|--------|-----------|----------|
+| **Windows** | Befehlszeile (CMD) | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
+| **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|
+
+Bei anderen Betriebssystemen belassen Sie die HTTPS_PROXY-Variable einfach nicht festgelegt, wenn Sie keinen Proxy verwenden möchten.
+
+## <a name="optimize-performance"></a>Optimieren der Leistung
+
+Sie können Leistungsvergleichstests durchführen und dann mithilfe von Befehlen und Umgebungsvariablen ein ausgewogenes Verhältnis zwischen Leistung und Ressourcenverbrauch ermitteln.
+
+In diesem Abschnitt wird beschrieben, wie Sie diese Optimierungsaufgaben ausführen:
+
+> [!div class="checklist"]
+> * Ausführen von Vergleichstests
+> * Optimieren des Durchsatzes
+> * Optimieren der Arbeitsspeichernutzung 
+> * Optimieren der Dateisynchronisierung
+
+### <a name="run-benchmark-tests"></a>Ausführen von Vergleichstests
+
+Sie können einen Leistungsvergleichstest für bestimmte Blobcontainer oder Dateifreigaben ausführen, um allgemeine Leistungsstatistiken zu erhalten und Leistungsengpässe zu ermitteln. Sie können den Test ausführen, indem Sie generierte Testdaten hoch- oder herunterladen. 
+
+Verwenden Sie den folgenden Befehl, um einen Leistungsvergleichstest auszuführen.
+
+|    |     |
+|--------|-----------|
+| **Syntax** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Beispiel** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+
+> [!TIP]
+> In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
+
+Mit diesem Befehl wird ein Leistungsvergleichstest ausgeführt, indem Testdaten an ein angegebenes Ziel hochgeladen werden. Die Testdaten werden im Arbeitsspeicher generiert, an das Ziel hochgeladen und dann nach Abschluss des Tests aus dem Ziel gelöscht. Mithilfe optionaler Befehlsparameter können Sie angeben, wie viele Dateien und in welcher Größe generiert werden sollen.
+
+Wenn Sie diesen Test ausführen möchten, indem Sie Daten herunterladen, legen Sie den `mode`-Parameter auf `download` fest. Ausführliche Referenzdokumente finden Sie unter [azcopy benchmark](storage-ref-azcopy-bench.md). 
+
+### <a name="optimize-throughput"></a>Optimieren des Durchsatzes
+
+Mithilfe des Flags `cap-mbps` in den Befehlen können Sie eine Obergrenze für die Durchsatzdatenrate festlegen. Mit dem folgenden Befehl wird beispielsweise ein Auftrag fortgesetzt und der Durchsatz auf `10` Megabit (MBit) pro Sekunde begrenzt. 
 
 ```azcopy
-azcopy cap-mbps 10
+azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
-Bei der Übertragung kleiner Dateien kann der Durchsatz zurückgehen. Sie können den Durchsatz durch Festlegen der Umgebungsvariablen `AZCOPY_CONCURRENCY_VALUE` erhöhen. Diese Variable gibt die zulässige Anzahl gleichzeitiger Anforderungen an.  Wenn Ihr Computer über weniger als 5 CPUs verfügt, wird der Wert dieser Variablen auf `32` festgelegt. Andernfalls ist der Standardwert gleich 16, multipliziert mit der Anzahl der CPUs. Der maximale Standardwert dieser Variablen ist `300`, aber Sie können diesen Wert manuell höher oder niedriger festlegen.
+Bei der Übertragung kleiner Dateien kann der Durchsatz zurückgehen. Sie können den Durchsatz durch Festlegen der Umgebungsvariablen `AZCOPY_CONCURRENCY_VALUE` erhöhen. Diese Variable gibt die zulässige Anzahl gleichzeitiger Anforderungen an.  
+
+Wenn Ihr Computer über weniger als 5 CPUs verfügt, wird der Wert dieser Variablen auf `32` festgelegt. Andernfalls ist der Standardwert gleich 16, multipliziert mit der Anzahl der CPUs. Der maximale Standardwert dieser Variablen ist `3000`, aber Sie können diesen Wert manuell höher oder niedriger festlegen. 
 
 | Betriebssystem | Get-Help  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
+| **macOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüfen.  Wenn der Wert leer ist, ist die Variable `AZCOPY_CONCURRENCY_VALUE` auf den Standardwert `300` festgelegt.
+Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüfen. Wenn der Wert leer ist, können Sie den verwendeten Wert ermitteln, indem Sie sich den Anfang einer AzCopy-Protokolldatei ansehen. Dort sind der ausgewählte Wert und der Grund aufgeführt, warum er ausgewählt wurde.
 
-## <a name="change-the-location-of-the-log-files"></a>Ändern des Speicherorts der Protokolldateien
+Bevor Sie diese Variable festlegen, wird empfohlen, einen Vergleichstest auszuführen. Im Vergleichstest wird der empfohlene Parallelitätswert angegeben. Wenn die Netzwerkbedingungen und Nutzlasten variieren, legen Sie diese Variable alternativ auf den Begriff `AUTO` anstatt auf eine bestimmte Zahl fest. Dies bewirkt, dass von AzCopy immer derselbe automatische Abstimmungsprozess ausgeführt wird, der in Vergleichstests verwendet wird.
 
-Standardmäßig befinden sich die Protokolldateien im Verzeichnis `%USERPROFILE\\.azcopy` unter Windows bzw. im Verzeichnis `$HOME\\.azcopy` unter Mac und Linux. Sie können diesen Speicherort bei Bedarf mit diesen Befehlen ändern.
+### <a name="optimize-memory-use"></a>Optimieren der Arbeitsspeichernutzung
+
+Legen Sie die Umgebungsvariable `AZCOPY_BUFFER_GB` fest, um die maximale Kapazität an Systemarbeitsspeicher festzulegen, die AzCopy beim Herunterladen und Hochladen von Dateien verwenden soll.
+Geben Sie diesen Wert in Gigabytes (GB) an.
 
 | Betriebssystem | Get-Help  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
-| **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
+| **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
+| **macOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
-Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüfen. Wenn der Wert leer ist, werden Protokolle an den Standardspeicherort geschrieben.
+### <a name="optimize-file-synchronization"></a>Optimieren der Dateisynchronisierung
 
-## <a name="change-the-default-log-level"></a>Ändern der Standardprotokollebene
+Der Befehl [sync](storage-ref-azcopy-sync.md) identifiziert alle Dateien am Ziel und vergleicht dann die Dateinamen und die Zeitstempel der letzten Änderung vor dem Starten des Synchronisierungsvorgangs. Wenn Sie über eine große Anzahl von Dateien verfügen, können Sie die Leistung verbessern, indem Sie diese Vorabverarbeitung vermeiden. 
 
-Standardmäßig ist die AzCopy-Protokollebene auf `INFO` festgelegt. Wenn Sie die Ausführlichkeit des Protokolls verringern möchten, um Speicherplatz auf dem Datenträger zu sparen, überschreiben Sie die Einstellung mithilfe der Option ``--log-level``. 
+Dazu müssen Sie stattdessen den Befehl [azcopy copy](storage-ref-azcopy-copy.md) verwenden und das Flag `--overwrite` auf `ifSourceNewer` festlegen. AzCopy vergleicht Dateien, während sie kopiert werden, ohne vorab Überprüfungen und Vergleiche auszuführen. In Fällen, in denen sehr viele Dateien verglichen werden müssen, bietet dies einen Leistungsvorteil.
 
-Verfügbare Protokollierebenen sind: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` und `FATAL`.
+Mit dem Befehl [azcopy copy](storage-ref-azcopy-copy.md) werden keine Dateien aus dem Ziel gelöscht. Wenn Sie also Dateien aus dem Ziel löschen möchten, wenn sie nicht mehr in der Quelle vorhanden sind, verwenden Sie den Befehl [azcopy sync](storage-ref-azcopy-sync.md), und legen Sie dabei das Flag `--delete-destination` auf den Wert `true` oder `prompt` fest. 
 
 ## <a name="troubleshoot-issues"></a>Behandeln von Problemen
 
@@ -80,7 +126,9 @@ AzCopy erstellt Protokoll- und Plandateien für jeden Auftrag. Sie können die P
 
 Die Protokolle enthalten den Status des Fehlers (`UPLOADFAILED`, `COPYFAILED` und `DOWNLOADFAILED`), den vollständigen Pfad und die Ursache des Fehlers.
 
-Standardmäßig befinden sich die Protokoll- und Plandateien im Verzeichnis `%USERPROFILE\\.azcopy` unter Windows bzw. im Verzeichnis `$HOME\\.azcopy` unter Mac und Linux.
+Standardmäßig befinden sich die Protokoll- und Plandateien im Verzeichnis `%USERPROFILE%\.azcopy` unter Windows bzw. im Verzeichnis `$HOME$\.azcopy` unter Mac und Linux. Allerdings können Sie den Speicherort ändern.
+
+Der relevante Fehler ist nicht zwingend der erste Fehler in der Datei. Bei Netzwerkfehlern, Timeouts, Serverauslastungsfehlern und Ähnlichem wird der Vorgang von AzCopy bis zu 20-mal wiederholt, was in der Regel zum Erfolg führt.  Der erste angezeigte Fehler ist unter Umständen ein harmloser Vorgang, der erfolgreich wiederholt wurde.  Sehen Sie sich daher nicht den ersten Fehler in der Datei an, sondern die Fehler in der Nähe von `UPLOADFAILED`, `COPYFAILED` oder `DOWNLOADFAILED`. 
 
 > [!IMPORTANT]
 > Geben Sie beim Senden einer Anforderung an den Microsoft-Support (oder bei der Problembehandlung unter Einbeziehung eines Drittanbieters) die bearbeitete Version des Befehls an, den Sie ausführen möchten. So wird sichergestellt, dass die SAS nicht versehentlich offengelegt wird. Die editierte Version steht am Anfang der Protokolldatei.
@@ -128,4 +176,49 @@ azcopy jobs resume <job-id> --source-sas="<sas-token>"
 azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
 
+> [!TIP]
+> Schließen Sie Pfadargumente wie das SAS-Token in einfache Anführungszeichen ('') ein. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
+
 Wenn Sie einen Auftrag fortsetzen, überprüft AzCopy die Plandatei. In der Plandatei werden alle Dateien aufgelistet, die zur Verarbeitung identifiziert wurden, als der Auftrag erstmalig erstellt wurde. Wenn Sie einen Auftrag fortsetzen, versucht AzCopy, alle Dateien zu übertragen, die in der Plandatei aufgeführt sind, die nicht bereits übertragen wurden.
+
+## <a name="change-the-location-of-the-plan-and-log-files"></a>Ändern des Speicherorts der Plan- und Protokolldateien
+
+Standardmäßig befinden sich die Plan- und Protokolldateien im Verzeichnis `%USERPROFILE%\.azcopy` unter Windows bzw. im Verzeichnis `$HOME$\.azcopy` unter Mac und Linux. Sie können diesen Speicherort ändern.
+
+### <a name="change-the-location-of-plan-files"></a>Ändern des Speicherorts der Plandateien
+
+Verwenden Sie einen der folgende Befehle.
+
+| Betriebssystem | Get-Help  |
+|--------|-----------|
+| **Windows** | PowerShell:`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> Verwenden Sie an einer Eingabeaufforderung: `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+
+Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüfen. Wenn der Wert leer ist, werden Plandateien an den Standardspeicherort geschrieben.
+
+### <a name="change-the-location-of-log-files"></a>Ändern des Speicherorts der Protokolldateien
+
+Verwenden Sie einen der folgende Befehle.
+
+| Betriebssystem | Get-Help  |
+|--------|-----------|
+| **Windows** | PowerShell:`$env:AZCOPY_LOG_LOCATION="<value>"` <br> Verwenden Sie an einer Eingabeaufforderung: `set AZCOPY_LOG_LOCATION=<value>`|
+| **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+
+Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüfen. Wenn der Wert leer ist, werden Protokolle an den Standardspeicherort geschrieben.
+
+## <a name="change-the-default-log-level"></a>Ändern der Standardprotokollebene
+
+Standardmäßig ist die AzCopy-Protokollebene auf `INFO` festgelegt. Wenn Sie die Ausführlichkeit des Protokolls verringern möchten, um Speicherplatz auf dem Datenträger zu sparen, überschreiben Sie die Einstellung mithilfe der Option ``--log-level``. 
+
+Verfügbare Protokolliergrade sind: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` und `FATAL`.
+
+## <a name="remove-plan-and-log-files"></a>Entfernen von Plan- und Protokolldateien
+
+Wenn Sie alle Plan- und Protokolldateien von Ihrem lokalen Computer entfernen möchten, um Speicherplatz zu sparen, verwenden Sie den Befehl `azcopy jobs clean`.
+
+Verwenden Sie `azcopy jobs rm <job-id>`, um die Plan- und Protokolldateien zu entfernen, die nur einem Auftrag zugeordnet sind. Ersetzen Sie den Platzhalter `<job-id>` in diesem Beispiel durch die Auftrags-ID des Auftrags.
+
+

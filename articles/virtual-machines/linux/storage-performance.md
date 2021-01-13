@@ -1,25 +1,25 @@
 ---
-title: Optimieren der Leistung virtueller Azure-Computer der Lsv2-Serie – Speicher | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Leistung für Ihre Lösung auf virtuellen Computern der Lsv2-Serie optimieren.
+title: Optimieren der Leistung virtueller Azure-Computer der Lsv2-Serie – Speicher
+description: Erfahren Sie anhand eines Beispiels für Linux, wie Sie die Leistung für Ihre Lösung auf virtuellen Computern der Lsv2-Serie optimieren.
 services: virtual-machines-linux
 author: laurenhughes
-manager: gwallace
 ms.service: virtual-machines-linux
-ms.topic: article
+ms-subservice: sizes
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: ea64a4274eda947aebf0f693657c17a120bec560
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 650164556223a73a722bc91ecb31491ee98cb8a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081797"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307100"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimieren der Leistung virtueller Computer der Lsv2-Serie
+# <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Optimieren der Leistung virtueller Linux-Computer der Lsv2-Serie
 
-Virtuelle Computer der Lsv2-Serie unterstützen verschiedenste Workloads, die hohe Anforderungen an E/A- und Durchsatz des lokalen Speichers stellen und in einem breiten Spektrum von Anwendungen und Branchen zur Anwendung kommen.  Die Lsv2-Serie ist ideal für Big Data, SQL, NoSQL-Datenbanken, Data Warehousing und große Transaktionsdatenbanken wie Cassandra, MongoDB, Cloudera und Redis geeignet.
+Virtuelle Computer der Lsv2-Serie unterstützen verschiedenste Workloads, die hohe Anforderungen an E/A-Leistung und Durchsatz des lokalen Speichers stellen und in einem breiten Spektrum von Anwendungen und Branchen eingesetzt werden.  Die Lsv2-Serie ist ideal für Big Data, SQL, NoSQL-Datenbanken, Data Warehousing und große Transaktionsdatenbanken wie Cassandra, MongoDB, Cloudera und Redis geeignet.
 
 Virtuelle Computer der Lsv2-Serie nutzen den AMD EPYC™ 7551-Prozessor optimal aus, um die bestmögliche Leistung zwischen Prozessor, Arbeitsspeicher, NVMe-Geräten und den virtuellen Computern zu erzielen. Wenn Sie mit Partnern in Linux arbeiten, sind mehrere Builds im Azure Marketplace verfügbar, die für die Leistung der Lsv2-Serie optimiert sind und derzeit Folgendes umfassen:
 
@@ -39,7 +39,7 @@ Die von virtuellen Computern der Lsv2-Serie verwendeten AMD EYPC™-Serverproze
 
 * Wenn Sie ein benutzerdefiniertes Linux-Gastbetriebssystem für Ihre Workload hochladen, beachten Sie, dass der beschleunigte Netzwerkbetrieb standardmäßig **AUS** ist. Falls Sie den beschleunigten Netzwerkbetrieb aktivieren möchten, sollten Sie diesen Schritt bei der Erstellung des virtuellen Computers ausführen, um die bestmögliche Leistung zu erzielen.
 
-* Die Hardware, die den virtuellen Computern der Lsv2-Reihe zugrunde liegt, nutzt NVMe-Geräte mit acht E/A-Warteschlangenpaaren (Queue Pairs, QPs). Jede E/A-Warteschlange für ein NVMe-Gerät ist eigentlich ein Paar und setzt sich aus einer Übermittlungs- und einer Fertigstellungswarteschlange zusammen. Der NVMe-Treiber ist für die Optimierung der Nutzung dieser acht E/A-Warteschlangenpaare eingerichtet und verteilt Ein-/Ausgaben nach einem Roundrobinschema. Führen Sie daher pro Gerät acht Aufträge aus, um die maximale Leistung zu erzielen.
+* Die Hardware, die den virtuellen Computern der Lsv2-Serie zugrunde liegt, nutzt NVMe-Geräte mit acht E/A-Warteschlangenpaaren (Queue Pairs, QPs). Jede E/A-Warteschlange für ein NVMe-Gerät ist eigentlich ein Paar und setzt sich aus einer Übermittlungs- und einer Fertigstellungswarteschlange zusammen. Der NVMe-Treiber ist für die Optimierung der Nutzung dieser acht E/A-Warteschlangenpaare eingerichtet und verteilt Ein-/Ausgaben nach einem Roundrobinschema. Führen Sie daher pro Gerät acht Aufträge aus, um die maximale Leistung zu erzielen.
 
 * Vermeiden Sie während aktiver Workloads eine Vermischung von NVMe-Verwaltungsbefehlen (etwa zum Abfragen von NVMe SMART-Informationen) und NVMe-E/A-Befehlen. Lsv2-NVMe-Geräte basieren auf Hyper-V NVMe Direct-Technologie, die in den langsamen Modus wechselt, sobald NVMe-Verwaltungsbefehle ausstehen. In der Folge bricht die NVMe-E/A-Leistung für Lsv2-Benutzer unter Umständen dramatisch ein.
 
@@ -83,7 +83,7 @@ Zu den Szenarien, in denen die Daten zum Schutz des Kunden sicher gelöscht werd
 - Der virtuelle Computer wird fehlerhaft und muss aufgrund eines Hardwareproblems zur Dienstreparatur zu einem anderen Knoten migriert werden.
 - Ein geringer Anteil der geplanten Wartungsvorgänge, bei denen der virtuelle Computer für die Wartung zu einem anderen Host migriert werden muss.
 
-Weitere Informationen zu Optionen für die Sicherung von Daten im lokalen Speicher finden Sie unter [Sicherung und Notfallwiederherstellung für Azure-IaaS-Datenträger](backup-and-disaster-recovery-for-azure-iaas-disks.md).
+Weitere Informationen zu Optionen für die Sicherung von Daten im lokalen Speicher finden Sie unter [Sicherung und Notfallwiederherstellung für Azure-IaaS-Datenträger](../backup-and-disaster-recovery-for-azure-iaas-disks.md).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -110,4 +110,4 @@ Weitere Informationen zu Optionen für die Sicherung von Daten im lokalen Speich
    
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sehen Sie sich die Spezifikationen für alle [speicheroptimierten virtuellen Computer](sizes-storage.md) in Azure an.
+* Sehen Sie sich die Spezifikationen für alle [speicheroptimierten virtuellen Computer](../sizes-storage.md) in Azure an.

@@ -1,20 +1,20 @@
 ---
 title: Was ist eine BLEU-Bewertung? – Custom Translator
 titleSuffix: Azure Cognitive Services
-description: BLEU ist eine Messung der Unterschiede zwischen einer automatischen Übersetzung und mindestens einer menschlichen Referenzübersetzung desselben Ausgangssatzes. Mit dem BLEU-Algorithmus werden aufeinander folgende Wortgruppen der automatischen Übersetzung mit den aufeinander folgenden Wortgruppen der Referenzübersetzung verglichen, und die Anzahl von Übereinstimmungen wird gezählt (mit Gewichtung).
+description: BLEU ist eine Messung der Unterschiede zwischen einer maschinellen Übersetzung und menschlichen Referenzübersetzungen desselben Ausgangssatzes.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 08/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 1993819ad227d7e9aa5ef899045e00447a6740b8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 61c1efb7337bee5fe329c9d548e23f3931e6ce3c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595420"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88510775"
 ---
 # <a name="what-is-a-bleu-score"></a>Was ist eine BLEU-Bewertung?
 

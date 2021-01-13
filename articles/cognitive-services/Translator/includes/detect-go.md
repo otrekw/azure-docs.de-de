@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c2408d8ea8fb6458761ef1d853d5dde52ac2311
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 7f3824ba4683c5ade4ac5bb84b853caf72e1073b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907141"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587149"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -35,7 +35,7 @@ import (
 
 ## <a name="create-the-main-function"></a>Erstellen der main-Funktion
 
-Dieses Beispiel liest den Textübersetzungs-Abonnementschlüssel und den Endpunkt aus den Umgebungsvariablen `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` und `TRANSLATOR_TEXT_ENDPOINT`. Wenn Sie mit Umgebungsvariablen nicht vertraut sind, können Sie `subscriptionKey` und `endpoint` als Zeichenfolge festlegen und die Bedingungsanweisungen auskommentieren.
+In diesem Beispiel werden der Translator-Abonnementschlüssel und der Endpunkt aus den Umgebungsvariablen `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` und `TRANSLATOR_TEXT_ENDPOINT` gelesen. Wenn Sie mit Umgebungsvariablen nicht vertraut sind, können Sie `subscriptionKey` und `endpoint` als Zeichenfolge festlegen und die Bedingungsanweisungen auskommentieren.
 
 Kopieren Sie diesen Code in Ihr Projekt:
 
@@ -67,7 +67,7 @@ func main() {
 
 ## <a name="create-a-function-to-detect-the-text-language"></a>Erstellen einer Funktion zur Erkennung der Textsprache
 
-In diesem Schritt erstellen wir eine Funktion zur Erkennung der Textsprache. Diese Funktion verwendet ein einzelnes Argument: Ihren Textübersetzungs-Abonnementschlüssel.
+In diesem Schritt erstellen wir eine Funktion zur Erkennung der Textsprache. Von dieser Funktion wird ein einzelnes Argument (Ihr Translator-Abonnementschlüssel) verwendet.
 
 ```go
 func detect(subscriptionKey string, uri string) {
@@ -90,7 +90,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Textübersetzungs-API 3.0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
+> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Translator 3.0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect)
 
 ## <a name="create-a-struct-for-your-request-body"></a>Erstellen einer Struktur für Ihren Anforderungstext
 
@@ -108,7 +108,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>Erstellen der Anforderung
 
-Nachdem Sie nun den Anforderungstext im JSON-Format codiert haben, können Sie Ihre POST-Anforderung erstellen und die Textübersetzungs-API aufrufen.
+Nachdem Sie nun den Anforderungstext im JSON-Format codiert haben, können Sie Ihre POST-Anforderung erstellen und Translator aufrufen.
 
 ```go
 // Build the HTTP POST request
@@ -120,7 +120,7 @@ if err != nil {
 req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
@@ -146,7 +146,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
 
-Das war's: Sie haben ein einfaches Programm erstellt, das die Textübersetzungs-API aufruft und eine JSON-Antwort zurückgibt. Führen Sie das Programm jetzt aus:
+Das war's: Sie haben ein einfaches Programm erstellt, das Translator aufruft und eine JSON-Antwort zurückgibt. Führen Sie das Programm jetzt aus:
 
 ```console
 go run detect-language.go
@@ -156,7 +156,11 @@ go run detect-language.go
 
 ## <a name="sample-response"></a>Beispiel für eine Antwort
 
-Die Abkürzung für das Land bzw. die Region finden Sie in [dieser Liste der Sprachen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Nachdem Sie das Beispiel ausgeführt haben, sollte Folgendes im Terminal ausgegeben werden:
+
+> [!NOTE]
+> Die Abkürzung für das Land bzw. die Region finden Sie in [dieser Liste der Sprachen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+
 
 ```json
 [
@@ -185,7 +189,7 @@ Die Abkürzung für das Land bzw. die Region finden Sie in [dieser Liste der Spr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die API-Referenz an, um zu erfahren, welche Möglichkeiten die Textübersetzungs-API bietet.
+Machen Sie sich anhand der API-Referenz mit den Möglichkeiten von Translator vertraut.
 
 > [!div class="nextstepaction"]
 > [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

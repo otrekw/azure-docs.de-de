@@ -1,27 +1,20 @@
 ---
-title: Übersicht über die automatische Skalierung mit Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
+title: Übersicht über die automatische Skalierung mit Azure-VM-Skalierungsgruppen
 description: Es werden unterschiedliche Möglichkeiten beschrieben, wie Sie eine Azure-VM-Skalierungsgruppe basierend auf der Leistung oder nach einem festen Zeitplan automatisch skalieren können.
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
+author: avirishuv
+ms.author: avverma
+ms.topic: overview
 ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/29/2018
-ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 610f3073594f73f04a68865593be6bfb4188d4f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: autoscale
+ms.date: 06/30/2020
+ms.reviewer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 092b95845ed033ac0705e325fc6535739088848f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883669"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888792"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Übersicht über die automatische Skalierung mit Azure-VM-Skalierungsgruppen
 Mit einer Azure-VM-Skalierungsgruppe kann die Anzahl von VM-Instanzen, von denen Ihre Anwendung ausgeführt wird, automatisch erhöht oder verringert werden. Mit diesem automatisierten und elastischen Verhalten wird der Verwaltungsaufwand reduziert, der für das Überwachen und Optimieren der Leistung Ihrer Anwendung anfällt. Sie erstellen Regeln, mit denen die angemessene Leistung definiert wird, die für eine positive Kundenerfahrung erforderlich ist. Wenn diese definierten Schwellenwerte erfüllt sind, werden von der automatischen Skalierung die Aktionen zum Anpassen der Kapazität Ihrer Skalierungsgruppe durchgeführt. Außerdem können Sie Ereignisse planen, um die Kapazität Ihrer Skalierungsgruppe zu festen Zeiten automatisch zu erhöhen oder zu verringern. Dieser Artikel enthält eine Übersicht darüber, welche Leistungsmetriken verfügbar sind und welche Aktionen von der automatischen Skalierung durchgeführt werden können.
@@ -29,6 +22,9 @@ Mit einer Azure-VM-Skalierungsgruppe kann die Anzahl von VM-Instanzen, von denen
 
 ## <a name="benefits-of-autoscale"></a>Vorteile der automatischen Skalierung
 Wenn sich die Nachfrage für Ihre Anwendung erhöht, erhöht sich auch die Last für die VM-Instanzen in Ihrer Skalierungsgruppe. Falls es sich um eine dauerhafte Last und nicht nur um eine kurzzeitige höhere Nachfrage handelt, können Sie die Regeln für die automatische Skalierung konfigurieren, um die Anzahl von VM-Instanzen in der Skalierungsgruppe zu erhöhen.
+
+> [!NOTE]
+> Wenn Sie automatische Instanzreparaturen für Ihre Skalierungsgruppe verwenden, kann die maximale Anzahl von Instanzen in der Skalierungsgruppe 200 sein. Weitere Informationen zu [automatischem Instanzreparaturen](./virtual-machine-scale-sets-automatic-instance-repairs.md).
 
 Nachdem diese VM-Instanzen erstellt und Ihre Anwendungen bereitgestellt wurden, beginnt die Skalierungsgruppe damit, über das Lastenausgleichsmodul Datenverkehr darauf zu verteilen. Sie steuern, welche Metriken überwacht werden, z.B. CPU oder Arbeitsspeicher, wie lange die Anwendungslast einen bestimmten Schwellenwert einhalten muss und wie viele VM-Instanzen der Skalierungsgruppe hinzugefügt werden sollen.
 
@@ -40,7 +36,7 @@ Sie können Regeln für die automatische Skalierung erstellen, in die Hostmetrik
 
 Regeln zur automatischen Skalierung mit hostbasierten Metriken können mit einem der folgenden Tools erstellt werden:
 
-- [Azure-Portal](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure portal](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
 - [Azure-Befehlszeilenschnittstelle](tutorial-autoscale-cli.md)
 - [Azure-Vorlage](tutorial-autoscale-template.md)
@@ -79,22 +75,22 @@ Wenn Sie Regeln für die automatische Skalierung zum Überwachen einer bestimmte
 
 | Aggregationstyp |
 |------------------|
-| Durchschnitt          |
+| Average          |
 | Minimum          |
 | Maximum          |
 | Gesamt            |
-| Last (Letzter)             |
-| Count            |
+| Letzter             |
+| Anzahl            |
 
 Die Regeln für die automatische Skalierung werden dann ausgelöst, wenn die Metriken mit einem der folgenden Operatoren mit Ihrem definierten Schwellenwert verglichen werden:
 
 | Operator                 |
 |--------------------------|
 | Größer als             |
-| Größer oder gleich |
+| Größer als oder gleich |
 | Kleiner als                |
 | Kleiner als oder gleich    |
-| Ist gleich                 |
+| Gleich                 |
 | Ungleich             |
 
 
@@ -144,6 +140,6 @@ Sie können Regeln für die automatische Skalierung mit hostbasierten Metriken m
 
 In dieser Übersicht wurde ausführlich beschrieben, wie Sie mit Regeln für die automatische Skalierung horizontal skalieren und die *Anzahl* von VM-Instanzen in Ihrer Skalierungsgruppe erhöhen oder verringern. Sie können auch vertikal skalieren, um die *Größe* der VM-Instanz zu erhöhen oder zu verringern. Weitere Informationen finden Sie unter [Vertikale automatische Skalierung mit VM-Skalierungsgruppen](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 
-Informationen zur Verwaltung Ihrer VM-Instanzen finden Sie unter [Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell](virtual-machine-scale-sets-windows-manage.md).
+Informationen zur Verwaltung Ihrer VM-Instanzen finden Sie unter [Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell](./virtual-machine-scale-sets-manage-powershell.md).
 
-Informationen zum Generieren von Warnungen bei der Auslösung von Regeln für die automatische Skalierung finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor](../azure-monitor/platform/autoscale-webhook-email.md). Informieren Sie sich auch über das [Aufrufen eines Webhooks für Azure-Aktivitätsprotokollwarnungen](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
+Informationen zum Generieren von Warnungen bei der Auslösung von Regeln für die automatische Skalierung finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor](../azure-monitor/platform/autoscale-webhook-email.md). Informieren Sie sich auch über das [Aufrufen eines Webhooks für Azure-Aktivitätsprotokollwarnungen](../azure-monitor/platform/alerts-log-webhook.md).

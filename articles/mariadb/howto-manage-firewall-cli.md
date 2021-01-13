@@ -1,18 +1,19 @@
 ---
-title: Erstellen und Verwalten von Firewallregeln für Azure Database for MariaDB mithilfe der Azure CLI
+title: Verwalten von Firewallregeln – Azure-Befehlszeilenschnittstelle – Azure Database for MariaDB
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe der Azure CLI-Befehlszeile Firewallregeln für Azure Database for MariaDB erstellen und verwalten.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
-ms.topic: conceptual
-ms.date: 04/09/2019
-ms.openlocfilehash: 562987b953f0a8a20a917e208f43557bd768c0a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: how-to
+ms.date: 3/18/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ef04e2b4c820c14ea7df6c35ecb0189ef31ef7dc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038619"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540898"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MariaDB mithilfe der Azure CLI
 Mithilfe von Firewallregeln auf Serverebene kann der Zugriff auf einen Azure Database for MariaDB-Server über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwaltet werden. Dank praktischer Azure CLI-Befehle können Sie zum Verwalten Ihres Servers Firewallregeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über Firewalls für Azure Database for MariaDB finden Sie unter [Firewallregeln für den Azure Database for MariaDB-Server](./concepts-firewall-rules.md).
@@ -20,7 +21,7 @@ Mithilfe von Firewallregeln auf Serverebene kann der Zugriff auf einen Azure Dat
 Virtual Network-Regeln (VNET) können auch verwendet werden, um den Zugriff auf Ihren Server zu sichern. Weitere Informationen finden Sie unter [Erstellen und Verwalten von VNET-Dienstendpunkten und -Regeln mithilfe der Azure CLI](howto-manage-vnet-cli.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
 * [Azure Database for MariaDB-Server und eine Datenbank](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 ## <a name="firewall-rule-commands"></a>Befehle für Firewallregeln:

@@ -1,25 +1,25 @@
 ---
-title: Überprüfen der Integrität der Registrierung in Azure Container Registry
+title: Überprüfen des Registrierungszustands
 description: Erfahren Sie, wie Sie einen Kurzdiagnosebefehl ausführen können, um gängige Probleme bei Verwendung einer Azure-Containerregistrierung zu ermitteln, einschließlich lokaler Docker-Konfiguration und Konnektivität mit der Registrierung.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
-ms.author: danlep
-ms.openlocfilehash: 3511655d220ee85ce6b5744612e5d6fddafbe877
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68309730"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88245382"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Überprüfen der Integrität einer Azure-Containerregistrierung
 
 Wenn Sie eine Azure-Containerregistrierung verwenden, können gelegentlich Probleme auftreten. Möglich ist beispielsweise, dass Sie ein Containerimage aufgrund eines Problems mit Docker nicht per Pull in Ihre lokale Umgebung übertragen können. Oder ein Netzwerkproblem verhindert ggf. das Herstellen einer Verbindung mit der Registrierung. 
 
-Führen Sie als ersten Diagnoseschritt den Befehl [az acr check-health][az-acr-check-health] aus, um Informationen zur Integrität der Umgebung abzurufen und optional Zugriff auf eine Zielregistrierung zu erhalten. Dieser Befehl ist ab Version 2.0.67 der Azure-Befehlszeilenschnittstelle verfügbar. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+Führen Sie als ersten Diagnoseschritt den Befehl [az acr check-health][az-acr-check-health] aus, um Informationen zur Integrität der Umgebung abzurufen und optional Zugriff auf eine Zielregistrierung zu erhalten. Dieser Befehl ist ab Version 2.0.67 der Azure-Befehlszeilenschnittstelle verfügbar. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+
+Weitere Hinweise zum Beheben von Problemen bei der Registrierung finden Sie hier:
+* [Beheben von Problemen mit der Registrierungsanmeldung](container-registry-troubleshoot-login.md)
+* [Beheben von Netzwerkproblemen mit der Registrierung](container-registry-troubleshoot-access.md)
+* [Beheben von Problemen mit der Registrierungsleistung](container-registry-troubleshoot-performance.md)
 
 ## <a name="run-az-acr-check-health"></a>Ausführen von „az acr check-health“
 

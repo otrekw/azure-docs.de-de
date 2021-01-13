@@ -3,24 +3,31 @@ title: Beispiel zum Ausführen eines Containers mit dem „docker run“-Befehl
 titleSuffix: Azure Cognitive Services
 description: Docker-Ausführungsbefehl für den Schlüsselbegriffserkennungs-Container
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
-ms.date: 09/12/2019
-ms.author: dapine
-ms.openlocfilehash: b8c3bdfc05e855139b595cd0ba7bd723cdeaee45
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.date: 04/29/2020
+ms.author: aahi
+ms.openlocfilehash: 97efad40b28b1736658ffcbe468fb448edb1dacc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966746"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91779320"
 ---
-Zum Ausführen des Containers für die *Schlüsselbegriffserkennung* führen Sie den folgenden `docker run`-Befehl aus.
+Zum Ausführen des Containers für die *Schlüsselbegriffserkennung* führen Sie den folgenden `docker run`-Befehl aus. Ersetzen Sie die folgenden Platzhalter durch Ihre eigenen Werte:
+
+| Platzhalter | Wert | Format oder Beispiel |
+|-------------|-------|---|
+| **{API_KEY}** | Der Schlüssel für Ihre Textanalyseressource. Sie finden ihn im Azure-Portal auf der Seite **Key and endpoint** (Schlüssel und Endpunkt) Ihrer Ressource. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | Der Endpunkt für den Zugriff auf die Textanalyse-API. Sie finden ihn im Azure-Portal auf der Seite **Key and endpoint** (Schlüssel und Endpunkt) Ihrer Ressource. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
+
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/keyphrase \
+mcr.microsoft.com/azure-cognitive-services/textanalytics/keyphrase \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

@@ -1,10 +1,9 @@
 ---
-title: Überwachen von Netzwerkkommunikation – Tutorial – Azure-Portal | Microsoft-Dokumentation
-description: Informationen zum Überwachen der Netzwerkkommunikation zwischen zwei VMs mit der Verbindungsmonitorfunktion des Network Watchers von Azure.
+title: 'Tutorial: Überwachen der Netzwerkkommunikation über das Azure-Portal'
+description: In diesem Tutorial erfahren Sie, wie Sie die Netzwerkkommunikation zwischen zwei virtuellen Computern mit der Verbindungsmonitorfunktion von Azure Network Watcher überwachen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -13,17 +12,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
-ms.author: kumud
+ms.date: 01/04/2021
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 5cac4a46fb35ef955903018028abbe7588c94dc7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 24b1549b2e460bc0e72fb76f5437b15838604949
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233888"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896361"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Tutorial: Überwachen der Netzwerkkommunikation zwischen zwei virtuellen Computern über das Azure-Portal
+
+> [!NOTE]
+> In diesem Tutorial geht es um den Verbindungsmonitor (klassisch). Testen Sie den neuen und verbesserten [Verbindungsmonitor](connection-monitor-overview.md), um eine verbesserte Konnektivitätsüberwachung zu erhalten.
 
 Erfolgreiche Kommunikation zwischen einem virtuellen Computer (VM) und einem Endpunkt, z.B. einer anderen VM, kann für Ihre Organisation wichtig sein. In manchen Fällen werden Konfigurationsänderungen eingeführt, die die Kommunikation unterbrechen können. In diesem Tutorial lernen Sie Folgendes:
 
@@ -34,6 +36,8 @@ Erfolgreiche Kommunikation zwischen einem virtuellen Computer (VM) und einem End
 > * Diagnostizieren eines Problems bei der Kommunikation zwischen zwei VMs und Informationen zu seiner Lösung
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -51,12 +55,12 @@ Erstellen Sie zwei virtuelle Computer.
 
     |Einstellung|Wert|
     |---|---|
-    |NAME|myVm1|
+    |Name|myVm1|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
-    |Ressourcengruppe| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
-    |Location| Wählen Sie **USA, Osten** aus.|
+    |Subscription| Wählen Sie Ihr Abonnement aus.|
+    |Resource group| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
+    |Standort| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Wählen Sie unter **Einstellungen** die Option **Erweiterungen** aus. Wählen Sie **Erweiterung hinzufügen** und dann **Network Watcher-Agent für Windows** aus, wie in der folgenden Abbildung gezeigt:
@@ -74,9 +78,9 @@ Führen Sie die Schritte in [Erstellen des ersten virtuellen Computers](#create-
 |Schritt|Einstellung|Wert|
 |---|---|---|
 | 1 | Auswählen einer **Ubuntu Server**-Version |                                                                         |
-| 3 | NAME                                  | myVm2                                                                   |
+| 3 | Name                                  | myVm2                                                                   |
 | 3 | Authentifizierungsart                   | Fügen Sie Ihren öffentlichen SSH-Schlüssel ein, oder wählen Sie **Kennwort** aus, und geben Sie ein Kennwort ein. |
-| 3 | Ressourcengruppe                        | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.                 |
+| 3 | Resource group                        | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.                 |
 | 6 | Erweiterungen                            | **Network Watcher-Agent für Linux**                                             |
 
 Die Bereitstellung des virtuellen Computers dauert einige Minuten. Warten Sie, bis die Bereitstellung des virtuellen Computers abgeschlossen ist, bevor Sie mit den weiteren Schritten fortfahren.
@@ -93,10 +97,10 @@ Erstellen Sie einen Verbindungsmonitor zum Überwachen der Kommunikation über T
 
     | Einstellung                  | Wert               |
     | ---------                | ---------           |
-    | NAME                     | myVm1-myVm2(22)     |
+    | Name                     | myVm1-myVm2(22)     |
     | `Source`                   |                     |
     | Virtueller Computer          | myVm1               |
-    | Ziel              |                     |
+    | Destination              |                     |
     | Wählen Sie einen virtuellen Computer aus. |                     |
     | Virtueller Computer          | myVm2               |
     | Port                     | 22                  |
@@ -115,7 +119,7 @@ Erstellen Sie einen Verbindungsmonitor zum Überwachen der Kommunikation über T
 
     Beachten Sie die folgenden Informationen:
 
-    | Item                     | Wert                      | Details                                                     |
+    | Element                     | Wert                      | Details                                                     |
     | ---------                | ---------                  |--------                                                     |
     | Status                   | Erreichbar                  | Informiert Sie darüber, ob der Endpunkt erreichbar ist.|
     | DURCHSCHN. ROUNDTRIPZEIT          | Informiert Sie über die Roundtripzeit zum Herstellen der Verbindung, in Millisekunden. Der Verbindungsmonitor prüft die Verbindung alle 60 Sekunden, sodass Sie die Latenz im Laufe der Zeit überwachen können.                                         |
@@ -130,7 +134,7 @@ Warnungen werden von Warnungsregeln in Azure Monitor erstellt und können in reg
 2. Klicken Sie auf **Ziel auswählen**, und wählen Sie dann die gewünschten Ressourcen aus. Wählen Sie das **Abonnement** aus, und legen Sie **Ressourcentyp** fest, um nach dem zu verwendenden Verbindungsmonitor zu filtern.
 
     ![Fenster „Warnungen“ mit ausgewähltem Ziel](./media/connection-monitor/set-alert-rule.png)
-1. Nachdem Sie eine gewünschte Ressource ausgewählt haben, können Sie **Kriterien hinzufügen** wählen. Der Network Watcher enthält [Metriken zum Erstellen von Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#metrics-and-dimensions-supported). Legen Sie **Verfügbare Signale** auf die Metriken ProbesFailedPercent und AverageRoundtripMs fest:
+1. Nachdem Sie eine gewünschte Ressource ausgewählt haben, können Sie **Kriterien hinzufügen** wählen. Der Network Watcher enthält [Metriken zum Erstellen von Warnungen](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported). Legen Sie **Verfügbare Signale** auf die Metriken ProbesFailedPercent und AverageRoundtripMs fest:
 
     ![Seite „Warnungen“ mit ausgewählten Signalen](./media/connection-monitor/set-alert-signals.png)
 1. Geben Sie die Warnungsdetails an, z.B. Name, Beschreibung und Schweregrad der Warnungsregel. Sie können der Warnung auch eine Aktionsgruppe hinzufügen, um die Antwort auf die Warnung zu automatisieren und anzupassen.
@@ -151,8 +155,8 @@ Standardmäßig ermöglicht Azure die Kommunikation über alle Ports zwischen vi
     | ---                     | ---            |
     | Zielportbereiche | 22             |
     | Aktion                  | Verweigern           |
-    | Priorität                | 100            |
-    | NAME                    | DenySshInbound |
+    | Priority                | 100            |
+    | Name                    | DenySshInbound |
 
 5. Da der Verbindungsmonitor in Intervallen von 60 Sekunden prüft, warten Sie einige Minuten, und wählen Sie auf der linken Seite des Portals **Network Watcher**, dann **Verbindungsmonitor** und schließlich erneut den Monitor **myVm1-myVm2(22)** aus. Die Ergebnisse unterscheiden sich nun, wie in der folgenden Abbildung gezeigt:
 

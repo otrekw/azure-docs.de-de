@@ -6,19 +6,18 @@ manager: philmea
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 11/19/2019
 ms.author: kgremban
-ms.custom: seodec18
-ms.openlocfilehash: 325b69eb7b9b069db0ba49b4578541ee801c3444
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: d07a1d1ab0d3b1f4315c09f1c403126139b34612
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476175"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043900"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Verbinden von ModBus-TCP-Geräten über ein IoT Edge-Gerätegateway
 
-Wenn Sie IoT-Geräte, für die ModBus-TCP- oder -RTU-Protokolle genutzt werden, mit einem Azure IoT Hub verbinden möchten, sollten Sie ein IoT Edge-Gerät als Gateway einsetzen. Das Gatewaygerät liest Daten von Ihren ModBus-Geräten und kommuniziert sie dann über ein unterstütztes Protokoll weiter an die Cloud.
+Wenn Sie IoT-Geräte, für die ModBus-TCP- oder -RTU-Protokolle genutzt werden, mit einem Azure IoT Hub verbinden möchten, können Sie ein IoT Edge-Gerät als Gateway einsetzen. Das Gatewaygerät liest Daten von Ihren ModBus-Geräten und kommuniziert sie dann über ein unterstütztes Protokoll weiter an die Cloud.
 
 ![Verbindung von ModBus-Geräten mit dem IoT-Edge-Gateway](./media/deploy-modbus-gateway/diagram.png)
 
@@ -27,15 +26,16 @@ In diesem Artikel wird beschrieben, wie Sie Ihr eigenes Containerimage für ein 
 In diesem Artikel wird davon ausgegangen, dass Sie das ModBus-TCP-Protokoll verwenden. Weitere Informationen zur Konfiguration des Moduls zur Unterstützung von ModBus-RTU finden Sie im Projekt [ModBus-Modul für Azure IoT Edge](https://github.com/Azure/iot-edge-modbus) auf GitHub.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 * Ein Azure IoT Edge-Gerät. Eine exemplarische Vorgehensweise zur Einrichtung finden Sie unter [Bereitstellen von Azure IoT Edge unter Windows](quickstart.md) oder [Linux](quickstart-linux.md).
 * Die Verbindungszeichenfolge des primären Schlüssels für das IoT Edge-Gerät
-* Ein physisches oder simuliertes ModBus-Gerät, das ModBus-TCP unterstützt.
+* Ein physisches oder simuliertes ModBus-Gerät, das ModBus-TCP unterstützt. Sie müssen dessen IPv4-Adresse kennen.
 
 ## <a name="prepare-a-modbus-container"></a>Vorbereiten eines ModBus-Containers
 
-Wenn Sie die Funktionalität des ModBus-Gateways testen möchten, können Sie ein von Microsoft bereitgestelltes Beispielmodul verwenden. Sie können auf das Modul über Azure Marketplace [Modbus](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview) oder über den Image-URI **mcr.microsoft.com/azureiotedge/modbus:1.0** zugreifen.
+Wenn Sie die Funktionalität des ModBus-Gateways testen möchten, können Sie ein von Microsoft bereitgestelltes Beispielmodul verwenden. Sie können auf das Modul über den Azure Marketplace, [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview) oder mit dem Image-URI, `mcr.microsoft.com/azureiotedge/modbus:1.0`, zugreifen.
 
-Falls Sie Ihr eigenes Modul erstellen und für Ihre Umgebung anpassen möchten, können Sie das Open-Source-Projekt [Azure IoT Edge Modbus module](https://github.com/Azure/iot-edge-modbus) (ModBus-Modul für Azure IoT Edge) auf GitHub nutzen. Befolgen Sie die Anweisungen in diesem Projekt, um Ihr eigenes Containerimage zu erstellen. Lesen Sie [Entwickeln von C#-Modulen in Visual Studio](how-to-visual-studio-develop-csharp-module.md) oder [Entwickeln von Modulen in Visual Studio Code](how-to-vs-code-develop-module.md), um ein eigenes Containerimage zu erstellen. Diese Artikel bieten Anweisungen zum Erstellen neuer Module und zum Veröffentlichen von Containerimages in einer Registrierung.
+Falls Sie Ihr eigenes Modul erstellen und für Ihre Umgebung anpassen möchten, können Sie das Open-Source-Projekt [Azure IoT Edge Modbus module](https://github.com/Azure/iot-edge-modbus) (ModBus-Modul für Azure IoT Edge) auf GitHub nutzen. Befolgen Sie die Anweisungen in diesem Projekt, um Ihr eigenes Containerimage zu erstellen. Lesen Sie [Entwickeln von C#-Modulen in Visual Studio](./how-to-visual-studio-develop-module.md) oder [Entwickeln von Modulen in Visual Studio Code](how-to-vs-code-develop-module.md), um ein eigenes Containerimage zu erstellen. Diese Artikel bieten Anweisungen zum Erstellen neuer Module und zum Veröffentlichen von Containerimages in einer Registrierung.
 
 ## <a name="try-the-solution"></a>Testen der Lösung
 
@@ -47,69 +47,34 @@ Dieser Abschnitt führt Sie durch die Bereitstellung des Modbus-Beispielmoduls v
 
 3. Wählen Sie **Module festlegen** aus.
 
-4. Fügen Sie das ModBus-Modul hinzu:
+4. Fügen Sie im Abschnitt **IoT Edge-Module** das Modbus-Modul hinzu:
 
-   1. Klicken Sie auf **Hinzufügen** und anschließend auf **IoT Edge-Modul**.
+   1. Klicken Sie auf das Dropdownfeld **Hinzufügen**, und wählen Sie **Marketplace-Modul** aus.
+   2. Suchen Sie nach `Modbus`, und wählen Sie das **Modbus-TCP-Modul** von Microsoft aus.
+   3. Das Modul wird für Ihren IoT Hub automatisch konfiguriert und in der Liste der IoT Edge-Module angezeigt. Die Routen werden ebenfalls automatisch konfiguriert. Klicken Sie auf **Überprüfen + erstellen**.
+   4. Überprüfen Sie das Bereitstellungsmanifest, und wählen Sie **Erstellen** aus.
 
-   2. Geben Sie im Feld **Name** den Text „modbus“ ein.
+5. Wählen Sie in der Liste das Modbus-Modul, `ModbusTCPModule`, und dann die Registerkarte **Einstellungen für Modulzwilling** aus. Der erforderliche JSON-Code für die gewünschten Eigenschaften des Modulzwillings wird automatisch aufgefüllt.
 
-   3. Geben Sie im Feld **Image** den Image-URI des Beispielcontainers ein: `mcr.microsoft.com/azureiotedge/modbus:1.0`.
+6. Suchen Sie im JSON-Code nach der Eigenschaft **SlaveConnection**, und legen Sie deren Wert auf die IPv4-Adresse Ihres Modbus-Geräts fest.
 
-   4. Aktivieren Sie das Kontrollkästchen **Aktivieren**, um die gewünschten Eigenschaften des Modulzwillings zu aktualisieren.
+7. Wählen Sie **Update** aus.
 
-   5. Kopieren Sie den folgenden JSON-Code in das Textfeld. Ändern Sie den Wert von **SlaveConnection** in die IPv4-Adresse Ihres ModBus-Geräts.
+8. Wählen Sie **Überprüfen + erstellen** aus, überprüfen Sie die Bereitstellung, und wählen Sie **Erstellen** aus.
 
-      ```JSON
-      {
-        "properties.desired":{
-          "PublishInterval":"2000",
-          "SlaveConfigs":{
-            "Slave01":{
-              "SlaveConnection":"<IPV4 address>","HwId":"PowerMeter-0a:01:01:01:01:01",
-              "Operations":{
-                "Op01":{
-                  "PollingInterval": "1000",
-                  "UnitId":"1",
-                  "StartAddress":"40001",
-                  "Count":"2",
-                  "DisplayName":"Voltage"
-                }
-              }
-            }
-          }
-        }
-      }
-      ```
-
-   6. Wählen Sie **Speichern** aus.
-
-5. Wenn Sie zum Schritt **Module hinzufügen** zurückgekehrt sind, wählen Sie **Weiter** aus.
-
-7. Kopieren Sie im Schritt **Routen angeben** den unten angegebenen JSON-Code in das Textfeld. Für diese Route werden alle Nachrichten, die vom ModBus-Modul gesammelt wurden, an den IoT Hub gesendet. Bei dieser Route ist **modbusOutput** der Endpunkt, der vom ModBus-Modul zum Ausgeben von Daten verwendet wird, und **$upstream** ist ein spezielles Ziel, das den IoT Edge-Hub zum Senden von Nachrichten an den IoT Hub anweist.
-
-   ```JSON
-   {
-     "routes": {
-       "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
-     }
-   }
-   ```
-
-8. Klicken Sie auf **Weiter**.
-
-9. Klicken Sie im Schritt für die **Bereitstellungsüberprüfung** auf **Übermitteln**.
-
-10. Kehren Sie zur Seite mit Gerätedetails zurück, und wählen Sie **Aktualisieren** aus. Das neue Modul **modbus** sollte nun zusammen mit der IoT Edge-Runtime ausgeführt werden.
+9. Kehren Sie zur Seite mit Gerätedetails zurück, und wählen Sie **Aktualisieren** aus. Das neue Modul `ModbusTCPModule` sollte nun zusammen mit der IoT Edge-Runtime ausgeführt werden.
 
 ## <a name="view-data"></a>Anzeigen von Daten
+
 Zeigen Sie die Daten an, die über das ModBus-Modul eingehen:
+
 ```cmd/sh
 iotedge logs modbus
 ```
 
-Die vom Gerät gesendeten Telemetriedaten können Sie auch anzeigen, indem Sie [Azure IoT Hub Toolkit extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (die Azure IoT Hub-Toolkit-Erweiterung für Visual Studio Code, früher: Azure IoT Toolkit-Erweiterung) verwenden.
+Sie können die vom Gerät gesendeten Telemetriedaten auch anzeigen, indem Sie die [Azure IoT Hub-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (früher: Azure IoT Toolkit-Erweiterung) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zur Nutzung von IoT Edge-Geräten als Gateways finden Sie unter [Erstellen eines IoT Edge-Geräts, das als transparentes Gateway fungiert](./how-to-create-transparent-gateway.md).
-- Weitere Informationen zur Funktionsweise von IoT Edge-Modulen finden Sie unter [Grundlegendes zu Azure IoT Edge-Modulen](iot-edge-modules.md).
+* Weitere Informationen zur Nutzung von IoT Edge-Geräten als Gateways finden Sie unter [Erstellen eines IoT Edge-Geräts, das als transparentes Gateway fungiert](./how-to-create-transparent-gateway.md).
+* Weitere Informationen zur Funktionsweise von IoT Edge-Modulen finden Sie unter [Grundlegendes zu Azure IoT Edge-Modulen](iot-edge-modules.md).

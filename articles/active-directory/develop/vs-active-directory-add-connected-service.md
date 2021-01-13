@@ -1,27 +1,25 @@
 ---
-title: Hinzufügen von Azure Active Directory mithilfe von verbundenen Diensten in Visual Studio
+title: Verwenden des verbundenen Active Directory-Diensts (Visual Studio)
 description: Fügen Sie Azure Active Directory mithilfe des Dialogfelds "Verbundene Dienste hinzufügen" in Visual Studio hinzu
 author: ghogen
 manager: jillfra
-ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
-ms.custom: aaddev, vs-azure
+ms.custom: devx-track-csharp, aaddev, vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c02821a41faa976f8f35984ecf48f425239e6fd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a1ba7db72743ac122a697bf271e783ec64e041e8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881174"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88165480"
 ---
-# <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Hinzufügen von Azure Active Directory mithilfe von verbundenen Diensten in Visual Studio
+# <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Hinzufügen von Azure Active Directory mithilfe von verbundenen Diensten in Visual Studio
 
-Mithilfe von Azure Active Directory (Azure AD) können Sie das einmalige Anmelden (Single Sign-On, SSO) für ASP.NET MVC-Webanwendungen oder Active Directory-Authentifizierung in Web-API-Diensten unterstützen. Mit der Azure AD-Authentifizierung können Ihre Benutzer ihre Konten in Azure Active Directory verwenden, um eine Verbindung mit Ihren Webanwendungen herzustellen. Die Vorteile der Azure AD-Authentifizierung mit Web-API sind u. a. eine verbesserte Sicherheit, wenn eine API über eine Webanwendung verfügbar gemacht wird. Mit Azure AD benötigen Sie kein separates Authentifizierungssystem mit eigenem Konto und Benutzerverwaltung.
+Mithilfe von Azure Active Directory (Azure AD) können Sie das einmalige Anmelden (Single Sign-On, SSO) für ASP.NET MVC-Webanwendungen oder die Active Directory-Authentifizierung in Web-API-Diensten unterstützen. Mit der Azure AD-Authentifizierung können Ihre Benutzer ihre Konten in Azure Active Directory verwenden, um eine Verbindung mit Ihren Webanwendungen herzustellen. Die Vorteile der Azure AD-Authentifizierung mit Web-API sind u. a. eine verbesserte Datensicherheit, wenn eine API über eine Webanwendung verfügbar gemacht wird. Mit Azure AD benötigen Sie kein separates Authentifizierungssystem mit eigenem Konto und Benutzerverwaltung.
 
 Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Features „Verbundener Visual Studio-Dienst“ für Active Directory. Die Funktion ist in Visual Studio 2015 und höher verfügbar.
 
@@ -67,12 +65,12 @@ Derzeit unterstützt der verbundene Dienst für Active Directory keine ASP.NET C
 
 ## <a name="how-your-project-is-modified"></a>Änderungen am Projekt
 
-Beim Hinzufügen des verbundenen Diensts zum Assistenten fügt Visual Studio Ihrem Projekt Azure Active Directory und entsprechende Verweise hinzu. Zudem werden Konfigurationsdateien und Codedateien im Projekt geändert, um Unterstützung für Azure AD hinzuzufügen. Die genauen Änderungen, die von Visual Studio vorgenommen werden, hängen vom Projekttyp ab. Die folgenden Artikel enthalten hierzu ausführliche Informationen:
+Beim Hinzufügen des verbundenen Diensts zum Assistenten fügt Visual Studio Ihrem Projekt Azure Active Directory und entsprechende Verweise hinzu. Zudem werden Konfigurationsdateien und Codedateien im Projekt geändert, um Unterstützung für Azure AD hinzuzufügen. Die genauen Änderungen, die von Visual Studio vorgenommen werden, hängen vom Projekttyp ab. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Was ist mit meinem .NET MVC-Projekt passiert?](vs-active-directory-dotnet-what-happened.md)
 - [Was ist mit meinem Web-API-Projekt passiert?](vs-active-directory-webapi-what-happened.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Authentifizierungsszenarien für Azure Active Directory](authentication-scenarios.md)
-- [Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App](quickstart-v1-aspnet-webapp.md)
+- [Authentifizierungsszenarien für Azure Active Directory](./authentication-vs-authorization.md)
+- [Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App](quickstart-v2-aspnet-webapp.md)

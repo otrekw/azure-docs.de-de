@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 637d4e7bc75537d99538048700673192534613dc
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4c8cd4aa3e91c5d69c40e47683818ed8bc9be338
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073381"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86249902"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Produktvorlagen in Azure API Management
 
@@ -31,11 +31,13 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 -   [Produkt](#Product)  
   
 > [!NOTE]
->  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund von kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund von kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](./api-management-developer-portal-templates.md).  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a> Produktliste  
+##  <a name="product-list"></a><a name="ProductList"></a> Produktliste  
  Mit der Vorlage für die **Produktliste** können Sie den Text der Produktlistenseite im Entwicklerportal anpassen.  
   
  ![Produktliste](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
@@ -77,7 +79,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
   
 ### <a name="data-model"></a>Datenmodell  
   
-|Eigenschaft|Typ|BESCHREIBUNG|  
+|Eigenschaft|type|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
 |Paging|Entität [Paging](api-management-template-data-model-reference.md#Paging).|Die Seiteninformationen für die Produktsammlung.|  
 |Filterung|Entität [Filtering](api-management-template-data-model-reference.md#Filtering).|Die Filterinformationen für die Produktlistenseite.|  
@@ -121,7 +123,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 }  
 ```  
   
-##  <a name="Product"></a> Produkt  
+##  <a name="product"></a><a name="Product"></a> Produkt  
  Mit der Vorlage **Produkt** können Sie den Text der Produktseite im Entwicklerportal anpassen.  
   
  ![Produktseite im Entwicklerportal](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
@@ -202,14 +204,14 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
   
 ### <a name="data-model"></a>Datenmodell  
   
-|Eigenschaft|Typ|BESCHREIBUNG|  
+|Eigenschaft|type|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
 |Produkt|[Produkt](api-management-template-data-model-reference.md#Product)|Das angegebene Produkt.|  
 |IsDeveloperSubscribed|boolean|Gibt an, ob der aktuelle Benutzer dieses Produkt abonniert hat.|  
 |SubscriptionState|number|Der Status des Abonnements. Mögliche Statusangaben:<br /><br /> -   `0 - suspended`: Das Abonnement ist blockiert, und der Abonnent kann keine APIs des Produkts aufrufen.<br />-   `1 - active`: Das Abonnement ist aktiv.<br />-   `2 - expired`: Das Abonnement hat das Ablaufdatum erreicht und wurde deaktiviert.<br />-   `3 - submitted`: Die Abonnementanforderung wurde vom Entwickler gesendet, aber noch nicht genehmigt oder abgelehnt.<br />-   `4 - rejected`: Die Abonnementanforderung wurde von einem Administrator abgelehnt.<br />-   `5 - cancelled`: Das Abonnement wurde vom Entwickler oder Administrator abgebrochen.|  
 |Einschränkungen|array|Diese Eigenschaft ist veraltet und sollte nicht verwendet werden.|  
-|DelegatedSubscriptionEnabled|boolean|Gibt an, ob für dieses Abonnement die [Delegierung](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) aktiviert ist.|  
-|DelegatedSubscriptionUrl|Zeichenfolge|Gibt bei aktivierter Delegierung die URL des delegierten Abonnements an.|  
+|DelegatedSubscriptionEnabled|boolean|Gibt an, ob für dieses Abonnement die [Delegierung](./api-management-howto-setup-delegation.md) aktiviert ist.|  
+|DelegatedSubscriptionUrl|string|Gibt bei aktivierter Delegierung die URL des delegierten Abonnements an.|  
 |IsAgreed|boolean|Wenn für das Produkt Bedingungen gelten, gibt dieser Wert an, ob der aktuelle Benutzer den Nutzungsbedingungen zugestimmt hat.|  
 |Abonnements|Sammlung von [Subscription summary](api-management-template-data-model-reference.md#SubscriptionSummary)-Entitäten.|Die Abonnements für das Produkt.|  
 |Apis|Sammlung von [API](api-management-template-data-model-reference.md#API)-Entitäten.|Die APIs in dieses Produkt.|  

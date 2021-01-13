@@ -1,20 +1,14 @@
 ---
-title: Erste Schritte mit Azure Advisor | Microsoft Docs
+title: Erste Schritte mit Azure Advisor
 description: Erste Schritte mit Azure Advisor.
-services: advisor
-author: kasparks
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
-ms.author: kasparks
-ms.openlocfilehash: f91e48a532a278c95d50775e135ac6379e8d8070
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332058"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85117861"
 ---
 # <a name="get-started-with-azure-advisor"></a>Erste Schritte mit Azure Advisor
 
@@ -33,7 +27,7 @@ Erfahren Sie, wie Sie über das Azure-Portal auf den Advisor zugreifen, und wie 
 
 1. Das Advisor-Dashboard zeigt eine Zusammenfassung Ihrer Empfehlungen für alle ausgewählten Abonnements an.  Sie können mithilfe der Abonnementfilter-Dropdownliste die Abonnements auswählen, für die Empfehlungen angezeigt werden sollen.
 
-1. Um Empfehlungen zu einer bestimmten Kategorie zu erhalten, klicken Sie auf eine dieser Registerkarten: **Hochverfügbarkeit**, **Sicherheit**, **Leistung** oder **Kosten**. 
+1. Um Empfehlungen zu einer bestimmten Kategorie zu erhalten, klicken Sie auf eine dieser Registerkarten: **Zuverlässigkeit**, **Sicherheit**, **Leistung** oder **Kosten**. 
 
    ![Azure Advisor-Dashboard](./media/advisor-overview/advisor-dashboard.png)
 
@@ -88,7 +82,7 @@ Für manche Ressourcengruppen oder Abonnements möchten Sie möglicherweise kein
 
     ![Beispiel für das Konfigurieren von Ressourcen im Advisor](./media/advisor-get-started/advisor-configure-resources.png)
 
-1. Klicken Sie auf die Schaltfläche **Apply** (Anwenden).
+1. Klicken Sie auf die Schaltfläche **Übernehmen**.
 
 ## <a name="configure-low-usage-vm-recommendation"></a>Empfehlung für das Konfigurieren von VMs mit geringer Auslastung
 
@@ -130,7 +124,8 @@ Die Option zum Herunterladen berücksichtigt alle Filter, die Sie auf dem Adviso
 Weitere Informationen zum Advisor:
 
 - [Einführung in Azure Advisor](advisor-overview.md)
-- [Advisor-Empfehlungen für Hochverfügbarkeit](advisor-high-availability-recommendations.md)
+- [Advisor-Empfehlungen zur Zuverlässigkeit](advisor-high-availability-recommendations.md)
 - [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
 - [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
-- [Advisor-Empfehlungen zu Kosten](advisor-performance-recommendations.md)
+- [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md)
+- [Advisor-Empfehlungen für einen optimalen Betrieb](advisor-operational-excellence-recommendations.md)

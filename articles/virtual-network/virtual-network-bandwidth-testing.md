@@ -1,23 +1,23 @@
 ---
 title: Testen des Azure-VM-Netzwerkdurchsatzes
 titlesuffix: Azure Virtual Network
-description: Informationen zum Testen des Netzwerkdurchsatzes virtueller Azure-Computer.
+description: Verwenden Sie NTTTCP, um das Netzwerk gezielt zu testen und den Einsatz anderer Ressourcen, die die Leistung beeinträchtigen könnten, zu minimieren.
 services: virtual-network
 documentationcenter: na
 author: steveesp
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/21/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743075"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812283"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Testen der Bandbreite / des Durchsatzes (NTTTCP)
 
@@ -26,7 +26,7 @@ Wenn Sie die Leistung des Netzwerkdurchsatzes in Azure testen, ist es empfehlens
 Kopieren Sie das Tool in zwei virtuelle Azure-Computer der selben Größe. Ein virtueller Computer fungiert als SENDER und der andere als EMPFÄNGER.
 
 #### <a name="deploying-vms-for-testing"></a>Bereitstellen von virtuellen Computern zu Testzwecken
-Im Rahmen dieser Test sollten sich die beiden virtuellen Computer entweder im selben Clouddienst oder in der gleichen Verfügbarkeitsgruppe befinden, sodass wir deren externe IPs verwenden und die Load Balancer aus dem Text ausschließen können. Es ist möglich, einen Test mit der VIP-Adresse durchzuführen, aber diese Art von Tests geht über den Rahmen dieses Dokuments hinaus.
+Im Rahmen dieser Test sollten sich die beiden VMs entweder in der gleichen [Näherungsplatzierungsgruppe](../virtual-machines/windows/co-location.md) oder in der gleichen Verfügbarkeitsgruppe befinden, sodass wir deren externe IPs verwenden und die Load Balancer aus dem Test ausschließen können. Es ist möglich, einen Test mit der VIP-Adresse durchzuführen, aber diese Art von Tests geht über den Rahmen dieses Dokuments hinaus.
 
 Notieren Sie die IP-Adresse des EMPFÄNGERS. Nennen wir diese IP-Adresse „a.b.c.r“
 

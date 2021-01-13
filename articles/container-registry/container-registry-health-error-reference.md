@@ -1,19 +1,14 @@
 ---
-title: 'Fehlerreferenz für die Integritätsprüfung: Azure Container Registry'
+title: Fehlerreferenz für Registrierungsintegritätsprüfung
 description: Fehlercodes und mögliche Lösungen für Probleme, die beim Ausführen des Diagnosebefehls az acr check-health in Azure Container Registry gefunden wurden.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
-ms.author: danlep
-ms.openlocfilehash: 3bb81f33823fff5fb47f5bbbf6bb9b798b26d8af
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840358"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91565597"
 ---
 # <a name="health-check-error-reference"></a>Fehlerreferenz für die Integritätsprüfung
 
@@ -63,7 +58,7 @@ Dieser Fehler weist darauf hin, dass das DNS für den angegebenen Registrierungs
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-Dieser Fehler weist darauf hin, dass der Abfrageendpunkt für die angegebene Registrierung mit dem HTTP-Status 403 Forbidden geantwortet hat. Dieser Fehler weist darauf hin, dass Benutzer keinen Zugriff auf die Registrierung besitzen, wahrscheinlich aufgrund der Konfiguration eines virtuellen Netzwerks. Führen Sie `az acr show --query networkRuleSet --name <registry>` aus, um die zurzeit konfigurierten Firewallregeln anzuzeigen.
+Dieser Fehler weist darauf hin, dass der Abfrageendpunkt für die angegebene Registrierung mit dem HTTP-Status 403 Forbidden geantwortet hat. Dieser Fehler weist darauf hin, dass Benutzer keinen Zugriff auf die Registrierung besitzen, wahrscheinlich aufgrund der Konfiguration eines virtuellen Netzwerks oder weil der Zugriff auf den öffentlichen Endpunkt der Registrierung unzulässig ist. Führen Sie `az acr show --query networkRuleSet --name <registry>` aus, um die zurzeit konfigurierten Firewallregeln anzuzeigen.
 
 *Mögliche Lösungen*: Entfernen Sie Regeln für virtuelle Netzwerke, oder fügen Sie die aktuelle IP-Clientadresse der Zulassungsliste hinzu.
 
@@ -95,13 +90,17 @@ Dieser Fehler bedeutet, dass der Registrierungsanmeldeserver nicht mit einem Zug
 
 Dieser Fehler bedeutet, dass der Client keine sichere Verbindung mit der Containerregistrierung herstellen konnte. Dieser Fehler tritt im Allgemeinen auf, wenn Sie einen Proxyserver ausführen oder verwenden.
 
-*Mögliche Lösungen*: Weitere Informationen zum Arbeiten hinter einem Proxy [finden Sie hier](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy).
+*Mögliche Lösungen*: Weitere Informationen zum Arbeiten hinter einem Proxy [finden Sie hier](/cli/azure/use-cli-effectively).
 
 ## <a name="login_server_error"></a>LOGIN_SERVER_ERROR
 
 Dieser Fehler weist darauf hin, dass die CLI den Anmeldeserver der angegebenen Registrierung nicht finden konnte und kein Standardsuffix für die aktuelle Cloud gefunden wurde. Dieser Fehler kann auftreten, wenn die Registrierung nicht vorhanden ist, wenn der Benutzer nicht über die richtigen Berechtigungen für die Registrierung verfügt, wenn die Cloud der Registrierung und die aktuelle Azure CLI Cloud nicht übereinstimmen oder wenn die Version der Azure CLI veraltet ist.
 
 *Mögliche Lösungen*: Vergewissern Sie sich, dass die Schreibweise richtig und die Registrierung vorhanden ist. Stellen Sie sicher, dass der Benutzer die richtigen Berechtigungen für die Registrierung besitzt und dass die Clouds der Registrierung und der CLI-Umgebung übereinstimmen. Aktualisieren Sie die Azure CLI auf die neueste Version.
+
+## <a name="notary_version_error"></a>NOTARY_VERSION_ERROR
+
+Dieser Fehler bedeutet, dass die CLI nicht mit der aktuell installierten Version von Docker/Notary kompatibel ist. Versuchen Sie, die Version von „notary.exe“ auf eine Version vor 0.6.0 herabzustufen, indem Sie den Notary-Client Ihrer Docker-Installation manuell ersetzen, um dieses Problem zu beheben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

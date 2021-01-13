@@ -1,137 +1,193 @@
 - name: Dokumentation zu Azure Cache for Redis
-  href: index.md
+  href: index.yml
 - name: Übersicht
   items:
     - name: Informationen zu Azure Cache for Redis
       href: cache-overview.md
+    - name: Neues
+      href: cache-whats-new.md
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen einer ASP.NET-App
-      href: cache-web-app-howto.md
-    - name: Erstellen einer .NET-App
-      href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: Erstellen einer .NET Core-App
-      href: cache-dotnet-core-quickstart.md
-    - name: Erstellen einer Node.js-App
-      href: cache-nodejs-get-started.md
-    - name: Erstellen einer Java-App
-      href: cache-java-get-started.md
-    - name: Erstellen einer Python-App
-      href: cache-python-get-started.md
-- name: Lernprogramme
+    - name: Erstellen eines Caches
+      items:
+        - name: 'Tarife „Basic“, „Standard“ und „Premium“'
+          href: quickstart-create-redis.md
+        - name: Enterprise-Tarife
+          href: quickstart-create-redis-enterprise.md
+    - name: Verwenden eines Cache
+      items:
+        - name: ASP.NET-App
+          href: cache-web-app-howto.md
+        - name: .NET Core-App
+          href: cache-dotnet-core-quickstart.md
+        - name: .NET-App
+          href: cache-dotnet-how-to-use-azure-redis-cache.md
+        - name: Java-App
+          href: cache-java-get-started.md
+        - name: Node.js-App
+          href: cache-nodejs-get-started.md
+        - name: Python-App
+          href: cache-python-get-started.md
+- name: Tutorials
   items:
-    - name: Verwenden von Caching mit Bestenlisten
+    - name: ASP.NET
+      items:
+        - name: Verwenden eines Sitzungszustandsanbieters
+          href: cache-aspnet-session-state-provider.md
+        - name: Verwenden eines Ausgabecacheanbieters
+          href: cache-aspnet-output-cache-provider.md
+    - name: Java Spring
+      items:
+        - name: Verwenden einer Spring Boot Initializer-Instanz
+          href: /azure/developer/java/spring-framework/configure-spring-boot-initializer-java-app-with-redis-cache
+    - name: Erstellen von Bestenlisten
       href: cache-web-app-cache-aside-leaderboard.md
-- name: Beispiele
-  items:
-    - name: Beispiele für Azure Cache for Redis
-      href: cache-redis-samples.md
-    - name: Azure PowerShell
-      href: cache-howto-manage-redis-cache-powershell.md
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Bereitstellen eines Machine Learning-Modells
+      href: cache-ml.md
+    - name: Verwalten mit Azure PowerShell
+      href: cache-how-to-manage-redis-cache-powershell.md
+    - name: Verwalten mit der Azure CLI
       href: cli-samples.md
 - name: Konzepte
   items:
+    - name: Hochverfügbarkeit
+      href: cache-high-availability.md
+    - name: Failover und Patching
+      href: cache-failover.md
     - name: Bewährte Methoden
+      href: cache-best-practices.md
+    - name: Sicherheit
       items:
-        - name: Bewährte Methoden für Azure Cache for Redis
-          href: cache-best-practices.md
-        - name: 'Azure-Architektur: empfohlene Methoden für die Zwischenspeicherung'
-          href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
+        - name: Optionen für die Netzwerkisolation
+          href: cache-network-isolation.md
+        - name: Sicherheitskontrollen von Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
+    - name: Cachingarchitektur
+      href: /azure/architecture/best-practices/caching?toc=%2fazure%2fredis-cache%2ftoc.json
 - name: Anleitungen
   items:
-    - name: Plan
+    - name: Planen
       items:
         - name: Auswählen einer Cacheebene
-          href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
-        - name: Einrichten eines persistenten Cache mit Redis-Datenpersistenz
-          href: cache-how-to-premium-persistence.md
-        - name: Schützen Ihres Caches mit einem virtuellen Netzwerk
-          href: cache-how-to-premium-vnet.md
+          href: cache-overview.md#choosing-the-right-tier
+        - name: Festlegen der Redis-Version
+          href: cache-how-to-version.md
         - name: Verteilen Ihres Caches mit Clustering
           href: cache-how-to-premium-clustering.md
-        - name: Migrieren von Managed Cache Service
-          href: cache-migrate-to-redis.md
+        - name: Einrichten eines persistenten Cache mit Redis-Datenpersistenz
+          href: cache-how-to-premium-persistence.md
+        - name: Hinzufügen weiterer Replikate
+          href: cache-how-to-multi-replicas.md
+        - name: Schützen Ihres Caches mit einem virtuellen Netzwerk
+          href: cache-how-to-premium-vnet.md
+        - name: Herstellen einer privaten Verbindung mit einem Cache
+          href: cache-private-link.md
+        - name: Aktivieren der Zonenredundanz
+          href: cache-how-to-zone-redundancy.md
+        - name: Einrichten der Georeplikation
+          href: cache-how-to-geo-replication.md
+        - name: Sparen mit reservierter Kapazität
+          href: cache-reserved-pricing.md
+        - name: Migrieren zu Azure Cache for Redis
+          href: cache-migration-guide.md
+        - name: Häufig gestellte Fragen zur Planung
+          href: cache-planning-faq.md
+    - name: Erstellen
+      items:
+        - name: Häufig gestellte Fragen zur Entwicklung
+          href: cache-development-faq.md
     - name: Automatisieren
       items:
         - name: Bereitstellen und Verwalten mithilfe von Azure PowerShell
-          href: cache-howto-manage-redis-cache-powershell.md
+          href: cache-how-to-manage-redis-cache-powershell.md
         - name: Bereitstellen und Verwalten mithilfe der Azure-Befehlszeilenschnittstelle
           href: cli-samples.md
-        - name: Bereitstellen einer Azure Cache for Redis-Instanz
+        - name: 'Erstellen einer Redis Cache-Instanz: ARM-Vorlage'
+          displayName: Resource Manager
           href: cache-redis-cache-arm-provision.md
-        - name: Bereitstellen einer Web-App mit Azure Cache for Redis
+        - name: 'Erstellen einer Web-App mit Redis Cache: ARM-Vorlage'
+          displayName: Resource Manager
           href: cache-web-app-arm-with-redis-cache-provision.md
-    - name: Integration mit ASP.NET
-      items:
-        - name: Sitzungszustandsanbieter
-          href: cache-aspnet-session-state-provider.md
-        - name: Ausgabecacheanbieter
-          href: cache-aspnet-output-cache-provider.md
     - name: Verwalten
       items:
         - name: Konfigurieren im Azure-Portal
           href: cache-configure.md
-        - name: Konfigurieren der Georeplikation
-          href: cache-how-to-geo-replication.md
         - name: Importieren/Exportieren von Daten
           href: cache-how-to-import-export-data.md
         - name: Reboot
-          href: 'cache-administration.md#reboot'
+          href: cache-administration.md#reboot
         - name: Planen von Updates
-          href: 'cache-administration.md#schedule-updates'
+          href: cache-administration.md#schedule-updates
         - name: Konfigurieren des Zugriffs für „redis-cli.exe“
           href: cache-how-to-redis-cli-tool.md
-    - name: Überwachen und Behandeln von Problemen
+        - name: "Entfernen von TLS\_1.0 und\_1.1"
+          href: cache-remove-tls-10-11.md
+        - name: Häufig gestellte Fragen zur Verwaltung
+          href: cache-management-faq.md
+    - name: Überwachen
       items:
         - name: Überwachen im Azure-Portal
           href: cache-how-to-monitor.md
-        - name: Behandeln von Cacheproblemen
-          href: cache-how-to-troubleshoot.md
         - name: Festlegen von Warnungen für Ausnahmen
-          href: 'cache-how-to-monitor.md#operations-and-alerts'
+          href: cache-how-to-monitor.md#operations-and-alerts
+        - name: Häufig gestellte Fragen zur Überwachung
+          href: cache-monitor-troubleshoot-faq.md
     - name: Skalieren
       items:
         - name: Aktualisieren auf eine andere Größe und einen anderen Tarif
           href: cache-how-to-scale.md
-        - name: Horizontales Herunter-/Hochskalieren mithilfe des Redis-Clusters
+        - name: Ab-/Aufskalieren mithilfe des Redis-Clusters
           href: cache-how-to-premium-clustering.md
-    - name: Integrieren in Spring Boot
+    - name: Diagnostizieren und Behandeln von Problemen
       items:
-        - name: Verwenden einer Spring Boot Initializer-App mit Azure Cache for Redis
-          href: cache-java-spring-boot-initializer-with-redis-cache.md
+        - name: Problembehandlung für Redis-Server
+          href: cache-troubleshoot-server.md
+        - name: Problembehandlung für Redis-Clients
+          href: cache-troubleshoot-client.md
+        - name: Problembehandlung bei Timeouts
+          href: cache-troubleshoot-timeouts.md
+        - name: Problembehandlung bei Datenverlusten
+          href: cache-troubleshoot-data-loss.md
+        - name: Häufig gestellte Fragen zur Problembehandlung
+          href: cache-monitor-troubleshoot-faq.md
 - name: Verweis
   items:
-    - name: Codebeispiele
-      href: 'https://azure.microsoft.com/resources/samples/?service=redis-cache'
-    - name: Azure PowerShell
-      href: /powershell/module/az.rediscache
-    - name: Azure-Befehlszeilenschnittstelle
-      href: /cli/azure/redis
+    - name: Beispiele für Azure Cache for Redis
+      href: cache-redis-samples.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis
     - name: Java
-      href: /java/api/com.microsoft.azure.management.redis._redis_cache
+      href: /java/api/com.microsoft.azure.management.redis.rediscache
     - name: Redis-Clients
       href: 'https://redis.io/clients'
-    - name: Redis-Befehle
-      href: 'https://redis.io/commands#'
+    - name: Azure PowerShell
+      href: /powershell/module/az.rediscache
+    - name: Azure CLI
+      href: /cli/azure/redis
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/redis/'
+      href: /rest/api/redis/
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.cache/allversions
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
+    - name: Redis-Befehle
+      href: 'https://redis.io/commands#'
 - name: Ressourcen
   items:
-    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-      href: /learn/browse/?products=azure-redis-cache
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/cache/'
     - name: Häufig gestellte Fragen zu Azure Cache for Redis
       href: cache-faq.md
     - name: Videos
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecache&filter=alltypes&sort=lastpostdesc'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: /answers/topics/azure-cache-redis.html
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/cache/'
+    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+      href: /learn/browse/?products=azure-redis-cache
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'

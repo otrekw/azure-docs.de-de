@@ -2,30 +2,31 @@
 title: include file
 description: include file
 services: azure maps
-author: jinzh-azureiot
+author: anastasia-ms
 ms.service: azure-maps
 ms.topic: include
-ms.date: 11/29/2018
-ms.author: jinzh
+ms.date: 05/01/2020
+ms.author: v-stharr
 ms.custom: include file
-ms.openlocfilehash: 2bf9f75442ccf57aa28e6a12f415fb6e4ede78ec
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 9eafc1ee2d873fbb0602c932eab57c45ddaeac08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178485"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83673015"
 ---
-Die folgende Tabelle zeigt das Nutzungslimit für den S0-Tarif von Azure Maps. Das Nutzungslimit ist tarifabhängig. 
+Die folgende Tabelle zeigt das Nutzungslimit für den S0-Tarif von Azure Maps. Das Nutzungslimit ist tarifabhängig.
 
 | Resource                              | Limit des S0-Tarifs |
 |---------------------------------------|:---------------------:|
 | Maximale Anforderungsrate pro Abonnement |   50 Anforderungen pro Sekunde  |
 
+Die folgende Tabelle enthält den kumulativen Grenzwert für die Datengröße für Azure Maps-Konten in einem Azure-Abonnement. Der Azure Maps-Datendienst ist nur im Tarif S1 verfügbar.
 
-Die folgende Tabelle zeigt das Datengrößenlimit für Azure Maps. Der Azure Maps-Datendienst ist nur im Tarif S1 verfügbar.
+| Resource                               | Begrenzung  |
+|----------------------------------------|:---------------------:|
+| Maximaler Speicher pro Azure-Abonnement |   1 GB |
+| Maximale Größe pro Dateiupload           | 100 MB |
 
-| Resource                              | Begrenzung |
-|---------------------------------------|:---------------------:|
-| Maximale Datengröße |   50 MB  |
 
 Weitere Informationen zu den Azure Maps-Tarifen finden Sie unter [Azure Maps – Preise](https://azure.microsoft.com/pricing/details/azure-maps/).

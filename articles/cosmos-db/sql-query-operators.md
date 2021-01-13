@@ -1,19 +1,21 @@
 ---
 title: SQL-Abfrageoperatoren für Azure Cosmos DB
-description: Erfahren Sie mehr über SQL-Operatoren für Azure Cosmos DB.
-author: markjbrown
+description: Erfahren Sie mehr über SQL-Operatoren wie Gleichheit, Vergleich und logische Operatoren, die von Azure Cosmos DB unterstützt werden.
+author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: 899355ad7331a3df8cd5d647a573dc15e3a0bb14
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.date: 07/29/2020
+ms.author: tisande
+ms.openlocfilehash: c1409bd7f098c24efbb4196d78c6dffb6048119b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003391"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335437"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Operatoren in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In diesem Artikel werden die verschiedenen Operatoren beschrieben, die von Azure Cosmos DB unterstützt werden.
 
@@ -23,17 +25,25 @@ Die folgende Tabelle zeigt die Ergebnisse für Gleichheitsvergleiche in der SQL-
 
 | **Op** | **Undefiniert** | **NULL** | **Boolescher Wert** | **Number** | **String** | **Object** | **Array** |
 |---|---|---|---|---|---|---|---|
-| **Undefiniert** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **NULL** | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Boolescher Wert** | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined |
-| **Number** | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined |
-| **String** | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined |
-| **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined |
-| **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** |
+| **Undefiniert** | Nicht definiert | Nicht definiert | Nicht definiert | Nicht definiert | Nicht definiert | Nicht definiert | Nicht definiert |
+| **NULL** | Nicht definiert | **OK** | Nicht definiert | Nicht definiert | Nicht definiert | Nicht definiert | Nicht definiert |
+| **Boolescher Wert** | Nicht definiert | Nicht definiert | **OK** | Nicht definiert | Nicht definiert | Nicht definiert | Nicht definiert |
+| **Number** | Nicht definiert | Nicht definiert | Nicht definiert | **OK** | Nicht definiert | Nicht definiert | Nicht definiert |
+| **String** | Nicht definiert | Nicht definiert | Nicht definiert | Nicht definiert | **OK** | Nicht definiert | Nicht definiert |
+| **Object** | Nicht definiert | Nicht definiert | Nicht definiert | Nicht definiert | Nicht definiert | **OK** | Nicht definiert |
+| **Array** | Nicht definiert | Nicht definiert | Nicht definiert | Nicht definiert | Nicht definiert | Nicht definiert | **OK** |
 
 Bei Vergleichsoperatoren wie `>`, `>=`, `!=`, `<` und `<=` ergeben Vergleiche unterschiedlicher Typen oder zwischen zwei Objekten oder Arrays den Wert `Undefined`.  
 
 Wenn das Ergebnis des skalaren Ausdrucks `Undefined` ist, wird das Element nicht in das Ergebnis eingeschlossen, da `Undefined` nicht gleich `true` ist.
+
+Beispielsweise erzeugt die folgende Abfrage durch den Vergleich einer Zahl mit einem Zeichenfolgenwert `Undefined`. Daher enthält der Filter keine Ergebnisse.
+
+```sql
+SELECT *
+FROM c
+WHERE 7 = 'a'
+```
 
 ## <a name="logical-and-or-and-not-operators"></a>Logische Operatoren (AND, OR und NOT)
 
@@ -41,28 +51,43 @@ Logische Operatoren arbeiten mit booleschen Werten. Es folgt eine Liste der logi
 
 **OR-Operator**
 
-| OR | True | False | Undefined |
+Gibt `true` zurück, wenn der Wert für mindestens eine der Bedingungen `true` ist.
+
+|  | **Wahr** | **False** | **Undefiniert** |
 | --- | --- | --- | --- |
-| True |True |True |True |
-| False |True |False |Undefined |
-| Undefined |True |Undefined |Undefined |
+| **Wahr** |True |True |True |
+| **False** |True |False |Nicht definiert |
+| **Undefiniert** |True |Nicht definiert |Nicht definiert |
 
 **AND-Operator**
 
-| AND | True | False | Undefined |
+Gibt `true` zurück, wenn beide Ausdrücke `true` sind.
+
+|  | **Wahr** | **False** | **Undefiniert** |
 | --- | --- | --- | --- |
-| True |True |False |Undefined |
-| False |False |False |False |
-| Undefined |Undefined |False |Undefined |
+| **Wahr** |True |False |Nicht definiert |
+| **False** |False |False |False |
+| **Undefiniert** |Nicht definiert |False |Nicht definiert |
 
 **NOT-Operator**
 
-| NOT |  |
-| --- | --- |
-| True |False |
-| False |True |
-| Undefined |Undefined |
+Kehrt den Wert eines beliebigen booleschen Ausdrucks um.
 
+|  | **NOT** |
+| --- | --- |
+| **Wahr** |False |
+| **False** |True |
+| **Undefiniert** |Nicht definiert |
+
+**Operatorrangfolge**
+
+Die logischen Operatoren `OR`, `AND` und `NOT` weisen die unten gezeigte Rangfolge auf:
+
+| **Operator** | **Priority** |
+| --- | --- |
+| **NOT** |1 |
+| **AND** |2 |
+| **OR** |3 |
 
 ## <a name="-operator"></a>*-Operator
 
@@ -70,7 +95,7 @@ Mit dem Sonderoperator * wird das gesamte Element unverändert projiziert. Wenn 
 
 ## <a name="-and--operators"></a>? und ?? – Operatoren
 
-Sie können ternäre (?) und koaleszierte (??) Operatoren wie in den Programmiersprachen C# und JavaScript zum Erstellen von bedingten Ausdrücken verwenden. 
+Sie können ternäre (?) und koaleszierte (??) Operatoren wie in den Programmiersprachen C# und JavaScript zum Erstellen von bedingten Ausdrücken verwenden.
 
 Mit dem Operator ? können Sie JSON-Eigenschaften Ad hoc erstellen. Beispielsweise werden mit der folgenden Abfrage die Klassenstufen in `elementary` oder `other` klassifiziert:
 

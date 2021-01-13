@@ -1,93 +1,93 @@
 ---
-title: Visualisierung von Abhängigkeiten in Azure Migrate | Microsoft-Dokumentation
-description: Bietet eine Übersicht über Bewertungsberechnungen im Serverbewertungsdienst von Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
+title: Abhängigkeitsanalyse in der Azure Migrate-Serverbewertung
+description: Hier wird beschrieben, wie Sie die Abhängigkeitsanalyse zur Bewertung mithilfe der Azure Migrate-Serverbewertung verwenden.
 ms.topic: conceptual
-ms.date: 07/18/2019
-ms.author: hamusa
-ms.openlocfilehash: 33594e09778b9a629645e12357e6bafe561ad35e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
+ms.date: 09/15/2020
+ms.openlocfilehash: 1f198d47191e7893e74b072ae8fd10546e3a6ee7
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202898"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752208"
 ---
-# <a name="dependency-visualization"></a>Visualisierung von Abhängigkeiten
+# <a name="dependency-analysis"></a>Abhängigkeitsanalyse
 
-Von der Azure Die Serverbewertung bewertet Gruppen von lokalen Computern für die Migration zu Azure. Sie können die Funktionalität zur Visualisierung von Abhängigkeiten in der Serverbewertung zum Erstellen von Gruppen nutzen. Dieser Artikel enthält Informationen zu diesem Feature.
+In diesem Artikel wird die Abhängigkeitsanalyse in der Azure Migrate-Serverbewertung beschrieben.
 
-> [!NOTE]
-> Die Funktion zur Visualisierung von Abhängigkeiten ist in Azure Government nicht verfügbar.
 
-## <a name="overview"></a>Übersicht
+Die Abhängigkeitsanalyse identifiziert Abhängigkeiten zwischen entdeckten lokalen Computern. Dies bietet folgende Vorteile: 
 
-Mithilfe der Abhängigkeitsvisualisierung in der Serverbewertung können Sie Gruppen mit hoher Vertrauenswürdigkeit für Migrationsbewertungen erstellen. Sie können die Abhängigkeitsvisualisierung verwenden, um Netzwerkabhängigkeiten von Computern anzuzeigen und zugehörige Computer zu identifizieren, die ebenfalls zu Azure migriert werden müssen. Diese Funktionalität ist in Szenarios nützlich, in denen nicht vollständig bekannt ist, welche Computer für Ihre Anwendung erforderlich sind und in die Migration zu Azure eingeschlossen werden müssen.
+- Sie können Computer in Gruppen zusammenfassen, um sie genauer und mit größerer Sicherheit bewerten zu können.
+- Sie können Computer identifizieren, die gemeinsam migriert werden müssen. Dies ist besonders nützlich, wenn Sie nicht sicher sind, welche Computer Teil einer App-Bereitstellung sind, die Sie zu Azure migrieren möchten.
+- Sie können ermitteln, ob Computer verwendet werden und welche Computer außer Betrieb genommen werden können, anstatt sie zu migrieren.
+- Die Analyse von Abhängigkeiten trägt dazu bei, dass nichts übersehen wird. Somit werden unerwartete Ausfälle nach der Migration vermieden.
+- [Lesen Sie](common-questions-discovery-assessment.md#what-is-dependency-visualization) häufig gestellte Fragen zur Abhängigkeitsanalyse.
 
-## <a name="before-you-start"></a>Vorbereitung
 
-- Stellen Sie sicher, dass Sie ein Azure Migrate-Projekt [erstellt](how-to-add-tool-first-time.md) haben.
-- Wenn Sie bereits ein Projekt erstellt haben, vergewissern Sie sich, dass Sie das Tool Azure Migrate-Serverbewertung[hinzugefügt](how-to-assess.md): Migrate-Serverbewertung bewerten.
-- Stellen Sie sicher, dass Sie Ihre Computer in Azure Migrate ermittelt haben. Sie können dies tun, indem Sie eine Azure Migrate-Appliance für [VMware](how-to-set-up-appliance-vmware.md) oder [Hyper-V](how-to-set-up-appliance-hyper-v.md) einrichten. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen. [Weitere Informationen](migrate-appliance.md)
+## <a name="analysis-types"></a>Analysetypen
 
-## <a name="how-does-it-work"></a>Wie funktioniert dies?
+Es gibt zwei Optionen für die Bereitstellung der Abhängigkeitsanalyse:
 
-Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnung](../operations-management-suite/operations-management-suite-service-map.md) in [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md).
-- Sie müssen jedem Azure Migrate-Projekt einen neuen oder vorhandenen Log Analytics-Arbeitsbereich zuordnen, um die Abhängigkeitsvisualisierung nutzen zu können.
-- Sie können einen Arbeitsbereich nur in dem Abonnement erstellen oder anfügen, in dem das Azure Migrate-Projekt erstellt wird.
-- So fügen Sie einen Log Analytics-Arbeitsbereich einem Projekt an:
-    1. Klicken Sie auf der Registerkarte **Server** unter der Kachel **Azure Migrate: Serverbewertung** auf **Übersicht**.
-    2. Klicken Sie in der **Übersicht** auf den Abwärtspfeil, um **Essentials** zu erweitern.
-    3. Klicken Sie im **OMS-Arbeitsbereich** auf **Konfiguration erforderlich**.
-    4. Geben Sie unter **Arbeitsbereich konfigurieren** an, ob Sie einen neuen Arbeitsbereich erstellen oder einen bestehenden verwenden möchten:
-    
-    ![Arbeitsbereich hinzufügen](./media/how-to-create-group-machine-dependencies/workspace.png)
+**Option** | **Details** | **Öffentliche Cloud** | **Azure Government**
+----  |---- | ---- 
+**Ohne Agent** | Fragt Daten von virtuellen VMware-Computern mit vSphere-APIs ab.<br/><br/> Sie müssen keine Agents auf virtuellen Computern (VMs) installieren.<br/><br/> Diese Option befindet sich derzeit nur für virtuelle VMware-Computer in der Vorschauversion. | Unterstützt. | Unterstützt.
+**Agent-basierte Analyse** | Verwendet die [Dienstzuordnungslösung](../azure-monitor/insights/service-map.md) in Azure Monitor, um die Abhängigkeitsvisualisierung und Analyse zu ermöglichen.<br/><br/> Sie müssen auf jedem lokalen Computer, den Sie analysieren möchten, Agents installieren. | Unterstützt | Wird nicht unterstützt.
 
-- Beim Zuordnen eines Arbeitsbereichs erhalten Sie die Möglichkeit, einen neuen Arbeitsbereich zu erstellen oder einen vorhandenen anzufügen:
-  - Wenn Sie einen neuen Arbeitsbereich erstellen, müssen Sie für diesen einen Namen angeben. Sie können die [Region](https://azure.microsoft.com/global-infrastructure/regions/) auswählen, in der der Arbeitsbereich erstellt wird.
-  - Wenn Sie einen vorhandenen Arbeitsbereich anfügen, können Sie zwischen allen verfügbaren Arbeitsbereichen im selben Abonnement wie das Migrationsprojekt auswählen. Beachten Sie, dass nur die Arbeitsbereiche aufgeführt sind, die in einer Region erstellt wurden, in der die [Dienstzuordnung unterstützt wird](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Um einen Arbeitsbereich anzufügen, stellen Sie sicher, dass Sie Leserzugriff auf den Arbeitsbereich haben.
 
-  > [!NOTE]
-  > Nachdem Sie einem Projekt einen Arbeitsbereich hinzugefügt haben, können Sie ihn nicht mehr ändern.
+## <a name="agentless-analysis"></a>Analyse ohne Agent
 
-  > [!NOTE]
-  > Azure Migrate unterstützt derzeit die Erstellung von OMS-Arbeitsbereichen in den Regionen „USA, Osten“, „Asien, Südosten“ und „Europa, Westen“. Wenn der Arbeitsbereich außerhalb von Azure Migrate in einer beliebigen anderen Region erstellt wird, kann er derzeit keinem Azure Migrate-Projekt zugeordnet werden. 
+Bei der Abhängigkeitsanalyse ohne Agent werden TCP-Verbindungsdaten von den Computern erfasst, für die sie aktiviert wurde. Auf VMs sind keine Agents installiert. Verbindungen mit demselben Quellserver und -prozess sowie Zielserver, -prozess und -port werden logisch in einer Abhängigkeit gruppiert. Sie können erfasste Abhängigkeitsdaten in einer Kartenansicht visualisieren oder als CSV exportieren. Auf Computern, die Sie analysieren möchten, sind keine Agents installiert.
 
-- Der zugeordnete Arbeitsbereich wird mit dem Schlüssel **Migration Project** (Migrationsprojekt) und dem Wert **project name** (Projektname) markiert, die Sie für die Suche im Azure-Portal verwenden können.
-- Um zum Arbeitsbereich zu navigieren, der dem Projekt zugeordnet ist, können Sie den Abschnitt **Essentials** (Zusammenfassung) der Seite **Übersicht** des Projekts öffnen und auf den Arbeitsbereich zugreifen.
+### <a name="dependency-data"></a>Abhängigkeitsdaten
 
-    ![Navigieren zum Log Analytics-Arbeitsbereich](./media/concepts-dependency-visualization/oms-workspace.png)
+Nach der Ermittlung der Abhängigkeitsdaten beginnt der Abruf:
 
-Zur Verwendung der Abhängigkeitsvisualisierung müssen Sie Agents auf alle lokalen Computer, die Sie analysieren möchten, herunterladen und dort installieren.  
+- Die Azure Migrate-Appliance fragt alle fünf Minuten TCP-Verbindungsdaten von Computern ab, um Daten zu sammeln.
+- Die Daten werden mithilfe von vSphere-APIs von Gast-VMs über vCenter Server gesammelt.
+- Beim Abruf werden folgende Daten gesammelt:
 
-- Der [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) muss auf jedem Computer installiert werden. [Weitere Informationen](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma) zum Installieren des MMA-Agent.
-- Der [Dependency-Agent](../azure-monitor/platform/agents-overview.md#dependency-agent) muss auf jedem Computer installiert werden. [Weitere Informationen](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) zum Installieren des Abhängigkeits-Agent.
-- Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, auf diesen das Log Analytics-Gateway herunterzuladen und zu installieren.
+    - Name von Prozessen mit aktiven Verbindungen
+    - Name der Anwendung, die Prozesse mit aktiven Verbindungen ausführt
+    - Zielport für die aktiven Verbindungen
 
-Sie benötigen diese Agents auf Computern nur, wenn Sie die Abhängigkeitsvisualisierung verwenden.
+- Die gesammelten Daten werden auf der Azure Migrate-Appliance verarbeitet, um Identitätsinformationen abzuleiten, und alle sechs Stunden an Azure Migrate gesendet.
 
-## <a name="do-i-need-to-pay-for-it"></a>Fallen dadurch Kosten an?
 
-Das Feature für die Abhängigkeitsvisualisierung steht ohne zusätzliche Gebühr zur Verfügung. Für die Verwendung des Features für die Abhängigkeitsvisualisierung in der Serverbewertung ist die Dienstzuordnung erforderlich. Außerdem müssen Sie dem Azure Migrate-Projekt einen neuen oder vorhandenen Log Analytics-Arbeitsbereich zuweisen. Die Funktionalität zur Visualisierung von Abhängigkeiten in der Serverbewertung kann in den ersten 180 Tagen kostenlos genutzt werden.
+## <a name="agent-based-analysis"></a>Agent-basierte Analyse
 
-1. Für andere Lösungen als die Dienstzuordnung in diesem Log Analytics-Arbeitsbereich fallen die [Log Analytics-Standardgebühren](https://azure.microsoft.com/pricing/details/log-analytics/) an.
-2. Für die Lösung „Dienstzuordnung“ fallen in den ersten 180 Tagen ab dem Tag der Zuordnung des Log Analytics-Arbeitsbereichs zum Azure Migrate-Projekt keine Kosten an, um Migrationsszenarios ohne weitere Gebühren zu unterstützen. Nach 180 Tagen fallen die Log Analytics-Standardgebühren an.
+Bei der Agent-basierten Analyse wird die [Dienstzuordnung](../azure-monitor/insights/service-map.md)-Lösung in Azure Monitor von der Serverbewertung verwendet. Sie installieren den [Microsoft Monitoring Agent/Log Analytics-Agent](../azure-monitor/platform/agents-overview.md#log-analytics-agent) und den [Dependency-Agent](../azure-monitor/platform/agents-overview.md#dependency-agent) auf jedem Computer, den Sie analysieren möchten.
 
-Verwenden Sie beim Registrieren von Agents für den Arbeitsbereich die ID und den Schlüssel, die bzw. der auf der Seite mit Schritten für die Agent-Installation für das Projekt angegeben wurde.
+### <a name="dependency-data"></a>Abhängigkeitsdaten
 
-Wenn das Azure Migrate-Projekt gelöscht wurde, wird der Arbeitsbereich nicht zusammen mit dem Projekt gelöscht. Nach dem Löschen des Projekts ist die Nutzung der Dienstzuordnung nicht mehr kostenlos, und für jeden Knoten werden Kosten gemäß des kostenpflichtigen Tarifs für den Log Analytics-Arbeitsbereich berechnet.
+Die Agent-basierte Analyse stellt folgende Daten bereit:
 
-> [!NOTE]
-> Für das Feature für die Abhängigkeitsvisualisierung wird die Dienstzuordnung über einen Log Analytics-Arbeitsbereich verwendet. Seit dem 28. Februar 2018 ist das Feature mit der Ankündigung der allgemeinen Verfügbarkeit von Azure Migrate jetzt ohne weitere Kosten verfügbar. Sie müssen ein neues Projekt erstellen, um den kostenlosen Arbeitsbereich nutzen zu können. Für Arbeitsbereiche, die bereits vor der allgemeinen Verfügbarkeit vorhanden waren, können weiterhin Kosten anfallen. Daher empfehlen wir Ihnen, die Umstellung auf ein neues Projekt durchzuführen.
+- Servername des Quellcomputers, Prozess, Anwendungsname.
+- Servername des Zielcomputers, Prozess, Anwendungsname und Port.
+- Anzahl der Verbindungen, Wartezeiten und Datenübertragungsinformationen werden gesammelt und stehen für Log Analytics-Abfragen zur Verfügung. 
 
-Weitere Informationen zu den Preisen von Azure Migrate finden Sie [hier](https://azure.microsoft.com/pricing/details/azure-migrate/).
 
-## <a name="how-do-i-manage-the-workspace"></a>Wie verwalte ich den Arbeitsbereich?
 
-Sie können den Log Analytics-Arbeitsbereich außerhalb von Azure Migrate verwalten. Er wird nicht gelöscht, wenn Sie das Azure Migrate-Projekt löschen, in dem er erstellt wurde. Wenn Sie den Arbeitsbereich nicht mehr benötigen, [löschen Sie ihn](../azure-monitor/platform/manage-access.md) manuell.
+## <a name="compare-agentless-and-agent-based"></a>Vergleich zwischen Visualisierung ohne Agent und Agent-basierter Visualisierung
 
-Löschen Sie den von Azure Migrate erstellten Arbeitsbereich nur, wenn Sie auch das Azure Migrate-Projekt löschen. Wenn Sie dies tun, funktioniert die Abhängigkeitsvisualisierung nicht wie erwartet.
+Die Unterschiede zwischen der Visualisierung ohne Agent und der Agent-basierten Visualisierung sind in der Tabelle zusammengefasst.
+
+**Anforderung** | **Ohne Agent** | **Agent-basiert**
+--- | --- | ---
+**Unterstützung** | Nur für VMware-VMS als Vorschauversion verfügbar. [Lesen](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) Sie den Artikel zu den unterstützten Betriebssystemen. | In der allgemeinen Verfügbarkeit (General Availability, GA).
+**Agent** | Auf Computern, die Sie analysieren möchten, sind kein Agents erforderlich. | Auf jedem lokalen Computer, den Sie analysieren möchten, sind Agents erforderlich:
+**Log Analytics** | Nicht erforderlich. | Azure Migrate verwendet für die Abhängigkeitsanalyse die [Dienstzuordnungslösung](../azure-monitor/insights/service-map.md) in [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md).<br/><br/> Sie ordnen einem Azure Migrate-Projekt einen Log Analytics-Arbeitsbereich zu. Der Arbeitsbereich muss sich in einer der Regionen „USA, Osten“, „Asien, Südosten“ oder „Europa, Westen“ befinden. Der Arbeitsbereich muss sich in einer Region befinden, in der die [Dienstzuordnung unterstützt wird](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).
+**Prozess** | Erfasst TCP-Verbindungsdaten. Nach der Ermittlung werden Daten in Abständen von fünf Minuten gesammelt. | Auf einem Computer installierte Agents für die Dienstzuordnung sammeln Daten über TCP-Prozesse und ein-/ausgehende Verbindungen für die einzelnen Prozesse.
+**Daten** | Servername des Quellcomputers, Prozess, Anwendungsname.<br/><br/> Servername des Zielcomputers, Prozess, Anwendungsname und Port. | Servername des Quellcomputers, Prozess, Anwendungsname.<br/><br/> Servername des Zielcomputers, Prozess, Anwendungsname und Port.<br/><br/> Anzahl der Verbindungen, Wartezeiten und Datenübertragungsinformationen werden gesammelt und stehen für Log Analytics-Abfragen zur Verfügung. 
+**Visualisierung** | Das Abhängigkeitsdiagramm eines einzelnen Servers kann über eine Dauer von einer Stunde bis hin zu 30 Tagen angezeigt werden. | Abhängigkeitsdiagramm eines einzelnen Servers.<br/><br/> Abhängigkeitsdiagramm für eine Gruppe von Servern.<br/><br/>  Das Diagramm kann nur über eine Stunde angezeigt werden.<br/><br/> Hinzufügen und Entfernen von Servern in einer Gruppe aus der Diagrammansicht.
+Datenexport | Die Daten der letzten 30 Tage können im CSV-Format heruntergeladen werden. | Daten können mit Log Analytics abgefragt werden.
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Group machines using machine dependency mapping](how-to-create-group-machine-dependencies.md) (Gruppieren von Computern mithilfe der Computerabhängigkeitszuordnung)
-- [Erfahren Sie mehr](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization) über die häufig gestellten Fragen (FAQs) zur Visualisierung von Abhängigkeiten.
+
+- [Richten Sie](how-to-create-group-machine-dependencies.md) die Agent-basierte Visualisierung von Abhängigkeiten ein.
+- [Probieren Sie](how-to-create-group-machine-dependencies-agentless.md) die Abhängigkeitsvisualisierung ohne Agent für VMware-VMs aus.
+- Lesen Sie [häufige Fragen](common-questions-discovery-assessment.md#what-is-dependency-visualization) zur Abhängigkeitsvisualisierung.

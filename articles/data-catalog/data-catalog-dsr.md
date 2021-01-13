@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8f148bfe08d5f7933857eb46cf0d13d4582da108
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: ead1a324d342f818551ac05ac385ba4fa5b8b877
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950274"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89439083"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Von Azure Data Catalog unterstützte Datenquellen
 
@@ -124,7 +124,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 und höher</td>
     </tr>
     <tr>
       <td>Oracle Database-Sicht</td>
@@ -132,7 +132,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 und höher</td>
     </tr>
     <tr>
       <td>Anderes (generisches Objekt)</td>
@@ -143,7 +143,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td></td>
     </tr>
     <tr>
-      <td>Azure SQL Data Warehouse-Tabelle</td>
+      <td>Azure Synapse Analytics-Tabelle</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -151,7 +151,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td></td>
     </tr>
     <tr>
-      <td>Ansicht von Azure SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics-Ansicht</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -164,7 +164,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 und neuere Versionen.</td>
+      <td>SQL Server 2008 und höher</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services-KPI</td>
@@ -172,7 +172,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 und neuere Versionen.</td>
+      <td>SQL Server 2008 und höher</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services-Measure</td>
@@ -180,7 +180,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 und neuere Versionen.</td>
+      <td>SQL Server 2008 und höher</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services-Tabelle</td>
@@ -188,15 +188,15 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 und neuere Versionen.</td>
+      <td>SQL Server 2008 und höher</td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services-Bericht</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>"Browser"</td>
-      <td>Nur Server im nativen Modus. SharePoint-Modus wird nicht unterstützt. Nur SQL Server 2008 und neuere Versionen</td>
+      <td>Browser</td>
+      <td>Nur Server im nativen Modus. SharePoint-Modus wird nicht unterstützt. Nur SQL Server 2008 und höher</td>
     </tr>
     <tr>
       <td>SQL Server-Tabelle</td>
@@ -204,7 +204,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop, SQL Server Data Tools</td>
-      <td>SQL Server 2008 und neuere Versionen.</td>
+      <td>SQL Server 2008 und höher</td>
     </tr>
     <tr>
       <td>SQL Server-Sicht</td>
@@ -212,7 +212,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop, SQL Server Data Tools</td>
-      <td>SQL Server 2008 und neuere Versionen.</td>
+      <td>SQL Server 2008 und höher</td>
     </tr>
     <tr>
       <td>Teradata-Tabelle</td>
@@ -932,7 +932,7 @@ Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie d
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Command</td>
       <td>Stored procedure</td>
       <td>
@@ -948,7 +948,7 @@ Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie d
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>TableValuedFunction</td>
       <td>Table-valued function</td>
       <td>
@@ -964,7 +964,7 @@ Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie d
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Container</td>
       <td>Database</td>
       <td>
@@ -978,7 +978,7 @@ Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie d
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Table</td>
       <td>Table, view</td>
       <td>

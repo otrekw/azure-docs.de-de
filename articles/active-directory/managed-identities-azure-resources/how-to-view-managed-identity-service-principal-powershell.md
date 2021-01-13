@@ -1,26 +1,27 @@
 ---
-title: Anzeigen des Dienstprinzipals einer verwalteten Identität über PowerShell
+title: Anzeigen des Dienstprinzipals einer verwalteten Identität mithilfe von PowerShell – Azure AD
 description: Schrittanleitungen zur Anzeige des Dienstprinzipals einer verwalteten Identität über PowerShell.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/29/2018
-ms.author: markvi
+ms.date: 09/30/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5aa5ab96ae85833e59ed40161cafcc1eb88379be
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 15ccc0faa4d74a2ef95aca00a6257f27b9a209c3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60441779"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91611944"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-powershell"></a>Anzeigen des Dienstprinzipals einer verwalteten Identität über PowerShell
 
@@ -34,19 +35,19 @@ In diesem Artikel erhalten Sie Informationen zur Anzeige des Dienstprinzipals ei
 
 - Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter.
 - Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren.
-- Aktivieren Sie eine [systemseitig zugewiesene Identität auf einem virtuellen Computer](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) oder in einer [Anwendung](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity).
-- Installieren Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-az-ps).
+- Aktivieren Sie eine [systemseitig zugewiesene Identität auf einem virtuellen Computer](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) oder in einer [Anwendung](../../app-service/overview-managed-identity.md#add-a-system-assigned-identity).
+- Zum Ausführen der Beispielskripts haben Sie zwei Möglichkeiten:
+    - Verwenden Sie die [Azure Cloud Shell](../../cloud-shell/overview.md), die Sie mithilfe der Schaltfläche **Testen** in der oberen rechten Ecke der Codeblöcke öffnen können.
+    - Führen Sie Skripts lokal aus, indem Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-az-ps) installieren und sich dann mit dem Befehl `Connect-AzAccount` bei Azure anmelden.
 
 ## <a name="view-the-service-principal"></a>Anzeigen des Dienstprinzipals
 
-Mit dem folgenden Befehl zeigen Sie den Dienstprinzipal einer VM oder einer Anwendung mit aktivierter systemseitig zugewiesener Identität an. Ersetzen Sie `<VM or application name>` durch Ihre eigenen Werte.
+Mit dem folgenden Befehl zeigen Sie den Dienstprinzipal einer VM oder einer Anwendung mit aktivierter systemseitig zugewiesener Identität an. Ersetzen Sie `<Azure resource name>` durch Ihre eigenen Werte.
 
-```powershell
-Get-AzADServicePrincipal -DisplayName <VM or application name>
+```azurepowershell-interactive
+Get-AzADServicePrincipal -DisplayName <Azure resource name>
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Anzeigen von Azure AD-Dienstprinzipalen mithilfe von PowerShell finden Sie unter [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal).
-
-

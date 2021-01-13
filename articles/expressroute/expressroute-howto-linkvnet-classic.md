@@ -1,23 +1,23 @@
 ---
-title: 'Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung: PowerShell: klassisch: Azure | Microsoft-Dokumentation'
+title: 'Azure ExpressRoute: Verknüpfen eines VNET mit einer Verbindung: klassisch'
 description: Dieses Dokument bietet Ihnen eine Übersicht über das Verknüpfen virtueller Netzwerke (VNETs) mit ExpressRoute-Verbindungen über das klassische Bereitstellungsmodell und PowerShell.
 services: expressroute
-documentationcenter: na
-author: cherylmc
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 07/27/2018
-ms.author: cherylmc
-ms.openlocfilehash: 21676ff329613f792d6570713f044bb7440e58d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: how-to
+ms.date: 12/06/2019
+ms.author: duau
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0e8a1d48934d73f1035c6f2c4c76e56d9a0e4052
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370627"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206969"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe von PowerShell (klassisch)
 > [!div class="op_single_selector"]
-> * [Azure-Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure-Befehlszeilenschnittstelle](howto-linkvnet-cli.md)
 > * [Video – Azure-Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -35,8 +35,6 @@ Sie können bis zu 10 virtuelle Netzwerke mit einer ExpressRoute-Verbindung verk
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="configuration-prerequisites"></a>Konfigurationsvoraussetzungen
 
 * Lesen Sie, bevor Sie mit der Konfiguration beginnen, die Seiten [Voraussetzungen](expressroute-prerequisites.md), [Routinganforderungen](expressroute-routing.md) und [Workflows](expressroute-workflows.md).
@@ -44,44 +42,11 @@ Sie können bis zu 10 virtuelle Netzwerke mit einer ExpressRoute-Verbindung verk
    * Führen Sie die Schritte zum [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-classic.md) aus, und lassen Sie sie vom Konnektivitätsanbieter aktivieren.
    * Stellen Sie sicher, dass privates Azure-Peering für die Verbindung konfiguriert ist. Informationen zum Routing finden Sie unter [Konfigurieren des Routings](expressroute-howto-routing-classic.md) .
    * Vergewissern Sie sich, dass das private Azure-Peering konfiguriert wurde und das BGP-Peering zwischen Ihrem Netzwerk und Microsoft aktiv ist, damit End-to-End-Konnektivität bereitgestellt werden kann.
-   * Sie müssen ein virtuelles Netzwerk und ein virtuelles Netzwerkgateway erstellt und vollständig bereitgestellt haben. Befolgen Sie die Anweisungen zum [Konfigurieren eines virtuellen Netzwerks für ExpressRoute](expressroute-howto-vnet-portal-classic.md).
+   * Sie müssen ein virtuelles Netzwerk und ein virtuelles Netzwerkgateway erstellt und vollständig bereitgestellt haben. Befolgen Sie die Anweisungen zum [Konfigurieren eines virtuellen Netzwerks für ExpressRoute](./expressroute-howto-add-gateway-portal-resource-manager.md).
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>Herunterladen der neuesten PowerShell-Cmdlets
 
-Installieren Sie die aktuellen Versionen der PowerShell-Module für die Azure-Dienstverwaltung und das ExpressRoute-Modul. Beachten Sie bei Verwendung des folgenden Beispiels, dass sich die Versionsnummer (hier: 5.1.1) ändert, wenn neuere Versionen der Cmdlets veröffentlicht werden.
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-Weitere Informationen zu PowerShell und eine ausführliche Anleitung zum Konfigurieren des Computers für die Verwendung der Azure PowerShell-Module finden Sie unter [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/azure/overview).
-
-### <a name="sign-in"></a>Anmelden
-
-Verwenden Sie die folgenden Beispiele, um sich bei Ihrem Azure-Konto anzumelden:
-
-1. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her.
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. Überprüfen Sie die Abonnements für das Konto.
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. Verwenden Sie als nächstes das folgende Cmdlet, um PowerShell Ihr Azure-Abonnement für das klassische Bereitstellungsmodell hinzuzufügen.
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Herstellen einer Verbindung zwischen einem virtuellen Netzwerk in demselben Abonnement und einer Verbindung
 Sie können das folgende Cmdlet verwenden, um ein virtuelles Netzwerk mit einer ExpressRoute-Verbindung zu verknüpfen. Stellen Sie sicher, dass das Gateway für das virtuelle Netzwerk erstellt wurde und für das Erstellen von Verknüpfungen bereit ist, bevor Sie das Cmdlet ausführen.

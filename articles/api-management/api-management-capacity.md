@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a585ab059319b15be1f2a86bf10b7dc58da72494
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: c7c002b57f2220ac0a9fba43a8081b2a4ed800e7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299464"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081058"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Kapazität einer Azure API Management-Instanz
 
@@ -42,13 +42,13 @@ Damit Sie den Schritten in diesem Artikel folgen können, benötigen Sie folgend
 
 ## <a name="what-is-capacity"></a>Was bedeutet Kapazität?
 
-![Kapazitätsmetrik](./media/api-management-capacity/capacity-ingredients.png)
+![Diagramm zur Erläuterung der Kapazitätsmetrik](./media/api-management-capacity/capacity-ingredients.png)
 
 Die **Kapazität** ist ein Indikator für die Auslastung einer API Management-Instanz. Sie spiegelt die Ressourcenverwendung (CPU, Speicher) und die Länge von Netzwerkwarteschlangen wider. Die CPU- und Speicherauslastung zeigt die Ressourcenverwendung von:
 
 + API Management-Diensten auf Datenebene, wie z. B. die Anforderungsverarbeitung, die das Weiterleiten von Anforderungen oder das Ausführen einer Richtlinie umfassen kann
 + API Management-Diensten auf Verwaltungsebene, z. B. über das Azure-Portal oder ARM angewandte Verwaltungsaktionen oder vom [Entwicklerportal](api-management-howto-developer-portal.md) stammende Lasten
-+ Ausgewählten Betriebssystemprozessen, einschließlich Prozessen, für die Kosten für SSL-Handshakes bei neuen Verbindungen anfallen
++ Ausgewählten Betriebssystemprozessen, einschließlich Prozessen, für die Kosten für TLS-Handshakes bei neuen Verbindungen anfallen
 
 Die **Gesamtkapazität** ist ein Durchschnitt der eigenen Werte aus jeder Einheit einer API Management-Instanz.
 
@@ -106,4 +106,5 @@ Eine niedrige **Kapazitätsmetrik** bedeutet nicht zwingend, dass Ihre API Manag
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[So skalieren oder aktualisieren Sie eine Azure API Management-Dienstinstanz](upgrade-and-scale.md)
+- [So skalieren oder aktualisieren Sie eine Azure API Management-Dienstinstanz](upgrade-and-scale.md)
+- [Ermitteln und Analysieren von Kosten mit der Kostenanalyse](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

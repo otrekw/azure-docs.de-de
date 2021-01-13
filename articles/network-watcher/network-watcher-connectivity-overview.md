@@ -3,31 +3,29 @@ title: Einführung in die Problembehandlung für Verbindungen in Azure Network W
 description: Diese Seite enthält eine Übersicht über die Network Watcher-Funktion zur Problembehandlung für Verbindungen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: kumud
-ms.openlocfilehash: 9510905f67ee943b4b1dfa5a14c2753efac39da7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 9c855fff9e5791b9c0cf870acfc6de53e7a700b2
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705817"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653995"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Einführung in die Problembehandlung für Verbindungen in Azure Network Watcher
 
 Das Feature zur Problembehandlung von Verbindungen von Network Watcher bietet die Möglichkeit, eine direkte TCP-Verbindung von einem virtuellen Computer mit einem anderen virtuellen Computer (VM), einem vollqualifizierten Domänennamen (FQDN), einem URI oder einer IPv4-Adresse zu überprüfen. Netzwerkszenarios sind komplex: Sie werden mithilfe von Netzwerksicherheitsgruppen, Firewalls, benutzerdefinierten Routen und Ressourcen, die von Azure bereitgestellt werden, implementiert. Komplexe Konfigurationen stellen eine große Herausforderung bei der Behandlung von Konnektivitätsproblemen dar. Network Watcher trägt dazu bei, die zum Suchen und Erkennen von Konnektivitätsproblemen benötigte Zeit zu verkürzen. Die zurückgegebenen Ergebnisse können Einblicke in die Frage geben, ob ein Konnektivitätsproblem auf ein Problem mit einer Plattform oder einer Benutzerkonfiguration zurückzuführen ist. Die Konnektivität kann mit [PowerShell](network-watcher-connectivity-powershell.md), [Azure CLI](network-watcher-connectivity-cli.md) und [REST-API](network-watcher-connectivity-rest.md) überprüft werden.
 
 > [!IMPORTANT]
-> Für die Problembehandlung für Verbindungen muss auf dem virtuellen Computer, auf dem Sie die Problembehandlung ausführen, die VM-Erweiterung `AzureNetworkWatcherExtension` installiert sein. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Die Erweiterung ist nicht auf dem Zielendpunkt erforderlich.
+> Für die Problembehandlung für Verbindungen muss auf dem virtuellen Computer, auf dem Sie die Problembehandlung ausführen, die VM-Erweiterung `AzureNetworkWatcherExtension` installiert sein. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/extensions/network-watcher-windows.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/extensions/network-watcher-linux.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Die Erweiterung ist nicht auf dem Zielendpunkt erforderlich.
 
-## <a name="response"></a>response
+## <a name="response"></a>Antwort
 
 Die folgende Tabelle zeigt die Eigenschaften, die nach Ausführung der Problembehandlung für Verbindungen zurückgegeben werden:
 
@@ -74,7 +72,7 @@ Im Folgenden finden Sie ein Beispiel für ein Problem, das auf einem Hop gefunde
 
 Die Problembehandlung für Verbindungen gibt Fehlertypen der Verbindung zurück. Die folgende Tabelle listet die aktuellen zurückgegebenen Fehlertypen auf:
 
-|Type  |BESCHREIBUNG  |
+|type  |BESCHREIBUNG  |
 |---------|---------|
 |CPU     | Hohe CPU-Auslastung.       |
 |Arbeitsspeicher     | Hohe Speicherauslastung.       |

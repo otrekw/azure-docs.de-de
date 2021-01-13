@@ -1,19 +1,19 @@
 ---
-title: Vorbereiten lokaler VMware-Server für die Notfallwiederherstellung von VMware-VMs in Azure | Microsoft-Dokumentation
+title: Vorbereiten der Notfallwiederherstellung für virtuelle VMware-Computer mit Azure Site Recovery
 description: Erfahren Sie, wie Sie lokale VMware-Server mit dem Azure Site Recovery-Dienst für die Notfallwiederherstellung in Azure einrichten.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0f62ee1a79126f456b993c7caf2de3741637f710
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: b8fd34c8f1e3a32a8252074941a49d61aa540207
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147805"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86134908"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Vorbereiten lokaler VMware-Server für die Notfallwiederherstellung in Azure
 
@@ -68,8 +68,8 @@ Bereiten Sie das Konto wie folgt vor:
 
 Bereiten Sie ein Domänen- oder lokales Konto mit den Berechtigungen zum Installieren auf dem virtuellen Computer vor.
 
-- **Virtuelle Windows-Computer:** Wenn Sie kein Domänenkonto verwenden, deaktivieren Sie für die Installation auf Windows-VMs die Remote-Benutzerzugriffssteuerung auf dem lokalen Computer. Dazu fügen Sie in der Registrierung unter **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** den DWORD-Eintrag **LocalAccountTokenFilterPolicy** mit dem Wert 1 hinzu.
-- **Virtuelle Linux-Computer:** Für die Installation auf virtuellen Linux-Computern bereiten Sie ein root-Konto auf dem Linux-Quellserver vor.
+- **Virtuelle Windows-Computer**: Wenn Sie kein Domänenkonto verwenden, deaktivieren Sie für die Installation auf Windows-VMs die Remote-Benutzerzugriffssteuerung auf dem lokalen Computer. Dazu fügen Sie in der Registrierung unter **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** den DWORD-Eintrag **LocalAccountTokenFilterPolicy** mit dem Wert 1 hinzu.
+- **Virtuelle Linux-Computer**: Für die Installation auf virtuellen Linux-Computern bereiten Sie einen Superuser auf dem Linux-Quellserver vor.
 
 
 ## <a name="check-vmware-requirements"></a>Überprüfen der VMware-Anforderungen
@@ -103,12 +103,12 @@ Gehen Sie wie folgt vor, wenn Sie die Verbindung mit Linux-VMs nach dem Failover
 - Überprüfen Sie vor dem Failover auf dem lokalen Computer, ob der Secure Shell-Dienst für den automatischen Start beim Systemstart aktiviert ist.
 - Überprüfen Sie, ob die Firewallregeln eine SSH-Verbindung zulassen.
 - Erlauben Sie nach dem Failover auf der Azure-VM in den Netzwerksicherheitsgruppen-Regeln eingehende Verbindungen am SSH-Port und für das Azure-Subnetz, mit dem der virtuelle Computer verbunden ist.
-- Fügen Sie der VM eine [öffentliche IP-Adresse](site-recovery-monitoring-and-troubleshooting.md) hinzu.
+- Fügen Sie der VM eine [öffentliche IP-Adresse](./site-recovery-monitor-and-troubleshoot.md) hinzu.
 - Sie können die **Startdiagnose** aktivieren, um einen Screenshot des virtuellen Computers anzuzeigen.
 
 
 ## <a name="failback-requirements"></a>Failbackanforderungen
-Wenn Sie ein Failback auf Ihren lokalen Standort ausführen möchten, machen Sie sich mit den [Voraussetzungen für das Failback](vmware-azure-reprotect.md##before-you-begin) vertraut. Falls gewünscht, können Sie die erforderlichen Vorbereitungen jetzt durchführen. Sie können damit aber auch bis nach dem Failover auf Azure warten.
+Wenn Sie ein Failback auf Ihren lokalen Standort ausführen möchten, machen Sie sich mit den [Voraussetzungen für das Failback](vmware-azure-reprotect.md#before-you-begin) vertraut. Falls gewünscht, können Sie die erforderlichen Vorbereitungen jetzt durchführen. Sie können damit aber auch bis nach dem Failover auf Azure warten.
 
 
 

@@ -1,169 +1,161 @@
 ---
-title: 'Synonyme für die Abfrageerweiterung über einen Suchindex: Azure Search'
-description: Erstellen einer Synonymzuordnung zum Erweitern des Bereichs einer Suchabfrage für einen Azure Search-Index. Der Bereich wird erweitert, um gleichwertige Begriffe einzubeziehen, die Sie in einer Liste bereitstellen.
-author: brjohnstmsft
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
+title: Synonyme für die Abfrageerweiterung über einen Suchindex
+titleSuffix: Azure Cognitive Search
+description: Erstellen einer Synonymzuordnung zum Erweitern des Bereichs einer Suchabfrage für einen Index der kognitiven Azure-Suche. Der Bereich wird erweitert, um gleichwertige Begriffe einzubeziehen, die Sie in einer Liste bereitstellen.
 manager: nitinme
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: d9ddb5af42c538558a69ce68e7ea90161c947b12
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 12/18/2020
+ms.openlocfilehash: b62621a77f383b5c6413e7c187e7ba3d60beabad
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186459"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732086"
 ---
-# <a name="synonyms-in-azure-search"></a>Synonyme in Azure Search
+# <a name="synonyms-in-azure-cognitive-search"></a>Synonyme in der kognitiven Azure-Suche
 
-Synonyme in Suchmaschinen ordnen entsprechende Begriffe zu, die den Bereich einer Abfrage implizit erweitern, ohne dass der Benutzer den Begriff tatsächlich bereitstellen muss. Bei dem Begriff „Hund“ und Synonymzuordnungen von „hündisch“ und „Welpe“ fallen z. B. alle Dokumente, die „Hund“, „hündisch“ oder „Welpe“ enthalten, in den Gültigkeitsbereich der Abfrage.
-
-In Azure Search erfolgt die Synonymerweiterung zur Abfragezeit. Sie können Synonymzuordnungen zu einem Dienst hinzufügen, ohne vorhandene Vorgänge zu stören. Sie können eine **synonymMaps**-Eigenschaft zu einer Felddefinition hinzufügen, ohne den Index neu erstellen zu müssen.
+Mit Synonymzuordnungen können Sie entsprechende Begriffe zuordnen, um den Bereich einer Abfrage zu erweitern, ohne dass der Benutzer den Begriff tatsächlich bereitstellen muss. Wenn zum Beispiel „dog“, „canine“ und „canine“ Synonyme sind, wird eine Abfrage nach „canine“ Dokumente finden, die „canine“ enthalten.
 
 ## <a name="create-synonyms"></a>Erstellen von Synonymen
 
-Die Erstellung von Synonymen wird über das Portal nicht unterstützt, Sie können dafür jedoch die REST-API oder das .NET SDK verwenden. Zum Einstieg in REST werden die [Verwendung von Postman](search-get-started-postman.md) und die Erstellung von Anforderungen mit der folgenden API empfohlen: [Create Synonym Map](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). C#-Entwickler können mit dem [Hinzufügen von Synonymen in Azure Search mit C#](search-synonyms-tutorial-sdk.md) beginnen.
+Eine Synonymzuordnung ist ein Objekt, das einmalig erstellt und von vielen Indizes verwendet werden kann. Die [Dienstebene](search-limits-quotas-capacity.md#synonym-limits) bestimmt, wie viele Synonymzuordnungen Sie erstellen können, von 3 Synonymzuordnungen für die Tarife „Free“ und „Basic“, bis zu 20 für die Standard-Tarife. 
 
-Bei Verwendung von [von Kunden verwalteten Schlüsseln](search-security-manage-encryption-keys.md) für die dienstseitige Verschlüsselung ruhender Daten können Sie diesen Schutz optional auf die Inhalte der Synonymzuordnung anwenden.
+Sie können mehrere Synonymzuordnungen für verschiedene Sprachen erstellen, z. B. englische und französische Versionen, oder Lexika, wenn Ihr Inhalt technische oder unbekannte Terminologie enthält. Sie können zwar mehrere Synonymzuordnungen erstellen, ein Feld kann derzeit aber nur eine davon verwenden.
 
-## <a name="use-synonyms"></a>Verwenden von Synonymen
+Eine Synonymzuordnung besteht aus Name, Format und Regeln, die als Synonymzuordnungseinträge fungieren. Das einzige unterstützte Format ist `solr`, und das `solr`-Format bestimmt die Regelkonstruktion.
 
-In Azure Search basiert die Synonymunterstützung auf Synonymzuordnungen, die Sie definieren und zu Ihrem Dienst hochladen. Diese Zuordnungen bilden eine unabhängige Ressource (wie Indizes oder Datenquellen) und können von jedem durchsuchbaren Feld in einem beliebigen Index in Ihrem Suchdienst verwendet werden.
-
-Synonymzuordnungen und Indizes werden unabhängig voneinander verwaltet. Nachdem Sie eine Synonymzuordnung definiert und zu Ihrem Dienst hochgeladen haben, können Sie die Synonymfunktion für ein Feld aktivieren, indem Sie eine neue Eigenschaft namens **synonymMaps** in der Felddefinition hinzufügen. Das Erstellen, Aktualisieren und Löschen einer Synonymzuordnung betrifft immer das ganze Dokument. Daher können Sie keine Teile der Synonymzuordnung inkrementell erstellen, aktualisieren oder löschen. Selbst das Aktualisieren eines einzelnen Eintrags erfordert das erneute Laden.
-
-Das Integrieren von Synonymen in Ihre Suchanwendung ist ein zweistufiger Prozess:
-
-1.  Fügen Sie Ihrem Suchdienst über die nachfolgenden APIs eine Synonymzuordnung hinzu.  
-
-2.  Konfigurieren Sie ein durchsuchbares Feld, um die Synonymzuordnung in der Indexdefinition zu verwenden.
-
-### <a name="synonymmaps-resource-apis"></a>Ressourcen-APIs von SynonymMaps
-
-#### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>Fügen Sie eine Synonymzuordnung mithilfe von POST oder PUT unter Ihrem Dienst hinzu, oder aktualisieren Sie sie.
-
-Synonymzuordnungen werden über POST oder PUT zum Dienst hochgeladen. Jede Regel muss durch das Zeilenumbruchzeichen („\n“) getrennt werden. Sie können bis zu 5.000 Regeln pro Synonymzuordnung in einem kostenlosen Dienst und 10.000 Regeln in allen anderen SKUs definieren. Jede Regel kann bis zu 20 Erweiterungen aufweisen.
-
-Synonymzuordnungen müssen das unten beschriebene „Apache Solr“-Format aufweisen. Wenn ein vorhandenes Synonymwörterbuch in einem anderen Format vorliegt und sie es direkt verwenden möchten, können Sie uns über [UserVoice](https://feedback.azure.com/forums/263029-azure-search) informieren.
-
-Sie können eine neue Synonymzuordnung mithilfe von HTTP POST erstellen, wie im folgenden Beispiel:
-
-    POST https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
-    api-key: [admin key]
-
-    {
-       "name":"mysynonymmap",
-       "format":"solr",
-       "synonyms": "
-          USA, United States, United States of America\n
-          Washington, Wash., WA => WA\n"
-    }
-
-Alternativ können Sie PUT verwenden und den Namen der Synonymzuordnung für den URI angeben. Wenn die Synonymzuordnung nicht vorhanden ist, wird sie erstellt.
-
-    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
-    api-key: [admin key]
-
-    {
-       "format":"solr",
-       "synonyms": "
-          USA, United States, United States of America\n
-          Washington, Wash., WA => WA\n"
-    }
-
-##### <a name="apache-solr-synonym-format"></a>Apache Solr-Synonymformat
-
-Das Solr-Format unterstützt vergleichbare und explizite Synonymzuordnungen. Zuordnungsregeln entsprechen den Open-Source-Synonymfilterspezifikation von Apache Solr, die im folgenden Dokument beschrieben ist: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Im folgenden finden Sie eine Beispielregel für vergleichbare Synonyme.
-```
-USA, United States, United States of America
+```http
+POST /synonymmaps?api-version=2020-06-30
+{
+    "name": "geo-synonyms",
+    "format": "solr",
+    "synonyms": "
+        USA, United States, United States of America\n
+        Washington, Wash., WA => WA\n"
+}
 ```
 
-Mit der obigen Regel wird die Suchabfrage „USA“ zu „USA“ ODER „Vereinigte Staaten“ ODER „Vereinigte Staaten von Amerika“ erweitert.
+Um eine Synonymzuordnung zu erstellen, verwenden Sie [Synonymzuordnung erstellen (REST-API)](/rest/api/searchservice/create-synonym-map) oder ein Azure-SDK. C#-Entwickler sollten mit dem [Hinzufügen von Synonymen in der kognitiven Azure-Suche mit C#](search-synonyms-tutorial-sdk.md) beginnen.
 
-Eine explizite Zuordnung wird durch einen Pfeil gekennzeichnet „=>“. Eine Begriffsfolge (sofern angegeben) einer Suchabfrage, die den linken Teil von „=>“ vergleicht, wird durch die Alternativen auf der rechten Seite ersetzt. Bei der nachfolgenden Regel werden die Suchabfragen „Washington“, „Wash.“ oder „WA“ alle in „WA“ umgeschrieben. Die explizite Zuordnung gilt nur für die angegebene Richtung und schreibt in diesem Fall die Abfrage „WA“ nicht zu „Washington“ um.
+## <a name="define-rules"></a>Definieren von Regeln
+
+Zuordnungsregeln entsprechen den Open-Source-Synonymfilterspezifikation von Apache Solr, die im folgenden Dokument beschrieben ist: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Das Format `solr` unterstützt zwei Arten von Regeln:
+
++ Äquivalenz (wobei Begriffe in der Abfrage gleichwertige Alternativen sind)
+
++ Explizite Zuordnungen (wobei Begriffe vor dem Ausführen der Abfrage einem expliziten Begriff zugeordnet werden)
+
+Jede Regel muss durch das Zeilenumbruchzeichen (`\n`) von anderen Regeln getrennt werden. Sie können bis zu 5.000 Regeln pro Synonymzuordnung in einem kostenlosen Dienst und 20.000 Regeln pro Zuordnung in anderen Tarifen definieren. Jede Regel kann bis zu 20 Erweiterungen (oder Elemente in einer Regel) aufweisen. Weitere Informationen finden Sie unter [Synonymeinschränkungen](search-limits-quotas-capacity.md#synonym-limits).
+
+Abfrageparser wandeln alle Begriffe in Großbuchstaben oder gemischter Groß-/Kleinschreibung in Kleinbuchstaben um. Wenn Sie jedoch Sonderzeichen in der Zeichenfolge beibehalten möchten, wie z. B. ein Komma oder einen Gedankenstrich, fügen Sie beim Erstellen der Synonymzuordnung die entsprechenden Escape-Zeichen hinzu. 
+
+### <a name="equivalency-rules"></a>Äquivalenzregeln
+
+Regeln für äquivalente Begriffe innerhalb derselben Regel werden durch Kommas getrennt. Im ersten Beispiel wird eine Abfrage nach `USA` zu `USA` ODER `"United States"` ODER `"United States of America"` erweitert. Beachten Sie, dass, zum Abgleich mit einem Ausdruck, die Abfrage selbst eine Abfrage mit einem in Anführungszeichen eingeschlossene Ausdruck sein muss.
+
+Im Falle einer Äquivalenzregel wird eine Abfrage nach `dog` so erweitert, dass sie auch `puppy` und `canine` einschließt.
+
+```json
+{
+"format": "solr",
+"synonyms": "
+    USA, United States, United States of America\n
+    dog, puppy, canine\n
+    coffee, latte, cup of joe, java\n"
+}
 ```
-Washington, Wash., WA => WA
+
+### <a name="explicit-mapping"></a>Explizite Zuordnung
+
+Regeln für eine explizite Zuordnung werden durch einen Pfeil `=>` gekennzeichnet. Eine Begriffsfolge (sofern angegeben) einer Suchabfrage, die den linken Teil von `=>` vergleicht, wird zum Zeitpunkt der Abfrage durch die Alternativen auf der rechten Seite ersetzt.
+
+Bei einer expliziten Zuordnung wird eine Abfrage nach `Washington`, `Wash.` oder `WA` als `WA` umformuliert, und die Abfrage-Engine sucht nur nach Übereinstimmungen für den Begriff `WA`. Die explizite Zuordnung gilt nur für die angegebene Richtung und schreibt in diesem Fall die Abfrage `WA` nicht zu `Washington` um.
+
+```json
+{
+"format": "solr",
+"synonyms": "
+    Washington, Wash., WA => WA\n
+    California, Calif., CA => CA\n"
+}
 ```
 
-#### <a name="list-synonym-maps-under-your-service"></a>Listen Sie Synonymzuordnungen unter Ihrem Dienst auf.
+### <a name="escaping-special-characters"></a>Verwenden von Escapezeichen für Sonderzeichen
 
-    GET https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
-    api-key: [admin key]
+Wenn Sie Synonyme definieren müssen, die Kommas oder andere Sonderzeichen enthalten, können Sie diese wie in diesem Beispiel mit einem umgekehrten Schrägstrich als Escapezeichen versehen:
 
-#### <a name="get-a-synonym-map-under-your-service"></a>Rufen Sie eine Synonymzuordnung unter Ihrem Dienst ab.
+```json
+{
+"format": "solr",
+"synonyms": "WA\, USA, WA, Washington\n"
+}
+```
 
-    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
-    api-key: [admin key]
+Da der umgekehrte Schrägstrich selbst ein Sonderzeichen in anderen Sprachen wie JSON und C# ist, müssen Sie ihn wahrscheinlich mit einem doppelten Escapezeichen versehen. Beispielsweise würde der JSON-Code, der für die obige Synonymzuordnung an die REST-API gesendet wird, wie folgt aussehen:
 
-#### <a name="delete-a-synonyms-map-under-your-service"></a>Löschen Sie eine Synonymzuordnung unter Ihrem Dienst.
+```json
+{
+"format":"solr",
+"synonyms": "WA\\, USA, WA, Washington"
+}
+```
 
-    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
-    api-key: [admin key]
+## <a name="upload-and-manage-synonym-maps"></a>Hochladen und Verwalten von Synonymzuordnungen
 
-### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Konfigurieren Sie ein durchsuchbares Feld, um die Synonymzuordnung in der Indexdefinition zu verwenden.
+Wie bereits erwähnt, können Sie eine Synonymzuordnung erstellen oder aktualisieren, ohne die Abfrage- und Indizierungsworkloads zu unterbrechen. Eine Synonymzuordnung ist ein eigenständiges Objekt (wie Indizes oder Datenquellen), und solange sie von keinem Feld verwendet wird, führen Aktualisierungen nicht zu Fehlern bei Indizierungen oder Abfragen. Sobald Sie eine Synonymzuordnung jedoch zu einer Felddefinition hinzugefügt haben und sie dann löschen, schlägt jede Abfrage, die die betreffenden Felder enthält, mit einem 404-Fehler fehl.
 
-Es kann die neue **synonymMaps**-Feldeigenschaft verwendet werden, um eine Synonymzuordnung anzugeben, die für ein durchsuchbares Feld verwendet werden soll. Synonymzuordnungen sind Ressourcen der Dienstebene. Jedes Feld eines Index unter dem Dienst kann auf die Zuordnungen verweisen.
+Das Erstellen, Aktualisieren und Löschen einer Synonymzuordnung betrifft immer das ganze Dokument. Daher können Sie keine Teile der Synonymzuordnung inkrementell aktualisieren oder löschen. Selbst das Aktualisieren einer einzelnen Regel erfordert das erneute Laden.
 
-    POST https://[servicename].search.windows.net/indexes?api-version=2019-05-06
-    api-key: [admin key]
+## <a name="assign-synonyms-to-fields"></a>Zuweisen von Synonymen zu Feldern
 
-    {
-       "name":"myindex",
-       "fields":[
-          {
-             "name":"id",
-             "type":"Edm.String",
-             "key":true
-          },
-          {
-             "name":"name",
-             "type":"Edm.String",
-             "searchable":true,
-             "analyzer":"en.lucene",
-             "synonymMaps":[
-                "mysynonymmap"
-             ]
-          },
-          {
-             "name":"name_jp",
-             "type":"Edm.String",
-             "searchable":true,
-             "analyzer":"ja.microsoft",
-             "synonymMaps":[
-                "japanesesynonymmap"
-             ]
-          }
-       ]
-    }
+Nach dem Hochladen einer Synonymzuordnung können Sie die Synonyme für Felder des Typs `Edm.String` oder `Collection(Edm.String)` auf Felder mit `"searchable":true` aktivieren. Wie bereits erwähnt, kann eine Felddefinition nur eine Synonymzuordnung verwenden.
 
-**synonymMaps** kann für durchsuchbare Felder vom Typ „Edm.String“ oder „Collection(Edm.String)“ angegeben werden.
+```http
+POST /indexes?api-version=2020-06-30
+{
+    "name":"hotels-sample-index",
+    "fields":[
+        {
+            "name":"description",
+            "type":"Edm.String",
+            "searchable":true,
+            "synonymMaps":[
+            "en-synonyms"
+            ]
+        },
+        {
+            "name":"description_fr",
+            "type":"Edm.String",
+            "searchable":true,
+            "analyzer":"fr.microsoft",
+            "synonymMaps":[
+            "fr-synonyms"
+            ]
+        }
+    ]
+}
+```
 
-> [!NOTE]
-> Sie können nur eine Synonymzuordnung pro Feld verwenden. Wenn Sie mehrere Synonymzuordnungen verwenden möchten, können Sie uns über [UserVoice](https://feedback.azure.com/forums/263029-azure-search) informieren.
+## <a name="query-on-equivalent-or-mapped-fields"></a>Abfrage nach äquivalenten oder zugeordneten Feldern
 
-## <a name="impact-of-synonyms-on-other-search-features"></a>Auswirkungen von Synonymen auf andere Suchfeatures
+Das Hinzufügen von Synonymen stellt keine neuen Anforderungen an die Abfragekonstruktion. Sie können Begriffe und Ausdrücke genau so abfragen wie vor dem Hinzufügen der Synonyme. Der einzige Unterschied besteht darin, dass die Abfrage-Engine bei Vorhandensein eines Abfragebegriffs in der Synonymzuordnung den Begriff oder Ausdruck je nach Regel entweder erweitert oder umformuliert.
+
+## <a name="how-synonyms-interact-with-other-features"></a>Interaktion von Synonymen mit anderen Features
 
 Das Feature „Synonyme“ ändert die ursprüngliche Abfrage mithilfe von Synonymen mit dem OR-Operator. Aus diesem Grund werden der ursprüngliche Begriff und Synonyme von der Treffermarkierung und von Bewertungsprofilen als gleichwertig behandelt.
 
-Das Feature „Synonyme“ gilt für Suchabfragen und nicht für Filter oder Facets. Ebenso basieren Vorschläge nur auf dem ursprünglichen Begriff. Synonymübereinstimmungen werden in der Antwort nicht angezeigt.
+Synonyme gelten nur für Suchabfragen und werden nicht für Filter, Facets, AutoVervollständigen oder Vorschläge unterstützt. AutoVervollständigen und Vorschläge basieren nur auf dem ursprünglichen Begriff. Synonymübereinstimmungen werden in der Antwort nicht angezeigt.
 
 Die Synonymerweiterungen gelten nicht für Platzhaltersuchbegriffe. Präfix-, Fuzzy- und Regex-Begriffe werden nicht erweitert.
 
 Wenn Sie eine einzelne Abfrage, die eine Synonymerweiterung sowie Platzhalter-, Regex- und Fuzzysuche umfasst, durchführen möchten, können Sie die Abfragen mit der OR-Syntax kombinieren. Um beispielsweise Synonyme mit Platzhaltern für eine einfache Abfragesyntax zu kombinieren, lautet der Begriff `<query> | <query>*`.
 
-## <a name="tips-for-building-a-synonym-map"></a>Tipps zum Erstellen einer Synonymzuordnung
-
-- Eine präzise, ausgereifte Synonymzuordnung ist effizienter als eine vollständige Liste möglicher Übereinstimmungen. Die Analyse übermäßig großer oder komplexer Wörterbücher dauert länger und wirkt sich auf die Abfragewartezeit aus, wenn bei der Abfrage zu viele Synonyme erweitert werden. Anstatt zu erraten, welche Begriffe verwendet werden, können Sie die tatsächlichen Begriffe über einen [Analysebericht zum Suchdatenverkehr](search-traffic-analytics.md) abrufen.
-
-- Aktivieren Sie diesen Bericht sowohl zur Vorbereitung als auch zur Überprüfung und verwenden Sie ihn, um genau zu ermitteln, welche Begriffe von einer Synonymzuordnung profitieren. Verwenden Sie ihn dann zur Überprüfung, ob Ihre Synonymzuordnung zu besserer Ergebnissen führt. Im vordefinierten Bericht enthalten die Kacheln für „Häufigste Suchabfragen“ und „Suchabfragen ohne Ergebnis“ die erforderlichen Informationen.
-
-- Sie können mehrere Synonymzuordnungen für Ihre Suchanwendung erstellen (z. B. nach Sprache, wenn Ihre Anwendung einen mehrsprachigen Kundenstamm unterstützt). Derzeit kann ein Feld nur eine der Zuordnungen verwenden. Sie können die „synonymMaps“-Eigenschaft für ein Feld jederzeit aktualisieren.
+Wenn Sie über einen vorhandenen Index in einer Entwicklungsumgebung (nicht Produktionsumgebung) verfügen, experimentieren Sie mit einem kleinen Wörterbuch, um zu prüfen, wie sich das Hinzufügen von Synonymen auf die Suche auswirkt, einschließlich der Auswirkungen auf Bewertungsprofile, Treffermarkierungen und Vorschläge.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie über einen vorhandenen Index in einer Entwicklungsumgebung (nicht Produktionsumgebung) verfügen, experimentieren Sie mit einem kleinen Wörterbuch, um zu prüfen, wie sich das Hinzufügen von Synonymen auf die Suche auswirkt, einschließlich der Auswirkungen auf Bewertungsprofile, Treffermarkierungen und Vorschläge.
-
-- [Aktivieren Sie die Datenverkehrsanalyse für Suchen](search-traffic-analytics.md), und verwenden Sie den vordefinierten Power BI-Bericht, um zu erfahren, welche Begriffe am meisten verwendet werden und welche Begriffe keine Dokumente zurückgeben. Überarbeiten Sie das Wörterbuch unter Einbeziehung dieser Erkenntnisse, um Synonyme für unproduktive Abfragen einzubeziehen, die zu Dokumenten in Ihrem Index führen sollten.
+> [!div class="nextstepaction"]
+> [Erstellen einer Synonymzuordnung (REST-API)](/rest/api/searchservice/create-synonym-map)

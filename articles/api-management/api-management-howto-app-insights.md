@@ -1,5 +1,6 @@
 ---
-title: Integrieren von Azure API Management in Azure Application Insights | Microsoft-Dokumentation
+title: Integrieren von Azure API Management mit Azure Application Insights
+titleSuffix: Azure API Management
 description: Informationen zum Protokollieren und Anzeigen von Ereignissen aus Azure API Management in Azure Application Insights.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 10e8edcd3a1e781866eaee2cbe48d1536dbc1229
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: adb221c12af436135b1e740fdef7c5c0a0a7f0cb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073578"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096035"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights
 
@@ -31,26 +32,26 @@ Um dieser Anleitung folgen zu können, benötigen Sie eine Azure API Management-
 
 Bevor Sie Azure Application Insights verwenden können, müssen Sie zunächst eine Instanz des Diensts erstellen.
 
-1. Öffnen Sie das **Azure-Portal**, und navigieren Sie zu **Application Insights**.  
-    ![Application Insights erstellen](media/api-management-howto-app-insights/apim-app-insights-instance-1.png)  
+1. Öffnen Sie das **Azure-Portal** , und navigieren Sie zu **Application Insights**.  
+    ![Screenshot der Navigation zu Application Insights](media/api-management-howto-app-insights/apim-app-insights-instance-1.png)  
 2. Klicken Sie auf **+ Hinzufügen**.  
     ![Application Insights erstellen](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
 3. Füllen Sie das Formular aus. Wählen Sie **Allgemein** als **Anwendungstyp** aus.
-4. Klicken Sie auf **Create**.
+4. Klicken Sie auf **Erstellen**.
 
 ## <a name="create-a-connection-between-azure-application-insights-and-azure-api-management-service-instance"></a>Erstellen einer Verbindung zwischen Azure Application Insights und der Azure API Management-Dienstinstanz
 
 1. Navigieren Sie im **Azure-Portal** zu Ihrer **Azure API Management-Dienstinstanz**.
 2. Wählen Sie **Application Insights** im Menü auf der linken Seite aus.
 3. Klicken Sie auf **+ Hinzufügen**.  
-    ![Application Insights-Protokollierung](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
-4. Wählen Sie die zuvor erstellte **Application Insights**-Instanz aus, und geben Sie eine kurze Beschreibung.
-5. Klicken Sie auf **Create**.
+    ![Screenshot der Stelle zum Hinzufügen einer neuen Verbindung](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
+4. Wählen Sie die zuvor erstellte **Application Insights** -Instanz aus, und geben Sie eine kurze Beschreibung.
+5. Klicken Sie auf **Erstellen**.
 6. Sie haben gerade eine Azure Application Insights-Protokollierung mit einem Instrumentierungsschlüssel erstellt. Sie sollte jetzt in der Liste angezeigt werden.  
-    ![Application Insights-Protokollierung](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
+    ![Screenshot der Stelle zum Anzeigen der neu erstellten Azure Application Insights-Protokollierung mit dem Instrumentierungsschlüssel](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> Im Hintergrund wird eine [Protokollierungsentität](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate) in der API Management-Instanz erstellt, die den Instrumentierungsschlüssel der Application Insights-Instanz enthält.
+> Im Hintergrund wird eine [Protokollierungsentität](/rest/api/apimanagement/2019-12-01/logger/createorupdate) in der API Management-Instanz erstellt, die den Instrumentierungsschlüssel der Application Insights-Instanz enthält.
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>Aktivieren der Application Insights-Protokollierung für Ihre API
 
@@ -69,16 +70,17 @@ Bevor Sie Azure Application Insights verwenden können, müssen Sie zunächst ei
 > Überschreiben des Standardwerts **0** im Feld **Erste Bytes des Texts** kann die Leistung Ihrer APIs erheblich beeinträchtigen.
 
 > [!NOTE]
-> Im Hintergrund wird eine [Diagnoseentität](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/diagnostic/createorupdate) namens „applicationinsights“ auf API-Ebene erstellt.
+> Im Hintergrund wird eine [Diagnoseentität](/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) namens „applicationinsights“ auf API-Ebene erstellt.
 
 | Einstellungsname                        | Werttyp                        | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Aktivieren                              | boolean                           | Gibt an, ob die Protokollierung dieser API aktiviert ist.                                                                                                                                                                                                                                                                                                |
 | Destination                         | Azure Application Insights-Protokollierung | Gibt zu verwendende Azure Application Insights-Protokollierung an                                                                                                                                                                                                                                                                                           |
-| Sampling (%)                        | decimal                           | Werte von 0 bis 100 (Prozent). <br/> Gibt an, welcher Prozentsatz der Anforderungen in Azure Application Insights protokolliert wird. 0% Sampling bedeutet, dass 0 (null) Anforderungen protokolliert werden, während ein Sampling von 100% bedeutet, dass alle Anforderungen protokolliert werden. <br/> Diese Einstellung wird verwendet, um Leistungseinbußen durch Protokollierungsanforderungen an Azure Application Insights (siehe Abschnitt weiter unten) zu verringern. |
+| Sampling (%)                        | Decimal                           | Werte von 0 bis 100 (Prozent). <br/> Gibt an, welcher Prozentsatz der Anforderungen in Azure Application Insights protokolliert wird. 0% Sampling bedeutet, dass 0 (null) Anforderungen protokolliert werden, während ein Sampling von 100% bedeutet, dass alle Anforderungen protokolliert werden. <br/> Diese Einstellung wird verwendet, um Leistungseinbußen durch Protokollierungsanforderungen an Azure Application Insights (siehe Abschnitt weiter unten) zu verringern. |
 | Fehler immer protokollieren                   | boolean                           | Wenn diese Einstellung ausgewählt ist, werden alle Fehler unabhängig von der Einstellung **Sampling** in Azure Application Insights protokolliert.                                                                                                                                                                                                                  |
 | Grundlegende Optionen: Header              | list                              | Gibt die Header an, die in Azure Application Insights für Anforderungen und Antworten protokolliert werden.  Standard: Es werden keine Header protokolliert.                                                                                                                                                                                                             |
-| Grundlegende Optionen: Erste Bytes des Texts  | integer                           | Gibt an, wie viele erste Bytes des Texts in Azure Application Insights für Anforderungen und Antworten protokolliert werden.  Standard: Text wird nicht protokolliert.                                                                                                                                                                                              |
+| Grundlegende Optionen: Erste Bytes des Texts  | integer                           | Gibt an, wie viele erste Bytes des Texts in Azure Application Insights für Anforderungen und Antworten protokolliert werden.  Standard: Text wird nicht protokolliert.                                                                                                                                                                                                    |
+| Erweiterte Optionen: Ausführlichkeit         |                                   | Gibt den Ausführlichkeitsgrad an. Nur benutzerdefinierte Ablaufverfolgungen mit höherem Schweregrad werden protokolliert. Standardwert: Information.                                                                                                                                                                                                                               |
 | Erweiterte Optionen: Front-End-Anforderung  |                                   | Gibt an, ob und wie *Front-End-Anforderungen* in Azure Application Insights protokolliert werden. Eine *Front-End-Anforderung* ist eine an den Azure API Management-Dienst gerichtete Anforderung.                                                                                                                                                                        |
 | Erweiterte Optionen: Front-End-Antwort |                                   | Gibt an, ob und wie *Front-End-Antworten* in Azure Application Insights protokolliert werden. *Front-End-Antwort* ist eine vom Azure API Management-Dienst ausgehende Antwort.                                                                                                                                                                   |
 | Erweiterte Optionen: Back-End-Anforderung   |                                   | Gibt an, ob und wie *Back-End-Anforderungen* in Azure Application Insights protokolliert werden. Eine *Back-End-Anforderung* ist eine vom Azure API Management-Dienst ausgehende Anforderung.                                                                                                                                                                        |
@@ -95,14 +97,14 @@ Bevor Sie Azure Application Insights verwenden können, müssen Sie zunächst ei
 
 Azure Application Insights empfängt:
 
-+ Ein *Anforderungstelemetrieereignis* für jede eingehende Anforderung (*Front-End-Anforderung*, *Front-End-Antwort*),
-+ ein *Abhängigkeitstelemetrieereignis* für jede an einen Back-End-Dienst weitergeleitete Anforderung (*Back-End-Anforderung*, *Back-End-Antwort*),
++ Ein *Anforderungstelemetrieereignis* für jede eingehende Anforderung ( *Front-End-Anforderung* , *Front-End-Antwort* ),
++ ein *Abhängigkeitstelemetrieereignis* für jede an einen Back-End-Dienst weitergeleitete Anforderung ( *Back-End-Anforderung* , *Back-End-Antwort* ),
 + ein *Ausnahmetelemetrieereignis* für jede fehlerhafte Anforderung.
 
 Für eine fehlerhafte Anforderung gilt Folgendes:
 
 + Sie ist aufgrund einer geschlossenen Clientverbindung fehlerhaft, oder
-+ sie wurde im *bei Fehler*-Abschnitt der API-Richtlinien ausgelöst, oder
++ sie wurde im *bei Fehler* -Abschnitt der API-Richtlinien ausgelöst, oder
 + sie verfügt über einen mit 4xx oder 5xx übereinstimmenden Antwort-HTTP-Statuscode.
 
 ## <a name="performance-implications-and-log-sampling"></a>Auswirkungen auf die Leistung und Protokollsampling
@@ -124,5 +126,5 @@ Das Überspringen der Protokollierung von Headern und Textkörpern der Anforderu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-+ Erfahren Sie mehr über [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/).
++ Erfahren Sie mehr über [Azure Application Insights](/azure/application-insights/).
 + Betrachten Sie die [Protokollierung mit Azure Event Hubs](api-management-howto-log-event-hubs.md).

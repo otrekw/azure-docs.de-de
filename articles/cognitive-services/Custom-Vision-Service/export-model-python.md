@@ -1,25 +1,26 @@
 ---
 title: 'Tutorial: Ausführen eines TensorFlow-Modells in Python – Custom Vision Service'
 titleSuffix: Azure Cognitive Services
-description: Ausführen eines TensorFlow-Modells in Python
+description: Ausführen eines TensorFlow-Modells in Python Dieser Artikel gilt nur für Modelle, die aus Bildklassifizierungsprojekten in den Maschinelles Sehen-Dienst exportiert wurden.
 services: cognitive-services
-author: areddish
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 07/03/2019
-ms.author: areddish
-ms.openlocfilehash: c6e7cf770e5f1639e676d232564809121a8c4e4b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 11/23/2020
+ms.author: pafarley
+ms.custom: devx-track-python
+ms.openlocfilehash: a47475ad55c5e6262dc8ba1a384d89b9721fd2e9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561102"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736424"
 ---
-# <a name="tutorial-run-tensorflow-model-in-python"></a>Tutorial: Ausführen des TensorFlow-Modells in Python
+# <a name="tutorial-run-tensorflow-model-in-python"></a>Tutorial: Ausführen eines TensorFlow-Modells in Python
 
-Nachdem Sie Ihr [TensorFlow-Modell](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) aus Custom Vision Service exportiert haben, hilft Ihnen dieser Schnellstart dabei, das Modell lokal zu verwenden, um Bilder zu klassifizieren.
+Nachdem Sie Ihr [TensorFlow-Modell](./export-your-model.md) aus Custom Vision Service exportiert haben, hilft Ihnen dieser Schnellstart dabei, das Modell lokal zu verwenden, um Bilder zu klassifizieren.
 
 > [!NOTE]
 > Dieses Tutorial betrifft nur Modelle, die aus Bildklassifizierungsprojekten exportiert wurden.
@@ -31,9 +32,9 @@ Zum Verwenden des Tutorials müssen Sie die folgenden Schritte ausführen:
 - Installieren Sie entweder Python 2.7+ oder Python 3.5+.
 - Installieren Sie pip.
 
-Sie müssen anschließend außerdem die folgenden Pakete installieren:
+Anschließend müssen folgende Pakete installiert werden:
 
-```
+```bash
 pip install tensorflow
 pip install pillow
 pip install numpy
@@ -42,13 +43,13 @@ pip install opencv-python
 
 ## <a name="load-your-model-and-tags"></a>Laden Ihrer Modelle und Tags
 
-Die heruntergeladene ZIP-Datei enthält eine model.pb- und eine labels.txt-Datei. Diese Dateien stellen das trainierte Modell und die Klassifizierungsbezeichnungen dar. Laden Sie als ersten Schritt das Modell in Ihr Projekt.
+Die heruntergeladene ZIP-Datei enthält eine Datei namens _model.pb_ und eine Datei namens _labels.txt_. Diese Dateien stellen das trainierte Modell und die Klassifizierungsbezeichnungen dar. Laden Sie als ersten Schritt das Modell in Ihr Projekt. Fügen Sie den folgenden Code einem neuen Python-Skript hinzu:
 
 ```Python
 import tensorflow as tf
 import os
 
-graph_def = tf.GraphDef()
+graph_def = tf.compat.v1.GraphDef()
 labels = []
 
 # These are set to the default names from exported models, update as needed.
@@ -56,7 +57,7 @@ filename = "model.pb"
 labels_filename = "labels.txt"
 
 # Import the TF graph
-with tf.gfile.GFile(filename, 'rb') as f:
+with tf.io.gfile.GFile(filename, 'rb') as f:
     graph_def.ParseFromString(f.read())
     tf.import_graph_def(graph_def, name='')
 
@@ -68,7 +69,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>Vorbereiten eines Bilds auf die Vorhersage
 
-Das Bild muss in einigen Schritten vorbereitet werden, damit es die richtige Form für die Vorhersage hat. In diesen Schritten wird die Bildmanipulation imitiert, die während des Trainings ausgeführt wird:
+Für das Bild müssen ein paar Schritte ausgeführt werden, um es für die Vorhersage vorzubereiten. In diesen Schritten wird die Bildmanipulation imitiert, die während des Trainings ausgeführt wird:
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>Öffnen der Datei und Erstellen eines Bilds im BGR-Farbraum
 
@@ -116,7 +117,7 @@ augmented_image = resize_to_256_square(max_square_image)
 
 ```Python
 # Get the input size of the model
-with tf.Session() as sess:
+with tf.compat.v1.Session() as sess:
     input_tensor_shape = sess.graph.get_tensor_by_name('Placeholder:0').shape.as_list()
 network_input_size = input_tensor_shape[1]
 
@@ -124,6 +125,8 @@ network_input_size = input_tensor_shape[1]
 augmented_image = crop_center(augmented_image, network_input_size, network_input_size)
 
 ```
+
+### <a name="add-helper-functions"></a>Hinzufügen von Hilfsfunktionen
 
 In den obenstehenden Schritten werden die folgenden Hilfsfunktionen verwendet:
 
@@ -170,7 +173,7 @@ def update_orientation(image):
     return image
 ```
 
-## <a name="predict-an-image"></a>Vorhersagen eines Bilds
+## <a name="classify-an-image"></a>Klassifizieren eines Bilds
 
 Sobald das Bild als Tensor vorbereitet ist, kann es über das Modell für eine Vorhersage gesendet werden:
 
@@ -180,17 +183,17 @@ Sobald das Bild als Tensor vorbereitet ist, kann es über das Modell für eine V
 output_layer = 'loss:0'
 input_node = 'Placeholder:0'
 
-with tf.Session() as sess:
+with tf.compat.v1.Session() as sess:
     try:
         prob_tensor = sess.graph.get_tensor_by_name(output_layer)
-        predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })
+        predictions = sess.run(prob_tensor, {input_node: [augmented_image] })
     except KeyError:
         print ("Couldn't find classification output layer: " + output_layer + ".")
         print ("Verify this a model exported from an Object Detection project.")
         exit(-1)
 ```
 
-## <a name="view-the-results"></a>Zeigen Sie die Ergebnisse an
+## <a name="display-the-results"></a>Anzeigen der Ergebnisse
 
 Die Ergebnisse der Ausführung des Bildtensors über das Modell muss dann wieder den Bezeichnungen zugeordnet werden.
 

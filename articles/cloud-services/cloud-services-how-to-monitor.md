@@ -3,21 +3,21 @@ title: Überwachen eines Azure-Clouddiensts| Microsoft Docs
 description: Hier wird beschrieben, welche Aspekte die Überwachung eines Azure-Clouddiensts umfasst und welche Optionen verfügbar sind.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: gwallace
-ms.openlocfilehash: ac0ea7557774f0e59cb6a6eca1fc739592ab971d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359115"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85847246"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Einführung in die Überwachung von Clouddiensten
 
-Sie können wichtige Leistungsmetriken für beliebige Clouddienste überwachen. Jede Clouddienstrolle erfasst Mindestdaten: CPU-, Netzwerk- und Datenträgerverwendung. Wenn auf eine Rolle des Clouddiensts die Erweiterung `Microsoft.Azure.Diagnostics` angewendet wurde, können für die Rolle zusätzliche Datenpunkte erfasst werden. Dieser Artikel bietet eine Einführung in die Azure-Diagnose für Clouddienste.
+Sie können wichtige Leistungsmetriken für beliebige Clouddienste überwachen. Für jede Clouddienstrolle werden minimale Daten zur CPU-Nutzung, Netzwerkverwendung und Datenträgerverwendung erfasst. Wenn auf eine Rolle des Clouddiensts die Erweiterung `Microsoft.Azure.Diagnostics` angewendet wurde, können für die Rolle zusätzliche Datenpunkte erfasst werden. Dieser Artikel bietet eine Einführung in die Azure-Diagnose für Clouddienste.
 
 Bei der grundlegenden Überwachung werden alle drei Minuten Leistungsindikatordaten aus den Rolleninstanzen abgefragt und erfasst. Daten aus der grundlegenden Überwachung werden nicht unter Ihrem Speicherkonto gespeichert und verursachen keine zusätzlichen Kosten.
 
@@ -52,7 +52,7 @@ Während der Erstellung einer Rolle wird ihr von Visual Studio die Azure-Diagnos
 
 ## <a name="setup-diagnostics-extension"></a>Einrichten der Diagnoseerweiterung
 
-Wenn Sie noch nicht über ein **klassisches** Speicherkonto verfügen, [erstellen Sie zunächst ein Konto](../storage/common/storage-quickstart-create-account.md). Stellen Sie sicher, dass das Speicherkonto mit dem **klassischen Bereitstellungsmodell** erstellt wird.
+Wenn Sie noch nicht über ein **klassisches** Speicherkonto verfügen, [erstellen Sie zunächst ein Konto](../storage/common/storage-account-create.md). Stellen Sie sicher, dass das Speicherkonto mit dem **klassischen Bereitstellungsmodell** erstellt wird.
 
 Navigieren Sie als Nächstes zur Ressource **Speicherkonto (klassisch)** . Wählen Sie **Einstellungen** > **Zugriffsschlüssel** aus, und kopieren Sie den Wert unter **Primäre Verbindungszeichenfolge**. Sie benötigen diesen Wert für den Clouddienst. 
 
@@ -96,4 +96,7 @@ Hinweis: Sie können die Leistungsindikatoren (und weiteren Einstellungen), die 
 
 - [Informationen zu Application Insights mit Cloud Services](../azure-monitor/app/cloudservices.md)
 - [Einrichten von Leistungsindikatoren](diagnostics-performance-counters.md)
+
+
+
 

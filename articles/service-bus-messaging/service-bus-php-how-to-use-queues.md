@@ -1,27 +1,18 @@
 ---
-title: Verwenden von Service Bus-Warteschlangen mit PHP | Microsoft Docs
-description: Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure. Die Codebeispiele wurden in PHP geschrieben.
+title: Verwenden von Azure Service Bus-Warteschlangen mit PHP
+description: In diesem Tutorial erfahren Sie, wie Sie PHP-Anwendungen erstellen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen.
 services: service-bus-messaging
-documentationcenter: php
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: e29c829b-44c5-4350-8f2e-39e0c380a9f2
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: PHP
-ms.topic: article
-ms.date: 04/10/2019
-ms.author: aschhab
-ms.openlocfilehash: d958202ee42b1edec5e1b65c120536c656823ecf
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.topic: quickstart
+ms.date: 06/23/2020
+ms.openlocfilehash: a7e0d1fa321f1b7c1295b5a640fe78b46adf1c72
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147238"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "85341127"
 ---
-# <a name="how-to-use-service-bus-queues-with-php"></a>Verwenden von Service Bus-Warteschlangen mit PHP
+# <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Schnellstart: Verwenden von Service Bus-Warteschlangen mit PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie PHP-Anwendungen erstellen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen. 

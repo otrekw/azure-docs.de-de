@@ -1,28 +1,32 @@
 ---
 title: Bereitstellen des OPC Twin-Moduls für Azure von Grund auf | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie OPC Twin von Grund auf neu bereitstellen.
+description: In diesem Artikel wird beschrieben, wie Sie OPC Twin mithilfe des Blatts „IoT Edge“ im Azure-Portal und mithilfe der Azure-Befehlszeilenschnittstelle von Grund auf neu bereitstellen.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
 ms.service: industrial-iot
+ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: df1dd45d58baf82710b5e362afaf055aad140b98
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 1c12b1c7fd393227cb22d011f8b88f914cfded59
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302639"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445492"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>Bereitstellen des OPC Twin-Moduls und der Abhängigkeiten von Grund auf
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den Inhalt auf dem neuesten Stand lesen.
 
 Das OPCTwin-Modul wird auf IoT Edge ausgeführt und stellt mehrere Edge-Dienste für die OPC Device Twin- und Registry-Dienste (Gerätezwilling und Registrierung) zur Verfügung. 
 
 Es gibt mehrere Optionen zum Bereitstellen von Modulen für Ihr [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) Gateway, z. B.:
 
-- [Bereitstellen von Azure IoT Edge-Modulen über das Azure-Portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal)
-- [Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe der Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor-cli)
+- [Bereitstellen von Azure IoT Edge-Modulen über das Azure-Portal](../iot-edge/how-to-deploy-modules-portal.md)
+- [Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe der Azure CLI](../iot-edge/how-to-deploy-cli-at-scale.md)
 
 > [!NOTE]
 > Weitere Informationen zu den Details und eine Anleitung zur Bereitstellung finden Sie im [GitHub-Repository](https://github.com/Azure/azure-iiot-components).
@@ -82,7 +86,7 @@ Alle Module werden mit einem Bereitstellungsmanifest bereitgestellt.  Ein Beispi
               "restartPolicy": "always",
               "settings": {
                 "image": "mcr.microsoft.com/iotedge/opc-publisher:latest",
-                "createOptions": "{\"Hostname\":\"publisher\",\"Cmd\":[\"publisher\",\"--pf=./pn.json\",\"--di=60\",\"--to\",\"--aa\",\"--si=0\",\"--ms=0\"],\"ExposedPorts\":{\"62222/tcp\":{}},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"HostConfig\":{\"NetworkMode\":\"host\",\"PortBindings\":{\"62222/tcp\":[{\"HostPort\":\"62222\"}]}}}"
+                "createOptions": "{\"Hostname\":\"publisher\",\"Cmd\":[\"publisher\",\"--pf=./pn.json\",\"--di=60\",\"--tm\",\"--aa\",\"--si=0\",\"--ms=0\"],\"ExposedPorts\":{\"62222/tcp\":{}},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"HostConfig\":{\"NetworkMode\":\"host\",\"PortBindings\":{\"62222/tcp\":[{\"HostPort\":\"62222\"}]}}}"
               }
             }
           }
@@ -113,7 +117,7 @@ Die einfachste Möglichkeit zum Bereitstellen der Module auf einem Azure IoT Edg
 
 1. Stellen Sie die OPC Twin-[Abhängigkeiten](howto-opc-twin-deploy-dependencies.md) bereit, und beschaffen Sie die sich ergebende `.env`-Datei. Notieren Sie sich den bereitgestellten `hub name` der Variablen `PCS_IOTHUBREACT_HUB_NAME` in der sich ergebenden `.env`-Datei.
 
-2. Registrieren und starten Sie ein [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)- oder [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows)-IoT Edge-Gateway, und notieren Sie sich dessen `device id`.
+2. Registrieren und starten Sie ein [Linux](../iot-edge/how-to-install-iot-edge.md)- oder [Windows](../iot-edge/how-to-install-iot-edge.md)-IoT Edge-Gateway, und notieren Sie sich dessen `device id`.
 
 ### <a name="deploy-to-an-edge-device"></a>Bereitstellen auf einem Edgegerät
 
@@ -139,7 +143,7 @@ Die einfachste Möglichkeit zum Bereitstellen der Module auf einem Azure IoT Edg
    {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
    ```
 
-   Füllen Sie bei Bedarf die optionalen Felder aus. Weitere Informationen zu Containererstellungsoptionen, Neustartrichtlinien und gewünschtem Status finden Sie unter [Gewünschte EdgeAgent-Eigenschaften](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties). Weitere Informationen zum Modulzwilling finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties).
+   Füllen Sie bei Bedarf die optionalen Felder aus. Weitere Informationen zu Containererstellungsoptionen, Neustartrichtlinien und gewünschtem Status finden Sie unter [Gewünschte EdgeAgent-Eigenschaften](../iot-edge/module-edgeagent-edgehub.md#edgeagent-desired-properties). Weitere Informationen zum Modulzwilling finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](../iot-edge/module-composition.md#define-or-update-desired-properties).
 
 7. Wählen Sie **Speichern**, und wiederholen Sie Schritt **5**.  
 
@@ -152,7 +156,7 @@ Die einfachste Möglichkeit zum Bereitstellen der Module auf einem Azure IoT Edg
    Verwenden Sie den folgenden JSON-Code für die *Optionen für Containererstellung*:
 
    ```json
-   {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--to","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
+   {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--tm","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
    ```
 
 9. Wählen Sie **Speichern** und dann **Weiter**, um mit dem Abschnitt „Routen“ fortzufahren.
@@ -178,7 +182,7 @@ Die einfachste Möglichkeit zum Bereitstellen der Module auf einem Azure IoT Edg
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-1. Installieren Sie die aktuelle Version der [Azure-Befehlszeilenschnittstelle (AZ)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) über [diese Seite](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+1. Installieren Sie die aktuelle Version der [Azure-Befehlszeilenschnittstelle (AZ)](/cli/azure/?view=azure-cli-latest) über [diese Seite](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ### <a name="quickstart"></a>Schnellstart
 
@@ -186,20 +190,20 @@ Die einfachste Möglichkeit zum Bereitstellen der Module auf einem Azure IoT Edg
 
 2. Wenden Sie die Konfiguration mit dem folgenden Befehl auf ein IoT Edge-Gerät an:
 
-   ```bash
+   ```azurecli
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content ./deployment.json
    ```
 
    Beim Parameter `device id` wird die Groß-/Kleinschreibung berücksichtigt. Der content-Parameter verweist auf die gespeicherte Bereitstellungsmanifestdatei. 
-    ![az IoT Edge set-modules-Ausgabe](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
+    ![az IoT Edge set-modules-Ausgabe](/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
 
 3. Nachdem Sie die Module auf Ihrem Gerät bereitgestellt haben, können Sie sie mit dem folgenden Befehl anzeigen:
 
-   ```bash
+   ```azurecli
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-   Beim Parameter für die Geräte-ID wird die Groß-/Kleinschreibung berücksichtigt. ![az iot hub module-identity list-Ausgabe](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
+   Beim Parameter für die Geräte-ID wird die Groß-/Kleinschreibung berücksichtigt. ![az iot hub module-identity list-Ausgabe](/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 057c77d4ddb4a760e196c0dc8d508efe15e6699d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 84c48f14ae57cfa4aa3290924d3d170c075fe3a6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69519853"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532549"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Häufig gestellte Fragen zu Apache Kafka in Azure HDInsight
 
@@ -38,19 +38,19 @@ Eine ausführlichere Beschreibung der verschiedenen Knotentypen finden Sie unter
 
 ## <a name="do-apache-kafka-apis-work-with-hdinsight"></a>Funktionieren Apache Kafka-APIs mit HDInsight?
 
-Ja, HDInsight verwendet native Kafka-APIs. Ihr Clientanwendungscode muss nicht geändert werden. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs](./apache-kafka-producer-consumer-api.md). In diesem Tutorial erfahren Sie, wie Sie Java-basierte Producer-/Consumer-APIs mit Ihrem Cluster verwenden können.
+Ja, HDInsight verwendet native Kafka-APIs. Ihr Clientanwendungscode muss nicht geändert werden. Siehe [Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs](./apache-kafka-producer-consumer-api.md). In diesem Tutorial erfahren Sie, wie Sie Java-basierte Producer-/Consumer-APIs mit Ihrem Cluster verwenden können.
 
 ## <a name="can-i-change-cluster-configurations"></a>Kann ich Clusterkonfigurationen ändern?
 
-Ja, über das Ambari-Portal. Jede Komponente im Portal hat einen **configs**-Abschnitt, in dem Komponentenkonfigurationen geändert werden können. Einige Änderungen bedingen möglicherweise Brokerneustarts.
+Ja, über das Ambari-Portal. Jede Komponente im Portal hat einen **configs** -Abschnitt, in dem Komponentenkonfigurationen geändert werden können. Einige Änderungen bedingen möglicherweise Brokerneustarts.
 
 ## <a name="what-type-of-authentication-does-hdinsight-support-for-apache-kafka"></a>Welchen Authentifizierungstyp unterstützt HDInsight für Apache Kafka?
 
-Durch Verwenden von [Enterprise-Sicherheitspaket (ESP)](../domain-joined/apache-domain-joined-architecture.md) können Sie für Kafka-Cluster Sicherheit auf Themenebene erreichen. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschau)](../domain-joined/apache-domain-joined-run-kafka.md).
+Durch Verwenden von [Enterprise-Sicherheitspaket (ESP)](../domain-joined/apache-domain-joined-architecture.md) können Sie für Kafka-Cluster Sicherheit auf Themenebene erreichen. Siehe [Tutorial: Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschau)](../domain-joined/apache-domain-joined-run-kafka.md).
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Werden meine Daten verschlüsselt? Kann ich meine eigenen Schlüssel verwenden?
 
-Alle Kafka-Nachrichten auf den verwalteten Datenträgern werden mit [Azure-Speicherdienstverschlüsselung](../../storage/common/storage-service-encryption.md) (Storage Service Encryption, SSE) verschlüsselt. Daten während einer Übertragung (etwa Daten, die von Clients an Broker übermittelt werden bzw. umgekehrt) sind standardmäßig nicht verschlüsselt. Sie können solchen Datenverkehr verschlüsseln, indem [Sie SSL selbst einrichten](./apache-kafka-ssl-encryption-authentication.md). Außerdem können Sie mit HDInsight eigene Schlüssel verwalten, um die ruhenden Daten zu verschlüsseln. Weitere Informationen finden Sie unter [Bring Your Own Key für Apache Kafka in Azure HDInsight](apache-kafka-byok.md).
+Alle Kafka-Nachrichten auf den verwalteten Datenträgern werden mit [Azure-Speicherdienstverschlüsselung](../../storage/common/storage-service-encryption.md) (Storage Service Encryption, SSE) verschlüsselt. Daten während einer Übertragung (etwa Daten, die von Clients an Broker übermittelt werden bzw. umgekehrt) sind standardmäßig nicht verschlüsselt. Sie können solchen Datenverkehr verschlüsseln, indem [Sie TLS selbst einrichten](./apache-kafka-ssl-encryption-authentication.md). Außerdem können Sie mit HDInsight eigene Schlüssel verwalten, um die ruhenden Daten zu verschlüsseln. Weitere Informationen finden Sie unter [Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln](../disk-encryption.md).
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>Wie verbinde ich Clients mit meinem Cluster?
 
@@ -66,6 +66,10 @@ Damit Kafka-Clients mit Kafka-Brokern kommunizieren können, müssen sie die Bro
 
 Um den für Kafka-Nachrichten verfügbaren Speicherplatz zu erhöhen, können Sie die Anzahl der Knoten erhöhen. Das Hinzufügen von weiteren Datenträgern zu einem vorhandenen Cluster wird derzeit nicht unterstützt.
 
+## <a name="can-a-kafka-cluster-work-with-databricks"></a>Kann ein Kafka-Cluster mit Databricks arbeiten? 
+
+Ja, Kafka-Cluster arbeiten mit Databricks, solange sie sich im selben virtuellen Netzwerk befinden. Um einen Kafka-Cluster mit Databricks zu verwenden, erstellen Sie ein virtuelles Netzwerk mit einem HDInsight-Kafka-Cluster, und geben Sie dieses Netzwerk an, wenn Sie Ihren Databricks-Arbeitsbereich verwenden und VNet Injection verwenden. Weitere Informationen finden Sie unter [Bereitstellen von Azure Databricks in Ihrem virtuellen Azure-Netzwerk (VNet Injection)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Beim Erstellen des Databricks-Arbeitsbereichs müssen Sie die Bootstrap-Brokernamen des Kafka-Clusters angeben. Informationen zum Abrufen der Kafka-Brokernamen finden Sie unter [Beschaffen der Apache Zookeeper- und Broker-Hostinformationen](./apache-kafka-get-started.md#getkafkainfo).
+
 ## <a name="how-can-i-have-maximum-data-durability"></a>Wie kann ich maximale Datendauerhaftigkeit erreichen?
 
 Datendauerhaftigkeit ermöglicht es Ihnen, das niedrigste Risiko von Nachrichtenverlust zu erzielen. Um die maximale Datendauerhaftigkeit zu erreichen, empfehlen wir die folgenden Einstellungen:
@@ -74,7 +78,7 @@ Datendauerhaftigkeit ermöglicht es Ihnen, das niedrigste Risiko von Nachrichten
 * Verwenden Sie in Regionen mit nur zwei Fehlerdomänen einen Mindestreplikationsfaktor von 4.
 * Deaktivieren Sie unklare Koordinatorauswahlen (Leader Elections).
 * Legen Sie **min.insync.replicas** auf mindestens „2“ fest. Hierdurch wird die Anzahl der Replikate geändert, die vollständig mit dem Koordinator synchronisiert sein müssen, bevor ein Schreibvorgang ausgeführt werden kann.
-* Legen Sie die **ack**-Eigenschaft auf **all** fest. Diese Eigenschaft erfordert, dass alle Replikate alle Meldungen bestätigen.
+* Legen Sie die **ack** -Eigenschaft auf **all** fest. Diese Eigenschaft erfordert, dass alle Replikate alle Meldungen bestätigen.
 
 Das Konfigurieren von Kafka für eine höhere Datenkonsistenz wirkt sich auf die Verfügbarkeit von Brokern aus, die Anforderungen erstellen.
 
@@ -92,5 +96,5 @@ Verwenden Sie Azure Monitor, um ihre [Kafka-Protokolle](./apache-kafka-log-analy
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einrichten von Secure Sockets Layer-Verschlüsselung (SSL) und -Authentifizierung für Apache Kafka in Azure HDInsight](./apache-kafka-ssl-encryption-authentication.md)
+* [Einrichten von TLS-Verschlüsselung und -Authentifizierung für Apache Kafka in Azure HDInsight](./apache-kafka-ssl-encryption-authentication.md)
 * [Verwenden von MirrorMaker zum Replizieren von Apache Kafka-Themen mit Kafka in HDInsight](./apache-kafka-mirroring.md)

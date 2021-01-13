@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 6c77cd43231d4596535c11564313a0fe90633cdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb112e0b2d1c64e65ecaf6749a25707d8632c0cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60947743"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86134952"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager mit Azure Site Recovery
 
@@ -30,7 +30,7 @@ Für das erste Szenario sehen wir uns **Unternehmen A** an, dessen gesamte Anwen
 **Unternehmen A** führt Anwendungen mit öffentlichen Endpunkten aus und möchte die Möglichkeit erhalten, Datenverkehr bei einem Notfall nahtlos nach Azure weiterzuleiten. Mithilfe des [prioritätsbasierten](../traffic-manager/traffic-manager-configure-priority-routing-method.md) Datenverkehrsroutings in Azure Traffic Manager kann Unternehmen A dieses Failovermuster problemlos implementieren.
 
 Die Einrichtung erfolgt wie folgt:
-- **Unternehmen A** erstellt ein [Traffic Manager-Profil](../traffic-manager/traffic-manager-create-profile.md).
+- **Unternehmen A** erstellt ein [Traffic Manager-Profil](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 - Mithilfe der **prioritätsbasierten** Routingmethode erstellt **Unternehmen A** zwei Endpunkte – **Primary** für den lokalen Standort und **Failover** für Azure. **Primary** erhält die Priorität 1 und **Failover** die Priorität 2.
 - Da der Endpunkt **Primary** außerhalb von Azure gehostet wird, erfolgt seine Erstellung als [externer](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) Endpunkt.
 - Bei Azure Site Recovery verfügt der Azure-Standort über keine virtuellen Computer oder Anwendungen, die vor dem Failover ausgeführt werden. Deshalb wird der Endpunkt **Failover** ebenfalls als **externer** Endpunkt erstellt.
@@ -65,7 +65,7 @@ Für dieses Beispiel sehen wir uns **Unternehmen C** an, bei dem die gesamte Anw
 **Unternehmen C** führt Anwendungen mit öffentlichen Endpunkten aus und möchte die Möglichkeit erhalten, Datenverkehr bei einem Notfall nahtlos in eine andere Azure-Region weiterzuleiten. Mithilfe der [prioritätsbasierten](../traffic-manager/traffic-manager-configure-priority-routing-method.md) Methode für das Datenverkehrsrouting kann **Unternehmen C** dieses Failovermuster problemlos implementieren.
 
 Die Einrichtung erfolgt wie folgt:
-- **Unternehmen C** erstellt ein [Traffic Manager-Profil](../traffic-manager/traffic-manager-create-profile.md).
+- **Unternehmen C** erstellt ein [Traffic Manager-Profil](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 - **Unternehmen C** nutzt die **prioritätsbasierte** Routingmethode und erstellt zwei Endpunkte – **Primary** für die Ausgangsregion (Azure, Asien, Osten) und **Failover** für die Wiederherstellungsregion (Azure, Asien, Südosten). **Primary** erhält die Priorität 1 und **Failover** die Priorität 2.
 - Da der Endpunkt **Primary** in Azure gehostet wird, kann der Endpunkt ein [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints)-Endpunkt sein.
 - Bei Azure Site Recovery verfügt der Azure-Wiederherstellungsstandort über keine virtuellen Computer oder Anwendungen, die vor dem Failover ausgeführt werden. Der Endpunkt **Failover** kann daher als [externer](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) Endpunkt erstellt werden.

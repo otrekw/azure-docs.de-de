@@ -1,25 +1,20 @@
 ---
-title: Erstellen und Verwalten eines virtuellen Azure-Computers mit Java | Microsoft-Dokumentation
+title: Erstellen und Verwalten eines virtuellen Azure-Computers mit Java
 description: Verwenden Sie Java und Azure Resource Manager, um einen virtuellen Computer und alle unterstützenden Ressourcen bereitzustellen.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.workload: infrastructure
+ms.topic: how-to
 ms.date: 07/17/2017
+ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: fa6c5115663d770f561764356129448af878668b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f571dc5f4f3aee2405d4968b050bd2dd92a709db
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103023"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012747"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Erstellen und Verwalten von virtuellen Windows-Computern in Azure mithilfe von Java
 
@@ -38,7 +33,7 @@ Die Ausführung dieser Schritte dauert etwa 20 Minuten.
 
 ## <a name="create-a-maven-project"></a>Erstellen eines Maven-Projekts
 
-1. Installieren Sie [Java](https://aka.ms/azure-jdks), falls Sie dies noch nicht getan haben.
+1. Installieren Sie [Java](/azure/developer/java/fundamentals/java-jdk-long-term-support), falls Sie dies noch nicht getan haben.
 2. Installieren Sie [Maven](https://maven.apache.org/download.cgi).
 3. Erstellen Sie einen neuen Ordner und das Projekt:
     
@@ -130,7 +125,7 @@ Bevor Sie mit diesem Schritt beginnen, stellen Sie sicher, dass Sie Zugriff auf 
     managementURI=https://management.core.windows.net/
     baseURL=https://management.azure.com/
     authURL=https://login.windows.net/
-    graphURL=https://graph.windows.net/
+    graphURL=https://graph.microsoft.com/
     ```
 
     Ersetzen Sie **&lt;subscription-id&gt;** durch Ihre Abonnement-ID, **&lt;application-id&gt;** durch die Active Directory-Anwendungs-ID, **&lt;authentication-key&gt;** durch den Anwendungsschlüssel und **&lt;tenant-id&gt;** durch die Mandanten-ID.
@@ -188,7 +183,7 @@ Bevor Sie mit diesem Schritt beginnen, stellen Sie sicher, dass Sie Zugriff auf 
 
 ### <a name="create-the-resource-group"></a>Ressourcengruppe erstellen
 
-Alle Ressourcen müssen in einer [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) enthalten sein.
+Alle Ressourcen müssen in einer [Ressourcengruppe](../../azure-resource-manager/management/overview.md) enthalten sein.
 
 Um Werte für die Anwendung anzugeben und die Ressourcengruppe zu erstellen, fügen Sie dem try-Block in der main-Methode folgenden Code hinzu:
 
@@ -217,7 +212,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>Erstellen der öffentlichen IP-Adresse
 
-Eine öffentliche [IP-Adresse](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) ist für die Kommunikation mit dem virtuellen Computer erforderlich.
+Eine öffentliche [IP-Adresse](../../virtual-network/public-ip-addresses.md) ist für die Kommunikation mit dem virtuellen Computer erforderlich.
 
 Um die öffentliche IP-Adresse für den virtuellen Computer zu erstellen, fügen Sie dem try-Block in der main-Methode folgenden Code hinzu:
 
@@ -418,7 +413,7 @@ input.nextLine();
 
 ### <a name="resize-the-vm"></a>Ändern der Größe der VM
 
-Viele Aspekte der Bereitstellung müssen berücksichtigt werden, wenn Sie die Größe für den virtuellen Computer festlegen. Weitere Informationen finden Sie unter [VM-Größen](sizes.md).  
+Viele Aspekte der Bereitstellung müssen berücksichtigt werden, wenn Sie die Größe für den virtuellen Computer festlegen. Weitere Informationen finden Sie unter [VM-Größen](../sizes.md).  
 
 Um die Größe des virtuellen Computers zu ändern, fügen Sie dem try-Block in der main-Methode folgenden Code hinzu:
 
@@ -471,5 +466,4 @@ Die vollständige Ausführung dieser Konsolenanwendung sollte etwa fünf Minuten
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr zur Verwendung der [Azure-Bibliotheken für Java](https://docs.microsoft.com/java/azure/java-sdk-azure-overview).
-
+* Erfahren Sie mehr zur Verwendung der [Azure-Bibliotheken für Java](/java/azure/java-sdk-azure-overview).

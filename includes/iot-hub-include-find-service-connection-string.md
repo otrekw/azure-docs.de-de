@@ -9,10 +9,10 @@ ms.date: 07/16/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 55cdd864d73ce084d994c64233e79d5a58b17def
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "69558445"
 ---
 <!-- This tells how to get the connection string for the service shared access policy of your IoT hub -->
@@ -25,7 +25,7 @@ Führen Sie zum Abrufen der IoT-Hub-Verbindungszeichenfolge für die Richtlinie 
 
 1. Wählen Sie in der Liste der Richtlinien die Richtlinie **service** aus.
 
-1. Wählen Sie unter **Schlüssel für gemeinsamen Zugriff** das Kopiersymbol für **Verbindungszeichenfolge – Primärschlüssel** aus, und speichern Sie den Wert.
+1. Wählen Sie unter **Schlüssel für gemeinsamen Zugriff** das Kopiersymbol für **Verbindungszeichenfolge – Primärschlüssel** aus, und speichern Sie den Wert.
 
     ![Abrufen der Verbindungszeichenfolge.](./media/iot-hub-include-find-service-connection-string/iot-hub-get-connection-string.png)
 

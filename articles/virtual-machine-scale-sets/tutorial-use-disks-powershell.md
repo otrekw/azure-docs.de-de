@@ -1,27 +1,20 @@
 ---
-title: Tutorial – Erstellen und Verwenden von Datenträgern für Skalierungsgruppen mit Azure PowerShell | Microsoft-Dokumentation
+title: 'Tutorial: Erstellen und Verwenden von Datenträgern für Skalierungsgruppen mit Azure PowerShell'
 description: Es wird beschrieben, wie Sie Azure PowerShell zum Erstellen und Verwenden von Managed Disks mit einer VM-Skalierungsgruppe verwenden, z.B. das Hinzufügen, Vorbereiten, Auflisten und Trennen von Datenträgern.
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: disks
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 6035a6ddd690db456edfa5777ca2d41e4be8b919
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.reviewer: mimckitt
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 9e995e88b80bf14f9c7784f465bcd3d89d0bed65
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728582"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367957"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten von Datenträgern mit VM-Skalierungsgruppe mit Azure PowerShell
 
@@ -34,7 +27,7 @@ Für VM-Skalierungsgruppen werden Datenträger zum Speichern des Betriebssystems
 > * Datenträgerleistung
 > * Anfügen und Vorbereiten von Datenträgern
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -49,28 +42,28 @@ Wenn eine Skalierungsgruppe erstellt oder skaliert wird, werden automatisch zwei
 **Temporärer Datenträger**: Für temporäre Datenträger wird ein Solid State Drive verwendet, das sich auf demselben Azure-Host wie die VM-Instanz befindet. Dies sind äußerst leistungsfähige Datenträger, die für Vorgänge wie die temporäre Datenverarbeitung verwendet werden können. Wenn die VM-Instanz aber auf einen neuen Host verschoben wird, werden alle auf einem temporären Datenträger gespeicherten Daten entfernt. Die Größe des temporären Datenträgers richtet sich nach der Größe der VM-Instanz. Temporäre Datenträger werden mit bezeichnet */dev/sdb* und haben den Bereitstellungspunkt */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Größe von temporären Datenträgern
-| Type | Gängige Größen | Max. Größe des temporären Datenträgers (GiB) |
+| type | Gängige Größen | Max. Größe des temporären Datenträgers (GiB) |
 |----|----|----|
-| [Allgemeiner Zweck](../virtual-machines/windows/sizes-general.md) | A-, B- und D-Serie | 1600 |
-| [Computeoptimiert](../virtual-machines/windows/sizes-compute.md) | F-Serie | 576 |
-| [Arbeitsspeicheroptimiert](../virtual-machines/windows/sizes-memory.md) | D-, E-, G- und M-Serie | 6\.144 |
-| [Speicheroptimiert](../virtual-machines/windows/sizes-storage.md) | L-Serie | 5\.630 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N-Serie | 1\.440 |
-| [Hohe Leistung](../virtual-machines/windows/sizes-hpc.md) | A- und H-Serie | 2000 |
+| [Allgemeiner Zweck](../virtual-machines/sizes-general.md) | A-, B- und D-Serie | 1600 |
+| [Computeoptimiert](../virtual-machines/sizes-compute.md) | F-Serie | 576 |
+| [Arbeitsspeicheroptimiert](../virtual-machines/sizes-memory.md) | D-, E-, G- und M-Serie | 6\.144 |
+| [Speicheroptimiert](../virtual-machines/sizes-storage.md) | L-Serie | 5\.630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N-Serie | 1440 |
+| [Hohe Leistung](../virtual-machines/sizes-hpc.md) | A- und H-Serie | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure-Datenträger
 Zusätzliche Datenträger können hinzugefügt werden, wenn Sie Anwendungen installieren und Daten speichern müssen. Datenträger sollten in allen Fällen verwendet werden, in denen eine dauerhafte und dynamische Datenspeicherung erwünscht ist. Jeder Datenträger weist eine maximale Kapazität von 4 TB auf. Die Größe der VM-Instanz bestimmt, wie viele Datenträger angefügt werden können. Für jede vCPU eines virtuellen Computers können zwei Datenträger angefügt werden.
 
 ### <a name="max-data-disks-per-vm"></a>Max. Anzahl der Datenträger pro virtuellem Computer
-| Type | Gängige Größen | Max. Anzahl der Datenträger pro virtuellem Computer |
+| type | Gängige Größen | Max. Anzahl der Datenträger pro virtuellem Computer |
 |----|----|----|
-| [Allgemeiner Zweck](../virtual-machines/windows/sizes-general.md) | A-, B- und D-Serie | 64 |
-| [Computeoptimiert](../virtual-machines/windows/sizes-compute.md) | F-Serie | 64 |
-| [Arbeitsspeicheroptimiert](../virtual-machines/windows/sizes-memory.md) | D-, E-, G- und M-Serie | 64 |
-| [Speicheroptimiert](../virtual-machines/windows/sizes-storage.md) | L-Serie | 64 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N-Serie | 64 |
-| [Hohe Leistung](../virtual-machines/windows/sizes-hpc.md) | A- und H-Serie | 64 |
+| [Allgemeiner Zweck](../virtual-machines/sizes-general.md) | A-, B- und D-Serie | 64 |
+| [Computeoptimiert](../virtual-machines/sizes-compute.md) | F-Serie | 64 |
+| [Arbeitsspeicheroptimiert](../virtual-machines/sizes-memory.md) | D-, E-, G- und M-Serie | 64 |
+| [Speicheroptimiert](../virtual-machines/sizes-storage.md) | L-Serie | 64 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N-Serie | 64 |
+| [Hohe Leistung](../virtual-machines/sizes-hpc.md) | A- und H-Serie | 64 |
 
 
 ## <a name="vm-disk-types"></a>VM-Datenträgertypen
@@ -89,11 +82,13 @@ Premium-Datenträger basieren auf SSD-basierten Datenträgern mit hoher Leistung
 | Max. IOPS pro Datenträger | 120 | 240 | 500 | 2\.300 | 5\.000 | 7\.500 | 7\.500 |
 Durchsatz pro Datenträger | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
-In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. Eine Standard_GS5-VM kann z.B. ein Maximum von 80.000 IOPS erreichen. Ausführliche Informationen zur maximalen IOPS-Anzahl pro virtuellem Computer finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md).
+In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. Eine Standard_GS5-VM kann z.B. ein Maximum von 80.000 IOPS erreichen. Ausführliche Informationen zur maximalen IOPS-Anzahl pro virtuellem Computer finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/sizes.md).
 
 
 ## <a name="create-and-attach-disks"></a>Erstellen und Anfügen von Datenträgern
 Sie können Datenträger beim Erstellen einer Skalierungsgruppe oder für eine vorhandene Skalierungsgruppe erstellen und anfügen.
+
+Ab API-Version `2019-07-01` können Sie die Größe des Betriebssystemdatenträgers in einer VM-Skalierungsgruppe mit der Eigenschaft [storageProfile.osDisk.diskSizeGb](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) festlegen. Nach der Bereitstellung müssen Sie den Datenträger möglicherweise erweitern oder neu partitionieren, damit der gesamte Speicherplatz genutzt werden kann. Weitere Informationen zum [Erweitern des Datenträgers finden Sie hier](../virtual-machines/windows/expand-os-disk.md#expand-the-volume-within-the-os).
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Anfügen von Datenträgern bei der Erstellung einer Skalierungsgruppe
 Erstellen Sie mit [New-AzVmss](/powershell/module/az.compute/new-azvmss) eine VM-Skalierungsgruppe. Geben Sie bei entsprechender Aufforderung einen Benutzernamen und ein Kennwort für die VM-Instanzen an. Um Datenverkehr an die einzelnen VM-Instanzen zu verteilen, wird auch ein Lastenausgleich erstellt. Der Lastenausgleich enthält Regeln zum Verteilen von Datenverkehr über TCP-Port 80 und zum Zulassen von Remotedesktop-Datenverkehr über TCP-Port 3389 und PowerShell-Remoting über TCP-Port 5985.
@@ -142,7 +137,7 @@ Update-AzVmss `
 ## <a name="prepare-the-data-disks"></a>Vorbereiten der Datenträger
 Bei den Datenträgern, die erstellt und an die VM-Instanzen Ihrer Skalierungsgruppe angefügt werden, handelt es sich um unformatierte Datenträger. Bevor Sie diese für Ihre Daten und Anwendungen nutzen können, müssen die Datenträger vorbereitet werden. Zum Vorbereiten der Datenträger erstellen Sie eine Partition und ein Dateisystem und stellen diese bereit.
 
-Sie können die benutzerdefinierte Skripterweiterung von Azure verwenden, um den Prozess für mehrere VM-Instanzen einer Skalierungsgruppe zu automatisieren. Mit dieser Erweiterung können Skripts lokal auf jeder VM-Instanz ausgeführt werden, z.B. um angefügte Datenträger vorzubereiten. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/windows/extensions-customscript.md).
+Sie können die benutzerdefinierte Skripterweiterung von Azure verwenden, um den Prozess für mehrere VM-Instanzen einer Skalierungsgruppe zu automatisieren. Mit dieser Erweiterung können Skripts lokal auf jeder VM-Instanz ausgeführt werden, z.B. um angefügte Datenträger vorzubereiten. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/extensions/custom-script-windows.md).
 
 
 Im folgenden Beispiel wird mit [Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) ein Skript aus einem GitHub-Beispielrepository auf jeder VM-Instanz ausgeführt, um alle angefügten unformatierten Datenträger vorzubereiten:
@@ -243,7 +238,7 @@ PartitionNumber  DriveLetter  Offset   Size   Type
 1                H            1048576  128 GB  IFS
 ```
 
-Die Datenträger auf den einzelnen VM-Instanzen in Ihrer Skalierung werden auf die gleiche Weise automatisch vorbereitet. Wenn Ihre Skalierungsgruppe zentral hochskaliert wird, werden die erforderlichen Datenträger an die neuen VM-Instanzen angefügt. Die benutzerdefinierte Skripterweiterung wird ebenfalls automatisch ausgeführt, um die Datenträger vorzubereiten.
+Die Datenträger auf den einzelnen VM-Instanzen in Ihrer Skalierung werden auf die gleiche Weise automatisch vorbereitet. Wenn Ihre Skalierungsgruppe hochskaliert wird, werden die erforderlichen Datenträger an die neuen VM-Instanzen angefügt. Die benutzerdefinierte Skripterweiterung wird ebenfalls automatisch ausgeführt, um die Datenträger vorzubereiten.
 
 Schließen Sie die Remotedesktopverbindung mit der VM-Instanz.
 

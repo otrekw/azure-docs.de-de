@@ -1,26 +1,19 @@
 ---
-title: Ein- und Ausschalten von StorSimple-Geräten der Serie 8000 | Microsoft-Dokumentation
+title: Ein- und Ausschalten von StorSimple-Geräten der Serie 8000
 description: 'Dieses Thema erläutert Folgendes: Einschalten eines neuen StorSimple-Geräts oder ein Geräts, das heruntergefahren werden musste oder dessen Stromversorgung unterbrochen war, sowie Ausschalten eines ausgeführten Geräts.'
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29a45c0d32e35b5d321670bf25334a2976b93e56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8f4269235c494ff9dd8d1bf8e0ef940562f8927
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693680"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85515274"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Ein- und Ausschalten von Geräten der StorSimple 8000-Serie
 
@@ -93,12 +86,12 @@ Ein Ausfall oder eine Unterbrechung der Stromversorgung kann dazu führen, dass 
 * [Gerät nur mit primärem Gehäuse](#8100)
 * [Gerät mit EBOD-Gehäuse](#8600)
 
-### <a name="device-with-primary-enclosure-only-a-name8100"></a>Gerät nur mit primärem Gehäuse <a name="8100">
+### <a name="device-with-primary-enclosure-only"></a>Gerät nur mit primärem Gehäuse <a name="8100"></a>
 Wenn eine der beiden Stromversorgungen unterbrochen wird, kann das System den normalen Betrieb fortsetzen. Um die Hochverfügbarkeit des Geräts sicherzustellen, sollten Sie jedoch die Stromversorgung möglichst bald wiederherstellen.
 
 Wenn beide Stromversorgungen ausfallen oder unterbrochen werden, fährt das System ordnungsgemäß und kontrolliert herunter. Wenn die Stromversorgung wiederhergestellt ist, schaltet sich das System automatisch ein.
 
-### <a name="device-with-ebod-enclosure-a-name8600"></a>Gerät mit EBOD-Gehäuse <a name="8600">
+### <a name="device-with-ebod-enclosure"></a>Gerät mit EBOD-Gehäuse <a name="8600"></a>
 #### <a name="power-loss-on-one-power-supply"></a>Stromausfall in einer der Stromversorgungen
 Wenn eine der Stromversorgungen im primären oder im EBOD-Gehäuse unterbrochen wird, kann das System den normalen Betrieb fortsetzen. Um die Hochverfügbarkeit des Geräts sicherzustellen, stellen Sie die Stromversorgung möglichst bald wieder her.
 
@@ -147,7 +140,7 @@ Ein ausgeführtes StorSimple-Gerät muss möglicherweise heruntergefahren werden
 * [Gerät mit primärem Gehäuse](#8100a)
 * [Gerät mit EBOD-Gehäuse](#8600a)
 
-### <a name="device-with-primary-enclosure-a-name8100a"></a>Gerät mit primärem Gehäuse <a name="8100a">
+### <a name="device-with-primary-enclosure"></a>Gerät mit primärem Gehäuse <a name="8100a"></a>
 Ordnungsgemäß und kontrolliert herunterfahren können Sie das Gerät über das Azure-Portal oder Windows PowerShell für StorSimple. 
 
 > [!IMPORTANT]
@@ -159,7 +152,7 @@ Ordnungsgemäß und kontrolliert herunterfahren können Sie das Gerät über das
 
 Nachdem Sie auf Windows PowerShell für StorSimple oder das Azure-Portal zugegriffen haben, führen Sie die Schritte in [Herunterfahren eines StorSimple-Geräts](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device) aus. 
 
-### <a name="device-with-ebod-enclosure-a-name8600a"></a>Gerät mit EBOD-Gehäuse <a name="8600a">
+### <a name="device-with-ebod-enclosure"></a>Gerät mit EBOD-Gehäuse <a name="8600a"></a>
 > [!IMPORTANT]
 > Bevor Sie das primäre und das EBOD-Gehäuse herunterfahren, stellen Sie sicher, dass sich alle Gerätekomponenten in fehlerfreiem Zustand befinden. Navigieren Sie im Azure-Portal zu **Geräte** > **Überwachung** > **Hardwareintegrität**, und überprüfen Sie, ob alle Komponenten fehlerfrei funktionieren.
 

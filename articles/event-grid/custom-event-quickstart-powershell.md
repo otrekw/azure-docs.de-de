@@ -1,20 +1,15 @@
 ---
-title: Senden von benutzerdefinierten Ereignissen an einen Webendpunkt – Event Grid, PowerShell
-description: Verwenden Sie Azure Event Grid und PowerShell, um ein benutzerdefiniertes Thema zu veröffentlichen und Ereignisse für dieses Thema zu abonnieren. Die Ereignisse werden von einer Webanwendung verarbeitet.
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 12/07/2018
+title: 'Schnellstart: Senden von benutzerdefinierten Ereignissen an einen Webendpunkt – Event Grid, PowerShell'
+description: 'Schnellstart: Verwenden Sie Azure Event Grid und PowerShell, um ein benutzerdefiniertes Thema zu veröffentlichen und Ereignisse für dieses Thema zu abonnieren. Die Ereignisse werden von einer Webanwendung verarbeitet.'
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: fa703defdda17a69aec99d3fbe479e9867781d68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3bd389ff523fd32e73ac19f1131c8c2784e16db5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66156013"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89075612"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>Schnellstart: Weiterleiten benutzerdefinierter Ereignisse an einen Webendpunkt mit PowerShell und Event Grid
 

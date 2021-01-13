@@ -1,22 +1,21 @@
 ---
-title: Die Qualifikation „Text zusammenführen“ der kognitiven Suche – Azure Search
-description: Führen Sie Text aus einer Sammlung von Feldern in einem konsolidierten Feld zusammen. Verwenden Sie diesen kognitiven Skill in einer Azure Search-Anreicherungspipeline.
-services: search
+title: Der kognitive Skill „Text zusammenführen“
+titleSuffix: Azure Cognitive Search
+description: Führen Sie Text aus einer Sammlung von Feldern in einem konsolidierten Feld zusammen. Verwenden Sie diesen kognitiven Skill in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 1e88fcc13d97d92cf9b35616ecb7d71c2d24db1f
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 06/17/2020
+ms.openlocfilehash: b364655f26c6ac29c14d387d69d7b4277d6aeb86
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265274"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88924638"
 ---
-#    <a name="text-merge-cognitive-skill"></a>Der kognitive Skill „Text zusammenführen“
+#   <a name="text-merge-cognitive-skill"></a>Der kognitive Skill „Text zusammenführen“
 
 Der Skill **Text zusammenführen** konsolidiert Text aus einer Sammlung von Feldern in einem einzigen Feld. 
 
@@ -32,8 +31,8 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
-| insertPreTag  | Zeichenfolge, die vor jedem Einfügen hinzugefügt wird. Standardwert: `" "`. Um das Leerzeichen wegzulassen, setzen Sie den Wert auf `""`.  |
-| insertPostTag | Zeichenfolge, die nach jedem Einfügen hinzugefügt wird. Standardwert: `" "`. Um das Leerzeichen wegzulassen, setzen Sie den Wert auf `""`.  |
+| `insertPreTag`    | Zeichenfolge, die vor jedem Einfügen hinzugefügt wird. Standardwert: `" "`. Um das Leerzeichen wegzulassen, setzen Sie den Wert auf `""`.  |
+| `insertPostTag`   | Zeichenfolge, die nach jedem Einfügen hinzugefügt wird. Standardwert: `" "`. Um das Leerzeichen wegzulassen, setzen Sie den Wert auf `""`.  |
 
 
 ##  <a name="sample-input"></a>Beispieleingabe
@@ -48,7 +47,7 @@ So könnte ein JSON-Dokument aussehen, das hilfreiche Eingabewerte für diesen S
       {
         "text": "The brown fox jumps over the dog",
         "itemsToInsert": ["quick", "lazy"],
-        "offsets": [3, 28],
+        "offsets": [3, 28]
       }
     }
   ]
@@ -76,7 +75,7 @@ Dieses Beispiel zeigt die Ausgabe der vorherigen Eingabe, vorausgesetzt, dass *i
 
 Ein gängiges Szenario für die Verwendung von „Text zusammenführen“ ist das Zusammenführen der Textdarstellung von Bildern (Text aus einem OCR-Skill oder der Titel eines Bildes) im Inhaltsfeld eines Dokuments. 
 
-Im folgenden Beispiel für ein Skillset wird der OCR-Skill verwendet, um Text aus in das Dokument eingebetteten Bildern zu extrahieren. Als nächstes wird ein Feld *merged_text* erstellt, das sowohl Original- als auch OCR-Text aus jedem Bild enthält. Weitere Informationen zur OCR-Qualifikation finden Sie [hier](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr).
+Im folgenden Beispiel für ein Skillset wird der OCR-Skill verwendet, um Text aus in das Dokument eingebetteten Bildern zu extrahieren. Als nächstes wird ein Feld *merged_text* erstellt, das sowohl Original- als auch OCR-Text aus jedem Bild enthält. Weitere Informationen zur OCR-Qualifikation finden Sie [hier](./cognitive-search-skill-ocr.md).
 
 ```json
 {
@@ -109,18 +108,22 @@ Im folgenden Beispiel für ein Skillset wird der OCR-Skill verwendet, um Text au
       "insertPostTag": " ",
       "inputs": [
         {
-          "name":"text", "source": "/document/content"
+          "name":"text", 
+          "source": "/document/content"
         },
         {
-          "name": "itemsToInsert", "source": "/document/normalized_images/*/text"
+          "name": "itemsToInsert", 
+          "source": "/document/normalized_images/*/text"
         },
         {
-          "name":"offsets", "source": "/document/normalized_images/*/contentOffset" 
+          "name":"offsets", 
+          "source": "/document/normalized_images/*/contentOffset" 
         }
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetName" : "merged_text"
+          "name": "mergedText", 
+          "targetName" : "merged_text"
         }
       ]
     }
@@ -143,6 +146,6 @@ Im oben gezeigten Beispiel wird davon ausgegangen, dass ein Feld mit normalisier
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Vordefinierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Erstellen eines Indexers (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Erstellen eines Indexers (REST)](/rest/api/searchservice/create-indexer)

@@ -1,27 +1,28 @@
 ---
-title: Entwurf für die Notfallwiederherstellung mit Azure ExpressRoute | Microsoft-Dokumentation
+title: 'Azure ExpressRoute: Entwerfen für die Notfallwiederherstellung'
 description: Diese Seite enthält architektonische Empfehlungen für die Notfallwiederherstellung bei Verwendung von Azure ExpressRoute.
-documentationcenter: na
-services: networking
-author: rambk
-manager: tracsman
+services: expressroute
+author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 05/25/2019
-ms.author: rambala
-ms.openlocfilehash: cf2b4e385de901254fde3c3d3e807feda98d5b41
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.author: duau
+ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466071"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "92202412"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Entwurf für die Notfallwiederherstellung mit privatem ExpressRoute-Peering
 
-ExpressRoute wurde für Hochverfügbarkeit entwickelt, um Konnektivität für private Netzwerke mit Microsoft-Ressourcen auf Netzbetreiberniveau bereitzustellen. Das heißt, gibt es keinen Single Point of Failure im ExpressRoute-Pfad im Microsoft-Netzwerk. Entwurfsüberlegungen zum Maximieren der Verfügbarkeit einer ExpressRoute-Verbindung finden Sie unter [Entwerfen für Hochverfügbarkeit mit ExpressRoute][HA].
+ExpressRoute wurde für Hochverfügbarkeit entwickelt, um Konnektivität für private Netzwerke mit Microsoft-Ressourcen auf Netzbetreiberniveau bereitzustellen. Das heißt, gibt es keine einzelne Fehlerquelle im ExpressRoute-Pfad im Microsoft-Netzwerk. Entwurfsüberlegungen zum Maximieren der Verfügbarkeit einer ExpressRoute-Verbindung finden Sie unter [Entwerfen für Hochverfügbarkeit mit ExpressRoute][HA].
 
 Wir wollen jedoch Murphys populäres Sprichwort nicht vergessen: *Alles, was schiefgehen kann, wird auch schiefgehen*. Konzentrieren wir uns in diesem Artikel also auf Lösungen, die über Fehler hinausgehen, die mit einer einzigen ExpressRoute-Verbindung behoben werden können. Mit anderen Worten, lassen Sie uns in diesem Artikel Überlegungen zur Netzwerkarchitektur anstellen, um eine robuste Back-End-Netzwerkverbindung für die Notfallwiederherstellung mit georedundanten ExpressRoute-Verbindungen aufzubauen.
+
+>[!NOTE]
+>Die in diesem Artikel beschriebenen Konzepte gelten gleichermaßen, wenn eine ExpressRoute-Leitung innerhalb oder außerhalb eine Virtual WAN erstellt wird.
+>
 
 ## <a name="need-for-redundant-connectivity-solution"></a>Erfordernis einer redundanten Konnektivitätslösung
 
@@ -119,7 +120,7 @@ Sie können das Szenario mithilfe der Verbindungsgewichtung entwerfen, um VNETs 
 
 [![8]][8]
 
-### <a name="scenario-2"></a>Szenario 2:
+### <a name="scenario-2"></a>Szenario 2
 
 Szenario 2 wird in der folgenden Abbildung dargestellt. In der Abbildung geben grüne Linien Pfade für den Datenverkehrsfluss zwischen VNet1 und lokalen Netzwerken an. Die blauen Linien geben Pfade für den Datenverkehrsfluss zwischen VNet2 und lokalen Netzwerken an. Im stabilen Zustand (durchgezogene Linien in der Abbildung) fließt der gesamte Datenverkehr zwischen VNETs und lokalen Standorten größtenteils über einen Microsoft-Backbone und durchläuft die Verbindung zwischen lokalen Standorten nur im Fehlerzustand (gestrichelte Linien im Diagramm) einer ExpressRoute-Verbindung.
 
@@ -150,13 +151,8 @@ In diesem Artikel haben wir erläutert, wie Sie die Notfallwiederherstellung ein
 [10]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol2.png "Aktiv/Aktiv-ExpressRoute-Verbindungen: Lösung 2"
 
 <!--Link References-->
-[HA]: https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute
+[HA]: ./designing-for-high-availability-with-expressroute.md
 [Enterprise DR]: https://azure.microsoft.com/solutions/architecture/disaster-recovery-enterprise-scale-dr/
 [SMB DR]: https://azure.microsoft.com/solutions/architecture/disaster-recovery-smb-azure-site-recovery/
-[con wgt]: https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection
-[AS Path Pre]: https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending
-
-
-
-
-
+[con wgt]: ./expressroute-optimize-routing.md#solution-assign-a-high-weight-to-local-connection
+[AS Path Pre]: ./expressroute-optimize-routing.md#solution-use-as-path-prepending

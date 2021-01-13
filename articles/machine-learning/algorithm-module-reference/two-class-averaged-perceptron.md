@@ -1,24 +1,24 @@
 ---
-title: 'Entscheidungswaldregression: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mithilfe des Moduls „Two-Class Averaged Perceptron“ (Gemitteltes Perzeptron mit zwei Klassen) in Azure Machine Learning Service ein Modell für maschinelles Lernen erstellen, das auf dem „Gemitteltes Perzeptron“-Algorithmus basiert.
+title: 'Gemitteltes Perzeptron mit zwei Klassen: Modulreferenz'
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Two-Class Averaged Perceptron-Modul im Designer verwenden, um einen binären Klassifizierer zu erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: f560923b0a5457ac5fd03c7f76fc4315c6ca08e8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 04/22/2020
+ms.openlocfilehash: f1161dc99b84026bcc830c08b63b95d0bf3b0994
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128422"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421140"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>„Two-Class Averaged Perceptron“-Modul
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul, um ein Modell für maschinelles Lernen zu erstellen, das auf dem „Gemitteltes Perzeptron“-Algorithmus basiert.  
   
@@ -32,11 +32,13 @@ Die einfacheren Perzeptronmodelle eignen sich zum Lernen linear trennbarer Muste
 
 ## <a name="how-to-configure-two-class-averaged-perceptron"></a>Gewusst wie: Konfigurieren eines gemittelten Perzeptrons mit zwei Klassen
 
-1.  Fügen Sie das Modul **Two-Class Averaged Perceptron** Ihrem Experiment hinzu.  
+1.  Fügen Sie das Modul **Two-Class Averaged Perceptron** Ihrer Pipeline hinzu.  
 
 2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.  
   
     -   **Single Parameter** (Einzelner Parameter): Wenn Sie wissen, wie Sie das Modell konfigurieren möchten, geben Sie eine bestimmte Menge von Werten als Argumente an.
+
+    -   **Parameter Range** (Parameterbereich): Wählen Sie diese Option, wenn Sie nicht sicher sind, welche Parameter am besten geeignet sind, und einen Parametersweep ausführen möchten. Wählen Sie einen Wertebereich aus, über den iteriert werden soll. Anschließend iteriert das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) über alle möglichen Kombinationen der von Ihnen angegebenen Einstellungen, um die Hyperparameter zur Erzielung der optimalen Ergebnisse zu bestimmen.  
   
 3.  Geben Sie für **Learning rate** (Lernrate) einen Wert für die *Lernrate* an. Die Lernratenwerte bestimmen die Größe des Schritts, der jedes Mal, wenn das Modell getestet und korrigiert wird, beim stochastischen Gradientenverfahren verwendet wird.
   
@@ -46,19 +48,25 @@ Die einfacheren Perzeptronmodelle eignen sich zum Lernen linear trennbarer Muste
   
      Ein frühes Stoppen bietet oft eine bessere Generalisierung. Ein Erhöhen der Anzahl von Iterationen verbessert die Anpassung, mit dem Risiko der Überanpassung.
   
-5.  Geben Sie für **Random number seed** (Zufällig gewählter Startwert) optional einen ganzzahligen Wert ein, der als Startwert verwendet wird. Sie sollten einen Startwert verwenden, wenn Sie die Ausführungen übergreifende Reproduzierbarkeit des Experiments sicherstellen möchten.  
+5.  Geben Sie für **Random number seed** (Zufällig gewählter Startwert) optional einen ganzzahligen Wert ein, der als Startwert verwendet wird. Es empfiehlt sich, einen Startwert zu verwenden, wenn Sie die ausführungsübergreifende Reproduzierbarkeit der Pipeline sicherstellen möchten.  
   
-1.  Stellen Sie eine Verbindung eines Trainingsdatasets mit einem der Trainingsmodule her:
+1.  Verbinden Sie ein Trainingsdataset, und trainieren Sie das Modell:
+
+    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie ein mit Tags versehenes Dataset und das Modul [Train Model](train-model.md) (Modell trainieren) verbinden.  
   
-    -   Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie das Modul [Train Model](train-model.md) (Trainieren des Modells) verwenden.
+    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Parameter Range** (Parameterbereich) festlegen, verbinden Sie ein markiertes Dataset, und trainieren Sie das Modell mithilfe des Moduls [Tune Model Hyperparameters](tune-model-hyperparameters.md).  
+  
+    > [!NOTE]
+    > 
+    > Wenn Sie einen Parameterbereich an das Modul [Train Model](train-model.md) übergeben, wird nur der Standardwert in der Liste der Einzelparameter verwendet.  
+    > 
+    > Wenn Sie einen einzelnen Satz von Parameterwerten an das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) übergeben und ein Bereich von Einstellungen für jeden Parameter erwartet wird, werden die Werte ignoriert und stattdessen die Standardwerte für den Learner verwendet.  
+    > 
+    > Wenn Sie die Option **Parameter Range** (Parameterbereich) auswählen und einen einzelnen Wert für einen beliebigen Parameter eingeben, wird dieser angegebene einzelne Wert während des gesamten Löschvorgangs verwendet, auch wenn andere Parameter in einem Wertebereich geändert werden.
 
-## <a name="results"></a>Ergebnisse
 
-Nach Abschluss des Trainings:
-
-+ Um eine Zusammenfassung der Parameter des Modells sowie der aus dem Training gewonnenen Featuregewichtungen anzuzeigen, klicken Sie mit der rechten Maustaste auf die Ausgabe von [Train Model](./train-model.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

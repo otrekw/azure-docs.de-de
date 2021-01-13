@@ -1,5 +1,5 @@
 ---
-title: Planen einer Azure Active Directory-Bereitstellung für Berichterstellung und Überwachung
+title: Planen der Bereitstellung von Berichterstellung und Überwachung – Azure AD
 description: In diesem Artikel wird beschrieben, wie Sie die Implementierung der Berichterstellung und Überwachung planen und durchführen.
 services: active-directory
 author: BarbaraSelden
@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d24a4ab74f7957c068fc664fc4e8898c525afcb
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162539"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362398"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Planen einer Azure Active Directory-Bereitstellung für Berichterstellung und Überwachung
 
@@ -47,9 +47,9 @@ Mit Azure AD-Überwachung können Sie Protokolle folgendermaßen weiterleiten:
 * einen Azure Event Hub, in dem die Protokolle mit vorhandenen SIEM-Tools wie Splunk, Sumologic oder QRadar integriert werden können
 
 > [!NOTE]
-Seit Kurzem wird der Begriff „Azure Monitor-Protokolle“ anstelle von „Log Analytics“ verwendet. Protokolldaten werden immer noch in einem Log Analytics-Arbeitsbereich gespeichert und weiterhin mit dem gleichen Log Analytics-Dienst erfasst und analysiert. Die Terminologie hat sich geändert, um der Rolle von [Protokollen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection) besser Rechnung zu tragen. Weitere Informationen finden Sie unter [Terminologieänderungen bei Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/azure-monitor-rebrand).
+Seit Kurzem wird der Begriff „Azure Monitor-Protokolle“ anstelle von „Log Analytics“ verwendet. Protokolldaten werden immer noch in einem Log Analytics-Arbeitsbereich gespeichert und weiterhin mit dem gleichen Log Analytics-Dienst erfasst und analysiert. Die Terminologie hat sich geändert, um der Rolle von [Protokollen in Azure Monitor](../../azure-monitor/platform/data-platform.md) besser Rechnung zu tragen. Weitere Informationen finden Sie unter [Terminologieänderungen bei Azure Monitor](../../azure-monitor/terminology.md).
 
-[Weitere Informationen zu Aufbewahrungsrichtlinien für Berichte](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-reports-data-retention)
+[Weitere Informationen zu Aufbewahrungsrichtlinien für Berichte](./reference-reports-data-retention.md)
 
 ### <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Lizenzierung und Voraussetzungen für die Azure AD-Berichterstellung und -Überwachung
 
@@ -73,7 +73,7 @@ In diesem Projekt definieren Sie die Zielgruppen, die Berichte nutzen und überw
 
 ### <a name="engage-the-right-stakeholders"></a>Einbeziehen der richtigen Beteiligten
 
-Fehler in Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen auf den Gebieten Auswirkungen, Ergebnisse und Zuständigkeiten zurückzuführen. Diese können Sie vermeiden, indem Sie [sicherstellen, dass Sie die richtigen Beteiligten](https://aka.ms/deploymentplans) hinzuziehen. Achten Sie zudem darauf, die Rolle der Beteiligten im Projekt präzise zu definieren, indem Sie die Beteiligten, ihren Projektbeitrag und ihre Zuständigkeiten dokumentieren.
+Fehler in Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen auf den Gebieten Auswirkungen, Ergebnisse und Zuständigkeiten zurückzuführen. Diese können Sie vermeiden, indem Sie [sicherstellen, dass Sie die richtigen Beteiligten](../fundamentals/active-directory-deployment-plans.md) hinzuziehen. Achten Sie zudem darauf, die Rolle der Beteiligten im Projekt präzise zu definieren, indem Sie die Beteiligten, ihren Projektbeitrag und ihre Zuständigkeiten dokumentieren.
 
 ### <a name="plan-communications"></a>Planen der Benachrichtigungen
 
@@ -91,13 +91,13 @@ Ihre aktuelle Infrastruktur und Richtlinien wirken sich auf den Entwurf für die
 
 ## <a name="plan-an-azure-ad-reporting-and-monitoring-deployment"></a>Planen einer Bereitstellung für eine Azure AD-Berichterstellung und -Überwachung
 
-Die Berichterstellung und Überwachung werden verwendet, um Ihre geschäftlichen Anforderungen zu erfüllen, Einblicke in die Verwendungsmuster zu gewinnen und den Sicherheitsstatus Ihrer Organisation zu verbessern.
+Berichterstellung und Überwachung werden verwendet, um Ihre geschäftlichen Anforderungen zu erfüllen, Einblicke in die Verwendungsmuster zu gewinnen und den Sicherheitsstatus Ihrer Organisation zu erhöhen.
 
 ### <a name="business-use-cases"></a>Anwendungsfälle für Unternehmen
 
 * Notwendig, damit die Lösung geschäftliche Anforderungen erfüllt
 * Geeignet, um geschäftliche Anforderungen zu erfüllen
-* Nicht zutreffend
+* Nicht verfügbar
 
 |Bereich |BESCHREIBUNG |
 |-|-|
@@ -111,29 +111,29 @@ Die Berichterstellung und Überwachung werden verwendet, um Ihre geschäftlichen
 
 Mit der Azure AD-Überwachung können Sie Ihre Azure AD-Aktivitätsprotokolle an ein System weiterleiten, das Ihren Geschäftsanforderungen am besten entspricht. Sie können diese dann für die langfristige Berichterstellung und Analyse aufbewahren, um Einblicke in Ihre Umgebung zu erhalten und sie in SIEM-Tools zu integrieren.
 
-#### <a name="decision-flow-chartan-image-showing-what-is-described-in-subsequent-sectionsmediareporting-deployment-plandeploy-reporting-flow-diagrampng"></a>Flussdiagramm zum Entscheidungsprozess![Bild: Ablauf in aufeinanderfolgenden Abschnitten](media/reporting-deployment-plan/deploy-reporting-flow-diagram.png)
+#### <a name="decision-flow-chartan-image-showing-what-is-described-in-subsequent-sections"></a>Flussdiagramm zum Entscheidungsprozess![Bild: Ablauf in aufeinanderfolgenden Abschnitten](media/reporting-deployment-plan/deploy-reporting-flow-diagram.png)
 
 #### <a name="archive-logs-in-a-storage-account"></a>Archivieren von Protokollen in einem Speicherkonto
 
-Wenn Sie Protokolle an ein Azure-Speicherkonto weiterleiten, können Sie sie länger aufbewahren als die Standardaufbewahrungsdauer aus unseren [Aufbewahrungsrichtlinien](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-reports-data-retention) vorgibt. Verwenden Sie diese Methode, wenn Sie Ihre Protokolle archivieren müssen, sie aber nicht mit einem SIEM-System integriert werden müssen und keine laufenden Abfragen und Analysen benötigt werden. Sie können weiterhin Suchvorgänge nach Bedarf durchführen.
+Wenn Sie Protokolle an ein Azure-Speicherkonto weiterleiten, können Sie sie länger aufbewahren als die Standardaufbewahrungsdauer aus unseren [Aufbewahrungsrichtlinien](./reference-reports-data-retention.md) vorgibt. Verwenden Sie diese Methode, wenn Sie Ihre Protokolle archivieren müssen, sie aber nicht mit einem SIEM-System integriert werden müssen und keine laufenden Abfragen und Analysen benötigt werden. Sie können weiterhin Suchvorgänge nach Bedarf durchführen.
 
-Informationen zum Weiterleiten von Daten an Ihr Speicherkonto finden Sie [hier](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account).
+Informationen zum Weiterleiten von Daten an Ihr Speicherkonto finden Sie [hier](./quickstart-azure-monitor-route-logs-to-storage-account.md).
 
 #### <a name="send-logs-to-azure-monitor-logs"></a>Senden von Protokollen an Azure Monitor-Protokolle
 
-[Azure Monitor-Protokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) konsolidiert Überwachungsdaten aus verschiedenen Quellen. Zudem sind eine Abfragesprache und eine Analyse-Engine vorhanden, die Ihnen Einblicke in den Betrieb Ihrer Anwendungen und die Nutzung Ihrer Ressourcen geben. Sie können gesammelte Daten schnell abrufen, überwachen und für Warnungen heranziehen, indem Sie Ihre Azure AD-Aktivitätsprotokolle an Azure Monitor-Protokolle senden. Verwenden Sie diese Methode, wenn Sie nicht über eine vorhandene SIEM-Lösung verfügen, an die Sie Ihre Daten direkt senden möchten, aber Abfragen und Analysen ausführen möchten. Sobald Ihre Daten sich in Azure Monitor-Protokollen befinden, können Sie diese an den Event Hub und von dort aus bei Bedarf an SIEM senden.
+[Azure Monitor-Protokolle](../../azure-monitor/log-query/log-query-overview.md) konsolidiert Überwachungsdaten aus verschiedenen Quellen. Zudem sind eine Abfragesprache und eine Analyse-Engine vorhanden, die Ihnen Einblicke in den Betrieb Ihrer Anwendungen und die Nutzung Ihrer Ressourcen geben. Sie können gesammelte Daten schnell abrufen, überwachen und für Warnungen heranziehen, indem Sie Ihre Azure AD-Aktivitätsprotokolle an Azure Monitor-Protokolle senden. Verwenden Sie diese Methode, wenn Sie nicht über eine vorhandene SIEM-Lösung verfügen, an die Sie Ihre Daten direkt senden möchten, aber Abfragen und Analysen ausführen möchten. Sobald Ihre Daten sich in Azure Monitor-Protokollen befinden, können Sie diese an den Event Hub und von dort aus bei Bedarf an SIEM senden.
 
-Lesen Sie, wie Sie [Daten an Azure Monitor-Protokolle senden](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
+Lesen Sie, wie Sie [Daten an Azure Monitor-Protokolle senden](./howto-integrate-activity-logs-with-log-analytics.md).
 
 Sie können auch die vordefinierte Ansichten für Azure AD-Aktivitätsprotokolle installieren, um allgemeine Szenarios mit Anmeldungen und Überprüfungsereignissen zu überwachen.
 
-Informationen zum Installieren und Verwenden von Log Analytics-Ansichten für Azure AD-Aktivitätsprotokolle finden Sie [hier](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views).
+Informationen zum Installieren und Verwenden von Log Analytics-Ansichten für Azure AD-Aktivitätsprotokolle finden Sie [hier](./howto-install-use-log-analytics-views.md).
 
 #### <a name="stream-logs-to-your-azure-event-hub"></a>Streamen von Protokollen an Ihren Azure-Event Hub
 
 Das Weiterleiten von Protokollen an eine Azure-Event Hub ermöglicht die Integration mit SIEM-Drittanbietertools. Diese Integration ermöglicht es Ihnen, Daten des Azure AD-Aktivitätsprotokolls mit anderen Daten zu kombinieren, die von Ihrer SIEM-Lösung verwaltetet werden, um umfassendere Einblicke in Ihre Umgebung zu gewähren. 
 
-Informationen zum Streamen von Protokollen an einen Event Hub finden Sie [hier](https://docs.microsoft.com//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
+Informationen zum Streamen von Protokollen an einen Event Hub finden Sie [hier](./tutorial-azure-monitor-stream-logs-to-event-hub.md).
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Planen von Vorgängen und Sicherheit für die Azure AD-Berichterstellung und -Überwachung
 
@@ -151,9 +151,9 @@ Folgende Rollen können Azure AD-Berichte lesen:
 
 * Report Reader (Leseberechtigter für Berichte)
 
-Im verlinkten Artikel finden Sie weitere Informationen zu [Azure AD-Administratorrollen](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal).
+Im verlinkten Artikel finden Sie weitere Informationen zu [Azure AD-Administratorrollen](../roles/permissions-reference.md).
 
-*Wenden Sie immer das Konzept der geringsten Rechte an, um das Risiko einer Kontogefährdung zu verringern*. Sie sollten [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) implementieren, um Ihre Organisation noch besser zu schützen.
+*Wenden Sie immer das Konzept der geringsten Rechte an, um das Risiko einer Kontogefährdung zu verringern* . Sie sollten [Privileged Identity Management](../privileged-identity-management/pim-configure.md) implementieren, um Ihre Organisation noch besser zu schützen.
 
 ##  
 
@@ -163,27 +163,27 @@ In diesem Abschnitt finden Sie die Dokumentationen zu den unterschiedlichen Bere
 
 ### <a name="consume-and-archive-azure-ad-logs"></a>Nutzen und Archivieren von Azure AD-Protokollen
 
-[Speicherorte von Aktivitätsberichten im Azure-Portal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-find-activity-reports)
+[Speicherorte von Aktivitätsberichten im Azure-Portal](./howto-find-activity-reports.md)
 
-[Tutorial: Archivieren von Azure AD-Protokollen in einem Azure-Speicherkonto](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account)
+[Tutorial: Archivieren von Azure AD-Protokollen in einem Azure-Speicherkonto](./quickstart-azure-monitor-route-logs-to-storage-account.md)
 
 ### <a name="implement-monitoring-and-analytics"></a>Implementieren von Überwachung und Analyse
 
-[Senden von Protokollen an Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+[Senden von Protokollen an Azure Monitor](./howto-integrate-activity-logs-with-log-analytics.md)
 
-[Installieren und Verwenden der Log Analytics-Ansichten für Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)
+[Installieren und Verwenden der Log Analytics-Ansichten für Azure Active Directory](./howto-install-use-log-analytics-views.md)
 
-[Analysieren von Azure AD-Aktivitätsprotokollen mit Azure Monitor-Protokollen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics)
+[Analysieren von Azure AD-Aktivitätsprotokollen mit Azure Monitor-Protokollen](./howto-analyze-activity-logs-log-analytics.md)
 
-* [Interpret audit logs schema in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema) (Interpretieren des Überwachungsprotokollschemas in Azure Monitor)
+* [Interpret audit logs schema in Azure Monitor](./reference-azure-monitor-audit-log-schema.md) (Interpretieren des Überwachungsprotokollschemas in Azure Monitor)
 
-* [Interpretieren des Azure AD-Anmeldeprotokollschemas in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema)
+* [Interpretieren des Azure AD-Anmeldeprotokollschemas in Azure Monitor](./reference-azure-monitor-sign-ins-log-schema.md)
 
- * [Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)
+ * [Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub](./tutorial-azure-monitor-stream-logs-to-event-hub.md)
 
-* [Integrate Azure AD logs with Splunk by using Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-integrate-activity-logs-with-splunk) (Integrieren von Azure AD-Protokollen in Splunk mithilfe von Azure Monitor)
+* [Integrate Azure AD logs with Splunk by using Azure Monitor](./howto-integrate-activity-logs-with-splunk.md) (Integrieren von Azure AD-Protokollen in Splunk mithilfe von Azure Monitor)
 
-* [Integrieren von Azure AD-Protokollen in SumoLogic mit Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-sumologic)
+* [Integrieren von Azure AD-Protokollen in SumoLogic mit Azure Monitor](./howto-integrate-activity-logs-with-sumologic.md)
 
  
 
@@ -191,8 +191,6 @@ In diesem Abschnitt finden Sie die Dokumentationen zu den unterschiedlichen Bere
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Implementierung von [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) 
+Implementierung von [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 
 
-Implementierung der [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/overview)
-
- 
+Implementierung der [rollenbasierten Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/overview.md)

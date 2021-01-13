@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: overview
 ms.date: 08/01/2019
 ms.openlocfilehash: 9b7a5d5ca6cbad897839c8e28c9e3efd1eeabaf0
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "68736983"
 ---
 # <a name="what-is-azure-data-catalog"></a>Was ist Azure Data Catalog?

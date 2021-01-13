@@ -7,83 +7,87 @@ author: memildin
 manager: rkarlin
 ms.assetid: b88a8df7-6979-479b-8039-04da1b8737a7
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/27/2019
+ms.date: 12/15/2020
 ms.author: memildin
-ms.openlocfilehash: c3134988452efe16044ab7b7740cafd02e8cf27a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3f319c35631f8c85cab4613df0f1c14f98356caa
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201920"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563346"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center
 
-In diesem Thema wird gezeigt, wie Sie die empfangenen Warnungen anzeigen und verarbeiten, um Ihre Ressourcen zu schützen. 
+> [!TIP]
+> Die Informationen auf dieser Seite beziehen sich auf die neue Benutzeroberfläche für Warnungen (Vorschauversion), die über das Banner oben auf der Seite „Sicherheitswarnungen“ verfügbar ist. 
+>
+> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Banner mit dem Link zur neuen Benutzeroberfläche für Warnungen in der Vorschauversion":::
 
-* Weitere Informationen zu den unterschiedlichen Arten von Warnungen finden Sie unter [Arten von Sicherheitswarnungen](security-center-alerts-overview.md#security-alert-types).
-* Eine Übersicht darüber, wie Security Center Warnungen generiert, finden Sie unter [Erkennen von und Reagieren auf Bedrohungen mit Azure Security Center](security-center-alerts-overview.md#detect-threats).
+In diesem Thema erfahren Sie, wie Sie Security Center-Warnungen anzeigen und verarbeiten und Ihre Ressourcen schützen.
 
-> [!NOTE]
-> Führen Sie ein Upgrade auf Azure Security Center Standard durch, um erweiterte Erkennungsfunktionen zu aktivieren. Eine kostenlose Testversion ist verfügbar. Wenn Sie ein Upgrade durchführen möchten, wählen Sie in der [Sicherheitsrichtlinie](tutorial-security-policy.md)die Tarifoption aus. Weitere Informationen finden Sie unter [Azure Security Center Preise](security-center-pricing.md).
+Erweiterte Erkennungen, die Sicherheitswarnungen auslösen, sind nur in Azure Defender verfügbar. Eine kostenlose Testversion ist verfügbar. Informationen zum Durchführen eines Upgrades finden Sie unter [Aktivieren von Azure Defender](security-center-pricing.md#enable-azure-defender).
 
 ## <a name="what-are-security-alerts"></a>Was sind Sicherheitswarnungen?
 Security Center erfasst, analysiert und vereinigt automatisch Protokolldaten von Ihren Azure-Ressourcen, vom Netzwerk und von verbundenen Partnerlösungen, z.B. Lösungen zum Schutz von Firewalls und Endpunkten, um echte Bedrohungen zu erkennen und falsch positive Ergebnisse zu reduzieren. Eine Liste mit priorisierten Sicherheitswarnungen wird im Security Center zusammen mit den Informationen angezeigt, die Sie zum schnellen Untersuchen des Problems benötigen. Außerdem sind Empfehlungen zum Reagieren auf einen Angriff vorhanden.
 
-> [!NOTE]
-> Weitere Informationen darüber, wie die Erkennungsfunktionen von Security Center funktionieren, finden Sie unter [Erkennen von und Reagieren auf Bedrohungen mit Azure Security Center](security-center-alerts-overview.md#detect-threats).
+Informationen zu den verschiedenen Arten von Warnungen finden Sie unter [Sicherheitswarnungen (Referenzhandbuch)](alerts-reference.md).
+
+Eine Übersicht darüber, wie Warnungen von Security Center generiert werden, finden Sie unter [Erkennen von und Reagieren auf Bedrohungen mit Azure Security Center](security-center-alerts-overview.md).
+
 
 ## <a name="manage-your-security-alerts"></a>Verwalten von Sicherheitswarnungen
 
-1. Auf dem Security Center-Dashboard finden Sie auf der Kachel **Bedrohungsschutz** eine Übersicht über die Warnungen.
+1. Wählen Sie in Security Center auf der Seite „Übersicht“ entweder oben auf der Seite die Kachel **Sicherheitswarnungen** oder auf der Randleiste den Link „Sicherheitswarnungen“ aus.
 
-    ![Kachel „Sicherheitswarnungen“ in Security Center](./media/security-center-managing-and-responding-alerts/security-center-dashboard-alert.png)
+    :::image type="content" source="media/security-center-managing-and-responding-alerts/overview-page-alerts-links.png" alt-text="So gelangen Sie von der Azure Security Center-Seite „Übersicht“ auf die Seite „Sicherheitswarnungen“":::
 
-1. Klicken Sie auf die Kachel, um weitere Details zu den Warnungen anzuzeigen.
+    Die Seite „Sicherheitswarnungen“ wird geöffnet.
 
-   ![Die Sicherheitswarnungen in Security Center](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
+    :::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Liste der Sicherheitswarnungen von Azure Security Center":::
 
-1. Zum Filtern der angezeigten Warnungen klicken Sie auf **Filter** und wählen auf dem daraufhin geöffneten Blatt **Filter** die Filteroptionen aus, die Sie anwenden möchten. Die Liste wird entsprechend dem ausgewählten Filter aktualisiert. Diese Filterung kann sehr nützlich sein. Es könnte beispielsweise sein, dass Sie während der Untersuchung einer möglichen Sicherheitsverletzung im System die Sicherheitswarnungen überprüfen möchten, die in den letzten 24 Stunden aufgetreten sind.
+1. Wählen Sie zum Filtern der Liste der Warnungen einen der relevanten Filter aus. Optional können Sie mit der Option **Filter hinzufügen** weitere Filter hinzufügen.
 
-    ![Filtern von Warnungen in Security Center](./media/security-center-managing-and-responding-alerts/security-center-filter-alerts.png)
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-small.png" alt-text="Hinzufügen von Filtern zur Warnungsansicht" lightbox="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-large.png":::
+
+    Die Liste wird entsprechend den von Ihnen ausgewählten Filteroptionen aktualisiert. Diese Filterung kann sehr nützlich sein. Es könnte beispielsweise sein, dass Sie während der Untersuchung einer möglichen Sicherheitsverletzung im System die Sicherheitswarnungen überprüfen möchten, die in den letzten 24 Stunden aufgetreten sind.
+
 
 ## <a name="respond-to-security-alerts"></a>Reagieren auf Sicherheitswarnungen
 
-1. Klicken Sie in der Liste **Sicherheitswarnungen** auf eine Sicherheitswarnung. Die betroffenen Ressourcen und die Schritte, die Sie zum Abwehren eines Angriffs ausführen müssen, werden angezeigt.
+1. Wählen Sie in der Liste **Sicherheitswarnungen** eine Warnung aus. Daraufhin wird ein Seitenbereich geöffnet, in dem eine Beschreibung der Warnung und alle betroffenen Ressourcen angezeigt werden. 
 
-    ![Reagieren auf Sicherheitswarnungen](./media/security-center-managing-and-responding-alerts/security-center-alert.png)
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-details-pane.png" alt-text="Minidetailansicht einer Sicherheitswarnung":::
 
-1. Klicken Sie nach dem Überprüfen der Informationen auf eine Ressource, die angegriffen wurde.
+    > [!TIP]
+    > Wenn dieser Seitenbereich geöffnet ist, können Sie die Liste der Warnungen schnell überprüfen, indem Sie auf der Tastatur die NACH-OBEN- oder NACH-UNTEN-TASTE drücken.
 
+1. Wenn Sie weitere Informationen anzeigen möchten, wählen Sie **Vollständige Details anzeigen** aus.
+
+    Im linken Bereich der Seite mit der Sicherheitswarnung werden allgemeine Informationen zur Sicherheitswarnung angezeigt: Titel, Schweregrad, Status, Zeitpunkt der Aktivität, Beschreibung der verdächtigen Aktivität und die betroffene Ressource. Neben der betroffenen Ressource finden Sie die Azure-Tags für die Ressource. Verwenden Sie diese Tags, um den Organisationskontext der Ressource abzuleiten, wenn Sie die Warnung untersuchen.
+
+    Auf der rechten Seite befindet sich die Registerkarte **Warnungsdetails**, die detaillierte Informationen zur Warnung anzeigt, die Ihnen beim Untersuchen des Problems helfen: IP-Adressen, Dateien, Prozesse und vieles mehr.
+     
     ![Vorschläge für Maßnahmen bei Sicherheitswarnungen](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    Der Abschnitt **Allgemeine Informationen** bietet Erkenntnisse dazu, was die Sicherheitswarnung ausgelöst hat. Er enthält Informationen wie die Zielressource, die Quell-IP-Adresse (sofern zutreffend), ob die Warnung noch aktiv ist sowie Empfehlungen zur Behebung.  
+    Im rechten Bereich finden Sie auch die Registerkarte **Aktion ausführen**. Über diese Registerkarte können Sie weitere Aktionen in Bezug auf die Sicherheitswarnung ausführen. Folgende Aktionen sind möglich:
+    - *Auswirkungen der Bedrohung minimieren*: Stellt manuelle Schritte zur Behebung dieser Sicherheitswarnung bereit.
+    - *Künftige Angriffe verhindern*: Gibt Sicherheitsempfehlungen, um die Angriffsfläche zu verringern, den Sicherheitsstatus zu erhöhen und so künftige Angriffe zu verhindern.
+    - *Automatische Reaktion auslösen*: Bietet die Möglichkeit, eine Logik-App als Reaktion auf diese Sicherheitswarnung auszulösen.
+    - *Ähnliche Warnungen unterdrücken*: Bietet die Möglichkeit, zukünftige Warnungen mit ähnlichen Merkmalen zu unterdrücken, wenn die Warnung für Ihre Organisation nicht relevant ist.
 
-    > [!NOTE]
-    >In einigen Fällen ist die IP-Quelladresse nicht verfügbar, da einige Windows-Sicherheitsereignisprotokolle die IP-Adresse nicht enthalten.
+    ![Registerkarte „Aktion ausführen“](./media/security-center-managing-and-responding-alerts/alert-take-action.png)
 
-1. Die von Security Center vorgeschlagene Wartungsschritte variieren je nach Sicherheitswarnung. Befolgen Sie sie für jede Warnung. In einigen Fällen müssen Sie möglicherweise andere Azure-Steuerelemente oder -Dienste verwenden, um die empfohlene Maßnahme für eine Warnung der Bedrohungserkennung umzusetzen. 
 
-    In den folgenden Themen finden Sie Informationen zu den verschiedenen Warnungen für bestimmte Ressourcentypen:
-    
-    * [Warnungen für IaaS-VMs und -Server](security-center-alerts-iaas.md)
-    * [Warnungen für Native Compute](security-center-alerts-compute.md)
-    * [Warnungen für Datendienste](security-center-alerts-data-services.md)
-    
-    In den folgenden Themen erfahren Sie, wie Security Center die verschiedenen Telemetriedaten nutzt, die im Rahmen der Azure-Infrastrukturintegration gesammelt werden, um zusätzliche Schutzebenen für in Azure bereitstellte Ressourcen zu implementieren:
-    
-    * [Bedrohungserkennung für die Azure-Dienstebene in Azure Security Center](security-center-alerts-service-layer.md)
-    * [Integration mit Azure-Sicherheitsprodukten](security-center-alerts-integration.md)
-    
+
+
 ## <a name="see-also"></a>Weitere Informationen
 
-In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Security Center konfigurieren können. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
+In diesem Dokument haben Sie erfahren, wie Sie Sicherheitswarnungen anzeigen. Verwandte Informationen finden Sie auf den folgenden Seiten:
 
-* [Sicherheitswarnungen in Azure Security Center](security-center-alerts-overview.md)
-* [Behandeln von Sicherheitsincidents](security-center-incident.md)
-* [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md)
-* [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
+- [Konfigurieren von Warnungsunterdrückungsregeln](alerts-suppression-rules.md)
+- [Automatisieren der Reaktionen auf Security Center-Trigger](workflow-automation.md)
+- [Sicherheitswarnungen (Referenzhandbuch)](alerts-reference.md)

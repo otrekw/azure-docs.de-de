@@ -1,25 +1,21 @@
 ---
-title: Verwalten von DNS-Einträgen mit der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+title: Verwalten von DNS-Einträgen mit der Azure-Befehlszeilenschnittstelle
 description: Verwalten von DNS-Datensatzgruppen und Einträgen in Azure DNS, wenn Sie Ihre Domäne in Azure DNS hosten.
-services: dns
-documentationcenter: na
-author: vhorne
-manager: jeconnoc
+author: rohinkoul
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: H1Hack27Feb2017
+ms.topic: how-to
+ms.custom: H1Hack27Feb2017, devx-track-azurecli
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
-ms.author: victorh
-ms.openlocfilehash: 4864a46b91b4e243ce6a2ae3d9d36df28fe74d8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rohink
+ms.openlocfilehash: 2d3989b3c477a35d602f1ccf3e45d6f597f5d78d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61293332"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011563"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Verwalten von DNS-Einträgen und Ressourceneintragssätzen in Azure DNS mit der Azure CLI
 

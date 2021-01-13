@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5ad40feacdccc847ed66caed3d586db2490b0b50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465659"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89266526"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>Gewusst wie: Bereitstellen eines Medienobjekts durch Herunterladen  
+# <a name="how-to-deliver-an-asset-by-download"></a>Gewusst wie: Bereitstellen eines Medienobjekts durch Herunterladen
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Dieser Artikel beschreibt Optionen zur Bereitstellung von Medienobjekten, die in Media Services hochgeladen wurden. Sie können Media Services-Inhalte in verschiedenen Anwendungsszenarien bereitstellen. Laden Sie nach der Codierung die generierten Medienobjekte herunter, oder greifen Sie mithilfe eines Streaminglocators auf diese zu. Für verbesserte Leistung und Skalierbarkeit können Sie Inhalte auch über ein Netzwerk für die Inhaltsübermittlung (Content Delivery Network, CDN) anbieten.
 
 Dieses Beispiel zeigt, wie Sie Medienobjekte von Media Services auf Ihren lokalen Computer herunterladen können. Der Code fragt die Jobs des Media Services-Kontos nach Job-ID ab und greift auf die **OutputMediaAssets**-Sammlung zu (eine Sammlung mit einem oder mehreren Ausgabemedienobjekten als Ergebnis einer Jobausführung). Dieses Beispiel zeigt, wie Sie Ausgabemedienobjekte eines Auftrags herunterladen können. Dieser Ansatz funktioniert auch für den Download anderer Medienobjekte.
@@ -87,6 +91,6 @@ Dieses Beispiel zeigt, wie Sie Medienobjekte von Media Services auf Ihren lokale
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Bereitstellen von Streaming-Inhalten](media-services-deliver-streaming-content.md)
 

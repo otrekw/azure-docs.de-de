@@ -4,34 +4,37 @@ description: Hier erfahren Sie, wie Sie die Notification Hubs-Unterstützung fü
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 08/04/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2019
-ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c0771864229c8a3918da076de48fb6e033d2cf5a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212402"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89018177"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Massenexportieren und -importieren von Azure Notification Hubs-Registrierungen
-In einigen Szenarios ist das Erstellen oder Anpassen großer Mengen von Registrierungen in einem Notification Hub erforderlich. Bei einigen dieser Szenarios handelt es sich um Tagaktualisierungen, die auf Batchberechnungen folgen, oder Migrationen vorhandener Pushimplementierungen zur Verwendung von Notification Hubs.
+
+In einigen Szenarios ist das Erstellen oder Anpassen großer Mengen von Registrierungen in einem Notification Hub erforderlich. Bei einigen dieser Szenarios handelt es sich um Tagaktualisierungen, die auf Batchberechnungen folgen, oder Migrationen vorhandener Pushimplementierungen zur Verwendung von Azure Notification Hubs.
 
 In diesem Artikel wird erläutert, wie Sie große Mengen von Vorgängen in einem Notification Hub durchführen oder alle Registrierungen in einem Massenvorgang exportieren.
 
 ## <a name="high-level-flow"></a>Allgemeiner Ablauf
+
 Die Batchunterstützung wurde dazu entworfen, Aufträge mit langer Ausführungszeit mit Millionen von Registrierungen zu unterstützen. Die Batchunterstützung nutzt Azure Storage zum Speichern von Auftragsdetails und Ausgaben, um diese Skalierung zu ermöglichen. Für Massenaktualisierungsvorgänge muss der Benutzer eine Datei in einem Blobcontainer erstellen, die eine Liste der Registrierungaktualisierungsvorgänge enthält. Wenn der Auftrag gestartet wird, stellt der Benutzer die jeweiligen URLs zu den Blobcontainern für das Eingabe- und das Ausgabeverzeichnis bereit. Nachdem der Auftrag gestartet wurde, kann der Benutzer den Status überprüfen, indem er einen URL-Speicherort abfragt, der beim Starten des Auftrags bereitgestellt wird. Ein spezifischer Auftrag kann nur Vorgänge einer spezifischen Art (Erstellen, Aktualisieren oder Löschen) durchführen. Exportvorgänge werden analog durchgeführt.
 
 ## <a name="import"></a>Importieren
 
-### <a name="set-up"></a>Einrichtung
+### <a name="set-up"></a>Einrichten
+
 In diesem Abschnitt wird vorausgesetzt, dass Sie über folgende Entitäten verfügen:
 
 - Ein bereitgestellter Notification Hub
@@ -39,7 +42,8 @@ In diesem Abschnitt wird vorausgesetzt, dass Sie über folgende Entitäten verf�
 - Verweise auf das [Azure Storage NuGet-Paket](https://www.nuget.org/packages/windowsazure.storage/) und [Notification Hubs NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>Erstellen einer Eingabedatei und Speichern in einem Blob
-Eine Eingabedatei enthält eine Liste von Registrierungen, die pro Zeile in XML serialisiert sind. Im folgenden Beispiel wird mithilfe des Azure SDK veranschaulicht, wie die Registrierungen serialisiert und in den Blobcontainer hochgeladen werden.
+
+Eine Eingabedatei enthält eine Liste von Registrierungen, die pro Zeile in XML serialisiert sind. Im folgenden Beispiel wird mithilfe des Azure SDK veranschaulicht, wie die Registrierungen serialisiert und in den Blobcontainer hochgeladen werden:
 
 ```csharp
 private static void SerializeToBlob(CloudBlobContainer container, RegistrationDescription[] descriptions)
@@ -47,7 +51,7 @@ private static void SerializeToBlob(CloudBlobContainer container, RegistrationDe
     StringBuilder builder = new StringBuilder();
     foreach (var registrationDescription in descriptions)
     {
-        builder.AppendLine(RegistrationDescription.Serialize());
+        builder.AppendLine(registrationDescription.Serialize());
     }
 
     var inputBlob = container.GetBlockBlobReference(INPUT_FILE_NAME);
@@ -62,6 +66,7 @@ private static void SerializeToBlob(CloudBlobContainer container, RegistrationDe
 > Im obigen Code werden die Registrierungen im Arbeitsspeicher serialisiert, und der gesamte Datenstrom wird dann in einen Blob hochgeladen. Wenn Sie eine Datei mit mehreren Megabytes hochgeladen haben, finden Sie Informationen zum Ausführen dieser Schritte in den Anleitungen zu Azure-Blobs, z. B. unter [Understanding Block Blobs, Append Blobs, and Page Blobs (Grundlegendes zu Blockblobs, Anfügeblobs und Seitenblobs)](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
 
 ### <a name="create-url-tokens"></a>Erstellen von URL-Token
+
 Sobald Sie Ihre Eingabedatei hochgeladen haben, generieren Sie die URLs für die Eingabedatei und das Ausgabeverzeichnis, die Ihrem Notification Hub bereitgestellt werden sollen. Sie können zwei verschiedene Blobcontainer für die Eingabe und die Ausgabe verwenden.
 
 ```csharp
@@ -90,6 +95,7 @@ static Uri GetInputFileUrl(CloudBlobContainer container, string filePath)
 ```
 
 ### <a name="submit-the-job"></a>Übermitteln des Auftrags
+
 Mit den zwei Eingabe- und Ausgabe-URLs können Sie nun den Batchauftrag starten.
 
 ```csharp
@@ -131,6 +137,7 @@ Bei Abschluss des Auftrags können Sie die Ergebnisse untersuchen, indem Sie sic
 Diese Dateien enthalten die Liste der erfolgreichen und fehlgeschlagenen Vorgänge im Batch. Die Dateien weisen das Format `.cvs` auf, in den Dateien weist jede Zeile die Zeilennummer der ursprünglichen Eingabedatei und die Ausgabe des Vorgangs auf (normalerweise die erstellte oder aktualisierte Beschreibung der Registrierung).
 
 ### <a name="full-sample-code"></a>Vollständiger Beispielcode
+
 Mit dem folgenden Beispielcode werden Registrierungen in einen Notification Hub importiert.
 
 ```csharp
@@ -169,7 +176,7 @@ namespace ConsoleApplication1
                 new MpnsRegistrationDescription(@"http://dm2.notify.live.net/throttledthirdparty/01.00/12G9Ed13dLb5RbCii5fWzpFpAgAAAAADAQAAAAQUZm52OkJCMjg1QTg1QkZDMdUxREQFBlVTTkMwMQ"),
             };
 
-            //write to blob store to create an input file
+            // Write to blob store to create an input file
             var blobClient = new CloudBlobClient(STORAGE_ENDPOINT, new Microsoft.WindowsAzure.Storage.Auth.StorageCredentials(STORAGE_ACCOUNT, STORAGE_PASSWORD));
             var container = blobClient.GetContainerReference("testjobs");
             container.CreateIfNotExists();
@@ -181,7 +188,7 @@ namespace ConsoleApplication1
             var inputFileSasUri = GetInputFileUrl(container, INPUT_FILE_NAME);
 
 
-            //Lets import this file
+            // Import this file
             NotificationHubClient client = NotificationHubClient.CreateClientFromConnectionString(CONNECTION_STRING, HUB_NAME);
             var createTask = client.SubmitNotificationHubJobAsync(
                 new NotificationHubJob {
@@ -209,7 +216,7 @@ namespace ConsoleApplication1
             StringBuilder builder = new StringBuilder();
             foreach (var registrationDescription in descriptions)
             {
-                builder.AppendLine(RegistrationDescription.Serialize());
+                builder.AppendLine(registrationDescription.Serialize());
             }
 
             var inputBlob = container.GetBlockBlobReference(INPUT_FILE_NAME);
@@ -221,35 +228,35 @@ namespace ConsoleApplication1
 
         static Uri GetOutputDirectoryUrl(CloudBlobContainer container)
         {
-            //Set the expiry time and permissions for the container.
-            //In this case no start time is specified, so the shared access signature becomes valid immediately.
+            // Set the expiry time and permissions for the container.
+            // In this case no start time is specified, so the shared access signature becomes valid immediately.
             SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
             {
                 SharedAccessExpiryTime = DateTime.UtcNow.AddHours(4),
                 Permissions = SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.List | SharedAccessBlobPermissions.Read
             };
 
-            //Generate the shared access signature on the container, setting the constraints directly on the signature.
+            // Generate the shared access signature on the container, setting the constraints directly on the signature.
             string sasContainerToken = container.GetSharedAccessSignature(sasConstraints);
 
-            //Return the URI string for the container, including the SAS token.
+            // Return the URI string for the container, including the SAS token.
             return new Uri(container.Uri + sasContainerToken);
         }
 
         static Uri GetInputFileUrl(CloudBlobContainer container, string filePath)
         {
-            //Set the expiry time and permissions for the container.
-            //In this case no start time is specified, so the shared access signature becomes valid immediately.
+            // Set the expiry time and permissions for the container.
+            // In this case no start time is specified, so the shared access signature becomes valid immediately.
             SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
             {
                 SharedAccessExpiryTime = DateTime.UtcNow.AddHours(4),
                 Permissions = SharedAccessBlobPermissions.Read
             };
 
-            //Generate the shared access signature on the container, setting the constraints directly on the signature.
+            // Generate the shared access signature on the container, setting the constraints directly on the signature.
             string sasToken = container.GetBlockBlobReference(filePath).GetSharedAccessSignature(sasConstraints);
 
-            //Return the URI string for the container, including the SAS token.
+            // Return the URI string for the container, including the SAS token.
             return new Uri(container.Uri + "/" + filePath + sasToken);
         }
 
@@ -261,23 +268,25 @@ namespace ConsoleApplication1
 }
 ```
 
-## <a name="export"></a>Export
+## <a name="export"></a>Exportieren
+
 Das Exportieren von Registrierungen ähnelt dem Importieren mit den folgenden Unterschieden:
 
 - Sie benötigen lediglich die Ausgabe-URL
 - Sie erstellen eine NotificationHubJob-Klasse vom Typ „ExportRegistrations“
 
 ### <a name="sample-code-snippet"></a>Beispielcodeausschnitt
+
 Hier ist ein Beispielcodeausschnitt zum Exportieren von Registrierungen in Java:
 
 ```java
-// submit an export job
+// Submit an export job
 NotificationHubJob job = new NotificationHubJob();
 job.setJobType(NotificationHubJobType.ExportRegistrations);
 job.setOutputContainerUri("container uri with SAS signature");
 job = hub.submitNotificationHubJob(job);
 
-// wait until the job is done
+// Wait until the job is done
 while(true){
     Thread.sleep(1000);
     job = hub.getNotificationHubJob(job.getJobId());
@@ -288,6 +297,7 @@ while(true){
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu Registrierungen finden Sie in den folgenden Artikeln:
 
 - [Registrierungsverwaltung](notification-hubs-push-notification-registration-management.md)

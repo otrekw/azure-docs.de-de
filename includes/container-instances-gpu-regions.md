@@ -2,20 +2,20 @@
 author: dlepow
 ms.service: container-instances
 ms.topic: include
-ms.date: 03/01/2019
+ms.date: 10/17/2019
 ms.author: danlep
-ms.openlocfilehash: 48d25427d68f9da4cfe3f25b155f81d801e30fa2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7f5b6780fd330489a893354143dc866bf416c8e8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178652"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75445811"
 ---
-### <a name="supported-regions"></a>Unterstützte Regionen
+### <a name="region-availability"></a>Regionale Verfügbarkeit
 
-* USA (Ost) 
-* USA, Westen 2 
-* USA Süd Mitte 
-* Europa, Westen 
-* Nordeuropa
-* Indien, Mitte 
+| Regions | OS | Verfügbare GPU-SKUs |
+| -------- | ---- | :-----------: |
+| „USA, Osten“, „Europa, Westen“, „USA, Westen 2“ | Linux | K80, P100, V100 |
+| Asien, Südosten | Linux | P100, V100|
+| Indien, Mitte | Linux | V100 |
+| Nordeuropa | Linux | K80 |

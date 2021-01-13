@@ -1,27 +1,33 @@
 ---
-title: Kopieren von Daten nach oder aus Azure Data Lake Storage Gen2 mithilfe von Data Factory | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mithilfe von Azure Data Factory Daten in oder aus Azure Data Lake Storage Gen2 kopieren.
+title: Kopieren und Transformieren von Daten in Azure Data Lake Storage Gen2
+description: Hier erfahren Sie, wie Sie mithilfe von Azure Data Factory Daten in oder aus Azure Data Lake Storage Gen2 kopieren und Daten in Azure Data Lake Storage Gen2 transformieren.
 services: data-factory
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2019
-ms.author: jingwang
-ms.openlocfilehash: 8f190f6b933c61072df9af954c8db01497e35e82
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.custom: seo-lt-2019
+ms.date: 10/28/2020
+ms.openlocfilehash: c0f7df8db79f549dfeca15e6411ae72cbe66d2bd
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010236"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346281"
 ---
-# <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory
+# <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Lake Storage Gen2 (ADLS Gen2) baut auf [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) auf und bietet eine Reihe von Funktionen für die Big Data-Analyse. So haben Sie eine Schnittstelle zu Ihren Daten sowohl über das Dateisystem als auch den Objektspeicher.
 
-In diesem Artikel wird beschrieben, wie Sie Daten in und aus Azure Data Lake Storage Gen2 kopieren. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
+In diesem Artikel wird beschrieben, wie Sie Daten mithilfe der Kopieraktivität in Azure Data Factory aus und in Azure Data Lake Storage Gen2 kopieren sowie Daten mithilfe von Datenfluss in Azure Data Lake Storage Gen2 transformieren. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
+
+>[!TIP]
+>Bei einem Data Lake- oder Data Warehouse-Migrationsszenario finden Sie weitere Informationen unter [Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake oder Data Warehouse zu Azure](data-migration-guidance-overview.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -33,16 +39,12 @@ Dieser Azure Data Lake Storage Gen2-Connector wird für die folgenden Aktivität
 - [GetMetadata-Aktivität](control-flow-get-metadata-activity.md)
 - [Delete-Aktivität](delete-activity.md)
 
-Mit diesem Connector können Sie insbesondere:
+Dieser Connector bietet Ihnen für die Kopieraktivität folgende Möglichkeiten:
 
-- Dateien durch Verwendung eines Kontoschlüssels, eines Dienstprinzipals oder verwalteter Identitäten für die Authentifizierung von Azure-Ressourcen kopieren.
-- Dateien im jeweiligen Zustand kopieren oder Dateien mit [unterstützten Dateiformaten und Komprimierungscodecs](supported-file-formats-and-compression-codecs.md) analysieren bzw. generieren.
-
->[!TIP]
->Wenn Sie den hierarchischen Namespace aktivieren, beachten Sie, dass derzeit keine Interoperabilität bei Vorgängen zwischen Blob- und Data Lake Storage Gen2-APIs besteht. Falls der Fehler „ErrorCode=FilesystemNotFound“ mit dem Meldungstext „Das angegebene Dateisystem ist nicht vorhanden“ auftritt, ist dies auf das angegebene Senkendateisystem zurückzuführen, das an anderer Stelle anstelle der Data Lake Storage Gen2-API über die Blob-API erstellt wurde. Geben Sie zum Beheben des Problems ein neues Dateisystem mit einem Namen an, der nicht als Name eines Blobcontainers vorhanden ist. Von Data Factory wird dieses Dateisystem automatisch während des Datenkopiervorgangs erstellt.
-
->[!NOTE]
->Wenn Sie die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** in den Firewalleinstellungen von Azure Storage aktivieren, schlägt die Verbindung zwischen der Azure Integration Runtime und Data Lake Storage Gen2 fehl und der Fehler „Verboten“ wird angezeigt. Die Fehlermeldung erscheint, weil Data Factory nicht als vertrauenswürdiger Microsoft-Dienst erkannt wird. Stellen Sie die Verbindung stattdessen über die selbstgehostete Integration Runtime her.
+- Kopieren von Daten aus/in Azure Data Lake Storage Gen2 durch Verwendung eines Kontoschlüssels, eines Dienstprinzipals oder verwalteter Identitäten für die Authentifizierung von Azure-Ressourcen.
+- Kopieren von Dateien im jeweiligen Zustand oder Analysieren bzw. Generieren von Dateien mit [unterstützten Dateiformaten und Komprimierungscodecs](supported-file-formats-and-compression-codecs.md).
+- [Beibehalten von Dateimetadaten beim Kopieren](#preserve-metadata-during-copy)
+- [Beibehalten von ACLs](#preserve-acls) beim Kopieren aus Azure Data Lake Storage Gen1/Gen2
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -62,7 +64,8 @@ Der Azure Data Lake Storage Gen2-Connector unterstützt die folgenden Authentifi
 - [Verwaltete Identitäten für Azure-Ressourcenauthentifizierung](#managed-identity)
 
 >[!NOTE]
->Wenn Sie mit PolyBase Daten in SQL Data Warehouse laden und Ihr Quell-Data Lake Storage Gen2 mit einem Virtual Network-Endpunkt konfiguriert ist, müssen Sie zur Authentifizierung eine verwaltete Identität wie für PolyBase erforderlich verwenden. Im Abschnitt [Verwaltete Identitäten für Azure-Ressourcenauthentifizierung](#managed-identity) sind weitere Konfigurationsvoraussetzungen aufgeführt.
+>- Wenn Sie die öffentliche Azure Integration Runtime-Instanz zum Herstellen einer Verbindung mit Data Lake Storage Gen2 verwenden möchten, indem Sie in der Azure Storage-Firewall die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktivieren, müssen Sie die [Authentifizierung per verwalteter Identität](#managed-identity) verwenden.
+>- Wenn Sie Daten mit PolyBase oder der COPY-Anweisung in Azure Synapse Analytics laden und Ihre Quell- oder Staginginstanz von Data Lake Storage Gen2 mit einem Azure Virtual Network-Endpunkt konfiguriert wurde, müssen Sie die Authentifizierung per verwalteter Identität – wie für Synapse erforderlich – verwenden. Im Abschnitt [Verwaltete Identitäten für Azure-Ressourcenauthentifizierung](#managed-identity) sind weitere Konfigurationsvoraussetzungen aufgeführt.
 
 ### <a name="account-key-authentication"></a>Kontoschlüsselauthentifizierung
 
@@ -110,16 +113,13 @@ Zum Verwenden der Dienstprinzipalauthentifizierung führen Sie die folgenden Sch
     - Anwendungsschlüssel
     - Mandanten-ID
 
-2. Erteilen Sie dem Dienstprinzipal geeignete Berechtigungen. Erfahren Sie unter [Zugriffssteuerungslisten für Dateien und Verzeichnisse](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories) mehr über Berechtigungen in Data Lake Storage Gen2.
+2. Erteilen Sie dem Dienstprinzipal geeignete Berechtigungen. Beispiele zur Funktionsweise von Berechtigungen in Data Lake Storage Gen2 finden Sie unter [Zugriffssteuerungslisten für Dateien und Verzeichnisse](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 
-    - **Als Quelle**: Weisen Sie im Storage-Explorer mindestens die Berechtigung **Ausführen** zu, indem Sie vom Quelldateisystem beginnen, sowie die Berechtigung **Lesen** für die Dateien, die kopiert werden sollen. Weisen Sie alternativ in der Zugriffssteuerung (IAM) mindestens die Rolle **Storage-Blobdatenleser** zu.
-    - **Als Senke**: Weisen Sie im Storage-Explorer mindestens die Berechtigung **Ausführen** zu, indem Sie vom Senkendateisystem beginnen, sowie die Berechtigung **Schreiben** für den Senkenordner. Weisen Sie in der Zugriffssteuerung (IAM) mindestens die Rolle **Mitwirkender an Storage-Blobdaten** zu.
+    - **Als Quelle**: Weisen Sie im Storage-Explorer mindestens die Berechtigung **Ausführen** für ALLE Upstreamordner und das Dateisystem sowie die Berechtigung **Lesen** für die zu kopierenden Dateien zu. Weisen Sie alternativ in der Zugriffssteuerung (IAM) mindestens die Rolle **Storage-Blobdatenleser** zu.
+    - **Als Senke**: Weisen Sie im Storage-Explorer mindestens die Berechtigung **Ausführen** für ALLE Upstreamordner und das Dateisystem sowie die Berechtigung **Schreiben** für den Senkenordner zu. Weisen Sie in der Zugriffssteuerung (IAM) mindestens die Rolle **Mitwirkender an Storage-Blobdaten** zu.
 
 >[!NOTE]
->Zum Auflisten von Ordnern ab der Kontoebene oder Testen der Verbindung müssen Sie die Berechtigung, die dem Dienstprinzipal für das Speicherkonto erteilt wird, **mit der Berechtigung „Leser von Speicherblobdaten“ in IAM festlegen**. Dies gilt, wenn Sie:
->- Das **Tool zum Kopieren von Daten** verwenden, um eine Kopierpipeline zu erstellen.
->- Die **Data Factory-Benutzeroberfläche** verwenden, um die Verbindung zu testen und während der Erstellung in Ordnern zu navigieren 
->Wenn Sie Bedenken haben, Berechtigungen auf Kontoebene zu vergeben, können Sie die Testverbindung während der Erstellung überspringen und einen übergeordneten Pfad mit Berechtigung erstellen, um dann von diesem Pfad aus zu suchen. Kopieraktivitäten funktionieren, solange dem Dienstprinzipal die erforderlichen Berechtigungen für die zu kopierenden Dateien erteilt wurden.
+>Wenn Sie die Data Factory-Benutzeroberfläche für die Erstellung verwenden und der Dienstprinzipal nicht mit der Rolle „Storage-Blobdatenleser/Mitwirkender an Storage-Blobdaten“ in IAM festgelegt ist, wählen Sie beim Testen der Verbindung oder beim Durchsuchen von/Navigieren in Ordnern die Option „Test connection to file path“ (Verbindung mit Dateipfad testen) bzw. „Browse from specified path“ (Von angegebenem Pfad suchen) aus. Geben Sie einen Pfad mit **Lese- und Ausführungsberechtigungen** an, um fortzufahren.
 
 Diese Eigenschaften werden im verknüpften Dienst unterstützt:
 
@@ -128,11 +128,16 @@ Diese Eigenschaften werden im verknüpften Dienst unterstützt:
 | type | Die „type“-Eigenschaft muss auf **AzureBlobFS** festgelegt sein. |Ja |
 | url | Endpunkt für Data Lake Storage Gen2 im Format `https://<accountname>.dfs.core.windows.net`. | Ja |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja |
-| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als `SecureString`, um es sicher in Data Factory zu speichern. Alternativ können Sie [auf ein in Azure Key Vault gespeichertes Geheimnis verweisen](store-credentials-in-key-vault.md). | Ja |
+| servicePrincipalCredentialType | Die Art von Anmeldeinformationen, die für die Authentifizierung beim Dienstprinzipal verwendet werden. Gültige Werte sind **ServicePrincipalKey** und **ServicePrincipalCert**. | Ja |
+| servicePrincipalCredential | Die Anmeldeinformationen für den Dienstprinzipal. <br/> Wenn Sie **ServicePrincipalKey** als Anmeldeinformationstyp verwenden, geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). <br/> Wenn Sie **ServicePrincipalCert** als Anmeldeinformationen verwenden,verweisen Sie auf ein Zertifikat in Azure Key Vault. | Ja |
+| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). <br/> Diese Eigenschaft wird weiterhin unverändert für `servicePrincipalId` + `servicePrincipalKey` unterstützt. Wenn ADF eine neue Dienstprinzipal-Zertifikatauthentifizierung hinzugefügt wird, ist das neue Modell für die Dienstprinzipalauthentifizierung `servicePrincipalId` + `servicePrincipalCredentialType` + `servicePrincipalCredential`. | Nein |
 | tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja |
+| azureCloudType | Geben Sie für die Dienstprinzipalauthentifizierung die Art der Azure-Cloudumgebung an, bei der Ihre Azure Active Directory-Anwendung registriert ist. <br/> Zulässige Werte sind **AzurePublic**, **AzureChina**, **AzureUsGovernment** und **AzureGermany**. Standardmäßig wird die Cloudumgebung der Data Factory verwendet. | Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn kein Wert angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
-**Beispiel:**
+**Beispiel: Verwenden der Dienstprinzipal-Schlüsselauthentifizierung**
+
+Sie können den Dienstprinzipalschlüssel auch in Azure Key Vault speichern.
 
 ```json
 {
@@ -142,7 +147,8 @@ Diese Eigenschaften werden im verknüpften Dienst unterstützt:
         "typeProperties": {
             "url": "https://<accountname>.dfs.core.windows.net", 
             "servicePrincipalId": "<service principal id>",
-            "servicePrincipalKey": {
+            "servicePrincipalCredentialType": "ServicePrincipalKey",
+            "servicePrincipalCredential": {
                 "type": "SecureString",
                 "value": "<service principal key>"
             },
@@ -156,31 +162,56 @@ Diese Eigenschaften werden im verknüpften Dienst unterstützt:
 }
 ```
 
-### <a name="managed-identity"></a>Verwaltete Identitäten für Azure-Ressourcenauthentifizierung
+**Beispiel: Verwenden der Dienstprinzipal-Zertifikatauthentifizierung**
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalCredentialType": "ServicePrincipalCert",
+            "servicePrincipalCredential": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<AKV reference>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<certificate name in AKV>" 
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a>Verwaltete Identitäten für Azure-Ressourcenauthentifizierung
 
 Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals können Sie diese verwaltete Identität direkt für die Data Lake Storage Gen2-Authentifizierung verwenden. Sie erlaubt dieser bestimmten Factory den Zugriff auf Ihren Data Lake Storage Gen2 sowie das Kopieren von Daten nach oder aus Data Lake Storage Gen2.
 
 Um verwaltete Identitäten für die Azure-Ressourcenauthentifizierung zu verwenden, gehen Sie folgendermaßen vor.
 
-1. [Rufen Sie die verwalteten Data Factory-Identitätsinformationen ab](data-factory-service-identity.md#retrieve-managed-identity), indem Sie den Wert von **Dienstidentitätsanwendungs-ID** kopieren, der zusammen mit der Factory generiert wurde.
+1. [Rufen Sie die Informationen zur verwalteten Data Factory-Identität ab](data-factory-service-identity.md#retrieve-managed-identity), indem Sie den Wert von **Objekt-ID der verwalteten Identität** kopieren, der zusammen mit Ihrer Factory generiert wurde.
 
-2. Erteilen Sie der verwalteten Entität geeignete Berechtigungen. Erfahren Sie unter [Zugriffssteuerungslisten für Dateien und Verzeichnisse](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories) mehr über Berechtigungen in Data Lake Storage Gen2.
+2. Erteilen Sie der verwalteten Entität geeignete Berechtigungen. Beispiele zur Funktionsweise von Berechtigungen in Data Lake Storage Gen2 finden Sie unter [Zugriffssteuerungslisten für Dateien und Verzeichnisse](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 
-    - **Als Quelle**: Weisen Sie im Storage-Explorer mindestens die Berechtigung **Ausführen** zu, indem Sie vom Quelldateisystem beginnen, sowie die Berechtigung **Lesen** für die Dateien, die kopiert werden sollen. Weisen Sie alternativ in der Zugriffssteuerung (IAM) mindestens die Rolle **Storage-Blobdatenleser** zu.
-    - **Als Senke**: Weisen Sie im Storage-Explorer mindestens die Berechtigung **Ausführen** zu, indem Sie vom Senkendateisystem beginnen, sowie die Berechtigung **Schreiben** für den Senkenordner. Weisen Sie in der Zugriffssteuerung (IAM) mindestens die Rolle **Mitwirkender an Storage-Blobdaten** zu.
+    - **Als Quelle**: Weisen Sie im Storage-Explorer mindestens die Berechtigung **Ausführen** für ALLE Upstreamordner und das Dateisystem sowie die Berechtigung **Lesen** für die zu kopierenden Dateien zu. Weisen Sie alternativ in der Zugriffssteuerung (IAM) mindestens die Rolle **Storage-Blobdatenleser** zu.
+    - **Als Senke**: Weisen Sie im Storage-Explorer mindestens die Berechtigung **Ausführen** für ALLE Upstreamordner und das Dateisystem sowie die Berechtigung **Schreiben** für den Senkenordner zu. Weisen Sie in der Zugriffssteuerung (IAM) mindestens die Rolle **Mitwirkender an Storage-Blobdaten** zu.
 
 >[!NOTE]
->Zum Auflisten von Ordnern ab der Kontoebene oder Testen der Verbindung müssen Sie die Berechtigung, die der verwalteten Identität für das Speicherkonto erteilt wird, **mit der Berechtigung „Leser von Speicherblobdaten“ in IAM festlegen**. Dies gilt, wenn Sie:
->- Das **Tool zum Kopieren von Daten** verwenden, um eine Kopierpipeline zu erstellen.
->- Die **Data Factory-Benutzeroberfläche** verwenden, um die Verbindung zu testen und während der Erstellung in Ordnern zu navigieren 
->Wenn Sie Bedenken haben, Berechtigungen auf Kontoebene zu vergeben, können Sie die Testverbindung während der Erstellung überspringen und einen übergeordneten Pfad mit Berechtigung erstellen, um dann von diesem Pfad aus zu suchen. Kopieraktivitäten funktionieren, solange dem Dienstprinzipal die erforderlichen Berechtigungen für die zu kopierenden Dateien erteilt wurden.
+>Wenn Sie die Data Factory-Benutzeroberfläche für die Erstellung verwenden und die verwaltete Identität nicht mit der Rolle „Storage-Blobdatenleser/Mitwirkender an Storage-Blobdaten“ in IAM festgelegt ist, wählen Sie beim Testen der Verbindung oder beim Durchsuchen von/Navigieren in Ordnern die Option „Test connection to file path“ (Verbindung mit Dateipfad testen) bzw. „Browse from specified path“ (Von angegebenem Pfad suchen) aus. Geben Sie einen Pfad mit **Lese- und Ausführungsberechtigungen** an, um fortzufahren.
 
 >[!IMPORTANT]
->Wenn Sie mit PolyBase Daten aus Data Lake Storage Gen2 in SQL Data Warehouse laden und eine verwaltete Identität zur Authentifizierung bei Data Lake Storage Gen2 verwenden, müssen Sie auch die Schritte 1 und 2 im [zugehörigen Leitfaden](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) ausführen. Registrieren Sie in Schritt 1 zuerst Ihren SQL-Datenbank-Server bei Azure Active Directory (Azure AD). Weisen Sie dann in Schritt 2 Ihrem SQL-Datenbank-Server die Rolle „Mitwirkender an Storage-Blobdaten“ zu. Alles Weitere erledigt Data Factory. Wenn Ihr Data Lake Storage Gen2 mit einem Azure Virtual Network-Endpunkt konfiguriert ist und Sie mit PolyBase Daten daraus laden, müssen Sie zur Authentifizierung eine verwaltete Identität wie für PolyBase erforderlich verwenden.
+>Wenn Sie Daten mithilfe von PolyBase oder der COPY-Anweisung aus Data Lake Storage Gen2 in Azure Synapse Analytics laden und dazu die Authentifizierung per verwalteter Identität für Data Lake Storage Gen2 verwenden, müssen Sie unbedingt auch die Schritte 1 bis 3 in [dieser Anleitung](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage) befolgen. Mit diesen Schritten wird der Server bei Azure AD registriert, und Ihrem Server wird die Rolle „Mitwirkender an Storage-Blobdaten“ zugewiesen. Data Factory kümmert sich um den Rest. Wenn Sie Blob Storage mit einem Azure Virtual Network-Endpunkt konfigurieren, muss außerdem im Einstellungsmenü **Firewalls und virtuelle Netzwerke** des Azure Storage-Kontos die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktiviert sein (wie für Synapse erforderlich).
 
 Diese Eigenschaften werden im verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **AzureBlobFS** festgelegt sein. |Ja |
 | url | Endpunkt für Data Lake Storage Gen2 im Format `https://<accountname>.dfs.core.windows.net`. | Ja |
@@ -208,22 +239,16 @@ Diese Eigenschaften werden im verknüpften Dienst unterstützt:
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md).
 
-- Informationen zum **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie im Abschnitt [Dataset für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat](#format-based-dataset).
-- Informationen zu anderen Formaten wie **ORC** finden Sie im Abschnitt [Dataset in anderen Formaten](#other-format-dataset).
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a> Dataset für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat
+Folgende Eigenschaften werden für Data Lake Storage Gen2 unter `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
-Informationen zum Kopieren von Daten in das und aus dem **Parquet-Format, Textformat mit Trennzeichen, Avro-Format oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Datasets und unterstützten Einstellungen. Folgende Eigenschaften werden für Data Lake Storage Gen2 unter `location`-Einstellungen in formatbasierten Datasets unterstützt:
-
-| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft   | Beschreibung                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die „type“-Eigenschaft unter `location` im Dataset muss auf **AzureBlobFSLocation** festgelegt werden. | Ja      |
 | fileSystem | Der Name des Data Lake Storage Gen2-Dateisystems.                              | Nein       |
 | folderPath | Der Pfad zu einem Ordner im angegebenen Dateisystem. Wenn Sie einen Platzhalter verwenden möchten, um Ordner zu filtern, überspringen Sie diese Einstellung, und geben Sie entsprechende Aktivitätsquelleneinstellungen an. | Nein       |
 | fileName   | Der Dateiname im angegebenen „fileSystem“ und „folderPath“. Wenn Sie einen Platzhalter verwenden möchten, um Dateien zu filtern, überspringen Sie diese Einstellung, und geben Sie ihn in den entsprechenden Aktivitätsquelleneinstellungen an. | Nein       |
-
-> [!NOTE]
-> Das Dataset vom Typ **AzureBlobFSFile** mit dem im nächsten Abschnitt beschriebenen Parquet-Format/Textformat wird aus Gründen der Abwärtskompatibilität weiterhin unverändert für Kopieren-/Suchen-/GetMetadata-Aktivitäten unterstützt. Dies funktioniert jedoch nicht mit der Funktion zur Zuordnung von Datenflüssen. Wir empfehlen, dass Sie in Zukunft dieses neue Modell verwenden. Die Benutzeroberfläche für die Erstellung von Data Factory generiert diese neuen Typen.
 
 **Beispiel:**
 
@@ -252,19 +277,291 @@ Informationen zum Kopieren von Daten in das und aus dem **Parquet-Format, Textfo
 }
 ```
 
-### <a name="other-format-dataset"></a>Dataset in anderen Formaten
+## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 
-Für das Kopieren von Daten in und aus Data Lake Storage Gen2 im **ORC-Format** werden folgende Eigenschaften unterstützt:
+Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie unter [Konfigurationen für die Kopieraktivität](copy-activity-overview.md#configuration) und [Pipelines und Aktivitäten](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Data Lake Storage Gen2-Quelle und -Senke unterstützt werden.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+### <a name="azure-data-lake-storage-gen2-as-a-source-type"></a>Azure Data Lake Storage Gen2 als Quelltyp
+
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+
+Sie haben mehrere Optionen zum Kopieren von Daten aus ADLS Gen2:
+
+- Kopieren Sie aus dem im Dataset angegebenen Pfad.
+- Den Platzhalterfilter für Ordnerpfad oder Dateiname finden Sie unter `wildcardFolderPath` und `wildcardFileName`.
+- Kopieren Sie die in einer bestimmten Textdatei definierten Dateien als Dateigruppe (siehe `fileListPath`).
+
+Folgende Eigenschaften werden für Data Lake Storage Gen2 unter `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
+
+| Eigenschaft                 | Beschreibung                                                  | Erforderlich                                      |
+| ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
+| type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **AzureBlobFSReadSettings** festgelegt werden. | Ja                                           |
+| **_Suchen nach den zu kopierenden Dateien:_* |  |  |
+| OPTION 1: statischer Pfad<br> | Kopieren Sie aus dem im Dataset angegebenen Dateisystem oder Ordner/Dateipfad. Wenn Sie alle Dateien aus einem Dateisystem/Ordner kopieren möchten, geben Sie außerdem für `wildcardFileName` den Wert `_` an. |  |
+| OPTION 2: Platzhalter<br>– wildcardFolderPath | Der in Datasets zum Filtern von Quellordnern konfigurierte Ordnerpfad mit Platzhalterzeichen im angegebenen Dateisystem. <br>Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält. <br>Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Nein                                            |
+| OPTION 2: Platzhalter<br>– wildcardFileName | Der Dateiname mit Platzhalterzeichen im angegebenen Dateisystem und „folderPath/wildcardFolderPath“ zum Filtern von Quelldateien. <br>Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält.  Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Ja |
+| OPTION 3: eine Liste von Dateien<br>– fileListPath | Gibt an, dass eine bestimmte Dateigruppe kopiert werden soll. Verweisen Sie auf eine Textdatei, die eine Liste der zu kopierenden Dateien enthält, und zwar eine Datei pro Zeile. Dies ist der relative Pfad zu dem im Dataset konfigurierten Pfad.<br/>Wenn Sie diese Option verwenden, dürfen Sie keinen Dateinamen im Dataset angeben. Weitere Beispiele finden Sie unter [Beispiele für Dateilisten](#file-list-examples). |Nein |
+| ***Zusätzliche Einstellungen:** |  | |
+| recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn „recursive“ auf „true“ festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, wird ein leerer Ordner oder Unterordner nicht in die Senke kopiert und dort auch nicht erstellt. <br>Zulässige Werte sind *true** (Standard) und **false**.<br>Diese Eigenschaft gilt nicht, wenn Sie `fileListPath` konfigurieren. |Nein |
+| deleteFilesAfterCompletion | Gibt an, ob die Binärdateien nach dem erfolgreichen Verschieben in den Zielspeicher aus dem Quellspeicher gelöscht werden. Die Dateien werden einzeln gelöscht, sodass Sie bei einem Fehler der Kopieraktivität feststellen werden, dass einige Dateien bereits ins Ziel kopiert und aus der Quelle gelöscht wurden, wohingegen sich andere weiter im Quellspeicher befinden. <br/>Diese Eigenschaft ist nur im Szenario zum Kopieren von Binärdateien gültig. Standardwert: FALSE. |Nein |
+| modifiedDatetimeStart    | Dateifilterung basierend auf dem Attribut: Letzte Änderung. <br>Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br> Die Eigenschaften können NULL sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewandt wird.  Wenn `modifiedDatetimeStart` den datetime-Wert aufweist, aber `modifiedDatetimeEnd` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist.  Wenn `modifiedDatetimeEnd` den datetime-Wert aufweist, aber `modifiedDatetimeStart` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.<br/>Diese Eigenschaft gilt nicht, wenn Sie `fileListPath` konfigurieren. | Nein                                            |
+| modifiedDatetimeEnd      | Wie oben.                                               | Nein                                            |
+| enablePartitionDiscovery | Geben Sie bei partitionierten Dateien an, ob die Partitionen anhand des Dateipfads analysiert und als zusätzliche Quellspalten hinzugefügt werden sollen.<br/>Zulässige Werte sind **false** (Standard) und **true**. | Nein                                            |
+| partitionRootPath | Wenn die Partitionsermittlung aktiviert ist, geben Sie den absoluten Stammpfad an, um partitionierte Ordner als Datenspalten zu lesen.<br/><br/>Ohne Angabe gilt standardmäßig Folgendes:<br/>- Wenn Sie den Dateipfad im Dataset oder die Liste der Dateien in der Quelle verwenden, ist der Partitionsstammpfad der im Dataset konfigurierte Pfad.<br/>Wenn Sie einen Platzhalterordnerfilter verwenden, ist der Stammpfad der Partition der Unterpfad vor dem ersten Platzhalter.<br/><br/>Angenommen, Sie konfigurieren den Pfad im Dataset als „root/folder/year=2020/month=08/day=27“:<br/>- Wenn Sie den Stammpfad der Partition als „root/folder/year=2020“ angeben, generiert die Kopieraktivität zusätzlich zu den Spalten in den Dateien die beiden weiteren Spalten `month` und `day` mit den Werten „08“ bzw. „27“.<br/>- Wenn kein Stammpfad für die Partition angegeben ist, wird keine zusätzliche Spalte generiert. | Nein                                            |
+| maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig mit einem Speicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein                                            |
+
+**Beispiel:**
+
+```json
+"activities":[
+    {
+        "name": "CopyFromADLSGen2",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<Delimited text input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "DelimitedTextSource",
+                "formatSettings":{
+                    "type": "DelimitedTextReadSettings",
+                    "skipLineCount": 10
+                },
+                "storeSettings":{
+                    "type": "AzureBlobFSReadSettings",
+                    "recursive": true,
+                    "wildcardFolderPath": "myfolder*A",
+                    "wildcardFileName": "*.csv"
+                }
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+### <a name="azure-data-lake-storage-gen2-as-a-sink-type"></a>Azure Data Lake Storage Gen2 als Senkentyp
+
+[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
+
+Folgende Eigenschaften werden für Data Lake Storage Gen2 unter `storeSettings`-Einstellungen in formatbasierten Kopiersenken unterstützt:
+
+| Eigenschaft                 | Beschreibung                                                  | Erforderlich |
+| ------------------------ | ------------------------------------------------------------ | -------- |
+| type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **AzureBlobFSWriteSettings** festgelegt werden. | Ja      |
+| copyBehavior             | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner ist mit dem relativen Pfad der Zieldatei zum Zielordner identisch.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Dateiname angegeben wurde, entspricht der zusammengeführte Dateiname dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein       |
+| blockSizeInMB | Geben Sie die Blockgröße, die zum Schreiben von Daten in ADLS Gen2 verwendet wird, in MB an. Informieren Sie sich ausführlicher über [Blockblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Der zulässige Wert liegt **zwischen 4 und 100 MB**. <br/>Standardmäßig bestimmt ADF automatisch die Blockgröße, basierend auf dem Quellspeichertyp und den Daten. Bei einer nicht binären Kopie in ADLS Gen2 beträgt die Standardblockgröße 100 MB, damit sie in maximal 4,95 TB Daten passt. Dies ist möglicherweise nicht optimal, wenn Ihre Daten nicht groß sind – insbesondere, wenn Sie eine selbstgehostete Integration Runtime bei einem unzureichenden Netzwerk verwenden, was zu einem Timeout bei Vorgang oder einem Leistungsproblem führt. Sie können eine Blockgröße explizit angeben und gleichzeitig sicherstellen, dass „blockSizeInMB*50000“ groß genug zum Speichern der Daten ist. Andernfalls tritt bei Ausführung der Kopieraktivität ein Fehler auf. | Nein |
+| maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig mit dem Datenspeicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein       |
+
+**Beispiel:**
+
+```json
+"activities":[
+    {
+        "name": "CopyToADLSGen2",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Parquet output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "ParquetSink",
+                "storeSettings":{
+                    "type": "AzureBlobFSWriteSettings",
+                    "copyBehavior": "PreserveHierarchy"
+                }
+            }
+        }
+    }
+]
+```
+
+### <a name="folder-and-file-filter-examples"></a>Beispiele für Ordner- und Dateifilter
+
+Dieser Abschnitt beschreibt das sich ergebende Verhalten für den Ordnerpfad und den Dateinamen mit Platzhalterfiltern.
+
+| folderPath | fileName | recursive | Quellordnerstruktur und Filterergebnis (Dateien mit **Fettformatierung** werden abgerufen.)|
+|:--- |:--- |:--- |:--- |
+| `Folder*` | (Leer, Standardwert verwenden) | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5.csv<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
+| `Folder*` | (Leer, Standardwert verwenden) | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei5.csv**<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
+| `Folder*` | `*.csv` | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5.csv<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
+| `Folder*` | `*.csv` | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei5.csv**<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
+
+### <a name="file-list-examples"></a>Beispiele für Dateilisten
+
+In diesem Abschnitt wird das resultierende Verhalten beschrieben, wenn der Dateilistenpfad in der Quelle der Kopieraktivität verwendet wird.
+
+Angenommen, Sie haben die folgende Quellordnerstruktur und möchten die Dateien kopieren, deren Namen fett formatiert sind:
+
+| Beispielquellstruktur                                      | Inhalt in „FileListToCopy.txt“                             | ADF-Konfiguration                                            |
+| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
+| filesystem<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadaten<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | Datei1.csv<br>Unterordner1/Datei3.csv<br>Unterordner1/Datei5.csv | **Im Dataset:**<br>– Dateisystem: `filesystem`<br>– Ordnerpfad: `FolderA`<br><br>**In der Quelle der Kopieraktivität:**<br>– Dateilistenpfad: `filesystem/Metadata/FileListToCopy.txt` <br><br>Der Dateilistenpfad verweist auf eine Textdatei im selben Datenspeicher, der eine Liste der zu kopierenden Dateien enthält, und zwar eine Datei pro Zeile. Diese enthält den relativen Pfad zu dem im Dataset konfigurierten Pfad. |
+
+
+### <a name="some-recursive-and-copybehavior-examples"></a>Beispiele für „recursive“ und „copyBehavior“
+
+Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für verschiedene Kombinationen von „recursive“- und „copyBehavior“-Werten.
+
+| recursive | copyBehavior | Struktur des Quellordners | Resultierendes Ziel |
+|:--- |:--- |:--- |:--- |
+| true |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5 | Der Zielordner „Ordner1“ wird mit der gleichen Struktur erstellt wie die Quelle:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5 |
+| true |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5 | Der Zielordner „Ordner1“ wird mit der folgenden Struktur erstellt: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei5 |
+| true |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5 | Der Zielordner „Ordner1“ wird mit der folgenden Struktur erstellt: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Die Inhalte von Datei1 + Datei2 + Datei3 + Datei4 + Datei5 werden in einer Datei mit einem automatisch generierten Dateinamen zusammengeführt. |
+| false |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5 | Der Zielordner „Ordner1“ wird mit der folgenden Struktur erstellt: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/><br/>Unterordner1 mit Datei3, Datei4 und Datei5 wird nicht übernommen. |
+| false |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5 | Der Zielordner „Ordner1“ wird mit der folgenden Struktur erstellt: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei2<br/><br/>Unterordner1 mit Datei3, Datei4 und Datei5 wird nicht übernommen. |
+| false |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5 | Der Zielordner „Ordner1“ wird mit der folgenden Struktur erstellt: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Die Inhalte von Datei1 + Datei2 werden in einer Datei mit einem automatisch generierten Dateinamen zusammengeführt. Automatisch generierter Name für Datei1<br/><br/>Unterordner1 mit Datei3, Datei4 und Datei5 wird nicht übernommen. |
+
+## <a name="preserve-metadata-during-copy"></a>Beibehalten von Metadaten beim Kopieren
+
+Beim Kopieren von Dateien von Amazon S3/Azure Blob/Azure Data Lake Storage Gen2 nach Azure Data Lake Storage Gen2/Azure Blob können Sie festlegen, dass die Dateimetadaten zusätzlich zu den Daten beibehalten werden sollen. Weitere Informationen finden Sie unter [Beibehalten von Metadaten](copy-activity-preserve-metadata.md#preserve-metadata).
+
+## <a name="preserve-acls-from-data-lake-storage-gen1gen2"></a><a name="preserve-acls"></a> Beibehalten von Zugriffssteuerungslisten aus Data Lake Storage Gen1/Gen2
+
+Beim Kopieren von Dateien aus Azure Data Lake Storage Gen1/Gen2 in Gen2 können Sie die Option wählen, bei der die POSIX-Zugriffssteuerungslisten (Access Control Lists, ACLs) zusammen mit den Daten beibehalten werden. Weitere Informationen finden Sie unter [Beibehalten von ACLs aus Data Lake Storage Gen1/Gen2 in Gen2](copy-activity-preserve-metadata.md#preserve-acls).
+
+>[!TIP]
+>Allgemeine Informationen zum Kopieren von Daten von Azure Data Lake Storage Gen1 in Gen2 sowie eine exemplarische Vorgehensweise und bewährte Methoden finden Sie unter [Kopieren von Daten aus Azure Data Lake Storage Gen1 in Gen2 mit Azure Data Factory](load-azure-data-lake-storage-gen2-from-gen1.md).
+
+## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
+
+Wenn Sie Daten in Zuordnungsdatenflüsse transformieren, können Sie Dateien aus Azure Data Lake Storage Gen2 in den folgenden Formaten lesen und schreiben:
+* [Avro](format-avro.md#mapping-data-flow-properties)
+* [Common Data Model (Vorschau)](format-common-data-model.md#mapping-data-flow-properties)
+* [Text mit Trennzeichen](format-delimited-text.md#mapping-data-flow-properties)
+* [Delta](format-delta.md#mapping-data-flow-properties)
+* [Excel](format-excel.md#mapping-data-flow-properties)
+* [JSON](format-json.md#mapping-data-flow-properties)
+* [Parquet](format-parquet.md#mapping-data-flow-properties)
+
+Formatspezifische Einstellungen finden Sie in der Dokumentation für das jeweilige Format. Weitere Informationen finden Sie unter [Quelltransformation in einem Zuordnungsdatenfluss](data-flow-source.md) und [Senkentransformation in einem Zuordnungsdatenfluss](data-flow-sink.md).
+
+### <a name="source-transformation"></a>Quellentransformation
+
+Bei der Quellentransformation können Sie Daten in Azure Data Lake Storage Gen2 aus einem Container, einem Ordner oder einer einzelnen Datei auslesen. Über die Registerkarte **Quellenoptionen** können Sie verwalten, wie die Dateien gelesen werden. 
+
+![Quelloptionen](media/data-flow/sourceOptions1.png "Quelloptionen")
+
+**Platzhalterpfad**: Mithilfe eines Platzhaltermusters wird ADF angewiesen, die einzelnen übereinstimmenden Ordner und Dateien in einer einzigen Quelltransformation zu durchlaufen. Dies ist eine effektive Methode zur Verarbeitung von mehreren Dateien in einem einzigen Datenfluss. Mit dem Pluszeichen (+), das angezeigt wird, wenn Sie mit dem Cursor auf Ihr vorhandenes Platzhaltermuster zeigen, können Sie weitere Platzhaltermuster hinzufügen.
+
+Wählen Sie in Ihrem Quellcontainer eine Reihe von Dateien aus, die einem Muster entsprechen. Nur der Container kann im Dataset angegeben werden. Daher muss Ihr Platzhalterpfad auch den Ordnerpfad des Stammordners enthalten.
+
+Beispiele für Platzhalter:
+
+* ```*```: Stellt eine beliebige Zeichenfolge dar
+* ```**```: Stellt rekursive Verzeichnisschachtelung dar
+* ```?```: Ersetzt ein Zeichen
+* ```[]```: Stimmt mit einem oder mehreren Zeichen in den Klammern überein
+
+* ```/data/sales/**/*.csv```: Ruft alle CSV-Dateien unter „/data/sales“ ab
+* ```/data/sales/20??/**/```: Ruft alle Dateien aus dem 20. Jahrhundert ab
+* ```/data/sales/*/*/*.csv```: Ruft CSV-Dateien auf zwei Ebenen unter „/data/sales“ ab
+* ```/data/sales/2004/*/12/[XY]1?.csv```: Ruft alle CSV-Dateien aus Dezember 2004 ab, die mit X oder Y und einer zweistelligen Zahl als Präfix beginnen
+
+**Partitionsstammpfad**: Wenn Ihre Dateiquelle partitionierte Ordner mit dem Format ```key=value``` (z.B. „Jahr=2019“) enthält, können Sie die oberste Ebene dieser Ordnerstruktur einem Spaltennamen in Ihrem Datenfluss-Datenstrom zuweisen.
+
+Legen Sie zunächst einen Platzhalter fest, um darin alle Pfade, die die partitionierten Ordner sind, sowie die zu lesenden Blattdateien einzuschließen.
+
+![Einstellungen für die Partitionsquelldatei](media/data-flow/partfile2.png "Einstellung der Partitionsdatei")
+
+Verwenden Sie die Einstellung „Partitionsstammpfad“, um zu definieren, was die oberste Ebene der Ordnerstruktur ist. Wenn Sie die Inhalte Ihrer Daten über die Datenvorschau anzeigen, sehen Sie, dass ADF die aufgelösten Partitionen hinzufügen wird, die auf den einzelnen Ordnerebenen gefunden werden.
+
+![Partitionsstammpfad](media/data-flow/partfile1.png "Vorschau des Partitionsstammpfads")
+
+**Liste der Dateien**: Dies ist eine Dateigruppe. Erstellen Sie eine Textdatei mit einer Liste der relativen Pfade der zu verarbeitenden Dateien. Verweisen Sie auf diese Textdatei.
+
+**Spalte für die Speicherung im Dateinamen**: Speichern Sie den Namen der Quelldatei in einer Spalte in den Daten. Geben Sie hier einen neuen Spaltennamen ein, um die Zeichenfolge für den Dateinamen zu speichern.
+
+**Nach der Fertigstellung**: Wählen Sie aus, ob Sie nach dem Ausführen des Datenflusses nichts mit der Quelldatei anstellen, die Quelldatei löschen oder die Quelldateien verschieben möchten. Die Pfade für das Verschieben sind relative Pfade.
+
+Um Quelldateien an einen anderen Speicherort nach der Verarbeitung zu verschieben, wählen Sie zuerst für den Dateivorgang die Option „Verschieben“ aus. Legen Sie dann das Quellverzeichnis („from“/„aus“) fest. Wenn Sie keine Platzhalter für Ihren Pfad verwenden, entspricht die Einstellung „from“ dem Quellordner.
+
+Wenn Sie über einen Quellpfad mit Platzhalter verfügen, sieht Ihre Syntax ähnlich wie hier aus:
+
+```/data/sales/20??/**/*.csv```
+
+Geben Sie „from“ beispielsweise wie folgt an:
+
+```/data/sales```
+
+Und „to“ können Sie wie folgt angeben:
+
+```/backup/priorSales```
+
+In diesem Fall werden alle Dateien, die aus „/Data/Sales“ erstellt wurden, in „/Backup/priorSales“ verschoben.
+
+> [!NOTE]
+> Die Dateivorgänge werden nur ausgeführt, wenn der Datenfluss anhand der Aktivität zum Ausführen des Datenflusses in einer Pipeline über eine Pipelineausführung ausgeführt wird (Debuggen der Pipeline oder Ausführung). Dateivorgänge werden *nicht* im Datenfluss-Debugmodus ausgeführt.
+
+**Nach der letzten Änderung filtern**: Sie können einen Datumsbereich angeben, um die zu verarbeitenden Dateien nach der letzten Änderung zu filtern. Alle Zeitangaben sind in UTC. 
+
+### <a name="sink-properties"></a>Senkeneigenschaften
+
+In der Senkentransformation können Sie in Azure Data Lake Storage Gen2 in einen Container oder Ordner schreiben. Über die Registerkarte **Einstellungen** können Sie verwalten, wie die Dateien geschrieben werden.
+
+![Senkenoptionen](media/data-flow/file-sink-settings.png "Senkenoptionen")
+
+**Ordner löschen:** Bestimmt, ob der Zielordner vor dem Schreiben der Daten gelöscht wird.
+
+**Dateinamenoption:** Bestimmt, wie die Zieldateien im Zielordner benannt werden. Es gibt folgende Dateinamenoptionen:
+   * **Standard:** Lassen Sie zu, dass Spark Dateien basierend auf den PART-Standards benennt.
+   * **Muster:** Geben Sie ein Muster ein, das Ihre Ausgabedateien pro Partition aufführt. Zum Beispiel erstellt **loans[n].csv** die Dateien „loans1.csv“, „loans2.csv“ usw.
+   * **Pro Partition:** Geben Sie einen Dateinamen pro Partition ein.
+   * **Wie Daten in Spalte:** Legen Sie die Ausgabedatei auf den Wert einer Spalte fest. Der Pfad ist relativ zum Datasetcontainer und nicht zum Zielordner. Wenn Ihr Dataset einen Ordnerpfad enthält, wird er überschrieben.
+   * **Ausgabe in eine einzelne Datei:** Mit dieser Option werden die partitionierten Ausgabedateien in einer einzelnen Datei kombiniert. Der Pfad ist relativ zum Datasetordner. Bedenken Sie, dass der Zusammenführungsvorgang je nach Knotengröße zu Fehlern führen kann. Diese Option wird für große Datasets nicht empfohlen.
+
+**Alle in Anführungszeichen:** Bestimmt, ob alle Werte in Anführungszeichen eingeschlossen werden sollen.
+
+## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
+
+Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
+
+## <a name="getmetadata-activity-properties"></a>Eigenschaften der GetMetadata-Aktivität
+
+Ausführliche Informationen zu den Eigenschaften finden Sie unter [GetMetadata-Aktivität](control-flow-get-metadata-activity.md). 
+
+## <a name="delete-activity-properties"></a>Eigenschaften der Delete-Aktivität
+
+Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivität](delete-activity.md).
+
+## <a name="legacy-models"></a>Legacy-Modelle
+
+>[!NOTE]
+>Die folgenden Modelle werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das in den obigen Abschnitten erwähnte neue Modell zu verwenden, da das neue Modell nun von der ADF-Benutzeroberfläche für die Erstellung generiert wird.
+
+### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
+
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft des Datasets muss auf **AzureBlobFSFile** festgelegt sein. |Ja |
 | folderPath | Pfad zum Ordner in Data Lake Storage Gen2. Wenn keine Angabe vorhanden ist, wird auf das Stammverzeichnis verwiesen. <br/><br/>Der Platzhalterfilter wird unterstützt. Folgende Platzhalter sind zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Ordnername einen Platzhalter oder dieses Escapezeichen enthält. <br/><br/>Beispiele: „Dateisystem/Ordner/“. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). |Nein |
 | fileName | Name oder Platzhalterfilter für die Dateien unter dem angegebenen Wert für „folderPath“. Wenn Sie für diese Eigenschaft keinen Wert angeben, verweist das Dataset auf alle Dateien im Ordner. <br/><br/>Für Filter sind die Platzhalter `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen) zulässig.<br/>- Beispiel 1: `"fileName": "*.csv"`<br/>- Beispiel 2: `"fileName": "???20180427.txt"`<br/>Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Dateiname einen Platzhalter oder dieses Escapezeichen enthält.<br/><br/>Wenn „fileName“ nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben sind, generiert die Kopieraktivität den Dateinamen automatisch mit dem folgenden Muster: „*Data.[GUID der Aktivitätsausführungs-ID].[GUID, sofern „FlattenHierarchy“].[Format, sofern konfiguriert].[Komprimierung, sofern konfiguriert]* “, z.B. „Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz“. Wenn Sie Daten aus einer Quelle im Tabellenformat kopieren und dabei anstelle einer Abfrage den Tabellennamen verwenden, lautet das Namensmuster „ *[Tabellenname].[Format].[Komprimierung, sofern konfiguriert]* “, z.B. „MyTable.csv“. |Nein |
 | modifiedDatetimeStart | Dateifilterung basierend auf dem Attribut „Letzte Änderung“. Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br/><br/> Die generelle Leistung der Datenverschiebung wird beeinträchtigt, wenn Sie diese Einstellung aktivieren und eine Dateifilterung für eine große Zahl von Dateien vornehmen möchten. <br/><br/> Die Eigenschaften können NULL sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewandt wird. Wenn `modifiedDatetimeStart` einen datetime-Wert aufweist, aber `modifiedDatetimeEnd` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist. Wenn `modifiedDatetimeEnd` einen datetime-Wert aufweist, aber `modifiedDatetimeStart` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.| Nein |
 | modifiedDatetimeEnd | Dateifilterung basierend auf dem Attribut „Letzte Änderung“. Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br/><br/> Die generelle Leistung der Datenverschiebung wird beeinträchtigt, wenn Sie diese Einstellung aktivieren und eine Dateifilterung für eine große Zahl von Dateien vornehmen möchten. <br/><br/> Die Eigenschaften können NULL sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewandt wird. Wenn `modifiedDatetimeStart` einen datetime-Wert aufweist, aber `modifiedDatetimeEnd` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist. Wenn `modifiedDatetimeEnd` einen datetime-Wert aufweist, aber `modifiedDatetimeStart` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.| Nein |
-| format | Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), überspringen Sie den Formatabschnitt in den Definitionen der Eingabe- und Ausgabedatasets.<br/><br/>Für das Analysieren oder Generieren von Dateien mit einem bestimmten Format werden die folgenden Dateiformattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Sie müssen die **type**-Eigenschaft unter **format** auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](supported-file-formats-and-compression-codecs.md#text-format), [JSON-Format](supported-file-formats-and-compression-codecs.md#json-format), [Avro-Format](supported-file-formats-and-compression-codecs.md#avro-format), [ORC-Format](supported-file-formats-and-compression-codecs.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs.md#parquet-format). |Nein (nur für Szenarien mit Binärkopien) |
-| compression | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Unterstützte Typen sind **GZip**, **Deflate**, **BZIP2** und **ZipDeflate**.<br/>Unterstützte Grade sind **Optimal** und **Schnellste**. |Nein |
+| format | Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), überspringen Sie den Formatabschnitt in den Definitionen der Eingabe- und Ausgabedatasets.<br/><br/>Für das Analysieren oder Generieren von Dateien mit einem bestimmten Format werden die folgenden Dateiformattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Sie müssen die **type**-Eigenschaft unter **format** auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON-Format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro-Format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [ORC-Format](supported-file-formats-and-compression-codecs-legacy.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Nein (nur für Szenarien mit Binärkopien) |
+| compression | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Unterstützte Typen sind **GZip**, **Deflate**, **BZIP2** und **ZipDeflate**.<br/>Unterstützte Grade sind **Optimal** und **Schnellste**. |Nein |
 
 >[!TIP]
 >Wenn Sie alle Dateien eines Ordners kopieren möchten, geben Sie nur **folderPath** an.<br>Wenn Sie eine einzelne Datei mit einem bestimmten Namen kopieren möchten, geben Sie **folderPath** mit einem Ordner und **fileName** mit einem Dateinamen an.<br>Wenn Sie eine Teilmenge der Dateien eines Ordners kopieren möchten, geben Sie **folderPath** mit einem Ordner und **fileName** mit einem Platzhalterfilter an. 
@@ -299,78 +596,9 @@ Für das Kopieren von Daten in und aus Data Lake Storage Gen2 im **ORC-Format** 
 }
 ```
 
-## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
+### <a name="legacy-copy-activity-source-model"></a>Legacy-Kopieraktivität: Quellenmodell
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie unter [Konfigurationen für die Kopieraktivität](copy-activity-overview.md#configuration) und [Pipelines und Aktivitäten](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Data Lake Storage Gen2-Quelle und -Senke unterstützt werden.
-
-### <a name="azure-data-lake-storage-gen2-as-a-source-type"></a>Azure Data Lake Storage Gen2 als Quelltyp
-
-- Informationen zum Kopieren aus dem **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie im Abschnitt [Quelle im Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat](#format-based-source).
-- Informationen zum Kopieren aus anderen Formaten wie **ORC** finden Sie im Abschnitt [Quelle in anderen Formaten](#other-format-source).
-
-#### <a name="format-based-source"></a> Quelle für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat
-
-Informationen zum Kopieren von Daten aus dem **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Quellen für Kopieraktivitäten und unterstützten Einstellungen. Folgende Eigenschaften werden für Data Lake Storage Gen2 unter `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
-
-| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                      |
-| ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **AzureBlobFSReadSetting** festgelegt werden. | Ja                                           |
-| recursive                | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Wenn „recursive“ auf „true“ festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, wird ein leerer Ordner oder Unterordner nicht in die Senke kopiert oder dort erstellt. Zulässige Werte sind **true** (Standard) und **false**. | Nein                                            |
-| wildcardFolderPath       | Der in Datasets zum Filtern von Quellordnern konfigurierte Ordnerpfad mit Platzhalterzeichen im angegebenen Dateisystem. <br>Folgende Platzhalter sind zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Ordnername einen Platzhalter oder dieses Escapezeichen enthält. <br>Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Nein                                            |
-| wildcardFileName         | Der Dateiname mit Platzhalterzeichen im angegebenen Dateisystem und „folderPath/wildcardFolderPath“ zum Filtern von Quelldateien. <br>Folgende Platzhalter sind zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Ordnername einen Platzhalter oder dieses Escapezeichen enthält. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Ja, wenn `fileName` nicht im Dataset angegeben ist |
-| modifiedDatetimeStart    | Dateifilterung basierend auf dem Attribut „Letzte Änderung“. Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br> Die Eigenschaften können NULL sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewandt wird. Wenn `modifiedDatetimeStart` einen datetime-Wert aufweist, aber `modifiedDatetimeEnd` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist. Wenn `modifiedDatetimeEnd` einen datetime-Wert aufweist, aber `modifiedDatetimeStart` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist. | Nein                                            |
-| modifiedDatetimeEnd      | Wie oben.                                               | Nein                                            |
-| maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig mit einem Speicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein                                            |
-
-> [!NOTE]
-> Beim Parquet-Format/Textformat mit Trennzeichen wird die im nächsten Abschnitt beschriebene Quelle der Kopieraktivität vom Typ **AzureBlobFSSource** aus Gründen der Abwärtskompatibilität unverändert unterstützt. Wir empfehlen, dass Sie in Zukunft dieses neue Modell verwenden. Die Benutzeroberfläche für die Erstellung von Data Factory generiert diese neuen Typen.
-
-**Beispiel:**
-
-```json
-"activities":[
-    {
-        "name": "CopyFromADLSGen2",
-        "type": "Copy",
-        "inputs": [
-            {
-                "referenceName": "<Delimited text input dataset name>",
-                "type": "DatasetReference"
-            }
-        ],
-        "outputs": [
-            {
-                "referenceName": "<output dataset name>",
-                "type": "DatasetReference"
-            }
-        ],
-        "typeProperties": {
-            "source": {
-                "type": "DelimitedTextSource",
-                "formatSettings":{
-                    "type": "DelimitedTextReadSetting",
-                    "skipLineCount": 10
-                },
-                "storeSettings":{
-                    "type": "AzureBlobFSReadSetting",
-                    "recursive": true,
-                    "wildcardFolderPath": "myfolder*A",
-                    "wildcardFileName": "*.csv"
-                }
-            },
-            "sink": {
-                "type": "<sink type>"
-            }
-        }
-    }
-]
-```
-
-#### <a name="other-format-source"></a>Quelle in anderen Formaten
-
-Für das Kopieren von Daten aus Data Lake Storage Gen2 im **ORC-Format** werden folgende Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
-
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **AzureBlobFSSource** festgelegt sein. |Ja |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Wenn „recursive“ auf „true“ festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, wird ein leerer Ordner oder Unterordner nicht in die Senke kopiert oder dort erstellt.<br/>Zulässige Werte sind **true** (Standard) und **false**. | Nein |
@@ -408,64 +636,9 @@ Für das Kopieren von Daten aus Data Lake Storage Gen2 im **ORC-Format** werden 
 ]
 ```
 
-### <a name="azure-data-lake-storage-gen2-as-a-sink-type"></a>Azure Data Lake Storage Gen2 als Senkentyp
+### <a name="legacy-copy-activity-sink-model"></a>Legacy-Kopieraktivität – Senkenmodell
 
-- Informationen zum Kopieren in das **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie im Abschnitt [Senke für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat](#format-based-sink).
-- Informationen zum Kopieren in andere Formate wie **ORC oder JSON** finden Sie im Abschnitt [Senke in anderen Formaten](#other-format-sink).
-
-#### <a name="format-based-sink"></a> Senke für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat
-
-Informationen zum Kopieren von Daten in das **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Senken für Kopieraktivitäten und unterstützten Einstellungen. Folgende Eigenschaften werden für Data Lake Storage Gen2 unter `storeSettings`-Einstellungen in formatbasierten Kopiersenken unterstützt:
-
-| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich |
-| ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **AzureBlobFSWriteSetting** festgelegt werden. | Ja      |
-| copyBehavior             | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner ist mit dem relativen Pfad der Zieldatei zum Zielordner identisch.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Dateiname angegeben wurde, entspricht der zusammengeführte Dateiname dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein       |
-| maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig mit dem Datenspeicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein       |
-
-> [!NOTE]
-> Beim Parquet-Format/Textformat mit Trennzeichen wird die im nächsten Abschnitt beschriebene Senke der Kopieraktivität vom Typ **AzureBlobFSSink** aus Gründen der Abwärtskompatibilität unverändert unterstützt. Wir empfehlen, dass Sie in Zukunft dieses neue Modell verwenden. Die Benutzeroberfläche für die Erstellung von Data Factory generiert diese neuen Typen.
-
-**Beispiel:**
-
-```json
-"activities":[
-    {
-        "name": "CopyToADLSGen2",
-        "type": "Copy",
-        "inputs": [
-            {
-                "referenceName": "<input dataset name>",
-                "type": "DatasetReference"
-            }
-        ],
-        "outputs": [
-            {
-                "referenceName": "<Parquet output dataset name>",
-                "type": "DatasetReference"
-            }
-        ],
-        "typeProperties": {
-            "source": {
-                "type": "<source type>"
-            },
-            "sink": {
-                "type": "ParquetSink",
-                "storeSettings":{
-                    "type": "AzureBlobFSWriteSetting",
-                    "copyBehavior": "PreserveHierarchy"
-                }
-            }
-        }
-    }
-]
-```
-
-#### <a name="other-format-sink"></a>Senke in anderen Formaten
-
-Für das Kopieren von Daten in Data Lake Storage Gen2 im **ORC-Format** werden folgende Eigenschaften im Abschnitt **sink** unterstützt:
-
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft der Senke der Kopieraktivität muss auf **AzureBlobFSSink** festgelegt sein. |Ja |
 | copyBehavior | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner ist mit dem relativen Pfad der Zieldatei zum Zielordner identisch.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Dateiname angegeben wurde, entspricht der zusammengeführte Dateiname dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein |
@@ -503,105 +676,6 @@ Für das Kopieren von Daten in Data Lake Storage Gen2 im **ORC-Format** werden f
 ]
 ```
 
-### <a name="folder-and-file-filter-examples"></a>Beispiele für Ordner- und Dateifilter
-
-Dieser Abschnitt beschreibt das resultierende Verhalten für den Ordnerpfad und den Dateinamen mit Platzhalterfiltern.
-
-| folderPath | fileName | recursive | Quellordnerstruktur und Filterergebnis (Dateien mit **Fettformatierung** werden abgerufen.)|
-|:--- |:--- |:--- |:--- |
-| `Folder*` | (Leer, Standardwert verwenden) | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5.csv<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
-| `Folder*` | (Leer, Standardwert verwenden) | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei5.csv**<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
-| `Folder*` | `*.csv` | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5.csv<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
-| `Folder*` | `*.csv` | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei5.csv**<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
-
-### <a name="some-recursive-and-copybehavior-examples"></a>Beispiele für „recursive“ und „copyBehavior“
-
-Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für verschiedene Kombinationen von „recursive“- und „copyBehavior“-Werten.
-
-| recursive | copyBehavior | Struktur des Quellordners | Resultierendes Ziel |
-|:--- |:--- |:--- |:--- |
-| true |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei5 | Der Zielordner „Ordner1“ wird mit der gleichen Struktur erstellt wie die Quelle:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei5 |
-| true |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei5 | Der Zielordner „Ordner1“ wird mit der folgenden Struktur erstellt: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei5 |
-| true |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei5 | Der Zielordner „Ordner1“ wird mit der folgenden Struktur erstellt: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Die Inhalte von Datei1 + Datei2 + Datei3 + Datei4 + Datei5 werden in einer Datei mit einem automatisch generierten Dateinamen zusammengeführt. |
-| false |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei5 | Der Zielordner „Ordner1“ wird mit der folgenden Struktur erstellt: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/><br/>Unterordner1 mit Datei3, Datei4 und Datei5 wird nicht übernommen. |
-| false |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei5 | Der Zielordner „Ordner1“ wird mit der folgenden Struktur erstellt: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei2<br/><br/>Unterordner1 mit Datei3, Datei4 und Datei5 wird nicht übernommen. |
-| false |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei5 | Der Zielordner „Ordner1“ wird mit der folgenden Struktur erstellt: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Die Inhalte von Datei1 + Datei2 werden in einer Datei mit einem automatisch generierten Dateinamen zusammengeführt. Automatisch generierter Name für Datei1<br/><br/>Unterordner1 mit Datei3, Datei4 und Datei5 wird nicht übernommen. |
-
-## <a name="preserve-acls-from-data-lake-storage-gen1"></a>Bewahren von Zugriffssteuerungslisten für Azure Data Lake Storage Gen1
-
->[!TIP]
->Allgemeine Informationen zum Kopieren von Daten von Azure Data Lake Storage Gen1 in Gen2 sowie eine exemplarische Vorgehensweise und bewährte Methoden finden Sie unter [Kopieren von Daten aus Azure Data Lake Storage Gen1 in Gen2 mit Azure Data Factory](load-azure-data-lake-storage-gen2-from-gen1.md).
-
-Beim Kopieren von Dateien von Azure Data Lake Storage Gen1 in Gen2 können Sie die Option wählen, bei der die POSIX-Zugriffssteuerungslisten (Access Control Lists, ACLs) zusammen mit den Daten beibehalten werden. Weitere Informationen zur Zugriffssteuerung finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md) und [Zugriffssteuerung in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
-
-Mit der Azure Data Factory-Kopieraktivität können die folgenden Arten von ACLs beibehalten werden. Sie können einen oder mehrere Typen auswählen:
-
-- **ACL**: Kopieren und Beibehalten von POSIX-Zugriffssteuerungslisten für Dateien und Verzeichnisse. Hierbei werden die vollständigen vorhandenen ACLs von der Quelle in die Senke kopiert. 
-- **Besitzer:** Kopieren und Beibehalten des besitzenden Benutzers von Dateien und Verzeichnissen. Hierfür ist Administratorzugriff auf die Data Lake Storage Gen2-Senke erforderlich.
-- **Gruppe**: Kopieren und Beibehalten der besitzenden Gruppe von Dateien und Verzeichnissen. Hierfür ist Administratorzugriff auf die Data Lake Storage Gen2-Senke oder der Zugriff des besitzenden Benutzers erforderlich (sofern der besitzende Benutzer auch Mitglied der Zielgruppe ist).
-
-Wenn Sie das Kopieren aus einem Ordner angeben, repliziert Data Factory die ACLs für diesen Ordner und die darin enthaltenen Dateien und Verzeichnisse, sofern `recursive` auf „true“ festgelegt ist. Falls Sie das Kopieren aus einer einzelnen Datei angeben, werden die ACLs in dieser Datei kopiert.
-
->[!IMPORTANT]
->Bei Auswahl der Beibehaltung von ACLs sollten Sie sicherstellen, dass Sie ausreichende Berechtigungen für die Verwendung von Data Factory für Ihr Data Lake Storage Gen2-Senkenkonto gewähren. Verwenden Sie beispielsweise die Kontoschlüsselauthentifizierung, oder weisen Sie dem Dienstprinzipal bzw. der verwalteten Identität die Rolle „Besitzer von Speicherblobdaten“ zu.
-
-Wenn Sie die Quelle als Data Lake Storage Gen1 mit binärer Kopieroption oder binärem Format und die Senke als Data Lake Storage Gen2 mit binärer Kopieroption oder binärem Format konfigurieren, können Sie die Option **Beibehalten** auf der Seite mit den **Einstellungen für das Tool zum Kopieren von Daten** oder auf der Registerkarte **Kopieraktivität** > **Einstellungen** für die Aktivitätserstellung verwenden.
-
-![Bewahren von ACL von Data Lake Storage Gen1 auf Gen2](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
-
-Hier ist ein Beispiel für die JSON-Konfiguration angegeben (siehe `preserve`): 
-
-```json
-"activities":[
-    {
-        "name": "CopyFromGen1ToGen2",
-        "type": "Copy",
-        "typeProperties": {
-            "source": {
-                "type": "AzureDataLakeStoreSource",
-                "recursive": true
-            },
-            "sink": {
-                "type": "AzureBlobFSSink",
-                "copyBehavior": "PreserveHierarchy"
-            },
-            "preserve": [
-                "ACL",
-                "Owner",
-                "Group"
-            ]
-        },
-        "inputs": [
-            {
-                "referenceName": "<Azure Data Lake Storage Gen1 input dataset name>",
-                "type": "DatasetReference"
-            }
-        ],
-        "outputs": [
-            {
-                "referenceName": "<Azure Data Lake Storage Gen2 output dataset name>",
-                "type": "DatasetReference"
-            }
-        ]
-    }
-]
-```
-
-## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
-
-Weitere Informationen zur [Quellentransformation](data-flow-source.md) und [Senkentransformation](data-flow-sink.md) finden Sie unter der Mapping Data Flow-Funktion.
-
-## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
-
-Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
-
-## <a name="getmetadata-activity-properties"></a>Eigenschaften der GetMetadata-Aktivität
-
-Ausführliche Informationen zu den Eigenschaften finden Sie unter [GetMetadata-Aktivität](control-flow-get-metadata-activity.md). 
-
-## <a name="delete-activity-properties"></a>Eigenschaften der Delete-Aktivität
-
-Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivität](delete-activity.md).
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

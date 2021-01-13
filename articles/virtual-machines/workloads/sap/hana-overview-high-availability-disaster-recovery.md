@@ -4,21 +4,22 @@ description: Bereitstellen von Hochverfügbarkeit und Planen der Notfallwiederhe
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d0150aeace3960d075bbf61c1dd0bba4865aaf2b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 56e2e2a048e44dcad626208b059e258d55ba7057
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099707"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967598"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) 
 
@@ -32,8 +33,8 @@ Hochverfügbarkeit und Notfallwiederherstellung sind entscheidende Aspekte bei d
 
 Microsoft unterstützt mit HANA (große Instanzen) standardmäßig einige SAP HANA-Methoden für Hochverfügbarkeit. Diese Funktionen umfassen:
 
-- **Speicherreplikation**: Die Fähigkeit des Speichersystems, alle Daten in einem HANA-Stapel („Stamp“) für große Instanzen in einer anderen Azure-Region zu replizieren. SAP HANA wird unabhängig von dieser Methode betrieben. Diese Funktionen bilden den Standardmechanismus für die Notfallwiederherstellung großer HANA-Instanzen.
-- **HANA-Systemreplikation**: Die [Replikation aller Daten in SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) in einem anderen SAP HANA-System. RTO (Recovery Time Objective) wird durch die Datenreplikation in regelmäßigen Abständen verringert. SAP HANA unterstützt den asynchronen, synchronen In-Memory- und den synchronen Modus. Der synchrone Modus wird nur für SAP HANA-Systeme innerhalb des gleichen Rechenzentrums oder mit einer Entfernung von weniger als 100 km zueinander verwendet. Beim aktuellen Entwurf mit HANA-Stapeln („Stamps“) für große Instanzen kann die HANA-Systemreplikation nur für Hochverfügbarkeit in einer Region verwendet werden. Für die HANA-Systemreplikation für Notfallwiederherstellungskonfigurationen mit einer anderen Azure-Region als Ziel ist eine Reverseproxy- oder Weiterleitungskomponente eines Drittanbieters erforderlich. 
+- **Speicherreplikation**: Die Fähigkeit des Speichersystems, alle Daten an einen anderen Stapel für HANA (große Instanzen) in einer anderen Azure-Region zu replizieren. SAP HANA wird unabhängig von dieser Methode betrieben. Diese Funktionen bilden den Standardmechanismus für die Notfallwiederherstellung großer HANA-Instanzen.
+- **HANA-Systemreplikation:** die [Replikation aller Daten in SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) in ein anderes SAP HANA-System. RTO (Recovery Time Objective) wird durch die Datenreplikation in regelmäßigen Abständen verringert. SAP HANA unterstützt den asynchronen, synchronen In-Memory- und den synchronen Modus. Der synchrone Modus wird nur für SAP HANA-Systeme innerhalb des gleichen Rechenzentrums oder mit einer Entfernung von weniger als 100 km zueinander verwendet. Beim aktuellen Entwurf mit HANA-Stapeln („Stamps“) für große Instanzen kann die HANA-Systemreplikation nur für Hochverfügbarkeit in einer Region verwendet werden. Für die HANA-Systemreplikation für Notfallwiederherstellungskonfigurationen mit einer anderen Azure-Region als Ziel ist eine Reverseproxy- oder Weiterleitungskomponente eines Drittanbieters erforderlich. 
 - **Automatisches Hostfailover**: Eine lokale Wiederherstellungslösung für SAP HANA, die alternativ zur HANA-Systemreplikation verwendet werden kann. Wenn der Masterknoten nicht mehr verfügbar ist, konfigurieren Sie mindestens einen SAP HANA-Standbyknoten im Modus „Horizontal hochskalieren“, und SAP HANA führt automatisch ein Failover auf einen Standbyknoten durch.
 
 SAP HANA in Azure (große Instanzen) wird in zwei Azure-Regionen in vier geopolitischen Gebieten (USA, Australien, Europa und Japan) angeboten. Zwei Regionen innerhalb eines geopolitischen Bereichs, in denen HANA-Stapel für große Instanzen mit separaten dedizierten Netzwerkverbindungen verbunden sind. Diese werden zum Replizieren von Speichermomentaufnahmen zur Bereitstellung von Methoden für die Notfallwiederherstellung verwendet. Die Replikation ist nicht standardmäßig vorhanden, sondern wird nur für Kunden eingerichtet, die die Funktionalität für die Notfallwiederherstellung bestellen. Die Speicherreplikation setzt die Verwendung von Speichermomentaufnahmen für HANA (große Instanzen) voraus. Darüber hinaus ist es nicht möglich, eine Azure-Region in einer anderen geopolitischen Region als Notfallwiederherstellungsregion auszuwählen. 

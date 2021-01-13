@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 06fa98ae4acc2252d8866858ed0e2194ed84ff79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4cb07d9d19d85cd8dff9a52eeeb7e173b60f4d6d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60928297"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080769"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Aussondern der Leistungsebenen S1, S2 und S3
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 > [!IMPORTANT] 
 > Die in diesem Artikel beschriebenen Leistungsebenen S1, S2 und S3 werden ausgesondert und sind für neue Azure Cosmos DB-Konten nicht mehr verfügbar.
->
 
 Dieser Artikel enthält eine Übersicht über die Leistungsebenen S1, S2 und S3 und erläutert, wie die Sammlungen, die diese Leistungsebenen verwenden, zu Sammlungen mit nur einer Partition migriert werden können. Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
@@ -26,7 +27,7 @@ Dieser Artikel enthält eine Übersicht über die Leistungsebenen S1, S2 und S3 
 - [Was muss ich tun, um den unterbrechungsfreien Zugriff auf meine Daten sicherzustellen?](#uninterrupted-access)
 - [Wie verändert sich meine Sammlung nach der Migration?](#collection-change)
 - [Wie verändert sich meine Abrechnung nach der Migration zu Sammlungen mit nur einer Partition?](#billing-change)
-- [Welche Möglichkeiten habe ich, wenn ich mehr als 10 GB Speicher benötige?](#more-storage-needed)
+- [Welche Möglichkeiten habe ich, wenn ich mehr als 20 GB Speicher benötige?](#more-storage-needed)
 - [Kann ich vor der geplanten Migration zwischen den Leistungsebenen S1, S2 und S3 wechseln?](#change-before)
 - [Wie kann ich die Migration von den Leistungsebenen S1, S2 und S3 zu Sammlungen mit nur einer Partition selbst durchführen?](#migrate-diy)
 - [Inwieweit bin ich betroffen, wenn ich EA-Kunde bin?](#ea-customer)
@@ -43,11 +44,11 @@ Die Leistungsebenen S1, S2 und S3 bieten nicht die gleiche Flexibilität wie das
 
 Die folgende Tabelle enthält einen Vergleich der Durchsatz- und Speicheroptionen von Sammlungen mit nur einer Partition, partitionierten Sammlungen und den Leistungsebenen S1, S2 und S3. Hier ist ein Beispiel für die Region „USA, Osten 2“ angegeben:
 
-|   |Partitionierte Sammlung|Sammlung mit nur einer Partition|S1|S2|S3|
+| Namen des Kontingents  |Partitionierte Sammlung|Sammlung mit nur einer Partition|S1|S2|S3|
 |---|---|---|---|---|---|
-|Maximaler Durchsatz|Unbegrenzt|10\.000 RU/s|250 RU/s|1\.000 RU/s|2.500 RU/s|
+|Maximaler Durchsatz|Unbegrenzt|10.000 RU/s|250 RU/s|1\.000 RU/s|2.500 RU/s|
 |Minimaler Durchsatz|2.500 RU/s|400 RU/s|250 RU/s|1\.000 RU/s|2.500 RU/s|
-|Maximale Speichergröße|Unbegrenzt|10 GB|10 GB|10 GB|10 GB|
+|Maximale Speichergröße|Unbegrenzt|20 GB|20 GB|20 GB|20 GB|
 |Preis (monatlich)|Durchsatz: 6 USD/100 RU/s<br><br>Speicher: 0,25 USD/GB|Durchsatz: 6 USD/100 RU/s<br><br>Speicher: 0,25 USD/GB|25 USD|50 USD|100 USD|
 
 Sind Sie EA-Kunde? Wenn ja, helfen Ihnen die Informationen unter [Inwieweit bin ich betroffen, wenn ich EA-Kunde bin?](#ea-customer) weiter.
@@ -76,13 +77,13 @@ In jedem dieser Fälle können Sie nach der Migration der Sammlung die Durchsatz
 
 Angenommen, Sie verfügen über zehn S1-Sammlungen mit jeweils 1 GB Speicher in der Region „USA, Osten“ und migrieren diese zehn S1-Sammlungen zu zehn Sammlungen mit nur einer Partition und 400 RU/s (Minimum). Ihre Rechnung sieht dann wie folgt aus, wenn Sie die zehn Sammlungen mit nur einer Partition einen ganzen Monat lang beibehalten:
 
-![Vergleich der S1-Preise für zehn Sammlungen mit dem Preis für zehn Sammlungen mit nur einer Partition](./media/performance-levels/s1-vs-standard-pricing.png)
+:::image type="content" source="./media/performance-levels/s1-vs-standard-pricing.png" alt-text="Vergleich der S1-Preise für zehn Sammlungen mit dem Preis für zehn Sammlungen mit nur einer Partition" border="false":::
 
 <a name="more-storage-needed"></a>
 
-## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>Welche Möglichkeiten habe ich, wenn ich mehr als 10 GB Speicher benötige?
+## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>Welche Möglichkeiten habe ich, wenn ich mehr als 20 GB Speicher benötige?
 
-Es spielt keine Rolle, ob Sie eine Sammlung mit der Leistungsebene S1, S2 oder S3 oder eine Sammlung mit nur einer Partition verwenden, für die jeweils 10 GB Speicher verfügbar sind: Sie können das Azure Cosmos DB-Datenmigrationstool verwenden, um Ihre Daten zu einer partitionierten Sammlung mit praktisch unbegrenztem Speicher zu migrieren. Informationen zu den Vorteilen einer partitionierten Sammlung finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](sql-api-partition-data.md). 
+Es spielt keine Rolle, ob Sie eine Sammlung mit der Leistungsebene S1, S2 oder S3 oder eine Sammlung mit nur einer Partition verwenden, für die jeweils 20 GB Speicher verfügbar sind: Sie können das Azure Cosmos DB-Datenmigrationstool verwenden, um Ihre Daten zu einer partitionierten Sammlung mit praktisch unbegrenztem Speicher zu migrieren. Informationen zu den Vorteilen einer partitionierten Sammlung finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](partitioning-overview.md). 
 
 <a name="change-before"></a>
 
@@ -116,12 +117,12 @@ Hier ist ein Codeausschnitt zum Ändern des Sammlungsdurchsatzes auf 5.000 Anfor
     await client.ReplaceOfferAsync(offer);
 ```
 
-Besuchen Sie [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) , um weitere Beispiele anzuzeigen und mehr über unsere Angebotsmethoden zu erfahren:
+Besuchen Sie [MSDN](/dotnet/api/microsoft.azure.documents.client.documentclient) , um weitere Beispiele anzuzeigen und mehr über unsere Angebotsmethoden zu erfahren:
 
-* [**ReadOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readofferasync.aspx)
-* [**ReadOffersFeedAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readoffersfeedasync.aspx)
-* [**ReplaceOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replaceofferasync.aspx)
-* [**CreateOfferQuery**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createofferquery.aspx)
+* [**ReadOfferAsync**](/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync)
+* [**ReadOffersFeedAsync**](/dotnet/api/microsoft.azure.documents.client.documentclient.readoffersfeedasync)
+* [**ReplaceOfferAsync**](/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync)
+* [**CreateOfferQuery**](/previous-versions/azure/dn975114(v=azure.100))
 
 <a name="ea-customer"></a>
 
@@ -132,6 +133,6 @@ EA-Kunden genießen bis zum Ablauf ihres aktuellen Vertrags Preissicherheit.
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Preisen und der Datenverwaltung mit Azure Cosmos DB finden Sie in folgenden Ressourcen:
 
-1.  [Partitionierung von Daten in Cosmos DB](sql-api-partition-data.md). Es werden die Unterschiede zwischen Containern mit nur einer Partition und partitionierten Containern beschrieben, und Sie erhalten Tipps zur Implementierung einer Partitionierungsstrategie für die nahtlose Skalierung.
+1.  [Partitionierung von Daten in Cosmos DB](partitioning-overview.md). Es werden die Unterschiede zwischen Containern mit nur einer Partition und partitionierten Containern beschrieben, und Sie erhalten Tipps zur Implementierung einer Partitionierungsstrategie für die nahtlose Skalierung.
 2.  [Cosmos DB-Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Enthält Informationen zu den Kosten für den Bereitstellungsdurchsatz und für den Speicherverbrauch.
 3.  [Anforderungseinheiten](request-units.md): Enthält Informationen zum Verbrauch des Durchsatzes für verschiedene Vorgangstypen, z.B. Lesen, Schreiben, Abfragen.

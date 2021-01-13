@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: 42562f3e19844621cb3893cb4ce185e85cf7e0ab
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68565751"
 ---
 # <a name="computer-vision-86-category-taxonomy"></a>Taxonomie mit 86 Kategorien für maschinelles Sehen

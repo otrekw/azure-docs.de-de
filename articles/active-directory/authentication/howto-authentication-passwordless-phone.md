@@ -1,106 +1,144 @@
 ---
-title: Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion) – Azure Active Directory
+title: 'Azure Active Directory: Kennwortlose Anmeldung mit der Microsoft Authenticator-App'
 description: Aktivieren der kennwortlosen Anmeldung bei Azure AD mit der Microsoft Authenticator-App (Vorschauversion)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 08/05/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: how-to
+ms.date: 11/11/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c21ff5c4c94eecc7bb1a6643e46166df80edf4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 35eff46a0470d429c8ec6f364ffa836501c65f47
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648322"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743597"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion)
 
-Mit der Microsoft Authenticator-App können sich Benutzer bei jedem beliebigen Azure AD-Konto anmelden, ohne ein Kennwort zu verwenden. Ähnlich wie die Technologie von [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) nutzt Microsoft Authenticator die schlüsselbasierte Authentifizierung, um die Verwendung von Benutzeranmeldeinformationen zu ermöglichen, die an ein Gerät gebunden sind und auf biometrischen Daten oder einer PIN beruhen. Diese Authentifizierungsmethode kann auf jeder Geräteplattform (einschließlich Plattformen für mobile Geräte) und mit jeder App oder Website verwendet werden, die in Microsoft-Authentifizierungsbibliotheken integriert ist. 
+Mit der Microsoft Authenticator-App können sich Benutzer bei jedem beliebigen Azure AD-Konto anmelden, ohne ein Kennwort zu verwenden. Microsoft Authenticator aktiviert mit der schlüsselbasierten Authentifizierung Benutzeranmeldeinformationen, die an ein Gerät gebunden sind, wobei das Gerät eine PIN oder einen biometrischen Wert verwendet. [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) verwendet eine ähnliche Technologie.
 
-![Beispiel für eine browserbasierte Anmeldung, die der Benutzer bestätigen muss](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
+Diese Authentifizierungstechnologie kann auf jeder Geräteplattform verwendet werden, einschließlich mobiler Geräte. Diese Technologie kann auch mit jeder App oder Website verwendet werden, die in Microsoft-Authentifizierungsbibliotheken integriert ist.
 
-Einem Benutzer, der die Anmeldung per Telefon über die Microsoft Authenticator-App aktiviert hat, wird nach dem Eingeben eines Benutzernamens keine Aufforderung zur Eingabe eines Kennworts angezeigt, sondern eine Meldung, in der er aufgefordert wird, in der App auf eine Zahl zu tippen. In der App muss der Benutzer auf die richtige Nummer tippen, „Genehmigen“ auswählen und dann seine PIN eingeben oder seinen biometrischen Schlüssel verwenden, um die Authentifizierung abzuschließen.
+:::image type="content" border="false" source="./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png" alt-text="Beispiel für eine browserbasierte Anmeldung, die der Benutzer bestätigen muss.":::
 
-> [!NOTE]
-> Diese Funktion ist seit März 2017 in der Microsoft Authenticator-App verfügbar. Daher ist es möglich, dass Benutzer bei aktivierter Richtlinie für ein Verzeichnis sofort auf diesen Flow stoßen und eine Fehlermeldung angezeigt wird, wenn die Benutzer nicht durch die Richtlinie aktiviert wurden. Bedenken Sie dies, und breiten Sie Ihre Benutzer auf die Umstellung vor.
+Personen, die die Anmeldung per Telefon über die Microsoft Authenticator-App aktiviert haben, sehen eine Meldung, in der sie aufgefordert werden, in ihrer App auf eine Zahl zu tippen. Es wird nicht nach Benutzername oder Kennwort gefragt. Um den Anmeldevorgang in der App abzuschließen, muss ein Benutzer als Nächstes die folgenden Aktionen ausführen:
+
+1. Auf die richtige Zahl tippen.
+2. Klicken Sie auf **Genehmigen**.
+3. Die PIN oder den biometrischen Wert bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure Multi-Factor Authentication mit Pushbenachrichtigungen als Überprüfungsmethode zulässig 
+Die folgenden Voraussetzungen müssen erfüllt sein, damit die kennwortlose Anmeldung per Telefon mit der Microsoft Authenticator-App verwendet werden kann:
+
+- Azure AD Multi-Factor Authentication ist mit Pushbenachrichtigungen als Überprüfungsmethode zulässig.
 - Aktuelle Version von Microsoft Authenticator auf Geräten mit iOS 8.0 oder höher oder Android 6.0 oder höher installieren.
 
 > [!NOTE]
-> Wenn Sie die vorherige Vorschauversion der kennwortlosen Anmeldung mit der Microsoft Authenticator-App mithilfe von Azure AD PowerShell aktiviert haben, wurde sie für Ihr gesamtes Verzeichnis aktiviert. Wenn Sie die Aktivierung mit dieser neuen Methode vornehmen, wird die PowerShell-Richtlinie durch diese ersetzt. Es wird empfohlen, für alle Benutzer in Ihrem Mandanten die Aktivierung über die neuen Authentifizierungsmethoden vorzunehmen. Andernfalls können sich Benutzer, die nicht in der neuen Richtlinie enthalten sind, nicht mehr ohne Kennwort anmelden. 
+> Wenn Sie die Vorschauversion der kennwortlosen Anmeldung mit Microsoft Authenticator mithilfe von Azure AD PowerShell aktiviert haben, wurde sie für Ihr gesamtes Verzeichnis aktiviert. Wenn Sie die Aktivierung mit dieser neuen Methode vornehmen, wird die PowerShell-Richtlinie dadurch ersetzt. Es wird empfohlen, für alle Benutzer in Ihrem Mandanten die Aktivierung über das neue Menü *Authentifizierungsmethoden* vorzunehmen. Andernfalls können sich Benutzer, die nicht in der neuen Richtlinie enthalten sind, nicht mehr ohne Kennwort anmelden.
 
 ## <a name="enable-passwordless-authentication-methods"></a>Aktivieren von Methoden zur kennwortlosen Authentifizierung
 
+Um die kennwortlose Authentifizierung in Azure AD zu verwenden, aktivieren Sie zunächst die kombinierte Registrierung, und aktivieren Sie anschließend die Benutzer für die kennwortlose Methode.
+
 ### <a name="enable-the-combined-registration-experience"></a>Aktivieren der kombinierten Registrierung
 
-Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung sind von der Vorschauversion der kombinierten Registrierung abhängig. Führen Sie die im Artikel [Aktivieren der kombinierten Registrierung von Sicherheitsinformationen (Vorschauversion)](howto-registration-mfa-sspr-combined.md) aufgeführten Schritte aus, um die Vorschauversion der kombinierten Registrierung zu aktivieren.
+Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung sind von der kombinierten Registrierungsfunktion abhängig. Damit die Benutzer die kombinierte Registrierung selbst abschließen können, führen Sie die Schritte zum [Aktivieren der kombinierten Registrierung von Sicherheitsinformationen](howto-registration-mfa-sspr-combined.md) durch.
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Aktivieren von Authentifizierungsmethoden für die kennwortlose Anmeldung per Telefon
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
-1. Navigieren Sie zu **Azure Active Directory** > **Authentifizierungsmethoden** > **Authentication method policy (Preview)** (Authentifizierungsmethodenrichtlinie (Vorschauversion)).
+Mit Azure AD können Sie auswählen, welche Authentifizierungsmethoden während des Anmeldevorgangs verwendet werden können. Benutzer registrieren sich anschließend für die Methoden, die sie verwenden möchten.
+
+Führen Sie die folgenden Schritte aus, um die Authentifizierungsmethode für die kennwortlose Anmeldung per Telefon zu aktivieren:
+
+1. Melden Sie sich mit einem globalen *Administratorkonto* im [Azure-Portal](https://portal.azure.com) an.
+1. Suchen Sie *Azure Active Directory*, und wählen sie es aus. Navigieren Sie anschließend zu **Sicherheit** > **Authentifizierungsmethoden** > **Authentifizierungsmethodenrichtlinie (Vorschau)** .
 1. Wählen Sie unter **Kennwortlose Anmeldung per Telefon** die folgenden Optionen aus:
    1. **Aktivieren**: „Ja“ oder „Nein“
    1. **Ziel**: „Alle Benutzer“ oder „Benutzer auswählen“
-1. Wählen Sie **Speichern** aus, um die neue Richtlinie festzulegen.
+1. Wählen Sie **Speichern** aus, um die neue Richtlinie anzuwenden.
 
-## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Benutzerregistrierung und Verwaltung der Microsoft Authenticator-App
+## <a name="user-registration-and-management-of-microsoft-authenticator"></a>Benutzerregistrierung und Verwaltung von Microsoft Authenticator
 
-1. Rufen Sie [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) auf.
-1. Melden Sie sich an, falls Sie dies noch nicht getan haben.
-1. Fügen Sie eine Authentifikator-App hinzu. Klicken Sie dazu auf **Methode hinzufügen**, wählen Sie **Authenticator-App** aus, und klicken Sie dann auf **Hinzufügen**.
+Benutzer registrieren sich mit den folgenden Schritten für die kennwortlose Authentifizierungsmethode von Azure AD:
+
+1. Navigieren Sie zu [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) .
+1. Melden Sie sich an, und fügen Sie anschließend die Authenticator-App hinzu, indem Sie **Methode hinzufügen > Authenticator-App** und anschließend **Hinzufügen** auswählen.
 1. Folgen Sie den Anweisungen zum Installieren und Konfigurieren der Microsoft Authenticator-App auf Ihrem Gerät.
-1. Klicken Sie auf **Fertig**, um den Flow zum Einrichten der Authenticator-App abzuschließen. 
-1. Wählen Sie in **Microsoft Authenticator** im Dropdownmenü „Konto“ die Option **Anmeldung per Telefon aktivieren** aus.
-1. Folgen Sie den Anweisungen in der App, um die Registrierung für die kennwortlose Anmeldung per Telefon abzuschließen. 
+1. Wählen Sie **Fertig** aus, um die Authenticator-Konfiguration abzuschließen.
+1. Wählen Sie in **Microsoft Authenticator** im Dropdownmenü für das registrierte Konto die Option **Anmeldung per Telefon aktivieren** aus.
+1. Folgen Sie den Anweisungen in der App, um die Registrierung für die kennwortlose Anmeldung per Telefon für das Konto abzuschließen.
 
-Organisationen können ihre Benutzer auf den Artikel [Anmelden an Ihren Konten per Microsoft Authenticator-App](../user-help/microsoft-authenticator-app-phone-signin-faq.md) verweisen, der weitere Unterstützung für die Einrichtung in der Microsoft Authenticator-App und die Aktivierung der Anmeldung per Telefon bietet.
+Eine Organisation kann ihre Benutzer so weiterleiten, dass sie sich mit ihrem Smartphone anmelden, ohne ein Kennwort zu verwenden. Weitere Unterstützung zum Konfigurieren der Microsoft Authenticator-App und Aktivieren der Anmeldung per Smartphone finden Sie unter [Anmelden bei Konten mithilfe der Microsoft Authenticator-App](../user-help/user-help-auth-app-sign-in.md).
+
+> [!NOTE]
+> Benutzer, die gemäß der Richtlinie nicht für die Verwendung der Anmeldung per Telefon berechtigt sind, können sie in der Microsoft Authenticator-App nicht mehr aktivieren.
 
 ## <a name="sign-in-with-passwordless-credential"></a>Anmelden mit kennwortlosen Anmeldeinformationen
 
-In der Public Preview-Version ist es nicht möglich, die Erstellung oder Verwendung dieser neuen Anmeldeinformationen durch Benutzer zu erzwingen. Ein Benutzer kann sich erst ohne Kennwort anmelden, nachdem ein Administrator das Feature für den jeweiligen Mandanten aktiviert **und** der Benutzer die Microsoft Authenticator-App aktualisiert hat, um die Anmeldung per Telefon zu aktivieren.
+Nachdem alle folgenden Aktionen abgeschlossen sind, kann ein Benutzer beginnen, die kennwortlose Anmeldung zu verwenden:
 
-Nachdem Sie Ihren Benutzernamen im Web eingegeben und **Weiter** ausgewählt haben, wird eine Zahl angezeigt, und Sie werden in der Microsoft Authenticator-App aufgefordert, die entsprechende Zahl für die Authentifizierung auszuwählen, statt Ihr Kennwort zu verwenden. 
+- Ein Administrator hat den Mandanten des Benutzers aktiviert.
+- Der Benutzer hat die Microsoft Authenticator-App aktualisiert, um die Anmeldung per Telefon zu aktivieren.
 
-![Beispiel für eine Browseranmeldung mit der Microsoft Authenticator-App](./media/howto-authentication-passwordless-phone/web-sign-in-microsoft-authenticator-app.png)
+Wenn ein Benutzer zum ersten Mal den Anmeldevorgang per Telefon startet, führt er die folgenden Schritte aus:
+
+1. Eingabe des Namens auf der Anmeldeseite.
+2. Auswahl von **Weiter**.
+3. Wenn erforderlich, Auswahl von **Weitere Anmeldemethoden**.
+4. Auswahl von **Eine Anforderung in meiner Microsoft Authenticator-App bestätigen**.
+
+Dem Benutzer wird dann eine Zahl angezeigt. Die App fordert den Benutzer auf, sich zu authentifizieren, indem er die entsprechende Zahl auswählt, anstatt ein Kennwort einzugeben.
+
+Nachdem der Benutzer die kennwortlose Anmeldung verwendet hat, leitet die App den Benutzer weiterhin durch diese Methode. Dem Benutzer wird jedoch die Option zum Auswählen einer anderen Methode angezeigt.
+
+:::image type="content" border="false" source="./media/howto-authentication-passwordless-phone/web-sign-in-microsoft-authenticator-app.png" alt-text="Beispiel für eine Browseranmeldung mit der Microsoft Authenticator-App.":::
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-### <a name="user-is-not-enabled-by-policy-but-still-has-passwordless-phone-sign-in-method-in-microsoft-authenticator"></a>Der Benutzer ist nicht durch eine Richtlinie aktiviert, hat aber in Microsoft Authenticator immer noch die Methode zur kennwortlosen Anmeldung per Telefon eingerichtet
+Die folgenden bekannten Probleme können in der aktuellen Vorschauversion auftreten.
 
-Es ist möglich, dass ein Benutzer irgendwann in der aktuellen Microsoft Authenticator-App oder auf einem früheren Gerät Anmeldeinformationen für die kennwortlose Anmeldung per Telefon erstellt hat. Sobald ein Administrator die Authentifizierungsmethodenrichtlinie für die kennwortlose Anmeldung per Telefon aktiviert, wird allen Benutzern mit registrierten Anmeldeinformationen die neue Anmeldeaufforderung angezeigt, unabhängig davon, ob sie für die Verwendung der Richtlinie aktiviert wurden oder nicht. Wenn der Benutzer nicht berechtigt ist, die Anmeldeinformationen per Richtlinie zu verwenden, wird nach Abschluss des Authentifizierungsflows ein Fehler angezeigt. 
+### <a name="not-seeing-option-for-passwordless-phone-sign-in"></a>Die Option für die kennwortlose Anmeldung per Telefon wird nicht angezeigt
 
-Der Administrator kann dem Benutzer die Verwendung der kennwortlosen Anmeldung per Telefon durch die entsprechende Aktivierung ermöglichen. Andernfalls muss der Benutzer die Methode entfernen. Wenn der Benutzer nicht mehr über das registrierte Gerät verfügt, kann er zu [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) navigieren und es entfernen. Wenn der Benutzer noch den Authenticator für MFA verwendet, kann er in Microsoft Authenticator die Option **Anmeldung per Telefon deaktivieren** auswählen.  
+In einem Szenario kann die Überprüfung der kennwortlosen Anmeldung des Benutzer ausstehen. Der Benutzer kann jedoch versuchen, sich erneut anzumelden. Wenn dies der Fall ist, wird dem Benutzer möglicherweise nur die Option zum Eingeben eines Kennworts angezeigt.
 
-### <a name="ad-fs-integration"></a>AD FS-Integration
+Mit folgenden Schritten kann dieses Szenario aufgelöst werden:
 
-Wenn ein Benutzer die Microsoft Authenticator-Anmeldeinformationen ohne Kennwort aktiviert hat, wird die Authentifizierung für diesen Benutzer standardmäßig immer auf das Senden einer Genehmigungsbenachrichtigung festgelegt. Diese Logik verhindert, dass Benutzer in einem Hybridmandanten zur Überprüfung der Anmeldung zu Active Directory-Verbunddienste (AD FS) weitergeleitet werden, ohne zusätzlich auf „Stattdessen Ihr Kennwort verwenden“ zu klicken. Bei diesem Prozess werden auch alle lokalen Richtlinien für bedingten Zugriff und Passthrough-Authentifizierungsflüsse umgangen. 
+1. Öffnen Sie die Microsoft Authenticator-App.
+2. Antworten Sie ggf. auf Benachrichtigungsaufforderungen.
 
-Wenn bei einem Benutzer die Überprüfung der kennwortlosen Anmeldung per Telefon aussteht und er versucht, sich erneut anzumelden, wird der Benutzer möglicherweise zu AD FS weitergeleitet, um stattdessen ein Kennwort einzugeben.  
+Anschließend kann der Benutzer weiterhin die kennwortlose Anmeldung per Telefon verwenden.
+
+### <a name="federated-accounts"></a>Verbundkonten
+
+Wenn ein Benutzer kennwortlose Anmeldeinformationen aktiviert hat, verwendet der Azure AD-Anmeldevorgang nicht mehr den „login\_hint“. Darum leitet der Prozess den Benutzer nicht mehr zu einem Standort der Verbundanmeldung.
+
+Mit dieser Logik wird in der Regel verhindert, dass ein Benutzer in einem hybriden Mandanten zur Anmeldungsüberprüfung an Active Directory-Verbunddienste (Active Directory Federated Services, AD FS) weitergeleitet wird. Der Benutzer kann jedoch weiterhin auf **Stattdessen Ihr Kennwort verwenden** klicken.
 
 ### <a name="azure-mfa-server"></a>Azure MFA-Server
 
-Endbenutzer, für die MFA über den lokalen Azure MFA-Server einer Organisation aktiviert ist, können weiterhin einen einzelnen Satz von Anmeldeinformationen für die Anmeldung per Smartphone ohne Kennwort erstellen und verwenden. Wenn der Benutzer versucht, mehrere Installationen (fünf oder mehr) von Microsoft Authenticator mit den Anmeldeinformationen zu aktualisieren, kann diese Änderung zu einem Fehler führen.  
+Ein Endbenutzer kann über einen lokalen Azure MFA-Server für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) aktiviert werden. Der Benutzer kann immer noch eine einzige Anmeldeinformation für die kennwortlose Anmeldung per Telefon erstellen und verwenden.
+
+Wenn der Benutzer versucht, mehrere Installationen (5+) der Microsoft Authenticator-App mit den Anmeldeinformationen für die kennwortlose Anmeldung per Telefon zu aktualisieren, kann diese Änderung zu einem Fehler führen.
 
 ### <a name="device-registration"></a>Geräteregistrierung
 
-Eine der Voraussetzungen für die Erstellung dieser neuen, sicheren Anmeldeinformationen ist, dass das Gerät, auf dem die Microsoft Authenticator-App installiert ist, auch im Azure AD-Mandanten für einen einzelnen Benutzer registriert sein muss. Aufgrund der aktuellen Einschränkungen, die für die Registrierung von Geräten gelten, kann ein Gerät nur in einem einzigen Mandanten registriert werden. Dies bedeutet, dass nur ein Geschäfts-, Schul- oder Unikonto in der Microsoft Authenticator-App für die Anmeldung per Smartphone aktiviert werden kann.
+Bevor Sie diese neuen starken Anmeldeinformationen erstellen können, müssen Sie Voraussetzungen erfüllen. Eine Voraussetzung ist, dass das Gerät, auf dem die Microsoft Authenticator-App installiert ist, im Azure AD-Mandanten für einen einzelnen Benutzer registriert sein muss.
+
+Ein Gerät kann derzeit nur bei einem einzigen Mandanten registriert werden. Dies bedeutet, dass nur ein Geschäfts-, Schul- oder Unikonto in der Microsoft Authenticator-App für die Anmeldung per Smartphone aktiviert werden kann.
 
 > [!NOTE]
-> Die Geräteregistrierung ist nicht dasselbe wie die Geräteverwaltung oder „MDM“. Sie ordnet nur eine Geräte-ID und eine Benutzer-ID zusammen im Azure AD-Verzeichnis zu.  
+> Die Geräteregistrierung ist nicht dasselbe wie die Geräteverwaltung oder mobile Geräteverwaltung (Mobile Device Management, MDM). Die Geräteregistrierung ordnet nur eine Geräte-ID und eine Benutzer-ID im Azure AD-Verzeichnis einander zu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Was bedeutet „kennwortlos“?](concept-authentication-passwordless.md)
+Weitere Informationen zur Azure AD-Authentifizierung und kennwortlosen Methoden finden Sie in den folgenden Artikeln:
 
-[Informationen zur Geräteregistrierung](../devices/overview.md#getting-devices-in-azure-ad)
-
-[Informationen zu Microsoft Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+- [Wie funktioniert die kennwortlose Authentifizierung?](concept-authentication-passwordless.md)
+- [Informationen zur Geräteregistrierung](../devices/overview.md#getting-devices-in-azure-ad)
+- [Informationen zu Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

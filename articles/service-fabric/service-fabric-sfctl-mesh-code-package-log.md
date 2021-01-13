@@ -1,24 +1,16 @@
 ---
-title: 'Azure Service Fabric CLI: sfctl mesh code-package-log | Microsoft-Dokumentation'
-description: Beschreibt die sfctl mesh code-package-log-Befehle der Service Fabric CLI.
-services: service-fabric
-documentationcenter: na
-author: Christina-Kang
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
+title: 'Azure Service Fabric CLI: sfctl mesh code-package-log'
+description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste mit Befehlen zum Abrufen von Protokollen für ein angegebenes Codepaket.
+author: jeffj6123
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: b1949f87dcdb1e3d9fe8e7fd08d8d8ba3b8203a0
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: 9ac1d85a1a498f9f6fcd0a03f8f819d1cdfcac33
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036447"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86257300"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
 Ruft die Protokolle für den Container des angegebenen Codepakets für das angegebene Dienstreplikat ab.
@@ -48,13 +40,13 @@ Ruft die Protokolle für den Container des angegebenen Codepakets des Dienstrepl
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle
-- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](/azure/service-fabric/scripts/sfctl-upgrade-application)
+- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](./scripts/sfctl-upgrade-application.md)

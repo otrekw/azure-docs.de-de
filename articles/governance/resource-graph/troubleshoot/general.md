@@ -1,18 +1,14 @@
 ---
 title: Problembehandlung für häufige Fehler
-description: Informationen zum Beheben von Problemen beim Abfragen von Azure-Ressourcen mit Azure Resource Graph
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 08/21/2019
+description: Erfahren Sie, wie Sie Probleme mit verschiedenen SDKs beim Abfragen von Azure-Ressourcen mit Azure Resource Graph beheben können.
+ms.date: 10/14/2020
 ms.topic: troubleshooting
-ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 4cd4d89f276770cba401d7941a975fad8e49c8cd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 13c5d5ffde8b0b82fcafa5e8149400555a0b18a6
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000527"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056956"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Problembehandlung mit Azure Resource Graph
 
@@ -24,7 +20,26 @@ Die meisten Fehler werden durch Probleme beim Ausführen einer Abfrage mit Azure
 
 ## <a name="general-errors"></a>Allgemeine Fehler
 
-### <a name="toomanysubscription"></a>Szenario: Zu viele Abonnements
+### <a name="scenario-throttled-requests"></a><a name="throttled"></a>Szenario: Gedrosselte Anforderungen
+
+#### <a name="issue"></a>Problem
+
+Bei Kunden, die große oder häufige Ressourcenabfragen tätigen, sind die Anforderungen gedrosselt.
+
+#### <a name="cause"></a>Ursache
+
+Azure Resource Graph ordnet, abhängig von einem Zeitfenster, jedem Benutzer eine Kontingentnummer zu. Ein Benutzer kann innerhalb eines Zeitfensters von 5 Sekunden beispielsweise höchstens 15 Abfragen ohne Drosselung senden. Der Kontingentwert wird von vielen Faktoren bestimmt und kann verändert werden. Weitere Informationen finden Sie unter [Drosselung in Azure Resource Graph](../overview.md#throttling).
+
+#### <a name="resolution"></a>Lösung
+
+Es gibt mehrere Methoden für den Umgang mit gedrosselten Anforderungen:
+
+- [Gruppieren von Abfragen](../concepts/guidance-for-throttled-requests.md#grouping-queries)
+- [Staffelungsabfragen](../concepts/guidance-for-throttled-requests.md#staggering-queries)
+- [Gleichzeitige Abfrage](../concepts/guidance-for-throttled-requests.md#query-in-parallel)
+- [Paginierung](../concepts/guidance-for-throttled-requests.md#pagination)
+
+### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>Szenario: Zu viele Abonnements
 
 #### <a name="issue"></a>Problem
 
@@ -40,7 +55,7 @@ Verwenden Sie Batchanforderungen für die Abfrage, die nur aus einem Teil der Ab
 
 ```azurepowershell-interactive
 # Replace this query with your own
-$query = 'project type'
+$query = 'Resources | project type'
 
 # Fetch the full array of subscription IDs
 $subscriptions = Get-AzSubscription
@@ -61,7 +76,7 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="rest-contenttype"></a>Szenario: Nicht unterstützter REST-Header „Content-Type“
+### <a name="scenario-unsupported-content-type-rest-header"></a><a name="rest-contenttype"></a>Szenario: Nicht unterstützter REST-Header „Content-Type“
 
 #### <a name="issue"></a>Problem
 
@@ -74,7 +89,8 @@ Die Azure Resource Graph-REST-API unterstützt nur **application/json** als `Con
 #### <a name="resolution"></a>Lösung
 
 Überprüfen Sie, ob in dem Tool oder Agent, das oder den Sie zum Abfragen von Azure Resource Graph verwenden, der REST-API-Header `Content-Type` für **application/json** konfiguriert ist.
-### <a name="rest-403"></a>Szenario: Keine Leseberechtigung für alle Abonnements in der Liste
+
+### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>Szenario: Keine Leseberechtigung für alle Abonnements in der Liste
 
 #### <a name="issue"></a>Problem
 

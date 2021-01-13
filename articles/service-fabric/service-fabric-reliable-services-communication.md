@@ -1,25 +1,15 @@
 ---
-title: Übersicht über das Reliable Services-Kommunikationsmodell | Microsoft Docs
+title: Übersicht über das Reliable Services-Kommunikationsmodell
 description: Übersicht über das Reliable Services-Kommunikationsmodell, einschließlich Öffnen von Listenern für Dienste, Auflösen von Endpunkten und Kommunikation zwischen Diensten.
-services: service-fabric
-documentationcenter: .net
-author: vturecek
-manager: chackdan
-editor: BharatNarasimman
-ms.assetid: 36217988-420e-409d-b0a4-e0e875b6eac8
-ms.service: service-fabric
-ms.devlang: csharp, java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/01/2017
-ms.author: vturecek
-ms.openlocfilehash: 4d3deb7f3b7e7fb6334525886c6d5b8787a8f940
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3436d29446e963faea9bda47f5a5247b7de7d859
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036782"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912613"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Gewusst wie: Verwenden der Reliable Services-Kommunikations-APIs
 Azure Service Fabric ist als Plattform vollständig unabhängig von der Kommunikation zwischen Diensten. Alle Protokolle und Stapel von UDP bis HTTP sind zulässig. Es liegt in der Entscheidung des Entwicklers, wie Dienste kommunizieren sollen. Das Reliable Services-Anwendungsframework stellt integrierte Kommunikationsstapel und APIs bereit, die Sie zum Erstellen Ihrer benutzerdefinierten Kommunikationskomponenten verwenden können.
@@ -197,7 +187,7 @@ public CompletableFuture<String> openAsync(CancellationToken cancellationToken)
 Über die von Service Fabric bereitgestellten APIs können Clients und andere Dienste dann diese Adresse anhand des Dienstnamens anfordern. Dies ist wichtig, weil die Dienstadresse nicht statisch ist. Dienste werden im Cluster zum Zwecke des Lastenausgleichs von Ressourcen und der Verfügbarkeit hin und her verschoben. Dies ist der Mechanismus, mit dem Clients die Überwachungsadresse für einen Dienst auflösen können.
 
 > [!NOTE]
-> Eine ausführliche Anleitung mit den Schritten zum Schreiben eines Kommunikationslisteners für C# finden Sie unter [Web-API-Dienste von Service Fabric mit selbstgehostetem OWIN](service-fabric-reliable-services-communication-webapi.md). Für Java können Sie dagegen Ihre eigene HTTP-Serverimplementierung schreiben. Siehe dazu das EchoServer-Anwendungsbeispiel unter https://github.com/Azure-Samples/service-fabric-java-getting-started.
+> Eine ausführliche Anleitung mit den Schritten zum Schreiben eines Kommunikationslisteners für C# finden Sie unter [Web-API-Dienste von Service Fabric mit selbstgehostetem OWIN](./service-fabric-reliable-services-communication-aspnetcore.md). Für Java können Sie dagegen Ihre eigene HTTP-Serverimplementierung schreiben. Siehe dazu das EchoServer-Anwendungsbeispiel unter https://github.com/Azure-Samples/service-fabric-java-getting-started.
 >
 >
 
@@ -205,7 +195,7 @@ public CompletableFuture<String> openAsync(CancellationToken cancellationToken)
 Die Reliable Services-API umfasst die folgenden Bibliotheken zum Schreiben von Clients für die Kommunikation mit Diensten.
 
 ### <a name="service-endpoint-resolution"></a>Dienstendpunktauflösung
-Der erste Schritt bei der Kommunikation mit einem Dienst ist die Auflösung einer Endpunktadresse der Partition oder Instanz des Diensts, mit der Sie kommunizieren möchten. Die `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` -Hilfsklasse ist eine allgemeine Grundklasse, mit der Clients den Endpunkt eines Diensts zur Laufzeit ermitteln können. Das Ermitteln des Endpunkts eines Diensts wird in Verbindung mit Service Fabric als *Dienstendpunktauflösung*bezeichnet.
+Der erste Schritt bei der Kommunikation mit einem Dienst ist die Auflösung einer Endpunktadresse der Partition oder Instanz des Diensts, mit der Sie kommunizieren möchten. Die `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` -Hilfsklasse ist eine allgemeine Grundklasse, mit der Clients den Endpunkt eines Diensts zur Laufzeit ermitteln können. Das Ermitteln des Endpunkts eines Diensts wird in Verbindung mit Service Fabric als *Dienstendpunktauflösung* bezeichnet.
 
 Für die Verbindung mit Diensten in einem Cluster kann ServicePartitionResolver mithilfe der Standardeinstellungen erstellt werden. Dies ist die empfohlene Verwendung für die meisten Szenarien:
 
@@ -298,7 +288,7 @@ public class MyCommunicationClient implements CommunicationClient {
 }
 ```
 
-Die Clientfactory ist in erster Linie für die Herstellung der Kommunikation mit Clients zuständig. Bei Clients, die keine permanente Verbindung aufrechterhalten (z.B. HTTP-Clients), muss die Factory lediglich den Client erstellen und zurückgeben. Andere Protokolle, die eine permanente Verbindung aufrechterhalten (z.B. bestimmte binäre Protokolle), müssen von der Factory ebenfalls überprüft werden, um zu ermitteln, ob die Verbindung neu erstellt werden muss.  
+Die Clientfactory ist in erster Linie für die Herstellung der Kommunikation mit Clients zuständig. Bei Clients, die keine permanente Verbindung aufrechterhalten (z.B. HTTP-Clients), muss die Factory lediglich den Client erstellen und zurückgeben. Andere Protokolle, die eine permanente Verbindung aufrechterhalten (z. B. bestimmte binäre Protokolle), müssen von der Factory ebenfalls überprüft werden (`ValidateClient(string endpoint, MyCommunicationClient client)`), um zu ermitteln, ob die Verbindung neu erstellt werden muss.  
 
 ```csharp
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>

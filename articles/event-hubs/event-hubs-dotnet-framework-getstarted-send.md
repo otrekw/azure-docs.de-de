@@ -1,28 +1,17 @@
 ---
-title: 'Senden und Empfangen von Ereignissen mit .NET Framework: Azure Event Hubs | Microsoft-Dokumentation'
-description: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer .NET Framework-Anwendung, die Ereignisse an Azure Event Hubs sendet.
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: c4974bd3-2a79-48a1-aa3b-8ee2d6655b28
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.custom: seodec18
-ms.date: 04/15/2019
-ms.author: shvija
-ms.openlocfilehash: 96ce71a7b3076adec169f103060a167b61c42d5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+title: Azure Event Hubs – Senden und Empfangen von Ereignissen mit .NET Framework
+description: 'Schnellstart: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer .NET Framework-Anwendung, die Ereignisse an Azure Event Hubs sendet.'
+ms.topic: quickstart
+ms.date: 06/23/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ea3ad7e90a947269833a03a4cacf3d4fe76a6620
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65603509"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91334275"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Senden von Ereignissen an oder Empfangen von Ereignissen aus Event Hubs mithilfe von .NET Framework
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Schnellstart: Senden von Ereignissen an oder Empfangen von Ereignissen aus Event Hubs mithilfe von .NET Framework
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
 
 In diesem Tutorial wird gezeigt, wie Sie .NET Framework-Konsolenanwendungen in C# erstellen, die Ereignisse an einen Event Hub senden oder von diesem empfangen. 
@@ -40,7 +29,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine .NET Framework-Anwendung zum Send
 
 Erstellen Sie in Visual Studio mithilfe der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Desktopanwendungsprojekt. Geben Sie dem Projekt den Namen **Sender**.
    
-![Erstellen einer Konsolenanwendung](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
+![Screenshot, der das Fenster „Neues Projekt“ mit der Auswahl „Konsolen-App (.NET Framework)“, dem Projektnamen „Sender“ und hervorgehobener Schaltfläche „OK“ zeigt.](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Hinzufügen des Event Hubs-NuGet-Pakets
 

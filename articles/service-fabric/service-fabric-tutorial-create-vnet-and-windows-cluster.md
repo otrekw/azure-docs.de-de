@@ -1,30 +1,19 @@
 ---
-title: Erstellen eines Service Fabric-Clusters mit Windows in Azure | Microsoft-Dokumentation
+title: Erstellen eines Service Fabric-Clusters unter Windows in Azure
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von PowerShell einen Service Fabric-Windows-Cluster in einem virtuellen Azure-Netzwerk und einer Netzwerksicherheitsgruppe bereitstellen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 12e886c107249c338dc27aefcd2e1a32eba13d3e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598874"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86245040"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Tutorial: Bereitstellen eines Service Fabric-Clusters mit Windows in einem virtuellen Azure-Netzwerk
 
-Dieses Tutorial ist der erste Teil einer Serie. Es wird beschrieben, wie Sie einen Azure Service Fabric-Cluster mit Windows in einem [virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) und einer [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) bereitstellen, indem Sie PowerShell und eine Vorlage verwenden. Wenn Sie fertig sind, verfügen Sie über einen Cluster, der in der Cloud ausgeführt wird und für den Sie Anwendungen bereitstellen können. Informationen zum Erstellen eines Linux-Clusters, der Azure CLI verwendet, finden Sie unter [Erstellen eines sicheren Linux-Clusters in Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+Dieses Tutorial ist der erste Teil einer Serie. Es wird beschrieben, wie Sie einen Azure Service Fabric-Cluster mit Windows in einem [virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) und einer [Netzwerksicherheitsgruppe](../virtual-network/virtual-network-vnet-plan-design-arm.md) bereitstellen, indem Sie PowerShell und eine Vorlage verwenden. Wenn Sie fertig sind, verfügen Sie über einen Cluster, der in der Cloud ausgeführt wird und für den Sie Anwendungen bereitstellen können. Informationen zum Erstellen eines Linux-Clusters, der Azure CLI verwendet, finden Sie unter [Erstellen eines sicheren Linux-Clusters in Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 In diesem Tutorial wird ein Produktionsszenario beschrieben. Wenn Sie einen kleinen Cluster für Testzwecke erstellen möchten, helfen Ihnen die Informationen unter [Erstellen von Service Fabric-Clustern](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) weiter.
 
@@ -59,9 +48,9 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 * Installieren Sie das [Service Fabric SDK und das PowerShell-Modul](service-fabric-get-started.md).
-* Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Installieren Sie [Azure PowerShell](/powershell/azure/install-az-ps).
 * Machen Sie sich mit den grundlegenden Konzepten von [Azure-Clustern](service-fabric-azure-clusters-overview.md) vertraut.
-* [Planen und Vorbereiten](service-fabric-cluster-azure-deployment-preparation.md) der Bereitstellung eines Produktionsclusters
+* Führen Sie die Schritte zum [Planen und Vorbereiten](service-fabric-cluster-azure-deployment-preparation.md) der Bereitstellung eines Produktionsclusters aus.
 
 Mit den folgenden Schritten wird ein Service Fabric-Cluster mit sieben Knoten erstellt. Zum Berechnen der Kosten, die durch das Ausführen eines Service Fabric-Clusters in Azure anfallen, verwenden Sie den [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/).
 
@@ -84,8 +73,8 @@ In der Ressource **Microsoft.ServiceFabric/clusters** wird ein Windows-Cluster m
 * Geschütztes Zertifikat (in den Vorlagenparametern konfigurierbar).
 * [Reverseproxy](service-fabric-reverseproxy.md) aktiviert.
 * [DNS-Dienst](service-fabric-dnsservice.md) aktiviert.
-* [Dauerhaftigkeitsstufe](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) „Bronze“ (in den Vorlagenparametern konfigurierbar).
-* [Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) „Silber“ (in den Vorlagenparametern konfigurierbar).
+* [Dauerhaftigkeitsstufe](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) „Bronze“ (in den Vorlagenparametern konfigurierbar).
+* [Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) „Silber“ (in den Vorlagenparametern konfigurierbar).
 * Clientverbindungsendpunkt: 19000 (in den Vorlagenparametern konfigurierbar).
 * HTTP-Gatewayendpunkt: 19080 (in den Vorlagenparametern konfigurierbar).
 
@@ -122,7 +111,7 @@ Die folgenden Regeln für eingehenden Datenverkehr sind für die Ressource **Mic
 Falls andere Anwendungsports benötigt werden, müssen Sie die Ressourcen **Microsoft.Network/loadBalancers** und **Microsoft.Network/networkSecurityGroups** anpassen, um den eingehenden Datenverkehr zuzulassen.
 
 ### <a name="windows-defender"></a>Windows Defender
-Das [Windows Defender-Antivirenprogramm](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) ist unter Windows Server 2016 standardmäßig installiert und betriebsbereit. Die Benutzeroberfläche wird bei einigen SKUs standardmäßig installiert, aber dies ist keine erforderliche Komponente. Für jeden in der Vorlage deklarierten Knotentyp bzw. für jede in der Vorlage deklarierte VM-Skalierungsgruppe wird die [Antimalware-Erweiterung für virtuelle Azure-Computer](/azure/virtual-machines/extensions/iaas-antimalware-windows) verwendet, um die Service Fabric-Verzeichnisse und -Prozesse auszuschließen:
+Das [Windows Defender-Antivirenprogramm](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) ist unter Windows Server 2016 standardmäßig installiert und betriebsbereit. Die Benutzeroberfläche wird bei einigen SKUs standardmäßig installiert, aber dies ist keine erforderliche Komponente. Für jeden in der Vorlage deklarierten Knotentyp bzw. für jede in der Vorlage deklarierte VM-Skalierungsgruppe wird die [Antimalware-Erweiterung für virtuelle Azure-Computer](../virtual-machines/extensions/iaas-antimalware-windows.md) verwendet, um die Service Fabric-Verzeichnisse und -Prozesse auszuschließen:
 
 ```json
 {
@@ -156,8 +145,8 @@ In der Parameterdatei [azuredeploy.parameters][parameters] werden viele Werte de
 
 **Parameter** | **Beispielwert** | **Hinweise** 
 |---|---|---|
-|adminUserName|vmadmin| Administratorbenutzername für die Cluster-VMs [Benutzernamenanforderungen für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
-|adminPassword|Password#1234| Administratorkennwort für die Cluster-VMs [Kennwortanforderungen für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
+|adminUserName|vmadmin| Administratorbenutzername für die Cluster-VMs [Benutzernamenanforderungen für virtuelle Computer](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm). |
+|adminPassword|Password#1234| Administratorkennwort für die Cluster-VMs [Kennwortanforderungen für virtuelle Computer](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mysfcluster123| Name des Clusters Darf nur Buchstaben und Zahlen enthalten. Kann 3 bis 23 Zeichen enthalten.|
 |location|southcentralus| Standort des Clusters |
 |certificateThumbprint|| <p>Der Wert sollte leer sein, wenn ein selbstsigniertes Zertifikat erstellt oder eine Zertifikatsdatei bereitgestellt wird.</p><p>Um ein vorhandenes, zuvor in einen Schlüsseltresor hochgeladenes Zertifikat zu verwenden, geben Sie den Wert für den SHA-1-Zertifikatfingerabdruck ein. Beispiel: „6190390162C988701DB5676EB81083EA608DCCF3“.</p> |
@@ -167,7 +156,7 @@ In der Parameterdatei [azuredeploy.parameters][parameters] werden viele Werte de
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Einrichten der Azure Active Directory-Clientauthentifizierung
 Für Service Fabric-Cluster, die in einem öffentlichen, in Azure gehosteten Netzwerk bereitgestellt werden, wird im Zusammenhang mit der gegenseitigen Client-zu-Knoten-Authentifizierung Folgendes empfohlen:
 * Verwenden von Azure Active Directory für die Clientidentität.
-* Verwenden eines Zertifikats für die Serveridentität und SSL-Verschlüsselung der HTTP-Kommunikation.
+* Verwenden eines Zertifikats für die Serveridentität und TLS-/SSL-Verschlüsselung der HTTP-Kommunikation.
 
 Das Einrichten von Azure Active Directory (Azure AD) zur Authentifizierung von Clients für einen Service Fabric-Cluster muss vor dem [Erstellen des Clusters](#createvaultandcert) durchgeführt werden. Mit Azure AD können Organisationen (so genannte Mandanten) den Benutzerzugriff auf Anwendungen verwalten. 
 
@@ -178,7 +167,7 @@ Service Fabric-Cluster bieten unterschiedliche Einstiegspunkte für ihre Verwal
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits einen Mandanten erstellt haben. Lesen Sie andernfalls zunächst den Artikel [Einrichten eines Azure Active Directory-Mandanten](../active-directory/develop/quickstart-create-new-tenant.md).
 
-Wir haben eine Reihe von Windows PowerShell-Skripts erstellt, um Schritte der Konfiguration von Azure AD mit einem Service Fabric-Cluster zu vereinfachen. [Laden Sie die Skripts auf Ihren Computer herunter.](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool)
+Wir haben eine Reihe von Windows PowerShell-Skripts erstellt, um Schritte der Konfiguration von Azure AD mit einem Service Fabric-Cluster zu vereinfachen. [Laden Sie die Skripts auf Ihren Computer herunter.](https://github.com/Azure-Samples/service-fabric-aad-helpers)
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Erstellen von Azure AD-Anwendungen und Zuweisen von Benutzern zu Rollen
 Erstellen Sie zwei Azure AD-Anwendungen, um den Zugriff auf den Cluster zu steuern: eine Webanwendung und eine native Anwendung. Nachdem Sie die Anwendungen für Ihren Cluster erstellt haben, müssen Ihre Benutzer den [von Service Fabric unterstützten Rollen](service-fabric-cluster-security-roles.md) zugewiesen werden: „read-only“ (schreibgeschützt) und „admin“ (Administrator).
@@ -714,7 +703,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-In den anderen Artikeln dieser Tutorialreihe wird der erstellte Cluster verwendet. Wenn Sie nicht direkt mit dem nächsten Artikel fortfahren, sollten Sie [den Cluster löschen](service-fabric-cluster-delete.md), um anfallende Gebühren zu vermeiden.
+In den anderen Artikeln dieser Tutorialreihe wird der erstellte Cluster verwendet. Wenn Sie nicht direkt mit dem nächsten Artikel fortfahren, sollten Sie [den Cluster löschen](./service-fabric-tutorial-delete-cluster.md), um anfallende Gebühren zu vermeiden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

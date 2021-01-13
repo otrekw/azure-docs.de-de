@@ -1,29 +1,42 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 6c905842778f43196ac463b99993a3cbcd436fa5
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 07/21/2020
+ms.openlocfilehash: 06a503e800309d8689735417931820d9f16a6e75
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036707"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87102681"
 ---
-### <a name="prerequisites"></a>Voraussetzungen
-* Ein [OneDrive](https://OneDrive.com)-Konto 
+## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie Ihr OneDrive for Business-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für Verbindungen mit Ihrem OneDrive for Business-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen. 
+* Ein [OneDrive for Business](https://OneDrive.com)-Konto 
 
-Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem OneDrive for Business-Konto:
+Bevor Sie Ihr OneDrive for Business-Konto in Logik-Apps verwenden können, müssen Sie den Logik-Apps die Berechtigung erteilen, Verbindungen mit Ihrem OneDrive for Business-Konto im Azure-Portal herzustellen.
 
-1. Um eine Verbindung mit OneDrive for Business herzustellen, wählen Sie im Logik-App-Designer in der Dropdownliste **Von Microsoft verwaltete APIs anzeigen** aus, und geben Sie dann *OneDrive for Business* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus:  
-   ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
-2. Wenn Sie noch keine Verbindungen mit OneDrive for Business hergestellt haben, werden Sie aufgefordert, Ihre OneDrive for Business-Anmeldeinformationen anzugeben. Mit diesen Anmeldeinformationen wird Ihre Logik-App autorisiert, eine Verbindung mit Ihrem OneDrive for Business-Konto herzustellen und auf dessen Daten zuzugreifen:  
-   ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)
+Befolgen Sie die nachstehenden Schritte, um Ihren Logik-Apps Verbindungen mit Ihrem OneDrive for Business-Konto zu genehmigen:  
+
+1. Melden Sie sich beim Azure-Portal an. 
+
+1. Wählen Sie unter **Azure-Dienste** die Option **Logik-Apps** aus. Wählen Sie dann den Namen Ihrer Logik-App aus der Liste aus.
+
+1. Wählen Sie im Menü Ihrer Logik-App unter **Entwicklungstools** die Option **Logik-App-Designer** aus.
+
+1. Wählen Sie im Logik-App-Designer in der Dropdownliste **Von Microsoft verwaltete APIs anzeigen** aus, und geben Sie dann *OneDrive for Business* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus:  
+
+   ![Screenshot von Logik-App-Designer mit einem Wiederholungstrigger bei OneDrive for Business-API-Aktionen](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
+
+2. Wenn Sie noch keine Verbindungen mit OneDrive for Business hergestellt haben, werden Sie aufgefordert, Ihre OneDrive for Business-Anmeldeinformationen anzugeben. Mit diesen Anmeldeinformationen wird Ihre Logik-App autorisiert, auf die Daten Ihres OneDrive for Business-Kontos zuzugreifen:  
+
+   ![Screenshot von Logik-App-Designer mit der Anmeldeaufforderung für OneDrive for Business](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)
+
 3. Geben Sie Ihren OneDrive for Business-Benutzernamen und das zugehörige Kennwort zum Autorisieren Ihrer Logik-App an:  
-   ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-3.png)   
-4. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können:  
-   ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-4.png)   
 
+   ![Screenshot der OneDrive for Business-Anmeldeseite mit der Anmeldeaufforderung](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-3.png)   
+
+4. Die Verbindung wird nun im Schritt aufgeführt. Wählen Sie „Speichern“ aus, und fahren Sie mit dem Erstellen Ihrer Logik-App fort. 
+
+   ![Screenshot von Logik-App-Designer mit dem Trigger bei der aufgelisteten OneDrive for Business -Verbindung](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-4.png)   

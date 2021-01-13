@@ -1,29 +1,23 @@
 ---
-title: Verwenden der Application Health-Erweiterung mit Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
+title: Verwenden der Application Health-Erweiterung mit Azure-VM-Skalierungsgruppen
 description: Erfahren Sie, wie Sie mit der Application Health-Erweiterung die Integrität Ihrer Anwendungen überwachen, die in VM-Skalierungsgruppen bereitgestellt werden.
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: drewm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: e074d76f9ed095725d99bddc9eb21925f4b3697c
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.subservice: extensions
+ms.date: 05/06/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114481"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84783043"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Verwenden der Application Health-Erweiterung mit VM-Skalierungsgruppen
-Überwachung der Integrität Ihrer Anwendung ist ein wichtiges Signal für das Verwalten und Aktualisieren Ihrer Bereitstellung. Azure-VM-Skalierungsgruppen bieten Unterstützung für [parallele Upgrades](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) einschließlich [automatischer Betriebssystemimage-Upgrades](virtual-machine-scale-sets-automatic-upgrade.md), die von der Überwachung der Integrität der einzelnen Instanzen beim Upgrade Ihrer Bereitstellung abhängig sind.
+Überwachung der Integrität Ihrer Anwendung ist ein wichtiges Signal für das Verwalten und Aktualisieren Ihrer Bereitstellung. Azure-VM-Skalierungsgruppen bieten Unterstützung für [parallele Upgrades](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) einschließlich [automatischer Betriebssystemimage-Upgrades](virtual-machine-scale-sets-automatic-upgrade.md), die von der Überwachung der Integrität der einzelnen Instanzen beim Upgrade Ihrer Bereitstellung abhängig sind. Sie können die Integritätserweiterung auch verwenden, um die Anwendungsintegrität jeder Instanz in Ihrer Skalierungsgruppe zu überwachen und Instanzreparaturen mit [automatischen Instanzreparaturen](virtual-machine-scale-sets-automatic-instance-repairs.md) durchzuführen.
 
 In diesem Artikel erfahren Sie, wie Sie mit der Application Health-Erweiterung die Integrität Ihrer Anwendungen überwachen, die in VM-Skalierungsgruppen bereitgestellt werden.
 
@@ -39,7 +33,7 @@ Da die Erweiterung von einem virtuellen Computer aus über die Integrität beric
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
-Der folgende JSON-Code zeigt das Schema für die Application Health-Erweiterung. Die Erweiterung erfordert mindestens eine „Tcp“- oder „http“-Anforderung mit einem zugeordneten Port bzw. Anforderungspfad.
+Der folgende JSON-Code zeigt das Schema für die Application Health-Erweiterung. Die Erweiterung erfordert mindestens eine „Tcp“-, „http“- oder „https“-Anforderung mit einem zugeordneten Port bzw. Anforderungspfad.
 
 ```json
 {
@@ -63,20 +57,20 @@ Der folgende JSON-Code zeigt das Schema für die Application Health-Erweiterung.
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| NAME | Wert/Beispiel | Datentyp
+| Name | Wert/Beispiel | Datentyp
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| publisher | `Microsoft.ManagedServices` | string |
-| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | string |
-| typeHandlerVersion | `1.0` | int |
+| publisher | `Microsoft.ManagedServices` | Zeichenfolge |
+| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | Zeichenfolge |
+| typeHandlerVersion | `1.0` | INT |
 
 ### <a name="settings"></a>Einstellungen
 
-| NAME | Wert/Beispiel | Datentyp
+| Name | Wert/Beispiel | Datentyp
 | ---- | ---- | ----
-| protocol | `http` oder `tcp` | string |
-| port | Optional, wenn das Protokoll `http` ist, obligatorisch, wenn das Protokoll `tcp` ist. | int |
-| requestPath | Obligatorisch, wenn das Protokoll `http` ist, nicht zulässig, wenn das Protokoll `tcp` ist. | string |
+| Protokoll | `http` oder `https` oder `tcp` | Zeichenfolge |
+| port | Optional, wenn das Protokoll `http` oder `https` ist, obligatorisch, wenn das Protokoll `tcp` ist. | INT |
+| requestPath | Obligatorisch, wenn das Protokoll `http` oder `https` ist, nicht zulässig, wenn das Protokoll `tcp` ist. | Zeichenfolge |
 
 ## <a name="deploy-the-application-health-extension"></a>Bereitstellen der Application Health-Erweiterung
 Es gibt mehrere Möglichkeiten, die Application Health-Erweiterung für Ihre Skalierungsgruppen bereitzustellen, wie in den folgenden Beispielen beschrieben.
@@ -109,7 +103,7 @@ Verwenden Sie `PATCH`, um eine bereits bereitgestellte Erweiterung zu bearbeiten
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Verwenden Sie das [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)-Cmdlet, um die Application Health-Erweiterung der Skalierungsgruppen-Modelldefinition hinzuzufügen.
+Verwenden Sie das [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)-Cmdlet, um die Application Health-Erweiterung der Skalierungsgruppenmodell-Definition hinzuzufügen.
 
 Im folgenden Beispiel wird die Application Health-Erweiterung in dem `extensionProfile` Skalierungsgruppenmodell einer Windows-basierten Skalierungsgruppe hinzugefügt. Im Beispiel wird das neue Az PowerShell-Modul verwendet.
 
@@ -179,7 +173,8 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 ```
 
 ```Linux
-/var/lib/waagent/apphealth
+/var/lib/waagent/Microsoft.ManagedServices.ApplicationHealthLinux-<extension_version>/status
+/var/log/azure/applicationhealth-extension
 ```
 
 Die Protokolle erfassen auch in regelmäßigen Abständen den Integritätsstatus der Anwendung.

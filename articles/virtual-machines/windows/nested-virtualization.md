@@ -1,22 +1,18 @@
 ---
-title: Aktivieren der geschachtelten Virtualisierung auf Azure-VMs | Microsoft-Dokumentation
+title: Aktivieren der geschachtelten Virtualisierung auf Azure-VMs
 description: Aktivieren der geschachtelten Virtualisierung auf Azure-VMs
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
 ms.author: cynthn
 ms.date: 10/09/2017
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 843dfa64cdf0af3ad6cfd3a9f83c16f0ce85fcd0
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 03df7db13ebd3ebec407bb046cc735c835e01068
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720216"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87074257"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM
 
@@ -26,7 +22,7 @@ In diesem Artikel werden die Schritte erläutert, die zum Aktivieren von Hyper-V
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>Erstellen eines schachtelungsfähigen virtuellen Azure-Computers
 
-Erstellen Sie einen neuen virtuellen Windows Server 2016-Azure-Computer.  Zur schnellen Information: Alle virtuellen v3-Computer unterstützen geschachtelte Virtualisierung. Eine vollständige Liste der VM-Größen, die Schachtelung unterstützen, finden Sie im [Artikel zur Azure-Compute-Einheit](acu.md).
+Erstellen Sie einen neuen virtuellen Windows Server 2016-Azure-Computer. Eine vollständige Liste der VM-Größen, die Schachtelung unterstützen, finden Sie im [Artikel zur Azure-Compute-Einheit](../acu.md).
 
 Denken Sie daran, eine ausreichende VM-Größe zu wählen, um die Anforderungen eines virtuellen Gastcomputers zu unterstützen. Bei diesem Beispiel wird eine Azure-VM der Größe D3_v3 verwendet. 
 
@@ -34,7 +30,7 @@ Informationen zur regionalen Verfügbarkeit von VMs der Serien Dv3 oder Ev3 find
 
 >[!NOTE]
 >
->Detaillierte Informationen zum Erstellen einer neuen VM finden Sie unter [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm).
+>Detaillierte Informationen zum Erstellen einer neuen VM finden Sie unter [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](./tutorial-manage-vm.md).
     
 ## <a name="connect-to-your-azure-vm"></a>Herstellen einer Verbindung mit der Azure-VM
 
@@ -42,7 +38,7 @@ Erstellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer.
 
 1. Klicken Sie in den Eigenschaften des virtuellen Computers auf die Schaltfläche **Verbinden**. Eine Remotedesktopprotokoll-Datei (RDP-Datei) wird erstellt und heruntergeladen.
 
-2. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen. Klicken Sie in der angezeigten Aufforderung auf **Verbinden**. Auf einem Macintosh benötigen Sie einen RDP-Client, z.B. diesen [Remotedesktopclient](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) aus dem Mac App Store.
+2. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen. Klicken Sie in der angezeigten Aufforderung auf **Verbinden**. Auf einem Macintosh benötigen Sie einen RDP-Client, z. B. diesen [Remotedesktopclien](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)t aus dem Mac App Store.
 
 3. Geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie beim Erstellen des virtuellen Computers festgelegt haben, und klicken Sie anschließend auf **OK**.
 
@@ -52,7 +48,7 @@ Erstellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer.
 Sie können diese Einstellungen manuell konfigurieren. Alternativ dazu haben wir ein PowerShell-Skript bereitgestellt, um die Konfiguration zu automatisieren.
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Option 1: Verwenden eines PowerShell-Skripts zum Konfigurieren der geschachtelten Virtualisierung
-Ein PowerShell-Skript zum Aktivieren der geschachtelten Virtualisierung auf einem Windows Server 2016-Host steht auf [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) zur Verfügung. Das Skript überprüft die Voraussetzungen und konfiguriert dann die geschachtelte Virtualisierung auf der Azure-VM. Um die Konfiguration abzuschließen, ist ein Neustart der Azure-VM erforderlich. Das Skript funktioniert möglicherweise in anderen Umgebungen, dies wird jedoch nicht garantiert. Sehen Sie sich den Azure-Blogbeitrag mit einer Livedemonstration zur geschachtelten Virtualisierung auf Azure an: [https://aka.ms/AzureNVblog](https://aka.ms/AzureNVblog ).
+Ein PowerShell-Skript zum Aktivieren der geschachtelten Virtualisierung auf einem Windows Server 2016-Host steht auf [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) zur Verfügung. Das Skript überprüft die Voraussetzungen und konfiguriert dann die geschachtelte Virtualisierung auf der Azure-VM. Um die Konfiguration abzuschließen, ist ein Neustart der Azure-VM erforderlich. Das Skript funktioniert möglicherweise in anderen Umgebungen, dies wird jedoch nicht garantiert. Sehen Sie sich den Azure-Blogbeitrag mit einer Livedemonstration zur geschachtelten Virtualisierung auf Azure an: https://aka.ms/AzureNVblog.
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>Option 2: Manuelles Konfigurieren der geschachtelten Virtualisierung
 
@@ -141,7 +137,7 @@ Sie können der Gast-VM eine IP-Adresse zuweisen, indem Sie auf der VM manuell e
 ###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>Option 1: Konfigurieren von DHCP, um der Gast-VM dynamisch eine IP-Adresse zuzuweisen
 Führen Sie die unten stehenden Schritte aus, um auf der Gast-VM DHCP für die dynamische Adresszuweisung zu konfigurieren.
 
-#### <a name="install-dchp-server-on-the-azure-vm"></a>Installieren eines DHCP-Servers auf der Azure-VM
+#### <a name="install-dhcp-server-on-the-azure-vm"></a>Installieren eines DHCP-Servers auf der Azure-VM
 
 1. Öffnen Sie den Server-Manager. Klicken Sie auf dem Dashboard auf **Rollen und Features hinzufügen**. Der Assistent zum Hinzufügen von Rollen und Features wird geöffnet.
   
@@ -159,7 +155,7 @@ Führen Sie die unten stehenden Schritte aus, um auf der Gast-VM DHCP für die d
   
 3. Geben Sie einen Namen und eine Beschreibung für den Bereich ein, und klicken Sie auf **Weiter**.
   
-4. Definieren Sie einen IP-Adressbereich für Ihren DHCP-Server (z.B. 192.168.0.100 bis 192.168.0.200).
+4. Definieren Sie einen IP-Adressbereich für Ihren DHCP-Server (z. B. 192.168.0.100 bis 192.168.0.200).
   
 5. Klicken Sie auf **Weiter**, bis die Seite „Standardgateway“ angezeigt wird. Geben Sie die zuvor erstellte IP-Adresse als Standardgateway ein (z.B. 192.168.0.1), und klicken Sie dann auf **Hinzufügen**.
   
@@ -185,6 +181,4 @@ In diesem Beispiel verwenden Sie eine Adresse im Bereich 192.168.0.0/24.
 Öffnen Sie auf der Gast-VM einen Browser, und navigieren Sie zu einer Webseite.
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
-## <a name="set-up-intranet-connectivity-for-the-guest-virtual-machine"></a>Einrichten der Intranetkonnektivität für die Gast-VM
-
-Anleitungen zum Aktivieren der transparenten Konnektivität zwischen Gast-VMs und Azure-VMs finden Sie in [diesem Dokument](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization-azure-virtual-network).
+Anleitungen zum Aktivieren der transparenten Konnektivität zwischen Gast-VMs und Azure-VMs finden Sie in [diesem Dokument](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization).

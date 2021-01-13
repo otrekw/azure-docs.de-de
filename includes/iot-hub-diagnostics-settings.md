@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 2498711a5b7e5bce29cd0054ba40257f8f996d43
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: f3cab4909937bbf5ccb0f72b194b08810c0487c2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266822"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84792018"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>Aktivieren der Protokollierung mit Diagnoseeinstellungen
 
@@ -44,7 +44,7 @@ ms.locfileid: "71266822"
    * Dateiuploads
    * Nachrichtenweiterleitung
    * Cloud-zu-Gerät-Zwillingsvorgänge
-   * Geräte-zu-Cloud-Zwillingsvorgänge
+   * Gerät-zu-Cloud-Zwillingsvorgänge
    * Zwillingsvorgänge
    * Auftragsvorgänge
    * Direkte Methoden  
@@ -63,4 +63,4 @@ Select-AzSubscription -SubscriptionName <subscription that includes your IoT Hub
 Set-AzDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```
 
-Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel auf dem Blatt **Diagnoseeinstellungen** angezeigt. Weitere Informationen zur Konfiguration von Diagnosen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../articles/azure-monitor/platform/resource-logs-overview.md).
+Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel auf dem Blatt **Diagnoseeinstellungen** angezeigt. Weitere Informationen zur Konfiguration von Diagnosen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../articles/azure-monitor/platform/platform-logs-overview.md).

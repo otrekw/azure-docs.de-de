@@ -1,19 +1,19 @@
 ---
-title: Installieren eines Linux-Masterzielservers für ein Failback an einem lokalen Standort | Microsoft-Dokumentation
+title: Installieren eines Masterzielservers für ein Linux-VM-Failback mit Azure Site Recovery
 description: Hier erfahren Sie, wie Sie einen Linux-Masterzielserver für ein Failback an einem lokalen Standort während der Notfallwiederherstellung virtueller VMware-Computer in Azure mithilfe von Azure Site Recovery einrichten.
 author: mayurigupta13
 services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 09/15/2020
 ms.author: mayg
-ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 9e1008f7acbfe0685b7a171176c7dc54592d1491
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904414"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019241"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Installieren eines Linux-Masterzielservers für Failbacks
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -27,7 +27,7 @@ Falls es sich bei Ihrem geschützten virtuellen Computer um einen virtuellen Win
 ## <a name="overview"></a>Übersicht
 Dieser Artikel enthält Anleitungen zum Installieren eines Linux-Masterziels.
 
-Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) veröffentlichen.
+Kommentare oder Fragen können Sie am Ende dieses Artikels oder auf der [Microsoft F&A-Seite für Azure Recovery Services](/answers/topics/azure-site-recovery.html) veröffentlichen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,23 +38,17 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azu
 * Die Version des Masterziels darf nicht höher als die des Prozess- und des Konfigurationsservers sein. Beispiel: Bei Version 9.4 des Konfigurationsservers kann die Version des Masterziels 9.4 oder 9.3, aber nicht 9.5 sein.
 * Das Masterziel kann nur ein virtueller VMware-Computer und kein physischer Server sein.
 
+> [!NOTE]
+> Stellen Sie sicher, dass Sie Storage vMotion nicht auf Verwaltungskomponenten wie dem Masterziel aktivieren. Wenn das Masterziel nach erfolgreichem erneuten Schützen verschoben wird, können die Datenträger des virtuellen Computers nicht getrennt werden. In diesem Fall tritt beim Failback ein Fehler auf.
+
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>Größenrichtlinien für das Erstellen von Masterzielservern
 
 Erstellen Sie das Masterziel gemäß den folgenden Richtlinien zum Festlegen der Größe:
 - **RAM**: 6 GB oder mehr
 - **Größe des Betriebssystemdatenträgers**: 100 GB oder mehr (für die Betriebssysteminstallation)
-- **Zusätzliche Datenträgergröße für Aufbewahrungslaufwerk**: 1 TB
+- **Zusätzliche Datenträgergröße für Aufbewahrungslaufwerk**: 1 TB
 - **CPU-Kerne**: 4 Kerne oder mehr
-
-Folgende Ubuntu-Kernels werden unterstützt:
-
-
-|Kernelserie  |Unterstützung bis  |
-|---------|---------|
-|4.4      |4.4.0-81-generic         |
-|4.8      |4.8.0-56-generic         |
-|4.10     |4.10.0-24-generic        |
-
+- **Kernel**: 4.16.*
 
 ## <a name="deploy-the-master-target-server"></a>Bereitstellen des Masterzielservers
 
@@ -117,7 +111,7 @@ Legen Sie den Datenträger mit dem ISO-Image für Ubuntu 16.04.2 minimal 64 Bit 
 
 1.  Wählen Sie in der Auswahl für die Proxykonfiguration die Standardoption, und wählen Sie dann **Continue**, und drücken Sie die **EINGABETASTE**.
      
-     ![Option zum Verwalten von Upgrades auswählen](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
+     ![Screenshot: Auswählen von „Continue“ und Drücken der EINGABETASTE](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
 1.  Wählen Sie in der Auswahl zur Verwaltung von Upgrades auf Ihrem System die Option **No automatic updates**, und drücken Sie die **EINGABETASTE**.
 
@@ -244,7 +238,7 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
 
     ![Multipfad-ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Formatieren Sie das Laufwerk, und erstellen Sie auf dem neuen Laufwerk ein Dateisystem: **mkfs.ext4 /dev/mapper/\<Multipfad-ID des Aufbewahrungsdatenträgers>** .
+3. Formatieren Sie das Laufwerk, und erstellen Sie dann ein Dateisystem auf dem neuen Laufwerk: **mkfs.ext4 /dev/mapper/\<Retention disk's multipath id>** .
     
     ![Dateisystem](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -261,7 +255,7 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
     
     Drücken Sie **EINFG**, um mit der Bearbeitung der Datei zu beginnen. Erstellen Sie eine neue Zeile, und fügen Sie den folgenden Text ein. Bearbeiten Sie die Multipfad-ID des Datenträgers auf Basis der hervorgehobenen Multipfad-ID aus dem vorherigen Befehl.
 
-    **/dev/Mapper/\<Multipfad-ID des Aufbewahrungsdatenträgers> /mnt/retention ext4 rw 0 0**
+    **/dev/mapper/\<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
 
     Drücken Sie **ESC**, und geben Sie **:wq** (Schreiben und Beenden) ein, um das Editor-Fenster zu schließen.
 
@@ -274,16 +268,22 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
 > [!NOTE]
 > Vergewissern Sie sich vor dem Installieren des Masterzielservers, dass die Datei **/etc/hosts** auf dem virtuellen Computer Einträge enthält, mit denen der lokale Hostname den IP-Adressen der einzelnen Netzwerkkarten zugeordnet wird.
 
-1. Kopieren Sie die Passphrase unter **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** auf dem Konfigurationsserver. Speichern Sie diese dann im gleichen Verzeichnis als **passphrase.txt**, indem Sie den folgenden Befehl ausführen:
+1. Führen Sie den folgenden Befehl aus, um das Masterziel zu installieren.
+
+    ```
+    ./install -q -d /usr/local/ASR -r MT -v VmWare
+    ```
+
+2. Kopieren Sie die Passphrase unter **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** auf dem Konfigurationsserver. Speichern Sie diese dann im gleichen Verzeichnis als **passphrase.txt**, indem Sie den folgenden Befehl ausführen:
 
     `echo <passphrase> >passphrase.txt`
 
     Beispiel: 
 
-       `echo itUx70I47uxDuUVY >passphrase.txt`
+    `echo itUx70I47uxDuUVY >passphrase.txt`
     
 
-2. Notieren Sie sich die IP-Adresse des Konfigurationsservers. Führen Sie den folgenden Befehl aus, um den Masterzielserver zu installieren und den Server auf dem Konfigurationsserver zu registrieren.
+3. Notieren Sie sich die IP-Adresse des Konfigurationsservers. Führen Sie den folgenden Befehl aus, um den Server beim Konfigurationsserver zu registrieren.
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
@@ -314,16 +314,10 @@ Nachdem die Installation abgeschlossen ist, registrieren Sie den Konfigurationss
 
 1. Notieren Sie die IP-Adresse des Konfigurationsservers. Sie benötigen sie im nächsten Schritt.
 
-2. Führen Sie den folgenden Befehl aus, um den Masterzielserver zu installieren und den Server auf dem Konfigurationsserver zu registrieren.
+2. Führen Sie den folgenden Befehl aus, um den Server beim Konfigurationsserver zu registrieren.
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
-    ```
-    Beispiel: 
-
-    ```
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
+    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh
     ```
 
      Warten Sie, bis das Skript abgeschlossen wurde. Wenn das Masterziel erfolgreich registriert wurde, wird es auf der **Site Recovery-Infrastrukturseite** im Portal aufgeführt.
@@ -348,9 +342,13 @@ Sie sehen, dass im Feld **Version** die Versionsnummer des Masterziels angegeben
 
 * Das Masterziel darf keine Momentaufnahmen auf dem virtuellen Computer aufweisen. Wenn Momentaufnahmen vorhanden sind, schlägt das Failback fehl.
 
-* Aufgrund von benutzerdefinierten NIC-Konfigurationen ist die Netzwerkschnittstelle während des Systemstarts deaktiviert, und der Masterziel-Agent kann nicht initialisiert werden. Stellen Sie sicher, dass die folgenden Eigenschaften richtig festgelegt sind. Überprüfen Sie diese Eigenschaften in den Dateien der Ethernet-Karte: „/etc/sysconfig/network-scripts/ifcfg-eth*“.
-    * BOOTPROTO=dhcp
-    * ONBOOT=yes
+* Aufgrund von benutzerdefinierten NIC-Konfigurationen ist die Netzwerkschnittstelle während des Systemstarts deaktiviert, und der Masterziel-Agent kann nicht initialisiert werden. Stellen Sie sicher, dass die folgenden Eigenschaften richtig festgelegt sind. Überprüfen Sie diese Eigenschaften in der Datei der Ethernet-Karte unter „/etc/network/interfaces“.
+    * auto eth0
+    * iface eth0 inet dhcp <br>
+
+    Starten Sie den Netzwerkdienst mit dem folgenden Befehl neu: <br>
+
+`sudo systemctl restart networking`
 
 
 ## <a name="next-steps"></a>Nächste Schritte

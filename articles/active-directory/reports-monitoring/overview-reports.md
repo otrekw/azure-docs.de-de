@@ -3,7 +3,7 @@ title: Was sind Azure Active Directory-Berichte? | Microsoft-Dokumentation
 description: Dieser Artikel bietet eine allgemeine Übersicht über Azure Active Directory-Berichte.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
@@ -13,16 +13,16 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: chadam
-ms.reviewer: dhanyahk
+ms.date: 09/30/2020
+ms.author: markvi
+ms.reviewer: sarbar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd3907231ce3963d43fa8279039a736b63fc2043
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 4f9a51c10a4f390e5627bccf35ab5dc74689e9c6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127271"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91566821"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Was sind Azure Active Directory-Berichte?
 
@@ -44,9 +44,9 @@ Die Architektur der Berichterstellung basiert auf zwei Hauptkomponenten:
 
 Mit den Sicherheitsberichten können Sie die Identitäten Ihrer Organisation schützen. Es gibt zwei Arten von Sicherheitsberichten:
 
-- **Benutzer mit Risikomarkierung:** Im [Sicherheitsbericht „Benutzer mit Risikomarkierung“](concept-user-at-risk.md) erhalten Sie eine Übersicht über Benutzerkonten, die unter Umständen kompromittiert wurden.
+- **Benutzer mit Risikomarkierung:** Im [Sicherheitsbericht „Benutzer mit Risikomarkierung“](../identity-protection/overview-identity-protection.md) erhalten Sie eine Übersicht über Benutzerkonten, die unter Umständen kompromittiert wurden.
 
-- **Riskante Anmeldungen:** Mit dem [Sicherheitsbericht „Riskante Anmeldungen“](concept-risky-sign-ins.md) erhalten Sie einen Indikator für Anmeldeversuche von Benutzern, die nicht der rechtmäßige Besitzer eines Benutzerkontos sind. 
+- **Riskante Anmeldungen:** Mit dem [Sicherheitsbericht „Riskante Anmeldungen“](../identity-protection/overview-identity-protection.md) erhalten Sie einen Indikator für Anmeldeversuche von Benutzern, die nicht der rechtmäßige Besitzer eines Benutzerkontos sind. 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf einen Sicherheitsbericht?  
 
@@ -68,6 +68,12 @@ Anhand von Aktivitätsberichten können Sie das Verhalten von Benutzern in Ihrer
 - **Anmeldungen:** Mit dem [Aktivitätsbericht „Anmeldungen“](concept-sign-ins.md) können Sie ermitteln, von wem die Aufgaben durchgeführt wurden, die im Bericht „Überwachungsprotokolle“ aufgeführt sind.
 
 
+
+> [!VIDEO https://www.youtube.com/embed/ACVpH6C_NL8]
+
+
+
+
 ### <a name="audit-logs-report"></a>Bericht „Überwachungsprotokolle“ 
 
 Der [Bericht „Überwachungsprotokolle“](concept-audit-logs.md) enthält Datensätze zu Systemaktivitäten, die für die Konformität relevant sind. Diese Daten sind in folgenden häufigen Szenarien hilfreich:
@@ -81,7 +87,7 @@ Der [Bericht „Überwachungsprotokolle“](concept-audit-logs.md) enthält Date
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Welche Azure AD-Lizenz benötigen Sie, um auf den Bericht „Überwachungsprotokolle“ zuzugreifen?  
 
-Der Bericht „Überwachungsprotokolle“ ist für Features verfügbar, für die Sie über Lizenzen verfügen. Wenn Sie im Besitz einer Lizenz für ein bestimmtes Feature sind, haben Sie auch Zugriff auf die dazugehörigen Informationen zum Überwachungsprotokoll. Weitere Informationen finden Sie unter [Azure Active Directory-Features und -Funktionen](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
+Der Bericht „Überwachungsprotokolle“ ist für Features verfügbar, für die Sie über Lizenzen verfügen. Wenn Sie im Besitz einer Lizenz für ein bestimmtes Feature sind, haben Sie auch Zugriff auf die dazugehörigen Informationen zum Überwachungsprotokoll. Einen detaillierten Vergleich der Funktionen bei den [verschiedenen Lizenztypen](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses) finden Sie auf der Seite [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/). Weitere Informationen finden Sie unter [Azure Active Directory-Features und -Funktionen](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad).
 
 ### <a name="sign-ins-report"></a>Bericht zu Anmeldeaktivitäten
 
@@ -101,6 +107,6 @@ Zusätzlich zur Benutzeroberfläche ermöglicht Azure AD Ihnen über eine Reihe 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Bericht „Riskante Anmeldungen“](concept-risky-sign-ins.md)
+- [Bericht „Riskante Anmeldungen“](../identity-protection/overview-identity-protection.md)
 - [Bericht „Überwachungsprotokolle“](concept-audit-logs.md)
 - [Bericht „Anmeldungen“](concept-sign-ins.md)

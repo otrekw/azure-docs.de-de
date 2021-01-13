@@ -9,13 +9,13 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
-ms.author: anzaman
-ms.openlocfilehash: 9abf9b791cc986bcce49bbd0cf8136a573a149a3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.author: kumud
+ms.openlocfilehash: 937a73847e867e826b3a577adf0c85184d7a93d0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860205"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87047232"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Anpassen von Inhaltsmodellen in Video Indexer
 

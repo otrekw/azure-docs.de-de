@@ -3,22 +3,21 @@ title: Verwalten von DNS-Zonen in Azure DNS – Azure-Befehlszeilenschnittstelle
 description: Sie können DNS-Zonen mithilfe der Azure-Befehlszeilenschnittstelle (CLI) verwalten. In diesem Artikel erfahren Sie, wie Sie DNS-Zonen in Azure DNS aktualisieren, löschen und erstellen.
 services: dns
 documentationcenter: na
-author: vhorne
-manager: timlt
-ms.assetid: 8ab63bc4-5135-4ed8-8c0b-5f0712b9afed
+author: rohinkoul
 ms.service: dns
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
-ms.author: victorh
-ms.openlocfilehash: df741b34e1268c547723af87401760197d395780
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rohink
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 469fdbced4601c6ffb4b6aa35e8f943bcb5dde1b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61293828"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965781"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Verwalten von DNS-Zonen in Azure DNS mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -44,11 +43,11 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 * Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 
-* Installieren Sie die neueste Version der für Windows, Mac und Linux verfügbaren Azure-Befehlszeilenschnittstelle. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-az-cli2).
+* Installieren Sie die neueste Version der für Windows, Mac und Linux verfügbaren Azure-Befehlszeilenschnittstelle. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-az-cli2).
 
 ### <a name="sign-in-to-your-azure-account"></a>Anmelden bei Ihrem Azure-Konto
 
-Öffnen Sie ein Konsolenfenster, und authentifizieren Sie sich mit Ihren Anmeldeinformationen. Weitere Informationen finden Sie unter [Log in to Azure from the Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) (Anmelden bei Azure über die Azure-CLI).
+Öffnen Sie ein Konsolenfenster, und authentifizieren Sie sich mit Ihren Anmeldeinformationen. Weitere Informationen finden Sie unter [Log in to Azure from the Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) (Anmelden bei Azure über die Azure-CLI).
 
 ```
 az login
@@ -68,8 +67,8 @@ Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.
 az account set --subscription "subscription name"
 ```
 
-### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Optional: Installieren und Verwenden des Features „Azure DNS Private Zones“ (Öffentliche Vorschauversion)
-Das Feature „Azure DNS Private Zones“ ist als öffentliche Vorschauversion über eine Erweiterung der Azure CLI verfügbar. Installieren der Azure CLI-Erweiterung „dns“ 
+### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>Optional: Installieren und Verwenden des Features „Azure DNS Private Zones“
+Das Feature „Azure DNS Private Zones“ ist durch eine Erweiterung der Azure CLI verfügbar. Installieren der Azure CLI-Erweiterung „dns“ 
 ```
 az extension add --name dns
 ``` 
@@ -180,7 +179,7 @@ az network dns zone update --resource-group myresourcegroup --name contoso.com -
 DNS-Zonen können mithilfe von `az network dns zone delete`gelöscht werden. Entsprechende Hilfeinformationen finden Sie unter `az network dns zone delete --help`.
 
 > [!NOTE]
-> Beim Löschen einer DNS-Zone werden auch alle DNS-Einträge in der Zone gelöscht. Dieser Vorgang kann nicht rückgängig gemacht werden. Wenn die DNS-Zone verwendet wird, tritt in Diensten, die die Zone verwenden, ein Fehler auf.
+> Durch das Löschen einer DNS-Zone werden auch alle DNS-Einträge in der Zone gelöscht. Dieser Vorgang kann nicht rückgängig gemacht werden. Wenn die DNS-Zone verwendet wird, tritt in Diensten, die die Zone verwenden, ein Fehler auf.
 >
 >Informationen dazu, wie Sie Zonen vor versehentlichem Löschen schützen, finden Sie unter [How to protect DNS zones and records](dns-protect-zones-recordsets.md) (Schützen von DNS-Zonen und -Einträgen).
 
@@ -194,7 +193,6 @@ az network dns zone delete --resource-group myresourcegroup --name contoso.com
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie [Ressourceneintragssätze und Einträge in Ihrer DNS-Zone verwalten](dns-getstarted-create-recordset-cli.md).
+Erfahren Sie, wie Sie [Ressourceneintragssätze und Einträge in Ihrer DNS-Zone verwalten](./dns-getstarted-cli.md).
 
 Erfahren Sie, wie Sie [Ihre Domäne an Azure DNS delegieren](dns-domain-delegation.md).
-

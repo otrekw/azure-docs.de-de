@@ -1,27 +1,20 @@
 ---
-title: 'Tutorial: Erstellen und Verwalten einer Azure-VM-Skalierungsgruppe | Microsoft-Dokumentation'
+title: 'Tutorial: Erstellen und Verwalten einer Azure-VM-Skalierungsgruppe – Azure PowerShell'
 description: Hier erfahren Sie, wie Sie mithilfe von Azure PowerShell eine VM-Skalierungsgruppe erstellen und einige allgemeine Verwaltungsaufgaben ausführen, um beispielsweise eine Instanz zu starten und zu beenden oder die Kapazität der Skalierungsgruppe zu ändern.
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 05/18/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 694fc0ba6d59497cfc53efb6f2607bc6a7d4ad2d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.reviewer: mimckitt
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 1ab52c197ee57351a53919291f1c2e41108396ec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728696"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89078519"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell
 
@@ -52,7 +45,7 @@ Der Ressourcengruppenname wird im gesamten Tutorial beim Erstellen oder Ändern 
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
-Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) zuerst den Benutzernamen und das Kennwort des Administrators der VM-Instanzen fest:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) zuerst den Benutzernamen und das Kennwort des Administrators der VM-Instanzen fest:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -73,6 +66,9 @@ New-AzVmss `
 ```
 
 Die Erstellung und Konfiguration aller Ressourcen und VM-Instanzen der Skalierungsgruppe dauert einige Minuten.
+
+> [!IMPORTANT]
+> Wenn Sie keine Verbindung mit Ihrer Skalierungsgruppe herstellen können, müssen Sie unter Umständen eine Netzwerksicherheitsgruppe erstellen, indem Sie den Parameter *[-SecurityGroupName "mySecurityGroup"](/powershell/module/az.compute/new-azvmss)* hinzufügen.
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>Anzeigen der VM-Instanzen in einer Skalierungsgruppe
@@ -156,7 +152,7 @@ Im Azure Marketplace stehen zahlreiche Images zur Verfügung, die Sie zum Erstel
 Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-Verwenden Sie [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku), um eine Liste mit Images für einen bestimmten Herausgeber anzuzeigen. Die Imageliste kann auch nach `-PublisherName` oder `–Offer` gefiltert werden. Im folgenden Beispiel wird die Liste für alle Images mit dem Publishernamen *MicrosoftWindowsServer* und einem Angebot gefiltert, das eine Übereinstimmung für *WindowsServer* ergibt:
+Verwenden Sie [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku), um eine Liste mit Images für einen bestimmten Herausgeber anzuzeigen. Die Imageliste kann auch nach `-PublisherName` oder `-Offer` gefiltert werden. Im folgenden Beispiel wird die Liste für alle Images mit dem Publishernamen *MicrosoftWindowsServer* und einem Angebot gefiltert, das eine Übereinstimmung für *WindowsServer* ergibt:
 
 ```azurepowershell-interactive
 Get-AzVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
@@ -198,6 +194,8 @@ New-AzVmss `
   -Credential $cred
 ```
 
+> [!IMPORTANT]
+> Wir empfehlen die Verwendung der *neuesten* Imageversion. Geben Sie „latest“ an, damit Sie die neueste Version eines Images verwenden können, das zum Zeitpunkt der Bereitstellung verfügbar ist. Bitte beachten Sie: Sollten Sie „latest“ verwenden, wird das VM-Image nach diesem Zeitpunkt selbst dann nicht automatisch aktualisiert, wenn eine neue Version verfügbar wird.
 
 ## <a name="understand-vm-instance-sizes"></a>Grundlegendes zu VM-Instanzgrößen
 Eine VM-Instanzgröße (oder *SKU*) bestimmt die Menge an Computeressourcen (CPU, GPU, Arbeitsspeicher und Ähnliches), die für die VM-Instanz zur Verfügung stehen. Die Größe der VM-Instanzen in einer Skalierungsgruppe muss auf die zu erwartende Workload abgestimmt werden.
@@ -205,14 +203,14 @@ Eine VM-Instanzgröße (oder *SKU*) bestimmt die Menge an Computeressourcen (CPU
 ### <a name="vm-instance-sizes"></a>VM-Instanzgrößen
 In der folgenden Tabelle sind gängige VM-Größen nach Anwendungsfall kategorisiert:
 
-| Type                     | Gängige Größen           |    BESCHREIBUNG       |
+| type                     | Gängige Größen           |    BESCHREIBUNG       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Allgemeiner Zweck](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
-| [Computeoptimiert](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |
-| [Arbeitsspeicheroptimiert](../virtual-machines/windows/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Hohes Verhältnis von Speicher zu Kern. Hervorragend geeignet für relationale Datenbanken, mittlere bis große Caches und In-Memory-Analysen.                 |
-| [Speicheroptimiert](../virtual-machines/windows/sizes-storage.md)      | Ls                | Datenträgerdurchsatz und -E/A auf hohem Niveau. Ideal für Big Data sowie SQL- und NoSQL-Datenbanken.                                                         |
-| [GPU](../virtual-machines/windows/sizes-gpu.md)          | NV, NC            | Spezialisierte virtuelle Computer für aufwendiges Grafikrendering und aufwendige Videobearbeitung.       |
-| [Hohe Leistung](../virtual-machines/windows/sizes-hpc.md) | H, A8-11          | Unsere virtuellen Computer mit den leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. 
+| [Allgemeiner Zweck](../virtual-machines/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
+| [Computeoptimiert](../virtual-machines/sizes-compute.md)   | Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |
+| [Arbeitsspeicheroptimiert](../virtual-machines/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Hohes Verhältnis von Speicher zu Kern. Hervorragend geeignet für relationale Datenbanken, mittlere bis große Caches und In-Memory-Analysen.                 |
+| [Speicheroptimiert](../virtual-machines/sizes-storage.md)      | Ls                | Datenträgerdurchsatz und -E/A auf hohem Niveau. Ideal für Big Data sowie SQL- und NoSQL-Datenbanken.                                                         |
+| [GPU](../virtual-machines/sizes-gpu.md)          | NV, NC            | Spezialisierte virtuelle Computer für aufwendiges Grafikrendering und aufwendige Videobearbeitung.       |
+| [Hohe Leistung](../virtual-machines/sizes-hpc.md) | H, A8-11          | Unsere virtuellen Computer mit den leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. 
 
 ### <a name="find-available-vm-instance-sizes"></a>Suchen nach verfügbaren VM-Instanzgrößen
 Eine Liste mit den in einer bestimmten Region verfügbaren VM-Instanzgrößen können Sie mit dem Befehl [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) abrufen. 
@@ -259,7 +257,7 @@ New-AzVmss `
 ## <a name="change-the-capacity-of-a-scale-set"></a>Ändern der Kapazität einer Skalierungsgruppe
 Beim Erstellen einer Skalierungsgruppe haben Sie zwei VM-Instanzen angefordert. Wenn Sie die Anzahl von VM-Instanzen in der Skalierungsgruppe erhöhen oder verringern möchten, können Sie die Kapazität manuell ändern. Die Skalierungsgruppe erstellt oder entfernt die erforderliche Anzahl von VM-Instanzen und konfiguriert anschließend den Lastenausgleich für die Verteilung des Datenverkehrs.
 
-Erstellen Sie zunächst mit [Get-AzVmss](/powershell/module/az.compute/get-azvmss) ein Skalierierungsgruppenobjekt, und geben Sie dann einen neuen Wert für `sku.capacity` an. Verwenden Sie zum Anwenden der Kapazitätsänderung [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Im folgenden Beispiel wird die Anzahl von VM-Instanzen in der Skalierungsgruppe auf *3* festgelegt:
+Erstellen Sie zunächst mit [Get-AzVmss](/powershell/module/az.compute/get-azvmss) ein Skalierungsgruppenobjekt, und geben Sie dann einen neuen Wert für `sku.capacity` an. Verwenden Sie zum Anwenden der Kapazitätsänderung [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Im folgenden Beispiel wird die Anzahl von VM-Instanzen in der Skalierungsgruppe auf *3* festgelegt:
 
 ```azurepowershell-interactive
 # Get current scale set

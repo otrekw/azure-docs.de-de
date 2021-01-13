@@ -1,30 +1,33 @@
 ---
-title: Versionsverlauf – Microsoft Genomics
-titleSuffix: Azure
-description: Microsoft Genomics aktualisiert regelmäßig den Microsoft Genomics-Python-Client, um Fehlerbehebungen und neue Funktionen einzuführen.
+title: Verlauf der Versionsveröffentlichungen
+titleSuffix: Microsoft Genomics
+description: Der Verlauf der Aktualisierungsveröffentlichungen für den Microsoft Genomics-Python-Client, um Fehlerbehebungen und neue Funktionen einzuführen.
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: 2037bcf173951769f1627f809352ef60afce2d50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 20475e2cde1b42790740889cf341b3a0a0afccc0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780949"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "76991081"
 ---
 # <a name="version-release-history"></a>Verlauf der Versionsveröffentlichungen
 Das Microsoft Genomics-Team aktualisiert regelmäßig den Microsoft Genomics-Python-Client um Fehlerbehebungen und neue Funktionen einzuführen. 
 
 ## <a name="latest-release"></a>Aktuelles Release
-Der aktuelle Python-Client ist Version 0.8.1. Die Version wurde am 3. Dezember 2018 veröffentlicht und unterstützt laufende Workflows mit GATK 3.5 und GATK4. Sie unterstützt darüber hinaus die gVCF-Ausgabe.
+Der aktuelle Python-Client ist Version 0.9.0. Die Version wurde am 6. Februar 2019 veröffentlicht und unterstützt die Ausführung von Workflows mit GATK 3.5 und GATK 4. Sie unterstützt die gVCF-Ausgabe und akzeptiert ein optionales Argument für die Ausgabekomprimierung.
 
 
-## <a name="release-history"></a>Versionsverlauf 
-Neue Versionen des Microsoft Genomics-Python-Clients werden etwa zweimal pro Jahr veröffentlicht. Wenn neue Versionen des Microsoft Genomics-Python-Clients veröffentlicht werden, wird hier die Liste der Fehlerbehebungen und Features aktualisiert. Wenn neue Versionen veröffentlicht werden, sollten frühere Versionen mindestens 90 Tage lang weiterhin unterstützt werden. Wenn frühere Versionen nicht mehr unterstützt werden, wird dies auf dieser Seite angegeben. 
+## <a name="release-history"></a>Releaseverlauf 
+Neue Versionen des Microsoft Genomics-Python-Clients werden etwa einmal pro Jahr veröffentlicht. Wenn neue Versionen des Microsoft Genomics-Python-Clients veröffentlicht werden, wird hier die Liste der Fehlerbehebungen und Features aktualisiert. Wenn neue Versionen veröffentlicht werden, sollten frühere Versionen mindestens 90 Tage lang weiterhin unterstützt werden. Wenn frühere Versionen nicht mehr unterstützt werden, wird dies auf dieser Seite angegeben. 
+
+### <a name="version-090"></a>Version 0.9.0
+Version 0.9.0 bietet Unterstützung für die Ausgabekomprimierung. Dies entspricht dem Ausführen von `-bgzip` gefolgt von `-tabix` in der VCF- oder gVCF-Ausgabe. Weitere Informationen finden Sie unter [Häufig gestellte Fragen](frequently-asked-questions-genomics.md). 
 
 ### <a name="version-081"></a>Version 0.8.1
 Version 0.8.1 enthält Behebungen geringfügiger Programmfehler.  

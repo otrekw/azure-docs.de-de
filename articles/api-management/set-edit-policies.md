@@ -1,6 +1,6 @@
 ---
 title: Festlegen oder Bearbeiten von Azure API Management-Richtlinien | Microsoft-Dokumentation
-description: In diesem Thema wird erläutert, wie Sie Azure API Management-Richtlinien festlegen oder bearbeiten.
+description: In diesem Artikel erfahren Sie, wie Sie API Management-Richtlinien in Azure festlegen oder bearbeiten. Diese Richtlinien sind XML-Dokumente, die eine Sequenz eingehender und ausgehender Anweisungen beschreiben.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 2df57477ae5270405a1774b7a4f04ed185fea396
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a737fada3e019029967bc752aaa0dedc354fa880
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071702"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078322"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Festlegen oder Bearbeiten von Azure API Management-Richtlinien
 
@@ -41,7 +41,7 @@ Führen Sie zum Festlegen oder Bearbeiten einer Richtlinie die folgenden Schritt
 7. Wählen Sie das Symbol **</>** (Codeeditor) im Abschnitt **Eingehende Verarbeitung** oder **Ausgehende Verarbeitung**.
 8. Fügen Sie den gewünschten Richtliniencode in einen der entsprechenden Blöcke ein.
 
-    ```XML
+    ```xml
     <policies>
         <inbound>
             <base />
@@ -135,5 +135,5 @@ Der Vorgangsbereich wird für den ausgewählten Vorgang konfiguriert.
 Informationen finden Sie in den folgenden verwandten Themen:
 
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
-+ Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
-+ [API Management policy samples](policy-samples.md) (API Management-Richtlinienbeispiele)
++ Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
++ [API Management-Richtlinienbeispiele](./policy-reference.md)

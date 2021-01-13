@@ -1,8 +1,8 @@
 ---
-title: 'Schnellstart: Erstellen eines Traffic Manager-Profils für Hochverfügbarkeit von Anwendungen mit Azure PowerShell'
+title: 'Schnellstart: Erstellen eines Profils für Hochverfügbarkeit von Anwendungen: Azure PowerShell – Azure Traffic Manager'
 description: In diesem Schnellstartartikel wird beschrieben, wie Sie ein Traffic Manager-Profil erstellen, um eine hoch verfügbare Webanwendung zu entwickeln.
 services: traffic-manager
-author: asudbring
+author: duongau
 mnager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -10,20 +10,22 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/04/2019
-ms.author: allensu
-ms.openlocfilehash: ce05d594555095c061e43df2464b906138811448
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 10/01/2020
+ms.author: duau
+ms.openlocfilehash: 9b34a17cc9add0bed4bffb7677aa81bb17f3125b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051120"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631561"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>Schnellstart: Erstellen eines Traffic Manager-Profils für eine hoch verfügbare Webanwendung mit Azure PowerShell
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie ein Traffic Manager-Profil erstellen, mit dem die Hochverfügbarkeit für Ihre Webanwendung sichergestellt wird.
 
-In dieser Schnellstartanleitung erstellen Sie zwei Instanzen einer Webanwendung. Jede Instanz wird in einer anderen Azure-Region ausgeführt. Sie erstellen ein Traffic Manager-Profil basierend auf der [Endpunktpriorität](traffic-manager-routing-methods.md#priority). Das Profil leitet den Benutzerdatenverkehr an den primären Standort, an dem die Webanwendung ausgeführt wird. Die Webanwendung wird von Traffic Manager ständig überwacht. Wenn der primäre Standort nicht verfügbar ist, erfolgt automatisch ein Failover zum Sicherungsstandort.
+In dieser Schnellstartanleitung erstellen Sie zwei Instanzen einer Webanwendung. Jede Instanz wird in einer anderen Azure-Region ausgeführt. Sie erstellen ein Traffic Manager-Profil basierend auf der [Endpunktpriorität](traffic-manager-routing-methods.md#priority-traffic-routing-method). Das Profil leitet den Benutzerdatenverkehr an den primären Standort, an dem die Webanwendung ausgeführt wird. Die Webanwendung wird von Traffic Manager ständig überwacht. Wenn der primäre Standort nicht verfügbar ist, erfolgt automatisch ein Failover zum Sicherungsstandort.
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie jetzt ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
@@ -35,7 +37,6 @@ Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für 
 Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe.
 
 ```azurepowershell-interactive
-
 
 # Variables
 $Location1="WestUS"

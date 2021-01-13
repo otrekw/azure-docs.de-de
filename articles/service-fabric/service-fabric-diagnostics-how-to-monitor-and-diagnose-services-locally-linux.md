@@ -1,27 +1,17 @@
 ---
-title: Debuggen von Azure Service Fabric-Apps unter Linux | Microsoft-Dokumentation
+title: Debuggen von Azure Service Fabric-Apps unter Linux
 description: Erfahren Sie, wie Sie Ihre Service Fabric-Dienste auf einem lokalen Linux-Entwicklungscomputer überwachen und diagnostizieren.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 4eebe937-ab42-4429-93db-f35c26424321
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: f0b850038a29dd0949def97b359b2b7a5ce920bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 523cb0d1a8e8f322c1936f1fe52a954399b2acc5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60392856"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88999766"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Computer
+# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Linux-Computer
 
 
 > [!div class="op_single_selector"]
@@ -70,7 +60,7 @@ Weitere Informationen finden Sie bei den [Codebeispielen in GitHub](https://gith
 ## <a name="debugging-service-fabric-c-applications"></a>Debuggen von Service Fabric-C#-Anwendungen
 
 
-Für die Ablaufverfolgung von CoreCLR-Anwendungen unter Linux sind mehrere Frameworks verfügbar. Weitere Informationen finden Sie unter [GitHub logging](http:/github.com/aspnet/logging) (GitHub-Protokollierung).  Da C#-Entwickler mit EventSource vertraut sind, wird EventSource in diesem Artikel für die Ablaufverfolgung von CoreCLR-Beispielen unter Linux verwendet.
+Für die Ablaufverfolgung von CoreCLR-Anwendungen unter Linux sind mehrere Frameworks verfügbar. Weitere Informationen finden Sie unter [.NET-Erweiterungen für die Protokollierung](https://github.com/dotnet/extensions/tree/master/src/Logging).  Da C#-Entwickler mit EventSource vertraut sind, wird EventSource in diesem Artikel für die Ablaufverfolgung von CoreCLR-Beispielen unter Linux verwendet.
 
 Der erste Schritt besteht darin, System.Diagnostics.Tracing einzuschließen, sodass Sie Ihre Protokolle in den Arbeitsspeicher, Ausgabestreams oder Konsolendateien schreiben können.  Zur Protokollierung unter Verwendung von EventSource fügen Sie das folgende Projekt zu Ihrer project.json-Datei hinzu:
 
@@ -143,4 +133,4 @@ Die Beispiele unter [C# Samples](https://github.com/Azure-Samples/service-fabric
 
 ## <a name="next-steps"></a>Nächste Schritte
 Der Ablaufverfolgungscode, der Ihrer Anwendung hinzugefügt wurde, gilt auch für die Diagnose der Anwendung auf einem Azure-Cluster. Sehen Sie sich diese Artikel an, in denen die verschiedenen Optionen für die Tools und deren Einrichtung erläutert werden.
-* [Sammeln von Protokollen mit Azure-Diagnose](service-fabric-diagnostics-how-to-setup-lad.md)
+* [Sammeln von Protokollen mit Azure-Diagnose](./service-fabric-diagnostics-event-aggregation-lad.md)

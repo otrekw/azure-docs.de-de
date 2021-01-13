@@ -1,20 +1,19 @@
 ---
-title: Stream Analytics-Edge-Aufträge in Azure Stream Analytics-Tools für Visual Studio
+title: Azure Stream Analytics Edge-Aufträge in Visual Studio
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe der Stream Analytics-Tools für Visual Studio Aufträge für Stream Analytics auf IoT Edge schreiben, debuggen und erstellen können.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1601bf6c73d9f3450959773c85385bc8ef907a66
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 55ff983169e15c74bf343993b66088932a538c36
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329960"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127517"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Entwickeln von Stream Analytics-Edgeaufträgen mit Visual Studio-Tools
 
@@ -30,11 +29,11 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
  
 ## <a name="create-a-stream-analytics-edge-project"></a>Erstellen eines Stream Analytics-Edge-Projekts 
 
-Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt**. Navigieren Sie auf der linken Seite zur Liste **Vorlagen**, und erweitern Sie **Azure Stream Analytics** > **Stream Analytics Edge** > **Azure Stream Analytics Edge Application** (Azure Stream Analytics > Stream Analytics-Edge > Azure Stream Analytics-Edge-Anwendung). Geben Sie einen Namen, Speicherort und Projektmappennamen für Ihr Projekt ein, und klicken Sie auf **OK**.
+Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt**. Navigieren Sie auf der linken Seite zur Liste **Vorlagen** , und erweitern Sie **Azure Stream Analytics** > **Stream Analytics Edge** > **Azure Stream Analytics Edge Application** (Azure Stream Analytics > Stream Analytics-Edge > Azure Stream Analytics-Edge-Anwendung). Geben Sie einen Namen, Speicherort und Projektmappennamen für Ihr Projekt ein, und klicken Sie auf **OK**.
 
 ![Neues Stream Analytics-Edge-Projekt in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
-Nachdem das Projekt erstellt wurde, wechseln Sie zum **Projektmappen-Explorer**, um die Ordnerhierarchie anzuzeigen.
+Nachdem das Projekt erstellt wurde, wechseln Sie zum **Projektmappen-Explorer** , um die Ordnerhierarchie anzuzeigen.
 
 ![Projektmappen-Explorer-Ansicht des Stream Analytics Edge-Auftrags](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
 
@@ -43,13 +42,13 @@ Nachdem das Projekt erstellt wurde, wechseln Sie zum **Projektmappen-Explorer**,
 
 1. Klicken Sie in Visual Studio im Menü **Ansicht** auf **Server-Explorer**.  
 
-2. Klicken Sie mit der rechten Maustaste auf **Azure**, wählen Sie **Verbindung mit Microsoft Azure-Abonnement herstellen** aus, und melden Sie sich dann mit Ihrem Azure-Konto an.
+2. Klicken Sie mit der rechten Maustaste auf **Azure** , wählen Sie **Verbindung mit Microsoft Azure-Abonnement herstellen** aus, und melden Sie sich dann mit Ihrem Azure-Konto an.
 
 ## <a name="define-inputs"></a>Definieren der Eingaben
 
 1. Erweitern Sie im **Projektmappen-Explorer** den Knoten **Eingaben**. Sie sollten eine Eingabe mit dem Namen **EdgeInput.json** sehen. Doppelklicken Sie darauf, um die zugehörigen Einstellungen anzuzeigen.  
 
-2. Legen Sie den Quelltyp auf **Datenstrom** fest. Legen Sie dann die Quelle auf **Edge Hub**, das Ereignisserialisierungsformat auf **Json** und die Codierung auf **UTF8** fest. Sie können den **Eingabealias** optional umbenennen, für dieses Beispiel ändern wir ihn jedoch nicht. Falls Sie den Eingabealias umbenennen, verwenden Sie den Namen, den Sie beim Definieren der Abfrage angegeben haben. Klicken Sie auf **Speichern**, um die Einstellungen zu speichern.  
+2. Legen Sie den Quelltyp auf **Datenstrom** fest. Legen Sie dann die Quelle auf **Edge Hub** , das Ereignisserialisierungsformat auf **Json** und die Codierung auf **UTF8** fest. Sie können den **Eingabealias** optional umbenennen, für dieses Beispiel ändern wir ihn jedoch nicht. Falls Sie den Eingabealias umbenennen, verwenden Sie den Namen, den Sie beim Definieren der Abfrage angegeben haben. Klicken Sie auf **Speichern** , um die Einstellungen zu speichern.  
    ![Konfiguration der Stream Analytics-Auftragseingaben](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
  
 
@@ -58,12 +57,12 @@ Nachdem das Projekt erstellt wurde, wechseln Sie zum **Projektmappen-Explorer**,
 
 1. Erweitern Sie im **Projektmappen-Explorer** den Knoten **Ausgaben**. Sie sollten eine Ausgabe mit dem Namen **EdgeOutput.json** sehen. Doppelklicken Sie darauf, um die zugehörigen Einstellungen anzuzeigen.  
 
-2. Stellen Sie sicher, dass „Senke“ auf **Edge Hub**, „Ereignisserialisierungsformat“ auf **Json**, „Codierung“ auf **UTF8** und „Format“ auf **Array** festgelegt ist. Optional können Sie den **Ausgabealias** umbenennen, für dieses Beispiel ändern wir ihn jedoch nicht. Falls Sie den Ausgabealias umbenennen, verwenden Sie den Namen, den Sie beim Definieren der Abfrage angegeben haben. Klicken Sie auf **Speichern**, um die Einstellungen zu speichern. 
+2. Stellen Sie sicher, dass „Senke“ auf **Edge Hub** , „Ereignisserialisierungsformat“ auf **Json** , „Codierung“ auf **UTF8** und „Format“ auf **Array** festgelegt ist. Optional können Sie den **Ausgabealias** umbenennen, für dieses Beispiel ändern wir ihn jedoch nicht. Falls Sie den Ausgabealias umbenennen, verwenden Sie den Namen, den Sie beim Definieren der Abfrage angegeben haben. Klicken Sie auf **Speichern** , um die Einstellungen zu speichern. 
    ![Konfiguration der Stream Analytics-Auftragsausgaben](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
  
 ## <a name="define-the-transformation-query"></a>Definieren der Transformationsabfrage
 
-In Stream Analytics auf IoT Edge-Umgebungen bereitgestellte Stream Analytics-Aufträge unterstützen den Großteil der [Referenz zur Stream Analytics-Abfragesprache](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396). Die folgenden Vorgänge werden gegenwärtig jedoch nicht für Stream Analytics-Edge-Aufträge unterstützt: 
+In Stream Analytics auf IoT Edge-Umgebungen bereitgestellte Stream Analytics-Aufträge unterstützen den Großteil der [Referenz zur Stream Analytics-Abfragesprache](/stream-analytics-query/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396). Die folgenden Vorgänge werden gegenwärtig jedoch nicht für Stream Analytics-Edge-Aufträge unterstützt: 
 
 
 |**Kategorie**  | **Befehl**  |
@@ -72,7 +71,7 @@ In Stream Analytics auf IoT Edge-Umgebungen bereitgestellte Stream Analytics-Au
 
 Wenn Sie im Portal einen Stream Analytics-Edge-Auftrag erstellen und dabei einen nicht unterstützten Operator verwenden, warnt der Compiler Sie automatisch.
 
-Definieren Sie in Visual Studio die folgende Transformationsabfrage im Abfrage-Editor (Datei **script.asaql**).
+Definieren Sie in Visual Studio die folgende Transformationsabfrage im Abfrage-Editor (Datei **script.asaql** ).
 
 ```sql
 SELECT * INTO EdgeOutput
@@ -83,9 +82,9 @@ FROM EdgeInput
 
 Um die Abfrage lokal zu testen, sollten Sie die Beispieldaten hochladen. Sie können Beispieldaten abrufen, indem Sie Registrierungsdaten aus dem [GitHub-Repository](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/Registration.json) herunterladen und auf Ihrem lokalen Computer speichern. 
 
-1. Klicken Sie zum Hochladen von Beispieldaten mit der rechten Maustaste auf die Datei **EdgeInput.json**, und wählen Sie **Lokale Eingabe hinzufügen** aus.  
+1. Klicken Sie zum Hochladen von Beispieldaten mit der rechten Maustaste auf die Datei **EdgeInput.json** , und wählen Sie **Lokale Eingabe hinzufügen** aus.  
 
-2. Klicken Sie im Popupfenster auf **Durchsuchen**, wählen Sie die Beispieldaten am lokalen Pfad aus, und klicken Sie auf **Speichern**.
+2. Klicken Sie im Popupfenster auf **Durchsuchen** , wählen Sie die Beispieldaten am lokalen Pfad aus, und klicken Sie auf **Speichern**.
    ![Konfiguration der lokalen Eingabe in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
  
 3. Ihrem Ordner für Eingaben wird automatisch eine Datei namens **local_EdgeInput.json** hinzugefügt.  
@@ -100,11 +99,11 @@ Um die Abfrage lokal zu testen, sollten Sie die Beispieldaten hochladen. Sie kö
 
 ## <a name="submit-the-job-to-azure"></a>Übermitteln des Auftrags an Azure
 
-1. Bevor Sie den Auftrag an Azure übermitteln, müssen Sie eine Verbindung mit Ihrem Azure-Abonnement herstellen. Öffnen Sie den **Server-Explorer**, klicken Sie mit der rechten Maustaste auf **Azure** > **Verbindung mit Microsoft Azure-Abonnement herstellen**, und melden Sie sich bei Ihrem Azure-Abonnement an.  
+1. Bevor Sie den Auftrag an Azure übermitteln, müssen Sie eine Verbindung mit Ihrem Azure-Abonnement herstellen. Öffnen Sie den **Server-Explorer** , klicken Sie mit der rechten Maustaste auf **Azure** > **Verbindung mit Microsoft Azure-Abonnement herstellen** , und melden Sie sich bei Ihrem Azure-Abonnement an.  
 
 2. Um den Auftrag an Azure zu übermitteln, navigieren Sie zum Abfrage-Editor, und wählen Sie **Submit to Azure** (An Azure senden) aus.  
 
-3. Ein Popupfenster wird geöffnet. In diesem können Sie auswählen, ob Sie einen vorhandenen Stream Analytics-Edge-Auftrag aktualisieren oder einen neuen Auftrag erstellen möchten. Wenn Sie einen vorhandenen Auftrag aktualisieren, wird dadurch die gesamte Auftragskonfiguration ersetzt. In diesem Szenario veröffentlichen Sie einen neuen Auftrag. Wählen Sie **Create a New Azure Stream Analytics Job** (Neuen Azure Stream Analytics-Auftrag erstellen) aus, geben Sie einen Namen für Ihren Auftrag ein (z. B. **MyASAEdgeJob**), wählen Sie das erforderliche **Abonnement**, die **Ressourcengruppe** und den **Speicherort** aus, und klicken Sie auf **Senden**.
+3. Ein Popupfenster wird geöffnet. In diesem können Sie auswählen, ob Sie einen vorhandenen Stream Analytics-Edge-Auftrag aktualisieren oder einen neuen Auftrag erstellen möchten. Wenn Sie einen vorhandenen Auftrag aktualisieren, wird dadurch die gesamte Auftragskonfiguration ersetzt. In diesem Szenario veröffentlichen Sie einen neuen Auftrag. Wählen Sie **Create a New Azure Stream Analytics Job** (Neuen Azure Stream Analytics-Auftrag erstellen) aus, geben Sie einen Namen für Ihren Auftrag ein (z. B. **MyASAEdgeJob** ), wählen Sie das erforderliche **Abonnement** , die **Ressourcengruppe** und den **Speicherort** aus, und klicken Sie auf **Senden**.
 
    ![Übermitteln des Stream Analytics-Auftrags an Azure aus Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-stream-analytics-job-to-azure.png)
  
@@ -124,4 +123,4 @@ Im Auftragsansichtsfenster können Sie den Auftrag aktualisieren, löschen und i
 
 * [Weitere Informationen zu Azure IoT Edge](../iot-edge/about-iot-edge.md)
 * [Tutorial zu ASA unter IoT Edge](../iot-edge/tutorial-deploy-stream-analytics.md)
-* [Füllen Sie diese Umfrage aus, um Feedback an das Team zu senden](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 
+* [Füllen Sie diese Umfrage aus, um Feedback an das Team zu senden](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u)

@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Verwalten von Sicherungsaufträgen mit der REST-API'
-description: Verwalten von Sicherungs- und Wiederherstellungsaufträgen von Azure Backup mit der REST-API
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST-API; Azure-VM-Sicherung; Azure-VM-Wiederherstellung;
-ms.service: backup
+title: Verwalten von Sicherungsaufträgen mit der REST-API
+description: In diesem Artikel erfahren Sie, wie Sie Sicherungs- und Wiederherstellungsaufträge von Azure Backup mit der REST-API nachverfolgen und verwalten.
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: b10283c2946d01101b941d53b6bf03be3a12e99e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: ced0e0020fe955734bf6cc767480fbadd6eaffc1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954912"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88890279"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Nachverfolgen von Sicherungs- und Wiederherstellungsaufträgen mit der REST-API
 
@@ -23,7 +17,7 @@ Der Azure Backup-Dienst löst Aufträge aus, die in unterschiedlichen Szenarien 
 
 ## <a name="fetch-job-information-from-operations"></a>Abrufen von Auftragsinformationen aus Vorgängen
 
-Für einen Vorgang, z.B. das Auslösen einer Sicherung, wird immer eine jobID zurückgegeben. Beispiel:  Die letzte Antwort eines [REST-API-Vorgangs zum Auslösen einer Sicherung](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) lautet beispielsweise wie folgt:
+Für einen Vorgang, z.B. das Auslösen einer Sicherung, wird immer eine jobID zurückgegeben. Beispiel: Die letzte Antwort eines [REST-API-Vorgangs zum Auslösen einer Sicherung](backup-azure-arm-userestapi-backupazurevms.md#example-responses-for-on-demand-backup) lautet beispielsweise wie folgt:
 
 ```http
 {
@@ -39,21 +33,21 @@ Für einen Vorgang, z.B. das Auslösen einer Sicherung, wird immer eine jobID zu
 }
 ```
 
-Der Azure VM-Sicherungsauftrag wird über das Feld „jobId“ identifiziert und kann wie [hier](https://docs.microsoft.com/rest/api/backup/jobdetails/) beschrieben nachverfolgt werden, indem eine einfache *GET*-Anforderung genutzt wird.
+Der Azure VM-Sicherungsauftrag wird über das Feld „jobId“ identifiziert und kann wie [hier](/rest/api/backup/jobdetails/) beschrieben nachverfolgt werden, indem eine einfache *GET*-Anforderung genutzt wird.
 
 ## <a name="tracking-the-job"></a>Nachverfolgen des Auftrags
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2017-07-01
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-`{jobName}` ist die oben erwähnte „jobId“. Die Antwort lautet immer „200 OK“, und im Feld „status“ wird der aktuelle Status des Auftrags angegeben. Wenn er „Completed“ oder „CompletedWithWarnings“ lautet, werden im Abschnitt „extendedInfo“ weitere Details zum Auftrag angegeben.
+`{jobName}` ist die oben erwähnte „jobId“. Die Antwort lautet immer „200 OK“, und im Feld „status“ wird der aktuelle Status des Auftrags angegeben. Sobald der Status „Completed“ oder „CompletedWithWarnings“ lautet, zeigt der Abschnitt „extendedInfo“ weitere Details zum Auftrag.
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|200 – OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
+|200 – OK     | [JobResource](/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 
 #### <a name="example-response"></a>Beispielantwort
 

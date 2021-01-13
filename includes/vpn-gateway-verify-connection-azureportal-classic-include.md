@@ -5,26 +5,23 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 010/17/2018
+ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 26e48d1af8e29c7d00a80910dcca62811da14822
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a0694003e2eb5005186f5c7ad450533437955d82
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673338"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217953"
 ---
 Im Azure-Portal können Sie zur gewünschten Verbindung navigieren und den Verbindungsstatus für eine klassische VNet-VPN Gateway-Instanz anzeigen. Die folgenden Schritte zeigen eine Möglichkeit, zu Ihrer Verbindung zu navigieren und sie zu überprüfen.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **All resources** (Alle Ressourcen), und navigieren Sie zum klassischen virtuellen Netzwerk.
-2. Klicken Sie auf dem Blatt für das virtuelle Netzwerk auf **Übersicht**, um auf den Abschnitt **VPN-Verbindungen** des Blatts zuzugreifen.
-3. Klicken Sie in der Grafik mit den VPN-Verbindungen auf den Standort.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Alle Ressourcen** , und navigieren Sie zu Ihrem klassischen virtuellen Netzwerk (VNet).
+1. Klicken Sie auf der Seite „Virtuelles Netzwerk“ auf den Verbindungstyp, den Sie anzeigen möchten, z. B. **Site-to-Site-Verbindungen** .
 
-    ![Lokaler Standort](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "Lokaler Standort")
-4. Zeigen Sie auf dem Blatt **Standort-zu-Standort-VPN-Verbindungen** die Informationen zu Ihrem Standort an.
+   :::image type="content" source="./media/vpn-gateway-verify-connection-azureportal-classic/site-to-site.png" alt-text="Lokaler Standort" lightbox="./media/vpn-gateway-verify-connection-azureportal-classic/site-to-site.png":::
+1. Klicken Sie auf der Seite **Site-to-Site-Verbindungen** unter **Name** auf die Standortverbindung, die Sie anzeigen möchten.
 
-    ![Verbindungsstatus](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "Verbindungsstatus")
-5. Klicken Sie zum Anzeigen von weiteren Informationen zur Verbindung auf den Namen der Verbindung, um das Blatt **Standort-zu-Standort-VPN-Verbindungen** zu öffnen.
-
-    ![Verbindungsstatus – Weitere Informationen](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Verbindungsstatus – Weitere Informationen")
+   :::image type="content" source="./media/vpn-gateway-verify-connection-azureportal-classic/name.png" alt-text="Lokaler Standort":::
+1. Sehen Sie sich auf der Seite **Eigenschaften** die Informationen zur Verbindung an.

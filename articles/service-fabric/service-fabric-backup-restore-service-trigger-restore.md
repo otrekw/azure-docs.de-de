@@ -1,25 +1,16 @@
 ---
-title: Wiederherstellen von Sicherungsdaten in Azure Service Fabric | Microsoft-Dokumentation
+title: Wiederherstellen von Sicherungsdaten in Azure Service Fabric
 description: Verwenden Sie das Feature zum regelmäßigen Sichern und Wiederherstellen in Service Fabric, um gesicherte Anwendungsdaten wiederherzustellen.
-services: service-fabric
-documentationcenter: .net
 author: aagup
-manager: chackdan
-editor: aagup
-ms.assetid: 802F55B6-6575-4AE1-8A8E-C9B03512FF88
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: e4ada412547360f97e869d3312b65d869fa3df48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d881033b8dde6cc55a9720ec94084bd876116f1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413714"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207392"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Wiederherstellen von Sicherungsdaten in Azure Service Fabric
 
@@ -61,7 +52,7 @@ Eine Wiederherstellung kann für jedes der folgenden Szenarien ausgelöst werden
 
 ### <a name="data-restore-in-the-case-of-disaster-recovery"></a>Datenwiederherstellung für die Notfallwiederherstellung
 
-Sollte ein gesamter Service Fabric-Cluster verloren gehen, können Sie die Daten für die Partitionen des zuverlässigen zustandsbehafteten Diensts und der Reliable Actors wiederherstellen. Die gewünschte Sicherung kann bei Verwendung der [GetBackup-API mit Sicherungsspeicherdetails](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation) aus der Liste ausgewählt werden. Die Sicherungen können für eine Anwendung, einen Dienst oder eine Partition aufgelistet werden.
+Sollte ein gesamter Service Fabric-Cluster verloren gehen, können Sie die Daten für die Partitionen des zuverlässigen zustandsbehafteten Diensts und der Reliable Actors wiederherstellen. Die gewünschte Sicherung kann bei Verwendung der [GetBackup-API mit Sicherungsspeicherdetails](/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation) aus der Liste ausgewählt werden. Die Sicherungen können für eine Anwendung, einen Dienst oder eine Partition aufgelistet werden.
 
 Im folgenden Beispiel wird davon ausgegangen, dass es sich bei dem verloren gegangenen Cluster um den in [Aktivieren der regelmäßigen Sicherung für den zuverlässigen zustandsbehafteten Dienst und Reliable Actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors) erwähnten Cluster handelt. In diesem Fall wurde `SampleApp` mit aktivierter Sicherungsrichtlinie bereitgestellt, und als Ziel für die Sicherungen wird Azure Storage verwendet.
 
@@ -157,7 +148,7 @@ CreationTimeUtc         : 2018-04-06T21:10:27Z
 FailureError            :
 ```
 
-Für die Wiederherstellungs-API müssen die Sicherungs-ID (_BackupId_) und der Sicherungsspeicherort (_BackupLocation_) angegeben werden.
+Für die Wiederherstellungs-API müssen die Sicherungs-ID ( _BackupId_ ) und der Sicherungsspeicherort ( _BackupLocation_ ) angegeben werden.
 
 Darüber hinaus muss eine Zielpartition im alternativen Cluster ausgewählt werden, wie im [Partitionsschema](service-fabric-concepts-partitioning.md#get-started-with-partitioning) dargestellt. Die alternative Clustersicherung wird in der Partition wiederhergestellt, die im Partitionsschema des ursprünglichen, verloren gegangenen Clusters angegeben ist.
 
@@ -175,7 +166,7 @@ Restore-SFPartition  -PartitionId '1c42c47f-439e-4e09-98b9-88b8f60800c6' -Backup
 
 #### <a name="rest-call-using-powershell"></a>REST-Aufruf mithilfe von Powershell
 
-Verwenden Sie die folgende [Wiederherstellungs-API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition), um die Wiederherstellung anhand der Sicherungsclusterpartition anzufordern:
+Verwenden Sie die folgende [Wiederherstellungs-API](/rest/api/servicefabric/sfclient-api-restorepartition), um die Wiederherstellung anhand der Sicherungsclusterpartition anzufordern:
 
 ```powershell
 
@@ -199,7 +190,22 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 Den Status einer Wiederherstellung können Sie mithilfe von TrackRestoreProgress nachverfolgen.
 
-### <a name="data-restore-for-data-corruptiondata-loss"></a>Datenwiederherstellung im Falle von _Datenbeschädigung_/_Datenverlust_
+> [!NOTE]
+> Wenn Sie PowerShell zum Wiederherstellen einer Partition verwenden und „backuplocation“ das Zeichen „$“ enthält, versehen Sie es wie folgt mit Escapezeichen: ~.
+>
+
+### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+Sie können eine Wiederherstellung aus Service Fabric Explorer auslösen. Stellen Sie sicher, dass der erweiterte Modus in den Service Fabric Explorer-Einstellungen aktiviert wurde.
+1. Wählen Sie die gewünschten Partitionen aus, und klicken Sie auf „Aktionen“. 
+2. Wählen Sie die Option zum Auslösen der Wiederherstellung von Partitionen aus, und füllen Sie die Informationen für Azure aus:
+
+    ![Partitionswiederherstellung auslösen][2]
+
+    oder FileShare:
+
+    ![Partitionswiederherstellung FileShare auslösen][3]
+
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>Datenwiederherstellung im Falle von _Datenbeschädigung_/_Datenverlust_
 
 Bei einem _Datenverlust_ oder einer _Datenbeschädigung_ können gesicherte Partitionen für den zuverlässigen zustandsbehafteten Dienst und Reliable Actors auf der Grundlage einer der ausgewählten Sicherungen wiederhergestellt werden.
 
@@ -223,7 +229,7 @@ CreationTimeUtc         : 2018-04-06T21:10:27Z
 FailureError            :
 ```
 
-Geben Sie für die Wiederherstellungs-API die Sicherungs-ID (_BackupId_) und den Sicherungsspeicherort (_BackupLocation_) an. Da für den Cluster die Sicherung aktiviert ist, identifiziert der _Backup Restore Service (BRS)_ (Sicherungswiederherstellungsdienst) in Service Fabric den korrekten Speicherort anhand der zugeordneten Sicherungsrichtlinie.
+Geben Sie für die Wiederherstellungs-API die Sicherungs-ID ( _BackupId_ ) und den Sicherungsspeicherort ( _BackupLocation_ ) an. Da für den Cluster die Sicherung aktiviert ist, identifiziert der _Backup Restore Service (BRS)_ (Sicherungswiederherstellungsdienst) in Service Fabric den korrekten Speicherort anhand der zugeordneten Sicherungsrichtlinie.
 
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell mit dem Microsoft.ServiceFabric.Powershell.Http-Modul
@@ -249,6 +255,10 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 Den Status des Wiederherstellungsvorgangs können Sie mithilfe von TrackRestoreProgress nachverfolgen.
 
+> [!NOTE]
+> Wenn Sie PowerShell zum Wiederherstellen einer Partition verwenden und „backuplocation“ das Zeichen „$“ enthält, versehen Sie es wie folgt mit Escapezeichen: ~.
+>
+
 ## <a name="track-restore-progress"></a>Nachverfolgen des Wiederherstellungsstatus
 
 Eine Partition eines zuverlässigen zustandsbehafteten Diensts oder Reliable Actor-Diensts akzeptiert nicht mehrere Anforderungen für eine Wiederherstellung gleichzeitig. Weitere Anforderungen werden von einer Partition erst nach Abschluss der aktuellen Wiederherstellungsanforderung akzeptiert. Für unterschiedliche Partitionen können gleichzeitig mehrere Wiederherstellungsanforderungen ausgelöst werden.
@@ -272,7 +282,7 @@ $restoreResponse | Format-List
 
 Die Wiederherstellungsanforderung durchläuft folgende Zustände in der angegebenen Reihenfolge:
 
-1. **Accepted** (Akzeptiert): Der Wiederherstellungszustand _Accepted_ (Akzeptiert) gibt an, dass die angeforderte Partition mit korrekten Anforderungsparametern ausgelöst wurde.
+1. **Akzeptiert** : Der Wiederherstellungszustand _Accepted_ (Akzeptiert) gibt an, dass die angeforderte Partition mit korrekten Anforderungsparametern ausgelöst wurde.
     ```
     RestoreState  : Accepted
     TimeStampUtc  : 0001-01-01T00:00:00Z
@@ -287,8 +297,8 @@ Die Wiederherstellungsanforderung durchläuft folgende Zustände in der angegebe
     RestoredLsn   : 3552
     ```
     
-3. **Success** (Erfolgreich), **Failure** (Fehler) oder **Timeout**: Eine angeforderte Wiederherstellung kann mit einem der folgenden Zustände abgeschlossen werden. Im Anschluss werden die Bedeutung und die Antwortdetails der einzelnen Zustände erläutert:
-    - **Erfolg**: Der Wiederherstellungszustand _Success_ (Erfolgreich) gibt an, dass ein Partitionszustand wiederhergestellt wurde. Die Partition meldet die Zustände _RestoredEpoch_ und _RestoredLSN_ sowie die Zeit im UTC-Format.
+3. **Erfolg** , **Fehler** oder **Timeout** : Eine angeforderte Wiederherstellung kann mit einem der folgenden Zustände abgeschlossen werden. Im Anschluss werden die Bedeutung und die Antwortdetails der einzelnen Zustände erläutert:
+    - **Erfolg** : Der Wiederherstellungszustand _Success_ (Erfolgreich) gibt an, dass ein Partitionszustand wiederhergestellt wurde. Die Partition meldet die Zustände _RestoredEpoch_ und _RestoredLSN_ sowie die Zeit im UTC-Format.
 
         ```
         RestoreState  : Success
@@ -296,7 +306,7 @@ Die Wiederherstellungsanforderung durchläuft folgende Zustände in der angegebe
         RestoredEpoch : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
         RestoredLsn   : 3552
         ```        
-    - **Fehler**: Der Wiederherstellungszustand _Failure_ (Fehler) gibt an, dass die Wiederherstellungsanforderung nicht erfolgreich war. Die Ursache des Fehlers wird gemeldet.
+    - **Fehler** : Der Wiederherstellungszustand _Failure_ (Fehler) gibt an, dass die Wiederherstellungsanforderung nicht erfolgreich war. Die Ursache des Fehlers wird gemeldet.
 
         ```
         RestoreState  : Failure
@@ -304,7 +314,7 @@ Die Wiederherstellungsanforderung durchläuft folgende Zustände in der angegebe
         RestoredEpoch : 
         RestoredLsn   : 0
         ```
-    - **Timeout**: Der Wiederherstellungszustand _Timeout_ gibt an, dass für die Anforderung ein Timeout aufgetreten ist. Erstellen Sie eine neue Wiederherstellungsanforderung mit einem höheren Wert für [RestoreTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout). Das Standardtimeout beträgt zehn Minuten. Vergewissern Sie sich, dass sich die Partition nicht in einem Datenverlustzustand befindet, bevor Sie die Wiederherstellung erneut anfordern.
+    - **Timeout** : Der Wiederherstellungszustand _Timeout_ gibt an, dass für die Anforderung ein Timeout aufgetreten ist. Erstellen Sie eine neue Wiederherstellungsanforderung mit einem höheren Wert für [RestoreTimeout](/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout). Das Standardtimeout beträgt zehn Minuten. Vergewissern Sie sich, dass sich die Partition nicht in einem Datenverlustzustand befindet, bevor Sie die Wiederherstellung erneut anfordern.
      
         ```
         RestoreState  : Timeout
@@ -318,9 +328,12 @@ Die Wiederherstellungsanforderung durchläuft folgende Zustände in der angegebe
 Für die Partitionen des zuverlässigen zustandsbehafteten Diensts und der Reliable Actors im Service Fabric-Cluster kann eine _automatische Wiederherstellung_ konfiguriert werden. Legen Sie `AutoRestore` in der Sicherungsrichtlinie auf _true_ fest. Bei aktivierter _automatischer Wiederherstellung_ werden die Daten im Falle eines gemeldeten Datenverlusts anhand der neuesten Sicherung wiederhergestellt. Weitere Informationen finden Sie unter
 
 - [Auto Restore Enablement in Backup Policy (Aktivieren der automatischen Wiederherstellung in einer Sicherungsrichtlinie)](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
-- [Restore Partition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition) (Wiederherstellen einer Partition)
-- [Get Partition Restore Progress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress) (Abrufen des Status der Partitionswiederherstellung)
+- [Restore Partition](/rest/api/servicefabric/sfclient-api-restorepartition) (Wiederherstellen einer Partition)
+- [Get Partition Restore Progress](/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress) (Abrufen des Status der Partitionswiederherstellung)
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Grundlegendes zur Konfiguration der regelmäßigen Sicherung](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [REST-API-Referenz zu Sicherung/Wiederherstellung](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [REST-API-Referenz zu Sicherung/Wiederherstellung](/rest/api/servicefabric/sfclient-index-backuprestore)
+
+[2]: ./media/service-fabric-backuprestoreservice/restore-partition-backup.png
+[3]: ./media/service-fabric-backuprestoreservice/restore-partition-fileshare.png

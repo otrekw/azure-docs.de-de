@@ -1,26 +1,20 @@
 ---
-title: 'Häufig gestellte Fragen zu Open Source-Technologien: Azure App Service | Microsoft-Dokumentation'
-description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Open-Source-Technologien in Azure App Service-Web-Apps.
-services: app-service\web
-documentationcenter: ''
+title: Häufig gestellte Fragen zu Open-Source-Technologien
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Open-Source-Technologien in Azure App Service.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.custom: seodec18
-ms.openlocfilehash: 941a218dbda2c27a598e5a53f2b947184ee78085
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: seodec18, devx-track-python
+ms.openlocfilehash: 36dfbf0fda060a8f273fee64098d6234b575088c
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121217"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831838"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zu Open-Source-Technologien für Web-Apps in Azure | Microsoft-Dokumentation
 
@@ -32,7 +26,7 @@ In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zu Problem
 
 So aktivieren Sie die PHP-Protokollierung
 
-1. Melden Sie sich bei Ihrer [Kudu-Website](https://*yourwebsitename*.scm.azurewebsites.net) an.
+1. Melden Sie sich bei Ihrer **Kudu-Website** (`https://*yourwebsitename*.scm.azurewebsites.net`) an.
 2. Wählen Sie im obersten Menü **Debug Console** > **CMD** aus.
 3. Wählen Sie den Ordner **Site** aus.
 4. Wählen Sie den Ordner **wwwroot** aus.
@@ -49,7 +43,7 @@ So aktivieren Sie die PHP-Protokollierung
     ```
 12. Starten Sie im Azure-Portal im Menü „Web-App“ Ihre Web-App neu.
 
-Weitere Informationen finden Sie unter [Aktivieren von WordPress-Fehlerprotokollen](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
+Weitere Informationen finden Sie unter [Aktivieren von WordPress-Fehlerprotokollen](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2).
 
 ## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>Wie protokolliere ich Python-Anwendungsfehler in Apps, die in App Service gehostet werden?
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
@@ -62,7 +56,7 @@ Um die Version der Node.js-Anwendung zu ändern, können Sie eine der folgenden 
   1. Navigieren Sie im Azure-Portal zu Ihrer Web-App.
   2. Klicken Sie auf dem Blatt **Einstellungen** auf **Anwendungseinstellungen**.
   3. In **App-Einstellungen** können Sie WEBSITE_NODE_DEFAULT_VERSION als Schlüssel und die gewünschte Version von Node.js als Wert hinzufügen.
-  4. Wechseln Sie zu Ihrer [Kudu-Konsole](https://*yourwebsitename*.scm.azurewebsites.net).
+  4. Wechseln Sie zu Ihrer **Kudu-Konsole** (`https://*yourwebsitename*.scm.azurewebsites.net`).
   5. Um die Node.js-Version zu überprüfen, geben Sie den folgenden Befehl ein:  
      ```
      node -v
@@ -86,7 +80,7 @@ Um die Version der Node.js-Anwendung zu ändern, können Sie eine der folgenden 
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>Mir wird die Meldung „Fehler beim Herstellen einer Datenbankverbindung“ in meiner WordPress-App angezeigt, die in App Service gehostet wird. Wie kann ich das Problem beheben?
 
-Wenn Ihnen dieser Fehler in der Azure-WordPress-App angezeigt wird, führen Sie zum Aktivieren von „php_errors.log“ und „debug.log“ die Schritte unter [Aktivieren von WordPress-Fehlerprotokollen](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/) aus.
+Wenn Ihnen dieser Fehler in der Azure-WordPress-App angezeigt wird, führen Sie zum Aktivieren von „php_errors.log“ und „debug.log“ die Schritte unter [Aktivieren von WordPress-Fehlerprotokollen](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2) aus.
 
 Wenn die Protokolle aktiviert sind, reproduzieren Sie den Fehler, und überprüfen Sie die Protokolle, um zu prüfen, ob Verbindungen knapp werden:
 ```
@@ -97,17 +91,17 @@ Wenn Sie diesen Fehler in Ihren Dateien „debug.log“ oder „php_errors.log�
 
 ## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Wie debugge ich eine Node.js-app, die in App Service gehostet wird?
 
-1.  Wechseln Sie zu Ihrer [Kudu-Konsole](https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole).
+1.  Wechseln Sie zu Ihrer **Kudu-Konsole** (`https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole`).
 2.  Wechseln Sie zu Ihrem Ordner mit den Anwendungsprotokollen (D:\home\LogFiles\Application).
 3.  Überprüfen Sie den Inhalt der Datei „logging_errors.txt“.
 
 ## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Wie installiere ich native Python-Module in einer App Service-Web-App oder -API-App?
 
-Einige Pakete lassen sich ggf. nicht mithilfe von pip in Azure installieren. Das Paket ist möglicherweise nicht im Python Package Index verfügbar, oder ggf. ist ein Compiler erforderlich (auf dem Computer, auf dem die Web-App in App Service ausgeführt wird, ist kein Compiler verfügbar). Informationen zum Installieren nativer Module in App Service-Web-Apps und -API-Apps finden Sie unter [Installieren von Python-Modulen in App Service](https://blogs.msdn.microsoft.com/azureossds/2015/06/29/install-native-python-modules-on-azure-web-apps-api-apps/).
+Einige Pakete lassen sich ggf. nicht mithilfe von pip in Azure installieren. Das Paket ist möglicherweise nicht im Python Package Index verfügbar, oder ggf. ist ein Compiler erforderlich (auf dem Computer, auf dem die Web-App in App Service ausgeführt wird, ist kein Compiler verfügbar). Informationen zum Installieren nativer Module in App Service-Web-Apps und -API-Apps finden Sie unter [Installieren von Python-Modulen in App Service](/archive/blogs/azureossds/install-native-python-modules-on-azure-web-apps-api-apps).
 
 ## <a name="how-do-i-deploy-a-django-app-to-app-service-by-using-git-and-the-new-version-of-python"></a>Wie stelle ich eine Django-App in App Service mithilfe von Git und der neuen Version von Python bereit?
 
-Informationen zum Installieren von Django finden Sie unter [Bereitstellen einer Django-App in App Service](https://blogs.msdn.microsoft.com/azureossds/2016/08/25/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python/).
+Informationen zum Installieren von Django finden Sie unter [Bereitstellen einer Django-App in App Service](/archive/blogs/azureossds/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python).
 
 ## <a name="where-are-the-tomcat-log-files-located"></a>Wo befinden sich die Tomcat-Protokolldateien?
 
@@ -144,7 +138,7 @@ So beheben Sie den Fehler
 
 1. Entfernen Sie die Datei „sqljdbc*.jar-“ aus Ihrem Ordner „app/lib“.
 2. Bei Verwendung des benutzerdefinierten Tomcat- oder Azure Marketplace Tomcat-Webservers kopieren Sie diese JAR-Datei in den Tomcat-Ordner „lib“.
-3. Wenn Sie Java im Azure-Portal aktivieren (wählen Sie **Java 1.8** > **Tomcat-Server** aus), kopieren Sie die JAR-Datei „sqljdbc“ in den Ordner, der parallel zu Ihrer App vorhanden ist. Fügen Sie dann die folgende Klassenpfadeinstellung der Datei „web.config“ hinzu:
+3. Wenn Sie Java im Azure-Portal aktivieren (wählen Sie **Java 1.8** > **Tomcat-Server** aus), kopieren Sie die JAR-Datei „sqljdbc\*“ in den Ordner, der parallel zu Ihrer App vorhanden ist. Fügen Sie dann die folgende Klassenpfadeinstellung der Datei „web.config“ hinzu:
 
     ```xml
     <httpPlatform>
@@ -175,9 +169,9 @@ Eine weitere Möglichkeit besteht darin, einen WebJob zu schreiben, der gemäß 
 
 ## <a name="where-do-i-find-the-log-files-for-jetty"></a>Wo finde ich die Protokolldateien für Jetty?
 
-Für Marketplace- und benutzerdefinierte Bereitstellungen befindet sich die Protokolldatei im Ordner „D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs“. Beachten Sie, dass der Speicherort des Ordners von der verwendeten Version von Jetty abhängt. Der hier angegebene Pfad gilt z.B. für Jetty 9.1.2. Suchen Sie nach „jetty_*YYYY_MM_DD*.stderrout.log“.
+Für Marketplace- und benutzerdefinierte Bereitstellungen befindet sich die Protokolldatei im Ordner „D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs“. Beachten Sie, dass der Speicherort des Ordners von der verwendeten Version von Jetty abhängt. Der hier angegebene Pfad gilt z.B. für Jetty 9.1.2. Suchen Sie nach „jetty_ *YYYY_MM_DD*.stderrout.log“.
 
-Für Bereitstellungen über „App-Einstellungen“ im Portal befindet sich die Protokolldatei in „D:\home\LogFiles“. Suchen Sie nach „jetty_*YYYY_MM_DD*.stderrout.log“.
+Für Bereitstellungen über „App-Einstellungen“ im Portal befindet sich die Protokolldatei in „D:\home\LogFiles“. Suchen Sie nach „jetty_ *YYYY_MM_DD*.stderrout.log“.
 
 ## <a name="can-i-send-email-from-my-azure-web-app"></a>Kann ich E-Mail aus meiner Azure-Web-App senden?
 
@@ -187,28 +181,28 @@ App Service bietet keine integrierte E-Mail-Funktion. Einige guten Alternativen 
 
 Wenn Sie vor Kurzem zu Azure migriert sind, leitet WordPress Sie zur alten Domänen-URL um. Dies wird durch eine Einstellung in der MySQL-Datenbank verursacht.
 
-WordPress Buddy+ ist eine Erweiterung für Azure-Websites, mit deren Hilfe Sie die Umleitungs-URL direkt in der Datenbank aktualisieren können. Weitere Informationen zur Verwendung von WordPress Buddy+ finden Sie unter [WordPress tools and MySQL migration with WordPress Buddy+](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+).
+WordPress Buddy+ ist eine Erweiterung für Azure-Websites, mit deren Hilfe Sie die Umleitungs-URL direkt in der Datenbank aktualisieren können. Weitere Informationen zur Verwendung von WordPress Buddy+ finden Sie unter [WordPress tools and MySQL migration with WordPress Buddy+](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+).
 
-Wenn Sie die Umleitungs-URL lieber manuell mithilfe von SQL-Abfragen oder PHPMyAdmin aktualisieren, gehen Sie wie unter [WordPress: Redirecting to wrong URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/) (WordPress: Umleitung zur falschen URL) beschrieben vor.
+Wenn Sie die Umleitungs-URL lieber manuell mithilfe von SQL-Abfragen oder PHPMyAdmin aktualisieren, gehen Sie wie unter [WordPress: Redirecting to wrong URL](/archive/blogs/azureossds/wordpress-redirecting-to-wrong-url) (WordPress: Umleitung zur falschen URL) beschrieben vor.
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Wie ändere ich mein WordPress-Anmeldungskennwort?
 
-Wenn Sie Ihr WordPress-Anmeldungskennwort vergessen haben, können es mit WordPress Buddy+ aktualisieren. Um Ihr Kennwort zurückzusetzen, installieren Sie die Erweiterung für Azure-Websites WordPress Buddy+, und führen Sie die Schritte unter [WordPress tools and MySQL migration with WordPress Buddy+](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+) aus.
+Wenn Sie Ihr WordPress-Anmeldungskennwort vergessen haben, können es mit WordPress Buddy+ aktualisieren. Um Ihr Kennwort zurückzusetzen, installieren Sie die Erweiterung für Azure-Websites WordPress Buddy+, und führen Sie die Schritte unter [WordPress tools and MySQL migration with WordPress Buddy+](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+) aus.
 
 ## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>Ich kann mich nicht bei WordPress anmelden. Wie löse ich dieses Problem?
 
-Wenn Sie sich nach einer vor Kurzem erfolgten Installation eines Plug-Ins aus WordPress ausgesperrt haben, verfügen Sie möglicherweise über ein fehlerhaftes Plug-In. WordPress Buddy+ ist eine Erweiterung für Azure-Websites, mit der Sie WordPress-Plug-Ins deaktivieren können. Weitere Informationen finden Sie unter [WordPress tools and MySQL migration with WordPress Buddy+](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+).
+Wenn Sie sich nach einer vor Kurzem erfolgten Installation eines Plug-Ins aus WordPress ausgesperrt haben, verfügen Sie möglicherweise über ein fehlerhaftes Plug-In. WordPress Buddy+ ist eine Erweiterung für Azure-Websites, mit der Sie WordPress-Plug-Ins deaktivieren können. Weitere Informationen finden Sie unter [WordPress tools and MySQL migration with WordPress Buddy+](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+).
 
 ## <a name="how-do-i-migrate-my-wordpress-database"></a>Wie migriere ich meine WordPress-Datenbank?
 
 Sie haben mehrere Optionen zum Migrieren der MySQL-Datenbank, die mit Ihrer WordPress-Website verbunden ist:
 
-* Entwickler: Verwenden Sie die [Eingabeaufforderung oder PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/).
-* Andere Benutzer: Verwenden Sie [WordPress Buddy+](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/).
+* Entwickler: Verwenden Sie die [Eingabeaufforderung oder PHPMyAdmin](/archive/blogs/azureossds/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service).
+* Andere Benutzer: Verwenden Sie [WordPress Buddy+](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows).
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Wie kann ich WordPress sicherer machen?
 
-Informationen zu bewährten Sicherheitsmethoden für WordPress finden Sie unter [Best practices for WordPress security in Azure](https://blogs.msdn.microsoft.com/azureossds/2016/12/26/best-practices-for-wordpress-security-on-azure/) (Bewährte Methoden für die WordPress-Sicherheit in Azure).
+Informationen zu bewährten Sicherheitsmethoden für WordPress finden Sie unter [Best practices for WordPress security in Azure](/archive/blogs/azureossds/best-practices-for-wordpress-security-on-azure) (Bewährte Methoden für die WordPress-Sicherheit in Azure).
 
 ## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>Ich versuche, PHPMyAdmin zu verwenden, und erhalte die Fehlermeldung „Zugriff verweigert“. Wie löse ich dieses Problem?
 

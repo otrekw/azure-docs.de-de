@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: f3ad58c4094e9f39bcf9782b7b98e351e9d7809b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 987d4c7188c2bdc2ba6264805e33b79e7d2851d6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058148"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966286"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Behandlung von Problemen bei der Aktivierung virtueller Windows-Computer
 
@@ -26,7 +26,7 @@ Wenn Sie Probleme beim Aktivieren eines virtuellen Azure Windows-Computers haben
 
 ## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Grundlegendes zu Azure KMS-Endpunkten für die Windows-Produktaktivierung von Azure Virtual Machines
 
-Abhängig von der Cloudregion, in der sich der virtuelle Computer befindet, verwendet Azure verschiedene Endpunkte für die KMS-Aktivierung. Verwenden Sie für dieses Handbuchs zur Problembehandlung den für Ihre Region vorgesehenen KMS-Endpunkt.
+Abhängig von der Cloudregion, in der sich der virtuelle Computer befindet, verwendet Azure verschiedene Endpunkte für die KMS-Aktivierung (Key Management Services). Verwenden Sie für dieses Handbuchs zur Problembehandlung den für Ihre Region vorgesehenen KMS-Endpunkt.
 
 * Azure Public Cloud-Regionen: kms.core.windows.net:1688
 * Nationale Cloudregionen für Azure China 21Vianet: kms.core.chinacloudapi.cn:1688
@@ -46,9 +46,9 @@ In der Regel treten Probleme bei der VM-Aktivierung in Azure auf, wenn die Windo
 ## <a name="solution"></a>Lösung
 
 >[!NOTE]
->Wenn Sie ein Standort-zu-Standort-VPN und eine Tunnelerzwingung verwenden, gehen Sie unter [Verwenden von benutzerdefinierten Azure-Routen zum Aktivieren der KMS-Aktivierung mit Tunnelerzwingung](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx). 
+>Wenn Sie ein Standort-zu-Standort-VPN und eine Tunnelerzwingung verwenden, gehen Sie unter [Verwenden von benutzerdefinierten Azure-Routen zum Aktivieren der KMS-Aktivierung mit Tunnelerzwingung](../../vpn-gateway/vpn-gateway-about-forced-tunneling.md). 
 >
->Wenn Sie ExpressRoute verwenden, und eine veröffentlichte Standardroute besitzen, gehen Sie unter [Azure VM may fail to activate over ExpressRoute (Die Azure-VM kann womöglich über ExpressRoute nicht aktiviert werden)](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
+>Wenn Sie ExpressRoute verwenden und eine Standardroute veröffentlicht haben, finden Sie weitere Informationen unter [Kann ich die Verbindung mit dem Internet für virtuelle Netzwerke blockieren, die mit ExpressRoute-Verbindungen verbunden sind?](../../expressroute/expressroute-faqs.md).
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>Schritt 1: Konfigurieren der entsprechenden KMS-Clientsetupschlüssel
 
@@ -61,7 +61,7 @@ Sie müssen für den aus einem benutzerdefinierten Image erstellten virtuellen C
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. Wenn **slmgr.vbs /dlv** den RETAIL-Kanal zeigt, führen Sie die folgenden Befehle aus, um den [KMS-Clientsetupschlüssel](https://technet.microsoft.com/library/jj612867%28v=ws.11%29.aspx?f=255&MSPPError=-2147217396) für die aktuelle Version von Windows Server festzulegen, und erzwingen Sie die erneute Aktivierung: 
+2. Wenn **slmgr.vbs /dlv** den RETAIL-Kanal zeigt, führen Sie die folgenden Befehle aus, um den [KMS-Clientsetupschlüssel](/windows-server/get-started/kmsclientkeys) für die aktuelle Version von Windows Server festzulegen, und erzwingen Sie die erneute Aktivierung: 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
@@ -77,7 +77,7 @@ Sie müssen für den aus einem benutzerdefinierten Image erstellten virtuellen C
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>Schritt 2: Überprüfen der Konnektivität zwischen dem virtuellen Computer und dem Azure KMS-Dienst
 
-1. Laden Sie das [PSping](http:/technet.microsoft.com/sysinternals/jj729731.aspx)-Tool herunter, und extrahieren Sie es in einem lokalen Ordner auf der VM, die nicht aktiviert wird. 
+1. Laden Sie das [PSping](/sysinternals/downloads/psping)-Tool herunter, und extrahieren Sie es in einem lokalen Ordner auf der VM, die nicht aktiviert wird. 
 
 2. Wechseln Sie zu „Start“, suchen Sie nach Windows PowerShell, klicken Sie mit der rechten Maustaste auf „Windows PowerShell“, und wählen Sie anschließend „Als Administrator ausführen“ aus.
 
@@ -92,7 +92,7 @@ Sie müssen für den aus einem benutzerdefinierten Image erstellten virtuellen C
 4. Überprüfen Sie mithilfe von Psping, dass Sie eine Verbindung mit dem KMS-Server besitzen. Wechseln Sie zu dem Ordner, in dem Sie den Download „pstools.zip“ extrahiert haben, und führen Sie dann Folgendes aus:
   
     ```
-    \psping.exe kms.core.windows.net:1688
+    .\psping.exe kms.core.windows.net:1688
     ```
    Die vorletzte Zeile der Ausgabe muss Folgendes enthalten: Sent = 4, Received = 4, Lost = 0 (0% loss).
 
@@ -102,7 +102,9 @@ Sie müssen für den aus einem benutzerdefinierten Image erstellten virtuellen C
   
     Stellen Sie außerdem sicher, dass der ausgehende Netzwerkdatenverkehr an den KMS-Endpunkt mit Port 1688 nicht durch die Firewall auf der VM blockiert wird.
 
-5. Nachdem Sie erfolgreich die Verbindung zu „kms.core.windows.net“ überprüft haben, führen Sie den folgenden Befehl auf der erhöhten Windows PowerShell-Aufforderung aus. Dieser Befehl versucht mehrmals, die Aktivierung durchzuführen.
+5. Vergewissern Sie sich mithilfe der Funktion [Network Watcher – nächster Hop](../../network-watcher/network-watcher-next-hop-overview.md), dass der Typ des nächsten Hops von der betreffenden VM an die Ziel-IP-Adresse 23.102.135.246 (für kms.core.windows.net) oder die IP-Adresse des entsprechenden KMS-Endpunkts für Ihre Region **Internet** lautet.  Wenn das Ergebnis „VirtualAppliance“ oder „VirtualNetworkGateway“ lautet, ist wahrscheinlich eine Standardroute vorhanden.  Wenden Sie sich an Ihren Netzwerkadministrator, und legen Sie in Zusammenarbeit mit ihm die richtige Vorgehensweise fest.  Hierbei kann es sich um eine [benutzerdefinierte Route](./custom-routes-enable-kms-activation.md) handeln, wenn diese Lösung mit den Richtlinien Ihrer Organisation konsistent ist.
+
+6. Nachdem Sie erfolgreich die Verbindung zu „kms.core.windows.net“ überprüft haben, führen Sie den folgenden Befehl auf der erhöhten Windows PowerShell-Aufforderung aus. Dieser Befehl versucht mehrmals, die Aktivierung durchzuführen.
 
     ```powershell
     1..12 | ForEach-Object { Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato" ; start-sleep 5 }
@@ -128,7 +130,7 @@ Ja.
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Was geschieht, wenn der Zeitraum für die Windows-Aktivierung abläuft? 
 
  
-Wenn der Aktivierungszeitraum abgelaufen und Windows immer noch nicht aktiviert ist, zeigen Windows Server 2008 R2 und höheren Versionen von Windows zusätzliche Benachrichtigungen zur Aktivierung an. Der Desktophintergrund bleibt schwarz und Windows Update installiert nur Sicherheitsupdates und wichtige Updates, jedoch keine optionalen Updates. Weitere Informationen finden Sie im Abschnitt „Notifications“ (Benachrichtigungen) am Ende der Seite [Licensing Conditions (Linzenzierungsbedingungen)](https://technet.microsoft.com/library/ff793403.aspx).   
+Wenn der Aktivierungszeitraum abgelaufen und Windows immer noch nicht aktiviert ist, zeigen Windows Server 2008 R2 und höheren Versionen von Windows zusätzliche Benachrichtigungen zur Aktivierung an. Der Desktophintergrund bleibt schwarz und Windows Update installiert nur Sicherheitsupdates und wichtige Updates, jedoch keine optionalen Updates. Weitere Informationen finden Sie im Abschnitt „Notifications“ (Benachrichtigungen) am Ende der Seite [Licensing Conditions (Linzenzierungsbedingungen)](/previous-versions/tn-archive/ff793403(v=technet.10)).   
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 

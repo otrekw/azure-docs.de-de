@@ -1,28 +1,24 @@
 ---
-title: Erstellen einer Identität für die Azure-App mit PowerShell | Microsoft-Dokumentation
+title: Erstellen einer Identität für eine Azure-App (PowerShell) | Azure
+titleSuffix: Microsoft identity platform
 description: Hier erfahren Sie, wie Sie mithilfe von Azure PowerShell eine Azure Active Directory-Anwendung und einen Dienstprinzipal erstellen sowie mittels rollenbasierter Zugriffssteuerung Zugriff auf Ressourcen gewähren. Es wird gezeigt, wie eine Anwendung mit einem Zertifikat authentifiziert wird.
 services: active-directory
-documentationcenter: na
 author: rwike77
 manager: CelesteDG
-ms.assetid: d2caf121-9fbe-4f00-bf9d-8f3d1f00a6ff
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev
-ms.devlang: na
-ms.topic: conceptual
+ms.custom: aaddev , devx-track-azurepowershell
+ms.topic: how-to
 ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 08/19/2019
+ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe0a3c8cbee92be85fe415a4d44d5493940bb45a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 096b8ed60bf9880b6904ab952d4558939ca13574
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638625"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652074"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Gewusst wie: Verwenden von Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat
 
@@ -32,7 +28,7 @@ Wenn eine App oder ein Skript Zugriff auf Ressourcen benötigt, können Sie eine
 * Sie können ein Zertifikat für die Authentifizierung beim Ausführen eines unbeaufsichtigten Skripts verwenden.
 
 > [!IMPORTANT]
-> Anstatt einen Dienstprinzipal zu erstellen, sollten Sie die Verwendung verwalteter Identitäten für Azure-Ressourcen für Ihre Anwendungsidentität erwägen. Wenn Ihr Code unter einem Dienst ausgeführt wird, der verwaltete Identitäten unterstützt und auf Ressourcen zugreift, die die Azure AD-Authentifizierung (Active Directory) unterstützen, sind verwaltete Identitäten für Sie die besser geeignete Option. Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen (z.B. auch zu den Diensten, die diese zurzeit unterstützen) finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../managed-identities-azure-resources/overview.md).
+> Anstatt einen Dienstprinzipal zu erstellen, sollten Sie die Verwendung verwalteter Identitäten für Azure-Ressourcen für Ihre Anwendungsidentität erwägen. Wenn Ihr Code unter einem Dienst ausgeführt wird, der verwaltete Identitäten unterstützt und auf Ressourcen zugreift, die die Azure AD-Authentifizierung (Active Directory) unterstützen, sind verwaltete Identitäten für Sie die besser geeignete Option. Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen (z.B. auch zu den Diensten, die diese zurzeit unterstützen) finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen](../managed-identities-azure-resources/overview.md)?
 
 In diesem Artikel wird veranschaulicht, wie Sie einen Dienstprinzipal erstellen, der mit einem Zertifikat authentifiziert wird. Informationen zur Einrichtung eines Dienstprinzipals mit einem Kennwort finden Sie unter [Erstellen eines Azure-Dienstprinzipals mit Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 
@@ -44,11 +40,16 @@ Für diesen Artikel benötigen Sie die [aktuelle Version](/powershell/azure/inst
 
 Zum Abschließen dieses Artikels benötigen Sie sowohl in Ihrer Azure AD-Instanz als auch im Azure-Abonnement ausreichende Berechtigungen. Insbesondere müssen Sie eine App in Azure AD erstellen und dem Dienstprinzipal eine Rolle zuweisen können.
 
-Die einfachste Möglichkeit zum Überprüfen, ob Ihr Konto über die erforderlichen Berechtigungen verfügt, ist über das Portal. Siehe [Überprüfen der erforderlichen Berechtigung](howto-create-service-principal-portal.md#required-permissions).
+Die einfachste Möglichkeit zum Überprüfen, ob Ihr Konto über die erforderlichen Berechtigungen verfügt, ist über das Portal. Siehe [Überprüfen der erforderlichen Berechtigung](howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
+
+## <a name="assign-the-application-to-a-role"></a>Zuweisen der Anwendung zu einer Rolle
+Um auf Ressourcen in Ihrem Abonnement zuzugreifen, müssen Sie die Anwendung einer Rolle zuweisen. Entscheiden Sie, welche Rolle über die geeigneten Berechtigungen für die Anwendung verfügt. Informationen zu den verfügbaren Rollen finden Sie unter [In Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md).
+
+Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Niedrigere Ebenen mit geringerem Umfang erben Berechtigungen. Wenn also beispielsweise der Rolle *Leser* für eine Ressourcengruppe eine Anwendung hinzugefügt wird, kann diese Rolle die Ressourcengruppe und alle darin enthaltenen Ressourcen lesen. Wählen Sie die Rolle *Mitwirkender* aus, um der Anwendung das Ausführen von Aktionen wie Neustarten, Starten und Beenden von Instanzen zu ermöglichen.
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Erstellen eines Dienstprinzipals mit selbstsigniertem Zertifikat
 
-Im folgenden Beispiel geht es um ein einfaches Szenario. [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) wird zum Erstellen eines Dienstprinzipals mit einem selbstsignierten Zertifikat verwendet, und [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) wird verwendet, um dem Dienstprinzipal die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) zuzuweisen. Die Rollenzuweisung ist auf Ihr derzeit ausgewähltes Azure-Abonnement beschränkt. Verwenden Sie [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext), um ein anderes Abonnement auszuwählen.
+Im folgenden Beispiel geht es um ein einfaches Szenario. Darin wird [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) zum Erstellen eines Dienstprinzipals mit einem selbstsignierten Zertifikat verwendet, und [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) wird verwendet, um dem Dienstprinzipal die Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) zuzuweisen. Die Rollenzuweisung ist auf Ihr derzeit ausgewähltes Azure-Abonnement beschränkt. Verwenden Sie [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext), um ein anderes Abonnement auszuwählen.
 
 > [!NOTE]
 > Das Cmdlet „New-SelfSignedCertificate“ und das PKI-Modul werden derzeit nicht in PowerShell Core unterstützt. 
@@ -64,7 +65,7 @@ $sp = New-AzADServicePrincipal -DisplayName exampleapp `
   -EndDate $cert.NotAfter `
   -StartDate $cert.NotBefore
 Sleep 20
-New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.ApplicationId
 ```
 
 Das Beispiel befindet sich 20 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure AD. Wenn Ihr Skript nicht lange genug wartet, wird eine Fehlermeldung mit folgendem Wortlaut angezeigt: „Der Prinzipal {ID} ist im Verzeichnis {Verzeichnis-ID} nicht enthalten.“ Sie können diesen Fehler beheben, indem Sie einen Moment warten und dann den Befehl **New-AzRoleAssignment** erneut ausführen.
@@ -96,8 +97,8 @@ Bei jeder Anmeldung als Dienstprinzipal müssen Sie die Mandanten-ID des Verzeic
 $TenantId = (Get-AzSubscription -SubscriptionName "Contoso Default").TenantId
 $ApplicationId = (Get-AzADApplication -DisplayNameStartWith exampleapp).ApplicationId
 
- $Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -eq "CN=exampleappScriptCert" }).Thumbprint
- Connect-AzAccount -ServicePrincipal `
+$Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -eq "CN=exampleappScriptCert" }).Thumbprint
+Connect-AzAccount -ServicePrincipal `
   -CertificateThumbprint $Thumbprint `
   -ApplicationId $ApplicationId `
   -TenantId $TenantId
@@ -105,7 +106,7 @@ $ApplicationId = (Get-AzADApplication -DisplayNameStartWith exampleapp).Applicat
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>Erstellen eines Dienstprinzipals mit Zertifikat von der Zertifizierungsstelle
 
-Im folgenden Beispiel wird ein von einer Zertifizierungsstelle ausgestelltes Zertifikat verwendet, um einen Dienstprinzipal zu erstellen. Die Zuweisung ist auf das angegebene Azure-Abonnement beschränkt. Der Dienstprinzipal wird der Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) hinzugefügt. Wenn während der Rollenzuweisung ein Fehler auftritt, wird versucht, die Zuweisung erneut durchzuführen.
+Im folgenden Beispiel wird ein von einer Zertifizierungsstelle ausgestelltes Zertifikat verwendet, um einen Dienstprinzipal zu erstellen. Die Zuweisung ist auf das angegebene Azure-Abonnement beschränkt. Sie fügt den Dienstprinzipal der Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) hinzu. Wenn während der Rollenzuweisung ein Fehler auftritt, wird versucht, die Zuweisung erneut durchzuführen.
 
 ```powershell
 Param (
@@ -125,7 +126,7 @@ Param (
  Connect-AzAccount
  Import-Module Az.Resources
  Set-AzContext -Subscription $SubscriptionId
- 
+
  $CertPassword = ConvertTo-SecureString $CertPlainPassword -AsPlainText -Force
 
  $PFXCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($CertPath, $CertPassword)
@@ -141,11 +142,11 @@ Param (
  {
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
-    New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
+    New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
     $NewRole = Get-AzRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
     $Retries++;
  }
- 
+
  $NewRole
 ```
 
@@ -154,13 +155,13 @@ Bei jeder Anmeldung als Dienstprinzipal müssen Sie die Mandanten-ID des Verzeic
 
 ```powershell
 Param (
- 
+
  [Parameter(Mandatory=$true)]
  [String] $CertPath,
 
  [Parameter(Mandatory=$true)]
  [String] $CertPlainPassword,
- 
+
  [Parameter(Mandatory=$true)]
  [String] $ApplicationId,
 
@@ -222,6 +223,6 @@ Wenn Sie einen Dienstprinzipal erstellen, können folgende Fehler auftreten:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zur Einrichtung eines Dienstprinzipals mit einem Kennwort finden Sie unter [Erstellen eines Azure-Dienstprinzipals mit Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
-* Ausführliche Schritte zum Integrieren einer Anwendung in Azure zur Verwaltung von Ressourcen finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](../../azure-resource-manager/resource-manager-api-authentication.md).
 * Eine ausführlichere Erläuterung zu Anwendungen und Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](app-objects-and-service-principals.md).
-* Weitere Informationen zur Azure AD-Authentifizierung finden Sie unter [Was ist eine Authentifizierung?](authentication-scenarios.md).
+* Weitere Informationen zur Azure AD-Authentifizierung finden Sie unter [Was ist eine Authentifizierung?](./authentication-vs-authorization.md).
+* Informationen zum Arbeiten mit App-Registrierungen mithilfe von **Microsoft Graph** finden Sie in der [Anwendungs-API-Referenz](/graph/api/resources/application).

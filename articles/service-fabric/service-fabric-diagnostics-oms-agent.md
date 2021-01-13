@@ -1,25 +1,16 @@
 ---
-title: 'Azure Service Fabric: Leistungsüberwachung mit Azure Monitor-Protokolle | Microsoft-Dokumentation'
+title: Leistungsüberwachung mit Azure Monitor-Protokolle
 description: Hier erfahren Sie, wie Sie den Log Analytics-Agent zur Überwachung von Containern und Leistungsindikatoren für Ihre Azure Service Fabric-Cluster einrichten.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 819f6ee4ab079361279a567bceeb74c33fe14186
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60952356"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86258692"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Leistungsüberwachung mit Azure Monitor-Protokolle
 
@@ -32,7 +23,7 @@ Dieser Artikel beschreibt, wie Sie Ihrem Cluster den Log Analytics-Agent als VM-
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>Hinzufügen der Agent-Erweiterung über die Azure-Befehlszeilenschnittstelle
 
-Den Log Analytics-Agent fügen Sie Ihrem Cluster am besten über die VM-Skalierungsgruppen-APIs hinzu, die für die Azure-Befehlszeilenschnittstelle zur Verfügung stehen. Falls Sie die Azure-Befehlszeilenschnittstelle noch nicht eingerichtet haben, wechseln Sie zum Azure-Portal, und öffnen Sie eine [Cloud Shell](../cloud-shell/overview.md)-Instanz, oder [installieren Sie die Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Den Log Analytics-Agent fügen Sie Ihrem Cluster am besten über die VM-Skalierungsgruppen-APIs hinzu, die für die Azure-Befehlszeilenschnittstelle zur Verfügung stehen. Falls Sie die Azure-Befehlszeilenschnittstelle noch nicht eingerichtet haben, wechseln Sie zum Azure-Portal, und öffnen Sie eine [Cloud Shell](../cloud-shell/overview.md)-Instanz, oder [installieren Sie die Azure CLI](/cli/azure/install-azure-cli).
 
 1. Vergewissern Sie sich nach dem Anfordern Ihrer Cloud Shell, dass Sie in dem Abonnement arbeiten, in dem sich auch Ihre Ressource befindet. Verwenden Sie für diese Überprüfung `az account show`, und vergewissern Sie sich, dass der Wert für „name“ dem Namen des Abonnements Ihres Clusters entspricht.
 
@@ -42,17 +33,17 @@ Den Log Analytics-Agent fügen Sie Ihrem Cluster am besten über die VM-Skalieru
 
 3. Klicken Sie auf **Windows-Server**, wenn Sie einen Windows-Cluster einrichten möchten, bzw. auf **Linux-Server**, wenn Sie einen Linux-Cluster erstellen möchten. Auf dieser Seite werden Ihre `workspace ID` und `workspace key` angezeigt (als Primärschlüssel im Portal aufgeführt). Sie benötigen beide im nächsten Schritt.
 
-4. Führen Sie den Befehl aus, mit dem der Log Analytics-Agent in Ihrem Cluster installiert wird. Verwenden Sie dazu die `vmss extension set`-API in Ihrer Cloud Shell:
+4. Führen Sie den Befehl aus, mit dem der Log Analytics-Agent in Ihrem Cluster installiert wird. Verwenden Sie dazu die `vmss extension set`-API:
 
     Windows-Cluster:
 
-    ```sh
+    ```azurecli
     az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
     Linux-Cluster:
 
-    ```sh
+    ```azurecli
     az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
@@ -62,13 +53,13 @@ Den Log Analytics-Agent fügen Sie Ihrem Cluster am besten über die VM-Skalieru
 
 5. Das Hinzufügen des Agents zu Ihren Knoten sollte in weniger als 15 Minuten erfolgreich abgeschlossen sein. Mit der `az vmss extension list`-API können Sie überprüfen, ob die Agents hinzugefügt wurden:
 
-    ```sh
+    ```azurecli
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
     ```
 
 ## <a name="add-the-agent-via-the-resource-manager-template"></a>Hinzufügen des Agents über die Resource Manager-Vorlage
 
-Resource Manager-Beispielvorlagen zum Bereitstellen eines Azure Log Analytics-Arbeitsbereichs sowie zum Hinzufügen eines Agents zu den einzelnen Knoten stehen für [Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) und [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) zur Verfügung.
+Resource Manager-Beispielvorlagen zum Bereitstellen eines Azure Log Analytics-Arbeitsbereichs sowie zum Hinzufügen eines Agents zu den einzelnen Knoten stehen für [Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) und [Linux](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS) zur Verfügung.
 
 Sie können diese Vorlage herunterladen und anpassen, um einen Cluster bereitzustellen, der Ihre Anforderungen am besten erfüllt.
 
@@ -82,7 +73,7 @@ Jetzt haben Sie den Log Analytics-Agent hinzugefügt und können im Log Analytic
 
 3. Klicken Sie auf **Erweiterte Einstellungen**.
 
-4. Klicken Sie auf **Daten** und dann auf **Windows- oder Linux-Leistungsindikatoren**. Es gibt eine Liste von Standardindikatoren, deren Aktivierung Sie auswählen und für die Sie auch das Sammlungsintervall festlegen können. Sie können auch [weitere Leistungsindikatoren](service-fabric-diagnostics-event-generation-perf.md) hinzufügen, die erfasst werden sollen. Auf das richtige Format wird in diesem [Artikel](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx) verwiesen.
+4. Klicken Sie auf **Daten** und dann auf **Windows- oder Linux-Leistungsindikatoren**. Es gibt eine Liste von Standardindikatoren, deren Aktivierung Sie auswählen und für die Sie auch das Sammlungsintervall festlegen können. Sie können auch [weitere Leistungsindikatoren](service-fabric-diagnostics-event-generation-perf.md) hinzufügen, die erfasst werden sollen. Auf das richtige Format wird in diesem [Artikel](/windows/win32/perfctrs/specifying-a-counter-path) verwiesen.
 
 5. Klicken Sie auf **Speichern** und dann auf **OK**.
 
@@ -101,5 +92,5 @@ Jetzt haben Sie den Log Analytics-Agent hinzugefügt und können im Log Analytic
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfassen Sie relevante [Leistungsindikatoren](service-fabric-diagnostics-event-generation-perf.md). Lesen Sie zum Konfigurieren des Log Analytics-Agents für das Erfassen von bestimmten Leistungsindikatoren [Konfigurieren von Datenquellen](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources).
-* Konfigurieren von Azure Monitor-Protokolle für die Einrichtung von [automatisierten Warnungen](../log-analytics/log-analytics-alerts.md) zur Unterstützung bei der Erkennung und Diagnose
+* Konfigurieren von Azure Monitor-Protokolle für die Einrichtung von [automatisierten Warnungen](../azure-monitor/platform/alerts-overview.md) zur Unterstützung bei der Erkennung und Diagnose
 * Alternativ können Sie Leistungsindikatoren über die [Azure Diagnostics-Erweiterung erfassen und an Application Insights senden](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).

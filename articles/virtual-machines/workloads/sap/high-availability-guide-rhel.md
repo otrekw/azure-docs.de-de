@@ -1,25 +1,26 @@
 ---
-title: Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux | Microsoft-Dokumentation
+title: Hochverfügbarkeit von Azure VMs für SAP NW unter RHEL | Microsoft-Dokumentation
 description: Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: timlt
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
-ms.author: sedusch
-ms.openlocfilehash: 95cf66b8960b03c8bc055443945d5569450855a2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 10/22/2020
+ms.author: radeltch
+ms.openlocfilehash: c275d3fc1bb2372b36a3a29ae3b72f3e5e9b758a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101078"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484225"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux
 
@@ -27,14 +28,14 @@ ms.locfileid: "70101078"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2009879]: https://launchpad.support.sap.com/#/notes/2009879
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2009879]:https://launchpad.support.sap.com/#/notes/2009879
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -84,42 +85,42 @@ Zum Erreichen von Hochverfügbarkeit erfordert SAP NetWeaver freigegebenen Speic
 
 ![Hochverfügbarkeit von SAP NetWeaver – Übersicht](./media/high-availability-guide-rhel/ha-rhel.png)
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenbank verwenden einen virtuellen Hostnamen und virtuelle IP-Adressen. Für die Verwendung einer virtuellen IP-Adresse ist in Azure ein Lastenausgleich erforderlich. Die folgende Liste zeigt die Konfiguration des A(SCS)- und ERS-Lastenausgleichs.
-
-> [!IMPORTANT]
-> Multi-SID-Clustering von SAP ASCS/ERS mit Red Hat Linux als Gastbetriebssystem auf Azure-VMs wird **NICHT unterstützt**. Als Multi-SID-Clustering wird die Installation mehrerer SAP ASCS/ERS-Instanzen mit verschiedenen SIDs in einem Pacemaker-Cluster beschrieben.
+SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenbank verwenden einen virtuellen Hostnamen und virtuelle IP-Adressen. Für die Verwendung einer virtuellen IP-Adresse ist in Azure ein Lastenausgleich erforderlich. Es wird empfohlen, [Load Balancer Standard](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md) zu verwenden. Die folgende Liste zeigt die Konfiguration des A(SCS)- und ERS-Lastenausgleichs.
 
 ### <a name="ascs"></a>(A)SCS
 
 * Frontendkonfiguration
   * IP-Adresse 10.0.0.7
-* Backendkonfiguration
-  * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
 * Testport
   * Port 620<strong>&lt;Nr.&gt;</strong>
 * Lastenausgleichsregeln
-  * 32<strong>&lt;Nr.&gt;</strong> TCP
-  * 36<strong>&lt;Nr.&gt;</strong> TCP
-  * 39<strong>&lt;Nr.&gt;</strong> TCP
-  * 81<strong>&lt;Nr.&gt;</strong> TCP
-  * 5<strong>&lt;Nr.&gt;</strong>13 TCP
-  * 5<strong>&lt;Nr.&gt;</strong>14 TCP
-  * 5<strong>&lt;Nr.&gt;</strong>16 TCP
+  * Wenn Sie Load Balancer Standard verwenden, wählen Sie **HA-Ports** aus.
+  * Wenn Sie Load Balancer Basic verwenden, erstellen Sie Lastenausgleichsregeln für die folgenden Ports:
+    * 32<strong>&lt;Nr.&gt;</strong> TCP
+    * 36<strong>&lt;Nr.&gt;</strong> TCP
+    * 39<strong>&lt;Nr.&gt;</strong> TCP
+    * 81<strong>&lt;Nr.&gt;</strong> TCP
+    * 5<strong>&lt;Nr.&gt;</strong>13 TCP
+    * 5<strong>&lt;Nr.&gt;</strong>14 TCP
+    * 5<strong>&lt;Nr.&gt;</strong>16 TCP
 
 ### <a name="ers"></a>ERS
 
 * Frontendkonfiguration
   * IP-Adresse 10.0.0.8
-* Backendkonfiguration
-  * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
 * Testport
   * Port 621<strong>&lt;nr&gt;</strong>
 * Lastenausgleichsregeln
-  * 32<strong>&lt;Nr.&gt;</strong> TCP
-  * 33<strong>&lt;Nr.&gt;</strong> TCP
-  * 5<strong>&lt;Nr.&gt;</strong>13 TCP
-  * 5<strong>&lt;Nr.&gt;</strong>14 TCP
-  * 5<strong>&lt;Nr.&gt;</strong>16 TCP
+  * Wenn Sie Load Balancer Standard verwenden, wählen Sie **HA-Ports** aus.
+  * Wenn Sie Load Balancer Basic verwenden, erstellen Sie Lastenausgleichsregeln für die folgenden Ports:
+    * 32<strong>&lt;Nr.&gt;</strong> TCP
+    * 33<strong>&lt;Nr.&gt;</strong> TCP
+    * 5<strong>&lt;Nr.&gt;</strong>13 TCP
+    * 5<strong>&lt;Nr.&gt;</strong>14 TCP
+    * 5<strong>&lt;Nr.&gt;</strong>16 TCP
+
+* Backendkonfiguration
+  * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
 
 ## <a name="setting-up-glusterfs"></a>Einrichten von GlusterFS
 
@@ -154,7 +155,7 @@ Der Azure Marketplace enthält ein Image für Red Hat Enterprise Linux, das Sie 
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Manuelles Bereitstellen von Linux über das Azure-Portal
 
-Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschließend erstellen Sie einen Lastenausgleich und verwenden die virtuellen Computer in den Back-End-Pools.
+Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschließend erstellen Sie einen Lastenausgleich und verwenden die virtuellen Computer im Back-End-Pool.
 
 1. Erstellen einer Ressourcengruppe
 1. Erstellen eines virtuellen Netzwerks
@@ -168,7 +169,7 @@ Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschl
    Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.  
 1. Fügen Sie beiden virtuellen Computern jeweils mindestens einen Datenträger für Daten hinzu.  
    Die Datenträger werden für das Verzeichnis „/usr/sap/`<SAPSID`>“ benötigt.
-1. Erstellen Sie einen Load Balancer (intern)  
+1. Erstellen Sie einen Lastenausgleich (intern, Standard):  
    1. Erstellen der Front-End-IP-Adressen
       1. IP-Adresse 10.0.0.7 für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
@@ -176,27 +177,58 @@ Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschl
          1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.7**).
          1. OK klicken
       1. IP-Adresse 10.0.0.8 für ASCS ERS
-         * Wiederholen Sie die oben stehenden Schritte, um eine IP-Adresse für ERS zu erstellen (z.B. **10.0.0.8** und **nw1-aers-backend**).
-   1. Erstellen der Back-End-Pools
-      1. Erstellen eines Back-End-Pools für ASCS
-         1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **nw1-ascs-backend**).
-         1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
-         1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.
-         1. Wählen Sie die virtuellen Computer des A(SCS)-Clusters aus.
-         1. OK klicken
-      1. Erstellen eines Back-End-Pools für ASCS ERS
-         * Wiederholen Sie die oben stehenden Schritte, um einen Back-End-Pool für ERS zu erstellen (z.B. **nw1-aers-backend**).
+         * Wiederholen Sie die obigen Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **10.0.0.8** und **nw1-aers-frontend**).
+   1. Erstellen des Back-End-Pools
+      1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
+      1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **nw1-backend**).
+      1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
+      1. Wählen Sie einen virtuellen Computer aus.
+      1. Wählen Sie die virtuellen Computer des (A)SCS-Clusters mit ihren IP-Adressen aus.
+      1. Klicken Sie auf "Hinzufügen".
    1. Erstellen der Integritätstests
-      1. Port 620**00** für ASCS
+      1. Port 620 **00** für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
          1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **nw1-ascs-hp**).
-         1. Wählen Sie TCP als Protokoll und Port 620**00** aus, und behalten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
+         1. Wählen Sie TCP als Protokoll und Port 620 **00** aus, und behalten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
          1. OK klicken
-      1. Port 621**02** für ASCS ERS
-         * Wiederholen Sie die oben stehenden Schritte, um einen Integritätstest für ERS zu erstellen (z.B. 621**02** und **nw1-aers-hp**).
+      1. Port 621 **02** für ASCS ERS
+         * Wiederholen Sie die oben stehenden Schritte, um einen Integritätstest für ERS zu erstellen (z.B. 621 **02** und **nw1-aers-hp**).
    1. Lastenausgleichsregeln
-      1. 32**00** TCP für ASCS
+      1. Lastenausgleichsregeln für ASCS
+         1. Öffnen Sie den Lastenausgleich, wählen Sie „Lastenausgleichsregeln“ aus, und klicken Sie auf „Hinzufügen“.
+         1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **nw1-lb-ascs**).
+         1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **nw1-ascs-frontend**, **nw1-backend** und **nw1-ascs-hp**).
+         1. Wählen Sie **HA-Ports** aus.
+         1. Erhöhen Sie die Leerlaufzeitüberschreitung auf 30 Minuten.
+         1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
+         1. OK klicken
+         * Wiederholen Sie die oben angegebenen Schritte, um Lastenausgleichsregeln für ERS zu erstellen (z. B. **nw1-lb-ers**).
+1. Wenn Ihr Szenario einen grundlegenden Lastenausgleich (intern) erfordert, führen Sie stattdessen die folgenden Schritte aus:  
+   1. Erstellen der Front-End-IP-Adressen
+      1. IP-Adresse 10.0.0.7 für ASCS
+         1. Öffnen Sie den Lastenausgleich, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
+         1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **nw1-ascs-frontend**).
+         1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.7**).
+         1. OK klicken
+      1. IP-Adresse 10.0.0.8 für ASCS ERS
+         * Wiederholen Sie die obigen Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **10.0.0.8** und **nw1-aers-frontend**).
+   1. Erstellen des Back-End-Pools
+      1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
+      1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **nw1-backend**).
+      1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
+      1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.
+      1. Wählen Sie die virtuellen Computer des A(SCS)-Clusters aus.
+      1. OK klicken
+   1. Erstellen der Integritätstests
+      1. Port 620 **00** für ASCS
+         1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
+         1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **nw1-ascs-hp**).
+         1. Wählen Sie TCP als Protokoll und Port 620 **00** aus, und behalten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
+         1. OK klicken
+      1. Port 621 **02** für ASCS ERS
+         * Wiederholen Sie die oben stehenden Schritte, um einen Integritätstest für ERS zu erstellen (z.B. 621 **02** und **nw1-aers-hp**).
+   1. Lastenausgleichsregeln
+      1. 32 **00** TCP für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie „Lastenausgleichsregeln“ aus, und klicken Sie auf „Hinzufügen“.
          1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. **nw1-lb-3200**).
          1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z.B. **nw1-ascs-frontend**).
@@ -205,12 +237,18 @@ Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschl
          1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
          1. OK klicken
       1. Zusätzliche Ports für ASCS
-         * Wiederholen Sie die oben stehenden Schritte für die Ports 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 und TCP für ASCS
+         * Wiederholen Sie die oben stehenden Schritte für die Ports 36 **00**, 39 **00**, 81 **00**, 5 **00** 13, 5 **00** 14, 5 **00** 16 und TCP für ASCS
       1. Zusätzliche Ports für ASCS ERS
-         * Wiederholen Sie die oben stehenden Schritte für die Ports 33**02**, 5**02**13, 5**02**14, 5**02**16 und TCP für ASCS ERS
+         * Wiederholen Sie die oben stehenden Schritte für die Ports 33 **02**, 5 **02** 13, 5 **02** 14, 5 **02** 16 und TCP für ASCS ERS
 
 > [!IMPORTANT]
-> Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Floating IP-Adressen werden in IP-Konfigurationen mit zwei NICs in Szenarien mit Lastenausgleich nicht unterstützt. Weitere Informationen finden Sie unter [Azure Load Balancer – Einschränkungen](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Wenn Sie zusätzliche IP-Adressen für die VM benötigen, stellen Sie eine zweite NIC bereit.  
+
+> [!Note]
+> Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen Azure Load Balancer Standard-Instanz (ohne öffentliche IP-Adresse) platziert werden, liegt keine ausgehende Internetverbindung vor, sofern nicht in einer zusätzlichen Konfiguration das Routing an öffentliche Endpunkte zugelassen wird. Ausführliche Informationen zum Erreichen ausgehender Konnektivität finden Sie unter [Public endpoint connectivity for Virtual Machines using Azure Standard Load Balancer in SAP high-availability scenarios](./high-availability-guide-standard-load-balancer-outbound-connections.md) (Konnektivität mit öffentlichen Endpunkten für virtuelle Computer mithilfe von Azure Load Balancer Standard in SAP-Szenarien mit Hochverfügbarkeit).  
+
+> [!IMPORTANT]
+> Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](../../../load-balancer/load-balancer-custom-probe-overview.md).
 
 ### <a name="create-pacemaker-cluster"></a>Erstellen des Pacemaker-Clusters
 
@@ -369,7 +407,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   Wenn bei der Installation kein Unterordner in „/usr/sap/**NW1**/ASCS**00**“ erstellt werden kann, legen Sie den Besitzer und die Gruppe des Ordners „ASCS**00**“ fest, und versuchen Sie es noch mal.
+   Wenn bei der Installation kein Unterordner in „/usr/sap/**NW1**/ASCS **00**“ erstellt werden kann, legen Sie den Besitzer und die Gruppe des Ordners „ASCS **00**“ fest, und versuchen Sie es noch mal.
 
    <pre><code>sudo chown nw1adm /usr/sap/<b>NW1</b>/ASCS<b>00</b>
    sudo chgrp sapsys /usr/sap/<b>NW1</b>/ASCS<b>00</b>
@@ -425,7 +463,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   Wenn bei der Installation kein Unterordner in „/usr/sap/**NW1**/ERS**02**“ erstellt werden kann, legen Sie den Besitzer und die Gruppe des Ordners „ERS**02**“ fest, und versuchen Sie es noch mal.
+   Wenn bei der Installation kein Unterordner in „/usr/sap/**NW1**/ERS **02**“ erstellt werden kann, legen Sie den Besitzer und die Gruppe des Ordners „ERS **02**“ fest, und versuchen Sie es noch mal.
 
    <pre><code>sudo chown nw1adm /usr/sap/<b>NW1</b>/ERS<b>02</b>
    sudo chgrp sapsys /usr/sap/<b>NW1</b>/ERS<b>02</b>
@@ -441,9 +479,11 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    #Restart_Program_01 = local $(_EN) pf=$(_PF)
    Start_Program_01 = local $(_EN) pf=$(_PF)
    
-   # Add the keep alive parameter
+   # Add the keep alive parameter, if using ENSA1
    enque/encni/set_so_keepalive = true
    </code></pre>
+
+   Stellen Sie sowohl für ENSA1 als auch für ENSA2 sicher, dass die `keepalive`-Parameter des Betriebssystems wie im SAP-Hinweis [1410736](https://launchpad.support.sap.com/#/notes/1410736) beschrieben festgelegt sind.    
 
    * ERS-Profil
 
@@ -460,12 +500,10 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[A]** Konfigurieren Sie Keep-Alive.
 
-   Die Kommunikation zwischen dem SAP NetWeaver-Anwendungsserver und ASCS/SCS wird durch einen Softwarelastenausgleich weitergeleitet. Der Lastenausgleich trennt nach einem konfigurierbaren Timeout inaktive Verbindungen. Um dies zu verhindern, müssen Sie einen Parameter im SAP NetWeaver-ASCS/SCS-Profil festlegen und die Linux-Systemeinstellungen ändern. Weitere Informationen finden Sie im [SAP-Hinweis 1410736][1410736].
-
-   Der ASCS/SCS-Profilparameter „enque/encni/set_so_keepalive“ wurde bereits im letzten Schritt hinzugefügt.
+   Die Kommunikation zwischen dem SAP NetWeaver-Anwendungsserver und ASCS/SCS wird durch einen Softwarelastenausgleich weitergeleitet. Der Lastenausgleich trennt nach einem konfigurierbaren Timeout inaktive Verbindungen. Um dies zu verhindern, müssen Sie bei Verwendung von ENSA1 einen Parameter im ASCS-/SCS-Profil von SAP NetWeaver festlegen. Bei ENSA1 und ENSA2 müssen Sie außerdem die Linux-Systemeinstellungen für `keepalive` auf allen SAP-Servern ändern. Weitere Informationen finden Sie im [SAP-Hinweis 1410736][1410736].
 
    <pre><code># Change the Linux system configuration
-   sudo sysctl net.ipv4.tcp_keepalive_time=120
+   sudo sysctl net.ipv4.tcp_keepalive_time=300
    </code></pre>
 
 1. **[A]**  Aktualisieren Sie die Datei „/usr/sap/sapservices“.
@@ -491,12 +529,15 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo pcs resource create rsc_sap_<b>NW1</b>_ASCS00 SAPInstance \
     InstanceName=<b>NW1</b>_ASCS00_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS00_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 migration-threshold=1 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     InstanceName=<b>NW1</b>_ERS02_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS02_<b>nw1-aers</b>" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_AERS
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
@@ -515,22 +556,29 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo pcs resource create rsc_sap_<b>NW1</b>_ASCS00 SAPInstance \
     InstanceName=<b>NW1</b>_ASCS00_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS00_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     InstanceName=<b>NW1</b>_ERS02_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS02_<b>nw1-aers</b>" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_AERS
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
    sudo pcs constraint order g-<b>NW1</b>_ASCS then g-<b>NW1</b>_AERS kind=Optional symmetrical=false
+   sudo pcs constraint order start g-<b>NW1</b>_ASCS then stop g-<b>NW1</b>_AERS symmetrical=false
    
    sudo pcs node unstandby <b>nw1-cl-0</b>
    sudo pcs property set maintenance-mode=false
    </code></pre>
 
    Wenn Sie ein Upgrade von einer älteren Version durchführen und zu Enqueue Server 2 wechseln, lesen Sie den SAP-Hinweis [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
+
+   > [!NOTE]
+   > Die Timeouts in der oben beschriebenen Konfiguration sind nur Beispiele und müssen möglicherweise an das spezifische SAP-Setup angepasst werden. 
 
    Stellen Sie sicher, dass der Clusterstatus gültig ist und alle Ressourcen gestartet sind. Es ist nicht wichtig, auf welchem Knoten die Ressourcen ausgeführt werden.
 
@@ -585,7 +633,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo firewall-cmd --zone=public --add-port=5<b>02</b>16/tcp
    </code></pre>
 
-## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>Vorbereitung des SAP NetWeaver-Anwendungsservers
+## <a name="sap-netweaver-application-server-preparation"></a><a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>Vorbereitung des SAP NetWeaver-Anwendungsservers
 
 Für einige Datenbanken ist es erforderlich, dass die Installation der Datenbankinstanz auf einem Anwendungsserver ausgeführt wird. Bereiten Sie die virtuellen Computer für den Anwendungsserver vor, damit Sie diese in diesen Fällen verwenden können.
 
@@ -698,7 +746,7 @@ Führen Sie die folgenden Schritte durch, um einen SAP-Anwendungsserver zu insta
 
    Ändern Sie den sicheren SAP HANA-Speicher dahingehend, dass er auf den virtuellen Namen der Einrichtung der SAP HANA-Systemreplikation zeigt.
 
-   Führen Sie den folgenden Befehl aus, um die Einträge als \<sapsid>adm aufzulisten.
+   Führen Sie den folgenden Befehl aus, um die Einträge als \<sapsid>adm aufzulisten
 
    <pre><code>hdbuserstore List
    </code></pre>
@@ -851,7 +899,7 @@ Führen Sie die folgenden Schritte durch, um einen SAP-Anwendungsserver zu insta
    <pre><code>[root@nw1-cl-0 ~]# pgrep ms.sapNW1 | xargs kill -9
    </code></pre>
 
-   Wenn Sie den Nachrichtenserver nur einmal beenden, wird er von sapstart neu gestartet. Wenn Sie ihn häufig genug beenden, wird Pacemaker die ASC-Instanz schließlich auf den anderen Knoten verschieben. Führen Sie die folgenden Befehle als root aus, um den Ressourcenstatus der ASCS- und ERS-Instanz nach dem Test zu bereinigen.
+   Wenn Sie den Nachrichtenserver nur einmal beenden, wird er von `sapstart` neu gestartet. Wenn Sie ihn häufig genug beenden, wird Pacemaker die ASC-Instanz schließlich auf den anderen Knoten verschieben. Führen Sie die folgenden Befehle als root aus, um den Ressourcenstatus der ASCS- und ERS-Instanz nach dem Test zu bereinigen.
 
    <pre><code>[root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ASCS00
    [root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ERS02
@@ -937,7 +985,7 @@ Führen Sie die folgenden Schritte durch, um einen SAP-Anwendungsserver zu insta
    <pre><code>[root@nw1-cl-1 ~]# pgrep er.sapNW1 | xargs kill -9
    </code></pre>
 
-   Wenn Sie den Befehl nur einmal ausführen, startet sapstart den Prozess neu. Wenn Sie ihn oft genug ausführen, startet sapstart den Prozess nicht mehr neu, und die Ressource wechselt in den Status „Beendet“. Führen Sie die folgenden Befehle als root aus, um den Ressourcenstatus der ERS-Instanz nach dem Test zu bereinigen.
+   Wenn Sie den Befehl nur einmal ausführen, startet `sapstart` den Prozess neu. Wenn Sie ihn oft genug ausführen, startet `sapstart` den Prozess nicht mehr neu, und die Ressource wird beendet. Führen Sie die folgenden Befehle als root aus, um den Ressourcenstatus der ERS-Instanz nach dem Test zu bereinigen.
 
    <pre><code>[root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ERS02
    </code></pre>
@@ -999,6 +1047,7 @@ Führen Sie die folgenden Schritte durch, um einen SAP-Anwendungsserver zu insta
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Hochverfügbarkeit für SAP NetWeaver auf virtuellen Azure-Computern unter Red Hat Enterprise Linux für SAP-Anwendungen: Multi-SID-Leitfaden](./high-availability-guide-rhel-multi-sid.md)
 * [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
 * [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
 * [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]

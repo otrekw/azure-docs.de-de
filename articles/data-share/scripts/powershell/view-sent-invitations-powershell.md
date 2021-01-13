@@ -1,20 +1,17 @@
 ---
-title: 'PowerShell-Skript: Auflisten der an einen Consumer gesendeten Azure Data Share-Einladungen | Microsoft-Dokumentation'
-description: Dieses PowerShell-Skript akzeptiert Einladungen von einer vorhandenen Datenfreigabe.
-services: data-share
+title: 'PowerShell-Skript: Auflisten der an einen Consumer gesendeten Azure Data Share-Einladungen'
+description: Hier erfahren Sie, wie dieses PowerShell-Skript an einen Benutzer gesendete Einladungen abruft. Außerdem enthält der Artikel ein Beispiel des Skripts, das Sie verwenden können.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 157b844afd9d59b6c03c7ae8585bc2182370d3a3
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 5f75894094fa2a15dbc9e2809ed6c3631df96c3f
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307152"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221212"
 ---
 # <a name="use-powershell-to-get-a-data-share-invitation"></a>Verwenden von PowerShell zum Abrufen einer Einladung zu einer Datenfreigabe
 
@@ -40,11 +37,11 @@ Das Skript verwendet die folgenden Befehle:
 
 | Get-Help | Notizen |
 |---|---|
-| [Get-AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation?view=azps-2.6.0) | Abrufen und Auflisten gesendeter Einladungen zu Datenfreigaben |
+| [Get-AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation) | Abrufen und Auflisten gesendeter Einladungen zu Datenfreigaben |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/).
 
 Weitere PowerShell-Skriptbeispiele für Azure Data Share finden Sie unter [Azure PowerShell-Beispiele für Azure Data Share](../../samples-powershell.md).

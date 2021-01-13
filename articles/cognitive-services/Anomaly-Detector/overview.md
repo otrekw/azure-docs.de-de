@@ -1,25 +1,29 @@
 ---
 title: Worum handelt es sich bei der Anomalieerkennungs-API?
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie den erweiterten Algorithmus der Anomalieerkennungs-API, um Anomalien in Zeitreihendaten zu identifizieren.
+description: Verwenden Sie die Algorithmen der Anomalieerkennungs-API, um die Anomalieerkennung auf Ihre Zeitreihendaten anzuwenden.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/05/2019
-ms.author: aahi
-ms.openlocfilehash: 3bd60ff1e732940bbb13c2e224084cf7e331266b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 01/05/2021
+ms.author: mbullwin
+keywords: Anomalieerkennung, maschinelles Lernen, Algorithmen
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934876"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901367"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Worum handelt es sich bei der Anomalieerkennungs-API?
 
-Die Anomalieerkennungs-API bietet Ihnen die Möglichkeit, Anomalien in Zeitreihendaten durch maschinelles Lernen zu überwachen und zu erkennen. Die Anomalieerkennungs-API passt sich an, indem die am besten passenden Modelle für Ihre Daten automatisch identifiziert und angewendet werden, unabhängig von der Branche, dem Szenario oder der Datenmenge. Mithilfe der Zeitreihendaten bestimmt die API die Grenzen für die Anomalieerkennung, die erwarteten Werte und, welche Datenpunkte Anomalien sind.
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+
+Die Anomalieerkennungs-API bietet Ihnen die Möglichkeit, Anomalien in Zeitreihendaten ohne Machine Learning-Kenntnisse zu überwachen und zu erkennen. Die Algorithmen der Anomalieerkennungs-API passen sich an, indem die am besten passenden Modelle für Ihre Daten automatisch identifiziert und angewendet werden, unabhängig von der Branche, dem Szenario oder der Datenmenge. Mithilfe der Zeitreihendaten bestimmt die API die Grenzen für die Anomalieerkennung, die erwarteten Werte und, welche Datenpunkte Anomalien sind.
 
 ![Erkennen von Musteränderungen in Dienstanforderungen](./media/anomaly_detection2.png)
 
@@ -27,12 +31,13 @@ Für die Verwendung der Anomalieerkennung sind keine Erfahrungen im Bereich des 
 
 ## <a name="features"></a>Features
 
-Mit der Anomalieerkennung können Sie Anomalien in allen Zeitreihendaten, oder auch während sie in Echtzeit auftreten, automatisch erkennen. 
+Mit der Anomalieerkennung können Sie Anomalien in allen Zeitreihendaten, oder auch während sie in Echtzeit auftreten, automatisch erkennen.
 
-|Feature  |BESCHREIBUNG  |
+|Funktion  |Beschreibung  |
 |---------|---------|
-|Erkennen von Anomalien in Echtzeit | Anomalien werden in Ihren Streamingdaten erkannt, indem anhand vorheriger Datenpunkte ermittelt wird, ob der letzte Punkt eine Anomalie ist. Bei diesem Vorgang wird anhand der von Ihnen gesendeten Datenpunkte ein Modell generiert und bestimmt, ob der Zielpunkt eine Anomalie ist. Durch Aufrufen der API mit jedem neu generierten Datenpunkt können Sie Daten während der Erstellung überwachen. |
+|Anomalieerkennung in Echtzeit | Anomalien werden in Ihren Streamingdaten erkannt, indem anhand vorheriger Datenpunkte ermittelt wird, ob der letzte Punkt eine Anomalie ist. Bei diesem Vorgang wird anhand der von Ihnen gesendeten Datenpunkte ein Modell generiert und bestimmt, ob der Zielpunkt eine Anomalie ist. Durch Aufrufen der API mit jedem neu generierten Datenpunkt können Sie Daten während der Erstellung überwachen. |
 |Erkennen von Anomalien für das ganze Dataset als Batch | Die Zeitreihe wird verwendet, um alle Anomalien zu erkennen, die in den gesamten Daten potenziell vorhanden sind. Bei diesem Vorgang wird anhand der gesamten Zeitreihendaten ein Modell generiert, bei dem jeder Punkt mit demselben Modell analysiert wird.         |
+|Erkennen von Änderungspunkten für das gesamte Dataset als Batch | Nutzen Sie Ihre Zeitreihe, um Trendänderungspunkte in Ihren Daten zu erkennen. Bei diesem Vorgang wird anhand der gesamten Zeitreihendaten ein Modell generiert, bei dem jeder Punkt mit demselben Modell analysiert wird.    |
 | Erhalten zusätzlicher Informationen zu Ihren Daten | Erhalten Sie hilfreiche Details zu Ihren Daten und allen beobachteten Anomalien, wie erwarteten Werten, Anomaliegrenzen und Positionen. |
 | Anpassen der Grenzen für die Anomalieerkennung | Die Anomalieerkennungs-API erstellt automatisch Grenzen für die Anomalieerkennung. Passen Sie diese Grenzen an, um die Empfindlichkeit der API für Datenanomalien zu erhöhen oder zu verringern, sodass diese besser zu Ihren Daten passt. |
 
@@ -41,9 +46,9 @@ Mit der Anomalieerkennung können Sie Anomalien in allen Zeitreihendaten, oder a
 Sehen Sie sich [diese interaktive Demonstration](https://aka.ms/adDemo) an, um sich mit der Funktionsweise der Anomalieerkennung vertraut zu machen.
 Zum Ausführen der Demonstration müssen Sie eine Ressource für die Anomalieerkennung und den API-Schlüssel und den Endpunkt abrufen.
 
-## <a name="notebook"></a>Notizbuch
+## <a name="notebook"></a>Notebook
 
-Weitere Informationen zum Abrufen der API für die Anomalieerkennung finden Sie unter diesem [Azure Notebook](https://aka.ms/adNotebook). In diesem im Web gehosteten Jupyter Notebook wird gezeigt, wie Sie eine API-Anforderung senden und das Ergebnis visualisieren.
+Machen Sie sich anhand [dieses Notebooks](https://aka.ms/adNotebook) mit dem Aufrufen der Anomalieerkennungs-API vertraut. In dieser Jupyter Notebook-Instanz wird gezeigt, wie Sie eine API-Anforderung senden und das Ergebnis visualisieren.
 
 Führen Sie die folgenden Schritte aus, um das Notebook auszuführen:
 
@@ -52,7 +57,7 @@ Führen Sie die folgenden Schritte aus, um das Notebook auszuführen:
 1. Deaktivieren Sie im Dialogfeld die Option „Öffentlich“, bevor Sie den Klonvorgang durchführen. Andernfalls ist Ihr Notebook, einschließlich aller Abonnementschlüssel, öffentlich zugänglich.
 1. Klicken Sie auf **Run on free compute (Mit kostenlosem Compute ausführen)** .
 1. Wählen Sie eines der Notebooks aus.
-1. Fügen Sie Ihren gültigen Abonnementschlüssel für die Anomalieerkennungs-API zur Variablen `subscription_key` hinzu. 
+1. Fügen Sie Ihren gültigen Abonnementschlüssel für die Anomalieerkennungs-API zur Variablen `subscription_key` hinzu.
 1. Ändern Sie die Variable `endpoint` in Ihren Endpunkt. Beispiel: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. Klicken Sie auf der oberen Menüleiste auf **Zelle** und dann auf **Alle ausführen**.
 
@@ -72,10 +77,27 @@ Nach der Registrierung:
 
 ## <a name="algorithms"></a>Algorithmen
 
-* Weitere Informationen zu den Algorithmen im Hintergrund finden Sie im Technik-Blog [Introducing Azure Anomaly Detector API](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) (Einführung in die API für die Azure-Anomalieerkennung).
-* Informationen zu den von Microsoft entwickelten hochmodernen SR-CNN-Algorithmen finden Sie unter [Time-Series Anomaly Detection Service at Microsoft](https://arxiv.org/abs/1906.03821) (Anomalieerkennungsdienst für Zeitreihen bei Microsoft) (akzeptiert von KDD 2019).
+* In den folgenden technischen Blogs finden Sie Informationen zu den verwendeten Algorithmen:
+    * [Introducing Azure Anomaly Detector API](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) (Einführung zur Anomalieerkennungs-API in Azure)
+    * [Overview of SR-CNN algorithm in Azure Anomaly Detector](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798) (Übersicht über den SR-CNN-Algorithmus in der Azure-Anomalieerkennung)
+
+Informationen zu den von Microsoft entwickelten SR-CNN-Algorithmen finden Sie unter [Time-Series Anomaly Detection Service at Microsoft](https://arxiv.org/abs/1906.03821) (Anomalieerkennungsdienst für Zeitreihen bei Microsoft) – akzeptiert von KDD 2019.
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="service-availability-and-redundancy"></a>Dienstverfügbarkeit und Redundanz
+
+### <a name="is-the-anomaly-detector-service-zone-resilient"></a>Ist der Anomalieerkennungsdienst zonenresilient?
+
+Ja. Der Anomalieerkennungsdienst ist standardmäßig zonenresilient.
+
+### <a name="how-do-i-configure-the-anomaly-detector-service-to-be-zone-resilient"></a>Wie konfiguriere ich den Anomalieerkennungsdienst so, dass er zonenresilient ist?
+
+Es ist keine Kundenkonfiguration erforderlich, um Zonenresilienz zu ermöglichen. Zonenresilienz für Anomalieerkennungsressourcen ist standardmäßig verfügbar und wird vom Dienst selbst verwaltet.
+
+## <a name="deploy-on-premises-using-docker-containers"></a>Lokales Bereitstellen unter Verwendung von Docker-Containern
+
+[Verwenden Sie Anomalieerkennungscontainer](anomaly-detector-container-howto.md), um API-Features lokal bereitzustellen. Mithilfe von Docker-Containern können Sie den Dienst näher an Ihre Daten heranbringen, um Compliance- oder Sicherheitsanforderungen zu erfüllen oder anderen betrieblichen Anforderungen gerecht zu werden.
 
 ## <a name="join-the-anomaly-detector-community"></a>Beitreten zur Anomalieerkennungs-Community
 
@@ -84,6 +106,6 @@ Nach der Registrierung:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Erkennen von Anomalien in Zeitreihendaten mithilfe der Anomalieerkennungs-REST-API](quickstarts/detect-data-anomalies-csharp.md)
+* [Schnellstart: Verwenden der Anomalieerkennungs-Clientbibliothek](quickstarts/client-libraries.md)
 * [Onlinedemo](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) zur Anomalieerkennungs-API
-* [REST-API-Referenz](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) zur Anomalieerkennung
+* [REST-API-Referenz](https://aka.ms/anomaly-detector-rest-api-ref) zur Anomalieerkennung

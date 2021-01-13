@@ -1,25 +1,25 @@
 ---
-title: 'Tutorial: Bereitstellen eines Azure Database for MySQL-Servers mithilfe von Azure Resource Manager-Vorlagen'
+title: 'Tutorial: Erstellen einer Azure Database for MySQL-Instanz – Azure Resource Manager-Vorlage'
 description: In diesem Tutorial wird erläutert, wie Sie Azure Database for MySQL Server-Bereitstellungen mithilfe von Azure Resource Manager-Vorlagen vornehmen und automatisieren.
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.devlang: json
 ms.topic: tutorial
-ms.date: 12/21/2018
-ms.custom: mvc
-ms.openlocfilehash: 6e4bb7622fe51c0cab4fc45e945e5bb07b1d32f1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 12/02/2019
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: fd5fa4e09dd3f73aa7a8f044ded04d504bd2f3dd
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925843"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705471"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Tutorial: Bereitstellen eines Azure Database for MySQL-Servers mithilfe von Azure Resource Manager-Vorlagen
 
-Mit der [Azure Database for MySQL-REST-API](https://docs.microsoft.com/rest/api/mysql/) können DevOps-Techniker Bereitstellung, Konfiguration und Prozesse für verwaltete MySQL-Server und -Datenbanken in Azure automatisieren und integrieren.  Die API ermöglicht Erstellung, Enumeration, Verwaltung und Löschung von MySQL-Servern und -Datenbanken im Azure Database for MySQL-Dienst.
+Mit der [Azure Database for MySQL-REST-API](/rest/api/mysql/) können DevOps-Techniker Bereitstellung, Konfiguration und Prozesse für verwaltete MySQL-Server und -Datenbanken in Azure automatisieren und integrieren.  Die API ermöglicht Erstellung, Enumeration, Verwaltung und Löschung von MySQL-Servern und -Datenbanken im Azure Database for MySQL-Dienst.
 
-Azure Resource Manager nutzt die zugrunde liegende REST-API, um die für bedarfsorientierte Bereitstellungen erforderlichen Azure-Ressourcen zu deklarieren und zu programmieren und sie an das Infrastructure-as-a-Code-Konzept anzugleichen. Die Vorlage parametrisiert Name, SKU, Netzwerk, Firewallkonfiguration und Einstellungen der Azure-Ressource, sodass sie einmalig erstellt und mehrfach verwendet werden kann.  Azure Resource Manager-Vorlagen können problemlos im [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) oder über [Visual Studio Code](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI) erstellt werden. Sie ermöglichen das Packen, die Standardisierung und Automatisierung der Bereitstellung für die Integration in die DevOps-CI/CD-Pipeline.  Wenn Sie beispielsweise schnell eine Web-App mit Azure Database for MySQL-Back-End bereitstellen möchten, können Sie die End-to-End-Bereitstellung mit der [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) aus dem GitHub-Katalog vornehmen.
+Azure Resource Manager nutzt die zugrunde liegende REST-API, um die für bedarfsorientierte Bereitstellungen erforderlichen Azure-Ressourcen zu deklarieren und zu programmieren und sie an das Infrastructure-as-a-Code-Konzept anzugleichen. Die Vorlage parametrisiert Name, SKU, Netzwerk, Firewallkonfiguration und Einstellungen der Azure-Ressource, sodass sie einmalig erstellt und mehrfach verwendet werden kann.  Azure Resource Manager-Vorlagen können problemlos im [Azure-Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) oder über [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI) erstellt werden. Sie ermöglichen das Packen, die Standardisierung und Automatisierung der Bereitstellung für die Integration in die DevOps-CI/CD-Pipeline.  Wenn Sie beispielsweise schnell eine Web-App mit Azure Database for MySQL-Back-End bereitstellen möchten, können Sie die End-to-End-Bereitstellung mit der [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) aus dem GitHub-Katalog vornehmen.
 
 In diesem Tutorial verwenden Sie eine Azure Resource Manager-Vorlage und andere Hilfsprogramme, um die Vorgehensweise bei folgenden Aufgaben kennenzulernen:
 
@@ -27,8 +27,10 @@ In diesem Tutorial verwenden Sie eine Azure Resource Manager-Vorlage und andere 
 > * Erstellen eines Azure Database for MySQL-Servers mit VNET-Dienstendpunkt mithilfe einer Azure Resource Manager-Vorlage
 > * Verwenden des [mysql-Befehlszeilentools](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) zum Erstellen einer Datenbank
 > * Laden von Beispieldaten
-> * Abfragen von Daten
+> * Daten abfragen
 > * Aktualisieren von Daten
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -105,8 +107,8 @@ Sie können Azure Cloud Shell im Browser verwenden oder die Azure CLI auf Ihrem 
 
 ```azurecli-interactive
 az login
-az group create -n ExampleResourceGroup  -l “West US2”
-az group deployment create -g $ ExampleResourceGroup   --template-file $ {templateloc} --parameters $ {parametersloc}
+az group create -n ExampleResourceGroup  -l "West US2"
+az deployment group create -g $ ExampleResourceGroup   --template-file $ {templateloc} --parameters $ {parametersloc}
 ```
 
 ## <a name="get-the-connection-information"></a>Abrufen der Verbindungsinformationen
@@ -199,13 +201,47 @@ Die Zeile wird entsprechend aktualisiert, wenn Sie Daten abrufen.
 SELECT * FROM inventory;
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe. Dadurch werden die Ressourcen in der Ressourcengruppe gelöscht.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen**, und wählen Sie die entsprechende Option aus.
+
+2. Wählen Sie in der Liste der Ressourcengruppen den Namen Ihrer Ressourcengruppe aus.
+
+3. Wählen Sie auf der Seite **Übersicht** der Ressourcengruppe die Option **Ressourcengruppe löschen** aus.
+
+4. Geben Sie im Bestätigungsdialogfeld den Namen Ihrer Ressourcengruppe ein, und wählen Sie **Löschen** aus.
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
+```
+
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName &&
+echo "Press [ENTER] to continue ..."
+```
+
+---
+
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie Folgendes gelernt:
 > [!div class="checklist"]
 > * Erstellen eines Azure Database for MySQL-Servers mit VNET-Dienstendpunkt mithilfe einer Azure Resource Manager-Vorlage
-> * Verwenden des [mysql-Befehlszeilentools](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) zum Erstellen einer Datenbank
+> * Verwenden des MySQL-Befehlszeilentools zum Erstellen einer Datenbank
 > * Laden von Beispieldaten
-> * Abfragen von Daten
+> * Daten abfragen
 > * Aktualisieren von Daten
-> 
+
+> [!div class="nextstepaction"]
 > [Herstellen einer Verbindung zwischen Anwendungen und Azure-Datenbank für MySQL](./howto-connection-string.md)

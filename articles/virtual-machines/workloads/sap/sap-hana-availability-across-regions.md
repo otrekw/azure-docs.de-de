@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68a393865038722f2fd7fa5e42334f8d5e760951
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 799034d9060e8afe101e86e7b98ac7e01c28d191
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078850"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019309"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>SAP HANA-Verfügbarkeit in verschiedenen Azure-Regionen
 
@@ -74,7 +75,7 @@ Eine mögliche Architektur mit Multi-Target-Replikation würde folgendermaßen a
 
 Wenn das Unternehmen Anforderungen an die Hochverfügbarkeit in der zweiten (DR) Azure-Region hat, dann würde die Architektur so aussehen:
 
-![Diagramm mit drei virtuellen Computern in zwei Multi-Target-Regionen](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
+![Diagramm: Eine Organisation erfordert Bereitschaft für Hochverfügbarkeit in der zweiten Azure-Region (DR).](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
 
 
 Verwenden von „logreplay“ als Betriebsmodus: Diese Konfiguration stellt in der primären Region einen RPO-Wert von 0 und einen niedrigen RTO-Wert bereit. Die Konfiguration sorgt auch für eine annehmbare RPO, wenn eine Verlagerung in die zweite Region erforderlich ist. Die RTO-Zeiten in der zweiten Region richten sich danach, ob Daten vorab geladen werden. Viele Kunden verwenden den virtuellen Computer in der sekundären Region zum Ausführen eines Testsystems. In diesem Fall können die Daten nicht vorab geladen werden.
@@ -87,7 +88,7 @@ Verwenden von „logreplay“ als Betriebsmodus: Diese Konfiguration stellt in d
 Eine ausführliche Anleitung zum Einrichten dieser Konfigurationen in Azure finden Sie in folgenden Artikeln:
 
 - [Hochverfügbarkeit von SAP HANA auf virtuellen Azure-Computern (VMs)](sap-hana-high-availability.md)
-- [High Availability for SAP HANA using System Replication](https://blogs.sap.com/2018/01/08/your-sap-on-azure-part-4-high-availability-for-sap-hana-using-system-replication/) (Hochverfügbarkeit für SAP HANA durch Systemreplikation)
+- [Your SAP on Azure – Part 4 – High Availability for SAP HANA using System Replication](https://blogs.sap.com/2018/01/08/your-sap-on-azure-part-4-high-availability-for-sap-hana-using-system-replication/) (SAP in Azure – Teil 4: Hochverfügbarkeit für SAP HANA durch Systemreplikation)
 
  
 

@@ -1,24 +1,17 @@
 ---
-title: DNS-Namensauflösungsoptionen für virtuelle Linux-Computer in Azure
+title: DNS-Namensauflösungsoptionen für Linux-VMs
 description: Namensauflösungsszenarien für virtuelle Linux-Computer in Azure IaaS, einschließlich bereitgestellter DNS-Dienste, hybridem externen DNS und Bring Your Own DNS-Server (Verwenden eines eigenen DNS-Servers).
-services: virtual-machines
-documentationcenter: na
 author: RicksterCDN
-manager: gwallace
-editor: tysonn
-ms.assetid: 787a1e04-cebf-4122-a1b4-1fcf0a2bbf5f
 ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.topic: conceptual
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 16dc7d16b3e8f2a4c95e93f9b85c74027291ce19
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: aa007888c68df41242f937e1062a90ec1b7fc3ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084040"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87372823"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>DNS-Namensauflösungsoptionen für virtuelle Linux-Computer in Azure
 Azure stellt die DNS-Namensauflösung standardmäßig für alle in einem einzelnen virtuellen Netzwerk enthaltenen virtuellen Computer bereit. Sie können Ihre eigene Lösung für die DNS-Namensauflösung implementieren, indem Sie auf Ihren in Azure gehosteten virtuellen Computern Ihre eigenen DNS-Dienste konfigurieren. Die folgenden Szenarien sollten Ihnen dabei helfen, situationsabhängig die jeweils am besten geeignete Lösung zu wählen.
@@ -86,7 +79,7 @@ Verschiedene DNS-Cachingpakete, z.B. dnsmasq, stehen zur Verfügung. Es folgen d
 5. Starten Sie den Netzwerkdienst neu („service network restart“), um den Cache als lokale DNS-Auflösung festzulegen.
 
 > [!NOTE]
-> : Das dnsmasq-Paket ist nur einer der vielen DNS-Caches, die für Linux verfügbar sind. Bevor Sie es nutzen, überprüfen Sie die Eignung für Ihre Anforderungen und außerdem, ob kein anderer Cache installiert ist.
+> decodiert werden: Das dnsmasq-Paket ist nur einer der vielen DNS-Caches, die für Linux verfügbar sind. Bevor Sie es nutzen, überprüfen Sie die Eignung für Ihre Anforderungen und außerdem, ob kein anderer Cache installiert ist.
 >
 >
 
@@ -99,12 +92,14 @@ DNS ist in erster Linie ein UDP-Protokoll. Da das UDP-Protokoll keine Nachrichte
 
 Wechseln Sie zum Überprüfen der aktuellen Einstellungen auf einem virtuellen Linux-Computer „cat /etc/resolv.conf“ ein, und sehen Sie sich die Zeile „options“ an, z.B.:
 
-    options timeout:1 attempts:5
+```config-conf
+options timeout:1 attempts:5
+```
 
 Die Datei „resolv.conf“ wird automatisch generiert und darf nicht bearbeitet werden. Die entsprechenden Schritte zum Hinzufügen der Zeile „options“ variieren je nach Distribution:
 
 **Ubuntu** (verwendet resolvconf)
-1. Fügen Sie in „/etc/resolveconf/resolv.conf.d/head“ die Zeile „options“ hinzu.
+1. Fügen Sie die Zeile „options“ in „/etc/resolvconf/resolv.conf.d/head“ ein.
 2. Führen Sie „resolvconf -u“ zum Aktualisieren aus.
 
 **SUSE** (verwendet netconf)
@@ -126,7 +121,7 @@ Durch die DNS-Weiterleitung wird außerdem eine DNS-Auflösung zwischen virtuell
 
 Bei Verwendung der von Azure bereitgestellten Namensauflösung wird jedem virtuellen Computer über DHCP das interne DNS-Suffix bereitgestellt. Wenn Sie eine eigene Lösung für die Namensauflösung verwenden, wird dieses Suffix nicht für die virtuellen Computer bereitgestellt, weil es Konflikte mit anderen DNS-Architekturen verursacht. Um per FQDN auf Computer zu verweisen oder das Suffix auf Ihren virtuellen Computern zu konfigurieren, können Sie das Suffix mithilfe von PowerShell oder der API ermitteln:
 
-* Für von Azure Resource Manager verwaltete virtuelle Netzwerke ist das Suffix über die Ressource [Netzwerkkarte](https://msdn.microsoft.com/library/azure/mt163668.aspx) verfügbar. Zudem können Sie den Befehl `azure network public-ip show <resource group> <pip name>` ausführen, um die Details der öffentlichen IP-Adresse, einschließlich des FQDN der Netzwerkkarte, anzuzeigen.
+* Für von Azure Resource Manager verwaltete virtuelle Netzwerke ist das Suffix über die Ressource [Netzwerkkarte](/rest/api/virtualnetwork/networkinterfaces) verfügbar. Zudem können Sie den Befehl `azure network public-ip show <resource group> <pip name>` ausführen, um die Details der öffentlichen IP-Adresse, einschließlich des FQDN der Netzwerkkarte, anzuzeigen.
 
 Wenn eine Abfrageweiterleitung an Azure nicht Ihren Anforderungen entspricht, müssen Sie eine eigene DNS-Lösung bereitstellen.  Die DNS-Lösung muss Folgendes leisten:
 
@@ -136,6 +131,6 @@ Wenn eine Abfrageweiterleitung an Azure nicht Ihren Anforderungen entspricht, m�
 * Schutz vor einem Zugriff aus dem Internet, um mögliche Bedrohungen durch externe Agents zu minimieren.
 
 > [!NOTE]
-> Für eine optimale Leistung bei Verwendung von virtuellen Azure-Computern als DNS-Server sollte IPv6 deaktiviert und eine [öffentliche IP auf Instanzebene](../../virtual-network/virtual-networks-instance-level-public-ip.md) jedem virtuellen DNS-Servercomputer zugewiesen werden.  
+> Für eine optimale Leistung bei Verwendung von virtuellen Azure-Computern als DNS-Server sollte IPv6 deaktiviert und eine [öffentliche IP auf Instanzebene](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) jedem virtuellen DNS-Servercomputer zugewiesen werden.  
 >
 >

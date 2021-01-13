@@ -1,24 +1,19 @@
 ---
 title: Architekturen für die Bereitstellung von Oracle-Apps auf virtuellen Azure-Computern | Microsoft-Dokumentation
 description: Anwendungsarchitekturen zum Bereitstellen von Oracle-Apps, z. B. E-Business Suite, JD Edwards EnterpriseOne und PeopleSoft, auf virtuellen Microsoft Azure-Computern mit Datenbanken in Azure oder in der Oracle Cloud Infrastructure (OCI).
-services: virtual-machines-linux
-documentationcenter: ''
-author: romitgirdhar
-manager: gwallace
-tags: ''
-ms.service: virtual-machines
+author: dbakevlar
+ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 07/18/2019
-ms.author: rogirdh
-ms.custom: ''
-ms.openlocfilehash: b183a4d4922c89f60ccb19b3e3e978216f33cc9a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: kegorman
+ms.reviewer: cynthn
+ms.openlocfilehash: aa481090e3483e58f6a88304e3e9d8c1a16df3c7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100086"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965917"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Architekturen für die Bereitstellung von Oracle-Anwendungen in Azure
 

@@ -10,13 +10,13 @@ metadata:
   ms.topic: hub-page
   author: PatAltimore
   ms.author: patricka
-  ms.date: 09/25/2019
-  ms.openlocfilehash: 93a1e54dd2f1c209792c688666782a9c9823214b
-  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.date: 10/23/2019
+  ms.openlocfilehash: 5c5524f6214978864b4171f5298549c7963a7bd1
+  ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/27/2019
-  ms.locfileid: "71328623"
+  ms.lasthandoff: 01/07/2021
+  ms.locfileid: "97963928"
 productDirectory:
   items:
   - title: Azure Blockchain-Dienst
@@ -44,6 +44,9 @@ conceptualContent:
     - url: ./service/send-transaction.md
       itemType: tutorial
       text: Schreiben eines Smart Contract anhand eines Tutorials
+    - url: /learn/paths/ethereum-blockchain-development
+      itemType: learn
+      text: Befolgen des Microsoft Learn-Blockchain-Pfads
     - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
       itemType: video
       text: Ansehen, wie Ihr Netzwerk bereitgestellt und konfiguriert wird
@@ -64,25 +67,36 @@ conceptualContent:
     - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
       itemType: video
       text: Ansehen, wie Ihre erste Anwendung erstellt wird
+  - title: Veröffentlichen von Blockchain-Daten mithilfe von Blockchain Data Manager
+    links:
+    - url: ./service/data-manager.md
+      itemType: concept
+      text: Was ist Blockchain Data Manager für Azure Blockchain Service?
+    - url: ./service/data-manager-portal.md
+      itemType: how-to-guide
+      text: Erstellen einer Blockchain Data Manager-Instanz über das Azure-Portal
+    - url: https://aka.ms/BTDataManager
+      itemType: video
+      text: Ansehen einer Einführung in Blockchain Data Manager
   - title: Der passende Ledger für Ihren Anwendungsfall
     links:
     - url: ./templates/ethereum-poa-deployment.md
       itemType: how-to-guide
       text: Bereitstellen eines Multi-Member-Netzwerks für das Ethereum-Proof-of-Authority-Konsortium in Azure
-    - url: ./templates/hyperledger-fabric-consortium-blockchain.md
+    - url: ./templates/hyperledger-fabric-consortium-azure-kubernetes-service.md
       itemType: how-to-guide
-      text: Bereitstellen eines Hyperledger Fabric-Konsortiumsnetzwerk in Azure
+      text: Bereitstellen eines Hyperledger Fabric-Konsortiumsnetzwerk in Azure Kubernetes Service
 additionalContent:
   sections:
   - title: Entwicklungstools und Beispiele
     summary: Entwicklungstools und Codebeispiele für Blockchain-Apps
     items:
     - title: Azure Blockchain Development Kit für Ethereum
-      summary: Entwickeln, Bereitstellen von Debugbuilds und Verwalten Ihrer Azure Blockchain Service-Lösung
+      summary: Entwickeln, Bereitstellen, Debuggen und Verwalten Ihrer Azure Blockchain Service-Lösung
       url: https://marketplace.visualstudio.com/items?itemName=azblockchain.azure-blockchain
     - title: Ethereum-Blockchain-Connector
       summary: Verwenden von Azure Logic Apps, Microsoft Flow und Microsoft PowerApps, um Smart Contract-Aktionen durchzuführen, z. B. Übermitteln von Transaktionen, Lesen des Vertragsstatus und Auslösen von Flows bei Vertragsaktualisierungen
-      url: https://docs.microsoft.com/connectors/blockchainethereum/
+      url: /connectors/blockchainethereum/
     - title: Codebeispiele
       summary: GitHub-Repository mit Codebeispielen, die Ihnen den Einstieg erleichtern
       url: https://github.com/Azure-Samples/blockchain

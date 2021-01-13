@@ -1,25 +1,17 @@
 ---
-title: Senden von Benutzerkontext-IDs zur Aktivierung der Nutzung in Azure Application Insights | Microsoft-Dokumentation
+title: Benutzerkontext-IDs zum Nachverfolgen von Aktivitäten – Azure Application Insights
 description: Verfolgen Sie nach, welche Vorgänge Benutzer in Ihrem Dienst ausführen, indem Sie ihnen in Application Insights eine eindeutige, persistente ID-Zeichenfolge zuweisen.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
-ms.devlang: csharp
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 7c458867b89a76a2f19bbd632c8a884c629f5765
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 46b7479df6d087915cfe81895a786a528da6b9bb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371834"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87327904"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Senden von Benutzerkontext-IDs zur Nutzung in Azure Application Insights
 
@@ -27,10 +19,10 @@ ms.locfileid: "60371834"
 
 Mithilfe von Application Insights können Sie Ihre Benutzer durch eine Reihe von Produktnutzungstools überwachen und nachverfolgen:
 
-- [Benutzer, Sitzungen, Ereignisse](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
-- [Trichter](https://docs.microsoft.com/azure/application-insights/usage-funnels)
-- [Aufbewahrungskohorten](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)
-- [Arbeitsmappen](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Benutzer, Sitzungen, Ereignisse](./usage-segmentation.md)
+- [Trichter](./usage-funnels.md)
+- [Aufbewahrungskohorten](./usage-retention.md)
+- [Arbeitsmappen](../platform/workbooks-overview.md)
 
 Um nachzuverfolgen, welche Vorgänge ein Benutzer im Laufe der Zeit durchführt, erfordert Application Insights eine ID für jeden Benutzer bzw. jede Sitzung. Schließen Sie die folgenden IDs in jedem benutzerdefinierten Ereignis bzw. in jeder Seitenansicht ein.
 
@@ -38,7 +30,7 @@ Um nachzuverfolgen, welche Vorgänge ein Benutzer im Laufe der Zeit durchführt,
 - Sitzungen: Fügen Sie die Sitzungs-ID ein.
 
 > [!NOTE]
-> In diesem Artikel werden die manuellen Schritte zum Nachverfolgen der Benutzeraktivität mit Application Insights erläutert. Bei vielen Webanwendungen **sind diese Schritte möglicherweise nicht erforderlich**, da die serverseitigen Standard-SDKs zusammen mit dem [clientseitigen/browserseitigen JavaScript SDK](../../azure-monitor/app/website-monitoring.md ) oftmals ausreichend sind, um die Benutzeraktivität automatisch nachzuverfolgen. Wenn Sie zusätzlich zum serverseitigen SDK die [clientseitige Überwachung](../../azure-monitor/app/website-monitoring.md ) noch nicht konfiguriert haben, erledigen Sie dies zunächst, und testen Sie anschließend, ob die Analysetools für Benutzerverhalten wie erwartet ausgeführt werden.
+> In diesem Artikel werden die manuellen Schritte zum Nachverfolgen der Benutzeraktivität mit Application Insights erläutert. Bei vielen Webanwendungen **sind diese Schritte möglicherweise nicht erforderlich**, da die serverseitigen Standard-SDKs zusammen mit dem [clientseitigen/browserseitigen JavaScript SDK](./website-monitoring.md) oftmals ausreichend sind, um die Benutzeraktivität automatisch nachzuverfolgen. Wenn Sie zusätzlich zum serverseitigen SDK die [clientseitige Überwachung](./website-monitoring.md) noch nicht konfiguriert haben, erledigen Sie dies zunächst, und testen Sie anschließend, ob die Analysetools für Benutzerverhalten wie erwartet ausgeführt werden.
 
 ## <a name="choosing-user-ids"></a>Auswählen von Benutzer-IDs
 
@@ -50,11 +42,11 @@ Benutzer-IDs sollten benutzersitzungsübergreifend beibehalten werden, um das Be
 
 Bei der ID muss es sich um eine GUID oder eine andere komplexe Zeichenfolge handeln, die den Benutzer eindeutig identifiziert. Verwenden Sie beispielsweise eine lange Zufallszahl.
 
-Eine ID, die personenbezogene Informationen über den Benutzer enthält, ist kein geeigneter Wert, der als Benutzer-ID an Application Insights gesendet werden kann. Sie können diese ID zwar als [authentifizierte Benutzer-ID](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users) senden, sie erfüllt jedoch nicht die Anforderung an Benutzer-ID für Verwendungsszenarien.
+Eine ID, die personenbezogene Informationen über den Benutzer enthält, ist kein geeigneter Wert, der als Benutzer-ID an Application Insights gesendet werden kann. Sie können diese ID zwar als [authentifizierte Benutzer-ID](./api-custom-events-metrics.md#authenticated-users) senden, sie erfüllt jedoch nicht die Anforderung an Benutzer-ID für Verwendungsszenarien.
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET-Apps: Festlegen des Benutzerkontexts in ITelemetryInitializer
 
-Erstellen Sie einen Telemetrieinitialisierer. Eine ausführliche Beschreibung finden Sie [hier](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer). Übergeben Sie die Sitzungs-ID über die Anforderungstelemetrie, und legen Sie „Context.User.Id“ und „Context.Session.Id“ fest.
+Erstellen Sie einen Telemetrieinitialisierer. Eine ausführliche Beschreibung finden Sie [hier](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer). Übergeben Sie die Sitzungs-ID über die Anforderungstelemetrie, und legen Sie „Context.User.Id“ und „Context.Session.Id“ fest.
 
 In diesem Beispiel wird die Benutzer-ID auf einen Bezeichner festgelegt, der nach der Sitzung abläuft. Wenn möglich, verwenden Sie eine Benutzer-ID, die sitzungsübergreifend beibehalten wird.
 
@@ -136,10 +128,11 @@ namespace MvcWebRole.Telemetry
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) oder [Seitenansichten](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](./api-custom-events-metrics.md#trackevent) oder [Seitenansichten](./api-custom-events-metrics.md#page-views).
 - Wenn Sie bereits benutzerdefinierte Ereignisse oder Seitenansichten senden, finden Sie mithilfe der Nutzungstools heraus, wie Benutzer den Dienst verwenden.
     - [Nutzungsübersicht](usage-overview.md)
     - [Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights](usage-segmentation.md)
     - [Trichter](usage-funnels.md)
     - [Vermerkdauer](usage-retention.md)
-    - [Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)
+    - [Arbeitsmappen](../platform/workbooks-overview.md)
+

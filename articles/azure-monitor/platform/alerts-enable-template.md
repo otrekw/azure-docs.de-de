@@ -1,33 +1,30 @@
 ---
-title: Erstellen einer klassischen Metrikwarnung in Azure anhand einer Resource Manager-Vorlage
+title: 'Resource Manager-Vorlage: Erstellen einer Metrikwarnung'
 description: Erfahren Sie, wie Sie Resource Manager-Vorlagen zum Erstellen einer klassischen Metrikwarnung verwenden, um Benachrichtungen per E-Mail oder Webhook zu empfangen.
-author: johnkemnetz
-services: azure-monitor
-ms.service: azure-monitor
+author: rboucher
+ms.author: robb
 ms.topic: conceptual
-ms.date: 4/27/2018
-ms.author: johnkem
-ms.subservice: metrics
-ms.openlocfilehash: faeb4df915cc5c56e21d1857fe75a956d419c46e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.date: 03/09/2020
+ms.subservice: alerts
+ms.openlocfilehash: 4bb44b7133e5644991d7413f4f824a8b55ffdd75
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262091"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108370"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage
-In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md) Metrikwarnungen in Azure konfigurieren können. So können Sie Warnungen für Ihre Ressourcen gleich bei der Erstellung automatisch einrichten, um sicherzustellen, dass alle Ressourcen ordnungsgemäß überwacht werden.
 
-> [!NOTE]
-> 
-> Dieser Artikel beschreibt das Erstellen von **klassischen Metrikwarnungen** mithilfe von Resource Manager-Vorlagen. Wenn Sie [neuere Metrikwarnungen](../../azure-monitor/platform/alerts-metric-near-real-time.md) mithilfe von Vorlagen erstellen möchten, finden Sie [in diesem Artikel](alerts-metric-create-templates.md) ausführliche Informationen.
+> [!WARNING]
+> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](./alerts-overview.md). Klassische Warnungen werden [eingestellt](./monitoring-classic-retirement.md), sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz.
 >
 
+In diesem Artikel erfahren Sie, wie Sie mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/template-syntax.md) klassische Metrikwarnungen in Azure konfigurieren. So können Sie Warnungen für Ihre Ressourcen gleich bei der Erstellung automatisch einrichten, um sicherzustellen, dass alle Ressourcen ordnungsgemäß überwacht werden.
 
 Die grundlegenden Schritte lauten wie folgt:
 
 1. Erstellen Sie eine Vorlage als JSON-Datei, die die Erstellung der Warnung beschreibt.
-2. [Stellen Sie die Vorlage mithilfe einer beliebigen Bereitstellungsmethode bereit.](../../azure-resource-manager/resource-group-template-deploy.md)
+2. [Stellen Sie die Vorlage mithilfe einer beliebigen Bereitstellungsmethode bereit.](../../azure-resource-manager/templates/deploy-powershell.md)
 
 Im Folgenden wird beschrieben, wie Sie eine Resource Manager-Vorlage für eine Warnung allein erstellen. Dann wird erläutert, wie Sie eine Warnung im Rahmen der Erstellung einer weiteren Ressource erstellen.
 
@@ -179,7 +176,7 @@ Um eine Warnung mithilfe einer Resource Manager-Vorlage zu erstellen, erstellen 
 }
 ```
 
-Eine Erläuterung des Schemas und der Eigenschaften für eine Warnungsregel [finden Sie hier](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+Eine Erläuterung des Schemas und der Eigenschaften für eine Warnungsregel [finden Sie hier](/rest/api/monitor/alertrules).
 
 ## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Resource Manager-Vorlage für eine Ressource mit einer klassischen Metrikwarnung
 Eine Warnung in einer Resource Manager-Vorlage ist sehr nützlich, wenn bei der Erstellung einer Ressource auch eine Warnung erstellt wird. Ein Beispiel: Sie möchten sicherstellen, dass die Regel „CPU % > 80“ jedes Mal bei der Bereitstellung eines virtuellen Computers eingerichtet wird. Dazu fügen Sie die Warnungsregel dem Ressourcenarray für Ihre VM-Vorlage als Ressource hinzu und richten außerdem mithilfe der Eigenschaft `dependsOn` eine Abhängigkeit zur Ressourcen-ID des virtuellen Computers ein. Das folgende vollständige Beispiel erstellt einen virtuellen Windows-Computer und fügt eine Warnung hinzu, die Abonnementadministratoren benachrichtigt, wenn die CPU-Auslastung die Schwelle von 80 % überschreitet.
@@ -403,6 +400,5 @@ Eine Warnung in einer Resource Manager-Vorlage ist sehr nützlich, wenn bei der 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zu Warnungen](alerts-overview.md)
-* [Hinzufügen von Diagnoseeinstellungen](../../azure-monitor/platform/diagnostic-settings-template.md) zu Ihrer Resource Manager-Vorlage
+* [Hinzufügen von Diagnoseeinstellungen](../samples/resource-manager-diagnostic-settings.md) zu Ihrer Resource Manager-Vorlage
 * Informationen zur JSON-Syntax und zu den Eigenschaften finden Sie in der Vorlagenreferenz für [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules).
-

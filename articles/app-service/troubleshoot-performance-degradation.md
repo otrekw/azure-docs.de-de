@@ -1,30 +1,21 @@
 ---
-title: Problembehandlung von Leistungsbeeinträchtigungen – Azure App Service | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie App-Leistungsprobleme in Azure App Service beheben.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: Problembehandlung von Leistungsbeeinträchtigung
+description: Erfahren Sie, wie Sie Probleme mit langsamer App-Leistung in Azure App Service beheben und durch Überwachen des App-Verhaltens und Erfassen von Daten das Problem lösen.
 tags: top-support-issue
 keywords: Web-App-Leistung, langsame App, App langsam
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/03/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3f7389022eaee4268d5d4fc5439b64d7f7f1bf07
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: cf8b0e1fda03a74d30ec77c911d705bf12cf0126
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066528"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763807"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Problembehandlung bei niedriger App-Leistung in Azure App Service
-In diesem Artikel erfahren Sie, wie Sie App-Leistungsprobleme in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) beheben.
+In diesem Artikel erfahren Sie, wie Sie App-Leistungsprobleme in [Azure App Service](./overview.md) beheben.
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)stellen, um dort Hilfe von Azure-Experten zu erhalten. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**.
 
@@ -48,11 +39,11 @@ Die Problembehandlung lässt sich in diesem Fall in drei unterschiedliche Aufgab
 
 [App Service](overview.md) bietet Ihnen bei jedem Schritt verschiedene Optionen.
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. Beobachten und Überwachen des Anwendungsverhaltens
 #### <a name="track-service-health"></a>Nachverfolgen der Dienstintegrität
-Microsoft Azure informiert jeweils aktuell über Dienstunterbrechungen oder Leistungsbeeinträchtigungen. Sie können die Integrität des Diensts im [Azure-Portal](https://portal.azure.com/) nachverfolgen. Weitere Informationen finden Sie unter [Nachverfolgen der Dienstintegrität](../monitoring-and-diagnostics/insights-service-health.md).
+Microsoft Azure informiert jeweils aktuell über Dienstunterbrechungen oder Leistungsbeeinträchtigungen. Sie können die Integrität des Diensts im [Azure-Portal](https://portal.azure.com/) nachverfolgen. Weitere Informationen finden Sie unter [Nachverfolgen der Dienstintegrität](../service-health/service-notifications.md).
 
 #### <a name="monitor-your-app"></a>Überwachen Ihrer App
 Durch das Überwachen der Web-App können Sie herausfinden, ob in Ihrer Anwendung Probleme vorliegen. Klicken Sie auf dem Blatt Ihrer App auf die Kachel **Anforderungen und Fehler**. Auf dem Blatt **Metrik** werden alle Metriken angezeigt, die Sie hinzufügen können.
@@ -70,7 +61,7 @@ Sie können beispielsweise die folgenden Metriken für Ihre App überwachen:
 Weitere Informationen finden Sie unter
 
 * [Überwachen von Apps in Azure App Service](web-sites-monitor.md)
-* [Empfangen von Warnbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+* [Empfangen von Warnbenachrichtigungen](../azure-monitor/platform/alerts-overview.md)
 
 #### <a name="monitor-web-endpoint-status"></a>Überwachen des Web-Endpunktstatus
 Wenn Sie Ihre App im Tarif **Standard** ausführen, können Sie mit App Service zwei Endpunkte von drei geografischen Standorten aus überwachen.
@@ -91,9 +82,9 @@ Jede App Service-App bietet einen erweiterbaren Verwaltungsendpunkt, mit dem Sie
 - Quellcode-Editoren wie [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
 - Verwaltungstools für verbundene Ressourcen wie eine MySQL-Datenbank, die mit einer App verbunden ist.
 
-Ebenfalls zur Verfügung steht [Azure Application Insights](https://azure.microsoft.com/services/application-insights/), eine Websiteerweiterung für die Leistungsüberwachung. Um Application Insights zu verwenden, erstellen Sie ihren Code mit einem SDK neu. Sie können auch eine Erweiterung installieren, die Zugriff auf zusätzliche Daten bietet. Mit dem SDK können Sie Code schreiben, um die Auslastung und Leistung Ihrer Anwendung genauer zu überwachen. Weitere Informationen finden Sie unter [Leistungsüberwachung in Webanwendungen](../azure-monitor/app/web-monitor-performance.md).
+Ebenfalls zur Verfügung steht [Azure Application Insights](https://azure.microsoft.com/services/application-insights/), eine Websiteerweiterung für die Leistungsüberwachung. Um Application Insights zu verwenden, erstellen Sie ihren Code mit einem SDK neu. Sie können auch eine Erweiterung installieren, die Zugriff auf zusätzliche Daten bietet. Mit dem SDK können Sie Code schreiben, um die Auslastung und Leistung Ihrer Anwendung genauer zu überwachen. Weitere Informationen finden Sie unter [Leistungsüberwachung in Webanwendungen](../azure-monitor/app/app-insights-overview.md).
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2. Sammeln von Daten
 App Service bietet Diagnosefunktionen zum Protokollieren von Informationen sowohl über den Webserver als auch über die Webanwendung. Die Informationen sind logisch in Webserverdiagnose und Anwendungsdiagnose unterteilt.
@@ -142,13 +133,13 @@ Die Kudu-Konsole bietet z. B. folgende Funktionen:
 * Umgebungseinstellungen für Ihre Anwendung
 * Protokolldatenstrom
 * Speicherabbild zu Diagnosezwecken
-* Debugkonsole zum Ausführen von Powershell-Cmdlets und grundlegenden DOS-Befehlen
+* Debugkonsole zum Ausführen von PowerShell-Cmdlets und grundlegenden DOS-Befehlen.
 
 Eine weitere nützliche Funktion von Kudu ist die Möglichkeit, mithilfe von Kudu und dem SysInternals-Tool „Procdump“ Speicherabbilddateien zu erstellen, wenn Ihre Anwendung Ausnahmen (erste Chance) auslöst. Bei diesen Speicherabbilddateien handelt es sich um Momentaufnahmen des Prozesses, die beim Beheben komplizierterer Probleme mit Ihrer App hilfreich sein können.
 
 Weitere Informationen zu den verfügbaren Funktionen in Kudu finden Sie unter [Tools für Azure DevOps, die Sie kennen sollten](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3. Minimieren der Auswirkungen des Problems
 #### <a name="scale-the-app"></a>Skalieren der App
@@ -170,4 +161,4 @@ Ein Neustart ist oft die einfachste Methode zum Beheben einmaliger Probleme. Im 
 
  ![Neustart der App zum Beheben von Leistungsproblemen](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-Sie können Ihre App auch mit Azure PowerShell verwalten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
+Sie können Ihre App auch mit Azure PowerShell verwalten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../azure-resource-manager/management/manage-resources-powershell.md).

@@ -3,23 +3,23 @@ title: Erstellen eines Azure CDN-Endpunkts | Microsoft-Dokumentation
 description: In diesem Artikel wird gezeigt, wie Sie einen neuen Azure Content Delivery Network (CDN)-Endpunkt erstellen, einschließlich erweiterter Einstellungen.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/12/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: afd9599dd1e396dea6975c397688e4b97371fd6d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593932"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021961"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Erstellen eines Azure CDN-Endpunkts
 In diesem Artikel werden alle Einstellungen zum Erstellen eines [Azure Content Delivery Network (CDN)](cdn-overview.md)-Endpunkts in einem vorhandenen CDN-Profil beschrieben. Nach der Erstellung eines Profils und eines Endpunkts können Sie mit der Bereitstellung von Inhalten für Ihre Kunden beginnen. Eine Schnellstartanleitung zum Erstellen eines Profils und-Endpunkts finden Sie unter [Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts](cdn-create-new-endpoint.md).
@@ -44,7 +44,7 @@ Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.c
    
     ![Seite „Endpunkt hinzufügen“](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. Geben Sie unter **Name** einen eindeutigen Namen für den neuen CDN-Endpunkt ein. Dieser Name wird für den Zugriff auf Ihre zwischengespeicherten Ressourcen in der Domäne _\<Endpunktname>_ .azureedge.net verwendet.
+3. Geben Sie unter **Name** einen eindeutigen Namen für den neuen CDN-Endpunkt ein. Dieser Name wird für den Zugriff auf Ihre zwischengespeicherten Ressourcen in der Domäne _\<endpointname>_ .azureedge.net. verwendet.
 
 4. Wählen Sie für **Ursprungstyp** einen der folgenden Ursprungstypen aus: 
    - **Speicher** für Azure Storage
@@ -62,7 +62,7 @@ Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.c
    > Bei einigen Ursprungstypen wie etwa Azure Storage und Web-Apps muss der Hostheader mit der Domäne des Ursprungs übereinstimmen. Verwenden Sie den Standardwert, es sei denn, Sie nutzen einen Ursprung, bei dem der Hostheader von der Domäne abweichen muss.
    > 
     
-8. Geben Sie unter **Protokoll** und **Ursprungsport** die Protokolle und Ports an, über die auf die Ressourcen auf dem Ursprungsserver zugegriffen werden soll. Sie müssen mindestens ein Protokoll (HTTP oder HTTPS) auswählen. Verwenden Sie die vom CDN bereitgestellte Domäne ( _\<Endpunktname>_ .azureedge.net), um auf HTTPS-Inhalte zuzugreifen. 
+8. Geben Sie unter **Protokoll** und **Ursprungsport** die Protokolle und Ports an, über die auf die Ressourcen auf dem Ursprungsserver zugegriffen werden soll. Sie müssen mindestens ein Protokoll (HTTP oder HTTPS) auswählen. Verwenden Sie die vom CDN bereitgestellte Domäne ( _\<endpointname>_ .azureedge.net), um auf HTTPS-Inhalte zuzugreifen. 
    
    > [!NOTE]
    > Mit dem Wert unter **Ursprungsport** wird nur der Port bestimmt, der vom Endpunkt zum Abrufen von Informationen vom Ursprungsserver verwendet wird. Der Endpunkt selbst ist nur für Endclients auf den HTTP- und HTTPS-Standardports (80 und 443) verfügbar, und zwar unabhängig vom Wert unter **Ursprungsport**.  

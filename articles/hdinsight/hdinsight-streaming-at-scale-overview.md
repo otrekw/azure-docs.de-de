@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: 76d1947ae6fbdf7577cc9b8db9d902dc55350b7f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: a04ce77c7e81a3a73b87eaf5790b383dece35d86
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105332"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022716"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Bedarfsorientiertes Streaming in HDInsight
 
-Big Data-Echtzeitlösungen verarbeiten Daten während der Übertragung. In der Regel sind diese Daten zum Zeitpunkt des Eingangs am nützlichsten. Wenn der eingehende Datenstrom aufgrund seiner Größe nicht mehr verarbeitet werden kann, müssen die Ressourcen gedrosselt werden. Alternativ kann ein HDInsight-Cluster zentral hochskaliert werden, um die Anforderungen Ihrer Lösung durch bedarfsgerechtes Hinzufügen von Knoten zu erfüllen.
+Big Data-Echtzeitlösungen verarbeiten Daten während der Übertragung. In der Regel sind diese Daten zum Zeitpunkt des Eingangs am nützlichsten. Wenn der eingehende Datenstrom aufgrund seiner Größe nicht mehr verarbeitet werden kann, müssen die Ressourcen gedrosselt werden. Alternativ kann ein HDInsight-Cluster hochskaliert werden, um die Anforderungen Ihrer Lösung durch bedarfsgerechtes Hinzufügen von Knoten zu erfüllen.
 
 Von den Datenquellen einer Streaminganwendung können pro Sekunde Millionen von Ereignissen generiert werden, die schnell und ohne den Verlust nützlicher Informationen erfasst werden müssen. Die eingehenden Ereignisse werden durch *Streampufferung* (auch *Ereignisqueuing* genannt) von einem Dienst wie [Apache Kafka](kafka/apache-kafka-introduction.md) oder [Event Hubs](https://azure.microsoft.com/services/event-hubs/) verarbeitet. Nachdem die Ereignisse erfasst wurden, können Sie die Daten innerhalb der *Streamverarbeitungsebene* mithilfe eines Echtzeitanalysesystems wie [Apache Storm](storm/apache-storm-overview.md) oder [Apache Spark Streaming](spark/apache-spark-streaming-overview.md) analysieren. Die verarbeiteten Daten können langfristig in entsprechenden Systemen wie [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) gespeichert und in Echtzeit in einem Business Intelligence-Dashboard wie [Power BI](https://powerbi.microsoft.com) oder Tableau oder auf einer benutzerdefinierten Webseite angezeigt werden.
 
@@ -37,9 +37,9 @@ Weitere Informationen finden Sie unter [Was ist Apache Storm in Azure HDInsight?
 
 ## <a name="spark-streaming"></a>Spark Streaming
 
-Spark Streaming ist eine Erweiterung für Spark, mit der Sie den gleichen Code wie für die Batchverarbeitung verwenden können. Batchabfragen und interaktive Abfragen können in einer einzelnen Anwendung kombiniert werden. Im Gegensatz zu Storm steht in Spark Streaming eine statusbehaftete Semantik vom Typ „Exactly-Once“ zur Verfügung. In Kombination mit der [Kafka Direct-API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), die sicherstellt, dass alle Kafka-Daten genau einmal von Spark Streaming empfangen werden, können End-to-End-Garantien vom Typ „Exactly-Once“ erreicht werden. Zu den Stärken von Spark Streaming zählen seine fehlertoleranten Funktionen und die damit verbundene schnelle Wiederherstellung fehlerhafter Knoten bei Verwendung mehrerer Knoten im Cluster.
+Spark Streaming ist eine Erweiterung für Spark, mit der Sie den gleichen Code wie für die Batchverarbeitung verwenden können. Batchabfragen und interaktive Abfragen können in einer einzelnen Anwendung kombiniert werden. Im Gegensatz zu Storm steht in Spark Streaming eine statusbehaftete Semantik vom Typ „Exactly Once“ zur Verfügung. In Kombination mit der [Kafka Direct-API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), die sicherstellt, dass alle Kafka-Daten genau einmal von Spark Streaming empfangen werden, können End-to-End-Garantien vom Typ „Exactly Once“ erreicht werden. Zu den Stärken von Spark Streaming zählen seine fehlertoleranten Funktionen und die damit verbundene schnelle Wiederherstellung fehlerhafter Knoten bei Verwendung mehrerer Knoten im Cluster.
 
-Weitere Informationen finden Sie in der [Übersicht über Apache Spark-Streaming](hdinsight-spark-streaming-overview.md).
+Weitere Informationen finden Sie in der [Übersicht über Apache Spark-Streaming](./spark/apache-spark-streaming-overview.md).
 
 ## <a name="scaling-a-cluster"></a>Skalieren eines Clusters
 
@@ -49,7 +49,7 @@ Die Entkopplung von Technologien hat gewisse Vorteile. Bei Kafka handelt es sich
 
 ### <a name="scale-the-stream-buffering-layer"></a>Skalieren der Ebene für die Streampufferung
 
-Die Streampufferungstechnologien Event Hubs und Kafka verwenden jeweils Partitionen, die von Consumern ausgelesen werden. Zum Skalieren des Eingabedurchsatzes muss die Anzahl von Partitionen erhöht werden, wodurch sich wiederum die Parallelität erhöht. In Event Hubs kann die Anzahl von Partitionen nach der Bereitstellung nicht mehr geändert werden. Daher ist es wichtig, sich schon zu Beginn Gedanken über die Zielgröße zu machen. Bei Kafka können Sie [Partitionen hinzufügen](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion) – und das sogar, während Kafka Daten verarbeitet. Kafka verfügt über ein Tool zum Neuzuweisen von Partitionen: `kafka-reassign-partitions.sh`. HDInsight verfügt über ein [Tool zum Ausgleichen von Partitionsreplikaten](https://github.com/hdinsight/hdinsight-kafka-tools): `rebalance_rackaware.py`. Dieses Ausgleichstool ruft das Tool `kafka-reassign-partitions.sh` so auf, dass sich jedes Replikat in einer separaten Fehler- und Updatedomäne befindet. Kafka wird dadurch rackfähig und fehlertoleranter.
+Die Streampufferungstechnologien Event Hubs und Kafka verwenden jeweils Partitionen, die von Consumern ausgelesen werden. Zum Skalieren des Eingabedurchsatzes muss die Anzahl von Partitionen erhöht werden, wodurch sich wiederum die Parallelität erhöht. In Event Hubs kann die Anzahl von Partitionen nach der Bereitstellung nicht mehr geändert werden. Daher ist es wichtig, sich schon zu Beginn Gedanken über die Zielgröße zu machen. Bei Kafka können Sie [Partitionen hinzufügen](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion) – und das sogar während Kafka Daten verarbeitet. Kafka verfügt über ein Tool zum Neuzuweisen von Partitionen: `kafka-reassign-partitions.sh`. HDInsight verfügt über ein [Tool zum Ausgleichen von Partitionsreplikaten](https://github.com/hdinsight/hdinsight-kafka-tools): `rebalance_rackaware.py`. Dieses Ausgleichstool ruft das Tool `kafka-reassign-partitions.sh` so auf, dass sich jedes Replikat in einer separaten Fehler- und Updatedomäne befindet. Kafka wird dadurch rackfähig und fehlertoleranter.
 
 ### <a name="scale-the-stream-processing-layer"></a>Skalieren der Ebene für die Streamverarbeitung
 

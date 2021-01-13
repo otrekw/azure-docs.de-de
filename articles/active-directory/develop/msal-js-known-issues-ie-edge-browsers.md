@@ -1,30 +1,26 @@
 ---
-title: Bekannte Browserprobleme (Microsoft Authentication Library für JavaScript) | Azure
+title: Probleme in Internet Explorer und Microsoft Edge (MSAL.js ) | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über bekannte Probleme, die bei Verwendung der Microsoft Authentication Library für JavaScript (MSAL.js) in Verbindung mit den Browsern Internet Explorer und Microsoft Edge auftreten können.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2019
+ms.date: 05/18/2020
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c57ed956ec50c8bac26720a27894c07353928336
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65874086"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83772079"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Bekannte Probleme in den Browsern Internet Explorer und Microsoft Edge bei Verwendung von MSAL.js
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Bekannte Probleme in den Browsern Internet Explorer und Microsoft Edge (MSAL.js)
 
 ## <a name="issues-due-to-security-zones"></a>Probleme aufgrund von Sicherheitszonen
 Es wurden mehrere Probleme bei der Authentifizierung in IE und Microsoft Edge gemeldet (nach dem Update von *Microsoft Edge auf die Browserversion 40.15063.0.0*). Wir verfolgen diese Fälle und haben das Microsoft Edge-Team informiert. Während das Microsoft Edge-Team an einer Lösung arbeitet, finden Sie hier eine Beschreibung der häufig auftretenden Probleme und mögliche Problemumgehungen.
@@ -42,10 +38,6 @@ Die meisten Probleme haben folgende Ursache. Der Sitzungsspeicher und lokale Spe
 
 - **Ein bei der Anmeldung für die Authentifizierung verwendetes Popupfenster wird nicht geschlossen oder bleibt hängen**: Wenn sich ein Benutzer in Microsoft Edge oder IE (InPrivate) über ein Popupfenster authentifiziert, wird das Popupfenster nach der Eingabe der Anmeldeinformationen und der Anmeldung nicht geschlossen, wenn sich die Navigation über mehrere Domänen in unterschiedlichen Sicherheitszonen erstreckt. Dies liegt daran, dass MSAL.js das Handle für das Popupfenster verliert.  
 
-    Im Folgenden die Links zu den Fehlern in der Problemverfolgung zu Microsoft Edge:  
-    - [Fehler 13861050](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861050/)
-    - [Fehler 13861663](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861663/)
-
 ### <a name="update-fix-available-in-msaljs-023"></a>Aktualisieren: Fix in MSAL.js 0.2.3 verfügbar
 In [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) wurden Fixes für die Umleitungsschleife bei der Authentifizierung veröffentlicht. Aktivieren Sie das Flag `storeAuthStateInCookie` in der Konfiguration von MSAL.js, um diesen Fix zu nutzen. Dieses Flag ist standardmäßig auf „false“ festgelegt.
 
@@ -58,7 +50,7 @@ Nutzen Sie die unten beschriebenen Problemumgehungen.
 
 #### <a name="other-workarounds"></a>Weitere Problemumgehungen
 Vergewissern Sie sich, dass das Problem nur in der spezifischen Version des Microsoft Edge-Browsers auftritt und dass die anderen Browser einwandfrei funktionieren, bevor Sie diese Problemumgehungen anwenden.  
-1. Zunächst stellen sicher, dass die Anwendungsdomäne und alle anderen an der Umleitung des Authentifizierungsflows beteiligten Websites in den Sicherheitseinstellungen des Browsers als vertrauenswürdige Sites hinzugefügt wurden, sodass sie derselben Sicherheitszone angehören.
+1. Um diese Probleme zu umgehen, stellen Sie als ersten Schritt sicher, dass die Anwendungsdomäne und alle anderen an der Umleitung des Authentifizierungsflows beteiligten Websites in den Sicherheitseinstellungen des Browsers als vertrauenswürdige Sites hinzugefügt wurden, sodass sie derselben Sicherheitszone angehören.
 Gehen Sie dazu folgendermaßen vor:
     - Öffnen Sie **Internet Explorer**, und klicken Sie in der oberen rechten Ecke auf **Einstellungen** (Zahnradsymbol).
     - Wählen Sie **Internetoptionen** aus.
@@ -71,7 +63,7 @@ Beim InPrivate-Browsen wird das Problem dadurch allerdings nicht behoben, da sow
 
 ## <a name="issues-due-to-popup-blockers"></a>Probleme durch Popupblocker
 
-In manchen Fällen werden Popupfenster in Internet Explorer oder Microsoft Edge blockiert, beispielsweise, wenn bei der Multi-Factor Authentication ein zweites Popupfenster eingeblendet wird. Sie werden im Browser darüber informiert, dass Sie das Popupfenster einmalig oder dauerhaft zulassen können. Wenn Sie das Popupfenster zulassen möchten, wird es automatisch geöffnet, und der Browser gibt ein `null`-Handle dafür zurück. Dies führt dazu, dass die Bibliothek kein Handle für das Fenster hat, sodass es keine Möglichkeit gibt, das Popupfenster zu schließen. In Chrome tritt dieses Problem nicht auf, wenn sie aufgefordert werden, Popupfenster zuzulassen, da der Browser nicht automatisch ein Popupfenster öffnet.
+In manchen Fällen werden Popupfenster in Internet Explorer oder Microsoft Edge blockiert, beispielsweise wenn bei der [mehrstufigen Authentifizierung](../authentication/concept-mfa-howitworks.md) ein zweites Popupfenster eingeblendet wird. Sie werden im Browser darüber informiert, dass Sie das Popupfenster einmalig oder dauerhaft zulassen können. Wenn Sie das Popupfenster zulassen möchten, wird es automatisch geöffnet, und der Browser gibt ein `null`-Handle dafür zurück. Dies führt dazu, dass die Bibliothek kein Handle für das Fenster hat, sodass es keine Möglichkeit gibt, das Popupfenster zu schließen. In Chrome tritt dieses Problem nicht auf, wenn sie aufgefordert werden, Popupfenster zuzulassen, da der Browser nicht automatisch ein Popupfenster öffnet.
 
 Zur **Problemumgehung** müssen Entwickler Popupfenster in IE und Microsoft Edge zulassen, bevor sie ihre App verwenden. So wird das Problem vermieden.
 

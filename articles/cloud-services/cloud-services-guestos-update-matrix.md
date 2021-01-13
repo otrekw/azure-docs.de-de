@@ -3,21 +3,21 @@ title: Informationen zu den neuesten Azure-Gastbetriebssystemversionen | Microso
 description: Die neueste Releaseneuigkeiten und SDK-Kompatibilität für das Azure Cloud Services-Gastbetriebssystem.
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: yohaddad
 editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
 ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/4/2019
-ms.author: raiye
-ms.openlocfilehash: 9e93cb6cf57a42463e631332fb4714457b9b675f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.date: 1/4/2021
+ms.author: yohaddad
+ms.openlocfilehash: 429e343a61e61b01fa07c37a6c2b702f6ef633d1
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275491"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882346"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings]beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen.
@@ -41,6 +41,51 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sie wissen nicht genau, wie Sie Ihr Gastbetriebssystem aktualisieren sollen? Entsprechende Informationen finden Sie [hier][cloud updates].
 
 ## <a name="news-updates"></a>Neuigkeiten
+
+###### <a name="december-19-2020"></a>**19. December 2020**
+Das Gastbetriebssystem für November wurde veröffentlicht. 
+
+###### <a name="november-17-2020"></a>**17. November 2020**
+Das Gastbetriebssystem für Oktober wurde veröffentlicht. 
+
+###### <a name="october-10-2020"></a>**10. Oktober 2020**
+Das Gastbetriebssystem für September wurde veröffentlicht. 
+
+###### <a name="september-5-2020"></a>**5. September 2020**
+Das Gastbetriebssystem für August wurde veröffentlicht. 
+
+###### <a name="august-17-2020"></a>**17. August 2020**
+Das Gastbetriebssystem für Juli wurde veröffentlicht. 
+
+###### <a name="august-10-2020"></a>**10. August 2020**
+Das Gastbetriebssystem für Juni wurde veröffentlicht. 
+
+###### <a name="june-2-2020"></a>**2. Juni 2020**
+Das Gastbetriebssystem für Mai wurde veröffentlicht. 
+
+###### <a name="may-4-2020"></a>**4. Mai 2020**
+Das Gastbetriebssystem für April wurde veröffentlicht. 
+
+###### <a name="april-2-2020"></a>**2. April 2020**
+Das Gastbetriebssystem für März wurde veröffentlicht. 
+
+###### <a name="march-5-2020"></a>**5. März 2020**
+Das Gast-BS für Februar wurde veröffentlicht. 
+
+###### <a name="january-24-2020"></a>**24. Januar 2020**
+Das Gastbetriebssystem für Januar wurde veröffentlicht. 
+
+###### <a name="january-8-2020"></a>**8. Januar 2020**
+Das Gastbetriebssystem für Dezember wurde veröffentlicht.
+
+###### <a name="december-5-2019"></a>**5. Dezember 2019**
+Das Gastbetriebssystem für November wurde veröffentlicht.
+
+###### <a name="november-1-2019"></a>**1. November 2019**
+Das Gastbetriebssystem für Oktober wurde veröffentlicht.
+
+###### <a name="october-7-2019"></a>**7. Oktober 2019**
+Das Gastbetriebssystem für September wurde veröffentlicht.
 
 ###### <a name="september-4-2019"></a>**4. September 2019**
 Das Gastbetriebssystem für August wurde veröffentlicht.
@@ -99,12 +144,28 @@ Installierte .NET Framework-Versionen: 3.5, 4.7.2
 >5. Ändern Sie die Betriebssystemfamilie in 6, und erstellen Sie ein Paket
 >6. Stellen Sie das Paket mithilfe des Azure-Portals oder von Visual Studio in Azure bereit
 >
+>Das Release „Guest OS Family 6“ (Gastbetriebssystemfamilie) erzwingt TLS 1.2 durch explizite Deaktivierung von TLS 1.0 und 1.1 und die Definition einer bestimmten Reihe von Verschlüsselungssammlungen. [Weitere Informationen].
 
 
-| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
+| Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-6.10_201908-01 |  4\. August 2019  |  Post 6.12  |  
-| WA-GUEST-OS-6.9_201907-01 |26. Juli 2019 |Post 6.11 |
+|  WA-GUEST-OS-6.25_202011-01 |  19. Dezember 2020  |  Nach 6.27  |  
+|  WA-GUEST-OS-6.24_202010-02 |  17. November 2020  |  Nach 6.26  |  
+|~~WA-GUEST-OS-6.23_202009-01~~|  10. Oktober 2020  |  19. Dezember 2020  |  
+|~~WA-GUEST-OS-6.22_202008-02~~|  5\. September 2020  |  17. November 2020  |  
+|~~WA-GUEST-OS-6.21_202007-01~~|  17. August 2020  |  10. Oktober 2020  |  
+|~~WA-GUEST-OS-6.20_202006-02~~|  10. August 2020  |  5\. September 2020  |  
+|~~WA-GUEST-OS-6.19_202005-02~~|  2\. Juni 2020  |  17. August 2020  |  
+|~~WA-GUEST-OS-6.18_202004-01~~|  4\. Mai 2020  |  10. August 2020  |  
+|~~WA-GUEST-OS-6.17_202003-01~~|  2\. April 2020  |  2\. Juni 2020  |  
+|~~WA-GUEST-OS-6.16_202002-01~~|  5\. März 2020  |  4\. Mai 2020  |  
+|~~WA-GUEST-OS-6.15_202001-01~~|  24. Januar 2020  |  2\. April 2020  |  
+|~~WA-GUEST-OS-6.14_201912-01~~| 8\. Januar 2020 | 5\. März 2020 |  
+|~~WA-GUEST-OS-6.13_201911-01~~| 5\. Dezember 2019 | 24. Januar 2020 |  
+|~~WA-GUEST-OS-6.12_201910-01~~| 1\. November 2019 | 8\. Januar 2020 |  
+|~~WA-GUEST-OS-6.11_201909-01~~| 7\. Oktober 2019 | 5\. Dezember 2019 |  
+|~~WA-GUEST-OS-6.10_201908-01~~| 4\. August 2019 | 1\. November 2019  |  
+|~~WA-GUEST-OS-6.9_201907-0~~|26. Juli 2019 | 7\. Oktober 2019 |
 |~~WA-GUEST-OS-6.8_201906-01~~|8\. Juli 2019 |4\. August 2019 |
 |~~WA-GUEST-OS-6.7_201905-01~~ |6\. Juni 2019 |26. Juli 2019 |
 |~~WA-GUEST-OS-6.6_201904-01~~ |7\. Mai 2019 |8\. Juli 2019 |
@@ -117,17 +178,32 @@ Installierte .NET Framework-Versionen: 3.5, 4.7.2
 ## <a name="family-5-releases"></a>Releases von Familie 5
 **Windows Server 2016**
 
-Installierte .NET Framework-Versionen: 3.5, 4.6
+Installierte .NET Framework-Versionen: 3.5, 4.6.2
 
 > [!NOTE]
 > Das RDP-Kennwort für Betriebssystemfamilie 5 muss mindestens zehn Zeichen umfassen.
 >
 
 
-| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
+| Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-5.34_201908-01  |  4\. August 2019  |  Post 5.36  |  
-| WA-GUEST-OS-5.33_201907-01 |26. Juli 2019 |Post 5.35 |  
+|  WA-GUEST-OS-5.49_202011-01  |  19. Dezember 2020  |  Nach 5.51  | 
+|  WA-GUEST-OS-5.48_202010-02  |  17. November 2020  |  Nach 5.50  | 
+|~~WA-GUEST-OS-5.47_202009-01~~|  10. Oktober 2020  |  19. Dezember 2020  | 
+|~~WA-GUEST-OS-5.46_202008-02~~|  5\. September 2020  |  17. November 2020  |  
+|~~WA-GUEST-OS-5.45_202007-01~~|  17. August 2020  |  10. Oktober 2020  |  
+|~~WA-GUEST-OS-5.44_202006-02~~|  10. August 2020  |  5\. September 2020  |  
+|~~WA-GUEST-OS-5.43_202005-02~~|  2\. Juni 2020  |  17. August 2020  |  
+|~~WA-GUEST-OS-5.42_202004-01~~|  4\. Mai 2020  |  10. August 2020  |  
+|~~WA-GUEST-OS-5.41_202003-01~~|  2\. April 2020  |  2\. Juni 2020  |  
+|~~WA-GUEST-OS-5.40_202002-01~~|  5\. März 2020  |  4\. Mai 2020  |  
+|~~WA-GUEST-OS-5.39_202001-01~~|  24. Januar 2020  |  2\. April 2020  |  
+|~~WA-GUEST-OS-5.38_201912-01~~| 8\. Januar 2020 | 5\. März 2020 |  
+|~~WA-GUEST-OS-5.37_201911-01~~| 5\. Dezember 2019 | 24. Januar 2020 |  
+|~~WA-GUEST-OS-5.36_201910-01~~| 1\. November 2019 | 8\. Januar 2020 |  
+|~~WA-GUEST-OS-5.35_201909-01~~| 7\. Oktober 2019 | 5\. Dezember 2019 |  
+|~~WA-GUEST-OS-5.34_201908-01~~|  4\. August 2019  | 1\. November 2019 |  
+|~~WA-GUEST-OS-5.33_201907-01~~| 26. Juli 2019 | 7\. Oktober 2019 |  
 |~~WA-GUEST-OS-5.32_201906-01~~|8\. Juli 2019 |4\. August 2019 |
 |~~WA-GUEST-OS-5.31_201905-01~~ |6\. Juni 2019 |26. Juli 2019 |
 |~~WA-GUEST-OS-5.30_201904-01~~ |7\. Mai 2019 |8\. Juli 2019 |
@@ -144,11 +220,26 @@ Installierte .NET Framework-Versionen: 3.5, 4.6
 
 Installierte .NET Framework-Versionen: 3.5, 4.5.1, 4.5.2
 
-| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
+| Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-4.69_201908-01 |  4\. August 2019  |  Post 4.71  |  
-| WA-GUEST-OS-4.68_201907-01 | 26. Juli 2019  |Post 4.70 |
-|~~WA-GUEST-OS-4.67_201906-01~~|8\. Juli 2019 |4\. August 2019 |
+|  WA-GUEST-OS-4.84_202011-01  |  19. Dezember 2020  |  Nach 4.86  | 
+|  WA-GUEST-OS-4.83_202010-02  |  17. November 2020  |  Nach 4.85  | 
+|~~WA-GUEST-OS-4.82_202009-01~~|  10. Oktober 2020  |  19. Dezember 2020  | 
+|~~WA-GUEST-OS-4.81_202008-02~~|  5\. September 2020  |  17. November 2020  | 
+|~~WA-GUEST-OS-4.80_202007-01~~|  17. August 2020  |  10. Oktober 2020  | 
+|~~WA-GUEST-OS-4.79_202006-02~~|  10. August 2020  |  5\. September 2020  | 
+|~~WA-GUEST-OS-4.78_202005-02~~|  2\. Juni 2020  |  17. August 2020  |  
+|~~WA-GUEST-OS-4.77_202004-01~~|  4\. Mai 2020  |  10. August 2020  |  
+|~~WA-GUEST-OS-4.76_202003-01~~|  2\. April 2020  |  2\. Juni 2020  |  
+|~~WA-GUEST-OS-4.75_202002-01~~|  5\. März 2020  |  4\. Mai 2020  |  
+|~~WA-GUEST-OS-4.74_202001-01~~|  24. Januar 2020  |  2\. April 2020  |  
+|~~WA-GUEST-OS-4.73_201912-01~~| 8\. Januar 2020 | 5\. März 2020 |  
+|~~WA-GUEST-OS-4.72_201911-01~~| 5\. Dezember 2019 | 24. Januar 2020 |  
+|~~WA-GUEST-OS-4.71_201910-01~~| 1\. November 2019 | 8\. Januar 2020 |  
+|~~WA-GUEST-OS-4.70_201909-01~~| 7\. Oktober 2019 | 5\. Dezember 2019 |  
+|~~WA-GUEST-OS-4.69_201908-01~~| 4\. August 2019 | 1\. November 2019 |  
+|~~WA-GUEST-OS-4.68_201907-01~~| 26. Juli 2019  | 7\. Oktober 2019 |
+|~~WA-GUEST-OS-4.67_201906-01~~| 8\. Juli 2019 |4\. August 2019 |
 |~~WA-GUEST-OS-4.66_201905-01~~ |6\. Juni 2019 |26. Juli 2019 |
 |~~WA-GUEST-OS-4.65_201904-01~~ |7\. Mai 2019 |8\. Juli 2019 |
 |~~WA-GUEST-OS-4.64_201903-01~~ |26. März 2019 |6\. Juni 2019 |
@@ -164,11 +255,26 @@ Installierte .NET Framework-Versionen: 3.5, 4.5.1, 4.5.2
 
 Installierte .NET Framework-Versionen: 3.5, 4.5
 
-| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
+| Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-3.76_201908-01 |  4\. August 2019  |  Post 3.78  |  
-| WA-GUEST-OS-3.75_201907-01 | 26. Juli 2019 |Post 3.77 |
-|~~WA-GUEST-OS-3.74_201906-01~~|8\. Juli 2019 |4\. August 2019 |
+|  WA-GUEST-OS-3.91_202011-01  |  19. Dezember 2020  |  Nach 3.93  |  
+|  WA-GUEST-OS-3.90_202010-02  |  17. November 2020  |  Nach 3.92  |  
+|~~WA-GUEST-OS-3.89_202009-01~~|  10. Oktober 2020  |  19. Dezember 2020  |  
+|~~WA-GUEST-OS-3.88_202008-02~~|  5\. September 2020  |  17. November 2020  |  
+|~~WA-GUEST-OS-3.87_202007-01~~|  17. August 2020  |  10. Oktober 2020  |  
+|~~WA-GUEST-OS-3.86_202006-02~~|  10. August 2020  |  5\. September 2020  |  
+|~~WA-GUEST-OS-3.85_202005-02~~|  2\. Juni 2020  |  17. August 2020  |  
+|~~WA-GUEST-OS-3.84_202004-01~~|  4\. Mai 2020  |  10. August 2020  |  
+|~~WA-GUEST-OS-3.83_202003-01~~|  2\. April 2020  |  2\. Juni 2020  |  
+|~~WA-GUEST-OS-3.82_202002-01~~|  5\. März 2020  |  4\. Mai 2020  |  
+|~~WA-GUEST-OS-3.81_202001-01~~|  24. Januar 2020  |  2\. April 2020  |  
+|~~WA-GUEST-OS-3.80_201912-01~~| 8\. Januar 2020 | 5\. März 2020 |  
+|~~WA-GUEST-OS-3.79_201911-01~~| 5\. Dezember 2019 | 24. Januar 2020 |  
+|~~WA-GUEST-OS-3.78_201910-01~~| 1\. November 2019 | 8\. Januar 2020 |  
+|~~WA-GUEST-OS-3.77_201909-01~~| 7\. Oktober 2019 | 5\. Dezember 2019 |  
+|~~WA-GUEST-OS-3.76_201908-01~~|  4\. August 2019  |  1\. November 2019  |  
+|~~WA-GUEST-OS-3.75_201907-01~~| 26. Juli 2019 | 7\. Oktober 2019 |
+|~~WA-GUEST-OS-3.74_201906-01~~| 8\. Juli 2019 |4\. August 2019 |
 |~~WA-GUEST-OS-3.73_201905-01~~ |6\. Juni 2019 |26. Juli 2019 |
 |~~WA-GUEST-OS-3.72_201904-01~~ |7\. Mai 2019 |8\. Juli 2019 |
 |~~WA-GUEST-OS-3.71_201903-01~~ |26. März 2019 |6\. Juni 2019 |
@@ -184,11 +290,26 @@ Installierte .NET Framework-Versionen: 3.5, 4.5
 
 Installierte .NET Framework-Versionen: 3.5 (einschließlich 2.0 und 3.0), 4.5
 
-| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
+| Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-2.89_201908-01 |  4\. August 2019  |  Post 2.91  |  
-| WA-GUEST-OS-2.88_201907-01 | 26. Juli 2019 |Post 2.90 |
-|~~WA-GUEST-OS-2.87_201906-01~~|8\. Juli 2019 |4\. August 2019 |
+|  WA-GUEST-OS-2.104_202011-01  |  19. Dezember 2020  |  Nach 2.106  |  
+|  WA-GUEST-OS-2.103_202010-02  |  17. November 2020  |  Nach 2.105  |  
+|~~WA-GUEST-OS-2.102_202009-01~~|  10. Oktober 2020  |  19. Dezember 2020  |  
+|~~WA-GUEST-OS-2.101_202008-02~~|  5\. September 2020  |  17. November 2020 |    
+|~~WA-GUEST-OS-2.100_202007-01~~|  17. August 2020  |  10. Oktober 2020  |  
+|~~WA-GUEST-OS-2.99_202006-02~~|  10. August 2020  | 5\. September 2020  |  
+|~~WA-GUEST-OS-2.98_202005-02~~|  2\. Juni 2020  |  17. August 2020  |  
+|~~WA-GUEST-OS-2.97_202004-01~~|  4\. Mai 2020  |  10. August 2020  |  
+|~~WA-GUEST-OS-2.96_202003-01~~|  2\. April 2020  |  2\. Juni 2020  |  
+|~~WA-GUEST-OS-2.95_202002-01~~|  5\. März 2020  |  4\. Mai 2020  |  
+|~~WA-GUEST-OS-2.94_202001-01~~|  24. Januar 2020  |  2\. April 2020  |  
+|~~WA-GUEST-OS-2.93_201912-01~~| 8\. Januar 2020 | 5\. März 2020 |  
+|~~WA-GUEST-OS-2.92_201911-01~~| 5\. Dezember 2019 | 24. Januar 2020 |  
+|~~WA-GUEST-OS-2.91_201910-01~~| 1\. November 2019 | 8\. Januar 2020 |  
+|~~WA-GUEST-OS-2.90_201909-01~~| 7\. Oktober 2019 | 5\. Dezember 2019 |  
+|~~WA-GUEST-OS-2.89_201908-01~~| 4\. August 2019 | 1\. November 2019 |  
+|~~WA-GUEST-OS-2.88_201907-01~~| 26. Juli 2019 | 7\. Oktober 2019 |
+|~~WA-GUEST-OS-2.87_201906-01~~|8\. Juli 2019 | 4\. August 2019 |
 |~~WA-GUEST-OS-2.86_201905-01~~ |6\. Juni 2019 |26. Juli 2019 |
 |~~WA-GUEST-OS-2.85_201904-01~~ |7\. Mai 2019 |8\. Juli 2019 |
 |~~WA-GUEST-OS-2.84_201903-01~~ |26. März 2019 |6\. Juni 2019 |
@@ -255,25 +376,26 @@ Wenn Sie Ihr Gastbetriebssystem manuell aktualisieren, finden Sie weitere Inform
 ## <a name="guest-os-supportability-and-retirement-policy"></a>Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme
 Die Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme wird [hier][retirepolicy] erläutert.
 
-[cloud updates]: https://docs.microsoft.com/azure/cloud-services/cloud-services-update-azure-service
+[cloud updates]: ./cloud-services-update-azure-service.md
 [RSS-Feed zu Gastbetriebssystemupdates]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
-[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
+[Install .NET on a Cloud Service Role]: ./cloud-services-dotnet-install-dotnet.md?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure-portal.md
 [ssl3 announcement]: https://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
-[Microsoft Security Advisory 3009008]: https://technet.microsoft.com/library/security/3009008.aspx
+[Microsoft Security Advisory 3009008]: /security-updates/SecurityAdvisories/2015/3009008
 [ssl3-fixit]: https://go.microsoft.com/?linkid=9863266
-[MS14-066]: https://technet.microsoft.com/library/security/ms14-066.aspx
-[MS14-046]: https://technet.microsoft.com/library/security/ms14-046.aspx
-[retire policy sdk]: https://msdn.microsoft.com/library/dn479282.aspx
+[MS14-066]: /security-updates/SecurityBulletins/2014/ms14-066
+[MS14-046]: /security-updates/SecurityBulletins/2014/ms14-046
+[retire policy sdk]: /previous-versions/azure/reference/dn479282(v=azure.100)
 [server and gos]: https://msdn.microsoft.com/library/dn775043.aspx
 [azuresupport]: https://azure.microsoft.com/support/options/
 [net install pkg]: https://www.microsoft.com/download/details.aspx?id=42643
 [msrc]: https://technet.microsoft.com/security/dn440717.aspx
 [update guest os portal]: https://msdn.microsoft.com/library/gg433101.aspx
 [update guest os svc]: https://msdn.microsoft.com/library/gg456324.aspx
-[restarts]: https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx
+[restarts]: /archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
-[fix]: https://technet.microsoft.com/library/security/ms17-010.aspx
+[fix]: /security-updates/SecurityBulletins/2017/ms17-010
 [Windows Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917
+[Weitere Informationen]: ./applications-dont-support-tls-1-2.md

@@ -2,33 +2,28 @@
 title: 'Tutorial: Konfigurieren von Cornerstone OnDemand für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Cornerstone OnDemand konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8170fc094f1515783fa51a0d579bc12094aab836
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 59c599167089d222324ed880c18e68d763f5e468
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672937"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358455"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cornerstone OnDemand für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die Sie in Cornerstone OnDemand und Azure Active Directory (Azure AD) ausführen müssen, um Azure AD zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern oder Gruppen in Cornerstone OnDemand zu konfigurieren.
 
 > [!NOTE]
-> Das Tutorial enthält die Beschreibung eines Connectors, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Informationen zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen (Software as a Service) mit Azure Active Directory](../manage-apps/user-provisioning.md).
+> Das Tutorial enthält die Beschreibung eines Connectors, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Informationen zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen (Software as a Service) mit Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,7 +34,7 @@ Das in diesem Tutorial beschriebene Szenario setzt voraus, dass Sie über folgen
 * Ein Benutzerkonto in Cornerstone OnDemand mit Administratorrechten.
 
 > [!NOTE]
-> Die Azure AD-Bereitstellungsintegration basiert auf dem [Cornerstone OnDemand-Webdienst](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf). Dieser Dienst ist für Cornerstone OnDemand-Teams verfügbar.
+> Die Azure AD-Bereitstellungsintegration basiert auf dem [Cornerstone OnDemand-Webdienst](https://www.cornerstoneondemand.com/). Dieser Dienst ist für Cornerstone OnDemand-Teams verfügbar.
 
 ## <a name="add-cornerstone-ondemand-from-the-azure-marketplace"></a>Hinzufügen von Cornerstone OnDemand aus dem Azure Marketplace
 
@@ -51,7 +46,7 @@ Führen Sie zum Hinzufügen von Cornerstone OnDemand aus dem Azure Marketplace d
 
     ![Azure Active Directory-Symbol](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -65,7 +60,7 @@ Führen Sie zum Hinzufügen von Cornerstone OnDemand aus dem Azure Marketplace d
 
 ## <a name="assign-users-to-cornerstone-ondemand"></a>Zuweisen von Benutzern zu Cornerstone OnDemand
 
-Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Zusammenhang mit der automatischen Benutzerbereitstellung werden nur die Benutzer oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Zusammenhang mit der automatischen Benutzerbereitstellung werden nur die Benutzer oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Entscheiden Sie vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung, welche Benutzer oder Gruppen in Azure AD Zugriff auf Cornerstone OnDemand benötigen. Zum Zuweisen dieser Benutzer oder Gruppen zu Cornerstone OnDemand befolgen Sie die Anleitung unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md).
 
@@ -123,7 +118,7 @@ Zum Konfigurieren der automatischen Benutzerbereitstellung für Cornerstone OnDe
 
     ![Cornerstone OnDemand-Attributzuordnungen](./media/cornerstone-ondemand-provisioning-tutorial/UserMappingAttributes.png)
 
-11. Wenn Sie Bereichsfilter konfigurieren möchten, befolgen Sie die Anleitung unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+11. Wenn Sie Bereichsfilter konfigurieren möchten, befolgen Sie die Anleitung unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 12. Um den Azure AD-Bereitstellungsdienst für Cornerstone OnDemand zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
@@ -141,7 +136,7 @@ Dadurch wird die Erstsynchronisierung aller Benutzer oder Gruppen gestartet, die
 
 Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und über Links zum Bereitstellungsaktivitätsbericht navigieren. Der Bericht beschreibt alle vom Azure AD-Bereitstellungsdienst in Cornerstone OnDemand ausgeführten Aktionen.
 
-Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 
@@ -155,12 +150,12 @@ Das Cornerstone OnDemand-Attribut **Position** erwartet einen Wert, der den Roll
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/cornerstone-ondemand-provisioning-tutorial/tutorial_general_01.png

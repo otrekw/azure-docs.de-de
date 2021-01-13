@@ -1,5 +1,6 @@
 ---
-title: Verwalten des Ablaufs von Azure Blob Storage im Azure Content Delivery Network | Microsoft-Dokumentation
+title: Verwalten des Ablaufs von Azure Blob-Speicher
+titleSuffix: Azure Content Delivery Network
 description: Informationen zu den Optionen für das Festlegen der Gültigkeitsdauer von Blobs beim Azure CDN-Zwischenspeichern.
 services: cdn
 documentationcenter: ''
@@ -11,15 +12,15 @@ ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: edeb2a798031e34a8ee3f93fd104ebb221ce9c61
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 206ff6f888229356743bebb816cf03e4f7a7504b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593759"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778706"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Verwalten des Ablaufs von Azure Blob-Speicher in Azure CDN
 > [!div class="op_single_selector"]
@@ -37,14 +38,14 @@ Sie können die Cacheeinstellungen auch über das Azure-Portal steuern, indem Si
 > 
 > Weitere Informationen dazu, wie Azure CDN den Zugriff auf Blobs und andere Dateien beschleunigen kann, finden Sie in der [Übersicht über Azure Content Delivery Network](cdn-overview.md).
 > 
-> Weitere Informationen zu Azure Blob Storage finden Sie unter [Einführung in Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction).
+> Weitere Informationen zu Azure Blob Storage finden Sie unter [Einführung in Blob Storage](../storage/blobs/storage-blobs-introduction.md).
  
 
 ## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>Festlegen von Cache-Control-Headern mithilfe von CDN-Cacheregeln
 Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Blob ist die Verwendung von Cacheregeln im Azure-Portal. Weitere Informationen zu CDN-Cacheregeln finden Sie unter [Steuern des Verhaltens beim Zwischenspeichern im Azure Content Delivery Network mit Cacheregeln](cdn-caching-rules.md).
 
 > [!NOTE] 
-> Cacheregeln sind nur für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** verfügbar. Für Profile vom Typ **Azure CDN Premium von Verizon**  müssen Sie die [Azure CDN-Regel-Engine](cdn-rules-engine.md) im **Verwaltungsportal** verwenden, um von einer ähnlichen Funktionalität zu profitieren.
+> Cacheregeln sind nur für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** verfügbar. Für Profile vom Typ **Azure CDN Premium von Verizon**  müssen Sie die [Azure CDN-Regel-Engine](./cdn-verizon-premium-rules-engine.md) im **Verwaltungsportal** verwenden, um von einer ähnlichen Funktionalität zu profitieren.
 
 **So navigieren Sie zur Seite mit den CDN-Cacheregeln**
 
@@ -75,9 +76,9 @@ Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Blo
 
 1. Erstellen Sie unter **Benutzerdefinierte Cacheregeln** zwei Übereinstimmungsbedingungen:
 
-     A. Legen Sie die erste **Übereinstimmungsbedingung** auf **Pfad** fest, und geben Sie für den **Übereinstimmungswert** `/blobcontainer1/*` ein. Legen Sie das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest, und geben Sie im Feld **Stunden** den Wert 4 ein.
+     A. Legen Sie die erste **Übereinstimmungsbedingung** auf **Pfad** fest, und geben Sie für den **Übereinstimmungswert**`/blobcontainer1/*` ein. Legen Sie das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest, und geben Sie im Feld **Stunden** den Wert 4 ein.
 
-    B: Legen Sie die erste **Übereinstimmungsbedingung** auf **Pfad** fest, und geben Sie für den **Übereinstimmungswert** `/blobcontainer1/blob1.txt` ein. Legen Sie das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest, und geben Sie im Feld **Stunden** den Wert 2 ein.
+    B. Legen Sie die erste **Übereinstimmungsbedingung** auf **Pfad** fest, und geben Sie für den **Übereinstimmungswert**`/blobcontainer1/blob1.txt` ein. Legen Sie das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest, und geben Sie im Feld **Stunden** den Wert 2 ein.
 
     ![Beispiel für benutzerdefinierte CDN-Cacheregeln](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
 
@@ -90,7 +91,7 @@ Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Blo
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/overview) ist eine der schnellsten und leistungsstärksten Möglichkeiten zum Verwalten Ihrer Azure-Dienste. Verwenden Sie das `Get-AzStorageBlob`-Cmdlet zum Abrufen eines Verweises auf das Blob, und legen Sie dann die Eigenschaft `.ICloudBlob.Properties.CacheControl` fest. 
+[Azure PowerShell](/powershell/azure/) ist eine der schnellsten und leistungsstärksten Möglichkeiten zum Verwalten Ihrer Azure-Dienste. Verwenden Sie das `Get-AzStorageBlob`-Cmdlet zum Abrufen eines Verweises auf das Blob, und legen Sie dann die Eigenschaft `.ICloudBlob.Properties.CacheControl` fest. 
 
 Beispiel:
 
@@ -114,7 +115,7 @@ $blob.ICloudBlob.SetProperties()
 >
 
 ## <a name="setting-cache-control-headers-by-using-net"></a>Festlegen von Cache-Control-Headern unter Verwendung von .NET
-Um den `Cache-Control`-Header für ein Blob unter Verwendung von .NET-Code anzugeben, verwenden Sie die [Azure Storage-Clientbibliothek für .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) zum Festlegen der Eigenschaft [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol).
+Um den `Cache-Control`-Header für ein Blob unter Verwendung von .NET-Code anzugeben, verwenden Sie die [Azure Storage-Clientbibliothek für .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md) zum Festlegen der Eigenschaft [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol).
 
 Beispiel:
 
@@ -152,18 +153,18 @@ class Program
 ## <a name="setting-cache-control-headers-by-using-other-methods"></a>Festlegen von Cache-Control-Headern mithilfe anderer Methoden
 
 ### <a name="azure-storage-explorer"></a>Azure Storage-Explorer
-Mit dem [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) können Sie Ihre Blob Storage-Ressourcen anzeigen und bearbeiten, darunter beispielsweise Eigenschaften wie *CacheControl*. 
+Mit dem [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) können Sie Ihre Blob Storage-Ressourcen anzeigen und bearbeiten, darunter beispielsweise Eigenschaften wie *CacheControl* . 
 
-So aktualisieren Sie die *CacheControl*-Eigenschaft eines Blobs mit dem Azure Storage-Explorer:
-   1. Wählen Sie ein Blob aus, und klicken Sie dann im Kontextmenü auf **Eigenschaften**. 
-   2. Scrollen Sie nach unten zur *CacheControl*-Eigenschaft.
+So aktualisieren Sie die *CacheControl* -Eigenschaft eines Blobs mit dem Azure Storage-Explorer:
+   1. Wählen Sie ein Blob aus, und klicken Sie dann im Kontextmenü auf **Eigenschaften** . 
+   2. Scrollen Sie nach unten zur *CacheControl* -Eigenschaft.
    3. Geben Sie einen Wert ein, und wählen Sie **Speichern** aus.
 
 
 ![Eigenschaften des Azure Storage-Explorers](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Azure-Befehlszeilenschnittstelle
-Mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure) (CLI) können Sie Azure-Blobressourcen über die Befehlszeile verwalten. Legen Sie zum Festlegen des Cache-Control-Headers beim Hochladen eines Blobs mit der Azure-Befehlszeilenschnittstelle die Eigenschaft *cacheControl* mit dem `-p`-Switch fest. Im folgenden Beispiel wird gezeigt, wie die Gültigkeitsdauer auf eine Stunde (3.600 Sekunden) festgelegt wird:
+Mithilfe der [Azure-Befehlszeilenschnittstelle](/cli/azure) (CLI) können Sie Azure-Blobressourcen über die Befehlszeile verwalten. Legen Sie zum Festlegen des Cache-Control-Headers beim Hochladen eines Blobs mit der Azure-Befehlszeilenschnittstelle die Eigenschaft *cacheControl* mit dem `-p`-Switch fest. Im folgenden Beispiel wird gezeigt, wie die Gültigkeitsdauer auf eine Stunde (3.600 Sekunden) festgelegt wird:
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\<blob name> <container name> <blob name>
@@ -182,4 +183,3 @@ Sie können die Einstellungen der Gültigkeitsdauer Ihrer Blobs einfach überpr�
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erfahren Sie, wie Sie den Ablauf von Clouddienstinhalten in Azure CDN verwalten können.](cdn-manage-expiration-of-cloud-service-content.md)
 * [Informationen zu Cachekonzepten](cdn-how-caching-works.md)
-

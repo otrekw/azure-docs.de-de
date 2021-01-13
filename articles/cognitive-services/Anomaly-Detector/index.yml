@@ -8,18 +8,17 @@ metadata:
   services: cognitive-services
   author: aahill
   manager: nitinme
-  layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: anomaly-detector
   ms.topic: landing-page
   ms.date: 09/10/2019
   ms.author: aahi
-  ms.openlocfilehash: d073adfbc1b05bbd4d92f5cfb500184653444f4b
-  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+  ms.openlocfilehash: 7e0fe85007aae69bf79557e0f094e275f538d280
+  ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/18/2019
-  ms.locfileid: "71086785"
+  ms.lasthandoff: 12/18/2020
+  ms.locfileid: "97683444"
 landingContent:
 - title: Informationen zur Anomalieerkennungs-API
   linkLists:
@@ -39,22 +38,28 @@ landingContent:
       url: https://www.youtube.com/embed/ERTaAnwCarM
   - linkListType: reference
     links:
-    - text: In der Anomalieerkennung verwendete Algorithmen (Whitepaper)
+    - text: Einführung in die API für die Azure-Anomalieerkennung
+      url: https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162
+    - text: Übersicht über den SR-CNN-Algorithmus
+      url: https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798
+    - text: In der Anomalieerkennung verwendete Algorithmen (KDD-Artikel)
       url: https://arxiv.org/abs/1906.03821
 - title: Erkennen von Anomalien in Ihren Daten
   linkLists:
   - linkListType: quickstart
     links:
     - text: Verwenden von C#
-      url: quickstarts/detect-data-anomalies-csharp-sdk.md
+      url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: Verwenden von JavaScript
+      url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-javascript
     - text: Verwenden von Python
-      url: quickstarts/detect-data-anomalies-python-sdk.md
+      url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-python
   - linkListType: tutorial
     links:
     - text: Visualisieren von Anomalien mithilfe von Batcherkennung und Power BI
       url: tutorials/batch-anomaly-detection-powerbi.md
     - text: Erkennen von Anomalien in Streamingdaten mit Azure Databricks
-      url: tutorials/batch-anomaly-detection-powerbi.md
+      url: tutorials/anomaly-detection-streaming-databricks.md
   - linkListType: video
     links:
     - text: Anomalieerkennung für Streamingdaten mit Azure Databricks
@@ -81,6 +86,8 @@ landingContent:
       url: anomaly-detector-container-configuration.md
     - text: Bereitstellen einer Containerinstanz in Azure
       url: how-to/deploy-anomaly-detection-on-container-instances.md
+    - text: Bereitstellen für IoT Edge
+      url: how-to/deploy-anomaly-detection-on-iot-edge.md
   - linkListType: video
     links:
     - text: Implementieren der Anomalieerkennung in der lokalen Umgebung mit Containerunterstützung
@@ -93,6 +100,12 @@ landingContent:
       url: https://aka.ms/adadvisorsjoin
     - text: Ausgewählter benutzergenerierter Inhalt
       url: user-generated-content.md
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
 - title: Verweis
   linkLists:
   - linkListType: reference
@@ -108,6 +121,6 @@ landingContent:
     - text: Node.js SDK
       url: https://go.microsoft.com/fwlink/?linkid=2090788
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
-    - text: Azure-Befehlszeilenschnittstelle
+      url: /powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure CLI
       url: /cli/azure/cognitiveservices#az-cognitiveservices-list

@@ -1,19 +1,19 @@
 ---
-title: 'Azure VMware-Lösung von CloudSimple: Konfigurieren eines VPN zwischen der lokalen Umgebung und der privaten Cloud'
+title: 'Azure VMware Solution by CloudSimple: Konfigurieren eines VPN zwischen der lokalen Umgebung und der privaten Cloud'
 description: Beschreibt, wie ein Site-to-Site- oder Point-to-Site-VPN-Gateway zwischen Ihrem lokalen Netzwerk und Ihrer privaten CloudSimple-Cloud konfiguriert wird.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b7a119b538ee07b961011bfa98d748f92cc76f0e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972375"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899217"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>Konfigurieren einer VPN-Verbindung mit ihrer privaten CloudSimple-Cloud
 
@@ -30,7 +30,7 @@ In einer Region können Sie ein Site-to-Site-VPN-Gateway und ein Point-to-Site-V
 
 Informationen zum Erstellen eines Point-to-Site-VPN-Gateways finden Sie unter [Erstellen eines Point-to-Site-VPN-Gateways](vpn-gateway.md#create-point-to-site-vpn-gateway).
 
-### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Herstellen einer Verbindung mit CloudSimple über ein Point-to-Site-VPN
+### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Herstellen einer Verbindung mit CloudSimple über Point-to-Site-VPN
 
 Es ist ein VPN-Client erforderlich, um von Ihrem Computer eine Verbindung mit CloudSimple herstellen zu können.  Laden Sie den [OpenVPN-Client](https://openvpn.net/community-downloads/) für Windows oder [Viscosity](https://www.sparklabs.com/viscosity/download/) für Mac OS und OS X herunter.
 
@@ -63,7 +63,7 @@ Das Beispiel unten zeigt das Importieren einer Verbindung mit dem **Viscosity-Cl
 
 4. Wählen Sie die OpenVPN-Konfigurationsdatei (OVPN-Datei) für das Protokoll aus, das Sie verwenden möchten, und klicken Sie auf **Open** (Öffnen).
 
-    ![VPN](media/import-p2s-vpn-config-choose-ovpn.png)
+    ![Screenshot, auf dem die OpenVPN-Konfigurationsdateien hervorgehoben sind, die Sie auswählen können](media/import-p2s-vpn-config-choose-ovpn.png)
 
 Die Verbindung wird jetzt im Menü „Viscosity“ angezeigt.
 
@@ -71,7 +71,7 @@ Die Verbindung wird jetzt im Menü „Viscosity“ angezeigt.
 
 Wählen Sie zum Herstellen einer Verbindung mit dem VPN mit dem Viscosity OpenVPN-Client die Verbindung im Menü aus. Das Menüsymbol wird aktualisiert, um anzugeben, dass die Verbindung hergestellt wurde.
 
-![VPN](media/vis03.png)
+![Screenshot: CloudSimple-VPN-Konnektivitätsstatus](media/vis03.png)
 
 ### <a name="connecting-to-multiple-private-clouds"></a>Herstellen einer Verbindung mit mehreren privaten Clouds
 

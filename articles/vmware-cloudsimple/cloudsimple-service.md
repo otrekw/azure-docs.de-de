@@ -1,23 +1,23 @@
 ---
-title: 'Azure VMware-Lösung von CloudSimple: Dienst'
-description: Bietet eine Übersicht über den CloudSimple-Dienst und die zugehörigen Konzepte.
-author: sharaths-cs
-ms.author: b-shsury
+title: 'Azure VMware Solution by CloudSimple: Dienst'
+description: Hier erfahren Sie mehr über den CloudSimple-Dienst. Nach Erstellung des Diensts können Sie Knoten erwerben, Knoten reservieren und private Clouds erstellen.
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d128a248c2e6e1e2e35e3b633975ba081e77f028
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8f32197eda4fc7632e883fd21dd6e1caa0dbd24b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877655"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898741"
 ---
 # <a name="cloudsimple-service-overview"></a>Übersicht über den CloudSimple-Dienst
 
-Der CloudSimple-Dienst ermöglicht es Ihnen, die Azure-VMware-Lösung von CloudSimple zu nutzen.  Nach Erstellung des Diensts können Sie Knoten erwerben, Knoten reservieren und private Clouds erstellen.  Sie erstellen den CloudSimple-Dienst in jeder Azure-Region, in der der CloudSimple-Dienst verfügbar ist. Der Dienst definiert das Umkreisnetzwerk der Azure-VMware-Lösung von CloudSimple. Dieses Umkreisnetzwerk unterstützt unter anderem Dienste wie VPN, ExpressRoute und Internetkonnektivität mit Ihren privaten Clouds.
+Der CloudSimple-Dienst ermöglicht es Ihnen, Azure VMware Solution by CloudSimple zu nutzen.  Nach Erstellung des Diensts können Sie Knoten erwerben, Knoten reservieren und private Clouds erstellen.  Sie erstellen den CloudSimple-Dienst in jeder Azure-Region, in der der CloudSimple-Dienst verfügbar ist. Der Dienst definiert das Umkreisnetzwerk von Azure VMware Solution by CloudSimple. Dieses Umkreisnetzwerk unterstützt unter anderem Dienste wie VPN, ExpressRoute und Internetkonnektivität mit Ihren privaten Clouds.
 
 ## <a name="gateway-subnet"></a>Gatewaysubnetz
 

@@ -1,24 +1,23 @@
 ---
-title: Verschieben von Daten – Datenverwaltungsgateway | Microsoft-Dokumenation
+title: Verschieben von Daten – Datenverwaltungsgateway
 description: Richten Sie ein Datengateway ein, um Daten zwischen dem lokalen Speicher und der Cloud zu verschieben. Verwenden Sie das Datenverwaltungsgateway in Azure Data Factory zum Verschieben Ihrer Daten.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 4eb881992b7e40e0a9d67bd2cee94f1f09958e9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825989"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019683"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
 > [!NOTE]
@@ -30,15 +29,15 @@ Dieser Artikel enthält eine Übersicht über die Datenintegration zwischen loka
 Sie müssen das Datenverwaltungsgateway auf dem lokalen Computer installieren, um das Verschieben von Daten in einen bzw. aus einem lokalen Datenspeicher zu ermöglichen. Das Gateway kann auf dem gleichen Computer wie der Datenspeicher oder auf einem anderen Computer installiert werden, solange das Gateway eine Verbindung mit dem Datenspeicher herstellen kann.
 
 > [!IMPORTANT]
-> Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie Einzelheiten zum Datenverwaltungsgateway. 
+> Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie Einzelheiten zum Datenverwaltungsgateway.
 
 In der folgenden exemplarischen Vorgehensweise wird gezeigt, wie Sie eine Data Factory mit einer Pipeline erstellen, die Daten aus einer lokalen **SQL Server**-Datenbank in eine Azure Blob Storage-Instanz verschiebt. Im Rahmen der exemplarischen Vorgehensweise installieren und konfigurieren Sie das Datenverwaltungsgateway auf Ihrem Computer.
 
 ## <a name="walkthrough-copy-on-premises-data-to-cloud"></a>Exemplarische Vorgehensweise: Kopieren lokaler Daten in die Cloud
-In dieser exemplarischen Vorgehensweise führen Sie die folgenden Schritte aus: 
+In dieser exemplarischen Vorgehensweise führen Sie die folgenden Schritte aus:
 
 1. Erstellen einer Data Factory.
-2. Erstellen eines Datenverwaltungsgateways 
+2. Erstellen eines Datenverwaltungsgateways
 3. Erstellen eines verknüpften Dienstes für Quell- und Senkendatenspeicher
 4. Erstellen von Datasets zur Darstellung von Eingabe- und Ausgabedaten
 5. Erstellen einer Pipeline mit Kopieraktivität zum Verschieben der Daten
@@ -47,8 +46,8 @@ In dieser exemplarischen Vorgehensweise führen Sie die folgenden Schritte aus:
 Bevor Sie mit dieser exemplarischen Vorgehensweise beginnen, müssen folgende Voraussetzungen erfüllt sein:
 
 * **Azure-Abonnement**.  Wenn Sie über kein Abonnement verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Im Artikel [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) finden Sie Details.
-* **Azure Storage-Konto**. In diesem Tutorial verwenden Sie den Blobspeicher als **Ziel-/Senkendatenspeicher**. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md) Schritte zum Erstellen eines Azure Storage-Kontos.
-* **SQL Server**. In diesem Tutorial verwenden Sie eine lokale SQL Server-Datenbank als **Quelldatenspeicher**. 
+* **Azure Storage-Konto**. In diesem Tutorial verwenden Sie den Blobspeicher als **Ziel-/Senkendatenspeicher**. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md) Schritte zum Erstellen eines Azure Storage-Kontos.
+* **SQL Server**. In diesem Tutorial verwenden Sie eine SQL Server-Datenbank als **Quelldatenspeicher**.
 
 ## <a name="create-data-factory"></a>Erstellen einer Data Factory
 In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data Factory-Instanz mit dem Namen **ADFTutorialOnPremDF**.
@@ -62,7 +61,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
     ![Zum Startmenü hinzufügen](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
    > [!IMPORTANT]
-   > Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der folgenden Fehlermeldung: **Data factory name ADFTutorialOnPremDF is not available**. Ändern Sie den Namen der Data Factory (z.B.in „IhrNameADFTutorialOnPremDF“), und wiederholen den Vorgang. Verwenden Sie diesen Namen beim Ausführen der restlichen Schritte in diesem Lernprogramm anstelle von "ADFTutorialOnPremDF".
+   > Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data factory name ADFTutorialOnPremDF is not available**. Ändern Sie den Namen der Data Factory (z.B.in „IhrNameADFTutorialOnPremDF“), und wiederholen den Vorgang. Verwenden Sie diesen Namen beim Ausführen der restlichen Schritte in diesem Lernprogramm anstelle von "ADFTutorialOnPremDF".
    >
    > Der Name der Data Factory kann in Zukunft als **DNS**-Name registriert und so öffentlich sichtbar gemacht werden.
    >
@@ -91,7 +90,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
     ![Seite „Gateway erstellen“](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
 
     > [!NOTE]
-    > In dieser exemplarischen Vorgehensweise erstellen Sie ein logisches Gateway mit nur einem Knoten (lokaler Windows-Computer). Sie können ein Datenverwaltungsgateway horizontal hochskalieren, indem Sie ihm mehrere lokale Computer zuordnen. Sie können zentral hochskalieren, indem Sie die Anzahl von Datenverschiebungsaufträgen erhöhen, die auf einem Knoten gleichzeitig ausgeführt werden können. Diese Funktion ist auch für ein logisches Gateway mit einem einzelnen Knoten verfügbar. Ausführliche Informationen hierzu finden Sie im Artikel [Skalieren des Datenverwaltungsgateways in Azure Data Factory](data-factory-data-management-gateway-high-availability-scalability.md).  
+    > In dieser exemplarischen Vorgehensweise erstellen Sie ein logisches Gateway mit nur einem Knoten (lokaler Windows-Computer). Sie können ein Datenverwaltungsgateway aufskalieren, indem Sie ihm mehrere lokale Computer zuordnen. Sie können hochskalieren, indem Sie die Anzahl von Datenverschiebungsaufträgen erhöhen, die auf einem Knoten gleichzeitig ausgeführt werden können. Diese Funktion ist auch für ein logisches Gateway mit einem einzelnen Knoten verfügbar. Ausführliche Informationen hierzu finden Sie im Artikel [Data Management Gateway – high availability and scalability (Preview)](data-factory-data-management-gateway-high-availability-scalability.md) (Datenverwaltungsgateway – Hohe Verfügbarkeit und Skalierbarkeit (Vorschauversion)).  
 4. Klicken Sie auf der Seite **Konfigurieren** auf **Direkt auf diesem Computer installieren**. Diese Aktion lädt das Installationspaket für das Gateway herunter und installiert, konfiguriert und registriert das Gateway auf dem Computer.  
 
    > [!NOTE]
@@ -153,9 +152,9 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
 12. In der Strukturansicht links sollte **adftutorialgateway** unter **Datengateways** angezeigt werden.  Wenn Sie darauf klicken, sollte die zugehörige JSON angezeigt werden.
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
-In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedService** und **SqlServerLinkedService**. Der **SqlServerLinkedService** verknüpft eine lokale SQL Server-Datenbank und der verknüpfte Dienst **AzureStorageLinkedService** einen Azure-Blobspeicher mit der Data Factory. Sie erstellen eine Pipeline weiter unten in dieser exemplarischen Vorgehensweise, die Daten aus der lokalen SQL Server-Datenbank in den Azure-Blobspeicher kopiert.
+In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedService** und **SqlServerLinkedService**. **SqlServerLinkedService** verknüpft eine SQL Server-Datenbank und der verknüpfte Dienst **AzureStorageLinkedService** einen Azure-Blobspeicher mit der Data Factory. Sie erstellen weiter unten in dieser exemplarischen Vorgehensweise eine Pipeline, die Daten aus der SQL Server-Datenbank in Azure Blob Storage kopiert.
 
-#### <a name="add-a-linked-service-to-an-on-premises-sql-server-database"></a>Hinzufügen eines verknüpften Diensts zu einer lokalen SQL Server-Datenbank
+#### <a name="add-a-linked-service-to-a-sql-server-database"></a>Hinzufügen eines verknüpften Diensts zu einer SQL Server-Datenbank
 1. Klicken Sie in **Data Factory Editor** auf der Symbolleiste auf **Neuer Datenspeicher**, und wählen Sie **SQL Server**.
 
    ![Neuer mit SQL Server verknüpfter Dienst](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
@@ -179,8 +178,8 @@ In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedSe
 
 #### <a name="add-a-linked-service-for-an-azure-storage-account"></a>Hinzufügen eines verknüpften Diensts für Azure-Speicherkonten
 1. Klicken Sie im **Data Factory-Editor** auf der Befehlsleiste auf **Neuer Datenspeicher** und dann auf **Azure-Speicher**.
-2. Geben Sie den Namen des Azure-Speicherkontos für **Kontoname**ein.
-3. Geben Sie den Schlüssel des Azure-Speicherkontos für **Kontoschlüssel**ein.
+2. Geben Sie den Namen des Azure-Speicherkontos für **Kontoname** ein.
+3. Geben Sie den Schlüssel des Azure-Speicherkontos für **Kontoschlüssel** ein.
 4. Klicken Sie auf **Bereitstellen**, um **AzureStorageLinkedService** bereitzustellen.
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
@@ -190,7 +189,7 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
 * Erstellen Sie einen Blobcontainer mit dem Namen **adftutorial** im Azure Blob Storage-Konto, das Sie der Data Factory als verknüpften Dienst hinzugefügt haben.
 
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>Vorbereitung des lokalen SQL Servers für das Lernprogramm
-1. Verwenden Sie in der Datenbank, die Sie für den lokalen verknüpften SQL Server-Dienst (**SqlServerLinkedService**) angegeben haben, das folgende SQL-Skript zum Erstellen der Tabelle **emp** in der Datenbank.
+1. Verwenden Sie in der Datenbank, die Sie für den verknüpften SQL Server-Dienst (**SqlServerLinkedService**) angegeben haben, das folgende SQL-Skript zum Erstellen der Tabelle **emp** in der Datenbank.
 
     ```SQL   
     CREATE TABLE dbo.emp
@@ -362,7 +361,7 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
    * Im Abschnitt **typeProperties** ist **SqlSource** als **Quelltyp** und **BlobSink** als **Senkentyp** angegeben.
    * Die SQL-Abfrage `select * from emp` ist für die **sqlReaderQuery**-Eigenschaft von **SqlSource** angegeben.
 
-   Die Start- und Endzeit von Datums-/Uhrzeitangaben müssen im [ISO-Format](https://en.wikipedia.org/wiki/ISO_8601)angegeben werden. Beispiel:  2014-10-14T16:32:41Z. Die Zeitangabe **end** ist optional, wird aber in diesem Tutorial verwendet.
+   Die Start- und Endzeit von Datums-/Uhrzeitangaben müssen im [ISO-Format](https://en.wikipedia.org/wiki/ISO_8601)angegeben werden. Beispiel: 2014-10-14T16:32:41Z. Die Zeitangabe **end** ist optional, wird aber in diesem Tutorial verwendet.
 
    Wenn für die **end**-Eigenschaft kein Wert angegeben wird, wird sie als „**start + 48 Stunden**“ berechnet. Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie als Wert für die **end**-Eigenschaft **9/9/9999** an.
 
@@ -375,7 +374,7 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
 **Glückwunsch!** Sie haben erfolgreich eine Azure Data Factory, verknüpfte Dienste, Datasets und eine Pipeline erstellt und die Pipeline geplant.
 
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>Anzeigen einer Diagrammansicht der Data Factory
-1. Klicken Sie im **Azure-Portal** auf der Startseite für die Data Factory **ADFTutorialOnPremDF** auf die Kachel **Diagramm**: :
+1. Klicken Sie im **Azure-Portal** auf der Startseite für die Data Factory **ADFTutorialOnPremDF** auf die Kachel **Diagramm**: decodiert werden:
 
     ![Link „Diagramm“](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png)
 2. Ein Diagramm wie in der folgenden Abbildung wird angezeigt:

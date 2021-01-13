@@ -1,29 +1,30 @@
 ---
-title: PowerShell-Cmdlets-Referenz – Azure Scheduler
+title: Referenz zu PowerShell-Cmdlets
 description: Informationen zu PowerShell-Cmdlets für den Azure Scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 1ad1d6b9f59fa51b9e27fe5b70ce4e2a5d36f3ad
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ccc9f709348d961e49bced00946658a6997837c0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300879"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368110"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>PowerShell-Cmdlets-Referenz für den Azure Scheduler
 
 > [!IMPORTANT]
-> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt den Microsoft Azure Scheduler, der [ eingestellt wird](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+>
+> Scheduler ist nicht mehr in der Azure-Portal verfügbar, aber die [REST-API](/rest/api/scheduler) und [Azure Scheduler-PowerShell-Cmdlets](scheduler-powershell-reference.md) sind weiterhin verfügbar, damit Sie Ihre Aufträge und Auftragssammlungen verwalten können.
+
+Um Skripts zum Erstellen und Verwalten von Scheduler-Aufträgen und Auftragssammlungen zu erstellen, können Sie PowerShell-Cmdlets verwenden. Dieser Artikel enthält die wichtigsten PowerShell-Cmdlets für den Azure Scheduler mit Links zu den jeweiligen Referenzartikeln. Um Azure PowerShell für Ihr Azure-Abonnement zu installieren, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/). Weitere Informationen zu [Azure Resource Manager-Cmdlets](/powershell/azure/) finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-Um Skripts zum Erstellen und Verwalten von Scheduler-Aufträgen und Auftragssammlungen zu erstellen, können Sie PowerShell-Cmdlets verwenden. Dieser Artikel enthält die wichtigsten PowerShell-Cmdlets für den Azure Scheduler mit Links zu den jeweiligen Referenzartikeln. Um Azure PowerShell für Ihr Azure-Abonnement zu installieren, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview). Weitere Informationen zu [Azure Resource Manager-Cmdlets](/powershell/azure/overview) finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](../powershell-azure-resource-manager.md).
 
 | Cmdlet | BESCHREIBUNG |
 |--------|-------------|
@@ -48,15 +49,14 @@ Um Skripts zum Erstellen und Verwalten von Scheduler-Aufträgen und Auftragssamm
 
 Um weitere Informationen zu erhalten, können Sie eines dieser Cmdlets ausführen: 
 
-```
+```text
 Get-Help <cmdlet name> -Detailed
 Get-Help <cmdlet name> -Examples
 Get-Help <cmdlet name> -Full
 ```
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-* [Was ist der Azure Scheduler?](scheduler-intro.md)
-* [Konzepte, Terminologie und Entitätshierarchie](scheduler-concepts-terms.md)
-* [Erstellen und Planen des ersten Auftrags – Azure-Portal](scheduler-get-started-portal.md)
-* [Azure Scheduler-REST-API – Referenz](https://msdn.microsoft.com/library/mt629143)
+* [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)
+* [Einschränkungen, Standardwerte und Fehlercodes für Azure Scheduler](scheduler-limits-defaults-errors.md)
+* [Azure Scheduler-REST-API – Referenz](/rest/api/scheduler)

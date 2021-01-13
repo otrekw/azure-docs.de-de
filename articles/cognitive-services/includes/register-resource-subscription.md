@@ -1,0 +1,14 @@
+---
+title: include file
+description: include file
+ms.topic: include
+ms.date: 07/27/2020
+ms.openlocfilehash: 159462ad310fbb9f7275c99488e24c7ea4852b34
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87316973"
+---
+> [!Tip]
+> Wenn Ihr Abonnement die Erstellung einer Cognitive Service-Ressource nicht zulässt, müssen Sie möglicherweise diese Fähigkeit des [Azure-Ressourcenanbieters](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) mit dem [Azure-Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell), [PowerShell-Befehl](../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell) oder einem [Azure CLI-Befehl](../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) aktivieren. Wenn Sie nicht der Abonnementbesitzer sind, fordern Sie den _Abonnementbesitzer_ oder jemanden mit der Rolle des _Administrators_ auf, die Registrierung für Sie abzuschließen, oder fragen Sie nach den „/register/action“-Berechtigungen, die Ihrem Konto erteilt wurden.

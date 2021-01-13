@@ -1,6 +1,6 @@
 ---
 title: Problembehandlung bei Konnektivitätsproblemen zwischen Azure-VMs | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Konnektivitätsprobleme zwischen Azure-VMs beheben.
+description: Erfahren Sie, wie Sie die Konnektivitätsprobleme, die zwischen Azure VMs auftreten können, beheben und lösen können.
 services: virtual-network
 documentationcenter: na
 author: chadmath
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: ab3ae45081ecc481cb90af8961174e23c86e84b5
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: eb94b67b026ed108f31f6cd802010577665ec0d8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056819"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87286086"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Problembehandlung bei Konnektivitätsproblemen zwischen Azure-VMs
 
@@ -81,11 +81,15 @@ Sie können eine der folgenden Methoden verwenden, um zu überprüfen, ob die VM
 
 **Windows-VM**
 
-    netstat –ano
+```console
+netstat –ano
+```
 
 **Linux-VM**
 
-    netstat -l
+```console
+netstat -l
+```
 
 - Führen Sie den **telnet**-Befehl auf dem virtuellen Computer selbst aus, um den Port zu testen. Wenn bei dem Test ein Fehler auftritt, ist die Anwendung oder der Dienst nicht zum Lauschen auf diesem Port konfiguriert.
 

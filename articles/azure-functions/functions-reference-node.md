@@ -1,33 +1,30 @@
 ---
-title: JavaScript-Entwicklerreferenz zu Azure Functions | Microsoft-Dokumentation
+title: JavaScript-Entwicklerreferenz für Azure Functions
 description: Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickeln können.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
-ms.service: azure-functions
-ms.devlang: nodejs
-ms.topic: reference
-ms.date: 02/24/2019
-ms.author: glenga
-ms.openlocfilehash: 62115dd519336c728b679e4e698182a50660a464
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.topic: conceptual
+ms.date: 11/17/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: 21ab58095fa919e6302251c16e474b02f1445993
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "68949882"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301995"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
-Dieses Handbuch enthält Informationen zu den Feinheiten des Schreibens von Azure Functions mit JavaScript.
+Dieser Leitfaden enthält ausführliche Informationen, die Sie bei der erfolgreichen Entwicklung von Azure Functions mit JavaScript unterstützen.
 
-Eine JavaScript-Funktion ist eine exportierte `function`, die ausgeführt wird, wenn sie ausgelöst wird ([Trigger werden in „function.json“ konfiguriert](functions-triggers-bindings.md)). Das erste Argument, das an jede Funktion übergeben wird, ist ein `context`-Objekt, das zum Empfangen und Senden von Bindungsdaten, für die Protokollierung und für die Kommunikation mit der Runtime verwendet wird.
+Wenn Sie noch nicht mit Azure Functions vertraut sind, sollten Sie als Express.js-, Node.js- oder JavaScript-Entwickler zunächst einen der folgenden Artikel lesen:
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md)gelesen haben. Führen Sie den Schnellstart zu Azure Functions durch, um Ihre erste Funktion mit [Visual Studio Code](functions-create-first-function-vs-code.md) oder [im Portal](functions-create-first-azure-function.md) zu erstellen.
+| Erste Schritte | Konzepte| Geführte Tutorials |
+| -- | -- | -- | 
+| <ul><li>[Node.js-Funktion unter Verwendung von Visual Studio Code](./create-first-function-vs-code-node.md)</li><li>[Node.js-Funktion mit Terminal/Eingabeaufforderung](./create-first-function-cli-java.md)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[TypeScript-Funktionen](#typescript)</li><li>[Überlegungen&nbsp; zur Leistung](functions-best-practices.md)</li></ul> | <ul><li>[Erstellen serverloser Anwendungen](/learn/paths/create-serverless-applications/)</li><li>[Umgestalten von Node js- und Express-APIs auf serverlose APIs](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
-Dieser Artikel eignet sich auch für die [App-Entwicklung mit TypeScript](#typescript).
+## <a name="javascript-function-basics"></a>JavaScript-Funktionsgrundlagen
+
+Eine JavaScript-Funktion (bzw. Node.js-Funktion) ist eine exportierte `function`, die ausgeführt wird, wenn sie ausgelöst wird ([Trigger werden in „function.json“ konfiguriert](functions-triggers-bindings.md)). Das erste Argument, das an jede Funktion übergeben wird, ist ein `context`-Objekt, das zum Empfangen und Senden von Bindungsdaten, für die Protokollierung und für die Kommunikation mit der Runtime verwendet wird.
 
 ## <a name="folder-structure"></a>Ordnerstruktur
 
@@ -126,7 +123,7 @@ Eingaben werden in Azure Functions in zwei Kategorien unterteilt: die Triggerein
    };
    ```
    
- - **Als Eingaben unter Verwendung des JavaScript-Objekts [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx).** Dies entspricht im Wesentlichen dem Übergeben von Eingaben als Parameter, ermöglicht jedoch die dynamische Verarbeitung der Eingaben.
+ - **Als Eingaben unter Verwendung des JavaScript-Objekts [`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).** Dies entspricht im Wesentlichen dem Übergeben von Eingaben als Parameter, ermöglicht jedoch die dynamische Verarbeitung der Eingaben.
  
    ```javascript
    module.exports = async function(context) { 
@@ -186,15 +183,38 @@ Verwenden Sie zum Definieren des Datentyps für eine Eingabebindung die `dataTyp
 Optionen für `dataType` sind `binary`, `stream` und `string`.
 
 ## <a name="context-object"></a>context-Objekt
-Die Laufzeit verwendet ein `context`-Objekt, um Daten an Ihre und von Ihrer Funktion zu übergeben und Ihnen die Kommunikation mit der Laufzeit zu ermöglichen. Das context-Objekt kann zum Lesen und Festlegen von Daten von Bindungen, zum Schreiben von Protokollen und für den `context.done`-Rückruf verwendet werden, wenn die exportierte Funktion asynchron ist.
 
-Das `context`-Objekt ist immer der erste Parameter in einer Funktion. Es sollte angegeben werden, da es wichtige Methoden wie `context.done` und `context.log` enthält. Sie können dem Objekt einen beliebigen Namen geben (also etwa `ctx` oder `c`).
+Die Laufzeit verwendet ein `context`-Objekt, um Daten an Ihre Funktion und die Laufzeit und von Ihrer Funktion und der Laufzeit zu übergeben. Das zum Lesen und Festlegen von Daten aus Bindungen und zum Schreiben in Protokolle verwendete `context`-Objekt wird immer als erster Parameter an eine Funktion übergeben.
+
+Für Funktionen mit synchronem Code schließt das Kontextobjekt den `done`-Rückruf ein, den Sie durchführen, wenn die Verarbeitung der Funktion abgeschlossen ist. `done` muss beim Schreiben von asynchronem Code nicht explizit aufgerufen werden. Der `done`-Rückruf wird implizit durchgeführt.
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(ctx) {
-    // function logic goes here :)
-    ctx.done();
+module.exports = (context) => {
+
+    // function logic goes here
+
+    context.log("The function has executed.");
+
+    context.done();
+};
+```
+
+Der Kontext, der an die Funktion übertragen wird, macht eine `executionContext`-Eigenschaft verfügbar. Dieses Objekt hat folgende Eigenschaften:
+
+| Eigenschaftenname  | type  | BESCHREIBUNG |
+|---------|---------|---------|
+| `invocationId` | String | Stellt einen eindeutigen Bezeichner für den jeweiligen Funktionsaufruf bereit. |
+| `functionName` | String | Gibt den Namen der Funktion an, die ausgeführt wird. |
+| `functionDirectory` | String | Stellt das Funktionen-App-Verzeichnis bereit. |
+
+Im folgenden Beispiel wird gezeigt, wie die `invocationId` zurückgegeben wird.
+
+```javascript
+module.exports = (context, req) => {
+    context.res = {
+        body: context.executionContext.invocationId
+    };
+    context.done();
 };
 ```
 
@@ -240,7 +260,7 @@ Sie können die Ausgabebindungsdaten mit der `context.done`-Methode anstelle des
 context.bindingData
 ```
 
-Gibt ein benanntes Objekt zurück, das Triggermetadaten und Funktionsaufrufdaten (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`) enthält. Ein Beispiel für Triggermetadaten finden Sie in diesem [Event Hubs-Beispiel](functions-bindings-event-hubs.md#trigger---javascript-example).
+Gibt ein benanntes Objekt zurück, das Triggermetadaten und Funktionsaufrufdaten (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`) enthält. Ein Beispiel für Triggermetadaten finden Sie in diesem [Event Hubs-Beispiel](functions-bindings-event-hubs-trigger.md).
 
 ### <a name="contextdone-method"></a>context.Done-Methode
 
@@ -270,49 +290,17 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 context.log(message)
 ```
 
-Ermöglicht das Schreiben in die Streamingfunktionsprotokolle auf Standard-Ablaufverfolgungsebene. Es sind zusätzliche Protokollierungsmethoden in `context.log` verfügbar, mit denen Sie auf anderen Ablaufverfolgungsebenen in das Funktionsprotokoll schreiben können:
+Ermöglicht das Schreiben in die Streamingfunktionsprotokolle auf Standard-Ablaufverfolgungsebene, wobei auch noch andere Protokolliergrade verfügbar sind. Die Ablaufverfolgungsprotokollierung wird im nächsten Abschnitt ausführlich beschrieben. 
 
+## <a name="write-trace-output-to-logs"></a>Schreiben der Ausgabe der Ablaufverfolgung in Protokolle
 
-| Methode                 | BESCHREIBUNG                                |
-| ---------------------- | ------------------------------------------ |
-| **error(_message_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
-| **warn(_message_)**    | Schreibt in Protokollierung auf Warnungsebene oder niedriger. |
-| **info(_message_)**    | Schreibt in Protokollierung auf Informationsebene oder niedriger.    |
-| **verbose(_message_)** | Schreibt in Protokollierung auf ausführlicher Ebene.           |
+In Functions werden die Methoden vom Typ `context.log` verwendet, um die Ausgabe der Ablaufverfolgung in die Protokolle und in die Konsole zu schreiben. Wenn Sie `context.log()` aufrufen, wird Ihre Meldung auf der Standard-Ablaufverfolgungsebene (_info_) in die Konsole geschrieben. Die Integration von Functions und Azure Application Insights ermöglicht eine bessere Erfassung Ihrer Funktions-App-Protokolle. Application Insights ist eine Komponente von Azure Monitor und bietet Funktionen für die Erfassung, das visuelle Rendering und die Analyse von Anwendungstelemetriedaten sowie Ihrer Ausgaben der Ablaufverfolgung. Weitere Informationen finden Sie unter [Überwachen von Azure Functions](functions-monitoring.md).
 
-Das folgende Beispiel schreibt auf Warnungs-Ablaufverfolgungsebene ein Protokoll:
+Im folgenden Beispiel wird ein Protokoll auf der Ablaufverfolgungsebene „info“ geschrieben (einschließlich der Aufruf-ID):
 
 ```javascript
-context.log.warn("Something has happened."); 
+context.log("Something has happened. " + context.invocationId); 
 ```
-
-Sie können den [Ablaufverfolgungsebenen-Schwellenwert für die Protokollierung](#configure-the-trace-level-for-console-logging) in der Datei „host.json“ konfigurieren. Weitere Informationen zum Schreiben von Protokollen finden Sie unter [Schreiben von Ablaufverfolgungsausgaben ](#writing-trace-output-to-the-console) weiter unten.
-
-Lesen Sie [Überwachen von Azure Functions](functions-monitoring.md), um weitere Informationen zum Anzeigen und Abfragen von Funktionsprotokollen zu erhalten.
-
-## <a name="writing-trace-output-to-the-console"></a>Schreiben der Ablaufverfolgungsausgabe in die Konsole 
-
-In Functions verwenden Sie die `context.log`-Methoden, um die Ablaufverfolgungsausgabe in die Konsole zu schreiben. In Functions v2.x werden Ablaufverfolgungsausgaben über `console.log` auf der Ebene der Funktionen-App erfasst. Dies bedeutet, dass Ausgaben von `console.log` nicht an einen bestimmten Funktionsaufruf gebunden sind und nicht in den Protokollen einer bestimmten Funktion angezeigt werden. Sie werden jedoch an Application Insights weitergegeben. In Functions v1.x können Sie `console.log` nicht verwenden, um in die Konsole zu schreiben.
-
-Beim Aufruf von `context.log()` wird Ihre Meldung auf der Standard-Ablaufverfolgungsebene, also der _info_-Ablaufverfolgungsebene, in die Konsole geschrieben. Das folgende Beispiel schreibt auf der „info“-Ablaufverfolgungsebene in die Konsole:
-
-```javascript
-context.log({hello: 'world'});  
-```
-
-Dieser Code entspricht dem Code oben:
-
-```javascript
-context.log.info({hello: 'world'});  
-```
-
-Dieser Code schreibt auf der Fehlerebene in die Konsole:
-
-```javascript
-context.log.error("An error has occurred.");  
-```
-
-Da _error_ die höchste Ablaufverfolgungsebene ist, wird diese Ablaufverfolgung auf allen Ablaufverfolgungsebenen in die Ausgabe geschrieben, solange die Protokollierung aktiviert ist.
 
 Alle `context.log`-Methoden unterstützen das gleiche Parameterformat, das auch von der [util.format](https://nodejs.org/api/util.html#util_util_format_format)-Methode in Node.js unterstützt wird. Beachten Sie den folgenden Code, der auf der standardmäßigen Ablaufverfolgungsebene Funktionsprotokolle schreibt:
 
@@ -328,9 +316,39 @@ context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', 
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-### <a name="configure-the-trace-level-for-console-logging"></a>Konfigurieren der Ablaufverfolgungsebene für die Konsolenprotokollierung
+> [!NOTE]  
+> Verwenden Sie nicht `console.log`, um Ausgaben der Ablaufverfolgung zu schreiben. Da die Ausgabe von `console.log` auf der Ebene der Funktions-App erfasst wird, ist sie nicht an einen bestimmten Funktionsaufruf gebunden und wird nicht in den Protokollen einer bestimmten Funktion angezeigt. Außerdem ist es in der Version 1.x der Functions-Runtime nicht möglich, `console.log` für die Ausgabe in der Konsole zu verwenden.
 
-Mit Functions 1.x können Sie den Ablaufverfolgungsebenen-Schwellenwert zum Schreiben in die Konsole definieren, sodass Sie mühelos mit Ihrer Funktion steuern können, wie Ablaufverfolgungen in die Konsole geschrieben werden. Legen Sie mit der `tracing.consoleLevel`-Eigenschaft in der Datei „host.json“ den Schwellenwert für alle Ablaufverfolgungen fest, die in die Konsole geschrieben werden. Diese Einstellung gilt für alle Funktionen in Ihrer Funktionen-App. Im folgenden Beispiel wird der Schwellenwert für die Ablaufverfolgung festgelegt, um die ausführliche Protokollierung zu aktivieren:
+### <a name="trace-levels"></a>Ablaufverfolgungsebenen
+
+Neben der Standardebene stehen auch folgende Protokollierungsmethoden zur Verfügung, mit denen Funktionsprotokolle auf bestimmten Ablaufverfolgungsebenen geschrieben werden können:
+
+| Methode                 | BESCHREIBUNG                                |
+| ---------------------- | ------------------------------------------ |
+| **error(_message_)**   | Schreibt ein Ereignis auf Fehlerebene in die Protokolle.   |
+| **warn(_message_)**    | Schreibt ein Ereignis auf Warnungsebene in die Protokolle. |
+| **info(_message_)**    | Schreibt in Protokollierung auf Informationsebene oder niedriger.    |
+| **verbose(_message_)** | Schreibt in Protokollierung auf ausführlicher Ebene.           |
+
+Im folgenden Beispiel wird das gleiche Protokoll auf der Ablaufverfolgungsebene „warning“ geschrieben (anstatt auf der Ebene „info“):
+
+```javascript
+context.log.warn("Something has happened. " + context.invocationId); 
+```
+
+Da _error_ die höchste Ablaufverfolgungsebene ist, wird diese Ablaufverfolgung auf allen Ablaufverfolgungsebenen in die Ausgabe geschrieben, solange die Protokollierung aktiviert ist.
+
+### <a name="configure-the-trace-level-for-logging"></a>Konfigurieren der Ablaufverfolgungsebene für die Protokollierung
+
+In Functions können Sie den Schwellenwert der Ablaufverfolgungsebene für das Schreiben in die Protokolle oder in die Konsole definieren. Die spezifischen Schwellenwerteinstellungen hängen von Ihrer Version der Functions-Runtime ab.
+
+# <a name="v2x"></a>[Ab v2.x](#tab/v2)
+
+Verwenden Sie die Eigenschaft `logging.logLevel` in der Datei „host.json“, um den Schwellenwert für Ablaufverfolgungen festzulegen, die in die Protokolle geschrieben werden. Mit diesem JSON-Objekt können Sie einen Standardschwellenwert für alle Funktionen in Ihrer Funktions-App sowie spezifische Schwellenwerte für einzelne Funktionen definieren. Weitere Informationen finden Sie unter [Konfigurieren der Überwachung für Azure Functions](configure-monitoring.md).
+
+# <a name="v1x"></a>[v1.x](#tab/v1)
+
+Verwenden Sie die Eigenschaft `tracing.consoleLevel` in der Datei „host.json“, um den Schwellenwert für alle Ablaufverfolgungen festzulegen, die in Protokolle und in die Konsole geschrieben werden. Diese Einstellung gilt für alle Funktionen in Ihrer Funktionen-App. Im folgenden Beispiel wird der Schwellenwert für die Ablaufverfolgung festgelegt, um die ausführliche Protokollierung zu aktivieren:
 
 ```json
 {
@@ -340,7 +358,65 @@ Mit Functions 1.x können Sie den Ablaufverfolgungsebenen-Schwellenwert zum Schr
 }  
 ```
 
-Die Werte von **consoleLevel** entsprechen den Namen der `context.log`-Methoden. Um die gesamte Ablaufverfolgungsprotokollierung in der Konsole zu deaktivieren, setzen Sie **consoleLevel** auf _off_. Weitere Informationen finden Sie in der [host.json-Referenz](functions-host-json-v1.md).
+Die Werte von **consoleLevel** entsprechen den Namen der `context.log`-Methoden. Um die gesamte Ablaufverfolgungsprotokollierung in der Konsole zu deaktivieren, setzen Sie **consoleLevel** auf _off_. Weitere Informationen finden Sie in der [host.json-Referenz für Azure Functions 1.x](functions-host-json-v1.md).
+
+---
+
+### <a name="log-custom-telemetry"></a>Protokollieren benutzerdefinierter Telemetriedaten
+
+Ausgaben werden von Functions standardmäßig als Ablaufverfolgungen in Application Insights geschrieben. Sollten Sie mehr Steuerungsmöglichkeiten benötigen, können Sie stattdessen das [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) verwenden, um benutzerdefinierte Telemetriedaten an Ihre Application Insights-Instanz zu senden. 
+
+# <a name="v2x"></a>[Ab v2.x](#tab/v2)
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+# <a name="v1x"></a>[v1.x](#tab/v1)
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.operationId};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+---
+
+Mit dem Parameter `tagOverrides` wird die `operation_Id` auf die Aufrufkennung der Funktion festgelegt. Mithilfe dieser Einstellung können Sie die gesamte automatisch generierte und benutzerdefinierte Telemetrie für einen bestimmten Funktionsaufruf korrelieren.
 
 ## <a name="http-triggers-and-bindings"></a>HTTP: Trigger und Bindungen
 
@@ -371,6 +447,7 @@ Das `context.res`-Objekt (Antwortobjekt) weist die folgenden Eigenschaften auf:
 | _headers_ | Ein Objekt, das die Header der Antwort enthält.             |
 | _isRaw_   | Gibt an, dass die Formatierung für die Antwort übersprungen wird.    |
 | _status_  | Der HTTP-Statuscode der Antwort.                     |
+| _cookies_ | Ein Array von HTTP-Cookieobjekten, die in der Antwort festgelegt sind. Ein HTTP-Cookieobjekt verfügt über einen Namen (`name`) und einen Wert (`value`) sowie über andere Cookieeigenschaften wie etwa `maxAge` oder `sameSite`. |
 
 ### <a name="accessing-the-request-and-response"></a>Zugreifen auf Anforderung und Antwort 
 
@@ -379,9 +456,9 @@ Beim Arbeiten mit HTTP-Triggern bestehen verschiedene Möglichkeiten, auf die HT
 + **Über die `req`- und `res`-Eigenschaft des `context`-Objekts.** Auf diese Weise können Sie die herkömmlichen Muster für den Zugriff auf HTTP-Daten über das context-Objekt verwenden, anstatt das gesamte `context.bindings.name`-Muster verwenden zu müssen. Das folgende Beispiel veranschaulicht den Zugriff auf das `req`- und `res`-Objekt des `context`-Objekts:
 
     ```javascript
-    // You can access your http request off the context ...
+    // You can access your HTTP request off the context ...
     if(context.req.body.emoji === ':pizza:') context.log('Yay!');
-    // and also set your http response
+    // and also set your HTTP response
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
@@ -414,16 +491,37 @@ Beim Arbeiten mit HTTP-Triggern bestehen verschiedene Möglichkeiten, auf die HT
     context.done(null, res);   
     ```  
 
+## <a name="scaling-and-concurrency"></a>Skalierung und Parallelität
+
+Standardmäßig überwacht Azure Functions automatisch die Auslastung Ihrer Anwendung und erstellt bei Bedarf zusätzliche Hostinstanzen für Node.js. Functions verwendet integrierte (nicht vom Benutzer konfigurierbare) Schwellenwerte für verschiedene Triggertypen, um zu entscheiden, wann Instanzen hinzugefügt werden sollen, z. B. Alter von Nachrichten und Warteschlangengröße für Warteschlangentrigger. Weitere Informationen finden Sie unter [Funktionsweise von Verbrauchsplan (Verbrauchstarif) und Premium-Plan](functions-scale.md#how-the-consumption-and-premium-plans-work).
+
+Dieses Skalierungsverhalten ist für zahlreiche Node.js-Anwendungen ausreichend. Für CPU-gebundene Anwendungen können Sie die Leistung durch Verwendung mehrerer Sprachworkerprozesse weiter verbessern.
+
+Standardmäßig verfügt jede Functions-Hostinstanz über einen einzigen Sprachworkerprozess. Sie können die Anzahl der Workerprozesse pro Host erhöhen (bis zu 10), indem Sie die Anwendungseinstellung [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) verwenden. Azure Functions versucht dann, gleichzeitige Funktionsaufrufe gleichmäßig auf diese Worker zu verteilen. 
+
+Die FUNCTIONS_WORKER_PROCESS_COUNT gilt für jeden Host, der von Functions erstellt wird, wenn Ihre Anwendung horizontal skaliert wird, um die Anforderungen zu erfüllen. 
+
 ## <a name="node-version"></a>Node-Version
 
-Die folgende Tabelle zeigt die jeweilige von den Hauptversionen von Functions Runtime verwendete Node.js-Version:
+Die folgende Tabelle zeigt die aktuell von den jeweiligen Hauptversionen der Functions Runtime unterstützte Node.js-Version nach Betriebssystem:
 
-| Functions-Version | Node.js-Version | 
-|---|---|
-| 1.x | 6.11.2 (durch die Laufzeit gesperrt) |
-| 2.x  | _Active LTS_- und _Maintenance LTS_-Node.js-Versionen (8.11.1 und 10.14.1 empfohlen). Legen Sie die Version mithilfe der [App-Einstellung](functions-how-to-use-azure-function-app-settings.md#settings) „WEBSITE_NODE_DEFAULT_VERSION“ fest.|
+| Functions-Version | Node-Version (Windows) | Node-Version (Linux) |
+|---|---| --- |
+| 1.x | 6.11.2 (durch die Laufzeit gesperrt) | – |
+| 2.x  | `~8`<br/>`~10` (empfohlen)<br/>`~12` | `node|8`<br/>`node|10` (empfohlen)  |
+| 3.x | `~10`<br/>`~12` (empfohlen)<br/>`~14` (Vorschau)  | `node|10`<br/>`node|12` (empfohlen)<br/>`node|14` (Vorschau) |
 
-Sie können die aktuelle Version anzeigen, die die Laufzeit verwendet, indem Sie die oben gezeigte App-Einstellung überprüfen oder `process.version` aus einer beliebigen Funktion ausgeben.
+Die aktuell von der Laufzeit verwendete Version ermitteln Sie, indem Sie `process.version` aus einer beliebigen Funktion protokollieren.
+
+### <a name="setting-the-node-version"></a>Festlegen der Node-Version
+
+Legen Sie für Windows-Funktions-Apps die Zielversion in Azure fest, indem Sie die [App-Einstellung](functions-how-to-use-azure-function-app-settings.md#settings) `WEBSITE_NODE_DEFAULT_VERSION` auf eine unterstützte LTS-Version wie `~12` festlegen.
+
+Führen Sie für Linux-Funktions-Apps den folgenden Azure CLI-Befehl aus, um die Node-Version zu aktualisieren.
+
+```bash
+az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
+```
 
 ## <a name="dependency-management"></a>Verwaltung von Abhängigkeiten
 Um Communitybibliotheken in Ihrem JavaScript-Code zu verwenden (wie im folgenden Beispiel gezeigt), müssen Sie sicherstellen, dass alle Abhängigkeiten für Ihre Funktions-App in Azure installiert sind.
@@ -453,7 +551,7 @@ Es gibt zwei Möglichkeiten zum Installieren von Paketen für Ihre Funktions-App
 
 
 ### <a name="using-kudu"></a>Verwenden von Kudu
-1. Wechseln Sie zur Adresse `https://<function_app_name>.scm.azurewebsites.net`.
+1. Gehe zu `https://<function_app_name>.scm.azurewebsites.net`.
 
 2. Klicken Sie auf **Debugkonsole** > **CMD**.
 
@@ -465,21 +563,42 @@ Es gibt zwei Möglichkeiten zum Installieren von Paketen für Ihre Funktions-App
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
 
-In Functions werden [App-Einstellungen](functions-app-settings.md), z.B. Dienstverbindungszeichenfolgen, während der Ausführung als Umgebungsvariablen verfügbar gemacht. Sie können über `process.env` auf diese Einstellungen zugreifen, wie hier in den zweiten und dritten Aufrufen von `context.log()` gezeigt, in denen die Umgebungsvariablen `AzureWebJobsStorage` und `WEBSITE_SITE_NAME` protokolliert werden:
+Fügen Sie einer Funktionsanwendung in Ihrer lokalen und in der Cloudumgebung Ihre eigenen Umgebungsvariablen hinzu, z. B. Betriebsgeheimnisse (Verbindungszeichenfolgen, Schlüssel und Endpunkte) oder Umgebungseinstellungen (z. B. Profilerstellungsvariablen). Greifen Sie mithilfe von `process.env` in Ihrem Funktionscode auf diese Einstellungen zu.
+
+### <a name="in-local-development-environment"></a>In der lokalen Entwicklungsumgebung
+
+Wenn das Funktionsprojekt lokal ausgeführt wird, enthält es eine [`local.settings.json`-Datei](/azure/azure-functions/functions-run-local), in der Sie die Umgebungsvariablen im `Values`-Objekt speichern. 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "translatorTextEndPoint": "https://api.cognitive.microsofttranslator.com/",
+    "translatorTextKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "languageWorkers__node__arguments": "--prof"
+  }
+}
+```
+
+### <a name="in-azure-cloud-environment"></a>In der Azure-Cloudumgebung
+
+Wenn die Ausführung in Azure erfolgt, können Sie mithilfe der Funktions-App [Anwendungseinstellungen](functions-app-settings.md) festlegen, z. B. Dienstverbindungszeichenfolgen. Diese Einstellungen werden während der Ausführung als Umgebungsvariablen bereitgestellt. 
+
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+### <a name="access-environment-variables-in-code"></a>Zugreifen auf Umgebungsvariablen im Code
+
+Greifen Sie auf Anwendungseinstellungen als Umgebungsvariablen mit `process.env` zu, wie hier in den zweiten und dritten Aufrufen von `context.log()` gezeigt, in denen die Umgebungsvariablen `AzureWebJobsStorage` und `WEBSITE_SITE_NAME` protokolliert werden:
 
 ```javascript
 module.exports = async function (context, myTimer) {
-    var timeStamp = new Date().toISOString();
 
-    context.log('Node.js timer trigger function ran!', timeStamp);
     context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
     context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
 };
 ```
-
-[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
-
-Wenn App-Einstellungen lokal ausgeführt werden, werden sie über die Projektdatei [local.settings.json](functions-run-local.md#local-settings-file) gelesen.
 
 ## <a name="configure-function-entry-point"></a>Konfigurieren des Funktionseinstiegspunkts
 
@@ -553,22 +672,19 @@ Beachten Sie in diesem Beispiel besonders, dass es keine Garantie dafür gibt, d
 
 Wenn ein Node.js-Prozess mit dem Parameter `--inspect` gestartet wird, lauscht er auf einen Debugclient auf dem angegebenen Port. Sie können in Azure Functions 2.x Argumente angeben, die an den Node.js-Prozess übergeben werden, der Ihren Code ausführt, indem Sie die Umgebungsvariable oder die App-Einstellung `languageWorkers:node:arguments = <args>` hinzufügen. 
 
-Fügen Sie unter `Values` in der Datei [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) `"languageWorkers:node:arguments": "--inspect=5858"` hinzu, und fügen Sie einen Debugger an Port 5858 an, um lokal zu debuggen.
+Fügen Sie unter `Values` in der Datei [local.settings.json](./functions-run-local.md#local-settings-file)`"languageWorkers:node:arguments": "--inspect=5858"` hinzu, und fügen Sie einen Debugger an Port 5858 an, um lokal zu debuggen.
 
 Wenn Sie mit VS Code debuggen, wird der Parameter `--inspect` automatisch mit dem Wert `port` in der Datei „launch.json“ des Projekts hinzugefügt.
 
-In Version 1.x funktioniert die Einstellung `languageWorkers:node:arguments` nicht. Sie können den Debugport mit dem Parameter [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) in den Azure Functions Core Tools festlegen.
+In Version 1.x funktioniert die Einstellung `languageWorkers:node:arguments` nicht. Sie können den Debugport mit dem Parameter [`--nodeDebugPort`](./functions-run-local.md#start) in den Azure Functions Core Tools festlegen.
 
 ## <a name="typescript"></a>TypeScript
 
-Wenn Sie Version 2.x der Azure Functions-Runtime als Ziel verwenden, können Sie mit der [Azure Functions-Erweiterung für Visual Studio Code](functions-create-first-function-vs-code.md) und den [Azure Functions Core Tools](functions-run-local.md) Funktions-Apps mit Vorlagen erstellen, die Funktions-App-Projekte in TypeScript unterstützen. Diese Vorlage generiert `package.json`- und `tsconfig.json`-Projektdateien, mit denen Sie JavaScript-Funktionen aus TypeScript-Code leichter mithilfe dieser Tools transpilieren, ausführen und veröffentlichen können.
+Wenn Sie Version 2.x der Azure Functions-Runtime als Ziel verwenden, können Sie mit der [Azure Functions-Erweiterung für Visual Studio Code](./create-first-function-cli-typescript.md) und den [Azure Functions Core Tools](functions-run-local.md) Funktions-Apps mit Vorlagen erstellen, die Funktions-App-Projekte in TypeScript unterstützen. Diese Vorlage generiert `package.json`- und `tsconfig.json`-Projektdateien, mit denen Sie JavaScript-Funktionen aus TypeScript-Code leichter mithilfe dieser Tools transpilieren, ausführen und veröffentlichen können.
 
 Die generierte `.funcignore`-Datei wird verwendet, um anzugeben, welche Dateien ausgeschlossen werden sollen, wenn ein Projekt in Azure veröffentlicht wird.  
 
 TypeScript-Dateien (.ts) werden im Ausgabeverzeichnis `dist` in JavaScript-Dateien (.js) transpiliert. TypeScript-Dateien verwenden in `function.json` den [Parameter `scriptFile`](#using-scriptfile), um den Speicherort der entsprechenden JS-Datei im Ordner `dist` anzugeben. Der Ausgabespeicherort wird von der Vorlage mit dem Parameter `outDir` in der Datei `tsconfig.json` festgelegt. Wenn Sie diese Einstellung oder den Namen des Ordners ändern, kann die Runtime den auszuführenden Code nicht finden.
-
-> [!NOTE]
-> In Version 1.x der Azure Functions-Runtime ist die experimentelle Unterstützung von TypeScript vorhanden. Die experimentelle Version transpiliert TypeScript-Dateien in JavaScript-Dateien, wenn die Funktion aufgerufen wird. In Version 2.x wurde diese experimentelle Unterstützung durch eine toolgesteuerte Methode ersetzt, die die Transpilierung vor der Initialisierung des Hosts und während der Bereitstellung durchführt.
 
 Die Art der lokalen Entwicklung und Bereitstellung aus einem TypeScript-Projekt hängen von Ihrem Entwicklungstool ab.
 
@@ -629,7 +745,7 @@ Beachten Sie beim Arbeiten mit JavaScript-Funktionen die Überlegungen in den fo
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>Auswählen von App Service-Plänen mit einzelner vCPU
 
-Wenn Sie eine Funktions-App erstellen, die den App Service-Plan verwendet, sollten Sie statt eines Plans mit mehreren vCPUs einen Plan mit einer einzelnen vCPU auswählen. Derzeit führt Functions JavaScript-Funktionen auf virtuellen Computern mit einer einzelnen vCPU effizienter aus. Die Verwendung größerer virtueller Computer führt nicht zu den erwarteten Leistungsverbesserungen. Bei Bedarf können Sie manuell horizontal hochskalieren, indem Sie weitere Instanzen virtueller Computer mit einer einzelnen vCPU hinzufügen. Sie können aber auch die automatische Skalierung aktivieren. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json).
+Wenn Sie eine Funktions-App erstellen, die den App Service-Plan verwendet, sollten Sie statt eines Plans mit mehreren vCPUs einen Plan mit einer einzelnen vCPU auswählen. Derzeit führt Functions JavaScript-Funktionen auf virtuellen Computern mit einer einzelnen vCPU effizienter aus. Die Verwendung größerer virtueller Computer führt nicht zu den erwarteten Leistungsverbesserungen. Bei Bedarf können Sie manuell aufskalieren, indem Sie weitere Instanzen virtueller Computer mit einer einzelnen vCPU hinzufügen. Sie können aber auch die automatische Skalierung aktivieren. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-monitor/platform/autoscale-get-started.md?toc=/azure/app-service/toc.json).
 
 ### <a name="cold-start"></a>Kaltstart
 
@@ -677,8 +793,9 @@ const util = require('util');
 const readFileAsync = util.promisify(fs.readFile);
 
 module.exports = async function (context) {
+    let data;
     try {
-        const data = await readFileAsync('./hello.txt');
+        data = await readFileAsync('./hello.txt');
     } catch (err) {
         context.log.error('ERROR', err);
         // This rethrown exception will be handled by the Functions Runtime and will only fail the individual invocation

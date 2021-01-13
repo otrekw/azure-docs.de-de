@@ -6,13 +6,13 @@ ms.author: mhopkins
 ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 54085d602246d38adb970ed02f451241ca7ba19d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.topic: how-to
+ms.openlocfilehash: 7fc1b2638c2ab17c4cd58ca8d4508d2e6d244cfa
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726401"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996808"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Verwenden des Blobspeichers mit iOS
 
@@ -99,7 +99,7 @@ Wenn Sie Swift verwenden, müssen Sie einen Bridging-Header erstellen und \<AZSC
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
-Jeder Blob in Azure Storage muss sich in einem Container befinden. Das folgende Beispiel zeigt, wie Sie einen Container namens *newcontainer*in Ihrem Storage-Konto erstellen, wenn er noch nicht vorhanden ist. Wenn Sie einen Namen für den Container auswählen, achten Sie auf die oben genannten Benennungsregeln.
+Jeder Blob in Azure Storage muss sich in einem Container befinden. Das folgende Beispiel zeigt, wie Sie einen Container namens *newcontainer* in Ihrem Storage-Konto erstellen, wenn er noch nicht vorhanden ist. Wenn Sie einen Namen für den Container auswählen, achten Sie auf die oben genannten Benennungsregeln.
 
 ```objc
 -(void)createContainer{
@@ -391,8 +391,8 @@ Da Sie jetzt die Verwendung von Blobspeicher in iOS kennen, folgen Sie diesen Li
 
 - [Azure Storage-Clientbibliothek für iOS](https://github.com/azure/azure-storage-ios)
 - [Azure Storage-iOS-Referenzdokumentation](https://azure.github.io/azure-storage-ios/)
-- [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-- [Azure Storage-Teamblog](https://blogs.msdn.com/b/windowsazurestorage)
+- [REST-API für Azure-Speicherdienste](/rest/api/storageservices/)
+- [Azure Storage-Teamblog](/archive/blogs/windowsazurestorage/)
 
-Wenn Sie Fragen zu dieser Bibliothek haben, können Sie diese im [MSDN Azure-Forum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) oder auf [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) stellen.
+Wenn Sie Fragen zu dieser Bibliothek haben, können Sie diese auf unserer [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-blob-storage.html) oder auf [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) stellen.
 Richten Sie Vorschläge für Azure Storage-Features an [Feedback zu Azure Storage](https://feedback.azure.com/forums/217298-storage/).

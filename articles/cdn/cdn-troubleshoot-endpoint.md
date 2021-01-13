@@ -1,6 +1,6 @@
 ---
-title: Problembehandlung bei Azure CDN-Endpunkten mit Statuscode 404 | Microsoft-Dokumentation
-description: Problembehandlung beim Statuscode 404 bei Azure CDN-Endpunkten.
+title: Problembehandlung bei Azure CDN-Endpunkten – Statuscode 404
+description: Erfahren Sie, wie Sie Probleme mit Azure Content Delivery Network-Endpunkten beheben können, die 404 HTTP-Antwortstatuscodes zurückgeben.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b665c2f72f50b2d72fd625b49c4212785ab3301d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: d6ad0b8b37bd4f04c22ed52d4ac6717202f22889
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593277"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88192496"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>Problembehandlung bei Azure CDN-Endpunkten mit Statuscode 404
 Dieser Artikel enthält Informationen zum Behandeln von Problemen mit Azure CDN-Endpunkten (Content Delivery Network), bei denen der HTTP-Antwortstatuscode 404 zurückgegeben wird.

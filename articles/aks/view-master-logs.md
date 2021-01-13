@@ -2,17 +2,14 @@
 title: Anzeigen von Azure Kubernetes Service-Controllerprotokollen (AKS)
 description: Erfahren Sie, wie die Protokolle für den Kubernetes-Masterknoten in Azure Kubernetes Service (AKS) aktiviert und angezeigt werden.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
-ms.date: 01/03/2019
-ms.author: mlearned
-ms.openlocfilehash: dc72a8d448a189918def35da0250d83c81da7fa0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 10/14/2020
+ms.openlocfilehash: 59e7259ae352491bddebe054f2c34bdc810ea48a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812815"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183225"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Aktivieren und Überprüfen der Kubernetes-Masterknotenprotokolle in Azure Kubernetes Service (AKS)
 
@@ -20,11 +17,11 @@ Mit Azure Kubernetes Service (AKS) werden die Masterkomponenten wie *kube-apiser
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Dieser Artikel setzt einen vorhandenen AKS-Cluster voraus, der in Ihrem Azure-Konto ausgeführt wird. Sollten Sie noch nicht über einen AKS-Cluster verfügen, erstellen Sie einen AKS-Cluster über die [Azure-Befehlszeilenschnittstelle][cli-quickstart] oder über das [Azure-Portal][portal-quickstart]. Azure Monitor-Protokolle funktionieren mit für RBAC und nicht für RBAC aktivierten AKS-Clustern.
+Dieser Artikel setzt einen vorhandenen AKS-Cluster voraus, der in Ihrem Azure-Konto ausgeführt wird. Sollten Sie noch nicht über einen AKS-Cluster verfügen, erstellen Sie einen AKS-Cluster über die [Azure-Befehlszeilenschnittstelle][cli-quickstart] oder über das [Azure-Portal][portal-quickstart]. Azure Monitor-Protokolle funktionieren sowohl mit für Kubernetes RBAC, Azure RBAC als auch nicht für RBAC aktivierten AKS-Clustern.
 
-## <a name="enable-diagnostics-logs"></a>Aktivieren von Diagnoseprotokollen
+## <a name="enable-resource-logs"></a>Aktivieren von Ressourcenprotokollen
 
-Um Daten aus mehreren Quellen zu sammeln und zu überprüfen, bieten Azure Monitor-Protokolle eine Abfragesprache und ein Analysemodul, das Einblicke in Ihre Umgebung bereitstellt. Ein Arbeitsbereich wird verwendet, um die Daten zu sortieren und zu analysieren. Zudem können Sie andere Azure-Dienste wie Application Insights und Security Center integrieren. Um für die Analyse der Protokolle eine andere Plattform zu verwenden, können Sie stattdessen Diagnoseprotokolle an ein Azure-Speicherkonto oder einen Event Hub senden. Weitere Informationen finden Sie unter [Was sind Azure Monitor-Protokolle?][log-analytics-overview].
+Um Daten aus mehreren Quellen zu sammeln und zu überprüfen, bieten Azure Monitor-Protokolle eine Abfragesprache und ein Analysemodul, das Einblicke in Ihre Umgebung bereitstellt. Ein Arbeitsbereich wird verwendet, um die Daten zu sortieren und zu analysieren. Zudem können Sie andere Azure-Dienste wie Application Insights und Security Center integrieren. Um für die Analyse der Protokolle eine andere Plattform zu verwenden, können Sie stattdessen Ressourcenprotokolle an ein Azure-Speicherkonto oder einen Event Hub senden. Weitere Informationen finden Sie unter [Was sind Azure Monitor-Protokolle?][log-analytics-overview].
 
 Azure Monitor-Protokolle werden im Azure-Portal aktiviert und verwaltet. Öffnen Sie zum Aktivieren der Protokollsammlung für die Kubernetes-Masterkomponenten in Ihrem AKS-Cluster das Azure-Portal in einem Webbrowser, und führen Sie die folgenden Schritte aus:
 
@@ -33,12 +30,18 @@ Azure Monitor-Protokolle werden im Azure-Portal aktiviert und verwaltet. Öffnen
 1. Wählen Sie Ihren AKS-Cluster aus, z.B. *myAKSCluster*, wählen Sie dann **Diagnoseeinstellungen hinzufügen** aus.
 1. Geben Sie einen Namen (etwa *myAKSClusterLogs*) ein, und wählen Sie dann die Option **An Log Analytics senden** aus.
 1. Wählen Sie einen vorhandenen Arbeitsbereich aus, oder erstellen Sie einen neuen. Wenn Sie einen Arbeitsbereich erstellen, geben Sie einen Arbeitsbereichsnamen, eine Ressourcengruppe und einen Speicherort an.
-1. Wählen Sie in der Liste der verfügbaren Protokolle die Protokolle aus, die Sie aktivieren möchten. Zu den üblichen Protokollen gehören *kube-apiserver*, *kube-controller-manager* und *kube-scheduler*. Sie können zusätzliche Protokolle, beispielsweise *kube-audit* und *cluster-autoscaler*, aktivieren. Sie können zurückkehren und die gesammelten Protokolle ändern, nachdem Log Analytics-Arbeitsbereiche aktiviert wurden.
+1. Wählen Sie in der Liste der verfügbaren Protokolle die Protokolle aus, die Sie aktivieren möchten. Aktivieren Sie für dieses Beispiel die *kube-audit*- und *kube-autid-admin*-Protokolle. Zu den üblichen Protokollen gehören *kube-apiserver*, *kube-controller-manager* und *kube-scheduler*. Sie können zurückkehren und die gesammelten Protokolle ändern, nachdem Log Analytics-Arbeitsbereiche aktiviert wurden.
 1. Wenn Sie fertig sind, wählen Sie **Speichern** aus, um die Sammlung der ausgewählten Protokolle zu aktivieren.
 
-Der folgende Screenshot eines Beispielportals zeigt das Fenster *Diagnoseeinstellungen*:
+## <a name="log-categories"></a>Protokollkategorien
 
-![Aktivieren eines Log Analytics-Arbeitsbereichs für Azure Monitor-Protokolle eines AKS-Clusters](media/view-master-logs/enable-oms-log-analytics.png)
+Zusätzlich zu den von Kubernetes geschriebenen Einträgen enthalten die Überwachungsprotokolle Ihres Projekts auch Einträge aus AKS.
+
+Überwachungsprotokolle werden in drei Kategorien aufgezeichnet, *kube-audit*, *kube-audit-admin* und *guard*.
+
+- Die Kategorie *kube-audit* enthält alle Überwachungsprotokolldaten für jedes Überwachungsereignis, einschließlich *get*, *list*, *create*, *update*, *delete*, *patch* und *post*.
+- Die Kategorie *kube-audit-admin* ist eine Teilmenge der Protokollkategorie *kube-audit*. *kube-audit-admin* verringert die Anzahl der Protokolle erheblich, indem die *get*- und *list*-Überwachungsereignisse aus dem Protokoll ausgeschlossen werden.
+- Die Kategorie *guard* wird von Azure AD und Azure RBAC-Überwachungen verwaltet. Für verwaltete Azure AD: Token Eingang, Benutzerinformationen Ausgang. Für Azure RBAC: Zugriffsüberprüfungen Ein- und Ausgang.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Planen eines Testpods im AKS-Cluster
 
@@ -52,7 +55,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -74,53 +77,75 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Anzeigen der gesammelten Protokolle
 
-Es kann einige Minuten dauern, bis die Diagnoseprotokolle aktiviert und im Log Analytics-Arbeitsbereich angezeigt werden. Wählen Sie im Azure-Portal die Ressourcengruppe für Ihren Log Analytics-Arbeitsbereich aus, z.B. *myResourceGroup*, wählen Sie dann Ihre Log Analytics-Ressource aus, z.B. *myAKSLogs*.
+Es kann bis zu 10 Minuten dauern, bis die Diagnoseprotokolle aktiviert und angezeigt werden.
 
-![Auswählen des Log Analytics-Arbeitsbereichs für Ihren AKS-Cluster](media/view-master-logs/select-log-analytics-workspace.png)
+> [!NOTE]
+> Wenn Sie aus Compliance- oder anderen Gründen alle Überwachungsprotokolldaten benötigen, erfassen und speichern Sie sie in einem kostengünstigen Speicher wie Blobspeicher. Verwenden Sie die Protokollkategorie *kube-audit-admin*, um einen aussagekräftigen Satz von Überwachungsprotokolldaten für Überwachungs- und Warnungszwecke zu erfassen und zu speichern.
 
-Wählen Sie auf der linken Seite **Protokolle** aus. Geben Sie zum Anzeigen von *kube-apiserver* die folgende Abfrage in das Textfeld ein:
+Navigieren Sie im Azure-Portal zu Ihrem AKS-Cluster, und wählen Sie **Protokolle** auf der linken Seite aus. Schließen Sie das Fenster *Beispielabfragen*, wenn es angezeigt wird.
 
-```
-AzureDiagnostics
-| where Category == "kube-apiserver"
-| project log_s
-```
-
-Wahrscheinlich werden viele Protokolle für den API-Server zurückgegeben. Um die Abfrage so einzuschränken, dass die Protokolle zu dem im vorherigen Schritt erstellten NGINX-Pod angezeigt werden, fügen Sie eine zusätzliche *where*-Anweisung hinzu, um nach *pods/nginx* zu suchen, wie in der folgenden Beispielabfrage dargestellt:
+Wählen Sie auf der linken Seite **Protokolle** aus. Geben Sie zum Anzeigen der *cube-audit*-Protokolle die folgende Abfrage in das Textfeld ein:
 
 ```
 AzureDiagnostics
-| where Category == "kube-apiserver"
-| where log_s contains "pods/nginx"
+| where Category == "kube-audit"
 | project log_s
 ```
 
-Die spezifischen Protokolle für Ihren NGINX-Pod werden angezeigt, wie im folgenden Beispielscreenshot gezeigt:
+Wahrscheinlich werden viele Protokolle zurückgegeben. Um die Abfrage so einzuschränken, dass die Protokolle zu dem im vorherigen Schritt erstellten NGINX-Pod angezeigt werden, fügen Sie eine zusätzliche *where*-Anweisung hinzu, um nach *nginx* zu suchen, wie in der folgenden Beispielabfrage dargestellt:
 
-![Log Analytics-Abfrageergebnisse für einen Beispiel-NGINX-Pod](media/view-master-logs/log-analytics-query-results.png)
+```
+AzureDiagnostics
+| where Category == "kube-audit"
+| where log_s contains "nginx"
+| project log_s
+```
 
-Um weitere Protokolle anzuzeigen, können Sie die Abfrage für den *Category*-Namen in *kube-controller-manager* oder *kube-scheduler* ändern, je nachdem, welche weiteren Protokolle Sie aktivieren. Zusätzliche *where*-Anweisungen können dann verwendet werden, um die gesuchten Ereignisse zu verfeinern.
+Geben Sie zum Anzeigen der *kube-audit-admin*-Protokolle die folgende Abfrage in das Textfeld ein:
+
+```
+AzureDiagnostics
+| where Category == "kube-audit-admin"
+| project log_s
+```
+
+In diesem Beispiel zeigt die Abfrage alle create-Aufträge in *kube-audit-admin*. Es werden wahrscheinlich viele Ergebnisse zurückgegeben. Um die Abfrage so einzuschränken, dass die Protokolle zu dem im vorherigen Schritt erstellten NGINX-Pod angezeigt werden, fügen Sie eine zusätzliche *where*-Anweisung hinzu, um nach *nginx* zu suchen, wie in der folgenden Beispielabfrage dargestellt.
+
+```
+AzureDiagnostics
+| where Category == "kube-audit-admin"
+| where log_s contains "nginx"
+| project log_s
+```
+
 
 Weitere Informationen zum Abfragen und Filtern Ihrer Protokolldaten finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten][analyze-log-analytics].
 
 ## <a name="log-event-schema"></a>Protokollereignisschema
 
-Als Unterstützung beim Analysieren der Protokolldaten wird in der folgenden Tabelle das für die einzelnen Ereignisse verwendete Schema erläutert:
+AKS protokolliert die folgenden Ereignisse:
 
-| Feldname               | Beschreibung |
-|--------------------------|-------------|
-| *Ressourcen-ID*             | Azure-Ressource, die das Protokoll erstellt hat |
-| *time*                   | Zeitstempel des Hochladens des Protokolls |
-| *category*               | Name des Containers/der Komponente, der bzw. die das Protokoll generiert |
-| *operationName*          | Immer *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
-| *properties.log*         | Vollständiger Text des Protokolls von der Komponente |
-| *properties.stream*      | *stderr* oder *stdout* |
-| *properties.pod*         | Podname, von dem das Protokoll stammt |
-| *properties.containerID* | ID des Docker-Containers, aus dem dieses Protokoll stammt |
+* [AzureActivity][log-schema-azureactivity]
+* [AzureDiagnostics][log-schema-azurediagnostics]
+* [AzureMetrics][log-schema-azuremetrics]
+* [ContainerImageInventory][log-schema-containerimageinventory]
+* [ContainerInventory][log-schema-containerinventory]
+* [ContainerLog][log-schema-containerlog]
+* [ContainerNodeInventory][log-schema-containernodeinventory]
+* [ContainerServiceLog][log-schema-containerservicelog]
+* [Heartbeat][log-schema-heartbeat]
+* [InsightsMetrics][log-schema-insightsmetrics]
+* [KubeEvents][log-schema-kubeevents]
+* [KubeHealth][log-schema-kubehealth]
+* [KubeMonAgentEvents][log-schema-kubemonagentevents]
+* [KubeNodeInventory][log-schema-kubenodeinventory]
+* [KubePodInventory][log-schema-kubepodinventory]
+* [KubeServices][log-schema-kubeservices]
+* [Perf][log-schema-perf]
 
 ## <a name="log-roles"></a>Protokollrollen
 
-| Role                     | Beschreibung |
+| Role                     | BESCHREIBUNG |
 |--------------------------|-------------|
 | *aksService*             | Der Anzeigename im Überwachungsprotokoll für den Vorgang auf der Steuerungsebene (aus „hcpService“). |
 | *masterclient*           | Der Anzeigename im Überwachungsprotokoll für „MasterClientCertificate“ (das Zertifikat, das von „az aks get-credentials“ zurückgegeben wird). |
@@ -136,10 +161,27 @@ In diesem Artikel haben Sie gelernt, wie die Protokolle für die Kubernetes-Mast
 <!-- LINKS - internal -->
 [cli-quickstart]: kubernetes-walkthrough.md
 [portal-quickstart]: kubernetes-walkthrough-portal.md
-[log-analytics-overview]: ../log-analytics/log-analytics-overview.md
-[analyze-log-analytics]: ../azure-monitor/learn/tutorial-viewdata.md
+[log-analytics-overview]: ../azure-monitor/log-query/log-query-overview.md
+[analyze-log-analytics]: ../azure-monitor/log-query/log-analytics-tutorial.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[log-schema-azureactivity]: /azure/azure-monitor/reference/tables/azureactivity
+[log-schema-azurediagnostics]: /azure/azure-monitor/reference/tables/azurediagnostics
+[log-schema-azuremetrics]: /azure/azure-monitor/reference/tables/azuremetrics
+[log-schema-containerimageinventory]: /azure/azure-monitor/reference/tables/containerimageinventory
+[log-schema-containerinventory]: /azure/azure-monitor/reference/tables/containerinventory
+[log-schema-containerlog]: /azure/azure-monitor/reference/tables/containerlog
+[log-schema-containernodeinventory]: /azure/azure-monitor/reference/tables/containernodeinventory
+[log-schema-containerservicelog]: /azure/azure-monitor/reference/tables/containerservicelog
+[log-schema-heartbeat]: /azure/azure-monitor/reference/tables/heartbeat
+[log-schema-insightsmetrics]: /azure/azure-monitor/reference/tables/insightsmetrics
+[log-schema-kubeevents]: /azure/azure-monitor/reference/tables/kubeevents
+[log-schema-kubehealth]: /azure/azure-monitor/reference/tables/kubehealth
+[log-schema-kubemonagentevents]: /azure/azure-monitor/reference/tables/kubemonagentevents
+[log-schema-kubenodeinventory]: /azure/azure-monitor/reference/tables/kubenodeinventory
+[log-schema-kubepodinventory]: /azure/azure-monitor/reference/tables/kubepodinventory
+[log-schema-kubeservices]: /azure/azure-monitor/reference/tables/kubeservices
+[log-schema-perf]: /azure/azure-monitor/reference/tables/perf

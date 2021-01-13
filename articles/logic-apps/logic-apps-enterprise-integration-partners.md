@@ -1,20 +1,19 @@
 ---
-title: 'Hinzufügen von Handelspartnern für B2B-Integrationen: Azure Logic Apps'
+title: Hinzufügen von Handelspartnern für B2B-Integrationen
 description: Erstellen von Handelspartnern in Ihrem Integrationskonto für die Verwendung von Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 681f16132c1de2ec5f3b27f80633d32879b0746c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 8e3805fae5bf6cc5ad8cf759d3ba75220c6ddbd8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330277"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91565070"
 ---
 # <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Hinzufügen von Handelspartnern zu Integrationskonten für Azure Logic Apps
 
@@ -48,7 +47,7 @@ Geben Sie in der Vereinbarung die Details zum Umgang mit ein- und ausgehenden Na
 
 1. Wählen Sie die Kachel **Partner** aus.
 
-   ![Auswählen der Kachel „Partner“](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
+   ![Screenshot mit der Kachel „Partner“](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
 
 1. Wählen Sie unter **Partner** die Option **Hinzufügen** aus. Geben Sie unter **Partner hinzufügen** entsprechend der nachfolgenden Tabelle die Partnerdetails ein.
 
@@ -101,7 +100,7 @@ Wählen Sie die Kachel **Partner** aus.
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrem Integrationskonto, und wählen Sie es aus. Wählen Sie die Kachel **Partner** aus.
 
-   ![Auswählen der Kachel „Partner“](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
+   ![Screenshot mit der Kachel „Partner“, die Sie auswählen, wenn Sie einen Partner löschen möchten](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
 
 1. Wählen Sie unter **Partner** den Partner aus, den Sie löschen möchten. Wählen Sie **Löschen** aus.
 

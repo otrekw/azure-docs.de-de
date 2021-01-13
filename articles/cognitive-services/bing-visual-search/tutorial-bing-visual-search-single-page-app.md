@@ -8,16 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 04/05/2019
+ms.date: 03/27/2020
 ms.author: aahi
-ms.openlocfilehash: e0370be1c10bc0f5813bec833be78ad31a3d61a7
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.custom: devx-track-js
+ms.openlocfilehash: b1ca88cd654b7bf373bee60b1e9b7a2e7a129fa2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880644"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499015"
 ---
-# <a name="create-a-visual-search-single-page-web-app"></a>Erstellen einer Single-Page-Web-App für die visuelle Suche
+# <a name="tutorial-create-a-visual-search-single-page-web-app"></a>Tutorial: Erstellen einer Single-Page-Web-App für die visuelle Suche
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Die API für die visuelle Bing-Suche gibt Erkenntnisse für ein Bild zurück. Sie können entweder ein Bild hochladen oder eine URL für ein Bild eingeben. Erkenntnisse sind visuell ähnliche Bilder, Einkaufsquellen, Webseiten, auf denen das Bild vorkommt, und Ähnliches. Die von der API für die visuelle Bing-Suche zurückgegebenen Erkenntnisse ähneln den Ergebnissen auf „Bing.com/images“.
 

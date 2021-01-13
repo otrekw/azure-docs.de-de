@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 08/17/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: ace22a6896a121f5cd8af838c7b0e427bd0287dc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 579ea74c4767ba1afb6e0128c9f12ff83f7f3998
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177773"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826633"
 ---
-## <a name="enable-event-grid-resource-provider"></a>Aktivieren des Event Grid-Ressourcenanbieters
+## <a name="enable-the-event-grid-resource-provider"></a>Aktivieren des Event Grid-Ressourcenanbieters
 
-Wenn Sie zuvor in Ihrem Azure-Abonnement noch nicht Event Grid verwendet haben, sollten Sie den Event Grid-Ressourcenanbieter registrieren. Führen Sie den folgenden Befehl aus, um den Anbieter zu registrieren:
+Wenn Sie zuvor in Ihrem Azure-Abonnement noch nicht Event Grid verwendet haben, sollten Sie den Event Grid-Ressourcenanbieter registrieren. Führen Sie den folgenden Befehl aus, um den Anbieter zu registrieren:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.EventGrid
@@ -29,4 +29,4 @@ Es kann einen Moment dauern, bis die Registrierung abgeschlossen ist. Führen Si
 az provider show --namespace Microsoft.EventGrid --query "registrationState"
 ```
 
-Wenn `registrationState` `Registered` ist, können Sie den Vorgang fortsetzen.
+Wenn `registrationState``Registered` ist, können Sie den Vorgang fortsetzen.

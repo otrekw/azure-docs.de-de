@@ -1,39 +1,38 @@
 ---
-title: Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Metrikspeicher – Cloud Services (klassisch)
-description: Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Metrikspeicher (Cloud Services)
+title: Senden von klassischen Metriken von Azure Cloud Services an die Azure Monitor-Metrikendatenbank
+description: Hier erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für Azure Cloud Services (klassisch) an den Azure Monitor-Metrikspeicher senden.
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 56138277866d3b2bf02733a2c595a5a232faed8c
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: f539786de589dbab3a191a5343ba315349533447
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844936"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91360989"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Metrikspeicher – Cloud Services (klassisch) 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Die [Diagnoseerweiterung](diagnostics-extension-overview.md) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle von einem Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Orte](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) senden.
+Die [Diagnoseerweiterung](diagnostics-extension-overview.md) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle von einem Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Standorte](./data-platform.md?toc=/azure/azure-monitor/toc.json) senden.
 
 In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für klassische Azure-Clouddienste an den Azure Monitor-Metrikspeicher senden. Ab Version 1.11 der Diagnoseerweiterung können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. 
 
-Durch die Speicherung an diesem Ort stehen Ihnen die gleichen Aktionen zur Verfügung, die auch für Plattformmetriken verfügbar sind. Dazu zählen unter anderem zeitnahe Benachrichtigungen, Diagrammerstellung, Routing und Zugriff über eine REST-API.  In der Vergangenheit hat die Diagnoseerweiterung zwar in Azure Storage geschrieben, aber nicht in den Azure Monitor-Datenspeicher.  
+Durch die Speicherung an diesem Ort stehen Ihnen die gleichen Aktionen zur Verfügung, die auch für Plattformmetriken verfügbar sind. Dazu zählen unter anderem zeitnahe Benachrichtigungen, Diagrammerstellung, Routing und Zugriff über eine REST-API.  In der Vergangenheit hat die Diagnoseerweiterung in Azure Storage geschrieben, aber nicht in den Azure Monitor-Datenspeicher.  
 
 Der in diesem Artikel beschriebene Prozess funktioniert nur mit Leistungsindikatoren in Azure Cloud Services. Er kann nicht für andere benutzerdefinierte Metriken verwendet werden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie müssen [Dienstadministrator oder Co-Administrator](~/articles/billing/billing-add-change-azure-subscription-administrator.md) für Ihr Azure-Abonnement sein. 
+- Sie müssen [Dienstadministrator oder Co-Administrator](../../cost-management-billing/manage/add-change-subscription-administrator.md) für Ihr Azure-Abonnement sein. 
 
-- Ihr Abonnement muss bei [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert sein. 
+- Ihr Abonnement muss mit [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md) registriert werden. 
 
-- [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) muss installiert sein.
+- [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](../../cloud-shell/overview.md) muss installiert sein.
 
 - Der Clouddienst muss sich in einer [Region befinden, die benutzerdefinierte Metriken unterstützt](metrics-custom-overview.md#supported-regions).
 
@@ -47,7 +46,7 @@ Der in diesem Artikel beschriebene Prozess funktioniert nur mit Leistungsindikat
 
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals 
 
-Erstellen Sie anhand der Anleitung unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) einen Dienstprinzipal in Ihrem Azure Active Directory-Mandanten. Beachten Sie dabei Folgendes: 
+Erstellen Sie anhand der Anleitung unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../../active-directory/develop/howto-create-service-principal-portal.md) einen Dienstprinzipal in Ihrem Azure Active Directory-Mandanten. Beachten Sie dabei Folgendes: 
 
 - Sie können für die Anmelde-URL eine beliebige URL eingeben.  
 - Erstellen Sie einen neuen geheimen Clientschlüssel für diese App.  
@@ -174,7 +173,7 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 1. Öffnen Sie das Azure-Portal. 
 
-   ![Metriken – Azure-Portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
+   ![Screenshot des Azure-Portals mit nacheinander ausgewählten Optionen „Überwachen“ und „Metriken“](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
 
 2. Wählen Sie im Menü auf der linken Seite **Monitor** aus.
 
@@ -188,9 +187,8 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 Mithilfe der Funktionen zum Filtern und Aufteilen von Dimensionen können Sie den gesamten Arbeitsspeicher anzeigen, der von einer bestimmten Rolle oder Rolleninstanz verwendet wird. 
 
- ![Metriken – Azure-Portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
+ ![Screenshot mit Metrikdaten](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über [benutzerdefinierte Metriken](metrics-custom-overview.md).
-

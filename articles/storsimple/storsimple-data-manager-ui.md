@@ -1,29 +1,21 @@
 ---
-title: Microsoft Azure StorSimple Data Manager Benutzeroberfläche| Microsoft Docs
-description: Hier wird beschrieben, wie Sie die Benutzeroberfläche des StorSimple Data Manager-Diensts verwenden
-services: storsimple
-documentationcenter: NA
+title: Microsoft Azure StorSimple Data Manager-Benutzeroberfläche
+description: Erfahren Sie, wie Sie die Benutzeroberfläche von StorSimple Data Manager verwenden können, um Daten zu transformieren, die sich auf den Geräten der StorSimple 8000-Serie befinden.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: fa897b4b77f7f5869eab2ba2e7db9afbd84febfa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 802f732e8d62f5df861be525316b3c31ab4d0655
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631421"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957927"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Verwalten des StorSimple Data Manager-Diensts im Azure-Portal
 
-In diesem Artikel wird erläutert, wie Sie die Benutzeroberfläche von StorSimple Data Manager verwenden können, um Daten zu transformieren, die sich auf den Geräten der StorSimple 8000-Serie befinden. Die transformierten Daten können von anderen Azure-Diensten, wie z.B. Azure Media Services, Azure HDInsight, Azure Machine Learning und Azure Search, genutzt werden.
+In diesem Artikel wird erläutert, wie Sie die Benutzeroberfläche von StorSimple Data Manager verwenden können, um Daten zu transformieren, die sich auf den Geräten der StorSimple 8000-Serie befinden. Die transformierten Daten können von anderen Azure-Diensten, z. B. Azure Media Services, Azure HDInsight, Azure Machine Learning und Azure Cognitive Search, genutzt werden.
 
 
 ## <a name="use-storsimple-data-transformation"></a>Verwenden der StorSimple-Datentransformation
@@ -50,13 +42,13 @@ Führen Sie die folgenden Schritte aus, um einen StorSimple Data Manager-Dienst 
 
    2. Wählen Sie ein **Abonnement** in der Dropdownliste aus. Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft. Dieses Feld wird automatisch ausgefüllt (und ist nicht auswählbar), wenn Sie nur ein Abonnement haben.
 
-   3. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Gruppe. Weitere Informationen finden Sie unter [Azure resource groups (Azure-Ressourcengruppen)](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+   3. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Gruppe. Weitere Informationen finden Sie unter [Azure resource groups (Azure-Ressourcengruppen)](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    4. Geben Sie den **Standort** für Ihren Dienst an, an dem sich Ihre Speicherkonten und Ihr StorSimple Data Manager-Dienst befinden. Ihr StorSimple-Geräte-Manager-Dienst, Data Manager-Dienst und die zugeordneten Speicherkonten sollten sich alle in den unterstützten Regionen befinden.
     
    5. Um einen Link zu diesem Dienst auf Ihrem Dashboard zu erhalten, wählen Sie **An Dashboard anheften** aus.
     
-   6. Klicken Sie auf **Create**.
+   6. Klicken Sie auf **Erstellen**.
 
       ![Erstellen eines StorSimple Data Manager-Diensts 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -110,7 +102,7 @@ Führen Sie die folgenden Schritte aus, um eine Auftragsdefinition zu erstellen.
 
    3. Geben Sie im Unterabschnitt **Filter** das Stammverzeichnis, das die von Ihnen gewünschten Daten enthält, im Format _\MeinStammverzeichnis\Daten_ ein. Laufwerkbuchstaben, etwa _\C:\Daten_, werden nicht unterstützt. Sie können hier auch Dateifilter hinzufügen.
 
-   4. Der Datentransformationsdienst funktioniert mit den Daten, die über Momentaufnahmen an die Azure-Cloud übertragen werden. Wenn Sie diesen Auftrag ausführen, können Sie entscheiden, bei jeder Ausführung dieses Auftrags eine Sicherung vorzunehmen (um aktuellste Daten zu bearbeiten), oder die letzte vorhandene Sicherung in der Cloud zu verwenden (wenn Sie archivierte Daten bearbeiten).
+   4. Der Datentransformationsdienst funktioniert mit den aktuellsten Momentaufnahmen der an Azure gepushten Daten.
 
    5. Klicken Sie auf **OK**.
 
@@ -158,6 +150,11 @@ Immer wenn Sie Daten aus StorSimple in das Speicherkonto verschieben möchten, d
 4. Wechseln Sie zu **Aufträge** in Ihrem StorSimple Data Manager, um diesen Auftrag zu überwachen. Zusätzlich zur Überwachung können Sie auf dem Blatt **Aufträge** außerdem die Speicherwarteschlange abhören. Hier wird jedes Mal eine Nachricht hinzugefügt, wenn eine Datei aus StorSimple in das Speicherkonto verschoben wird.
 
     ![Starten der Auftragsausführung 4](./media/storsimple-data-manager-ui/start-job-run4.png)
+
+### <a name="view-logs-after-job-completion"></a>Anzeigen von Protokollen nach Auftragsabschluss
+
+Nachdem Sie einen Auftrag abgeschlossen haben, können Sie seinen Status anzeigen. Der Auftragsstatus kann **Erfolgreich**, **Teilweise erfolgreich** oder **Fehlerhaft** sein. Sie können die Liste der erfolgreich kopierten Dateien und der Dateien, die nicht kopiert werden konnten, anzeigen. Diese Listen sind in einem Container mit dem Namen **storsimple-data-manager-joblogs** in Ihrem Zielspeicherkonto verfügbar. Sie können in diesem Container nach einem Ordner mit dem gleichen Namen wie die Auftragsdefinition suchen. Darin wird ein Ordner für jede Auftragsausführung erstellt, der Ihre Listen enthält. Der Name dieses Ordners ist die GUID des Auftrags, die Sie auf der Seite mit den Auftragsdetails finden. Alternativ wird in den meisten Fällen ein Link für die Kopierprotokolle auf der Seite „Aufträge“ angezeigt.
+In diesem Ordner werden zwei Gruppen von CSV-Dateien angezeigt. Alle Dateien, die mit **copiedfilelist...** beginnen, enthalten die Liste der erfolgreich kopierten Dateien. Alle Dateien, die mit **failedfilelist...** beginnen, enthalten Dateien, die nicht kopiert werden konnten, sowie eine Fehlermeldung.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

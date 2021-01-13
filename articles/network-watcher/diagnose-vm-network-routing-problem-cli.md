@@ -1,38 +1,40 @@
 ---
-title: Diagnostizieren eines Netzwerkroutingproblems eines virtuellen Computers – Azure CLI | Microsoft Docs
-description: In diesem Artikel erfahren Sie, wie Sie ein Netzwerkroutingproblem eines virtuellen Computers mit der Funktion „Nächster Hop“ von Azure Network Watcher diagnostizieren.
+title: Diagnostizieren von Problemen mit dem Netzwerkrouting einer VM – Azure-Befehlszeilenschnittstelle
+titleSuffix: Azure Network Watcher
+description: In diesem Artikel erfahren Sie, wie Sie die Azure CLI verwenden, um mithilfe der Funktion „Nächster Hop“ von Azure Network Watcher ein Netzwerkroutingproblem eines virtuellen Computers zu diagnostizieren.
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 968b7dd703ba40f46a068deb1d8b7d2b32e0de2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d5f6f9cfaff722245f6105b5e86390b8aeb769f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688214"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539718"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnostizieren eines Netzwerkroutingproblems eines virtuellen Computers – Azure CLI
 
 In diesem Artikel stellen Sie einen virtuellen Computer (Virtual Machine, VM) bereit und überprüfen dann die Kommunikation mit einer IP-Adresse und URL. Sie ermitteln die Ursache eines Kommunikationsfehlers und wie Sie ihn beheben können.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.0.28 der Azure CLI ausführen. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). Führen Sie nach der Überprüfung der CLI-Version den Befehl `az login` aus, um eine Verbindung mit Azure zu erstellen. Die CLI-Befehle in diesem Artikel sind für die Ausführung in einer Bash-Shell formatiert.
+- Für diesen Artikel ist mindestens Version 2.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert. 
+
+- Die Azure CLI-Befehle in diesem Artikel sind für die Ausführung in einer Bash-Shell formatiert.
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
@@ -52,7 +54,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst mit den übrigen Schritten fort, wenn der virtuelle Computer erstellt und von der CLI eine Ausgabe zurückgegeben wurde.
+Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst mit den übrigen Schritten fort, wenn der virtuelle Computer erstellt und von Azure CLI eine Ausgabe zurückgegeben wurde.
 
 ## <a name="test-network-communication"></a>Testen der Netzwerkkommunikation
 
@@ -113,7 +115,7 @@ az network nic show-effective-route-table \
 
 Die zurückgegebene Ausgabe enthält den folgenden Text:
 
-```azurecli
+```console
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false
@@ -133,7 +135,7 @@ Wenn Sie unter [Verwenden der Funktion „Nächster Hop“](#use-next-hop) den B
 
 Wenn Sie jedoch den Befehl `az network watcher show-next-hop` zum Testen der ausgehenden Kommunikation mit 172.31.0.100 verwendet haben, wurden Sie im Ergebnis darüber informiert, dass kein Typ des nächsten Hops vorhanden war. In der zurückgegebenen Ausgabe finden Sie auch den folgenden Text:
 
-```azurecli
+```console
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false

@@ -1,25 +1,27 @@
 ---
-title: Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz mit Database Migration Service und PowerShell | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit Azure PowerShell eine Migration vom lokalen SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz durchführen.
+title: 'PowerShell: Migrieren von SQL Server zu SQL Managed Instance'
+titleSuffix: Azure Database Migration Service
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell und Azure Database Migration Service eine Migration einer SQL Server-Instanz zu einer Instanz in Azure SQL Managed Instance durchführen.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
-ms.topic: article
-ms.date: 04/29/2019
-ms.openlocfilehash: d83410efd26f8c2078d3abdb01d061db0b83d33d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
+ms.topic: how-to
+ms.date: 02/20/2020
+ms.openlocfilehash: aa97fa5e92d4afe11cf8af5f7cfd3458a3c12014
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233715"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302728"
 ---
-# <a name="migrate-sql-server-on-premises-to-an-azure-sql-database-managed-instance-using-azure-powershell"></a>Migrieren von einer lokalen SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von Azure PowerShell
-In diesem Artikel migrieren Sie die Datenbank **Adventureworks2016**, die in einer lokalen Instanz von SQL Server 2005 (oder höher) wiederhergestellt wurde, mithilfe von Microsoft Azure PowerShell zu einer verwalteten Azure SQL-Datenbank-Instanz. Mithilfe des Moduls `Az.DataMigration` in Microsoft Azure PowerShell können Sie Datenbanken aus einer lokalen Instanz von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz migrieren.
+# <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>Migrieren von SQL Server zu Azure SQL Managed Instance mit PowerShell und Azure Database Migration Service
+
+In diesem Artikel migrieren Sie die Datenbank **Adventureworks2016**, die in einer lokalen Instanz von SQL Server 2005 (oder höher) wiederhergestellt wurde, mithilfe von Microsoft Azure PowerShell zu einer Instanz in Azure SQL Managed Instance. Mithilfe des Moduls `Az.DataMigration` in Microsoft Azure PowerShell können Sie Datenbanken aus einer SQL Server-Instanz zu einer Instanz in Azure SQL Managed Instance migrieren.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > [!div class="checklist"]
@@ -38,30 +40,30 @@ Dieser Artikel enthält Details, wie Sie Online- und Offlinemigrationen ausführ
 Zum Ausführen dieser Schritte benötigen Sie Folgendes:
 
 * [SQL Server 2016 oder höher](https://www.microsoft.com/sql-server/sql-server-downloads) (beliebige Edition).
-* Eine lokale Kopie der **AdventureWorks2016**-Datenbank, die [hier](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017) zum Download verfügbar ist.
-* Aktivieren Sie das TCP/IP-Protokoll, das in einer SQL Server Express-Installation standardmäßig deaktiviert ist. Aktivieren Sie das TCP/IP-Protokoll anhand des Artikels [Aktivieren oder Deaktivieren eines Servernetzwerkprotokolls](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
-* Konfigurieren Sie Ihre [Windows-Firewall für Datenbank-Engine-Zugriff](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+* Eine lokale Kopie der **AdventureWorks2016**-Datenbank, die [hier](/sql/samples/adventureworks-install-configure?view=sql-server-2017) zum Download verfügbar ist.
+* Aktivieren Sie das TCP/IP-Protokoll, das in einer SQL Server Express-Installation standardmäßig deaktiviert ist. Aktivieren Sie das TCP/IP-Protokoll anhand des Artikels [Aktivieren oder Deaktivieren eines Servernetzwerkprotokolls](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
+* Konfigurieren Sie Ihre [Windows-Firewall für Datenbank-Engine-Zugriff](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
-* Eine verwaltete Azure SQL-Datenbank-Instanz. Sie können eine verwaltete Azure SQL-Datenbank-Instanz erstellen, indem Sie die Anweisungen im Artikel [Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started) befolgen.
+* Eine Instanz in Azure SQL Managed Instance. Sie können eine Instanz in Azure SQL Managed Instance erstellen, indem Sie die Anweisungen im Artikel [Erstellen einer Instanz in Azure SQL Managed Instance](../azure-sql/managed-instance/instance-create-quickstart.md) befolgen.
 * Laden Sie den [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595), Version 3.3 oder höher, herunter, und installieren Sie ihn.
-* Ein Azure Virtual Network (VNET), das mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurde, das dem Azure Database Migration Service entweder über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder über [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Site-to-Site-Konnektivität für Ihre lokalen Quellserver bereitstellt.
-* Eine abgeschlossene Bewertung der lokalen Datenbank und Schemamigration mithilfe von Data Migration Assistant wie im Artikel [Durchführen einer SQL Server-Migrationsbewertung](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) beschrieben.
-* Laden Sie das `Az.DataMigration`-Modul (Version 0.7.2 oder höher) aus dem PowerShell-Katalog mit dem [PowerShell-Cmdlet „Install-Module“](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) herunter und installieren Sie es.
-* Stellen Sie sicher, dass die für die Verbindung mit der SQL Server-Quellinstanz verwendeten Anmeldeinformationen über [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql)-Berechtigungen verfügen.
-* Stellen Sie sicher, dass die für die Verbindung mit der verwalteten Azure SQL-Zieldatenbankinstanz verwendeten Anmeldeinformationen über die CONTROL DATABASE-Berechtigung für die verwalteten Azure SQL-Datenbank-Zielinstanzdatenbanken verfügen.
+* Ein Microsoft Azure Virtual Network, das mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurde, das dem Azure Database Migration Service entweder über [ExpressRoute](../expressroute/expressroute-introduction.md) oder über [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) Site-to-Site-Konnektivität für Ihre lokalen Quellserver bereitstellt.
+* Eine abgeschlossene Bewertung der lokalen Datenbank und Schemamigration mithilfe von Data Migration Assistant wie im Artikel [Durchführen einer SQL Server-Migrationsbewertung](/sql/dma/dma-assesssqlonprem) beschrieben.
+* Laden Sie das `Az.DataMigration`-Modul (Version 0.7.2 oder höher) aus dem PowerShell-Katalog mit dem [PowerShell-Cmdlet „Install-Module“](/powershell/module/powershellget/Install-Module?view=powershell-5.1) herunter und installieren Sie es.
+* Stellen Sie sicher, dass die für die Verbindung mit der SQL Server-Quellinstanz verwendeten Anmeldeinformationen über [CONTROL SERVER](/sql/t-sql/statements/grant-server-permissions-transact-sql)-Berechtigungen verfügen.
+* Stellen Sie sicher, dass die für die Verbindung mit der Zielinstanz in Azure SQL Managed Instance verwendeten Anmeldeinformationen über die CONTROL DATABASE-Berechtigung für die Zieldatenbanken in Azure SQL Managed Instance verfügen.
 
     > [!IMPORTANT]
-    > Für Onlinemigrationen müssen Sie bereits Ihre Azure Active Directory-Anmeldeinformationen eingerichtet haben. Weitere Informationen finden Sie im Artikel [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+    > Für Onlinemigrationen müssen Sie bereits Ihre Azure Active Directory-Anmeldeinformationen eingerichtet haben. Weitere Informationen finden Sie im Artikel [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Anmelden bei Ihrem Microsoft Azure-Abonnement
 
-Melden Sie sich bei Ihrem Azure-Abonnement mithilfe der PowerShell an. Weitere Informationen finden Sie im Artikel [Anmelden mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+Melden Sie sich bei Ihrem Azure-Abonnement mithilfe der PowerShell an. Weitere Informationen finden Sie im Artikel [Anmelden mit Azure PowerShell](/powershell/azure/authenticate-azureps).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
 Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit dem Befehl [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe.
+Erstellen Sie mit dem Befehl [`New-AzResourceGroup`](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe.
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *USA, Osten* erstellt.
 
@@ -74,11 +76,11 @@ New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 Mit dem Cmdlet `New-AzDataMigrationService` können Sie eine neue Instanz von Azure Database Migration Service erstellen.
 Dieses Cmdlet erwartet die folgenden erforderlichen Parameter:
 
-* *ResourceGroupName*: Mit dem Befehl [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) können Sie wie oben gezeigt eine Azure-Ressourcengruppe erstellen und deren Namen als Parameter bereitstellen.
+* *ResourceGroupName*: Mit dem Befehl [`New-AzResourceGroup`](/powershell/module/az.resources/new-azresourcegroup) können Sie wie oben gezeigt eine Azure-Ressourcengruppe erstellen und deren Namen als Parameter bereitstellen.
 * *ServiceName*: Die Zeichenfolge, die dem gewünschten eindeutigen Dienstnamen für Azure Database Migration Service entspricht.
 * *Standort*. Gibt den Standort des Diensts an. Geben Sie einen Azure-Rechenzentrumsstandort an, z. B. „USA, Westen“ oder „Asien, Südosten“.
 * *Sku*: Dieser Parameter entspricht dem Sku-Namen des DMS. Derzeit unterstützte Sku-Namen sind *Basic_1vCore*, *Basic_2vCores*, *GeneralPurpose_4vCores*.
-* *VirtualSubnetId*: Sie können das Cmdlet [`New-AzVirtualNetworkSubnetConfig`](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) verwenden, um ein Subnetz zu erstellen.
+* *VirtualSubnetId*: Sie können das Cmdlet [`New-AzVirtualNetworkSubnetConfig`](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) verwenden, um ein Subnetz zu erstellen.
 
 Im folgenden Beispiel wird ein Dienst mit dem Namen *MyDMS* in der Ressourcengruppe *MyDMSResourceGroup*, die sich in der Region *USA, Osten* befindet, mit einem virtuellen Netzwerk namens *MyVNET* und einem Subnetz namens *MySubnet* erstellt.
 
@@ -119,13 +121,11 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-Das nächste Beispiel zeigt die Erstellung der Verbindungsinformationen für einen verwalteten Azure SQL-Datenbank-Instanzserver namens „targetmanagedinstance.database.windows.net“ mithilfe der SQL-Authentifizierung:
+Das nächste Beispiel zeigt die Erstellung von Verbindungsinformationen für eine Instanz von Azure SQL Managed Instance namens „targetmanagedinstance“:
 
 ```powershell
-$targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
-  -DataSource "targetmanagedinstance.database.windows.net" `
-  -AuthType SqlAuthentication `
-  -TrustServerCertificate:$false
+$targetResourceId = (Get-AzSqlInstance -Name "targetmanagedinstance").Id
+$targetConnInfo = New-AzDmsConnInfo -ServerType SQLMI -MiResourceId $targetResourceId
 ```
 
 ### <a name="provide-databases-for-the-migration-project"></a>Bereitstellen von Datenbanken für das Migrationsprojekt
@@ -161,7 +161,7 @@ Als Nächstes erstellen Sie eine Azure Database Migration Service-Aufgabe und st
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>Erstellen von Parametern für Anmeldeinformationen für Quelle und Ziel
 
-Erstellen Sie Sicherheitsanmeldeinformationen für die Verbindung als ein [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0)-Objekt.
+Erstellen Sie Sicherheitsanmeldeinformationen für die Verbindung als ein [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0)-Objekt.
 
 Das folgende Beispiel zeigt die Erstellung von *PSCredential*-Objekten sowohl für die Quell- als auch die Zielverbindung, wobei Kennwörter als Zeichenfolgenvariablen *$sourcePassword* und *$targetPassword* bereitgestellt werden.
 
@@ -188,7 +188,7 @@ $backupFileShare = New-AzDmsFileShare -Path $backupFileSharePath -Credential $ba
 
 Der nächste Schritt besteht darin, die Quell- und Zieldatenbanken mithilfe des Cmdlets `New-AzDmsSelectedDB` auszuwählen.
 
-Das folgende Beispiel ist für das Migrieren einer einzelnen Datenbank aus SQL Server zu einer verwalteten Azure SQL-Datenbankinstanz:
+Das folgende Beispiel zeigt das Migrieren eines Singletons aus SQL Server zu einer Instanz in Azure SQL Managed Instance:
 
 ```powershell
 $selectedDbs = @()
@@ -198,7 +198,7 @@ $selectedDbs += New-AzDmsSelectedDB -MigrateSqlServerSqlDbMi `
   -BackupFileShare $backupFileShare `
 ```
 
-Wenn eine ganze SQL Server-Instanz per Lift & Shift zu einer verwalteten Azure SQL-Datenbankinstanz migriert werden muss, wird unten eine Schleife bereitgestellt, um alle Datenbanken aus der Quelle zu erfassen. Geben Sie im folgenden Beispiel für „$Server“, „$SourceUserName“ und „$SourcePassword“ die Details Ihrer SQL Server-Quelle an.
+Wenn eine komplette SQL Server-Instanz per Lift & Shift zu einer Instanz in Azure SQL Managed Instance migriert werden muss, wird unten eine Schleife bereitgestellt, um alle Datenbanken aus der Quelle zu erfassen. Geben Sie im folgenden Beispiel für „$Server“, „$SourceUserName“ und „$SourcePassword“ die Details Ihrer SQL Server-Quelle an.
 
 ```powershell
 $Query = "(select name as Database_Name from master.sys.databases where Database_id>4)";
@@ -225,6 +225,9 @@ Erstellen Sie eine Variable, die den SAS-URI enthält, mit dem für den Azure Da
 $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%3A33Z&se=2019-07-14T18%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=qKlSA512EVtest3xYjvUg139tYSDrasbftY%3D"
 ```
 
+> [!NOTE]
+> Die Verwendung eines SAS-Tokens auf Kontoebene wird von Azure Database Migration Service nicht unterstützt. Sie müssen einen SAS-URI für den Speicherkontocontainer verwenden. [Erfahren Sie, wie der SAS-URI für Blobcontainer abgerufen wird](../vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container).
+
 ### <a name="additional-configuration-requirements"></a>Zusätzliche Konfigurationsanforderungen
 
 Es gibt einige zusätzliche Anforderungen, die Sie berücksichtigen müssen, die aber variieren, je nachdem, ob Sie eine Offline- oder Onlinemigration durchführen.
@@ -236,7 +239,7 @@ Führen Sie nur für Offlinemigrationen die folgenden zusätzlichen Konfiguratio
 * **Auswählen von Anmeldungen**. Erstellen Sie eine Liste der zu migrierenden Anmeldungen, wie im folgenden Beispiel gezeigt:
 
     ```powershell
-    $selectedLogins = @(“user1”, “user2”)
+    $selectedLogins = @("user1", "user2")
     ```
 
     > [!IMPORTANT]
@@ -280,15 +283,15 @@ Verwenden Sie das Cmdlet `New-AzDataMigrationTask` zum Erstellen und Starten ein
 
 Unabhängig davon, ob Sie eine Offline- oder Onlinemigration durchführen, erwartet das Cmdlet `New-AzDataMigrationTask` die folgenden Parameter:
 
-* *TaskType*: Als Typ der Migrationsaufgabe, die für die Migration von SQL Server zur verwalteten Azure SQL-Datenbank-Instanz zu erstellen ist, wird *MigrateSqlServerSqlDbMi* erwartet. 
+* *TaskType*: Als Typ der Migrationsaufgabe, die für die Migration von SQL Server zu Azure SQL Managed Instance zu erstellen ist, wird *MigrateSqlServerSqlDbMi* erwartet. 
 * *ResourceGroupName*: Name der Azure-Ressourcengruppe, in der die Aufgabe erstellt werden soll.
 * *ServiceName*: Instanz von Azure Database Migration Service, in der die Aufgabe erstellt werden soll.
 * *ProjectName*: Name des Azure Database Migration Service-Projekts, in dem die Aufgabe erstellt werden soll. 
 * *TaskName*: Name der zu erstellenden Aufgabe. 
 * *SourceConnection*. Das „AzDmsConnInfo“-Objekt, das die SQL Server-Quellverbindung darstellt.
-* *TargetConnection*. Das „AzDmsConnInfo“-Objekt, das die verwaltete Azure SQL-Datenbankinstanz-Zielverbindung darstellt.
-* *SourceCred*: Das [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0)-Objekt für die Verbindung mit dem Quellserver.
-* *TargetCred*: Das [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0)-Objekt für die Verbindung mit dem Zielserver.
+* *TargetConnection*. Das „AzDmsConnInfo“-Objekt, das die Zielverbindung zu Azure SQL Managed Instance darstellt.
+* *SourceCred*: Das [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0)-Objekt für die Verbindung mit dem Quellserver.
+* *TargetCred*: Das [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0)-Objekt für die Verbindung mit dem Zielserver.
 * *SelectedDatabase*: Das „AzDataMigrationSelectedDB“-Objekt, das die Quell- und Zieldatenbankzuordnung darstellt.
 * *BackupFileShare*. FileShare-Objekt, das die lokale Netzwerkfreigabe darstellt, auf die Azure Database Migration Service die Quelldatenbanksicherungen übertragen kann.
 * *BackupBlobSasUri*. Der SAS-URI, mit dem für den Azure Database Migration Service der Zugriff auf den Speicherkontocontainer gewährt wird, in den der Dienst die Sicherungsdateien hochlädt. Erfahren Sie, wie der SAS-URI für Blobcontainer abgerufen wird.
@@ -376,15 +379,15 @@ Um die Migration zu überwachen, führen Sie die folgenden Aufgaben aus.
     ```powershell
     if (($CheckTask.ProjectTask.Properties.State -eq "Running") -or ($CheckTask.ProjectTask.Properties.State -eq "Queued"))
     {
-      write-host "migration task running"
+      Write-Host "migration task running"
     }
-    Else if($CheckTask.ProjectTask.Properties.State -eq "Succeeded")
+    else if($CheckTask.ProjectTask.Properties.State -eq "Succeeded")
     { 
-      write-host "Migration task is completed Successfully"
+      Write-Host "Migration task is completed Successfully"
     }
-    Else if($CheckTask.ProjectTask.Properties.State -eq "Failed" -or $CheckTask.ProjectTask.Properties.State -eq "FailedInputValidation"  -or $CheckTask.ProjectTask.Properties.State -eq "Faulted")
+    else if($CheckTask.ProjectTask.Properties.State -eq "Failed" -or $CheckTask.ProjectTask.Properties.State -eq "FailedInputValidation" -or $CheckTask.ProjectTask.Properties.State -eq "Faulted")
     { 
-      write-host “Migration Task Failed”
+      Write-Host "Migration Task Failed"
     }
     ```
 
@@ -392,7 +395,7 @@ Um die Migration zu überwachen, führen Sie die folgenden Aufgaben aus.
 
 Bei einer Onlinemigration wird eine vollständige Sicherung und Wiederherstellung der Datenbank durchgeführt, woraufhin die Arbeit mit der Wiederherstellung der im BackupFileShare gespeicherten Transaktionsprotokolle fortgesetzt wird.
 
-Wenn die Datenbank in einer verwalteten Azure SQL-Datenbankinstanz mit den neuesten Daten aktualisiert wird und mit der Quelldatenbank synchronisiert ist, können Sie eine Übernahme durchführen.
+Wenn die Datenbank in Azure SQL Managed Instance mit den neuen Daten aktualisiert wird und mit der Quelldatenbank synchronisiert ist, können Sie eine Übernahme durchführen.
 
 Im folgende Beispiel wird die Übernahmemigration abgeschlossen. Benutzer rufen diesen Befehl nach ihrem eigenen Ermessen auf.
 
@@ -419,4 +422,4 @@ Informationen zu zusätzlichen Migrationsszenarien (Quelle/Ziel-Paare) finden Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Database Migration Service finden Sie im Artikel [Was ist Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
+Weitere Informationen zu Azure Database Migration Service finden Sie im Artikel [Was ist Azure Database Migration Service?](./dms-overview.md).

@@ -1,0 +1,78 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Remote Rendering
+summary: Der ARR-Dienst (Azure Remote Rendering) ermöglicht Echtzeitrendering von hochkomplexen 3D-Modellen auf Geräten wie HoloLens 2. ARR befindet sich derzeit in der Public Preview-Phase.
+metadata:
+  title: Dokumentation zu Azure Remote Rendering
+  description: Hier erfahren Sie, wie Sie mit dem ARR-Dienst (Azure Remote Rendering) hochkomplexe 3D-Modelle remote in Echtzeit rendern und das Ergebnis auf Geräten wie HoloLens 2 anzeigen.
+  ms.service: azure-remote-rendering
+  ms.topic: landing-page
+  author: florianborn71
+  ms.author: flborn
+  ms.date: 03/26/2020
+  ms.openlocfilehash: e740fd08dc3e616b0768c6c15fd4191cb58e261a
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "85565428"
+landingContent:
+- title: Informationen zu Azure Remote Rendering
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Remote Rendering?
+      url: overview/about.md
+    - text: Systemanforderungen
+      url: overview/system-requirements.md
+    - text: Erstellen eines Azure Remote Rendering-Kontos
+      url: how-tos/create-an-account.md
+- title: Informationen zu den grundlegenden Konzepten für die ersten Schritte mit Azure Remote Rendering
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Konfigurieren der Authentifizierung
+      url: how-tos/authentication.md
+    - text: Remote Rendering-Sitzungen
+      url: concepts/sessions.md
+    - text: Entitäten
+      url: concepts/entities.md
+    - text: Komponenten
+      url: concepts/components.md
+    - text: Modelle
+      url: concepts/models.md
+    - text: Konvertieren von Modellen
+      url: how-tos/conversion/model-conversion.md
+- title: Konvertieren und Rendern Ihres ersten Modells
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Rendern eines Modells mit Unity
+      url: quickstarts/render-model.md
+    - text: Bereitstellen des Unity-Beispiels für HoloLens
+      url: quickstarts/deploy-to-hololens.md
+    - text: Bereitstellen des Unity-Beispiels für den Desktop
+      url: quickstarts/deploy-to-desktop.md
+    - text: Bereitstellen des nativen C++-Beispiels für HoloLens
+      url: quickstarts/native-cpp/hololens/deploy-native-cpp-tutorial.md
+    - text: Konvertieren eines Modells für das Rendering
+      url: quickstarts/convert-model.md
+- title: Informationen zum Erstellen Ihrer eigenen App
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Übersicht
+      url: tutorials/unity/tutorial-landing.md
+    - text: Anzeigen eines per Remotezugriff gerenderten Modells
+      url: tutorials/unity/view-remote-models/view-remote-models.md
+    - text: Laden benutzerdefinierter Modelle
+      url: tutorials/unity/custom-models/custom-models.md
+    - text: Bearbeiten von Modellen
+      url: tutorials/unity/manipulate-models/manipulate-models.md
+    - text: Optimieren von Materialien, Beleuchtung und Effekten
+      url: tutorials/unity/materials-lighting-effects/materials-lighting-effects.md
+    - text: Schützen von Azure-Remote Rendering und Modellspeicher
+      url: tutorials/unity/security/security.md
+    - text: Erstellen einer Azure Remote Rendering-Anwendung für gewerbliche Zwecke
+      url: tutorials/unity/commercial-ready/commercial-ready.md
+    - text: 'Nativer C++-Code: Integrieren von Remote Rendering in eine HoloLens Holographic-App'
+      url: tutorials/native-cpp/hololens/integrate-remote-rendering-into-holographic-app.md

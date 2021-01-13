@@ -1,28 +1,24 @@
 ---
 title: Bereitstellen von HttpClient und Proxy (MSAL.NET) | Azure
+titleSuffix: Microsoft identity platform
 description: Weitere Informationen zur Bereitstellung eines eigenen HttpClient und Proxys für die Verbindung mit Azure AD über die Microsoft Authentication Library für .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/23/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: daae88cd8e76d0ae1af04c45a7191027e9adece9
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 6099bfe339ae398e4683f17a4397656a4507b6ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834938"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88166007"
 ---
 # <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>Bereitstellen eines eigenen HttpClient und Proxys über MSAL.NET
 Bei der [Initialisierung einer öffentlichen Clientanwendung](msal-net-initializing-client-applications.md) können Sie mit `.WithHttpClientFactory method` einen eigenen HttpClient bereitstellen.  Die Bereitstellung eines eigenen HttpClient ermöglicht fortgeschrittene Szenarien wie die differenzierte Steuerung eines HTTP-Proxys, das Anpassen von Benutzer-Agent-Headern oder das Erzwingen von MSAL, einen bestimmten HttpClient zu verwenden (z. B. in ASP.NET Core-Web-Apps/-APIs).

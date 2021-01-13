@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 0b16154edbda4bedfd4e9b680ba4311e7a235212
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 702a59f768bfe978e1a7708d91c6b6b1bb9c92fe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60879036"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452242"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Verwenden von Azure Data Lake Storage Gen1 für Big Data-Anforderungen
 
@@ -40,7 +40,7 @@ Dies steht für kleinere Datasets, die zum Erstellen von Prototypen einer Big Da
 
 | Data source | Erfassen Sie mit |
 | --- | --- |
-| Lokalem Computer |<ul> <li>[Azure-Portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure-Befehlszeilenschnittstelle](data-lake-store-get-started-cli-2.0.md)</li> <li>[Verwenden von Data Lake-Tools für Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
+| Lokalem Computer |<ul> <li>[Azure portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure-Befehlszeilenschnittstelle](data-lake-store-get-started-cli-2.0.md)</li> <li>[Verwenden von Data Lake-Tools für Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure Storage-Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Ausführung von DistCp auf einem HDInsight-Cluster](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Streamingdaten
@@ -48,9 +48,9 @@ Diese Daten können von verschiedenen Quellen wie Anwendungen, Geräten, Sensore
 
 Folgende Tools können Sie verwenden:
 
-* [Azure Stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md): In Event Hubs erfasste Ereignisse können mithilfe einer Azure Data Lake Storage Gen1-Ausgabe in Azure Data Lake Storage Gen1 geschrieben werden.
+* [Azure Stream Analytics](../stream-analytics/stream-analytics-define-outputs.md): In Event Hubs erfasste Ereignisse können mithilfe einer Azure Data Lake Storage Gen1-Ausgabe in Azure Data Lake Storage Gen1 geschrieben werden.
 * [Azure HDInsight Storm](../hdinsight/storm/apache-storm-write-data-lake-store.md): Daten aus dem Storm-Cluster können direkt in Data Lake Storage Gen1 geschrieben werden.
-* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md): Sie können Ereignisse von Event Hubs empfangen und dann mit dem [Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md) in Data Lake Storage Gen1 schreiben.
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md): Sie können Ereignisse von Event Hubs empfangen und dann mit dem [Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md) in Data Lake Storage Gen1 schreiben.
 
 ### <a name="relational-data"></a>Relationale Daten
 Sie können auch Daten aus relationalen Datenbanken erfassen. Relationale Datenbanken sammeln über einen Zeitraum hinweg umfangreiche Datenmengen, die bei Verarbeitung durch eine Big Data-Pipeline wichtige Einblicke bieten können. Mit den folgenden Tools können Sie solche Daten in Data Lake Storage Gen1 verschieben.
@@ -108,10 +108,10 @@ Betrachten Sie die folgenden Beispiele.
 ## <a name="download-data-from-data-lake-storage-gen1"></a>Herunterladen von Daten aus Data Lake Storage Gen1
 Vielleicht möchten Sie auch für Szenarien wie die folgenden Daten aus Azure Data Lake Storage Gen1 herunterladen oder verschieben:
 
-* Verschieben von Daten aus anderen Repositorys zur Verbindung mit Ihren vorhandenen Datenverarbeitungspipelines. Sie möchten z. B. Daten aus Data Lake Storage Gen1 in die Azure SQL-Datenbank oder auf eine lokale SQL Server-Instanz verschieben.
+* Verschieben von Daten aus anderen Repositorys zur Verbindung mit Ihren vorhandenen Datenverarbeitungspipelines. Sie möchten z. B. Daten aus Data Lake Storage Gen1 in Azure SQL-Datenbank oder SQL Server verschieben.
 * Herunterladen von Daten auf Ihren lokalen Computer für die Verarbeitung in IDE-Umgebungen beim Erstellen von Anwendungsprototypen.
 
-![Ausgeben von Daten aus Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/egress-data.png "Ausgeben von Daten aus Data Lake Storage Gen1")
+![Ausgehende Daten aus Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/egress-data.png "Ausgehende Daten aus Data Lake Storage Gen1")
 
 In solchen Fällen können Sie eine der folgenden Optionen verwenden:
 
@@ -130,5 +130,5 @@ Sie können eine Kombination aus Diensten verwenden, um visuelle Darstellungen v
 
 ![Visualisieren von Daten in Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/visualize-data.png "Visualisieren von Daten in Data Lake Storage Gen1")
 
-* Sie können beginnen, indem Sie [Daten mithilfe von Azure Data Factory aus Data Lake Storage Gen1 nach Azure SQL Data Warehouse verschieben](../data-factory/copy-activity-overview.md)
-* Danach können Sie [Power BI in Azure SQL Data Warehouse integrieren](../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) , um eine visuelle Darstellung der Daten zu erstellen.
+* Sie können beginnen, indem Sie [Daten mithilfe von Azure Data Factory aus Data Lake Storage Gen1 nach Azure Synapse Analytics verschieben](../data-factory/copy-activity-overview.md)
+* Danach können Sie [Power BI in Azure Synapse Analytics integrieren](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect), um eine visuelle Darstellung der Daten zu erstellen.

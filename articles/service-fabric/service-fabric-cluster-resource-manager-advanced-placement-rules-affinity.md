@@ -1,25 +1,19 @@
 ---
-title: Clusterressourcen-Manager von Service Fabric – Affinität | Microsoft Docs
-description: Übersicht über die Konfiguration der Affinität für Service Fabric-Dienste
+title: 'Resource Manager für Service Fabric-Cluster: Affinität'
+description: Übersicht über Dienstaffinität für Azure Service Fabric-Dienste und Anleitungen zur Konfiguration der Dienstaffinität.
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 678073e1-d08d-46c4-a811-826e70aba6c4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 29377492b90f366227ca7bedf85890b7734ea25f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9c141cd96877fd140b858d0aaed9197f2de80eca
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118414"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89005733"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurieren und Verwenden der Dienstaffinität in Service Fabric
 Affinität ist ein Steuerelement, das hauptsächlich bereitgestellt wird, um den Übergang von größeren monolithischen Anwendungen in die Welt der Cloud und Microservices zu vereinfachen. Sie wird auch zur Verbesserung der Leistung von Diensten verwendet, dies ist jedoch unter Umständen mit Nebenwirkungen verbunden.

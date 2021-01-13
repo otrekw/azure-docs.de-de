@@ -1,32 +1,25 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – manuelles Skalieren einer Web-App | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – manuelles Skalieren einer Web-App
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'Mit PowerShell: Manuelles Skalieren einer Web-App'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie eine App manuell skalieren.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: de5d4285-9c7d-4735-a695-288264047375
-ms.service: app-service
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: d740dbfb1b5d16d84872ef183a52454549be617e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 1b88e5928d276b58339cb0266505295808bc7a7c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098217"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91335482"
 ---
 # <a name="scale-a-web-app-manually-using-powershell"></a>Manuelles Skalieren einer Web-App mithilfe von PowerShell
 
 In diesem Szenario erfahren Sie, wie Sie eine Ressourcengruppe, einen App Service-Plan und eine Web-App erstellen. Danach skalieren Sie den App Service-Plan von einer auf mehrere Instanzen.
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -50,11 +43,12 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Erstellt einen App Service-Plan. |
+| [Set-AzAppServicePlan](/powershell/module/az.websites/set-azappserviceplan) | Ändert die Konfiguration eines App Service-Plans. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Erstellt die Web-App. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Ändert die Konfiguration einer Web-App. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Azure PowerShell-Beispiele für Azure App Service-Web-Apps finden Sie unter [Azure PowerShell-Beispiele](../samples-powershell.md).

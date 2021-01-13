@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
-ms.openlocfilehash: 8fd88221818d28c227c33719c03e522e815a408b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62097036"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74951478"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Einschränkungen von Azure Cloud Shell
 

@@ -1,28 +1,28 @@
 ---
-title: Hinzufügen einer Polygonebene zu Azure Maps | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie eine Polygonebene zum Azure Maps Web SDK hinzufügen.
-author: jingjing-z
-ms.author: jinzh
+title: Hinzufügen einer Polygonebene zu einer Karte | Microsoft Azure Maps
+description: Hier wird erläutert, wie Sie Karten Polygone oder Kreise hinzufügen. Erfahren Sie, wie Sie mit dem Azure Maps Web SDK geometrische Formen anpassen und wie sich diese einfach aktualisieren und verwalten lassen.
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: ca6c0f5e6fde5a31655ed17f4a016bf44216643f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 96553e75d4b982cfe67d03961d4356a3844f253c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976140"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890996"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Hinzufügen einer Polygonebene zur Karte
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe einer Polygonebene die Bereiche der `Polygon`- und `MultiPolygon`-Featuregeometrien auf einer Karte rendern können. Das Azure Maps-Web-SDK unterstützt auch die Erstellung von Kreisgeometrien gemäß der Definition im [erweiterten GeoJSON-Schema](extend-geojson.md#circle). Diese Kreise werden beim Rendern auf der Karte in Polygone umgewandelt. Alle Featuregeometrien können auch ganz einfach aktualisiert werden, wenn in der Klasse [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) umschlossen sind.
+In diesem Artikel erfahren Sie, wie Sie mithilfe einer Polygonebene die Bereiche der `Polygon`- und `MultiPolygon`-Featuregeometrien auf einer Karte rendern können. Das Azure Maps-Web-SDK unterstützt auch die Erstellung von Kreisgeometrien gemäß der Definition im [erweiterten GeoJSON-Schema](extend-geojson.md#circle). Diese Kreise werden beim Rendern auf der Karte in Polygone umgewandelt. Alle Featuregeometrien können ganz einfach aktualisiert werden, wenn sie in der Klasse [atlas.Shape](/javascript/api/azure-maps-control/atlas.shape) umschlossen sind.
 
 ## <a name="use-a-polygon-layer"></a>Verwenden einer Polygonebene 
 
-Wenn eine Polygonebene mit einer Datenquelle verbunden ist und in die Karte geladen wird, werden die Bereiche der `Polygon`- und `MultiPolygon`-Features gerendert. Der folgende Code zeigt das Erstellen eines Polygons, das Hinzufügen zu einer Datenquelle und das Rendern mit einer Polygonebene mit der [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)-Klasse.
+Wenn eine Polygonebene mit einer Datenquelle verbunden ist und in die Karte geladen wird, werden die Bereiche mit `Polygon`- und `MultiPolygon`-Features gerendert. Fügen Sie zum Erstellen eines Polygons dieses zu einer Datenquelle hinzu und rendern Sie es mit einer Polygonebene unter Verwendung der [PolygonLayer](/javascript/api/azure-maps-control/atlas.layer.polygonlayer)-KIasse.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -40,34 +40,36 @@ dataSource.add(new atlas.data.Feature(
     ]])
 ));
 
-//Create and add a polygon layer to render the polygon to the map.
+//Create and add a polygon layer to render the polygon to the map, below the label layer.
 map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
     fillColor: 'red',
-    opacaty: 0.5
-}));
+    fillOpacity: 0.7
+}), 'labels');
 ```
 
-Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben erläuterte Funktionalität.
+Nachfolgend finden Sie ein vollständiges und ausführbares Beispiel des oben genannten Codes.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Hinzufügen eines Polygons zu einer Karte ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>Add a polygon to a map</a> (Hinzufügen eines Polygons zu einer Karte) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Hinzufügen eines Polygons zu einer Karte ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>Add a polygon to a map</a> (Hinzufügen eines Polygons zu einer Karte) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="use-a-polygon-and-line-layer-together"></a>Verwenden von Polygon- und Linienebene
 
-Eine Linienebene kann verwendet werden, um die Kontur von Polygonen zu rendern. Das folgende Codebeispiel rendert ebenso wie das vorherige Beispiel ein Polygon, fügt aber eine Linienebene als zweite Ebene hinzu, die mit der Datenquelle verbunden ist.  
+Eine Linienebene wird verwendet, um die Kontur von Polygonen zu rendern. Das folgende Codebeispiel rendert ebenso wie das vorherige Beispiel ein Polygon, fügt aber eine Linienebene hinzu. Diese Linienebene ist eine zweite Ebene, die mit der Datenquelle verbunden ist.  
 
-<iframe height='500' scrolling='no' title='Polygon- und Linienebene zum Hinzufügen eines Polygons' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>Polygon- und Linienebene zum Hinzufügen eines Polygons</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<br/>
+
+<iframe height='500' scrolling='no' title='Polygon- und Linienebene zum Hinzufügen eines Polygons' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>Polygon- und Linienebene zum Hinzufügen eines Polygons</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="fill-a-polygon-with-a-pattern"></a>Füllen eines Polygons mit einem Muster
 
-Zusätzlich zum Füllen eines Polygons mit einer Farbe kann auch ein Bildmuster verwendet werden. Laden Sie ein Bildmuster in die Sprite-Ressourcen für Kartenbilder, und verweisen Sie dann mit der `fillPattern`-Eigenschaft der Polygonebene (PolygonLayer) auf dieses Bild.
+Zusätzlich zum Füllen eines Polygons mit einer Farbe können Sie auch ein Bildmuster verwenden, um das Polygon zu füllen. Laden Sie ein Bildmuster in die Sprite-Ressourcen für Kartenbilder, und verweisen Sie dann mit der `fillPattern`-Eigenschaft der Polygonebene (PolygonLayer) auf dieses Bild.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Füllmuster für Polygon" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Füllmuster für Polygon" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>Polygon fill pattern</a> (Füllmuster für Polygon) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -77,18 +79,18 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="customize-a-polygon-layer"></a>Anpassen einer Polygonebene
 
-Die Polygonebene verfügt nur über ein paar Formatierungsoptionen. Hier ist ein Tool, mit dem Sie diese testen können.
+Die Polygonebene verfügt nur über ein paar Formatierungsoptionen. Mit dem folgenden Tool können Sie diese ausprobieren.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='LXvxpg' src='//codepen.io/azuremaps/embed/LXvxpg/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/LXvxpg/'>LXvxpg</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='LXvxpg' src='//codepen.io/azuremaps/embed/LXvxpg/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/LXvxpg/'>LXvxpg</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <a id="addACircle"></a>
 
 ## <a name="add-a-circle-to-the-map"></a>Hinzufügen eines Kreises zur Karte
 
-Azure Maps verwendet eine erweiterte Version des GeoJSON-Schemas, das eine Definition für Kreise bereitstellt, wie [hier](extend-geojson.md#circle) beschrieben. Ein Kreis kann auf der Karte gerendert werden, indem ein `Point`-Feature erstellt wird, die eine `subType`-Eigenschaft mit einem Wert von `"Circle"` und eine `radius`-Eigenschaft mit einer Zahl aufweist, die den Radius in Metern darstellt. Beispiel:
+Azure Maps verwendet eine erweiterte Version des GeoJSON-Schemas, das eine Definition für Kreise bereitstellt, wie [hier](extend-geojson.md#circle) beschrieben. Ein Kreis wird auf der Karte gerendert, indem ein `Point`-Feature erstellt wird. Diese `Point` weist eine `subType`-Eigenschaft mit einem Wert von `"Circle"` und eine `radius`-Eigenschaft mit einer Zahl auf, die den Radius in Metern darstellt. 
 
 ```javascript
 {
@@ -104,16 +106,16 @@ Azure Maps verwendet eine erweiterte Version des GeoJSON-Schemas, das eine Defin
 }  
 ```
 
-Das Azure Maps Web-SDK wandelt diese `Point`-Features im Hintergrund in `Polygon`-Features um, die auf der Karte mit Polygon- und Linienebenen gerendert werden können, wie im folgenden Codebeispiel gezeigt.
+Das Azure Maps-Web-SDK wandelt diese `Point`-Features in `Polygon`-Features um. Dann werden diese Features auf der Karte mithilfe von Polygon- und Linienebenen gerendert, wie im folgenden Codebeispiel gezeigt.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Hinzufügen eines Kreises zu einer Karte' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>Add a circle to a map</a> (Hinzufügen eines Kreises zu einer Karte) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Hinzufügen eines Kreises zu einer Karte' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>Add a circle to a map</a> (Hinzufügen eines Kreises zu einer Karte) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="make-a-geometry-easy-to-update"></a>Vereinfachen der Aktualisierung einer Geometrie
 
-Eine `Shape`-Klasse umschließt ein [Geometry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest)- oder [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)-Objekt und vereinfacht seine Aktualisierung und Verwaltung. Eine Form kann erstellt werden, indem eine Geometrie und eine Reihe von Eigenschaften übergeben werden. Alternativ kann auch ein Feature übergeben werden, wie im folgenden Code zu sehen.
+Eine `Shape`-Klasse umschließt ein [Geometry](/javascript/api/azure-maps-control/atlas.data.geometry)- oder [Feature](/javascript/api/azure-maps-control/atlas.data.feature)-Objekt und vereinfacht die Aktualisierung und Verwaltung dieser Features. Um eine Formvariable zu instanziieren, übergeben Sie eine Geometrie oder einen Satz von Eigenschaften an den Formkonstruktor.
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.
@@ -123,11 +125,11 @@ var shape1 = new atlas.Shape(new atlas.data.Point[0,0], { myProperty: 1 });
 var shape2 = new atlas.Shape(new atlas.data.Feature(new atlas.data.Point[0,0], { myProperty: 1 });
 ```
 
-Das folgende Codebeispiel zeigt, wie Sie ein geoJSON-Kreisobjekt mit einer Shape-Klasse umschließen und die Eigenschaft für den Radius ganz einfach mithilfe eines Schiebereglers aktualisieren können. Wenn sich der Wert für „radius“ in „Shape“ ändert, wird die Anzeige des Kreises auf der Karte automatisch aktualisiert.
+Das folgende Codebeispiel zeigt, wie Sie ein geoJSON-Kreisobjekt mit einer Shape-Klasse umschließen. Wenn sich der Wert des Radius in der Form ändert, wird der Kreis automatisch auf der Karte gerendert.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Aktualisieren von Formeigenschaften' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>Aktualisieren von Formeigenschaften</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Aktualisieren von Formeigenschaften' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>Aktualisieren von Formeigenschaften</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -135,13 +137,13 @@ Das folgende Codebeispiel zeigt, wie Sie ein geoJSON-Kreisobjekt mit einer Shape
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 
 > [!div class="nextstepaction"]
-> [Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest)
+> [Polygon](/javascript/api/azure-maps-control/atlas.data.polygon)
 
 > [!div class="nextstepaction"]
-> [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)
+> [PolygonLayer](/javascript/api/azure-maps-control/atlas.layer.polygonlayer)
 
 > [!div class="nextstepaction"]
-> [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
+> [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 
 Weitere Codebeispiele, die Sie zu Ihren Karten hinzufügen können, finden Sie in den folgenden Artikeln:
 

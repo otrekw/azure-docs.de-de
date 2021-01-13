@@ -1,20 +1,19 @@
 ---
-title: 'Testen von Logik-Apps mit Simulationsdaten: Azure Logic Apps'
+title: Testen von Logik-Apps mit simulierten Daten
 description: Einrichten von statischen Ergebnissen zum Testen von Logik-Apps mit Simulationsdaten ohne Auswirkungen auf die Produktionsumgebungen
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
-ms.openlocfilehash: 45eeb20e5c572ddd98244b2e751322fcce1d4b76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 711d753203aeaeba50cea692053a37fcab2e9c7b
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597194"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027702"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testen von Logik-Apps mit Simulationsdaten durch die Einrichtung von statischen Ergebnissen
 
@@ -24,7 +23,7 @@ Wenn Sie beispielsweise statische Ergebnisse für die Outlook 365-Aktion „E-Ma
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -50,7 +49,7 @@ Wenn Sie beispielsweise statische Ergebnisse für die Outlook 365-Aktion „E-Ma
       |----------|-------------|
       | **Status** | Der Status der Aktion, der zurückgegeben werden soll |
       | **Statuscode** | Der genaue Statuscode, der zurückgeben werden soll |
-      | **Header** | Der Headerinhalt, der zurückgegeben werden soll |
+      | **Headers** | Der Headerinhalt, der zurückgegeben werden soll |
       |||
 
       ![Aktivieren Sie die Option „Statisches Ergebnis aktivieren“](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
@@ -89,7 +88,7 @@ Wenn es von einer früheren Ausführung Ihrer Logik-App noch Ausgaben gibt, die 
 
 1. Führen Sie alle unter [Einrichten von statischen Ergebnissen](#set-up-static-results) beschriebenen notwendigen Schritte aus, um das Feld **Statisches Ergebnis** zu öffnen.
 
-1. Wählen Sie anschließend eine der folgenden beiden Optionen aus: ****
+1. Wählen Sie anschließend eine der folgenden beiden Optionen aus **:**
 
    * Klicken Sie auf **Zum JSON-Modus wechseln** (![Auf „Zum JSON-Modus wechseln“ klicken](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)), um ein ganzes JSON-Objekt einzufügen:
 
@@ -103,7 +102,7 @@ Wenn es von einer früheren Ausführung Ihrer Logik-App noch Ausgaben gibt, die 
 
    ![JSON-Modus](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
-1. Klicken Sie auf **Fertig**, wenn Sie fertig sind. Stattdessen können Sie auch auf **Editor-Modus wechseln** (Auf ![„Editor-Modus wechseln“](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png) klicken) klicken, um zum Designer zurückzukehren.
+1. Klicken Sie auf **Fertig** , wenn Sie fertig sind. Stattdessen können Sie auch auf **Editor-Modus wechseln** (Auf ![„Editor-Modus wechseln“](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png) klicken) klicken, um zum Designer zurückzukehren.
 
 <a name="find-runs-mock-data"></a>
 
@@ -131,11 +130,11 @@ Wenn Sie die statischen Ergebnisse deaktivieren, werden die Werte Ihres letzten 
 
 1. Suchen Sie die Aktion, für die Sie statische Ausgaben deaktivieren möchten. Klicken Sie oben rechts in der Aktion auf das Becherglas (![Symbol für statische Ergebnisse](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)).
 
-   ![Statische Ergebnisse deaktivieren](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
+   ![Screenshot: Eine HTTP-Aktion, bei der Sie das Becherglassymbol auswählen können](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
 1. Klicken Sie auf **Statisches Ergebnis deaktivieren** > **Fertig**.
 
-   ![Statische Ergebnisse deaktivieren](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
+   ![Screenshot: Auswählbare Option „Statisches Ergebnis deaktivieren“](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
 ## <a name="reference"></a>Verweis
 

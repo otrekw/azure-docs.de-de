@@ -1,23 +1,20 @@
 ---
-title: Azure-Diagnoseerweiterung für Windows | Microsoft-Dokumentation
+title: Azure-Diagnoseerweiterung für Windows
 description: Überwachen von virtuellen Azure-Computern unter Windows mithilfe der Azure-Diagnoseerweiterung
-services: virtual-machines-windows
-documentationcenter: ''
 author: johnkemnetz
 manager: ashwink
-editor: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 58c520ecbaf764140748167e458c301ab56de375
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: c981214c69653b3a4a687a861cb348f3587def7c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708067"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89078757"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Azure-Diagnoseerweiterung für virtuelle Windows-Computer
 
@@ -37,11 +34,11 @@ Um die Azure-Diagnoseerweiterung verwenden zu können, muss der virtuelle Zielco
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
-[Die Schema- und Eigenschaftswerte der Azure-Diagnoseerweiterung werden in diesem Dokument beschrieben.](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
+[Die Schema- und Eigenschaftswerte der Azure-Diagnoseerweiterung werden in diesem Dokument beschrieben.](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
-Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Das im vorherigen Abschnitt erläuterte JSON-Schema kann in einer Azure Resource Manager-Vorlage zum Ausführen der Azure-Diagnoseerweiterung im Rahmen einer Bereitstellung mit einer Azure Resource Manager-Vorlage verwendet werden. Informationen finden Sie unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](extensions-diagnostics-template.md).
+Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Das im vorherigen Abschnitt erläuterte JSON-Schema kann in einer Azure Resource Manager-Vorlage zum Ausführen der Azure-Diagnoseerweiterung im Rahmen einer Bereitstellung mit einer Azure Resource Manager-Vorlage verwendet werden. Informationen finden Sie unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](../extensions/diagnostics-template.md).
 
 ## <a name="azure-cli-deployment"></a>Bereitstellung mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -59,9 +56,9 @@ az vm extension set \
 
 ## <a name="powershell-deployment"></a>PowerShell-Bereitstellung
 
-Sie können die Azure-Diagnoseerweiterung mithilfe des Befehls `Set-AzVMDiagnosticsExtension` einem vorhandenen virtuellen Computer hinzufügen. Informationen finden Sie außerdem unter [Aktivieren der Azure-Diagnose auf einer virtuellen Azure-Maschine unter Windows mithilfe von PowerShell](ps-extensions-diagnostics.md).
+Sie können die Azure-Diagnoseerweiterung mithilfe des Befehls `Set-AzVMDiagnosticsExtension` einem vorhandenen virtuellen Computer hinzufügen. Informationen finden Sie außerdem unter [Aktivieren der Azure-Diagnose auf einer virtuellen Azure-Maschine unter Windows mithilfe von PowerShell](../extensions/diagnostics-windows.md).
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
 ```powershell
@@ -92,4 +89,4 @@ Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benö
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zur Azure-Diagnoseerweiterung](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [Informationen zum Schema und zu den Versionen der Erweiterung](../../azure-monitor/platform/diagnostics-extension-schema.md)
+* [Informationen zum Schema und zu den Versionen der Erweiterung](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)

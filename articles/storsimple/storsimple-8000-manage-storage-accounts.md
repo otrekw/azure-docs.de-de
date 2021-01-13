@@ -1,5 +1,5 @@
 ---
-title: Verwalten der Anmeldeinformationen Ihres StorSimple-Speicherkontos für Geräte der Microsoft Azure StorSimple 8000-Serie | Microsoft-Dokumentation
+title: Verwalten von Anmeldeinformationen für Speicherkonten, Gerät der StorSimple 8000-Serie
 description: Beschreibt, wie Sie die Seite „Konfigurieren“ des StorSimple-Geräte-Manager-Diensts zum Hinzufügen, Bearbeiten oder Löschen von Speicherkonten verwenden oder wie Sie die Sicherheitsschlüssel für ein Speicherkonto rotieren.
 services: storsimple
 documentationcenter: NA
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 53aa442b86f5c82ded2f212a64f43852e6b3d2c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0df0c12d5942179e2492bfdc932fa25d126a2426
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632696"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016868"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Verwalten von Anmeldeinformationen für Speicherkonten mithilfe des StorSimple-Geräte-Manager-Diensts
 
@@ -33,14 +33,14 @@ Der Abschnitt **Konfiguration** des Blatts „StorSimple-Geräte-Manager-Dienst�
 
 In diesem Tutorial wird erläutert, wie Sie Anmeldeinformationen für ein Speicherkonto hinzufügen, bearbeiten oder löschen und die Sicherheitsschlüssel für ein Speicherkonto rotieren.
 
- ![Liste der Anmeldeinformationen für Speicherkonten](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
+ ![Liste der Anmeldeinformationen für Speicherkonten (1)](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
 
 Speicherkonten enthalten die Anmeldeinformationen, die das StorSimple-Gerät für den Zugriff auf das Speicherkonto bei Ihrem Clouddienstanbieter nutzt. Für Microsoft Azure-Speicherkonten sind dies die Anmeldeinformationen, wie z. B. Kontoname und primärer Zugriffsschlüssel. 
 
 Auf dem Blatt **Anmeldeinformationen des Speicherkontos** werden alle Speicherkonten, die für das Abrechnungsabonnement erstellt werden, in einem Tabellenformat mit den folgenden Informationen angezeigt:
 
 * **Name** – der eindeutige Name für das Konto, der bei dessen Erstellung zugewiesen wurde.
-* **SSL enabled** – zeigt an, ob SSL aktiviert ist und die Kommunikation zwischen Gerät und Cloud über einen sicheren Kanal verläuft.
+* **SSL enabled** – zeigt an, ob TLS aktiviert ist und die Kommunikation zwischen Gerät und Cloud über einen sicheren Kanal verläuft.
 * **Used by** – die Anzahl der Datenträger, die das Speicherkonto verwenden.
 
 Im Folgenden sind die häufigsten ausgeführten Aufgaben im Zusammenhang mit Speicherkonten aufgeführt:
@@ -55,12 +55,12 @@ Im Folgenden sind die häufigsten ausgeführten Aufgaben im Zusammenhang mit Spe
 Es gibt drei Typen von Speicherkonten, die mit dem StorSimple-Gerät verwendet werden können.
 
 * **Auto-generated storage accounts** – diese Art von Speicherkonto wird bei der ersten Erstellung des Dienstes automatisch generiert. Weitere Informationen zum Erstellen dieses Speicherkontos finden Sie unter [Schritt 1: Erstellen eines neuen Diensts](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) in [Bereitstellen Ihres lokalen StorSimple-Geräts](storsimple-8000-deployment-walkthrough-u2.md). 
-* **Storage accounts in the service subscription** – Azure-Speicherkonten, die demselben Abonnement zugeordnet sind wie der Dienst . Weitere Informationen zur Erstellung dieser Speicherkonten finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md). 
+* **Storage accounts in the service subscription** – Azure-Speicherkonten, die demselben Abonnement zugeordnet sind wie der Dienst . Weitere Informationen zur Erstellung dieser Speicherkonten finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-account-create.md). 
 * **Storage accounts outside of the service subscription** – Azure-Speicherkonten, die nicht mit dem Dienst verknüpft sind und wahrscheinlich schon vorhanden waren, bevor der Dienst erstellt wurde.
 
 ## <a name="add-a-storage-account"></a>Hinzufügen von Speicherkonten
 
-Sie können ein Speicherkonto hinzufügen, indem Sie einen eindeutigen Anzeigenamen und Anmeldeinformationen für den Zugriff angeben, die mit dem Speicherkonto (mit dem angegebenen Clouddienstanbieter) verknüpft sind. Sie haben außerdem die Möglichkeit, den SSL-Modus (Secure Sockets Layer) zu aktivieren, um einen sicheren Kanal für die Netzwerkkommunikation zwischen dem Gerät und der Cloud zu erstellen.
+Sie können ein Speicherkonto hinzufügen, indem Sie einen eindeutigen Anzeigenamen und Anmeldeinformationen für den Zugriff angeben, die mit dem Speicherkonto (mit dem angegebenen Clouddienstanbieter) verknüpft sind. Sie haben außerdem die Möglichkeit, den TLS-Modus (Transport Layer Security) – zuvor bekannt als SSL-Modus (Secure Sockets Layer) – zu aktivieren, um einen sicheren Kanal für die Netzwerkkommunikation zwischen dem Gerät und der Cloud zu erstellen.
 
 Sie können mehrere Konten für einen Clouddienstanbieter erstellen. Bedenken Sie jedoch, dass der Clouddienstanbieter nach der Erstellung eines Speicherkontos nicht mehr geändert werden kann.
 
@@ -86,7 +86,7 @@ Verwenden Sie die folgenden Verfahren, um Anmeldeinformationen für das Azure-Sp
    
     3. Geben Sie im Textfeld **Speicherkonto-Zugriffsschlüssel** den primären Zugriffsschlüssel für die Anmeldeinformationen Ihres Azure-Speicherkontos an. Sie finden diesen Schlüssel, indem Sie zum Azure Storage-Dienst navigieren, die Anmeldeinformationen Ihres Speicherkontos auswählen und auf **Manage account keys** (Kontoschlüssel verwalten) klicken. Nun können Sie den primären Zugriffsschlüssel kopieren.
    
-    4. Aktivieren Sie SSL, indem Sie auf die Schaltfläche **Aktivieren** klicken, um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem StorSimple-Geräte-Manager-Dienst und der Cloud zu erstellen. Klicken Sie nur dann auf die Schaltfläche **Deaktivieren**, wenn Sie in einer Private Cloud arbeiten.
+    4. Aktivieren Sie TLS, indem Sie auf die Schaltfläche **Aktivieren** klicken, um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem StorSimple-Geräte-Manager-Dienst und der Cloud zu erstellen. Klicken Sie nur dann auf die Schaltfläche **Deaktivieren**, wenn Sie in einer Private Cloud arbeiten.
    
     5. Klicken Sie auf **Hinzufügen**. Sie werden benachrichtigt, nachdem die Anmeldeinformationen des Speicherkontos erfolgreich erstellt wurden.
 
@@ -102,7 +102,7 @@ Sie können ein Speicherkonto, das von einem Volumecontainer verwendet wird, bea
 
 1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst. Klicken Sie im Abschnitt **Konfiguration** auf **Anmeldeinformationen des Speicherkontos**.
 
-    ![Anmeldeinformationen des Speicherkontos](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
+    ![Anmeldeinformationen des Speicherkontos (2)](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
 2. Klicken Sie auf dem Blatt **Anmeldeinformationen für Speicherkonten** in der Liste auf das Speicherkonto, das Sie bearbeiten möchten. 
 
@@ -159,11 +159,11 @@ Um den StorSimple-Geräte-Manager-Dienst über die Änderung zu informieren, mü
 
 3. Klicken Sie auf **Mehr...** , und wählen Sie dann **Zugriffsschlüssel synchronisieren** aus.   
 
-    ![Synchronisieren von Schlüsseln](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
+    ![Synchronisieren von Schlüsseln (2)](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
 4. Sie müssen den im Microsoft Azure Storage-Dienst zuvor geänderten Schlüssel im StorSimple-Geräte-Manager-Dienst aktualisieren. Wenn der primäre Zugriffsschlüssel geändert (erneut generiert) wurde, wählen Sie den **primären** Schlüssel aus. Wenn der sekundäre Schlüssel geändert wurde, wählen Sie den **sekundären** Schlüssel aus. Klicken Sie auf **Schlüssel synchronisieren**.
       
-      ![Synchronisieren von Schlüsseln](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
+      ![Synchronisieren von Schlüsseln (3)](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
 Sie werden benachrichtigt, sobald der Schlüssel erfolgreich synchronisiert wurde.
 
@@ -179,4 +179,3 @@ Sie werden benachrichtigt, sobald der Schlüssel erfolgreich synchronisiert wurd
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zur [StorSimple-Sicherheit](storsimple-8000-security.md)
 * Erfahren Sie mehr [Verwalten von StorSimple-Geräten mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
-

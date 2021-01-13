@@ -8,16 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 36f2fa65f47f824ccc3544f5c13b5f5ee9afd21a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 176060700f50a6ce6e8cb5cf622ee4c922e5a952
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721742"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845362"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Sprach- und Regionsunterstützung für die Freihanderkennungs-API
+
+[!INCLUDE [ink-recognizer-deprecation](includes/deprecation-note.md)]
 
 In diesem Artikel wird erläutert, welche Sprachen für die Freihanderkennungs-API unterstützt werden. In den folgenden Sprachen verfasste Freihandinhalte können von der API interpretiert und verarbeitet werden.
 
@@ -39,8 +41,8 @@ In diesem Artikel wird erläutert, welche Sprachen für die Freihanderkennungs-A
 | Niederländisch (Niederlande)                        |     `nl-NL`     |
 | Englisch (Australien)                        |     `en-AU`     |
 | Englisch (Kanada)                           |     `en-CA`     |
-| Englisch (Vereinigtes Königreich)                   |     `en-GB`     |
 | Englisch (Indien)                            |     `en-IN`     |
+| Walisisch (Großbritannien)                   |     `en-GB`     |
 | Englisch (USA)                    |     `en-US`     |
 | Finnisch                                    |     `fi-FI`     |
 | Französisch (Frankreich)                            |     `fr-FR`     |
@@ -65,23 +67,23 @@ In diesem Artikel wird erläutert, welche Sprachen für die Freihanderkennungs-A
 | Polnisch                                     |     `pl-PL`     |
 | Portugiesisch (Brasilien)                        |     `pt-BR`     |
 | Portugiesisch (Portugal)                      |     `pt-PT`     |
-| Rätoromanisch                                    |     `rm-CH`     |
 | Rumänisch                                   |     `ro-RO`     |
+| Rätoromanisch                                    |     `rm-CH`     |
 | Russisch                                    |     `ru-RU`     |
 | Schottisches Gälisch                            |     `gd-GB`     |
-| Nord-Sotho                           |    `nso-ZA`     |
 | Serbisch (kyrillisch, Bosnien und Herzegowina) |  `sr-Cyrl-BA`   |
 | Serbisch (kyrillisch, Montenegro)             |  `sr-Cyrl-ME`   |
 | Serbisch (kyrillisch, Serbien)                 |  `sr-Cyrl-RS`   |
 | Serbisch (lateinisch, Bosnien und Herzegowina)    |  `sr-Latn-BA`   |
 | Serbisch (lateinisch, Montenegro)                |  `sr-Latn-ME`   |
 | Serbisch (lateinisch, Serbien)                    |  `sr-Latn-RS`   |
+| Nord-Sotho                           |    `nso-ZA`     |
 | Tswana (Südafrika)                    |     `tn-ZA`     |
 | Slowakisch                                     |     `sk-SK`     |
 | Slowenisch                                  |     `sl-SI`     |
 | Spanisch (Argentinien)                        |     `es-AR`     |
-| Spanisch (Spanien)                            |     `es-ES`     |
 | Spanisch (Mexiko)                           |     `es-MX`     |
+| Spanisch (Spanien)                            |     `es-ES`     |
 | Schwedisch (Schweden)                           |     `sv-SE`     |
 | Türkisch                                    |     `tr-TR`     |
 | Walisisch                                      |     `cy-GB`     |

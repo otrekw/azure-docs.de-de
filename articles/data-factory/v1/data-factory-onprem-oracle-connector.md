@@ -1,28 +1,27 @@
 ---
-title: Kopieren von Daten in bzw. aus Oracle mit Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten in bzw. aus Oracle mit Data Factory
 description: Informationen zum Kopieren von Daten in eine und aus einer lokalen Oracle-Datenbank mit Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 3c20aa95-a8a1-4aae-9180-a6a16d64a109
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 51fae63b6db99f28a5b3bed056dadc0c2513ff0f
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1aa8708701af37834ae3b6cdc42de9c691ccacec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839935"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86084289"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopieren von Daten in eine bzw. aus einer lokalen Oracle-Instanz mit Azure Data Factory
 
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-onprem-oracle-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-oracle.md)
 
@@ -32,7 +31,7 @@ ms.locfileid: "67839935"
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in eine und aus einer lokalen Oracle-Datenbank zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 Sie können Daten *aus Oracle-Datenbank* in die folgenden Datenspeicher kopieren:
 
@@ -81,7 +80,7 @@ Wenn Sie zum Kopieren der Pipeline den Kopier-Assistenten verwenden, wird der Tr
 
 Sie können eine Pipeline erstellen, die eine Kopieraktivität aufweist. Die Pipeline verschiebt Daten in eine oder aus einer lokalen Oracle-Datenbank mithilfe verschiedener Tools oder APIs.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem Kopier-Assistenten. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Am einfachsten erstellen Sie eine Pipeline mit dem Kopier-Assistenten. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
 Sie können auch eines der folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, eine **Azure Resource Manager-Vorlage**, die **.NET-API** oder die **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine schrittweise Anleitung, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
@@ -557,7 +556,9 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 
 **Fehlermeldung**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```text
+Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```
 
 **Mögliche Ursachen**
 
@@ -577,13 +578,17 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 
 **Fehlermeldung**
 
-    Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```text
+Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```
 
 **Lösung**
 
 Möglicherweise müssen Sie die Abfragezeichenfolge in Ihrer Kopieraktivität entsprechend der Konfiguration von Datumsangaben in Ihrer Oracle-Datenbank anpassen. Dies ist ein Beispiel (mit der Funktion **to_date**):
 
-    "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```console   
+"oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```
 
 
 ## <a name="type-mapping-for-oracle"></a>Typzuordnung für Oracle
@@ -595,17 +600,17 @@ Wie unter [Datenverschiebungsaktivitäten](data-factory-data-movement-activities
 
 Wenn Sie Daten aus Oracle verschieben, werden die folgenden Zuordnungen zwischen dem Oracle-Datentyp und dem .NET-Typ verwendet (und umgekehrt):
 
-| Datentyp "Oracle" | Datentyp ".NET Framework" |
+| Oracle-Datentyp | Datentyp ".NET Framework" |
 | --- | --- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(nur unterstützt für Oracle 10g oder höher bei Verwendung eines Microsoft-Treibers) |
 | CHAR |String |
 | CLOB |String |
-| DATE |DateTime |
-| FLOAT |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
+| DATE |Datetime |
+| GLEITKOMMAZAHL |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | INTEGER |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | INTERVAL YEAR TO MONTH |Int32 |
-| INTERVAL DAY TO SECOND |Zeitraum |
+| INTERVAL DAY TO SECOND |TimeSpan |
 | LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
@@ -614,12 +619,12 @@ Wenn Sie Daten aus Oracle verschieben, werden die folgenden Zuordnungen zwischen
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
-| TIMESTAMP |DateTime |
-| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
-| TIMESTAMP WITH TIME ZONE |DateTime |
+| timestamp |Datetime |
+| TIMESTAMP WITH LOCAL TIME ZONE |Datetime |
+| TIMESTAMP WITH TIME ZONE |Datetime |
 | UNSIGNED INTEGER |Number |
 | VARCHAR2 |String |
-| XML |string |
+| XML |String |
 
 > [!NOTE]
 > Die Datentypen **INTERVAL YEAR TO MONTH** und **INTERVAL DAY TO SECOND** werden bei Verwendung eines Microsoft-Treibers nicht unterstützt.

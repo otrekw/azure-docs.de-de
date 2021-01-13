@@ -1,18 +1,18 @@
 ---
-title: Behandeln vorübergehender Konnektivitätsfehler für Azure Database for MariaDB | Microsoft-Dokumentation
+title: Behandeln vorübergehender Konnektivitätsfehler (Azure Database for MariaDB)
 description: Erfahren Sie, wie Sie vorübergehende Konnektivitätsfehler für Azure Database for MariaDB behandeln.
 keywords: MySQL-Verbindung, Verbindungszeichenfolge, Verbindungsprobleme, vorübergehender Fehler, Verbindungsfehler
-author: jan-eng
-ms.author: janeng
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: f5f5915e6fdb240fa519ee10526c935a524cb5b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 3/18/2020
+ms.openlocfilehash: 2a651d87411654f1a52c4a097f115ba848ce569c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61042215"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541673"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>Behandeln vorübergehender Konnektivitätsfehler für Azure Database for MariaDB
 
@@ -36,7 +36,7 @@ Die ersten beiden Fälle können relativ unkompliziert behandelt werden. Versuch
 * Erhöhen Sie bei jeder folgenden Wiederholung die Wartezeit exponentiell auf bis zu 60 Sekunden.
 * Legen Sie eine maximale Anzahl von Wiederholungen fest, nach denen Ihre Anwendung den Vorgang als fehlerhaft ansieht.
 
-Wenn bei einer Verbindung mit einer aktiven Transaktion ein Fehler auftritt, ist die ordnungsgemäße Wiederherstellung schwieriger. Es gibt zwei Fälle: Wenn die Transaktion schreibgeschützt war, können Sie die Verbindung ohne Gefahr erneut herstellen und die Transaktion wiederholen. Wenn die Transaktion jedoch auch in die Datenbank schreibt, müssen Sie bestimmen, ob für die Transaktion ein Rollback ausgeführt wurde oder ob sie vor dem Auftreten des vorübergehenden Fehlers erfolgreich ausgeführt wurde. In diesem Fall haben Sie möglicherweise nur keine Bestätigung für den Commit vom Datenbankserver erhalten.
+Wenn bei einer Verbindung mit einer aktiven Transaktion ein Fehler auftritt, ist die ordnungsgemäße Wiederherstellung schwieriger. Es gibt zwei Fälle: Wenn die Transaktion schreibgeschützt war, können Sie die Verbindung ohne Gefahr erneut herstellen und die Transaktion wiederholen. Wenn die Transaktion jedoch auch in die Datenbank schreibt, müssen Sie bestimmen, ob für die Transaktion ein Rollback ausgeführt wurde oder ob sie vor dem Auftreten des vorübergehenden Fehlers erfolgreich ausgeführt wurde. In diesem Fall haben Sie vielleicht keine Bestätigung für den Commit vom Datenbankserver empfangen.
 
 Sie können dazu z.B. eine eindeutige ID auf dem Client generieren, die für alle Wiederholungen verwendet wird. Übergeben Sie diese eindeutige ID als Teil der Transaktion an den Server, und speichern Sie sie in einer Spalte mit einer unique-Einschränkung. Auf diese Weise können Sie die Transaktion ohne Risiko erneut ausführen. Sie ist erfolgreich, wenn für die vorherige Transaktion ein Rollback ausgeführt wurde und die vom Client generierte eindeutige ID noch nicht im System vorhanden ist. Sie führt zu einem Fehler, wenn ein doppelter Schlüssel vorhanden ist. Dies ist der Fall, wenn die eindeutige ID zuvor gespeichert wurde, da die vorherige Transaktion erfolgreich abgeschlossen wurde.
 

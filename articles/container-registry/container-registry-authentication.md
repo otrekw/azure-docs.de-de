@@ -1,44 +1,80 @@
 ---
-title: Authentifizieren mit einer Azure-Containerregistrierung
-description: Authentifizierungsoptionen für eine Azure-Containerregistrierung, wie etwa Anmelden mit einer Azure Active Directory-Identität, mithilfe von Dienstprinzipalen sowie mittels optionalen Administratoranmeldeinformationen.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Authentifizierungsoptionen für die Registrierung
+description: Hier erfahren Sie mehr über Authentifizierungsoptionen für eine private Azure-Containerregistrierung wie z. B. das Anmelden mit einer Azure Active Directory-Identität, mithilfe von Dienstprinzipalen sowie mittels optionalen Administratoranmeldeinformationen.
 ms.topic: article
-ms.date: 12/21/2018
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a55cba27c676b283a4da490f05dd6fc672e10d49
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 01/30/2020
+ms.openlocfilehash: 5315c11e0f1e2c859384e3783ae4be5d709adb42
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032388"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148570"
 ---
-# <a name="authenticate-with-a-private-docker-container-registry"></a>Authentifizieren mit einer privaten Docker-Containerregistrierung
+# <a name="authenticate-with-an-azure-container-registry"></a>Authentifizieren mit einer Azure-Containerregistrierung
 
 Es gibt mehrere Möglichkeiten, sich mit einer Azure-Containerregistrierung zu authentifizieren, von denen jede für eine oder mehrere Registrierungsverwendungsszenarien gilt.
 
 Empfohlene Möglichkeiten umfassen die Authentifizierung bei einer Registrierung durch [individuelle Anmeldung](#individual-login-with-azure-ad), oder Ihre Anwendungen und Containerorchestratoren können eine unbeaufsichtigte oder „monitorlose“ Authentifizierung mithilfe eines Azure Active Directory-[Dienstprinzipals](#service-principal) (Azure AD) durchführen.
 
+## <a name="authentication-options"></a>Authentifizierungsoptionen
+
+In der folgenden Tabelle werden die verfügbaren Authentifizierungsmethoden und typische Szenarien aufgeführt. Weitere Informationen finden Sie in den verlinkten Inhalten.
+
+| Methode                               | Authentifizierung                                           | Szenarien                                                            | Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)                             | Einschränkungen                                |
+|---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
+| [Individuelle AD-Identität](#individual-login-with-azure-ad)                 | `az acr login`  in der Azure CLI                              | Interaktiver Push/Pull von Entwicklern oder Testern                                    | Ja                              | Das AD-Token muss alle 3 Stunden erneuert werden.     |
+| [AD-Dienstprinzipal](#service-principal)                   | `docker login`<br/><br/>`az acr login` in der Azure CLI<br/><br/> Registrierungsanmeldungseinstellungen in APIs oder Tools<br/><br/> [PullSecret in Kubernetes](container-registry-auth-kubernetes.md)                                               | Unbeaufsichtigter Push aus der CI/CD-Pipeline<br/><br/> Unbeaufsichtigter Pull in Azure oder externe Dienste  | Ja                              | Standardablaufzeit für Dienstprinzipalkennwörter beträgt 1 Jahr       |                                                           
+| [Integration mit Azure Kubernetes Service](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                     | Registrierung anfügen, wenn AKS-Cluster erstellt oder aktualisiert werden  | Unbeaufsichtigter Pull in AKS-Cluster                                                  | Nein, Zugriff ist nur per Pull möglich             | Nur mit AKS-Cluster verfügbar            |
+| [Verwaltete Identität für Azure-Ressourcen](container-registry-authentication-managed-identity.md)   | `docker login`<br/><br/> `az acr login`  in der Azure CLI                                       | Unbeaufsichtigter Push aus der Azure CI/CD-Pipeline<br/><br/> Unbeaufsichtigter Pull in Azure-Dienste<br/><br/>   | Ja                              | Kann nur über Azure-Dienste verwendet werden, die [verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)              |
+| [Administratorbenutzer](#admin-account)                             | `docker login`                                          | Interaktiver Push/Pull durch einen einzelnen Entwickler oder Tester<br/><br/>Portalbereitstellung eines Images aus der Registrierung in Azure App Service oder Azure Container Instances                      | Nein, der Zugriff erfolgt immer per Pull/Push.  | Nur ein Konto pro Registrierung, wird nicht für mehrere Benutzer empfohlen         |
+| [Repositorybezogene Zugriffstoken](container-registry-repository-scoped-permissions.md)                | `docker login`<br/><br/>`az acr login` in der Azure CLI   | Interaktiver Push/Pull zum Repository durch einen einzelnen Entwickler oder Tester<br/><br/> Unbeaufsichtigter Push/Pull zum Repository durch ein einzelnes System oder ein externes Gerät                  | Ja                              | Derzeit nicht mit AD-Identität integriert  |
+
 ## <a name="individual-login-with-azure-ad"></a>Individuelle Anmeldung bei Azure AD
 
-Authentifizieren Sie sich bei der direkten Arbeit mit der Registrierung wie der Pullübertragung von Images auf Ihre und der Pushübertragung von Images von Ihrer Entwicklungsarbeitsstation mithilfe des [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) -Befehls in der [Azure CLI](/cli/azure/install-azure-cli):
+Wenn Sie direkt mit Ihrer Registrierung arbeiten, z. B. beim Pullen von Images auf eine bzw. beim Pushen von Images von einer Entwicklungsarbeitsstation in eine von Ihnen erstellte Registrierung, authentifizieren Sie sich mithilfe Ihrer individuellen Azure-Identität. Melden Sie sich mit [az login](/cli/azure/reference-index#az-login) bei der [Azure CLI](/cli/azure/install-azure-cli) an, und führen Sie dann den Befehl [az acr login](/cli/azure/acr#az-acr-login) aus:
 
 ```azurecli
+az login
 az acr login --name <acrName>
 ```
 
-Bei der Anmeldung mit `az acr login` verwendet die CLI das Token, das erstellt wurde, als Sie [az login](/cli/azure/reference-index#az-login) ausgeführt haben, zur nahtlosen Authentifizierung Ihrer Sitzung mit Ihrer Registrierung. Sobald Sie sich auf diese Weise angemeldet haben, werden Ihre Anmeldeinformationen zwischengespeichert, und nachfolgende `docker`-Befehle in Ihrer Sitzung benötigen weder einen Benutzernamen noch das Kennwort. 
+Bei der Anmeldung mit `az acr login` verwendet die CLI das Token, das erstellt wurde, als Sie `az login` ausgeführt haben, zur nahtlosen Authentifizierung Ihrer Sitzung mit Ihrer Registrierung. Die Docker CLI und der Docker Daemon müssen in Ihrer Umgebung installiert sein und ausgeführt werden, damit der Authentifizierungsfluss abgeschlossen werden kann. `az acr login` verwendet den Docker-Client, um ein Azure Active Directory-Token in der Datei `docker.config` festzulegen. Sobald Sie sich auf diese Weise angemeldet haben, werden Ihre Anmeldeinformationen zwischengespeichert, und nachfolgende `docker`-Befehle in Ihrer Sitzung benötigen weder einen Benutzernamen noch das Kennwort.
 
-Für den Zugriff auf die Registrierung ist das von `az acr login` verwendete Token 1 Stunde lang gültig. Daher empfehlen wir Ihnen, sich immer in der Registrierung anzumelden, bevor Sie einen `docker`-Befehl ausführen. Wenn das Token abgelaufen ist, können Sie es aktualisieren, indem Sie den `az acr login`-Befehl erneut zur Authentifizierung verwenden. 
+> [!TIP]
+> Verwenden Sie außerdem `az acr login` zum Authentifizieren einer einzelnen Identität, wenn Sie Artefakte an Ihre Registrierung pushen/pullen möchten, die keine Docker-Images sind (z. B. [OCI-Artefakte](container-registry-oci-artifacts.md)).  
 
-Die Verwendung von `az acr login` mit Azure-Identitäten ermöglicht [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md). In einigen Szenarien können Sie sich bei einer Registry mit Ihrer eigenen individuellen Identität in Azure AD anmelden. Für dienstübergreifende Szenarien oder um die Anforderungen einer Arbeitsgruppe zu erfüllen, in der Sie keinen individuellen Zugriff verwalten möchten, können Sie sich auch mit einer [verwalteten Identität für Azure-Ressourcen](container-registry-authentication-managed-identity.md) anmelden.
+Für den Zugriff auf die Registrierung ist das von `az acr login` verwendete Token **3 Stunden** lang gültig. Daher empfehlen wir Ihnen, sich immer bei der Registrierung anzumelden, bevor Sie einen `docker`-Befehl ausführen. Wenn das Token abgelaufen ist, können Sie es aktualisieren, indem Sie den `az acr login`-Befehl erneut zur Authentifizierung verwenden. 
+
+Die Verwendung von `az acr login` mit Azure-Identitäten ermöglicht [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). In einigen Szenarien können Sie sich bei einer Registrierung mit Ihrer eigenen individuellen Identität in Azure AD anmelden, oder Sie konfigurieren andere Azure-Benutzer mit spezifischen [Azure-Rollen und Berechtigungen](container-registry-roles.md). Bei dienstübergreifenden Szenarios oder zum Erfüllen der Anforderungen einer Arbeitsgruppe oder eines Entwicklungsworkflows, für die Sie den Zugriff nicht individuell verwalten möchten, können Sie sich auch mit einer [verwalteten Identität für Azure-Ressourcen anmelden](container-registry-authentication-managed-identity.md).
+
+### <a name="az-acr-login-with---expose-token"></a>„az acr login“ mit „--expose-token“
+
+In einigen Fällen müssen Sie sich möglicherweise mit `az acr login` authentifizieren, wenn der Docker-Daemon nicht in Ihrer Umgebung ausgeführt wird. Beispielsweise kann es erforderlich sein, `az acr login` in einem Skript in Azure Cloud Shell auszuführen, das die Docker CLI bereitstellt, den Docker-Daemon aber nicht ausführt.
+
+Führen Sie für dieses Szenario `az acr login` zuerst mit dem Parameter `--expose-token` aus. Diese Option macht ein Zugriffstoken verfügbar, anstatt sich über die Docker CLI anzumelden.
+
+```azurecli
+az acr login --name <acrName> --expose-token
+```
+
+Die Ausgabe zeigt das hier abgekürzte Zugriffstoken an:
+
+```console
+{
+  "accessToken": "eyJhbGciOiJSUzI1NiIs[...]24V7wA",
+  "loginServer": "myregistry.azurecr.io"
+}
+``` 
+
+Führen Sie dann `docker login` aus, wobei Sie `00000000-0000-0000-0000-000000000000` als Benutzernamen über und das Zugriffstoken als Kennwort verwenden:
+
+```console
+docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password eyJhbGciOiJSUzI1NiIs[...]24V7wA
+```
 
 ## <a name="service-principal"></a>Dienstprinzipal
 
-Wenn Sie Ihrer Registrierung einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) zuweisen, kann Ihre Anwendung oder Ihr Dienst diesen für die monitorlose Authentifizierung verwenden. Dienstprinzipale ermöglichen [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md) auf eine Registrierung, und Sie können einer Registrierung mehrere Dienstprinzipale zuweisen. Mit mehreren Dienstprinzipalen können Sie unterschiedliche Zugriffsberechtigungen für verschiedene Anwendungen definieren.
+Wenn Sie Ihrer Registrierung einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) zuweisen, kann Ihre Anwendung oder Ihr Dienst diesen für die monitorlose Authentifizierung verwenden. Dienstprinzipale ermöglichen [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) für eine Registrierung, und Sie können einer Registrierung mehrere Dienstprinzipale zuweisen. Mit mehreren Dienstprinzipalen können Sie unterschiedliche Zugriffsberechtigungen für verschiedene Anwendungen definieren.
 
 Die folgenden Rollen für eine Containerregistrierung sind verfügbar:
 
@@ -50,11 +86,13 @@ Die folgenden Rollen für eine Containerregistrierung sind verfügbar:
 
 Eine vollständige Liste der Rollen finden Sie unter [Azure Container Registry – Rollen und Berechtigungen](container-registry-roles.md).
 
-Informationen zu CLI-Skripts zum Erstellen eines Dienstprinzipals für die Authentifizierung mit einer Azure-Containerregistrierung oder eine Anleitung zur Verwendung eines Dienstprinzipals finden Sie unter [Azure Container Registry-Authentifizierung mit Dienstprinzipalen](container-registry-auth-service-principal.md).
+Informationen über CLI-Skripts zum Erstellen eines Dienstprinzipals für die Authentifizierung mit einer Azure-Containerregistrierung und weitere Anweisungen finden Sie unter [Azure Container Registry-Authentifizierung mit Dienstprinzipalen](container-registry-auth-service-principal.md).
 
 ## <a name="admin-account"></a>Administratorkonto
 
-Jede Containerregistrierung enthält ein Administratorbenutzerkonto, das standardmäßig deaktiviert ist. Sie können den Administratorbenutzer aktivieren und seine Anmeldeinformationen im Azure-Portal oder mithilfe der Azure CLI oder anderer Azure-Tools verwalten.
+Jede Containerregistrierung enthält ein Administratorbenutzerkonto, das standardmäßig deaktiviert ist. Sie können den Administratorbenutzer aktivieren und seine Anmeldeinformationen im Azure-Portal oder mithilfe der Azure CLI oder anderer Azure-Tools verwalten. Das Administratorkonto besitzt vollständige Berechtigungen für die Registrierung.
+
+Das Administratorkonto ist zurzeit für einige Szenarien erforderlich, um ein Image aus einer Containerregistrierung in bestimmten Azure-Diensten bereitzustellen. Beispielsweise ist das Administratorkonto erforderlich, wenn Sie ein Containerimage im Portal aus einer Registrierung direkt in [Azure Container Instances](../container-instances/container-instances-using-azure-container-registry.md#deploy-with-azure-portal) oder in [Azure-Web-Apps für Container](container-registry-tutorial-deploy-app.md) bereitstellen.
 
 > [!IMPORTANT]
 > Das Administratorkonto ist dafür ausgelegt, dass ein einzelner Benutzer auf die Registrierung zugreift (hauptsächlich für Testzwecke). Sie sollten die Administratorkonto-Anmeldeinformationen nicht für mehrere Benutzer freigeben. Alle Benutzer, die sich mit dem Administratorkonto authentifizieren, werden als ein einzelner Benutzer mit Push- und Pullzugriff auf die Registrierung angezeigt. Wenn dieses Konto geändert oder deaktiviert wird, wird der Zugriff auf die Registrierung für alle Benutzer deaktiviert, die dessen Anmeldeinformationen verwenden. Für Benutzer und Dienstprinzipale wird für monitorlose Szenarien einzelne Identität empfohlen.
@@ -68,7 +106,7 @@ docker login myregistry.azurecr.io
 
 Best Practices zur Verwaltung von Anmeldeinformationen finden Sie in der Befehlsreferenz [Docker-Anmeldung](https://docs.docker.com/engine/reference/commandline/login/).
 
-Um den Administratorbenutzer für eine vorhandene Registrierung zu aktivieren, können Sie den `--admin-enabled`-Parameter des [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update)-Befehls in der Azure CLI verwenden:
+Um den Administratorbenutzer für eine vorhandene Registrierung zu aktivieren, können Sie den `--admin-enabled`-Parameter des [az acr update](/cli/azure/acr#az-acr-update)-Befehls in der Azure CLI verwenden:
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

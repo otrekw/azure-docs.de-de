@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 6faab5bffaddbbd5d8deb9c3834bf3d8fe3e3445
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 4cec8f77cacc5d3492dd6a5f8a8baa060f910763
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058644"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650595"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Zurücksetzen eines lokalen Windows-Kennworts im Offlinemodus für einen virtuellen Azure-Computer
 Sie können das lokale Windows-Kennwort eines virtuellen Computers in Azure im [Azure-Portal oder mithilfe von Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zurücksetzen, sofern der Azure-Gast-Agent installiert ist. Diese Methode ist die einfachste Möglichkeit zum Zurücksetzen eines Kennworts für einen virtuellen Azure-Computer. Wenn der Azure-Gast-Agent nicht reagiert oder nach dem Hochladen eines benutzerdefinierten Images nicht installiert wird, können Sie ein Windows-Kennwort manuell zurücksetzen. In diesem Artikel wird erläutert, wie das Kennwort eines lokalen Kontos durch Anfügen des virtuellen Quellbetriebssystem-Datenträgers an einen anderen virtuellen Computer zurückgesetzt wird. Die in diesem Artikel beschriebenen Schritte gelten nicht für Windows-Domänencontroller. 
@@ -59,29 +59,22 @@ Versuchen Sie zunächst immer, ein Kennwort im [Azure-Portal oder mithilfe von A
      Version=1
      ```
      
-     ![Erstellen von „gpt.ini“](./media/reset-local-password-without-agent/create-gpt-ini.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
 
-4. Erstellen Sie `scripts.ini` in `\Windows\System32\GroupPolicy\Machines\Scripts\`. Stellen Sie sicher, dass ausgeblendete Ordner angezeigt werden. Erstellen Sie gegebenenfalls den Ordner `Machine` oder `Scripts`.
+4. Erstellen Sie `scripts.ini` in `\Windows\System32\GroupPolicy\Machine\Scripts\`. Stellen Sie sicher, dass ausgeblendete Ordner angezeigt werden. Erstellen Sie gegebenenfalls den Ordner `Machine` oder `Scripts`. 
    
    * Fügen Sie in der erstellten Datei `scripts.ini` die folgenden Zeilen ein:
      
      ```
      [Startup]
-     0CmdLine=C:\Windows\System32\FixAzureVM.cmd
+     0CmdLine=FixAzureVM.cmd
      0Parameters=
      ```
      
-     ![Erstellen von „scripts.ini“](./media/reset-local-password-without-agent/create-scripts-ini.png)
-
-5. Erstellen Sie `FixAzureVM.cmd` in `\Windows\System32` mit dem folgenden Inhalt, und ersetzen Sie dabei `<username>` und `<newpassword>` durch Ihre eigenen Werte:
-   
-    ```
-    net user <username> <newpassword> /add
-    net localgroup administrators <username> /add
-    net localgroup "remote desktop users" <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-1.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt." <username> /add
     ```
 
-    ![Erstellen von „FixAzureVM.cmd“](./media/reset-local-password-without-agent/create-fixazure-cmd.png)
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
    
     Beim Definieren des neuen Kennworts für den virtuellen Computer müssen Sie die konfigurierten Komplexitätsanforderungen für das Kennwort erfüllen.
 
@@ -93,7 +86,7 @@ Versuchen Sie zunächst immer, ein Kennwort im [Azure-Portal oder mithilfe von A
 
 9. Entfernen Sie die folgenden Dateien aus der Remotesitzung mit dem neuen virtuellen Computer, um die Umgebung zu bereinigen:
     
-    * In „%windir%\System32“
+    * Aus %windir%\System32\GroupPolicy\Machine\Scripts\Startup
       * Entfernen von „FixAzureVM.cmd“
     * Aus %windir%\System32\GroupPolicy\Machine\Scripts
       * Entfernen von „scripts.ini“
@@ -102,40 +95,42 @@ Versuchen Sie zunächst immer, ein Kennwort im [Azure-Portal oder mithilfe von A
 
 ## <a name="detailed-steps-for-classic-vm"></a>Ausführliche Schritte für klassische virtuelle Computer
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 > [!NOTE]
 > Die Schritte gelten nicht für Windows-Domänencontroller. Sie können nur für einen eigenständigen Server oder einen Server ausgeführt werden, der Mitglied einer Domäne ist.
 
-Versuchen Sie zunächst immer, ein Kennwort im [Azure-Portal oder mithilfe von Azure PowerShell](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/reset-rdp) zurückzusetzen, bevor Sie die folgenden Schritte ausführen. Vergewissern Sie sich zunächst, dass Sie über eine Sicherung des virtuellen Computers verfügen. 
+Versuchen Sie zunächst immer, ein Kennwort im [Azure-Portal oder mithilfe von Azure PowerShell](/previous-versions/azure/virtual-machines/windows/classic/reset-rdp) zurückzusetzen, bevor Sie die folgenden Schritte ausführen. Vergewissern Sie sich zunächst, dass Sie über eine Sicherung des virtuellen Computers verfügen. 
 
 1. Löschen Sie den betroffenen virtuellen Computer im Azure-Portal. Durch das Löschen des virtuellen Computers werden lediglich die Metadaten, d.h. der Verweis des virtuellen Computers in Azure, gelöscht. Die virtuellen Datenträger werden beim Löschen des virtuellen Computers beibehalten.
    
    * Wählen Sie im Azure-Portal den virtuellen Computer aus, und klicken Sie auf *Löschen*:
      
-     ![Löschen einer vorhandener VM](./media/reset-local-password-without-agent/delete-vm-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/delete-vm-classic.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
 
 2. Fügen Sie den Betriebssystemdatenträger des virtuellen Quellcomputers an den virtuellen Problembehandlungscomputer an. Der virtuelle Problembehandlungscomputer muss sich in der gleichen Region wie der Betriebssystemdatenträger des virtuellen Quellcomputers befinden (z.B. `West US`):
    
    1. Wählen Sie den virtuellen Problembehandlungscomputer im Azure-Portal aus. Klicken Sie auf *Datenträger* | *Vorhandenen anfügen*:
      
-      ![Anfügen eines vorhandenen Datenträgers](./media/reset-local-password-without-agent/disks-attach-existing-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-existing-classic.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
      
    2. Wählen Sie *VHD-Datei* und dann das Speicherkonto aus, das den virtuellen Quellcomputer enthält:
      
-      ![Auswählen des Speicherkontos](./media/reset-local-password-without-agent/disks-select-storage-account-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-storage-account-classic.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
      
    3. Aktivieren Sie das Kontrollkästchen *Klassische Speicherkonten anzeigen*, und wählen Sie anschließend den Quellcontainer aus. Normalerweise ist *vhds* der Quellcontainer:
      
-      ![Auswählen des Speichercontainers](./media/reset-local-password-without-agent/disks-select-container-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-classic.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
 
-      ![Auswählen des Speichercontainers](./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
      
    4. Wählen Sie die anzufügende Betriebssystem-VHD aus. Klicken Sie auf *Auswählen*, um den Vorgang abzuschließen:
      
-      ![Auswählen des virtuellen Quelldatenträgers](./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
 
    5. Klicken auf „OK“, um den Datenträger anzufügen
 
-      ![Anfügen eines vorhandenen Datenträgers](./media/reset-local-password-without-agent/disks-attach-okay-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-okay-classic.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
 
 3. Stellen Sie per Remotedesktop eine Verbindung mit dem virtuellen Problembehandlungscomputer her, und prüfen Sie, ob der Betriebssystemdatenträger des virtuellen Quellcomputers angezeigt wird:
 
@@ -145,7 +140,7 @@ Versuchen Sie zunächst immer, ein Kennwort im [Azure-Portal oder mithilfe von A
 
    3. Suchen Sie im Datei-Explorer den angefügten Datenträger. Wenn die VHD des virtuellen Quellcomputers als einziger Datenträger an den virtuellen Problembehandlungscomputer angefügt ist, sollte es sich um Laufwerk F: handeln:
      
-      ![Anzeigen des angefügten Datenträgers](./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
 
 4. Erstellen Sie `gpt.ini` in `\Windows\System32\GroupPolicy` auf dem Laufwerk des virtuellen Quellcomputers. (Sollte die Datei `gpt.ini` bereits vorhanden sein, benennen Sie sie in `gpt.ini.bak` um.)
    
@@ -161,29 +156,22 @@ Versuchen Sie zunächst immer, ein Kennwort im [Azure-Portal oder mithilfe von A
      Version=1
      ```
      
-     ![Erstellen von „gpt.ini“](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini-classic.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
 
-5. Erstellen Sie `scripts.ini` in `\Windows\System32\GroupPolicy\Machines\Scripts\`. Stellen Sie sicher, dass ausgeblendete Ordner angezeigt werden. Erstellen Sie gegebenenfalls den Ordner `Machine` oder `Scripts`.
+5. Erstellen Sie `scripts.ini` in `\Windows\System32\GroupPolicy\Machine\Scripts\`. Stellen Sie sicher, dass ausgeblendete Ordner angezeigt werden. Erstellen Sie gegebenenfalls den Ordner `Machine` oder `Scripts`.
    
    * Fügen Sie in der erstellten Datei `scripts.ini` die folgenden Zeilen ein:
 
      ```
      [Startup]
-     0CmdLine=C:\Windows\System32\FixAzureVM.cmd
+     0CmdLine=FixAzureVM.cmd
      0Parameters=
      ```
      
-     ![Erstellen von „scripts.ini“](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
-
-6. Erstellen Sie `FixAzureVM.cmd` in `\Windows\System32` mit dem folgenden Inhalt, und ersetzen Sie dabei `<username>` und `<newpassword>` durch Ihre eigenen Werte:
-   
-    ```
-    net user <username> <newpassword> /add
-    net localgroup administrators <username> /add
-    net localgroup "remote desktop users" <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt." <username> /add
     ```
 
-    ![Erstellen von „FixAzureVM.cmd“](./media/reset-local-password-without-agent/create-fixazure-cmd-classic.png)
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
    
     Beim Definieren des neuen Kennworts für den virtuellen Computer müssen Sie die konfigurierten Komplexitätsanforderungen für das Kennwort erfüllen.
 
@@ -193,17 +181,17 @@ Versuchen Sie zunächst immer, ein Kennwort im [Azure-Portal oder mithilfe von A
    
    2. Wählen Sie den in Schritt 2 angefügten Datenträger aus, klicken Sie auf **Trennen**, und klicken Sie anschließend auf **OK**.
 
-     ![Trennen des Datenträgers](./media/reset-local-password-without-agent/data-disks-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/data-disks-classic.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
      
-     ![Trennen des Datenträgers](./media/reset-local-password-without-agent/detach-disk-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/detach-disk-classic.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
 
 8. Erstellen Sie einen virtuellen Computer über den Betriebssystemdatenträger des virtuellen Quellcomputers:
    
-     ![Erstellen eines virtuellen Computers über eine Vorlage](./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
 
-     ![Erstellen eines virtuellen Computers über eine Vorlage](./media/reset-local-password-without-agent/choose-subscription-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/choose-subscription-classic.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
 
-     ![Erstellen eines virtuellen Computers über eine Vorlage](./media/reset-local-password-without-agent/create-vm-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/create-vm-classic.png" alt-text="Screenshot, der die an der Datei „gpt.ini“ vorgenommenen Aktualisierungen anzeigt.":::
 
 ## <a name="complete-the-create-virtual-machine-experience"></a>Fertigstellen der VM-Erstellung
 
@@ -211,7 +199,7 @@ Versuchen Sie zunächst immer, ein Kennwort im [Azure-Portal oder mithilfe von A
 
 2. Entfernen Sie die folgenden Dateien aus der Remotesitzung mit dem neuen virtuellen Computer, um die Umgebung zu bereinigen:
     
-    * Gehen Sie unter „`%windir%\System32`“ wie folgt vor:
+    * Gehen Sie unter „`%windir%\System32\GroupPolicy\Machine\Scripts\Startup\`“ wie folgt vor:
       * Entfernen Sie „`FixAzureVM.cmd`“.
     * Gehen Sie unter „`%windir%\System32\GroupPolicy\Machine\Scripts`“ wie folgt vor:
       * Entfernen Sie „`scripts.ini`“.

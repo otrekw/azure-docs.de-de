@@ -1,26 +1,17 @@
 ---
-title: 'Tutorial: Bereitstellen einer App in Azure Service Fabric Mesh | Microsoft-Dokumentation'
+title: 'Tutorial: Bereitstellen einer App in Azure Service Fabric Mesh'
 description: In diesem Tutorial wird beschrieben, wie Sie mithilfe einer Vorlage eine Anwendung in Service Fabric Mesh bereitstellen.
-services: service-fabric-mesh
-documentationcenter: .net
-author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
+author: georgewallace
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: ce063d8a256cbf2507e19d459aafe13150eccce7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.author: gwallace
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 54ac7b27ada62a969dd40428fd9a753bb5a99530
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306945"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499831"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Tutorial: Bereitstellen einer Anwendung in Service Fabric Mesh mithilfe einer Vorlage
 
@@ -78,7 +69,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-the-container-registry"></a>Erstellen der Containerregistrierung
 
-Erstellen Sie mithilfe des Befehls `az acr create` eine ACR-Instanz. Der Registrierungsname muss innerhalb von Azure eindeutig sein und aus 5 bis 50 alphanumerischen Zeichen bestehen. Im folgenden Beispiel wird der Name *myContainerRegistry* verwendet. Wenn Sie eine Fehlermeldung mit dem Hinweis erhalten, dass der Namen verwendet wird, wählen Sie einen anderen Namen aus.
+Erstellen Sie mithilfe des Befehls `az acr create` eine ACR-Instanz. Der Registrierungsname muss innerhalb von Azure eindeutig sein und aus 5 bis 50 alphanumerischen Zeichen bestehen. Im folgenden Beispiel wird der Name *myContainerRegistry* verwendet. Wenn Sie eine Fehlermeldung mit dem Hinweis erhalten, dass der Name bereits verwendet wird, wählen Sie einen anderen Namen aus.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name myContainerRegistry --sku Basic
@@ -112,6 +103,11 @@ Wenn die Registrierung erstellt wird, sieht die Ausgabe etwa wie folgt aus:
 In diesem Tutorial wird die Aufgabenlistenanwendung als Beispiel verwendet.  Die Containerimages für die Dienste [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) und [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) befinden sich in Docker Hub. Informationen zum Erstellen der Anwendung in Visual Studio finden Sie unter [Tutorial: Erstellen, Debuggen, Bereitstellen und Aktualisieren einer Service Fabric Mesh-App mit mehreren Diensten](service-fabric-mesh-tutorial-create-dotnetcore.md). In Service Fabric Mesh können Windows-oder Linux-Docker-Container ausgeführt werden.  Wählen Sie bei der Verwendung von Linux-Containern in Docker die Option **Switch to Linux containers** (Zu Linux-Containern wechseln) aus.  Wählen Sie bei der Verwendung von Windows-Containern in Docker die Option **Switch to Windows containers** (Zu Windows-Containern wechseln) aus.
 
 Um ein Image per Push an eine ACR-Instanz übertragen zu können, benötigen Sie zunächst ein Containerimage. Falls Sie noch keine lokalen Containerimages besitzen, rufen Sie mithilfe des Befehls [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) die Images [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) und [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) per Pull aus Docker Hub ab.
+
+>[!NOTE]
+> Ab dem 2. November 2020 [gelten die Grenzwerte für die Downloadrate](https://docs.docker.com/docker-hub/download-rate-limit/) für anonyme und authentifizierte Anforderungen an Docker Hub von Docker-Konten im Plan „Free“. Diese Grenzwerte werden durch die IP-Adresse erzwungen. 
+> 
+> Diese Befehle nutzen öffentliche Images aus Docker Hub. Beachten Sie, dass möglicherweise Ratenbeschränkungen gelten. Ausführlichere Informationen finden Sie unter [Authentifizieren mit Docker Hub](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub).
 
 Abrufen der Windows-Images:
 
@@ -180,7 +176,7 @@ Die vorhergehende Ausgabe bestätigt das Vorhandensein von `azure-mesh-todo-serv
 ## <a name="retrieve-credentials-for-the-registry"></a>Abrufen von Anmeldeinformationen für die Registrierung
 
 > [!IMPORTANT]
-> Die Aktivierung des Administratorbenutzers in einer ACR-Instanz wird für Produktionsszenarien nicht empfohlen. Der Einfachheit halber wird er hier aktiviert. Verwenden Sie in Produktionsszenarien sowohl für die Benutzer- als auch die Systemauthentifizierung einen [Dienstprinzipal](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal).
+> Die Aktivierung des Administratorbenutzers in einer ACR-Instanz wird für Produktionsszenarien nicht empfohlen. Der Einfachheit halber wird er hier aktiviert. Verwenden Sie in Produktionsszenarien sowohl für die Benutzer- als auch die Systemauthentifizierung einen [Dienstprinzipal](../container-registry/container-registry-auth-service-principal.md).
 
 Um eine Containerinstanz aus der Registrierung bereitzustellen, die mithilfe einer Vorlage erstellt wurde, müssen Sie bei der Bereitstellung die Registrierungsanmeldeinformationen angeben. Aktivieren Sie zunächst den Administratorbenutzer in Ihrer Registrierung mit dem folgenden Befehl:
 
@@ -200,7 +196,7 @@ Verwenden Sie die zurückgegebenen Werte für Name, Benutzername und Kennwort de
 
 ## <a name="download-and-explore-the-template-and-parameters-files"></a>Herunterladen und Erkunden der Vorlage und der Parameterdateien
 
-Eine Service Fabric Mesh-Anwendung ist eine Azure-Ressource, die Sie mithilfe von Azure Resource Manager-Vorlagen (RM) bereitstellen und verwalten können. Wenn Sie mit den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen nicht vertraut sind, lesen Sie die Informationen unter [Übersicht über Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) und [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](/azure/azure-resource-manager/resource-group-authoring-templates).
+Eine Service Fabric Mesh-Anwendung ist eine Azure-Ressource, die Sie mithilfe von Azure Resource Manager-Vorlagen (RM) bereitstellen und verwalten können. Wenn Sie mit den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen nicht vertraut sind, lesen Sie die Informationen unter [Übersicht über Azure Resource Manager](../azure-resource-manager/management/overview.md) und [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md).
 
 In diesem Tutorial wird die Aufgabenlistenanwendung als Beispiel verwendet.  Laden Sie die Dateien [mesh_rp.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) (Bereitstellungsvorlage) und [mesh_rp.windows.parameter.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) (Parameterdatei) herunter, statt eine neue Vorlage und neue Parameterdateien zu erstellen.
 
@@ -264,7 +260,7 @@ Dienste werden in der Vorlage als Eigenschaften der Anwendungsressource angegebe
                   "endpoints": [
                     {
                       "name": "ServiceAListener",
-                      "port": 20001
+                      "port": 80
                     }
                   ],
                   "resources": {

@@ -1,40 +1,38 @@
 ---
-title: AS2-Nachverfolgungsschemas für B2B-Nachrichten – Azure Logic Apps | Microsoft-Dokumentation
-description: Erstellen von AS2-Nachverfolgungsschemas zur Überwachung von B2B-Nachrichten in Integrationskonten für Azure Logic Apps mit Enterprise Integration Pack
+title: AS2-Nachverfolgungsschemas für B2B-Nachrichten
+description: Erstellen von Nachverfolgungsschemas zum Überwachen von AS2-Nachrichten in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
-ms.date: 01/27/2017
-ms.openlocfilehash: 180d90450497b38f107f3601944385a003f50282
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/01/2020
+ms.openlocfilehash: bccf69362279afd9e8148b20b61ff3ea9b472a03
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60845782"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "76906959"
 ---
-# <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>Erstellen von Schemas für die Nachverfolgung von AS2-Nachrichten und MDNs in Integrationskonten für Azure Logic Apps
+# <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>Erstellen von Schemas zur Nachverfolgung von AS2-Nachrichten in Azure Logic Apps
 
 Zur Unterstützung bei der Überwachung des Erfolgs, der Fehler und der Nachrichteneigenschaften für B2B-Transaktionen (Business-to-Buiness) können Sie in Ihrem Integrationskonto folgende AS2-Nachverfolgungsschemas verwenden:
 
 * AS2-Nachrichten-Nachverfolgungsschema
-* AS2-MDN-Nachverfolgungsschema
+* Nachverfolgungsschema für AS2 Message Disposition Notification (MDN)
 
 ## <a name="as2-message-tracking-schema"></a>AS2-Nachrichten-Nachverfolgungsschema
 
 ```json
 {
-   "agreementProperties": {  
-      "senderPartnerName": "",  
-      "receiverPartnerName": "",  
-      "as2To": "",  
-      "as2From": "",  
-      "agreementName": ""  
-   },  
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "as2To": "",
+      "as2From": "",
+      "agreementName": ""
+   },
    "messageProperties": {
       "direction": "",
       "messageId": "",
@@ -45,10 +43,8 @@ Zur Unterstützung bei der Überwachung des Erfolgs, der Fehler und der Nachrich
       "isMessageEncrypted": "",
       "isMessageCompressed": "",
       "correlationMessageId": "",
-      "incomingHeaders": {
-       },
-      "outgoingHeaders": {
-       },
+      "incomingHeaders": {},
+      "outgoingHeaders": {},
       "isNrrEnabled": "",
       "isMdnExpected": "",
       "mdnType": ""
@@ -56,28 +52,28 @@ Zur Unterstützung bei der Überwachung des Erfolgs, der Fehler und der Nachrich
 }
 ```
 
-| Eigenschaft | Typ | BESCHREIBUNG |
-| --- | --- | --- |
-| senderPartnerName | String | Name des Absenderpartners der AS2-Nachricht (Optional) |
-| receiverPartnerName | String | Name des Empfängerpartners der AS2-Nachricht (Optional) |
-| as2To | String | Name des Empfängers der AS2-Nachricht aus den Headern der AS2-Nachricht (Erforderlich) |
-| as2From | String | Name des Absenders der AS2-Nachricht aus den Headern der AS2-Nachricht (Erforderlich) |
-| agreementName | String | Name der AS2-Vereinbarung, nach der Nachrichten aufgelöst werden (Optional) |
-| direction | String | Richtung des Nachrichtenflusses (Empfangen oder Senden) (Erforderlich) |
-| messageId | String | ID der AS2-Nachricht aus den Headern der AS2-Nachricht (Optional) |
-| dispositionType |String | MDN-Dispositionstypwert (Message Disposition Notification) (Optional) |
-| fileName | String | Dateiname aus dem Header der AS2-Nachricht (Optional) |
-| isMessageFailed |Boolean | Gibt an, ob die AS2-Nachricht fehlgeschlagen ist. (Erforderlich) |
-| isMessageSigned | Boolean | Gibt an, ob die AS2-Nachricht signiert wurde. (Erforderlich) |
-| isMessageEncrypted | Boolean | Gibt an, ob die AS2-Nachricht verschlüsselt wurde. (Erforderlich) |
-| isMessageCompressed |Boolean | Gibt an, ob die AS2-Nachricht komprimiert wurde. (Erforderlich) |
-| correlationMessageId | String | ID der AS2-Nachricht zum Korrelieren von Nachrichten mit MDNs (Optional) |
-| incomingHeaders |Wörterbuch von JToken | Headerdetails von eingehenden AS2-Nachrichten (Optional) |
-| outgoingHeaders |Wörterbuch von JToken | Headerdetails von ausgehenden AS2-Nachrichten (Optional) |
-| isNrrEnabled | Boolean | Verwenden Sie den Standardwert, wenn der Wert unbekannt ist. (Erforderlich) |
-| isMdnExpected | Boolean | Verwenden Sie den Standardwert, wenn der Wert unbekannt ist. (Erforderlich) |
-| mdnType | Enum | Zulässige Werte sind **NotConfigured**, **Sync** und **Async**. (Erforderlich) |
-||||
+| Eigenschaft | Erforderlich | type | BESCHREIBUNG |
+|----------|----------|------|-------------|
+| senderPartnerName | Nein | String | Name des Partners des AS2-Nachrichtenabsenders |
+| receiverPartnerName | Nein | String | Name des Partners des AS2-Nachrichtenempfängers |
+| as2To | Ja | String | Name des Empfängers der AS2-Nachricht aus den Headern der AS2-Nachricht |
+| as2From | Ja | String | Name des Absenders der AS2-Nachricht aus den Headern der AS2-Nachricht |
+| agreementName | Nein | String | Name der AS2-Vereinbarung, nach der Nachrichten aufgelöst werden. |
+| direction | Ja | String | Richtung des Nachrichtenflusses, die entweder `receive` (Empfangen) oder `send` (Senden) sein kann. |
+| messageId | Nein | String | AS2-Nachrichten-ID aus den Headern der AS2-Nachricht |
+| dispositionType | Nein | String | MDN-Dispositionstypwert (Message Disposition Notification) |
+| fileName | Nein | String | Dateiname aus dem Header der AS2-Nachricht |
+| isMessageFailed | Ja | Boolean | Gibt an, ob die AS2-Nachricht fehlgeschlagen ist. |
+| isMessageSigned | Ja | Boolean | Gibt an, ob die AS2-Nachricht signiert wurde. |
+| isMessageEncrypted | Ja | Boolean | Gibt an, ob die AS2-Nachricht verschlüsselt wurde. |
+| isMessageCompressed | Ja | Boolean | Gibt an, ob die AS2-Nachricht komprimiert wurde. |
+| correlationMessageId | Nein | String | ID der AS2-Nachricht zum Korrelieren von Nachrichten mit MDNs |
+| incomingHeaders | Nein | Wörterbuch von JToken | Headerdetails von eingehenden AS2-Nachrichten |
+| outgoingHeaders | Nein | Wörterbuch von JToken | Headerdetails von ausgehenden AS2-Nachrichten |
+| isNrrEnabled | Ja | Boolean | Gibt an, ob der Standardwert verwendet werden soll, wenn der Wert unbekannt ist. |
+| isMdnExpected | Ja | Boolean | Gibt an, ob der Standardwert verwendet werden soll, wenn der Wert unbekannt ist. |
+| mdnType | Ja | Enum | Zulässige Werte: `NotConfigured`, `Sync` und `Async` |
+|||||
 
 ## <a name="as2-mdn-tracking-schema"></a>AS2-MDN-Nachverfolgungsschema
 
@@ -88,7 +84,7 @@ Zur Unterstützung bei der Überwachung des Erfolgs, der Fehler und der Nachrich
       "receiverPartnerName": "",
       "as2To": "",
       "as2From": "",
-      "agreementName": "g"
+      "agreementName": ""
    },
    "messageProperties": {
       "direction": "",
@@ -109,26 +105,26 @@ Zur Unterstützung bei der Überwachung des Erfolgs, der Fehler und der Nachrich
 }
 ```
 
-| Eigenschaft | Typ | BESCHREIBUNG |
-| --- | --- | --- |
-| senderPartnerName | String | Name des Absenderpartners der AS2-Nachricht (Optional) |
-| receiverPartnerName | String | Name des Empfängerpartners der AS2-Nachricht (Optional) |
-| as2To | String | Name des Partners, der die AS2-Nachricht erhält (Erforderlich) |
-| as2From | String | Name des Partners, der die AS2-Nachricht sendet (Erforderlich) |
-| agreementName | String | Name der AS2-Vereinbarung, nach der Nachrichten aufgelöst werden (Optional) |
-| direction |String | Richtung des Nachrichtenflusses (Empfangen oder Senden) (Erforderlich) |
-| messageId | String | ID der AS2-Nachricht (Optional) |
-| originalMessageId |String | ID der ursprünglichen AS2-Nachricht (Optional) |
-| dispositionType | String | MDN-Dispositionstypwert (Optional) |
-| isMessageFailed |Boolean | Gibt an, ob die AS2-Nachricht fehlgeschlagen ist. (Erforderlich) |
-| isMessageSigned |Boolean | Gibt an, ob die AS2-Nachricht signiert wurde. (Erforderlich) |
-| isNrrEnabled | Boolean | Verwenden Sie den Standardwert, wenn der Wert unbekannt ist. (Erforderlich) |
-| statusCode | Enum | Zulässige Werte sind **Accepted**, **Rejected** und **AcceptedWithErrors**. (Erforderlich) |
-| micVerificationStatus | Enum | Zulässige Werte sind **NotApplicable**, **Succeeded** und **Failed**. (Erforderlich) |
-| correlationMessageId | String | Korrelations-ID. Die ursprüngliche Nachrichten-ID (die Nachrichten-ID der Nachricht, für die MDN konfiguriert ist). (Optional) |
-| incomingHeaders | Wörterbuch von JToken | Gibt Headerdetails von eingehenden Nachrichten an. (Optional) |
-| outgoingHeaders |Wörterbuch von JToken | Gibt Headerdetails von ausgehenden Nachrichten an. (Optional) |
-||||
+| Eigenschaft | Erforderlich | type | BESCHREIBUNG |
+|----------|----------|------|-------------|
+| senderPartnerName | Nein | String | Name des Partners des AS2-Nachrichtenabsenders |
+| receiverPartnerName | Nein | String | Name des Partners des AS2-Nachrichtenempfängers |
+| as2To | Ja | String | Name des Partners, der die AS2-Nachricht erhält |
+| as2From | Ja | String | Name des Partners, der die AS2-Nachricht sendet |
+| agreementName | Nein | String | Name der AS2-Vereinbarung, nach der Nachrichten aufgelöst werden. |
+| direction | Ja | String | Richtung des Nachrichtenflusses, die entweder `receive` (Empfangen) oder `send` (Senden) sein kann. |
+| messageId | Nein | String | ID der AS2-Nachricht |
+| originalMessageId | Nein | String | ID der ursprünglichen AS2-Nachricht |
+| dispositionType | Nein | String | MDN-Dispositionstypwert |
+| isMessageFailed | Ja | Boolean | Gibt an, ob die AS2-Nachricht fehlgeschlagen ist. |
+| isMessageSigned | Ja | Boolean | Gibt an, ob die AS2-Nachricht signiert wurde. |
+| isNrrEnabled | Ja | Boolean | Gibt an, ob der Standardwert verwendet werden soll, wenn der Wert unbekannt ist. |
+| statusCode | Ja | Enum | Zulässige Werte: `Accepted`, `Rejected` und `AcceptedWithErrors` |
+| micVerificationStatus | Ja | Enum | Zulässige Werte: `NotApplicable`, `Succeeded` und `Failed` |
+| correlationMessageId | Nein | String | Korrelations-ID, bei der es sich um die ID der ursprünglichen Nachricht handelt, für die MDN konfiguriert ist |
+| incomingHeaders | Nein | Wörterbuch von JToken | Headerdetails von eingehenden Nachrichten |
+| outgoingHeaders | Nein | Wörterbuch von JToken | Headerdetails von ausgehenden Nachrichten |
+|||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B-Protokollnachverfolgungsschemas
 
@@ -139,5 +135,4 @@ Informationen zu B2B-Protokollnachverfolgungsschemas finden Sie unter:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Machen Sie sich mit der [Überwachung von B2B-Nachrichten](logic-apps-monitor-b2b-message.md) vertraut.
-* Informieren Sie sich über das [Nachverfolgen von B2B-Nachrichten in Azure Monitor-Protokollen](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* [Überwachen von B2B-Nachrichten mit Azure Monitor-Protokollen](../logic-apps/monitor-b2b-messages-log-analytics.md)

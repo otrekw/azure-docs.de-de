@@ -1,36 +1,26 @@
 ---
-title: Verwenden von Azure Active Directory zum Authentifizieren von Lösungen des Azure Batch-Diensts | Microsoft-Dokumentation
-description: Batch unterstützt Azure AD für die Authentifizierung vom Batch-Dienst aus.
-services: batch
-documentationcenter: .net
-author: laurenhughes
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: batch
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
-ms.date: 08/15/2019
-ms.author: lahugh
-ms.openlocfilehash: 4ec85078e6664a43dd31cd04c132d87681bda225
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+title: Authentifizieren von Azure Batch-Diensten mit Azure Active Directory
+description: Batch unterstützt Azure AD für die Authentifizierung vom Batch-Dienst aus. Erfahren Sie, wie Sie sich auf eine von zwei Arten authentifizieren.
+ms.topic: how-to
+ms.date: 10/20/2020
+ms.custom: has-adal-ref
+ms.openlocfilehash: 784e92eaa2cd672d511177066befcfd7effc7ca4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095623"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95252639"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
-Azure Batch unterstützt die Authentifizierung mit [Azure Active Directory][aad_about] (Azure AD). Azure AD ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. Azure selbst verwendet Azure AD für die Authentifizierung seiner Kunden, Dienstadministratoren und Organisationsbenutzer.
+Azure Batch unterstützt die Authentifizierung mit [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD). Azure AD ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. Azure selbst verwendet Azure AD für die Authentifizierung seiner Kunden, Dienstadministratoren und Organisationsbenutzer.
 
 Bei Verwendung der Azure AD-Authentifizierung mit Azure Batch können Sie auf zwei Arten authentifizieren:
 
 - Mit **integrierter Authentifizierung**, um einen Benutzer zu authentifizieren, der mit der Anwendung interagiert. Eine Anwendung, die die integrierte Authentifizierung verwendet, erfasst die Anmeldeinformationen eines Benutzers und verwendet diese Anmeldeinformationen zum Authentifizieren des Zugriffs auf Batch-Ressourcen.
 - Mithilfe eines **Dienstprinzipals**, um eine unbeaufsichtigte Anwendung zu authentifizieren. Ein Dienstprinzipal definiert die Richtlinie und Berechtigungen für eine Anwendung, um die Anwendung zu repräsentieren, wenn zur Laufzeit auf Ressourcen zugegriffen wird.
 
-Weitere Informationen zu Azure AD finden Sie unter [Dokumentation zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).
+Weitere Informationen zu Azure AD finden Sie unter [Dokumentation zu Azure Active Directory](../active-directory/index.yml).
 
 ## <a name="endpoints-for-authentication"></a>Endpunkte für die Authentifizierung
 
@@ -46,14 +36,12 @@ Verwenden Sie zur Authentifizierung bei Azure AD diesen Endpunkt zusammen mit de
 
 `https://login.microsoftonline.com/<tenant-id>`
 
-> [!NOTE] 
-> Der mandantenspezifische Endpunkt ist erforderlich, wenn Sie einen Dienstprinzipal zur Authentifizierung verwenden. 
-> 
+> [!NOTE]
+> Der mandantenspezifische Endpunkt ist erforderlich, wenn Sie einen Dienstprinzipal zur Authentifizierung verwenden.
+>
 > Der mandantenspezifische Endpunkt ist optional, wenn Sie mithilfe der integrierten Authentifizierung authentifizieren, wird jedoch empfohlen. Sie können jedoch auch den gemeinsamen Endpunkt für Azure AD verwenden. Der allgemeine Endpunkt bietet eine generische Schnittstelle für die Erfassung von Anmeldeinformationen, wenn kein bestimmter Mandant bereitgestellt wird. Der gemeinsame Endpunkt ist `https://login.microsoftonline.com/common`.
->
->
 
-Weitere Informationen zu Endpunkten in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD][aad_auth_scenarios].
+Weitere Informationen zu Azure AD-Endpunkten finden Sie unter [Authentifizierung und Autorisierung]()../active-directory/develop/authentication-vs-authorization.md).
 
 ### <a name="batch-resource-endpoint"></a>Batch-Ressourcenendpunkt
 
@@ -63,17 +51,15 @@ Verwenden Sie den **Azure Batch-Ressourcenendpunkt**, um ein Token zum Authentif
 
 ## <a name="register-your-application-with-a-tenant"></a>Registrieren Ihrer Anwendung bei einem Mandanten
 
-Der erste Schritt bei der Verwendung von Azure AD zum Authentifizieren ist die Registrierung Ihrer Anwendung bei dem Azure AD-Mandanten. Die Registrierung Ihrer Anwendung ermöglicht es Ihnen, die Azure [Active Directory-Authentifizierungsbibliothek][aad_adal] (Active Directory Authentication Library, ADAL) aus dem Code aufzurufen. Die ADAL stellt eine API für die Authentifizierung bei Azure AD über Ihre Anwendung bereit. Die Registrierung Ihrer Anwendung ist unabhängig davon erforderlich, ob Sie planen, integrierte Authentifizierung oder einen Dienstprinzipal zu verwenden.
+Der erste Schritt bei der Verwendung von Azure AD zum Authentifizieren ist die Registrierung Ihrer Anwendung bei dem Azure AD-Mandanten. Die Registrierung Ihrer Anwendung ermöglicht es Ihnen, die Azure [Active Directory-Authentifizierungsbibliothek](../active-directory/azuread-dev/active-directory-authentication-libraries.md) (Active Directory Authentication Library, ADAL) aus dem Code aufzurufen. Die ADAL stellt eine API für die Authentifizierung bei Azure AD über Ihre Anwendung bereit. Die Registrierung Ihrer Anwendung ist unabhängig davon erforderlich, ob Sie planen, integrierte Authentifizierung oder einen Dienstprinzipal zu verwenden.
 
 Wenn Sie Ihre Anwendung registrieren, liefern Sie Azure AD Informationen über Ihre Anwendung. Azure AD stellt dann eine Anwendungs-ID (auch als *Client-ID* bezeichnet) bereit, mit der Sie Ihre Anwendung zur Laufzeit Azure AD zuordnen. Weitere Informationen zur Anwendungs-ID finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Führen Sie die Schritte im Abschnitt [Hinzufügen einer Anwendung](../active-directory/develop/quickstart-register-app.md) des Artikels [Integrieren von Anwendungen in Azure Active Directory][aad_integrate] aus, um Ihre Batch-Anwendung zu registrieren. Wenn Sie Ihre Anwendung als native Anwendung registrieren, können Sie jeden gültigen URI als **Umleitungs-URI** angeben. Es muss sich nicht um einen echten Endpunkt handeln.
+Führen Sie die Schritte aus dem Abschnitt **Registrieren einer Anwendung** in folgendem Artikel aus: [Schnellstart: Registrieren einer Anwendung bei der Microsoft Identity Platform](../active-directory/develop/quickstart-register-app.md). Wenn Sie Ihre Anwendung als native Anwendung registrieren, können Sie jeden gültigen URI als **Umleitungs-URI** angeben. Es muss sich nicht um einen echten Endpunkt handeln.
 
 Nachdem Sie Ihre Anwendung registriert haben, wird die Anwendungs-ID angezeigt:
 
-![Registrieren Ihrer Batch-Anwendung bei Azure AD](./media/batch-aad-auth/app-registration-data-plane.png)
-
-Weitere Informationen zum Registrieren einer Anwendung in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD](../active-directory/develop/authentication-scenarios.md).
+![Screenshot der Anwendungs-ID im Azure-Portal.](./media/batch-aad-auth/app-registration-data-plane.png)
 
 ## <a name="get-the-tenant-id-for-your-active-directory"></a>Abrufen der Mandanten-ID für Ihr Azure Active Directory
 
@@ -83,7 +69,7 @@ Die Mandanten-ID identifiziert den Azure AD-Mandanten, der Authentifizierungsdie
 1. Wählen Sie **Eigenschaften** aus.
 1. Kopieren Sie den GUID-Wert, der für die **Verzeichnis-ID** bereitgestellt wird. Dieser Wert wird auch als Mandanten-ID bezeichnet.
 
-![Kopieren der Verzeichnis-ID](./media/batch-aad-auth/aad-directory-id.png)
+![Screenshot der Verzeichnis-ID im Azure-Portal.](./media/batch-aad-auth/aad-directory-id.png)
 
 ## <a name="use-integrated-authentication"></a>Verwenden integrierter Authentifizierung
 
@@ -91,29 +77,24 @@ Zum Authentifizieren mit integrierter Authentifizierung müssen Sie Ihrer Anwend
 
 Sobald Sie die Anwendung registriert haben, befolgen Sie diese Schritte im Azure-Portal, um ihr Zugriff auf den Batchdienst zu gewähren:
 
-1. Wählen Sie im linken Navigationsbereich des Azure-Portals die Option **Alle Dienste** aus. Klicken Sie auf **App-Registrierungen**.
-1. Suchen Sie in der Liste mit den App-Registrierungen nach dem Namen Ihrer Anwendung:
-
-    ![Suchen nach Ihrem Anwendungsnamen](./media/batch-aad-auth/search-app-registration.png)
-
+1. Klicken Sie im Azure-Portal auf **Alle Dienste**, und wählen Sie dann **App-Registrierungen** aus.
+1. Suchen Sie in der Liste mit den App-Registrierungen nach dem Namen Ihrer Anwendung.
 1. Wählen Sie die Anwendung und dann die Option **API-Berechtigungen** aus.
 1. Wählen Sie im Abschnitt **API-Berechtigungen** die Option **Berechtigung hinzufügen** aus.
 1. Suchen Sie unter **Hiermit wählen Sie eine API aus.** nach der Batch API. Suchen Sie diese Zeichenfolgen, bis Sie die API gefunden haben:
     1. **Microsoft Azure Batch**
     1. **ddbf3205-c6bd-46ae-8127-60eb93363864** ist die ID für die Batch-API.
-1. Wenn Sie die Batch-API gefunden haben, wählen Sie diese aus und klicken auf **Auswählen**.
+1. Wenn Sie die Batch-API gefunden haben, wählen Sie diese aus, und klicken Sie dann auf **Auswählen**.
 1. Aktivieren Sie unter **Berechtigungen auswählen** das Kontrollkästchen neben **Access Azure Batch Service** (Auf Azure Batch-Dienst zugreifen), und wählen Sie dann **Berechtigungen hinzufügen** aus.
 
 Im Abschnitt **API-Berechtigungen** wird jetzt angezeigt, dass Ihre Azure AD-Anwendung sowohl Zugriff auf Microsoft Graph als auch auf die Batch-Dienst-API hat. Berechtigungen für Microsoft Graph werden automatisch gewährt, wenn Sie Ihre App zum ersten Mal bei Azure AD registrieren.
-
-![Gewähren von API-Berechtigungen](./media/batch-aad-auth/required-permissions-data-plane.png)
 
 ## <a name="use-a-service-principal"></a>Verwenden eines Dienstprinzipals
 
 Um eine Anwendung zu authentifizieren, die unbeaufsichtigt ausgeführt wird, verwenden Sie einen Dienstprinzipal. Sobald Sie die Anwendung registriert haben, befolgen Sie diese Schritte im Azure-Portal, um einen Dienstprinzipal zu konfigurieren:
 
 1. Fordern Sie ein Geheimnis für Ihre Anwendung an.
-1. Weisen Sie Ihrer Anwendung die rollenbasierte Zugriffssteuerung (RBAC) zu.
+1. Weisen Sie der Anwendung die rollenbasierte Zugriffssteuerung von Azure (role-bases access control, Azure-RBAC) zu.
 
 ### <a name="request-a-secret-for-your-application"></a>Anfordern eines Geheimnisses für Ihre Anwendung
 
@@ -121,28 +102,90 @@ Bei der Authentifizierung Ihrer Anwendung bei einem Dienstprinzipal werden die A
 
 Führen Sie im Azure-Portal die folgenden Schritte aus:
 
-1. Wählen Sie im linken Navigationsbereich des Azure-Portals die Option **Alle Dienste** aus. Klicken Sie auf **App-Registrierungen**.
+1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Klicken Sie auf **App-Registrierungen**.
 1. Wählen Sie in der Liste mit den App-Registrierungen Ihre Anwendung aus.
 1. Wählen Sie die Anwendung und dann **Certificates & secrets** (Zertifikate und Geheimnisse) aus. Wählen Sie im Abschnitt **Geheime Clientschlüssel** die Option **Neuer geheimer Clientschlüssel** aus.
 1. Geben Sie eine Beschreibung für das Geheimnis ein, um ein Geheimnis zu erstellen. Wählen Sie für das Geheimnis dann eine Ablaufzeit von einem oder zwei Jahren bzw. keine Ablaufzeit aus.
 1. Wählen Sie **Hinzufügen**, um das Geheimnis zu erstellen und anzuzeigen. Kopieren Sie den Geheimniswert an einen sicheren Ort. Sie können nicht mehr darauf zugreifen, nachdem Sie die Seite verlassen haben.
 
-    ![Erstellen eines geheimen Schlüssels](./media/batch-aad-auth/secret-key.png)
+### <a name="assign-azure-rbac-to-your-application"></a>Zuweisen von Azure-RBAC in Ihrer Anwendung
 
-### <a name="assign-rbac-to-your-application"></a>Zuweisen von RBAC zu Ihrer Anwendung
-
-Zur Authentifizierung bei einem Dienstprinzipal müssen Sie Ihrer Anwendung RBAC zuweisen. Folgen Sie diesen Schritten:
+Zur Authentifizierung bei einem Dienstprinzipal müssen Sie Ihrer Anwendung Azure-RBAC zuweisen. Folgen Sie diesen Schritten:
 
 1. Navigieren Sie im Azure-Portal zu dem Batch-Konto, das von Ihrer Anwendung verwendet wird.
 1. Wählen Sie im Abschnitt **Einstellungen** des Batch-Kontos die Option **Zugriffssteuerung (IAM)** aus.
 1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**.
 1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
-1. Wählen Sie aus der Dropdownliste **Rolle** entweder die Rolle *Mitwirkender* oder *Leser* für Ihre Anwendung. Weitere Informationen zu diesen Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).  
+1. Wählen Sie aus der Dropdownliste **Rolle** entweder die Rolle *Mitwirkender* oder *Leser* für Ihre Anwendung. Weitere Informationen zu diesen Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
 1. Geben Sie im Feld **Auswählen** den Namen Ihrer Anwendung ein. Wählen Sie die Anwendung in der Liste und anschließend die Option **Speichern** aus.
 
-Ihre Anwendung sollte jetzt in Ihren Einstellungen für die Zugriffssteuerung mit einer zugewiesenen RBAC-Rolle angezeigt werden.
+Ihre Anwendung sollte jetzt in Ihren Einstellungen für die Zugriffssteuerung mit einer zugewiesenen Azure-Rolle angezeigt werden.
 
-![Zuweisen einer RBAC-Rolle zu Ihrer Anwendung](./media/batch-aad-auth/app-rbac-role.png)
+![Zuweisen einer Azure-Rolle zu Ihrer Anwendung](./media/batch-aad-auth/app-rbac-role.png)
+
+### <a name="assign-a-custom-role"></a>Zuweisen einer benutzerdefinierten Rolle
+
+Eine benutzerdefinierte Rolle gewährt einem Benutzer eine präzise Berechtigung zum Einreichen von Aufträgen, Aufgaben und mehr. Dadurch können Benutzer daran gehindert werden, kostenrelevante Vorgänge auszuführen, wie z. B. das Erstellen von Pools oder das Ändern von Knoten.
+
+Sie können eine benutzerdefinierte Rolle verwenden, um einem Benutzer, einer Gruppe oder einem Dienstprinzipal in Azure AD Berechtigungen für die folgenden Azure-RBAC-Vorgänge zu erteilen:
+
+- Microsoft.Batch/batchAccounts/pools/write
+- Microsoft.Batch/batchAccounts/pools/delete
+- Microsoft.Batch/batchAccounts/pools/read
+- Microsoft.Batch/batchAccounts/jobSchedules/write
+- Microsoft.Batch/batchAccounts/jobSchedules/delete
+- Microsoft.Batch/batchAccounts/jobSchedules/read
+- Microsoft.Batch/batchAccounts/jobs/write
+- Microsoft.Batch/batchAccounts/jobs/delete
+- Microsoft.Batch/batchAccounts/jobs/read
+- Microsoft.Batch/batchAccounts/certificates/write
+- Microsoft.Batch/batchAccounts/certificates/delete
+- Microsoft.Batch/batchAccounts/certificates/read
+- Microsoft.Batch/batchAccounts/read (für beliebige Lesevorgänge)
+- Microsoft.Batch/batchAccounts/listKeys/action (für beliebige Vorgänge)
+
+Benutzerdefinierte Rollen sind für Benutzer bestimmt, die von Azure AD und nicht durch Batch-Konto-Anmeldeinformationen (gemeinsam verwendeter Schlüssel) authentifiziert wurden. Beachten Sie, dass die Anmeldeinformationen für das Batch-Konto die volle Berechtigung für das Batch-Konto gewähren. Beachten Sie auch, dass Aufträge, die den automatischen Pool ([autopool](nodes-and-pools.md#autopools)) verwenden, Berechtigungen auf Poolebene erfordern.
+
+> [!NOTE]
+> Bestimmte Rollenzuweisungen müssen im Feld „actions“ bzw. im Feld „dataActions“ angegeben werden. Weitere Informationen finden Sie unter [Vorgänge mit dem Azure-Ressourcenanbieter](../role-based-access-control/resource-provider-operations.md#microsoftbatch).
+
+Hier ist ein Beispiel für eine benutzerdefinierte Rollendefinition:
+
+```json
+{
+ "properties":{
+    "roleName":"Azure Batch Custom Job Submitter",
+    "type":"CustomRole",
+    "description":"Allows a user to submit jobs to Azure Batch but not manage pools",
+    "assignableScopes":[
+      "/subscriptions/88888888-8888-8888-8888-888888888888"
+    ],
+    "permissions":[
+      {
+        "actions":[
+          "Microsoft.Batch/*/read",
+          "Microsoft.Authorization/*/read",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Support/*",
+          "Microsoft.Insights/alertRules/*"
+        ],
+        "notActions":[
+
+        ],
+        "dataActions":[
+          "Microsoft.Batch/batchAccounts/jobs/*",
+          "Microsoft.Batch/batchAccounts/jobSchedules/*"
+        ],
+        "notDataActions":[
+
+        ]
+      }
+    ]
+  }
+}
+```
+
+Weitere Informationen zum Erstellen einer benutzerdefinierten Rolle finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md).
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>Abrufen der Mandanten-ID für Ihr Azure Active Directory
 
@@ -159,12 +202,9 @@ Die Mandanten-ID identifiziert den Azure AD-Mandanten, der Authentifizierungsdie
 Die Codebeispiele in diesem Abschnitt zeigen das Authentifizieren bei Azure AD mit der integrierten Authentifizierung und einem Dienstprinzipal. Die meisten dieser Codebeispiele verwenden .NET, aber die Konzepte sind für andere Sprachen ähnlich.
 
 > [!NOTE]
-> Ein Azure AD-Authentifizierungstoken läuft nach einer Stunde ab. Bei Verwendung eines langlebigen **BatchClient**-Objekts empfehlen wir Ihnen, bei jeder Anforderung ein Token aus ADAL abzurufen, um sicherzustellen, dass Sie immer über ein gültiges Token verfügen. 
+> Ein Azure AD-Authentifizierungstoken läuft nach einer Stunde ab. Bei Verwendung eines langlebigen **BatchClient**-Objekts empfehlen wir Ihnen, bei jeder Anforderung ein Token aus ADAL abzurufen, um sicherzustellen, dass Sie immer über ein gültiges Token verfügen.
 >
->
-> Schreiben Sie in .NET hierfür eine Methode, mit der das Token aus Azure AD abgerufen wird, und übergeben Sie diese Methode als Delegat an ein **BatchTokenCredentials**-Objekt. Die Delegatmethode wird bei jeder Anforderung an den Batch-Dienst aufgerufen, um sicherzustellen, dass ein gültiges Token bereitgestellt wird. Standardmäßig werden Token von ADAL zwischengespeichert, sodass nur dann ein neues Token aus Azure AD abgerufen wird, wenn dies erforderlich ist. Weitere Informationen zu Token in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD][aad_auth_scenarios].
->
->
+> Schreiben Sie in .NET hierfür eine Methode, mit der das Token aus Azure AD abgerufen wird, und übergeben Sie diese Methode als Delegat an ein **BatchTokenCredentials**-Objekt. Die Delegatmethode wird bei jeder Anforderung an den Batch-Dienst aufgerufen, um sicherzustellen, dass ein gültiges Token bereitgestellt wird. Standardmäßig werden Token von ADAL zwischengespeichert, sodass nur dann ein neues Token aus Azure AD abgerufen wird, wenn dies erforderlich ist. Weitere Informationen zu Token in Azure AD finden Sie unter [Sicherheitstoken](../active-directory/develop/security-tokens.md).
 
 ### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>Codebeispiel: Verwenden der integrierten Authentifizierung von Azure AD mit Batch .NET
 
@@ -216,9 +256,9 @@ public static async Task<string> GetAuthenticationTokenAsync()
     var authContext = new AuthenticationContext(AuthorityUri);
 
     // Acquire the authentication token from Azure AD.
-    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri, 
-                                                        ClientId, 
-                                                        new Uri(RedirectUri), 
+    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri,
+                                                        ClientId,
+                                                        new Uri(RedirectUri),
                                                         new PlatformParameters(PromptBehavior.Auto));
 
     return authResult.AccessToken;
@@ -228,13 +268,13 @@ public static async Task<string> GetAuthenticationTokenAsync()
 Erstellen Sie ein **BatchTokenCredentials**-Objekt, in dem der Delegat als Parameter verwendet wird. Verwenden Sie diese Anmeldeinformationen, um ein **BatchClient**-Objekt zu öffnen. Sie können dieses **BatchClient**-Objekt für nachfolgende Vorgänge für den Batch-Dienst verwenden:
 
 ```csharp
-public static async Task PerformBatchOperations()
+public static void PerformBatchOperations()
 {
     Func<Task<string>> tokenProvider = () => GetAuthenticationTokenAsync();
 
-    using (var client = await BatchClient.OpenAsync(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
+    using (var client = BatchClient.Open(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
     {
-        await client.JobOperations.ListJobs().ToListAsync();
+        client.JobOperations.ListJobs();
     }
 }
 ```
@@ -257,7 +297,7 @@ Verweisen Sie auf den Azure AD-Endpunkt in Ihrem Code einschließlich der Mandan
 private const string AuthorityUri = "https://login.microsoftonline.com/<tenant-id>";
 ```
 
-Verweisen Sie auf den Ressourcenendpunkt für den Batch-Dienst:  
+Verweisen Sie auf den Ressourcenendpunkt für den Batch-Dienst:
 
 ```csharp
 private const string BatchResourceUri = "https://batch.core.windows.net/";
@@ -296,13 +336,13 @@ public static async Task<string> GetAuthenticationTokenAsync()
 Erstellen Sie ein **BatchTokenCredentials**-Objekt, in dem der Delegat als Parameter verwendet wird. Verwenden Sie diese Anmeldeinformationen, um ein **BatchClient**-Objekt zu öffnen. Verwenden Sie dann dieses **BatchClient**-Objekt für nachfolgende Vorgänge für den Batch-Dienst:
 
 ```csharp
-public static async Task PerformBatchOperations()
+public static void PerformBatchOperations()
 {
     Func<Task<string>> tokenProvider = () => GetAuthenticationTokenAsync();
 
-    using (var client = await BatchClient.OpenAsync(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
+    using (var client = BatchClient.Open(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
     {
-        await client.JobOperations.ListJobs().ToListAsync();
+        client.JobOperations.ListJobs();
     }
 }
 ```
@@ -322,7 +362,7 @@ Wenn Sie einen Dienstprinzipal verwenden, müssen Sie die Mandanten-ID angeben. 
 TENANT_ID = "<tenant-id>"
 ```
 
-Verweisen Sie auf den Ressourcenendpunkt für den Batch-Dienst:  
+Verweisen Sie auf den Ressourcenendpunkt für den Batch-Dienst:
 
 ```python
 RESOURCE = "https://batch.core.windows.net/"
@@ -362,22 +402,14 @@ Verwenden Sie die Dienstprinzipal-Anmeldeinformationen, um ein **BatchServiceCli
 ```python
     batch_client = BatchServiceClient(
     credentials,
-    base_url=BATCH_ACCOUNT_URL
+    batch_url=BATCH_ACCOUNT_URL
 )
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Azure AD finden Sie unter [Dokumentation zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Ausführliche Beispiele zur ADAL-Verwendung finden Sie in der Bibliothek mit den [Azure-Codebeispielen](https://azure.microsoft.com/resources/samples/?service=active-directory).
-
-- Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). Wie Sie einen Dienstprinzipal im Azure-Portal erstellen, erfahren Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../active-directory/develop/howto-create-service-principal-portal.md). Sie können einen Dienstprinzipal auch mit PowerShell oder Azure CLI erstellen.
-
-- Informationen zum Authentifizieren von Batch Management-Anwendungen bei Azure AD finden Sie unter [Authenticate Batch Management solutions with Active Directory](batch-aad-auth-management.md) (Authentifizieren von Batch Management-Lösungen bei Active Directory).
-
+- Lesen Sie die [Dokumentation zu Azure Active Directory](../active-directory/index.yml). Ausführliche Beispiele zur ADAL-Verwendung finden Sie in der Bibliothek mit den [Azure-Codebeispielen](https://azure.microsoft.com/resources/samples/?service=active-directory).
+- Erfahren Sie mehr über [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md) und [wie Sie eine Azure AD-Anwendung und -Dienstprinzipal erstellen, die auf Ressourcen zugreifen können](../active-directory/develop/howto-create-service-principal-portal.md).
+- Erfahren Sie mehr zum [Authentifizieren von Batchverwaltungslösungen mit Active Directory](batch-aad-auth-management.md).
 - Ein Python-Beispiel zum Erstellen eines Batch-Clients, der mithilfe eines Azure AD-Token authentifiziert wird, finden Sie im Beispiel [Deploying Azure Batch Custom Image with a Python Script](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md) (Bereitstellen eines benutzerdefinierten Azure Batch-Images mit einem Python-Skript).
 
-[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Was ist Azure Active Directory?"
-[aad_adal]: ../active-directory/active-directory-authentication-libraries.md
-[aad_auth_scenarios]: ../active-directory/active-directory-authentication-scenarios.md "Authentifizierungsszenarien für Azure AD"
-[aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Integrieren von Anwendungen in Azure Active Directory"
-[azure_portal]: https://portal.azure.com

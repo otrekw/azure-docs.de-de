@@ -1,30 +1,28 @@
 ---
-title: 'Serverloses Szenario: Erstellen eines Customer Insights-Dashboards mit Azure-Diensten | Microsoft-Dokumentation'
+title: Erstellen eines Customer Insights-Dashboards
 description: Verwalten von Kundenfeedback, Daten aus sozialen Netzwerken und Ähnlichem durch Erstellen eines Kundendashboards mit Azure Logic Apps und Azure Functions
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: jeffhollan
 ms.author: jehollan
-ms.reviewer: estfan, LADocs
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: b8ba341252679a07e50f9b276f7f485b08a6acba
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164859"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86520748"
 ---
-# <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Erstellen eines Streaming-Customer Insights-Dashboards mit Azure Logic Apps und Azure Functions
+# <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Erstellen eines Streaming-Customer Insights-Dashboards mit Azure Logic Apps und Azure Functions
 
 Azure bietet [serverlose](https://azure.microsoft.com/solutions/serverless/) Tools, mit denen Sie Apps schnell erstellen und in der Cloud hosten können, ohne sich um die Infrastruktur kümmern zu müssen. In diesem Tutorial können Sie ein Dashboard erstellen, das bei Kundenfeedback ausgelöst wird, Feedback mittels Machine Learning analysiert und Erkenntnisse in einer Quelle wie Power BI oder Azure Data Lake veröffentlicht.
 
 Für diese Lösung verwenden Sie die folgenden Azure-Schlüsselkomponenten für serverlose Apps: [Azure Functions](https://azure.microsoft.com/services/functions/) und [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 Azure Logic Apps stellt ein serverloses Workflowmodul in der Cloud bereit, sodass Sie Orchestrierungen für serverlose Komponenten erstellen und eine Verbindung mit mehr als 200 Diensten und APIs herstellen können. Azure Functions ermöglicht serverloses Computing in der Cloud. Diese Lösung verwendet Azure Functions, um Kundentweets anhand von vordefinierten Schlüsselwörtern zu kennzeichnen.
 
-In diesem Szenario erstellen Sie eine Logik-App, die ausgelöst wird, wenn Feedback von Kunden gefunden wird. Zu den Connectors, die Sie beim Reagieren auf Kundenfeedback unterstützen, zählen Outlook.com, Office 365, Survey Monkey, Twitter und eine [HTTP-Anforderung aus einem Webformular](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/). Der von Ihnen erstellte Workflow überwacht ein Hashtag auf Twitter.
+In diesem Szenario erstellen Sie eine Logik-App, die ausgelöst wird, wenn Feedback von Kunden gefunden wird. Zu den Connectors, die Sie beim Reagieren auf Kundenfeedback unterstützen, zählen Outlook.com, Office 365, Survey Monkey, Twitter und eine [HTTP-Anforderung aus einem Webformular](/archive/blogs/logicapps/calling-a-logic-app-from-an-html-form). Der von Ihnen erstellte Workflow überwacht ein Hashtag auf Twitter.
 
 Sie können [die gesamte Lösung in Visual Studio erstellen](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) und [die Lösung mit einer Azure Resource Manager-Vorlage bereitstellen](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md). Eine exemplarische Vorgehensweise zur Erstellung der Lösung wird in [diesem Channel 9-Video](https://aka.ms/logicappsdemo) gezeigt. 
 
@@ -34,7 +32,7 @@ Sie können [die gesamte Lösung in Visual Studio erstellen](../logic-apps/quick
 
    Falls Sie noch nicht mit Logik-Apps gearbeitet haben, lesen Sie die [Schnellstartanleitung für das Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) oder [Quickstart: Automate tasks and processes with Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) (Schnellstart: Automatisieren von Aufgaben und Prozessen mit Azure Logic Apps – Visual Studio).
 
-2. Suchen Sie im Logik-App-Designer nach dem Twitter-Trigger mit der folgenden Aktion: **Wenn ein neuer Tweet gepostet wird**
+2. Suchen Sie im Logik-App-Designer nach dem Twitter-Trigger mit der Aktion **Wenn ein neuer Tweet gepostet wird**, und fügen Sie ihn hinzu.
 
 3. Richten Sie den Trigger so ein, dass er basierend auf einem Schlüsselwort oder Hashtag auf Tweets lauscht.
 
@@ -60,16 +58,16 @@ Um die Stimmungslage zu erkennen, die sich hinter einem Text verbirgt, können S
 
 Nachdem Sie die Tweetdaten und Erkenntnisse zum Tweet abgerufen haben, können Sie mehrere andere relevante Connectors und deren Aktionen verwenden:
 
-* **Power BI – Zeilen zum Streamingdataset hinzufügen**: Eingehende Tweets in einem Power BI-Dashboard anzeigen
-* **Azure Data Lake – Datei anfügen**: Kundendaten zu einem Azure Data Lake-Dataset hinzufügen, um sie in Analyseaufträge einzubinden
-* **SQL – Zeilen hinzufügen**: Daten zur späteren Wiederverwendung in einer Datenbank speichern
-* **Slack – Nachricht senden**: Einen Slack-Kanal über negatives Feedback benachrichtigen, das möglicherweise eine Aktion erfordert
+* **Power BI – Zeilen zum Streamingdataset hinzufügen**: Eingehende Tweets in einem Power BI-Dashboard anzeigen.
+* **Azure Data Lake – Datei anfügen**: Kundendaten zu einem Azure Data Lake-Dataset hinzufügen, um sie in Analyseaufträge einzubinden.
+* **SQL – Zeilen hinzufügen**: Daten zur späteren Wiederverwendung in einer Datenbank speichern.
+* **Slack – Nachricht senden**: Einen Slack-Kanal über negatives Feedback benachrichtigen, das möglicherweise eine Aktion erfordert.
 
 Sie können auch eine Azure-Funktion erstellen und hinzufügen, um eine benutzerdefinierte Verarbeitung Ihrer Daten auszuführen. 
 
 ## <a name="process-data-with-azure-functions"></a>Verarbeiten von Daten mit Azure Functions
 
-Erstellen Sie vor dem Erstellen einer Funktion eine Funktions-App in Ihrem Azure-Abonnement. Darüber hinaus muss die Funktion, damit Ihre Logik-App eine Funktion direkt aufrufen kann, eine HTTP-Triggerbindung aufweisen (verwenden Sie beispielsweise die Vorlage **HttpTrigger**). Erfahren Sie, [wie Sie Ihre erste Funktions-App im Azure-Portal erstellen](../azure-functions/functions-create-first-azure-function-azure-portal.md).
+Erstellen Sie vor dem Erstellen einer Funktion eine Funktions-App in Ihrem Azure-Abonnement. Darüber hinaus muss die Funktion, damit Ihre Logik-App eine Funktion direkt aufrufen kann, eine HTTP-Triggerbindung aufweisen (verwenden Sie beispielsweise die Vorlage **HttpTrigger**). Erfahren Sie, [wie Sie Ihre erste Funktions-App im Azure-Portal erstellen](../azure-functions/functions-create-first-azure-function.md).
 
 Für dieses Szenario verwenden Sie den Tweettext als Anforderungstext für Ihre Azure-Funktion. Definieren Sie im Funktionscode die Logik, die ermittelt, ob der Tweettext ein Schlüsselwort oder einen Schlüsselbegriff enthält. Verwenden Sie für das Szenario je nach Bedarf eine einfache oder komplexe Funktion.
 Geben Sie am Ende der Funktion eine Antwort mit einigen Daten an die Logik-App zurück, beispielsweise einen einfachen booleschen Wert wie `containsKeyword` oder ein komplexes Objekt.
@@ -100,13 +98,13 @@ So zeigen Sie einen Verlauf vorheriger Ausführungen in Visual Studio oder im Az
 * Öffnen Sie Visual Studio Cloud-Explorer. Suchen Sie nach Ihrer Logik-App, und öffnen Sie das Kontextmenü der App. Wählen Sie **Ausführungsverlauf öffnen** aus.
 
   > [!TIP]
-  > Überprüfen Sie, ob Sie das letzte Update für Visual Studio installiert haben, wenn Sie diesen Befehl in Visual Studio 2019 nicht finden.
+  > Sollte dieser Befehl in Visual Studio 2019 nicht zur Verfügung stehen, überprüfen Sie, ob Sie über die neuesten Updates für Visual Studio verfügen.
 
 * Suchen Sie im Azure-Portal nach Ihrer Logik-App. Klicken Sie im Menü der Logik-App auf **Übersicht**. 
 
 ## <a name="create-automated-deployment-templates"></a>Erstellen von automatisierten Bereitstellungsvorlagen
 
-Nachdem Sie eine Logik-App-Lösung erstellt haben, können Sie die App als [Azure Resource Manager-Vorlage](../azure-resource-manager/template-deployment-overview.md) in jeder Azure-Region auf der Welt erfassen und bereitstellen. Mit dieser Funktion können Sie sowohl Parameter für die Erstellung verschiedener Versionen Ihrer App ändern als auch die Lösung in Azure Pipelines integrieren. Sie können Azure Functions auch in Ihre Bereitstellungsvorlage einbinden, damit die gesamte Lösung mit allen Abhängigkeiten als einzelne Vorlage verwaltet werden kann. Erfahren Sie mehr über das [Automatisieren der Bereitstellung von Logik-Apps](logic-apps-azure-resource-manager-templates-overview.md).
+Nachdem Sie eine Logik-App-Lösung erstellt haben, können Sie die App als [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) in jeder Azure-Region auf der Welt erfassen und bereitstellen. Mit dieser Funktion können Sie sowohl Parameter für die Erstellung verschiedener Versionen Ihrer App ändern als auch die Lösung in Azure Pipelines integrieren. Sie können Azure Functions auch in Ihre Bereitstellungsvorlage einbinden, damit die gesamte Lösung mit allen Abhängigkeiten als einzelne Vorlage verwaltet werden kann. Erfahren Sie mehr über das [Automatisieren der Bereitstellung von Logik-Apps](logic-apps-azure-resource-manager-templates-overview.md).
 
 Ein Beispiel für eine Bereitstellungsvorlage mit einer Azure-Funktion finden Sie im [Repository mit den Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic).
 

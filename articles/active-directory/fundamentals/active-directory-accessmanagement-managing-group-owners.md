@@ -2,30 +2,30 @@
 title: Hinzufügen oder Entfernen von Gruppenbesitzern – Azure Active Directory | Microsoft-Dokumentation
 description: Hier finden Sie Anweisungen zum Hinzufügen oder Entfernen von Gruppenbesitzern in Azure Active Directory.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d259be0c04af0fcf3628a9f296730749404610cb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b255f64547c3bae56d31415dc94a751989ca1f45
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562083"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504898"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Hinzufügen oder Entfernen von Gruppenbesitzern in Azure Active Directory
-Azure AD-Gruppen (Azure Active Directory) befinden sich im Besitz von Gruppenbesitzern und werden von diesen verwaltet. Gruppenbesitzer können Benutzer oder Dienstprinzipale sein, die in der Lage sind, die Gruppe einschließlich der Mitgliedschaft zu verwalten. Nur bestehende Gruppenbesitzer oder Gruppen verwaltende Administratoren können Gruppenzuordnungen vornehmen. Die Gruppenbesitzer müssen der Gruppe nicht angehören.
+Azure AD-Gruppen (Azure Active Directory) befinden sich im Besitz von Gruppenbesitzern und werden von diesen verwaltet. Gruppenbesitzer können Benutzer oder Dienstprinzipale sein, die in der Lage sind, die Gruppe einschließlich der Mitgliedschaft zu verwalten. Nur bestehende Gruppenbesitzer oder Gruppen verwaltende Administratoren können Gruppenbesitzer zuweisen. Die Gruppenbesitzer müssen der Gruppe nicht angehören.
 
-Wenn eine Gruppe keinen Besitzer hat, können Gruppen verwaltende Administratoren die Gruppe weiterhin verwalten.
+Wenn eine Gruppe keinen Besitzer hat, können Gruppen verwaltende Administratoren die Gruppe weiterhin verwalten. Es wird empfohlen, dass jede Gruppe über mindestens einen Besitzer verfügt. Nachdem einer Gruppe Besitzer zugewiesen wurden, kann der letzte Besitzer der Gruppe nicht entfernt werden. Bitte achten Sie darauf, einen anderen Besitzer auszuwählen, bevor Sie den letzten Besitzer aus der Gruppe entfernen.
 
 ## <a name="add-an-owner-to-a-group"></a>Hinzufügen eines Besitzers zu einer Gruppe
-Nachfolgend finden Sie Anweisungen zum Hinzufügen eines Benutzers als Besitzer zu einer Gruppe über das Azure AD-Portal. Um einen Dienstprinzipal als Besitzer einer Gruppe hinzuzufügen, befolgen Sie die Anweisungen, um dies mit [PowerShell](https://docs.microsoft.com/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0) durchzuführen.
+Nachfolgend finden Sie Anweisungen zum Hinzufügen eines Benutzers als Besitzer zu einer Gruppe über das Azure AD-Portal. Um einen Dienstprinzipal als Besitzer einer Gruppe hinzuzufügen, befolgen Sie die Anweisungen, um dies mit [PowerShell](/powershell/module/Azuread/Add-AzureADGroupOwner) durchzuführen.
 
 ### <a name="to-add-a-group-owner"></a>So fügen Sie einen Gruppenbesitzer hinzu
 1. Melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis beim [Azure-Portal](https://portal.azure.com) an.
@@ -52,7 +52,7 @@ Entfernen Sie einen Besitzer mithilfe von Azure AD aus einer Gruppe.
 
 3. Klicken Sie auf der Übersichtsseite für **MDM policy - West** auf **Besitzer**.
 
-    ![Übersichtsseite für „MDM policy - West“ mit hervorgehobener Option „Besitzer“](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
+    ![Übersichtsseite für die MDM-Richtlinie (Westen) mit hervorgehobener Option „Besitzer entfernen“](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
 
 4. Wählen Sie auf der Seite **MDM policy - West - Besitzer** den Benutzer aus, den Sie als Gruppenbesitzer entfernen möchten, klicken Sie auf der Informationsseite des Benutzers auf **Entfernen**, und klicken Sie anschließend auf **Ja**, um Ihre Entscheidung zu bestätigen.
 
@@ -63,10 +63,10 @@ Entfernen Sie einen Besitzer mithilfe von Azure AD aus einer Gruppe.
 ## <a name="next-steps"></a>Nächste Schritte
 - [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)
 
-- [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../users-groups-roles/groups-settings-cmdlets.md)
+- [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../enterprise-users/groups-settings-cmdlets.md)
 
-- [Verwenden von Gruppen zum Zuweisen des Zugriffs auf eine integrierte SaaS-App](../users-groups-roles/groups-saasapps.md)
+- [Verwenden von Gruppen zum Zuweisen des Zugriffs auf eine integrierte SaaS-App](../enterprise-users/groups-saasapps.md)
 
 - [Integrieren lokaler Identitäten in Azure Active Directory](../hybrid/whatis-hybrid-identity.md)
 
-- [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../users-groups-roles/groups-settings-v2-cmdlets.md)
+- [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../enterprise-users/groups-settings-v2-cmdlets.md)

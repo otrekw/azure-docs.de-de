@@ -3,72 +3,36 @@
   items:
     - name: Übersicht
       items:
-        - name: Informationen zu Azure Dev Spaces
+        - name: Was ist Azure Dev Spaces?
           href: about.md
-    - name: Schnellstarts
-      items:
-        - name: Teamentwicklung
-          href: quickstart-team-development.md
-        - name: Debuggen und Durchlaufen
-          items:
-            - name: Verwenden von Visual Studio Code und Java
-              href: quickstart-java.md
-            - name: Verwenden von Visual Studio Code und .NET Core
-              href: quickstart-netcore.md
-            - name: Verwenden von Visual Studio Code und Node.js
-              href: quickstart-nodejs.md
-            - name: Verwenden von Visual Studio und .NET Core
-              href: quickstart-netcore-visualstudio.md
-        - name: Entwickeln mithilfe der Befehlszeilenschnittstelle
-          href: quickstart-cli.md
-    - name: Lernprogramme
-      items:
-        - name: Java (VS Code und CLI)
-          items:
-            - name: '1: Erste Schritte'
-              href: get-started-java.md
-            - name: '2: Entwicklung mit mehreren Diensten'
-              href: multi-service-java.md
-            - name: '3: Teamentwicklung'
-              href: team-development-java.md
-        - name: .NET Core (VS Code und CLI)
-          items:
-            - name: '1: Erste Schritte'
-              href: get-started-netcore.md
-            - name: '2: Entwicklung mit mehreren Diensten'
-              href: multi-service-netcore.md
-            - name: '3: Teamentwicklung'
-              href: team-development-netcore.md
-        - name: .NET Core (Visual Studio)
-          items:
-            - name: '1: Erste Schritte'
-              href: get-started-netcore-visualstudio.md
-            - name: '2: Entwicklung mit mehreren Diensten'
-              href: multi-service-netcore-visualstudio.md
-            - name: '3: Teamentwicklung'
-              href: team-development-netcore-visualstudio.md
-        - name: Node.js (VS Code und CLI)
-          items:
-            - name: '1: Erste Schritte'
-              href: get-started-nodejs.md
-            - name: '2: Entwicklung mit mehreren Diensten'
-              href: multi-service-nodejs.md
-            - name: '3: Teamentwicklung'
-              href: team-development-nodejs.md
     - name: Konzepte
       items:
+        - name: Migrieren zu Bridge to Kubernetes
+          href: migrate-to-bridge-to-kubernetes.md
         - name: Funktionsweise von Dev Spaces
-          href: how-dev-spaces-works.md
+          items:
+            - name: Übersicht
+              href: how-dev-spaces-works.md
+            - name: Einrichten eines Clusters
+              href: how-dev-spaces-works-cluster-setup.md
+            - name: Vorbereiten eines Projekts
+              href: how-dev-spaces-works-prep.md
+            - name: Ausführen Ihres Codes
+              href: how-dev-spaces-works-up.md
+            - name: "Weiterleiten zwischen Dev\_Spaces-Instanzen"
+              href: how-dev-spaces-works-routing.md
+            - name: Remotedebuggen
+              href: how-dev-spaces-works-remote-debugging.md
         - name: Funktionsweise von VS Code mit Dev Spaces
           href: how-vs-code-works-with-dev-spaces.md
+        - name: Netzwerkkonfiguration in verschiedenen Netzwerktopologien
+          href: configure-networking.md
     - name: Anleitung
       items:
         - name: Installieren von Azure Dev Spaces
           href: how-to/install-dev-spaces.md
         - name: Erstellen eines Kubernetes-Clusters mit Azure Cloud Shell
           href: how-to/create-cluster-cloud-shell.md
-        - name: Freigeben von Azure Dev Spaces
-          href: how-to/share-dev-spaces.md
         - name: Verwalten von Geheimnissen
           href: how-to/manage-secrets.md
         - name: Verwenden eines benutzerdefinierten NuGet-Feeds
@@ -81,14 +45,16 @@
           href: how-to/upgrade-tools.md
         - name: Verwenden von CI/CD mit Azure Dev Spaces
           href: how-to/setup-cicd.md
-        - name: Verwenden des Azure Dev Spaces-Plug-Ins für Jenkins
-          href: ../jenkins/tutorial-jenkins-dev-spaces.md
+        - name: Verwenden von GitHub-Aktionen mit Azure Dev Spaces (Vorschau)
+          href: how-to/github-actions.md
         - name: Business Continuity & Disaster Recovery für Azure Dev Spaces
           href: how-to/dev-spaces-business-continuity.md
         - name: Interagieren mit Windows-Containern
           href: how-to/run-dev-spaces-windows-containers.md
         - name: Verwenden von traefik für benutzerdefinierten eingehenden Datenverkehr und HTTPS
           href: how-to/ingress-https-traefik.md
+        - name: Verwenden von NGINX für benutzerdefinierten eingehenden Datenverkehr und HTTPS
+          href: how-to/ingress-https-nginx.md
     - name: Problembehandlung
       href: troubleshooting.md
     - name: Häufig gestellte Fragen

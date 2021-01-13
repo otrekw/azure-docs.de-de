@@ -3,24 +3,26 @@ title: Übersicht über Livestreaming mit Azure Media Services v3| Microsoft-Dok
 description: Dieser Artikel bietet eine Übersicht über das Livestreaming mit Azure Media Services v3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 08/26/2019
-ms.author: juliako
-ms.openlocfilehash: bac784ea3050111184e2908fe5656a1d16545a99
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: dc08e23b6ef040ba5833ffa97f71d8cd1da3bb8a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231020"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019799"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Livestreaming mit Azure Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Mit Azure Media Services können Sie Ihren Kunden Liveereignisse in der Azure Cloud anbieten. Um Liveereignisse mit Media Services zu streamen, benötigen Sie Folgendes:  
 
@@ -30,12 +32,14 @@ Mit Azure Media Services können Sie Ihren Kunden Liveereignisse in der Azure Cl
 - Ein Livevideoencoder, der Signale von einer Kamera (oder einem anderen Gerät, etwa einem Laptop) in Streams konvertiert, die an Media Services gesendet werden. Der Datenfeed kann Signale zu Werbezwecken enthalten, beispielsweise SCTE-35-Markierungen.<br/>Eine Liste mit empfohlenen Livestreaming-Encodern finden Sie [hier](recommended-on-premises-live-encoders.md). Sehen Sie sich auch den folgenden Blog an: [Live streaming production with OBS](https://link.medium.com/ttuwHpaJeT) (Livestreamproduktion mit OBS).
 - Komponenten in Media Services, mit denen das Liveereignis erfasst, in einer Vorschau angezeigt, paketiert, aufgezeichnet, verschlüsselt und an Ihre Kunden übertragen oder zur weiteren Verteilung an ein CDN gesendet wird.
 
+Für Kunden, die Inhalte für große Zielgruppen im Internet bereitstellen möchten, empfehlen wir, ein CDN für den [Streamingendpunkt](streaming-endpoint-concept.md) zu aktivieren.
+
 Dieser Artikel enthält eine Übersicht und Anleitungen für Livestreaming mit Media Services sowie Links zu anderen relevanten Artikeln.
  
 > [!NOTE]
-> Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-ref), die [Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+> Sie können das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten von v3-[Liveereignissen](live-events-outputs-concept.md), Anzeigen von v3-[Objekten](assets-concept.md) und Abrufen von Informationen zum Zugreifen auf APIs. Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für Transformationen und Aufträge) die [REST-API](/rest/api/media/), die [CLI](/cli/azure/ams) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
-## <a name="dynamic-packaging"></a>Dynamische Paketerstellung
+## <a name="dynamic-packaging-and-delivery"></a>Dynamische Paketerstellung und Bereitstellung
 
 Mit Media Services können Sie die [dynamische Paketerstellung](dynamic-packaging-overview.md) nutzen, mit der Sie Ihre Livestreams im [MPEG DASH-, HLS- und Smooth Streaming-Format](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) aus dem an den Dienst gesendeten Beitragsfeed als Vorschau anzeigen und übertragen können. Ihre Zuschauer können den Livestream mit einem beliebigen Player wiedergeben, der mit HLS, DASH oder Smooth Streaming kompatibel ist. Sie können den [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) in Ihren Webanwendungen oder mobilen Anwendungen nutzen, um Ihren Stream mit einem beliebigen dieser Protokolle bereitzustellen.
 
@@ -43,17 +47,20 @@ Mit Media Services können Sie die [dynamische Paketerstellung](dynamic-packagin
 
 Mit der dynamischen Verschlüsselung können Sie Ihre Live- oder On-Demand-Inhalte mit AES-128 oder einem der drei hauptsächlichen DRM-Systeme (Digital Rights Management) dynamisch verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen (PlayReady, Widevine und FairPlay) an autorisierte Clients. Weitere Informationen finden Sie unter [Dynamische Verschlüsselung](content-protection-overview.md).
 
-## <a name="dynamic-manifest"></a>Dynamisches Manifest
+> [!NOTE]
+> Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
+
+## <a name="dynamic-filtering"></a>Dynamisches Filtern
 
 Mithilfe der dynamischen Filterung kann die Anzahl von Spuren, Formaten, Bitraten und Präsentationszeitfenstern gesteuert werden, die an die Player gesendet werden. Weitere Informationen finden Sie unter [Filter und dynamische Manifeste](filters-dynamic-manifest-overview.md).
 
 ## <a name="live-event-types"></a>Liveereignistypen
 
-[Liveereignisse](https://docs.microsoft.com/rest/api/media/liveevents) sorgen für das Erfassen und Verarbeiten von Livevideofeeds. Für ein Liveereignis ist einer von zwei Typen möglich: Pass-Through und Livecodierung. Weitere Informationen zum Livestreaming in Media Services v3 finden Sie unter [Liveereignisse und Liveausgaben](live-events-outputs-concept.md).
+[Liveereignisse](/rest/api/media/liveevents) sorgen für das Erfassen und Verarbeiten von Livevideofeeds. Ein Liveereignis kann entweder auf eine *Pass-Through*- (ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten) oder *Livecodierung* (ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate) festgelegt werden. Weitere Informationen zum Livestreaming in Media Services v3 finden Sie unter [Liveereignisse und Liveausgaben](live-events-outputs-concept.md).
 
 ### <a name="pass-through"></a>Pass-Through
 
-![Pass-Through](./media/live-streaming/pass-through.svg)
+![Diagramm, das zeigt, wie die Video- und Audiofeeds von einem Passthrough-Liveereignis erfasst und verarbeitet werden.](./media/live-streaming/pass-through.svg)
 
 Wenn Sie das **Liveereignis** vom Typ „Pass-Through“ verwenden, stützen Sie sich auf Ihren lokalen Liveencoder, um einen Videostream mit mehreren Bitraten zu erzeugen und als Beitragsfeed an das Liveereignis zu senden (über RTMP oder das Eingabeprotokoll für fragmentiertes MP4). Das Liveereignis wird dann ohne jede weitere Transcodierung über die eingehenden Videostreams an die dynamische Paketerstellung (Streamingendpunkt) übertragen. Ein Liveereignis vom Typ „Pass-Through“ ist für Liveereignisse mit langer Laufzeit oder für ein lineares 24x365-Livestreaming optimiert. 
 
@@ -62,6 +69,13 @@ Wenn Sie das **Liveereignis** vom Typ „Pass-Through“ verwenden, stützen Sie
 ![Livecodierung](./media/live-streaming/live-encoding.svg)
 
 Wenn Sie die Cloudcodierung mit Media Services verwenden, konfigurieren Sie Ihren lokalen Liveencoder so, dass er ein Einzelbitraten-Video als Beitragsfeed (bis zu 32 MBit/s aggregiert) an das Liveereignis sendet (über RTMP oder das Eingabeprotokoll für fragmentiertes MP4). Vom Liveereignis wird der eingehende Einzelbitraten-Stream in [Mehrfachbitraten-Videostreams](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) mit unterschiedlichen Auflösungen transcodiert, um die Übermittlung zu verbessern und die Bereitstellung für Wiedergabegeräte über Protokolle gemäß Branchenstandard wie MPEG-DASH, Apple HTTP Live Streaming (HLS) und Microsoft Smooth Streaming zu ermöglichen. 
+
+### <a name="live-transcription-preview"></a>Livetranskription (Preview)
+
+Die Livetranskription ist ein Feature, das Sie mit Liveereignissen verwenden können, bei denen es sich um Pass-Through oder Live Encoding handelt. Weitere Informationen finden Sie unter [Livetranskription](live-transcription.md). Wenn dieses Feature aktiviert wird, nutzt der Dienst das [Spracherkennungsfeature](../../cognitive-services/speech-service/speech-to-text.md) von Cognitive Services, um den gesprochenen Text in der eingehenden Audiodatei in Text zu konvertieren. Dieser Text wird dann mitsamt Video- und Audiodaten in den MPEG-DASH- und HLS-Protokollen für die Übermittlung zur Verfügung gestellt.
+
+> [!NOTE]
+> Derzeit ist die Livetranskription als Previewfeature in der Region „USA, Westen 2“ verfügbar.
 
 ## <a name="live-streaming-workflow"></a>Workflow für das Livestreaming
 
@@ -96,7 +110,7 @@ Um die Livestreaming-Workflows in Media Services v3 nachvollziehen zu können, m
     * Beenden Sie das Liveereignis. Nach Beendigung des Liveereignisses fallen dafür keine Kosten mehr an. Wenn Sie den Kanal erneut starten, weist er die gleiche Erfassungs-URL auf, damit Sie den Encoder nicht erneut konfigurieren müssen.
     * Sie können Ihren Streamingendpunkt beenden, sofern Sie das Archiv Ihres Liveereignisses nicht als bedarfsgesteuerten Datenstrom bereitstellen möchten. Hat das Liveereignis den Status „Beendet“, fallen dafür keine Kosten an.
 
-Das Medienobjekt, in dem die Liveausgabe archiviert wird, wird automatisch zu einem bedarfsgesteuerten Medienobjekt, wenn die Liveausgabe gelöscht wird. Sie müssen alle Liveausgaben löschen, bevor ein Liveereignis angehalten werden kann. Sie können ein optionales [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body)-Flag verwenden, um Liveausgaben beim Anhalten automatisch zu entfernen. 
+Das Medienobjekt, in dem die Liveausgabe archiviert wird, wird automatisch zu einem bedarfsgesteuerten Medienobjekt, wenn die Liveausgabe gelöscht wird. Sie müssen alle Liveausgaben löschen, bevor ein Liveereignis angehalten werden kann. Sie können ein optionales [removeOutputsOnStop](/rest/api/media/liveevents/stop#request-body)-Flag verwenden, um Liveausgaben beim Anhalten automatisch zu entfernen. 
 
 > [!TIP]
 > Im Artikel [Tutorial zu Livestreaming](stream-live-tutorial-with-api.md) wird der Code untersucht, der die oben beschriebenen Schritte implementiert.
@@ -105,9 +119,13 @@ Das Medienobjekt, in dem die Liveausgabe archiviert wird, wird automatisch zu ei
 
 - [Empfohlene Liveencoder](recommended-on-premises-live-encoders.md)
 - [Verwenden eines Cloud-DVR](live-event-cloud-dvr.md)
-- [Vergleich der LiveEvent-Typen](live-event-types-comparison.md)
+- [Vergleich der Features der LiveEvent-Typen](live-event-types-comparison.md)
 - [Zustandswerte und Abrechnung](live-event-states-billing.md)
 - [Latenz](live-event-latency.md)
+
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+Lesen Sie den Artikel mit [häufig gestellten Fragen](frequently-asked-questions.md#live-streaming).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
 
@@ -115,5 +133,6 @@ Im Artikel [Azure Media Services-Community](media-services-community.md) finden 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Schnellstart für Livestreaming](live-events-wirecast-quickstart.md)
 * [Tutorial zu Livestreaming](stream-live-tutorial-with-api.md)
 * [Hinweise zur Migration von Media Services v2 zu v3](migrate-from-v2-to-v3.md)

@@ -1,52 +1,237 @@
 ---
-title: Aktivieren von Sicherheitsüberwachungen in Azure AD Domain Services | Microsoft-Dokumentation
-description: Aktivieren von Sicherheitsüberwachungen in Azure AD Domain Services
+title: Aktivieren von Sicherheitsüberwachungen für Azure AD Domain Services | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Sicherheitsüberwachungen aktivieren, um die Protokollierung von Ereignissen für Analyse und Warnungen in Azure AD Domain Services zu zentralisieren.
 services: active-directory-ds
-documentationcenter: ''
-author: iainfoulds
+author: justinha
 manager: daveba
-editor: curtand
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 06/28/2019
-ms.author: iainfou
-ms.openlocfilehash: 3105296b3c670d3d44789c93878fa1fc6076973b
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.topic: how-to
+ms.date: 07/06/2020
+ms.author: justinha
+ms.openlocfilehash: 13bdc8797af8facaa73d3e43ecfbe504a6bd1dc2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566705"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618874"
 ---
-# <a name="enable-security-audits-for-azure-ad-domain-services-preview"></a>Aktivieren von Sicherheitsüberwachungen in Azure AD Domain Services (Vorschauversion)
-Die Sicherheitsüberwachung von Azure Active Directory Domain Services ermöglicht Kunden die Verwendung des Azure AD Domain Services-Portals, um Sicherheitsüberwachungsereignisse an bestimmte Ressourcen zu streamen. Diese Ereignisse können unter anderem von Azure Storage, Azure Log Analytics-Arbeitsbereichen und von Azure Event Hub empfangen werden. Kurz nach der Aktivierung von Sicherheitsüberwachungsereignissen sendet Azure AD Domain Services alle überwachten Ereignisse für die ausgewählte Kategorie an die Zielressource. Mithilfe von Sicherheitsüberwachungsereignissen können Kunden überwachte Ereignisse in Azure Storage archivieren. Darüber hinaus können Kunden Ereignisse unter Verwendung von Event Hubs an SIEM-Software (Security Information & Event Management) oder an eine vergleichbare Lösung streamen oder über das Azure-Portal eigene Analysen und Untersuchungen mithilfe von Azure Log Analytics durchführen. 
+# <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Aktivieren von Sicherheitsüberwachungen für Azure AD Domain Services
+
+Sicherheitsüberwachungen für Azure Active Directory Domain Services (Azure AD DS) ermöglichen Azure das Streamen von Sicherheitsereignissen an Zielressourcen. Zu diesen Ressourcen zählen Azure Storage, Azure Log Analytics-Arbeitsbereiche oder Azure Event Hub. Nach dem Aktivieren von Sicherheitsüberwachungsereignissen sendet Azure AD DS alle überwachten Ereignisse für die ausgewählte Kategorie an die Zielressource.
+
+Sie können Ereignisse in Azure Storage archivieren und mit Azure Event Hubs Ereignisse an SIEM-Software (Security Information & Event Management) oder eine vergleichbare Lösung streamen oder über das Azure-Portal mithilfe von Azure Log Analytics-Arbeitsbereichen eigene Analysen durchführen.
 
 > [!IMPORTANT]
-> Die Sicherheitsüberwachung von Azure AD Domain Services steht nur in Azure Resource Manager-basierten Instanzen für Azure AD Domain Services zur Verfügung.
->
->
+> Azure AD DS-Sicherheitsüberwachungen sind nur für verwaltete Domänen verfügbar, die auf Azure Resource Manager basieren. Informationen zur Migration finden Sie unter [Migrieren von Azure AD DS vom klassischen VNET-Modell zu Resource Manager][migrate-azure-adds].
 
-## <a name="auditing-event-categories"></a>Kategorien für Überwachungsereignisse
-Die Sicherheitsüberwachung von Azure AD Domain Services ist auf die herkömmliche Überwachung von Active Directory Domain Services-Domänencontrollern abgestimmt. Dank der Wiederverwendung bereits vorhandener Überwachungsmuster kann bei der Ereignisanalyse die gleiche Logik verwendet werden. Für die Sicherheitsüberwachung von Azure AD Domain Services stehen folgende Ereigniskategorien zur Verfügung:
+## <a name="security-audit-destinations"></a>Ziele der Sicherheitsüberwachung
 
-| Name der Überwachungskategorie | Beschreibung |
+Für die Azure AD DS-Sicherheitsüberwachungen können Sie Azure Storage, Azure Event Hubs oder Azure Log Analytics-Arbeitsbereiche als Zielressource verwenden. Diese Ziele können kombiniert werden. Sie können z. B. Azure Storage zum Archivieren von Sicherheitsüberwachungsereignissen, einen Azure Log Analytics-Arbeitsbereich jedoch zum kurzfristigen Analysieren und Melden der Informationen verwenden.
+
+In der folgenden Tabelle sind die Szenarien für die einzelnen Zielressourcentypen dargestellt.
+
+> [!IMPORTANT]
+> Die Zielressource muss vor der Aktivierung der Sicherheitsüberwachungen von Azure AD DS erstellt werden. Sie können diese Ressourcen über das Azure-Portal, mit Azure PowerShell oder mithilfe der Azure CLI erstellen.
+
+| Zielressource | Szenario |
 |:---|:---|
-| Kontoanmeldung|Dient zur Überwachung von Versuchen, Kontodaten auf einem Domänencontroller oder in einer lokalen Sicherheitskontenverwaltung (Security Accounts Manager, SAM) zu authentifizieren.</p>Versuche, auf einen bestimmten Computer zuzugreifen, werden anhand von An- und Abmelderichtlinieneinstellungen und entsprechenden Ereignissen nachverfolgt. Bei den Einstellungen und Ereignissen in dieser Kategorie steht die verwendete Kontodatenbank im Mittelpunkt. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Überprüfung der Anmeldeinformationen überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerberos-Authentifizierungsdienst überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Ticketvorgänge des Kerberos-Diensts überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Andere Anmelde-/Abmeldeereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
-| Kontoverwaltung|Dient zur Überwachung von Änderungen an Benutzer- und Computerkonten/-gruppen. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Anwendungsgruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Computerkontoverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Verteilergruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Andere Kontoverwaltungsereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Sicherheitsgruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Benutzerkontenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
-| Detaillierte Nachverfolgung|Dient zur Überwachung der Aktivitäten einzelner Anwendungen und Benutzer auf dem Computer, um die Nutzung eines Computers nachzuvollziehen. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[DPAPI-Aktivität überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-dpapi-activity)</li><li>[PNP-Aktivität überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-pnp-activity)</li><li>[Prozesserstellung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-process-creation)</li><li>[Prozessbeendung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-process-termination)</li><li>[RPC-Ereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-rpc-events)</li></ul>|
-| Directory Services-Zugriff|Dient zur Überwachung von Zugriffs- und Änderungsversuchen für Objekte in Active Directory Domain Services (AD DS). Diese Überwachungsereignisse werden nur auf Domänencontrollern protokolliert. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Detaillierte Verzeichnisdienstreplikation überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-directory-service-replication)</li><li>[Verzeichnisdienstzugriff überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-access)</li><li>[Verzeichnisdienständerungen überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-changes)</li><li>[Verzeichnisdienstreplikation überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-replication)</li></ul>|
-| Anmelden/Abmelden|Dient zur Überwachung von Anmeldeversuchen bei einem Computer (interaktiv oder über ein Netzwerk). Diese Ereignisse ermöglichen die Nachverfolgung von Benutzeraktivitäten sowie die Erkennung potenzieller Angriffe auf Netzwerkressourcen. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Kontosperrung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-account-lockout)</li><li>[Benutzer-/Geräteansprüche überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-device-claims)</li><li>[IPsec-Erweiterungsmodus überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-extended-mode)</li><li>[Mitgliedschaft in der Überwachungsgruppe](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-group-membership)</li><li>[IPsec-Hauptmodus überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-main-mode)</li><li>[IPsec-Schnellmodus überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-quick-mode)</li><li>[Abmelden überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-logoff)</li><li>[Anmelden überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-logon)</li><li>[Netzwerkrichtlinienserver überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-network-policy-server)</li><li>[Andere Anmelde-/Abmeldeereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li><li>[Spezielle Anmeldung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-special-logon)</li></ul>|
-|Objektzugriff| Dient zur Überwachung von Zugriffsversuchen auf bestimmte Objekte oder Objekttypen in einem Netzwerk oder auf einem Computer. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Anwendung generiert überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-generated)</li><li>[Zertifizierungsdienste überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-certification-services)</li><li>[Detaillierte Dateifreigabe überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-file-share)</li><li>[Dateifreigabe überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-share)</li><li>[Dateisystem überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-system)</li><li>[Filterplattformverbindung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-connection)</li><li>[Filterplattform: Verworfene Pakete überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-packet-drop)</li><li>[Handleänderung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-handle-manipulation)</li><li>[Kernelobjekt überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kernel-object)</li><li>[Andere Objektzugriffsereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-object-access-events)</li><li>[Registrierung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-registry)</li><li>[Wechselmedien überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-removable-storage)</li><li>[SAM überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sam)</li><li>[Staging zentraler Zugriffsrichtlinien überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-central-access-policy-staging)</li></ul>|
-|Richtlinienänderung|Dient zur Überwachung von Änderungen an wichtigen Sicherheitsrichtlinien auf einem lokalen System oder in einem lokalen Netzwerk. Richtlinien werden in der Regel von Administratoren eingerichtet, um Netzwerkressourcen zu schützen. Die Überwachung von Änderungen an diesen Richtlinien bzw. von entsprechenden Änderungsversuchen kann ein wichtiger Aspekt der Sicherheitsverwaltung für ein Netzwerk sein. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Richtlinienänderungen überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-audit-policy-change)</li><li>[Authentifizierungsrichtlinienänderung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authentication-policy-change)</li><li>[Autorisierungsrichtlinienänderung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authorization-policy-change)</li><li>[Filterplattform-Richtlinienänderung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-policy-change)</li><li>[MPSSVC-Richtlinienänderung auf Regelebene überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-mpssvc-rule-level-policy-change)</li><li>[Andere Richtlinienänderungsereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-policy-change-events)</li></ul>|
-|Berechtigungen| Dient zur Überwachung der Verwendung bestimmter Berechtigungen auf einem oder mehreren Systemen. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Nicht sensible Verwendung von Rechten überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-non-sensitive-privilege-use)</li><li>[Sensible Verwendung von Rechten überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sensitive-privilege-use)</li><li>[Andere Rechteverwendungsereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-privilege-use-events)</li></ul>|
-|System| Dient zur Überwachung von Änderungen auf der Systemebene eines Computers, die nicht durch die anderen Kategorien abgedeckt sind und potenzielle Auswirkungen auf die Sicherheit haben. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[IPsec-Treiber überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[Andere Systemereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[Sicherheitsstatusänderung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[Sicherheitssystemerweiterung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[Systemintegrität überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
+|Azure Storage| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungsereignisse zu Archivierungszwecken speichern möchten. Andere Ziele können zwar ebenfalls zu Archivierungszwecken verwendet werden, doch bieten diese Ziele Funktionen, die über die reine Archivierung hinausgehen. <br /><br />Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie zunächst ein [Azure Storage-Konto erstellen](../storage/common/storage-account-create.md).|
+|Azure Event Hubs| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungsereignisse an Zusatzsoftware (z.B. SIEM-Software (Security Information & Event Management) oder Datenanalysesoftware) weitergeben möchten.<br /><br />Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie [im Azure Portal einen Event Hub erstellen](../event-hubs/event-hubs-create.md).|
+|Azure Log Analytics-Arbeitsbereich| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungen direkt über das Azure-Portal analysieren und überprüfen möchten.<br /><br />Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie [im Azure-Portal einen Log Analytics-Arbeitsbereich erstellen](../azure-monitor/learn/quick-create-workspace.md).|
+
+## <a name="enable-security-audit-events-using-the-azure-portal"></a>Aktivieren von Sicherheitsüberwachungsereignissen über das Azure-Portal
+
+Führen Sie die folgenden Schritte aus, um Azure AD DS-Sicherheitsüberwachungsereignisse über das Azure-Portal zu aktivieren.
+
+> [!IMPORTANT]
+> Azure AD DS-Sicherheitsüberwachungen gelten nicht rückwirkend. Ereignisse aus der Vergangenheit können nicht abgerufen oder wiedergegeben werden. Azure AD DS kann nur Ereignisse senden, die nach der Aktivierung von Sicherheitsüberwachungen auftreten.
+
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+1. Suchen Sie oben im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
+1. Wählen Sie im Fenster „Azure AD DS“ auf der linken Seite **Diagnoseeinstellungen** aus.
+1. Standardmäßig ist keine Diagnoseeinstellung konfiguriert. Wählen Sie als erstes **Diagnoseeinstellung hinzufügen** aus.
+
+    ![Hinzufügen einer Diagnoseeinstellung für Azure AD Domain Services](./media/security-audit-events/add-diagnostic-settings.png)
+
+1. Geben Sie einen Namen für die Diagnosekonfiguration ein, z.B. *aadds-auditing*.
+
+    Aktivieren Sie das Kontrollkästchen für das gewünschte Ziel der Sicherheitsüberwachung. Zur Auswahl stehen Azure Storage-Konto, Azure Event Hub oder Log Analytics-Arbeitsbereich. Diese Zielressourcen müssen bereits in Ihrem Azure-Abonnement vorhanden sein. In diesem Assistenten können die Zielressourcen nicht erstellt werden.
+
+    ![Aktivieren des gewünschten Ziels und des Typs der zu erfassenden Überwachungsereignisse](./media/security-audit-events/diagnostic-settings-page.png)
+
+    * **Azure Storage**
+        * Wählen Sie **In einem Speicherkonto archivieren** und dann **Konfigurieren** aus.
+        * Wählen Sie das **Abonnement** und dann das **Speicherkonto** aus, das Sie zum Archivieren von Sicherheitsüberwachungsereignissen verwenden möchten.
+        * Wählen Sie abschließend **OK** aus.
+    * **Azure Event Hubs**
+        * Wählen Sie **An einen Event Hub streamen** und dann **Konfigurieren** aus.
+        * Wählen Sie das **Abonnement** und dann den **Event Hub-Namespace** aus. Geben Sie bei Bedarf auch unter **Event Hub-Name** und **Event Hub-Richtlinienname** einen Namen ein.
+        * Wählen Sie abschließend **OK** aus.
+    * **Azure Log Analytics-Arbeitsbereiche**
+        * Wählen Sie **An Log Analytics senden** aus, und wählen Sie dann das **Abonnement**  und den **Log Analytics Arbeitsbereich** aus, den Sie zum Speichern von Sicherheitsüberwachungsereignissen verwenden möchten.
+
+1. Wählen Sie die Protokollkategorien aus, die für die betreffende Zielressource einbezogen werden sollen. Wenn Sie die Überwachungsereignisse an ein Azure Storage-Konto senden, können Sie auch eine Aufbewahrungsrichtlinie mit der Anzahl der Tage für die Aufbewahrung der Daten konfigurieren. Mit der Standardeinstellung *0* werden alle Daten aufbewahrt, und die Ereignisse werden nach einem bestimmten Zeitraum nicht rotiert.
+
+    Innerhalb einer einzelnen Konfiguration können für jede Zielressource verschiedene Protokollkategorien ausgewählt werden. Dadurch können Sie beispielsweise auswählen, welche Protokollkategorien für Log Analytics aufbewahrt und welche archiviert werden sollen.
+
+1. Wenn Sie fertig sind, wählen Sie **Speichern** aus, um die Änderungen zu übergeben. Unmittelbar nach dem Speichern der Konfiguration beginnen die Zielressourcen, Azure AD DS-Sicherheitsüberwachungsereignisse zu empfangen.
+
+## <a name="enable-security-audit-events-using-azure-powershell"></a>Aktivieren von Sicherheitsüberwachungsereignissen mit Azure PowerShell
+
+Führen Sie die folgenden Schritte aus, um Azure AD DS-Sicherheitsüberwachungsereignisse mit Azure PowerShell zu aktivieren. Führen Sie bei Bedarf zuerst die unter [Installieren des Azure PowerShell-Moduls und Verbinden mit Ihrem Azure-Abonnement](/powershell/azure/install-az-ps) beschriebenen Schritte aus.
+
+> [!IMPORTANT]
+> Azure AD DS-Sicherheitsüberwachungen gelten nicht rückwirkend. Ereignisse aus der Vergangenheit können nicht abgerufen oder wiedergegeben werden. Azure AD DS kann nur Ereignisse senden, die nach der Aktivierung von Sicherheitsüberwachungen auftreten.
+
+1. Authentifizieren Sie sich mit dem Cmdlet [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) bei Ihrem Azure-Abonnement. Geben Sie Ihre Azure-Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden.
+
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+1. Erstellen Sie die Zielressource für die Sicherheitsüberwachungsereignisse.
+
+    * **Azure Storage** - [Erstellen eines Speicherkontos mit Azure PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell).
+    * **Azure Event Hubs** - [Erstellen eines Event Hubs mit Azure PowerShell](../event-hubs/event-hubs-quickstart-powershell.md). Gegebenenfalls müssen Sie auch mit dem Cmdlet [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) eine Autorisierungsregel erstellen, um dem *Namespace* des Event Hubs Azure AD DS-Berechtigungen zu gewähren. Die Autorisierungsregel muss die Rechte **Verwalten**, **Lauschen** und **Senden** enthalten.
+
+        > [!IMPORTANT]
+        > Stellen Sie sicher, dass Sie die Autorisierungsregel für den Namespace des Event Hubs und nicht für den Event Hub selbst festlegen.
+
+    * **Azure Log Analytics-Arbeitsbereiche** - [Erstellen eines Log Analytics-Arbeitsbereichs mit Azure PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
+
+1. Rufen Sie mit dem Cmdlet [Get-AzResource](/powershell/module/Az.Resources/Get-AzResource) die Ressourcen-ID für Ihre verwaltete Azure AD DS-Domäne ab. Erstellen Sie eine Variable mit dem Namen *$aadds.ResourceId* für den Wert:
+
+    ```azurepowershell
+    $aadds = Get-AzResource -name aaddsDomainName
+    ```
+
+1. Konfigurieren Sie mit dem Cmdlet [Set-AzDiagnosticSetting](/powershell/module/Az.Monitor/Set-AzDiagnosticSetting) die Azure-Diagnoseeinstellungen, um die Zielressource für Sicherheitsüberwachungsereignisse von Azure AD Domain Services zu verwenden. In den folgenden Beispielen wird die Variable *$aadds.ResourceId* aus dem vorherigen Schritt verwendet.
+
+    * **Azure Storage** – Ersetzen Sie *storageAccountId* durch den Namen Ihres Speicherkontos:
+
+        ```powershell
+        Set-AzDiagnosticSetting `
+            -ResourceId $aadds.ResourceId `
+            -StorageAccountId storageAccountId `
+            -Enabled $true
+        ```
+
+    * **Azure Event Hubs** – Ersetzen Sie *eventHubName* durch den Namen Ihres Event Hubs und *eventHubRuleId* durch die ID Ihrer Autorisierungsregel:
+
+        ```powershell
+        Set-AzDiagnosticSetting -ResourceId $aadds.ResourceId `
+            -EventHubName eventHubName `
+            -EventHubAuthorizationRuleId eventHubRuleId `
+            -Enabled $true
+        ```
+
+    * **Azure Log Analytics-Arbeitsbereich** – Ersetzen Sie *workspaceId* durch die ID des Log Analytics-Arbeitsbereichs:
+
+        ```powershell
+        Set-AzureRmDiagnosticSetting -ResourceId $aadds.ResourceId `
+            -WorkspaceID workspaceId `
+            -Enabled $true
+        ```
+
+## <a name="query-and-view-security-audit-events-using-azure-monitor"></a>Abfragen und Anzeigen von Sicherheitsüberwachungsereignissen mit Azure Monitor
+
+Log Analytics-Arbeitsbereiche ermöglichen das Anzeigen und Analysieren der Sicherheitsüberwachungsereignisse mithilfe von Azure Monitor und der Kusto-Abfragesprache. Diese Abfragesprache ist für die schreibgeschützte Verwendung konzipiert und bietet leistungsstarke Analysefunktionen mit einer leicht verständlichen Syntax. Weitere Informationen zu den ersten Schritten mit Kusto-Abfragesprachen finden Sie in den folgenden Artikeln:
+
+* [Azure Monitor-Dokumentation](../azure-monitor/index.yml)
+* [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../azure-monitor/learn/tutorial-logs-dashboards.md)
+
+Die folgenden Beispielabfragen können zum Starten der Analyse von Sicherheitsüberwachungsereignissen von Azure AD DS verwendet werden.
+
+### <a name="sample-query-1"></a>Beispielabfrage 1
+
+Alle Kontosperrungsereignisse der letzten sieben Tage anzeigen:
+
+```Kusto
+AADDomainServicesAccountManagement
+| where TimeGenerated >= ago(7d)
+| where OperationName has "4740"
+```
+
+### <a name="sample-query-2"></a>Beispielabfrage 2
+
+Alle Kontosperrungsereignisse (*4740*) zwischen dem 3. Juni 2020, 9 Uhr, und dem 10. Juni 2020 um Mitternacht aufsteigend nach Datum und Uhrzeit anzeigen:
+
+```Kusto
+AADDomainServicesAccountManagement
+| where TimeGenerated >= datetime(2020-06-03 09:00) and TimeGenerated <= datetime(2020-06-10)
+| where OperationName has "4740"
+| sort by TimeGenerated asc
+```
+
+### <a name="sample-query-3"></a>Beispielabfrage 3
+
+Kontoanmeldeereignisse der letzten sieben Tage (von heute) für das Konto „user“ anzeigen:
+
+```Kusto
+AADDomainServicesAccountLogon
+| where TimeGenerated >= ago(7d)
+| where "user" == tolower(extract("Logon Account:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
+```
+
+### <a name="sample-query-4"></a>Beispielabfrage 4
+
+Kontoanmeldeereignisse der letzten sieben Tage (von heute) für das Konto „user“ anzeigen, bei denen ein falsches Kennwort verwendet wurde (*0xC0000006a*):
+
+```Kusto
+AADDomainServicesAccountLogon
+| where TimeGenerated >= ago(7d)
+| where "user" == tolower(extract("Logon Account:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
+| where "0xc000006a" == tolower(extract("Error Code:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
+```
+
+### <a name="sample-query-5"></a>Beispielabfrage 5
+
+Kontoanmeldeereignisse der letzten sieben Tage (von heute) für das Konto „user“ anzeigen, bei denen versucht wurde, bei gesperrtem Konto eine Anmeldung durchzuführen (*0xC0000234*):
+
+```Kusto
+AADDomainServicesAccountLogon
+| where TimeGenerated >= ago(7d)
+| where "user" == tolower(extract("Logon Account:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
+| where "0xc0000234" == tolower(extract("Error Code:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
+```
+
+### <a name="sample-query-6"></a>Beispielabfrage 6
+
+Die Anzahl von Kontoanmeldeereignissen der letzten sieben Tage (von heute) für alle Anmeldeversuche aller gesperrten Benutzer anzeigen:
+
+```Kusto
+AADDomainServicesAccountLogon
+| where TimeGenerated >= ago(7d)
+| where "0xc0000234" == tolower(extract("Error Code:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
+| summarize count()
+```
+
+## <a name="audit-event-categories"></a>Kategorien für Überwachungsereignisse
+
+Azure AD DS-Sicherheitsüberwachungen sind auf die herkömmliche Überwachung für herkömmliche AD DS-Domänencontroller abgestimmt. In Hybridumgebungen können Sie vorhandene Überwachungsmuster wiederverwenden, damit bei der Ereignisanalyse die gleiche Logik verwendet werden kann. Abhängig von dem zu analysierenden Szenario oder dem Szenario, in dem Sie eine Problembehandlung durchführen müssen, sind die verschiedenen Überwachungsereigniskategorien gezielt einzusetzen.
+
+Die folgenden Überwachungsereigniskategorien sind verfügbar:
+
+| Name der Überwachungskategorie | BESCHREIBUNG |
+|:---|:---|
+| Kontoanmeldung|Dient zur Überwachung von Versuchen, Kontodaten auf einem Domänencontroller oder in einer lokalen Sicherheitskontenverwaltung (Security Accounts Manager, SAM) zu authentifizieren.</p>Versuche, auf einen bestimmten Computer zuzugreifen, werden anhand von An- und Abmelderichtlinieneinstellungen und entsprechenden Ereignissen nachverfolgt. Bei den Einstellungen und Ereignissen in dieser Kategorie steht die verwendete Kontodatenbank im Mittelpunkt. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Überprüfung der Anmeldeinformationen überwachen](/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerberos-Authentifizierungsdienst überwachen](/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Ticketvorgänge des Kerberos-Diensts überwachen](/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Andere Anmelde-/Abmeldeereignisse überwachen](/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
+| Kontoverwaltung|Dient zur Überwachung von Änderungen an Benutzer- und Computerkonten/-gruppen. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Anwendungsgruppenverwaltung überwachen](/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Computerkontoverwaltung überwachen](/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Verteilergruppenverwaltung überwachen](/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Andere Kontoverwaltungsereignisse überwachen](/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Sicherheitsgruppenverwaltung überwachen](/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Benutzerkontenverwaltung überwachen](/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
+| Detaillierte Nachverfolgung|Dient zur Überwachung der Aktivitäten einzelner Anwendungen und Benutzer auf dem Computer, um die Nutzung eines Computers nachzuvollziehen. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[DPAPI-Aktivität überwachen](/windows/security/threat-protection/auditing/audit-dpapi-activity)</li><li>[PNP-Aktivität überwachen](/windows/security/threat-protection/auditing/audit-pnp-activity)</li><li>[Prozesserstellung überwachen](/windows/security/threat-protection/auditing/audit-process-creation)</li><li>[Prozessbeendung überwachen](/windows/security/threat-protection/auditing/audit-process-termination)</li><li>[RPC-Ereignisse überwachen](/windows/security/threat-protection/auditing/audit-rpc-events)</li></ul>|
+| Directory Services-Zugriff|Dient zur Überwachung von Zugriffs- und Änderungsversuchen für Objekte in Active Directory Domain Services (AD DS). Diese Überwachungsereignisse werden nur auf Domänencontrollern protokolliert. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Detaillierte Verzeichnisdienstreplikation überwachen](/windows/security/threat-protection/auditing/audit-detailed-directory-service-replication)</li><li>[Verzeichnisdienstzugriff überwachen](/windows/security/threat-protection/auditing/audit-directory-service-access)</li><li>[Verzeichnisdienständerungen überwachen](/windows/security/threat-protection/auditing/audit-directory-service-changes)</li><li>[Verzeichnisdienstreplikation überwachen](/windows/security/threat-protection/auditing/audit-directory-service-replication)</li></ul>|
+| Anmelden/Abmelden|Dient zur Überwachung von Anmeldeversuchen bei einem Computer (interaktiv oder über ein Netzwerk). Diese Ereignisse ermöglichen die Nachverfolgung von Benutzeraktivitäten sowie die Erkennung potenzieller Angriffe auf Netzwerkressourcen. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Kontosperrung überwachen](/windows/security/threat-protection/auditing/audit-account-lockout)</li><li>[Benutzer-/Geräteansprüche überwachen](/windows/security/threat-protection/auditing/audit-user-device-claims)</li><li>[IPsec-Erweiterungsmodus überwachen](/windows/security/threat-protection/auditing/audit-ipsec-extended-mode)</li><li>[Mitgliedschaft in der Überwachungsgruppe](/windows/security/threat-protection/auditing/audit-group-membership)</li><li>[IPsec-Hauptmodus überwachen](/windows/security/threat-protection/auditing/audit-ipsec-main-mode)</li><li>[IPsec-Schnellmodus überwachen](/windows/security/threat-protection/auditing/audit-ipsec-quick-mode)</li><li>[Abmelden überwachen](/windows/security/threat-protection/auditing/audit-logoff)</li><li>[Anmelden überwachen](/windows/security/threat-protection/auditing/audit-logon)</li><li>[Netzwerkrichtlinienserver überwachen](/windows/security/threat-protection/auditing/audit-network-policy-server)</li><li>[Andere Anmelde-/Abmeldeereignisse überwachen](/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li><li>[Spezielle Anmeldung überwachen](/windows/security/threat-protection/auditing/audit-special-logon)</li></ul>|
+|Objektzugriff| Dient zur Überwachung von Zugriffsversuchen auf bestimmte Objekte oder Objekttypen in einem Netzwerk oder auf einem Computer. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Anwendung generiert überwachen](/windows/security/threat-protection/auditing/audit-application-generated)</li><li>[Zertifizierungsdienste überwachen](/windows/security/threat-protection/auditing/audit-certification-services)</li><li>[Detaillierte Dateifreigabe überwachen](/windows/security/threat-protection/auditing/audit-detailed-file-share)</li><li>[Dateifreigabe überwachen](/windows/security/threat-protection/auditing/audit-file-share)</li><li>[Dateisystem überwachen](/windows/security/threat-protection/auditing/audit-file-system)</li><li>[Filterplattformverbindung überwachen](/windows/security/threat-protection/auditing/audit-filtering-platform-connection)</li><li>[Filterplattform: Verworfene Pakete überwachen](/windows/security/threat-protection/auditing/audit-filtering-platform-packet-drop)</li><li>[Handleänderung überwachen](/windows/security/threat-protection/auditing/audit-handle-manipulation)</li><li>[Kernelobjekt überwachen](/windows/security/threat-protection/auditing/audit-kernel-object)</li><li>[Andere Objektzugriffsereignisse überwachen](/windows/security/threat-protection/auditing/audit-other-object-access-events)</li><li>[Registrierung überwachen](/windows/security/threat-protection/auditing/audit-registry)</li><li>[Wechselmedien überwachen](/windows/security/threat-protection/auditing/audit-removable-storage)</li><li>[SAM überwachen](/windows/security/threat-protection/auditing/audit-sam)</li><li>[Staging zentraler Zugriffsrichtlinien überwachen](/windows/security/threat-protection/auditing/audit-central-access-policy-staging)</li></ul>|
+|Richtlinienänderung|Dient zur Überwachung von Änderungen an wichtigen Sicherheitsrichtlinien auf einem lokalen System oder in einem lokalen Netzwerk. Richtlinien werden in der Regel von Administratoren eingerichtet, um Netzwerkressourcen zu schützen. Die Überwachung von Änderungen an diesen Richtlinien bzw. von entsprechenden Änderungsversuchen kann ein wichtiger Aspekt der Sicherheitsverwaltung für ein Netzwerk sein. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Richtlinienänderungen überwachen](/windows/security/threat-protection/auditing/audit-audit-policy-change)</li><li>[Authentifizierungsrichtlinienänderung überwachen](/windows/security/threat-protection/auditing/audit-authentication-policy-change)</li><li>[Autorisierungsrichtlinienänderung überwachen](/windows/security/threat-protection/auditing/audit-authorization-policy-change)</li><li>[Filterplattform-Richtlinienänderung überwachen](/windows/security/threat-protection/auditing/audit-filtering-platform-policy-change)</li><li>[MPSSVC-Richtlinienänderung auf Regelebene überwachen](/windows/security/threat-protection/auditing/audit-mpssvc-rule-level-policy-change)</li><li>[Andere Richtlinienänderungsereignisse überwachen](/windows/security/threat-protection/auditing/audit-other-policy-change-events)</li></ul>|
+|Berechtigungen| Dient zur Überwachung der Verwendung bestimmter Berechtigungen auf einem oder mehreren Systemen. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Nicht sensible Verwendung von Rechten überwachen](/windows/security/threat-protection/auditing/audit-non-sensitive-privilege-use)</li><li>[Sensible Verwendung von Rechten überwachen](/windows/security/threat-protection/auditing/audit-sensitive-privilege-use)</li><li>[Andere Rechteverwendungsereignisse überwachen](/windows/security/threat-protection/auditing/audit-other-privilege-use-events)</li></ul>|
+|System| Dient zur Überwachung von Änderungen auf der Systemebene eines Computers, die nicht durch die anderen Kategorien abgedeckt sind und potenzielle Auswirkungen auf die Sicherheit haben. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[IPsec-Treiber überwachen](/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[Andere Systemereignisse überwachen](/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[Sicherheitsstatusänderung überwachen](/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[Sicherheitssystemerweiterung überwachen](/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[Systemintegrität überwachen](/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
 
 ## <a name="event-ids-per-category"></a>Ereignis-IDs nach Kategorie
- Die Sicherheitsüberwachung von Azure AD Domain Services erfasst die folgenden Ereignis-IDs, wenn die spezifische Aktion ein überwachbares Ereignis auslöst:
+
+ Die Sicherheitsüberwachungen von Azure AD DS zeichnen die folgenden Ereignis-IDs auf, wenn die jeweilige Aktion ein überwachbares Ereignis auslöst:
 
 | Name der Ereigniskategorie | Ereignis-IDs |
 |:---|:---|
@@ -60,190 +245,14 @@ Die Sicherheitsüberwachung von Azure AD Domain Services ist auf die herkömmli
 |Berechtigungen|4985|
 |System|4612, 4621|
 
-## <a name="enable-security-audit-events"></a>Aktivieren von Sicherheitsüberwachungsereignissen
-In diesem Abschnitt erfahren Sie, wie Sie erfolgreich Sicherheitsüberwachungsereignisse von Azure AD Domain Services abonnieren.
+## <a name="next-steps"></a>Nächste Schritte
 
-> [!IMPORTANT]
-> Die Sicherheitsüberwachungen von Azure AD Domain Services sind nicht rückwirkend. Sie können also keine Ereignisse aus der Vergangenheit abrufen oder wiedergeben. Der Dienst kann nur Ereignisse senden, die nach seiner Aktivierung auftreten.
->
+Spezielle Informationen zu Kusto finden Sie in den folgenden Artikeln:
 
-### <a name="choose-the-target-resource"></a>Auswählen der Zielressource
-Sie können eine beliebige Kombination aus Azure Storage, Azure Event Hubs oder Azure Log Analytics-Arbeitsbereichen als Zielressource für Ihre Sicherheitsüberwachungen verwenden. Orientieren Sie sich an der folgenden Tabelle, um die am besten geeignete Ressource für Ihren Anwendungsfall zu finden.
+* [Übersicht](/azure/kusto/query/) über die Kusto-Abfragesprache
+* [Kusto-Tutorial](/azure/kusto/query/tutorial) zur Vermittlung von Abfragegrundlagen
+* [Beispielabfragen](/azure/kusto/query/samples) zur Vermittlung neuer Sichtweisen auf Ihre Daten
+* [Bewährte Methoden](/azure/kusto/query/best-practices) für Kusto zur Optimierung Ihrer Abfragen
 
-> [!IMPORTANT]
-> Die Zielressource muss vor der Aktivierung der Sicherheitsüberwachungen von Azure AD Domain Services erstellt werden.
->
-
-| Zielressource | Szenario |
-|:---|:---|
-|Azure Storage|Dieses Ziel kann verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungsereignisse zu Archivierungszwecken speichern möchten. Andere Ziele können zwar ebenfalls zu Archivierungszwecken verwendet werden, diese Ziele bieten jedoch Funktionen, die über die reine Archivierung hinausgehen. Eine Anleitung zum Erstellen eines Azure Storage-Kontos finden Sie unter [Speicherkonto erstellen](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal#create-a-storage-account-1).|
-|Azure Event Hubs|Dieses Ziel kann verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungsereignisse an Zusatzsoftware weitergeben möchten – beispielsweise an eine Datenanalysesoftware oder an eine SIEM-Software (Security Information & Event Management). Eine Anleitung zum Erstellen eines Event Hubs finden Sie unter [Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).|
-|Azure Log Analytics-Arbeitsbereich|Dieses Ziel kann verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungen direkt über das Azure-Portal analysieren und überprüfen möchten.  Eine Anleitung zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).|
-
-## <a name="using-the-azure-portal-to-enable-security-audit-events"></a>Aktivieren von Sicherheitsüberwachungsereignissen über das Azure-Portal 
-1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.  Klicken Sie im Azure-Portal auf „Alle Dienste“. Geben Sie in der Liste mit den Ressourcen die Zeichenfolge **Domain** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Azure AD Domain Services**.
-2. Klicken Sie in der Liste auf die Azure AD Domain Services-Instanz.
-3. Klicken Sie auf der linken Seite in der Liste mit Aktionen auf **Diagnoseeinstellungen (Vorschauversion)** .</p>
-![Aktion „Diagnoseeinstellung“](./media/security-audit-events/diagnostic-settings-action.png)
-4. Geben Sie den Namen der Diagnosekonfiguration ein (beispielsweise **aadds-auditing**).</p>
-![Seite „Diagnoseeinstellungen“](./media/security-audit-events/diagnostic-settings-page.png)
-5. Aktivieren Sie das Kontrollkästchen neben den gewünschten Ressourcen, die Sie mit Sicherheitsüberwachungsereignissen verwenden möchten.
-    > [!NOTE]
-    > Auf dieser Seite können keine Zielressourcen erstellt werden.
-    >
-    
-    **Azure Storage:**</p>
-    Aktivieren Sie das Kontrollkästchen **In einem Speicherkonto archivieren**. Klicken Sie auf **Konfigurieren**. Wählen Sie das **Abonnement** und das **Speicherkonto** aus, die Sie zum Archivieren von Sicherheitsüberwachungsereignissen verwenden möchten. Klicken Sie auf **OK**.</p>
-    
-    ![Diagnosespeichereinstellungen](./media/security-audit-events/diag-settings-storage.png)
-    
-    **Azure Event Hubs:**</p>
-    Aktivieren Sie das Kontrollkästchen **An einen Event Hub streamen**. Klicken Sie auf **Konfigurieren**. Wählen Sie auf der Seite **Event Hub auswählen** das **Abonnement** aus, das verwendet wurde, um den Event Hub zu erstellen. Wählen Sie als Nächstes Werte für **Event Hub-Namespace**, **Event Hub-Name** und **Event Hub-Richtlinienname** aus. Klicken Sie auf **OK**.</p>
-    ![Diagnoseeinstellungen für Event Hub](./media/security-audit-events/diag-settings-eventhub.png)
-    
-    **Azure Log Analytics-Arbeitsbereiche:**</p>
-    Wählen Sie **An Log Analytics senden** aus. Wählen Sie das **Abonnement** und den **Log Analytics-Arbeitsbereich** zum Speichern von Sicherheitsüberwachungsereignissen aus.</p>
-    ![Diagnoseeinstellungen für Arbeitsbereich](./media/security-audit-events/diag-settings-log-analytics.png)
-
-6. Wählen Sie die Protokollkategorien aus, die für die betreffende Zielressource einbezogen werden sollen. Bei Verwendung von Speicherkonten können Sie Aufbewahrungsrichtlinien konfigurieren.
-
-    > [!NOTE]
-    > Innerhalb einer einzelnen Konfiguration können für jede Zielressource verschiedene Protokollkategorien ausgewählt werden. Dadurch können Sie wählen, welche Protokollkategorien für Log Analytics gespeichert werden sollen und welche Protokollkategorien Sie archivieren möchten.
-    >
-
-7. Klicken Sie auf **Speichern**, um die vorgenommenen Änderungen zu speichern. Nach dem Speichern der Konfiguration dauert es kurz, bis die Zielressourcen Sicherheitsüberwachungsereignisse von Azure AD Domain Services erhalten.
-
-## <a name="using-azure-powershell-to-enable-security-audit-events"></a>Aktivieren von Sicherheitsüberwachungsereignissen mithilfe von Azure PowerShell
- 
-### <a name="prerequisites"></a>Voraussetzungen
-
-Folgen Sie den Anweisungen im Artikel zum [Installieren des Azure PowerShell-Moduls und Herstellen einer Verbindung mit Ihrem Azure-Abonnement](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
-
-### <a name="enable-security-audits"></a>Aktivieren von Sicherheitsüberwachungen
-
-1. Authentifizieren Sie sich mithilfe des Azure PowerShell-Cmdlets **Connect-AzAccount** bei Azure Resource Manager für den entsprechenden Mandanten und das entsprechende Abonnement.
-2. Erstellen Sie die Zielressource für die Sicherheitsüberwachungsereignisse.</p>
-    **Azure Storage:**</p>
-    Gehen Sie wie unter [Speicherkonto erstellen](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-powershell) beschrieben vor, um Ihr Speicherkonto zu erstellen.</p>
-    **Azure Event Hubs:**</p>
-    Gehen Sie wie unter [Schnellstart: Erstellen einer Event Hub-Instanz mit Azure PowerShell](https://docs.microsoft.com/azure/event-hubs/event-hubs-quickstart-powershell) beschrieben vor, um Ihren Event Hub zu erstellen. Gegebenenfalls müssen Sie auch mithilfe des Azure PowerShell-Cmdlets [New-AzEventHubAuthorizationRule](https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubauthorizationrule?view=azps-2.3.2) eine Autorisierungsregel erstellen, um Active Directory AD Domain Services-Berechtigungen für den **Namespace** des Event Hubs zu erteilen. Die Autorisierungsregel muss die Rechte **Verwalten**, **Lauschen** und **Senden** enthalten.
-    > [!IMPORTANT]
-    > Wichtig: Die Autorisierungsregel muss für den Event Hub-Namespace (nicht für den Event Hub) festgelegt werden.
-       
-    </p>
-    
-    **Azure Log Analytics-Arbeitsbereiche:**</p>
-    Gehen Sie wie unter [Erstellen eines Log Analytics-Arbeitsbereichs mit Azure PowerShell](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace-posh) beschrieben vor, um Ihren Arbeitsbereich zu erstellen.
-3. Rufen Sie die Ressourcen-ID für Ihre Azure AD Domain Services-Instanz ab. Geben Sie in einer geöffneten, authentifizierten Windows PowerShell-Konsole den folgenden Befehl ein. Verwenden Sie bei zukünftigen Cmdlets die Variable **$aadds.ResourceId** als Parameter für die Azure AD Domain Services-Ressourcen-ID.
-    ```powershell
-    $aadds = Get-AzResource -name aaddsDomainName
-    ``` 
-4. Konfigurieren Sie mithilfe des Cmdlets **Set-AzDiagnosticSetting** die Azure-Diagnoseeinstellungen, um die Zielressource für Sicherheitsüberwachungsereignisse von Azure AD Domain Services zu verwenden. In den folgenden Beispielen stellt die Variable „$aadds.ResourceId“ die Ressourcen-ID Ihrer Azure AD Domain Services-Instanz dar (siehe Schritt 3).</p>
-    **Azure Storage:**
-    ```powershell
-    Set-AzDiagnosticSetting `
-    -ResourceId $aadds.ResourceId` 
-    -StorageAccountId storageAccountId `
-    -Enabled $true
-    ```
-    Ersetzen Sie *storageAccountId* durch die ID Ihres Speicherkontos.</p>
-    
-    **Azure Event Hubs:**
-    ```powershell
-    Set-AzDiagnosticSetting -ResourceId $aadds.ResourceId ` 
-    -EventHubName eventHubName `
-    -EventHubAuthorizationRuleId eventHubRuleId `
-    -Enabled $true
-    ```
-    Ersetzen Sie *eventHubName* durch den Namen Ihres Event Hubs. Ersetzen Sie *eventHubRuleId* durch Ihre zuvor erstellte Autorisierungsregel-ID.</p>
-    
-    **Azure Log Analytics-Arbeitsbereiche:**
-    ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId $aadds.ResourceId ` 
-    -WorkspaceID workspaceId `
-    -Enabled $true
-    ```
-    Ersetzen Sie *workspaceId* durch die ID des zuvor erstellten Log Analytics-Arbeitsbereichs. 
-
-## <a name="view-security-audit-events-using-azure-monitor"></a>Anzeigen von Sicherheitsüberwachungsereignissen unter Verwendung von Azure Monitor
-Log Analytics-Arbeitsbereiche ermöglichen das Anzeigen und Analysieren der Sicherheitsüberwachungsereignisse unter Verwendung von Azure Monitor und der Kusto-Abfragesprache. Die Abfragesprache ist für die schreibgeschützte Verwendung konzipiert und bietet leistungsstarke Analysefunktionen sowie eine übersichtliche Syntax.
-Im Anschluss finden Sie einige Ressourcen, die Sie bei Ihren ersten Schritten mit der Kusto-Abfragesprache unterstützen:
-* [Azure Monitor-Dokumentation](https://docs.microsoft.com/azure/azure-monitor/)
-* [Erste Schritte mit Log Analytics in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
-* [Erste Schritte mit Protokollabfragen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
-* [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards)
-
-## <a name="sample-queries"></a>Beispielabfragen
-
-### <a name="sample-query-1"></a>Beispielabfrage 1
-Alle Kontosperrungsereignisse der letzten sieben Tage:
-```Kusto
-AADDomainServicesAccountManagement
-| where TimeGenerated >= ago(7d)
-| where OperationName has "4740"
-```
-
-### <a name="sample-query-2"></a>Beispielabfrage 2
-Alle Kontosperrungsereignisse (4740) zwischen dem 26. Juni 2019, 9 Uhr, und dem 1. Juli 2019, 0 Uhr, aufsteigend sortiert nach Datum und Uhrzeit:
-```Kusto
-AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01) 
-| where OperationName has "4740"
-| sort by TimeGenerated asc
-```
-
-### <a name="sample-query-3"></a>Beispielabfrage 3
-Kontoanmeldeereignisse vor sieben Tagen (ab dem aktuellen Zeitpunkt) für das Konto „user“:
-```Kusto
-AADDomainServicesAccountLogon
-| where TimeGenerated >= ago(7d)
-| where "user" == tolower(extract("Logon Account:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
-```
-
-### <a name="sample-query-4"></a>Beispielabfrage 4
-Kontoanmeldeereignisse vor sieben Tagen (ab dem aktuellen Zeitpunkt) für das Konto „user“, bei denen ein falsches Kennwort verwendet wurde (0xC0000006a):
-```Kusto
-AADDomainServicesAccountLogon
-| where TimeGenerated >= ago(7d)
-| where "user" == tolower(extract("Logon Account:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
-| where "0xc000006a" == tolower(extract("Error Code:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
-```
-
-### <a name="sample-query-5"></a>Beispielabfrage 5
-Kontoanmeldeereignisse vor sieben Tagen (ab dem aktuellen Zeitpunkt) für das Konto „user“, bei denen versucht wurde, eine Anmeldung durchzuführen, während das Konto gesperrt war (0xC0000234):
-```Kusto
-AADDomainServicesAccountLogon
-| where TimeGenerated >= ago(7d)
-| where "user" == tolower(extract("Logon Account:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
-| where "0xc0000234" == tolower(extract("Error Code:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
-```
-
-### <a name="sample-query-6"></a>Beispielabfrage 6
-Die Anzahl von Kontoanmeldeereignissen vor sieben Tagen (ab dem aktuellen Zeitpunkt) für alle Anmeldeversuche aller gesperrten Benutzer.
-```Kusto
-AADDomainServicesAccountLogon
-| where TimeGenerated >= ago(7d)
-| where "0xc0000234" == tolower(extract("Error Code:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
-| summarize count()
-```
-
-## <a name="related-content"></a>Verwandte Inhalte
-* [Übersicht](https://docs.microsoft.com/azure/kusto/query/) über die Kusto-Abfragesprache
-* [Kusto-Tutorial](https://docs.microsoft.com/azure/kusto/query/tutorial) zur Vermittlung von Abfragegrundlagen
-* [Beispielabfragen](https://docs.microsoft.com/azure/kusto/query/samples) zur Vermittlung neuer Sichtweisen auf Ihre Daten
-* [Bewährte Methoden](https://docs.microsoft.com/azure/kusto/query/best-practices) für Kusto zur Optimierung Ihrer Abfragen
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
+<!-- LINKS - Internal -->
+[migrate-azure-adds]: migrate-from-classic-vnet.md

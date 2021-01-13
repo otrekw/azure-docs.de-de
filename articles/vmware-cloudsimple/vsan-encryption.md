@@ -1,19 +1,19 @@
 ---
-title: 'Azure-VMware-Lösung von CloudSimple: Konfigurieren der vSAN-Verschlüsselung für die private Cloud'
+title: 'Azure VMware Solution by CloudSimple: Konfigurieren der vSAN-Verschlüsselung für die private Cloud'
 description: Es wird beschrieben, wie Sie das Feature für die vSAN-Softwareverschlüsselung konfigurieren, damit Ihre private CloudSimple-Cloud mit einem Schlüsselverwaltungsserver zusammenarbeiten kann, der in Ihrem virtuellen Azure-Netzwerk ausgeführt wird.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: f5da05c7f3c6878b0804799360e512676b9002d3
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972328"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899047"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>Konfigurieren der vSAN-Verschlüsselung für die private CloudSimple-Cloud
 
@@ -98,7 +98,7 @@ Navigieren Sie in vCenter zu **Cluster > Konfigurieren**, und wählen Sie für v
 
 ![Aktivieren der vSAN-Verschlüsselung und Konfigurieren des KMS-Clusters in vCenter](media/vsan-config02.png)
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 ### <a name="azure"></a>Azure
 

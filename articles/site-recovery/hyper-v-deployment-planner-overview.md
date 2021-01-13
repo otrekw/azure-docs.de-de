@@ -1,18 +1,18 @@
 ---
-title: Informationen zum Azure Site Recovery-Bereitstellungsplaner für die Notfallwiederherstellung von Hyper-V-VMs in Azure | Microsoft-Dokumentation
+title: Bereitstellungsplaner für die Hyper-V-Notfallwiederherstellung mit Azure Site Recovery
 description: Erfahren Sie mehr über den Azure Site Recovery-Bereitstellungsplaner für die Hyper-V-Notfallwiederherstellung in Azure.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 7/29/2019
+ms.date: 3/13/2020
 ms.author: mayg
-ms.openlocfilehash: 6e7da548eb2cc6e314d446270cc04d1c57be7ae3
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: e4f1931aab056306ac5e9f9e9ef402ca26ec2d19
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618834"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86528943"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Informationen zum Azure Site Recovery-Bereitstellungsplaner für die Hyper-V-Notfallwiederherstellung in Azure
 
@@ -70,9 +70,9 @@ Das Tool umfasst die folgenden Details:
 
 ## <a name="support-matrix"></a>Unterstützungsmatrix
 
-| | **VMware zu Azure** |**Hyper-V in Azure**|**Azure zu Azure**|**Hyper-V zum sekundären Standort**|**VMware zum sekundären Standort**
+|**Kategorien** | **VMware zu Azure** |**Hyper-V in Azure**|**Azure zu Azure**|**Hyper-V zum sekundären Standort**|**VMware zum sekundären Standort**
 --|--|--|--|--|--
-Unterstützte Szenarien |Ja|Ja|Nein|Ja*|Nein
+Unterstützte Szenarios |Ja|Ja|Nein|Ja*|Nein
 Unterstützte Version | vCenter 6.7, 6.5, 6.0 oder 5.5| Windows Server 2016, Windows Server 2012 R2 | Nicht verfügbar |Windows Server 2016, Windows Server 2012 R2|Nicht verfügbar
 Unterstützte Konfiguration|vCenter, ESXi| Hyper-V-Cluster, Hyper-V-Host|Nicht verfügbar|Hyper-V-Cluster, Hyper-V-Host|Nicht verfügbar|
 Anzahl von Servern, für die pro ausgeführter Azure Site Recovery-Bereitstellungsplaner-Instanz die Profilerstellung durchgeführt werden kann |Einzeln (für VMs, die zu einem vCenter Server oder einem ESXi-Server gehören, kann die Profilerstellung auf einmal durchgeführt werden)|Mehrere (für VMs mehrerer Hosts oder Hostcluster kann die Profilerstellung auf einmal durchgeführt werden)| Nicht verfügbar |Mehrere (für VMs mehrerer Hosts oder Hostcluster kann die Profilerstellung auf einmal durchgeführt werden)| Nicht verfügbar
@@ -84,25 +84,30 @@ Das Tool verfügt für Hyper-V über drei Hauptphasen: Abrufen der VM-Liste, Pro
 
 | Serveranforderung | BESCHREIBUNG |
 |---|---|
-|Abrufen der VM-Liste, Profilerstellung und Messung des Durchsatzes |<ul><li>Betriebssystem: Microsoft Windows Server 2016 oder Microsoft Windows Server 2012 R2 </li><li>Computerkonfiguration: 8 vCPUs, 16 GB RAM, HDD mit 300 GB</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Zugriff auf Azure über das Internet von diesem Server</li><li>Azure-Speicherkonto</li><li>Administratorzugriff auf dem Server</li><li>Mindestens 100 GB freier Speicherplatz (bei 1.000 VMs mit durchschnittlich drei Datenträgern, Profilerstellung über 30 Tage)</li><li>Die VM, von der aus Sie das Azure Site Recovery-Bereitstellungsplaner-Tool ausführen, muss der Liste „TrustedHosts“ aller Hyper-V-Server hinzugefügt werden.</li><li>Alle Hyper-V-Server, für die die Profilerstellung durchgeführt werden soll, müssen der Liste „TrustedHosts“ der Client-VM hinzugefügt werden, auf der Sie das Tool ausführen. [Erfahren Sie mehr zum Hinzufügen von Servern zur Liste „TrustedHosts“](#steps-to-add-servers-into-trustedhosts-list). </li><li> Das Tool sollte mit Administratorberechtigungen in PowerShell oder über die Befehlszeilenkonsole auf dem Client ausgeführt werden.</ul></ul>|
+|Abrufen der VM-Liste, Profilerstellung und Messung des Durchsatzes |<ul><li>Betriebssystem: Microsoft Windows Server 2016 oder Microsoft Windows Server 2012 R2 </li><li>Computerkonfiguration: 8 vCPUs, 16 GB RAM, HDD mit 300 GB</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetzugriff auf Azure (*.blob.core.windows.net) von diesem Server aus, Port 443<br>[Dies ist optional. Sie können die verfügbare Bandbreite wahlweise während der Berichterstellung manuell bereitstellen.]</li><li>Azure-Speicherkonto</li><li>Administratorzugriff auf dem Server</li><li>Mindestens 100 GB freier Speicherplatz (bei 1.000 VMs mit durchschnittlich drei Datenträgern, Profilerstellung über 30 Tage)</li><li>Die VM, von der aus Sie das Azure Site Recovery-Bereitstellungsplaner-Tool ausführen, muss der Liste „TrustedHosts“ aller Hyper-V-Server hinzugefügt werden.</li><li>Alle Hyper-V-Server, für die die Profilerstellung durchgeführt werden soll, müssen der Liste „TrustedHosts“ der Client-VM hinzugefügt werden, auf der Sie das Tool ausführen. [Erfahren Sie mehr zum Hinzufügen von Servern zur Liste „TrustedHosts“](#steps-to-add-servers-into-trustedhosts-list). </li><li> Das Tool sollte mit Administratorberechtigungen in PowerShell oder über die Befehlszeilenkonsole auf dem Client ausgeführt werden.</ul></ul>|
 | Berichterstellung | Windows-PC oder Windows-Server mit Microsoft Excel 2013 oder höher |
 | Benutzerberechtigungen | Administratorkonto zum Zugreifen auf den Hyper-V-Cluster/Hyper-V-Host beim Abrufen der VM-Liste und bei der Profilerstellung.<br>Alle Hosts, für die die Profilerstellung durchgeführt werden muss, sollten über ein Domänenadministratorkonto mit den gleichen Anmeldeinformationen (Benutzername und Kennwort) verfügen.
  |
 
 ## <a name="steps-to-add-servers-into-trustedhosts-list"></a>Schritte zum Hinzufügen von Servern zur Liste „TrustedHosts“
-1.  Für die VM, über die das Tool bereitgestellt werden soll, sollten alle Hosts für die Profilerstellung in der dazugehörigen Liste „TrustedHosts“ aufgeführt sein. Führen Sie auf der VM in einem PowerShell-Fenster mit erhöhten Rechten den folgenden Befehl aus, um den Client der Liste „TrustedHosts“ hinzuzufügen. Auf der VM kann Windows Server 2012 R2 oder Windows Server 2016 ausgeführt werden. 
+1. Für die VM, über die das Tool bereitgestellt werden soll, sollten alle Hosts für die Profilerstellung in der dazugehörigen Liste „TrustedHosts“ aufgeführt sein. Führen Sie auf der VM in einem PowerShell-Fenster mit erhöhten Rechten den folgenden Befehl aus, um den Client der Liste „TrustedHosts“ hinzuzufügen. Auf der VM kann Windows Server 2012 R2 oder Windows Server 2016 ausgeführt werden. 
 
-            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
-
-1.  Jeder Hyper-V-Host, für den die Profilerstellung durchgeführt werden soll, sollte über Folgendes verfügen:
+   ```powershell
+   set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+   ```
+1. Jeder Hyper-V-Host, für den die Profilerstellung durchgeführt werden soll, sollte über Folgendes verfügen:
 
     a. Die VM, auf der das Tool ausgeführt werden soll, muss in der Liste „TrustedHosts“ enthalten sein. Führen Sie den folgenden Befehl in einem PowerShell-Fenster mit erhöhten Rechten auf dem Hyper-V-Host aus:
 
-            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+      ```powershell
+      set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+      ```
 
     b. PowerShell-Remoting muss aktiviert sein.
 
-            Enable-PSRemoting -Force
+      ```powershell
+      Enable-PSRemoting -Force
+      ```
 
 ## <a name="download-and-extract-the-deployment-planner-tool"></a>Herunterladen und Extrahieren des Bereitstellungsplaner-Tools
 
@@ -140,4 +145,4 @@ Auf der Seite [ASR Deployment Planner Version History](https://social.technet.mi
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Ausführen des Bereitstellungsplaners](site-recovery-hyper-v-deployment-planner-run.md).
+* [Ausführen des Bereitstellungsplaners](./hyper-v-deployment-planner-run.md).

@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: b0a8deb5f656fafde358dbcf2e1a2724f1a84113
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bf465cb6d391188b4110cca6d72deba6932af0a6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "64727628"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282397"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Dokumentation zu Linux-VMs
 
@@ -23,9 +23,10 @@ Azure Linux Virtual Machines bietet eine auf Red Hat, Ubuntu oder der von Ihnen 
 
 Erfahren Sie, wie Sie einen NGINX-Webserver auf einem virtuellen Computer unter Ubuntu bereitstellen:
 
-- [Azure-Portal](/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure PowerShell](/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure-Befehlszeilenschnittstelle](/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure-Befehlszeilenschnittstelle](../../articles/virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure-Portal](../../articles//virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure PowerShell](../../articles//virtual-machines/quick-create-powershell.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
 
 ## <a name="step-by-step-tutorials"></a>Schritt-für-Schritt-Tutorials
 
@@ -42,7 +43,7 @@ Enthält Informationen dazu, wie Sie virtuelle Linux-Computer in Azure bereitste
 - [Sichern virtueller Computer](/azure/virtual-machines/linux/tutorial-backup-vms)
 - [Überwachen virtueller Computer](/azure/virtual-machines/linux/tutorial-monitoring)
 - [Verwalten der Sicherheit auf virtuellen Computern](/azure/virtual-machines/linux/tutorial-azure-security)
-- [Erstellen einer CI/CD-Infrastruktur mit Jenkins, Docker und GitHub](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)
+- [Erstellen einer CI/CD-Infrastruktur mit Jenkins, Docker und GitHub](/azure/jenkins/tutorial-jenkins-github-docker-cicd)
 
 ## <a name="free-pluralsight-video-training"></a>Kostenloses PluralSight-Videotraining
 

@@ -1,30 +1,23 @@
 ---
-title: Threat Modeling Tool-Releases – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
-description: Dokumentation der Anmerkungen zu dieser Version für das Threat Modeling Tool.
-services: security
-documentationcenter: na
+title: Microsoft Threat Modeling Tool, Release 12.9.2018
+titleSuffix: Azure
+description: Lesen Sie die Versionshinweise zum Update für das Microsoft Threat Modeling Tool, das am 12.9.2018 veröffentlicht wurde. Die Hinweise enthalten Featureänderungen und Fehlerbehebungen.
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
-ms.author: jegeib
-ms.openlocfilehash: ce5f2b5541da3b3a3db046ba0dc768e3fbe2431e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 7b0afdd90f2a1413c7f8364fc4518c4d1116454a
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928117"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913584"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool, allgemein verfügbares Release 7.1.50911.2: 12.09.2018
 
-Wir freuen uns, ankündigen zu können, dass das Microsoft Threat Modeling Tool jetzt als unterstützte Version mit allgemeiner Verfügbarkeit (GA-Version) zum Download bereitsteht. Dieses Release enthält wichtige Datenschutz- und Sicherheitsupdates sowie Fehlerkorrekturen, Funktionsupdates und Stabilitätsverbesserungen. Vorhandene Benutzer der Preview-Version 2017 werden beim Öffnen des Clients durch die ClickOnce-Technologie aufgefordert, auf die neueste Version zu aktualisieren. Neue Benutzer des Tools [klicken hier, um den Client herunterzuladen](https://aka.ms/threatmodelingtool).
+Wir freuen uns, ankündigen zu können, dass das Microsoft Threat Modeling Tool jetzt als unterstützte Version mit allgemeiner Verfügbarkeit (GA-Version) zum Download bereitsteht. Dieses Release enthält wichtige Datenschutz- und Sicherheitsupdates sowie Fehlerkorrekturen, Funktionsupdates und Stabilitätsverbesserungen. Vorhandene Benutzer der Preview-Version 2017 werden beim Öffnen des Clients durch die ClickOnce-Technologie aufgefordert, auf die neueste Version zu aktualisieren. Neue Benutzer des Tools können den [Client herunterladen](https://aka.ms/threatmodelingtool).
 
 Mit diesem Release beenden wir den Support für die Preview-Version 2017 und empfehlen allen Benutzern der Preview, auf die GA-Version zu aktualisieren. Am oder nach dem 15. Oktober 2018 legen wir die mindestens erforderliche ClickOnce-Version für das Threat Modeling Tool fest, und alle Preview-Clients müssen ein Upgrade vornehmen.
 
@@ -72,13 +65,13 @@ Der Benutzer kann auf den Text der Gegenmaßnahme klicken und die Standard-Zooms
 
 Die Funktion „Auf OneDrive öffnen“ der Preview-Version wurde entfernt. Benutzer mit „Zuletzt geöffneten Modellen“, die auf OneDrive gespeichert wurden, erhalten folgenden Fehler.
 
-![OneDrive-Funktion entfernt](./media/threat-modeling-tool-releases-71509112/tmt_save_error-300x131.png)
+![Screenshot: Fehler beim Öffnen der Datei. Der Objektverweis wurde nicht auf eine Instanz eines Objekts festgelegt.](./media/threat-modeling-tool-releases-71509112/tmt_save_error-300x131.png)
 
 #### <a name="workaround"></a>Problemumgehung
 
 Benutzern von OneDrive wird empfohlen, den Client [OneDrive für Windows](https://onedrive.live.com/about/en-us/download/) von Microsoft zu verwenden, um über das Standarddialogfeld „Als Modell öffnen“ auf ihre auf OneDrive gespeicherten Dateien zuzugreifen.
 
-![OneDrive-Funktion entfernt](./media/threat-modeling-tool-releases-71509112/tmt_save_onedrive-300x149.png)
+![Screenshot: Dialogfeld „Modell öffnen“ mit ausgewählter Option „OneDrive“](./media/threat-modeling-tool-releases-71509112/tmt_save_onedrive-300x149.png)
 
 ### <a name="my-organization-uses-the-2016-version-of-the-tool-can-i-use-the-azure-stencil-set"></a>Meine Organisation verwendet die 2016-Version des Tools, kann ich den Azure-Schablonensatz verwenden?
 

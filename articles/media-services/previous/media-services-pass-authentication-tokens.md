@@ -4,8 +4,8 @@ description: Erfahren Sie, wie Sie Authentifizierungstoken vom Client an den Sch
 services: media-services
 keywords: Content Protection, DRM, Tokenauthentifizierung
 documentationcenter: ''
-author: dbgeorge
-manager: jasonsue
+author: Juliako
+manager: femila
 editor: ''
 ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services
@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
-ms.author: dwgeo
-ms.openlocfilehash: 71925a1ee67956df45901950b2a59fa4c1b458a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 498e6d9e38468b126dbe10e0d0f59f54f1816ff0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463224"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89261036"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Erfahren Sie, wie Clients Token an den Schlüsselbereitstellungsdienst von Azure Media Services übergeben.
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Kunden fragen häufig, wie ein Player Token für die Überprüfung an den Schlüsselübermittlungsdienst von Azure Media Services übergeben kann, damit der Player den Schlüssel abrufen kann. Media Services unterstützt die Formate „Simple Web Token“ (SWT) und „JSON Web Token“ (JWT). Die Tokenauthentifizierung kann auf jede Art von Schlüssel angewendet werden, unabhängig davon, ob Sie die Common Encryption oder die AES-Umschlagverschlüsselung (Advanced Encryption Standard) im System verwenden.
 
  Je nach Player und Zielplattform haben Sie folgende Möglichkeiten, das Token mit Ihrem Player zu übergeben:

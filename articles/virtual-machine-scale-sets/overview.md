@@ -1,30 +1,23 @@
 ---
-title: Übersicht über Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
+title: Übersicht über Azure-VM-Skalierungsgruppen
 description: Enthält Informationen zu Azure-VM-Skalierungsgruppen und zur automatischen Skalierung Ihrer Anwendungen.
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: drewm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: mimckitt
+ms.author: mimckitt
 ms.topic: overview
-ms.custom: mvc
-ms.date: 05/21/2018
-ms.author: manayar
-ms.openlocfilehash: 98c183d65a18c186b515df8ec02ba26b8c2c4143
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.service: virtual-machine-scale-sets
+ms.subservice: ''
+ms.date: 06/30/2020
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: dff83159511c6e8a08e8f212c01244e923ad1f5b
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258302"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376943"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Was sind Skalierungsgruppen für virtuelle Computer?
-Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe von identischen virtuellen Computern mit Lastenausgleich erstellen und verwalten. Die Anzahl von VM-Instanzen kann automatisch erhöht oder verringert werden, wenn sich der Bedarf ändert, oder es kann ein Zeitplan festgelegt werden. Skalierungsgruppen ermöglichen Hochverfügbarkeit für Ihre Anwendungen und das zentrale Verwalten, Konfigurieren und Aktualisieren einer großen Zahl von VMs. Mit VM-Skalierungsgruppen können Sie umfassende Dienste für Bereiche wie Compute, Big Data und Containerworkloads erstellen.
+Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe VMs mit Lastenausgleich erstellen und verwalten. Die Anzahl von VM-Instanzen kann automatisch erhöht oder verringert werden, wenn sich der Bedarf ändert, oder es kann ein Zeitplan festgelegt werden. Skalierungsgruppen ermöglichen Hochverfügbarkeit für Ihre Anwendungen und das zentrale Verwalten, Konfigurieren und Aktualisieren einer großen Zahl von VMs. Mit VM-Skalierungsgruppen können Sie umfassende Dienste für Bereiche wie Compute, Big Data und Containerworkloads erstellen.
 
 
 ## <a name="why-use-virtual-machine-scale-sets"></a>Gründe für die Verwendung von VM-Skalierungsgruppen
@@ -35,7 +28,7 @@ Zur Sicherstellung von Redundanz und einer höheren Leistung werden Anwendungen 
 - **Einfaches Erstellen und Verwalten von mehreren VMs**
     - Wenn Sie über viele VMs verfügen, auf denen Ihre Anwendung ausgeführt wird, ist es wichtig, für Ihre gesamte Umgebung eine einheitliche Konfiguration zu nutzen. Eine zuverlässige Leistung der Anwendung wird erzielt, wenn die VM-Größe, Datenträgerkonfiguration und Anwendungsinstallationen für alle VMs gleich sind.
     - Bei Skalierungsgruppen werden alle VM-Instanzen aus demselben Betriebssystem-Basisimage und derselben Konfiguration erstellt. Mit diesem Ansatz können Sie leicht Hunderte von VMs verwalten, ohne dass zusätzliche Konfigurationsaufgaben oder Schritte für die Netzwerkverwaltung anfallen.
-    - Skalierungsgruppen unterstützen die Verwendung von [Azure Load Balancer](../load-balancer/load-balancer-overview.md) für eine grundlegende Layer-4-Datenverkehrsverteilung und von [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) für eine erweiterte Layer-7-Datenverkehrsverteilung und SSL-Terminierung.
+    - Skalierungsgruppen unterstützen die Verwendung von [Azure Load Balancer](../load-balancer/load-balancer-overview.md) für eine grundlegende Layer-4-Datenverkehrsverteilung und von [Azure Application Gateway](../application-gateway/overview.md) für eine erweiterte Layer-7-Datenverkehrsverteilung und TLS-Terminierung.
 
 - **Hochverfügbarkeit und Anwendungsresilienz**
     - Skalierungsgruppen werden verwendet, um mehrere Instanzen Ihrer Anwendung auszuführen. Wenn für eine dieser VM-Instanzen ein Problem besteht, können Kunden nach einer minimalen Unterbrechung über eine der anderen VM-Instanzen weiter auf Ihre Anwendung zugreifen.
@@ -47,7 +40,7 @@ Zur Sicherstellung von Redundanz und einer höheren Leistung werden Anwendungen 
 
 - **Großer Umfang**
     - Skalierungsgruppen unterstützen bis zu 1.000 VM-Instanzen. Wenn Sie Ihre eigenen benutzerdefinierten VM-Images erstellen und hochladen, beträgt das Limit 600 VM-Instanzen.
-    - Verwenden Sie [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md), um für Produktionsworkloads die beste Leistung zu erzielen.
+    - Verwenden Sie [Azure Managed Disks](../virtual-machines/managed-disks-overview.md), um für Produktionsworkloads die beste Leistung zu erzielen.
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Unterschiede zwischen virtuellen Computern und Skalierungsgruppen
@@ -62,6 +55,15 @@ Skalierungsgruppen werden aus virtuellen Computern erstellt. Mit Skalierungsgrup
 
 Für Skalierungsgruppen fallen keine zusätzlichen Kosten an. Sie zahlen nur für die zugrunde liegenden Computeressourcen, z.B. die VM-Instanzen, den Lastenausgleich oder Speicher für verwaltete Datenträger. Für die Verwaltungs- und Automatisierungsfeatures, z.B. automatische Skalierung und Redundanz, fallen bei der Nutzung von VMs keine weiteren Gebühren an.
 
+## <a name="how-to-monitor-your-scale-sets"></a>Überwachen von Skalierungsgruppen
+
+Verwenden Sie [Azure Monitor für VMs](../azure-monitor/insights/vminsights-overview.md), das einen einfachen Onboarding-Prozess enthält und die Erfassung wichtiger Leistungsindikatoren für CPU, Arbeitsspeicher, Datenträger und Netzwerk der VMs in der Skalierungsgruppe automatisiert. Außerdem sind weitere Überwachungsfunktionen und vordefinierte Visualisierungen verfügbar, mit der Sie sich auf Verfügbarkeit und Leistung Ihrer Skalierungsgruppen konzentrieren können.
+
+Aktivieren Sie die Überwachung für Ihre [VM-Skalierungsgruppenanwendung](../azure-monitor/app/azure-vm-vmss-apps.md) mit Application Insights, um ausführliche Informationen zur Anwendung zu erfassen, einschließlich der Anzahl der Seitenaufrufe, Anwendungsanforderungen und Ausnahmen. Überprüfen Sie darüber hinaus die Verfügbarkeit Ihrer Anwendung, indem Sie einen [Verfügbarkeitstest](../azure-monitor/app/monitor-web-app-availability.md) konfigurieren, um Benutzerdatenverkehr zu simulieren.
+
+## <a name="data-residency"></a>Datenresidenz
+
+Das Feature zum Aktivieren der Speicherung von Kundendaten in einer einzelnen Region ist in Azure derzeit nur in der Region „Asien, Südosten“ (Singapur) des geografischen Raums „Asien-Pazifik“ und in der Region „Brasilien, Süden“ (São Paulo, Bundesstaat) des geografischen Raums „Brasilien“ verfügbar. Bei allen anderen Regionen werden Kundendaten unter „Geografien“ gespeichert. Weitere Informationen finden Sie unter [Trust Center](https://azuredatacentermap.azurewebsites.net/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erstellen Sie im Azure-Portal Ihre erste VM-Skalierungsgruppe, um zu beginnen.

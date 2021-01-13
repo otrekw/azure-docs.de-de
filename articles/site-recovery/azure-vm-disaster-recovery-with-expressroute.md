@@ -1,5 +1,5 @@
 ---
-title: Integrieren von Azure ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer mithilfe des Azure Site Recovery-Diensts | Microsoft-Dokumentation
+title: Integrieren der Azure-VM-Notfallwiederherstellung über Azure ExpressRoute mit Azure Site Recovery
 description: Beschreibt, wie Sie die Notfallwiederherstellung für Azure VMs mithilfe von Azure Site Recovery und Azure ExpressRoute einrichten.
 services: site-recovery
 author: mayurigupta13
@@ -8,21 +8,21 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 0974e2ed78e557168357c51b5c77a94de2f56dc5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0e1f670f2ba5ad31f29d56b2de40acd6e2bf18a9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722098"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88654377"
 ---
-# <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrieren von Azure ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer
+# <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrieren von ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer
 
 
 In diesem Artikel wird beschrieben, wie Sie Azure ExpressRoute mit [Azure Site Recovery](site-recovery-overview.md) integrieren, wenn Sie die Notfallwiederherstellung für Azure-VMs in einer sekundären Azure-Region einrichten.
 
 Site Recovery ermöglicht die Notfallwiederherstellung von Azure-VMs durch Replikation der Daten von Azure-VMs zu Azure.
 
-- Wenn Azure-VMs [verwaltete Azure-Datenträger](../virtual-machines/windows/managed-disks-overview.md) verwenden, werden VM-Daten auf einen replizierten verwalteten Datenträger in der sekundären Region repliziert.
+- Wenn Azure-VMs [verwaltete Azure-Datenträger](../virtual-machines/managed-disks-overview.md) verwenden, werden VM-Daten auf einen replizierten verwalteten Datenträger in der sekundären Region repliziert.
 - Wenn Azure-VMs keine verwalteten Datenträger verwenden, werden VM-Daten in ein Azure-Speicherkonto repliziert.
 - Replikationsendpunkte sind öffentlich, aber der Replikationsdatenverkehr für virtuelle Azure-Computer wird nicht über das Internet übertragen.
 
@@ -106,10 +106,10 @@ Die Workloads herkömmlicher Enterprise-Bereitstellungen werden normalerweise au
 
 **Richtung** | **Einstellung** | **State**
 --- | --- | ---
-Spoke zu Hub | Virtuelle Netzwerkadressen zulassen | Enabled
-Spoke zu Hub | Weitergeleiteten Datenverkehr zulassen | Enabled
-Spoke zu Hub | Gatewaytransit zulassen | Deaktiviert
-Spoke zu Hub | „Gateways entfernen“ verwenden | Enabled
+Spoke zu Hub | Virtuelle Netzwerkadressen zulassen | Aktiviert
+Spoke zu Hub | Weitergeleiteten Datenverkehr zulassen | Aktiviert
+Spoke zu Hub | Gatewaytransit zulassen | Disabled
+Spoke zu Hub | „Gateways entfernen“ verwenden | Aktiviert
 
  ![Konfiguration des Spoke-zu-Hub-Peerings](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
@@ -117,10 +117,10 @@ Spoke zu Hub | „Gateways entfernen“ verwenden | Enabled
 
 **Richtung** | **Einstellung** | **State**
 --- | --- | ---
-Hub zu Spoke | Virtuelle Netzwerkadressen zulassen | Enabled
-Hub zu Spoke | Weitergeleiteten Datenverkehr zulassen | Enabled
-Hub zu Spoke | Gatewaytransit zulassen | Enabled
-Hub zu Spoke | „Gateways entfernen“ verwenden | Deaktiviert
+Hub zu Spoke | Virtuelle Netzwerkadressen zulassen | Aktiviert
+Hub zu Spoke | Weitergeleiteten Datenverkehr zulassen | Aktiviert
+Hub zu Spoke | Gatewaytransit zulassen | Aktiviert
+Hub zu Spoke | „Gateways entfernen“ verwenden | Disabled
 
  ![Konfiguration des Hub-zu-Spoke-Peerings](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
 
@@ -164,11 +164,11 @@ Diese Konfiguration hilft Ihnen beim Schutz vor Ausfällen der primären Express
 
 ### <a name="access-with-a-single-circuit"></a>Zugriff mit einer einzelnen Leitung
 
-In dieser Konfiguration gibt es nur eine ExpressRoute-Leitung. Obwohl die Leitung eine redundante Verbindung besitzt, für den Fall, dass eine ausfällt, bietet eine einzelne Routingleitung keine Resilienz, wenn Ihre Peeringregion ausfällt. Beachten Sie Folgendes:
+In dieser Konfiguration gibt es nur eine ExpressRoute-Leitung. Obwohl die Leitung eine redundante Verbindung besitzt, für den Fall, dass eine ausfällt, bietet eine einzelne Routingleitung keine Resilienz, wenn Ihre Peeringregion ausfällt. Beachten Sie dabei Folgendes:
 
 - Sie können virtuelle Azure-Computer in eine beliebige Azure-Region innerhalb [desselben geografischen Standorts](azure-to-azure-support-matrix.md#region-support) replizieren. Wenn sich die Azure-Zielregion nicht innerhalb desselben Standorts wie die Quelle befindet, müssen Sie ExpressRoute Premium aktivieren, wenn Sie eine einzelne ExpressRoute-Leitung verwenden. Erfahren Sie mehr über [ExpressRoute-Standorte](../expressroute/expressroute-locations.md) und [ExpressRoute – Preise](https://azure.microsoft.com/pricing/details/expressroute/).
 - Sie können Quell- und Ziel-vNets nicht gleichzeitig mit der Leitung verbinden, wenn in der Zielregion derselbe IP-Adressraum verwendet wird. Szenario:    
-    -  Trennen Sie die Verbindung mit der Quelle, und stellen Sie dann die Verbindung mit dem Ziel her. Diese Verbindungsänderung kann als Teil eines Site Recovery-Wiederherstellungsplans geskriptet werden. Beachten Sie Folgendes:
+    -  Trennen Sie die Verbindung mit der Quelle, und stellen Sie dann die Verbindung mit dem Ziel her. Diese Verbindungsänderung kann als Teil eines Site Recovery-Wiederherstellungsplans geskriptet werden. Beachten Sie dabei Folgendes:
         - Wenn bei einem regionalen Ausfall kein Zugriff auf die primäre Region möglich ist, kann der Trennvorgang fehlschlagen. Dies könnte sich auf die Herstellung einer Verbindung mit der Zielregion auswirken.
         - Wenn Sie die Verbindung in die Zielregion erstellt haben, und die primäre Region wird später wiederhergestellt, kann es zu Paketverlusten kommen, da zwei gleichzeitige Verbindungen versuchen, auf den gleichen Adressraum zuzugreifen.
         - Um dies zu verhindern, beenden Sie die primäre Verbindung sofort.

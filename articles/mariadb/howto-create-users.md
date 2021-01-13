@@ -1,26 +1,36 @@
 ---
-title: Erstellen von Benutzern auf einem Azure Database for MariaDB-Server
+title: Erstellen von Benutzern in Azure Database for MariaDB
 description: In diesem Artikel wird beschrieben, wie Sie neue Benutzerkonten für die Interaktion mit einem Azure Database for MariaDB-Server erstellen können.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: ed373cfa0ac755d56e7bc2601c65e0e6482ff6d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: how-to
+ms.date: 10/1/2020
+ms.openlocfilehash: 882c8365bda87e97bfbc3bee9bdd320b312b4114
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038870"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542710"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Erstellen von Benutzern in Azure Database for MariaDB 
 In diesem Artikel wird beschrieben, wie Sie Benutzer in Azure Database for MariaDB erstellen können.
+
+> [!NOTE]
+> Vorurteilsfreie Kommunikation
+>
+> Microsoft setzt sich für Diversität und Inklusion ein. In diesem Artikel wird das Wort _Slave_ (Sklave) verwendet. Laut [Microsoft-Styleguide für unvoreingenommene Kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) sollte dieses Wort jedoch vermieden werden. In diesem Artikel wird es aus Konsistenzgründen verwendet, da das Wort derzeit noch in der Software vorkommt. Wenn die Software aktualisiert und um dieses Wort bereinigt wird, wird auch der Artikel entsprechend aktualisiert.
+>
 
 Bei der anfänglichen Erstellung Ihrer Azure Database for MariaDB-Instanz haben Sie einen Serveradministrator-Benutzernamen und das dazugehörige Kennwort angegeben. Weitere Informationen erhalten Sie in der [Schnellstartanleitung](quickstart-create-mariadb-server-database-using-azure-portal.md). Sie können Ihren Serveradministrator-Benutzernamen im Azure-Portal ermitteln.
 
 Der Serveradministrator erhält folgende Berechtigungen für Ihren Server: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER
 
 Nach der Erstellung des Azure Database for MariaDB-Servers können Sie das erste Serveradministrator-Benutzerkonto verwenden, um weitere Benutzer zu erstellen und ihnen Administratorzugriff zu gewähren. Außerdem kann das Serveradministratorkonto genutzt werden, um Benutzer mit weniger Berechtigungen zu erstellen, die Zugriff auf einzelne Datenbankschemas haben.
+
+> [!NOTE]
+> Die SUPER-Berechtigung und die DBA-Rolle werden nicht unterstützt. Überprüfen Sie die [Berechtigungen](concepts-limits.md#privileges--data-manipulation-support) im Artikel zu den Einschränkungen, um zu verstehen, was im-Dienst nicht unterstützt wird.<br><br>
+> Kennwort-Plug-Ins wie „validate_password“ und „caching_sha2_password“ werden vom Dienst nicht unterstützt.
 
 ## <a name="create-additional-admin-users"></a>Erstellen von zusätzlichen Administratorbenutzern
 1. Beschaffen Sie die Verbindungsinformationen und den Administratorbenutzernamen.
@@ -81,6 +91,10 @@ Nach der Erstellung des Azure Database for MariaDB-Servers können Sie das erste
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
    Weitere Informationen zur Verwaltung von Benutzerkonten finden Sie in der MariaDB-Dokumentation in den Abschnitten zu den Themen [Benutzerkontenverwaltung](https://mariadb.com/kb/en/library/user-account-management/), [GRANT-Syntax](https://mariadb.com/kb/en/library/grant/) und [Berechtigungen](https://mariadb.com/kb/en/library/grant/#privilege-levels).
+
+## <a name="azure_superuser"></a>azure_superuser
+
+Alle Azure Database for MySQL-Server werden mit dem Benutzer „azure_superuser“ erstellt. Dies ist ein von Microsoft erstelltes Systemkonto zum Verwalten des Servers, um Überwachungs-, Sicherungs- und andere regelmäßige Wartungsarbeiten durchzuführen. Bereitschaftstechniker können über dieses Konto auch während eines Vorfalls mit Zertifikatauthentifizierung auf den Server zugreifen und müssen den Zugriff mithilfe von JIT-Prozessen (Just-In-Time) anfordern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Öffnen Sie die Firewall für die IP-Adressen der Computer der neuen Benutzer, um ihnen das Herstellen einer Verbindung zu ermöglichen: [Erstellen und Verwalten von Firewallregeln für Azure Database for MariaDB mithilfe des Azure-Portals](howto-manage-firewall-portal.md)  

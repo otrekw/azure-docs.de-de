@@ -12,16 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: afb8335d3206a76b8f9bc47733e9816126e80af0
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 6c4e507df0f112934979d4e59778b667743cf623
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058464"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022903"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Die Netzwerkschnittstelle für den virtuellen Windows-Computer in Azure zurücksetzen 
-
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Dieser Artikel zeigt, wie Sie die Netzwerkschnittstelle für Azure-Windows-VMs zurücksetzen, um Probleme zu lösen, wenn Sie nach einer der folgenden Aktionen keine Verbindung mit einem virtuellen Microsoft Azure-Windows-Computer (VM) mehr herstellen können:
 
@@ -49,7 +47,7 @@ Dieser Artikel zeigt, wie Sie die Netzwerkschnittstelle für Azure-Windows-VMs z
 
 #### <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
 
-1. Sicherstellen, dass die [neueste Azure PowerShell-Version](https://docs.microsoft.com/powershell/azure/overview) installiert ist
+1. Sicherstellen, dass die [neueste Azure PowerShell-Version](/powershell/azure/) installiert ist
 2. Öffnen Sie eine Azure PowerShell Sitzung mit erhöhten Rechten („Als Administrator ausführen“). Führen Sie die folgenden Befehle aus:
 
     ```powershell
@@ -68,11 +66,13 @@ Dieser Artikel zeigt, wie Sie die Netzwerkschnittstelle für Azure-Windows-VMs z
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
 
     #Add/Change static IP. This process will not change MAC address
-    Get-AzVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
+    Get-AzVM -ResourceGroupName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
     ```
 3. Versuchen Sie RDP auf Ihrem Computer auszuführen.  Wenn Sie möchten, können Sie bei erfolgreicher Ausführung die private IP-Adresse zurück zur ursprünglichen ändern. Andernfalls können Sie sie speichern.
 
 ### <a name="for-classic-vms"></a>Für klassische virtuelle Computer
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 Um die Netzwerkschnittstelle zurückzusetzen, gehen Sie folgendermaßen vor:
 
@@ -90,7 +90,7 @@ Um die Netzwerkschnittstelle zurückzusetzen, gehen Sie folgendermaßen vor:
 
 #### <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
 
-1. Stellen Sie sicher, dass Sie die [neueste Azure PowerShell-Version](https://docs.microsoft.com/powershell/azure/overview) installiert haben.
+1. Stellen Sie sicher, dass Sie die [neueste Azure PowerShell-Version](/powershell/azure/) installiert haben.
 2. Öffnen Sie eine Azure PowerShell Sitzung mit erhöhten Rechten („Als Administrator ausführen“). Führen Sie die folgenden Befehle aus:
 
     ```powershell
@@ -109,7 +109,7 @@ Um die Netzwerkschnittstelle zurückzusetzen, gehen Sie folgendermaßen vor:
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
     
     #Add/Change static IP. This process will not change MAC address
-    Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
+    Get-AzureVM -ResourceGroupName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
     ```
 3. Versuchen Sie RDP auf Ihrem Computer auszuführen. Wenn Sie möchten, können Sie bei erfolgreicher Ausführung die private IP-Adresse zurück zur ursprünglichen ändern. Andernfalls können Sie sie speichern. 
 

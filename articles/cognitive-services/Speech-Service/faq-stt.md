@@ -1,39 +1,39 @@
 ---
-title: Häufig gestellte Fragen zum Spracherkennungsdienst in Azure
+title: Häufig gestellte Fragen zur Spracherkennung
 titleSuffix: Azure Cognitive Services
-description: Erhalten Sie Antworten auf die am häufigsten gestellten Fragen zum Spracherkennungsdienst.
+description: Erhalten Sie Antworten auf häufig gestellte Fragen zum Spracherkennungsdienst.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a437927f6ad43f4c3a90433faa5b9fa6f964aa5c
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: a78e18de1f495feb6234fa5bfd97162d8b80de4c
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839228"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857323"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
-Wenn Sie in diesen häufig gestellten Fragen keine Antworten auf Ihre Fragen finden, sehen Sie sich [weitere Supportoptionen](support.md) an.
+Wenn Sie in diesen häufig gestellten Fragen keine Antworten auf Ihre Fragen finden, sehen Sie sich [weitere Supportoptionen](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) an.
 
 ## <a name="general"></a>Allgemein
 
 **F: Worin besteht der Unterschied zwischen einem Basismodell und einem benutzerdefinierten Spracherkennungsmodell?**
 
-**A:** Ein Basismodell wurde mit Daten von Microsoft trainiert und ist bereits in der Cloud bereitgestellt.  Sie können ein benutzerdefiniertes Modell verwenden, um ein Modell optimal an eine bestimmte Umgebung mit speziellen Umweltgeräuschen oder individueller Sprache anzupassen. Für Fabrikhallen, Autos oder laute Straßen wäre ein angepasstes Akustikmodell erforderlich. Für bestimmte Themen wie z. B. Biologie, Physik, Radiologie, Produktnamen und benutzerdefinierte Akronyme würde ein angepasstes Sprachmodell benötigt.
+**A:** Ein Basismodell wurde mit Daten von Microsoft trainiert und ist bereits in der Cloud bereitgestellt. Sie können ein benutzerdefiniertes Modell verwenden, um ein Modell optimal an eine bestimmte Umgebung mit speziellen Umweltgeräuschen oder individueller Sprache anzupassen. Für Fabrikhallen, Autos oder laute Straßen wäre ein angepasstes Akustikmodell erforderlich. Für bestimmte Themen wie z. B. Biologie, Physik, Radiologie, Produktnamen und benutzerdefinierte Akronyme würde ein angepasstes Sprachmodell benötigt. Wenn Sie ein benutzerdefiniertes Modell trainieren, sollten Sie mit entsprechendem Text beginnen, um die Erkennung besonderer Begriffe und Phrasen zu verbessern.
 
 **F: Wo fange ich an, wenn ich ein Basismodell verwenden möchte?**
 
-**A:** Rufen Sie zunächst einen [Abonnementschlüssel](get-started.md) ab. Informationen zum Ausführen von REST-Aufrufen an die vorab bereitgestellten Basismodelle finden Sie in den [REST-APIs](rest-apis.md). Wenn Sie WebSockets verwenden möchten, [laden Sie das SDK herunter](speech-sdk.md).
+**A:** Rufen Sie zunächst einen [Abonnementschlüssel](overview.md#try-the-speech-service-for-free) ab. Informationen zum Ausführen von REST-Aufrufen an die vorab bereitgestellten Basismodelle finden Sie in den [REST-APIs](./overview.md#reference-docs). Wenn Sie WebSockets verwenden möchten, [laden Sie das SDK herunter](speech-sdk.md).
 
 **F: Muss ich immer ein benutzerdefiniertes Sprachmodell erstellen?**
 
-**A:**  Nein. Wenn Ihre Anwendung generische, alltägliche Sprache verwendet, müssen Sie ein Modell nicht anpassen. Wenn Ihre Anwendung in einer Umgebung verwendet wird, in der es wenig oder gar keine Hintergrundgeräusche gibt, müssen Sie ein Modell nicht anpassen.
+**A:** Nein. Wenn Ihre Anwendung generische, alltägliche Sprache verwendet, müssen Sie ein Modell nicht anpassen. Wenn Ihre Anwendung in einer Umgebung verwendet wird, in der es wenig oder gar keine Hintergrundgeräusche gibt, müssen Sie ein Modell nicht anpassen.
 
 Sie können Basismodelle und angepasste Modelle im Portal bereitstellen und dann Genauigkeitsprüfungen für diese durchführen. Sie können dieses Feature verwenden, um die Genauigkeit eines Basismodells im Vergleich zu einem benutzerdefinierten Modell zu messen.
 
@@ -49,9 +49,15 @@ Sie können Basismodelle und angepasste Modelle im Portal bereitstellen und dann
 
 **A:** Derzeit können Sie einen akustischen oder sprachlichen Anpassungsprozess nicht rückgängig machen. Sie können importierte Daten und Modelle löschen, wenn sie in einem Endzustand sind.
 
-**F: Was ist der Unterschied zwischen Such- und Diktiermodellen und Konversationsmodellen?**
+**F: Mit dem ausführlichen Ausgabeformat erhalte ich mehrere Ergebnisse für jede Phrase. Welches sollte ich verwenden?**
 
-**A:** Im Speech Service können Sie unter mehreren Basismodellen auswählen. Das Konversationsmodell eignet sich für die Erkennung von Spracheingaben im Gesprächsstil. Dieses Modell eignet sich ideal für die Transkription von Telefonanrufen. Das Such- und Diktiermodell eignet sich ideal für sprachgesteuerte Apps. Das universelle Modell ist ein neues Modell, das darauf abzielt, beide Szenarien abzudecken. In den meisten Gebietsschemas weist das universelle Modell derzeit mindestens das Qualitätsniveau des Konversationsmodells auf.
+**A:** Verwenden Sie immer das erste Ergebnis, selbst wenn ein anderes Ergebnis („N-Best“) einen höheren Konfidenzwert aufweist. Der Speech-Dienst betrachtet das erste Ergebnis als das beste. Dabei kann es sich auch um eine leere Zeichenfolge handeln, wenn keine Sprache erkannt wurde.
+
+Die anderen Ergebnisse sind wahrscheinlich schlechter und verfügen möglicherweise nicht über vollständige Groß- und Kleinschreibung sowie Interpunktion. Diese Ergebnisse sind insbesondere in speziellen Szenarios hilfreich, z. B., wenn Sie Benutzern die Option bereitstellen möchten, Korrekturoptionen aus einer Liste auszuwählen, oder wenn falsch erkannte Befehle verarbeitet werden sollen.
+
+**F: Warum gibt es unterschiedliche Basismodelle?**
+
+**A:** Im Speech-Dienst können Sie aus mehreren Basismodellen auswählen. Jeder Modellname enthält das Datum, an dem es hinzugefügt wurde. Wenn Sie damit beginnen, ein benutzerdefiniertes Modell zu trainieren, verwenden Sie das neueste Modell, um die höchste Genauigkeit zu erzielen. Ältere Basismodelle sind für einige Zeit weiterhin verfügbar, nachdem ein neues Modell veröffentlicht wurde. Sie können das Modell, mit dem Sie bisher gearbeitet haben, weiterhin verwenden, bis es außer Betrieb gesetzt wird (siehe [Modelllebenszyklus](custom-speech-overview.md#model-lifecycle)). Es wird weiterhin empfohlen, zum neuesten Basismodell zu wechseln, um die Genauigkeit zu verbessern.
 
 **F: Kann ich mein vorhandenes Modell aktualisieren (Modellstapel)?**
 
@@ -59,50 +65,56 @@ Sie können Basismodelle und angepasste Modelle im Portal bereitstellen und dann
 
 Das alte und das neue Dataset müssen in einer einzigen ZIP-Datei (für akustische Daten) bzw. TXT-Datei (für Sprachdaten) zusammengefasst werden. Wenn die Anpassung abgeschlossen ist, muss das neue, aktualisierte Modell neu bereitgestellt werden, um einen neuen Endpunkt zu erhalten.
 
-**F: Wenn eine neue Version eines Basismodells verfügbar ist, wird meine Bereitstellung dann automatisch aktualisiert?**
+**F: Wird meine Bereitstellung automatisch aktualisiert, wenn eine neue Version eines Basismodells verfügbar ist?**
 
 **A:** Bereitstellungen werden NICHT automatisch aktualisiert.
 
-Wenn Sie ein Modell mit Baseline v1.0 angepasst und bereitgestellt haben, bleibt diese Bereitstellung unverändert. Kunden können die Bereitstellung des Modells aufheben, es mit einer neueren Version von Baseline neu anpassen und es neu bereitstellen.
+Wenn Sie ein Modell angepasst und bereitgestellt haben, bleibt diese Bereitstellung unverändert. Sie können das bereitgestellte Modell außer Betrieb nehmen, mithilfe der neueren Version des Basismodells neu anpassen und dann wieder bereitstellen, um eine höhere Genauigkeit zu erzielen.
 
-**F: Was geschieht, wenn ich eine höhere Parallelität für mein bereitgestelltes Modell benötige, als im Portal angeboten wird?**
-
-**A:** Sie können Ihr Modell in Schritten von 20 gleichzeitigen Anforderungen zentral hochskalieren.
-
-Kontaktieren Sie den [Support für die Sprachunterstützung](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text), wenn Sie eine höhere Skalierung benötigen.
+Sowohl Basismodelle als auch benutzerdefinierte Modelle werden nach einiger Zeit außer Betrieb gesetzt (siehe [Modelllebenszyklus](custom-speech-overview.md#model-lifecycle)).
 
 **F: Kann ich mein Modell herunterladen und lokal ausführen?**
 
-**A:** Modelle können nicht heruntergeladen und lokal ausgeführt werden.
+**A:** Sie können ein benutzerdefiniertes Modell lokal in einem [Docker-Container](speech-container-howto.md?tabs=cstt) ausführen.
+
+**F: Kann ich meine Datasets, Modelle und Bereitstellungen in eine andere Region oder ein anderes Abonnement kopieren bzw. verschieben?**
+
+**A:** Sie können die [REST-API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) verwenden, um ein benutzerdefiniertes Modell in eine andere Region bzw. ein anderes Abonnement zu kopieren. Datasets und Bereitstellungen können nicht kopiert werden. Sie können ein Datasets mithilfe der Modellkopien wieder in ein anderes Abonnement importieren und dort Endpunkte erstellen.
 
 **F: Werden meine Anforderungen protokolliert?**
 
-**A:** Sie haben die Wahl, wenn Sie eine Bereitstellung erstellen, die Ablaufverfolgung zu deaktivieren. Ab diesem Zeitpunkt werden dann keine Audiodaten oder Transkriptionen mehr protokolliert. Andernfalls werden Anforderungen normalerweise im sicheren Speicher in Azure protokolliert.
+**A:** Standardmäßig werden Anforderungen nicht protokolliert (weder Audio noch Transkription). Bei Bedarf können Sie die Option *Log content from this endpoint* (Inhalte von diesem Endpunkt protokollieren) verwenden, wenn Sie [einen benutzerdefinierten Endpunkt erstellen](./how-to-custom-speech-train-model.md). Im [Speech SDK](speech-sdk.md) können Sie auch die Audioprotokollierung auf Grundlage von Anforderungen aktivieren, ohne dass Sie einen benutzerdefinierten Endpunkt erstellen müssen. In beiden Fällen werden die Audio- und Erkennungsergebnisse von Anforderungen in einem sicheren Speicher gespeichert. Bei Abonnements mit Speicherressourcen von Microsoft werden die Ergebnisse 30 Tage lang aufbewahrt.
+
+Sie können die protokollierten Dateien auf der Bereitstellungsseite in Speech Studio exportieren, wenn Sie einen benutzerdefinierten Endpunkt mit der Option *Log content from this endpoint* (Inhalte von diesem Endpunkt protokollieren) verwenden. Wenn die Audioprotokollierung über das SDK aktiviert ist, rufen Sie die [API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModelLogs) auf, um auf die Dateien zuzugreifen.
 
 **F: Werden meine Anforderungen gedrosselt?**
 
-**A:** Die REST-API beschränkt Anforderungen auf 25 pro 5 Sekunden. Informationen finden Sie auf unseren Seiten für [Spracherkennung](speech-to-text.md).
+**A:** Weitere Informationen finden Sie unter [Kontingente und Grenzwerte für Speech Services](speech-services-quotas-and-limits.md).
 
 **F: Wie werden Zweikanalaudiodaten in Rechnung gestellt?**
 
-**A:** Wenn Sie jeden Kanal separat übermitteln (jeden Kanal in seiner eigenen Datei), wird Ihnen die Abrechnung gemäß der Dauer der einzelnen Dateien in Rechnung gestellt. Wenn Sie in jedem Kanal eine einzelne Datei übermitteln, wird Ihnen die Dauer der einzelnen Datei in Rechnung gestellt.
+**A:** Wenn Sie jeden Kanal separat übermitteln (jeden Kanal in seiner eigenen Datei), wird Ihnen die Dauer jeder Datei in Rechnung gestellt. Wenn Sie in jedem Kanal eine einzelne Datei übermitteln, wird Ihnen die Dauer der einzelnen Datei in Rechnung gestellt. Details zu den Preisen finden Sie auf der [Seite mit der Preisübersicht für Azure Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 > [!IMPORTANT]
 > Wenn Sie weitere Datenschutzbedenken im Hinblick auf die Nutzung von Custom Speech Service haben, wenden Sie sich an einen der Supportkanäle.
+
+## <a name="increasing-concurrency"></a>Erhöhen der Parallelität
+Weitere Informationen finden Sie unter [Kontingente und Grenzwerte für Speech Services](speech-services-quotas-and-limits.md).
+
 
 ## <a name="importing-data"></a>Importieren von Daten
 
 **F: Wie groß darf das Dataset maximal sein, und was ist der Grund für dieses Limit?**
 
-**A:** Das aktuelle Limit für ein Dataset beträgt 2GB. Grund für das Limit ist, dass die Größe einer Datei für den HTTP-Upload begrenzt ist. 
+**A:** Grund für das Limit ist, dass die Größe einer Datei für den HTTP-Upload begrenzt ist. Weitere Informationen zum tatsächlichen Grenzwert finden Sie unter [Kontingente und Grenzwerte für Speech Services](speech-services-quotas-and-limits.md). Sie können Ihre Daten in mehrere Datasets unterteilen und alle zum Trainieren des Modells auswählen.
 
-**F: Kann ich meine Textdateien komprimieren (ZIP), damit ich eine größere Textdatei hochladen kann?** 
+**F: Kann ich meine Textdateien komprimieren (ZIP), damit ich eine größere Textdatei hochladen kann?**
 
-**A:**  Nein. Derzeit sind nur unkomprimierte Textdateien zulässig.
+**A:** Nein. Derzeit sind nur unkomprimierte Textdateien zulässig.
 
 **F: Der Datenbericht besagt, dass fehlerhafte Äußerungen gefunden wurden. Was ist das Problem?**
 
-**A:** Wenn die Äußerungen in einer Datei nicht zu 100% hochgeladen werden können, stellt dies kein Problem dar. Wenn der Großteil der Äußerungen in einem Akustik- oder Sprachdataset (z. B. > 95 %) erfolgreich importiert wird, kann das Dataset verwendet werden. Allerdings sollten Sie herausfinden, warum Fehler bei den Äußerungen aufgetreten sind, und die Probleme beheben. Die meisten Probleme, z.B. Formatierungsfehler, sind einfach zu beheben. 
+**A:** Wenn die Äußerungen in einer Datei nicht zu 100% hochgeladen werden können, stellt dies kein Problem dar. Wenn der Großteil der Äußerungen in einem Akustik- oder Sprachdataset (z. B. > 95 %) erfolgreich importiert wird, kann das Dataset verwendet werden. Allerdings sollten Sie herausfinden, warum Fehler bei den Äußerungen aufgetreten sind, und die Probleme beheben. Die meisten Probleme, z.B. Formatierungsfehler, sind einfach zu beheben.
 
 ## <a name="creating-an-acoustic-model"></a>Erstellen eines Akustikmodells
 
@@ -112,35 +124,33 @@ Kontaktieren Sie den [Support für die Sprachunterstützung](mailto:speechsuppor
 
 **F: Welche Daten soll ich sammeln?**
 
-**A:** Sammeln Sie Daten, die dem Anwendungsszenario und dem Anwendungsfall möglichst nahe kommen. Die Datensammlung sollte in Bezug auf Geräte, Umgebungen und Sprechertypen mit der Zielanwendung und den Benutzern übereinstimmen. Generell sollten Sie Daten von möglichst vielen Sprechern sammeln. 
+**A:** Sammeln Sie Daten, die dem Anwendungsszenario und dem Anwendungsfall möglichst nahe kommen. Die Datensammlung sollte in Bezug auf Geräte, Umgebungen und Sprechertypen mit der Zielanwendung und den Benutzern übereinstimmen. Generell sollten Sie Daten von möglichst vielen Sprechern sammeln.
 
 **F: Wie soll ich akustische Daten sammeln?**
 
-**A:** Sie können eine eigenständige Datensammlungsanwendung erstellen oder eine handelsübliche Audioaufzeichnungssoftware verwenden. Sie können auch eine Version der Anwendung erstellen, die Audiodaten protokolliert und dann diese Daten verwendet. 
+**A:** Sie können eine eigenständige Datensammlungsanwendung erstellen oder eine handelsübliche Audioaufzeichnungssoftware verwenden. Sie können auch eine Version der Anwendung erstellen, die Audiodaten protokolliert und dann diese Daten verwendet.
 
 **F: Muss ich die Anpassungsdaten selbst transkribieren?**
 
-**A:**  Ja. Sie können sie selbst transkribieren oder einen professionellen Transkriptionsdienst nutzen. Manche Benutzer bevorzugen professionelle Transkriptionsdienste, während andere Crowdsourcing nutzen oder die Transkriptionen selbst durchführen.
+**A:** Ja. Sie können sie selbst transkribieren oder einen professionellen Transkriptionsdienst nutzen. Manche Benutzer bevorzugen professionelle Transkriptionsdienste, während andere Crowdsourcing nutzen oder die Transkriptionen selbst durchführen.
+
+**F: Wie lang dauert das Trainieren eines benutzerdefinierten Modells mit Audiodaten?**
+
+**A:** Das Trainieren eines Modells mit Audiodaten ist ein langwieriger Prozess. Je nach Menge der Daten kann das Erstellen eines benutzerdefinierten Modells mehrere Tage dauern. Wenn das Training nicht innerhalb einer Woche abgeschlossen werden kann, bricht der Dienst den Trainingsprozess möglicherweise ab und meldet das Modell als fehlgeschlagen. Verwenden Sie eine der [Regionen](custom-speech-overview.md#set-up-your-azure-account), in der dedizierte Hardware für das Training verfügbar ist. Sie können das vollständig trainierte Modell mithilfe der [REST-API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) in eine andere Region kopieren. Training, bei dem ausschließlich Text verwendet wird, ist deutlich schneller und dauert in der Regel nur Minuten.
+
+Einige Basismodelle können nicht mit Audiodaten angepasst werden. Für diese verwenden der Dienst nur den Text der Transkription für das Training. Die Audiodaten werden verworfen. Das Training wird dann schneller abgeschlossen, und die Ergebnisse sind mit den Ergebnissen des Trainings identisch, für das nur Text verwendet wird.
 
 ## <a name="accuracy-testing"></a>Genauigkeitstests
 
-**F: Kann ich mein benutzerdefiniertes Akustikmodell mit einem benutzerdefinierten Sprachmodell offline testen?**
-
-**A:** Ja, wählen Sie beim Einrichten des Offlinetests einfach das benutzerdefinierte Sprachmodell im Dropdownmenü aus.
-
-**F: Kann ich mein benutzerdefiniertes Sprachmodell mit einem benutzerdefinierten Akustikmodell offline testen?**
-
-**A:** Ja, wählen Sie beim Einrichten des Offlinetests einfach das benutzerdefinierte Akustikmodell im Dropdownmenü aus.
-
 **F: Was ist die Wort-Fehler-Rate (Word Error Rate, WER), und wie wird sie berechnet?**
 
-**A:** Die Wort-Fehler-Rate (WER) ist die Auswertungsmetrik für die Spracherkennung. WER wird berechnet als die Gesamtanzahl von Fehlern, einschließlich Einfügungen, Löschungen und Ersetzungen, dividiert durch die Gesamtzahl der Wörter in der Referenztranskription. Weitere Informationen finden Sie unter [Wort-Fehler-Rate (WER)](https://en.wikipedia.org/wiki/Word_error_rate).
+**A:** Die Wort-Fehler-Rate (WER) ist die Auswertungsmetrik für die Spracherkennung. WER wird berechnet als die Gesamtanzahl von Fehlern, einschließlich Einfügungen, Löschungen und Ersetzungen, dividiert durch die Gesamtzahl der Wörter in der Referenztranskription. Weitere Informationen finden Sie unter [Auswerten der Custom Speech-Genauigkeit](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy).
 
 **F: Wie kann ich feststellen, ob die Ergebnisse einer Genauigkeitsprüfung gut sind?**
 
 **A:** Die Ergebnisse stellen einen Vergleich zwischen dem Basismodell und dem von Ihnen angepassten Modell dar. Sie sollten das Basismodell übertreffen, damit sich die Anpassung lohnt.
 
-**F: Wie bestimme ich die Wort-Fehler-Rate (WER) eines Basismodells, damit ich sehen kann, ob es eine Verbesserung gab?** 
+**F: Wie bestimme ich die Wort-Fehler-Rate (WER) eines Basismodells, damit ich sehen kann, ob es eine Verbesserung gab?**
 
 **A:** Die Offlinetestergebnisse zeigen die Genauigkeit des Basismodells und des benutzerdefinierten Modells sowie die Verbesserung gegenüber dem Basismodell.
 
@@ -152,9 +162,21 @@ Kontaktieren Sie den [Support für die Sprachunterstützung](mailto:speechsuppor
 
 **F: Kann ich nur eine Liste von Wörtern hochladen?**
 
-**A:** Das Hochladen einer Liste von Wörtern fügt die Wörter dem Wortschatz hinzu, trainiert das System aber nicht, wie die Wörter typischerweise verwendet werden. Durch die Bereitstellung vollständiger oder teilweiser Äußerungen (Sätze oder Ausdrücke, die von Benutzern üblicherweise verwendet werden) kann das Sprachmodell die neuen Wörter und deren Verwendung lernen. Das benutzerdefinierte Sprachmodell eignet sich nicht nur gut dazu, neue Wörter dem System hinzuzufügen, sondern auch, die Wahrscheinlichkeit bekannter Wörter für Ihre Anwendung anzupassen. Vollständige Äußerungen helfen dem System, besser zu lernen. 
+**A:** Das Hochladen einer Liste von Wörtern fügt die Wörter dem Wortschatz hinzu, trainiert das System aber nicht, wie die Wörter typischerweise verwendet werden. Durch die Bereitstellung vollständiger oder teilweiser Äußerungen (Sätze oder Ausdrücke, die von Benutzern üblicherweise verwendet werden) kann das Sprachmodell die neuen Wörter und deren Verwendung lernen. Das benutzerdefinierte Sprachmodell eignet sich nicht nur gut dazu, neue Wörter dem System hinzuzufügen, sondern auch, die Wahrscheinlichkeit bekannter Wörter für Ihre Anwendung anzupassen. Vollständige Äußerungen helfen dem System, besser zu lernen.
+
+## <a name="tenant-model-custom-speech-with-microsoft-365-data"></a>Mandantenmodell (Custom Speech mit Microsoft 365-Daten)
+
+**F: Welche Informationen sind im Mandantenmodell enthalten, und wie wird es erstellt?**
+
+**A:** Ein Mandantenmodell wird mit E-Mails und Dokumenten der [öffentlichen Gruppe](https://support.microsoft.com/office/learn-about-microsoft-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) erstellt, die von allen Personen in Ihrer Organisation eingesehen werden können.
+
+**F: Welche Sprachfunktion wird durch das Mandantenmodell verbessert?**
+
+**A:** Wenn das Mandantenmodell aktiviert, erstellt und veröffentlicht ist, wird es verwendet, um die Erkennung für Unternehmensanwendungen zu verbessern, die mithilfe des Speech-Diensts erstellt wurden. Dadurch wird auch ein Azure AD-Token übergeben, das die Mitgliedschaft im Unternehmen angibt.
+
+Die in Microsoft 365 integrierten Sprachfunktionen wie Diktat und PowerPoint-Untertitel werden nicht geändert, wenn Sie ein Mandantenmodell für Ihre Speech-Dienstanwendungen erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Problembehandlung](troubleshooting.md)
-* [Versionshinweise](releasenotes.md)
+- [Problembehandlung](troubleshooting.md)
+- [Versionshinweise](releasenotes.md)

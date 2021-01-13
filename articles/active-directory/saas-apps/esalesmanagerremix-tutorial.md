@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit E Sales Manager Remix | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und E Sales Manager Remix konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
-ms.assetid: 89b5022c-0d5b-4103-9877-ddd32b6e1c02
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: c06595b683092abf52300481068daab26394c4cb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65406947"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995640"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrieren von Azure Active Directory mit E Sales Manager Remix
 
@@ -101,9 +96,9 @@ Aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigur
 
     ![SSO-Informationen zur Domäne und zu den URLs für E Sales Manager Remix](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: *https://\<serverbasierteURL>/\<Unterdomäne>/esales-pc*.
+    a. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: *https://\<Server-Based-URL>/\<sub-domain>/esales-pc*.
 
-    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: *https://\<serverbasierteURL>/\<Unterdomäne>/* .
+    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: *https://\<Server-Based-URL>/\<sub-domain>/* .
 
     c. Notieren Sie den Wert von **Bezeichner** zur späteren Verwendung in diesem Tutorial.
     
@@ -126,7 +121,7 @@ Aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigur
 
 1. Wählen Sie unter **E Sales Manager Remix-Konfiguration** die Option **E Sales Manager Remix konfigurieren** aus.
 
-    ![E Sales Manager Remix-Konfiguration](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
+    ![Der Screenshot zeigt den Abschnitt „E Sales Manager Remix-Konfiguration“ mit ausgewählter Option „E Sales Manager Remix konfigurieren“.](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
     Das Fenster **Anmeldung konfigurieren** wird geöffnet.
 
@@ -158,7 +153,7 @@ Aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigur
     
     b. Wählen Sie in der Dropdownliste im Abschnitt **Collaboration item** (Zusammenarbeitselement) die Option **email** aus.
 
-    c. Fügen Sie in das Feld **Collaboration item** (Zusammenarbeitselement) den Anspruchswert ein, den Sie aus dem Azure-Portal kopiert haben (d.h. **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ).
+    c. Fügen Sie in das Feld **Collaboration item** (Zusammenarbeitselement) den Anspruchswert ein, den Sie aus dem Azure-Portal kopiert haben (d.h. **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** ).
 
     d. Fügen Sie in das Feld **Issuer (entity ID)** (Aussteller (Entitäts-ID)) den Wert für „Bezeichner“ ein, den Sie aus dem Azure-Portal im Abschnitt **Domäne und URLs für E Sales Manager Remix** kopiert haben.
 
@@ -268,7 +263,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
 Wenn Sie im Zugriffsbereich die Kachel „E Sales Manager Remix“ auswählen, sollten Sie automatisch bei Ihrer E Sales Manager Remix-Anwendung angemeldet werden.
 
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
@@ -288,4 +283,3 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 [201]: ./media/esalesmanagerremix-tutorial/tutorial_general_201.png
 [202]: ./media/esalesmanagerremix-tutorial/tutorial_general_202.png
 [203]: ./media/esalesmanagerremix-tutorial/tutorial_general_203.png
-

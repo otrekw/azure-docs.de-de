@@ -1,25 +1,17 @@
 ---
-title: Clusterressourcen-Manager von Service Fabric – Platzierungsrichtlinien | Microsoft Docs
+title: Clusterressourcen-Manager von Service Fabric – Platzierungsrichtlinien
 description: Übersicht über zusätzlichen Platzierungsrichtlinien und -regeln für Service Fabric-Dienste
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 5c2d19c6-dd40-4c4b-abd3-5c5ec0abed38
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: d5aea441f15cbf7a2a444439c06cd5f74a559d3f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5a4586c9c1be51b0ebbdebcf0c23289fc39f9eda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386472"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485500"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Platzierungsrichtlinien für Service Fabric-Dienste
 Platzierungsrichtlinien sind zusätzliche Regeln, mit denen in einigen besonderen, nicht alltäglichen Szenarien die Dienstplatzierung gesteuert werden kann. Einige Beispiele für diese Szenarien:
@@ -28,6 +20,7 @@ Platzierungsrichtlinien sind zusätzliche Regeln, mit denen in einigen besondere
 - Ihre Umgebung erstreckt sich über mehrere geopolitische oder rechtliche Grenzen, oder ein anderer Fall, in dem politische Grenzen berücksichtigt werden müssen.
 - Aufgrund großer Entfernungen oder wegen der Verwendung langsamer oder nicht besonders zuverlässiger Netzwerkverbindungen muss Leistung oder Wartezeit der Kommunikation berücksichtigt werden.
 - Sie müssen bestimmte Workloads bestmöglich anordnen, entweder zusammen mit anderen Workloads oder in der Nähe von Kunden.
+- Sie benötigen mehrere zustandslose Instanzen einer Partition auf einem einzelnen Knoten.
 
 Die meisten dieser Anforderungen werden durch das physische Layout des Clusters wiedergegeben, dargestellt als Fehlerdomänen des Clusters. 
 
@@ -37,6 +30,7 @@ Die erweiterten Platzierungsrichtlinien, mit denen diese Szenarien behandelt wer
 2. Erforderliche Domänen
 3. Bevorzugte Domänen
 4. Unterbinden einer Replikatüberlastung
+5. Zulassen mehrerer zustandsloser Instanzen auf einem Knoten
 
 Die meisten der folgenden Steuerelemente können mithilfe von Knoteneigenschaften und Platzierungseinschränkungen konfiguriert werden, aber einige sind komplizierter. Zur Vereinfachung bietet der Service Fabric-Clusterressourcen-Manager diese zusätzliche Platzierungsrichtlinien. Platzierungsrichtlinien werden individuell für benannte Dienstinstanzen konfiguriert. Sie können auch dynamisch aktualisiert werden.
 
@@ -56,7 +50,7 @@ invalidDomain.DomainName = "fd:/DCEast"; //regulations prohibit this workload he
 serviceDescription.PlacementPolicies.Add(invalidDomain);
 ```
 
-Powershell:
+Mit PowerShell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("InvalidDomain,fd:/DCEast”)
@@ -77,7 +71,7 @@ requiredDomain.DomainName = "fd:/DC01/RK03/BL2";
 serviceDescription.PlacementPolicies.Add(requiredDomain);
 ```
 
-Powershell:
+Mit PowerShell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomain,fd:/DC01/RK03/BL2")
@@ -97,7 +91,7 @@ primaryDomain.DomainName = "fd:/EastUS/";
 serviceDescription.PlacementPolicies.Add(primaryDomain);
 ```
 
-Powershell:
+Mit PowerShell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("PreferredPrimaryDomain,fd:/EastUS")
@@ -123,13 +117,49 @@ ServicePlacementRequireDomainDistributionPolicyDescription distributeDomain = ne
 serviceDescription.PlacementPolicies.Add(distributeDomain);
 ```
 
-Powershell:
+Mit PowerShell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomainDistribution")
 ```
 
 Wäre es auch möglich, diese Konfigurationen für Dienste in einem Cluster zu verwenden, der sich nicht über größere Entfernungen erstreckt? Es ist möglich, jedoch gibt es dafür keinen triftigen Grund. Die Konfiguration erforderlicher, ungültiger und bevorzugter Domänen sollte vermieden werden, sofern die Szenarien diese nicht erfordern. Es ist nicht sinnvoll, die Ausführung einer bestimmten Workload in einem einzigen Rack zu erzwingen oder ein bestimmtes Segment Ihres Clusters einem anderen gegenüber zu bevorzugen. Unterschiedliche Hardwarekonfigurationen sollten über Fehlerdomänen hinweg verteilt und über normale Platzierungseinschränkungen und Knoteneigenschaften verwaltet werden.
+
+## <a name="placement-of-multiple-stateless-instances-of-a-partition-on-single-node"></a>Platzieren mehrerer zustandsloser Instanzen einer Partition auf einem einzelnen Knoten
+Die Platzierungsrichtlinie **AllowMultipleStatelessInstancesOnNode** ermöglicht die Platzierung mehrerer zustandsloser Instanzen einer Partition auf einem einzelnen Knoten. Standardmäßig können mehrere Instanzen einer einzelnen Partition nicht auf einem Knoten platziert werden. Selbst bei einem -1-Dienst ist es nicht möglich, die Anzahl der Instanzen für einen bestimmten benannten Dienst über die Anzahl der Knoten im Cluster hinaus zu skalieren. Diese Platzierungsrichtlinie entfernt diese Einschränkung und ermöglicht, dass InstanceCount höher als die Knotenanzahl angegeben werden kann.
+
+Wenn Sie jemals eine Integritätsmeldung wie die Folgende gesehen haben: „`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: ReplicaExclusion`“, ist diese oder eine ähnliche Bedingung erfüllt. 
+
+Wenn Sie die `AllowMultipleStatelessInstancesOnNode`-Richtlinie für den Dienst angeben, kann InstanceCount über die Anzahl der Knoten im Cluster hinaus festgelegt werden.
+
+Code:
+
+```csharp
+ServicePlacementAllowMultipleStatelessInstancesOnNodePolicyDescription allowMultipleInstances = new ServicePlacementAllowMultipleStatelessInstancesOnNodePolicyDescription();
+serviceDescription.PlacementPolicies.Add(allowMultipleInstances);
+```
+
+Mit PowerShell:
+
+```posh
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless –PartitionSchemeSingleton –PlacementPolicy @(“AllowMultipleStatelessInstancesOnNode”) -InstanceCount 10 -ServicePackageActivationMode ExclusiveProcess 
+```
+
+> [!NOTE]
+> Die Platzierungsrichtlinie befindet sich derzeit in der Vorschau und hinter der `EnableUnsupportedPreviewFeatures`-Clustereinstellung. Da dies zurzeit eine Previewfunktion ist, verhindert das Festlegen der Vorschaukonfiguration ein Upgrade des Clusters. Anders ausgedrückt: Sie müssen einen neuen Cluster erstellen, um das Feature zu testen.
+>
+
+> [!NOTE]
+> Derzeit wird die Richtlinie nur für zustandslose Dienste mit dem [Dienstpaket-Aktivierungsmodus](/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet) „ExclusiveProcess“ unterstützt.
+>
+
+> [!WARNING]
+> Die Richtlinie wird nicht unterstützt, wenn sie mit statischen Portendpunkten verwendet wird. Wenn beides in Verbindung verwendet wird, kann dies zu einem fehlerhaften Cluster führen, weil mehrere Instanzen auf dem gleichen Knoten versuchen, eine Bindung an denselben Port herzustellen, und nicht gestartet werden können. 
+>
+
+> [!NOTE]
+> Wenn Sie einen hohen Wert für [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) mit dieser Platzierungsrichtlinie verwenden, kann dies zum Hängen von Anwendungsupgrades führen. Wenn Sie z. B. über einen Cluster mit fünf Knoten verfügen und InstanceCount=10 festlegen, verfügen Sie über zwei Instanzen auf jedem Knoten. Wenn Sie MinInstanceCount=9 festlegen, kann ein versuchtes App-Upgrade hängen. Mit inInstanceCount=8 kann dies vermieden werden.
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zum Konfigurieren von Diensten finden Sie unter [Konfigurieren von Einstellungen des Clusterressourcen-Managers für Service Fabric-Dienste](service-fabric-cluster-resource-manager-configure-services.md).

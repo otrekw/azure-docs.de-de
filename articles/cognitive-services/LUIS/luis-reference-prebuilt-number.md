@@ -3,23 +3,21 @@ title: Vordefinierte Number-Entität – LUIS
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erhalten Sie Informationen zur vorgefertigten Nummernentität in Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 05/07/2019
-ms.author: diberry
-ms.openlocfilehash: f2868610bf9215b1414ea3ba342e3064b9c54f63
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.topic: reference
+ms.date: 09/27/2019
+ms.openlocfilehash: 13594886b83d4474ee2531185db5868a5198ca64
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933500"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541956"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>Vordefinierte Number-Entität für eine LUIS-App
-Es gibt verschiedene Möglichkeiten, numerische Werte zu verwenden, um Informationen zu quantifizieren, auszudrücken und zu beschreiben. In diesem Artikel werden nur einige Beispiele aufgeführt. LUIS interpretiert die Variationen verschiedener Benutzeräußerungen und gibt einheitliche numerische Werte zurück. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit Nummern hinzufügen. 
+Es gibt verschiedene Möglichkeiten, numerische Werte zu verwenden, um Informationen zu quantifizieren, auszudrücken und zu beschreiben. In diesem Artikel werden nur einige Beispiele aufgeführt. LUIS interpretiert die Variationen verschiedener Benutzeräußerungen und gibt einheitliche numerische Werte zurück. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit Nummern hinzufügen.
 
 ## <a name="types-of-number"></a>Nummerntypen
 Die Entität „number“ wird über das GitHub-Repository [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) verwaltet.
@@ -28,7 +26,7 @@ Die Entität „number“ wird über das GitHub-Repository [Recognizers-text](ht
 
 | Äußerung        | Entität   | Lösung |
 | ------------- |:----------------:| --------------:|
-| ```one thousand times```  | ```"one thousand"``` |   ```"1000"```      | 
+| ```one thousand times```  | ```"one thousand"``` |   ```"1000"```      |
 | ```1,000 people```        | ```"1,000"```    |   ```"1000"```      |
 | ```1/2 cup```         | ```"1 / 2"```    |    ```"0.5"```      |
 |  ```one half the amount```     | ```"one half"```     |    ```"0.5"```      |
@@ -42,105 +40,69 @@ LUIS fügt den anerkannten Wert einer **`builtin.number`** -Entität in das `res
 
 ## <a name="resolution-for-prebuilt-number"></a>Auflösung der vorgefertigten Nummer
 
+Die folgenden Entitätsobjekte werden für die Abfrage zurückgegeben:
 
-### <a name="api-version-2x"></a>API-Version 2.x
+`order two dozen eggs`
 
-Im folgenden Beispiel wird eine JSON-Antwort von LUIS gezeigt, die die Auflösung des Werts „24“ für die Äußerung „two dozen“ enthält.
-
-```json
-{
-  "query": "order two dozen eggs",
-  "topScoringIntent": {
-    "intent": "OrderFood",
-    "score": 0.105443209
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.105443209
-    },
-    {
-      "intent": "OrderFood",
-      "score": 0.9468431361
-    },
-    {
-      "intent": "Help",
-      "score": 0.000399122015
-    },
-  ],
-  "entities": [
-    {
-      "entity": "two dozen",
-      "type": "builtin.number",
-      "startIndex": 6,
-      "endIndex": 14,
-      "resolution": {
-        "subtype": "integer",
-        "value": "24"
-      }
-    }
-  ]
-}
-```
-
-### <a name="preview-api-version-3x"></a>Vorschau-API-Version 3.x
+#### <a name="v3-response"></a>[V3-Antwort](#tab/V3)
 
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
 
 ```json
-{
-    "query": "order two dozen eggs",
-    "prediction": {
-        "normalizedQuery": "order two dozen eggs",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.7124502
-            }
-        },
-        "entities": {
-            "number": [
-                24
-            ]
-        }
-    }
+"entities": {
+    "number": [
+        24
+    ]
 }
 ```
+#### <a name="v3-verbose-response"></a>[Ausführliche V3-Antwort](#tab/V3-verbose)
 
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
 
 ```json
-{
-    "query": "order two dozen eggs",
-    "prediction": {
-        "normalizedQuery": "order two dozen eggs",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.7124502
-            }
-        },
-        "entities": {
-            "number": [
-                24
-            ],
-            "$instance": {
-                "number": [
-                    {
-                        "type": "builtin.number",
-                        "text": "two dozen",
-                        "startIndex": 6,
-                        "length": 9,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
+"entities": {
+    "number": [
+        24
+    ],
+    "$instance": {
+        "number": [
+            {
+                "type": "builtin.number",
+                "text": "two dozen",
+                "startIndex": 6,
+                "length": 9,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
+#### <a name="v2-response"></a>[V2-Antwort](#tab/V2)
+
+Im folgenden Beispiel wird eine JSON-Antwort von LUIS gezeigt, die die Auflösung des Werts „24“ für die Äußerung „two dozen“ enthält.
+
+```json
+"entities": [
+  {
+    "entity": "two dozen",
+    "type": "builtin.number",
+    "startIndex": 6,
+    "endIndex": 14,
+    "resolution": {
+      "subtype": "integer",
+      "value": "24"
+    }
+  }
+]
+```
+* * *
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr zu den [Währungs](luis-reference-prebuilt-currency.md)-, [Ordinal](luis-reference-prebuilt-ordinal.md)- und [Prozentsatzentitäten](luis-reference-prebuilt-percentage.md). 
+Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
+
+Erfahren Sie mehr zu den [Währungs](luis-reference-prebuilt-currency.md)-, [Ordinal](luis-reference-prebuilt-ordinal.md)- und [Prozentsatzentitäten](luis-reference-prebuilt-percentage.md).

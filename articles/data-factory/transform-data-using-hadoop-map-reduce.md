@@ -1,31 +1,33 @@
 ---
-title: Transformieren von Daten mit der Hadoop MapReduce-Aktivität in Azure Data Factory | Microsoft-Dokumentation
+title: Transformieren von Daten mit der Hadoop MapReduce-Aktivität
 description: Erfahren Sie, wie Sie Daten verarbeiten, indem Sie Hadoop MapReduce-Programme mithilfe einer Azure Data Factory auf einen Azure HDInsight-Cluster anwenden.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: ccc194dd4120762a30da3ad28cdabed6faf53ba2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+manager: shwang
+ms.custom: seo-lt-2019
+ms.date: 05/08/2020
+ms.openlocfilehash: 7685c2075b371ce22930b14187c27bcb0879c962
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60611497"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632021"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Hadoop MapReduce-Aktivität in Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-map-reduce.md)
 > * [Aktuelle Version](transform-data-using-hadoop-map-reduce.md)
 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Die HDInsight MapReduce-Aktivität in einer Data Factory-[Pipeline](concepts-pipelines-activities.md) ruft ein MapReduce-Programm für [Ihren eigenen](compute-linked-services.md#azure-hdinsight-linked-service) oder [bedarfsgesteuerten](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight-Cluster auf. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
 
-Wenn Sie noch nicht mit Azure Data Factory vertraut sind, sollten Sie zunächst den Artikel [Einführung in Azure Data Factory](introduction.md) lesen und anschließend das Tutorial zum Thema [Tutorial: Transformieren von Daten](tutorial-transform-data-spark-powershell.md).
+Wenn Sie noch nicht mit Azure Data Factory vertraut sind, sollten Sie zunächst den Artikel [Einführung in Azure Data Factory](introduction.md) lesen und anschließend das Tutorial zum Thema [Tutorial: Transformieren von Daten](tutorial-transform-data-spark-powershell.md) durcharbeiten.
 
 Weitere Informationen zum Ausführen von Pig-/Hive-Skripts in einem HDInsight-Cluster über eine Pipeline mithilfe von Pig-/Hive-HDInsight-Aktivitäten finden Sie unter [Pig](transform-data-using-hadoop-pig.md) und [Hive](transform-data-using-hadoop-hive.md).
 
@@ -67,11 +69,11 @@ Weitere Informationen zum Ausführen von Pig-/Hive-Skripts in einem HDInsight-Cl
 | type              | Für die MapReduce-Aktivität ist der Aktivitätstyp „HDInsightMapReduce“. | Ja      |
 | linkedServiceName | Verweis auf den HDInsight-Cluster, der als verknüpfter Dienst in Data Factory registriert ist. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md). | Ja      |
 | className         | Name der Klasse, die ausgeführt werden soll         | Ja      |
-| jarLinkedService  | Verweis auf einen verknüpften Azure Storage-Dienst, der zum Speichern der JAR-Dateien verwendet wird. Wenn Sie diesen verknüpften Dienst nicht angeben, wird der im verknüpften HDInsight-Dienst definierte verknüpfte Azure Storage-Dienst genutzt. | Nein       |
+| jarLinkedService  | Verweis auf einen verknüpften Azure Storage-Dienst, der zum Speichern der JAR-Dateien verwendet wird. Hier werden nur die verknüpften **[Azure Blob Storage](./connector-azure-blob-storage.md)** und **[ADLS Gen2](./connector-azure-data-lake-storage.md)** -Dienste unterstützt. Wenn Sie diesen verknüpften Dienst nicht angeben, wird der im verknüpften HDInsight-Dienst definierte verknüpfte Azure Storage-Dienst genutzt. | Nein       |
 | jarFilePath       | Geben Sie den Pfad der JAR-Dateien an, die im Azure Storage-Speicher gespeichert sind, auf den „jarLinkedService“ verweist. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. | Ja      |
 | jarlibs           | Zeichenfolgenarray des Pfads zu der JAR-Bibliotheksdateien, die in dem Auftrag referenziert wird, der in dem Azure Storage-Speicher gespeichert ist, der in „jarLinkedService“ definiert ist. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. | Nein       |
-| getDebugInfo      | Gibt an, ob die Protokolldateien in den Azure Storage-Speicher kopiert werden, der vom HDInsight-Cluster verwendet (oder) von „jarLinkedService“ angegeben wird. Zulässige Werte: „None“, „Always“ oder „Failure“. Standardwert: None (Keine): | Nein       |
-| arguments         | Gibt ein Array von Argumenten für einen Hadoop-Auftrag an. Die Argumente werden als Befehlszeilenargumente an jeden Vorgang übergeben. | Nein       |
+| getDebugInfo      | Gibt an, ob die Protokolldateien in den Azure Storage-Speicher kopiert werden, der vom HDInsight-Cluster verwendet (oder) von „jarLinkedService“ angegeben wird. Zulässige Werte: „None“, „Always“ oder „Failure“. Standardwert: Keine. | Nein       |
+| Argumente         | Gibt ein Array von Argumenten für einen Hadoop-Auftrag an. Die Argumente werden als Befehlszeilenargumente an jeden Vorgang übergeben. | Nein       |
 | defines           | Geben Sie Parameter als Schlüssel-Wert-Paare für Verweise innerhalb des Hive-Skripts an. | Nein       |
 
 
@@ -110,7 +112,7 @@ Mit der HDInsight-Aktivität „MapReduce“ können Sie beliebige MapReduce-JAR
     }
 }
 ```
-Sie können im Abschnitt **arguments** Argumente für das MapReduce-Programm angeben. Zur Laufzeit werden ein paar zusätzliche Argumente aus dem MapReduce-Framework angezeigt (z.B.: mapreduce.job.tags). Um Ihre Argumente mit den MapReduce-Argumenten zu unterscheiden, sollten Sie erwägen, sowohl Option als auch Wert als Argumente zu verwenden, wie im folgenden Beispiel gezeigt („-s“, „--input“, „--output“ usw. sind Optionen, denen ihre Werte unmittelbar folgen).
+Sie können im Abschnitt **arguments** Argumente für das MapReduce-Programm angeben. Zur Laufzeit werden ein paar zusätzliche Argumente aus dem MapReduce-Framework angezeigt (z.B.: mapreduce.job.tags). Wenn Sie Ihre Argumente mit den MapReduce-Argumenten unterscheiden möchten, sollten Sie erwägen, sowohl die Option als auch den Wert als Argumente zu verwenden, wie im folgenden Beispiel gezeigt wird („-s“, „--input“, „--output“ usw. sind Optionen, auf die unmittelbar die Werte folgen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformiert werden:
@@ -121,5 +123,5 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [Hadoop-Streamingaktivität](transform-data-using-hadoop-streaming.md)
 * [Spark-Aktivität](transform-data-using-spark.md)
 * [Benutzerdefinierte .NET-Aktivität](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning-Batchausführungsaktivität](transform-data-using-machine-learning.md)
+* [Batchausführungsaktivität für Azure Machine Learning Studio (Classic)](transform-data-using-machine-learning.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)

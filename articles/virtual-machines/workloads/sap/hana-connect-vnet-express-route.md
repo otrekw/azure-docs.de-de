@@ -3,22 +3,23 @@ title: Einrichten der Konnektivität zwischen einem virtuellen Netzwerk und SAP 
 description: Einrichten der Konnektivität zwischen einem virtuellen Netzwerk und SAP HANA in Azure (große Instanzen)
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 547640ab1a6dd948cf5d17279d784e1b4a37b35e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c5a8a8157721f34abf7761a85febc7bcea3abb88
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101250"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967838"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Verbinden eines virtuellen Netzwerks mit großen HANA-Instanzen
 
@@ -96,7 +97,7 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 ```
 
 > [!NOTE]
-> Der letzte Parameter **ExpressRouteGatewayBypass** im Befehl „New-AzVirtualNetworkGatewayConnection“ ist neu und dient zum Aktivieren von ExpressRoute Fast Path. Dies ist eine Funktionalität, mit der die Netzwerklatenz zwischen Ihren Einheiten von HANA (große Instanzen) und Azure-VMs reduziert wird. Die Funktionalität wurde im Mai 2019 hinzugefügt. Weitere Informationen finden Sie im Artikel [SAP HANA-Netzwerkarchitektur (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture). Stellen Sie sicher, dass Sie die aktuelle Version von PowerShell-Cmdlets ausführen, bevor Sie die Befehle ausführen.
+> Der letzte Parameter **ExpressRouteGatewayBypass** im Befehl „New-AzVirtualNetworkGatewayConnection“ ist neu und dient zum Aktivieren von ExpressRoute Fast Path. Dies ist eine Funktionalität, mit der die Netzwerklatenz zwischen Ihren Einheiten von HANA (große Instanzen) und Azure-VMs reduziert wird. Die Funktionalität wurde im Mai 2019 hinzugefügt. Weitere Informationen finden Sie im Artikel [SAP HANA-Netzwerkarchitektur (große Instanzen)](./hana-network-architecture.md). Stellen Sie sicher, dass Sie die aktuelle Version von PowerShell-Cmdlets ausführen, bevor Sie die Befehle ausführen.
 
 Wenn Sie das Gateway mit mehreren ExpressRoute-Leitungen verbinden möchten, die Ihrem Abonnement zugeordnet sind, müssen Sie diesen Schritt unter Umständen mehrmals ausführen. Beispielsweise ist die Wahrscheinlichkeit hoch, dass Sie das virtuelle Netzwerkgateway, das das virtuelle Netzwerk mit Ihrem lokalen Netzwerk verbindet, mit der ExpressRoute-Leitung verbinden.
 
@@ -139,7 +140,7 @@ Hierfür müssen Sie Folgendes berücksichtigen:
 - Es gilt eine Einschränkung in Bezug auf die ASNs (Autonomous System Number), die genutzt werden können, um Ihre lokalen Routen für HANA (große Instanzen) anzukündigen. Für Ihre lokale Umgebung dürfen keine Routen mit privaten ASNs im Bereich 65.000 bis 65.020 oder 65.515 angekündigt werden. 
 - Für das Szenario, bei dem für die lokale Umgebung der direkte Zugriff auf HANA (große Instanzen) ermöglicht wird, müssen Sie eine Gebühr für die Leitung berechnen, die für die Verbindung mit Azure verwendet wird. Informationen zu den Preisen erhalten Sie auf der Seite mit den Preisangaben für das [Global Reach-Add-On](https://azure.microsoft.com/pricing/details/expressroute/).
 
-Erstellen Sie wie unter [Öffnen einer Supportanfrage für HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#open-a-support-request-for-hana-large-instances) beschrieben eine Supportanfrage, um ein oder beide Szenarien auf Ihre Bereitstellung anzuwenden.
+Erstellen Sie wie unter [Öffnen einer Supportanfrage für HANA (große Instanzen)](./hana-li-portal.md#open-a-support-request-for-hana-large-instances) beschrieben eine Supportanfrage, um ein oder beide Szenarien auf Ihre Bereitstellung anzuwenden.
 
 Die benötigten Daten und Schlüsselwörter, die Sie verwenden müssen, damit Microsoft Ihre Anfrage weiterleiten und Maßnahmen ergreifen kann, lauten:
 

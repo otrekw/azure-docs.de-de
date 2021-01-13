@@ -1,31 +1,23 @@
 ---
-title: 'Azure PowerShell-Skriptbeispiel: Erstellen einer Web-App und Bereitstellen über ein lokales Git-Repository | Microsoft-Dokumentation'
-description: Azure PowerShell-Skriptbeispiel – Erstellen einer Web-App und Bereitstellen von Code über ein lokales Git-Repository
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: 'Mit PowerShell: Bereitstellen über ein lokales Git-Repository'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie Code über ein lokales Git-Repository bereitstellen.
 tags: azure-service-management
 ms.assetid: 5a927f23-8e70-45fd-9aae-980d4e7a007d
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 670660c3618124339c6d6ab416aa9baa4d5ca2ca
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 03d2f2d3928393f8a251640a03d82b5963140141
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098340"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89070291"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Erstellen einer Web-App und Bereitstellen von Code über ein lokales Git-Repository
 
 Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und stellt dann Ihren Web-App-Code über ein lokales Git-Repository bereit.
 
-Führen Sie bei Bedarf anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview) ein Update auf die neueste Azure PowerShell-Version durch, und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. Darüber hinaus muss der Anwendungscode in einem lokalen Git-Repository committet werden.
+Führen Sie bei Bedarf anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/) ein Update auf die neueste Azure PowerShell-Version durch, und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. Darüber hinaus muss der Anwendungscode in einem lokalen Git-Repository committet werden.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -51,6 +43,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Azure PowerShell-Beispiele für Azure App Service-Web-Apps finden Sie unter [Azure PowerShell-Beispiele](../samples-powershell.md).

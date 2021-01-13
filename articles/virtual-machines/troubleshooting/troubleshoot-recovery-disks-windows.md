@@ -12,20 +12,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: d99bf2a41bc82722fd31c1835f34f913163ce55b
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 63d5e4bcc57a734fc5ea455da7c2db940a4b8ec3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088211"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88654683"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Beheben von Problemen mit einer Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM per Azure PowerShell
 Wenn für Ihre Windows-VM in Azure ein Start- oder Datenträgerfehler auftritt, müssen Sie die Problembehandlung ggf. auf dem Datenträger selbst ausführen. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate, das den erfolgreichen Start der VM verhindert. Dieser Artikel beschreibt, wie Sie mit Azure PowerShell eine Verbindung zwischen dem Datenträger und einer anderen Windows-VM herstellen, um Fehler zu beheben und dann Ihre ursprüngliche VM zu reparieren. 
 
 > [!Important]
-> Die Skripts in diesem Artikel gelten nur für VMs, die [verwaltete Datenträger](../windows/managed-disks-overview.md) verwenden. 
+> Die Skripts in diesem Artikel gelten nur für VMs, die [verwaltete Datenträger](../managed-disks-overview.md) verwenden. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="recovery-process-overview"></a>Übersicht über den Wiederherstellungsprozess
 Mit Azure PowerShell können Sie nun den Betriebssystemdatenträger für eine VM ändern. Sie müssen die VM nicht löschen und neu erstellen.
@@ -40,9 +40,9 @@ Der Problembehebungsprozess sieht wie folgt aus:
 6. Heben Sie die Bereitstellung des Datenträgers auf, und trennen Sie ihn von der Wiederherstellungs-VM.
 7. Ändern Sie den Betriebssystemdatenträger für die betroffene VM.
 
-Sie können die VM-Wiederherstellungsskripts verwenden, um die Schritte 1, 2, 3, 4, 6 und 7 zu automatisieren. Weitere Informationen und Anleitungen dazu finden Sie unter [VM Recovery Scripts for Resource Manager VM](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager) (VM-Wiederherstellungsskripts für Resource Manager-VM).
+Sie können die VM-Reparaturbefehle verwenden, um die Schritte 1, 2, 3, 4, 6 und 7 zu automatisieren. Weitergehende Dokumentation und Anleitungen finden Sie unter [Reparieren eines virtuellen Windows-Computers mit dem Reparaturbefehlen virtueller Azure-Computer](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Stellen Sie sicher, dass Sie die [aktuelle Version von Azure PowerShell](/powershell/azure/overview) installiert haben und an Ihrem Abonnement angemeldet sind:
+Stellen Sie sicher, dass Sie die [aktuelle Version von Azure PowerShell](/powershell/azure/) installiert haben und an Ihrem Abonnement angemeldet sind:
 
 ```powershell
 Connect-AzAccount
@@ -258,4 +258,4 @@ Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Probleme beim Herstellen einer Verbindung mit Ihrer VM auftreten, helfen Ihnen die Informationen unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) weiter. Konsultieren Sie [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) bei Problemen mit dem Zugriff auf Anwendungen, die auf Ihrer VM ausgeführt werden.
 
-Weitere Informationen zu Resource Manager finden Sie unter [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+Weitere Informationen zu Resource Manager finden Sie unter [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md).

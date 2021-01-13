@@ -1,17 +1,18 @@
 ---
-title: Entwickeln und Konfigurieren von Anwendungen mit Azure Functions und SignalR Service
+title: 'Azure SignalR Service: Entwickeln und Konfigurieren der Azure Functions-App'
 description: Ausführliche Informationen zur Entwicklung und Konfiguration serverloser Echtzeitanwendungen unter Verwendung von Azure Functions und Azure SignalR Service
 author: anthonychu
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: be77704f562a1e05485e6f3704dff265635b1dc2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: acb85a04b8a1ca491058702510079a36b93fc657
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882302"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151050"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions-Entwicklung und -Konfiguration mit Azure SignalR Service
 
@@ -32,7 +33,7 @@ Navigieren Sie im Azure-Portal zu Seite *Einstellungen* Ihrer SignalR Service-R
 Eine serverlose Echtzeitanwendung, die mit Azure Functions und Azure SignalR Service erstellt wird, benötigt in der Regel zwei Azure-Funktionen:
 
 * Eine Aushandlungsfunktion, die der Client aufruft, um ein gültiges SignalR Service-Zugriffstoken und eine Dienstendpunkt-URL zu erhalten.
-* Mindestens eine Funktion, die Nachrichten sendet oder die Gruppenmitgliedschaft verwaltet.
+* Eine oder mehrere Funktionen, die Nachrichten von SignalR Service verarbeiten und Nachrichten senden oder die Gruppenmitgliedschaft verwalten.
 
 ### <a name="negotiate-function"></a>Aushandlungsfunktion
 
@@ -40,9 +41,19 @@ Eine Clientanwendung benötigt ein gültiges Zugriffstoken, um eine Verbindung m
 
 Verwenden Sie eine Azure-Funktion mit HTTP-Trigger sowie die Eingabebindung *SignalRConnectionInfo*, um das Verbindungsinformationenobjekt zu generieren. Die Funktion muss über eine HTTP-Route verfügen, die mit `/negotiate` endet.
 
-Weitere Informationen zum Erstellen der Aushandlungsfunktion finden Sie in der [Referenz für die Eingabebindung *SignalRConnectionInfo*](../azure-functions/functions-bindings-signalr-service.md#signalr-connection-info-input-binding).
+Mit einem [klassenbasierten Modell](#class-based-model) in C# benötigen Sie keine *SignalRConnectionInfo*-Eingangsbindung und können benutzerdefinierte Ansprüche viel einfacher hinzufügen. Weitere Informationen finden Sie unter [Aushandlung im klassenbasierten Modell](#negotiate-experience-in-class-based-model).
+
+Weitere Informationen zum Erstellen der Aushandlungsfunktion finden Sie in der [Referenz für die Eingabebindung *SignalRConnectionInfo*](../azure-functions/functions-bindings-signalr-service-input.md).
 
 Informationen zum Erstellen eines authentifizierten Tokens finden Sie unter [Verwenden der App Service-Authentifizierung](#using-app-service-authentication).
+
+### <a name="handle-messages-sent-from-signalr-service"></a>Verarbeiten von Nachrichten, die von SignalR Service gesendet wurden
+
+Verwenden Sie die *SignalR Trigger*-Bindung, um von SignalR Service gesendete Nachrichten zu verarbeiten. Die Auslösung ist möglich, wenn Clients Nachrichten senden oder wenn eine Clientverbindung hergestellt oder getrennt wird.
+
+Weitere Informationen finden Sie in der [Referenz zu *SignalR Trigger*-Bindungen](../azure-functions/functions-bindings-signalr-service-trigger.md).
+
+Außerdem müssen Sie den Funktionsendpunkt als Upstream konfigurieren, damit der Dienst die Funktion auslöst, wenn eine Nachricht vom Client vorliegt. Weitere Informationen zum Konfigurieren von Upstream finden Sie in diesem [Dokument](concept-upstream.md).
 
 ### <a name="sending-messages-and-managing-group-membership"></a>Senden von Nachrichten und Verwalten der Gruppenmitgliedschaft
 
@@ -50,11 +61,116 @@ Verwenden Sie die Ausgabebindung *SignalR*, um Nachrichten an Clients zu senden,
 
 Benutzer können einer einzelnen Gruppe oder mehreren Gruppen hinzugefügt werden. Mit der Ausgabebindung *SignalR* können Benutzer auch zu Gruppen hinzugefügt oder aus Gruppen entfernt werden.
 
-Weitere Informationen finden Sie in der [Referenz für die Ausgabebindung *SignalR*](../azure-functions/functions-bindings-signalr-service.md#signalr-output-binding).
+Weitere Informationen finden Sie in der [Referenz für die Ausgabebindung *SignalR*](../azure-functions/functions-bindings-signalr-service-output.md).
 
 ### <a name="signalr-hubs"></a>SignalR-Hubs
 
 SignalR verfügt über ein Hub-Konzept. Jede Clientverbindung und jede aus Azure Functions gesendete Nachricht ist auf einen bestimmten Hub ausgerichtet. Mithilfe von Hubs können Sie Ihre Verbindungen und Nachrichten in logische Namespaces aufteilen.
+
+## <a name="class-based-model"></a>Klassenbasiertes Modell
+
+Das klassenbasierte Modell ist dediziert für C# bestimmt. Das klassenbasierte Modell kann eine einheitliche SignalR-Server-seitige Programmiererfahrung bieten. Es bietet die folgenden Features.
+
+* Geringerer Konfigurationsaufwand: Der Klassenname wird als `HubName` verwendet, der Methodenname wird als `Event` verwendet, und `Category` wird automatisch gemäß dem Methodennamen festgelegt.
+* Automatische Parameterbindung: Weder `ParameterNames` noch Attribut `[SignalRParameter]` ist erforderlich. Parameter werden in der angegebenen Reihenfolge automatisch an Argumente der Azure Function-Methode gebunden.
+* Praktische Ausgabe-und Aushandlungserfahrung.
+
+Die folgenden Codebeispiele veranschaulichen diese Features:
+
+```cs
+public class SignalRTestHub : ServerlessHub
+{
+    [FunctionName("negotiate")]
+    public SignalRConnectionInfo Negotiate([HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req)
+    {
+        return Negotiate(req.Headers["x-ms-signalr-user-id"], GetClaims(req.Headers["Authorization"]));
+    }
+
+    [FunctionName(nameof(OnConnected))]
+    public async Task OnConnected([SignalRTrigger]InvocationContext invocationContext, ILogger logger)
+    {
+        await Clients.All.SendAsync(NewConnectionTarget, new NewConnection(invocationContext.ConnectionId));
+        logger.LogInformation($"{invocationContext.ConnectionId} has connected");
+    }
+
+    [FunctionName(nameof(Broadcast))]
+    public async Task Broadcast([SignalRTrigger]InvocationContext invocationContext, string message, ILogger logger)
+    {
+        await Clients.All.SendAsync(NewMessageTarget, new NewMessage(invocationContext, message));
+        logger.LogInformation($"{invocationContext.ConnectionId} broadcast {message}");
+    }
+
+    [FunctionName(nameof(OnDisconnected))]
+    public void OnDisconnected([SignalRTrigger]InvocationContext invocationContext)
+    {
+    }
+}
+```
+
+Alle Funktionen, die das klassenbasierte Modell nutzen sollen, müssen die Methode der Klasse aufweisen, die von **ServerlessHub** erbt. Der Klassenname `SignalRTestHub` im Beispiel ist der Hubname.
+
+### <a name="define-hub-method"></a>Definieren der Hubmethode
+
+Alle Hubmethoden **müssen** über das Argument `InvocationContext` verfügen, das um das Attribut `[SignalRTrigger]` ergänzt sein muss, und einen parameterlosen Konstruktor verwenden. Anschließend wird der **Methodenname** als Parameter**ereignis** behandelt.
+
+Standardmäßig ist `category=messages` (mit Ausnahme des Methodennamens)gleich einem der folgenden Namen:
+
+* **OnConnected**: Wird als `category=connections, event=connected` behandelt.
+* **OnDisconnected**: Wird als `category=connections, event=disconnected` behandelt.
+
+### <a name="parameter-binding-experience"></a>Parameterbindung
+
+Im klassenbasierten Modell ist `[SignalRParameter]` unnötig, da alle Argumente standardmäßig als `[SignalRParameter]` markiert sind, außer in den folgenden Situationen:
+
+* Das-Argument wird durch ein Bindungsattribut ergänzt.
+* Der Argumenttyp ist `ILogger` oder `CancellationToken`.
+* Das Argument wird durch Attribut `[SignalRIgnore]` ergänzt.
+
+### <a name="negotiate-experience-in-class-based-model"></a>Aushandlung im klassenbasierten Modell
+
+Anstatt die SignalR-Eingangsbindung `[SignalR]` zu verwenden, kann die Aushandlung im klassenbasierten Modell flexibler erfolgen. Basisklasse `ServerlessHub` verfügt über eine Methode
+
+```cs
+SignalRConnectionInfo Negotiate(string userId = null, IList<Claim> claims = null, TimeSpan? lifeTime = null)
+```
+
+Dieses Feature passt `userId` oder `claims` während der Funktionsausführung benutzerdefiniert an.
+
+## <a name="use-signalrfilterattribute"></a>Verwenden Sie `SignalRFilterAttribute`
+
+Der Benutzer kann die abstrakte Klasse `SignalRFilterAttribute` erben und implementieren. Werden in `FilterAsync` Ausnahmen ausgelöst, werden `403 Forbidden` an Clients zurückgesendet.
+
+Im folgenden Beispiel wird veranschaulicht, wie ein Kundenfilter implementiert wird, der nur `admin` das Aufrufen von `broadcast`gestattet.
+
+```cs
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+internal class FunctionAuthorizeAttribute: SignalRFilterAttribute
+{
+    private const string AdminKey = "admin";
+
+    public override Task FilterAsync(InvocationContext invocationContext, CancellationToken cancellationToken)
+    {
+        if (invocationContext.Claims.TryGetValue(AdminKey, out var value) &&
+            bool.TryParse(value, out var isAdmin) &&
+            isAdmin)
+        {
+            return Task.CompletedTask;
+        }
+
+        throw new Exception($"{invocationContext.ConnectionId} doesn't have admin role");
+    }
+}
+```
+
+Verwenden Sie das Attribut zum Autorisieren der Funktion.
+
+```cs
+[FunctionAuthorize]
+[FunctionName(nameof(Broadcast))]
+public async Task Broadcast([SignalRTrigger]InvocationContext invocationContext, string message, ILogger logger)
+{
+}
+```
 
 ## <a name="client-development"></a>Cliententwicklung
 
@@ -82,13 +198,17 @@ Konventionsgemäß fügt das SDK automatisch `/negotiate` an die URL an und verw
 
 Weitere Informationen zur Verwendung des SignalR-Client-SDK finden Sie in der Dokumentation für die verwendete Sprache:
 
-* [.NET Standard](https://docs.microsoft.com/aspnet/core/signalr/dotnet-client)
-* [JavaScript](https://docs.microsoft.com/aspnet/core/signalr/javascript-client)
-* [Java](https://docs.microsoft.com/aspnet/core/signalr/java-client)
+* [.NET Standard](/aspnet/core/signalr/dotnet-client)
+* [JavaScript](/aspnet/core/signalr/javascript-client)
+* [Java](/aspnet/core/signalr/java-client)
 
 ### <a name="sending-messages-from-a-client-to-the-service"></a>Senden von Nachrichten von einem Client an den Dienst
 
-Das SignalR-SDK ermöglicht Clientanwendungen zwar das Aufrufen von Back-End-Logik in einem SignalR-Hub, diese Funktion wird bei Verwendung von SignalR Service mit Azure Functions jedoch noch nicht unterstützt. Verwenden Sie HTTP-Anforderungen, um Azure Functions aufzurufen.
+Wenn Sie für Ihre SignalR-Ressource [Upstream](concept-upstream.md) konfiguriert haben, können Sie Nachrichten vom Client mithilfe beliebiger SignalR-Clients an Ihre Azure Functions senden. Beispiel in JavaScript:
+
+```javascript
+connection.send('method1', 'arg1', 'arg2');
+```
 
 ## <a name="azure-functions-configuration"></a>Azure Functions-Konfiguration
 

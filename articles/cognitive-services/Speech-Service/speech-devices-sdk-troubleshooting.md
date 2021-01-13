@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung für das Speech Devices SDK – Spracherkennungsdienst
+title: Problembehandlung für das Speech-Geräte-SDK – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Dieser Artikel enthält Informationen zum Beheben von Problemen, die bei Verwendung des Speech Devices SDK auftreten können.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wellsi
-ms.openlocfilehash: 9a757402360b4b69e760315a809482be9b4e04d4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c590e0972de289a36890a75b220eddbded701ea8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558905"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74815563"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>Problembehandlung für das Speech Devices SDK
 

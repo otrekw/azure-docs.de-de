@@ -1,28 +1,28 @@
 ---
-title: Erstellen von Subclips für ein Video beim Codieren mit der REST-API für Azure Media Services
+title: Erstellen von Subclips für ein Video beim Codieren mit Azure Media Services-REST
 description: In diesem Artikel wird beschrieben, wie Sie beim Codieren mit Azure Media Services mithilfe von REST Subclips für ein Video erstellen
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/10/2019
-ms.author: juliako
-ms.openlocfilehash: 3557aef6213955ef77542bffafe0a2b0c374ed68
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.author: inhenkel
+ms.openlocfilehash: 524da91d55bad29a5f7c6dcec0eecc245b9954fd
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704444"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511908"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Erstellen von Subclips für ein Video beim Codieren mit Media Services: REST
 
-Sie können mithilfe eines [Auftrags](https://docs.microsoft.com/rest/api/media/jobs) Videos beim Codieren zuschneiden oder Subclips für diese erstellen. Dies funktioniert mit jeder [Transformation](https://docs.microsoft.com/rest/api/media/transforms), die entweder mit den [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)-Voreinstellungen oder mit den [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)-Voreinstellungen erstellt wird. 
+Sie können mithilfe eines [Auftrags](/rest/api/media/jobs) Videos beim Codieren zuschneiden oder Subclips für diese erstellen. Dies funktioniert mit jeder [Transformation](/rest/api/media/transforms), die entweder mit den [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)-Voreinstellungen oder mit den [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset)-Voreinstellungen erstellt wird. 
 
 Mithilfe des in diesem Artikel verwendeten REST-Beispiels wird ein Auftrag erstellt, der ein Video zuschneidet, sobald er einen Codierungsauftrag übermittelt. 
 
@@ -30,7 +30,7 @@ Mithilfe des in diesem Artikel verwendeten REST-Beispiels wird ein Auftrag erste
 
 Für die in diesem Thema beschriebenen Schritte ist Folgendes erforderlich:
 
-- [Erstellen eines Azure Media Services-Kontos](create-account-cli-how-to.md)
+- [Erstellen eines Azure Media Services-Kontos](./create-account-howto.md)
 - [Konfigurieren Sie Postman für Azure Media Services-REST-API-Aufrufe](media-rest-apis-with-postman.md).
     
     Befolgen Sie dabei unbedingt den letzten Schritt im Thema [Abrufen von Azure AD-Token](media-rest-apis-with-postman.md#get-azure-ad-token). 
@@ -49,7 +49,7 @@ Für die in diesem Thema beschriebenen Schritte ist Folgendes erforderlich:
 1. Aktualisieren Sie den Wert der Umgebungsvariablen „transformName“ durch den Namen Ihrer Transformation. 
 1. Klicken Sie auf die Registerkarte **Body** (Text), und aktualisieren Sie das Element „myOutputAsset“ durch den Namen Ihres Ausgabeobjekts.
 
-    ```
+    ```json
     {
       "properties": {
         "description": "A Job with transform cb9599fb-03b3-40eb-a2ff-7ea909f53735 and single clip.",
@@ -58,8 +58,8 @@ Für die in diesem Thema beschriebenen Schritte ist Folgendes erforderlich:
           "@odata.type": "#Microsoft.Media.JobInputHttp",
           "baseUri": "https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/",
           "files": [
-                "Ignite-short.mp4"
-            ],
+            "Ignite-short.mp4"
+          ],
           "start": {
             "@odata.type": "#Microsoft.Media.AbsoluteClipTime",
             "time": "PT10S"

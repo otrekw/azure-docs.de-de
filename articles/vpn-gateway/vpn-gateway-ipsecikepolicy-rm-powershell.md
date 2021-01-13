@@ -1,34 +1,27 @@
 ---
-title: 'Konfigurieren der IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen: Azure Resource Manager: PowerShell | Microsoft-Dokumentation'
+title: IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen
+titleSuffix: Azure VPN Gateway
 description: Konfigurieren Sie die IPsec-/IKE-Richtlinie für S2S- oder VNET-zu-VNET-Verbindungen mithilfe von Azure-VPN-Gateways per Azure Resource Manager und PowerShell.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: d04d62d66b4ba22437e6d854566f8bbf5536a6fc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66121138"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649261"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurieren der IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen
 
 In diesem Artikel werden die Schritte zum Konfigurieren der IPsec/IKE-Richtlinie für Site-to-Site-VPN- oder VNet-zu-VNet-Verbindungen mit dem Resource Manager-Bereitstellungsmodell und PowerShell beschrieben.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="about"></a>IPsec- und IKE-Richtlinienparameter für Azure-VPN-Gateways
+
+## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a><a name="about"></a>IPsec- und IKE-Richtlinienparameter für Azure-VPN-Gateways
 Der IPsec- und IKE-Protokollstandard unterstützt ein breites Spektrum von Kryptografiealgorithmen in verschiedenen Kombinationen. Informationen dazu, wie Sie damit erreichen können, dass die standortübergreifende und VNet-zu-VNet-Konnektivität Ihre Konformitäts- oder Sicherheitsanforderungen erfüllt, finden Sie unter [Kryptografische Anforderungen und Azure-VPN-Gateways](vpn-gateway-about-compliance-crypto.md).
 
 Dieser Artikel enthält eine Anleitung zum Erstellen und Konfigurieren einer IPsec/IKE-Richtlinie und Anwenden auf eine neue oder vorhandene Verbindung:
@@ -41,13 +34,12 @@ Dieser Artikel enthält eine Anleitung zum Erstellen und Konfigurieren einer IPs
 
 > [!IMPORTANT]
 > 1. Die IPsec/IKE-Richtlinie kann nur für folgende Gateways verwendet werden:
->    * ***VpnGw1, VpnGw2, VpnGw3*** (routenbasiert)
->    * ***Standard*** und ***HighPerformance*** (routenbasiert)
-> 2. Pro Verbindung kann jeweils nur ***eine*** Richtlinienkombination angegeben werden.
+>    * ***VpnGw1, VpnGw2, VpnGw3** _ (routenbasiert) _ ***Standard** _ und _*_HighPerformance_*_ (routenbasiert)
+> 2. Pro Verbindung kann jeweils nur _*_eine_*_ Richtlinienkombination angegeben werden.
 > 3. Sie müssen alle Algorithmen und Parameter für IKE (Hauptmodus) und IPsec (Schnellmodus) angeben. Partielle Richtlinien sind nicht zulässig.
 > 4. Vergewissern Sie sich in den Spezifikationen Ihres VPN-Geräteanbieters, dass die Richtlinie von Ihren lokalen VPN-Geräten unterstützt wird. S2S- bzw. VNet-zu-VNet-Verbindungen können nicht hergestellt werden, wenn die Richtlinien inkompatibel sind.
 
-## <a name ="workflow"></a>Teil 1: Workflow zum Erstellen und Festlegen der IPsec/IKE-Richtlinie
+## <a name="part-1---workflow-to-create-and-set-ipsecike-policy"></a><a name ="workflow"></a>Teil 1: Workflow zum Erstellen und Festlegen der IPsec/IKE-Richtlinie
 In diesem Abschnitt wird der Workflow zum Erstellen und Aktualisieren der IPsec/IKE-Richtlinie für eine S2S-VPN- oder VNet-zu-VNet-Verbindung beschrieben:
 1. Erstellen eines virtuelles Netzwerks und eines VPN-Gateways
 2. Erstellen eines Gateways des lokalen Netzwerks für eine standortübergreifende Verbindung oder eines anderen virtuellen Netzwerks und Gateways für eine VNet-zu-VNet-Verbindung
@@ -59,11 +51,11 @@ Die Anleitung in diesem Artikel dient zum Einrichten und Konfigurieren von IPsec
 
 ![IPsec/IKE-Richtlinie](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
-## <a name ="params"></a>Teil 2: Unterstützte Kryptografiealgorithmen und Schlüsselstärken
+## <a name="part-2---supported-cryptographic-algorithms--key-strengths"></a><a name ="params"></a>Teil 2: Unterstützte Kryptografiealgorithmen und Schlüsselstärken
 
 Die folgende Tabelle gibt Aufschluss über die unterstützten Kryptografiealgorithmen und Schlüsselstärken, die von den Kunden konfiguriert werden können:
 
-| **IPsec/IKEv2**  | **Optionen**    |
+| _ *IPsec/IKEv2**  | **Optionen**    |
 | ---  | --- 
 | IKEv2-Verschlüsselung | AES256, AES192, AES128, DES3, DES  
 | IKEv2-Integrität  | SHA384, SHA256, SHA1, MD5  |
@@ -109,12 +101,12 @@ Die folgende Tabelle enthält die entsprechenden Diffie-Hellman-Gruppen, die von
 | 2                         | DHGroup2                 | PFS2         | 1024-Bit-MODP  |
 | 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048-Bit-MODP  |
 | 19                        | ECP256                   | ECP256       | 256-Bit-ECP    |
-| 20                        | ECP384                   | ECP284       | 384-Bit-ECP    |
+| 20                        | ECP384                   | ECP384       | 384-Bit-ECP    |
 | 24                        | DHGroup24                | PFS24        | 2048-Bit-MODP  |
 
 Ausführlichere Informationen finden Sie unter [RFC3526](https://tools.ietf.org/html/rfc3526) und [RFC5114](https://tools.ietf.org/html/rfc5114).
 
-## <a name ="crossprem"></a>Teil 3: Erstellen einer neuen S2S-VPN-Verbindung mit einer IPsec/IKE-Richtlinie
+## <a name="part-3---create-a-new-s2s-vpn-connection-with-ipsecike-policy"></a><a name ="crossprem"></a>Teil 3: Erstellen einer neuen S2S-VPN-Verbindung mit einer IPsec/IKE-Richtlinie
 
 In diesem Abschnitt wird das Erstellen einer S2S-VPN-Verbindung mit einer IPsec/IKE-Richtlinie schrittweise beschrieben. Mit den folgenden Schritten wird die Verbindung erstellt, wie im Diagramm dargestellt:
 
@@ -122,12 +114,12 @@ In diesem Abschnitt wird das Erstellen einer S2S-VPN-Verbindung mit einer IPsec/
 
 Eine ausführlichere Schritt-für-Schritt-Anleitung zum Erstellen einer S2S-VPN-Verbindung finden Sie unter [Erstellen eines VNET mit einer Site-to-Site-VPN-Verbindung per PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md).
 
-### <a name="before"></a>Voraussetzungen
+### <a name="before-you-begin"></a><a name="before"></a>Voraussetzungen
 
 * Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
-* Installieren Sie die Azure Resource Manager PowerShell-Cmdlets. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Übersicht über Azure PowerShell](/powershell/azure/overview).
+* Installieren Sie die Azure Resource Manager PowerShell-Cmdlets. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Übersicht über Azure PowerShell](/powershell/azure/).
 
-### <a name="createvnet1"></a>Schritt 1: Erstellen des virtuellen Netzwerks, VPN-Gateways und lokalen Netzwerkgateways
+### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>Schritt 1: Erstellen des virtuellen Netzwerks, VPN-Gateways und Gateways des lokalen Netzwerks
 
 #### <a name="1-declare-your-variables"></a>1. Deklarieren von Variablen
 
@@ -160,7 +152,7 @@ $LNGIP6        = "131.107.72.22"
 
 #### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Herstellen einer Verbindung mit Ihrem Abonnement und Erstellen einer neuen Ressourcengruppe
 
-Stellen Sie sicher, dass Sie in den PowerShell-Modus wechseln, um die Ressourcen-Manager-Cmdlets zu verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
+Stellen Sie sicher, dass Sie in den PowerShell-Modus wechseln, um die Ressourcen-Manager-Cmdlets zu verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md).
 
 Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
@@ -191,7 +183,7 @@ New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Lo
 New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix $LNGPrefix61,$LNGPrefix62
 ```
 
-### <a name="s2sconnection"></a>Schritt 2: Erstellen einer S2S-VPN-Verbindung mit einer IPsec/IKE-Richtlinie
+### <a name="step-2---create-a-s2s-vpn-connection-with-an-ipsecike-policy"></a><a name="s2sconnection"></a>Schritt 2: Erstellen einer S2S-VPN-Verbindung mit einer IPsec/IKE-Richtlinie
 
 #### <a name="1-create-an-ipsecike-policy"></a>1. Erstellen Sie eine IPsec/IKE-Richtlinie.
 
@@ -223,7 +215,7 @@ Optional können Sie „-UsePolicyBasedTrafficSelectors $True“ dem Cmdlet für
 > Nachdem für eine Verbindung eine IPsec/IKE-Richtlinie angegeben wurde, sendet bzw. akzeptiert das Azure-VPN-Gateway den IPsec/IKE-Vorschlag mit angegebenen Kryptografiealgorithmen und Schlüsselstärken nur für die jeweilige Verbindung. Stellen Sie sicher, dass Ihr lokales VPN-Gerät für die Verbindung die exakte Richtlinienkombination nutzt bzw. akzeptiert, da der S2S-VPN-Tunnel andernfalls nicht hergestellt wird.
 
 
-## <a name ="vnet2vnet"></a>Teil 4: Erstellen einer neuen VNet-zu-VNet-Verbindung mit einer IPsec/IKE-Richtlinie
+## <a name="part-4---create-a-new-vnet-to-vnet-connection-with-ipsecike-policy"></a><a name ="vnet2vnet"></a>Teil 4: Erstellen einer neuen VNet-zu-VNet-Verbindung mit einer IPsec/IKE-Richtlinie
 
 Die Schritte zum Erstellen einer VNet-zu-VNet-Verbindung mit einer IPsec/IKE-Richtlinie ähneln denen für eine S2S-VPN-Verbindung. Mit den folgenden Beispielskripts wird die Verbindung erstellt, wie im Diagramm zu sehen:
 
@@ -231,7 +223,7 @@ Die Schritte zum Erstellen einer VNet-zu-VNet-Verbindung mit einer IPsec/IKE-Ric
 
 Ausführlichere Informationen zum Erstellen einer VNet-zu-VNet-Verbindung finden Sie unter [Konfigurieren einer VNet-zu-VNet-VPN-Gatewayverbindung mithilfe von PowerShell](vpn-gateway-vnet-vnet-rm-ps.md). Sie müssen [Teil 3](#crossprem) ausführen, um TestVNet1 und das VPN-Gateway zu erstellen und zu konfigurieren.
 
-### <a name="createvnet2"></a>Schritt 1: Erstellen des zweiten virtuellen Netzwerks und VPN-Gateways
+### <a name="step-1---create-the-second-virtual-network-and-vpn-gateway"></a><a name="createvnet2"></a>Schritt 1: Erstellen des zweiten virtuellen Netzwerks und VPN-Gateways
 
 #### <a name="1-declare-your-variables"></a>1. Deklarieren von Variablen
 
@@ -284,7 +276,7 @@ Erstellen Sie ähnlich wie bei der S2S-VPN-Verbindung eine IPsec/IKE-Richtlinie,
 
 Im folgenden Beispielskript wird eine andere IPsec/IKE-Richtlinie mit den folgenden Algorithmen und Parametern erstellt:
 * IKEv2: AES128, SHA1, DHGroup14
-* IPsec: GCMAES128, GCMAES128, PFS14, SA-Gültigkeitsdauer 14400 Sekunden und 102.400.000 KB
+* IPsec: GCMAES128, GCMAES128, PFS14, SA-Gültigkeitsdauer 14.400 Sekunden und 102.400.000 KB
 
 ```powershell
 $ipsecpolicy2 = New-AzIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption GCMAES128 -IpsecIntegrity GCMAES128 -PfsGroup PFS14 -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
@@ -311,7 +303,7 @@ Nachdem Sie diese Schritte ausgeführt haben, wird die Verbindung innerhalb weni
 ![IPsec/IKE-Richtlinie](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
 
-## <a name ="managepolicy"></a>Teil 5: Aktualisieren der IPsec/IKE-Richtlinie für eine Verbindung
+## <a name="part-5---update-ipsecike-policy-for-a-connection"></a><a name ="managepolicy"></a>Teil 5: Aktualisieren der IPsec/IKE-Richtlinie für eine Verbindung
 
 Im diesem letzten Abschnitt erfahren Sie, wie Sie die IPsec/IKE-Richtlinie für eine vorhandene S2S- oder VNet-zu-VNet-Verbindung verwalten. In der Übung unten werden die folgenden Vorgänge einer Verbindung schrittweise beschrieben:
 
@@ -348,7 +340,7 @@ DhGroup             : DHGroup24
 PfsGroup            : PFS24
 ```
 
-Ist keine IPsec/IKE-Richtlinie konfiguriert, generiert der Befehl (PS> $connection6.policy) eine leere Rückgabe. Dies bedeutet nicht, dass IPsec/IKE nicht für die Verbindung konfiguriert wurde, sondern dass keine benutzerdefinierte IPsec/IKE-Richtlinie vorhanden ist. Für die eigentliche Verbindung wird die Standardrichtlinie verwendet, die zwischen Ihrem lokalen VPN-Gerät und dem Azure-VPN-Gateway ausgehandelt wurde.
+Ist keine IPsec/IKE-Richtlinie konfiguriert, generiert der Befehl (PS> $connection6.IpsecPolicies) eine leere Rückgabe. Dies bedeutet nicht, dass IPsec/IKE nicht für die Verbindung konfiguriert wurde, sondern dass keine benutzerdefinierte IPsec/IKE-Richtlinie vorhanden ist. Für die eigentliche Verbindung wird die Standardrichtlinie verwendet, die zwischen Ihrem lokalen VPN-Gerät und dem Azure-VPN-Gateway ausgehandelt wurde.
 
 #### <a name="2-add-or-update-an-ipsecike-policy-for-a-connection"></a>2. Hinzufügen oder Aktualisieren einer IPsec/IKE-Richtlinie für eine Verbindung
 
@@ -411,4 +403,4 @@ Mit dem gleichen Skript können Sie prüfen, ob die Richtlinie für die Verbindu
 
 Ausführliche Informationen zu richtlinienbasierten Datenverkehrsselektoren finden Sie unter [Herstellen einer Verbindung zwischen Azure-VPN-Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten mit PowerShell](vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
-Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .
+Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/windows/quick-create-portal.md) .

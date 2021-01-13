@@ -1,29 +1,24 @@
 ---
 title: Profilerstellung für ASP.NET Core-Azure Linux-Web-Apps mit Application Insights Profiler | Microsoft-Dokumentation
 description: Eine konzeptionelle Übersicht und ein schrittweises Tutorial zur Verwendung von Application Insights Profiler.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.reviewer: mbullwin
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/23/2018
+ms.custom: devx-track-csharp
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 02/23/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: 6ef52e946edb5db8074a9b4e3ce5e4a81ae0bde5
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306483"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561051"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profilerstellung für ASP.NET Core-Azure Linux-Web-Apps mit Application Insights Profiler
 
 Diese Funktion steht derzeit als Vorschau zur Verfügung.
 
-Ermitteln Sie durch Verwendung von [Application Insights](../../azure-monitor/app/app-insights-overview.md) den Zeitaufwand für die einzelnen Methoden in Ihrer Live-Webanwendung. Application Insights Profiler ist jetzt für ASP.NET Core-Web-Apps verfügbar, die in Linux auf Azure App Service gehostet werden. Dieser Leitfaden enthält eine schrittweise Anleitung zum Erfassen von Profiler-Ablaufverfolgungen für ASP.NET Core-Linux-Web-Apps.
+Ermitteln Sie durch Verwendung von [Application Insights](./app-insights-overview.md) den Zeitaufwand für die einzelnen Methoden in Ihrer Live-Webanwendung. Application Insights Profiler ist jetzt für ASP.NET Core-Web-Apps verfügbar, die in Linux auf Azure App Service gehostet werden. Dieser Leitfaden enthält eine schrittweise Anleitung zum Erfassen von Profiler-Ablaufverfolgungen für ASP.NET Core-Linux-Web-Apps.
 
 Nach Abschluss dieser exemplarischen Vorgehensweise kann Ihre App Profiler-Ablaufverfolgungen wie die Ablaufverfolgungsdaten erfassen, die in der Abbildung dargestellt sind. In diesem Beispiel weist die Profiler-Ablaufverfolgung nach, dass eine bestimmte Webanforderung aufgrund der Wartezeit langsam ist. Der *langsamste Pfad* im Code, der die App verlangsamt, wird durch ein Flammensymbol gekennzeichnet. Die **About**-Methode im Abschnitt **HomeController** verlangsamt die Web-App, da die Methode die **Thread.Sleep**-Funktion aufruft.
 
@@ -41,17 +36,17 @@ Die folgenden Anweisungen werden auf alle Windows-, Linux- und Mac-Entwicklungsu
 
 1. Erstellen Sie eine ASP.NET Core-MVC-Webanwendung:
 
-    ```
-    dotnet new mvc -n LinuxProfilerTest
-    ```
+   ```console
+   dotnet new mvc -n LinuxProfilerTest
+   ```
 
 1. Ändern Sie das Arbeitsverzeichnis in den Stammordner des Projekts.
 
 1. Fügen Sie das NuGet-Paket hinzu, um die Profiler-Ablaufverfolgungen zu erfassen:
 
-    ```shell
-    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
-    ```
+   ```console
+   dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
+   ```
 
 1. Aktivieren Sie Application Insights in der Datei „Program.cs“:
 
@@ -61,7 +56,7 @@ Die folgenden Anweisungen werden auf alle Windows-, Linux- und Mac-Entwicklungsu
             .UseApplicationInsights() // Add this line of code to Enable Application Insights
             .UseStartup<Startup>();
     ```
-    
+
 1. Aktivieren Sie den Profiler in der Datei „Program.cs“:
 
     ```csharp
@@ -75,24 +70,24 @@ Die folgenden Anweisungen werden auf alle Windows-, Linux- und Mac-Entwicklungsu
 1. Fügen Sie im Abschnitt **HomeController.cs** eine Codezeile zur Verzögerung um ein paar Sekunden nach dem Zufallsprinzip hinzu:
 
     ```csharp
-        using System.Threading;
-        ...
+    using System.Threading;
+    ...
 
-        public IActionResult About()
-            {
-                Random r = new Random();
-                int delay = r.Next(5000, 10000);
-                Thread.Sleep(delay);
-                return View();
-            }
+    public IActionResult About()
+        {
+            Random r = new Random();
+            int delay = r.Next(5000, 10000);
+            Thread.Sleep(delay);
+            return View();
+        }
     ```
 
 1. Speichern Sie die Änderungen, und committen Sie sie an das lokale Repository:
 
-    ```
-        git init
-        git add .
-        git commit -m "first commit"
+    ```console
+    git init
+    git add .
+    git commit -m "first commit"
     ```
 
 ## <a name="create-the-linux-web-app-to-host-your-project"></a>Erstellen der Linux-Web-App zum Hosten Ihres Projekts
@@ -112,13 +107,13 @@ Die folgenden Anweisungen werden auf alle Windows-, Linux- und Mac-Entwicklungsu
 
     ![Git-Repository einrichten](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-Weitere Bereitstellungsoptionen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type).
+Weitere Bereitstellungsoptionen finden Sie unter [App Service-Dokumentation](../../app-service/index.yml).
 
 ## <a name="deploy-your-project"></a>Bereitstellen des Projekts
 
 1. Navigieren Sie im Eingabeaufforderungsfenster zum Stammordner für Ihr Projekt. Fügen Sie ein Git-Remote-Repository hinzu, sodass es auf das Repository auf App Service weist:
 
-    ```
+    ```console
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
@@ -127,19 +122,19 @@ Weitere Bereitstellungsoptionen finden Sie in [diesem Artikel](https://docs.micr
 
 2. Stellen Sie das Projekt durch Pushen der Änderungen in Azure bereit:
 
-    ```
-    git push azure master
+    ```console
+    git push azure main
     ```
 
-Eine Ausgabe ähnlich des folgenden Beispiels sollte angezeigt werden:
+    Die Ausgabe sollte etwa folgendem Beispiel entsprechen:
 
-    ```
+    ```output
     Counting objects: 9, done.
     Delta compression using up to 8 threads.
     Compressing objects: 100% (8/8), done.
     Writing objects: 100% (9/9), 1.78 KiB | 911.00 KiB/s, done.
     Total 9 (delta 3), reused 0 (delta 0)
-    remote: Updating branch 'master'.
+    remote: Updating branch 'main'.
     remote: Updating submodules.
     remote: Preparing deployment for commit id 'd7369a99d7'.
     remote: Generating deployment script.
@@ -150,19 +145,16 @@ Eine Ausgabe ähnlich des folgenden Beispiels sollte angezeigt werden:
     remote: .
     remote:   Installing Newtonsoft.Json 10.0.3.
     remote:   Installing Microsoft.ApplicationInsights.Profiler.Core 1.1.0-LKG
-    …
-
+    ...
     ```
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>Hinzufügen von Application Insights zum Überwachen Ihrer Web-Apps
 
-1. [Erstellen Sie eine Application Insights-Ressource](./../../azure-monitor/app/create-new-resource.md ).
+1. [Erstellen Sie eine Application Insights-Ressource](./create-new-resource.md).
 
 2. Kopieren Sie den Wert **iKey** der Application Insights-Ressource, und legen Sie die folgenden Einstellungen in Ihren Web-Apps fest:
 
-    ```
-    APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ```
+    `APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]`
 
     Wenn die App-Einstellungen geändert werden, wird die Website automatisch neu gestartet. Sobald die neuen Einstellungen angewendet werden, wird der Profiler sofort für zwei Minuten ausgeführt. Anschließend wird der Profiler einmal pro Stunde für zwei Minuten ausgeführt.
 
@@ -174,10 +166,6 @@ Eine Ausgabe ähnlich des folgenden Beispiels sollte angezeigt werden:
 
     ![Profiler-Ablaufverfolgungen anzeigen](./media/profiler-aspnetcore-linux/view-traces.png)
 
-## <a name="known-issues"></a>Bekannte Probleme
-
-### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>Die Schaltfläche „Jetzt Profil erstellen“ funktioniert nicht für den Linux-Profiler
-Die Linux-Version des App Insights-Profilers unterstützt die bedarfsgesteuerte Profilerstellung mithilfe der Schaltfläche „Jetzt Profil erstellen“ noch nicht.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

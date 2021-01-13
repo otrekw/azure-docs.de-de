@@ -11,26 +11,26 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97dc67d46b08bf5765c59806b45edd82f38720cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3e9c4489f59f72e4d0b5c7a0b911da188eb0828c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347738"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89280195"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory-Passthrough-Authentifizierung: Aktuelle Einschränkungen
 
 >[!IMPORTANT]
 >Es handelt sich bei der Azure Active Directory-Passthrough-Authentifizierung (Azure AD) um eine kostenlose Funktion, sodass Sie für deren Verwendung keine kostenpflichtigen Editionen von Azure AD benötigen. Die Passthrough-Authentifizierung steht nur in der weltweiten Instanz von Azure AD zur Verfügung, nicht für die Cloud [Microsoft Azure Deutschland](https://www.microsoft.de/cloud-deutschland) oder die Cloud [Microsoft Azure Government](https://azure.microsoft.com/features/gov/).
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
-Folgende Szenarios werden unterstützt:
+Die folgenden Szenarien werden unterstützt:
 
 - Benutzeranmeldungen bei webbrowserbasierten Anwendungen.
 - Benutzeranmeldungen bei Outlook-Clients über ältere Protokolle wie Exchange ActiveSync, EAS, SMTP, POP und IMAP.
@@ -43,9 +43,9 @@ Folgende Szenarios werden unterstützt:
 
 Folgende Szenarios werden _nicht_ unterstützt:
 
-- Erkennen von Benutzern mit [kompromittierten Anmeldeinformationen](../reports-monitoring/concept-risk-events.md#leaked-credentials).
+- Erkennen von Benutzern mit [kompromittierten Anmeldeinformationen](../identity-protection/overview-identity-protection.md).
 - Für Azure AD Domain Services muss Kennworthashsynchronisierung auf dem Mandanten aktiviert sein. Aus diesem Grund funktionieren Mandanten, die Pass-Through-Authentifizierung verwenden, _nur_ in Szenarien nicht, die Azure AD Domain Services benötigen.
-- Pass-Through Authentifizierung ist nicht in [Azure AD Connect Health](whatis-hybrid-identity-health.md) integriert.
+- Pass-Through Authentifizierung ist nicht in [Azure AD Connect Health](./whatis-azure-ad-connect.md) integriert.
 
 > [!IMPORTANT]
 > Zur _ausschließlichen_ Umgehung nicht unterstützter Szenarien (Azure AD Connect Health-Integration ausgenommen) können Sie im Azure AD Connect-Assistenten auf der Seite [Optionale Features](how-to-connect-install-custom.md#optional-features) die Kennworthashsynchronisierung aktivieren.

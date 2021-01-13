@@ -1,34 +1,34 @@
 ---
 title: 'K-Means Clustering: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie das Modul „K-Means Clustering“ in Azure Machine Learning Service zum Trainieren von Clusteringmodellen verwendet wird.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie das Modul „K-Means Clustering“ in Azure Machine Learning zum Trainieren von Clusteringmodellen verwendet wird.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: 7de2978fee80cf3acd078ef8ee5f235fab21713e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 08/04/2020
+ms.openlocfilehash: 7e0b61c1ca6ae30044e4c9d4705bdce01eac1942
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128701"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323682"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-Means Clustering
 
-In diesem Artikel wird beschrieben, wie Sie das Modul *K-Means Clustering* in Azure Machine Learning Studio verwenden können, um ein untrainiertes K-Means-Clusteringmodell zu erstellen. 
+In diesem Artikel wird beschrieben, wie Sie das Modul *k-Means-Algorithmus* im Azure Machine Learning-Designer verwenden, um ein untrainiertes k-Means-Algorithmusmodell zu erstellen. 
  
 k-Means ist einer der einfachsten und bekanntesten *unüberwachten* Lernalgorithmen. Sie können den Algorithmus für eine Vielzahl von Aufgaben des maschinellen Lernens verwenden, z. B.: 
 
-* [Erkennen anormaler Daten](https://msdn.microsoft.com/magazine/jj891054.aspx)
+* [Erkennen anormaler Daten](/archive/msdn-magazine/2013/february/data-clustering-detecting-abnormal-data-using-k-means-clustering)
 * Clustering von Textdokumenten
 * Analysieren von Datasets vor der Verwendung anderer Klassifizierungs- oder Regressionsmethoden 
 
 So erstellen Sie ein Clusteringmodell:
 
-* Fügen Sie Ihrem Experiment dieses Modul hinzu.
+* Fügen Sie dieses Modul Ihrer Pipeline hinzu.
 * Verbinden Sie ein Dataset.
 * Legen Sie Parameter fest, z. B. die erwartete Anzahl der Cluster, die bei der Erstellung der Cluster zu verwendende Abstandsmetrik usw. 
   
@@ -54,15 +54,15 @@ Bei der Verarbeitung der Trainingsdaten beginnt der k-Means-Algorithmus mit eine
 
 ## <a name="configure-the-k-means-clustering-module"></a>Konfigurieren des k-Means-Algorithmusmoduls
   
-1.  Fügen Sie Ihrem Experiment das Modul **K-Means Clustering** hinzu.  
+1.  Fügen Sie Ihrer Pipeline das Modul **K-Means Clustering** hinzu.  
   
 2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) auswählen.  
   
     -   **Single Parameter** (Einzelner Parameter): Wenn Sie die genauen Parameter kennen, die Sie im Clusteringmodell verwenden möchten, können Sie eine bestimmte Menge von Werten als Argumente angeben.  
   
-3.  Für **Number of Centroids** (Anzahl der Schwerpunkte) geben Sie die Anzahl von Clustern ein, mit der der Algorithmus beginnen soll.  
+3.  Für **Number of centroids** (Anzahl der Schwerpunkte) geben Sie die Anzahl von Clustern ein, mit der der Algorithmus beginnen soll.  
   
-     Es gibt keine Garantie dafür, dass das Modell genau diese Anzahl von Clustern produziert. Der Algorithmus beginnt mit dieser Anzahl von Datenpunkten und iteriert, um die optimale Konfiguration zu finden.  
+     Es gibt keine Garantie dafür, dass das Modell genau diese Anzahl von Clustern produziert. Der Algorithmus beginnt mit dieser Anzahl von Datenpunkten und iteriert, um die optimale Konfiguration zu finden. Sie können auf den [Quellcode von sklearn](https://github.com/scikit-learn/scikit-learn/blob/fd237278e/sklearn/cluster/_kmeans.py#L1069) verweisen.
   
 4.  Die Eigenschaften unter **Initialization** (Initialisierung) werden verwendet, um den Algorithmus anzugeben, der zum Definieren der anfänglichen Clusterkonfiguration verwendet wird.  
   
@@ -99,7 +99,7 @@ Bei der Verarbeitung der Trainingsdaten beginnt der k-Means-Algorithmus mit eine
   
     -   **Overwrite from closest to center** (Vom nächstgelegenen zum Zentrum überschreiben): Die Werte der Bezeichnungsspalte werden durch vorhergesagte Bezeichnungswerte ersetzt, wobei die Bezeichnung des Punkts verwendet wird, der dem aktuellen Schwerpunkt am nächsten liegt.  
 
-8.  Wählen Sie die Option **Features normalisieren**, wenn Sie Features vor dem Training normalisieren möchten.
+8.  Wählen Sie die Option **Features normalisieren** , wenn Sie Features vor dem Training normalisieren möchten.
   
      Wenn Sie die Normalisierung anwenden, werden die Datenpunkte vor dem Training von MinMaxNormalizer zu `[0,1]` normalisiert.
 
@@ -107,31 +107,31 @@ Bei der Verarbeitung der Trainingsdaten beginnt der k-Means-Algorithmus mit eine
   
     -   Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, fügen Sie ein mit Tags versehenes Dataset hinzu, und trainieren Sie das Modell mit dem Modul [Train Clustering Model](train-clustering-model.md) (Trainieren des Clusteringsmodells).  
   
-### <a name="results"></a>Ergebnisse
+## <a name="results"></a>Ergebnisse
 
 Nach Abschluss der Konfiguration und des Trainings des Modells haben Sie ein Modell, mit dem Sie Ergebnisse generieren können. Es gibt jedoch mehrere Möglichkeiten, das Modell zu trainieren, die Ergebnisse anzuzeigen und sie zu nutzen: 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Erfassen einer Momentaufnahme des Modells in Ihrem Arbeitsbereich
+### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Erfassen einer Momentaufnahme des Modells in Ihrem Arbeitsbereich
+
+Bei Verwendung des Moduls [Train Clustering Model](train-clustering-model.md):
+
+1. Wählen Sie das Modul **Train Clustering Model** (Trainieren des Clusteringmodells) aus, und öffnen Sie den rechten Bereich.
+
+2. Wählen Sie die Registerkarte **Ausgaben** aus. Wählen Sie das Symbol **Dataset registrieren** aus, um eine Kopie des trainierten Modells zu speichern.
+
+Das gespeicherte Modell stellt die Trainingsdaten zum Zeitpunkt der Speicherung des Modells dar. Wenn Sie die in der Pipeline verwendeten Trainingsdaten später aktualisieren, wird das gespeicherte Modell nicht aktualisiert. 
+
+### <a name="see-the-clustering-result-dataset"></a>Anzeigen des Ergebnisdatasets des Clusterings 
 
 Bei Verwendung des Moduls [Train Clustering Model](train-clustering-model.md):
 
 1. Klicken Sie mit der rechten Maustaste auf das Modul **Train Clustering Model**.
 
-2. Wählen Sie **Trained model** (Trainiertes Modell) und dann **Save as Trained Model** (Als trainiertes Modell speichern) aus.
-
-Das gespeicherte Modell stellt die Trainingsdaten zum Zeitpunkt der Speicherung des Modells dar. Wenn Sie die im Experiment verwendeten Trainingsdaten später aktualisieren, wird das gespeicherte Modell nicht aktualisiert. 
-
-#### <a name="see-the-clustering-result-dataset"></a>Anzeigen des Ergebnisdatasets des Clusterings 
-
-Bei Verwendung des Moduls [Train Clustering Model](train-clustering-model.md):
-
-1. Klicken Sie mit der rechten Maustaste auf das Modul **Train Clustering Model**.
-
-2. Wählen Sie **Results dataset** (Ergebnisdataset) und dann **Visualize** (Visualisieren) aus.
+2. Wählen Sie **Visualisieren** aus.
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>Tipps zum Generieren des besten Clusteringmodells  
 
-Es ist bekannt, dass der beim Clustering verwendete *Seeding*-Prozess das Modell erheblich beeinflussen kann. Seeding bedeutet die anfängliche Platzierung von Punkten in potenziellen Schwerpunkten.
+Es ist bekannt, dass der beim Clustering verwendete *Seeding* -Prozess das Modell erheblich beeinflussen kann. Seeding bedeutet die anfängliche Platzierung von Punkten in potenziellen Schwerpunkten.
  
 Wenn das Dataset beispielsweise viele Ausreißer enthält und ein Ausreißer für das Seeding der Cluster gewählt wird, passen keine anderen Datenpunkte gut zu diesem Cluster, sodass der Cluster ein Singleton sein könnte. Das bedeutet, dass er ggf. nur einen Punkt aufweist.  
   
@@ -141,4 +141,8 @@ Sie können dieses Problem auf verschiedene Weise vermeiden:
   
 -   Erstellen Sie mehrere Modelle, wobei Sie die Metrik variieren oder mehr Iterationen vornehmen.  
   
-Im Allgemeinen ist es bei Clusteringmodellen möglich, dass eine bestimmte Konfiguration zu einer lokal optimierten Menge von Clustern führt. Mit anderen Worten, die vom Modell zurückgegebene Menge von Clustern passt nur zu den aktuellen Datenpunkten und ist nicht für andere Daten generalisierbar. Wenn Sie eine andere Anfangskonfiguration verwendet haben, kann die k-Means-Methode eine andere, vielleicht sogar bessere Konfiguration finden. 
+Im Allgemeinen ist es bei Clusteringmodellen möglich, dass eine bestimmte Konfiguration zu einer lokal optimierten Menge von Clustern führt. Mit anderen Worten, die vom Modell zurückgegebene Menge von Clustern passt nur zu den aktuellen Datenpunkten und ist nicht für andere Daten generalisierbar. Wenn Sie eine andere Anfangskonfiguration verwendet haben, kann die k-Means-Methode eine andere (bessere) Konfiguration finden. 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an.

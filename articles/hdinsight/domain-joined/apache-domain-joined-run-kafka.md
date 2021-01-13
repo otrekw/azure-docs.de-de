@@ -1,18 +1,18 @@
 ---
-title: 'Tutorial: Apache Kafka mit dem Enterprise-Sicherheitspaket in Azure HDInsight'
+title: 'Tutorial: Apache Kafka und Enterprise-Sicherheit – Azure HDInsight'
 description: Tutorial – Erfahren Sie, wie Sie Apache Ranger-Richtlinien für Kafka in Azure HDInsight mit dem Enterprise-Sicherheitspaket konfigurieren.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 09/04/2019
-ms.openlocfilehash: 6d92ebc743bae97ecfa1591add27f470792dcafc
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 05/19/2020
+ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037167"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010128"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Tutorial: Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschau)
 
@@ -48,11 +48,11 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user** und **marketing_user**.
 
 1. Öffnen Sie die **Ranger-Administratoroberfläche**.
 
-2. Wählen Sie unter **Kafka** **\<ClusterName>_kafka** aus. Möglicherweise ist eine vorkonfigurierte Richtlinie aufgelistet.
+2. Wählen Sie unter **Kafka** die Option **\<ClusterName>_kafka** aus. Möglicherweise ist eine vorkonfigurierte Richtlinie aufgelistet.
 
 3. Wählen Sie **Neue Richtlinie hinzufügen** aus, und geben Sie die folgenden Werte ein:
 
-   |Einstellung  |Empfohlener Wert  |
+   |Einstellung  |Vorgeschlagener Wert  |
    |---------|---------|
    |Richtlinienname  |  hdi sales*-Richtlinie   |
    |Thema   |  sales* |
@@ -72,7 +72,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user** und **marketing_user**.
 
 5. Wählen Sie **Neue Richtlinie hinzufügen** aus, und geben Sie die folgenden Werte ein:
 
-   |Einstellung  |Empfohlener Wert  |
+   |Einstellung  |Vorgeschlagener Wert  |
    |---------|---------|
    |Richtlinienname  |  hdi marketing-Richtlinie   |
    |Thema   |  marketingspend |
@@ -93,7 +93,7 @@ So erstellen Sie zwei Themen, `salesevents` und `marketingspend`:
    ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   Ersetzen Sie `DOMAINADMIN` durch den Administratorbenutzer für Ihren Cluster, den Sie während der [Clustererstellung](./apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp) konfiguriert haben, und ersetzen Sie `CLUSTERNAME` durch den Namen Ihres Clusters. Geben Sie bei entsprechender Aufforderung das Kennwort für das Administratorbenutzerkonto ein. Weitere Informationen zum Verwenden von `SSH` mit HDInsight finden Sie unter [Verwenden von SSH mit HDInsight](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+   Ersetzen Sie `DOMAINADMIN` durch den Administratorbenutzer für Ihren Cluster, den Sie während der [Clustererstellung](./apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp) konfiguriert haben, und ersetzen Sie `CLUSTERNAME` durch den Namen Ihres Clusters. Geben Sie bei entsprechender Aufforderung das Kennwort für das Administratorbenutzerkonto ein. Weitere Informationen zum Verwenden von `SSH` mit HDInsight finden Sie unter [Verwenden von SSH mit HDInsight](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Um den Clusternamen in einer Variablen zu speichern und ein JSON-Analysehilfsprogramm (`jq`) zu installieren, verwenden Sie die folgenden Befehle. Geben Sie bei entsprechender Aufforderung den Namen des Kafka-Clusters ein.
 
@@ -117,8 +117,8 @@ So erstellen Sie zwei Themen, `salesevents` und `marketingspend`:
 1. Führen Sie die folgenden Befehle aus:
 
    ```bash
-   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
-   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
 ## <a name="test-the-ranger-policies"></a>Testen der Ranger-Richtlinien
@@ -131,13 +131,7 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user** für das
    ssh sales_user1@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-2. Führen Sie den folgenden Befehl aus:
-
-   ```bash
-   export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf"
-   ```
-
-3. Verwenden Sie die Broker-Namen aus dem vorherigen Abschnitt, um die folgenden Umgebungsvariable festzulegen:
+2. Verwenden Sie die Broker-Namen aus dem vorherigen Abschnitt, um die folgenden Umgebungsvariable festzulegen:
 
    ```bash
    export KAFKABROKERS=<brokerlist>:9092
@@ -145,45 +139,80 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user** für das
 
    Beispiel: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. Führen Sie Schritt 3 im Abschnitt **Erstellen und Bereitstellen des Beispiels** unter [Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) aus, um sicherzustellen, dass `kafka-producer-consumer.jar` auch für **sales_user** verfügbar ist.
+3. Führen Sie Schritt 3 im Abschnitt **Erstellen und Bereitstellen des Beispiels** unter [Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) aus, um sicherzustellen, dass `kafka-producer-consumer.jar` auch für **sales_user** verfügbar ist.
 
-5. Überprüfen Sie, ob **sales_user1** für das Thema `salesevents` produzieren kann. Führen Sie dazu den folgenden Befehl aus:
+   > [!NOTE]  
+   > Verwenden Sie in diesem Tutorial die Datei „kafka-producer-consumer.jar“ im Projekt „DomainJoined-Producer-Consumer“ (und nicht die Datei im Projekt „Producer-Consumer“, die für Szenarien ohne Domäneneinbindung vorgesehen ist).
+
+4. Überprüfen Sie, ob **sales_user1** für das Thema `salesevents` produzieren kann. Führen Sie dazu den folgenden Befehl aus:
 
    ```bash
-   java -jar kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
    ```
 
-6. Führen Sie den folgenden Befehl zum Nutzen des Themas `salesevents` aus:
+5. Führen Sie den folgenden Befehl zum Nutzen des Themas `salesevents` aus:
 
    ```bash
-   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    Stellen Sie sicher, dass Sie die Nachrichten lesen können.
 
-7. Vergewissern Sie sich, dass **sales_user1** nicht für das Thema `marketingspend` produzieren kann. Führen Sie dazu im gleichen SSH-Fenster den folgenden Befehl aus:
+6. Vergewissern Sie sich, dass **sales_user1** nicht für das Thema `marketingspend` produzieren kann. Führen Sie dazu im gleichen SSH-Fenster den folgenden Befehl aus:
 
    ```bash
-   java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
    ```
 
    Ein Autorisierungsfehler tritt auf und kann ignoriert werden.
 
-8. Beachten Sie, dass **marketing_user1** Thema `salesevents` nicht nutzen kann.
+7. Beachten Sie, dass **marketing_user1** Thema `salesevents` nicht nutzen kann.
 
-   Wiederholen Sie die Schritte 1 bis 4, aber dieses Mal als **marketing_user1**.
+   Wiederholen Sie die obigen Schritte 1-3, aber dieses Mal als **marketing_user1**.
 
    Führen Sie den folgenden Befehl zum Nutzen des Themas `salesevents` aus:
 
    ```bash
-   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    Vorherige Meldungen werden nicht angezeigt.
 
-9. Zeigen Sie die Überwachungszugriffsereignisse in der Ranger-Benutzeroberfläche an.
+8. Zeigen Sie die Überwachungszugriffsereignisse in der Ranger-Benutzeroberfläche an.
 
    ![Richtlinienüberwachung auf der Ranger-Benutzeroberfläche – Zugriffsereignisse ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   
+## <a name="produce-and-consume-topics-in-esp-kafka-by-using-the-console"></a>Produzieren und Nutzen von Themen in Kafka mit ESP über die Konsole
+
+> [!NOTE]
+> Zum Erstellen von Themen können keine Konsolenbefehle verwendet werden. Stattdessen müssen Sie den im vorherigen Abschnitt gezeigten Java-Code verwenden. Weitere Informationen finden Sie unter [Erstellen von Themen in einem Kafka-Cluster mit ESP](#create-topics-in-a-kafka-cluster-with-esp).
+
+Zum Produzieren und Nutzen von Themen in Kafka mit ESP über die Konsole gehen Sie folgendermaßen vor:
+
+1. Verwenden Sie `kinit` mit dem Benutzernamen. Geben Sie bei Aufforderung das Kennwort ein.
+
+   ```bash
+   kinit sales_user1
+   ```
+
+2. Legen Sie Umgebungsvariablen fest:
+
+   ```bash
+   export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf"
+   export KAFKABROKERS=<brokerlist>:9092
+   ```
+
+3. Produzieren Sie Meldungen für das Thema `salesevents`:
+
+   ```bash
+   /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --topic salesevents --broker-list $KAFKABROKERS --security-protocol SASL_PLAINTEXT
+   ```
+
+4. Nutzen Sie Meldungen vom Thema `salesevents`:
+
+   ```bash
+   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --topic salesevents --from-beginning --bootstrap-server $KAFKABROKERS --security-protocol SASL_PLAINTEXT
+   ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -195,7 +224,10 @@ Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den 
 1. Klicken Sie in der daraufhin angezeigten Liste mit den HDInsight-Clustern neben dem Cluster, den Sie für dieses Tutorial erstellt haben, auf die Auslassungspunkte ( **...** ). 
 1. Klicken Sie auf **Löschen**. Klicken Sie auf **Ja**.
 
+## <a name="troubleshooting"></a>Problembehandlung
+Funktioniert die Datei „kafka-producer-consumer.jar“ nicht in einem in die Domäne eingebundenen Cluster, vergewissern Sie sich, dass Sie die Datei „kafka-producer-consumer.jar“ im Projekt „DomainJoined-Producer-Consumer“ verwenden (und nicht die Datei im Projekt „Producer-Consumer“, die für Szenarien ohne Domäneneinbindung vorgesehen ist).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Bring Your Own Key für Apache Kafka](../kafka/apache-kafka-byok.md)
+> [Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln](../disk-encryption.md)

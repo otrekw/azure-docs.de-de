@@ -1,96 +1,170 @@
-### YamlMime:Landing
-title: Dokumentation zu Azure Key Vault
+### YamlMime:Hub
+title: Azure-Schlüsseltresor
 summary: Hier erfahren Sie, wie Sie mithilfe von Key Vault Schlüssel für den Zugriff auf und die Verschlüsselung von Cloudressourcen, Apps und Lösungen erstellen und verwalten. Tutorials, API-Referenzen und mehr.
+brand: azure
 metadata:
   title: Dokumentation zu Azure Key Vault
   description: Hier erfahren Sie, wie Sie mithilfe von Key Vault Schlüssel für den Zugriff auf und die Verschlüsselung von Cloudressourcen, Apps und Lösungen erstellen und verwalten. Tutorials, API-Referenzen und mehr.
   services: key-vault
   ms.service: key-vault
-  ms.topic: landing-page
+  ms.subservice: na
+  ms.topic: hub-page
+  ms.collection: na
   author: msmbaldwin
   ms.author: mbaldwin
-  manager: rkarlin
-  ms.date: 09/19/2019
-  ms.openlocfilehash: cbd1ca9ead64bfda8401876ec54487f767363d3c
-  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.date: 04/07/2020
+  ms.openlocfilehash: cf53b3165863c6f22ce4c9a74d002eafd2dcc329
+  ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/26/2019
-  ms.locfileid: "71299774"
-landingContent:
-- title: Informationen zu Azure Key Vault
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 10/28/2020
+  ms.locfileid: "92792343"
+highlightedContent:
+  items:
+  - title: Einführung in Azure Key Vault
+    itemType: overview
+    url: ./general/overview.md
+  - title: Wichtige Updates für den Dienst
+    itemType: whats-new
+    url: ./general/whats-new.md
+  - title: Authentifizierung
+    itemType: overview
+    url: ./general/authentication.md
+  - title: Grundlegende Konzepte
+    itemType: overview
+    url: ./general/basic-concepts.md
+  - title: Protokollierung
+    itemType: overview
+    url: ./general/logging.md
+  - title: Drosselung
+    itemType: overview
+    url: ./general/overview-throttling.md
+conceptualContent:
+  items:
+  - title: Zertifikate
     links:
-    - text: Was ist der Azure-Schlüsseltresor?
-      url: key-vault-overview.md
-  - linkListType: concept
+    - url: ./certificates/about-certificates.md
+      itemType: overview
+      text: Informationen zu Zertifikaten
+    - url: ./certificates/quick-create-portal.md
+      itemType: quickstart
+      text: Festlegen und Abrufen eines Zertifikats aus Azure Key Vault mit dem Azure-Portal
+    - url: ./certificates/certificate-scenarios.md
+      itemType: overview
+      text: Erste Schritte mit Key Vault-Zertifikaten
+    - url: ./certificates/create-certificate-scenarios.md
+      itemType: overview
+      text: Überwachen und Verwalten der Zertifikaterstellung
+    footerLink:
+      url: ./certificates/index.yml
+      text: Weitere Informationen
+  - title: Schlüssel
     links:
-    - text: Grundlegende Konzepte
-      url: basic-concepts.md
-    - text: Vorläufiges Löschen
-      url: key-vault-ovw-soft-delete.md
-    - text: Drosselung
-      url: key-vault-ovw-throttling.md
-- title: Erste Schritte
-  linkLists:
-  - linkListType: quickstart
+    - url: ./keys/about-keys.md
+      itemType: overview
+      text: Informationen zu Schlüsseln
+    - url: ../security/fundamentals/encryption-atrest.md
+      itemType: overview
+      text: Datenverschlüsselung
+    - url: ./keys/quick-create-portal.md
+      itemType: quickstart
+      text: Festlegen eines Schlüssels und Abrufen des Schlüssels aus Azure Key Vault mit dem Azure-Portal
+    - url: ./keys/hsm-protected-keys.md
+      itemType: overview
+      text: Importieren von durch HSM geschützten Schlüsseln (Übersicht)
+    footerLink:
+      url: ./keys/index.yml
+      text: Weitere Informationen
+  - title: Geheimnisse
     links:
-    - text: Azure-Befehlszeilenschnittstelle
-      url: quick-create-cli.md
-    - text: Azure PowerShell
-      url: quick-create-powershell.md
-    - text: Portal
-      url: quick-create-portal.md
-    - text: .NET
-      url: quick-create-net.md
-    - text: Node.js
-      url: quick-create-node.md
-- title: Lernprogramme
-  linkLists:
-  - linkListType: tutorial
+    - url: ./secrets/about-secrets.md
+      itemType: overview
+      text: Informationen zu Geheimnissen
+    - url: ./secrets/quick-create-portal.md
+      itemType: quickstart
+      text: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals
+    - url: ./secrets/tutorial-rotation.md
+      itemType: tutorial
+      text: Rotieren von Geheimnissen für Einzelbenutzerressourcen
+    footerLink:
+      url: ./secrets/index.yml
+      text: Weitere Informationen
+  - title: Verwaltetes HSM (Vorschauversion)
     links:
-    - text: Key Vault über eine Webanwendung
-      url: tutorial-net-create-vault-azure-web-app.md
-    - text: Key Vault mit einer Azure-Linux-VM
-      url: tutorial-net-linux-virtual-machine.md
-    - text: Key Vault mit einer Azure-Windows-VM
-      url: tutorial-net-windows-virtual-machine.md
-    - text: 'Key Vault mit Python: Linux'
-      url: tutorial-python-linux-virtual-machine.md
-    - text: 'Key Vault mit Python: Windows'
-      url: tutorial-python-windows-virtual-machine.md
-- title: Key Vault und Speicherschlüssel
-  linkLists:
-  - linkListType: how-to-guide
+    - url: ./managed-hsm/overview.md
+      itemType: overview
+      text: Was ist verwaltetes HSM?
+    - url: ./managed-hsm/best-practices.md
+      itemType: overview
+      text: Bewährte Methoden
+    - url: ./managed-hsm/quick-create-cli.md
+      itemType: quickstart
+      text: Bereitstellen und Aktivieren eines verwalteten HSM
+    footerLink:
+      text: Weitere Informationen
+      url: ./managed-hsm/index.yml
+  - title: Clientbibliotheken
     links:
-    - text: Verwalten von Speicherschlüsseln mit der Azure-Befehlszeilenschnittstelle
-      url: key-vault-ovw-storage-keys.md
-    - text: Verwalten von Speicherschlüsseln mit Azure PowerShell
-      url: key-vault-overview-storage-keys-powershell.md
-    - text: Abrufen von SAS-Token in Code
-      url: storage-keys-sas-tokens-code.md
-- title: Key Vault-App-Integration
-  linkLists:
-  - linkListType: overview
+    - url: ./general/client-libraries.md
+      itemType: reference
+      text: Clientbibliotheken für Azure Key Vault
+    - url: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+      itemType: reference
+      text: .NET-Clientbibliothek
+    - url: /python/api/overview/azure/key-vault-index?view=azure-python
+      itemType: reference
+      text: Python-Clientbibliothek
+    - url: https://azure.github.io/azure-sdk-for-java/keyvault.html
+      itemType: reference
+      text: Java-Clientbibliothek
+    - url: /javascript/api/overview/azure/key-vault-index?view=azure-node-latest
+      itemType: reference
+      text: Node.js-Clientbibliothek
+  - title: Key Vault mit Speicher
     links:
-    - text: Entwicklerhandbuch
-      url: key-vault-developers-guide.md
-    - text: Verwenden einer verwalteten Identität für den Zugriff auf Key Vault
-      url: managed-identity.md
-  - linkListType: tutorial
+    - url: ./secrets/overview-storage-keys.md
+      itemType: overview
+      text: 'Verwalten von Speicherschlüsseln: Befehlszeilenschnittstelle'
+    - url: ./secrets/overview-storage-keys-powershell.md
+      itemType: overview
+      text: 'Verwalten von Speicherschlüsseln: PowerShell'
+    - url: ./secrets/storage-keys-sas-tokens-code.md
+      itemType: overview
+      text: Abrufen von SAS-Token in Code
+  - title: Key Vault mit virtuellen Computern
     links:
-    - text: Verwenden von Key Vault mit einer .NET-Azure-Web-App
-      url: tutorial-net-create-vault-azure-web-app.md
-  - linkListType: reference
+    - url: ../virtual-machines/extensions/key-vault-windows.md
+      itemType: overview
+      text: 'Azure Key Vault-VM-Erweiterung: Windows'
+    - url: ../virtual-machines/extensions/key-vault-linux.md
+      itemType: overview
+      text: 'Azure Key Vault-VM-Erweiterung: Linux'
+    - url: /azure/developer/ansible/key-vault-configure-vm-security
+      itemType: overview
+      text: Key Vault mit Linux-VMs in Ansible
+    - url: ../virtual-machines/windows/disk-encryption-key-vault.md
+      itemType: overview
+      text: 'Key Vault mit Azure Disk Encryption: Windows'
+    - url: ../virtual-machines/linux/disk-encryption-key-vault.md
+      itemType: overview
+      text: 'Key Vault mit Azure Disk Encryption: Linux'
+    - url: ../virtual-machine-scale-sets/disk-encryption-key-vault.md
+      itemType: overview
+      text: Key Vault mit Virtual Machine Scale Sets
+  - title: Schlüsseltresor-Integration
     links:
-    - text: Authentifizierung, Anforderungen und Antworten
-      url: authentication-requests-and-responses.md
-    - text: Referenz für die Key Vault-REST-API
-      url: /rest/api/keyvault/
-- title: Microsoft Learn
-  linkLists:
-  - linkListType: learn
-    links:
-    - text: Verwalten von Geheimnissen in Ihren Server-Apps mit Azure Key Vault
-      url: /learn/modules/manage-secrets-with-azure-key-vault/
+    - url: /azure/devops/pipelines/library/variable-groups?tabs=yaml&view=azure-devops#link-secrets-from-an-azure-key-vault
+      itemType: overview
+      text: 'Azure Dev Ops: Verweisen auf Key Vault-Geheimnisse in Azure Pipelines'
+    - url: ../app-service/app-service-key-vault-references.md
+      itemType: overview
+      text: 'App Services: Verweisen auf Key Vault-Geheimnisse in App Services'
+    - url: ../app-service/configure-ssl-certificate.md#store-in-azure-key-vault
+      itemType: overview
+      text: 'App Services: Verwalten von App Service-Zertifikaten in Key Vault'
+    - url: ../aks/developer-best-practices-pod-security.md#use-azure-key-vault-with-secrets-store-csi-driver
+      itemType: overview
+      text: 'Azure Kubernetes Service: Verwenden von Key Vault-Geheimnissen, Zertifikaten und Schlüsseln in AKS'
+    - url: /azure/databricks/security/secrets/secret-scopes
+      itemType: overview
+      text: 'Azure Databricks: Geheimnisverwaltung mit Key Vault'

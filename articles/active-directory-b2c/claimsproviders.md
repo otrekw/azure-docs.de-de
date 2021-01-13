@@ -2,20 +2,20 @@
 title: 'Azure Active Directory B2C: ClaimsProviders | Microsoft-Dokumentation'
 description: In diesem Artikel erfahren Sie, wie Sie das ClaimsProvider-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
-ms.author: marsma
+ms.date: 01/29/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8d2570af6abb34a87ac4c69dd63408c8ec2e8005
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d1928de8c9731b54966e566d4dddf9c01073d41
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511517"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85201258"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -23,7 +23,7 @@ ms.locfileid: "66511517"
 
 Ein Anspruchsanbieter enthält eine Gruppe von [technischen Profilen](technicalprofiles.md). Jeder Anspruchsanbieter muss über mindestens ein technisches Profil verfügen, mit dem die Endpunkte und die Protokolle bestimmt werden, die für die Kommunikation mit diesem Anspruchsanbieter erforderlich sind. Ein Anspruchsanbieter kann über mehrere technische Profile verfügen. Beispielsweise können mehrere technische Profile definiert werden, weil der Anspruchsanbieter mehrere Protokolle bzw. verschiedene Endpunkte mit unterschiedlichen Funktionen unterstützt oder unterschiedliche Ansprüche mit verschiedenen Vertrauensgraden freigibt. Es kann akzeptabel sein, in einer User Journey sensible Ansprüche freizugeben, während dies für eine andere nicht der Fall ist.
 
-```XML
+```xml
 <ClaimsProviders>
   <ClaimsProvider>
     <Domain>Domain name</Domain>
@@ -51,13 +51,13 @@ Das **ClaimsProvider**-Element enthält die folgenden untergeordneten Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ---------- | ----------- |
-| Domäne | 0:1 | Eine Zeichenfolge, die den Domänennamen für den Anspruchsanbieter enthält. Wenn Ihr Anspruchsanbieter beispielsweise das technische Profil von Facebook enthält, lautet der Domänenname „Facebook.com“. Dieser Domänenname wird für alle technischen Profile verwendet, die im Anspruchsanbieter definiert sind, es sei denn, er wird vom technischen Profil außer Kraft gesetzt. Auf den Domänennamen kann auch in einem **domain_hint** verwiesen werden. Weitere Informationen finden Sie im Abschnitt **Umleiten der Anmeldung zu einem Anbieter sozialer Netzwerke** unter [Einrichten der direkten Anmeldung mit Azure Active Directory B2C](direct-signin.md). |
-| DisplayName | 0:1 | Eine Zeichenfolge, die den Namen des Anspruchsanbieters enthält, die Benutzern angezeigt werden kann. |
+| Domain | 0:1 | Eine Zeichenfolge, die den Domänennamen für den Anspruchsanbieter enthält. Wenn Ihr Anspruchsanbieter beispielsweise das technische Profil von Facebook enthält, lautet der Domänenname „Facebook.com“. Dieser Domänenname wird für alle technischen Profile verwendet, die im Anspruchsanbieter definiert sind, es sei denn, er wird vom technischen Profil außer Kraft gesetzt. Auf den Domänennamen kann auch in einem **domain_hint** verwiesen werden. Weitere Informationen finden Sie im Abschnitt **Umleiten der Anmeldung zu einem Anbieter sozialer Netzwerke** unter [Einrichten der direkten Anmeldung mit Azure Active Directory B2C](direct-signin.md). |
+| DisplayName | 1:1 | Eine Zeichenfolge, die den Namen des Anspruchsanbieters enthält. |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | Eine Gruppe von technischen Profilen, die vom Anspruchsanbieter unterstützt werden. |
 
 **ClaimsProvider** organisiert die Beziehung zwischen Ihren technischen Profilen und dem Anspruchsanbieter. Das folgende Beispiel zeigt den Azure Active Directory-Anspruchsanbieter mit den technischen Azure Active Directory-Profilen:
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Azure Active Directory</DisplayName>
   <TechnicalProfiles>
@@ -95,7 +95,7 @@ Das **ClaimsProvider**-Element enthält die folgenden untergeordneten Elemente:
 
 Das folgende Beispiel zeigt den Facebook-Anspruchsanbieter mit dem technischen Profil **Facebook-OAUTH**.
 
-```XML
+```xml
 <ClaimsProvider>
   <Domain>facebook.com</Domain>
   <DisplayName>Facebook</DisplayName>

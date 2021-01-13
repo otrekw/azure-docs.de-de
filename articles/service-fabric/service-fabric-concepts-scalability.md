@@ -1,25 +1,17 @@
 ---
-title: Skalierbarkeit von Service Fabric-Diensten | Microsoft Docs
-description: Beschreibt, wie Sie die Service Fabric-Dienste skalieren.
-services: service-fabric
-documentationcenter: .net
+title: Skalierbarkeit von Service Fabric-Diensten
+description: Hier erfahren Sie mehr über die Skalierung in Azure Service Fabric und die verschiedenen Techniken zum Skalieren von Anwendungen.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: ed324f23-242f-47b7-af1a-e55c839e7d5d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: f44a44c0923374b2f6024903213305f1defb3b94
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cb5820849fb34e232a07d610e1cedeb40c0fcfba
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035921"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89005325"
 ---
 # <a name="scaling-in-service-fabric"></a>Skalierung in Service Fabric
 Azure Service Fabric erleichtert das Erstellen skalierbarer Anwendungen durch Verwalten der Dienste, Partitionen und Replikate auf den Knoten eines Clusters. Das Ausführen vieler Workloads auf derselben Hardware ermöglicht eine maximale Ressourcennutzung, bietet jedoch auch Flexibilität bei der Auswahl der Skalierung für die Workloads. Dieses Channel 9-Video erklärt, wie Sie skalierbare Microserviceanwendungen erstellen können:
@@ -36,7 +28,7 @@ Die Skalierung in Service Fabric erfolgt auf verschiedene Weise:
 6. Skalieren mithilfe von Metriken des Clusterressourcen-Managers
 
 ## <a name="scaling-by-creating-or-removing-stateless-service-instances"></a>Skalieren durch das Erstellen oder Entfernen von zustandslosen Dienstinstanzen
-Eine der einfachsten Methoden zum Skalieren in Service Fabric erfolgt mit zustandslosen Diensten. Wenn Sie einen zustandslosen Dienst erstellen, haben Sie die Möglichkeit zum Definieren eines `InstanceCount`. `InstanceCount` legt fest, wie viele auszuführende Kopien des Codes für den Dienst erstellt werden, wenn der Dienst gestartet wird. Nehmen wir z.B. an, dass im Cluster 100 Knoten vorhanden sind. Nehmen wir außerdem an, dass ein Dienst mit dem `InstanceCount` 10 erstellt wird. Möglicherweise sind alle 10 Kopien des Codes während der Laufzeit zu stark ausgelastet (oder nicht ausreichend ausgelastet). Eine Möglichkeit zum Skalieren der Workload ist das Ändern der Anzahl der Instanzen. Beispielsweise kann ein Abschnitt des Überwachungs- oder Verwaltungscodes die vorhandene Anzahl der Instanzen auf 50 erhöhen oder auf 5 verringern, je nachdem, ob die Workload entsprechend der Auslastung horizontal herunterskaliert oder horizontal hochskaliert werden muss. 
+Eine der einfachsten Methoden zum Skalieren in Service Fabric erfolgt mit zustandslosen Diensten. Wenn Sie einen zustandslosen Dienst erstellen, haben Sie die Möglichkeit zum Definieren eines `InstanceCount`. `InstanceCount` legt fest, wie viele auszuführende Kopien des Codes für den Dienst erstellt werden, wenn der Dienst gestartet wird. Nehmen wir z.B. an, dass im Cluster 100 Knoten vorhanden sind. Nehmen wir außerdem an, dass ein Dienst mit dem `InstanceCount` 10 erstellt wird. Möglicherweise sind alle 10 Kopien des Codes während der Laufzeit zu stark ausgelastet (oder nicht ausreichend ausgelastet). Eine Möglichkeit zum Skalieren der Workload ist das Ändern der Anzahl der Instanzen. Beispielsweise kann ein Abschnitt des Überwachungs- oder Verwaltungscodes die vorhandene Anzahl der Instanzen auf 50 erhöhen oder auf 5 verringern, je nachdem, ob die Workload entsprechend der Auslastung abskaliert oder aufskaliert werden muss. 
 
 C#:
 
@@ -72,7 +64,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>Skalieren durch das Erstellen oder Entfernen von neuen benannten Diensten
 Eine benannte Dienstinstanz ist eine bestimmte Instanz eines Diensttyps (siehe [Lebenszyklus der Service Fabric-Anwendung](service-fabric-application-lifecycle.md)) in einer benannten Anwendungsinstanz im Cluster. 
 
-Je nach der sich ändernden Auslastung von Diensten können neue benannte Dienstinstanzen erstellt (oder entfernt) werden. Dies ermöglicht das Verteilen von Anforderungen über weitere Dienstinstanzen, wodurch normalerweise die Auslastung vorhandener Dienste verringert werden kann. Beim Erstellen von Diensten platziert der Clusterressourcen-Manager von Service Fabric die Dienste im Cluster verteilt. Die genauen Entscheidungen unterliegen den [Metriken](service-fabric-cluster-resource-manager-metrics.md) im Cluster und weiteren Platzierungsregeln. Dienste können auf verschiedene Weise erstellt werden. Am häufigsten werden sie jedoch durch administrative Aktionen wie den Aufruf von [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) oder durch Code, in dem [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) aufgerufen wird, erstellt. `CreateServiceAsync` kann auch aus anderen im Cluster ausgeführten Diensten aufgerufen werden.
+Je nach der sich ändernden Auslastung von Diensten können neue benannte Dienstinstanzen erstellt (oder entfernt) werden. Dies ermöglicht das Verteilen von Anforderungen über weitere Dienstinstanzen, wodurch normalerweise die Auslastung vorhandener Dienste verringert werden kann. Beim Erstellen von Diensten platziert der Clusterressourcen-Manager von Service Fabric die Dienste im Cluster verteilt. Die genauen Entscheidungen unterliegen den [Metriken](service-fabric-cluster-resource-manager-metrics.md) im Cluster und weiteren Platzierungsregeln. Dienste können auf verschiedene Weise erstellt werden. Am häufigsten werden sie jedoch durch administrative Aktionen wie den Aufruf von [`New-ServiceFabricService`](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) oder durch Code, in dem [`CreateServiceAsync`](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) aufgerufen wird, erstellt. `CreateServiceAsync` kann auch aus anderen im Cluster ausgeführten Diensten aufgerufen werden.
 
 Das dynamische Erstellen von Diensten kann in Szenarien jeder Art verwendet werden und ist ein allgemeines Muster. Betrachten Sie beispielsweise einen zustandsbehafteten Dienst, der einen bestimmten Workflow darstellt. In diesem Dienst treffen Aufrufe ein, die auszuführende Aufgaben darstellen, und der Dienst führt die Schritte für diesen Workflow aus und zeichnet den Fortschritt auf. 
 
@@ -129,7 +121,7 @@ Aufgrund von Implementierungsunterschieden zwischen Betriebssystemen kann die En
 ## <a name="putting-it-all-together"></a>Zusammenfügen des Gesamtbilds
 Sehen wir uns alle Ideen, die wir hier besprochen haben, in einem Beispiel an. Betrachten Sie den folgenden Dienst: Sie möchten einen Dienst erstellen, der als Adressbuch fungiert und Namen und Kontaktinformationen speichert. 
 
-Bereits im Voraus stellt sich Ihnen eine Reihe von Fragen zur Skalierung: Wie viele Benutzer werden ihn verwenden? Wie viele Kontakte werden von den einzelnen Benutzern gespeichert? All diese Informationen gleich bei der ersten Erstellung des Diensts herauszufinden, ist schwierig. Angenommen, Sie möchten einen einzelnen statischen Dienst mit einer bestimmten Partitionsanzahl verwenden. Wenn Sie die falsche Partitionsanzahl wählen, könnte dies später zu Skalierungsproblemen führen. Auch wenn Sie die richtige Anzahl wählen, haben Sie möglicherweise nicht alle Informationen, die Sie benötigen. Beispielsweise müssen Sie auch die Größe des Clusters im Voraus festlegen, sowohl bezüglich der Anzahl der Knoten als auch bezüglich ihrer jeweiligen Größe. Es ist in der Regel schwer vorherzusagen, wie viele Ressourcen ein Dienst während seiner Lebensdauer nutzen wird. Es kann auch schwierig sein, im Voraus zu wissen, welches Datenverkehrsmuster im Dienst tatsächlich auftritt. Eventuell erfolgt das Hinzufügen und Entfernen von Kontakten durch Benutzer nur zu Arbeitsbeginn am Morgen, oder es ist gleichmäßig über den gesamten Tag verteilt. Basierend auf diesen Informationen müssen Sie möglicherweise dynamisch horizontal hochskalieren und herunterskalieren. Vielleicht lernen Sie vorherzusagen, wann horizontal hochskaliert und herunterskaliert werden muss. In jedem Fall ist jedoch zu erwarten, dass Sie auf Änderungen beim Ressourcenverbrauch des Diensts reagieren müssen. Dies kann das Ändern der Clustergröße erfordern, um weitere Ressourcen bereitzustellen, wenn das Neuorganisieren vorhandener Ressourcen nicht ausreicht. 
+Bereits im Voraus stellt sich Ihnen eine Reihe von Fragen zur Skalierung: Wie viele Benutzer werden ihn verwenden? Wie viele Kontakte werden von den einzelnen Benutzern gespeichert? All diese Informationen gleich bei der ersten Erstellung des Diensts herauszufinden, ist schwierig. Angenommen, Sie möchten einen einzelnen statischen Dienst mit einer bestimmten Partitionsanzahl verwenden. Wenn Sie die falsche Partitionsanzahl wählen, könnte dies später zu Skalierungsproblemen führen. Auch wenn Sie die richtige Anzahl wählen, haben Sie möglicherweise nicht alle Informationen, die Sie benötigen. Beispielsweise müssen Sie auch die Größe des Clusters im Voraus festlegen, sowohl bezüglich der Anzahl der Knoten als auch bezüglich ihrer jeweiligen Größe. Es ist in der Regel schwer vorherzusagen, wie viele Ressourcen ein Dienst während seiner Lebensdauer nutzen wird. Es kann auch schwierig sein, im Voraus zu wissen, welches Datenverkehrsmuster im Dienst tatsächlich auftritt. Eventuell erfolgt das Hinzufügen und Entfernen von Kontakten durch Benutzer nur zu Arbeitsbeginn am Morgen, oder es ist gleichmäßig über den gesamten Tag verteilt. Basierend auf diesen Informationen müssen Sie möglicherweise dynamisch aufskalieren und abskalieren. Vielleicht lernen Sie vorherzusagen, wann aufskaliert und abskaliert werden muss. In jedem Fall ist jedoch zu erwarten, dass Sie auf Änderungen beim Ressourcenverbrauch des Diensts reagieren müssen. Dies kann das Ändern der Clustergröße erfordern, um weitere Ressourcen bereitzustellen, wenn das Neuorganisieren vorhandener Ressourcen nicht ausreicht. 
 
 Aber warum sollte man überhaupt versuchen, für alle Benutzer ein einzelnes Partitionsschema auszuwählen? Warum beschränken Sie sich auf einen einzelnen Dienst und einen einzelnen statischen Cluster? Die reale Situation ist in der Regel dynamischer. 
 

@@ -1,34 +1,32 @@
 ---
-title: Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL (Einzelserver)
-description: Hier erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle einen Server in Azure Database for PostgreSQL (Einzelserver) sichern und wiederherstellen.
-author: rachel-msft
-ms.author: raagyema
+title: Sicherung und Wiederherstellung – Azure-Befehlszeilenschnittstelle – Azure Database for PostgreSQL (Einzelserver)
+description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle die Sicherung und Wiederherstellung eines Servers in Azure Database for PostgreSQL (Einzelserver) konfigurieren.
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.devlang: azurecli
-ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 85fb00ad221ae982e4d3ddc9d2d5d20dd4f2793d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: how-to
+ms.date: 10/25/2019
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ef397eb67c1f60c14fb36bf455236d84b730f611
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65069095"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659572"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL (Einzelserver) mithilfe der Azure-Befehlszeilenschnittstelle
 
-## <a name="backup-happens-automatically"></a>Automatische Sicherung
 Azure Database for PostgreSQL-Server werden regelmäßig gesichert, um Wiederherstellungsfunktionen zu ermöglichen. Mithilfe dieses Features können Sie für den Server und alle dazugehörigen Datenbanken einen Zustand zu einem früheren Zeitpunkt auf einem neuen Server wiederherstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
-- [Einen Server und eine Datenbank für Azure-Datenbank für PostgreSQL](quickstart-create-server-database-azure-cli.md)
+So schließen Sie diese Anleitung ab
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+- Sie benötigen einen [Server und eine Datenbank für Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md).
 
- 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-> [!IMPORTANT]
-> Diese Anleitung setzt die Verwendung von Azure CLI-Version 2.0 oder höher voraus. Geben Sie zum Bestätigen der Version an der Eingabeaufforderung von Azure CLI `az --version` ein. Informationen zum Ausführen einer Installation oder eines Upgrades finden Sie unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+ - Für diesen Artikel ist mindestens Version 2.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="set-backup-configuration"></a>Festlegen der Sicherungskonfiguration
 
@@ -69,9 +67,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 Für den Befehl `az postgres server restore` sind folgende Parameter erforderlich:
 
-| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
+| Einstellung | Vorgeschlagener Wert | BESCHREIBUNG  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
+| resource-group |  myresourcegroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
 | name | mydemoserver-restored | Der Name des neuen Servers, der durch den Befehl „restore“ erstellt wird. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Wählen Sie einen Zeitpunkt aus, dessen Zustand wiederhergestellt werden soll. Datum und Zeit müssen innerhalb des Aufbewahrungszeitraums für Sicherungen des Quellservers liegen. Verwenden Sie das Datums- und Zeitformat nach ISO 8601. Beispielsweise können Sie Ihre eigene lokale Zeitzone wie `2018-03-13T05:59:00-08:00` verwenden. Sie können z.B. auch das UTC-Zulu-Format verwenden, `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | Der Name oder die ID des Quellservers, über den die Wiederherstellung durchgeführt wird. |
@@ -80,9 +78,9 @@ Wenn Sie den Zustand eines Servers zu einem früheren Zeitpunkt wiederherstellen
 
 Die Werte zum Standort und Tarif des wiederhergestellten Servers bleiben mit denen des ursprünglichen Servers identisch. 
 
-Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
+Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden. Der neue Server verfügt über den gleichen Serveradministrator-Anmeldenamen (und das dazugehörige Kennwort), der für den vorhandenen Server bei der Initiierung der Wiederherstellung gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
 
-Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die Firewallregeln auf, die auf dem ursprünglichen Server vorhanden waren. Firewallregeln müssen separat für diesen neuen Server eingerichtet werden.
+Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die Firewallregeln oder VNet-Dienstendpunkte auf, die auf dem ursprünglichen Server vorhanden waren. Diese Regeln müssen separat für diesen neuen Server eingerichtet werden.
 
 ## <a name="geo-restore"></a>Geowiederherstellung
 Wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben, kann aus der Sicherung dieses vorhandenen Servers ein neuer Server erstellt werden. Dieser neue Server kann in allen Regionen erstellt werden, in denen Azure Database for PostgreSQL verfügbar ist.  
@@ -109,7 +107,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 
 Für den Befehl `az postgres server georestore` sind folgende Parameter erforderlich:
 
-| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
+| Einstellung | Vorgeschlagener Wert | BESCHREIBUNG  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Der Name der Ressourcengruppe, zu der der neue Server gehören soll.|
 |name | mydemoserver-georestored | Der Name des neuen Servers. |
@@ -117,14 +115,13 @@ Für den Befehl `az postgres server georestore` sind folgende Parameter erforder
 |location | eastus | Der Speicherort des neuen Servers. |
 |sku-name| GP_Gen4_8 | Dieser Parameter legt Tarif, Computegeneration und Anzahl der virtuellen Kerne des neuen Servers fest. GP_Gen4_8 wird einem Gen 4-Server vom Typ „Allgemein“ mit 8 virtuellen Kernen zugeordnet.|
 
+Beim Erstellen von einer Geowiederherstellung erbt ein neuer Server Speichergröße und Tarif vom Quellserver. Diese Werte können während der Erstellung nicht geändert werden. Sobald der neue Server erstellt ist, kann die Speichergröße zentral hochskaliert werden.
 
->[!Important]
->Beim Erstellen von einer Geowiederherstellung erbt ein neuer Server Speichergröße und Tarif vom Quellserver. Diese Werte können während der Erstellung nicht geändert werden. Sobald der neue Server erstellt ist, kann die Speichergröße zentral hochskaliert werden.
+Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden. Der neue Server verfügt über den gleichen Serveradministrator-Anmeldenamen (und das dazugehörige Kennwort), der für den vorhandenen Server bei der Initiierung der Wiederherstellung gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
 
-Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
-
-Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die Firewallregeln auf, die auf dem ursprünglichen Server vorhanden waren. Firewallregeln müssen separat für diesen neuen Server eingerichtet werden.
+Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die Firewallregeln oder VNet-Dienstendpunkte auf, die auf dem ursprünglichen Server vorhanden waren. Diese Regeln müssen separat für diesen neuen Server eingerichtet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Informieren Sie sich über die [Sicherungen](concepts-backup.md) des Diensts.
-- Informieren Sie sich über die Optionen in Bezug auf die [Geschäftskontinuität](concepts-business-continuity.md).
+- Weitere Informationen zu den [Sicherungen](concepts-backup.md)
+- Weitere Informationen zu [Replikaten](concepts-read-replicas.md)
+- Weitere Informationen zu den Optionen für [Geschäftskontinuität](concepts-business-continuity.md)

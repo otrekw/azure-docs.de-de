@@ -1,25 +1,24 @@
 ---
 title: Diagnoseprotokollierung für Azure Analysis Services | Microsoft-Dokumentation
-description: Informationen zum Einrichten der Diagnoseprotokollierung für Azure Analysis Services.
+description: Erfahren Sie, wie Sie die Protokollierung zum Überwachen Ihres Azure Analysis Services-Servers einrichten.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b158545390dafa36e7dad285953c78243f891f28
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: d5537079341823275ba521c9d44139a0e0305286
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259429"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014935"
 ---
 # <a name="setup-diagnostic-logging"></a>Einrichten der Diagnoseprotokollierung
 
-Die Überwachung der Leistung Ihrer Server ist ein wesentlicher Bestandteil jeder Analysis Services-Lösung. Mit [Diagnoseprotokollen auf Azure-Ressourcenebene](../azure-monitor/platform/resource-logs-overview.md) können Sie Protokolle überwachen und an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, diese in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und in [Azure Monitor-Protokolle](../azure-monitor/azure-monitor-log-hub.md) exportieren.
+Die Überwachung der Leistung Ihrer Server ist ein wesentlicher Bestandteil jeder Analysis Services-Lösung. Azure Analysis Services ist in Azure Monitor integriert. Mit [Azure Monitor-Ressourcenprotokollen](../azure-monitor/platform/platform-logs-overview.md) können Sie Protokolle überwachen und an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, diese in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und in [Azure Monitor-Protokolle](../azure-monitor/overview.md) exportieren.
 
-![Diagnoseprotokollierung für Storage, Event Hubs oder Azure Monitor-Protokolle](./media/analysis-services-logging/aas-logging-overview.png)
+![Ressourcenprotokollierung für Storage, Event Hubs oder Azure Monitor-Protokolle](./media/analysis-services-logging/aas-logging-overview.png)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -27,9 +26,9 @@ Die Überwachung der Leistung Ihrer Server ist ein wesentlicher Bestandteil jede
 
 Sie können die Kategorien **Modul**, **Dienst** und **Metriken** auswählen.
 
-### <a name="engine"></a>Motor
+### <a name="engine"></a>Engine
 
-Bei Auswahl von **Modul** werden alle [xEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events) protokolliert. Einzelne Ereignisse können nicht ausgewählt werden. 
+Bei Auswahl von **Modul** werden alle [xEvents](/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events) protokolliert. Einzelne Ereignisse können nicht ausgewählt werden. 
 
 |xEvent-Kategorien |Ereignisname  |
 |---------|---------|
@@ -43,16 +42,16 @@ Bei Auswahl von **Modul** werden alle [xEvents](https://docs.microsoft.com/analy
 |Abfragen     |   Query End      |
 |Befehle     |  Command Begin       |
 |Befehle     |  Command End       |
-|Fehler und Warnungen     |   Error      |
+|Fehler und Warnungen     |   Fehler      |
 |Entdecken     |   Discover End      |
 |Benachrichtigung     |    Benachrichtigung     |
 |Sitzung     |  Session Initialize       |
-|Sperren    |  Deadlock       |
-|Verarbeitung von Abfragen     |   VertiPaq SE Query Begin      |
-|Verarbeitung von Abfragen     |   VertiPaq SE Query End      |
-|Verarbeitung von Abfragen     |   VertiPaq SE Query Cache Match      |
-|Verarbeitung von Abfragen     |   Direct Query Begin      |
-|Verarbeitung von Abfragen     |  Direct Query End       |
+|Locks    |  Deadlock       |
+|Abfrageverarbeitung     |   VertiPaq SE Query Begin      |
+|Abfrageverarbeitung     |   VertiPaq SE Query End      |
+|Abfrageverarbeitung     |   VertiPaq SE Query Cache Match      |
+|Abfrageverarbeitung     |   Direct Query Begin      |
+|Abfrageverarbeitung     |  Direct Query End       |
 
 ### <a name="service"></a>Dienst
 
@@ -73,35 +72,35 @@ Die Kategorie „Metriken“ protokolliert dieselben [Servermetriken](analysis-s
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) > „Server“ im linken Navigationsbereich auf **Diagnoseprotokolle** und dann auf **Diagnose aktivieren**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) > „Server“ im linken Navigationsbereich auf **Diagnoseeinstellungen** und dann auf **Diagnose aktivieren**.
 
-    ![Aktivieren der Diagnoseprotokollierung für Azure Cosmos DB im Azure-Portal](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
+    ![Aktivieren der Ressourcenprotokollierung für Azure Cosmos DB im Azure-Portal](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
 
 2. Geben Sie in **Diagnoseeinstellungen** die folgenden Optionen an: 
 
     * **Name**: Geben Sie einen Namen für die zu erstellenden Protokolle ein.
 
-    * **In einem Speicherkonto archivieren**. Sie benötigen ein vorhandenes Speicherkonto, mit dem eine Verbindung hergestellt werden kann, um diese Option verwenden zu können. Siehe [Erstellen Sie ein Speicherkonto](../storage/common/storage-create-storage-account.md). Befolgen Sie die Anweisungen zum Erstellen eines allgemeinen Resource Manager-Kontos, und wählen Sie dann Ihr Speicherkonto aus, indem Sie zu dieser Seite im Portal zurückwechseln. Es dauert möglicherweise einige Minuten, bis neu erstellte Speicherkonten im Dropdownmenü angezeigt werden.
+    * **In einem Speicherkonto archivieren**. Sie benötigen ein vorhandenes Speicherkonto, mit dem eine Verbindung hergestellt werden kann, um diese Option verwenden zu können. Siehe [Erstellen Sie ein Speicherkonto](../storage/common/storage-account-create.md). Befolgen Sie die Anweisungen zum Erstellen eines allgemeinen Resource Manager-Kontos, und wählen Sie dann Ihr Speicherkonto aus, indem Sie zu dieser Seite im Portal zurückwechseln. Es dauert möglicherweise einige Minuten, bis neu erstellte Speicherkonten im Dropdownmenü angezeigt werden.
     * **An einen Event Hub streamen**. Sie benötigen einen vorhandenen Event Hub-Namespace und einen Event Hub. mit dem eine Verbindung hergestellt werden kann, um diese Option verwenden zu können. Weitere Informationen finden Sie unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md). Kehren Sie anschließend auf diese Seite im Portal zurück, um den Event Hub-Namespace und den Richtliniennamen auszuwählen.
     * **An Azure Monitor senden (Log Analytics-Arbeitsbereich)** . Für diese Option können Sie entweder einen vorhandenen Arbeitsbereich verwenden oder im Portal [eine neue Arbeitsbereichsressource erstellen](../azure-monitor/learn/quick-create-workspace.md). Weitere Informationen zum Anzeigen Ihrer Protokolle finden Sie unter [Anzeigen von Protokollen im Log Analytics-Arbeitsbereich](#view-logs-in-log-analytics-workspace) in diesem Artikel.
 
-    * **Modul:** Wählen Sie diese Option aus, um xEvents zu protokollieren. Wenn die Archivierung in einem Speicherkonto erfolgt, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf des Aufbewahrungszeitraums automatisch gelöscht.
-    * **Dienst**. Wählen Sie diese Option aus, um Ereignisse auf Dienstebene zu protokollieren. Wenn Sie auf einem Speicherkonto archivieren, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf des Aufbewahrungszeitraums automatisch gelöscht.
-    * **Metriken:** Wählen Sie diese Option aus, um ausführliche Daten in [Metriken](analysis-services-monitor.md#server-metrics) zu speichern. Wenn Sie auf einem Speicherkonto archivieren, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf des Aufbewahrungszeitraums automatisch gelöscht.
+    * **Modul:** Wählen Sie diese Option aus, um xEvents zu protokollieren. Wenn die Archivierung in einem Speicherkonto erfolgt, können Sie die Beibehaltungsdauer für die Ressourcenprotokolle auswählen. Protokolle werden nach Ablauf des Aufbewahrungszeitraums automatisch gelöscht.
+    * **Dienst**. Wählen Sie diese Option aus, um Ereignisse auf Dienstebene zu protokollieren. Wenn Sie auf einem Speicherkonto archivieren, können Sie die Beibehaltungsdauer für die Ressourcenprotokolle auswählen. Protokolle werden nach Ablauf des Aufbewahrungszeitraums automatisch gelöscht.
+    * **Metriken:** Wählen Sie diese Option aus, um ausführliche Daten in [Metriken](analysis-services-monitor.md#server-metrics) zu speichern. Wenn Sie auf einem Speicherkonto archivieren, können Sie die Beibehaltungsdauer für die Ressourcenprotokolle auswählen. Protokolle werden nach Ablauf des Aufbewahrungszeitraums automatisch gelöscht.
 
 3. Klicken Sie auf **Speichern**.
 
-    Sie erhalten die Fehlermeldung: „Fehler beim Aktualisieren der Diagnose für \<Arbeitsbereichsname>. Das Abonnement \<Abonnement-ID> ist nicht für die Verwendung von microsoft.insights registriert.“ Befolgen Sie die Anweisungen zur [Problembehandlung bei der Azure-Diagnose](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage), um das Konto zu registrieren, und wiederholen Sie dann dieses Verfahren.
+    Möglicherweise wird eine solche Fehlermeldung angezeigt: „Fehler beim Aktualisieren der Diagnose für \<workspace name>. Das Abonnement „\<subscription id>“ ist nicht für die Verwendung von microsoft.insights registriert.“ Befolgen Sie die Anweisungen zur [Problembehandlung bei der Azure-Diagnose](../azure-monitor/platform/resource-logs.md), um das Konto zu registrieren, und wiederholen Sie dann dieses Verfahren.
 
-    Wenn Sie ändern möchten, wie die Diagnoseprotokolle zu einem zukünftigen Zeitpunkt gespeichert werden, können Sie zum Ändern der Einstellungen zu dieser Seite zurückkehren.
+    Wenn Sie ändern möchten, wie die Ressourcenprotokolle zu einem zukünftigen Zeitpunkt gespeichert werden, können Sie zum Ändern der Einstellungen zu dieser Seite zurückkehren.
 
 ### <a name="powershell"></a>PowerShell
 
 Hier sind die grundlegenden Befehle zum Einstieg aufgeführt. Detaillierte Hilfe zum Einrichten der Protokollierung in einem Speicherkonto mithilfe von PowerShell finden Sie im Tutorial weiter unten in diesem Artikel.
 
-Verwenden Sie die folgenden Befehle, um die Metrik- und Diagnoseprotokollierung mit PowerShell zu aktivieren:
+Verwenden Sie die folgenden Befehle, um die Metrik- und Ressourcenprotokollierung mit PowerShell zu aktivieren:
 
-- Verwenden Sie den folgenden Befehl, um das Speichern von Diagnoseprotokollen in einem Speicherkonto zu aktivieren:
+- Verwenden Sie den folgenden Befehl, um das Speichern von Ressourcenprotokollen in einem Speicherkonto zu aktivieren:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
@@ -109,7 +108,7 @@ Verwenden Sie die folgenden Befehle, um die Metrik- und Diagnoseprotokollierung 
 
    Die Speicherkonto-ID ist die Ressourcen-ID für das Speicherkonto, an das die Protokolle gesendet werden sollen.
 
-- Verwenden Sie den folgenden Befehl, um das Streamen von Diagnoseprotokollen an eine Event Hub-Instanz zu aktivieren:
+- Verwenden Sie den folgenden Befehl, um das Streamen von Ressourcenprotokollen an einen Event Hub zu aktivieren:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
@@ -121,7 +120,7 @@ Verwenden Sie die folgenden Befehle, um die Metrik- und Diagnoseprotokollierung 
    {service bus resource ID}/authorizationrules/{key name}
    ``` 
 
-- Verwenden Sie den folgenden Befehl, um das Senden von Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich zu aktivieren:
+- Verwenden Sie den folgenden Befehl, um das Senden von Ressourcenprotokollen an einen Log Analytics-Arbeitsbereich zu aktivieren:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
@@ -137,11 +136,11 @@ Sie können diese Parameter miteinander kombinieren, um mehrere Ausgabeoptionen 
 
 ### <a name="rest-api"></a>REST-API
 
-Informieren Sie sich darüber, wie Sie [Diagnoseeinstellungen mithilfe der Azure Monitor-REST-API ändern](https://docs.microsoft.com/rest/api/monitor/). 
+Informieren Sie sich darüber, wie Sie [Diagnoseeinstellungen mithilfe der Azure Monitor-REST-API ändern](/rest/api/monitor/). 
 
 ### <a name="resource-manager-template"></a>Resource Manager-Vorlage
 
-Informieren Sie sich darüber, wie Sie [Diagnoseeinstellungen beim Erstellen von Ressourcen mithilfe einer Resource Manager-Vorlage aktivieren](../azure-monitor/platform/diagnostic-settings-template.md). 
+Informieren Sie sich darüber, wie Sie [Diagnoseeinstellungen beim Erstellen von Ressourcen mithilfe einer Resource Manager-Vorlage aktivieren](../azure-monitor/samples/resource-manager-diagnostic-settings.md). 
 
 ## <a name="manage-your-logs"></a>Verwalten Ihrer Protokolle
 
@@ -327,6 +326,6 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr zur [Diagnoseprotokollierung auf Azure-Ressourcenebene](../azure-monitor/platform/resource-logs-overview.md).
+Erfahren Sie mehr über die [Azure Monitor-Ressourcenprotokollierung](../azure-monitor/platform/platform-logs-overview.md).
 
-Weitere Informationen finden Sie in der PowerShell-Hilfe unter [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting).
+Weitere Informationen finden Sie in der PowerShell-Hilfe unter [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting).

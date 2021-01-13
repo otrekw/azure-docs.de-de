@@ -1,5 +1,5 @@
 ---
-title: Senden von Pushbenachrichtigungen an bestimmte Android-Geräte mit Azure Notification Hubs und Google Firebase Cloud Messaging | Microsoft-Dokumentation
+title: Senden von Pushbenachrichtigungen an bestimmte Geräte mit Azure Notification Hubs und Google Firebase Cloud Messaging | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Notification Hubs und Google Firebase Cloud Messaging (FCM) Pushbenachrichtigungen an bestimmte Android-Geräte senden.
 services: notification-hubs
 documentationcenter: android
@@ -12,19 +12,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 04/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: 1d0825fcfbcf10aaebc320a5c7cbbf2dd8c13856
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: be83471681948cbb9fe85f0d135343ab73bd72bd
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213337"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315080"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-firebase-cloud-messaging-fcm"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Android-Geräte mit Azure Notification Hubs und Google Firebase Cloud Messaging (FCM)
+# <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Geräte mit Notification Hubs und Google Firebase Cloud Messaging
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -117,7 +117,7 @@ Der erste Schritt besteht daraus, Benutzeroberflächenelemente zur vorhandenen H
 
     Das grafische Layout von `main_activity.xml` sollte wie folgt aussehen:
 
-    ![][A1]
+    ![Screenshot eines Emulators, der zeigt, wie das grafische Layout des XML-Codes für die Hauptaktivität aussieht.][A1]
 3. Erstellen Sie in dem Paket, in dem sich auch die Klasse `MainActivity` befindet, eine Klasse vom Typ `Notifications`.
 
     ```java
@@ -340,10 +340,10 @@ In diesem Tutorial senden Sie Broadcastbenachrichtigungen an bestimmte Android-G
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253
 [Azure portal]: https://portal.azure.com
-[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
+[wns object]: /previous-versions/azure/reference/jj860484(v=azure.100)

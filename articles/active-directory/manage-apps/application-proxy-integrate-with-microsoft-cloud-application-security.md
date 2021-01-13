@@ -1,22 +1,22 @@
 ---
-title: Integrieren lokaler Apps mit Cloud App Security – Azure Active Directory | Microsoft-Dokumentation
+title: Integrieren lokaler Apps mit Cloud App Security – Azure AD
 description: Konfigurieren Sie eine lokale Anwendung in Azure Active Directory für die Verwendung mit Microsoft Cloud App Security (MCAS). Verwenden Sie die App-Steuerung für bedingten Zugriff in MCAS zum Überwachen und Steuern von Sitzungen in Echtzeit mithilfe von Richtlinien für bedingten Zugriff. Sie können diese Richtlinien auf lokale Anwendungen anwenden, die den Anwendungsproxy in Azure Active Directory (Azure AD) verwenden.
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7b9b27a3b8329f906b1adfd48d28892a7edc4d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 889168782acabaafa4200a8ebd097e431a68ede3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108446"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84764569"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Konfigurieren der Echtzeitüberwachung des Anwendungszugriffs mit Microsoft Cloud App Security und Azure Active Directory
 Konfigurieren Sie eine lokale Anwendung in Azure Active Directory (Azure AD) für die Verwendung von Microsoft Cloud App Security (MCAS) für die Echtzeitüberwachung. MCAS nutzt die App-Steuerung für bedingten Zugriff zum Überwachen und Steuern von Sitzungen in Echtzeit mithilfe von Richtlinien für bedingten Zugriff. Sie können diese Richtlinien auf lokale Anwendungen anwenden, die den Anwendungsproxy in Azure Active Directory (Azure AD) verwenden.

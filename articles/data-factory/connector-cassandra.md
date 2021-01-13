@@ -1,28 +1,29 @@
 ---
-title: Kopieren von Daten aus Cassandra mit Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Cassandra mit Azure Data Factory
 description: Erfahren Sie, wie Daten aus Cassandra mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 1531f2530af9c2fbc90d1bf25f04962fb4148a8d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4b7fd2de0762de147ad3ceae0d562a1c78b33dc2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090484"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81417474"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopieren von Daten aus Cassandra mit Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-onprem-cassandra-connector.md)
 > * [Aktuelle Version](connector-cassandra.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Cassandra-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -70,7 +71,7 @@ Folgende Eigenschaften werden für den mit Cassandra verknüpften Dienst unterst
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 >[!NOTE]
->Verbindungen mit Cassandra über SSL werden derzeit nicht unterstützt.
+>Verbindungen mit Cassandra über TLS werden derzeit nicht unterstützt.
 
 **Beispiel:**
 
@@ -140,7 +141,7 @@ Legen Sie zum Kopieren von Daten aus Cassandra den Quelltyp in der Kopieraktivit
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **CassandraSource** | Ja |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. SQL-92-Abfrage oder CQL-Abfrage. Weitere Informationen finden Sie in der [Referenz zu CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Geben Sie beim Verwenden der SQL-Abfrage **keyspace name.table name** für die Tabelle an, die Sie abfragen möchten. |Nein (wenn „tableName“ und „keyspace“ im Dataset angegeben sind) |
+| Abfrage |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. SQL-92-Abfrage oder CQL-Abfrage. Weitere Informationen finden Sie in der [Referenz zu CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Geben Sie beim Verwenden der SQL-Abfrage **keyspace name.table name** für die Tabelle an, die Sie abfragen möchten. |Nein (wenn „tableName“ und „keyspace“ im Dataset angegeben sind) |
 | consistencyLevel |Mit der Konsistenzebene (consistencyLevel) wird angegeben, wie viele Replikate auf eine Leseanforderung reagieren müssen, bevor Daten an die Clientanwendung zurückgegeben werden. Cassandra überprüft die angegebene Anzahl von Replikaten auf Daten, um die Leseanforderung zu erfüllen. Ausführliche Informationen finden Sie unter [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) (Konfigurieren der Datenkonsistenz).<br/><br/>Zulässige Werte sind: **ONE**, **TWO**, **THREE**, **QUORUM**, **ALL**, **LOCAL_QUORUM**, **EACH_QUORUM** und **LOCAL_ONE**. |Nein (Standard = `ONE`) |
 
 **Beispiel:**
@@ -182,16 +183,16 @@ Beim Kopieren von Daten aus Cassandra werden die folgenden Zuordnungen von Cassa
 | Cassandra-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
 | ASCII |String |
-| BIGINT |Int64 |
+| bigint |Int64 |
 | BLOB |Byte[] |
-| Boolean |Boolean |
+| BOOLEAN |Boolean |
 | DECIMAL |Decimal |
 | Double |Double |
-| FLOAT |Single |
+| GLEITKOMMAZAHL |Single |
 | INET |String |
 | INT |Int32 |
 | TEXT |String |
-| TIMESTAMP |Datetime |
+| timestamp |Datetime |
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |String |
@@ -218,7 +219,7 @@ Virtuelle Tabellen beziehen sich auf die Daten in der echten Tabelle, sodass der
 
 Die folgende Beispieltabelle „ExampleTable“ ist beispielsweise eine Cassandra-Datenbanktabelle, die eine Spalte mit dem Namen „pk_int“ für ganzzahlige Primärschlüssel, eine Textspalte mit dem Namen „value“ und die Spalten „list“, „map“ und „set“ („StringSet“) enthält.
 
-| pk_int | Wert | Auflisten | Map | StringSet |
+| pk_int | Wert | List | Karte | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |"sample value 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"sample value 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
@@ -252,7 +253,7 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, in denen die Daten aus
 
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
-| 1 |S1 |Eine |
+| 1 |S1 |Ein |
 | 1 |S2 |b |
 | 3 |S1 |t |
 
@@ -260,10 +261,10 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, in denen die Daten aus
 
 | pk_int | StringSet_value |
 | --- | --- |
-| 1 |Eine Datei |
-| 1 |b |
+| 1 |Ein |
+| 1 |B |
 | 1 |C |
-| 3 |Eine Datei |
+| 3 |Ein |
 | 3 |E |
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
@@ -271,4 +272,4 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, in denen die Daten aus
 Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

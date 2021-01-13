@@ -1,25 +1,27 @@
 ---
-title: Kopieren von Daten aus Dynamics AX mithilfe von Azure Data Factory (Vorschau) | Microsoft-Dokumentation
+title: Kopieren von Daten aus Dynamics AX
 description: Erfahren Sie, wie Daten aus Dynamics AX mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: jingwang
-ms.openlocfilehash: 39c03058970a412a9bc312f99c239377898e5073
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom: seo-lt-2019
+ms.date: 06/12/2020
+ms.openlocfilehash: b4dbedc0a30c80748ffc27bb7e17c86067ca0238
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092115"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638158"
 ---
-# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory-preview"></a>Kopieren von Daten aus Dynamics AX mithilfe von Azure Data Factory (Vorschau)
+# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Kopieren von Daten aus Dynamics AX mithilfe von Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Dynamics AX-Quelle zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -32,10 +34,10 @@ Dieser Dynamics AX-Connector wird für die folgenden Aktivitäten unterstützt:
 
 Sie können Daten aus Dynamics AX in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die die Kopieraktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Insbesondere unterstützt dieser Dynamics AX-Connector das Kopieren von Daten aus Dynamics AX unter Verwendung des **OData-Protokolls** mit **Dienstprinzipalauthentifizierung**.
+Insbesondere unterstützt dieser Dynamics AX-Connector das Kopieren von Daten aus Dynamics AX unter Verwendung des **OData-Protokolls** mit **Dienstprinzipalauthentifizierung** .
 
 >[!TIP]
->Sie können diesen Connector auch zum Kopieren von Daten aus **Dynamics 365 for Finance and Operations** verwenden. Einzelheiten hierzu finden Sie in den Informationen zur [OData-Unterstützung](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/odata) und [Authentifizierungsmethode](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication) für Dynamics 365.
+>Sie können diesen Connector auch zum Kopieren von Daten aus **Dynamics 365 for Finance and Operations** verwenden. Einzelheiten hierzu finden Sie in den Informationen zur [OData-Unterstützung](/dynamics365/unified-operations/dev-itpro/data-entities/odata) und [Authentifizierungsmethode](/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication) für Dynamics 365.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -64,7 +66,7 @@ Folgende Eigenschaften werden für den mit Dynamics AX verknüpften Dienst unter
 | type | Die Eigenschaft **type** muss auf **DynamicsAX** festgelegt werden. |Ja |
 | url | Der OData-Endpunkt für die Dynamics AX-Instanz (oder Dynamics 365 Finance and Operations). |Ja |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja |
-| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als **SecureString** , um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie den Mauszeiger über den rechten oberen Bereich im Azure-Portal bewegen. | Ja |
 | aadResourceId | Geben Sie die AAD-Ressource an, für die Sie eine Autorisierung anfordern. Wenn Ihre Dynamics URL z. B. `https://sampledynamics.sandbox.operations.dynamics.com/data/` lautet, ist die entsprechende AAD-Ressource normalerweise `https://sampledynamics.sandbox.operations.dynamics.com`. | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime auswählen (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
@@ -140,7 +142,8 @@ Legen Sie zum Kopieren von Daten aus Dynamics AX den Typ für **source** in der 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft **type** der Quelle für die Kopieraktivität muss auf **DynamicsAXSource** festgelegt werden. | Ja |
-| query | OData-Abfrageoptionen zum Filtern von Daten. Beispiel: `"?$select=Name,Description&$top=5"`.<br/><br/>**Hinweis**: Der Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Weitere Informationen finden Sie unter [Komponenten der OData-URL](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nein |
+| Abfrage | OData-Abfrageoptionen zum Filtern von Daten. Beispiel: `"?$select=Name,Description&$top=5"`.<br/><br/>**Hinweis** : Der Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Weitere Informationen finden Sie unter [Komponenten der OData-URL](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nein |
+| httpRequestTimeout | Das Timeout (der Wert **TimeSpan** ) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout zum Empfangen einer Antwort, nicht um das Timeout zum Lesen von Antwortdaten. Wenn Sie hier nichts angeben, lautet der Standardwert **00:30:00** (30 Minuten). | Nein |
 
 **Beispiel**
 
@@ -181,4 +184,4 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Liste der Datenspeicher, die von der Kopieraktivität als Quellen und Senken in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die von der Kopieraktivität als Quellen und Senken in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -1,39 +1,41 @@
 ---
-title: Verwenden von Wiederherstellungsplänen bei der Notfallwiederherstellung mit Azure Site Recovery
-description: Hier erfahren Sie, wie Sie Wiederherstellungspläne für die Notfallwiederherstellung mit dem Azure Site Recovery-Dienst verwenden.
-author: rayne-wiselman
-manager: carmonm
-services: site-recovery
-ms.service: site-recovery
+title: Informationen zu Wiederherstellungsplänen in Azure Site Recovery
+description: Erfahren Sie mehr über Wiederherstellungspläne in Azure Site Recovery.
 ms.topic: conceptual
-ms.date: 09/09/2019
-ms.author: raynew
-ms.openlocfilehash: 8502e08db48700aefe51a6e4f0e79d1b08f6ca79
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.date: 01/23/2020
+ms.openlocfilehash: 8d191781cacc37242dd1be31d6cb87ef196e5e7a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814426"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84343913"
 ---
 # <a name="about-recovery-plans"></a>Informationen zu Wiederherstellungsplänen
 
-Dieser Artikel beschreibt Wiederherstellungspläne in [Azure Site Recovery](site-recovery-overview.md).
+Dieser Artikel enthält eine Übersicht über die Wiederherstellungspläne in [Azure Site Recovery](site-recovery-overview.md).
 
-Ein Wiederherstellungsplan fasst Computer in Wiederherstellungsgruppen zusammen. Sie können einen Plan anpassen, indem Sie ihn eine Reihenfolge, Anweisungen und Aufgaben hinzufügen. Nach dem Definieren eines Plans können Sie ein Failover für den Plan ausführen.  Auf Computer kann in mehreren Wiederherstellungsplänen verwiesen werden, wobei nachfolgende Pläne die Bereitstellung/Inbetriebnahme des Computers überspringen, wenn er zuvor über einen anderen Wiederherstellungsplan bereitgestellt wurde.
+Ein Wiederherstellungsplan fasst Computer zu Failoverzwecken in Wiederherstellungsgruppen zusammen. Mit einem Wiederherstellungsplan können Sie einen systematischen Wiederherstellungsprozess definieren, indem Sie kleine unabhängige Einheiten erstellen, für die Sie ein Failover ausführen können. Eine Einheit stellt normalerweise eine App in Ihrer Umgebung dar.
+
+- Ein Wiederherstellungsplan definiert, wie ein Failover für Computer ausgeführt wird, und gibt die Reihenfolge an, in der sie nach dem Failover gestartet werden.
+- Wiederherstellungspläne können sowohl für das Failover als auch für das Failback von Azure verwendet werden.
+- Einem Wiederherstellungsplan können bis zu 100 geschützte Instanzen hinzugefügt werden.
+- Sie können einen Plan anpassen, indem Sie ihn eine Reihenfolge, Anweisungen und Aufgaben hinzufügen.
+- Nach dem Definieren eines Plans können Sie ein Failover für den Plan ausführen.
+- Auf Computer kann in mehreren Wiederherstellungsplänen verwiesen werden, wobei nachfolgende Pläne die Bereitstellung/Inbetriebnahme des Computers überspringen, wenn er zuvor über einen anderen Wiederherstellungsplan bereitgestellt wurde.
 
 
-## <a name="why-use-a-recovery-plan"></a>Gründe für die Verwendung eines Wiederherstellungsplans
 
-Mit einem Wiederherstellungsplan können Sie einen systematischen Wiederherstellungsprozess definieren, indem Sie kleine unabhängige Einheiten erstellen, für die Sie ein Failover ausführen können. Eine Einheit stellt normalerweise eine App in Ihrer Umgebung dar. Ein Wiederherstellungsplan definiert, wie ein Failover für Computer ausgeführt wird, und gibt die Reihenfolge an, in der sie nach dem Failover gestartet werden. Verwenden Sie Wiederherstellungspläne zu folgenden Zwecken:
+### <a name="why-use-a-recovery-plan"></a>Gründe für die Verwendung eines Wiederherstellungsplans
+
+Verwenden Sie Wiederherstellungspläne zu folgenden Zwecken:
 
 * Modellieren einer App entsprechend ihrer Abhängigkeiten
-* Automatisieren von Wiederherstellungsaufgaben zur Verringerung des RTO-Werts
+* Automatisieren von Wiederherstellungsaufgaben zur Reduzierung des RTO-Werts (Recovery Time Objective)
 * Überprüfen, dass Sie für die Migration oder Notfallwiederherstellung vorbereitet sind, indem Sie sicherstellen, dass Ihre Apps Teil eines Wiederherstellungsplans sind
-* Ausführen eines Testfailovers für Wiederherstellungspläne, um sicherzustellen, dass die Notfallwiederherstellung oder Migration wie erwartet funktioniert
+* Ausführen von Testfailovern für Wiederherstellungspläne, um sicherzustellen, dass die Notfallwiederherstellung oder Migration wie erwartet funktioniert
 
 
-## <a name="model-apps"></a>Modellieren von Apps
-
+## <a name="model-apps"></a>Modellieren von Apps 
 Sie können eine Wiederherstellungsgruppe zum Erfassen App-spezifischer Eigenschaften planen und erstellen. Als Beispiel dient hier eine typische dreischichtige Anwendung mit einem SQL Server-Back-End, Middleware und einem Web-Front-End. Normalerweise passen Sie den Wiederherstellungsplan so an, dass Computer in jeder Schicht nach dem Failover in der richtigen Reihenfolge gestartet werden.
 
 - Das SQL-Back-End sollte zuerst gestartet werden, dann die Middleware und zum Schluss das Web-Front-End.
@@ -56,7 +58,7 @@ Mit dieser Anpassung geschieht Folgendes beim Ausführen eines Failovers für de
 4. Die Startgruppen werden in Reihenfolge ausgeführt und starten die Computer in jeder Gruppe. Zuerst wird Gruppe 1 ausgeführt, dann Gruppe 2 und zum Schluss Gruppe 3. Wenn mehrere Computer in einer Gruppe enthalten sind, werden alle Computer parallel gestartet.
 
 
-## <a name="automate-tasks"></a>Automatisieren von Aufgaben
+## <a name="automate-tasks-in-recovery-plans"></a>Automatisieren von Aufgaben in Wiederherstellungsplänen
 
 Das Wiederherstellen von großen Anwendungen kann eine komplexe Aufgabe sein. Manuelle Schritte machen den Vorgang fehleranfällig, und die Person, die das Failover ausführt, ist sich möglicherweise der Komplexität der App nicht bewusst. Sie können mit einem Wiederherstellungsplan die Reihenfolge vorgeben und mithilfe von Azure Automation-Runbooks für Failover in Azure oder Skripts die in jedem Schritt erforderlichen Aktionen automatisieren. Für Aufgaben, die nicht automatisiert werden können, können Sie Pausen für manuelle Aktionen in die Wiederherstellungspläne einfügen. Sie können verschiedene Aufgabentypen konfigurieren:
 
@@ -69,7 +71,7 @@ Das Wiederherstellen von großen Anwendungen kann eine komplexe Aufgabe sein. Ma
     * Ändern der Webserverkonfiguration oder -regeln.
 
 
-## <a name="test-failover"></a>Testfailover
+### <a name="run-a-test-failover-on-recovery-plans"></a>Ausführen eines Testfailovers für Wiederherstellungspläne
 
 Sie können einen Wiederherstellungsplan verwenden, um ein Testfailover auszulösen. Verwenden Sie die folgenden bewährten Methoden:
 
@@ -81,9 +83,9 @@ Sie können einen Wiederherstellungsplan verwenden, um ein Testfailover auszulö
 
     ![Screenshot eines Beispiel-Testwiederherstellungsplans in Site Recovery](./media/recovery-plan-overview/rptest.png)
 
-## <a name="watch-the-video"></a>Video ansehen
+## <a name="watch-a-recovery-plan-video"></a>Video eines Wiederherstellungsplans
 
-Sehen Sie sich ein kurzes Beispielvideo eines mit einem Klick ausgelösten Failovers für eine zweischichtige WordPress-App an.
+Sehen Sie sich ein kurzes Beispielvideo eines mit einem Klick ausgelösten Failovers für einen Wiederherstellungsplan zu einer zweischichtigen WordPress-App an.
     
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
@@ -92,4 +94,4 @@ Sehen Sie sich ein kurzes Beispielvideo eines mit einem Klick ausgelösten Failo
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen](site-recovery-create-recovery-plans.md) Sie einen Wiederherstellungsplan.
-- Erfahren Sie mehr über das [Ausführen von Failovern](site-recovery-failover.md).  
+- [Ausführen](site-recovery-failover.md) von Failovern 

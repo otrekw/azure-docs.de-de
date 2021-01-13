@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: glenga
 ms.openlocfilehash: 437b4ab62cc8c4903af88ca2f9632e89b953c798
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669644"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010499"
 ---
 So aktivieren Sie die Streamingprotokolle für Ihre Funktions-App in Azure
 

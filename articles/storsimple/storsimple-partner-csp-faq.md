@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zu Microsoft Azure StorSimple und zum Programm für Cloudlösungsanbieter für Partner | Microsoft-Dokumentation
+title: 'Häufig gestellte Fragen für Partner: StorSimple für das Cloudlösungsanbieter-Programm'
 description: Hier finden Sie Antworten auf einige allgemeine Fragen zu StorSimple und zum Programm für Cloudlösungsanbieter (Cloud Solution Provider Program, CSP) für Partner.
 services: storsimple
 documentationcenter: NA
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 893e8de5efc523df34e2c1e139082d2b471cb63e
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 36b96581d98465b860b630fe2f9a8aa64cf0f64f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828527"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964931"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple für Cloudlösungsanbieter-Programm: Häufig gestellte Fragen
 
@@ -40,10 +40,10 @@ Die Fragen und Antworten sind in folgende Kategorien unterteilt:
 
 Weitere Informationen finden Sie in der [StorSimple-Übersicht](https://www.microsoft.com/en-us/server-cloud/products/storsimple/). 
 
-### <a name="is-storsimple-a-usage-based-or-based-on-seat-licenses-like-office-365-and-enterprise-mobility-suite-ems"></a>Ist StorSimple ein nutzungsbasierter Dienst, oder basiert es wie Office 365 und Enterprise Mobility Suite (EMS) auf Arbeitsplatzlizenzen?
+### <a name="is-storsimple-a-usage-based-or-based-on-seat-licenses-like-microsoft-365-and-enterprise-mobility-suite-ems"></a>Ist StorSimple ein nutzungsbasierter Dienst, oder basiert es wie Microsoft 365 und Enterprise Mobility Suite (EMS) auf Arbeitsplatzlizenzen?
 StorSimple ist ein nutzungsbasierter Dienst. Kunden, die StorSimple Virtual Array über den CSP-Kanal erwerben, zahlen für die Nutzung des virtuellen Arrays und für die Nutzung von Azure. Dies wird in der CSP-Rechnung separat ausgewiesen. 
 
-### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-office-365-and-the-enterprise-mobility-suite"></a>Ist das StorSimple-Geschäftsmodell vergleichbar mit dem Geschäftsmodell anderer Dienste (etwa Office 365 oder Enterprise Mobility Suite)? 
+### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-microsoft-365-and-the-enterprise-mobility-suite"></a>Ist das StorSimple-Geschäftsmodell vergleichbar mit dem Geschäftsmodell anderer Dienste (etwa Microsoft 365 oder Enterprise Mobility Suite)? 
 Ja. Bei dem Modell handelt es sich genau wie bei anderen nutzungsbasierten Diensten in Azure um ein Großhandelsrabattmodell. Der Großhandelsrabatt für StorSimple ist vergleichbar mit dem anderer Azure-Dienste. Dieses Modell ermöglicht es unseren CSP-Partnern, mehr zu verkaufen und Azure-Nutzung über StorSimple Virtual Array zu steigern.  
 
 ### <a name="which-storsimple-skus-are-available-at-launch"></a>Welche StorSimple-SKUs stehen bei der Einführung zur Verfügung?
@@ -59,11 +59,11 @@ StorSimple Virtual Array für CSP steht für alle Märkte zur Verfügung, für d
 Da gibt es mehrere Möglichkeiten:
 
 - Der Partner kann StorSimple Virtual Array verkaufen. 
-- Der Partner kann Lösungen bereitstellen, die auf StorSimple und anderen Azure-Diensten oder auf Drittanbietersoftware basieren. Weitere Informationen zu möglichen Lösungen rund um StorSimple finden Sie [hier](https://aka.ms/storsimple-build-solutions).
+- Der Partner kann Lösungen bereitstellen, die auf StorSimple und anderen Azure-Diensten oder auf Drittanbietersoftware basieren. Weitere Informationen zu möglichen Lösungen rund um StorSimple finden Sie [hier](./storsimple-disaster-recovery-using-azure-site-recovery.md).
 - Der Partner kann außerdem verwaltete Dienste bereitstellen und sich so neue Geschäftsmodelle erschließen.
 
 ### <a name="what-are-the-incentives-available-for-storsimple-csp-partners-do-i-qualify-for-any-csp-program-incentives"></a>Welche Incentives werden StorSimple-CSP-Partnern geboten? Erfülle ich die Voraussetzungen für Incentives des CSP Programms?
-Informationen zu Incentives finden Sie auf der [Website des CSP-Programms](https://partner.microsoft.com/en-US/cloud-solution-provider/program-details) unter „Incentives“.
+Informationen zu Incentives finden Sie auf der [Website des CSP-Programms](https://partner.microsoft.com/cloud-solution-provider/program-details) unter „Incentives“.
 
 
 ## <a name="deploy-and-manage-storsimple-as-a-partner"></a>Bereitstellen und Verwalten von StorSimple als Partner

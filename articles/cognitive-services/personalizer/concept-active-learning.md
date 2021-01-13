@@ -1,71 +1,56 @@
 ---
-title: Aktives Lernen – Personalisierung
-titleSuffix: Azure Cognitive Services
-description: ''
-services: cognitive-services
-author: diberry
-manager: nitinme
+title: Lernrichtlinie – Personalisierung
+description: Die Lerneinstellungen legen die *Hyperparameter* des Modelltrainings fest. Zwei Modelle, die anhand der gleichen Daten mit unterschiedlichen Einstellungen trainiert werden, sind im Ergebnis verschieden.
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.author: diberry
-ms.openlocfilehash: 8c1579be3d11ae14ca45ee861de2d4f705e5d62c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.date: 02/20/2020
+ms.openlocfilehash: 1d2038e3796df843736eb80f7e5645f4141c82f4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663712"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91253631"
 ---
-# <a name="active-learning-and-learning-policies"></a>Aktives Lernen und Lernrichtlinien 
+# <a name="learning-policy-and-settings"></a>Lernrichtlinie und -einstellungen
 
-Wenn Ihre Anwendung die Rangfolge-API aufruft, erhalten Sie einen Rang für den Inhalt. Anhand dieses Rangs kann die Geschäftslogik ermitteln, ob der Inhalt dem Benutzer angezeigt werden soll. Wenn Sie den nach Rang sortierten Inhalt anzeigen, handelt es sich um ein _aktives_ Rangfolgeereignis. Wenn Ihre Anwendung den nach Rang sortierten Inhalt nicht anzeigt, handelt es sich um ein _inaktives_ Rangfolgeereignis. 
+Die Lerneinstellungen legen die *Hyperparameter* des Modelltrainings fest. Zwei Modelle, die anhand der gleichen Daten mit unterschiedlichen Einstellungen trainiert werden, sind im Ergebnis verschieden.
 
-Informationen zu aktiven Rangfolgeereignissen werden an die Personalisierung zurückgegeben. Auf der Grundlage dieser Informationen wird das Modell im Rahmen der aktuellen Lernrichtlinie weiter trainiert.
+[Lernrichtlinie und -einstellungen](how-to-settings.md#configure-rewards-for-the-feedback-loop) werden für Ihre Personalisierungsressource im Azure-Portal festgelegt.
 
-## <a name="active-events"></a>Aktive Ereignisse
+## <a name="import-and-export-learning-policies"></a>Importieren und Exportieren von Lernrichtlinien
 
-Aktive Ereignisse müssen dem Benutzer immer angezeigt werden, und der Relevanzaufruf muss zurückgegeben werden, um die Lernschleife zu schließen. 
+Sie können Lernrichtliniendateien über das Azure-Portal importieren und exportieren. Auf diese Weise können Sie vorhandene Richtlinien speichern, testen, ersetzen und zur späteren Referenz und Überprüfung als Artefakte in Ihrer Quellcodeverwaltung archivieren.
 
-### <a name="inactive-events"></a>Inaktive Ereignisse 
+Erfahren Sie, [wie](how-to-manage-model.md#import-a-new-learning-policy) Sie eine Lernrichtlinie im Azure-Portal für Ihre Personalisierungsressource importieren und exportieren können.
 
-Inaktive Ereignisse dürfen das zugrunde liegende Modell nicht verändern, da der Benutzer keine Gelegenheit hatte, etwas aus dem nach Rang sortierten Inhalt auszuwählen.
+## <a name="understand-learning-policy-settings"></a>Grundlegendes zu Lernrichtlinieneinstellungen
 
-## <a name="dont-train-with-inactive-rank-events"></a>Nicht mit inaktiven Rangfolgeereignissen trainieren 
+Die Einstellungen in der Lernrichtlinie sollten nicht geändert werden. Ändern Sie die Einstellungen nur, wenn Sie genau wissen, wie sich die Änderungen auf die Personalisierung auswirken. Ohne dieses Wissen könnten Sie Probleme verursachen, einschließlich der Invalidierung von Personalisierungsmodellen.
 
-Es gibt Anwendungen, bei denen ggf. die Rangfolge-API aufgerufen werden muss, obwohl noch nicht bekannt ist, ob die Ergebnisse dem Benutzer angezeigt werden. 
+Die Personalisierung verwendet [vowpalwabbit](https://github.com/VowpalWabbit) zum Trainieren und Bewerten der Ereignisse. Informationen zum Bearbeiten der Lerneinstellungen mit vowpalwabbit finden Sie in der [vowpalwabbit-Dokumentation](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Command-line-arguments). Wenn Sie über die richtigen Befehlszeilenargumente verfügen, speichern Sie den Befehl im folgenden Format in einer Datei (ersetzen Sie die Eigenschaftswerte der Argumente durch den jeweils gewünschten Befehl). Zum Importieren von Lerneinstellungen laden Sie die Datei anschließend im Azure-Portal für Ihre Personalisierungsressource im Bereich **Modell- und Lerneinstellungen** hoch.
 
-Dies kann in folgenden Fällen erforderlich sein:
+Der folgende `.json`-Code ist ein Beispiel für eine Lernrichtlinie.
 
-* Ein Element der Benutzeroberfläche wird vorab gerendert, dem Benutzer aber unter Umständen gar nicht angezeigt. 
-* Ihre Anwendung führt eine vorausschauende Personalisierung durch, bei der Rangfolgeaufrufe mit weniger Echtzeitkontext verwendet werden, und die Ausgabe wird von der Anwendung unter Umständen gar nicht genutzt. 
+```json
+{
+  "name": "new learning settings",
+  "arguments": " --cb_explore_adf --epsilon 0.2 --power_t 0 -l 0.001 --cb_type mtr -q ::"
+}
+```
 
-### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>Deaktivieren von aktivem Lernen für inaktive Rangfolgeereignisse während des Rangfolgeaufrufs
-
-Wenn Sie das automatische Lernen deaktivieren möchten, führen Sie den Rangfolgeaufruf mit `learningEnabled = False` aus.
-
-Das Lernen für ein inaktives Ereignis wird implizit aktiviert, wenn Sie eine Relevanz für den Rang senden.
-
-## <a name="learning-policies"></a>Lernrichtlinien
-
-Die Lernrichtlinie bestimmt die spezifischen *Hyperparameter* des Modelltrainings. Modelle, die über die gleichen Daten verfügen, aber mit unterschiedlichen Richtlinien trainiert wurden, verhalten sich unterschiedlich.
-
-### <a name="importing-and-exporting-learning-policies"></a>Importieren und Exportieren von Lernrichtlinien
-
-Sie können Lernrichtliniendateien über das Azure-Portal importieren und exportieren. Dadurch können Sie vorhandene Richtlinien speichern, testen, ersetzen und zur späteren Referenz und Überprüfung als Artefakte in Ihrer Quellcodeverwaltung archivieren.
-
-### <a name="learning-policy-settings"></a>Lernrichtlinieneinstellungen
-
-Die Einstellungen in der **Lernrichtlinie** sollten nicht geändert werden. Ändern Sie die Einstellungen nur, wenn Sie deren Auswirkungen auf die Personalisierung verstehen. Andernfalls können Nebenwirkungen auftreten (bis hin zum Verlust der Gültigkeit von Personalisierungsmodellen).
-
-### <a name="comparing-effectiveness-of-learning-policies"></a>Vergleichen der Effektivität von Lernrichtlinien
+## <a name="compare-learning-policies"></a>Vergleichen von Lernrichtlinien
 
 Mithilfe von [Offlineauswertungen](concepts-offline-evaluation.md) können Sie das Abschneiden verschiedener Lernrichtlinien anhand von Vergangenheitsdaten in Personalisierungsprotokollen vergleichen.
 
-[Laden Sie Ihre eigenen Lernrichtlinien hoch](how-to-offline-evaluation.md), um sie mit der aktuellen Lernrichtlinie zu vergleichen.
+[Laden Sie Ihre eigenen Lernrichtlinien hoch](how-to-manage-model.md), um sie mit der aktuellen Lernrichtlinie zu vergleichen.
 
-### <a name="discovery-of-optimized-learning-policies"></a>Ermittlung optimierter Lernrichtlinien
+## <a name="optimize-learning-policies"></a>Optimieren von Lernrichtlinien
 
-Mittels einer [Offlineauswertung](how-to-offline-evaluation.md) kann die Personalisierung eine besser optimierte Lernrichtlinie erstellen. Eine besser optimierte Lernrichtlinie zeichnet sich in einer Offlineauswertung durch eine höhere Relevanz aus und liefert bessere Ergebnisse, wenn sie online bei der Personalisierung verwendet wird.
+Mithilfe einer [Offlineauswertung](how-to-offline-evaluation.md) kann die Personalisierung eine optimierte Lernrichtlinie erstellen. Eine optimierte Lernrichtlinie zeichnet sich bei einer Offlineauswertung durch eine höhere Relevanz aus und liefert bessere Ergebnisse, wenn sie online bei der Personalisierung verwendet wird.
 
-Die erstellte optimierte Lernrichtlinie kann direkt auf die Personalisierung angewendet werden, um die aktuelle Richtlinie umgehend zu ersetzen. Alternativ können Sie sie zur weiteren Auswertung speichern und später entscheiden, ob Sie sie verwerfen, speichern oder anwenden möchten.
+Nachdem Sie eine Lernrichtlinie optimiert haben, können Sie sie direkt auf die Personalisierung anwenden und damit die aktuelle Richtlinie sofort ersetzen. Sie können die optimierte Richtlinie aber auch zur weiteren Auswertung speichern und später entscheiden, ob sie verworfen, gespeichert oder angewandt werden soll.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Informationen zu [aktiven und inaktiven Ereignissen](concept-active-inactive-events.md).

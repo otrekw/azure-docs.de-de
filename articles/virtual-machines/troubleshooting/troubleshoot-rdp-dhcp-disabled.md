@@ -12,36 +12,37 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: ef44931cc3b36bcab64a2de840d9264c1b8fdedb
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 945f8896a844e7a73107df44d03abc7290f4e3fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058022"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86999136"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Eine RDP-Verbindung mit Azure Virtual Machines ist nicht möglich, da der DHCP-Clientdienst deaktiviert ist
 
 In diesem Artikel wird ein Problem beschrieben, bei dem Sie keine Remotedesktopverbindung mit virtuellen Windows-Computern in Azure (VMs) herstellen können, nachdem der DHCP-Clientdienst in der VM deaktiviert wurde.
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="symptoms"></a>Symptome
 Sie können keine RDP-Verbindung eines virtuellen Computers in Azure herstellen, weil der DHCP-Clientdienst auf dem virtuellen Computer deaktiviert ist. Im Screenshot im Azure-Portal unter [Startdiagnose](../troubleshooting/boot-diagnostics.md) ist zu erkennen, dass die VM normal gestartet und auf dem Anmeldebildschirm auf die Anmeldeinformationen gewartet wird. Sie können die Ereignisprotokolle in der VM mit der Ereignisanzeige remote anzeigen. Sie sehen, dass der DHCP-Clientdienst nicht gestartet wurde oder nicht gestartet werden kann. Es folgt ein Beispielprotokoll:
 
 **Protokollname:** System </br>
-**Quelle:** Dienststeuerungs-Manager </br>
+**Quelle**: Dienststeuerungs-Manager </br>
 **Datum:** 12/16/2015 11:19:36 AM </br>
 **Ereignis-ID:** 7022 </br>
 **Aufgabenkategorie:** Keine </br>
-**Ebene:** Error </br>
+**Ebene**: Fehler </br>
 **Schlüsselwörter:** Klassisch</br>
 **Benutzer:** – </br>
 **Computer**: myvm.cosotos.com</br>
-**Beschreibung:** Der DHCP-Clientdienst wurde nicht ordnungsgemäß gestartet.</br>
+**Beschreibung**: Der DHCP-Clientdienst wurde nicht ordnungsgemäß gestartet.</br>
 
 Bei Resource Manager-VMs können Sie die serielle Zugriffskonsole verwenden, um die Ereignisprotokolle 7022 mithilfe des folgenden Befehls abzufragen:
 
-    wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+```console
+wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+```
 
 Bei klassischen virtuellen Computern müssen Sie im OFFLINE-Modus arbeiten und die Protokolle manuell sammeln.
 
@@ -64,19 +65,26 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
 (Andernfalls wird ein Fehler aufgrund eines Firmwarekonflikts angezeigt: Die Zurücksetzung auf die werkseitigen Einstellungen kann aufgrund eines Konflikts bei den Firmwareversionen nicht fortgesetzt werden.) Wenn die serielle Konsole auf Ihrer VM nicht aktiviert ist, helfen Ihnen die Informationen unter [Zurücksetzen der Netzwerkschnittstelle](reset-network-interface.md) weiter.
 2. Überprüfen Sie, ob DHCP für die Netzwerkschnittstelle deaktiviert ist:
 
-        sc query DHCP
+    ```console
+    sc query DHCP
+    ```
+
 3. Wenn DHCP beendet wurde, versuchen Sie, den Dienst zu starten.
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
 
 4. Fragen Sie den Dienst erneut ab, um sicherzustellen, dass der Dienst erfolgreich gestartet wurde.
 
-        sc query DHCP
+    ```console
+    sc query DHCP
+    ```
 
     Versuchen Sie, eine Verbindung mit der VM herzustellen, und prüfen Sie, ob das Problem behoben wurde.
 5. Wenn der Dienst nicht gestartet wird, verwenden Sie die folgende geeignete Lösung basierend auf der Fehlermeldung, die Sie erhalten haben:
 
-    | Error  |  Lösung |
+    | Fehler  |  Lösung |
     |---|---|
     | 5 – ACCESS DENIED  | Weitere Informationen finden Sie unter [DHCP-Clientdienst wird aufgrund eines „Zugriff verweigert“-Fehlers beendet](#dhcp-client-service-is-stopped-because-of-an-access-denied-error).  |
     |1053 – ERROR_SERVICE_REQUEST_TIMEOUT   | Weitere Informationen finden Sie unter [DHCP-Clientdienst stürzt ab oder reagiert nicht](#dhcp-client-service-crashes-or-hangs).  |
@@ -88,7 +96,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
     | 1070 – ERROR_SERVICE_START_HANG  | Weitere Informationen finden Sie unter [DHCP-Clientdienst stürzt ab oder reagiert nicht](#dhcp-client-service-crashes-or-hangs).  |
     | 1077 – ERROR_SERVICE_NEVER_STARTED  | Siehe [DHCP-Clientdienst ist deaktiviert](#dhcp-client-service-is-disabled).  |
     |1079 – ERROR_DIFERENCE_SERVICE_ACCOUNT   | [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu beheben.  |
-    |1\.053 | [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu beheben.  |
+    |1053 | [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu beheben.  |
 
 
 #### <a name="dhcp-client-service-is-stopped-because-of-an-access-denied-error"></a>DHCP-Clientdienst wird aufgrund eines „Zugriff verweigert“-Fehlers beendet
@@ -158,30 +166,45 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
 
 1. Da dieses Problem auftritt, wenn das Startkonto dieses Diensts geändert wurde, stellen Sie den Standardstatus dieses Kontos wieder her:
 
-        sc config DHCP obj= 'NT Authority\Localservice'
+    ```console
+    sc config DHCP obj= 'NT Authority\Localservice'
+    ```
+
 2. Starten Sie den Dienst:
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
+
 3. Versuchen Sie, über Remotedesktop eine Verbindung mit der VM herzustellen.
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>DHCP-Clientdienst stürzt ab oder reagiert nicht
 
 1. Wenn der Dienst im Status **Wird gestartet** oder **Wird beendet** verbleibt, versuchen Sie, den Dienst zu beenden:
 
-        sc stop DHCP
+    ```console
+    sc stop DHCP
+    ```
+
 2. Isolieren Sie den Dienst auf seinem eigenen „svchost“-Container:
 
-        sc config DHCP type= own
+    ```console
+    sc config DHCP type= own
+    ```
+
 3. Starten Sie den Dienst:
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
+
 4. Wenn der Dienst noch immer nicht startet, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="repair-the-vm-offline"></a>Reparieren des virtuellen Computers im Offlinestatus
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Anfügen des Betriebssystemdatenträgers an eine VM für die Wiederherstellung
 
-1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](./troubleshoot-recovery-disks-portal-windows.md).
 2. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her. Stellen Sie sicher, dass der angefügte Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Achten Sie auf den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
 3.  Öffnen Sie eine Eingabeaufforderungsinstanz mit erhöhten Rechten (**Als Administrator ausführen**). Führen Sie dann das folgende Skript aus. Dieses Skript setzt voraus, dass der Laufwerkbuchstabe, der dem angefügten Betriebssystemdatenträger zugeordnet ist, **F** ist. Ersetzen Sie den Buchstaben durch den entsprechenden Wert auf dem virtuellen Computer.
 
@@ -199,7 +222,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
     reg unload HKLM\BROKENSYSTEM
     ```
 
-4. [Trennen Sie den Betriebssystemdatenträger, und erstellen die VM neu.](../windows/troubleshoot-recovery-disks-portal.md) Überprüfen Sie dann, ob das Problem behoben ist.
+4. [Trennen Sie den Betriebssystemdatenträger, und erstellen die VM neu.](./troubleshoot-recovery-disks-portal-windows.md) Überprüfen Sie dann, ob das Problem behoben ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

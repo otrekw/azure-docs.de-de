@@ -1,6 +1,6 @@
 ---
 title: Übersicht über die Media Services Operations-REST-API | Microsoft-Dokumentation
-description: Übersicht über die Media Services-REST-API
+description: Die „Media Services Operations-REST“-API wird zum Erstellen von Aufträgen, Medienobjekten, Livekanälen und anderen Ressourcen in einem Media Services-Konto verwendet. Dieser Artikel bietet eine Übersicht über die Azure Media Services v2-REST-API.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,19 +15,21 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 29b995d722cd304cc85580ac4f2f38a0b0d9cecd
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 84e94a431efdc84ff6896de416bd222120784899
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014846"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89264282"
 ---
-# <a name="media-services-operations-rest-api-overview"></a>Übersicht über die Media Services Operations-REST-API 
+# <a name="media-services-operations-rest-api-overview"></a>Übersicht über die Media Services Operations-REST-API
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
-Die **Media Services Operations-REST-API** wird zum Erstellen von Aufträgen, Medienobjekten, Livekanälen und anderen Ressourcen in einem Media Services-Konto verwendet. Weitere Informationen finden Sie in der [Referenz zur Media Services Operations-REST-API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+Die **Media Services Operations-REST-API** wird zum Erstellen von Aufträgen, Medienobjekten, Livekanälen und anderen Ressourcen in einem Media Services-Konto verwendet. Weitere Informationen finden Sie in der [Referenz zur Media Services Operations-REST-API](/rest/api/media/operations/azure-media-services-rest-api-reference).
 
 Media Services stellt eine REST-API zur Verfügung, die sowohl das JSON- als auch das XML-Format für „atom+pub“ akzeptiert. Die Media Services REST-API erfordert spezifische HTTP-Header, die jeder Client beim Herstellen der Verbindung mit Media Services senden muss, sowie eine Reihe optionaler Header. In den folgenden Abschnitten werden die Header und HTTP-Verben beschrieben, die Sie verwenden können, um Anforderungen zu erstellen und Antworten von Media Services zu empfangen.
 
@@ -39,21 +41,23 @@ Berücksichtigen Sie Folgendes, wenn Sie REST verwenden:
 
 * Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleichzeitig zurückgegeben werden können, da die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. Sie müssen **Skip** und **Take** (.NET) bzw. **top** (REST) wie in [diesem .NET-Beispiel](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) und diesem [REST-API-Beispiel](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities) beschrieben verwenden. 
 * Wenn Sie JSON verwenden und angeben, dass das Schlüsselwort **__metadata** in der Anforderung verwendet werden soll (z. B. für Verweise auf ein verknüpftes Objekt), MÜSSEN Sie den **Accept**-Header auf das [ausführliche JSON-Format](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) festlegen (siehe folgendes Beispiel). OData versteht die **__metadata**-Eigenschaft in der Anforderung nur, wenn Sie das ausführliche Format verwenden.  
-  
-        POST https://media.windows.net/API/Jobs HTTP/1.1
-        Content-Type: application/json;odata=verbose
-        Accept: application/json;odata=verbose
-        DataServiceVersion: 3.0
-        MaxDataServiceVersion: 3.0
-        x-ms-version: 2.17
-        Authorization: Bearer <ENCODED JWT TOKEN> 
-        Host: media.windows.net
-  
-        {
-            "Name" : "NewTestJob", 
-            "InputMediaAssets" : 
-                [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aba5356eb-30ff-4dc6-9e5a-41e4223540e7')"}}]
-        . . . 
+
+    ```console
+    POST https://media.windows.net/API/Jobs HTTP/1.1
+    Content-Type: application/json;odata=verbose
+    Accept: application/json;odata=verbose
+    DataServiceVersion: 3.0
+    MaxDataServiceVersion: 3.0
+    x-ms-version: 2.19
+    Authorization: Bearer <ENCODED JWT TOKEN> 
+    Host: media.windows.net
+
+    {
+        "Name" : "NewTestJob", 
+        "InputMediaAssets" : 
+            [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aba5356eb-30ff-4dc6-9e5a-41e4223540e7')"}}]
+    . . . 
+   ```
 
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Von Media Services unterstützte standardmäßige HTTP-Anforderungsheader
 Für jeden Media Services-Aufruf müssen Sie eine Reihe obligatorischer Header in Ihre Anforderung einschließen. Darüber hinaus stehen verschiedene optionale Header zur Auswahl. In der folgenden Tabelle sind die erforderlichen Header aufgeführt:
@@ -75,23 +79,23 @@ Im Folgenden finden Sie eine Reihe optionaler Header:
 | Header | type | Wert |
 | --- | --- | --- |
 | Date |RFC 1123-Datum |Zeitstempel der Anforderung |
-| Accept |Content-Typ |Der angeforderte Inhaltstyp für die Antwort, z. B.:<p> -application/json;odata=verbose<p> - application/atom+xml<p> Antworten können unterschiedliche Inhaltstypen aufweisen, z. B. einen Blobabruf, bei dem eine erfolgreiche Antwort den Blobdatenstrom als Nutzlast enthält. |
+| Akzeptieren |Inhaltstyp |Der angeforderte Inhaltstyp für die Antwort, z. B.:<p> -application/json;odata=verbose<p> - application/atom+xml<p> Antworten können unterschiedliche Inhaltstypen aufweisen, z. B. einen Blobabruf, bei dem eine erfolgreiche Antwort den Blobdatenstrom als Nutzlast enthält. |
 | Accept-Encoding |Gzip, deflate |GZIP- und DEFLATE-Codierung, falls zutreffend. Hinweis: Bei großen Ressourcen kann Media Services diesen Header ignorieren und unkomprimierte Daten zurückgeben. |
 | Accept-Language |„en“, „es“ usw. |Gibt die bevorzugte Sprache für die Antwort an. |
 | Accept-Charset |Charset-Typ, z. B. „UTF-8“ |Der Standardwert ist UTF-8. |
 | X-HTTP-Method |HTTP-Methode |Ermöglicht Clients oder Firewalls, die keine HTTP-Methoden wie PUT oder DELETE unterstützen, die Verwendung dieser Methoden über einen getunnelten GET-Aufruf. |
-| Content-Type |Content-Typ |Der Inhaltstyp des Anforderungstexts in PUT- oder POST-Anforderungen. |
-| client-request-id |Zeichenfolge |Ein vom Aufrufer definierter Wert, der die angegebene Anforderung identifiziert. Falls angegeben, wird dieser Wert in die Antwortnachricht eingeschlossen, um die Anforderung zuzuordnen. <p><p>**Wichtig**<p>Werte müssen auf 2.096 Bytes (2 KB) begrenzt sein. |
+| Content-Type |Inhaltstyp |Der Inhaltstyp des Anforderungstexts in PUT- oder POST-Anforderungen. |
+| client-request-id |String |Ein vom Aufrufer definierter Wert, der die angegebene Anforderung identifiziert. Falls angegeben, wird dieser Wert in die Antwortnachricht eingeschlossen, um die Anforderung zuzuordnen. <p><p>**Wichtig**<p>Werte müssen auf 2.096 Bytes (2 KB) begrenzt sein. |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Von Media Services unterstützte standardmäßige HTTP-Antwortheader
 Im Folgenden lernen Sie einen Satz von Headern kennen, die je nach der angeforderten Ressource und beabsichtigten Aktion zurückgegeben werden können.
 
 | Header | type | Wert |
 | --- | --- | --- |
-| request-id |Zeichenfolge |Ein eindeutiger, vom Dienst generierter Bezeichner für den aktuellen Vorgang. |
-| client-request-id |Zeichenfolge |Ein Bezeichner, der vom Aufrufer in der ursprünglichen Anforderung angegeben wird, sofern vorhanden. |
+| request-id |String |Ein eindeutiger, vom Dienst generierter Bezeichner für den aktuellen Vorgang. |
+| client-request-id |String |Ein Bezeichner, der vom Aufrufer in der ursprünglichen Anforderung angegeben wird, sofern vorhanden. |
 | Date |RFC 1123-Datum |Datum/Uhrzeit, zu dem die Anforderung verarbeitet wurde. |
-| Content-Type |Variabel |Der Inhaltstyp des Antworttexts. |
+| Content-Type |Varies |Der Inhaltstyp des Antworttexts. |
 | Content-Encoding |Varies |GZIP oder DEFLATE, je nachdem, welche Codierung geeignet ist. |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Von Media Services unterstützte standardmäßige HTTP-Verben
@@ -102,7 +106,7 @@ Im Folgenden finden eine vollständige Liste der HTTP-Verben, die für HTTP-Anfo
 | GET |Gibt den aktuellen Wert eines Objekts zurück. |
 | POST |Erstellt ein Objekt auf Grundlage der bereitgestellten Daten oder sendet einen Befehl. |
 | PUT |Ersetzt ein Objekt oder erstellt ein benanntes Objekt (falls zutreffend). |
-| DELETE |Löscht ein Objekt. |
+| Delete |Löscht ein Objekt. |
 | MERGE |Aktualisiert ein vorhandenes Objekt anhand von Änderungen der benannten Eigenschaft. |
 | HEAD |Gibt die Metadaten eines Objekts für eine GET-Antwort zurück. |
 
@@ -128,4 +132,3 @@ Weitere Informationen zur Verwendung der Azure AD-Authentifizierung mit der Medi
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

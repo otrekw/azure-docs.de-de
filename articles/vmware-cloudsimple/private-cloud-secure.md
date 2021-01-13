@@ -1,44 +1,44 @@
 ---
-title: 'Azure-VMware-Lösung von CloudSimple: sichere private Cloud'
-description: Informationen zum Absichern einer Azure-VMware-Lösung mithilfe einer privaten Cloud von CloudSimple
-author: sharaths-cs
-ms.author: b-shsury
+title: Azure VMware Solution by CloudSimple – Sichere private Cloud
+description: Informationen zum Absichern einer privaten CloudSimple-Cloud in Azure VMware Solution by CloudSimple
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 39f451e94f2a825e69425f71aceda5f34de7eeb5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 5e70745cd6e2f6a2a13581052f65e014bd0d0481
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642030"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899166"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Absichern Ihrer privaten Cloudumgebung
 
 Definieren Sie in Azure die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für den CloudSimple-Dienst, das CloudSimple-Portal und die private Cloud.  Benutzer, Gruppen und Rollen für den Zugriff auf vCenter in der privaten Cloud werden mithilfe von VMware SSO angegeben.  
 
-## <a name="rbac-for-cloudsimple-service"></a>RBAC für den CloudSimple-Dienst
+## <a name="azure-rbac-for-cloudsimple-service"></a>Azure RBAC für den CloudSimple-Dienst
 
 Die Erstellung des CloudSimple-Diensts erfordert die Rolle **Besitzer** oder **Mitwirkender** im Azure-Abonnement.  Standardmäßig können alle Besitzer und Mitwirkende einen CloudSimple-Dienst erstellen und auf das CloudSimple-Portal zugreifen, um private Clouds zu erstellen und zu verwalten.  Pro Region kann nur ein CloudSimple-Dienst erstellt werden.  Führen Sie die folgenden Schritte aus, um den Zugriff auf bestimmte Administratoren zu beschränken.
 
 1. Erstellen eines CloudSimple-Diensts in einer neuen **Ressourcengruppe** im Azure-Portal
-2. Geben Sie die RBAC für die Ressourcengruppe an.
+2. Geben Sie die Azure RBAC für die Ressourcengruppe an.
 3. Erwerben Sie Knoten, und verwenden Sie dieselbe Ressourcengruppe wie für den CloudSimple-Dienst.
 
 Nur die Benutzer mit den Berechtigungen **Besitzer** oder **Mitwirkender** für die Ressourcengruppe können den CloudSimple-Dienst sehen und das CloudSimple-Portal aufrufen.
 
-Weitere Informationen dazu finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?](../role-based-access-control/overview.md).
+Weitere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC)?](../role-based-access-control/overview.md).
 
 ## <a name="rbac-for-private-cloud-vcenter"></a>RBAC für private vCenter-Cloud
 
-Der Standardbenutzer `CloudOwner@cloudsimple.local` wird in der vCenter-SSO-Domäne erstellt, sobald eine private Cloud erstellt wird.  Der Benutzer „CloudOwner“ hat Berechtigungen zum Verwalten von vCenter.   vCenter SSO werden zusätzliche Identitätsquellen hinzugefügt, um verschiedenen Benutzern Zugriff zu gewähren.  In vCenter werden vordefinierte Rollen und Gruppen eingerichtet, mit deren Hilfe weitere Benutzer hinzugefügt werden können.
+Der Standardbenutzer `CloudOwner@cloudsimple.local` wird in der vCenter-SSO-Domäne erstellt, sobald eine private Cloud erstellt wird.  Der Benutzer „CloudOwner“ hat Berechtigungen zum Verwalten von vCenter. vCenter SSO werden zusätzliche Identitätsquellen hinzugefügt, um verschiedenen Benutzern Zugriff zu gewähren.  In vCenter werden vordefinierte Rollen und Gruppen eingerichtet, mit deren Hilfe weitere Benutzer hinzugefügt werden können.
 
 ### <a name="add-new-users-to-vcenter"></a>Hinzufügen neuer Benutzer zu vCenter
 
-1. [Erhöhen Sie Berechtigungen](escalate-private-cloud-privileges.md) für den Benutzer *CloudOwner@cloudsimple.local* in der privaten Cloud.
-2. Melden Sie sich bei vCenter mithilfe von *CloudOwner@cloudsimple.local* an.
+1. [Eskalieren Sie Berechtigungen](escalate-private-cloud-privileges.md) für **CloudOwner\@cloudsimple.local**-Benutzer in der privaten Cloud.
+2. Melden Sie sich mit **CloudOwner\@cloudsimple.local** bei vCenter an.
 3. [Fügen Sie vCenter SSO-Benutzer hinzu](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
 4. Fügen Sie Benutzer zu [SSO-Gruppen in vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html) hinzu.
 
@@ -51,8 +51,8 @@ Sie können zusätzliche Identitätsanbieter zur vCenter SSO-Domäne Ihrer priva
 * [Verwenden Sie Active Directory als Identitätsanbieter](set-vcenter-identity.md) für die private vCenter-Cloud.
 * [Verwenden Sie Azure AD als Identitätsanbieter](azure-ad.md) für die private vCenter-Cloud.
 
-1. [Erhöhen Sie Berechtigungen](escalate-private-cloud-privileges.md) für den Benutzer *CloudOwner@cloudsimple.local* in der privaten Cloud.
-2. Melden Sie sich bei vCenter mithilfe von *CloudOwner@cloudsimple.local* an.
+1. [Eskalieren Sie Berechtigungen](escalate-private-cloud-privileges.md) für **CloudOwner\@cloudsimple.local**-Benutzer in der privaten Cloud.
+2. Melden Sie sich mit **CloudOwner\@cloudsimple.local** bei vCenter an.
 3. Fügen Sie Benutzer aus dem Identitätsanbieter zu [SSO-Gruppen für vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html) hinzu.
 
 ## <a name="secure-network-on-your-private-cloud-environment"></a>Absichern des Netzwerks in Ihrer privaten Cloudumgebung
@@ -73,4 +73,4 @@ Firewalltabellen und-regeln steuern den Netzwerkdatenverkehr in der privaten Clo
 
 1. Erstellen Sie eine [Firewalltabelle](firewall.md#add-a-new-firewall-table).
 2. Fügen Sie der [Firewalltabelle Regeln hinzu](firewall.md#create-a-firewall-rule).
-3. [Anfügen einer Firewalltabelle an ein VLAN/Subnetz] ((firewall.md#attach-vlanssubnet)
+3. [Fügen Sie eine Firewalltabelle an ein VLAN/Subnetz an](firewall.md#attach-vlans-subnet).

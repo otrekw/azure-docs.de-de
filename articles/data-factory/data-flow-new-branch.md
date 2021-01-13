@@ -1,32 +1,30 @@
 ---
-title: 'Azure Data Factory Mapping Data Flow: Transformation für neue Verzweigung'
-description: 'Azure Data Factory Mapping Data Flow: Transformation für neue Verzweigung'
+title: Mehrere Verzweigungen im Zuordnungsdatenfluss
+description: Replizieren von Datenströmen im Zuordnungsdatenfluss mit mehreren Verzweigungen
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/12/2019
-ms.openlocfilehash: 9fac78f21f2f128ccb040e176891c33d39bf2820
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019; seo-dt-2019
+ms.date: 01/08/2020
+ms.openlocfilehash: a1dd4baecd0e1f817c93652fbc0766069ccf5583
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348937"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040128"
 ---
-# <a name="azure-data-factory-mapping-data-flow-new-branch-transformation"></a>Azure Data Factory Mapping Data Flow: Transformation für neue Verzweigung
+# <a name="creating-a-new-branch-in-mapping-data-flow"></a>Erstellen einer neuen Verzweigung im Zuordnungsdatenfluss
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-![Verzweigungsoptionen](media/data-flow/menu.png "Menü")
+Fügen Sie eine neue Verzweigung hinzu, um mehrere Vorgänge und Transformationen für denselben Datenstrom auszuführen. Das Hinzufügen einer neuen Verzweigung ist nützlich, wenn Sie dieselbe Quelle für mehrere Senken oder für Selbstverknüpfungsdaten zusammen verwenden möchten.
 
-Beim Verzweigen wird der aktuelle Datenstrom in Ihrem Datenfluss übernommen und in einen anderen Datenstrom repliziert. Verwenden Sie „Neue Verzweigung“, um mehrere Vorgänge und Transformationen für den gleichen Datenstrom auszuführen.
+Eine neue Verzweigung kann ähnlich wie andere Transformationen aus der Transformationsliste hinzugefügt werden. **Neue Verzweigung** ist als Aktion nur dann verfügbar, wenn es eine Transformation gibt, die auf die zu verzweigende Transformation folgt.
 
-Beispiel: Ihr Datenfluss verfügt über eine Quelltransformation mit einer ausgewählten Gruppe von Spalten und Datentypkonvertierungen. Sie platzieren dann eine abgeleitete Spalte unmittelbar nach dieser Quelle. Sie haben in „Abgeleitete Spalte“ ein neues Feld erstellt, das Vor- und Nachname kombiniert, sodass ein neues Feld „Vollständiger Name“ entsteht.
+![Screenshot: Option „Neuer Branch“ im Menü „Multiple inputs/outputs“ (Mehrere Eingaben/Ausgaben)](media/data-flow/new-branch2.png "Hinzufügen einer neuen Verzweigung")
 
-Sie können auf diesen neuen Datenstrom eine Reihe von Transformationen und eine Senke in einer Zeile anwenden und „Neue Verzweigung“ verwenden, um eine Kopie dieses Datenstroms zu erstellen. Darin können Sie dann dieselben Daten mit unterschiedlichen Transformationen transformieren. Durch Transformieren dieser kopierten Daten in einer separaten Verzweigung können Sie diese Daten anschließend an einen anderen Ort übertragen.
+Im nachstehenden Beispiel liest der Datenfluss die Daten einer Taxifahrt. Dazu ist die aus „Day“ (Tag )und „Vendor“ (Anbieter) aggregierte Ausgabe erforderlich. Statt zwei separate Datenflüsse zu erstellen, die aus derselben Quelle gelesen werden, kann eine neue Verzweigung hinzugefügt werden. Auf diese Weise können beide Aggregationen als Teil desselben Datenflusses ausgeführt werden. 
 
-> [!NOTE]
-> Im Menü „+ Transformation“ wird „Neue Verzweigung“ nur als Aktion angezeigt, wenn eine nachfolgende Transformation nach der aktuellen Position vorhanden ist, an der Sie versuchen, die Verzweigung vorzunehmen. D. h., dass hier am Ende nur eine Option „Neue Verzweigung“ angezeigt wird, wenn Sie nach der Auswahltransformation eine andere Transformation hinzufügen.
-
-![Verzweigung](media/data-flow/branch2.png "Verzweigung 2")
+![Screenshot: Datenfluss mit zwei Branches aus der Quelle](media/data-flow/new-branch.png "Hinzufügen einer neuen Verzweigung")

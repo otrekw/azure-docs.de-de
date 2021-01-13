@@ -3,24 +3,24 @@ title: Leistungsüberlegungen zu Azure Traffic Manager | Microsoft Docs
 description: Grundlegendes zur Leistung von Traffic Manager und Testen der Leistung auf Websites bei Verwendung von Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: 315165677bd3186bb3bdc87ed688c426776569fc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: duau
+ms.openlocfilehash: f080f5011311101ed8f9faa2ee807c030a048409
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071053"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653042"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Leistungsüberlegungen zu Traffic Manager
 
-Auf dieser Seite werden Überlegungen zur Leistung bei der Verwendung von Traffic Manager erläutert. Stellen Sie sich folgendes Szenario vor:
+Auf dieser Seite werden Überlegungen zur Leistung bei der Verwendung von Traffic Manager erläutert. Nehmen Sie das folgende Szenario als Beispiel:
 
 Sie verfügen über Instanzen Ihrer Website in den Regionen USA, Westen und Ostasien. Bei einer der Instanzen ist die Integritätsprüfung für den Traffic Manager-Test fehlgeschlagen. Anwendungsdatenverkehr wird an die fehlerfreie Region geleitet. Dieser Failover wird erwartet, aber die Leistung kann aufgrund der Latenz ein Problem darstellen, nachdem der Datenverkehr jetzt zu einer weiter entfernten Region geleitet wird.
 
@@ -50,7 +50,7 @@ Die Tools dieser Websites messen DNS-Latenzen und zeigen aufgelöste IP-Adressen
 
     Eines der einfachsten Tools ist WebSitePulse. Geben Sie die URL ein, um DNS-Auflösungszeit, erstes Byte, letztes Byte und andere Leistungsstatistiken anzeigen zu lassen. Sie haben die Wahl zwischen drei verschiedenen Teststandorten. In diesem Beispiel können Sie sehen, dass die erste DNS-Suche bei der ersten Ausführung des Tests 0,204 Sekunden dauert.
 
-    ![Impuls1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
+    ![Screenshot: Tool „WebSitePulse“ mit hervorgehobenem Ergebnis der DNS-Suche](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
     Da die Ergebnisse zwischengespeichert werden, dauert die DNS-Suche beim zweiten Test auf dem gleichen Traffic Manager-Endpunkt 0,002 Sekunden.
 

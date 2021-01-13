@@ -1,27 +1,23 @@
 ---
-title: Öffnen von Ports für einen virtuellen Linux-Computer mit der Azure CLI | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit dem Azure Resource Manager-Bereitstellungsmodell und der Azure-Befehlszeilenschnittstelle für Ihren virtuellen Linux-Computer einen Port öffnen oder einen Endpunkt erstellen.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Öffnen von Ports für eine VM über die Azure-Befehlszeilenschnittstelle
+description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle für Ihre VM einen Port öffnen bzw. einen Endpunkt erstellen.
 author: cynthn
 manager: gwallace
-editor: ''
-ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
-ms.service: virtual-machines-linux
-ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
+ms.service: virtual-machines
+ms.subservice: networking
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 1dec41f9c33bba94db2cd75b60d3490fe853482c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a96c0f7c6fb767b96be273a615149143043e8bc1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671145"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975126"
 ---
-# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Öffnen von Ports und Endpunkten für einen virtuellen Linux-Computer mithilfe der Azure-CLI
+# <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Öffnen von Ports und Endpunkten für eine VM über die Azure-Befehlszeilenschnittstelle
 
 In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuellen Computer (VM), indem Sie einen Netzwerkfilter in einem Subnetz oder einer VM-Netzwerkschnittstelle erstellen. Sie platzieren diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, in einer Netzwerksicherheitsgruppe, die an die Ressource angefügt ist, die den Datenverkehr empfängt. Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80. In diesem Artikel wird beschrieben, wie Sie mithilfe der Azure CLI einen Port für einen virtuellen Computer öffnen. 
 
@@ -34,7 +30,7 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre e
 ## <a name="quickly-open-a-port-for-a-vm"></a>Schnelles Öffnen eines Ports für einen virtuellen Computer
 Wenn Sie in einem Entwicklungs-/Test-Szenario schnell einen Port für einen virtuellen Computer öffnen müssen, können Sie den Befehl [az vm open-port](/cli/azure/vm) verwenden. Mit diesem Befehl werden eine Netzwerksicherheitsgruppe erstellt und eine Regel hinzugefügt, die auf einen virtuellen Computer oder ein Subnetz angewendet wird. Im folgenden Beispiel wird Port *80* auf dem virtuellen Computer *myVM* in der Ressourcengruppe *myResourceGroup* geöffnet.
 
-```azure-cli
+```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 80
 ```
 
@@ -92,5 +88,5 @@ Bei hoch verfügbaren Webanwendungen sollten Sie die virtuellen Computer hinter 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr zulässt. Informationen zum Erstellen von detaillierteren Umgebungen finden Sie in den folgenden Artikeln:
 
-* [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
-* [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../../virtual-network/security-overview.md)
+* [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md)
+* [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../../virtual-network/network-security-groups-overview.md)

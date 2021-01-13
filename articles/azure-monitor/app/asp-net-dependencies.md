@@ -1,31 +1,23 @@
 ---
 title: Abhängigkeitsnachverfolgung in Azure Application Insights | Microsoft Docs
 description: Überwachen Sie Abhängigkeitsaufrufe von Ihrer lokalen oder Microsoft Azure-Webanwendung mit Application Insights.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: d15c4ca8-4c1a-47ab-a03d-c322b4bb2a9e
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/25/2019
-ms.author: mbullwin
-ms.openlocfilehash: 5e07243720872ff4555d4c000dcb7b0b7236e66f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.date: 08/26/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: df13042656aa077b30bf144aab0a47d9fc0a0662
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263928"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Abhängigkeitsnachverfolgung in Azure Application Insights 
 
-Eine *Abhängigkeit* ist eine externe Komponente, die von Ihrer App aufgerufen wird. In der Regel handelt es sich um einen Dienst, der über HTTP oder eine Datenbank oder ein Dateisystem aufgerufen wird. [Application Insights](../../azure-monitor/app/app-insights-overview.md) misst Sie die Dauer von Abhängigkeitsaufrufen, gibt an, ob sie durchgeführt werden können, und stellt zusätzliche Informationen wie den Namen der Abhängigkeit etc. bereit. Sie können bestimmte Abhängigkeitsaufrufe untersuchen und sie mit Anforderungen und Ausnahmen in Zusammenhang setzen.
+Eine *Abhängigkeit* ist eine Komponente, die von Ihrer Anwendung aufgerufen wird. In der Regel handelt es sich um einen Dienst, der über HTTP oder eine Datenbank oder ein Dateisystem aufgerufen wird. [Application Insights](./app-insights-overview.md) misst Sie die Dauer von Abhängigkeitsaufrufen, gibt an, ob sie durchgeführt werden können, und stellt zusätzliche Informationen wie den Namen der Abhängigkeit etc. bereit. Sie können bestimmte Abhängigkeitsaufrufe untersuchen und sie mit Anforderungen und Ausnahmen in Zusammenhang setzen.
 
 ## <a name="automatically-tracked-dependencies"></a>Automatisch nachverfolgte Abhängigkeiten
 
-Application Insights-SDKs für .NET und .NET Core werden mit `DependencyTrackingTelemetryModule` geliefert. Hierbei handelt es sich um ein Telemetriemodul, das Abhängigkeiten automatisch erfasst. Diese Abhängigkeitserfassung ist für [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)- und [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)-Anwendungen automatisch aktiviert, wenn diese gemäß der verknüpften offiziellen Dokumentation konfiguriert werden. `DependencyTrackingTelemetryModule` ist im Lieferumfang [dieses](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet-Pakets enthalten und wird bei Verwendung eines der NuGet-Pakete `Microsoft.ApplicationInsights.Web` oder `Microsoft.ApplicationInsights.AspNetCore` automatisch geladen.
+Application Insights-SDKs für .NET und .NET Core werden mit `DependencyTrackingTelemetryModule` geliefert – ein Telemetriemodul, das Abhängigkeiten automatisch erfasst. Diese Abhängigkeitserfassung ist für [ASP.NET](./asp-net.md)- und [ASP.NET Core](./asp-net-core.md)-Anwendungen automatisch aktiviert, wenn diese gemäß der verknüpften offiziellen Dokumentation konfiguriert werden. `DependencyTrackingTelemetryModule` ist im Lieferumfang [dieses](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet-Pakets enthalten und wird bei Verwendung eines der NuGet-Pakete `Microsoft.ApplicationInsights.Web` oder `Microsoft.ApplicationInsights.AspNetCore` automatisch geladen.
 
  Folgende Abhängigkeiten werden von `DependencyTrackingTelemetryModule` derzeit automatisch verfolgt:
 
@@ -39,16 +31,18 @@ Application Insights-SDKs für .NET und .NET Core werden mit `DependencyTracking
 |[ServiceBus-Client-SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| Version 3.0.0 und höher. |
 |Azure Cosmos DB | Wird nur dann automatisch nachverfolgt, wenn HTTP/HTTPS verwendet wird. Der TCP-Modus wird von Application Insights nicht erfasst. |
 
-Wenn eine Abhängigkeit fehlt oder ein anderes SDK verwendet wird, stellen Sie sicher, dass sie in der Liste [automatisch erfasster Abhängigkeiten](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies) enthalten ist. Falls Ihre Abhängigkeit nicht automatisch erfasst wird, können Sie sie mit einem [TrackDependency-Aufruf](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency) trotzdem manuell nachverfolgen.
+Wenn eine Abhängigkeit fehlt oder ein anderes SDK verwendet wird, stellen Sie sicher, dass sie in der Liste [automatisch erfasster Abhängigkeiten](./auto-collect-dependencies.md) enthalten ist. Falls Ihre Abhängigkeit nicht automatisch erfasst wird, können Sie sie mit einem [TrackDependency-Aufruf](./api-custom-events-metrics.md#trackdependency) trotzdem manuell nachverfolgen.
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Einrichten einer automatischen Abhängigkeitsüberwachung in Konsolen-Apps
 
-Um Abhängigkeiten automatisch über .NET-/.NET Core-Konsolen-Apps nachzuverfolgen, installieren Sie das Nuget-Paket `Microsoft.ApplicationInsights.DependencyCollector`, und initialisieren Sie `DependencyTrackingTelemetryModule` wie folgt:
+Um Abhängigkeiten in .NET-Konsolen-Apps automatisch nachzuverfolgen, installieren Sie das NuGet-Paket `Microsoft.ApplicationInsights.DependencyCollector`, und initialisieren Sie `DependencyTrackingTelemetryModule` wie folgt:
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
     depModule.Initialize(TelemetryConfiguration.Active);
 ```
+
+Für .NET Core-Konsolen-Apps wird „TelemetryConfiguration.Active“ nicht mehr verwendet. Weitere Informationen finden Sie in der [Dokumentation zum Workerdienst](./worker-service.md) und in der [Dokumentation zur ASP.NET Core-Überwachung](./asp-net-core.md)
 
 ### <a name="how-automatic-dependency-monitoring-works"></a>Funktionsweise der automatischen Abhängigkeitsüberwachung
 
@@ -97,16 +91,28 @@ Für Webseiten erfasst das JavaScript SDK von Application Insights AJAX-Aufrufe 
 
 Für SQL-Aufrufe wird der Name des Servers und der Datenbank immer erfasst und als Name der erfassten `DependencyTelemetry` gespeichert. Es gibt ein zusätzliches Feld namens „data“, das den vollständigen Text der SQL-Abfrage enthalten kann.
 
-Für ASP.NET Core-Anwendungen ist kein zusätzlicher Schritt erforderlich, um die vollständige SQL-Abfrage abzurufen.
+Bei ASP.NET Core-Anwendungen ist es jetzt erforderlich, die SQL-Textsammlung mithilfe von folgender Option zu abonnieren
+```csharp
+services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module. EnableSqlCommandTextInstrumentation = true; });
+```
 
-Bei ASP.NET-Anwendungen wird die vollständige SQL-Abfrage mithilfe der Bytecodeinstrumentierung erfasst. Hierzu ist die Instrumentierungs-Engine erforderlich. Zudem sind zusätzliche plattformspezifische Schritte nötig, die unten beschrieben werden.
+Für ASP.NET-Anwendungen wird der vollständige SQL-Abfragetext mithilfe der Bytecodeinstrumentierung erfasst, für die eine Instrumentierungs-Engine verwendet werden muss, oder indem das NuGet-Paket [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) anstelle der System.Data.SqlClient-Bibliothek verwendet wird. Die plattformspezifischen Schritte zum Aktivieren der vollständigen SQL-Abfragesammlung werden im Folgenden beschrieben:
 
 | Plattform | Erforderliche Schritte zum Abrufen der vollständigen SQL-Abfrage |
 | --- | --- |
 | Azure-Web-App |In der Systemsteuerung Ihrer Web-App [öffnen Sie das Application Insights-Blatt](../../azure-monitor/app/azure-web-apps.md), und aktivieren Sie SQL-Befehle unter .NET. |
-| IIS-Server (Azure-VM, lokal usw.) | Verwenden Sie das Statusmonitor-PowerShell-Modul, um die [Instrumentierungs-Engine zu installieren](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md) und IIS neu zu starten. |
-| Azure Cloud Service | Hinzufügen der [Starttask zum Installieren des Statusmonitors](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Ihre App sollte durch die Installation der NuGet-Pakete für [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)- oder [ASP.NET Core-Anwendungen](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) zur Buildzeit in das ApplicationInsights-SDK integriert werden |
-| IIS Express | Nicht unterstützt
+| IIS-Server (Azure-VM, lokal usw.) | Verwenden Sie entweder das NuGet-Paket [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) oder das Statusmonitor-PowerShell-Modul, um die [Instrumentierungs-Engine zu installieren](../../azure-monitor/app/status-monitor-v2-api-reference.md#enable-instrumentationengine) und IIS neu zu starten. |
+| Azure Cloud Service | Hinzufügen der [Starttask zum Installieren des Statusmonitors](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Ihre App sollte durch die Installation der NuGet-Pakete für [ASP.NET](./asp-net.md)- oder [ASP.NET Core-Anwendungen](./asp-net-core.md) zur Buildzeit in das ApplicationInsights-SDK integriert werden |
+| IIS Express | Verwenden Sie das NuGet-Paket [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient).
+| Azure-Webaufträge | Verwenden Sie das NuGet-Paket [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient).
+
+Zusätzlich zu den oben genannten plattformspezifischen Schritten ist eine **explizite Aktivierung erforderlich, um die SQL-Befehlssammlung zu aktivieren**, indem Sie die Datei „applicationInsights.config“ wie folgt ändern:
+
+```xml
+<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
+<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
+</Add>
+```
 
 In den oben genannten Fällen können Sie die ordnungsgemäße Installation der Instrumentierungs-Engine überprüfen, indem Sie sicherstellen, dass die SDK-Version der erfassten `DependencyTelemetry` „rddp“ lautet. „rdddsd“ oder „rddf“ weisen darauf hin, dass Abhängigkeiten über DiagnosticSource- oder EventSource-Rückrufe gesammelt werden und die vollständige SQL-Abfrage daher nicht erfasst wird.
 
@@ -118,7 +124,7 @@ In den oben genannten Fällen können Sie die ordnungsgemäße Installation der 
 * Navigieren Sie zu langsamen oder fehlgeschlagenen Aufrufen, um ihre Abhängigkeitsaufrufe zu überprüfen.
 * [Analyse](#logs-analytics) kann verwendet werden, um Abhängigkeitsdaten abzufragen.
 
-## <a name="diagnosis"></a>Diagnostizieren langsamer Anforderungen
+## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a>Diagnostizieren langsamer Anforderungen
 
 Jedes Anforderungsereignis bezieht sich auf Abhängigkeitsaufrufe, Ausnahmen und andere Ereignisse, die nachverfolgt werden, während Ihre App die Anforderung verarbeitet. Wenn einige Anforderungen also eine schlechte Leistung zeigen, können Sie herausfinden, ob es an langsamen Antworten einer Abhängigkeit liegt.
 
@@ -193,11 +199,24 @@ Sie können Abhängigkeiten in der [Abfragesprache Kusto](/azure/kusto/query/) v
 
 * Bei fehlerhaften Abhängigkeitsaufrufen wird das Feld „success“ auf FALSE festgelegt. `DependencyTrackingTelemetryModule` gibt keine Auskunft über `ExceptionTelemetry`. Das vollständige Datenmodell für Abhängigkeiten wird [hier](data-model-dependency-telemetry.md) beschrieben.
 
+### <a name="how-do-i-calculate-ingestion-latency-for-my-dependency-telemetry"></a>*Wie berechne ich die Erfassungslatenz für meine Abhängigkeitstelemetrie?*
+
+```kusto
+dependencies
+| extend E2EIngestionLatency = ingestion_time() - timestamp 
+| extend TimeIngested = ingestion_time()
+```
+
+### <a name="how-do-i-determine-the-time-the-dependency-call-was-initiated"></a>*Wie ermittle ich die Uhrzeit, zu der der Abhängigkeitsaufruf initiiert wurde?*
+
+In der Log Analytics-Abfrageansicht stellt `timestamp` den Moment dar, in dem der TrackDependency()-Aufruf initiiert wurde. Dies erfolgt sofort nach dem Empfang der Antwort auf den Abhängigkeitsaufruf. Um die Uhrzeit des Beginns des Abhängigkeitsaufrufs zu berechnen, subtrahieren Sie den aufgezeichneten `timestamp`-Wert des Abhängigkeitsaufrufs von `duration`.
+
 ## <a name="open-source-sdk"></a>Open Source SDK
-Wie jedes Application Insights-SDK ist auch das Modul zur Abhängigkeitserfassung ein Open Source-Modul. Lesen Sie den Code, tragen Sie zum Code bei, oder melden Sie Issues im [offiziellen GitHub-Repository](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
+Wie jedes Application Insights-SDK ist auch das Modul zur Abhängigkeitserfassung ein Open Source-Modul. Lesen Sie den Code, tragen Sie zum Code bei, oder melden Sie Probleme im [offiziellen GitHub-Repository](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md)
-* [Daten zu Seiten und Benutzern](../../azure-monitor/app/javascript.md)
-* [Availability](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Ausnahmen](./asp-net-exceptions.md)
+* [Daten zu Seiten und Benutzern](./javascript.md)
+* [Verfügbarkeit](./monitor-web-app-availability.md)
+

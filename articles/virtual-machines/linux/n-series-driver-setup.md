@@ -1,34 +1,30 @@
 ---
-title: Einrichtung von GPU-Treibern für die Azure N-Serie unter Linux | Microsoft-Dokumentation
+title: Einrichtung von GPU-Treibern für die Azure N-Serie unter Linux
 description: Einrichtung von NVIDIA-GPU-Treibern für virtuelle Computer der N-Serie mit Linux in Azure
 services: virtual-machines-linux
-documentationcenter: ''
-author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d91695d0-64b9-4e6b-84bd-18401eaecdde
+author: vikancha-MSFT
 ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
-ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ef060127840838778a00fdabd2d56b2ef23d6f4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: vikancha
+ms.openlocfilehash: e3c9c101779c5404be7eb8ebfa54f98bd3112117
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082701"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900551"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Linux
 
-Um die GPU-Funktionen von virtuellen Azure-Computern der N-Serie unter Linux nutzen zu können, müssen NVIDIA-GPU-Treiber installiert werden. Mit der [NVIDIA-GPU-Treibererweiterung](../extensions/hpccompute-gpu-linux.md) werden entsprechende NVIDIA-CUDA- oder GRID-Treiber auf einem virtuellen Computer der N-Serie installiert. Installieren oder verwalten Sie die Erweiterung mithilfe des Azure-Portals oder mit Tools wie der Azure-Befehlszeilenschnittstelle oder Azure Resource Manager-Vorlagen. Informationen zu unterstützten Distributionen und Bereitstellungsschritten finden Sie in der [Dokumentation zur NVIDIA-GPU-Treibererweiterung](../extensions/hpccompute-gpu-linux.md).
+Wenn Sie die GPU-Funktionen von Azure-VMs der N-Serie nutzen möchten, die von NVIDIA-GPUs unterstützt werden, müssen Sie NVIDIA GPU-Treiber installieren. Mit der [NVIDIA-GPU-Treibererweiterung](../extensions/hpccompute-gpu-linux.md) werden entsprechende NVIDIA-CUDA- oder GRID-Treiber auf einem virtuellen Computer der N-Serie installiert. Installieren oder verwalten Sie die Erweiterung mithilfe des Azure-Portals oder mit Tools wie der Azure-Befehlszeilenschnittstelle oder Azure Resource Manager-Vorlagen. Informationen zu unterstützten Distributionen und Bereitstellungsschritten finden Sie in der [Dokumentation zur NVIDIA-GPU-Treibererweiterung](../extensions/hpccompute-gpu-linux.md).
 
-Wenn Sie GPU-Treiber manuell installieren möchten, finden Sie in diesem Artikel Informationen zu unterstützten Distributionen und Treibern sowie Schritte zur Installation und Überprüfung. Informationen zur manuellen Einrichtung von Treibern stehen auch für [Windows-VMs](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zur Verfügung.
+Wenn Sie NVIDIA-GPU-Treiber manuell installieren möchten, finden Sie in diesem Artikel Informationen zu unterstützten Distributionen und Treibern sowie Schritte zur Installation und Überprüfung. Informationen zur manuellen Einrichtung von Treibern stehen auch für [Windows-VMs](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zur Verfügung.
 
-Informationen zu Spezifikationen von virtuellen Computern der N-Serie, Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [GPU-optimierte Größen von virtuellen Linux-Computern](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Informationen zu Spezifikationen von virtuellen Computern der N-Serie, Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [GPU-optimierte Größen von virtuellen Linux-Computern](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json). 
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff *Blacklist*, der von Microsoft nicht mehr verwendet wird. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
@@ -56,7 +52,7 @@ Führen Sie dann die für Ihre Verteilung spezifischen Installationsbefehle aus.
    ```bash
    CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
-   wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
+   wget -O /tmp/${CUDA_REPO_PKG} https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
    sudo dpkg -i /tmp/${CUDA_REPO_PKG}
 
@@ -105,7 +101,9 @@ sudo reboot
   
    sudo reboot
 
-2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106). Check if LIS is required by verifying the results of lspci. If all GPU devices are listed as expected, installing LIS is not required.
+
+Skip this step if you plan to use CentOS 7.8(or higher) as LIS is no longer required for these versions.
 
    ```bash
    wget https://aka.ms/lis
@@ -128,7 +126,7 @@ sudo reboot
 
    CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
 
-   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
+   wget https://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
    sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
 
@@ -157,7 +155,7 @@ Wenn der Treiber installiert wurde, wird eine Ausgabe ähnlich der folgenden ang
 
 ## <a name="rdma-network-connectivity"></a>RDMA-Netzwerkkonnektivität
 
-RDMA-Netzwerkkonnektivität kann auf virtuellen Computern der N-Serie (z. B. NC24r) aktiviert werden, die RDMA-fähig sind und in derselben Verfügbarkeitsgruppe bzw. in einer einzelnen Platzierungsgruppe in einer VM-Skalierungsgruppe bereitgestellt werden. Das RDMA-Netzwerk unterstützt Message Passing Interface-Datenverkehr (MPI) für Anwendungen mit Intel MPI 5.x oder einer höheren Version. Nachfolgend werden weitere Anforderungen aufgeführt:
+RDMA-Netzwerkkonnektivität kann auf virtuellen Computern der N-Serie (etwa NC24r) aktiviert werden, wenn diese RDMA-fähig sind und in derselben Verfügbarkeitsgruppe oder in einer einzelnen Platzierungsgruppe in einer VM-Skalierungsgruppe bereitgestellt werden. Das RDMA-Netzwerk unterstützt Message Passing Interface-Datenverkehr (MPI) für Anwendungen mit Intel MPI 5.x oder einer höheren Version. Nachfolgend werden weitere Anforderungen aufgeführt:
 
 ### <a name="distributions"></a>Verteilungen
 
@@ -168,6 +166,23 @@ Stellen Sie RDMA-fähige VMs der N-Serie über eines der Images aus dem Azure Ma
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
 * **7.4 HPC (CentOS-basiert)** : Auf der VM sind RDMA-Treiber und Intel MPI 5.1 installiert.
+
+* **HPC (CentOS-basiert)** : CentOS-HPC 7.6 und höher (für SKUs, bei denen InfiniBand über SR-IOV unterstützt wird). Für diese Images sind die Mellanox OFED- und MPI-Bibliotheken vorinstalliert.
+
+> [!NOTE]
+> CX3-Pro-Karten werden nur über LTS-Versionen von Mellanox OFED unterstützt. Verwenden Sie die LTS Mellanox OFED-Version (4.9-0.1.7.0) auf den VMs der N-Serie mit ConnectX3-Pro-Karten. Weitere Informationen finden Sie unter [Linux-Treiber](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed).
+>
+> Außerdem verfügen einige der neuesten Azure Marketplace HPC-Images über Mellanox OFED 5.1 und höher, die ConnectX3-Pro-Karten nicht unterstützen. Überprüfen Sie die Mellanox OFED-Version im HPC-Image, bevor Sie sie auf VMs mit ConnectX3-Pro-Karten verwenden.
+>
+> Die folgenden Images sind die neuesten CentOS-HPC-Images, die ConnectX3-Pro-Karten unterstützen:
+>
+> - OpenLogic:CentOS-HPC:7.6:7.6.2020062900
+> - OpenLogic:CentOS-HPC:7_6gen2:7.6.2020062901
+> - OpenLogic:CentOS-HPC:7.7:7.7.2020062600
+> - OpenLogic:CentOS-HPC:7_7-gen2:7.7.2020062601
+> - OpenLogic:CentOS-HPC:8_1:8.1.2020062400
+> - OpenLogic:CentOS-HPC:8_1-gen2:8.1.2020062401
+>
 
 ## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>Installieren von GRID-Treibern auf virtuellen Computern der NV- oder NVv3-Serie
 
@@ -254,7 +269,7 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
    sudo yum install hyperv-daemons
    ```
 
-2. Deaktivieren Sie den Nouveau-Kerneltreiber, da er nicht mit dem NVIDIA-Treiber kompatibel ist. (Verwenden Sie den NVIDIA-Treiber nur auf virtuellen NV- oder NV2-Computern.) Erstellen Sie zu diesem Zweck eine Datei in `/etc/modprobe.d`, und nennen Sie sie `nouveau.conf`. Die Datei muss den folgenden Inhalt enthalten:
+2. Deaktivieren Sie den Nouveau-Kerneltreiber, da er nicht mit dem NVIDIA-Treiber kompatibel ist. (Verwenden Sie den NVIDIA-Treiber nur auf virtuellen NV- oder NV3-Computern.) Erstellen Sie zu diesem Zweck eine Datei in `/etc/modprobe.d`, und nennen Sie sie `nouveau.conf`. Die Datei muss den folgenden Inhalt enthalten:
 
    ```
    blacklist nouveau
@@ -262,7 +277,9 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
    blacklist lbm-nouveau
    ```
  
-3. Starten Sie den virtuellen Computer neu, und installieren Sie die aktuellsten [Linux-Integrationsdienste für Hyper-V und Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+3. Starten Sie den virtuellen Computer neu, und installieren Sie die aktuellsten [Linux-Integrationsdienste für Hyper-V und Azure](https://www.microsoft.com/download/details.aspx?id=55106). Überprüfen Sie, ob LIS erforderlich ist, indem Sie die Ergebnisse von lspci überprüfen. Wenn alle GPU-Geräte erwartungsgemäß aufgeführt sind, ist die Installation von LIS nicht erforderlich. 
+
+Überspringen Sie diesen Schritt, wenn Sie CentOS/RHEL 7.8 und höher verwenden.
  
    ```bash
    wget https://aka.ms/lis
@@ -317,7 +334,7 @@ Stellen Sie zum Abfragen des GPU-Gerätestatus eine SSH-Verbindung mit der VM he
 
 Wenn der Treiber installiert wurde, wird eine Ausgabe ähnlich der folgenden angezeigt. Beachten Sie, dass eine **GPU-Auslastung** von 0 % angezeigt wird, sofern gerade keine GPU-Workload auf dem virtuellen Computer ausgeführt wird. Die Treiberversion und die GPU-Informationen weichen möglicherweise von den angezeigten Informationen ab.
 
-![NVIDIA-Gerätestatus](./media/n-series-driver-setup/smi-nv.png)
+![Screenshot: Ausgabe, wenn der GPU-Gerätestatus abgefragt wird](./media/n-series-driver-setup/smi-nv.png)
  
 
 ### <a name="x11-server"></a>X11-Server
@@ -362,6 +379,8 @@ Erstellen Sie dann einen Eintrag für Ihr Updateskript in `/etc/rc.d/rc3.d`, dam
 ## <a name="troubleshooting"></a>Problembehandlung
 
 * Sie können den Persistenzmodus mit `nvidia-smi` festlegen, damit die Ausgabe des Befehls schneller erfolgt, wenn Sie Karten abfragen müssen. Führen Sie zum Festlegen des Persistenzmodus `nvidia-smi -pm 1` aus. Beachten Sie, dass die Moduseinstellung verloren geht, wenn der virtuelle Computer neu gestartet wird. Sie haben aber die Möglichkeit, per Skript festzulegen, dass der Modus immer beim Start festgelegt werden soll.
+* Wenn Sie die NVIDIA CUDA-Treiber auf die neueste Version aktualisiert haben und feststellen, dass RDMA-Verbindungen nicht mehr funktionieren, [installieren Sie die RDMA-Treiber erneut](#rdma-network-connectivity), um diese Konnektivität wiederherzustellen. 
+* Wenn eine bestimmte CentOS/RHEL-Betriebssystemversion (oder ein Kernel) für LIS nicht unterstützt wird, wird der Fehler „Nicht unterstützte Kernel Version“ ausgelöst. Melden Sie diesen Fehler zusammen mit der Betriebssystem- und Kernelversion.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

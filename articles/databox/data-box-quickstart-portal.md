@@ -1,6 +1,6 @@
 ---
 title: Schnellstart für Microsoft Azure Data Box | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure Data Box über das Azure-Portal schnell bereitstellen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure Data Box für einen Importauftrag über das Azure-Portal bereitstellen. Konfigurieren Sie Azure Data Box, und kopieren Sie Daten für den Upload in Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,28 +9,18 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 26578e277a9f6747063ee377e72845b599a0301b
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 81dee0c63db711b39ff8fd2123623a16b2b9cb91
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772744"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122788"
 ---
-::: zone target="docs"
-
-# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Schnellstart: Bereitstellen von Azure Data Box über das Azure-Portal
-
-::: zone-end
-
-::: zone target="chromeless"
-
-# <a name="get-started-with-azure-data-box"></a>Erste Schritte mit Azure Data Box 
-
-::: zone-end
+# <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Erste Schritte mit Azure Data Box zum Importieren von Daten in Azure
 
 ::: zone target="docs"
 
-In dieser Schnellstartanleitung wird beschrieben, wie Sie das Azure Data Box-Gerät über das Azure-Portal bereitstellen. Die Schritte umfassen das Verkabeln, Konfigurieren und Kopieren von Daten in Data Box, damit sie in Azure hochgeladen werden können. Der Schnellstart erfolgt im Azure-Portal und auf der lokalen Webbenutzeroberfläche des Geräts.
+In dieser Schnellstartanleitung wird beschrieben, wie Sie das Azure Data Box-Gerät für einen Importauftrag über das Azure-Portal bereitstellen. Die Schritte umfassen das Verkabeln, Konfigurieren und Kopieren von Daten in Data Box, damit sie in Azure hochgeladen werden können. Die Schritte der Schnellstartanleitung werden im Azure-Portal und auf der lokalen Webbenutzeroberfläche des Geräts ausgeführt.
 
 Eine ausführliche Anleitung zur Schritt-für-Schritt-Bereitstellung und zur Nachverfolgung finden Sie unter [Tutorial: Bestellen von Azure Data Box](data-box-deploy-ordered.md).
 
@@ -38,7 +28,7 @@ Eine ausführliche Anleitung zur Schritt-für-Schritt-Bereitstellung und zur Nac
 
 ::: zone target="chromeless"
 
-In diesem Leitfaden wird beschrieben, wie Sie das Azure Data Box-Gerät über das Azure-Portal bereitstellen. Die Schritte umfassen das Prüfen von Voraussetzungen, das Verkabeln und Verbinden Ihres Geräts sowie das Kopieren von Daten auf Ihr Gerät, damit sie in Azure hochgeladen werden können.
+In diesem Leitfaden wird beschrieben, wie Sie das Azure Data Box-Gerät für den Import über das Azure-Portal bereitstellen. Die Schritte umfassen das Prüfen von Voraussetzungen, das Verkabeln und Verbinden Ihres Geräts sowie das Kopieren von Daten auf Ihr Gerät, damit sie in Azure hochgeladen werden können.
 
 ::: zone-end
 
@@ -50,7 +40,7 @@ Vorbereitungen
 
 - Sie verwenden ein Abonnement der folgenden Typen für den Data Box-Dienst:
     - Microsoft Enterprise Agreement (EA). Erfahren Sie mehr über [EA-Abonnements](https://azure.microsoft.com/pricing/enterprise-agreement/).
-    - Cloud Solution Provider (CSP). Erfahren Sie mehr über das [Azure CSP-Programm](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
+    - Cloud Solution Provider (CSP). Erfahren Sie mehr über das [Azure CSP-Programm](/azure/cloud-solution-provider/overview/azure-csp-overview).
     - Microsoft Azure Sponsorship. Erfahren Sie mehr über das [Azure Sponsorship-Programm](https://azure.microsoft.com/offers/ms-azr-0036p/). 
 
 - Sie haben Zugriff als Besitzer oder Mitwirkender auf das Abonnement (zum Erstellen einer Data Box-Bestellung erforderlich).
@@ -89,7 +79,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
-## <a name="order"></a>Reihenfolge
+## <a name="order"></a>Order
 
 Dieser Schritt dauert ungefähr fünf Minuten.
 
@@ -141,7 +131,7 @@ Dieser Schritt dauert ungefähr 5 bis 7 Minuten.
 
 Die Dauer dieses Vorgangs hängt von der Datenmenge und der Netzwerkgeschwindigkeit ab.
  
-1. Wenn Sie mit einem Windows-Host arbeiten, verwenden Sie ein SMB-kompatibles Dateikopierprogramm wie Robocopy. Verwenden Sie bei einem NFS-Host den Befehl `cp` oder `rsync` zum Kopieren der Daten. Verbinden Sie das Tool mit Ihrem Gerät, und fangen Sie an, Daten auf die Freigaben zu kopieren. Weitere Informationen zur Verwendung von Robocopy zum Kopieren von Daten finden Sie unter [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
+1. Wenn Sie mit einem Windows-Host arbeiten, verwenden Sie ein SMB-kompatibles Dateikopierprogramm wie Robocopy. Verwenden Sie bei einem NFS-Host den Befehl `cp` oder `rsync` zum Kopieren der Daten. Verbinden Sie das Tool mit Ihrem Gerät, und fangen Sie an, Daten auf die Freigaben zu kopieren. Weitere Informationen zur Verwendung von Robocopy zum Kopieren von Daten finden Sie unter [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)).
 2. Stellen Sie eine Verbindung mit den Freigaben über diesen Pfad her: `\\<IP address of your device>\ShareName`. Um die Anmeldeinformationen für den Freigabezugriff zu erhalten, wechseln Sie auf der lokalen Webbenutzeroberfläche der Data Box zur Seite **Verbindung herstellen und Daten kopieren**.
 3. Stellen Sie sicher, dass die Namen der Freigaben und Ordner sowie die Daten den Vorgaben entsprechen, die unter [Für Azure Storage und den Data Box-Dienst geltende Einschränkungen](data-box-limits.md) beschrieben sind.
 
@@ -180,5 +170,3 @@ In dieser Schnellstartanleitung haben Sie eine Azure Data Box bereitgestellt, ü
 > [Verwalten von Data Box im Azure-Portal](data-box-portal-admin.md)
 
 ::: zone-end
-
-

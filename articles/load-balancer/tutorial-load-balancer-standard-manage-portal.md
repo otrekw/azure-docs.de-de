@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Vornehmen eines Lastausgleichs für Internetdatenverkehr virtueller Computer – Azure-Portal'
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: In diesem Tutorial wird gezeigt, wie Sie über das Azure-Portal eine Load Balancer Standard-Instanz erstellen und verwalten.
 services: load-balancer
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: a0887a66b6cb886419f86d93973b991151141e0a
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 8961a50490bdbf8b456e87e1c00577c2c8afd050
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327204"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80240360"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Tutorial: Vornehmen eines Lastausgleichs für den Internetdatenverkehr virtueller Computer mit dem Azure-Portal
 
@@ -51,7 +51,7 @@ In diesem Abschnitt erstellen Sie eine Load Balancer Standard-Instanz für den L
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen** aus, und geben Sie *myResourceGroupSLB* in das Textfeld ein.|
-    | NAME                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
     | type          | Wählen Sie **Öffentlich** aus.                                        |
     | SKU           | Wählen Sie **Standard** aus.                          |
@@ -85,7 +85,7 @@ Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie ein
      
     | Einstellung | Wert |
     | ------- | ----- |
-    | NAME | Geben Sie *myHealthProbe* ein. |
+    | Name | Geben Sie *myHealthProbe* ein. |
     | Protocol | Wählen Sie **HTTP** aus. |
     | Port | Geben Sie *80* ein.|
     | Intervall | Geben Sie für das **Intervall** den Wert *15* (Sekunden zwischen Testversuchen) ein. |
@@ -103,7 +103,7 @@ Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virt
 
     | Einstellung | Wert |
     | ------- | ----- |
-    | NAME | Geben Sie *myHTTPRule* ein. |
+    | Name | Geben Sie *myHTTPRule* ein. |
     | Protocol | Wählen Sie **TCP** aus. |
     | Port | Geben Sie *80* ein.|
     | Back-End-Port | Geben Sie *80* ein. |
@@ -116,22 +116,20 @@ Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virt
 
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk sowie drei virtuelle Computer für den Back-End-Pool des Load Balancers und installieren anschließend IIS auf den virtuellen Computern, um den Load Balancer zu testen.
 
-### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
-1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
-2. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
+In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ersetzt werden:
 
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | NAME | Geben Sie *myVNet* ein. |
-    | Adressraum | Geben Sie *10.1.0.0/16* ein. |
-    | Subscription | Wählen Sie Ihr Abonnement aus.|
-    | Resource group | Wählen Sie die vorhandene Ressource *myResourceGroupSLB* aus. |
-    | Location | Wählen Sie **Europa, Westen** aus.|
-    | Subnetzname | Geben Sie *myBackendSubnet* ein. |
-    | Subnetzadressbereich | Geben Sie *10.1.0.0/24* ein. |
-    
-3. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
+| Parameter                   | Wert                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupSLB (Wählen Sie die vorhandene Ressourcengruppe aus.) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Europa, Westen      |
+| **\<IPv4-address-space>**   | 10.1.0.0/16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0/24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
@@ -150,7 +148,7 @@ Load Balancer Standard unterstützt nur virtuelle Computer mit Standard-IP-Adres
    
    - Stellen Sie sicher, dass Folgendes ausgewählt ist:
        - **Virtuelles Netzwerk:** **myVnet**
-       - **Subnetz**: **myBackendSubnet**
+       - **Subnetz:** **myBackendSubnet**
        - **Öffentliche IP-Adresse**: Wählen Sie **Neu erstellen** und anschließend im Fenster **Öffentliche IP-Adresse erstellen** unter **SKU** die Option **Standard** und unter **Verfügbarkeitszone** die Option **Zonenredundant** aus.
       
    - Wählen Sie zum Erstellen einer neuen Netzwerksicherheitsgruppe (NSG) – einer Art Firewall – unter **Netzwerksicherheitsgruppe** die Option **Erweitert**. 
@@ -181,7 +179,7 @@ In diesem Abschnitt erstellen Sie eine Netzwerksicherheitsgruppen-Regel, um eing
     - *100* für **Priorität**
     - *myHTTPRule* als Name
     - *Allow HTTP* als Beschreibung
-4. Wählen Sie **Hinzufügen**.
+4. Wählen Sie **Hinzufügen** aus.
 
 ### <a name="install-iis-on-vms"></a>Installieren von IIS auf VMs
 

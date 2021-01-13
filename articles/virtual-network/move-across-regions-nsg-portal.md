@@ -3,15 +3,15 @@ title: Verschieben einer Azure-Netzwerksicherheitsgruppe (NSG) in eine andere Az
 description: Verwenden einer Azure Resource Manager-Vorlage, um eine Azure-Netzwerksicherheitsgruppe über das Azure-Portal aus einer Azure-Region in eine andere zu verschieben.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 839e608aa4bba26712ae5b0c160da40db279bbc9
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: a22dc6dc0c4fc199d3f262b18aeeae5090a06dce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219189"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84689315"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Verschieben einer Azure-Netzwerksicherheitsgruppe (NSG) in eine andere Region mit dem Azure-Portal
 
@@ -32,7 +32,7 @@ Azure-Sicherheitsgruppen können nicht aus einer Region in eine andere verschobe
 
 - Vergewissern Sie sich, dass Sie mit Ihrem Azure-Abonnement NSGs in der verwendeten Zielregion erstellen können. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
 
-- Stellen Sie sicher, dass Ihr Abonnement genügend Ressourcen hat, um das Hinzufügen von NSGs für diesen Prozess zu unterstützen.  Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Stellen Sie sicher, dass Ihr Abonnement genügend Ressourcen hat, um das Hinzufügen von NSGs für diesen Prozess zu unterstützen.  Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Vorbereiten und Verschieben
@@ -86,7 +86,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Netzwerksicherheitsgruppe 
 
 11. Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **USA, Mitte** = **centralus**.
 
-12. Sie können wahlweise auch andere Parameter in der Vorlage ändern. Diese sind abhängig von Ihren Anforderungen optional:
+12. Sie können wahlweise auch andere Parameter in der Vorlage ändern, die abhängig von Ihren Anforderungen optional sind:
 
     * **Sicherheitsregeln**: Sie können festlegen, welche Regeln in der Ziel-NSG bereitgestellt werden, indem Sie dem Abschnitt **securityRules** in der Datei **template.json** Regeln hinzufügen oder Regeln aus diesem Abschnitt entfernen:
 
@@ -161,7 +161,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Netzwerksicherheitsgruppe 
 
 17. Stellen Sie unter **EINSTELLUNGEN** sicher, dass der Name mit dem Namen übereinstimmt, den Sie oben im Parameter-Editor eingegeben haben.
 
-18. Aktivieren Sie das Kontrollkästchen unter **GESCHÄFTSBEDINGUNGEN**.
+18. Aktivieren Sie das Kontrollkästchen unter **NUTZUNGSBEDINGUNGEN**.
 
 19. Klicken Sie auf die Schaltfläche **Erwerben**, um die Zielnetzwerksicherheitsgruppe bereitzustellen.
 
@@ -169,7 +169,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Netzwerksicherheitsgruppe 
 
 Wenn Sie die Ziel-NSG verwerfen möchten, löschen Sie die Ressourcengruppe, die die Ziel-NSG enthält.  Wählen Sie hierzu im Portal die Ressourcengruppe im Dashboard aus, und klicken Sie oben auf der Übersichtsseite auf **Löschen**.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Um die Änderungen zu übernehmen und das Verschieben der NSG abzuschließen, löschen Sie die Quell-NSG oder -ressourcengruppe. Wählen Sie hierzu im Portal die Netzwerksicherheitsgruppe oder Ressourcengruppe im Dashboard aus, und klicken Sie oben auf jeder Seite auf **Löschen**.
 

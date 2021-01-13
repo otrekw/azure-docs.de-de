@@ -1,29 +1,22 @@
 ---
 title: ASP.NET-Ausgabecacheanbieter für Azure Cache for Redis
-description: Erfahren Sie, wie Sie die ASP.NET-Seitenausgabe mit Azure Cache for Redis zwischenspeichern.
-services: cache
-documentationcenter: na
+description: Erfahren Sie, wie Sie die ASP.NET-Seitenausgabe mit Azure Cache for Redis zwischenspeichern. Der Redis-Ausgabecacheanbieter ist ein prozessunabhängiger Speichermechanismus für Ausgabecachedaten.
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: 78469a66-0829-484f-8660-b2598ec60fbf
-ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
-ms.date: 04/22/2018
 ms.author: yegu
-ms.openlocfilehash: d3babb213f633586786c0015c27fae50e44369df
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.service: cache
+ms.custom: devx-track-csharp
+ms.topic: conceptual
+ms.date: 04/22/2018
+ms.openlocfilehash: 6d711b07a10e04dcdf31259f3e53c9687af28e28
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815663"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993403"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET-Ausgabecacheanbieter für Azure Cache for Redis
 
-Der Redis-Ausgabecacheanbieter ist ein prozessunabhängiger Speichermechanismus für Ausgabecachedaten. Diese Daten sind für vollständige HTTP-Antworten bestimmt (Zwischenspeichern von Seitenausgaben). Der Anbieter wird zum neuen Erweiterungspunkt des Ausgabecacheanbieters hinzugefügt, der in ASP.NET 4 eingeführt wurde.
+Der Redis-Ausgabecacheanbieter ist ein prozessunabhängiger Speichermechanismus für Ausgabecachedaten. Diese Daten sind für vollständige HTTP-Antworten bestimmt (Zwischenspeichern von Seitenausgaben). Der Anbieter wird zum neuen Erweiterungspunkt des Ausgabecacheanbieters hinzugefügt, der in ASP.NET 4 eingeführt wurde. Informationen zu ASP.NET Core-Anwendungen finden Sie unter [Zwischenspeichern von Antworten in ASP.NET Core](/aspnet/core/performance/caching/response). 
 
 Zum Verwenden des Redis-Ausgabecacheanbieters konfigurieren Sie zunächst den Cache. Danach konfigurieren Sie Ihre ASP.NET-Anwendung mithilfe des Redis-Ausgabecacheanbieter-NuGet-Pakets. In diesem Thema wird erläutert, wie Sie Ihre Anwendung für die Verwendung des Redis-Ausgabecacheanbieters konfigurieren. Informationen über das Erstellen und Konfigurieren einer Azure Cache for Redis-Instanz finden Sie unter [Erstellen eines Caches](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
@@ -59,23 +52,22 @@ Mit dem heruntergeladenen NuGet-Paket werden die erforderlichen Assemblyverweise
 
 Konfigurieren Sie die Attribute mit den Werten vom Blatt „Cache“ im Microsoft Azure-Portal, und konfigurieren Sie die restlichen Werte wie gewünscht. Anweisungen zum Zugreifen auf die Cacheeigenschaften finden Sie unter [Konfigurieren von Azure Cache for Redis-Einstellungen](cache-configure.md#configure-azure-cache-for-redis-settings).
 
-| Attribut | type | Standard | BESCHREIBUNG |
+| attribute | type | Standard | BESCHREIBUNG |
 | --------- | ---- | ------- | ----------- |
 | *host* | Zeichenfolge | „localhost“ | IP-Adresse oder Hostname des Redis-Servers |
-| *port* | Positive ganze Zahl | 6379 (non-SSL)<br/>6380 (SSL) | Redis-Serverport |
+| *port* | Positive Ganzzahl | 6379 (TLS-/SSL-fremd)<br/>6380 (TLS/SSL) | Redis-Serverport |
 | *accessKey* | Zeichenfolge | "" | Redis-Serverkennwort, wenn Redis-Autorisierung aktiviert ist. Der Wert ist standardmäßig eine leere Zeichenfolge, was bedeutet, dass der Sitzungszustandsanbieter kein Kennwort verwenden wird, wenn eine Verbindung mit dem Redis-Server hergestellt wird. **Wenn sich Ihr Redis-Server in einem öffentlich zugänglichen Netzwerk wie Azure Redis Cache befindet, denken Sie daran, die Redis-Autorisierung zu aktivieren, um die Sicherheit zu erhöhen, und ein sicheres Kennwort anzugeben.** |
-| *ssl* | boolean | **false** | Ob die Verbindung mit dem Redis-Server über SSL erfolgen soll. Dieser Wert ist standardmäßig **false**, weil Redis SSL nicht bereits vorkonfiguriert unterstützt. **Bei Verwendung von Azure Redis Cache, der SSL bereits vorkonfiguriert unterstützt, stellen Sie sicher, dass Sie diese auf „true“ festlegen, um die Sicherheit zu erhöhen.**<br/><br/>Der Nicht-SSL-Port ist für neue Caches standardmäßig deaktiviert. Geben Sie für diese Einstellung **true** an, wenn Sie den SSL-Port verwenden möchten. Weitere Informationen zum Aktivieren des Nicht-SSL-Ports finden Sie im Abschnitt [Zugriffsports](cache-configure.md#access-ports) des Themas [Konfigurieren eines Caches](cache-configure.md). |
-| *databaseIdNumber* | Positive ganze Zahl | 0 | *Dieses Attribut kann nur entweder über „web.config“ oder über „appSettings“ angegeben werden.*<br/><br/>Geben Sie an, welche Redis-Datenbank verwendet werden soll. |
-| *connectionTimeoutInMilliseconds* | Positive ganze Zahl | Wird von „StackExchange.Redis“ angegeben. | Wird zum Festlegen von *ConnectTimeout* verwendet, wenn „StackExchange.Redis.ConnectionMultiplexer“ erstellt wird. |
-| *operationTimeoutInMilliseconds* | Positive ganze Zahl | Wird von „StackExchange.Redis“ angegeben. | Wird zum Festlegen von *SyncTimeout* verwendet, wenn „StackExchange.Redis.ConnectionMultiplexer“ erstellt wird. |
+| *ssl* | boolean | **false** | Gibt an, ob die Verbindung mit dem Redis-Server über TLS hergestellt werden soll. Dieser Wert ist standardmäßig **false**, da TLS von Redis nicht standardmäßig unterstützt wird. **Bei Verwendung von Azure Redis Cache, der SSL bereits vorkonfiguriert unterstützt, stellen Sie sicher, dass Sie diese auf „true“ festlegen, um die Sicherheit zu erhöhen.**<br/><br/>Der TLS-fremde Port ist für neue Caches standardmäßig deaktiviert. Legen Sie diese Einstellung auf **true** fest, um den TLS-fremden Port zu verwenden. Weitere Informationen zum Aktivieren des TLS-fremden Ports finden Sie im Abschnitt [Zugriffsports](cache-configure.md#access-ports) des Themas [Konfigurieren eines Caches](cache-configure.md). |
+| *databaseIdNumber* | Positive Ganzzahl | 0 | *Dieses Attribut kann nur entweder über „web.config“ oder über „appSettings“ angegeben werden.*<br/><br/>Geben Sie an, welche Redis-Datenbank verwendet werden soll. |
+| *connectionTimeoutInMilliseconds* | Positive Ganzzahl | Wird von „StackExchange.Redis“ angegeben. | Wird zum Festlegen von *ConnectTimeout* verwendet, wenn „StackExchange.Redis.ConnectionMultiplexer“ erstellt wird. |
+| *operationTimeoutInMilliseconds* | Positive Ganzzahl | Wird von „StackExchange.Redis“ angegeben. | Wird zum Festlegen von *SyncTimeout* verwendet, wenn „StackExchange.Redis.ConnectionMultiplexer“ erstellt wird. |
 | *connectionString* (Gültige Verbindungszeichenfolge für „StackExchange.Redis“) | Zeichenfolge | *Nicht zutreffend* | Entweder ein Parameterverweis auf „appSettings“ oder auf „Web.config“ oder sonst eine gültige Verbindungszeichenfolge für „StackExchange.Redis“. Dieses Attribut kann die Werte für *host*, *port*, *accessKey*, *ssl* und andere Attribute von „StackExchange.Redis“ bereitstellen. Ausführlichere Informationen zu *connectionString* finden Sie unter [Festlegen von „connectionString“](#setting-connectionstring) im Abschnitt [Hinweise zu Attributen](#attribute-notes). |
 | *settingsClassName*<br/>*settingsMethodName* | Zeichenfolge<br/>Zeichenfolge | *Nicht zutreffend* | *Diese Attribute können nur entweder über „web.config“ oder über „appSettings“ angegeben werden.*<br/><br/>Verwenden Sie diese Attribute, um eine Verbindungszeichenfolge bereitzustellen. *settingsClassName* sollte ein Assembly-qualifizierter Klassenname sein, der die von *settingsMethodName* angegebene Methode enthält.<br/><br/>Die von *settingsMethodName* angegebene Methode sollte öffentlich, statisch und „void“ (keine Parameter akzeptieren) sein, mit dem Rückgabetyp **string**. Diese Methode gibt die tatsächliche Verbindungszeichenfolge zurück. |
 | *loggingClassName*<br/>*loggingMethodName* | Zeichenfolge<br/>Zeichenfolge | *Nicht zutreffend* | *Diese Attribute können nur entweder über „web.config“ oder über „appSettings“ angegeben werden.*<br/><br/>Verwenden Sie diese Attribute, um Ihre Anwendung zu debuggen, indem Sie Protokolle aus dem Sitzungszustands-/Ausgabecache zusammen mit Protokollen aus „StackExchange.Redis“ bereitstellen. *loggingClassName* sollte ein Assembly-qualifizierter Klassenname sein, der die von *loggingMethodName* angegebene Methode enthält.<br/><br/>Die von *loggingMethodName* angegebene Methode sollte öffentlich, statisch und „void“ (keine Parameter akzeptieren) sein, mit dem Rückgabetyp **System.IO.TextWriter**. |
 | *applicationName* | Zeichenfolge | Der Modulname des aktuellen Prozesses oder „/“ | *Nur SessionStateProvider*<br/>*Dieses Attribut kann nur entweder über „web.config“ oder über „appSettings“ angegeben werden.*<br/><br/>Das in Redis Cache zu verwendende App-Namenspräfix. Der Kunde kann denselben Redis Cache für unterschiedliche Zwecke verwenden. Um sicherzustellen, dass bei den Sitzungsschlüsseln kein Konflikt entsteht, kann ihm der Name der Anwendung als Präfix vorangestellt werden. |
 | *throwOnError* | boolean | true | *Nur SessionStateProvider*<br/>*Dieses Attribut kann nur entweder über „web.config“ oder über „appSettings“ angegeben werden.*<br/><br/>Ob eine Ausnahme ausgelöst werden soll, wenn ein Fehler auftritt.<br/><br/>Weitere Informationen zu *throwOnError* finden Sie unter [ Hinweise zu *throwOnError*](#notes-on-throwonerror) im Abschnitt [Hinweise zu Attributen](#attribute-notes). |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*. |
-| *retryTimeoutInMilliseconds* | Positive ganze Zahl | 5\.000 | *Nur SessionStateProvider*<br/>*Dieses Attribut kann nur entweder über „web.config“ oder über „appSettings“ angegeben werden.*<br/><br/>Wie lange wiederholt werden soll, wenn ein Vorgang fehlschlägt. Wenn dieser Wert kleiner als *operationTimeoutInMilliseconds* ist, versucht es der Anbieter nicht noch mal.<br/><br/>Weitere Informationen zu *retryTimeoutInMilliseconds* finden Sie unter [ Hinweise zu *retryTimeoutInMilliseconds*](#notes-on-retrytimeoutinmilliseconds) im Abschnitt [Hinweise zu Attributen](#attribute-notes). |
+| *retryTimeoutInMilliseconds* | Positive Ganzzahl | 5\.000 | *Nur SessionStateProvider*<br/>*Dieses Attribut kann nur entweder über „web.config“ oder über „appSettings“ angegeben werden.*<br/><br/>Wie lange wiederholt werden soll, wenn ein Vorgang fehlschlägt. Wenn dieser Wert kleiner als *operationTimeoutInMilliseconds* ist, versucht es der Anbieter nicht noch mal.<br/><br/>Weitere Informationen zu *retryTimeoutInMilliseconds* finden Sie unter [ Hinweise zu *retryTimeoutInMilliseconds*](#notes-on-retrytimeoutinmilliseconds) im Abschnitt [Hinweise zu Attributen](#attribute-notes). |
 | *redisSerializerType* | Zeichenfolge | *Nicht zutreffend* | Gibt den Assembly-qualifizierten Typnamen einer Klasse an, die „Microsoft.Web.Redis“ implementiert. ISerializer, und dieser enthält die benutzerdefinierte Logik zum Serialisieren und Deserialisieren der Werte. Weitere Informationen finden Sie unter [Informationen zu *redisSerializerType*](#about-redisserializertype) im Abschnitt [Hinweise zu Attributen](#attribute-notes). |
-|
 
 ## <a name="attribute-notes"></a>Hinweise zu Attributen
 
@@ -202,9 +194,15 @@ Fügen Sie jeder Seite, für die Sie die Ausgabe zwischenspeichern möchten, ein
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-Im vorherigen Beispiel verbleiben die zwischengespeicherten Seitendaten 60 Sekunden lang im Cache. Für jede Parameterkombination wird eine andere Version der Seite zwischengespeichert. Weitere Informationen über die OutputCache-Direktive finden Sie unter [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837).
+Im vorherigen Beispiel verbleiben die zwischengespeicherten Seitendaten 60 Sekunden lang im Cache. Für jede Parameterkombination wird eine andere Version der Seite zwischengespeichert. Weitere Informationen über die OutputCache-Direktive finden Sie unter [@OutputCache](/previous-versions/dotnet/netframework-4.0/hdxfb6cy(v=vs.100)).
 
 Nach Abschluss dieser Schritte ist Ihre Anwendung für die Verwendung des Redis-Ausgabecacheanbieters konfiguriert.
+
+## <a name="third-party-output-cache-providers"></a>Ausgabecacheanbieter von Drittanbieter
+
+* [NCache](https://www.alachisoft.com/blogs/how-to-use-a-distributed-cache-for-asp-net-output-cache/)
+* [Apache Ignite](https://apacheignite-net.readme.io/docs/aspnet-output-caching)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

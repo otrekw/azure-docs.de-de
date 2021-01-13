@@ -1,23 +1,18 @@
 ---
-title: Erstellen eines Anwendungsgateways mit externer Umleitung – Azure CLI | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe der Azure CLI ein Anwendungsgateway erstellen, das internen Webdatenverkehr an den entsprechenden Pool umleitet.
+title: Umleiten externen Datenverkehrs mithilfe der CLI – Azure Application Gateway
+description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI ein Anwendungsgateway erstellen, das externen Webdatenverkehr an den entsprechenden Pool umleitet.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/24/2018
+ms.topic: how-to
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: e1fb25a9d5bfe6538d081169d163d7b280733cc1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 838c2dc887790bb12b390261d94748595232d8b3
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382011"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565856"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit externer Umleitung durch die Azure CLI
 
@@ -25,16 +20,15 @@ Sie können mit der Azure CLI [eine Umleitung des Webdatenverkehrs](multiple-sit
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Listeners und einer Umleitungsregel
-> * Erstellen eines Anwendungsgateways
+* Einrichten des Netzwerks
+* Erstellen eines Listeners und einer Umleitungsregel
+* Erstellen eines Anwendungsgateways
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+ - Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -137,8 +131,4 @@ Daraufhin sollte *bing.com* in Ihrem Browser aufgerufen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> * Einrichten des Netzwerks
-> * Erstellen eines Listeners und einer Umleitungsregel
-> * Erstellen eines Anwendungsgateways
+- [Erstellen eines Anwendungsgateways mit interner Umleitung über die Azure-Befehlszeilenschnittstelle](redirect-internal-site-cli.md)

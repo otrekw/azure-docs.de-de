@@ -4,99 +4,27 @@
   expanded: true
   items:
     - name: Worum handelt es sich bei maschinellem Sehen?
-      href: Home.md
+      href: overview.md
+    - name: Neues
+      href: whats-new.md
 - name: Schnellstarts
   items:
-    - name: Verwenden des Client-SDK
-      items:
-        - name: .NET SDK
-          href: quickstarts-sdk/csharp-sdk.md
-        - name: Python SDK
-          href: quickstarts-sdk/python-sdk.md
-        - name: Java-SDK
-          href: quickstarts-sdk/java-sdk.md
-        - name: Node.js SDK
-          href: quickstarts-sdk/node-sdk.md
-    - name: Verwenden der REST-API
-      items:
-        - name: Analysieren von Remotebildern
-          items:
-            - name: cURL
-              href: QuickStarts/curl-analyze.md
-            - name: Go
-              href: QuickStarts/go-analyze.md
-            - name: Java
-              href: QuickStarts/java-analyze.md
-            - name: JavaScript
-              href: QuickStarts/javascript-analyze.md
-            - name: Node.js
-              href: QuickStarts/node-analyze.md
-            - name: Python
-              href: QuickStarts/python-analyze.md
-        - name: Analysieren von lokalen Bildern
-          items:
-            - name: 'C#'
-              href: QuickStarts/CSharp-analyze.md
-            - name: Python
-              href: QuickStarts/python-disk.md
-        - name: Generieren von Miniaturansichten
-          items:
-            - name: 'C#'
-              href: QuickStarts/CSharp-thumb.md
-            - name: cURL
-              href: QuickStarts/curl-thumb.md
-            - name: Go
-              href: QuickStarts/go-thumb.md
-            - name: Java
-              href: QuickStarts/java-thumb.md
-            - name: JavaScript
-              href: QuickStarts/javascript-thumb.md
-            - name: Node.js
-              href: QuickStarts/node-thumb.md
-            - name: Python
-              href: QuickStarts/python-thumb.md
-        - name: Extrahieren von Text (Lese-API)
-          items:
-            - name: 'C#'
-              href: QuickStarts/CSharp-hand-text.md
-            - name: Java
-              href: QuickStarts/java-hand-text.md
-            - name: JavaScript
-              href: QuickStarts/javascript-hand-text.md
-            - name: Python
-              href: QuickStarts/python-hand-text.md
-        - name: Extrahieren von gedrucktem Text (OCR)
-          items:
-            - name: 'C#'
-              href: QuickStarts/CSharp-print-text.md
-            - name: cURL
-              href: QuickStarts/curl-print-text.md
-            - name: Go
-              href: QuickStarts/go-print-text.md
-            - name: Java
-              href: QuickStarts/java-print-text.md
-            - name: JavaScript
-              href: QuickStarts/javascript-print-text.md
-            - name: Node.js
-              href: QuickStarts/node-print-text.md
-            - name: Python
-              href: QuickStarts/python-print-text.md
-        - name: Verwenden eines Domänenmodells
-          items:
-            - name: Python
-              href: QuickStarts/python-domain.md
-- name: Lernprogramme
+    - name: Verwenden der Clientbibliotheken oder REST-API
+      href: quickstarts-sdk/client-library.md
+- name: Tutorials
   items:
     - name: Generieren von Metadaten für Bilder
       href: Tutorials/storage-lab-tutorial.md
 - name: Konzepte
   items:
-    - name: Inhaltstags
-      href: concept-tagging-images.md
+    - name: Optische Zeichenerkennung (OCR)
+      href: concept-recognizing-text.md
     - name: Objekterkennung
       href: concept-object-detection.md
     - name: Markenerkennung
       href: concept-brand-detection.md
+    - name: Inhaltstags
+      href: concept-tagging-images.md
     - name: Bildkategorisierung
       href: concept-categorizing-images.md
     - name: Bildbeschreibungen
@@ -111,62 +39,107 @@
       href: concept-detecting-color-schemes.md
     - name: Intelligent zugeschnittene Miniaturbilder
       href: concept-generating-thumbnails.md
-    - name: Erkennung von gedrucktem und handschriftlichem Text
-      href: concept-recognizing-text.md
     - name: Erkennung von nicht jugendfreien Inhalten
       href: concept-detecting-adult-content.md
-- name: Anleitungen
+- name: Verantwortungsvolle Verwendung von KI
   items:
-    - name: Aufrufen der Maschinelles Sehen-API
-      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
-    - name: Verwenden von Containern
+    - name: Räumliche Analyse
+      items:
+        - name: Transparenzhinweise
+          items:
+            - name: Einführung in die räumliche Analyse
+              href: intro-to-spatial-analysis-public-preview.md
+            - name: Merkmale und Einschränkungen
+              href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+        - name: Integration und verantwortungsvolle Verwendung
+          items:
+            - name: Verantwortungsvolle Verwendung bei der KI-Bereitstellung
+              href: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+            - name: Entwurfsrichtlinien für die Offenlegung
+              href: /legal/cognitive-services/computer-vision/disclosure-design?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+            - name: Forschungserkenntnisse
+              href: /legal/cognitive-services/computer-vision/research-insights?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+        - name: 'Daten, Datenschutz und Sicherheit'
+          href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+- name: Container
+  items:
+    - name: Lese-API-Container
       items:
         - name: Installieren und Ausführen von Containern
           href: computer-vision-how-to-install-containers.md
           displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
         - name: Konfigurieren von Containern
           href: computer-vision-resource-container-config.md
+        - name: Migrieren zu v3 des Containers für das Lesen
+          href: read-container-migration-guide.md
           displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
         - name: Verwendung mit Kubernetes und Helm
           href: deploy-computer-vision-on-premises.md
           displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
         - name: Verwenden von Containerinstanzen
-          href: deploy-computer-vision-on-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
           displayName: 'container instances, container, containers, images'
-    - name: Verwenden des verbundenen Diensts für maschinelles Sehen
-      href: vs-computer-vision-connected-service.md
+    - name: Container für räumliche Analyse
+      items:
+        - name: Einrichten des Hostcomputers und Ausführen des Containers
+          href: spatial-analysis-container.md
+        - name: Konfigurieren von Vorgängen
+          href: spatial-analysis-operations.md
+        - name: Bereitstellen einer Web-App für die Erfassung der Personenanzahl
+          href: Spatial-analysis-web-app.md
+        - name: Protokollierung und Problembehandlung
+          href: spatial-analysis-logging.md
+        - name: Anordnung von Zonen und Linien
+          href: spatial-analysis-zone-line-placement.md
+        - name: Kameraplatzierung
+          href: spatial-analysis-camera-placement.md
+    - name: "Dokumentation zu Cognitive\_Services-Containern"
+      href: ../containers/index.yml
+- name: Anleitungen
+  items:
+    - name: Aufrufen der Maschinelles Sehen-API
+      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: Videoanalyse in Echtzeit
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+    - name: Azure CLI
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: Azure PowerShell
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
-    - name: Maschinelles Sehen-API v2.0
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44'
+      href: /powershell/module/azurerm.cognitiveservices/
+    - name: Maschinelles Sehen-API v3.2 (Vorschau)
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005'
+    - name: Maschinelles Sehen-API v3.1
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
+    - name: Maschinelles Sehen-API v3.0
+      href: 'https://aka.ms/computer-vision-v3-ref'
+    - name: Maschinelles Sehen-API v2.1
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
     - name: Maschinelles Sehen-API v1.0
       href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
     - name: SDKs
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/computervision?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python'
+          href: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
         - name: Go
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/computervision'
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable'
+          href: /java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
 - name: Ressourcen
   items:
+    - name: Support- und Hilfeoptionen
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
     - name: Beispiele
       items:
         - name: Erkunden einer Bildverarbeitungs-App
           href: Tutorials/CSharpTutorial.md
         - name: Weitere Beispiele für maschinelles Sehen
-          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=computer-vision'
     - name: Häufig gestellte Fragen
       href: FAQ.md
     - name: Kategorietaxonomie
@@ -175,13 +148,11 @@
       href: language-support.md
     - name: Preise und Einschränkungen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/430309-computer-vision-api'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: "Upgraden von Read\_2.x auf Read\_3.x"
+      href: upgrade-api-versions.md

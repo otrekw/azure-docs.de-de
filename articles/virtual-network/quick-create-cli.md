@@ -1,7 +1,7 @@
 ---
 title: 'Erstellen eines virtuellen Netzwerks: Schnellstart – Azure CLI'
 titlesuffix: Azure Virtual Network
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über Azure CLI ein virtuelles Netzwerk erstellen. In einem virtuellen Netzwerk können Azure-Ressourcen wie virtuelle Computer privat miteinander und mit dem Internet kommunizieren.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über Azure CLI ein virtuelles Netzwerk erstellen. Ein virtuelles Netzwerk ermöglicht die Kommunikation der Azure-Ressourcen untereinander und mit dem Internet.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -11,19 +11,20 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 12/12/2018
+ms.date: 01/22/2019
 ms.author: kumud
-ms.openlocfilehash: 6306d893f491f93cc31b7e478afe5632e997285c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 1feae201738a560c4cdb56f703c4af9a38af86d1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692644"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "88056787"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Schnellstart: Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle
 
 In einem virtuellen Netzwerk können Azure-Ressourcen wie virtuelle Computer (VMs) privat miteinander und mit dem Internet kommunizieren. In dieser Schnellstartanleitung erfahren Sie, wie Sie ein virtuelles Netzwerk erstellen. Nach dem Erstellen eines virtuellen Netzwerks stellen Sie zwei virtuelle Computer im virtuellen Netzwerk bereit. Anschließend stellen Sie über das Internet eine Verbindung mit den VMs her und kommunizieren privat über das neue virtuelle Netzwerk.
-
+## <a name="prerequisites"></a>Voraussetzungen
 Wenn Sie kein Azure-Abonnement besitzen, können Sie jetzt ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -80,7 +81,7 @@ az vm create \
 
 Die Erstellung der VMs kann einige Minuten dauern. Nachdem Azure die virtuellen Computer erstellt hat, gibt Azure CLI etwa folgende Ausgabe zurück:
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm2",
@@ -126,6 +127,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie ein virtuelles Standardnetzwerk und zwei virtuelle Computer erstellt. Sie haben über das Internet eine Verbindung mit einem der virtuellen Computer hergestellt und privat zwischen den beiden virtuellen Computern kommuniziert. Weitere Informationen zu den Einstellungen des virtuellen Netzwerks finden Sie unter [Create, change, or delete a virtual network](manage-virtual-network.md) (Erstellen, Ändern oder Löschen eines virtuellen Netzwerks).
-
-Azure erlaubt uneingeschränkte private Kommunikation zwischen virtuellen Computern. Standardmäßig ermöglicht Azure nur eingehende Remotedesktopverbindungen mit Windows-VMs über das Internet. Weitere Informationen zum Konfigurieren der verschiedenen Typen der VM-Netzwerkkommunikation finden Sie im Tutorial [Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal](tutorial-filter-network-traffic.md).
+In dieser Schnellstartanleitung haben Sie ein virtuelles Standardnetzwerk und zwei virtuelle Computer erstellt. Sie haben über das Internet eine Verbindung mit einem der virtuellen Computer hergestellt und privat zwischen den beiden virtuellen Computern kommuniziert.
+Azure erlaubt uneingeschränkte private Kommunikation zwischen virtuellen Computern. Standardmäßig ermöglicht Azure nur eingehende Remotedesktopverbindungen mit Windows-VMs über das Internet. Fahren Sie mit dem nächsten Artikel fort, um mehr über das Konfigurieren verschiedener Typen der VM-Netzwerkkommunikation zu erfahren:
+> [!div class="nextstepaction"]
+> [Erstellen von Netzwerksicherheitsgruppen über das Azure-Portal](tutorial-filter-network-traffic.md)

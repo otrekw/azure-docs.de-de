@@ -5,28 +5,28 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 12/12/2018
+ms.date: 11/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dd5c0782e1132f8592d9c6381b541c6f1a7d84cd
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: b7db9749adab9a6d6d7b8c350648603f42d0b43d
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178082"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94574234"
 ---
-**Verwaltete HDD Standard-Datenträger**
+### <a name="standard-hdd-managed-disks"></a>Verwaltete HDD Standard-Datenträger
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-**Verwaltete SSD Standard-Datenträger**
+### <a name="standard-ssd-managed-disks"></a>Verwaltete SSD Standard-Datenträger
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**Verwaltete SSD Premium-Datenträger: Grenzwerte pro Datenträger**
+### <a name="premium-ssd-managed-disks-per-disk-limits"></a>Verwaltete SSD Premium-Datenträger: Grenzwerte pro Datenträger 
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-**Verwaltete SSD Premium-Datenträger: Grenzwerte pro VM**
+### <a name="premium-ssd-managed-disks-per-vm-limits"></a>Verwaltete SSD Premium-Datenträger: Grenzwerte pro VM
 
-| Resource | Standardlimit |
+| Resource | Begrenzung |
 | --- | --- |
 | Maximale Anzahl IOPS pro VM |80.000 IOPS mit GS5-VM |
 | Maximaler Durchsatz pro VM |2\.000 MB/s mit GS5-VM |

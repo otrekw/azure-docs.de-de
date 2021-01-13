@@ -8,12 +8,20 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: fa1aa8c560f4b9cc48c7a6a761abe4d69d5d0265
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.custom:
+- amqp
+- mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- 'Role: Operations'
+- devx-track-js
+- devx-track-csharp
+ms.openlocfilehash: 3ddc8c78bac47ed85266037341328585e3c7cb1c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773172"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825122"
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
@@ -35,12 +43,12 @@ Sie müssen über Berechtigungen für den Zugriff auf IoT Hub-Endpunkte verfüge
 
 Sie können [Berechtigungen](#iot-hub-permissions) auf folgende Weise gewähren:
 
-* **Richtlinien für den gemeinsamen Zugriff auf IoT Hub-Ebene**. SAS-Richtlinien können eine beliebige Kombination von [Berechtigungen](#iot-hub-permissions) gewähren. Sie können Richtlinien im [Azure-Portal](https://portal.azure.com) programmgesteuert mithilfe von [IoT Hub-Ressourcenanbieter-REST-APIs](/rest/api/iothub/iothubresource) oder mit dem CLI-Befehl [az iot hub policy](/cli/azure/iot/hub/policy?view=azure-cli-latest) definieren. Ein neu erstellter IoT Hub verfügt über die folgenden Standardrichtlinien:
+* **Richtlinien für den gemeinsamen Zugriff auf IoT Hub-Ebene**. SAS-Richtlinien können eine beliebige Kombination von [Berechtigungen](#iot-hub-permissions) gewähren. Sie können Richtlinien im [Azure-Portal](https://portal.azure.com) programmgesteuert mithilfe von [IoT Hub-Ressourcenanbieter-REST-APIs](/rest/api/iothub/iothubresource) oder mit dem CLI-Befehl [az iot hub policy](/cli/azure/iot/hub/policy) definieren. Ein neu erstellter IoT Hub verfügt über die folgenden Standardrichtlinien:
   
   | SAS-Richtlinie | Berechtigungen |
   | -------------------- | ----------- |
   | iothubowner | Alle Berechtigungen |
-  | service | **ServiceConnect**-Berechtigung |
+  | Dienst | **ServiceConnect**-Berechtigung |
   | device | **DeviceConnect**-Berechtigung |
   | registryRead | **RegistryRead**-Berechtigung |
   | registryReadWrite | **RegistryReadWrite**- und **RegistryWrite**-Berechtigungen |
@@ -57,14 +65,14 @@ Beispielsweise In einer normalen IoT-Lösung:
 > [!NOTE]
 > Weitere Informationen finden Sie unter [Berechtigungen](#iot-hub-permissions).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Azure IoT Hub gewährt Zugriff auf Endpunkte, indem ein Token zur Verifizierung mit gemeinsam genutzten Zugriffsrichtlinien und Sicherheitsanmeldeinformationen für die Identitätsregistrierung verglichen wird.
 
 Sicherheitsanmeldeinformationen, beispielsweise symmetrische Schlüssel, werden niemals über eine physische Verbindung gesendet.
 
 > [!NOTE]
-> Der Azure IoT Hub-Ressourcenanbieter wird über Ihr Azure-Abonnement geschützt – ebenso wie alle Anbieter im [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+> Der Azure IoT Hub-Ressourcenanbieter wird über Ihr Azure-Abonnement geschützt – ebenso wie alle Anbieter im [Azure Resource Manager](../azure-resource-manager/management/overview.md).
 
 Weitere Informationen zur Erstellung und Verwendung von Sicherheitstoken finden Sie im Artikel zu den [IoT Hub-Sicherheitstoken](iot-hub-devguide-security.md#security-tokens).
 
@@ -91,7 +99,7 @@ HTTPS implementiert die Authentifizierung, indem ein gültiges Token in den Anfo
 
 Benutzername (bei der Geräte-ID wird Groß-/Kleinschreibung berücksichtigt): `iothubname.azure-devices.net/DeviceId`
 
-Kennwort (Sie können ein SAS-Token mit dem Tool [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer), dem CLI-Erweiterungsbefehl [az iot hub generate-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token) oder den [Azure IoT-Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) generieren):
+Kennwort (Sie können ein SAS-Token mit dem CLI-Erweiterungsbefehl [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) oder den [Azure IoT Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) generieren):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -180,7 +188,7 @@ from hmac import HMAC
 def generate_sas_token(uri, key, policy_name, expiry=3600):
     ttl = time() + expiry
     sign_key = "%s\n%d" % ((parse.quote_plus(uri)), int(ttl))
-    print sign_key
+    print(sign_key)
     signature = b64encode(HMAC(b64decode(key), sign_key.encode('utf-8'), sha256).digest())
 
     rawtoken = {
@@ -194,11 +202,6 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 
     return 'SharedAccessSignature ' + parse.urlencode(rawtoken)
 ```
-
-Nachfolgend sind die Installationsanweisungen für die erforderlichen Komponenten aufgeführt:
-
-[!INCLUDE [Iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
 
 Die Funktion in C# zum Generieren eines Sicherheitstokens ist wie folgt:
 
@@ -229,7 +232,30 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
     return token;
 }
+```
 
+Java:
+```java
+    public static String generateSasToken(String resourceUri, String key) throws Exception {
+        // Token will expire in one hour
+        var expiry = Instant.now().getEpochSecond() + 3600;
+
+        String stringToSign = URLEncoder.encode(resourceUri, StandardCharsets.UTF_8) + "\n" + expiry;
+        byte[] decodedKey = Base64.getDecoder().decode(key);
+
+        Mac sha256HMAC = Mac.getInstance("HmacSHA256");
+        SecretKeySpec secretKey = new SecretKeySpec(decodedKey, "HmacSHA256");
+        sha256HMAC.init(secretKey);
+        Base64.Encoder encoder = Base64.getEncoder();
+
+        String signature = new String(encoder.encode(
+            sha256HMAC.doFinal(stringToSign.getBytes(StandardCharsets.UTF_8))), StandardCharsets.UTF_8);
+
+        String token = "SharedAccessSignature sr=" + URLEncoder.encode(resourceUri, StandardCharsets.UTF_8)
+                + "&sig=" + URLEncoder.encode(signature, StandardCharsets.UTF_8.name()) + "&se=" + expiry;
+            
+        return token;
+    }
 ```
 
 
@@ -277,7 +303,7 @@ Das Ergebnis, das Zugriff auf alle Funktionen für „device1“ gewährt wird, 
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Sie können ein SAS-Token mit dem Tool [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer), dem CLI-Erweiterungsbefehl [az iot hub generate-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token) oder den [Azure IoT-Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) generieren.
+> Sie können ein SAS-Token mit dem CLI-Erweiterungsbefehl [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) oder den [Azure IoT Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) generieren.
 
 ### <a name="use-a-shared-access-policy"></a>Verwenden einer SAS-Richtlinie
 
@@ -347,7 +373,7 @@ Das Ergebnis, das Lesezugriff für alle Geräteidentitäten gewähren würde, w�
 
 ## <a name="supported-x509-certificates"></a>Unterstützte X.509-Zertifikate
 
-Sie können ein X.509-Zertifikat verwenden, um ein Gerät bei IoT Hub zu authentifizieren. Laden Sie hierzu entweder einen Zertifikatfingerabdruck oder eine Zertifizierungsstelle (Certificate Authority, CA) in Azure IoT Hub hoch. Bei der Authentifizierung mittels Zertifikatfingerabdruck wird nur überprüft, ob der verwendete Fingerabdruck dem konfigurierten Fingerabdruck entspricht. Bei der Authentifizierung per Zertifizierungsstelle wird die Vertrauenskette überprüft. 
+Sie können ein X.509-Zertifikat verwenden, um ein Gerät bei IoT Hub zu authentifizieren. Laden Sie hierzu entweder einen Zertifikatfingerabdruck oder eine Zertifizierungsstelle (Certificate Authority, CA) in Azure IoT Hub hoch. Bei der Authentifizierung mittels Zertifikatfingerabdruck wird überprüft, ob der verwendete Fingerabdruck dem konfigurierten Fingerabdruck entspricht. Bei der Authentifizierung per Zertifizierungsstelle wird die Vertrauenskette überprüft. In beiden Fällen erfordert der TLS-Handshake, dass das Gerät über ein gültiges Zertifikat und einen privaten Schlüssel verfügt. Weitere Informationen finden Sie in der TLS-Spezifikation, z. B.: [RFC 5246 – Die Transport Layer Security (TLS)-Protokollversion 1.2](https://tools.ietf.org/html/rfc5246/).
 
 Unterstützte Zertifikate:
 
@@ -355,17 +381,22 @@ Unterstützte Zertifikate:
 
 * **Ein von einer Zertifizierungsstelle signiertes X.509-Zertifikat**. Sie können auch ein von einer Zertifizierungsstelle generiertes und signiertes X.509-Zertifikat verwenden, um ein Gerät zu identifizieren und bei IoT Hub zu authentifizieren. Diese Option ist sowohl für die Authentifizierung per Fingerabdruck als auch für die Authentifizierung per Zertifizierungsstelle geeignet.
 
-* **Ein selbst generiertes und selbstsigniertes X.509-Zertifikat**. Ein Gerätehersteller oder interner Bereitsteller kann diese Zertifikate generieren und den entsprechenden privaten Schlüssel (und das Zertifikat) auf dem Gerät speichern. Sie können dafür Tools wie etwa [OpenSSL](https://www.openssl.org/) und das Windows-Hilfsprogramm [SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) verwenden. Diese Option kann nur für die Authentifizierung per Fingerabdruck verwendet werden. 
+* **Ein selbst generiertes und selbstsigniertes X.509-Zertifikat**. Ein Gerätehersteller oder interner Bereitsteller kann diese Zertifikate generieren und den entsprechenden privaten Schlüssel (und das Zertifikat) auf dem Gerät speichern. Sie können dafür Tools wie etwa [OpenSSL](https://www.openssl.org/) und das Windows-Hilfsprogramm [SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) verwenden. Diese Option kann nur für die Authentifizierung per Fingerabdruck verwendet werden.
 
-Ein Gerät verwendet entweder ein X.509-Zertifikat oder ein Sicherheitstoken für die Authentifizierung, aber nicht beides.
+Ein Gerät verwendet entweder ein X.509-Zertifikat oder ein Sicherheitstoken für die Authentifizierung, aber nicht beides. Stellen Sie bei der X.509-Zertifikatsauthentifizierung sicher, dass Sie über eine Strategie zur Handhabung des Rollovers von Zertifikaten verfügen, wenn ein vorhandenes Zertifikat abläuft.
 
-Weitere Informationen zur Authentifizierung per Zertifizierungsstelle finden Sie unter [Geräteauthentifizierung mit X.509-Zertifikaten](iot-hub-x509ca-overview.md).
+Die folgenden Funktionen werden bei Geräten, die die Authentifizierung per X.509-Zertifizierungsstelle verwenden, nicht unterstützt:
+
+* HTTPS, MQTT über WebSockets und AMQP über WebSockets-Protokolle.
+* Dateiuploads (alle Protokolle).
+
+Weitere Informationen zur Authentifizierung per Zertifizierungsstelle finden Sie unter [Geräteauthentifizierung mit X.509-Zertifikaten](iot-hub-x509ca-overview.md). Informationen zum Hochladen und Überprüfen einer Zertifizierungsstelle bei Ihrem IoT Hub finden Sie unter [Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub](iot-hub-security-x509-get-started.md).
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Registrieren eines X.509-Zertifikats für ein Gerät
 
 Das [Azure IoT-Dienst-SDK für C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (mindestens Version 1.0.8) unterstützt die Registrierung von Geräten, die ein X.509-Zertifikat für die Authentifizierung verwenden. Andere APIs wie beispielsweise für den Import/Export von Geräten unterstützen ebenfalls X.509-Zertifikate.
 
-Sie können auch den CLI-Erweiterungsbefehl [az iot hub device-identity](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) verwenden, um X.509-Zertifikate für Geräte zu konfigurieren.
+Sie können auch den CLI-Erweiterungsbefehl [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) verwenden, um X.509-Zertifikate für Geräte zu konfigurieren.
 
 ### <a name="c-support"></a>C\#-Unterstützung
 
@@ -423,7 +454,7 @@ Hier sind die wichtigsten Schritte des Tokendienstmusters:
 4. Das Gerät/Modul nutzt das Token direkt mit IoT Hub.
 
 > [!NOTE]
-> Sie können die .NET-Klasse [SharedAccessSignatureBuilder](https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx) oder die Java-Klasse [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) zum Erstellen eines Tokens im Tokendienst verwenden.
+> Sie können die .NET-Klasse [SharedAccessSignatureBuilder](/dotnet/api/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder) oder die Java-Klasse [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) zum Erstellen eines Tokens im Tokendienst verwenden.
 
 Der Tokendienst kann die Gültigkeitsdauer für das Token wie gewünscht festlegen. Wenn das Token abläuft, trennt IoT Hub die Geräte-/Modulverbindung. Das Gerät/Modul muss dann ein neues Token vom Tokendienst anfordern. Eine kurze Ablaufzeit erhöht die Last für das Gerät/Modul und den Tokendienst gleichermaßen.
 
@@ -461,6 +492,8 @@ Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 * Unter [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md) wird die Abfragesprache beschrieben, mit der Sie Informationen zu Gerätezwillingen und Aufträgen aus IoT Hub abrufen können.
 
 * [Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT](iot-hub-mqtt-support.md) enthält weitere Informationen zur IoT Hub-Unterstützung für das MQTT-Protokoll.
+
+* [RFC 5246 – Die Transport Layer Security (TLS)-Protokollversion 1.2](https://tools.ietf.org/html/rfc5246/) enthält weitere Informationen zur TLS-Authentifizierung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

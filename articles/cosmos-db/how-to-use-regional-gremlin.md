@@ -1,25 +1,28 @@
 ---
 title: Regionale Endpunkte für Azure Cosmos DB-Graphdatenbank
 description: Erfahren Sie, wie Sie eine Verbindung mit dem nächstgelegenen Graphdatenbank-Endpunkt für Ihre Anwendung herstellen können.
-author: olignat
+author: christopheranderson
+ms.author: chrande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: overview
+ms.topic: how-to
 ms.date: 09/09/2019
-ms.author: olignat
-ms.openlocfilehash: a7db86c120fd633dd70fbb5733383c98a25e2cde
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3e30252d8f5e80538139f8100f1070385c1b6016
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886856"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361786"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionale Endpunkte für Azure Cosmos DB-Graphkonto
-Die Azure Cosmos DB-Graphdatenbank ist [global verteilt](distribute-data-globally.md), sodass Anwendungen mehrere Leseendpunkte verwenden können. Für Anwendungen, die Schreibzugriff an mehreren Speicherorten benötigen muss die [Multimaster](how-to-multi-master.md)-Funktion aktiviert sein.
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
+Die Azure Cosmos DB-Graphdatenbank ist [global verteilt](distribute-data-globally.md), sodass Anwendungen mehrere Leseendpunkte verwenden können. Für Anwendungen, die Schreibzugriff an mehreren Speicherorten benötigen, muss die Funktion [Schreibvorgänge in mehreren Regionen](how-to-multi-master.md) aktiviert sein.
 
 Gründe für die Auswahl mehrerer Regionen:
-1. **Horizontale Leseskalierbarkeit**: Wenn die Anwendungslast zunimmt, kann es ratsam sein, Lesedatenverkehr an verschiedene Azure-Regionen weiterzuleiten.
-2. **Niedrigere Latenz**: Sie die Netzwerklatenz bei jedem Durchlauf verringern, indem Sie Lese- und Schreibdatenverkehr an die nächstgelegene Azure-Region weiterleiten.
+1. **Horizontale Leseskalierbarkeit** : Wenn die Anwendungslast zunimmt, kann es ratsam sein, Lesedatenverkehr an verschiedene Azure-Regionen weiterzuleiten.
+2. **Niedrigere Latenz** : Sie die Netzwerklatenz bei jedem Durchlauf verringern, indem Sie Lese- und Schreibdatenverkehr an die nächstgelegene Azure-Region weiterleiten.
 
 Die Anforderung an die **Datenresidenz** Anforderung wird durch Festlegen der Azure Resource Manager-Richtlinie für das Cosmos DB-Konto erfüllt. Der Kunde kann Regionen einschränken, in die Cosmos DB Daten repliziert.
 
@@ -43,7 +46,7 @@ Der CNAME des globalen Datenbankkontos verweist immer auf eine gültige Schreibr
 
 Die Liste der Regionen für das Azure Cosmos DB-Graphkonto lässt sich am einfachsten über das Übersichtsblatt im Azure Portal abrufen. Dies funktioniert für Anwendungen, die Regionen nicht häufig ändern, oder eine Möglichkeit zum Aktualisieren der Liste über die Anwendungskonfiguration haben.
 
-![Abrufen von Regionen des Cosmos DB-Graphkontos aus dem Portal](./media/how-to-use-regional-gremlin/get-end-point-portal.png )
+:::image type="content" source="./media/how-to-use-regional-gremlin/get-end-point-portal.png " alt-text="Abrufen von Regionen des Cosmos DB-Graphkontos aus dem Portal":::
 
 Im folgenden Beispiel werden allgemeine Prinzipien für den Zugriff auf den regionalen Gremlin-Endpunkt veranschaulicht. Die Anwendung sollte die Anzahl der Regionen, an die der Datenverkehr gesendet werden soll, sowie die Anzahl der entsprechenden Gremlin-Clients berücksichtigen.
 

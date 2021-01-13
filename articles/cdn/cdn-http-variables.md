@@ -1,9 +1,9 @@
 ---
 title: HTTP-Variablen für Azure CDN-Regel-Engine | Microsoft-Dokumentation
-description: HTTP-Variablen ermöglichen Ihnen das Abrufen von HTTP-Anforderungs- und -Antwortmetadaten.
+description: Erfahren Sie mehr über HTTP-Variablen, mit denen Sie HTTP-Anforderungs- und Antwortmetadaten für einige Funktionen der Regel-Engine abrufen können. Verwenden Sie Metadaten, um eine Anforderung/Antwort zu ändern.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,34 +13,34 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: magattus
-ms.openlocfilehash: 53ad0c516547e17801bd57c2fd6b0d1704383797
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: allensu
+ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67593813"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88192676"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-Variablen für Azure CDN-Regel-Engine
 HTTP-Variablen stellen die Methoden für den Abruf von HTTP-Anforderungs- und -Antwortmetadaten bereit. Diese Metadaten können dann zur dynamischen Änderung einer Anforderung oder Antwort verwendet werden. Die Verwendung von HTTP-Variablen ist auf die folgenden Regel-Engine-Features beschränkt :
 
-- [Cache-Key Rewrite](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
-- [Modify Client Request Header](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
-- [Modify Client Response Header](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
-- [URL Redirect](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
-- [URL Rewrite](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
+- [Cache-Key Rewrite](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm)
+- [Modify Client Request Header](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Request-Header.htm)
+- [Modify Client Response Header](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Response-Header.htm)
+- [URL Redirect](https://docs.vdms.com/cdn/Content/HRE/F/URL-Redirect.htm)
+- [URL Rewrite](https://docs.vdms.com/cdn/Content/HRE/F/URL-Rewrite.htm)
 
 ## <a name="definitions"></a>Definitionen
 In der folgenden Tabelle sind die unterstützten HTTP-Variablen beschrieben. Ein leerer Wert wird zurückgegeben, wenn GEO-Metadaten (z.B. Postleitzahl) für eine bestimmte Anforderung nicht verfügbar sind.
 
 
-| NAME | Variable | BESCHREIBUNG | Beispielwert |
+| Name | Variable | BESCHREIBUNG | Beispielwert |
 | ---- | -------- | ----------- | ------------ |
 | ASN (Anfordernde Person) | %{geo_asnum} | Gibt die AS-Nummer der anfordernden Person an. <br /><br />**Veraltet:** %{virt_dst_asnum}. <br />Diese Variable wurde zugunsten von „%{geo_asnum}“ als veraltet markiert. Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird. | AS15133 |
 | Ort (Anfordernde Person) | %{geo_city} | Gibt den Ort der anfordernden Person an. | Los Angeles |
-| Kontinent (Anfordernde Person) | %{geo_continent} | Gibt den Kontinent der anfordernden Person über die jeweilige Abkürzung an. <br />Gültige Werte sind: <br />AF: Afrika<br />AS: Asien<br />EU: Europa<br />NA: Nordamerika<br />OC: Ozeanien<br />SA: Südamerika<br /><br />**Veraltet:** %{virt_dst_continent}. <br />Diese Variable wurde zugunsten von „%{geo_continent}“ als veraltet markiert. <br />Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird.| – |
+| Kontinent (Anfordernde Person) | %{geo_continent} | Gibt den Kontinent der anfordernden Person über die jeweilige Abkürzung an. <br />Gültige Werte sind: <br />AF: Afrika<br />AS: Asia<br />EU: Europa<br />NA: Nordamerika<br />OC: Ozeanien<br />SA: Südamerika<br /><br />**Veraltet:** %{virt_dst_continent}. <br />Diese Variable wurde zugunsten von „%{geo_continent}“ als veraltet markiert. <br />Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird.| – |
 | Cookiewert | %{cookie_Cookie} | Gibt den Wert zurück, der dem durch den Cookieausdruck identifizierten Cookieschlüssel entspricht. | Verwendungsbeispiel: <br />%{cookie__utma}<br /><br />Beispielwert:<br />111662281.2.10.1222100123 |
-| Land (Anfordernde Person) | %{geo_country} | Gibt das Herkunftsland der anfordernden Person über den jeweiligen Ländercode an. <br />**Veraltet:** %{virt_dst_country}. <br /><br />Diese Variable wurde zugunsten von „%{geo_country}“ als veraltet markiert. Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird. | US |
+| Land/Region (Anfordernde Person) | %{geo_country} | Gibt das Herkunftsland/die Herkunftsregion der anfordernden Person über den jeweiligen Länder-/Regionscode an. <br />**Veraltet:** %{virt_dst_country}. <br /><br />Diese Variable wurde zugunsten von „%{geo_country}“ als veraltet markiert. Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird. | US |
 | Designated Market Area (Anfordernde Person) | %{geo_dma_code} |Gibt den Medienmarkt der anfordernden Person anhand des Regionscodes an. <br /><br />Dieses Feld gilt nur für Anforderungen, die aus den Vereinigten Staaten stammen.| 745 |
 | HTTP-Anforderungsmethode | %{request_method} | Gibt die HTTP-Anforderungsmethode an. | GET |
 | HTTP-Statuscode | %{status} | Gibt den HTTP-Statuscode für die Antwort an. | 200 |
@@ -187,7 +187,7 @@ In diesem Beispielszenario ist die Variable *request_uri* festgelegt auf:
 
 In der folgenden Tabelle wird veranschaulicht, wie diese Syntax funktioniert.
 
-| Beispielsyntax | Ergebnisse | |
+| Beispielsyntax | Ergebnisse | BESCHREIBUNG |
 | ------------- | ------- | --- |
 | %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=en-US | Da die Variable mit dem Muster beginnt, wurde sie ersetzt. |
 | %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=en-US | Da die Variable nicht mit dem Muster endet, wurde keine Änderung vorgenommen.|

@@ -1,21 +1,16 @@
 ---
 title: Lokales Debuggen von Azure Data Lake Analytics-Code
 description: Erfahren Sie, wie Sie U-SQL-Aufträge mithilfe von Azure Data Lake Tools für Visual Studio auf der lokalen Arbeitsstation debuggen.
-services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
+ms.reviewer: jasonh
 ms.service: data-lake-analytics
-ms.topic: conceptual
-ms.workload: big-data
+ms.topic: how-to
 ms.date: 07/03/2018
-ms.openlocfilehash: 0827311218202de447e5cf27356e00c4da020e94
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c7218deac9efba6df6c1284f2578a744e768284
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472990"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221025"
 ---
 # <a name="debug-azure-data-lake-analytics-code-locally"></a>Lokales Debuggen von Azure Data Lake Analytics-Code
 
@@ -42,8 +37,10 @@ Sie können C#-Assemblys debuggen, ohne sie zu senden und beim Azure Data Lake A
 1. Erstellen Sie ein C#-Assemblyprojekt, und erstellen Sie es, um die **DLL**-Ausgabedatei zu generieren.
 2. Registrieren Sie die **DLL**-Datei mithilfe einer U-SQL-Anweisung:
 
-        CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
-        
+   ```sql
+   CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+   ```
+   
 3. Legen Sie Haltepunkte im C#-Code fest.
 4. Drücken Sie **F5**, um das Skript mit Verweis auf die C#-**DLL**-Datei lokal zu debuggen.
 

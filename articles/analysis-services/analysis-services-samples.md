@@ -1,19 +1,18 @@
 ---
-title: Beispiele für Azure Analysis Services-Codes, -Projekte und -Datenbanken | Microsoft-Dokumentation
-description: Erfahren Sie mehr über Code-, Projekt- und Datenbankbeispiele für Azure Analysis Services.
+title: Beispiele für Azure Analysis Services-Codes, -Projekte und -Datenbanken
+description: In diesem Artikel werden Ressourcen beschrieben, über die Sie mehr über Code-, Projekt- und Datenbankbeispiele für Azure Analysis Services erfahren.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d34da4e1b3d9c3131db1d9edd94f67a132dc564f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0ab0e64d9a088a332ba037dccf01dc445998ebfb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932365"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457563"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services – Beispiele
 
@@ -27,12 +26,15 @@ Das [Analysis Services](https://github.com/Microsoft/Analysis-Services)-Reposito
 
 [Adventure Works für Analysis Services](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) auf GitHub ist das am häufigsten verwendete Beispielprojekt für tabellarische Modelle. Sie können ein VS-Projekt oder eine vollständige Beispieldatenbank für tabellarische Modelle herunterladen.
 
+## <a name="sample-database-on-azure"></a>Beispieldatenbank in Azure
+
+Azure Synapse Analytics bietet eine AdventureWorksDW-Beispieldatenbank, die in eine bereitgestellte Ressource einbezogen werden kann. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Abfragen eines dedizierten SQL-Pools in Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
 
 ## <a name="sample-databases-on-github"></a>Beispieldatenbanken auf GitHub
 
 Diese Beispieldatenbanken auf GitHub können zum Erstellen und Testen Ihrer eigenen Modelle verwendet werden. 
 
-[Adventure Works-Beispieldatenbanken](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014)
+[Adventure Works-Beispieldatenbanken](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks)
 
 [Wide World Importers Database-Beispieldatenbanken](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0)
 
@@ -44,5 +46,5 @@ Wenn Sie über einen Analysis Services-Server im Azure-Portal verfügen, können
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Adventure Works-Tutorial](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
-[Herstellen einer Verbindung mit lokalen Datenquellen mit dem lokalen Azure-Datengateway](analysis-services-gateway.md)  
+[Adventure Works-Tutorial](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
+[Herstellen einer Verbindung mit lokalen Datenquellen mit dem lokalen Azure-Datengateway](analysis-services-gateway.md)

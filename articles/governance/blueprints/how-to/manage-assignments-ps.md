@@ -1,18 +1,14 @@
 ---
 title: 'Gewusst wie: Verwalten von Zuweisungen mit PowerShell'
 description: Es wird beschrieben, wie Sie Blaupausenzuweisungen mit dem offiziellen PowerShell-Modul „Az.Blueprint“ von Azure Blueprints verwalten.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 03/14/2019
-ms.topic: conceptual
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: beaa3f4c5ab272592e7fae5a95b40a9b586aaf65
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.date: 08/27/2020
+ms.topic: how-to
+ms.openlocfilehash: 3bcb3731bd1270497945fa86406d08b2f9750c85
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232890"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89051405"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Gewusst wie: Verwalten von Zuweisungen mit PowerShell
 
@@ -27,23 +23,23 @@ Das Modul muss hinzugefügt werden, um für Azure PowerShell das Verwalten von B
 Für das Azure Blueprints-Modul ist die folgende Software erforderlich:
 
 - Azure PowerShell 1.5.0 oder höher. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/powershell/azure/install-az-ps).
-- PowerShellGet 2.0.1 oder höher. Falls es nicht installiert oder aktuell ist, befolgen Sie [diese Anweisungen](/powershell/gallery/installing-psget).
+- PowerShellGet 2.0.1 oder höher. Falls es nicht installiert oder aktuell ist, befolgen Sie [diese Anweisungen](/powershell/scripting/gallery/installing-psget).
 
 ### <a name="install-the-module"></a>Installieren des Moduls
 
-Das Blueprints-Modul für PowerShell ist **Az.Blueprint**.
+Das Azure Blueprints-Modul für PowerShell ist **Az.Blueprint**.
 
 1. Führen Sie an einer **Administratoreingabeaufforderung** von PowerShell den folgenden Befehl aus:
 
    ```azurepowershell-interactive
-   # Install the Blueprints module from PowerShell Gallery
+   # Install the Azure Blueprints module from PowerShell Gallery
    Install-Module -Name Az.Blueprint
    ```
 
    > [!NOTE]
    > Falls bereits **Az.Accounts** installiert ist, muss unter Umständen `-AllowClobber` verwendet werden, um die Installation zu erzwingen.
 
-1. Vergewissern Sie sich, dass das Modul importiert wurde und die richtige Version (0.1.0) hat:
+1. Vergewissern Sie sich, dass das Modul importiert wurde und die richtige Version (0.2.6) hat:
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.Blueprint module
@@ -164,8 +160,13 @@ Falls die Blaupausenzuweisung noch nicht vorhanden ist, können Sie sie mit dem 
 
 - **ResourceGroupParameter** (optional)
   - Eine [Hashtabelle](/powershell/module/microsoft.powershell.core/about/about_hash_tables) mit Ressourcengruppenartefakten.
-  - Jeder Ressourcengruppenartefakt-Platzhalter verfügt über ein Schlüssel-Wert-Paar zum dynamischen Festlegen von **Name** bzw. **Location** im entsprechenden Ressourcengruppenartefakt.
+  - Jeder Ressourcengruppenartefakt-Platzhalter verfügt über ein Schlüssel-Wert-Paar zum dynamischen Festlegen von **Name** und **Location** im entsprechenden Ressourcengruppenartefakt.
   - Wenn kein Ressourcengruppenparameter angegeben wird und kein **defaultValue**-Element vorhanden ist, ist der Ressourcengruppenparameter nicht optional.
+- **AssignmentFile** (optional)
+  - Der Pfad zu einer JSON-Dateidarstellung einer Blaupausenzuweisung.
+  - Dieser Parameter ist Teil eines PowerShell-Parametersatzes, der nur **Name**, **Blueprint** und **SubscriptionId** sowie die allgemeinen Parameter enthält.
+
+### <a name="example-1-provide-parameters"></a>Beispiel 1: Angeben von Parametern
 
 Im folgenden Beispiel wird eine neue Zuweisung von Version „1.1“ der Blaupausendefinition „my-blueprint“ erstellt, die mit `Get-AzBlueprint` abgerufen wird. Hierbei wird der Standort der verwalteten Identität und des Zuweisungsobjekts auf „westus2“ festgelegt, die Ressourcen werden mit _AllResourcesReadOnly_ gesperrt, und die Hashtabellen für **Parameter** und **ResourceGroupParameter** im Abonnement `{subId}` werden festgelegt:
 
@@ -184,7 +185,7 @@ $bpRGParameters = @{ResourceGroup=@{name='storage_rg';location='westus2'}}
 
 # Create the new blueprint assignment
 $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Blueprint $bpDefinition `
-    -SubscriptionId '{subId}' -Location 'westus2' -Lock AllResourcesReadyOnly `
+    -SubscriptionId '{subId}' -Location 'westus2' -Lock AllResourcesReadOnly `
     -Parameter $bpParameters -ResourceGroupParameter $bpRGParameters
 ```
 
@@ -196,15 +197,60 @@ Id                : /subscriptions/{subId}/providers/Microsoft.Blueprint/bluepri
                     gnments/my-blueprint-assignment
 Scope             : /subscriptions/{subId}
 LastModified      : 2019-03-13
-LockMode          : AllResourcesReadyOnly
+LockMode          : AllResourcesReadOnly
 ProvisioningState : Creating
 Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
+### <a name="example-2-use-a-json-assignment-definition-file"></a>Beispiel 2: Verwenden einer JSON-Zuweisungsdefinitionsdatei
+
+Im folgenden Beispiel wird fast dieselbe Zuweisung wie in [Beispiel 1](#example-1-provide-parameters) erstellt. Anstatt der Übergabe von Parametern an das Cmdlet zeigt das Beispiel die Verwendung einer JSON-Zuweisungsdefinitionsdatei und des Parameters **AssignmentFile**. Außerdem wird die Eigenschaft **excludedPrincipals** als Teil von **locks** konfiguriert. Es gibt keinen PowerShell-Parameter für **excludedPrincipals**, und die Eigenschaft kann nur konfiguriert werden, indem sie durch die JSON-Zuweisungsdefinitionsdatei festgelegt wird.
+
+```json
+{
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "location": "westus2",
+  "properties": {
+    "description": "Assignment of the 101-blueprint-definition-subscription",
+    "blueprintId": "/subscriptions/{subId}/providers/Microsoft.Blueprint/blueprints/101-blueprints-definition-subscription",
+    "locks": {
+      "mode": "AllResourcesReadOnly",
+      "excludedPrincipals": [
+          "7be2f100-3af5-4c15-bcb7-27ee43784a1f",
+          "38833b56-194d-420b-90ce-cff578296714"
+      ]
+    },
+    "parameters": {
+      "storageAccount_storageAccountType": {
+        "value": "Standard_GRS"
+      }
+    },
+    "resourceGroups": {
+      "ResourceGroup": {
+        "name": "storage_rg",
+        "location": "westus2"
+      }
+    }
+  }
+}
+```
+
+```azurepowershell-interactive
+# Login first with Connect-AzAccount if not using Cloud Shell
+
+# Create the new blueprint assignment
+$bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -SubscriptionId '{subId}' `
+    -AssignmentFile '.\assignment.json'
+```
+
+Ein Beispiel für die JSON-Zuweisungsdefinitionsdatei für eine benutzerseitig zugewiesene verwaltete Identität finden Sie im Anforderungstext unter [Beispiel: Zuweisung mit benutzerseitig zugewiesener verwaltete Identität](/rest/api/blueprints/assignments/createorupdate#examples) für die Rest-API.
+
 ## <a name="update-blueprint-assignments"></a>Aktualisieren von Blaupausenzuweisungen
 
-In einigen Fällen kann es erforderlich sein, eine bereits erstellte Blaupausenzuweisung zu aktualisieren. Diese Aktion wird mit dem Cmdlet `Set-AzBlueprintAssignment` verarbeitet. Für das Cmdlet werden die meisten Parameter wie für das Cmdlet `New-AzBlueprintAssignment` verwendet, und alle Festlegungen der Zuweisung können aktualisiert werden. Ausnahmen hiervon sind _Name_, _Blueprint_ und _SubscriptionId_. Nur die angegebenen Werte werden aktualisiert.
+In einigen Fällen kann es erforderlich sein, eine bereits erstellte Blaupausenzuweisung zu aktualisieren. Diese Aktion wird mit dem Cmdlet `Set-AzBlueprintAssignment` verarbeitet. Für das Cmdlet werden die meisten Parameter wie für das Cmdlet `New-AzBlueprintAssignment` verwendet, und alle Festlegungen der Zuweisung können aktualisiert werden. Ausnahmen sind _Name_, _Blueprint_ und _SubscriptionId_. Nur die angegebenen Werte werden aktualisiert.
 
 Informationen zum Ablauf bei der Aktualisierung einer Blaupausenzuweisung finden Sie unter [Regeln für das Aktualisieren von Zuweisungen](./update-existing-assignments.md#rules-for-updating-assignments).
 
@@ -242,7 +288,7 @@ Informationen zum Ablauf bei der Aktualisierung einer Blaupausenzuweisung finden
 
 - **ResourceGroupParameter** (optional)
   - Eine [Hashtabelle](/powershell/module/microsoft.powershell.core/about/about_hash_tables) mit Ressourcengruppenartefakten.
-  - Jeder Ressourcengruppenartefakt-Platzhalter verfügt über ein Schlüssel-Wert-Paar zum dynamischen Festlegen von **Name** bzw. **Location** im entsprechenden Ressourcengruppenartefakt.
+  - Jeder Ressourcengruppenartefakt-Platzhalter verfügt über ein Schlüssel-Wert-Paar zum dynamischen Festlegen von **Name** und **Location** im entsprechenden Ressourcengruppenartefakt.
   - Wenn kein Ressourcengruppenparameter angegeben wird und kein **defaultValue**-Element vorhanden ist, ist der Ressourcengruppenparameter nicht optional.
 
 Im folgenden Beispiel wird die Zuweisung von Version „1.1“ der Blaupausendefinition „my-blueprint“ aktualisiert, die mit `Get-AzBlueprint` durch eine Änderung des Sperrmodus abgerufen wird:
@@ -288,7 +334,7 @@ $blueprintAssignment = Get-AzBlueprintAssignment -Name 'Assignment-lock-resource
 Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '{subId}'
 ```
 
-## <a name="end-to-end-code-example"></a>Umfassendes Codebeispiel
+## <a name="code-example"></a>Codebeispiel
 
 Im folgenden Beispiel sind alle Schritte zusammengefasst. Zuerst wird die Blaupausendefinition abgerufen, und anschließend wird eine Blaupausenzuweisung im spezifischen Abonnement `{subId}` entfernt:
 
@@ -310,7 +356,7 @@ $bpRGParameters = @{ResourceGroup=@{name='storage_rg';location='westus2'}}
 
 # Create the new blueprint assignment
 $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Blueprint $bpDefinition `
-    -SubscriptionId '{subId}' -Location 'westus2' -Lock AllResourcesReadyOnly `
+    -SubscriptionId '{subId}' -Location 'westus2' -Lock AllResourcesReadOnly `
     -Parameter $bpParameters -ResourceGroupParameter $bpRGParameters
 #endregion CreateAssignment
 

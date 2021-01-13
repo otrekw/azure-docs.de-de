@@ -1,24 +1,19 @@
 ---
-title: Verwenden von inkrementellen Momentaufnahmen für die Sicherung und Wiederherstellung von nicht verwalteten Azure-Linux-VM-Datenträgern | Microsoft-Dokumentation
-description: Erstellen Sie eine benutzerdefinierte Lösung für die Sicherung und Wiederherstellung der Datenträger Ihrer virtuellen Azure-Linux-Computer mithilfe inkrementeller Momentaufnahmen.
-services: virtual-machines-linux
-documentationcenter: na
-author: aungoo-msft
-manager: tadb
-editor: tysonn
-ms.assetid: 3524b987-bd65-4e35-83e7-fbc2136643e5
-ms.service: virtual-machines-linux
-ms.workload: storage
-ms.tgt_pltfrm: vm-linux
-ms.topic: article
-ms.date: 01/23/2017
-ms.author: aungoo
+title: Verwenden von inkrementellen Momentaufnahmen zur Sicherung und Wiederherstellung nicht verwalteter Datenträger
+description: Erstellen Sie eine benutzerdefinierte Lösung für die Sicherung und Wiederherstellung der Datenträger Ihrer virtuellen Azure-Computer mithilfe inkrementeller Momentaufnahmen.
+author: roygara
+ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 569c65af1b52ed4b6a792cac7f3fcd94b9338448
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.workload: storage
+ms.topic: how-to
+ms.date: 09/15/2018
+ms.author: rogarana
+ms.openlocfilehash: 295ff6ad0f623ac602e145e741db42ace5161538
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083120"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87085570"
 ---
+# <a name="back-up-azure-unmanaged-virtual-machine-disks-with-incremental-snapshots"></a>Sichern nicht verwalteter Azure-VM-Datenträger mithilfe inkrementeller Momentaufnahmen
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

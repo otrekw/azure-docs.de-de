@@ -1,6 +1,6 @@
 ---
 title: Problembehandlung bei Speicherressourcen-Löschfehlern auf Linux-VMs in Azure | Microsoft-Dokumentation
-description: Behebung von Problemen beim Löschen von Speicherressourcen, die angefügte VHDs enthalten.
+description: Erfahren Sie, wie Sie auf Linux-VMs Probleme beim Löschen von Speicherressourcen beheben, die angefügte VHDs enthalten.
 keywords: ''
 services: virtual-machines
 author: genlin
@@ -11,24 +11,24 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 50ab4b0f1e676ffcba0ce69ab6aa957e4c77ab88
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 8d727bc8bdc8f015504baa57f9596b3bacac9712
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058151"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022869"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Behebung von Problemen mit Speicherressourcen-Löschfehlern
 
 In bestimmten Szenarios könnten Sie auf einen der folgenden Fehler treffen, wenn Sie versuchen, ein Azure-Speicherkonto, einen Container oder ein Blob in einer Azure Resource Manager-Bereitstellung zu löschen:
 
-> **Fehler beim Löschen von Speicherkonto 'StorageAccountName'. Fehler Das Speicherkonto kann nicht gelöscht werden, da zugehörige Artefakte gerade verwendet werden.**
+> **Fehler beim Löschen von Speicherkonto 'StorageAccountName'. Error: Das Speicherkonto kann nicht gelöscht werden, da zugehörige Artefakte gerade verwendet werden.**
 > 
 > **Fehler beim Löschen von # von # Container(n):<br>vhds: Es ist derzeit eine Lease für den Container vorhanden, und in der Anforderung wurde keine Lease-ID angegeben.**
 > 
 > **Fehler beim Löschen von # von # Blob(s):<br>BlobName.vhd: Es ist derzeit eine Lease für das Blob vorhanden, und in der Anforderung wurde keine Lease-ID angegeben.**
 
-Die auf virtuellen Azure-Computern verwendeten VHDs sind VHD-Dateien, die als Seitenblobs in einem Standard- oder Premium-Speicherkonto in Azure gespeichert sind. Weitere Informationen zu Azure-Datenträgern finden Sie in unserer [Einführung in verwaltete Datenträger](../linux/managed-disks-overview.md).
+Die auf virtuellen Azure-Computern verwendeten VHDs sind VHD-Dateien, die als Seitenblobs in einem Standard- oder Premium-Speicherkonto in Azure gespeichert sind. Weitere Informationen zu Azure-Datenträgern finden Sie in unserer [Einführung in verwaltete Datenträger](../managed-disks-overview.md).
 
 Azure verhindert das Löschen eines an eine VM angefügten Datenträgers, um eine Beschädigung zu vermeiden. Zudem verhindert es das Löschen von Containern und Speicherkonten mit einem Seitenblob, das an einen virtuellen Computer angefügt ist. 
 
@@ -95,7 +95,7 @@ Wenn die VHD ein Datenträger ist, trennen Sie die VHD von der VM, um die Lease 
 7. Wählen Sie oben im Bereich **Datenträger** die Option **Bearbeiten** aus.
 8. Klicken Sie für den zu löschenden Datenträger auf das Symbol **Trennen**.
 
-     ![Screenshot des Portals, in dem der Speicherbereich „Blobmetadaten“ geöffnet ist](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
+     ![Screenshot des Portals mit geöffnetem Speicherbereich „Blobmetadaten“ und hervorgehobenem Symbol für das Trennen des zu löschenden Datenträgers](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
 9. Wählen Sie **Speichern** aus. Der Datenträger ist jetzt vom virtuellen Computer getrennt, und die VHD wird nicht mehr geleast. Es kann einige Minuten dauern, bis die Lease freigegeben wird. Um sich zu vergewissern, dass das Lease aufgehoben wurde, navigieren Sie zum Blobspeicherort, und prüfen Sie im Bereich **Blobeigenschaften**, ob der **Leasezustand** den Zustand **Entsperrt** oder **Verfügbar** aufweist.
 

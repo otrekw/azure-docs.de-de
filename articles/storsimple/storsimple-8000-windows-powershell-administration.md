@@ -1,25 +1,17 @@
 ---
-title: Geräteverwaltung mit PowerShell für StorSimple | Microsoft Docs
+title: Geräteverwaltung mit PowerShell für StorSimple
 description: Erfahren Sie, wie Sie Windows PowerShell für StorSimple zum Verwalten von StorSimple-Geräten verwenden.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 7e488a1b2a63323361a597aaa6a438630fc09a05
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 65e9657c3948d8ce5883cd33ca8720f501352105
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621633"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995425"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Verwenden von Windows PowerShell für StorSimple zum Verwalten eines StorSimple-Geräts
 
@@ -36,8 +28,8 @@ In diesem Artikel lernen Sie Folgendes:
 * Abrufen von Hilfe in Windows PowerShell für StorSimple.
 
 > [!NOTE]
-> * Windows PowerShell für StorSimple-Cmdlets ermöglicht Ihnen die Verwaltung Ihres StorSimple-Geräts über eine serielle Konsole oder die Remoteverwaltung über Windows PowerShell-Remoting. Weitere Informationen zu den einzelnen Cmdlets, die an dieser Schnittstelle verwendet werden können, finden Sie in der [Cmdlet-Referenz für Windows PowerShell für StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
-> * Die Azure PowerShell-Cmdlets für StorSimple sind eine andere Sammlung von Cmdlets, die Ihnen die Automatisierung von Aufgaben auf StorSimple-Dienstebene und Migrationsaufgaben über die Befehlszeile ermöglichen. Weitere Informationen zu den Azure PowerShell-Cmdlets für StorSimple finden Sie in der [Referenz zu den Azure StorSimple-Cmdlets](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure).
+> * Windows PowerShell für StorSimple-Cmdlets ermöglicht Ihnen die Verwaltung Ihres StorSimple-Geräts über eine serielle Konsole oder die Remoteverwaltung über Windows PowerShell-Remoting. Weitere Informationen zu den einzelnen Cmdlets, die an dieser Schnittstelle verwendet werden können, finden Sie in der [Cmdlet-Referenz für Windows PowerShell für StorSimple](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps).
+> * Die Azure PowerShell-Cmdlets für StorSimple sind eine andere Sammlung von Cmdlets, die Ihnen die Automatisierung von Aufgaben auf StorSimple-Dienstebene und Migrationsaufgaben über die Befehlszeile ermöglichen. Weitere Informationen zu den Azure PowerShell-Cmdlets für StorSimple finden Sie in der [Referenz zu den Azure StorSimple-Cmdlets](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure).
 
 
 Es gibt zwei Möglichkeiten des Zugriffs auf Windows PowerShell für StorSimple:
@@ -58,7 +50,7 @@ Stellen Sie sicher, dass die folgenden PuTTY-Einstellungen zum Herstellen einer 
 1. Wählen Sie im Dialogfeld **Neukonfiguration** von PuTTY im Bereich **Kategorie** die Option **Tastatur** aus.
 2. Stellen Sie sicher, dass die folgenden Optionen aktiviert sind (dies sind die Standardeinstellungen, wenn Sie eine neue Sitzung starten).
    
-   | Tastaturelement | Auswahl |
+   | Tastaturelement | Select |
    | --- | --- |
    | RÜCKTASTE |Strg+? (127) |
    | POS1- und Ende-Tasten |Standard |
@@ -113,11 +105,11 @@ Sie können zwischen folgenden Einstellungen wählen:
      > [!NOTE]
      > Dies ist die bevorzugte Option, wenn Sie das Administratorkennwort für das Gerät vergessen haben und keine Verbindung über Option 1 oder 2 herstellen können.
 
-4. **Ändern der Sprache** Diese Option ermöglicht das Ändern der Anzeigesprache auf der Windows PowerShell-Benutzeroberfläche. Die unterstützten Sprachen sind Chinesisch, Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch (Brasilien), Russisch, Spanisch und Südkoreanisch.
+4. **Ändern der Sprache** Diese Option ermöglicht das Ändern der Anzeigesprache auf der Windows PowerShell-Benutzeroberfläche. Die unterstützten Sprachen sind Chinesisch, Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch, Russisch, Spanisch und Südkoreanisch.
 
 ## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>Herstellen einer Remoteverbindung mit StorSimple mithilfe von Windows PowerShell für StorSimple
 
-Sie können Windows PowerShell-Remoting zum Herstellen einer Verbindung mit dem StorSimple-Gerät verwenden. Wenn Sie auf diese Weise eine Verbindung herstellen, wird kein Menü angezeigt. (Sie sehen nur ein Menü, wenn Sie zum Verbinden die serielle Konsole auf dem Gerät verwenden. Beim Herstellen einer Remoteverbindung werden Sie direkt zur Entsprechung von „Option 1 – Vollzugriff“ auf der seriellen Konsole geführt.) Mit Windows PowerShell-Remoting stellen Sie eine Verbindung mit einem bestimmten Runspace her. Sie können zudem die Anzeigesprache angeben.
+Sie können Windows PowerShell-Remoting zum Herstellen einer Verbindung mit dem StorSimple-Gerät verwenden. Wenn Sie auf diese Weise eine Verbindung herstellen, wird kein Menü angezeigt. (Sie sehen nur ein Menü, wenn Sie zum Verbinden die serielle Konsole auf dem Gerät verwenden. Beim Herstellen einer Remoteverbindung werden Sie direkt zur Entsprechung von „Option 1 – Vollzugriff“ auf der seriellen Konsole weitergeleitet.) Mit Windows PowerShell-Remoting stellen Sie eine Verbindung mit einem bestimmten Runspace her. Sie können zudem die Anzeigesprache angeben.
 
 Die Anzeigesprache ist unabhängig von der Sprache, die Sie mithilfe der Option **Sprache ändern** im Menü der seriellen Konsole festlegen. Remote PowerShell wählt automatisch das Gebietsschema des Geräts aus, mit dem Sie eine Verbindung herstellen, wenn keines angegeben ist.
 
@@ -186,4 +178,3 @@ Sie können die Hilfe in der Windows PowerShell-Schnittstelle problemlos aktuali
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Probleme auf Ihrem StorSimple-Gerät bei einem der zuvor genannten Workflows auftreten, konsultieren Sie die [Tools zur Problembehandlung für StorSimple-Bereitstellungen](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).
-

@@ -1,31 +1,31 @@
 ---
-title: 'Bereinigen und Vorbereiten von Daten für Azure Machine Learning: Team Data Science-Prozess'
+title: Vorbereiten von Daten für ML Studio (klassisch) – Team Data Science-Prozess
 description: Vorverarbeiten und Bereinigen von Daten als Vorbereitung für die effektive Verwendung in Machine Learning.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2b3ec3352d6e1939b195bbba87b8a824404346ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: caedcf313ab809e9607907545f26ca1b62bbeca7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61044599"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012406"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Aufgaben zur Vorbereitung von Daten für erweitertes Machine Learning
-Die Vorverarbeitung und Bereinigung von Daten ist eine wichtige Aufgabe, die vor dem effektiven Verwenden eines Datasets für Machine Learning durchgeführt werden muss. Unformatierte Daten enthalten oft unnötige bzw. fehlende Werte und sind unzuverlässig. Die Verwendung dieser Daten für die Modellierung kann zu falschen Ergebnissen führen. Diese Aufgaben sind Teil des Team Data Science-Prozesses (TDSP). Normalerweise wird zuerst eine Untersuchung eines Datasets durchgeführt, um die erforderliche Vorverarbeitung zu ermitteln und zu planen. Eine ausführliche Anleitung zum TDSP-Prozess finden Sie in den Schritten, die unter [Team Data Science-Prozess](overview.md) beschrieben sind.
+Die Vorverarbeitung und Bereinigung von Daten sind wichtige Aufgaben, die durchgeführt werden müssen, bevor ein Dataset zum Trainieren von Modellen verwendet werden kann. Unformatierte Daten enthalten oft unnötige bzw. fehlende Werte und sind unzuverlässig. Die Verwendung dieser Daten für die Modellierung kann zu falschen Ergebnissen führen. Diese Aufgaben sind Teil des Team Data Science-Prozesses (TDSP). Normalerweise wird zuerst eine Untersuchung eines Datasets durchgeführt, um die erforderliche Vorverarbeitung zu ermitteln und zu planen. Eine ausführliche Anleitung zum TDSP-Prozess finden Sie in den Schritten, die unter [Team Data Science-Prozess](overview.md) beschrieben sind.
 
-Aufgaben der Vorverarbeitung und Bereinigung, z. B. die Datenuntersuchung, können in vielen verschiedenen Umgebungen ausgeführt werden, z. B. SQL oder Hive oder Azure Machine Learning Studio, sowie mit unterschiedlichen Tools und Sprachen, z. B. R oder Python. Dies hängt davon ab, wo die Daten gespeichert sind und wie sie formatiert sind. Da der TDSP iterativ ist, können diese Aufgaben im Workflow des Prozesses in verschiedenen Schritten erfolgen.
+Aufgaben der Vorverarbeitung und Bereinigung, z. B. die Datenuntersuchung, können in vielen verschiedenen Umgebungen ausgeführt werden, wie etwa SQL oder Hive oder Azure Machine Learning Studio (klassisch), sowie mit unterschiedlichen Tools und Sprachen, z. B. R oder Python. Dies hängt davon ab, wo die Daten gespeichert sind und wie sie formatiert sind. Da der TDSP iterativ ist, können diese Aufgaben im Workflow des Prozesses in verschiedenen Schritten erfolgen.
 
-In diesem Artikel werden verschiedene Konzepte und Aufgaben zur Datenverarbeitung beschrieben, die vor oder nach der Erfassung von Daten in Azure Machine Learning durchgeführt werden können.
+In diesem Artikel werden verschiedene Konzepte und Aufgaben zur Datenverarbeitung beschrieben, die vor oder nach der Erfassung von Daten in Azure Machine Learning Studio (klassisch) durchgeführt werden können.
 
-Ein Beispiel für die Datenuntersuchung und Vorverarbeitung in Azure Machine Learning Studio ist im Video [Vorverarbeitung von Daten in Azure Machine Learning Studio](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) enthalten.
+Ein Beispiel für die Datenuntersuchung und Vorverarbeitung in Azure Machine Learning Studio (Classic) finden Sie im [Video zur Vorverarbeitung von Daten](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/).
 
 ## <a name="why-pre-process-and-clean-data"></a>Warum müssen Daten vorverarbeitet und bereinigt werden?
 Echte Daten stammen aus verschiedenen Quellen und Abläufen und können daher Unregelmäßigkeiten oder beschädigte Daten enthalten, die die Qualität des DataSets beeinträchtigen. Folgende Qualitätsprobleme treten bei Daten häufiger auf:
@@ -43,22 +43,22 @@ Sie können die allgemeine Qualität der Daten überprüfen, indem Sie Folgendes
 * Die Anzahl der **Attribute** (oder **Features**).
 * Die Attribut- **Datentypen** (nominal, ordinal oder fortlaufend).
 * Die Anzahl der **fehlenden Werte**.
-* **Wohlgeformtheit** der Daten.
+* **Wohlgeformte** Daten.
   * Wenn die Daten in TSV- oder CSV-Dateien gespeichert sind, sollten Sie prüfen, ob die Spalten- und Zeilentrennzeichen die Spalten und Zeilen auch immer richtig trennen.
   * Bei Daten im HTML- oder XML-Format überprüfen Sie, ob die Daten gemäß den jeweiligen Standards wohlgeformt sind.
   * Es ist möglicherweise eine Analyse erforderlich, um strukturierte Informationen aus teilweise strukturierten oder unstrukturierten Daten zu extrahieren.
-* **Inkonsistente Datensätze**. Überprüfen Sie den zulässigen Wertebereich. Wenn die Daten z.B. die Notendurchschnitte von Schülern enthalten, sollte der Durchschnitt im festgelegten Bereich liegen, also z.B. 0 bis 4.
+* **Inkonsistente Datensätze**. Überprüfen Sie den zulässigen Wertebereich. Wenn die Daten z. B. die Notendurchschnitte von Schülern enthalten, sollte der Durchschnitt im festgelegten Bereich liegen, also z. B. 0 bis 4.
 
 Wenn Sie Probleme für die Daten ermitteln, sind **Verarbeitungsschritte** erforderlich. Dazu gehören häufig die Bereinigung fehlender Werte, die Datennormalisierung, die Diskretisierung, die Textverarbeitung zum Entfernen und/oder Ersetzen eingebetteter Zeichen, die Einfluss auf die Datenausrichtung haben können, das Bereinigen gemischter Datentypen in gemeinsamen Feldern u. a.
 
-**In Azure Machine Learning werden wohlgeformte Tabellendaten verarbeitet.**  Wenn die Daten bereits in tabellarischer Form vorliegen, kann die Datenvorverarbeitung direkt in Azure Machine Learning in Machine Learning Studio ausgeführt werden.  Wenn Daten nicht in tabellarischer Form vorliegen, sondern z. B. als XML, ist eine Analyse erforderlich, um die Daten in eine tabellarische Form zu konvertieren.  
+**In Azure Machine Learning werden wohlgeformte Tabellendaten verarbeitet.**  Wenn die Daten bereits in tabellarischer Form vorliegen, kann die Datenvorverarbeitung direkt mit Azure Machine Learning Studio (klassisch) im Machine Learning ausgeführt werden.  Wenn Daten nicht in tabellarischer Form vorliegen, sondern z. B. als XML, ist eine Analyse erforderlich, um die Daten in eine tabellarische Form zu konvertieren.  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Welches sind die wichtigsten Vorgänge bei der Datenvorverarbeitung?
 * **Datenbereinigung**:  Auffüllen fehlender Werte, Erkennen und Entfernen überflüssiger Daten und Ausreißer.
 * **Datentransformation**:  Normalisierung der Daten, um Umfang und Störungen zu verringern.
 * **Datenreduzierung**:  Erstellen von Stichproben aus den Datensätzen oder Attributen zur einfacheren Datenverarbeitung.
 * **Datendiskretisierung**:  Konvertieren kontinuierlicher Attribute in kategorische Attribute zur einfacheren Verwendung in bestimmten Machine Learning-Methoden.
-* **Textbereinigung**: Entfernen eingebetteter Zeichen, die zu einer falschen Datenausrichtung führen können, z. B. eingebetteter Tabstopps in tabstoppgetrennten Dateien oder eingebetteter Zeilenumbrüche, die Datensätze unterbrechen könnten, usw.
+* **Textbereinigung**: Entfernen eingebetteter Zeichen, die zu einer falschen Datenausrichtung führen können, z. B. eingebetteter Tabstopps in tabstoppgetrennten Dateien oder eingebetteter Zeilenumbrüche, die z. B. Datensätze unterbrechen könnten.
 
 In den folgenden Abschnitten werden einige dieser Schritte zur Datenverarbeitung beschrieben.
 
@@ -92,11 +92,11 @@ Es gibt verschiedene Methoden zum Reduzieren der Größe zur einfacheren Datenve
 * **Aggregation**: Unterteilen der Daten in Gruppen und Speichern der Zahlen für jede Gruppe. Beispielsweise können die Tageseinnahmen einer Restaurant-Kette aus den letzten 20 Jahren im monatlichen Umsatz zusammengefasst werden, um die Größe der Daten zu verringern.  
 
 ## <a name="how-to-clean-text-data"></a>Wie werden Textdaten bereinigt?
-**Textfelder in Tabellendaten** können Zeichen enthalten, die sich auf die Spaltenausrichtung und/oder die Datensatzgrenzen auswirken. Eingebettete Tabstopps in einer tabstoppgetrennten Datei verursachen z. B. Fehlausrichtungen von Spalten, während eingebettete Zeilenumbrüche Datensatzzeilen beschädigen. Eine fehlerhafte Verarbeitung von Textcodierungen beim Schreiben oder Lesen von Text kann zu Datenverlusten und unbeabsichtigten Einfügungen von unlesbaren Zeichen, z. B. NULL-Werten, führen und möglicherweise auch Auswirkungen auf die Textanalyse haben. Es ist möglicherweise eine sorgfältige Analyse und Bearbeitung erforderlich, um Textfelder für die korrekte Ausrichtung zu bereinigen und um strukturierte Daten aus unstrukturierten oder teilweise strukturierten Textdaten zu extrahieren.
+**Textfelder in Tabellendaten** können Zeichen enthalten, die sich auf die Spaltenausrichtung und/oder die Datensatzgrenzen auswirken. Eingebettete Tabstopps in einer tabstoppgetrennten Datei verursachen z. B. Fehlausrichtungen von Spalten, während eingebettete Zeilenumbrüche Datensatzzeilen beschädigen. Eine fehlerhafte Verarbeitung von Textcodierungen beim Schreiben oder Lesen von Text kann zu Datenverlusten und unbeabsichtigten Einfügungen von unlesbaren Zeichen (z. B. NULL-Werte) führen und möglicherweise auch Auswirkungen auf die Textanalyse haben. Es ist möglicherweise eine sorgfältige Analyse und Bearbeitung erforderlich, um Textfelder für die korrekte Ausrichtung zu bereinigen und um strukturierte Daten aus unstrukturierten oder teilweise strukturierten Textdaten zu extrahieren.
 
-**Durchsuchen von Daten** ermöglicht einen frühzeitigen Einblick in die Daten. Während dieses Schritts können bereits einige Probleme mit den Daten aufgedeckt und entsprechende Methoden angewendet werden, um diese Probleme zu beheben.  Es ist wichtig, Fragen wie die zur Ursache des Problems und dessen Ursprung zu stellen. Dadurch können Sie auch bessere Entscheidungen für die Verarbeitungsschritte treffen, die zum Lösen der Probleme erforderlich sind. Die Einblicke, die aus den Daten gewonnen werden sollen, können auch zum Festlegen von Prioritäten für die Datenverarbeitung verwendet werden.
+**Durchsuchen von Daten** ermöglicht einen frühzeitigen Einblick in die Daten. Während dieses Schritts können bereits einige Probleme mit den Daten aufgedeckt und entsprechende Methoden angewendet werden, um diese Probleme zu beheben.  Es ist wichtig, Fragen wie die zur Ursache des Problems und dessen Ursprung zu stellen. Mit diesem Prozess können Sie auch bessere Entscheidungen für die Datenverarbeitungsschritte treffen, die zum Lösen der Probleme erforderlich sind. Die Identifizierung der endgültigen Anwendungsfälle und Personas kann auch zur Priorisierung des Datenverarbeitungsaufwands verwendet werden.
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 > *Datamining: Concepts and Techniques*, 3. Auflage, Morgan Kaufmann, 2011, Jiawei Han, Micheline Kamber und Jian Pei
 > 
 > 

@@ -1,25 +1,15 @@
 ---
-title: Reliable Actors in Service Fabric | Microsoft Docs
+title: Reliable Actors in Service Fabric
 description: Erfahren Sie, wie Reliable Actors auf den Ebenen der Reliable Services angeordnet sind und die Features der Service Fabric-Plattform verwenden.
-services: service-fabric
-documentationcenter: .net
-author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 3/9/2018
-ms.author: vturecek
-ms.openlocfilehash: bc7569c9f230abb7677a8df9fc0cc0268e57296f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c3bd67e0f71e20a8b5a74b4b38e5b423a14dc08d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725903"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575617"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Verwendung der Service Fabric-Plattform durch Reliable Actors
 In diesem Artikel wird die Funktionsweise von Reliable Actors auf der Azure Service Fabric-Plattform beschrieben. Reliable Actors arbeiten in einem Framework, das in einer Implementierung des zustandsbehafteten zuverlässigen Diensts gehostet wird, der als *Akteurdienst* bezeichnet wird. Der Akteurdienst enthält alle Komponenten, die zum Verwalten des Lebenszyklus und zum Übermitteln von Nachrichten für Ihre Akteure erforderlich sind:
@@ -99,7 +89,7 @@ Bei Verwendung von GUIDs/UUIDs und Zeichenfolgen werden für die Werte Int64-Has
 ## <a name="next-steps"></a>Nächste Schritte
 * [Actor-Zustandsverwaltung](service-fabric-reliable-actors-state-management.md)
 * [Actor-Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md)
-* [Actors API reference documentation](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet)
+* [Actors API reference documentation](/dotnet/api/microsoft.servicefabric.actors?view=azure-dotnet)
 * [.NET-Beispielcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-Beispielcode](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

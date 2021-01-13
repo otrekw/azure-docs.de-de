@@ -3,17 +3,17 @@ title: Erfassen von Leistungsindikatoren in Azure-Clouddiensten | Microsoft-Doku
 description: Erfahren Sie, wie Sie mithilfe von Azure-Diagnose und Application Insights Leistungsindikatoren in Clouddiensten ermitteln, verwenden und erstellen.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 02/02/2018
-ms.author: gwallace
-ms.openlocfilehash: d6b16b859b29ef835bca75c5fca0ea1a9d35a306
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.author: tagore
+ms.openlocfilehash: 39843ad83830a72b5d6b01cc00ecd65269c02e12
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68358939"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078594"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Erfassen von Leistungsindikatoren für Ihren Azure-Clouddienst
 
@@ -70,7 +70,7 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 \Processor(*)\C3 Transitions/sec
 ```
 
-Die individuellen Indikatorpfade können zum verwendeten Diagnoseframework Ihres Diensts hinzugefügt werden. Weitere Informationen dazu, wie ein Leistungsindikatorpfad zusammengesetzt wird, finden Sie unter [Angeben eines Indikatorpfads](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85)).
+Die individuellen Indikatorpfade können zum verwendeten Diagnoseframework Ihres Diensts hinzugefügt werden. Weitere Informationen dazu, wie ein Leistungsindikatorpfad zusammengesetzt wird, finden Sie unter [Angeben eines Indikatorpfads](/windows/win32/perfctrs/specifying-a-counter-path).
 
 ## <a name="collect-a-performance-counter"></a>Erfassen eines Leistungsindikators
 
@@ -121,7 +121,7 @@ Mit der Azure-Diagnoseerweiterung für Clouddienste können Sie angeben, welche 
 
 Die zu erfassenden Leistungsindikatoren werden in der Datei **diagnostics.wadcfgx** definiert. Öffnen Sie diese Datei (sie ist basierend auf der Rolle definiert) in Visual Studio, und suchen Sie nach dem Element **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters**. Fügen Sie ein neues untergeordnetes Element **PerformanceCounterConfiguration** hinzu. Dieses Element umfasst zwei Attribute: `counterSpecifier` und `sampleRate`. Das Attribut `counterSpecifier` definiert, welcher Satz an Systemleistungsindikatoren (siehe vorheriger Abschnitt) erfasst werden soll. Der Wert `sampleRate` gibt an, wie oft dieser Wert abgerufen wird. Alle Leistungsindikatoren werden gemäß Attributwert `scheduledTransferPeriod` des übergeordneten Elements `PerformanceCounters` an Azure übertragen.
 
-Weitere Informationen zum Schemaelement `PerformanceCounters` finden Sie unter [Schema der Azure-Diagnose](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element).
+Weitere Informationen zum Schemaelement `PerformanceCounters` finden Sie unter [Schema der Azure-Diagnose](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element).
 
 Der durch das Attribut `sampleRate` definierte Zeitraum verwendet den XML-Zeitraumdatentyp, um anzugeben, wie häufig der Leistungsindikator abgerufen wird. Im nachstehenden Beispiel ist die Rate auf `PT3M` festgelegt, dies bedeutet `[P]eriod[T]ime[3][M]inutes`: alle drei Minuten.
 
@@ -290,5 +290,5 @@ Wie zuvor erwähnt, werden die zu erfassenden Leistungsindikatoren in der Datei 
 
 - [Application Insights für Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Systemleistungsindikatoren in Application Insights](../azure-monitor/app/performance-counters.md)
-- [Angeben eines Indikatorpfads](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
-- [Schema der Azure-Diagnose – Leistungsindikatoren](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)
+- [Angeben eines Indikatorpfads](/windows/win32/perfctrs/specifying-a-counter-path)
+- [Schema der Azure-Diagnose – Leistungsindikatoren](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)

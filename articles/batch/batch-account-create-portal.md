@@ -1,41 +1,29 @@
 ---
-title: Erstellen eines Kontos über das Azure-Portal – Azure Batch | Microsoft-Dokumentation
+title: Erstellen eines Kontos über das Azure-Portal
 description: Erfahren Sie, wie Sie ein Azure Batch-Konto im Azure-Portal erstellen, um umfangreiche parallele Workloads in der Cloud auszuführen.
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: gwallace
-editor: ''
-ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 02/26/2019
-ms.author: lahugh
+ms.topic: how-to
+ms.date: 06/10/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5cceb7cc179f78d6b6d7350e7c4f6c31bb9cbfed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1205de2b800588b735aeb20d388ba4b64bc6b078
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095715"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84711339"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
 
-Hier erfahren Sie, wie Sie im [Azure-Portal][azure_portal] ein Azure Batch-Konto erstellen und geeignete Kontoeigenschaften für Ihr Computeszenario auswählen. Außerdem erfahren Sie, wo Sie wichtige Kontoeigenschaften wie Zugriffsschlüssel und Konto-URLs finden.
+In diesem Artikel erfahren Sie, wie Sie im [Azure-Portal](https://portal.azure.com) ein Azure Batch-Konto mit den geeigneten Kontoeigenschaften für Ihr Computeszenario erstellen. Außerdem erfahren Sie, wo Sie wichtige Kontoeigenschaften wie Zugriffsschlüssel und Konto-URLs finden.
 
-Hintergrundinformationen zu Batch-Konten und -Szenarien finden Sie in der [Funktionsübersicht](batch-api-basics.md).
+Hintergrundinformationen zu Batch-Konten und -Szenarien finden Sie unter [Workflow und Ressourcen des Batch-Diensts](batch-service-workflow-features.md).
 
 ## <a name="create-a-batch-account"></a>Erstellen eines Batch-Kontos
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. Melden Sie sich beim [Azure-Portal][azure_portal] an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Klicken Sie auf **Ressource erstellen** > **Compute** > **Batch-Dienst**.
-
-    ![Batch im Marketplace][marketplace_portal]
+1. Klicken Sie auf **Ressource erstellen**, auf **Compute** und anschließend auf **Batch-Dienst**.
 
 1. Geben Sie unter **Neues Batch-Konto** die Einstellungen ein. Orientieren Sie sich an den folgenden Details:
 
@@ -49,7 +37,7 @@ Hintergrundinformationen zu Batch-Konten und -Szenarien finden Sie in der [Funkt
 
     d. **Standort**: Die Azure-Region, in der das Batch-Konto erstellt werden soll. Nur die von Ihrem Abonnement und der Ressourcengruppe unterstützten Regionen werden als Optionen angezeigt.
 
-    e. **Speicherkonto**: Ein optionales Azure Storage-Konto, das Sie dem Batch-Konto zuordnen. Die beste Leistung erzielen Sie mit einem Speicherkonto vom Typ „Allgemein v2“. Informationen zu allen Speicherkontooptionen in Batch finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md#azure-storage-account). Wählen Sie im Portal ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues.
+    e. **Speicherkonto**: Ein optionales Azure Storage-Konto, das Sie dem Batch-Konto zuordnen. Die beste Leistung erzielen Sie mit einem Speicherkonto vom Typ „Allgemein v2“. Informationen zu allen Speicherkontooptionen in Batch finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](accounts.md#azure-storage-accounts). Wählen Sie im Portal ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues.
 
       ![Speicherkonto erstellen][storage_account]
 
@@ -62,6 +50,9 @@ Hintergrundinformationen zu Batch-Konten und -Szenarien finden Sie in der [Funkt
 ## <a name="view-batch-account-properties"></a>Anzeigen der Eigenschaften des Batch-Kontos
 
 Klicken Sie nach der Kontoerstellung auf das Konto, um auf dessen Einstellungen und Eigenschaften zuzugreifen. Über das linke Menü können Sie auf alle Kontoeinstellungen und -eigenschaften zugreifen.
+
+> [!NOTE]
+> Der Name des Batch-Kontos ist seine ID und kann nicht geändert werden. Wenn Sie den Namen eines Batch-Kontos ändern müssen, müssen Sie das Konto löschen und ein neues mit dem gewünschten Namen erstellen.
 
 ![Seite „Batch-Konto“ im Azure-Portal][account_blade]
 
@@ -83,7 +74,7 @@ Wenn Sie ein Batch-Konto im Benutzerabonnementmodus erstellen möchten, führen 
 
 Wenn Sie Ihr erstes Batch-Konto im Modus „Benutzerabonnement“ erstellen, müssen Sie Ihr Abonnement bei Batch registrieren. (Falls Sie diesen Schritt bereits ausgeführt haben, fahren Sie mit dem nächsten Abschnitt fort.)
 
-1. Melden Sie sich beim [Azure-Portal][azure_portal] an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Klicken Sie auf **Alle Dienste** > **Abonnements** und anschließend auf das Abonnement, das Sie für das Batch-Konto verwenden möchten.
 
@@ -95,7 +86,7 @@ Wenn Sie Ihr erstes Batch-Konto im Modus „Benutzerabonnement“ erstellen, mü
 
     ![Abonnementzugriffssteuerung][subscription_access]
 
-1. Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** die Rolle **Mitwirkender** aus, und suchen Sie die Batch-API. Suchen Sie diese Zeichenfolgen, bis Sie die API gefunden haben:
+1. Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** die Rolle **Mitwirkender** oder **Besitzer** aus, und suchen Sie die Batch-API. Suchen Sie diese Zeichenfolgen, bis Sie die API gefunden haben:
     1. **MicrosoftAzureBatch**.
     1. **Microsoft Azure Batch**. Neuere Azure AD-Mandanten verwenden diesen Namen unter Umständen.
     1. **ddbf3205-c6bd-46ae-8127-60eb93363864** ist die ID für die Batch-API.
@@ -106,27 +97,31 @@ Wenn Sie Ihr erstes Batch-Konto im Modus „Benutzerabonnement“ erstellen, mü
 
 ### <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
 
-Im Modus „Benutzerabonnement“ wird ein Azure-Schlüsseltresor benötigt. Dieser muss der gleichen Ressourcengruppe angehören wie das zu erstellende Batch-Konto. Stellen Sie sicher, dass sich die Ressourcengruppe in einer Region befindet, in der Batch [verfügbar](https://azure.microsoft.com/regions/services/) ist und die von Ihrem Abonnement unterstützt wird.
+Im Modus „Benutzerabonnement“ ist ein [Azure-Schlüsseltresor](../key-vault/general/overview.md) erforderlich. Der Schlüsseltresor muss sich im gleichen Abonnement und in der gleichen Region befinden wie das Batch-Konto, das erstellt werden soll. 
 
-1. Wählen Sie im [Azure-Portal][azure_portal] **Neu** > **Sicherheit** > **Key Vault** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com)**Neu** > **Sicherheit** > **Key Vault** aus.
 
-1. Geben Sie auf der Seite **Schlüsseltresor erstellen** einen Namen für den Schlüsseltresor ein, und erstellen Sie eine Ressourcengruppe in der Region, die Sie für Ihr Batch-Konto verwenden möchten. Behalten Sie bei den übrigen Einstellungen die Standardwerte bei, und klicken Sie auf **Erstellen**.
+1. Geben Sie auf der Seite **Schlüsseltresor erstellen** einen Namen für den Schlüsseltresor ein. Erstellen Sie eine Ressourcengruppe in der Region, in der sich das Batch-Konto befinden soll. Behalten Sie bei den übrigen Einstellungen die Standardwerte bei, und klicken Sie auf **Erstellen**.
 
-Wenn Sie das Batch-Konto im Benutzerabonnementmodus erstellen, verwenden Sie die Ressourcengruppe für den Schlüsseltresor. Geben Sie **Benutzerabonnement** als Poolzuordnungsmodus an, wählen Sie den Schlüsseltresor aus, und aktivieren Sie das Kontrollkästchen, um Azure Batch Zugriff auf den Schlüsseltresor zu gewähren. 
+Geben Sie beim Erstellen des Batch-Kontos im Modus „Benutzerabonnement“ die Option **Benutzerabonnement** als Poolzuordnungsmodus an. Wählen Sie den Schlüsseltresor aus, und aktivieren Sie das Kontrollkästchen, um Azure Batch Zugriff auf den Schlüsseltresor zu gewähren.
 
-Wenn Sie den Zugriff auf den Schlüsseltresor lieber manuell gewähren möchten, wechseln Sie zum Abschnitt **Zugriffsrichtlinien** des Schlüsseltresors, wählen Sie **Zugriffsrichtlinie hinzufügen** aus, und suchen Sie nach **Microsoft Azure Batch**. Nach Auswahl dieser Option müssen Sie die **Berechtigungen für Geheimnis** mithilfe des Dropdownmenüs konfigurieren. Azure Batch muss mindestens die Berechtigungen **Abrufen**, **Auflisten**, **Festlegen** und **Löschen** erhalten.
+Wenn Sie den Zugriff auf den Schlüsseltresor lieber manuell gewähren möchten, wechseln Sie zum Abschnitt **Zugriffsrichtlinien** des Schlüsseltresors. Wählen Sie **Zugriffsrichtlinie hinzufügen** aus, und suchen Sie nach **Microsoft Azure Batch**. Nach Auswahl dieser Option müssen Sie mithilfe des Dropdownmenüs die **Berechtigungen für Geheimnis** konfigurieren. Azure Batch muss mindestens die Berechtigungen **Abrufen**, **Auflisten**, **Festlegen** und **Löschen** erhalten.
 
 ![Berechtigungen für Geheimnis für Azure Batch](./media/batch-account-create-portal/secret-permissions.png)
 
+> [!NOTE]
+> Stellen Sie sicher, dass unter **Zugriffsrichtlinien** für die verknüpfte **Key Vault**-Ressource die Kontrollkästchen **Azure Virtual Machines für Bereitstellung** und **Azure Resource Manager für Vorlagenbereitstellung** aktiviert sind.
+>
+> ![Obligatorische Schlüsseltresor-Zugriffsrichtlinie](./media/batch-account-create-portal/key-vault-access-policy.png)
+
 ### <a name="configure-subscription-quotas"></a>Konfigurieren von Abonnementkontingenten
 
-Für Batch-Konten vom Typ „Benutzerabonnement“ sind standardmäßig keine Kernkontingente festgelegt. Kernkontingente müssen manuell festgelegt werden, da Batch-Standardkernkontingente nicht für Konten im Modus „Benutzerabonnement“ gelten.
+Für Batch-Konten im Modus „Benutzerabonnement“ müssen Kernspeicherkontingente manuell festgelegt werden. Batch-Standardkernkontingente gelten nicht für Konten im Modus „Benutzerabonnement“.
 
-1. Wählen Sie im [Azure-Portal][azure_portal] Ihr Batch-Konto im Benutzerabonnementmodus aus, um die dazugehörigen Einstellungen und Eigenschaften anzuzeigen.
-
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihr Batch-Konto im Benutzerabonnementmodus aus, um die dazugehörigen Einstellungen und Eigenschaften anzuzeigen.
 1. Wählen Sie im linken Menü die Option **Kontingente** aus, um die Kernkontingente für Ihr Batch-Konto anzuzeigen und zu konfigurieren.
 
-Weitere Informationen zu Kernkontingenten für den Benutzerabonnementmodus finden Sie unter [Batch-Dienst – Kontingente und Limits](batch-quota-limit.md).
+Weitere Informationen zu Kernspeicherkontingenten für den Modus „Benutzerabonnement“ finden Sie unter [Batch-Dienst – Kontingente und Limits](batch-quota-limit.md).
 
 ## <a name="other-batch-account-management-options"></a>Weitere Optionen für die Verwaltung von Batch-Konten
 
@@ -138,13 +133,9 @@ Neben der Verwendung des Azure-Portals stehen Ihnen zum Erstellen und Verwalten 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu den Konzepten und Features des Batch-Diensts finden Sie in der [Funktionsübersicht für Batch](batch-api-basics.md). In diesem Artikel werden die primären Batch-Ressourcen (wie etwa Pools, Computeknoten, Aufträge und Aufgaben) beschrieben, und er enthält eine Übersicht über die Dienstfeatures für umfangreiche Computeworkloads.
+* Erfahren Sie mehr über den [Workflow des Batch-Diensts und primäre Ressourcen](batch-service-workflow-features.md) wie Pools, Knoten, Aufträge und Aufgaben.
 * Informieren Sie sich über die Grundlagen der Entwicklung einer Batch-fähigen Anwendung mit der [Batch-.NET-Clientbibliothek](quick-run-dotnet.md) oder mit [Python](quick-run-python.md). In diesen Schnellstarts werden Sie durch eine Beispielanwendung geführt, die den Batch-Dienst zum Ausführen einer Workload auf mehreren Computeknoten verwendet und Azure Storage zum Bereitstellen und Abrufen von Workloaddateien nutzt.
 
-[azure_portal]: https://portal.azure.com
-[batch_pricing]: https://azure.microsoft.com/pricing/details/batch/
-
-[marketplace_portal]: ./media/batch-account-create-portal/marketplace-batch.png
 [account_blade]: ./media/batch-account-create-portal/batch_blade.png
 [account_portal]: ./media/batch-account-create-portal/batch-account-portal.png
 [pool_allocation]: ./media/batch-account-create-portal/batch-pool-allocation.png

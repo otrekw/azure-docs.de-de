@@ -4,18 +4,18 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 07/10/2019
 ms.author: danlep
-ms.openlocfilehash: c1cca99a04e78c40cdd1061e52e49f45a73c73eb
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2b28cc742bb981e0db535d39cb0c7fbf027470ea
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361270"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83673763"
 ---
 ### <a name="identity-tier"></a>Identitätsschicht 
 
 Die Partnerschaft zwischen Microsoft und Oracle ermöglicht die Einrichtung einer einheitlichen Identität in Azure, OCI und Ihrer Oracle-Anwendung. Für die JD Edwards EnterpriseOne- und die PeopleSoft-Anwendungssuite wird eine OHS-Instanz (Oracle-HTTP-Server) benötigt, um das einmalige Anmelden zwischen Azure AD und Oracle IDCS einzurichten.
 
-OHS fungiert als Reverseproxy für die Logikschicht. Das bedeutet, dass alle an die Endanwendungen gerichteten Anforderungen OHS durchlaufen. Oracle Access Manager WebGate ist ein OHS-Webserver-Plug-In, das jede an die Endanwendung gerichtete Anforderung abfängt. Handelt es sich bei einer Ressource, auf die zugegriffen wird, um eine geschützte Ressource, für die eine authentifizierte Sitzung erforderlich ist, initiiert WebGate den OIDC-Authentifizierungsablauf mit Identity Cloud Service über den Browser des Benutzers. Weitere Informationen zu den Abläufen, die von OpenID Connect WebGate unterstützt werden, finden Sie in der [Oracle Access Manager-Dokumentation](https://docs.oracle.com/en/middleware/idm/access-manager/12.2.1.3/aiaag/integrating-webgate-oidc-server.html).
+OHS fungiert als Reverseproxy für die Logikschicht. Das bedeutet, dass alle an die Endanwendungen gerichteten Anforderungen OHS durchlaufen. Oracle Access Manager WebGate ist ein OHS-Webserver-Plug-In, das jede an die Endanwendung gerichtete Anforderung abfängt. Handelt es sich bei einer Ressource, auf die zugegriffen wird, um eine geschützte Ressource, für die eine authentifizierte Sitzung erforderlich ist, initiiert WebGate den OIDC-Authentifizierungsablauf mit Identity Cloud Service über den Browser des Benutzers. Weitere Informationen zu den Abläufen, die von OpenID Connect WebGate unterstützt werden, finden Sie in der [Oracle Access Manager-Dokumentation](https://docs.oracle.com/cd/E52734_01/oam/AIAAG/GUID-1E927D1B-FB83-425B-8768-85DB441821A4.htm#AIAAG7327).
 
 Mit diesem Setup kann ein bereits bei Azure AD angemeldeter Benutzer zur JD Edwards EnterpriseOne- oder PeopleSoft-Anwendung navigieren, ohne sich erneut über Oracle Identity Cloud Service anzumelden. Kunden, die diese Lösung bereitstellen, profitieren von den Vorteilen des einmaligen Anmeldens. Hierzu zählen etwa ein einzelner Satz von Anmeldeinformationen, ein verbessertes Anmeldeverfahren, höhere Sicherheit und geringere Helpdeskkosten.
 

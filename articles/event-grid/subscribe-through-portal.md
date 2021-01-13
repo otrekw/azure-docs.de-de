@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid-Abonnements über das Portal
-description: In diesem Artikel wird beschrieben, wie Event Grid-Abonnements über das Portal erstellt werden.
-services: event-grid
-author: spelluru
-ms.service: event-grid
+description: In diesem Artikel wird beschrieben, wie Sie Event Grid Abonnements für die unterstützten Quellen mithilfe des Azure-Portals erstellen, z. B. für Azure Blob Storage.
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.author: spelluru
-ms.openlocfilehash: b54bc52a2feaf4646d801265ddb273c2c86158ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/07/2020
+ms.openlocfilehash: e80e2243c93ab38187646256f567d6ab73c40100
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60823520"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995062"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Abonnieren von Ereignissen über das Portal
 
@@ -20,7 +16,7 @@ In diesem Artikel wird beschrieben, wie Event Grid-Abonnements über das Portal 
 
 ## <a name="create-event-subscriptions"></a>Erstellen von Ereignisabonnements
 
-Befolgen Sie die folgenden Schritte, um ein Event Grid-Abonnement für jede der unterstützten [Ereignisquellen](event-sources.md) zu erstellen. Dieser Artikel zeigt, wie ein Event Grid-Abonnement für ein Azure-Abonnement erstellt wird.
+Befolgen Sie die folgenden Schritte, um ein Event Grid-Abonnement für jede der unterstützten [Ereignisquellen](overview.md#event-sources) zu erstellen. Dieser Artikel zeigt, wie ein Event Grid-Abonnement für ein Azure-Abonnement erstellt wird.
 
 1. Wählen Sie **Alle Dienste** aus.
 
@@ -28,7 +24,7 @@ Befolgen Sie die folgenden Schritte, um ein Event Grid-Abonnement für jede der 
 
 1. Suchen Sie nach **Event Grid-Abonnements**, und wählen Sie diese Option aus den verfügbaren Optionen aus.
 
-   ![Suchen,](./media/subscribe-through-portal/search.png)
+   ![Screenshot der Suche im Azure-Portal, in dem „Event Grid-Abonnements“ ausgewählt ist](./media/subscribe-through-portal/search.png)
 
 1. Klicken Sie auf **+ Ereignisabonnement**.
 
@@ -44,7 +40,7 @@ Befolgen Sie die folgenden Schritte, um ein Event Grid-Abonnement für jede der 
 
 1. Stellen Sie zusätzliche Details zum Ereignisabonnement bereit, wie etwa den Endpunkt für die Behandlung von Ereignissen sowie einen Abonnementnamen.
 
-   ![Abonnementdetails bereitstellen](./media/subscribe-through-portal/provide-subscription-details.png)
+   ![Screenshot, der die Abschnitte „Endpunktdetails“ und „Ereignisabonnementdetails“ mit einem eingegebenen Wert für den Abonnementnamen zeigt.](./media/subscribe-through-portal/provide-subscription-details.png)
 
 1. Wählen Sie **Zusätzliche Features** aus, um die Verarbeitung unzustellbarer Nachrichten zu aktivieren und Wiederholungsrichtlinien anzupassen.
 

@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142917"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "80437774"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Was ist Azure Data Box Heavy?
 
@@ -65,7 +65,7 @@ Das Data Box Heavy-Gerät weist in dieser Version folgende Merkmale auf.
 | Dimensionen                                              | Breite: 66 cm Höhe: 71 cm Länge: 122 cm |
 | Platzbedarf im Rack                                              | Nicht im Rack einbaubar|
 | Erforderliche Kabel                                         | 4 geerdete 120 V/10 A-Netzkabel (NEMA 5-15) enthalten <br> Das Gerät unterstützt bis zu 240 V Netzspannung und weist C-13-Kaltgerätekupplungen auf <br> Verwenden Sie Netzwerkkabel, die mit [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) kompatibel sind.  |
-| Potenz                                                    | 4 eingebaute Netzteile (PSUs), die gemeinsam übergreifend über beide Geräteknoten verwendet werden <br> 1\.200 Watt Nennleistung|
+| Power                                                    | 4 eingebaute Netzteile (PSUs), die gemeinsam übergreifend über beide Geräteknoten verwendet werden <br> 1\.200 Watt Nennleistung|
 | Speicherkapazität                                        | ~ 1 PB unformatiert, 70 Datenträger mit jeweils 14 TB <br> 770 TB nutzbare Kapazität|
 | Anzahl von Knoten                                          | 2 unabhängige Knoten pro Gerät (je 500 TB) |
 | Netzwerkschnittstellen pro Knoten                             | 4 Netzwerkschnittstellen pro Knoten <br><br> MGMT, DATA3 <ul><li> 2 X 1-GbE-Schnittstellen </li><li> MGMT dient zur Verwaltung und Ersteinrichtung und ist nicht vom Benutzer konfigurierbar </li><li> DATA3 ist vom Benutzer konfigurierbar und standardmäßig DHCP (Dynamic Host Configuration Protocol)</li></ul>DATA1-, DATA2-Datenschnittstellen <ul><li>2 X 40-GbE-Schnittstellen </li><li> Für DHCP (Standard) vom Benutzer konfigurierbar oder statisch</li></ul>|
@@ -116,9 +116,9 @@ Die aktuellsten Informationen zur regionalen Verfügbarkeit von Data Box Heavy f
 
 Führen Sie die folgenden Schritte aus, um sich für Data Box-Heavy zu registrieren:
 
-1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+1. [Melden Sie sich beim Azure-Portal an.](https://portal.azure.com)
 2. Klicken Sie auf **+ Ressource erstellen**, um eine neue Ressource zu erstellen. Suchen Sie nach **Azure Data Box**. Wählen Sie den Dienst **Azure Data Box** aus.
-3. Klicken Sie auf **Create**.
+3. Klicken Sie auf **Erstellen**.
 4. Wählen Sie das Abonnement aus, das Sie für Data Box Heavy verwenden möchten. Wählen Sie die Region aus, in der Sie die Data Box Heavy-Ressource bereitstellen möchten. Klicken Sie bei der Option **Data Box Heavy** auf **Registrieren**.
 5. Beantworten Sie die Fragen nach dem Land/der Region, in dem/der sich die Daten befinden, Zeitrahmen, Azure-Zieldienst für die Datenübertragung, der Netzwerkbandbreite und Häufigkeit der Datenübertragung. Überprüfen Sie „Datenschutz und Nutzungsrichtlinien“, und aktivieren Sie das Kontrollkästchen „Microsoft darf Ihre E-Mail-Adresse für die Kontaktaufnahme verwenden“.
 

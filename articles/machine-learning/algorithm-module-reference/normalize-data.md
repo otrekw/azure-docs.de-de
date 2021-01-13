@@ -1,24 +1,24 @@
 ---
 title: 'Normalize Data: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit dem Modul „Normalize Data“ (Normalisieren von Daten) in Azure Machine Learning Service ein Dataset durch *Normalisierung* transformieren können.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mit dem Modul „Normalize Data“ (Normalisieren von Daten) in Azure Machine Learning ein Dataset durch *Normalisierung* transformieren können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 504224ae586e18fc5bf9294b537e730da37a2423
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 02/22/2020
+ms.openlocfilehash: de0a23ca9dea210d91fe259b06622226549ba3b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128567"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90890452"
 ---
 # <a name="normalize-data-module"></a>Modul „Normalize Data“ (Normalisieren von Daten)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul zum Transformieren eines Datasets mittels *Normalisierung*.
 
@@ -32,7 +32,7 @@ Dieses Modul bietet mehrere Optionen zum Transformieren numerischer Daten:
 
 - Sie können alle Werte auf einer Skala von 0-1 ändern oder die Werte transformieren, indem Sie sie als Perzentilränge statt als absolute Werte darstellen.
 - Sie können die Normalisierung auf eine einzelne Spalte oder mehrere Spalten in einem Dataset anwenden.
-- Wenn Sie das Experiment wiederholen oder die gleichen Normalisierungsschritte auf andere Daten anwenden müssen, können Sie die Schritte als Normalisierungstransformation speichern und auf andere Datasets anwenden, die das gleiche Schema haben.
+- Wenn Sie die Pipeline wiederholen oder die gleichen Normalisierungsschritte auf andere Daten anwenden müssen, können Sie die Schritte als Normalisierungstransformation speichern und auf andere Datasets anwenden, die das gleiche Schema haben.
 
 > [!WARNING]
 > Einige Algorithmen erfordern, dass Daten vor dem Trainieren eines Modells normalisiert werden. Andere Algorithmen führen ihre eigenen Datenskalierung oder -normalisierung durch. Wenn Sie also einen Algorithmus für maschinelles Lernen wählen, der beim Erstellen eines prädiktiven Modells verwendet werden soll, überprüfen Sie unbedingt die Datenanforderungen des Algorithmus, bevor Sie die Normalisierung auf die Trainingsdaten anwenden.
@@ -41,7 +41,7 @@ Dieses Modul bietet mehrere Optionen zum Transformieren numerischer Daten:
 
 Mithilfe dieses Moduls können Sie jeweils nur eine Normalisierungsmethode anwenden. Aus diesem Grund wird die gleiche Normalisierungsmethode auf alle Spalten angewendet, die Sie auswählen. Um andere Normalisierungsmethoden anzuwenden, verwenden Sie eine zweite Instanz von **Normalize Data**.
 
-1. Fügen Sie das Modul **Normalize Data** Ihrem Experiment hinzu. Sie finden das Modul in Azure Machine Learning unter **Data Transformation** (Datentransformation) in der Kategorie **Scale and Reduce** (Skalieren und reduzieren).
+1. Fügen Sie das Modul **Normalize Data** Ihrer Pipeline hinzu. Sie finden das Modul in Azure Machine Learning unter **Data Transformation** (Datentransformation) in der Kategorie **Scale and Reduce** (Skalieren und reduzieren).
 
 2. Stellen Sie eine Verbindung mit einem Dataset her, das mindestens eine Spalte mit allen Zahlen enthält.
 
@@ -82,7 +82,7 @@ Mithilfe dieses Moduls können Sie jeweils nur eine Normalisierungsmethode anwen
   
       Die Werte in der Spalte werden mithilfe der folgenden Formel transformiert:
   
-      ![Formel für logarithmische Normalverteilung](media/module/aml-normalization-lognormal.png "AML_normalization-lognormal")
+      ![Logarithmische Normalverteilung](media/module/aml-normalization-lognormal.png "AML_normalization-lognormal")
     
       Hier sind μ und σ die Parameter der Verteilung, die empirisch anhand der Daten als Maximum-Likelihood-Schätzungen berechnet werden, und zwar für jede Spalte einzeln.  
   
@@ -92,21 +92,21 @@ Mithilfe dieses Moduls können Sie jeweils nur eine Normalisierungsmethode anwen
     
       ![Normalisierung mithilfe der tanh-Funktion](media/module/aml-normalization-tanh.png "AML_normalization-tanh")
 
-6. Führen Sie das Experiment aus, oder doppelklicken Sie auf das Modul **Normalize Data**, und klicken Sie auf **Run Selected** (Ausgewählte ausführen). 
+6. Übermitteln Sie die Pipeline, oder doppelklicken Sie auf das Modul **Normalize Data**, und wählen Sie **Auswahl ausführen** aus. 
 
 ## <a name="results"></a>Ergebnisse
 
 Das Modul **Normalize Data** generiert zwei Ausgaben:
 
-- Um die transformierten Werte anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul. Wählen Sie **Transformed dataset**  (Transformiertes Dataset) aus, und klicken Sie auf **Visualize** (Visualisieren).
+- Um die transformierten Werte anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Visualisieren** aus.
 
     Standardmäßig werden Werte direkt transformiert. Wenn Sie die transformierten Werte mit den Originalwerten vergleichen möchten, verwenden Sie das Modul [Add Columns](./add-columns.md) (Spalten hinzufügen), um die Datasets neu zu kombinieren und die Spalten nebeneinander zu betrachten.
 
-- Um die Transformation so zu speichern, dass Sie die gleiche Normalisierungsmethode auf ein anderes ähnliches Dataset anwenden können, klicken Sie mit der rechten Maustaste auf das Modul, wählen Sie **Transformation function** (Transformationsfunktion)aus, und klicken Sie auf **Save as Transform** (Als Transformation speichern).
+- Wählen Sie zum Speichern der Transformation, damit Sie dieselbe Normalisierungsmethode auf ein anderes Dataset anwenden können, das Modul aus, und wählen Sie **Dataset registrieren** unter der Registerkarte **Ausgaben** im rechten Fensterbereich aus.
 
-    Sie können anschließend die gespeicherten Transformationen aus der Gruppe **Transforms** im linken Navigationsbereich laden und sie auf ein Dataset mit dem gleichen Schema anwenden, indem Sie [./Apply Transformation](apply-transformation.md) (Transformation anwenden) verwenden.  
+    Sie können anschließend die gespeicherten Transformationen aus der Gruppe **Transforms** im linken Navigationsbereich laden und sie auf ein Dataset mit dem gleichen Schema anwenden, indem Sie [Apply Transformation](apply-transformation.md) (Transformation anwenden) verwenden.  
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

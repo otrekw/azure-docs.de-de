@@ -1,27 +1,24 @@
 ---
-title: Erstellen oder Verknüpfen paralleler Verzweigungen – Azure Logic Apps | Microsoft-Dokumentation
-description: Vorgehensweise zum Erstellen oder Verknüpfen paralleler Verzweigungen für Workflows in Azure Logic Apps
+title: Erstellen oder Verknüpfen paralleler Branches für Aktionen in Workflows
+description: Erfahren Sie, wie Sie parallel ausgeführte Branches für unabhängige Workflowaktionen in Azure Logic Apps erstellen oder zusammenführen.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 2e1c155a371fa96e4f772f632a9585948b012e54
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3514ce966e1de9af1741de6b966964aca2599610
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685065"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269232"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Erstellen oder Verknüpfen paralleler Verzweigungen für Workflowaktionen in Azure Logic Apps
 
 Standardmäßig werden Ihre Aktionen in Logik-App-Workflows nacheinander ausgeführt. Zum gleichzeitigen Ausführen unabhängiger Aktionen können Sie [parallele Verzweigungen](#parallel-branches) erstellen und später in Ihrem Flow [diese Verzweigungen verknüpfen](#join-branches). 
 
 > [!TIP] 
-> Wenn Sie einen Auslöser verwenden, der ein Array empfängt, und für jedes Arrayelement einen Workflow ausführen möchten, können Sie dieses Array mit der [**Auslösereigenschaft** SplitOn](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) *aus dem Batch lösen*.
+> Wenn Sie einen Auslöser verwenden, der ein Array empfängt, und für jedes Arrayelement einen Workflow ausführen möchten, können Sie dieses Array mit der [**Auslösereigenschaft** SplitOn](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)*aus dem Batch lösen*.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,7 +47,7 @@ Ihre Logik-App wartet, bis alle Verzweigungen abgeschlossen sind, bevor der Work
 
 1. Suchen Sie über das Suchfeld nach der gewünschten Aktion, und wählen Sie sie aus.
 
-   ![Suchen und Auswählen der gewünschten Aktion](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
+   ![Screenshot: Fenster „Aktion auswählen“ im Logik-App-Designer](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
 
    Ihre ausgewählte Aktion wird jetzt z. B. im parallelen Branch angezeigt:
 
@@ -62,7 +59,7 @@ Ihre Logik-App wartet, bis alle Verzweigungen abgeschlossen sind, bevor der Work
 
 1. Suchen Sie über das Suchfeld nach der gewünschten Aktion, und wählen Sie sie aus.
 
-   ![Suchen und Auswählen der sequenziellen Aktion](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
+   ![Screenshot: Fenster „Aktion auswählen“ und Suchfeld im Logik-App-Designer](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
 
    Ihre ausgewählte Aktion wird jetzt z. B. im aktuellen Branch angezeigt:
 
@@ -186,7 +183,7 @@ Wenn Sie in der Codeansicht arbeiten, können Sie die Verknüpfungsstruktur stat
 
 ## <a name="get-support"></a>Support
 
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Wenn Sie Featurevorschläge übermitteln oder darüber abstimmen möchten, besuchen Sie die [Website für Azure Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte

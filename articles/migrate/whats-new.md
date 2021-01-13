@@ -1,37 +1,93 @@
 ---
-title: Neuerungen in Azure Migrate | Microsoft-Dokumentation
-description: Enthält eine Übersicht über den Azure Migrate-Dienst.
-author: rayne-wiselman
-ms.service: azure-migrate
+title: Neuerungen in Azure Migrate
+description: Erfahren Sie mehr über die Neuerungen und aktuellen Updates des Azure Migrate-Diensts.
 ms.topic: overview
-ms.date: 06/10/2019
-ms.author: raynew
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 2c3bc596076f3ec4f9d41f0da819ddd386fee63c
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 7ff9d9c6624016d4b1ea94072d52de1c42d73913
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811044"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400470"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Neuerungen in Azure Migrate
 
-[Azure Migrate](migrate-services-overview.md) unterstützt Sie beim Ermitteln, Bewerten und Migrieren von Servern, Apps und Daten in die Microsoft Azure Cloud. In diesem Artikel werden die neuen Features in Azure Migrate zusammengefasst.
+[Azure Migrate](migrate-services-overview.md) unterstützt Sie beim Ermitteln, Bewerten und Migrieren von lokalen Servern, Apps und Daten in die Microsoft Azure Cloud. In diesem Artikel werden die neuen Releases und Features in Azure Migrate zusammengefasst.
+## <a name="update-december-2020"></a>Update (Dezember 2020)
+- Azure Migrate installiert jetzt automatisch den VM-Agent von Azure auf den VMware-VMs, während diese mit der Methode ohne Agent der VMware-Migration zu Azure migriert werden.
+- Die Migration von VMware-VMs mit der Azure Migrate-Servermigration (Replikation ohne Agents) zu Azure-VMs mit Datenträgern, die mithilfe der serverseitigen Verschlüsselung (SSE) mit vom Kunden verwalteten Schlüsseln (CMK) verschlüsselt sind, ist nun über das Azure-Portal verfügbar.
+
+## <a name="update-september-2020"></a>Update (September 2020)
+- Die Migration von Servern zu Verfügbarkeitszonen wird jetzt unterstützt.
+- Die Migration von UEFI-basierten VMs und physischen Servern zu Azure-VMs der Generation 2 wird jetzt unterstützt. Mit dieser Version führt das Tool für die Azure Migrate- Servermigration bei der Migration nicht die Konvertierung von der Gen2-VM in eine Gen1-VM aus.
+- Ein neues Dashboard für Azure Migrate Power BI-Bewertung ist verfügbar, mit dem Sie die Kosten über verschiedene Bewertungseinstellungen hinweg vergleichen können. Das Dashboard enthält ein PowerShell-Hilfsprogramm, das die Bewertungen automatisch erstellt, die in das Power BI-Dashboard eingebunden werden. [Weitere Informationen.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
+- Abhängigkeitsanalyse (ohne Agent) kann nun gleichzeitig für 1.000 VMs ausgeführt werden.
+- Abhängigkeitsanalyse (ohne Agent) kann nun maßstabsgerecht mithilfe von PowerShell-Skripts aktiviert oder deaktiviert werden. [Weitere Informationen.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- Visualisieren Sie Netzwerkverbindungen in Power BI mithilfe der mit Abhängigkeitsanalyse erfassten Daten (ohne Agent) [Weitere Informationen.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- Die Migration von VMware-VMs mit einer Datenträgergröße von bis zu 32 TB wird jetzt unter Verwendung von Azure Migrate unterstützt: Servermigrationsmethode ohne Agent für VMware-Migration.
+
+## <a name="update-august-2020"></a>Update (August 2020)
+
+- Verbessertes Onboardingverfahren, bei dem ein Azure Migrate-Projektschlüssel über das Portal erstellt und zum Abschließen der Applianceregistrierung verwendet wird
+- Option zum Herunterladen von OVA-/VHD-Dateien oder der Installationsskripts aus dem Portal, um die VMware- bzw. Hyper-V-Appliances einzurichten
+- Aktualisierung des Appliance-Konfigurations-Managers mit erweiterter Benutzeroberfläche
+- Unterstützung mehrerer Anmeldeinformationen für die Ermittlung von Hyper-V-VMs
+
+## <a name="update-july-2020"></a>Update (Juli 2020)
+
+- Agent-lose VMware-Migration unterstützt nun gleichzeitige Replikation von 300 VMs pro vCenter.
+
+## <a name="update-june-2020"></a>Update (Juni 2020)
+
+- Bewertungen für die Migration von lokalen VMware-VMs zu [Azure VMware Solution (AVS)](./concepts-azure-vmware-solution-assessment-calculation.md) werden jetzt unterstützt. [Weitere Informationen](how-to-create-azure-vmware-solution-assessment.md)
+- Unterstützung mehrerer Anmeldeinformationen für die Appliance zur Erkennung physischer Server
+- Unterstützung für die Azure-Anmeldung von der Appliance für Mandanten, für die eine Mandanteneinschränkung konfiguriert wurde
 
 
+## <a name="update-april-2020"></a>Update (April 2020)
 
-## <a name="azure-migrate-new-version"></a>Neue Version von Azure Migrate
+Azure Migrate unterstützt Bereitstellungen in Azure Government. 
 
-Eine neue Version von Azure Migrate wurde im Juli 2019 veröffentlicht. 
+- Sie können VMware-VMs, Hyper-V-VMs und physische Server ermitteln und bewerten.
+- Sie können VMware-VMs, Hyper-V-VMs und physische Server zu Azure migrieren.
+- Für VMware können Sie die Migration mit oder ohne Agent verwenden. [Weitere Informationen](server-migrate-overview.md)
+- Überprüfen Sie die [unterstützten geografischen Bereiche und Regionen](migrate-support-matrix.md#supported-geographies-azure-government) für Azure Government.
+- Die [Agent-basierte Abhängigkeitsanalyse](concepts-dependency-visualization.md#agent-based-analysis) wird in Azure Government nicht unterstützt.
+- Funktionen in der Vorschau werden in Azure Government unterstützt, insbesondere die [Abhängigkeitsanalyse ohne Agent](concepts-dependency-visualization.md#agentless-analysis) und die [Anwendungsermittlung](how-to-discover-applications.md).
 
-- **Aktuelle (neue) Version**: Verwenden Sie diese Version, um Azure Migrate-Projekte zu erstellen, lokale Computer zu ermitteln und Bewertungen und Migrationen zu orchestrieren. 
-- **Vorherige Version**: Kunden, die die Vorgängerversion von Azure Migrate verwendet haben (es wird nur die Bewertung von lokalen VMware-VMs unterstützt), sollten ab sofort die aktuelle Version verwenden. In der vorherigen Version können Sie keine neuen Azure Migrate Projekte mehr erstellen oder neue Ermittlungen durchführen. Sie können weiterhin auf vorhandene Projekte zugreifen. Wählen Sie zu diesem Zweck im Azure-Portal „Alle Dienste“ aus, und suchen Sie dann nach „Azure Migrate“. In den Azure Migrate-Benachrichtigungen finden Sie einen Link für den Zugriff auf alte Azure Migrate-Projekte.
 
+## <a name="update-march-2020"></a>Update (März 2020)
 
-## <a name="azure-migrate-features"></a>Azure Migrate-Funktionen
+Es ist jetzt eine skriptbasierte Installation zum Einrichten der [Azure Migrate-Appliance](migrate-appliance.md) verfügbar:
 
-Die neue Version von Azure Migrate bietet eine Reihe neuer Features:
+- Die skriptbasierte Installation ist eine Alternative zur .OVA- (VMware) bzw. VHD-Installation (Hyper-V) der Appliance.
+- Hierbei wird ein PowerShell-Installationsskript genutzt, um die Appliance für VMware/Hyper-V auf einem vorhandenen Computer mit Windows Server 2016 einzurichten.
 
+## <a name="update-november-2019"></a>Update (November 2019)
+
+Azure Migrate wurden einige neue Features hinzugefügt:
+
+- **Bewertung physischer Server**: Zusätzlich zur bereits vorhandenen Migration physischer Server wird jetzt auch die Bewertung von lokalen physischen Servern unterstützt.
+- **Importbasierte Bewertung**. Die Bewertung von Computern, für die Metadaten und Leistungsdaten aus einer CSV-Datei verwendet werden, wird jetzt unterstützt.
+- **Anwendungsermittlung**: Azure Migrate unterstützt über die Azure Migrate-Appliance jetzt die Ermittlung von Apps, Rollen und Features auf Anwendungsebene. Dies wird derzeit nur für VMware-VMs unterstützt und ist auf die Ermittlung beschränkt (die Bewertung wird derzeit nicht unterstützt). [Weitere Informationen](how-to-discover-applications.md)
+- **Visualisierung von Abhängigkeiten ohne Agent**: Es ist nicht mehr erforderlich, Agents explizit für die Abhängigkeitsvisualisierung zu installieren. Sowohl die Vorgehensweise ohne als auch mit Agent wird jetzt unterstützt.
+- **Virtueller Desktop**: Verwenden Sie ISV-Tools, um die lokale Virtual Desktop Infrastructure (VDI) zu bewerten und zu Windows Virtual Desktop in Azure zu migrieren.
+- **Web-App**: Der Azure App Service-Migrations-Assistent, der für die Bewertung und Migration von Web-Apps verwendet wird, ist jetzt in Azure Migrate integriert.
+
+Azure Migrate wurden neue Tools zur Bewertung und Migration hinzugefügt:
+
+- **Rackware:** für die Cloudmigration
+- **Movere:** für die Bewertung
+
+[Hier](migrate-services-overview.md) finden Sie weitere Informationen zur Verwendung von Tools und ISV-Angeboten für die Bewertung und Migration in Azure Migrate.
+
+## <a name="azure-migrate-current-version"></a>Aktuelle Azure Migrate-Version
+
+Die aktuelle Version von Azure Migrate (veröffentlicht im Juli 2019) enthält eine Reihe neuer Features:
 
 - **Vereinheitlichte Migrationsplattform**: Azure Migrate bietet jetzt ein einziges Portal zum Zentralisieren, Verwalten und Nachverfolgen Ihres Migrationswegs zu Azure mit einem verbesserten Bereitstellungsfluss und einer optimierten Portalbenutzeroberfläche.
 - **Bewertungs- und Migrationstools**: Azure Migrate bietet native Tools und lässt sich in andere Azure-Dienste sowie ISV-Tools (Independent Software Vendor) integrieren. [Erfahren Sie mehr](migrate-services-overview.md#isv-integration) über die ISV-Integration.
@@ -42,12 +98,17 @@ Die neue Version von Azure Migrate bietet eine Reihe neuer Features:
     - Die Appliance ermittelt kontinuierlich Servermetadaten und Leistungsdaten für die Zwecke der Bewertung und Migration.  
 - **VMware-VM-Migration**:  Azure Migrate-Servermigration bietet eine Reihe von Methoden zum Migrieren von lokalen VMware-VMs zu Azure.  Eine Migration ohne Agent mithilfe der Azure Migrate-Appliance und eine agentbasierte Migration, bei der eine Replikationsappliance verwendet und auf jedem virtuellen Computer ein Agent bereitgestellt wird, den Sie migrieren möchten. [Weitere Informationen](server-migrate-overview.md)
  - **Datenbankbewertung und -migration**: Aus Azure Migrate können Sie lokale Datenbanken für die Migration zu Azure mithilfe des Migrations-Assistenten der Azure-Datenbank bewerten. Sie können Datenbanken mit dem Azure Database Migration Service migrieren.
-- **Web-App-Migration**: Sie können Web-Apps mit einer öffentlichen Endpunkt-URL mit Azure App Service bewerten. Für die Migration interner .NET-Apps können Sie den Migrations-Assistenten von App Service herunterladen und ausführen. 
+- **Web-App-Migration**: Sie können Web-Apps mit einer öffentlichen Endpunkt-URL mit Azure App Service bewerten. Für die Migration interner .NET-Apps können Sie den Migrations-Assistenten von App Service herunterladen und ausführen.
 - **Data Box**: Importieren Sie große Mengen von Offlinedaten in Azure mithilfe von Azure Data Box in Azure Migrate.
+
+## <a name="azure-migrate-previous-version"></a>Vorherige Azure Migrate-Version
+
+Wenn Sie zurzeit die Vorgängerversion von Azure Migrate verwenden (es wird nur die Bewertung von lokalen VMware-VMs unterstützt), sollten Sie ab sofort die aktuelle Version verwenden. In der vorherigen Version können Sie keine neuen Azure Migrate Projekte mehr erstellen oder neue Ermittlungen durchführen. Sie können weiterhin auf vorhandene Projekte zugreifen. Wählen Sie zu diesem Zweck im Azure-Portal die Option **Alle Dienste** aus, und suchen Sie dann nach **Azure Migrate**. In den Azure Migrate-Benachrichtigungen finden Sie einen Link für den Zugriff auf alte Azure Migrate-Projekte.
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu den Preisen von Azure Migrate finden Sie [hier](https://azure.microsoft.com/pricing/details/azure-migrate/).
 - Sehen Sie sich die [häufig gestellten Fragen](resources-faq.md) zu Azure Migrate an.
-- Testen Sie unsere Tutorials, um [VMware-VMs](tutorial-assess-vmware.md) und [Hyper-V-VMs](tutorial-assess-hyper-v.md) zu bewerten.
+- Testen Sie unsere Tutorials, um [VMware-VMs](./tutorial-assess-vmware-azure-vm.md) und [Hyper-V-VMs](tutorial-assess-hyper-v.md) zu bewerten.

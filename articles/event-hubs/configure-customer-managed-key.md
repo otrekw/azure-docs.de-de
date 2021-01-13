@@ -1,19 +1,14 @@
 ---
 title: Konfigurieren Ihres eigenen Schlüssels zum Verschlüsseln ruhender Azure Event Hubs-Daten
 description: Dieser Artikel enthält Informationen dazu, wie Sie einen eigenen Schlüssel für die Verschlüsselung ruhender Azure Event Hubs-Daten konfigurieren.
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
-ms.date: 08/13/2019
-ms.author: spelluru
-ms.openlocfilehash: 37ca2b655d30ffd330d5430da20d07d9548a7c84
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.date: 06/23/2020
+ms.openlocfilehash: 1b0469a2f25b7f2bec2668b6ab33ff99eb1df809
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260869"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348210"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Event Hubs-Daten mithilfe des Azure-Portals
 Azure Event Hubs ermöglicht die Verschlüsselung ruhender Daten mit Azure Storage Service Encryption (Azure SSE). Event Hubs verwendet Azure Storage zum Speichern der Daten. Standardmäßig werden alle Daten, die mit Azure Storage gespeichert werden, durch von Microsoft verwaltete Schlüssel verschlüsselt. 
@@ -26,9 +21,9 @@ Die Aktivierung der BYOK-Funktion ist ein einmaliger Setupvorgang für Ihren Nam
 > [!NOTE]
 > Die BYOK-Funktion wird von [Event Hubs Dedicated](event-hubs-dedicated-overview.md)-Clustern mit einem Mandanten unterstützt. Sie kann nicht für Event Hubs-Standardnamespaces aktiviert werden.
 
-Verwenden Sie Azure Key Vault, um Ihre Schlüssel zu verwalten und die Schlüsselverwendung zu überwachen. Sie können entweder Ihre eigenen Schlüssel erstellen und in einem Schlüsseltresor speichern oder mit den Azure Key Vault-APIs Schlüssel generieren. Weitere Informationen zum Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](../key-vault/key-vault-overview.md)
+Verwenden Sie Azure Key Vault, um Ihre Schlüssel zu verwalten und die Schlüsselverwendung zu überwachen. Sie können entweder Ihre eigenen Schlüssel erstellen und in einem Schlüsseltresor speichern oder mit den Azure Key Vault-APIs Schlüssel generieren. Weitere Informationen zum Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](../key-vault/general/overview.md)
 
-In diesem Artikel erfahren Sie, wie Sie einen Schlüsseltresor mit kundenseitig verwalteten Schlüsseln mithilfe des Azure-Portals konfigurieren. Informationen zum Erstellen eines Schlüsseltresors über das Azure-Portal finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals](../key-vault/quick-create-portal.md).
+In diesem Artikel erfahren Sie, wie Sie einen Schlüsseltresor mit kundenseitig verwalteten Schlüsseln mithilfe des Azure-Portals konfigurieren. Informationen zum Erstellen eines Schlüsseltresors über das Azure-Portal finden Sie unter [Schnellstart: Erstellen Sie eine Azure Key Vault-Instanz mithilfe des Azure-Portals](../key-vault/general/quick-create-portal.md).
 
 > [!IMPORTANT]
 > Für die Verwendung kundenseitig verwalteter Schlüssel mit Azure Event Hubs müssen für den Schlüsseltresor zwei erforderliche Eigenschaften konfiguriert werden. Sie lauten wie folgt:  **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen). Diese Eigenschaften sind standardmäßig aktiviert, wenn Sie im Azure-Portal einen neuen Schlüsseltresor erstellen. Wenn Sie diese Eigenschaften jedoch für einen vorhandenen Schlüsseltresor aktivieren möchten, müssen Sie PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden.
@@ -38,15 +33,15 @@ Um vom Kunden verwaltete Schlüssel im Azure-Portal zu aktivieren, gehen Sie fol
 
 1. Navigieren Sie zu Ihrem Event Hubs Dedicated-Cluster.
 1. Wählen Sie den Namespace aus, für den Sie BYOK aktivieren möchten.
-1. Wählen Sie auf der Seite **Einstellungen** des Event Hubs-Namespace die Option **Verschlüsselung (Vorschau)** aus. 
+1. Wählen Sie auf der Seite **Einstellungen** des Event Hubs-Namespace die Option **Verschlüsselung** aus. 
 1. Wählen Sie die **Verschlüsselung im Ruhezustand mit kundenseitig verwalteten Schlüsseln**  wie in der folgenden Abbildung gezeigt aus. 
 
     ![Kundenseitig verwaltete Schlüssel aktivieren](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Einrichten eines Schlüsseltresors mit Schlüsseln
-Nachdem Sie kundenseitig verwaltete Schlüssel aktiviert haben, müssen Sie den kundenseitig verwalteten Schlüssel Ihrem Azure Event Hubs-Namespace zuordnen. Event Hubs unterstützt nur Azure Key Vault. Wenn Sie die Option **Verschlüsselung mit kundenseitig verwaltetem Schlüssel** im vorherigen Abschnitt aktivieren, muss der Schlüssel in Azure Key Vault importiert werden. Außerdem müssen die Eigenschaften **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen) für den Schlüssel konfiguriert sein. Diese Einstellungen können mithilfe von [PowerShell](../key-vault/key-vault-soft-delete-powershell.md) oder der [CLI](../key-vault/key-vault-soft-delete-cli.md#enabling-purge-protection) konfiguriert werden.
+Nachdem Sie kundenseitig verwaltete Schlüssel aktiviert haben, müssen Sie den kundenseitig verwalteten Schlüssel Ihrem Azure Event Hubs-Namespace zuordnen. Event Hubs unterstützt nur Azure Key Vault. Wenn Sie die Option **Verschlüsselung mit kundenseitig verwaltetem Schlüssel** im vorherigen Abschnitt aktivieren, muss der Schlüssel in Azure Key Vault importiert werden. Außerdem müssen die Eigenschaften **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen) für den Schlüssel konfiguriert sein. Diese Einstellungen können mithilfe von [PowerShell](../key-vault/general/key-vault-recovery.md) oder der [CLI](../key-vault/general/key-vault-recovery.md) konfiguriert werden.
 
-1. Befolgen Sie zum Erstellen eines neuen Schlüsseltresors die [Schnellstartanleitung](../key-vault/key-vault-overview.md) für Azure Key Vault. Weitere Informationen zum Importieren vorhandener Schlüssel finden Sie unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](../key-vault/about-keys-secrets-and-certificates.md).
+1. Befolgen Sie zum Erstellen eines neuen Schlüsseltresors die [Schnellstartanleitung](../key-vault/general/overview.md) für Azure Key Vault. Weitere Informationen zum Importieren vorhandener Schlüssel finden Sie unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](../key-vault/general/about-keys-secrets-certificates.md).
 1. Verwenden Sie den Befehl [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create), um beim Erstellen eines Tresors sowohl das vorläufige Löschen als auch den Bereinigungsschutz zu aktivieren.
 
     ```azurecli-interactive
@@ -69,22 +64,17 @@ Nachdem Sie kundenseitig verwaltete Schlüssel aktiviert haben, müssen Sie den 
         ![Auswählen des Schlüssels aus dem Schlüsseltresor](./media/configure-customer-managed-key/select-key-from-key-vault.png)
     1. Geben Sie die Details für den Schlüssel ein, und klicken Sie auf **Auswählen**. Dadurch wird die Verschlüsselung von ruhenden Daten im Namespace mit einem kundenseitig verwalteten Schlüssel ermöglicht. 
 
-        > [!NOTE]
-        > Für die Vorschau können Sie nur einen einzelnen Schlüssel auswählen. 
 
 ## <a name="rotate-your-encryption-keys"></a>Rotieren der Verschlüsselungsschlüssel
-Sie können Ihren Schlüssel im Schlüsseltresor mit dem Rotationsmechanismus von Azure Key Vault rotieren. Weitere Informationen finden Sie unter [Einrichten von Azure Key Vault mit Schlüsselrotation und Überwachung](../key-vault/key-vault-key-rotation-log-monitoring.md). Aktivierungs- und Ablaufdaten können auch festgelegt werden, um die Schlüsselrotation zu automatisieren. Der Event Hubs-Dienst erkennt neue Schlüsselversionen und beginnt automatisch mit ihrer Verwendung.
+Sie können Ihren Schlüssel im Schlüsseltresor mit dem Rotationsmechanismus von Azure Key Vault rotieren. Aktivierungs- und Ablaufdaten können auch festgelegt werden, um die Schlüsselrotation zu automatisieren. Der Event Hubs-Dienst erkennt neue Schlüsselversionen und beginnt automatisch mit ihrer Verwendung.
 
 ## <a name="revoke-access-to-keys"></a>Widerrufen des Zugriffs auf Schlüssel
-Wenn Sie den Zugriff auf die Verschlüsselungsschlüssel widerrufen, werden die Daten dadurch nicht aus Event Hubs gelöscht. Der Zugriff auf die Daten ist jedoch nicht über den Event Hubs-Namespace möglich. Sie können den Verschlüsselungsschlüssel mithilfe von Zugriffsrichtlinien oder durch das Löschen des Schlüssels widerrufen. Unter [Sicherer Zugriff auf einen Schlüsseltresor](../key-vault/key-vault-secure-your-key-vault.md) erfahren Sie mehr über Zugriffsrichtlinien und das Sichern Ihres Schlüsseltresors.
+Wenn Sie den Zugriff auf die Verschlüsselungsschlüssel widerrufen, werden die Daten dadurch nicht aus Event Hubs gelöscht. Der Zugriff auf die Daten ist jedoch nicht über den Event Hubs-Namespace möglich. Sie können den Verschlüsselungsschlüssel mithilfe von Zugriffsrichtlinien oder durch das Löschen des Schlüssels widerrufen. Unter [Sicherer Zugriff auf einen Schlüsseltresor](../key-vault/general/secure-your-key-vault.md) erfahren Sie mehr über Zugriffsrichtlinien und das Sichern Ihres Schlüsseltresors.
 
 Nachdem der Verschlüsselungsschlüssel widerrufen wurde, funktioniert der Event Hubs-Dienst im verschlüsselten Namespace nicht mehr. Wenn der Zugriff auf den Schlüssel aktiviert ist oder der gelöschte Schlüssel wiederhergestellt wurde, wählt der Event Hubs-Dienst den Schlüssel aus, sodass Sie aus dem verschlüsselten Event Hubs-Namespace auf die Daten zugreifen können.
 
-> [!NOTE]
-> Wenn Sie einen vorhandenen Verschlüsselungsschlüssel aus Ihrem Schlüsseltresor löschen und ihn durch einen neuen Schlüssel im Event Hubs-Namespace ersetzen, ist der Zugriff auf Ihre alten Daten (die mit dem alten Schlüssel verschlüsselt wurden) zusammen mit den neuen Daten, auf die jetzt nur mit dem neuen Schlüssel zugegriffen werden kann, unter Umständen weiterhin möglich, da der gelöschte Schlüssel noch bis zu einer Stunde lang gültig ist (weil er zwischengespeichert ist). Dieses Verhalten ist in der Vorschauversion des Features standardmäßig integriert. 
-
 ## <a name="set-up-diagnostic-logs"></a>Einrichten von Diagnoseprotokollen 
-Durch das Einrichten von Diagnoseprotokollen für durch BYOK aktivierte Namespaces erhalten Sie die erforderlichen Informationen zu den Vorgängen, wenn ein Namespace mit kundenseitig verwalteten Schlüsseln verschlüsselt ist. Diese Protokolle können aktiviert und später in einen Event Hub gestreamt, mithilfe von Protokollanalysen analysiert oder in den Speicher gestreamt werden, um benutzerdefinierte Analysen auszuführen. Weitere Informationen zu Diagnoseprotokollen finden Sie unter [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/resource-logs-overview.md).
+Durch das Einrichten von Diagnoseprotokollen für durch BYOK aktivierte Namespaces erhalten Sie die erforderlichen Informationen zu den Vorgängen, wenn ein Namespace mit kundenseitig verwalteten Schlüsseln verschlüsselt ist. Diese Protokolle können aktiviert und später in einen Event Hub gestreamt, mithilfe von Protokollanalysen analysiert oder in den Speicher gestreamt werden, um benutzerdefinierte Analysen auszuführen. Weitere Informationen zu Diagnoseprotokollen finden Sie unter [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="enable-user-logs"></a>Aktivieren von Benutzerprotokollen
 Führen Sie die folgenden Schritte aus, um Protokolle für kundenseitig verwaltete Schlüssel zu aktivieren.
@@ -104,14 +94,14 @@ Führen Sie die folgenden Schritte aus, um Protokolle für kundenseitig verwalte
 ## <a name="log-schema"></a>Protokollschema 
 Alle Protokolle werden im JavaScript Object Notation (JSON)-Format gespeichert. Jeder Eintrag enthält Zeichenfolgenfelder im Format, das in der nachfolgenden Tabelle beschrieben ist. 
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 | ---- | ----------- | 
 | TaskName | Beschreibung der Aufgabe, bei der ein Fehler aufgetreten ist |
 | ActivityId | Interne ID zur Nachverfolgung. |
 | category | Definiert die Klassifizierung der Aufgabe. Wenn beispielsweise der Schlüssel aus Ihrem Schlüsseltresor deaktiviert wird, dann handelt es sich hierbei um eine Informationskategorie. Wenn ein Schlüssel nicht entpackt werden kann, dann handelt es sich um einen Fehler. |
 | resourceId | Azure Resource Manager-Ressourcen-ID |
 | keyVault | Der vollständige Name des Schlüsseltresors |
-| key | Der Schlüsselname, der zum Verschlüsseln des Event Hubs-Namespace verwendet wird |
+| Schlüssel | Der Schlüsselname, der zum Verschlüsseln des Event Hubs-Namespace verwendet wird |
 | version | Die Version des verwendeten Schlüssels |
 | operation | Der Vorgang, der für den Schlüssel in Ihrem Schlüsseltresor ausgeführt wird. Dazu zählen etwa das Deaktivieren/Aktvieren, das Packen und das Entpacken des Schlüssels. |
 | code | Der Code, der dem Vorgang zugeordnet ist. Beispiel: Der Fehlercode 404 bedeutet, dass der Schlüssel nicht gefunden wurde. |
@@ -149,6 +139,262 @@ Im Folgenden finden Sie ein Beispiel für das Protokoll für einen kundenseitig 
 }
 ```
 
+## <a name="use-resource-manager-template-to-enable-encryption"></a>Verwenden von Resource Manager-Vorlagen zum Aktivieren der Verschlüsselung
+In diesem Abschnitt wird gezeigt, wie die folgenden Aufgaben mithilfe von **Azure Resource Manager-Vorlagen** ausgeführt werden: 
+
+1. Erstellen eines **Event Hubs-Namespace** mit einer verwalteten Dienstidentität
+2. Erstellen eines **Schlüsseltresors** und Gewähren von Zugriff für die Dienstidentität 
+3. Aktualisieren des Event Hubs-Namespace mit den Schlüsseltresorinformationen (Schlüssel/Wert) 
+
+
+### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Erstellen eines Event Hubs-Clusters und -Namespace mit verwalteter Dienstidentität
+In diesem Abschnitt erfahren Sie, wie Sie mit einer Azure Resource Manager-Vorlage und PowerShell einen Azure Event Hubs-Namespace mit verwalteter Dienstidentität erstellen. 
+
+1. Erstellen Sie eine Azure Resource Manager-Vorlage für die Erstellung eines Event Hubs-Namespace mit einer verwalteten Dienstidentität. Nennen Sie die Datei **CreateEventHubClusterAndNamespace.json**: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Event Hub cluster."
+             }
+          },
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.EventHub/clusters",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('clusterName')]",
+             "location":"[parameters('location')]",
+             "sku":{
+                "name":"Dedicated",
+                "capacity":1
+             }
+          },
+          {
+             "type":"Microsoft.EventHub/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Standard",
+                "tier":"Standard",
+                "capacity":1
+             },
+             "properties":{
+                "isAutoInflateEnabled":false,
+                "maximumThroughputUnits":0,
+                "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]"
+             },
+             "dependsOn":[
+                "[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]"
+             ]
+          }
+       ],
+       "outputs":{
+          "EventHubNamespaceId":{
+             "type":"string",
+             "value":"[resourceId('Microsoft.EventHub/namespaces',parameters('namespaceName'))]"
+          }
+       }
+    }
+    ```
+2. Erstellen Sie eine Vorlagenparameterdatei mit dem folgenden Namen: **CreateEventHubClusterAndNamespaceParams.json**. 
+
+    > [!NOTE]
+    > Ersetzen Sie die folgenden Werte: 
+    > - `<EventHubsClusterName>`: Der Name Ihres Event Hubs-Clusters.    
+    > - `<EventHubsNamespaceName>`: Der Name Ihres Event Hubs-Namespace.
+    > - `<Location>`: Der Standort Ihres Event Hubs-Namespace.
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "value":"<EventHubsClusterName>"
+          },
+          "namespaceName":{
+             "value":"<EventHubsNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          }
+       }
+    }
+    
+    ```
+3. Führen Sie den folgenden PowerShell-Befehl aus, um die Vorlage bereitzustellen und einen Event Hubs-Namespace zu erstellen. Rufen Sie dann die ID des Event Hubs-Namespace ab. Sie wird später noch benötigt. Ersetzen Sie `{MyRG}` durch den Namen der Ressourcengruppe, bevor Sie den Befehl ausführen.  
+
+    ```powershell
+    $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
+
+    $EventHubNamespaceId = $outputs.Outputs["eventHubNamespaceId"].value
+    ```
+ 
+### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>Gewähren von Zugriff auf den Schlüsseltresor für die Event Hubs-Namespaceidentität
+
+1. Führen Sie den folgenden Befehl aus, um einen Schlüsseltresor zu erstellen, für den **Bereinigungsschutz** und **vorläufiges Löschen** aktiviert sind: 
+
+    ```powershell
+    New-AzureRmKeyVault -Name {keyVaultName} -ResourceGroupName {RGName}  -Location {location} -EnableSoftDelete -EnablePurgeProtection    
+    ```     
+    
+    (ODER)    
+    
+    Führen Sie den folgenden Befehl aus, um einen **vorhandenen Schlüsseltresor** zu aktualisieren. Geben Sie vor dem Ausführen des Befehls den Namen der Ressourcengruppe und des Schlüsseltresors an. 
+    
+    ```powershell
+    ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
+    ``` 
+2. Legen Sie die Schlüsseltresor-Zugriffsrichtlinie so fest, dass die verwaltete Identität des Event Hubs-Namespace auf den Schlüsselwert im Schlüsseltresor zugreifen kann. Verwenden Sie die ID des Event Hubs-Namespace aus dem vorherigen Abschnitt. 
+
+    ```powershell
+    $identity = (Get-AzureRmResource -ResourceId $EventHubNamespaceId -ExpandProperties).Identity
+    
+    Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
+    ```
+
+### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>Verschlüsseln von Daten im Event Hubs-Namespace mit einem kundenseitig verwalteten Schlüssel aus dem Schlüsseltresor
+Bisher haben Sie die folgenden Schritte ausgeführt: 
+
+1. Sie haben einen Premium-Namespace mit einer verwalteten Identität erstellt.
+2. Sie haben einen Schlüsseltresor erstellt und der verwalteten Identität Zugriff auf den Schlüsseltresor gewährt. 
+
+In diesem Schritt aktualisieren Sie den Event Hubs-Namespace mit Schlüsseltresorinformationen. 
+
+1. Erstellen Sie eine JSON-Datei mit dem Namen **CreateEventHubClusterAndNamespace.json** und folgendem Inhalt: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Event Hub cluster."
+             }
+          },
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          },
+          "keyVaultUri":{
+             "type":"string",
+             "metadata":{
+                "description":"URI of the KeyVault."
+             }
+          },
+          "keyName":{
+             "type":"string",
+             "metadata":{
+                "description":"KeyName."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.EventHub/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Standard",
+                "tier":"Standard",
+                "capacity":1
+             },
+             "properties":{
+                "isAutoInflateEnabled":false,
+                "maximumThroughputUnits":0,
+                "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]",
+                "encryption":{
+                   "keySource":"Microsoft.KeyVault",
+                   "keyVaultProperties":[
+                      {
+                         "keyName":"[parameters('keyName')]",
+                         "keyVaultUri":"[parameters('keyVaultUri')]"
+                      }
+                   ]
+                }
+             }
+          }
+       ]
+    }
+    ``` 
+
+2. Erstellen Sie eine Vorlagenparameterdatei: **UpdateEventHubClusterAndNamespaceParams.json**. 
+
+    > [!NOTE]
+    > Ersetzen Sie die folgenden Werte: 
+    > - `<EventHubsClusterName>`: Der Name Ihres Event Hubs-Clusters.        
+    > - `<EventHubsNamespaceName>`: Der Name Ihres Event Hubs-Namespace.
+    > - `<Location>`: Der Standort Ihres Event Hubs-Namespace.
+    > - `<KeyVaultName>`: Der Name Ihres Schlüsseltresors.
+    > - `<KeyName>`: Der Name des Schlüssels im Schlüsseltresor.
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "value":"<EventHubsClusterName>"
+          },
+          "namespaceName":{
+             "value":"<EventHubsNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          },
+          "keyName":{
+             "value":"<KeyName>"
+          },
+          "keyVaultUri":{
+             "value":"https://<KeyVaultName>.vault.azure.net"
+          }
+       }
+    }
+    ```             
+3. Führen Sie den folgenden PowerShell-Befehl aus, um die Resource Manager-Vorlage bereitzustellen. Ersetzen Sie `{MyRG}` durch den Namen Ihrer Ressourcengruppe, bevor Sie den Befehl ausführen. 
+
+    ```powershell
+    New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
+    ```
+
 ## <a name="troubleshoot"></a>Problembehandlung
 Es wird empfohlen, Protokolle immer wie im vorherigen Abschnitt gezeigt zu aktivieren. Dies hilft dabei, die Aktivitäten nachzuverfolgen, wenn die BYOK-Verschlüsselung aktiviert ist. Außerdem können dadurch Probleme eingegrenzt werden.
 
@@ -156,28 +402,20 @@ Im Folgenden finden Sie die allgemeinen Fehlercodes, nach denen Sie suchen müss
 
 | Aktion | Fehlercode | Resultierender Zustand der Daten |
 | ------ | ---------- | ----------------------- | 
-| Widerrufen der Berechtigung zum Packen/Entpacken aus einem Schlüsseltresor | 403 |    Zugriff nicht möglich |
-| Entfernen der AAD-Rollenmitgliedschaft aus einem AAD-Prinzipal, der die Berechtigung zum Packen/Entpacken gewährt hat | 403 |  Zugriff nicht möglich |
-| Löschen eines Verschlüsselungsschlüssels aus dem Schlüsseltresor | 404 | Zugriff nicht möglich |
+| Widerrufen der Berechtigung zum Packen/Entpacken aus einem Schlüsseltresor | 403 |    Inaccessible |
+| Entfernen der AAD-Rollenmitgliedschaft aus einem AAD-Prinzipal, der die Berechtigung zum Packen/Entpacken gewährt hat | 403 |  Inaccessible |
+| Löschen eines Verschlüsselungsschlüssels aus dem Schlüsseltresor | 404 | Inaccessible |
 | Löschen des Schlüsseltresors | 404 | Zugriff nicht möglich (unter der Annahme, dass vorläufiges Löschen aktiviert ist, da dies eine erforderliche Einstellung ist) |
-| Ändern des Ablaufzeitraums für den Verschlüsselungsschlüssel, sodass er bereits abgelaufen ist | 403 |   Zugriff nicht möglich  |
-| Ändern des Werts für NBF (not before, nicht vor), sodass der Schlüsselverschlüsselungsschlüssel nicht aktiv ist | 403 | Zugriff nicht möglich  |
-| Auswählen der Option **Allow MSFT Services** (MSFT-Dienste zulassen) für die Firewall des Schlüsseltresors oder anderweitiges Blockieren des Netzwerkzugriffs auf den Schlüsseltresor, der den Verschlüsselungsschlüssel enthält | 403 | Zugriff nicht möglich |
-| Verschieben des Schlüsseltresors in einen anderen Mandanten | 404 | Zugriff nicht möglich |  
+| Ändern des Ablaufzeitraums für den Verschlüsselungsschlüssel, sodass er bereits abgelaufen ist | 403 |   Inaccessible  |
+| Ändern des Werts für NBF (not before, nicht vor), sodass der Schlüsselverschlüsselungsschlüssel nicht aktiv ist | 403 | Inaccessible  |
+| Auswählen der Option **Allow MSFT Services** (MSFT-Dienste zulassen) für die Firewall des Schlüsseltresors oder anderweitiges Blockieren des Netzwerkzugriffs auf den Schlüsseltresor, der den Verschlüsselungsschlüssel enthält | 403 | Inaccessible |
+| Verschieben des Schlüsseltresors in einen anderen Mandanten | 404 | Inaccessible |  
 | Zeitweilig auftretendes Netzwerkproblem oder DNS-/AAD-/MSI-Ausfall |  | Zugriff mithilfe des zwischengespeicherten Datenverschlüsselungsschlüssels |
 
 > [!IMPORTANT]
 > Zum Aktivieren der georedundanten Notfallwiederherstellung in einem Namespace, der die BYOK-Verschlüsselung verwendet, muss sich der sekundäre Namespace für die Kopplung in einem dedizierten Cluster befinden, und eine vom System zugewiesene verwaltete Identität muss für ihn aktiviert sein. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
 
-> [!NOTE]
-> Wenn Dienstendpunkte eines virtuellen Netzwerks (VNET) in Azure Key Vault für Ihren Event Hubs-Namespace konfiguriert sind, wird BYOK nicht unterstützt. 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 - [Übersicht über Event Hubs](event-hubs-about.md)
-- [Übersicht über Key Vault](../key-vault/key-vault-overview.md)
-
-
-
-
+- [Übersicht über Key Vault](../key-vault/general/overview.md)

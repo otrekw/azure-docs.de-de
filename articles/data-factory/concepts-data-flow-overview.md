@@ -1,50 +1,163 @@
 ---
-title: Übersicht über Azure Data Factory Mapping Data Flow
-description: Eine zusammenfassende Erläuterung von Mapping Data Flows in Azure Data Factory
+title: Zuordnen von Datenflüssen
+description: Übersicht über Mapping Data Flows in Azure Data Factory
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/31/2019
-ms.openlocfilehash: 6f4c124c59584c8538d85ac61650661ae559a77b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.custom: references_regions
+ms.date: 12/10/2020
+ms.openlocfilehash: 01ee890fe77abebfdec8d3d643773b42cb54187e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123931"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606180"
 ---
-# <a name="what-are-mapping-data-flows"></a>Was sind Mapping Data Flows?
+# <a name="mapping-data-flows-in-azure-data-factory"></a>Zuordnungsdatenflüsse in Azure Data Factory
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Mapping Data Flows sind visuell entworfene Datentransformationen in Azure Data Factory. Mit Data Flows können Data Engineers grafische Datentransformationslogik entwickeln, ohne Code schreiben zu müssen. Die daraus resultierenden Datenflüsse werden als Aktivitäten in Azure Data Factory-Pipelines mit horizontal skalierten Azure Databricks-Clustern ausgeführt.
+## <a name="what-are-mapping-data-flows"></a>Was sind Zuordnungsdatenflüsse?
 
-Die Absicht von Azure Data Factory-Datenfluss ist es, eine vollständig visuelle Erfahrung ohne Codeerstellung zu ermöglichen. Ihre Datenflüsse werden in Ihrem eigenen Ausführungscluster für die horizontal skalierte Datenverarbeitung ausgeführt. Azure Data Factory übernimmt die gesamte Codeübersetzung, Pfadoptimierung und Ausführung Ihrer Datenflussaufträge.
+Mapping Data Flows (Zuordnungsdatenflüsse) sind visuell entworfene Datentransformationen in Azure Data Factory. Mit Datenflüssen können Data Engineers eine Datentransformationslogik entwickeln, ohne Code schreiben zu müssen. Die daraus resultierenden Datenflüsse werden als Aktivitäten in Azure Data Factory-Pipelines ausgeführt, für die erweiterte Apache Spark-Cluster verwendet werden. Datenflussaktivitäten können mithilfe vorhandener Planungs-, Steuerungs-, Fluss- und Überwachungsfunktionen in Data Factory operationalisiert werden.
 
-Erstellen Sie zunächst Datenflüsse im Debugmodus, damit Sie Ihre Transformationslogik interaktiv überprüfen können. Fügen Sie anschließend Ihrer Pipeline eine Datenflussaktivität zum Ausführen und Testen Ihres Datenflusses in der Pipeline im Debugmodus hinzu, oder verwenden Sie in der Pipeline die Option „Trigger Now“ (Jetzt auslösen), um den Datenfluss in einer Pipelineaktivität zu testen.
+Zuordnungsdatenflüsse bieten eine vollständig visuelle Darstellung, ohne Code geschrieben werden muss. Ihre Datenflüsse werden in ADF-verwalteten Ausführungsclustern für erweiterte Datenverarbeitung ausgeführt. Azure Data Factory übernimmt die gesamte Codeübersetzung, Pfadoptimierung und Ausführung Ihrer Datenflussaufträge.
 
-Dann können Sie Ihre Datenflussaktivitäten mithilfe von Azure Data Factory-Pipelines planen und überwachen, die die Datenflussaktivität ausführen.
+## <a name="getting-started"></a>Erste Schritte
 
-Der Umschalter „Debugmodus“ auf der Datenfluss-Entwurfsoberfläche ermöglicht die interaktive Erstellung von Datentransformationen. Der Debugmodus bietet eine Umgebung für die Datenvorbereitung und Datenvorschau zur Erstellung von Datenflüssen.
+Datenflüsse werden über den Bereich mit Factory-Ressourcen wie Pipelines und Datasets erstellt. Wählen Sie zum Erstellen eines Datenflusses das Pluszeichen neben **Factory-Ressourcen** und dann die Option **Datenfluss** aus. 
 
-## <a name="begin-building-your-data-flow-logical-graph"></a>Erstellen eines logischen Datenflussdiagramms
+![Neuer Datenfluss](media/data-flow/new-data-flow.png)
 
-Beginnen Sie mit dem Erstellen von Datenflüssen, indem Sie mit dem Pluszeichen (+) unterhalb der Factory-Ressourcen einen neuen Datenfluss erstellen.
+Mit dieser Aktion gelangen Sie zur Datenflusscanvas, auf der Sie Ihre Transformationslogik erstellen können. Wählen Sie **Quelle hinzufügen** aus, um mit der Konfiguration Ihrer Quelltransformation zu beginnen. Weitere Informationen finden Sie im Artikel zur [Quelltransformation](data-flow-source.md).
 
-![neuer Datenfluss](media/data-flow/newdataflow2.png "neuer Datenfluss")
+## <a name="authoring-data-flows"></a>Erstellen von Datenflüssen
 
-Zunächst konfigurieren Sie die Quelltransformation. Anschließend fügen Sie mithilfe des Pluszeichens (+) jedem nachfolgenden Schritt eine Datentransformation hinzu. Beim Erstellen des logischen Diagramms können Sie mithilfe der Schaltflächen „Diagramm anzeigen“ und „Diagramm ausblenden“ zwischen dem Diagramm- und Konfigurationsmodus wechseln.
+Ein Zuordnungsdatenfluss verfügt über einen einzigartigen Erstellungsbereich für das vereinfachte Erstellen von Transformationslogik. Die Datenflusscanvas ist in drei Bereiche unterteilt: die obere Leiste, das Diagramm und den Konfigurationsbereich. 
 
-![Diagramm anzeigen](media/data-flow/showg.png "Diagramm anzeigen")
+![Screenshot: Datenflusscanvas mit Beschriftungen für obere Leiste, Graph und Konfigurationsbereich](media/data-flow/canvas-1.png "Canvas")
 
-## <a name="configure-transformation-logic"></a>Konfigurieren der Transformationslogik
+### <a name="graph"></a>Graph
 
-![Diagramm ausblenden](media/data-flow/hideg.png "Diagramm ausblenden")
+Das Diagramm zeigt den Transformationsdatenstrom. Es zeigt die Herkunft der Quelldaten beim Fließen in eine oder mehrere Senken. Wählen Sie die Option **Quelle hinzufügen** aus, um eine neue Quelle hinzuzufügen. Wählen Sie zum Hinzufügen einer neuen Transformation unten rechts in einer vorhandenen Transformation das Pluszeichen aus. Informieren Sie sich über das [Verwalten des Datenflussdiagramms](concepts-data-flow-manage-graph.md).
 
-Wenn Sie das Diagramm ausblenden, können Sie seitwärts durch die Transformationsknoten navigieren.
+![Screenshot: Graphbereich der Canvas mit einem Suchtextfeld](media/data-flow/canvas-2.png)
 
-![Navigieren](media/data-flow/showhide.png "Navigieren")
+### <a name="configuration-panel"></a>Konfigurationsbereich
+
+Im Konfigurationsbereich werden die spezifischen Einstellungen für die derzeit ausgewählte Transformation angezeigt. Wenn keine Transformation ausgewählt ist, wird der Datenfluss angezeigt. In der allgemeinen Datenflusskonfiguration können Sie Parameter über die Registerkarte **Parameter** hinzufügen. Weitere Informationen finden Sie unter [Mapping Data Flow-Parameter](parameters-data-flow.md).
+
+Jede Transformation enthält mindestens vier Registerkarten für die Konfiguration.
+
+#### <a name="transformation-settings"></a>Transformationseinstellungen
+
+Die erste Registerkarte im Konfigurationsbereich jeder Transformation enthält die Einstellungen, die für diese Transformation spezifisch sind. Weitere Informationen finden Sie auf der Dokumentationsseite für diese Transformation.
+
+![Registerkarte „Quelleinstellungen“](media/data-flow/source1.png "Registerkarte „Quelleinstellungen“")
+
+#### <a name="optimize"></a>Optimieren
+
+Die Registerkarte **Optimieren** enthält Einstellungen zum Konfigurieren von Partitionierungsschemas. Weitere Informationen zum Optimieren Ihrer Datenflüsse finden Sie in der [Anleitung zur Leistung des Zuordnungsdatenflusses](concepts-data-flow-performance.md).
+
+![Screenshot der Registerkarte „Optimieren“ mit der Option „Partition“, dem Partitionstyp und der Anzahl von Partitionen](media/data-flow/optimize.png)
+
+#### <a name="inspect"></a>Überprüfen
+
+Die Registerkarte **Überprüfen** bietet einen Einblick in die Metadaten des Datenstroms, den Sie transformieren. Sie können die Spaltenanzahl, geänderte Spalten, hinzugefügte Spalten, Datentypen, die Spaltensortierung und Spaltenverweise sehen. **Überprüfen** ist eine schreibgeschützte Ansicht Ihrer Metadaten. Der Debugmodus muss nicht aktiviert sein, um die Metadaten im Bereich **Überprüfen** anzeigen zu können.
+
+![Überprüfen](media/data-flow/inspect1.png "Überprüfen")
+
+Wenn Sie die Form Ihrer Daten durch Transformationen ändern, wird der Fluss der Metadatenänderungen im Bereich **Überprüfen** angezeigt. Falls in Ihrer Quelltransformation kein definiertes Schema vorhanden ist, werden im Bereich **Überprüfen** keine Metadaten angezeigt. Fehlende Metadaten kommen in Schemaabweichungsszenarien häufiger vor.
+
+#### <a name="data-preview"></a>Datenvorschau
+
+Bei aktiviertem Debugmodus können Sie auf der Registerkarte **Datenvorschau** eine interaktive Momentaufnahme der Daten bei jeder Transformation anzeigen. Weitere Informationen finden Sie unter [Datenvorschau im Debugmodus](concepts-data-flow-debug-mode.md#data-preview).
+
+### <a name="top-bar"></a>Obere Leiste
+
+Die obere Leiste enthält Aktionen, die sich auf den gesamten Datenfluss auswirken, z. B. das Speichern und Überprüfen. Sie können auch den zugrunde liegenden JSON-Code und das Datenflussskript Ihrer Transformationslogik anzeigen. Weitere Informationen finden Sie unter [Datenflussskript](data-flow-script.md).
+
+## <a name="available-transformations"></a>Verfügbare Transformationen
+
+Unter [Zuordnungsdatenfluss – Übersicht über Transformationen](data-flow-transformation-overview.md) finden Sie eine Liste der verfügbaren Transformationen.
+
+## <a name="data-flow-activity"></a>Datenflussaktivität
+
+Zuordnungsdatenflüsse werden innerhalb von ADF-Pipelines mithilfe der [Datenflussaktivität](control-flow-execute-data-flow-activity.md) operationalisiert. Der Benutzer muss lediglich angeben, welche Integration Runtime verwendet werden soll, und Parameterwerte übergeben. Weitere Informationen finden Sie unter [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
+
+## <a name="debug-mode"></a>Debugmodus
+
+Im Debugmodus können Sie die Ergebnisse jedes Transformationsschritts interaktiv anzeigen, während Sie Datenflüsse erstellen und debuggen. Die Debugsitzung kann sowohl beim Erstellen der Datenflusslogik als auch beim Ausführen von Debugläufen für die Pipeline mit Datenflussaktivitäten ausgeführt werden. Weitere Informationen finden Sie in der [Dokumentation zum Debugmodus](concepts-data-flow-debug-mode.md).
+
+## <a name="monitoring-data-flows"></a>Überwachen von Datenflüssen
+
+Der Zuordnungsdatenfluss ist in vorhandene Azure Data Factory-Überwachungsfunktionen integriert. Informationen zum Verständnis der Ausgabe der Datenflussüberwachung finden Sie unter [Überwachen von Zuordnungsdatenflüssen](concepts-data-flow-monitoring.md).
+
+Das Azure Data Factory-Team hat eine [Anleitung zur Leistungsoptimierung](concepts-data-flow-performance.md) erstellt, mit deren Hilfe Sie die Ausführungszeit Ihrer Datenflüsse nach dem Erstellen der Geschäftslogik optimieren können.
+
+## <a name="available-regions"></a>Verfügbare Regionen
+
+======= Zuordnungsdatenflüsse sind in ADF in den folgenden Regionen verfügbar:
+
+| Azure-Region | Datenflüsse in ADF |
+| ------------ | ----------------- |
+|  Australien, Mitte | |
+| Australien, Mitte 2 | |
+| Australien (Osten) | ✓ |
+| Australien, Südosten   | ✓ |
+| Brasilien Süd  | ✓ |
+| Kanada, Mitte | ✓ |
+| Indien, Mitte | ✓ |
+| USA (Mitte)    | ✓ |
+| China, Osten |      |
+| China, Osten 2  |   |
+| China, landesweit | |
+| China, Norden |     |
+| China, Norden 2 | |
+| Asien, Osten | ✓ |
+| East US   | ✓ |
+| USA (Ost) 2 | ✓ |
+| Frankreich, Mitte | ✓ |
+| Frankreich, Süden  | |
+| Deutschland, Mitte (Sovereign) | |
+| Deutschland, landesweit (Sovereign) | |
+| Deutschland, Norden (Öffentlich) | |
+| Deutschland, Nordosten (Sovereign) | |
+| Deutschland, Westen-Mitte (Öffentlich) |  |
+| Japan, Osten | ✓ |
+| Japan, Westen |  |
+| Korea, Mitte | ✓ |
+| Korea, Süden | |
+| USA Nord Mitte  | ✓ |
+| Nordeuropa  | ✓ |
+| Norwegen, Osten | |
+| Norwegen, Westen | |
+| Südafrika, Norden    | ✓ |
+| Südafrika, Westen |  |
+| USA Süd Mitte  | |
+| Indien (Süden) | |
+| Asien, Südosten    | ✓ |
+| Schweiz, Norden |   |
+| Schweiz, Westen | |
+| VAE, Mitte | |
+| Vereinigte Arabische Emirate, Norden |  |
+| UK, Süden  | ✓ |
+| UK, Westen |     |
+| US DoD, Mitte | |
+| US DoD, Osten | |
+| US Gov Arizona |      |
+| US Gov, landesweit | |
+| US Gov Texas | |
+| US Government, Virginia |     |
+| USA, Westen-Mitte |     |
+| Europa, Westen   | ✓ |
+| Indien, Westen | |
+| USA (Westen)   | ✓ |
+| USA, Westen 2 | ✓ |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Beginnen mit einer Quelltransformation](data-flow-source.md)
+* Informieren Sie sich über die Erstellung einer [Quelltransformation](data-flow-source.md).
+* Informieren Sie sich darüber, wie Sie Ihre Datenflüsse im [Debugmodus](concepts-data-flow-debug-mode.md) erstellen.

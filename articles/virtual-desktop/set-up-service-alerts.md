@@ -1,35 +1,31 @@
 ---
 title: 'Einrichten von Dienstwarnungen für Windows Virtual Desktop: Azure'
 description: Informationen zum Einrichten von Azure Service Health für den Empfang von Dienstbenachrichtigungen für Windows Virtual Desktop.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
-ms.openlocfilehash: cbd55d3243426f2e6ec84986a2147ff94574bdda
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+manager: lizross
+ms.openlocfilehash: 66617afee11b02eae0ba5e36d9ff91cbdf21911f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816386"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023104"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>Tutorial: Einrichten von Dienstwarnungen
 
-Mit Azure Service Health können Sie Dienstprobleme und Integritätsempfehlungen für Windows Virtual Desktop überwachen. Azure Service Health kann Sie mithilfe verschiedener Warnungstypen (z.B. E-Mail oder SMS) benachrichtigen, die Auswirkungen eines Problems verdeutlichen und Sie über die Lösung eines Problems auf dem Laufenden halten. Azure Service Health kann Sie auch bei der Verkürzung von Ausfallzeiten und Vorbereitung auf eine geplante Wartung und Änderungen unterstützen, die sich u.U. auf die Verfügbarkeit Ihrer Ressourcen auswirken.
+>[!IMPORTANT]
+>Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/set-up-service-alerts-2019.md).
+
+Mit Azure Service Health können Sie Dienstprobleme und Integritätsempfehlungen für Windows Virtual Desktop überwachen. Azure Service Health kann Sie mithilfe verschiedener Warnungstypen (z.B. E-Mail oder SMS) benachrichtigen, die Auswirkungen eines Problems verdeutlichen und Sie über die Lösung eines Problems auf dem Laufenden halten. Azure Service Health kann Sie auch bei der Verkürzung von Ausfallzeiten und bei der Vorbereitung auf eine geplante Wartung und Änderungen unterstützen, die sich u. U. auf die Verfügbarkeit Ihrer Ressourcen auswirken.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen und Konfigurieren von Dienstwarnungen
 
-Weitere Informationen zu Azure Service Health finden Sie in der [Azure Service Health-Dokumentation](https://docs.microsoft.com/azure/service-health/).
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-- [Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop (Vorschauversion)](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
-- [Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
-- [Tutorial: Erstellen eines Hostpools mit Azure Marketplace](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)
+Weitere Informationen zu Azure Service Health finden Sie in der [Azure Service Health-Dokumentation](../service-health/index.yml).
 
 ## <a name="create-service-alerts"></a>Erstellen von Dienstwarnungen
 
@@ -50,11 +46,11 @@ So konfigurieren Sie Dienstwarnungen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie **Service Health** aus.
-3. Befolgen Sie die Anweisungen unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal), um Ihre Warnungen und Benachrichtigungen einzurichten.
+3. Befolgen Sie die Anweisungen unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../service-health/alerts-activity-log-service-notifications-portal.md?toc=%2fazure%2fservice-health%2ftoc.json), um Ihre Warnungen und Benachrichtigungen einzurichten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie erfahren, wie Sie mit Azure Service Health Dienstprobleme und Integritätsempfehlungen für Windows Virtual Desktop überwachen. Fahren Sie mit den Anleitungsartikeln zum Herstellen der Verbindung mit Windows Virtual Desktop fort, um mehr zur Anmeldung bei Windows Virtual Desktop zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Connect to the Remote Desktop client on Windows 7 and Windows 10](./connect-windows-7-and-10.md) (Herstellen einer Verbindung mit dem Remotedesktopclient unter Windows 7 und Windows 10)
+> [Connect to the Remote Desktop client on Windows 7 and Windows 10](./connect-windows-7-10.md) (Herstellen einer Verbindung mit dem Remotedesktopclient unter Windows 7 und Windows 10)

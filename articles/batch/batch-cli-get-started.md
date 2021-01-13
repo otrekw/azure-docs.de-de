@@ -1,35 +1,25 @@
 ---
-title: Erste Schritte mit der Azure CLI für Batch | Microsoft-Dokumentation
+title: Erste Schritte mit der Azure CLI für Batch
 description: Hier erhalten Sie eine kurze Einführung in die Batch-Befehle der Azure-Befehlszeilenschnittstelle zum Verwalten von Ressourcen des Azure Batch-Diensts.
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: gwallace
-editor: ''
-ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
-ms.service: batch
-ms.topic: conceptual
-ms.tgt_pltfrm: multiple
-ms.workload: big-compute
+ms.topic: how-to
 ms.date: 07/24/2018
-ms.author: lahugh
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dd4a93b9829d69d9d0262428d23d2156d732c006
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: H1Hack27Feb2017, devx-track-azurecli
+ms.openlocfilehash: bee25d9b8985f1627a5cfc05bfb336b83be60f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095419"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144749"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Verwalten von Batch-Ressourcen mit der Azure CLI
 
 Die Azure CLI ist die Befehlszeilenumgebung von Azure und dient zum Verwalten von Azure-Ressourcen. Sie kann unter macOS, Linux und Windows verwendet werden. Die Azure CLI ist für die Verwaltung von Azure-Ressourcen über die Befehlszeile optimiert. Sie können die Azure CLI verwenden, um Ihre Azure Batch-Konten sowie Ressourcen wie Pools, Aufträge und Tasks zu verwalten. Mit der Azure CLI können Sie viele der Tasks per Skript ausführen, die Sie auch mit den Batch-APIs, dem Azure-Portal und den Batch PowerShell-Cmdlets durchführen.
 
-Dieser Artikel bietet eine Übersicht über die Verwendung der [Azure CLI, Version 2.0](https://docs.microsoft.com/cli/azure) mit Batch. Eine Übersicht über die Verwendung der Befehlszeilenschnittstelle mit Azure finden Sie unter [Erste Schritte mit der Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Dieser Artikel bietet eine Übersicht über die Verwendung der [Azure CLI, Version 2.0](/cli/azure) mit Batch. Eine Übersicht über die Verwendung der Befehlszeilenschnittstelle mit Azure finden Sie unter [Erste Schritte mit der Azure CLI](/cli/azure/get-started-with-azure-cli).
 
 ## <a name="set-up-the-azure-cli"></a>Einrichten der Azure CLI
 
-Sie können die aktuelle Azure-Befehlszeilenschnittstelle in [Azure Cloud Shell](../cloud-shell/overview.md) ausführen. Um die Azure CLI lokal zu installieren, führen Sie die Schritte unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) aus.
+Sie können die aktuelle Azure-Befehlszeilenschnittstelle in [Azure Cloud Shell](../cloud-shell/overview.md) ausführen. Um die Azure CLI lokal zu installieren, führen Sie die Schritte unter [Installieren der Azure CLI](/cli/azure/install-azure-cli) aus.
 
 > [!TIP]
 > Es empfiehlt sich, die Installation der Azure-Befehlszeilenschnittstelle regelmäßig zu aktualisieren, um von Dienstupdates und Verbesserungen zu profitieren.
@@ -61,10 +51,10 @@ Um die Azure CLI mit Batch zu verwenden, müssen Sie sich anmelden und authentif
 
 Es gibt verschiedenen Möglichkeiten, sich bei Azure anzumelden. Diese werden unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli) ausführlich beschrieben:
 
-1. [Interaktiv anmelden](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Melden Sie sich interaktiv an, wenn Sie Azure CLI-Befehle selbst an der Befehlszeile ausführen.
-2. [Anmelden mit einem Dienstprinzipal](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Melden Sie sich mit einem Dienstprinzipal an, wenn Sie Azure CLI-Befehle über ein Skript oder aus einer Anwendung heraus ausführen.
+1. [Interaktiv anmelden](/cli/azure/authenticate-azure-cli). Melden Sie sich interaktiv an, wenn Sie Azure CLI-Befehle selbst an der Befehlszeile ausführen.
+2. [Anmelden mit einem Dienstprinzipal](/cli/azure/authenticate-azure-cli). Melden Sie sich mit einem Dienstprinzipal an, wenn Sie Azure CLI-Befehle über ein Skript oder aus einer Anwendung heraus ausführen.
 
-Im Rahmen dieses Artikels veranschaulichen wir die interaktive Anmeldung bei Azure. Geben Sie [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) an der Befehlszeile ein:
+Im Rahmen dieses Artikels veranschaulichen wir die interaktive Anmeldung bei Azure. Geben Sie [az login](/cli/azure/reference-index#az-login) an der Befehlszeile ein:
 
 ```azurecli
 # Log in to Azure and authenticate interactively.
@@ -79,7 +69,7 @@ Die im Abschnitt „Beispielskripts für die Shell“ aufgeführten Beispiele ze
 
 ### <a name="log-in-to-your-batch-account"></a>Anmelden bei Ihrem Batch-Konto
 
-Um die Azure CLI zum Verwalten von Batch-Ressourcen wie Pools, Aufträgen und Tasks zu verwenden, müssen Sie sich bei Ihrem Batch-Konto anmelden und authentifizieren. Verwenden Sie den Befehl [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az-batch-account-login), um sich beim Batch-Dienst anzumelden. 
+Um die Azure CLI zum Verwalten von Batch-Ressourcen wie Pools, Aufträgen und Tasks zu verwenden, müssen Sie sich bei Ihrem Batch-Konto anmelden und authentifizieren. Verwenden Sie den Befehl [az batch account login](/cli/azure/batch/account#az-batch-account-login), um sich beim Batch-Dienst anzumelden. 
 
 Für die Authentifizierung bei Ihrem Batch-Konto stehen Ihnen zwei Optionen zur Verfügung:
 
@@ -89,9 +79,9 @@ Für die Authentifizierung bei Ihrem Batch-Konto stehen Ihnen zwei Optionen zur 
     
     Bei der interaktiven Anmeldung bei Azure – wie im vorherigen Abschnitt beschrieben – werden Ihre Anmeldeinformationen zwischengespeichert, sodass die Azure CLI Sie mit diesen Anmeldeinformationen bei Ihrem Batch-Konto anmelden kann. Wenn Sie sich mithilfe eines Dienstprinzipals bei Azure anmelden, werden diese Anmeldeinformationen ebenfalls verwendet, um Sie bei Ihrem Batch-Konto anzumelden.
 
-    Ein Vorteil von Azure AD ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC). Bei der rollenbasierten Zugriffssteuerung richtet sich der Zugriff eines Benutzers nach der ihm zugewiesenen Rolle, nicht danach, ob der Benutzer über die Kontoschlüssel verfügt oder nicht. Sie verwalten also keine Kontoschlüssel, sondern RBAC-Rollen, und Azure AD verarbeitet Zugriff und Authentifizierung.  
+    Ein Vorteil von Azure AD ist die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC). Bei der rollenbasierten Zugriffssteuerung von Azure richtet sich der Zugriff eines Benutzers nach der ihm zugewiesenen Rolle und nicht danach, ob der Benutzer über die Kontoschlüssel verfügt. Sie verwalten also keine Kontoschlüssel, sondern Azure-Rollen, und Azure AD verarbeitet Zugriff und Authentifizierung.  
 
-     Um sich über Azure AD bei Ihrem Batch-Konto anzumelden, rufen Sie den Befehl [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az-batch-account-login) auf: 
+     Um sich über Azure AD bei Ihrem Batch-Konto anzumelden, rufen Sie den Befehl [az batch account login](/cli/azure/batch/account#az-batch-account-login) auf: 
 
     ```azurecli
     az batch account login -g myresource group -n mybatchaccount
@@ -117,7 +107,7 @@ Durch die Installation der Azure Batch-CLI-Erweiterung können Sie mit der Azure
 
 ## <a name="script-examples"></a>Skriptbeispiele
 
-Sehen Sie sich die [CLI-Skriptbeispiele](cli-samples.md) für Batch an, um gängige Aufgaben zu erledigen. Diese Beispiele umfassen viele der verfügbaren Azure CLI-Befehle für Batch, mit denen Sie Konten, Pools, Aufträge und Aufgaben erstellen und verwalten können. 
+Sehen Sie sich die [CLI-Skriptbeispiele](./scripts/batch-cli-sample-create-account.md) für Batch an, um gängige Aufgaben zu erledigen. Diese Beispiele umfassen viele der verfügbaren Azure CLI-Befehle für Batch, mit denen Sie Konten, Pools, Aufträge und Aufgaben erstellen und verwalten können.
 
 ## <a name="json-files-for-resource-creation"></a>JSON-Dateien für die Erstellung von Ressourcen
 
@@ -129,7 +119,7 @@ az batch pool create my_batch_pool.json
 
 Die meisten Batch-Ressourcen können zwar allein mithilfe von Befehlszeilenoptionen erstellt werden, manche Features erfordern jedoch die Angabe einer JSON-Datei mit den Ressourcendetails. Eine JSON-Datei ist beispielsweise erforderlich, wenn Sie Ressourcendateien für eine Startaufgabe angeben möchten.
 
-Die für die Ressourcenerstellung erforderliche JSON-Syntax finden Sie in der [Batch-REST-API-Referenz][rest_api]. Jedes Thema zum „Hinzufügen eines *Ressourcentyps*“ in der REST API-Referenz enthält JSON-Beispielskripts zum Erstellen dieser Ressource. Sie können diese JSON-Beispielskripts als Vorlage für JSON-Dateien verwenden, die Sie mit der Azure CLI verwenden möchten. Die JSON-Syntax für die Poolerstellung finden Sie beispielsweise unter [Hinzufügen eines Pools zu einem Konto][rest_add_pool].
+Die für die Ressourcenerstellung erforderliche JSON-Syntax finden Sie in der [Batch-REST-API-Referenz][rest_api]. Jedes Thema zum „Hinzufügen eines *Ressourcentyps* “ in der REST API-Referenz enthält JSON-Beispielskripts zum Erstellen dieser Ressource. Sie können diese JSON-Beispielskripts als Vorlage für JSON-Dateien verwenden, die Sie mit der Azure CLI verwenden möchten. Die JSON-Syntax für die Poolerstellung finden Sie beispielsweise unter [Hinzufügen eines Pools zu einem Konto][rest_add_pool].
 
 Ein Beispielskript, das eine JSON-Datei angibt, finden Sie unter [Ausführen eines Auftrags und von Tasks mit Batch](./scripts/batch-cli-sample-run-job.md).
 
@@ -172,10 +162,10 @@ Die folgenden Hinweise können beim Beheben von Problemen mit der Azure CLI helf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
-* Weitere Informationen zu Batch-Ressourcen finden Sie in der [Übersicht über Azure Batch für Entwickler](batch-api-basics.md).
-* Weitere Informationen dazu, wie Sie mithilfe von Batch-Vorlagen Pools, Aufträge und Aufgaben ohne Programmieraufwand erstellen, finden Sie unter [Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung (Vorschau)](batch-cli-templates.md).
+* Weitere Informationen finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
+* Erfahren Sie mehr über den [Workflow des Batch-Diensts und primäre Ressourcen](batch-service-workflow-features.md) wie Pools, Knoten, Aufträge und Aufgaben.
+* Erfahren Sie mehr über die Verwendung von Batch-Vorlagen zum Erstellen von Pools, Aufträgen und Tasks ohne das Schreiben von Code in [Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung](batch-cli-templates.md).
 
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
-[rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
-[rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
+[rest_api]: /rest/api/batchservice/
+[rest_add_pool]: /rest/api/batchservice/pool/add

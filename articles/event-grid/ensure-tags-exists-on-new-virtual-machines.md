@@ -2,20 +2,19 @@
 title: Integration von Azure Automation mit Event Grid | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie beim Erstellen eines neuen virtuellen Computers automatisch ein Tag hinzufügen und eine Benachrichtigung an Microsoft Teams senden.
 keywords: Automatisierung, Runbook, Teams, Event Grid, virtueller Computer, VM
-services: automation
+services: automation,event-grid
 author: eamonoreilly
-manager: ''
 ms.service: automation
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 05/10/2019
+ms.date: 07/07/2020
 ms.author: eamono
-ms.openlocfilehash: 9f99ce5862850c2453e9e72241fff77fe091616f
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 3b9b49a4d38566891f442a3d2d7eac9bf1d36465
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521428"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87462002"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Tutorial: Integration von Azure Automation mit Event Grid und Microsoft Teams
 
@@ -34,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-Um dieses Tutorial abzuschließen, ist ein [Azure Automation-Konto](../automation/automation-offering-get-started.md) erforderlich, um das vom Azure Event Grid-Abonnement ausgelöste Runbook aufzunehmen.
+Um dieses Tutorial abzuschließen, ist ein [Azure Automation-Konto](../automation/index.yml) erforderlich, um das vom Azure Event Grid-Abonnement ausgelöste Runbook aufzunehmen.
 
 * Das `AzureRM.Tags`-Modul muss in Ihr Automation-Konto geladen werden. Informationen zum Importieren von Modulen in Azure Automation finden Sie unter [Importieren von Modulen in Azure Automation](../automation/automation-update-azure-modules.md).
 
@@ -126,7 +125,7 @@ Um dieses Tutorial abzuschließen, ist ein [Azure Automation-Konto](../automatio
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial richten Sie die Integration zwischen Event Grid und Automation ein. Es wurde Folgendes vermittelt:
+In diesem Tutorial richten Sie die Integration zwischen Event Grid und Automation ein. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Importieren Sie ein Event Grid-Beispielrunbook.

@@ -5,16 +5,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: 060e1d01e5f078bad9852ae35d0af9142192a7b6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.custom: devx-track-csharp
+ms.openlocfilehash: aada418b4f74c38a2a35c793deb85b94b703fb89
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985613"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629356"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Übersicht über Azure-Seitenblobs
 
@@ -24,9 +25,13 @@ Seitenblobs sind eine Sammlung von 512-Byte-Seiten, die Lese-/Schreibzugriff auf
 
 Schlüsselfeatures von Azure-Seitenblobs sind die REST-Schnittstelle, die Dauerhaftigkeit des zugrunde liegenden Speichers und die Fähigkeit zur nahtlosen Migration zu Azure. Diese Features werden im nächsten Abschnitt ausführlicher besprochen. Darüber hinaus werden Azure-Seitenblobs derzeit von zwei Speichertypen unterstützt: Storage Premium und Storage Standard. Storage Premium wurde speziell für Workloads konzipiert, die konsistent hohe Leistung und geringe Wartezeit erfordern, sodass Premium-Seitenblobs für Hochleistungsspeicher-Szenarien ideal sind. Standardspeicherkonten sind kostengünstiger zur Ausführung von Workloads, bei denen Wartezeiten eine untergeordnete Rolle spielen.
 
+## <a name="restrictions"></a>Beschränkungen
+
+Seitenblobs können nur die **heiße Zugriffsebene** verwenden. Die Verwendung der **kalten Ebene** oder der **Archivebene** ist nicht möglich. Weitere Informationen zu Zugriffsebenen finden Sie unter [Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md).
+
 ## <a name="sample-use-cases"></a>Beispiele für Anwendungsfälle
 
-In diesem Abschnitt werden einige Anwendungsfälle für Seitenblobs erläutert. Den Anfang machen Azure-IaaS-Datenträger. Azure-Seitenblobs bilden das Rückgrat der Plattform für virtuelle Datenträger für Azure-IaaS. Sowohl Azure-Datenträger für das Betriebssystem als auch für die zu speichernden Daten werden als virtuelle Datenträger implementiert, wo Daten auf der Azure Storage-Plattform persistent gespeichert und anschließend für optimale Leistung an die virtuellen Computer übermittelt werden. Azure-Datenträger liegen im [VHD-Format](https://technet.microsoft.com/library/dd979539.aspx) von Hyper-V vor und werden als [Seitenblob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) in Azure Storage gespeichert. Zusätzlich zur Verwendung virtueller Datenträger für Azure-IaaS-VMs ermöglichen Seitenblobs auch PaaS- und DBaaS-Szenarien. Ein Beispiel wäre etwa der Azure SQL-DB-Dienst, der derzeit Seitenblobs zum Speichern von SQL-Daten verwendet, um schnelle wahlfreie Lese-/Schreibzugriffe für die Datenbank zu ermöglichen. Ein weiteres Beispiel: Bei einem PaaS-Dienst für den Zugriff auf freigegebene Medien für Anwendungen für gemeinsame Videobearbeitung ermöglichen Seitenblobs schnellen Zugriff auf zufällige Positionen in den Medien. Außerdem ermöglichen sie schnelles und effizientes Bearbeiten und Zusammenführen derselben Medien durch mehrere Benutzer. 
+In diesem Abschnitt werden einige Anwendungsfälle für Seitenblobs erläutert. Den Anfang machen Azure-IaaS-Datenträger. Azure-Seitenblobs bilden das Rückgrat der Plattform für virtuelle Datenträger für Azure-IaaS. Sowohl Azure-Datenträger für das Betriebssystem als auch für die zu speichernden Daten werden als virtuelle Datenträger implementiert, wo Daten auf der Azure Storage-Plattform persistent gespeichert und anschließend für optimale Leistung an die virtuellen Computer übermittelt werden. Azure-Datenträger liegen im [VHD-Format](/previous-versions/windows/it-pro/windows-7/dd979539(v=ws.10)) von Hyper-V vor und werden als [Seitenblob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) in Azure Storage gespeichert. Zusätzlich zur Verwendung virtueller Datenträger für Azure-IaaS-VMs ermöglichen Seitenblobs auch PaaS- und DBaaS-Szenarien. Ein Beispiel wäre etwa der Azure SQL-DB-Dienst, der derzeit Seitenblobs zum Speichern von SQL-Daten verwendet, um schnelle wahlfreie Lese-/Schreibzugriffe für die Datenbank zu ermöglichen. Ein weiteres Beispiel: Bei einem PaaS-Dienst für den Zugriff auf freigegebene Medien für Anwendungen für gemeinsame Videobearbeitung ermöglichen Seitenblobs schnellen Zugriff auf zufällige Positionen in den Medien. Außerdem ermöglichen sie schnelles und effizientes Bearbeiten und Zusammenführen derselben Medien durch mehrere Benutzer. 
 
 Für Microsoft-Erstanbieterdienste wie Azure Site Recovery und Azure Backup sowie von vielen Drittanbieterentwicklern wurden branchenführende Innovationen mithilfe der REST-Schnittstelle des Seitenblobs implementiert. Zu den einzigartigen in Azure implementierten Szenarien zählen: 
 
@@ -34,17 +39,29 @@ Für Microsoft-Erstanbieterdienste wie Azure Site Recovery und Azure Backup sowi
 * Livemigration der Anwendung und Daten aus der lokalen Umgebung zur Cloud: Kopieren Sie die lokalen Daten, und schreiben Sie mithilfe von REST-APIs direkt in ein Azure-Seitenblob, während die lokale VM weiterhin ausgeführt wird. Sobald das Ziel erreicht ist, können Sie schnell ein Failover zu der Azure-VM ausführen, die die Daten verwendet. Dies ermöglicht die Migration Ihrer virtuellen Computer und virtuellen Datenträger vom lokalen Standort zur Cloud mit minimaler Ausfallzeit, da die Datenmigration im Hintergrund durchgeführt wird, während Sie weiterhin den virtuellen Computer verwenden. Die für das Failover erforderliche Ausfallzeit ist kurz (wenige Minuten).
 * [SAS-basierter](../common/storage-sas-overview.md) freigegebener Zugriff, der Szenarien wie z.B. mehrere Lese- und einzelne Schreibvorgänge mit Unterstützung für Gleichzeitigkeitssteuerung ermöglicht.
 
+## <a name="pricing"></a>Preise
+
+Beide mit Seitenblobs angebotenen Arten von Speicher verfügen über ein eigenes Preismodell. Premium-Seitenblobs folgen dem Preismodell für verwaltete Datenträger. Standardseitenblobs werden auf Grundlage der verwendeten Größe und den einzelnen Transaktionen abgerechnet. Weitere Informationen finden Sie auf der Seite [Azure-Seitenblobs: Preise](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
+
 ## <a name="page-blob-features"></a>Features für Seitenblobs
 
 ### <a name="rest-api"></a>REST-API
 
-Machen Sie sich anhand des folgenden Dokuments mit der [Entwicklung mithilfe von Seitenblobs](storage-dotnet-how-to-use-blobs.md) vertraut. Sehen Sie sich als Beispiel den Zugriff auf Seitenblobs mit der Storage-Clientbibliothek für .NET an. 
+Machen Sie sich anhand des folgenden Dokuments mit der [Entwicklung mithilfe von Seitenblobs](./storage-quickstart-blobs-dotnet.md) vertraut. Sehen Sie sich als Beispiel den Zugriff auf Seitenblobs mit der Storage-Clientbibliothek für .NET an. 
 
 Das folgende Diagramm beschreibt die allgemeinen Beziehungen zwischen Konto, Containern und Seitenblobs.
 
 ![Screenshot der Beziehungen zwischen Konto, Containern und Seitenblobs](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure1.png)
 
 #### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>Erstellen eines leeren Seitenblobs mit einer bestimmten Größe
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+Rufen Sie zunächst einen Verweis auf einen Container ab. Um ein Seitenblob zu erstellen, rufen Sie die GetPageBlobClient-Methode auf, und rufen Sie dann die [PageBlobClient.Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create)-Methode auf. Übergeben Sie die maximale Größe für das Blob, das erstellt werden soll. Der Wert muss ein Vielfaches von 512 Bytes sein.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_CreatePageBlob":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Zur Erstellung eines Seitenblobs erstellen wir zunächst ein **CloudBlobClient**-Objekt mit dem Basis-URI für den Zugriff auf den Blobspeicher für Ihr Speicherkonto (*pbaccount* in Abbildung 1) sowie das **StorageCredentialsAccountAndKey**-Objekt, wie im folgenden Beispiel zu sehen. Das Beispiel zeigt anschließend das Erstellen eines Verweises auf ein **CloudBlobContainer**-Objekt und dann das Erstellen des Containers (*testvhds*), wenn dieser nicht bereits vorhanden ist. Dann können Sie mit dem **CloudBlobContainer**-Objekt durch Angabe des Namens des Seitenblobs („os4.vhd“), auf das Sie zugreifen möchten, einen Verweis auf ein **CloudPageBlob**-Objekt erstellen. Zum Erstellen des Seitenblobs rufen Sie [CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create) auf und übergeben die maximale Größe für das Blob, das Sie erstellen möchten. Der Wert von *blobSize* muss ein Vielfaches von 512 Byte sein.
 
@@ -71,7 +88,17 @@ CloudPageBlob pageBlob = container.GetPageBlobReference("os4.vhd");
 pageBlob.Create(16 * OneGigabyteAsBytes);
 ```
 
+---
+
 #### <a name="resizing-a-page-blob"></a>Ändern der Größe eines Seitenblobs
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+Verwenden Sie zum Ändern der Größe eines Seitenblobs nach der Erstellung die [Resize](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize)-Methode. Die angeforderte Größe sollte ein Vielfaches von 512 Bytes sein.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ResizePageBlob":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Verwenden Sie zum Ändern der Größe eines Seitenblobs nach der Erstellung die [Resize](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.resize)-Methode. Die angeforderte Größe sollte ein Vielfaches von 512 Bytes sein.
 
@@ -79,37 +106,73 @@ Verwenden Sie zum Ändern der Größe eines Seitenblobs nach der Erstellung die 
 pageBlob.Resize(32 * OneGigabyteAsBytes);
 ```
 
+---
+
 #### <a name="writing-pages-to-a-page-blob"></a>Schreiben von Seiten in ein Seitenblob
 
-Verwenden Sie zum Schreiben von Seiten die [CloudPageBlob.WritePages](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages)-Methode.  So können Sie eine sequenzielle Reihe von Seiten bis zu 4 MB schreiben. Der Offset, in den geschrieben wird, muss an einer 512-Byte-Begrenzung beginnen (startingOffset % 512 == 0) und an einer 512-Begrenzung -1 enden.  Im folgenden Codebeispiel wird das Aufrufen von **WritePages** für ein Blob veranschaulicht:
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+Verwenden Sie zum Schreiben von Seiten die [PageBlobClient.UploadPages](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.uploadpages)-Methode.  
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_WriteToPageBlob":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Verwenden Sie zum Schreiben von Seiten die [CloudPageBlob.WritePages](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages)-Methode.  
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
 ```
 
+---
+
+So können Sie eine sequenzielle Reihe von Seiten bis zu 4 MB schreiben. Der Offset, in den geschrieben wird, muss an einer 512-Byte-Begrenzung beginnen (startingOffset % 512 == 0) und an einer 512-Begrenzung -1 enden. 
+
 Sobald eine Schreibanforderung für eine sequenzielle Reihe von Seiten im Blobdienst erfolgreich ist und für Dauerhaftigkeit und Resilienz repliziert wird, wird der Schreibvorgang committet, und der Client erhält eine Erfolgsmeldung.  
 
 Das folgende Diagramm zeigt 2 separate Schreibvorgänge:
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
+![Ein Diagramm, das die beiden separaten Schreibvorgänge zeigt.](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
 
 1.  Einen Schreibvorgang mit der Länge 1.024 Bytes, der am Offset 0 beginnt 
 2.  Einen Schreibvorgang mit der Länge 1.024 Bytes, der am Offset 4096 beginnt 
 
 #### <a name="reading-pages-from-a-page-blob"></a>Lesen von Seiten aus einem Seitenblob
 
-Verwenden Sie zum Lesen von Seiten die [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray)-Methode, um einen Bereich von Bytes aus dem Seitenblob zu lesen. So können Sie das vollständige Blob oder einen Bereich von Bytes, der an einem beliebigen Offset im Blob beginnt, herunterladen. Beim Lesen muss der Offset nicht bei einem Vielfachen von 512 beginnen. Beim Lesen von Bytes aus einer NULL-Seite gibt der Dienst 0 (null) Bytes zurück.
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+Verwenden Sie zum Lesen von Seiten die [PageBlobClient.Download](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.download)-Methode, um einen Bereich von Bytes aus dem Seitenblob zu lesen. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadFromPageBlob":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Verwenden Sie zum Lesen von Seiten die [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray)-Methode, um einen Bereich von Bytes aus dem Seitenblob zu lesen. 
 
 ```csharp
 byte[] buffer = new byte[rangeSize];
 pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, pageBlobOffset, rangeSize); 
 ```
 
+---
+
+So können Sie das vollständige Blob oder einen Bereich von Bytes, der an einem beliebigen Offset im Blob beginnt, herunterladen. Beim Lesen muss der Offset nicht bei einem Vielfachen von 512 beginnen. Beim Lesen von Bytes aus einer NULL-Seite gibt der Dienst 0 (null) Bytes zurück.
+
 Die folgende Abbildung zeigt einen Lesevorgang mit einem Offset von 256 und einer Bereichsgröße von 4352. Die zurückgegebenen Daten sind in Orange hervorgehoben. Nullen werden für NULL-Seiten zurückgegeben.
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
+![Ein Diagramm, das einen Lesevorgang mit einem Offset von 256 und einer Bereichsgröße von 4352 zeigt.](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
-Bei einem platzsparend gefüllten Blob sollten Sie nur die gültigen Seitenbereiche herunterladen, um nicht für ausgehende 0 (null) Bytes zu zahlen und die Downloadwartezeit zu verringern.  Bestimmen Sie mit [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges), welche Seiten Daten enthalten. Sie können dann die zurückgegebenen Bereiche aufzählen und die Daten in jedem Bereich herunterladen. 
+Bei einem platzsparend gefüllten Blob sollten Sie nur die gültigen Seitenbereiche herunterladen, um nicht für ausgehende 0 (null) Bytes zu zahlen und die Downloadwartezeit zu verringern.  
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+Bestimmen Sie mit [PageBlobClient.GetPageRanges](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.getpageranges), welche Seiten Daten enthalten. Sie können dann die zurückgegebenen Bereiche aufzählen und die Daten in jedem Bereich herunterladen. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadValidPageRegionsFromPageBlob":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Bestimmen Sie mit [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges), welche Seiten Daten enthalten. Sie können dann die zurückgegebenen Bereiche aufzählen und die Daten in jedem Bereich herunterladen. 
 
 ```csharp
 IEnumerable<PageRange> pageRanges = pageBlob.GetPageRanges();
@@ -128,6 +191,8 @@ foreach (PageRange range in pageRanges)
     // Then use the buffer for the page range just read
 }
 ```
+
+---
 
 #### <a name="leasing-a-page-blob"></a>Leasen eines Seitenblobs
 

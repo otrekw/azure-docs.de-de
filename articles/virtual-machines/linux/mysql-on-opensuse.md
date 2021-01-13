@@ -1,32 +1,26 @@
 ---
-title: Installieren von MySQL auf einer OpenSUSE-VM in Azure | Microsoft-Dokumentation
+title: Installieren von MySQL auf einem virtuellen OpenSUSE-Computer in Azure
 description: Erfahren Sie, wie Sie MySQL auf einem virtuellen openSUSE Linux-Computer in Azure installieren.
 services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 1594e10e-c314-455a-9efb-a89441de364b
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 891eade6aaaf8db9813566d10cdceed113560dc7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7fbdeda4cce737a6220d42642473e5f86ef8e525
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091878"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96295960"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Installieren von MySQL auf einem virtuellen Computer mit OpenSUSE Linux in Azure
 
 [MySQL](https://www.mysql.com) ist eine beliebte Open Source-SQL-Datenbank. In diesem Tutorial erfahren Sie, wie Sie einen virtuellen Computer mit OpenSUSE Linux erstellen und anschließend MySQL installieren.
 
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, benötigen Sie die Azure CLI-Version 2.0 oder höher. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -38,7 +32,7 @@ Erstellen Sie zunächst eine Ressourcengruppe. In diesem Beispiel heißt die Res
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Erstellen Sie den virtuellen Computer. In diesem Beispiel heißt die VM [myVM](sizes.md) und weist die VM-Größe *Standard_D2s_v3* auf, Sie sollten jedoch die *VM-Größe* auswählen, von der Sie glauben, dass sie sich für Ihre Workload am besten eignet.
+Erstellen Sie den virtuellen Computer. In diesem Beispiel heißt die VM [myVM](../sizes.md) und weist die VM-Größe *Standard_D2s_v3* auf, Sie sollten jedoch die *VM-Größe* auswählen, von der Sie glauben, dass sie sich für Ihre Workload am besten eignet.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -123,7 +117,7 @@ mysql_secure_installation
 Sie können sich jetzt anmelden und die MySQL-Eingabeaufforderung öffnen.
 
 ```bash  
-mysql -u root -p
+sudo mysql -u root -p
 ```
 Damit werden Sie zur MySQL-Eingabeaufforderung weitergeleitet, in der Sie SQL-Anweisungen für die Interaktion mit der Datenbank eingeben können.
 
@@ -163,7 +157,3 @@ quit
 
 ## <a name="next-steps"></a>Nächste Schritte
 Details zu MySQL finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc).
-
-
-
-

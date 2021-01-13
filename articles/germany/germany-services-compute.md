@@ -1,29 +1,25 @@
 ---
 title: Computedienste von Microsoft Azure Deutschland | Microsoft-Dokumentation
-description: Vergleich der Computedienste für Azure Deutschland
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
+description: Dieser Artikel enthält einen ausführlichen Vergleich der Computedienste für Azure Deutschland.
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/13/2017
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 579e5138d5bfe93fcdc1f53f28c442125b8a69b3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: e6c2e89f1ddce1bd88d3b8ce0ccf7e82364afa32
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685562"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351751"
 ---
 # <a name="azure-germany-compute-services"></a>Computedienste von Microsoft Azure Deutschland
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
+
 ## <a name="virtual-machines"></a>Virtual Machines
-Ausführliche Informationen zum Azure Virtual Machines-Dienst und seiner Verwendung finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ausführliche Informationen zum Azure Virtual Machines-Dienst und seiner Verwendung finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="variations"></a>Abweichungen
 Diese Produkte (virtuelle Computer) sind in Azure Deutschland verfügbar:
@@ -144,9 +140,4 @@ Diese Produkte (virtuelle Computer) sind in Azure Deutschland verfügbar:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
-
-
-
-
-
+Abonnieren Sie den [Azure Deutschland-Blog](/archive/blogs/azuregermany/), um weitere Informationen und Updates zu erhalten.

@@ -3,21 +3,19 @@ title: Änderungen an einem MVC-Projekt, die vorgenommen werden, wenn Sie eine V
 description: Beschreibt, was mit dem MVC-Projekt geschieht, wenn Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit Azure AD herstellen
 author: ghogen
 manager: jillfra
-ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4328ea6145d32616f1784d94976dab29216fbc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: devx-track-csharp, aaddev, vs-azure
+ms.openlocfilehash: ab72512b2e5d915dbd4b8a3d7d8446a5932eef9e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852002"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88165446"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Was ist mit dem MVC-Projekt passiert (verbundene Visual Studio-Dienste für Azure Active Directory)?
 
@@ -31,7 +29,7 @@ Informationen zur Verwendung des verbundenen Diensts finden Sie unter [Erste Sch
 
 ## <a name="added-references"></a>Hinzugefügte Verweise
 
-Betrifft die Projektdatei (\*.NET-Verweise) und `packages.config` (NuGet-Verweise).
+Betrifft die Projektdatei (*.NET-Verweise) und `packages.config` (NuGet-Verweise).
 
 | type | Verweis |
 | --- | --- |
@@ -164,5 +162,5 @@ Wenn Sie den verbundenen Dienst hinzufügen, sichert Visual Studio 2015 geänder
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Authentifizierungsszenarien für Azure Active Directory](authentication-scenarios.md)
-- [Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App](quickstart-v1-aspnet-webapp.md)
+- [Authentifizierungsszenarien für Azure Active Directory](./authentication-vs-authorization.md)
+- [Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App](quickstart-v2-aspnet-webapp.md)

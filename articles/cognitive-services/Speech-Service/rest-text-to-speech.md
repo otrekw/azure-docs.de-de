@@ -1,21 +1,22 @@
 ---
-title: Text-to-Speech-API-Referenz (REST) – Speech Service
+title: 'Speech-Dienst: Sprachsynthese-API-Referenz (REST)'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Sprachsynthese-REST-API verwenden. In diesem Artikel erfahren Sie mehr über Autorisierungs- und Abfrageoptionen sowie darüber, wie Sie eine Anforderung strukturieren und eine Antwort erhalten.
 services: cognitive-services
-author: erhopf
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
-ms.author: erhopf
-ms.openlocfilehash: b0a0d788c9fadd13b9a37f541a81945c86b37c29
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 03/23/2020
+ms.author: trbye
+ms.custom: references_regions
+ms.openlocfilehash: bfdea5f2e2bd20a35ee948e99b3be9bf55038b13
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559176"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760655"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-to-Speech-REST-API
 
@@ -32,6 +33,9 @@ Die Text-to-Speech-REST-API unterstützt neuronale und Standardstimmen für die 
 Bevor Sie diese API verwenden, müssen Sie Folgendes wissen:
 
 * Die Text-to-Speech-REST-API erfordert einen Autorisierungsheader. Das bedeutet, dass Sie einen Tokenaustausch ausführen müssen, um auf den Dienst zuzugreifen. Weitere Informationen finden Sie unter [Authentifizierung](#authentication).
+
+> [!TIP]
+> Informationen zu Endpunkten zur Government-Cloud (FairFax) finden Sie in der [Azure Government-Dokumentation](/azure/azure-government/compare-azure-government-global-azure).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -56,12 +60,15 @@ Der Endpunkt `voices/list` ermöglicht es Ihnen, eine vollständige Liste der St
 | Korea, Mitte | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA Nord Mitte | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Nordeuropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA (Mitte/Süden) | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA Süd Mitte | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Asien, Südosten | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | UK, Süden | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Europa, Westen | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA (Westen) | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA, Westen 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+
+> [!TIP]
+> [Die sich in der Vorschau befindlichen Stimmen](language-support.md#neural-voices-in-preview) sind nur in den folgenden drei Regionen verfügbar: „USA, Osten“, „Europa, Westen“ und „Asien, Südosten“.
 
 ### <a name="request-headers"></a>Anforderungsheader
 
@@ -95,39 +102,80 @@ Diese Antwort wurde abgeschnitten, um die Struktur einer Antwort zu veranschauli
 
 ```json
 [
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
+    "DisplayName": "Hoda",
+    "LocalName": "هدى",
+    "ShortName": "ar-EG-Hoda",
+    "Gender": "Female",
+    "Locale": "ar-EG",
+    "SampleRateHertz": "16000",
+    "VoiceType": "Standard",
+    "Status": "GA"
+  },
+
+...
+      
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
-        "ShortName": "ar-EG-Hoda",
-        "Gender": "Female",
-        "Locale": "ar-EG"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
-        "ShortName": "ar-SA-Naayf",
-        "Gender": "Male",
-        "Locale": "ar-SA"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
-        "ShortName": "bg-BG-Ivan",
-        "Gender": "Male",
-        "Locale": "bg-BG"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)",
-        "ShortName": "ca-ES-HerenaRUS",
-        "Gender": "Female",
-        "Locale": "ca-ES"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)",
-        "ShortName": "cs-CZ-Jakub",
-        "Gender": "Male",
-        "Locale": "cs-CZ"
-    },
+    "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
+    "DisplayName": "Aria",
+    "LocalName": "Aria",
+    "ShortName": "en-US-AriaNeural",
+    "Gender": "Female",
+    "Locale": "en-US",
+    "StyleList": [
+      "chat",
+      "customerservice",
+      "newscast-casual",
+      "newscast-formal",
+      "cheerful",
+      "empathetic"
+    ],
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "GA"
+  },
+  
+  ...
+    
+     {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ga-IE, OrlaNeural)",
+    "DisplayName": "Orla",
+    "LocalName": "Orla",
+    "ShortName": "ga-IE-OrlaNeural",
+    "Gender": "Female",
+    "Locale": "ga-IE",
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "Preview"
+  },
+  
+  ...
+    
+   {
+    "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, YunxiNeural)",
+    "DisplayName": "Yunxi",
+    "LocalName": "云希",
+    "ShortName": "zh-CN-YunxiNeural",
+    "Gender": "Male",
+    "Locale": "zh-CN",
+    "StyleList": [
+      "Calm",
+      "Fearful",
+      "Cheerful",
+      "Disgruntled",
+      "Serious",
+      "Angry",
+      "Sad",
+      "Depressed",
+      "Embarrassed"
+    ],
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "Preview"
+  },
 
     ...
-
 ]
 ```
 
@@ -141,7 +189,7 @@ Der HTTP-Statuscode jeder Antwort zeigt den Erfolg oder allgemeine Fehler an.
 | 400 | Ungültige Anforderung | Ein erforderlicher Parameter fehlt, ist leer oder Null. Oder der an einen erforderlichen oder optionalen Parameter übergebene Wert ist ungültig. Ein häufiges Problem sind zu lange Kopfzeilen. |
 | 401 | Nicht autorisiert | Die Anforderung ist nicht autorisiert. Stellen Sie sicher, dass Ihr Abonnementschlüssel oder -token gültig ist und sich in der richtigen Region befindet. |
 | 429 | Zu viele Anforderungen | Sie haben das Kontingent oder die Rate der Anforderungen überschritten, das bzw. die für Ihr Abonnement zulässig ist. |
-| 502 | Ungültiges Gateway | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen. |
+| 502 | Ungültiges Gateway    | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen. |
 
 
 ## <a name="convert-text-to-speech"></a>Konvertieren von Text in Sprache
@@ -163,24 +211,24 @@ Diese Tabelle führt die erforderlichen und optionalen Header für Text-to-Speec
 | `Authorization` | Ein Autorisierungstoken, dem das Wort `Bearer` vorangestellt ist. Weitere Informationen finden Sie unter [Authentifizierung](#authentication). | Erforderlich |
 | `Content-Type` | Gibt den Inhaltstyp des angegebenen Texts an. Zulässiger Wert: `application/ssml+xml`. | Erforderlich |
 | `X-Microsoft-OutputFormat` | Gibt das Audioausgabeformat an. Eine vollständige Liste der zulässigen Werte finden Sie unter [Audioausgaben](#audio-outputs). | Erforderlich |
-| `User-Agent` | Der Name der Anwendung. Der angegebene Wert muss kürzer als 255 Zeichen sein. | Erforderlich |
+| `User-Agent` | Der Anwendungsname. Der angegebene Wert muss kürzer als 255 Zeichen sein. | Erforderlich |
 
 ### <a name="audio-outputs"></a>Audioausgaben
 
-Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung als `X-Microsoft-OutputFormat`-Header gesendet werden. Es wird jeweils eine Bitrate und ein Codierungstyp angegeben. Der Spracherkennungsdienst unterstützt Audioausgaben mit 24 kHz, 16 kHz und 8 kHz.
+Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung als `X-Microsoft-OutputFormat`-Header gesendet werden. Es wird jeweils eine Bitrate und ein Codierungstyp angegeben. Der Speech-Dienst unterstützt Audioausgaben mit 24 kHz, 16 kHz und 8 kHz.
 
-|||
-|-|-|
-| `raw-16khz-16bit-mono-pcm` | `raw-8khz-8bit-mono-mulaw` |
-| `riff-8khz-8bit-mono-alaw` | `riff-8khz-8bit-mono-mulaw` |
-| `riff-16khz-16bit-mono-pcm` | `audio-16khz-128kbitrate-mono-mp3` |
-| `audio-16khz-64kbitrate-mono-mp3` | `audio-16khz-32kbitrate-mono-mp3` |
-| `raw-24khz-16bit-mono-pcm` | `riff-24khz-16bit-mono-pcm` |
-| `audio-24khz-160kbitrate-mono-mp3` | `audio-24khz-96kbitrate-mono-mp3` |
-| `audio-24khz-48kbitrate-mono-mp3` | |
+```output
+raw-16khz-16bit-mono-pcm            raw-8khz-8bit-mono-mulaw
+riff-8khz-8bit-mono-alaw            riff-8khz-8bit-mono-mulaw
+riff-16khz-16bit-mono-pcm           audio-16khz-128kbitrate-mono-mp3
+audio-16khz-64kbitrate-mono-mp3     audio-16khz-32kbitrate-mono-mp3
+raw-24khz-16bit-mono-pcm            riff-24khz-16bit-mono-pcm
+audio-24khz-160kbitrate-mono-mp3    audio-24khz-96kbitrate-mono-mp3
+audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
+```
 
 > [!NOTE]
-> Wenn die ausgewählte Stimme und das ausgewählte Ausgabeformat unterschiedliche Bitraten aufweisen, wird das Audio nach Bedarf neu gesampelt. Jedoch unterstützen 24 khz-Stimmen keine `audio-16khz-16kbps-mono-siren`- und `riff-16khz-16kbps-mono-siren`-Ausgabeformate.
+> Wenn die ausgewählte Stimme und das ausgewählte Ausgabeformat unterschiedliche Bitraten aufweisen, wird das Audio nach Bedarf neu gesampelt. ogg-24khz-16bit-mono-opus kann mit [Opus-Codec](https://opus-codec.org/downloads/) decodiert werden.
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -191,28 +239,22 @@ Der Text jeder `POST`-Anforderung wird als [Speech Synthesis Markup Language (SS
 
 ### <a name="sample-request"></a>Beispiel für eine Anforderung
 
-Diese HTTP-Anforderung gibt mit SSML die Stimme und die Sprache an. Der Text darf 1.000 Zeichen nicht überschreiten.
+Diese HTTP-Anforderung gibt mit SSML die Stimme und die Sprache an. Wenn der Text lang ist und die resultierende Audiodatei zehn Minuten überschreitet, wird sie auf zehn Minuten gekürzt. Das heißt, die Audiodatei darf nicht länger als zehn Minuten sein.
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
 
-X-Microsoft-OutputFormat: raw-16khz-16bit-mono-pcm
+X-Microsoft-OutputFormat: raw-24khz-16bit-mono-pcm
 Content-Type: application/ssml+xml
 Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='en-US-JessaRUS'>
+    name='en-US-AriaNeural'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
-
-In unseren Schnellstarts finden Sie sprachspezifische Beispiele:
-
-* [.NET Core, C#](quickstart-dotnet-text-to-speech.md)
-* [Python](quickstart-python-text-to-speech.md)
-* [Node.js](quickstart-nodejs-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>HTTP-Statuscodes
 
@@ -223,15 +265,14 @@ Der HTTP-Statuscode jeder Antwort zeigt den Erfolg oder allgemeine Fehler an.
 | 200 | OK | Die Anforderung war erfolgreich. Der Antworttext ist eine Audiodatei. |
 | 400 | Ungültige Anforderung | Ein erforderlicher Parameter fehlt, ist leer oder Null. Oder der an einen erforderlichen oder optionalen Parameter übergebene Wert ist ungültig. Ein häufiges Problem sind zu lange Kopfzeilen. |
 | 401 | Nicht autorisiert | Die Anforderung ist nicht autorisiert. Stellen Sie sicher, dass Ihr Abonnementschlüssel oder -token gültig ist und sich in der richtigen Region befindet. |
-| 413 | Anforderungsentität zu groß | Die SSML-Eingabe umfasst mehr als 1024 Zeichen. |
 | 415 | Nicht unterstützter Medientyp | Möglicherweise wurde der falsche `Content-Type`-Wert bereitgestellt. `Content-Type` sollte auf `application/ssml+xml` festgelegt sein. |
 | 429 | Zu viele Anforderungen | Sie haben das Kontingent oder die Rate der Anforderungen überschritten, das bzw. die für Ihr Abonnement zulässig ist. |
-| 502 | Ungültiges Gateway | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen. |
+| 502 | Ungültiges Gateway    | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen. |
 
 Wenn der HTTP-Status `200 OK` ist, enthält der Text der Antwort eine Audiodatei im angeforderten Format. Diese Datei kann bei der Übertragung abgespielt sowie in einem Puffer oder in einer Datei gespeichert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
-- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
-- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)
+- [Erstellen Sie ein kostenloses Azure-Konto.](https://azure.microsoft.com/free/cognitive-services/)
+- [Asynchrone Synthese für lange Audioinhalte](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [Erste Schritte mit Custom Voice](how-to-custom-voice.md)

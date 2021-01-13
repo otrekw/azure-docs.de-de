@@ -2,22 +2,22 @@
 title: Cookieeinstellungen für den Anwendungsproxy – Azure Active Directory | Microsoft-Dokumentation
 description: Azure Active Directory (Azure AD) umfasst Zugriffs- und Sitzungscookies für den Zugriff auf lokale Anwendungen über den Anwendungsproxy. In diesem Artikel erfahren Sie, wie Sie die Cookieeinstellungen verwenden und konfigurieren.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2e7f1bb54ce316a10eca0d020519779b0536c9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 656841fc8e62e81318ffd568069c0664192b1747
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65825743"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84764892"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookieeinstellungen für den Zugriff auf lokale Anwendungen in Azure Active Directory
 
@@ -29,9 +29,21 @@ Der [Anwendungsproxy](application-proxy.md) verwendet die folgenden Einstellunge
 
 | Cookieeinstellung | Standard | BESCHREIBUNG | Empfehlungen |
 | -------------- | ------- | ----------- | --------------- |
-| Nur-HTTP-Cookie verwenden | **Nein** | Bei Festlegung von **Ja** kann der Anwendungsproxy das HTTPOnly-Flag in HTTP-Antwortheadern einschließen. Dieses Flag bietet zusätzliche Sicherheitsvorteile, z.B. wird das Kopieren oder Ändern von Cookies über ein clientseitiges Scripting (CSS) verhindert.<br></br><br></br>Vor der Unterstützung der HTTP-Only-Einstellung verschlüsselte der Anwendungsproxy Cookies und übermittelte sie über einen sicheren SSL-Kanal, um Schutz vor Änderungen bereitzustellen. | Verwenden Sie **Ja**, um von den zusätzlichen Sicherheitsvorteilen zu profitieren.<br></br><br></br>Verwenden Sie **Nein** für Clients oder Benutzer-Agents, die keinen Zugriff auf das Sitzungscookie benötigen. Verwenden Sie beispielsweise **Nein** für einen RDP- oder MTSC-Client, der über den Anwendungsproxy eine Verbindung mit einem Remotedesktop-Gatewayserver herstellt.|
+| Nur-HTTP-Cookie verwenden | **Nein** | Bei Festlegung von **Ja** kann der Anwendungsproxy das HTTPOnly-Flag in HTTP-Antwortheadern einschließen. Dieses Flag bietet zusätzliche Sicherheitsvorteile, z.B. wird das Kopieren oder Ändern von Cookies über ein clientseitiges Scripting (CSS) verhindert.<br></br><br></br>Vor Unterstützung der Einstellung „HTTP-Only“ verschlüsselte der Anwendungsproxy Cookies und übermittelte sie über einen sicheren TLS-Kanal, um Schutz vor Änderungen bereitzustellen. | Verwenden Sie **Ja**, um von den zusätzlichen Sicherheitsvorteilen zu profitieren.<br></br><br></br>Verwenden Sie **Nein** für Clients oder Benutzer-Agents, die keinen Zugriff auf das Sitzungscookie benötigen. Verwenden Sie beispielsweise **Nein** für einen RDP- oder MTSC-Client, der über den Anwendungsproxy eine Verbindung mit einem Remotedesktop-Gatewayserver herstellt.|
 | Sicheres Cookie verwenden | **Nein** | Bei Festlegung von **Ja** kann der Anwendungsproxy das Flag „Secure“ in HTTP-Antwortheadern einschließen. Sichere Cookies erhöhen die Sicherheit, weil sie über einen TLS-gesicherten Kanal wie z.B. HTTPS übertragen werden. Dadurch wird verhindert, dass Cookies aufgrund der Übertragung in Klartext durch Unbefugte eingesehen werden können. | Verwenden Sie **Ja**, um von den zusätzlichen Sicherheitsvorteilen zu profitieren.|
 | Beständiges Cookie verwenden | **Nein** | Bei Festlegung auf **Ja** kann der Anwendungsproxy Zugriffscookies so festlegen, dass sie beim Schließen des Webbrowsers nicht ablaufen. Cookies bleiben erhalten, bis das Zugriffstoken abläuft oder der Benutzer die persistenten Cookies manuell löscht. | Verwenden Sie **Nein** wegen des Sicherheitsrisikos, das mit der Beibehaltung der Authentifizierung von Benutzern verbunden ist.<br></br><br></br>Wir empfehlen, **Ja** nur für ältere Anwendungen zu verwenden, die Cookies nicht zwischen Prozessen gemeinsam verwenden können. Es ist besser, Ihre Anwendung zur gemeinsamen Nutzung von Cookies zwischen Prozessen zu aktualisieren, als beständige Cookies zu verwenden. Angenommen, Sie benötigen beständige Cookies, damit ein Benutzer von einer SharePoint-Website aus Office-Dokumente in der Explorer-Ansicht öffnen kann. Ohne beständige Cookies kommt es bei diesem Vorgang möglicherweise zu Fehlern, wenn die Zugriffscookies nicht vom Browser, dem Explorer-Prozess und dem Office-Prozess gemeinsam verwendet werden. |
+
+## <a name="samesite-cookies"></a>SameSite-Cookies
+Ab Version 80 des Chrome-Browsers und letztendlich in Browsern, die Chromium nutzen, werden Cookies, die das [SameSite](https://web.dev/samesite-cookies-explained)-Attribut nicht angeben, so behandelt, als wären sie auf **SameSite=Lax** festgelegt. Das „SameSite“-Attribut deklariert, wie Cookies auf einen SameSite-Kontext beschränkt werden sollen. Wenn es auf „Lax“ festgelegt ist, wird das Cookie nur mit Anforderungen der gleichen Website und mit Navigation auf oberster Ebene gesendet. Der Anwendungsproxy erfordert jedoch, dass diese Cookies im Drittanbieter-Kontext beibehalten werden, damit die Benutzer während ihrer Sitzung ordnungsgemäß angemeldet bleiben. Aus diesem Grund aktualisieren wir die Zugriffs- und Sitzungscookies des Anwendungsproxys, um negative Auswirkungen auf diese Änderung zu vermeiden. Die Aktualisierungen umfassen Folgendes:
+
+* Das **SameSite**-Attribut wird auf **None** festgelegt. Dadurch können die Zugriffs- und Sitzungscookies des Anwendungsproxys ordnungsgemäß im Drittanbieter-Kontext gesendet werden.
+* Für die Einstellung **Sicheres Cookie verwenden** wird **Ja** als Standardeinstellung festgelegt. Chrome erfordert auch, das die Cookies das „Secure“-Flag angeben. Andernfalls werden sie zurückgewiesen. Diese Änderung gilt für alle über den Anwendungsproxy veröffentlichten vorhandenen Anwendungen. Beachten Sie, dass Anwendungsproxy-Zugriffscookies immer auf „Secure“ festgelegt sind und nur über HTTPS übertragen werden. Diese Änderung gilt nur für die Sitzungscookies.
+
+Diese Änderungen an den Anwendungsproxycookies werden im Laufe der nächsten Wochen vor der Veröffentlichung von Chrome 80 eingeführt.
+
+Wenn Ihre Back-End-Anwendung Cookies enthält, die in einem Drittanbieter-Kontext verfügbar sein müssen, ist es außerdem erforderlich, dies explizit anzugeben, indem Sie Ihre Anwendung so ändern, dass „SameSite=None“ für diese Cookies verwendet wird. Der Anwendungsproxy übersetzt den Header „Set-Cookie“ in seine URLs und berücksichtigt die Einstellungen für diese Cookies, die von der Back-End-Anwendung festgelegt wurden.
+
+
 
 ## <a name="set-the-cookie-settings---azure-portal"></a>Festlegen der Cookieeinstellungen – Azure-Portal
 So legen Sie die Cookieeinstellungen im Azure-Portal fest

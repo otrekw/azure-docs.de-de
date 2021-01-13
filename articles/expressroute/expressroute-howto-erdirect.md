@@ -1,34 +1,39 @@
 ---
-title: Konfigurieren von ExpressRoute Direct – Azure | Microsoft-Dokumentation
-description: Diese Seite unterstützt Sie beim Konfigurieren von ExpressRoute Direct.
+title: 'Azure ExpressRoute: Konfigurieren von ExpressRoute Direct'
+description: Hier erfahren Sie, wie Sie Azure ExpressRoute Direct mit Azure PowerShell so konfigurieren, dass eine direkte Verbindung mit dem globalen Netzwerk von Microsoft hergestellt wird.
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 05/20/2019
-ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 0fec7234d18659051c61fda593b1ba0fb846c220
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: how-to
+ms.date: 09/28/2020
+ms.author: duau
+ms.openlocfilehash: a450c4057b4639206fd1db4b7f44d27c69441f7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964263"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91569851"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Konfigurieren von ExpressRoute Direct
 
-ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. Weitere Informationen über ExpressRoute finden Sie unter [Informationen zu ExpressRoute Direct](expressroute-erdirect-about.md).
+ExpressRoute Direct ermöglicht das Herstellen einer direkten Verbindung mit dem globalen Netzwerk von Microsoft – dank strategisch verteilten Peeringstandorten auf der ganzen Welt. Weitere Informationen über ExpressRoute finden Sie unter [Informationen zu ExpressRoute Direct](expressroute-erdirect-about.md).
 
-## <a name="resources"></a>Erstellen der Ressource
+## <a name="create-the-resource"></a><a name="resources"></a>Erstellen der Ressource
 
 1. Melden Sie sich bei Azure an, und wählen Sie das Abonnement aus. Die ExpressRoute Direct-Ressource und ExpressRoute-Leitungen müssen sich im selben Abonnement befinden.
 
    ```powershell
    Connect-AzAccount 
 
-   Select-AzSubscription -Subscription “<SubscriptionID or SubscriptionName>”
+   Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
-2. Listen Sie alle Standorte auf, an denen ExpressRoute Direct unterstützt wird.
+   
+2. Registrieren Sie Ihr Abonnement noch mal bei Microsoft.Network, um auf die APIs „expressrouteportslocation“ und „expressrouteport“ zugreifen zu können.
+
+   ```powershell
+   Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
+   ```   
+3. Listen Sie alle Standorte auf, an denen ExpressRoute Direct unterstützt wird.
   
    ```powershell
    Get-AzExpressRoutePortsLocation
@@ -61,7 +66,7 @@ ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen 
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-3. Bestimmen Sie, ob ein oben aufgelisteter Standort verfügbare Bandbreite aufweist.
+4. Bestimmen Sie, ob ein oben aufgelisteter Standort verfügbare Bandbreite aufweist.
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
@@ -83,7 +88,7 @@ ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen 
                           }
                         ]
    ```
-4. Erstellen Sie eine ExpressRoute Direct-Ressource basierend auf dem oben gewählten Standort.
+5. Erstellen Sie eine ExpressRoute Direct-Ressource basierend auf dem oben gewählten Standort.
 
    ExpressRoute Direct unterstützt die Kapselungen QinQ und Dot1Q. Bei Wahl von QinQ wird jeder ExpressRoute-Leitung dynamisch ein S-Tag zugewiesen, das in der gesamten ExpressRoute Direct-Ressource eindeutig ist. Jedes C-Tag für die Leitung muss innerhalb der Leitung eindeutig sein, jedoch nicht innerhalb von ExpressRoute Direct.  
 
@@ -150,9 +155,22 @@ ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen 
    Circuits                   : []
    ```
 
-## <a name="state"></a>Ändern des Verwaltungsstatus von Verknüpfungen
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Generieren des Genehmigungsschreibens (Letter of Authorization, LOA)
 
-  Dieser Prozess sollte verwendet werden, um einen Layer-1-Test durchzuführen, der sicherstellt, dass jede Kreuzverbindung ordnungsgemäß in jeden Router für primäre und sekundäre Verbindungen eingebunden ist.
+Verweisen Sie auf die kürzlich erstellte ExpressRoute Direct-Ressource, geben Sie einen Kundennamen ein, für den das Genehmigungsschreiben erstellt werden soll, und definieren Sie optional einen Speicherort für das Dokument. Ohne Verweis auf einen Dateipfad wird das Dokument in das aktuelle Verzeichnis heruntergeladen.
+
+  ```powershell 
+   New-AzExpressRoutePortLOA -ExpressRoutePort $ERDirect -CustomerName TestCustomerName -Destination "C:\Users\SampleUser\Downloads" 
+   ```
+ **Beispielausgabe**
+
+   ```powershell
+   Written Letter of Authorization To: C:\Users\SampleUser\Downloads\LOA.pdf
+   ```
+
+## <a name="change-admin-state-of-links"></a><a name="state"></a>Ändern des Verwaltungsstatus von Verknüpfungen
+   
+Dieser Prozess sollte verwendet werden, um einen Layer-1-Test durchzuführen, der sicherstellt, dass jede Kreuzverbindung ordnungsgemäß in jeden Router für primäre und sekundäre Verbindungen eingebunden ist.
 1. Rufen Sie ExpressRoute Direct-Details ab.
 
    ```powershell
@@ -163,10 +181,10 @@ ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen 
    „Links[0]“ ist der primäre Port, „Links[1]“ der sekundäre Port.
 
    ```powershell
-   $ERDirect.Links[0].AdminState = “Enabled”
+   $ERDirect.Links[0].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
-   $ERDirect.Links[1].AdminState = “Enabled”
+   $ERDirect.Links[1].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    ```
    **Beispielausgabe:**
@@ -218,17 +236,17 @@ ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen 
    Circuits                   : []
    ```
 
-   Verwenden Sie die gleiche Vorgehensweise mit `AdminState = “Disabled”`, um die Ports zu deaktivieren.
+   Verwenden Sie die gleiche Vorgehensweise mit `AdminState = "Disabled"`, um die Ports zu deaktivieren.
 
-## <a name="circuit"></a>Erstellen einer Leitung
+## <a name="create-a-circuit"></a><a name="circuit"></a>Erstellen einer Leitung
 
-Sie können standardmäßig 10 Leitungen im Abonnement erstellen, in dem sich die ExpressRoute Direct-Ressource befindet. Dieser Wert kann vom Support erhöht werden. Sie sind für die Nachverfolgung der Werte für die bereitgestellte und belegte Bandbreite zuständig. Die bereitgestellte Bandbreite ist die Summe der Bandbreite aller Leitungen in der ExpressRoute Direct-Ressource, und die belegte Bandbreite ist die physische Nutzung der zugrunde liegenden physischen Schnittstellen.
+Sie können standardmäßig 10 Leitungen im Abonnement erstellen, in dem sich die ExpressRoute Direct-Ressource befindet. Dieser Grenzwert kann vom Support heraufgesetzt werden. Sie sind für die Nachverfolgung der Werte für die bereitgestellte und belegte Bandbreite zuständig. Die bereitgestellte Bandbreite ist die Summe der Bandbreite aller Leitungen in der ExpressRoute Direct-Ressource, und die belegte Bandbreite ist die physische Nutzung der zugrunde liegenden physischen Schnittstellen.
 
-Es gibt zusätzliche Leitungsbandbreiten, die für ExpressRoute Direct nur zur Unterstützung der oben beschriebenen Szenarien genutzt werden können. Dies sind: 40Gbit/s und 100Gbit/s.
+Es gibt zusätzliche Leitungsbandbreiten, die für ExpressRoute Direct nur zur Unterstützung der oben beschriebenen Szenarien genutzt werden können. Die Bandbreiten sind 40 GBit/s und 100 GBit/s.
 
-**SkuTier** kann Local, Standard oder Premium sein.
+**SkuTier** kann „Local“, „Standard“ oder „Premium“ sein.
 
-**SkuFamily** darf nur MeteredData sein, da „unlimited“ von ExpressRoute Direct nicht unterstützt wird.
+**SkuFamily** kann nur „MeteredData“ sein. „Unlimited“ wird für ExpressRoute Direct nicht unterstützt.
 
 Erstellen Sie in der ExpressRoute-Direct-Ressource eine Leitung.
 

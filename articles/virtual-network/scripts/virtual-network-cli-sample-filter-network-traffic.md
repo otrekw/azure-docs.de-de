@@ -1,13 +1,10 @@
 ---
-title: Azure CLI-Skriptbeispiel – Filtern des VM-Netzwerkdatenverkehrs | Microsoft-Dokumentation
-description: Azure CLI-Skriptbeispiel – Filtern ein- und ausgehenden VM-Netzwerkverkehrs.
+title: 'Filtern des VM-Netzwerkdatenverkehrs: Azure CLI-Skriptbeispiel'
+description: Filtern Sie ein- und ausgehenden Netzwerkdatenverkehr von virtuellen Computern (VM) mithilfe eines Azure CLI-Skriptbeispiels.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: sample
@@ -15,14 +12,15 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 549f966f86e9ddd447f24e21027504395981fd1e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 86d33ba411c4a0294454a8e1421c35b694feb65d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729369"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87492988"
 ---
-# <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>Skriptbeispiel zum Filtern von ein- und ausgehendem VM-Netzwerkverkehr
+# <a name="filter-inbound-and-outbound-vm-network-traffic-using-an-azure-cli-script-sample"></a>Filtern ein- und ausgehenden VM-Netzwerkdatenverkehrs mit einem Azure CLI-Skriptbeispiel
 
 In diesem Skriptbeispiel wird ein virtuelles Netzwerk mit Front-End- und Back-End-Subnetz erstellt. Eingehender Netzwerkdatenverkehr zum Front-End-Subnetz ist auf HTTP, HTTPS und SSH beschränkt, während ausgehender Datenverkehr zum Internet aus dem Back-End-Subnetz nicht zulässig ist. Nach dem Ausführen des Skripts besitzen Sie einen virtuellen Computer mit zwei NICs. Jede NIC kann mit einem anderen Subnetz verbunden sein.
 

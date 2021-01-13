@@ -1,21 +1,20 @@
 ---
 title: include file
 description: include file
-services: search
 author: HeidiSteen
-ms.service: search
+ms.service: cognitive-search
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
-ms.openlocfilehash: 1e147e8bd9260cd1ece60b70641968a229995ec1
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ee430241173a6c19e2a32e176f28411631d9cb19
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178470"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80272688"
 ---
-Sie können mehrere Dienste in einem Abonnement erstellen. Jeder kann für einen bestimmten Tarif bereitgestellt werden. Sie sind nur durch die Anzahl der Dienste beschränkt, die in einem Tarif zulässig sind. Beispielsweise können Sie in einem Abonnement bis zu 12 Dienste für den Basic-Tarif und weitere 12 Dienste für den S1-Tarif erstellen. Weitere Informationen zu Tarifen finden Sie unter [Auswählen einer SKU oder eines Tarifs für Azure Search](../articles/search/search-sku-tier.md).
+Sie können mehrere Dienste in einem Abonnement erstellen. Jeder kann für einen bestimmten Tarif bereitgestellt werden. Sie sind nur durch die Anzahl der Dienste beschränkt, die in einem Tarif zulässig sind. Beispielsweise können Sie in einem Abonnement bis zu 12 Dienste für den Basic-Tarif und weitere 12 Dienste für den S1-Tarif erstellen. Weitere Informationen zu Tarifen finden Sie unter [Auswählen einer SKU oder eines Tarifs für Azure Cognitive Search](../articles/search/search-sku-tier.md).
 
 Die Obergrenze für die maximale Anzahl von Diensten kann auf Anfrage angehoben werden. Wenden Sie sich an den Support von Azure, wenn Sie in einem Abonnement weitere Dienste benötigen.
 

@@ -4,31 +4,30 @@ description: Erfahren Sie, wie Sie unter Verwendung von Azure PowerShell ein Anw
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a313296a9a19aa762803652a3b139cdac7ca3a58
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7e410218117aa0d21167b6d615a3835aeec470e7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359926"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397109"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>Verwalten von Webdatenverkehr mit einem Anwendungsgateway per Azure PowerShell
 
-Mit dem Anwendungsgateway wird der Webdatenverkehr mit Servern, die Sie verwalten, verwaltet und abgesichert. Sie können mit Azure PowerShell ein [Anwendungsgateway](overview.md) erstellen, das eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) für Back-End-Server zum Verwalten des Webdatenverkehrs verwendet. In diesem Beispiel enthält die Skalierungsgruppe zwei VM-Instanzen, die zum standardmäßigen Back-End-Pool des Anwendungsgateways hinzugefügt werden.
+Mit dem Anwendungsgateway wird der Webdatenverkehr mit Servern, die Sie verwalten, verwaltet und abgesichert. Sie können mit Azure PowerShell ein [Anwendungsgateway](overview.md) erstellen, das eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/overview.md) für Back-End-Server zum Verwalten des Webdatenverkehrs verwendet. In diesem Beispiel enthält die Skalierungsgruppe zwei VM-Instanzen, die zum standardmäßigen Back-End-Pool des Anwendungsgateways hinzugefügt werden.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Anwendungsgateways
-> * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
+* Einrichten des Netzwerks
+* Erstellen eines Anwendungsgateways
+* Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
 
 Sie können für dieses Verfahren auch die [Azure-Befehlszeilenschnittstelle](tutorial-manage-web-traffic-cli.md) verwenden, wenn Ihnen dies lieber ist.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -76,9 +75,9 @@ $pip = New-AzPublicIpAddress `
 
 In diesem Abschnitt erstellen Sie Ressourcen, die das Anwendungsgateway unterstützen, und schließlich das Anwendungsgateway selbst. Die Ressourcen, die Sie erstellen, umfassen:
 
-- *IP-Konfigurationen und Front-End-Port*: Ordnet das Subnetz, das Sie zuvor erstellt haben, dem Anwendungsgateway zu und weist einen Port für den Zugriff darauf zu.
-- *Standardpool*: Alle Anwendungsgateways müssen mindestens einen Back-End-Pool mit Servern haben.
-- *Standardlistener und Regel*: Der Standardlistener lauscht auf dem Port, der zugewiesen wurde, auf Datenverkehr, und die Standardregel sendet Datenverkehr an den Standardpool.
+- *IP-Konfigurationen und Front-End-Port* : Ordnet das Subnetz, das Sie zuvor erstellt haben, dem Anwendungsgateway zu und weist einen Port für den Zugriff darauf zu.
+- *Standardpool* : Alle Anwendungsgateways müssen mindestens einen Back-End-Pool mit Servern haben.
+- *Standardlistener und Regel* : Der Standardlistener lauscht auf dem Port, der zugewiesen wurde, auf Datenverkehr, und die Standardregel sendet Datenverkehr an den Standardpool.
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Erstellen der IP-Konfigurationen und des Front-End-Ports
 
@@ -258,4 +257,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Einschränken des Webdatenverkehrs mit einer Web Application Firewall](./tutorial-restrict-web-traffic-powershell.md)
+[Einschränken des Webdatenverkehrs mit einer Web Application Firewall](../web-application-firewall/ag/tutorial-restrict-web-traffic-powershell.md)

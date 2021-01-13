@@ -1,19 +1,18 @@
 ---
-title: 'Konfigurieren von BGP für ein Azure-VPN-Gateway: Resource Manager und Befehlszeilenschnittstelle | Microsoft-Dokumentation'
+title: 'Konfigurieren von BGP für Azure-VPN-Gateways: CLI'
 description: In diesem Artikel wird die Konfiguration von BGP mit einem Azure-VPN-Gateway mithilfe von Azure Resource Manager und Befehlszeilenschnittstelle beschrieben.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 09/25/2018
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 51402196c8429797b644357822a1e3c08982b384
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a69ce0592b79be0868dd7c15ac054910eee75fc7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209507"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89393597"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Konfigurieren von BGP auf Azure-VPN-Gateways mithilfe der Befehlszeilenschnittstelle
 
@@ -40,7 +39,7 @@ Jeder dieser drei Abschnitte ist ein zentraler Baustein zum Aktivieren von BGP i
 
 Zum Erstellen eines komplexeren Multihop-Übertragungsnetzwerks, das Ihren Anforderungen entspricht, können Sie diese Abschnitte auch miteinander kombinieren.
 
-## <a name ="enablebgp"></a>Aktivieren von BGP für Ihr VPN-Gateway
+## <a name="enable-bgp-for-your-vpn-gateway"></a><a name ="enablebgp"></a>Aktivieren von BGP für Ihr VPN-Gateway
 
 Dieser Abschnitt ist erforderlich, bevor Sie Schritte in den anderen beiden Konfigurationsabschnitten ausführen können. Mit den folgenden Konfigurationsschritten werden die BGP-Parameter des Azure VPN Gateways wie in diesem Diagramm dargestellt eingerichtet:
 
@@ -52,7 +51,7 @@ Installieren Sie die aktuelle Version der CLI-Befehle (2.0 oder höher). Informa
 
 ### <a name="step-1-create-and-configure-testvnet1"></a>Schritt 1: Erstellen und Konfigurieren von „TestVNet1“
 
-#### <a name="Login"></a>1. Verbinden mit Ihrem Abonnement
+#### <a name="1-connect-to-your-subscription"></a><a name="Login"></a>1. Verbinden mit Ihrem Abonnement
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
@@ -119,7 +118,7 @@ az network vnet-gateway list -g TestBGPRG1 
 
 Nachdem das Gateway erstellt wurde, können Sie es verwenden, um eine standortübergreifende Verbindung oder eine VNET-zu-VNET-Verbindung mit BGP herzustellen.
 
-## <a name ="crossprembgp"></a>Herstellen einer standortübergreifenden Verbindung mit BGP
+## <a name="establish-a-cross-premises-connection-with-bgp"></a><a name ="crossprembgp"></a>Herstellen einer standortübergreifenden Verbindung mit BGP
 
 Um eine standortübergreifende Verbindung herzustellen, müssen Sie ein lokales Netzwerkgateway erstellen, um das lokale VPN-Gerät darzustellen. Anschließend verbinden Sie das Azure-VPN-Gateway mit dem Gateway des lokalen Netzwerks. Diese Schritte ähneln zwar der Erstellung von anderen Verbindungen, aber sie enthalten die zusätzlichen Eigenschaften, die zum Angeben der BGP-Konfigurationsparameter erforderlich sind.
 
@@ -211,7 +210,7 @@ eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your 
 
 Nach einigen Minuten sollte die Verbindung hergestellt werden. Die BGP-Peeringsitzung wird gestartet, nachdem die IPsec-Verbindung hergestellt wurde.
 
-## <a name ="v2vbgp"></a>Herstellen einer VNet-zu-VNet-Verbindung mit BGP
+## <a name="establish-a-vnet-to-vnet-connection-with-bgp"></a><a name ="v2vbgp"></a>Herstellen einer VNet-zu-VNet-Verbindung mit BGP
 
 In diesem Abschnitt wird eine VNet-zu-VNet-Verbindung mit BGP hinzugefügt, wie im folgenden Diagramm dargestellt: 
 
@@ -304,4 +303,4 @@ Nach Abschluss dieser Schritte wird die Verbindung innerhalb weniger Minuten her
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem die Verbindung hergestellt wurde, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen zu diesen Schritten finden Sie unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Nachdem die Verbindung hergestellt wurde, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen zu diesen Schritten finden Sie unter [Erstellen eines virtuellen Computers](../virtual-machines/windows/quick-create-portal.md).

@@ -1,17 +1,17 @@
 ---
 title: Bewährte Methoden für den Abfragespeicher in Azure Database for PostgreSQL – Einzelserver
 description: Dieser Artikel beschreibt bewährte Methoden für den Abfragespeicher in Azure Database for PostgreSQL – Einzelserver.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 51239f4cf49784dd47470e1272b90508eaf25e6f
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: dd39b7ecd51902f5035b4cd17d59dea964d0c962
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764233"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708831"
 ---
 # <a name="best-practices-for-query-store"></a>Bewährte Methoden für den Abfragespeicher
 
@@ -26,7 +26,7 @@ Lassen Sie den Abfragespeicher die Daten erfassen, die für Sie wichtig sind.
 |---|---|
 |_Alle_  |Analysieren Sie Ihre Workload sorgfältig im Hinblick auf alle Abfragen und deren Ausführungshäufigkeit und andere Statistiken. Identifizieren Sie neue Abfragen in Ihrer Workload. Erkennen Sie, ob Ad-hoc-Abfragen verwendet werden, um Möglichkeiten für Benutzer oder eine automatische Parametrisierung zu identifizieren. Bei _All_ sind die Kosten für den Ressourcenverbrauch höher. |
 |_Top_  |Konzentrieren Sie sich auf die wichtigsten Abfragen – die von Clients ausgestellt wurden.
-|_Keine_ |Sie haben bereits einen Abfragesatz und ein Zeitfenster erfasst, das Sie untersuchen möchten, und Sie möchten die nun Ablenkungen beseitigen, die ggf. durch andere Abfragen entstehen. _None_ ist für Testzwecke sowie für Benchmarkingumgebungen geeignet. _None_ sollte mit Vorsicht verwendet werden, da Sie unter Umständen keine Möglichkeit haben, wichtige neue Abfragen nachzuverfolgen und zu optimieren. Sie können keine Daten für diese vergangenen Zeitfenster wiederherstellen. |
+|_None_ |Sie haben bereits einen Abfragesatz und ein Zeitfenster erfasst, das Sie untersuchen möchten, und Sie möchten die nun Ablenkungen beseitigen, die ggf. durch andere Abfragen entstehen. _None_ ist für Testzwecke sowie für Benchmarkingumgebungen geeignet. _None_ sollte mit Vorsicht verwendet werden, da Sie unter Umständen keine Möglichkeit haben, wichtige neue Abfragen nachzuverfolgen und zu optimieren. Sie können keine Daten für diese vergangenen Zeitfenster wiederherstellen. |
 
 Der Abfragespeicher enthält auch einen Speicher für Wartestatistiken. Eine zusätzliche Erfassungsmodusabfrage bestimmt Wartestatistiken: **pgms_wait_sampling.query_capture_mode** kann auf _None_ oder _All_ festgelegt werden. 
 

@@ -1,28 +1,24 @@
 ---
-title: Einzel- und mehrinstanzenfähige Apps in Azure Active Directory
+title: Einzel- und mehrinstanzenfähige Apps in Azure AD
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die Features und Unterschiede zwischen einzel- und mehrinstanzenfähige Apps in Azure AD.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 09/24/2020
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9035cc629a11c125c1b6351bd4bff9f5576f7baf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0868d87d977b15a552b04d5dbd6d19de6931f0ae
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111067"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91395905"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Mandanten in Azure Active Directory
 
@@ -39,16 +35,16 @@ Im Azure-Portal können Sie Ihre App als einzel- oder mehrinstanzenfähig konfig
 | Zielgruppe | Einzel-/mehrinstanzenfähig | Wer kann sich anmelden? | 
 |----------|--------| ---------|
 | Nur Konten in diesem Verzeichnis | Einzelner Mandant | Alle Benutzer- und Gastkonten in Ihrem Verzeichnis können Ihre Anwendung oder API verwenden.<br>*Verwenden Sie diese Option, wenn Ihre Zielgruppe sich innerhalb Ihrer Organisation befindet.* |
-| Konten in einem beliebigen Azure AD-Verzeichnis | Mehrinstanzenfähig | Alle Benutzer und Gäste mit einem Geschäfts-, Schul- oder Unikonto von Microsoft können Ihre Anwendung oder API verwenden. Dazu gehören auch Bildungseinrichtungen und Unternehmen, die Office 365 verwenden.<br>*Verwenden Sie diese Option, wenn Ihre Zielgruppe Kunden aus dem Unternehmens- oder Bildungsbereich sind.* |
-| Konten in beliebigen Azure AD-Verzeichnissen und persönliche Microsoft-Konten (z.B. Skype, Xbox, Outlook.com) | Mehrinstanzenfähig | Alle Benutzer mit einem Geschäfts-, Schul- oder Unikonto bzw. einem persönlichen Microsoft-Konto können Ihre Anwendung oder API verwenden. Dazu gehören Bildungseinrichtungen und Unternehmen, die Office 365 nutzen, sowie persönliche Konten, mit denen die Anmeldung bei Diensten wie Xbox und Skype erfolgt.<br>*Verwenden Sie diese Option, um die breiteste Auswahl an Microsoft-Konten als Zielgruppe zu verwenden.* | 
+| Konten in einem beliebigen Azure AD-Verzeichnis | Mehrinstanzenfähig | Alle Benutzer und Gäste mit einem Geschäfts-, Schul- oder Unikonto von Microsoft können Ihre Anwendung oder API verwenden. Dazu gehören auch Bildungseinrichtungen und Unternehmen, die Microsoft 365 verwenden.<br>*Verwenden Sie diese Option, wenn Ihre Zielgruppe Kunden aus dem Unternehmens- oder Bildungsbereich sind.* |
+| Konten in beliebigen Azure AD-Verzeichnissen und persönliche Microsoft-Konten (z.B. Skype, Xbox, Outlook.com) | Mehrinstanzenfähig | Alle Benutzer mit einem Geschäfts-, Schul- oder Unikonto bzw. einem persönlichen Microsoft-Konto können Ihre Anwendung oder API verwenden. Dazu gehören Bildungseinrichtungen und Unternehmen, die Microsoft 365 nutzen, sowie persönliche Konten, mit denen die Anmeldung bei Diensten wie Xbox und Skype erfolgt.<br>*Verwenden Sie diese Option, um die breiteste Auswahl an Microsoft-Konten als Zielgruppe zu verwenden.* | 
 
 ## <a name="best-practices-for-multi-tenant-apps"></a>Bewährte Methoden für mehrinstanzenfähige Apps
 
 Das Erstellen guter mehrinstanzenfähiger Apps kann aufgrund der Vielzahl unterschiedlicher Richtlinien, die IT-Administratoren in ihren Mandanten festlegen können, eine Herausforderung darstellen. Wenn Sie eine mehrinstanzenfähige App erstellen möchten, wenden Sie die folgenden bewährten Methoden an:
 
-* Testen Sie Ihre App in einem Mandanten, für den [Richtlinien für bedingten Zugriff](conditional-access-dev-guide.md) konfiguriert sind.
-* Befolgen Sie das Prinzip des geringstmöglichen Benutzerzugriffs, um sicherzustellen, dass Ihre App nur Berechtigungen anfordert, die sie tatsächlich benötigt. Vermeiden Sie es, Berechtigungen anzufordern, die die Zustimmung des Administrators erfordern, da dies Benutzer in einigen Unternehmen daran hindern kann, Ihre App überhaupt zu nutzen. 
-* Geben Sie geeignete Namen und Beschreibungen für alle Berechtigungen an, die Sie als Teil Ihrer App bereitstellen. Auf diese Weise können sich Benutzer und Administratoren besser informieren, welchen Berechtigungen sie zustimmen, wenn sie versuchen, die APIs Ihrer App zu verwenden. Weitere Informationen finden Sie im Abschnitt zu den bewährten Methoden im [Berechtigungsleitfaden](v1-permissions-and-consent.md).
+* Testen Sie Ihre App in einem Mandanten, für den [Richtlinien für bedingten Zugriff](../azuread-dev/conditional-access-dev-guide.md) konfiguriert sind.
+* Befolgen Sie das Prinzip des geringstmöglichen Benutzerzugriffs, um sicherzustellen, dass Ihre App nur Berechtigungen anfordert, die sie tatsächlich benötigt. 
+* Geben Sie geeignete Namen und Beschreibungen für alle Berechtigungen an, die Sie als Teil Ihrer App bereitstellen. Auf diese Weise können sich Benutzer und Administratoren besser informieren, welchen Berechtigungen sie zustimmen, wenn sie versuchen, die APIs Ihrer App zu verwenden. Weitere Informationen finden Sie im Abschnitt zu den bewährten Methoden im [Berechtigungsleitfaden](v2-permissions-and-consent.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

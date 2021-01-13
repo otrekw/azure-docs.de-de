@@ -1,25 +1,15 @@
 ---
-title: Reliable Collection-Objektserialisierung in Azure Service Fabric | Microsoft-Dokumentation
-description: Reliable Collection-Objektserialisierung in Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak
-ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Objektserialisierung der zuverlässigen Sammlung
+description: Hier erhalten Sie Informationen zur Objektserialisierung zuverlässiger Sammlungen in Azure Service Fabric, u. a. zur Standardstrategie sowie zum Definieren der benutzerdefinierten Serialisierung.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/8/2017
-ms.author: atsenthi
-ms.openlocfilehash: d5e7dfb84f6e8a8fbd029ccc0b15c17f68216c33
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1d29f5d3391bdea0b21997a392d4d2e053b7ec65
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599306"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89018619"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Reliable Collection-Objektserialisierung in Azure Service Fabric
 Reliable Collection repliziert und speichert seine Elemente, um sicherzustellen, dass sie über Computer- und Stromausfälle hinaus erhalten bleiben.
@@ -30,7 +20,7 @@ Reliable State Manager enthält integrierte Serialisierungsprogramme und lässt 
 
 ## <a name="built-in-serializers"></a>Integrierte Serialisierungsprogramme
 
-Reliable State Manager enthält integrierte Serialisierungsprogramme für einige allgemeine Typen, sodass diese standardmäßig effizient serialisiert werden können. Für andere Typen weicht Reliable State Manager auf die Verwendung von [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx) aus.
+Reliable State Manager enthält integrierte Serialisierungsprogramme für einige allgemeine Typen, sodass diese standardmäßig effizient serialisiert werden können. Für andere Typen weicht Reliable State Manager auf die Verwendung von [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1) aus.
 Integrierte Serialisierungsprogramme sind effizienter, da sich ihre Typen nicht ändern und daher keine Informationen über den Typ (z.B. den Typnamen) hinzugefügt werden müssen.
 
 Reliable State Manager verfügt über integrierte Serialisierungsprogramme für die folgenden Typen: 
@@ -38,15 +28,15 @@ Reliable State Manager verfügt über integrierte Serialisierungsprogramme für 
 - bool
 - byte
 - sbyte
-- Byte[]
+- byte[]
 - char
 - Zeichenfolge
-- decimal
+- Decimal
 - double
 - float
-- int
+- INT
 - uint
-- lang
+- long
 - ulong
 - short
 - ushort
@@ -55,7 +45,7 @@ Reliable State Manager verfügt über integrierte Serialisierungsprogramme für 
 
 Benutzerdefinierte Serialisierungsprogramme werden häufig zum Steigern der Leistung oder zum Verschlüsseln der Daten über das Netzwerk und auf dem Datenträger verwendet. Neben anderen Gründen sind benutzerdefinierte Serialisierungsprogramme häufig effizienter als generische Serialisierungsprogramme, da sie Informationen über den Typ nicht serialisieren müssen. 
 
-[IReliableStateManager.TryAddStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) wird zum Registrieren eines benutzerdefinierten Serialisierungsprogramms für den angegebenen Typ T verwendet. Diese Registrierung sollte bei der Erstellung der StatefulServiceBase erfolgen, um sicherzustellen, dass vor Beginn der Wiederherstellung alle Reliable Collections über Zugriff auf die relevanten Serialisierungsprogramme zum Lesen ihrer persistenten Daten verfügen.
+[IReliableStateManager.TryAddStateSerializer\<T>](/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) wird zum Registrieren eines benutzerdefinierten Serialisierungsprogramms für den angegebenen Typ T verwendet. Diese Registrierung sollte bei der Erstellung der StatefulServiceBase erfolgen, um sicherzustellen, dass vor Beginn der Wiederherstellung alle Reliable Collections über Zugriff auf die relevanten Serialisierungsprogramme zum Lesen ihrer persistenten Daten verfügen.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -73,10 +63,10 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>Implementieren eines benutzerdefinierten Serialisierungsprogramms
 
-Ein benutzerdefiniertes Serialisierungsprogramm muss die [IStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1)-Schnittstelle implementieren.
+Ein benutzerdefiniertes Serialisierungsprogramm muss die [IStateSerializer\<T>](/dotnet/api/microsoft.servicefabric.data.istateserializer-1)-Schnittstelle implementieren.
 
 > [!NOTE]
-> IStateSerializer\<T> umfasst Schreib- und Leseüberladungen, die einen zusätzlichen T-Wert verwenden – den Basiswert. Diese API ist für die differenzielle Serialisierung bestimmt. Aktuell ist das Feature der differenziellen Serialisierung nicht verfügbar. Daher werden diese beiden Überladungen nicht aufgerufen, solange die differenzielle Serialisierung nicht verfügbar gemacht und aktiviert wurde.
+> IStateSerializer\<T> umfasst Schreib- und Leseüberladungen, die einen zusätzlichen T-Wert verwenden, den Basiswert. Diese API ist für die differenzielle Serialisierung bestimmt. Aktuell ist das Feature der differenziellen Serialisierung nicht verfügbar. Daher werden diese beiden Überladungen nicht aufgerufen, solange die differenzielle Serialisierung nicht verfügbar gemacht und aktiviert wurde.
 
 Es folgt ein Beispiel für einen benutzerdefinierten Typ „OrderKey“, der vier Eigenschaften enthält.
 
@@ -142,7 +132,7 @@ Wenn Sie das integrierte Serialisierungsprogramm verwenden, brauchen Sie sich ni
 Wenn Sie jedoch ein benutzerdefiniertes Serialisierungsprogramm oder „DataContractSerializer“ verwenden, müssen die Daten uneingeschränkt abwärts- und aufwärtskompatibel sein.
 Das heißt, jede Version des Serialisierungsprogramms muss in der Lage sein, jede beliebige Version des Typs zu serialisieren und zu deserialisieren.
 
-Data Contract-Benutzer sollten die klar definierten Versionsregeln zum Hinzufügen, Entfernen und Ändern von Feldern befolgen. Data Contract unterstützt außerdem die Behandlung von unbekannten Feldern, die Hookfunktion für den Serialisierungs- und Deserialisierungsvorgang und den Umgang mit der Klassenvererbung. Weitere Informationen finden Sie unter [Verwenden von Datenverträgen](https://msdn.microsoft.com/library/ms733127.aspx).
+Data Contract-Benutzer sollten die klar definierten Versionsregeln zum Hinzufügen, Entfernen und Ändern von Feldern befolgen. Data Contract unterstützt außerdem die Behandlung von unbekannten Feldern, die Hookfunktion für den Serialisierungs- und Deserialisierungsvorgang und den Umgang mit der Klassenvererbung. Weitere Informationen finden Sie unter [Verwenden von Datenverträgen](/dotnet/framework/wcf/feature-details/using-data-contracts).
 
 Benutzer von benutzerdefinierten Serialisierungsprogrammen sollten die Richtlinien des verwendeten Serialisierungsprogramms befolgen, um Abwärts- und Aufwärtskompatibilität zu gewährleisten.
 Eine übliche Methode, um sicherzustellen, dass sämtliche Versionen unterstützt werden, besteht darin, Größeninformationen am Anfang hinzuzufügen und nur optionale Eigenschaften hinzuzufügen.
@@ -150,9 +140,9 @@ Auf diese Weise kann jede Version so viel lesen wie möglich und den Rest des St
 
 ## <a name="next-steps"></a>Nächste Schritte
   * [Serialisierung und Upgrade](service-fabric-application-upgrade-data-serialization.md)
-  * [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Entwicklerreferenz für zuverlässige Auflistungen](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
   * [Ihre Anwendung mit Visual Studio upgraden](service-fabric-application-upgrade-tutorial.md) beschreibt das Upgraden von Anwendungen mit Visual Studio.
-  * [Upgrade Ihrer Anwendung mithilfe von PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) werden Sie schrittweise durch das Upgrade der Anwendung mithilfe von PowerShell geführt.
+  * [Ihre Anwendung mit PowerShell upgraden](service-fabric-application-upgrade-tutorial-powershell.md) beschreibt das Upgraden von Anwendungen mit PowerShell.
   * Steuern Sie die Upgrades von Anwendungen mithilfe von [Upgradeparametern](service-fabric-application-upgrade-parameters.md).
   * Erfahren Sie, wie Sie erweiterte Funktionen beim Upgrade Ihrer Anwendung nutzen, indem Sie sich mit den [weiterführenden Themen](service-fabric-application-upgrade-advanced.md)beschäftigen.
   * Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).

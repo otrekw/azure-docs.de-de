@@ -1,20 +1,17 @@
 ---
-title: 'Behandeln von Inhaltstypen: Azure Logic Apps'
-description: Erfahren Sie, wie Logic Apps Inhaltstypen zur Entwurfszeit und Laufzeit behandelt.
+title: Behandeln von Inhaltstypen
+description: Erfahren Sie, wie Sie verschiedene Inhaltstypen in Workflows zur Entwurfszeit und zur Laufzeit in Azure Logic Apps behandeln.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: 97897da13c70c29834b1fc276829b316416efd8d
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 04642e69adba82cf33b933829d72c51109ad2ee1
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868914"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578178"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Behandeln von Inhaltstypen in Azure Logic Apps
 
@@ -64,7 +61,7 @@ Logic Apps ermöglicht Ihnen, benutzerfreundliche Token zu generieren, die die E
   
   2. Geben Sie unter **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** eine Beispielnutzlast ein, und wählen Sie dann **Fertig**. Beispiel: 
 
-     ![Angeben einer JSON-Beispielnutzlast](./media/logic-apps-content-type/request-trigger.png)
+     ![Screenshot: Aktion „Beim Empfang einer HTTP-Anforderung“ mit JSON-Beispielnutzdaten](./media/logic-apps-content-type/request-trigger.png)
 
      Das generierte Schema wird jetzt in Ihrem Trigger angezeigt.
 

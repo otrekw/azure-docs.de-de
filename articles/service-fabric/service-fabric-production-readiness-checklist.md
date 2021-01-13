@@ -1,25 +1,14 @@
 ---
-title: Prüfliste für die Produktionsbereitschaft von Azure Service Fabric | Microsoft-Dokumentation
+title: 'Azure Service Fabric: Checkliste für die Produktionsbereitschaft'
 description: Bereiten Sie Ihre Service Fabric-Anwendung und den Cluster anhand der folgenden bewährten Methoden auf die Produktion vor.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/05/2019
-ms.author: atsenthi
-ms.openlocfilehash: 9e86f7306ee70bee2e084b967867e2a9be5b66e1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: a03df40a8ce213c5de9ed7017d47713c4de3449d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599361"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87835866"
 ---
 # <a name="production-readiness-checklist"></a>Prüfliste für die Produktionsbereitschaft
 
@@ -28,13 +17,13 @@ Sind Ihre Anwendung und Ihr Cluster bereit für den Produktionsdatenverkehr? Das
 
 ## <a name="prerequisites-for-production"></a>Voraussetzungen für die Produktion
 1. Bewährte Methoden für Azure Service Fabric: [Anwendungsentwurf](./service-fabric-best-practices-applications.md), [Sicherheit](./service-fabric-best-practices-security.md), [Netzwerk](./service-fabric-best-practices-networking.md), [Kapazitätsplanung und Skalierung](./service-fabric-best-practices-capacity-scaling.md), [Infrastruktur als Code](./service-fabric-best-practices-infrastructure-as-code.md) und [Überwachung und Diagnose](./service-fabric-best-practices-monitoring.md). 
-1. Implementieren der Reliable Actors-Sicherheitskonfiguration, wenn das Actors-Programmiermodell verwendet wird
+1. [Konfigurieren Sie die FabricTransport-Einstellungen](./service-fabric-reliable-actors-fabrictransportsettings.md), wenn Sie das Reliable Actors-Programmiermodell verwenden und sichere Kommunikation zwischen Diensten benötigen.
 1. Erstellen Sie für Cluster mit mehr als 20 Kernen oder 10 Knoten einen dedizierten primären Knotentyp für Systemdienste. Fügen Sie [Platzierungseinschränkungen](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) hinzu, um den primären Knotentyp für Systemdienste zu reservieren.
 1. Verwenden Sie für den primären Knotentyp eine SKU des Typs D2v2 oder höher. Es wird empfohlen, eine SKU mit einer Festplattenkapazität von mindestens 50 GB auszuwählen.
 1. Produktionscluster müssen [sicher](service-fabric-cluster-security.md) sein. Ein Beispiel für das Einrichten eines sicheren Clusters finden Sie in dieser [Clustervorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG). Verwenden Sie allgemeine Namen für die Zertifikate, und vermeiden Sie selbstsignierte Zertifikate.
 1. Fügen Sie [Ressourceneinschränkungen für Container und Dienste](service-fabric-resource-governance.md) hinzu, damit diese nicht mehr als 75 % der Knotenressourcen belegen. 
-1. Machen Sie sich mit [Dauerhaftigkeitsstufen](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) vertraut, und legen Sie eine fest. Für Knotentypen, auf denen statusbehaftete Workloads ausgeführt werden, wird die Dauerhaftigkeitsstufe Silber oder höher empfohlen. Für den primären Knotentyp sollte die Dauerhaftigkeitsstufe auf Silber oder höher festgelegt sein.
-1. Machen Sie sich mit [Zuverlässigkeitsstufen](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) vertraut, und legen Sie eine für den Knotentyp fest. Die Zuverlässigkeitsstufe Silver oder höher wird empfohlen.
+1. Machen Sie sich mit [Dauerhaftigkeitsstufen](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) vertraut, und legen Sie eine fest. Für Knotentypen, auf denen statusbehaftete Workloads ausgeführt werden, wird die Dauerhaftigkeitsstufe Silber oder höher empfohlen.
+1. Machen Sie sich mit [Zuverlässigkeitsstufen](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) vertraut, und legen Sie eine für den Knotentyp fest. Die Zuverlässigkeitsstufe Silver oder höher wird empfohlen.
 1. Laden Sie Ihre Workloads, und unterziehen Sie sie Skalierungstests, um die [Kapazitätsanforderungen](service-fabric-cluster-capacity.md) für Ihren Cluster zu ermitteln. 
 1. Ihre Dienste und Anwendungen werden überwacht und Anwendungsprotokolle mit Warnhinweisen erstellt und gespeichert. Beispiele finden Sie unter [Hinzufügen von Protokollierung zur Service Fabric-Anwendung](service-fabric-how-to-diagnostics-log.md) und [Überwachen von Containern mit Azure Monitor-Protokollen](service-fabric-diagnostics-oms-containers.md).
 1. Der Cluster wird mit Warnungen überwacht (z. B. mit [Azure Monitor-Protokollen](service-fabric-diagnostics-event-analysis-oms.md)). 
@@ -46,7 +35,7 @@ Sind Ihre Anwendung und Ihr Cluster bereit für den Produktionsdatenverkehr? Das
 1. Richten Sie ein Recovery Point Objective (RPO) für Ihren Dienst und einen [Notfallwiederherstellungsprozess](service-fabric-disaster-recovery.md) ein, und testen Sie ihn.
 1. Planen Sie die manuelle oder programmgesteuerte [Skalierung](service-fabric-cluster-scaling.md) Ihres Clusters.
 1. Planen Sie das [Patchen](service-fabric-patch-orchestration-application.md) der Clusterknoten. 
-1. Richten Sie eine CI/CD-Pipeline ein, sodass die letzten Änderungen fortlaufend getestet werden. Beispiel für die Verwendung von [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) oder [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
+1. Richten Sie eine CI/CD-Pipeline ein, sodass die letzten Änderungen fortlaufend getestet werden. Beispiel für die Verwendung von [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) oder [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster)
 1. Testen Sie Ihre Entwicklungs- und Stagingcluster unter Last mit dem [Fault Analysis Service](service-fabric-testability-overview.md), und induzieren Sie kontrolliertes [Chaos](service-fabric-controlled-chaos.md). 
 1. Planen Sie die [Skalierung](service-fabric-concepts-scalability.md) Ihrer Anwendungen. 
 

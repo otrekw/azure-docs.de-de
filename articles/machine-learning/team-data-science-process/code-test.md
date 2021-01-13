@@ -3,28 +3,28 @@ title: 'Testen von Data Science-Code mit Azure DevOps Services: Team Data Scienc
 description: Data Science-Codetests in Azure mit dem Dataset der UCI zur Vorhersage des Einkommens von Erwachsenen mit Team Data Science-Prozess und Azure DevOps Services
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/19/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: 10692fcb720be819dcf94a8ecbc541983ffc8853
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce37ee51e549a2bd6f2747f28af8c038c39d8f1f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60336533"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656834"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Data Science-Codetests in Azure mit dem Team Data Science-Prozess und Azure DevOps Services
 Dieser Artikel ist ein vorläufiger Leitfaden für das Testen von Code in einem Data Science-Workflow. Solche Tests bieten Data Scientists eine systematische und effiziente Möglichkeit, die Qualität und das erwartete Ergebnis ihres Codes zu überprüfen. Wir verwenden ein TDSP-Projekt (Team Data Science-Prozess) mit dem [UCI Adult Income-Dataset](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome). Dieses Projekt wurde zu einem früheren Zeitpunkt veröffentlicht, um zu zeigen, wie das Codetesting funktioniert. 
 
 ## <a name="introduction-on-code-testing"></a>Einführung in das Codetesting
-„Komponententests“ sind ein seit Jahren bewährtes Verfahren in der Softwareentwicklung. Auf dem Gebiet der Data Science ist es jedoch häufig nicht klar, was dies bedeutet und wie der Code in verschiedenen Phasen eines Data Science-Lebenszyklus getestet werden sollte:
+„Komponententests“ sind ein seit Jahren bewährtes Verfahren in der Softwareentwicklung. Auf dem Gebiet der Data Science ist es jedoch häufig nicht klar, was „Komponententest“ bedeutet und wie der Code in verschiedenen Phasen eines Data Science-Lebenszyklus wie den folgenden getestet werden sollte:
 
-* Vorbereitung der Daten
+* Datenaufbereitung
 * Untersuchung der Datenqualität
 * Modellierung
 * Modellbereitstellung 
@@ -114,35 +114,35 @@ Führen Sie die folgenden Schritte aus, um Codetests und einen automatischen Bui
 
     a. Klicken Sie im Projektrepository auf **Erstellen und Freigeben** und dann auf **+Neu**, um einen neuen Buildprozess zu erstellen.
 
-       ![Selections for starting a new build process](./media/code-test/create_new_build.PNG)
+    ![Auswahlmöglichkeiten zum Starten eines neuen Buildprozesses](./media/code-test/create_new_build.PNG)
 
     b. Befolgen Sie die Anweisungen, um den Speicherort Ihres Quellcodes, den Projektnamen, das Repository und Informationen zum Branch auszuwählen.
     
-       ![Source, name, repository, and branch information](./media/code-test/fill_in_build_info.PNG)
+    ![Quelle, Name, Repository und Branchinformationen](./media/code-test/fill_in_build_info.PNG)
 
     c. Wählen Sie eine Vorlage aus. Da es keine Python-Projektvorlage gibt, wählen Sie **Leerer Prozess** aus. 
 
-       ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
+    ![Liste der Vorlagen und Schaltfläche „Leerer Prozess“](./media/code-test/start_empty_process_template.PNG)
 
-    d. Benennen Sie den Build, und wählen Sie den Agent aus. Sie können hier den Standard-Agent verwenden, wenn Sie eine DSVM zum Abschließen des Buildprozesses verwenden möchten. Weitere Informationen zum Einrichten von Agents finden Sie unter [Build- und Release-Agents](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
+    d. Benennen Sie den Build, und wählen Sie den Agent aus. Sie können hier den Standard-Agent verwenden, wenn Sie eine DSVM zum Abschließen des Buildprozesses verwenden möchten. Weitere Informationen zum Einrichten von Agents finden Sie unter [Build- und Release-Agents](/azure/devops/pipelines/agents/agents?view=vsts).
     
-       ![Build and agent selections](./media/code-test/select_agent.PNG)
+    ![Auswahloptionen für Build und Agent](./media/code-test/select_agent.PNG)
 
-    e. Wählen Sie im linken Bereich **+** aus, um einen Task für diese Buildphase hinzuzufügen. Da wir das Python-Skript **test1.py** ausführen, um alle Überprüfungen abzuschließen, verwendet dieser Task einen PowerShell-Befehl zum Ausführen von Python-Code.
+    e. Wählen Sie im linken Bereich **+** aus, um einen Task für diese Buildphase hinzuzufügen. Da wir das Python-Skript **test1.py** ausführen, um alle Überprüfungen abzuschließen, wird in diesem Task zum Ausführen von Python-Code ein PowerShell-Befehl verwendet.
     
-       !["Add tasks" pane with PowerShell selected](./media/code-test/add_task_powershell.PNG)
+    ![Bereich zum Hinzufügen von Tasks, PowerShell ausgewählt](./media/code-test/add_task_powershell.PNG)
 
     f. Geben Sie für PowerShell die erforderlichen Informationen an, wie z.B. den Namen und die Version von PowerShell. Wählen Sie als Typ **Inlineskript** aus. 
     
-       In the box under **Inline Script**, you can type **python test1.py**. Make sure the environment variable is set up correctly for Python. If you need a different version or kernel of Python, you can explicitly specify the path as shown in the figure: 
+    In das Feld unter **Inlineskript** können Sie **python test1.py** eingeben. Stellen Sie sicher, dass die Umgebungsvariable richtig für Python festgelegt ist. Wenn Sie eine andere Version oder einen anderen Kernel von Python benötigen, können Sie den entsprechenden Pfad explizit angeben, wie in dieser Abbildung gezeigt: 
     
-       ![PowerShell details](./media/code-test/powershell_scripts.PNG)
+    ![Details in PowerShell](./media/code-test/powershell_scripts.PNG)
 
     g. Wählen Sie **Speichern und in Warteschlange einreihen** aus, um den Buildpipelinevorgang abzuschließen.
 
-       !["Save & queue" button](./media/code-test/save_and_queue_build_definition.PNG)
+    ![Schaltfläche „Speichern und in Warteschlange einreihen“](./media/code-test/save_and_queue_build_definition.PNG)
 
-Jetzt wird jedes Mal der Buildprozess gestartet, wenn ein neuer Commit per Push an das Coderepository übertragen wird. (Hier wird das master-Repository verwendet, Sie können aber jeden beliebigen Branch definieren.) Der Prozess führt die Datei **test1.py** auf dem Agent-Computer aus, um sicherzustellen, dass alle im Code definierten Elemente ordnungsgemäß ausgeführt werden. 
+Jetzt wird jedes Mal der Buildprozess gestartet, wenn ein neuer Commit per Push an das Coderepository übertragen wird. Sie können einen beliebigen Branch definieren. Der Prozess führt die Datei **test1.py** auf dem Agent-Computer aus, um sicherzustellen, dass alle im Code definierten Elemente ordnungsgemäß ausgeführt werden. 
 
 Wenn die Warnungen nicht ordnungsgemäß eingerichtet wurden, erhalten Sie nach Abschluss des Buildprozesses eine Benachrichtigung per E-Mail. Sie können den Buildstatus auch in Azure DevOps überprüfen. Wenn der Prozess nicht erfolgreich abgeschlossen wird, überprüfen Sie die Einzelheiten des Builds, um herauszufinden, welcher Bestandteil nicht richtig ist.
 
@@ -154,8 +154,8 @@ Wenn die Warnungen nicht ordnungsgemäß eingerichtet wurden, erhalten Sie nach 
 * Konkrete Beispiele für Komponententests für Data Science-Szenarien finden Sie im [UCI Income Prediction-Repository](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome).
 * Nutzen Sie die oben genannten Verfahren und Beispiele des UCI-Szenarios zur Vorhersage des Einkommens in Ihren eigenen Data Science-Projekten.
 
-## <a name="references"></a>Referenzen
-* [Team Data Science-Prozess](https://aka.ms/tdsp)
+## <a name="references"></a>References
+* [Team Data Science-Prozess](./index.yml)
 * [Visual Studio-Testtools](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Azure DevOps-Testressourcen](https://www.visualstudio.com/team-services/)
 * [Data Science Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

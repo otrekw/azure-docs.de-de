@@ -1,46 +1,84 @@
 ---
-title: Azure Active Directory-Authentifizierungs- und -Autorisierungsfehlercodes | Microsoft Docs
+title: Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 description: Erfahren Sie mehr über die AADSTS-Fehlercodes, die vom Azure AD-Sicherheitstokendienst (STS) zurückgegeben werden.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
-ms.date: 08/30/2019
+ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 261fe2142fc3bc45625b5d088a46ad92c34222db
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: fa6fc11441811589967ddd7728501b521f9f9155
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193168"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169272"
 ---
-# <a name="authentication-and-authorization-error-codes"></a>Authentifizierungs- und Autorisierungsfehlercodes
+# <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 
 Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Directory-Sicherheitstokendienst (STS) zurückgegeben werden? Lesen Sie dieses Dokument, um AADSTS-Fehlerbeschreibungen, Fehlerbehebungen und einige vorgeschlagene Problemumgehungen zu erhalten.
 
 > [!NOTE]
-> Diese Informationen sind vorläufig und können sich ändern. Haben Sie eine Frage, oder können Sie nicht finden, was Sie suchen? Erstellen Sie ein GitHub-Problem, oder lesen Sie [Support- und Hilfeoptionen für Entwickler](active-directory-develop-help-support.md), um mehr über andere Möglichkeiten zu erfahren, wie Sie Hilfe und Unterstützung erhalten können.
+> Diese Informationen sind vorläufig und können sich ändern. Haben Sie eine Frage, oder können Sie nicht finden, was Sie suchen? Erstellen Sie ein GitHub-Problem, oder lesen Sie [Support- und Hilfeoptionen für Entwickler](./developer-support-help-options.md), um mehr über andere Möglichkeiten zu erfahren, wie Sie Hilfe und Unterstützung erhalten können.
 >
 > Diese Dokumentation dient als Leitfaden für Entwickler und Administratoren, sollte aber niemals vom Kunden selbst verwendet werden. Fehlercodes können jederzeit geändert werden, um detailliertere Fehlermeldungen zu erhalten, die den Entwickler bei der Erstellung seiner Anwendung unterstützen sollen. Apps, die von Text- oder Fehlercodenummern abhängig sind, funktionieren im Lauf der Zeit nicht mehr.
+
+## <a name="handling-error-codes-in-your-application"></a>Problembehandlung bei Fehlercodes in Ihrer Anwendung
+
+In der [OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749#section-5.2) finden Sie Anleitungen zum Behandeln von Fehlern während der Authentifizierung mithilfe der `error`-Angabe in der Fehlerantwort. 
+
+Beispielfehlerantwort:
+
+```json
+{
+  "error": "invalid_scope",
+  "error_description": "AADSTS70011: The provided value for the input parameter 'scope' is not valid. The scope https://example.contoso.com/activity.read is not valid.\r\nTrace ID: 255d1aef-8c98-452f-ac51-23d051240864\r\nCorrelation ID: fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7\r\nTimestamp: 2016-01-09 02:02:12Z",
+  "error_codes": [
+    70011
+  ],
+  "timestamp": "2016-01-09 02:02:12Z",
+  "trace_id": "255d1aef-8c98-452f-ac51-23d051240864",
+  "correlation_id": "fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7", 
+  "error_uri":"https://login.microsoftonline.com/error?code=70011"
+}
+```
+
+| Parameter         | BESCHREIBUNG    |
+|-------------------|----------------|
+| `error`       | Eine Fehlercodezeichenfolge, anhand der die auftretenden Fehlertypen klassifiziert werden können und die verwendet werden sollte, um auf Fehler zu reagieren. |
+| `error_description` | Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. Verwenden Sie dieses Feld niemals, um auf einen Fehler in Ihrem Code zu reagieren. |
+| `error_codes` | Eine Liste der STS-spezifischen Fehlercodes, die bei der Diagnose helfen können.  |
+| `timestamp`   | Der Zeitpunkt, zu dem der Fehler aufgetreten ist |
+| `trace_id`    | Ein eindeutiger Bezeichner für die Anforderung, die bei der Diagnose helfen kann |
+| `correlation_id` | Ein eindeutiger Bezeichner für die Anforderung, die bei der komponentenübergreifenden Diagnose helfen kann |
+| `error_uri` |  Ein Link zur Fehlersuchseite mit zusätzlichen Informationen über den Fehler.  Diese Angabe ist nur für Entwickler bestimmt und darf den Benutzern nicht angezeigt werden.  Diese Angabe ist nur vorhanden, wenn das Fehlersuchsystem zusätzliche Informationen über den Fehler enthält. Es werden nicht für alle Fehler zusätzliche Informationen bereitgestellt.|
+
+Für das Feld `error` gibt es mehrere mögliche Werte. Unter den Protokolldokumentationslinks und in den OAuth 2.0-Spezifikationen finden Sie weitere Informationen zu bestimmten Fehlern (z. B. zu `authorization_pending` im [Gerätcodeflow](v2-oauth2-device-code.md)) und dazu, wie Sie darauf reagieren können.  Im Folgenden sind einige häufige Fehlercodes aufgeführt:
+
+| Fehlercode         | BESCHREIBUNG        | Clientaktion    |
+|--------------------|--------------------|------------------|
+| `invalid_request`  | Protokollfehler, z.B. ein fehlender erforderlicher Parameter. | Korrigieren Sie die Anforderung, und senden Sie sie erneut.|
+| `invalid_grant`    | Einige der Authentifizierungselemente (Authentifizierungscode, Aktualisierungstoken, Zugriffstoken, PKCE-Abfrage) waren ungültig, konnten nicht analysiert werden, fehlen oder sind anderweitig nicht verwendbar | Versuchen Sie, eine neue Anforderung an den `/authorize`-Endpunkt zu senden, um einen neuen Autorisierungscode zu erhalten.  Überprüfen und validieren Sie die Verwendung der Protokolle durch diese App. |
+| `unauthorized_client` | Der authentifizierte Client ist zur Verwendung dieses Autorisierungsgewährungstyps nicht autorisiert. | Dies tritt in der Regel auf, wenn die Clientanwendung nicht in Azure AD registriert ist oder dem Azure AD-Mandanten des Benutzers nicht hinzugefügt wird. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
+| `invalid_client` | Clientauthentifizierung fehlgeschlagen.  | Die Client-Anmeldeinformationen sind nicht gültig. Um das Problem zu beheben, aktualisiert der Anwendungsadministrator die Anmeldeinformationen.   |
+| `unsupported_grant_type` | Der Autorisierungsserver unterstützt den Autorisierungsgewährungstyp nicht. | Ändern Sie den Gewährungstyp in der Anforderung. Diese Art von Fehler sollte nur während der Entwicklung auftreten und bei den ersten Tests erkannt werden. |
+| `invalid_resource` | Die Zielressource ist ungültig, da sie nicht vorhanden ist, Azure AD sie nicht findet oder sie nicht ordnungsgemäß konfiguriert ist. | Dies gibt an, dass die Ressource, falls vorhanden, im Mandanten nicht konfiguriert wurde. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern.  Während der Entwicklung deutet dies in der Regel auf einen falsch eingerichteten Testmandanten oder einen Tippfehler im Namen des angeforderten Bereichs hin. |
+| `interaction_required` | Die Anforderung erfordert eine Benutzerinteraktion. Beispielsweise ist ein zusätzlicher Schritt zur Authentifizierung erforderlich. | Wiederholen Sie die Anforderung mit der gleichen Ressource (interaktiv), damit der Benutzer alle erforderlichen Aufgaben abschließen kann.  |
+| `temporarily_unavailable` | Der Server ist vorübergehend überlastet und kann die Anforderung nicht verarbeiten. | Wiederholen Sie die Anforderung. Die Clientanwendung kann dem Benutzer erklären, dass ihre Antwort aufgrund einer temporären Bedingung verzögert ist. |
 
 ## <a name="lookup-current-error-code-information"></a>Nachschlagen aktueller Fehlercodeinformationen
 Fehlercodes und Meldungen unterliegen Änderungen.  Die aktuellen Informationen finden Sie auf der Seite [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error). Sie enthält AADSTS-Fehlerbeschreibungen, Fehlerbehebungen und einige Vorschläge für Problemumgehungen.  
 
-Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie beispielsweise den Fehlercode „AADSTS16000“ erhalten haben, sollten Sie unter [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) nach „16000“ suchen.  Sie können auch einen direkten Link zu einem bestimmten Fehler einrichten, indem Sie die Nummer des Fehlercodes der URL hinzufügen: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
+Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen Sie unter [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) nach „50058“.  Sie können auch einen direkten Link zu einem bestimmten Fehler einrichten, indem Sie die Nummer des Fehlercodes der URL hinzufügen: [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058).
 
 ## <a name="aadsts-error-codes"></a>AADSTS-Fehlercodes
 
-| Error | BESCHREIBUNG |
+| Fehler | BESCHREIBUNG |
 |---|---|
 | AADSTS16000 | SelectUserAccount: Dies ist ein Interrupt, der von Azure AD ausgelöst wird. Er führt zu einer Benutzeroberfläche, die es dem Benutzer ermöglicht, aus mehreren gültigen SSO-Sitzungen auszuwählen. Dieser Fehler tritt recht häufig auf und kann an die Anwendung zurückgegeben werden, wenn `prompt=none` angegeben wird. |
 | AADSTS16001 | UserAccountSelectionInvalid: Dieser Fehler wird angezeigt, wenn der Benutzer auf eine Kachel klickt, die die Logik für die Auswahl der Sitzung abgelehnt hat. Wenn dieser Fehler ausgelöst wird, ermöglicht er dem Benutzer die Wiederherstellung, indem er aus einer aktualisierten Liste von Kacheln/Sitzungen auswählt oder ein anderes Konto auswählt. Dieser Fehler kann aufgrund eines Codedefekts oder einer Racebedingung auftreten. |
@@ -57,7 +95,7 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS50000 | TokenIssuanceError: Es besteht ein Problem mit dem Anmeldedienst. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md), um dieses Problem zu beheben. |
 | AADSTS50001 | InvalidResource: Die Ressource ist deaktiviert oder nicht vorhanden. Überprüfen Sie den Code Ihrer App, um sicherzustellen, dass Sie die genaue Ressourcen-URL für die Ressource angegeben haben, auf die Sie zugreifen möchten.  |
 | AADSTS50002 | NotAllowedTenant: Fehler bei der Anmeldung aufgrund von eingeschränktem Proxyzugriff auf dem Mandanten. Falls es sich um Ihre eigene Mandantenrichtlinie handelt, können Sie die Einschränkungseinstellungen des Mandanten ändern, um dieses Problem zu beheben. |
-| AADSTS50003 | MissingSigningKey: Fehler bei der Anmeldung aufgrund eines fehlenden Signaturschlüssels oder Zertifikats. Der Grund hierfür kann sein, dass in der App kein Signaturschlüssel konfiguriert wurde. Sehen Sie sich die Lösungen unter [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured) an. Falls weiterhin Probleme auftreten, können Sie sich an den Besitzer oder Administrator der App wenden. |
+| AADSTS50003 | MissingSigningKey: Fehler bei der Anmeldung aufgrund eines fehlenden Signaturschlüssels oder Zertifikats. Der Grund hierfür kann sein, dass in der App kein Signaturschlüssel konfiguriert wurde. Sehen Sie sich die unter [../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured) erläuterten Lösungen an. Falls weiterhin Probleme auftreten, können Sie sich an den Besitzer oder Administrator der App wenden. |
 | AADSTS50005 | DevicePolicyError: Der Benutzer hat versucht, sich über eine Plattform an einem Gerät anzumelden, die aufgrund einer Richtlinie für bedingten Zugriff zurzeit nicht unterstützt wird. |
 | AADSTS50006 | InvalidSignature: Fehler bei der Signaturüberprüfung aufgrund einer ungültigen Signatur. |
 | AADSTS50007 | PartnerEncryptionCertificateMissing: Das Partnerverschlüsselungszertifikat wurde für diese App nicht gefunden. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) bei Microsoft, um dieses Problem zu beheben. |
@@ -88,8 +126,8 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided: Es wurden keine Informationen zur Identifizierung des Mandanten in der Anforderung gefunden bzw. nicht über angegebene Anmeldeinformationen impliziert. Der Benutzer kann sich an den Mandantenadministrator wenden, um das Problem zu lösen. |
 | AADSTS50061 | SignoutInvalidRequest: Die Anforderung zur Abmeldung ist ungültig. |
 | AADSTS50064 | CredentialAuthenticationError: Fehler beim Überprüfen der Anmeldeinformationen bezüglich Benutzername und Kennwort. |
-| AADSTS50068 | SignoutInitiatorNotParticipant: Fehler beim Abmelden. Die App, die den Anmeldevorgang eingeleitet hat, ist kein Teilnehmer der aktuellen Sitzung. |
-| AADSTS50070 | SignoutUnknownSessionIdentifier: Fehler beim Abmelden. In der Abmeldeanforderung wurde ein Namensbezeichner angegeben, der nicht mit den vorhandenen Sitzungen übereinstimmt. |
+| AADSTS50068 | SignoutInitiatorNotParticipant: Fehler beim Abmelden. Die App, die den Abmeldevorgang eingeleitet hat, ist kein Teilnehmer der aktuellen Sitzung. |
+| AADSTS50070 | SignoutUnknownSessionIdentifier: Fehler beim Abmelden. In der Abmeldeanforderung wurde ein Namensbezeichner angegeben, der nicht mit der/den vorhandenen Sitzung(en) übereinstimmt. |
 | AADSTS50071 | SignoutMessageExpired: Die Abmeldeanforderung ist abgelaufen. |
 | AADSTS50072 | UserStrongAuthEnrollmentRequiredInterrupt: Der Benutzer muss sich für zweistufige Authentifizierung (interaktiv) registrieren. |
 | AADSTS50074 | UserStrongAuthClientAuthNRequiredInterrupt: Starke Authentifizierung ist erforderlich, und der Benutzer hat die MFA-Überprüfung nicht bestanden. |
@@ -101,7 +139,7 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS50089 | Flow-Token abgelaufen: Fehler bei der Authentifizierung. Bitten Sie den Benutzer, sich mit Benutzername und Kennwort erneut anzumelden. |
 | AADSTS50097 | DeviceAuthenticationRequired: Geräteauthentifizierung ist erforderlich. |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized: Die JWT-Signatur ist ungültig. |
-| AADSTS50105 | EntitlementGrantsNotFound: Der angemeldete Benutzer ist keiner Rolle für die angemeldete App zugewiesen. Weisen Sie den Benutzer der App zu. Weitere Informationen:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role). |
+| AADSTS50105 | EntitlementGrantsNotFound: Der angemeldete Benutzer ist keiner Rolle für die angemeldete App zugewiesen. Weisen Sie den Benutzer der App zu. Weitere Informationen finden Sie unter [../manage-apps/application-sign-in-problem-federated-sso-gallery.md#user-not-assigned-a-role](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#user-not-assigned-a-role). |
 | AADSTS50107 | InvalidRealmUri: Das angeforderte Verbundbereichsobjekt ist nicht vorhanden. Wenden Sie sich an den Administrator des Mandanten. |
 | AADSTS50120 | ThresholdJwtInvalidJwtFormat: Problem mit JWT-Header. Wenden Sie sich an den Administrator des Mandanten. |
 | AADSTS50124 | ClaimsTransformationInvalidInputParameter: Die Anspruchstransformation enthält ungültige Eingabeparameter. Wenden Sie sich an den Administrator des Mandanten, um die Richtlinie zu aktualisieren. |
@@ -118,7 +156,7 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS50136 | RedirectMsaSessionToApp: Einzelne MSA-Sitzung erkannt. |
 | AADSTS50139 | SessionMissingMsaOAuth2RefreshToken: Die Sitzung ist aufgrund eines fehlenden externen Aktualisierungstokens ungültig. |
 | AADSTS50140 | KmsiInterrupt: Dieser Fehler ist aufgetreten, weil beim Anmelden des Benutzers der Interruptvorgang „Angemeldet bleiben“ aufgetreten ist. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) mit der Korrelations-ID, Anforderungs-ID und dem Fehlercode, um weitere Details anzuzeigen. |
-| AADSTS50143 | Sitzungskonflikt: Die Sitzung ist ungültig, weil der Benutzermandant aufgrund einer anderen Ressource nicht mit dem Domänenhinweis übereinstimmt.  [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) mit Korrelations-ID, Anforderungs-ID und Fehlercode, um weitere Informationen dazu zu erhalten. |
+| AADSTS50143 | Sitzungskonflikt: Die Sitzung ist ungültig, weil der Benutzermandant aufgrund einer anderen Ressource nicht mit dem Domänenhinweis übereinstimmt. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) mit der Korrelations-ID, Anforderungs-ID und dem Fehlercode, um weitere Details anzuzeigen. |
 | AADSTS50144 | InvalidPasswordExpiredOnPremPassword: Das Active Directory-Kennwort des Benutzers ist abgelaufen. Generieren Sie ein neues Kennwort für den Benutzer, oder lassen Sie den Benutzer das Self-Service-Tool für die Zurücksetzung verwenden, um sein Kennwort zurückzusetzen. |
 | AADSTS50146 | MissingCustomSigningKey: Diese App muss mit einem anwendungsspezifischen Signaturschlüssel konfiguriert werden. Entweder ist dies nicht der Fall, oder der Schlüssel ist abgelaufen oder noch nicht gültig. |
 | AADSTS50147 | MissingCodeChallenge: Die Größe des Codeabfrageparameters ist ungültig. |
@@ -129,10 +167,13 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS50168 | ChromeBrowserSsoInterruptRequired: Der Client ist in der Lage, über die Windows 10-Kontenerweiterung ein SSO-Token abzurufen, aber das Token wurde in der Anforderung nicht gefunden, oder das angegebene Token ist abgelaufen. |
 | AADSTS50169 | InvalidRequestBadRealm: Der Bereich ist kein konfigurierter Bereich des aktuellen Dienstnamespace. |
 | AADSTS50170 | MissingExternalClaimsProviderMapping: Die externe Steuerelementzuordnung fehlt. |
-| AADSTS50177 | ExternalChallengeNotSupportedForPassthroughUsers: Die externe Überprüfung wird für Passthroughbenutzer nicht unterstützt. |
+| AADSTS50177 | ExternalChallengeNotSupportedForPassthroughUsers: Die externe Überprüfung wird für Passthrough-Benutzer nicht unterstützt. |
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers: Sitzungssteuerung wird für Passthrough-Benutzer nicht unterstützt. |
 | AADSTS50180 | WindowsIntegratedAuthMissing: Integrierte Windows-Authentifizierung ist erforderlich. Aktivieren Sie den Mandanten für das nahtlose einmalige Anmelden. |
 | AADSTS50187 | DeviceInformationNotProvided: Der Dienst konnte das Gerät nicht authentifizieren. |
+| AADSTS50196 | LoopDetected: Eine Clientschleife wurde erkannt. Überprüfen Sie die Logik der App, um sicherzustellen, dass das Zwischenspeichern von Token implementiert ist und dass Fehlerbedingungen ordnungsgemäß behandelt werden.  Die App hat zu viele der gleichen Anforderungen in einem zu kurzen Zeitraum ausgeführt. Dies weist darauf hin, dass sie sich in einem fehlerhaften Zustand befindet oder böswillig Token anfordert. |
+| AADSTS50197 | ConflictingIdentities: Der Benutzer konnte nicht gefunden werden. Versuchen Sie erneut, sich anzumelden. |
+| AADSTS50199 | CmsiInterrupt: Aus Sicherheitsgründen ist für diese Anforderung eine Benutzerbestätigung erforderlich.  Da es sich hierbei um einen Fehler vom Typ „interaction_required“ handelt, sollte der Client eine interaktive Authentifizierung durchführen.  Dies liegt daran, dass eine System-WebView verwendet wurde, um ein Token für eine native Anwendung anzufordern. Der Benutzer muss aufgefordert werden, zu erfragen, ob es sich tatsächlich um die App handelt, bei der er sich anmelden wollte. Um diese Aufforderung zu vermeiden, sollte der Umleitungs-URI Teil der folgenden sicheren Liste sein: <br />http://<br />https://<br />msauth://(nur iOS)<br />msauthv2://(nur iOS)<br />chrome-extension://(nur Chrome-Desktopbrowser) |
 | AADSTS51000 | RequiredFeatureNotEnabled: Das Feature ist deaktiviert. |
 | AADSTS51001 | DomainHintMustbePresent: Domänenhinweis ist für lokale Sicherheits-ID oder lokalen UPN nicht vorhanden. |
 | AADSTS51004 | UserAccountNotInDirectory: Benutzerkonto ist nicht im Verzeichnis vorhanden. |
@@ -147,24 +188,26 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist: Der Benutzer oder Administrator hat der Verwendung der Anwendung mit ID X nicht zugestimmt. Senden Sie eine interaktive Autorisierungsanforderung für diesen Benutzer und diese Ressource. |
 | AADSTS65004 | UserDeclinedConsent: Der Benutzer hat seine Zustimmung für den Zugriff auf die App abgelehnt. Bitten Sie den Benutzer, die Anmeldung zu wiederholen und die Zustimmung für die App zu erteilen.|
-| AADSTS65005 | MisconfiguredApplication: Die für die App erforderliche Liste für den Ressourcenzugriff enthält keine Apps, die von der Ressource ermittelt werden können, die Client-App hat den Zugriff auf eine Ressource angefordert, die nicht in der erforderlichen Liste für den Ressourcenzugriff angegeben ist, oder der Graph-Dienst hat „Fehlerhafte Anforderung“ oder „Ressource nicht gefunden“ zurückgegeben. Wenn die App SAML unterstützt, haben Sie die App ggf. mit dem falschen Bezeichner (Entität) konfiguriert. Probieren Sie es mit der Lösung, die unter dem folgenden Link für SAML angegeben ist: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | MisconfiguredApplication: Die für die App erforderliche Liste für den Ressourcenzugriff enthält keine Apps, die von der Ressource ermittelt werden können, die Client-App hat den Zugriff auf eine Ressource angefordert, die nicht in der erforderlichen Liste für den Ressourcenzugriff angegeben ist, oder der Graph-Dienst hat „Fehlerhafte Anforderung“ oder „Ressource nicht gefunden“ zurückgegeben. Wenn die App SAML unterstützt, haben Sie die App ggf. mit dem falschen Bezeichner (Entität) konfiguriert. Probieren Sie es mit der Lösung, die unter dem folgenden Link für SAML angegeben ist: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](../manage-apps/application-sign-in-problem-federated-sso-gallery.md?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS650052 | Die App benötigt Zugriff auf einen Dienst `(\"{name}\")`, den Ihre Organisation `\"{organization}\"` nicht abonniert oder aktiviert hat. Wenden Sie sich an Ihren IT-Administrator, damit dieser die Konfiguration Ihrer Dienstabonnements überprüft. |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant: Fehler bei der Authentifizierung. Das Aktualisierungstoken ist ungültig. Der Fehler kann aus den folgenden Gründen auftreten:<ul><li>Der Bindungsheader des Tokens ist leer.</li><li>Der Tokenbindungshash stimmt nicht überein.</li></ul> |
 | AADSTS70001 | UnauthorizedClient: Die Anwendung ist deaktiviert. |
-| AADSTS70002 | InvalidClient: Fehler beim Überprüfen der Anmeldeinformationen. Der angegebene Wert für „client_secret“ entspricht nicht dem erwarteten Wert für diesen Client. Korrigieren Sie „client_secret“, und versuchen Sie es noch mal. Weitere Informationen finden Sie unter [Anfordern eines Zugriffstokens mithilfe des Autorisierungscodes](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token). |
+| AADSTS70002 | InvalidClient: Fehler beim Überprüfen der Anmeldeinformationen. Der angegebene Wert für „client_secret“ entspricht nicht dem erwarteten Wert für diesen Client. Korrigieren Sie „client_secret“, und versuchen Sie es noch mal. Weitere Informationen finden Sie unter [Anfordern eines Zugriffstokens mithilfe des Autorisierungscodes](v2-oauth2-auth-code-flow.md#request-an-access-token). |
 | AADSTS70003 | UnsupportedGrantType: Die App hat einen nicht unterstützten Gewährungstyp zurückgegeben. |
 | AADSTS70004 | InvalidRedirectUri: Die App hat einen ungültigen Umleitungs-URI zurückgegeben. Die vom Client angegebene Umleitungsadresse stimmt nicht mit den konfigurierten Adressen oder anderen Adressen in der Liste mit den OIDC-Genehmigungen überein. |
 | AADSTS70005 | UnsupportedResponseType: Die App hat aus den folgenden Gründen einen nicht unterstützten Antworttyp zurückgegeben:<ul><li>Der Antworttyp „token“ ist für die App nicht aktiviert.</li><li>Für den Antworttyp „id_token“ ist der Bereich „OpenID“ erforderlich: - Enthält einen nicht unterstützten OAuth-Parameterwert im codierten wctx-Element.</li></ul> |
 | AADSTS70007 | UnsupportedResponseMode: Die App hat beim Anfordern eines Tokens den nicht unterstützten Wert `response_mode` zurückgegeben.  |
 | AADSTS70008 | ExpiredOrRevokedGrant: Das Aktualisierungstoken ist aufgrund von Inaktivität abgelaufen. Das Token wurde auf XXX ausgestellt und war für einen bestimmten Zeitraum inaktiv. |
 | AADSTS70011 | InvalidScope: Der von der App angeforderte Bereich ist ungültig. |
-| AADSTS70012 | MsaServerError: Beim Authentifizieren eines MSA-Benutzers (Consumer) ist ein Serverfehler aufgetreten. Versuchen Sie es erneut. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) , wenn der Fehler weiterhin auftritt.|
+| AADSTS70012 | MsaServerError: Beim Authentifizieren eines MSA-Benutzers (Consumer) ist ein Serverfehler aufgetreten. Versuchen Sie es erneut. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md), wenn der Fehler weiterhin auftritt. |
 | AADSTS70016 | AuthorizationPending: OAuth 2.0-Geräteflussfehler. Die Autorisierung steht aus. Das Gerät wird den Abruf der Anforderung wiederholen. |
 | AADSTS70018 | BadVerificationCode: Ungültiger Überprüfungscode, weil der Benutzer den falschen Benutzercode für den Gerätecode-Datenfluss eingegeben hat. Die Autorisierung wird nicht genehmigt. |
 | AADSTS70019 | CodeExpired: Der Überprüfungscode ist abgelaufen. Bitten Sie den Benutzer, die Anmeldung erneut durchzuführen. |
 | AADSTS75001 | BindingSerializationError: Während der SAML-Nachrichtenbindung ist ein Fehler aufgetreten. |
 | AADSTS75003 | UnsupportedBindingError: Die Anwendung hat einen Fehler zu einer nicht unterstützten Bindung zurückgegeben (SAML-Protokollantwort kann nicht über andere Bindungen als HTTP POST gesendet werden). |
 | AADSTS75005 | Saml2MessageInvalid: Azure AD unterstützt die von der App für SSO gesendete SAML-Anforderung nicht. |
+| AADSTS7500514 | Es wurde kein unterstützter Typ von SAML-Antwort gefunden. Die unterstützten Antworttypen sind „Response“ (im XML-Namespace „urn:oasis:names:tc:SAML:2.0:protocol“) und „Assertion“ (im XML-Namespace „urn:oasis:names:tc:SAML:2.0:assertion“). Anwendungsfehler: Dieser Fehler wird vom Entwickler behoben.|
 | AADSTS75008 | RequestDeniedError: Die Anforderung von der App wurde abgelehnt, da die SAML-Anforderung über ein unerwartetes Ziel verfügt. |
 | AADSTS75011 | NoMatchedAuthnContextInOutputClaims: Die Authentifizierungsmethode, mit der sich der Benutzer beim Dienst authentifiziert hat, stimmt nicht mit der angeforderten Authentifizierungsmethode überein. |
 | AADSTS75016 | Saml2AuthenticationRequestInvalidNameIDPolicy: Die SAML2-Authentifizierungsanforderung weist eine ungültige NameIdPolicy auf. |
@@ -207,8 +250,8 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS90043 | NationalCloudAuthCodeRedirection: Das Feature ist deaktiviert. |
 | AADSTS90051 | InvalidNationalCloudId: Der nationale Cloudbezeichner enthält einen ungültigen Cloudbezeichner. |
 | AADSTS90055 | TenantThrottlingError: Zu viele eingehende Anforderungen. Diese Ausnahme wird für blockierte Mandanten ausgelöst. |
-| AADSTS90056 | BadResourceRequest: Um den Code für ein Zugriffstoken einzulösen, sollte die App eine POST-Anforderung an den `/token`-Endpunkt senden. Außerdem sollten Sie zuvor einen Autorisierungscode bereitstellen und ihn in der POST-Anforderung an den `/token`-Endpunkt senden. In diesem Artikel finden Sie einen Überblick über den Fluss des OAuth 2.0-Autorisierungscodes: [https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code). Sie müssen den Benutzer an den `/authorize`-Endpunkt weiterleiten, der einen authorization_code zurückgibt. Durch das Senden einer Anforderung an den `/token`-Endpunkt erhält der Benutzer das Zugriffstoken. Melden Sie sich am Azure-Portal an, und überprüfen Sie **App-Registrierungen > Endpunkte**, um sicherzustellen, dass die beiden Endpunkte ordnungsgemäß konfiguriert wurden. |
-| AADSTS90072 | PassThroughUserMfaError: Das externe Konto, mit dem sich der Benutzer anmeldet, ist nicht im Mandanten für die Anmeldung vorhanden. Aus diesem Grund kann der Benutzer die MFA-Anforderungen für den Mandanten nicht erfüllen. Das Konto muss zunächst als externer Benutzer im Mandanten hinzugefügt werden. Melden Sie sich ab, und melden Sie sich mit einem anderen Azure AD-Benutzerkonto an. |
+| AADSTS90056 | BadResourceRequest: Um den Code für ein Zugriffstoken einzulösen, sollte die App eine POST-Anforderung an den `/token`-Endpunkt senden. Außerdem sollten Sie zuvor einen Autorisierungscode bereitstellen und ihn in der POST-Anforderung an den `/token`-Endpunkt senden. In diesem Artikel finden Sie einen Überblick über den OAuth 2.0-Autorisierungscodeflow: [../azuread-dev/v1-protocols-oauth-code.md](../azuread-dev/v1-protocols-oauth-code.md). Sie müssen den Benutzer an den `/authorize`-Endpunkt weiterleiten, der einen authorization_code zurückgibt. Durch das Senden einer Anforderung an den `/token`-Endpunkt erhält der Benutzer das Zugriffstoken. Melden Sie sich am Azure-Portal an, und überprüfen Sie **App-Registrierungen > Endpunkte**, um sicherzustellen, dass die beiden Endpunkte ordnungsgemäß konfiguriert wurden. |
+| AADSTS90072 | PassThroughUserMfaError: Das externe Konto, mit dem sich der Benutzer anmeldet, ist nicht im Mandanten für die Anmeldung vorhanden. Aus diesem Grund kann der Benutzer die MFA-Anforderungen für den Mandanten nicht erfüllen. Dieser Fehler kann auch auftreten, wenn die Benutzer synchronisiert werden, aber das Attribut „ImmutableID (sourceAnchor)“ zwischen Active Directory und Azure AD nicht übereinstimmt. Das Konto muss zunächst als externer Benutzer im Mandanten hinzugefügt werden. Melden Sie sich ab, und melden Sie sich mit einem anderen Azure AD-Benutzerkonto an. |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid: Fehler beim Verarbeiten einer WS-Verbundnachricht durch den Dienst. Die Nachricht ist ungültig. |
 | AADSTS90082 | OrgIdWsFederationNotSupported: Die ausgewählte Authentifizierungsrichtlinie für die Anforderung wird aktuell nicht unterstützt. |
 | AADSTS90084 | OrgIdWsFederationGuestNotAllowed: Gastkonten sind für diesen Standort nicht zugelassen. |
@@ -220,6 +263,8 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS90092 | GraphNonRetryableError |
 | AADSTS90093 | GraphUserUnauthorized: Es wurde ein Graph mit einem unzulässigen Fehlercode für die Anforderung zurückgegeben. |
 | AADSTS90094 | AdminConsentRequired: Die Zustimmung des Administrators ist erforderlich. |
+| AADSTS900382 | Vertrauliche Clients werden in einer cloudübergreifenden Anforderung nicht unterstützt. |
+| AADSTS90099 | Die Anwendung „{appId}“ ({appName}) wurde im Mandanten „{tenant}“ nicht autorisiert. Anwendungen müssen für den Zugriff auf den Kundenmandanten autorisiert werden, bevor die vom Partner delegierten Administratoren sie verwenden können. Erteilen Sie vorab die Zustimmung, oder führen Sie die entsprechende Partner Center-API zum Autorisieren der Anwendung aus. |
 | AADSTS90100 | InvalidRequestParameter: Der Parameter ist leer oder ungültig. |
 | AADSTS901002 | AADSTS901002: Der Anforderungsparameter „resource“ wird nicht unterstützt. |
 | AADSTS90101 | InvalidEmailAddress: Es wurde keine gültige E-Mail-Adresse angegeben. Die E-Mail-Adresse muss dieses Format aufweisen: `someone@example.com`. |
@@ -269,10 +314,15 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS700020 | InteractionRequired: Die Zugriffsgewährung erfordert eine Interaktion. |
 | AADSTS700022 | InvalidMultipleResourcesScope: Der angegebene Wert für den Eingabeparameterbereich ist nicht gültig, weil er mehr als eine Ressource enthält. |
 | AADSTS700023 | InvalidResourcelessScope: Der angegebene Wert für den Eingabeparameterbereich ist beim Anfordern eines Zugriffstokens nicht gültig. |
+| AADSTS7000215 | Es wurde ein ungültiger geheimer Clientschlüssel bereitgestellt. Entwicklerfehler: Die App versucht, sich ohne die erforderlichen oder richtigen Authentifizierungsparameter anzumelden.|
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided: Die angegebenen geheimen Clientschlüssel sind abgelaufen. Erstellen Sie im Azure-Portal neue Schlüssel für Ihre App, oder verwenden Sie Zertifikatanmeldeinformationen, um die Sicherheit zu erhöhen: [https://aka.ms/certCreds](./active-directory-certificate-credentials.md) |
+| AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant: Der angegebene Autorisierungscode ist für einen anderen Mandanten bestimmt und wird daher abgelehnt. Der OAuth2-Autorisierungscode muss für denselben Mandanten verwendet werden, für den er bezogen wurde („/common“ oder „/{Mandanten-ID}“). |
 | AADSTS1000000 | UserNotBoundError: Die Bindungs-API erfordert, dass sich der Azure AD-Benutzer auch bei einem externen Identitätsanbieter authentifiziert, was noch nicht geschehen ist. |
 | AADSTS1000002 | BindCompleteInterruptError: Die Bindung wurde erfolgreich abgeschlossen, aber der Benutzer muss informiert werden. |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled: Die Anwendung ist deaktiviert. |
+| AADSTS7000114| Die Anwendung „appIdentifier“ ist nicht berechtigt, Im-Auftrag-von-Aufrufe auszuführen.|
+| AADSTS7500529 | Der Wert „SAMLId-Guid“ ist keine gültige SAML-ID: Azure AD verwendet dieses Attribut, um das Attribut „InResponseTo“ der zurückgegebenen Antwort aufzufüllen. Die ID darf nicht mit einer Zahl beginnen, weshalb dem GUID-String häufig eine Zeichenfolge wie etwa „id“ vorangestellt wird. Beispielsweise ist id6c1c178c166d486687be4aaf5e482730 eine gültige ID. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Haben Sie eine Frage, oder können Sie nicht finden, was Sie suchen? Erstellen Sie ein GitHub-Problem, oder lesen Sie [Support- und Hilfeoptionen für Entwickler](active-directory-develop-help-support.md), um mehr über andere Möglichkeiten zu erfahren, wie Sie Hilfe und Unterstützung erhalten können.
+* Haben Sie eine Frage, oder können Sie nicht finden, was Sie suchen? Erstellen Sie ein GitHub-Problem, oder lesen Sie [Support- und Hilfeoptionen für Entwickler](./developer-support-help-options.md), um mehr über andere Möglichkeiten zu erfahren, wie Sie Hilfe und Unterstützung erhalten können.

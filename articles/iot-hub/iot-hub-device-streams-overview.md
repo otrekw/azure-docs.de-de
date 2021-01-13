@@ -1,18 +1,22 @@
 ---
-title: Azure IoT Hub-Gerätestreams (Vorschau) | Microsoft-Dokumentation
-description: Übersicht über IoT Hub-Gerätestreams
+title: Azure IoT Hub-Gerätestreams | Microsoft-Dokumentation
+description: Eine Übersicht über Azure IoT Hub-Gerätestreams, die sichere bidirektionale TCP-Tunnel für eine Vielzahl von Szenarios mit Kommunikation zwischen Cloud und Gerät vereinfachen.
 author: robinsh
 services: iot-hub
 ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
-ms.openlocfilehash: 86f8c6e527f58a7c4cfca6233165f0ab05426409
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- 'Role: Technical Support'
+ms.openlocfilehash: 9487fc562fa099d2650aabc8d15fc1449c7fcb5c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672567"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825172"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub-Gerätestreams (Vorschau)
 
@@ -99,7 +103,7 @@ Die Ausgabe ist ein JSON-Objekt aller Endpunkte, mit denen das Gerät und der Di
 ```
 
 > [!NOTE]
-> Stellen Sie sicher, dass mindestens Version 2.0.57 der Azure-Befehlszeilenschnittstelle installiert ist. Sie können die neueste Version über die Seite [Azure CLI installieren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) herunterladen.
+> Stellen Sie sicher, dass mindestens Version 2.0.57 der Azure-Befehlszeilenschnittstelle installiert ist. Sie können die neueste Version über die Seite [Azure CLI installieren](/cli/azure/install-azure-cli) herunterladen.
 >
 
 ## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>Erlauben ausgehender Konnektivität zu den Gerätestreamingendpunkten
@@ -115,32 +119,32 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Stellen Sie sicher, dass mindestens Version 2.0.57 der Azure-Befehlszeilenschnittstelle installiert ist. Sie können die neueste Version über die Seite [Azure CLI installieren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) herunterladen.
+> Stellen Sie sicher, dass mindestens Version 2.0.57 der Azure-Befehlszeilenschnittstelle installiert ist. Sie können die neueste Version über die Seite [Azure CLI installieren](/cli/azure/install-azure-cli) herunterladen.
 >
 
-## <a name="troubleshoot-via-device-streams-activity-logs"></a>Problembehandlung über Aktivitätsprotokolle für Gerätestreams
+## <a name="troubleshoot-via-device-streams-resource-logs"></a>Problembehandlung über Ressourcenprotokolle für Gerätestreams
 
-Sie können Azure Monitor-Protokolle zum Erfassen des Aktivitätsprotokolls für Gerätestreams in Ihrer IoT Hub-Instanz einrichten. Dies kann zur Problembehandlung sehr hilfreich sein.
+Sie können Azure Monitor so einrichten, dass die von Ihrem IoT Hub ausgegebenen [Ressourcenprotokolle für Gerätestreams](monitor-iot-hub-reference.md#device-streams-preview) erfasst werden. Dies kann zur Problembehandlung sehr hilfreich sein.
 
-Führen Sie die folgenden Schritte aus, um Azure Monitor-Protokolle für die Gerätestreamaktivitäten Ihrer IoT Hub-Instanz zu konfigurieren:
+Führen Sie die folgenden Schritte aus, um eine Diagnoseeinstellung zum Senden von Gerätestreamprotokollen für Ihren IoT Hub an Azure Monitor-Protokolle zu erstellen:
 
-1. Navigieren Sie in Ihrer IoT Hub-Instanz zur Registerkarte *Diagnoseeinstellungen*, und klicken Sie auf den Link *Diagnose aktivieren*.
+1. Navigieren Sie im Azure-Portal zu Ihrem IoT-Hub. Wählen Sie im linken Bereich unter **Überwachung** die Option **Diagnoseeinstellungen** aus. Wählen Sie dann **Diagnoseeinstellung hinzufügen** aus.
 
-   ![„Aktivieren von Diagnoseprotokollen“](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
+2. Geben Sie einen Namen für Ihre Diagnoseeinstellung an, und wählen Sie aus der Liste der Protokolle das Protokoll **DeviceStreams** aus. Wählen Sie dann **An Log Analytics senden** aus. Sie werden durch die Auswahl eines vorhandenen Log Analytics-Arbeitsbereichs oder die Erstellung eines neuen Bereichs geführt.
 
-2. Geben Sie einen Namen für Ihre Diagnoseeinstellungen ein, und wählen Sie die Option *An Log Analytics senden* aus. Sie werden durch die Auswahl einer vorhandenen Log Analytics-Arbeitsbereichsressource oder durch die Erstellung einer neuen Ressource geführt. Aktivieren Sie außerdem den Eintrag *DeviceStreams* in der Liste.
+    :::image type="content" source="media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png" alt-text="Aktivieren von Gerätestreamprotokollen":::
 
-    ![„Aktivieren von Gerätestreamprotokollen“](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
-
-3. Sie können jetzt im IoT Hub-Verwaltungsportal auf der Registerkarte *Protokolle* auf Ihre Gerätestreamprotokolle zugreifen. Gerätestream-Aktivitätsprotokolle werden in der Tabelle `AzureDiagnostics` aufgeführt mit `Category=DeviceStreams`.
+3. Nachdem Sie eine Diagnoseeinstellung zum Senden Ihrer Gerätestreamprotokolle an einen Log Analytics-Arbeitsbereich erstellt haben, können Sie auf die Protokolle zugreifen, indem Sie im Azure-Portal im linken Bereich Ihres IoT-Hubs unter **Überwachung** die Option **Protokolle** auswählen. Gerätestreamprotokolle werden in der Tabelle `AzureDiagnostics` mit `Category=DeviceStreams` aufgeführt. Beachten Sie, dass es mehrere Minuten dauern kann, bis die Protokolle in der Tabelle angezeigt werden.
 
    Wie unten dargestellt, werden auch die Identität des Zielgeräts und das Ergebnis des Vorgangs in den Protokollen angegeben.
 
    ![„Zugriff auf Gerätestreamprotokolle“](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
 
+Weitere Informationen zur Verwendung von Azure Monitor bei IoT Hub finden Sie unter [Überwachen von IoT Hub](monitor-iot-hub.md). Informationen zu allen Ressourcenprotokollen, Metriken und Tabellen, die für IoT Hub zur Verfügung stehen, finden Sie in der [Referenz zu Azure IoT Hub-Überwachungsdaten](monitor-iot-hub-reference.md).
+
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-Während der öffentlichen Vorschauphase sind IoT Hub-Gerätestreams in den Regionen „USA, Mitte“ und „USA, Mitte (EUAP)“ verfügbar. Achten Sie darauf, dass Sie Ihren Hub in einer dieser Regionen erstellen.
+Während der öffentlichen Vorschau sind IoT Hub-Gerätestreams in den Regionen „USA, Mitte“, „USA, Mitte (EUAP)“, „Europa, Norden“ und „Asien, Südosten“ verfügbar. Achten Sie darauf, dass Sie Ihren Hub in einer dieser Regionen erstellen.
 
 ## <a name="sdk-availability"></a>SDK-Verfügbarkeit
 
@@ -152,7 +156,7 @@ Zwei Seiten jedes Streams (auf der Geräte- und der Dienstseite) verwenden das I
 
 ## <a name="iot-hub-device-stream-samples"></a>Beispiele für IoT Hub-Gerätstreams
 
-Die IoT Hub-Seite enthält zwei [Schnellstartbeispiele](/azure/iot-hub). Diese Beispiele veranschaulichen die Verwendung von Gerätestreams durch Anwendungen.
+Die IoT Hub-Seite enthält zwei [Schnellstartbeispiele](./index.yml). Diese Beispiele veranschaulichen die Verwendung von Gerätestreams durch Anwendungen.
 
 * Das Beispiel *Echo* verdeutlicht die programmgesteuerte Verwendung von Gerätestreams (durch direktes Aufrufen der SDK-APIs).
 

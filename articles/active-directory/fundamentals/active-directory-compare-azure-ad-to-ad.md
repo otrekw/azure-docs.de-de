@@ -1,0 +1,54 @@
+---
+title: Vergleich zwischen Active Directory und Azure Active Directory
+description: In diesem Dokument werden die Active Directory Domain Services (ADDS) mit Azure Active Directory (AD) verglichen. Dabei werden die wichtigsten Konzepte beider Identitätslösungen beschrieben, und Sie erfahren, in welchen Punkten sich die beiden Lösungen unterscheiden.
+services: active-directory
+author: martincoetzer
+manager: daveba
+tags: azuread
+ms.service: active-directory
+ms.topic: conceptual
+ms.workload: identity
+ms.subservice: fundamentals
+ms.date: 02/26/2020
+ms.author: martinco
+ms.openlocfilehash: 64a8dabaedc3922ebd8d163b1ea162b7d1584de2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371918"
+---
+# <a name="compare-active-directory-to-azure-active-directory"></a>Vergleich zwischen Active Directory und Azure Active Directory
+
+Bei Azure Active Directory handelt es sich um eine Identitäts- und Zugriffsverwaltungslösung, die für die Cloud weiterentwickelt wurde. Active Directory Domain Services wurden in Windows 2000 eingeführt, um Organisationen die Möglichkeit zu geben, mehrere lokale Infrastrukturkomponenten und Systeme mit einer einzelnen Identität pro Benutzer zu verwalten.
+
+Mit Azure AD wird diese Funktionalität erweitert, indem Organisationen eine IDaaS-Lösung (Identity as a Service) bereitgestellt wird, mit der sich all ihre cloudbasierten und lokalen Apps verwalten lassen.
+
+Die meisten IT-Administratoren sind mit den Konzepten von Active Directory Domain Services vertraut. Die folgende Tabelle zeigt die Unterschiede und Gemeinsamkeiten von Active Directory und Azure Active Directory.
+
+|Konzept|Active Directory (AD)|Azure Active Directory |
+|:-|:-|:-|
+|**Benutzer**|||
+|Bereitstellung: Benutzer | Organisationen erstellen interne Benutzer manuell oder verwenden ein internes oder automatisiertes Bereitstellungssystem (z.B. Microsoft Identity Manager) für die Integration mit einem HR-System.|Vorhandene AD-Organisationen verwenden [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md) zur Synchronisierung von Identitäten in der Cloud.</br> Mit Azure AD können Benutzer auch automatisch aus [cloudbasierten HR-Systemen](../saas-apps/workday-tutorial.md) erstellt werden. </br>Azure AD bietet die Möglichkeit, Identitäten in [SCIM-fähigen](../app-provisioning/use-scim-to-provision-users-and-groups.md) SaaS-Apps bereitzustellen, damit Apps automatisch über die erforderlichen Details für den Benutzerzugriff verfügen. |
+|Bereitstellung: externe Identitäten| Organisationen erstellen externe Benutzer manuell als normale Benutzer in einer dedizierten externen AD-Gesamtstruktur. Die Folge ist ein großer Verwaltungsaufwand für den Lebenszyklus externer Identitäten (Gastbenutzer).| Azure AD bietet eine spezielle Identitätsklasse für externe Identitäten. Um ihre Gültigkeit sicherzustellen, wird die Verknüpfung mit der externen Benutzeridentität über [Azure AD B2B](/azure/active-directory/b2b/) verwaltet. |
+| Berechtigungsverwaltung und Gruppen| Administratoren fügen Benutzer als Mitglieder von Gruppen hinzu. App- und Ressourcenbesitzer erteilen Gruppen anschließend Zugriff auf die Apps oder Ressourcen.| Da [Gruppen](./active-directory-groups-create-azure-portal.md) auch in Azure AD verfügbar sind, können Administratoren auch hier Gruppen verwenden, um Berechtigungen für Ressourcen zu erteilen. In Azure AD können Administratoren Gruppenmitgliedschaften manuell zuweisen oder eine Abfrage ausführen, um Benutzer dynamisch zu einer Gruppe hinzuzufügen. </br> Administratoren können die [Berechtigungsverwaltung](../governance/entitlement-management-overview.md) in Azure AD verwenden, um Benutzern Zugriff auf eine Sammlung von Apps und Ressourcen zu erteilen. Zu diesem Zweck kommen Workflows und, falls erforderlich, zeitbasierte Kriterien zum Einsatz. |
+| Verwaltung von Administratorrechten|Organisationen verwenden eine Kombination aus Domänen, Organisationseinheiten und Gruppen in AD, um Administratorrechte für die Verwaltung des Verzeichnisses und der zugehörigen Ressourcen zuzuweisen.| Azure AD stellt mit der rollenbasierten Zugriffssteuerung (Azure AD Role-Based Access Control, Azure AD RBAC) [integrierte Rollen](./active-directory-users-assign-role-azure-portal.md) sowie eingeschränkte Unterstützung zum [Erstellen benutzerdefinierter Rollen](../roles/custom-overview.md) bereit, um den privilegierten Zugriff auf das Identitätssystem, die Apps und die damit gesteuerten Ressourcen zu delegieren.</br>Die Rollenverwaltung lässt sich durch [Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) erweitern, um einen Just-In-Time-Zugriff, einen zeitlich beschränkten Zugriff oder einen workflowbasierten Zugriff auf privilegierte Rollen zu ermöglichen. |
+| Verwaltung von Anmeldeinformationen| Die Anmeldeinformationen in Active Directory basieren auf Kennwörtern, Zertifikatauthentifizierung und Smartcard-Authentifizierung. Kennwörter werden mithilfe von Kennwortrichtlinien verwaltet, die auf der Länge, auf dem Ablauf und auf der Komplexität der Kennwörter basieren.|Azure AD verwendet sowohl in der Cloud als auch lokal einen intelligenten [Kennwortschutz](../authentication/concept-password-ban-bad.md). Dieser Schutz umfasst einen intelligenten Sperrmechanismus sowie das Sperren gängiger und benutzerdefinierter Passphrases und Ersetzungen. </br>Bei Azure AD wird die Sicherheit [durch eine mehrstufige Authentifizierung](../authentication/concept-mfa-howitworks.md) und [kennwortlose](../authentication/concept-authentication-passwordless.md) Technologien wie FIDO2 erheblich verbessert. </br>Mit Azure AD werden durch die Bereitstellung eines Systems für die [Self-Service-Kennwortzurücksetzung](../authentication/concept-sspr-howitworks.md) zudem die Supportkosten erheblich gesenkt. |
+| **Apps**|||
+| Infrastruktur-Apps|Active Directory stellt die Grundlage vieler lokaler Infrastrukturkomponenten dar (z.B. DNS, DHCP, IPSec, WLAN, NPS und VPN-Zugriff).|In der cloudbasierten Welt von heute stellt Azure AD die neue Kontroll- und Steuerungsebene für den Zugriff auf Apps dar, sodass Organisationen sich nicht länger nur auf Netzwerksteuerelemente verlassen müssen. Bei der Benutzerauthentifizierung steuert der [bedingte Zugriff](../conditional-access/overview.md), welche Benutzer unter den erforderlichen Bedingungen Zugriff auf welche Apps erhalten.|
+| Traditionelle Apps und Legacy-Apps| Die meisten lokalen Apps verwenden die LDAP-Authentifizierung, die integrierte Windows-Authentifizierung (NTLM und Kerberos) oder die headerbasierte Authentifizierung, um den Zugriff auf Benutzer zu steuern.| Bei Azure AD kann der Zugriff auf diese Art von lokalen Apps über [Azure AD-Anwendungsproxy-Agents](../manage-apps/application-proxy.md) gewährt werden, die lokal ausgeführt werden. Auf diese Weise kann Azure AD Active Directory-Benutzer lokal mithilfe von Kerberos authentifizieren, während Sie eine Migration durchführen oder wenn beide Arten gleichzeitig verwendet werden müssen. |
+| SaaS-Apps|Active Directory bietet keine native Unterstützung für SaaS-Apps, und es wird ein Verbundsystem wie AD FS benötigt.|Um Azure AD für die Authentifizierung zu nutzen, können SaaS-Apps mit Unterstützung für die OAuth2-, SAML- und WS-\*Authentifizierung integriert werden. |
+| Branchenspezifische Apps mit moderner Authentifizierung|Organisationen können AD FS mit Active Directory verwenden, um branchenspezifische Apps zu unterstützen, die eine moderne Authentifizierung erfordern.| Branchenspezifische Apps, die eine moderne Authentifizierung erfordern, lassen sich so konfigurieren, dass sie Azure AD für die Authentifizierung verwenden. |
+| Mid-Tier-Dienste/Daemon-Dienste|Dienste, die in lokalen Umgebungen ausgeführt werden, verwenden für die Ausführung üblicherweise AD-Dienstkonten oder gruppenverwaltete Dienstkonten. In diesem Fall erben diese Apps die Berechtigungen des Dienstkontos.| Für die Ausführung anderer Workloads in der Cloud bietet Azure AD [verwaltete Identitäten](../managed-identities-azure-resources/index.yml). Der Lebenszyklus dieser Identitäten wird von Azure AD verwaltet und ist an den Ressourcenanbieter gebunden. Sie können nicht für andere Zwecke genutzt werden, beispielsweise um Hintertürzugriff zu erhalten.|
+| **Geräte**|||
+| Mobile|Active Directory bietet ohne Drittanbieterlösungen keine native Unterstützung für mobile Geräte.| In Azure AD ist die Microsoft-Verwaltungslösung für mobile Geräte (Microsoft Intune) integriert. Microsoft Intune stellt Informationen zum Gerätezustand für das Identitätssystem bereit, die während der Authentifizierung ausgewertet werden. |
+| Windows-Desktops|In Active Directory können Windows-Geräte zu einer Domäne hinzugefügt werden, um sie über Gruppenrichtlinie, System Center Configuration Manager oder Drittanbieterlösungen zu verwalten.|Windows-Geräte können zu [Azure AD hinzugefügt](../devices/index.yml) werden. Mithilfe des bedingten Zugriffs kann im Rahmen des Authentifizierungsprozesses überprüft werden, ob ein Gerät zu Azure AD hinzugefügt wurde. Windows-Geräte können zudem mit [Microsoft Intune](/intune/what-is-intune) verwaltet werden. In diesem Fall prüft der bedingte Zugriff, ob ein Gerät den Vorgaben entspricht (z.B. über aktuelle Sicherheitspatches und Virussignaturen verfügt), bevor es auf die Apps zugreifen darf.|
+| Windows-Server| Mit Gruppenrichtlinie oder anderen Verwaltungslösungen bietet Active Directory umfassende Verwaltungsfunktionen für lokale Windows-Server.| Windows-Server-VMs in Azure können mit [Azure AD Domain Services](../../active-directory-domain-services/index.yml) verwaltet werden. [Verwaltete Identitäten](../managed-identities-azure-resources/index.yml) können verwendet werden, wenn VMs Zugriff auf das Verzeichnis oder die Ressourcen des Identitätssystems benötigen.|
+| Linux-/Unix-Workloads|Active Directory bietet ohne Drittanbieterlösungen keine native Unterstützung für Nicht-Windows-Workloads. Linux-Computer lassen sich jedoch für die Authentifizierung mit Active Directory als Kerberos-Bereich konfigurieren.|Linux-/Unix-VMs können [verwaltete Identitäten](../managed-identities-azure-resources/index.yml) verwenden, um auf das Identitätssystem oder Ressourcen zuzugreifen. Einige Organisationen migrieren diese Workloads zu Cloudcontainertechnologien, die auch verwaltete Identitäten verwenden können.|
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Was ist Azure Active Directory?](./active-directory-whatis.md)
+- [Vergleichen von selbstverwalteten Active Directory Domain Services, Azure Active Directory und verwalteten Azure Active Directory Domain Services](../../active-directory-domain-services/compare-identity-solutions.md)
+- [Häufig gestellte Fragen zu Azure Active Directory](./active-directory-faq.md)
+- [Neuerungen in Azure Active Directory](./whats-new.md)

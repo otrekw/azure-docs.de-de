@@ -1,36 +1,34 @@
 ---
-title: 'Schnellstart: Microsoft Identity Platform – Windows Desktop | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie eine Windows Desktop .NET-Anwendung (XAML) ein Zugriffstoken abrufen und eine API aufrufen kann, die durch einen Microsoft Identity Platform-Endpunkt geschützt ist.
+title: 'Schnellstart: Anmelden von Benutzern und Aufrufen von Microsoft Graph in einer Desktop-App für Universelle Windows-Plattform | Azure'
+description: In dieser Schnellstartanleitung erfahren Sie, wie eine Windows Desktop .NET-Anwendung (XAML-Anwendung) ein Zugriffstoken abrufen und eine API aufrufen kann, die durch einen Microsoft Identity Platform-Endpunkt geschützt ist.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a85cafce13cffcebbcce3ebf022941ce899fa72b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bc7c6022f8ed95a69dcb877252fd8c5eff49ce28
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852756"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030483"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Windows Desktop-App aus
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Windows Desktop .NET-Anwendung (WPF-Anwendung) schreiben, die persönliche Konten oder Geschäfts-, Schul- oder Unikonten anmelden, ein Zugriffstoken abrufen und die Microsoft Graph-API aufrufen kann.
+In dieser Schnellstartanleitung laden Sie ein Codebeispiel herunter und führen es aus, das zeigt, wie eine Windows Desktop .NET-Anwendung (WPF) Benutzer anmelden und ein Zugriffstoken abrufen kann, um die Microsoft Graph-API aufzurufen. 
 
-![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-windows-desktop/windesktop-intro.svg)
+Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>Voraussetzungen
+>
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) mit installierter Workload [Entwicklung für die universelle Windows-Plattform](/windows/uwp/get-started/get-set-up)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrieren und Herunterladen Ihrer Schnellstart-App
 > Die Schnellstartanwendung kann auf zwei Arten gestartet werden:
 > * [Express] [Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -47,21 +45,21 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Windows Desktop .NET-
 > #### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
 > Führen Sie die folgenden Schritte aus, um Ihre Anwendung zu registrieren und Ihrer Projektmappe manuell die Registrierungsinformationen Ihrer App hinzuzufügen:
 >
-> 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
-> 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-> 1. Navigieren Sie zur Seite [App-Registrierungen](https://aka.ms/MobileAppReg) von Microsoft Identity Platform für Entwickler.
-> 1. Wählen Sie **Neue Registrierung** aus.
->      - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `Win-App-calling-MsGraph`).
->      - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** aus.
->      - Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
-> 1. Wählen Sie in der Liste mit den Seiten für die App die Option **Authentifizierung** aus.
-> 1. Erweitern Sie den Abschnitt **Desktop + devices** (Desktop + Geräte).  (Wird **Desktop + devices** (Desktop + Geräte) nicht angezeigt, klicken Sie zuerst auf das obere Banner, um die Vorschauversion der Authentifizierungsumgebung anzuzeigen.)
-> 1. Wählen Sie im Abschnitt **Umleitungs-URI** die Option **URI hinzufügen** aus.  Geben Sie **urn:ietf:wg:oauth:2.0:oob** ein.
-> 1. Wählen Sie **Speichern** aus.
+> 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+> 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+> 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+> 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+> 1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `Win-App-calling-MsGraph`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+> 1. Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z.B. Skype, Xbox, Outlook.com)** aus.
+> 1. Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
+> 1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
+> 1. Wählen Sie **Plattform hinzufügen** > **Mobilgerät- und Desktopanwendungen** aus.
+> 1. Wählen Sie im Abschnitt **Umleitungs-URIs** die Option `https://login.microsoftonline.com/common/oauth2/nativeclient` aus.
+> 1. Wählen Sie **Konfigurieren** aus.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
-> Damit das Codebeispiel für diesen Schnellstart funktioniert, müssen Sie eine Antwort-URL als **urn:ietf:wg:oauth:2.0:oob** hinzufügen.
+> Damit das Codebeispiel für diesen Schnellstart funktioniert, müssen Sie einen Antwort-URI als **https://login.microsoftonline.com/common/oauth2/nativeclient** hinzufügen.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Diese Änderung für mich vornehmen]()
 >
@@ -70,24 +68,34 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Windows Desktop .NET-
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Schritt 2: Herunterladen des Visual Studio-Projekts
 
-[Laden Sie das Visual Studio-Projekt herunter](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip) ([Projekt auf GitHub anzeigen](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/))
+> [!div renderon="docs"]
+> [Laden Sie das Visual Studio-Projekt herunter](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>Schritt 3: Konfigurieren des Visual Studio-Projekts
+> [!div class="sxs-lookup" renderon="portal"]
+> Führen Sie das Projekt mit Visual Studio 2019 aus.
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
+> [Laden Sie das Codebeispiel herunter](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip).
 
-1. Extrahieren Sie die ZIP-Datei in einem lokalen Ordner in der Nähe des Datenträger-Stammverzeichnisses (beispielsweise **C:\Azure-Samples**).
-1. Öffnen Sie das Projekt in Visual Studio.
-1. Bearbeiten Sie **App.Xaml.cs**. Ersetzen Sie dabei die Werte der Felder `ClientId` und `Tenant` durch den folgenden Code:
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Schritt 3: Ihre App ist konfiguriert und betriebsbereit
+> Wir haben das Projekt mit Werten Ihrer App-Eigenschaften konfiguriert. Es ist nun ausführungsbereit.
 
-    ```csharp
-    private static string ClientId = "Enter_the_Application_Id_here";
-    private static string Tenant = "Enter_the_Tenant_Info_Here";
-    ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Dieser Schnellstart unterstützt Enter_the_Supported_Account_Info_Here.
+> > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
-> Hinweis:
+> #### <a name="step-3-configure-your-visual-studio-project"></a>Schritt 3: Konfigurieren des Visual Studio-Projekts
+> 1. Extrahieren Sie die ZIP-Datei in einem lokalen Ordner in der Nähe des Datenträger-Stammverzeichnisses (beispielsweise **C:\Azure-Samples**).
+> 1. Öffnen Sie das Projekt in Visual Studio.
+> 1. Bearbeiten Sie **App.Xaml.cs**. Ersetzen Sie dabei die Werte der Felder `ClientId` und `Tenant` durch den folgenden Code:
+>
+>    ```csharp
+>    private static string ClientId = "Enter_the_Application_Id_here";
+>    private static string Tenant = "Enter_the_Tenant_Info_Here";
+>    ```
+>
+> Hierbei gilt:
 > - `Enter_the_Application_Id_here` ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
 > - `Enter_the_Tenant_Info_Here` wird auf eine der folgenden Optionen festgelegt:
 >   - Unterstützt Ihre Anwendung **Nur Konten in diesem Organisationsverzeichnis**, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (etwa „contoso.microsoft.com“).
@@ -99,8 +107,10 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Windows Desktop .NET-
 
 ## <a name="more-information"></a>Weitere Informationen
 
-### <a name="msalnet"></a>MSAL.NET
+### <a name="how-the-sample-works"></a>Funktionsweise des Beispiels
+![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-windows-desktop/windesktop-intro.svg)
 
+### <a name="msalnet"></a>MSAL.NET
 MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) ist die Bibliothek zum Anmelden von Benutzern und Anfordern von Token, die für den Zugriff auf eine durch Microsoft Identity Platform geschützte API verwendet wird. Sie können MSAL installieren, indem Sie den folgenden Befehl in der **Paket-Manager-Konsole** von Visual Studio ausführen:
 
 ```powershell
@@ -120,11 +130,12 @@ Initialisieren Sie MSAL anschließend mit dem folgenden Code:
 ```csharp
 public static IPublicClientApplication PublicClientApp;
 PublicClientApplicationBuilder.Create(ClientId)
+                .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
                 .WithAuthority(AzureCloudInstance.AzurePublic, Tenant)
                 .Build();
 ```
 
-> |Hinweis: ||
+> |Hierbei gilt: | BESCHREIBUNG |
 > |---------|---------|
 > | `ClientId` | Die **Anwendungs-ID (Client)** für die im Azure-Portal registrierte Anwendung. Dieser Wert befindet sich im Azure-Portal auf der Seite **Übersicht** der App. |
 
@@ -146,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Hinweis:||
+> |Hierbei gilt:| BESCHREIBUNG |
 > |---------|---------|
 > | `_scopes` | Enthält die angeforderten Bereiche (etwa `{ "user.read" }` für Microsoft Graph oder `{ "api://<Application ID>/access_as_user" }` für benutzerdefinierte Web-APIs). |
 
@@ -161,7 +172,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Hinweis: ||
+> |Hierbei gilt: | BESCHREIBUNG |
 > |---------|---------|
 > | `scopes` | Enthält die angeforderten Bereiche (etwa `{ "user.read" }` für Microsoft Graph oder `{ "api://<Application ID>/access_as_user" }` für benutzerdefinierte Web-APIs). |
 > | `firstAccount` | Gibt den ersten Benutzer im Cache an. (MSAL unterstützt mehrere Benutzer in einer App.) |
@@ -173,9 +184,4 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 Probieren Sie das Windows Desktop-Tutorial aus, um eine vollständige Schritt-für-Schritt-Anleitung zum Erstellen von Anwendungen und neuen Features zu erhalten, einschließlich einer vollständigen Erläuterung dieses Schnellstarts.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Aufrufen der Microsoft Graph-API](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-windesktop)
-
-Helfen Sie uns, Microsoft Identity Platform zu verbessern. Teilen Sie uns Ihre Meinung mit, indem Sie eine kurze Umfrage mit zwei Fragen beantworten.
-
-> [!div class="nextstepaction"]
-> [Umfrage zu Microsoft Identity Platform](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
+> [Tutorial: Aufrufen der Microsoft Graph-API](./tutorial-v2-windows-desktop.md)

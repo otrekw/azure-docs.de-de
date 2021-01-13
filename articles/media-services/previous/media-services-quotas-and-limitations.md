@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 09/16/2020
 ms.author: juliako
-ms.openlocfilehash: dc0d41457729bf5fd78adb88d683ab4fbe23a148
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a2e80fa8eaec1dbf4137ba72662dfb178b6c9b1a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557142"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91329658"
 ---
 # <a name="quotas-and-limitations"></a>Kontingente und Einschränkungen
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 In diesem Artikel sind die für Microsoft Azure Media Services geltenden Kontingente und Einschränkungen beschrieben.
 

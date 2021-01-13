@@ -1,32 +1,27 @@
 ---
 title: Entität vom Typ „RegEx“ (Regulärer Ausdruck) – LUIS
-titleSuffix: Azure Cognitive Services
 description: Ein regulärer Ausdruck ist am besten für unformatierten Text von Äußerungen geeignet. Die Groß-/Kleinschreibung sowie die Kultur werden ignoriert.  Reguläre Ausdrücke werden nach Änderungen durch die Rechtschreibprüfung auf Zeichenebene (nicht auf Tokenebene) angewandt.
-services: cognitive-services
-author: diberry
-manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/24/2019
-ms.author: diberry
-ms.openlocfilehash: 82cce359f2161800c53ccce7cdb0342bba759d43
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 04/14/2020
+ms.openlocfilehash: 18e44ec43e1169aa054e6e5b4591ccd8611a7f4d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559935"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025224"
 ---
-# <a name="regular-expression-entity"></a>Entität vom Typ „RegEx“ 
+# <a name="regular-expression-entity"></a>Entität vom Typ „RegEx“
 
 Eine RegEx-Entität extrahiert eine Entität anhand eines regulären Ausdrucks, den Sie bereitstellen.
 
-Ein regulärer Ausdruck ist am besten für unformatierten Text von Äußerungen geeignet. Die Groß-/Kleinschreibung sowie die Kultur werden ignoriert.  Reguläre Ausdrücke werden nach Änderungen durch die Rechtschreibprüfung auf Zeichenebene (nicht auf Tokenebene) angewandt. Wenn der reguläre Ausdruck zu komplex ist (z.B. mit zu vielen Klammern), können Sie den Ausdruck dem Modell nicht hinzufügen. Es wird ein Teil der [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)-Bibliothek verwendet, aber nicht die gesamte Bibliothek. 
+Ein regulärer Ausdruck ist am besten für unformatierten Text von Äußerungen geeignet. Die Groß-/Kleinschreibung sowie die Kultur werden ignoriert.  Reguläre Ausdrücke werden nach Änderungen durch die Rechtschreibprüfung auf Zeichenebene (nicht auf Tokenebene) angewandt. Wenn der reguläre Ausdruck zu komplex ist (z.B. mit zu vielen Klammern), können Sie den Ausdruck dem Modell nicht hinzufügen. Es wird ein Teil der [.NET Regex](/dotnet/standard/base-types/regular-expressions)-Bibliothek verwendet, aber nicht die gesamte Bibliothek.
 
 **Diese Entität ist gut geeignet, wenn Folgendes gilt**:
 
 * Die Daten sind einheitlich formatiert, und auch bei den Abweichungen herrscht Einheitlichkeit.
-* Für den regulären Ausdruck sind nicht mehr als zwei Schachtelungsebenen erforderlich. 
+* Für den regulären Ausdruck sind nicht mehr als zwei Schachtelungsebenen erforderlich.
 
 ![Entität vom Typ „RegEx“](./media/luis-concept-entities/regex-entity.png)
 
@@ -36,7 +31,7 @@ Reguläre Ausdrücke finden möglicherweise mehr, als Sie erwarten. Ein Beispiel
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
-``` 
+```
 
 Dieser RegEx-Ausdruck findet auch alle Wörter, die auf diese Zahlen enden, wie z. B. `phone`. Um Probleme wie dieses zu beheben, stellen Sie sicher, dass bei Übereinstimmungen für reguläre Ausdrücke die Wortgrenzen berücksichtigt werden. Der reguläre Ausdruck mit Berücksichtigung von Wortgrenzen für dieses Beispiel wird im folgenden regulären Ausdruck verwendet:
 
@@ -46,36 +41,67 @@ Dieser RegEx-Ausdruck findet auch alle Wörter, die auf diese Zahlen enden, wie 
 
 ### <a name="example-json"></a>JSON-Beispiel
 
-Wenn Sie `kb[0-9]{6}` als Definition der RegEx-Entität verwenden, stellt die folgende JSON-Antwort eine Beispieläußerung für die zurückgegebenen RegEx-Entitäten für die Abfrage `When was kb123456 published?` dar:
+Wenn Sie `kb[0-9]{6}` als Definition der RegEx-Entität verwenden, stellt die folgende JSON-Antwort eine Beispieläußerung für die zurückgegebenen RegEx-Entitäten für die folgende Abfrage dar:
+
+`When was kb123456 published?`:
+
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 ```JSON
-{
-  "query": "when was kb123456 published?",
-  "topScoringIntent": {
-    "intent": "FindKBArticle",
-    "score": 0.933641255
-  },
-  "intents": [
-    {
-      "intent": "FindKBArticle",
-      "score": 0.933641255
-    },
-    {
-      "intent": "None",
-      "score": 0.04397359
-    }
-  ],
-  "entities": [
-    {
-      "entity": "kb123456",
-      "type": "KB number",
-      "startIndex": 9,
-      "endIndex": 16
-    }
-  ]
+"entities": [
+  {
+    "entity": "kb123456",
+    "type": "KB number",
+    "startIndex": 9,
+    "endIndex": 16
+  }
+]
+```
+
+
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+
+
+Dies ist der JSON-Code, wenn `verbose=false` in der Abfragezeichenfolge festgelegt ist:
+
+```json
+"entities": {
+    "KB number": [
+        "kb123456"
+    ]
 }
 ```
 
+Dies ist der JSON-Code, wenn `verbose=true` in der Abfragezeichenfolge festgelegt ist:
+
+```json
+"entities": {
+    "KB number": [
+        "kb123456"
+    ],
+    "$instance": {
+        "KB number": [
+            {
+                "type": "KB number",
+                "text": "kb123456",
+                "startIndex": 9,
+                "length": 8,
+                "modelTypeId": 8,
+                "modelType": "Regex Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+* * *
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem [Tutorial](luis-quickstart-intents-regex-entity.md) erstellen Sie eine App zum Extrahieren einheitlich formatierter Daten aus einer Äußerung mithilfe der **RegEx**-Entität.
+Weitere Informationen zu Entitäten finden Sie hier:
+
+* [Konzepte](luis-concept-entity-types.md)
+* [Anleitung zum Erstellen](luis-how-to-add-entities.md)

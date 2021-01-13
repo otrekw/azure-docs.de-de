@@ -1,43 +1,45 @@
 ---
-title: 'Erstellen eines routenbasierten Azure-VPN-Gateways: CLI | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie ein VPN-Gateway mithilfe von CLI erstellen.
+title: 'Erstellen eines routenbasierten Azure-VPN-Gateways: Befehlszeilenschnittstelle (CLI)'
+description: Erstellen Sie schnell ein routenbasiertes Azure-VPN-Gateway mit der Azure CLI für eine VPN-Verbindung mit Ihrem lokalen Netzwerk oder um virtuelle Netzwerke zu verbinden.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 10/04/2018
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: f5f62a6bfa1baa205e0496dd901f1f1eef660079
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2bbd7e39ee65ba304ec62697b6fcc77bea133b41
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60391241"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737216"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>Erstellen eines routenbasierten VPN-Gateways mithilfe von CLI
 
 In diesem Artikel erfahren Sie, wie Sie schnell ein routenbasiertes Azure-VPN-Gateway mithilfe von Azure CLI erstellen. Ein VPN-Gateway wird beim Herstellen einer VPN-Verbindung mit Ihrem lokalen Netzwerk verwendet. Sie können Verbindungen mit VNets auch mit einem VPN-Gateway herstellen.
 
-Mit den Schritten in diesem Artikel werden ein VNet, ein Subnetz, ein Gatewaysubnetz und ein routenbasiertes VPN-Gateway (Gateway des virtuellen Netzwerks) erstellt. Das Erstellen eines VPN-Gateways kann 45 Minuten oder länger dauern. Wenn die Gatewayerstellung abgeschlossen ist, können Sie Verbindungen herstellen. Diese Schritte erfordern ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Mit den Schritten in diesem Artikel werden ein VNet, ein Subnetz, ein Gatewaysubnetz und ein routenbasiertes VPN-Gateway (Gateway des virtuellen Netzwerks) erstellt. Das Erstellen eines VPN-Gateways kann 45 Minuten oder länger dauern. Wenn die Gatewayerstellung abgeschlossen ist, können Sie Verbindungen herstellen. Diese Schritte erfordern ein Azure-Abonnement.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+- Für diesen Artikel ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
 Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name TestRG1 --location eastus
 ```
 
-## <a name="vnet"></a>Erstellen eines virtuellen Netzwerks
+## <a name="create-a-virtual-network"></a><a name="vnet"></a>Erstellen eines virtuellen Netzwerks
 
 Erstellen Sie mit dem Befehl [az network vnet create](/cli/azure/network/vnet) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk mit dem Namen **VNet1** am Standort **USA, Osten** erstellt:
 
-```azurecli-interactive 
+```azurecli-interactive
 az network vnet create \
   -n VNet1 \
   -g TestRG1 \
@@ -47,19 +49,19 @@ az network vnet create \
   --subnet-prefix 10.1.0.0/24
 ```
 
-## <a name="gwsubnet"></a>Hinzufügen eines Gatewaysubnetzes
+## <a name="add-a-gateway-subnet"></a><a name="gwsubnet"></a>Hinzufügen eines Gatewaysubnetzes
 
 Das Gatewaysubnetz enthält die reservierten IP-Adressen, die von den Diensten des virtuellen Netzwerkgateways verwendet werden. Verwenden Sie die folgenden Beispiele, um ein Gatewaysubnetz hinzufügen:
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network vnet subnet create \
   --vnet-name VNet1 \
   -n GatewaySubnet \
   -g TestRG1 \
-  --address-prefix 10.1.255.0/27 
+  --address-prefix 10.1.255.0/27 
 ```
 
-## <a name="PublicIP"></a>Anfordern einer öffentlichen IP-Adresse
+## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>Anfordern einer öffentlichen IP-Adresse
 
 Ein VPN-Gateway muss über eine dynamisch zugewiesene öffentliche IP-Adresse verfügen. Die öffentliche IP-Adresse wird dem VPN-Gateway zugeordnet, das Sie für Ihr virtuelles Netzwerk erstellen. Fordern Sie gemäß des folgenden Beispiels eine öffentliche IP-Adresse an:
 
@@ -67,10 +69,10 @@ Ein VPN-Gateway muss über eine dynamisch zugewiesene öffentliche IP-Adresse ve
 az network public-ip create \
   -n VNet1GWIP \
   -g TestRG1 \
-  --allocation-method Dynamic 
+  --allocation-method Dynamic 
 ```
 
-## <a name="CreateGateway"></a>Erstellen des VPN-Gateways
+## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>Erstellen des VPN-Gateways
 
 Erstellen Sie das VPN-Gateway mit dem Befehl [az network vnet-gateway create](/cli/azure/group).
 
@@ -91,7 +93,7 @@ az network vnet-gateway create \
 
 Das Erstellen eines VPN-Gateways kann 45 Minuten oder länger dauern.
 
-## <a name="viewgw"></a>Anzeigen des VPN-Gateways
+## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>Anzeigen des VPN-Gateways
 
 ```azurecli-interactive
 az network vnet-gateway show \
@@ -101,7 +103,7 @@ az network vnet-gateway show \
 
 Die Antwort sieht wie folgt aus:
 
-```
+```output
 {
   "activeActive": false,
   "bgpSettings": null,
@@ -159,7 +161,7 @@ Der dem Feld **ipAddress** zugeordnete Wert ist die öffentliche IP-Adresse Ihre
 
 Beispielantwort:
 
-```
+```output
 {
   "dnsSettings": null,
   "etag": "W/\"a12d4d03-b27a-46cc-b222-8d9364b8166a\"",
@@ -170,6 +172,7 @@ Beispielantwort:
     "etag": null,
     "id": "/subscriptions/<subscription ID>/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW/ipConfigurations/vnetGatewayConfig0",
 ```
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie die erstellten Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe mit dem Befehl [az group delete](/cli/azure/group). Damit löschen Sie die Ressourcengruppe mit allen enthaltenen Ressourcen.

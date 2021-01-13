@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c4b17fb5547c1522ec81369f2e362868a3f216a1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61244228"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652992"
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit .NET 
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Sie können Media Encoder Standard verwenden, um eine oder mehrere Miniaturansichten aus den Eingangsvideodaten in den Bilddateiformaten [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) oder [BMP](https://en.wikipedia.org/wiki/BMP_file_format) zu generieren. Sie können Aufgaben einreichen, die nur Bilder erzeugen, oder Sie können das Erstellen von Miniaturansichten mit der Codierung kombinieren. Dieser Artikel enthält einige Beispiele für XML- und JSON-Miniaturansichtsvoreinstellungen für solche Szenarien. Am Ende des Artikels wird ein [Beispielcode](#code_sample) aufgeführt, der zeigt, wie das Media Services .NET SDK zum Ausführen der Codierungsaufgabe verwendet werden kann.
 
@@ -281,8 +284,8 @@ Beachten Sie die Verwendung des Makros {Resolution} im Element „FileName“. D
 
 In allen oben genannten Beispielen wurde erläutert, dass Sie eine Codierungsaufgabe, die nur Bilder erzeugt, übermitteln können. Jedoch ist die Video- bzw. Audiocodierung auch beim Generieren von Miniaturansichten möglich. Die folgende JSON- und XML-Voreinstellung weist **Media Encoder Standard** an, bei der Codierung eine Miniaturansicht zu generieren.
 
-### <a id="json"></a>JSON-Voreinstellung
-Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/library/mt269962.aspx) Artikel.
+### <a name="json-preset"></a><a id="json"></a>JSON-Voreinstellung
+Informationen zum Schema finden Sie in [diesem](./media-services-mes-schema.md) Artikel.
 
 ```json
     {
@@ -346,10 +349,10 @@ Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/libra
     }
 ```
 
-### <a id="xml"></a>XML-Voreinstellung
-Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/library/mt269962.aspx) Artikel.
+### <a name="xml-preset"></a><a id="xml"></a>XML-Voreinstellung
+Informationen zum Schema finden Sie in [diesem](./media-services-mes-schema.md) Artikel.
 
-```csharp
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -401,16 +404,19 @@ Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/libra
     </Preset>   
 ```
 
-## <a id="code_sample"></a>Codieren eines Videos und Generieren einer Miniaturansicht mit .NET
+## <a name="encode-video-and-generate-thumbnail-with-net"></a><a id="code_sample"></a>Codieren eines Videos und Generieren einer Miniaturansicht mit .NET
 
 Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die folgenden Aufgaben auszuführen:
 
 * Erstellen eines Codierungsauftrags.
 * Abrufen eines Verweises auf den Media Encoder Standard-Encoder
 * Laden Sie die [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml)- oder [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)-Voreinstellung, die die Codierungsvoreinstellung sowie zum Generieren von Miniaturansichten erforderliche Informationen enthält. Sie können diese [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml)- oder [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)-Voreinstellung in einer Datei speichern und die Datei mithilfe des folgenden Codes laden.
-  
-        // Load the XML (or JSON) from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the XML (or JSON) from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
+
 * Fügen Sie eine einzelne Codierungsaufgabe zum Auftrag hinzu. 
 * Geben Sie das zu codierende Asset an.
 * Erstellen Sie ein Ausgabemedienobjekt, das das codierte Medienobjekt enthält.
@@ -551,15 +557,15 @@ Es gelten die folgenden Bedingungen:
 * Bei der Verwendung von expliziten Zeitstempeln für "Start"/"Step"/"Range" wird davon ausgegangen, dass die Dauer der Eingabequelle mindestens 1 Minute beträgt.
 * Jpg-/Png-/BmpImage-Elemente weisen Start-, Step- und Range-Zeichenfolgenattribute auf, die folgendermaßen interpretiert werden können:
   
-  * Framenummer, wenn es sich nicht um negative Integers handelt, z.B. "Start": "120",
-  * Relativ zur Quelldauer bei Ausdrücken mit dem Suffix „%“, z.B. "Start": "15%", ODER
+  * Framenummer, wenn es sich nicht um negative ganze Zahlen handelt, z.B. "Start": "120",
+  * Relativ zur Quelldauer bei Ausdrücken mit dem Suffix "%", z.B. "Start": "15%" ODER
   * Zeitstempel bei Ausdrücken im HH:MM:SS...- Format. Beispiel: "Start" : "00:01:00"
     
     Sie können die Formate nach Belieben mischen.
     
-    „Start“ unterstützt darüber hinaus auch das spezielle Makro {Best}, das versucht, den ersten „interessanten“ Frame des Inhalts zu ermitteln. (HINWEIS: „Step“ und „Range“ werden ignoriert, wenn „Start“ auf „{Best}“ festgelegt ist.)
-  * Standardwerte: Start: {Best}
-* Das Ausgabeformat muss für jedes Bildformat ausdrücklich bereitgestellt werden: „Jpg“/„Png“/„BmpFormat“. Falls vorhanden, ordnet MES „JpgVideo“ zu „JpgFormat“ usw. zu. "OutputFormat" führt ein neues Imagecodec-spezifisches Makro ein: "{Index}". Dieses Makro muss für Bildausgabeformate vorhanden sein (genau einmal).
+    "Start" unterstützt darüber hinaus auch das spezielle Makro "{Best}", das versucht, den ersten "interessanten" Frame des Inhalts zu ermitteln. (HINWEIS: "Step" und "Range" werden ignoriert, wenn "Start" auf "{Best}" festgelegt ist.)
+  * Standardwerte: Start:{Best}
+* Das Ausgabeformat muss für jedes Bildformat ausdrücklich bereitgestellt werden: "Jpg"/"Png"/"BmpFormat". Falls vorhanden, ordnet MES „JpgVideo“ zu „JpgFormat“ usw. zu. "OutputFormat" führt ein neues Imagecodec-spezifisches Makro ein: "{Index}". Dieses Makro muss für Bildausgabeformate vorhanden sein (genau einmal).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -571,6 +577,5 @@ Sie können den [Status des Auftrags](media-services-check-job-progress.md) übe
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
-

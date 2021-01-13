@@ -1,6 +1,6 @@
 ---
 title: Informationen zu von Azure Media Services empfohlenen Encodern | Microsoft-Dokumentation
-description: Informationen zu von Media Services empfohlenen Encodern
+description: In diesem Artikel werden die von Azure Media Services empfohlenen lokalen Encoder aufgelistet.
 services: media-services
 keywords: Codierung; Encoder; Medien
 author: dbgeorge
@@ -9,35 +9,49 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: fc481129e652c6dacd15a5a6d039a9118393e8f1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 11456a8dc55a98778bf44225bf659e506e2d3a3f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854240"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510055"
 ---
 # <a name="recommended-on-premises-encoders"></a>Empfohlene lokale Encoder
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Beim Livestreaming mit Azure Media Services können Sie angeben, wie der Kanal den Eingabedatenstrom empfangen soll. Wenn Sie sich für die Verwendung eines lokalen Encoders mit einem Livecodierkanal entscheiden, sollte der Encoder einen qualitativ hochwertigen Datenstrom mit Einzelbitrate als Ausgabe übertragen. Ziehen Sie dagegen einen lokalen Encoder mit Pass-Through-Kanal vor, dann muss Ihr Encoder einen Stream mit Mehrfachbitrate als Ausgabe übertragen. Weitere Informationen finden Sie unter [Livestreaming mit lokalen Encodern](media-services-live-streaming-with-onprem-encoders.md).
 
+## <a name="encoder-requirements"></a>Anforderungen für Encoder
+
+Encoder müssen TLS 1.2 unterstützen, wenn HTTPS- oder RTMPS-Protokolle verwendet werden.
+
+## <a name="live-encoders-that-output-rtmp"></a>Liveencoder mit RTMP-Ausgabe 
+
 Azure Media Services empfiehlt die Verwendung eines der nachfolgenden Live-Encoder mit RTMP-Ausgabe:
+
 - Adobe Flash Media Live Encoder 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- Telestream Wirecast (Version 13.0.2 oder höher aufgrund der TLS 1.2-Anforderung)
+
+  Encoder müssen TLS 1.2 unterstützen, wenn RTMPS-Protokolle verwendet werden.
 - Teradek Slice 756
-- TriCaster 8000
-- Tricaster Mini HD-4
 - OBS Studio
 - VMIX
 - xStream
 - Switcher Studio (iOS)
 
+## <a name="live-encoders-that-output-fragmented-mp4"></a>Liveencoder mit Ausgabe im fragmentierten MP4-Format 
+
 Azure Media Services empfiehlt die Verwendung eines der nachfolgenden Liveencoder, der fragmentierte MP4 mit Mehrfachbitrate (Smooth Streaming) ausgibt:
+
 - Media Excel Hero Live und Hero 4K (UHD/HEVC)
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live
+- Elemental Live (Version 2.14.15 und höher aufgrund der TLS 1.2-Anforderung)
+
+  Encoder müssen TLS 1.2 unterstützen, wenn HTTPS-Protokolle verwendet werden.
 - Envivio-4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 
@@ -45,6 +59,7 @@ Azure Media Services empfiehlt die Verwendung eines der nachfolgenden Liveencode
 > Ein Live-Encoder kann einen Datenstrom mit Einzelbitrate an einen Pass-Through-Kanal senden, doch wird von dieser Konfiguration abgeraten, weil in diesem Fall ein Streaming mit adaptiver Bitrate auf Clientseite nicht möglich ist.
 
 ## <a name="how-to-become-an-on-premises-encoder-partner"></a>So werden Sie Partner für lokale Encoder
+
 Wenn Sie Azure Media Services-Partner für lokale Encoder werden, unterstützt Media Services Ihr Produkt, indem es Ihren Encoder Unternehmenskunden empfiehlt. Um Partner für lokale Encoder zu werden, müssen Sie die Kompatibilität Ihres lokalen Encoders mit Media Services bestätigen. Führen Sie hierzu die folgenden Überprüfungsschritte aus:
 
 Pass-Through-Kanalüberprüfung

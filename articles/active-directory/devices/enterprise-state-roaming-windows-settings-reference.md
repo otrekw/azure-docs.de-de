@@ -1,27 +1,29 @@
 ---
-title: Windows 10-Roamingeinstellungen – Referenz | Microsoft Docs
-description: Vollständige Liste mit allen Einstellungen, für die unter Windows 10 das Roaming oder eine Sicherung durchgeführt wird.
+title: 'Windows 10-Roamingeinstellungen: Referenz – Azure Active Directory'
+description: Einstellungen, für die unter Windows 10 mit ESR Roaming verwendet oder eine Sicherung erstellt wird
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: troubleshooting
-ms.date: 06/28/2019
+ms.topic: reference
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9489228b6ba81ae8d09e0f6880634532d0c836c6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481805"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85252966"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10-Roamingeinstellungen – Referenz
-Hier ist eine vollständige Liste mit allen Einstellungen angegeben, für die unter Windows 10 das Roaming oder eine Sicherung durchgeführt wird. 
+
+Die folgende Liste enthält die Einstellungen, für die unter Windows 10 Roaming verwendet oder eine Sicherung erstellt wird. 
 
 ## <a name="devices-and-endpoints"></a>Geräte und Endpunkte
+
 Die folgende Tabelle enthält eine Zusammenfassung der Geräte und Kontotypen, die unter Windows 10 vom Framework für die Synchronisierung, Sicherung und Wiederherstellung unterstützt werden.
 
 | Kontotyp und Vorgang | Desktop | Mobile |
@@ -32,9 +34,11 @@ Die folgende Tabelle enthält eine Zusammenfassung der Geräte und Kontotypen, d
 | Microsoft-Konto: Sicherung/Wiederherstellung |Nein |Ja |
 
 ## <a name="what-is-backup"></a>Was ist die Sicherung?
+
 Windows-Einstellungen werden normalerweise standardmäßig synchronisiert. Einige Einstellungen werden aber nur gesichert, z. B. die Liste mit den installierten Anwendungen auf einem Gerät. Sicherungen können nur für mobile Geräte angewendet werden und sind zurzeit für Enterprise State Roaming-Benutzer nicht verfügbar. Bei der Sicherung wird ein Microsoft-Konto verwendet, die Einstellungen und Anwendungsdaten werden in OneDrive gespeichert. Wenn ein Benutzer die Synchronisierung auf dem Gerät mit der Einstellungen-App deaktiviert, werden die Anwendungsdaten, die normalerweise synchronisiert werden, nur noch gesichert. Auf Sicherungsdaten kann nur über den Wiederherstellungsvorgang während der ersten Ausführung eines neuen Geräts zugegriffen werden. Sicherungen können über die Geräteeinstellungen deaktiviert und über das OneDrive-Konto des Benutzers verwaltet und gelöscht werden.
 
 ## <a name="windows-settings-overview"></a>Übersicht über die Windows-Einstellungen
+
 Die folgenden Einstellungsgruppen sind für Endbenutzer verfügbar, um die Einstellungssynchronisierung auf Windows 10-Geräten zu aktivieren oder zu deaktivieren.
 
 * Design: Desktophintergrund, Benutzerkachel, Taskleistenposition usw. 
@@ -47,6 +51,9 @@ Die folgenden Einstellungsgruppen sind für Endbenutzer verfügbar, um die Einst
 
 ![Synchronisieren Ihrer Einstellungen](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
+> [!NOTE]
+> Dieser Artikel bezieht sich auf den älteren HTML-basierten Microsoft Edge-Browser, der im Juli 2015 zusammen mit Windows 10 veröffentlicht wurde. Der Artikel gilt nicht für den neuen Chromium-basierten Microsoft Edge-Browser, der am 15. Januar 2020 veröffentlicht wurde. Weitere Informationen zum Synchronisierungsverhalten des neuen Microsoft Edge-Browsers finden Sie im Artikel [Microsoft Edge-Synchronisierung](/deployedge/microsoft-edge-enterprise-sync).
+
 Die Synchronisierung der Einstellungsgruppe des Microsoft Edge-Browsers (Favoriten, Leseliste) kann von Endbenutzern über das Einstellungsmenü des Microsoft Edge-Browsers aktiviert oder deaktiviert werden.
 
 ![Konto](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
@@ -56,7 +63,8 @@ Für Windows 10 Version 1803 oder höher, Internet Explorer-Einstellungengruppe 
 ![Einstellungen](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-ie.png)
 
 ## <a name="windows-settings-details"></a>Details zu Windows-Einstellungen
-In der folgenden Tabelle bezieht sich „Sonstige“ in der Spalte „Gruppe“ auf Einstellungen, die unter „Einstellungen“ > „Konten“ > „Einstellungen synchronisieren“ > „Weitere Windows-Einstellungen“ deaktiviert werden können. 
+
+In der folgenden Tabelle bezieht sich „Sonstige“ in der Spalte „Gruppe“ auf Einstellungen, die unter „Einstellungen“ > „Konten“ > „Einstellungen synchronisieren“ > „Weitere Windows-Einstellungen“ deaktiviert werden können. 
 
 Die Einträge „Intern“ in der Spalte „Gruppe“ beziehen sich auf Einstellungen und Apps, für die die Synchronisierung nur in der App selbst oder für das gesamte Gerät per MDM- oder Gruppenrichtlinien-Einstellungen deaktiviert werden kann.
 Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt wird, gehören keiner Gruppe an.
@@ -66,10 +74,10 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Konten**: Kontobild |sync |X |Design |
 | **Konten**: weitere Kontoeinstellungen |X |X | |
 | **Erweitertes mobiles Breitband:** Netzwerkname der Internetverbindungsfreigabe (ermöglicht automatische Ermittlung von mobilen WLAN-Hotspots per Bluetooth) |X |X |Kennwörter |
-| **App-Daten**: einzelne Apps können Daten synchronisieren |Sync.sicherung |Sync.sicherung |Intern |
+| **App-Daten**: einzelne Apps können Daten synchronisieren |Sync.sicherung |Sync.sicherung |Interner Pool (internal) |
 | **App-Liste**: Liste der installierten Apps |X |Sicherung |Andere |
 | **Bluetooth**: alle Bluetooth-Einstellungen |X |X | |
-| **Eingabeaufforderung:** Standardeinstellungen für die Eingabeaufforderung |sync |X |Intern |
+| **Eingabeaufforderung:** Standardeinstellungen für die Eingabeaufforderung |sync |X |Interner Pool (internal) |
 | **Anmeldeinformationen**: Schließfach für Anmeldeinformationen |sync |sync |password |
 | **Datum, Uhrzeit und Region**: automatische Uhrzeit (Internetzeitsynchronisierung) |sync |sync |language |
 | **Datum, Uhrzeit und Region:** 24-Stunden-Format |sync |X |language |
@@ -81,28 +89,28 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Datum, Uhrzeit und Region**: regionales Format (Gebietsschema) |sync |X |language |
 | **Datum, Uhrzeit und Region**: kurzes Datum |sync |X |language |
 | **Datum, Uhrzeit und Region**: langes Datum |sync |X |language |
-| **Datum, Uhrzeit und Region**: kurze Uhrzeit |sync |X |Sprache |
+| **Datum, Uhrzeit und Region**: kurze Uhrzeit |sync |X |language |
 | **Datum, Uhrzeit und Region**: lange Uhrzeit |sync |X |language |
 | **Desktoppersonalisierung**: Desktopdesign (Hintergrund, Systemfarbe, standardmäßige Systemsounds, Bildschirmschoner) |sync |X |Design |
 | **Desktoppersonalisierung**: Diashow-Hintergrundbild |sync |X |Design |
 | **Desktoppersonalisierung**: Einstellungen der Taskleiste (Position, automatisches Ausblenden usw.) |sync |X |Design |
 | **Desktoppersonalisierung**: Layout des Startbildschirms |X |Sicherung | |
 | **Geräte**: verbundene freigegebene Drucker |X |X |Sonstige |
-| **Microsoft Edge-Browser:** Leseliste |sync |sync |Intern |
-| **Microsoft Edge-Browser:** Favoriten |sync |sync |Intern |
-| **Microsoft Edge-Browser:** beste Websites <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser:** eingegebene URLs <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser:** Einstellungen der Favoritenleiste <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser:** Schaltfläche „Startseite“ anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser:** Popups blockieren <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser:** fragen, wie mit jedem Download verfahren werden soll <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser:** Speichern von Kennwörtern anbieten <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser:** „Do Not Track“-Anforderungen (nicht nachverfolgen) senden <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser:** Formulareinträge speichern <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser:** Such- und Websitevorschläge während der Eingabe anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser:** Voreinstellung für Cookies <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser:** Websites das Speichern geschützter Medienlizenzen auf meinem Gerät erlauben <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser:** Einstellung für die Sprachausgabe <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:** Leseliste |sync |sync |Interner Pool (internal) |
+| **Microsoft Edge-Browser:** Favoriten |sync |sync |Interner Pool (internal) |
+| **Microsoft Edge-Browser:** beste Websites <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
+| **Microsoft Edge-Browser:** eingegebene URLs <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
+| **Microsoft Edge-Browser:** Einstellungen der Favoritenleiste <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
+| **Microsoft Edge-Browser:** Schaltfläche „Startseite“ anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
+| **Microsoft Edge-Browser:** Popups blockieren <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
+| **Microsoft Edge-Browser:** fragen, wie mit jedem Download verfahren werden soll <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
+| **Microsoft Edge-Browser:** Speichern von Kennwörtern anbieten <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
+| **Microsoft Edge-Browser:** „Do Not Track“-Anforderungen (nicht nachverfolgen) senden <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
+| **Microsoft Edge-Browser:** Formulareinträge speichern <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
+| **Microsoft Edge-Browser:** Such- und Websitevorschläge während der Eingabe anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
+| **Microsoft Edge-Browser:** Voreinstellung für Cookies <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
+| **Microsoft Edge-Browser:** Websites das Speichern geschützter Medienlizenzen auf meinem Gerät erlauben <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
+| **Microsoft Edge-Browser:** Einstellung für die Sprachausgabe <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
 | **Hoher Kontrast:** Ein oder Aus |sync |X |Erleichterte Bedienung |
 | **Hoher Kontrast:** Designeinstellungen |sync |X |Erleichterte Bedienung |
 | **Internet Explorer**: geöffnete Registerkarten (URL und Titel) |sync |sync |Internet Explorer |
@@ -173,6 +181,7 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **WLAN:** WLAN-Profile (nur WPA) |sync |sync |Kennwörter |
 
 ###### <a name="footnote-1"></a>Fußnote 1
+
 Minimale unterstützte Betriebssystemversion des Windows Creators Updates (Build 15063). 
 
 ## <a name="next-steps"></a>Nächste Schritte

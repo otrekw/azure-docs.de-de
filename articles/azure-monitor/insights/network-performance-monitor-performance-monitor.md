@@ -1,24 +1,17 @@
 ---
-title: Systemmonitorfeature in der Netzwerkleistungsmonitor-Lösung in Azure Log Analytics | Microsoft-Dokumentation
+title: Systemmonitor in Netzwerkleistungsmonitor
 description: Die Systemmonitorfunktion im Netzwerkleistungsmonitor unterstützt Sie bei der Überwachung der Netzwerkkonnektivität an verschiedenen Punkten in Ihrem Netzwerk. Sie können Cloudbereitstellungen und lokale Standorte, mehrere Rechenzentren und Zweigstellen sowie unternehmenswichtige Microservices/Anwendungen mit mehreren Ebenen überwachen.
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/20/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: bb99689409ddff311e556250083b99842bc59927
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/20/2018
+ms.openlocfilehash: 2c20f668c57e8c2e74c320ca535aea18e633daf8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963491"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87326119"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Netzwerkleistungsmonitor-Lösung: Leistungsüberwachung
 
@@ -135,4 +128,5 @@ In der folgenden Abbildung werden die Grundursachen für die Problembereiche des
 ![Topologiekarte mit ausgewählten Knoteneigenschaften](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Mit [Protokollsuchen](../../azure-monitor/log-query/log-query-overview.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.
+Mit [Protokollsuchen](../log-query/log-query-overview.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.
+

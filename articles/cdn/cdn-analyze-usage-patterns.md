@@ -1,6 +1,6 @@
 ---
 title: Kernberichte aus Verizon | Microsoft-Dokumentation
-description: 'Mithilfe der folgenden Berichte können Sie Verwendungsmuster für Content Delivery Network anzeigen: Bandbreite, übertragene Daten, Treffer, Cachestatus, Cachetrefferquote, übertragene IPv4-/IPv6-Daten.'
+description: Erfahren Sie, wie Sie über das Verwaltungsportal für Verizon-Profile auf Verizon-Kernberichte zugreifen und diese anzeigen können.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594157"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90985531"
 ---
 # <a name="core-reports-from-verizon"></a>Kernberichte aus Verizon
 
@@ -96,7 +96,7 @@ Gehen Sie wie folgt vor, um abgelaufene Cachetreffer zu reduzieren: Legen Sie da
   
   * Cache-Control: s-maxage
   * Cache-Control: max-age
-  * Expires
+  * Läuft ab
 * TCP_MISS: Dieser Status gibt an, dass auf dem POP, der dem Client am nächsten liegt, keine zwischengespeicherte Version des angeforderten Medienobjekts gefunden wurde. Die Ressource wird entweder von einem Ursprungsserver oder von einem Ursprungsschutzserver angefordert. Wenn der Ursprungsserver oder der Ursprungsschutzserver eine Ressource zurückgibt, wird sie für den Client bereitgestellt und sowohl auf dem Client als auch auf dem Edgeserver zwischengespeichert. Andernfalls wird ein anderer Statuscode als 200 zurückgegeben (z.B. „403 Verboten“ oder „404 Nicht gefunden“).
 * TCP_EXPIRED_HIT: Dieser Status wird gemeldet, wenn eine Anforderung, die an eine Ressource mit abgelaufener TTL gerichtet ist, direkt vom POP für den Client bereitgestellt wurde. Beispiel: „max-age“ der Ressource ist abgelaufen. 
   
@@ -104,8 +104,8 @@ Gehen Sie wie folgt vor, um abgelaufene Cachetreffer zu reduzieren: Legen Sie da
 * TCP_EXPIRED_MISS: Dieser Status wird gemeldet, wenn eine neuere Version eines abgelaufenen zwischengespeicherten Medienobjekts vom POP für den Client bereitgestellt wird. Dieser Status tritt auf, wenn die Gültigkeitsdauer für eine zwischengespeicherte Ressource abgelaufen ist (z. B. „max-age“ abgelaufen) und der Ursprungsserver eine neuere Version dieser Ressource zurückgibt. Diese neue Version der Ressource wird für den Client und nicht für die zwischengespeicherte Version bereitgestellt. Darüber hinaus wird sie auf dem Edgeserver und auf dem Client zwischengespeichert.
 * CONFIG_NOCACHE: Dieser Status gibt an, dass eine kundenspezifische Konfiguration auf dem Edge-POP die Zwischenspeicherung des Medienobjekts verhindert.
 * NONE: Dieser Status gibt an, dass keine Überprüfung der Aktualität des Cache-Inhalts durchgeführt wurde.
-* TCP_CLIENT_REFRESH_MISS: Dieser Status wird gemeldet, wenn ein HTTP-Client (z. B. ein Browser) einen Edge-POP zwingt, eine neue Version einer veralteten Ressource vom Ursprungsserver abzurufen. Standardmäßig verhindern die Server, dass ein HTTP-Client die Edgeserver zwingt, eine neue Version des Medienobjekts vom Ursprungsserver abzurufen.
-* TCP_PARTIAL_HIT: Dieser Status wird gemeldet, wenn eine Bytebereichanforderung zu einem Treffer für ein teilweise zwischengespeichertes Medienobjekt führt. Der angeforderte Bytebereich wird sofort vom POP an den Client übermittelt.
+* TCP_CLIENT_REFRESH_MISS: Dieser Status wird gemeldet, wenn ein HTTP-Client (z.B. ein Browser) einen Edge-POP zwingt, eine neue Version einer veralteten Ressource vom Ursprungsserver abzurufen. Standardmäßig verhindern die Server, dass ein HTTP-Client die Edgeserver zwingt, eine neue Version des Medienobjekts vom Ursprungsserver abzurufen.
+* TCP_PARTIAL_HIT: Dieser Status wird gemeldet, wenn eine Bytebereichsanforderung zu einem Treffer für ein teilweise zwischengespeichertes Medienobjekt führt. Der angeforderte Bytebereich wird sofort vom POP an den Client übermittelt.
 * UNCACHEABLE: Dieser Status wird gemeldet, wenn die Header `Cache-Control` und `Expires` eines Medienobjekts darauf hinweisen, dass dieses nicht auf einem POP oder vom HTTP-Client zwischengespeichert werden soll. Diese Anforderungstypen werden vom Ursprungsserver bereitgestellt.
 
 ## <a name="cache-hit-ratio"></a>Cachetrefferquote
@@ -123,7 +123,7 @@ Folgende Elemente sind im Bericht nicht enthalten:
 * Anforderungen für Medienobjekte, deren Header darauf hinweisen, dass sie nicht zwischengespeichert werden sollen. Durch die Header `Cache-Control: private`, `Cache-Control: no-cache` oder `Pragma: no-cache` wird beispielsweise verhindert, dass ein Medienobjekt zwischengespeichert wird.
 * Bytebereichsanforderungen für teilweise zwischengespeicherte Inhalte.
 
-Die Formel lautet: (TCP_HIT/(TCP_HIT+TCP_MISS))×100
+Die Formel lautet: (TCP_ HIT/(TCP_ HIT+TCP_MISS))*100
 
 ![Bericht zur Cachetrefferquote](./media/cdn-reports/cdn-cache-hit-ratio.png)
 

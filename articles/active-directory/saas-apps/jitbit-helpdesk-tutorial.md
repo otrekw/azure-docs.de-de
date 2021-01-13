@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Jitbit Helpdesk | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Jitbit Helpdesk konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 15ce27d4-0621-4103-8a34-e72c98d72ec3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 29addcd62afd193af83196b2d942e9778ff3f031
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1f000572badcaa09c958c7ca19ed81c4d0603bb
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67099409"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459505"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Tutorial: Azure Active Directory-Integration mit Jitbit Helpdesk
 
@@ -31,7 +27,7 @@ Die Integration von Jitbit Helpdesk in Azure AD bietet die folgenden Vorteile:
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Jitbit Helpdesk anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -53,25 +49,25 @@ Zum Konfigurieren der Integration von Jitbit Helpdesk in Azure AD müssen Sie Ji
 
 **Führen Sie die folgenden Schritte aus, um Jitbit Helpdesk über den Katalog hinzuzufügen:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory** .
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie in das Suchfeld **Jitbit Helpdesk** ein, wählen Sie im Ergebnisbereich **Jitbit Helpdesk** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie in das Suchfeld **Jitbit Helpdesk** ein, wählen Sie im Ergebnisbereich **Jitbit Helpdesk** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
 
      ![Jitbit Helpdesk in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Jitbit Helpdesk mithilfe eines Testbenutzers namens **Britta Simon**.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Jitbit Helpdesk mithilfe eines Testbenutzers namens **Britta Simon** .
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Jitbit Helpdesk eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Jitbit Helpdesk müssen Sie die folgenden Bausteine ausführen:
@@ -97,7 +93,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Jitbit 
 
     ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten** , um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -117,7 +113,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Jitbit 
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** wie folgt eine URL ein: `https://www.jitbit.com/web-helpdesk/`.
 
-5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen** , um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
@@ -135,31 +131,31 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Jitbit 
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Jitbit Helpdesk-Unternehmenswebsite als Administrator an.
 
-1. Klicken Sie oben auf der Symbolleiste auf **Verwaltung**.
+1. Klicken Sie oben auf der Symbolleiste auf **Verwaltung** .
 
     ![Verwaltung](./media/jitbit-helpdesk-tutorial/ic777681.png "Verwaltung")
 
-1. Klicken Sie auf **Allgemeine Einstellungen**.
+1. Klicken Sie auf **Allgemeine Einstellungen** .
 
-    ![Benutzer, Unternehmen und Berechtigungen](./media/jitbit-helpdesk-tutorial/ic777680.png "Benutzer, Unternehmen und Berechtigungen")
+    ![Screenshot: Link „General Settings“ (Allgemeine Einstellungen)](./media/jitbit-helpdesk-tutorial/ic777680.png "Benutzer, Unternehmen und Berechtigungen")
 
 1. Führen Sie im Konfigurationsabschnitt **Authentifizierungseinstellungen** die folgenden Schritte aus:
 
     ![Authentifizierungseinstellungen](./media/jitbit-helpdesk-tutorial/ic777683.png "Authentifizierungseinstellungen")
 
-    a. Wählen für die Anmeldung per SSO die Option**Einmaliges Anmelden mit SAML 2.0 aktivieren** mit **OneLogin** aus.
+    a. Wählen für die Anmeldung per SSO die Option **Einmaliges Anmelden mit SAML 2.0 aktivieren** mit **OneLogin** aus.
 
     b. Fügen Sie in das Textfeld **EndPoint URL** (Endpunkt-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    c. Öffnen Sie das **Base64**-codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **X.509-Zertifikat** ein.
+    c. Öffnen Sie das **Base64** -codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **X.509-Zertifikat** ein.
 
-    d. Klicken Sie auf **Änderungen speichern**.
+    d. Klicken Sie auf **Änderungen speichern** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -176,9 +172,9 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
     Zum Beispiel, BrittaSimon@contoso.com
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -196,15 +192,15 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen** , und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen** .
 
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen** .
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
 
 ### <a name="create-jitbit-helpdesk-test-user"></a>Erstellen eines Jitbit Helpdesk-Testbenutzers
 
@@ -212,17 +208,17 @@ Damit sich Azure AD-Benutzer bei Jitbit Helpdesk anmelden können, müssen sie 
 
 **Führen Sie zum Bereitstellen eines Benutzerkontos die folgenden Schritte aus:**
 
-1. Melden Sie sich bei Ihrem **Jitbit Helpdesk**-Mandanten an.
+1. Melden Sie sich bei Ihrem **Jitbit Helpdesk** -Mandanten an.
 
-1. Klicken Sie oben im Menü auf **Verwaltung**.
+1. Klicken Sie oben im Menü auf **Verwaltung** .
 
     ![Verwaltung](./media/jitbit-helpdesk-tutorial/ic777681.png "Verwaltung")
 
-1. Klicken Sie auf **Benutzer, Unternehmen und Berechtigungen**.
+1. Klicken Sie auf **Benutzer, Unternehmen und Berechtigungen** .
 
     ![Benutzer, Unternehmen und Berechtigungen](./media/jitbit-helpdesk-tutorial/ic777682.png "Benutzer, Unternehmen und Berechtigungen")
 
-1. Klicken Sie auf **Benutzer hinzufügen**.
+1. Klicken Sie auf **Benutzer hinzufügen** .
 
     ![Benutzer hinzufügen](./media/jitbit-helpdesk-tutorial/ic777685.png "Benutzer hinzufügen")
 
@@ -230,15 +226,15 @@ Damit sich Azure AD-Benutzer bei Jitbit Helpdesk anmelden können, müssen sie 
 
     ![Erstellen](./media/jitbit-helpdesk-tutorial/ic777686.png "Erstellen")
 
-   a. Geben Sie im Textfeld **Username** (Benutzername) den Namen des Benutzers ein, z. B. **BrittaSimon**.
+   a. Geben Sie im Textfeld **Username** (Benutzername) den Namen des Benutzers ein, z. B. **BrittaSimon** .
 
    b. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers wie folgt ein: **BrittaSimon@contoso.com** .
 
-   c. Geben Sie im Textfeld **Vorname** den Vornamen des Benutzers wie folgt ein: **Britta**.
+   c. Geben Sie im Textfeld **Vorname** den Vornamen des Benutzers wie folgt ein: **Britta** .
 
-   d. Geben Sie im Textfeld **Nachname** den Nachnamen des Benutzers wie folgt ein: **Simon**.
+   d. Geben Sie im Textfeld **Nachname** den Nachnamen des Benutzers wie folgt ein: **Simon** .
 
-   e. Klicken Sie auf **Create**.
+   e. Klicken Sie auf **Erstellen** .
 
 > [!NOTE]
 > Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Jitbit Helpdesk-Benutzerkonten oder mithilfe der von Jitbit Helpdesk bereitgestellten APIs erstellen.
@@ -247,12 +243,12 @@ Damit sich Azure AD-Benutzer bei Jitbit Helpdesk anmelden können, müssen sie 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Jitbit Helpdesk“ klicken, sollten Sie automatisch bei der Jitbit Helpdesk-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Jitbit Helpdesk“ klicken, sollten Sie automatisch bei der Jitbit Helpdesk-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

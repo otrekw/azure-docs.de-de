@@ -1,6 +1,6 @@
 ---
-title: Anzeigen von Merkmalsinformationen im Azure Maps Android SDK | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Merkmalsinformationen im Azure Maps Android SDK anzeigen.
+title: Anzeigen von Merkmalsinformationen im Azure Maps Android SDK | Microsoft Azure Maps
+description: Hier erfahren Sie, wie Sie Informationen anzeigen, wenn Benutzer mit Kartenfunktionen interagieren. Verwenden Sie das Azure Maps Android SDK, um Popupmeldungen und andere Arten von Meldungen anzuzeigen.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: dc72bb43752323576bed6e7991f33c4096ccabd4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: fabb4cd1e555a7a67a53bf2f5a99d93c87df436c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976268"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532804"
 ---
-# <a name="display-feature-information"></a>Anzeigen von Merkmalsinformationen
+# <a name="display-feature-information"></a>Anzeigen von Featureinformationen
 
 Räumliche Daten werden häufig mithilfe von Punkten, Linien und Polygonen dargestellt. Diesen Daten sind häufig Metadateninformationen zugeordnet. Ein Punkt kann beispielsweise den Standort einer Filiale darstellen, und die Metadaten zu diesem Restaurant können den Namen, die Adresse und die Art des Essensangebots umfassen. Diese Metadaten können mithilfe eines JSON-Objekts (`JsonObject`) als Eigenschaften dieser Merkmale hinzugefügt werden. Der folgende Code erstellt ein einfaches Punktmerkmal mit einer Eigenschaft vom Typ `title` und dem Wert „Hello World!“:
 
@@ -63,9 +63,7 @@ map.events.add((OnFeatureClick) (features) -> {
 }, symbolLayer.getId());    //Limit this event to the symbol layer.
 ```
 
-<center>
-
-![Animation: Tippen auf ein Merkmal und Anzeigen einer Popupmeldung](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)</center>
+![Animation: Tippen auf ein Merkmal und Anzeigen einer Popupmeldung](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)
 
 Neben Popupmeldungen gibt es aber auch noch verschiedene andere Möglichkeiten, um die Metadateneigenschaften eines Merkmals zu präsentieren:
 
@@ -76,7 +74,7 @@ Neben Popupmeldungen gibt es aber auch noch verschiedene andere Möglichkeiten, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fügen Sie Ihrer Karte weitere Daten hinzu:
+So fügen Sie Ihrer Karte weitere Daten hinzu:
 
 > [!div class="nextstepaction"]
 > [Hinzufügen einer Symbolebene](how-to-add-symbol-to-android-map.md)

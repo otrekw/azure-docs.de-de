@@ -1,20 +1,19 @@
 ---
-title: Automatische Skalierung von Azure-Ressourcen basierend auf Leistungsdaten oder einem Zeitplan
+title: Automatische Skalierung von Azure-Ressourcen basierend auf Daten oder Zeitplan
 description: Erstellen einer Einstellung für die automatische Skalierung für einen App Service-Plan anhand metrischer Daten und eines Zeitplans
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: tutorial
 ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 44fecf47ccd1ce07c7e51f7bcf51ef7823f2cf97
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8853a153450a07105ed4bac13de0da6cea95ce2a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088348"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995844"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Erstellen einer Einstellung für die automatische Skalierung von Azure-Ressourcen basierend auf Leistungsdaten oder einem Zeitplan
 
@@ -23,7 +22,7 @@ ms.locfileid: "58088348"
 In diesem Tutorial lernen Sie Folgendes: 
 > [!div class="checklist"]
 > * Erstellen einer Web-App und eines App Service-Plans
-> * Konfigurieren von Regeln für die automatische Skalierung zum horizontalen Herunter- und Hochskalieren nach der Anzahl der Anforderungen, die eine Web-App empfängt
+> * Konfigurieren von Regeln für die automatische Skalierung zum Auf- und Abskalieren nach der Anzahl der Anforderungen, die eine Web-App empfängt
 > * Auslösen einer Aktion zur horizontalen Hochskalierung und Anzeigen der steigenden Anzahl von Instanzen
 > * Auslösen einer Aktion zur horizontalen Herunterskalierung und Anzeigen der sinkenden Anzahl von Instanzen
 > * Bereinigen von Ressourcen
@@ -47,7 +46,7 @@ Ihre Ressourcen sollten innerhalb weniger Minuten bereitgestellt werden. Verwend
 1. Klicken Sie im linken Navigationsbereich auf die Option **Überwachen**. Warten Sie, bis die Seite geladen wurde, und klicken Sie dann auf die Registerkarte **Automatisch skalieren**.
 2. Eine Liste der Ressourcen in Ihrem Abonnement, die die automatische Skalierung unterstützen, wird hier aufgeführt. Ermitteln Sie den App Service-Plan, der zuvor im Tutorial erstellt wurde, und klicken Sie darauf.
 
-    ![Navigieren zu den Einstellungen für die automatische Skalierung](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
+    ![Screenshot des Azure-Portals mit nacheinander ausgewählten Optionen „Überwachen“ und „Automatisch skalieren“](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
 
 3. Klicken Sie in der Einstellung für die automatische Skalierung auf die Schaltfläche **Automatische Skalierung aktivieren**.
 
@@ -60,7 +59,7 @@ In den folgenden Schritten erfahren Sie, wie Sie den Bildschirm für die automat
 2. Vergewissern Sie sich im Standardprofil, dass der **Skalierungsmodus** auf „Auf eine bestimmte Anzahl von Instanzen skalieren“ festgelegt ist.
 3. Legen Sie die Anzahl der Instanzen auf **1** fest. Durch diese Einstellung wird sichergestellt, dass das die Anzahl der Instanzen im Standardprofil auf „1“ zurückgesetzt wird, wenn kein anderes Profil aktiv oder wirksam ist.
 
-   ![Navigieren zu den Einstellungen für die automatische Skalierung](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
+   ![Screenshot der Seite mit der Einstellung für die Autoskalierung mit einem für die Einstellung eingegebenen Namen](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
 ## <a name="create-recurrence-profile"></a>Erstellen eines Wiederholungsprofils
@@ -175,14 +174,14 @@ Die Bedingung zum horizontalen Herunterskalieren in der Einstellung für die aut
 In diesem Tutorial haben Sie Folgendes durchgeführt:  
 > [!div class="checklist"]
 > * Erstellen einer Web-App und eines App Service-Plans
-> * Konfigurieren von Regeln für die automatische Skalierung zum horizontalen Herunter- und Hochskalieren nach der Anzahl der Anforderungen, die eine Web-App empfängt
+> * Konfigurieren von Regeln für die automatische Skalierung zum Ab- und Aufskalieren nach der Anzahl der Anforderungen, die eine Web-App empfängt
 > * Auslösen einer Aktion zur horizontalen Hochskalierung und Anzeigen der steigenden Anzahl von Instanzen
 > * Auslösen einer Aktion zur horizontalen Hochskalierung und Anzeigen der steigenden Anzahl von Instanzen
 > * Bereinigen von Ressourcen
 
 
-Um mehr über die Einstellungen für die automatische Skalierung zu erfahren, fahren Sie mit der [Übersicht zur automatischen Skalierung](../../azure-monitor/platform/autoscale-overview.md) fort.
+Um mehr über die Einstellungen für die automatische Skalierung zu erfahren, fahren Sie mit der [Übersicht zur automatischen Skalierung](../platform/autoscale-overview.md) fort.
 
 > [!div class="nextstepaction"]
-> [Archivieren von Überwachungsdaten](tutorial-archive-data.md)
+> [Archivieren von Überwachungsdaten](../platform/platform-logs-overview.md)
 

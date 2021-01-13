@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
-description: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mithilfe der Azure-Befehlszeilenschnittstelle
+title: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mithilfe der Azure-Befehlszeilenschnittstelle
+description: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mithilfe der Azure-Befehlszeilenschnittstelle. Führen Sie je nach den Eigenschaften in der Nachricht entweder die Weiterleitung an ein Speicherkonto oder an eine Service Bus-Warteschlange durch.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,13 +8,13 @@ services: iot-hub
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
-ms.custom: mvc
-ms.openlocfilehash: 103a18389a2b956f20b61ce45d045fb9a11c4356
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 239d8f2bcc1422a1098fb8f6cb3fba6706d671f2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984713"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87500196"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Tutorial: Konfigurieren des IoT Hub-Nachrichtenroutings mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -30,17 +30,17 @@ Wenn Sie sich das fertige Skript ansehen möchten, laden Sie die [Azure IoT-Bei
 
 ## <a name="use-the-azure-cli-to-create-your-resources"></a>Erstellen Ihrer Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle
 
+Kopieren Sie das folgende Skript, fügen Sie es in Cloud Shell ein, und drücken Sie die EINGABETASTE. Daraufhin wird das Skript Zeile für Zeile ausgeführt. Der erste Abschnitt des Skripts erstellt die grundlegenden Ressourcen für dieses Tutorial (einschließlich Speicherkonto, IoT Hub, Service Bus-Namespace und Service Bus-Warteschlange). Kopieren Sie im weiteren Verlauf des Tutorials jeweils die einzelnen Skriptblöcke, und fügen Sie sie zur Ausführung in Cloud Shell ein.
+
+> [!TIP]
+> Ein Tipp zum Debuggen: Dieses Skript verwendet das Fortsetzungssymbol (umgekehrter Schrägstrich: `\`), um die Lesbarkeit des Skripts zu verbessern. Falls beim Ausführen des Skripts ein Problem auftritt, sollten Sie sich vergewissern, dass in Ihrer Cloud Shell-Sitzung `bash` ausgeführt wird und dass nach keinem der umgekehrten Schrägstriche ein Leerzeichen steht.
+> 
+
 Einige Ressourcennamen müssen global eindeutig sein. Hierzu zählen beispielsweise der IoT Hub-Name und der Name des Speicherkontos. Zur Vereinfachung wird an diese Ressourcennamen ein alphanumerischer Zufallswert namens *randomValue* angefügt. Der Zufallswert wird einmalig zu Beginn des Skripts generiert und innerhalb des gesamten Skripts nach Bedarf an die Ressourcennamen angefügt. Falls Sie keinen Zufallswert verwenden möchten, können Sie den Wert auf eine leere Zeichenfolge oder auf einen bestimmten Wert festlegen. 
 
 > [!IMPORTANT]
 > Die im Ausgangsskript festgelegten Variablen werden auch vom Routingskript verwendet. Führen Sie daher das gesamte Skript in der gleichen Cloud Shell-Sitzung aus. Wenn Sie eine neue Sitzung öffnen, um das Skript zum Einrichten des Routings auszuführen, verfügen einige der Variablen über keine Werte.
 >
-
-Kopieren Sie das folgende Skript, fügen Sie es in Cloud Shell ein, und drücken Sie die EINGABETASTE. Daraufhin wird das Skript Zeile für Zeile ausgeführt. Der erste Abschnitt des Skripts erstellt die grundlegenden Ressourcen für dieses Tutorial (einschließlich Speicherkonto, IoT Hub, Service Bus-Namespace und Service Bus-Warteschlange). Kopieren Sie im weiteren Verlauf des Tutorials jeweils die einzelnen Skriptblöcke, und fügen Sie sie zur Ausführung in Cloud Shell ein.
-
-> [!TIP]
-> Ein Tipp zum Debuggen: Dieses Skript verwendet das Fortsetzungssymbol (umgekehrter Schrägstrich: `\`), um die Lesbarkeit des Skripts zu verbessern. Sollte beim Ausführen des Skripts ein Problem auftreten, vergewissern Sie sich, dass sich nach den umgekehrten Schrägstrichen keine Leerzeichen befinden.
-> 
 
 ```azurecli-interactive
 # This command retrieves the subscription id of the current Azure account. 
@@ -55,7 +55,7 @@ randomValue=$RANDOM
 # This command installs the IOT Extension for Azure CLI.
 # You only need to install this the first time.
 # You need it to create the device identity. 
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Set the values for the resource names that 
 #   don't have to be globally unique.
@@ -155,7 +155,7 @@ Verwenden Sie [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-en
 
 Richten Sie zuerst den Endpunkt für das Speicherkonto und anschließend die Route ein. 
 
-Folgende Variablen werden festgelegt:
+Hierbei handelt es sich um die Variablen, die vom Skript verwendet werden und in der Cloud Shell-Sitzung festgelegt werden müssen:
 
 **storageConnectionString**: Dieser Wert wird aus dem Speicherkonto abgerufen, das im vorherigen Skript eingerichtet wurde. Er wird beim Nachrichtenrouting verwendet, um auf das Speicherkonto zuzugreifen.
 
@@ -175,7 +175,7 @@ Folgende Variablen werden festgelegt:
 
 **endpointName**: Der Name zur Identifizierung des Endpunkts. 
 
-**enabled**: Dieses Feld ist standardmäßig auf `true` festgelegt. Das bedeutet, dass die Nachrichtenroute nach der Erstellung aktiviert werden soll.
+**enabled**: Dieses Feld ist standardmäßig auf `true` festgelegt. Dies bedeutet, dass die Nachrichtenroute nach der Erstellung aktiviert werden soll.
 
 **condition**: Die Abfrage, mit der nach den Nachrichten gefiltert wird, die an diesen Endpunkt gesendet wurden. Die Abfragebedingung für die Nachrichten, die an den Speicher weitergeleitet werden, lautet `level="storage"`.
 
@@ -257,7 +257,7 @@ sbqConnectionString=$(az servicebus queue authorization-rule keys list \
 echo "service bus queue connection string = " $sbqConnectionString
 ```
 
-Richten Sie nun den Routingendpunkt und die Nachrichtenroute für die Service Bus-Warteschlange ein. Folgende Variablen werden festgelegt:
+Richten Sie nun den Routingendpunkt und die Nachrichtenroute für die Service Bus-Warteschlange ein. Hierbei handelt es sich um die Variablen, die vom Skript verwendet werden und in der Cloud Shell-Sitzung festgelegt werden müssen:
 
 **endpointName**: Der Name zur Identifizierung des Endpunkts. 
 

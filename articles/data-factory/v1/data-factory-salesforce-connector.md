@@ -1,27 +1,26 @@
 ---
-title: Verschieben von Daten aus Salesforce mit Data Factory | Microsoft Docs
+title: Verschieben von Daten aus Salesforce mithilfe von Data Factory
 description: Erfahren Sie, wie Sie Daten mithilfe von Azure Data Factory aus Salesforce verschieben.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d33172727d4c654614463f69b83f7802cf7fb905
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: ba95ba57bb57b1b2e9ecde3ad27f6bb5fbca66cb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839614"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124882"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Verschieben von Daten aus Salesforce mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-salesforce-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-salesforce.md)
 
@@ -50,9 +49,9 @@ In beiden Szenarien erhalten Sie möglicherweise auch den Fehler „REQUEST_LIMI
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus Salesforce verschiebt.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager-Vorlage** , **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
@@ -71,7 +70,7 @@ Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für den ver
 | --- | --- | --- |
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Salesforce**. |Ja |
 | environmentUrl | Geben Sie die URL der Salesforce-Instanz an. <br><br> – Die Standard-URL lautet „https:\///login.salesforce.com“. <br> – Um Daten aus einer Sandbox zu kopieren, geben Sie „https://test.salesforce.com“ an. <br> - Geben Sie zum Kopieren von Daten aus der benutzerdefinierten Domäne z.B. „https://[Domäne].my.salesforce.com“ an. |Nein |
-| userName |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
+| username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an. |Ja |
 | securityToken |Geben Sie ein Sicherheitstoken für das Benutzerkonto an. Anweisungen zum Abrufen oder Zurücksetzen eines Sicherheitstokens finden Sie unter [Zurücksetzen Ihres Sicherheitstokens](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API). |Ja |
 
@@ -87,7 +86,7 @@ Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset un
 > [!IMPORTANT]
 > Der Abschnitt „__c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt.
 
-![Data Factory – Salesforce-Verbindung – API-Name](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
+![Screenshot der Definitionsdetails von benutzerdefinierten Objekten mit den API-Namen der benutzerdefinierten Objekte](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md) . Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und verschiedene Richtlinien sind für alle Arten von Aktivitäten verfügbar.
@@ -98,19 +97,19 @@ Wenn die Quelle bei der Kopieraktivität den Typ **RelationalSource** aufweist (
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |Eine SQL-92-Abfrage oder eine Abfrage vom Typ [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Beispiel: `select * from MyTable__c`. |Nein (wenn **tableName** von **dataset** angegeben ist) |
+| Abfrage |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |Eine SQL-92-Abfrage oder eine Abfrage vom Typ [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm). Beispiel: `select * from MyTable__c`. |Nein (wenn **tableName** von **dataset** angegeben ist) |
 
 > [!IMPORTANT]
 > Der Abschnitt „__c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt.
 
-![Data Factory – Salesforce-Verbindung – API-Name](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
+![Screenshot der benutzerdefinierten Felder und Beziehungen mit den API-Namen der benutzerdefinierten Objekte](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
 ## <a name="query-tips"></a>Tipps zu Abfragen
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Abrufen von Daten mithilfe der WHERE-Klausel für die DateTime-Spalte
 Achten Sie beim Angeben der SOQL- oder SQL-Abfrage auf den Unterschied beim DateTime-Format. Beispiel:
 
-* **SOQL-Beispiel**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
-* **SQL-Beispiel**:
+* **SOQL-Beispiel** : `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
+* **SQL-Beispiel** :
     * **Verwenden des Assistenten zum Kopieren, um die Abfrage anzugeben:** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
     * **Verwenden der JSON-Bearbeitung, um die Abfrage anzugeben („char“ muss ordnungsgemäß mit Escapezeichen versehen werden):** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
@@ -120,8 +119,8 @@ Sie können Daten aus Salesforce-Berichten abrufen, indem Sie z.B. die Abfrage `
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Abrufen von gelöschten Datensätzen aus dem Salesforce-Papierkorb
 Zum Abfragen der vorläufig gelöschten Datensätze aus dem Salesforce-Papierkorb können Sie in der Abfrage **„IsDeleted = 1“** angeben. Beispiel:
 
-* Zum Abfragen lediglich der gelöschten Datensätze geben Sie „select * from MyTable__c **where IsDeleted= 1**“ an.
-* Zum Abfragen aller Datensätze, d.h. der vorhandenen und der gelöschten Datensätze, geben Sie „select * from MyTable__c **where IsDeleted = 0 or IsDeleted = 1**“ an.
+* Zum Abfragen lediglich der gelöschten Datensätze geben Sie „select * from MyTable__c **where IsDeleted= 1** “ an.
+* Zum Abfragen aller Datensätze, d.h. der vorhandenen und der gelöschten Datensätze, geben Sie „select * from MyTable__c **where IsDeleted = 0 or IsDeleted = 1** “ an.
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus Salesforce in ein Azure-Blob
 Das folgende Beispiel zeigt JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus Salesforce in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
@@ -198,7 +197,7 @@ Durch Festlegen von **external** auf **true** wird dem Data Factory-Dienst mitge
 > [!IMPORTANT]
 > Der Abschnitt „__c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt.
 
-![Data Factory – Salesforce-Verbindung – API-Name](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
+![Screenshot der Definitionsdetails von benutzerdefinierten Objekten mit der Bezeichnung im Singular, Bezeichnung im Plural, Objektname und API-Name](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
 **Azure-Blob-Ausgabedataset**
 
@@ -279,7 +278,7 @@ Unter [RelationalSource-Typeigenschaften](#copy-activity-properties) finden Sie 
 > [!IMPORTANT]
 > Der Abschnitt „__c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt.
 
-![Data Factory – Salesforce-Verbindung – API-Name](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
+![Screenshot der benutzerdefinierten Felder und Beziehungen mit hervorgehobenen API-Namen](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
 
 ### <a name="type-mapping-for-salesforce"></a>Typzuordnung für Salesforce
@@ -288,11 +287,11 @@ Unter [RelationalSource-Typeigenschaften](#copy-activity-properties) finden Sie 
 | --- | --- |
 | Auto Number |String |
 | Checkbox |Boolean |
-| Currency |Decimal |
-| Date |DateTime |
-| Date/Time |DateTime |
-| E-Mail |String |
-| id |String |
+| Währung |Decimal |
+| Date |Datetime |
+| Date/Time |Datetime |
+| Email |String |
+| Id |String |
 | Lookup Relationship |String |
 | Multi-Select Picklist |String |
 | Number |Decimal |

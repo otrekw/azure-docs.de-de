@@ -5,21 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/23/2019
+ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3c10ca35ee2f085d4ce41e862a895ff17ff63a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056483"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84317656"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Wie viele VPN-Clientendpunkte kann meine Punkt-zu-Standort-Konfiguration umfassen?
 
 Das hängt von der Gateway-SKU ab. Weitere Informationen zur Anzahl von unterstützten Verbindungen finden Sie unter [Gateway-SKUs](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
 
-### <a name="supportedclientos"></a>Welche Clientbetriebssysteme kann ich bei Point-to-Site-Verbindungen verwenden?
+### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Welche Clientbetriebssysteme kann ich bei Point-to-Site-Verbindungen verwenden?
 
 Folgende Clientbetriebssysteme werden unterstützt:
 
@@ -29,6 +29,7 @@ Folgende Clientbetriebssysteme werden unterstützt:
 * Windows Server 2012 (nur 64 Bit)
 * Windows Server 2012 R2 (nur 64 Bit)
 * Windows Server 2016 (nur 64 Bit)
+* Windows Server 2019 (nur 64 Bit)
 * Windows 10
 * Mac OS X-Version 10.11 oder höher
 * Linux (StrongSwan)
@@ -58,9 +59,13 @@ Automatische Verbindungswiederherstellung und DDNS werden in Punkt-zu-Standort-V
 
 Ja. Beim Resource Manager-Bereitstellungsmodell müssen Sie als VPN-Typ für Ihr Gateway „RouteBased“ festlegen. Für das klassische Bereitstellungsmodell benötigen Sie ein dynamisches Gateway. Point-to-Site-Konfigurationen werden für VPN-Gateways mit statischem Routing oder für richtlinienbasierte Gateways nicht unterstützt.
 
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>Kann ich einen Point-to-Site-Client so konfigurieren, dass er gleichzeitig eine Verbindung mit mehreren Gateways für virtuelle Netzwerke herstellt?
+
+Abhängig von der verwendeten VPN-Clientsoftware können Sie unter Umständen eine Verbindung mit mehreren Gateways für virtuelle Netzwerke herstellen. Voraussetzung dafür ist, dass für die virtuellen Netzwerke, mit denen eine Verbindung hergestellt wird, keine Adressräume vorliegen, die miteinander oder mit dem Netzwerk in Konflikt stehen, aus dem der Client eine Verbindung herstellt.  Azure VPN Client unterstützt zwar viele VPN-Verbindungen, es kann jedoch immer nur eine Verbindung aktiv sein.
+
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>Kann ich einen Punkt-zu-Standort-Client so konfigurieren, dass er gleichzeitig eine Verbindung mit mehreren virtuellen Netzwerken herstellt?
 
-Nein. Ein Point-to-Site-Client kann nur eine Verbindung mit Ressourcen im VNET herstellen, in dem sich das Gateway für virtuelle Netzwerke befindet.
+Ja. Point-to-Site-Verbindungen mit einem Gateway für virtuelle Netzwerke, das in einem VNET bereitgestellt wird, für das ein Peering mit anderen VNETs besteht, haben unter Umständen Zugriff auf andere per Peering verknüpfte VNETs.  Wenn die per Peering verknüpften VNETs die Features „UseRemoteGateway“ bzw. „AllowGatewayTransit“ nutzen, kann der Point-to-Site-Client eine Verbindung mit diesen VNETs herstellen.  Weitere Informationen finden Sie in [diesem Artikel](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md).
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>Wie viel Durchsatz kann ich bei einer Standort-zu-Standort- oder bei einer Punkt-zu-Standort-Verbindung erwarten?
 
@@ -98,3 +103,21 @@ Azure unterstützt Windows, Mac und Linux für P2S-VPN.
 ### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Ich verfüge bereits über ein bereitgestelltes Azure-VPN-Gateway. Kann ich RADIUS und/oder IKEv2-VPN darauf aktivieren?
 
 Ja. Sie können diese neuen Features aus bereits bereitgestellten Gateways per PowerShell oder über das Azure-Portal aktivieren, sofern die verwendete Gateway-SKU RADIUS bzw. IKEv2 unterstützt. Die Basic-SKU des VPN-Gateways weist beispielsweise keine Unterstützung von RADIUS oder IKEv2 auf.
+
+### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>Wie entferne ich die Konfiguration einer P2S-Verbindung?
+
+Eine P2S-Konfiguration kann über die Azure CLI und PowerShell mit folgenden Befehlen entfernt werden:
+
+#### <a name="azure-powershell"></a>Azure PowerShell
+
+```azurepowershell-interactive
+$gw=Get-AzVirtualNetworkGateway -name <gateway-name>`  
+$gw.VPNClientConfiguration = $null`  
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw`
+```
+
+#### <a name="azure-cli"></a>Azure CLI
+
+```azurecli-interactive
+az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"
+```

@@ -1,24 +1,17 @@
 ---
 title: Funktionen in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
 description: In diesem Artikel wird die Verwendung von Funktionen beschrieben, um in Azure Monitor aus einer Abfrage eine andere Protokollabfrage aufzurufen.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/15/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 75beb7b66863efd2fb3679f034a3663dca4a6d2f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 07/31/2020
+ms.openlocfilehash: 678a6f0dc19d966f3d15e713008c19c8fbb96f5e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076702"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024363"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Verwenden von Funktionen in Azure Monitor-Protokollabfragen
 
@@ -30,19 +23,19 @@ Erstellen Sie eine Funktion mit Log Analytics, indem Sie im Azure-Portal auf **S
 
 | Einstellung | BESCHREIBUNG |
 |:---|:---|
-| NAME           | Anzeigename für die Abfrage im **Abfrage-Explorer**. |
+| Name           | Anzeigename für die Abfrage im **Abfrage-Explorer**. |
 | Speichern unter        | Funktion |
 | Funktionsalias | Kurzname zur Verwendung der Funktion in anderen Abfragen. Darf keine Leerzeichen enthalten und muss eindeutig sein. |
-| Category (Kategorie)       | Eine Kategorie zum Organisieren gespeicherter Abfragen und Funktionen im **Abfrage-Explorer**. |
-
-> [!NOTE]
-> Eine Funktion in Azure Monitor kann keine andere Funktion enthalten.
+| Category       | Eine Kategorie zum Organisieren gespeicherter Abfragen und Funktionen im **Abfrage-Explorer**. |
 
 
 
 
 ## <a name="use-a-function"></a>Verwenden einer Funktion
 Sie verwenden eine Funktion, indem Sie den Alias in eine andere Abfrage einbeziehen. Sie kann wie jede andere Tabelle verwendet werden.
+
+## <a name="function-parameters"></a>Funktionsparameter 
+Sie können einer Funktion Parameter hinzufügen, sodass Sie beim Aufruf Werte für bestimmte Variablen bereitstellen können. Die einzige Möglichkeit, eine Funktion mit Parametern zu erstellen, stellt die Verwendung einer Resource Manager-Vorlage dar. Ein Beispiel finden Sie unter [Beispiele für Resource Manager-Vorlagen für Protokollabfragen in Azure Monitor](../samples/resource-manager-log-queries.md#parameterized-function).
 
 ## <a name="example"></a>Beispiel
 Die folgende Beispielabfrage gibt sämtliche fehlenden Sicherheitsupdates zurück, die am Vortag gemeldet wurden. Speichern Sie diese Abfrage als Funktion mit dem Alias _security_updates_last_day_. 
@@ -63,10 +56,10 @@ security_updates_last_day | where Title contains "SQL"
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Schreiben von Azure Monitor-Protokollabfragen finden Sie in folgenden weiteren Lektionen:
 
-- [Zeichenfolgenvorgänge](string-operations.md)
-- [Datums- und Uhrzeitvorgänge](datetime-operations.md)
-- [Aggregationsfunktionen](aggregations.md)
-- [Erweiterte Aggregationen](advanced-aggregations.md)
-- [JSON und Datenstrukturen](json-data-structures.md)
-- [Verknüpfungen](joins.md)
-- [Diagramme](charts.md)
+- [Zeichenfolgenvorgänge](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#string-operations)
+- [Datums- und Uhrzeitvorgänge](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#date-and-time-operations)
+- [Aggregationsfunktionen](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)
+- [Erweiterte Aggregationen](/azure/data-explorer/write-queries#advanced-aggregations)
+- [JSON und Datenstrukturen](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#json-and-data-structures)
+- [Joins](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)
+- [Diagramme](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#charts)

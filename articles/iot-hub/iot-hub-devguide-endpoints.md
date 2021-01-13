@@ -8,12 +8,17 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 689a702863dda53870f775bd8520d5dd406d242f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.custom:
+- amqp
+- mqtt
+- 'Role: Cloud Development'
+- 'Role: System Architecture'
+ms.openlocfilehash: a58e141c6232db08b125b265e3d4ad74c784ba24
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640603"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152180"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referenz: IoT Hub-Endpunkte
 
@@ -31,15 +36,15 @@ Azure IoT Hub ist ein mehrinstanzenfähiger Dienst, der seine Funktionen für za
 
 Die Endpunkte werden in der folgende Liste beschrieben:
 
-* **Ressourcenanbieter**. Der IoT Hub-Ressourcenanbieter macht eine [Azure Resource Manager-Schnittstelle](../azure-resource-manager/resource-group-overview.md) verfügbar. Über diese Schnittstelle können Azure Abonnementbesitzer IoT Hub-Instanzen erstellen und löschen sowie IoT Hub-Eigenschaften aktualisieren. IoT Hub-Eigenschaften steuern [Sicherheitsrichtlinien auf Hubebene](iot-hub-devguide-security.md#access-control-and-permissions) (im Gegensatz zur Zugriffssteuerung auf Geräteebene) und funktionale Optionen für das Messaging zwischen Cloud und Gerät (Cloud-to-Device, C2D) sowie Gerät und Cloud (Device-to-Cloud, D2C). Der IoT Hub-Ressourcenanbieter ermöglicht außerdem das [Exportieren von Geräteidentitäten](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
+* **Ressourcenanbieter**. Der IoT Hub-Ressourcenanbieter macht eine [Azure Resource Manager-Schnittstelle](../azure-resource-manager/management/overview.md) verfügbar. Über diese Schnittstelle können Azure Abonnementbesitzer IoT Hub-Instanzen erstellen und löschen sowie IoT Hub-Eigenschaften aktualisieren. IoT Hub-Eigenschaften steuern [Sicherheitsrichtlinien auf Hubebene](iot-hub-devguide-security.md#access-control-and-permissions) (im Gegensatz zur Zugriffssteuerung auf Geräteebene) und funktionale Optionen für das Messaging zwischen Cloud und Gerät (Cloud-to-Device, C2D) sowie Gerät und Cloud (Device-to-Cloud, D2C). Der IoT Hub-Ressourcenanbieter ermöglicht außerdem das [Exportieren von Geräteidentitäten](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
 
 * **Geräteidentitätsverwaltung**. Jede IoT Hub-Instanz macht eine Gruppe von HTTPS-REST-Endpunkten zum Verwalten von Geräteidentitäten (zum Erstellen, Abrufen, Aktualisieren und Löschen) verfügbar. [Geräteidentitäten](iot-hub-devguide-identity-registry.md) werden zur Geräteauthentifizierung und für die Zugriffssteuerung eingesetzt.
 
-* **Verwaltung von Gerätezwillingen**. Jede IoT Hub-Instanz macht eine Gruppe von dienstseitigen HTTPS-REST-Endpunkten zum Abfragen und Aktualisieren von [Gerätezwillingen](iot-hub-devguide-device-twins.md) (Updatetags und Eigenschaften) verfügbar.
+* **Verwaltung von Gerätezwillingen**. Jede IoT Hub-Instanz macht eine Gruppe von dienstseitigen HTTPS-REST-Endpunkten zum Abfragen und Aktualisieren von [Gerätezwillingen](iot-hub-devguide-device-twins.md) (Updatetags und Eigenschaften) verfügbar. 
 
 * **Auftragsverwaltung**. Jede IoT Hub-Instanz macht eine Gruppe von dienstseitigen HTTPS-REST-Endpunkten zum Abfragen und Verwalten von [Aufträgen](iot-hub-devguide-jobs.md) verfügbar.
 
-* **Geräteendpunkte**. Für jedes Gerät in der Identitätsregistrierung macht IoT Hub eine Reihe von Endpunkten verfügbar:
+* **Geräteendpunkte**. Für jedes Gerät in der Identitätsregistrierung macht IoT Hub eine Reihe von Endpunkten verfügbar. Sofern nicht anders angegeben, werden diese Endpunkte über die Protokolle [MQTT v3.1.1](https://mqtt.org/), HTTPS 1.1 und [AMQP 1.0](https://www.amqp.org/) verfügbar gemacht. AMQP und MQTT stehen auch über [WebSockets](https://tools.ietf.org/html/rfc6455) an Port 443 zur Verfügung.
 
   * *Senden von D2C-Nachrichten*. Ein Gerät verwendet diesen Endpunkt, um [D2C-Nachrichten zu senden](iot-hub-devguide-messages-d2c.md).
 
@@ -47,13 +52,13 @@ Die Endpunkte werden in der folgende Liste beschrieben:
 
   * *Einleiten von Dateiuploads*. Ein Gerät verwendet diesen Endpunkt zum Empfangen eines Azure Storage-SAS-URIs von IoT Hub, um [eine Datei hochzuladen](iot-hub-devguide-file-upload.md).
 
-  * *Abrufen und Aktualisieren der Eigenschaften von Gerätezwillingen*. Ein Gerät verwendet diesen Endpunkt für den Zugriff auf die Eigenschaften seines [Gerätezwillings](iot-hub-devguide-device-twins.md).
+  * *Abrufen und Aktualisieren der Eigenschaften von Gerätezwillingen*. Ein Gerät verwendet diesen Endpunkt für den Zugriff auf die Eigenschaften seines [Gerätezwillings](iot-hub-devguide-device-twins.md). HTTPS wird nicht unterstützt.
 
-  * *Empfangen von Anforderungen direkter Methoden*. Ein Gerät verwendet diesen Endpunkt zum Lauschen auf Anforderungen [direkter Methoden](iot-hub-devguide-direct-methods.md).
+  * *Empfangen von Anforderungen direkter Methoden*. Ein Gerät verwendet diesen Endpunkt zum Lauschen auf Anforderungen [direkter Methoden](iot-hub-devguide-direct-methods.md). HTTPS wird nicht unterstützt.
 
-    Diese Endpunkte werden über die Protokolle [MQTT v3.1.1](https://mqtt.org/), HTTPS 1.1 und [AMQP 1.0](https://www.amqp.org/) verfügbar gemacht. AMQP ist auch über [WebSockets](https://tools.ietf.org/html/rfc6455) an Port 443 verfügbar.
+  [!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
-* **Dienstendpunkte**. Jede IoT Hub-Instanz macht eine Reihe von Endpunkten verfügbar, über die Ihr Lösungs-Back-End mit Ihren Geräten kommunizieren kann. Mit einer einzigen Ausnahme werden diese Endpunkte nur über das Protokoll [AMQP](https://www.amqp.org/) verfügbar gemacht. Der Endpunkt für den Methodenaufruf wird über das HTTPS-Protokoll verfügbar gemacht.
+* **Dienstendpunkte**. Jede IoT Hub-Instanz macht eine Reihe von Endpunkten verfügbar, über die Ihr Lösungs-Back-End mit Ihren Geräten kommunizieren kann. Mit einer einzigen Ausnahme werden diese Endpunkte nur über die Protokolle [AMQP](https://www.amqp.org/) und „AMQP über WebSockets“ verfügbar gemacht. Der Endpunkt für den Aufruf direkter Methoden wird über das HTTPS-Protokoll verfügbar gemacht.
   
   * *Empfangen von D2C-Nachrichten*. Dieser Endpunkt ist kompatibel mit [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Ein Back-End-Dienst kann ihn zum Lesen der [D2C-Nachrichten](iot-hub-devguide-messages-d2c.md) verwenden, die Ihre Geräte senden. Zusätzlich zu diesem integrierten Endpunkt können Sie für Ihren IoT-Hub benutzerdefinierte Endpunkte erstellen.
   
@@ -82,20 +87,15 @@ IoT Hub unterstützt derzeit folgende Azure-Dienste als zusätzliche Endpunkte:
 
 Informationen zur Beschränkung der Anzahl von Endpunkten, die Sie hinzufügen können, finden Sie unter [Kontingente und Drosselung](iot-hub-devguide-quotas-throttling.md).
 
-Sie können die REST-API [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) (Endpunktintegrität abrufen) verwenden, um den Integritätsstatus der Endpunkte abzurufen. Wir empfehlen Ihnen die Verwendung von [IoT Hub-Metriken](iot-hub-metrics.md) zur Latenz bei der Nachrichtenweiterleitung, um Fehler zu identifizieren und zu debuggen, wenn die Integrität des Endpunkts „Inaktiv“ oder „Fehlerhaft“ lautet. Es ist zu erwarten, dass die Latenz höher ist, wenn der Endpunkt einen dieser Status aufweist.
+## <a name="endpoint-health"></a>Endpunktintegrität
 
-|Integritätsstatus|BESCHREIBUNG|
-|---|---|
-|healthy|Der Endpunkt akzeptiert Nachrichten erwartungsgemäß.|
-|Fehlerhaft|Der Endpunkt akzeptiert Nachrichten nicht erwartungsgemäß, und IoT Hub versucht, Daten erneut an diesen Endpunkt zu senden. Der Status eines fehlerhaften Endpunkts wird zu fehlerfrei aktualisiert, wenn IoT Hub einen möglicherweise konsistenten Integritätsstatus erreicht hat.|
-|unknown|IoT Hub hat keine Verbindung mit dem Endpunkt hergestellt. Von diesem Endpunkt wurden keine Nachrichten übermittelt oder zurückgewiesen.|
-|Inaktiv|Der Endpunkt nimmt auch nach dem wiederholten Senden von Nachrichten für den Wiederholungszeitraum durch den IoT Hub keine Nachrichten an.|
+[!INCLUDE [iot-hub-endpoint-health](../../includes/iot-hub-include-endpoint-health.md)]
 
 ## <a name="field-gateways"></a>Bereichsgateways
 
 Bei einer IoT-Lösung ist zwischen Ihren Geräten und IoT Hub-Endpunkten ein *Bereichsgateway* angeordnet. Es befindet sich normalerweise in der Nähe Ihrer Geräte. Ihre Geräte kommunizieren direkt mit dem Bereichsgateway, indem sie ein von den Geräten unterstütztes Protokoll nutzen. Das Bereichsgateway verbindet sich mit einem IoT Hub-Endpunkt über ein Protokoll, das von IoT Hub unterstützt wird. Bei einem Bereichsgateway kann es sich um ein dediziertes Hardwaregerät oder um einen energiesparenden Computer mit benutzerdefinierter Gatewaysoftware handeln.
 
-Sie können [Azure IoT Edge](/azure/iot-edge/) verwenden, um ein Bereichsgateway zu implementieren. IoT Edge ermöglicht es unter anderem, die Kommunikation mehrerer Geräte im Multiplexverfahren über die gleiche IoT Hub-Verbindung zu übertragen.
+Sie können [Azure IoT Edge](../iot-edge/index.yml) verwenden, um ein Bereichsgateway zu implementieren. IoT Edge ermöglicht es unter anderem, die Kommunikation mehrerer Geräte im Multiplexverfahren über die gleiche IoT Hub-Verbindung zu übertragen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

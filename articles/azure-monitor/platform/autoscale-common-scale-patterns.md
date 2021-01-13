@@ -1,24 +1,20 @@
 ---
 title: Übersicht über allgemeine Muster zur automatischen Skalierung
 description: Lernen Sie allgemeine Muster zur automatischen Skalierung Ihrer Ressource in Azure kennen.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 8356a8c8c31a043197485b4913b4a67d7d719778
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: adbfecd05bfd4330e7c7c972cfdb9fe7021eec31
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60534221"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87073499"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>Übersicht über allgemeine Muster zur automatischen Skalierung
 In diesem Artikel werden allgemeine Muster zur automatischen Skalierung Ihrer Ressource in Azure beschrieben.
 
-Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](../../api-management/api-management-key-concepts.md).
 
 ## <a name="lets-get-started"></a>Erste Schritte
 
@@ -28,7 +24,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie mit der automatischen Skalier
 
 Sie haben eine Web-App (/VMSS/Clouddienstrolle) und möchten Folgendes durchführen:
 
-- Sie möchten basierend auf der CPU horizontal hoch- bzw. herunterskalieren.
+- Sie möchten basierend auf der CPU auf- bzw. abskalieren.
 - Darüber hinaus möchten Sie sicherstellen, dass eine Mindestanzahl von Instanzen vorhanden ist.
 - Des Weiteren möchten Sie einen maximalen Grenzwert für die Anzahl der Instanzen, die skaliert werden können, festlegen.
 
@@ -47,7 +43,7 @@ Sie haben eine Web-App (/VMSS/Clouddienstrolle) und möchten Folgendes durchfüh
 
 Sie haben eine Web-App (/VMSS/Clouddienstrolle) und möchten Folgendes durchführen:
 
-- Sie möchten standardmäßig basierend auf der CPU-Auslastung zentral hoch- bzw. herunterskalieren.
+- Sie möchten standardmäßig basierend auf der CPU-Auslastung hoch- bzw. herunterskalieren.
 - Allerdings möchten Sie die Standardwerte während der Feiertage (oder an bestimmten für Ihr Unternehmen wichtigen Tagen) überschreiben und über größere Kapazitäten verfügen.
 
 ![Individuelles Skalieren an Feiertagen][4]
@@ -56,7 +52,7 @@ Sie haben eine Web-App (/VMSS/Clouddienstrolle) und möchten Folgendes durchfüh
 
 Sie verfügen über ein Web-Front-End und eine API-Ebene, die mit dem Back-End kommuniziert.
 
-- Sie möchten die API-Ebene basierend auf benutzerdefinierten Ereignissen im Front-End skalieren (Beispiel: Sie möchten die Kaufabwicklung basierend auf der Anzahl der Artikel im Warenkorb skalieren)
+- Sie möchten die API-Ebene basierend auf benutzerdefinierten Ereignissen im Front-End skalieren (Beispiel: Sie möchten Ihren Bezahlvorgang basierend auf der Anzahl der Artikel im Warenkorb skalieren.).
 
 ![Skalieren basierend auf benutzerdefinierten Metriken][5]
 
@@ -66,4 +62,3 @@ Sie verfügen über ein Web-Front-End und eine API-Ebene, die mit dem Back-End k
 [3]: ./media/autoscale-common-scale-patterns/weekday-weekend-scale.png
 [4]: ./media/autoscale-common-scale-patterns/holidays-scale.png
 [5]: ./media/autoscale-common-scale-patterns/custom-metric-scale.png
-

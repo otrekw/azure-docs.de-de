@@ -3,23 +3,23 @@ title: StorSimple Snapshot Manager-Volumegruppen | Microsoft Docs
 description: Beschreibt, wie das MMC-Snap-In StorSimple Snapshot Manager zum Erstellen und Verwalten von Volumegruppen verwendet wird.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: e84bc790ac577796e91be010deecc8c5cea1b010
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: alkohli
+ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699710"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022954"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Verwenden des StorSimple Snapshot Manager zum Erstellen und Verwalten von Volumegruppen
 ## <a name="overview"></a>Übersicht
@@ -50,8 +50,8 @@ Wenn Sie auf den Knoten **Volumegruppen** klicken, werden im Bereich **Ergebniss
 
 | Ergebnisspalte | BESCHREIBUNG |
 |:--- |:--- |
-| NAME |Die Spalte **Name** enthält den Namen der Volumegruppe. |
-| Anwendung |Die Spalte **Anwendungen** zeigt die Anzahl der VSS-Writer an, die zurzeit auf dem Windows-Host installiert sind und ausgeführt werden. |
+| Name |Die Spalte **Name** enthält den Namen der Volumegruppe. |
+| Application |Die Spalte **Anwendungen** zeigt die Anzahl der VSS-Writer an, die zurzeit auf dem Windows-Host installiert sind und ausgeführt werden. |
 | Aktiviert |Die Spalte **Ausgewählt** zeigt die Anzahl der Volumes in der Volumegruppe an. Eine Null (0) gibt an, dass den Volumes in der Volumegruppe keine Anwendung zugeordnet ist. |
 | Importiert |Die Spalte **Importiert** zeigt die Anzahl der importierten Volumes an. Bei Festlegung auf **True** gibt diese Spalte an, dass eine Volumegruppe aus dem Azure-Portal importiert und nicht im StorSimple Snapshot Manager erstellt wurde. |
 
@@ -108,7 +108,7 @@ Gehen Sie folgendermaßen vor, um eine Vorlumegruppe zu bearbeiten.
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
 2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Volumegruppen**, klicken Sie mit der rechten Maustaste auf einen Volumegruppennamen, und klicken Sie dann auf **Bearbeiten**.
 3. Das Dialogfeld Volumegruppe erstellen wird angezeigt. Sie können die Einträge für **Name**, **Anwendungen** und **Volumes** ändern.
-4. Klicken Sie zum Speichern der Änderungen auf **OK** .
+4. Klicken Sie auf **OK** , um die Änderungen zu speichern.
 
 ## <a name="delete-a-volume-group"></a>Löschen einer Volumegruppe
 Gehen Sie folgendermaßen vor, um eine Volumegruppe zu löschen. 
@@ -126,6 +126,6 @@ Gehen Sie folgendermaßen vor, um eine Volumegruppe zu löschen.
     Die gelöschte Volumegruppe wird aus der Liste im **Ergebnisbereich** entfernt, und alle Sicherungen, die dieser Volumegruppe zugeordnet sind, werden aus dem Sicherungskatalog gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
+* Erfahren Sie mehr über das [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
 * Weitere Informationen zum [Verwenden des StorSimple Snapshot Managers zum Erstellen und Verwalten von Sicherungsrichtlinien](storsimple-snapshot-manager-manage-backup-policies.md).
 

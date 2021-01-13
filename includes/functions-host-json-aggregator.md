@@ -1,22 +1,20 @@
 ---
 title: include file
 description: include file
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
 ms.date: 10/19/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 4d0a61bf7f4ee9e441a49e21ce6535dc3bff0edc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c63cee1c451918569e9b7aa2e76209e8069d86ac
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67608195"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167650"
 ---
-Gibt an, wie viele Funktionsaufrufe aggregiert werden, wenn [Metriken für Application Insights berechnet werden](../articles/azure-functions/functions-monitoring.md#configure-the-aggregator). 
+Gibt an, wie viele Funktionsaufrufe aggregiert werden, wenn [Metriken für Application Insights berechnet werden](../articles/azure-functions/configure-monitoring.md#configure-the-aggregator). 
 
 ```json
 {

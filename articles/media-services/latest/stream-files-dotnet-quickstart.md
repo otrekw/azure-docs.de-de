@@ -1,9 +1,9 @@
 ---
 title: 'Streamen von Videodateien mit Azure Media Services: .NET | Microsoft Docs'
-description: Führen Sie die in diesem Tutorial beschriebenen Schritte aus, um ein neues Azure Media Services-Konto zu erstellen, eine Datei zu codieren und in Azure Media Player zu streamen.
+description: Führen Sie die in diesem Tutorial beschriebenen Schritte aus, um mithilfe von .NET ein neues Azure Media Services-Konto zu erstellen, eine Datei zu codieren und in Azure Media Player zu streamen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 keywords: azure media services, streamen
@@ -11,16 +11,18 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: 7f997865ba33a51c3e3aa7a4c7e990037be9e534
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637333"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91268688"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos – .NET
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Dieses Tutorial zeigt, wie einfach es ist, Videos zu codieren und mit deren Streaming für eine Vielzahl von Browsern und Geräten mit Azure Media Services zu beginnen. Ein Eingabeinhalt kann über HTTPS-URLs, SAS-URLs oder Pfade zu Dateien in Azure Blob Storage angegeben werden.
 Das Beispiel in diesem Thema codiert Inhalte, die Sie über eine HTTPS-URL zugänglich machen. Beachten Sie, dass AMS v3 derzeit keine segmentierte Transfercodierung über HTTPS-URLs unterstützt.
@@ -34,8 +36,8 @@ Am Ende des Tutorials sind Sie in der Lage, ein Video zu streamen.
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Wenn Sie Visual Studio noch nicht installiert haben, können Sie [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) abrufen.
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)<br/>Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
-- Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](access-api-cli-how-to.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)<br/>Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
+- Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](./access-api-howto.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
 
 ## <a name="download-and-configure-the-sample"></a>Herunterladen und Konfigurieren des Beispiels
 
@@ -47,7 +49,7 @@ Klonen Sie ein GitHub-Repository auf Ihren Computer, das das .NET-Streamingbeisp
 
 Das Beispiel befindet sich im Ordner [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles).
 
-Öffnen Sie [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) im heruntergeladenen Projekt. Ersetzen Sie die Werte durch Anmeldeinformationen, die Sie durch den [Zugriff auf APIs](access-api-cli-how-to.md) abgerufen haben.
+Öffnen Sie in Ihrem heruntergeladenen Projekt die Datei [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json). Ersetzen Sie die Werte durch Anmeldeinformationen, die Sie durch den [Zugriff auf APIs](./access-api-howto.md) abgerufen haben.
 
 Mit dem Beispiel werden die folgenden Aktionen durchgeführt:
 
@@ -68,7 +70,7 @@ Wenn Sie die App ausführen, werden URLs angezeigt, die zur Wiedergabe des Video
 1. Drücken Sie STRG+F5 zum Ausführen der *EncodeAndStreamFiles*-Anwendung.
 2. Wählen Sie das **HLS**-Protokoll von Apple (endet auf *manifest(format=m3u8-aapl)* ) aus, und kopieren Sie die Streaming-URL aus der Konsole.
 
-![Output](./media/stream-files-tutorial-with-api/output.png)
+![Screenshot: Ausgabe der EncodeAndStreamFiles-App in Visual Studio mit drei Streaming-URLs für die Verwendung in Azure Media Player](./media/stream-files-tutorial-with-api/output.png)
 
 Im [Quellcode](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) des Beispiels können Sie sehen, wie die URL erstellt wird. Um sie zu erstellen, müssen Sie den Hostnamen des Streamingendpunkts und den Streaminglocatorpfad miteinander verketten.  
 
@@ -105,7 +107,7 @@ Das Tutorial zum [Hochladen, Codieren und Streamen von Dateien](stream-files-tut
 
 ### <a name="job-error-codes"></a>Auftragsfehlercodes
 
-Weitere Informationen finden Sie unter [Fehlercodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Weitere Informationen finden Sie unter [Fehlercodes](/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="multithreading"></a>Multithreading
 

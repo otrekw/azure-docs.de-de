@@ -1,28 +1,16 @@
 ---
-title: 'Senden von Ereignissen unter Verwendung von C: Azure Event Hubs | Microsoft-Dokumentation'
-description: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer C-Anwendung, die Ereignisse an Azure Event Hubs sendet.
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: c
-ms.devlang: csharp
-ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: a8f647018ba6ed3c9e951db2054036b60c7d4ab5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+title: 'Schnellstart: Senden von Ereignissen mit C – Azure Event Hubs'
+description: 'Schnellstart: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer C-Anwendung, die Ereignisse an Azure Event Hubs sendet.'
+ms.topic: quickstart
+ms.date: 06/23/2020
+ms.openlocfilehash: bfe1ca1a45f7b33d7431aed13446d8d72f79fb90
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822472"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "85315674"
 ---
-# <a name="send-events-to-azure-event-hubs-using-c"></a>Senden von Ereignissen an Azure Event Hubs mithilfe von C
+# <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Schnellstart: Senden von Ereignissen an Azure Event Hubs mithilfe von C
 
 ## <a name="introduction"></a>Einführung
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
@@ -34,7 +22,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Eine C-Entwicklungsumgebung. In diesem Tutorial wird vom gcc-Stack auf einem virtuellen Azure-Computer unter Linux mit Ubuntu 14.04 ausgegangen.
 * [Microsoft Visual Studio](https://www.visualstudio.com/).
-* **Erstellen eines Event Hubs-Namespace und eines Event Hubs** Verwenden Sie das [Azure-Portal](https://portal.azure.com), um einen Namespace des Typs „Event Hubs“ zu erstellen, und rufen Sie die Verwaltungsanmeldeinformationen ab, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Erstellen Sie anhand der Anleitung in [diesem Artikel](event-hubs-create.md) einen Namespace und einen Event Hub. Gehen Sie wie im Artikel beschrieben vor, um den Wert des Zugriffsschlüssels für den Event Hub abzurufen: [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Sie verwenden den Zugriffsschlüssel im Code, den Sie später in diesem Tutorial schreiben. Der Standardschlüsselname lautet: **RootManageSharedAccessKey**.
+* **Erstellen Sie einen Event Hubs-Namespace und einen Event Hub**. Verwenden Sie das [Azure-Portal](https://portal.azure.com), um einen Namespace des Typs „Event Hubs“ zu erstellen, und rufen Sie die Verwaltungsanmeldeinformationen ab, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Erstellen Sie anhand der Anleitung in [diesem Artikel](event-hubs-create.md) einen Namespace und einen Event Hub. Gehen Sie wie im Artikel beschrieben vor, um den Wert des Zugriffsschlüssels für den Event Hub abzurufen: [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Sie verwenden den Zugriffsschlüssel im Code, den Sie später in diesem Tutorial schreiben. Der Standardschlüsselname lautet: **RootManageSharedAccessKey**.
 
 ## <a name="write-code-to-send-messages-to-event-hubs"></a>Schreiben von Code zum Senden von Nachrichten an Event Hubs
 In diesem Abschnitt wird das Schreiben einer C-App beschrieben, mit der Ereignisse an den Event Hub gesendet werden. Im Code wird die Proton AMQP-Bibliothek aus dem [Apache Qpid-Projekt](https://qpid.apache.org/) verwendet. Dies entspricht der Verwendung von Service Bus-Warteschlangen und -Themen mit AMQP aus C, wie [in diesem Beispiel](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504) beschrieben. Weitere Informationen finden Sie in der [Qpid Proton-Dokumentation](https://qpid.apache.org/proton/index.html).

@@ -1,20 +1,15 @@
 ---
-title: 'Schnellstart: Senden von Azure Container Registry-Ereignissen an Event Grid'
+title: 'Schnellstart: Senden von Ereignissen an Event Grid'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Event Grid-Ereignisse für Ihre Containerregistrierung aktivieren, Containerimages mithilfe von Push übertragen und Ereignisse aus einer Beispielanwendung löschen.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
-ms.author: danlep
-ms.custom: seodec18
-ms.openlocfilehash: 49ee9a7f12601b0d93e320ab797be4a1ada41c04
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 2d13dd0ec5e50086e674b215d93917d6173d5af9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309800"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694393"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Schnellstart: Senden von Ereignissen aus der privaten Containerregistrierung an Event Grid
 
@@ -24,11 +19,11 @@ Nachdem Sie die Schritte in diesem Artikel ausgeführt haben, werden Ereignisse,
 
 ![Rendering der Webanwendung mit drei empfangenen Ereignissen im Webbrowser][sample-app-01]
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][azure-account] erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Die Azure CLI-Befehle in diesem Artikel sind für die Ausführung in einer **Bash**-Shell formatiert. Wenn Sie eine andere Shell wie PowerShell oder die Eingabeaufforderung verwenden, müssen Sie möglicherweise Zeilenfortsetzungszeichen oder Variablenzuweisungszeilen entsprechend anpassen. In diesem Artikel werden Variablen verwendet, damit die Befehle später nur geringfügig angepasst werden müssen.
+- Die Azure CLI-Befehle in diesem Artikel sind für die Ausführung in einer **Bash**-Shell formatiert. Wenn Sie eine andere Shell wie PowerShell oder die Eingabeaufforderung verwenden, müssen Sie möglicherweise Zeilenfortsetzungszeichen oder Variablenzuweisungszeilen entsprechend anpassen. In diesem Artikel werden Variablen verwendet, damit die Befehle später nur geringfügig angepasst werden müssen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -83,7 +78,7 @@ Legen Sie zum Bereitstellen der Beispiel-App `SITE_NAME` auf einen eindeutigen N
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
 
-az group deployment create \
+az deployment group create \
     --resource-group $RESOURCE_GROUP_NAME \
     --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
@@ -115,7 +110,7 @@ az eventgrid event-subscription create \
 
 Nach Abschluss des Abonniervorgangs sollte die Ausgabe der folgenden ähneln:
 
-```JSON
+```json
 {
   "destination": {
     "endpointBaseUrl": "https://eventgridviewer.azurewebsites.net/api/updates",
@@ -154,8 +149,7 @@ az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://githu
 
 Wenn ACR Tasks den Erstellungs- und den anschließenden Pushvorgang für Ihr Image ausführt, sollte die Ausgabe in etwa wie im folgenden Beispiel aussehen. Die folgende Beispielausgabe wurde aus Gründen der Übersichtlichkeit gekürzt.
 
-```console
-$ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
+```output
 Sending build context to ACR...
 Queued a build with build ID: aa2
 Waiting for build agent...
@@ -177,8 +171,7 @@ az acr repository show-tags --name $ACR_NAME --repository myimage
 
 Das „v1“-Tag des erstellten Images sollte ähnlich wie in der folgenden Ausgabe dargestellt werden:
 
-```console
-$ az acr repository show-tags --name $ACR_NAME --repository myimage
+```output
 [
   "v1"
 ]
@@ -194,10 +187,9 @@ az acr repository delete --name $ACR_NAME --image myimage:v1
 
 Die Ausgabe sollte in etwa wie im folgenden Beispiel aussehen und die Aufforderung enthalten, das Löschen des Manifests und der zugehörigen Images zu bestätigen:
 
-```console
-$ az acr repository delete --name $ACR_NAME --image myimage:v1
+```output
 This operation will delete the manifest 'sha256:f15fa9d0a69081ba93eee308b0e475a54fac9c682196721e294b2bc20ab23a1b' and all the following images: 'myimage:v1'.
-Are you sure you want to continue? (y/n): y
+Are you sure you want to continue? (y/n): 
 ```
 
 ## <a name="view-registry-events"></a>Anzeigen von Registrierungsereignissen

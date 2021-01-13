@@ -1,25 +1,26 @@
 ---
-title: VM-Erweiterung für den Azure Network Watcher-Agent für Windows | Microsoft-Dokumentation
+title: VM-Erweiterung für den Azure Network Watcher-Agent für Windows
 description: Stellen Sie den Network Watcher-Agent mithilfe einer VM-Erweiterung auf einem virtuellen Windows-Computer bereit.
 services: virtual-machines-windows
 documentationcenter: ''
-author: gurudennis
-manager: amku
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 27e46af7-2150-45e8-b084-ba33de8c5e3f
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
-ms.author: dennisg
-ms.openlocfilehash: 77685fd6549906cfb050e12d53ec151c964fda42
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: mimckitt
+ms.openlocfilehash: 813fc7db2a028590797bef1c54fff20b231c3d7d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084407"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965900"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>VM-Erweiterung für den Network Watcher-Agent für Windows
 
@@ -34,7 +35,7 @@ Dieses Dokument enthält ausführliche Informationen zu den unterstützten Platt
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die Network Watcher-Agent-Erweiterung für Windows kann unter Windows Server 2008 R2, 2012, 2012 R2 und 2016 ausgeführt werden. Nano Server wird zurzeit nicht unterstützt.
+Die Network Watcher-Agent-Erweiterung für Windows kann unter Windows Server 2008 R2, 2012, 2012 R2, 2016 und 2019 ausgeführt werden. Nano Server wird zurzeit nicht unterstützt.
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 
@@ -64,7 +65,7 @@ Der folgende JSON-Code zeigt das Schema für die Network Watcher-Agent-Erweiteru
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| NAME | Wert/Beispiel |
+| Name | Wert/Beispiel |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |

@@ -1,41 +1,33 @@
 ---
-title: Azure-Hybridvorteil für Windows Server | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Vorteile der Windows Software Assurance optimal nutzen, um lokale Lizenzen in Azure zu verwenden.
-services: virtual-machines-windows
-documentationcenter: ''
+title: Azure-Hybridvorteil für Windows Server
+description: Erfahren Sie, wie Sie die Vorteile von Windows Software Assurance optimal nutzen, um lokale Lizenzen in Azure zu verwenden.
 author: xujing-ms
-manager: gwallace
-editor: ''
-ms.assetid: 332583b6-15a3-4efb-80c3-9082587828b0
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: e3928d865178d0afc3d814ae0d7794f981f49d47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 43784fe2bb94d5abd012f22ed530e4631a304614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079412"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335985"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure-Hybridvorteil für Windows Server
 Für Kunden mit Software Assurance ermöglicht der Azure-Hybridvorteil für Windows Server die Verwendung der lokalen Windows Server-Lizenzen und die Ausführung von virtuellen Windows-Computern in Azure zu geringeren Kosten. Sie können den Azure-Hybridvorteil für Windows Server dazu nutzen, neue virtuelle Computer mit dem Windows-Betriebssystem bereitzustellen. In diesem Artikel werden die Schritte zum Bereitstellen der neuen VMs mit dem Azure-Hybridvorteil für Windows Server und das Aktualisieren von vorhandenen, ausgeführten VMs beschrieben. Weitere Informationen zum Azure-Hybridvorteil für die Windows Server-Lizenzierung und den Kosteneinsparungen finden Sie auf der Seite zum [Azure-Hybridvorteil für die Windows Server-Lizenzierung](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
 
-> [!Important]
-> Jede Lizenz für zwei Prozessoren oder jeder Satz an Lizenzen für je 16 Kerne kann für zwei Instanzen mit bis zu acht Kernen oder für eine Instanz mit bis zu 16 Kernen eingesetzt werden. Der Azure-Hybridvorteil für Standard Edition-Lizenzen kann nur einmalig entweder lokal oder in Azure verwendet werden. Mit der Datacenter Edition ist die gleichzeitige Nutzung sowohl lokal als auch in Azure möglich.
->
+Jede Lizenz für zwei Prozessoren oder jeder Satz an Lizenzen für je 16 Kerne kann für zwei Instanzen mit bis zu acht Kernen oder für eine Instanz mit bis zu 16 Kernen eingesetzt werden. Der Azure-Hybridvorteil für Standard Edition-Lizenzen kann nur einmalig entweder lokal oder in Azure verwendet werden. Mit der Datacenter Edition ist die gleichzeitige Nutzung sowohl lokal als auch in Azure möglich.
 
-> [!Important]
-> Die Nutzung des Azure-Hybridvorteils für Windows Server mit virtuellen Computern mit dem Windows Server-Betriebssystem wird jetzt in allen Regionen unterstützt. Dies gilt auch für virtuelle Computer mit zusätzlicher Software, z.B. SQL Server oder Marketplace-Software von Drittanbietern. 
->
+Die Nutzung des Azure-Hybridvorteils für Windows Server mit virtuellen Computern mit dem Windows Server-Betriebssystem wird jetzt in allen Regionen unterstützt. Dies gilt auch für virtuelle Computer mit zusätzlicher Software, z.B. SQL Server oder Marketplace-Software von Drittanbietern. 
 
-> [!NOTE]
-> Bei klassischen VMs wird die Bereitstellung von neuen VMs nur über lokale benutzerdefinierte Images unterstützt. Um die in diesem Artikel genannten unterstützten Funktionen nutzen zu können, müssen Sie klassische VMs zunächst zum Resource Manager-Modell migrieren.
->
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+## <a name="classic-vms"></a>Klassische virtuelle Computer
+
+Bei klassischen VMs wird die Bereitstellung von neuen VMs nur über lokale benutzerdefinierte Images unterstützt. Um die in diesem Artikel genannten unterstützten Funktionen nutzen zu können, müssen Sie klassische VMs zunächst zum Resource Manager-Modell migrieren.
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+ 
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Möglichkeiten zur Nutzung des Azure-Hybridvorteils für Windows Server
 Es gibt mehrere Möglichkeiten, um virtuelle Windows-Computer mit dem Azure-Hybridvorteil zu nutzen:
@@ -74,7 +66,7 @@ az vm create \
 ```
 
 ### <a name="template"></a>Vorlage
-In den Resource Manager-Vorlagen muss ein zusätzlicher Parameter für `licenseType` angegeben werden. Weitere Informationen dazu finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../resource-group-authoring-templates.md).
+In den Resource Manager-Vorlagen muss ein zusätzlicher Parameter für `licenseType` angegeben werden. Weitere Informationen dazu finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md).
 ```json
 "properties": {
     "licenseType": "Windows_Server",
@@ -198,7 +190,7 @@ Weitere Möglichkeiten zum Aktualisieren der Skalierungsgruppe finden Sie unter 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [Einsparungen durch den Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 - Weitere Informationen zu [häufig gestellten Fragen zum Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)
-- Weitere ausführliche Informationen finden Sie unter [Azure-Hybridvorteil für die Windows Server-Lizenzierung](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit).
+- Weitere ausführliche Informationen finden Sie unter [Azure-Hybridvorteil für die Windows Server-Lizenzierung](/windows-server/get-started/azure-hybrid-benefit).
 - Weitere Informationen zur [Nutzung des Azure-Hybridvorteils für Windows Server und Azure Site Recovery für eine noch kosteneffizientere Anwendungsmigration zu Azure](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
-- Weitere Informationen zum [Bereitstellen von Windows 10 unter Azure mit mehrinstanzenfähigen Hostingrechten](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
-- Weitere Informationen zum [Verwenden von Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-overview.md)
+- Weitere Informationen zum [Bereitstellen von Windows 10 unter Azure mit mehrinstanzenfähigen Hostingrechten](./windows-desktop-multitenant-hosting-deployment.md)
+- Weitere Informationen zum [Verwenden von Resource Manager-Vorlagen](../../azure-resource-manager/management/overview.md)

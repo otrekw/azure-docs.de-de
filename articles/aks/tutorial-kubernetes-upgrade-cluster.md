@@ -2,18 +2,15 @@
 title: Tutorial zu Kubernetes in Azure – Upgrade eines Clusters
 description: In diesem Azure Kubernetes Service-Tutorial (AKS) erfahren Sie, wie Sie ein Upgrade eines vorhandenen AKS-Clusters auf die neueste verfügbare Kubernetes-Version durchführen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
-ms.author: mlearned
-ms.custom: mvc
-ms.openlocfilehash: 9fe02c9b563259abb51a1a768c7facdf1bf601f7
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 09/30/2020
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 517172b919552a24e9cb12bbaad14eb8cb71b3fd
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898838"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007533"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Tutorial: Durchführen eines Upgrades für Kubernetes in Azure Kubernetes Service (AKS)
 
@@ -30,25 +27,40 @@ In diesem Tutorial (Teil 7 von 7) wird ein Upgrade für einen Kubernetes-Cluster
 
 In den vorherigen Tutorials wurde eine Anwendung als Containerimage verpackt. Dieses Image wurde in Azure Container Registry hochgeladen, und Sie haben einen AKS-Cluster erstellt. Die Anwendung wurde dann für den AKS-Cluster bereitgestellt. Falls Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, sollten Sie mit [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] beginnen.
 
-Für dieses Tutorial müssen Sie mindestens Version 2.0.53 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+Für dieses Tutorial müssen Sie mindestens Version 2.0.53 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 ## <a name="get-available-cluster-versions"></a>Abrufen verfügbarer Clusterversionen
 
 Verwenden Sie vor dem Upgrade eines Clusters den Befehl [az aks get-upgrades][], um zu überprüfen, welche Kubernetes-Versionen als Upgrade verfügbar sind:
 
 ```azurecli
-az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Im folgenden Beispiel lautet die aktuelle Version *1.13.10*, und die verfügbaren Versionen werden in der Spalte *Upgrades* angezeigt.
+Im folgenden Beispiel lautet die aktuelle Version *1.15.11*, und die verfügbaren Versionen werden unter *Upgrades* angezeigt.
 
-```
-Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.13.10          1.13.10            1.14.5, 1.14.6
+```json
+{
+  "agentPoolProfiles": null,
+  "controlPlaneProfile": {
+    "kubernetesVersion": "1.15.11",
+    ...
+    "upgrades": [
+      {
+        "isPreview": null,
+        "kubernetesVersion": "1.16.8"
+      },
+      {
+        "isPreview": null,
+        "kubernetesVersion": "1.16.9"
+      }
+    ]
+  },
+  ...
+}
 ```
 
-## <a name="upgrade-a-cluster"></a>Aktualisieren eines Clusters
+## <a name="upgrade-a-cluster"></a>Durchführen eines Clusterupgrades
 
 AKS-Knoten werden sorgfältig isoliert und ausgeglichen, um ausgeführte Anwendungen möglichst wenig zu beeinträchtigen. Bei diesem Prozess werden die folgenden Schritte ausgeführt:
 
@@ -58,16 +70,19 @@ AKS-Knoten werden sorgfältig isoliert und ausgeglichen, um ausgeführte Anwendu
 1. Wenn der neue Knoten bereit ist und in den Cluster eingebunden wurde, beginnt der Kubernetes-Planer damit, Pods darauf auszuführen.
 1. Der alte Knoten wird gelöscht, und der nächste Knoten im Cluster beginnt mit dem Prozess des Absperrens und Ausgleichens.
 
-Verwenden Sie den Befehl [az aks upgrade][], um ein Upgrade des AKS-Clusters durchzuführen. Im folgenden Beispiel wird ein Upgrade des Clusters auf Kubernetes-Version *1.14.6* durchgeführt.
-
-> [!NOTE]
-> Upgrades sind jeweils nur auf die nächste Nebenversion möglich. Beispielsweise können Sie ein Upgrade von *1.12.x* auf *1.13.x* durchführen, aber nicht direkt von *1.12.x* auf *1.14.x*. Für ein Upgrade von *1.12.x* auf *1.14.x* müssen Sie zuerst ein Upgrade von *1.12.x* auf *1.13.x* und dann ein weiteres Upgrade von  *1.13.x* auf *1.14.x* durchführen.
+Verwenden Sie den Befehl [az aks upgrade][], um ein Upgrade des AKS-Clusters durchzuführen.
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.6
+az aks upgrade \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --kubernetes-version KUBERNETES_VERSION
 ```
 
-In der folgenden verkürzten Beispielausgabe wird für *kubernetesVersion* jetzt die Versionsangabe *1.14.6* angezeigt:
+> [!NOTE]
+> Upgrades sind jeweils nur auf die nächste Nebenversion möglich. Beispielsweise können Sie ein Upgrade von *1.14.x* auf *1.15.x* durchführen, aber nicht direkt von *1.14.x* auf *1.16.x*. Für ein Upgrade von *1.14.x* auf *1.16.x* müssen Sie zuerst ein Upgrade von *1.14.x* auf *1.15.x* und dann ein weiteres Upgrade von  *1.15.x* auf *1.16.x* durchführen.
+
+In der folgenden verkürzten Beispielausgabe wird das Ergebnis des Upgrades auf *1.16.8* gezeigt. Beachten Sie, dass die *kubernetesVersion* jetzt *1.16.8* lautet.
 
 ```json
 {
@@ -85,7 +100,7 @@ In der folgenden verkürzten Beispielausgabe wird für *kubernetesVersion* jetzt
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.14.6",
+  "kubernetesVersion": "1.16.8",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -100,12 +115,12 @@ In der folgenden verkürzten Beispielausgabe wird für *kubernetesVersion* jetzt
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Die folgende Beispielausgabe zeigt, dass der AKS-Cluster *KubernetesVersion 1.14.6* ausführt:
+Die folgende Beispielausgabe zeigt, dass der AKS-Cluster *KubernetesVersion 1.16.8* ausführt:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.14.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.16.8               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>Löschen des Clusters
@@ -117,21 +132,18 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Wenn Sie den Cluster löschen, wird der vom AKS-Cluster verwendete Azure Active Directory-Dienstprinzipal nicht entfernt. Schritte zum Entfernen des Dienstprinzipals finden Sie unter den [Überlegungen zum AKS-Dienstprinzipal und dessen Löschung][sp-delete].
+> Wenn Sie den Cluster löschen, wird der vom AKS-Cluster verwendete Azure Active Directory-Dienstprinzipal nicht entfernt. Schritte zum Entfernen des Dienstprinzipals finden Sie unter den [Überlegungen zum AKS-Dienstprinzipal und dessen Löschung][sp-delete]. Wenn Sie eine verwaltete Identität verwendet haben, wird die Identität von der Plattform verwaltet, und Sie müssen keine Geheimnisse bereitstellen oder rotieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Kubernetes in einem AKS-Cluster aktualisiert. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie Kubernetes in einem AKS-Cluster aktualisiert. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Identifizieren der aktuellen und verfügbaren Kubernetes-Versionen
 > * Aktualisieren der Kubernetes-Knoten
 > * Überprüfen des erfolgreichen Upgrades
 
-Über den folgenden Link erhalten Sie weitere Informationen zu AKS.
-
-> [!div class="nextstepaction"]
-> [Übersicht über AKS][aks-intro]
+Weitere Informationen zu AKS finden Sie unter [Übersicht über AKS][aks-intro]. Anleitungen zum Erstellen vollständiger Lösungen mit AKS finden Sie unter [AKS-Lösungsleitfaden][aks-solution-guidance].
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
@@ -145,3 +157,4 @@ In diesem Tutorial haben Sie Kubernetes in einem AKS-Cluster aktualisiert. Es wu
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-group-delete]: /cli/azure/group#az-group-delete
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
+[aks-solution-guidance]: /azure/architecture/reference-architectures/containers/aks-start-here?WT.mc_id=AKSDOCSPAGE

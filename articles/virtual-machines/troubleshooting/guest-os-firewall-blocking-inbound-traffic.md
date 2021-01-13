@@ -1,6 +1,6 @@
 ---
 title: Blockierung von eingehendem Datenverkehr durch die Firewall des Azure-VM-Gastbetriebssystems | Microsoft-Dokumentation
-description: ''
+description: Erfahren Sie, wie Sie das Verbindungsproblem beim Remote Desktop Portal (RDP) beheben, bei dem die Firewall des Gastbetriebssystems eingehenden Datenverkehr blockiert.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 6e90b164fac4ea1123f5f9a43eea1169d93d9a04
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 1b80fc997a4b3d2b472717b1ec2f379a4e958d8c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154025"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80422556"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Blockierung von eingehendem Datenverkehr durch die Firewall des Azure-VM-Gastbetriebssystem
 
@@ -102,7 +102,7 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
 
 #### <a name="mitigation-2"></a>Vorbeugende Maßnahme 2
 
-1.  Fragen Sie die Firewallprofile ab, um zu bestimmen, ob die Firewallrichtlinie für eingehende Verbindungen auf  *BlockInboundAlways* festgelegt ist:
+1.  Fragen Sie die Firewallprofile ab, um zu ermitteln, ob die Firewallrichtlinie für eingehende Verbindungen auf *BlockInboundAlways* festgelegt ist:
 
     ```cmd
     netsh advfirewall show allprofiles | more
@@ -115,7 +115,7 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
     >    * *BlockInbound*: Der gesamte eingehende Datenverkehr wird blockiert, sofern keine Regel in Kraft ist, die diesen Datenverkehr ermöglicht.
     >    * *BlockInboundAlways*: Alle Firewallregeln werden ignoriert und sämtlicher Datenverkehr blockiert.
 
-2.  Bearbeiten Sie *DefaultInboundAction* so, dass diese Profile Datenverkehr  **zulassen**. Führen Sie zu diesem Zweck den folgenden Befehl aus:
+2.  Bearbeiten Sie *DefaultInboundAction*, um festzulegen, dass diese Profile Datenverkehr **zulassen**. Führen Sie zu diesem Zweck den folgenden Befehl aus:
 
     ```cmd
     netsh advfirewall set allprofiles firewallpolicy allowinbound,allowoutbound
@@ -138,7 +138,7 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
 
 2.  Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
 
-3.  Stellen Sie sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als  **Online** gekennzeichnet ist. Achten Sie auf den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
+3.  Stellen Sie sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Achten Sie auf den Laufwerkbuchstaben, der dem angefügten Systemdatenträger zugewiesen ist.
 
 #### <a name="mitigation-1"></a>Vorbeugende Maßnahme 1
 
@@ -150,7 +150,7 @@ Siehe  [Aktivieren/Deaktivieren einer Firewallregel unter einem Gastbetriebssys
 
 2.  Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
 
-3.  Stellen Sie nach dem Anfügen des Betriebssystemdatenträgers an den virtuellen Wiederherstellungscomputer sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als  **Online** gekennzeichnet ist. Beachten Sie den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
+3.  Stellen Sie nach dem Anfügen des Systemdatenträgers an den virtuellen Wiederherstellungscomputer sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Beachten Sie den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
 
 4.  Öffnen Sie dann eine CMD-Instanz mit erhöhten Rechten, und führen Sie die folgenden Skripts aus:
 

@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit RolePoint | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und RolePoint konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 68d37f40-15da-45f5-a9e1-d53f78e786d1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 0b6fd17d2f8577532778733866260f43e9ac7685
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3225aa9eaff5c3cd0acca99261935feb9774810f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092733"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010264"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>Tutorial: Azure Active Directory-Integration mit RolePoint
 
@@ -31,7 +27,7 @@ Diese Integration bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei RolePoint anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten: im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -152,7 +148,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „
 
     1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
   
-    1. Geben Sie im Feld **Benutzername** die Zeichenfolge **BrittaSimon@\<IhreUnternehmensdomäne>.\<Erweiterung>** ein. (Beispiel: BrittaSimon@contoso.com.)
+    1. Geben Sie in das Feld **Benutzername** den Namen **BrittaSimon@\<yourcompanydomain>.\<extension>** ein. (Beispiel: BrittaSimon@contoso.com.)
 
     1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den im Feld **Kennwort** angezeigten Wert.
 
@@ -186,18 +182,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-a-rolepoint-test-user"></a>Erstellen eines RolePoint-Testbenutzers
 
-Als Nächstes müssen Sie in RolePoint einen Benutzer mit dem Namen Britta Simon erstellen. Wenden Sie sich an das  [RolePoint-Supportteam](mailto:info@rolepoint.com), um Benutzer zu RolePoint hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+Als Nächstes müssen Sie in RolePoint einen Benutzer mit dem Namen Britta Simon erstellen. Wenden Sie sich an das [RolePoint-Supportteam](mailto:info@rolepoint.com), um Benutzer zu RolePoint hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 Jetzt müssen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich testen.
 
-Wenn Sie im Zugriffsbereich die Kachel „RolePoint“ auswählen, sollten Sie automatisch bei der RolePoint-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich die Kachel „RolePoint“ auswählen, sollten Sie automatisch bei der RolePoint-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

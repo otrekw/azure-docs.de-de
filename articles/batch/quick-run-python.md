@@ -1,37 +1,34 @@
 ---
-title: Azure-Schnellstart – Ausführen eines Batch-Auftrags – Python
-description: Enthält eine Schnellstartanleitung zur Ausführung eines Batch-Auftrags und von Aufgaben mit der Batch Python-Clientbibliothek.
-services: batch
-author: laurenhughes
-manager: gwallace
-ms.service: batch
-ms.devlang: python
+title: 'Schnellstart: Ausführen eines Azure Batch-Auftrags mithilfe der Python-API'
+description: In dieser Schnellstartanleitung führen Sie einen Azure Batch-Beispielauftrag und Aufgaben mithilfe der Batch Python-Clientbibliothek aus. Erfahren Sie mehr über die wichtigsten Konzepte des Batch-Diensts.
 ms.topic: quickstart
-ms.date: 11/27/2018
-ms.author: lahugh
-ms.custom: mvc
-ms.openlocfilehash: 77ccfc1a67fabca7fde47edac9094c6a68191f0f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 08/17/2020
+ms.custom:
+- seo-python-october2019
+- mvc
+- devx-track-python
+ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090767"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "88511013"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Python-API
+# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Schnellstart: Ausführen eines Azure Batch-Auftrags mit der Python-API
 
-In dieser Schnellstartanleitung wird ein Azure Batch-Auftrag über eine Anwendung ausgeführt, die auf der Azure Batch Python-API basiert. Die App lädt einige Eingabedatendateien in den Azure-Speicher und erstellt anschließend einen *Pool* mit Batch-Computeknoten (virtuelle Computer). Als Nächstes wird ein Beispiel für einen *Auftrag* erstellt, mit dem *Aufgaben* ausgeführt werden, um die einzelnen Eingabedateien im Pool mit einem einfachen Befehl zu verarbeiten. Nach Abschluss dieser Schnellstartanleitung sind Sie mit den wichtigsten Konzepten des Batch-Diensts vertraut und können Batch mit realistischeren Workloads und in größerem Umfang ausprobieren.
- 
-![Schnellstart – App-Workflow](./media/quick-run-python/sampleapp.png)
+Führen Sie erste Schritte mit Azure Batch aus, indem Sie mithilfe der Python-API einen Azure Batch-Auftrag über eine App ausführen. Die App lädt Eingabedatendateien in Azure Storage hoch und erstellt einen Pool mit Batch-Computeknoten (virtuelle Computer). Anschließend wird ein Auftrag erstellt, mit dem Aufgaben ausgeführt werden, um die einzelnen Eingabedateien im Pool mit einem einfachen Befehl zu verarbeiten.
 
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+Nach Abschluss dieser Schnellstartanleitung sind Sie mit den wichtigsten Konzepten des Batch-Diensts vertraut und können Batch mit realistischeren Workloads und in größerem Umfang ausprobieren.
+
+![Übersicht über den Azure Batch-Workflow](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Python-Version 2.7 oder 3.3 oder höher](https://www.python.org/downloads/)
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* [pip](https://pip.pypa.io/en/stable/installing/)-Paket-Manager
+- Ein Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md).
 
-* Ein Azure Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md). 
+- [Python](https://python.org/downloads), Version 2.7 bzw. 3.3 oder höher, einschließlich des [pip](https://pip.pypa.io/en/stable/installing/)-Paket-Managers
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -73,7 +70,7 @@ Führen Sie das folgende Skript aus, um den Batch-Workflow in Aktion zu erleben:
 python python_quickstart_client.py
 ```
 
-Sehen Sie sich nach dem Ausführen des Skripts den Code an, um zu erfahren, welche Aufgabe die einzelnen Teile der Anwendung jeweils haben. 
+Sehen Sie sich nach dem Ausführen des Skripts den Code an, um zu erfahren, welche Aufgabe die einzelnen Teile der Anwendung jeweils haben.
 
 Beim Ausführen der Beispielanwendung sieht die Konsolenausgabe in etwa wie folgt aus: Bei der Ausführung kommt es bei `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` zu einer Pause, während die Computeknoten des Pools gestartet werden. Die Aufgaben werden in die Warteschlange eingereiht und dann ausgeführt, sobald der erste Computeknoten aktiv ist. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Batch-Konto, um den Pool, die Computeknoten, den Auftrag und die Aufgaben in Ihrem Batch-Konto zu überwachen.
 
@@ -107,9 +104,9 @@ Die normale Ausführungsdauer beträgt ca. drei Minuten, wenn die Anwendung in d
 
 Mit der Python-App in dieser Schnellstartanleitung werden folgende Schritte ausgeführt:
 
-* Es werden drei kleine Textdateien in einen Blobcontainer in Ihrem Azure-Speicherkonto hochgeladen. Diese Dateien dienen als Eingaben für die Verarbeitung mit Batch-Aufgaben.
-* Ein Pool mit zwei Computeknoten wird erstellt, auf denen Ubuntu 18.04 LTS ausgeführt wird.
-* Es werden ein Auftrag und drei Aufgaben für die Ausführung auf den Knoten erstellt. Jede Aufgabe verarbeitet eine der Eingabedateien über eine Befehlszeile der Bash-Shell.
+- Es werden drei kleine Textdateien in einen Blobcontainer in Ihrem Azure-Speicherkonto hochgeladen. Diese Dateien dienen als Eingaben für die Verarbeitung mit Batch-Aufgaben.
+- Ein Pool mit zwei Computeknoten wird erstellt, auf denen Ubuntu 18.04 LTS ausgeführt wird.
+- Es werden ein Auftrag und drei Aufgaben für die Ausführung auf den Knoten erstellt. Jede Aufgabe verarbeitet eine der Eingabedateien über eine Befehlszeile der Bash-Shell.
 * Es werden die von den Aufgaben zurückgegebenen Dateien angezeigt.
 
 Ausführliche Informationen finden Sie in der Datei `python_quickstart_client.py` und in den folgenden Abschnitten.
@@ -187,7 +184,7 @@ batch_service_client.job.add(job)
 
 Die App erstellt eine Liste mit Aufgabenobjekten, indem die [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter)-Klasse verwendet wird. Jede Aufgabe verarbeitet ein `resource_files`-Eingabeobjekt, indem ein `command_line`-Parameter verwendet wird. Im Beispiel führt die Befehlszeile den Bash-Shellbefehl `cat` aus, um die Textdatei anzuzeigen. Dieser Befehl ist ein einfaches Beispiel für Demonstrationszwecke. Bei Verwendung von Batch befindet sich die Befehlszeile dort, wo Sie Ihre App bzw. Ihr Skript angeben. In Batch gibt es mehrere Möglichkeiten, Apps und Skripts auf Computeknoten bereitzustellen.
 
-Anschließend werden dem Auftrag von der App mit der [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations)-Methode Aufgaben hinzugefügt und für die Ausführung auf den Computeknoten in die Warteschlange eingereiht. 
+Anschließend werden dem Auftrag von der App mit der [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations)-Methode Aufgaben hinzugefügt und für die Ausführung auf den Computeknoten in die Warteschlange eingereiht.
 
 ```python
 tasks = list()

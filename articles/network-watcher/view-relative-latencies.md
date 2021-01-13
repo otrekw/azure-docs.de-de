@@ -1,29 +1,28 @@
 ---
-title: Anzeigen der relativen Latenz für Azure-Regionen von bestimmten Standorten aus | Microsoft-Dokumentation
+title: Anzeigen der relativen Latenzen für Azure-Regionen von bestimmten Standorten aus
 description: Erfahren Sie, wie Sie relative Latenzen zwischen Internetanbietern und Azure-Regionen von bestimmten Standorten aus anzeigen können.
 services: network-watcher
 documentationcenter: ''
-author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: damendo
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
-ms.author: kumud
+ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: b4a50657442422786f49c931aa6c2610d49846b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 938315dac80ae51984851083753a9cb8f77662b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939876"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84737902"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Anzeigen der relativen Latenz für Azure-Regionen von bestimmten Standorten aus
+
+> [!WARNING]
+> Diese Funktion befindet sich derzeit in der Vorschauversion und wird weiterhin auf Stabilität geprüft.
 
 In diesem Tutorial erfahren Sie, wie Sie den Dienst [Azure Network Watcher](network-watcher-monitoring-overview.md) verwenden, um zu entscheiden, in welcher Azure-Region Sie Ihre Anwendung oder Ihren Dienst basierend auf Ihrer demographischen Benutzerstruktur bereitstellen sollten. Darüber hinaus können Sie den Dienst nutzen, um Verbindungen von Dienstanbietern mit Azure zu bewerten.  
         
@@ -46,7 +45,7 @@ New-AzNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatch
 
 ## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>Vergleichen der relativen Netzwerklatenzen mit einer einzelnen Azure-Region von einem bestimmten Standort aus
 
-Bewerten Sie Dienstanbieter, oder beheben Sie Fehler bei einem Benutzer, der ein Problem wie „Die Website war langsam“ meldet, von einem bestimmten Ort aus für eine Azure-Region, in der ein Dienst bereitgestellt wurde. Der folgende Befehl gibt beispielsweise die durchschnittlichen relativen Latenzen von Internetdienstanbietern zwischen dem US-Bundesstaat Washington und der Azure-Region „USA, Westen 2“ vom 13. bis 15. Dezember 2017 zurück:
+Bewerten Sie Dienstanbieter, oder beheben Sie Fehler bei einem Benutzer, der ein Problem wie eine langsame Website meldet, von einem bestimmten Ort aus für eine Azure-Region, in der ein Dienst bereitgestellt wurde. Der folgende Befehl gibt beispielsweise die durchschnittlichen relativen Latenzen von Internetdienstanbietern zwischen dem US-Bundesstaat Washington und der Azure-Region „USA, Westen 2“ vom 13. bis 15. Dezember 2017 zurück:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityReport `
@@ -125,7 +124,7 @@ Get-AzNetworkWatcherReachabilityReport `
 > [!NOTE]
 > Anders als bei Angabe eines einzelnen Standorts müssen Sie, wenn Sie keinen Standort oder mehrere Standorte angeben, wie z.B. „USA, Westen 2“, „USA, Westen“, beim Ausführen des Befehls einen Internetdienstanbieter angeben. 
 
-## <a name="view-available"></a>Anzeigen verfügbarer Länder/Regionen, US-Bundesstaaten, Städte und Anbieter
+## <a name="view-available-countriesregions-states-cities-and-providers"></a><a name="view-available"></a>Anzeigen verfügbarer Länder/Regionen, US-Bundesstaaten, Städte und Anbieter
 
 Daten sind für bestimmte Internetdienstanbieter, Länder/Regionen, US-Bundesstaaten und Städte verfügbar. Um eine Liste aller verfügbaren Internetdienstanbieter, Länder/Regionen, US-Bundesstaaten und Städte anzuzeigen, für die Sie Daten anzeigen können, geben Sie den folgenden Befehl ein:
 

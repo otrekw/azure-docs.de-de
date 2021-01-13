@@ -3,24 +3,24 @@ title: Problem beim Anmelden bei einer lokalen App über den Azure AD-Anwendungs
 description: Beheben von verbreiteten Problemen, wenn Sie sich nicht über den Azure AD-Anwendungsproxy bei einer in Azure AD integrierten lokalen Anwendung anmelden können
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4483dc75d116e75521cb348b56dac418b3e012a8
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: a73dea856ee3250eb040f8464ee8703b01003f1f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381320"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180556"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Probleme beim Anmelden bei einer lokalen Anwendung über den Azure AD-Anwendungsproxy
 
@@ -36,7 +36,7 @@ Die folgenden Dokumente helfen Ihnen, einige der am häufigsten auftretenden Pro
 
 ## <a name="im-having-a-connectivity-problem-my-application"></a>Bei meiner Anwendung tritt ein Konnektivitätsproblem auf.
   Die folgenden Dokumente helfen Ihnen, einige der am häufigsten auftretenden Probleme in dieser Kategorie zu beheben.
-  * [Ich weiß nicht, welche Ports ich für die Anwendung öffnen muss.](application-proxy-connectivity-ports-how-to.md)
+  * [Ich weiß nicht, welche Ports ich für die Anwendung öffnen muss.](application-proxy-add-on-premises-application.md)
   * [Ein Problem ist aufgetreten, weil es für meine Anwendung keinen funktionierenden Connector in einer Connectorgruppe gab.](application-proxy-connectivity-no-working-connector.md)
 
 ## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>Beim Konfigurieren des Azure AD-Anwendungsproxys im Verwaltungsportal treten Probleme auf.
@@ -48,7 +48,7 @@ Die folgenden Dokumente helfen Ihnen, einige der am häufigsten auftretenden Pro
 ## <a name="im-having-a-problem-setting-up-back-end-authentication-to-my-application"></a>Beim Einrichten der Back-End-Authentifizierung für meine Anwendung treten Probleme auf.
   Die folgenden Dokumente helfen Ihnen, einige der am häufigsten auftretenden Probleme in dieser Kategorie zu beheben.
   * [Ich weiß nicht, wie die eingeschränkte Kerberos-Delegierung konfiguriert wird.](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-  * [Ich weiß nicht, wie meine Anwendung mit PingAccess konfiguriert wird.](application-proxy-back-end-ping-access-how-to.md)
+  * [Ich weiß nicht, wie meine Anwendung mit PingAccess konfiguriert wird.](./application-proxy-ping-access-publishing-guide.md)
 
 ## <a name="im-having-a-problem-when-signing-in-to-my-application"></a>Beim Anmelden bei meiner Anwendung treten Probleme auf.
   Die folgenden Dokumente helfen Ihnen, einige der am häufigsten auftretenden Probleme in dieser Kategorie zu beheben.

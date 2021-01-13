@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: bedf4dd2a955a8ffe648b47c1691e77ac1fdb8f5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122730"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187798"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Problembehandlung bei Clouddienstrollen, die nicht gestartet werden
 In diesem Artikel finden Sie Informationen zu allgemeinen Problemen in Zusammenhang mit nicht gestarteten Azure-Clouddienstrollen sowie zur Lösung dieser Probleme.
@@ -47,7 +47,7 @@ Sie können umfassendere Fehlerinformationen anzeigen, indem Sie in der web.conf
 So zeigen Sie umfassendere Fehlerinformationen an, ohne Remotedesktop zu verwenden:
 
 1. Öffnen Sie die Projektmappe in Microsoft Visual Studio.
-2. Suchen Sie im **Projektmappen-Explorer**die web.config-Datei, und öffnen Sie sie.
+2. Suchen Sie im **Projektmappen-Explorer** die web.config-Datei, und öffnen Sie sie.
 3. Suchen Sie in der web.config-Datei den Abschnitt „system.web“, und fügen Sie folgende Zeile hinzu:
 
     ```xml
@@ -75,7 +75,7 @@ Wenn Sie zur Website navigieren, werden nun ausführlichere Fehlermeldungen zur�
 
 * Serverfehler in Anwendung '/'.
 * Beschreibung: Unbehandelte Ausnahme beim Ausführen der aktuellen Webanforderung. Überprüfen Sie die Stapelüberwachung, um weitere Informationen über diesen Fehler anzuzeigen und festzustellen, wo der Fehler im Code verursacht wurde.
-* Ausnahmendetails: System.IO.FileNotFoundException: Die Datei oder Assembly „Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35“ oder eine Abhängigkeit davon wurde nicht gefunden. Die angegebene Datei wurde nicht gefunden.
+* Ausnahmedetails: System.IO.FIleNotFoundException: Die Datei oder Assembly  "Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35" oder eine Abhängigkeit davon wurde nicht gefunden. Die angegebene Datei wurde nicht gefunden.
 
 Beispiel:
 
@@ -91,7 +91,7 @@ Bei dieser Diagnosemethode erzielen Sie die besten Ergebnisse, wenn Sie einen ph
 3. Navigieren Sie im Windows-Explorer zum Ordner „bin\debug“ des Clouddienstprojekts.
 4. Kopieren Sie den CSX-Ordner und die CSCFG-Datei auf den Computer, den Sie zum Debuggen von Problemen verwenden.
 5. Öffnen Sie auf dem neu installierten Computer ein Azure SDK-Eingabeaufforderungsfenster, und geben Sie `csrun.exe /devstore:start`ein.
-6. Geben Sie an der Eingabeaufforderung Folgendes ein: `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`.
+6. Geben Sie an der Eingabeaufforderung `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser` ein:
 7. Wenn die Rolle gestartet wird, werden detaillierte Fehlerinformationen in Internet Explorer angezeigt. Für eine eingehendere Problemdiagnose können Sie auch standardmäßige Windows-Tools zur Problembehandlung verwenden.
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>Diagnostizieren von Problemen mit IntelliTrace
@@ -104,8 +104,8 @@ Gehen Sie folgendermaßen vor, um den Dienst mit aktiviertem IntelliTrace bereit
 3. Wenn die Instanz gestartet wurde, öffnen Sie den **Server-Explorer**.
 4. Erweitern Sie den Knoten **Azure\\Cloud Services**, und suchen Sie die Bereitstellung.
 5. Erweitern Sie die Bereitstellung, bis die Rolleninstanzen angezeigt werden. Klicken Sie mit der rechten Maustaste auf eine der Instanzen.
-6. Wählen Sie **IntelliTrace-Protokolle anzeigen**aus. Die **IntelliTrace-Zusammenfassung** wird geöffnet.
-7. Suchen Sie in der Zusammenfassung den Abschnitt mit den Ausnahmen. Wenn Ausnahmen vorhanden sind, ist der Abschnitt mit **Ausnahmedaten**gekennzeichnet.
+6. Wählen Sie **IntelliTrace-Protokolle anzeigen** aus. Die **IntelliTrace-Zusammenfassung** wird geöffnet.
+7. Suchen Sie in der Zusammenfassung den Abschnitt mit den Ausnahmen. Wenn Ausnahmen vorhanden sind, ist der Abschnitt mit **Ausnahmedaten** gekennzeichnet.
 8. Erweitern Sie **Ausnahmedaten**, und suchen Sie nach **System.IO.FileNotFoundException**-Fehlern ähnlich dem folgenden:
 
 ![Ausnahmedaten, fehlende Datei oder Assembly](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503390.png)
@@ -122,6 +122,6 @@ Um Fehler mit fehlenden DLLs und Assemblys zu beheben, gehen Sie folgendermaßen
 Nachdem Sie bestätigt haben, dass alle Fehler korrigiert wurden, können Sie den Dienst bereitstellen, ohne das Kontrollkästchen **IntelliTrace für .NET 4-Rollen aktivieren** zu aktivieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sehen Sie sich weitere [Artikel zur Problembehandlung](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) für Clouddienste an.
+Sehen Sie sich weitere [Artikel zur Problembehandlung](../index.yml?product=cloud-services&tag=top-support-issue) für Clouddienste an.
 
-Erfahren Sie in der [Blogreihe von Kevin Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx), wie Sie Probleme bei Clouddienstrollen mit den Compute-Diagnosedaten von Azure-PaaS beheben.
+Erfahren Sie in der [Blogreihe von Kevin Williamson](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data), wie Sie Probleme bei Clouddienstrollen mit den Compute-Diagnosedaten von Azure-PaaS beheben.

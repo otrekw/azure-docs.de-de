@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: d15bfcfbae3b24e1a9b29dc74f9b41a979e63ae9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1bf01e98e418edfe8f15043d16a199b276b71020
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014691"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89266900"
 ---
-# <a name="hybrid-design-of-drm-subsystems"></a>Hybriddesign des DRM-Subsystems 
+# <a name="hybrid-design-of-drm-subsystems"></a>Hybriddesign des DRM-Subsystems
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 In diesem Thema wird das Hybriddesign von DRM-Subsystemen mit Azure Media Services erläutert.
 
@@ -103,29 +105,33 @@ Gemäß der Erläuterungen im vorherigen Abschnitt verwenden die folgenden fünf
 |AMS|Drittanbieter|Außerhalb|Nein|Nein|Beispiel 4|
 |Drittanbieter|Drittanbieter|AMS|Ja|Nein|    
 
-In den Beispielen funktioniert der PlayReady-Schutz für DASH und Smooth Streaming. Die Video-URLs unten sind Smooth Streaming-URLs. Um die entsprechenden DASH-URLs zu erhalten, fügen Sie nur „(format=mpd-time-csf)“ an. Sie können den [Azure Media-Testplayer](https://aka.ms/amtest) zum Testen in einem Browser verwenden. Damit können Sie konfigurieren, welches Streamingprotokoll unter welcher Technologie verwendet werden soll. IE11 und Microsoft Edge unter Windows 10 unterstützen PlayReady über EME. Weitere Informationen finden Sie unter [Azure Media Test Tool](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
+In den Beispielen funktioniert der PlayReady-Schutz für DASH und Smooth Streaming. Die Video-URLs unten sind Smooth Streaming-URLs. Um die entsprechenden DASH-URLs zu erhalten, fügen Sie nur „(format=mpd-time-csf)“ an. Sie können den [Azure Media-Testplayer](https://aka.ms/amtest) zum Testen in einem Browser verwenden. Damit können Sie konfigurieren, welches Streamingprotokoll unter welcher Technologie verwendet werden soll. IE11 und Microsoft Edge unter Windows 10 unterstützen PlayReady über EME. Weitere Informationen finden Sie unter [Azure Media Test Tool](./offline-playready-streaming-windows-10.md).
 
 ### <a name="sample-1"></a>Beispiel 1
 
-* Quell-URL (Basis): https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest 
-* PlayReady-LA_URL (DASH und Smooth Streaming): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
-* Widevine-LA_URL (DASH): https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4 
-* FairPlay-LA_URL (HLS): https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8 
+* Quell-URL (Basis): `https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest` 
+* PlayReady-LA_URL (DASH und Smooth Streaming): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
+* Widevine-LA_URL (DASH): `https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4` 
+* FairPlay-LA_URL (HLS): `https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8` 
 
 ### <a name="sample-2"></a>Beispiel 2
 
 * Quell-URL (Basis): https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
-* PlayReady-LA_URL (DASH und Smooth Streaming): http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
+* PlayReady-LA_URL (DASH und Smooth Streaming): `http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx` 
 
 ### <a name="sample-3"></a>Beispiel 3
 
 * Quell-URL: https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500.ism/manifest 
-* PlayReady-LA_URL (DASH und Smooth Streaming): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
+* PlayReady-LA_URL (DASH und Smooth Streaming): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
 
 ### <a name="sample-4"></a>Beispiel 4
 
 * Quell-URL: https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
-* PlayReady-LA_URL (DASH und Smooth Streaming): https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
+* PlayReady-LA_URL (DASH und Smooth Streaming): `https://willzhan12.cloudapp.net/playready/rightsmanager.asmx` 
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="summary"></a>Zusammenfassung
 
@@ -138,4 +144,3 @@ Sehen Sie sich die Media Services-Lernpfade an.
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

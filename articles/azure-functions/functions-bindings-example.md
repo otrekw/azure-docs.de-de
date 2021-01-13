@@ -1,20 +1,17 @@
 ---
 title: Trigger- und Bindungsbeispiel für Azure Functions
 description: Informationen zum Konfigurieren von Azure Functions-Bindungen
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: d1959792823e04cf34d65ab775ae8c51e741e293
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c95524a5de6696bd0ffe7463451d152a9d3a19b4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097468"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88205974"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Trigger- und Bindungsbeispiel für Azure Functions
 
@@ -56,7 +53,7 @@ Wenn Sie den Inhalt von *function.json* im Azure-Portal anzeigen und bearbeiten 
 
 ## <a name="c-script-example"></a>C#-Skriptbeispiel
 
-Folgender C#-Skriptcode arbeitet mit Triggern und Bindungen. Beachten Sie, dass der Parameter `order` den Inhalt der Warteschlangennachricht bereitstellt. Dieser Name ist erforderlich, da der Eigenschaftswert `name` in *function.json* `order` lautet. 
+Folgender C#-Skriptcode arbeitet mit Triggern und Bindungen. Beachten Sie, dass der Parameter `order` den Inhalt der Warteschlangennachricht bereitstellt. Dieser Name ist erforderlich, da der Eigenschaftswert `name` in *function.json*`order` lautet. 
 
 ```cs
 #r "Newtonsoft.Json"

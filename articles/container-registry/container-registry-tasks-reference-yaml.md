@@ -1,19 +1,14 @@
 ---
-title: Referenz zu Azure Container Registry Tasks – YAML
+title: 'YAML-Referenz: ACR Tasks'
 description: Referenz für die Definition von Aufgaben in YAML für Azure Container Registry Tasks (ACR Tasks), einschließlich Aufgabeneigenschaften, Schritttypen, Schritteigenschaften und integrierter Variablen.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
-ms.date: 07/12/2019
-ms.author: danlep
-ms.openlocfilehash: 27c38f51104dfb170c59860c96a8e3a86973bb1e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 07/08/2020
+ms.openlocfilehash: 042310d29f5561c2cd77b0b9cccfc587ca4aa767
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638920"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88067582"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referenz zu ACR Tasks: YAML
 
@@ -23,7 +18,7 @@ Dieser Artikel enthält Referenzinformationen für das Erstellen von YAML-Dateie
 
 ## <a name="acr-taskyaml-file-format"></a>Format der Datei „acr-task.yaml“
 
-ACR Tasks unterstützt die Deklaration von mehrstufigen Aufgaben in der YAML-Standardsyntax. Die Schritte einer Aufgabe werden in einer YAML-Datei definiert. Sie können die Aufgabe dann manuell ausführen, indem Sie die Datei an den Befehl [az acr run][az-acr-run] übergeben. Alternativ können Sie die Datei verwenden, um mithilfe von [az acr task create][az-acr-task-create] eine Aufgabe zu erstellen, der nach einem Git-Commit oder einer Aktualisierung des Basisimages automatisch ausgelöst wird. In diesem Artikel wird für die Datei, die die Schritte enthält, der Dateiname `acr-task.yaml` verwendet. ACR Tasks unterstützt jedoch jeden gültigen Dateinamen mit einer [unterstützten Erweiterung](#supported-task-filename-extensions).
+ACR Tasks unterstützt die Deklaration von mehrstufigen Aufgaben in der YAML-Standardsyntax. Die Schritte einer Aufgabe werden in einer YAML-Datei definiert. Sie können die Aufgabe dann manuell ausführen, indem Sie die Datei an den Befehl [az acr run][az-acr-run] übergeben. Alternativ dazu können Sie die Datei verwenden, um mithilfe von [az acr task create][az-acr-task-create] eine Aufgabe zu erstellen, die nach einem Git-Commit, einer Aktualisierung des Basisimages oder gemäß einem Zeitplan automatisch ausgelöst wird. In diesem Artikel wird für die Datei, die die Schritte enthält, der Dateiname `acr-task.yaml` verwendet. ACR Tasks unterstützt jedoch jeden gültigen Dateinamen mit einer [unterstützten Erweiterung](#supported-task-filename-extensions).
 
 Die Primitiven der obersten Ebene in `acr-task.yaml` sind **Aufgabeneigenschaften**, **Schritttypen** und **Schritteigenschaften**:
 
@@ -84,10 +79,11 @@ Aufgabeneigenschaften werden in der Regel am Anfang einer Datei vom Typ `acr-tas
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | Zeichenfolge | Ja | Die Version der Datei `acr-task.yaml`, die vom ACR Tasks-Dienst analysiert wird. ACR Tasks versucht, die Abwärtskompatibilität zu gewährleisten. Dieser Wert ermöglicht es ACR Tasks jedoch, die Kompatibilität innerhalb einer definierten Version sicherzustellen. Ohne Angabe wird standardmäßig die neueste Version verwendet. | Nein | Keine |
 | `stepTimeout` | int (Sekunden) | Ja | Die maximale Anzahl von Sekunden, für die ein Schritt ausgeführt werden kann. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `timeout`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft `timeout` für einen Schritt angegeben, überschreibt sie die für die Aufgabe angegebene Eigenschaft. | Ja | 600 (10 Minuten) |
-| `workingDirectory` | Zeichenfolge | Ja | Das Arbeitsverzeichnis des Containers während der Laufzeit. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `workingDirectory`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft für einen Schritt angegeben, überschreibt sie die für die Aufgabe angegebene Eigenschaft. | Ja | `$HOME` |
-| `env` | [string, string, ...] | Ja |  Ein Array von Zeichenfolgen im Format `key=value`, die die Umgebungsvariablen für die Aufgabe definieren. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `env`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft für einen Schritt angegeben, überschreibt sie sämtliche von der Aufgabe geerbten Umgebungsvariablen. | Keine |
-| `secrets` | [Geheimnis, Geheimnis, ...] | Ja | Array mit [Geheimnisobjekten](#secret). | Keine |
-| `networks` | [Netzwerk, Netzwerk, ...] | Ja | Array mit [Netzwerkobjekten](#network). | Keine |
+| `workingDirectory` | Zeichenfolge | Ja | Das Arbeitsverzeichnis des Containers während der Laufzeit. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `workingDirectory`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft für einen Schritt angegeben, überschreibt sie die für die Aufgabe angegebene Eigenschaft. | Ja | `c:\workspace` in Windows oder `/workspace` in Linux |
+| `env` | [string, string, ...] | Ja |  Ein Array von Zeichenfolgen im Format `key=value`, die die Umgebungsvariablen für die Aufgabe definieren. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `env`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft für einen Schritt angegeben, überschreibt sie sämtliche von der Aufgabe geerbten Umgebungsvariablen. | Ja | Keine |
+| `secrets` | [Geheimnis, Geheimnis, ...] | Ja | Array mit [Geheimnisobjekten](#secret). | Nein | Keine |
+| `networks` | [Netzwerk, Netzwerk, ...] | Ja | Array mit [Netzwerkobjekten](#network). | Nein | Keine |
+| `volumes` | [volume, volume, ...] | Ja | Array aus [volume](#volume)-Objekten. Gibt Volumes mit Quellinhalten an, die in einen Schritt eingebunden werden sollen. | Nein | Keine |
 
 ### <a name="secret"></a>secret
 
@@ -111,6 +107,15 @@ Das Netzwerkobjekt hat folgende Eigenschaften:
 | `skipCreation` | bool | Ja | Gibt an, ob die Netzwerkerstellung übersprungen werden soll. | `false` |
 | `isDefault` | bool | Ja | Gibt an, ob das Netzwerk ein mit Azure Container Registry bereitgestelltes Standardnetzwerk ist. | `false` |
 
+### <a name="volume"></a>Volume
+
+Das volume-Objekt weist die folgenden Eigenschaften auf.
+
+| Eigenschaft | type | Optional | BESCHREIBUNG | Standardwert |
+| -------- | ---- | -------- | ----------- | ------- | 
+| `name` | Zeichenfolge | Nein | Der Name des einzubindenden Volumes. Darf nur alphanumerische Zeichen sowie „-“ und „_“ enthalten. | Keiner |
+| `secret` | map[string]string | Nein | Jeder Schlüssel der Zuordnung ist der Name einer im Volume erstellten und aufgefüllten Datei. Jeder Wert ist die Zeichenfolgenversion des Geheimnisses. Geheimniswerte müssen Base64-codiert sein. | Keiner |
+
 ## <a name="task-step-types"></a>Aufgabenschritttypen
 
 ACR Tasks unterstützt drei Schritttypen. Jeder Schritttyp unterstützt mehrere Eigenschaften, die im Abschnitt zum jeweiligen Schritttyp erläutert werden.
@@ -128,7 +133,7 @@ Dieser Schritttyp erstellt ein Containerimage. Der Schritttyp `build` stellt ein
 ### <a name="syntax-build"></a>Syntax: build
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - [build]: -t [imageName]:[tag] -f [Dockerfile] [context]
     [property]: [value]
@@ -146,7 +151,7 @@ Der Schritttyp `build` unterstützt die Parameter in der folgenden Tabelle. Dar�
 
 Der Schritttyp `build` unterstützt die folgenden Eigenschaften. Details zu diesen Eigenschaften finden Sie im Abschnitt [Aufgabenschritteigenschaften](#task-step-properties) dieses Artikels.
 
-| | | |
+| Eigenschaften | type | Erforderlich |
 | -------- | ---- | -------- |
 | `detach` | bool | Optional |
 | `disableWorkingDirectoryOverride` | bool | Optional |
@@ -157,15 +162,16 @@ Der Schritttyp `build` unterstützt die folgenden Eigenschaften. Details zu dies
 | `ignoreErrors` | bool | Optional |
 | `isolation` | Zeichenfolge | Optional |
 | `keep` | bool | Optional |
-| `network` | object | Optional |
+| `network` | Objekt (object) | Optional |
 | `ports` | [string, string, ...] | Optional |
 | `pull` | bool | Optional |
-| `repeat` | int | Optional |
-| `retries` | int | Optional |
+| `repeat` | INT | Optional |
+| `retries` | INT | Optional |
 | `retryDelay` | int (Sekunden) | Optional |
-| `secret` | object | Optional |
+| `secret` | Objekt (object) | Optional |
 | `startDelay` | int (Sekunden) | Optional |
 | `timeout` | int (Sekunden) | Optional |
+| `volumeMount` | Objekt (object) | Optional |
 | `when` | [string, string, ...] | Optional |
 | `workingDirectory` | Zeichenfolge | Optional |
 
@@ -183,9 +189,9 @@ az acr run -f build-hello-world.yaml https://github.com/AzureCR/acr-tasks-sample
 #### <a name="build-image---context-in-subdirectory"></a>Erstellen eines Images – Kontext in einem Unterverzeichnis
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world -f hello-world.dockerfile ./subDirectory
+  - build: -t $Registry/hello-world -f hello-world.dockerfile ./subDirectory
 ```
 
 ## <a name="push"></a>push
@@ -197,28 +203,28 @@ Dieser Schritttyp pusht ein oder mehrere erstellte oder erneut gekennzeichnete I
 Der Schritttyp `push` unterstützt eine Sammlung von Images. Die YAML-Sammlungssyntax unterstützt Inlineformate und geschachtelte Formate. Das Pushen eines einzelnen Images wird in der Regel mithilfe von Inlinesyntax dargestellt:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   # Inline YAML collection syntax
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 Verwenden Sie zum Pushen mehrerer Images eine geschachtelte Syntax, um die Lesbarkeit zu verbessern:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   # Nested YAML collection syntax
   - push:
-    - {{.Run.Registry}}/hello-world:{{.Run.ID}}
-    - {{.Run.Registry}}/hello-world:latest
+    - $Registry/hello-world:$ID
+    - $Registry/hello-world:latest
 ```
 
 ### <a name="properties-push"></a>Eigenschaften: push
 
 Der Schritttyp `push` unterstützt die folgenden Eigenschaften. Details zu diesen Eigenschaften finden Sie im Abschnitt [Aufgabenschritteigenschaften](#task-step-properties) dieses Artikels.
 
-| | | |
+| Eigenschaft | type | Erforderlich |
 | -------- | ---- | -------- |
 | `env` | [string, string, ...] | Optional |
 | `id` | Zeichenfolge | Optional |
@@ -254,7 +260,7 @@ Der Schritttyp `cmd` führt einen Container aus.
 ### <a name="syntax-cmd"></a>Syntax: cmd
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - [cmd]: [containerImage]:[tag (optional)] [cmdParameters to the image]
 ```
@@ -263,7 +269,7 @@ steps:
 
 Der Schritttyp `cmd` unterstützt die folgenden Eigenschaften:
 
-| | | |
+| Eigenschaft | type | Erforderlich |
 | -------- | ---- | -------- |
 | `detach` | bool | Optional |
 | `disableWorkingDirectoryOverride` | bool | Optional |
@@ -274,15 +280,16 @@ Der Schritttyp `cmd` unterstützt die folgenden Eigenschaften:
 | `ignoreErrors` | bool | Optional |
 | `isolation` | Zeichenfolge | Optional |
 | `keep` | bool | Optional |
-| `network` | object | Optional |
+| `network` | Objekt (object) | Optional |
 | `ports` | [string, string, ...] | Optional |
 | `pull` | bool | Optional |
-| `repeat` | int | Optional |
-| `retries` | int | Optional |
+| `repeat` | INT | Optional |
+| `retries` | INT | Optional |
 | `retryDelay` | int (Sekunden) | Optional |
-| `secret` | object | Optional |
+| `secret` | Objekt (object) | Optional |
 | `startDelay` | int (Sekunden) | Optional |
 | `timeout` | int (Sekunden) | Optional |
+| `volumeMount` | Objekt (object) | Optional |
 | `when` | [string, string, ...] | Optional |
 | `workingDirectory` | Zeichenfolge | Optional |
 
@@ -330,34 +337,45 @@ az acr run -f bash-echo-3.yaml https://github.com/Azure-Samples/acr-tasks.git
 Die Schritttyp `cmd` verweist anhand des `docker run`-Standardformats auf Images. Für Images ohne vorangestellte Registrierung wird angenommen, dass sie aus „docker.io“ stammen. Das vorherige Beispiel könnte auch wie folgt dargestellt werden:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - cmd: docker.io/bash:3.0 echo hello world
 ```
 
 Durch die Verwendung der `docker run`-Standardkonvention für Imageverweise kann `cmd` Images aus einer privaten Registrierung oder aus dem öffentlichen Docker-Hub ausführen. Wenn Sie auf Images in derselben Registrierung verweisen, in der ACR Tasks ausgeführt wird, müssen Sie keine Anmeldeinformationen für die Registrierung angeben.
 
-* Ausführen eines Images aus einer Azure-Containerregistrierung
-
-    Ersetzen Sie `[myregistry]` durch den Namen Ihrer Registrierung:
+* Führen Sie ein Image aus einer Azure-Containerregistrierung aus. Im folgenden Beispiel wird von einer Registrierung mit dem Namen `myregistry` und dem benutzerdefinierten Image `myimage:mytag` ausgegangen.
 
     ```yml
-    version: v1.0.0
+    version: v1.1.0
     steps:
-        - cmd: [myregistry].azurecr.io/bash:3.0 echo hello world
+        - cmd: myregistry.azurecr.io/myimage:mytag
     ```
 
-* Generalisieren Sie den Verweis auf die Registrierung mit einer Run-Variablen.
+* Generalisieren Sie den Verweis auf die Registrierung mit einer Run-Variable oder einem Alias.
 
-    Anstatt den Namen Ihrer Registrierung in einer Datei `acr-task.yaml` hartzucodieren, können Sie eine [Run-Variable](#run-variables) verwenden, damit der Name besser portiert werden kann. Die `Run.Registry`-Variable wird zur Laufzeit auf den Namen der Registrierung erweitert, in der die Aufgabe ausgeführt wird.
+    Anstatt den Namen Ihrer Registrierung in der Datei `acr-task.yaml` hartzucodieren, können Sie eine [Run-Variable](#run-variables) oder einen [Alias](#aliases) verwenden, damit der Name besser portiert werden kann. Die `Run.Registry`-Variable oder der `$Registry`-Alias wird zur Laufzeit auf den Namen der Registrierung erweitert, in der die Aufgabe ausgeführt wird.
 
-    Um die vorherige Aufgabe zu generalisieren, damit sie in jeder Azure-Containerregistrierung funktioniert, verweisen Sie im Imagenamen auf die [Run.Registry](#runregistry)-Variable:
+    Um die vorherige Aufgabe zu generalisieren, damit sie in jeder Azure-Containerregistrierung funktioniert, verweisen Sie z. B. im Imagenamen auf die $Registry-Variable:
 
     ```yml
-    version: v1.0.0
+    version: v1.1.0
     steps:
-      - cmd: {{.Run.Registry}}/bash:3.0 echo hello world
+      - cmd: $Registry/myimage:mytag
     ```
+
+#### <a name="access-secret-volumes"></a>Zugreifen auf Geheimnisvolumes
+
+Die Eigenschaft `volumes` ermöglicht die Angabe von Volumes und deren Geheimnisinhalten für die Schritte `build` und `cmd` in einer Aufgabe. In jedem Schritt listet eine optionale `volumeMounts`-Eigenschaft die Volumes und die entsprechenden Containerpfade auf, die in diesem Schritt in den Container eingebunden werden sollen. Geheimnisse werden im Einbindungspfad jedes Volumes als Dateien bereitgestellt.
+
+Führen Sie eine Aufgabe aus, und binden Sie zwei Geheimnisse in einen Schritt ein: ein in einem Schlüsseltresor gespeichertes und ein in der Befehlszeile angegebenes Geheimnis:
+
+```azurecli
+az acr run -f mounts-secrets.yaml --set-secret mysecret=abcdefg123456 https://github.com/Azure-Samples/acr-tasks.git
+```
+
+<!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/mounts-secrets.yaml -->
+[!code-yml[task](~/acr-tasks/mounts-secrets.yaml)]
 
 ## <a name="task-step-properties"></a>Aufgabenschritteigenschaften
 
@@ -374,19 +392,28 @@ Jeder Schritttyp unterstützt mehrere dem jeweiligen Typ entsprechende Eigenscha
 | `ignoreErrors` | bool | Ja | Gibt an, ob der Schritt als erfolgreich markiert werden soll (unabhängig davon, ob bei der Containerausführung ein Fehler aufgetreten ist). | `false` |
 | `isolation` | Zeichenfolge | Ja | Die Isolationsstufe des Containers. | `default` |
 | `keep` | bool | Ja | Gibt an, ob der Container des Schritts nach der Ausführung beibehalten werden soll. | `false` |
-| `network` | object | Ja | Gibt ein Netzwerk an, in dem der Container ausgeführt wird. | Keine |
+| `network` | Objekt (object) | Ja | Gibt ein Netzwerk an, in dem der Container ausgeführt wird. | Keine |
 | `ports` | [string, string, ...] | Ja | Array mit Ports, die aus dem Container für den Host veröffentlicht werden. |  Keine |
 | `pull` | bool | Ja | Gibt an, ob vor dem Ausführen des Containers ein Pullvorgang erzwungen werden soll, um jegliches Zwischenspeicherverhalten zu verhindern. | `false` |
 | `privileged` | bool | Ja | Gibt an, ob der Container im privilegierten Modus ausgeführt werden soll. | `false` |
-| `repeat` | int | Ja | Die Anzahl von Wiederholungsversuchen für die Containerausführung. | 0 |
-| `retries` | int | Ja | Die Anzahl von Wiederholungsversuchen im Falle einer nicht erfolgreichen Containerausführung. Ein erneuter Versuch findet nur statt, wenn der Exitcode des Containers nicht Null ist. | 0 |
+| `repeat` | INT | Ja | Die Anzahl von Wiederholungsversuchen für die Containerausführung. | 0 |
+| `retries` | INT | Ja | Die Anzahl von Wiederholungsversuchen im Falle einer nicht erfolgreichen Containerausführung. Ein erneuter Versuch findet nur statt, wenn der Exitcode des Containers nicht Null ist. | 0 |
 | `retryDelay` | int (Sekunden) | Ja | Die Verzögerung zwischen erneuten Ausführungsversuchen für einen Container (in Sekunden). | 0 |
-| `secret` | object | Ja | Gibt ein Azure Key Vault-Geheimnis oder eine [verwaltete Identität für Azure-Ressourcen](container-registry-tasks-authentication-managed-identity.md) an. | Keine |
+| `secret` | Objekt (object) | Ja | Gibt ein Azure Key Vault-Geheimnis oder eine [verwaltete Identität für Azure-Ressourcen](container-registry-tasks-authentication-managed-identity.md) an. | Keine |
 | `startDelay` | int (Sekunden) | Ja | Verzögerung der Ausführung eines Containers (in Sekunden). | 0 |
 | `timeout` | int (Sekunden) | Ja | Maximale Anzahl von Sekunden, für die ein Schritt ausgeführt werden kann, bevor er beendet wird. | 600 |
 | [`when`](#example-when) | [string, string, ...] | Ja | Konfiguriert die Abhängigkeit eines Schritts von einem oder mehreren anderen Schritten innerhalb der Aufgabe. | Keine |
 | `user` | Zeichenfolge | Ja | Der Benutzername oder die Benutzer-ID eines Containers. | Keine |
-| `workingDirectory` | Zeichenfolge | Ja | Legt das Arbeitsverzeichnis für einen Schritt fest. ACR Tasks erstellt standardmäßig ein Stammverzeichnis als Arbeitsverzeichnis. Wenn Ihr Buildvorgang mehrere Schritte umfasst, können Schritte an früherer Stelle im Vorgang jedoch Artefakte für spätere Schritte freigeben, indem dasselbe Arbeitsverzeichnisses angegeben wird. | `$HOME` |
+| `workingDirectory` | Zeichenfolge | Ja | Legt das Arbeitsverzeichnis für einen Schritt fest. ACR Tasks erstellt standardmäßig ein Stammverzeichnis als Arbeitsverzeichnis. Wenn Ihr Buildvorgang mehrere Schritte umfasst, können Schritte an früherer Stelle im Vorgang jedoch Artefakte für spätere Schritte freigeben, indem dasselbe Arbeitsverzeichnisses angegeben wird. | `c:\workspace` in Windows oder `/workspace` in Linux |
+
+### <a name="volumemount"></a>volumeMount
+
+Das volumeMount-Objekt weist die folgenden Eigenschaften auf.
+
+| Eigenschaft | type | Optional | BESCHREIBUNG | Standardwert |
+| -------- | ---- | -------- | ----------- | ------- | 
+| `name` | Zeichenfolge | Nein | Der Name des einzubindenden Volumes. Dieser muss genau mit dem Namen in einer `volumes`-Eigenschaft übereinstimmen. | Keine |
+| `mountPath`   | Zeichenfolge | nein | Der absolute Pfad zum Einbinden von Dateien in den Container.  | Keiner |
 
 ### <a name="examples-task-step-properties"></a>Beispiele: Aufgabenschritteigenschaften
 
@@ -451,31 +478,54 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 ACR Tasks enthält einen Standardsatz von Variablen, die für Aufgabenschritte verfügbar sind, wenn diese ausgeführt werden. Auf diese Variablen kann mithilfe des Formats `{{.Run.VariableName}}` zugegriffen werden, wobei `VariableName` eine der folgenden Variablen ist:
 
 * `Run.ID`
+* `Run.SharedVolume`
 * `Run.Registry`
+* `Run.RegistryName`
 * `Run.Date`
+* `Run.OS`
+* `Run.Architecture`
 * `Run.Commit`
 * `Run.Branch`
+* `Run.TaskName`
+
+Die Variablennamen sind in der Regel selbsterklärend. Details zu häufig verwendeten Variablen finden Sie nachfolgend. Ab YAML `v1.1.0` können Sie anstelle der meisten Run-Variablen einen abgekürzten vordefinierten [Aufgabenalias](#aliases) verwenden. Anstelle von `{{.Run.Registry}}` können Sie beispielsweise den Alias `$Registry` verwenden.
 
 ### <a name="runid"></a>Run.ID
 
-Jede Ausführung über `az acr run` oder triggerbasierte Ausführung von Aufgaben, die mit `az acr task create` erstellt wurden, besitzt eine eindeutige ID. Die ID stellt die aktuelle Ausführung dar.
+Jede Ausführung über `az acr run` oder triggerbasierte Ausführung von Aufgaben, die mit `az acr task create` erstellt wurden, verfügt über eine eindeutige ID. Die ID stellt die aktuelle Ausführung dar.
 
 Diese Variable wird in der Regel zur eindeutigen Kennzeichnung eines Images verwendet:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-    - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+    - build: -t $Registry/hello-world:$ID .
 ```
+
+### <a name="runsharedvolume"></a>Run.SharedVolume
+
+Der eindeutige Bezeichner für ein freigegebenes Volume, auf das alle Aufgabenschritte zugreifen können. Das Volume wird in Windows unter `c:\workspace` bzw. in Linux unter `/workspace` eingebunden. 
 
 ### <a name="runregistry"></a>Run.Registry
 
 Der vollqualifizierte Servername der Registrierung. Diese Variable wird in der Regel verwendet, um generisch auf die Registrierung zu verweisen, in der die Aufgabe ausgeführt wird.
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+  - build: -t $Registry/hello-world:$ID .
+```
+
+### <a name="runregistryname"></a>Run.RegistryName
+
+Der Name der Containerregistrierung. Wird normalerweise in Aufgabenschritten verwendet, für die kein vollqualifizierter Servername erforderlich ist, z. B. `cmd`-Schritte, mit denen Azure CLI-Befehle in Registrierungen ausgeführt werden.
+
+```yml
+version 1.1.0
+steps:
+# List repositories in registry
+- cmd: az login --identity
+- cmd: az acr repository list --name $RegistryName
 ```
 
 ### <a name="rundate"></a>Run.Date
@@ -490,11 +540,88 @@ Für eine Aufgabe, die durch einen Commit an ein GitHub-Repository ausgelöst wu
 
 Für eine Aufgabe, die durch einen Commit an ein GitHub-Repository ausgelöst wurde, der Branchname.
 
+## <a name="aliases"></a>Aliase
+
+Ab `v1.1.0` unterstützt ACR Tasks Aliase, die für Aufgabenschritte verfügbar sind, wenn diese ausgeführt werden. Aliase ähneln in ihrem Konzept den in Bash und einigen anderen Befehlsshells unterstützten Befehlsverknüpfungen. 
+
+Mit einem Alias können Sie einen Befehl oder eine Befehlsgruppe (einschließlich Optionen und Dateinamen) starten, indem Sie ein einzelnes Wort eingeben.
+
+ACR Tasks unterstützen verschiedene vordefinierte Aliase und auch benutzerdefinierte Aliase, die Sie erstellen.
+
+### <a name="predefined-aliases"></a>Vordefinierte Aliase
+
+Folgende Aufgabenaliase stehen zur Verwendung anstelle von [Run-Variablen](#run-variables) zur Verfügung:
+
+| Alias | Run-Variable |
+| ----- | ------------ |
+| `ID` | `Run.ID` |
+| `SharedVolume` | `Run.SharedVolume` |
+| `Registry` | `Run.Registry` |
+| `RegistryName` | `Run.RegistryName` |
+| `Date` | `Run.Date` |
+| `OS` | `Run.OS` |
+| `Architecture` | `Run.Architecture` |
+| `Commit` | `Run.Commit` |
+| `Branch` | `Run.Branch` |
+
+Stellen Sie in Aufgabenschritten wie im folgenden Beispiel einem Alias die `$`-Anweisung voran:
+
+```yml
+version: v1.1.0
+steps:
+  - build: -t $Registry/hello-world:$ID -f hello-world.dockerfile .
+```
+
+### <a name="image-aliases"></a>Imagealiase
+
+Jeder der folgenden Aliase verweist auf ein stabiles Image in Microsoft Container Registry (MCR). Sie können auf jeden dieser Aliase im Abschnitt `cmd` einer Aufgabendatei ohne Verwendung einer Anweisung verweisen.
+
+| Alias | Image |
+| ----- | ----- |
+| `acr` | `mcr.microsoft.com/acr/acr-cli:0.1` |
+| `az` | `mcr.microsoft.com/acr/azure-cli:a80af84` |
+| `bash` | `mcr.microsoft.com/acr/bash:a80af84` |
+| `curl` | `mcr.microsoft.com/acr/curl:a80af84` |
+
+In der folgenden Beispielaufgabe werden mehrere Aliase zum [Bereinigen](container-registry-auto-purge.md) von Imagetags, die älter als 7 Tage sind, im Repository `samples/hello-world` in der Ausführungsregistrierung verwendet:
+
+```yml
+version: v1.1.0
+steps:
+  - cmd: acr tag list --registry $RegistryName --repository samples/hello-world
+  - cmd: acr purge --registry $RegistryName --filter samples/hello-world:.* --ago 7d
+```
+
+### <a name="custom-alias"></a>Benutzerdefinierter Alias
+
+Definieren Sie einen benutzerdefinierten Alias in der YAML-Datei, und verwenden Sie ihn wie im folgenden Beispiel gezeigt. Ein Alias darf nur alphanumerische Zeichen enthalten. Als Standardanweisung zum Erweitern eines Alias wird das `$`-Zeichen verwendet.
+
+```yml
+version: v1.1.0
+alias:
+  values:
+    repo: myrepo
+steps:
+  - build: -t $Registry/$repo/hello-world:$ID -f Dockerfile .
+```
+
+Sie können eine Verknüpfung mit einer lokalen YAML-Datei oder einer YAML-Remotedatei für benutzerdefinierte Aliasdefinitionen herstellen. Im folgenden Beispiel wird eine Verknüpfung mit einer YAML-Datei in Azure Blob Storage hergestellt:
+
+```yml
+version: v1.1.0
+alias:
+  src:  # link to local or remote custom alias files
+    - 'https://link/to/blob/remoteAliases.yml?readSasToken'
+[...]
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Eine Übersicht über mehrstufige Aufgaben finden Sie unter [Run multi-step build, test, and patch tasks in ACR Tasks](container-registry-tasks-multi-step.md) (Ausführen von mehrstufigen Build-, Test- und Patchaufgaben in ACR Tasks).
 
 Informationen zu einstufigen Buildaufgaben finden Sie unter [ACR Tasks overview](container-registry-tasks-overview.md) (Übersicht über ACR Tasks).
+
+
 
 <!-- IMAGES -->
 

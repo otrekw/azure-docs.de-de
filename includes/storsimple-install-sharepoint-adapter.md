@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: e2d258f327ade2149adc92bdb7fb4bcc87cdd58c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67178132"
 ---
 #### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>So installieren Sie den StorSimple-Adapter für SharePoint
@@ -27,5 +27,5 @@ ms.locfileid: "67178132"
    
     ![StorSimple-Adaptereinrichtung – Seite „Abgeschlossen“](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup_finish-include.png) 
 7. Öffnen Sie die Seite für die SharePoint-Zentraladministration. Hier sollte eine StorSimple-Konfigurationsgruppe angezeigt werden, die den StorSimple-Adapter für SharePoint-Links enthält.
-8. Fahren Sie mit dem nächsten Schritt fort: [Konfigurieren von RBS](#configure-rbs).
+8. Wechseln Sie zum nächsten Schritt: [Konfigurieren von RBS](#configure-rbs).
 

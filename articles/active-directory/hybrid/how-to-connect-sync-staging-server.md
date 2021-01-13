@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: b29c1790-37a3-470f-ab69-3cee824d220d
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900057"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90090124"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Stagingserver und Notfallwiederherstellung
 Mit einem Server im Stagingmodus können Sie Änderungen an der Konfiguration vornehmen und eine Vorschau der Änderungen anzeigen, bevor Sie den Server aktiv schalten. Ein Server im Stagingmodus ermöglicht es Ihnen außerdem, einen vollständigen Import und eine vollständige Synchronisierung durchzuführen und so sicherzustellen, dass alle Änderungen wie erwartet durchgeführt werden, bevor Sie die Änderungen in Ihrer Produktionsumgebung implementieren.
@@ -50,14 +50,14 @@ Wenn Sie sich bisher nur mit älteren Synchronisierungstechnologien auskennen, m
 Führen Sie zum Anwenden dieser Methode die folgenden Schritte aus:
 
 1. [Vorbereiten](#prepare)
-2. [Konfiguration](#configuration)
+2. [Configuration](#configuration)
 3. [Importieren und Synchronisieren](#import-and-synchronize)
 4. [Überprüfen](#verify)
 5. [Wechseln des aktiven Servers](#switch-active-server)
 
 #### <a name="prepare"></a>Vorbereiten
 1. Installieren Sie Azure AD Connect, wählen Sie **Stagingmodus** aus, und deaktivieren Sie auf der letzten Seite des Installations-Assistenten die Option **Synchronisierung starten**. In diesem Modus kann das Synchronisierungsmodul manuell ausgeführt werden.
-   ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
+   ![Screenshot der Seite „Bereit für die Konfiguration“ im Azure AD Connect-Dialogfeld](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. Melden Sie sich ab und wieder an, und wählen Sie im Startmenü die Option **Synchronisierungsdienst**aus.
 
 #### <a name="configuration"></a>Konfiguration
@@ -73,7 +73,7 @@ Sie haben einen Stagingexport der Änderungen an Azure AD und der lokalen Active
 
 #### <a name="verify"></a>Überprüfen
 1. Starten Sie eine Eingabeaufforderung, und wechseln Sie zu: `%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Führen Sie folgenden Befehl aus: `csexport "Name of Connector" %temp%\export.xml /f:x` Den Namen des Connectors finden Sie im Synchronisierungsdienst. Für Azure AD sieht der Name in etwa wie folgt aus: contoso.com – AAD.
+2. Führen Sie folgenden Befehl aus: `csexport "Name of Connector" %temp%\export.xml /f:x` Den Namen des Connectors finden Sie im Synchronisierungsdienst. Für Azure AD sieht der Name in etwa wie folgt aus: contoso.com – Azure AD.
 3. Führen Sie folgenden Befehl aus: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` Im Ordner „%temp%“ befindet sich nun eine Datei namens „export.csv“, die Sie sich in Microsoft Excel ansehen können. Diese Datei enthält alle Änderungen, die exportiert werden sollen.
 4. Nehmen Sie erforderliche Änderungen an den Daten oder der Konfiguration vor, und führen Sie die oben genannten Schritte (Importieren, Synchronisieren, Überprüfen) erneut aus, bis Sie die Änderungen erhalten, die Sie exportieren möchten.
 

@@ -1,30 +1,28 @@
 ---
-title: Verwalten von Paketerfassungen mit Azure Network Watcher – PowerShell | Microsoft-Dokumentation
+title: Verwalten von Paketerfassungen – Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Auf dieser Seite wird erläutert, wie das Network Watcher-Feature zur Paketerfassung mit PowerShell verwaltet wird.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 04d82085-c9ea-4ea1-b050-a3dd4960f3aa
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 4158c2c5ce69d1811b20c9937c1d064f4fe657ee
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.author: damendo
+ms.openlocfilehash: c9a7af7575fcdd19d83e5a4f38ef03ef8948b8c0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163946"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963469"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe von PowerShell
 
 > [!div class="op_single_selector"]
-> - [Azure-Portal](network-watcher-packet-capture-manage-portal.md)
+> - [Azure portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure-Befehlszeilenschnittstelle](network-watcher-packet-capture-manage-cli.md)
 > - [Azure-REST-API](network-watcher-packet-capture-manage-rest.md)
@@ -50,7 +48,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Ressource
 * Einen virtuellen Computer mit aktivierter Paketerfassungserweiterung
 
 > [!IMPORTANT]
-> Für die Paketerfassung ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
+> Für die Paketerfassung ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/extensions/network-watcher-windows.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/extensions/network-watcher-linux.md).
 
 ## <a name="install-vm-extension"></a>Installieren der VM-Erweiterung
 
@@ -67,7 +65,7 @@ Das folgende Beispiel ruft die benötigten Erweiterungsinformationen zum Ausfüh
 > [!NOTE]
 > Die Ausführung des Cmdlets `Set-AzVMExtension` kann mehrere Minuten in Anspruch nehmen.
 
-Virtuelle Windows-Computer:
+Für virtuelle Windows-Computer:
 
 ```powershell
 $AzureNetworkWatcherExtension = Get-AzVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentWindows -Version 1.4.585.2
@@ -75,7 +73,7 @@ $ExtensionName = "AzureNetworkWatcherExtension"
 Set-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ```
 
-Virtuelle Linux-Computer
+Für virtuelle Linux-Computer:
 
 ```powershell
 $AzureNetworkWatcherExtension = Get-AzVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentLinux -Version 1.4.13.0
@@ -130,7 +128,7 @@ Nachdem Sie die vorherigen Schritte abgeschlossen haben, wird der Paketerfassung
 Der nächste Schritt besteht im Abrufen der Network Watcher-Instanz. Diese Variable wird in Schritt 4 an das Cmdlet `New-AzNetworkWatcherPacketCapture` übergeben.
 
 ```powershell
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
+$networkWatcher = Get-AzResource -ResourceType "Microsoft.Network/networkWatchers" | Where {$_.Location -eq "WestCentralUS" }
 ```
 
 ### <a name="step-2"></a>Schritt 2
@@ -283,17 +281,3 @@ Informationen zur Automatisierung von Paketerfassungen mit VM-Warnungen finden S
 Lesen Sie den Artikel zur [IP-Datenflussüberprüfung](diagnose-vm-network-traffic-filtering-problem.md), um herauszufinden, ob bestimmter eingehender oder ausgehender Datenverkehr für Ihren virtuellen Computer zulässig ist.
 
 <!-- Image references -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-

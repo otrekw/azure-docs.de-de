@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: a9b75c3454c67112b0e00c7ea4b4e8c676ebcc97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65949468"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "76990503"
 ---
 # <a name="manage-multiple-tenants"></a>Verwalten mehrerer Mandanten
 
@@ -45,7 +45,7 @@ Wenn Sie diese Architektur verwenden, wird für jeden Mandanten ein Video Indexe
 * Schwierigere Verwaltung aufgrund mehrerer Video Indexer- (und zugehöriger Media Services-) Konten pro Mandant.
 
 > [!TIP]
-> Erstellen Sie im [Video Indexer-Entwicklerportal](https://api-portal.videoindexer.ai/) einen Administratorbenutzer für Ihr System, und stellen Sie Ihren Mandanten mithilfe der Autorisierungs-API das entsprechende [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token) zur Verfügung.
+> Erstellen Sie im [Video Indexer-Entwicklerportal](https://api-portal.videoindexer.ai/) einen Administratorbenutzer für Ihr System, und stellen Sie Ihren Mandanten mithilfe der Autorisierungs-API das entsprechende [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token) zur Verfügung.
 
 ## <a name="single-video-indexer-account-for-all-users"></a>Einzelnes Video Indexer-Konto für alle Benutzer
 

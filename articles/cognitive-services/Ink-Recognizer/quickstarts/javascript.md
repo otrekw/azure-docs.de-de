@@ -1,23 +1,26 @@
 ---
 title: 'Schnellstart: Erkennen von Freihandeingaben mit der Freihanderkennungs-REST-API und Node.js'
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Freihanderkennungs-REST-API, um Freihandstriche zu erkennen.
+description: Verwenden Sie in dieser Schnellstartanleitung die Freihanderkennungs-REST-API und JavaScript, um Freihandstriche zu erkennen.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 09/23/2019
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 5e3b97faaed84f2c07ea70ddb73bd8e8c9efa71d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.custom: devx-track-js
+ms.openlocfilehash: ca1c18fd1ea8507c8b6a58b5f786b9686b1f3a34
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212644"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369073"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Schnellstart: Erkennen von Freihandeingaben mit der Freihanderkennungs-REST-API und JavaScript
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 In diesem Schnellstart werden die ersten Schritte zur Verwendung der Freihanderkennungs-API zum Erkennen von Freihandstrichen erläutert. Die hier verwendete JavaScript-Anwendung sendet eine API-Anforderung, die JSON-formatierte Freihandstrichdaten enthält, und zeigt die Antwort an.
 
@@ -34,8 +37,9 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
 - Aus einem Webbrowser
 - Die Beispiel-Freihandstrichdaten für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json).
 
+### <a name="create-an-ink-recognizer-resource"></a>Erstellen einer Freihanderkennungsressource
 
-[!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
+[!INCLUDE [creating an ink recognizer resource](../includes/setup-instructions.md)]
 
 ## <a name="create-a-new-application"></a>Erstellen einer neuen Anwendung
 
@@ -110,10 +114,9 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
         ```javascript
         // Replace the below URL with the correct one for your subscription. 
         // Your endpoint can be found in the Azure portal. For example: "https://<your-custom-subdomain>.cognitiveservices.azure.com";
-        var SERVER_ADDRESS = "YOUR-SUBSCRIPTION-URL";
+        var SERVER_ADDRESS = process.env["INK_RECOGNITION_ENDPOINT"];
         var ENDPOINT_URL = SERVER_ADDRESS + "/inkrecognizer/v1.0-preview/recognize";
-        // Replace the subscriptionKey string value with your valid subscription key.
-        var SUBSCRIPTION_KEY = "YOUR-SUBSCRIPTION-KEY";
+        var SUBSCRIPTION_KEY = process.env["INK_RECOGNITION_SUBSCRIPTION_KEY"];
         var xhttp = new XMLHttpRequest();
         ```
     2. Erstellen Sie die Rückgabefunktion für das `XMLHttpRequest`-Objekt. Diese Funktion analysiert die API-Antwort einer erfolgreichen Anforderung und zeigt sie in der Anwendung an. 
@@ -164,7 +167,7 @@ Diese Anwendung kann in Ihrem Webbrowser ausgeführt werden. Eine erfolgreiche A
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [REST-API-Referenz](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST-API-Referenz](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 Sehen Sie sich in den folgenden Beispielanwendungen auf GitHub an, wie die Freihanderkennungs-API in einer Freihandschriftinhalte-App funktioniert:
 * [C# und universelle Windows-Plattform (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  

@@ -1,20 +1,15 @@
 ---
-title: Azure Container Instances und Containerorchestrierung
+title: Container Instances und Containerorchestrierung
 description: Hier erfahren Sie, wie Azure Container Instances mit Containerorchestratoren interagiert.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 044b74e1a8683c6beb0220c1cf9fb97403286a95
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: c7faeecfcc3a1d006cc923b48339a1242a0b9e9b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972247"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148595"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances und Containerorchestratoren
 
@@ -59,7 +54,7 @@ Anstatt die Anzahl der virtuellen Computer in Ihrem Cluster horizontal hochzuska
 
 Um Anwendungsworkloads in einem [Azure Kubernetes Service-Cluster](../aks/intro-kubernetes.md) (AKS) schnell zu skalieren, können Sie *virtuelle Knoten* verwenden, die dynamisch in Azure Container Instances erstellt wurden. Virtuelle Knoten ermöglichen die Netzwerkkommunikation zwischen Pods, die in ACI und dem AKS-Cluster ausgeführt werden. 
 
-Aktuell werden Linux-Containerinstanzen von virtuellen Knoten unterstützt. Verwenden Sie für erste Schritte mit virtuellen Knoten die [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) oder das [Azure-Portal](https://go.microsoft.com/fwlink/?linkid=2047545).
+Aktuell werden Linux-Containerinstanzen von virtuellen Knoten unterstützt. Verwenden Sie für erste Schritte mit virtuellen Knoten die [Azure CLI](../aks/virtual-nodes-cli.md) oder das [Azure-Portal](../aks/virtual-nodes-portal.md).
 
 Virtuelle Knoten verwenden das Open Source-Kubelet [Virtual Kubelet][aci-connector-k8s], um das [Kubelet][kubelet-doc] von Kubernetes durch Registrierung als Knoten mit unbegrenzter Kapazität nachzuahmen. Das Virtual Kubelet veranlasst die Erstellung von [Pods][pod-doc] als Containergruppen in Azure Container Instances.
 

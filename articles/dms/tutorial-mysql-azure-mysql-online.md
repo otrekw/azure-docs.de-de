@@ -1,26 +1,27 @@
 ---
-title: 'Tutorial: Ausführen einer Onlinemigration von MySQL zu Azure Database for MySQL mithilfe von Azure Database Migration Service | Microsoft-Dokumentation'
+title: 'Tutorial: Onlinemigration von MySQL zu Azure Database for MySQL'
+titleSuffix: Azure Database Migration Service
 description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Onlinemigration von einer lokalen MySQL-Instanz zu Azure Database for MySQL durchführen.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
-ms.topic: article
-ms.date: 05/24/2019
-ms.openlocfilehash: 5a35df5b72f51f4ef725b3d764e7dc2c80c19ec2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.custom: seo-lt-2019
+ms.topic: tutorial
+ms.date: 01/08/2020
+ms.openlocfilehash: 41c0bd23bbd2d69506a979c5a36ac40f73258f2c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240751"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605512"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Tutorial: Ausführen einer Onlinemigration von MySQL zu Azure Database for MySQL mithilfe von DMS
 
-Mit Azure Database Migration Service können Sie die Datenbanken mit minimaler Ausfallzeit von einer lokalen MySQL-Instanz zu [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) migrieren. Somit kommt es bei der Migration nur zu einer geringen Ausfallzeit für die Anwendung. In diesem Tutorial migrieren Sie die Beispieldatenbank **Employees** von einer lokalen Instanz von MySQL 5.7 zu Azure Database for MySQL. Zu diesem Zweck verwenden Sie eine Onlinemigrationsaktivität in Azure Database Migration Service.
+Mit Azure Database Migration Service können Sie die Datenbanken mit minimaler Ausfallzeit von einer lokalen MySQL-Instanz zu [Azure Database for MySQL](../mysql/index.yml) migrieren. Somit kommt es bei der Migration nur zu einer geringen Ausfallzeit für die Anwendung. In diesem Tutorial migrieren Sie die Beispieldatenbank **Employees** von einer lokalen Instanz von MySQL 5.7 zu Azure Database for MySQL. Zu diesem Zweck verwenden Sie eine Onlinemigrationsaktivität in Azure Database Migration Service.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -37,27 +38,35 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!IMPORTANT]
 > Für eine optimale Migration empfiehlt Microsoft die Erstellung einer Azure Database Migration Service-Instanz in derselben Azure-Region, in der sich auch die Zieldatenbank befindet. Die Verschiebung von Daten zwischen Regionen oder Geografien kann den Migrationsvorgang verlangsamen und Fehler verursachen.
 
+> [!NOTE]
+> Vorurteilsfreie Kommunikation
+>
+> Microsoft setzt sich für Diversität und Inklusion ein. In diesem Artikel wird das Wort _Slave_ verwendet. Laut dem [Microsoft-Styleguide für vorurteilsfreie Kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) sollte dieses Wort jedoch vermieden werden. In diesem Artikel wird es aus Konsistenzgründen gebraucht, da das Wort derzeit noch in der Software vorkommt. Wenn die Software aktualisiert und um dieses Wort bereinigt wird, wird auch der Artikel entsprechend aktualisiert.
+>
+
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Laden Sie [MySQL Community Edition](https://dev.mysql.com/downloads/mysql/) 5.6 oder 5.7 herunter, und installieren Sie die Edition. Die lokale MySQL-Version muss mit der Version von Azure Database for MySQL übereinstimmen. Beispiel: MySQL 5.6 kann nur zu Azure Database for MySQL 5.6 migriert, aber nicht auf 5.7 aktualisiert werden.
-* [Erstellen einer Instanz in Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal) Im Artikel [Azure-Datenbank für MySQL: Verwenden von MySQL Workbench zum Verbinden und Abfragen von Daten](https://docs.microsoft.com/azure/mysql/connect-workbench) finden Sie ausführliche Informationen zum Erstellen und Verbinden einer Datenbank über das Azure-Portal.  
-* Erstellen Sie ein virtuelles Azure-Netzwerk (VNET) für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Site-to-Site-Konnektivität für Ihre lokalen Quellserver bereitstellt. Weitere Informationen zum Erstellen eines VNET finden Sie in der [Dokumentation zu Virtual Network](https://docs.microsoft.com/azure/virtual-network/) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
+* Laden Sie [MySQL Community Edition](https://dev.mysql.com/downloads/mysql/) 5.6 oder 5.7 herunter, und installieren Sie die Edition. Die lokale MySQL-Version muss mit der Version von Azure Database for MySQL übereinstimmen. Beispiel: MySQL 5.6 kann nur zu Azure Database for MySQL 5.6 migriert, aber nicht auf 5.7 aktualisiert werden. Eine Migration zu oder von MySQL 8.0 wird nicht unterstützt. Eine Migration zu oder von MySQL 8.0 wird nicht unterstützt.
+* [Erstellen einer Instanz in Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-portal.md) Im Artikel [Azure-Datenbank für MySQL: Verwenden von MySQL Workbench zum Verbinden und Abfragen von Daten](../mysql/connect-workbench.md) finden Sie ausführliche Informationen zum Erstellen und Verbinden einer Datenbank über das Azure-Portal.  
+* Erstellen Sie ein Microsoft Azure Virtual Network für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das Site-to-Site-Konnektivität für Ihre lokalen Quellserver entweder über [ExpressRoute](../expressroute/expressroute-introduction.md) oder über [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) bereitstellt. Weitere Informationen zum Erstellen eines virtuellen Netzwerks finden Sie in der [Dokumentation zu Virtual Network](../virtual-network/index.yml) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
 
     > [!NOTE]
-    > Fügen Sie bei Verwendung von ExpressRoute mit Netzwerkpeering zu Microsoft während des VNET-Setups die folgenden [Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) zu dem Subnetz hinzu, in dem der Dienst bereitgestellt werden soll:
+    > Fügen Sie bei Verwendung von ExpressRoute mit Netzwerkpeering zu Microsoft während des Setups des virtuellen Netzwerks die folgenden [Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) zu dem Subnetz hinzu, in dem der Dienst bereitgestellt werden soll:
+    >
     > * Zieldatenbankendpunkt (z. B. SQL-Endpunkt, Cosmos DB-Endpunkt usw.)
     > * Speicherendpunkt
     > * Service Bus-Endpunkt
     >
     > Diese Konfiguration ist erforderlich, weil Azure Database Migration Service über keine Internetverbindung verfügt.
 
-* Stellen Sie sicher, dass die Netzwerksicherheitsgruppen-Regeln des VNET nicht die folgenden Ports für eingehende Kommunikation in Azure Database Migration Service blockieren: 443, 53, 9354, 445, 12000. Ausführlichere Informationen zur NSG-Datenverkehrsfilterung in einem Azure-VNET finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
-* Konfigurieren Sie Ihre [Windows-Firewall für Datenbank-Engine-Zugriff](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+* Stellen Sie sicher, dass die Netzwerksicherheitsgruppen-Regeln des virtuellen Netzwerks nicht die folgenden Ports für eingehende Kommunikation in Azure Database Migration Service blockieren: 443, 53, 9354, 445, 12000. Ausführlichere Informationen zur NSG-Datenverkehrsfilterung in einem virtuellen Netzwerk finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Konfigurieren Sie Ihre [Windows-Firewall für Datenbank-Engine-Zugriff](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Öffnen Sie Ihre Windows-Firewall, damit Azure Database Migration Service auf den MySQL-Quellserver zugreifen kann (standardmäßig TCP-Port 3306).
 * Wenn Sie eine Firewallappliance vor Ihren Quelldatenbanken verwenden, müssen Sie möglicherweise Firewallregeln hinzufügen, um Azure Database Migration Service den Zugriff auf die Quelldatenbanken für die Migration zu ermöglichen.
-* Erstellen Sie für Azure Database for MySQL eine [Firewallregel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) auf Serverebene, um den Zugriff auf die Zieldatenbanken durch Azure Database Migration Service zu ermöglichen. Geben Sie den Subnetzbereich des für Azure Database Migration Service verwendeten VNet an.
+* Erstellen Sie für Azure Database for MySQL eine [Firewallregel](../azure-sql/database/firewall-configure.md) auf Serverebene, um den Zugriff auf die Zieldatenbanken durch Azure Database Migration Service zu ermöglichen. Geben Sie den Subnetzbereich des für Azure Database Migration Service verwendeten virtuellen Netzwerks an.
 * Die MySQL-Quellinstanz muss unter einer unterstützten Version von MySQL Community Edition ausgeführt werden. Führen Sie zum Ermitteln der Version der MySQL-Instanz im MySQL-Hilfsprogramm oder in MySQL Workbench den folgenden Befehl aus:
 
     ```
@@ -69,7 +78,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Aktivieren Sie mithilfe der folgenden Konfiguration die binäre Protokollierung in der Datei „my.ini“ (Windows) oder „my.cnf“ (Unix) in der Quelldatenbank.
 
   * **server_id** = 1 oder höher (nur für MySQL 5.6 relevant)
-  * **log-bin** =\<Pfad> (nur für MySQL 5.6 relevant)    Beispiel: log-bin = E:\MySQL_logs\BinLog
+  * **log-bin** =\<path> (nur für MySQL 5.6 relevant)    Beispiel: log-bin = E:\MySQL_logs\BinLog
   * **binlog_format** = row
   * **Expire_logs_days** = 5 (es wird empfohlen, nicht null zu verwenden; nur für MySQL 5.6 relevant)
   * **Binlog_row_image** = full (nur für MySQL 5.6 relevant)
@@ -111,7 +120,7 @@ mysql.exe -h shausample.mysql.database.azure.com -u dms@shausample -p employees 
 
 Enthält das Schema Fremdschlüssel, tritt beim ersten Ladevorgang und bei der fortlaufenden Synchronisierung der Migration ein Fehler auf.  Führen Sie das folgende Skript in MySQL Workbench aus, um das Skript zum Löschen des Fremdschlüssels und das Skript zum Hinzufügen des Fremdschlüssels zu extrahieren.
 
-```
+```sql
 SET group_concat_max_len = 8192;
     SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery
     FROM
@@ -130,6 +139,11 @@ SET group_concat_max_len = 8192;
  ```
 
 Führen Sie „drop foreign key“ (zweite Spalte) im Abfrageergebnis aus, um den Fremdschlüssel zu löschen.
+
+> [!NOTE]
+> Azure DMS unterstützt die referenzielle CASCADE-Aktion nicht, die verwendet werden kann, um eine übereinstimmende Zeile in der untergeordneten Tabelle automatisch zu löschen oder zu aktualisieren, wenn eine Zeile in der übergeordneten Tabelle gelöscht oder aktualisiert wird. Weitere Informationen finden Sie in der MySQL-Dokumentation im Abschnitt „Referential Actions“ (referenzielle Aktionen) des Artikels [FOREIGN KEY Constraints](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html).
+> Azure DMS erfordert, dass Sie Fremdschlüsseleinschränkungen auf dem Zieldatenbankserver während des anfänglichen Ladens von Daten löschen. Zudem können Sie keine referenziellen Aktionen verwenden. Wenn Ihre Workload von der Aktualisierung einer zugehörigen untergeordneten Tabelle über diese referenzielle Aktion abhängt, empfiehlt es sich, stattdessen eine [Sicherung und Wiederherstellung](../mysql/concepts-migrate-dump-restore.md) durchzuführen. 
+
 
 > [!IMPORTANT]
 > Entfernen Sie beim Importieren von Daten mithilfe einer Sicherung die CREATE DEFINER-Befehle manuell oder mithilfe des Befehls „--skip-definer“, wenn Sie einen mysqldump ausführen. DEFINER erfordert Administratorberechtigungen zum Erstellen und ist in Azure Database for MySQL eingeschränkt.
@@ -168,11 +182,11 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
   
 3. Geben Sie auf dem Bildschirm **Migrationsdienst erstellen** einen Namen für den Dienst, das Abonnement und eine neue oder vorhandene Ressourcengruppe an.
 
-4. Wählen Sie ein vorhandenes VNet aus, oder erstellen Sie ein neues VNet.
+4. Wählen Sie ein vorhandenes virtuelles Netzwerk aus, oder erstellen Sie ein neues.
 
-    Das VNET erteilt Azure Database Migration Service Zugriff auf die SQL Server-Quellinstanz und die Azure SQL-Datenbank-Zielinstanz.
+    Das virtuelle Netzwerk erteilt Azure Database Migration Service Zugriff auf die SQL Server-Quellinstanz und die Azure SQL-Datenbank-Zielinstanz.
 
-    Weitere Informationen zum Erstellen eines VNet im Azure-Portal finden Sie im Artikel [Erstellen eines virtuellen Netzwerks im Azure Portal](https://aka.ms/DMSVnet).
+    Weitere Informationen zum Erstellen eines virtuellen Netzwerks im Azure-Portal finden Sie im Artikel [Erstellen eines virtuellen Netzwerks im Azure Portal](../virtual-network/quick-create-portal.md).
 
 5. Wählen Sie einen Tarif.
 
@@ -201,7 +215,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
     ![Erstellen eines Database Migration Service-Projekts](media/tutorial-mysql-to-azure-mysql-online/dms-create-project4.png)
 
     > [!NOTE]
-    > Alternativ können Sie **Create project only** (Nur Projekt erstellen) auswählen, um das Migrationsprojekt jetzt zu erstellen und die Migration später durchzuführen.
+    > Alternativ können Sie **Nur Projekt erstellen** auswählen, um das Migrationsprojekt jetzt zu erstellen und die Migration später durchzuführen.
 
 6. Klicken Sie auf **Speichern**, sehen Sie sich die Anforderungen zum Migrieren von Daten mithilfe von DMS an, und klicken Sie dann auf **Aktivität erstellen und ausführen**.
 
@@ -222,6 +236,8 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
     Wenn die Zieldatenbank denselben Datenbanknamen wie die Quelldatenbank enthält, wählt Azure Database Migration Service die Zieldatenbank standardmäßig aus.
 
     ![Zuordnen zu Zieldatenbanken](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
+   > [!NOTE] 
+   > Sie können in diesem Schritt mehrere Datenbanken auswählen. Beachten Sie jedoch, dass jede Instanz von Azure Database Migration Service bis zu vier Datenbanken für die gleichzeitige Migration unterstützt. Außerdem besteht eine Beschränkung von zwei Instanzen von Azure Database Migration Service pro Region in einem Abonnement. Wenn Sie z. B. 40 Datenbanken migrieren müssen, können Sie jeweils nur acht Datenbanken gleichzeitig migrieren, aber auch nur, wenn Sie zwei Instanzen von Azure Database Migration Service erstellt haben.
 
 3. Klicken Sie auf **Speichern**. Geben Sie auf dem Bildschirm **Migrationszusammenfassung** im Textfeld **Aktivitätsname** einen Namen für die Migrationsaktivität ein, und überprüfen Sie anschließend die Zusammenfassung, um sicherzustellen, dass die Ziel- und Quelldetails Ihren vorherigen Angaben entsprechen.
 
@@ -262,5 +278,5 @@ Wenn der erste vollständige Ladevorgang abgeschlossen ist, werden die Datenbank
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu bekannten Problemen und Einschränkungen beim Ausführen der Onlinemigration zu Azure Database for MySQL finden Sie im Artikel [Known issues/migration limitations with online migrations to Azure DB for MySQL](known-issues-azure-mysql-online.md) (Bekannte Probleme/Migrationseinschränkungen bei der Onlinemigration zu Azure Database for MySQL).
-* Informationen zu Azure Database Migration Service finden Sie im Artikel [Was ist Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-* Informationen zu Azure Database for MySQL finden Sie im Artikel [Was ist Azure-Datenbank für MySQL?](https://docs.microsoft.com/azure/mysql/overview).
+* Informationen zu Azure Database Migration Service finden Sie im Artikel [Was ist Azure Database Migration Service?](./dms-overview.md).
+* Informationen zu Azure Database for MySQL finden Sie im Artikel [Was ist Azure-Datenbank für MySQL?](../mysql/overview.md).

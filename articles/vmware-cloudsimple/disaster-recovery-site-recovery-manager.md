@@ -1,19 +1,19 @@
 ---
-title: Azure VMware-Lösung von CloudSimple – Einrichten der privaten Cloud als Standort für die Notfallwiederherstellung mit VMware Site Recovery Manager
-description: Hier wird beschrieben, wie Sie Ihre private CloudSimple-Cloud als Notfallwiederherstellungsstandort für lokale VMware-Workloads einrichten.
-author: sharaths-cs
-ms.author: b-shsury
+title: Azure VMware Solution by CloudSimple – Einrichten der privaten Cloud als Standort für die Notfallwiederherstellung mit VMware Site Recovery Manager
+description: Hier wird beschrieben, wie Sie Ihre private CloudSimple-Cloud als Standort für die Notfallwiederherstellung mithilfe von VMware Site Recovery Manager einrichten.
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 151058f23bed674883da57e0b728dc1df4b698d9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3d71f8aec1f35514ac6c10b17b6f7b69b79b05bd
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70846147"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897908"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Einrichten der privaten Cloud als Notfallwiederherstellungsziel mit VMware Site Recovery Manager
 
@@ -24,7 +24,7 @@ Die Notfallwiederherstellungslösung basiert auf vSphere Replication und VMware 
 Vorteile der CloudSimple-Lösung:
 
 * Sie müssen kein spezielles Rechenzentrum für die Notfallwiederherstellung einrichten.
-* Sie können die Azure-Standorte nutzen, an denen CloudSimple für weltweite geografische Resilienz bereitgestellt wird.
+* Sie können die Azure-Standorte nutzen, an denen CloudSimple bereitgestellt ist und für weltweite geografische Resilienz sorgt.
 * Sie ermöglicht Ihnen die Reduzierung der Bereitstellungs- und Gesamtbetriebskosten für die Einrichtung der Notfallwiederherstellung.
 
 Die CloudSimple-Lösung erfordert die folgenden Schritte:
@@ -219,11 +219,11 @@ Sie haben die vollständige Kontrolle über die vSphere Replication- und SRM-Sof
 
  [Mit SRM können gleichzeitig die arraybasierte und die vSphere-Replikationstechnologie verwendet werden](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication). Sie müssen jedoch auf unterschiedliche Gruppen von VMs angewendet werden (eine VM kann entweder durch die arraybasierte Replikation oder die vSphere-Replikation geschützt werden, jedoch nicht durch beide). Zudem kann der CloudSimple-Standort als Wiederherstellungsstandort für mehrere geschützte Standorte konfiguriert werden. Weitere Informationen zu Konfigurationen mit mehreren Standorten finden Sie unter [SRM Multi-Site Options](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) (SRM-Optionen für mehrere Standorte, in englischer Sprache).
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 * [VMware Site Recovery Manager-Dokumentation](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
 * [Operational limits for Site Recovery Manager 6.5](https://kb.vmware.com/s/article/2147110) (Betriebsgrenzwerte für Site Recovery Manager 6.5, in englischer Sprache)
-* [Berechnen der Bandbreite für vSphere Replication](https://kb.vmware.com/s/article/2037268)
+* [Berechnen der Bandbreite für vSphere Replication](https://docs.vmware.com/en/vSphere-Replication/6.5/com.vmware.vsphere.replication-admin.doc/GUID-4A34D0C9-8CC1-46C4-96FF-3BF7583D3C4F.html)
 * [OVF Choices When Deploying vSphere Replication 6.5](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices/) (OFV-Option beim Bereitstellen von vSphere Replication 6.5, in englischer Sprache)
 * [VMware vSphere Replication – Installation und Konfiguration](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)
 * [Voraussetzungen und Best Practices für die Installation von Site Recovery Manager Server](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)

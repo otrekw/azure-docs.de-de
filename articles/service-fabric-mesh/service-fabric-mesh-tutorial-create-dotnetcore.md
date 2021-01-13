@@ -1,26 +1,17 @@
 ---
-title: 'Tutorial: Erstellen, Debuggen, Bereitstellen und Überwachen einer Anwendung mit mehreren Diensten in Service Fabric Mesh | Microsoft-Dokumentation'
+title: Erstellen und Bereitstellen einer App mit mehreren Diensten für Service Fabric Mesh
 description: In diesem Tutorial erstellen Sie eine Azure Service Fabric Mesh-Anwendung mit mehreren Diensten, die eine mit einem Back-End-Webdienst kommunizierende ASP.NET Core-Website umfasst. Diese Anwendung debuggen Sie anschließend lokal und veröffentlichen sie in Azure.
-services: service-fabric-mesh
-documentationcenter: .net
-author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
+author: georgewallace
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/18/2018
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 2053706aac2e6136e35e8574dcd19150fe3d3b6a
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.author: gwallace
+ms.custom: mvc, devcenter, devx-track-csharp
+ms.openlocfilehash: fa15432072f6478100a378fdbdb697556fdf1dc9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805425"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842545"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Tutorial: Erstellen, Debuggen, Bereitstellen und Aktualisieren einer Service Fabric Mesh-App mit mehreren Diensten
 
@@ -60,15 +51,15 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 ## <a name="create-a-service-fabric-mesh-project-in-visual-studio"></a>Erstellen eines Service Fabric-Projekts in Visual Studio
 
-Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt...**.
+Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt...** .
 
 Geben Sie im oberen Bereich des Dialogfelds **Neues Projekt** im Feld **Suche** die Zeichenfolge `mesh` ein. Wählen Sie die Vorlage **Service Fabric Mesh-Anwendung** aus. (Sollte die Vorlage nicht angezeigt werden, vergewissern Sie sich, dass Sie das Mesh SDK und die Vorschauversion der VS-Tools gemäß der Anleitung zum [Einrichten der Entwicklungsumgebung](service-fabric-mesh-howto-setup-developer-environment-sdk.md) installiert haben.)  
 
 Geben Sie im Feld **Name** die Zeichenfolge `todolistapp` ein, und legen Sie im Feld **Speicherort** den Ordnerpfad fest, unter dem Sie die Dateien für das Projekt speichern möchten.
 
-Vergewissern Sie sich, dass das Kontrollkästchen **Create directory for solution** (Verzeichnis für Projektmappe erstellen) aktiviert ist, und klicken Sie auf **OK**, um das Service Fabric Mesh-Projekt zu erstellen.
+Vergewissern Sie sich, dass das Kontrollkästchen **Projektmappenverzeichnis erstellen** aktiviert ist, und klicken Sie auf **OK**, um das Service Fabric Mesh-Projekt zu erstellen.
 
-![Visual Studio-Dialogfeld für das neue Service Fabric Mesh-Projekt](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
+![Screenshot: Erstellen eines Service Fabric Mesh-Projekts](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
 
 Als Nächstes wird das Dialogfeld **Neuer Service Fabric-Dienst** angezeigt.
 
@@ -82,7 +73,7 @@ Legen Sie den Dienstnamen im Feld **Dienstname** auf **WebFrontEnd** fest. Klick
 
 Als Nächstes wird das Dialogfeld „ASP.NET Core-Webanwendung“ angezeigt. Wählen Sie **Webanwendung** aus, und klicken Sie dann auf **OK**.
 
-![Visual Studio-Dialogfeld für neue ASP.NET Core-Anwendung](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
+![Screenshot: Hervorhebung der Webapplicationvorlage](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
 
 Sie verfügen nun über eine Service Fabric Mesh-Anwendung. Erstellen Sie als Nächstes das Modell für Aufgabeninformationen.
 
@@ -126,7 +117,7 @@ public class ToDoItem
 
 Diese Klasse steht für To-Do-Elemente.
 
-Klicken Sie in Visual Studio mit der rechten Maustaste auf die Klassenbibliothek **Model**, und klicken Sie anschließend auf **Hinzufügen** > **Klasse...**, um eine Liste für die Aufgaben zu erstellen. Das Dialogfeld **Neues Element hinzufügen** wird angezeigt. Legen Sie den Namen unter **Name** auf `ToDoList.cs` fest, und klicken Sie auf **Hinzufügen**.
+Klicken Sie in Visual Studio mit der rechten Maustaste auf die Klassenbibliothek **Model**, und klicken Sie anschließend auf **Hinzufügen** > **Klasse...** , um eine Liste für die Aufgaben zu erstellen. Das Dialogfeld **Neues Element hinzufügen** wird angezeigt. Legen Sie den Namen unter **Name** auf `ToDoList.cs` fest, und klicken Sie auf **Hinzufügen**.
 
 Ersetzen Sie `class ToDoList` (leer) in **ToDoList.cs** durch Folgendes:
 
@@ -184,17 +175,17 @@ Erstellen Sie als Nächstes den Service Fabric-Dienst, der die Aufgaben nachverf
 
 ## <a name="create-the-back-end-service"></a>Erstellen des Back-End-Diensts
 
-Klicken Sie in Visual Studio im Fenster **Projektmappen-Explorer** mit der rechten Maustaste auf **todolistapp**, und klicken Sie anschließend auf **Hinzufügen** > **Neuer Service Fabric-Dienst...**.
+Klicken Sie in Visual Studio im Fenster **Projektmappen-Explorer** mit der rechten Maustaste auf **todolistapp**, und klicken Sie anschließend auf **Hinzufügen** > **Neuer Service Fabric-Dienst...** .
 
 Das Dialogfeld **Neuer Service Fabric-Dienst** wird angezeigt. Wählen Sie den Projekttyp **ASP.NET Core** aus, und vergewissern Sie sich, dass das **Containerbetriebssystem** auf **Windows** festgelegt ist. Legen Sie den Dienstnamen im Feld **Dienstname** auf **ToDoService** fest. Klicken Sie auf **OK**, um den ASP.NET Core-Dienst zu erstellen.
 
 Als Nächstes wird das Dialogfeld **Neue ASP.NET Core-Webanwendung** angezeigt. Klicken Sie in diesem Dialogfeld auf **API** und anschließend auf **OK**. Daraufhin wird der Projektmappe ein Projekt für den Dienst hinzugefügt.
 
-![Visual Studio-Dialogfeld: Neue ASP.NET Core-Webanwendung](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-webapi.png)
+![Visual Studio-Dialogfeld für neue ASP.NET Core-Anwendung](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-webapi.png)
 
 Da für den Back-End-Dienst keinerlei Benutzeroberfläche zur Verfügung steht, deaktivieren Sie die Option, durch die beim Start des Diensts der Browser gestartet wird. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **ToDoService**, und klicken Sie auf **Eigenschaften**. Klicken Sie im daraufhin angezeigten Eigenschaftenfenster auf der linken Seite auf die Registerkarte **Debuggen**, und deaktivieren Sie das Kontrollkästchen **Browser starten**. Drücken Sie **STRG+S** , um die Änderung zu speichern.
 
-Da dieser Dienst die Aufgabeninformationen verwaltet, fügen Sie einen Verweis auf die Klassenbibliothek „Model“ hinzu. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **ToDoService**, und klicken Sie anschließend auf **Hinzufügen** > **Verweis...**. Das Dialogfeld **Verweis-Manager** wird angezeigt.
+Da dieser Dienst die Aufgabeninformationen verwaltet, fügen Sie einen Verweis auf die Klassenbibliothek „Model“ hinzu. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **ToDoService**, und klicken Sie anschließend auf **Hinzufügen** > **Verweis...** . Das Dialogfeld **Verweis-Manager** wird angezeigt.
 
 Aktivieren Sie im **Verweis-Manager** das Kontrollkästchen für **Model**, und klicken Sie auf **OK**.
 
@@ -277,7 +268,7 @@ Da in diesem Tutorial die Kommunikation mit einem anderen Dienst im Mittelpunkt 
 Nach der Implementierung des Back-End-Diensts können Sie als Nächstes die Website programmieren, auf der die bereitgestellten Aufgaben angezeigt werden. Die folgenden Schritte werden im Projekt **WebFrontEnd** ausgeführt.
 
 Die Webseite, auf der die Aufgaben angezeigt werden, benötigt Zugriff auf die Klasse **ToDoItem** und auf die entsprechende Liste.
-Fügen Sie im **Projektmappen-Explorer** einen Verweis auf das Projekt „Model“ hinzu. Klicken Sie hierzu mit der rechten Maustaste auf **WebFrontEnd**, und klicken Sie anschließend auf **Hinzufügen** > **Verweis...**. Das Dialogfeld **Verweis-Manager** wird angezeigt.
+Fügen Sie im **Projektmappen-Explorer** einen Verweis auf das Projekt „Model“ hinzu. Klicken Sie hierzu mit der rechten Maustaste auf **WebFrontEnd**, und klicken Sie anschließend auf **Hinzufügen** > **Verweis...** . Das Dialogfeld **Verweis-Manager** wird angezeigt.
 
 Klicken Sie im **Verweis-Manager** auf das Kontrollkästchen für **Model** und anschließend auf **OK**.
 
@@ -362,7 +353,8 @@ Navigieren Sie im **Projektmappen-Explorer** zum Projekt **ToDoService**, und ö
 
 ![Abbildung 1: Die Datei „service.yaml“ des Projekts „ToDoService“](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-serviceyaml-port.png)
 
-* Der Dienstname (`ToDoService`) befindet sich unter `services:` (siehe Ziffer 1 in der obigen Abbildung).
+ Der Dienstname (`ToDoService`) befindet sich unter `services:` (siehe Ziffer 1 in der obigen Abbildung).
+
 * Der Port (`80`) befindet sich unter `endpoints:` (siehe Ziffer 2 in der obigen Abbildung). Die Portnummer Ihres Projekts weicht hiervon vermutlich ab.
 
 Im nächsten Schritt müssen wir im Projekt „WebFrontEnd“ Umgebungsvariablen für den Dienstnamen und die Portnummer definieren, damit der Back-End-Dienst aufgerufen werden kann.

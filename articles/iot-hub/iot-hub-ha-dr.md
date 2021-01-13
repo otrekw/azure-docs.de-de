@@ -1,22 +1,22 @@
 ---
 title: Hochverfügbarkeit und Notfallwiederherstellung für Azure IoT Hub | Microsoft-Dokumentation
 description: Informationen zu den Azure- und IoT Hub-Features zum Erstellen von Azure IoT-Lösungen mit hoher Verfügbarkeit und Notfallwiederherstellung.
-author: rkmanda
+author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: f1944e06989844528a55c89f82c3db3b3a28dca1
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876891"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151667"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung von IoT Hub
 
-Als ersten Schritt zur Implementierung einer belastbaren IoT-Lösung müssen Architekten, Entwickler und Geschäftsinhaber die Betriebszeitziele für die von ihnen erstellten Lösungen definieren. Diese Ziele können in erster Linie auf Grundlage bestimmter Geschäftsziele für jedes Szenario definiert werden. In diesem Zusammenhang bietet der Artikel [Geschäftskontinuität mit Azure – technische Dokumentation](https://docs.microsoft.com/azure/architecture/resiliency/) einen allgemeinen Überblick über Geschäftskontinuität und Notfallwiederherstellung. Das Dokument [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery) enthält Architekturanleitungen zu Strategien für Azure-Anwendungen in Bezug auf Notfallwiederherstellung und Hochverfügbarkeit.
+Als ersten Schritt zur Implementierung einer belastbaren IoT-Lösung müssen Architekten, Entwickler und Geschäftsinhaber die Betriebszeitziele für die von ihnen erstellten Lösungen definieren. Diese Ziele können in erster Linie auf Grundlage bestimmter Geschäftsziele für jedes Szenario definiert werden. In diesem Zusammenhang bietet der Artikel [Geschäftskontinuität mit Azure – technische Dokumentation](/azure/architecture/resiliency/) einen allgemeinen Überblick über Geschäftskontinuität und Notfallwiederherstellung. Das Dokument [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen](/azure/architecture/reliability/disaster-recovery) enthält Architekturanleitungen zu Strategien für Azure-Anwendungen in Bezug auf Notfallwiederherstellung und Hochverfügbarkeit.
 
 Dieser Artikel beschreibt die Funktionen für Hochverfügbarkeit und Notfallwiederherstellung, die der Dienst IoT Hub bietet. In diesem Artikel werden schwerpunktmäßig die folgenden Themen beschrieben:
 
@@ -57,12 +57,14 @@ Beide Failoveroptionen bieten die folgende Recovery Point Objectiv (RPO):
 
 <sup>1</sup> Cloud-zu-Gerät-Nachrichten und übergeordnete Aufträge werden im Rahmen des manuellen Failovers nicht wiederhergestellt.
 
-Sobald der Failovervorgang für die IoT Hub-Instanz abgeschlossen ist, wird erwartet, dass alle Vorgänge des Geräts und der Back-End-Anwendungen ohne manuellen Eingriff fortgesetzt werden. Dies bedeutet, dass Ihre Gerät-zu-Cloud-Nachrichten weiterhin funktionieren sollten und die gesamte Geräteregistrierung intakt ist. Ereignisse, die über Event Grid ausgegeben werden, können über dieselben zuvor konfigurierten Abonnements genutzt werden, solange diese Event Grid-Abonnements weiterhin verfügbar sind.
+Sobald der Failovervorgang für die IoT Hub-Instanz abgeschlossen ist, wird erwartet, dass alle Vorgänge des Geräts und der Back-End-Anwendungen ohne manuellen Eingriff fortgesetzt werden. Dies bedeutet, dass Ihre Gerät-zu-Cloud-Nachrichten weiterhin funktionieren sollten und die gesamte Geräteregistrierung intakt ist. Ereignisse, die über Event Grid ausgegeben werden, können über dieselben zuvor konfigurierten Abonnements genutzt werden, solange diese Event Grid-Abonnements weiterhin verfügbar sind. Bei benutzerdefinierten Endpunkten ist keine zusätzliche Behandlung erforderlich.
 
 > [!CAUTION]
-> - Der Event Hub-kompatible Namen und Endpunkt des im IoT Hub integrierten Endpunkts ändern sich nach dem Failover. Wenn Sie Telemetrienachrichten vom integrierten Endpunkt über den Event Hub-Client oder den Ereignisprozessorhost empfangen, [ verwenden Sie die IoT Hub-Verbindungszeichenfolge](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint), um die Verbindung herzustellen. So wird sichergestellt, dass Ihre Back-End-Anwendungen weiterhin ausgeführt werden, ohne dass ein manueller Eingriff nach dem Failover erforderlich ist. Wenn Sie den Event Hub-kompatiblen Namen und Endpunkt direkt in Ihrer Back-End-Anwendung verwenden, müssen Sie Ihre Anwendung neu konfigurieren, indem Sie den [neuen Event Hub-kompatiblen Namen und Endpunkt](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) nach dem Failover abrufen, um die Vorgänge fortzusetzen.
+> - Der Event Hub-kompatible Namen und Endpunkt des im IoT Hub integrierten Endpunkts ändern sich nach dem Failover. Wenn Sie Telemetrienachrichten vom integrierten Endpunkt über den Event Hub-Client oder den Ereignisprozessorhost empfangen, sollten Sie [die IoT Hub-Verbindungszeichenfolge verwenden](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint), um die Verbindung herzustellen. So wird sichergestellt, dass Ihre Back-End-Anwendungen weiterhin ausgeführt werden, ohne dass ein manueller Eingriff nach dem Failover erforderlich ist. Wenn Sie den mit Event Hub kompatiblen Namen und Endpunkt in Ihrer Anwendung direkt verwenden, müssen Sie zum Fortfahren [den neuen mit Event Hub kompatiblen Endpunkt](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) nach dem Failover abrufen. 
 >
-> - Beim Weiterleiten an Blobspeicher sollten die Blobs eingetragen und dann durchlaufen werden, um sicherzustellen, dass alle Container gelesen werden, ohne Annahmen zu Partitionen anzustellen. Der Partitionsbereich könnte sich möglicherweise bei einem von Microsoft initiierten Failover oder einem manuellen Failover ändern. Informationen zur Aufzählung der Listen von Blobs finden Sie unter [Azure Blob Storage](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+> - Wenn Sie für die Verbindung des integrierten Events-Endpunkts Azure Functions oder Azure Stream Analytics verwenden, müssen Sie möglicherweise einen **Neustart** durchführen. Der Grund: Während eines Failovers sind frühere Offsets nicht mehr gültig.
+>
+> - Beim Routing zum Speicher sollten die Blobs oder Dateien aufgelistet und anschließend durchlaufen werden, um sicherzustellen, dass alle Blobs oder Dateien gelesen werden, ohne dass eine Partition vorhanden ist. Der Partitionsbereich könnte sich möglicherweise bei einem von Microsoft initiierten Failover oder einem manuellen Failover ändern. Sie können die Liste der Blobs oder die [Liste der ADLS Gen2-APIs](/rest/api/storageservices/datalakestoragegen2/path/list) mithilfe der [Liste der Blobs-APIs](/rest/api/storageservices/list-blobs) aufzählen, um die gewünschte Liste von Dateien zu erhalten. Weitere Informationen finden Sie unter [Azure Storage als Routingendpunkt](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 
 ## <a name="microsoft-initiated-failover"></a>Von Microsoft initiiertes Failover
 
@@ -76,10 +78,17 @@ Wenn Ihre geschäftlichen Betriebszeitziele durch das von Microsoft initiierte F
 
 Die manuelle Failoveroption ist immer verfügbar, unabhängig davon, ob in der primären Region Downtime auftritt. Daher lässt sich diese Option für ein geplantes Failover nutzen. Ein Beispiel für die Verwendung geplanter Failover ist die Durchführung regelmäßiger Failoverdrills. Beachten Sie jedoch, dass ein geplantes Failover zu einer Hubdowntime für die von der RTO für diese Option definierte Zeitdauer und zu Datenverlust führt, wie in der obigen RPO-Tabelle definiert. Sie könnten eine IoT Hub-Testinstanz einrichten, um die geplante Failoveroption regelmäßig auszuführen, damit Sie sich darauf verlassen können, dass Ihre End-to-End-Lösungen bei einem echten Notfall einsatzbereit sind.
 
-> [!IMPORTANT]
-> - Testdrills sollten nicht in IoT Hub-Instanzen ausgeführt werden, die in Ihrer Produktionsumgebung verwendet werden.
->
-> - Das manuelle Failover sollte nicht als Mechanismus verwendet werden, um Ihren Hub dauerhaft zwischen den geografisch gekoppelten Azure-Regionen zu migrieren. Die Folge wäre eine erhöhte Latenz bei den Vorgängen, die von Geräten in der alten primären Region für den Hub ausgeführt werden.
+Das manuelle Failover steht ohne zusätzliche Kosten für IoT-Hubs zur Verfügung, die nach dem 18. Mai 2017 erstellt wurden.
+
+Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Ausführen eines manuellen Failovers für eine IoT Hub-Instanz](tutorial-manual-failover.md)
+
+### <a name="running-test-drills"></a>Ausführen von Testdrills
+
+Testdrills sollten nicht in IoT Hub-Instanzen ausgeführt werden, die in Ihrer Produktionsumgebung verwendet werden.
+
+### <a name="dont-use-manual-failover-to-migrate-iot-hub-to-a-different-region"></a>Verwenden Sie kein manuelles Failover, um IoT Hub zu einer anderen Region zu migrieren.
+
+Das manuelle Failover sollte *nicht* als Mechanismus verwendet werden, um Ihren Hub dauerhaft zwischen den geografisch gekoppelten Azure-Regionen zu migrieren. Die Folge wäre eine erhöhte Latenz bei Vorgängen, die von Geräten in der alten primären Region für den IoT-Hub ausgeführt werden.
 
 ## <a name="failback"></a>Failback
 
@@ -127,7 +136,7 @@ Diese Zusammenfassung der in diesem Artikel vorgestellten Optionen für Hochverf
 | --- | --- | --- | --- | --- | --- |
 | Von Microsoft initiiertes Failover |2–26 Stunden|Siehe RPO-Tabelle oben|Nein|Keine|Keine|
 | Manuelles Failover |10 Minuten–2 Stunden|Siehe RPO-Tabelle oben|Ja|Sehr gering. Sie müssen diesen Vorgang lediglich über das Portal auslösen.|Keine|
-| Regionenübergreifende Hochverfügbarkeit |< 1 Minute|Abhängig von der Replikationsrate Ihrer benutzerdefinierten Hochverfügbarkeitslösung|Nein|Hoch|> 1-malig anfallende Kosten für 1 IoT Hub-Instanz|
+| Regionenübergreifende Hochverfügbarkeit |< 1 Minute|Abhängig von der Replikationsrate Ihrer benutzerdefinierten Hochverfügbarkeitslösung|Nein|High|> 1-malig anfallende Kosten für 1 IoT Hub-Instanz|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

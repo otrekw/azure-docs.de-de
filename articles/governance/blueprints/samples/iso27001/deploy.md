@@ -1,18 +1,14 @@
 ---
-title: 'Beispiel: ISO 27001-Blaupause – Bereitstellungsschritte'
-description: Bereitstellungsschritte für das ISO 27001-Blaupausenbeispiel
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 07/22/2019
+title: Bereitstellen des Blaupausenbeispiels „ISO 27001“
+description: Bereitstellungsschritte für das eigenständige Blaupausenbeispiel „ISO 27001“, einschließlich Details zum Blaupausenartefaktparameter.
+ms.date: 11/02/2020
 ms.topic: sample
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 661f512fee6f55e53d3f8d5df1150c0c1426687a
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 75403710ecbfb0cc7046804b45c2da042531e98b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802597"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420281"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>Bereitstellen des ISO 27001-Blaupausenbeispiels
 
@@ -29,16 +25,16 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Implementieren Sie zuerst das Blaupausenbeispiel, indem Sie mithilfe des Beispiels eine neue Blaupause in Ihrer Umgebung erstellen.
 
-1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen** , und wählen Sie die Option aus.
 
 1. Klicken Sie links auf der Seite **Erste Schritte** unter _Blaupause erstellen_ auf die Schaltfläche **Erstellen**.
 
-1. Suchen Sie unter _Weitere Beispiele_ nach dem Blaupausenbeispiel **ISO 27001**, und wählen Sie **Dieses Beispiel verwenden** aus.
+1. Suchen Sie unter _Weitere Beispiele_ nach dem Blaupausenbeispiel **ISO 27001** , und wählen Sie **Dieses Beispiel verwenden** aus.
 
 1. Geben Sie die _Grundlagen_ des Blaupausenbeispiels ein:
 
-   - **Name der Blaupause**: Geben Sie einen Namen für Ihre Kopie des ISO 27001-Blaupausenbeispiels ein.
-   - **Definitionsspeicherort**: Klicken Sie auf die Schaltfläche mit den Auslassungspunkten, und wählen Sie die Verwaltungsgruppe aus, in der Sie Ihre Kopie des Beispiels speichern möchten.
+   - **Name der Blaupause** : Geben Sie einen Namen für Ihre Kopie des ISO 27001-Blaupausenbeispiels ein.
+   - **Definitionsspeicherort** : Klicken Sie auf die Schaltfläche mit den Auslassungspunkten, und wählen Sie die Verwaltungsgruppe aus, in der Sie Ihre Kopie des Beispiels speichern möchten.
 
 1. Wählen Sie oben auf der Seite die Registerkarte _Artefakte_ oder unten auf der Seite die Option **Weiter: Artefakte** aus.
 
@@ -48,7 +44,7 @@ Implementieren Sie zuerst das Blaupausenbeispiel, indem Sie mithilfe des Beispie
 
 Ihre Kopie des Blaupausenbeispiels wurde jetzt in Ihrer Umgebung erstellt. Sie wird im Modus **Entwurf** erstellt und muss **veröffentlicht** werden, bevor sie zugewiesen und bereitgestellt werden kann. Die Kopie des Blaupausenbeispiels kann an die Umgebung und an Ihre Anforderungen angepasst werden. Durch diese Änderungen ist sie aber möglicherweise nicht mehr mit der Norm ISO 27001 konform.
 
-1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen** , und wählen Sie die Option aus.
 
 1. Wählen Sie links die Seite **Blaupausendefinitionen** aus. Verwenden Sie die Filter, um Ihre Kopie des Blaupausenbeispiels zu suchen, und wählen Sie es aus.
 
@@ -58,7 +54,7 @@ Ihre Kopie des Blaupausenbeispiels wurde jetzt in Ihrer Umgebung erstellt. Sie w
 
 Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde, kann sie einem Abonnement innerhalb der Verwaltungsgruppe, in der sie gespeichert wurde, zugewiesen werden. In diesem Schritt werden Parameter angegeben, damit jede Bereitstellung der Kopie des Blaupausenbeispiels eindeutig ist.
 
-1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen** , und wählen Sie die Option aus.
 
 1. Wählen Sie links die Seite **Blaupausendefinitionen** aus. Verwenden Sie die Filter, um Ihre Kopie des Blaupausenbeispiels zu suchen, und wählen Sie es aus.
 
@@ -68,10 +64,10 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
 
    - Grundlagen
 
-     - **Abonnements**: Wählen Sie mindestens eines der Abonnements in der Verwaltungsgruppe aus, in der Sie die Kopie des Blaupausenbeispiels gespeichert haben. Wenn Sie mehrere Abonnements auswählen, wird für jedes Abonnement eine Zuweisung mit den eingegebenen Parametern erstellt.
+     - **Abonnements** : Wählen Sie mindestens eines der Abonnements in der Verwaltungsgruppe aus, in der Sie die Kopie des Blaupausenbeispiels gespeichert haben. Wenn Sie mehrere Abonnements auswählen, wird für jedes Abonnement eine Zuweisung mit den eingegebenen Parametern erstellt.
      - **Zuweisungsname:** Der Name wird basierend auf dem Namen der Blaupause vorab ausgefüllt.
        Sie können ihn nach Bedarf ändern oder unverändert übernehmen.
-     - **Standort**: Wählen Sie eine Region aus, in der die verwaltete Identität erstellt werden soll. Azure Blueprint verwendet diese verwaltete Identität zum Bereitstellen aller Artefakte in der zugewiesenen Blaupause. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Standort** : Wählen Sie eine Region aus, in der die verwaltete Identität erstellt werden soll. Azure Blueprint verwendet diese verwaltete Identität zum Bereitstellen aller Artefakte in der zugewiesenen Blaupause. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../../../active-directory/managed-identities-azure-resources/overview.md).
      - **Version der Blaupausendefinition:** Wählen Sie eine **veröffentlichte** Version Ihrer Kopie des Blaupausenbeispiels aus.
 
    - Zuweisung sperren
@@ -113,7 +109,7 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Windows-Betriebssystem zum Hinzufügen zum Bereich|Mit einem leeren Array wird angegeben, dass keine optionalen Parameter verwendet werden: \[\]|
 |Allowed storage account SKUs (Zulässige Speicherkonto-SKUs)|Richtlinienzuweisung|Liste der zulässigen Speicher-SKUs|Die Liste der SKUs, die für Speicherkonten angegeben werden können|
 |Allowed virtual machine SKUs (Zulässige VM-SKUs)|Richtlinienzuweisung|Liste der zulässigen VM-SKUs|Die Liste der SKUs, die für virtuelle Computer angegeben werden können|
-|Blueprint Initiative für ISO 27001|Richtlinienzuweisung|Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen|Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|Blueprint Initiative für ISO 27001|Richtlinienzuweisung|Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen|Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

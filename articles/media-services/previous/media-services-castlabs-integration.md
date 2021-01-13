@@ -1,6 +1,6 @@
 ---
 title: Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von castLabs | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Media Services (AMS) einen Stream übermitteln, der von AMS mit PlayReady- und Widevine-DRMs dynamisch verschlüsselt wird. Die PlayReady-Lizenz stammt vom Media Services PlayReady-Lizenzserver, und die Widevine-Lizenz wird vom castLabs-Lizenzserver übermittelt.
+description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Media Services (AMS) einen Stream übermitteln, der von AMS mit PlayReady- und Widevine-DRMs dynamisch verschlüsselt wird.
 services: media-services
 documentationcenter: ''
 author: Mingfeiy
@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
-ms.openlocfilehash: 9c61fad333037074f392b019ae61c161673e4008
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 17b54b2adb21419de61d2309752987f6e4a48e41
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016690"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89264486"
 ---
-# <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von castLabs 
+# <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von castLabs
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+ 
 > [!div class="op_single_selector"]
 > * [Axinom](media-services-axinom-integration.md)
 > * [castLabs](media-services-castlabs-integration.md)
@@ -61,14 +64,14 @@ In der folgenden Tabelle wird das in AMS verwendete JWT-Token beschrieben.
 | Zielgruppe |Zielgruppenzeichenfolge aus dem verwendeten STS |
 | Ansprüche |Eine Sammlung von Ansprüchen |
 | NotBefore |Beginn der Gültigkeit des Tokens |
-| Expires |Ende der Gültigkeit des Tokens |
+| Läuft ab |Ende der Gültigkeit des Tokens |
 | SigningCredentials |Der Schlüssel, der vom PlayReady-Lizenzserver, dem castLabs-Lizenzserver und STS gemeinsam genutzt wird. Kann ein symmetrischer oder asymmetrischer Schlüssel sein. |
 
 ### <a name="jwt-token-in-castlabs"></a>JWT-Token in castLabs
 
 In der folgenden Tabelle wird das in castLabs verwendete JWT-Token beschrieben. 
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 | --- | --- |
 | optData |Eine JSON-Zeichenfolge, die Informationen über Sie enthält. |
 | crt |Eine JSON-Zeichenfolge mit Angaben zum Medienobjekt, den zugehörigen Lizenzinformationen und Wiedergaberechten. |
@@ -114,6 +117,10 @@ Ein durch allgemeine Verschlüsselung (PlayReady und/oder Widevine) verschlüsse
    Für den castLabs-Lizenzserver ist das Präfix "Bearer=" vor dem Token nicht erforderlich. Entfernen Sie dieses Präfix vor dem Übermitteln des Tokens.
 7. Aktualisieren Sie den Player.
 8. Das Video sollte wiedergegeben werden.
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

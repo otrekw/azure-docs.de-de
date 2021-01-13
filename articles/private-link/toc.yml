@@ -1,4 +1,4 @@
-- name: Dokumentation zu Azure Private Link
+- name: Dokumentation zu Private Link
   href: index.yml
 - name: Übersicht
   items:
@@ -6,48 +6,81 @@
       href: private-link-overview.md
 - name: Schnellstarts
   items:
-    - name: Erstellen eines privaten Endpunkts
+    - name: 'Erstellen eines privaten Endpunkts: Portal'
+      href: create-private-endpoint-portal.md
+    - name: 'Erstellen eines privaten Endpunkts: PowerShell'
+      href: create-private-endpoint-powershell.md
+    - name: 'Erstellen eines privaten Endpunkts: Azure CLI'
+      href: create-private-endpoint-cli.md
+    - name: 'Erstellen eines privaten Endpunkts: ARM-Vorlage'
+      displayName: Resource Manager
+      href: create-private-endpoint-template.md
+    - name: 'Erstellen eines Private Link-Diensts: Portal'
+      href: create-private-link-service-portal.md
+    - name: 'Erstellen eines Private Link-Diensts: PowerShell'
+      href: create-private-link-service-powershell.md
+    - name: 'Erstellen eines Private Link-Diensts: Azure CLI'
+      href: create-private-link-service-cli.md
+    - name: 'Erstellen eines Private Link-Diensts: ARM-Vorlage'
+      displayName: Resource Manager
+      href: create-private-link-service-template.md
+  expanded: true
+- name: Tutorials
+  items:
+    - name: Herstellen einer Verbindung mit einem Speicherkonto
+      href: tutorial-private-endpoint-storage-portal.md
+    - name: Herstellen einer Verbindung mit einem Cosmos DB-Konto
+      href: tutorial-private-endpoint-cosmosdb-portal.md
+    - name: Herstellen einer Verbindung mit einer Web-App
+      href: tutorial-private-endpoint-webapp-portal.md
+    - name: SQL
       items:
-        - name: Azure-Portal
-          href: create-private-endpoint-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
-          href: create-private-endpoint-cli.md
-        - name: Azure PowerShell
-          href: create-private-endpoint-powershell.md
-    - name: Erstellen eines Private Link-Diensts
-      items:
-        - name: Azure PowerShell
-          href: create-private-link-service-powershell.md
-        - name: Azure-Befehlszeilenschnittstelle
-          href: create-private-link-service-cli.md
+        - name: 'Herstellen einer Verbindung mit SQL Server: Portal'
+          href: tutorial-private-endpoint-sql-portal.md
+        - name: 'Herstellen einer Verbindung mit SQL Server: PowerShell'
+          href: tutorial-private-endpoint-sql-powershell.md
+        - name: 'Herstellen einer Verbindung mit SQL Server: Azure CLI'
+          href: tutorial-private-endpoint-sql-cli.md
 - name: Konzepte
   items:
     - name: Privater Endpunkt
       href: private-endpoint-overview.md
     - name: "Private\_Link-Dienst"
       href: private-link-service-overview.md
-- name: Anleitung
+    - name: DNS-Integration für private Endpunkte
+      href: private-endpoint-dns.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
+- name: Vorgehensweise
   items:
-    - name: Herstellen einer privaten Verbindung mit einem Speicherkonto
-      href: create-private-endpoint-storage-portal.md
     - name: Deaktivieren von Netzwerkrichtlinien für einen privaten Endpunkt
       href: disable-private-endpoint-network-policy.md
     - name: Deaktivieren von Netzwerkrichtlinien für einen Private Link-Dienst
       href: disable-private-link-service-network-policy.md
     - name: Verwalten von privaten Endpunkten
       href: manage-private-endpoint.md
+    - name: Untersuchen des Datenverkehrs mit Azure Firewall
+      href: inspect-traffic-with-azure-firewall.md
+    - name: Problembehandlung
+      items:
+        - name: Beheben von Problemen bei Verbindungen mit privaten Endpunkten
+          href: troubleshoot-private-endpoint-connectivity.md
+        - name: Beheben von Problemen bei Verbindungen mit dem Private Link-Dienst
+          href: troubleshoot-private-link-connectivity.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/network
     - name: Azure PowerShell
       href: /powershell/module/az.network
     - name: .NET
-      href: /api/overview/azure/virtual-network
+      href: /dotnet/api/overview/azure/virtual-network
     - name: Java
       href: /java/api/
     - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+      href: /javascript/azure#azure-sdk
     - name: Python
       href: 'https://azure.microsoft.com/develop/python/'
     - name: REST
@@ -64,12 +97,12 @@
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Netzwerkblog
       href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Netzwerkforum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: 'Frageseite von Microsoft Q&A (Fragen und Antworten): Netzwerke'
+      href: /answers/topics/azure-virtual-network.html
     - name: Netzwerkfeedback
       href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
     - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/virtual-network'
+      href: 'https://azure.microsoft.com/pricing/details/private-link/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Stack Overflow

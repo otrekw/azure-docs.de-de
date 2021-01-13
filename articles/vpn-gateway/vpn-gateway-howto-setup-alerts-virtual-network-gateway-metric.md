@@ -1,18 +1,18 @@
 ---
 title: Einrichten von Warnungen zu Azure VPN Gateway-Metriken
-description: Schritte zum Konfigurieren von Warnungen zu VPN Gateway-Metriken
+description: Hier erfahren Sie, wie Sie das Azure-Portal verwenden, um Azure Monitor-Warnungen basierend auf Metriken für VPN-Gateways virtueller Netzwerke einzurichten.
 services: vpn-gateway
-author: anzaman
+author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
-ms.date: 04/22/2019
+ms.topic: how-to
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: d57663f683ba4e2107ec6813a19fac7b2dcdd26a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 05fbc5675d6ee3b6720d9db9e07e7010cf1d9172
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605230"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89435656"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Einrichten von Warnungen zu VPN Gateway-Metriken
 
@@ -22,53 +22,53 @@ Dieser Artikel hilft Ihnen beim Einrichten von Warnungen zu den Azure VPN Gatewa
 |**Metrik**   | **Einheit** | **Granularität** | **Beschreibung** | 
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| Bytes/s  | 5 Minuten| Durchschnittliche kombinierte Bandbreitennutzung aller Site-to-Site-Verbindungen für das Gateway.     |
-|**P2SBandwidth**| Bytes/s  | 1 Minute  | Durchschnittliche kombinierte Bandbreitennutzung aller Point-to-Site-Verbindungen für das Gateway.    |
-|**P2SConnectionCount**| Count  | 1 Minute  | Die Anzahl der Point-to-Site-Verbindungen für das Gateway.   |
+|**P2SBandwidth**| Bytes/s  | 1 Minute  | Durchschnittliche kombinierte Bandbreitennutzung aller Point-to-Site-Verbindungen für das Gateway.    |
+|**P2SConnectionCount**| Anzahl  | 1 Minute  | Die Anzahl der Point-to-Site-Verbindungen für das Gateway.   |
 |**TunnelAverageBandwidth** | Bytes/s    | 5 Minuten  | Durchschnittliche Bandbreitennutzung der für das Gateway erstellten Tunnel. |
 |**TunnelEgressBytes** | Byte | 5 Minuten | Ausgehender Datenverkehr in Tunneln, die für das Gateway erstellt wurden.   |
-|**TunnelEgressPackets** | Count | 5 Minuten | Anzahl der ausgehenden Pakete in Tunneln, die für das Gateway erstellt wurden.   |
-|**TunnelEgressPacketDropTSMismatch** | Count | 5 Minuten | Anzahl der ausgehenden Pakete, die in Tunneln aufgrund eines Konflikts beim Datenverkehrsselektor verworfen werden. |
+|**TunnelEgressPackets** | Anzahl | 5 Minuten | Anzahl der ausgehenden Pakete in Tunneln, die für das Gateway erstellt wurden.   |
+|**TunnelEgressPacketDropTSMismatch** | Anzahl | 5 Minuten | Anzahl der ausgehenden Pakete, die in Tunneln aufgrund eines Konflikts beim Datenverkehrsselektor verworfen werden. |
 |**TunnelIngressBytes** | Byte | 5 Minuten | Eingehender Datenverkehr in Tunneln, die für das Gateway erstellt wurden.   |
-|**TunnelIngressPackets** | Count | 5 Minuten | Anzahl der eingehenden Pakete in Tunneln, die für das Gateway erstellt wurden.   |
-|**TunnelIngressPacketDropTSMismatch** | Count | 5 Minuten | Anzahl der eingehenden Pakete, die in Tunneln aufgrund eines Konflikts beim Datenverkehrsselektor verworfen werden. |
+|**TunnelIngressPackets** | Anzahl | 5 Minuten | Anzahl der eingehenden Pakete in Tunneln, die für das Gateway erstellt wurden.   |
+|**TunnelIngressPacketDropTSMismatch** | Anzahl | 5 Minuten | Anzahl der eingehenden Pakete, die in Tunneln aufgrund eines Konflikts beim Datenverkehrsselektor verworfen werden. |
 
 
-## <a name="setup"></a>Einrichten von Azure Monitor-Warnungen auf Basis von Metriken mithilfe des Azure-Portals
+## <a name="set-up-azure-monitor-alerts-based-on-metrics-by-using-the-azure-portal"></a><a name="setup"></a>Einrichten von Azure Monitor-Warnungen auf Basis von Metriken mithilfe des Azure-Portals
 
 Die folgenden Beispielschritte erstellen für Folgendes eine Warnung für ein Gateway:
 
 - **Metrik:** TunnelAverageBandwidth
 - **Bedingung:** Bandbreite > 10 Bytes/Sekunde
 - **Fenster:** 5 Minuten
-- **Warnungsaktion:** E-Mail
+- **Warnungsaktion:** Email
 
 
 
 1. Wechseln Sie zur virtuellen Netzwerkgatewayressource, und wählen Sie **Warnungen** auf der Registerkarte **Überwachung** aus. Erstellen Sie dann eine neue Warnungsregel, oder bearbeiten Sie eine bestehende Warnungsregel.
 
-   ![Auswahl zum Erstellen einer Warnungsregel](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert1.png "Erstellen")
+   ![Optionen für die Erstellung einer Warnungsregel](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert1.png "Erstellen")
 
 2. Wählen Sie Ihr VPN-Gateway als Ressource aus.
 
-   ![Die Schaltfläche „Auswählen“ und das VPN-Gateway in der Liste der Ressourcen](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "Auswählen")
+   ![Die Schaltfläche „Auswählen“ und das VPN-Gateway in der Liste der Ressourcen](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "Select")
 
 3. Wählen Sie eine Metrik aus, die für die Warnung konfiguriert werden soll.
 
-   ![Ausgewählte Metrik in der Liste der Metriken](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "Auswählen")
+   ![Ausgewählte Metrik in der Metrikliste](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "Select")
 4. Konfigurieren Sie die Signallogik. Es gibt drei Komponenten:
 
     a. **Dimensions** (Dimensionen): Wenn die Metrik über Dimensionen verfügt, können Sie bestimmte Dimensionswerte auswählen, sodass die Warnung nur Daten dieser Dimension auswertet. Diese sind optional.
 
     b. **Bedingung:** Dies ist der Vorgang zum Auswerten des Metrikwerts.
 
-    c. **Zeit**: Geben Sie die Granularität der metrischen Daten und den Zeitraum für die Auswertung der Warnung an.
+    c. **Time**: Geben Sie die Granularität der metrischen Daten und den Zeitraum für die Auswertung der Warnung an.
 
-   ![Details zur Konfiguration der Signallogik](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "Auswählen")
+   ![Details zur Konfiguration der Signallogik](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "Select")
 
 5. Wählen Sie **Warnungsregeln verwalten** aus, um die konfigurierten Regeln anzuzeigen.
 
-   ![Schaltfläche zum Verwalten von Warnungsregeln](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Auswählen")
+   ![Schaltfläche zum Verwalten von Warnungsregeln](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Select")
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Konfigurieren von Warnungen für Tunneldiagnoseprotokolle finden Sie unter [Einrichten von Warnungen für Diagnoseprotokolle von VPN Gateway](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md).
+Informationen zum Konfigurieren von Warnungen für Tunnelressourcenprotokolle finden Sie unter [Einrichten von Warnungen für Ressourcenprotokolle von VPN Gateway](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md).

@@ -1,23 +1,33 @@
 ---
 title: Verwenden von Referenzdaten für Suchvorgänge in Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie Sie Referenzdaten nutzen, um nach Daten in einem Abfragedesign eines Azure Stream Analytics-Auftrags zu suchen oder diese zu korrelieren.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: ed50dfd7e3c423c1c26a7dc19ae60dcb319f1850
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 12/18/2020
+ms.openlocfilehash: e7f5b3ae0a4dc7faa67a361b210b1d014e1f1b93
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621618"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722129"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Verwenden von Referenzdaten für Suchvorgänge in Stream Analytics
 
-Verweisdaten (auch als Nachschlagetabelle bezeichnet) stellen ein begrenztes statisches oder sich nur langsam veränderndes Dataset dar, das für die Suche oder die Erweiterung Ihrer Datenströme verwendet wird. In einem IoT-Szenario können Sie beispielsweise Metadaten zu Sensoren (die sich nicht oft ändern) in Verweisdaten speichern und mit IoT-Echtzeitdatenströmen verknüpfen. Azure Stream Analytics lädt Verweisdaten in den Arbeitsspeicher, um eine Streamverarbeitung mit geringer Wartezeit zu erreichen. Für den Einsatz von Verweisdaten in Ihrem Azure Stream Analytics-Auftrag verwenden Sie in der Regel [Verweisdaten für JOIN-Vorgänge](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) in Ihrer Abfrage. 
+Verweisdaten (auch als Nachschlagetabelle bezeichnet) stellen ein begrenztes statisches oder sich nur langsam veränderndes Dataset dar, das für die Suche oder die Erweiterung Ihrer Datenströme verwendet wird. In einem IoT-Szenario können Sie beispielsweise Metadaten zu Sensoren (die sich nicht oft ändern) in Verweisdaten speichern und mit IoT-Echtzeitdatenströmen verknüpfen. Azure Stream Analytics lädt Verweisdaten in den Arbeitsspeicher, um eine Streamverarbeitung mit geringer Wartezeit zu erreichen. Für den Einsatz von Verweisdaten in Ihrem Azure Stream Analytics-Auftrag verwenden Sie in der Regel [Verweisdaten für JOIN-Vorgänge](/stream-analytics-query/reference-data-join-azure-stream-analytics) in Ihrer Abfrage. 
+
+## <a name="example"></a>Beispiel  
+Sie können beispielsweise in Echtzeit einen Ereignisdatenstrom generieren, wenn Fahrzeuge eine Mautstelle passieren. An der Mautstelle kann das Autokennzeichen in Echtzeit erfasst und mit einem statischen Dataset verknüpft werden, das über Registrierungsdetails verfügt. So lassen sich die abgelaufenen Kennzeichen identifizieren.  
+  
+```SQL  
+SELECT I1.EntryTime, I1.LicensePlate, I1.TollId, R.RegistrationId  
+FROM Input1 I1 TIMESTAMP BY EntryTime  
+JOIN Registration R  
+ON I1.LicensePlate = R.LicensePlate  
+WHERE R.Expired = '1'
+```  
 
 In Stream Analytics werden Azure Blob Storage und Azure SQL-Datenbank als Speicherebene für Verweisdaten unterstützt. Zudem können Sie Verweisdaten von Azure Data Factory in Blob Storage transformieren und/oder kopieren, um [eine beliebige Anzahl von cloudbasierten und lokalen Datenspeichern zu verwenden](../data-factory/copy-activity-overview.md).
 
@@ -27,7 +37,7 @@ Referenzdaten werden als (in der Eingabekonfiguration definierte) Blobsequenz in
 
 ### <a name="configure-blob-reference-data"></a>Konfigurieren von Blobverweisdaten
 
-Um die Verweisdaten zu konfigurieren, müssen Sie zunächst eine Eingabe vom Typ **Verweisdaten**erstellen. Die folgende Tabelle enthält den Namen jeder Eigenschaft, die Sie beim Erstellen der Verweisdateneingabe angeben müssen, sowie die entsprechenden Beschreibungen:
+Um die Verweisdaten zu konfigurieren, müssen Sie zunächst eine Eingabe vom Typ **Verweisdaten** erstellen. Die folgende Tabelle enthält den Namen jeder Eigenschaft, die Sie beim Erstellen der Verweisdateneingabe angeben müssen, sowie die entsprechenden Beschreibungen:
 
 |**Eigenschaftenname**  |**Beschreibung**  |
 |---------|---------|
@@ -35,7 +45,7 @@ Um die Verweisdaten zu konfigurieren, müssen Sie zunächst eine Eingabe vom Typ
 |Speicherkonto   | Der Name des Speicherkontos, in dem sich Ihre Blobs befinden. Wenn sich das Konto im gleichen Abonnement befindet wie Ihr Stream Analytics-Auftrag, können Sie es in der Dropdownliste auswählen.   |
 |Speicherkontoschlüssel   | Der geheime Schlüssel, der dem Speicherkonto zugeordnet ist. Dies wird automatisch aufgefüllt, wenn sich das Speicherkonto im selben Abonnement befindet wie Ihr Stream Analytics-Auftrag.   |
 |Speichercontainer   | Container stellen eine logische Gruppierung für Blobs bereit, die im Microsoft Azure-Blobdienst gespeichert sind. Wenn Sie ein Blob in den Blobdienst hochladen, müssen Sie einen Container für das Blob angeben.   |
-|Pfadmuster   | Der Pfad, der verwendet wird, um Ihre Blobs innerhalb des angegebenen Containers zu suchen. In dem Pfad können Sie mindestens eine Instanz der folgenden beiden Variablen angeben:<BR>{date}, {time}<BR>Beispiel 1: products/{date}/{time}/product-list.csv<BR>Beispiel 2: products/{date}/product-list.csv<BR>Beispiel 3: product-list.csv<BR><br> Wenn das Blob im angegebenen Pfad nicht vorhanden ist, wartet der Stream Analytics-Auftrag auf unbestimmte Zeit, bis das Blob verfügbar ist.   |
+|Pfadmuster   | Dies ist eine erforderliche Eigenschaft, mit der Ihre Blobs im angegebenen Container gesucht werden. In dem Pfad können Sie mindestens eine Instanz der folgenden beiden Variablen angeben:<BR>{date}, {time}<BR>Beispiel 1: products/{date}/{time}/product-list.csv<BR>Beispiel 2: products/{date}/product-list.csv<BR>Beispiel 3: product-list.csv<BR><br> Wenn das Blob im angegebenen Pfad nicht vorhanden ist, wartet der Stream Analytics-Auftrag auf unbestimmte Zeit, bis das Blob verfügbar ist.   |
 |Datumsformat [optional]   | Wenn Sie innerhalb des von Ihnen angegebenen Pfadmusters „{date}“ verwendet haben, können Sie in der Dropdownliste mit den unterstützten Formaten das Datumsformat auswählen, in dem Ihre Blobs gespeichert werden sollen.<BR>Beispiel: YYYY/MM/DD, MM/DD/YYYY...   |
 |Zeitformat [optional]   | Wenn Sie innerhalb des von Ihnen angegebenen Pfadmusters „{time}“ verwendet haben, können Sie in der Dropdownliste mit den unterstützten Formaten das Zeitformat auswählen, in dem Ihre Blobs gespeichert werden sollen.<BR>Beispiel: HH, HH/mm, HH-mm  |
 |Ereignisserialisierungsformat   | Um sicherzustellen, dass Ihre Abfragen wie erwartet funktionieren, muss Stream Analytics das Serialisierungsformat kennen, das Sie für eingehende Datenströme verwenden. Die unterstützten Formate für Verweisdaten sind CSV und JSON.  |
@@ -60,7 +70,7 @@ Azure Stream Analytics führt in einem Intervall von einer Minute automatisch ei
 > 
 > Eine Ausnahme besteht darin, wenn der Auftrag Daten rückwirkend verarbeiten muss oder wenn der Auftrag zum ersten Mal gestartet wird. Zum Startzeitpunkt sucht der Auftrag nach dem aktuellsten Blob, das vor der angegebenen Startzeit des Auftrags erstellt wurde. Damit wird sichergestellt, dass beim Starten des Auftrags ein **nicht leeres** Verweisdataset zur Verfügung steht. Sollte keines gefunden werden, erscheint die folgende Diagnose: `Initializing input without a valid reference data blob for UTC time <start time>`.
 
-Mit [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) kann das Erstellen der aktualisierten Blobs orchestriert werden, die von Stream Analytics zur Aktualisierung der Verweisdatendefinitionen benötigt werden. Data Factory ist ein cloudbasierter Daten-Integrationsdienst, der das Verschieben und Transformieren von Daten organisiert und automatisiert. Data Factory unterstützt [die Verbindung zu einer großen Anzahl von cloudbasierten und lokalen Datenspeichern](../data-factory/copy-activity-overview.md) und das mühelose Verschieben von Daten in regelmäßigen von Ihnen festgelegten Abständen. Weitere Informationen sowie eine schrittweise Anleitung zum Einrichten einer Data Factory-Pipeline zum Generieren von Verweisdaten für Stream Analytics, die nach einem vordefinierten Zeitplan aktualisiert werden, finden Sie in diesem [GitHub-Beispiel](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs).
+Mit [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) kann das Erstellen der aktualisierten Blobs orchestriert werden, die von Stream Analytics zur Aktualisierung der Verweisdatendefinitionen benötigt werden. Data Factory ist ein cloudbasierter Daten-Integrationsdienst, der das Verschieben und Transformieren von Daten organisiert und automatisiert. Data Factory unterstützt [die Verbindung zu einer großen Anzahl von cloudbasierten und lokalen Datenspeichern](../data-factory/copy-activity-overview.md) und das mühelose Verschieben von Daten in regelmäßigen von Ihnen festgelegten Abständen. Weitere Informationen sowie eine schrittweise Anleitung zum Einrichten einer Data Factory-Pipeline zum Generieren von Verweisdaten für Stream Analytics, die nach einem vordefinierten Zeitplan aktualisiert werden, finden Sie in diesem [GitHub-Beispiel](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs).
 
 ### <a name="tips-on-refreshing-blob-reference-data"></a>Tipps zum Aktualisieren von Blobverweisdaten
 
@@ -86,11 +96,13 @@ Mit der Deltaabfrage wird in Stream Analytics zunächst die Momentaufnahmeabfrag
 
 Um die SQL-Datenbank-Verweisdaten zu konfigurieren, müssen Sie zunächst eine Eingabe für **Verweisdaten** erstellen. Die folgende Tabelle enthält den Namen jeder Eigenschaft, die Sie beim Erstellen der Verweisdateneingabe angeben müssen, sowie die entsprechenden Beschreibungen. Weitere Informationen finden Sie unter [Verwenden von Verweisdaten aus einer SQL-Datenbank für einen Azure Stream Analytics-Auftrag](sql-reference-data.md).
 
+Sie können eine [verwaltete Azure SQL-Instanz](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) als Verweisdateneingabe verwenden. Sie müssen einen [öffentlichen Endpunkt in der verwalteten SQL-Instanz konfigurieren](../azure-sql/managed-instance/public-endpoint-configure.md) und dann in Azure Stream Analytics manuell die folgenden Einstellungen konfigurieren. Für den virtuellen Azure-Computer mit SQL Server und einer angefügten Datenbank wird ebenfalls das manuelle Konfigurieren der folgenden Einstellungen unterstützt.
+
 |**Eigenschaftenname**|**Beschreibung**  |
 |---------|---------|
 |Eingabealias|Ein Anzeigename, der in der Auftragsabfrage verwendet wird, um auf diese Eingabe zu verweisen.|
 |Subscription|Auswählen Ihres Abonnements|
-|Datenbank|Die Azure SQL-Datenbank mit den Verweisdaten.|
+|Datenbank|Die Azure SQL-Datenbank mit den Verweisdaten. Für eine verwaltete SQL-Instanz muss der Port 3342 angegeben werden. Beispiel: *sampleserver.public.database.windows.net,3342*|
 |Username|Der Benutzername, der Ihrer Azure SQL-Datenbank-Instanz zugeordnet ist.|
 |Kennwort|Das Kennwort, das Ihrer Azure SQL-Datenbank-Instanz zugeordnet ist.|
 |Regelmäßig aktualisieren|Mit dieser Option können Sie eine Aktualisierungsrate auswählen. Durch Auswählen von „Ein“ können Sie die Aktualisierungsrate im Format TT:HH:MM angeben.|
@@ -99,17 +111,44 @@ Um die SQL-Datenbank-Verweisdaten zu konfigurieren, müssen Sie zunächst eine E
 
 ## <a name="size-limitation"></a>Größenbeschränkung
 
-Stream Analytics unterstützt Verweisdaten mit einer **Größe von bis zu 300 MB**. Der Grenzwert von 300 MB für die maximale Größe von Verweisdaten ist nur mit einfachen Abfragen erreichbar. Angesichts der zunehmenden Abfragekomplexität durch Einbeziehung der zustandsbehafteten Verarbeitung (beispielsweise in Form von Aggregaten im Fenstermodus, temporalen Joins oder temporalen Analysefunktionen) ist davon auszugehen, dass die unterstützte Maximalgröße für Verweisdaten abnimmt. Wenn Azure Stream Analytics die Verweisdaten nicht laden und keine komplexen Vorgänge ausführen kann, steht für den Auftrag nicht genügend Arbeitsspeicher zur Verfügung, und der Auftrag ist nicht erfolgreich. In solchen Fällen erreicht die Metrik „Nutzung der Speichereinheit in %“ den Wert „100 %“.    
+Es wird empfohlen, Verweisdatasets zu verwenden, die kleiner als 300 MB sind, um eine optimale Leistung zu erzielen. Verweisdatasets mit bis zu 5 GB werden in Aufträgen mit mindestens sechs SUs unterstützt. Die Verwendung von sehr großen Verweisdaten kann sich auf die End-to-End-Wartezeit Ihres Auftrags auswirken. Angesichts der zunehmenden Abfragekomplexität durch Einbeziehung der zustandsbehafteten Verarbeitung (beispielsweise in Form von Aggregaten im Fenstermodus, temporalen Joins oder temporalen Analysefunktionen) ist davon auszugehen, dass die unterstützte Maximalgröße für Verweisdaten abnimmt. Wenn Azure Stream Analytics die Verweisdaten nicht laden und keine komplexen Vorgänge ausführen kann, steht für den Auftrag nicht genügend Arbeitsspeicher zur Verfügung, und der Auftrag ist nicht erfolgreich. In solchen Fällen erreicht die Metrik „Nutzung der Speichereinheit in %“ den Wert „100 %“.    
 
-|**Anzahl von Streamingeinheiten**  |**Ungefähre unterstützte Maximalgröße (in MB)**  |
+|**Anzahl von Streamingeinheiten**  |**Empfohlene Größe**  |
 |---------|---------|
-|1   |50   |
-|3   |150   |
-|6 und mehr   |300   |
+|1   |50 MB oder weniger   |
+|3   |150 MB oder weniger   |
+|6 und mehr   |5 GB oder weniger    |
 
-Ab einer Anzahl von sechs Streamingeinheiten für einen Auftrag erhöht sich die unterstützte Maximalgröße für Verweisdaten nicht weiter.
+Die Unterstützung der Komprimierung steht für Referenzdaten nicht zur Verfügung.
 
-Die Unterstützung der Komprimierung steht für Referenzdaten nicht zur Verfügung. 
+## <a name="joining-multiple-reference-datasets-in-a-job"></a>Verknüpfen mehrerer Verweisdatasets in einem Auftrag
+In einem einzelnen Schritt der Abfrage können Sie nur eine Datenflusseingabe mit einer Verweisdateneingabe verknüpfen. Wenn Sie die Abfrage in mehrere Schritte aufteilen, können Sie jedoch auch mehrere Verweisdatasets verknüpfen. Ein entsprechendes Beispiel ist nachfolgend dargestellt.
+
+```SQL  
+With Step1 as (
+    --JOIN input stream with reference data to get 'Desc'
+    SELECT streamInput.*, refData1.Desc as Desc
+    FROM    streamInput
+    JOIN    refData1 ON refData1.key = streamInput.key 
+)
+--Now Join Step1 with second reference data
+SELECT *
+INTO    output 
+FROM    Step1
+JOIN    refData2 ON refData2.Desc = Step1.Desc 
+``` 
+
+## <a name="iot-edge-jobs"></a>IoT Edge-Aufträge
+
+Für Stream Analytics-Edge-Aufträge werden nur lokale Verweisdaten unterstützt. Wenn ein Auftrag auf einem IoT Edge-Gerät bereitgestellt wird, werden Verweisdaten über den benutzerdefinierten Dateipfad geladen. Halten Sie auf dem Gerät eine Verweisdatendatei bereit. Ordnen Sie die Verweisdatendatei für einen Windows-Container auf dem lokalen Laufwerk an, und geben Sie das lokale Laufwerk mit dem Docker-Container frei. Erstellen Sie für einen Linux-Container ein Docker-Volume, und fügen Sie die Datendatei auf dem Volume ein.
+
+Die Aktualisierung der Verweisdaten in IoT Edge wird durch eine Bereitstellung ausgelöst. Nach dem Auslösen wählt das Stream Analytics-Modul die aktualisierten Daten aus, ohne die Ausführung des Auftrags zu beenden.
+
+Es gibt zwei Möglichkeiten, die Verweisdaten zu aktualisieren:
+
+* Aktualisieren des Verweisdatenpfads für Ihren Stream Analytics-Auftrag im Azure-Portal.
+
+* Aktualisieren der IoT Edge-Bereitstellung
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
@@ -119,6 +158,6 @@ Die Unterstützung der Komprimierung steht für Referenzdaten nicht zur Verfügu
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.get.started]: stream-analytics-get-started.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.get.started]: ./stream-analytics-real-time-fraud-detection.md
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

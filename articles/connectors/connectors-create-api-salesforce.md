@@ -1,22 +1,18 @@
 ---
-title: Herstellen einer Verbindung mit Salesforce über Azure Logic Apps | Microsoft-Dokumentation
+title: Verbinden mit Salesforce über Azure Logic Apps
 description: Automatisieren von Aufgaben und Workflows, die Salesforce-Datensätze und -Aufträge mithilfe von Azure Logic Apps überwachen, erstellen und verwalten
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: e3e9f7c841d25fa988ae7e0c97adf64a51d8ef87
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 9950951ab5189c8c7b72de78bca9465ec5f22748
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050831"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87290585"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von Salesforce-Ressourcen mithilfe von Azure Logic Apps
 
@@ -64,7 +60,7 @@ Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Bes
 
 ## <a name="get-support"></a>Support
 
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A für Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,28 +1,23 @@
 ---
 title: C#-Skriptentwicklerreferenz zu Azure Functions
 description: Erfahren Sie, wie Azure Functions mithilfe von C#-Skript entwickelt wird.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
-ms.service: azure-functions
-ms.devlang: dotnet
-ms.topic: reference
+author: craigshoemaker
+ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 12/12/2017
-ms.author: glenga
-ms.openlocfilehash: e4460dd7131e35ee8b3f3112977099276da2d4ce
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.author: cshoe
+ms.openlocfilehash: 48614640660da6d85face5ea416d267fa9f59515
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849421"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164838"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-dotnet-class-library.md -->
 
-Dieser Artikel ist eine Einführung in die Entwicklung von Azure Functions mithilfe von C#-Skript (*CSX*).
+Dieser Artikel ist eine Einführung in die Entwicklung von Azure Functions mithilfe von C#-Skript ( *CSX* ).
 
 Azure Functions unterstützt die Programmiersprachen C# und C#-Skript. Wenn Sie Anleitungen zum [Verwenden von C# in einem Visual Studio-Klassenbibliotheksprojekt](functions-develop-vs.md) suchen, sollten Sie zur [C#-Entwicklerreferenz](functions-dotnet-class-library.md) wechseln.
 
@@ -32,9 +27,9 @@ In diesem Artikel wird davon ausgegangen, dass Sie das [Azure Functions: Entwick
 
 Die C#-Skriptoberfläche für Azure Functions basiert auf dem [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction). Daten fließen über Methodenargumente in Ihre C#-Funktion ein. Argumentnamen werden in einer `function.json`-Datei angegeben, und es gibt vordefinierte Namen für den Zugriff auf Elemente wie die Funktionsprotokollierung und Abbruchtoken.
 
-Dank des *CSX*-Formats müssen Sie weniger Textbausteine schreiben und können sich ganz auf das Schreiben einer C#-Funktion konzentrieren. Anstatt sämtliche Informationen in einem Namespace und einer Klasse zu umschließen, definieren Sie einfach eine `Run`-Methode. Schließen Sie wie gewohnt alle Assemblyverweise und Namespaces am Anfang der Datei ein.
+Dank des *CSX* -Formats müssen Sie weniger Textbausteine schreiben und können sich ganz auf das Schreiben einer C#-Funktion konzentrieren. Anstatt sämtliche Informationen in einem Namespace und einer Klasse zu umschließen, definieren Sie einfach eine `Run`-Methode. Schließen Sie wie gewohnt alle Assemblyverweise und Namespaces am Anfang der Datei ein.
 
-Die *CSX*-Dateien einer Funktions-App werden kompiliert, wenn eine Instanz initialisiert wird. Dieser Kompilierungsschritt bedeutet, dass bestimmte Dinge, etwa ein Kaltstart, für C#-Skriptfunktionen im Vergleich zu C#-Klassenbibliotheken länger dauern. Dieser Kompilierungsschritt ist auch der Grund, warum C#-Skriptfunktionen im Azure-Portal bearbeitet werden können, während dies für C#-Klassenbibliotheken nicht möglich ist.
+Die *CSX* -Dateien einer Funktions-App werden kompiliert, wenn eine Instanz initialisiert wird. Dieser Kompilierungsschritt bedeutet, dass bestimmte Dinge, etwa ein Kaltstart, für C#-Skriptfunktionen im Vergleich zu C#-Klassenbibliotheken länger dauern. Dieser Kompilierungsschritt ist auch der Grund, warum C#-Skriptfunktionen im Azure-Portal bearbeitet werden können, während dies für C#-Klassenbibliotheken nicht möglich ist.
 
 ## <a name="folder-structure"></a>Ordnerstruktur
 
@@ -57,11 +52,11 @@ FunctionsProject
 
 Sie können die freigegebene Datei [host.json](functions-host-json.md) zum Konfigurieren der Funktions-App verwenden. Jede Funktion verfügt über eine eigene Codedatei (CSX-Datei) sowie über eine eigene Bindungskonfigurationsdatei (function.json).
 
-Die in [Version 2.x](functions-versions.md) der Functions-Laufzeit erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](./functions-bindings-register.md#extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
+Die in [Version 2.x](functions-versions.md) oder höher der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](./functions-bindings-register.md#extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
 
 ## <a name="binding-to-arguments"></a>Binden an Argumente
 
-Eingabe- oder Ausgabedaten werden über die `name`-Eigenschaft in der *function.json*-Konfigurationsdatei an dienen C#-Skriptfunktionsparameter gebunden. Im folgenden Beispiel werden eine *function.json*-Datei und eine *run.csx*-Datei für eine über die Warteschlange ausgelöste Funktion veranschaulicht. Der Parameter, der die Daten aus der Warteschlangennachricht empfängt, hat den Namen `myQueueItem`, weil dies der Wert der `name`-Eigenschaft ist.
+Eingabe- oder Ausgabedaten werden über die `name`-Eigenschaft in der *function.json* -Konfigurationsdatei an dienen C#-Skriptfunktionsparameter gebunden. Im folgenden Beispiel werden eine *function.json* -Datei und eine *run.csx* -Datei für eine über die Warteschlange ausgelöste Funktion veranschaulicht. Der Parameter, der die Daten aus der Warteschlangennachricht empfängt, hat den Namen `myQueueItem`, weil dies der Wert der `name`-Eigenschaft ist.
 
 ```json
 {
@@ -95,7 +90,7 @@ Die `#r`-Anweisung ist[ weiter unten in diesem Artikel](#referencing-external-as
 
 ## <a name="supported-types-for-bindings"></a>Unterstützte Typen für Bindungen
 
-Jede Bindung hat ihre eigenen unterstützten Typen. Beispielsweise kann ein Blobtrigger mit einem Zeichenfolgeparameter, einem POCO-Parameter, einem `CloudBlockBlob`-Parameter oder einem von mehreren anderen unterstützten Typen verwendet werden. Im [Bindungsreferenzartikel für Blobbindungen](functions-bindings-storage-blob.md#trigger---usage) sind alle unterstützten Parametertypen für Blobtrigger aufgelistet. Weitere Informationen hierzu finden Sie unter [Trigger und Bindungen](functions-triggers-bindings.md) und in den [Bindungsreferenzdokumenten für jeden Bindungstyp](functions-triggers-bindings.md#next-steps).
+Jede Bindung hat ihre eigenen unterstützten Typen. Beispielsweise kann ein Blobtrigger mit einem Zeichenfolgeparameter, einem POCO-Parameter, einem `CloudBlockBlob`-Parameter oder einem von mehreren anderen unterstützten Typen verwendet werden. Im [Bindungsreferenzartikel für Blobbindungen](functions-bindings-storage-blob-trigger.md#usage) sind alle unterstützten Parametertypen für Blobtrigger aufgelistet. Weitere Informationen hierzu finden Sie unter [Trigger und Bindungen](functions-triggers-bindings.md) und in den [Bindungsreferenzdokumenten für jeden Bindungstyp](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -103,7 +98,7 @@ Jede Bindung hat ihre eigenen unterstützten Typen. Beispielsweise kann ein Blob
 
 Wenn Sie eine benutzerdefinierte POCO-Klasse (Plain Old CLR Object) verwenden müssen, können Sie die Klassendefinition in dieselbe Datei einfügen oder in eine separate Datei setzen.
 
-Im folgenden Beispiel wird ein *run.csx*-Beispiel veranschaulicht, das eine POCO-Klassendefinition enthält.
+Im folgenden Beispiel wird ein *run.csx* -Beispiel veranschaulicht, das eine POCO-Klassendefinition enthält.
 
 ```csharp
 public static void Run(string myBlob, out MyClass myQueueItem)
@@ -122,9 +117,9 @@ Bei einer POCO-Klasse müssen für jede Eigenschaft ein Getter und ein Setter de
 
 ## <a name="reusing-csx-code"></a>Wiederverwenden von CSX-Code
 
-Sie können in der Datei *run.csx* Klassen und Methoden verwenden, die in anderen *CSX* -Dateien definiert sind. Verwenden Sie zu diesem Zweck `#load`-Anweisungen in der Datei *run.csx*. Im folgenden Beispiel wird die Protokollierungsroutine `MyLogger` in *myLogger.csx* freigegeben und mit der `#load`-Anweisung in *run.csx* geladen:
+Sie können in der Datei *run.csx* Klassen und Methoden verwenden, die in anderen *CSX* -Dateien definiert sind. Verwenden Sie zu diesem Zweck `#load`-Anweisungen in der Datei *run.csx* . Im folgenden Beispiel wird die Protokollierungsroutine `MyLogger` in *myLogger.csx* freigegeben und mit der `#load`-Anweisung in *run.csx* geladen:
 
-Beispiel für *run.csx*:
+Beispiel für *run.csx* :
 
 ```csharp
 #load "mylogger.csx"
@@ -138,7 +133,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-Beispiel für *mylogger.csx*:
+Beispiel für *mylogger.csx* :
 
 ```csharp
 public static void MyLogger(ILogger log, string logtext)
@@ -147,7 +142,7 @@ public static void MyLogger(ILogger log, string logtext)
 }
 ```
 
-Die Verwendung einer freigegebenen *CSX*-Datei ist ein häufiges Verfahren, wenn die Daten, die über ein POCO-Objekt zwischen Funktionen übertragen werden, stark typisiert werden sollen. Im folgenden vereinfachten Beispiel verwenden ein HTTP-Trigger und ein Warteschlangentrigger gemeinsam das POCO-Objekt `Order`, um die Bestelldaten stark zu typisieren:
+Die Verwendung einer freigegebenen *CSX* -Datei ist ein häufiges Verfahren, wenn die Daten, die über ein POCO-Objekt zwischen Funktionen übertragen werden, stark typisiert werden sollen. Im folgenden vereinfachten Beispiel verwenden ein HTTP-Trigger und ein Warteschlangentrigger gemeinsam das POCO-Objekt `Order`, um die Bestelldaten stark zu typisieren:
 
 Beispiel: *run.csx* für HTTP-Trigger:
 
@@ -192,7 +187,7 @@ public static void Run(Order myQueueItem, out Order outputQueueItem, ILogger log
 }
 ```
 
-Beispiel: *order.csx*:
+Beispiel: *order.csx* :
 
 ```cs
 public class Order
@@ -218,9 +213,9 @@ Mit der `#load` -Direktive können Sie einen relativen Pfad verwenden:
 
 * `#load "mylogger.csx"` : Lädt eine Datei, die sich im Funktionsordner befindet.
 * `#load "loadedfiles\mylogger.csx"` : Lädt eine Datei, die sich in einem Ordner im Funktionsordner befindet.
-* `#load "..\shared\mylogger.csx"` : Lädt eine Datei, die sich in einem Ordner auf der gleichen Ebene befindet wie der Funktionsordner (also direkt unter *wwwroot*).
+* `#load "..\shared\mylogger.csx"` : Lädt eine Datei, die sich in einem Ordner auf der gleichen Ebene befindet wie der Funktionsordner (also direkt unter *wwwroot* ).
 
-Die `#load`-Direktive kann nur mit *CSX*-Dateien verwendet werden, nicht mit *CS*-Dateien.
+Die `#load`-Direktive kann nur mit *CSX* -Dateien verwendet werden, nicht mit *CS* -Dateien.
 
 ## <a name="binding-to-method-return-value"></a>Binden an den Rückgabewert einer Methode
 
@@ -244,7 +239,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 
 ## <a name="logging"></a>Protokollierung
 
-Um eine Ausgabe in C# in Ihren Streamingprotokollen zu dokumentieren, fügen Sie ein Argument vom Typ [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) ein. Verwenden Sie hierzu am besten den Namen `log`. Vermeiden Sie die Verwendung von `Console.Write` in Azure Functions.
+Um eine Ausgabe in C# in Ihren Streamingprotokollen zu dokumentieren, fügen Sie ein Argument vom Typ [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) ein. Verwenden Sie hierzu am besten den Namen `log`. Vermeiden Sie die Verwendung von `Console.Write` in Azure Functions.
 
 ```csharp
 public static void Run(string myBlob, ILogger log)
@@ -254,11 +249,21 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> Informationen zu einem neueren Protokollierungsframework, das Sie anstelle von `TraceWriter` verwenden können, finden Sie unter [Schreiben von Protokollen in C#-Funktionen](functions-monitoring.md#write-logs-in-c-functions) im Artikel **Überwachen von Azure Functions**.
+> Informationen zu einem neueren Protokollierungsframework, das Sie anstelle von `TraceWriter` verwenden können, finden Sie in der [ILogger](functions-dotnet-class-library.md#ilogger)-Dokumentation im Entwicklerleitfaden für .NET-Klassenbibliotheken.
+
+### <a name="custom-metrics-logging"></a>Protokollieren von benutzerdefinierten Metriken
+
+Sie können die `LogMetric`-Erweiterungsmethode in `ILogger` verwenden, um in Application Insights benutzerdefinierte Metriken zu erstellen. Hier ist ein Beispiel für einen Methodenaufruf angegeben:
+
+```csharp
+logger.LogMetric("TestMetric", 1234);
+```
+
+Dieser Code ist eine Alternative zum Aufrufen von `TrackMetric` mithilfe der Application Insights-API für .NET.
 
 ## <a name="async"></a>Async
 
-Um eine Funktion [asynchron](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/) auszuführen, verwenden Sie das `async`-Schlüsselwort, und geben Sie ein `Task`-Objekt zurück.
+Um eine Funktion [asynchron](/dotnet/csharp/programming-guide/concepts/async/) auszuführen, verwenden Sie das `async`-Schlüsselwort, und geben Sie ein `Task`-Objekt zurück.
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(
@@ -376,7 +381,7 @@ Informationen zum Hochladen von Dateien in Ihren Funktionenordner finden Sie im 
 Das Verzeichnis, das die Skriptdatei für die Funktion enthält, wird automatisch im Hinblick auf Änderungen an Assemblys überwacht. Um Änderungen an Assemblys in anderen Verzeichnissen zu überwachen, fügen Sie sie der Liste `watchDirectories` in der Datei [host.json](functions-host-json.md) hinzu.
 
 ## <a name="using-nuget-packages"></a>Verwenden von NuGet-Paketen
-Um NuGet-Pakete in einer 2.x C#-Funktion zu verwenden, laden Sie die Datei *function.proj* in den Ordner der Funktion im Dateisystem der Funktions-App hoch. Hier sehen Sie ein Beispiel für die Datei *function.proj*, die einen Verweis auf *Microsoft.ProjectOxford.Face* (Version *1.1.0*) hinzufügt:
+Um NuGet-Pakete in einer 2.x C#-Funktion oder höher zu verwenden, laden Sie die Datei *function.proj* in den Ordner der Funktion im Dateisystem der Funktions-App hoch. Hier sehen Sie ein Beispiel für die Datei *function.proj* , die einen Verweis auf *Microsoft.ProjectOxford.Face* (Version *1.1.0* ) hinzufügt:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -393,9 +398,9 @@ Um NuGet-Pakete in einer 2.x C#-Funktion zu verwenden, laden Sie die Datei *func
 Um einen benutzerdefinierten NuGet-Feed zu verwenden, geben Sie den Feed in der Datei *NuGet.config* im Stammverzeichnis der Funktionen-App an. Weitere Informationen finden Sie unter [Konfigurieren des NuGet-Verhaltens](/nuget/consume-packages/configuring-nuget-behavior).
 
 > [!NOTE]
-> In 1.x C#-Funktionen wird auf NuGet-Pakete mit einer *project.json*-Datei anstelle einer *function.proj*-Datei verwiesen.
+> In 1.x C#-Funktionen wird auf NuGet-Pakete mit einer *project.json* -Datei anstelle einer *function.proj* -Datei verwiesen.
 
-Verwenden Sie für 1.x-Funktionen stattdessen eine *project.json*-Datei. Hier folgt eine *project.json*-Beispieldatei:
+Verwenden Sie für 1.x-Funktionen stattdessen eine *project.json* -Datei. Hier folgt eine *project.json* -Beispieldatei:
 
 ```json
 {
@@ -450,7 +455,7 @@ public static string GetEnvironmentVariable(string name)
 
 ## <a name="binding-at-runtime"></a>Binden zur Laufzeit
 
-In C# und anderen .NET-Sprachen können Sie ein [imperatives](https://en.wikipedia.org/wiki/Imperative_programming) Bindungsmuster verwenden, im Gegensatz zu den [ *deklarativen* ](https://en.wikipedia.org/wiki/Declarative_programming) Bindungen in *function.json*. Imperative Bindung eignet sich, wenn Bindungsparameter zur Laufzeit statt zur Entwurfszeit berechnet werden müssen. Mit diesem Muster ist die Bindung an unterstützte Eingabe- und Ausgabebindungen direkt im Funktionscode möglich.
+In C# und anderen .NET-Sprachen können Sie ein [imperatives](https://en.wikipedia.org/wiki/Imperative_programming) Bindungsmuster verwenden, im Gegensatz zu den [*deklarativen*](https://en.wikipedia.org/wiki/Declarative_programming) Bindungen in *function.json* . Imperative Bindung eignet sich, wenn Bindungsparameter zur Laufzeit statt zur Entwurfszeit berechnet werden müssen. Mit diesem Muster ist die Bindung an unterstützte Eingabe- und Ausgabebindungen direkt im Funktionscode möglich.
 
 Definieren Sie eine imperative Bindung wie folgt:
 
@@ -465,11 +470,11 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute` ist das .NET-Attribut, das die Bindung definiert, und `T` ist ein Eingabe- oder Ausgabetyp, der von diesem Bindungstyp unterstützt wird. `T` darf kein `out`-Parametertyp sein (wie etwa `out JObject`). Die ausgehende Bindung für die Tabelle „Mobile Apps“ unterstützt z. B. [sechs Ausgabetypen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), Sie können aber nur [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) oder [ICollector`IAsyncCollector<T>`T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) für `T` verwenden.
+`BindingTypeAttribute` ist das .NET-Attribut, das die Bindung definiert, und `T` ist ein Eingabe- oder Ausgabetyp, der von diesem Bindungstyp unterstützt wird. `T` darf kein `out`-Parametertyp sein (wie etwa `out JObject`). Die ausgehende Bindung für die Tabelle „Mobile Apps“ unterstützt z. B. [sechs Ausgabetypen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), Sie können aber nur [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) oder [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) für `T` verwenden.
 
 ### <a name="single-attribute-example"></a>Beispiel mit einem einzigen Attribut
 
-Mit dem folgenden Beispielcode wird eine [ausgehende Speicherblob-Bindung](functions-bindings-storage-blob.md#output) mit einem Blobpfad erstellt, der zur Laufzeit definiert wird. Dann wird eine Zeichenfolge in das Blob geschrieben.
+Mit dem folgenden Beispielcode wird eine [ausgehende Speicherblob-Bindung](functions-bindings-storage-blob-output.md) mit einem Blobpfad erstellt, der zur Laufzeit definiert wird. Dann wird eine Zeichenfolge in das Blob geschrieben.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -484,7 +489,7 @@ public static async Task Run(string input, Binder binder)
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definiert die Eingabe- oder Ausgabebindung für den [Speicherblob](functions-bindings-storage-blob.md), und [TextWriter](/dotnet/api/system.io.textwriter) ist ein unterstützter Ausgabenbindungstyp.
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) definiert die Eingabe- oder Ausgabebindung für den [Speicherblob](functions-bindings-storage-blob.md), und [TextWriter](/dotnet/api/system.io.textwriter) ist ein unterstützter Ausgabenbindungstyp.
 
 ### <a name="multiple-attribute-example"></a>Beispiel mit mehreren Attributen
 
@@ -512,16 +517,16 @@ public static async Task Run(string input, Binder binder)
 In der folgenden Tabelle sind die .NET-Attribute für jeden Bindungstyp und die Pakete aufgelistet, in denen sie definiert sind.
 
 > [!div class="mx-codeBreakAll"]
-> | Bindung | Attribut | Hinzuzufügender Verweis |
+> | Bindung | attribute | Hinzuzufügender Verweis |
 > |------|------|------|
 > | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
-> | Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
+> | Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/b798412ad74ba97cf2d85487ae8479f277bdd85c/test/Microsoft.Azure.WebJobs.ServiceBus.UnitTests/ServiceBusAccountTests.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
 > | Mobile Apps | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
 > | Notification Hubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
-> | Service Bus | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
-> | Speicherwarteschlange | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-> | Speicherblob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-> | Speichertabelle | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+> | Service Bus | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/b798412ad74ba97cf2d85487ae8479f277bdd85c/test/Microsoft.Azure.WebJobs.ServiceBus.UnitTests/ServiceBusAttributeTests.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/b798412ad74ba97cf2d85487ae8479f277bdd85c/test/Microsoft.Azure.WebJobs.ServiceBus.UnitTests/ServiceBusAccountTests.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
+> | Speicherwarteschlange | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+> | Speicherblob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+> | Speichertabelle | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c198b329f07c5c7459f25165b2dc0a3bfa032276
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 58b4bbcac110398ee4ff132b76ce8c4868ee17f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60382066"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317590"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Auffüllung des UserPrincipalName-Attributs in Azure AD
 
@@ -54,9 +54,9 @@ Alternative Anmelde-IDs bieten die Möglichkeit, eine Anmeldeumgebung zu konfigu
 
 Um eine alternative Anmelde-ID in Azure AD zu aktivieren, sind bei der Verwendung von Azure AD Connect keine zusätzlichen Konfigurationsschritte erforderlich. Die alternative ID kann direkt anhand des Assistenten konfiguriert werden. Überprüfen Sie die Azure AD-Anmeldungskonfiguration für Ihre Benutzer im Abschnitt „Synchronisierung“. Wählen Sie in der Dropdownliste **Benutzerprinzipalname** das Attribut für die alternative Anmelde-ID aus.
 
-![Nicht überprüfte Domänen](./media/plan-connect-userprincipalname/altloginid.png)  
+![Screenshot: Hervorgehobene Liste „Benutzerprinzipalname“, in der Sie das Attribut für die alternative Anmelde-ID auswählen](./media/plan-connect-userprincipalname/altloginid.png)  
 
-Weitere Informationen finden Sie unter [Konfigurieren einer alternativen Anmelde-ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) und [Konfiguration der Azure AD-Anmeldung](how-to-connect-install-custom.md#azure-ad-sign-in-configuration)
+Weitere Informationen finden Sie unter [Konfigurieren einer alternativen Anmelde-ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) und [Konfiguration der Azure AD-Anmeldung](how-to-connect-install-custom.md#azure-ad-sign-in-configuration)
 
 ## <a name="non-verified-upn-suffix"></a>Nicht überprüftes UPN-Suffix
 Wenn das lokale UserPrincipalName-Attribut bzw. das Suffix für die alternative Anmelde-ID nicht mit dem Azure AD-Mandanten überprüft wird, wird der UserPrincipalName-Attributwert in Azure AD auf die MOERA festgelegt. Azure AD berechnet die MOERA anhand des MailNickName-Attributs in Azure AD und der Azure AD-Anfangsdomäne als &lt;MailNickName&gt;&#64;&lt;Anfangsdomäne&gt;.
@@ -93,7 +93,7 @@ Lokales Benutzerobjekt:
 - mailNickName      : &lt;nicht festgelegt&gt;
 - proxyAddresses        : {SMTP:us1@contoso.com}
 - mail          : us2@contoso.com
-- userPrincipalName : us3@contoso.com`
+- userPrincipalName : us3@contoso.com
 
 Zum ersten Mal mit dem Azure AD-Mandanten synchronisiertes Benutzerobjekt:
 - Legen Sie das MailNickName-Attribut von Azure AD auf das Präfix der primären SMTP-Adresse fest.

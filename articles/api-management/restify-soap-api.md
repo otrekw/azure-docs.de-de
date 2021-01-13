@@ -1,6 +1,6 @@
 ---
 title: Importieren einer SOAP-API und Konvertieren dieser in REST mithilfe des Azure-Portals | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit API Management eine SOAP-API importieren und in REST konvertieren.
+description: Hier erfahren Sie, wie Sie eine SOAP-API importieren, sie mit API Management in eine REST-API umwandeln und die API dann im Azure- und im Entwicklerportal testen.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: e1534a562c81fc92fdf0c21452458c51b10f0bc9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a87f4d0748d14ab995f75279b6a192f350165d6f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074237"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87843826"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>Importieren einer SOAP-API und Konvertieren dieser in REST
 
@@ -32,11 +32,11 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
+Absolvieren Sie den folgende Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Importieren und Veröffentlichen einer Back-End-API
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Importieren und Veröffentlichen einer Back-End-API
 
 1. Wählen Sie unter **API MANAGEMENT** die Option **APIs** aus.
 2. Wählen Sie **WSDL** in der Liste **Neue API hinzufügen** aus.
@@ -49,7 +49,7 @@ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure
 
 5. Drücken Sie auf die Registerkarte.
 
-    Die folgenden Felder werden mit den Informationen aus der SOAP-API aufgefüllt: Anzeigename, Name, Beschreibung.
+    Die folgenden Felder werden mit den Informationen aus der SOAP-API aufgefüllt: „Anzeigename“, „Name“, „Beschreibung“.
 6. Fügen Sie ein API-URL-Suffix hinzu. Das Suffix ist ein Name, der diese spezifische API in dieser APIM-Instanz identifiziert. Es muss in dieser APIM-Instanz eindeutig sein.
 9. Veröffentlichen Sie die API, indem Sie sie einem Produkt zuordnen. In diesem Fall wird das Produkt „*Unlimited*“ verwendet.  Wenn Sie möchten, dass die API veröffentlicht wird und dann Entwicklern zur Verfügung steht, fügen Sie sie einem Produkt hinzu. Sie können dies während der Erstellung der API vornehmen oder später festlegen.
 
@@ -61,7 +61,7 @@ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure
     * **Unbegrenzt**   
 10. Klicken Sie auf **Erstellen**.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testen der neuen APIM-API im Azure-Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Testen der neuen API im Azure-Portal
 
 Vorgänge können direkt aus dem Azure-Portal aufgerufen werden. Dies ist ein einfacher Weg, die Vorgänge einer API anzuzeigen und zu testen.  
 
@@ -73,21 +73,6 @@ Vorgänge können direkt aus dem Azure-Portal aufgerufen werden. Dies ist ein ei
 1. Klicken Sie auf **Senden**.
 
     Das Back-End antwortet mit **200 OK** und einigen Daten.
-
-## <a name="call-operation"></a>Aufrufen einer Operation aus dem Entwicklerportal
-
-Vorgänge können auch im **Entwicklerportal** aufgerufen werden, um APIs zu testen. 
-
-1. Wählen Sie die API aus, die Sie im Schritt „Importieren und Veröffentlichen einer Back-End-API“ erstellt haben.
-2. Klicken Sie auf **Entwicklerportal**.
-
-    Die Website „Entwicklerportal“ wird geöffnet.
-3. Wählen Sie die **API** aus, die Sie erstellt haben.
-4. Klicken Sie auf den Vorgang, den Sie testen möchten.
-5. Klicken Sie auf **Ausprobieren**.
-6. Klicken Sie auf **Senden**.
-    
-    Nach dem Aufruf der Operation zeigt das Entwicklerportal den **Antwortstatus**, die **Antwortheader** sowie den **Antwortinhalt** an.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

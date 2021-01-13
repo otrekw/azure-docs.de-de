@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen einer Blasenebene zu Azure Maps | Microsoft-Dokumentation
-description: Hinzufügen einer Blasenebene zum Azure Maps Web SDK.
+title: Hinzufügen einer Blasenebene zu einer Karte | Microsoft Azure Maps
+description: Lernen Sie, Punkte auf Karten als Kreise mit fester Größe zu rendern. Erfahren Sie, wie Sie das Azure Maps Web SDK verwenden können, um zu diesem Zweck Blasenebenen hinzuzufügen und anzupassen.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 5cc5dbdc89f629c09d47ef683b7ff7fff61d2f49
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: cae29dcc0d334a2296199da0d8e3bc4562e275d3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976574"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895327"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Hinzufügen einer Blasenebene zu einer Karte
 
-In diesem Artikel erfahren Sie, wie Sie Punktdaten aus einer Datenquelle als Blasenebene auf einer Karte rendern können. Blasenebenen rendern Punkte als Kreise mit festem Pixelradius auf der Karte. 
+In diesem Artikel erfahren Sie, wie Sie Punktdaten aus einer Datenquelle als Blasenebene auf einer Karte rendern können. Blasenebenen rendern Punkte als Kreise mit einem festen Pixelradius auf der Karte. 
 
 > [!TIP]
-> Blasenebenen rendern in der Standardeinstellung die Koordinaten aller Geometrien in einer Datenquelle. Legen Sie die Eigenschaft `filter` der Ebene auf `['==', ['geometry-type'], 'Point']` oder `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` fest, um die Ebene dahingehend zu beschränken, dass nur Punktgeometriefunktionen gerendert werden, wenn auch MultiPoint-Funktionen berücksichtigt werden sollen.
+> Blasenebenen rendern in der Standardeinstellung die Koordinaten aller Geometrien in einer Datenquelle. Legen Sie die Eigenschaft `filter` der Ebene auf `['==', ['geometry-type'], 'Point']` oder `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` fest, um die Ebene dahin gehend zu beschränken, dass nur Punktgeometriefunktionen gerendert werden, wenn auch MultiPoint-Funktionen berücksichtigt werden sollen.
 
 ## <a name="add-a-bubble-layer"></a>Hinzufügen einer Blasenebene
 
-Mit dem folgenden Code wird ein Array von Punkten in eine Datenquelle geladen und mit einer [Blasenebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)verbunden. Der Blasenebene werden Optionen zugewiesen, um den Radius jeder Blase bei fünf Pixeln, eine Füllfarbe von Weiß, eine Strichfarbe von Blau und eine Strichbreite von sechs Pixeln darzustellen. 
+Mit dem folgenden Code wird ein Array von Punkten in eine Datenquelle geladen. Anschließend werden die Datenpunkte mit einer [Blasenebene](/javascript/api/azure-maps-control/atlas.layer.bubblelayer) verbunden. Die Blasenebene rendert den Radius jeder Blase mit fünf Pixeln und einer weißen Füllfarbe sowie einer blauen Strichfarbe und einer Strichbreite von sechs Pixeln. 
 
 ```javascript
 //Add point locations.
@@ -53,20 +53,20 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 }));
 ```
 
-Nachfolgend finden Sie das vollständige Beispiel für ausführbaren Code der obigen Funktionalität.
+Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben erläuterte Funktionalität.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='DataSource „BubbleLayer“' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>DataSource „BubbleLayer“</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='DataSource „BubbleLayer“' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>DataSource „BubbleLayer“</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="show-labels-with-a-bubble-layer"></a>Anzeigen von Bezeichnungen bei einer Blasenebene
 
-Der folgende Code veranschaulicht, wie Sie eine Blasenebene verwenden, um einen Punkt auf der Karte zu rendern, und eine Symbolebene, um eine Bezeichnung zu rendern. Um das Symbol der Symbolebene auszublenden, legen Sie die `image`-Eigenschaft der Symboloptionen auf `'none'` fest.
+Dieser Code zeigt, wie Sie eine Blasenebene zum Rendern eines Punkts auf der Karte verwenden. Außerdem wird gezeigt, wie Sie eine Symbolebene verwenden, um eine Bezeichnung zu rendern. Um das Symbol der Symbolebene auszublenden, legen Sie die `image`-Eigenschaft der Symboloptionen auf `'none'` fest.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='DataSource „MultiLayer“' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>DataSource „MultiLayer“</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='DataSource „MultiLayer“' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>DataSource „MultiLayer“</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="customize-a-bubble-layer"></a>Anpassen einer Blasenebene
@@ -75,7 +75,7 @@ Für die Blasenebene gibt es nur einige wenige Formatierungsoptionen. Mit dem fo
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Optionen für Blasenebenen' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Beachten Sie den Stift <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>Bubble Layer Options (Optionen für Blasenebenen)</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) unter <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Optionen für Blasenebenen' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Beachten Sie den Stift <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>Bubble Layer Options (Optionen für Blasenebenen)</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) unter <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -83,10 +83,10 @@ Für die Blasenebene gibt es nur einige wenige Formatierungsoptionen. Mit dem fo
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 
 > [!div class="nextstepaction"]
-> [BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)
+> [BubbleLayer](/javascript/api/azure-maps-control/atlas.layer.bubblelayer)
 
 > [!div class="nextstepaction"]
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
+> [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
 In den folgenden Artikeln finden Sie weitere Codebeispiele, die Sie Ihren Karten hinzufügen können:
 
@@ -100,4 +100,4 @@ In den folgenden Artikeln finden Sie weitere Codebeispiele, die Sie Ihren Karten
 > [Verwenden von datengesteuerten Formatvorlagenausdrücken](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Codebeispiele](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Codebeispiele](/samples/browse/?products=azure-maps)

@@ -9,22 +9,22 @@ editor: ''
 ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/26/2019
+ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60349823"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91317615"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatische Upgrade
-Dieses Feature wurde mit [Build 1.1.105.0 (veröffentlicht im Februar 2016)](reference-connect-version-history.md#111050) eingeführt.  Dieses Feature wurde in [Build 1.1.561](reference-connect-version-history.md#115610) aktualisiert und unterstützt nun zusätzliche Szenarios, die zuvor nicht unterstützt wurden.
+Dieses Feature wurde mit [Build 1.1.105.0 (veröffentlicht im Februar 2016)](reference-connect-version-history.md) eingeführt.  Dieses Feature wurde in [Build 1.1.561](reference-connect-version-history.md) aktualisiert und unterstützt nun zusätzliche Szenarios, die zuvor nicht unterstützt wurden.
 
 ## <a name="overview"></a>Übersicht
 Noch nie konnten Sie so leicht sicherstellen, dass Ihre Azure AD Connect-Installation immer auf dem neuesten Stand ist  – mit dem **automatischen Upgradefeature** . Dieses Feature ist standardmäßig für Express-Installationen und DirSync-Upgrades aktiviert. Wenn eine neue Version veröffentlicht wird, erfolgt ein automatisches Upgrade Ihrer Installation.
@@ -37,11 +37,11 @@ Das automatische Upgrade ist in folgenden Fällen standardmäßig aktiviert:
 
 Der aktuelle Zustand des automatischen Upgrades kann über das PowerShell-Cmdlet `Get-ADSyncAutoUpgrade`angezeigt werden. Folgende Zustände sind möglich:
 
-| Zustand | Kommentar |
+| State | Comment |
 | --- | --- |
 | Aktiviert |Das automatische Upgrade ist aktiviert. |
 | Ausgesetzt |Nur vom System festgelegt. Das System ist **derzeit nicht** zum Erhalten automatischer Upgrades berechtigt. |
-| Deaktiviert |Das automatische Upgrade ist deaktiviert. |
+| Disabled |Das automatische Upgrade ist deaktiviert. |
 
 Mit `Set-ADSyncAutoUpgrade` können Sie zwischen **aktiviert** und **deaktiviert** wechseln. Nur das System sollte den Zustand **Ausgesetzt**festlegen.  Vor 1.1.750.0 hat das Cmdlet „Set-ADSyncAutoUpgrade“ das automatische Upgrade blockiert, wenn der auto-upgrade-Status auf „Angehalten“ festgelegt wurde. Diese Funktion wurde geändert, sodass das automatische Upgrade nicht blockiert wird.
 
@@ -57,10 +57,14 @@ Ein automatisches Upgrade wird voraussichtlich nicht direkt am Erscheinungstag e
 
 Wenn Sie der Meinung sind, dass ein Fehler vorliegt, führen Sie zuerst `Get-ADSyncAutoUpgrade` aus, um sicherzustellen, dass das automatische Upgrade aktiviert ist.
 
+Wenn der Status „Angehalten“ lautet, können Sie den Grund mit dem Befehl `Get-ADSyncAutoUpgrade -Detail` anzeigen.  Der Grund für die Unterbrechung kann einen beliebigen Zeichenfolgenwert enthalten, enthält in der Regel aber den Zeichenfolgenwert von UpgradeResult, d. h. `UpgradeNotSupportedNonLocalDbInstall` oder `UpgradeAbortedAdSyncExeInUse`.  Es kann auch ein zusammengesetzter Wert zurückgegeben werden, z. B. `UpgradeFailedRollbackSuccess-GetPasswordHashSyncStateFailed`.
+
+Möglicherweise erhalten Sie auch ein Ergebnis, das kein UpgradeResult ist, d. h. „AADHealthEndpointNotDefined“ oder „DirSyncInPlaceUpgradeNonLocalDb“.
+
 Stellen Sie dann sicher, dass Sie die erforderlichen URLs in Ihrem Proxy oder in der Firewall geöffnet haben. Die automatische Aktualisierung verwendet Azure AD Connect Health wie in der [Übersicht](#overview)beschrieben. Wenn Sie einen Proxy verwenden, muss Health für die Verwendung eines [Proxyservers](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)konfiguriert sein. Prüfen Sie auch die [Verbindung von Health](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) zu Azure AD.
 
 Wenn Sie die Verbindung mit Azure AD überprüft haben, prüfen Sie die Ereignisprotokolle. Starten Sie die Ereignisanzeige, und sehen Sie sich das Ereignisprotokoll für die **Anwendung** an. Fügen Sie einen Ereignisprotokollfilter für die Quelle **Azure AD Connect Upgrade** und den Ereignis-ID-Bereich **300-399** hinzu.  
-![Ereignisprotokollfilter für das automatische Upgrade](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
+![Screenshot des Fensters „Aktuelles Protokoll filtern“, auf dem das Feld „Ereignisquellen“ sowie das Feld „Einschließen/ausschließen“ für die Event-ID hervorgehobenen werden](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
 So können Sie alle Ereignisprotokolle anzeigen, die dem Status für das automatische Upgrade zugeordnet sind.  
 ![Ereignisprotokollfilter für das automatische Upgrade](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  
@@ -69,7 +73,7 @@ Der Ergebniscode hat ein Präfix mit einer Übersicht über den Status.
 
 | Ergebniscodepräfix | BESCHREIBUNG |
 | --- | --- |
-| Erfolgreich |Das Upgrade der Installation wurde erfolgreich durchgeführt. |
+| Erfolg |Das Upgrade der Installation wurde erfolgreich durchgeführt. |
 | UpgradeAborted |Das Upgrade wurde durch ein temporäres Problem angehalten. Das Upgrade wird erneut ausgeführt, und es wird davon ausgegangen, dass es später erfolgreich durchgeführt werden kann. |
 | UpgradeNotSupported |Die Konfiguration des Systems blockiert das automatische Upgrade. Das Upgrade wird erneut versucht, um zu ermitteln, ob sich der Status ändert. Es ist jedoch damit zu rechnen, dass das Upgrade für das System manuell durchgeführt werden muss. |
 
@@ -89,19 +93,11 @@ Im Folgenden finden Sie eine Liste der Meldungen, die am häufigsten angezeigt w
 | UpgradeAbortedSyncExeInUse |Die [Synchronization Service Manager-Benutzeroberfläche](how-to-connect-sync-service-manager-ui.md) ist auf dem Server geöffnet. |
 | UpgradeAbortedSyncOrConfigurationInProgress |Der Installations-Assistent wird ausgeführt, oder es wurde eine Synchronisierung außerhalb des Schedulers geplant. |
 | **UpgradeNotSupported** | |
-| UpgradeNotSupportedAdfsSignInMethod | Sie haben AD FS als Anmeldemethode ausgewählt. |
 | UpgradeNotSupportedCustomizedSyncRules |Sie haben der Konfiguration eigene benutzerdefinierte Regeln hinzugefügt. |
-| UpgradeNotSupportedDeviceWritebackEnabled |Sie haben das Feature [Geräterückschreiben](how-to-connect-device-writeback.md) aktiviert. |
-| UpgradeNotSupportedGroupWritebackEnabled |Sie haben das Feature [Gruppenrückschreiben](how-to-connect-preview.md#group-writeback) aktiviert. |
 | UpgradeNotSupportedInvalidPersistedState |Die Installation ist keine Express-Einstellung und kein DirSync-Upgrade. |
-| UpgradeNotSupportedMetaverseSizeExceeeded |Es sind mehr als 100.000 Objekte im Metaverse enthalten. |
-| UpgradeNotSupportedMultiForestSetup |Sie stellen Verbindungen mit mehr als einer Gesamtstruktur her. Beim Express-Setup wird nur eine Verbindung mit einer Gesamtstruktur hergestellt. |
 | UpgradeNotSupportedNonLocalDbInstall |Sie verwenden keine SQL Server Express LocalDB-Datenbank. |
-| UpgradeNotSupportedNonMsolAccount |Das [AD DS-Connector-Konto](reference-connect-accounts-permissions.md#ad-ds-connector-account) ist nicht mehr das Standardkonto vom Typ „MSOL_“. |
-| UpgradeNotSupportedNotConfiguredSignInMethod | Beim Einrichten von AAD Connect haben Sie *Nicht konfigurieren* beim Auswählen der Anmeldemethode gewählt. |
-| UpgradeNotSupportedPtaSignInMethod | Sie haben Pass-Through-Authentifizierung als Anmeldemethode ausgewählt. |
-| UpgradeNotSupportedStagingModeEnabled |Der Server ist auf den [Stagingmodus](how-to-connect-sync-staging-server.md)festgelegt. |
-| UpgradeNotSupportedUserWritebackEnabled |Sie haben das Feature [Benutzerrückschreiben](how-to-connect-preview.md#user-writeback) aktiviert. |
+|UpgradeNotSupportedLocalDbSizeExceeded|Lokale Datenbank ist größer als oder gleich 8 GB|
+|UpgradeNotSupportedAADHealthUploadDisabled|Uploads von Integritätsdaten wurden im Portal deaktiviert|
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md).

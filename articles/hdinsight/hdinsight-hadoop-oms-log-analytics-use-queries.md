@@ -5,22 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 11/05/2018
-ms.openlocfilehash: 51344ff7381b6392870b1fd0e331eed38a33915d
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 12/02/2019
+ms.openlocfilehash: c2ddcd8ea3524b4afdfa7f70d21f0cba96975f72
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103523"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86085360"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Abfragen von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern
 
 Lernen Sie einige grundlegende Szenarien zur Verwendung von Azure Monitor-Protokollen für die Überwachung von Azure HDInsight-Clustern kennen:
 
 * [Analysieren von HDInsight-Clustermetriken](#analyze-hdinsight-cluster-metrics)
-* [Suchen nach bestimmten Protokollmeldungen](#search-for-specific-log-messages)
 * [Erstellen von Ereigniswarnungen](#create-alerts-for-tracking-events)
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
@@ -34,90 +33,95 @@ Sie müssen einen HDInsight-Cluster konfiguriert haben, um Azure Monitor-Protoko
 Erfahren Sie, wie Sie nach bestimmten Metriken für Ihren HDInsight-Cluster suchen.
 
 1. Öffnen Sie den Log Analytics-Arbeitsbereich, der Ihrem HDInsight-Cluster zugeordnet ist, im Azure-Portal.
-1. Wählen Sie die Kachel **Protokollsuche** aus.
-1. Geben Sie im Suchfeld die folgende Abfrage ein, um nach allen verfügbaren Metriken für alle HDInsight-Cluster zu suchen, die für die Verwendung von Azure Monitor-Protokollen konfiguriert sind, und wählen Sie dann **AUSFÜHREN** aus.
+1. Klicken Sie unter **Allgemein** auf **Protokolle**.
+1. Geben Sie im Suchfeld die folgende Abfrage ein, um nach allen verfügbaren Metriken für alle HDInsight-Cluster zu suchen, die für die Verwendung von Azure Monitor-Protokollen konfiguriert sind, und klicken Sie dann auf **Ausführen**. Überprüfen Sie die Ergebnisse.
 
-        search *
+    ```kusto
+    search *
+    ```
 
-    ![Apache Ambari-Analysen – Suchen aller Metriken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Suchen aller Metriken")
+    ![Apache Ambari-Analysen – Suchen aller Metriken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Alle Metriken suchen")
 
-    Die Ausgabe ähnelt der folgenden:
+1. Klicken Sie im Menü links auf die Registerkarte **Filter**.
 
-    ![Protokollanalyse – Suchen aller Metriken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics-output.png "Ausgabe bei Suchen aller Metriken")
+1. Wählen Sie unter **Typ** die Option **Heartbeat** aus. Klicken Sie anschließend auf **Apply & Run** (Anwenden und ausführen).
 
-1. Wählen Sie im linken Bereich unter **Typ** eine Metrik aus, die Sie näher untersuchen möchten, und anschließend **Anwenden**. Im folgenden Screenshot ist der Typ `metrics_resourcemanager_queue_root_default_CL` ausgewählt.
+    ![Spezifische Metriken der Log Analytics-Suche](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Nach bestimmten Metriken suchen")
 
-    > [!NOTE]  
-    > Unter Umständen müssen Sie die Schaltfläche **[+]Weitere** wählen, um die gesuchte Metrik zu finden. Außerdem befindet sich die Schaltfläche **Übernehmen** am unteren Rand der Liste, sodass Sie nach unten scrollen müssen, um sie anzuzeigen.
+1. Beachten Sie, dass die Abfrage im Textfeld geändert wird:
 
-    Beachten Sie, dass die Abfrage im Textfeld jetzt in die Abfrage geändert wird, die im folgenden Screenshot im hervorgehoben Feld angezeigt wird:
+    ```kusto
+    search *
+    | where Type == "Heartbeat"
+    ```
 
-    ![Protokollanalyse – Suchen bestimmter Metriken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Suchen nach bestimmten Metriken")
+1. Sie können diese Fehlerliste mithilfe der im linken Bereich des Menüs verfügbaren Optionen näher untersuchen. Beispiel:
 
-1. Sie können diese spezifische Metrik jetzt näher untersuchen. Beispielsweise können Sie über die folgende Abfrage die vorhandene Ausgabe basierend auf dem Mittelwert der in einem Intervall von 10 Minuten verwendeten Ressourcen verfeinern, wobei die Kategorisierung nach dem Clusternamen erfolgt:
+    - So zeigen Sie Protokolle von einem bestimmten Knoten an:
 
-        search in (metrics_resourcemanager_queue_root_default_CL) * | summarize AggregatedValue = avg(UsedAMResourceMB_d) by ClusterName_s, bin(TimeGenerated, 10m)
+        ![Suchen nach bestimmten Fehlern (Ausgabe 1)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png "Nach bestimmten Fehlern suchen (Ausgabe 1)")
 
-1. Anstelle der auf dem Mittelwert der verwendeten Ressourcen basierenden Optimierung können Sie die Ergebnisse mit der folgenden Abfrage basierend auf dem Zeitpunkt in einem 10-Minuten-Fenster optimieren, an dem die meisten Ressourcen verwendet wurden (sowie den Zeitpunkten beim 90. und 95. Perzentil):
+    - So zeigen Sie Protokolle zu bestimmten Zeiten an:
 
-        search in (metrics_resourcemanager_queue_root_default_CL) * | summarize ["max(UsedAMResourceMB_d)"] = max(UsedAMResourceMB_d), ["pct95(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 95), ["pct90(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 90) by ClusterName_s, bin(TimeGenerated, 10m)
+        ![Suchen nach bestimmten Fehlern (Ausgabe 2)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png "Nach bestimmten Fehlern suchen (Ausgabe 2)")
 
-## <a name="search-for-specific-log-messages"></a>Suchen nach bestimmten Protokollmeldungen
+1. Klicken Sie auf **Apply & Run** (Anwenden und ausführen), und überprüfen Sie die Ergebnisse. Beachten Sie auch, dass die Abfrage folgendermaßen aktualisiert wurde:
 
-Erfahren Sie, wie Sie in einem bestimmten Zeitfenster nach Fehlermeldungen suchen. Die folgenden Schritte sind nur ein Beispiel dafür, wie Sie die Fehlermeldung finden können, die Sie interessiert. Sie können jede verfügbare Eigenschaft verwenden, um nach den Fehlern zu suchen, die Sie finden möchten.
+    ```kusto
+    search *
+    | where Type == "Heartbeat"
+    | where (Computer == "zk2-myhado") and (TimeGenerated == "2019-12-02T23:15:02.69Z" or TimeGenerated == "2019-12-02T23:15:08.07Z" or TimeGenerated == "2019-12-02T21:09:34.787Z")
+    ```
 
-1. Öffnen Sie den Log Analytics-Arbeitsbereich, der Ihrem HDInsight-Cluster zugeordnet ist, im Azure-Portal.
-2. Wählen Sie die Kachel **Protokollsuche** aus.
-3. Geben Sie die folgende Abfrage ein, um nach allen Fehlermeldungen für alle HDInsight-Cluster zu suchen, die für die Verwendung von Azure Monitor-Protokollen konfiguriert sind, und wählen Sie dann **AUSFÜHREN**.
+### <a name="additional-sample-queries"></a>Zusätzliche Beispielabfragen
 
-         search "Error"
+Dies ist eine weitere Beispielabfrage, die auf dem Mittelwert der in einem Intervall von 10 Minuten verwendeten Ressourcen basiert und nach Clusternamen kategorisiert wird:
 
-    Es wird eine Ausgabe ähnlich der folgenden angezeigt:
+```kusto
+search in (metrics_resourcemanager_queue_root_default_CL) * 
+| summarize AggregatedValue = avg(UsedAMResourceMB_d) by ClusterName_s, bin(TimeGenerated, 10m)
+```
 
-    ![Azure-Portal – Fehler bei der Protokollsuche](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-errors-output.png "Ausgabe bei Suchen aller Fehler")
+Anstelle der auf dem Mittelwert der verwendeten Ressourcen basierenden Optimierung können Sie die Ergebnisse mit der folgenden Abfrage basierend auf dem Zeitpunkt in einem 10-Minuten-Fenster optimieren, an dem die meisten Ressourcen verwendet wurden (sowie den Zeitpunkten beim 90. und 95. Perzentil):
 
-4. Wählen Sie im linken Bereich unter der Kategorie **Typ** einen Fehlertyp aus, den Sie näher untersuchen möchten, und anschließend **Anwenden**.  Beachten Sie, dass die Ergebnisse optimiert werden, sodass nur Fehler des ausgewählten Typs angezeigt werden.
-
-5. Sie können diese Fehlerliste mithilfe der im linken Bereich verfügbaren Optionen näher untersuchen. Beispiel:
-
-    - So zeigen Sie Fehlermeldungen von einem bestimmten Workerknoten an
-
-        ![Ausgabe bei Suchen nach bestimmten Fehlern (1)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-refined.png "Ausgabe bei Suchen nach bestimmten Fehlern (1)")
-
-    - So zeigen Sie Fehler an, die zu einem bestimmten Zeitpunkt aufgetreten sind
-
-        ![Ausgabe bei Suchen nach bestimmten Fehlern (2)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-time.png "Ausgabe bei Suchen nach bestimmten Fehlern (2)")
-
-6. So zeigen Sie den genauen Fehler an Sie können **[+] Mehr anzeigen** wählen, um die eigentliche Fehlermeldung anzuzeigen.
-
-    ![Ausgabe bei Suchen nach bestimmten Fehlern (3)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-arrived.png "Ausgabe bei Suchen nach bestimmten Fehlern (3)")
+```kusto
+search in (metrics_resourcemanager_queue_root_default_CL) * 
+| summarize ["max(UsedAMResourceMB_d)"] = max(UsedAMResourceMB_d), ["pct95(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 95), ["pct90(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 90) by ClusterName_s, bin(TimeGenerated, 10m)
+```
 
 ## <a name="create-alerts-for-tracking-events"></a>Erstellen von Warnungen zum Nachverfolgen von Ereignissen
 
 Damit eine Warnung erstellt werden kann, muss eine Abfrage vorhanden sein, auf deren Basis die Warnung ausgelöst wird. Sie können jede beliebige Abfrage verwenden, um eine Warnung zu erstellen.
 
 1. Öffnen Sie den Log Analytics-Arbeitsbereich, der Ihrem HDInsight-Cluster zugeordnet ist, im Azure-Portal.
-2. Wählen Sie die Kachel **Protokollsuche** aus.
-3. Führen Sie die folgende Abfrage aus, zu der Sie eine Warnung erstellen möchten, und wählen Sie dann **AUSFÜHREN**.
+1. Klicken Sie unter **Allgemein** auf **Protokolle**.
+1. Führen Sie die folgende Abfrage aus, zu der Sie eine Warnung erstellen möchten, und klicken Sie dann auf **Ausführen**.
 
-        metrics_resourcemanager_queue_root_default_CL | where AppsFailed_d > 0
+    ```kusto
+    metrics_resourcemanager_queue_root_default_CL | where AppsFailed_d > 0
+    ```
 
     Die Abfrage stellt eine Liste mit fehlerhaften Anwendungen bereit, die in HDInsight-Clustern ausgeführt werden.
 
-4. Wählen Sie oben auf der Seite die Option **Neue Warnungsregel**.
+1. Klicken Sie oben auf der Seite auf **New alert rule** (Neue Warnungsregel).
 
-    ![Abfrage eingeben, um eine Warnung zu erstellen (1)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "Abfrage eingeben, um eine Warnung zu erstellen (1)")
+    ![Eingeben der Abfrage zum Erstellen einer Warnung (1)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "Eingeben der Abfrage zum Erstellen einer Warnung (1)")
 
-5. Geben Sie im Fenster **Regel erstellen** die Abfrage und andere Details zum Erstellen einer Warnung ein, und wählen Sie dann **Warnungsregel erstellen**.
+1. Geben Sie im Fenster **Regel erstellen** die Abfrage und andere Details zum Erstellen einer Warnung ein, und wählen Sie dann **Warnungsregel erstellen**.
 
-    ![Abfrage eingeben, um eine Warnung zu erstellen (2)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "Abfrage eingeben, um eine Warnung zu erstellen (2)")
+    ![Eingeben der Abfrage zum Erstellen einer Warnung (2)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "Eingeben der Abfrage zum Erstellen einer Warnung (2)")
 
-Bearbeiten oder löschen Sie eine vorhandene Warnung wie folgt:
+### <a name="edit-or-delete-an-existing-alert"></a>Bearbeiten oder Löschen einer vorhandenen Warnung
 
 1. Öffnen Sie im Azure-Portal den Log Analytics-Arbeitsbereich.
-2. Wählen Sie im Menü auf der linken Seite die Option **Warnung**.
-3. Wählen Sie die Warnung aus, die Sie bearbeiten oder löschen möchten.
-4. Folgende Optionen stehen zur Auswahl: **Speichern**, **Verwerfen**, **Deaktivieren** und **Löschen**.
+
+1. Klicken Sie links im Menü unter **Monitor** auf **Warnungen**.
+
+1. Klicken Sie oben auf **Warnungsregeln verwalten**.
+
+1. Wählen Sie die Warnung aus, die Sie bearbeiten oder löschen möchten.
+
+1. Sie haben folgende Optionen: **Speichern**, **Verwerfen**, **Deaktivieren** und **Löschen**.
 
     ![Lösch/Bearbeitungswarnung für HDInsight Azure Monitor-Protokolle](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
@@ -125,5 +129,5 @@ Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Me
 
 ## <a name="see-also"></a>Weitere Informationen
 
+* [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 * [Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Azure Monitor](../azure-monitor/platform/view-designer.md)
-* [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../azure-monitor/platform/alerts-metric.md)

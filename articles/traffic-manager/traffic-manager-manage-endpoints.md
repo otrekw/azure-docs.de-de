@@ -3,20 +3,20 @@ title: Verwalten von Endpunkten in Azure Traffic Manager | Microsoft Docs
 description: Dieser Artikel enthält Informationen zum Hinzufügen, Entfernen, Aktivieren und Deaktivieren von Endpunkten in Azure Traffic Manager.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
-ms.author: allensu
-ms.openlocfilehash: 573a8f7ede29b045053d77194d15707df9e23641
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: duau
+ms.openlocfilehash: fc6e8bcda17f9d788a430ed763bd9f8702eaf250
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071086"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003547"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Hinzufügen, Deaktivieren, Aktivieren oder Löschen von Endpunkten
 
@@ -30,7 +30,7 @@ Sie können auch einzelne Endpunkte deaktivieren, die Teil eines Traffic Manager
 ## <a name="to-add-a-cloud-service-or-an-app-service-endpoint-to-a-traffic-manager-profile"></a>So fügen Sie einem Traffic Manager-Profil einen Clouddienst- oder App-Dienstendpunkt hinzu
 
 1. Melden Sie sich im Browser beim [Azure-Portal](https://portal.azure.com) an.
-2. Suchen Sie auf der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie ändern möchten, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
+2. Suchen Sie über die Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie ändern möchten, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
 3. Klicken Sie auf dem Blatt **Traffic Manager-Profil** im Abschnitt **Einstellungen** auf **Endpunkte**.
 4. Klicken Sie auf dem dann angezeigten Blatt **Endpunkte** auf **Hinzufügen**.
 5. Füllen Sie das Blatt **Endpunkt hinzufügen** wie folgt aus:

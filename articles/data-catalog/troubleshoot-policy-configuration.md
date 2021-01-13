@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
 ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68879555"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a>Problembehandlung von Azure Data Catalog

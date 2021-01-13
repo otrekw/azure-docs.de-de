@@ -1,32 +1,31 @@
 ---
-title: Bereitstellen eines simulierten X.509-Geräts für Azure IoT Hub mithilfe von Java und Registrierungsgruppen | Microsoft-Dokumentation
-description: Azure-Tutorial – Erstellen und Bereitstellen eines simulierten X.509-Geräts per Java-Gerät und Dienst-SDK sowie Registrierungsgruppen für den IoT Hub Device Provisioning-Dienst
+title: 'Tutorial: Bereitstellen eines simulierten X.509-Geräts für Azure IoT Hub mithilfe von Java und Registrierungsgruppen'
+description: In diesem Tutorial erfahren Sie, wie Sie ein simuliertes X.509-Gerät per Geräte- und Dienst-SDK für Java sowie Registrierungsgruppen für IoT Hub Device Provisioning Service (DPS) erstellen und bereitstellen.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/04/2018
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
-ms.custom: mvc
-ms.openlocfilehash: 8e926c3ff7c3d7abc9467291e9b1de77781f664e
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 4cfbfe3e3e3ba620d8292767012c9bb866d8a878
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805052"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968093"
 ---
-# <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Erstellen und Bereitstellen eines simulierten X.509-Geräts per Java-Gerät und Dienst-SDK sowie Registrierungsgruppen für den IoT Hub Device Provisioning-Dienst
+# <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Tutorial: Erstellen und Bereitstellen eines simulierten X.509-Geräts per Java-Gerät und Dienst-SDK sowie Registrierungsgruppen für den IoT Hub Device Provisioning-Dienst
 
 Mit diesen Schritten wird veranschaulicht, wie Sie ein X.509-Gerät auf Ihrem Entwicklungscomputer mit Windows-Betriebssystem simulieren und ein Codebeispiel verwenden, um für dieses simulierte Gerät eine Verbindung mit dem Device Provisioning-Dienst und Ihrem IoT Hub über Registrierungsgruppen herzustellen. 
 
 Führen Sie zunächst die Schritte unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) aus, bevor Sie mit dieser Anleitung fortfahren.
 
 
-## <a name="prepare-the-environment"></a>Vorbereiten der Umgebung 
+## <a name="prerequisites"></a>Voraussetzungen
 
-1. Vergewissern Sie sich, dass das [Java SE Development Kit 8](https://aka.ms/azure-jdks) auf Ihrem Computer installiert ist.
+1. Vergewissern Sie sich, dass das [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) auf Ihrem Computer installiert ist.
 
 1. Laden Sie [Maven](https://maven.apache.org/install.html) herunter, und installieren Sie es.
 
@@ -35,7 +34,7 @@ Führen Sie zunächst die Schritte unter [Einrichten des IoT Hub Device Provisio
 1. Verwenden Sie die Informationen in der [Zertifikatübersicht](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), um Ihre Testzertifikate zu erstellen.
 
     > [!NOTE]
-    > Für diesen Schritt ist [OpenSSL](https://www.openssl.org/) erforderlich. OpenSSL kann entweder über die Quelle erstellt und installiert oder über einen [Drittanbieter](https://wiki.openssl.org/index.php/Binaries) (z. B. [hier](https://sourceforge.net/projects/openssl/)) installiert werden. Sie können diesen Schritt überspringen, falls Sie Ihre _Stamm_-, _Zwischen_- und _Geräte_zertifikate bereits erstellt haben.
+    > Für diesen Schritt ist [OpenSSL](https://www.openssl.org/) erforderlich. OpenSSL kann entweder über die Quelle erstellt und installiert oder über einen [Drittanbieter](https://wiki.openssl.org/index.php/Binaries) (z. B. [hier](https://sourceforge.net/projects/openssl/)) installiert werden. Sie können diesen Schritt überspringen, falls Sie Ihre _Stamm_-, _Zwischen_- und _Geräte_ zertifikate bereits erstellt haben.
     >
 
     1. Führen Sie die ersten beiden Schritte aus, um Ihre _Stamm_- und _Zwischenzertifikate_ zu erstellen.
@@ -261,4 +260,4 @@ Wenn Sie das Geräteclientbeispiel weiter verwenden und erkunden möchten, über
 In diesem Tutorial haben Sie auf Ihrem Windows-Computer ein simuliertes X.509-Gerät erstellt und es mithilfe des Azure IoT Hub Device Provisioning-Diensts und der Registrierungsgruppen für Ihre IoT Hub-Instanz bereitgestellt. Fahren Sie mit den Gerätekonzepten fort, um weitere Informationen zu Ihrem X.509-Gerät zu erhalten. 
 
 > [!div class="nextstepaction"]
-> [Konzepte für Geräte mit dem IoT Hub Device Provisioning-Dienst](concepts-device.md)
+> [Konzepte beim IoT Hub Device Provisioning-Dienst](concepts-service.md)

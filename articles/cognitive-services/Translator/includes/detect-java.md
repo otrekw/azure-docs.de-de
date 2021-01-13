@@ -3,13 +3,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
+ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: f118f27d870f4c69a3bf568bacb3765fefee34c0
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 69dd5f5eb3a1cc0cda60702e9e653e23f6588f93
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907220"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375175"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -126,7 +127,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>Erstellen einer Funktion zum Analysieren der Antwort
 
-Mit dieser einfachen Funktion wird die JSON-Antwort vom Textübersetzungsdienst analysiert und übersichtlicher gemacht.
+Mit dieser einfachen Funktion wird die JSON-Antwort vom Translator-Dienst analysiert und übersichtlicher gemacht.
 
 ```java
 // This function prettifies the json response.
@@ -170,7 +171,10 @@ gradle run
 
 ## <a name="sample-response"></a>Beispiel für eine Antwort
 
-Die Abkürzung für das Land bzw. die Region finden Sie in [dieser Liste der Sprachen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Nachdem Sie das Beispiel ausgeführt haben, sollte Folgendes im Terminal ausgegeben werden:
+
+> [!NOTE]
+> Die Abkürzung für das Land bzw. die Region finden Sie in [dieser Liste der Sprachen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [
@@ -199,7 +203,7 @@ Die Abkürzung für das Land bzw. die Region finden Sie in [dieser Liste der Spr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die API-Referenz an, um zu erfahren, welche Möglichkeiten die Textübersetzungs-API bietet.
+Machen Sie sich anhand der API-Referenz mit den Möglichkeiten von Translator vertraut.
 
 > [!div class="nextstepaction"]
 > [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -1,39 +1,41 @@
 ---
-title: Hinzufügen und Ausführen von Codeausschnitten – Azure Logic Apps
-description: Hinzufügen und Ausführen von Codeausschnitten mit Inlinecode in Azure Logic Apps
+title: Hinzufügen und Ausführen von Codeausschnitten mithilfe von Inlinecode
+description: Erfahren Sie, wie Sie Codeausschnitte erstellen und ausführen, indem Sie Inlinecodeaktionen für automatisierte Aufgaben und Workflows verwenden, die Sie mit Azure Logic Apps erstellen.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: derek1ee, LADocs
+ms.reviewer: deli, logicappspm
 ms.topic: article
-ms.date: 05/14/2019
-ms.openlocfilehash: 3b51215e0cf48df2d3cd9df85a3d4c5641a17215
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.date: 12/07/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: 1736a1d22ccfb0f00061534d1c733ab72da4c7b0
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390805"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922508"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Hinzufügen und Ausführen von Codeausschnitten mit Inlinecode in Azure Logic Apps
 
-Wenn Sie einen Codeausschnitt in Ihrer Logik-App ausführen möchten, können Sie die integrierte Aktion **Inlinecode** im Workflow Ihrer Logik-App hinzufügen. Diese Aktion ist auf die Ausführung von Code im folgenden Szenario ausgelegt:
+Wenn Sie einen Codeausschnitt in Ihrer Logik-App ausführen möchten, können Sie die integrierte Aktion Inlinecode im Workflow Ihrer Logik-App hinzufügen. Diese Aktion ist auf die Ausführung von Code im folgenden Szenario ausgelegt:
 
 * Ausführung in JavaScript. Weitere Sprachen in Kürze verfügbar.
+
 * Ausführung wird in höchstens fünf Sekunden abgeschlossen.
+
 * Verarbeitet Daten mit einer Größe von bis zu 50 MB.
+
 * Erfordert nicht die Verwendung von [**Variables**-Aktionen](../logic-apps/logic-apps-create-variables-store-values.md), die noch nicht unterstützt werden.
-* Verwendung von Node.js-Version 8.11.1. Weitere Informationen finden Sie unter [Integrierte Standardobjekte](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects). 
+
+* Verwendung von Node.js-Version 8.11.1. Weitere Informationen finden Sie unter [Integrierte Standardobjekte](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects).
 
   > [!NOTE]
-  > Die `require()`-Funktion wird von der **Inlinecode**-Aktion zur Ausführung von JavaScript nicht unterstützt.
+  > Die `require()`-Funktion wird von der Inlinecode-Aktion zur Ausführung von JavaScript nicht unterstützt.
 
-Diese Aktion führt den Codeausschnitt aus und gibt die Ausgabe des Ausschnitts als Token mit dem Namen **Ergebnis** zurück; dieses Token kann in nachfolgenden Aktionen in der Logik-App verwendet werden. Wenn Sie in anderen Szenarien eine Funktion für Ihren Code erstellen möchten, versuchen Sie, in der Logik-App [eine Azure-Funktion zu erstellen und aufzurufen](../logic-apps/logic-apps-azure-functions.md).
+Diese Aktion führt den Codeausschnitt aus und gibt die Ausgabe des Codeausschnitts als Token mit dem Namen `Result` zurück. Sie können dieses Token mit nachfolgenden Aktionen im Workflow ihrer Logik-App verwenden. Wenn Sie in anderen Szenarien eine Funktion für Ihren Code erstellen möchten, versuchen Sie, in der Logik-App [stattdessen eine Azure-Funktion zu erstellen und aufzurufen](../logic-apps/logic-apps-azure-functions.md).
 
-In diesem Artikel wird die Beispiel-Logik-App ausgelöst, wenn eine neue E-Mail in einem Office 365 Outlook-Konto empfangen wird. Der Codeausschnitt extrahiert und gibt alle E-Mail-Adressen zurück, die im E-Mail-Text enthalten sind.
+In diesem Artikel wird die Beispiel-Logik-App ausgelöst, wenn eine neue E-Mail in einem Geschäfts-, Schul- oder Unikonto empfangen wird. Der Codeausschnitt extrahiert und gibt alle E-Mail-Adressen zurück, die im E-Mail-Text enthalten sind.
 
-![Übersicht über das Beispiel](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
+![Screenshot: Beispiel für eine Logik-App](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,36 +43,53 @@ In diesem Artikel wird die Beispiel-Logik-App ausgelöst, wenn eine neue E-Mail 
 
 * Die Logik-App, in der der Codeausschnitt hinzugefügt werden soll, einschließlich eines Triggers. Wenn Sie über keine Logik-App verfügen, lesen Sie den Artikel [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-   Die Beispiel-Logik-App im vorliegenden Artikel verwendet diesen Office 365 Outlook-Trigger: **When a new email arrives** (Wenn eine neue E-Mail eingeht)
+   Das Beispiel in diesem Thema verwendet den Office 365 Outlook-Trigger mit dem Namen **Wenn eine neue E-Mail empfangen wird**.
 
-* Ein mit Ihrer Logik-App verknüpftes [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* Ein mit Ihrer Logik-App verknüpftes [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
 
-  > [!NOTE]
-  > Achten Sie darauf, dass Sie ein Integrationskonto verwenden, das für Ihren Anwendungsfall oder Ihr Szenario geeignet ist. Beispielsweise gilt für Integrationskonten im [Free-Tarif](../logic-apps/logic-apps-pricing.md#integration-accounts), dass sie für explorative Szenarien und Workloads, nicht für Produktionsszenarien vorgesehen sind, in Nutzung und Durchsatz beschränkt sind und von einer Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) nicht unterstützt werden. Andere Tarife verursachen Kosten, beinhalten jedoch SLA-Unterstützung, bieten mehr Durchsatz und haben höhere Grenzwerte. Weitere Informationen finden Sie hier: Integrationskonto-[Tarife](../logic-apps/logic-apps-pricing.md#integration-accounts), -[Preise](https://azure.microsoft.com/pricing/details/logic-apps/) und -[Grenzwerte](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
+  * Achten Sie darauf, dass Sie ein Integrationskonto verwenden, das für Ihren Anwendungsfall oder Ihr Szenario geeignet ist.
+
+    Beispielsweise gilt für Integrationskonten im [Free-Tarif](../logic-apps/logic-apps-pricing.md#integration-accounts), dass sie für explorative Szenarien und Workloads, nicht für Produktionsszenarien vorgesehen sind, in Nutzung und Durchsatz beschränkt sind und von einer Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) nicht unterstützt werden. Andere Tarife verursachen Kosten, beinhalten jedoch SLA-Unterstützung, bieten mehr Durchsatz und haben höhere Grenzwerte. Weitere Informationen finden Sie hier: Integrationskonto-[Tarife](../logic-apps/logic-apps-pricing.md#integration-accounts), -[Preise](https://azure.microsoft.com/pricing/details/logic-apps/) und -[Grenzwerte](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
+
+   * Wenn Sie kein Integrationskonto verwenden möchten, können Sie versuchen, [Azure Logic Apps Vorschau](logic-apps-overview-preview.md) zu verwenden, und eine Logik-App aus dem Ressourcentyp **Logik-App (Vorschau)** erstellen.
+
+     In Azure Logic Apps Vorschau heißt **Inlinecode** jetzt **Inlinecodevorgänge**. Die folgenden Unterschiede gelten ebenfalls:
+
+     * **JavaScript-Code ausführen** heißt jetzt **Inline-JavaScript ausführen**.
+
+     * Unter macOS oder Linux sind Aktionen von Inlinecodevorgängen derzeit nicht verfügbar, wenn Sie die Azure Logic Apps-Erweiterung (Vorschau) in Visual Studio Code verwenden.
+
+     * Die Grenzwerte für Aktionen in Inlinecodevorgängen wurden [aktualisiert](logic-apps-overview-preview.md#inline-code-limits).
+
+     Sie können mit beiden Optionen beginnen:
+
+     * Erstellen Sie die Logik-App aus dem **Ressourcentyp** Logik-App (Vorschau)[ mithilfe des Azure-Portals](create-stateful-stateless-workflows-azure-portal.md).
+
+     * Erstellen Sie ein Projekt für die Logik-App [ mithilfe von Visual Studio Code und der Erweiterung Azure Logic Apps (Vorschau)](create-stateful-stateless-workflows-visual-studio-code.md).
 
 ## <a name="add-inline-code"></a>Inlinecode hinzufügen
 
 1. Öffnen Sie, falls noch nicht geschehen, Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Designer für Logik-Apps.
 
-1. Fügen Sie im Designer die Aktion **Inline Code** an der gewünschten Stelle im Workflow der Logik-App hinzu.
+1. Fügen Sie im Designer die Aktion „Inlinecode“ im Workflow der Logik-App hinzu.
 
    * Wenn Sie die Aktion am Ende des Workflows hinzufügen möchten, wählen Sie **Neuer Schritt** aus.
 
-   * Wenn die Aktion zwischen vorhandenen Schritten hinzugefügt werden soll, bewegen Sie den Mauszeiger über den Pfeil, der die betreffenden Schritte verbindet. Wählen Sie das Pluszeichen ( **+** ) und anschließend **Aktion hinzufügen** aus.
+   * Wenn die Aktion zwischen Schritten hinzugefügt werden soll, bewegen Sie den Mauszeiger über den Pfeil, der die betreffenden Schritte verbindet. Wählen Sie das daraufhin angezeigte Pluszeichen ( **+** ) aus, und klicken Sie auf **Aktion hinzufügen**.
 
-   In diesem Beispiel wird die Aktion **Inline Code** unter dem Office 365 Outlook-Trigger hinzugefügt.
+   In diesem Beispiel wird die Aktion Inline Code unter dem Office 365 Outlook-Trigger hinzugefügt.
 
-   ![Neuen Schritt hinzufügen](./media/logic-apps-add-run-inline-code/add-new-step.png)
+   ![Hinzufügen eines neuen Schritts unter dem Trigger](./media/logic-apps-add-run-inline-code/add-new-step.png)
 
-1. Geben Sie unter **Aktion auswählen** im Suchfeld „Inline code“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **JavaScript-Code ausführen**
+1. Geben Sie unter **Aktion auswählen** den Text `inline code` in das Suchfeld ein. Wählen Sie in der Aktionenliste die Aktion namens **JavaScript-Code ausführen** aus.
 
-   ![„JavaScript-Code ausführen“ auswählen](./media/logic-apps-add-run-inline-code/select-inline-code-action.png)
+   ![Auswählen der Aktion „JavaScript-Code ausführen“](./media/logic-apps-add-run-inline-code/select-inline-code-action.png)
 
-   Die Aktion wird im Designer angezeigt und enthält Standard-Beispielcode, einschließlich einer return-Anweisung.
+   Die Aktion wird im Designer angezeigt und enthält standardmäßig Beispielcode einschließlich einer `return`-Anweisung.
 
    ![Inlinecode-Aktion mit Standard-Beispielcode](./media/logic-apps-add-run-inline-code/inline-code-action-default.png)
 
-1. Löschen Sie im Feld **Code** den Beispielcode, und geben Sie den auszuführenden Code ein. Schreiben Sie Code, den Sie in eine Methode einschließen, jedoch ohne dabei die Signatur der Methode zu definieren. 
+1. Löschen Sie im Feld **Code** den Beispielcode, und geben Sie Ihren Code ein. Schreiben Sie den Code, den Sie in eine Methode einschließen, jedoch ohne Methodensignatur.
 
    Wenn Sie ein erkanntes Schlüsselwort eingeben, wird die AutoVervollständigen-Liste angezeigt, sodass Sie unter den verfügbaren Schlüsselwörter auswählen können. Beispiel:
 
@@ -80,17 +99,15 @@ In diesem Artikel wird die Beispiel-Logik-App ausgelöst, wenn eine neue E-Mail 
 
    ![Erstellen von Variablen](./media/logic-apps-add-run-inline-code/save-email-body-variable.png)
 
-   Um das Verweisen auf Ergebnisse des Triggers und früherer Aktionen zu erleichtern, wird die Liste der dynamischen Inhalte angezeigt, während sich der Cursor im Feld **Code** befindet. Für dieses Beispiel werden in der Liste verfügbare Ergebnisse aus dem Trigger aufgeführt, u.a. das **Body**-Token, das nun ausgewählt werden kann.
+   Um das Verweisen auf Ergebnisse des Triggers und früherer Aktionen zu erleichtern, wird die Liste der dynamischen Inhalte angezeigt, wenn sich der Cursor im Feld **Code** befindet. Für dieses Beispiel werden in der Liste verfügbare Ergebnisse aus dem Trigger aufgeführt, u.a. das **Body**-Token, das nun ausgewählt werden kann.
 
    Nachdem Sie das **Body**-Token ausgewählt haben, löst die Inlinecode-Aktion das Token in ein `workflowContext`-Objekt auf, das auf den `Body`-Eigenschaftswert der E-Mail verweist:
 
    ![Auswählen des Ergebnisses](./media/logic-apps-add-run-inline-code/inline-code-example-select-outputs.png)
 
-   Im Feld **Code** kann der Codeausschnitt das schreibgeschützte `workflowContext`-Objekt als Eingabe verwenden. Dieses Objekt weist untergeordnete Eigenschaften auf, die dem Code Zugriff auf die Ergebnisse des Triggers und früherer Aktionen im Workflow gewähren.
-   Weitere Informationen finden weiter unten in diesem Artikel im folgenden Abschnitt: [Verweisen auf Ergebnisse von Triggern und Aktionen im Code](#workflowcontext).
+   Im Feld **Code** kann der Codeausschnitt das schreibgeschützte `workflowContext`-Objekt als Eingabe verwenden. Dieses Objekt enthält Eigenschaften auf, die dem Code Zugriff auf die Ergebnisse des Triggers und früherer Aktionen im Workflow gewähren. Weitere Informationen finden Sie unter [Verweisen auf die Ergebnisse von Triggern und Aktionen in Ihrem Code](#workflowcontext) weiter unten in diesem Thema.
 
    > [!NOTE]
-   >
    > Wenn der Codeausschnitt auf Aktionsnamen verweist, in denen der Punktoperator (.) verwendet wird, müssen Sie die betreffenden Aktionsnamen dem [**Actions**-Parameter](#add-parameters) hinzufügen. In diesen Verweise müssen die Aktionsnamen zudem in eckige Klammern ([]) und Anführungszeichen eingeschlossen sein. Beispiel:
    >
    > `// Correct`</br> 
@@ -99,8 +116,7 @@ In diesem Artikel wird die Beispiel-Logik-App ausgelöst, wenn eine neue E-Mail 
    > `// Incorrect`</br>
    > `workflowContext.actions.my.action.name.body`
 
-   Die Inlinecode-Aktion erfordert keine `return`-Anweisung, die Ergebnisse einer `return`-Anweisung sind jedoch über das **Result**-Token als Verweis in späteren Aktionen verfügbar. 
-   Der Codeabschnitt gibt z.B. das Ergebnis durch einen Aufruf der `match()`-Funktion zurück, die Übereinstimmungen im E-Mail-Text anhand des regulären Ausdrucks findet. Die **Compose**-Aktion verweist mithilfe des **Result**-Tokens auf die Ergebnisse der Inlinecode-Aktion und erstellt ein einzelnes Ergebnis.
+   Die Aktion „Inlinecode“ erfordert keine `return`-Anweisung, die Ergebnisse einer `return`-Anweisung sind jedoch über das **Result**-Token als Verweis in späteren Aktionen verfügbar. Der Codeabschnitt gibt z.B. das Ergebnis durch einen Aufruf der `match()`-Funktion zurück, die Übereinstimmungen im E-Mail-Text anhand des regulären Ausdrucks findet. Die **Compose**-Aktion verweist mithilfe des **Result**-Tokens auf die Ergebnisse der Inlinecode-Aktion und erstellt ein einzelnes Ergebnis.
 
    ![Fertiggestellte Logik-App](./media/logic-apps-add-run-inline-code/inline-code-complete-example.png)
 
@@ -131,7 +147,7 @@ Das `workflowContext`-Objekt weist diese Struktur auf und schließt die untergeo
 
 Diese Tabelle enthält weitere Informationen zu den untergeordneten Eigenschaften:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 |----------|------|-------|
 | `actions` | Objektsammlung | Ergebnisobjekte von Aktionen, die vor der Ausführung des Codeausschnitts ausgeführt werden. Jedes Objekt verfügt über ein *Schlüssel-Wert*-Paar, bei dem der Schlüssel den Namen einer Aktion angibt und der Wert dem Aufruf der [actions()-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#actions) mit `@actions('<action-name>')` entspricht. Als Name der Aktion wird der Aktionsname verwendet, der auch in der zugrunde liegenden Workflowdefinition verwendet wird, wobei Leerzeichen (" ") im Aktionsnamen durch Unterstriche (_) ersetzt werden. Dieses Objekt bietet Zugriff auf Eigenschaftswerte der Aktion aus der aktuellen Ausführung der Workflowinstanz. |
 | `trigger` | Object | Ergebnisobjekt aus dem Trigger, das einem Aufruf der [trigger()-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#trigger) entspricht. Dieses Objekt bietet Zugriff auf Eigenschaftswerte des Triggers aus der aktuellen Ausführung der Workflowinstanz. |
@@ -210,12 +226,12 @@ In Beispiel in diesem Artikel verfügt das `workflowContext`-Objekt über die fo
 
 ## <a name="add-parameters"></a>Hinzufügen von Parametern
 
-Gelegentlich müssen Sie explizit fordern, dass die **Inline Code**-Aktion Ergebnisse des Triggers oder bestimmter Aktionen einschließt, auf die der Code als Abhängigkeiten verweist, indem auf den **Trigger**-Parameter oder **Actions**-Parameter verwiesen wird. Diese Option ist hilfreich in Szenarien, bei denen die Ergebnisse, auf die verwiesen wird, zur Laufzeit nicht gefunden werden.
+Gelegentlich müssen Sie explizit fordern, dass die Inline Code-Aktion Ergebnisse des Triggers oder bestimmter Aktionen einschließt, auf die der Code als Abhängigkeiten verweist, indem auf den **Trigger**-Parameter oder **Actions**-Parameter verwiesen wird. Diese Option ist hilfreich in Szenarien, bei denen die Ergebnisse, auf die verwiesen wird, zur Laufzeit nicht gefunden werden.
 
 > [!TIP]
 > Wenn der Code wiederverwendet werden soll, fügen Sie über das Feld **Code** Verweise auf Eigenschaften hinzu, sodass der Code die aufgelösten Codeverweise einschließt, anstatt den Trigger oder die Aktionen als explizite Abhängigkeiten hinzuzufügen.
 
-Angenommen, in Ihrem Code wird auf das **SelectedOption**-Ergebnis aus der Aktion **Genehmigungs-E-Mail senden** für den Office 365 Outlook-Connector verwiesen. Zur Erstellungszeit analysiert das Logic Apps-Modul den Code, um zu bestimmen, ob auf Ergebnisse von Triggern oder Aktionen verwiesen wurde, und diese Ergebnisse werden automatisch eingeschlossen. Wird zur Laufzeit ein Fehler ausgegeben, der besagt, dass das Ergebnis des referenzierten Triggers bzw. der referenzierten Aktion im angegebenen `workflowContext`-Objekt nicht verfügbar ist, können Sie den Trigger bzw. die Aktion als explizite Abhängigkeit hinzufügen. In diesem Beispiel fügen Sie den **Actions**-Parameter hinzu und geben an, dass die **Inline Code**-Aktion explizit das Ergebnis der Aktion **Genehmigungs-E-Mail senden** einschließt.
+Angenommen, in Ihrem Code wird auf das **SelectedOption**-Ergebnis aus der Aktion **Genehmigungs-E-Mail senden** für den Office 365 Outlook-Connector verwiesen. Zur Erstellungszeit analysiert das Logic Apps-Modul den Code, um zu bestimmen, ob auf Ergebnisse von Triggern oder Aktionen verwiesen wurde, und diese Ergebnisse werden automatisch eingeschlossen. Wird zur Laufzeit ein Fehler ausgegeben, der besagt, dass das Ergebnis des referenzierten Triggers bzw. der referenzierten Aktion im angegebenen `workflowContext`-Objekt nicht verfügbar ist, können Sie den Trigger bzw. die Aktion als explizite Abhängigkeit hinzufügen. In diesem Beispiel fügen Sie den **Actions**-Parameter hinzu und geben an, dass die Inline Code-Aktion explizit das Ergebnis der Aktion **Genehmigungs-E-Mail senden** einschließt.
 
 Öffnen Sie zum Hinzufügen dieser Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus:
 

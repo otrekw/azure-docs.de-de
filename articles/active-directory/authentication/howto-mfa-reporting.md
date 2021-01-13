@@ -1,48 +1,33 @@
 ---
-title: Zugriffs- und Nutzungsberichte für Azure MFA – Azure Active Directory
-description: Beschreibt, wie Sie das Berichte-Feature für Multi-Factor Authentication verwenden.
+title: Einzelheiten zu Anmeldeereignissen für Azure AD Multi-Factor Authentication – Azure Active Directory
+description: Erfahren Sie, wie Sie Anmeldeaktivitäten für Azure AD Multi-Factor Authentication-Ereignisse und Statusmeldungen anzeigen.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 07/30/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: how-to
+ms.date: 05/15/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25cd36b6b3e8a6974618189985152e55c2676999
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5f78b70599d6d0ae8825accf4cc55cdc1c01d9ce
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874298"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861237"
 ---
-# <a name="reports-in-azure-multi-factor-authentication"></a>Berichte in Azure Multi-Factor Authentication
+# <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>Verwenden des Anmeldeberichts zum Überprüfen von Azure AD Multi-Factor Authentication-Ereignissen
 
-Azure Multi-Factor Authentication bietet verschiedene Berichte, die Sie und Ihre Organisation im Azure-Portal verwenden können. In der folgenden Tabelle sind die verfügbaren Berichte aufgeführt:
+Zum Überprüfen von Azure AD Multi-Factor Authentication-Ereignissen und zum besseren Verständnis können Sie den Azure Active Directory-Anmeldebericht (Azure AD) verwenden. Dieser Bericht zeigt Authentifizierungsdetails für Ereignisse, bei denen ein Benutzer zur mehrstufigen Authentifizierung aufgefordert wird. Er zeigt auch, ob Richtlinien für bedingten Zugriff verwendet wurden. Ausführliche Informationen zum Anmeldebericht finden Sie unter [Berichte zu Anmeldeaktivitäten in Azure AD](../reports-monitoring/concept-sign-ins.md).
 
-| Bericht | Location | BESCHREIBUNG |
-|:--- |:--- |:--- |
-| Verlauf – gesperrte Benutzer | Azure AD > MFA-Server > Benutzer blockieren/entsperren | Zeigt die Liste der Anforderungen zum Blockieren und Entsperren von Benutzern an. |
-| Nutzung und Betrugswarnungen | Azure AD > Anmeldungen | Bietet Informationen zur Gesamtnutzung, Übersichts- und Detailinformationen zu Benutzern sowie einen Verlauf von Betrugswarnungen, die im angegebenen Zeitraum gesendet wurden. |
-| Nutzung für lokale Komponenten | Azure AD > MFA-Server > Aktivitätsbericht | Bietet Informationen zur Gesamtnutzung für MFA durch die NPS-Erweiterung, AD FS und den MFA-Server. |
-| Verlauf – Umgangene Benutzer | Azure AD > MFA-Server > Einmalumgehung | Zeigt den Verlauf von Anforderungen zur Umgehung der Multi-Factor Authentication für einen Benutzer an. |
-| Serverstatus | Azure AD > MFA-Server > Serverstatus | Zeigt den Status von Multi-Factor Authentication-Servern an, die mit Ihrem Konto verknüpft sind. |
+In diesem Artikel erfahren Sie, wie Sie den Azure AD-Anmeldebericht im Azure-Portal und dann das PowerShell-Modul „MSOnline V1“ anzeigen.
 
-## <a name="view-mfa-reports"></a>Anzeigen von MFA-Berichten
+## <a name="view-the-azure-ad-sign-ins-report"></a>Anzeigen des Azure AD-Anmeldeberichts
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** > **MFA-Server** aus.
-3. Wählen Sie den Bericht aus, den Sie anzeigen möchten.
-
-   ![MFA Server-Serverstatusbericht im Azure-Portal](./media/howto-mfa-reporting/report.png)
-
-## <a name="azure-ad-sign-ins-report"></a>Azure AD-Anmeldungenbericht
-
-Mit dem **Anmeldungenaktivitätsbericht** im [Azure-Portal](https://portal.azure.com) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
-
-Der Anmeldungenbericht kann Informationen zur Nutzung von verwalteten Anwendungen und Benutzeranmeldeaktivitäten, z.B. auch Informationen zur Nutzung von MFA (Multi-Factor Authentication, mehrstufige Authentifizierung), enthalten. Die MFA-Daten liefern Ihnen Erkenntnisse zur Funktionsweise von MFA in Ihrer Organisation. Sie können dann beispielsweise folgende Fragen beantworten:
+Der Anmeldebericht enthält Informationen zur Nutzung von verwalteten Anwendungen und zu Anmeldeaktivitäten von Benutzern, darunter auch Informationen zur Nutzung von Azure Multi-Factor Authentication (MFA). Die MFA-Daten liefern Ihnen Erkenntnisse zur Funktionsweise von MFA in Ihrer Organisation. Hier finden Sie Antworten auf folgende Fragen:
 
 - Wurde bei der Anmeldung MFA verwendet?
 - Wie hat der Benutzer den MFA-Vorgang durchgeführt?
@@ -51,123 +36,119 @@ Der Anmeldungenbericht kann Informationen zur Nutzung von verwalteten Anwendunge
 - Wie viele Benutzer können den MFA-Vorgang nicht durchführen?
 - Welche MFA-Probleme treten für Benutzer häufig auf?
 
-Diese Daten sind über das [Azure-Portal](https://portal.azure.com) und die [Berichterstellungs-API](../reports-monitoring/concept-reporting-api.md) verfügbar.
+Führen Sie die folgenden Schritte aus, um den Bericht zu den Anmeldeaktivitäten im [Azure-Portal](https://portal.azure.com) anzuzeigen. Mithilfe der [Berichterstellungs-API](../reports-monitoring/concept-reporting-api.md) können Sie auch Daten abfragen.
 
-![Azure AD-Anmeldebericht im Azure-Portal](./media/howto-mfa-reporting/sign-in-report.png)
+1. Melden Sie sich mit dem Konto mit den Berechtigungen vom Typ *Globaler Administrator* beim [Azure-Portal](https://portal.azure.com) an.
+1. Suchen Sie nach **Azure Active Directory**, wählen Sie den Eintrag aus, und wählen Sie anschließend im Menü auf der linken Seite die Option **Benutzer** aus.
+1. Wählen Sie im Menü auf der linken Seite unter **Aktivität** die Option *Anmeldungen* aus.
+1. Angezeigt wird eine Liste mit Anmeldeereignissen und Statusangaben. Sie können ein Ereignis auswählen, um weitere Details anzuzeigen.
 
-### <a name="sign-ins-report-structure"></a>Struktur des Anmeldungenberichts
+    Als Ereignisdetails werden auf der Registerkarte *Authentifizierungsdetails* oder *Bedingter Zugriff* der Statuscode bzw. die Richtlinie angezeigt, durch die die Aufforderung zur mehrstufigen Authentifizierung ausgelöst wurde.
 
-Über die Berichte zu den Anmeldeaktivitäten für MFA erhalten Sie Zugriff auf die folgenden Informationen:
+    [![Screenshot mit einem Beispiel für einen Azure Active Directory-Anmeldebericht im Azure-Portal](media/howto-mfa-reporting/sign-in-report-cropped.png)](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
-**MFA erforderlich:** Gibt an, ob MFA für die Anmeldung erforderlich ist. MFA kann aufgrund von MFA pro Benutzer, bedingtem Zugriff oder aus anderen Gründen obligatorisch sein. Mögliche Werte sind **Ja** oder **Nein**.
+Sofern verfügbar, wird die Art der Authentifizierung angezeigt, z. B. Textnachricht, Benachrichtigung der Microsoft Authenticator-App oder Telefonanruf.
 
-**MFA-Ergebnis:** Weitere Informationen dazu, ob der MFA-Vorgang erfolgreich durchgeführt wurde:
+Im Fenster *Authentifizierungsdetails* werden die folgenden Einzelheiten für ein Anmeldeereignis angezeigt, aus denen hervorgeht, ob die MFA-Anforderung erfolgreich war oder abgelehnt wurde:
 
-- Wenn der MFA-Vorgang erfolgreich war, enthält diese Spalte weitere Details dazu.
-   - Azure Multi-Factor Authentication
-      - completed in the cloud (in der Cloud durchgeführt)
-      - has expired due to the policies configured on tenant (ist aufgrund der auf dem Mandanten konfigurierten Richtlinien abgelaufen)
-      - registration prompted (zur Registrierung aufgefordert)
-      - satisfied by claim in the token (per Anspruch im Token erfüllt)
-      - satisfied by claim provided by external provider (per Anspruch vom externen Anbieter erfüllt)
-      - satisfied by strong authentication (per strenger Authentifizierung erfüllt)
-      - skipped as flow exercised was Windows broker logon flow (übersprungen, da es sich um einen Windows-Broker-Anmeldefluss gehandelt hat)
-      - skipped due to app password (übersprungen aufgrund von App-Kennwort)
-      - skipped due to location (übersprungen aufgrund von Standort)
-      - skipped due to registered device (übersprungen aufgrund von registriertem Gerät)
-      - skipped due to remembered device (übersprungen aufgrund von gespeichertem Gerät)
-      - successfully completed (erfolgreich abgeschlossen)
-   - Redirected to external provider for multi-factor authentication (umgeleitet an externen Anbieter zur mehrstufigen Authentifizierung)
+* Wenn der MFA-Vorgang erfolgreich war, enthält diese Spalte weitere Details dazu.
+   * completed in the cloud (in der Cloud durchgeführt)
+   * has expired due to the policies configured on tenant (ist aufgrund der auf dem Mandanten konfigurierten Richtlinien abgelaufen)
+   * registration prompted (zur Registrierung aufgefordert)
+   * satisfied by claim in the token (per Anspruch im Token erfüllt)
+   * satisfied by claim provided by external provider (per Anspruch vom externen Anbieter erfüllt)
+   * satisfied by strong authentication (per strenger Authentifizierung erfüllt)
+   * skipped as flow exercised was Windows broker logon flow (übersprungen, da es sich um einen Windows-Broker-Anmeldefluss gehandelt hat)
+   * skipped due to app password (übersprungen aufgrund von App-Kennwort)
+   * skipped due to location (übersprungen aufgrund von Standort)
+   * skipped due to registered device (übersprungen aufgrund von registriertem Gerät)
+   * skipped due to remembered device (übersprungen aufgrund von gespeichertem Gerät)
+   * successfully completed (erfolgreich abgeschlossen)
 
-- Wenn der MFA-Vorgang nicht erfolgreich war, ist in dieser Spalte der Grund angegeben.
-   - Azure Multi-Factor Authentication denied; (Azure Multi-Factor Authentication verweigert;)
-      - authentication in-progress (Authentifizierung in Bearbeitung)
-      - duplicate authentication attempt (versuchte doppelte Authentifizierung)
-      - entered incorrect code too many times (falschen Code zu häufig eingegeben)
-      - invalid authentication (ungültige Authentifizierung)
-      - invalid mobile app verification code (ungültiger Verifizierungscode der mobilen App)
-      - misconfiguration (Fehlkonfiguration)
-      - phone call went to voicemail (Voicemail bei Telefonanruf)
-      - phone number has an invalid format (Telefonnummer hat ein ungültiges Format)
-      - service error (Dienstfehler)
-      - unable to reach the user’s phone (Telefon des Benutzers nicht erreichbar)
-      - unable to send the mobile app notification to the device (Benachrichtigung über mobile App kann nicht an das Gerät gesendet werden)
-      - unable to send the mobile app notification (Benachrichtigung über mobile App kann nicht gesendet werden)
-      - user declined the authentication (Benutzer hat die Authentifizierung abgelehnt)
-      - user did not respond to mobile app notification (Benutzer hat auf Benachrichtigung über mobile App nicht geantwortet)
-      - user does not have any verification methods registered (für Benutzer sind keine Verifizierungsmethoden registriert)
-      - user entered incorrect code (Benutzer hat falschen Code eingegeben)
-      - user entered incorrect PIN (Benutzer hat falsche PIN eingegeben)
-      - user hung up the phone call without succeeding the authentication (Benutzer hat Gespräch beendet, ohne die Authentifizierung durchzuführen)
-      - user is blocked (Benutzer ist gesperrt)
-      - user never entered the verification code (Benutzer hat den Verifizierungscode niemals eingegeben)
-      - user not found (Benutzer wurde nicht gefunden)
-      - verification code already used once (Verifizierungscode wurde bereits einmal verwendet)
-
-**MFA-Authentifizierungsmethode:** Die Authentifizierungsmethode, die vom Benutzer zum Durchführen des MFA-Vorgangs verwendet wurde. Mögliche Werte sind:
-
-- Textnachricht
-- Benachrichtigung über eine mobile App
-- Telefonanruf (Telefonnummer für Authentifizierung)
-- Prüfcode in der mobilen App
-- Telefonanruf (Geschäftliche Telefonnummer)
-- Telefonanruf (alternative Telefonnummer für Authentifizierung)
-
-**MFA-Authentifizierungsdetail:** Bereinigte Version der Telefonnummer, z.B. +X XXXXXXXX64.
-
-**Bedingter Zugriff**: Finden Sie Informationen über Richtlinien für bedingten Zugriff, die den Anmeldeversuch beeinflusst haben, einschließlich:
-
-- Richtlinienname
-- Gewährungssteuerelemente
-- Sitzungssteuerelemente
-- Ergebnis
+* Wenn der MFA-Vorgang nicht erfolgreich war, ist in dieser Spalte der Grund angegeben.
+   * authentication in-progress (Authentifizierung in Bearbeitung)
+   * duplicate authentication attempt (versuchte doppelte Authentifizierung)
+   * entered incorrect code too many times (falschen Code zu häufig eingegeben)
+   * invalid authentication (ungültige Authentifizierung)
+   * invalid mobile app verification code (ungültiger Verifizierungscode der mobilen App)
+   * misconfiguration (Fehlkonfiguration)
+   * phone call went to voicemail (Voicemail bei Telefonanruf)
+   * phone number has an invalid format (Telefonnummer hat ein ungültiges Format)
+   * service error (Dienstfehler)
+   * unable to reach the user's phone (Telefon des Benutzers nicht erreichbar)
+   * unable to send the mobile app notification to the device (Benachrichtigung über mobile App kann nicht an das Gerät gesendet werden)
+   * unable to send the mobile app notification (Benachrichtigung über mobile App kann nicht gesendet werden)
+   * user declined the authentication (Benutzer hat die Authentifizierung abgelehnt)
+   * user did not respond to mobile app notification (Benutzer hat auf Benachrichtigung über mobile App nicht geantwortet)
+   * user does not have any verification methods registered (für Benutzer sind keine Verifizierungsmethoden registriert)
+   * user entered incorrect code (Benutzer hat falschen Code eingegeben)
+   * user entered incorrect PIN (Benutzer hat falsche PIN eingegeben)
+   * user hung up the phone call without succeeding the authentication (Benutzer hat Gespräch beendet, ohne die Authentifizierung durchzuführen)
+   * user is blocked (Benutzer ist gesperrt)
+   * user never entered the verification code (Benutzer hat den Verifizierungscode niemals eingegeben)
+   * user not found (Benutzer wurde nicht gefunden)
+   * verification code already used once (Verifizierungscode wurde bereits einmal verwendet)
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>PowerShell-Berichte über für MFA registrierte Benutzer
 
-Stellen Sie zunächst sicher, dass das [MSOnline-V1-PowerShell-Modul](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0) installiert ist.
+Stellen Sie zunächst sicher, dass das [MSOnline-V1-PowerShell-Modul](/powershell/azure/active-directory/overview) installiert ist.
 
-Identifizieren Sie mithilfe des folgenden PowerShell-Befehls Benutzer, die sich für MFA registriert haben.
+Identifizieren Sie mithilfe des folgenden PowerShell-Befehls Benutzer, die sich für MFA registriert haben. Mit dieser Reihe von Befehlen werden deaktivierte Benutzer ausgeschlossen, da sich diese Konten nicht bei Azure AD authentifizieren können:
 
-```Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName```
+```powershell
+Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods -ne $null -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
+```
 
-Identifizieren Sie mithilfe des folgenden PowerShell-Befehls Benutzer, die sich nicht für MFA registriert haben.
+Identifizieren Sie mithilfe des folgenden PowerShell-Befehls Benutzer, die sich nicht für MFA registriert haben. Mit dieser Reihe von Befehlen werden deaktivierte Benutzer ausgeschlossen, da sich diese Konten nicht bei Azure AD authentifizieren können:
 
-```Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName```
+```powershell
+Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0 -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
+```
 
-## <a name="possible-results-in-activity-reports"></a>Mögliche Ergebnisse in Aktivitätsberichten
+Identifizieren Sie die registrierten Benutzer und Ausgabemethoden:
 
-Die folgende Tabelle kann verwendet werden, um die Problembehandlung für die mehrstufige Authentifizierung durchzuführen, indem die heruntergeladene Version des Aktivitätsberichts für die mehrstufige Authentifizierung verwendet wird. Die Anzeige erfolgt nicht direkt im Azure-Portal.
+```powershell
+Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalName}},
+
+@{N='MFA Status';E={if ($_.StrongAuthenticationRequirements.State){$_.StrongAuthenticationRequirements.State} else {"Disabled"}}},
+
+@{N='MFA Methods';E={$_.StrongAuthenticationMethods.methodtype}} | Export-Csv -Path c:\MFA_Report.csv -NoTypeInformation
+```
+
+## <a name="downloaded-activity-reports-result-codes"></a>Ergebniscodes im heruntergeladenen Aktivitätsbericht
+
+Mithilfe der Version des Aktivitätsberichts, die Sie in den vorherigen Schritten im Portal oder mit PowerShell-Befehlen heruntergeladen haben, und der folgenden Tabelle können Sie Probleme bei Ereignissen besser beheben. Diese Ergebniscodes werden nicht direkt im Azure-Portal angezeigt.
 
 | Anrufergebnis | BESCHREIBUNG | Genauere Beschreibung |
 | --- | --- | --- |
-| SUCCESS_WITH_PIN | PIN wurde eingegeben | Der Benutzer hat eine PIN eingegeben.  Wenn die Authentifizierung erfolgreich war, wurde die richtige PIN eingegeben.  Falls die Authentifizierung verweigert wird, wurde eine falsche PIN eingegeben, oder für den Benutzer ist der Modus „Standard“ festgelegt. |
+| SUCCESS_WITH_PIN | PIN wurde eingegeben | Der Benutzer hat eine PIN eingegeben.   Wenn die Authentifizierung erfolgreich war, wurde die richtige PIN eingegeben.   Falls die Authentifizierung verweigert wird, wurde eine falsche PIN eingegeben, oder für den Benutzer ist der Modus „Standard“ festgelegt. |
 | SUCCESS_NO_PIN | Nur # wurde eingegeben | Wenn der Benutzer auf den Modus „PIN“ festgelegt ist und die Authentifizierung verweigert wird, bedeutet dies Folgendes: Der Benutzer hat seine PIN nicht eingegeben, sondern nur #.  Wenn der Benutzer auf den Modus „Standard“ festgelegt ist und die Authentifizierung erfolgreich ist, bedeutet dies, dass der Benutzer nur # eingegeben hat. Dies ist im Modus „Standard“ die richtige Vorgehensweise. |
-| SUCCESS_WITH_PIN_BUT_TIMEOUT | # nach Eingabe nicht gedrückt | Der Benutzer hat keine DTMF-Ziffern gesendet, weil # nicht eingegeben wurde.  Andere eingegebene Ziffern werden nur gesendet, wenn # eingegeben wird, um den Abschluss der Eingabe anzugeben. |
-|SUCCESS_NO_PIN_BUT_TIMEOUT | Keine Telefoneingabe: Zeitüberschreitung | Der Anruf wurde angenommen, aber es ist keine Antwort vorhanden.  Dies deutet normalerweise darauf hin, dass der Anruf per Voicemail angenommen wurde. |
+| SUCCESS_WITH_PIN_BUT_TIMEOUT | # nach Eingabe nicht gedrückt | Der Benutzer hat keine DTMF-Ziffern gesendet, weil # nicht eingegeben wurde.   Andere eingegebene Ziffern werden nur gesendet, wenn # eingegeben wird, um den Abschluss der Eingabe anzugeben. |
+|SUCCESS_NO_PIN_BUT_TIMEOUT | Keine Telefoneingabe: Zeitüberschreitung | Der Anruf wurde angenommen, aber es ist keine Antwort vorhanden.   Dies deutet normalerweise darauf hin, dass der Anruf per Voicemail angenommen wurde. |
 | SUCCESS_PIN_EXPIRED | PIN ist abgelaufen und wurde nicht geändert | Die PIN des Benutzers ist abgelaufen, und er wurde zum Ändern aufgefordert, aber die Änderung der PIN war nicht erfolgreich. |
 | SUCCESS_USED_CACHE | Cache wurde verwendet | Die Authentifizierung war ohne Multi-Factor Authentication-Anruf erfolgreich, weil eine vorherige erfolgreiche Authentifizierung für denselben Benutzernamen innerhalb des konfigurierten Cachezeitrahmens durchgeführt wurde. |
-| SUCCESS_BYPASSED_AUTH | Authentifizierung wurde umgangen | Die Authentifizierung war erfolgreich, indem für den Benutzer eine Einmalumgehung initiiert wurde.  Ausführlichere Informationen zur Umgehung finden Sie im Bericht „Verlauf – Umgangene Benutzer“. |
+| SUCCESS_BYPASSED_AUTH | Authentifizierung wurde umgangen | Die Authentifizierung war erfolgreich, indem für den Benutzer eine Einmalumgehung initiiert wurde.  Einzelheiten zur Umgehung enthält der Bericht „Verlauf – Benutzer mit umgangener Authentifizierung“. |
 | SUCCESS_USED_IP_BASED_CACHE | IP-basierter Cache wurde verwendet | Die Authentifizierung war ohne Multi-Factor Authentication-Anruf erfolgreich, weil eine vorherige erfolgreiche Authentifizierung für denselben Benutzernamen, Authentifizierungstyp, Anwendungsnamen und dieselbe IP-Adresse innerhalb des konfigurierten Cachezeitrahmens durchgeführt wurde. |
 | SUCCESS_USED_APP_BASED_CACHE | App-basierter Cache wurde verwendet | Die Authentifizierung war ohne Multi-Factor Authentication-Anruf erfolgreich, weil eine vorherige erfolgreiche Authentifizierung für denselben Benutzernamen, Authentifizierungstyp und Anwendungsnamen innerhalb des konfigurierten Cachezeitrahmens durchgeführt wurde. |
-| SUCCESS_INVALID_INPUT | Ungültige Telefoneingabe | Die vom Telefon gesendete Antwort ist ungültig.  Dies kann daran liegen, dass die Antwort von einem Faxgerät oder Modem stammt oder der Benutzer als Teil der PIN „*“ eingegeben hat. |
-| SUCCESS_USER_BLOCKED | Benutzer ist gesperrt | Die Telefonnummer des Benutzers wird blockiert.  Eine blockierte Nummer kann vom Benutzer während eines Authentifizierungsanrufs oder von einem Administrator über das Azure-Portal initiiert werden. <br> HINWEIS:   Eine gesperrte Nummer ist auch ein Nebenprodukt einer Betrugswarnung. |
+| SUCCESS_INVALID_INPUT | Ungültige Telefoneingabe | Die vom Telefon gesendete Antwort ist ungültig.   Dies kann daran liegen, dass die Antwort von einem Faxgerät oder Modem stammt oder der Benutzer als Teil der PIN „*“ eingegeben hat. |
+| SUCCESS_USER_BLOCKED | Benutzer ist gesperrt | Die Telefonnummer des Benutzers wird blockiert.   Eine blockierte Nummer kann vom Benutzer während eines Authentifizierungsanrufs oder von einem Administrator über das Azure-Portal initiiert werden. <br> HINWEIS:   Eine gesperrte Nummer ist auch ein Nebenprodukt einer Betrugswarnung. |
 | SUCCESS_SMS_AUTHENTICATED | SMS wurde authentifiziert | Der Benutzer hat auf eine bidirektionale Testnachricht richtig mit seiner Einmalkennung (One-Time Passcode, OTP) bzw. OTP + PIN geantwortet. |
-| SUCCESS_SMS_SENT | SMS wurde gesendet | Das Senden der SMS mit der Einmalkennung (One-Time Passcode, OTP) war erfolgreich.  Der Benutzer gibt die Einmalkennung bzw. OTP + PIN in die Anwendung ein, um die Authentifizierung abzuschließen. |
+| SUCCESS_SMS_SENT | SMS wurde gesendet | Das Senden der SMS mit der Einmalkennung (One-Time Passcode, OTP) war erfolgreich.   Der Benutzer gibt die Einmalkennung bzw. OTP + PIN in die Anwendung ein, um die Authentifizierung abzuschließen. |
 | SUCCESS_PHONE_APP_AUTHENTICATED | Mobile App wurde authentifiziert | Die Authentifizierung des Benutzers über die mobile App war erfolgreich. |
 | SUCCESS_OATH_CODE_PENDING | OATH-Code ausstehend | Der Benutzer wurde zum Eingeben seines OATH-Codes aufgefordert, aber er hat nicht geantwortet. |
 | SUCCESS_OATH_CODE_VERIFIED | OATH-Code wurde überprüft | Der Benutzer hat nach der entsprechenden Aufforderung einen gültigen OATH-Code eingegeben. |
 | SUCCESS_FALLBACK_OATH_CODE_VERIFIED | OATH-Fallbackcode wurde verifiziert | Für den Benutzer wurde die Authentifizierung mit seinem Hauptverfahren für Multi-Factor Authentication verweigert, und dann hat er als Fallbacklösung einen gültigen OATH-Code angegeben. |
 | SUCCESS_FALLBACK_SECURITY_QUESTIONS_ANSWERED | Sicherheitsfragen für Fallback wurden beantwortet | Für den Benutzer wurde die Authentifizierung mit seinem Hauptverfahren für Multi-Factor Authentication verweigert, und dann hat er die Fallback-Sicherheitsfragen richtig beantwortet. |
-| FAILED_PHONE_BUSY | Authentifizierung bereits in Bearbeitung | Der Multi-Factor Authentication-Vorgang verarbeitet bereits eine Authentifizierung für diesen Benutzer.  Die Ursache hierfür sind häufig RADIUS-Clients, die während desselben Anmeldungsvorgangs mehrere Authentifizierungsanforderungen senden. |
-| CONFIG_ISSUE | Telefonnummer nicht erreichbar | Es wurde versucht, den Anruf zu tätigen, aber er war nicht erfolgreich oder wurde nicht angenommen.  Hierzu gehören Fälle wie Besetztzeichen, schnell aufeinander folgendes Besetztzeichen (Verbindung getrennt), Dreifach-Ton (Nummer nicht mehr gültig), Zeitüberschreitung beim Klingeln usw. |
-| FAILED_INVALID_PHONENUMBER | Ungültiges Format der Telefonnummer | Die Telefonnummer hat ein ungültiges Format.  Telefonnummern müssen numerisch sein und für den Ländercode „+1“ (USA und Kanada) zehn Stellen haben. |
+| FAILED_PHONE_BUSY | Authentifizierung bereits in Bearbeitung | Der Multi-Factor Authentication-Vorgang verarbeitet bereits eine Authentifizierung für diesen Benutzer.   Die Ursache hierfür sind häufig RADIUS-Clients, die während desselben Anmeldungsvorgangs mehrere Authentifizierungsanforderungen senden. |
+| CONFIG_ISSUE | Telefonnummer nicht erreichbar | Es wurde versucht, den Anruf zu tätigen, aber er war nicht erfolgreich oder wurde nicht angenommen.   Hierzu gehören Fälle wie Besetztzeichen, schnell aufeinander folgendes Besetztzeichen (Verbindung getrennt), Dreifach-Ton (Nummer nicht mehr gültig), Zeitüberschreitung beim Klingeln usw. |
+| FAILED_INVALID_PHONENUMBER | Ungültiges Format der Telefonnummer | Die Telefonnummer hat ein ungültiges Format.   Telefonnummern müssen numerisch sein und für den Ländercode „+1“ (USA und Kanada) zehn Stellen haben. |
 | FAILED_USER_HUNGUP_ON_US | Benutzer hat aufgelegt | Der Benutzer hat den Anruf angenommen und dann aufgelegt, ohne Tasten zu drücken. |
-| FAILED_INVALID_EXTENSION | Ungültige Durchwahlnummer | Die Durchwahlnummer enthält ungültige Zeichen.  Es sind nur Ziffern, Kommas, „*“ und „#“ zulässig.  Das Präfix „@“ kann auch verwendet werden. |
+| FAILED_INVALID_EXTENSION | Ungültige Durchwahlnummer | Die Durchwahlnummer enthält ungültige Zeichen.   Es sind nur Ziffern, Kommas, „*“ und „#“ zulässig.   Das Präfix „@“ kann auch verwendet werden. |
 | FAILED_FRAUD_CODE_ENTERED | Betrugscode wurde eingegeben | Der Benutzer hat während des Anrufs einen Betrugsfall gemeldet, sodass die Authentifizierung verweigert und die Telefonnummer gesperrt wurde.| 
 | FAILED_SERVER_ERROR | Anruf nicht möglich | Der Multi-Factor Authentication-Dienst konnte den Anruf nicht tätigen. |
-| FAILED_SMS_NOT_SENT | SMS konnte nicht gesendet werden | Die SMS konnte nicht gesendet werden.  Die Authentifizierung wurde verweigert. |
-| FAILED_SMS_OTP_INCORRECT | OTP für SMS fehlerhaft | Der Benutzer hat eine falsche Einmalkennung (One-Time Passcode, OTP) aus der empfangenen SMS eingegeben.  Die Authentifizierung wurde verweigert. |
-| FAILED_SMS_OTP_PIN_INCORRECT | OTP + PIN für SMS fehlerhaft | Der Benutzer hat eine falsche Einmalkennung (One-Time Passcode, OTP) bzw. eine falsche Benutzer-PIN eingegeben.  Die Authentifizierung wurde verweigert. |
+| FAILED_SMS_NOT_SENT | SMS konnte nicht gesendet werden | Die SMS konnte nicht gesendet werden.   Die Authentifizierung wurde verweigert. |
+| FAILED_SMS_OTP_INCORRECT | OTP für SMS fehlerhaft | Der Benutzer hat eine falsche Einmalkennung (One-Time Passcode, OTP) aus der empfangenen SMS eingegeben.   Die Authentifizierung wurde verweigert. |
+| FAILED_SMS_OTP_PIN_INCORRECT | OTP + PIN für SMS fehlerhaft | Der Benutzer hat eine falsche Einmalkennung (One-Time Passcode, OTP) bzw. eine falsche Benutzer-PIN eingegeben.   Die Authentifizierung wurde verweigert. |
 | FAILED_SMS_MAX_OTP_RETRY_REACHED | Maximale Anzahl von Versuchen für SMS-OTP überschritten | Der Benutzer hat die maximale Anzahl von Versuchen zur Eingabe der Einmalkennung (One-Time Passcode, OTP) überschritten. |
 | FAILED_PHONE_APP_DENIED | Mobile App verweigert | Der Benutzer hat die Authentifizierung in der mobilen App verweigert, indem er die Schaltfläche „Verweigern“ betätigt hat. |
 | FAILED_PHONE_APP_INVALID_PIN | Mobile App: ungültige PIN | Der Benutzer hat bei der Authentifizierung in der mobilen App eine ungültige PIN eingegeben. |
@@ -186,8 +167,17 @@ Die folgende Tabelle kann verwendet werden, um die Problembehandlung für die me
 | FAILED_AUTH_RESULT_TIMEOUT | Zeitüberschreitung bei Authentifizierung | Der Benutzer hat zu lange gebraucht, um den Multi-Factor Authentication-Vorgang durchzuführen. |
 | FAILED_AUTHENTICATION_THROTTLED | Authentifizierung wurde gedrosselt | Der Multi-Factor Authentication-Vorgang wurde vom Dienst gedrosselt. |
 
+## <a name="additional-mfa-reports"></a>Weitere MFA-Berichte
+
+Für Ereignisse der mehrstufigen Authentifizierung (und für den MFA-Server) sind die folgenden weiteren Informationen und Berichte verfügbar:
+
+| Bericht | Standort | BESCHREIBUNG |
+|:--- |:--- |:--- |
+| Verlauf – gesperrte Benutzer | Azure AD > Sicherheit > MFA > Benutzer sperren/entsperren | Zeigt die Liste der Anforderungen zum Blockieren und Entsperren von Benutzern an. |
+| Nutzung für lokale Komponenten | Azure AD > Sicherheit > MFA > Aktivitätsbericht | Enthält Informationen zur allgemeinen Nutzung für MFA-Server durch die NPS-Erweiterung, AD FS und den MFA-Server. |
+| Verlauf – Umgangene Benutzer | Azure AD > Sicherheit > MFA > Einmalige Umgehung | Stellt den Verlauf der MFA-Serveranforderungen zum Umgehen der MFA für einen Benutzer bereit. |
+| Serverstatus | Azure AD > Sicherheit > MFA > Serverstatus | Zeigt den Status der MFA-Server an, die mit Ihrem Konto verknüpft sind. |
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Nutzungs- und Insights-Berichte für SSPR und MFA](howto-authentication-methods-usage-insights.md)
-* [Für Benutzer](../user-help/multi-factor-authentication-end-user.md)
-* [Bereitstellungsort](concept-mfa-whichversion.md)
+Dieser Artikel enthält eine Übersicht über den Bericht zu Anmeldeaktivitäten. Detailliertere Informationen zum Inhalt dieses Berichts und zu den Daten finden Sie unter [Berichte zu Anmeldeaktivitäten in Azure AD](../reports-monitoring/concept-sign-ins.md).

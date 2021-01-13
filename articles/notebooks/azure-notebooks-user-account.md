@@ -1,32 +1,24 @@
 ---
-title: Anmelden bei Azure Notebooks
+title: Anmelden bei Azure Notebooks (Vorschau)
 description: Konfigurieren Sie Ihr Benutzerkonto für Azure Notebooks mithilfe eines Microsoft-Kontos oder eines Geschäfts-, Schul- oder Unikontos.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: 0d657fcc-26bc-41dd-abf0-3e5cfd66e0e0
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2019
-ms.author: kraigb
-ms.openlocfilehash: 311f4d612c9deab23e7537b0c53ff3932c312cd4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 929a21785b5b48c81c2d2016874feed61021d3c0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632056"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85832184"
 ---
-# <a name="your-user-account-for-azure-notebooks"></a>Ihr Benutzerkonto für Azure Notebooks
+# <a name="your-user-account-for-azure-notebooks-preview"></a>Ihr Benutzerkonto für Azure Notebooks (Vorschau)
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Sie können Azure Notebooks mit oder ohne Anmeldung mit einem Benutzerkonto verwenden:
 
 - Ohne Anmeldung können Sie Notebooks erstellen und ausführen, Notebooks oder Datendateien bleiben aber nicht als Teil von Projekten erhalten. Benutzer, die einen Link zu einem Azure Notebook erhalten, können beispielsweise das Notebook nutzen, ohne sich anmelden zu müssen.
 - Wenn Sie angemeldet sind, bewahrt Azure Notebooks alle Ihre Projekte unter Ihrem Konto auf. Angemeldete Benutzer verfügen darüber hinaus über eine Benutzer-ID, die es ihnen erlaubt, ihre Projekte und Notebooks mit anderen Personen zu teilen.
-  - Wenn das für Azure Notebooks verwendete Konto außerdem einem Azure-Abonnement zugeordnet ist, können Sie zusätzliche Vorteile genießen, z. B. das Ausführen von Notebooks auf leistungsstärkeren Servern, das Erstellen privater Notebooks und das Erteilen von Berechtigungen für Notebooks für einzelne Benutzer.
+- Wenn das für Azure Notebooks verwendete Konto außerdem einem Azure-Abonnement zugeordnet ist, können Sie zusätzliche Vorteile genießen, z. B. das Ausführen von Notebooks auf leistungsstärkeren Servern, das Erstellen privater Notebooks und das Erteilen von Berechtigungen für Notebooks für einzelne Benutzer.
 
 Für das Anmelden bei Azure Notebooks ist entweder ein Microsoft-Konto oder ein Geschäfts-, Schul- oder Unikonto erforderlich. Sie werden zur Eingabe Ihres Kontos aufgefordert, wenn Sie den Befehl **Anmelden** in der rechten oberen Ecke der Notebookseite auswählen:
 
@@ -61,7 +53,7 @@ Um den Zugriff zu ermöglichen, muss ein Elternteil die folgenden Schritte ausf�
 
 ## <a name="work-or-school-accounts"></a>Geschäfts-, Schul- oder Unikonten
 
-Ein Geschäfts-, Schul- oder Unikonto wird vom Administrator einer Organisation erstellt, um einem Mitglied der Organisation den Zugriff auf Microsoft-Clouddienste wie Office 365 oder die Anmeldung bei Windows auf einem Computer zu ermöglichen, der Mitglied einer Domäne ist. Für ein Geschäfts-, Schul- oder Unikonto wird normalerweise die E-Mail-Adresse einer Organisation verwendet, wie z. B. any-user@contoso.com.
+Ein Geschäfts-, Schul- oder Unikonto wird vom Administrator einer Organisation erstellt, um einem Mitglied der Organisation den Zugriff auf Microsoft-Clouddienste wie Microsoft 365 oder die Anmeldung bei Windows auf einem in die Domäne eingebundenen Computer zu ermöglichen. Für ein Geschäfts-, Schul- oder Unikonto wird normalerweise die E-Mail-Adresse einer Organisation verwendet, wie z. B. any-user@contoso.com.
 
 Für die Anmeldung bei Azure Notebooks mit einem Geschäfts-, Schul- oder Unikonto ist möglicherweise die Zustimmung des Administrators erforderlich, da Azure Notebooks Informationen wie die E-Mail-Adresse des Kontos und die Browserinformationen des Benutzers sammelt (aber nicht offenlegt). (Browserdaten werden zur Optimierung von Funktionen auf der Grundlage von Benutzerpräferenzen verwendet.)
 

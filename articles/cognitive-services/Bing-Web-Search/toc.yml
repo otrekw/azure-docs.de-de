@@ -11,7 +11,7 @@
   items:
     - name: REST-APIs
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstarts/csharp.md
         - name: Go
           href: quickstarts/go.md
@@ -27,15 +27,9 @@
           href: quickstarts/ruby.md
     - name: SDKs
       items:
-        - name: 'C#'
-          href: web-search-sdk-quickstart.md
-        - name: Java
-          href: web-sdk-java-quickstart.md
-        - name: Node.js
-          href: web-search-sdk-node-quickstart.md
-        - name: Python
-          href: web-sdk-python-quickstart.md
-- name: Lernprogramme
+        - name: Clientbibliotheken für die Bing-Websuche
+          href: ./quickstarts/client-libraries.md
+- name: Tutorials
   items:
     - name: Erstellen einer Einzelseiten-Web-App
       href: tutorial-bing-web-search-single-page-app.md
@@ -54,7 +48,7 @@
     - name: Behandeln von Trefferhervorhebungen
       href: hit-highlighting.md
     - name: Durchblättern von Ergebnissen
-      href: paging-webpages.md
+      href: paging-search-results.md
     - name: Ändern der Größe und Zuschneiden von Miniaturansichten
       href: resize-and-crop-thumbnails.md
     - name: Upgrade von v5 auf v7
@@ -70,23 +64,23 @@
 - name: Verweis
   items:
     - name: Bing-Websuche-API v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference'
+      href: /rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference
     - name: Bing-Websuche-API v5
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v5-reference'
+      href: /rest/api/cognitiveservices-bingsearch/bing-web-api-v5-reference
     - name: Azure-Befehlszeilenschnittstelle
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: Azure PowerShell
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+      href: /powershell/module/azurerm.cognitiveservices/
     - name: SDKs
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/cognitiveservices/bing-web-search-api-readme?view=azure-dotnet
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable'
+          href: /java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch?view=azure-python'
+          href: /python/api/azure-cognitiveservices-search-websearch/?view=azure-python
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/websearch?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-websearch/?view=azure-node-latest
         - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/websearch'
     - name: Verwenden und Anzeigen von Anforderungen
@@ -94,18 +88,18 @@
 - name: Ressourcen
   items:
     - name: Abrufen des API-Schlüssels
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: Bing-Websuche-Endpunkt
       href: web-search-endpoints.md
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/web/'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Sprach- und Regionsunterstützung
+    - name: Sprachunterstützung
       href: language-support.md
     - name: Analyse für die Bing-Websuche-API
       href: bing-web-stats.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Support
       items:

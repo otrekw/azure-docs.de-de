@@ -1,10 +1,10 @@
 ---
 title: Geschachtelte Traffic Manager-Profile in Azure
-titlesuffix: Azure Traffic Manager
+titleSuffix: Azure Traffic Manager
 description: Dieser Artikel erläutert das Feature der geschachtelten Profile von Azure Traffic Manager.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
-ms.author: allensu
-ms.openlocfilehash: 8815d852ad9f8a1823e1c21cc2d233409518da33
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.author: duau
+ms.openlocfilehash: d96cd9b3c83357c2591edf4bbb09a82b897c6a24
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333790"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91826038"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Geschachtelte Traffic Manager-Profile
 
@@ -28,7 +28,7 @@ Jedes Traffic Manager-Profil gibt eine einzelne Methode für das Datenverkehrsro
 
 Die folgenden Beispiele zeigen, wie geschachtelte Traffic Manager-Profile in verschiedenen Szenarios verwendet werden.
 
-## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Beispiel 1: Kombinieren des leistungsorientierten Datenverkehrsroutings mit dem gewichteten Datenverkehrsrouting
+## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Beispiel 1: Kombinieren des leistungsorientierten Datenverkehrsroutings mit dem gewichteten Datenverkehrsrouting
 
 Angenommen, Sie haben eine Anwendung in den folgenden Azure-Regionen bereitgestellt: „USA, Westen“, „Europa, Westen“ und „Asien, Osten“. Sie verwenden die leistungsorientierte Traffic Manager-Methode für das Datenverkehrsrouting, um den Datenverkehr an die Region zu verteilen, die dem Benutzer am nächsten ist.
 
@@ -46,7 +46,7 @@ In dieser Konfiguration wird der über das übergeordnete Profil geleitete Daten
 
 Wenn das übergeordnete Profil die leistungsorientierte Methode für das Datenverkehrsrouting verwendet, muss jeder Endpunkt einem Standort zugeordnet sein. Der Standort wird beim Konfigurieren des Endpunkts zugewiesen. Wählen Sie die Azure-Region aus, die Ihrer Bereitstellung am nächsten ist. Bei den Azure-Regionen handelt es sich um die Standortwerte, die von der Internetlatenztabelle unterstützt werden. Weitere Informationen finden Sie unter [Prioritätsmethode für das Datenverkehrsrouting](traffic-manager-routing-methods.md#performance).
 
-## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Beispiel 2: Endpunktüberwachung in geschachtelten Profilen
+## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Beispiel 2: Endpunktüberwachung in geschachtelten Profilen
 
 Traffic Manager überwacht aktiv die Integrität der einzelnen Dienstendpunkte. Wenn ein Endpunkt fehlerhaft ist, leitet Traffic Manager Benutzer an andere Endpunkte, um die Verfügbarkeit Ihres Dienstes zu gewährleisten. Dieses Verhalten für Endpunktüberwachung und -failover gilt für alle Methoden für das Datenverkehrsrouting. Weitere Informationen finden Sie unter [Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md). Die Endpunktüberwachung funktioniert bei geschachtelten Profilen anders. Bei geschachtelten Profilen führt das übergeordnete Profil die Integritätsprüfung nicht direkt am untergeordneten Profil durch. Stattdessen wird mit der Integrität der Endpunkte des untergeordneten Profils die Gesamtintegrität des untergeordneten Profils berechnet. Diese Integritätsinformationen werden in der Hierarchie der geschachtelten Profile nach oben weitergegeben. Das übergeordnete Profil verwendet diese aggregierte Integrität, um festzulegen, ob der Datenverkehr an das untergeordnete Profil weitergeleitet wird. Ausführliche Informationen zur Integritätsüberwachung bei geschachtelten Profilen finden Sie unter [Häufig gestellte Fragen](traffic-manager-FAQs.md#traffic-manager-nested-profiles).
 
@@ -63,7 +63,7 @@ Die folgende Abbildung veranschaulicht diese Konfiguration:
 > [!NOTE]
 > Mit der prioritätsbasierten Methode für das Datenverkehrsrouting wird der gesamte Datenverkehr an einen Endpunkt geleitet. Daher ist es in diesem Fall wenig sinnvoll, MinChildEndpoints für ein untergeordnetes Profil auf einen anderen Wert als 1 festzulegen.
 
-## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Beispiel 3: Priorisierte Failoverregionen im leistungsorientierten Datenverkehrsrouting
+## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Beispiel 3: Priorisierte Failoverregionen im leistungsorientierten Datenverkehrsrouting
 
 Bei Verwendung der Datenverkehrsrouting-Methode „Leistung“ werden die Endbenutzer standardmäßig an den „nächstgelegenen“ Endpunkt (im Hinblick auf die geringste Netzwerklatenz) weitergeleitet, wenn sich Ihre Endpunkte an unterschiedlichen geografischen Standorten befinden.
 
@@ -97,7 +97,7 @@ Die Überwachungseinstellungen in einem Traffic Manager-Profil gelten für alle 
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
-* [Wie konfiguriere ich geschachtelte Profile?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
+* [Wie konfiguriere ich geschachtelte Profile?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-nested-profiles)
 
 * [Wie viele Schachtelungsebenen werden in Traffic Manager unterstützt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
 

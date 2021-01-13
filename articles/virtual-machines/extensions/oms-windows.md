@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor-VM-Erweiterung für Windows | Microsoft-Dokumentation
+title: Log Analytics-VM-Erweiterung für Windows
 description: Stellen Sie den Log Analytics-Agent mithilfe einer VM-Erweiterung auf einem virtuellen Windows-Computer bereit.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -9,37 +9,40 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: feae6176-2373-4034-b5d9-a32c6b4e1f10
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/12/2019
+ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: fe8bafcb63c1a27b905bdc339c07d30c9f0a5982
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 389842901a4c508015d527c0fd8fd87af57dcd9b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168917"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967923"
 ---
-# <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Azure Monitor-VM-Erweiterung für Windows
+# <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics-VM-Erweiterung für Windows
 
-Azure Monitor-Protokolle bietet Überwachungsfunktionen für cloudbasierte und lokale Ressourcen. Die Log Analytics-Agent-VM-Erweiterung für Windows wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung installiert den Log Analytics-Agent auf virtuellen Azure-Computern und registriert virtuelle Computer in einem vorhandenen Log Analytics-Arbeitsbereich. Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen, Konfigurationen und Bereitstellungsoptionen für die Azure Monitor-Protokolle-VM-Erweiterung für Windows.
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+Azure Monitor-Protokolle bieten Überwachungsfunktionen für cloudbasierte und lokale Ressourcen. Die Log Analytics-Agent-VM-Erweiterung für Windows wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung installiert den Log Analytics-Agent auf virtuellen Azure-Computern und registriert virtuelle Computer in einem vorhandenen Log Analytics-Arbeitsbereich. Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen, Konfigurationen und Bereitstellungsoptionen für die Log Analytics-VM-Erweiterung für Windows.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Ausführliche Informationen zu den unterstützten Windows-Betriebssystemen finden Sie in der [Übersicht über den Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems).
+Ausführliche Informationen zu den unterstützten Windows-Betriebssystemen finden Sie im Artikel [Übersicht über Azure Monitor-Agents](../../azure-monitor/platform/agents-overview.md#supported-operating-systems).
 
 ### <a name="agent-and-vm-extension-version"></a>Version des Agents und der VM-Erweiterung
-Die folgende Tabelle enthält eine Zuordnung der Version der Windows Azure Monitor-VM-Erweiterung und des Log Analytics-Agent-Pakets für jede Version. 
+Die folgende Tabelle enthält eine Zuordnung der Version der Log Analytics-VM-Erweiterung für Windows und des Log Analytics-Agent-Pakets für jedes Release. 
 
-| Log Analytics-Agent-Paketversion für Windows | Version der Azure Monitor-VM-Erweiterung für Windows | Herausgabedatum | Versionsinformationen |
+| Log Analytics-Agent-Paketversion für Windows | Version der Log Analytics-VM-Erweiterung für Windows | Veröffentlichungsdatum | Versionsinformationen |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18040 | 1.0.18040.2 | August 2020   | <ul><li>Löst ein Problem in Azure Arc</li></ul> |
+| 10.20.18038 | 1.0.18038 | April 2020   | <ul><li>Ermöglicht Konnektivität über Private Link mithilfe von Azure Monitor Private Link-Bereichen.</li><li>Fügt eine Drosselung bei der Erfassung hinzu, um einen versehentlichen plötzlichen Anstieg der Erfassung in einem Arbeitsbereich zu vermeiden.</li><li>Fügt Unterstützung für zusätzliche Azure Government-Clouds und -Regionen hinzu.</li><li>Behebt einen Fehler, der zum Absturz von HealthService.exe führte.</li></ul> |
+| 10.20.18029 | 1.0.18029 | März 2020   | <ul><li>Fügt Unterstützung für SHA-2-Codesignaturen hinzu.</li><li>Verbessert Installation und Verwaltung von VM-Erweiterungen.</li><li>Behebt einen Fehler in Azure Arc für die Integration von Servern.</li><li>Fügt ein integriertes Tool zur Problembehandlung für den Kundensupport hinzu.</li><li>Fügt Unterstützung für zusätzliche Azure Government Regionen hinzu.</li> |
+| 10.20.18018 | 1.0.18018 | Oktober 2019 | <ul><li> Kleinere Fehlerbehebungen und Stabilisierungsverbesserungen </li></ul> |
 | 10.20.18011 | 1.0.18011 | Juli 2019 | <ul><li> Kleinere Fehlerbehebungen und Stabilisierungsverbesserungen </li><li> Erhöhung des Werts für „MaxExpressionDepth“ auf 10.000 </li></ul> |
-| 10.20.18001 | 1.0.18001 | Juni 2019 | <ul><li> Kleinere Fehlerbehebungen und Stabilisierungsverbesserungen </li><li> Hinzugefügte Möglichkeit, Standardanmeldeinformationen zu deaktivieren, wenn eine Proxyverbindung hergestellt wird (Unterstützung für WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
+| 10.20.18001 | 1.0.18001 | Juni 2019 | <ul><li> Kleinere Fehlerbehebungen und Stabilisierungsverbesserungen </li><li> Hinzugefügte Möglichkeit, Standardanmeldeinformationen zu deaktivieren, wenn eine Proxyverbindung hergestellt wird (Unterstützung für WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
 | 10.19.13515 | 1.0.13515 | März 2019 | <ul><li>Kleinere Stabilisierungskorrekturen </li></ul> |
 | 10.19.10006 | – | Dezember 2018 | <ul><li> Kleinere Stabilisierungskorrekturen </li></ul> | 
 | 8.0.11136 | – | September 2018 |  <ul><li> Unterstützung für die Erkennung einer Änderung der Ressourcen-ID bei der VM-Verschiebung hinzugefügt </li><li> Unterstützung für Melden der Ressourcen-ID bei Verwendung einer Installation ohne Erweiterung hinzugefügt </li></ul>| 
@@ -47,6 +50,7 @@ Die folgende Tabelle enthält eine Zuordnung der Version der Windows Azure Monit
 | 8.0.11081 | 1.0.11081 | November 2017 | | 
 | 8.0.11072 | 1.0.11072 | September 2017 | |
 | 8.0.11049 | 1.0.11049 | Februar 2017 | |
+
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
@@ -84,7 +88,7 @@ Der folgende JSON-Code zeigt das Schema für die Log Analytics-Agent-Erweiterung
 ```
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| NAME | Wert/Beispiel |
+| Name | Wert/Beispiel |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
@@ -95,6 +99,9 @@ Der folgende JSON-Code zeigt das Schema für die Log Analytics-Agent-Erweiterung
 
 \* In der Log Analytics-API heißt die „workspaceId“ „consumerId“.
 
+> [!NOTE]
+> Informationen zu weiteren Eigenschaften finden Sie unter [Verbinden von Windows-Computern mit Azure Monitor](../../azure-monitor/platform/agent-windows.md).
+
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
 Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Das im vorherigen Abschnitt erläuterte JSON-Schema kann in einer Azure Resource Manager-Vorlage zum Ausführen der Log Analytics-Agent-Erweiterung im Rahmen einer Azure Resource Manager-Bereitstellung verwendet werden. Eine Beispielvorlage mit der Log Analytics-Agent-VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
@@ -102,9 +109,9 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
 >[!NOTE]
 >Die Vorlage unterstützt nicht die Angabe mehrerer Arbeitsbereichs-IDs und Arbeitsbereichsschlüssel, wenn Sie den Agent zum Berichten an mehrere Arbeitsbereiche konfigurieren möchten. Informationen zum Konfigurieren des Agents zum Berichten an mehrere Arbeitsbereiche finden Sie unter [Hinzufügen oder Entfernen von Arbeitsbereichen](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace).  
 
-Der JSON-Code für eine Erweiterung des virtuellen Computers kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung des JSON-Codes wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/child-resource-name-type.md) (Festlegen von Name und Typ für untergeordnete Ressourcen). 
+Der JSON-Code für eine Erweiterung des virtuellen Computers kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung des JSON-Codes wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/templates/child-resource-name-type.md) (Festlegen von Name und Typ für untergeordnete Ressourcen). 
 
-Im folgenden Beispiel wird davon ausgegangen, dass die Azure Monitor-Erweiterung in der VM-Ressource geschachtelt ist. Beim Schachteln der Ressource für die Erweiterung wird der JSON-Code im `"resources": []`-Objekt des virtuellen Computers platziert.
+Im folgenden Beispiel wird davon ausgegangen, dass die Log Analytics-Erweiterung in der VM-Ressource geschachtelt ist. Beim Schachteln der Ressource für die Erweiterung wird der JSON-Code im `"resources": []`-Objekt des virtuellen Computers platziert.
 
 
 ```json

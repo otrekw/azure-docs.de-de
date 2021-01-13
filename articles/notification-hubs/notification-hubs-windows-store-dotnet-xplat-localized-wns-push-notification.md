@@ -12,19 +12,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 57353999ff94aa8fd4499b511c86cd59d24d1f0a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: d91320d8f78942ca916084cbf29a88818d95f531
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213382"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314620"
 ---
-# <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>Tutorial: Senden von lokalisierten Pushbenachrichtigungen an Windows-Apps mit Azure Notification Hubs
+# <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Tutorial: Senden von lokalisierten Pushbenachrichtigungen an Windows-Apps mit Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -48,7 +48,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie die Schritte unter [Tutorial: Senden von Pushbenachrichtigungen an bestimmte Windows Phone-Geräte mit Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) aus.
+Absolvieren Sie [Tutorial: Senden von Pushbenachrichtigungen an bestimmte Windows Phone-Geräte mit Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) erstellt haben.
 
 Unter [Tutorial: Senden von Pushbenachrichtigungen an bestimmte Windows Phone-Geräte mit Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) haben Sie eine App erstellt, die mithilfe von **Tags** Benachrichtigungen für verschiedene **Kategorien** von Nachrichten abonniert. In diesem Tutorial verwenden Sie das Feature für **Vorlagen** von Notification Hubs, um **lokalisierte** Benachrichtigungen für Nachrichten zu verschicken.
 
@@ -295,7 +295,7 @@ In diesem Tutorial haben Sie gelernt, wie Sie lokalisierte Pushbenachrichtigunge
 [Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-app-users-dotnet
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-dotnet
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
-[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[wns object]: /previous-versions/azure/reference/jj860484(v=azure.100)
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for iOS]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

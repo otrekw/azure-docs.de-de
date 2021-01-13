@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: vhorne
   ms.author: victorh
-  ms.date: 09/18/2019
-  ms.openlocfilehash: ff940f474c6d5d6fd96a03c45be18de39f065b97
-  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.date: 03/24/2020
+  ms.openlocfilehash: df125820d56aa5c2edda29306c69cef00e012a12
+  ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/17/2019
-  ms.locfileid: "71076025"
+  ms.lasthandoff: 01/10/2021
+  ms.locfileid: "98059533"
 landingContent:
 - title: Informationen zu Application Gateway
   linkLists:
@@ -26,7 +26,17 @@ landingContent:
   - linkListType: concept
     links:
     - text: Häufig gestellte Fragen
-      url: application-gateway-faq.md
+      url: application-gateway-faq.yml
+  - linkListType: whats-new
+    links:
+    - text: Neuigkeiten
+      url: https://azure.microsoft.com/updates/?category=networking&query=Application%20Gateway
+- title: Unterstützung von hohen Datenverkehrsvolumen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Unterstützung von hohem Datenverkehr für Application Gateway
+      url: high-traffic-support.md
 - title: Bereitstellen eines Anwendungsgateways
   linkLists:
   - linkListType: quickstart
@@ -55,6 +65,28 @@ landingContent:
     links:
     - text: Erstellen eines Anwendungsgateways, das den Zugriff auf die Webanwendung verbessert
       url: tutorial-autoscale-ps.md
+- title: Eingangscontroller für AKS
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Was ist der Eingangscontroller für AKS?
+      url: ingress-controller-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Erstellen eines Eingangscontrollers für AKS
+      url: ingress-controller-install-new.md
+- title: Erneutes Generieren von HTTP-Headern und einer URL mithilfe von Application Gateway
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Erneutes Generieren von HTTP-Headern und einer URL mithilfe von Application Gateway
+      url: rewrite-http-headers-url.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erneutes Generieren von HTTP-Headern über das Azure-Portal
+      url: rewrite-http-headers-portal.md
+    - text: Erneutes Generieren einer URL und Abfragezeichenfolge über das Azure-Portal
+      url: rewrite-url-portal.md
 - title: Problembehandlung bei Application Gateway
   linkLists:
   - linkListType: overview

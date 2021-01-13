@@ -1,91 +1,160 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentation zu IoT Hub
+### YamlMime:Landing
+title: Dokumentation zu Azure IoT Hub
 metadata:
-  title: 'Dokumentation für Azure IoT Hub – Tutorials, API-Referenz | Microsoft-Dokumentation'
-  description: 'Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Internets der Dinge (Internet of Things, IoT) verbinden, überwachen und steuern. Tutorials, API-Referenzen, Videos und anderes Dokumentationsmaterial.'
-  author: dominicbetts
-  manager: timlt
-  ms.service: iot-hub
+  title: Dokumentation zu Azure IoT Hub
+  description: Hier erfahren Sie, wie Sie mithilfe von Azure IoT Hub Millionen von Ressourcen des Internets der Dinge (Internet of Things, IoT) verbinden, überwachen und steuern.
   services: iot-hub
+  ms.service: iot-hub
   ms.topic: landing-page
-  ms.date: 04/26/2018
-  ms.author: dobett
-abstract:
-  description: 'Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Internets der Dinge (Internet of Things, IoT) verbinden, überwachen und steuern. Anhand von Tutorials, API-Referenzen, Videos und anderem Dokumentationsmaterial wird gezeigt, wie Sie eine zuverlässige, bidirektionale Kommunikation zwischen IoT-Geräten und einem Lösungs-Back-End bereitstellen.'
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NET.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_python.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_android.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_c.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_ios.svg'
-        rows:
-          - title: Senden von Telemetriedaten
-            values:
-              - href: /azure/iot-hub/quickstart-send-telemetry-node
-              - href: /azure/iot-hub/quickstart-send-telemetry-dotnet
-              - href: /azure/iot-hub/quickstart-send-telemetry-java
-              - href: /azure/iot-hub/quickstart-send-telemetry-python
-              - href: /azure/iot-hub/quickstart-send-telemetry-android
-              - href: /azure/iot-hub/quickstart-send-telemetry-c
-              - href: /azure/iot-hub/quickstart-send-telemetry-ios
-          - title: Steuern eines Geräts
-            values:
-              - href: /azure/iot-hub/quickstart-control-device-node
-              - href: /azure/iot-hub/quickstart-control-device-dotnet
-              - href: /azure/iot-hub/quickstart-control-device-java
-              - href: /azure/iot-hub/quickstart-control-device-python
-              - href: /azure/iot-hub/quickstart-control-device-android
-          - title: Kommunizieren mithilfe von Gerätestreams (Vorschau)
-            values:
-              - href: /azure/iot-hub/quickstart-device-streams-echo-nodejs
-              - href: /azure/iot-hub/quickstart-device-streams-echo-csharp
-              - href: null
-              - href: null
-              - href: null
-              - href: /azure/iot-hub/quickstart-device-streams-echo-c
-              - href: null
-          - title: Herstellen einer SSH-/RDP-Verbindung mithilfe von Gerätestreams (Vorschau)
-            values:
-              - href: /azure/iot-hub/quickstart-device-streams-proxy-nodejs
-              - href: /azure/iot-hub/quickstart-device-streams-proxy-csharp
-              - href: null
-              - href: null
-              - href: null
-              - href: /azure/iot-hub/quickstart-device-streams-proxy-c
-              - href: null
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/iot-hub/tutorial-routing">Konfigurieren des automatisierten Nachrichtenroutings in IoT Hub</a>
-          - html: <a href="/azure/iot-hub/tutorial-device-twins">Konfigurieren Ihrer Geräte über einen Back-End-Dienst</a>
-          - html: <a href="/azure/iot-hub/tutorial-firmware-update">Implementieren eines Updateprozesses für die Gerätefirmware</a>
-          - html: <a href="/azure/iot-hub/tutorial-connectivity">Verwenden eines simulierten Geräts zum Testen der Konnektivität mit Ihrem IoT Hub</a>
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Befehlszeile
-            html: <p><a href="/cli/azure/iot">Azure-Befehlszeilenschnittstelle</a></p>
-          - title: Languages
-            html: '<p><a href="/dotnet/api/microsoft.azure.devices">.NET (Dienst)</a></p><p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (Geräte)</a></p><p><a href="https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/">C (Geräte-SDK)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java (Dienst)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java (Geräte)</a></p><p><a href="/javascript/api/azure-iothub/?view=azure-iot-typescript-latest">Node.js (Dienst)</a></p><p><a href="/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest">Node.js (Geräte)</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/iothub/device">REST (Gerät)</a></p><p><a href="/rest/api/iothub/service">REST (Dienst)</a></p><p><a href="/rest/api/iothub/iothubresource">REST (IoT Hub-Ressource)</a></p><p><a href="/rest/api/iothub/certificates">REST (Zertifikate)</a></p>
+  author: robinsh
+  ms.author: robinsh
+  manager: eliotgra
+  ms.date: 03/23/2020
+  ms.custom: amqp
+  ms.openlocfilehash: 665692e1d902dfed8cdab535d0639f356f4e709c
+  ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/19/2020
+  ms.locfileid: "94885919"
+landingContent:
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen eines Hubs über das Azure-Portal
+      url: iot-hub-create-through-portal.md
+    - text: Senden von Telemetriedaten von einem Gerät an einen Hub mithilfe der CLI
+      url: quickstart-send-telemetry-cli.md
+    - text: Steuern eines mit Hub-Instanz verbundenen Geräts
+      url: quickstart-control-device-node.md
+  - linkListType: get-started
+    links:
+    - text: Geräteverwaltung
+      url: iot-hub-node-node-device-management-get-started.md
+    - text: Konfigurieren von Geräten
+      url: iot-hub-configuration-best-practices.md
+- title: Synchronisieren von Gerätestatus
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Arbeiten mit Gerätezwillingen mithilfe von Node.js
+      url: iot-hub-node-node-twin-getstarted.md
+- title: Skalieren Ihrer Lösung
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Auswählen der richtigen Ebene
+      url: iot-hub-scaling.md
+    - text: Grundlegendes zu Kontingenten und Drosselung
+      url: iot-hub-devguide-quotas-throttling.md
+- title: Auswählen Ihres Protokolls
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Unterstützte Protokolle
+      url: iot-hub-devguide-protocols.md
+    - text: TLS-Unterstützung
+      url: iot-hub-tls-support.md
+    - text: MQTT-Unterstützung
+      url: iot-hub-mqtt-support.md
+    - text: IP-Adressierung
+      url: iot-hub-understand-ip-address.md
+    - text: AMQP
+      url: iot-hub-amqp-support.md
+    - text: Protokollgateway
+      url: iot-hub-protocol-gateway.md
+- title: Weiterleiten von Gerätedaten an einen anderen Dienst
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Grundlegendes zum Azure IoT Hub-Nachrichtenrouting
+      url: iot-hub-devguide-messages-d2c.md
+  - linkListType: tutorial
+    links:
+    - text: Vorbereiten mit der Azure CLI
+      url: tutorial-routing-config-message-routing-cli.md
+    - text: Vorbereiten mit einer Azure Resource Manager-Vorlage
+      url: tutorial-routing-config-message-routing-rm-template.md
+    - text: Ausführen und Anzeigen von Routingergebnissen
+      url: tutorial-routing-view-message-routing-results.md
+- title: IoT Hub in Azure Stack Hub (Vorschau)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Übersicht für Operatoren
+      url: /azure-stack/operator/iot-hub-rp-overview
+    - text: Übersicht für Benutzer
+      url: /azure-stack/user/iot-hub-overview
+  - linkListType: how-to-guide
+    links:
+    - text: Voraussetzungen für die Installation
+      url: /azure-stack/operator/iot-hub-rp-prerequisites
+    - text: Installation von IoT Hub in Azure Stack Hub
+      url: /azure-stack/operator/iot-hub-rp-install
+- title: Verwenden von IoT Hub-Tools
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwenden von IoT-Tools für VS Code
+      url: iot-hub-create-use-iot-toolkit.md
+    - text: IoT-Explorer
+      url: ../iot-pnp/howto-use-iot-explorer.md
+- title: 'IoT Hub: Überwachen und Behandeln von Problemen'
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Überwachen von IoT Hub
+      url: monitor-iot-hub.md
+    - text: Referenz zu IoT Hub-Überwachungsdaten
+      url: monitor-iot-hub-reference.md
+    - text: Überwachen, Diagnostizieren und Behandeln von Problemen bei der Trennung von Verbindungen mit IoT Hub
+      url: iot-hub-troubleshoot-connectivity.md
+    - text: Sortieren von Geräteverbindungsereignissen von Azure IoT Hub mithilfe von Azure Cosmos DB
+      url: iot-hub-how-to-order-connection-state-events.md
+- title: Verwenden von IoT-Sicherheitszertifikaten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Verwalten des Zugriffs auf IoT Hub
+      url: iot-hub-devguide-security.md
+    - text: Geräteauthentifizierung mit Zertifikaten von X.509-Zertifizierungsstellen
+      url: iot-hub-x509ca-overview.md
+    - text: X. 509-Sicherheit bei IoT Hub
+      url: iot-hub-security-x509-get-started.md
+    - text: Sicherheitskonzepte bei Zertifikaten von X.509-Zertifizierungsstellen
+      url: iot-hub-x509ca-concept.md
+- title: Verwenden der Azure CLI für IoT-Hub
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Erstellen eines IoT Hubs
+      url: iot-hub-create-using-cli.md
+    - text: Verwalten von IoT-Geräten
+      url: iot-hub-device-management-iot-extension-azure-cli-2-0.md
+    - text: Konfigurieren der Nachrichtenweiterleitung
+      url: tutorial-routing-config-message-routing-cli.md
+    - text: Konfigurieren des Dateiuploads
+      url: iot-hub-configure-file-upload-cli.md
+    - text: Senden von Telemetriedaten und Überwachen
+      url: quickstart-send-telemetry-cli.md
+  - linkListType: reference
+    links:
+    - text: CLI-Referenzen für IoT
+      url: /cli/azure/azure-cli-reference-for-IoT
+- title: Verwenden von PowerShell für IoT Hub
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Erstellen eines IoT Hubs
+      url: iot-hub-create-using-powershell.md
+    - text: Erstellen einer IoT Hub-Instanz mit einer Resource Manager-Vorlage
+      url: iot-hub-rm-template-powershell.md
+    - text: Konfigurieren der Nachrichtenweiterleitung
+      url: tutorial-routing-config-message-routing-powershell.md
+    - text: Konfigurieren des Dateiuploads
+      url: iot-hub-configure-file-upload-powershell.md
+  - linkListType: reference
+    links:
+    - text: PowerShell-Referenzen für IoT
+      url: /powershell/module/az.iothub#iothub

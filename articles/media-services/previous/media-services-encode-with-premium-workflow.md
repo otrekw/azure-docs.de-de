@@ -13,27 +13,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d20fc0cee6bce1389649e6287170b1963e799ccf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7f3efa23ad0b5e79e84a2436aaf56b67a805d05f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463901"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017232"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Erweiterte Codierung mit dem Media Encoder Premium Workflow
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
 > Der in diesem Artikel beschriebene Media Encoder Premium Workflow-Medienprozessor ist in China nicht verfügbar.
 >
 >
-
-Fragen zu Encoder Premium senden Sie per E-Mail an mepd@microsoft.com.
 
 ## <a name="overview"></a>Übersicht
 Microsoft Azure Media Services stellt den **Media Encoder Premium Workflow** -Medienprozessor vor. Dieser Prozessor bietet leistungsstarke Codierungsfunktionen für Ihre bedarfsgesteuerten Premium-Workflows.
 
 In den folgenden Themen erhalten Sie nähere Informationen zum **Media Encoder Premium Workflow**:
 
-* [Von Media Encoder Premium Workflow unterstützte Formate](media-services-premium-workflow-encoder-formats.md) : Erläutert die von **Media Encoder Premium Workflow**unterstützten Formate.
+* [Von Media Encoder Premium Workflow unterstützte Formate](./media-services-encode-asset.md) : Erläutert die von **Media Encoder Premium Workflow**unterstützten Formate.
 * Im Abschnitt [Azure On-Demand Media Encoder – Übersicht und Vergleich](media-services-encode-asset.md) werden die Codierungsfunktionen von **Media Encoder Premium Workflow** und **Media Encoder Standard** verglichen.
 
 Dieser Artikel veranschaulicht die Codierung mit **Media Encoder Premium Workflow** unter Verwendung von .NET.
@@ -62,7 +64,7 @@ Es werden folgende Schritte ausgeführt:
     In den meisten Fällen die Konfigurationszeichenfolge für die Aufgabe leer (wie im folgenden Beispiel). Es gibt einige erweiterte Szenarien, bei denen Sie eine XML-Zeichenfolge an die Codierungsaufgabe bereitstellen (und Laufzeiteigenschaften dynamisch festlegen) müssen. Beispiele für solche Szenarios sind das Erstellen einer Überlagerung, das parallele oder sequenzielle Zusammenfügen von Medien und die Untertitelung.
 5. Hinzufügen von zwei Medienobjekten zur Aufgabe.
 
-   1. 1\. – das Medienobjekt für den Workflow
+   1. 1 – das Medienobjekt für den Workflow
    2. 2 – das Videomedienobjekt
 
       >[!NOTE]
@@ -231,7 +233,9 @@ namespace MediaEncoderPremiumWorkflowSample
 }
 ```
 
-Fragen zu Encoder Premium senden Sie per E-Mail an mepd@microsoft.com.
+## <a name="need-help"></a>Sie brauchen Hilfe?
+
+Sie können ein Supportticket erstellen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,30 +1,27 @@
 ---
-title: Übergeben eines benutzerdefinierten state-Parameters in Authentifizierungsanforderungen (Microsoft Authentication Library für JavaScript) | Azure
+title: Übergeben eines benutzerdefinierten state-Parameters in Authentifizierungsanforderungen (MSAL.js) | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie einen benutzerdefinierten state-Parameterwert in einer Authentifizierungsanforderung mithilfe der Microsoft Authentication Library für JavaScript (MSAL.js) übergeben.
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-ms.date: 05/29/2019
-ms.author: twhitney
+ms.date: 01/16/2020
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ae12624b3d897f05437f7795d1a1eee32ca37a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 840c371e63aacf8ef410cbf84cc9f68137dd77df
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532748"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85477582"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Übergeben eines benutzerdefinierten state-Parameters in Authentifizierungsanforderungen mithilfe von MSAL.js
+
 Der *state*-Parameter gemäß OAuth 2.0 ist in einer Authentifizierungsanforderung enthalten und wird auch in der Tokenantwort zurückgegeben, um Angriffe in Form siteübergreifender Anforderungsfälschungen zu verhindern. Die Microsoft Authentication Library für JavaScript (MSAL.js) übergibt standardmäßig einen zufällig generierten eindeutigen *state*-Parameterwert in Authentifizierungsanforderungen.
 
 Der state-Parameter kann auch verwendet werden, um vor der Umleitung Zustandsinformationen zur App zu codieren. Sie können den Zustand des Benutzers in der App, z. B. die Seite oder Ansicht, zu der er navigiert ist, als Eingabe für diesen Parameter übergeben. Die MSAL.js-Bibliothek bietet die Möglichkeit, Ihren benutzerdefinierten Zustand als state-Parameter im `Request`-Objekt zu übergeben:
@@ -43,15 +40,23 @@ export type AuthenticationParameters = {
     account?: Account;
     sid?: string;
     loginHint?: string;
+    forceRefresh?: boolean;
 };
 ```
+
+> [!Note]
+> Wenn Sie ein zwischengespeichertes Token überspringen und zum Server wechseln möchten, übergeben Sie den booleschen Wert `forceRefresh` in das AuthenticationParameters-Objekt, das zum Erstellen einer Anmelde-/Tokenanforderung verwendet wird.
+> `forceRefresh` sollte aufgrund der Leistungsauswirkungen auf Ihre Anwendung nicht standardmäßig verwendet werden.
+> Wenn Sie sich auf den Cache verlassen, erhalten Ihre Benutzer eine bessere Benutzererfahrung.
+> Das Überspringen des Caches sollte nur in Szenarien verwendet werden, in denen Sie wissen, dass die aktuell zwischengespeicherten Daten keine aktuellen Informationen enthalten.
+> Zum Beispiel muss ein Verwaltungs Tool, das einem Benutzer Rollen hinzufügt, ein neues Token mit aktualisierten Rollen abrufen.
 
 Beispiel:
 
 ```javascript
 let loginRequest = {
     scopes: ["user.read", "user.write"],
-    state: “page_url”
+    state: "page_url"
 }
 
 myMSALObj.loginPopup(loginRequest);

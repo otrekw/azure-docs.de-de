@@ -1,20 +1,15 @@
 ---
-title: 'Tutorial: Übertragen des aktualisierten Containerimages per Push an regionale Azure-App-Bereitstellungen'
-description: Übertragen Sie ein geändertes Docker-Image per Push an Ihre georeplizierte Azure-Containerregistrierung. Anschließend werden die Änderungen automatisch für Web-Apps bereitgestellt, die in mehreren Regionen ausgeführt werden. Dieses Tutorial ist der dritte Teil einer dreiteiligen Reihe.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: 'Tutorial: Übertragen eines Updates per Pushvorgang an eine georeplizierte Registrierung'
+description: Übertragen Sie ein aktualisiertes Docker-Image per Push an Ihre georeplizierte Azure-Containerregistrierung. Anschließend werden die Änderungen automatisch für Web-Apps bereitgestellt, die in mehreren Regionen ausgeführt werden. Dieses Tutorial ist der dritte Teil einer dreiteiligen Reihe.
 ms.topic: tutorial
 ms.date: 04/30/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e01fdc41d0cc2e65951bd92378eb59f0fd35816a
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 9222ac31e067cba6a0ffa71143c90f906ba6ff7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310433"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74454691"
 ---
 # <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Tutorial: Übertragen eines aktualisierten Containerimages per Push an eine georeplizierte Containerregistrierung für regionale Web-App-Bereitstellungen
 

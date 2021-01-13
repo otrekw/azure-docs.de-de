@@ -1,24 +1,21 @@
 ---
 title: Azure Functions – Bindungsausdrücke und Muster
 description: Erfahren Sie, wie Sie auf der Grundlage häufiger Muster verschiedene Azure Functions-Bindungsausdrücke erstellen können.
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: db6f4f938b1555091dc51e310d4d31f96f93200c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 161e3e7fbc5b343ee73142f0e968367c3cbfaa6b
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097354"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927412"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions-Muster für Bindungsausdrücke
 
-Eines der leistungsstärksten Merkmale von [Triggern und Bindungen](./functions-triggers-bindings.md) sind *Bindungsausdrücke*. In der Datei *function.json*, in Funktionsparametern und in Code können Sie Ausdrücke verwenden, die mit Werten aus verschiedenen Quellen aufgelöst werden.
+Eines der leistungsstärksten Merkmale von [Triggern und Bindungen](./functions-triggers-bindings.md) sind *Bindungsausdrücke*. In der Datei *function.json* , in Funktionsparametern und in Code können Sie Ausdrücke verwenden, die mit Werten aus verschiedenen Quellen aufgelöst werden.
 
 Die meisten Ausdrücke sind von geschweiften Klammern umschlossen. Beispielsweise wird in einer Trigger-Funktion für die Eingabewarteschlange `{queueTrigger}` in den Text der Warteschlangenmeldung aufgelöst. Lautet die Eigenschaft `path` für eine Blobausgabebindung `container/{queueTrigger}`, und wird die Funktion durch eine Warteschlangennachricht `HelloWorld` ausgelöst, so wird ein Blob mit dem Namen `HelloWorld` erstellt.
 
@@ -41,9 +38,10 @@ Bindungsausdrücke für App-Einstellungen werden anders dargestellt als andere B
 
 Beim lokalen Ausführen einer Funktion werden die App-Einstellungen aus der Datei *local.settings.json* verwendet.
 
-Die Eigenschaft `connection` von Triggern und Bindungen ist ein Sonderfall, denn für sie werden Werte automatisch als App-Einstellungen ohne Prozentzeichen aufgelöst. 
+> [!NOTE]
+> Die Eigenschaft `connection` von Triggern und Bindungen ist ein Sonderfall, denn für sie werden Werte automatisch als App-Einstellungen ohne Prozentzeichen aufgelöst. 
 
-Im folgenden Beispiel ist ein Azure Queue Storage-Trigger gezeigt, in dem die App-Einstellung `%input-queue-name%` verwendet wird, um die Warteschlange anzugeben, für die die Auslösung erfolgen werden soll.
+Im folgenden Beispiel ist ein Azure Queue Storage-Trigger gezeigt, in dem die App-Einstellung `%input_queue_name%` verwendet wird, um die Warteschlange anzugeben, für die die Auslösung erfolgen werden soll.
 
 ```json
 {
@@ -52,7 +50,7 @@ Im folgenden Beispiel ist ein Azure Queue Storage-Trigger gezeigt, in dem die Ap
       "name": "order",
       "type": "queueTrigger",
       "direction": "in",
-      "queueName": "%input-queue-name%",
+      "queueName": "%input_queue_name%",
       "connection": "MY_STORAGE_ACCT_APP_SETTING"
     }
   ]
@@ -64,7 +62,7 @@ Sie können den gleichen Ansatz auch in Klassenbibliotheken verwenden:
 ```csharp
 [FunctionName("QueueTrigger")]
 public static void Run(
-    [QueueTrigger("%input-queue-name%")]string myQueueItem, 
+    [QueueTrigger("%input_queue_name%")]string myQueueItem, 
     ILogger log)
 {
     log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
@@ -119,7 +117,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-Sie haben auch die Möglichkeit, Bindungsausdrücke und -muster für Attribute in Klassenbibliotheken zu verwenden. Im folgenden Beispiel sind die Parameter des Attributkonstruktors dieselben `path`-Werte wie in den vorigen Beispielen für *function.json*: 
+Sie haben auch die Möglichkeit, Bindungsausdrücke und -muster für Attribute in Klassenbibliotheken zu verwenden. Im folgenden Beispiel sind die Parameter des Attributkonstruktors dieselben `path`-Werte wie in den vorigen Beispielen für *function.json* : 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -135,7 +133,19 @@ public static void Run(
 
 ```
 
-Sie können auch Ausdrücke für Teile des Dateinamens erstellen, z.B. die Erweiterung. Weitere Informationen zum Verwenden von Ausdrücken und Mustern in der Blob-Pfadzeichenfolge finden Sie im Artikel zu [Azure Blob Storage-Bindungen](functions-bindings-storage-blob.md).
+Sie können auch Ausdrücke für Teile des Dateinamens erstellen. Im folgenden Beispiel wird die Funktion nur für Dateinamen ausgelöst, die einem Muster entsprechen: `anyname-anyfile.csv`
+
+```json
+{
+    "name": "myBlob",
+    "type": "blobTrigger",
+    "direction": "in",
+    "path": "testContainerName/{date}-{filetype}.csv",
+    "connection": "OrderStorageConnection"
+}
+```
+
+Weitere Informationen zum Verwenden von Ausdrücken und Mustern in der Blob-Pfadzeichenfolge finden Sie im Artikel zu [Azure Blob Storage-Bindungen](functions-bindings-storage-blob.md).
 
 ## <a name="trigger-metadata"></a>Metadaten für Trigger
 
@@ -151,7 +161,7 @@ Beispielsweise unterstützt ein Azure Queue Storage-Trigger die folgenden Eigens
 * NextVisibleTime
 * PopReceipt
 
-Der Zugriff auf diese Metadatenwerte ist über die *function.json*-Dateieigenschaften möglich. Angenommen, Sie verwenden einen Warteschlangentrigger und die Warteschlangennachricht enthält den Namen eines Blobs, den Sie lesen möchten. In der *function.json*-Datei können Sie die Metadateneigenschaft `queueTrigger` in der Blobeigenschaft `path` verwenden, wie im folgenden Beispiel gezeigt:
+Der Zugriff auf diese Metadatenwerte ist über die *function.json* -Dateieigenschaften möglich. Angenommen, Sie verwenden einen Warteschlangentrigger und die Warteschlangennachricht enthält den Namen eines Blobs, den Sie lesen möchten. In der *function.json* -Datei können Sie die Metadateneigenschaft `queueTrigger` in der Blobeigenschaft `path` verwenden, wie im folgenden Beispiel gezeigt:
 
 ```json
   "bindings": [
@@ -171,7 +181,7 @@ Der Zugriff auf diese Metadatenwerte ist über die *function.json*-Dateieigensch
   ]
 ```
 
-Details der Metadateneigenschaften für jeden Trigger sind im entsprechenden Referenzartikel beschrieben. Ein Beispiel finden Sie unter [Warteschlangentrigger-Metadaten](functions-bindings-storage-queue.md#trigger---message-metadata). Dokumentation ist auch im Portal auf der Registerkarte **Integrieren** im Abschnitt **Dokumentation** verfügbar, der sich unter dem Bereich für Bindungskonfigurationen befindet.  
+Details der Metadateneigenschaften für jeden Trigger sind im entsprechenden Referenzartikel beschrieben. Ein Beispiel finden Sie unter [Warteschlangentrigger-Metadaten](functions-bindings-storage-queue-trigger.md#message-metadata). Dokumentation ist auch im Portal auf der Registerkarte **Integrieren** im Abschnitt **Dokumentation** verfügbar, der sich unter dem Bereich für Bindungskonfigurationen befindet.  
 
 ## <a name="json-payloads"></a>JSON-Nutzlasten
 
@@ -289,7 +299,7 @@ Der Bindungsausdruck `{rand-guid}` erstellt eine GUID. Der folgende Blobpfad in 
   "type": "blob",
   "name": "blobOutput",
   "direction": "out",
-  "path": "my-output-container/{rand-guid}"
+  "path": "my-output-container/{rand-guid}.txt"
 }
 ```
 
@@ -302,7 +312,7 @@ Der Bindungsausdruck `DateTime` wird in `DateTime.UtcNow` aufgelöst. Der folgen
   "type": "blob",
   "name": "blobOutput",
   "direction": "out",
-  "path": "my-output-container/{DateTime}"
+  "path": "my-output-container/{DateTime}.txt"
 }
 ```
 ## <a name="binding-at-runtime"></a>Binden zur Laufzeit

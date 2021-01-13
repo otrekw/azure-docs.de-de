@@ -1,29 +1,26 @@
 ---
-title: Funktionsreferenz zur Definitionssprache für Workflows – Azure Logic Apps und Microsoft Flow
-description: Referenzhandbuch für Funktionen in Ausdrücken, die mit der Definitionssprache für Workflows für Azure Logic Apps und Microsoft Flow erstellt wurden.
+title: Referenzhandbuch für Funktionen in Ausdrücken
+description: Referenzhandbuch für Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.topic: reference
-ms.date: 08/23/2019
-ms.openlocfilehash: 484e2776d96d9beaca703f93b22c51299ccf63a7
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.reviewer: estfan, logicappspm, azla
+ms.topic: conceptual
+ms.date: 09/04/2020
+ms.openlocfilehash: b15849fb8fbfed5d55b9c224f51634047b7c75b2
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208401"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914483"
 ---
-# <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps und Microsoft Flow
+# <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 
-Bei Workflowdefinitionen in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und [Microsoft Flow](https://docs.microsoft.com/flow/getting-started) erhalten einige [Ausdrücke](../logic-apps/logic-apps-workflow-definition-language.md#expressions) ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung Ihres Workflows möglicherweise noch nicht vorhanden sind. Sie können mithilfe von *Funktionen*, die von der [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) bereitgestellt werden, auf diese Werte in diesen Ausdrücken verweisen oder diese Werte in diesen Ausdrücken verarbeiten. 
+Bei Workflowdefinitionen in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und [Power Automate](/flow/getting-started) erhalten einige [Ausdrücke](../logic-apps/logic-apps-workflow-definition-language.md#expressions) ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung Ihres Workflows möglicherweise noch nicht vorhanden sind. Sie können mithilfe von *Funktionen*, die von der [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) bereitgestellt werden, auf diese Werte in diesen Ausdrücken verweisen oder diese Werte in diesen Ausdrücken verarbeiten.
 
 > [!NOTE]
-> Diese Referenzseite gilt sowohl für Azure Logic Apps als auch für Microsoft Flow, wird aber in der Dokumentation zu Azure Logic Apps angezeigt. Obwohl sich diese Seite speziell auf Logik-Apps bezieht, funktionieren diese Funktionen sowohl mit Flows als auch mit Logik-Apps. Weitere Informationen zu Funktionen und Ausdrücken in Microsoft Flow finden Sie unter [Verwenden von Ausdrücken in Bedingungen](https://docs.microsoft.com/flow/use-expressions-in-conditions).
+> Diese Referenzseite gilt sowohl für Azure Logic Apps als auch für Power Automate, wird aber in der Dokumentation zu Azure Logic Apps angezeigt. Obwohl sich diese Seite speziell auf Logik-Apps bezieht, funktionieren diese Funktionen sowohl mit Flows als auch mit Logik-Apps. Weitere Informationen zu Funktionen und Ausdrücken in Power Automate finden Sie unter [Verwenden von Ausdrücken in Bedingungen](/flow/use-expressions-in-conditions).
 
-So können Sie beispielsweise Werte berechnen, indem Sie mathematische Funktionen wie die [add()-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#add) verwenden, wenn Sie die Summe aus ganzen Zahlen oder Gleitkommazahlen erhalten möchten. Im Folgenden finden Sie weitere Beispielaufgaben, die Sie mit Funktionen ausführen können:
+Beispielsweise können Sie Werte berechnen, indem Sie mathematische Funktionen wie die [add()](../logic-apps/workflow-definition-language-functions-reference.md#add)-Funktion verwenden, wenn Sie die Summe aus Integer- oder Gleitkommazahlen erhalten möchten. Im Folgenden finden Sie weitere Beispielaufgaben, die Sie mit Funktionen ausführen können:
 
 | Aufgabe | Funktionssyntax | Ergebnis |
 | ---- | --------------- | ------ |
@@ -32,10 +29,6 @@ So können Sie beispielsweise Werte berechnen, indem Sie mathematische Funktione
 ||||
 
 In den nachfolgenden Tabellen finden Sie Funktionen [basierend auf dem allgemeinen Zweck](#ordered-by-purpose) aufgeführt. Ausführliche Informationen zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](#alphabetical-list).
-
-> [!NOTE]
-> In der Syntax für Parameterdefinitionen bedeutet ein Fragezeichen (?), das hinter einem Parameter steht, dass der Parameter optional ist.
-> Sie finden dies beispielsweise in [getFutureTime()](#getFutureTime).
 
 ## <a name="functions-in-expressions"></a>Funktionen in Ausdrücken
 
@@ -55,8 +48,7 @@ Im Folgenden werden einige weitere allgemeine Möglichkeiten für die Verwendung
 | 1. Abrufen des Ergebnisses aus *functionName*. </br>2. Da das Ergebnis ein Objekt mit der Eigenschaft *propertyName* ist, rufen Sie den Eigenschaftswert ab. | „\@<*functionName*>(<*Element*>).<*propertyName*>“ |
 |||
 
-Die Funktion `concat()` kann z.B. mindestens zwei Zeichenfolgenwerte als Parameter aufweisen. In dieser Funktion werden diese Zeichenfolgen in einer Zeichenfolge kombiniert.
-Sie können Zeichenfolgenliterale eingeben, wie z.B. „Sophia“ und „Owen“, um eine kombinierte Zeichenfolge („SophiaOwen“) zu erhalten:
+Die Funktion `concat()` kann z.B. mindestens zwei Zeichenfolgenwerte als Parameter aufweisen. In dieser Funktion werden diese Zeichenfolgen in einer Zeichenfolge kombiniert. Sie können Zeichenfolgenliterale eingeben, wie z.B. „Sophia“ und „Owen“, um eine kombinierte Zeichenfolge („SophiaOwen“) zu erhalten:
 
 ```json
 "customerName": "@concat('Sophia', 'Owen')"
@@ -70,23 +62,30 @@ Alternativ können Sie Zeichenfolgenwerte von Parametern abrufen. In diesem Beis
 
 Das Ergebnis wird in beiden Fällen und Beispielen der Eigenschaft `customerName` zugewiesen.
 
-Hier sind die verfügbaren Funktionen nach allgemeinem Zweck sortiert. Unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](#alphabetical-list) können Sie sich die Funktionen in alphabetischer Reihenfolge ansehen.
+Im Folgenden finden Sie einige weitere Hinweise zu Funktionen in Ausdrücken:
+
+* Funktionsparameter werden von links nach rechts ausgewertet.
+
+* In der Syntax für Parameterdefinitionen bedeutet ein Fragezeichen (?), das hinter einem Parameter steht, dass der Parameter optional ist. Sie finden dies beispielsweise in [getFutureTime()](#getFutureTime).
+
+In den folgenden Abschnitten sind die Funktionen nach allgemeinem Zweck sortiert. Alternativ können Sie sich diese Funktionen auch in [alphabetischer Reihenfolge](#alphabetical-list) ansehen.
 
 <a name="ordered-by-purpose"></a>
 <a name="string-functions"></a>
 
 ## <a name="string-functions"></a>Zeichenfolgenfunktionen
 
-Für die Arbeit mit Zeichenfolgen können Sie folgende Zeichenfolgenfunktionen und auch einige [Sammlungsfunktionen](#collection-functions) verwenden.
-Zeichenfolgenfunktionen können nur in Zeichenfolgen verwendet werden.
+Für die Arbeit mit Zeichenfolgen können Sie folgende Zeichenfolgenfunktionen und auch einige [Sammlungsfunktionen](#collection-functions) verwenden. Zeichenfolgenfunktionen können nur in Zeichenfolgen verwendet werden.
 
 | Zeichenfolgenfunktion | Aufgabe |
 | --------------- | ---- |
 | [concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Kombiniert mindestens zwei Zeichenfolgen miteinander und gibt die kombinierte Zeichenfolge zurück. |
 | [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Überprüft, ob eine Zeichenfolge mit der angegebenen Teilzeichenfolge endet. |
+| [formatNumber](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | Gibt eine Zahl als Zeichenfolge zurück, basierend auf dem angegebenen Format. |
 | [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Generiert einen global eindeutigen Bezeichner (Globally Unique Identifier, GUID) als Zeichenfolge. |
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Gibt die Anfangsposition für eine Teilzeichenfolge zurück. |
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Gibt die Anfangsposition des letzten Vorkommens einer Teilzeichenfolge zurück. |
+| [length](../logic-apps/workflow-definition-language-functions-reference.md#length) | Gibt die Anzahl der Elemente in einer Zeichenfolge oder einem Array zurück. |
 | [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Ersetzt eine Teilzeichenfolge durch die angegebene Zeichenfolge und gibt die aktualisierte Zeichenfolge zurück. |
 | [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Gibt ein Array mit Teilzeichenfolgen, die durch Trennzeichen getrennt sind, aus einer größeren Zeichenfolge basierend auf einem angegebenen Trennzeichen in der ursprünglichen Zeichenfolge zurück. |
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Überprüft, ob eine Zeichenfolge mit einer bestimmten Teilzeichenfolge beginnt. |
@@ -121,8 +120,10 @@ Für die Arbeit mit Sammlungen (in der Regel Arrays, Zeichenfolgen und manchmal 
 
 ## <a name="logical-comparison-functions"></a>Logische Vergleichsfunktionen
 
-Sie können für die Arbeit mit Bedingungen, das Vergleichen von Werten und Ausdrucksergebnissen oder das Auswerten verschiedener Logiken folgende logische Vergleichsfunktionen verwenden.
-Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+Sie können für die Arbeit mit Bedingungen, das Vergleichen von Werten und Ausdrucksergebnissen oder das Auswerten verschiedener Logiken folgende logische Vergleichsfunktionen verwenden. Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+> [!NOTE]
+> Wenn Sie logische Funktionen oder Bedingungen zum Vergleichen von Werten verwenden, werden NULL-Werte in leere Zeichenfolgenwerte (`""`) konvertiert. Das Verhalten der Bedingungen unterscheidet sich, wenn Sie eine leere Zeichenfolge anstelle eines NULL-Werts für den Vergleich verwenden. Weitere Informationen finden Sie unter [string](#string). 
 
 | Logische Vergleichsfunktion | Aufgabe |
 | --------------------------- | ---- |
@@ -141,10 +142,10 @@ Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktio
 
 ## <a name="conversion-functions"></a>Konvertierungsfunktionen
 
-Sie können mit den folgenden Konvertierungsfunktionen den Typ oder das Format eines Werts ändern.
-So können Sie beispielsweise einen Wert von einem booleschen Wert in einen ganzzahligen Wert ändern.
-Weitere Informationen darüber, wie Logic Apps Inhaltstypen während des Wechsels behandelt, finden Sie unter [Behandeln von Inhaltstypen](../logic-apps/logic-apps-content-type.md).
-Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+Sie können mit den folgenden Konvertierungsfunktionen den Typ oder das Format eines Werts ändern. So können Sie beispielsweise einen Wert von einem booleschen Wert in einen ganzzahligen Wert ändern. Weitere Informationen darüber, wie Logic Apps Inhaltstypen während des Wechsels behandelt, finden Sie unter [Behandeln von Inhaltstypen](../logic-apps/logic-apps-content-type.md). Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+> [!NOTE]
+> Mit Azure Logic Apps werden Werte automatisch zwischen einigen Datentypen konvertiert, sodass Sie diese Konvertierungen nicht manuell ausführen müssen. Führen Sie diese dennoch aus, tritt möglicherweise ein unerwartetes Anzeigeverhalten auf, das sich nicht auf die eigentlichen Konvertierungen auswirkt, sondern nur auf ihre Anzeige. Weitere Informationen finden Sie unter [Implizite Datentypkonvertierungen](#implicit-data-conversions).
 
 | Konvertierungsfunktion | Aufgabe |
 | ------------------- | ---- |
@@ -160,7 +161,7 @@ Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktio
 | [dataUriToString](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToString) | Gibt die Zeichenfolgenversion für einen Daten-URI zurück. |
 | [decodeBase64](../logic-apps/workflow-definition-language-functions-reference.md#decodeBase64) | Gibt die Zeichenfolgenversion für eine base64-codierte Zeichenfolge zurück. |
 | [decodeDataUri](../logic-apps/workflow-definition-language-functions-reference.md#decodeDataUri) | Gibt die Binärversion für einen Daten-URI zurück. |
-| [decodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Gibt eine Zeichenfolge zurück, die Escapezeichen durch decodierte Versionen ersetzt. |
+| [decodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Gibt eine Zeichenfolge zurück, in der Escapezeichen durch decodierte Versionen ersetzt sind. |
 | [encodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | Gibt eine Zeichenfolge zurück, die URL-unsichere Zeichen durch Escapezeichen ersetzt. |
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Gibt eine Gleitkommazahl für einen Eingabewert zurück. |
 | [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Gibt die Ganzzahlversion für eine Zeichenfolge zurück. |
@@ -171,6 +172,35 @@ Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktio
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Gibt die Zeichenfolgenversion für eine URI-codierte Zeichenfolge zurück. |
 | [xml](../logic-apps/workflow-definition-language-functions-reference.md#xml) | Gibt die XML-Version für eine Zeichenfolge zurück. |
 |||
+
+<a name="implicit-data-conversions"></a>
+
+## <a name="implicit-data-type-conversions"></a>Implizite Datentypkonvertierungen
+
+Mit Azure Logic Apps werden Werte automatisch oder implizit zwischen einigen Datentypen konvertiert, sodass Sie diese Typen nicht manuell konvertieren müssen. Wenn Sie z. B. Werte verwenden, die keine Zeichenfolgen sind, und Zeichenfolgen als Eingaben erwartet werden, konvertiert Logic Apps die Nicht-Zeichenfolgenwerte automatisch in Zeichenfolgen.
+
+Angenommen, ein Auslöser gibt einen numerischen Wert als Ausgabe zurück:
+
+`triggerBody()?['123']`
+
+Wenn Sie diese numerische Ausgabe verwenden und eine Zeichenfolgeneingabe wie z. B. eine URL erwartet wird, konvertiert Logic Apps den Wert mithilfe von geschweiften Klammern (`{}`) automatisch in eine Zeichenfolge:
+
+`@{triggerBody()?['123']}`
+
+### <a name="base64-encoding-and-decoding"></a>Base64-Codierung und -Decodierung
+
+Logic Apps führt automatisch oder implizit eine Base64-Codierung oder -Decodierung durch, daher müssen Sie diese Vorgänge nicht mithilfe der entsprechenden Ausdrücke manuell ausführen:
+
+* `base64(<value>)`
+* `base64ToBinary(<value>)`
+* `base64ToString(<value>)`
+* `base64(decodeDataUri(<value>))`
+* `concat('data:;base64,',<value>)`
+* `concat('data:,',encodeUriComponent(<value>))`
+* `decodeDataUri(<value>)`
+
+> [!NOTE]
+> Wenn Sie Ihrer Logik-App diese Ausdrücke manuell hinzufügen, beispielsweise mit dem Ausdrucks-Editor, vom Logik-App-Designer weg und dann wieder zu diesem zurück navigieren, zeigt der Designer nur die Parameterwerte an. Die Ausdrücke werden nur dann in der Codeansicht beibehalten, wenn Sie die Parameterwerte nicht bearbeiten. Andernfalls entfernt Logic Apps die Ausdrücke aus der Codeansicht und behält nur die Parameterwerte bei. Dieses Verhalten wirkt sich nicht auf die Codierung oder Decodierung aus, sondern nur auf die Anzeige der Ausdrücke.
 
 <a name="math-functions"></a>
 
@@ -258,7 +288,7 @@ Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktio
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Gibt einen einzelnen Wert zurück, der mit einem Schlüsselnamen in Triggerausgaben vom Typ *form-data* oder *form-encoded* übereinstimmt. |
 | [triggerMultipartBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerMultipartBody) | Gibt einen bestimmten Textteil in der mehrteiligen Ausgabe eines Triggers zurück. |
 | [triggerFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | Erstellt ein Array, dessen Werte mit einem Schlüsselnamen in Triggerausgaben vom Typ *form-data* oder *form-encoded* übereinstimmen. |
-| [triggerOutputs](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs) | Gibt eine Triggerausgabe zur Laufzeit oder Werte aus anderen Name/Wert-Paaren im JSON-Format zurück. Siehe [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
+| [triggerOutputs](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs) | Gibt eine Triggerausgabe zur Laufzeit oder Werte aus anderen JSON-Name/Wert-Paaren zurück. Siehe [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [variables](../logic-apps/workflow-definition-language-functions-reference.md#variables) | Gibt den Wert für eine angegebene Variable zurück. |
 | [workflow](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | Gibt sämtliche Details zum Workflow selbst zur Laufzeit zurück. |
 |||
@@ -274,7 +304,7 @@ Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktio
 | -------------------- | ---- |
 | [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | Gibt den Wert `host` für einen Uniform Resource Identifier (URI) zurück. |
 | [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | Gibt den Wert `path` für einen Uniform Resource Identifier (URI) zurück. |
-| [uriPathAndQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriPathAndQuery) | Gibt die Werte `path` und `query` für einen Uniform Resource Identifier (URI) zurück. |
+| [uriPathAndQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriPathAndQuery) | Gibt die den `path`- und den `query`-Wert für einen Uniform Resource Identifier (URI) zurück. |
 | [uriPort](../logic-apps/workflow-definition-language-functions-reference.md#uriPort) | Gibt den Wert `port` für einen Uniform Resource Identifier (URI) zurück. |
 | [uriQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriQuery) | Gibt den Wert `query` für einen Uniform Resource Identifier (URI) zurück. |
 | [uriScheme](../logic-apps/workflow-definition-language-functions-reference.md#uriScheme) | Gibt den Wert `scheme` für einen Uniform Resource Identifier (URI) zurück. |
@@ -323,12 +353,12 @@ action().outputs.body.<property>
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*property*> | Nein | Zeichenfolge | Der Name der Aktionsobjekteigenschaft, deren Wert Sie abrufen möchten: **name**, **startTime**, **endTime**, **inputs**, **outputs**, **status**, **code**, **trackingId** und **clientTrackingId**. Im Azure-Portal finden Sie diese Eigenschaften, indem Sie die Details eines bestimmten Ausführungsverlaufs überprüfen. Weitere Informationen hierzu finden Sie unter [REST-API - Workflowausführungsaktionen](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
+| <*property*> | Nein | String | Der Name der Aktionsobjekteigenschaft, deren Wert Sie abrufen möchten: **name**, **startTime**, **endTime**, **inputs**, **outputs**, **status**, **code**, **trackingId** und **clientTrackingId**. Im Azure-Portal finden Sie diese Eigenschaften, indem Sie die Details eines bestimmten Ausführungsverlaufs überprüfen. Weitere Informationen hierzu finden Sie unter [REST-API - Workflowausführungsaktionen](/rest/api/logic/workflowrunactions/get). |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
-| <*action-output*> | Zeichenfolge | Die Ausgabe von der aktuellen Aktion oder die Eigenschaft |
+| <*action-output*> | String | Die Ausgabe von der aktuellen Aktion oder die Eigenschaft |
 ||||
 
 <a name="actionBody"></a>
@@ -345,12 +375,12 @@ actionBody('<actionName>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ja | Zeichenfolge | Der Name der Aktion, deren `body`-Ausgabe Sie abrufen möchten |
+| <*actionName*> | Ja | String | Der Name der Aktion, deren `body`-Ausgabe Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
-| <*action-body-output*> | Zeichenfolge | Die `body`-Ausgabe von der angegebenen Aktion |
+| <*action-body-output*> | String | Die `body`-Ausgabe von der angegebenen Aktion |
 ||||
 
 *Beispiel*
@@ -390,12 +420,12 @@ actionOutputs('<actionName>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ja | Zeichenfolge | Der Name der Aktion, deren Ausgabe Sie abrufen möchten |
+| <*actionName*> | Ja | String | Der Name der Aktion, deren Ausgabe Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
-| <*output*> | Zeichenfolge | Die Ausgabe von der angegebenen Aktion |
+| <*output*> | String | Die Ausgabe von der angegebenen Aktion |
 ||||
 
 *Beispiel*
@@ -449,6 +479,9 @@ Gibt die Ausgabe einer Aktion zur Laufzeit oder Werte aus anderen JSON-Name/Wert
 Kurzformversionen finden Sie unter [actionBody()](#actionBody), [actionOutputs()](#actionOutputs) und [body()](#body).
 Informationen hinsichtlich der aktuellen Aktion finden Sie unter [action()](#action).
 
+> [!TIP]
+> Die Ausgabe der Funktion `actions()` wird als Zeichenfolge zurückgegeben. Wenn Sie als Rückgabewert ein JSON-Objekt benötigen, müssen Sie den Zeichenfolgenwert erst konvertieren. Der Zeichenfolgenwert kann mithilfe der [Aktion „Parse JSON“](logic-apps-perform-data-operations.md#parse-json-action) in ein JSON-Objekt transformiert werden.
+
 > [!NOTE]
 > Bisher konnten Sie die `actions()`-Funktion oder das `conditions`-Element verwenden, wenn Sie angeben haben, dass eine Aktion auf Basis der Ausgabe einer anderen Aktion ausgeführt wurde. Sie müssen nun aber, um Abhängigkeiten zwischen Aktionen explizit zu deklarieren, die `runAfter`-Eigenschaft der abhängigen Aktion verwenden.
 > Weitere Informationen zur `runAfter`-Eigenschaft finden Sie unter [Abfangen und Behandeln von Fehlern mit der RunAfter-Eigenschaft](../logic-apps/logic-apps-workflow-definition-language.md).
@@ -460,13 +493,13 @@ actions('<actionName>').outputs.body.<property>
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ja | Zeichenfolge | Der Name des Aktionsobjekts, dessen Ausgabe Sie abrufen möchten  |
-| <*property*> | Nein | Zeichenfolge | Der Name der Aktionsobjekteigenschaft, deren Wert Sie abrufen möchten: **name**, **startTime**, **endTime**, **inputs**, **outputs**, **status**, **code**, **trackingId** und **clientTrackingId**. Im Azure-Portal finden Sie diese Eigenschaften, indem Sie die Details eines bestimmten Ausführungsverlaufs überprüfen. Weitere Informationen hierzu finden Sie unter [REST-API - Workflowausführungsaktionen](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
+| <*actionName*> | Ja | String | Der Name des Aktionsobjekts, dessen Ausgabe Sie abrufen möchten  |
+| <*property*> | Nein | String | Der Name der Aktionsobjekteigenschaft, deren Wert Sie abrufen möchten: **name**, **startTime**, **endTime**, **inputs**, **outputs**, **status**, **code**, **trackingId** und **clientTrackingId**. Im Azure-Portal finden Sie diese Eigenschaften, indem Sie die Details eines bestimmten Ausführungsverlaufs überprüfen. Weitere Informationen hierzu finden Sie unter [REST-API - Workflowausführungsaktionen](/rest/api/logic/workflowrunactions/get). |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
-| <*action-output*> | Zeichenfolge | Die Ausgabe von der angegebenen Aktion oder Eigenschaft |
+| <*action-output*> | String | Die Ausgabe von der angegebenen Aktion oder Eigenschaft |
 ||||
 
 *Beispiel*
@@ -521,14 +554,14 @@ addDays('<timestamp>', <days>, '<format>'?)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*days*> | Ja | Integer | Die positive oder negative Anzahl von Tagen, die hinzugefügt werden sollen |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | Zeichenfolge | Der Zeitstempel plus der angegebenen Anzahl von Tagen  |
+| <*updated-timestamp*> | String | Der Zeitstempel plus der angegebenen Anzahl von Tagen  |
 ||||
 
 *Beispiel 1*
@@ -563,14 +596,14 @@ addHours('<timestamp>', <hours>, '<format>'?)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*hours*> | Ja | Integer | Die positive oder negative Anzahl von Stunden, die hinzugefügt werden sollen |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | Zeichenfolge | Der Zeitstempel plus der angegebenen Anzahl von Stunden  |
+| <*updated-timestamp*> | String | Der Zeitstempel plus der angegebenen Anzahl von Stunden  |
 ||||
 
 *Beispiel 1*
@@ -605,14 +638,14 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*minutes*> | Ja | Integer | Die positive oder negative Anzahl von Minuten, die hinzugefügt werden sollen |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | Zeichenfolge | Der Zeitstempel plus der angegebenen Anzahl von Minuten |
+| <*updated-timestamp*> | String | Der Zeitstempel plus der angegebenen Anzahl von Minuten |
 ||||
 
 *Beispiel 1*
@@ -648,7 +681,7 @@ addProperty(<object>, '<property>', <value>)
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Das JSON-Objekt, zu dem Sie eine Eigenschaft hinzufügen möchten |
-| <*property*> | Ja | Zeichenfolge | Der Name der zu Eigenschaft, die hinzugefügt werden soll |
+| <*property*> | Ja | String | Der Name der zu Eigenschaft, die hinzugefügt werden soll |
 | <*value*> | Ja | Any | Der Wert für die Eigenschaft |
 |||||
 
@@ -666,8 +699,8 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Das JSON-Objekt, zu dem Sie eine Eigenschaft hinzufügen möchten |
-| <*parent-property*> | Ja | Zeichenfolge | Der Name der übergeordneten Eigenschaft, der Sie die untergeordnete Eigenschaft hinzufügen möchten |
-| <*child-property*> | Ja | Zeichenfolge | Der Name für die untergeordnete Eigenschaft, die hinzugefügt werden soll |
+| <*parent-property*> | Ja | String | Der Name der übergeordneten Eigenschaft, der Sie die untergeordnete Eigenschaft hinzufügen möchten |
+| <*child-property*> | Ja | String | Der Name für die untergeordnete Eigenschaft, die hinzugefügt werden soll |
 | <*value*> | Ja | Any | Der Wert, auf den die angegebene Eigenschaft festgelegt werden soll |
 |||||
 
@@ -746,14 +779,14 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*seconds*> | Ja | Integer | Die positive oder negative Anzahl von Sekunden, die hinzugefügt werden sollen |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | Zeichenfolge | Der Zeitstempel plus der angegebenen Anzahl von Sekunden  |
+| <*updated-timestamp*> | String | Der Zeitstempel plus der angegebenen Anzahl von Sekunden  |
 ||||
 
 *Beispiel 1*
@@ -789,15 +822,15 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die hinzugefügt werden sollen |
-| <*timeUnit*> | Ja | Zeichenfolge | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | Zeichenfolge | Der Zeitstempel plus der angegebenen Anzahl von Zeiteinheiten  |
+| <*updated-timestamp*> | String | Der Zeitstempel plus der angegebenen Anzahl von Zeiteinheiten  |
 ||||
 
 *Beispiel 1*
@@ -838,7 +871,7 @@ and(<expression1>, <expression2>, ...)
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
-| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn alle Ausdrücke gleich „true“ sind. Gibt „false“ zurück, wenn mindestens ein Ausdruck gleich „false“ ist. |
+| true oder false | Boolean | Gibt „true“ zurück, wenn alle Ausdrücke gleich „true“ sind. Gibt „false“ zurück, wenn mindestens ein Ausdruck gleich „false“ ist. |
 ||||
 
 *Beispiel 1*
@@ -886,7 +919,7 @@ array('<value>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die Zeichenfolge zum Erstellen eines Arrays |
+| <*value*> | Ja | String | Die Zeichenfolge zum Erstellen eines Arrays |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -910,18 +943,21 @@ Dies ist das zurückgegebene Ergebnis: `["hello"]`
 
 Gibt die base64-codierte Version für eine Zeichenfolge zurück.
 
+> [!NOTE]
+> Azure Logic Apps führt automatisch eine Base64-Codierung und -Decodierung durch, daher müssen Sie diese Konvertierungen nicht manuell ausführen. Führen Sie diese dennoch aus, tritt möglicherweise ein unerwartetes Anzeigeverhalten auf, das sich nicht auf die eigentlichen Konvertierungen auswirkt, sondern nur auf ihre Anzeige. Weitere Informationen finden Sie unter [Implizite Datentypkonvertierungen](#implicit-data-conversions).
+
 ```
 base64('<value>')
 ```
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die eingegebene Zeichenfolge |
+| <*value*> | Ja | String | Die eingegebene Zeichenfolge |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*base64-string*> | Zeichenfolge | Die base64-codierte Version für die eingegebene Zeichenfolge |
+| <*base64-string*> | String | Die base64-codierte Version für die eingegebene Zeichenfolge |
 ||||
 
 *Beispiel*
@@ -940,18 +976,21 @@ Dies ist das zurückgegebene Ergebnis: `"aGVsbG8="`
 
 Gibt die Binärversion für eine base64-codierte Zeichenfolge zurück.
 
+> [!NOTE]
+> Azure Logic Apps führt automatisch eine Base64-Codierung und -Decodierung durch, daher müssen Sie diese Konvertierungen nicht manuell ausführen. Führen Sie diese dennoch aus, tritt möglicherweise ein unerwartetes Anzeigeverhalten auf, das sich nicht auf die eigentlichen Konvertierungen auswirkt, sondern nur auf ihre Anzeige. Weitere Informationen finden Sie unter [Implizite Datentypkonvertierungen](#implicit-data-conversions).
+
 ```
 base64ToBinary('<value>')
 ```
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die base64-codierte Zeichenfolge, die konvertiert werden soll |
+| <*value*> | Ja | String | Die base64-codierte Zeichenfolge, die konvertiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*binary-for-base64-string*> | Zeichenfolge | Die Binärversion für die base64-codierte Zeichenfolge |
+| <*binary-for-base64-string*> | String | Die Binärversion für die base64-codierte Zeichenfolge |
 ||||
 
 *Beispiel*
@@ -970,9 +1009,10 @@ Dies ist das zurückgegebene Ergebnis:
 
 ### <a name="base64tostring"></a>base64ToString
 
-Gibt die Zeichenfolgenversion einer base64-codierten Zeichenfolge zurück, d. h., die base64-Zeichenfolge wird decodiert.
-Sie sollten diese Funktion anstelle von [decodeBase64()](#decodeBase64) verwenden.
-Obwohl beide Funktionen in gleicher Weise funktionieren, wird `base64ToString()` bevorzugt.
+Gibt die Zeichenfolgenversion einer base64-codierten Zeichenfolge zurück, d. h., die base64-Zeichenfolge wird decodiert. Verwenden Sie diese Funktion anstelle der veralteten Funktion [decodeBase64()](#decodeBase64).
+
+> [!NOTE]
+> Azure Logic Apps führt automatisch eine Base64-Codierung und -Decodierung durch, daher müssen Sie diese Konvertierungen nicht manuell ausführen. Führen Sie diese dennoch aus, tritt möglicherweise ein unerwartetes Anzeigeverhalten auf, das sich nicht auf die eigentlichen Konvertierungen auswirkt, sondern nur auf ihre Anzeige. Weitere Informationen finden Sie unter [Implizite Datentypkonvertierungen](#implicit-data-conversions).
 
 ```
 base64ToString('<value>')
@@ -980,12 +1020,12 @@ base64ToString('<value>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die base64-codierte Zeichenfolge, die decodiert werden soll |
+| <*value*> | Ja | String | Die base64-codierte Zeichenfolge, die decodiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*decoded-base64-string*> | Zeichenfolge | Die Zeichenfolgenversion für eine base64-codierte Zeichenfolge |
+| <*decoded-base64-string*> | String | Die Zeichenfolgenversion für eine base64-codierte Zeichenfolge |
 ||||
 
 *Beispiel*
@@ -1000,7 +1040,7 @@ Dies ist das zurückgegebene Ergebnis: `"hello"`
 
 <a name="binary"></a>
 
-### <a name="binary"></a>binary
+### <a name="binary"></a>BINARY
 
 Gibt die Binärversion für eine Zeichenfolge zurück.
 
@@ -1010,12 +1050,12 @@ binary('<value>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die Zeichenfolge, die konvertiert werden soll |
+| <*value*> | Ja | String | Die Zeichenfolge, die konvertiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*binary-for-input-value*> | Zeichenfolge | Die Binärversion für die angegebene Zeichenfolge |
+| <*binary-for-input-value*> | String | Die Binärversion für die angegebene Zeichenfolge |
 ||||
 
 *Beispiel*
@@ -1044,12 +1084,12 @@ body('<actionName>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ja | Zeichenfolge | Der Name der Aktion, deren `body`-Ausgabe Sie abrufen möchten |
+| <*actionName*> | Ja | String | Der Name der Aktion, deren `body`-Ausgabe Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
-| <*action-body-output*> | Zeichenfolge | Die `body`-Ausgabe von der angegebenen Aktion |
+| <*action-body-output*> | String | Die `body`-Ausgabe von der angegebenen Aktion |
 ||||
 
 *Beispiel*
@@ -1089,27 +1129,27 @@ bool(<value>)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Any | Der zu konvertierende Wert |
+| <*value*> | Ja | Any | Der Wert, der in einen booleschen Wert konvertiert werden soll. |
 |||||
 
-| Rückgabewert | type | BESCHREIBUNG |
+Wenn Sie `bool()` mit einem Objekt verwenden, muss der Wert des Objekts eine Zeichenfolge oder eine ganze Zahl sein, die in einen booleschen Wert konvertiert werden kann.
+
+| Rückgabewert | type | Beschreibung |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolean | Die booleschen Version des angegebenen Werts |
+| `true` oder `false` | Boolean | Die boolesche Version des angegebenen Werts |
 ||||
 
-*Beispiel*
+*Ausgaben*
 
-In diesen Beispielen werden die angegebenen Werte in boolesche Werte konvertieren:
+In diesen Beispielen werden die verschiedenen unterstützten Eingabetypen für `bool()` gezeigt:
 
-```
-bool(1)
-bool(0)
-```
-
-Dies sind die zurückgegebenen Ergebnisse:
-
-* Erstes Beispiel: `true`
-* Zweites Beispiel: `false`
+| Eingabewert | type | Rückgabewert |
+| ----------- | ---------- | ---------------------- |
+| `bool(1)` | Integer | `true` |
+| `bool(0)` | Integer    | `false` |
+| `bool(-1)` | Integer | `true` |
+| `bool('true')` | String | `true` |
+| `bool('false')` | String | `false` |
 
 <a name="coalesce"></a>
 
@@ -1160,12 +1200,12 @@ concat('<text1>', '<text2>', ...)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text1*>, <*text2*>, ... | Ja | Zeichenfolge | Mindestens zwei Zeichenfolgen, die kombiniert werden sollen |
+| <*text1*>, <*text2*>, ... | Ja | String | Mindestens zwei Zeichenfolgen, die kombiniert werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*text1text2...* > | Zeichenfolge | Die Zeichenfolge, die aus den kombinierten Eingabezeichenfolgen erstellt wurde |
+| <*text1text2...* > | String | Die Zeichenfolge, die aus den kombinierten Eingabezeichenfolgen erstellt wurde |
 ||||
 
 *Beispiel*
@@ -1205,7 +1245,7 @@ Diese Funktion ist insbesondere für diese Sammlungstypen vorgesehen:
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolean | Gibt „true“, wenn das Element gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
+| true oder false | Boolean | Gibt „true“, wenn das Element gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
 ||||
 
 *Beispiel 1*
@@ -1236,14 +1276,14 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*destinationTimeZone*> | Ja | Zeichenfolge | Der Name für die Zielzeitzone. Weitere Informationen zu Zeitzonennamen finden Sie unter [Microsoft-Zeitzonenindex-Werte](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*destinationTimeZone*> | Ja | String | Der Name für die Zielzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*converted-timestamp*> | Zeichenfolge | Der in das Format der Zielzeitzone konvertierte Zeitstempel |
+| <*converted-timestamp*> | String | Der in das Format der Zielzeitzone konvertierte Zeitstempel |
 ||||
 
 *Beispiel 1*
@@ -1278,15 +1318,15 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*sourceTimeZone*> | Ja | Zeichenfolge | Der Name für die Quellzeitzone. Weitere Informationen zu Zeitzonennamen finden Sie unter [Microsoft-Zeitzonenindex-Werte](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
-| <*destinationTimeZone*> | Ja | Zeichenfolge | Der Name für die Zielzeitzone. Weitere Informationen zu Zeitzonennamen finden Sie unter [Microsoft-Zeitzonenindex-Werte](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*sourceTimeZone*> | Ja | String | Der Name für die Quellzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
+| <*destinationTimeZone*> | Ja | String | Der Name für die Zielzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*converted-timestamp*> | Zeichenfolge | Der in das Format der Zielzeitzone konvertierte Zeitstempel |
+| <*converted-timestamp*> | String | Der in das Format der Zielzeitzone konvertierte Zeitstempel |
 ||||
 
 *Beispiel 1*
@@ -1321,14 +1361,14 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*sourceTimeZone*> | Ja | Zeichenfolge | Der Name für die Quellzeitzone. Weitere Informationen zu Zeitzonennamen finden Sie unter [Microsoft-Zeitzonenindex-Werte](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*sourceTimeZone*> | Ja | String | Der Name für die Quellzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*converted-timestamp*> | Zeichenfolge | Der Zeitstempel, der in UTC konvertiert wurde |
+| <*converted-timestamp*> | String | Der Zeitstempel, der in UTC konvertiert wurde |
 ||||
 
 *Beispiel 1*
@@ -1394,12 +1434,12 @@ dataUri('<value>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die Zeichenfolge, die konvertiert werden soll |
+| <*value*> | Ja | String | Die Zeichenfolge, die konvertiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*data-uri*> | Zeichenfolge | Der Daten-URI für die Eingabezeichenfolge |
+| <*data-uri*> | String | Der Daten-URI für die Eingabezeichenfolge |
 ||||
 
 *Beispiel*
@@ -1426,12 +1466,12 @@ dataUriToBinary('<value>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Der Daten-URI, der konvertiert werden soll |
+| <*value*> | Ja | String | Der Daten-URI, der konvertiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*binary-for-data-uri*> | Zeichenfolge | Die binäre Version für den Daten-URI |
+| <*binary-for-data-uri*> | String | Die binäre Version für den Daten-URI |
 ||||
 
 *Beispiel*
@@ -1461,12 +1501,12 @@ dataUriToString('<value>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Der Daten-URI, der konvertiert werden soll |
+| <*value*> | Ja | String | Der Daten-URI, der konvertiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*string-for-data-uri*> | Zeichenfolge | Die Zeichenfolgenversion des Daten-URIs |
+| <*string-for-data-uri*> | String | Die Zeichenfolgenversion des Daten-URIs |
 ||||
 
 *Beispiel*
@@ -1491,7 +1531,7 @@ dayOfMonth('<timestamp>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1521,7 +1561,7 @@ dayOfWeek('<timestamp>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1537,7 +1577,7 @@ In diesem Beispiel wird die Zahl für den Wochentag aus diesem Zeitstempel zurü
 dayOfWeek('2018-03-15T13:27:36Z')
 ```
 
-Dies ist das zurückgegebene Ergebnis: `3`
+Dies ist das zurückgegebene Ergebnis: `4`
 
 <a name="dayOfYear"></a>
 
@@ -1551,7 +1591,7 @@ dayOfYear('<timestamp>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1571,43 +1611,18 @@ Dies ist das zurückgegebene Ergebnis: `74`
 
 <a name="decodeBase64"></a>
 
-### <a name="decodebase64"></a>decodeBase64
+### <a name="decodebase64-deprecated"></a>decodeBase64 (deprecated)
 
-Gibt die Zeichenfolgenversion einer base64-codierten Zeichenfolge zurück, d. h., die base64-Zeichenfolge wird decodiert.
-Sie sollten [base64ToString()](#base64ToString) anstelle von `decodeBase64()` verwenden.
-Obwohl beide Funktionen in gleicher Weise funktionieren, wird `base64ToString()` bevorzugt.
-
-```
-decodeBase64('<value>')
-```
-
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
-| --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die base64-codierte Zeichenfolge, die decodiert werden soll |
-|||||
-
-| Rückgabewert | type | BESCHREIBUNG |
-| ------------ | ---- | ----------- |
-| <*decoded-base64-string*> | Zeichenfolge | Die Zeichenfolgenversion für eine base64-codierte Zeichenfolge |
-||||
-
-*Beispiel*
-
-In diesem Beispiel wird eine Zeichenfolge für eine base64-codierte Zeichenfolge erstellt:
-
-```
-decodeBase64('aGVsbG8=')
-```
-
-Dies ist das zurückgegebene Ergebnis: `"hello"`
+Diese Funktion ist veraltet. Verwenden Sie daher stattdessen [base64ToString()](#base64ToString).
 
 <a name="decodeDataUri"></a>
 
 ### <a name="decodedatauri"></a>decodeDataUri
 
-Gibt die binäre Version eines Daten-URIs (Uniform Resource Identifier) zurück.
-Sie sollten [dataUriToBinary()](#dataUriToBinary) anstelle von `decodeDataUri()` verwenden.
-Obwohl beide Funktionen in gleicher Weise funktionieren, wird `dataUriToBinary()` bevorzugt.
+Gibt die binäre Version eines Daten-URIs (Uniform Resource Identifier) zurück. Sie sollten [dataUriToBinary()](#dataUriToBinary) anstelle von `decodeDataUri()` verwenden. Obwohl beide Funktionen in gleicher Weise funktionieren, wird `dataUriToBinary()` bevorzugt.
+
+> [!NOTE]
+> Azure Logic Apps führt automatisch eine Base64-Codierung und -Decodierung durch, daher müssen Sie diese Konvertierungen nicht manuell ausführen. Führen Sie diese dennoch aus, tritt möglicherweise ein unerwartetes Anzeigeverhalten auf, das sich nicht auf die eigentlichen Konvertierungen auswirkt, sondern nur auf ihre Anzeige. Weitere Informationen finden Sie unter [Implizite Datentypkonvertierungen](#implicit-data-conversions).
 
 ```
 decodeDataUri('<value>')
@@ -1615,12 +1630,12 @@ decodeDataUri('<value>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die Daten-URI-Zeichenfolge, die decodiert werden soll |
+| <*value*> | Ja | String | Die Daten-URI-Zeichenfolge, die decodiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*binary-for-data-uri*> | Zeichenfolge | Die Binärversion für eine Daten-URI-Zeichenfolge |
+| <*binary-for-data-uri*> | String | Die Binärversion für eine Daten-URI-Zeichenfolge |
 ||||
 
 *Beispiel*
@@ -1650,12 +1665,12 @@ decodeUriComponent('<value>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die Zeichenfolge mit den Escapezeichen, die decodiert werden sollen |
+| <*value*> | Ja | String | Die Zeichenfolge mit den Escapezeichen, die decodiert werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*decoded-uri*> | Zeichenfolge | Die aktualisierte Zeichenfolge mit den decodierten Escapezeichen |
+| <*decoded-uri*> | String | Die aktualisierte Zeichenfolge mit den decodierten Escapezeichen |
 ||||
 
 *Beispiel*
@@ -1663,7 +1678,7 @@ decodeUriComponent('<value>')
 In diesem Beispiel werden die Escapezeichen in dieser Zeichenfolge durch decodierte-Versionen ersetzt:
 
 ```
-decodeUriComponent('http%3A%2F%2Fcontoso.com')
+decodeUriComponent('https%3A%2F%2Fcontoso.com')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `"https://contoso.com"`
@@ -1672,8 +1687,7 @@ Dies ist das zurückgegebene Ergebnis: `"https://contoso.com"`
 
 ### <a name="div"></a>div
 
-Gibt das ganzzahlige Ergebnis der Division zweier Zahlen zurück.
-Informationen zum Abrufen des Restwerts finden Sie unter [mod()](#mod).
+Gibt das Ergebnis der Division zweier Zahlen zurück. Informationen zum Abrufen des Restwerts finden Sie unter [mod()](#mod).
 
 ```
 div(<dividend>, <divisor>)
@@ -1687,27 +1701,35 @@ div(<dividend>, <divisor>)
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*quotient-result*> | Integer | Das ganzzahlige Ergebnis aus der Division der ersten Zahl durch die zweite Zahl |
+| <*quotient-result*> | Integer oder Float | Das Ergebnis aus der Division der ersten Zahl durch die zweite Zahl. Wenn der Dividend oder der Divisor den Typ Float aufweist, weist auch das Ergebnis den Typ Float auf. <p><p>**Hinweis**: Um das Float-Ergebnis in einen Integer zu konvertieren, können Sie [eine Azure-Funktion in Ihrer Logik-App erstellen und aufrufen](../logic-apps/logic-apps-azure-functions.md). |
 ||||
 
-*Beispiel*
+*Beispiel 1*
 
-In beiden Beispielen wird die erste Zahl durch die zweite Zahl dividiert:
+Beide Beispiele geben diesen Wert mit dem Typ Integer zurück: `2`
 
 ```
-div(10, 5)
-div(11, 5)
+div(10,5)
+div(11,5)
 ```
 
-Dies ist das zurückgegebene Ergebnis: `2`
+*Beispiel 2*
+
+Beide Beispiele geben diesen Wert mit dem Typ Float zurück: `2.2`
+
+```
+div(11,5.0)
+div(11.0,5)
+```
 
 <a name="encodeUriComponent"></a>
 
 ### <a name="encodeuricomponent"></a>encodeUriComponent
 
-Gibt eine URI-codierte (Uniform Resource Identifier) Version für eine Zeichenfolge zurück, indem URL-unsichere Zeichen durch Escapezeichen ersetzt werden.
-Sie sollten [uriComponent()](#uriComponent) anstelle von `encodeUriComponent()` verwenden.
-Obwohl beide Funktionen in gleicher Weise funktionieren, wird `uriComponent()` bevorzugt.
+Gibt eine URI-codierte (Uniform Resource Identifier) Version für eine Zeichenfolge zurück, indem URL-unsichere Zeichen durch Escapezeichen ersetzt werden. Sie sollten [uriComponent()](#uriComponent) anstelle von `encodeUriComponent()` verwenden. Obwohl beide Funktionen in gleicher Weise funktionieren, wird `uriComponent()` bevorzugt.
+
+> [!NOTE]
+> Azure Logic Apps führt automatisch eine Base64-Codierung und -Decodierung durch, daher müssen Sie diese Konvertierungen nicht manuell ausführen. Führen Sie diese dennoch aus, tritt möglicherweise ein unerwartetes Anzeigeverhalten auf, das sich nicht auf die eigentlichen Konvertierungen auswirkt, sondern nur auf ihre Anzeige. Weitere Informationen finden Sie unter [Implizite Datentypkonvertierungen](#implicit-data-conversions).
 
 ```
 encodeUriComponent('<value>')
@@ -1715,12 +1737,12 @@ encodeUriComponent('<value>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die Zeichenfolge, die in das URI-codierte Format konvertiert werden soll |
+| <*value*> | Ja | String | Die Zeichenfolge, die in das URI-codierte Format konvertiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*encoded-uri*> | Zeichenfolge | Die URI-codierte Zeichenfolge mit Escapezeichen |
+| <*encoded-uri*> | String | Die URI-codierte Zeichenfolge mit Escapezeichen |
 ||||
 
 *Beispiel*
@@ -1731,7 +1753,7 @@ In diesem Beispiel wird eine URI-codierte Version für diese Zeichenfolge erstel
 encodeUriComponent('https://contoso.com')
 ```
 
-Dies ist das zurückgegebene Ergebnis: `"http%3A%2F%2Fcontoso.com"`
+Dies ist das zurückgegebene Ergebnis: `"https%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
@@ -1752,7 +1774,7 @@ empty([<collection>])
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn die Sammlung leer ist. Gibt „false“ zurück, wenn sie nicht leer ist. |
+| true oder false | Boolean | Gibt „true“ zurück, wenn die Sammlung leer ist. Gibt „false“ zurück, wenn sie nicht leer ist. |
 ||||
 
 *Beispiel*
@@ -1783,13 +1805,13 @@ endsWith('<text>', '<searchText>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | Ja | Zeichenfolge | Die Zeichenfolge, die überprüft werden soll |
-| <*searchText*> | Ja | Zeichenfolge | Die beendende Teilzeichenfolge, nach der gesucht werden soll |
+| <*text*> | Ja | String | Die Zeichenfolge, die überprüft werden soll |
+| <*searchText*> | Ja | String | Die beendende Teilzeichenfolge, nach der gesucht werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false"  | Boolean | Gibt „true“ zurück, wenn die beendende Teilzeichenfolge gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
+| true oder false  | Boolean | Gibt „true“ zurück, wenn die beendende Teilzeichenfolge gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
 ||||
 
 *Beispiel 1*
@@ -1830,7 +1852,7 @@ equals('<object1>', '<object2>')
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn beide gleichwertig sind. Gibt „false“ zurück, wenn sie nicht gleichwertig sind. |
+| true oder false | Boolean | Gibt „true“ zurück, wenn beide gleichwertig sind. Gibt „false“ zurück, wenn sie nicht gleichwertig sind. |
 ||||
 
 *Beispiel*
@@ -1895,7 +1917,7 @@ float('<value>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die Zeichenfolge, die die gültige Gleitkommazahl angibt, die konvertiert werden soll |
+| <*value*> | Ja | String | Die Zeichenfolge, die die gültige Gleitkommazahl angibt, die konvertiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1925,13 +1947,13 @@ formatDateTime('<timestamp>', '<format>'?)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*reformatted-timestamp*> | Zeichenfolge | Der aktualisierte Zeitstempel im angegebenen Format |
+| <*reformatted-timestamp*> | String | Der aktualisierte Zeitstempel im angegebenen Format |
 ||||
 
 *Beispiel*
@@ -1956,8 +1978,8 @@ formDataMultiValues('<actionName>', '<key>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ja | Zeichenfolge | Die Aktion, deren Ausgabe den Schlüsselwert (key-Wert) hat, den Sie abrufen möchten |
-| <*key*> | Ja | Zeichenfolge | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
+| <*actionName*> | Ja | String | Die Aktion, deren Ausgabe den Schlüsselwert (key-Wert) hat, den Sie abrufen möchten |
+| <*key*> | Ja | String | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1988,13 +2010,13 @@ formDataValue('<actionName>', '<key>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ja | Zeichenfolge | Die Aktion, deren Ausgabe den Schlüsselwert (key-Wert) hat, den Sie abrufen möchten |
-| <*key*> | Ja | Zeichenfolge | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
+| <*actionName*> | Ja | String | Die Aktion, deren Ausgabe den Schlüsselwert (key-Wert) hat, den Sie abrufen möchten |
+| <*key*> | Ja | String | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*key-value*> | Zeichenfolge | Der Wert in dem angegebenen Schlüssel  |
+| <*key-value*> | String | Der Wert in dem angegebenen Schlüssel  |
 ||||
 
 *Beispiel*
@@ -2006,6 +2028,60 @@ formDataValue('Send_an_email', 'Subject')
 ```
 
 Der Betrefftext (Subject) wird als Zeichenfolge zurückgegeben, zum Beispiel: `"Hello world"`
+
+<a name="formatNumber"></a>
+
+### <a name="formatnumber"></a>formatNumber
+
+Gibt eine Zahl als Zeichenfolge zurück, die auf dem angegebenen Format basiert.
+
+```text
+formatNumber(<number>, <format>, <locale>?)
+```
+
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| --------- | -------- | ---- | ----------- |
+| <*number*> | Ja | Integer oder Double | Der Wert, den Sie formatieren möchten. |
+| <*format*> | Ja | String | Eine kombinierten Formatzeichenfolge, die das Format angibt, das Sie verwenden möchten. Informationen zu den unterstützten Formatzeichenfolgen für Zahlen finden Sie unter [Standardformatzeichenfolgen für Zahlen](/dotnet/standard/base-types/standard-numeric-format-strings), die von `number.ToString(<format>, <locale>)` unterstützt werden. |
+| <*locale*> | Nein | String | Das zu verwendende Gebietsschema gemäß der Unterstützung durch `number.ToString(<format>, <locale>)`. Wenn Sie hier nichts angeben, lautet der Standardwert `en-us`. |
+|||||
+
+| Rückgabewert | type | BESCHREIBUNG |
+| ------------ | ---- | ----------- |
+| <*formatted-number*> | String | Die angegebene Zahl als Zeichenfolge in dem von Ihnen angegebenen Format. Sie können diesen Rückgabewert in einen `int`- oder `float`-Wert umwandeln. |
+||||
+
+*Beispiel 1*
+
+Angenommen, Sie möchten die Zahl `1234567890` formatieren. In diesem Beispiel wird diese Zahl als Zeichenfolge „1,234,567,890.00“ formatiert.
+
+```
+formatNumber(1234567890, '0,0.00', 'en-us')
+```
+
+*Beispiel 2:
+
+Angenommen, Sie möchten die Zahl `1234567890` formatieren. In diesem Beispiel wird diese Zahl als Zeichenfolge „1.234.567.890,00“ formatiert.
+
+```
+formatNumber(1234567890, '0,0.00', 'is-is')
+```
+
+*Beispiel 3*
+
+Angenommen, Sie möchten die Zahl `17.35` formatieren. In diesem Beispiel wird diese Zahl als Zeichenfolge „$17.35“ formatiert.
+
+```
+formatNumber(17.35, 'C2')
+```
+
+*Beispiel 4*
+
+Angenommen, Sie möchten die Zahl `17.35` formatieren. In diesem Beispiel wird diese Zahl als Zeichenfolge „17,35 kr“ formatiert.
+
+```
+formatNumber(17.35, 'C2', 'is-is')
+```
 
 <a name="getFutureTime"></a>
 
@@ -2019,14 +2095,14 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die subtrahiert werden sollen |
-| <*timeUnit*> | Ja | Zeichenfolge | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die hinzugefügt werden sollen |
+| <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | Zeichenfolge | Der aktuelle Zeitstempel plus der angegebenen Anzahl von Zeiteinheiten |
+| <*updated-timestamp*> | String | Der aktuelle Zeitstempel plus der angegebenen Anzahl von Zeiteinheiten |
 ||||
 
 *Beispiel 1*
@@ -2064,13 +2140,13 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die subtrahiert werden sollen |
-| <*timeUnit*> | Ja | Zeichenfolge | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | Zeichenfolge | Der aktuelle Zeitstempel abzüglich der angegebenen Anzahl von Zeiteinheiten |
+| <*updated-timestamp*> | String | Der aktuelle Zeitstempel abzüglich der angegebenen Anzahl von Zeiteinheiten |
 ||||
 
 *Beispiel 1*
@@ -2115,7 +2191,7 @@ greater('<value>', '<compareTo>')
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn der erste Wert größer ist als der zweite Wert. Gibt „false“ zurück, wenn der erste Wert kleiner gleich dem zweiten Wert ist. |
+| true oder false | Boolean | Gibt „true“ zurück, wenn der erste Wert größer ist als der zweite Wert. Gibt „false“ zurück, wenn der erste Wert kleiner gleich dem zweiten Wert ist. |
 ||||
 
 *Beispiel*
@@ -2152,7 +2228,7 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn der erste Wert größer gleich dem zweiten Wert ist. Gibt „false“ zurück, wenn der erste Wert kleiner ist als der zweite Wert. |
+| true oder false | Boolean | Gibt „true“ zurück, wenn der erste Wert größer gleich dem zweiten Wert ist. Gibt „false“ zurück, wenn der erste Wert kleiner ist als der zweite Wert. |
 ||||
 
 *Beispiel*
@@ -2171,7 +2247,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="guid"></a>
 
-### <a name="guid"></a>GUID
+### <a name="guid"></a>guid
 
 Generiert einen global eindeutigen Bezeichner (Globally Unique Identifier, GUID) als Zeichenfolge, z. B. „c2ecc88d-88c8-4096-912c-d6f2e2b138ce“:
 
@@ -2187,12 +2263,12 @@ guid('<format>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | Nein | Zeichenfolge | Ein einzelner [Formatbezeichner](https://msdn.microsoft.com/library/97af8hh4) für den zurückgegebenen GUID. Das Standardformat ist „D“, Sie können  aber „N“, „D“, „B“, „P“ oder „X“ verwenden. |
+| <*format*> | Nein | String | Ein einzelner [Formatbezeichner](/dotnet/api/system.guid.tostring?view=netcore-3.1#system_guid_tostring_system_string_) für den zurückgegebenen GUID. Das Standardformat ist „D“, Sie können  aber „N“, „D“, „B“, „P“ oder „X“ verwenden. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*GUID-value*> | Zeichenfolge | Ein zufällig generierter GUID |
+| <*GUID-value*> | String | Ein zufällig generierter GUID |
 ||||
 
 *Beispiel*
@@ -2209,8 +2285,7 @@ Dies ist das zurückgegebene Ergebnis: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"
 
 ### <a name="if"></a>if
 
-Überprüft, ob ein Ausdruck gleich „true“ oder „false“ ist.
-Gibt abhängig vom Ergebnis einen angegebenen Wert zurück.
+Überprüft, ob ein Ausdruck gleich „true“ oder „false“ ist. Gibt abhängig vom Ergebnis einen angegebenen Wert zurück. Parameter werden von links nach rechts ausgewertet.
 
 ```
 if(<expression>, <valueIfTrue>, <valueIfFalse>)
@@ -2250,8 +2325,8 @@ indexOf('<text>', '<searchText>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | Ja | Zeichenfolge | Die Zeichenfolge, die die Teilzeichenfolge enthält, nach der gesucht werden soll |
-| <*searchText*> | Ja | Zeichenfolge | Die Teilzeichenfolge, nach der gesucht werden soll |
+| <*text*> | Ja | String | Die Zeichenfolge, die die Teilzeichenfolge enthält, nach der gesucht werden soll |
+| <*searchText*> | Ja | String | Die Teilzeichenfolge, nach der gesucht werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2271,7 +2346,7 @@ Dies ist das zurückgegebene Ergebnis: `6`
 
 <a name="int"></a>
 
-### <a name="int"></a>int
+### <a name="int"></a>INT
 
 Gibt die Ganzzahlversion für eine Zeichenfolge zurück.
 
@@ -2281,7 +2356,7 @@ int('<value>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die Zeichenfolge, die konvertiert werden soll |
+| <*value*> | Ja | String | Die Zeichenfolge, die konvertiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2336,7 +2411,7 @@ items('<loopName>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*loopName*> | Ja | Zeichenfolge | Der Name der for-each-Schleife |
+| <*loopName*> | Ja | String | Der Name der for-each-Schleife |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2364,7 +2439,7 @@ iterationIndexes('<loopName>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG | 
 | --------- | -------- | ---- | ----------- | 
-| <*loopName*> | Ja | Zeichenfolge | Name der „Until“-Schleife | 
+| <*loopName*> | Ja | String | Name der „Until“-Schleife | 
 ||||| 
 
 | Rückgabewert | type | BESCHREIBUNG | 
@@ -2374,9 +2449,11 @@ iterationIndexes('<loopName>')
 
 *Beispiel* 
 
-In diesem Beispiel wird eine Zählervariable erstellt, die dann bei jeder Iteration einer „Until“-Schleife um den Wert 1 inkrementiert wird, bis der Zählerwert 5 erreicht ist. Außerdem wird im Beispiel eine Variable erstellt, mit der der aktuelle Index für jede Iteration nachverfolgt wird. In der „Until“-Schleife wird der Zähler bei jeder Iteration inkrementiert, und dann wird der Zählerwert dem aktuellen Indexwert zugewiesen. Anschließend wird der Zähler inkrementiert. Sie können den aktuellen Iterationswert jederzeit ermitteln, indem Sie den aktuellen Indexwert abrufen.
+In diesem Beispiel wird eine Zählervariable erstellt, die dann bei jeder Iteration einer „Until“-Schleife um den Wert 1 inkrementiert wird, bis der Zählerwert 5 erreicht ist. Außerdem wird im Beispiel eine Variable erstellt, mit der der aktuelle Index für jede Iteration nachverfolgt wird. In der „Until“-Schleife wird der Zähler bei jeder Iteration inkrementiert, und dann wird der Zählerwert dem aktuellen Indexwert zugewiesen. Anschließend wird der Zähler inkrementiert. Innerhalb der Schliefe verweist dieses Beispiel mithilfe der Funktion `iterationIndexes` auf den aktuellen Iterationsindex:
 
-```
+`iterationIndexes('Until_Max_Increment')`
+
+```json
 {
    "actions": {
       "Create_counter_variable": {
@@ -2407,7 +2484,7 @@ In diesem Beispiel wird eine Zählervariable erstellt, die dann bei jeder Iterat
             "Create_counter_variable": [ "Succeeded" ]
          }
       },
-      "Until": {
+      "Until_Max_Increment": {
          "type": "Until",
          "actions": {
             "Assign_current_index_to_counter": {
@@ -2420,6 +2497,15 @@ In diesem Beispiel wird eine Zählervariable erstellt, die dann bei jeder Iterat
                   "Increment_variable": [ "Succeeded" ]
                }
             },
+            "Compose": {
+               "inputs": "'Current index: ' @{iterationIndexes('Until_Max_Increment')}",
+               "runAfter": {
+                  "Assign_current_index_to_counter": [
+                     "Succeeded"
+                    ]
+                },
+                "type": "Compose"
+            },           
             "Increment_variable": {
                "type": "IncrementVariable",
                "inputs": {
@@ -2429,7 +2515,7 @@ In diesem Beispiel wird eine Zählervariable erstellt, die dann bei jeder Iterat
                "runAfter": {}
             }
          },
-         "expression": "@equals(variables('myCounter'), 5),
+         "expression": "@equals(variables('myCounter'), 5)",
          "limit": {
             "count": 60,
             "timeout": "PT1H"
@@ -2557,12 +2643,12 @@ join([<collection>], '<delimiter>')
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Array | Das Array, das die Elemente enthält, die verknüpft werden sollen |
-| <*delimiter*> | Ja | Zeichenfolge | Das Trennzeichen, das zwischen den einzelnen Elementen in der Ergebniszeichenfolge steht. |
+| <*delimiter*> | Ja | String | Das Trennzeichen, das zwischen den einzelnen Elementen in der Ergebniszeichenfolge steht. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*char1*><*delimiter*><*char2*><*delimiter*>... | Zeichenfolge | Die resultierende Zeichenfolge, die aus allen Elementen im angegebenen Array erstellt wurde |
+| <*char1*><*delimiter*><*char2*><*delimiter*>... | String | Die resultierende Zeichenfolge, die aus allen Elementen im angegebenen Array erstellt wurde |
 ||||
 
 *Beispiel*
@@ -2614,33 +2700,44 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 ### <a name="lastindexof"></a>lastIndexOf
 
-Gibt die Anfangsposition oder den Indexwert des letzten Vorkommens einer Teilzeichenfolge zurück.
-Für diese Funktion wird die Groß-/Kleinschreibung nicht beachtet, und Indizes beginnen mit der Zahl 0.
+Gibt die Anfangsposition oder den Indexwert des letzten Vorkommens einer Teilzeichenfolge zurück. Für diese Funktion wird die Groß-/Kleinschreibung nicht beachtet, und Indizes beginnen mit der Zahl 0.
 
-```
+```json
 lastIndexOf('<text>', '<searchText>')
 ```
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | Ja | Zeichenfolge | Die Zeichenfolge, die die Teilzeichenfolge enthält, nach der gesucht werden soll |
-| <*searchText*> | Ja | Zeichenfolge | Die Teilzeichenfolge, nach der gesucht werden soll |
-|||||
+| <*text*> | Ja | String | Die Zeichenfolge, die die Teilzeichenfolge enthält, nach der gesucht werden soll |
+| <*searchText*> | Ja | String | Die Teilzeichenfolge, nach der gesucht werden soll |
+|||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*ending-index-value*> | Integer | Die Anfangsposition oder der Indexwert des letzten Vorkommens der angegebenen Teilzeichenfolge. <p>Wird die Zeichenfolge nicht gefunden, wird „-1“ zurückgegeben. |
-||||
+| <*ending-index-value*> | Integer | Die Anfangsposition oder der Indexwert des letzten Vorkommens der angegebenen Teilzeichenfolge. |
+|||
 
-*Beispiel*
+Wenn der Zeichenfolgen- oder Teilzeichenfolgenwert leer ist, tritt das folgende Verhalten auf:
 
-In diesem Beispiel wird für die Teilzeichenfolge „world“ nach dem Anfangsindexwert des letzten Vorkommens gesucht, den sie in der Zeichenfolge „hello world“ hat:
+* Wenn nur der Zeichenfolgenwert leer ist, gibt die Funktion `-1` zurück.
 
+* Wenn Zeichenfolgen- und Teilzeichenfolgenwerte leer sind, wird `0` zurückgegeben.
+
+* Wenn nur der Zeichenfolgenwert leer ist, gibt die Funktion die Zeichenfolgenlänge minus 1 zurück.
+
+*Beispiele*
+
+In diesem Beispiel wird für die Teilzeichenfolge `world` nach dem Anfangsindexwert des letzten Vorkommens gesucht, den sie in der Zeichenfolge `hello world hello world` hat. Als Ergebnis wird `18` zurückgegeben:
+
+```json
+lastIndexOf('hello world hello world', 'world')
 ```
-lastIndexOf('hello world', 'world')
-```
 
-Dies ist das zurückgegebene Ergebnis: `6`
+In diesem Beispiel fehlt der Teilzeichenfolgenparameter, und der Wert `22` wird zurückgegeben, da der Wert der Eingabezeichenfolge (`23`) minus 1 größer als 0 (null) ist.
+
+```json
+lastIndexOf('hello world hello world', '')
+```
 
 <a name="length"></a>
 
@@ -2653,7 +2750,7 @@ length('<collection>')
 length([<collection>])
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Zeichenfolge oder Array | Die Sammlung mit den Elementen, die gezählt werden sollen |
 |||||
@@ -2686,7 +2783,7 @@ less(<value>, <compareTo>)
 less('<value>', '<compareTo>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | Integer, Float oder Zeichenfolge | Der Wert (erster Wert), für den überprüft werden soll, ob er kleiner ist als der zweite Wert |
 | <*compareTo*> | Ja | Integer, Float bzw. Zeichenfolge | Das Vergleichselement |
@@ -2694,7 +2791,7 @@ less('<value>', '<compareTo>')
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn der erste Wert kleiner ist als der zweite Wert. Gibt „false“ zurück, wenn der erste Wert größer gleich dem zweiten Wert ist. |
+| true oder false | Boolean | Gibt „true“ zurück, wenn der erste Wert kleiner ist als der zweite Wert. Gibt „false“ zurück, wenn der erste Wert größer gleich dem zweiten Wert ist. |
 ||||
 
 *Beispiel*
@@ -2723,7 +2820,7 @@ lessOrEquals(<value>, <compareTo>)
 lessOrEquals('<value>', '<compareTo>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | Integer, Float oder Zeichenfolge | Der Wert (erster Wert), für den überprüft werden soll, ob er kleiner gleich dem zweiten Wert ist. |
 | <*compareTo*> | Ja | Integer, Float bzw. Zeichenfolge | Das Vergleichselement |
@@ -2731,7 +2828,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false"  | Boolean | Gibt „true“ zurück, wenn der erste Wert kleiner gleich dem zweiten Wert ist. Gibt „false“ zurück, wenn der erste Wert größer ist als der zweite Wert. |
+| true oder false  | Boolean | Gibt „true“ zurück, wenn der erste Wert kleiner gleich dem zweiten Wert ist. Gibt „false“ zurück, wenn der erste Wert größer ist als der zweite Wert. |
 ||||
 
 *Beispiel*
@@ -2761,7 +2858,7 @@ listCallbackUrl()
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*callback-URL*> | Zeichenfolge | Die Rückruf-URL für einen Trigger oder eine Aktion |
+| <*callback-URL*> | String | Die Rückruf-URL für einen Trigger oder eine Aktion |
 ||||
 
 *Beispiel*
@@ -2781,7 +2878,7 @@ max(<number1>, <number2>, ...)
 max([<number1>, <number2>, ...])
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*number1*>, <*number2*>, ... | Ja | Integer, Float oder beide | Die Menge der Zahlen, aus denen Sie den größten Wert abrufen möchten |
 | [<*number1*>, <*number2*>, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den größten Wert abrufen möchten |
@@ -2814,7 +2911,7 @@ min(<number1>, <number2>, ...)
 min([<number1>, <number2>, ...])
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*number1*>, <*number2*>, ... | Ja | Integer, Float oder beide | Die Menge der Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
 | [<*number1*>, <*number2*>, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
@@ -2847,7 +2944,7 @@ Informationen zum Abrufen des Ganzzahlergebnisses finden Sie unter [div()](#div)
 mod(<dividend>, <divisor>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*dividend*> | Ja | Integer oder Float | Die Zahl, die durch den *Divisor* dividiert werden soll. |
 | <*divisor*> | Ja | Integer oder Float | Die Zahl, durch die der *Dividend* geteilt wird; darf nicht 0 sein |
@@ -2878,7 +2975,7 @@ Gibt das Produkt aus der Multiplikation zweier Zahlen zurück.
 mul(<multiplicand1>, <multiplicand2>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*multiplicand1*> | Ja | Integer oder Float | Die Zahl, mit der *multiplicand2* multipliziert werden soll. |
 | <*multiplicand2*> | Ja | Integer oder Float | Die Zahl, mit der *multiplicand1* multipliziert werden soll. |
@@ -2913,15 +3010,15 @@ Gibt den Textteil für einen bestimmten Teil einer Aktionsausgabe zurück, die m
 multipartBody('<actionName>', <index>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ja | Zeichenfolge | Der Name der Aktion, für die es Ausgabe mit mehreren Teilen gibt |
+| <*actionName*> | Ja | String | Der Name der Aktion, für die es Ausgabe mit mehreren Teilen gibt |
 | <*index*> | Ja | Integer | Der Indexwert des von Ihnen gewünschten Teils |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*body*> | Zeichenfolge | Der Textteil für den angegebenen Teil |
+| <*body*> | String | Der Textteil für den angegebenen Teil |
 ||||
 
 <a name="not"></a>
@@ -2935,14 +3032,14 @@ Gibt „true“ zurück, wenn der Ausdruck gleich „false“ ist, oder gibt „
 not(<expression>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*expression*> | Ja | Boolean | Der zu überprüfende Ausdruck |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn der Ausdruck gleich „false“ ist. Gibt „false“ zurück, wenn der Ausdruck gleich „true“ ist. |
+| true oder false | Boolean | Gibt „true“ zurück, wenn der Ausdruck gleich „false“ ist. Gibt „false“ zurück, wenn der Ausdruck gleich „true“ ist. |
 ||||
 
 *Beispiel 1*
@@ -2984,14 +3081,14 @@ Gibt „true“ zurück, wenn mindestens ein Ausdruck gleich „true“ ist, ode
 or(<expression1>, <expression2>, ...)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*expression1*>, <*expression2*>, ... | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn mindestens ein Ausdruck gleich „true“ ist. Gibt „false“ zurück, wenn alle Ausdrücke gleich „false“ sind. |
+| true oder false | Boolean | Gibt „true“ zurück, wenn mindestens ein Ausdruck gleich „true“ ist. Gibt „false“ zurück, wenn alle Ausdrücke gleich „false“ sind. |
 ||||
 
 *Beispiel 1*
@@ -3032,14 +3129,14 @@ Gibt die Ausgabe einer Aktion zur Laufzeit zurück. Verwenden Sie diese Funktion
 outputs('<actionName>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ja | Zeichenfolge | Der Name der Aktion, deren Ausgabe Sie abrufen möchten |
+| <*actionName*> | Ja | String | Der Name der Aktion, deren Ausgabe Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
-| <*output*> | Zeichenfolge | Die Ausgabe von der angegebenen Aktion |
+| <*output*> | String | Die Ausgabe von der angegebenen Aktion |
 ||||
 
 *Beispiel*
@@ -3095,9 +3192,9 @@ Gibt den Wert für einen Parameter zurück, der in Ihrer Workflowdefinition besc
 parameters('<parameterName>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*parameterName*> | Ja | Zeichenfolge | Der Name des Parameters, dessen Wert Sie abrufen möchten |
+| <*parameterName*> | Ja | String | Der Name des Parameters, dessen Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3133,7 +3230,7 @@ Gibt eine zufällige Ganzzahl  aus einem angegebenen Bereich zurück, wobei nur 
 rand(<minValue>, <maxValue>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*minValue*> | Ja | Integer | Die kleinste ganze Zahl im Bereich |
 | <*maxValue*> | Ja | Integer | Die ganze Zahl, die im Bereich auf die größte Zahl folgt, die die Funktion zurückgeben kann |
@@ -3164,7 +3261,7 @@ Gibt ein Array mit ganzen Zahlen zurück, das mit einer angegebenen ganzen Zahl 
 range(<startIndex>, <count>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*startIndex*> | Ja | Integer | Ein ganzzahliger Wert, der das erste Element im Array ist |
 | <*count*> | Ja | Integer | Die Anzahl von ganzen Zahlen im Array |
@@ -3195,16 +3292,16 @@ Ersetzt eine Teilzeichenfolge durch die angegebene Zeichenfolge und gibt die res
 replace('<text>', '<oldText>', '<newText>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | Ja | Zeichenfolge | Die Zeichenfolge, die die Teilzeichenfolge enthält, die ersetzt werden soll |
-| <*oldText*> | Ja | Zeichenfolge | Die Teilzeichenfolge, die ersetzt werden soll |
-| <*newText*> | Ja | Zeichenfolge | Die Ersatzzeichenfolge |
+| <*text*> | Ja | String | Die Zeichenfolge, die die Teilzeichenfolge enthält, die ersetzt werden soll |
+| <*oldText*> | Ja | String | Die Teilzeichenfolge, die ersetzt werden soll |
+| <*newText*> | Ja | String | Die Ersatzzeichenfolge |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-text*> | Zeichenfolge | Die aktualisierte Zeichenfolge, nachdem die Teilzeichenfolge ersetzt wurde. <p>Wenn die Teilzeichenfolge nicht gefunden wird, wird die ursprüngliche Zeichenfolge zurückgegeben. |
+| <*updated-text*> | String | Die aktualisierte Zeichenfolge, nachdem die Teilzeichenfolge ersetzt wurde. <p>Wenn die Teilzeichenfolge nicht gefunden wird, wird die ursprüngliche Zeichenfolge zurückgegeben. |
 ||||
 
 *Beispiel*
@@ -3227,10 +3324,10 @@ Entfernt eine Eigenschaft aus einem Objekt und gibt das aktualisierte Objekt zur
 removeProperty(<object>, '<property>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Das JSON-Objekt, aus dem Sie eine Eigenschaft entfernen möchten |
-| <*property*> | Ja | Zeichenfolge | Der Name der zu Eigenschaft, die entfernt werden soll |
+| <*property*> | Ja | String | Der Name der zu Eigenschaft, die entfernt werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3244,11 +3341,11 @@ Verwenden Sie die folgende Syntax, um eine untergeordnete Eigenschaft aus einer 
 removeProperty(<object>['<parent-property>'], '<child-property>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Das JSON-Objekt, dessen Eigenschaft Sie entfernen möchten |
-| <*parent-property*> | Ja | Zeichenfolge | Der Name der übergeordneten Eigenschaft mit der untergeordneten Eigenschaft, die Sie entfernen möchten |
-| <*child-property*> | Ja | Zeichenfolge | Der Name der untergeordneten Eigenschaft, die entfernt werden soll |
+| <*parent-property*> | Ja | String | Der Name der übergeordneten Eigenschaft mit der untergeordneten Eigenschaft, die Sie entfernen möchten |
+| <*child-property*> | Ja | String | Der Name der untergeordneten Eigenschaft, die entfernt werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3324,9 +3421,9 @@ Gibt die Eingaben und Ausgaben aller Aktionen zurück, die in der angegebenen be
 result('<scopedActionName>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*scopedActionName*> | Ja | Zeichenfolge | Der Name der bereichsbezogenen Aktion, aus der die Eingaben und Ausgaben aller inneren Aktionen zurückgegeben werden sollen |
+| <*scopedActionName*> | Ja | String | Der Name der bereichsbezogenen Aktion, aus der die Eingaben und Ausgaben aller inneren Aktionen zurückgegeben werden sollen |
 ||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3445,10 +3542,10 @@ Legt den Wert für eine Eigenschaft eines JSON-Objekts fest und gibt das aktuali
 setProperty(<object>, '<property>', <value>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Das JSON-Objekt, dessen Eigenschaft Sie festlegen möchten |
-| <*property*> | Ja | Zeichenfolge | Der Name der vorhandenen oder neuen Eigenschaft, die festgelegt werden soll |
+| <*property*> | Ja | String | Der Name der vorhandenen oder neuen Eigenschaft, die festgelegt werden soll |
 | <*value*> | Ja | Any | Der Wert, auf den die angegebene Eigenschaft festgelegt werden soll |
 |||||
 
@@ -3458,11 +3555,11 @@ Wenn Sie die untergeordnete Eigenschaft in einem untergeordneten Objekt festlege
 setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Das JSON-Objekt, dessen Eigenschaft Sie festlegen möchten |
-| <*parent-property*> | Ja | Zeichenfolge | Der Name der übergeordneten Eigenschaft mit der untergeordneten Eigenschaft, die Sie festlegen möchten |
-| <*child-property*> | Ja | Zeichenfolge | Der Name für die untergeordnete Eigenschaft, die festgelegt werden soll |
+| <*parent-property*> | Ja | String | Der Name der übergeordneten Eigenschaft mit der untergeordneten Eigenschaft, die Sie festlegen möchten |
+| <*child-property*> | Ja | String | Der Name für die untergeordnete Eigenschaft, die festgelegt werden soll |
 | <*value*> | Ja | Any | Der Wert, auf den die angegebene Eigenschaft festgelegt werden soll |
 |||||
 
@@ -3537,7 +3634,7 @@ Entfernt Elemente vom Anfang einer Sammlung und gibt *alle anderen* Elemente zur
 skip([<collection>], <count>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Array | Die Sammlung, aus der Sie Elemente entfernen möchten |
 | <*count*> | Ja | Integer | Eine positive ganze Zahl für die Anzahl von Elementen, die am Anfang entfernt werden sollen |
@@ -3568,10 +3665,10 @@ Gibt ein Array mit Teilzeichenfolgen, die durch Trennzeichen getrennt sind, basi
 split('<text>', '<delimiter>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | Ja | Zeichenfolge | Die Zeichenfolge, die auf Grundlage des angegebenen Trennzeichens in der ursprünglichen Zeichenfolge in Teilzeichenfolgen unterteilt wird |
-| <*delimiter*> | Ja | Zeichenfolge | Das Zeichen in der ursprünglichen Zeichenfolge, das als Trennzeichen verwendet wird |
+| <*text*> | Ja | String | Die Zeichenfolge, die auf Grundlage des angegebenen Trennzeichens in der ursprünglichen Zeichenfolge in Teilzeichenfolgen unterteilt wird |
+| <*delimiter*> | Ja | String | Das Zeichen in der ursprünglichen Zeichenfolge, das als Trennzeichen verwendet wird |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3599,15 +3696,15 @@ Gibt den Beginn des Tages für einen Zeitstempel zurück.
 startOfDay('<timestamp>', '<format>'?)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | Zeichenfolge | Der angegebene Zeitstempel, der jedoch bei null Uhr für den Tag beginnt |
+| <*updated-timestamp*> | String | Der angegebene Zeitstempel, der jedoch bei null Uhr für den Tag beginnt |
 ||||
 
 *Beispiel*
@@ -3630,15 +3727,15 @@ Gibt den Beginn der Stunde für einen Zeitstempel zurück.
 startOfHour('<timestamp>', '<format>'?)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | Zeichenfolge | Der angegebene Zeitstempel, der jedoch bei null Minuten für die Stunde beginnt |
+| <*updated-timestamp*> | String | Der angegebene Zeitstempel, der jedoch bei null Minuten für die Stunde beginnt |
 ||||
 
 *Beispiel*
@@ -3661,18 +3758,18 @@ Gibt den Beginn des Monats für einen Zeitstempel zurück.
 startOfMonth('<timestamp>', '<format>'?)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | Zeichenfolge | Der angegebene Zeitstempel, der jedoch am ersten Tag des Monats um null Uhr beginnt |
+| <*updated-timestamp*> | String | Der angegebene Zeitstempel, der jedoch am ersten Tag des Monats um null Uhr beginnt |
 ||||
 
-*Beispiel*
+*Beispiel 1*
 
 In diesem Beispiel wird der Beginn des Monats für diesen Zeitstempel zurückgegeben:
 
@@ -3681,6 +3778,16 @@ startOfMonth('2018-03-15T13:30:30Z')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `"2018-03-01T00:00:00.0000000Z"`
+
+*Beispiel 2*
+
+In diesem Beispiel wird der Beginn des Monats für diesen Zeitstempel im angegebenen Format zurückgegeben:
+
+```
+startOfMonth('2018-03-15T13:30:30Z', 'yyyy-MM-dd')
+```
+
+Dies ist das zurückgegebene Ergebnis: `"2018-03-01"`
 
 <a name="startswith"></a>
 
@@ -3694,15 +3801,15 @@ Für diese Funktion wird die Groß-/Kleinschreibung nicht beachtet.
 startsWith('<text>', '<searchText>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | Ja | Zeichenfolge | Die Zeichenfolge, die überprüft werden soll |
-| <*searchText*> | Ja | Zeichenfolge | Die beginnende Zeichenfolge, nach der gesucht werden soll |
+| <*text*> | Ja | String | Die Zeichenfolge, die überprüft werden soll |
+| <*searchText*> | Ja | String | Die beginnende Zeichenfolge, nach der gesucht werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false"  | Boolean | Gibt „true“ zurück, wenn die beginnende Teilzeichenfolge gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
+| true oder false  | Boolean | Gibt „true“ zurück, wenn die beginnende Teilzeichenfolge gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
 ||||
 
 *Beispiel 1*
@@ -3735,15 +3842,19 @@ Gibt die Zeichenfolgenversion für einen Wert zurück.
 string(<value>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Any | Der zu konvertierende Wert |
+| <*value*> | Ja | Any | Der zu konvertierende Wert. Wenn dieser Wert NULL ist oder NULL ergibt, wird der Wert in einen leeren Zeichenfolgenwert (`""`) konvertiert. <p><p>Wenn Sie z. B. einer nicht vorhandenen Eigenschaft, auf die Sie mit dem `?`-Operator zugreifen können, eine Zeichenfolgenvariable zuweisen, wird der NULL-Wert in eine leere Zeichenfolge konvertiert. Das Vergleichen eines NULL-Werts ist jedoch nicht mit dem Vergleich einer leeren Zeichenfolge identisch. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*string-value*> | Zeichenfolge | Die Zeichenfolgenversion des angegebenen Werts |
+| <*string-value*> | String | Die Zeichenfolgenversion des angegebenen Werts. Wenn der *value*-Parameter NULL ist oder NULL ergibt, wird dieser Wert als leerer Zeichenfolgenwert (`""`) zurückgegeben. |
 ||||
+
+
+
+
 
 *Beispiel 1*
 
@@ -3775,7 +3886,7 @@ Gibt das Ergebnis aus der Subtraktion der zweiten Zahl von der ersten Zahl zurü
 sub(<minuend>, <subtrahend>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*minuend*> | Ja | Integer oder Float | Die Zahl, von der *subtrahend* subtrahiert werden soll |
 | <*subtrahend*> | Ja | Integer oder Float | Die Zahl, die von *minuend* subtrahiert werden soll |
@@ -3800,23 +3911,26 @@ Dies ist das zurückgegebene Ergebnis: `10`
 
 ### <a name="substring"></a>substring
 
-Gibt Zeichen aus einer Zeichenfolge zurück, beginnend mit dem angegebenen Indexwert (Position).
-Indexwerte beginnen bei 0.
+Gibt Zeichen aus einer Zeichenfolge zurück, beginnend mit dem angegebenen Indexwert (Position). Indexwerte beginnen bei 0.
 
 ```
 substring('<text>', <startIndex>, <length>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | Ja | Zeichenfolge | Die Zeichenfolge, aus der die Zeichen zurückgegeben werden sollen |
+| <*text*> | Ja | String | Die Zeichenfolge, aus der die Zeichen zurückgegeben werden sollen |
 | <*startIndex*> | Ja | Integer | Eine positive Zahl gleich oder größer als 0, die Sie als Ausgangswert oder Indexwert verwenden können. |
-| <*length*> | Ja | Integer | Eine positive Anzahl von Zeichen, die in der Teilzeichenfolge enthalten sein sollen |
+| <*length*> | Nein | Integer | Eine positive Anzahl von Zeichen, die in der Teilzeichenfolge enthalten sein sollen |
 |||||
+
+> [!NOTE]
+> Stellen Sie sicher, dass die Summe aus der Addition der Parameterwerte von *startIndex* und *length* kleiner als die Länge der Zeichenfolge ist, die Sie für den Parameter *text* angeben.
+> Andernfalls erhalten Sie einen Fehler, im Gegensatz zu ähnlichen Funktionen in anderen Sprachen, bei denen das Ergebnis die Teilzeichenfolge ab dem *startIndex* bis zum Ende der Zeichenfolge ist. Der *length*-Parameter ist optional, und wenn er nicht angegeben wird, nimmt die **substring()** -Funktion alle Zeichen ab *startIndex* bis zum Ende der Zeichenfolge entgegen.
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*substring-result*> | Zeichenfolge | Eine Teilzeichenfolge, die die angegebene Anzahl von Zeichen enthält und in der Quellzeichenfolge an der angegebenen Indexposition beginnt |
+| <*substring-result*> | String | Eine Teilzeichenfolge, die die angegebene Anzahl von Zeichen enthält und in der Quellzeichenfolge an der angegebenen Indexposition beginnt |
 ||||
 
 *Beispiel*
@@ -3840,17 +3954,17 @@ Siehe auch [getPastTime](#getPastTime).
 subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die subtrahiert werden sollen |
-| <*timeUnit*> | Ja | Zeichenfolge | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | Zeichenfolge | Der Zeitstempel abzüglich der angegebenen Anzahl von Zeiteinheiten |
+| <*updated-timestamp*> | String | Der Zeitstempel abzüglich der angegebenen Anzahl von Zeiteinheiten |
 ||||
 
 *Beispiel 1*
@@ -3884,7 +3998,7 @@ take('<collection>', <count>)
 take([<collection>], <count>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Zeichenfolge oder Array | Die Sammlung, aus der Sie Elemente abrufen möchten |
 | <*count*> | Ja | Integer | Eine positive ganze Zahl für die Anzahl von Elementen, die ab dem Anfang abgerufen werden sollen |
@@ -3913,16 +4027,15 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 ### <a name="ticks"></a>ticks
 
-Gibt den Eigenschaftswert `ticks` für einen angegebenen Zeitstempel zurück.
-Ein *tick* ist eine Zeitspanne von 100 Nanosekunden.
+Gibt die Anzahl der Ticks zurück, bei denen es sich um 100-Nanosekunden-Intervalle handelt, seit dem 1. Januar 0001 12:00:00 Mitternacht (oder DateTime.Ticks in C# ) bis zum angegebenen Zeitstempel. Weitere Informationen finden Sie in diesem Thema: [DateTime.Ticks-Eigenschaft (System)](/dotnet/api/system.datetime.ticks?view=netframework-4.7.2#remarks).
 
 ```
 ticks('<timestamp>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | Ja | Zeichenfolge | Die Zeichenfolge für einen Zeitstempel |
+| <*timestamp*> | Ja | String | Die Zeichenfolge für einen Zeitstempel |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3940,14 +4053,14 @@ Gibt eine Zeichenfolge in Kleinbuchstaben zurück. Gibt es für ein Zeichen in d
 toLower('<text>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | Ja | Zeichenfolge | Die Zeichenfolge, die in Kleinbuchstaben zurückgegeben werden soll |
+| <*text*> | Ja | String | Die Zeichenfolge, die in Kleinbuchstaben zurückgegeben werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*lowercase-text*> | Zeichenfolge | Die ursprüngliche Zeichenfolge in Kleinbuchstaben |
+| <*lowercase-text*> | String | Die ursprüngliche Zeichenfolge in Kleinbuchstaben |
 ||||
 
 *Beispiel*
@@ -3970,14 +4083,14 @@ Gibt eine Zeichenfolge in Großbuchstaben zurück. Gibt es für ein Zeichen in d
 toUpper('<text>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | Ja | Zeichenfolge | Die Zeichenfolge, die in Großbuchstaben zurückgegeben werden soll |
+| <*text*> | Ja | String | Die Zeichenfolge, die in Großbuchstaben zurückgegeben werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*uppercase-text*> | Zeichenfolge | Die ursprüngliche Zeichenfolge in Großbuchstaben |
+| <*uppercase-text*> | String | Die ursprüngliche Zeichenfolge in Großbuchstaben |
 ||||
 
 *Beispiel*
@@ -3992,7 +4105,7 @@ Dies ist das zurückgegebene Ergebnis: `"HELLO WORLD"`
 
 <a name="trigger"></a>
 
-### <a name="trigger"></a>trigger
+### <a name="trigger"></a>Trigger (trigger)
 
 Gibt die Ausgabe eines Triggers zur Laufzeit oder Werte aus anderen JSON-Name/Wert-Paaren zurück, die Sie einem Ausdruck zuweisen können.
 
@@ -4009,7 +4122,7 @@ trigger()
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*trigger-output*> | Zeichenfolge | Die Ausgabe von einem Trigger zur Laufzeit |
+| <*trigger-output*> | String | Die Ausgabe von einem Trigger zur Laufzeit |
 ||||
 
 <a name="triggerBody"></a>
@@ -4026,7 +4139,7 @@ triggerBody()
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*trigger-body-output*> | Zeichenfolge | Die `body`-Ausgabe des Triggers |
+| <*trigger-body-output*> | String | Die `body`-Ausgabe des Triggers |
 ||||
 
 <a name="triggerFormDataMultiValues"></a>
@@ -4039,9 +4152,9 @@ Gibt ein Array mit den Werten zurück, die mit einem Schlüsselnamen (key-Name) 
 triggerFormDataMultiValues('<key>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*key*> | Ja | Zeichenfolge | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
+| <*key*> | Ja | String | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -4057,7 +4170,7 @@ In diesem Beispiel wird ein Array aus dem Wert erstellt, den der „feedUrl“-S
 triggerFormDataMultiValues('feedUrl')
 ```
 
-Dieses Array wird als Beispielergebnis zurückgegeben: `["http://feeds.reuters.com/reuters/topNews"]`
+Dieses Array wird als Beispielergebnis zurückgegeben: `["https://feeds.a.dj.com/rss/RSSMarketsMain.xml"]`
 
 <a name="triggerFormDataValue"></a>
 
@@ -4070,14 +4183,14 @@ Findet die Funktion mehrere Übereinstimmungen, löst sie einen Fehler aus.
 triggerFormDataValue('<key>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*key*> | Ja | Zeichenfolge | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
+| <*key*> | Ja | String | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*key-value*> | Zeichenfolge | Der Wert in dem angegebenen Schlüssel |
+| <*key-value*> | String | Der Wert in dem angegebenen Schlüssel |
 ||||
 
 *Beispiel*
@@ -4088,7 +4201,7 @@ In diesem Beispiel wird eine Zeichenfolge aus dem Wert erstellt, den der „feed
 triggerFormDataValue('feedUrl')
 ```
 
-Diese Zeichenfolge wird als Beispielergebnis zurückgegeben: `"http://feeds.reuters.com/reuters/topNews"`
+Diese Zeichenfolge wird als Beispielergebnis zurückgegeben: `"https://feeds.a.dj.com/rss/RSSMarketsMain.xml"`
 
 <a name="triggerMultipartBody"></a>
 
@@ -4100,14 +4213,14 @@ Gibt den Textteil für einen bestimmten Teil einer Triggerausgabe zurück, die m
 triggerMultipartBody(<index>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*index*> | Ja | Integer | Der Indexwert des von Ihnen gewünschten Teils |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*body*> | Zeichenfolge | Der Textteil für den angegebenen Teil in der mehrteiligen Ausgabe eines Triggers |
+| <*body*> | String | Der Textteil für den angegebenen Teil in der mehrteiligen Ausgabe eines Triggers |
 ||||
 
 <a name="triggerOutputs"></a>
@@ -4124,7 +4237,7 @@ triggerOutputs()
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*trigger-output*> | Zeichenfolge | Die Ausgabe von einem Trigger zur Laufzeit  |
+| <*trigger-output*> | String | Die Ausgabe von einem Trigger zur Laufzeit  |
 ||||
 
 <a name="trim"></a>
@@ -4137,14 +4250,14 @@ Entfernt führende und nachfolgende Leerzeichen aus einer Zeichenfolge und gibt 
 trim('<text>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | Ja | Zeichenfolge | Die Zeichenfolge, in der sich die führenden und nachfolgende Leerzeichen befinden, die entfernt werden sollen |
+| <*text*> | Ja | String | Die Zeichenfolge, in der sich die führenden und nachfolgende Leerzeichen befinden, die entfernt werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updatedText*> | Zeichenfolge | Eine aktualisierte Version der ursprünglichen Zeichenfolge ohne führende oder nachfolgende Leerzeichen |
+| <*updatedText*> | String | Eine aktualisierte Version der ursprünglichen Zeichenfolge ohne führende oder nachfolgende Leerzeichen |
 ||||
 
 *Beispiel*
@@ -4169,7 +4282,7 @@ union('<collection1>', '<collection2>', ...)
 union([<collection1>], [<collection2>], ...)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection1*>, <*collection2*>, ...  | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *alle* Elemente wünschen |
 |||||
@@ -4201,14 +4314,14 @@ Obwohl beide Funktionen in gleicher Weise funktionieren, wird `uriComponent()` b
 uriComponent('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die Zeichenfolge, die in das URI-codierte Format konvertiert werden soll |
+| <*value*> | Ja | String | Die Zeichenfolge, die in das URI-codierte Format konvertiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*encoded-uri*> | Zeichenfolge | Die URI-codierte Zeichenfolge mit Escapezeichen |
+| <*encoded-uri*> | String | Die URI-codierte Zeichenfolge mit Escapezeichen |
 ||||
 
 *Beispiel*
@@ -4219,7 +4332,7 @@ In diesem Beispiel wird eine URI-codierte Version für diese Zeichenfolge erstel
 uriComponent('https://contoso.com')
 ```
 
-Dies ist das zurückgegebene Ergebnis: `"http%3A%2F%2Fcontoso.com"`
+Dies ist das zurückgegebene Ergebnis: `"https%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
@@ -4231,14 +4344,14 @@ Gibt die binäre Version einer URI-Komponente (Uniform Resource Identifier) zur�
 uriComponentToBinary('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die URI-codierte Zeichenfolge, die konvertiert werden soll |
+| <*value*> | Ja | String | Die URI-codierte Zeichenfolge, die konvertiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*binary-for-encoded-uri*> | Zeichenfolge | Die Binärversion für die URI-codierte Zeichenfolge Der binäre Inhalt ist base64-codiert und wird von `$content` dargestellt. |
+| <*binary-for-encoded-uri*> | String | Die Binärversion für die URI-codierte Zeichenfolge Der binäre Inhalt ist base64-codiert und wird von `$content` dargestellt. |
 ||||
 
 *Beispiel*
@@ -4246,7 +4359,7 @@ uriComponentToBinary('<value>')
 In diesem Beispiel wird die binäre Version für diese URI-codierte Zeichenfolge erstellt:
 
 ```
-uriComponentToBinary('http%3A%2F%2Fcontoso.com')
+uriComponentToBinary('https%3A%2F%2Fcontoso.com')
 ```
 
 Dies ist das zurückgegebene Ergebnis:
@@ -4266,14 +4379,14 @@ Gibt die Zeichenfolgenversion einer URI-codierten Zeichenfolge (Uniform Resource
 uriComponentToString('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die URI-codierte Zeichenfolge, die decodiert werden soll |
+| <*value*> | Ja | String | Die URI-codierte Zeichenfolge, die decodiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*decoded-uri*> | Zeichenfolge | Die decodierte Version für die URI-codierte Zeichenfolge |
+| <*decoded-uri*> | String | Die decodierte Version für die URI-codierte Zeichenfolge |
 ||||
 
 *Beispiel*
@@ -4281,7 +4394,7 @@ uriComponentToString('<value>')
 In diesem Beispiel wird die decodierte Zeichenfolgenversion für diese URI-codierte Zeichenfolge erstellt:
 
 ```
-uriComponentToString('http%3A%2F%2Fcontoso.com')
+uriComponentToString('https%3A%2F%2Fcontoso.com')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `"https://contoso.com"`
@@ -4296,14 +4409,14 @@ Gibt den Wert `host` für einen Uniform Resource Identifier (URI) zurück.
 uriHost('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | Ja | Zeichenfolge | Der URI, dessen `host`-Wert Sie abrufen möchten |
+| <*uri*> | Ja | String | Der URI, dessen `host`-Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*host-value*> | Zeichenfolge | Der `host`-Wert des angegebenen URIs |
+| <*host-value*> | String | Der `host`-Wert des angegebenen URIs |
 ||||
 
 *Beispiel*
@@ -4326,14 +4439,14 @@ Gibt den Wert `path` für einen Uniform Resource Identifier (URI) zurück.
 uriPath('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | Ja | Zeichenfolge | Der URI, dessen `path`-Wert Sie abrufen möchten |
+| <*uri*> | Ja | String | Der URI, dessen `path`-Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*path-value*> | Zeichenfolge | Der `path`-Wert des angegebenen URIs. Hat `path` keinen Wert, wird das Zeichen „/“ zurückgegeben. |
+| <*path-value*> | String | Der `path`-Wert des angegebenen URIs. Hat `path` keinen Wert, wird das Zeichen „/“ zurückgegeben. |
 ||||
 
 *Beispiel*
@@ -4341,7 +4454,7 @@ uriPath('<uri>')
 In diesem Beispiel wird der `path`-Wert dieses URIs abgerufen:
 
 ```
-uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriPath('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `"/catalog/shownew.htm"`
@@ -4356,14 +4469,14 @@ Gibt die den `path`- und den `query`-Wert für einen Uniform Resource Identifier
 uriPathAndQuery('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | Ja | Zeichenfolge | Der URI, dessen `path`- und `query`-Wert abgerufen werden sollen |
+| <*uri*> | Ja | String | Der URI, dessen `path`- und `query`-Wert abgerufen werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*path-query-value*> | Zeichenfolge | Der `path`- und der `query`-Wert des angegebenen URIs. Gibt `path` keinen Wert an, wird das Zeichen „/“ zurückgegeben. |
+| <*path-query-value*> | String | Der `path`- und der `query`-Wert des angegebenen URIs. Gibt `path` keinen Wert an, wird das Zeichen „/“ zurückgegeben. |
 ||||
 
 *Beispiel*
@@ -4371,7 +4484,7 @@ uriPathAndQuery('<uri>')
 In diesem Beispiel werden der `path`- und der `query`-Wert dieses URIs abgerufen:
 
 ```
-uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriPathAndQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `"/catalog/shownew.htm?date=today"`
@@ -4386,9 +4499,9 @@ Gibt den Wert `port` für einen Uniform Resource Identifier (URI) zurück.
 uriPort('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | Ja | Zeichenfolge | Der URI, dessen `port`-Wert Sie abrufen möchten |
+| <*uri*> | Ja | String | Der URI, dessen `port`-Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -4401,7 +4514,7 @@ uriPort('<uri>')
 In diesem Beispiel wird der `port`-Wert dieses URIs zurückgegeben:
 
 ```
-uriPort('http://www.localhost:8080')
+uriPort('https://www.localhost:8080')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `8080`
@@ -4416,14 +4529,14 @@ Gibt den Wert `query` für einen Uniform Resource Identifier (URI) zurück.
 uriQuery('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | Ja | Zeichenfolge | Der URI, dessen `query`-Wert Sie abrufen möchten |
+| <*uri*> | Ja | String | Der URI, dessen `query`-Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*query-value*> | Zeichenfolge | Der `query`-Wert des angegebenen URIs |
+| <*query-value*> | String | Der `query`-Wert des angegebenen URIs |
 ||||
 
 *Beispiel*
@@ -4431,7 +4544,7 @@ uriQuery('<uri>')
 In diesem Beispiel wird der `query`-Wert dieses URIs zurückgegeben:
 
 ```
-uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `"?date=today"`
@@ -4446,14 +4559,14 @@ Gibt den Wert `scheme` für einen Uniform Resource Identifier (URI) zurück.
 uriScheme('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | Ja | Zeichenfolge | Der URI, dessen `scheme`-Wert Sie abrufen möchten |
+| <*uri*> | Ja | String | Der URI, dessen `scheme`-Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*scheme-value*> | Zeichenfolge | Der `scheme`-Wert des angegebenen URIs |
+| <*scheme-value*> | String | Der `scheme`-Wert des angegebenen URIs |
 ||||
 
 *Beispiel*
@@ -4461,7 +4574,7 @@ uriScheme('<uri>')
 In diesem Beispiel wird der `scheme`-Wert dieses URIs zurückgegeben:
 
 ```
-uriScheme('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriScheme('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `"http"`
@@ -4479,14 +4592,14 @@ utcNow('<format>')
 Optional können Sie mit dem <*format*>-Parameter ein anderes Format angeben.
 
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | Nein | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*current-timestamp*> | Zeichenfolge | Das aktuelle Datum und die aktuelle Uhrzeit |
+| <*current-timestamp*> | String | Das aktuelle Datum und die aktuelle Uhrzeit |
 ||||
 
 *Beispiel 1*
@@ -4521,9 +4634,9 @@ Gibt den Wert für eine angegebene Variable zurück.
 variables('<variableName>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*variableName*> | Ja | Zeichenfolge | Der Name der Variablen, deren Wert Sie abrufen möchten |
+| <*variableName*> | Ja | String | Der Name der Variablen, deren Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -4552,9 +4665,9 @@ Gibt sämtliche Details zum Workflow selbst zur Laufzeit zurück.
 workflow().<property>
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*property*> | Nein | Zeichenfolge | Der Name der Workfloweigenschaft, deren Wert Sie abrufen möchten <p>Ein Workflowobjekt hat diese Eigenschaften: **name**, **type**, **id**, **location** und **run**. Der Wert der **run**-Eigenschaft ist ebenfalls ein Objekt, das diese Eigenschaften hat: **name**, **type** und **id**. |
+| <*property*> | Nein | String | Der Name der Workfloweigenschaft, deren Wert Sie abrufen möchten <p>Ein Workflowobjekt hat diese Eigenschaften: **name**, **type**, **id**, **location** und **run**. Der Wert der **run**-Eigenschaft ist ebenfalls ein Objekt, das diese Eigenschaften hat: **name**, **type** und **id**. |
 |||||
 
 *Beispiel*
@@ -4575,9 +4688,9 @@ Gibt die XML-Version einer Zeichenfolge zurück, die ein JSON-Objekt enthält.
 xml('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Zeichenfolge | Die Zeichenfolge mit dem JSON-Objekt, das konvertiert werden soll. <p>Das JSON-Objekt darf nur eine Stammeigenschaft haben, die kein Array sein darf. <br>Verwenden Sie den umgekehrten Schrägstrich (\\) als Escapezeichen für das doppelte Anführungszeichen ("). |
+| <*value*> | Ja | String | Die Zeichenfolge mit dem JSON-Objekt, das konvertiert werden soll. <p>Das JSON-Objekt darf nur eine Stammeigenschaft haben, die kein Array sein darf. <br>Verwenden Sie den umgekehrten Schrägstrich (\\) als Escapezeichen für das doppelte Anführungszeichen ("). |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -4633,7 +4746,7 @@ Dies ist das zurückgegebene XML-Objekt:
 xpath('<xml>', '<xpath>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*xml*> | Ja | Any | Die XML-Zeichenfolge, in der nach Knoten oder Werten gesucht werden soll, die mit einem XPath-Ausdruckswert übereinstimmen |
 | <*xpath*> | Ja | Any | Der XPath-Ausdruck, der für die Suche nach übereinstimmenden XML-Knoten oder -Werten verwendet wird |
@@ -4648,21 +4761,29 @@ xpath('<xml>', '<xpath>')
 
 *Beispiel 1*
 
-In diesem Beispiel wird nach Knoten gesucht,die mit dem `<name></name>`-Knoten in den angegebenen Argumenten übereinstimmen, und es wird ein Array mit diesen Knotenwerten zurückgegeben:
+Angenommen, es liegt diese XML-Zeichenfolge `'items'` vor: 
+
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
+
+In diesem Beispiel wird der XPath-Ausdruck `'/produce/item/name'` übergeben, um die mit dem Knoten `<name></name>` in der XML-Zeichenfolge `'items'` übereinstimmenden Knoten zu suchen, und es wird ein Array mit diesen Knotenwerten zurückgegeben:
 
 `xpath(xml(parameters('items')), '/produce/item/name')`
 
-Dies sind die Argumente:
-
-* Die „items“-Zeichenfolge, die diesen XML-Inhalt hat:
-
-  `"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
-
-  Im Beispiel wird die [parameters()](#parameters)-Funktion verwendet, um die XML-Zeichenfolge aus dem „items“-Argument abzurufen. Außerdem muss die Zeichenfolge in das XML-Format konvertiert werden, indem die [xml()](#xml)-Funktion verwendet wird.
-
-* Diese XPath-Ausdruck, der als Zeichenfolge übergeben wird:
-
-  `"/produce/item/name"`
+Im Beispiel wird außerdem die [parameters()](#parameters)-Funktion verwendet, um die XML-Zeichenfolge aus `'items'` abzurufen, und die Zeichenfolge wird mit der [xml()](#xml)-Funktion in das XML-Format konvertiert.
 
 Dies ist das Ergebnisarray mit den Knoten, die mit `<name></name` übereinstimmen:
 
@@ -4670,51 +4791,161 @@ Dies ist das Ergebnisarray mit den Knoten, die mit `<name></name` übereinstimme
 
 *Beispiel 2*
 
-Im Anschluss an das Beispiel 1 wird in diesem Beispiel nach Knoten gesucht, die mit dem `<count></count>`-Knoten übereinstimmen, und die Werte dieser Knoten werden mit der `sum()`-Funktion addiert:
+In diesem Beispiel, das an Beispiel 1 anschließt, wird der XPath-Ausdruck `'/produce/item/name[1]'`übergeben, um das erste Element `name` zu finden, das dem Element `item` untergeordnet ist.
 
-`xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
+`xpath(xml(parameters('items')), '/produce/item/name[1]')`
 
-Dies ist das zurückgegebene Ergebnis: `30`
+Hier ist das Ergebnis: `Gala`
 
 *Beispiel 3*
 
-In diesem Beispiel wird in beiden Ausdrücken nach Knoten gesucht, die mit dem `<location></location>`-Knoten in den angegebenen Argumenten übereinstimmen, die XML mit einem Namespace enthalten. In den Ausdrücken wird der umgekehrte Schrägstrich (\\) als Escapezeichen für das doppelte Anführungszeichen (") verwendet.
+In diesem Beispiel, das an Beispiel 1 anschließt, wird der XPath-Ausdruck `'/produce/item/name[last()]'`übergeben, um das letzte Element `name` zu finden, das dem Element `item` untergeordnet ist.
 
-* *Ausdruck 1*
+`xpath(xml(parameters('items')), '/produce/item/name[last()]')`
 
-  `xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
-
-* *Ausdruck 2*
-
-  `xpath(xml(body('Http')), '/*[local-name()=\"file\" and namespace-uri()=\"http://contoso.com\"]/*[local-name()=\"location\"]')`
-
-Dies sind die Argumente:
-
-* Dieses XML-Objekt, das den Namespace des XML-Dokument enthält, `xmlns="http://contoso.com"`:
-
-  ```xml
-  <?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>
-  ```
-
-* Dies sind die beiden XPath-Ausdrücke:
-
-  * `/*[name()=\"file\"]/*[name()=\"location\"]`
-
-  * `/*[local-name()=\"file\" and namespace-uri()=\"http://contoso.com\"]/*[local-name()=\"location\"]`
-
-Dies ist der Ergebnisknoten, der mit dem `<location></location>`-Knoten übereinstimmt:
-
-```xml
-<location xmlns="https://contoso.com">Paris</location>
-```
+Hier ist das Ergebnis: `Honeycrisp`
 
 *Beispiel 4*
 
-Im Anschluss an Beispiel 3 wird in diesem Beispiel nach dem der Wert im `<location></location>`-Knoten gesucht:
+In diesem Beispiel wird angenommen, dass Ihre XML-Zeichenfolge `items` auch die Attribute `expired='true'` und `expired='false'` enthält:
 
-`xpath(xml(body('Http')), 'string(/*[name()=\"file\"]/*[name()=\"location\"])')`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name expired='false'>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
-Dies ist das zurückgegebene Ergebnis: `"Paris"`
+In diesem Beispiel wird der XPath-Ausdruck `'//name[@expired]'` übergeben, um alle `name`-Elemente zu suchen, die über das Attribut `expired` verfügen:
+
+`xpath(xml(parameters('items')), '//name[@expired]')`
+
+Hier ist das Ergebnis: `[ Gala, Honeycrisp ]`
+
+*Beispiel 5*
+
+In diesem Beispiel wird angenommen, dass Ihre XML-Zeichenfolge `items` nur das Attribut `expired = 'true'` enthält:
+
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
+
+In diesem Beispiel wird der XPath-Ausdruck `'//name[@expired = 'true']'` übergeben, um alle `name`-Elemente zu suchen, die über das Attribut `expired = 'true'` verfügen:
+
+`xpath(xml(parameters('items')), '//name[@expired = 'true']')`
+
+Hier ist das Ergebnis: `[ Gala ]`
+
+*Beispiel 6*
+
+In diesem Beispiel wird angenommen, dass Ihre XML-Zeichenfolge `items` auch diese Attribute enthält: 
+
+* `expired='true' price='12'`
+* `expired='false' price='40'`
+
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true' price='12'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name expired='false' price='40'>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
+
+In diesem Beispiel wird der XPath-Ausdruck `'//name[price>35]'` übergeben, um alle `name`-Elemente zu suchen, die über `price > 35` verfügen:
+
+`xpath(xml(parameters('items')), '//name[price>35]')`
+
+Hier ist das Ergebnis: `Honeycrisp`
+
+*Beispiel 7*
+
+In diesem Beispiel wird angenommen, dass Ihre XML-Zeichenfolge `items` mit der in Beispiel 1 übereinstimmt:
+
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
+
+In diesem Beispiel wird nach Knoten gesucht, die mit dem Knoten `<count></count>` übereinstimmen, und diese Knotenwerte werden mit der `sum()`-Funktion addiert:
+
+`xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
+
+Hier ist das Ergebnis: `30`
+
+*Beispiel 8*
+
+In diesem Beispiel wird angenommen, dass Sie über diese XML-Zeichenfolge verfügen, die den XML-Dokumentnamespace `xmlns="https://contoso.com"` enthält:
+
+```xml
+<?xml version="1.0"?><file xmlns="https://contoso.com"><location>Paris</location></file>
+```
+
+In diesen Ausdrücken wird einer der XPath-Ausdrücke `/*[name()="file"]/*[name()="location"]` oder `/*[local-name()="file" and namespace-uri()="https://contoso.com"]/*[local-name()="location"]` verwendet, um nach Knoten zu suchen, die mit dem Knoten `<location></location>` übereinstimmen. Diese Beispiele zeigen die Syntax, die Sie im Logik-App-Designer oder im Ausdrucks-Editor verwenden:
+
+* `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
+* `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="https://contoso.com"]/*[local-name()="location"]')`
+
+Dies ist der Ergebnisknoten, der mit dem `<location></location>`-Knoten übereinstimmt: 
+
+`<location xmlns="https://contoso.com">Paris</location>`
+
+> [!IMPORTANT]
+>
+> Wenn Sie in der Codeansicht arbeiten, verwenden Sie den umgekehrten Schrägstrich (\\) als Escapezeichen für das doppelte Anführungszeichen ("). 
+> Beispielsweise müssen Sie Escapezeichen verwenden, wenn Sie einen Ausdruck als JSON-Zeichenfolge serialisieren. 
+> Wenn Sie jedoch im Logik-App-Designer oder im Ausdrucks-Editor arbeiten, müssen Sie das doppelte Anführungszeichen nicht mit Escapezeichen versehen, da der umgekehrte Schrägstrich automatisch der zugrunde liegenden Definition hinzugefügt wird, z. B.:
+> 
+> * Codeansicht: `xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
+>
+> * Ausdrucks-Editor: `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
+
+*Beispiel 9*
+
+In diesem Beispiel, das an Beispiel 8 anschließt, wird der XPath-Ausdruck `'string(/*[name()="file"]/*[name()="location"])'` verwendet, um den Wert im Knoten `<location></location>` zu suchen:
+
+`xpath(xml(body('Http')), 'string(/*[name()="file"]/*[name()="location"])')`
+
+Hier ist das Ergebnis: `Paris`
 
 ## <a name="next-steps"></a>Nächste Schritte
 

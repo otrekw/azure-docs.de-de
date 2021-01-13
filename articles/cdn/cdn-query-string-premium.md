@@ -1,9 +1,9 @@
 ---
-title: Steuern des Azure CDN-Zwischenspeicherverhaltens mit Abfragezeichenfolgen – Premium-Tarif | Microsoft-Dokumentation
+title: Steuern des Azure CDN-Zwischenspeicherverhaltens mit Abfragezeichenfolgen – Premium-Tarif
 description: Das Zwischenspeichern von Azure CDN-Abfragezeichenfolgen steuert, wie Dateien zwischengespeichert werden, wenn eine Webanforderung eine Abfragezeichenfolge enthält. In diesem Artikel wird das Zwischenspeichern von Abfragezeichenfolgen im Produkt Azure CDN Premium von Verizon beschrieben.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 99db4a85-4f5f-431f-ac3a-69e05518c997
@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/11/2018
-ms.author: magattus
-ms.openlocfilehash: 2bea8aa06daef5d119b4cbfc4853a2d6ab07ddb7
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: allensu
+ms.openlocfilehash: a799309b6e5d00db3b6c206187eec7097c9dc11a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593515"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018595"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Steuern des Azure CDN-Zwischenspeicherverhaltens mit Abfragezeichenfolgen – Premium-Tarif
 > [!div class="op_single_selector"]

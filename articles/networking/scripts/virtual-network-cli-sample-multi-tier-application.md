@@ -1,28 +1,26 @@
 ---
-title: Azure CLI-Skriptbeispiel – Erstellen eines Netzwerks für Anwendungen mit mehreren Ebenen | Microsoft-Dokumentation
+title: 'Azure CLI-Skriptbeispiel: Erstellen eines Netzwerks für Anwendungen mit mehreren Ebenen'
 description: Azure CLI-Skriptbeispiel – Erstellen eines virtuellen Netzwerks für Anwendungen mit mehreren Ebenen.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: KumudD
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: timlt
-ms.openlocfilehash: 1cdc10157fb324ac9167860b9786f4902b1b8b81
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: kumud
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: c0964eb5e44a0e1a2329ec6acef91d70cbd5c32f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295573"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87503870"
 ---
-# <a name="create-a-network-for-multi-tier-applications"></a>Erstellen eines Netzwerks für Anwendungen mit mehreren Ebenen
+# <a name="use-an-azure-cli-script-sample-to-create-a-network-for-multi-tier-applications"></a>Verwenden eines Azure CLI-Skriptbeispiels zum Erstellen eines Netzwerks für Anwendungen mit mehreren Ebenen
 
 In diesem Skriptbeispiel wird ein virtuelles Netzwerk mit Front-End- und Back-End-Subnetz erstellt. Der Datenverkehr am Front-End-Subnetz ist auf HTTP und SSH beschränkt, während der Datenverkehr zum Back-End-Subnetz auf MySQL und Port 3306 beschränkt ist. Nach dem Ausführen des Skripts haben Sie zwei virtuelle Computer – einen in jedem Subnetz – denen Sie Webserver- und MySQL-Software bereitstellen können.
 

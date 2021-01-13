@@ -1,30 +1,27 @@
 ---
-title: Webbrowser in der Microsoft-Authentifizierungsbibliothek für .NET | Azure
+title: Verwenden von Webbrowsern (MSAL.NET) | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die besonderen Überlegungen zur Verwendung von Xamarin Android mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
-ms.author: twhitney
+ms.date: 05/18/2020
+ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1285c5c61cee25e387ca5fb598f0e062088e549
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: bf51f39a789b91a4cb0b88eb8bb1f2989bec7358
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532501"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88165820"
 ---
-# <a name="using-web-browsers-in-msalnet"></a>Verwenden von Webbrowsern in MSAL.NET
+# <a name="using-web-browsers-msalnet"></a>Verwenden von Webbrowsern (MSAL.NET)
+
 Webbrowser sind eine Voraussetzung für die interaktive Authentifizierung. MSAL.NET unterstützt standardmäßig den [Systemwebbrowser](#system-web-browser-on-xamarinios-xamarinandroid) unter Xamarin.iOS und Xamarin.Android. Je nach Ihren Anforderungen (UX, Einmaliges Anmelden, Sicherheit) [können Sie jedoch auch den eingebetteten Webbrowser](#enable-embedded-webviews-on-ios-and-android) in [Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios)-Apps und [Xamarin.Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)-Apps aktivieren. Sie können den gewünschten Webbrowser auch [dynamisch auswählen](#detecting-the-presence-of-custom-tabs-on-xamarinandroid), und zwar danach, ob Chrome oder ein Browser, der benutzerdefinierte Chrome-Registerkarten in Android unterstützt, vorhanden ist. MSAL.NET unterstützt nur den Systembrowser in .NET Core-Desktopanwendungen.
 
 ## <a name="web-browsers-in-msalnet"></a>Webbrowser in MSAL.NET
@@ -35,14 +32,14 @@ Es ist wichtig zu wissen, dass der Inhalt des Dialogfelds beim interaktiven Abru
 
 - Das Kennwort (sofern angegeben) wird grundsätzlich weder von der Anwendung noch von der Authentifizierungsbibliothek gespeichert.
 - Umleitungen zu anderen Identitätsanbietern werden unterstützt (z. B. Anmeldung mit einem Geschäfts-, Schul- oder Unikonto oder einem persönlichen Konto über MSAL bzw. Anmeldung mit einem Social Media-Konto über Azure AD B2C).
-- Der STS kann den bedingten Zugriff steuern, indem während der Authentifizierungsphase z.B. die mehrstufige Authentifizierung vom Benutzer angefordert wird (Eingabe einer Windows Hello-PIN, Anruf per Telefon oder Verwendung einer Authentifizierungs-App auf dem Smartphone). Falls die erforderliche mehrstufige Authentifizierung noch nicht eingerichtet ist, kann sie vom Benutzer nach Bedarf im selben Dialogfeld eingerichtet werden.  Der Benutzer gibt seine Mobiltelefonnummer ein und wird durch die Schritte zur Installation einer Authentifizierungs-App und zum Scannen eines QR-Codes geführt, um sein Konto hinzuzufügen. Die servergesteuerte Interaktion ist ausgesprochen benutzerfreundlich!
+- Der STS kann den bedingten Zugriff steuern, beispielsweise indem der Benutzer während der Authentifizierungsphase die [mehrstufige Authentifizierung (Multi-Factor Authentication, MFA)](../authentication/concept-mfa-howitworks.md) durchführen muss (Eingabe einer Windows Hello-PIN, Telefonanruf oder Verwendung einer Authentifizierungs-App auf dem Smartphone). Falls die erforderliche mehrstufige Authentifizierung noch nicht eingerichtet ist, kann der Benutzer sie direkt im selben Dialogfeld einrichten.  Der Benutzer gibt seine Mobiltelefonnummer ein und wird durch die Schritte zur Installation einer Authentifizierungs-App und zum Scannen eines QR-Codes geführt, um sein Konto hinzuzufügen. Die servergesteuerte Interaktion ist ausgesprochen benutzerfreundlich!
 - Bei Ablauf des Kennworts kann der Benutzer sein Kennwort im selben Dialogfeld ändern (zusätzliche Felder für die Eingabe des alten und neuen Kennworts werden angezeigt).
 - Ermöglicht das Branding des Mandanten oder der Anwendung (Images) durch den Azure AD-Mandantenadministrator/-Anwendungsbesitzer.
 - Der Benutzer kann seine Einwilligung geben, dass die Anwendung unmittelbar nach der Authentifizierung im Namen des Benutzers Zugriff auf Ressourcen/Geltungsbereiche erhält.
 
 ### <a name="embedded-vs-system-web-ui"></a>Eingebettete Webbenutzeroberfläche im Vergleich zur System-Webbenutzeroberfläche
 
-MSAL.NET ist eine Bibliothek mit mehreren Frameworks und frameworkspezifischem Code zum Hosten eines Browsers in einem Benutzeroberflächen-Steuerelement (in .Net Classic wird z. B. WinForms verwendet, in Xamarin werden native mobile Steuerelemente verwendet und so weiter). Dieses Steuerelement wird als `embedded`-Webbenutzeroberfläche bezeichnet. Alternativ kann MSAL.NET auch den Standardsystembrowser des Betriebssystems starten.
+MSAL.NET ist eine Bibliothek mit mehreren Frameworks und verfügt über frameworkspezifischen Code zum Hosten eines Browsers in einem Benutzeroberflächen-Steuerelement (in .NET Classic wird z. B. WinForms verwendet, in Xamarin werden native mobile Steuerelemente verwendet und so weiter). Dieses Steuerelement wird als `embedded`-Webbenutzeroberfläche bezeichnet. Alternativ kann MSAL.NET auch den Standardsystembrowser des Betriebssystems starten.
 
 Im Allgemeinen wird empfohlen, den Plattformstandard zu verwenden, und das ist in der Regel der Systembrowser. Der Systembrowser kann die Benutzer besser speichern, die sich zuvor angemeldet haben. Wenn Sie dieses Verhalten ändern müssen, verwenden Sie `WithUseEmbeddedWebView(bool)`.
 
@@ -101,8 +98,7 @@ IPublicClientApplication pca = PublicClientApplicationBuilder
 
 ### <a name="linux-and-mac"></a>Linux und MAC
 
-Unter Linux öffnet MSAL.NET den Standardbrowser des Betriebssystems mit dem Tool „xdg-open“. Führen Sie das Tool zur Problembehandlung über ein Terminal aus. Beispiel: `xdg-open "https://www.bing.com"`  
-Auf dem Mac wird der Browser durch Aufrufen von `open <url>` geöffnet.
+Unter Linux öffnet MSAL.NET den Standardbrowser des Betriebssystems mit dem Tool „xdg-open“. Führen Sie das Tool zur Problembehandlung über ein Terminal aus, z. B. `xdg-open "https://www.bing.com"`. Auf dem Mac wird der Browser durch Aufrufen von `open <url>` geöffnet.
 
 ### <a name="customizing-the-experience"></a>Anpassen der Benutzeroberfläche
 
@@ -214,7 +210,7 @@ Angenommen, Sie möchten für Apps, die im Browser ausgeführt werden, SSO über
 
 Abhängig von dem durch diese Methode zurückgegebenen Wert und Ihren Anforderungen können Sie eine Entscheidung treffen:
 
-- Sie können eine benutzerdefinierte Fehlermeldung an den Benutzer zurückgeben. Beispiel:  "Installieren Sie Chrome, um die Authentifizierung fortzusetzen" – ODER –
+- Sie können eine benutzerdefinierte Fehlermeldung an den Benutzer zurückgeben. Beispiel: "Installieren Sie Chrome, um die Authentifizierung fortzusetzen" – ODER –
 - Sie können auf die Option für eingebettete Webansichten zurückgreifen und die Benutzeroberfläche als eingebettete Webansicht starten.
 
 Im folgenden Code ist die Option für eingebettete Webansichten dargestellt:

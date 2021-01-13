@@ -1,49 +1,39 @@
 ---
-title: Automatisieren der Ressourcenbereitstellung für eine Funktions-App in Azure Functions | Microsoft-Dokumentation
+title: Automatisieren der Funktions-App-Ressourcenbereitstellung in Azure
 description: Hier erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erstellen, die Ihre Funktions-App bereitstellt.
-services: Functions
-documtationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, Funktionen, serverlose Architektur, Infrastruktur als Code, Azure Resource Manager
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
-ms.service: azure-functions
-ms.server: functions
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: glenga
-ms.openlocfilehash: 976121e2fd7af280ccc959ba2a93aceb4ae2bdea
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 708478f50078276245a7dfab7d185dd50d597407
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276830"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589796"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
 Sie können mithilfe einer Azure Resource Manager-Vorlage eine Funktions-App bereitstellen. In diesem Artikel werden die erforderlichen Ressourcen und die Parameter hierfür beschrieben. Abhängig von den [Triggern und Bindungen](functions-triggers-bindings.md) in Ihrer Funktions-App müssen Sie möglicherweise weitere Ressourcen bereitstellen.
 
-Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
+Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md).
 
 Beispielvorlagen finden Sie unter:
 - [Funktions-App im Verbrauchsplan]
 - [Funktions-App im Azure App Service-Plan]
 
-> [!NOTE]
-> Der Premium-Plan zum Hosten von Azure Functions befindet sich derzeit in der Vorschauphase. Weitere Informationen finden Sie unter [Premium-Plan (Premium-Tarif) für Azure Functions (Vorschau)](functions-premium-plan.md).
-
 ## <a name="required-resources"></a>Erforderliche Ressourcen
 
 Eine Azure Functions-Bereitstellung besteht in der Regel aus diesen Ressourcen:
 
-| Resource                                                                           | Anforderung | Syntax- und Eigenschaftenverweis                                                         |   |
-|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Eine Funktions-App                                                                     | Erforderlich    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| Ein [Azure Storage](../storage/index.yml)-Konto                                   | Erforderlich    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| Eine [Application Insights](../azure-monitor/app/app-insights-overview.md)-Komponente | Optional    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
-| [Hostingplan](./functions-scale.md)                                             | Optional<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
+| Resource                                                                           | Anforderung | Syntax- und Eigenschaftenverweis                                                         |
+|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
+| Eine Funktions-App                                                                     | Erforderlich    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |
+| Ein [Azure Storage](../storage/index.yml)-Konto                                   | Erforderlich    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| Eine [Application Insights](../azure-monitor/app/app-insights-overview.md)-Komponente | Optional    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |
+| [Hostingplan](./functions-scale.md)                                             | Optional<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |
 
-<sup>1</sup>Ein Hostingplan ist nur erforderlich, wenn Sie Ihre Funktions-App unter einem [Premium-Plan](./functions-premium-plan.md) (als Vorschau verfügbar) oder einem [App Service-Plan](../app-service/overview-hosting-plans.md) ausführen.
+<sup>1</sup> Ein Hostingplan ist nur erforderlich, wenn Sie Ihre Funktions-App im Rahmen eines [Premium-Plans](./functions-premium-plan.md) oder [App Service-Plans](../app-service/overview-hosting-plans.md) ausführen.
 
 > [!TIP]
 > Obwohl nicht erforderlich, sollten Sie unbedingt Application Insights für Ihre App konfigurieren.
@@ -51,17 +41,17 @@ Eine Azure Functions-Bereitstellung besteht in der Regel aus diesen Ressourcen:
 <a name="storage"></a>
 ### <a name="storage-account"></a>Speicherkonto
 
-Für eine Funktions-App wird ein Azure Storage-Konto benötigt. Sie benötigen ein Konto für allgemeine Zwecke, das Blobs, Tabellen, Warteschlangen und Dateien unterstützt. Weitere Informationen finden Sie unter [Anforderungen an das Speicherkonto](functions-create-function-app-portal.md#storage-account-requirements).
+Für eine Funktions-App wird ein Azure Storage-Konto benötigt. Sie benötigen ein Konto für allgemeine Zwecke, das Blobs, Tabellen, Warteschlangen und Dateien unterstützt. Weitere Informationen finden Sie unter [Anforderungen an das Speicherkonto](storage-considerations.md#storage-account-requirements).
 
 ```json
 {
     "type": "Microsoft.Storage/storageAccounts",
     "name": "[variables('storageAccountName')]",
-    "apiVersion": "2018-07-01",
+    "apiVersion": "2019-06-01",
     "location": "[resourceGroup().location]",
     "kind": "StorageV2",
-    "properties": {
-        "accountType": "[parameters('storageAccountType')]"
+    "sku": {
+        "name": "[parameters('storageAccountType')]"
     }
 }
 ```
@@ -76,11 +66,11 @@ Diese Eigenschaften werden in der `appSettings`-Sammlung im `siteConfig`-Objekt 
 "appSettings": [
     {
         "name": "AzureWebJobsStorage",
-        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
     },
     {
         "name": "AzureWebJobsDashboard",
-        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
     }
 ]
 ```
@@ -101,7 +91,7 @@ Sie sollten Application Insights zur Überwachung Ihrer Funktions-Apps verwenden
             },
             "properties": {
                 "Application_Type": "web",
-                "ApplicationId": "[variables('functionAppName')]"
+                "ApplicationId": "[variables('appInsightsName')]"
             }
         },
 ```
@@ -121,7 +111,7 @@ Darüber hinaus muss der Instrumentierungsschlüssel für die Funktions-App mit 
 
 Die Definition des Hostingplans variiert und kann eine der folgenden sein:
 * [Verbrauchsplan](#consumption) (Standard)
-* [Premium-Plan](#premium) (in der Vorschau)
+* [Premium-Plan](#premium)
 * [App Service-Plan](#app-service-plan)
 
 ### <a name="function-app"></a>Funktionen-App
@@ -139,6 +129,7 @@ Die Ressource für die Funktions-App wird mithilfe einer Ressource vom Typ **Mic
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
         "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
     ]
+}
 ```
 
 > [!IMPORTANT]
@@ -148,9 +139,9 @@ Eine Funktions-App muss diese Anwendungseinstellungen enthalten:
 
 | Einstellungsname                 | BESCHREIBUNG                                                                               | Beispielwerte                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
-| AzureWebJobsStorage          | Eine Verbindungszeichenfolge für eine Verbindung mit einem Speicherkonto, dass die Functions-Runtime für die interne Warteschlange verwendet | Siehe [Speicherkonto](#storage)       |
+| AzureWebJobsStorage          | Eine Verbindungszeichenfolge für eine Verbindung mit einem Speicherkonto, das die Functions-Runtime für die interne Warteschlange verwendet | Siehe [Speicherkonto](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Die Version der Azure Functions-Runtime                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | Der Sprachstapel für Funktionen in dieser App                                   | `dotnet`, `node`, `java` oder `python` |
+| FUNCTIONS_WORKER_RUNTIME     | Der Sprachstapel für Funktionen in dieser App                                   | `dotnet`, `node`, `java`, `python` oder `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | Nur erforderlich, wenn Sie den `node`-Sprachstapel verwenden, gibt die zu verwendende Version an              | `10.14.1`                             |
 
 Diese Eigenschaften werden in der `appSettings`-Sammlung in der `siteConfig`-Eigenschaft angegeben:
@@ -161,7 +152,7 @@ Diese Eigenschaften werden in der `appSettings`-Sammlung in der `siteConfig`-Eig
         "appSettings": [
             {
                 "name": "AzureWebJobsStorage",
-                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
             },
             {
                 "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -184,7 +175,7 @@ Diese Eigenschaften werden in der `appSettings`-Sammlung in der `siteConfig`-Eig
 
 ## <a name="deploy-on-consumption-plan"></a>Bereitstellen im Verbrauchsplan
 
-Der Verbrauchsplan weist automatisch Computeleistung zu, wenn Ihr Code ausgeführt wird, und skaliert diese bei Bedarf horizontal hoch, um die Last zu verarbeiten. Wird der Code nicht mehr ausgeführt, wird die Leistung wieder herunterskaliert. Sie müssen für VMs im Leerlauf nicht bezahlen und auch keine Kapazitäten im Voraus reservieren. Weitere Informationen finden Sie unter [Skalierung und Hosting von Azure Functions](functions-scale.md#consumption-plan).
+Der Verbrauchsplan weist automatisch Computeleistung zu, wenn Ihr Code ausgeführt wird, und skaliert diese bei Bedarf horizontal hoch, um die Last zu verarbeiten. Wenn der Code nicht mehr ausgeführt wird, wird die Leistung wieder horizontal herunterskaliert. Sie müssen für VMs im Leerlauf nicht bezahlen und auch keine Kapazitäten im Voraus reservieren. Weitere Informationen finden Sie unter [Skalierung und Hosting von Azure Functions](functions-scale.md#consumption-plan).
 
 Eine Beispielvorlage für den Azure Resource Manager finden Sie unter [Funktions-App im Verbrauchsplan].
 
@@ -217,7 +208,7 @@ Der Verbrauchsplan ist ein besonderer Typ einer „Serverfarm“-Ressource. Für
 > [!NOTE]
 > Der Verbrauchsplan kann nicht explizit für Linux definiert werden. Er wird automatisch erstellt.
 
-Wenn Sie Ihren Verbrauchsplan explizit definieren, müssen Sie die `serverFarmId`-Eigenschaft der App so festlegen, dass sie auf die Ressourcen-ID des Plans verweist. Sie sollten sicherstellen, dass die Funktions-App auch eine `dependsOn`-Einstellung für den Plan hat.
+Wenn Sie Ihren Verbrauchstarif explizit definieren, müssen Sie die `serverFarmId`-Eigenschaft der App so festlegen, dass sie auf die Ressourcen-ID des Plans verweist. Sie sollten sicherstellen, dass die Funktions-App auch eine `dependsOn`-Einstellung für den Plan hat.
 
 ### <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
@@ -240,11 +231,11 @@ Unter Windows erfordert ein Verbrauchsplan zwei zusätzliche Einstellungen in de
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "WEBSITE_CONTENTSHARE",
@@ -287,7 +278,7 @@ Unter Linux muss `kind` der Funktions-App auf `functionapp,linux` festgelegt wer
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountName'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountName'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -308,27 +299,33 @@ Unter Linux muss `kind` der Funktions-App auf `functionapp,linux` festgelegt wer
 }
 ```
 
-
-
 <a name="premium"></a>
 
 ## <a name="deploy-on-premium-plan"></a>Bereitstellen im Premium-Plan
 
-Der Premium-Plan bietet die gleiche Skalierung wie der Verbrauchsplan, umfasst jedoch dedizierte Ressourcen und zusätzliche Funktionen. Weitere Informationen finden Sie unter [Premium-Plan (Premium-Tarif) für Azure Functions (Vorschau)](./functions-premium-plan.md).
+Der Premium-Tarif bietet die gleiche Skalierung wie der Verbrauchstarif, umfasst jedoch dedizierte Ressourcen und zusätzliche Funktionen. Weitere Informationen finden Sie unter [Premium-Tarif für Azure Functions](./functions-premium-plan.md).
 
 ### <a name="create-a-premium-plan"></a>Erstellen eines Premium-Plans
 
-Ein Premium-Plan ist eine besondere Art von „Serverfarm“-Ressource. Sie können ihn angeben, indem Sie entweder `EP1`, `EP2` oder `EP3` für den `sku`-Eigenschaftswert angeben.
+Ein Premium-Plan ist eine besondere Art von „Serverfarm“-Ressource. Sie können ihn angeben, indem Sie entweder `EP1`, `EP2` oder `EP3` für den `Name`-Eigenschaftswert im `sku`-[Beschreibungsobjekt](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object) angeben.
 
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
-    "name": "[variables('hostingPlanName')]",
+    "apiVersion": "2018-02-01",
+    "name": "[parameters('hostingPlanName')]",
     "location": "[resourceGroup().location]",
     "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "EP1"
+        "name": "[parameters('hostingPlanName')]",
+        "workerSize": "[parameters('workerSize')]",
+        "workerSizeId": "[parameters('workerSizeId')]",
+        "numberOfWorkers": "[parameters('numberOfWorkers')]",
+        "hostingEnvironment": "[parameters('hostingEnvironment')]",
+        "maximumElasticWorkerCount": "20"
+    },
+    "sku": {
+        "Tier": "ElasticPremium",
+        "Name": "EP1"
     }
 }
 ```
@@ -354,11 +351,11 @@ Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem Premium-Plan mu
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "WEBSITE_CONTENTSHARE",
@@ -382,8 +379,7 @@ Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem Premium-Plan mu
 }
 ```
 
-
-<a name="app-service-plan"></a> 
+<a name="app-service-plan"></a>
 
 ## <a name="deploy-on-app-service-plan"></a>Bereitstellen in einem App Service-Plan
 
@@ -398,15 +394,15 @@ Ein App Service-Plan ist als „Serverfarm“-Ressource definiert.
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
+    "apiVersion": "2018-02-01",
     "name": "[variables('hostingPlanName')]",
     "location": "[resourceGroup().location]",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "hostingEnvironment": "",
-        "numberOfWorkers": 1
+    "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
     }
 }
 ```
@@ -416,21 +412,21 @@ Um Ihre App unter Linux auszuführen, müssen Sie auch `kind` als `Linux` festle
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
+    "apiVersion": "2018-02-01",
     "name": "[variables('hostingPlanName')]",
     "location": "[resourceGroup().location]",
     "kind": "Linux",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "hostingEnvironment": "",
-        "numberOfWorkers": 1
+    "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
     }
 }
 ```
 
-### <a name="create-a-function-app"></a>Erstellen einer Funktionen-App 
+### <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
 Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem App Service-Plan muss die Ressourcen-ID des zuvor erstellten Plans festgelegt werden.
 
@@ -451,7 +447,7 @@ Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem App Service-Pla
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -496,7 +492,7 @@ Linux-Apps sollten auch eine `linuxFxVersion`-Eigenschaft unter `siteConfig` ent
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -517,7 +513,7 @@ Linux-Apps sollten auch eine `linuxFxVersion`-Eigenschaft unter `siteConfig` ent
 }
 ```
 
-Wenn Sie [ein benutzerdefiniertes Containerimage bereitstellen](./functions-create-function-linux-custom-image.md), müssen Sie es mit `linuxFxVersion` angeben und eine Konfiguration einbeziehen, die das Pullen Ihres Images ermöglicht, wie in [App Service unter Linux – Dokumentation](/azure/app-service/containers). Setzen Sie außerdem `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf `false`, da Ihr App-Inhalt im Container selbst bereitgestellt wird:
+Wenn Sie [ein benutzerdefiniertes Containerimage bereitstellen](./functions-create-function-linux-custom-image.md), müssen Sie es mit `linuxFxVersion` angeben und eine Konfiguration einbeziehen, die das Pullen Ihres Images ermöglicht, wie in [App Service unter Linux – Dokumentation](../app-service/index.yml). Setzen Sie außerdem `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf `false`, da Ihr App-Inhalt im Container selbst bereitgestellt wird:
 
 ```json
 {
@@ -536,7 +532,7 @@ Wenn Sie [ein benutzerdefiniertes Containerimage bereitstellen](./functions-crea
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -618,8 +614,8 @@ Eine Funktions-App verfügt über viele untergeordnete Ressourcen, die Sie in Ih
           "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
         ],
         "properties": {
-          "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]",
-          "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]",
+          "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]",
+          "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]",
           "FUNCTIONS_EXTENSION_VERSION": "~2",
           "FUNCTIONS_WORKER_RUNTIME": "dotnet",
           "Project": "src"
@@ -648,10 +644,10 @@ Eine Funktions-App verfügt über viele untergeordnete Ressourcen, die Sie in Ih
 
 Sie können Ihre Vorlage mit einer der folgenden Methoden bereitstellen:
 
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-* [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
-* [REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+* [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/templates/deploy-cli.md)
+* [Azure portal](../azure-resource-manager/templates/deploy-portal.md)
+* [REST-API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Schaltfläche zum Bereitstellen in Azure
 

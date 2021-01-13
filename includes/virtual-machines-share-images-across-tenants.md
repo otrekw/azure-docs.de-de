@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: cf05468af17a4fafa7c81c7ad8bc89b3306a54af
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: f74d4cbc17e49345534a37e9e6612a36e19be295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286306"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "73903705"
 ---
-Mithilfe von Katalogen mit freigegebenen Images können Sie Images über RBAC freigeben. Sie können RBAC verwenden, um Images innerhalb Ihres Mandanten und sogar für Personen außerhalb Ihres Mandanten freizugeben. Wenn Sie jedoch Images außerhalb Ihres Azure-Mandanten freigeben möchten, sollten Sie eine App-Registrierung erstellen, um die Freigabe zu erleichtern.  Die Verwendung einer App-Registrierung kann komplexere Freigabeszenarien ermöglichen, wie z.B.: 
+Wenn Sie jedoch Images außerhalb Ihres Azure-Mandanten freigeben möchten, sollten Sie eine App-Registrierung erstellen, um die Freigabe zu erleichtern.  Die Verwendung einer App-Registrierung kann komplexere Freigabeszenarien ermöglichen, wie z.B.: 
 
 * Verwaltung freigegebener Images, wenn ein Unternehmen ein anderes erwirbt, und die Azure-Infrastruktur ist auf verschiedene Mandanten verteilt. 
 * Azure-Partner verwalten Azure-Infrastruktur im Namen ihrer Kunden. Die Anpassung der Images erfolgt innerhalb des Partners, aber die Bereitstellung der Infrastruktur erfolgt beim Mandanten des Kunden. 
@@ -46,7 +46,7 @@ Erteilen Sie der App-Registrierung die Berechtigung, den Katalog mit freigegeben
 
 ## <a name="give-tenant-2-access"></a>Mandant 2 Zugriff gewähren
 
-Gewähren Sie Mandant 2 durch Anfordern einer Anmeldung mit einem Browser Zugriff auf die Anwendung. Ersetzen Sie *\<Tenant2-ID>* durch die Mandanten-ID des Mandanten, für den Sie Ihren Imagekatalog freigeben möchten. Ersetzen Sie *\<Anwendungs-ID (Client)>* durch die Anwendungs-ID der von Ihnen erstellten App-Registrierung. Wenn Sie die Ersetzungen vorgenommen haben, fügen Sie die URL in einen Browser ein, und folgen Sie den Anmeldeaufforderungen, um sich bei Mandant 2 anzumelden.
+Gewähren Sie Mandant 2 durch Anfordern einer Anmeldung mit einem Browser Zugriff auf die Anwendung. Ersetzen Sie *\<Tenant2 ID>* durch die Mandanten-ID des Mandanten, für den Sie Ihren Imagekatalog freigeben möchten. Ersetzen Sie *\<Application (client) ID>* durch die Anwendungs-ID der von Ihnen erstellten App-Registrierung. Wenn Sie die Ersetzungen vorgenommen haben, fügen Sie die URL in einen Browser ein, und folgen Sie den Anmeldeaufforderungen, um sich bei Mandant 2 anzumelden.
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 

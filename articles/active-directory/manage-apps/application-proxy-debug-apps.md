@@ -2,21 +2,21 @@
 title: 'Debuggen von Anwendungsproxyanwendungen: Azure Active Directory | Microsoft-Dokumentation'
 description: Informationen zum Debuggen von Problemen mit Azure Active Directory-Anwendungsproxyanwendungen (Azure AD).
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 06b8edcb0f912bfd35137e197253b20b9459448f
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: e61ea30f01e8ae141d24c9bd91b08edef4dbe74e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057746"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85555062"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Debuggen von Problemen mit Anwendungsproxyanwendungen 
 
@@ -39,7 +39,7 @@ Dieses Flussdiagramm führt Sie durch die Schritte zum Debuggen einiger der häu
 
 ![Flussdiagramm mit den Schritten zum Debuggen einer Anwendung](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
-|  | Aktion | BESCHREIBUNG | 
+| Schritt | Aktion | BESCHREIBUNG |
 |---------|---------|---------|
 |1 | Browser öffnen, auf die App zugreifen und Anmeldeinformationen eingeben | Versuchen Sie, sich mit Ihren Anmeldeinformationen bei der App anzumelden, und überprüfen Sie, ob benutzerbezogene Fehler auftreten, z. B. [Zugriff auf diese Unternehmens-App nicht möglich](application-proxy-sign-in-bad-gateway-timeout-error.md). |
 |2 | Benutzerzuweisung zur App überprüfen | Stellen Sie sicher, dass Ihr Benutzerkonto über die Berechtigung verfügt, innerhalb des Unternehmensnetzwerks auf die App zuzugreifen, und testen Sie dann die Anmeldung bei der App anhand der Schritte in [Testen der Anwendung](application-proxy-add-on-premises-application.md#test-the-application). Falls weiterhin Probleme bei der Anmeldung auftreten, finden Sie unter [Beheben von Anmeldefehlern](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) weitere Informationen.  |
@@ -48,7 +48,7 @@ Dieses Flussdiagramm führt Sie durch die Schritte zum Debuggen einiger der häu
 |5 | Wenn weiterhin Probleme auftreten, Connectors debuggen | Möglicherweise liegt ein Konnektivitätsproblem zwischen dem Proxy und dem Connector oder zwischen dem Connector und dem Back-End vor. Weitere Informationen finden Sie im Artikel zur Problembehandlung [Debug Application Proxy connectors](application-proxy-debug-connectors.md) (Debuggen von Anwendungsproxyconnectors). |
 |6 | Alle Ressourcen veröffentlichen, mit Entwicklertools des Browsers überprüfen und Links reparieren | Stellen Sie sicher, dass der Veröffentlichungspfad alle erforderlichen Bilder, Skripts und Stylesheets für Ihre Anwendung enthält. Ausführliche Informationen finden Sie unter [Hinzufügen einer lokalen App zu Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). <br></br>Verwenden Sie die Entwicklungstools des Browsers (F12-Tools in Internet Explorer oder Microsoft Edge), und überprüfen Sie wie unter [Anwendungsseite für eine Anwendungsproxyanwendung wird nicht richtig angezeigt](application-proxy-page-appearance-broken-problem.md) beschrieben, ob Probleme mit der Veröffentlichung vorliegen. <br></br>Lesen Sie unter [Links auf der Seite funktionieren nicht](application-proxy-page-links-broken-problem.md) die Methoden zum Beheben fehlerhafter Links nach. |
 |7 | Netzwerklatenz überprüfen | Wenn die Seite langsam geladen wird, lesen Sie unter [Reduzieren der Wartezeit](application-proxy-network-topology.md#considerations-for-reducing-latency) die Möglichkeiten zum Minimieren der Netzwerklatenz nach. | 
-|8 | Weitere Artikel zur Problembehandlung zurate ziehen | Wenn die Probleme weiterhin auftreten, finden Sie in der [Dokumentation zur Problembehandlung für Anwendungsproxys](application-proxy-page-appearance-broken-problem.md) weitere Artikel zum Beheben von Problemen. |
+|8 | Weitere Artikel zur Problembehandlung zurate ziehen | Wenn die Probleme weiterhin auftreten, finden Sie in der [Dokumentation zur Problembehandlung für Anwendungsproxys](application-proxy-troubleshoot.md) weitere Artikel zum Beheben von Problemen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

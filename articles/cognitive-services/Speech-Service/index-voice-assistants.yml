@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Dokumentation zu Sprachassistenten
+summary: Sprachassistenten, die den Speech-Dienst verwenden, ermöglichen es Entwicklern, natürliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen.
+metadata:
+  title: 'Dokumentation zu Sprachassistenten: Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: trevorbye
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 03/10/2020
+  ms.author: trbye
+  ms.openlocfilehash: 8b10f817abf73172018e904eb46d4c9e20b844e2
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95015386"
+landingContent:
+- title: Informationen zu Sprach-Assistenten
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist ein Sprachassistent?
+      url: voice-assistants.md
+    - text: Was ist eine App für benutzerdefinierte Befehle?
+      url: custom-commands.md
+    - text: Was ist Direct Line Speech?
+      url: direct-line-speech.md
+  - linkListType: reference
+    links:
+    - text: Häufig gestellte Fragen zu Sprachassistenten
+      url: faq-voice-assistants.md
+    - text: Preise für Sprachassistenten
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+  - linkListType: get-started
+    links:
+    - text: Erstellen und Bereitstellen eines Sprachassistentenbeispiels in Ihrem Azure-Abonnement (GitHub)
+      url: https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant
+- title: Entwickeln mit benutzerdefinierten Befehlen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen eines Sprachassistenten mithilfe von benutzerdefinierten Befehlen
+      url: quickstart-custom-commands-application.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen einer Anwendung mit einfachen Befehlen
+      url: how-to-custom-commands-create-application-with-simple-commands.md
+    - text: Hinzufügen von Parametern zu Befehlen
+      url: how-to-custom-commands-add-parameters-to-commands.md
+    - text: Hinzufügen von Validierungen zu Parametern und Korrekturaufforderungen
+      url: how-to-custom-commands-add-parameter-configuration.md
+    - text: Integrieren mit dem Speech SDK
+      url: how-to-custom-commands-setup-speech-sdk.md
+    - text: Einrichten von Continuous Deployment für Ihre App für benutzerdefinierte Befehle mit Azure DevOps
+      url: how-to-custom-commands-deploy-cicd.md
+- title: Entwickeln mit Direct Line Speech
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# (UWP)
+      url: ./quickstarts/voice-assistants.md?pivots=programming-language-csharp
+    - text: Java (Windows, macOS, Linux)
+      url: ./quickstarts/voice-assistants.md?pivots=programming-language-java
+    - text: Java (Android)
+      url: ./quickstarts/voice-assistants.md?pivots=programming-language-java
+  - linkListType: tutorial
+    links:
+    - text: Ermöglichen der Verwendung von Sprache mit dem Speech SDK
+      url: tutorial-voice-enable-your-bot-speech-sdk.md
+- title: Entwickeln mit einem benutzerdefinierten Schlüsselwort
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen eines benutzerdefinierten Schlüsselworts
+      url: ./custom-keyword-basics.md
+  - linkListType: reference
+    links:
+    - text: Benutzerdefinierte Benennungsrichtlinien für Schlüsselwörter
+      url: ./custom-keyword-overview.md
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

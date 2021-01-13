@@ -1,22 +1,18 @@
 ---
 title: Einblicke in Azure Monitor-Ressourcengruppen | Microsoft-Dokumentation
 description: Erfahren Sie mit Azure Monitor mehr über die Integrität und Leistung Ihrer verteilten Anwendungen und Dienste auf Ressourcengruppenebene.
-services: azure-monitor
-author: NumberByColors
-manager: carmonm
-ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.subservice: ''
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.author: daviste
-ms.openlocfilehash: d5c07e0d4aca8bda42ea9f78a1475ea7bb5861f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119419"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87045769"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Überwachen von Ressourcengruppen mit Azure Monitor (Vorschauversion)
 
@@ -50,10 +46,10 @@ Die Seite mit den Einblicken in die Ressourcengruppe bietet mehrere Tools zur Di
 
    |         |          |
    | ---------------- |:-----|
-   | [**Warnungen**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  Dient zum Anzeigen, Erstellen und Verwalten von Warnungen. |
-   | [**Metriken**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | Dient zum Visualisieren und Untersuchen Ihrer auf Metriken basierenden Daten.    |
-   | [**Aktivitätsprotokolle**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Enthält Ereignisse auf Abonnementebene, die in Azure aufgetreten sind.  |
-   | [**Anwendungszuordnung**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | Navigieren Sie durch die Topologie Ihrer verteilten Anwendung, um Leistungsengpässe oder Fehlerquellen auszumachen. |
+   | [**Warnungen**](../platform/alerts-overview.md)      |  Dient zum Anzeigen, Erstellen und Verwalten von Warnungen. |
+   | [**Metriken**](../platform/data-platform.md) | Dient zum Visualisieren und Untersuchen Ihrer auf Metriken basierenden Daten.    |
+   | [**Aktivitätsprotokolle**](../platform/platform-logs-overview.md) | Enthält Ereignisse auf Abonnementebene, die in Azure aufgetreten sind.  |
+   | [**Anwendungszuordnung**](../app/app-map.md) | Navigieren Sie durch die Topologie Ihrer verteilten Anwendung, um Leistungsengpässe oder Fehlerquellen auszumachen. |
 
 ## <a name="failures-and-performance"></a>Fehler und Leistung
 
@@ -121,6 +117,6 @@ Azure Monitor für Ressourcengruppen nutzt das Warnungsverwaltungssystem von Azu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
-- [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Azure Monitor-Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)
+- [Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md)
+- [Azure Resource Health](../../service-health/resource-health-overview.md)
+- [Azure Monitor-Warnungen](../platform/alerts-overview.md)

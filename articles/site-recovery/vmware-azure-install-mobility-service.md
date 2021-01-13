@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: f1a96302d180f3b4b179f42013232f3b48d4e2b0
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016363"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90524996"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Vorbereiten des Quellcomputers für die Pushinstallation des Mobilitäts-Agents
 
@@ -25,14 +25,18 @@ Führen Sie auf jedem Windows-Computer, den Sie schützen möchten, folgende Sch
 1. Erstellen Sie ein Konto, das vom Prozessserver zum Zugreifen auf den Computer verwendet werden kann. Das Konto muss über Administratorrechte verfügen (entweder lokal oder für die Domäne). Verwenden Sie dieses Konto nur für die Pushinstallation und für Agent-Updates.
 2. Wenn Sie kein Domänenkonto verwenden, deaktivieren Sie die Zugriffssteuerung für Remotebenutzer auf dem lokalen Computer wie folgt:
     - Fügen Sie unter dem Registrierungsschlüssel „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System“ einen neuen DWORD-Eintrag hinzu: **LocalAccountTokenFilterPolicy**. Legen Sie den Wert auf **1** fest.
-    -  Führen Sie den folgenden Befehl aus, wenn Sie eine Eingabeaufforderung verwenden möchten:  
-   `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d
+    -  Führen Sie den folgenden Befehl aus, wenn Sie eine Eingabeaufforderung verwenden möchten:
+    
+       ```
+       REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f
+       ```
+
 3. Wählen Sie in der Windows-Firewall des Computers, den Sie schützen möchten, **Allow an app or feature through Firewall** (App oder Feature durch die Windows-Firewall zulassen) aus. Aktivieren Sie **Datei- und Druckerfreigabe** und **Windows-Verwaltungsinstrumentation (WMI)** . Für Computer, die zu einer Domäne gehören, können Sie die Firewalleinstellungen konfigurieren, indem Sie ein Gruppenrichtlinienobjekt (Group Policy Object, GPO) verwenden.
 
    ![Firewalleinstellungen](./media/vmware-azure-install-mobility-service/mobility1.png)
 
 4. Fügen Sie das Konto hinzu, das Sie im CSPSConfigtool erstellt haben. Melden Sie sich dazu beim Konfigurationsserver an.
-5. Öffnen Sie die Datei **cspsconfigtool.exe**. Sie ist als Verknüpfung auf dem Desktop und im Ordner „%ProgramData%\home\svsystems\bin“ verfügbar.
+5. Öffnen Sie die Datei **cspsconfigtool.exe**. Sie finden sie als Verknüpfung auf dem Desktop und im Ordner „%ProgramData%\ASR\home\svsystems\bin“.
 6. Wählen Sie auf der Registerkarte **Konten verwalten** die Option **Konto hinzufügen**.
 7. Fügen Sie das von Ihnen erstellte Konto hinzu.
 8. Geben Sie die Anmeldeinformationen ein, die Sie verwenden, wenn Sie die Replikation für einen Computer aktivieren.
@@ -53,12 +57,13 @@ Führen Sie auf jedem Linux-Computer, den Sie schützen möchten, folgende Schri
 
       ![Linux](./media/vmware-azure-install-mobility-service/mobility2.png)
 
-8. Starten Sie den Dienst **sshd** neu.
+8. Starten Sie den **sshd**-Dienst neu.
 9. Fügen Sie das Konto hinzu, das Sie im CSPSConfigtool erstellt haben. Melden Sie sich dazu beim Konfigurationsserver an.
 10. Öffnen Sie die Datei **cspsconfigtool.exe**. Sie ist als Verknüpfung auf dem Desktop und im Ordner „%ProgramData%\home\svsystems\bin“ verfügbar.
 11. Wählen Sie auf der Registerkarte **Konten verwalten** die Option **Konto hinzufügen**.
 12. Fügen Sie das von Ihnen erstellte Konto hinzu.
 13. Geben Sie die Anmeldeinformationen ein, die Sie verwenden, wenn Sie die Replikation für einen Computer aktivieren.
+1. Dies ist ein zusätzlicher Schritt zum Aktualisieren oder Schützen von SUSE Linux Enterprise Server 11 SP3- oder RHEL 5- oder CentOS 5- oder Debian 7-Computern. [Stellen Sie sicher, dass die neueste Version auf dem Konfigurationsserver verfügbar ist.](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)
 
 ## <a name="anti-virus-on-replicated-machines"></a>Virenschutz auf replizierten Computern
 

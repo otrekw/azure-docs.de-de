@@ -1,57 +1,60 @@
 ---
-title: Inkrementelles Kopieren einer Tabelle mithilfe von Azure Data Factory | Microsoft-Dokumentation
-description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, die inkrementell Daten aus Azure SQL-Datenbank in Azure Blob Storage kopiert.
+title: Inkrementelles Kopieren einer Tabelle mithilfe von PowerShell
+description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, die Daten inkrementell aus Azure SQL-Datenbank in Azure Blob Storage kopiert.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: craigg
+ms.author: yexu
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.author: yexu
-ms.openlocfilehash: 604b859bc144331550db9b71e6b216e35fd2d88a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 65a2d06acc3461d881ad6f100f3720b217ef7634
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140600"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510208"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage
-In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage geladen werden. 
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mithilfe von PowerShell
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage geladen werden.
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
 > * Vorbereiten des Datenspeichers zum Speichern des Grenzwerts.
 > * Erstellen einer Data Factory.
-> * Erstellen Sie verknüpfte Dienste. 
+> * Erstellen Sie verknüpfte Dienste.
 > * Erstellen des Quell-, Senken-, Grenzwertdatasets
 > * Erstellen einer Pipeline.
 > * Ausführen der Pipeline.
-> * Überwachen der Pipelineausführung. 
+> * Überwachen der Pipelineausführung.
 
 ## <a name="overview"></a>Übersicht
-Allgemeines Lösungsdiagramm: 
+Allgemeines Lösungsdiagramm:
 
 ![Lädt Daten inkrementell](media/tutorial-Incrementally-copy-powershell/incrementally-load.png)
 
-Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt: 
+Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt:
 
 1. **Select the watermark column (Wählen Sie die Grenzwert-Spalte aus)** .
     Wählen Sie eine Spalte im Quelldatenspeicher aus, die verwendet werden kann, um die neuen oder aktualisierten Datensätze für jede Ausführung in Segmente aufzuteilen. Normalerweise steigen die Daten in dieser ausgewählten Spalte (z.B. Last_modify_time oder ID), wenn Zeilen erstellt oder aktualisiert werden. Der maximale Wert in dieser Spalte wird als Grenzwert verwendet.
 
 2. **Prepare a data store to store the watermark value (Vorbereiten eines Datenspeichers zum Speichern des Grenzwerts)** .   
     In diesem Tutorial speichern Sie den Grenzwert in einer SQL-Datenbank.
-    
-3. **Erstellen einer Pipeline mit dem folgenden Workflow:** 
-    
+
+3. **Erstellen einer Pipeline mit dem folgenden Workflow:**
+
     Die Pipeline in dieser Lösung enthält die folgenden Aktivitäten:
-  
-    * Erstellen Sie zwei Lookup-Aktivitäten. Verwenden Sie die erste Lookup-Aktivität, um den letzten Grenzwert abzurufen. Verwenden Sie die zweite Lookup-Aktivität, um den neuen Grenzwert abzurufen. Diese Grenzwerte werden an die Copy-Aktivität übergeben. 
-    * Erstellen Sie eine Copy-Aktivität, die Zeilen aus dem Quelldatenspeicher kopiert, wobei der Wert der Grenzwertspalte größer als der alte Grenzwert und kleiner als der neue Grenzwert ist. Anschließend werden die Deltadaten aus dem Quelldatenspeicher als neue Datei in einen Blobspeicher kopiert. 
-    * Erstellen Sie eine StoredProcedure-Aktivität, die den Grenzwert für die Pipeline aktualisiert, die nächstes Mal ausgeführt wird. 
+
+    * Erstellen Sie zwei Lookup-Aktivitäten. Verwenden Sie die erste Lookup-Aktivität, um den letzten Grenzwert abzurufen. Verwenden Sie die zweite Lookup-Aktivität, um den neuen Grenzwert abzurufen. Diese Grenzwerte werden an die Copy-Aktivität übergeben.
+    * Erstellen Sie eine Copy-Aktivität, die Zeilen aus dem Quelldatenspeicher kopiert, wobei der Wert der Grenzwertspalte größer als der alte Grenzwert und kleiner als der neue Grenzwert ist. Anschließend werden die Deltadaten aus dem Quelldatenspeicher als neue Datei in einen Blobspeicher kopiert.
+    * Erstellen Sie eine StoredProcedure-Aktivität, die den Grenzwert für die Pipeline aktualisiert, die nächstes Mal ausgeführt wird.
 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -60,15 +63,15 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als den Quelldatenspeicher. Wenn Sie keine SQL-Datenbank besitzen, finden Sie Schritte zum Erstellen einer solchen Datenbank unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../sql-database/sql-database-get-started-portal.md).
-* **Azure Storage**. Sie verwenden den Blobspeicher als Senkendatenspeicher. Wenn Sie kein Speicherkonto besitzen, finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md) Schritte zum Erstellen eines solchen Kontos. Erstellen Sie einen Container mit dem Namen „adftutorial“. 
+* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als den Quelldatenspeicher. Wenn Sie in Azure SQL-Datenbank noch keine Datenbank haben, lesen Sie [Erstellen einer Datenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md). Dort finden Sie die erforderlichen Schritte zum Erstellen einer solchen Datenbank.
+* **Azure Storage**. Sie verwenden den Blobspeicher als Senkendatenspeicher. Wenn Sie kein Speicherkonto besitzen, finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md) Schritte zum Erstellen eines solchen Kontos. Erstellen Sie einen Container mit dem Namen „adftutorial“. 
 * **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Erstellen einer Datenquelltabelle in Ihrer SQL-Datenbank
 1. Öffnen Sie SQL Server Management Studio. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf die Datenbank, und wählen Sie **Neue Abfrage**.
 
-2. Führen Sie den folgenden SQL-Befehl für Ihre SQL-Datenbank aus, um eine Tabelle mit dem Namen `data_source_table` als Quelldatenspeicher zu erstellen. 
-    
+2. Führen Sie den folgenden SQL-Befehl für Ihre SQL-Datenbank aus, um eine Tabelle mit dem Namen `data_source_table` als Quelldatenspeicher zu erstellen.
+
     ```sql
     create table data_source_table
     (
@@ -100,11 +103,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ### <a name="create-another-table-in-your-sql-database-to-store-the-high-watermark-value"></a>Erstellen einer anderen Tabelle in SQL-Datenbank zum Speichern des hohen Grenzwerts
 1. Führen Sie den folgenden SQL-Befehl für Ihre SQL-Datenbank aus, um eine Tabelle mit dem Namen `watermarktable` zum Speichern des Grenzwerts zu erstellen:  
-    
+
     ```sql
     create table watermarktable
     (
-    
+
     TableName varchar(255),
     WatermarkValue datetime,
     );
@@ -116,11 +119,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     VALUES ('data_source_table','1/1/2010 12:00:00 AM')    
     ```
 3. Überprüfen Sie die Daten in der Tabelle `watermarktable`.
-    
+
     ```sql
     Select * from watermarktable
     ```
-    Ausgabe: 
+    Ausgabe:
 
     ```
     TableName  | WatermarkValue
@@ -128,7 +131,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     data_source_table | 2010-01-01 00:00:00.000
     ```
 
-### <a name="create-a-stored-procedure-in-your-sql-database"></a>Erstellen einer gespeicherten Prozedur in Ihrer SQL-Datenbank 
+### <a name="create-a-stored-procedure-in-your-sql-database"></a>Erstellen einer gespeicherten Prozedur in Ihrer SQL-Datenbank
 
 Führen Sie den folgenden Befehl zum Erstellen einer gespeicherten Prozedur in Ihrer SQL-Datenbank aus.
 
@@ -137,16 +140,16 @@ CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varc
 AS
 
 BEGIN
-    
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime 
+
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime
 WHERE [TableName] = @TableName
-    
+
 END
 ```
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
-1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehlstext nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) in doppelten Anführungszeichen an, und führen Sie dann den Befehl aus. Ein Beispiel ist `"adfrg"`. 
+1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehlstext nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) in doppelten Anführungszeichen an, und führen Sie dann den Befehl aus. z. B. `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -154,30 +157,30 @@ END
 
     Beachten Sie, dass die Ressourcengruppe ggf. nicht überschrieben werden soll, falls sie bereits vorhanden ist. Weisen Sie der Variablen `$resourceGroupName` einen anderen Wert zu, und führen Sie den Befehl erneut aus.
 
-2. Definieren Sie eine Variable für den Speicherort der Data Factory. 
+2. Definieren Sie eine Variable für den Speicherort der Data Factory.
 
     ```powershell
     $location = "East US"
     ```
-3. Führen Sie den folgenden Befehl aus, um die Azure-Ressourcengruppe zu erstellen: 
+3. Führen Sie den folgenden Befehl aus, um die Azure-Ressourcengruppe zu erstellen:
 
     ```powershell
     New-AzResourceGroup $resourceGroupName $location
-    ``` 
+    ```
     Beachten Sie, dass die Ressourcengruppe ggf. nicht überschrieben werden soll, falls sie bereits vorhanden ist. Weisen Sie der Variablen `$resourceGroupName` einen anderen Wert zu, und führen Sie den Befehl erneut aus.
 
-4. Definieren Sie eine Variable für den Namen der Data Factory. 
+4. Definieren Sie eine Variable für den Namen der Data Factory.
 
     > [!IMPORTANT]
-    >  Aktualisieren Sie den Data Factory-Namen, damit er global eindeutig ist. Ein Beispiel hierfür ist ADFTutorialFactorySP1127. 
+    >  Aktualisieren Sie den Data Factory-Namen, damit er global eindeutig ist. Ein Beispiel hierfür ist ADFTutorialFactorySP1127.
 
     ```powershell
     $dataFactoryName = "ADFIncCopyTutorialFactory";
     ```
-5. Führen Sie zum Erstellen der Data Factory das folgende **Set-AzDataFactoryV2**-Cmdlet aus: 
-    
+5. Führen Sie zum Erstellen der Data Factory das Cmdlet **Set-AzDataFactoryV2** wie folgt aus:
+
     ```powershell       
-    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
     ```
 
 Beachten Sie folgende Punkte:
@@ -189,11 +192,11 @@ Beachten Sie folgende Punkte:
     ```
 
 * Damit Sie Data Factory-Instanzen erstellen können, muss das Benutzerkonto, mit dem Sie sich bei Azure anmelden, ein Mitglied der Rolle „Mitwirkender“ oder „Besitzer“ oder ein Administrator des Azure-Abonnements sein.
-* Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auf der folgenden Seite auswählen und dann **Analysen** erweitern, um **Data Factory** zu finden: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Die von der Data Factory verwendeten Datenspeicher (Storage, SQL-Datenbank usw.) und Computedienste (Azure HDInsight usw.) können sich in anderen Regionen befinden.
+* Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auf der folgenden Seite auswählen und dann **Analysen** erweitern, um **Data Factory** zu finden: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Die Datenspeicher (Storage, SQL-Datenbank, Azure SQL Managed Instance usw.) und Computeeinheiten (Azure HDInsight usw.), die von der Data Factory genutzt werden, können sich in anderen Regionen befinden.
 
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
-Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, können Sie verknüpfte Dienste in einer Data Factory erstellen. In diesem Abschnitt erstellen Sie verknüpfte Dienste für Ihr Speicherkonto und Ihre SQL-Datenbank. 
+Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, können Sie verknüpfte Dienste in einer Data Factory erstellen. In diesem Abschnitt erstellen Sie verknüpfte Dienste für Ihr Speicherkonto und SQL-Datenbank.
 
 ### <a name="create-a-storage-linked-service"></a>Erstellen eines verknüpften Speicherdiensts
 1. Erstellen Sie im Ordner „C:\ADF“ eine JSON-Datei mit dem Namen „AzureStorageLinkedService.json“ und folgendem Inhalt. (Erstellen Sie den Ordner „ADF“, wenn er noch nicht vorhanden ist.) Ersetzen Sie `<accountName>` und `<accountKey>` durch den Namen und den Schlüssel Ihres Speicherkontos, bevor Sie die Datei speichern.
@@ -204,17 +207,14 @@ Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, 
         "properties": {
             "type": "AzureStorage",
             "typeProperties": {
-                "connectionString": {
-                    "value": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>",
-                    "type": "SecureString"
-                }
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>"
             }
         }
     }
     ```
 2. Wechseln Sie in PowerShell zum Ordner „ADF“.
 
-3. Führen Sie das **Set-AzDataFactoryV2LinkedService**-Cmdlet aus, um den verknüpften Dienst „AzureStorageLinkedService“ zu erstellen. Im folgenden Beispiel übergeben Sie Werte für die *ResourceGroupName*- und *DataFactoryName*-Parameter: 
+3. Führen Sie das Cmdlet **Set-AzDataFactoryV2LinkedService** aus, um den verknüpften Dienst „AzureStorageLinkedService“ zu erstellen. Im folgenden Beispiel übergeben Sie Werte für die *ResourceGroupName*- und *DataFactoryName*-Parameter:
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -222,7 +222,7 @@ Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, 
 
     Hier ist die Beispielausgabe:
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -230,7 +230,7 @@ Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, 
     ```
 
 ### <a name="create-a-sql-database-linked-service"></a>Erstellen eines mit SQL-Datenbank verknüpften Diensts
-1. Erstellen Sie im Ordner „C:\ADF“ eine JSON-Datei mit dem Namen „AzureSQLDatabaseLinkedService.json“ und folgendem Inhalt. (Erstellen Sie den Ordner „ADF“, wenn er noch nicht vorhanden ist.) Ersetzen Sie „&lt;server&gt;“, „&lt;database&gt;“, „&lt;user id&gt;“ und „&lt;password&gt;“ durch den Namen Ihres Servers, die Datenbank, die Benutzer-ID und das Kennwort, bevor Sie die Datei speichern. 
+1. Erstellen Sie im Ordner „C:\ADF“ eine JSON-Datei mit dem Namen „AzureSQLDatabaseLinkedService.json“ und folgendem Inhalt. (Erstellen Sie den Ordner „ADF“, wenn er noch nicht vorhanden ist.) Ersetzen Sie „&lt;server&gt;“, „&lt;database&gt;“, „&lt;user id&gt;“ und „&lt;password&gt;“ durch den Namen Ihres Servers, die Datenbank, die Benutzer-ID und das Kennwort, bevor Sie die Datei speichern.
 
     ```json
     {
@@ -238,17 +238,14 @@ Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, 
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
-                "connectionString": {
-                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database>; Persist Security Info=False; User ID=<user> ; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
-                    "type": "SecureString"
-                }
+                "connectionString": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database>; Persist Security Info=False; User ID=<user> ; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;"
             }
         }
     }
     ```
 2. Wechseln Sie in PowerShell zum Ordner „ADF“.
 
-3. Führen Sie das **Set-AzDataFactoryV2LinkedService**-Cmdlet aus, um den verknüpften Dienst „AzureSQLDatabaseLinkedService“ zu erstellen. 
+3. Führen Sie das **Set-AzDataFactoryV2LinkedService**-Cmdlet aus, um den verknüpften Dienst „AzureSQLDatabaseLinkedService“ zu erstellen.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -256,7 +253,7 @@ Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, 
 
     Hier ist die Beispielausgabe:
 
-    ```json
+    ```console
     LinkedServiceName : AzureSQLDatabaseLinkedService
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -265,11 +262,11 @@ Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, 
     ```
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
-In diesem Schritt erstellen Sie Datasets zur Darstellung von Quell- und Senkendaten. 
+In diesem Schritt erstellen Sie Datasets zur Darstellung von Quell- und Senkendaten.
 
 ### <a name="create-a-source-dataset"></a>Erstellen eines Quelldatasets
 
-1. Erstellen Sie eine JSON-Datei mit dem Namen „SourceDataset.json“ im selben Ordner und dem folgenden Inhalt: 
+1. Erstellen Sie eine JSON-Datei mit dem Namen „SourceDataset.json“ im selben Ordner und dem folgenden Inhalt:
 
     ```json
     {
@@ -285,18 +282,18 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung von Quell- und Senkenda
             }
         }
     }
-   
+
     ```
     In diesem Tutorial verwenden Sie den Tabellennamen „data_source_table“. Ersetzen Sie ihn, wenn Sie eine Tabelle mit einem anderen Namen verwenden.
 
-2. Führen Sie nun das **Set-AzDataFactoryV2Dataset**-Cmdlet zum Erstellen des Datasets „SourceDataset“ aus.
-    
+2. Führen Sie das Cmdlet **Set-AzDataFactoryV2Dataset** aus, um das Dataset „SourceDataset“ zu erstellen.
+
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
     ```
 
     Hier ist die Beispielausgabe des Cmdlets:
-    
+
     ```json
     DatasetName       : SourceDataset
     ResourceGroupName : ADF
@@ -307,7 +304,7 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung von Quell- und Senkenda
 
 ### <a name="create-a-sink-dataset"></a>Erstellen Sie ein Senkendataset
 
-1. Erstellen Sie eine JSON-Datei mit dem Namen „SinkDataset.json“ im selben Ordner und dem folgenden Inhalt: 
+1. Erstellen Sie eine JSON-Datei mit dem Namen „SinkDataset.json“ im selben Ordner und dem folgenden Inhalt:
 
     ```json
     {
@@ -316,7 +313,7 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung von Quell- und Senkenda
             "type": "AzureBlob",
             "typeProperties": {
                 "folderPath": "adftutorial/incrementalcopy",
-                "fileName": "@CONCAT('Incremental-', pipeline().RunId, '.txt')", 
+                "fileName": "@CONCAT('Incremental-', pipeline().RunId, '.txt')",
                 "format": {
                     "type": "TextFormat"
                 }
@@ -330,16 +327,16 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung von Quell- und Senkenda
     ```
 
     > [!IMPORTANT]
-    > In diesem Codeausschnitt wird davon ausgegangen, dass Sie einen Blobcontainer mit dem Namen „adftutorial“ in Ihrem Blobspeicher besitzen. Erstellen Sie den Container, wenn er noch nicht vorhanden ist, oder geben Sie den Namen eines bereits vorhandenen ein. Der Ausgabeordner `incrementalcopy` wird automatisch erstellt, wenn er nicht bereits im Container vorhanden ist. In diesem Tutorial wird der Dateiname dynamisch mit dem Ausdruck `@CONCAT('Incremental-', pipeline().RunId, '.txt')` generiert.
+    > In diesem Codeausschnitt wird davon ausgegangen, dass Ihr Blobspeicher einen Blobcontainer mit dem Namen `adftutorial` enthält. Erstellen Sie den Container, wenn er noch nicht vorhanden ist, oder geben Sie den Namen eines bereits vorhandenen ein. Der Ausgabeordner `incrementalcopy` wird automatisch erstellt, wenn er nicht bereits im Container vorhanden ist. In diesem Tutorial wird der Dateiname dynamisch mit dem Ausdruck `@CONCAT('Incremental-', pipeline().RunId, '.txt')` generiert.
 
-2. Führen Sie nun das **Set-AzDataFactoryV2Dataset**-Cmdlet zum Erstellen des Datasets „SinkDataset“ aus.
-    
+2. Führen Sie das Cmdlet **Set-AzDataFactoryV2Dataset** aus, um das Dataset „SinkDataset“ zu erstellen.
+
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
     ```
 
     Hier ist die Beispielausgabe des Cmdlets:
-    
+
     ```json
     DatasetName       : SinkDataset
     ResourceGroupName : ADF
@@ -349,9 +346,9 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung von Quell- und Senkenda
     ```
 
 ## <a name="create-a-dataset-for-a-watermark"></a>Erstellen eines Datasets für einen Grenzwert
-In diesem Schritt erstellen Sie ein Dataset zum Speichern eines hohen Grenzwerts. 
+In diesem Schritt erstellen Sie ein Dataset zum Speichern eines hohen Grenzwerts.
 
-1. Erstellen Sie eine JSON-Datei mit dem Namen „WatermarkDataset.json“ im selben Ordner und dem folgenden Inhalt: 
+1. Erstellen Sie eine JSON-Datei mit dem Namen „WatermarkDataset.json“ im selben Ordner und dem folgenden Inhalt:
 
     ```json
     {
@@ -369,13 +366,13 @@ In diesem Schritt erstellen Sie ein Dataset zum Speichern eines hohen Grenzwerts
     }    
     ```
 2.  Führen Sie das Cmdlet **Set-AzDataFactoryV2Dataset** aus, um das Dataset „WatermarkDataset“ zu erstellen.
-    
+
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
     ```
 
     Hier ist die Beispielausgabe des Cmdlets:
-    
+
     ```json
     DatasetName       : WatermarkDataset
     ResourceGroupName : ADF
@@ -385,10 +382,10 @@ In diesem Schritt erstellen Sie ein Dataset zum Speichern eines hohen Grenzwerts
     ```
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
-In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, einer Kopieraktivität und einer StoredProcedure-Aktivität, die in einer Pipeline verkettet sind. 
+In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, einer Kopieraktivität und einer StoredProcedure-Aktivität, die in einer Pipeline verkettet sind.
 
 
-1. Erstellen Sie in demselben Ordner die JSON-Datei „IncrementalCopyPipeline.json“ mit folgendem Inhalt: 
+1. Erstellen Sie in demselben Ordner die JSON-Datei „IncrementalCopyPipeline.json“ mit folgendem Inhalt:
 
     ```json
     {
@@ -403,7 +400,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
                         "type": "SqlSource",
                         "sqlReaderQuery": "select * from watermarktable"
                         },
-    
+
                         "dataset": {
                         "referenceName": "WatermarkDataset",
                         "type": "DatasetReference"
@@ -418,14 +415,14 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
                             "type": "SqlSource",
                             "sqlReaderQuery": "select MAX(LastModifytime) as NewWatermarkvalue from data_source_table"
                         },
-    
+
                         "dataset": {
                         "referenceName": "SourceDataset",
                         "type": "DatasetReference"
                         }
                     }
                 },
-                
+
                 {
                     "name": "IncrementalCopyActivity",
                     "type": "Copy",
@@ -452,7 +449,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
                             ]
                         }
                     ],
-    
+
                     "inputs": [
                         {
                             "referenceName": "SourceDataset",
@@ -466,24 +463,24 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
                         }
                     ]
                 },
-    
+
                 {
                     "name": "StoredProceduretoWriteWatermarkActivity",
                     "type": "SqlServerStoredProcedure",
                     "typeProperties": {
-    
+
                         "storedProcedureName": "usp_write_watermark",
                         "storedProcedureParameters": {
                             "LastModifiedtime": {"value": "@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}", "type": "datetime" },
                             "TableName":  { "value":"@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}", "type":"String"}
                         }
                     },
-    
+
                     "linkedServiceName": {
                         "referenceName": "AzureSQLDatabaseLinkedService",
                         "type": "LinkedServiceReference"
                     },
-    
+
                     "dependsOn": [
                         {
                             "activity": "IncrementalCopyActivity",
@@ -494,35 +491,35 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
                     ]
                 }
             ]
-            
+
         }
     }
     ```
-    
 
-2. Führen Sie das **Set-AzDataFactoryV2Pipeline**-Cmdlet aus, um die Pipeline „IncrementalCopyPipeline“ zu erstellen.
-    
+
+2. Führen Sie das Cmdlet **Set-AzDataFactoryV2Pipeline** aus, um die Pipeline „IncrementalCopyPipeline“ zu erstellen.
+
    ```powershell
    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
-   ``` 
+   ```
 
-   Hier ist die Beispielausgabe: 
+   Hier ist die Beispielausgabe:
 
-   ```json
+   ```console
     PipelineName      : IncrementalCopyPipeline
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     Activities        : {LookupOldWaterMarkActivity, LookupNewWaterMarkActivity, IncrementalCopyActivity, StoredProceduretoWriteWatermarkActivity}
     Parameters        :
    ```
- 
+
 ## <a name="run-the-pipeline"></a>Führen Sie die Pipeline aus.
 
-1. Führen Sie die Pipeline „IncrementalCopyPipeline“ mithilfe des **Invoke-AzDataFactoryV2Pipeline**-Cmdlets aus. Ersetzen Sie Platzhalter mit Ihrem eigenen Ressourcengruppen- und Data Factory-Namen.
+1. Führen Sie mithilfe des Cmdlets **Invoke-AzDataFactoryV2Pipeline** die Pipeline „IncrementalCopyPipeline“ aus. Ersetzen Sie Platzhalter mit Ihrem eigenen Ressourcengruppen- und Data Factory-Namen.
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
-    ``` 
+    ```
 2. Überprüfen Sie den Status der Pipeline durch Ausführen des **Get-AzDataFactoryV2ActivityRun**-Cmdlets, bis Sie sehen, dass alle Aktivitäten erfolgreich ausgeführt wurden. Ersetzen Sie Platzhalter durch Ihre eigene geeignete Zeit für die Parameter *RunStartedAfter* und *RunStartedBefore*. In diesem Tutorial verwenden Sie Folgendes: *-RunStartedAfter "2017/09/14"* und *-RunStartedBefore "2017/09/15"* .
 
     ```powershell
@@ -530,8 +527,8 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     ```
 
     Hier ist die Beispielausgabe:
- 
-    ```json
+
+    ```console
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupNewWaterMarkActivity
@@ -545,7 +542,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     DurationInMs      : 7777
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupOldWaterMarkActivity
@@ -559,7 +556,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     DurationInMs      : 25437
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : IncrementalCopyActivity
@@ -573,7 +570,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     DurationInMs      : 19769
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : StoredProceduretoWriteWatermarkActivity
@@ -600,18 +597,18 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     3,cccc,2017-09-03 02:36:00.0000000
     4,dddd,2017-09-04 03:21:00.0000000
     5,eeee,2017-09-05 08:06:00.0000000
-    ``` 
+    ```
 2. Überprüfen Sie den aktuellen Wert aus `watermarktable`. Sie sehen, dass der Grenzwert aktualisiert wurde.
 
     ```sql
     Select * from watermarktable
     ```
-    
+
     Hier ist die Beispielausgabe:
- 
+
     TableName | Grenzwert
     --------- | --------------
-    „Data_source_table“ | 2017-09-05  8:06:00.000
+    „Data_source_table“ | 2017-09-05 8:06:00.000
 
 ### <a name="insert-data-into-the-data-source-store-to-verify-delta-data-loading"></a>Einfügen von Daten in den Datenquellspeicher, um das Laden von Deltadaten zu überprüfen
 
@@ -620,10 +617,10 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     ```sql
     INSERT INTO data_source_table
     VALUES (6, 'newdata','9/6/2017 2:23:00 AM')
-    
+
     INSERT INTO data_source_table
     VALUES (7, 'newdata','9/7/2017 9:01:00 AM')
-    ``` 
+    ```
 
     Die aktualisierten Daten in der SQL-Datenbank lauten:
 
@@ -650,8 +647,8 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     ```
 
     Hier ist die Beispielausgabe:
- 
-    ```json
+
+    ```console
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupNewWaterMarkActivity
@@ -665,7 +662,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     DurationInMs      : 31758
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupOldWaterMarkActivity
@@ -679,7 +676,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     DurationInMs      : 25497
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : IncrementalCopyActivity
@@ -693,7 +690,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     DurationInMs      : 20194
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : StoredProceduretoWriteWatermarkActivity
@@ -716,29 +713,26 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     ```sql
     Select * from watermarktable
     ```
-    Beispielausgabe: 
-    
+    Beispielausgabe:
+
     TableName | Grenzwert
     --------- | ---------------
     „Data_source_table“ | 2017-09-07 09:01:00.000
 
-     
+
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie die folgenden Schritte ausgeführt: 
+In diesem Tutorial haben Sie die folgenden Schritte ausgeführt:
 
 > [!div class="checklist"]
-> * Vorbereiten des Datenspeichers zum Speichern des Grenzwerts. 
+> * Vorbereiten des Datenspeichers zum Speichern des Grenzwerts.
 > * Erstellen einer Data Factory.
-> * Erstellen Sie verknüpfte Dienste. 
+> * Erstellen Sie verknüpfte Dienste.
 > * Erstellen des Quell-, Senken-, Grenzwertdatasets
 > * Erstellen einer Pipeline.
 > * Ausführen der Pipeline.
-> * Überwachen der Pipelineausführung. 
+> * Überwachen der Pipelineausführung.
 
-In diesem Tutorial hat die Pipeline Daten aus einer einzelnen Tabelle einer SQL-Datenbank in einen Blobspeicher kopiert. Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie Daten aus mehreren Tabellen einer lokalen SQL Server-Datenbank in eine SQL-Datenbank kopieren. 
+In diesem Tutorial hat die Pipeline Daten aus einer einzelnen Tabelle in Azure SQL-Datenbank in einen Blobspeicher kopiert. Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie Daten aus mehreren Tabellen einer SQL Server-Datenbank in SQL-Datenbank kopieren.
 
 > [!div class="nextstepaction"]
 >[Inkrementelles Laden von mehreren SQL Server-Tabellen in Azure SQL-Datenbank](tutorial-incremental-copy-multiple-tables-powershell.md)
-
-
-

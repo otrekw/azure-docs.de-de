@@ -1,50 +1,65 @@
 ---
-title: Benutzerdefinierte Metriken in Azure Monitor
+title: Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 description: Erfahren Sie mehr zu benutzerdefinierten Metriken in Azure Monitor und wie diese modelliert werden.
 author: ancav
-services: azure-monitor
-ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 09/09/2019
 ms.author: ancav
+services: azure-monitor
+ms.topic: conceptual
+ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: d52cb4d7b8e29838338baddd45a175661801b19b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844659"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88639901"
 ---
-# <a name="custom-metrics-in-azure-monitor"></a>Benutzerdefinierte Metriken in Azure Monitor
+# <a name="custom-metrics-in-azure-monitor-preview"></a>Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 
-Wenn Sie Ressourcen und Anwendungen in Azure bereitstellen, sollten Sie mit dem Erfassen von Telemetriedaten beginnen, um Einblicke in deren Leistung und Integrität zu erhalten. Azure stellt Ihnen einige sofort einsetzbare Metriken zur Verfügung. Diese werden als Standard- oder Plattformmetriken bezeichnet. Allerdings sind sie beschränkt. Möglicherweise möchten Sie einige benutzerdefinierte Leistungsindikatoren oder unternehmensspezifische Metriken sammeln, um eingehendere Erkenntnisse bereitzustellen.
-Diese **benutzerdefinierten** Metriken können über Ihre Anwendungstelemetrie, einen auf Ihren Azure-Ressourcen ausgeführten Agent, oder sogar über ein außerhalb des Unternehmens befindliches Überwachungssystem gesammelt und direkt an Azure Monitor übermittelt werden. Nach der Veröffentlichung in Azure Monitor können Sie nach benutzerdefinierten Metriken für Ihre Azure-Ressourcen und -Anwendungen suchen, diese abfragen und Warnungen ausgeben, und zwar parallel zu den von Azure ausgegebenen Standardmetriken.
+Wenn Sie Ressourcen und Anwendungen in Azure bereitstellen, sollten Sie mit dem Erfassen von Telemetriedaten beginnen, um Einblicke in deren Leistung und Integrität zu erhalten. Azure stellt Ihnen einige sofort einsetzbare Metriken zur Verfügung. Diese Metriken werden als [Standard- oder Plattformmetriken](./metrics-supported.md) bezeichnet. Allerdings sind sie beschränkt. 
 
-## <a name="send-custom-metrics"></a>Senden benutzerdefinierter Metriken
+Möglicherweise möchten Sie einige benutzerdefinierte Leistungsindikatoren oder unternehmensspezifische Metriken sammeln, um eingehendere Erkenntnisse bereitzustellen. Diese **benutzerdefinierten** Metriken können über Ihre Anwendungstelemetrie, einen auf Ihren Azure-Ressourcen ausgeführten Agent, oder sogar über ein außerhalb des Unternehmens befindliches Überwachungssystem gesammelt und direkt an Azure Monitor übermittelt werden. Nach der Veröffentlichung in Azure Monitor können Sie nach benutzerdefinierten Metriken für Ihre Azure-Ressourcen und -Anwendungen suchen, diese abfragen und Warnungen ausgeben, und zwar parallel zu den von Azure ausgegebenen Standardmetriken.
+
+Benutzerdefinierte Azure Monitor-Metriken sind aktuell in der öffentlichen Vorschauphase. 
+
+## <a name="methods-to-send-custom-metrics"></a>Methoden zum Senden benutzerdefinierter Metriken
+
 Benutzerdefinierte Metriken können über verschiedene Methoden an Azure Monitor übermittelt werden:
 - Instrumentieren Ihrer Anwendung mit dem Azure Application Insights SDK und Senden benutzerdefinierter Telemetriedaten an Azure Monitor 
+- Installieren Sie den Azure Monitor-Agent (Vorschau) auf Ihrer [Windows- oder Linux-Azure-VM](azure-monitor-agent-overview.md), und verwenden Sie eine [Datensammlungsregel](data-collection-rule-azure-monitor-agent.md), um Leistungsindikatoren an Azure Monitor-Metriken zu senden.
 - Installieren der WAD-Erweiterung (Windows Azure-Diagnose) auf Ihrer [Azure-VM](collect-custom-metrics-guestos-resource-manager-vm.md), [VM-Skalierungsgruppe](collect-custom-metrics-guestos-resource-manager-vmss.md), [klassischen VM](collect-custom-metrics-guestos-vm-classic.md) oder Ihrem [klassischen Clouddienst](collect-custom-metrics-guestos-vm-cloud-service-classic.md) und Senden der Leistungsindikatoren an Azure Monitor 
 - Installieren des [InfluxData Telegraf-Agents](collect-custom-metrics-linux-telegraf.md) auf Ihrer Azure-Linux-VM und Senden der Metriken mithilfe des Ausgabe-Plug-Ins von Azure Monitor
-- Senden von benutzerdefinierten Metriken [direkt an die Azure Monitor-REST-API](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
+- Senden von benutzerdefinierten Metriken [direkt an die Azure Monitor-REST-API](./metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
+
+## <a name="pricing-model-and-retention"></a>Preismodell und Aufbewahrung
+
+Details dazu, wann die Abrechnung für benutzerdefinierte Metriken und Metrikabfragen aktiviert wird, erfahren Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/). Bestimmte Preisdetails für alle Metriken, einschließlich benutzerdefinierter Metriken, und Metrikabfragen finden Sie auf dieser Seite. Zusammenfassend fallen keine Kosten für die Erfassung von Standardmetriken (Plattformmetriken) im Azure Monitor-Metrikspeicher an. Doch für benutzerdefinierte Metriken werden Kosten anfallen, sobald sie die Phase der allgemeinen Verfügbarkeit erreichen. Metrik-API-Abfragen verursachen Kosten.
+
+Benutzerdefinierte Metriken werden [genauso lange wie Plattformmetriken](data-platform-metrics.md#retention-of-metrics) aufbewahrt. 
+
+> [!NOTE]  
+> Metriken, die über das Application Insights SDK an Azure Monitor gesendet werden, werden als erfasste Protokolldaten in Rechnung gestellt. Sie verursachen nur dann zusätzliche Metrikgebühren, wenn das Application Insights-Feature [Dimensionswarnungen für benutzerdefinierte Metriken aktivieren](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) ausgewählt wurde. Bei Aktivieren dieses Kontrollkästchens werden Daten über die API für benutzerdefinierte Metriken an die Azure Monitor-Metrikdatenbank gesendet, um komplexere Warnungen zu ermöglichen.  Erfahren Sie mehr über das [Application Insights-Preismodell](../app/pricing.md#pricing-model) und [Preise in Ihrer Region](https://azure.microsoft.com/pricing/details/monitor/).
+
+
+## <a name="how-to-send-custom-metrics"></a>Vorgehensweise beim Senden benutzerdefinierter Metriken
 
 Wenn Sie benutzerdefinierte Metriken an Azure Monitor senden, muss jeder gemeldete Datenpunkt (oder Wert) die folgenden Informationen enthalten.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 Zum Übermitteln von benutzerdefinierten Metriken an Azure Monitor muss die Entität über ein gültiges Azure Active Directory-Token (Azure AD) im **Bearer**-Header der Anforderung verfügen. Es gibt einige unterstützte Möglichkeiten, einen gültigen Bearertoken zu erhalten:
-1. [Verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) Gibt einer Azure-Ressource (z.B. einer VM) eine Identität. Verwaltete Dienstidentität (MSI) gewährt Ressourcen die Berechtigungen zum Durchführen bestimmter Vorgänge. Zum Beispiel erlaubt sie einer Ressource das Ausgeben von Metriken über sich. Einer Ressource oder ihrer MSI kann die Berechtigung **Überwachungsmetriken veröffentlichen** für eine andere Ressource gewährt werden. Mit dieser Berechtigung kann die MSI auch Metriken für andere Ressourcen ausgeben.
-2. [Azure AD-Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) In diesem Szenario können einer AAD-Anwendung oder einem Dienst die Berechtigungen zum Ausgeben von Metriken zu einer Azure-Ressource gewährt werden.
+1. [Verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) Gibt einer Azure-Ressource (z.B. einer VM) eine Identität. Verwaltete Dienstidentität (MSI) gewährt Ressourcen die Berechtigungen zum Durchführen bestimmter Vorgänge. Zum Beispiel erlaubt sie einer Ressource das Ausgeben von Metriken über sich. Einer Ressource oder ihrer MSI kann die Berechtigung **Überwachungsmetriken veröffentlichen** für eine andere Ressource gewährt werden. Mit dieser Berechtigung kann die MSI auch Metriken für andere Ressourcen ausgeben.
+2. [Azure AD-Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md) In diesem Szenario können einer AAD-Anwendung oder einem Dienst die Berechtigungen zum Ausgeben von Metriken zu einer Azure-Ressource gewährt werden.
 Azure Monitor überprüft das Anwendungstoken mithilfe von öffentlichen Azure AD-Schlüsseln, um die Anforderung zu authentifizieren. Die vorhandene Rolle **Überwachungsmetriken veröffentlichen** verfügt bereits über diese Berechtigung. Sie ist im Azure-Portal verfügbar. Dem Dienstprinzipal kann die Rolle **Überwachungsmetriken veröffentlichen** im erforderlichen Gültigkeitsbereich erteilt werden, je nachdem, für welche Ressourcen er benutzerdefinierte Metriken ausgibt. Dabei kann es sich um ein Abonnement, eine Ressourcengruppe oder eine bestimmte Ressource handeln.
 
-> [!NOTE]  
-> Wenn Sie ein Azure AD-Token zum Ausgeben von benutzerdefinierten Metriken anfordern, stellen Sie sicher, dass die Zielgruppe oder Ressource, für die das Token angefordert wird, https://monitoring.azure.com/ ist. Fügen Sie auch unbedingt den nachgestellten Schrägstrich (/) hinzu.
+> [!TIP]  
+> Wenn Sie ein Azure AD-Token zum Ausgeben von benutzerdefinierten Metriken anfordern, stellen Sie sicher, dass die Zielgruppe oder Ressource, für die das Token angefordert wird, `https://monitoring.azure.com/` ist. Fügen Sie auch unbedingt den nachgestellten Schrägstrich (/) hinzu.
 
 ### <a name="subject"></a>Subject
 Diese Eigenschaft erfasst, für welche Azure-Ressourcen-ID die benutzerdefinierte Metrik gemeldet wird. Diese Informationen werden in der URL des jeweiligen API-Aufrufs codiert. Jede API kann nur metrische Werte für eine einzelne Azure-Ressource übermitteln.
 
 > [!NOTE]  
 > Sie können keine benutzerdefinierten Metriken für die Ressourcen-ID einer Ressourcengruppe oder eines Abonnements ausgeben.
->
->
+
 
 ### <a name="region"></a>Region
 Diese Eigenschaft erfasst, in welcher Azure-Region die Ressource, für die Sie Metriken senden, bereitgestellt wird. Metriken müssen an denselben regionalen Endpunkt von Azure Monitor ausgegeben werden wie die Region, in der die Ressource bereitgestellt wird. Benutzerdefinierte Metriken für eine VM, die in der Region „USA, Westen“ bereitgestellt wurde, müssen z.B. an den regionalen Endpunkt „WestUS“ von Azure Monitor gesendet werden. Die Regionsinformationen sind auch in der URL des API-Aufrufs codiert.
@@ -58,9 +73,9 @@ Diese Eigenschaft erfasst, in welcher Azure-Region die Ressource, für die Sie M
 Jeder Datenpunkt, der an Azure Monitor gesendet wird, muss mit einem Zeitstempel gekennzeichnet sein. Dieser Zeitstempel erfasst den Zeitpunkt (Datum/Uhrzeit), zu dem der Metrikwert gemessen oder erfasst wurde. Azure Monitor akzeptiert metrische Daten mit Zeitstempeln, die bis zu 20 Minuten in der Vergangenheit und bis zu 5 Minuten in der Zukunft liegen. Der Zeitstempel muss im ISO 8601-Format vorliegen.
 
 ### <a name="namespace"></a>Namespace
-Namespaces sind eine Möglichkeit, ähnliche Metriken zu kategorisieren oder zu gruppieren. Namespaces ermöglichen es Ihnen, Gruppen von Metriken zu isolieren, die unterschiedliche Erkenntnisse oder Leistungsindikatoren erfassen. Sie könnten z.B. über den Namespace **ContosoMemoryMetrics** verfügen, der Metriken zur Arbeitsspeichernutzung verfolgt, um ein Profile Ihrer App zu erstellen. Ein anderer Namespace mit dem Namen **ContosoAppTransaction** könnte alle Metriken über Benutzertransaktionen in Ihrer Anwendung verfolgen.
+Namespaces sind eine Möglichkeit, ähnliche Metriken zu kategorisieren oder zu gruppieren. Namespaces ermöglichen es Ihnen, Gruppen von Metriken zu isolieren, die unterschiedliche Erkenntnisse oder Leistungsindikatoren erfassen. Sie könnten z.B. über den Namespace **contosomemorymetrics** verfügen, der Metriken zur Arbeitsspeichernutzung verfolgt, um ein Profile Ihrer App zu erstellen. Ein anderer Namespace mit dem Namen **contosoapptransaction** könnte alle Metriken über Benutzertransaktionen in Ihrer Anwendung verfolgen.
 
-### <a name="name"></a>NAME
+### <a name="name"></a>Name
 **Name** ist der Name der Metrik, die gemeldet wird. Normalerweise ist der Name ausreichend beschreibend, um zu erkennen, was gemessen wird. Ein Beispiel ist eine Metrik, die die Anzahl der Speicherbytes misst, die auf einem bestimmten virtuellen Computer genutzt werden. Der Metrikname könnte beispielsweise **Verwendete Arbeitsspeicherbytes** lauten.
 
 ### <a name="dimension-keys"></a>Dimensionsschlüssel
@@ -85,7 +100,7 @@ Azure Monitor speichert alle Metriken in Granularitätsintervallen von einer Min
 * **Sum**: Die Summe aller beobachteten Werte aus allen Stichproben und Messungen während der Minute.
 * **Count**: Die Anzahl der Stichproben und Messungen, die während der Minute durchgeführt wurden.
 
-Wenn es z.B. innerhalb einer bestimmten Minute vier Anmeldetransaktionen für Ihre App gab, ergeben sich daraus möglicherweise die folgenden gemessenen Wartezeiten für jede dieser Transaktionen:
+Wenn z. B. innerhalb einer bestimmten Minute vier Anmeldetransaktionen für Ihre App stattfanden, ergeben sich daraus möglicherweise die folgenden gemessenen Wartezeiten für jede dieser Transaktionen:
 
 |Transaktion 1|Transaktion 2|Transaktion 3|Transaktion 4|
 |---|---|---|---|
@@ -95,14 +110,14 @@ Wenn es z.B. innerhalb einer bestimmten Minute vier Anmeldetransaktionen für Ih
 Als Ergebnis würde die folgende Metrik an Azure Monitor gemeldet werden:
 * Min: 4
 * Max: 16
-* Sum: 40
-* Count: 4
+* Summe: 40
+* Anzahl: 4
 
 Wenn Ihre Anwendung nicht in der Lage ist, vorab die lokale Aggregierung durchzuführen und jede einzelne Stichprobe oder jedes einzelne Ereignis sofort nach der Erfassung ausgeben muss, können Sie die Rohmesswerte ausgeben. So würden Sie z.B. jedes Mal, wenn in Ihrer App eine Anmeldetransaktion stattgefunden hat, eine Metrik mit nur einer einzigen Messung an Azure Monitor übermitteln. Für eine Anmeldetransaktion, die 12 ms dauerte, würden also die folgenden Metriken ausgegeben werden:
 * Min: 12
 * Max: 12
-* Sum: 12
-* Count: 1
+* Summe: 12
+* Anzahl: 1
 
 Dieser Prozess ermöglicht es Ihnen, mehrere Werte für dieselbe Kombination aus Metrik und Dimension während einer bestimmten Minute auszugeben. Azure Monitor aggregiert dann alle für eine bestimmte Minute übermittelten Rohwerte.
 
@@ -153,17 +168,21 @@ Im folgenden Beispiel erstellen Sie eine benutzerdefinierte Metrik namens **Memo
 Es ist nicht erforderlich, eine benutzerdefinierte Metrik in Azure Monitor vorab zu definieren, bevor sie ausgegeben wird. Jeder veröffentlichte Metrikdatenpunkt enthält die Informationen zu Namespace, Name und Dimension. Bei der ersten Ausgabe einer benutzerdefinierten Metrik an Azure Monitor wird also automatisch eine Metrikdefinition erstellt. Diese Metrikdefinition ist dann für jede Ressource sichtbar, für die die Metrik über die Metrikdefinitionen ausgegeben wurde.
 
 > [!NOTE]  
-> Azure Monitor unterstützt noch nicht die Definition von **Einheiten** für eine benutzerdefinierte Metrik.
+> Das Definieren von **Einheiten** für eine benutzerdefinierte Metrik wird von Azure Monitor noch nicht unterstützt.
 
 ## <a name="using-custom-metrics"></a>Verwenden benutzerdefinierter Metriken
 Nachdem benutzerdefinierte Metriken an Azure Monitor übermittelt wurden, können Sie sie über das Azure-Portal durchsuchen und über die Azure Monitor-REST-APIs abfragen. Sie können auch Warnungen erstellen, damit Sie benachrichtigt werden, wenn bestimmte Bedingungen erfüllt sind.
+
+> [!NOTE]
+> Zum Anzeigen von benutzerdefinierten Metriken wird eine Rolle vom Typ „Leser“ oder „Mitwirkender“ benötigt.
+
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Durchsuchen Ihrer benutzerdefinierten Metriken über das Azure-Portal
-1.  Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2.  Wählen Sie den Bereich **Überwachen** aus.
-3.  Klicken Sie auf **Metriken**.
-4.  Wählen Sie eine Ressource aus, für die Sie benutzerdefinierte Metriken übermittelt haben.
-5.  Wählen Sie den Namespace Ihrer benutzerdefinierten Metrik aus.
-6.  Wählen Sie die benutzerdefinierte Metrik aus.
+1.    Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+2.    Wählen Sie den Bereich **Überwachen** aus.
+3.    Klicken Sie auf **Metriken**.
+4.    Wählen Sie eine Ressource aus, für die Sie benutzerdefinierte Metriken übermittelt haben.
+5.    Wählen Sie den Namespace Ihrer benutzerdefinierten Metrik aus.
+6.    Wählen Sie die benutzerdefinierte Metrik aus.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 Während der öffentlichen Vorschau ist die Möglichkeit, benutzerdefinierte Metriken zu veröffentlichen, nur in einigen Azure-Regionen verfügbar. Das bedeutet, dass Metriken nur für Ressourcen in einer der unterstützten Regionen veröffentlicht werden können. Die folgende Tabelle enthält die unterstützten Azure-Regionen für benutzerdefinierte Metriken. Außerdem werden die zugehörigen Endpunkte aufgeführt, an denen Metriken für Ressourcen in diesen Regionen veröffentlicht werden sollten:
@@ -171,33 +190,39 @@ Während der öffentlichen Vorschau ist die Möglichkeit, benutzerdefinierte Met
 |Azure-Region |Präfix des regionalen Endpunkts|
 |---|---|
 | **USA und Kanada** | |
-|USA, Westen-Mitte | https:\//westcentralus.monitoring.azure.com/ |
-|USA, Westen 2       | https:\//westus2.monitoring.azure.com/ |
+|USA, Westen-Mitte | https:\//westcentralus.monitoring.azure.com |
+|USA, Westen 2       | https:\//westus2.monitoring.azure.com |
 |USA Nord Mitte | https:\//northcentralus.monitoring.azure.com
-|USA Süd Mitte| https:\//southcentralus.monitoring.azure.com/ |
+|USA Süd Mitte| https:\//southcentralus.monitoring.azure.com |
 |USA (Mitte)      | https:\//centralus.monitoring.azure.com |
-|Kanada, Mitte | https:\//canadacentral.monitoring.azure.comc
-|East US| https:\//eastus.monitoring.azure.com/ |
+|Kanada, Mitte | https:\//canadacentral.monitoring.azure.com |
+|East US| https:\//eastus.monitoring.azure.com |
+|USA (Ost) 2 | https:\//eastus2.monitoring.azure.com |
 | **Europa** | |
-|Nordeuropa    | https:\//northeurope.monitoring.azure.com/ |
-|Europa, Westen     | https:\//westeurope.monitoring.azure.com/ |
+|Nordeuropa    | https:\//northeurope.monitoring.azure.com |
+|Europa, Westen     | https:\//westeurope.monitoring.azure.com |
 |UK, Süden | https:\//uksouth.monitoring.azure.com
 |Frankreich, Mitte | https:\//francecentral.monitoring.azure.com |
 | **Afrika** | |
-|Südafrika, Norden | https:\//southafricanorth.monitoring.azure.com
+|Südafrika, Norden | https:\//southafricanorth.monitoring.azure.com |
 | **Asien** | |
-|Indien, Mitte | https:\//centralindia.monitoring.azure.com
-|Australien (Osten) | https:\//australiaeast.monitoring.azure.com
-|Japan, Osten | https:\//japaneast.monitoring.azure.com
+|Indien, Mitte | https:\//centralindia.monitoring.azure.com |
+|Australien (Osten) | https:\//australiaeast.monitoring.azure.com |
+|Japan, Osten | https:\//japaneast.monitoring.azure.com |
 |Asien, Südosten  | https:\//southeastasia.monitoring.azure.com |
-|Asien, Osten | https:\//eastasia.monitoring.azure.com
-|Korea, Mitte   | https:\//koreacentral.monitoring.azure.com
+|Asien, Osten | https:\//eastasia.monitoring.azure.com |
+|Korea, Mitte   | https:\//koreacentral.monitoring.azure.com |
 
+## <a name="latency-and-storage-retention"></a>Latenz und Aufbewahrungsdauer im Speicher
+
+Das Hinzufügen einer ganz neuen Metrik oder einer neuen Dimension, die einer Metrik hinzugefügt wird, kann bis zu 2 bis 3 Minuten dauern. Sobald diese im System enthalten ist, sollten die Daten in 99 % der Fälle nach weniger als 30 Sekunden angezeigt werden. 
+
+Wenn Sie eine Metrik löschen oder eine Dimension entfernen, kann es eine Woche bis zu einem Monat dauern, bis die Löschung aus dem System erfolgt.
 
 ## <a name="quotas-and-limits"></a>Kontingente und Grenzwerte
 Azure Monitor erzwingt die folgenden Nutzungslimits für benutzerdefinierte Metriken:
 
-|Category (Kategorie)|Begrenzung|
+|Category|Begrenzung|
 |---|---|
 |Aktive Zeitreihen/Abonnements/Region|50.000|
 |Dimensionsschlüssel pro Metrik|10|
@@ -211,6 +236,7 @@ Verwenden benutzerdefinierter Metriken von verschiedenen Diensten:
  - [VM-Skalierungsgruppe](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure Virtual Machines (klassisch)](collect-custom-metrics-guestos-vm-classic.md)
  - [Virtueller Linux-Computer mit Telegraf-Agent](collect-custom-metrics-linux-telegraf.md)
- - [REST-API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
+ - [REST-API](./metrics-store-custom-rest-api.md)
  - [Cloud Services (klassisch)](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  
+

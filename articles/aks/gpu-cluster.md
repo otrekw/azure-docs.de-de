@@ -2,18 +2,16 @@
 title: Verwenden von GPUs in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie GPUs für Hochleistungscompute- oder grafikintensive Workloads in Azure Kubernetes Service (AKS) verwendet werden können.
 services: container-service
-author: zr-msft
-manager: jeconnoc
-ms.service: container-service
 ms.topic: article
-ms.date: 05/16/2019
-ms.author: zarhoads
-ms.openlocfilehash: e805ca87a34a6b50e9f799909efe8fcbe859883c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.date: 08/21/2020
+ms.author: jpalma
+author: palma21
+ms.openlocfilehash: d7e312f049acc0b74aa0a253864bfce6100044bd
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899467"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929139"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Verwenden von GPUs für computeintensive Workloads in Azure Kubernetes Service (AKS)
 
@@ -28,7 +26,7 @@ Die Verwendung GPU-fähiger Knotenpools steht aktuell nur für Linux-Knotenpools
 
 Es wird vorausgesetzt, dass Sie über einen AKS-Cluster mit Knoten verfügen, die AKS unterstützen. Ihr AKS-Cluster muss Kubernetes 1.10 oder höher ausführen. Wenn Sie einen AKS-Cluster benötigen, der diese Anforderungen erfüllt, lesen Sie den ersten Abschnitt dieses Artikels zum [Erstellen eines AKS-Clusters](#create-an-aks-cluster).
 
-Außerdem muss mindestens die Version 2.0.64 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.64 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
@@ -56,7 +54,7 @@ Rufen Sie die Anmeldeinformationen für Ihren AKS-Cluster mit dem Befehl [az aks
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="install-nvidia-drivers"></a>Installieren von Nvidia-Treibern
+## <a name="install-nvidia-device-plugin"></a>Installieren des NVIDIA-Geräte-Plug-Ins
 
 Um die GPUs in den Knoten verwenden zu können, muss zunächst ein DaemonSet für das NVIDIA-Geräte-Plug-In bereitgestellt werden. Diese DaemonSet führt einen Pod für jeden Knoten aus, um die erforderlichen Treiber für die GPUs bereitzustellen.
 
@@ -69,12 +67,15 @@ kubectl create namespace gpu-resources
 Erstellen Sie eine Datei mit dem Namen *nvidia-device-plugin-ds.yaml*, und fügen Sie das folgende YAML-Manifest ein. Dieses Manifest wird im Rahmen des Projekts [NVIDIA device plugin for Kubernetes][nvidia-github] (NVIDIA-Geräte-Plug-In für Kubernetes) bereitgestellt.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: nvidia-device-plugin-daemonset
   namespace: gpu-resources
 spec:
+  selector:
+    matchLabels:
+      name: nvidia-device-plugin-ds
   updateStrategy:
     type: RollingUpdate
   template:
@@ -96,7 +97,7 @@ spec:
         operator: Exists
         effect: NoSchedule
       containers:
-      - image: nvidia/k8s-device-plugin:1.11
+      - image: mcr.microsoft.com/oss/nvidia/k8s-device-plugin:1.11
         name: nvidia-device-plugin-ctr
         securityContext:
           allowPrivilegeEscalation: false
@@ -111,13 +112,78 @@ spec:
             path: /var/lib/kubelet/device-plugins
 ```
 
-Erstellen Sie als Nächstes mithilfe des Befehls [kubectl apply][kubectl-apply] das DaemonSet, und vergewissern Sie sich, dass das Nvidia-Geräte-Plug-In erfolgreich erstellt wurde, wie in der folgenden Beispielausgabe zu sehen:
+Erstellen Sie als Nächstes mithilfe des Befehls [kubectl apply][kubectl-apply] das DaemonSet, und vergewissern Sie sich, dass das NVIDIA-Geräte-Plug-In erfolgreich erstellt wurde, wie in der folgenden Beispielausgabe zu sehen:
 
 ```console
 $ kubectl apply -f nvidia-device-plugin-ds.yaml
 
 daemonset "nvidia-device-plugin" created
 ```
+
+## <a name="use-the-aks-specialized-gpu-image-preview"></a>Verwenden des speziellen AKS-GPU-Images (Vorschau)
+
+Als Alternative zu diesen Schritten stellt AKS ein vollständig konfiguriertes AKS-Image bereit, das schon das [NVIDIA-Geräte-Plug-In für Kubernetes][nvidia-github] enthält.
+
+> [!WARNING]
+> Sie sollten das NVIDIA-Geräte-Plug-In-DaemonSet für Cluster nicht manuell mit dem neuen speziellen AKS-GPU-Image installieren.
+
+
+Registrieren Sie das Feature `GPUDedicatedVHDPreview`:
+
+```azurecli
+az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
+```
+
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature#az-feature-list) überprüfen:
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
+```
+
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider#az-provider-register) aktualisieren:
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+Verwenden Sie zum Installieren der aks-preview-CLI-Erweiterung die folgenden Azure CLI-Befehle:
+
+```azurecli
+az extension add --name aks-preview
+```
+
+Verwenden Sie zum Aktualisieren der aks-preview-CLI-Erweiterung die folgenden Azure CLI-Befehle:
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>Verwenden des speziellen AKS-GPU-Images für neue Cluster (Vorschau)    
+
+Konfigurieren Sie den Cluster beim Erstellen so, dass das spezielle AKS-GPU-Image verwendet wird. Verwenden Sie das `--aks-custom-headers`-Flag für die GPU-Agent-Knoten im neuen Cluster, um das spezielle AKS-GPU-Image zu verwenden.
+
+```azurecli
+az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+```
+
+Wenn Sie einen Cluster mit regulären AKS-Images erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg. Sie können auch weitere spezielle GPU-Knotenpools hinzufügen, wie im Anschluss beschrieben.
+
+
+### <a name="use-the-aks-specialized-gpu-image-on-existing-clusters-preview"></a>Verwenden des speziellen AKS-GPU-Images für vorhandene Cluster (Vorschau)
+
+Konfigurieren Sie einen neuen Knotenpool, um das spezielle AKS-GPU-Image zu verwenden. Verwenden Sie das `--aks-custom-headers`-Flag für die GPU-Agent-Knoten im neuen Knotenpool, um das spezielle AKS-GPU-Image zu verwenden.
+
+```azurecli
+az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+```
+
+Wenn Sie einen Knotenpool mit regulären AKS-Images erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg. 
+
+> [!NOTE]
+> Wenn Ihre GPU-SKU virtuelle Computer der 2. Generation erfordert, können Sie Folgendes erstellen:
+> ```azurecli
+> az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
+> ```
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>Bestätigen, dass GPUs planbar sind
 
@@ -189,7 +255,7 @@ Um die GPU in Aktion zu sehen, planen Sie eine GPU-fähige Workload mit der ents
 Erstellen Sie eine Datei mit dem Namen *samples-tf-mnist-demo.yaml*, und fügen Sie das folgende YAML-Manifest ein. Das folgende Auftragsmanifest enthält ein Ressourcenlimit von `nvidia.com/gpu: 1`:
 
 > [!NOTE]
-> Wenn Sie beim Aufruf von Treibern einen Versionsfehler erhalten (z.B., dass die CUDA-Treiberversion für die CUDA-Laufzeitversion nicht ausreicht), überprüfen Sie das nVidia-Treibermatrix-Kompatibilitätsdiagramm: [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
+> Wenn Sie beim Aufruf von Treibern einen Versionsfehler erhalten (z. B., dass die CUDA-Treiberversion für die CUDA-Laufzeitversion nicht ausreicht), überprüfen Sie das NVIDIA-Treibermatrix-Kompatibilitätsdiagramm: [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1
@@ -206,7 +272,7 @@ spec:
     spec:
       containers:
       - name: samples-tf-mnist-demo
-        image: microsoft/samples-tf-mnist-demo:gpu
+        image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
         args: ["--max_steps", "500"]
         imagePullPolicy: IfNotPresent
         resources:
@@ -223,7 +289,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>Anzeigen des Status und der Ausgabe der GPU-fähigen Workload
 
-Überwachen Sie den Status des Auftrags mithilfe des Befehls [kubectl get jobs][kubectl-get] mit dem Argument `--watch`. Es kann einige Minuten dauern, um zunächst das Image zu pullen und das Dataset zu verarbeiten. Wenn die Spalte *ABSCHLÜSSE* die Angabe *1/1* enthält, wurde der Auftrag erfolgreich abgeschlossen. Beenden Sie den Befehl `kubetctl --watch` durch Drücken von*STRG+C*:
+Überwachen Sie den Status des Auftrags mithilfe des Befehls [kubectl get jobs][kubectl-get] mit dem Argument `--watch`. Es kann einige Minuten dauern, um zunächst das Image zu pullen und das Dataset zu verarbeiten. Wenn die Spalte *ABSCHLÜSSE* die Angabe *1/1* enthält, wurde der Auftrag erfolgreich abgeschlossen. Beenden Sie den Befehl `kubetctl --watch` durch Drücken von *STRG+C*:
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch
@@ -351,5 +417,5 @@ Weitere Informationen zum Ausführen von Workloads für Machine Learning (ML) in
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [aks-spark]: spark-job.md
-[gpu-skus]: ../virtual-machines/linux/sizes-gpu.md
+[gpu-skus]: ../virtual-machines/sizes-gpu.md
 [install-azure-cli]: /cli/azure/install-azure-cli

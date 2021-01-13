@@ -1,153 +1,116 @@
 ---
-title: Überwachen von Vorgängen, Ereignissen und Leistungsindikatoren für öffentliche Load Balancer vom Typ „Basic“
-titlesuffix: Azure Load Balancer
-description: Erfahren Sie, wie Sie die Protokollierung für Warnereignisse und Integritätsteststatus für öffentliche Load Balancer vom Typ „Basic“ aktivieren.
+title: Überwachen von Vorgängen, Ereignissen und Leistungsindikatoren für einen öffentlichen Load Balancer
+titleSuffix: Azure Load Balancer
+description: Erfahren Sie, wie Sie die Protokollierung für Azure Load Balancer aktivieren.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/10/2018
+ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 1995ad5e8179fdee11e960c2ad0e7c03602ebd31
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: fcfd3da30ef9ace723b4204f5924591b1e2717f8
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274797"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503164"
 ---
-# <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor-Protokolle für öffentlichen Load Balancer vom Typ „Basic“
+# <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Monitor-Protokolle für Azure Load Balancer Standard
 
->[!IMPORTANT] 
->Azure Load Balancer unterstützt zwei unterschiedliche Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Standard Load Balancer](load-balancer-standard-overview.md), der Telemetriedaten über mehrdimensionale Metriken in Azure Monitor verfügbar macht.
+Sie können verschiedene Typen von Azure Monitor-Protokollen verwenden, um Azure Load Balancer Standard-Instanzen zu verwalten und Probleme zu beheben. Protokolle können an einen Event Hub oder einen Log Analytics-Arbeitsbereich gestreamt werden. Sie können alle Protokolle aus Azure Blob Storage extrahieren und sie in Tools wie Excel und Power BI anzeigen. 
 
-Sie können in Azure verschiedene Protokolltypen verwenden, um Load Balancer vom Typ „Basic“ zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle kann über das Portal zugegriffen werden. Alle Protokolle können aus Azure Blob Storage extrahiert und in anderen Tools wie Excel und PowerBI angezeigt werden. In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
+Protokolltypen in Azure:
 
-* **Überwachungsprotokolle:** Sie können [Azure-Überwachungsprotokolle](../monitoring-and-diagnostics/insights-debugging-with-events.md) (ehemals Betriebsprotokolle) verwenden, um alle Vorgänge und deren Status anzuzeigen, die an Ihre Azure-Abonnements übermittelt werden. Überwachungsprotokolle sind standardmäßig aktiviert und können im Azure-Portal angezeigt werden.
-* **Warnereignisprotokolle**: Verwenden Sie dieses Protokoll, um Warnungen anzuzeigen, die vom Lastenausgleich ausgelöst wurden. Der Status des Lastenausgleichs wird alle fünf Minuten erfasst. Dieses Protokoll wird nur geschrieben, wenn ein Warnereignis für den Lastenausgleich ausgelöst wird.
-* **Integritätstestprotokolle:** Verwenden Sie dieses Protokoll zum Anzeigen von Problemen, die vom Integritätstest erkannt wurden, z.B. die Anzahl der Instanzen in Ihrem Back-End-Pool, die aufgrund von Integritätstestfehlern keine Anforderungen vom Lastenausgleich empfangen. In dieses Protokoll wird geschrieben, wenn sich der Integritätsteststatus ändert.
+* **Aktivitätsprotokolle**: Sie können alle Aktivitäten, die an Ihre Azure-Abonnements übermittelt werden, zusammen mit Ihrem Status anzeigen. Weitere Informationen finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen für Ressourcen zu überwachen](../azure-resource-manager/management/view-activity-logs.md). Aktivitätsprotokolle sind standardmäßig aktiviert und können im Azure-Portal angezeigt werden. Diese Protokolle sind sowohl für Azure Load Balancer Basic als auch für Load Balancer Standard verfügbar.
+* **Load Balancer Standard-Metriken:** Sie können dieses Protokoll verwenden, um die als Protokolle für Load Balancer Standard exportierten Metriken abzufragen. Diese Protokolle sind nur für Load Balancer Standard verfügbar.
 
 > [!IMPORTANT]
-> Azure Monitor-Protokolle funktioniert derzeit nur für Load Balancer vom Typ „Basic“. Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Weitere Informationen zu diesen Bereitstellungsmodellen finden Sie unter [Grundlegendes zur Bereitstellung über Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
+> Integritätstest- und Load Balancer-Warnungsereignisprotokolle funktionieren zurzeit nicht und werden unter [bekannte Probleme für Azure Load Balancer](whats-new.md#known-issues) aufgeführt. 
+
+> [!IMPORTANT]
+> Protokolle sind nur für Ressourcen verfügbar, die über das Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Weitere Informationen zu diesen Bereitstellungsmodellen finden Sie unter [Grundlegendes zur Bereitstellung über Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
-Die Überwachungsprotokollierung ist automatisch für alle Ressourcen-Manager-Ressourcen aktiviert. Sie müssen die Ereignis- und Integritätstestprotokollierung aktivieren, um mit der Erfassung von Daten aus diesen Protokollen zu beginnen. Führen Sie die folgenden Schritte aus, um die Protokollierung zu aktivieren:
+Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressourcen aktiviert. Aktivieren Sie die Ereignis- und Integritätstestprotokollierung, um mit der Erfassung von Daten aus diesen Protokollen zu beginnen. Führen Sie die folgenden Schritte durch:
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. Wenn Sie noch nicht über einen Load Balancer verfügen, [erstellen Sie einen Load Balancer](load-balancer-get-started-internet-arm-ps.md) , bevor Sie fortfahren.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie noch nicht über einen Load Balancer verfügen, [erstellen Sie einen Load Balancer](./quickstart-load-balancer-standard-public-portal.md) , bevor Sie fortfahren.
+1. Wählen Sie im Portal die Option **Ressourcengruppen** aus.
+2. Wählen Sie den **\<resource-group-name>** der Ressourcengruppe aus, in der sich Ihr Lastenausgleichsmodul befindet.
+3. Wählen Sie Ihren Load Balancer aus.
+4. Wählen Sie **Aktivitätsprotokoll** > **Diagnoseeinstellungen** aus.
+5. Wählen Sie im Bereich **Diagnoseeinstellungen** unter **Diagnoseeinstellungen**, den Eintrag **Diagnoseeinstellung hinzufügen** aus.
+6. Geben Sie im Bereich zum Erstellen von **Diagnoseeinstellungen** im Feld **Name** den Wert **myLBDiagnostics** ein.
+7. Sie haben die Wahl unter drei Optionen für die **Diagnoseeinstellungen**. Sie können eine Option, zwei oder alle drei Optionen auswählen und jede der Optionen gemäß Ihren Anforderungen konfigurieren:
 
-1. Klicken Sie im Portal auf **Durchsuchen**.
-2. Wählen Sie **Lastenausgleichsmodule** aus.
+   * **In einem Speicherkonto archivieren**. Für diesen Vorgang benötigen Sie ein bereits erstelltes Speicherkonto. Informationen zum Erstellen eines Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md?tabs=azure-portal).
+     1. Aktivieren Sie das Kontrollkästchen **In einem Speicherkonto archivieren**.
+     2. Wählen Sie **Konfigurieren** aus, um den Bereich **Speicherkonto auswählen** zu öffnen.
+     3. Wählen Sie in der Dropdownliste **Abonnement** das Abonnement aus, in dem Ihr Speicherkonto erstellt wurde.
+     4. Wählen Sie in der Dropdownliste **Speicherkonto** den Namen Ihres Speicherkontos aus.
+     5. Klicken Sie auf **OK**.
 
-    ![Portal – Lastenausgleich](./media/load-balancer-monitor-log/load-balancer-browse.png)
+   * **An einen Event Hub streamen**. Für diesen Vorgang benötigen Sie einen bereits erstellten Event Hub. Informationen zum Erstellen eines Event Hubs finden Sie unter [Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md).
+     1. Aktivieren Sie das Kontrollkästchen **An einen Event Hub streamen**.
+     2. Wählen Sie **Konfigurieren** aus, um den Bereich **Event Hub auswählen** zu öffnen.
+     3. Wählen Sie in der Dropdownliste **Abonnement** das Abonnement aus, in dem Ihr Event Hub erstellt wurde.
+     4. Wählen Sie in der Dropdownliste **Event Hub-Namespace auswählen** den Namespace aus.
+     5. Wählen Sie in der Dropdownliste **Event Hub-Richtliniennamen auswählen** den Namen aus.
+     6. Klicken Sie auf **OK**.
 
-3. Wählen Sie ein vorhandenes Lastenausgleichsmodul und anschließend **Alle Einstellungen** aus.
-4. Scrollen Sie auf der rechten Seite des Dialogfelds unter dem Namen des Lastenausgleichsmoduls zu **Überwachung**, und klicken Sie anschließend auf **Diagnose**.
+   * **An Log Analytics senden**. Für diesen Prozess benötigen Sie einen bereits erstellten und konfigurierten Log Analytics-Arbeitsbereich. Eine Anleitung zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md).
+     1. Aktivieren Sie das Kontrollkästchen **An Log Analytics senden**.
+     2. Wählen Sie in der Dropdownliste **Abonnement** das Abonnement aus, in dem sich Ihr Log Analytics-Arbeitsbereich befindet.
+     3. Wählen Sie in der Dropdownliste **Log Analytics-Arbeitsbereich** den Arbeitsbereich aus.
 
-    ![Portal – Einstellungen für den Lastenausgleich](./media/load-balancer-monitor-log/load-balancer-settings.png)
+8. Aktivieren Sie im Abschnitt **METRIK** im Bereich **Diagnoseeinstellungen** das Kontrollkästchen **AllMetrics**.
 
-5. Wählen Sie im Bereich **Diagnose** unter **Status** die Option **Ein** aus.
-6. Klicken Sie auf **Speicherkonto**.
-7. Wählen Sie unter **PROTOKOLLE** ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues. Legen Sie mithilfe des Schiebereglers in Tagen fest, wie lange Ereignisdaten im Ereignisprotokoll gespeichert werden sollen. 
-8. Klicken Sie auf **Speichern**.
+9. Überprüfen Sie, ob alles richtig aussieht, und klicken Sie oben im Bereich zum Erstellen der **Diagnoseeinstellungen** auf **Speichern**.
 
-Diagnosen werden im Tabellenspeicher im angegebenen Speicherkonto gespeichert. Wenn keine Protokolle gespeichert werden, liegt das daran, dass keine relevanten Protokolle erzeugt werden.
+## <a name="view-and-analyze-the-activity-log"></a>Anzeigen und Analysieren des Aktivitätsprotokolls
 
-![Portal – Diagnoseprotokolle](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
+Das Aktivitätsprotokoll wird standardmäßig generiert. Es kann konfiguriert werden, um auf Abonnementebene [gemäß der folgenden Anweisungen in diesem Artikel](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log) exportiert zu werden. Mehr zu diesen Protokollen können Sie im Artikel [Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen](../azure-resource-manager/management/view-activity-logs.md) erfahren.
 
-> [!NOTE]
-> Für Überwachungsprotokolle ist kein separates Speicherkonto erforderlich. Bei der Nutzung von Speicher zur Ereignis- und Integritätstestprotokollierung fallen Gebühren an.
+Mit einer der folgenden Methoden können Sie die Aktivitätsprotokolldaten anzeigen und analysieren:
 
-## <a name="audit-log"></a>Überwachungsprotokoll
+* **Azure-Tools:** Rufen Sie Informationen aus dem Aktivitätsprotokoll über Azure PowerShell, über die Azure-Befehlszeilenschnittstelle, mithilfe der Azure-REST-API oder über das Azure-Portal ab. Schrittweise Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/management/view-activity-logs.md).
+* **Power BI:** Falls Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe der [Azure-Überwachungsprotokolle-Integration mit Power BI](https://powerbi.microsoft.com/integrations/azure-audit-logs/) können Sie Ihre Daten mit vorkonfigurierten Dashboards analysieren. Sie können Ansichten auch gemäß Ihren Anforderungen anpassen.
 
-Das Überwachungsprotokoll wird standardmäßig generiert. Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Weitere Informationen zu diesen Protokollen finden Sie im Artikel [Anzeigen von Ereignis- und Überwachungsprotokollen](../monitoring-and-diagnostics/insights-debugging-with-events.md).
+## <a name="view-and-analyze-metrics-as-logs"></a>Anzeigen und Analysieren von Metriken als Protokolle
+Mit der Exportfunktion in Azure Monitor können Sie Ihre Load Balancer-Metriken exportieren. Diese Metriken generieren für jedes Samplingintervall von einer Minute einen Protokolleintrag.
 
-## <a name="alert-event-log"></a>Warnereignisprotokoll
+Der Export von Metriken in Protokolle ist pro Ressourcenebene aktiviert. So aktivieren Sie diese Protokolle:
 
-Dieses Protokoll wird nur generiert, wenn Sie es für das jeweilige Lastenausgleichsmodul aktiviert haben. Die Ereignisse werden im JSON-Format protokolliert und in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Im Anschluss finden Sie ein Beispiel für ein Ereignis.
+1. Navigieren Sie zum Bereich **Diagnoseeinstellungen**.
+1. Filtern Sie nach Ressourcengruppe, und wählen Sie dann die Load Balancer-Instanz aus, für die Sie den Metrikexport aktivieren möchten. 
+1. Wenn die Diagnoseeinstellungenseite für Load Balancer angezeigt wird, wählen Sie **AllMetrics** aus, um geeignete Metriken als Protokolle zu exportieren.
 
-```json
-{
-    "time": "2016-01-26T10:37:46.6024215Z",
-    "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
-    "category": "LoadBalancerAlertEvent",
-    "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
-    "operationName": "LoadBalancerProbeHealthStatus",
-    "properties": {
-        "eventName": "Resource Limits Hit",
-        "eventDescription": "Ports exhausted",
-        "eventProperties": {
-            "public ip address": "40.117.227.32"
-        }
-    }
-}
-```
+Informationen zu Einschränkungen beim Metrikexport finden Sie im Abschnitt [Einschränkungen](#limitations) dieses Artikels.
 
-Die JSON-Ausgabe zeigt die *eventname* -Eigenschaft, die den Grund beschreibt, aus dem der Lastenausgleich eine Warnung generiert hat. In diesem Fall wurde die Warnung generiert, weil Quell-IP-NAT-Grenzwerte (SNAT) eine TCP-Portauslastung verursacht haben.
+Wenn Sie **AllMetrics** in den Diagnoseeinstellungen Ihrer Load Balancer Standard-Instanz aktivieren, wird die Tabelle **AzureMonitor** mit diesen Protokollen aufgefüllt, wenn ein Event Hub oder ein Log Analytics-Arbeitsbereich verwendet wird. 
 
-## <a name="health-probe-log"></a>Integritätstestprotokoll
-
-Dieses Protokoll wird nur generiert, wenn Sie es wie oben beschrieben für das jeweilige Lastenausgleichsmodul aktiviert haben. Die Daten werden im Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Ein Container namens „insights-logs-loadbalancerprobehealthstatus“ wird erstellt, und die folgenden Daten werden protokolliert:
-
-```json
-{
-    "records":[
-    {
-        "time": "2016-01-26T10:37:46.6024215Z",
-        "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
-        "category": "LoadBalancerProbeHealthStatus",
-        "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
-        "operationName": "LoadBalancerProbeHealthStatus",
-        "properties": {
-            "publicIpAddress": "40.83.190.158",
-            "port": "81",
-            "totalDipCount": 2,
-            "dipDownCount": 1,
-            "healthPercentage": 50.000000
-        }
-    },
-    {
-        "time": "2016-01-26T10:37:46.6024215Z",
-        "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
-        "category": "LoadBalancerProbeHealthStatus",
-        "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
-        "operationName": "LoadBalancerProbeHealthStatus",
-        "properties": {
-            "publicIpAddress": "40.83.190.158",
-            "port": "81",
-            "totalDipCount": 2,
-            "dipDownCount": 0,
-            "healthPercentage": 100.000000
-        }
-    }]
-}
-```
-
-Die JSON-Ausgabe zeigt im Eigenschaftenfeld die grundlegenden Informationen zum Status des Integritätstests. Die *dipDownCount* -Eigenschaft zeigt die Gesamtzahl von Instanzen im Back-End, die aufgrund fehlerhafter Testantworten keinen Netzwerkdatenverkehr empfangen.
-
-## <a name="view-and-analyze-the-audit-log"></a>Anzeigen und Analysieren des Überwachungsprotokolls
-
-Mit einer der folgenden Methoden können Sie die Überwachungsprotokolldaten anzeigen und analysieren:
-
-* **Azure-Tools:** Rufen Sie Informationen aus den Überwachungsprotokollen über Azure PowerShell, die Azure-Befehlszeilenschnittstelle, die Azure REST-API oder über das Azure-Vorschauportal ab. Schrittweise Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../azure-resource-manager/resource-group-audit.md) .
-* **Power BI:** Wenn Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe des [Azure Audit Logs Content Pack for Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs) können Sie Ihre Daten mit vorkonfigurierten Dashboards analysieren oder Ansichten an Ihre Anforderungen anpassen.
-
-## <a name="view-and-analyze-the-health-probe-and-event-log"></a>Anzeigen und Analysieren des Integritätstest- und Ereignisprotokolls
-
-Sie müssen eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON-Protokolleinträge für das Integritätstest- und das Ereignisprotokoll abrufen. Sobald Sie die JSON-Dateien heruntergeladen haben, können Sie diese in das CSV-Format konvertieren oder in Excel, PowerBI oder einem anderen Datenvisualisierungstool anzeigen.
+Zum Exportieren in den Speicher müssen Sie eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON-Protokolleinträge für das Integritätstest- und Ereignisprotokoll abrufen. Nachdem Sie die JSON-Dateien heruntergeladen haben, können Sie diese in das CSV-Format konvertieren oder in Excel, Power BI oder einem anderen Datenvisualisierungstool anzeigen. 
 
 > [!TIP]
 > Wenn Sie mit Visual Studio und den grundlegenden Konzepten zum Ändern der Werte für Konstanten und Variablen in C# vertraut sind, können Sie die [Protokollkonvertierungstools](https://github.com/Azure-Samples/networking-dotnet-log-converter) von GitHub verwenden.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="stream-to-an-event-hub"></a>An einen Event Hub streamen
+Wenn Diagnoseinformationen an einen Event Hub gestreamt werden, kann er für die zentrale Protokollanalyse in einem SIEM-Tool eines Drittanbieters mit Azure Monitor-Integration verwendet werden. Weitere Informationen finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
 
-* Blogbeitrag [Visualize your Azure Audit Logs with Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) (Visualisieren Ihrer Azure-Überwachungsprotokolle mit Power BI).
-* Blogbeitrag [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) (Anzeigen und Analysieren von Azure-Überwachungsprotokollen in Power BI und mehr).
+## <a name="send-to-log-analytics"></a>An Log Analytics senden
+Sie können Diagnoseinformationen für Ressourcen in Azure direkt an einen Log Analytics-Arbeitsbereich senden. In diesem Arbeitsbereich können Sie komplexe Abfragen für die Informationen zur Problembehandlung und Analyse ausführen. Weitere Informationen finden Sie unter [Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+
+## <a name="limitations"></a>Einschränkungen
+Bei der Verwendung der Funktion zum Exportieren von Metriken in Protokolle für Azure Load Balancer gelten folgende Einschränkungen:
+* Metriken werden zurzeit über interne Namen angezeigt, wenn sie als Protokolle exportiert werden. Sie finden die Zuordnung in der folgenden Tabelle.
+* Die Dimensionalität von Metriken wird nicht beibehalten. Beispielsweise können Sie mit Metriken wie **DipAvailability** (Integritätsteststatus) die IP-Adresse des Back-Ends nicht aufteilen oder anzeigen.
+* Metriken für verwendete SNAT-Ports und zugeordnete SNAT-Ports sind zurzeit nicht für den Export als Protokolle verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-[Grundlegendes zu Load Balancer-Tests](load-balancer-custom-probe-overview.md)
+* [Überprüfen der verfügbaren Metriken für Ihren Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)
+* [Erstellen und Testen von Abfragen anhand von Azure Monitor-Anweisungen](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)

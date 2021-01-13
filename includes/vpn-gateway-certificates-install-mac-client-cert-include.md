@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b214932f43ce20480ee37a7b4edf942f080b38e8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ce39e23208398f6060103345a6c6cb3541834abc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177984"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90606690"
 ---
 Beim Installieren eines Clientzertifikats benötigen Sie das Kennwort, das beim Exportieren des Clientzertifikats erstellt wurde.
 
@@ -23,4 +23,4 @@ Beim Installieren eines Clientzertifikats benötigen Sie das Kennwort, das beim 
    ![Hinzufügen von Zertifikaten](./media/vpn-gateway-certificates-install-mac-client-cert-include/addcert.png)
 3. Geben Sie das Kennwort ein, das Sie beim Exportieren des Clientzertifikats erstellt haben. Das Kennwort schützt den privaten Schlüssel des Zertifikats. Klicken Sie auf **OK**, um die Installation abzuschließen.
 
-   ![Kennwort](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)
+   ![Screenshot: Dialogfeld mit der Aufforderung zur Eingabe eines Kennworts](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)

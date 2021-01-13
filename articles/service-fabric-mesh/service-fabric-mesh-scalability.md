@@ -1,20 +1,16 @@
 ---
-title: Skalierbarkeit von Azure Service Fabric Mesh-Anwendungen | Microsoft-Dokumentation
-description: Erfahren Sie mehr über das Skalieren von Diensten in Azure Service Fabric Mesh.
-services: service-fabric-mesh
-keywords: ''
-author: dkkapur
-ms.author: dekapur
+title: Skalierbarkeit von Azure Service Fabric Mesh-Apps
+description: Einer der Vorteile bei der Bereitstellung von Anwendungen in Service Fabric Mesh ist, dass Sie Ihre Dienste einfach skalieren können, manuell oder mit Richtlinien für die automatische Skalierung.
+author: georgewallace
+ms.author: gwallace
 ms.date: 10/26/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 1688cac35ea9de43bac529a4994bd4ea55eb0ab7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67b4b27a5d1faab3e6c156704d67a30b220ac54c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811092"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840182"
 ---
 # <a name="scaling-service-fabric-mesh-applications"></a>Skalieren von Service Fabric Mesh-Anwendungen
 

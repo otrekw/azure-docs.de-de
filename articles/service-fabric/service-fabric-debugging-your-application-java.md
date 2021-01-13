@@ -1,25 +1,15 @@
 ---
-title: Debuggen der Azure Service Fabric-Anwendung in Eclipse | Microsoft Docs
+title: Debuggen Ihrer Anwendung in Eclipse
 description: Verbessern Sie die Zuverlässigkeit und Leistung Ihrer Dienste, indem Sie sie in Eclipse in einem lokalen Entwicklungscluster entwickeln und debuggen.
-services: service-fabric
-documentationcenter: .net
-author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: cb888532-bcdb-4e47-95e4-bfbb1f644da4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/02/2017
-ms.author: suhuruli
-ms.openlocfilehash: 2f00636da2b29e7815569a683fdf51c6a4e3b0e0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-java
+ms.openlocfilehash: d321e0c10b66a15e6cb309cefe711602fa12957c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393587"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91534108"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Debuggen der Service Fabric-Anwendung in Java mithilfe von Eclipse
 > [!div class="op_single_selector"]
@@ -50,5 +40,5 @@ Wenn die Anwendung abstürzt, können Sie auch Coredumps aktivieren. Führen Sie
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-* [Sammeln von Protokollen mit Azure-Diagnose unter Linux](service-fabric-diagnostics-how-to-setup-lad.md)
+* [Sammeln von Protokollen mit Azure-Diagnose unter Linux](./service-fabric-diagnostics-event-aggregation-lad.md)
 * [Lokales Überwachen und Diagnostizieren von Diensten](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)

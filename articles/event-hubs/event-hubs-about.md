@@ -1,21 +1,14 @@
 ---
 title: Was ist Azure Event Hubs? – ein Big Data-Erfassungsdienst | Microsoft-Dokumentation
 description: Erfahren Sie mehr über Azure Event Hubs, einem Big Data-Streamingdienst, der Millionen von Ereignissen pro Sekunde erfasst.
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: overview
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 242f2fa9885f3f85439caddd061f650baafb8df4
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.date: 06/23/2020
+ms.openlocfilehash: 6669760bceee558a058878fbb89342aedda80117
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314412"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "88927900"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs: Big Data-Streamingplattform und Ereigniserfassungsdienst
 Bei Azure Event Hubs handelt es sich um eine Big Data-Streamingplattform und einen Ereigniserfassungsdienst. Mit diesem Dienst können Millionen von Ereignissen pro Sekunde empfangen und verarbeitet werden. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden.
@@ -51,7 +44,7 @@ Erfassen, puffern, speichern und verarbeiten Sie Ihren Datenstrom in Echtzeit, u
 
 Erfassen Sie Ihre Daten mit [Capture](event-hubs-capture-overview.md) nahezu in Echtzeit in [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) oder [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) für die Langzeitaufbewahrung oder die Microbatch-Verarbeitung. Sie können dieses Verhalten für den gleichen Datenstrom erreichen, den Sie zum Ableiten von Echtzeitanalysen verwenden. Das Einrichten der Erfassung von Ereignisdaten geht schnell. Für das Ausführen fallen keine Verwaltungskosten an, und die Skalierung erfolgt automatisch mit den  [Event Hub-Durchsatzeinheiten](event-hubs-scalability.md#throughput-units). Mit Event Hubs können Sie sich anstelle auf die Datenerfassung auf die Datenverarbeitung konzentrieren.
 
-Azure Event Hubs lässt sich für eine serverlose Architektur auch mit [Azure Functions](/azure/azure-functions/) integrieren.
+Azure Event Hubs lässt sich für eine serverlose Architektur auch mit [Azure Functions](../azure-functions/index.yml) integrieren.
 
 ## <a name="scalable"></a>Skalierbar
 
@@ -61,7 +54,7 @@ Mit Event Hubs können Sie mit Datenströmen in Megabytes anfangen und zu Gigaby
 
 Mit [Event Hubs für Apache Kafka-Ökosysteme](event-hubs-for-kafka-ecosystem-overview.md) können [Apache Kafka-Clients und -Anwendungen (1.0 und höher)](https://kafka.apache.org/) mit Event Hubs kommunizieren. Sie müssen keine eigenen Kafka-Cluster einrichten, konfigurieren und verwalten.
 
-Mit einem umfassenden Ökosystem in verschiedenen [Sprachen (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) können Sie über Event Hubs problemlos mit der Verarbeitung Ihrer Datenströme beginnen. Mit allen unterstützten Clientsprachen wird tiefgreifende Integration gewährleistet. Das Ökosystem ermöglicht darüber hinaus die nahtlose Integration in Azure-Dienste wie Azure Stream Analytics und Azure Functions und damit die Erstellung serverloser Architekturen.
+Mit einem umfassenden Ökosystem in verschiedenen Sprachen ([.NET](https://github.com/Azure/azure-sdk-for-net/), [Java](https://github.com/Azure/azure-sdk-for-java/), [Python](https://github.com/Azure/azure-sdk-for-python/), [JavaScript](https://github.com/Azure/azure-sdk-for-js/)) können Sie über Event Hubs problemlos mit der Verarbeitung Ihrer Datenströme beginnen. Mit allen unterstützten Clientsprachen wird tiefgreifende Integration gewährleistet. Das Ökosystem ermöglicht darüber hinaus die nahtlose Integration in Azure-Dienste wie Azure Stream Analytics und Azure Functions und damit die Erstellung serverloser Architekturen.
 
 ## <a name="key-architecture-components"></a>Wichtige Komponenten der Architektur
 Event Hubs enthält die folgenden [Schlüsselkomponenten](event-hubs-features.md):
@@ -76,16 +69,22 @@ Die folgende Abbildung zeigt die Datenstromverarbeitungsarchitektur von Event Hu
 
 ![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
 
+## <a name="event-hubs-on-azure-stack-hub"></a>Event Hubs in Azure Stack Hub
+Mit Event Hubs in Azure Stack Hub können Sie Hybrid Cloud-Szenarien umsetzen. Streaming- und ereignisbasierte Lösungen werden sowohl für lokale als auch für Azure-Cloudverarbeitung unterstützt. Unabhängig davon, ob Ihr Szenario ein hybrides (verbundenes) oder getrenntes Szenario ist, kann Ihre Lösung die Verarbeitung von großvolumigen Ereignissen/Streams unterstützen. Ihr Szenario ist nur an die Größe des Event Hubs-Clusters gebunden, die Sie entsprechend Ihren Anforderungen bereitstellen können. 
+
+Die Event Hubs-Editionen (in Azure Stack Hub und in Azure) bieten ein hohes Maß an Featureparität (Funktionsparität). Diese Parität bedeutet, dass SDKs, Beispiele, PowerShell, CLI und Portale eine ähnliche Funktionalität bieten, mit wenigen Unterschieden. 
+
+Event Hubs in Stack ist während der öffentlichen Vorschauphase kostenlos. Weitere Informationen finden Sie unter [Event Hubs in Azure Stack Hub – Übersicht](/azure-stack/user/event-hubs-overview).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lesen Sie zum Einstieg in die Verwendung von Event Hubs die Tutorials zum **Senden und Empfangen von Ereignissen**:
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-- [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)
 - [Python](event-hubs-python-get-started-send.md)
-- [Node.js](event-hubs-node-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (nur senden)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (nur empfangen)](event-hubs-storm-getstarted-receive.md)
@@ -95,5 +94,3 @@ Weitere Informationen zu Event Hubs finden Sie in den folgenden Artikeln:
 
 - [Event Hubs-Features im Überblick](event-hubs-features.md)
 - [Häufig gestellte Fragen zu Event Hubs](event-hubs-faq.md)
-
-

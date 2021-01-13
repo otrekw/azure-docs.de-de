@@ -1,18 +1,16 @@
 ---
-title: Erstellen eines HTTP-Eingangscontrollers mit einer statischen IP-Adresse in Azure Kubernetes Service (AKS)
+title: Verwenden von Eingangscontrollern mit statischen IP-Adressen
+titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller mit einer statischen öffentlichen IP-Adresse in einem AKS-Cluster konfigurieren.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
-ms.date: 05/24/2019
-ms.author: mlearned
-ms.openlocfilehash: 5a4a46b8384da46a95ef148bc9989749535ec811
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.date: 08/17/2020
+ms.openlocfilehash: eb58bbe127349aaebed3b1eb00281cf2938c1933
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "67615337"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681583"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Erstellen eines Eingangscontrollers mit einer statischen öffentlichen IP-Adresse in Azure Kubernetes Service (AKS)
 
@@ -20,7 +18,7 @@ Ein Eingangscontroller ist eine Softwarekomponente, die einen Reverseproxy, konf
 
 Dieser Artikel beschreibt, wie Sie den [NGINX-Eingangscontroller][nginx-ingress] in einem AKS-Cluster (Azure Kubernetes Service) bereitstellen. Der Eingangscontroller wird mit einer statischen öffentlichen IP-Adresse konfiguriert. Das Projekt [cert-manager][cert-manager] wird verwendet, um automatisch [Let‘s Encrypt][lets-encrypt]-Zertifikate zu generieren und zu konfigurieren. Schließlich werden zwei Anwendungen im AKS-Cluster ausgeführt, die jeweils über eine einzelne IP-Adresse zugänglich sind.
 
-Weitere Funktionen:
+Sie können außerdem:
 
 - [Erstellen eines einfachen Eingangscontrollers mit Konnektivität mit einem externen Netzwerk][aks-ingress-basic]
 - [Aktivieren des Add-Ons für das HTTP-Anwendungsrouting][aks-http-app-routing]
@@ -31,9 +29,9 @@ Weitere Funktionen:
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-In diesem Artikel wird Helm verwendet, um den NGINX-Eingangscontroller, cert-manager und eine Beispiel-Web-App zu installieren. Helm muss im AKS-Cluster initialisiert sein und ein Dienstkonto für Tiller verwenden. Stellen Sie sicher, dass Sie das neueste Release von Helm verwenden. Eine Upgradeanleitung finden Sie in der [Helm-Installationsdokumentation][helm-install]. Weitere Informationen zum Konfigurieren und Verwenden von Helm finden Sie unter [Installieren von Anwendungen mit Helm in Azure Kubernetes Service (AKS)][use-helm].
+In diesem Artikel wird [Helm 3][helm] für die Installation des NGINX-Eingangscontrollers und von cert-manager verwendet. Stellen Sie sicher, dass Sie die neueste Version von Helm verwenden und auf die Helm-Repositorys *ingress-nginx* und *jetstack* zugreifen können. Eine Upgradeanleitung finden Sie in der [Helm-Installationsdokumentation][helm-install]. Weitere Informationen zum Konfigurieren und Verwenden von Helm finden Sie unter [Installieren von Anwendungen mit Helm in Azure Kubernetes Service (AKS)][use-helm].
 
-Für den Artikel wird außerdem mindestens Version 2.0.64 der Azure-Befehlszeilenschnittstelle benötigt. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+Für den Artikel wird außerdem mindestens Version 2.0.64 der Azure-Befehlszeilenschnittstelle benötigt. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 ## <a name="create-an-ingress-controller"></a>Erstellen eines Eingangscontrollers
 
@@ -48,65 +46,67 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeRes
 Als Nächstes erstellen Sie eine öffentliche IP-Adresse mit der *statischen* Zuordnungsmethode unter Verwendung des Befehls [az network public-ip create][az-network-public-ip-create]. Im folgenden Beispiel wird in der AKS-Clusterressourcengruppe, die Sie im vorherigen Schritt abgerufen haben, eine öffentliche IP-Adresse mit dem Namen *myAKSPublicIP* erstellt:
 
 ```azurecli-interactive
-az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static --query publicIp.ipAddress -o tsv
+az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
 ```
 
-Nun stellen Sie das *nginx-ingress*-Diagramm mit Helm bereit. Fügen Sie den Parameter `--set controller.service.loadBalancerIP` hinzu, und geben Sie Ihre eigene öffentliche IP-Adresse an, die Sie im vorherigen Schritt erstellt haben. Für zusätzliche Redundanz werden zwei Replikate der NGINX-Eingangscontroller mit dem Parameter `--set controller.replicaCount` bereitgestellt. Um vollständig von der Ausführung von Replikaten des Eingangscontrollers zu profitieren, stellen Sie sicher, dass sich mehr als ein Knoten im AKS-Cluster befindet.
+> [!NOTE]
+> Mit den obigen Befehlen wird eine IP-Adresse erstellt, die beim Löschen Ihres AKS-Clusters gelöscht wird. Alternativ können Sie eine IP-Adresse in einer anderen Ressourcengruppe erstellen, die separat von Ihrem AKS-Cluster verwaltet werden kann. Wenn Sie eine IP-Adresse in einer anderen Ressourcengruppe erstellen, muss sichergestellt werden, dass der vom AKS-Cluster verwendete Dienstprinzipal über delegierte Berechtigungen für die andere Ressourcengruppe verfügt (z. B. *Netzwerkmitwirkender*). Weitere Informationen finden Sie unter [Verwenden einer statischen öffentlichen IP-Adresse und einer DNS-Bezeichnung mit dem AKS-Lastenausgleich][aks-static-ip].
 
-Der Eingangscontroller muss ebenfalls auf einem Linux-Knoten geplant werden. Windows Server-Knoten (derzeit in der Vorschau in AKS) dürfen nicht auf dem Eingangscontroller ausgeführt werden. Ein Knotenselektor wird mit dem Parameter `--set nodeSelector` angegeben, um den Kubernetes-Scheduler anzuweisen, den NGINX-Eingangscontroller auf einem Linux-basierten Knoten auszuführen.
+Nun stellen Sie das *nginx-ingress*-Diagramm mit Helm bereit. Für zusätzliche Redundanz werden zwei Replikate der NGINX-Eingangscontroller mit dem Parameter `--set controller.replicaCount` bereitgestellt. Um vollständig von der Ausführung von Replikaten des Eingangscontrollers zu profitieren, stellen Sie sicher, dass sich mehr als ein Knoten im AKS-Cluster befindet.
+
+Sie müssen zwei zusätzliche Parameter an das Helm-Release übergeben, damit der Eingangscontroller sowohl die statische IP-Adresse des Lastenausgleichs, der dem Eingangscontrollerdienst zugeordnet werden soll, als auch die DNS-Namensbezeichnung kennt, die auf die öffentliche IP-Adressressource angewandt wird. Damit die HTTPS-Zertifikate ordnungsgemäß funktionieren, wird eine DNS-Namensbezeichnung verwendet, um einen vollqualifizierten Domänennamen (FQDN) für die IP-Adresse des Eingangscontrollers zu konfigurieren.
+
+1. Fügen Sie den Parameter `--set controller.service.loadBalancerIP` hinzu. Geben Sie Ihre eigene öffentliche IP-Adresse an, die im vorherigen Schritt erstellt wurde.
+1. Fügen Sie den Parameter `--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"` hinzu. Geben Sie eine DNS-Namensbezeichnung an, die auf die im vorherigen Schritt erstellte öffentliche IP-Adresse angewandt werden soll.
+
+Der Eingangscontroller muss ebenfalls auf einem Linux-Knoten geplant werden. Windows Server-Knoten dürfen nicht auf dem Eingangscontroller ausgeführt werden. Ein Knotenselektor wird mit dem Parameter `--set nodeSelector` angegeben, um den Kubernetes-Scheduler anzuweisen, den NGINX-Eingangscontroller auf einem Linux-basierten Knoten auszuführen.
 
 > [!TIP]
-> Im folgenden Beispiel wird der Kubernetes-Namespace *ingress-basic* für die Eingangsressourcen erstellt. Geben Sie ggf. einen Namespace für Ihre eigene Umgebung an. Wenn in Ihrem AKS-Cluster die RBAC nicht aktiviert ist, fügen Sie den Helm-Befehlen `--set rbac.create=false` hinzu.
+> Im folgenden Beispiel wird der Kubernetes-Namespace *ingress-basic* für die Eingangsressourcen erstellt. Geben Sie ggf. einen Namespace für Ihre eigene Umgebung an. Wenn in Ihrem AKS-Cluster die rollenbasierte Zugriffssteuerung (RBAC) von Kubernetes nicht aktiviert ist, fügen Sie den Helm-Befehlen `--set rbac.create=false` hinzu.
 
 > [!TIP]
-> Wenn Sie die [Beibehaltung der Clientquell-IP][client-source-ip] für Anforderungen an Container in Ihrem Cluster aktivieren möchten, fügen Sie dem Helm-Installationsbefehl `--set controller.service.externalTrafficPolicy=Local` hinzu. Die Clientquell-IP wird in der Anforderungskopfzeile unter *X-Forwarded-For* gespeichert. Bei der Verwendung eines Eingangscontrollers mit aktivierter Clientquell-IP-Beibehaltung funktioniert SSL-Pass-Through nicht.
+> Wenn Sie die [Beibehaltung der Clientquell-IP][client-source-ip] für Anforderungen an Container in Ihrem Cluster aktivieren möchten, fügen Sie dem Helm-Installationsbefehl `--set controller.service.externalTrafficPolicy=Local` hinzu. Die Clientquell-IP wird in der Anforderungskopfzeile unter *X-Forwarded-For* gespeichert. Bei der Verwendung eines Eingangscontrollers mit aktivierter Clientquell-IP-Beibehaltung funktioniert TLS-Pass-Through nicht.
+
+Aktualisieren Sie das folgende Skript mit der **IP-Adresse** des Eingangscontrollers und einem **eindeutigen Namen**, den Sie als FQDN-Präfix verwenden möchten.
+
+> [!IMPORTANT]
+> *STATIC_IP* und *DNS_LABEL* müssen beim Ausführen des Befehls durch Ihre eigene IP-Adresse und Ihren eindeutigen Namen ersetzt werden.
 
 ```console
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
 
+# Add the ingress-nginx repository
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+
 # Use Helm to deploy an NGINX ingress controller
-helm install stable/nginx-ingress \
+helm install nginx-ingress ingress-nginx/ingress-nginx \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set controller.service.loadBalancerIP="40.121.63.72"
+    --set controller.service.loadBalancerIP="STATIC_IP" \
+    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="DNS_LABEL"
 ```
 
 Wird der Kubernetes-Lastenausgleichsdienst für den NGINX-Eingangscontroller erstellt, wird Ihre statische IP-Adresse zugewiesen, wie in der folgenden Beispielausgabe gezeigt:
 
 ```
-$ kubectl get service -l app=nginx-ingress --namespace ingress-basic
+$ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 
-NAME                                        TYPE           CLUSTER-IP    EXTERNAL-IP    PORT(S)                      AGE
-dinky-panda-nginx-ingress-controller        LoadBalancer   10.0.232.56   40.121.63.72   80:31978/TCP,443:32037/TCP   3m
-dinky-panda-nginx-ingress-default-backend   ClusterIP      10.0.95.248   <none>         80/TCP                       3m
+NAME                                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
+nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_IP     80:32486/TCP,443:30953/TCP   44s   app.kubernetes.io/component=controller,app.kubernetes.io/instance=nginx-ingress,app.kubernetes.io/name=ingress-nginx
 ```
 
 Da noch keine Eingangsregeln erstellt wurden, wird die Standard-404-Seite des NGINX-Eingangscontrollers angezeigt, wenn Sie die öffentliche IP-Adresse im Browser öffnen. Eingangsregeln werden in den folgenden Schritten konfiguriert.
 
-## <a name="configure-a-dns-name"></a>Konfigurieren des DNS-Namens
-
-Damit die HTTPS-Zertifikate ordnungsgemäß ausgeführt werden, konfigurieren Sie einen vollqualifizierten Domänennamen (FQDN) für die IP-Adresse des Eingangscontrollers. Aktualisieren Sie das folgende Skript mit der IP-Adresse des Eingangscontrollers und einem eindeutigen Namen, den Sie im FQDN verwenden möchten:
+Sie können überprüfen, ob die DNS-Namensbezeichnung angewandt wurde, indem Sie den vollqualifizierten Domänennamen für die öffentliche IP-Adresse wie folgt abfragen:
 
 ```azurecli-interactive
-#!/bin/bash
-
-# Public IP address of your ingress controller
-IP="40.121.63.72"
-
-# Name to associate with public IP address
-DNSNAME="demo-aks-ingress"
-
-# Get the resource-id of the public ip
-PUBLICIPID=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
-
-# Update public ip address with DNS name
-az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query "[?name=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
 ```
 
-Der Eingangscontroller ist jetzt über den vollqualifizierten Domänennamen zugänglich.
+Der Eingangscontroller ist jetzt über die IP-Adresse oder den vollqualifizierten Domänennamen erreichbar.
 
 ## <a name="install-cert-manager"></a>Installieren von cert-manager
 
@@ -115,17 +115,11 @@ Der NGINX-Eingangscontroller unterstützt TLS-Terminierung. Es gibt verschiedene
 > [!NOTE]
 > In diesem Artikel wird die `staging`-Umgebung für Let‘s Encrypt verwendet. Verwenden Sie in Produktionsbereitstellungen `letsencrypt-prod` und `https://acme-v02.api.letsencrypt.org/directory` in den Ressourcendefinitionen und bei der Installation des Helm-Diagramms.
 
-Verwenden Sie zum Installieren des cert-manager-Controllers in einem RBAC-fähigen Cluster den folgenden `helm install`-Befehl:
+Verwenden Sie zum Installieren des cert-manager-Controllers in einem Kubernetes RBAC-fähigen Cluster den folgenden `helm install`-Befehl:
 
 ```console
-# Install the CustomResourceDefinition resources separately
-kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.8/deploy/manifests/00-crds.yaml
-
-# Create the namespace for cert-manager
-kubectl create namespace cert-manager
-
 # Label the cert-manager namespace to disable resource validation
-kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
+kubectl label namespace ingress-basic cert-manager.io/disable-validation=true
 
 # Add the Jetstack Helm repository
 helm repo add jetstack https://charts.jetstack.io
@@ -135,9 +129,11 @@ helm repo update
 
 # Install the cert-manager Helm chart
 helm install \
-  --name cert-manager \
-  --namespace cert-manager \
-  --version v0.8.0 \
+  cert-manager \
+  --namespace ingress-basic \
+  --version v0.16.1 \
+  --set installCRDs=true \
+  --set nodeSelector."beta\.kubernetes\.io/os"=linux \
   jetstack/cert-manager
 ```
 
@@ -150,51 +146,121 @@ Bevor Zertifikate ausgestellt werden können, benötigt cert-manager eine [Ausst
 Erstellen Sie einen Clusteraussteller, wie z.B. `cluster-issuer.yaml`, mithilfe des folgenden Beispielmanifests. Aktualisieren Sie die E-Mail-Adresse mit einer gültigen Adresse aus Ihrer Organisation:
 
 ```yaml
-apiVersion: certmanager.k8s.io/v1alpha1
+apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-staging
-  namespace: ingress-basic
 spec:
   acme:
     server: https://acme-staging-v02.api.letsencrypt.org/directory
     email: user@contoso.com
     privateKeySecretRef:
       name: letsencrypt-staging
-    http01: {}
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
+          podTemplate:
+            spec:
+              nodeSelector:
+                "kubernetes.io/os": linux
 ```
 
-Um den Aussteller zu erstellen, verwenden Sie den Befehl `kubectl apply -f cluster-issuer.yaml`.
+Um den Aussteller zu erstellen, verwenden Sie den Befehl `kubectl apply`.
 
 ```
-$ kubectl apply -f cluster-issuer.yaml
+$ kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
 
-clusterissuer.certmanager.k8s.io/letsencrypt-staging created
+clusterissuer.cert-manager.io/letsencrypt-staging created
 ```
 
 ## <a name="run-demo-applications"></a>Ausführen von Demoanwendungen
 
 Ein Eingangscontroller und eine Zertifikatsverwaltungslösung wurden konfiguriert. Nun führen wir zwei Demoanwendungen im AKS-Cluster-aus. In diesem Beispiel wird Helm verwendet, um mehrere Instanzen einer einfachen Hallo-Welt-Anwendung auszuführen.
 
-Bevor Sie Helm-Beispieldiagramme installieren können, fügen Sie das Azure-Beispielrepository wie folgt Ihrer Helm-Umgebung hinzu:
+Um den Eingangscontroller in Aktion zu sehen, führen Sie zwei Demoanwendungen im AKS-Cluster aus. In diesem Beispiel verwenden Sie `kubectl apply`, um mehrere Instanzen einer einfachen *Hallo Welt*-Anwendung auszuführen.
 
-```console
-helm repo add azure-samples https://azure-samples.github.io/helm-charts/
+Erstellen Sie die Datei *aks-helloworld.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
+
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld
+  template:
+    metadata:
+      labels:
+        app: aks-helloworld
+    spec:
+      containers:
+      - name: aks-helloworld
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "Welcome to Azure Kubernetes Service (AKS)"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: aks-helloworld
 ```
 
-Erstellen Sie die erste Demoanwendung aus einem Helm-Diagramm mit dem folgenden Befehl:
+Erstellen Sie die Datei *ingress-demo.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
-```console
-helm install azure-samples/aks-helloworld --namespace ingress-basic
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingress-demo
+  template:
+    metadata:
+      labels:
+        app: ingress-demo
+    spec:
+      containers:
+      - name: ingress-demo
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "AKS Ingress Demo"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-demo
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: ingress-demo
 ```
 
-Installieren Sie nun eine zweite Instanz der Demoanwendung. Geben Sie für die zweite Instanz einen neuen Titel an, sodass sich die beiden Anwendungen visuell unterscheiden. Sie geben auch einen eindeutigen Dienstnamen an:
+Führen Sie die beiden Demoanwendungen mit `kubectl apply` aus:
 
 ```console
-helm install azure-samples/aks-helloworld \
-    --namespace ingress-basic \
-    --set title="AKS Ingress Demo" \
-    --set serviceName="ingress-demo"
+kubectl apply -f aks-helloworld.yaml --namespace ingress-basic
+kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 ```
 
 ## <a name="create-an-ingress-route"></a>Erstellen einer Eingangsroute
@@ -206,15 +272,15 @@ Im folgenden Beispiel wird der Datenverkehr an die Adresse `https://demo-aks-ing
 Erstellen Sie eine Datei mit dem Namen `hello-world-ingress.yaml`, und fügen Sie den folgenden YAML-Beispielcode ein.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
-  namespace: ingress-basic
   annotations:
     kubernetes.io/ingress.class: nginx
-    certmanager.k8s.io/cluster-issuer: letsencrypt-staging
+    cert-manager.io/cluster-issuer: letsencrypt-staging
     nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   tls:
   - hosts:
@@ -227,17 +293,21 @@ spec:
       - backend:
           serviceName: aks-helloworld
           servicePort: 80
-        path: /(.*)
+        path: /hello-world-one(/|$)(.*)
       - backend:
           serviceName: ingress-demo
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
+      - backend:
+          serviceName: aks-helloworld
+          servicePort: 80
+        path: /(.*)
 ```
 
-Erstellen Sie die Eingangsressource mit dem Befehl `kubectl apply -f hello-world-ingress.yaml`.
+Erstellen Sie die Eingangsressource mit dem Befehl `kubectl apply`.
 
 ```
-$ kubectl apply -f hello-world-ingress.yaml
+$ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
 ingress.extensions/hello-world-ingress created
 ```
@@ -264,7 +334,7 @@ Type    Reason          Age   From          Message
 Wenn Sie eine zusätzliche Zertifikatsressource erstellen müssen, können Sie dies mit dem folgenden Beispielmanifest tun. Aktualisieren Sie *dnsNames* und *domains* auf den DNS-Namen, den Sie in einem vorherigen Schritt erstellt haben. Wenn Sie einen rein internen Eingangscontroller verwenden, geben Sie den internen DNS-Namen für Ihren Dienst an.
 
 ```yaml
-apiVersion: certmanager.k8s.io/v1alpha1
+apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
   name: tls-secret
@@ -284,19 +354,19 @@ spec:
     kind: ClusterIssuer
 ```
 
-Verwenden Sie zum Erstellen der Zertifikatsressource den Befehl `kubectl apply -f certificates.yaml`.
+Verwenden Sie zum Erstellen der Zertifikatsressource den Befehl `kubectl apply`.
 
 ```
 $ kubectl apply -f certificates.yaml
 
-certificate.certmanager.k8s.io/tls-secret created
+certificate.cert-manager.io/tls-secret created
 ```
 
 ## <a name="test-the-ingress-configuration"></a>Testen der Konfiguration für eingehende Daten
 
-Öffnen Sie einen Webbrowser für den FQDN des Kubernetes-Eingangscontrollers, z.B. *https://demo-aks-ingress.eastus.cloudapp.azure.com* .
+Öffnen Sie einen Webbrowser für den FQDN des Kubernetes-Eingangscontrollers, z.B. *`https://demo-aks-ingress.eastus.cloudapp.azure.com`* .
 
-Da diese Beispiele `letsencrypt-staging` verwenden, ist das ausgestellte SSL-Zertifikat für den Browser nicht vertrauenswürdig. Akzeptieren Sie die Eingabeaufforderung der Warnung, um Ihre Anwendung zu öffnen. Die Zertifikatinformationen zeigen, dass dieses *Fake LE Intermediate X1*-Zertifikat von Let‘s Encrypt ausgestellt wurde. Dieses gefälschte Zertifikat gibt an, dass `cert-manager` die Anforderung korrekt verarbeitet und ein Zertifikat vom Anbieter erhalten hat:
+Da diese Beispiele `letsencrypt-staging` verwenden, ist das ausgestellte TLS/SSL-Zertifikat für den Browser nicht vertrauenswürdig. Akzeptieren Sie die Eingabeaufforderung der Warnung, um Ihre Anwendung zu öffnen. Die Zertifikatinformationen zeigen, dass dieses *Fake LE Intermediate X1*-Zertifikat von Let‘s Encrypt ausgestellt wurde. Dieses gefälschte Zertifikat gibt an, dass `cert-manager` die Anforderung korrekt verarbeitet und ein Zertifikat vom Anbieter erhalten hat:
 
 ![Let's Encrypt-Bereitstellungszertifikat](media/ingress/staging-certificate.png)
 
@@ -308,7 +378,7 @@ Die Demoanwendung wird im Webbrowser angezeigt:
 
 ![Anwendungsbeispiel 1](media/ingress/app-one.png)
 
-Fügen Sie nun den Pfad */hello-world-two* dem FQDN hinzu, wie z.B. *https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two* . Die zweite Demoanwendung mit dem benutzerdefinierten Titel wird angezeigt:
+Fügen Sie nun den Pfad */hello-world-two* dem FQDN hinzu, wie z.B. *`https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two`* . Die zweite Demoanwendung mit dem benutzerdefinierten Titel wird angezeigt:
 
 ![Anwendungsbeispiel 2](media/ingress/app-two.png)
 
@@ -324,12 +394,6 @@ Verwenden Sie den `kubectl delete`-Befehl mit dem Namespacenamen, um den gesamte
 kubectl delete namespace ingress-basic
 ```
 
-Entfernen Sie als Nächstes das Helm-Repository für die „Hallo Welt“-AKS-App:
-
-```console
-helm repo remove azure-samples
-```
-
 ### <a name="delete-resources-individually"></a>Löschen einzelner Ressourcen
 
 Mehr Kontrolle bietet eine andere Vorgehensweise, bei der Sie einzelne Ressourcen löschen. Entfernen Sie zuerst die Zertifikatressourcen:
@@ -339,39 +403,30 @@ kubectl delete -f certificates.yaml
 kubectl delete -f cluster-issuer.yaml
 ```
 
-Listen Sie nun mit dem Befehl `helm list` die Helm-Versionen auf. Suchen Sie nach Diagrammen mit den Namen *nginx-ingress*, *cert-manager* und *aks-helloworld*, wie in der folgenden Beispielausgabe gezeigt:
+Listen Sie nun mit dem Befehl `helm list` die Helm-Versionen auf. Suchen Sie nach Diagrammen mit den Namen *nginx-ingress* und *cert-manager*, wie in der folgenden Beispielausgabe gezeigt:
 
 ```
-$ helm list
+$ helm list --all-namespaces
 
-NAME                    REVISION    UPDATED                     STATUS      CHART                   APP VERSION NAMESPACE
-waxen-hamster           1           Wed Mar  6 23:16:00 2019    DEPLOYED    nginx-ingress-1.3.1   0.22.0        kube-system
-alliterating-peacock    1           Wed Mar  6 23:17:37 2019    DEPLOYED    cert-manager-v0.6.6     v0.6.2      kube-system
-mollified-armadillo     1           Wed Mar  6 23:26:04 2019    DEPLOYED    aks-helloworld-0.1.0                default
-wondering-clam          1           Wed Mar  6 23:26:07 2019    DEPLOYED    aks-helloworld-0.1.0                default
+NAME                    NAMESPACE       REVISION        UPDATED                        STATUS          CHART                   APP VERSION
+nginx-ingress           ingress-basic   1               2020-01-11 14:51:03.454165006  deployed        nginx-ingress-1.28.2    0.26.2
+cert-manager            ingress-basic   1               2020-01-06 21:19:03.866212286  deployed        cert-manager-v0.13.0    v0.13.0
 ```
 
-Löschen Sie die Versionen mit dem Befehl `helm delete`. Im folgenden Beispiel werden die NGINX-Eingangsbereitstellung, der Zertifikat-Manager und die beiden Hallo-Welt-AKS-Beispiel-Apps gelöscht.
+Deinstallieren Sie die Versionen mit dem Befehl `helm uninstall`. Im folgenden Beispiel werden die NGINX-Eingangsbereitstellung und Zertifikat-Managerbereitstellungen deinstalliert.
 
 ```
-$ helm delete waxen-hamster alliterating-peacock mollified-armadillo wondering-clam
+$ helm uninstall nginx-ingress cert-manager -n ingress-basic
 
-release "billowing-kitten" deleted
-release "loitering-waterbuffalo" deleted
-release "flabby-deer" deleted
-release "linting-echidna" deleted
+release "nginx-ingress" deleted
+release "cert-manager" deleted
 ```
 
-Entfernen Sie als Nächstes das Helm-Repository für die Hallo-Welt-AKS-App:
+Entfernen Sie als nächstes die beiden Beispielanwendungen:
 
 ```console
-helm repo remove azure-samples
-```
-
-Entfernen Sie die Eingangsroute, die Datenverkehr an die Beispiel-Apps weitergeleitet hat:
-
-```console
-kubectl delete -f hello-world-ingress.yaml
+kubectl delete -f aks-helloworld.yaml --namespace ingress-basic
+kubectl delete -f ingress-demo.yaml --namespace ingress-basic
 ```
 
 Löschen Sie den Namespace selbst. Verwenden Sie dazu den `kubectl delete`-Befehl mit dem Namespacenamen:
@@ -394,7 +449,7 @@ In diesem Artikel werden einige externe Komponenten in AKS berücksichtigt. Weit
 - [NGINX-Eingangscontroller][nginx-ingress]
 - [cert-manager][cert-manager]
 
-Weitere Funktionen:
+Sie können außerdem:
 
 - [Erstellen eines einfachen Eingangscontrollers mit Konnektivität mit einem externen Netzwerk][aks-ingress-basic]
 - [Aktivieren des Add-Ons für das HTTP-Anwendungsrouting][aks-http-app-routing]
@@ -403,13 +458,14 @@ Weitere Funktionen:
 - [Erstellen eines Eingangscontrollers mit einer dynamischen öffentlichen IP-Adresse und Konfigurieren von Let's Encrypt für das automatische Generieren von TLS-Zertifikaten][aks-ingress-tls]
 
 <!-- LINKS - external -->
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
+[helm-cli]: ./kubernetes-helm.md
 [cert-manager]: https://github.com/jetstack/cert-manager
 [cert-manager-certificates]: https://cert-manager.readthedocs.io/en/latest/reference/certificates.html
 [cert-manager-cluster-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/clusterissuers.html
 [cert-manager-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/issuers.html
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
+[helm]: https://helm.sh/
 [helm-install]: https://docs.helm.sh/using_helm/#installing-helm
 [ingress-shim]: https://docs.cert-manager.io/en/latest/tasks/issuing-certificates/ingress-shim.html
 
@@ -427,3 +483,4 @@ Weitere Funktionen:
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [client-source-ip]: concepts-network.md#ingress-controllers
 [install-azure-cli]: /cli/azure/install-azure-cli
+[aks-static-ip]: static-ip.md

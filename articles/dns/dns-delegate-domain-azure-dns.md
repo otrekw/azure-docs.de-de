@@ -1,24 +1,24 @@
 ---
-title: 'Tutorial: Hosten Ihrer Domäne und Unterdomäne in Azure DNS'
-description: In diesem Tutorial erfahren Sie, wie Sie Azure DNS zum Hosten Ihrer DNS-Zonen konfigurieren.
+title: 'Tutorial: Hosten Ihrer Domäne und Unterdomäne – Azure DNS'
+description: In diesem Tutorial erfahren Sie, wie Sie Azure DNS für das Hosten Ihrer DNS-Zonen konfigurieren.
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: c0c5c5fe899c9b9b898973a88c7dac4256959ee4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: rohink
+ms.openlocfilehash: a8f64ab3141459142def12a1758b0fe0a94ca432
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779775"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282160"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Tutorial: Hosten Ihrer Domäne in Azure DNS
 
 Sie können Azure DNS verwenden, um Ihre DNS-Domäne zu hosten und die DNS-Einträge zu verwalten. Indem Sie Ihre Domänen in Azure hosten, können Sie Ihre DNS-Einträge unter Verwendung der gleichen Anmeldeinformationen, APIs, Tools und Abrechnungsabläufe wie bei Ihren anderen Azure-Diensten verwalten.
 
-Nehmen wir an, Sie erwerben die Domäne „contoso.net“ von einer Domänennamen-Registrierungsstelle und erstellen dann eine Zone mit dem Namen „contoso.net“ in Azure DNS. Als Besitzer der Domäne bietet Ihre Registrierungsstelle Ihnen die Möglichkeit, die Namenservereinträge (NS-Einträge) für Ihre Domäne zu konfigurieren. Die Registrierungsstelle speichert die NS-Einträge in der übergeordneten Zone „.net“. Internetbenutzer auf der ganzen Welt, die DNS-Einträge in „contoso.net“ auflösen möchten, werden dann an Ihre Domäne in der Azure DNS-Zone weitergeleitet.
+Nehmen wir an, Sie erwerben die Domäne „contoso.net“ von einer Domänennamen-Registrierungsstelle und erstellen dann eine Zone mit dem Namen „contoso.net“ in Azure DNS. Als Besitzer der Domäne bietet Ihre Registrierungsstelle Ihnen die Möglichkeit, die Namenservereinträge (NS-Einträge) für Ihre Domäne zu konfigurieren. Die Registrierungsstelle speichert die NS-Einträge in der übergeordneten Zone „.NET“. Internetbenutzer auf der ganzen Welt, die DNS-Einträge in „contoso.net“ auflösen möchten, werden dann an Ihre Domäne in der Azure DNS-Zone weitergeleitet.
 
 
 In diesem Tutorial lernen Sie Folgendes:
@@ -36,31 +36,36 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Sie müssen über einen Domänennamen zum Testen verfügen, den Sie in Azure DNS hosten können. Sie müssen uneingeschränkte Kontrolle über diese Domäne haben. Das bedeutet, Sie müssen unter anderem die Namenservereinträge für die Domäne festlegen können.
 
-Die für dieses Tutorial verwendete Beispieldomäne lautet „contoso.net“. Verwenden Sie aber Ihren eigenen Domänennamen.
+In diesem Beispiel verweisen wir auf die übergeordnete Domäne **contoso.net** .
 
 ## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
 
-1. Melden Sie sich beim Azure-Portal an.
-1. Klicken Sie oben links auf **Ressource erstellen** > **Netzwerk** > **DNS-Zone**, um die Seite **DNS-Zone erstellen** zu öffnen.
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), um eine DNS-Zone zu erstellen. Suchen Sie **DNS-Zonen** , und wählen Sie diese aus.
 
    ![DNS-Zone](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
-1. Geben Sie auf der Seite **DNS-Zone erstellen** die folgenden Werte ein, und wählen Sie dann **Erstellen**:
+1. Wählen Sie **DNS-Zone erstellen** aus.
+1. Geben Sie auf der Seite **DNS-Zone erstellen** die folgenden Werte ein, und wählen Sie dann **Erstellen** : z. B. **contoso.net** .
+      > [!NOTE] 
+      > Wenn die neue Zone, die Sie erstellen, eine untergeordnete Zone ist (z. B. übergeordnete Zone = contoso.net untergeordnete Zone = child.contoso.net), lesen Sie das Tutorial [Erstellen einer neuen untergeordneten DNS-Zone](./tutorial-public-dns-zones-child.md).
 
-   | **Einstellung** | **Wert** | **Details** |
-   |---|---|---|
-   |**Name**|[Ihr Domänenname] |Der von Ihnen erworbene Domänenname. In diesem Tutorial wird als Beispiel „contoso.net“ verwendet.|
-   |**Abonnement**|[Ihr Abonnement]|Wählen Sie ein Abonnement aus, in dem Sie die Zone erstellen möchten.|
-   |**Ressourcengruppe**|**Neu erstellen:** contosoRG|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des von Ihnen ausgewählten Abonnements eindeutig sein.<br>Der Standort der Ressourcengruppe hat keine Auswirkung auf die DNS-Zone. Der Standort der DNS-Zone ist immer „global“ und wird nicht angezeigt.|
-   |**Location**|USA (Ost)||
+    | **Einstellung** | **Wert** | **Details** |
+    |--|--|--|
+    | **Projektdetails:**  |  |  |
+    | **Ressourcengruppe**    | ContosoRG | Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des von Ihnen ausgewählten Abonnements eindeutig sein. Der Standort der Ressourcengruppe hat keine Auswirkung auf die DNS-Zone. Der Standort der DNS-Zone ist immer „global“ und wird nicht angezeigt. |
+    | **Instanzdetails:** |  |  |
+    | **Untergeordnete Zone**        | deaktiviert lassen | Da diese Zone **keine** [untergeordnete Zone](./tutorial-public-dns-zones-child.md) ist, sollten Sie diese Option nicht aktivieren. |
+    | **Name**              | contoso.net | Feld für den Namen der übergeordneten Zone      |
+    | **Location**          | East US | Dieses Feld basiert auf dem im Rahmen der Ressourcengruppenerstellung ausgewählten Speicherort.  |
+    
 
 ## <a name="retrieve-name-servers"></a>Abrufen von Namenservern
 
 Bevor Sie Ihre DNS-Zone an Azure DNS delegieren können, müssen Sie die Namenserver für Ihre Zone ermitteln. Azure DNS weist bei jeder Zonenerstellung Namenserver aus einem Pool zu.
 
-1. Wählen Sie nach der Erstellung der DNS-Zone im Bereich **Favoriten** des Azure-Portals die Option **Alle Ressourcen**. Wählen Sie auf der Seite **Alle Ressourcen** Ihre DNS-Zone aus. Falls das von Ihnen ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie in das Feld **Nach Name filtern** Ihren Domänennamen eingeben, um komfortabel auf das Anwendungsgateway zuzugreifen. 
+1. Wählen Sie nach der Erstellung der DNS-Zone im Bereich **Favoriten** des Azure-Portals die Option **Alle Ressourcen** . Wählen Sie auf der Seite **Alle Ressourcen** Ihre DNS-Zone aus. Falls das von Ihnen ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie in das Feld **Nach Name filtern** Ihren Domänennamen eingeben, um komfortabel auf das Anwendungsgateway zuzugreifen. 
 
-1. Rufen Sie die Namenserver über die Seite „DNS-Zone“ ab. In diesem Beispiel wurden der Zone „contoso.net“ die Namenserver *ns1-01.azure-dns.com*, *ns2-01.azure-dns.net*, *ns3-01.azure-dns.org* und *ns4-01.azure-dns.info* zugewiesen:
+1. Rufen Sie die Namenserver über die Seite „DNS-Zone“ ab. In diesem Beispiel wurden der Zone „contoso.net“ die Namenserver *ns1-01.azure-dns.com* , *ns2-01.azure-dns.net* , *ns3-01.azure-dns.org* und *ns4-01.azure-dns.info* zugewiesen:
 
    ![Liste der Namenserver](./media/dns-delegate-domain-azure-dns/viewzonens500.png)
 
@@ -109,9 +114,9 @@ Sie müssen die Azure DNS-Namenserver nicht angeben. Wenn die Delegierung ordnun
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können die Ressourcengruppe **contosoRG** behalten, wenn Sie das nächste Tutorial absolvieren möchten. Löschen Sie andernfalls die Ressourcengruppe **contosoRG**, um die in diesem Tutorial erstellten Ressourcen zu löschen.
+Sie können die Ressourcengruppe **contosoRG** behalten, wenn Sie das nächste Tutorial absolvieren möchten. Löschen Sie andernfalls die Ressourcengruppe **contosoRG** , um die in diesem Tutorial erstellten Ressourcen zu löschen.
 
-- Klicken Sie auf die Ressourcengruppe **contosoRG**, und wählen Sie anschließend **Ressourcengruppe löschen** aus. 
+- Klicken Sie auf die Ressourcengruppe **contosoRG** , und wählen Sie anschließend **Ressourcengruppe löschen** aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

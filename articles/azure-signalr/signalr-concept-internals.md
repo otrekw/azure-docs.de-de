@@ -1,31 +1,30 @@
 ---
 title: Ausführliche Informationen zu Azure SignalR Service
-description: Eine Übersicht der ausführlichen Informationen über den Azure SignalR Service.
+description: Erfahren Sie mehr über die Interna von Azure SignalR Service, die Architektur, die Verbindungen und die Art der Datenübertragung.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.custom: devx-track-dotnet
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: cbcdfccfdca1dbed3b766b3f50295b1d355b3478
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3fc6971c66d06ae9f25584f5be28b051075bfa49
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61401751"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88921969"
 ---
 # <a name="azure-signalr-service-internals"></a>Ausführliche Informationen zu Azure SignalR Service
 
-Azure SignalR Service basiert auf dem ASP.NET Core SignalR-Framework. Es unterstützt ASP.NET SignalR auch als Previewfunktion.
+Azure SignalR Service basiert auf dem ASP.NET Core SignalR-Framework. Er unterstützt auch ASP.NET SignalR, indem das Datenprotokoll von ASP.NET SignalR erneut über das ASP.NET Core-Framework implementiert wird.
 
-> Zur Unterstützung von ASP.NET SignalR implementiert Azure SignalR Service das Datenprotokoll von ASP.NET SignalR erneut über das ASP.NET Core-Framework
-
-Sie können eine lokale ASP.NET Core SignalR-Anwendung problemlos migrieren, damit Sie mit SignalR Service funktioniert, indem Sie nur ein paar Zeilen Code ändern.
+Sie können eine lokale ASP.NET Core SignalR-Anwendung oder ASP.NET SignalR-Anwendung problemlos migrieren, damit Sie mit SignalR Service funktioniert, indem Sie nur ein paar Zeilen Code ändern.
 
 Das folgende Diagramm beschreibt die typische Architektur, wenn Sie den SignalR Service mit Ihrem Anwendungsserver verwenden.
 
 Die Unterschiede zu einer selbst gehosteten ASP.NET Core SignalR-Anwendung werden ebenfalls erläutert.
 
-![Architecture](./media/signalr-concept-internals/arch.png)
+![Aufbau](./media/signalr-concept-internals/arch.png)
 
 ## <a name="server-connections"></a>Serververbindungen
 
@@ -87,6 +86,8 @@ Wenn ein Client mit dem SignalR Service verbunden ist, sucht die Dienstlaufzeit 
 An diesem Punkt empfängt der Anwendungsserver ein Ereignis mit Informationen von dem neuen Client. Eine logische Verbindung mit dem Client wird im Anwendungsserver erstellt. Der Datenkanal wird vom Client zum Anwendungsserver über SignalR Service eingerichtet.
 
 Der SignalR Service überträgt Daten vom Client an den gekoppelten Anwendungsserver. Und Daten werden vom Anwendungsserver an die zugeordneten Clients gesendet.
+
+Der SignalR Service speichert und sichert keine Kundendaten. Alle empfangenen Kundendaten werden in Echtzeit an Zielserver oder Clients übermittelt.
 
 Wie Sie sehen können, ist der Azure SignalR Service im Wesentlichen eine logische Transportschicht zwischen Anwendungsserver und Clients. Alle permanente Verbindungen werden auf SignalR Service ausgelagert.
 Der Anwendungsserver muss nur die Geschäftslogik in der Hub-Klasse verarbeiten, ohne sich dabei um Clientverbindungen kümmern zu müssen.

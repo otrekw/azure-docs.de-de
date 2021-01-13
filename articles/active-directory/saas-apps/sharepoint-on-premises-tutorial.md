@@ -2,375 +2,289 @@
 title: 'Tutorial: Azure Active Directory-Integration in lokales SharePoint | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und die lokale SharePoint-Instanz konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 85b8d4d0-3f6a-4913-b9d3-8cc327d8280d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 9c956f89d890f93a887d2412c74c906095acf4db
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: a693b22c609829f3bf6e76637eac5793d73703e6
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164358"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862308"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Tutorial: Azure Active Directory-Integration in lokales SharePoint
+# <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit SharePoint (lokal)
 
-In diesem Tutorial erfahren Sie, wie Sie die lokale SharePoint-Instanz in Azure Active Directory (Azure AD) integrieren.
-Die Integration einer lokalen SharePoint-Instanz in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie die lokale SharePoint-Instanz in Azure Active Directory (Azure AD) integrieren. Die Integration von SharePoint (lokal) in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf die lokale SharePoint-Instanz hat.
-* Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei SharePoint (lokal) anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Steuern Sie, wer Zugriff auf SharePoint (lokal) hat, in Azure AD.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihrem Azure AD-Konto automatisch bei SharePoint (lokal) anzumelden.
+* Verwalten Sie Ihre Konten im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration in die lokale SharePoint-Instanz konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein Abonnement für SharePoint (lokal), für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Sollten Sie nicht über eine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
+* Eine SharePoint 2013-Farm (oder neuer).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden (SSO) von Azure AD in einer Testumgebung. Benutzer in Azure AD können auf Ihre lokale SharePoint-Instanz zugreifen.
 
-* SharePoint (lokal) unterstützt das **SP-initiierte** einmalige Anmelden.
-
-## <a name="adding-sharepoint-on-premises-from-the-gallery"></a>Hinzufügen der lokalen SharePoint-Instanz aus dem Katalog
+## <a name="create-enterprise-applications-in-the-azure-portal"></a>Erstellen von Unternehmensanwendungen im Azure-Portal
 
 Zum Konfigurieren der Integration der lokalen SharePoint-Instanz in Azure AD müssen Sie die lokale Instanz aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**So fügen Sie die lokale SharePoint-Instanz aus dem Katalog hinzu**
+So fügen Sie die lokale SharePoint-Instanz aus dem Katalog hinzu
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+1. Wählen Sie im ganz linken Bereich des Azure-Portals die Option **Azure Active Directory** aus.
 
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
+   > [!NOTE]
+   > Wenn das Element nicht verfügbar ist, können Sie es auch über den Link **Alle Dienste** oben im ganz linken Bereich öffnen. In der folgenden Übersicht befindet sich der Link **Azure Active Directory** im Abschnitt **Identität**. Er kann auch über das Filterfeld gesucht werden.
 
-    > [!NOTE]   
-    > Wenn das Element nicht verfügbar sein sollte, kann es auch über den festen Link **Alle Dienste** oben im linken Navigationsbereich geöffnet werden. In der folgenden Übersicht befindet sich der Link **Azure Active Directory** im Abschnitt **Identität**. Er kann auch über das Filtertextfeld gesucht werden.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+1. Wählen Sie oben im Dialogfeld **Neue Anwendung** aus, um eine neue Anwendung hinzuzufügen.
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+1. Geben Sie in das Suchfeld **SharePoint lokal** ein. Wählen Sie im Ergebnisbereich **SharePoint (lokal)** aus.
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+    <kbd>![SharePoint (lokal) in der Ergebnisliste](./media/sharepoint-on-premises-tutorial/search-new-app.png)</kbd>
 
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
+1. Geben Sie einen Namen für Ihre lokale SharePoint-Instanz an, und wählen Sie **Hinzufügen** aus, um die Anwendung hinzuzufügen.
 
-4. Geben Sie im Suchfeld **lokales SharePoint** ein, wählen Sie im Ergebnisbereich **lokales SharePoint** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie in der neuen Unternehmensanwendung **Eigenschaften** aus, und überprüfen Sie den Wert für **Benutzerzuweisung erforderlich?** .
 
-    ![Lokales SharePoint in der Ergebnisliste](common/search-new-app.png)
+   <kbd>![Umschaltfläche „Benutzerzuweisung erforderlich?“](./media/sharepoint-on-premises-tutorial/user-assignment-required.png)</kbd>
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+   In diesem Szenario ist der Wert auf **Nein** festgelegt.
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei einer lokalen SharePoint-Instanz anhand einer Testbenutzerin namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SharePoint (lokal) eingerichtet werden.
+## <a name="configure-and-test-azure-ad"></a>Konfigurieren und Testen von Azure AD
 
-Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit einer lokalen SharePoint-Instanz zu konfigurieren und zu testen:
+In diesem Abschnitt konfigurieren Sie das einmalige Anmelden (SSO) von Azure AD mit SharePoint (lokal). Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SharePoint (lokal) eingerichtet werden.
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für SharePoint (lokal)](#configure-sharepoint-on-premises-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Erstellen einer Azure AD-Sicherheitsgruppe im Azure-Portal](#create-an-azure-ad-security-group-in-the-azure-portal)** , um in Azure AD eine neue Sicherheitsgruppe für einmaliges Anmelden zu aktivieren.
-5. **[Gewähren des Zugriffs auf die lokale SharePoint-Sicherheitsgruppe](#grant-access-to-sharepoint-on-premises-security-group)** , um einer bestimmten Gruppe Zugriff auf Azure AD zu gewähren.
-6. **[Zuweisen der Azure AD-Sicherheitsgruppe im Azure-Portal](#assign-the-azure-ad-security-group-in-the-azure-portal)** , um die bestimmte Gruppe zu Authentifizierungszwecken Azure AD zuzuweisen.
-7. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit SharePoint (lokal) die folgenden Schritte aus:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+- [Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso), um Ihren Benutzern die Verwendung dieses Features zu ermöglichen
+- [Konfigurieren von SharePoint (lokal)](#configure-sharepoint-on-premises), um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+- [Erstellen eines Azure AD-Testbenutzers im Azure-Portal](#create-an-azure-ad-test-user-in-the-azure-portal), um in Azure AD einen neuen Benutzer für einmaliges Anmelden zu erstellen.
+- [Erstellen einer Azure AD-Sicherheitsgruppe im Azure-Portal](#create-an-azure-ad-security-group-in-the-azure-portal), um in Azure AD eine neue Sicherheitsgruppe für einmaliges Anmelden zu erstellen.
+- [Erteilen von Berechtigungen für ein Azure AD-Konto in SharePoint (lokal)](#grant-permissions-to-an-azure-ad-account-in-sharepoint-on-premises), um einem Azure AD-Benutzer Berechtigungen zu erteilen.
+- [Erteilen von Berechtigungen für eine Azure AD-Gruppe in SharePoint (lokal)](#grant-permissions-to-an-azure-ad-group-in-sharepoint-on-premises), um einer Azure AD-Gruppe Berechtigungen zu erteilen.
+- [Gewähren des Zugriffs auf ein Gastkonto für SharePoint (lokal) im Azure-Portal](#grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal), um SharePoint (lokal) Berechtigungen für ein Gastkonto in Azure AD zu erteilen.
+- [Konfigurieren des vertrauenswürdigen Identitätsanbieters für mehrere Webanwendungen](#configure-the-trusted-identity-provider-for-multiple-web-applications), um denselben vertrauenswürdigen Identitätsanbieter für mehrere Webanwendungen zu verwenden.
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
+### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit SharePoint (lokal) die folgenden Schritte aus:
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **SharePoint (lokal)** die Option **Einmaliges Anmelden**.
+So konfigurieren Sie das einmalige Anmelden (SSO) mit SharePoint (lokal)
 
-    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
+1. Wählen Sie im Azure-Portal **Azure Active Directory** > **Unternehmens-Apps** aus. Wählen Sie den Namen der zuvor erstellten Unternehmensanwendung aus und dann **Einmaliges Anmelden**.
 
-2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML** aus, um einmaliges Anmelden zu aktivieren.
+ 
+1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Symbol **Bearbeiten** aus, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+    ![SSO-Informationen zur Domäne und zu den URLs für die lokale SharePoint-Instanz](./media/sharepoint-on-premises-tutorial/sp-identifier-reply.png)
 
-    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+    1. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `urn:<sharepointFarmName>:<federationName>`.
 
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+    1. Geben Sie im Feld **Antwort-URL** eine URL im folgenden Format ein: `https://<YourSharePointSiteURL>/_trust/`.
 
-    ![SSO-Informationen zur Domäne und zu den URLs für die lokale SharePoint-Instanz](common/sp-identifier-reply.png)
-
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<YourSharePointServerURL>/_trust/default.aspx`
-
-    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `urn:sharepoint:federation`.
-
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<YourSharePointServerURL>/_trust/default.aspx`
+    1. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: `https://<YourSharePointSiteURL>/`.
+    1. Wählen Sie **Speichern** aus.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Wenden Sie sich an das [Supportteam der lokalen SharePoint-Instanz](https://support.office.com/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL.
 
-5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** die Option **Herunterladen** aus, um das entsprechende **Zertifikat (Base64)** auf Basis Ihrer Anforderungen aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+    ![Downloadlink für das Zertifikat](./media/sharepoint-on-premises-tutorial/certificatebase64.png)
 
-    > [!Note]
-    > Notieren Sie sich den Dateipfad, in den Sie die Zertifikatdatei heruntergeladen haben. Sie benötigen ihn später im PowerShell-Skript für die Konfiguration.
+1. Kopieren Sie im Abschnitt **SharePoint (lokal) einrichten** die entsprechenden URLs auf Basis Ihrer Anforderung:
+    
+    - **Anmelde-URL**
+    
+        Kopieren Sie die Anmelde-URL, und ersetzen Sie **/saml2** am Ende durch **/wsfed**, damit es wie https://login.microsoftonline.com/2c4f1a9f-be5f-10ee-327d-a95dac567e4f/wsfed aussieht. (Diese URL ist nicht genau.)
 
-6. Kopieren Sie im Abschnitt **SharePoint (lokal) einrichten** die entsprechenden URLs gemäß Ihren Anforderungen. Verwenden Sie für **Dienst-URL für einmalige Anmeldung** einen Wert im folgenden Format: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
-
-    > [!Note]
-    > _my_directory_id_ ist die Mandanten-ID des Azure AD-Abonnements.
-
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
-
-    a. Anmelde-URL
-
-    b. Azure AD-Bezeichner
-
-    c. Abmelde-URL
+    - **Azure AD-Bezeichner**
+    - **Abmelde-URL**
 
     > [!NOTE]
-    > Die lokale SharePoint-Anwendung verwendet SAML 1.1-Token, sodass Azure AD eine WS-Fed-Anforderung vom SharePoint-Server erwartet und nach der Authentifizierung SAML 1.1-Token ausstellt.
+    > Diese URL kann nicht ohne Änderungen in SharePoint verwendet werden. Sie müssen **/saml2** durch **/wsfed** ersetzen. Die lokale SharePoint-Anwendung verwendet SAML 1.1-Token, sodass Azure AD eine WS-Fed-Anforderung vom SharePoint-Server erwartet. Nach der Authentifizierung gibt er das SAML 1.1-Token aus.
 
-### <a name="configure-sharepoint-on-premises-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für SharePoint (lokal)
+### <a name="configure-sharepoint-on-premises"></a>Konfigurieren von SharePoint (lokal)
 
-1. Melden Sie sich in einem anderen Webbrowserfenster auf der Unternehmenswebsite der lokalen SharePoint-Instanz als Administrator an.
+1. Erstellen Sie einen neuen vertrauenswürdigen Identitätsanbieter in SharePoint Server 2016.
 
-2. **Konfigurieren Sie einen neuen vertrauenswürdigen Identitätsanbieter in SharePoint Server 2016.**
+    Melden Sie sich beim SharePoint-Server an, und öffnen Sie die SharePoint-Verwaltungsshell. Geben Sie die folgenden Werte ein:
+    - **$realm** ist der Bezeichnerwert aus dem Abschnitt mit der Domäne und den URLs für SharePoint (lokal) im Azure-Portal.
+    - **$wsfedurl** ist die SSO-Dienst-URL.
+    - **$filepath** ist der Dateipfad, unter dem Sie die Zertifikatdatei aus dem Azure-Portal heruntergeladen haben.
 
-    Melden Sie sich in SharePoint Server 2016 an, und öffnen Sie die SharePoint 2016-Verwaltungsshell. Geben Sie die Werte für „$realm“ (Bezeichnerwert aus dem Abschnitt „Domäne und URLs für lokale SharePoint-Instanz“ im Azure-Portal), „$wsfedurl“ (Dienst-URL für einmaliges Anmelden) und „$filepath“ (Dateipfad, in den Sie die Zertifikatdatei heruntergeladen haben) aus dem Azure-Portal ein, und führen Sie die folgenden Befehle aus, um einen neuen vertrauenswürdigen Identitätsanbieter zu konfigurieren.
+    Führen Sie die folgenden Befehle aus, um einen neuen vertrauenswürdigen Identitätsanbieter zu konfigurieren.
 
     > [!TIP]
-    > Unter [SharePoint PowerShell](https://docs.microsoft.com/powershell/sharepoint/overview?view=sharepoint-ps) finden Sie eine Übersicht über PowerShell und die Funktionen.
+    > Unter [SharePoint PowerShell](/powershell/sharepoint/overview) finden Sie eine Übersicht über PowerShell und die Funktionen.
+
 
     ```
-    $realm = "<Identifier value from the SharePoint on-premises Domain and URLs section in the Azure portal>"
-    $wsfedurl="<SAML single sign-on service URL value which you have copied from the Azure portal>"
-    $filepath="<Full path to SAML signing certificate file which you have downloaded from the Azure portal>"
+    $realm = "urn:sharepoint:sps201x"
+    $wsfedurl="https://login.microsoftonline.com/2c4f1a9f-be5f-10ee-327d-a95dac567e4f/wsfed"
+    $filepath="C:\temp\SharePoint 2019 OnPrem.cer"
     $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($filepath)
     New-SPTrustedRootAuthority -Name "AzureAD" -Certificate $cert
-    $map = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" -IncomingClaimTypeDisplayName "name" -LocalClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
-    $map2 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname" -IncomingClaimTypeDisplayName "GivenName" -SameAsIncoming
-    $map3 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname" -IncomingClaimTypeDisplayName "SurName" -SameAsIncoming
-    $map4 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" -IncomingClaimTypeDisplayName "Email" -SameAsIncoming
-    $map5 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.microsoft.com/ws/2008/06/identity/claims/role" -IncomingClaimTypeDisplayName "Role" -SameAsIncoming
-    $ap = New-SPTrustedIdentityTokenIssuer -Name "AzureAD" -Description "SharePoint secured by Azure AD" -realm $realm -ImportTrustCertificate $cert -ClaimsMappings $map,$map2,$map3,$map4,$map5 -SignInUrl $wsfedurl -IdentifierClaim "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
+    $map1 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" -IncomingClaimTypeDisplayName "name" -LocalClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
+    $map2 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.microsoft.com/ws/2008/06/identity/claims/role" -IncomingClaimTypeDisplayName "Role" -SameAsIncoming
+    $ap = New-SPTrustedIdentityTokenIssuer -Name "AzureAD" -Description "Azure AD SharePoint server 201x" -realm $realm -ImportTrustCertificate $cert -ClaimsMappings $map1,$map2 -SignInUrl $wsfedurl -IdentifierClaim $map1.InputClaimType
     ```
+1. Aktivieren Sie den vertrauenswürdigen Identitätsanbieter für Ihre Anwendung.
 
-    Führen Sie als Nächstes diese Schritte aus, um den vertrauenswürdigen Identitätsanbieter für Ihre Anwendung zu aktivieren:
+    1. Wechseln Sie in der **Zentraladministration** zu **Webanwendung verwalten**, und wählen Sie die Webanwendung aus, die Sie mit Azure AD schützen möchten.
 
-    a. Navigieren Sie in der Zentraladministration zu **Webanwendung verwalten**, und wählen Sie die Webanwendung aus, die Sie mit Azure AD schützen möchten.
+    1. Wählen Sie im Menüband **Authentifizierungsanbieter** aus, und wählen Sie die Zone aus, die Sie verwenden möchten.
 
-    b. Klicken Sie im Menüband auf **Authentifizierungsanbieter**, und wählen Sie die Zone aus, die Sie verwenden möchten.
+    1. Wählen Sie **Vertrauenswürdiger Identitätsanbieter** und den Identitätsanbieter aus, den Sie mit dem Namen *AzureAD* registriert haben.
 
-    c. Wählen Sie **Vertrauenswürdiger Identitätsanbieter** und den Identitätsanbieter aus, den Sie mit dem Namen *AzureAD* registriert haben.
+    1. Klicken Sie auf **OK**.
 
-    d. Wählen Sie in der Anmeldeseite-URL-Einstellung **Benutzerdefinierte Anmeldeseite** aus, und geben Sie den Wert „/_trust/“ an.
+    ![Konfigurieren des Authentifizierungsanbieters](./media/sharepoint-on-premises-tutorial/config-auth-provider.png)
 
-    e. Klicken Sie auf **OK**.
+### <a name="create-an-azure-ad-test-user-in-the-azure-portal"></a>Erstellen eines Azure AD-Testbenutzers im Azure-Portal
 
-    ![Konfigurieren des Authentifizierungsanbieters](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
+In diesem Abschnitt wird ein Testbenutzer im Azure-Portal erstellt.
 
-    > [!NOTE]
-    > Einige externe Benutzer können diese SSO-Integration nicht nutzen, da ihr UPN einen beschädigten Wert wie `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com` enthält. Wir arbeiten bereits an der Möglichkeit, eine benutzertypabhängige Behandlung des UPN in der Kunden-App zu konfigurieren. Anschließend sollten alle Gastbenutzer SSO genauso problemlos wie Mitarbeiter der Organisation verwenden können.
+1. Wählen Sie im ganz linken Bereich des Azure-Portals die Option **Azure Active Directory** aus. Wählen Sie im Bereich **Verwalten** die Option **Benutzer** aus.
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+1. Wählen Sie oben im Bildschirm **Alle Benutzer** > **Neuer Benutzer** aus.
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
+1. Wählen Sie **Benutzer erstellen** aus, und führen Sie in den Eigenschaften für Benutzer die folgenden Schritte aus. Unter Umständen können Sie Benutzer in Ihrer Azure AD-Instanz unter Verwendung des Mandantensuffixes oder einer überprüften Domäne erstellen. 
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
-
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
-
-2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-
-    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
-
-3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
-
-    ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+    1. Geben Sie im Feld **Name** den Benutzernamen ein. Wir haben **TestUser** verwendet.
   
-    b. Geben Sie im Feld **Benutzername** den Namen `brittasimon@yourcompanydomain.extension` ein.  
-    Zum Beispiel, BrittaSimon@contoso.com
+    1. Geben Sie im Feld **Benutzername** Folgendes ein: `TestUser@yourcompanydomain.extension`. In diesem Beispiel wird `TestUser@contoso.com` angezeigt.
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
+       ![Dialogfeld „Benutzer“](./media/sharepoint-on-premises-tutorial/user-properties.png)
 
-    d. Klicken Sie auf **Create**.
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+
+    1. Klicken Sie auf **Erstellen**.
+
+    1. Sie können die Website jetzt für TestUser@contoso.com freigeben und diesem Benutzer den Zugriff darauf erlauben.
 
 ### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Erstellen einer Azure AD-Sicherheitsgruppe im Azure-Portal
 
-1. Klicken Sie auf **Azure Active Directory > Alle Gruppen**.
+1. Klicken Sie auf **Azure Active Directory** > **Gruppen**.
 
-    ![Erstellen einer Azure AD-Sicherheitsgruppe](./media/sharepoint-on-premises-tutorial/allgroups.png)
+1. Wählen Sie **Neue Gruppe** aus.
 
-2. Klicken Sie auf **Neue Gruppe**:
+1. Füllen Sie die Felder **Gruppentyp**, **Gruppenname**, **Gruppenbeschreibung** und **Mitgliedschaftstyp** aus. Wählen Sie die Pfeile für die Mitgliederauswahl aus, und suchen Sie dann nach den Mitgliedern, die Sie der Gruppe hinzufügen möchten, oder wählen Sie sie aus. Wählen Sie **Auswählen** aus, um die ausgewählten Mitglieder hinzuzufügen, und wählen Sie dann **Erstellen** aus.
 
-    ![Erstellen einer Azure AD-Sicherheitsgruppe](./media/sharepoint-on-premises-tutorial/newgroup.png)
+![Erstellen einer Azure AD-Sicherheitsgruppe](./media/sharepoint-on-premises-tutorial/new-group.png)
 
-3. Geben Sie **Gruppentyp**, **Gruppenname**, **Gruppenbeschreibung** und **Mitgliedschaftstyp** an. Klicken Sie auf den Pfeil, um Mitglieder auszuwählen, und suchen Sie nach dem Mitglied, das Sie der Gruppe hinzufügen möchten, oder klicken Sie auf das gewünschte Mitglied. Klicken Sie auf **Auswählen**, um die ausgewählten Mitglieder hinzuzufügen, und klicken Sie anschließend auf **Erstellen**.
+### <a name="grant-permissions-to-an-azure-ad-account-in-sharepoint-on-premises"></a>Erteilen von Berechtigungen für ein Azure AD-Konto in SharePoint (lokal)
 
-    ![Erstellen einer Azure AD-Sicherheitsgruppe](./media/sharepoint-on-premises-tutorial/addingmembers.png)
+Um einem Azure AD-Benutzer in SharePoint (lokal) Zugriff zu gewähren, geben Sie die Websitesammlung frei, oder fügen Sie den Azure AD-Benutzer zu einer der Gruppen der Websitesammlung hinzu. Benutzer können sich jetzt mit Azure AD-Identitäten bei SharePoint 201x anmelden. Allerdings kann die Benutzerfreundlichkeit noch weiter verbessert werden. Beispielsweise liefert die Suche nach einem Benutzer mehrere Suchergebnisse in der Personenauswahl. Es gibt ein Suchergebnis für jeden der Anspruchstypen, die in der Anspruchszuordnung erstellt wurden. Um einen Benutzer mithilfe der Personenauswahl auszuwählen, geben Sie den genauen Benutzernamen ein, und wählen Sie das Anspruchsergebnis **Name** aus.
+
+![Suchergebnisse für Ansprüche](./media/sharepoint-on-premises-tutorial/claims-search-results.png)
+
+Die gesuchten Werte werden nicht überprüft, sodass möglicherweise Rechtschreibfehler auftreten oder Benutzer versehentlich den falschen Anspruchstyp zum Zuweisen auswählen. Dies kann Benutzer daran hindern, erfolgreich auf Ressourcen zuzugreifen.
+
+Um dieses Szenario mit der Personenauswahl zu korrigieren, bietet eine Open-Source-Lösung namens [AzureCP](https://yvand.github.io/AzureCP/) einen benutzerdefinierten Anspruchsanbieter für SharePoint 2013, 2016 und 2019. Sie verwendet die Microsoft Graph-API, um die Eingaben der Benutzer aufzulösen und zu überprüfen. Weitere Informationen finden Sie unter [AzureCP](https://yvand.github.io/AzureCP/).
+
+  > [!NOTE]
+  > Ohne AzureCP können Sie Gruppen hinzufügen, indem Sie die ID der Azure AD-Gruppe hinzufügen, aber diese Methode ist weder benutzerfreundlich noch zuverlässig. So sieht es aus:
+  > 
+  >![Hinzufügen einer Azure AD-Gruppe zu einer SharePoint-Gruppe nach ID](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
+  
+### <a name="grant-permissions-to-an-azure-ad-group-in-sharepoint-on-premises"></a>Erteilen von Berechtigungen für eine Azure AD-Gruppe in SharePoint (lokal)
+
+Um SharePoint (lokal) Azure AD-Sicherheitsgruppen hinzuzufügen, müssen Sie einen benutzerdefinierten Anspruchsanbieter für SharePoint Server verwenden. In diesem Beispiel wird AzureCP verwendet.
+
+ > [!NOTE]
+ > AzureCP ist kein Produkt von Microsoft, und Microsoft bietet keinen Support für das Produkt. Informationen, um AzureCP herunterzuladen und in der SharePoint-Farm (lokal) zu installieren und konfigurieren, finden Sie auf der [AzureCP](https://yvand.github.io/AzureCP/)-Website. 
+
+1. Konfigurieren Sie AzureCP in der lokalen SharePoint-Farm, oder konfigurieren Sie eine andere benutzerdefinierte Anspruchsanbieterlösung. Informationen zum Konfigurieren von AzureCP finden Sie auf dieser [AzureCP](https://yvand.github.io/AzureCP/Register-App-In-AAD.html)-Website.
+
+1. Wählen Sie im Azure-Portal **Azure Active Directory** > **Unternehmens-Apps** aus. Wählen Sie den Namen der zuvor erstellten Unternehmensanwendung aus und dann **Einmaliges Anmelden**.
+
+1. Bearbeiten Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** den Abschnitt **Benutzerattribute und Ansprüche**.
+
+1. Wählen Sie **Gruppenanspruch hinzufügen** aus.
+
+1. Wählen Sie aus, welche dem Benutzer zugeordneten Gruppen im Anspruch zurückgegeben werden sollen. Wählen Sie in diesem Fall **Alle Gruppen** aus. Wählen Sie im Abschnitt **Quellattribut** die Option **Gruppen-ID** aus, und wählen Sie **Speichern** aus.
+
+Um einer Azure AD-Sicherheitsgruppe in SharePoint (lokal) Zugriff zu gewähren, geben Sie die Websitesammlung frei, oder fügen Sie die Azure AD-Sicherheitsgruppe zu einer der Gruppen der Websitesammlung hinzu.
+
+1. Wechseln Sie zur **SharePoint-Websitesammlung**. Wählen Sie unter **Websiteeinstellungen** für die SharePoint-Websitesammlung **Personen und Gruppen** aus. 
+
+1. Wählen Sie die SharePoint-Gruppe aus, und wählen Sie dann **Neu** > **Benutzer zu dieser Gruppe hinzufügen** aus. Wenn Sie den Namen der Gruppe eingeben, zeigt die Personenauswahl die Azure AD-Sicherheitsgruppe an.
+
+    ![Hinzufügen einer Azure AD-Gruppe zu einer SharePoint-Gruppe](./media/sharepoint-on-premises-tutorial/permission-azure-ad-group.png)
+
+### <a name="grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal"></a>Gewähren des Zugriffs auf ein Gastkonto für SharePoint (lokal) im Azure-Portal
+
+Sie können Ihrer SharePoint-Website auf konsistente Weise Zugriff auf ein Gastkonto gewähren, weil der UPN jetzt geändert wird. Beispielsweise wird der Benutzer `jdoe@outlook.com` als `jdoe_outlook.com#ext#@TENANT.onmicrosoft.com` dargestellt. Um Ihre Website für externe Benutzer freizugeben, müssen Sie im Azure-Portal in Ihrem Abschnitt **Benutzerattribute und Ansprüche** einige Änderungen vornehmen.
+
+1. Wählen Sie im Azure-Portal **Azure Active Directory** > **Unternehmens-Apps** aus. Wählen Sie den Namen der zuvor erstellten Unternehmensanwendung aus und dann **Einmaliges Anmelden**.
+
+1. Bearbeiten Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** den Abschnitt **Benutzerattribute und Ansprüche**.
+
+1. Wählen Sie in der Zone **Erforderlicher Anspruch** die Option **Eindeutiger Benutzerbezeichner (Namens-ID)** aus.
+
+1. Ändern Sie die Eigenschaft **Quellattribut** in den Wert **user.localuserprincipalname**, und wählen Sie **Speichern** aus.
+
+    ![Anzeige von „Benutzerattribute und Ansprüche“ vor der Bearbeitung, Quellattribut](./media/sharepoint-on-premises-tutorial/manage-claim.png)
+
+1. Wechseln Sie mithilfe des Menübands zurück zu **SAML-basierte Anmeldung**. Der Abschnitt **Benutzerattribute und Ansprüche** sieht nun wie folgt aus: 
+
+    ![Anzeige von „Benutzerattribute und Ansprüche“ nach der Bearbeitung](./media/sharepoint-on-premises-tutorial/user-attributes-claims-final.png)
 
     > [!NOTE]
-    > Wenn Sie SharePoint lokal Azure Active Directory-Sicherheitsgruppen zuweisen möchten, müssen Sie [AzureCP](https://yvand.github.io/AzureCP/) in der lokalen SharePoint-Farm installieren und konfigurieren ODER einen alternativen benutzerdefinierten Anspruchsanbieter für SharePoint entwickeln und konfigurieren.  Für den Fall, dass Sie AzureCP nicht verwenden möchten, finden Sie am Ende dieses Dokuments weitere Informationen zum Erstellen eines eigenen benutzerdefinierten Anspruchsanbieters.
+    > Ein Nachname und Vorname sind in diesem Setup nicht erforderlich.
 
-### <a name="grant-access-to-sharepoint-on-premises-security-group"></a>Gewähren des Zugriffs auf die lokale SharePoint-Sicherheitsgruppe
+1. Wählen Sie im ganz linken Bereich des Azure-Portals die Option **Azure Active Directory** und dann **Benutzer** aus.
 
-**Konfigurieren von Sicherheitsgruppen und Berechtigungen für die App-Registrierung**
+1. Wählen Sie **Neuer Gastbenutzer** aus.
 
-1. Wählen Sie im Azure-Portal **Azure Active Directory** und anschließend **App-Registrierungen** aus.
+1. Wählen Sie die Option **Benutzer einladen** aus. Tragen Sie die Benutzereigenschaften ein, und wählen Sie **Einladen** aus.
 
-    ![Blatt „Unternehmensanwendungen“](./media/sharepoint-on-premises-tutorial/appregistrations.png)
+1. Sie können die Website jetzt für MyGuestAccount@outlook.com freigeben und diesem Benutzer den Zugriff darauf erlauben.
 
-2. Geben Sie **SharePoint lokal** in das Suchfeld ein, und wählen Sie den Eintrag aus.
+    ![Freigeben einer Website für ein Gastkonto](./media/sharepoint-on-premises-tutorial/sharing-guest-account.png)
 
-    ![Lokales SharePoint in der Ergebnisliste](./media/sharepoint-on-premises-tutorial/appsearch.png)
+### <a name="configure-the-trusted-identity-provider-for-multiple-web-applications"></a>Konfigurieren des vertrauenswürdigen Identitätsanbieters für mehrere Webanwendungen
 
-3. Klicken Sie auf **Manifest**.
+Die Konfiguration funktioniert für eine einzelne Webanwendung, benötigt jedoch weitere Konfiguration, wenn Sie beabsichtigen, denselben vertrauenswürdigen Identitätsanbieter für mehrere Webanwendungen zu verwenden. Angenommen, Sie hätten eine Webanwendung erweitert, um die URL `https://sales.contoso.com` zu verwenden, und Sie möchten nun die Benutzer für `https://marketing.contoso.com` authentifizieren. Aktualisieren Sie hierfür den Identitätsanbieter, sodass dieser den WReply-Parameter berücksichtigt. Aktualisieren Sie ferner die Anwendungsregistrierung in Azure AD, um eine Antwort-URL hinzuzufügen.
 
-    ![Option „Manifest“](./media/sharepoint-on-premises-tutorial/manifest.png)
+1. Wählen Sie im Azure-Portal **Azure Active Directory** > **Unternehmens-Apps** aus. Wählen Sie den Namen der zuvor erstellten Unternehmensanwendung aus und dann **Einmaliges Anmelden**.
 
-4. Ändern Sie „`groupMembershipClaims`: `NULL`“ in „`groupMembershipClaims`: `SecurityGroup`“. Klicken Sie anschließend auf „Speichern“.
+1. Bearbeiten Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** den Abschnitt **Grundlegende SAML-Konfiguration**.
 
-    ![Bearbeiten des Manifests](./media/sharepoint-on-premises-tutorial/manifestedit.png)
+    ![Grundlegende SAML-Konfiguration](./media/sharepoint-on-premises-tutorial/add-reply-url.png)
 
-5. Klicken Sie auf **Einstellungen** und anschließend auf **Erforderliche Berechtigungen**.
+1. Fügen Sie für **Antwort-URL (Assertionsverbraucherdienst-URL)** die URL für die zusätzlichen Webanwendungen hinzu, und wählen Sie **Speichern** aus.
 
-    ![Erforderliche Berechtigungen](./media/sharepoint-on-premises-tutorial/settings.png)
+    ![Bearbeiten der grundlegenden SAML-Konfiguration](./media/sharepoint-on-premises-tutorial/reply-url-for-web-application.png)
 
-6. Klicken Sie auf **Hinzufügen** und anschließend auf **Hiermit wählen Sie eine API aus**.
-
-    ![API-Zugriff](./media/sharepoint-on-premises-tutorial/required_permissions.png)
-
-7. Fügen Sie nacheinander **Windows Azure Active Directory** und **Microsoft Graph-API** hinzu.
-
-    ![API-Auswahl](./media/sharepoint-on-premises-tutorial/permissions.png)
-
-8. Wählen Sie „Windows Azure Active Directory“ aus, aktivieren Sie das Kontrollkästchen „Verzeichnisdaten lesen“, und klicken Sie auf „Auswählen“. Navigieren Sie zurück, fügen Sie „Microsoft Graph“ hinzu, und aktivieren Sie erneut das Kontrollkästchen „Verzeichnisdaten lesen“.  Klicken Sie auf „Auswählen“ und anschließend auf „Fertig“.
-
-    ![Aktivieren des Zugriffs](./media/sharepoint-on-premises-tutorial/readpermission.png)
-
-9. Klicken Sie nun unter den erforderlichen Einstellungen auf **Berechtigungen erteilen** und anschließend auf „Ja“.
-
-    ![Erteilen von Berechtigungen](./media/sharepoint-on-premises-tutorial/grantpermission.png)
-
-    > [!NOTE]
-    > Überprüfen Sie anhand der Benachrichtigungen, ob die Berechtigungen erfolgreich erteilt wurden.  Falls nicht, funktioniert AzureCP nicht ordnungsgemäß, und SharePoint kann nicht lokal mit Azure Active Directory-Sicherheitsgruppen konfiguriert werden.
-
-10. Konfigurieren Sie AzureCP in der lokalen SharePoint-Farm, oder konfigurieren Sie eine andere benutzerdefinierte Anspruchsanbieterlösung.  In diesem Beispiel wird AzureCP verwendet.
-
-    > [!NOTE]
-    > Hinweis: AzureCP ist kein Produkt von Microsoft, und Microsoft bietet keinen technischen Support für das Produkt. Laden Sie AzureCP unter https://yvand.github.io/AzureCP/ herunter, installieren Sie die Lösung in Ihrer lokalen SharePoint-Farm, und konfigurieren Sie sie entsprechend. 
-
-11. **Gewähren des Zugriffs auf die Azure Active Directory-Sicherheitsgruppe in der lokalen SharePoint-Instanz:** Den Gruppen muss Zugriff auf die Anwendung in der lokalen SharePoint-Instanz gewährt werden.  Gehen Sie wie folgt vor, um die Berechtigungen für den Zugriff auf die Webanwendung festzulegen.
-
-12. Klicken Sie in der Zentraladministration auf „Anwendungsverwaltung“ > „Webanwendungen verwalten“, wählen Sie die Webanwendung aus, um das Menüband zu aktivieren, und klicken Sie auf „Benutzerrichtlinie“.
-
-    ![Zentraladministration](./media/sharepoint-on-premises-tutorial/centraladministration.png)
-
-13. Klicken Sie unter „Richtlinie für Webanwendung“ auf „Benutzer hinzufügen“, wählen Sie die Zone aus, und klicken Sie auf „Weiter“.  Klicken Sie auf das Adressbuch.
-
-    ![Richtlinie für Webanwendung](./media/sharepoint-on-premises-tutorial/webapp-policy.png)
-
-14. Suchen Sie nach der Azure Active Directory-Sicherheitsgruppe, fügen Sie sie hinzu, und klicken Sie auf „OK“.
-
-    ![Hinzufügen der Sicherheitsgruppe](./media/sharepoint-on-premises-tutorial/securitygroup.png)
-
-15. Wählen Sie die Berechtigungen aus, und klicken Sie auf „Fertig stellen“.
-
-    ![Hinzufügen der Sicherheitsgruppe](./media/sharepoint-on-premises-tutorial/permissions1.png)
-
-16. Vergewissern Sie sich unter „Richtlinie für Webanwendung“, dass die Azure Active Directory-Gruppe hinzugefügt wurde.  Der Gruppenanspruch zeigt die ID des Azure Active Directory-Sicherheitsgruppenobjekts für den Benutzernamen an.
-
-    ![Hinzufügen der Sicherheitsgruppe](./media/sharepoint-on-premises-tutorial/addgroup.png)
-
-17. Navigieren Sie zur SharePoint-Websitesammlung, und fügen Sie die Gruppe dort ebenfalls hinzu. Klicken Sie auf „Websiteeinstellungen“ > „Websiteberechtigungen“ > „Berechtigungen erteilen“.  Suchen Sie nach dem Gruppenrollenanspruch, weisen Sie die Berechtigungsstufe zu, und klicken Sie auf „Freigeben“.
-
-    ![Hinzufügen der Sicherheitsgruppe](./media/sharepoint-on-premises-tutorial/grantpermission1.png)
-
-### <a name="configuring-one-trusted-identity-provider-for-multiple-web-applications"></a>Konfigurieren eines vertrauenswürdigen Identitätsanbieters für mehrere Webanwendungen
-
-Die Konfiguration funktioniert für eine einzelne Webanwendung, benötigt jedoch weitere Konfiguration, wenn Sie beabsichtigen, denselben vertrauenswürdigen Identitätsanbieter für mehrere Webanwendungen zu verwenden. Angenommen, eine Webanwendung wäre erweitert worden, um die URL `https://portal.contoso.local` zu verwenden. Nun möchten Sie die Benutzer für `https://sales.contoso.local` ebenfalls authentifizieren. Dazu müssen Sie den Identitätsanbieter aktualisieren, sodass dieser den WReply-Parameter berücksichtigt. Außerdem müssen Sie die Anwendungsregistrierung in Azure AD aktualisieren, um eine Antwort-URL hinzuzufügen.
-
-1. Öffnen Sie im Azure-Portal das Azure AD-Verzeichnis. Klicken Sie auf **App-Registrierungen** und dann auf **Alle Anwendungen anzeigen**. Klicken Sie auf die Anwendung, die Sie zuvor erstellt haben (SharePoint-SAML-Integration).
-
-2. Klicken Sie auf **Einstellungen**.
-
-3. Klicken Sie auf dem Einstellungsblatt auf **Antwort-URLs**.
-
-4. Fügen Sie die URL für die zusätzliche Webanwendung hinzu, die auf `/_trust/default.aspx` endet (z.B. `https://sales.contoso.local/_trust/default.aspx`), und klicken Sie auf **Speichern**.
-
-5. Öffnen Sie auf dem SharePoint-Server die **SharePoint 2016-Verwaltungsshell**, und führen Sie die folgenden Befehle mithilfe des Namens des Tokenausstellers des vertrauenswürdige Identitätsanbieter aus, den Sie zuvor verwendet haben.
-
+1. Öffnen Sie auf dem SharePoint-Server die SharePoint 201x-Verwaltungsshell, und führen Sie die folgenden Befehle aus. Verwenden Sie den Namen des Ausstellers vertrauenswürdiger Identitätstoken, den Sie zuvor verwendet haben.
     ```
     $t = Get-SPTrustedIdentityTokenIssuer "AzureAD"
     $t.UseWReplyParameter=$true
     $t.Update()
     ```
-6. Navigieren Sie in der Zentraladministration zu der Web-Anwendung, und aktivieren Sie den vorhandenen vertrauenswürdigen Identitätsanbieter. Denken Sie daran, auch die URL der Anmeldeseite als eine benutzerdefinierte Anmeldeseite `/_trust/` zu konfigurieren.
+1. Wechseln Sie in der **Zentraladministration** zu der Web-Anwendung, und aktivieren Sie den vorhandenen vertrauenswürdigen Identitätsanbieter.
 
-7. Klicken Sie in der Zentraladministration auf die Webanwendung, und wählen Sie **User Policy** (Benutzerrichtlinie) aus. Fügen Sie einen Benutzer, wie zuvor in diesem Artikel gezeigt, mit den entsprechenden Berechtigungen hinzu.
+Möglicherweise gibt es auch andere Szenarien, in denen Sie Zugriff auf Ihre lokale SharePoint-Instanz für Ihre internen Benutzer gewähren möchten. In diesem Szenario müssen Sie Microsoft Azure Active Directory Connect bereitstellen, um die Synchronisierung Ihrer lokalen Benutzer mit Azure AD zu ermöglichen. Dieses Setup wird in einem anderen Artikel behandelt.
 
-### <a name="fixing-people-picker"></a>Verbesserte Personenauswahl
+## <a name="next-steps"></a>Nächste Schritte
 
-Benutzer können sich jetzt mit Azure AD-Identitäten bei SharePoint 2016 anmelden. Allerdings kann die Benutzerfreundlichkeit noch weiter verbessert werden. Beispielsweise liefert die Suche nach einem Benutzer mehrere Suchergebnisse in der Personenauswahl. Es gibt ein Suchergebnis für jeden der drei Anspruchstypen, der in der Anspruchszuordnung erstellt wurde. Um einen Benutzer mit der Personenauswahl auszuwählen, geben Sie seinen genauen Benutzernamen ein, und wählen Sie das Anspruchsergebnis **Name** aus.
-
-![Suchergebnisse für Ansprüche](./media/sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
-
-Die gesuchten Werte werden nicht überprüft, sodass möglicherweise Rechtschreibfehler auftreten, oder Benutzer versehentlich den falschen Anspruchstyp zum Zuweisen auswählen, z.B. den Anspruch **SurName**. Folglich können Benutzer nicht auf Ressourcen zugreifen.
-
-Dieses Problem lässt sich mit der Open-Source-Lösung [AzureCP](https://yvand.github.io/AzureCP/) beheben, die einen benutzerdefinierten Anspruchsanbieter für SharePoint 2016 bereitstellt. Azure AD Graph klärt und überprüft die Eingabe der Benutzer. Weitere Informationen finden Sie unter [ AzureCP](https://yvand.github.io/AzureCP/).
-
-### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Zuweisen der Azure AD-Sicherheitsgruppe im Azure-Portal
-
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**, **Alle Anwendungen** und dann **SharePoint (lokal)** aus.
-
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
-
-2. Geben Sie in der Anwendungsliste **SharePoint (lokal)** ein, und wählen Sie den Eintrag aus.
-
-    ![Link für SharePoint (lokal) in der Anwendungsliste](common/all-applications.png)
-
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
-4. Klicken Sie auf **Benutzer hinzufügen**.
-
-    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
-
-5. Suchen Sie nach der gewünschten Sicherheitsgruppe, und klicken Sie auf die Gruppe, um sie dem Abschnitt „Mitglieder auswählen“ hinzuzufügen. Klicken Sie auf **Auswählen** und anschließend auf **Zuweisen**.
-
-    ![Suchen nach der Sicherheitsgruppe](./media/sharepoint-on-premises-tutorial/securitygroup1.png)
-
-    > [!NOTE]
-    > Vergewissern Sie sich anhand der Benachrichtigungen auf der Menüleiste, dass die Gruppe erfolgreich der Enterprise-Anwendung im Azure-Portal zugewiesen wurde.
-
-### <a name="create-sharepoint-on-premises-test-user"></a>Erstellen eines Testbenutzers für SharePoint (lokal)
-
-In diesem Abschnitt erstellen Sie in SharePoint (lokal) einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Plattform für SharePoint (lokal) ggf. vom  [Supportteam für SharePoint (lokal)](https://support.office.com/) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
-
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
-
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
-
-Wenn Sie im Zugriffsbereich auf die Kachel „SharePoint (lokal)“ klicken, sollten Sie automatisch bei der Anwendung für SharePoint (lokal) angemeldet werden, für die Sie SSO eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
-
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
-
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+Nach dem Konfigurieren von SharePoint (lokal) können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

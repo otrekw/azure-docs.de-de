@@ -1,23 +1,26 @@
 ---
 title: Schreiben von gespeicherten Prozeduren und Triggern mit der JavaScript-Abfrage-API in Azure Cosmos DB
 description: Erfahren Sie, wie Sie gespeicherte Prozeduren und Trigger mit der JavaScript-Abfrage-API in Azure Cosmos DB schreiben.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: mjbrown
-ms.openlocfilehash: 96ecd77cb955d5e63cdcae8657e3096bbbadba89
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.subservice: cosmosdb-sql
+ms.topic: how-to
+ms.date: 05/07/2020
+ms.author: tisande
+ms.custom: devx-track-js
+ms.openlocfilehash: 449af63ef3409b8c8173edef7a5d77074cca02b9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092881"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335839"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Schreiben von gespeicherten Prozeduren und Triggern in Azure Cosmos DB mit der JavaScript-Abfrage-API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Mit Azure Cosmos DB können Sie optimierte Abfragen ausführen, indem Sie eine intuitive JavaScript-Schnittstelle verwenden, ohne die SQL-Sprache kennen zu müssen, die zum Schreiben von gespeicherten Prozeduren oder Triggern verwendet wird. Weitere Informationen zur Unterstützung der JavaScript-Abfrage-API in Azure Cosmos DB finden Sie unter [Arbeiten mit der in die JavaScript-Sprache integrierten Abfrage-API in Azure Cosmos DB](javascript-query-api.md).
 
-## <a id="stored-procedures"></a>Gespeicherte Prozedur mit der JavaScript-Abfrage-API
+## <a name="stored-procedure-using-the-javascript-query-api"></a><a id="stored-procedures"></a>Gespeicherte Prozedur mit der JavaScript-Abfrage-API
 
 Das folgende Codebeispiel zeigt, wie die JavaScript-Abfrage-API im Kontext einer gespeicherten Prozedur verwendet wird. Die gespeicherte Prozedur fügt ein Azure Cosmos-Element ein, das durch einen Eingabeparameter angegeben wird, und aktualisiert mit der `__.filter()`-Methode ein Metadatenelement, wobei „minSize“, „maxSize“ und „totalSize“ auf der size-Eigenschaft des Eingabeelements basieren.
 

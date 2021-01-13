@@ -1,25 +1,25 @@
 ---
-title: 'Bereitstellen einer IPv6-Dual Stack-Anwendung in Azure Virtual Network: Resource Manager-Vorlage (Vorschau)'
+title: 'Bereitstellen einer IPv6-Dual Stack-Anwendung in Azure Virtual Network: Resource Manager-Vorlage'
 titlesuffix: Azure Virtual Network
 description: Dieser Artikel zeigt, wie Sie eine IPv6-Dual Stack-Anwendung mit Load Balancer Standard in Azure Virtual Network mit Azure Resource Manager-VM-Vorlagen bereitstellen.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 8f2c6bc7fb7ab0939da20932fd531c158549ce7a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: f98ffde9ce9b5c564e9f9c6c0b95e11f76719597
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012850"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95244343"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel in Azure Virtual Network – Vorlage (Vorschau)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel in Azure Virtual Network – Vorlage
 
 Dieser Artikel enthält eine Liste von IPv6-Konfigurationsaufgaben mit dem Teil der Azure Resource Manager-VM-Vorlage, der für die jeweilige Aufgabe gilt. Verwenden Sie die in diesem Artikel beschriebene Vorlage, um unter Verwendung von Load Balancer Standard eine Anwendung mit dualem Stapel (IPv4 und IPv6) in Azure bereitzustellen, die ein virtuelles Netzwerk mit dualem Stapel und IPv4- und IPv6-Subnetzen, Load Balancer Standard mit dualen Front-End-Konfigurationen (IPv4 und IPv6), VMs mit NICs mit einer dualen IP-Konfiguration, eine Netzwerksicherheitsgruppe und öffentliche IP-Adressen umfasst. 
 
@@ -78,8 +78,8 @@ Hinzuzufügender Vorlagenabschnitt:
               "protocol": "Tcp",
               "sourcePortRange": "33819-33829",
               "destinationPortRange": "5000-6000",
-              "sourceAddressPrefix": "ace:cab:deca:deed::/64",
-              "destinationAddressPrefix": "cab:ace:deca:deed::/64",
+              "sourceAddressPrefix": "fd00:db8:deca:deed::/64",
+              "destinationAddressPrefix": "fd00:db8:deca:deed::/64",
               "access": "Allow",
               "priority": 1003,
               "direction": "Inbound"
@@ -101,9 +101,9 @@ Wenn Sie ein virtuelles Netzwerkgerät verwenden, fügen Sie in der Routentabell
           {
             "name": "v6route",
             "properties": {
-              "addressPrefix": "ace:cab:deca:deed::/64",
+              "addressPrefix": "fd00:db8:deca:deed::/64",
               "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "deca:cab:ace:f00d::1"
+              "nextHopIpAddress": "fd00:db8:ace:f00d::1"
             }
 ```
 

@@ -1,28 +1,28 @@
 ---
-title: Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe
-description: Ausführliche Anweisungen zum Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe über das Azure-Portal
+title: Konfigurieren von verwalteten Identitäten in einer VM-Skalierungsgruppe – Azure AD
+description: Hier finden Sie Schritt-für-Schritt-Anleitungen zum Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe im Azure-Portal.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/20/2018
-ms.author: markvi
+ms.date: 12/15/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57f0ec91bd5c72b593d9b28f7d47f691181a6a0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 73c2f4167d6ce5465a879f6b2ef7e96d91065c4d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60290617"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590918"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe über das Azure-Portal
+# <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-vmss-using-the-azure-portal"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe (Virtual Machine Scale Set, VMSS) im Azure-Portal
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -32,12 +32,12 @@ In diesem Artikel erfahren Sie, wie Sie mit PowerShell die folgenden Vorgänge f
 
 - Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
-- Um die Verwaltungsvorgänge in diesem Artikel auszuführen, benötigt Ihr Konto die folgenden Zuweisungen der rollenbasierten Azure-Zugriffssteuerung:
+- Um die Verwaltungsvorgänge in diesem Artikel auszuführen, benötigt Ihr Konto die folgenden Azure-Rollenzuweisungen:
 
     > [!NOTE]
     > Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
 
-    - [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) zum Aktivieren und Entfernen einer vom System zugewiesenen verwalteten Identität in einer VM-Skalierungsgruppe
+    - [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) zum Aktivieren und Entfernen einer vom System zugewiesenen verwalteten Identität in einer VM-Skalierungsgruppe
 
 ## <a name="system-assigned-managed-identity"></a>Systemseitig zugewiesene verwaltete Identität
 
@@ -59,7 +59,7 @@ So aktivieren Sie eine vom System zugewiesene verwaltete Identität in einer VM-
 
 3. Wählen Sie unter **Vom System zugewiesen**, **Status** die Option **Ein** aus, und klicken Sie dann auf **Speichern**:
 
-   ![Screenshot der Konfigurationsseite](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
+   ![Screenshot der Seite „Identität (Vorschau)“, auf der „Vom System zugewiesen“ ausgewählt, der Status auf „Ein“ eingestellt und die Schaltfläche „Speichern“ hervorgehoben ist](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
 ### <a name="remove-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Entfernen einer vom System zugewiesenen verwalteten Identität aus einer VM-Skalierungsgruppe
 
@@ -88,7 +88,7 @@ Derzeit unterstützt das Azure-Portal nicht das Zuweisen einer vom Benutzer zuge
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, das die VM-Skalierungsgruppe enthält.
 2. Navigieren Sie zur gewünschten VM-Skalierungsgruppe, und klicken Sie auf **Identität**, **Vom Benutzer zugewiesen** und dann auf **\+Hinzufügen**.
 
-   ![Hinzufügen einer vom Benutzer zugewiesenen Identität zu VM-Skalierungsgruppen](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
+   ![Screenshot der Seite „Identität“, auf der „Vom Benutzer zugewiesen“ ausgewählt und die Schaltfläche „Hinzufügen“ hervorgehoben ist](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 
 3. Klicken Sie auf die vom Benutzer zugewiesene Identität, die Sie der VM-Skalierungsgruppe hinzufügen möchten, und dann auf **Hinzufügen**.
    
@@ -105,5 +105,3 @@ Derzeit unterstützt das Azure-Portal nicht das Zuweisen einer vom Benutzer zuge
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Gewähren Sie der verwalteten Identität einer Azure-VM-Skalierungsgruppe über das Azure-Portal den [Zugriff auf eine andere Azure-Ressource](howto-assign-access-portal.md).
-
-

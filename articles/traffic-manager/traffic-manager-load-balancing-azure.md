@@ -3,21 +3,21 @@ title: Verwenden von Lastenausgleichsdiensten in Azure | Microsoft-Dokumentation
 description: 'In diesem Tutorial erfahren Sie, wie Sie ein Szenario mithilfe des Lastenausgleichportfolios von Azure erstellen: Traffic Manager, Application Gateway und Load Balancer.'
 services: traffic-manager
 documentationcenter: ''
-author: liumichelle
-manager: dkays
+author: duongau
+manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: limichel
-ms.openlocfilehash: 906e1840f35ab14997c727551b893a0219eb78d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: duau
+ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60330526"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021689"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Verwenden von Lastenausgleichsdiensten in Azure
 
@@ -38,7 +38,7 @@ Auf konzeptioneller Ebene spielt jeder dieser Dienste eine wichtige Rolle in der
   * MultiValue-Routing, mit dem Sie IP-Adressen von mehreren Anwendungsendpunkten in einer einzelnen DNS-Antwort senden können.
 
   Der Client stellt eine direkte Verbindung mit dem von Traffic Manager zurückgegebenen Endpunkt her. Azure Traffic Manager erkennt, wenn ein Endpunkt fehlerhaft ist, und leitet den Client dann an eine andere fehlerfreie Instanz weiter. Weitere Informationen zu diesem Dienst finden Sie in der [Dokumentation zu Azure Traffic Manager](traffic-manager-overview.md).
-* **Application Gateway** verfügt über einen ADC (Application Delivery Controller) als Dienst und bietet damit verschiedene Lastenausgleichsfunktionen auf Ebene 7 für Ihre Anwendung. So wird Kunden die Optimierung der Webfarmproduktivität ermöglicht, indem die CPU-intensive SSL-Terminierung zum Application Gateway verlagert wird. Andere Routingfunktionen für Ebene 7 umfassen Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, und Möglichkeit zum Hosten von mehreren Websites hinter einem einzelnen Application Gateway. Application Gateway kann als Gateway mit Internetanbindung, rein internes Gateway oder als Kombination dieser beiden Optionen konfiguriert werden. Application Gateway wird vollständig über Azure verwaltet und ist skalierbar und hoch verfügbar. Die Anwendung umfasst viele Diagnose- und Protokollierungsfunktionen zur Verbesserung der Verwaltbarkeit.
+* **Application Gateway** verfügt über einen ADC (Application Delivery Controller) als Dienst und bietet damit verschiedene Lastenausgleichsfunktionen auf Ebene 7 für Ihre Anwendung. So wird Kunden die Optimierung der Webfarmproduktivität ermöglicht, indem die CPU-intensive TLS-Terminierung zum Application Gateway verlagert wird. Andere Routingfunktionen für Ebene 7 umfassen Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, und Möglichkeit zum Hosten von mehreren Websites hinter einem einzelnen Application Gateway. Application Gateway kann als Gateway mit Internetanbindung, rein internes Gateway oder als Kombination dieser beiden Optionen konfiguriert werden. Application Gateway wird vollständig über Azure verwaltet und ist skalierbar und hoch verfügbar. Die Anwendung umfasst viele Diagnose- und Protokollierungsfunktionen zur Verbesserung der Verwaltbarkeit.
 * **Load Balancer** ist ein integraler Bestandteil des Azure SDN-Stapels, äußerst leistungsfähig und bietet Lastenausgleichsdienste der Ebene 4 mit niedriger Latenz für alle UDP- und TCP-Protokolle. Der Dienst verwaltet eingehende und ausgehende Verbindungen. Sie können öffentliche und interne Lastenausgleichs-Endpunkte konfigurieren und Regeln definieren, um eingehende Verbindungen zu Back-End-Pool-Zielen mit TCP und HTTP Integritätstest-Optionen zuzuordnen, damit die Dienstverfügbarkeit verwaltet werden kann.
 
 ## <a name="scenario"></a>Szenario
@@ -59,7 +59,7 @@ Das folgende Diagramm zeigt die Architektur dieses Szenarios:
 ![Diagramm der Lastenausgleichsarchitektur](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
 
 > [!NOTE]
-> Dieses Beispiel zeigt nur eine von vielen möglichen Konfigurationen, die Azure für die Lastenausgleichsdienste bietet. Traffic Manager, Application Gateway und Load Balancer können kombiniert werden, um alle Ihre Anforderungen an den Lastenausgleich optimal zu erfüllen. Wenn beispielsweise die SSL-Auslagerung oder Verarbeitung der Ebene 7 nicht notwendig ist, kann Load Balancer anstatt Application Gateway verwendet werden.
+> Dieses Beispiel zeigt nur eine von vielen möglichen Konfigurationen, die Azure für die Lastenausgleichsdienste bietet. Traffic Manager, Application Gateway und Load Balancer können kombiniert werden, um alle Ihre Anforderungen an den Lastenausgleich optimal zu erfüllen. Wenn beispielsweise die TLS-Auslagerung oder Verarbeitung der Ebene 7 nicht notwendig ist, kann Load Balancer anstatt Application Gateway verwendet werden.
 
 ## <a name="setting-up-the-load-balancing-stack"></a>Einrichten des Lastenausgleichsstapels
 
@@ -142,7 +142,7 @@ In diesem Szenario wird Traffic Manager mit Anwendungsgateways verbunden (die en
 
 3. Erstellen Sie einen Endpunkt durch Eingabe der folgenden Informationen:
 
-   * **Typ**: Wählen Sie den Typ des Endpunkts für den Lastenausgleich aus. Wählen Sie in diesem Szenario **Azure-Endpunkt**, da wir diesen mit den Anwendungsgatewayinstanzen verbinden, die wir zuvor konfiguriert haben.
+   * **Typ:** Wählen Sie den Typ des Endpunkts für den Lastenausgleich aus. Wählen Sie in diesem Szenario **Azure-Endpunkt**, da wir diesen mit den Anwendungsgatewayinstanzen verbinden, die wir zuvor konfiguriert haben.
    * **Name**: Geben Sie den Namen des Endpunkts ein.
    * **Zielressourcentyp:** Wählen Sie **Öffentliche IP-Adresse** aus. Wählen Sie dann unter **Zielressource** die öffentliche IP des zuvor konfigurierten Anwendungsgateways aus.
 
@@ -154,7 +154,7 @@ In diesem Szenario wird Traffic Manager mit Anwendungsgateways verbunden (die en
 
 In diesem Szenario verteilt Load Balancer Verbindungen von der Webebene zu den Datenbanken innerhalb eines Clusters mit hoher Verfügbarkeit.
 
-Wenn Ihr Cluster mit hoher Verfügbarkeit SQL Server AlwaysOn verwendet, finden Sie Schritt-für-Schritt-Anleitungen unter [Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md).
+Wenn Ihr Cluster mit hoher Verfügbarkeit SQL Server AlwaysOn verwendet, finden Sie Schritt-für-Schritt-Anleitungen unter [Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md).
 
 Weitere Informationen zum Konfigurieren eines internen Lastenausgleichs finden Sie unter [Erstellen eines internen Lastenausgleichs über das Azure-Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
 

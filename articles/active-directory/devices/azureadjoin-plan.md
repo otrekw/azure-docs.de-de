@@ -1,22 +1,22 @@
 ---
-title: Planen der Implementierung von Azure Active Directory (Azure AD) Join | Microsoft-Dokumentation
+title: Planen der Implementierung einer Azure Active Directory-Einbindung
 description: Hier werden die Schritte erläutert, die Sie zum Implementieren von in Azure AD eingebundenen Geräten in Ihrer Umgebung ausführen müssen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
-ms.date: 06/28/2019
+ms.topic: how-to
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c739e827589a9fd6adeb10255f869acef29a4f16
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562211"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435449"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -26,21 +26,20 @@ In diesem Artikel erhalten Sie die Informationen, die Sie zum Planen der Impleme
  
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieser Artikel setzt voraus, dass Sie die [Einführung in die Geräteverwaltung in Azure Active Directory](../device-management-introduction.md) gelesen haben.
+Dieser Artikel setzt voraus, dass Sie die [Einführung in die Geräteverwaltung in Azure Active Directory](./overview.md) gelesen haben.
 
 ## <a name="plan-your-implementation"></a>Planen Ihrer Implementierung
 
 Um die Implementierung Ihrer Azure AD-Einbindung zu planen, sollten Sie sich mit folgenden Themen vertraut machen:
 
-|   |   |
-|---|---|
-|![Prüfen][1]|Überprüfen Ihrer Szenarien|
-|![Prüfen][1]|Überprüfen Ihrer Identitätsinfrastruktur|
-|![Prüfen][1]|Bewerten Ihrer Geräteverwaltung|
-|![Prüfen][1]|Verstehen der zu berücksichtigenden Aspekte für Anwendungen und Ressourcen|
-|![Prüfen][1]|Grundlegendes zu Ihren Bereitstellungsoptionen|
-|![Prüfen][1]|Konfigurieren von Enterprise State Roaming|
-|![Prüfen][1]|Konfigurieren des bedingten Zugriffs|
+> [!div class="checklist"]
+> - Überprüfen Ihrer Szenarien
+> - Überprüfen Ihrer Identitätsinfrastruktur
+> - Bewerten Ihrer Geräteverwaltung
+> - Verstehen der zu berücksichtigenden Aspekte für Anwendungen und Ressourcen
+> - Grundlegendes zu Ihren Bereitstellungsoptionen
+> - Konfigurieren von Enterprise State Roaming
+> - Konfigurieren des bedingten Zugriffs
 
 ## <a name="review-your-scenarios"></a>Überprüfen Ihrer Szenarien 
 
@@ -59,7 +58,7 @@ Azure AD Join kann sowohl in verwalteten Umgebungen als auch in Verbundumgebunge
 
 ### <a name="managed-environment"></a>Verwaltete Umgebung
 
-Eine verwaltete Umgebung kann entweder durch [Kennworthashsynchronisierung](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) oder [Passthrough-Authentifizierung](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) mit dem nahtlosen einmaligen Anmelden (Seamless Single Sign On, Seamless SSO) bereitgestellt werden.
+Eine verwaltete Umgebung kann entweder durch [Kennworthashsynchronisierung](../hybrid/how-to-connect-password-hash-synchronization.md) oder [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta-quick-start.md) mit dem nahtlosen einmaligen Anmelden (Seamless Single Sign On, Seamless SSO) bereitgestellt werden.
 
 In diesen Szenarien müssen Sie keinen Verbundserver für die Authentifizierung konfigurieren.
 
@@ -75,10 +74,10 @@ Bei Verwendung von AD FS müssen Sie die folgenden WS-Trust-Endpunkte aktivieren
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`
 
-Wenn Ihr Identitätsanbieter diese Protokolle nicht unterstützt, funktioniert Azure AD Join nicht systemintern. Ab Windows 10 1809 können sich Ihre Benutzer bei einem in Azure AD eingebundenen Gerät mit einem SAML-basierten Identitätsanbieter über die [Webanmeldung unter Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10) anmelden. Die Webanmeldung ist zurzeit ein Vorschaufeature und wird nicht für Produktionsbereitstellungen empfohlen.
+Wenn Ihr Identitätsanbieter diese Protokolle nicht unterstützt, funktioniert Azure AD Join nicht systemintern. 
 
 >[!NOTE]
-> Derzeit funktioniert Azure AD Join nicht, wenn [AD FS 2019 mit externen Authentifizierungsanbietern als primäre Authentifizierungsmethode konfiguriert ist](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Für Azure AD Join ist standardmäßig die Kennwortauthentifizierung als primäre Methode festgelegt, was in diesem Szenario zu Authentifizierungsfehlern führt.
+> Derzeit funktioniert Azure AD Join nicht, wenn [AD FS 2019 mit externen Authentifizierungsanbietern als primäre Authentifizierungsmethode konfiguriert ist](/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Für Azure AD Join ist standardmäßig die Kennwortauthentifizierung als primäre Methode festgelegt, was in diesem Szenario zu Authentifizierungsfehlern führt.
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Smartcards und zertifikatbasierte Authentifizierung
@@ -91,10 +90,12 @@ Zum Einbinden von Geräten in Azure AD können Sie keine Smartcards oder zertifi
 
 Bei der Erstellung von Benutzern in:
 
-- **Lokalem Active Directory** müssen Sie die Benutzer mithilfe von [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) mit Azure AD synchronisieren. 
+- **Lokalem Active Directory** müssen Sie die Benutzer mithilfe von [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md) mit Azure AD synchronisieren. 
 - **Azure AD** ist keine zusätzliche Einrichtung erforderlich.
 
 Lokale UPNs, die sich von Azure AD-UPNs unterscheiden, werden auf in Azure AD eingebundenen Geräten nicht unterstützt. Wenn Ihre Benutzer einen lokalen UPN verwenden, sollten Sie auf die Verwendung ihres primären UPN in Azure AD umstellen.
+
+UPN-Änderungen werden erst ab dem Windows 10-Update 2004 unterstützt. Bei Benutzern, die Geräte mit diesem Update verwenden, kann der UPN problemlos geändert werden. Auf Geräten vor dem Windows 10-Update 2004 haben Benutzer Probleme mit SSO und dem bedingten Zugriff. Sie müssen sich über die Kachel „Anderer Benutzer“ mit ihrem neuen UPN bei Windows anmelden, um dieses Problem zu beheben. 
 
 ## <a name="assess-your-device-management"></a>Bewerten Ihrer Geräteverwaltung
 
@@ -104,7 +105,7 @@ Azure AD Join:
 
 - Gilt nur für Windows 10-Geräte. 
 - Gilt nicht für vorherige Versionen von Windows oder andere Betriebssysteme. Wenn Sie über Windows 7- oder Windows 8.1-Geräte verfügen, müssen Sie ein Upgrade auf Windows 10 durchführen, um Azure AD Join bereitstellen zu können.
-- Wird auf Geräten mit TPM im FIPS-Modus nicht unterstützt.
+- Wird für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Join fortfahren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten.
  
 **Empfehlung:** Verwenden Sie immer das neueste Release von Windows 10, um die aktualisierten Features nutzen zu können.
 
@@ -120,16 +121,16 @@ Es gibt zwei Ansätze für die Verwaltung von in Azure AD eingebundenen Geräten
 - **Nur MDM**: Ein Gerät wird ausschließlich von einem MDM-Anbieter wie Intune verwaltet. Alle Richtlinien werden im Rahmen des MDM-Registrierungsprozesses bereitgestellt. Für Azure AD Premium- oder EMS-Kunden ist die MDM-Registrierung ein automatisierter Schritt, der Teil einer Azure AD-Einbindung ist.
 - **Co-Verwaltung**: Ein Gerät wird von einem MDM-Anbieter und SCCM verwaltet. Bei diesem Ansatz ist der SCCM-Agent auf einem MDM-verwalteten Gerät zur Verwaltung bestimmter Aspekte installiert.
 
-Werten Sie bei Verwendung von Gruppenrichtlinien die MDM-Richtlinienparität mit dem [MDM Migration Analysis Tool (MMAT)](https://github.com/WindowsDeviceManagement/MMAT) aus. 
+Überprüfen Sie bei Verwendung von Gruppenrichtlinien mithilfe der [Analyse von Gruppenrichtlinien](/mem/intune/configuration/group-policy-analytics) in Microsoft Endpoint Manager die Parität von GPO- und MDM-Richtlinien. 
 
 Überprüfen Sie die unterstützten und nicht unterstützten Richtlinien, um zu bestimmen, ob Sie statt Gruppenrichtlinien eine MDM-Lösung verwenden können. In Bezug auf nicht unterstützte Richtlinien ist Folgendes zu berücksichtigen:
 
 - Sind die nicht unterstützten Richtlinien für in Azure AD eingebundene Geräte oder für Benutzer erforderlich?
 - Sind die nicht unterstützten Richtlinien in einer cloudbasierten Bereitstellung anwendbar?
 
-Wenn Ihre MDM-Lösung nicht über den Azure AD-App-Katalog verfügbar ist, können Sie die Lösung gemäß der unter [Azure Active Directory-Integration von MDM](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm) beschriebenen Vorgehensweise hinzufügen. 
+Wenn Ihre MDM-Lösung nicht über den Azure AD-App-Katalog verfügbar ist, können Sie die Lösung gemäß der unter [Azure Active Directory-Integration von MDM](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) beschriebenen Vorgehensweise hinzufügen. 
 
-Durch die Co-Verwaltung können Sie SCCM verwenden, um bestimmte Aspekte Ihrer Geräte zu verwalten, während die Richtlinien über Ihre MDM-Plattform bereitgestellt werden. Microsoft Intune ermöglicht die Co-Verwaltung mit SCCM. Weitere Informationen finden Sie unter [Co-Verwaltung für Windows 10-Geräte](https://docs.microsoft.com/sccm/core/clients/manage/co-management-overview). Wenn Sie ein anderes MDM-Produkt als Intune verwenden, wenden Sie sich an Ihren MDM-Anbieter, um Informationen zu entsprechenden Szenarien für die Co-Verwaltung zu erhalten.
+Durch die Co-Verwaltung können Sie SCCM verwenden, um bestimmte Aspekte Ihrer Geräte zu verwalten, während die Richtlinien über Ihre MDM-Plattform bereitgestellt werden. Microsoft Intune ermöglicht die Co-Verwaltung mit SCCM. Weitere Informationen zur Co-Verwaltung für Windows 10-Geräte finden Sie unter [Was ist Co-Verwaltung?](/configmgr/core/clients/manage/co-management-overview). Wenn Sie ein anderes MDM-Produkt als Intune verwenden, wenden Sie sich an Ihren MDM-Anbieter, um Informationen zu entsprechenden Szenarien für die Co-Verwaltung zu erhalten.
 
 **Empfehlung:** Ziehen Sie für in Azure AD eingebundene Geräte nur die mobile Geräteverwaltung (MDM) in Betracht.
 
@@ -155,7 +156,7 @@ Wenn Ihre Apps benutzerdefiniert sind und/oder lokal gehostet werden, müssen Si
 - Damit die integrierte Windows-Authentifizierung funktioniert 
 - Um den Benutzern ein SSO-Erlebnis ohne Eingabeaufforderung zu bieten. 
 
-Wenn Sie AD FS verwenden, lesen Sie [Überprüfen und Verwalten von einmaligem Anmelden mit AD FS](https://docs.microsoft.com/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
+Wenn Sie AD FS verwenden, lesen Sie [Überprüfen und Verwalten von einmaligem Anmelden mit AD FS](/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
 
 **Empfehlung:** Ziehen Sie ein Hosting in der Cloud (z.B. Azure) und die Integration von Azure AD in Betracht, um die Benutzerfreundlichkeit zu verbessern.
 
@@ -163,7 +164,7 @@ Wenn Sie AD FS verwenden, lesen Sie [Überprüfen und Verwalten von einmaligem A
 
 Benutzer erhalten SSO über in Azure AD eingebundene Geräte, wenn das jeweilige Gerät Zugriff auf einen Domänencontroller hat. 
 
-**Empfehlung:** Stellen Sie den [Azure AD-App-Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
+**Empfehlung:** Stellen Sie den [Azure AD-App-Proxy](../manage-apps/application-proxy.md) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
 
 ### <a name="on-premises-network-shares"></a>Lokale Netzwerkfreigaben
 
@@ -171,7 +172,7 @@ Ihre Benutzer erhalten SSO über in Azure AD eingebundene Geräte, wenn das jewe
 
 ### <a name="printers"></a>Drucker
 
-Für Drucker müssen Sie [Hybrid Cloud Print](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) zur Erkennung von Druckern auf in Azure AD eingebundenen Geräten bereitstellen. 
+Für Drucker müssen Sie [Hybrid Cloud Print](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) zur Erkennung von Druckern auf in Azure AD eingebundenen Geräten bereitstellen. 
 
 Drucker können in einer reinen Cloudumgebung nicht automatisch erkannt werden, aber Ihre Benutzer können auch den UNC-Pfad von Druckern verwenden, um sie direkt hinzuzufügen. 
 
@@ -183,19 +184,22 @@ In Azure AD eingebundene Geräte unterstützen keine lokalen Anwendungen, die Co
 
 ### <a name="remote-desktop-services"></a>Remotedesktopdienste
 
-Um eine Remotedesktopverbindung mit einem in Azure AD eingebundenen Gerät herstellen zu können, muss der Hostcomputer entweder in Azure AD oder Azure AD Hybrid eingebunden sein. Eine Remotedesktopverbindung über ein nicht verbundenes oder Nicht-Windows-Gerät wird nicht unterstützt. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem in Azure AD eingebundenen Remote-PC](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
+Um eine Remotedesktopverbindung mit einem in Azure AD eingebundenen Gerät herstellen zu können, muss der Hostcomputer entweder in Azure AD oder Azure AD Hybrid eingebunden sein. Eine Remotedesktopverbindung über ein nicht verbundenes oder Nicht-Windows-Gerät wird nicht unterstützt. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem in Azure AD eingebundenen Remote-PC](/windows/client-management/connect-to-remote-aadj-pc).
+
+Ab dem Windows 10-Update 2004 können Benutzer auch eine Remotedesktopverbindung auf einem bei Azure AD registrierten Windows 10-Gerät mit einem in Azure AD eingebundenen Gerät verwenden. 
 
 ## <a name="understand-your-provisioning-options"></a>Grundlegendes zu Ihren Bereitstellungsoptionen
+**Hinweis**: In Azure AD eingebundene Geräte können nicht mit einem Tool für die Systemvorbereitung (Sysprep) oder mit ähnlichen Abbilderstellungstools bereitgestellt werden.
 
 Sie können Azure AD Join mithilfe der folgenden Methoden bereitstellen:
 
-- **Self-Service auf der Windows-Willkommensseite/in den Windows-Einstellungen**: Im Self-Service-Modus durchlaufen die Benutzer den Azure AD-Einbindungsprozess entweder auf der Windows-Willkommensseite (Windows Out-of-Box-Experience, OOBE) oder in den Windows-Einstellungen. Weitere Informationen finden Sie unter [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network). 
-- **Windows Autopilot**: Windows Autopilot ermöglicht die Vorkonfiguration von Geräten, um auf der Windows-Willkommensseite für ein möglichst reibungsloses Benutzererlebnis bei einer Azure AD-Einbindung zu sorgen. Weitere Informationen finden Sie in der [Übersicht über Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot). 
-- **Massenregistrierung**: Die Massenregistrierung ermöglicht eine vom Administrator gesteuerte Azure AD-Einbindung mithilfe eines Massenbereitstellungstools zum Konfigurieren von Geräten. Weitere Informationen finden Sie unter [Massenregistrierung für Windows-Geräte](https://docs.microsoft.com/intune/windows-bulk-enroll).
+- **Self-Service auf der Windows-Willkommensseite/in den Windows-Einstellungen**: Im Self-Service-Modus durchlaufen die Benutzer den Azure AD-Einbindungsprozess entweder auf der Windows-Willkommensseite (Windows Out-of-Box-Experience, OOBE) oder in den Windows-Einstellungen. Weitere Informationen finden Sie unter [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](../user-help/user-help-join-device-on-network.md). 
+- **Windows Autopilot**: Windows Autopilot ermöglicht die Vorkonfiguration von Geräten, um auf der Windows-Willkommensseite für ein möglichst reibungsloses Benutzererlebnis bei einer Azure AD-Einbindung zu sorgen. Weitere Informationen finden Sie in der [Übersicht über Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot). 
+- **Massenregistrierung**: Die Massenregistrierung ermöglicht eine vom Administrator gesteuerte Azure AD-Einbindung mithilfe eines Massenbereitstellungstools zum Konfigurieren von Geräten. Weitere Informationen finden Sie unter [Massenregistrierung für Windows-Geräte](/intune/windows-bulk-enroll).
  
 Hier finden Sie einen Vergleich dieser drei Methoden: 
  
-|   | Self-Service-Einrichtung | Windows Autopilot | Massenregistrierung |
+| Element | Self-Service-Einrichtung | Windows Autopilot | Massenregistrierung |
 | --- | --- | --- | --- |
 | Benutzerinteraktion zum Einrichten erforderlich | Ja | Ja | Nein |
 | IT-Maßnahmen erforderlich | Nein | Ja | Ja |
@@ -247,7 +251,7 @@ Bevor Sie Ihre Mobilitätseinstellungen konfigurieren können, müssen Sie mögl
 1. Klicken Sie auf **Anwendung hinzufügen**.
 1. Wählen Sie Ihren MDM-Anbieter aus der Liste aus.
 
-   ![Hinzufügen einer Anwendung](./media/azureadjoin-plan/04.png)
+   :::image type="content" source="./media/azureadjoin-plan/04.png" alt-text="Screenshot der Seite „Anwendung hinzufügen“ in Azure Active Directory. Mehrere MDM-Anbieter sind aufgelistet." border="false":::
 
 Wählen Sie Ihren MDM-Anbieter aus, um die entsprechenden Einstellungen zu konfigurieren. 
 
@@ -270,7 +274,7 @@ Es gibt drei URLs, die sich auf die MDM-Konfiguration beziehen:
 - URL für MDM-Ermittlung 
 - MDM Compliance-URL
 
-![Hinzufügen einer Anwendung](./media/azureadjoin-plan/06.png)
+:::image type="content" source="./media/azureadjoin-plan/06.png" alt-text="Screenshot: Teil des MDM-Konfigurationsbereichs in Azure Active Directory mit den URL-Feldern für MDM-Nutzungsbedingungen, Ermittlung und Compliance" border="false":::
 
 Jede URL verfügt über einen vordefinierten Standardwert. Wenn diese Felder leer sind, wenden Sie sich an Ihren MDM-Anbieter, um weitere Informationen zu erhalten.
 
@@ -296,7 +300,7 @@ Sie können diese Implementierung nutzen, um [die Verwendung verwalteter Geräte
 
 > [!div class="nextstepaction"]
 > [Einbinden eines neuen Windows 10-Geräts in Azure AD auf der Windows-Willkommensseite](azuread-joined-devices-frx.md)
-> [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network)
+> [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](../user-help/user-help-join-device-on-network.md)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

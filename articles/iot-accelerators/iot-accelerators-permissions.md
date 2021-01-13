@@ -8,21 +8,21 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a088cb07fa74b65e497de54be8c97bd51d31c16
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447433"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387835"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Verwenden der azureiotsolutions.com-Website zum Bereitstellen Ihres Solution Accelerators
 
-Sie können Azure IoT Solution Accelerators über [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) für Ihr Azure-Abonnement bereitstellen. AzureIoTSolutions.com hostet sowohl die Microsoft Open Source- als auch die Partner Solution Accelerators. Diese Solution Accelerators entsprechen der [Azure IoT-Referenzarchitektur](https://aka.ms/iotrefarchitecture). Sie können über die Website schnell einen Solution Accelerator als Demo- oder Produktionsumgebung bereitstellen.
+Sie können Azure IoT Solution Accelerators über [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) für Ihr Azure-Abonnement bereitstellen. AzureIoTSolutions.com hostet sowohl die Microsoft Open Source- als auch die Partner Solution Accelerators. Diese Solution Accelerators entsprechen der [Azure IoT-Referenzarchitektur](/azure/architecture/reference-architectures/iot). Sie können über die Website schnell einen Solution Accelerator als Demo- oder Produktionsumgebung bereitstellen.
 
-![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
+:::image type="content" source="media/iot-accelerators-permissions/iotsolutionscom.png" alt-text="Homepage: IoT Solution Accelerators":::
 
 > [!TIP]
-> Wenn Sie mehr Kontrolle über den Bereitstellungsprozess benötigen, können Sie mithilfe der [-Befehlszeilenschnittstelle einen Solution Accelerator bereitstellen](iot-accelerators-remote-monitoring-deploy-cli.md).
+> Wenn Sie mehr Kontrolle über den Bereitstellungsprozess benötigen, können Sie mithilfe der -Befehlszeilenschnittstelle einen Solution Accelerator bereitstellen.
 
 Sie können die Solution Accelerators in den folgenden Konfigurationen bereitstellen:
 
@@ -38,7 +38,7 @@ Bevor Sie einen Solution Accelerator bereitstellen können, müssen Sie sich mit
 
 Ihre Berechtigungen zum Bereitstellen von Solution Accelerators, Verwalten von Benutzern und Verwalten von Azure-Diensten sind abhängig von Ihrer Rolle im ausgewählten Verzeichnis. Die allgemeinen Azure AD-Rollen, die den Solution Accelerators zugeordnet sind, umfassen Folgendes:
 
-* **Globaler Administrator**: Pro Azure AD-Mandant kann es viele [globale Administratoren](../active-directory/users-groups-roles/directory-assign-admin-roles.md) geben:
+* **Globaler Administrator**: Pro Azure AD-Mandant kann es viele [globale Administratoren](../active-directory/roles/permissions-reference.md) geben:
 
   * Wenn Sie einen Azure AD-Mandanten erstellen, sind Sie standardmäßig der globale Administrator dieses Mandanten.
   * Der globale Administrator kann einen grundlegenden und einen Standard-Solution Accelerator bereitstellen.
@@ -64,9 +64,4 @@ Wenn Sie ein Hardwarehersteller sind, klicken Sie auf **Partner werden**, um meh
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die Schnellstarts an, wenn Sie einen der IoT-Solution Accelerators testen möchten:
-
-* [Testen einer Remoteüberwachungslösung](quickstart-remote-monitoring-deploy.md)
-* [Testen einer Lösung für verbundene Factorys](quickstart-connected-factory-deploy.md)
-* [Testen einer Predictive Maintenance-Lösung](quickstart-predictive-maintenance-deploy.md)
-* [Testen einer Gerätesimulationslösung](quickstart-device-simulation-deploy.md)
+Sehen Sie sich den Schnellstart an, wenn Sie einen der IoT-Solution Accelerators testen möchten: [Testen einer Lösung für verbundene Factorys](quickstart-connected-factory-deploy.md).

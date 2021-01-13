@@ -1,17 +1,14 @@
 ---
 title: Senden von Azure Service Health-Warnungen mit OpsGenie mit Webhooks
 description: Erhalten Sie personalisierte Benachrichtigungen zu Service Health-Ereignissen an Ihre OpsGenie-Instanz.
-author: stephbaron
-ms.author: stbaron
-ms.topic: article
-ms.service: service-health
+ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: fab99b7093ac3f18f6313273d21905e0a3ed7e5b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 112774cb1f9e16b08225471e8dbc1bb79b1bd37d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067162"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86529096"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Senden von Azure Service Health-Warnungen mit OpsGenie mit Webhooks
 
@@ -40,7 +37,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 
 ## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Erstellen einer Warnung mithilfe von OpsGenie im Azure-Portal
 ### <a name="for-a-new-action-group"></a>Für eine neue Aktionsgruppe:
-1. Befolgen Sie die Schritte 1 bis 8 in [Erstellen einer Warnung zu einer Dienstintegritätsbenachrichtigung für eine neue Aktionsgruppe mit dem Azure-Portal](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+1. Befolgen Sie die Schritte 1 bis 8 in [Erstellen einer Warnung zu einer Dienstintegritätsbenachrichtigung für eine neue Aktionsgruppe mit dem Azure-Portal](./alerts-activity-log-service-notifications-portal.md).
 
 1. Definieren Sie in der Liste der **Aktionen** Folgendes:
 
@@ -88,5 +85,5 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie [Webhookbenachrichtigungen für vorhandene Problemverwaltungssysteme konfigurieren](service-health-alert-webhook-guide.md).
 - Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](../azure-monitor/platform/service-notifications.md).
+- Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](./service-notifications.md).
 - Weitere Informationen zu [Aktionsgruppen](../azure-monitor/platform/action-groups.md).

@@ -1,23 +1,25 @@
 ---
-title: Automatisieren der Migration zahlreicher virtueller Computer zu Azure | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie Skripts verwenden, um eine große Anzahl virtueller Computer mithilfe von Azure Site Recovery zu migrieren.
-author: snehaamicrosoft
-ms.service: azure-migrate
-ms.topic: article
+title: Automatisieren der Computermigration in Azure Migrate
+description: Hier wird beschrieben, wie Sie eine große Anzahl von Computern mithilfe von Skripts in Azure Migrate migrieren.
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 04/01/2019
-ms.author: snehaa
-ms.openlocfilehash: b45a158569b3be8250728293c1bf73c1a860a0f6
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 01196b23ce5bf9ce842da89d0773a77e6a1d5107
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67808018"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754231"
 ---
-# <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Skalieren der Migration virtueller Computer mithilfe von Azure Site Recovery
+# <a name="scale-migration-of-vms"></a>Skalieren der Migration von VMs 
 
-In diesem Artikel wird erläutert, wie Sie mithilfe von Skripts und Azure Site Recovery eine große Anzahl virtueller Computer migrieren. Diese Skripts stehen auf GitHub im Repository [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) (Azure PowerShell-Beispiele) zum Download zur Verfügung. Die Skripts können zum Migrieren von virtuellen VMware-, AWS- und GCP-Computern sowie von physischen Servern zu verwalteten Datenträgern in Azure verwendet werden. Sie können mit diesen Skripts auch virtuelle Hyper-V-Computer migrieren, wenn Sie diese als physische Server migrieren. Die Skripts nutzen Azure Site Recovery-PowerShell. Eine entsprechende Dokumentation finden Sie [hier](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell).
+In diesem Artikel wird erläutert, wie Sie mithilfe von Skripts eine große Anzahl virtueller Computer (VMs) migrieren. Zum Skalieren der Migration verwenden Sie [Azure Site Recovery](../site-recovery/site-recovery-overview.md). 
 
-## <a name="current-limitations"></a>Aktuelle Einschränkungen:
+Site Recovery-Skripts stehen auf GitHub im Repository [Azure PowerShell-Beispiele](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) zum Download zur Verfügung. Die Skripts können zum Migrieren von virtuellen VMware-, AWS- und GCP-Computern sowie von physischen Servern zu verwalteten Datenträgern in Azure verwendet werden. Sie können mit diesen Skripts auch virtuelle Hyper-V-Computer migrieren, wenn Sie diese als physische Server migrieren. Die Skripts nutzen Azure Site Recovery-PowerShell. Eine entsprechende Dokumentation finden Sie [hier](../site-recovery/vmware-azure-disaster-recovery-powershell.md).
+
+## <a name="current-limitations"></a>Aktuelle Einschränkungen
 - Die Angabe der statischen IP-Adresse wird nur für den primären Netzwerkadapter des virtuellen Zielcomputers unterstützt.
 - Die Skripts akzeptieren keine Eingaben im Zusammenhang mit Azure-Hybridvorteil. Sie müssen die Eigenschaften des replizierten virtuellen Computers manuell im Portal aktualisieren.
 
@@ -67,4 +69,4 @@ Das Skript migriert die virtuellen Computer standardmäßig zu den verwalteten D
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Migrieren von Servern zu Azure mithilfe von Azure Site Recovery finden Sie unter [Migrieren von lokalen Computern zu Azure](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure).
+Weitere Informationen zum Migrieren von Servern zu Azure mithilfe von Azure Site Recovery finden Sie unter [Migrieren von lokalen Computern zu Azure](../site-recovery/migrate-tutorial-on-premises-azure.md).

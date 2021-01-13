@@ -1,26 +1,18 @@
 ---
-title: Benutzerprofil und ID für die Nutzung von Azure Notebooks
-description: Informationen zum Erstellen und Verwalten von Benutzerprofil und Benutzer-ID mit Azure Notebooks.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: 7d069d86-660f-4c94-b6e3-0c0f38c52d0e
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+title: Benutzerprofil und ID für die Nutzung von Azure Notebooks Preview
+description: Es wird beschrieben, wie Sie Ihr Benutzerprofil und die Benutzer-ID mit Azure Notebooks erstellen und verwalten. Dies fließt in die URL von freigegebenen Notebooks ein.
+ms.topic: conceptual
 ms.date: 02/25/2019
-ms.author: kraigb
-ms.openlocfilehash: b8c21b908ca9162a7e44c7af1e222babc6ee1eb7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 30d70365fcc0c72df01b4dc059b6e0f4cc607bba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631956"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109503"
 ---
-# <a name="your-profile-and-user-id-for-azure-notebooks"></a>Ihr Profil und Ihre Benutzer-ID für Azure Notebooks
+# <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Ihr Profil und Ihre Benutzer-ID für Azure Notebooks Preview
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Innerhalb des leistungsstarken, auf Zusammenarbeit ausgelegten Bereichs von Azure Notebooks stellt Ihr Benutzerprofil Ihr öffentliches Bild für andere dar:
 
@@ -57,16 +49,16 @@ Ihr Profil setzt sich aus öffentlich sichtbaren Informationen unter der URL `ht
 
 Zum Bearbeiten Ihres Profils verwenden Sie den Befehl **Edit Profile Information** (Profilinformationen bearbeiten) auf Ihrer Profilseite. Dies sind die Abschnitte Ihres Profils:
 
-| `Section` | Inhalt: |
+| `Section` | Contents |
 | --- | --- |
 | Profilfoto | Ein Bild, das auf Ihrer Profilseite angezeigt wird. |
 | Azure-Kontoinformationen | Ihr Anzeigename, Ihre Benutzer-ID und Ihr öffentliches E-Mail-Konto. Das E-Mail-Konto stellt ein Mittel für andere Benutzer dar, mit Ihnen in Kontakt zu treten, und kann sich von dem [Konto](azure-notebooks-user-account.md) unterscheiden, das Sie für die Anmeldung bei Azure Notebooks selbst verwenden. |
 | Profilinformationen | Ihr Standort, Ihr Unternehmen, Ihre Position, Ihre Website und eine kurze Beschreibung Ihrer Person. |
-| Soziale Profile | Ihre GItHub-, Twitter- und Facebook-IDs, wenn Sie diese teilen möchten. |
+| Soziale Profile | Ihre GitHub-, Twitter- und Facebook-IDs, wenn Sie diese teilen möchten. |
 | Datenschutzeinstellungen | Bietet zwei Befehle:<ul><li>**Export My Profile** (Mein Profil exportieren): erstellt eine *ZIP*-Datei mit allen Informationen, die Azure Notebooks in Ihrem Profil speichert, einschließlich Ihres Fotos, Ihrer Profilinformationen und der Sicherheitsprotokolle, und lädt sie herunter.</li><li>**Delete My Account** (Mein Konto löschen): löscht endgültig alle Ihre in Azure Notebooks gespeicherten persönlichen Informationen.</li></ul> |
 | Enable Site Features (Websitefunktionen aktivieren) | Ermöglicht es Ihnen, Verhaltensaspekte von Azure Notebooks zu steuern:<ul><li>**Unified Frontend for Notebooks** (Einheitliches Front-End für Notebooks): ermöglicht einen schnelleren Start von Notebooks und größere Beständigkeit.</li><li>**Run in JupyterLab by default** (Standardmäßig in JupyterLab ausführen): Azure Notebooks stellt als Standard eine einfache Benutzeroberfläche zur Verfügung, die für die meisten Benutzer geeignet ist. JupyterLab stellt erfahrenen Benutzern einer umfassendere, aber kompliziertere Oberfläche zur Verfügung.</li><li>**VNext Website** (VNext-Website): aktiviert das in dieser Dokumentation verwendete modernisierte Weblayout.</li></ul> |
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen und Ausführen eines Jupyter-Notebooks für lineare Regression](tutorial-create-run-jupyter-notebook.md)
+> [Schnellstart: Exportieren eines Jupyter Notebook-Projekts](quickstart-export-jupyter-notebook-project.md)

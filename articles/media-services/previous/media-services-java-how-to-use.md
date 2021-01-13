@@ -14,17 +14,20 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: fedec6ea764394d36f5b4d7c883f7cb9f9520a29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-java
+ms.openlocfilehash: 3c86689681aa99f60c4345e92f7f5c426795a69e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869020"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586702"
 ---
-# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Erste Schritte mit dem Java-Client-SDK für Azure Media Services  
+# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Erste Schritte mit dem Java-Client-SDK für Azure Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie mithilfe des Java-Client-SDK einen einfachen Dienst zur Übermittlung von VoD-Inhalten (Video-on-Demand) mit Azure Media Services implementieren.
 
@@ -42,13 +45,13 @@ Fügen Sie einen Verweis auf die aktuelle Version (0.9.8) des `azure-media`-Pake
 
 Wenn Sie `gradle` als Erstellungstool verwenden, müssen Sie der Datei `build.gradle` die folgende Abhängigkeit hinzufügen:
 
-    compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
+`compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'`
 
 >[!IMPORTANT]
 >Ab Version `0.9.8` des `azure-media`-Pakets verfügt das SDK über Unterstützung für AAD-Authentifizierung (Azure Active Directory), und die Unterstützung für die Azure ACS-Authentifizierung (Access Control Service) wurde entfernt. Es wird empfohlen, möglichst bald zum Azure AD-Authentifizierungsmodell zu migrieren. Ausführliche Informationen zur Migration finden Sie im Artikel [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md).
 
 >[!NOTE]
->Sie finden den Quellcode des Azure Media Services-Java-SDK in unserem [GitHub-Repository](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Achten Sie darauf, dass Sie die Umstellung auf Branch 0.9 durchführen, nicht auf die Masterbranch. 
+>Sie finden den Quellcode des Azure Media Services-Java-SDK in unserem [GitHub-Repository](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Achten Sie darauf, dass Sie die Umstellung auf Branch 0.9 durchführen, nicht auf den Mainbranch. 
 
 ## <a name="how-to-use-azure-media-services-with-java"></a>Gewusst wie: Verwenden von Azure Media Services mit Java
 
@@ -65,7 +68,7 @@ Der Code stellt eine Verbindung mit der Azure Media Services-API her, indem die 
 * `clientKey`: Der Clientschlüssel der Azure AD-Anwendung
 * `restApiEndpoint`: Der REST-API-Endpunkt des Azure Media Services-Kontos
 
-Sie können eine Azure AD-Anwendung erstellen und die obigen Konfigurationswerte über das Azure-Portal erhalten. Weitere Informationen finden Sie im Abschnitt **Dienstprinzipalauthentifizierung** unter [Erste Schritte mit der Azure AD-Authentifizierung mithilfe des Azure-Portals](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
+Sie können eine Azure AD-Anwendung erstellen und die obigen Konfigurationswerte über das Azure-Portal erhalten. Weitere Informationen finden Sie im Abschnitt **Dienstprinzipalauthentifizierung** unter [Erste Schritte mit der Azure AD-Authentifizierung mithilfe des Azure-Portals](./media-services-portal-get-started-with-aad.md).
 
 Im Code wird außerdem eine lokal gespeicherte Videodatei verwendet. Sie müssen den Code bearbeiten, um Ihre eigene lokale Datei zum Hochladen bereitzustellen.
 
@@ -320,6 +323,5 @@ Media Services-Javadoc-Dokumentation finden Sie in den [Azure-Bibliotheken für 
 
 [Azure Media Services SDK Maven Package]: https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
-[Azure for Java developers]: https://docs.microsoft.com/java/azure/
-[Media Services Client Development]: https://msdn.microsoft.com/library/windowsazure/dn223283.aspx
-
+[Azure for Java developers]: /java/azure/
+[Media Services Client Development]: /previous-versions/azure/dn223283(v=azure.100)

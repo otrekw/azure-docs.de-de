@@ -1,25 +1,29 @@
 ---
-title: Sprachübersetzung mit dem Speech-Dienst
+title: Übersicht zur Sprachübersetzung – Speech-Dienst
 titleSuffix: Azure Cognitive Services
-description: Mit dem Speech-Dienst können Sie Ihren Anwendungen, Tools und Geräten End-to-End- und Echtzeit-Sprachübersetzungen sowie mehrsprachige Übersetzungen hinzufügen. Die gleiche API kann für Speech-to-Speech- und für Speech-to-Text-Übersetzungen verwendet werden.
+description: Mit der Sprachübersetzung können Sie Ihren Anwendungen, Tools und Geräten End-to-End- und Echtzeit-Sprachübersetzungen sowie mehrsprachige Übersetzungen hinzufügen. Die gleiche API kann für Speech-to-Speech- und für Speech-to-Text-Übersetzungen verwendet werden. Dieser Artikel bietet einen Überblick über die Vorteile und Funktionen des Sprachübersetzungsdiensts.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/01/2020
 ms.author: erhopf
-ms.openlocfilehash: cfcefd0b18831163324519b61dbea305f90f44bc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
+keywords: Sprachübersetzung
+ms.openlocfilehash: 36c2943d7cd5ce2c5c7c4a8501dc0033aa8c9cbc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552649"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015204"
 ---
 # <a name="what-is-speech-translation"></a>Was ist Sprachübersetzung?
 
-Die Sprachübersetzung aus den Azure-Sprachdiensten ermöglicht eine mehrsprachige Sprache-zu-Sprache- und eine Sprache-zu-Text-Übersetzung von Audiostreams in Echtzeit. Mit dem Speech SDK haben Ihre Anwendungen, Tools und Geräte Zugriff auf Quelltranskriptionen und Übersetzungsausgaben für bereitgestelltes Audio. Die Zwischenergebnisse der Transkription und Übersetzung werden zurückgegeben, wenn Sprache erkannt wird, und die Endergebnisse können in synthetisierte Sprache konvertiert werden.
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+
+In dieser Übersicht lernen Sie die Vorteile und Funktionen des Sprachübersetzungsdiensts kennen, der eine mehrsprachige Sprache-zu-Sprache- und eine Sprache-zu-Text-Übersetzung von Audiostreams in Echtzeit ermöglicht. Mit dem Speech SDK haben Ihre Anwendungen, Tools und Geräte Zugriff auf Quelltranskriptionen und Übersetzungsausgaben für bereitgestelltes Audio. Die Zwischenergebnisse der Transkription und Übersetzung werden zurückgegeben, wenn Sprache erkannt wird, und die Endergebnisse können in synthetisierte Sprache konvertiert werden.
 
 Der Übersetzungsengine von Microsoft liegen zwei unterschiedliche Ansätze zugrunde: statistische maschinelle Übersetzung (Statistical Machine Translation, SMT) und neuronale maschinelle Übersetzung (Neural Machine Translation, NMT). SMT verwendet erweiterte statistische Analysen, um die bestmöglichen Übersetzungen im Kontext einiger weniger Wörter zu schätzen. Mit NMT werden neuronale Netze verwendet, um genauere, natürlich klingende Übersetzungen bereitzustellen, indem der gesamte Kontext von Sätzen zur Übersetzung von Wörtern genutzt wird.
 
@@ -27,25 +31,14 @@ Heute verwendet Microsoft NMT für die Übersetzung in die gängigsten Sprachen.
 
 ## <a name="core-features"></a>Wichtige Funktionen
 
-In der folgenden Tabelle sind die Funktionen des Speech SDK und der REST-APIs aufgelistet:
+* Sprache-zu-Text-Übersetzung mit Erkennungsergebnissen.
+* Sprache-zu-Sprache-Übersetzung.
+* Unterstützung des Übersetzens von Sprache in mehrere Zielsprachen.
+* Zwischenergebnisse der Spracherkennung und Übersetzung.
 
-| Anwendungsfall | SDK | REST |
-|----------|-----|------|
-| Sprache-zu-Text-Übersetzung mit Erkennungsergebnissen. | Ja | Nein |
-| Sprache-zu-Sprache-Übersetzung. | Ja | Nein |
-| Zwischenergebnisse der Spracherkennung und Übersetzung. | Ja | Nein |
+## <a name="get-started"></a>Erste Schritte 
 
-## <a name="get-started-with-speech-translation"></a>Erste Schritte mit der Sprachübersetzung
-
-Wir bieten Schnellstarts an, die so konzipiert sind, dass Sie in weniger als 10 Minuten Code ausführen können. In dieser Tabelle werden Schnellstarts Sprachübersetzungen nach Sprache aufgelistet.
-
-| Schnellstart | Plattform | API-Referenz |
-|------------|----------|---------------|
-| [C#, .NET Core](quickstart-translate-speech-dotnetcore-windows.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#, .NET Framework](quickstart-translate-speech-dotnetframework-windows.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](quickstart-translate-speech-uwp.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C++](quickstart-translate-speech-cpp-windows.md) | Windows | [Browse](https://aka.ms/csspeech/cppref)|
-| [Java](quickstart-translate-speech-java-jre.md) | Windows, Linux, macOS | [Browse](https://aka.ms/csspeech/javaref) |
+Verwenden Sie die [Schnellstartanleitung](get-started-speech-translation.md), um mit der Sprachübersetzung zu beginnen. Der Sprachübersetzungsdienst ist über das [Speech SDK](speech-sdk.md) und die [Speech CLI](spx-overview.md) verfügbar.
 
 ## <a name="sample-code"></a>Beispielcode
 
@@ -55,19 +48,20 @@ Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden
 
 ## <a name="migration-guides"></a>Migrationsleitfäden
 
-Wenn Ihre Anwendungen, Tools oder Produkte die [Sprachübersetzungs-API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview) verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zu den Sprachdiensten.
+Wenn Ihre Anwendungen, Tools oder Produkte die [Sprachübersetzungs-API](./how-to-migrate-from-translator-speech-api.md) verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zum Speech-Dienst.
 
-* [Migrieren von der Sprachübersetzungs-API zum Spracherkennungsdienst](how-to-migrate-from-translator-speech-api.md)
+* [Migrieren von der Sprachübersetzungs-API zum Speech-Dienst](how-to-migrate-from-translator-speech-api.md)
 
 ## <a name="reference-docs"></a>Referenz
 
-* [Speech SDK](speech-sdk-reference.md)
+* [Speech SDK](./speech-sdk.md)
 * [Speech-Geräte-SDK](speech-devices-sdk.md)
 * [REST-API: Spracherkennung](rest-speech-to-text.md)
 * [REST-API: Sprachsynthese](rest-text-to-speech.md)
-* [REST-API: Batchtranskription und Anpassung](https://westus.cris.ai/swagger/ui/index)
+* [REST-API: Batchtranskription und Anpassung](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Beziehen eines kostenlosen Abonnementschlüssels für die Spracherkennungsdienste](get-started.md)
+* Ausführen des [Schnellstarts](get-started-speech-translation.md) zur Sprachübersetzung
+* [Kostenloses Testen des Speech-Diensts](overview.md#try-the-speech-service-for-free)
 * [Abrufen des Speech SDK](speech-sdk.md)

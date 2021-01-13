@@ -8,12 +8,17 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.openlocfilehash: 9dbb7905c2a0fed65ede610577e0fa11a1deef92
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom:
+- amqp
+- mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 315d76715973b79a971f3ca15bcc5186d20135a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60345395"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87325031"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>Unterstützen zusätzlicher Protokolle für IoT Hub
 

@@ -1,42 +1,61 @@
 ---
-title: Verbinden von Funktionen mit Azure Storage mithilfe von Visual Studio Code
-description: Erfahren Sie, wie Sie eine Ausgabebindung hinzufügen, um Funktionen mithilfe von Visual Studio Code mit einer Azure Storage-Warteschlange zu verbinden.
-author: ggailey777
-ms.author: glenga
-ms.date: 06/25/2019
+title: Verbinden von Azure Functions mit Azure Storage mithilfe von Visual Studio Code
+description: Erfahren Sie, wie Sie Azure Functions mit einer Azure Storage-Warteschlange verbinden können, indem Sie eine Ausgabebindung zu Ihrem Visual Studio Code-Projekt hinzufügen.
+ms.date: 02/07/2020
 ms.topic: quickstart
-ms.service: azure-functions
-ms.custom: mvc
-manager: jeconnoc
-ms.openlocfilehash: 63065c918a6f78510b4908c5e2ae80df67665b40
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.custom: devx-track-python, devx-track-js
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: e280fddbe83da2a7ee89185046883f6c2c77167a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672602"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739813"
 ---
-# <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>Verbinden von Funktionen mit Azure Storage mithilfe von Visual Studio Code
+# <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Verbinden von Azure Functions mit Azure Storage mithilfe von Visual Studio Code
 
-Mit Azure Functions können Sie Funktionen mit Azure-Diensten und anderen Ressourcen verbinden, ohne dass Sie Ihren eigenen Integrationscode schreiben müssen. Diese *Bindungen*, die sowohl Eingabe als auch Ausgabe darstellen, werden innerhalb der Funktionsdefinition deklariert. Daten von Bindungen werden der Funktion als Parameter bereitgestellt. Ein Trigger ist ein spezieller Typ Eingabebindung. Während eine Funktion nur einen Trigger hat, kann sie mehrere Ein- und Ausgabebindungen haben. Weitere Informationen finden Sie unter [Konzepte der Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md).
+[!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Funktion, die Sie im [vorherigen Schnellstartartikel](functions-create-first-function-vs-code.md) erstellt haben, mithilfe von Visual Studio Code mit Azure Storage verbinden. Die Ausgabebindung, die Sie dieser Funktion hinzufügen, schreibt Daten aus der HTTP-Anforderung in eine Nachricht in einer Azure Queue Storage-Warteschlange. 
+In diesem Artikel wird gezeigt, wie Sie Visual Studio Code verwenden, um Azure Storage mit der Funktion zu verbinden, die Sie im vorherigen Schnellstartartikel erstellt haben. Die Ausgabebindung, die Sie dieser Funktion hinzufügen, schreibt Daten aus der HTTP-Anforderung in eine Nachricht in einer Azure Queue Storage-Warteschlange. 
 
 Die meisten Bindungen erfordern eine gespeicherte Verbindungszeichenfolge, die Functions verwendet, um auf den gebundenen Dienst zuzugreifen. Um dies zu vereinfachen, verwenden Sie das Speicherkonto, das Sie mit Ihrer Funktions-App erstellt haben. Die Verbindung mit diesem Konto ist bereits in einer App-Einstellung namens `AzureWebJobsStorage` gespeichert.  
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="configure-your-local-environment"></a>Konfigurieren Ihrer lokalen Umgebung
 
 Zunächst müssen Sie die folgenden Schritte ausführen:
 
 * Installieren Sie die [Azure Storage-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage).
+
 * Installieren Sie [Azure Storage-Explorer](https://storageexplorer.com/). Storage-Explorer ist ein Tool, mit dem Sie Warteschlangennachrichten überprüfen können, die von der Ausgabebindung generiert werden. Storage-Explorer wird unter macOS-, Windows- und Linux-basierten Betriebssystemen unterstützt.
-* Installieren Sie [.NET Core-CLI-Tools](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x) (nur C#-Projekte).
-* Führen Sie die Schritte in [Teil 1 des Schnellstarts für Visual Studio Code](functions-create-first-function-vs-code.md) aus. 
+
+::: zone pivot="programming-language-csharp"
+* Installieren Sie [.NET Core-CLI-Tools](/dotnet/core/tools/?tabs=netcore2x).
+::: zone-end
+
+::: zone pivot="programming-language-csharp"  
+* Führen Sie die Schritte in [Teil 1 des Schnellstarts für Visual Studio Code](create-first-function-vs-code-csharp.md) aus. 
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+* Führen Sie die Schritte in [Teil 1 des Schnellstarts für Visual Studio Code](create-first-function-vs-code-node.md) aus. 
+::: zone-end   
+::: zone pivot="programming-language-java"  
+* Führen Sie die Schritte in [Teil 1 des Schnellstarts für Visual Studio Code](create-first-function-vs-code-java.md) aus. 
+::: zone-end   
+::: zone pivot="programming-language-typescript"  
+* Führen Sie die Schritte in [Teil 1 des Schnellstarts für Visual Studio Code](create-first-function-vs-code-typescript.md) aus. 
+::: zone-end   
+::: zone pivot="programming-language-python"  
+* Führen Sie die Schritte in [Teil 1 des Schnellstarts für Visual Studio Code](create-first-function-vs-code-python.md) aus. 
+::: zone-end   
+::: zone pivot="programming-language-powershell"  
+* Führen Sie die Schritte in [Teil 1 des Schnellstarts für Visual Studio Code](create-first-function-vs-code-powershell.md) aus. 
+::: zone-end   
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits über Visual Studio Code bei Ihrem Azure-Abonnement angemeldet sind. Sie können sich anmelden, indem Sie `Azure: Sign In` in der Befehlspalette ausführen. 
 
 ## <a name="download-the-function-app-settings"></a>Herunterladen der Funktions-App-Einstellungen
 
-Im [vorherigen Schnellstartartikel](functions-create-first-function-vs-code.md) haben Sie zusammen mit dem erforderlichen Storage-Konto eine Funktions-App in Azure erstellt. Die Verbindungszeichenfolge für dieses Konto wird sicher in App-Einstellungen in Azure gespeichert. In diesem Artikel schreiben Sie Nachrichten in eine Speicherwarteschlange in demselben Konto. Um eine Verbindung mit Ihrem Speicherkonto herzustellen, wenn die Funktion lokal ausgeführt wird, müssen Sie App-Einstellungen in die Datei „local.settings.json“ herunterladen. 
+Im [vorherigen Schnellstartartikel](./create-first-function-vs-code-csharp.md) haben Sie zusammen mit dem erforderlichen Storage-Konto eine Funktions-App in Azure erstellt. Die Verbindungszeichenfolge für dieses Konto wird sicher in App-Einstellungen in Azure gespeichert. In diesem Artikel schreiben Sie Nachrichten in eine Speicherwarteschlange in demselben Konto. Um eine Verbindung mit Ihrem Speicherkonto herzustellen, wenn die Funktion lokal ausgeführt wird, müssen Sie App-Einstellungen in die Datei „local.settings.json“ herunterladen. 
 
 1. Drücken Sie die F1-Taste, um die Befehlspalette zu öffnen. Suchen Sie dann den Befehl `Azure Functions: Download Remote Settings....`, und führen Sie ihn aus. 
 
@@ -51,130 +70,119 @@ Im [vorherigen Schnellstartartikel](functions-create-first-function-vs-code.md) 
 
 Da Sie eine Queue Storage-Ausgabebindung verwenden, müssen Sie vor dem Ausführen des Projekts die Storage-Bindungserweiterung installieren. 
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+Ihr Projekt wurde für die Verwendung von [Erweiterungsbündeln](functions-bindings-register.md#extension-bundles) konfiguriert, wodurch automatisch ein vordefinierter Satz von Erweiterungspaketen installiert wird. 
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+Die Nutzung von Erweiterungspaketen ist in der Datei „host.json“ im Stammverzeichnis des Projekts aktiviert. Dies sieht wie folgt aus:
+
+:::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
+
+::: zone-end
+
+::: zone pivot="programming-language-csharp"
 
 Mit Ausnahme von HTTP- und Timertriggern werden Bindungen als Erweiterungspakete implementiert. Führen Sie den folgenden [dotnet add package](/dotnet/core/tools/dotnet-add-package)-Befehl im Terminalfenster aus, um Ihrem Projekt das Storage-Erweiterungspaket hinzuzufügen.
 
 ```bash
-dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
+dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage
 ```
----
+
+::: zone-end
+
 Dann können Sie dem Projekt die Storage-Ausgabebindung hinzufügen.
 
 ## <a name="add-an-output-binding"></a>Hinzufügen einer Ausgabebindung
 
 In Functions muss für jeden Typ von Bindung eine `direction`, ein `type` und ein eindeutiger `name` in der Datei „function.json“ definiert werden. Wie Sie diese Attribute definieren, hängt von der Sprache der Funktions-App ab.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
-Bindungsattribute werden direkt in der Datei „function.json“ definiert. Abhängig vom Bindungstyp sind möglicherweise zusätzliche Eigenschaften erforderlich. Die [Warteschlangenausgabekonfiguration](functions-bindings-storage-queue.md#output---configuration) beschreibt die Felder, die für eine Azure Storage-Warteschlangenbindung erforderlich sind. Mit der Erweiterung können Bindungen einfach in der Datei „function.json“ hinzugefügt werden. 
+[!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
-Klicken Sie zum Erstellen einer Bindung mit der rechten Maustaste (CTRL+Klicken unter macOS) auf die Datei `function.json` im Ordner „HttpTrigger“, und wählen Sie **Bindung hinzufügen** aus. Befolgen Sie die Anweisungen, um die folgenden Bindungseigenschaften für die neue Bindung zu definieren:
+::: zone-end
 
-| Prompt | Wert | BESCHREIBUNG |
-| -------- | ----- | ----------- |
-| **Select binding direction** (Wählen Sie die Bindungsrichtung aus) | `out` | Die Bindung ist eine Ausgabebindung. |
-| **Select binding with direction** (Wählen Sie die Bindung mit Richtung aus) | `Azure Queue Storage` | Die Bindung ist eine Azure Storage-Warteschlangenbindung. |
-| **Der Name, der zum Identifizieren dieser Bindung in Ihrem Code verwendet wird** | `msg` | Name, der den Bindungsparameter identifiziert, auf den in Ihrem Code verwiesen wird. |
-| **Die Warteschlange, an die die Nachricht gesendet wird** | `outqueue` | Der Name der Warteschlange, in den die Bindung schreibt. Wenn der *queueName* nicht vorhanden ist, erstellt die Bindung ihn bei der ersten Verwendung. |
-| **Select setting from "local.setting.json"** (Wählen Sie eine Einstellung aus „local.setting.json“ aus) | `AzureWebJobsStorage` | Der Name einer Anwendungseinstellung, die die Verbindungszeichenfolge für das Storage-Konto enthält. Die Einstellung `AzureWebJobsStorage` enthält die Verbindungszeichenfolge für das Speicherkonto, das Sie mit der Funktions-App erstellt haben. |
-
-Eine Bindung wird dem Array `bindings` in der Datei „function.json“ hinzugefügt, die nun wie das folgende Beispiel aussehen sollte:
-
-```json
-{
-   ...
-
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
 
----
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+[!INCLUDE [functions-add-output-binding-java](../../includes/functions-add-output-binding-java.md)]
+
+::: zone-end
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Hinzufügen von Code, der die Ausgabebindung verwendet
 
 Nachdem die Bindung definiert wurde, können Sie den `name` der Bindung verwenden, um auf sie als Attribut in der Funktionssignatur zuzugreifen. Durch die Verwendung einer Ausgabebindung müssen Sie weder den Azure Storage-SDK-Code für die Authentifizierung verwenden, noch einen Warteschlangenverweis abrufen oder Daten schreiben. Die Functions-Runtime und die Warteschlangenausgabebindung übernehmen diese Aufgaben für Sie.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+::: zone pivot="programming-language-javascript"  
+[!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
+::: zone-end  
 
-Fügen Sie Code hinzu, der das Ausgabebindungsobjekt `msg` für `context.bindings` verwendet, um eine Warteschlangennachricht zu erstellen. Fügen Sie diesen Code vor der `context.res`-Anweisung hinzu.
+::: zone pivot="programming-language-typescript"  
+[!INCLUDE [functions-add-output-binding-ts](../../includes/functions-add-output-binding-ts.md)]
+::: zone-end  
 
-```javascript
-// Add a message to the Storage queue.
-context.bindings.msg = "Name passed to the function: " + 
-(req.query.name || req.body.name);
-```
+::: zone pivot="programming-language-powershell"
 
-Die Funktion sollte nun wie folgt aussehen:
+[!INCLUDE [functions-add-output-binding-powershell](../../includes/functions-add-output-binding-powershell.md)]
 
-```javascript
-module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
+::: zone-end
 
-    if (req.query.name || (req.body && req.body.name)) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " + 
-        (req.query.name || req.body.name);
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-```
+::: zone pivot="programming-language-python"
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-csharp"  
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 
----
+::: zone-end  
+
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-storage-binding-java-code](../../includes/functions-add-storage-binding-java-code.md)]
+
+## <a name="update-the-test-set"></a>Aktualisieren des Testsatzes
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end  
+
+<!--- Local testing section --->
+
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
 [!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
+::: zone-end
+
+::: zone pivot="programming-language-powershell"
+
+[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
+
+::: zone-end
+
 Eine neue Warteschlange mit dem Namen **outqueue** wird in Ihrem Speicherkonto von der Functions-Runtime erstellt, wenn die Ausgabebindung zum ersten Mal verwendet wird. Mit Storage-Explorer überprüfen Sie, ob die Warteschlange zusammen mit der neuen Nachricht erstellt wurde.
+
+::: zone pivot="programming-language-java"  
+
+## <a name="update-the-tests"></a>Aktualisieren der Tests
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end
 
 ### <a name="connect-storage-explorer-to-your-account"></a>Herstellen einer Storage-Explorer-Verbindung mit Ihrem Konto
 
 Diesen Abschnitt können Sie überspringen, wenn Sie Azure Storage-Explorer bereits installiert und mit Ihrem Azure-Konto verbunden haben.
 
-1. Führen Sie das Tool [Azure Storage-Explorer] aus, und wählen Sie das Verbindungssymbol auf der linken Seite und dann **Konto hinzufügen** aus.
+1. Führen Sie das Tool [Azure Storage Explorer] aus, und wählen Sie das Verbindungssymbol auf der linken Seite und dann **Konto hinzufügen** aus.
 
     ![Hinzufügen eines Azure-Kontos zu Microsoft Azure Storage-Explorer](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-add-account.png)
 
@@ -214,31 +222,46 @@ Nun ist es an der Zeit, die aktualisierte Funktions-App erneut in Azure zu verö
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-*Ressourcen* bezieht sich im Zusammenhang mit Azure auf Funktions-Apps, Funktionen, Speicherkonten und Ähnliches. Sie werden in *Ressourcengruppen* zusammengefasst, und sämtliche Inhalte einer Gruppe können durch Löschen der Gruppe gelöscht werden.
+In Azure wird die Bezeichnung *Ressourcen* für Funktions-Apps, Funktionen, Speicherkonten usw. verwendet. Sie werden in *Ressourcengruppen* zusammengefasst, und sämtliche Inhalte einer Gruppe können durch das Löschen der Gruppe gelöscht werden.
 
 Im Rahmen dieser Schnellstartanleitungen haben Sie Ressourcen erstellt. Für diese Ressourcen fallen je nach [Kontostatus](https://azure.microsoft.com/account/) und [Dienstpreisen](https://azure.microsoft.com/pricing/) unter Umständen Kosten an. Nicht mehr benötigte Ressourcen können wie folgt gelöscht werden:
 
-1. Drücken Sie in Visual Studio Code die F1-Taste, um die Befehlspalette zu öffnen. Suchen Sie in der Befehlspalette den Befehl `Azure Functions: Open in portal`, und wählen Sie ihn aus.
-
-1. Wählen Sie Ihre Funktions-App aus, und drücken Sie die EINGABETASTE. Die Seite der Funktions-App wird im [Azure-Portal](https://portal.azure.com) geöffnet.
-
-1. Wählen Sie auf der Registerkarte **Übersicht** den benannten Link unter **Ressourcengruppe** aus.
-
-    ![Wählen Sie auf der Seite „Funktions-App“ die zu löschende Ressourcengruppe aus.](./media/functions-add-output-binding-storage-queue-vs-code/functions-app-delete-resource-group.png)
-
-1. Prüfen Sie auf der Seite **Ressourcengruppe** die Liste mit den enthaltenen Ressourcen, und vergewissern Sie sich, dass es sich dabei um die Ressourcen handelt, die Sie löschen möchten.
- 
-1. Klicken Sie auf **Ressourcengruppe löschen**, und folgen Sie den Anweisungen.
-
-   Der Löschvorgang kann einige Minuten dauern. Nach Abschluss des Vorgangs wird kurz eine Benachrichtigung angezeigt. Sie können auch am oberen Seitenrand auf das Glockensymbol klicken, um die Benachrichtigung anzuzeigen.
+[!INCLUDE [functions-cleanup-resources-vs-code-inner.md](../../includes/functions-cleanup-resources-vs-code-inner.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben Ihre mittels HTTP ausgelöste Funktion so aktualisiert, dass sie Daten in eine Speicherwarteschlange schreibt. Weitere Informationen zur Entwicklung von Functions finden Sie unter [Entwickeln von Azure Functions mithilfe von Visual Studio Code](functions-develop-vs-code.md).
+Sie haben Ihre mittels HTTP ausgelöste Funktion so aktualisiert, dass sie Daten in eine Speicherwarteschlange schreibt. Nun können Sie sich ausführlicher über die Entwicklung von Funktionen mit Visual Studio Code informieren:
 
-Als Nächstes sollten Sie die Application Insights-Überwachung für Ihre Funktions-App aktivieren:
++ [Entwickeln von Azure Functions mithilfe von Visual Studio Code](functions-develop-vs-code.md)
 
-> [!div class="nextstepaction"]
-> [Aktivieren der Application Insights-Integration](functions-monitoring.md#manually-connect-an-app-insights-resource)
++ [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md)
+::: zone pivot="programming-language-csharp"  
++ [Beispiele für vollständige Functions-Projekte in C#](/samples/browse/?products=azure-functions&languages=csharp).
 
-[Azure Storage-Explorer]: https://storageexplorer.com/
++ [C#-Entwicklerreferenz zu Azure Functions](functions-dotnet-class-library.md)  
+::: zone-end 
+::: zone pivot="programming-language-javascript"  
++ [Beispiele für vollständige Functions-Projekte in JavaScript](/samples/browse/?products=azure-functions&languages=javascript).
+
++ [JavaScript-Entwicklerhandbuch für Azure Functions](functions-reference-node.md)  
+::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Beispiele für vollständige Functions-Projekte in Java](/samples/browse/?products=azure-functions&languages=java).
+
++ [Java-Entwicklerhandbuch für Azure Functions](functions-reference-java.md)  
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
++ [Beispiele für vollständige Functions-Projekte in TypeScript](/samples/browse/?products=azure-functions&languages=typescript).
+
++ [TypeScript-Entwicklerhandbuch für Azure Functions](functions-reference-node.md#typescript)  
+::: zone-end  
+::: zone pivot="programming-language-python"  
++ [Beispiele für vollständige Functions-Projekte in Python](/samples/browse/?products=azure-functions&languages=python).
+
++ [Python-Entwicklerhandbuch für Azure Functions](functions-reference-python.md)  
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
++ [Beispiele für vollständige Functions-Projekte in PowerShell](/samples/browse/?products=azure-functions&languages=azurepowershell).
+
++ [PowerShell-Entwicklerhandbuch für Azure Functions](functions-reference-powershell.md) 
+::: zone-end

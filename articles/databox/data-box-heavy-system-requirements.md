@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839776"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84707751"
 ---
 # <a name="azure-data-box-heavy-system-requirements"></a>Systemanforderungen für Azure Data Box Heavy
 

@@ -1,26 +1,17 @@
 ---
-title: Wiederherstellen aus der Sicherung – Azure App Service
-description: Hier erfahren Sie, wie Sie Ihre App auf der Grundlage einer Momentaufnahme wiederherstellen.
-services: app-service
-documentationcenter: ''
-author: ahmedelnably
-manager: cfowler
-editor: ''
+title: Wiederherstellen einer App aus einer Momentaufnahme
+description: Hier erfahren Sie, wie Sie Ihre App auf der Grundlage einer Momentaufnahme wiederherstellen. Wiederherstellung nach unerwartetem Datenverlust im Premium-Tarif mit automatischen Schattenkopien.
 ms.assetid: 4164f9b5-f735-41c6-a2bb-71f15cdda417
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: multiple
 ms.topic: article
 ms.date: 04/04/2018
-ms.author: aelnably
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: 4b3b10177b119c9362f807206a915d4b0b367e16
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f7edb632559dc8da2de32c58d994a7c51b1b09e8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639752"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86169969"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Wiederherstellen einer App in Azure auf der Grundlage einer Momentaufnahme
 In diesem Artikel erfahren Sie, wie Sie eine App in [Azure App Service](../app-service/overview.md) auf der Grundlage einer Momentaufnahme wiederherstellen. Mithilfe der Momentaufnahmen Ihrer App können Sie die App in einem vorherigen Zustand wiederherstellen. Die Sicherung von Momentaufnahmen muss nicht aktiviert werden, da die Plattform automatisch eine Momentaufnahme aller Apps speichert, um die Wiederherstellung von Daten zu ermöglichen.
@@ -30,7 +21,7 @@ Momentaufnahmen sind inkrementelle Schattenkopien und bieten im Vergleich zu reg
 - Keine Beschränkung der Speichergröße
 - Keine Konfiguration erforderlich
 
-Momentaufnahmebasierte Wiederherstellungen für Apps stehen ab dem Tarif **Premium** zur Verfügung. Informationen zum zentralen Hochskalieren der App finden Sie unter [Zentrales Hochskalieren einer App in Azure](manage-scale-up.md).
+Momentaufnahmebasierte Wiederherstellungen für Apps stehen ab dem Tarif **Premium** zur Verfügung. Informationen zum Hochskalieren der App finden Sie unter [Hochskalieren einer App in Azure](manage-scale-up.md).
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -46,15 +37,15 @@ Momentaufnahmebasierte Wiederherstellungen für Apps stehen ab dem Tarif **Premi
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf der Seite **Einstellungen** Ihrer App auf **Sicherungen**, um die Seite **Sicherungen** anzuzeigen. Klicken Sie anschließend im Abschnitt **Momentaufnahme (Vorschau)** auf **Wiederherstellen**.
    
-    ![](./media/app-service-web-restore-snapshots/1.png)
+    ![Screenshot: Wiederherstellen einer App auf der Grundlage einer Momentaufnahmesicherung](./media/app-service-web-restore-snapshots/1.png)
 
 2. Wählen Sie auf der Seite **Wiederherstellen** die Momentaufnahme aus, die Sie wiederherstellen möchten.
    
-    ![](./media/app-service-web-restore-snapshots/2.png)
+    ![Screenshot: Auswählen der Momentaufnahme für die Wiederherstellung ](./media/app-service-web-restore-snapshots/2.png)
    
 3. Geben Sie unter **Wiederherstellungsziel** das Ziel für die App-Wiederherstellung an.
    
-    ![](./media/app-service-web-restore-snapshots/3.png)
+    ![Screenshot: Angeben des Wiederherstellungsziels](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
    > Bei Verwendung von **Überschreiben** werden alle im aktuellen Dateisystem Ihrer App vorhandenen Daten gelöscht und überschrieben. Vergewissern Sie sich vor dem Klicken auf **OK**, dass Sie diesen Schritt wirklich ausführen möchten.
@@ -70,6 +61,6 @@ Momentaufnahmebasierte Wiederherstellungen für Apps stehen ab dem Tarif **Premi
 
 4. Sie können auswählen, dass Ihre Websitekonfiguration wiederhergestellt werden soll.
    
-    ![](./media/app-service-web-restore-snapshots/4.png)
+    ![Screenshot: Wiederherstellen der Websitekonfiguration](./media/app-service-web-restore-snapshots/4.png)
 
 5. Klicken Sie auf **OK**.

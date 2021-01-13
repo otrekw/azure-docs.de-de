@@ -1,6 +1,6 @@
 ---
 title: Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts | Microsoft-Dokumentation
-description: Übermitteln Sie Inhalte, die mit 128-Bit-AES-Verschlüsselungsschlüsseln verschlüsselt wurden, mithilfe von Microsoft Azure Media Services. Media Services stellt außerdem den Schlüsselübermittlungsdienst bereit, der Verschlüsselungsschlüssel an autorisierte Benutzer übermittelt. In diesem Thema werden das dynamische Verschlüsseln mit AES-128 und das Verwenden des Schlüsselübermittlungsdiensts behandelt.
+description: In diesem Thema werden das dynamische Verschlüsseln mit AES-128 und das Verwenden des Schlüsselübermittlungsdiensts behandelt.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,26 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 2b96d968cb1ad2ec903dbf9788e1fbae22bd2b7d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a0e2f785bb3c097b7d2918198457a3f7baf6a39c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69014967"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96023447"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-protect-with-aes128.md)
-> * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+> * [Java](https://github.com/rnrneverdies/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 >  
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Mithilfe von Media Services können Sie HTTP Live Streaming (HLS) und Smooth Streaming, die mit dem AES verschlüsselt sind, mithilfe von 128-Bit-Verschlüsselungsschlüsseln bereitstellen. Media Services stellt außerdem den Schlüsselübermittlungsdienst bereit, der Verschlüsselungsschlüssel an autorisierte Benutzer übermittelt. Wenn ein Medienobjekt von Media Services verschlüsselt werden soll, ordnen Sie dem Medienobjekt einen Verschlüsselungsschlüssel zu und konfigurieren außerdem Autorisierungsrichtlinien für den Schlüssel. Wenn ein Datenstrom von einem Player angefordert wird, verwendet Media Services den angegebenen Schlüssel, um Ihren Inhalt dynamisch mit AES zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Schlüsselübermittlungsdienst an. Um zu ermitteln, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Autorisierungsrichtlinien aus, die Sie für den Schlüssel angegeben haben.
 
-Media Services unterstützt mehrere Möglichkeiten zur Authentifizierung von Benutzern, die Schlüssel anfordern. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: offen oder Token. Eine durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Sicherheitstokendienst (Security Token Service, STS) ausgestellt wurde. Media Services unterstützt Token im Format [Simple Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) und [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT). Weitere Informationen finden Sie unter [Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel](media-services-protect-with-aes128.md#configure_key_auth_policy).
+Media Services unterstützt mehrere Möglichkeiten zur Authentifizierung von Benutzern, die Schlüssel anfordern. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: offen oder Token. Eine durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Sicherheitstokendienst (Security Token Service, STS) ausgestellt wurde. Media Services unterstützt Token im Format [Simple Web Token](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2) (SWT) und [JSON Web Token](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) (JWT). Weitere Informationen finden Sie unter [Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel](media-services-protect-with-aes128.md#configure_key_auth_policy).
 
 Damit dynamische Verschlüsselung genutzt werden kann, müssen Sie über ein Medienobjekt verfügen, das eine Sammlung aus MP4-Dateien mit mehreren Bitraten oder Smooth Streaming-Quelldateien mit mehreren Bitraten enthält. Außerdem müssen Sie die Übermittlungsrichtlinie für das Medienobjekt konfigurieren (weiter unten in diesem Artikel beschrieben). Basierend auf dem angegebenen Format in der Streaming-URL stellt der On-Demand-Streaming-Server dann sicher, dass der Datenstrom im ausgewählten Protokoll übermittelt wird. Aus diesem Grund werden die Dateien nur in einem Speicherformat gespeichert, und Sie zahlen auch nur für ein Format. Media Services reagiert auf die Anforderungen eines Clients jeweils mit der richtigen Antwort.
 
@@ -74,12 +78,12 @@ Im weiteren Verlauf dieses Artikels finden Sie Beschreibungen, Codebeispiele und
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 Wenn Sie die Übermittlungsrichtlinie eines Medienobjekts hinzufügen oder aktualisieren, müssen Sie alle vorhandenen Locators löschen und einen neuen Locator erstellen.
 
-## <a id="create_asset"></a>Erstellen eines Medienobjekts und Hochladen von Dateien in das Medienobjekt
+## <a name="create-an-asset-and-upload-files-into-the-asset"></a><a id="create_asset"></a>Erstellen eines Medienobjekts und Hochladen von Dateien in das Medienobjekt
 Damit Sie Ihre Videos verwalten, codieren und streamen können, müssen Sie Ihre Inhalte zuerst in Media Services hochladen. Nachdem dies geschehen ist, sind Ihre Inhalte sicher in der Cloud zur weiteren Verarbeitung und für das weitere Streaming gespeichert. 
 
 Weitere Informationen finden Sie unter [Hochladen von Dateien in ein Media Services-Konto](media-services-dotnet-upload-files.md).
 
-## <a id="encode_asset"></a>Codieren des Medienobjekts, das die Sammlung von MP4-Dateien mit adaptiver Bitrate enthält
+## <a name="encode-the-asset-that-contains-the-file-to-the-adaptive-bitrate-mp4-set"></a><a id="encode_asset"></a>Codieren des Medienobjekts, das die Sammlung von MP4-Dateien mit adaptiver Bitrate enthält
 Bei der dynamischen Verschlüsselung erstellen Sie ein Medienobjekt, das eine Sammlung aus MP4-Dateien mit mehreren Bitraten oder Smooth Streaming-Quelldateien mit mehreren Bitraten enthält. Anschließend wird durch den bedarfsgesteuerten Streamingserver auf Basis des in der Manifest- oder Fragmentanforderung angegebenen Formats sichergestellt, dass Sie den Datenstrom im ausgewählten Protokoll erhalten. So werden die Dateien nur in einem Speicherformat gespeichert, und Sie zahlen auch nur für ein Format. Media Services reagiert auf die Anforderungen eines Clients jeweils mit der richtigen Antwort. Weitere Informationen finden Sie in der Übersicht unter [Dynamische Paketerstellung](media-services-dynamic-packaging-overview.md).
 
 >[!NOTE]
@@ -89,17 +93,17 @@ Bei der dynamischen Verschlüsselung erstellen Sie ein Medienobjekt, das eine Sa
 
 Informationen zum Codieren finden Sie unter [Codieren eines Medienobjekts mit Media Encoder Standard mit .NET](media-services-dotnet-encode-with-media-encoder-standard.md).
 
-## <a id="create_contentkey"></a>Erstellen eines Inhaltsschlüssels und Zuordnen des Schlüssels zum codierten Medienobjekt
+## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>Erstellen eines Inhaltsschlüssels und Zuordnen des Schlüssels zum codierten Medienobjekt
 In Media Services enthält der Inhaltsschlüssel den Schlüssel, mit dem ein Medienobjekt verschlüsselt werden soll.
 
 Weitere Informationen finden Sie unter [Erstellen eines Inhaltsschlüssels](media-services-dotnet-create-contentkey.md).
 
-## <a id="configure_key_auth_policy"></a>Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel
+## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel
 Media Services unterstützt mehrere Möglichkeiten zur Authentifizierung von Benutzern, die Schlüssel anfordern. Sie müssen die Autorisierungsrichtlinie für den Inhaltsschlüssel konfigurieren. Der Client (Player) muss die Richtlinie erfüllen, bevor der Schlüssel an den Client übermittelt werden kann. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: offen, Tokeneinschränkung oder IP-Einschränkung.
 
 Weitere Informationen finden Sie unter [Konfigurieren von Autorisierungsrichtlinien für Inhaltsschlüssel](media-services-dotnet-configure-content-key-auth-policy.md).
 
-## <a id="configure_asset_delivery_policy"></a>Konfigurieren einer Bereitstellungsrichtlinie für Medienobjekte
+## <a name="configure-an-asset-delivery-policy"></a><a id="configure_asset_delivery_policy"></a>Konfigurieren einer Bereitstellungsrichtlinie für Medienobjekte
 Konfigurieren Sie die Übermittlungsrichtlinie für Medienobjekte. Die Konfiguration der Bereitstellungsrichtlinie für Medienobjekte umfasst Folgendes:
 
 * URL für den Schlüsselerwerb. 
@@ -109,7 +113,7 @@ Konfigurieren Sie die Übermittlungsrichtlinie für Medienobjekte. Die Konfigura
 
 Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlinien für Medienobjekte mit .NET SDK](media-services-dotnet-configure-asset-delivery-policy.md).
 
-## <a id="create_locator"></a>Erstellen eines OnDemand-Streaminglocators, um eine Streaming-URL abzurufen
+## <a name="create-an-ondemand-streaming-locator-to-get-a-streaming-url"></a><a id="create_locator"></a>Erstellen eines OnDemand-Streaminglocators, um eine Streaming-URL abzurufen
 Sie müssen die Streaming-URL für Smooth Streaming, DASH oder HLS für Ihre Benutzer bereitstellen.
 
 > [!NOTE]
@@ -137,7 +141,7 @@ Rufen Sie ein Testtoken ab, das auf der Tokeneinschränkung basiert, die für di
 
 Sie können den [Azure Media Services Player](https://aka.ms/azuremediaplayer) verwenden, um Ihren Datenstrom zu testen.
 
-## <a id="client_request"></a>Wie kann der Client einen Schlüssel vom Schlüsselübermittlungsdienst anfordern?
+## <a name="how-can-your-client-request-a-key-from-the-key-delivery-service"></a><a id="client_request"></a>Wie kann der Client einen Schlüssel vom Schlüsselübermittlungsdienst anfordern?
 Im vorherigen Schritt haben Sie die URL erstellt, die auf eine Manifestdatei verweist. Der Client muss die notwendigen Informationen aus den Streamingmanifestdateien extrahieren, um die Anforderung an den Schlüsselübermittlungsdienst zu stellen.
 
 ### <a name="manifest-files"></a>Manifestdateien
@@ -161,28 +165,32 @@ Im Fall von HLS wird das Stammmanifest in Segmentdateien aufgeteilt.
 
 Beispiel für das Stammmanifest: http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl). Es enthält eine Liste der Segmentdateinamen.
 
-    . . . 
-    #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
-    QualityLevels(514369)/Manifest(video,format=m3u8-aapl)
-    #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=965441,RESOLUTION=636x356,CODECS="avc1.4d401e,mp4a.40.2",AUDIO="audio"
-    QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
-    …
+```text
+. . . 
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
+QualityLevels(514369)/Manifest(video,format=m3u8-aapl)
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=965441,RESOLUTION=636x356,CODECS="avc1.4d401e,mp4a.40.2",AUDIO="audio"
+QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
+…
+```
 
 Wenn Sie eine der Segmentdateien in einem Text-Editor öffnen (z. B. „http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl)“), enthält sie „#EXT-X-KEY“, was darauf hinweist, dass die Datei verschlüsselt ist.
 
-    #EXTM3U
-    #EXT-X-VERSION:4
-    #EXT-X-ALLOW-CACHE:NO
-    #EXT-X-MEDIA-SEQUENCE:0
-    #EXT-X-TARGETDURATION:9
-    #EXT-X-KEY:METHOD=AES-128,
-    URI="https://wamsbayclus001kd-hs.cloudapp.net/HlsHandler.ashx?
-         kid=da3813af-55e6-48e7-aa9f-a4d6031f7b4d",
-            IV=0XD7D7D7D7D7D7D7D7D7D7D7D7D7D7D7D7
-    #EXT-X-PROGRAM-DATE-TIME:1970-01-01T00:00:00.000+00:00
-    #EXTINF:8.425708,no-desc
-    Fragments(video=0,format=m3u8-aapl)
-    #EXT-X-ENDLIST
+```text
+#EXTM3U
+#EXT-X-VERSION:4
+#EXT-X-ALLOW-CACHE:NO
+#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-TARGETDURATION:9
+#EXT-X-KEY:METHOD=AES-128,
+URI="https://wamsbayclus001kd-hs.cloudapp.net/HlsHandler.ashx?
+        kid=da3813af-55e6-48e7-aa9f-a4d6031f7b4d",
+        IV=0XD7D7D7D7D7D7D7D7D7D7D7D7D7D7D7D7
+#EXT-X-PROGRAM-DATE-TIME:1970-01-01T00:00:00.000+00:00
+#EXTINF:8.425708,no-desc
+Fragments(video=0,format=m3u8-aapl)
+#EXT-X-ENDLIST
+```
 
 >[!NOTE] 
 >Wenn Sie beabsichtigen, HLS mit AES-Verschlüsselung in Safari abzuspielen, lesen Sie [diesen Blogbeitrag](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
@@ -246,7 +254,7 @@ Im folgenden Code wird gezeigt, wie Sie eine Anforderung an den Media Services-S
     <add key="Audience" value="urn:test"/>
     ```
 
-### <a id="example"></a>Beispiel
+### <a name="example"></a><a id="example"></a>Beispiel
 
 Überschreiben Sie den Code in Ihrer Datei "Program.cs" mit dem in diesem Abschnitt gezeigten Code.
  

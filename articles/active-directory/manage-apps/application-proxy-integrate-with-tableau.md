@@ -2,23 +2,23 @@
 title: Azure Active Directory-Anwendungsproxy und Tableau | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie mithilfe des Azure Active Directory-Anwendungsproxys (Azure AD) Remotezugriff für Ihre Tableau-Bereitstellung zur Verfügung gestellt werden kann.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/20/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1aa99e7e71ad78a62c1a9da303b2ecc8347ebeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6df0a0bf21f4be824738d86ac6bdb3c75c9c3564
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783849"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84764501"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory-Anwendungsproxy und Tableau 
 
@@ -60,9 +60,9 @@ Für:
 
 5. Füllen Sie die Pflichtfelder mit Informationen zur neuen App aus. Befolgen Sie diese Anleitung für die folgenden Einstellungen: 
 
-    - **Interne URL:** Diese Anwendung muss über eine interne URL verfügen, die die Tableau-URL selbst ist. Beispiel: `https://adventure-works.tableau.com`. 
+    - **Interne URL**: Diese Anwendung muss über eine interne URL verfügen, die die Tableau-URL selbst ist. Beispiel: `https://adventure-works.tableau.com`. 
 
-    - **Methode für die Vorauthentifizierung:** Azure Active Directory (empfohlen, aber nicht erforderlich) 
+    - **Methode für die Vorauthentifizierung**: Azure Active Directory (empfohlen, aber nicht erforderlich). 
 
 6. Wählen Sie oben auf dem Blatt **Hinzufügen** aus. Ihre Anwendung wird hinzugefügt, das Schnellstartmenü wird geöffnet. 
 

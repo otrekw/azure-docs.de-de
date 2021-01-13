@@ -1,24 +1,17 @@
 ---
 title: Computergruppen in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
 description: Mit Computergruppen in Azure Monitor können Sie Protokollabfragen auf eine bestimmte Gruppe von Computern eingrenzen.  In diesem Artikel werden die verschiedenen Methoden beschrieben, mit denen Sie Computergruppen erstellen, und wie sie diese in einer Protokollabfrage verwenden.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: a28b9e8a-6761-4ead-aa61-c8451ca90125
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/05/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: ae423b6fb141cab4038e65ba85c6067f1c23aee0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 02/05/2019
+ms.openlocfilehash: 92603165ac399415ec4fb6daeea1641065671a83
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320689"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302937"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Computergruppen in Azure Monitor-Protokollabfragen
 Mit Computergruppen in Azure Monitor können Sie [Protokollabfragen](../log-query/log-query-overview.md) auf eine bestimmte Gruppe von Computern eingrenzen.  Die einzelnen Gruppen werden über eine von Ihnen definierte Abfrage mit Computern aufgefüllt oder indem Sie Gruppen aus verschiedenen Quellen importieren.  Wenn die Gruppe in eine Protokollabfrage eingeschlossen wird, sind die Ergebnisse auf Datensätze beschränkt, die den Computern in der Gruppe entsprechen.
@@ -33,7 +26,7 @@ Sie können eine Computergruppe in Azure Monitor mithilfe einer der Methoden in 
 | Protokollabfrage |Erstellen Sie eine Protokollabfrage, die eine Liste mit Computern zurückgibt. |
 | Protokollsuch-API |Verwenden Sie die Protokollsuch-API, um programmgesteuert eine Computergruppe basierend auf den Ergebnissen einer Protokollabfrage zu erstellen. |
 | Active Directory |Scannen Sie automatisch die Gruppenmitgliedschaft aller Agent-Computer, die Mitglieder einer Active Directory-Domäne sind, und erstellen Sie für die einzelnen Sicherheitsgruppen jeweils eine Gruppe in Azure Monitor. (Nur für Windows-Computer)|
-| Konfigurations-Manager | Importieren Sie Sammlungen aus System Center Configuration Manager, und erstellen Sie für jede eine Gruppe in Azure Monitor. |
+| Konfigurations-Manager | Importieren Sie Sammlungen aus Microsoft Endpoint Configuration Manager, und erstellen Sie für jede eine Gruppe in Azure Monitor. |
 | Windows Server Update Services |Scannen Sie automatisch WSUS-Server oder -Clients auf Zielgruppen, und erstellen Sie jeweils eine Gruppe in Azure Monitor. |
 
 ### <a name="log-query"></a>Protokollabfrage
@@ -41,7 +34,9 @@ Computergruppen, die durch eine Protokollabfrage erstellt wurden, enthalten alle
 
 Sie können für eine Computergruppe eine beliebige Abfrage verwenden. Diese muss allerdings unter Verwendung von `distinct Computer` eine eindeutige Gruppe von Computern zurückgeben.  Das folgende Beispiel enthält eine typische Abfrage, die Sie für eine Computergruppe verwendet können.
 
-    Heartbeat | where Computer contains "srv" | distinct Computer
+```kusto
+Heartbeat | where Computer contains "srv" | distinct Computer
+```
 
 Gehen Sie zum Erstellen einer Computergruppe aus einer Protokollsuche im Azure-Portal wie folgt vor:
 
@@ -53,11 +48,11 @@ Gehen Sie zum Erstellen einer Computergruppe aus einer Protokollsuche im Azure-P
 
 Die folgende Tabelle beschreibt die Eigenschaften, durch die eine Computergruppe definiert wird.
 
-| Eigenschaft | Description |
+| Eigenschaft | BESCHREIBUNG |
 |:---|:---|
-| NAME   | Name der Abfrage, die im Portal angezeigt werden soll |
+| Name   | Name der Abfrage, die im Portal angezeigt werden soll |
 | Funktionsalias | ein eindeutiger Alias, mit dem die Computergruppe bei einer Abfrage identifiziert wird |
-| Category (Kategorie)       | Kategorie zum Organisieren von Abfragen im Portal |
+| Category       | Kategorie zum Organisieren von Abfragen im Portal |
 
 
 ### <a name="active-directory"></a>Active Directory
@@ -81,7 +76,7 @@ Sie können Azure Monitor zum Importieren von WSUS-Gruppen über **Erweiterte Ei
 
 Wenn Gruppen importiert wurden, werden im Menü die Anzahl der Computer, für die eine Gruppenmitgliedschaft erkannt wurde, und die Anzahl der importierten Gruppen aufgeführt.  Klicken Sie auf einen dieser Links, um die **ComputerGroup**-Datensätze mit diesen Informationen zurückzugeben.
 
-### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
+### <a name="configuration-manager"></a>Konfigurations-Manager
 Wenn Sie Azure Monitor für das Importieren von Configuration Manager-Sammlungsmitgliedschaften konfigurieren, wird eine Computergruppe für jede Sammlung erstellt.  Die Informationen zu Sammlungsmitgliedschaften werden alle drei Stunden abgerufen, um die Computergruppen zu aktualisieren. 
 
 Bevor Sie Configuration Manager-Sammlungen importieren können, müssen Sie [zwischen Configuration Manager und Azure Monitor eine Verbindung herstellen](collect-sccm.md).  
@@ -101,26 +96,28 @@ Klicken Sie auf das **x** in der Spalte **Entfernen**, um die Computergruppe zu 
 ## <a name="using-a-computer-group-in-a-log-query"></a>Verwenden einer Computergruppe in einer Protokollabfrage
 Sie können eine aus einer Protokollabfrage erstellte Computergruppe in einer Abfrage verwenden, indem Sie den zugehörigen Alias als Funktion behandeln. Üblicherweise nutzen Sie dabei die folgende Syntax:
 
-  `Table | where Computer in (ComputerGroup)`
+```kusto
+Table | where Computer in (ComputerGroup)
+```
 
 Mit dem folgenden Codebeispiel geben Sie ausschließlich UpdateSummary-Datensätze von Computern der Computergruppe „mycomputergroup“ zurück.
- 
-  `UpdateSummary | where Computer in (mycomputergroup)`
 
+```kusto
+UpdateSummary | where Computer in (mycomputergroup)
+```
 
 Importierte Computergruppen und die enthaltenen Computer werden in der Tabelle **ComputerGroup** gespeichert.  Die folgende Abfrage würde beispielsweise eine Liste der Computer in der Gruppe „Domain Computers“ aus Active Directory zurückzugeben. 
 
-  `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
+```kusto
+ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer
+```
 
 Die folgende Abfrage würde UpdateSummary-Datensätze ausschließlich für Computer in „Domain Computers“ zurückgeben.
 
-  ```
-  let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
+```kusto
+let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
   UpdateSummary | where Computer in (ADComputers)
-  ```
-
-
-
+```
 
 ## <a name="computer-group-records"></a>Computergruppen-Datensätze
 Im Log Analytics-Arbeitsbereich wird für jede Mitgliedschaft in einer Computergruppe, die aus Active Directory oder WSUS erstellt wurde, ein Datensatz erstellt.  Diese Datensätze sind vom Typ **ComputerGroup** und weisen die in der folgenden Tabelle aufgeführten Eigenschaften auf.  Es werden keine Datensätze für Computergruppen basierend auf Protokollabfragen erstellt.
@@ -130,11 +127,11 @@ Im Log Analytics-Arbeitsbereich wird für jede Mitgliedschaft in einer Computerg
 | `Type` |*ComputerGroup* |
 | `SourceSystem` |*SourceSystem* |
 | `Computer` |Der Name des Mitgliedscomputers |
-| `Group` |Der Anzeigename der Gruppe |
+| `Group` |Name der Gruppe. |
 | `GroupFullName` |Der vollständige Pfad zur Gruppe, einschließlich Quelle und Quellname |
 | `GroupSource` |Die Quelle, aus der die Gruppe zusammengestellt wurde <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
 | `GroupSourceName` |Der Name der Quelle, aus der die Gruppe zusammengestellt wurde.  Für Active Directory ist dies der Domänenname. |
-| `ManagementGroupName` |Name der Verwaltungsgruppe für SCOM-Agents.  Bei anderen Agents lautet dieser „AOI-\<Arbeitsbereich-ID\>“. |
+| `ManagementGroupName` |Name der Verwaltungsgruppe für SCOM-Agents.  Bei anderen Agents lautet diese „AOI-\<workspace ID\>“. |
 | `TimeGenerated` |Das Datum und die Uhrzeit der Erstellung oder letzten Aktualisierung der Computergruppe |
 
 ## <a name="next-steps"></a>Nächste Schritte

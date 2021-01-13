@@ -1,22 +1,23 @@
 ---
-title: Artikel zu bekannten Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Informationen zu bekannten Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank.
+title: 'Bekannte Probleme: Onlinemigrationen zu SQL-Datenbank'
+titleSuffix: Azure Database Migration Service
+description: Hier erfahren Sie mehr zu bekannten Problemen und Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank bei der Verwendung von Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
-ms.topic: article
-ms.date: 07/27/2019
-ms.openlocfilehash: 7cd8b7c2accae097c971aec4b92cf38ed5d3af08
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seo-lt-2019
+ms.topic: troubleshooting
+ms.date: 02/20/2020
+ms.openlocfilehash: 748c3f8e38b98b2cbdcfecdf7d755827230fdb3d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561501"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962466"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank
 
@@ -53,7 +54,7 @@ Führen Sie die folgenden Schritte aus:
 
 **Ressourcen**
 
-Weitere Informationen finden Sie im Artikel [Temporale Tabellen](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017).
+Weitere Informationen finden Sie im Artikel [Temporale Tabellen](/sql/relational-databases/tables/temporal-tables?view=sql-server-2017).
 
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>Migration von Tabellen enthält eine oder mehrere Spalten mit dem Datentyp „hierarchyid“
 
@@ -89,7 +90,7 @@ Führen Sie die folgenden Schritte aus:
      select * from sys.triggers where is_disabled =0
      ```
 
-2. Deaktivieren Sie mit den im Artikel [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017) angegebenen Schritten die Trigger in der Quelldatenbank.
+2. Deaktivieren Sie mit den im Artikel [DISABLE TRIGGER (Transact-SQL)](/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017) angegebenen Schritten die Trigger in der Quelldatenbank.
 
 3. Führen Sie die Migrationsaktivität erneut aus.
 
@@ -141,7 +142,9 @@ Führen Sie folgende Schritte aus, um spezifische Fehlerdetails abzurufen.
 
 Bei der Migration wird folgende Fehlermeldung angezeigt:
 
-     “** encountered a fatal error”, "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode."
+```output
+"** encountered a fatal error", "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode.
+```
 
 **Problemumgehung**
 
@@ -153,7 +156,9 @@ Azure Database Migration Service unterstützt den Datentyp „Geography“ (Geog
 
 Bei der Migration wird folgende Fehlermeldung angezeigt:
 
-    Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
+```output
+Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
+```
 
 **Problemumgehung**
 

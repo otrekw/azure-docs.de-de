@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung | Microsoft-Dokumentation'
+title: 'Azure AD Connect-Synchronisierung: Verstehen und Anpassen der Synchronisierung | Microsoft Docs'
 description: Erläutert die Funktionsweise und Anpassung der Azure AD Connect-Synchronisierung.
 services: active-directory
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/08/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3b87f40d75d4045155e7dd953dc76ffd9de2b34
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cea26cb119f64679807bc6c5eaadb41b341e5d5a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348738"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89662392"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung
 Die Azure Active Directory Connect-Synchronisierungsdienste (Azure AD Connect Sync) sind eine Hauptkomponente von Azure AD Connect. Die Dienste verarbeiten alle Vorgänge in Bezug auf die Synchronisierung von Identitätsdaten zwischen Ihrer lokalen Umgebung und Azure AD. Azure AD Connect Sync ist der Nachfolger von DirSync, Azure AD Sync und Forefront Identity Manager mit konfiguriertem Azure Active Directory-Connector.
@@ -52,13 +52,13 @@ Der Synchronisierungsdienst besteht aus zwei Komponenten: der lokalen **Azure AD
 | [Implementieren der Kennworthashsynchronisierung](how-to-connect-password-hash-synchronization.md) |Es wird beschrieben, wie die Synchronisierung von Kennwörtern funktioniert und wie die Implementierung sowie der Betrieb und die Problembehandlung durchgeführt werden. |
 | [Geräterückschreiben](how-to-connect-device-writeback.md) |Beschreibt wie das Geräterückschreiben in Azure AD Connect funktioniert. |
 | [Verzeichniserweiterungen](how-to-connect-sync-feature-directory-extensions.md) |Beschreibt, wie Sie das Azure AD-Schema mit Ihren eigenen benutzerdefinierten Attributen erweitern. |
-| [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |Beschreibt, wie die Office 365-Ressourcen des Benutzers in der gleichen Region wie der Benutzer platziert werden. |
+| [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |Beschreibt, wie die Microsoft 365-Ressourcen des Benutzers in der gleichen Region wie der Benutzer platziert werden. |
 | **Synchronisierungsdienst** | |
 | [Features des Azure AD Connect-Synchronisierungsdiensts](how-to-connect-syncservice-features.md) |Beschreibt die Dienstseite der Synchronisierung und das Ändern von Synchronisierungseinstellungen in Azure AD. |
 | [Resilienz bei doppelten Attributen](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |Beschreibt die Aktivierung und Verwendung der Resilienz bei doppelten Attributwerten von **userPrincipalName** und **proxyAddresses**. |
 | **Vorgänge und Benutzeroberfläche** | |
 | [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) |Beschreibt die Benutzeroberfläche von Synchronization Service Manager, einschließlich der Registerkarten [Vorgänge](how-to-connect-sync-service-manager-ui-operations.md), [Connectors](how-to-connect-sync-service-manager-ui-connectors.md), [Metaverse Designer](how-to-connect-sync-service-manager-ui-mvdesigner.md) und [Metaverse Search](how-to-connect-sync-service-manager-ui-mvsearch.md). |
-| [Operative Aufgaben und Überlegungen](how-to-connect-sync-operations.md) |Es werden operative Aspekte beschrieben, z. B. die Notfallwiederherstellung. |
+| [Operative Aufgaben und Überlegungen](./how-to-connect-sync-staging-server.md) |Es werden operative Aspekte beschrieben, z. B. die Notfallwiederherstellung. |
 | **Gewusst wie...** | |
 | [Zurücksetzen des Azure AD-Kontos](how-to-connect-azureadaccount.md) |Informationen zum Zurücksetzen der Anmeldeinformationen des Dienstkontos, das für das Herstellen einer Verbindung zwischen Azure AD Connect-Synchronisierung und Azure AD verwendet wird |
 | **Weitere Informationen und Referenzen** | |

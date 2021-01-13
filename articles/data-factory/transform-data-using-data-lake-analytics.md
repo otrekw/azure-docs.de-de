@@ -1,28 +1,30 @@
 ---
-title: Transformieren von Daten mit dem U-SQL-Skript – Azure | Microsoft-Dokumentation
+title: Transformieren von Daten mit dem U-SQL-Skript
 description: Erläutert die Datenverarbeitung oder -transformation durch Ausführen von U-SQL-Skripts für einen Azure Data Lake Analytics-Computedienst.
 services: data-factory
 documentationcenter: ''
+ms.author: abnarain
 author: nabhishek
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.author: abnarain
-ms.openlocfilehash: d5b074fcf182bcc9bf4dc17ba21215d27e13cbdd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d890f73ea8b2294755b14055cb11904d50160cc4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60888434"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014005"
 ---
-# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+# <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Verarbeiten von Daten durch Ausführen von U-SQL-Skripts in Azure Data Lake Analytics 
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-usql-activity.md)
 > * [Aktuelle Version](transform-data-using-data-lake-analytics.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Eine Pipeline in einer Azure Data Factory verarbeitet Daten in verknüpften Speicherdiensten mithilfe verknüpfter Compute Services. Sie enthält eine Abfolge von Aktivitäten, wobei jede Aktivität einen bestimmten Verarbeitungsvorgang ausführt. In diesem Kapitel wird die **U-SQL-Aktivität von Data Lake Analytics** beschrieben, die ein **U-SQL**-Skript auf einem mit **Azure Data Lake Analytics** verknüpften Computedienst ausführt. 
 
@@ -43,7 +45,7 @@ Die folgende Tabelle enthält Beschreibungen der allgemeinen Eigenschaften, die 
 | **resourceGroupName**    | Azure-Ressourcengruppenname                | Nein                                       |
 
 ### <a name="service-principal-authentication"></a>Dienstprinzipalauthentifizierung
-Der mit Azure Data Lake Analytics verknüpfte Dienst erfordert für die Verbindung mit dem Azure Data Lake Analytics-Dienst eine Dienstprinzipalauthentifizierung. Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren Sie in Azure Active Directory (Azure AD) eine Anwendungsentität und gewähren ihr Zugriff auf Data Lake Analytics und den verwendeten Data Lake Store. Eine ausführliche Anleitung finden Sie unter [Dienst-zu-Dienst-Authentifizierung](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Notieren Sie sich die folgenden Werte, die Sie zum Definieren des verknüpften Diensts verwenden:
+Der mit Azure Data Lake Analytics verknüpfte Dienst erfordert für die Verbindung mit dem Azure Data Lake Analytics-Dienst eine Dienstprinzipalauthentifizierung. Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren Sie in Azure Active Directory (Azure AD) eine Anwendungsentität und gewähren ihr Zugriff auf Data Lake Analytics und den verwendeten Data Lake Store. Eine ausführliche Anleitung finden Sie unter [Dienst-zu-Dienst-Authentifizierung](../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md). Notieren Sie sich die folgenden Werte, die Sie zum Definieren des verknüpften Diensts verwenden:
 
 * Anwendungs-ID
 * Anwendungsschlüssel 
@@ -196,5 +198,5 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [Hadoop-Streamingaktivität](transform-data-using-hadoop-streaming.md)
 * [Spark-Aktivität](transform-data-using-spark.md)
 * [Benutzerdefinierte .NET-Aktivität](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning-Batchausführungsaktivität](transform-data-using-machine-learning.md)
+* [Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)](transform-data-using-machine-learning.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)

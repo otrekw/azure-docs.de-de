@@ -1,27 +1,23 @@
 ---
 title: Azure Deutschland-Entwicklerhandbuch | Microsoft-Dokumentation
 description: Dieser Artikel enthält einen Featurevergleich und Hilfestellung zum Entwickeln von Anwendungen für Azure Deutschland.
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/13/2017
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 5b0816079cdccd8a75830764fc8b1ad8a4d1b95e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: e631c37123c375ac3005aceb6c51289f07d9a22d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780913"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018608"
 ---
 # <a name="azure-germany-developer-guide"></a>Microsoft Azure Deutschland – Entwickler- und Benutzerhandbuch
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
+
 Bei der Azure Deutschland-Umgebung handelt es sich um eine Instanz von Microsoft Azure, die vom Rest des Microsoft-Netzwerks getrennt ist. Dieses Handbuch erläutert die Unterschiede, die Anwendungsentwickler und -administratoren kennen müssen, um mit dieser separaten Region von Azure interagieren und arbeiten zu können.
 
 ## <a name="overview"></a>Übersicht
@@ -29,12 +25,12 @@ Microsoft bietet verschiedene Tools, die Entwicklern beim Erstellen und Bereitst
 
 Bei der Erstellung und Bereitstellung von Anwendungen müssen Entwickler die Unterschiede zwischen Azure Deutschland und der globalen Azure-Umgebung kennen. Dies gilt insbesondere für die folgenden Bereiche: Einrichtung und Konfiguration der Programmierumgebung, Konfiguration der Endpunkte, Erstellung von Anwendungen sowie deren Bereitstellung als Dienste für Azure Deutschland.
 
-Dieses Handbuch fasst die Unterschiede zusammen. Es ergänzt die Informationen, die auf den Websites [Microsoft Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/ "Microsoft Azure Deutschland") und [Erste Schritte mit Azure](https://azure.microsoft.com/documentation/) verfügbar sind. 
+Dieses Handbuch fasst die Unterschiede zusammen. Es ergänzt die Informationen, die auf der [Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/ "Azure Deutschland")-Website und im [Azure-Dokumentationscenter](https://azure.microsoft.com/documentation/) bereitstehen. 
 
 Offizielle Informationen sind möglicherweise auch an anderer Stelle verfügbar, z.B.:
-* [Die vertrauenswürdige Cloud](https://azure.microsoft.com/support/trust-center/ "Die vertrauenswürdige Cloud") 
-* [Microsoft Azure-Blog](https://azure.microsoft.com/blog/ "Microsoft Azure-Blog")
-* [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/ "Azure Deutschland-Blog")
+* [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/ "Microsoft Azure Trust Center") 
+* [Azure-Blog](https://azure.microsoft.com/blog/ "Azure-Blog")
+* [Azure Deutschland-Blog](/archive/blogs/azuregermany/ "Azure Deutschland-Blog")
 
 ## <a name="guidance-for-developers"></a>Leitfaden für Entwickler
 Bei den meisten der derzeit verfügbaren technischen Inhalte wird davon ausgegangen, dass Anwendungen für die globale Azure-Umgebung und nicht für Azure Deutschland entwickelt werden. Aus diesem Grund ist es wichtig, zwei Hauptunterschiede bei Anwendungen zu kennen, die Sie zum Hosten in Azure Deutschland entwickeln:
@@ -48,22 +44,22 @@ Aktuell sind in Azure Deutschland die Regionen „Deutschland, Mitte“ und „D
 ## <a name="endpoint-mapping"></a>Endpunktzuordnung
 In der folgenden Tabelle finden Sie Informationen für die Zuordnung von Azure- und Azure SQL-Datenbank-Endpunkten zu Azure Deutschland-spezifischen Endpunkten:
 
-| NAME | Azure Deutschland-Endpunkt |
+| Name | Azure Deutschland-Endpunkt |
 | --- | --- |
-| ActiveDirectoryServiceEndpointResourceId | https://management.core.cloudapi.de/ |
-| GalleryUrl                               | https://gallery.cloudapi.de/ |
-| ManagementPortalUrl                      | https://portal.microsoftazure.de/ |
-| ServiceManagementUrl                     | https://management.core.cloudapi.de/ |
-| PublishSettingsFileUrl                   | https://manage.microsoftazure.de/publishsettings/index |
-| ResourceManagerUrl                       | https://management.microsoftazure.de/ |
-| SqlDatabaseDnsSuffix                     | .database.cloudapi.de |
-| StorageEndpointSuffix                    | core.cloudapi.de |
-| ActiveDirectoryAuthority                 | https://login.microsoftonline.de/ |
-| GraphUrl                                 | https://graph.cloudapi.de/ |
-| TrafficManagerDnsSuffix                  | azuretrafficmanager.de |
-| AzureKeyVaultDnsSuffix                   | vault.microsoftazure.de |
-| AzureKeyVaultServiceEndpointResourceId   | https://vault.microsoftazure.de |
-| Service Bus-Suffix                       | servicebus.cloudapi.de |
+| ActiveDirectoryServiceEndpointResourceId | `https://management.core.cloudapi.de/` |
+| GalleryUrl                               | `https://gallery.cloudapi.de/` |
+| ManagementPortalUrl                      | `https://portal.microsoftazure.de/` |
+| ServiceManagementUrl                     | `https://management.core.cloudapi.de/` |
+| PublishSettingsFileUrl                   | `https://manage.microsoftazure.de/publishsettings/index` |
+| ResourceManagerUrl                       | `https://management.microsoftazure.de/` |
+| SqlDatabaseDnsSuffix                     | `.database.cloudapi.de` |
+| StorageEndpointSuffix                    | `core.cloudapi.de` |
+| ActiveDirectoryAuthority                 | `https://login.microsoftonline.de/` |
+| GraphUrl                                 | `https://graph.cloudapi.de/` |
+| TrafficManagerDnsSuffix                  | `azuretrafficmanager.de` |
+| AzureKeyVaultDnsSuffix                   | `vault.microsoftazure.de` |
+| AzureKeyVaultServiceEndpointResourceId   | `https://vault.microsoftazure.de` |
+| Service Bus-Suffix                       | `servicebus.cloudapi.de` |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -73,6 +69,5 @@ Weitere Informationen zu Azure Deutschland finden Sie in den folgenden Ressource
 * [Microsoft Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)
 * Wenn Sie schon ein Azure Deutschland-Konto haben, können Sie diese [Anmeldeseite](https://portal.microsoftazure.de/) nutzen.
 * [Welcome to Azure Germany](./germany-welcome.md) (Willkommen bei Azure Deutschland)
-* [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/)
+* [Azure Deutschland-Blog](/archive/blogs/azuregermany/)
 * [Microsoft Trust Center (Azure-Konformität)](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings)
-

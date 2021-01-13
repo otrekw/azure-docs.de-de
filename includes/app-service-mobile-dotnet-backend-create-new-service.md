@@ -9,13 +9,13 @@ ms.date: 06/20/2019
 ms.author: crdun
 ms.custom: include file
 ms.openlocfilehash: 72a69359d412a7560472fbb73ec525ab5d4a4fce
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67325794"
 ---
-1. Melden Sie sich beim [Azure-Portal] an.
+1. Melden Sie sich beim [Azure portal] an.
 
 2. Klicken Sie auf **Ressource erstellen**.
 
@@ -39,7 +39,7 @@ ms.locfileid: "67325794"
 
 12. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, _oder_ erstellen Sie eine neue. (Verwenden Sie dabei den gleichen Namen wie für die App.)
 
-13. Klicken Sie auf **Create**. Warten Sie ein paar Minuten, bis der Dienst bereitgestellt wurde, bevor Sie fortfahren. Das Benachrichtigungssymbol (Glocke) in der Portalüberschrift informiert Sie über Statusupdates.
+13. Klicken Sie auf **Erstellen**. Warten Sie ein paar Minuten, bis der Dienst bereitgestellt wurde, bevor Sie fortfahren. Das Benachrichtigungssymbol (Glocke) in der Portalüberschrift informiert Sie über Statusupdates.
 
 14. Sobald die Bereitstellung abgeschlossen ist, klicken Sie erst auf den Abschnitt **Bereitstellungsdetails** und dann auf die Ressource vom Typ **Microsoft.Web/sites**. Dann werden Sie zu der App Service-Web-App geleitet, die Sie gerade erstellt haben. 
 
@@ -50,4 +50,4 @@ ms.locfileid: "67325794"
 Nun können Sie diese neu erstellte App Service-Web-App als mobile App verwenden.
 
 <!-- URLs. -->
-[Azure-Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/

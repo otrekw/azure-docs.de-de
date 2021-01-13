@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,seodec18
-ms.topic: conceptual
-ms.date: 04/16/2019
-ms.openlocfilehash: 1ec4e9cbfd1d70c128f530bd996793a49c8a7d00
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.topic: how-to
+ms.custom: hdinsightactive,seodec18, devx-track-java
+ms.date: 12/24/2019
+ms.openlocfilehash: 61b8aaf9ea61ebe85eac6708d7390c386dea2696
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484134"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547910"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Erstellen von Java-Anwendungen für die Apache-HBase
 
@@ -25,17 +25,18 @@ Die Schritte in diesem Dokument verwenden [Apache Maven](https://maven.apache.or
 
 * Ein Apache HBase-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erste Schritte mit Apache HBase](./apache-hbase-tutorial-get-started-linux.md).
 
-* [Java Developer Kit (JDK), Version 8](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK), Version 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * Ordnungsgemäße [Installation](https://maven.apache.org/install.html) von [Apache Maven](https://maven.apache.org/download.cgi) (gemäß Apache).  Maven ist ein Projekterstellungssystem für Java-Projekte.
 
 * Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Wenn Sie PowerShell verwenden, benötigen Sie das [AZ-Modul](https://docs.microsoft.com/powershell/azure/overview).
+* Bei Verwendung von PowerShell benötigen Sie das [Az-Modul](/powershell/azure/).
 
 * Ein Texteditor In diesem Artikel wird der Microsoft-Editor verwendet.
 
 ## <a name="test-environment"></a>Testumgebung
+
 Für diesen Artikel wurde ein Computer unter Windows 10 verwendet.  Die Befehle wurden an einer Eingabeaufforderung ausgeführt, und die verschiedenen Dateien wurden mit dem Windows-Editor bearbeitet. Nehmen Sie die Ihrer Umgebung entsprechenden Änderungen vor.
 
 Geben Sie an einer Eingabeaufforderung die folgenden Befehle ein, um eine Arbeitsumgebung zu erstellen:
@@ -84,7 +85,7 @@ Fügen Sie in `pom.xml` im Abschnitt `<dependencies>` den folgenden Text hinzu:
 ```xml
 <dependency>
     <groupId>org.apache.hbase</groupId>
-    <artifactId>hbase-client</artifactId>
+    <artifactId>hbase-shaded-client</artifactId>
     <version>1.1.2</version>
 </dependency>
 <dependency>
@@ -128,7 +129,7 @@ Fügen Sie der Datei `pom.xml` den folgenden Code hinzu, und speichern und schli
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
         <configuration>
             <source>1.8</source>
             <target>1.8</target>
@@ -408,7 +409,7 @@ In den folgenden Schritten wird `scp` zum Kopieren der JAR-Datei auf den primär
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
- 3. Verwenden Sie den folgenden Befehl in Ihrer offenen SSH-Verbindung, um eine HBase-Tabelle mithilfe der Java-Anwendung zu erstellen:
+3. Verwenden Sie den folgenden Befehl in Ihrer offenen SSH-Verbindung, um eine HBase-Tabelle mithilfe der Java-Anwendung zu erstellen:
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
@@ -424,12 +425,14 @@ In den folgenden Schritten wird `scp` zum Kopieren der JAR-Datei auf den primär
 
     Sie erhalten folgende Ergebnisse:
 
-        Franklin Holtz - ID: 2
-        Franklin Holtz - franklin@contoso.com - ID: 2
-        Rae Schroeder - ID: 4
-        Rae Schroeder - rae@contoso.com - ID: 4
-        Gabriela Ingram - ID: 6
-        Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```console
+    Franklin Holtz - ID: 2
+    Franklin Holtz - franklin@contoso.com - ID: 2
+    Rae Schroeder - ID: 4
+    Rae Schroeder - rae@contoso.com - ID: 4
+    Gabriela Ingram - ID: 6
+    Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```
 
 5. Verwenden Sie zum Löschen der Tabelle den folgenden Befehl:
 
@@ -439,7 +442,7 @@ In den folgenden Schritten wird `scp` zum Kopieren der JAR-Datei auf den primär
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>Hochladen der JAR-Datei und Ausführen von Aufträgen (PowerShell)
 
-In den folgenden Schritten wird das Azure PowerShell [AZ-Modul](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) zum Hochladen der JAR-Datei in den Standardspeicher Ihres Apache HBase-Clusters verwendet. HDInsight-Cmdlets werden dann zur Remoteausführung der Beispiele verwendet.
+In den folgenden Schritten wird das Azure PowerShell [AZ-Modul](/powershell/azure/new-azureps-module-az) zum Hochladen der JAR-Datei in den Standardspeicher Ihres Apache HBase-Clusters verwendet. HDInsight-Cmdlets werden dann zur Remoteausführung der Beispiele verwendet.
 
 1. Nachdem Sie das AZ-Modul installiert und konfiguriert haben, erstellen Sie eine Datei mit dem Namen `hbase-runner.psm1`. Verwenden Sie als Inhalt der Datei den folgenden Text:
 
@@ -683,12 +686,14 @@ In den folgenden Schritten wird das Azure PowerShell [AZ-Modul](https://docs.mic
 
     Dieser Befehl verwendet die Klasse `SearchByEmail`, um nach allen Zeilen zu suchen, in denen die Spaltenfamilie `contactinformation` und die Spalte `email` die Zeichenfolge `contoso.com` enthalten. Daraufhin sollte Sie folgende Ergebnisse erhalten:
 
-          Franklin Holtz - ID: 2
-          Franklin Holtz - franklin@contoso.com - ID: 2
-          Rae Schroeder - ID: 4
-          Rae Schroeder - rae@contoso.com - ID: 4
-          Gabriela Ingram - ID: 6
-          Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```output
+    Franklin Holtz - ID: 2
+    Franklin Holtz - franklin@contoso.com - ID: 2
+    Rae Schroeder - ID: 4
+    Rae Schroeder - rae@contoso.com - ID: 4
+    Gabriela Ingram - ID: 6
+    Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```
 
     Wenn **fabrikam.com** als `-emailRegex`-Wert verwendet wird, werden Benutzer zurückgegeben, die **fabrikam.com** im Feld „E-Mail“ enthalten. Sie können als Suchbegriffe auch reguläre Ausdrücke verwenden. Mit **^r** werden beispielsweise E-Mail-Adressen zurückgegeben, die mit dem Buchstaben „r“ beginnen.
 
@@ -704,4 +709,4 @@ Verwenden Sie den Parameter `-showErr`, wenn Sie den Standardfehler (STDERR) seh
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Informationen zum Verwenden von SQuirreL SQL mit Apache HBase](apache-hbase-phoenix-squirrel-linux.md)
+[Informationen zum Verwenden von SQLLine mit Apache HBase](apache-hbase-query-with-phoenix.md)

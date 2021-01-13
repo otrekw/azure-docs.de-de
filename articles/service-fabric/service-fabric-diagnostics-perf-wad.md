@@ -1,25 +1,16 @@
 ---
-title: 'Azure Service Fabric: Leistungsüberwachung mit der Microsoft Azure-Diagnoseerweiterung | Microsoft-Dokumentation'
+title: Leistungsüberwachung mit der Microsoft Azure-Diagnose
 description: Verwenden Sie die Microsoft Azure-Diagnose, um Leistungsindikatoren für Ihre Azure Service Fabric-Cluster zu erfassen.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: e29c32c27e7f6c62eb2c6a9cbe2e4d3f1294f038
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: c2114f5392da788bb440589e69e704a148731e02
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155164"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86258618"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Leistungsüberwachung mit der Microsoft Azure-Diagnoseerweiterung
 
@@ -202,5 +193,5 @@ Hier ist ein Beispiel für eine Konfiguration mit dem Leistungsindikator für *T
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfassen Sie weitere Leistungsindikatoren für Ihren Cluster. Eine Liste mit Leistungsindikatoren, die Sie erfassen sollten, finden Sie unter [Leistungsmetriken](service-fabric-diagnostics-event-generation-perf.md).
-* Unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](../virtual-machines/windows/extensions-diagnostics-template.md) erfahren Sie, wie Sie `WadCfg` noch weiter anpassen können und beispielsweise zusätzliche Speicherkonten für die Übermittlung von Diagnosedaten konfigurieren.
+* Unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](../virtual-machines/extensions/diagnostics-template.md) erfahren Sie, wie Sie `WadCfg` noch weiter anpassen können und beispielsweise zusätzliche Speicherkonten für die Übermittlung von Diagnosedaten konfigurieren.
 * Besuchen Sie den [WadCfg-Generator](https://azure.github.io/azure-diagnostics-tools/config-builder/), um eine Vorlage von Grund auf neu zu erstellen und sicherzustellen, dass Ihre Syntax korrekt ist. (https://azure.github.io/azure-diagnostics-tools/config-builder/), um eine Vorlage von Grund auf neu zu erstellen und sicherzustellen, dass Ihre Syntax korrekt ist.)

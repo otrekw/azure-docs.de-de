@@ -1,25 +1,30 @@
 ---
-title: Aktivität „Pipeline ausführen“ in Azure Data Factory | Microsoft-Dokumentation
+title: Aktivität „Pipeline ausführen“ in Azure Data Factory
 description: Erfahren Sie, wie Sie die Aktivität „Pipeline ausführen“ verwenden können, um eine Data Factory-Pipeline über eine andere Data Factory-Pipeline aufzurufen.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 1611f740f6b55ecf9f15ecd234d63b5e95baeba1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 7df636bbdc85b9fcdcbfef260daca905f9949d8c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141700"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500043"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Aktivität „Pipeline ausführen“ in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Mit der Aktivität „Pipeline ausführen“ kann eine Data Factory-Pipeline eine andere Pipeline aufrufen.
+
+
 
 ## <a name="syntax"></a>Syntax
 
@@ -61,11 +66,11 @@ Mit der Aktivität „Pipeline ausführen“ kann eine Data Factory-Pipeline ein
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Name der Aktivität „Pipeline ausführen“. | Zeichenfolge | Ja
-type | Muss auf folgenden Wert festgelegt werden: **ExecutePipeline**. | Zeichenfolge | Ja
+name | Name der Aktivität „Pipeline ausführen“. | String | Ja
+type | Muss auf **ExecutePipeline** festgelegt werden. | String | Ja
 pipeline | Pipelineverweis auf die abhängige Pipeline, die diese Pipeline aufruft. Ein Pipelineverweisobjekt verfügt über zwei Eigenschaften: **referenceName** und **type**. Die Eigenschaft „referenceName“ gibt den Namen des Pipelineverweises an. Die Eigenschaft „type“ muss auf „PipelineReference“ festgelegt werden. | PipelineReference | Ja
 parameters | Parameter, die an die aufgerufene Pipeline übergeben werden sollen | Ein JSON-Objekt, das Parameternamen Argumentwerten zuordnet | Nein
-waitOnCompletion | Definiert, ob die Aktivitätsausführung wartet, bis die Ausführung der abhängigen Pipeline abgeschlossen ist. Die Standardeinstellung ist "false". | Boolean | Nein
+waitOnCompletion | Definiert, ob die Aktivitätsausführung wartet, bis die Ausführung der abhängigen Pipeline abgeschlossen ist. Der Standardwert ist "false". | Boolean | Nein
 
 ## <a name="sample"></a>Beispiel
 In diesem Szenario gibt es zwei Pipelines:
@@ -168,10 +173,7 @@ In diesem Szenario gibt es zwei Pipelines:
     "properties": {
     "type": "AzureStorage",
     "typeProperties": {
-      "connectionString": {
-        "value": "DefaultEndpointsProtocol=https;AccountName=*****",
-        "type": "SecureString"
-      }
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=*****;AccountKey=*****"
     }
   }
 }

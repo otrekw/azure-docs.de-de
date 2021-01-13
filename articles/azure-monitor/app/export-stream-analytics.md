@@ -1,23 +1,14 @@
 ---
 title: Exportieren aus Azure Application Insights mithilfe von Stream Analytics | Microsoft-Dokumentation
 description: Stream Analytics kann aus Application Insights exportierte Daten fortlaufend transformieren, filtern und weiterleiten.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 31594221-17bd-4e5e-9534-950f3b022209
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.author: mbullwin
-ms.openlocfilehash: d4a4196aa601fc8da79da3962faec026eff5ec87
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: e90daf2516b00f7a27ac47e34cfc4ace03fee6e2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625055"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90979188"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Verwenden von Stream Analytics zum Verarbeiten von Daten, die aus Application Insights exportiert wurden
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ist das ideale Tool für die Verarbeitung von Daten, die [aus Application Insights exportiert wurden](export-telemetry.md). Stream Analytics kann Daten aus einer Vielzahl von Quellen abrufen. Das Tool kann die Daten transformieren und filtern und anschließend an eine Vielzahl von Senken weiterleiten.
@@ -25,7 +16,7 @@ ms.locfileid: "67625055"
 In diesem Beispiel wird ein Adapter erstellt, der Daten aus Application Insights umbenennt, einige Felder bearbeitet und an Power BI weiterreicht.
 
 > [!WARNING]
-> Es gibt wesentlich bessere und einfachere [empfohlene Möglichkeiten, Application Insights-Daten in Power BI anzuzeigen](../../azure-monitor/app/export-power-bi.md ). Die hier beschriebene Möglichkeit ist lediglich ein Beispiel zum Veranschaulichen, wie exportierte Daten verarbeitet werden.
+> Es gibt wesentlich bessere und einfachere [empfohlene Möglichkeiten, Application Insights-Daten in Power BI anzuzeigen](./export-power-bi.md). Die hier beschriebene Möglichkeit ist lediglich ein Beispiel zum Veranschaulichen, wie exportierte Daten verarbeitet werden.
 > 
 > 
 
@@ -64,12 +55,12 @@ Durch fortlaufende Exportaktivitäten werden Daten an ein Azure-Speicherkonto ü
 
     ![Wählen Sie Ereignistypen aus.](./media/export-stream-analytics/080.png)
 
-1. Warten Sie, bis sich einige Daten angesammelt haben. Lehnen Sie sich zurück, und lassen Sie Ihre Benutzer die Anwendung eine Weile lang verwenden. Telemetriedaten gehen ein, und Sie sehen statistische Diagramme im [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md) sowie einzelne Ereignisse in der [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md). 
+1. Warten Sie, bis sich einige Daten angesammelt haben. Lehnen Sie sich zurück, und lassen Sie Ihre Benutzer die Anwendung eine Weile lang verwenden. Telemetriedaten gehen ein, und Sie sehen statistische Diagramme im [Metrik-Explorer](../platform/metrics-charts.md) sowie einzelne Ereignisse in der [Diagnosesuche](./diagnostic-search.md). 
    
     Darüber hinaus werden die Daten in Ihren Speicher exportiert. 
 2. Überprüfen Sie die exportierten Daten. Wählen Sie in Visual Studio **Anzeigen/Cloud Explorer**, und öffnen Sie „Azure/Storage“. (Wenn diese Menüoption nicht verfügbar ist, müssen Sie das Azure SDK installieren: Öffnen Sie das Dialogfeld „Neues Projekt“ und anschließend „Visual C#/Cloud/Microsoft Azure SDK für .NET abrufen“.)
    
-    ![](./media/export-stream-analytics/04-data.png)
+    ![Screenshot, der zeigt, wie Sie die Ereignistypen festlegen, die Sie anzeigen möchten](./media/export-stream-analytics/04-data.png)
    
     Notieren Sie sich den gemeinsamen Teil des Pfadnamens, der sich vom Anwendungsnamen und vom Instrumentierungsschlüssel ableitet. 
 
@@ -78,21 +69,21 @@ Die Ereignisse werden in Blobdateien im JSON-Format geschrieben. Jede Datei kann
 ## <a name="create-an-azure-stream-analytics-instance"></a>Erstellen einer Azure Stream Analytics-Instanz
 Wählen Sie im [Azure-Portal](https://portal.azure.com/) den Azure Stream Analytics-Dienst aus, und erstellen Sie einen neuen Stream Analytics-Auftrag:
 
-![](./media/export-stream-analytics/SA001.png)
+![Screenshot, der die Hauptseite zum Erstellen eines Stream Analytics-Auftrags im Azure-Portal zeigt](./media/export-stream-analytics/SA001.png)
 
-![](./media/export-stream-analytics/SA002.png)
+![Screenshot, der die erforderlichen Details beim Erstellen eines neuen Stream Analytics-Auftrags zeigt](./media/export-stream-analytics/SA002.png)
 
 Wählen Sie nach dem Erstellen des neuen Auftrags die Option **Zu Ressource wechseln** aus.
 
-![](./media/export-stream-analytics/SA003.png)
+![Screenshot, der die Meldung anzeigt, die empfangen wird, wenn die Bereitstellung des neuen Stream Analytics-Auftrags erfolgreich war](./media/export-stream-analytics/SA003.png)
 
 ### <a name="add-a-new-input"></a>Hinzufügen einer neuen Eingabe
 
-![](./media/export-stream-analytics/SA004.png)
+![Screenshot, der zeigt, wie dem Stream Analytics-Auftrag Eingaben hinzugefügt werden](./media/export-stream-analytics/SA004.png)
 
 Legen Sie den Auftrag so fest, dass er Eingaben vom Blob für den fortlaufenden Export erhält:
 
-![](./media/export-stream-analytics/SA0005.png)
+![Screenshot, der die Konfiguration des Stream Analytics-Auftrags zum Übernehmen von Eingaben aus einem fortlaufenden Exportblob veranschaulicht](./media/export-stream-analytics/SA0005.png)
 
 Jetzt benötigen Sie den primären Zugriffsschlüssel aus Ihrem Speicherkonto, den Sie zuvor notiert haben. Legen Sie diesen als Speicherkontoschlüssel fest.
 
@@ -102,7 +93,7 @@ Jetzt benötigen Sie den primären Zugriffsschlüssel aus Ihrem Speicherkonto, d
 
 Das Präfixmuster des Pfads gibt an, wo Stream Analytics die Eingabedateien im Speicher findet. Sie müssen es so einstellen, dass es der Speicherung der Daten durch den fortlaufenden Export entspricht. Legen Sie ihn wie folgt fest:
 
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+`webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}`
 
 In diesem Beispiel:
 
@@ -116,9 +107,9 @@ In diesem Beispiel:
 > 
 
 ## <a name="add-new-output"></a>Hinzufügen einer neuen Ausgabe
-Wählen Sie Ihren Auftrag und dann **Ausgaben**  >  **Hinzufügen** aus.
+Wählen Sie Ihren Auftrag und dann **Ausgaben** > **Hinzufügen** aus.
 
-![](./media/export-stream-analytics/SA006.png)
+![Screenshot, der das Auswählen des Stream Analytics-Auftrags zum Hinzufügen einer neuen Ausgabe zeigt](./media/export-stream-analytics/SA006.png)
 
 
 ![Wählen Sie den neuen Kanal aus, klicken Sie auf „Ausgaben“ > „Hinzufügen“ > „Power BI“.](./media/export-stream-analytics/SA010.png)
@@ -134,62 +125,59 @@ Die Abfrage bestimmt die Übersetzung von der Eingabe zur Ausgabe.
 Fügen Sie diese Abfrage ein:
 
 ```SQL
-
-    SELECT
-      flat.ArrayValue.name,
-      count(*)
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.[event]) as flat
-    GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
+SELECT
+  flat.ArrayValue.name,
+  count(*)
+INTO
+  [pbi-output]
+FROM
+  [export-input] A
+OUTER APPLY GetElements(A.[event]) as flat
+GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 ```
 
 * export-input ist der Alias, den wir der Datenstromeingabe gegeben haben.
 * „pbi-outout“ ist der definierte Ausgabealias.
-* Wir verwenden [OUTER APPLY GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics), weil sich der Ereignisname in einem geschachtelten JSON-Array befindet. Die SELECT-Anweisung wählt dann den Ereignisnamen zusammen mit der Anzahl der Instanzen mit diesem Namen im angegebenen Zeitraum aus. Die [Group By](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics)-Klausel gruppiert die Elemente in Zeiträume von einer Minute.
+* Wir verwenden [OUTER APPLY GetElements](/stream-analytics-query/apply-azure-stream-analytics), weil sich der Ereignisname in einem geschachtelten JSON-Array befindet. Die SELECT-Anweisung wählt dann den Ereignisnamen zusammen mit der Anzahl der Instanzen mit diesem Namen im angegebenen Zeitraum aus. Die [Group By](/stream-analytics-query/group-by-azure-stream-analytics)-Klausel gruppiert die Elemente in Zeiträume von einer Minute.
 
 ### <a name="query-to-display-metric-values"></a>Abfrage zum Anzeigen metrischer Werte
+
 ```SQL
-
-    SELECT
-      A.context.data.eventtime,
-      avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.context.custom.metrics) as flat
-    GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
-
-``` 
+SELECT
+  A.context.data.eventtime,
+  avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
+INTO
+  [pbi-output]
+FROM
+  [export-input] A
+OUTER APPLY GetElements(A.context.custom.metrics) as flat
+GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
+```
 
 * Diese Abfrage führt einen Drilldown in die Telemetrie der Metriken durch, um die Uhrzeit und den metrischen Wert des Ereignisses abzurufen. Die metrischen Werte befinden sich in einem Array, daher verwenden wir das Muster „OUTER APPLY GetElements“ zum Extrahieren der Zeilen. In diesem Fall lautet der Name der Metrik „myMetric“. 
 
 ### <a name="query-to-include-values-of-dimension-properties"></a>Abfrage zum Anzeigen von Dimensionseigenschaften
+
 ```SQL
-
-    WITH flat AS (
-    SELECT
-      MySource.context.data.eventTime as eventTime,
-      InstanceId = MyDimension.ArrayValue.InstanceId.value,
-      BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
-    FROM MySource
-    OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
-    )
-    SELECT
-     eventTime,
-     InstanceId,
-     BusinessUnitId
-    INTO AIOutput
-    FROM flat
-
+WITH flat AS (
+SELECT
+  MySource.context.data.eventTime as eventTime,
+  InstanceId = MyDimension.ArrayValue.InstanceId.value,
+  BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
+FROM MySource
+OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
+)
+SELECT
+  eventTime,
+  InstanceId,
+  BusinessUnitId
+INTO AIOutput
+FROM flat
 ```
 
 * Diese Abfrage enthält Dimensionseigenschaftswerte, ohne dabei davon abhängig zu sein, dass eine bestimmte Dimension in einem festen Index im Dimensionsarray liegt.
 
-## <a name="run-the-job"></a>Ausführen des Auftrags
+## <a name="run-the-job"></a>Ausführung des Auftrags.
 Sie können ein Datum in der Vergangenheit auswählen, ab dem der Auftrag ausgeführt werden soll. 
 
 ![Wählen Sie den Auftrag aus, und klicken Sie auf „Abfrage“. Fügen Sie das folgenden Beispiel ein.](./media/export-stream-analytics/SA008.png)
@@ -198,7 +186,7 @@ Warten Sie, bis der Auftrag ausgeführt wird.
 
 ## <a name="see-results-in-power-bi"></a>Anzeigen der Ergebnisse in Power BI
 > [!WARNING]
-> Es gibt wesentlich bessere und einfachere [empfohlene Möglichkeiten, Application Insights-Daten in Power BI anzuzeigen](../../azure-monitor/app/export-power-bi.md ). Die hier beschriebene Möglichkeit ist lediglich ein Beispiel zum Veranschaulichen, wie exportierte Daten verarbeitet werden.
+> Es gibt wesentlich bessere und einfachere [empfohlene Möglichkeiten, Application Insights-Daten in Power BI anzuzeigen](./export-power-bi.md). Die hier beschriebene Möglichkeit ist lediglich ein Beispiel zum Veranschaulichen, wie exportierte Daten verarbeitet werden.
 > 
 > 
 
@@ -208,7 +196,7 @@ Warten Sie, bis der Auftrag ausgeführt wird.
 
 Jetzt können Sie dieses Dataset in Berichten und Dashboards in [Power BI](https://powerbi.microsoft.com)verwenden.
 
-![Wählen Sie in Power BI Ihr Dataset und Felder aus.](./media/export-stream-analytics/210.png)
+![Screenshot eines Berichtbeispiels, das anhand eines Datasets in Power BI erstellt wurde.](./media/export-stream-analytics/210.png)
 
 ## <a name="no-data"></a>Sie sehen keine Daten?
 * Überprüfen Sie, ob das [Datumsformat](#set-path-prefix-pattern) ordnungsgemäß auf JJJJ-MM-TT (mit Bindestrichen) festgelegt ist.
@@ -223,5 +211,5 @@ Noam Ben Zeev zeigt, wie exportierte Daten mit Stream Analytics verarbeitet werd
 ## <a name="next-steps"></a>Nächste Schritte
 * [Fortlaufendem Export](export-telemetry.md)
 * [Detaillierte Datenmodellreferenz für die Eigenschaftstypen und -werte.](export-data-model.md)
-* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
+* [Application Insights](./app-insights-overview.md)
 

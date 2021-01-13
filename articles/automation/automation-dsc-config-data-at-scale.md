@@ -1,6 +1,6 @@
 ---
-title: Konfigurationsdaten nach Bedarf – Azure Automation
-description: Erfahren Sie, wie Sie Daten skaliert für die Zustandskonfiguration in Azure Automation konfigurieren.
+title: Konfigurieren von Daten in jeder Größenordnung in Azure Automation State Configuration
+description: In diesem Artikel erfahren Sie, wie Sie Daten in jeder Größenordnung für Azure Automation State Configuration konfigurieren.
 keywords: DSC,PowerShell,Konfiguration,Setup,Einrichtung
 services: automation
 ms.service: automation
@@ -10,19 +10,19 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f6bb89370c85389d6c41306ed224d27d710cd7c8
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: bc55a4c5ab20cac041a00a0f924b207eb256ae8b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559189"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86186519"
 ---
-# <a name="configuration-data-at-scale"></a>Konfigurationsdaten nach Bedarf
+# <a name="configure-data-at-scale-for-azure-automation-state-configuration"></a>Konfigurieren von Daten in jeder Größenordnung in Azure Automation State Configuration
 
-> Anwendungsbereich: Windows PowerShell 5.1
+> Gilt für: Windows PowerShell 5.1
 
 Das Verwalten von Hunderten oder Tausenden von Servern kann eine Herausforderung darstellen.
-Kunden haben Feedback gegeben, dass die eigentliche Verwaltung der [Konfigurationsdaten](/powershell/dsc/configurations/configdata) der schwierigste Aspekt ist.
+Kunden haben Feedback gegeben, dass die eigentliche Verwaltung der [Konfigurationsdaten](/powershell/scripting/dsc/configurations/configdata) der schwierigste Aspekt ist.
 Das Organisieren von Informationen über logische Konstrukte wie Speicherort, Typ und Umgebung.
 
 > [!NOTE]
@@ -44,13 +44,13 @@ Beispiele wären:
 Diese Informationen sind im von Ihnen bevorzugten Dateiformat organisiert (JSON, YAML oder PSD1).
 Anschließend werden Cmdlets bereitgestellt, um Konfigurationsdatendateien zu generieren, indem die [Informationen aus jeder Datei in einer einzelnen Ansicht eines Servers oder einer Serverrolle konsolidiert werden](https://github.com/gaelcolas/Datum#datum-tree).
 
-Sobald die Datendateien einmal generiert sind, können Sie sie mit [DSC-Konfigurationsskripts](/powershell/dsc/configurations/write-compile-apply-configuration) verwenden, um MOF-Dateien zu generieren und die [MOF-Dateien in Azure Automation hochzuladen](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Danach registrieren Sie Ihre Server entweder von [lokal](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) oder [in Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) um Konfigurationen abzurufen.
+Sobald die Datendateien einmal generiert sind, können Sie sie mit [DSC-Konfigurationsskripts](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) verwenden, um MOF-Dateien zu generieren und die [MOF-Dateien in Azure Automation hochzuladen](./tutorial-configure-servers-desired-state.md#create-and-upload-a-configuration-to-azure-automation).
+Danach registrieren Sie Ihre Server entweder von [lokal](./automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines) oder [in Azure](./automation-dsc-onboarding.md#enable-azure-vms) um Konfigurationen abzurufen.
 
 Um Datum zu testen, besuchen Sie den [PowerShell-Katalog](https://www.powershellgallery.com/packages/datum/), und laden Sie die Lösung herunter, oder klicken Sie auf „Projektwebsite“, um die [Dokumentation](https://github.com/gaelcolas/Datum#2-getting-started--concepts) anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Windows PowerShell DSC – Übersicht](/powershell/dsc/overview/overview)
-- [DSC-Ressourcen](/powershell/dsc/resources/resources)
-- [Konfigurieren des lokalen Konfigurations-Managers](/powershell/dsc/managing-nodes/metaconfig)
+- Eine Einführung in PowerShell DSC finden Sie unter [Windows PowerShell DSC – Übersicht](/powershell/scripting/dsc/overview/overview).
+- Erfahren Sie mehr über PowerShell DSC-Ressourcen in [DSC-Ressourcen](/powershell/scripting/dsc/resources/resources).
+- Weitere Informationen zur Konfiguration des lokalen Konfigurations-Managers finden Sie unter [Konfigurieren des lokalen Konfigurations-Managers](/powershell/scripting/dsc/managing-nodes/metaconfig).

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 367ae27a6afec803d2e3f98f54bdcf852330ddc6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 95bd83575809f6ecda716ff751b47b7bb499cae3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274692"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85073391"
 ---
 ## <a name="configure-an-environment-variable-for-authentication"></a>Konfigurieren einer Umgebungsvariablen für die Authentifizierung
 
@@ -17,7 +17,7 @@ Für Anwendungen muss der Zugriff auf die von ihnen genutzten Cognitive Services
 
 Wenn Sie Ihren Schlüssel vorliegen haben, können Sie ihn in eine neue Umgebungsvariable auf dem lokalen Computer schreiben, auf dem die Anwendung ausgeführt wird. Öffnen Sie zum Festlegen der Umgebungsvariablen ein Konsolenfenster, und befolgen Sie die Anleitung für Ihr Betriebssystem. Ersetzen Sie `your-key` durch einen der Schlüssel für Ihre Ressource.
 
-#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+#### <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 setx COGNITIVE_SERVICE_KEY "your-key"
@@ -25,7 +25,7 @@ setx COGNITIVE_SERVICE_KEY "your-key"
 
 Nachdem Sie die Umgebungsvariable hinzugefügt haben, müssen Sie unter Umständen alle ausgeführten Programme neu starten, von denen die Umgebungsvariable gelesen werden muss, z.B. das Konsolenfenster. Wenn Sie beispielsweise Visual Studio als Editor verwenden, müssen Sie Visual Studio neu starten, bevor Sie das Beispiel ausführen.
 
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export COGNITIVE_SERVICE_KEY=your-key
@@ -33,7 +33,7 @@ export COGNITIVE_SERVICE_KEY=your-key
 
 Führen Sie nach dem Hinzufügen der Umgebungsvariablen im Konsolenfenster `source ~/.bashrc` aus, damit die Änderungen wirksam werden.
 
-#### <a name="macostabunix"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 Bearbeiten Sie Ihr „.bash_profile“, und fügen Sie die Umgebungsvariable hinzu:
 
@@ -41,6 +41,6 @@ Bearbeiten Sie Ihr „.bash_profile“, und fügen Sie die Umgebungsvariable hin
 export COGNITIVE_SERVICE_KEY=your-key
 ```
 
-Führen Sie nach dem Hinzufügen der Umgebungsvariablen im Konsolenfenster `source .bash_profile` aus, damit die Änderungen wirksam werden.
+Führen Sie nach dem Hinzufügen der Umgebungsvariablen im Konsolenfenster `source ~/.bash_profile` aus, damit die Änderungen wirksam werden.
 
 ***

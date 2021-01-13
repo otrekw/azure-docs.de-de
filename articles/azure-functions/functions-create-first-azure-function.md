@@ -1,67 +1,67 @@
 ---
-title: Erstellen Ihrer ersten Funktion im Azure-Portal | Microsoft-Dokumentation
+title: Erstellen Ihrer ersten Funktion im Azure-Portal
 description: Erfahren Sie, wie Sie Ihre erste Azure-Funktion für die serverlose Ausführung mit dem Azure-Portal erstellen.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
-ms.service: azure-functions
-ms.topic: quickstart
-ms.date: 03/28/2018
-ms.author: glenga
-ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 93b3f34b78710b18b6ff95f91b3eeda09e9e73e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.topic: how-to
+ms.date: 03/26/2020
+ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
+ms.openlocfilehash: 746ec7aa3ee41204e051e843ff94ed0771a9d244
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097003"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326181"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Erstellen Ihrer ersten Funktion im Azure-Portal
 
-Mit Azure Functions können Sie Code in einer [serverlosen](https://azure.microsoft.com/solutions/serverless/) Umgebung ausführen, ohne vorher eine VM erstellen oder eine Webanwendung veröffentlichen zu müssen. In diesem Artikel erfahren Sie, wie Sie Azure Functions verwenden können, um eine „Hello World“-Funktion im Azure-Portal zu erstellen.
+Mit Azure Functions können Sie Ihren Code in einer serverlosen Umgebung ausführen, ohne vorher einen virtuellen Computer zu erstellen oder eine Webanwendung zu veröffentlichen. In diesem Artikel erfahren Sie, wie Sie Azure Functions verwenden können, um eine HTTP-Triggerfunktion „Hello World“ im Azure-Portal zu erstellen.
 
-![Erstellen einer Funktionen-App im Azure-Portal](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
+Es wird empfohlen, [Ihre Funktionen lokal zu entwickeln](functions-develop-local.md) und in einer Funktions-App in Azure zu veröffentlichen.  
+Die folgenden Links bieten Informationen zum Einstieg mit der von Ihnen bevorzugten lokalen Entwicklungsumgebung und Sprache:
+
+| Visual Studio Code | Terminal/Eingabeaufforderung | Visual Studio |
+| --- | --- | --- |
+|  &bull;&nbsp;[Erste Schritte mit C#](./create-first-function-vs-code-csharp.md)<br/>&bull;&nbsp;[Erste Schritte mit Java](./create-first-function-vs-code-java.md)<br/>&bull;&nbsp;[Erste Schritte mit JavaScript](./create-first-function-vs-code-node.md)<br/>&bull;&nbsp;[Erste Schritte mit PowerShell](./create-first-function-vs-code-powershell.md)<br/>&bull;&nbsp;[Erste Schritte mit Python](./create-first-function-vs-code-python.md) |&bull;&nbsp;[Erste Schritte mit C#](./create-first-function-cli-csharp.md)<br/>&bull;&nbsp;[Erste Schritte mit Java](./create-first-function-cli-java.md)<br/>&bull;&nbsp;[Erste Schritte mit JavaScript](./create-first-function-cli-node.md)<br/>&bull;&nbsp;[Erste Schritte mit PowerShell](./create-first-function-cli-powershell.md)<br/>&bull;&nbsp;[Erste Schritte mit Python](./create-first-function-cli-python.md) | [Erste Schritte mit C#](functions-create-your-first-function-visual-studio.md) |
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-> [!NOTE]
-> C#-Entwickler sollten für die [Erstellung ihrer ersten Funktion Visual Studio 2019](functions-create-your-first-function-visual-studio.md) statt das Portal in Erwägung ziehen. 
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
-
-Melden Sie sich unter <https://portal.azure.com> mit Ihrem Azure-Konto beim Azure-Portal an.
+Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
-Sie müssen über eine Funktionen-App verfügen, die die Ausführung Ihrer Funktionen in Azure hostet. Sie können mit einer Funktionen-App Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung und Freigabe von Ressourcen. 
+Sie müssen über eine Funktionen-App verfügen, die die Ausführung Ihrer Funktionen in Azure hostet. Sie können mit einer Funktions-App Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung, Skalierung und Freigabe von Ressourcen.
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
+Erstellen Sie als Nächstes eine Funktion in der neuen Funktions-App.
 
-## <a name="create-function"></a>Erstellen einer Funktion mit Auslösung per HTTP
+## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>Erstellen einer HTTP-Triggerfunktion
 
-1. Erweitern Sie Ihre neue Funktions-App, klicken Sie neben **Functions** auf die Schaltfläche **+** , klicken Sie auf **Im Portal**, und klicken Sie anschließend auf **Weiter**.
+1. Wählen Sie im linken Menü des Fensters **Funktionen** die Option **Funktionen** aus, und wählen Sie dann im obersten Menü **Hinzufügen** aus. 
+ 
+1. Wählen Sie im Fenster **Neue Funktion** die Option **HTTP-Trigger** aus.
 
-    ![Functions-Schnellstartanleitung zum Auswählen einer Plattform.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![Auswählen der HTTP-Triggerfunktion](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
 
-1. Wählen Sie **Webhook + API** aus, und klicken Sie anschließend auf **Erstellen**.
+1. Akzeptieren Sie im Fenster **Neue Funktion** den Standardnamen für **Neue Funktion**, oder geben Sie einen neuen Namen ein. 
 
-    ![Schnellstart von Functions im Azure-Portal](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
+1. Wählen Sie **Anonym** in der Dropdownliste **Autorisierungsstufe** aus, und wählen Sie dann **Funktion erstellen** aus.
 
-Eine Funktion wird unter Verwendung einer sprachspezifischen Vorlage für eine Funktion mit HTTP-Trigger erstellt.
-
-Nun können Sie die neue Funktion ausführen, indem Sie eine HTTP-Anforderung senden.
+    Azure erstellt die HTTP-Triggerfunktion. Nun können Sie die neue Funktion ausführen, indem Sie eine HTTP-Anforderung senden.
 
 ## <a name="test-the-function"></a>Testen der Funktion
 
-1. Klicken Sie in der neuen Funktion rechts oben auf **</> Funktions-URL abrufen**, wählen Sie **default (Function key)** (Standard (Funktionsschlüssel)) aus, und klicken Sie dann auf **Kopieren**. 
+1. Wählen Sie in Ihrer neuen HTTP-Triggerfunktion im Menü auf der linken Seite **Code + testen** aus, und wählen Sie dann im obersten Menü **Funktions-URL abrufen** aus.
+
+    ![Auswählen von „Funktions-URL abrufen“](./media/functions-create-first-azure-function/function-app-select-get-function-url.png)
+
+1. Wählen Sie im Dialogfeld **Funktions-URL abrufen** im Dropdownmenü die Option **default** (Standard) und anschließend das Symbol **In Zwischenablage kopieren** aus. 
 
     ![Kopieren der URL der Funktion aus dem Azure-Portal](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-2. Fügen Sie die URL der Funktion in die Adressleiste Ihres Browsers ein. Fügen Sie den Wert der Abfragezeichenfolge `&name=<yourname>` am Ende der URL hinzu, und drücken Sie die Taste `Enter` auf Ihrer Tastatur, um die Anforderung auszuführen. Daraufhin sollte die von der Funktion zurückgegebene Antwort im Browser angezeigt werden.  
+1. Fügen Sie die URL der Funktion in die Adressleiste Ihres Browsers ein. Fügen Sie den Wert der Abfragezeichenfolge `?name=<your_name>` am Ende der URL hinzu, und drücken Sie die EINGABETASTE, um die Anforderung auszuführen. 
 
     Das folgende Beispiel zeigt die Antwort im Browser:
 
@@ -69,7 +69,7 @@ Nun können Sie die neue Funktion ausführen, indem Sie eine HTTP-Anforderung se
 
     Die Anfrage-URL enthält einen Schlüssel, der standardmäßig über HTTP auf Ihre Funktion zugreifen muss.
 
-3. Wenn Ihre Funktion ausgeführt wird, werden Nachverfolgungsinformationen in die Protokolle geschrieben. Kehren Sie zu Ihrer Funktion im Portal zurück, und klicken Sie am unteren Bildschirmrand auf den Pfeil, um **Protokolle** zu erweitern und die Nachverfolgungsausgabe der vorherigen Ausführung anzuzeigen.
+1. Wenn Ihre Funktion ausgeführt wird, werden Nachverfolgungsinformationen in die Protokolle geschrieben. Um die Nachverfolgungsausgabe anzuzeigen, kehren Sie zur Seite **Code + testen** im Portal zurück, und erweitern Sie den Pfeil **Protokolle** am unteren Rand der Seite.
 
    ![Viewer der Funktionsprotokolle im Azure-Portal](./media/functions-create-first-azure-function/function-view-logs.png)
 
@@ -79,8 +79,4 @@ Nun können Sie die neue Funktion ausführen, indem Sie eine HTTP-Anforderung se
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben eine Funktions-App mit einer einfachen Funktion erstellt, die per HTTP ausgelöst wird.  
-
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
-
-Weitere Informationen finden Sie unter [HTTP- und Webhookbindungen in Azure Functions](functions-bindings-http-webhook.md).

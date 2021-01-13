@@ -1,161 +1,116 @@
 ---
-title: Konfigurieren des TCP-Leerlauftimeouts in Azure für den Load Balancer
-titlesuffix: Azure Load Balancer
-description: Konfigurieren des TCP-Leerlauftimeouts für den Load Balancer
+title: Konfigurieren der TCP-Zurücksetzung und des Leerlauftimeouts für Load Balancer
+titleSuffix: Azure Load Balancer
+description: In diesem Artikel erfahren Sie, wie die TCP-Zurücksetzung und das Leerlauftimeout für Azure Load Balancer konfiguriert werden.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 10/26/2020
 ms.author: allensu
-ms.openlocfilehash: b3df1ead7a3164ffd9a4b4acf8820d0f5b82cee3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8a6be588544883b77c3ff115c9dba5e6ecd5fbd7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274182"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747203"
 ---
-# <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Konfigurieren der TCP-Leerlauftimeout-Einstellungen für Azure Load Balancer
+# <a name="configure-tcp-reset-and-idle-timeout-for-azure-load-balancer"></a>Konfigurieren der TCP-Zurücksetzung und des Leerlauftimeouts für Azure Load Balancer
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+Azure Load Balancer weist den folgenden Leerlauftimeoutbereich auf:
 
-In der Standardkonfiguration ist der Azure Load Balancer auf ein Leerlauftimeout von 4 Minuten eingestellt. Wenn die Dauer einer Inaktivitätsperiode den Timeoutwert überschreitet, gibt es keine Garantie dafür, dass die TCP- oder HTTP-Sitzung zwischen dem Client und Ihrem Clouddienst aufrechterhalten wird.
+* 4 Minuten bis 100 Minuten für Ausgangsregeln
+* 4 Minuten bis 30 Minuten für Load Balancer-Regeln und NAT-Regeln für eingehenden Datenverkehr
 
-Sobald die Verbindung geschlossen wird, wird in der Clientanwendung möglicherweise die folgende Fehlermeldung angezeigt: „Die zugrunde liegende Verbindung wurde geschlossen: Eine Verbindung, deren Aufrechterhaltung erwartet wurde, wurde vom Server geschlossen.“
+Standardmäßig ist der Wert auf 4 Minuten festgelegt. Wenn ein Inaktivitätszeitraum den Timeoutwert überschreitet, gibt es keine Garantie dafür, dass die TCP- oder HTTP-Sitzung zwischen dem Client und Ihrem Dienst aufrechterhalten wird. 
 
-Eine gängige Methode zur Aufrechterhaltung von Verbindungen ist TCP-Keep-Alive. Dadurch bleibt die Verbindung länger aktiv. Weitere Informationen finden Sie in [diesen .NET-Beispielen](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Bei aktivierter Keep-Alive-Funktion werden während inaktiver Phasen Pakete über die Verbindung gesendet. Diese Keep-Alive-Pakete sorgen dafür, dass der Wert für das Leerlauftimeout niemals erreicht und die Verbindung über einen langen Zeitraum aufrechterhalten wird.
+In den folgenden Abschnitten wird beschrieben, wie Sie die Einstellungen für Leerlauftimeout und TCP-Zurücksetzung für Load Balancer-Ressourcen ändern.
 
-Diese Einstellung funktioniert nur für eingehende Verbindungen. Um den Verlust der Verbindung zu vermeiden, müssen Sie entweder für den TCP-Keep-Alive ein Intervall konfigurieren, das kürzer ist als das Leerlauftimeout, oder umgekehrt den Leerlauftimeout-Wert verlängern. Für solche Szenarien haben wir Unterstützung für konfigurierbare Leerlauftimeouts hinzugefügt. Sie können nun eine Dauer von 4 bis 30 Minuten festlegen.
+## <a name="set-tcp-reset-and-idle-timeout"></a>Festlegen der TCP-Zurücksetzung und des Leerlauftimeouts
+---
+# <a name="portal"></a>[**Portal**](#tab/tcp-reset-idle-portal)
 
-TCP-Keep-Alive eignet sich für Szenarien, in denen die Akkulaufzeit kein limitierender Faktor ist. Bei mobilen Anwendungen ist die Verwendung dieser Funktion hingegen nicht empfehlenswert. TCP-Keep-Alive kann bei mobilen Anwendungen zu einer schnelleren Entladung des Geräteakkus führen.
+Um das Leerlauftimeout und die TCP-Zurücksetzung für eine Load Balancer-Ressource festzulegen, bearbeiten Sie die Load Balancer-Regel. 
 
-![TCP-Timeout](./media/load-balancer-tcp-idle-timeout/image1.png)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-In den folgenden Abschnitten wird das Ändern von Leerlauftimeout-Einstellungen von virtuellen Computern und Clouddiensten beschrieben.
+2. Wählen Sie im linken Menü die Option **Ressourcengruppen** aus.
 
-## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>Festlegen des TCP-Timeouts für Ihre öffentliche IP auf Instanzebene auf 15 Minuten
+3. Wählen Sie die Ressourcengruppe für Ihre Load Balancer-Ressource aus. In diesem Beispiel heißt die Ressourcengruppe **myResourceGroup**.
 
-```powershell
-Set-AzurePublicIP -PublicIPName webip -VM MyVM -IdleTimeoutInMinutes 15
+4. Wählen Sie Ihren Load Balancer aus. In diesem Beispiel heißt die Ressourcengruppe **myLoadBalancer**.
+
+5. Wählen Sie unter **Einstellungen** die Option **Lastenausgleichsregeln** aus.
+
+     :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules.png" alt-text="Bearbeiten von Lastenausgleichsregeln" border="true":::
+
+6. Wählen Sie Ihre Lastenausgleichsregel aus. In diesem Beispiel heißt die Lastenausgleichsregel **myLBrule**.
+
+7. Verschieben Sie in der Lastenausgleichsregel den Schieberegler **Leerlauftimeout (Minuten)** zum gewünschten Timeoutwert.  
+
+8. Wählen Sie unter **TCP-Zurücksetzung** die Option **Aktiviert** aus.
+
+   :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules-tcp-reset.png" alt-text="Festlegen von Leerlauftimeout und TCP-Zurücksetzung" border="true":::
+
+9. Wählen Sie **Speichern** aus.
+
+# <a name="powershell"></a>[**PowerShell**](#tab/tcp-reset-idle-powershell)
+
+Zum Festlegen von Leerlauftimeout und TCP-Zurücksetzung geben Sie mithilfe von [Set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer) Werte für die folgenden Parameter für Lastenausgleichsregeln an:
+
+* **IdleTimeoutInMinutes**
+* **EnableTcpReset**
+
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 5.4.1 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+
+Ersetzen Sie die folgenden Beispiele durch die Werte aus Ihren Ressourcen:
+
+* **myResourceGroup**
+* **myLoadBalancer**
+
+```azurepowershell
+$lb = Get-AzLoadBalancer -Name "myLoadBalancer" -ResourceGroup "myResourceGroup"
+$lb.LoadBalancingRules[0].IdleTimeoutInMinutes = '15'
+$lb.LoadBalancingRules[0].EnableTcpReset = 'true'
+Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
-`IdleTimeoutInMinutes` ist optional. Wenn dieser Wert nicht festgelegt ist, beträgt das Standardtimeout vier Minuten. Der zulässige Timeoutbereich beträgt 4 bis 30 Minuten.
+# <a name="azure-cli"></a>[**Azure CLI**](#tab/tcp-reset-idle-cli)
 
-## <a name="set-the-idle-timeout-when-creating-an-azure-endpoint-on-a-virtual-machine"></a>Festlegen des Leerlauftimeouts beim Erstellen eines Azure-Endpunkts auf einem virtuellen Computer
+Zum Festlegen von Leerlauftimeout und TCP-Zurücksetzung verwenden Sie die folgenden Parameter für [az network lb rule update](/cli/azure/network/lb/rule?az_network_lb_rule_update):
 
-Verwenden Sie Folgendes, um die Timeouteinstellung für einen Endpunkt zu ändern:
+* **--idle-timeout**
+* **--enable-tcp-reset**
 
-```powershell
-Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 -IdleTimeoutInMinutes 15| Update-AzureVM
+Überprüfen Sie Ihre Umgebung, bevor Sie beginnen:
+
+* Melden Sie sich beim Azure-Portal an, und führen Sie `az login` aus, um sich zu vergewissern, dass Ihr Abonnement aktiv ist.
+* Überprüfen Sie Ihre Version der Azure-Befehlszeilenschnittstelle, indem Sie in einem Terminal oder Befehlsfenster `az --version`ausführen. Die neueste Version finden Sie unter [Versionshinweise für die Azure CLI](/cli/azure/release-notes-azure-cli?tabs=azure-cli).
+  * Sollten Sie nicht über die neueste Version verfügen, aktualisieren Sie Ihre Installation wie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli) beschrieben.
+
+Ersetzen Sie die folgenden Beispiele durch die Werte aus Ihren Ressourcen:
+
+* **myResourceGroup**
+* **myLoadBalancer**
+* **myLBrule**
+
+
+```azurecli
+az network lb rule update \
+    --resource-group myResourceGroup \
+    --name myLBrule \
+    --lb-name myLoadBalancer \
+    --idle-timeout 15 \
+    --enable-tcp-reset true
 ```
-
-Verwenden Sie den folgenden Befehl, um Ihre Leerlauftimeout-Konfiguration abzurufen:
-
-    PS C:\> Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Get-AzureEndpoint
-    VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
-    LBSetName : MyLoadBalancedSet
-    LocalPort : 80
-    Name : HTTP
-    Port : 80
-    Protocol : tcp
-    Vip : 65.52.xxx.xxx
-    ProbePath :
-    ProbePort : 80
-    ProbeProtocol : tcp
-    ProbeIntervalInSeconds : 15
-    ProbeTimeoutInSeconds : 31
-    EnableDirectServerReturn : False
-    Acl : {}
-    InternalLoadBalancerName :
-    IdleTimeoutInMinutes : 15
-
-## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>Festlegen des TCP-Timeouts für einen Endpunktsatz mit Lastenausgleich
-
-Wenn Endpunkte Bestandteil eines Endpunktsatzes mit Lastenausgleich sind, muss das TCP-Timeout für den Endpunktsatz mit Lastenausgleich festgelegt werden. Beispiel:
-
-```powershell
-Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
-```
-
-## <a name="change-timeout-settings-for-cloud-services"></a>Ändern von Timeouteinstellungen für Clouddienste
-
-Sie können das Azure SDK verwenden, um Ihren Clouddienst zu aktualisieren. Endpunkteinstellungen für Clouddienste nehmen Sie in der CSDEF-Datei vor. Das Aktualisieren des TCP-Timeouts für die Bereitstellung eines Clouddiensts erfordert ein Upgrade der Bereitstellung. Ausnahme: Das TCP-Timeout wird nur für eine öffentliche IP festgelegt. Einstellungen für die öffentliche IP sind in der CSCFG-Datei gespeichert, und Sie können sie während des Updates und Upgrades der Bereitstellung aktualisieren.
-
-In der CSDEF-Datei müssen die Einstellungen für einen Endpunkt folgendermaßen geändert werden:
-
-```xml
-<WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
-    <Endpoints>
-    <InputEndpoint name="input-endpoint-name" protocol="[http|https|tcp|udp]" localPort="local-port-number" port="port-number" certificate="certificate-name" loadBalancerProbe="load-balancer-probe-name" idleTimeoutInMinutes="tcp-timeout" />
-    </Endpoints>
-</WorkerRole>
-```
-
-Die Änderungen in der CSCFG-Datei für die Timeouteinstellung für öffentliche IP-Adressen lauten:
-
-```xml
-<NetworkConfiguration>
-    <VirtualNetworkSite name="VNet"/>
-    <AddressAssignments>
-    <InstanceAddress roleName="VMRolePersisted">
-    <PublicIPs>
-        <PublicIP name="public-ip-name" idleTimeoutInMinutes="timeout-in-minutes"/>
-    </PublicIPs>
-    </InstanceAddress>
-    </AddressAssignments>
-</NetworkConfiguration>
-```
-
-## <a name="rest-api-example"></a>REST-API-Beispiel
-
-Sie können das TCP-Leerlauftimeout mithilfe der Dienstverwaltungs-API konfigurieren. Vergewissern Sie sich, dass der `x-ms-version`-Header mindestens auf Version `2014-06-01` festgelegt ist. Aktualisieren Sie die Konfiguration der angegebenen Eingabeendpunkte mit Lastenausgleich auf allen virtuellen Computern in einer Bereitstellung.
-
-### <a name="request"></a>Anforderung
-
-    POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>
-
-### <a name="response"></a>response
-
-```xml
-<LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
-    <InputEndpoint>
-    <LoadBalancedEndpointSetName>endpoint-set-name</LoadBalancedEndpointSetName>
-    <LocalPort>local-port-number</LocalPort>
-    <Port>external-port-number</Port>
-    <LoadBalancerProbe>
-        <Path>path-of-probe</Path>
-        <Port>port-assigned-to-probe</Port>
-        <Protocol>probe-protocol</Protocol>
-        <IntervalInSeconds>interval-of-probe</IntervalInSeconds>
-        <TimeoutInSeconds>timeout-for-probe</TimeoutInSeconds>
-    </LoadBalancerProbe>
-    <LoadBalancerName>name-of-internal-loadbalancer</LoadBalancerName>
-    <Protocol>endpoint-protocol</Protocol>
-    <IdleTimeoutInMinutes>15</IdleTimeoutInMinutes>
-    <EnableDirectServerReturn>enable-direct-server-return</EnableDirectServerReturn>
-    <EndpointACL>
-        <Rules>
-        <Rule>
-            <Order>priority-of-the-rule</Order>
-            <Action>permit-rule</Action>
-            <RemoteSubnet>subnet-of-the-rule</RemoteSubnet>
-            <Description>description-of-the-rule</Description>
-        </Rule>
-        </Rules>
-    </EndpointACL>
-    </InputEndpoint>
-</LoadBalancedEndpointList>
-```
-
+---
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Interner Lastenausgleich (Übersicht)](load-balancer-internal-overview.md)
+Weitere Informationen zu Leerlauftimeout und TCP-Zurücksetzung finden Sie unter [TCP-Zurücksetzung und Leerlauftimeout für Load Balancer](load-balancer-tcp-reset.md).
 
-[Erste Schritte zum Konfigurieren eines Lastenausgleichs für Internetverbindungen](load-balancer-get-started-internet-arm-ps.md)
-
-[Konfigurieren eines Lastenausgleichs-Verteilungsmodus](load-balancer-distribution-mode.md)
+Weitere Informationen zum Konfigurieren des Load Balancer-Verteilungsmodus finden Sie unter [Konfigurieren des Verteilungsmodus für Azure Load Balancer](load-balancer-distribution-mode.md).

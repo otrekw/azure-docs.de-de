@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: bd83d915b51ab44d4287987e3da7113722910262
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 015b8e400e9d386fff8f35756a77139e61bbaff1
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020239"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809291"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Schema und Datenaggregation in Traffic Analytics
 
@@ -39,11 +39,11 @@ Traffic Analytics ist eine cloudbasierte Lösung, die Einblick in Benutzer- und 
 5. Das Feld „FlowStartTime_t“ gibt das erste Vorkommen eines solchen aggregierten Flows (gleiches 4-Tupel) im Verarbeitungsintervall des Flowprotokolls zwischen „FlowIntervalStartTime_t“ und „FlowIntervalEndTime_t“ an.
 6. Bei allen Ressourcen in Traffic Analytics handelt es sich bei den auf der Benutzeroberfläche angezeigten Flows um alle Flows, die von Mitgliedern der Netzwerksicherheitsgruppe gesehen werden. In Log Analytics sehen Benutzer jedoch nur den einzelnen, zusammengefassten Datensatz. Um alle Flows anzuzeigen, verwenden Sie das Feld „blob_id“, auf das aus dem Speicher verwiesen werden kann. Die Gesamtanzahl von Flows für diesen Datensatz entspricht den einzelnen Flows, die im Blob zu sehen sind.
 
-Die untenstehende Abfrage hilft Ihnen, sich alle Flowprotokolle aus lokalen Systemen der letzten 30 Tage anzusehen.
+Mit der folgenden Abfrage können Sie alle Subnetze untersuchen, die in den letzten 30 Tagen mit öffentlichen Nicht-Azure-IP-Adressen interagiert haben.
 ```
 AzureNetworkAnalytics_CL
 | where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
-| project Subnet_s  
+| project Subnet1_s, Subnet2_s  
 ```
 Sie können die untenstehende Abfrage verwenden, um den Blobpfad für die Flows der obengenannten Abfrage aufzurufen:
 
@@ -116,8 +116,8 @@ Im Folgenden werden die Felder im Schema und ihre Bedeutung aufgeführt.
 | L7Protocol_s  | Name des Protokolls | Wird aus dem Zielport abgeleitet. |
 | FlowDirection_s | * I = Inbound (eingehend)<br> * O = Outbound (ausgehend) | Richtung des Flows in die oder aus der NSG gemäß Flowprotokoll. |
 | FlowStatus_s  | * A = Allowed by NSG Rule (durch NSG-Regel zugelassen) <br> *  D = Denied by NSG Rule (durch NSG-Regel abgelehnt)  | Status des durch die NSG zugelassenen oder abgelehnten Flows gemäß Flowprotokoll. |
-| NSGList_s | \<ABONNEMENT-ID>\/<NAME_DER_RESSOURCENGRUPPE>\/<NAME_DER_NSG> | Die NSG (Netzwerksicherheitsgruppe), die dem Flow zugeordnet ist. |
-| NSGRules_s | \<Indexwert 0)>\|\<NAME_DER_NSG_REGEL>\|\<Flowrichtung>\|\<Flowstatus>\|\<FlowCount ProcessedByRule> |  Die NSG-Regel, die diesen Flow zugelassen oder abgelehnt hat. |
+| NSGList_s | \<SUBSCRIPTIONID>\/<NAME_DER_RESSOURCENGRUPPE>\/<NAME_DER_NSG> | Die NSG (Netzwerksicherheitsgruppe), die dem Flow zugeordnet ist. |
+| NSGRules_s | \<Index value 0)>\|\<NSG_RULENAME>\|\<Flow Direction>\|\<Flow Status>\|\<FlowCount ProcessedByRule> |  Die NSG-Regel, die diesen Flow zugelassen oder abgelehnt hat. |
 | NSGRule_s | NSG_RULENAME |  Die NSG-Regel, die diesen Flow zugelassen oder abgelehnt hat. |
 | NSGRuleType_s | * User Defined *  Default (benutzerdefiniert, Standardwert) |   Der vom Flow verwendete NSG-Regeltyp. |
 | MACAddress_s | MAC-Adresse | Die MAC-Adresse des Netzwerkadapters, an dem der Flow erfasst wurde. |
@@ -127,23 +127,23 @@ Im Folgenden werden die Felder im Schema und ihre Bedeutung aufgeführt.
 | Region_s | Azure-Region des virtuellen Netzwerks, der Netzwerkschnittstelle oder der VM, zu dem bzw. der die IP im Flow gehört. | Gilt nur für diese Flowtypen; S2S, P2S, AzurePublic, ExternalPublic, MaliciousFlow, UnknownPrivate (Flowtypen, bei denen es sich bei nur einer Seite um Azure handelt). |
 | Region1_s | Azure-Region | Azure-Region des virtuellen Netzwerks, der Netzwerkschnittstelle oder der VM, zu dem bzw. der die Quell-IP im Flow gehört. |
 | Region2_s | Azure-Region | Azure-Region des virtuellen Netzwerks, zu dem die Ziel-IP im Flow gehört. |
-| NIC_s | \<Name_der_Ressourcengruppe>\/\<Name_der_Netzwerkschnittstelle> |  Der Netzwerkadapter, der der VM zugeordnet ist, die Datenverkehr sendet oder empfängt. |
-| NIC1_s | Name_der_Ressourcengruppe>/\<Name_der_Netzwerkschnittstelle> | Der Netzwerkadapter, der der Quell-IP im Flow zugeordnet ist. |
-| NIC2_s | Name_der_Ressourcengruppe>/\<Name_der_Netzwerkschnittstelle> | Der Netzwerkadapter, der der Ziel-IP im Flow zugeordnet ist. |
-| VM_s | <Name_der_Ressourcengruppe>\/\<Name_der_Netzwerkschnittstelle> | Die VM, die der Netzwerkschnittstelle „NIC_s“ zugeordnet ist. |
-| VM1_s | <Name_der_Ressourcengruppe>/\<Name_der_VM> | Die VM, die der Quell-IP im Flow zugeordnet ist. |
-| VM2_s | <Name_der_Ressourcengruppe>/\<Name_der_VM> | Die VM, die der Ziel-IP im Flow zugeordnet ist. |
-| Subnet_s | <Name_der_Ressourcengruppe>/<Name_des_virtuellen_Netzwerks>/\<Name_des_Subnetzes> | Das Subnetz, das „NIC_s“ zugeordnet ist. |
-| Subnet1_s | <Name_der_Ressourcengruppe>/<Name_des_virtuellen_Netzwerks>/\<Name_des_Subnetzes> | Das Subnetz, das der Quell-IP im Flow zugeordnet ist. |
-| Subnet2_s | <Name_der_Ressourcengruppe>/<Name_des_virtuellen_Netzwerks>/\<Name_des_Subnetzes>    | Das Subnetz, das der Ziel-IP im Flow zugeordnet ist. |
-| ApplicationGateway1_s | \<Abonnement-ID>/\<Name_der_Ressourcengruppe>/\<Name_des_Anwendungsgateways> | Das Anwendungsgateway, das der Quell-IP im Flow zugeordnet ist. |
-| ApplicationGateway2_s | \<Abonnement-ID>/\<Name_der_Ressourcengruppe>/\<Name_des_Anwendungsgateways> | Das Anwendungsgateway, das der Ziel-IP im Flow zugeordnet ist. |
-| LoadBalancer1_s | \<Abonnement-ID>/\<Name_der_Ressourcengruppe>/\<Name_des_Lastenausgleichsmoduls> | Das Lastenausgleichsmodul, das der Quell-IP im Flow zugeordnet ist. |
-| LoadBalancer2_s | \<Abonnement-ID>/\<Name_der_Ressourcengruppe>/\<Name_des_Lastenausgleichsmoduls> | Das Lastenausgleichsmodul, das der Ziel-IP im Flow zugeordnet ist. |
-| LocalNetworkGateway1_s | \<Abonnement-ID>/\<Name_der_Ressourcengruppe>/\<Name_des_lokalen_Netzwerkgateways> | Das lokale Netzwerkgateway, das der Quell-IP im Flow zugeordnet ist. |
-| LocalNetworkGateway2_s | \<Abonnement-ID>/\<Name_der_Ressourcengruppe>/\<Name_des_lokalen_Netzwerkgateways> | Das lokale Netzwerkgateway, das der Ziel-IP im Flow zugeordnet ist. |
+| NIC_s | \<resourcegroup_Name>\/\<NetworkInterfaceName> |  Der Netzwerkadapter, der der VM zugeordnet ist, die Datenverkehr sendet oder empfängt. |
+| NIC1_s | <Name_der_Ressourcengruppe>/\<NetworkInterfaceName> | Der Netzwerkadapter, der der Quell-IP im Flow zugeordnet ist. |
+| NIC2_s | <Name_der_Ressourcengruppe>/\<NetworkInterfaceName> | Der Netzwerkadapter, der der Ziel-IP im Flow zugeordnet ist. |
+| VM_s | <Name_der_Ressourcengruppe>\/\<NetworkInterfaceName> | Die VM, die der Netzwerkschnittstelle „NIC_s“ zugeordnet ist. |
+| VM1_s | <Name_der_Ressourcengruppe>/\<VirtualMachineName> | Die VM, die der Quell-IP im Flow zugeordnet ist. |
+| VM2_s | <Name_der_Ressourcengruppe>/\<VirtualMachineName> | Die VM, die der Ziel-IP im Flow zugeordnet ist. |
+| Subnet_s | <Name_der_Ressourcengruppe>/<VNET_Name>/\<SubnetName> | Das Subnetz, das „NIC_s“ zugeordnet ist. |
+| Subnet1_s | <Name_der_Ressourcengruppe>/<VNET_Name>/\<SubnetName> | Das Subnetz, das der Quell-IP im Flow zugeordnet ist. |
+| Subnet2_s | <Name_der_Ressourcengruppe>/<VNET_Name>/\<SubnetName>    | Das Subnetz, das der Ziel-IP im Flow zugeordnet ist. |
+| ApplicationGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Das Anwendungsgateway, das der Quell-IP im Flow zugeordnet ist. |
+| ApplicationGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Das Anwendungsgateway, das der Ziel-IP im Flow zugeordnet ist. |
+| LoadBalancer1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Das Lastenausgleichsmodul, das der Quell-IP im Flow zugeordnet ist. |
+| LoadBalancer2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Das Lastenausgleichsmodul, das der Ziel-IP im Flow zugeordnet ist. |
+| LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Das lokale Netzwerkgateway, das der Quell-IP im Flow zugeordnet ist. |
+| LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Das lokale Netzwerkgateway, das der Ziel-IP im Flow zugeordnet ist. |
 | ConnectionType_s | Mögliche Werte: VNetPeering, VpnGateway und ExpressRoute. |    Verbindungstyp. |
-| ConnectionName_s | \<Abonnement-ID>/\<Name_der_Ressourcengruppe>/\<Name_der_Verbindung> | Verbindungsname |
+| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | Verbindungsname. Bei Flowtyp P2S wird dies als <gateway name>_<VPN Client IP> formatiert. |
 | ConnectingVNets_s | Durch Leerzeichen getrennte Liste mit Namen virtueller Netzwerke | Im Fall einer Hub-Spoke-Topologie werden hier virtuelle Hubnetzwerke aufgefüllt. |
 | Country_s | Zweibuchstabiger Ländercode (ISO 3166-1 Alpha-2) | Wird für den Flowtyp „ExternalPublic“ aufgefüllt. Alle IP-Adressen im Feld „PublicIPs_s“ weisen den gleichen Ländercode auf. |
 | AzureRegion_s | Standorte in der Azure-Region | Wird für den Flowtyp „AzurePublic“ aufgefüllt. Alle IP-Adressen im Feld „PublicIPs_s“ weisen die gleiche Azure-Region auf. |
@@ -157,9 +157,9 @@ Im Folgenden werden die Felder im Schema und ihre Bedeutung aufgeführt.
 | InboundBytes_d |  Empfangene Bytes, die an der Netzwerkschnittstelle erfasst wurden, an der die NSG-Regel angewendet wurde | Dies wird nur für Version 2 des NSG-Flowprotokollschemas aufgefüllt. |
 | OutboundBytes_d | Gesendete Bytes, die an der Netzwerkschnittstelle erfasst wurden, an der die NSG-Regel angewendet wurde | Dies wird nur für Version 2 des NSG-Flowprotokollschemas aufgefüllt. |
 | CompletedFlows_d  |  | Dies wird nur für Version 2 des NSG-Flowprotokollschemas mit einem Wert aufgefüllt, der nicht Null ist. |
-| PublicIPs_s | <ÖFFENTLICHEP_IP>\|\<ANZAHL_GESTARTETER_FLOWS>\|\<ANZAHL_BEENDETER_FLOWS>\|\<AUSGEHENDE_PAKETE>\|\<EINGEHENDE_PAKETE>\|\<AUSGEHENDE_BYTES>\|\<EINGEHENDE_BYTES> | Einträge sind durch Balken getrennt. |
-| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Einträge sind durch Balken getrennt. |
-| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Einträge sind durch Balken getrennt. |
+| PublicIPs_s | <ÖFFENTLICHE_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Einträge sind durch Balken getrennt. |
+| SrcPublicIPs_s | <ÖFFENTLICHE_QUELL_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Einträge sind durch Balken getrennt. |
+| DestPublicIPs_s | <ÖFFENTLICHE_ZIEL_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Einträge sind durch Balken getrennt. |
 
 ### <a name="notes"></a>Notizen
 

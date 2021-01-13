@@ -1,30 +1,23 @@
 ---
-title: Tutorial – Installieren von Anwendungen auf einem virtuellen Windows-Computer in Azure | Microsoft-Dokumentation
+title: 'Tutorial: Installieren von Anwendungen auf einem virtuellen Windows-Computer in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie die benutzerdefinierte Skripterweiterung zum Ausführen von Skripts und Bereitstellen von Anwendungen auf virtuellen Windows-Computern in Azure verwenden.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 02c038a1eefefb62dceb42e511b9a895691ef47b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e9a5cb463646762c262cc3c8e27123a768ef11d8
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101718"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914738"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Tutorial: Bereitstellen von Anwendungen auf einem virtuellen Windows-Computer in Azure mit der benutzerdefinierten Skripterweiterung
 
-Virtuelle Computer (virtual machines, VMs) können unter Verwendung der [benutzerdefinierten Skripterweiterung für Windows](extensions-customscript.md) schnell und konsistent konfiguriert werden. In diesem Tutorial lernen Sie Folgendes:
+Virtuelle Computer (virtual machines, VMs) können unter Verwendung der [benutzerdefinierten Skripterweiterung für Windows](../extensions/custom-script-windows.md) schnell und konsistent konfiguriert werden. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Verwenden der benutzerdefinierten Skripterweiterung zur Installation von IIS
@@ -46,13 +39,13 @@ Sie können die benutzerdefinierte Skripterweiterung mit Windows- und Linux-VMs 
 
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
-Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) den Benutzernamen und das Kennwort des Administrators des virtuellen Computers fest:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) den Benutzernamen und das Kennwort des Administrators des virtuellen Computers fest:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Nun können Sie mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) den virtuellen Computer erstellen. Im folgenden Beispiel wird eine VM mit dem Namen *myVM* für den Standort *EastUS* erstellt. Falls sie nicht bereits vorhanden sind, werden die Ressourcengruppe *myResourceGroupAutomate* und unterstützende Netzwerkressourcen erstellt. Um Webdatenverkehr zuzulassen, öffnet das Cmdlet auch Port *80*.
+Nun können Sie mit [New-AzVM](/powershell/module/az.compute/new-azvm) den virtuellen Computer erstellen. Im folgenden Beispiel wird eine VM mit dem Namen *myVM* für den Standort *EastUS* erstellt. Falls sie nicht bereits vorhanden sind, werden die Ressourcengruppe *myResourceGroupAutomate* und unterstützende Netzwerkressourcen erstellt. Um Webdatenverkehr zuzulassen, öffnet das Cmdlet auch Port *80*.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -71,7 +64,7 @@ Die Erstellung der Ressourcen und VM dauert einige Minuten.
 
 
 ## <a name="automate-iis-install"></a>Automatisieren der Installation von IIS
-Verwenden Sie [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension), um die benutzerdefinierte Skripterweiterung zu installieren. Die Erweiterung führt `powershell Add-WindowsFeature Web-Server` zum Installieren des IIS-Webservers aus und aktualisiert dann die Seite *Default.htm* mit dem Hostnamen der VM:
+Verwenden Sie [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension), um die benutzerdefinierte Skripterweiterung zu installieren. Die Erweiterung führt `powershell Add-WindowsFeature Web-Server` zum Installieren des IIS-Webservers aus und aktualisiert dann die Seite *Default.htm* mit dem Hostnamen der VM:
 
 ```azurepowershell-interactive
 Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
@@ -86,7 +79,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
 
 
 ## <a name="test-web-site"></a>Testen der Website
-Rufen Sie mit [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse Ihres Lastenausgleichs ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIPAddress* abgerufen, die wir zuvor erstellt haben:
+Rufen Sie mit [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse Ihres Lastenausgleichs ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIPAddress* abgerufen, die wir zuvor erstellt haben:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -101,7 +94,7 @@ Geben Sie die öffentliche IP-Adresse in einem Webbrowser ein. Die Website wird 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie die IIS-Installation auf einem virtuellen Computer automatisiert. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie die IIS-Installation auf einem virtuellen Computer automatisiert. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Verwenden der benutzerdefinierten Skripterweiterung zur Installation von IIS

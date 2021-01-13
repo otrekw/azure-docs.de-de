@@ -1,24 +1,24 @@
 ---
 title: 'Multiclass Neural Network: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit dem Modul „Multiclass Neural Network“ (Neuronales Netz mit mehreren Klassen) in Azure Machine Learning Service ein neuronales Netzmodell erstellen, mit dem Sie ein Ziel vorhersagen können, das mehrere Werte hat.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Multiclass Neural Network-Modul im Azure Machine Learning-Designer verwenden, um ein Ziel vorherzusagen, das mehrklassige Werte hat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 44d1e7606efd5bc6d2286254dc4863728e3edbfd
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 04/22/2020
+ms.openlocfilehash: a4f7f8a7793f31ffbf2099cbfb314fc5097319f5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128599"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421259"
 ---
 # <a name="multiclass-neural-network-module"></a>Modul „Multiclass Neural Network“ (Neuronales Netz mit mehreren Klassen)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Erstellen Sie mit diesem Modul ein neuronales Netzmodell, mit dem Sie ein Ziel mit mehreren Werten vorhersagen können. 
 
@@ -40,13 +40,13 @@ Um die Ausgabe des Netzes für eine bestimmte Eingabe zu berechnen, wird bei jed
 
 ## <a name="configure-multiclass-neural-network"></a>Konfigurieren des Multiclass Neural Network
 
-1. Fügen Sie auf der Benutzeroberfläche das Modul **Multiclass Neural Network** Ihrem Experiment hinzu. Sie finden dieses Modul unter **Machine Learning**, **Initialize** (Initialisieren) in der Kategorie **Classification** (Klassifizierung).
+1. Fügen Sie das Modul **Multiclass Neural Network** im Designer zu Ihrer Pipeline hinzu. Sie finden dieses Modul unter **Machine Learning**, **Initialize** (Initialisieren) in der Kategorie **Classification** (Klassifizierung).
 
 2. **Create trainer mode** (Trainermodus erstellen): Verwenden Sie diese Option, um anzugeben, wie das Modell trainiert werden soll:
 
     - **Single Parameter** (Einzelner Parameter): Wählen Sie diese Option, wenn Sie bereits wissen, wie Sie das Modell konfigurieren möchten.
 
-    
+    - **Parameter Range** (Parameterbereich): Wählen Sie diese Option, wenn Sie nicht sicher sind, welche Parameter am besten geeignet sind, und einen Parametersweep ausführen möchten. Wählen Sie einen Wertebereich aus, über den iteriert werden soll. Anschließend iteriert das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) über alle möglichen Kombinationen der von Ihnen angegebenen Einstellungen, um die Hyperparameter zur Erzielung der optimalen Ergebnisse zu bestimmen.  
 
 3. **Hidden layer specification** (Ausgeblendete Schichtspezifikation): Wählen Sie den Typ der zu erstellenden Netzwerkarchitektur aus.
 
@@ -61,7 +61,7 @@ Um die Ausgabe des Netzes für eine bestimmte Eingabe zu berechnen, wird bei jed
   
    
 
-5. **Number of hidden nodes** (Anzahl der ausgeblendeten Knoten): Mit dieser Option können Sie die Anzahl der ausgeblendeten Knoten in der Standardarchitektur anpassen. Geben Sie die Anzahl der ausgeblendeten Knoten ein. Der Standardwert ist eine ausgeblendete Schicht mit 100 Knoten.
+5. **Number of hidden nodes** (Anzahl der ausgeblendeten Knoten): Mit dieser Option können Sie die Anzahl der ausgeblendeten Knoten in der Standardarchitektur anpassen. Geben Sie die Anzahl der ausgeblendeten Knoten ein. Der Standardwert ist eine verborgene Ebene mit 100 Knoten.
 
 6. **Die Lernrate**: Definieren Sie die Größe des bei jeder Iteration vor der Korrektur ausgeführten Schritts. Ein höherer Wert für die Lernrate kann dazu führen, dass das Modell schneller konvergiert, es kann jedoch auch lokale Mindestwerte unterschreiten.
 
@@ -73,24 +73,31 @@ Um die Ausgabe des Netzes für eine bestimmte Eingabe zu berechnen, wird bei jed
   
 11. **Shuffle examples** (Beispiele mischen): Wählen Sie diese Option, um Fälle zwischen den Iterationen zu mischen.
 
-    Wenn Sie diese Option deaktivieren, werden Fälle in genau der Reihenfolge jedes Mal verarbeitet, die Sie das Experiment ausführen.
+    Wenn Sie diese Option deaktivieren, werden die Fälle bei jeder Ausführung der Pipeline in exakt der gleichen Reihenfolge verarbeitet.
 
-12. **Random number seed** (Startwert der Zufallszahlen): Geben Sie einen als Startwert zu verwendenden Wert ein, wenn Sie die Wiederholbarkeit für alle Ausführungen desselben Experiments sicherstellen möchten.
+12. **Random number seed** (Zufälliger Startwert): Geben Sie einen als Startwert zu verwendenden Wert ein, wenn Sie die Wiederholbarkeit für alle Ausführungen derselben Pipeline sicherstellen möchten.
 
-14. Stellen Sie eine Verbindung eines Trainingsdatasets mit einem der [Trainingsmodule](module-reference.md) her: 
+14. Trainieren des Modells:
 
-    - Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie [Train Model](train-model.md) verwenden.  
+    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie ein mit Tags versehenes Dataset und das Modul [Train Model](train-model.md) (Modell trainieren) verbinden.  
+  
+    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Parameter Range** (Parameterbereich) festlegen, verbinden Sie ein mit Tags versehenes Dataset, und trainieren Sie das Modell mithilfe von [Tune Model Hyperparameters](tune-model-hyperparameters.md).  
+  
+    > [!NOTE]
+    > 
+    > Wenn Sie einen Parameterbereich an [Train Model](train-model.md) übergeben, wird nur der Standardwert in der Liste der Einzelparameter verwendet.  
+    > 
+    > Wenn Sie eine einzelne Reihe bestimmter Parameterwerte an das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) übergeben und ein Bereich von Einstellungen für jeden Parameter erwartet wird, werden die Werte ignoriert und stattdessen die Standardwerte für den Learner verwendet.  
+    > 
+    > Wenn Sie die Option **Parameter Range** (Parameterbereich) auswählen und einen einzelnen Wert für einen beliebigen Parameter eingeben, wird dieser angegebene einzelne Wert während des gesamten Löschvorgangs verwendet, auch wenn andere Parameter in einem Wertebereich geändert werden.  
   
 
 ## <a name="results"></a>Ergebnisse
 
 Nach Abschluss des Trainings:
 
-- Um eine Zusammenfassung der Parameter des Modells sowie der aus dem Training gewonnenen Featuregewichtungen und anderer Parameter des neuronalen Netzes zu sehen, klicken Sie mit der rechten Maustaste auf die Ausgabe von [Train Model](./train-model.md), und wählen Sie **Visualize** (Visualisieren) aus.  
-
-- Um eine Momentaufnahme des trainierten Modells zu speichern, klicken Sie mit der rechten Maustaste auf die Ausgabe **Trained model** (Trainiertes Modell), und wählen Sie **Save As Trained Model** (Als trainiertes Modell speichern) aus. Dieses Modell wird bei nachfolgenden Ausführungen desselben Experiments nicht aktualisiert.
-
+- Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Registerkarte **Ausgaben** im rechten Bereich des Moduls **Train model** aus. Wählen Sie das Symbol **Register dataset** (Dataset registrieren) aus, um das Modell als wiederverwendbares Modul zu speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

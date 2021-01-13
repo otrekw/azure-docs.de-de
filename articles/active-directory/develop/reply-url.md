@@ -1,70 +1,108 @@
 ---
-title: Umleitungen/Beschränkungen und Einschränkungen der Antwort-URLs-Microsoft Identitätsplattform
-description: Antwort-URLs/Umleitungen von URls Einschränkungen und Einschränkungen
+title: Einschränkungen für Umleitungs-URI/Antwort-URL | Azure
+titleSuffix: Microsoft identity platform
+description: Beschrieben werden die Einschränkungen, die für das Format des Umleitungs-URIs (Antwort-URL) gelten, das von der Microsoft Identity-Plattform erzwungen wird.
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 06/29/2019
+ms.date: 11/23/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
-ms.reviewer: lenalepa, manrath
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1702a0c7ab2d2a76e6ec0e8b217539804a683ff7
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.reviewer: marsma, lenalepa, manrath
+ms.openlocfilehash: 30ea74b249937544a0bf9811cad60f02c1ca45c7
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834822"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95752784"
 ---
-# <a name="redirect-urireply-url-restrictions-and-limitations"></a>Umleitungs-URI/Antwort-URL: Einschränkungen
+# <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Einschränkungen für Umleitungs-URI/Antwort-URL
 
-Eine Redirect-URI oder Antwort-URL ist der Ort, an den der Autorisierungsserver den Benutzer sendet, sobald die App erfolgreich autorisiert wurde und ihm einen Autorisierungscode oder ein Zugriffstoken zugewiesen wurde. Der Code oder das Token ist im Redirect-URI oder Antwort-Token enthalten, daher ist es wichtig, dass Sie den richtigen Ort als Teil des App-Registrierungsprozesses registrieren.
+Ein Umleitungs-URI oder eine Antwort-URL definiert den Ort, an den der Autorisierungsserver den Benutzer leitet, sobald die App erfolgreich autorisiert und ein Autorisierungscode oder Zugriffstoken erteilt wurde. Der Autorisierungsserver sendet den Code oder das Token an den Umleitungs-URI. Daher ist es wichtig, dass Sie beim App-Registrierungsvorgang den richtigen Ort registrieren.
 
-## <a name="maximum-number-of-redirect-uris"></a>Maximale Anzahl von umgeleiteten URIs
+ Für Umleitungs-URIs gelten die folgenden Einschränkungen:
 
-Die folgende Tabelle zeigt die maximale Anzahl von Umleitungsleitungs-URIs, die Sie hinzufügen können, wenn Sie Ihre App registrieren. 
+* Der Umleitungs-URI muss mit dem Schema `https` beginnen. Bei Umleitungs-URIs gibt es einige [Ausnahmen für „localhost“](#localhost-exceptions).
 
-| Angemeldete Konten | Maximale Anzahl von umgeleiteten URIs | BESCHREIBUNG |
+* Beim Umleitungs-URI wird die Groß-/Kleinschreibung beachtet. Die Groß-/Kleinschreibung muss der Groß-/Kleinschreibung des URL-Pfads Ihrer ausgeführten Anwendung entsprechen. Wenn der Pfad für Ihre Anwendung z. B. `.../abc/response-oidc` als Bestandteil enthält, dürfen Sie im Umleitungs-URI nicht `.../ABC/response-oidc` angeben. Weil der Webbrowser bei Pfaden die Groß-/Kleinschreibung beachtet, werden Cookies, die `.../abc/response-oidc` zugeordnet sind, möglicherweise ausgeschlossen, wenn eine Umleitung an die anders geschriebene (nicht übereinstimmende) URL `.../ABC/response-oidc` erfolgt.
+
+## <a name="maximum-number-of-redirect-uris"></a>Maximale Anzahl von Umleitungs-URIs
+
+Die folgende Tabelle zeigt die maximale Anzahl von Umleitungs-URIs, die Sie einer App-Registrierung in Microsoft Identity Plattform hinzufügen können.
+
+| Angemeldete Konten | Maximale Anzahl von Umleitungs-URIs | BESCHREIBUNG |
 |--------------------------|---------------------------------|-------------|
-| Microsoft-Geschäfts- oder Schulkonten im Azure Active Directory (Azure AD)-Mandant eines Unternehmens | 256 | `signInAudience`im Anwendungsmanifest ist entweder auf *AzureADMyOrg* oder *AzureADMultipleOrgs* gesetzt. |
-| Persönliche Microsoft-Konten und Geschäfts- und Schulkonten | 100 | `signInAudience` Feld im Anwendungsmanifest ist auf *AzureAD und PersonalMicrosoftAccount* gesetzt |
+| Geschäfts-, Schul- oder Unikonten von Microsoft in einem beliebigen Azure Active Directory (Azure AD)-Mandanten eines Unternehmens | 256 | Das Feld `signInAudience` im Anwendungsmanifest ist entweder auf *AzureADMyOrg* oder *AzureADMultipleOrgs* eingestellt |
+| Persönliche Konten sowie Geschäfts-, Schul- und Unikonten von Microsoft | 100 | Das Feld `signInAudience` im Anwendungsmanifest ist auf *AzureADandPersonalMicrosoftAccount* eingestellt |
 
 ## <a name="maximum-uri-length"></a>Maximale URI-Länge
 
-Sie können maximal 256 Zeichen für jede Redirect-URI verwenden, die Sie einer App-Registrierung hinzufügen.
+Für jeden Umleitungs-URI, den Sie einer App-Registrierung hinzufügen, können Sie maximal 256 Zeichen verwenden.
 
-## <a name="restrictions-using-a-wildcard-in-uris"></a>Einschränkungen durch Verwendung eines Platzhalters in URIs
+## <a name="supported-schemes"></a>Unterstützte Schemas
 
-Wildcard-URIs, wie z.B. `https://*.contoso.com`, sind praktisch, sollten aber vermieden werden. Verwenden von Platzhaltern in den umleitungs-URI hat sicherheitsauswirkungen. Gemäß der OAuth 2.0-Spezifikation ([Abschnitt 3.1.2 von RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)) muss ein Redirection-Endpunkt-URI ein absoluter URI sein. 
+Das Azure Active Directory (Azure AD)-Anwendungsmodell unterstützt derzeit bei Apps, die Geschäfts-, Schul- oder Unikonten in einem Azure AD-Mandanten eines Unternehmens anmelden, sowohl das HTTP- als auch das HTTPS-Schema. Diese Kontotypen werden im Feld `signInAudience` des Anwendungsmanifests durch die Werte `AzureADMyOrg` und `AzureADMultipleOrgs` angegeben. Bei Apps, die persönliche Microsoft-Konten *und* Geschäfts-, Schul- oder Unikonten anmelden (d. h., `signInAudience` ist auf `AzureADandPersonalMicrosoftAccount` festgelegt), ist nur das HTTPS-Schema zulässig.
 
-Das Azure AD-Anwendungsmodell unterstützt keine Wildcard-URIs für Anwendungen, die so konfiguriert sind, dass sie sich in persönlichen Microsoft-Konten und Geschäfts- oder Schulkonten anmelden. Wildcard-URIs sind jedoch für Apps erlaubt, die konfiguriert sind, um sich heute beim Azure AD-Mieter einer Organisation in Geschäfts- oder Schulkonten anzumelden. 
- 
-> [!NOTE]
-> Die neue Erfahrung bei der [App-Registrierung](https://go.microsoft.com/fwlink/?linkid=2083908) erlaubt es Entwicklern nicht, Wildcard-URIs auf der Benutzeroberfläche hinzuzufügen. Das Hinzufügen von wilcard URI für Apps, die sich in Geschäfts- oder Schulkonten anmelden, wird nur durch den App Manifest Editor unterstützt. In Zukunft werden neue Apps keine Wildcards mehr in der Redirect-URI verwenden können. Ältere Anwendungen, die Wildcards in Redirect-URIs enthalten, funktionieren jedoch weiterhin.
+Um Umleitungs-URIs mit einem HTTP-Schema zu App-Registrierungen hinzuzufügen, die Geschäfts-, Schul- oder Unikonten anmelden, müssen Sie im Azure-Portal unter [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) den Anwendungsmanifest-Editor verwenden. Auch wenn Sie mit dem Manifest-Editor einen HTTP-basierten Umleitungs-URI festlegen können, empfehlen wir *dringend*, für Ihre Umleitungs-URIs das HTTPS-Schema zu verwenden.
 
-Wenn Ihre Situation mehr Redirect-URIs erfordert, als die maximal zulässige Grenze, sollten Sie anstelle eines Wildcard-Redirect-URIs einen der folgenden Ansätze wählen.
+## <a name="localhost-exceptions"></a>Ausnahmen für Localhost
 
-### <a name="use-a-state-parameter"></a>Verwenden Sie einen Zustandsparameter
+Gemäß [RFC 8252, Abschnitte 8.3](https://tools.ietf.org/html/rfc8252#section-8.3) und [7.3](https://tools.ietf.org/html/rfc8252#section-7.3), gelten für die Umleitungs-URIs „loopback“ und „localhost“ zwei Besonderheiten:
 
-Wenn Sie eine Anzahl von Subdomänen haben und wenn Ihr Szenario erfordert, dass Sie Benutzer bei erfolgreicher Authentifizierung auf die gleiche Seite umleiten, auf der sie gestartet wurden, kann die Verwendung eines Statusparameters hilfreich sein. 
+1. `http`-URI-Schemas sind akzeptabel, da die Umleitung das Gerät niemals verlässt. Daher sind die beiden folgenden URIs akzeptabel:
+    - `http://localhost/myApp`
+    - `https://localhost/myApp`
+1. Aufgrund kurzlebiger Portbereiche, die häufig von nativen Anwendungen benötigt werden, wird die Portkomponente (z. B. `:5001` oder `:443`) beim Abgleich eines Umleitungs-URI ignoriert. Folglich werden alle diese URIs als gleichwertig betrachtet:
+    - `http://localhost/MyApp`
+    - `http://localhost:1234/MyApp`
+    - `http://localhost:5000/MyApp`
+    - `http://localhost:8080/MyApp`
+
+Aus Entwicklersicht bedeutet dies Folgendes:
+
+* Registrieren Sie nicht mehrere Umleitungs-URIs, wenn sich nur der Port unterscheidet. Der Anmeldeserver wählt willkürlich einen Umleitungs-URI aus und verwendet das diesem zugeordnete Verhalten (z. B. entsprechend dem Umleitungstyp `web`, `native` oder `spa`).
+
+    Dies ist besonders dann wichtig, wenn Sie in ein und derselben Anwendungsregistrierung verschiedene Authentifizierungsflows verwenden möchten, beispielsweise die Autorisierungscodegenehmigung und den impliziten Flow. Um jedem Umleitungs-URI das richtige Antwortverhalten zuzuordnen, muss der Anmeldeserver zwischen den verschiedenen URIs unterscheiden können. Dies ist nur mit unterschiedlichen Ports möglich.
+* Wenn Sie mehrere Umleitungs-URIs für Localhost registrieren möchten, um während der Entwicklung verschiedene Flows zu testen, unterscheiden Sie diese mithilfe der *path*-Komponente des URI. Beispielsweise stimmt `http://localhost/MyWebApp` nicht mit `http://localhost/MyNativeApp` überein.
+* Die IPv6-Loopback Adresse (`[::1]`) wird derzeit nicht unterstützt.
+
+#### <a name="prefer-127001-over-localhost"></a>127.0.0.1 anstelle von localhost
+
+Um Fehler in Ihrer App aufgrund falsch konfigurierter Firewalls oder umbenannter Netzwerkschnittstellen zu vermeiden, verwenden Sie anstelle von `localhost` die tatsächliche IP-Loopbackadresse `127.0.0.1` in Ihrem Umleitungs-URI. Beispiel: `https://127.0.0.1`.
+
+Sie können jedoch nicht das Textfeld **Umleitungs-URIs** im Azure-Portal verwenden, um einen loopbackbasierten Umleitungs-URI mit dem `http`-Schema hinzuzufügen:
+
+:::image type="content" source="media/reply-url/portal-01-no-http-loopback-redirect-uri.png" alt-text="Fehlerdialogfeld im Azure-Portal mit unzulässigem HTTP-basiertem Loopback-Umleitungs-URI":::
+
+Zum Hinzufügen eines Umleitungs-URI, der das `http`-Schema verwendet, mit der tatsächlichen Loopbackadresse `127.0.0.1` müssen Sie derzeit das [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute)-Attribut im [Anwendungsmanifest](reference-app-manifest.md) ändern.
+
+## <a name="restrictions-on-wildcards-in-redirect-uris"></a>Einschränkungen für Platzhalter in Umleitungs-URIs
+
+Platzhalter in URIs wie `https://*.contoso.com` sind möglicherweise bequem, sind jedoch aufgrund von Sicherheitsrisiken zu vermeiden. Gemäß der OAuth 2.0-Spezifikation ([RFC 6749, Abschnitt 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2)) muss ein Umleitungsendpunkt-URI ein absoluter URI sein.
+
+URIs mit Platzhalter werden derzeit in App-Registrierungen, die für die Anmeldung von persönlichen Microsoft-Konten und von Geschäfts-, Schul- oder Unikonten konfiguriert sind, nicht unterstützt. URIs mit Platzhalter sind jedoch zulässig bei Apps, die nur für die Anmeldung von Geschäfts-, Schul- oder Unikonten bei einem Azure AD-Mandanten in einer Organisation konfiguriert sind.
+
+Um Umleitungs-URIs mit Platzhalter zu App-Registrierungen hinzuzufügen, die Geschäfts-, Schul- oder Unikonten anmelden, müssen Sie im Azure-Portal unter [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) den Anwendungsmanifest-Editor verwenden. Auch wenn Sie mit dem Manifest-Editor einen Umleitungs-URI mit Platzhalter festlegen können, empfehlen wir *dringend*, [RFC 6749, Abschnitt 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2) zu beachten und ausschließlich absolute URIs zu verwenden.
+
+Wenn die Anzahl der in Ihrem Szenario erforderlichen Umleitungs-URIs den zulässigen Höchstwert überschreitet, sollten Sie anstelle eines Umleitungs-URIs mit Platzhalter den [folgenden Ansatz mit Statusparameter](#use-a-state-parameter) in Betracht ziehen.
+
+#### <a name="use-a-state-parameter"></a>Verwenden eines Statusparameters
+
+Wenn Sie mehrere Unterdomänen haben und in Ihrem Szenario Benutzer nach erfolgreicher Authentifizierung wieder auf die Ausgangsseite umgeleitet werden müssen, kann die Verwendung eines Statusparameters hilfreich sein.
 
 Dieser Ansatz ermöglicht Folgendes:
 
-1. Erstellen Sie eine "gemeinsame" Umleitungs-URI pro Anwendung, um die Sicherheitstoken zu verarbeiten, die Sie vom Autorisierungsendpunkt erhalten.
-1. Ihre Anwendung kann anwendungsspezifische Parameter (z.B. Subdomain-URL, von der aus der Benutzer stammt, oder andere Informationen wie Brandinginformationen) im State Parameter senden. Wenn Sie einen Zustandsparameter verwenden, schützen Sie sich vor dem CSRF-Schutz gemäß [Abschnitt 10.12 von RFC 6749](https://tools.ietf.org/html/rfc6749#section-10.12) ). 
-1. Die anwendungsspezifischen Parameter beinhalten alle Informationen, die für die Anwendung erforderlich sind, um die richtige Erfahrung für den Benutzer zu schaffen, d.h. den entsprechenden Anwendungszustand aufzubauen. Der Azure AD-Autorisierungsendpunkt entfernt HTML aus dem State Parameter, also stellen Sie sicher, dass Sie in diesem Parameter keinen HTML-Inhalt übergeben.
-1. Wenn Azure AD eine Antwort auf den „gemeinsamen“ Umleitungs-URI sendet, sendet es den State Parameter an die Anwendung zurück.
-1. Die Anwendung kann dann anhand des Wertes im State Parameter bestimmen, an welche URL der Benutzer weitergeleitet werden soll. Stellen Sie sicher, dass Sie den CSRF-Schutz validieren.
+1. Erstellen eines „gemeinsamen“ Umleitungs-URIs pro Anwendung, um die vom Autorisierungsendpunkt empfangenen Sicherheitstoken zu verarbeiten.
+1. Ihre Anwendung kann anwendungsspezifische Parameter (z. B. URL der Unterdomäne, aus welcher der Benutzer stammt, oder andere Parameter wie Brandinginformationen) im Statusparameter senden. Die Verwendung eines Statusparameters bietet Schutz vor der websiteübergreifenden Anforderungsfälschung (CSRF) gemäß [RFC 6749, Abschnitt 10.12](https://tools.ietf.org/html/rfc6749#section-10.12).
+1. Die anwendungsspezifischen Parameter enthalten alle Informationen, die die Anwendung benötigt, um die richtige Umgebung für den Benutzer zu rendern (d.h., den entsprechenden Anwendungsstatus zu erstellen). Der Azure AD-Autorisierungsendpunkt entfernt HTML aus dem Statusparameter. Stellen Sie also sicher, dass Sie in diesem Parameter keinen HTML-Inhalt übergeben.
+1. Wenn Azure AD eine Antwort an den „gemeinsamen“ Umleitungs-URI sendet, wird gleichzeitig der Statusparameter an die Anwendung zurückgesendet.
+1. Die Anwendung kann dann anhand des Werts im Statusparameter bestimmen, an welche URL der Benutzer weitergeleitet werden soll. Stellen Sie eine Überprüfung in Bezug auf CSRF-Schutz sicher.
 
-> [!NOTE]
-> Dieser Ansatz ermöglicht es einem kompromittierten Client, die zusätzlichen Parameter, die im State Parameter gesendet werden, zu ändern, wodurch der Benutzer zu einer anderen URL umgeleitet wird, nämlich der [Open Redirector Bedrohung](https://tools.ietf.org/html/rfc6819#section-4.2.4), die in RFC 6819 beschrieben ist. Daher muss der Client diese Parameter schützen, indem er den Zustand verschlüsselt oder auf andere Weise verifiziert, z.B. durch Validierung des Domänennamens im Umleitungs-URI gegen das Token.
-
-### <a name="add-redirect-uris-to-service-principals"></a>Hinzufügen von Umleitungs-URIsmleitungs-URIs zu Service-Prinzipien
-
-Ein weiterer Ansatz ist das Hinzufügen von Umleitungs-URIs zu den [Service-Prinzipien](app-objects-and-service-principals.md#application-and-service-principal-relationship), die Ihre App-Registrierung in jedem Azure AD-Mandanten darstellen. Sie können diesen Ansatz verwenden, wenn Sie keinen State Parameter verwenden können oder Ihre Situation erfordert, dass Sie für jeden neuen Mandanten, den Sie unterstützen, neue Umleitungs-URIs zur App-Registrierung hinzufügen. 
+> [!WARNING]
+> Dieser Ansatz ermöglicht einem kompromittierten Client, die im Statusparameter gesendeten zusätzlichen Parameter zu ändern, wodurch der Benutzer zu einer anderen URL umgeleitet wird. Dieser [Open Redirect](https://tools.ietf.org/html/rfc6819#section-4.2.4)-Angriff (Sicherheitsrisiko durch offene Umleitung) ist in RFC 6819 beschrieben. Daher muss der Client diese Parameter schützen, indem er den Status verschlüsselt oder auf andere Weise verifiziert, z. B. durch Überprüfen des Domänennamens im Umleitungs-URI anhand des Tokens.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum [Anwendungsmanifest](reference-app-manifest.md)
+Erfahren Sie mehr über das [Anwendungsmanifest](reference-app-manifest.md) der App-Registrierung.

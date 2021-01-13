@@ -2,18 +2,15 @@
 title: 'Tutorial zu Kubernetes in Azure: Aktualisieren einer Anwendung'
 description: In diesem Azure Kubernetes Service-Tutorial (AKS) erfahren Sie, wie eine vorhandene Bereitstellung der Anwendung in AKS mit einer neuen Version des Anwendungscodes aktualisiert wird.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
-ms.author: mlearned
-ms.custom: mvc
-ms.openlocfilehash: b645fc9f67229d087a5d1655f733e2f3e50d4471
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 09/30/2020
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: c8401a81a36d86b871df9fc428c393007b97c400
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614374"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833910"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Tutorial: Aktualisieren einer Anwendung in Azure Kubernetes Service (AKS)
 
@@ -67,7 +64,7 @@ docker-compose up --build -d
 
 Öffnen Sie `http://localhost:8080` in einem lokalen Webbrowser, um sicherzustellen, dass das aktualisierte Containerimage Ihre Änderungen anzeigt.
 
-![Abbildung: Kubernetes-Cluster in Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Screenshot: Beispiel des aktualisierten Containerimages – mit lokalem Webbrowser und lokalem Host geöffnete Azure-Abstimmungs-App":::
 
 Die in der Datei *config_file.cfg* angegebenen aktualisierten Werte werden in Ihrer ausgeführten Anwendung angezeigt.
 
@@ -82,7 +79,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 Verwenden Sie [docker tag][docker-tag], um das Image zu kennzeichnen. Ersetzen Sie `<acrLoginServer>` durch Ihren ACR-Anmeldeservernamen oder dem Hostnamen der öffentlichen Registrierung, und aktualisieren Sie die Imageversion folgendermaßen auf *:v2*:
 
 ```console
-docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
+docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azure-vote-front:v2
 ```
 
 Verwenden Sie nun [docker push][docker-push], um das Image in Ihre Registrierung hochzuladen. Ersetzen Sie `<acrLoginServer>` durch Ihren ACR-Anmeldeservernamen.
@@ -148,11 +145,11 @@ kubectl get service azure-vote-front
 
 Öffnen Sie jetzt die IP-Adresse Ihres Diensts in einem lokalen Webbrowser:
 
-![Abbildung: Kubernetes-Cluster in Azure](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Screenshot: Beispiel der aktualisierten Anwendung – in einem lokalen Webbrowser geöffnete Azure-Abstimmungs-App":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Anwendung aktualisiert und diese Aktualisierung in Ihrem AKS-Cluster bereitgestellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie eine Anwendung aktualisiert und diese Aktualisierung in Ihrem AKS-Cluster bereitgestellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Aktualisieren des Front-End-Anwendungscodes

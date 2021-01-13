@@ -1,23 +1,15 @@
 ---
 title: Azure Application Insights-Telemetriedatenmodell – Telemetriekontext | Microsoft-Dokumentation
 description: 'Application Insights-Datenmodell: Telemetriekontext'
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 76f3be510494a1f005b0080ee8f2390a3fbc3622
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900709"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767845"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Telemetriekontext: Application Insights-Datenmodell
 
@@ -47,14 +39,14 @@ Max. Länge: 64
 
 ## <a name="operation-id"></a>Vorgangs-ID
 
-Ein eindeutiger Bezeichner des Stammvorgangs. Über diesen Bezeichner können Telemetriedaten für mehrere Komponenten gruppiert werden. Details finden Sie unter [Telemetriekorrelation](../../azure-monitor/app/correlation.md). Die Vorgangs-ID wird von einer Anforderung oder einer Seitenansicht erstellt. Alle anderen Telemetriedaten legen dieses Feld auf den Wert für die enthaltende Anforderung oder Seitenansicht fest. 
+Ein eindeutiger Bezeichner des Stammvorgangs. Über diesen Bezeichner können Telemetriedaten für mehrere Komponenten gruppiert werden. Details finden Sie unter [Telemetriekorrelation](./correlation.md). Die Vorgangs-ID wird von einer Anforderung oder einer Seitenansicht erstellt. Alle anderen Telemetriedaten legen dieses Feld auf den Wert für die enthaltende Anforderung oder Seitenansicht fest. 
 
 Max. Länge: 128
 
 
 ## <a name="parent-operation-id"></a>Übergeordnete Vorgangs-ID
 
-Der eindeutige Bezeichner des direkt übergeordneten Elements des Telemetrieelements. Details finden Sie unter [Telemetriekorrelation](../../azure-monitor/app/correlation.md).
+Der eindeutige Bezeichner des direkt übergeordneten Elements des Telemetrieelements. Details finden Sie unter [Telemetriekorrelation](./correlation.md).
 
 Max. Länge: 128
 
@@ -84,7 +76,7 @@ Max. Länge: 64
 
 Anonyme Benutzer-ID. Stellt den Endbenutzer der Anwendung dar. Wenn Telemetriedaten von einem Dienst gesendet werden, bezieht sich der Benutzerkontext auf den Benutzer, der den Vorgang im Dienst initiiert hat.
 
-Die [Stichprobenentnahme](../../azure-monitor/app/sampling.md) ist eine der Methoden zum Minimieren der Menge der gesammelten Telemetriedaten. Der Stichprobenalgorithmus versucht, die Stichprobenerstellung innerhalb oder außerhalb aller korrelierten Telemetriedaten durchzuführen. „Anonyme Benutzer-ID“ wird zur Generierung der Stichprobenbewertung verwendet. Daher muss die anonyme Benutzer-ID einen ausreichend zufälligen Wert aufweisen. 
+Die [Stichprobenentnahme](./sampling.md) ist eine der Methoden zum Minimieren der Menge der gesammelten Telemetriedaten. Der Stichprobenalgorithmus versucht, die Stichprobenerstellung innerhalb oder außerhalb aller korrelierten Telemetriedaten durchzuführen. „Anonyme Benutzer-ID“ wird zur Generierung der Stichprobenbewertung verwendet. Daher muss die anonyme Benutzer-ID einen ausreichend zufälligen Wert aufweisen. 
 
 Die Verwendung von „Anonyme Benutzer-ID“ zum Speichern von Benutzernamen stellt eine unsachgemäße Verwendung des Felds dar. Verwenden Sie stattdessen „Authentifizierte Benutzer-ID“.
 
@@ -93,7 +85,7 @@ Max. Länge: 128
 
 ## <a name="authenticated-user-id"></a>Authentifizierte Benutzer-ID
 
-Authentifizierte Benutzer-ID. Als Gegenstück von „Anonyme Benutzer-ID“ stellt dieses Feld den Benutzer mit einem Anzeigenamen dar. Da es sich um personenbezogene Informationen handelt, werden diese von den meisten SDKs standardmäßig nicht erfasst.
+Authentifizierte Benutzer-ID. Als Gegenstück von „Anonyme Benutzer-ID“ stellt dieses Feld den Benutzer mit einem Anzeigenamen dar. Sie wird nur mit [`AuthenticatedUserIdTelemetryInitializer`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/WEB/Src/Web/Web/AuthenticatedUserIdTelemetryInitializer.cs) des ASP.NET Framework SDK standardmäßig erfasst.  
 
 Max. Länge: 1024
 
@@ -121,7 +113,7 @@ Max. Länge: 256
 
 ## <a name="internal-sdk-version"></a>Intern: SDK-Version
 
-SDK-Version. Weitere Informationen finden Sie unter https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification.
+SDK-Version. Informationen hierzu finden Sie in [diesem Artikel](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md).
 
 Max. Länge: 64
 
@@ -135,6 +127,7 @@ Max. Länge: 256
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum [Erweitern und Filtern von Telemetriedaten](../../azure-monitor/app/api-filtering-sampling.md).
+- Informationen zum [Erweitern und Filtern von Telemetriedaten](./api-filtering-sampling.md).
 - Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](data-model.md).
-- Informationen zur [Konfiguration](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) der Sammlung von Standardkontexteigenschaften.
+- Informationen zur [Konfiguration](./configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) der Sammlung von Standardkontexteigenschaften.
+

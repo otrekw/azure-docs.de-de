@@ -1,26 +1,32 @@
 ---
-title: Artikel zum Troubleshooting häufiger bekannter Probleme/Fehler bei der Verwendung von Azure Database Migration Service | Microsoft-Dokumentation
+title: 'Häufige Probleme: Azure Database Migration Service'
 description: Erfahren Sie mehr zum Troubleshooting häufiger bekannter Probleme/Fehler bei der Verwendung von Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
-ms.topic: article
-ms.date: 06/18/2019
-ms.openlocfilehash: a72a0e26c2af34942faaa6a7e62feef86082e196
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.custom: seo-lt-2019
+ms.topic: troubleshooting
+ms.date: 02/20/2020
+ms.openlocfilehash: f4baca7f261aa7544b54992a5e1ddf620794774f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034820"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962279"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Troubleshooting von häufigen Problemen und Fehlern bei Azure Database Migration Service
 
 Probleme und Fehler, auf die Benutzer des Azure Database Migration Service stoßen können. Der Artikel enthält auch Informationen dazu, wie Sie diese Probleme und Fehler beheben können.
+
+> [!NOTE]
+> Vorurteilsfreie Kommunikation
+>
+> Microsoft setzt sich für Diversität und Inklusion ein. In diesem Artikel wird das Wort _Slave_ verwendet. Laut dem [Microsoft-Styleguide für vorurteilsfreie Kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) sollte dieses Wort jedoch vermieden werden. In diesem Artikel wird es aus Konsistenzgründen gebraucht, da das Wort derzeit noch in der Software vorkommt. Wenn die Software aktualisiert und um dieses Wort bereinigt wird, wird auch der Artikel entsprechend aktualisiert.
+>
 
 ## <a name="migration-activity-in-queued-state"></a>Migrationsaktivität in der Warteschlange
 
@@ -32,9 +38,9 @@ Wenn Sie neue Aktivitäten in einem Azure Database Migration Service-Projekt ers
 
 ## <a name="max-number-of-databases-selected-for-migration"></a>Maximale Anzahl von Datenbanken für die Migration ausgewählt
 
-Der folgende Fehler tritt auf, wenn eine Aktivität für ein Datenbankmigrationsprojekt erstellt wird, um in die Azure SQL-Datenbank oder eine von der Azure SQL-Datenbank verwaltete Instanz zu wechseln:
+Der folgende Fehler tritt auf, wenn eine Aktivität für ein Datenbankmigrationsprojekt erstellt wird, um zu Azure SQL-Datenbank oder Azure SQL Managed Instance zu wechseln:
 
-* **Fehler**: Fehler bei der Validierung der Migrationseinstellungen", "errorDetail":"Für die Migration wurden mehr als maximal 4 Datenbankobjekte ausgewählt."
+* **Fehler:** Fehler bei der Validierung der Migrationseinstellungen", "errorDetail":"Für die Migration wurden mehr als maximal 4 Datenbankobjekte ausgewählt."
 
 | Ursache         | Lösung |
 | ------------- | ------------- |
@@ -44,17 +50,17 @@ Der folgende Fehler tritt auf, wenn eine Aktivität für ein Datenbankmigrations
 
 Wenn Sie mit dem Azure Database Migration Service von MySQL zu Azure Database for MySQL migrieren, schlägt die Migrationsaktivität mit folgendem Fehler fehl:
 
-* **Fehler**: Datenbankmigrationsfehler – Aufgabe 'TaskID' wurde aufgrund von [n] aufeinander folgenden Wiederherstellungsfehlern angehalten.
+* **Fehler:** Datenbankmigrationsfehler – Aufgabe 'TaskID' wurde aufgrund von [n] aufeinander folgenden Wiederherstellungsfehlern angehalten.
 
 | Ursache         | Lösung |
 | ------------- | ------------- |
-| Dieser Fehler kann auftreten, wenn dem Benutzer, der die Migration durchführt, die Rolle „ReplicationAdmin“ und/oder die Berechtigungen von „REPLICATION CLIENT“, „REPLICATION REPLICA“ und „SUPER“ (Versionen vor MySQL 5.6.6) fehlen.<br><br><br><br><br><br><br><br><br><br><br><br><br> | Stellen Sie sicher, dass die [vorausgesetzten Berechtigungen](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) für das Benutzerkonto auf der Azure Database for MySQL-Instanz korrekt konfiguriert sind. So können beispielsweise die folgenden Schritte durchgeführt werden, um einen Benutzer namens „migrateuser“ mit den erforderlichen Berechtigungen zu erstellen:<br>1. CREATE USER migrateuser@'%' IDENTIFIED BY 'secret'; <br>2. Grant all privileges on db_name.* to 'migrateuser'@'%' identified by 'secret'; // Wiederholen Sie diesen Schritt, um Zugriff auf mehr Datenbanken zu gewähren. <br>3. Grant replication slave on *.* to 'migrateuser'@'%' identified by 'secret';<br>4. Grant replication client on *.* to 'migrateuser'@'%' identified by 'secret';<br>5. Flush privileges; |
+| Dieser Fehler kann auftreten, wenn dem Benutzer, der die Migration durchführt, die Rolle „ReplicationAdmin“ und/oder die Berechtigungen von „REPLICATION CLIENT“, „REPLICATION REPLICA“ und „SUPER“ (Versionen vor MySQL 5.6.6) fehlen.<br><br><br><br><br><br><br><br><br><br><br><br><br> | Stellen Sie sicher, dass die [vorausgesetzten Berechtigungen](./tutorial-mysql-azure-mysql-online.md#prerequisites) für das Benutzerkonto auf der Azure Database for MySQL-Instanz korrekt konfiguriert sind. So können beispielsweise die folgenden Schritte durchgeführt werden, um einen Benutzer namens „migrateuser“ mit den erforderlichen Berechtigungen zu erstellen:<br>1. CREATE USER migrateuser@'%' IDENTIFIED BY 'secret'; <br>2. Grant all privileges on db_name.* to 'migrateuser'@'%' identified by 'secret'; // Wiederholen Sie diesen Schritt, um Zugriff auf mehr Datenbanken zu gewähren. <br>3. Grant replication slave on *.* to 'migrateuser'@'%' identified by 'secret';<br>4. Grant replication client on *.* to 'migrateuser'@'%' identified by 'secret';<br>5. Flush privileges; |
 
 ## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Fehler beim Versuch, den Azure Database Migration Service anzuhalten
 
 Sie erhalten folgenden Fehler, wenn Sie die Azure Database Migration Service-Instanz anhalten:
 
-* **Fehler**: Dienst konnte nicht beendet werden. Error: {'error':{'code':'InvalidRequest','message':'Aktuell wird mindestens eine Aktivität ausgeführt. Um den Dienst zu beenden, warten Sie den Abschluss aller Aktivitäten ab, oder beenden Sie diese Aktivitäten manuell. Versuchen Sie es anschließend noch mal.'}}
+* **Fehler:** Dienst konnte nicht beendet werden. Error: {'error':{'code':'InvalidRequest','message':'Aktuell wird mindestens eine Aktivität ausgeführt. Um den Dienst zu beenden, warten Sie den Abschluss aller Aktivitäten ab, oder beenden Sie diese Aktivitäten manuell. Versuchen Sie es anschließend noch mal.'}}
 
 | Ursache         | Lösung |
 | ------------- | ------------- |
@@ -64,7 +70,7 @@ Sie erhalten folgenden Fehler, wenn Sie die Azure Database Migration Service-Ins
 
 Sie erhalten folgenden Fehler, wenn Sie die Azure Database Migration Service-Instanz starten:
 
-* **Fehler**: Dienst kann nicht gestartet werden. Fehler: {'errorDetail':'Fehler beim Starten des Diensts. Wenden Sie sich an den Microsoft-Support'}
+* **Fehler:** Dienst kann nicht gestartet werden. Fehler: {'errorDetail':'Fehler beim Starten des Diensts. Wenden Sie sich an den Microsoft-Support'}
 
 | Ursache         | Lösung |
 | ------------- | ------------- |
@@ -72,19 +78,19 @@ Sie erhalten folgenden Fehler, wenn Sie die Azure Database Migration Service-Ins
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>Fehler beim Wiederherstellen der Datenbank während der Migration von SQL zu einer verwalteten Azure SQL-DB-Instanz
 
-Wenn Sie eine Onlinemigration von SQL Server zu einer von der Azure SQL-Datenbank verwalteten Instanz durchführen, schlägt die Umstellung mit folgendem Fehler fehl:
+Wenn Sie eine Onlinemigration von SQL Server zu Azure SQL Managed Instance durchführen, schlägt die Umstellung mit folgendem Fehler fehl:
 
-* **Fehler**: Fehler beim Wiederherstellungsvorgang für die Vorgangs-ID 'operationId'. Code 'AuthorizationFailed', Nachricht 'Der Client 'clientId' mit Objekt-ID 'objectId' hat keine Berechtigung, eine Aktion 'Microsoft.Sql/locations/managedDatabaseRestoreAzureAsyncOperation/read' über den Umfang '/subscriptions/subscriptionId' auszuführen.
+* **Fehler:** Fehler beim Wiederherstellungsvorgang für die Vorgangs-ID 'operationId'. Code 'AuthorizationFailed', Nachricht 'Der Client 'clientId' mit Objekt-ID 'objectId' hat keine Berechtigung, eine Aktion 'Microsoft.Sql/locations/managedDatabaseRestoreAzureAsyncOperation/read' über den Umfang '/subscriptions/subscriptionId' auszuführen.
 
 | Ursache         | Lösung    |
 | ------------- | ------------- |
-| Dieser Fehler gibt an, dass das Anwendungsprinzipal, das für die Onlinemigration von SQL Server zu einer von der Azure SQL-Datenbank verwalteten Instanz verwendet wird, keine Teilnahmeberechtigungen für das Abonnement hat. Bestimmte API-Aufrufe mit einer verwalteten Instanz erfordern derzeit für den Wiederherstellungsvorgang diese Berechtigung im Abonnement. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Verwenden Sie das in der Fehlermeldung verfügbare Cmdlet `Get-AzureADServicePrincipal` PowerShell mit `-ObjectId`, um den Anzeigenamen der verwendeten Anwendungs-ID anzuzeigen.<br><br> Überprüfen Sie die Berechtigungen für diese Anwendung, und stellen Sie sicher, dass sie die Rolle [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) auf der Abonnementebene hat. <br><br> Das Engineering-Team von Azure Database Migration Service arbeitet daran, den erforderlichen Zugriff von der aktuellen Rolle „Mitwirkender“ im Abonnement zu beschränken. Wenn Sie eine geschäftliche Wenn Sie eine Geschäftsanforderung haben, die die Verwendung der Rolle „Mitwirkender“ nicht zulässt, wenden Sie sich an den Azure-Support, um weitere Hilfe zu erhalten. |
+| Dieser Fehler gibt an, dass der Anwendungsprinzipal, der für die Onlinemigration von SQL Server zu Azure SQL Managed Instance verwendet wird, keine Mitwirkungsberechtigung für das Abonnement hat. Bestimmte API-Aufrufe mit einer verwalteten Instanz erfordern derzeit für den Wiederherstellungsvorgang diese Berechtigung im Abonnement. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Verwenden Sie das in der Fehlermeldung verfügbare Cmdlet `Get-AzureADServicePrincipal` PowerShell mit `-ObjectId`, um den Anzeigenamen der verwendeten Anwendungs-ID anzuzeigen.<br><br> Überprüfen Sie die Berechtigungen für diese Anwendung, und stellen Sie sicher, dass sie die Rolle [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor) auf der Abonnementebene hat. <br><br> Das Engineering-Team von Azure Database Migration Service arbeitet daran, den erforderlichen Zugriff von der aktuellen Rolle „Mitwirkender“ im Abonnement zu beschränken. Wenn Sie eine geschäftliche Wenn Sie eine Geschäftsanforderung haben, die die Verwendung der Rolle „Mitwirkender“ nicht zulässt, wenden Sie sich an den Azure-Support, um weitere Hilfe zu erhalten. |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Fehler beim Löschen der dem Azure Database Migration Service zugeordneten NIC
 
 Wenn Sie versuchen, eine Netzwerkschnittstellenkarte zu löschen, die dem Azure Database Migration Service zugeordnet ist, schlägt der Löschversuch mit diesem Fehler fehl:
 
-* **Fehler**: Die dem Azure Database Migration Service zugeordnete NIC kann aufgrund des DMS-Dienstes, der die NIC verwendet, nicht gelöscht werden.
+* **Fehler:** Die dem Azure Database Migration Service zugeordnete NIC kann aufgrund des DMS-Dienstes, der die NIC verwendet, nicht gelöscht werden.
 
 | Ursache         | Lösung    |
 | ------------- | ------------- |
@@ -96,13 +102,13 @@ Wenn Sie im Projektassistenten des Azure Database Migration Service versuchen, e
 
 | Ursache         | Lösung    |
 | ------------- | ------------- |
-| Bei Verwendung von [ExpressRoute](https://azure.microsoft.com/services/expressroute/) [müssen](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) für den Azure Database Migration Service drei Dienstendpunkte in dem dem Dienst zugeordneten Subnetz des virtuellen Netzwerks bereitgestellt werden:<br> \- Service Bus-Endpunkt<br> \- Speicherendpunkt<br> \- Zieldatenbankendpunkt (z.B. SQL-Endpunkt, Cosmos DB-Endpunkt)<br><br><br><br><br> | [Aktivieren](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) Sie die erforderlichen Dienstendpunkte für die ExpressRoute-Verbindung zwischen Quelle und Azure Database Migration Service. <br><br><br><br><br><br><br><br> |
+| Bei Verwendung von [ExpressRoute](https://azure.microsoft.com/services/expressroute/)[müssen](./tutorial-sql-server-azure-sql-online.md) für den Azure Database Migration Service drei Dienstendpunkte in dem dem Dienst zugeordneten Subnetz des virtuellen Netzwerks bereitgestellt werden:<br> \- Service Bus-Endpunkt<br> \- Speicherendpunkt<br> \- Zieldatenbankendpunkt (z.B. SQL-Endpunkt, Cosmos DB-Endpunkt)<br><br><br><br><br> | [Aktivieren](./tutorial-sql-server-azure-sql-online.md) Sie die erforderlichen Dienstendpunkte für die ExpressRoute-Verbindung zwischen Quelle und Azure Database Migration Service. <br><br><br><br><br><br><br><br> |
 
 ## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Sperrenwartezeit-Timeoutfehler bei der Migration einer MySQL-Datenbank zu Azure Database for MySQL
 
 Wenn Sie eine MySQL-Datenbank über den Azure Database Migration Service zu einer Azure Database for MySQL-Instanz migrieren, tritt bei der Migration der folgende Sperrenwartezeit-Timeoutfehler auf:
 
-* **Fehler**: Datenbankmigrationsfehler: Fehler beim Laden der Datei – Fehler dem Starten des Ladevorgangs für Datei 'n' RetCode: SQL_ERROR SqlState: HY000 NativeError: 1205 Nachricht: [MySQL][ODBC Driver][mysqld] Zeitlimit für Sperre überschritten; versuchen Sie, die Transaktion neu zu starten.
+* **Fehler:** Datenbankmigrationsfehler: Fehler beim Laden der Datei – Fehler dem Starten des Ladevorgangs für Datei 'n' RetCode: SQL_ERROR SqlState: HY000 NativeError: 1205 Nachricht: [MySQL][ODBC Driver][mysqld] Zeitlimit für Sperre überschritten; versuchen Sie, die Transaktion neu zu starten.
 
 | Ursache         | Lösung    |
 | ------------- | ------------- |
@@ -120,13 +126,13 @@ Wenn Sie versuchen, Azure Database Migration Service mit einer SQL Server-Datenq
 
 ## <a name="additional-known-issues"></a>Weitere bekannte Probleme
 
-* [Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
-* [Bekannte Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for MySQL](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
-* [Bekannte Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for PostgreSQL](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
+* [Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank](./known-issues-azure-sql-online.md)
+* [Bekannte Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for MySQL](./known-issues-azure-mysql-online.md)
+* [Bekannte Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for PostgreSQL](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Lesen Sie den Artikel [Azure Database Migration Service PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration).
-* Lesen Sie den Artikel [Konfigurieren von Serverparametern in Azure Database for MySQL mit dem Azure-Portal](https://docs.microsoft.com/azure/mysql/howto-server-parameters).
-* Lesen Sie den Artikel [Übersicht über die Voraussetzungen für die Verwendung von Azure Database Migration Service](https://docs.microsoft.com/azure/dms/pre-reqs).
-* Lesen Sie [Häufig gestellte Fragen zur Verwendung von Azure Database Migration Service](https://docs.microsoft.com/azure/dms/faq).
+* Lesen Sie den Artikel [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration).
+* Lesen Sie den Artikel [Konfigurieren von Serverparametern in Azure Database for MySQL mit dem Azure-Portal](../mysql/howto-server-parameters.md).
+* Lesen Sie den Artikel [Übersicht über die Voraussetzungen für die Verwendung von Azure Database Migration Service](./pre-reqs.md).
+* Lesen Sie [Häufig gestellte Fragen zur Verwendung von Azure Database Migration Service](./faq.md).

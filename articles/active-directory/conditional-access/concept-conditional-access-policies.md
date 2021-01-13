@@ -5,26 +5,45 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87f3e815f541ad4cfabc22d917ca9cecba47b50f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 28d58c476a805b672a6ec8b4d8ec465eba17e559
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077938"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169680"
 ---
 # <a name="building-a-conditional-access-policy"></a>Erstellen einer Richtlinie für bedingten Zugriff
 
 Wie im Artikel [Was ist bedingter Zugriff?](overview.md) erläutert, ist eine Richtlinie für bedingten Zugriff eine If-Then-Anweisung mit **Zuweisungen** und **Zugriffssteuerungen**. Eine Richtlinie für bedingten Zugriff führt Signale zusammen, um Entscheidungen zu treffen und Organisationsrichtlinien zu erzwingen.
 
-Wie erstellt eine Organisation diese Richtlinien? Was ist erforderlich?
+Wie erstellt eine Organisation diese Richtlinien? Was ist erforderlich? Wie werden sie angewendet?
 
 ![Bedingter Zugriff (Signale + Entscheidungen + Erzwingung = Richtlinien)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
+
+Mehrere Richtlinien für bedingten Zugriff können jederzeit auf einen einzelnen Benutzer angewendet werden. In diesem Fall müssen alle geltenden Richtlinien erfüllt werden. Wenn also beispielsweise eine Richtlinie die Verwendung der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) und eine weitere Richtlinie ein konformes Gerät erfordert, müssen Sie die MFA durchlaufen und ein konformes Gerät verwenden. Alle Zuweisungen sind logisch per **UND**-Operator verbunden. Wenn Sie mehr als eine Zuweisung konfiguriert haben, müssen die Bedingungen aller Zuweisungen erfüllt sein, damit eine Richtlinie ausgelöst wird.
+
+Alle Richtlinien werden in zwei Phasen erzwungen:
+
+- Phase 1: Sammeln von Sitzungsdetails 
+   - Sammeln Sie Sitzungsdetails wie Netzwerkstandort und Geräteidentität, die für die Richtlinienauswertung benötigt werden. 
+   - Phase 1 der Richtlinienauswertung gilt für aktivierte Richtlinien sowie für Richtlinien im Modus [Nur Bericht](concept-conditional-access-report-only.md).
+- Phase 2: Erzwingung 
+   - Identifizieren Sie anhand der in Phase 1 gesammelten Sitzungsdetails alle Anforderungen, die nicht erfüllt wurden. 
+   - Wenn es eine Richtlinie gibt, die so konfiguriert ist, dass der Zugriff blockiert wird (mit dem Gewährungssteuerelement „Blockieren“), wird die Erzwingung hier angehalten, und der Benutzer wird blockiert. 
+   - Der Benutzer wird aufgefordert, zusätzliche Anforderungen der Gewährungssteuerelemente zu erfüllen, die in Phase 1 nicht erfüllt wurden, und zwar in der folgenden Reihenfolge, bis die Richtlinie erfüllt ist:  
+      - Multi-Factor Authentication 
+      - Genehmigte Client-App/App-Schutzrichtlinie 
+      - Verwaltetes Gerät (kompatibel oder hybrid in Azure AD eingebunden) 
+      - Nutzungsbedingungen 
+      - Benutzerdefinierte Steuerelemente  
+   - Sobald alle Anforderungen der Gewährungssteuerelemente erfüllt wurden, wenden Sie Sitzungssteuerelemente an (von der App erzwungene Berechtigungen, Microsoft Cloud App Security und Tokengültigkeitsdauer). 
+   - Die zweite Phase der Richtlinienauswertung wird für alle aktivierten Richtlinien durchlaufen. 
 
 ## <a name="assignments"></a>Zuweisungen
 
@@ -32,19 +51,19 @@ Im Teil „Zuweisungen“ wird das „Wer“, „Was“ und „Wo“ der Richtli
 
 ### <a name="users-and-groups"></a>Benutzer und Gruppen
 
-Benutzer und Gruppen legen anhand der Zuweisungen fest, welche Personen in die Richtlinie einbezogen oder von der Richtlinie ausgeschlossen werden sollen. Diese Zuweisung kann alle Benutzer, bestimmte Benutzergruppen, Verzeichnisrollen oder externe Gastbenutzer einschließen. 
+[Benutzer und Gruppen](concept-conditional-access-users-groups.md) legen anhand der Zuweisungen fest, welche Personen in die Richtlinie einbezogen oder von der Richtlinie ausgeschlossen werden sollen. Diese Zuweisung kann alle Benutzer, bestimmte Benutzergruppen, Verzeichnisrollen oder externe Gastbenutzer einschließen. 
 
-### <a name="cloud-apps-or-actions"></a>Cloud-Apps oder -Aktionen
+### <a name="cloud-apps-or-actions"></a>Cloud-Apps oder -aktionen
 
-Cloud-Apps oder -Aktionen können Cloudanwendungen oder Benutzeraktionen, die der Richtlinie unterliegen, ein- oder ausschließen.
+[Cloud-Apps oder -aktionen](concept-conditional-access-cloud-apps.md) können Cloudanwendungen oder Benutzeraktionen ein- oder ausschließen, die der Richtlinie unterliegen.
 
 ### <a name="conditions"></a>Bedingungen
 
-Eine Richtlinie kann mehrere Bedingungen enthalten.
+Eine Richtlinie kann mehrere [Bedingungen](concept-conditional-access-conditions.md) enthalten.
 
 #### <a name="sign-in-risk"></a>Anmelderisiko
 
-Bei Organisationen mit [Azure AD Identity Protection](../identity-protection/overview.md) können die dort generierten Risikoerkennungen Ihre Richtlinien für den bedingten Zugriff beeinflussen.
+Bei Organisationen mit [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) können die dort generierten Risikoerkennungen Ihre Richtlinien für den bedingten Zugriff beeinflussen.
 
 #### <a name="device-platforms"></a>Geräteplattformen
 
@@ -52,7 +71,7 @@ Organisationen mit mehreren Betriebssystemplattformen für ihre Geräte möchten
 
 Die zum Berechnen der Geräteplattform verwendeten Informationen stammen aus nicht überprüften Quellen wie Benutzer-Agent-Zeichenfolgen, die geändert werden können.
 
-#### <a name="locations"></a>Standorte
+#### <a name="locations"></a>Positionen
 
 Standortdaten werden von IP-Geolocation-Daten bereitgestellt. Administratoren können bei Bedarf Standorte definieren und einige als vertrauenswürdig kennzeichnen (z.B. die Netzwerkstandorte ihrer Organisation).
 
@@ -70,17 +89,19 @@ Mit diesem Steuerelement können Geräte mit Hybrid-Azure AD-Einbindung oder Ger
 
 Die Zugriffssteuerung der Richtlinie für bedingten Zugriff ist der Teil, der steuert, wie eine Richtlinie erzwungen wird.
 
-### <a name="grant"></a>Gewährung
+### <a name="grant"></a>Erteilen
+
+[Erteilen](concept-conditional-access-grant.md) bietet Administratoren eine Möglichkeit zur Richtlinienerzwingung, bei der sie den Zugriff blockieren oder gewähren können.
 
 #### <a name="block-access"></a>Zugriff blockieren
 
 „Zugriff blockieren“ bewirkt genau dies. Der Zugriff wird unter den angegebenen Zuweisungen blockiert. Das Blockieren des Zugriffs ist ein leistungsstarkes Steuerelement, das nur mit entsprechenden Kenntnissen eingesetzt werden sollte.
 
-#### <a name="grant-access"></a>Zugriff gewähren
+#### <a name="grant-access"></a>Gewähren von Zugriff
 
 Das Steuerelement zum Gewähren des Zugriffs kann die Erzwingung von mindestens einem weiteren Steuerelementen auslösen. 
 
-- Multi-Factor Authentication erforderlich
+- Mehrstufige Authentifizierung erforderlich (Azure AD Multi-Factor Authentication)
 - Als kompatibel markierte Geräte (Intune) erforderlich
 - Geräte mit Hybrid-Azure AD-Einbindung erforderlich
 - Genehmigte Client-App erforderlich
@@ -93,9 +114,9 @@ Administratoren können mithilfe der folgenden Optionen auswählen, ob eins der 
 
 ### <a name="session"></a>Sitzung
 
-Sitzungssteuerelemente können die Umgebung einschränken 
+[Sitzungssteuerelemente](concept-conditional-access-session.md) können die Umgebung einschränken. 
 
-- App-erzwungene Einschränkungen verwenden
+- Verwenden von App-erzwungenen Einschränkungen
    - Funktioniert derzeit nur mit Exchange Online und SharePoint Online.
       - Übergibt Geräteinformationen, um das Gewähren von vollständigem oder eingeschränktem Zugriff auf die Umgebung zu steuern.
 - App-Steuerung für bedingten Zugriff verwenden
@@ -121,14 +142,16 @@ Eine Richtlinie für bedingten Zugriff muss mindestens Folgendes enthalten, um e
 
 ![Leere Richtlinie für bedingten Zugriff](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
+Der Artikel [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md) enthält einige Richtlinien, die für die meisten Organisationen nützlich sein könnten.
+
 ## <a name="next-steps"></a>Nächste Schritte
+
+[Erstellen der Richtlinie für bedingten Zugriff](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json#create-a-conditional-access-policy)
 
 [Simulieren des Anmeldeverhaltens mit dem Was-wäre-wenn-Tool für den bedingten Zugriff](troubleshoot-conditional-access-what-if.md)
 
-[Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md)
+[Planen einer cloudbasierten Azure AD Multi-Factor Authentication-Bereitstellung](../authentication/howto-mfa-getstarted.md)
 
-[Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung](../authentication/howto-mfa-getstarted.md)
+[Verwalten der Gerätekonformität mit Intune](/intune/device-compliance-get-started)
 
-[Verwalten der Gerätekonformität mit Intune](https://docs.microsoft.com/intune/device-compliance-get-started)
-
-[Microsoft Cloud App Security und bedingter Zugriff](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+[Microsoft Cloud App Security und bedingter Zugriff](/cloud-app-security/proxy-intro-aad)

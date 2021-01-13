@@ -1,26 +1,22 @@
 ---
-title: Registrierungsübergreifende Authentifizierung in einer Azure Container Registry-Aufgabe
-description: Aktivieren Sie eine verwaltete Identität für Azure-Ressourcen in einer ACR-Aufgabe (Azure Container Registry), damit die Aufgabe auf eine andere private Containerregistrierung zugreifen kann.
-services: container-registry
-author: dlepow
-ms.service: container-registry
+title: Registrierungsübergreifende Authentifizierung über eine ACR-Aufgabe
+description: Konfigurieren einer ACR-Aufgabe (Azure Container Registry) für den Zugriff auf eine andere private Azure Container Registry mithilfe einer verwalteten Identität für Azure-Ressourcen
 ms.topic: article
-ms.date: 07/12/2019
-ms.author: danlep
-ms.openlocfilehash: 07fa7f3df5274ae88c93deac75093ead3f32f036
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 07/06/2020
+ms.openlocfilehash: 9a460102eafa5c1eda2f37330887d985387d5df5
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509095"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026257"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Registrierungsübergreifende Authentifizierung in einer ACR-Aufgabe unter Verwendung einer in Azure verwalteten Identität 
 
-In einer [ACR-Aufgabe](container-registry-tasks-overview.md) können Sie [eine verwaltete Identität für Azure-Ressourcen aktivieren](container-registry-tasks-authentication-managed-identity.md). Die Identität kann von der Aufgabe für den Zugriff auf weitere Azure-Ressourcen verwendet werden, ohne dass Anmeldeinformationen angegeben oder verwaltet werden müssen. 
+In einer [ACR-Aufgabe](container-registry-tasks-overview.md) können Sie [eine verwaltete Identität für Azure-Ressourcen aktivieren](container-registry-tasks-authentication-managed-identity.md). In der Aufgabe kann die Identität für den Zugriff auf weitere Azure-Ressourcen verwendet werden, ohne dass Anmeldeinformationen angegeben oder verwaltet werden müssen. 
 
-In diesem Artikel erfahren Sie, wie Sie eine verwaltete Identität in einer Aufgabe aktivieren, die ein Image aus einer Registrierung pullt, bei der es sich nicht um die Registrierung handelt, die zum Ausführen der Aufgabe verwendet wird.
+In diesem Artikel erfahren Sie, wie Sie eine verwaltete Identität in einer Aufgabe aktivieren, um ein Image aus einer Registrierung zu pullen, bei der es sich nicht um die Registrierung handelt, die zum Ausführen der Aufgabe verwendet wird.
 
-Für die Erstellung der in diesem Artikel verwendeten Azure-Ressourcen muss mindestens die Version 2.0.68 der Azure-Befehlszeilenschnittstelle (Azure CLI) verwendet werden. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+Um die in diesem Artikel verwendeten Azure-Ressourcen zu erstellen, müssen Sie mindestens Version 2.0.68 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 ## <a name="scenario-overview"></a>Übersicht über das Szenario
 
@@ -43,15 +39,12 @@ Wenn Sie nicht bereits die erforderlichen Azure-Containerregistrierungen haben, 
 
 ## <a name="prepare-base-registry"></a>Vorbereiten der Basisregistrierung
 
-Erstellen Sie zunächst ein Arbeitsverzeichnis und anschließend eine Datei namens „Dockerfile“ mit folgendem Inhalt. In diesem einfachen Beispiel wird ein Node.js-Basisimage auf der Grundlage eines öffentlichen Images in Docker Hub erstellt.
-    
-```bash
-echo FROM node:9-alpine > Dockerfile
-```
-Führen Sie im aktuellen Verzeichnis den Befehl [az acr build][az-acr-build] aus, um das Basisimage zu erstellen und an die Basisregistrierung zu pushen. In der Praxis kann die Basisregistrierung von einem anderen Team oder Prozess in der Organisation verwaltet werden.
-    
+Führen Sie zu Demonstrationszwecken einmalig [az acr import][az-acr-import] aus, um ein öffentliches Node.js-Image von Docker Hub in Ihre Basisregistrierung zu importieren. In der Praxis können Images in der Basisregistrierung von einem anderen Team oder Prozess in der Organisation verwaltet werden.
+
 ```azurecli
-az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file Dockerfile .
+az acr import --name mybaseregistry \
+  --source docker.io/library/node:9-alpine \
+  --image baseimages/node:9-alpine 
 ```
 
 ## <a name="define-task-steps-in-yaml-file"></a>Definieren von Aufgabenschritten in einer YAML-Datei
@@ -59,11 +52,11 @@ az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file D
 Die Schritte für diese exemplarische [Aufgabe mit mehreren Schritten](container-registry-tasks-multi-step.md) werden in einer [YAML-Datei](container-registry-tasks-reference-yaml.md) definiert. Erstellen Sie in Ihrem lokalen Arbeitsverzeichnis eine Datei namens `helloworldtask.yaml`, und fügen Sie Folgendes ein. Aktualisieren Sie im Buildschritt den Wert von `REGISTRY_NAME` mit dem Servernamen Ihrer Basisregistrierung.
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
 # Replace mybaseregistry with the name of your registry containing the base image
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}}  https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - build: -t $Registry/hello-world:$ID  https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 Im Buildschritt wird die Datei `Dockerfile-app` im Repository [Azure-Samples/acr-build-helloworld-node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) verwendet, um ein Image zu erstellen. `--build-arg` verweist auf die Basisregistrierung, aus der das Basisimage gepullt werden soll. Nach erfolgreicher Erstellung wird das Image an die Registrierung gepusht, die zum Ausführen der Aufgabe verwendet wird.
@@ -89,6 +82,27 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Erteilen von Basisregistrierungs-Pullberechtigungen für die Identität
+
+In diesem Abschnitt werden der verwalteten Identität Berechtigungen zum Pullen von Images aus der Basisregistrierung *mybaseregistry* erteilt.
+
+Verwenden Sie den Befehl [az acr show][az-acr-show], um die Ressourcen-ID der Basisregistrierung abzurufen und in einer Variablen zu speichern:
+
+```azurecli
+baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
+```
+
+Verwenden Sie den Befehl [az role assignment create][az-role-assignment-create], um der Identität die Rolle `acrpull` für die Basisregistrierung zuzuweisen. Diese Rolle ist nur zum Pullen von Images aus der Registrierung berechtigt.
+
+```azurecli
+az role assignment create \
+  --assignee $principalID \
+  --scope $baseregID \
+  --role acrpull
+```
+
+Fahren Sie fort mit [Hinzufügen von Zielregistrierungs-Anmeldeinformationen zur Aufgabe](#add-target-registry-credentials-to-task).
+
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>Option 2: Erstellen einer Aufgabe mit systemseitig zugewiesener Identität
 
 Mit den Schritten in diesem Abschnitt wird eine Aufgabe erstellt und eine systemseitig zugewiesene Identität aktiviert. Wenn Sie stattdessen eine benutzerseitig zugewiesene Identität aktivieren möchten, navigieren Sie zu [Option 1: Erstellen einer Aufgabe mit benutzerseitig zugewiesener Identität](#option-1-create-task-with-user-assigned-identity). 
@@ -107,7 +121,7 @@ az acr task create \
 ```
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="give-identity-pull-permissions-to-the-base-registry"></a>Erteilen von Basisregistrierungs-Pullberechtigungen für die Identität
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Erteilen von Basisregistrierungs-Pullberechtigungen für die Identität
 
 In diesem Abschnitt werden der verwalteten Identität Berechtigungen zum Pullen von Images aus der Basisregistrierung *mybaseregistry* erteilt.
 
@@ -120,12 +134,15 @@ baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 Verwenden Sie den Befehl [az role assignment create][az-role-assignment-create], um der Identität die Rolle `acrpull` für die Basisregistrierung zuzuweisen. Diese Rolle ist nur zum Pullen von Images aus der Registrierung berechtigt.
 
 ```azurecli
-az role assignment create --assignee $principalID --scope $baseregID --role acrpull
+az role assignment create \
+  --assignee $principalID \
+  --scope $baseregID \
+  --role acrpull
 ```
 
 ## <a name="add-target-registry-credentials-to-task"></a>Hinzufügen von Zielregistrierungs-Anmeldeinformationen zur Aufgabe
 
-Verwenden Sie nun den Befehl [az acr task credential add][az-acr-task-credential-add], um der Aufgabe die Anmeldeinformationen der Identität hinzuzufügen, sodass sie sich bei der Basisregistrierung authentifizieren kann. Führen Sie den passenden Befehl für die Art der verwalteten Identität aus, die Sie in der Aufgabe aktiviert haben. Wenn Sie eine benutzerseitig zugewiesene Identität aktiviert haben, übergeben Sie `--use-identity` mit der Client-ID der Identität. Wenn Sie eine systemseitig zugewiesene Identität aktiviert haben, übergeben Sie `--use-identity [system]`.
+Verwenden Sie nun den Befehl [az acr task credential add][az-acr-task-credential-add], um der Aufgabe zu ermöglichen, sich mithilfe der Anmeldeinformationen der Identität bei der Basisregistrierung zu authentifizieren. Führen Sie den passenden Befehl für die Art der verwalteten Identität aus, die Sie in der Aufgabe aktiviert haben. Wenn Sie eine benutzerseitig zugewiesene Identität aktiviert haben, übergeben Sie `--use-identity` mit der Client-ID der Identität. Wenn Sie eine systemseitig zugewiesene Identität aktiviert haben, übergeben Sie `--use-identity [system]`.
 
 ```azurecli
 # Add credentials for user-assigned identity to the task

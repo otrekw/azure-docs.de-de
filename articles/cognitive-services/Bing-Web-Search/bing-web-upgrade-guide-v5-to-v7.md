@@ -11,18 +11,23 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2133cd59c524112ae8a77c0a20cbce1d1336a38d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d930543671a5328d76a38aa7e1b421c111e89e39
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881300"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349519"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Upgrade der Bing-Websuche-API von Version 5 auf Version 7
 
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
 In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7 der Bing-Websuche-API angegeben. Anhand dieses Leitfadens können Sie die Teile Ihrer Anwendung ermitteln, die Sie zur Verwendung von Version 7 aktualisieren müssen.
 
-## <a name="breaking-changes"></a>Wichtige Änderungen
+## <a name="breaking-changes"></a>Aktuelle Änderungen
 
 ### <a name="endpoints"></a>Endpunkte
 
@@ -41,7 +46,7 @@ In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7
 
 |Code|SubCode|BESCHREIBUNG
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing gibt ServerError zurück, sobald eine der Bedingungen für untergeordnete Codes auftritt. Die Antwort enthält diese Fehler, wenn der HTTP-Statuscode 500 lautet.
+|ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing gibt ServerError zurück, wenn eine der Untercodebedingungen auftritt. Die Antwort enthält diese Fehler, wenn der HTTP-Statuscode 500 lautet.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blockiert|Bing gibt InvalidRequest zurück, wenn ein beliebiger Teil der Anforderung ungültig ist. Beispielsweise, wenn ein erforderlicher Parameter fehlt oder ein Parameterwert ungültig ist.<br/><br/>Wenn der Fehler ParameterMissing oder ParameterInvalidValue ist, lautet der HTTP-Statuscode 400.<br/><br/>Wenn der Fehler HttpNotAllowed ist, lautet der HTTP-Statuscode 410.
 |RateLimitExceeded||Bing gibt RateLimitExceeded zurück, wenn Sie Ihr Kontingent für Abfragen pro Sekunde (Queries Per Second, QPS) oder Abfragen pro Monat (Queries Per Month, QPM) überschreiten.<br/><br/>Bing gibt den HTTP-Statuscode 429 zurück, wenn Sie das QPS-Kontingent überschritten haben, und 403, wenn Sie das QPM-Kontingent überschritten haben.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing gibt InvalidAuthorization zurück, wenn Bing den Aufrufer nicht authentifizieren kann. Beispielsweise, wenn der `Ocp-Apim-Subscription-Key`-Header fehlt oder der Abonnementschlüssel ungültig ist.<br/><br/>Redundanz tritt auf, wenn Sie mehrere Authentifizierungsmethoden angeben.<br/><br/>Wenn der Fehler InvalidAuthorization ist, lautet der HTTP-Statuscode 401.
@@ -56,7 +61,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-Deaktiviert|InsufficientAuthorization.AuthorizationDisabled
+Disabled|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -75,14 +80,14 @@ Blockiert|InvalidRequest.Blocked
 
 ### <a name="headers"></a>Header
 
-- Der optionale Anforderungsheader [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) wurde hinzugefügt. Als Standardeinstellung gibt Bing zwischengespeicherte Inhalte (sofern vorhanden) zurück. Wenn Sie dies verhindern möchten, legen Sie den Pragma-Header auf „no-cache“ fest (z.B. „Pragma: no-cache“).
+- Der optionale Anforderungsheader [Pragma](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) wurde hinzugefügt. Als Standardeinstellung gibt Bing zwischengespeicherte Inhalte (sofern vorhanden) zurück. Wenn Sie dies verhindern möchten, legen Sie den Pragma-Header auf „no-cache“ fest (z.B. „Pragma: no-cache“).
 
 ### <a name="query-parameters"></a>Abfrageparameter
 
-- Der Abfrageparameter [AnswerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) wurde hinzugefügt. Verwenden Sie diesen Parameter, um die Anzahl der Antworten anzugeben, die enthalten sein sollen. Die Antworten werden basierend auf der Rangfolge ausgewählt. Wenn Sie diesen Parameter beispielsweise auf drei (3) festlegen, sind die drei Antworten mit den höchsten Rangfolgenwerten enthalten.  
+- Der Abfrageparameter [AnswerCount](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) wurde hinzugefügt. Verwenden Sie diesen Parameter, um die Anzahl der Antworten anzugeben, die enthalten sein sollen. Die Antworten werden basierend auf der Rangfolge ausgewählt. Wenn Sie diesen Parameter beispielsweise auf drei (3) festlegen, sind die drei Antworten mit den höchsten Rangfolgenwerten enthalten.  
 
-- Der Abfrageparameter [promote](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) wurde hinzugefügt. Verwenden Sie diesen Parameter zusammen mit `answerCount`, um einen oder mehrere Antworttypen unabhängig von der jeweiligen Rangfolge explizit einzuschließen. Wenn Sie beispielsweise Videos und Bilder zur Aufnahme in die Antwort höherstufen möchten, legen Sie diesen Parameter auf *videos,images* fest. Die Liste der Antworten, die Sie höherstufen möchten, zählt nicht für den `answerCount`-Grenzwert. Wenn z.B. `answerCount` den Wert 2 hat und `promote` auf *videos,images* festgelegt ist, kann die Antwort Webseiten, News, Videos und Bilder enthalten.
+- Der Abfrageparameter [promote](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) wurde hinzugefügt. Verwenden Sie diesen Parameter zusammen mit `answerCount`, um einen oder mehrere Antworttypen unabhängig von der jeweiligen Rangfolge explizit einzuschließen. Wenn Sie beispielsweise Videos und Bilder zur Aufnahme in die Antwort höherstufen möchten, legen Sie diesen Parameter auf *videos, images* fest. Die Liste der Antworten, die Sie höherstufen möchten, zählt nicht für den `answerCount`-Grenzwert. Wenn z. B. `answerCount` den Wert 2 hat und `promote` auf *videos, images* festgelegt ist, kann die Antwort Webseiten, News, Videos und Bilder enthalten.
 
 ### <a name="object-changes"></a>Änderungen an Objekten
 
-- Das Feld `someResultsRemoved` wurde zum [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer)-Objekt hinzugefügt. Das Feld enthält einen booleschen Wert, der angibt, ob bei der Antwort einige Ergebnisse aus der Webantwort ausgeschlossen wurden.  
+- Das Feld `someResultsRemoved` wurde zum [WebAnswer](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer)-Objekt hinzugefügt. Das Feld enthält einen booleschen Wert, der angibt, ob bei der Antwort einige Ergebnisse aus der Webantwort ausgeschlossen wurden.

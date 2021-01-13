@@ -1,44 +1,69 @@
-- name: Stream Analytics-Dokumentation
+- name: Azure Stream Analytics-Dokumentation
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist Stream Analytics?
+    - name: Willkommen bei Stream Analytics
       href: stream-analytics-introduction.md
-    - name: Muster für End-to-End-Lösungen
-      href: stream-analytics-solution-patterns.md
+    - name: "Stream\_Analytics-Cluster"
+      href: cluster-overview.md
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen eines Auftrags – Azure-Portal
-      href: stream-analytics-quick-create-portal.md
-    - name: Erstellen eines Auftrags – PowerShell
-      href: stream-analytics-quick-create-powershell.md
-    - name: 'Erstellen eines Auftrags: Visual Studio'
-      href: stream-analytics-quick-create-vs.md
-    - name: 'Erstellen eines Auftrags: Visual Studio Code'
-      href: quick-create-vs-code.md
-- name: Lernprogramme
+    - name: Erstellen eines Auftrags
+      items:
+        - name: Azure-Portal
+          href: stream-analytics-quick-create-portal.md
+        - name: Azure CLI
+          href: quick-create-azure-cli.md
+        - name: ARM-Vorlage
+          displayName: Resource Manager
+          href: quick-create-azure-resource-manager.md
+        - name: PowerShell
+          href: stream-analytics-quick-create-powershell.md
+        - name: Visual Studio
+          href: stream-analytics-quick-create-vs.md
+        - name: Visual Studio Code
+          href: quick-create-visual-studio-code.md
+    - name: Erstellen eines Clusters
+      items:
+        - name: Azure-Portal
+          href: create-cluster.md
+- name: Tutorials
   items:
-    - name: 1. Erstellen/Verwalten eines Auftrags
-      href: stream-analytics-manage-job.md
-    - name: 2. Ausführen von Azure Functions
+    - name: Visualisieren von betrügerischen Anrufen in Power BI
+      href: stream-analytics-real-time-fraud-detection.md
+    - name: Ausführen von Azure Functions
       href: stream-analytics-with-azure-functions.md
-    - name: 3. Ausführen einer benutzerdefinierten JavaScript-Funktion
-      href: stream-analytics-javascript-user-defined-functions.md
-    - name: '4: Bereitstellen mit CI/CD in Azure Pipelines'
-      href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '5: Ausführen von C#-UDF auf IoT Edge'
+    - name: Ausführen einer benutzerdefinierten C#-Funktion
       href: stream-analytics-edge-csharp-udf.md
+    - name: Erstellen eines benutzerdefinierten .NET-Deserialisierers
+      href: custom-deserializer.md
+    - name: "Erstellen eines IoT\_Edge-Auftrags"
+      href: /azure/iot-edge/tutorial-deploy-stream-analytics?view=iotedge-2018-06
+      maintainContext: true
 - name: Beispiele
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: Konzepte
   items:
+    - name: Muster für End-to-End-Lösungen
+      href: stream-analytics-solution-patterns.md
     - name: "Auswählen einer Stream\_Analytics-Technologie"
       href: streaming-technologies.md
     - name: Auswählen eines Tools für die Auftragsentwicklung
       href: feature-comparison.md
+    - name: Lokale Entwicklung
+      href: develop-locally.md
+    - name: Sicherheit
+      items:
+        - name: Verbinden von Aufträgen mit Azure Virtual Network (VNet)
+          href: connect-job-to-vnet.md
+        - name: Sicherheitskontrollen von Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Eingabetypen für einen Auftrag
       items:
         - name: Übersicht über Eingaben
@@ -47,16 +72,68 @@
           href: stream-analytics-define-inputs.md
         - name: Verweisdateneingaben
           href: stream-analytics-use-reference-data.md
+        - name: Lesen von Eingaben in beliebigen Formaten mithilfe benutzerdefinierter Deserialisierer
+          href: custom-deserializer-examples.md
     - name: Ausgabetypen für einen Auftrag
       items:
         - name: Übersicht über Ausgaben
           href: stream-analytics-define-outputs.md
-        - name: Ausgabe an Cosmos DB
-          href: stream-analytics-documentdb-output.md
-        - name: Ausgabe an Azure SQL-Datenbank
+          displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
+        - name: Azure Data Lake Storage Gen 1
+          href: azure-data-lake-storage-gen1-output.md
+        - name: "Azure\_SQL-Datenbank"
+          href: sql-database-output.md
+        - name: SQL-Datenbankleistung
           href: stream-analytics-sql-output-perf.md
+        - name: Azure Synapse Analytics
+          href: azure-synapse-analytics-output.md
+        - name: Blob Storage und Azure Data Lake Gen 2
+          href: blob-storage-azure-data-lake-gen2-output.md
         - name: Benutzerdefinierte Pfadmuster für Blobs
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+        - name: Event Hubs
+          href: event-hubs-output.md
+        - name: Power BI
+          href: power-bi-output.md
+        - name: Tabellenspeicher
+          href: table-storage-output.md
+        - name: Service Bus-Warteschlangen
+          href: service-bus-queues-output.md
+        - name: Service Bus-Themen
+          href: service-bus-topics-output.md
+        - name: Azure Cosmos DB
+          href: azure-cosmos-db-output.md
+        - name: Cosmos DB-Optimierung
+          href: stream-analytics-documentdb-output.md
+        - name: Azure Functions
+          href: azure-functions-output.md
+    - name: Erweitern von Abfragen mit Funktionen
+      items:
+        - name: Übersicht über Funktionen
+          href: functions-overview.md
+        - name: "JavaScript\_UDF"
+          href: stream-analytics-javascript-user-defined-functions.md
+        - name: JavaScript-UDA
+          href: stream-analytics-javascript-user-defined-aggregates.md
+        - name: C#-UDF
+          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: "Machine\_Learning-UDF"
+          href: machine-learning-udf.md
+        - name: Debuggen von UDFs
+          href: debug-user-defined-functions.md
+    - name: Optimieren Ihres Stream Analytics-Auftrags
+      items:
+        - name: Überblick über Streamingeinheiten und Informationen zu Anpassungen
+          href: stream-analytics-streaming-unit-consumption.md
+          displayName: 'scale, performance'
+        - name: Verbessern der Abfrageleistung
+          href: stream-analytics-parallelization.md
+        - name: Neupartitionieren Ihrer Eingabe
+          href: repartition.md
+        - name: Erhöhen des Durchsatzes Ihres Auftrags
+          href: stream-analytics-scale-jobs.md
+    - name: IoT Edge
+      href: stream-analytics-edge.md
     - name: Zustände eines Auftrags
       href: job-states.md
     - name: Fensterfunktionen
@@ -79,6 +156,16 @@
   items:
     - name: Verwalten
       items:
+        - name: Cluster
+          items:
+            - name: Erstellen und Löschen privater Endpunkte
+              href: private-endpoints.md
+            - name: Hinzufügen und Entfernen von Aufträgen
+              href: manage-jobs-cluster.md
+            - name: Skalieren der Clustergröße
+              href: scale-cluster.md
+        - name: Automatisches Skalieren von Aufträgen
+          href: stream-analytics-autoscale.md
         - name: Aktualisieren von Anmeldeinformationen
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: Konfigurieren von Richtlinien für die Ereignisreihenfolge
@@ -93,26 +180,41 @@
           href: stream-analytics-power-bi-dashboard.md
         - name: Beenden oder Löschen eines Auftrags
           href: stream-analytics-clean-up-your-job.md
+        - name: Kopieren oder Sichern eines Auftrags
+          href: copy-job.md
         - name: Koppeln von Aufträgen für Zuverlässigkeit
           href: stream-analytics-job-reliability.md
-        - name: Authentifizieren mit einer verwalteten Identität – ADLS Gen 1-Ausgabe
-          href: stream-analytics-managed-identities-adls.md
         - name: Verwenden der SQL-Referenzdaten
           href: sql-reference-data.md
-        - name: Authentifizieren mit einer verwalteten Identität – BLOB-Ausgabe
+        - name: Verschlüsseln Ihrer Daten
+          href: data-protection.md
+        - name: Georedundanz
+          href: geo-redundancy.md
+    - name: Authentifizieren mit einer verwalteten Identität
+      items:
+        - name: ADLS Gen 1
+          href: stream-analytics-managed-identities-adls.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Blob Storage
           href: blob-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Event Hubs
+          href: event-hubs-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Power BI
+          href: powerbi-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Azure SQL und Azure Synapse
+          href: sql-database-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
     - name: Erstellen von Lösungen
       items:
         - name: Twitter-Stimmungsanalyse
           href: stream-analytics-twitter-sentiment-analysis-trends.md
-        - name: Betrugsermittlung in Echtzeit
-          href: stream-analytics-real-time-fraud-detection.md
-        - name: Ausführen von Aufträgen in IoT Edge
-          href: stream-analytics-edge.md
+        - name: Ausführen von Aufträgen in Azure Stack
+          href: on-azure-stack.md
         - name: Analysieren von Sensordaten von Mauthäuschen
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
-        - name: Ausführen eines benutzerdefinierten JavaScript-Aggregats
-          href: stream-analytics-javascript-user-defined-aggregates.md
         - name: Hochfrequenzhandel
           href: stream-analytics-high-frequency-trading.md
         - name: Verarbeiten von IoT-Streamingdaten
@@ -124,6 +226,9 @@
           maintainContext: true
         - name: Verarbeiten von Event Hub-Daten
           href: ../event-hubs/process-data-azure-stream-analytics.md
+          maintainContext: true
+        - name: Verarbeiten von Azure SQL-Datenbank
+          href: ../azure-sql/database/stream-data-stream-analytics-integration.md
           maintainContext: true
         - name: Szenarien für Geodaten
           href: geospatial-scenarios.md
@@ -137,20 +242,6 @@
           href: stream-analytics-monitor-jobs.md
         - name: 'Überwachen von Aufträgen: Visual Studio'
           href: stream-analytics-monitor-jobs-use-vs.md
-    - name: Skalieren
-      items:
-        - name: Skalieren mit Streamingeinheiten
-          href: stream-analytics-streaming-unit-consumption.md
-        - name: Skalieren mit Parallelisierung
-          items:
-            - name: Abfrageparallelisierung
-              href: stream-analytics-parallelization.md
-            - name: Erhöhen des Durchsatzes
-              href: stream-analytics-scale-jobs.md
-        - name: Skalieren mit ML-Funktionen
-          href: stream-analytics-scale-with-machine-learning-functions.md
-        - name: Skalieren mit Neupartitionierung
-          href: repartition.md
     - name: Automatisieren
       items:
         - name: Verwenden des .NET SDK
@@ -159,30 +250,48 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: Verwenden der API für IoT Edge-Aufträge
           href: stream-analytics-cicd-api.md
+        - name: Exportieren und Bereitstellen mit Azure Resource Manager
+          href: resource-manager-export.md
+    - name: Continuous Integration und Continuous Deployment
+      items:
+        - name: Übersicht über CI/CD
+          href: cicd-overview.md
+        - name: 'Erstellen, Testen und Bereitstellen mit PowerShell'
+          href: cicd-tools.md
+        - name: Einrichten einer Pipeline mit Azure DevOps
+          href: set-up-cicd-pipeline.md
     - name: Visual Studio
       items:
         - name: Installieren von Tools
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: Test mit Beispieldaten
+        - name: Lokales Testen mit Beispieldaten
           href: stream-analytics-vs-tools-local-run.md
-        - name: Test mit Livedaten
+        - name: Lokales Testen mit Livedaten
           href: stream-analytics-live-data-local-testing.md
         - name: Anzeigen von Aufträgen in Visual Studio
           href: stream-analytics-vs-tools.md
+        - name: Debuggen von Abfragen mithilfe des Auftragsdiagramms
+          href: debug-locally-using-job-diagram.md
         - name: Entwickeln eines Edge-Auftrags
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: Einrichten von CI-/CD-Pipelines
           href: stream-analytics-tools-for-visual-studio-cicd.md
-        - name: Schreiben von .NET-UDF für Edge
-          href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
-        - name: Test mit Beispieldaten
-          href: vscode-local-run.md
-        - name: Einrichten von CI-/CD-Pipelines
-          href: setup-cicd-vs-code.md
+        - name: Vervollständigen von Code mit IntelliSense
+          href: vs-code-intellisense.md
+        - name: Lokales Testen mit Beispieldaten
+          href: visual-studio-code-local-run.md
+        - name: Lokales Testen mit Livedaten
+          href: visual-studio-code-local-run-live-input.md
+        - name: Debuggen von Abfragen mithilfe des Auftragsdiagramms
+          href: debug-locally-using-job-diagram-vs-code.md
         - name: Untersuchen von Aufträgen
-          href: vscode-explore-jobs.md
+          href: visual-studio-code-explore-jobs.md
+        - name: Erstellen und Debuggen eines benutzerdefinierten .NET-Deserialisierers
+          href: visual-studio-code-custom-deserializer.md
+        - name: Felder in „JobConfig.json“
+          href: job-config-json.md
     - name: Problembehandlung
       items:
         - name: Eingabe
@@ -191,10 +300,22 @@
           href: stream-analytics-troubleshoot-output.md
         - name: Abfragelogik
           href: stream-analytics-troubleshoot-query.md
-        - name: Aktivitäts- und Diagnoseprotokolle
+        - name: Aktivitäts- und Ressourcenprotokolle
           href: stream-analytics-job-diagnostic-logs.md
         - name: Datenfehler
           href: data-errors.md
+        - name: Fehlercodes
+          items:
+            - name: Konfigurationsfehler
+              href: configuration-error-codes.md
+            - name: Datenfehler
+              href: data-error-codes.md
+            - name: Externe Verfügbarkeitsfehler
+              href: external-availability-error-codes.md
+            - name: Externe Fehler
+              href: external-error-codes.md
+            - name: Interne Fehler
+              href: internal-error-codes.md
     - name: Integrieren mit Machine Learning
       items:
         - name: Stimmungsanalyse mit ML-Modellen
@@ -205,8 +326,13 @@
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: Debuggen mithilfe des Auftragsdiagramms
       href: stream-analytics-job-diagram-with-metrics.md
+    - name: Skalieren mit ML-Funktionen
+      href: stream-analytics-scale-with-machine-learning-functions.md
 - name: Stream Analytics-Abfragesprache
   items:
+    - name: Übersicht über die Stream Analytics-Abfragesprache
+      href: /stream-analytics-query/stream-analytics-query-language-reference
+      maintainContext: true
     - name: Integrierte Funktionen
       items:
         - name: Übersicht über integrierte Funktionen
@@ -244,7 +370,7 @@
             - name: STDEV
               href: /stream-analytics-query/stdev-azure-stream-analytics
               maintainContext: true
-            - name: STDEVP
+            - name: STDABWEICHUNGAUFFÜLL
               href: /stream-analytics-query/stdevp-azure-stream-analytics
               maintainContext: true
             - name: SUM
@@ -253,10 +379,10 @@
             - name: TopOne
               href: /stream-analytics-query/topone-azure-stream-analytics
               maintainContext: true
-            - name: VAR
+            - name: VARIANZ
               href: /stream-analytics-query/var-azure-stream-analytics
               maintainContext: true
-            - name: VARP
+            - name: VARIANZAUFFÜLL
               href: /stream-analytics-query/varp-azure-stream-analytics
               maintainContext: true
         - name: Analysefunktionen
@@ -391,7 +517,7 @@
               href: /stream-analytics-query/power-azure-stream-analytics
               maintainContext: true
             - name: ROUND
-              href: /stream-analytics-query/round-azure-stream-analytics.md
+              href: /stream-analytics-query/round-azure-stream-analytics
               maintainContext: true
             - name: SIGN
               href: /stream-analytics-query/sign-azure-stream-analytics
@@ -437,7 +563,7 @@
               href: /stream-analytics-query/regexmatch-azure-stream-analytics
               maintainContext: true
             - name: REPLACE
-              href: /stream-analytics-query/replace-azure-stream-analytics.md
+              href: /stream-analytics-query/replace-azure-stream-analytics
               maintainContext: true
             - name: SUBSTRING
               href: /stream-analytics-query/substring-azure-stream-analytics
@@ -485,7 +611,7 @@
           href: /stream-analytics-query/case-azure-stream-analytics
           maintainContext: true
         - name: COALESCE
-          href: /stream-analytics-query/coalesce-azure-stream-analytics.md
+          href: /stream-analytics-query/coalesce-azure-stream-analytics
           maintainContext: true
         - name: CREATE TABLE
           href: /stream-analytics-query/create-table-stream-analytics
@@ -506,7 +632,7 @@
           href: /stream-analytics-query/join-azure-stream-analytics
           maintainContext: true
         - name: MATCH_RECOGNIZE
-          href: /stream-analytics-query/match-recognize-stream-analytics.md
+          href: /stream-analytics-query/match-recognize-stream-analytics
           maintainContext: true
         - name: JOIN-Vorgang für Verweisdaten
           href: /stream-analytics-query/reference-data-join-azure-stream-analytics
@@ -550,6 +676,11 @@
       href: /rest/api/streamanalytics
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.streamanalytics/allversions
+    - name: Azure CLI
+      href: /cli/azure/ext/stream-analytics/stream-analytics
+    - name: Integrierte Azure Policy-Aktionen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Stream Analytics-Vorschauversionen
@@ -560,8 +691,8 @@
       href: 'https://azure.microsoft.com/blog/tag/azure-stream-analytics/'
     - name: Feedbackforum
       href: 'https://feedback.azure.com/forums/270577-azure-stream-analytics'
-    - name: Forum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: /answers/topics/azure-stream-analytics.html
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/stream-analytics/'
     - name: Preisrechner

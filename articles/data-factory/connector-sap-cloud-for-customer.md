@@ -1,30 +1,31 @@
 ---
-title: Kopieren von Daten aus/in SAP Cloud for Customer mit Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus/in SAP Cloud for Customer
 description: Erfahren Sie, wie Sie mithilfe von Data Factory Daten aus SAP Cloud for Customer in unterstützte Senkendatenspeicher (oder) aus unterstützten Quelldatenspeichern in SAP Cloud for Customer kopieren können.
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
-ms.author: jingwang
-ms.openlocfilehash: 53f152eb9b02d7c5a635ba1b9aae8299743dd6e0
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.custom: seo-lt-2019
+ms.date: 06/12/2020
+ms.openlocfilehash: 3874d3b2b0938b6fd0f763b42ef15f8250b42f1d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010479"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87529618"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopieren von Daten aus SAP Cloud for Customer (C4C) mithilfe von Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus und in SAP Cloud for Customer (C4C) kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 >[!TIP]
->Informationen zur allgemeinen Unterstützung des SAP-Datenintegrationsszenarios durch ADF finden Sie im [Whitepaper zur SAP-Datenintegration mit Azure Data Factory](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf). Dort finden Sie auch eine detaillierte Einführung, einen Vergleich sowie Anleitungen.
+>Informationen zur allgemeinen Unterstützung des SAP-Datenintegrationsszenarios durch ADF finden Sie im [Whitepaper zur SAP-Datenintegration mit Azure Data Factory](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf). Dort finden Sie auch eine detaillierte Einführung in jeden SAP-Connector, einen Vergleich sowie Anleitungen.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -122,7 +123,8 @@ Legen Sie zum Kopieren von Daten aus SAP Cloud for Customer den Quelltyp in der 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapCloudForCustomerSource**  | Ja |
-| query | Geben Sie die benutzerdefinierte OData-Abfrage zum Lesen von Daten an. | Nein |
+| Abfrage | Geben Sie die benutzerdefinierte OData-Abfrage zum Lesen von Daten an. | Nein |
+| httpRequestTimeout | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout zum Empfangen einer Antwort, nicht um das Timeout zum Lesen von Antwortdaten. Wenn Sie hier nichts angeben, lautet der Standardwert **00:30:00** (30 Minuten). | Nein |
 
 Beispielabfrage zum Abrufen von Daten für einen bestimmten Tag: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
@@ -216,7 +218,7 @@ Beim Kopieren von Daten aus SAP Cloud for Customer werden die folgenden Zuordnun
 | Edm.Binary | Byte[] |
 | Edm.Boolean | Bool |
 | Edm.Byte | Byte[] |
-| Edm.DateTime | DateTime |
+| Edm.DateTime | Datetime |
 | Edm.Decimal | Decimal |
 | Edm.Double | Double |
 | Edm.Single | Single |

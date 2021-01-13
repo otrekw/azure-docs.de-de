@@ -1,26 +1,20 @@
 ---
-title: Verweisen auf ein vorhandenes virtuelles Netzwerk in einer Vorlage für eine Azure-Skalierungsgruppe | Microsoft-Dokumentation
+title: Verweisen auf ein vorhandenes virtuelles Netzwerk in einer Vorlage für eine Azure-Skalierungsgruppe
 description: Informationen zum Hinzufügen eines virtuellen Netzwerks zu einer vorhandenen Vorlage für eine Azure-VM-Skalierungsgruppe
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: networking
 ms.date: 04/26/2019
-ms.author: manayar
-ms.openlocfilehash: 8b75b9898eb767866c0843594a82570cfb65d122
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: fab6e6742fa43e1e38ee661b67896ae4aa11b3ed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868951"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83124821"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Hinzufügen eines Verweises auf ein vorhandenes virtuelles Netzwerk in einer Vorlage für eine Azure-Skalierungsgruppe
 

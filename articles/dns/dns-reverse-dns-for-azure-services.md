@@ -1,23 +1,22 @@
 ---
-title: Reverse-DNS für Azure-Dienste | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Reverse-DNS-Lookups für in Azure gehostete Dienste konfigurieren.
+title: 'Reverse-DNS für Azure-Dienste: Azure DNS'
+description: Mit diesem Lernpfad beginnen Sie mit dem Konfigurieren von Reverse-DNS-Lookups für in Azure gehostete Dienste.
 services: dns
 documentationcenter: na
-author: vhorne
-manager: timlt
+author: rohinkoul
 ms.service: dns
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: victorh
-ms.openlocfilehash: c33914fb404467a20a9799df9643e9702234c300
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: rohink
+ms.openlocfilehash: 3adbf34e4c19a76c2b5b2b1968c7821f37965929
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224488"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965628"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurieren von Reverse-DNS für in Azure gehostete Dienste
 
@@ -248,11 +247,10 @@ Nein. Azure unterstützt derzeit Reverse-DNS nur für öffentliche IPv4-IP-Adres
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Kann ich aus Azure Compute Services heraus E-Mails an externe Domänen senden?
 
-Ob es technisch möglich ist, E-Mails direkt aus einer Azure-Bereitstellung heraus zu senden, hängt vom Abonnementtyp ab. Unabhängig davon empfiehlt Microsoft für den Versand ausgehender E-Mails die Verwendung vertrauenswürdiger E-Mail-Relaydienste. Ausführlichere Informationen finden Sie unter [Enhanced Azure Security for sending Emails – November 2017 Update](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/) (Verbesserte Azure-Sicherheit beim Senden von E-Mails – Update vom November 2017).
+Ob es technisch möglich ist, E-Mails direkt aus einer Azure-Bereitstellung heraus zu senden, hängt vom Abonnementtyp ab. Unabhängig davon empfiehlt Microsoft für den Versand ausgehender E-Mails die Verwendung vertrauenswürdiger E-Mail-Relaydienste. Ausführlichere Informationen finden Sie unter [Enhanced Azure Security for sending Emails – November 2017 Update](../virtual-network/troubleshoot-outbound-smtp-connectivity.md) (Verbesserte Azure-Sicherheit beim Senden von E-Mails – Update vom November 2017).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Reverse-DNS finden Sie unter [Reverse DNS](https://en.wikipedia.org/wiki/Reverse_DNS_lookup) in der Wikipedia.
 <br>
 Erfahren Sie, wie [die Reverse-Lookupzone für Ihren vom ISP zugewiesenen IP-Adressbereich in Azure DNS gehostet wird](dns-reverse-dns-for-azure-services.md).
-

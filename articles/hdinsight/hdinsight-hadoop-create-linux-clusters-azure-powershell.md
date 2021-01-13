@@ -2,18 +2,18 @@
 title: Erstellen von Apache Hadoop-Clustern mit PowerShell – Azure HDInsight
 description: Erfahren Sie, wie Sie Azure PowerShell verwenden, um Apache Hadoop-, Apache HBase-, Apache Storm- und Apache Spark-Cluster unter Linux für HDInsight zu erstellen.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/24/2019
-ms.author: hrasheed
-ms.openlocfilehash: 51270f1fd7a662cdfd747bd0bfaf9ff03dd438a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/18/2019
+ms.openlocfilehash: 23ce0f83e4233837d56ba9045a9a356ebd1cc33f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257916"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541810"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Erstellen von Linux-basierten Clustern in HDInsight mit Azure PowerShell
 
@@ -21,19 +21,13 @@ ms.locfileid: "66257916"
 
 Azure PowerShell ist eine leistungsstarke Skriptumgebung, mit der Sie die Bereitstellung und Verwaltung Ihrer Workloads in Microsoft Azure steuern und automatisieren können. Dieses Dokument enthält Informationen zum Erstellen eines Linux-basierten HDInsight-Clusters mit Azure PowerShell. Darüber hinaus ist ein Beispielskript enthalten.
 
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Sie benötigen Folgendes, bevor Sie mit diesem Verfahren beginnen können:
-
-* Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* [Azure PowerShell](/powershell/azure/install-Az-ps)
-
-    > [!IMPORTANT]  
-    > Die Azure PowerShell-Unterstützung zum Verwalten von HDInsight-Ressourcen mithilfe von Azure Service Manager ist **veraltet** und wurde zum 1. Januar 2017 eingestellt. Die Schritte in diesem Dokument zeigen die neuen HDInsight-Cmdlets, die mit Azure Resource Manager genutzt werden können.
-    >
-    > Führen Sie zur Installation der neuesten Version von Azure PowerShell die unter [Installieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) beschriebenen Schritte aus. Wenn Sie über Skripts verfügen, die für die Verwendung der neuen Cmdlets für Azure Resource Manager geändert werden müssen, finden Sie unter [Migrieren zu Azure Resource Manager-basierten Entwicklungstools für HDInsight-Cluster](hdinsight-hadoop-development-using-azure-resource-manager.md) weitere Informationen.
+[Azure PowerShell](/powershell/azure/install-Az-ps)-Az-Modul
 
 ## <a name="create-cluster"></a>Cluster erstellen
 
@@ -45,6 +39,9 @@ Für die Erstellung eines HDInsight-Clusters mithilfe von Azure PowerShell müss
 * Erstellen eines Azure-Speicherkontos
 * Erstellen eines Azure-Blobcontainers
 * Erstellen eines HDInsight-Clusters
+
+> [!NOTE]
+> Die Verwendung von PowerShell zum Erstellen eines HDInsight-Clusters mit Azure Data Lake Storage Gen2 wird derzeit nicht unterstützt.
 
 Das folgende Skript veranschaulicht das Erstellen eines neuen Clusters:
 
@@ -63,7 +60,7 @@ Das Erstellen eines Clusters kann bis zu 20 Minuten dauern.
 
 ## <a name="create-cluster-configuration-object"></a>Erstellen eines Clusters: Konfigurationsobjekt
 
-Sie können auch ein HDInsight-Konfigurationsobjekt mit dem Cmdlet `New-AzHDInsightClusterConfig` erstellen. Anschließend können Sie dieses Konfigurationsobjekt ändern, um zusätzliche Konfigurationsoptionen für Ihren Cluster zu aktivieren. Verwenden Sie abschließend den Parameter `-Config` des Cmdlets `New-AzHDInsightCluster`, um die Konfiguration zu verwenden.
+Sie können ein HDInsight-Konfigurationsobjekt auch mit dem Cmdlet [`New-AzHDInsightClusterConfig`](/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) erstellen. Anschließend können Sie dieses Konfigurationsobjekt ändern, um zusätzliche Konfigurationsoptionen für Ihren Cluster zu aktivieren. Verwenden Sie abschließend den Parameter `-Config` des Cmdlets [`New-AzHDInsightCluster`](/powershell/module/az.hdinsight/new-azhdinsightcluster), um die Konfiguration zu verwenden.
 
 Das folgende Skript erstellt ein Konfigurationsobjekt zum Konfigurieren eines Clustertyps R-Server in HDInsight. Die Konfiguration aktiviert einen Edge-Knoten, RStudio, sowie ein zusätzliches Speicherkonto.
 
@@ -92,7 +89,6 @@ Nachdem Sie einen HDInsight-Cluster erfolgreich erstellt haben, nutzen Sie die f
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop-Cluster
 
 * [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
-* [Verwenden von Apache Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
 * [Verwenden von MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase Cluster
@@ -112,4 +108,3 @@ Nachdem Sie einen HDInsight-Cluster erfolgreich erstellt haben, nutzen Sie die f
 * [Ausführen von Remoteaufträgen in einem Apache Spark-Cluster mithilfe von Apache Livy](spark/apache-spark-livy-rest-interface.md)
 * [Apache Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](spark/apache-spark-use-bi-tools.md)
 * [Apache Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](spark/apache-spark-machine-learning-mllib-ipython.md)
-

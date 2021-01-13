@@ -1,23 +1,17 @@
 ---
 title: 'Netzwerkleistungsmonitor-Lösung in Azure: häufig gestellte Fragen | Microsoft-Dokumentation'
 description: Dieser Artikel umfasst die häufig gestellten Fragen zum Netzwerkleistungsmonitor in Azure. Mit dem Netzwerkleistungsmonitor (NPM) können Sie die Leistung Ihrer Netzwerke nahezu in Echtzeit überwachen und Leistungsengpässe im Netzwerk erkennen und lokalisieren.
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: conceptual
 author: vinynigam
-manager: agummadi
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 10/12/2018
 ms.author: vinigam
-ms.openlocfilehash: b3274c214aa60c930e62e651af960d5f01cbdd20
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.date: 10/12/2018
+ms.openlocfilehash: dd6c6248fcdf30350daecaa4857a81447bbdb7a8
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782110"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280324"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen
 
@@ -25,11 +19,11 @@ ms.locfileid: "68782110"
 
 Dieser Artikel umfasst die häufig gestellten Fragen (FAQs) zum Netzwerkleistungsmonitor (NPM) in Azure.
 
-Der [Netzwerkleistungsmonitor](/azure/networking/network-monitoring-overview) ist eine cloudbasierte [hybride Netzwerküberwachungslösung](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md), mit der Sie die Netzwerkleistung zwischen verschiedenen Punkten in Ihrer Netzwerkinfrastruktur überwachen können. Zudem können Sie die Netzwerkkonnektivität mit [Dienst- und Anwendungsendpunkten](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) und [die Leistung von Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md) überwachen. 
+Der [Netzwerkleistungsmonitor](../../networking/network-monitoring-overview.md) ist eine cloudbasierte [hybride Netzwerküberwachungslösung](./network-performance-monitor-performance-monitor.md), mit der Sie die Netzwerkleistung zwischen verschiedenen Punkten in Ihrer Netzwerkinfrastruktur überwachen können. Zudem können Sie die Netzwerkkonnektivität mit [Dienst- und Anwendungsendpunkten](./network-performance-monitor-service-connectivity.md) und [die Leistung von Azure ExpressRoute](./network-performance-monitor-expressroute.md) überwachen. 
 
 Der Netzwerkleistungsmonitor erkennt Netzwerkprobleme wie ins Nichts führenden Datenverkehr (Blackholing), Routingfehler und Probleme, die mit herkömmlichen Netzwerküberwachungsmethoden nicht erkannt werden können. Die Lösung generiert Warnungen und benachrichtigt Sie, sobald ein Schwellenwert für eine Netzwerkverbindung überschritten wird. Sie gewährleistet außerdem das rechtzeitige Erkennen von Leistungsproblemen im Netzwerk und ordnet die Ursache des Problems einem bestimmten Netzwerksegment oder Gerät zu. 
 
-Weitere Informationen zu den verschiedenen vom [Netzwerkleistungsmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) unterstützten Funktionen sind online verfügbar.
+Weitere Informationen zu den verschiedenen vom [Netzwerkleistungsmonitor](../../networking/network-monitoring-overview.md) unterstützten Funktionen sind online verfügbar.
 
 ## <a name="set-up-and-configure-agents"></a>Einrichten und Konfigurieren von Agents
 
@@ -40,13 +34,13 @@ Nachfolgend sind die Plattformanforderungen für die verschiedenen Funktionen de
 - Die Funktion „ExpressRoute-Monitor“ des Netzwerkleistungsmonitors unterstützt nur das Windows Server-Betriebssystem (2008 SP1 oder höher).
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Kann ich Linux-Computer als Überwachungsknoten im Netzwerkleistungsmonitor verwenden?
-Die Funktion zum Überwachen von Netzwerken mithilfe von Linux-basierten Knoten befindet sich derzeit in der Vorschau. Wenden Sie sich an Ihren Account Manager, um mehr zu erfahren. Linux-Agents bieten die Überwachungsfunktion nur für die Funktion „Systemmonitor“ des Netzwerkleistungsmonitors und sind für die Funktionen „Dienstkonnektivitätsmonitor“ und „ExpressRoute-Monitor“ nicht verfügbar.
+Die Funktion zum Überwachen von Netzwerken mithilfe von Linux-basierten Knoten befindet sich derzeit in der Vorschau. Greifen Sie [hier](../../virtual-machines/extensions/oms-linux.md) auf den Agent zu. Wenden Sie sich an Ihren Account Manager, um mehr zu erfahren. Linux-Agents bieten die Überwachungsfunktion nur für die Funktion „Systemmonitor“ des Netzwerkleistungsmonitors und sind für die Funktionen „Dienstkonnektivitätsmonitor“ und „ExpressRoute-Monitor“ nicht verfügbar.
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Welche Größenanforderungen gelten für die vom Netzwerkleistungsmonitor zur Überwachung verwendeten Knoten?
 Zur Ausführung der Netzwerkleistungsmonitor-Lösung auf virtuellen Knotencomputern zum Überwachen von Netzwerken müssen die Knoten mindestens einen Speicher von 500 MB und einen Kern aufweisen. Zum Ausführen des Netzwerkleistungsmonitors müssen Sie keine separaten Knoten verwenden. Die Lösung kann auf Knoten ausgeführt werden, auf denen andere Workloads ausgeführt werden. Die Lösung bietet die Möglichkeit, den Überwachungsprozess zu beenden, falls er mehr als 5% der CPU-Ressourcen nutzt.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Soll ich zur Verwendung des Netzwerkleistungsmonitors die Knoten als Direkt-Agent oder über System Center Operations Manager verbinden?
-Die beiden Funktionen „Systemmonitor“ und „Dienstkonnektivitätsmonitor“ unterstützen Knoten, die [als Direkt-Agent](../../azure-monitor/platform/agent-windows.md) sowie [über Operations Manager](../../azure-monitor/platform/om-agents.md) verbunden werden.
+Die beiden Funktionen „Systemmonitor“ und „Dienstkonnektivitätsmonitor“ unterstützen Knoten, die [als Direkt-Agent](../platform/agent-windows.md) sowie [über Operations Manager](../platform/om-agents.md) verbunden werden.
 
 Für die Funktion „ExpressRoute-Monitor“ sollten die Azure-Knoten nur als Direkt-Agents verbunden werden. Azure-Knoten, die über Operations Manager verbunden werden, werden nicht unterstützt. Lokale Knoten werden zur Überwachung einer ExpressRoute-Leitung unterstützt, wenn sie als Direkt-Agents und über Operations Manager verbunden sind.
 
@@ -55,12 +49,12 @@ Wenn Sie Ihr Netzwerk mithilfe Windows Server-basierter Knoten überwachen, soll
 
 ICMP wird für Windows-Knoten mit Desktop-/Clientbetriebssystemen empfohlen. Auf dieser Plattform können keine TCP-Daten über RAW-Sockets gesendet werden, die NPM zum Ermitteln der Netzwerktopologie verwendet.
 
-Weitere Informationen zu den jeweiligen Vorteilen der einzelnen Protokolle finden Sie [hier](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol).
+Weitere Informationen zu den jeweiligen Vorteilen der einzelnen Protokolle finden Sie [hier](./network-performance-monitor-performance-monitor.md#choose-the-protocol).
 
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Wie kann ich einen Knoten zur Unterstützung der Überwachung mithilfe des TCP-Protokolls konfigurieren?
 Damit der Knoten die Überwachung mithilfe des TCP-Protokolls unterstützt, ist Folgendes zu beachten: 
 * Stellen Sie sicher, dass als Plattform für den Knoten Windows Server (2008 SP1 oder höher) verwendet wird.
-* Führen Sie das PowerShell-Skript [EnableRules.ps1](https://aka.ms/npmpowershellscript) auf dem Knoten aus. Weitere Informationen finden Sie in diesen [Anweisungen](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring).
+* Führen Sie das PowerShell-Skript [EnableRules.ps1](https://aka.ms/npmpowershellscript) auf dem Knoten aus. Weitere Informationen finden Sie in diesen [Anweisungen](./network-performance-monitor.md#configure-log-analytics-agents-for-monitoring).
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Wie kann ich den vom Netzwerkleistungsmonitor zur Überwachung verwendeten TCP-Port ändern?
@@ -101,13 +95,61 @@ Wenn ein Hop rot gekennzeichnet ist, heißt das, dass er Teil mindestens eines f
 Der Netzwerkleistungsmonitor verwendet eine Wahrscheinlichkeitsmethode, um den einzelnen Netzwerkpfaden, Netzwerksegmenten und den zugehörigen Netzwerkhops basierend auf der Anzahl der fehlerhaften Pfade, zu denen sie gehören, Fehlerwahrscheinlichkeiten zuzuweisen. Wenn die Netzwerksegmente und Netzwerkhops zu einer höheren Anzahl von fehlerhaften Pfaden gehören, steigt auch die zugewiesene Fehlerwahrscheinlichkeit. Dieser Algorithmus lässt sich am besten bei vielen Knoten anwenden, die über einen NPM-Agent miteinander verbunden sind, da sich dadurch die Datenpunkte zur Berechnung der Fehlerwahrscheinlichkeiten erhöhen.
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>Wie kann ich Warnungen im Netzwerkleistungsmonitor erstellen?
-Entsprechende ausführliche Anweisungen finden Sie im [Abschnitt „Warnungen“ in der Dokumentation](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts).
+Derzeit treten beim Erstellen von Warnungen über die Benutzeroberfläche des Netzwerkleistungsmonitors Fehler aufgrund eines bekannten Problems auf. [Erstellen Sie Warnungen manuell](../platform/alerts-log.md).
+
+### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Welche Log Analytics-Standardabfragen für Warnungen gibt es?
+Abfrage des Systemmonitors
+
+```kusto
+NetworkMonitoring
+ | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
+```
+
+Abfrage des Dienstkonnektivitätsmonitors
+
+```kusto
+NetworkMonitoring
+ | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
+```
+
+Abfragen des ExpressRoute-Monitors: Verbindungsabfrage
+
+```kusto
+NetworkMonitoring
+ | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
+```
+
+Privates Peering
+
+```kusto
+NetworkMonitoring
+ | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ExpressRoutePath")   
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
+```
+
+Microsoft-Peering
+
+```kusto
+NetworkMonitoring
+ | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
+```
+
+Allgemeine Abfrage
+
+```kusto
+NetworkMonitoring
+ | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy")
+```
 
 ### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>Kann der Netzwerkleistungsmonitor Router und Server als einzelne Geräte überwachen?
 Der Netzwerkleistungsmonitor ermittelt nur die IP-Adresse und den Hostnamen der zugrunde liegenden Netzwerkhops (Switches, Router, Server usw.) zwischen der Quell- und der Ziel-IP-Adresse. Zudem wird die Latenz zwischen diesen identifizierten Hops ermittelt. Diese zugrunde liegenden Hops werden nicht einzeln überwacht.
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Kann mit dem Netzwerkleistungsmonitor die Netzwerkkonnektivität zwischen Azure und AWS überwacht werden?
-Ja. Weitere Informationen finden Sie im Artikel [Monitor Azure, AWS, and on-premises networks using NPM](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/) (Überwachen von Azure, AWS und lokalen Netzwerken mit dem Netzwerkleistungsmonitor).
+Ja. Weitere Informationen finden Sie im Artikel [Monitor Azure, AWS, and on-premises networks using NPM](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor) (Überwachen von Azure, AWS und lokalen Netzwerken mit dem Netzwerkleistungsmonitor).
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>Gibt die ExpressRoute-Bandbreitennutzung die eingehende oder die ausgehende Bandbreite an?
 Die Bandbreitennutzung ist die Summe der eingehenden und ausgehenden Bandbreite. Sie wird in Bit/s angegeben.
@@ -115,26 +157,38 @@ Die Bandbreitennutzung ist die Summe der eingehenden und ausgehenden Bandbreite.
 ### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>Können Informationen zur eingehenden und ausgehenden Bandbreite für ExpressRoute erfasst werden?
 Eingehende und ausgehende Werte können für die primäre und die sekundäre Bandbreite erfasst werden.
 
-Verwenden Sie die folgende Abfrage in der Protokollsuche, um Informationen auf Peeringebene abzurufen.
+Verwenden Sie die folgende Abfrage in der Protokollsuche, um Informationen auf Ebene des Microsoft-Peerings abzurufen.
 
-    NetworkMonitoring 
-    | where SubType == "ExpressRoutePeeringUtilization"
-    | project CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
-  
-Verwenden Sie die folgende Abfrage, um Informationen auf Verbindungsebene abzurufen. 
+```kusto
+NetworkMonitoring
+ | where SubType == "ERMSPeeringUtilization"
+ | project CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond 
+```
 
-    NetworkMonitoring 
-    | where SubType == "ExpressRouteCircuitUtilization"
-    | project CircuitName,PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+Verwenden Sie die folgende Abfrage in der Protokollsuche, um Informationen auf Ebene des privaten Peerings abzurufen.
+
+```kusto
+NetworkMonitoring
+ | where SubType == "ERVNetConnectionUtilization"
+ | project CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond
+```
+
+Verwenden Sie die folgende Abfrage in der Protokollsuche, um Informationen auf Verbindungsebene abzurufen.
+
+```kusto
+NetworkMonitoring
+ | where SubType == "ERCircuitTotalUtilization"
+ | project CircuitName, BitsInPerSecond, BitsOutPerSecond
+```
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Welche Regionen werden für den Systemmonitor des Netzwerkleistungsmonitors unterstützt?
-Der Netzwerkleistungsmonitor kann die Konnektivität zwischen Netzwerken in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der [unterstützten Regionen](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) gehostet wird.
+Der Netzwerkleistungsmonitor kann die Konnektivität zwischen Netzwerken in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der [unterstützten Regionen](./network-performance-monitor.md#supported-regions) gehostet wird.
 
 ### <a name="which-regions-are-supported-for-npms-service-connectivity-monitor"></a>Welche Regionen werden für den Dienstkonnektivitätsmonitor des Netzwerkleistungsmonitors unterstützt?
-Der Netzwerkleistungsmonitor kann die Konnektivität mit Diensten in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der [unterstützten Regionen](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) gehostet wird.
+Der Netzwerkleistungsmonitor kann die Konnektivität mit Diensten in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der [unterstützten Regionen](./network-performance-monitor.md#supported-regions) gehostet wird.
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Welche Regionen werden für den ExpressRoute-Monitor des Netzwerkleistungsmonitors unterstützt?
-Der Netzwerkleistungsmonitor kann die ExpressRoute-Leitungen in jeder Azure-Region überwachen. Zur Integration in den Netzwerkleistungsmonitor benötigen Sie einen Log Analytics-Arbeitsbereich, der in einer der [unterstützten Regionen](/azure/expressroute/how-to-npm) gehostet werden muss.
+Der Netzwerkleistungsmonitor kann die ExpressRoute-Leitungen in jeder Azure-Region überwachen. Zur Integration in den Netzwerkleistungsmonitor benötigen Sie einen Log Analytics-Arbeitsbereich, der in einer der [unterstützten Regionen](../../expressroute/how-to-npm.md) gehostet werden muss.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
@@ -147,15 +201,19 @@ Ein Hop reagiert in einem der folgenden Szenarien möglicherweise nicht auf eine
 * Die Netzwerkgeräte lassen keinen ICMP_TTL_EXCEEDED-Datenverkehr zu.
 * Die ICMP_TTL_EXCEEDED-Antwort vom Netzwerkgerät wird durch eine Firewall blockiert.
 
-### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy-"></a>Ich erhalte Warnungen für fehlerhafte Tests, aber die hohen Werte werden im NPM-Diagramm zu Verlust und Latenz nicht angezeigt. Wie prüfe ich, was fehlerhaft ist?
-NPM löst eine Warnung aus, wenn die End-to-End-Latenz zwischen Quelle und Ziel den Schwellenwert für einen beliebigen Pfad dazwischen überschreitet. Einige Netzwerke verfügen über mehr als einen Pfad, der dieselbe Quelle und dasselbe Ziel verbindet. NPM löst eine Warnung aus, wenn ein beliebiger Pfad fehlerhaft ist. Die in den Diagrammen gezeigte Darstellung von Verlust und Latenz ist der Durchschnittswert für alle Pfade und gibt daher möglicherweise nicht den genauen Wert eines einzelnen Pfads an. Suchen Sie in der Warnung nach der Spalte „SubType“, um zu verstehen, wo der Schwellenwert überschritten wurde. Wenn das Problem durch einen Pfad verursacht wird, lautet der SubType-Wert „NetworkPath“ (für Leistungsüberwachungstests), „EndpointPath“ (für Dienstkonnektivitätsmonitor-Tests) und „ExpressRoutePath“ (für ExpressRoute-Monitortests). 
+Wenn einer der Endpunkte in Azure liegt, zeigt Traceroute nicht identifizierte Hops an, da die Azure-Infrastruktur keine Identität für Traceroute offenlegt. 
+
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Ich erhalte Warnungen für fehlerhafte Tests, aber die hohen Werte werden im NPM-Diagramm zu Verlust und Latenz nicht angezeigt. Wie prüfe ich, was fehlerhaft ist?
+NPM löst eine Warnung aus, wenn die End-to-End-Latenz zwischen Quelle und Ziel den Schwellenwert für einen beliebigen Pfad dazwischen überschreitet. Einige Netzwerke verfügen über mehrere Pfade, die dieselbe Quelle und dasselbe Ziel verbinden. NPM löst eine Warnung aus, wenn ein beliebiger Pfad fehlerhaft ist. Die in den Diagrammen gezeigte Darstellung von Verlust und Latenz ist der Durchschnittswert für alle Pfade und gibt daher möglicherweise nicht den genauen Wert eines einzelnen Pfads an. Suchen Sie in der Warnung nach der Spalte „SubType“, um zu verstehen, wo der Schwellenwert überschritten wurde. Wenn das Problem durch einen Pfad verursacht wird, lautet der SubType-Wert „NetworkPath“ (für Systemmonitortests), „EndpointPath“ (für Dienstkonnektivitätsmonitor-Tests) und „ExpressRoutePath“ (für ExpressRoute-Monitortests). 
 
 Beispielabfrage zur Feststellung, ob der Pfad fehlerhaft ist:
 
-    NetworkMonitoring 
-    | where ( SubType == "ExpressRoutePath")
-    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and          CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
-    | project SubType, LossHealthState, LatencyHealthState, MedianLatency 
+```kusto
+NetworkMonitoring
+ | where ( SubType == "ExpressRoutePath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
+ | project SubType, LossHealthState, LatencyHealthState, MedianLatency
+```
 
 ### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>Warum wird mein Test als fehlerhaft angezeigt, aber die Topologie nicht? 
 NPM überwacht End-to-End-Verlust, Latenz und Topologie mit unterschiedlichen Intervallen. Verlust und Latenz werden einmal alle 5 Sekunden gemessen und alle drei Minuten aggregiert (für Systemmonitor und ExpressRoute-Monitor), während die Topologie alle 10 Minuten mit Traceroute berechnet wird. Die Topologie wird z.B. zwischen 3:44 Uhr und 4:04 Uhr drei Mal aktualisiert (3:44 Uhr, 3:54 Uhr, 4:04 Uhr), aber Verlust und Latenz sieben Mal (3:44 Uhr, 3:47 Uhr, 3:50 Uhr, 3:53 Uhr, 3:56 Uhr, 3:59 Uhr, 4:02 Uhr). Die um 3:54 Uhr generierte Topologie wird für Verlust und Latenz gerendert, die um 3:56 Uhr, 3:59 Uhr und 4:02 Uhr berechnet wird. Nehmen wir an, Sie erhalten eine Warnung, dass Ihre Expressroute-Verbindung um 3:59 Uhr fehlerhaft war. Sie melden sich beim NPM an und versuchen, die Topologiezeit auf 3:59 Uhr festzulegen. NPM rendert die um 3:54 Uhr generierte Topologie. Um die letzte bekannte Topologie Ihres Netzwerks zu verstehen, vergleichen Sie die Felder TimeProcessed (Zeit, zu der Verlust und Latenz berechnet wurden) und TracerouteCompletedTime (Zeit, zu der die Topologie berechnet wurde). 
@@ -173,9 +231,9 @@ Das kann der Fall sein, wenn die Hostfirewall oder die zwischengeschaltete Firew
 * Um sicherzustellen, dass die Hostfirewall die Kommunikation am entsprechenden Port nicht blockiert, überprüfen Sie den Integritätsstatus der Quell- und Zielknoten in der folgenden Ansicht: „Netzwerkleistungsmonitor -> Konfiguration -> Knoten“. 
   Wenn sie fehlerhaft sind, sehen Sie sich die Anweisungen an, und nehmen Sie Korrekturmaßnahmen vor. Wenn die Knoten fehlerfrei sind, fahren Sie mit dem nächsten Schritt fort. .
 * Um sicherzustellen, dass keine zwischengeschaltete Netzwerkfirewall oder Azure-NSG die Kommunikation am entsprechenden Port blockiert, verwenden Sie wie folgt das Drittanbieterhilfsprogramm PsPing:
-  * Das Hilfsprogramm PsPing ist [hier](https://technet.microsoft.com/sysinternals/psping.aspx) als Download verfügbar. 
+  * Das Hilfsprogramm PsPing ist [hier](/sysinternals/downloads/psping) als Download verfügbar. 
   * Führen Sie im Quellknoten den folgenden Befehl aus.
-    * psping -n 15 \<IP-Adresse des Zielknotens\>:<Portnummer>. Standardmäßig verwendet der Netzwerkleistungsmonitor Port 8084. Wenn Sie den Port explizit über das Skript „EnableRules.ps1“ geändert haben, geben Sie die verwendete benutzerdefinierte Portnummer ein. Dies ist ein Ping vom Azure-Computer an den lokalen Computer.
+    * psping -n 15 \<destination node IPAddress\>:portNumber (NPM verwendet standardmäßig Port 8084). Wenn Sie den Port explizit über das Skript „EnableRules.ps1“ geändert haben, geben Sie die verwendete benutzerdefinierte Portnummer ein. Dies ist ein Ping vom Azure-Computer an den lokalen Computer.
 * Überprüfen Sie, ob die Pings erfolgreich ausgeführt werden. Wenn dies nicht der Fall ist, bedeutet das, dass eine zwischengeschaltete Netzwerkfirewall oder Azure-NSG den Datenverkehr an diesem Port blockiert.
 * Führen Sie nun den Befehl von der Zielknoten-ID zur Quellknoten-ID aus.
 
@@ -184,7 +242,7 @@ Das kann der Fall sein, wenn die Hostfirewall oder die zwischengeschaltete Firew
 Da sich die Netzwerkpfade von A zu B von den Netzwerkpfaden von B zu A unterscheiden können, können sich unterschiedliche Werte für Verlust und Latenz ergeben.
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Warum werden nicht alle meine ExpressRoute-Leitungen und -Peeringverbindungen ermittelt?
-NPM erkennt jetzt ExpressRoute-Leitungen und -Peeringverbindungen in allen Abonnements, auf die der Benutzer Zugriff hat. Wählen Sie alle Abonnements aus, in denen Ihre Express Route-Ressourcen verknüpft sind, und aktivieren Sie die Überwachung für jede ermittelte Ressource. NPM sucht nach Verbindungsobjekten, wenn privates Peering ermittelt wird. Überprüfen Sie daher, ob ein VNET mit Ihrem Peering verbunden ist.
+NPM erkennt jetzt ExpressRoute-Leitungen und -Peeringverbindungen in allen Abonnements, auf die der Benutzer Zugriff hat. Wählen Sie alle Abonnements aus, in denen Ihre Express Route-Ressourcen verknüpft sind, und aktivieren Sie die Überwachung für jede ermittelte Ressource. NPM sucht nach Verbindungsobjekten, wenn privates Peering ermittelt wird. Überprüfen Sie daher, ob ein VNET mit Ihrem Peering verbunden ist. NPM erkennt keine Leitungen und Peerings, die sich in einem anderen Mandanten befinden als der Log Analytics-Arbeitsbereich.
 
 ### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>In der Funktion ExpressRoute-Monitor wird die Diagnosemeldung „Traffic is not passing through ANY circuit“ (Der Datenverkehr wird über KEINE Verbindung geleitet) angezeigt. Was bedeutet das?
 
@@ -195,6 +253,12 @@ Möglich sind folgende Ursachen:
 * Die ExpressRoute-Leitung ist nicht verfügbar.
 * Die Routenfilter sind so konfiguriert, dass andere Routen (z.B. eine VPN-Verbindung oder eine andere ExpressRoute-Leitung) Priorität vor der vorgesehenen ExpressRoute-Leitung haben. 
 * Die zur Überwachung der ExpressRoute-Leitung in der Überwachungskonfiguration ausgewählten lokalen und Azure-Knoten sind über die vorgesehene ExpressRoute-Leitung nicht miteinander verbunden. Vergewissern Sie sich, dass Sie die richtigen Knoten ausgewählt haben, die über die zu überwachende ExpressRoute-Leitung miteinander verbunden sind.
+
+### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>Warum meldet der ExpressRoute-Monitor meine Leitung bzw. Peeringverbindung als fehlerhaft, obwohl diese verfügbar ist und Daten übergibt?
+Der ExpressRoute-Monitor vergleicht die vom Agent bzw. Dienst gemeldeten Netzwerkleistungswerte (Verlust, Latenz und Bandbreitenauslastung) mit den bei der Konfiguration festgelegten Schwellenwerten. Wenn die gemeldete Bandbreitenauslastung einer Leitung größer ist als der in der Konfiguration festgelegte Schwellenwert, wird die Leitung als fehlerhaft gekennzeichnet. Wenn die gemeldeten Werte für Verlust, Latenz oder Bandbreitenauslastung eines Peerings größer sind als die in der Konfiguration festgelegten Schwellenwert, wird das Peering als fehlerhaft gekennzeichnet. NPM verwendet keine Metriken oder andere Arten von Daten, um Entscheidungen über den Integritätszustand zu treffen.
+
+### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>Warum meldet der ExpressRoute-Monitor bei der Bandbreitenauslastung einen Wert, der sich von der Metrik für ein- und ausgehende Bits unterscheidet?
+Im ExpressRoute-Monitor ist die Bandbreitenauslastung der Durchschnitt der ein- und ausgehenden Bandbreite in den letzten 20 Minuten. Dieser Wert wird in Bits/s ausgedrückt. Bei ExpressRoute-Metriken sind ein- und ausgehende Bits minutenbasierte Datenpunkte. Intern wird für beide Angaben dasselbe Dataset verwendet, aber die Aggregation erfolgt in NPM und ExpressRoute-Metriken unterschiedlich. Um eine differenzierte, minutengenaue Überwachung und schnelle Warnungen zu erhalten, empfiehlt es sich, Warnungen direkt für die ExpressRoute-Metriken festzulegen.
 
 ### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>Beim Konfigurieren der Überwachung der ExpressRoute-Leitung werden die Azure-Knoten nicht erkannt
 Dies kann der Fall sein, wenn die Azure-Knoten über Operations Manager verbunden werden. Mit der Funktion „ExpressRoute-Monitor“ werden nur die Azure-Knoten unterstützt, die als Direkt-Agents verbunden werden.
@@ -219,7 +283,7 @@ Dies ist in folgenden Fällen möglich:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>In der Funktion Dienstkonnektivitätsmonitor wird die Dienstantwortzeit als nicht verfügbar angezeigt, es sind jedoch gültige Angaben zu Netzwerkverlust und Latenz verfügbar
 Dies kann der Fall sein, wenn der Zieldienst keine Webanwendung ist, der Test aber als Webtest konfiguriert ist. Bearbeiten Sie die Testkonfiguration, und wählen Sie für den Testtyp „Netzwerk“ anstelle von „Web“ aus.
 
-## <a name="miscellaneous"></a>Verschiedenes
+## <a name="miscellaneous"></a>Sonstiges
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Ist die Leistung auf dem zur Überwachung verwendeten Knoten beeinträchtigt?
 Der Prozess des Netzwerkleistungsmonitors ist so konfiguriert, dass er beendet wird, wenn mehr als 5 % der CPU-Ressourcen des Hosts genutzt werden. Dadurch wird sichergestellt, dass die Knoten weiterhin für die üblichen Workloads verwendet werden können, ohne dass die Leistung beeinträchtigt wird.
@@ -235,4 +299,5 @@ Der Netzwerkleistungsmonitor rundet die Latenzzeiten in der Benutzeroberfläche 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Netzwerkleistungsmonitor finden Sie unter [Netzwerkleistungsmonitor-Lösung in Azure](../../azure-monitor/insights/network-performance-monitor.md).
+- Weitere Informationen zum Netzwerkleistungsmonitor finden Sie unter [Netzwerkleistungsmonitor-Lösung in Azure](./network-performance-monitor.md).
+

@@ -1,6 +1,6 @@
 ---
 title: Behandeln von Zuordnungsfehlern bei Clouddiensten | Microsoft-Dokumentation
-description: Behandeln von Zuordnungsfehlern bei der Bereitstellung von Clouddiensten in Azure
+description: Behandeln eines Zuordnungsfehlers bei der Bereitstellung von Azure Cloud Services. Erfahren Sie, wie die Zuordnung funktioniert und warum bei der Zuordnung ein Fehler auftreten kann.
 services: azure-service-management, cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 470778e5c441bb05ffc7c5e1c5ef97a6c30d3359
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 1d82b7223c2b392e6b9aebffdc545dc38b38ca2f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155637"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074225"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Behandeln von Zuordnungsfehlern bei der Bereitstellung von Clouddiensten in Azure
 ## <a name="summary"></a>Zusammenfassung
@@ -41,7 +41,7 @@ Wenn eine Zuordnungsanforderung mit einem Cluster verknüpft ist, ist die Wahrsc
 ### <a name="error-message"></a>Fehlermeldung
 Möglicherweise erhalten Sie die folgende Fehlermeldung:
 
-    "Azure operation '{operation id}' failed with code Compute.ConstrainedAllocationFailed. Details: Allocation failed; unable to satisfy constraints in request. The requested new service deployment is bound to an Affinity Group, or it targets a Virtual Network, or there is an existing deployment under this hosted service. Any of these conditions constrains the new deployment to specific Azure resources. Please retry later or try reducing the VM size or number of role instances. Alternatively, if possible, remove the aforementioned constraints or try deploying to a different region."
+> „Fehler bei Azure-Vorgang '{Vorgangs-ID}“ mit dem Code Compute.ConstrainedAllocationFailed. Details: Fehler bei der Zuordnung. Einschränkungen in der Anforderung konnten nicht erfüllt werden. Die angeforderte neue Dienstbereitstellung ist an eine Affinitätsgruppe gebunden oder auf ein virtuelles Netzwerk ausgerichtet, oder unter diesem gehosteten Dienst befindet sich eine vorhandene Bereitstellung. Alle diese Bedingungen beschränken die neue Bereitstellung auf bestimmte Azure-Ressourcen. Wiederholen Sie den Vorgang später. Reduzieren Sie die VM-Größe oder die Anzahl der Rolleninstanzen. Sie können, wenn möglich, auch die zuvor erwähnten Einschränkungen entfernen oder den virtuellen Computer in einer anderen Region bereitstellen.“
 
 ### <a name="common-issues"></a>Häufige Probleme
 Dies sind häufig vorkommende Zuordnungsszenarios, die bewirken, dass eine Zuordnungsanforderung mit einem einzelnen Cluster „verknüpft“ wird.
@@ -70,4 +70,4 @@ Dies sind häufig vorkommende Zuordnungsszenarios, die bewirken, dass eine Zuord
      ```
    * Befolgen Sie Lösung 2 oben, und geben Sie die neue reservierte IP-Adresse in der CSCFG des Diensts an.
 4. Entfernen der Affinitätsgruppe für neue Bereitstellungen: Affinitätsgruppen werden nicht mehr empfohlen. Führen Sie die Schritte für Lösung 1 oben aus, um einen neuen Clouddienst bereitzustellen. Stellen Sie sicher, dass der Clouddienst zu keiner Affinitätsgruppe gehört.
-5. Konvertieren in ein regionales virtuelles Netzwerk: Weitere Informationen finden Sie unter [Migrieren von Affinitätsgruppen zu einem regionalen virtuellen Netzwerk (VNet)](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
+5. Konvertieren in ein regionales virtuelles Netzwerk: Weitere Informationen finden Sie unter [Migrieren von Affinitätsgruppen zu einem regionalen virtuellen Netzwerk (VNet)](/previous-versions/azure/virtual-network/virtual-networks-migrate-to-regional-vnet).

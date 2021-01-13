@@ -1,25 +1,27 @@
 ---
-title: Schnittstellendefinition für benutzerdefinierte Qualifikationen in der kognitiven Suche – Azure Search
-description: Passen Sie die Schnittstelle für die Datenextrahierung für benutzerdefinierte Web-API-Skills in der Pipeline der kognitiven Suche in Azure Search an.
+title: Schnittstellendefinition für benutzerdefinierte Skills
+titleSuffix: Azure Cognitive Search
+description: Anpassen der Schnittstelle für die Datenextraktion für benutzerdefinierte Web-API-Skills in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: b5529babfae37fa0d9f4de46018bb3b107ce4eae
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 05/06/2020
+ms.openlocfilehash: e78f0d1e8d6d637dfebe1ff475ab8416ba49a263
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265824"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88935414"
 ---
-# <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Hinzufügen eines benutzerdefinierten Skills zu einer Pipeline der kognitiven Suche
+# <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Hinzufügen eines benutzerdefinierten Skills zu einer Anreicherungspipeline der kognitiven Azure-Suche
 
-Eine [Pipeline für die Indizierung der kognitive Suche](cognitive-search-concept-intro.md) in Azure Search kann aus [vordefinierten Skills](cognitive-search-predefined-skills.md) und [benutzerdefinierten Skills](cognitive-search-custom-skill-web-api.md) zusammengestellt werden, die Sie persönlich erstellen und der Pipeline hinzufügen. In diesem Artikel erfahren Sie, wie Sie einen benutzerdefinierten Skill erstellen, der eine Schnittstelle verfügbar macht, sodass er in eine Pipeline für die kognitive Suche eingefügt werden kann. 
+> [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=172&end=221]
 
-Das Erstellen eines benutzerdefinierten Skills gibt Ihnen die Möglichkeit, Transformationen einzufügen, die für Ihren Inhalt eindeutig sind. Ein benutzerdefinierter Skill wird unabhängig ausgeführt, wobei jeder gewünschte Anreicherungsschritt angewendet wird. Sie können beispielsweise feldspezifische benutzerdefinierte Entitäten definieren, benutzerdefinierte Klassifizierungsmodelle erstellen, um Geschäfts- und Finanzverträge und -dokumente zu unterscheiden, oder einen Spracherkennungsskill hinzufügen, um selbst in Audiodateien relevante Inhalte zu erreichen. Ein Beispiel mit einer schrittweisen Anleitung finden Sie unter [Beispiel: Erstellen eines benutzerdefinierten Skills für die kognitive Suche](cognitive-search-create-custom-skill-example.md).
+Eine [Anreicherungspipeline](cognitive-search-concept-intro.md) in der kognitiven Azure-Suche kann aus [integrierten kognitiven Skills](cognitive-search-predefined-skills.md) und [benutzerdefinierten Skills](cognitive-search-custom-skill-web-api.md) zusammengestellt werden, die Sie persönlich erstellen und der Pipeline hinzufügen. In diesem Artikel erfahren Sie, wie Sie einen benutzerdefinierten Skill erstellen, der eine Schnittstelle verfügbar macht, sodass er in eine KI-Anreicherungspipeline eingefügt werden kann. 
+
+Das Erstellen eines benutzerdefinierten Skills gibt Ihnen die Möglichkeit, Transformationen einzufügen, die für Ihren Inhalt eindeutig sind. Ein benutzerdefinierter Skill wird unabhängig ausgeführt, wobei jeder gewünschte Anreicherungsschritt angewendet wird. Sie können beispielsweise feldspezifische benutzerdefinierte Entitäten definieren, benutzerdefinierte Klassifizierungsmodelle erstellen, um Geschäfts- und Finanzverträge und -dokumente zu unterscheiden, oder einen Spracherkennungsskill hinzufügen, um selbst in Audiodateien relevante Inhalte zu erreichen. Ein Beispiel mit einer schrittweisen Anleitung finden Sie unter [Beispiel: Erstellen eines benutzerdefinierten Skills für die KI-Anreicherung](cognitive-search-create-custom-skill-example.md)
 
  Welchen benutzerdefinierten Skill Sie auch benötigen, es gibt eine einfache und klare Schnittstelle, um einen benutzerdefinierten Skill mit dem Rest der Anreicherungspipeline zu verbinden. Damit die Aufnahme in ein [Skillset](cognitive-search-defining-skillset.md) möglich ist, müssen Eingaben akzeptiert und Ausgaben emittiert werden können, sodass diese innerhalb des Skillsets umfassend verwendet werden können. Der Fokus dieses Artikels liegt auf den Ein- und Ausgabeformaten, die die Anreicherungspipeline benötigt.
 
@@ -34,9 +36,15 @@ Benutzerdefinierte WebAPI-Skill-Endpunkte nach Standardtimeout, wenn sie innerha
         "timeout": "PT230S",
 ```
 
+Vergewissern Sie sich, dass der URI sicher ist (HTTPS).
+
 Derzeit ist die einzige Methode für die Interaktion mit einem benutzerdefinierten Skill über eine Web-API-Schnittstelle. Die Web-API-Anforderungen müssen die in diesem Abschnitt beschriebenen Voraussetzungen erfüllen.
 
 ### <a name="1--web-api-input-format"></a>1.  Web-API-Eingabeformat
+
+
+> [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=294&end=340]
+
 
 Die Web-API muss ein Array von zu verarbeitenden Datensätzen akzeptieren. Jeder Datensatz muss einen „Eigenschaftenbehälter“, d.h. die Eingabewerte für Ihre Web-API, umfassen. 
 
@@ -122,7 +130,7 @@ Wie im vorherigen Beispiel gezeigt, können Sie für jeden Datensatz Fehler- und
 
 ## <a name="consuming-custom-skills-from-skillset"></a>Verwenden von benutzerdefinierten Skills aus dem Skillset
 
-Wenn Sie eine Web-API-Anreicherungsfunktion erstellen, können Sie HTTP-Header und Parameter als Teil der Anforderung beschreiben. Der folgende Codeausschnitt zeigt, wie Anforderungsparameter und HTTP-Header als Teil der Skillsetdefinition beschrieben werden können.
+Wenn Sie eine Web-API-Anreicherungsfunktion erstellen, können Sie HTTP-Header und Parameter als Teil der Anforderung beschreiben. Der folgende Codeausschnitt zeigt, wie Anforderungsparameter und *optionale* HTTP-Header als Teil der Skillsetdefinition beschrieben werden können. HTTP-Header sind keine Voraussetzung, sie ermöglichen Ihnen aber, dem Skill weitere Konfigurationsfunktionen hinzuzufügen und diese in der Skillsetdefinition festzulegen.
 
 ```json
 {
@@ -154,7 +162,11 @@ Wenn Sie eine Web-API-Anreicherungsfunktion erstellen, können Sie HTTP-Header u
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-+ [Beispiel: Erstellen eines benutzerdefinierten Skills für die kognitive Suche](cognitive-search-create-custom-skill-example.md)
+In diesem Artikel wurden die Schnittstellenanforderungen behandelt, die für die Integration einer benutzerdefinierten Qualifikation in ein Skillset erforderlich sind. Klicken Sie auf die folgenden Links, um mehr über benutzerdefinierte Qualifikationen und die Zusammensetzung von Skillsets zu erfahren.
+
++ [Sehen Sie sich unser Video zu benutzerdefinierten Qualifikationen an](https://youtu.be/fHLCE-NZeb4)
++ [Power Skills: ein Repository benutzerdefinierter Skills](https://github.com/Azure-Samples/azure-search-power-skills)
++ [Beispiel: Erstellen eines benutzerdefinierten Skills für die KI-Anreicherung](cognitive-search-create-custom-skill-example.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Erstellen eines Skillsets (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Erstellen eines Skillsets (REST)](/rest/api/searchservice/create-skillset)
 + [Zuordnen angereicherter Felder](cognitive-search-output-field-mapping.md)

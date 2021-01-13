@@ -1,26 +1,15 @@
 ---
-title: Skalieren eines Service Fabric-Clusters in Azure | Microsoft-Dokumentation
-description: Dieses Tutorial enthält Informationen zum Skalieren eines Service Fabric-Clusters in Azure.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
+title: Skalieren eines Service Fabric-Clusters in Azure
+description: In diesem Tutorial erfahren Sie, wie Sie einen Service Fabric-Cluster in Azure erweitern und horizontal herunterskalieren und übrig gebliebene Ressourcen bereinigen.
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
-ms.custom: mvc
-ms.openlocfilehash: 6b1f226fba43428cdf5f46d41425ac534219de7f
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 063c83818ec2e98491f9062e936b9a1e7b2c4356
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619060"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702173"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Tutorial: Skalieren eines Service Fabric-Clusters in Azure
 
@@ -29,9 +18,9 @@ Dieses Tutorial ist der dritte Teil einer Reihe und zeigt, wie Sie Ihren vorhand
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Hinzufügen und Entfernen von Knoten (horizontales Hoch- und Herunterskalieren)
-> * Hinzufügen und Entfernen von Knotentypen (horizontales Hoch- und Herunterskalieren)
-> * Erhöhen von Knotenressourcen (zentrales Hochskalieren)
+> * Hinzufügen und Entfernen von Knoten (Auf- und Abskalieren)
+> * Hinzufügen und Entfernen von Knotentypen (Auf- und Abskalieren)
+> * Erhöhen von Knotenressourcen (Hochskalieren)
 
 In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -49,7 +38,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
+* Installieren Sie [Azure PowerShell](/powershell/azure/install-az-ps) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in Azure
 
 ## <a name="important-considerations-and-guidelines"></a>Wichtige Aspekte und Richtlinien
@@ -75,7 +64,7 @@ Weitere Informationen finden Sie unter [Anleitung zu Clusterkapazitäten](servic
 
 ## <a name="export-the-template-for-the-resource-group"></a>Exportieren der Vorlage für die Ressourcengruppe
 
-Nach dem Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) und dem erfolgreichen Einrichten der Ressourcengruppe exportieren Sie die Resource Manager-Vorlage für die Ressourcengruppe. Durch das Exportieren der Vorlage können Sie zukünftige Bereitstellungen des Clusters und seiner Ressourcen automatisieren, da die Vorlage die gesamte Infrastruktur enthält.  Weitere Informationen zum Exportieren von Vorlagen finden Sie unter [Verwalten von Azure Resource Manager-Gruppen mithilfe des Azure-Portals](/azure/azure-resource-manager/manage-resource-groups-portal).
+Nach dem Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) und dem erfolgreichen Einrichten der Ressourcengruppe exportieren Sie die Resource Manager-Vorlage für die Ressourcengruppe. Durch das Exportieren der Vorlage können Sie zukünftige Bereitstellungen des Clusters und seiner Ressourcen automatisieren, da die Vorlage die gesamte Infrastruktur enthält.  Weitere Informationen zum Exportieren von Vorlagen finden Sie unter [Verwalten von Azure Resource Manager-Gruppen mithilfe des Azure-Portals](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu der Ressourcengruppe, die den Cluster enthält (**sfclustertutorialgroup**, wenn Sie dieses Tutorial durcharbeiten). 
 
@@ -87,7 +76,7 @@ Nach dem Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-cre
 
 ## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>Hinzufügen von Knoten zu oder Entfernen von Knoten von einem Knotentyp
 
-Horizontales Herunter- und Hochskalieren oder horizontale Skalierung ändern die Anzahl der Knoten im Cluster. Beim horizontalen Herunter- und Hochskalieren fügen Sie der Skalierungsgruppe mehr VM-Instanzen hinzu. Diese Instanzen werden zu den Knoten, die Service Fabric verwendet. Service Fabric erkennt, wenn der Skalierungsgruppe durch horizontales Hochskalieren weitere Instanzen hinzugefügt werden, und reagiert automatisch. Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.
+Horizontales Herunter- und Hochskalieren oder horizontale Skalierung ändern die Anzahl der Knoten im Cluster. Beim Ab- und Aufskalieren fügen Sie der Skalierungsgruppe mehr VM-Instanzen hinzu. Diese Instanzen werden zu den Knoten, die Service Fabric verwendet. Service Fabric erkennt, wenn der Skalierungsgruppe durch horizontales Hochskalieren weitere Instanzen hinzugefügt werden, und reagiert automatisch. Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.
 
 ### <a name="update-the-template"></a>Aktualisieren der Vorlage
 
@@ -95,7 +84,7 @@ Horizontales Herunter- und Hochskalieren oder horizontale Skalierung ändern die
 
 Indem Sie also den Wert von *nt1InstanceCount* aktualisieren, ändern Sie die Anzahl der Knoten im zweiten Knotentyp.  Denken Sie daran, dass Sie einen Knotentyp nicht auf mehr als 100 Knoten horizontal hochskalieren können.  Andere (nicht primäre) Knotentypen mit Ausführung von zustandsbehafteten Produktionsworkloads sollten immer über mindestens fünf Knoten verfügen. Andere (nicht primäre) Knotentypen mit Ausführung von zustandslosen Produktionsworkloads sollten immer über mindestens zwei Knoten verfügen.
 
-Wenn Sie einen Knotentyp der [Zuverlässigkeitsstufe][durability] „Bronze“ horizontal herunterskalieren (Knoten von ihm entfernen), müssen Sie [den Zustand dieser Knoten manuell entfernen](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Für die Dauerhaftigkeitsstufen „Silber“ und „Gold“ werden diese Schritte automatisch von der Plattform ausgeführt.
+Wenn Sie einen Knotentyp der [Zuverlässigkeitsstufe][durability] „Bronze“ horizontal herunterskalieren (Knoten von ihm entfernen), müssen Sie [den Zustand dieser Knoten manuell entfernen](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Für die Dauerhaftigkeitsstufen „Silber“ und „Gold“ werden diese Schritte automatisch von der Plattform ausgeführt.
 
 ### <a name="deploy-the-updated-template"></a>Bereitstellen der aktualisierten Vorlage
 Speichern Sie alle Änderungen in den Dateien *template.json* und *parameters.json*.  Führen Sie den folgenden Befehl aus, um die aktualisierte Vorlage bereitzustellen:
@@ -104,8 +93,8 @@ Speichern Sie alle Änderungen in den Dateien *template.json* und *parameters.js
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
 Oder führen Sie den folgenden Azure-CLI-Befehl aus:
-```azure-cli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+```azurecli
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="add-a-node-type-to-the-cluster"></a>Hinzufügen eines Knotentyps zum Cluster
@@ -810,8 +799,8 @@ Speichern Sie alle Änderungen in den Dateien *template.json* und *parameters.js
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
 Oder führen Sie den folgenden Azure-CLI-Befehl aus:
-```azure-cli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+```azurecli
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="remove-a-node-type-from-the-cluster"></a>Entfernen eines Knotentyps aus dem Cluster
@@ -844,19 +833,18 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>Erhöhen von Knotenressourcen 
-Nach dem Erstellen eines Service Fabric-Clusters können Sie einen Clusterknotentyp vertikal skalieren (die Ressourcen der Knoten ändern) oder das Betriebssystem der Knotentyp-VMs aktualisieren.  
+Nach der Erstellung eines Service Fabric-Clusters können Sie einen Clusterknotentyp vertikal skalieren (Ressourcen der Knoten ändern) oder das Betriebssystem der Knotentyp-VMs aktualisieren, indem Sie den ursprünglichen Knotentyp durch einen neuen Knotentyp (mit aktualisierter VM-SKU oder Betriebssystemimage) ersetzen. Weitere Informationen finden Sie unter [Hochskalieren eines Azure Service Fabric-Knotentyps](service-fabric-scale-up-primary-node-type.md).
 
-> [!WARNING]
-> Wir empfehlen Ihnen, die VM-SKU einer Skalierungsgruppe bzw. eines Knotentyps nur dann zu ändern, wenn sie mit der Dauerhaftigkeitsstufe „Silber“ oder höher ausgeführt wird. Bei der Änderung der VM-SKU-Größe handelt es sich um einen für Daten schädlichen direkten Infrastrukturvorgang. Ohne eine Möglichkeit der Verzögerung oder Überwachung dieser Änderung ist es möglich, dass der Vorgang bei zustandsbehafteten Diensten zu Datenverlusten führt oder selbst bei zustandslosen Workloads unvorhergesehene Probleme auftreten.
+> [!IMPORTANT]
+> Versuchen Sie niemals, eine direkte Änderung der VM-SKU oder des Betriebssystemimages durchzuführen, da dies ein gefährlicher und nicht unterstützter Vorgang ist.
 
-> [!WARNING]
-> Wir empfehlen Ihnen, die VM-SKU des primären Knotentyps nicht zu ändern, wobei es sich um einen gefährlichen Vorgang handelt, der auch nicht unterstützt wird.  Wenn Sie eine höhere Clusterkapazität benötigen, können Sie mehr VM-Instanzen oder zusätzliche Knotentypen hinzufügen.  Sollte dies nicht möglich sein, können Sie einen neuen Cluster erstellen und eine [Wiederherstellung des Anwendungszustands](service-fabric-reliable-services-backup-restore.md) (falls zutreffend) vom alten Cluster durchführen.  Sollte dies nicht möglich sein, können Sie [die VM-SKU des primären Knotentyps ändern](service-fabric-scale-up-node-type.md).
+Sollte dies nicht möglich sein, können Sie einen neuen Cluster erstellen und eine [Wiederherstellung des Anwendungszustands](service-fabric-reliable-services-backup-restore.md) (falls zutreffend) vom alten Cluster durchführen. Sie müssen keine Systemdienstzustände wiederherstellen, denn diese werden neu erstellt, wenn Sie Ihre Anwendungen im neuen Cluster bereitstellen. Wenn Sie in Ihrem Cluster ausschließlich zustandslose Anwendungen ausführen, stellen Sie lediglich Ihre Anwendungen im neuen Cluster bereit und müssen nichts wiederherstellen.
 
 ### <a name="update-the-template"></a>Aktualisieren der Vorlage
 
 [Exportieren Sie eine Vorlagen- und Parameterdatei](#export-the-template-for-the-resource-group) aus der Ressourcengruppe für die jüngste Bereitstellung.  Öffnen Sie die Datei *parameters.json*.  Wenn Sie den Cluster mithilfe der [Beispielvorlage][template] aus diesem Tutorial bereitgestellt haben, enthält der Cluster drei Knotentypen.  
 
-Die Größe der VMs im zweiten Knotentyp wird im Parameter *vmNodeType1Size* festgelegt.  Ändern Sie den Wert des Parameters *vmNodeType1Size* von „Standard_D2_V2“ in [Standard_D3_V2](/azure/virtual-machines/windows/sizes-general#dv2-series), wodurch die Ressourcen jeder VM-Instanz verdoppelt werden.
+Die Größe der VMs im zweiten Knotentyp wird im Parameter *vmNodeType1Size* festgelegt.  Ändern Sie den Wert des Parameters *vmNodeType1Size* von „Standard_D2_V2“ in [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md), wodurch die Ressourcen jeder VM-Instanz verdoppelt werden.
 
 Die VM-SKU für alle drei Knotentypen wird im Parameter *vmImageSku* festgelegt.  Auch hier sollten Sie mit Vorsicht an das Ändern der VM-SKU eines Knotentyps herangehen, und es wird für den primären Knotentyp auch nicht empfohlen.
 
@@ -867,8 +855,8 @@ Speichern Sie alle Änderungen in den Dateien *template.json* und *parameters.js
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
 Oder führen Sie den folgenden Azure-CLI-Befehl aus:
-```azure-cli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+```azurecli
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -876,27 +864,15 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Hinzufügen und Entfernen von Knoten (horizontales Hoch- und Herunterskalieren)
-> * Hinzufügen und Entfernen von Knotentypen (horizontales Hoch- und Herunterskalieren)
-> * Erhöhen von Knotenressourcen (zentrales Hochskalieren)
+> * Hinzufügen und Entfernen von Knoten (Auf- und Abskalieren)
+> * Hinzufügen und Entfernen von Knotentypen (Auf- und Abskalieren)
+> * Erhöhen von Knotenressourcen (Hochskalieren)
 
 Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie die Runtime eines Clusters aktualisieren:
 > [!div class="nextstepaction"]
 > [Aktualisieren der Runtime eines Clusters](service-fabric-tutorial-upgrade-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
-[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
-[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
-
-> * Hinzufügen und Entfernen von Knotentypen (horizontales Hoch- und Herunterskalieren)
-> * Erhöhen von Knotenressourcen (zentrales Hochskalieren)
-
-Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie die Runtime eines Clusters aktualisieren:
-> [!div class="nextstepaction"]
-> [Aktualisieren der Runtime eines Service Fabric-Clusters](service-fabric-tutorial-upgrade-cluster.md)
-
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

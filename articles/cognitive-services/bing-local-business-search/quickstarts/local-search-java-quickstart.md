@@ -1,41 +1,45 @@
 ---
-title: 'Schnellstart: Senden einer Abfrage an die API für die Bing-Suche für ortsansässige Unternehmen mit Java'
+title: 'Schnellstart: Senden einer Abfrage an die API mit Java – Bing-Suche für ortsansässige Unternehmen'
 titleSuffix: Azure Cognitive Services
-description: Einführung in die Verwendung der API für die Bing-Suche nach ortsansässigen Unternehmen mit Java
+description: Verwenden Sie diese Schnellstartanleitung, um Anforderungen in Java an die API für die Bing-Suche für ortsansässige Unternehmen zu senden, die zum Leistungsumfang von Cognitive Services gehört.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 05/12/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 3e71268004ca8fd171835adf289436a65d866fdc
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 8bd2c174456c35da872a0e995333503a72ce7c7a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70994414"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493303"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Schnellstart: Senden einer Abfrage an die API für die Bing-Suche nach ortsansässigen Unternehmen mit Java
 
-Verwenden Sie diesen Schnellstart, um Anforderungen an die API für die Bing-Suche nach ortsansässigen Unternehmen zu senden, die zum Leistungsumfang von Cognitive Services gehört. Diese einfache Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen stellen und JSON analysieren kann.
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Diese Beispielanwendung ruft lokale Antwortdaten aus der API für die Suchabfrage `hotel in Bellevue` ab.
+Verwenden Sie diesen Schnellstart, um zu lernen. wie Sie Anforderungen an die API für die Bing-Suche für ortsansässige Unternehmen senden, die zum Leistungsumfang von Azure Cognitive Services gehört. Diese einfache Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen stellen und JSON analysieren kann.
+
+Diese Beispielanwendung ruft lokale Antwortdaten aus der API für eine Suchabfrage ab.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Das [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-
-Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Bing-Suche-APIs verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie bei der Aktivierung Ihrer kostenlosen Testversion erhalten.  Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
-
-Diese Beispielanwendung ruft lokale Antwortdaten aus der Abfrage für ein *Hotel in Bellevue* ab.
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
+* Das [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
+* Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Erstellen einer Ressource für die Bing-Suche"  target="_blank"> im Azure-Portal eine Ressource für die Bing-Suche <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
 
 ## <a name="create-the-request"></a>Erstellen der Anforderung 
 
-Der folgende Code erstellt eine `WebRequest`, legt den Zugriffsschlüsselheader fest und fügt eine Abfragezeichenfolge für „Hotel in Bellevue“ hinzu.  Dann übermittelt er die Anforderung und weist die Antwort einer Zeichenfolge zu, die den JSON-Text enthält.
+Der folgende Code erstellt eine `WebRequest`, legt den Zugriffsschlüsselheader fest und fügt eine Abfragezeichenfolge für *Hotel in Bellevue* hinzu.  Dann übermittelt er die Anforderung und weist die Antwort einer Zeichenfolge zu, die den JSON-Text enthält.
 
-```
+```java
     // construct URL of search request (endpoint + query string)
      URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + &mkt=en-us");
     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -51,14 +55,14 @@ Der folgende Code erstellt eine `WebRequest`, legt den Zugriffsschlüsselheader 
 
 ## <a name="run-the-complete-application"></a>Ausführen der vollständigen Anwendung
 
-Die API für die Bing-Suche nach ortsansässigen Unternehmen gibt Ergebnisse der Bing-Suchmaschine zurück.
+Der folgende Code verwendet die API für die Bing-Suche für ortsansässige Unternehmen, um Suchergebnisse der Bing-Suchmaschine zurückzugeben. Führen Sie diesen Code anhand der folgenden Schritte aus:
 1. Laden Sie die gson-Bibliothek herunter, oder installieren Sie diese.
 2. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt.
 3. Fügen Sie den unten stehenden Code hinzu.
-4. Ersetzen Sie den Wert von „subscriptionKey“ durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
+4. Ersetzen Sie den `subscriptionKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 5. Führen Sie das Programm aus.
 
-```
+```java
 package localSearch;
 import java.net.*;
 import java.util.*;
@@ -87,8 +91,8 @@ import com.google.gson.JsonParser;
 public class LocalSearchCls {
 
     // ***********************************************
-    // *** Update or verify the following values. ***
-    // **********************************************
+    // **_ Update or verify the following values. _*_
+    // _*********************************************
 
         // Replace the subscriptionKey string value with your valid subscription key.
         static String subscriptionKey = "YOUR-ACCESS-KEY";
@@ -165,6 +169,6 @@ public class LocalSearchCls {
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Schnellstart: Suche nach ortsansässigen Unternehmen](local-quickstart.md)
-- [Schnellstart: Suche nach ortsansässigen Unternehmen mit Node](local-search-node-quickstart.md)
+- [Schnellstart: Suche nach ortsansässigen Unternehmen mit C#](local-quickstart.md)
+- [Schnellstart: Suche nach ortsansässigen Unternehmen mit Node.js](local-search-node-quickstart.md)
 - [Schnellstart: Suche nach ortsansässigen Unternehmen mit Python](local-search-python-quickstart.md)

@@ -1,25 +1,14 @@
 ---
-title: 'Prüfbarkeit: Dienstkommunikation | Microsoft-Dokumentation'
+title: 'Prüfbarkeit: Dienstkommunikation'
 description: Die Kommunikation von Dienst zu Dienst ist ein wichtiger Integrationspunkt einer Service Fabric-Anwendung. In diesem Artikel werden Entwurfsaspekte und Testverfahren beschrieben.
-services: service-fabric
-documentationcenter: .net
-author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 017557df-fb59-4e4a-a65d-2732f29255b8
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 529c8d74b6e0a63a7969f31d5b5e8073ecb79411
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fbf889422d69d031d777acd80cf3becfb3184568
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543222"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575923"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Szenarien für die Service Fabric-Prüfbarkeit: Dienstkommunikation
 Microservices und dienstorientierte Architekturstile können in Azure Service Fabric auf natürliche Weise genutzt werden. Bei diesen Arten von verteilten Architekturen setzen sich komponentenbasierte Microserviceanwendungen in der Regel aus mehreren Diensten zusammen, die miteinander kommunizieren müssen. Sogar im einfachsten Fall verfügen Sie im Allgemeinen mindestens über einen zustandslosen Webdienst und einen zustandsbehafteten Datenspeicherdienst, die miteinander kommunizieren müssen.

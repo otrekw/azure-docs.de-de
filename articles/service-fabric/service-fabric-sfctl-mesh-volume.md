@@ -1,24 +1,16 @@
 ---
-title: 'Azure Service Fabric CLI: sfctl mesh volume | Microsoft-Dokumentation'
-description: Beschreibt die sfctl mesh volume-Befehle der Service Fabric CLI.
-services: service-fabric
-documentationcenter: na
-author: Christina-Kang
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
+title: 'Azure Service Fabric CLI: sfctl mesh volume'
+description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle zum Abrufen und Löschen von Volumeressourcen.
+author: jeffj6123
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 4e2413a152048e08d6218783891c20b66ac2e618
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: 57efca87aefad346fda175b073409868d21564ae
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034989"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86245506"
 ---
 # <a name="sfctl-mesh-volume"></a>sfctl mesh volume
 Ruft Volumeressourcen ab bzw. löscht diese.
@@ -46,11 +38,11 @@ Löscht die Volumeressource, die durch den Namen identifiziert wird.
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 ## <a name="sfctl-mesh-volume-list"></a>sfctl mesh volume list
 Listet alle Volumeressourcen auf.
@@ -61,11 +53,11 @@ Ruft die Informationen zu allen Volumeressourcen in einer bestimmten Ressourceng
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 ## <a name="sfctl-mesh-volume-show"></a>sfctl mesh volume show
 Ruft die Volumeressource mit dem angegebenen Namen ab.
@@ -82,13 +74,13 @@ Ruft die Informationen zur Volumeressource mit dem angegebenen Namen ab. Die Inf
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle
-- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](/azure/service-fabric/scripts/sfctl-upgrade-application)
+- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](./scripts/sfctl-upgrade-application.md)

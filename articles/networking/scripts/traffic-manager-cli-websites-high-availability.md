@@ -3,26 +3,23 @@ title: 'Azure CLI-Skriptbeispiel: Weiterleiten von Datenverkehr für Hochverfüg
 description: 'Azure CLI-Skriptbeispiel: Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen'
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
-manager: timlt
-editor: tysonn
-tags: azure-infrastructure
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: traffic-manager
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 06/26/2018
-ms.author: kumud
-ms.openlocfilehash: 3922eb76fa0954b9c02cc86f98acb142cc1d1fee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 2a083520a0da324d7033d4597a6b734b43c025b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565308"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74049253"
 ---
-# <a name="route-traffic-for-high-availability-of-applications"></a>Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen
+# <a name="route-traffic-for-high-availability-of-applications---azure-cli"></a>Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen – Azure CLI
 
 Dieses Skript erstellt eine Ressourcengruppe, zwei App Service-Pläne, zwei Web-Apps, ein Traffic Manager-Profil und zwei Traffic Manager-Endpunkte. Traffic Manager leitet Datenverkehr zur Anwendung an eine Region weiter, die als primäre Region gilt, und an die sekundäre Region, wenn die Anwendung in der primären Region nicht verfügbar ist. Vor dem Ausführen des Skripts müssen Sie die Werte von MyWebApp, MyWebAppL1 und MyWebAppL2 in Werte ändern, die innerhalb von Azure eindeutig sind. Nach dem Ausführen des Skripts können Sie in der primären Region mit der URL „mywebapp.trafficmanager.net“ auf die App zugreifen.
 

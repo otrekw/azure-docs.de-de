@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 54686a96385532e17fe0ac6e59058b91b40c1342
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742564"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336204"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Beheben von Problemen bei der Replikation von VMware-VMs und physischen Servern
 
@@ -30,7 +30,7 @@ Wir empfehlen, dass Sie die Integrität von Prozessservern im Portal überwachen
 
 ## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>Schritt 2: Problembehandlung bei Konnektivität und Replikation
 
-Fehler bei der ersten und fortlaufenden Replikation werden häufig von Konnektivitätsproblemen zwischen dem Quellserver und dem Prozessserver oder zwischen dem Prozessserver und Azure verursacht. 
+Fehler bei der ersten und fortlaufenden Replikation werden häufig von Konnektivitätsproblemen zwischen dem Quellserver und dem Prozessserver oder zwischen dem Prozessserver und Azure verursacht.
 
 Informationen zum Beheben dieser Probleme finden Sie unter [Problembehandlung der Konnektivität und Replikation](vmware-physical-azure-troubleshoot-process-server.md#check-connectivity-and-replication).
 
@@ -55,35 +55,15 @@ Wenn Sie versuchen, den Quellcomputer auszuwählen, um Replikation mithilfe von 
 
 Virtuelle Computer, die unter Site Recovery repliziert werden, sind im Azure-Portal nicht verfügbar, wenn doppelte Einträge im System vorhanden sind. Informationen zum Löschen veralteter Einträge sowie zum Beheben des Problems finden Sie unter [Azure Site Recovery VMware-zu-Azure: Gewusst wie: Bereinigen von doppelten oder veralteten Einträgen](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx).
 
-## <a name="common-errors-and-solutions"></a>Häufige Fehler und Lösungen
+## <a name="no-crash-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>In den letzten XXX Minuten stand kein absturzkonsistenter Wiederherstellungspunkt für den virtuellen Computer zur Verfügung.
+
+Einige der häufigsten Probleme sind nachfolgend aufgeführt:
 
 ### <a name="initial-replication-issues-error-78169"></a>Probleme bei der Erstreplikation [Fehler 78169]
 
 Stellen Sie sicher, dass es keine Probleme im Zusammenhang mit Konnektivität, Bandbreite oder Zeitsynchronisierung gibt, und achten Sie zusätzlich auf Folgendes:
 
 - Azure Site Recovery wird von keiner Antivirensoftware blockiert. Erfahren Sie [mehr](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) zu Ordnerausschlüssen, die für Azure Site Recovery erforderlich sind.
-
-### <a name="missing-app-consistent-recovery-points-error-78144"></a>App-konsistente Wiederherstellungspunkte fehlen [Fehler 78144]
-
- Dieser Fehler tritt aufgrund von Problemen mit dem Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) auf. Behebung: 
- 
-- Stellen Sie sicher, das Sie mindestens Version 9.22.2 des Azure Site Recovery-Agents installiert haben. 
-- Stellen Sie sicher, dass der VSS-Anbieter als Dienst in den Windows-Diensten installiert ist, und überprüfen Sie die Komponentendienst-MMC, um sicherzustellen, dass der Azure Site Recovery-VSS-Anbieter aufgeführt wird.
-- Wenn der VSS-Anbieter nicht installiert ist, erhalten Sie im [Artikel zur Problembehandlung bei Installationsfehlern](vmware-azure-troubleshoot-push-install.md#vss-installation-failures) weitere Informationen.
-
-- Wenn VSS deaktiviert ist:
-    - Stellen Sie sicher, dass der Starttyp des VSS-Anbieterdiensts auf **Automatic** (Automatisch) festgelegt ist.
-    - Starten Sie die folgenden Dienste neu:
-        - VSS-Dienst
-        - Azure Site Recovery-VSS-Anbieter
-        - VDS-Dienst
-
-- Wenn Sie SQL oder Exchange-Workloads ausführen, sollten Sie die Protokolle dieser Anwendungsschreiber auf Fehler überprüfen. Häufige Fehler und ihre Lösungen werden in den folgenden Artikeln thematisiert:
-    -  [Automatische Schließoption der SQL Server-Datenbank ist TRUE](https://support.microsoft.com/help/4504104)
-    - [SQL Server 2008 R2 zeigt einen nicht wiederholbaren Fehler](https://support.microsoft.com/help/4504103)
-    - [Bekanntes Problem in SQL Server 2016 und 2017](https://support.microsoft.com/help/4493364)
-    - [Häufige Probleme mit Exchange Servers 2013 und 2016](https://support.microsoft.com/help/4037535)
-
 
 ### <a name="source-machines-with-high-churn-error-78188"></a>Quellcomputer mit hoher Änderungsrate [Fehler 78188]
 
@@ -97,7 +77,7 @@ So lösen Sie das Problem:
     - Navigieren Sie zum Blatt „Datenträger“ des betroffenen replizierten Computers, und kopieren Sie den Replikatdatenträgernamen.
     - Navigieren Sie zu diesem verwalteten Replikatdatenträger.
     - Auf dem Blatt „Übersicht“ wird möglicherweise ein Banner angezeigt, das besagt, dass eine SAS-URL generiert wurde. Klicken Sie auf dieses Banner, und brechen Sie den Export ab. Ignorieren Sie diesen Schritt, wenn das Banner nicht angezeigt wird.
-    - Sobald die SAS-URL aufgehoben wurde, wechseln Sie zum Blatt „Konfiguration“ des verwalteten Datenträgers, und vergrößern Sie diesen so, dass ASR die ermittelte Datenänderungsrate auf dem Quelldatenträger unterstützt.
+    - Nachdem die SAS-URL widerrufen wurde, wechseln Sie zum Blatt „Konfiguration“ des verwalteten Datenträgers und vergrößern diesen so, dass Azure Site Recovery die ermittelte Datenänderungsrate auf dem Quelldatenträger unterstützt.
 - Wenn die erkannte erhöhte Änderungsrate nur vorrübergehend ist, warten Sie einigen Stunden ab, damit alle ausstehenden Daten hochgeladen werden. Dann können Sie einen Wiederherstellungspunkt erstellen.
 - Wenn der Datenträger unkritische Daten wie temporäre Protokolle, Testdaten usw. enthält, erwägen Sie, diese Daten an einen anderen Ort zu verschieben oder den gesamten Datenträger von der Replikation auszuschließen.
 - Wenn das Problem weiterhin besteht, können Sie die Replikation mithilfe des [Bereitstellungsplaners](site-recovery-deployment-planner.md#overview) von Site Recovery planen.
@@ -115,16 +95,16 @@ Führen Sie die folgenden Schritte durch, um die Netzwerkverbindung zwischen der
    - InMage Scout-Anwendungsdienst
 4. Sehen Sie sich die Fehlerdetails in den Protokollen an folgendem Speicherort auf dem Quellcomputer an:
 
-       C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
-    
+    *C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents\*.log*
+
 ### <a name="process-server-with-no-heartbeat-error-806"></a>Prozessserver ohne Heartbeat [Fehler 806]
 Wenn es keinen Heartbeat vom Prozessserver gibt, überprüfen Sie Folgendes:
 1. Die Prozessserver-VM wird ordnungsgemäß ausgeführt.
 2. Die Fehlerdetails in den folgenden Protokollen:
 
-       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
-       and
-       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
+    *C:\ProgramData\ASR\home\svsystems\eventmanager\*.log*\
+    und\
+    *C:\ProgramData\ASR\home\svsystems\monitor_protection\*.log*
 
 ### <a name="master-target-server-with-no-heartbeat-error-78022"></a>Masterzielserver ohne Heartbeat [Fehler 78022]
 
@@ -136,45 +116,60 @@ Führen Sie zur Problembehebung die folgenden Schritte durch, um den Dienststatu
 2. Melden Sie sich bei der Masterziel-VM mit einem Administratorkonto an.
     - Stellen Sie sicher, dass der svagents-Dienst ausgeführt wird. Wird der Dienst ausgeführt, starten Sie Ihn neu.
     - Sehen Sie sich die Fehlerdetails in den Protokollen an folgendem Speicherort an:
-        
-          C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+
+        *C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents\*.log*
+3. Navigieren Sie zum Registrieren des Masterziels beim Konfigurationsserver zu Ordner **%PROGRAMDATA%\ASR\Agent**, und führen Sie Folgendes an der Eingabeaufforderung aus:
+   ```
+   cmd
+   cdpcli.exe --registermt
+
+   net stop obengine
+
+   net start obengine
+
+   exit
+   ```
 
 ## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Fehler-ID 78144: In den letzten „XXX“ Minuten stand kein anwendungskonsistenter Wiederherstellungspunkt für den virtuellen Computer zur Verfügung.
 
+Es wurden Verbesserungen in den Versionen [9.23](vmware-physical-mobility-service-overview.md#mobility-service-agent-version-923-and-higher) & [9.27](site-recovery-whats-new.md#update-rollup-39) von Mobility Agent vorgenommen, um das Verhalten von VSS-Installationsfehlern zu behandeln. Stellen Sie sicher, dass Sie die neuesten Versionen verwenden, um eine optimale Anleitung zur Fehlerbehebung bei VSS-Fehlern zu erhalten.
+
 Einige der häufigsten Probleme sind nachfolgend aufgeführt:
 
-#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Ursache 1: Bekanntes Problem in SQL Server 2008/2008 R2 
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Ursache 1: Bekanntes Problem in SQL Server 2008/2008 R2
 **Problembehandlung**: Es gibt ein bekanntes Problem mit SQL Server 2008/2008 R2. Weitere Informationen finden Sie in diesem KB-Artikel: [Fehler bei Azure Site Recovery-Agent oder einer anderen komponentenfreien VSS-Sicherung für einen Server, der SQL Server 2008 R2 hostet](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2).
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Ursache 2: Azure Site Recovery-Aufträge schlagen auf Servern fehl, die eine beliebige Version von SQL Server-Instanzen mit AUTO_CLOSE DBs hosten 
-**Problembehandlung**: Referenz-KB-[Artikel](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Ursache 2: Azure Site Recovery-Aufträge schlagen auf Servern fehl, die eine beliebige Version von SQL Server-Instanzen mit AUTO_CLOSE DBs hosten
+**Problembehandlung**: Referenz-KB-[Artikel](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)
 
 
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Ursache 3: Bekanntes Problem in SQL Server 2016 und 2017
-**Problembehandlung**: Referenz-KB-[Artikel](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
+**Problembehandlung**: Referenz-KB-[Artikel](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
+#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>Ursache 4: App-Konsistenz ist auf Linux-Servern nicht aktiviert
+**Problembehandlung**: Azure Site Recovery für Linux-Betriebssysteme unterstützt benutzerdefinierte Anwendungsskripts für App-Konsistenz. Das benutzerdefinierte Skript mit „Pre“- und „Post“-Optionen wird vom Mobilitäts-Agent von Azure Site Recovery für die App-Konsistenz verwendet. Die Schritte für die Aktivierung finden Sie [hier](./site-recovery-faq.md#replication).
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>Weitere Ursachen aufgrund von VSS-bezogenen Problemen:
 
 Überprüfen Sie zur weiteren Problembehandlung die Dateien auf dem Quellcomputer, um den genauen Fehlercode zu erhalten:
-    
-    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
+
+*C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log*
 
 Wie können die Fehler in der Datei gefunden werden?
 Suchen Sie nach der Zeichenfolge „vacpError“, indem Sie die Datei „vacp.log“ in einem Editor öffnen.
-        
-    Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
+
+`Ex: `**`vacpError`**`:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|`
 
 Im obigen Beispiel ist **2147754994** der Fehlercode, der Sie über den Fehler informiert, wie unten dargestellt.
 
-#### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS Writer ist nicht installiert – Fehler 2147221164 
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS Writer ist nicht installiert – Fehler 2147221164
 
 *Problembehandlung*: Azure Site Recovery verwendet den Microsoft-VSS (Volumeschattenkopie-Dienst), um Tags für die Anwendungskonsistenz zu erstellen. Es installiert einen VSS-Anbieter für den Betrieb, um Momentaufnahmen zur Anwendungskonsistenz zu erstellen. Dieser VSS-Anbieter wird als Dienst installiert. Falls der VSS-Anbieterdienst nicht installiert ist, tritt bei der Erstellung der Momentaufnahme zur Anwendungskonsistenz ein Fehler mit der ID „0x80040154“ auf – „Klasse nicht registriert“. </br>
-Weitere Informationen finden Sie im [Artikel zur Problembehandlung bei der VSS Writer-Installation.](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
+Weitere Informationen finden Sie im [Artikel zur Problembehandlung bei der VSS Writer-Installation.](./vmware-azure-troubleshoot-push-install.md#vss-installation-failures)
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS Writer ist deaktiviert – Fehler 2147943458
 
-**Problembehandlung**: Azure Site Recovery verwendet den Microsoft-VSS (Volumeschattenkopie-Dienst), um Tags für die Anwendungskonsistenz zu erstellen. Es installiert einen VSS-Anbieter für den Betrieb, um Momentaufnahmen zur Anwendungskonsistenz zu erstellen. Dieser VSS-Anbieter wird als Dienst installiert. Falls der VSS-Anbieterdienst deaktiviert ist, tritt bei der Erstellung der Momentaufnahme zur Anwendungskonsistenz ein Fehler mit der ID „Der angegebene Dienst ist deaktiviert und kann nicht gestartet werden (0x80070422)“ auf. </br>
+**Problembehandlung**: Azure Site Recovery verwendet den Microsoft-VSS (Volumeschattenkopie-Dienst), um Tags für die Anwendungskonsistenz zu erstellen. Es installiert einen VSS-Anbieter für den Betrieb, um Momentaufnahmen zur Anwendungskonsistenz zu erstellen. Dieser VSS-Anbieter wird als Dienst installiert. Falls der VSS-Anbieterdienst deaktiviert ist, tritt bei der Erstellung der Momentaufnahme zur Anwendungskonsistenz ein Fehler mit der ID „0x80070422“ auf – „Der angegebene Dienst ist deaktiviert und kann nicht gestartet werden“. </br>
 
 - Wenn VSS deaktiviert ist:
     - Stellen Sie sicher, dass der Starttyp des VSS-Anbieterdiensts auf **Automatic** (Automatisch) festgelegt ist.
@@ -185,18 +180,37 @@ Weitere Informationen finden Sie im [Artikel zur Problembehandlung bei der VSS W
 
 ####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED – Fehler 2147754756
 
-**Problembehandlung**: Azure Site Recovery verwendet den Microsoft-VSS (Volumeschattenkopie-Dienst), um Tags für die Anwendungskonsistenz zu erstellen. Überprüfen Sie, ob der Azure Site Recovery VSS-Anbieterdienst installiert ist. </br>
+**Problembehandlung**: Azure Site Recovery verwendet den Microsoft-VSS (Volumeschattenkopie-Dienst), um Tags für die Anwendungskonsistenz zu erstellen.
+Überprüfen Sie, ob der Azure Site Recovery VSS-Anbieterdienst installiert ist. </br>
 
 - Wiederholen Sie die Installation des Anbieters mit den folgenden Befehlen:
 - Vorhandenen Anbieter deinstallieren: C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
 - Neuinstallation von: C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
- 
+
 Stellen Sie sicher, dass der Starttyp des VSS-Anbieterdiensts auf **Automatic** (Automatisch) festgelegt ist.
     - Starten Sie die folgenden Dienste neu:
         - VSS-Dienst
         - Azure Site Recovery-VSS-Anbieter
         - VDS-Dienst
 
+## <a name="error-id-95001---insufficient-permissions-found"></a>Fehler-ID 95001: Unzureichende Berechtigungen
+
+Dieser Fehler tritt auf, wenn Sie versuchen, die Replikation zu aktivieren und die Anwendungsordner nicht über ausreichende Berechtigungen verfügen.
+
+**Problembehandlung**: Um dieses Problem zu beheben, stellen Sie sicher, dass der IUSR-Benutzer über die Rolle „Besitzer“ für alle unten aufgeführten Ordner verfügt:
+
+- *C\ProgramData\Microsoft Azure Site Recovery\private*
+- Das Installationsverzeichnis. Wenn das Installationsverzeichnis z. B. das Laufwerk „F“ ist, geben Sie die richtigen Berechtigungen für den folgenden Ordner ein:
+    - *F:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems*
+- Der Ordner *\pushinstallsvc* im Installationsverzeichnis. Wenn das Installationsverzeichnis z. B. das Laufwerk „F“ ist, geben Sie die richtigen Berechtigungen für den folgenden Ordner ein:
+    - *F:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc*
+- Der Ordner *\etc* im Installationsverzeichnis. Wenn das Installationsverzeichnis z. B. das Laufwerk „F“ ist, geben Sie die richtigen Berechtigungen für den folgenden Ordner ein:
+    - *F:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\etc*
+- *C:\Temp*
+- *C:\thirdparty\php5nts*
+- Alle Elemente unter dem folgenden Pfad:
+    - *C:\thirdparty\rrdtool-1.2.15-win32-perl58\rrdtool\Release\**
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie weitere Hilfe benötigen, können Sie Ihre Frage im [Azure Site Recovery-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) veröffentlichen. Unsere Community ist sehr aktiv, und einer unserer Techniker kann Sie bei Ihrem Problem unterstützen.
+Wenn Sie weitere Hilfe benötigen, können Sie Ihre Frage auf der [Microsoft F&A-Seite für Azure Site Recovery](/answers/topics/azure-site-recovery.html) veröffentlichen. Unsere Community ist sehr aktiv, und einer unserer Techniker kann Sie bei Ihrem Problem unterstützen.

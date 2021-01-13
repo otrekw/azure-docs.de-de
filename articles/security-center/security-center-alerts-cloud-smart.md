@@ -1,5 +1,5 @@
 ---
-title: Korrelation von intelligenten Cloudwarnungen in Azure Security Center (Incidents) | Microsoft-Dokumentation
+title: 'Azure Security Center-Vorfälle: Korrelation von intelligenten Warnungen'
 description: In diesem Thema erfahren Sie, wie Fusion durch die Korrelation von intelligenten Cloudwarnungen Sicherheitsincidents in Azure Security Center generiert.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 4c2f084fe03271b29a12aa6906f5e36612d50674
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 742d7122c60b383e8ab7aa73f73b11b47843a9d5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202687"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91613820"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Korrelation von intelligenten Cloudwarnungen in Azure Security Center (Incidents)
 
@@ -30,13 +30,17 @@ Fusion-Analysen sind die Technologie und das Analyse-Back-End, die Security Cen
 
 Bei Fusion-Analysen werden Sicherheitsdomänenkenntnisse mit künstlicher Intelligenz kombiniert, um Warnungen zu analysieren und neue Angriffsmuster zu erkennen, sobald diese auftreten. 
 
-Security Center nutzt die Angriffsmatrix von Mitre, um einen Zusammenhang zwischen Warnungen und deren vermeintlicher Absicht herzustellen und so zur Formalisierung von Sicherheitsdomänenkenntnissen beizutragen. Auf der Grundlage der Informationen, die für die einzelnen Schritte eines Angriffs gesammelt wurden, kann Security Center außerdem Aktivitäten ausschließen, die lediglich wie Angriffsschritte aussehen, aber gar keine sind.  
+Security Center nutzt die Angriffsmatrix von Mitre, um einen Zusammenhang zwischen Warnungen und deren vermeintlicher Absicht herzustellen und so zur Formalisierung von Sicherheitsdomänenkenntnissen beizutragen. Auf der Grundlage der Informationen, die für die einzelnen Schritte eines Angriffs gesammelt wurden, kann Security Center außerdem Aktivitäten ausschließen, die lediglich wie Angriffsschritte aussehen, aber gar keine sind.
 
 Da Angriffe häufig mandantenübergreifend auftreten, kann Security Center KI-Algorithmen für die Analyse von Angriffssequenzen kombinieren, die für die einzelnen Abonnements gemeldet werden. Dadurch lässt sich erkennen, ob es sich um verbreitete Warnungsmuster handelt (und nicht nur um Warnungen, die zufällig zusammenhängen).
 
 Bei der Untersuchung eines Incidents benötigen Analysten häufig zusätzlichen Kontext, um die Art der Bedrohung und mögliche Gegenmaßnahmen einschätzen zu können. Selbst wenn also beispielsweise eine Netzwerkanomalie erkannt wurde, ist es schwer, angemessen darauf zu reagieren, wenn die weiteren Vorgänge in Bezug auf das Netzwerk oder die betroffenen Ressourcen nicht klar sind. Ein Sicherheitsincident kann hier mit Artefakten, verwandten Ereignissen und Informationen weiterhelfen. Welche zusätzlichen Informationen für Sicherheitsincidents verfügbar sind, hängt von der Art der erkannten Bedrohung und der Konfiguration Ihrer Umgebung ab. 
 
-![Screenshot: Bericht zu erkanntem Sicherheitsincident](./media/security-center-alerts-cloud-smart/security-incident.png)
+> [!TIP]
+> Eine Liste der Warnungen für Sicherheitsvorfälle, die von Fusion-Analysen erzeugt werden, finden Sie in der [Verweistabelle zu Warnungen](alerts-reference.md#alerts-fusion).
 
-Weitere Informationen zu Sicherheitsincidents finden Sie unter [Behandeln von Sicherheitsincidents in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-incident).
+:::image type="content" source="./media/security-center-alerts-cloud-smart/security-incident.png" alt-text="Screenshot des Berichts zu erkanntem Sicherheitsvorfall":::
+
+
+Weitere Informationen zu Sicherheitsvorfällen finden Sie unter [Verwalten von Sicherheitsvorfällen in Azure Security Center](security-center-incident.md).
 

@@ -1,35 +1,31 @@
 ---
-title: Azure-Schnellstart – Ausführen eines Batch-Auftrags – .NET
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Batch-Auftrag und Aufgaben mit der Batch .NET-Clientbibliothek ausführen.
-services: batch
-author: laurenhughes
-manager: gwallace
-ms.service: batch
-ms.devlang: dotnet
+title: 'Schnellstart: Ausführen Ihres ersten Azure Batch-Auftrags mit der .NET-API'
+description: In dieser Schnellstartanleitung führen Sie einen Azure Batch-Beispielauftrag und Aufgaben von einer C#-Anwendung aus mit der .NET-Clientbibliothek von Batch aus.
 ms.topic: quickstart
-ms.date: 11/29/2018
-ms.author: lahugh
-ms.custom: mvc
-ms.openlocfilehash: 37cd6fdd2f82af581e27f9341292c484b1cc601e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 08/17/2020
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 9087261865b07d32afab65012e04ea478cb60611
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322327"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "88921646"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Schnellstart: Ausführen Ihres ersten Azure Batch-Auftrags mit der .NET-API
 
-In dieser Schnellstartanleitung wird ein Azure Batch-Auftrag über eine C#-Anwendung ausgeführt, die auf der Azure Batch .NET-API basiert. Die App lädt einige Eingabedatendateien in den Azure-Speicher und erstellt anschließend einen *Pool* mit Batch-Computeknoten (virtuelle Computer). Als Nächstes wird ein Beispiel für einen *Auftrag* erstellt, mit dem *Aufgaben* ausgeführt werden, um die einzelnen Eingabedateien im Pool mit einem einfachen Befehl zu verarbeiten. Nach Abschluss dieser Schnellstartanleitung sind Sie mit den wichtigsten Konzepten des Batch-Diensts vertraut und können Batch mit realistischeren Workloads und in größerem Umfang ausprobieren.
+Erste Schritte mit Azure Batch durch Ausführen eines Auftrags über eine C#-Anwendung, die auf der .NET-API von Azure Batch basiert Die App lädt einige Eingabedatendateien in den Azure-Speicher und erstellt anschließend einen Pool mit Batch-Computeknoten (virtuelle Computer). Als Nächstes wird ein Beispiel für einen Auftrag erstellt, mit dem Aufgaben ausgeführt werden, um die einzelnen Eingabedateien im Pool mit einem einfachen Befehl zu verarbeiten.
 
-![Schnellstart – App-Workflow](./media/quick-run-dotnet/sampleapp.png)
+Nach Abschluss dieser Schnellstartanleitung sind Sie mit den wichtigsten Konzepten des Batch-Diensts vertraut und können Batch mit realistischeren Workloads und in größerem Umfang ausprobieren.
 
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+![Diagram: Übersicht über den Azure Batch-App-Workflow](./media/quick-run-dotnet/sampleapp.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Visual Studio 2017 oder höher](https://www.visualstudio.com/vs) bzw. [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) für Linux, macOS oder Windows. 
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Ein Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md). 
+- Ein Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md).
+
+- [Visual Studio 2017 oder höher](https://www.visualstudio.com/vs) bzw. [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) für Linux, macOS oder Windows. 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -66,11 +62,11 @@ private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfw
 
 Um den Batch-Workflow in Aktion zu sehen, können Sie die Anwendung in Visual Studio oder über die Befehlszeile mit den Befehlen `dotnet build` und `dotnet run` erstellen und ausführen. Sehen Sie sich nach dem Ausführen der Anwendung den Code an, um zu erfahren, welche Aufgabe die einzelnen Teile der Anwendung jeweils haben. In Visual Studio:
 
-* Klicken Sie mit der rechten Maustaste im Projektmappen-Explorer auf die Projektmappe, und klicken Sie dann auf **Projektmappe erstellen**. 
+- Klicken Sie mit der rechten Maustaste im Projektmappen-Explorer auf die Projektmappe, und klicken Sie dann auf **Projektmappe erstellen**. 
 
-* Bestätigen Sie die Wiederherstellung von NuGet-Paketen, wenn Sie hierzu aufgefordert werden. Stellen Sie beim Herunterladen von fehlenden Paketen sicher, dass der [NuGet-Paket-Manager](https://docs.nuget.org/consume/installing-nuget) installiert ist.
+- Bestätigen Sie die Wiederherstellung von NuGet-Paketen, wenn Sie hierzu aufgefordert werden. Stellen Sie beim Herunterladen von fehlenden Paketen sicher, dass der [NuGet-Paket-Manager](https://docs.nuget.org/consume/installing-nuget) installiert ist.
 
-Führen Sie ihn anschließend aus. Beim Ausführen der Beispielanwendung sieht die Konsolenausgabe in etwa wie folgt aus: Bei der Ausführung kommt es bei `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` zu einer Pause, während die Computeknoten des Pools gestartet werden. Die Aufgaben werden in die Warteschlange eingereiht und dann ausgeführt, sobald der erste Computeknoten aktiv ist. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Batch-Konto, um den Pool, die Computeknoten, den Auftrag und die Aufgaben zu überwachen.
+Beim Ausführen der Beispielanwendung sieht die Konsolenausgabe in etwa wie folgt aus: Bei der Ausführung kommt es bei `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` zu einer Pause, während die Computeknoten des Pools gestartet werden. Die Aufgaben werden in die Warteschlange eingereiht und dann ausgeführt, sobald der erste Computeknoten aktiv ist. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Batch-Konto, um den Pool, die Computeknoten, den Auftrag und die Aufgaben zu überwachen.
 
 ```
 Sample start: 11/16/2018 4:02:54 PM
@@ -99,17 +95,16 @@ stderr:
 
 Die normale Ausführungsdauer beträgt ca. fünf Minuten, wenn die Anwendung in der Standardkonfiguration ausgeführt wird. Am meisten Zeit nimmt die anfängliche Einrichtung des Pools ein. Löschen Sie den Auftrag aus der vorherigen Ausführung, aber löschen Sie nicht den Pool, um den Auftrag erneut auszuführen. In einem vorkonfigurierten Pool wird der Auftrag innerhalb einiger Sekunden abgeschlossen.
 
-
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
 Mit der .NET-App in dieser Schnellstartanleitung werden folgende Schritte ausgeführt:
 
-* Es werden drei kleine Textdateien in einen Blobcontainer in Ihrem Azure-Speicherkonto hochgeladen. Diese Dateien dienen als Eingaben für die Verarbeitung mit Batch.
-* Es wird ein Pool mit Computeknoten erstellt, auf denen Windows Server ausgeführt wird.
-* Es werden ein Auftrag und drei Aufgaben für die Ausführung auf den Knoten erstellt. Jede Aufgabe verarbeitet eine der Eingabedateien über eine Windows-Befehlszeile. 
-* Es werden die von den Aufgaben zurückgegebenen Dateien angezeigt.
+- Es werden drei kleine Textdateien in einen Blobcontainer in Ihrem Azure-Speicherkonto hochgeladen. Diese Dateien dienen als Eingaben für die Verarbeitung mit Batch.
+- Es wird ein Pool mit Computeknoten erstellt, auf denen Windows Server ausgeführt wird.
+- Es werden ein Auftrag und drei Aufgaben für die Ausführung auf den Knoten erstellt. Jede Aufgabe verarbeitet eine der Eingabedateien über eine Windows-Befehlszeile. 
+- Es werden die von den Aufgaben zurückgegebenen Dateien angezeigt.
 
-Ausführliche Informationen finden Sie in der Datei `Program.cs` und in den folgenden Abschnitten. 
+Ausführliche Informationen finden Sie in der Datei `Program.cs` und in den folgenden Abschnitten.
 
 ### <a name="preliminaries"></a>Vorbereitende Maßnahmen
 
@@ -251,7 +246,6 @@ Löschen Sie die Ressourcengruppe, das Batch-Konto und das Speicherkonto, wenn d
 ## <a name="next-steps"></a>Nächste Schritte
 
 In dieser Schnellstartanleitung haben Sie eine kleine App ausgeführt, indem Sie die Batch .NET-API verwendet haben, um einen Batch-Pool und einen Batch-Auftrag zu erstellen. Im Auftrag wurden Beispielaufgaben ausgeführt, und es wurde die auf den Knoten erstellte Ausgabe heruntergeladen. Da Sie sich jetzt mit den wichtigsten Konzepten des Batch-Diensts vertraut gemacht haben, können Sie Batch mit realistischeren Workloads und in größerem Umfang ausprobieren. Fahren Sie mit dem Batch .NET-Tutorial fort, um weitere Informationen zu Azure Batch und eine Schritt-für-Schritt-Anleitung zu einer parallelen Workload mit einer Anwendung aus der Praxis zu erhalten.
-
 
 > [!div class="nextstepaction"]
 > [Tutorial: Run a parallel workload with Azure Batch using the .NET API](tutorial-parallel-dotnet.md) (Tutorial: Ausführen einer parallelen Workload mit Azure Batch per .NET-API)

@@ -1,25 +1,17 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Erstellen eines Log Analytics-Arbeitsbereichs | Microsoft-Dokumentation
+title: Erstellen eines Log Analytics-Arbeitsbereichs – Azure PowerShell
 description: Azure PowerShell-Skriptbeispiel – Erstellen eines Log Analytics-Arbeitsbereichs
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-tags: ''
-ms.assetid: ''
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
+author: bwren
+ms.author: bwren
 ms.date: 09/07/2017
-ms.author: magoedte
-ms.openlocfilehash: 4dc98fc3912f9d9c659ecfcaa3df253d30bfcc78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f6bfb3a244874f6160d34c174b6d10b9a03ca437
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66129171"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87024117"
 ---
 # <a name="create-a-log-analytics-workspace-with-powershell"></a>Erstellen eines Log Analytics-Arbeitsbereichs mit PowerShell
 
@@ -47,5 +39,5 @@ In diesem Skript wird mithilfe der folgenden Befehle ein neuer Log Analytics-Arb
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 

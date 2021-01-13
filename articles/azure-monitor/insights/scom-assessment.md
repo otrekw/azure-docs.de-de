@@ -1,24 +1,17 @@
 ---
-title: Optimieren Ihrer System Center Operations Manager-Umgebung mit Azure Log Analytics | Microsoft-Dokumentation
+title: Bewerten von System Center Operations Manager mit Azure Monitor
 description: Sie können die Lösung zur System Center Operations Manager-Integritätsüberprüfung verwenden, um die Risiken und die Integrität Ihrer Umgebungen in regelmäßigen Abständen zu bewerten.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+author: bwren
+ms.author: bwren
 ms.date: 06/25/2018
-ms.author: magoedte
-ms.openlocfilehash: 27b55af74a713c51655891df8c852ff44cd3744a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60401652"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004907"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimieren Ihrer Umgebung mit der Lösung zur System Center Operations Manager-Integritätsüberprüfung (Vorschauversion)
 
@@ -40,7 +33,7 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Bewertung durchgeführt wurd
 
 ## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
 
-Die Lösung funktioniert mit Microsoft System Center 2012 Operations Manager Service Pack 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager und Microsoft System Center Operations Manager 1807
+Die Lösung funktioniert mit Microsoft System Center 2012 Operations Manager Service Pack 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager und Microsoft System Center Operations Manager 1807. Auf jedem Verwaltungsserver muss eine unterstützte Version von .NET Framework 4.6.2 installiert sein.
 
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
@@ -62,7 +55,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 Die System Center Operations Manager-Integritätsprüfung sammelt Daten aus den folgenden Quellen:
 
 * Registrierung
-* Windows-Verwaltungsinstrumentation (WMI)
+* Windows-Verwaltungsinstrumentation (WMI, Windows Management Instrumentation)
 * Ereignisprotokoll
 * Dateidaten
 * Direkt aus Operations Manager mithilfe von PowerShell- und SQL-Abfragen über einen von Ihnen angegebenen Verwaltungsserver  
@@ -71,7 +64,7 @@ Daten werden auf dem Verwaltungsserver erfasst und alle sieben Tage an Log Analy
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Ausführende Operations Manager-Konten für Log Analytics
 
-Log Analytics basiert auf Management Packs für Workloads, um Dienste bereitzustellen, die einen Mehrwert schaffen. Jede Workload erfordert spezifische Berechtigungen zum Ausführen von Management Packs in einem anderen Sicherheitskontext, z.B. ein Domänenbenutzerkonto. Konfigurieren Sie ein ausführendes Operations Manager-Konto mit privilegierten Anmeldeinformationen. Zusätzliche Informationen finden Sie in der Operations Manager-Dokumentation unter [How to create a Run As account](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) (Erstellen eines ausführenden Kontos).
+Log Analytics basiert auf Management Packs für Workloads, um Dienste bereitzustellen, die einen Mehrwert schaffen. Jede Workload erfordert spezifische Berechtigungen zum Ausführen von Management Packs in einem anderen Sicherheitskontext, z.B. einem Domänenbenutzerkonto. Konfigurieren Sie ein ausführendes Operations Manager-Konto mit privilegierten Anmeldeinformationen. Zusätzliche Informationen finden Sie in der Operations Manager-Dokumentation unter [How to create a Run As account](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12)) (Erstellen eines ausführenden Kontos).
 
 Verwenden Sie die folgenden Informationen, um das ausführende Operations Manager-Konto für die System Center Operations Manager-Integritätsüberprüfung festzulegen.
 
@@ -89,7 +82,7 @@ Das ausführende Konto muss folgende Anforderungen erfüllen, damit Sie den Vorg
 4. Wählen Sie auf der Seite **Allgemeine Eigenschaften** in der Liste **Typ des ausführenden Kontos:** die Option **Windows** aus.
 5. Geben Sie im Textfeld **Anzeigename** einen Anzeigenamen und optional im Feld **Beschreibung** eine Beschreibung ein, und klicken Sie dann auf **Weiter**.
 6. Wählen Sie auf der Seite **Verteilungssicherheit** die Option **More secure** (Höhere Sicherheit) aus.
-7. Klicken Sie auf **Create**.  
+7. Klicken Sie auf **Erstellen**.  
 
 Das ausführende Konto wurde erstellt. Nun müssen für das Konto Verwaltungsserver in der Verwaltungsgruppe als Ziel festgelegt werden, und das Konto muss mit einem vordefinierten ausführenden Profil verknüpft werden, damit Workflows unter Verwendung der Anmeldedaten ausgeführt werden.  
 
@@ -210,7 +203,7 @@ Jede Empfehlung enthält Informationen dazu, warum sie wichtig ist. Ermitteln Si
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Befolgen von Schwerpunktbereichsempfehlungen der Integritätsüberprüfung
 
-Bevor Sie eine Lösung zur Integritätsüberprüfung in Log Analytics verwenden können, müssen Sie die Lösung installieren. Weitere Informationen zum Installieren von Lösungen finden Sie unter [Hinzufügen von Azure Log Analytics-Verwaltungslösungen zu Ihrem Arbeitsbereich](../../azure-monitor/insights/solutions.md). Nach der Installation können Sie die Zusammenfassung der Empfehlungen anzeigen, indem Sie im Azure-Portal auf der Seite **Übersicht** für Ihren Arbeitsbereich die Kachel „System Center Operations Manager-Integritätsprüfung“ verwenden.
+Bevor Sie eine Lösung zur Integritätsüberprüfung in Log Analytics verwenden können, müssen Sie die Lösung installieren. Weitere Informationen zum Installieren von Lösungen finden Sie unter [Hinzufügen von Azure Log Analytics-Verwaltungslösungen zu Ihrem Arbeitsbereich](./solutions.md). Nach der Installation können Sie die Zusammenfassung der Empfehlungen anzeigen, indem Sie im Azure-Portal auf der Seite **Übersicht** für Ihren Arbeitsbereich die Kachel „System Center Operations Manager-Integritätsprüfung“ verwenden.
 
 Sehen Sie sich die zusammengefassten Compliancebewertungen für Ihre Infrastruktur sowie Details in den Empfehlungen an.
 
@@ -221,7 +214,7 @@ Sehen Sie sich die zusammengefassten Compliancebewertungen für Ihre Infrastrukt
 4. Klicken Sie auf der Seite **Übersicht** auf die Kachel **System Center Operations Manager-Integritätsüberprüfung**.
 5. Überprüfen Sie auf der Seite **System Center Operations Manager-Integritätsüberprüfung** die Zusammenfassungsinformationen auf einem der Blätter mit Schwerpunktbereichen, und klicken Sie dann auf einen Schwerpunktbereich, um Empfehlungen für diesen Bereich anzuzeigen.
 6. Auf jeder der Schwerpunktbereichsseiten können Sie mit Prioritäten versehene Empfehlungen für Ihre Umgebung anzeigen. Klicken Sie unter **Betroffene Objekte** auf eine Empfehlung, um Details zu den Gründen für diese Empfehlung anzuzeigen.<br><br> ![Schwerpunktbereich](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
-7. Sie können die unter **Vorgeschlagene Aktionen**vorgeschlagenen Korrekturmaßnahmen durchführen. Nachdem das Element behandelt wurde, geben spätere Bewertungen an, dass empfohlene Aktionen ausgeführt wurden, und Ihre Bewertung der Einhaltung erhöht sich. Korrigierte Elemente werden als **Passed Objects**angezeigt.
+7. Sie können die unter **Vorgeschlagene Aktionen** vorgeschlagenen Korrekturmaßnahmen durchführen. Nachdem das Element behandelt wurde, geben spätere Bewertungen an, dass empfohlene Aktionen ausgeführt wurden, und Ihre Bewertung der Einhaltung erhöht sich. Korrigierte Elemente werden als **Passed Objects** angezeigt.
 
 ## <a name="ignore-recommendations"></a>Ignorieren von Empfehlungen
 
@@ -236,7 +229,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
     ```
 
     >[!NOTE]
-    > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../../azure-monitor/log-query/log-query-overview.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
+    > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../log-query/log-query-overview.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -261,7 +254,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
     ```
 
     >[!NOTE]
-    > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../../azure-monitor/log-query/log-query-overview.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
+    > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../log-query/log-query-overview.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -302,4 +295,5 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Durchsuchen Sie Protokolle](../../azure-monitor/log-query/log-query-overview.md), um zu erfahren, wie Sie detaillierte System Center Operations Manager-Integritätsüberprüfungsdaten und -empfehlungen analysieren.
+- [Durchsuchen Sie Protokolle](../log-query/log-query-overview.md), um zu erfahren, wie Sie detaillierte System Center Operations Manager-Integritätsüberprüfungsdaten und -empfehlungen analysieren.
+

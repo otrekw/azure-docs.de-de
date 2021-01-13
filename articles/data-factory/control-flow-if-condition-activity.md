@@ -1,25 +1,27 @@
 ---
-title: Aktivität „If Condition“ in Azure Data Factory | Microsoft-Dokumentation
+title: Aktivität „If Condition“ in Azure Data Factory
 description: Die Aktivität „If Condition“ ermöglicht Ihnen die Steuerung des Verarbeitungsflusses basierend auf einer Bedingung.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fc6318b5033ff1297f917ab95b28f8ed9285e930
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 150efe87565b1949dc1ed29b03af69c26f84a896
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142492"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499457"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Aktivität „If Condition“ in Azure Data Factory
-Die Aktivität „If Condition“ bietet die gleiche Funktionalität wie eine If-Anweisung in Programmiersprachen. Sie wertet eine Aktivitätengruppe aus, wenn die Bedingung als `true` ausgewertet wird, und eine weitere Aktivitätengruppe, wenn die Bedingung als `false` ausgewertet wird. 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Die Aktivität „If Condition“ bietet die gleiche Funktionalität wie eine If-Anweisung in Programmiersprachen. Sie führt eine Aktivitätengruppe aus, wenn die Bedingung als `true` ausgewertet wird, und eine weitere Aktivitätengruppe, wenn die Bedingung als `false` ausgewertet wird. 
 
 ## <a name="syntax"></a>Syntax
 
@@ -65,8 +67,8 @@ Die Aktivität „If Condition“ bietet die gleiche Funktionalität wie eine If
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Der Name der Aktivität „If Condition“ | Zeichenfolge | Ja
-type | Muss auf **IfCondition** festgelegt werden. | Zeichenfolge | Ja
+name | Der Name der Aktivität „If Condition“ | String | Ja
+type | Muss auf **IfCondition** festgelegt werden. | String | Ja
 expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ausdruck mit Ergebnistyp „Boolesch“ | Ja
 ifTrueActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `true` ausgewertet wird | Array | Ja
 ifFalseActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `false` ausgewertet wird | Array | Ja
@@ -182,7 +184,7 @@ Ein weiteres Beispiel für den Ausdruck lautet:
 
 ```json
 "expression":  {
-    "value":  "@pipeline().parameters.routeSelection == 1", 
+    "value":  "@equals(pipeline().parameters.routeSelection,1)", 
     "type": "Expression"
 }
 ```
@@ -196,10 +198,7 @@ Ein weiteres Beispiel für den Ausdruck lautet:
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }

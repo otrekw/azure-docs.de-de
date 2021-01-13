@@ -10,22 +10,27 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73b25ce1093ce697aa0937161d2af49526c231b7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388562"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352353"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Sprach- und Regionsunterstützung für die API für die benutzerdefinierte Bing-Suche
 
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
 Die API für die benutzerdefinierte Bing-Suche unterstützt mehr als drei Dutzend Länder/Regionen, viele davon mit mehreren Sprachen.
 
-Obwohl es optional ist, sollte die Anforderung den Abfrageparameter [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) angeben, wodurch der Markt identifiziert wird, von dem die Ergebnisse stammen sollen. Unter [Abfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) finden Sie eine Liste optionaler Abfrageparameter.
+Obwohl es optional ist, sollte die Anforderung den Abfrageparameter [mkt](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) angeben, wodurch der Markt identifiziert wird, von dem die Ergebnisse stammen sollen. Unter [Abfrageparameter](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) finden Sie eine Liste optionaler Abfrageparameter.
 
 Sie können mit dem `cc`-Abfrageparameter ein Land/eine Region angeben. Wenn Sie ein Land/eine Region angeben, müssen Sie mithilfe des Headers `Accept-Language` auch mindestens einen Sprachcode angeben. Die unterstützten Sprachen sind je nach Land/Region unterschiedlich. Sie werden für jedes Land/jede Region in der Tabelle **Märkte** angegeben.
 
-Der `Accept-Language`-Header und der `setLang`-Abfrageparameter schließen sich gegenseitig aus. Geben Sie daher nicht beide an. Weitere Informationen finden Sie unter [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
+Der `Accept-Language`-Header und der `setLang`-Abfrageparameter schließen sich gegenseitig aus. Geben Sie daher nicht beide an. Weitere Informationen finden Sie unter [Accept-Language](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
 
 ## <a name="countriesregions"></a>Länder/Regionen
 
@@ -36,7 +41,7 @@ Der `Accept-Language`-Header und der `setLang`-Abfrageparameter schließen sich 
 |Österreich|AT|
 |Belgien|BE|
 |Brasilien|BR|
-|Kanada|CA|
+|Canada|CA|
 |Chile|CL|
 |Dänemark|DK|
 |Finnland|FI|
@@ -44,7 +49,7 @@ Der `Accept-Language`-Header und der `setLang`-Abfrageparameter schließen sich 
 |Deutschland|DE|
 |Hongkong (SAR)|HK|
 |Indien|IN|
-|Indonesien|ID|
+|Indonesien|id|
 |Italien|IT|
 |Japan|JP|
 |Korea|KR|
@@ -52,7 +57,7 @@ Der `Accept-Language`-Header und der `setLang`-Abfrageparameter schließen sich 
 |Mexiko|MX|
 |Niederlande|NL|
 |Neuseeland|NZ|
-|Norwegen|NO|
+|Norwegen|Nein|
 |China|CN|
 |Polen|PL|
 |Portugal|PT|
@@ -65,7 +70,7 @@ Der `Accept-Language`-Header und der `setLang`-Abfrageparameter schließen sich 
 |Schweiz|CH|
 |Taiwan|TW|
 |Türkei|TR|
-|Vereinigtes Königreich|GB|
+|United Kingdom|GB|
 |USA|US|
 
 
@@ -79,8 +84,8 @@ Der `Accept-Language`-Header und der `setLang`-Abfrageparameter schließen sich 
 |Belgien|Niederländisch|nl-BE|
 |Belgien|Französisch|fr-BE|
 |Brasilien|Portugiesisch|pt-BR|
-|Kanada|Englisch|en-CA|
-|Kanada|Französisch|fr-CA|
+|Canada|Englisch|en-CA|
+|Canada|Französisch|fr-CA|
 |Chile|Spanisch|es-CL|
 |Dänemark|Dänisch|da-DK|
 |Finnland|Finnisch|fi-FI|
@@ -110,6 +115,6 @@ Der `Accept-Language`-Header und der `setLang`-Abfrageparameter schließen sich 
 |Schweiz|Deutsch|de-CH|
 |Taiwan|Chinesisch (traditionell)|zh-TW|
 |Türkei|Türkisch|tr-TR|
-|Vereinigtes Königreich|Englisch|en-GB|
-|USA|Englisch|en-US|
+|United Kingdom|Englisch|en-GB|
+|USA|Englisch|de-DE|
 |USA|Spanisch|es-US|

@@ -2,28 +2,31 @@
 title: include file
 description: include file
 services: batch
-author: laurenhughes
+author: JnHs
 ms.service: batch
 ms.topic: include
-ms.date: 05/28/2019
-ms.author: lahugh
+ms.date: 12/16/2020
+ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 22bfc3c86605f4c2eed4c022919b3643f394ea95
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 0a94b122f1cdd598eeac553c8cc784d2a0a5369f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67080903"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614511"
 ---
 | **Ressource** | **Standardlimit** | **Maximales Limit** |
 | --- | --- | --- |
 | Azure Batch-Konten pro Region und Abonnement | 1-3 |50 |
 | Dedizierte Kerne pro Batch-Konto | 90-900 | Support kontaktieren |
 | Kerne mit niedriger Priorität pro Batch-Konto | 10-100 | Support kontaktieren |
-| **[Aktive](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate)**  Aufträge und Auftragszeitpläne pro Batch-Konto (**abgeschlossene** Aufträge haben keinen Grenzwert) | 100-300 | 1\.000<sup>1</sup> |
+| **[Aktive](/rest/api/batchservice/job/get#jobstate)** Aufträge und Auftragszeitpläne pro Batch-Konto (**abgeschlossene** Aufträge haben keinen Grenzwert) | 100-300 | 1\.000<sup>1</sup> |
 | Pools pro Batch-Konto | 20-100 | 500<sup>1</sup> |
+
+<sup>1</sup>Wenden Sie sich an den Azure-Support, wenn Sie eine Heraufsetzung dieses Grenzwerts wünschen.
 
 > [!NOTE]
 > Die Standardgrenzwerte variieren abhängig vom Abonnementtyp, den Sie zum Erstellen eines Batch-Kontos verwenden. Die angezeigten Kontingente für Kerne gelten für Batch-Konten im Batch-Dienstmodus. [Zeigen Sie die Kontingente in Ihrem Batch-Konto an](../articles/batch/batch-quota-limit.md#view-batch-quotas).
 
-<sup>1</sup>Wenden Sie sich an den Azure-Support, wenn Sie eine Heraufsetzung dieses Grenzwerts wünschen.
+> [!IMPORTANT]
+> Damit die Kapazität während der globalen Pandemie besser verwaltet werden kann, wurden die Standardkernkontingente für neue Batch-Konten in einigen Regionen sowie für einige Abonnementtypen in den oben genannten Wertebereichen reduziert, in manchen Fällen sogar auf null Kerne. Wenn Sie ein neues Batch-Konto erstellen, [überprüfen Sie Ihr Kernkontingent](../articles/batch/batch-quota-limit.md#view-batch-quotas) und fordern Sie ggf. eine [Erhöhung des Kernkontingents](../articles/batch/batch-quota-limit.md#increase-a-quota) an. Alternativ können Sie auch Batch-Konten wiederverwenden, die bereits über ein ausreichendes Kontingent verfügen.

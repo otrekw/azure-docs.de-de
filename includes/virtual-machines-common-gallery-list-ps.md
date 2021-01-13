@@ -5,19 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/07/2018
+ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a55653c0f23be594fe65e7a322c11edc37ee1ce6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fc60d1266f4aad4c337611f0fa32fe8293744559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178053"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "82792274"
 ---
-## <a name="shared-image-management"></a>Verwaltung freigegebener Images 
-
-Hier finden Sie einige Beispiele für allgemeine Verwaltungsaufgaben und ihre Ausführung mithilfe von PowerShell.
+## <a name="list-information"></a>Auflisten von Informationen
 
 Listet alle Kataloge nach Namen auf
 

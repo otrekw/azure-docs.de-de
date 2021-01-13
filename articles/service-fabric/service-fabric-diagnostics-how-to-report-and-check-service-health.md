@@ -1,32 +1,24 @@
 ---
-title: Melden und Überprüfen der Integrität mit Azure Service Fabric | Microsoft Docs
+title: Melden und Überprüfen der Integrität mit Azure Service Fabric
 description: Erfahren Sie, wie Sie Integritätsberichte aus Ihrem Dienstcode senden und die Integrität Ihres Diensts mithilfe von Integritätsüberwachungstools prüfen können, die von Azure Service Fabric bereitgestellt werden.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: mfussell
-editor: ''
-ms.assetid: 7c712c22-d333-44bc-b837-d0b3603d9da8
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 0db341a9e36d61761321821de5631a564adea050
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428168"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998242"
 ---
 # <a name="report-and-check-service-health"></a>Melden und Überprüfen der Dienstintegrität
 Wenn in Ihren Diensten Probleme auftreten, hängt Ihre Fähigkeit zum Reagieren auf und Beheben von Vorfällen und Ausfällen von Ihrer Fähigkeit ab, die Probleme schnell zu erkennen. Indem Ihr Dienstcode Probleme und Ausfälle dem Azure Service Fabric-Integritätsdienst meldet, können Sie standardmäßige Systemüberwachungstools nutzen, die Service Fabric zum Überprüfen des Integritätsstatus bereitstellt.
 
 Es gibt drei Möglichkeiten, wie Sie Informationen zur Integrität über den Dienst melden können:
 
-* Verwenden Sie [Partition](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition)- oder [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext)-Objekte.  
+* Verwenden Sie [Partition](/dotnet/api/system.fabric.istatefulservicepartition)- oder [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext)-Objekte.  
   Mit den Objekten `Partition` und `CodePackageActivationContext` können Sie Informationen zur Integrität von Elementen melden, die Teil des aktuellen Kontexts sind. Zum Beispiel kann als Teil eines Replikats ausgeführter Code Informationen zur Integrität nur für dieses Replikat, die dazugehörige Partition und für die Anwendung melden, von der er ein Teil ist.
 * Verwenden Sie `FabricClient`.   
   Sie können Integritätsinformationen über den Dienstcode mit `FabricClient` melden, wenn der Cluster nicht [sicher](service-fabric-cluster-security.md) ist, oder der Dienst mit Administratorrechten ausgeführt wird. In den meisten realen Szenarien werden keine unsicheren Cluster verwendet und keine Administratorrechte vergeben. Mit `FabricClient`können Sie Informationen zur Integrität jeder Entität melden, die Teil des Clusters ist. Im Idealfall sollte der Dienstcode jedoch nur Berichte senden, die im Zusammenhang mit seiner eigenen Integrität stehen.
@@ -150,6 +142,5 @@ activationContext.ReportApplicationHealth(healthInformation);
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Ausführlichere Informationen zur Service Fabric-Integrität](service-fabric-health-introduction.md)
-* [REST-API für die Meldung der Dienstintegrität](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
-* [REST-API für die Meldung der Anwendungsintegrität](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
-
+* [REST-API für die Meldung der Dienstintegrität](/rest/api/servicefabric/report-the-health-of-a-service)
+* [REST-API für die Meldung der Anwendungsintegrität](/rest/api/servicefabric/report-the-health-of-an-application)

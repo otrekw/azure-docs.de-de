@@ -5,11 +5,13 @@
   items:
     - name: Was ist Identity Governance?
       href: identity-governance-overview.md
-    - name: Was ist Berechtigungsverwaltung? (Vorschau)
+    - name: Was ist Berechtigungsverwaltung?
       href: entitlement-management-overview.md
     - name: Worum handelt es sich bei Zugriffsüberprüfungen?
       href: access-reviews-overview.md
-- name: Lernprogramme
+    - name: Was ist Identity Lifecycle Management?
+      href: what-is-identity-lifecycle-management.md
+- name: Tutorials
   expanded: true
   items:
     - name: Erstellen Ihres ersten Zugriffspakets
@@ -19,8 +21,20 @@
   items:
     - name: Berechtigungsverwaltung
       items:
+        - name: Delegierung und Rollen
+          href: entitlement-management-delegate.md
         - name: Anforderungsprozess und E-Mails
           href: entitlement-management-process.md
+    - name: Identity Lifecycle Management
+      items:
+        - name: Was bedeutet bereitstellen?
+          href: what-is-provisioning.md
+        - name: Worum handelt es sich bei der personalbasierten Bereitstellung?
+          href: what-is-hr-driven-provisioning.md
+        - name: Worum handelt es sich bei der App-Bereitstellung?
+          href: what-is-app-provisioning.md
+        - name: Worum handelt es sich bei der Bereitstellung zwischen Verzeichnissen?
+          href: what-is-inter-directory-provisioning.md
     - name: Zugriffsüberprüfungen
       items:
         - name: Verwalten des Gastzugriffs mit Überprüfungen
@@ -29,6 +43,8 @@
           href: manage-user-access-with-access-reviews.md
         - name: 'Verwalten von Benutzern, die vom bedingten Zugriff ausgeschlossen wurden'
           href: conditional-access-exclusion.md
+    - name: Überprüfen und Entfernen von Benutzern aus externen Organisationen
+      href: access-reviews-external-users.md
 - name: Anleitungen
   expanded: true
   items:
@@ -36,24 +52,66 @@
       items:
         - name: Häufige Szenarios
           href: entitlement-management-scenarios.md
-        - name: Erstellen eines neuen Zugriffspakets
-          href: entitlement-management-access-package-create.md
-        - name: Bearbeiten eines Zugriffspakets
-          href: entitlement-management-access-package-edit.md
-        - name: Erstellen eines Katalogs
-          href: entitlement-management-catalog-create.md
-        - name: Zugriff anfordern
-          href: entitlement-management-request-access.md
-        - name: Genehmigen von Anforderungen
-          href: entitlement-management-request-approve.md
-        - name: Delegieren von Aufgaben
-          href: entitlement-management-delegate.md
-        - name: Anzeigen von Berichten und Protokollen
-          href: entitlement-management-reports.md
-        - name: Problembehandlung
-          href: entitlement-management-troubleshoot.md
+        - name: Administratoren
+          items:
+            - name: Delegieren an Katalogersteller
+              href: entitlement-management-delegate-catalog.md
+            - name: Hinzufügen einer verbundenen Organisation
+              href: entitlement-management-organization.md
+            - name: Steuern des Zugriffs für externe Benutzer
+              href: entitlement-management-external-users.md
+            - name: Anzeigen von Berichten und Protokollen
+              href: entitlement-management-reports.md
+            - name: Archivieren von Protokollen und Berichten
+              href: entitlement-management-logs-and-reporting.md
+            - name: Problembehandlung
+              href: entitlement-management-troubleshoot.md
+        - name: Katalogbesitzer
+          items:
+            - name: Erstellen eines Ressourcenkatalogs
+              href: entitlement-management-catalog-create.md
+            - name: Delegieren an Zugriffspaketmanager
+              href: entitlement-management-delegate-managers.md
+        - name: Zugriffspaketmanager und Zugriffspaket-Zuweisungsmanager
+          items:
+            - name: Erstellen eines neuen Zugriffspakets
+              href: entitlement-management-access-package-create.md
+            - name: Freigeben des Links für das Zugriffspaket
+              href: entitlement-management-access-package-settings.md
+            - name: Ändern von Ressourcenrollen
+              href: entitlement-management-access-package-resources.md
+            - name: Ändern von Anforderungseinstellungen
+              href: entitlement-management-access-package-request-policy.md
+            - name: Ändern von Genehmigungseinstellungen
+              href: entitlement-management-access-package-approval-policy.md
+            - name: Ändern von Lebenszykluseinstellungen
+              href: entitlement-management-access-package-lifecycle-policy.md
+            - name: Anzeigen von Anforderungen
+              href: entitlement-management-access-package-requests.md
+            - name: 'Anzeigen, Hinzufügen und Entfernen von Zuweisungen'
+              href: entitlement-management-access-package-assignments.md
+            - name: Ausblenden oder Löschen
+              href: entitlement-management-access-package-edit.md
+        - name: Genehmigende Personen
+          items:
+            - name: Genehmigen von Anforderungen
+              href: entitlement-management-request-approve.md
+        - name: Anforderer
+          items:
+            - name: Zugriff anfordern
+              href: entitlement-management-request-access.md
     - name: Zugriffsüberprüfungen
       items:
+        - name: Planen der Zugriffsüberprüfungsbereitstellung
+          href: deploy-access-reviews.md
+        - name: Zugriffspakete
+          items:
+            - name: Erstellen einer Zugriffsüberprüfung
+              href: entitlement-management-access-reviews-create.md
+            - name: Überprüfen des Zugriffs
+              href: entitlement-management-access-reviews-review-access.md
+            - name: Überprüfen des eigenen Zugriffs
+              href: entitlement-management-access-reviews-self-review.md
         - name: Gruppen und Apps
           items:
             - name: Erstellen einer Zugriffsüberprüfung
@@ -80,3 +138,10 @@
               href: ../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
             - name: Abschließen einer Zugriffsüberprüfung
               href: ../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+- name: Verweis
+  expanded: true
+  items:
+    - name: 'Zugriffsüberprüfung: Graph-API'
+      href: /graph/api/resources/accessreviewsv2-root?view=graph-rest-beta
+    - name: 'Berechtigungsverwaltung: Graph-API'
+      href: /graph/api/resources/entitlementmanagement-root?view=graph-rest-beta

@@ -1,21 +1,19 @@
 ---
-title: 'Validieren von XML-Schemas: Azure Logic Apps | Microsoft-Dokumentation'
+title: Validieren von XML mit Schemas
 description: Hinzufügen von Schemas zum Überprüfen von XML-Dokumenten in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.date: 02/06/2019
-ms.openlocfilehash: 3cca995b353b88cc481cbda68df4211a724f7f09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60846369"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75979381"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Überprüfen von XML mit Schemas in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -33,7 +31,7 @@ Grenzwerte für Integrationskonten und Artefakte wie Schemas finden Sie unter [G
   Um dieses Schema Ihrem Integrationskonto hinzuzufügen, können Sie Ihr Speicherkonto mit Ihrem Integrationskonto verknüpfen. 
   Für diese Aufgabe benötigen Sie Folgendes: 
 
-  * Ein [Azure-Speicherkonto](../storage/common/storage-account-overview.md), in dem Sie einen Blobcontainer für Ihr Schema erstellen. Hier erfahren Sie, wie Sie ein [Speicherkonto erstellen](../storage/common/storage-quickstart-create-account.md). 
+  * Ein [Azure-Speicherkonto](../storage/common/storage-account-overview.md), in dem Sie einen Blobcontainer für Ihr Schema erstellen. Hier erfahren Sie, wie Sie ein [Speicherkonto erstellen](../storage/common/storage-account-create.md). 
 
   * Einen Blobcontainer zum Speichern Ihres Schemas. Hier erfahren Sie, wie Sie einen [Blobcontainer erstellen](../storage/blobs/storage-quickstart-blobs-portal.md). 
   Wenn Sie das Schema später Ihrem Integrationskonto hinzufügen, benötigen Sie den Inhalts-URI Ihres Containers.

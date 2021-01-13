@@ -1,19 +1,19 @@
 ---
-title: 'Azure-VMware-Lösung von CloudSimple: Einrichten von vCenter in privater Cloud für vRealize Automation'
+title: 'Azure VMware Solution by CloudSimple: Einrichten von vCenter in privater Cloud für vRealize Automation'
 description: Erfahren Sie, wie Sie einen VMware vCenter-Server in Ihrer privaten CloudSimple-Cloud als Endpunkt für VMware vRealize Automation einrichten.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 9b6c6a320e6299808a91214476c8c0460f9f53d9
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641954"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895052"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>Einrichten von vCenter in Ihrer privaten Cloud für VMware vRealize Automation
 
@@ -37,7 +37,7 @@ Führen Sie diese Aufgaben aus, bevor Sie den vCenter-Server konfigurieren:
 | Berechtigungen | Berechtigungen ändern |
 | Resource | VM zu Ressourcenpool zuweisen<br>Ausgeschaltete VM migrieren<br>Eingeschaltete VM migrieren |
 | VM-Bestand |  Aus vorhandenem Element erstellen<br>Create New<br>Move<br>Remove (Entfernen) | 
-| Interaktion mit VM |  CD-Medien konfigurieren<br>Konsoleninteraktion<br>Geräteverbindung<br>Ausschalten<br>Einschalten<br>Reset<br>Anhalten<br>Tools installieren | 
+| Interaktion mit VM |  CD-Medien konfigurieren<br>Konsoleninteraktion<br>Geräteverbindung<br>Ausschalten<br>Einschalten<br>Reset<br>Angehalten<br>Tools installieren | 
 | VM-Konfiguration |  Vorhandenen Datenträger hinzufügen<br>Neuen Datenträger hinzufügen<br>Hinzufügen oder entfernen<br>Datenträger entfernen<br>Erweitert<br>CPU-Anzahl ändern<br>Ressource ändern<br>Virtuellen Datenträger erweitern<br>Änderungsnachverfolgung für Datenträger<br>Arbeitsspeicher<br>Geräteeinstellungen ändern<br>Umbenennen<br>Anmerkung festlegen (ab Version 5.0)<br>Einstellungen<br>Platzierung der Auslagerungsdatei |
 | Bereitstellung |  Anpassen<br>Vorlage klonen<br>VM klonen<br>Vorlage bereitstellen<br>Anpassungsspezifikationen lesen |
 | VM-Status | Momentaufnahme erstellen<br>Momentaufnahme entfernen<br>Auf Momentaufnahme zurücksetzen |
@@ -48,7 +48,7 @@ Führen Sie diese Aufgaben aus, bevor Sie den vCenter-Server konfigurieren:
 2. Stellen Sie einen vSphere-Agent für den vRealize Automation-Endpunkt bereit.
     1. Rufen Sie https://*vra-url*:5480/installer auf, wobei *vra-url* die URL ist, die Sie für den Zugriff auf die vRealize Automation-Verwaltungsoberfläche verwenden.
     2. Klicken Sie auf **IaaS Installer**, um das Installationsprogramm herunterzuladen.<br>
-    Die Namenskonvention für die Installationsprogrammdatei lautet setup_*vra-url*@5480.exe.
+    Die Namenskonvention für die Installationsprogrammdatei lautet setup_ *vra-url*@5480.exe.
     3. Führen Sie das Installationsprogramm aus. Klicken Sie auf dem Begrüßungsbildschirm auf **Next** (Weiter).
     4. Akzeptieren Sie die Lizenzbedingungen, und klicken Sie auf **Next** (Weiter).
     5. Geben Sie die Anmeldeinformationen an, klicken Sie auf **Accept Certificate** (Zertifikat annehmen), und klicken Sie dann auf **Next** (Weiter).
@@ -84,7 +84,7 @@ Gehen Sie folgendermaßen vor, um den richtigen Namen des Endpunkts des vCenter-
 
 1. Öffnen Sie auf der IaaS-Appliance eine Eingabeaufforderung.
 2. Wechseln Sie zum Verzeichnis C:\Program Files (x86)\VMware\vCAC\Agents\agent-name, wobei *agent-name* der Name ist, den Sie dem Endpunkt des vCenter-Servers zugewiesen haben.
-3. Führen Sie den folgenden Befehl aus:
+3. Führen Sie den folgenden Befehl aus.
 
 ```
 ..\..\Server\DynamicOps.Vrm.VRMencrypt.exe VRMAgent.exe.config get

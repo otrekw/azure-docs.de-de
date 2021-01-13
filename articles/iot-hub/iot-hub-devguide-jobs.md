@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 147dd0f454bd85673bcba5cd6148c5da9716c580
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: mqtt
+ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409056"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81730110"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Planen von Aufträgen auf mehreren Geräten
 

@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure Data Box-Datenträger – Übersicht | Microsoft-Dokumentation
-description: Enthält eine Beschreibung der Cloudlösung für Azure Data Box-Datenträger, die zum Übertragen von großen Datenmengen nach Azure dient.
+title: 'Microsoft Azure Data Box Disk: Sicherheitsfunktionen | Microsoft-Dokumentation'
+description: Enthält eine Beschreibung der Sicherheitsfunktionen, die für Azure Data Box Disk, eine Cloudlösung zum Übertragen großer Datenmengen nach Azure, implementiert sind.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
-ms.date: 01/09/2019
+ms.topic: conceptual
+ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093455"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "79117265"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk: Sicherheit und Schutz von Daten
 
@@ -34,7 +34,7 @@ Im folgenden Diagramm ist der Datenfluss durch die Azure Data Box-Datenträgerl�
 
 ## <a name="security-features"></a>Sicherheitsfeatures
 
-Data Box-Datenträger sind eine sichere Lösung für den Schutz der Daten, indem dafür gesorgt wird, dass nur autorisierte Entitäten Ihre Daten anzeigen, ändern oder löschen können. Die Sicherheitsfunktionen für diese Lösung gelten für den Datenträger und den zugeordneten Dienst, um sicherzustellen, dass die darauf gespeicherten Daten geschützt sind. 
+Data Box-Datenträger sind eine sichere Lösung für den Schutz der Daten, indem dafür gesorgt wird, dass nur autorisierte Entitäten Ihre Daten anzeigen, ändern oder löschen können. Die Sicherheitsfunktionen für diese Lösung gelten für den Datenträger und den zugeordneten Dienst, um sicherzustellen, dass die darauf gespeicherten Daten geschützt sind.
 
 ### <a name="data-box-disk-protection"></a>Schutz des Data Box-Datenträgers
 
@@ -48,7 +48,7 @@ Data Box-Datenträger werden mithilfe der folgenden Features geschützt:
 
 Die Daten, die für Data Box-Datenträger übertragen werden (ein- und ausgehend), werden mithilfe der folgenden Features geschützt:
 
-- Ununterbrochene BitLocker-Verschlüsselung der Daten. 
+- Ununterbrochene BitLocker-Verschlüsselung der Daten.
 - Sicheres Löschen der Daten vom Datenträger, nachdem der Datenupload in Azure abgeschlossen ist. Das Löschen der Daten wird gemäß NIST-Standards (800-88r1) durchgeführt.
 
 ### <a name="data-box-service-protection"></a>Schutz des Data Box-Diensts
@@ -56,10 +56,9 @@ Die Daten, die für Data Box-Datenträger übertragen werden (ein- und ausgehend
 Der Data Box-Dienst wird mithilfe der folgenden Features geschützt.
 
 - Für den Zugriff auf den Data Box-Datenträgerdienst muss Ihre Organisation über ein Azure-Abonnement verfügen, das den Dienst für Data Box-Datenträger umfasst. Ihr Abonnement bestimmt die Features, auf die Sie im Azure-Portal zugreifen können.
-- Da der Data Box-Dienst in Azure gehostet wird, ist er durch die Azure-Sicherheitsfeatures geschützt. Weitere Informationen zu den Sicherheitsfeatures von Microsoft Azure finden Sie im [Microsoft Azure Trust Center](https://www.microsoft.com/TrustCenter/Security/default.aspx). 
+- Da der Data Box-Dienst in Azure gehostet wird, ist er durch die Azure-Sicherheitsfeatures geschützt. Weitere Informationen zu den Sicherheitsfeatures von Microsoft Azure finden Sie im [Microsoft Azure Trust Center](https://www.microsoft.com/TrustCenter/Security/default.aspx).
 - Für Data Box-Datenträger wird ein Datenträger-Hauptschlüssel gespeichert, der zum Entsperren von Datenträgern des Diensts verwendet wird. 
-- Beim Data Box-Datenträgerdienst werden die Auftragsdetails und der Status im Dienst gespeichert. Diese Informationen werden später dann zusammen mit dem Auftrag gelöscht. 
-
+- Beim Data Box-Datenträgerdienst werden die Auftragsdetails und der Status im Dienst gespeichert. Diese Informationen werden später dann zusammen mit dem Auftrag gelöscht.
 
 ## <a name="managing-personal-data"></a>Verwalten von personenbezogenen Daten
 
@@ -73,11 +72,11 @@ Für den Azure Data Box-Datenträger werden persönliche Informationen im Dienst
 
   - Kontaktname
   - Telefonnummer
-  - E-Mail
+  - Email
   - Anschrift
   - City
   - Postleitzahl
-  - Zustand
+  - State
   - Land/Provinz/Region
   - Laufwerk-ID
   - Kontonummer des Versanddienstleisters

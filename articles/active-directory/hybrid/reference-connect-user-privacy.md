@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8f1d1bf35d03f0f7c4d11e4cc7e9b6f98f38d8ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60455783"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997697"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Datenschutz und Azure AD Connect 
 
@@ -43,7 +43,7 @@ Ein Azure AD Connect-Synchronisierungsserver speichert die folgenden Benutzerdat
 
 Beim Entfernen von Benutzerdaten sollten Azure AD Connect-Kunden die folgenden Richtlinien anwenden:
 1.  Löschen Sie den Inhalt des Ordners mit den Azure AD Connect-Installationsprotokolldateien in regelmäßigen Abständen – mindestens alle 48 Stunden.
-2.  Dieses Produkt kann auch Ereignisprotokolle erstellen.  Weitere Informationen zu Ereignisprotokollen finden Sie in [dieser Dokumentation](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx).
+2.  Dieses Produkt kann auch Ereignisprotokolle erstellen.  Weitere Informationen zu Ereignisprotokollen finden Sie in [dieser Dokumentation](/windows/win32/wes/windows-event-log).
 
 Daten über eine Person werden automatisch aus der Azure AD Connect-Datenbank entfernt, wenn die Daten dieser Person aus dem Quellsystem, aus dem sie stammen, entfernt werden. Es ist keine spezielle Aktion durch Administratoren erforderlich, um hier DSGVO-Konformität herzustellen.  Die Azure AD Connect-Daten müssen jedoch mindestens alle zwei Tage mit Ihrer Datenquelle synchronisiert werden.
 

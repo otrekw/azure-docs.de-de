@@ -8,16 +8,16 @@ metadata:
   ms.service: active-directory
   ms.subservice: authentication
   ms.topic: landing-page
-  author: MicrosoftGuyJFlo
-  ms.author: joflore
-  ms.date: 08/20/2019
+  author: justinha
+  ms.author: justinha
+  ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: a9c893f8549562c4628220cbd674eea9986e5cbb
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.openlocfilehash: 5cec477161aa9a54e3338bdadc1823715e1f9488
+  ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70124857"
+  ms.lasthandoff: 12/06/2020
+  ms.locfileid: "96741443"
 landingContent:
 - title: Informationen zur Authentifizierung
   linkLists:
@@ -37,35 +37,35 @@ landingContent:
     links:
     - text: Funktionsweise der Self-Service-Kennwortzurücksetzung
       url: concept-sspr-howitworks.md
-    - text: Kennwortrückschreiben
+    - text: Funktionsweise der Kennwortrückschreibung
       url: concept-sspr-writeback.md
-  - linkListType: quickstart
+  - linkListType: tutorial
     links:
-    - text: 'Schnellstart: Self-Service-Kennwortzurücksetzung'
-      url: quickstart-sspr.md
+    - text: Aktivieren der Self-Service-Kennwortzurücksetzung
+      url: tutorial-enable-sspr.md
+    - text: Aktivieren des Kennwortrückschreibens in die lokale Umgebung
+      url: tutorial-enable-sspr-writeback.md
   - linkListType: deploy
     links:
-    - text: Bereitstellen von Self-Service-Kennwortzurücksetzung in Azure AD
+    - text: Bereitstellungshandbuch für die Self-Service-Kennwortzurücksetzung
       url: howto-sspr-deployment.md
-    - text: Aktivieren des Kennwortrückschreibens
-      url: howto-sspr-writeback.md
     - text: Aktivieren der Kennwortzurücksetzung über den Windows-Anmeldebildschirm
       url: howto-sspr-windows.md
-- title: Aktivieren von Azure Multi-Factor Authentication
+- title: Aktivieren von Azure AD Multi-Factor Authentication
   linkLists:
   - linkListType: concept
     links:
-    - text: Funktionsweise von Azure Multi-Factor Authentication
+    - text: Funktionsweise von Azure AD Multi-Factor Authentication
       url: concept-mfa-howitworks.md
   - linkListType: tutorial
     links:
-    - text: Azure Multi-Factor Authentication-Pilotprojekt für bestimmte Anwendungen
-      url: tutorial-mfa-applications.md
-    - text: Verwenden von Risikoerkennungen zum Auslösen von mehrstufiger Authentifizierung und Kennwortänderungen
+    - text: Aktivieren von Azure AD Multi-Factor Authentication
+      url: tutorial-enable-azure-mfa.md
+    - text: Aktivieren von Azure Multi-Factor Authentication (risikobasiert)
       url: tutorial-risk-based-sspr-mfa.md
   - linkListType: deploy
     links:
-    - text: Bereitstellen von Azure Multi-Factor Authentication
+    - text: Bereitstellungshandbuch für Azure AD Multi-Factor Authentication
       url: howto-mfa-getstarted.md
     - text: Verwenden der NPS-Erweiterung für die Integration lokaler Anwendungen
       url: howto-mfa-nps-extension.md
@@ -80,7 +80,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Konfigurieren der Liste gesperrter Kennwörter
-      url: howto-password-ban-bad-configure.md
+      url: ./tutorial-configure-custom-password-protection.md
   - linkListType: how-to-guide
     links:
     - text: Bereitstellen des Kennwortschutzes für Azure AD

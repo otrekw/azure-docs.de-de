@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 76b4f721135c6e34eebdc20268a76e84d86b0637
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 65163225853037ac4cb97a02c0bdaf554b509fb1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575684"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822198"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Bekannte Probleme bei Apache Spark-Clustern unter HDInsight
 
@@ -30,13 +30,17 @@ Gehen Sie wie folgt vor, um das Problem zu umgehen:
 
 2. Führen Sie den folgenden Befehl aus, um die Anwendungs-IDs der interaktiven Aufträge zu ermitteln, die über Livy gestartet wurden.
 
-        yarn application –list
+   ```bash
+   yarn application –list
+   ```
 
     Die Standardauftragsnamen entsprechen Livy, wenn die Aufträge mit einer interaktiven Livy-Sitzung ohne ausdrücklich angegebene Namen gestartet wurden. Für die Livy-Sitzung, die durch [Jupyter Notebook](https://jupyter.org/) gestartet wurde, beginnt der Name des Auftrags mit `remotesparkmagics_*`.
 
 3. Führen Sie den folgenden Befehl aus, um die Beendigung dieser Aufträge zu erzwingen.
 
-        yarn application –kill <Application ID>
+   ```bash
+   yarn application –kill <Application ID>
+   ```
 
 Neue Aufträge werden gestartet.
 
@@ -73,7 +77,7 @@ Sie müssen stattdessen den Spark-HBase-Connector verwenden. Anweisungen finden 
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Probleme im Zusammenhang mit Jupyter Notebooks
 
-Im Folgenden sind einige Probleme im Zusammenhang mit Jupyter Notebooks genannt.
+Im Folgenden werden einige Probleme im Zusammenhang mit Jupyter Notebooks genannt.
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Notebooks mit Nicht-ASCII-Zeichen in Dateinamen
 
@@ -140,7 +144,7 @@ Wenn dem Spark-Cluster nicht genügend Ressourcen zur Verfügung stehen, tritt b
 * [Verwenden von externen Paketen mit Jupyter Notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Verwalten von Ressourcen
+### <a name="manage-resources"></a>Ressourcen verwalten
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)

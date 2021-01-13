@@ -1,29 +1,24 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit F5 | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und F5 konfigurieren.
+title: 'Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit F5 | Microsoft-Dokumentation'
+description: In diesem Artikel lernen Sie die Schritte kennen, die Sie zum Integrieren von F5 in Azure Active Directory (Azure AD) ausführen müssen.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9c5fb47a-1c5d-437a-b4c1-dbf739eaf5e3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 11/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1411d64a6adc6f340b3ad49ca38ca30136bdef47
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 8d24ed014dd66235383b58cbcb7404aaf00f863e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104551"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308960"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit F5
+# <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory (AD) mit F5
 
 In diesem Tutorial erfahren Sie, wie Sie F5 in Azure Active Directory (Azure AD) integrieren. Die Integration von F5 in Azure AD ermöglicht Folgendes:
 
@@ -31,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie F5 in Azure Active Directory (Azure AD
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei F5 anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,8 +39,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* F5 unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
-* Einmaliges Anmelden von F5 kann auf drei unterschiedliche Arten konfiguriert werden:
+F5 unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
+
+Einmaliges Anmelden von F5 kann auf drei unterschiedliche Arten konfiguriert werden:
 
 - [Konfigurieren des einmaligen Anmeldens von F5 für eine Advanced Kerberos-Anwendung](#configure-f5-single-sign-on-for-advanced-kerberos-application)
 
@@ -118,7 +114,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -150,96 +146,96 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Sie müssen das Metadatenzertifikat in F5 (Advanced Kerberos) importieren. Es wird später im Setupvorgang verwendet. Navigieren Sie zu **System > Certificate Management > Traffic Certificate Management > SSL Certificate List** (System > Zertifikatverwaltung > Zertifikatverwaltung für Datenverkehr > SSL-Zertifikatliste). Klicken Sie in der rechten Ecke auf **Import** (Importieren).
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure01.png)
+    ![Screenshot: Hervorgehobene Schaltfläche „Import“ (Importieren) zum Importieren des Metadatenzertifikats](./media/advance-kerbf5-tutorial/configure01.png)
  
 1. Navigieren Sie zum Einrichten des SAML-IDP zu **Access > Federation > SAML Service Provider > Create > From Metadata** (Zugriff > Verbund > SAML-Dienstanbieter > Erstellen > Aus Metadaten).
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure02.png)
+    ![Screenshot: Erstellen des SAML-Identitätsanbieters anhand von Metadaten](./media/advance-kerbf5-tutorial/configure02.png)
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure03.png)
+    ![Screenshot: Anzeige „Create New SAML IdP Connector“ (Neuen SAML-IdP-Connector erstellen)](./media/advance-kerbf5-tutorial/configure03.png)
  
     ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure04.png)
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure05.png)
+    ![Screenshot: Anzeige „Single Sign On Service Settings“ (Diensteinstellung für einmaliges Anmelden) ](./media/advance-kerbf5-tutorial/configure05.png)
  
 1. Geben Sie das in Schritt 3 hochgeladene Zertifikat an.
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure06.png)
+    ![Screenshot: Anzeige „Edit SAML IdP Connector“ (SAML-IdP-Connector bearbeiten)](./media/advance-kerbf5-tutorial/configure06.png)
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure07.png)
+    ![Screenshot: Anzeige „Single Logout Service Settings“ (Diensteinstellung für einmaliges Abmelden)](./media/advance-kerbf5-tutorial/configure07.png)
 
  1. Navigieren Sie zum Einrichten des SAML-Dienstanbieters zu **Access > Federation > SAML Service Federation > Local SP Services > Create** (Zugriff > Verbund > SAML-Dienstverbund > Lokale SP-Dienste > Erstellen).
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure08.png)
+    ![Screenshot: Anzeige zum Erstellen eines lokalen Dienstanbieterdiensts](./media/advance-kerbf5-tutorial/configure08.png)
  
 1. Klicken Sie auf **OK**.
 
 1. Wählen Sie die SP-Konfiguration aus, und klicken Sie auf **Bind/UnBind IdP Connectors** (IdP-Connectors binden/Bindung der IdP-Connectors aufheben).
 
-     ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure09.png)
+     ![Screenshot: SAML-Dienstanbieter](./media/advance-kerbf5-tutorial/configure09.png)
  
  
 1. Klicken Sie auf **Add New Row** (Neue Zeile hinzufügen), und wählen Sie den im vorherigen Schritt erstellten **externen IdP-Connector** aus.
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure10.png)
+    ![Screenshot: Schaltfläche „Add New Row“ (Neue Zeile hinzufügen)](./media/advance-kerbf5-tutorial/configure10.png)
  
 1. Wählen Sie zum Konfigurieren des einmaligen Anmeldens für Kerberos **Access > Single Sign-on > Kerberos** (Zugriff > Einmaliges Anmelden > Kerberos) aus.
 
     >[!Note]
     >Das Kerberos-Delegierungskonto muss erstellt und angegeben werden. Informationen finden Sie im Abschnitt zu KCD. (Variablenverweise finden Sie im Anhang.)
 
-    •   Username Source (Quelle des Benutzernamens): `session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    •   Username Source (Quelle des Benutzernamens): `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
     •   User Realm Source (Quelle des Benutzerbereichs): `session.logon.last.domain`
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure11.png)
+    ![Screenshot: Optionen „Access“ > „Single Sign On“ (Zugriff > Einmaliges Anmelden)](./media/advance-kerbf5-tutorial/configure11.png)
 
 1. Wählen Sie zum Konfigurieren des Zugriffsprofils **Access > Profile/Policies > Access Profile (per session policies)** (Zugriff > Profil/Richtlinien > Zugriffsprofil (Richtlinien pro Sitzung)) aus.
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure12.png)
+    ![Screenshot: Registerkarte „Eigenschaften“ unter der Menüoption „Profiles/Policies“ (Profile/Richtlinien)](./media/advance-kerbf5-tutorial/configure12.png)
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure13.png)
+    ![Screenshot: Registerkarte „SSO/Auth Domains“ (Einmaliges Anmelden/Authentifizierungsdomänen)](./media/advance-kerbf5-tutorial/configure13.png)
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure14.png)
+    ![Screenshot: Registerkarte „Zugriffsrichtlinie“](./media/advance-kerbf5-tutorial/configure14.png)
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure15.png)
+    ![Screenshot: Registerkarte „Eigenschaften“ in der Zugriffsrichtlinie](./media/advance-kerbf5-tutorial/configure15.png)
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure16.png)
+    ![Screenshot: Eigenschaften für das Zuweisen von Variablen](./media/advance-kerbf5-tutorial/configure16.png)
  
     * session.logon.last.usernameUPN   expr {[mcget {session.saml.last.identity}]}
 
     * session.ad.lastactualdomain  TEXT superdemo.live
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure17.png)
+    ![Screenshot: Eigenschaften für AD-Abfragen](./media/advance-kerbf5-tutorial/configure17.png)
 
     * (userPrincipalName=%{session.logon.last.usernameUPN})
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure18.png)
+    ![Screenshot: Registerkarte „Branchregeln“ und die Regel „Konto prüfen“](./media/advance-kerbf5-tutorial/configure18.png)
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure19.png)
+    ![Screenshot: Textfelder für benutzerdefinierte Variablen und benutzerdefinierte Ausdrücke](./media/advance-kerbf5-tutorial/configure19.png)
 
     * session.logon.last.username  expr { "[mcget {session.ad.last.attr.sAMAccountName}]" }
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure20.png)
+    ![Screenshot: Werte in den Feldern „SSO Token Name“ und „SSO Token Password“ (SSO-Tokenname und SSO-Tokenkennwort)](./media/advance-kerbf5-tutorial/configure20.png)
 
     * mcget {session.logon.last.username}
     * mcget {session.logon.last.password}
 
 1. Navigieren Sie zum Hinzufügen eines neuen Knotens zu **Local Traffic > Nodes > Node List > +** (Lokaler Datenverkehr > Knoten > Knotenliste > +).
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure21.png)
+    ![Screenshot: „Local Traffic“ > „Nodes“ (Lokaler Datenverkehr > Knoten)](./media/advance-kerbf5-tutorial/configure21.png)
  
 1. Navigieren Sie zum Erstellen eines neuen Pools zu **Local Traffic > Pools > Pool List > Create** (Lokaler Datenverkehr > Pools > Poolliste > Erstellen).
 
-     ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure22.png)
+     ![Screenshot: „Local Traffic“ > „Pools“ (Lokaler Datenverkehr > Pools)](./media/advance-kerbf5-tutorial/configure22.png)
 
  1. Navigieren Sie zum Erstellen eines neuen virtuellen Servers zu **Local Traffic > Virtual Servers > Virtual Server List > +** (Lokaler Datenverkehr > Virtuelle Server > Liste virtueller Server > +).
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure23.png)
+    ![Screenshot: „Local Traffic“ > „Virtual Servers“ (Lokaler Datenverkehr > Virtuelle Server)](./media/advance-kerbf5-tutorial/configure23.png)
 
 1. Geben Sie das im vorherigen Schritt erstellte Zugriffsprofil an.
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure24.png) 
+    ![Screenshot: Angeben des von Ihnen erstellten Zugriffsprofils](./media/advance-kerbf5-tutorial/configure24.png) 
 
 ### <a name="setting-up-kerberos-delegation"></a>Einrichten der Kerberos-Delegierung 
 
@@ -248,66 +244,73 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 * **Schritt 1: Erstellen eines Delegierungskontos**
 
-    * Beispieldomänenname: superdemo.live SAM-Kontoname: big-ipuser
+    * Beispiel
+    ```
+    Domain Name : superdemo.live
+    Sam Account Name : big-ipuser
 
-    * New-ADUser -Name "APM-Delegierungskonto" -UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live -SamAccountName "big-ipuser" -PasswordNeverExpires $true -Enabled $true -AccountPassword (Read-Host -AsSecureString "Password!1234")
+    New-ADUser -Name "APM Delegation Account" -UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live -SamAccountName "big-ipuser" -PasswordNeverExpires $true -Enabled $true -AccountPassword (Read-Host -AsSecureString "Password!1234")
+    ```
 
 * **Schritt 2: Festlegen des SPN (für das APM-Delegierungskonto)**
 
-    *  Beispiel: setspn –A host/big-ipuser.superdemo.live big-ipuser
+    *  Beispiel
+    ```
+    setspn –A host/big-ipuser.superdemo.live big-ipuser
+    ```
 
 * **Schritt 3: SPN-Delegierung (für das App Service-Konto)**
 
     * Richten Sie die entsprechende Delegierung für das F5-Delegierungskonto ein.
     * Im folgenden Beispiel wird das APM-Delegierungskonto für KCD für die App „FRP-App1.superdemo.live“ konfiguriert:
 
-        ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure25.png)
+        ![Screenshot: Registerkarte „Delegierung“ unter „APM Delegatio Account Properties“ (APM-Delegierungskontoeigenschaften)](./media/advance-kerbf5-tutorial/configure25.png)
 
 1. Geben Sie die Details wie in [diesem Referenzdokument](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html) beschrieben ein.
 
-1. Appendix: SAML – F5 BIG-IP: Hier sehen Sie die Variablenzuordnungen:
+1. Appendix- SAML – F5 BIG-IP Variable mappings shown below:
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure26.png)
+    ![Screenshot: Registerkarte „Aktive Sitzungen“ unter „Übersicht“](./media/advance-kerbf5-tutorial/configure26.png)
 
-    ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure27.png) 
+    ![Screenshot: Variablen und Sitzungsschlüssel](./media/advance-kerbf5-tutorial/configure27.png) 
 
 1. Nachfolgend sehen Sie die vollständige Liste der SAML-Standardattribute. „GivenName“ wird mit der folgenden Zeichenfolge dargestellt:
 `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-| | |
+| Sitzung | attribute |
 | -- | -- |
-| eb46b6b6.session.saml.last.assertionID | _9a4e4ddd-148f-45c4-b959-f4d148172e00 |
-| eb46b6b6.session.saml.last.assertionIssueInstant  | 2019-06-16T19:18:03.054Z |
+| eb46b6b6.session.saml.last.assertionID | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.assertionIssueInstant  | `<ID>` |
 | eb46b6b6.session.saml.last.assertionIssuer | `https://sts.windows.net/<TENANT ID>`/ |
 | eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
 | eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/displayname | user0 |
 | eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/identityprovider | `https://sts.windows.net/<TENANT ID>/` |
-| eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/objectidentifier | 90d5f0e5-8f46-4bfd-b40f-ec973d00fcb7 |
-| eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/tenantid | e6abffcf-4d23-4388-91c2-bfdfcbb1530c |
-| eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress | user0@superdemo.live |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/objectidentifier | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/tenantid | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress | `user0@superdemo.live` |
 | eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname | user0 |
-| eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/name | user0@superdemo.live |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/name | `user0@superdemo.live` |
 | eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/surname | 0 |
 | eb46b6b6.session.saml.last.audience | `https://kerbapp.superdemo.live` |
 | eb46b6b6.session.saml.last.authNContextClassRef | urn:oasis:names:tc:SAML:2.0:ac:classes:Password |
-| eb46b6b6.session.saml.last.authNInstant | 2019-06-16T19:18:00.318Z |
-| eb46b6b6.session.saml.last.identity | user0@superdemo.live |
-| eb46b6b6.session.saml.last.inResponseTo | _b9c67faa63a224d7a63f4f3cbb09f78dc05fab |
-| eb46b6b6.session.saml.last.nameIDValue | user0@superdemo.live |
+| eb46b6b6.session.saml.last.authNInstant | `<ID>` |
+| eb46b6b6.session.saml.last.identity | `user0@superdemo.live` |
+| eb46b6b6.session.saml.last.inResponseTo | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.nameIDValue | `user0@superdemo.live` |
 | eb46b6b6.session.saml.last.nameIdFormat | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
 | eb46b6b6.session.saml.last.responseDestination | `https://kerbapp.superdemo.live/saml/sp/profile/post/acs` |
-| eb46b6b6.session.saml.last.responseId | _a1eca95a-6c41-449e-bb53-1477ba106470 |
-| eb46b6b6.session.saml.last.responseIssueInstant | 2019-06-16T19:18:03.070Z |
+| eb46b6b6.session.saml.last.responseId | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.responseIssueInstant | `<ID>` |
 | eb46b6b6.session.saml.last.responseIssuer | `https://sts.windows.net/<TENANT ID>/` |
 | eb46b6b6.session.saml.last.result | 1 |
 | eb46b6b6.session.saml.last.samlVersion | 2.0 |
-| eb46b6b6.session.saml.last.sessionIndex | _9a4e4ddd-148f-45c4-b959-f4d148172e00 |
+| eb46b6b6.session.saml.last.sessionIndex | `<TENANT ID>` |
 | eb46b6b6.session.saml.last.statusValue | urn:oasis:names:tc:SAML:2.0:status:Success |
-| eb46b6b6.session.saml.last.subjectConfirmDataNotOnOrAfter | 2019-06-16T19:23:03.054Z |
+| eb46b6b6.session.saml.last.subjectConfirmDataNotOnOrAfter | `<ID>` |
 | eb46b6b6.session.saml.last.subjectConfirmDataRecipient | `https://kerbapp.superdemo.live/saml/sp/profile/post/acs` |
 | eb46b6b6.session.saml.last.subjectConfirmMethod | urn:oasis:names:tc:SAML:2.0:cm:bearer |
-| eb46b6b6.session.saml.last.validityNotBefore | 2019-06-16T19:13:03.054Z |
-| eb46b6b6.session.saml.last.validityNotOnOrAfter | 2019-06-16T20:13:03.054Z |
+| eb46b6b6.session.saml.last.validityNotBefore | `<ID>` |
+| eb46b6b6.session.saml.last.validityNotOnOrAfter | `<ID>` |
 
 ### <a name="create-f5-test-user"></a>Erstellen eines F5-Testbenutzers
 
@@ -317,19 +320,18 @@ In diesem Abschnitt erstellen Sie in F5 einen Benutzer namens B. Simon. Wenden 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „F5“ klicken, sollten Sie automatisch bei der F5-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „F5“ klicken, sollten Sie automatisch bei der F5-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
 
 - [F5 mit Azure AD ausprobieren](https://aad.portal.azure.com/)
 
 - [Konfigurieren des einmaligen Anmeldens von F5 für eine headerbasierte Anwendung](headerf5-tutorial.md)
 
 - [Konfigurieren des einmaligen Anmeldens von F5 für eine Kerberos-Anwendung](kerbf5-tutorial.md)
-

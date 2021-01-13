@@ -1,34 +1,26 @@
 ---
 title: Häufig gestellte Fragen zu Preisen für den Azure-Netzwerkleistungsmonitor | Microsoft-Dokumentation
 description: Häufig gestellte Fragen – Azure-Netzwerkleistungsmonitor
-services: monitoring-and-diagnostics
-documentationcenter: na
-author: agummadi
-manager: cherylmc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/02/2018
+author: agummadi
 ms.author: agummadi
-ms.openlocfilehash: 68e84d8ac82d5cdd52bf92df858730315514c17c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 04/02/2018
+ms.openlocfilehash: f44afd84c58c94c6a8d3e6145e8a4f66e0e2e782
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612850"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86539651"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Preisänderungen für Azure-Netzwerkleistungsmonitor
 
-Wir haben Ihr Feedback berücksichtigt und vor kurzem eine [neue Preisgestaltung](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) für verschiedene Überwachungsdienste in Azure eingeführt. In diesem Artikel sind Preisänderungen im Zusammenhang mit dem Azure-[Netzwerkleistungsmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) in einem benutzerfreundlichen Frage-und-Antwort-Format festgehalten.
+Wir haben Ihr Feedback berücksichtigt und vor kurzem eine [neue Preisgestaltung](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) für verschiedene Überwachungsdienste in Azure eingeführt. In diesem Artikel sind Preisänderungen im Zusammenhang mit dem Azure-[Netzwerkleistungsmonitor](../../networking/network-monitoring-overview.md) in einem benutzerfreundlichen Frage-und-Antwort-Format festgehalten.
 
 Der Netzwerkleistungsmonitor umfasst drei Komponenten:
-* [Systemmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [Dienstendpunktmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [ExpressRoute-Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+* [Systemmonitor](../../networking/network-monitoring-overview.md#performance-monitor)
+* [Dienstendpunktmonitor](../../networking/network-monitoring-overview.md)
+* [ExpressRoute-Monitor](../../networking/network-monitoring-overview.md#expressroute-monitor)
 
 In den folgenden Abschnitten werden die Preisänderungen für diese Komponenten des Netzwerkleistungsmonitors erläutert.
 
@@ -38,7 +30,7 @@ In den folgenden Abschnitten werden die Preisänderungen für diese Komponenten 
 
 Die Abrechnung für den Systemmonitor basierte bisher auf der Nutzung von zwei Komponenten:
 * **Knoten**: Alle synthetischen Transaktionen beginnen und enden an den Knoten. Knoten werden auch als Agents oder Microsoft-Verwaltungs-Agents bezeichnet.
-* **Daten**: Die Ergebnisse der verschiedenen Netzwerktests werden im Log Analytics-Workspace gespeichert.
+* **Data:** Die Ergebnisse der verschiedenen Netzwerktests werden im Log Analytics-Workspace gespeichert.
 
 Unter dem alten Modell wurde die Rechnung basierend auf der Anzahl der Knoten und dem Volumen der generierten Daten berechnet. 
 
@@ -117,7 +109,6 @@ Eine Verbindung ist ein Test der Erreichbarkeit eines Endpunkts (URL oder Netzwe
 
 Im Abschnitt [Verbindungsüberwachung](https://azure.microsoft.com/pricing/details/network-watcher/) finden Sie die Kosten für die Überwachung eines Endpunkts für den gesamten Monat. Die Gebühren für Daten stehen auf der [Preisseite](https://azure.microsoft.com/pricing/details/log-analytics/) für Log Analytics, im Abschnitt „Datenerfassung“, zur Verfügung.
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 [Häufig gestellte Fragen zu Log Analytics-Preisen](https://azure.microsoft.com/pricing/details/log-analytics/): Der Abschnitt „FAQ“ enthält Informationen zum Free-Tarif, zu Preisen pro Knoten und weitere Preisdetails.
-

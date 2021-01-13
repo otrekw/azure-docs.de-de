@@ -1,19 +1,20 @@
 ---
-title: Erstellen eines Anwendungsgateways als Host für mehrere Websites – Azure PowerShell
+title: Hosten mehrerer Websites mittels PowerShell
+titleSuffix: Azure Application Gateway
 description: Hier erfahren Sie, wie Sie mit Azure PowerShell ein Anwendungsgateway erstellen, mit dem mehrere Websites gehostet werden.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 7/31/2019
+ms.topic: how-to
+ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: db2582cada453d95faa91eeeec8dd20b9a82ae6c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 30c5c5be89f8a318de8690430d4d248817961fc2
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688213"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360308"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Erstellen eines Anwendungsgateways, mit dem mehrere Websites gehostet werden, mit Azure PowerShell
 
@@ -21,15 +22,14 @@ Sie können mit Azure PowerShell ein [Hosting mehrerer Websites](multiple-site-o
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Anwendungsgateways
-> * Erstellen von Back-End-Listenern
-> * Erstellen von Routingregeln
-> * Erstellen von VM-Skalierungsgruppen mit den Back-End-Pools
-> * Erstellen eines CNAME-Eintrags in Ihrer Domäne
+* Einrichten des Netzwerks
+* Erstellen eines Anwendungsgateways
+* Erstellen von Back-End-Listenern
+* Erstellen von Routingregeln
+* Erstellen von VM-Skalierungsgruppen mit den Back-End-Pools
+* Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-![Beispiel zum Routing für mehrere Websites](./media/tutorial-multiple-sites-powershell/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="Anwendungsgateway für mehrere Standorte":::
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -124,6 +124,10 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 Listener sind erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an die Back-End-Adresspools weiterleiten kann. In diesem Artikel erstellen Sie zwei Listener für Ihre beiden Domänen. Listener werden für die Domänen *contoso.com* und *fabrikam.com* erstellt.
 
 Erstellen Sie den ersten Listener mit [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener), der zuvor erstellten Front-End-Konfiguration und dem zuvor erstellten Front-End-Port. Für den Listener ist eine Regel erforderlich, damit bekannt ist, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) eine grundlegende Regel namens *contosoRule*.
+
+>[!NOTE]
+> Mit der Application Gateway oder WAF V2-SKU können Sie auch bis zu fünf Hostnamen pro Listener konfigurieren und Platzhalterzeichen im Hostnamen verwenden. Weitere Informationen finden Sie unter [Hostnamen mit Platzhalterzeichen im Listener](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
+>Wenn Sie bei Verwendung von Azure PowerShell mehrere Hostnamen und Platzhalterzeichen in einem Listener verwenden möchten, müssen Sie `-HostNames` statt `-HostName` verwenden. Wenn Sie „HostNames“ verwenden, können Sie bis zu fünf Hostnamen als durch Trennzeichen getrennte Werte angeben. Zum Beispiel, `-HostNames "*.contoso.com","*.fabrikam.com"`
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `
@@ -226,7 +230,7 @@ for ($i=1; $i -le 2; $i++)
     -ImageReferencePublisher MicrosoftWindowsServer `
     -ImageReferenceOffer WindowsServer `
     -ImageReferenceSku 2016-Datacenter `
-    -ImageReferenceVersion latest
+    -ImageReferenceVersion latest `
     -OsDiskCreateOption FromImage
 
   Set-AzVmssOsProfile $vmssConfig `
@@ -275,7 +279,7 @@ for ($i=1; $i -le 2; $i++)
 
 ## <a name="create-cname-record-in-your-domain"></a>Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erstellt wurde, können Sie die DNS-Adresse abrufen und zum Erstellen eines CNAME-Eintrags in Ihrer Domäne verwenden. Um die DNS-Adresse des Anwendungsgateways abzurufen, können Sie [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) verwenden. Kopieren Sie den *fqdn*-Wert der DNSSettings, und verwenden Sie ihn als Wert für den erstellten CNAME-Eintrag. Die Verwendung von A-Einträgen wird nicht empfohlen, weil sich die VIP beim Neustart des Anwendungsgateways möglicherweise ändert.
+Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erstellt wurde, können Sie die DNS-Adresse abrufen und zum Erstellen eines CNAME-Eintrags in Ihrer Domäne verwenden. Um die DNS-Adresse des Anwendungsgateways abzurufen, können Sie [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) verwenden. Kopieren Sie den *fqdn* -Wert der DNSSettings, und verwenden Sie ihn als Wert für den erstellten CNAME-Eintrag. Die Verwendung von A-Einträgen wird nicht empfohlen, weil sich die VIP beim Neustart des Anwendungsgateways in der V1-SKU1 möglicherweise ändert.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

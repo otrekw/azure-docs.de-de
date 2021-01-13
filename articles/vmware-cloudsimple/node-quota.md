@@ -1,5 +1,5 @@
 ---
-title: Azure VMware-Lösung von CloudSimple – CloudSimple-Knotenkontingent
+title: Azure VMware Solution by CloudSimple – CloudSimple-Knotenkontingent
 description: Beschreibt die Kontingentgrenzen für CloudSimple-Knoten und das Anfordern einer Kontingenterhöhung
 author: sharaths-cs
 ms.author: dikamath
@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 83dc9e26e03eb955d88340d1ed21084d4e685ed8
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70913944"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "77019637"
 ---
 # <a name="cloudsimple-node-quota-limits"></a>CloudSimple-Knotenkontingentgrenzen
 
@@ -25,7 +25,7 @@ Sie können das Knotenkontingent erhöhen, indem Sie eine Supportanfrage übermi
 
 * Problemtyp: **Technisch**
 * Abonnement: **Ihre Abonnement-ID**
-* Diensttyp: **VMware-Lösung von CloudSimple**
+* Diensttyp: **VMware Solution by CloudSimple**
 * Problemtyp: **Kontingent dedizierter Knoten**
 * Problemuntertyp: **Erhöhen des Kontingents der dedizierten Knoten**
 * Antragsteller: **Kontingenterhöhung**

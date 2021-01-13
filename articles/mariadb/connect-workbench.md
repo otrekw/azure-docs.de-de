@@ -1,20 +1,20 @@
 ---
-title: Herstellen einer Verbindung mit Azure Database for MariaDB über MySQL Workbench
+title: 'Schnellstart: Herstellen einer Verbindung mit MySQL Workbench – Azure Database for MariaDB'
 description: Diese Schnellstartanleitung veranschaulicht die Verwendung von MySQL Workbench – einem Tool, mit dem Sie eine Verbindung mit Azure Database for MariaDB herstellen und Daten daraus abfragen können.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 8f2ae27e19acb5bf324202b463d2b3027ad2ea5a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 3/18/2020
+ms.openlocfilehash: 209c793903f1f706fc27102a783aa76e65382fcd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888228"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541095"
 ---
-# <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: Verwenden von MySQL Workbench zum Verbinden und Abfragen von Daten
+# <a name="quickstart-azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Schnellstart: Azure Database for MariaDB: Verwenden von MySQL Workbench zum Verbinden und Abfragen von Daten
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Verwendung von MySQL Workbench eine Verbindung mit einer Instanz von Azure Database for MariaDB herstellen. 
 
@@ -51,7 +51,7 @@ Gehen Sie wie folgt vor, um unter Verwendung von MySQL Workbench eine Verbindung
 
 2. Geben Sie im Dialogfeld **Setup New Connection** (Neue Verbindung einrichten) auf der Registerkarte **Parameter** folgende Informationen ein:
 
-   | Einstellung | Empfohlener Wert | Feldbeschreibung |
+   | Einstellung | Vorgeschlagener Wert | Feldbeschreibung |
    |---|---|---|
    |   Verbindungsname | **Beispielverbindung** | Geben Sie eine Bezeichnung für diese Verbindung an. |
    | Verbindungsmethode | **Standard (TCP/IP)** | Standard (TCP/IP) ist ausreichend. |

@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus-Nachrichten, -Nutzlasten und -Serialisierung | Microsoft-Dokumentation
-description: Übersicht über Nutzlasten von Service Bus-Nachrichten
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+description: Dieser Artikel bietet eine Übersicht über Azure Service Bus-Nachrichten, Nutzlasten, Nachrichtenrouting und Serialisierung.
 ms.topic: article
-ms.date: 09/26/2018
-ms.author: aschhab
-ms.openlocfilehash: 26256fe968eff5f7570885278620fded5673b5a0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.date: 06/23/2020
+ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249965"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85341673"
 ---
 # <a name="messages-payloads-and-serialization"></a>Nachrichten, Nutzlasten und Serialisierung
 

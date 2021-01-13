@@ -1,31 +1,24 @@
 ---
-title: Erstellen eines benutzerdefinierten Tests – Azure Application Gateway (PowerShell) | Microsoft-Dokumentation
+title: Erstellen eines benutzerdefinierten Tests mit PowerShell
+titleSuffix: Azure Application Gateway
 description: Hier erfahren Sie, wie Sie einen benutzerdefinierten Test für Application Gateways mithilfe von PowerShell im Ressourcen-Manager erstellen.
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 68feb660-7fa4-4f69-a7e4-bdd7bdc474db
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/26/2017
+ms.topic: how-to
+ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: acd70bacd23755cd764bc782a297d80db3622424
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63f4b28915a932398e5417f8ea9be3fe4d68e705
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135245"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397840"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Erstellen eines benutzerdefinierten Tests für Azure Application Gateway mithilfe von PowerShell für Azure-Ressourcen-Manager
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-create-probe-portal.md)
+> * [Azure portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Klassische Azure PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -204,5 +197,4 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über das Konfigurieren der SSL-Auslagerung unter: [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-arm.md)
-
+Informieren Sie sich über das Konfigurieren der TLS-Auslagerung unter: [Konfigurieren der TLS-Auslagerung](./tutorial-ssl-powershell.md)

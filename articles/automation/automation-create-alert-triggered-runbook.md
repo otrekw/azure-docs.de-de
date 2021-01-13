@@ -1,20 +1,16 @@
 ---
 title: Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks
-description: Es wird beschrieben, wie Sie bei Auslösung einer Azure-Warnung ein Runbook auslösen.
+description: In diesem Artikel wird beschrieben, wie Sie bei Auslösung einer Azure-Warnung ein Runbook auslösen.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
 ms.date: 04/29/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 6c818114df436dbbd3ac1a51b6eeec00b9eec4d3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: acf31af6d3ba3d78a6435210fa17562aaddac0a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915726"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86186604"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks
 
@@ -26,7 +22,7 @@ Sie können Automation-Runbooks mit drei Warnungstypen verwenden:
 
 * Allgemeine Warnungen
 * Aktivitätsprotokollwarnungen
-* Near Real-Time Metric Alerts
+* Metrikwarnungen nahezu in Echtzeit
 
 > [!NOTE]
 > Mit dem allgemeinen Warnungsschema wird die Benutzeroberfläche für Warnungsbenachrichtigungen in Azure standardisiert. Bisher wurden für die Warnungstypen von Azure (Metrik, Protokoll und Aktivitätsprotokoll) eigene E-Mail-Vorlagen, Webhookschemas usw. verwendet. Weitere Informationen finden Sie unter [Allgemeines Warnungsschema](../azure-monitor/platform/alerts-common-schema.md).
@@ -36,8 +32,8 @@ Wenn eine Warnung ein Runbook aufruft, erfolgt der eigentliche Aufruf in Form ei
 |Warnung  |BESCHREIBUNG|Nutzlast und Schema  |
 |---------|---------|---------|
 |[Allgemeines Warnungsschema](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|Mit dem allgemeinen Warnungsschema wird die Benutzeroberfläche für Warnungsbenachrichtigungen in Azure standardisiert.|Nutzlastschema von allgemeinen Warnungen|
-|[Aktivitätsprotokollwarnung](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Sendet eine Benachrichtigung, wenn ein beliebiges neues Ereignis im Azure-Aktivitätsprotokoll bestimmte Bedingungen erfüllt. Beispiel: Wenn ein `Delete VM`-Vorgang in **myProductionResourceGroup** auftritt oder wenn ein neues Azure Service Health-Ereignis mit dem Status **Aktiv** angezeigt wird.| [Nutzlastschema vom Typ „Aktivitätsprotokollwarnung“](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[Near Real-Time Metric Alerts](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Sendet eine Benachrichtigung schneller als Metrikwarnungen, wenn mindestens eine Metrik auf Plattformebene bestimmte Bedingungen erfüllt. Beispiel: Wenn der Wert für **CPU in %** auf einer VM größer als **90** ist und der Wert für **Netzwerk eingehend** in den letzten fünf Minuten über **500 MB** gelegen hat.| [Nutzlastschema vom Typ „Near Real-Time Metric Alert“](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
+|[Aktivitätsprotokollwarnung](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Sendet eine Benachrichtigung, wenn ein beliebiges neues Ereignis im Azure-Aktivitätsprotokoll bestimmte Bedingungen erfüllt. Beispiel: Wenn ein `Delete VM`-Vorgang in **myProductionResourceGroup** auftritt oder wenn ein neues Azure Service Health-Ereignis mit dem Status „Aktiv“ angezeigt wird.| [Nutzlastschema vom Typ „Aktivitätsprotokollwarnung“](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
+|[Near Real-Time Metric Alerts](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Sendet eine Benachrichtigung schneller als Metrikwarnungen, wenn mindestens eine Metrik auf Plattformebene bestimmte Bedingungen erfüllt. Beispiel: Wenn der Wert für **CPU in %** auf einer VM größer als „90“ ist und der Wert für **Netzwerk eingehend** in den letzten fünf Minuten über „500 MB“ gelegen hat.| [Nutzlastschema vom Typ „Near Real-Time Metric Alert“](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
 Da sich die Daten unterscheiden, die von den einzelnen Typen von Warnungen bereitgestellt werden, wird jeder Warnungstyp anders behandelt. Im nächsten Abschnitt erfahren Sie, wie Sie ein Runbook erstellen, um verschiedene Warnungstypen zu behandeln.
 
@@ -45,11 +41,11 @@ Da sich die Daten unterscheiden, die von den einzelnen Typen von Warnungen berei
 
 Um bei Warnungen Automation einzusetzen, benötigen Sie ein Runbook, das über geeignete Logik verfügt, um die an das Runbook übergebene JSON-Nutzlast der Warnungen zu verarbeiten. Das folgende Beispielrunbook muss von einer Azure-Warnung aufgerufen werden.
 
-Wie im vorherigen Abschnitt beschrieben, weist jeder Typ von Warnung ein anderes Schema auf. Mit dem Skript werden die Webhookdaten im Runbook-Eingabeparameter`WebhookData` einer Warnung verwendet. Anschließend wertet das Skript die JSON-Nutzlast aus, um zu bestimmen, welcher Warnungstyp verwendet wurde.
+Wie im vorherigen Abschnitt beschrieben, weist jeder Typ von Warnung ein anderes Schema auf. Mit dem Skript werden die Webhookdaten im Runbook-Eingabeparameter `WebhookData` einer Warnung verwendet. Anschließend wertet das Skript die JSON-Nutzlast aus, um zu bestimmen, welcher Warnungstyp verwendet wird.
 
-In diesem Beispiel wird eine Warnung von einem virtuellen Computer verwendet. Es ruft die VM-Daten aus der Nutzlast ab und verwendet diese Informationen dann, um den virtuellen Computer zu beenden. Die Verbindung muss in dem Automation-Konto eingerichtet sein, unter dem das Runbook ausgeführt wird. Wenn Warnungen zum Auslösen von Runbooks verwendet werden, muss unbedingt der Status der Warnung im ausgelösten Runbook überprüft werden. Das Runbook wird bei jeder Statusänderung der Warnung ausgelöst. Warnungen haben mehrere Status, die beiden häufigsten sind `Activated` und `Resolved`. Prüfen Sie in Ihrer Runbook-Logik auf diesen Status, um sicherzustellen, dass Ihr Runbook nur einmal ausgeführt wird. Das Beispiel in diesem Artikel zeigt, wie Sie die Suche auf `Activated`-Warnungen einschränken.
+In diesem Beispiel wird eine Warnung von einem virtuellen Computer verwendet. Es ruft die VM-Daten aus der Nutzlast ab und verwendet diese Informationen dann, um den virtuellen Computer zu beenden. Die Verbindung muss in dem Automation-Konto eingerichtet sein, unter dem das Runbook ausgeführt wird. Wenn Warnungen zum Auslösen von Runbooks verwendet werden, muss unbedingt der Status der Warnung im ausgelösten Runbook überprüft werden. Das Runbook wird bei jeder Zustandsänderung der Warnung ausgelöst. Warnungen verfügen über mehrere Zustände, deren beiden häufigsten „Aktiviert“ und „Aufgelöst“ sind. Prüfen Sie in Ihrer Runbooklogik auf diesen Zustand, um sicherzustellen, dass Ihr Runbook nur einmal ausgeführt wird. Das Beispiel in diesem Artikel zeigt, wie Sie die Suche auf Warnungen mit dem Zustand „Aktiviert“ einschränken.
 
-Das Runbook verwendet das [ausführende Konto](automation-create-runas-account.md) **AzureRunAsConnection** für die Authentifizierung bei Azure, um die Verwaltungsaktion für die VM durchzuführen.
+Das Runbook verwendet das [ausführende Konto](./manage-runas-account.md) für die Verbindungsressource `AzureRunAsConnection` für die Authentifizierung bei Azure, um die Verwaltungsaktion für die VM durchzuführen.
 
 Verwenden Sie dieses Beispiel, um ein Runbook mit dem Namen **Stop-AzureVmInResponsetoVMAlert** zu erstellen. Sie können das PowerShell-Skript ändern und mit vielen verschiedenen Ressourcen nutzen.
 
@@ -143,13 +139,13 @@ Verwenden Sie dieses Beispiel, um ein Runbook mit dem Namen **Stop-AzureVmInResp
                     throw "Could not retrieve connection asset: $ConnectionAssetName. Check that this asset exists in the Automation account."
                 }
                 Write-Verbose "Authenticating to Azure with service principal." -Verbose
-                Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
+                Add-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
                 Write-Verbose "Setting subscription to work against: $SubId" -Verbose
-                Set-AzureRmContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
+                Set-AzContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
 
                 # Stop the Resource Manager VM
                 Write-Verbose "Stopping the VM - $ResourceName - in resource group - $ResourceGroupName -" -Verbose
-                Stop-AzureRmVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
+                Stop-AzVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
                 # [OutputType(PSAzureOperationResponse")]
             }
             else {
@@ -174,7 +170,7 @@ Verwenden Sie dieses Beispiel, um ein Runbook mit dem Namen **Stop-AzureVmInResp
 
 Warnungen verwenden Aktionsgruppen, die Sammlungen von Aktionen sind, die von der Warnung ausgelöst werden. Runbooks stellen lediglich eine der vielen Aktionen dar, die Sie mit Aktionsgruppen verwenden können.
 
-1. Wählen Sie in Ihrem Automation-Konto **Warnungen** unter **Überwachung** aus.
+1. Wählen Sie in Ihrem Automation-Konto unter **Überwachung** die Option **Warnungen** aus.
 1. Wählen Sie **+ Neue Warnungsregel** aus.
 1. Klicken Sie unter **Ressource** auf **Auswählen**. Wählen Sie auf der Seite **Ressource auswählen** Ihren virtuellen Computer aus, damit Warnungen von ihm ausgehen können, und klicken Sie auf **Fertig**.
 1. Klicken Sie unter **Bedingung** auf **Bedingung hinzufügen**. Wählen Sie das Signal aus, das Sie verwenden möchten, z.B. **CPU in Prozent**, und klicken Sie auf **Fertig**.
@@ -195,7 +191,8 @@ Warnungen verwenden Aktionsgruppen, die Sammlungen von Aktionen sind, die von de
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Starten eines Automation-Runbooks per Webhook finden Sie unter [Starten eines Azure Automation-Runbooks mit einem Webhook](automation-webhooks.md).
-* Weitere Informationen über die verschiedenen Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks](automation-starting-a-runbook.md).
-* Weitere Informationen zum Erstellen von Aktivitätsprotokollwarnungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
+* Informationen zum Starten eines Runbooks mithilfe eines Webhook finden Sie unter [Starten eines Runbooks mit einem Webhook](automation-webhooks.md).
+* Informationen zu verschiedenen Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks](./start-runbooks.md).
+* Informationen zum Erstellen von Aktivitätsprotokollwarnungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
 * Informationen zum Erstellen von Near Real-Time Alerts finden Sie unter [Erstellen einer Warnungsregel im Azure-Portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json).
+* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

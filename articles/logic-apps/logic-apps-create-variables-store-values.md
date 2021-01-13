@@ -1,21 +1,17 @@
 ---
-title: Erstellen und Verwalten von Variablen zum Speichern von Werten – Azure Logic Apps
-description: So speichern und verwalten Sie Werte, indem Sie Variablen in Azure Logic Apps verwenden.
+title: Erstellen und Verwalten von Variablen zum Speichern und Übergeben von Werten
+description: Erfahren Sie, wie Sie Werte speichern, verwalten, verwenden und übergeben, indem Sie Variablen in Ihren automatisierten Aufgaben und Workflows verwenden, die Sie mit Azure Logic Apps erstellen.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 0f7947e4a96a49e3a7a3b0059a1b20b21ac8cbd1
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: b486b94a74d98f5630bd0bf40ebf0864c2ec5ab8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180789"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91333901"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Speichern und Verwalten von Werten mittels Variablen in Azure Logic Apps
 
@@ -26,7 +22,7 @@ Variablen können für Datentypen wie „integer“, „float“, „boolean“,
 * Abrufen des Werts einer Variablen oder Verweisen auf den Wert
 * Erhöhen oder Verringern der Variable um einen konstanten Wert (*increment* und *decrement*)
 * Zuweisen eines anderen Werts zu der Variablen
-* Einfügen oder *Anfügen* des Variablenwerts als Letztes in einer Zeichenfolge oder einem Array
+* Einfügen oder *Anfügen* des Variablenwerts als letztes Element in einer Zeichenfolge oder einem Array
 
 Vorhandene Variabeln sind nur innerhalb der Logic App-Instanz, die sie erstellt, global. Außerdem bleiben sie über alle Schleifeniterationen innerhalb einer Logic App-Instanz bestehen. Wenn Sie auf eine Variable verweisen, verwenden Sie den Namen der Variablen als Token und nicht den Namen der Aktion, was die übliche Vorgehensweise wäre, um auf die Ausgaben einer Aktion zu verweisen.
 
@@ -59,7 +55,7 @@ Sie können eine Variable erstellen und ihren Datentyp und Anfangswert deklarier
 
    * Zum Hinzufügen einer Aktion unter dem letzten Schritt wählen Sie **Neuer Schritt** aus.
 
-     ![Hinzufügen einer Aktion](./media/logic-apps-create-variables-store-values/add-action.png)
+     ![Screenshot, der die ausgewählte Aktion „Neuer Schritt“ auf der Seite „Logik-App-Designer“ zeigt.](./media/logic-apps-create-variables-store-values/add-action.png)
 
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen ( **+** ) angezeigt wird. Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen** aus.
 
@@ -69,7 +65,7 @@ Sie können eine Variable erstellen und ihren Datentyp und Anfangswert deklarier
 
 1. Geben Sie diese Informationen zu Ihrer Variablen wie unten beschrieben an:
 
-   | Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
    |----------|----------|-------|--------------|
    | **Name** | Ja | <*Variablenname*> | Der Name für die zu erhöhende Variable |
    | **Typ** | Ja | <*Variablentyp*> | Der Datentyp für die Variable |
@@ -209,7 +205,7 @@ Um eine Variable um einen konstanten Wert zu erhöhen oder zu *inkrementieren*, 
 
 1. Geben Sie diese Informationen zum schrittweisen Erhöhen Ihrer Variable an:
 
-   | Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
    |----------|----------|-------|--------------|
    | **Name** | Ja | <*Variablenname*> | Der Name für die zu erhöhende Variable |
    | **Wert** | Nein | <*Inkrementwert*> | Der zum Erhöhen der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Erhöhung Ihrer Variablen kennen. |
@@ -330,7 +326,7 @@ Um eine Variable um einen konstanten Wert zu verringern oder zu *dekrementieren*
 
 Für die Aktion **Variablenwert verringern** gibt es folgende Eigenschaften:
 
-| Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
+| Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
 |----------|----------|-------|--------------|
 | **Name** | Ja | <*Variablenname*> | Der Name für die zu verringernde Variable | 
 | **Wert** | Nein | <*Inkrementwert*> | Der zum Verringern der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Verringerung Ihrer Variablen kennen. |
@@ -363,7 +359,7 @@ Um einer vorhandenen Variablen einen anderen Wert zuzuweisen, folgen Sie den Sch
 
 Für die Aktion **Variable festlegen** gibt es folgende Eigenschaften:
 
-| Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
+| Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
 |----------|----------|-------|--------------|
 | **Name** | Ja | <*Variablenname*> | Der Name für die zu ändernde Variable |
 | **Wert** | Ja | <*Neuer-Wert*> | Der Wert, der der Variable zugewiesen werden soll. Beide müssen den gleichen Datentyp aufweisen. |
@@ -421,7 +417,7 @@ Bei Variablen, die Strings oder Arrays speichern, können Sie den Wert einer Var
 
 Für die Aktionen **An ... anfügen** gibt es folgende Eigenschaften:
 
-| Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
+| Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
 |----------|----------|-------|--------------|
 | **Name** | Ja | <*Variablenname*> | Der Name für die zu ändernde Variable |
 | **Wert** | Ja | <*Anzufügender-Wert*> | Der anzufügende Wert, der von einem beliebigen Typ sein kann. |

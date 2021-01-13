@@ -1,11 +1,22 @@
-- name: Azure Firewall-Dokumentation
+- name: Dokumentation zu Azure Firewall
   href: index.yml
 - name: Übersicht
   items:
     - name: Was ist Azure Firewall?
       href: overview.md
-- name: Lernprogramme
+- name: Schnellstarts
   expanded: true
+  items:
+    - name: 'Bereitstellen mit IP-Adressgruppen: ARM-Vorlage'
+      displayName: Resource Manager
+      href: quick-create-ipgroup-template.md
+    - name: 'Bereitstellen mit mehreren Adressen: ARM-Vorlage'
+      displayName: Resource Manager
+      href: quick-create-multiple-ip-template.md
+    - name: 'Bereitstellen mit Verfügbarkeitszonen: ARM-Vorlage'
+      displayName: Resource Manager
+      href: deploy-template.md
+- name: Tutorials
   items:
     - name: Bereitstellen und konfigurieren
       href: tutorial-firewall-deploy-portal.md
@@ -13,16 +24,14 @@
       href: tutorial-hybrid-portal.md
     - name: Filtern von eingehendem Datenverkehr mit DNAT
       href: tutorial-firewall-dnat.md
-    - name: Diagnoseprotokolle überwachen
-      href: tutorial-diagnostics.md
 - name: Beispiele
   items:
     - name: Azure PowerShell
       href: sample-powershell.md
-    - name: Azure Monitor-Protokolle
-      href: log-analytics-samples.md
 - name: Konzepte
   items:
+    - name: Azure Firewall-Features
+      href: features.md
     - name: FQDN-Tags
       href: fqdn-tags.md
     - name: Infrastruktur-FQDNs
@@ -35,6 +44,20 @@
       href: rule-processing.md
     - name: Diensttags
       href: service-tags.md
+    - name: IP-Adressgruppen
+      href: ip-groups.md
+    - name: Tunnelerzwingung
+      href: forced-tunneling.md
+    - name: Zertifizierungen
+      href: compliance-certifications.md
+    - name: Zentrale Verwaltung
+      href: central-management.md
+    - name: Unterstützung von Remotearbeit
+      href: remote-work-support.md
+    - name: FQDN in Netzwerkregeln
+      href: fqdn-filtering-network-rules.md
+    - name: Sicherheitsbaseline
+      href: security-baseline.md
 - name: Anleitungen
   items:
     - name: Bereitstellen mit Azure PowerShell
@@ -43,8 +66,6 @@
       href: tutorial-hybrid-ps.md
     - name: Bereitstellen über die Azure-Befehlszeilenschnittstelle
       href: deploy-cli.md
-    - name: Mithilfe einer Vorlage bereitstellen
-      href: deploy-template.md
     - name: Bereitstellen mit mehreren öffentlichen IP-Adressen
       href: deploy-multi-public-ip-powershell.md
     - name: Bereitstellen mit Verfügbarkeitszonen
@@ -53,9 +74,24 @@
       href: integrate-lb.md
     - name: Anwendungsregeln mit SQL-FQDNs
       href: sql-fqdn-filtering.md
+    - name: Private SNAT-Bereiche
+      href: snat-private-range.md
+    - name: Erstellen von IP-Adressgruppen
+      href: create-ip-group.md
+    - name: Schützen von Windows Virtual Desktop
+      href: protect-windows-virtual-desktop.md
+    - name: Schützen von Azure Kubernetes Service (AKS)
+      href: protect-azure-kubernetes-service.md
+    - name: DNS-Einstellungen
+      href: dns-settings.md
+    - name: Diagnoseprotokolle überwachen
+      href: firewall-diagnostics.md
+      displayName: 'Azure CLI, az monitor diagnostic-settings create, monitor diagnostic settings'
+    - name: Azure Firewall-Workbook
+      href: firewall-workbook.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/ext/azure-firewall/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall
@@ -70,13 +106,13 @@
     - name: REST
       href: /rest/api/firewall
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
-      href: firewall-faq.md
+      href: firewall-faq.yml
     - name: Verfassen von Vorlagen
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Communityvorlagen

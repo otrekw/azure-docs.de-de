@@ -2,27 +2,26 @@
 title: Erstellen von virtuellen Knoten mit dem Portal in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie das Azure-Portal verwenden, um einen Azure Kubernetes Service-Cluster (AKS) zu erstellen, der virtuelle Knoten zum Ausführen von Pods verwendet.
 services: container-service
-author: mlearned
 ms.topic: conceptual
-ms.service: container-service
 ms.date: 05/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 8752d888e24e7135d488be6d1b377070a30fe4eb
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 7d49499b39c562aeff20d163fc86401d8c1f4a06
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67613844"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579163"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten im Azure-Portal
 
-Um Anwendungsworkloads in einem AKS-Cluster (Azure Kubernetes Service) schnell bereitzustellen, können Sie virtuelle Knoten verwenden. Mit virtuellen Knoten lassen sich Pods schnell bereitstellen, und Sie zahlen für die Ausführungsdauer nur auf Sekundenbasis. In einem Skalierungsszenario müssen Sie nicht warten, bis die Autoskalierung des Kubernetes-Clusters VM-Computeknoten bereitstellt, um die zusätzlichen Pods auszuführen. Virtuelle Knoten werden nur für Pods und Knoten unter Linux unterstützt.
+Dieser Artikel zeigt, wie Sie im Azure-Portal die virtuellen Netzwerkressourcen und einen AKS-Cluster mit aktivierten virtuellen Knoten erstellen und konfigurieren.
 
-Dieser Artikel zeigt, wie Sie die virtuellen Netzwerkressourcen und einen AKS-Cluster mit aktivierten virtuellen Knoten erstellen und konfigurieren.
+> [!NOTE]
+> In [diesem Artikel](virtual-nodes.md) erhalten Sie eine Übersicht über die regionale Verfügbarkeit und die Einschränkungen bei der Verwendung virtueller Knoten.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Virtuelle Knoten ermöglichen die Netzwerkkommunikation zwischen Pods, die in ACI und dem AKS-Cluster ausgeführt werden. Um diese Kommunikation bereitzustellen, wird ein virtuelles Subnetz erstellt, und delegierte Berechtigungen werden zugewiesen. Virtuelle Knoten funktionieren nur in AKS-Clustern, die mit *erweiterten* Netzwerkfunktionen erstellt wurden. Standardmäßig werden AKS-Cluster mit *grundlegenden* Netzwerkfunktionen erstellt. Dieser Artikel zeigt, wie Sie ein virtuelles Netzwerk und virtuelle Subnetze erstellen und dann einen AKS-Cluster bereitstellen, der erweiterte Netzwerkfunktionen verwendet.
+Die virtuellen Knoten ermöglichen die Netzwerkkommunikation zwischen Pods, die in Azure Container Instances (ACI) und dem AKS-Cluster ausgeführt werden. Um diese Kommunikation bereitzustellen, wird ein virtuelles Subnetz erstellt, und delegierte Berechtigungen werden zugewiesen. Virtuelle Knoten funktionieren nur in AKS-Clustern, die mit *erweiterten* Netzwerkfunktionen (Azure CNI) erstellt wurden. Standardmäßig werden AKS-Cluster mit *grundlegenden* Netzwerkfunktionen (kubenet) erstellt. Dieser Artikel zeigt, wie Sie ein virtuelles Netzwerk und virtuelle Subnetze erstellen und dann einen AKS-Cluster bereitstellen, der erweiterte Netzwerkfunktionen verwendet.
 
 Wenn Sie ACI noch nicht genutzt haben, registrieren Sie den Dienstanbieter mit Ihrem Abonnement. Sie können den Status der ACI-Anbieterregistrierung mit dem Befehl [az provider list][az-provider-list] überprüfen, wie im folgenden Beispiel gezeigt:
 
@@ -32,44 +31,17 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 
 Der Anbieter *Microsoft.ContainerInstance* sollte als *Registriert* gemeldet werden, wie in der folgenden Beispielausgabe gezeigt:
 
-```
-Namespace                    RegistrationState
----------------------------  -------------------
-Microsoft.ContainerInstance  Registered
+```output
+Namespace                    RegistrationState    RegistrationPolicy
+---------------------------  -------------------  --------------------
+Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
-Wenn der Anbieter als *NotRegistered* (Nicht registriert) angezeigt wird, registrieren Sie den Anbieter mit dem [az provider register][az-provider-register], wie im folgenden Beispiel gezeigt:
+Wenn der Anbieter als *Nicht registriert* angezeigt wird, registrieren Sie den Anbieter mit dem [az provider register][az-provider-register], wie im folgenden Beispiel gezeigt:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
 ```
-
-## <a name="regional-availability"></a>Regionale Verfügbarkeit
-
-Für Bereitstellungen von virtuellen Knoten werden die folgenden Regionen unterstützt:
-
-* Australien, Osten (australiaeast)
-* USA, Mitte (centralus)
-* USA, Osten (eastus)
-* USA, Osten 2 (eastus2)
-* Japan, Osten (japaneast)
-* Europa, Norden (northeurope)
-* Asien, Südosten (southeastasia)
-* USA, Westen-Mitte (westcentralus)
-* Europa, Westen (westeurope)
-* USA, Westen (westus)
-* USA, Westen 2 (westus2)
-
-## <a name="known-limitations"></a>Bekannte Einschränkungen
-Die Funktionalität der virtuellen Knoten ist stark abhängig von den ACI-Features. Die folgenden Szenarios werden für virtuelle Knoten noch nicht unterstützt:
-
-* Verwenden des Dienstprinzipals zur Übertragung von ACR-Images mithilfe von Pull. Eine [Problemumgehung](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry) ist mithilfe von [Kubernetes-Geheimnissen](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) möglich.
-* [Einschränkungen für virtuelle Netzwerke](../container-instances/container-instances-vnet.md), darunter für VNET-Peering, für Kubernetes-Netzwerkrichtlinien und für ausgehenden Internetdatenverkehr im Zusammenhang mit Netzwerksicherheitsgruppen.
-* Initialisierungscontainer.
-* [Hostaliase](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/).
-* [Argumente](../container-instances/container-instances-exec.md#restrictions) für „exec“ in ACI.
-* [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) stellen keine Pods auf dem virtuellen Knoten bereit.
-* [Windows Server-Knoten (derzeit in der Vorschau in AKS)](windows-container-cli.md) werden nicht zusammen mit virtuellen Knoten unterstützt. Sie können virtuelle Knoten verwenden, um Windows Server-Container zu planen, ohne Windows Server-Knoten in einem AKS-Cluster haben zu müssen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -92,7 +64,7 @@ Wählen Sie auf der Seite **Skalieren** unter **Virtuelle Knoten** die Option *A
 
 ![Erstellen von AKS-Clustern und Aktivieren der virtuellen Knoten](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-Standardmäßig wird ein Azure Active Directory-Dienstprinzipal erstellt. Dieser Dienstprinzipal wird für die Clusterkommunikation und die Integration in andere Azure-Dienste verwendet.
+Standardmäßig wird ein Azure Active Directory-Dienstprinzipal erstellt. Dieser Dienstprinzipal wird für die Clusterkommunikation und die Integration in andere Azure-Dienste verwendet. Alternativ können Sie anstelle eines Dienstprinzipals eine verwaltete Identität für Berechtigungen verwenden. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
 
 Der Cluster ist auch für den erweiterten Netzwerkbetrieb konfiguriert. Die virtuellen Knoten sind so konfiguriert, dass sie ihr eigenes virtuelles Azure-Netzwerksubnetz verwenden. Dieses Subnetz verfügt über delegierte Berechtigungen, um Azure-Ressourcen zwischen dem AKS-Cluster zu verbinden. Wenn Sie noch kein Subnetz delegiert haben, erstellt und konfiguriert das Azure-Portal das virtuelle Netzwerk und Subnetz von Azure für die Verwendung mit den virtuellen Knoten.
 
@@ -100,7 +72,7 @@ Klicken Sie auf **Überprüfen + erstellen**. Wählen Sie nach Abschluss der Val
 
 Es dauert einige Minuten, bis der AKS-Clusters erstellt wurde und für die Verwendung bereit ist.
 
-## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
+## <a name="connect-to-the-cluster"></a>Herstellen einer Verbindung mit dem Cluster
 
 Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Verwenden Sie zum Verwalten eines Kubernetes-Clusters den Kubernetes-Befehlszeilenclient [kubectl][kubectl]. Der `kubectl`-Client ist in Azure Cloud Shell vorinstalliert.
 
@@ -112,17 +84,15 @@ Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kub
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Verwenden Sie zum Überprüfen der Verbindung mit Ihrem Cluster den Befehl [kubectl get][kubectl-get], um eine Liste der Clusterknoten zu erhalten.
+Überprüfen Sie die Verbindung mit Ihrem Cluster mithilfe des Befehls [kubectl get][kubectl-get], um eine Liste der Clusterknoten zurückzugeben.
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 Die folgende Beispielausgabe zeigt den erstellten einzelnen VM-Knoten und dann den virtuellen Knoten für Linux, *virtual-node-aci-linux*:
 
-```
-$ kubectl get nodes
-
+```output
 NAME                           STATUS    ROLES     AGE       VERSION
 virtual-node-aci-linux         Ready     agent     28m       v1.11.2
 aks-agentpool-14693408-0       Ready     agent     32m       v1.11.2
@@ -149,7 +119,7 @@ spec:
     spec:
       containers:
       - name: aci-helloworld
-        image: microsoft/aci-helloworld
+        image: mcr.microsoft.com/azuredocs/aci-helloworld
         ports:
         - containerPort: 80
       nodeSelector:
@@ -159,8 +129,6 @@ spec:
       tolerations:
       - key: virtual-kubelet.io/provider
         operator: Exists
-      - key: azure.com/aci
-        effect: NoSchedule
 ```
 
 Führen Sie die Anwendung mithilfe des Befehls [kubectl apply][kubectl-apply] aus.
@@ -171,9 +139,11 @@ kubectl apply -f virtual-node.yaml
 
 Verwenden Sie den Befehl [kubectl get pods][kubectl-get] mit dem `-o wide`-Argument, um eine Liste von Pods und den geplanten Knoten auszugeben. Beachten Sie, dass der `virtual-node-helloworld`-Pod auf dem `virtual-node-linux`-Knoten geplant wurde.
 
+```console
+kubectl get pods -o wide
 ```
-$ kubectl get pods -o wide
 
+```output
 NAME                                     READY     STATUS    RESTARTS   AGE       IP           NODE
 virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.0.4   virtual-node-aci-linux
 ```
@@ -187,27 +157,25 @@ Dem Pod wird von dem Subnetz des virtuellen Azure-Netzwerks, das für die Verwen
 
 Um den Pod zu testen, der auf dem virtuellen Knoten ausgeführt werden soll, wechseln Sie in einem Webclient zur Demoanwendung. Da dem Pod eine interne IP-Adresse zugewiesen wurde, können Sie diese Konnektivität schnell von einem anderen Pod im AKS-Cluster aus testen. Erstellen Sie einen Testpod, und fügen Sie an diesen eine Terminalsitzung an:
 
-```azurecli-interactive
+```console
 kubectl run -it --rm virtual-node-test --image=debian
 ```
 
 Installieren Sie `curl` mit `apt-get` im Pod:
 
-```azurecli-interactive
+```console
 apt-get update && apt-get install -y curl
 ```
 
 Greifen Sie mithilfe von `curl` auf die Adresse Ihres Pods zu, z.B. *http://10.241.0.4* . Geben Sie Ihre eigene interne IP-Adresse an, die im vorherigen `kubectl get pods`-Befehl gezeigt wurde:
 
-```azurecli-interactive
+```console
 curl -L http://10.241.0.4
 ```
 
 Die Demoanwendung wird angezeigt, wie in der folgenden verkürzten Beispielausgabe veranschaulicht:
 
-```
-$ curl -L 10.241.0.4
-
+```output
 <html>
 <head>
   <title>Welcome to Azure Container Instances!</title>
@@ -238,12 +206,13 @@ Virtuelle Knoten sind eine Komponente einer Skalierungslösung in AKS. Weitere I
 [aks-github]: https://github.com/azure/aks/issues]
 [virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
 [virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
+[acr-aks-secrets]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 
 <!-- LINKS - internal -->
-[aks-network]: ./networking-overview.md
+[aks-network]: ./configure-azure-cni.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
-[acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret
-[az-provider-list]: /cli/azure/provider#az-provider-list
+[az-provider-list]: /cli/azure/provider?view=azure-cli-latest#az-provider-list
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest&preserve-view=true#az-provider-register

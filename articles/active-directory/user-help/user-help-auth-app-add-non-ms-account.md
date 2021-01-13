@@ -1,27 +1,26 @@
 ---
-title: Hinzufügen Ihrer Nicht-Microsoft-Konten zur Microsoft Authenticator-App – Azure Active Directory | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zum Hinzufügen Ihrer nicht von Microsoft stammenden Konten (z. B. für Google, Facebook oder GitHub) zur Microsoft Authenticator-App für die zweistufige Überprüfung.
+title: Hinzufügen von Nicht-Microsoft-Konten zur Microsoft Authenticator-App – Azure AD
+description: Fügen Sie nicht von Microsoft stammende Konten (z. B. für Google oder Facebook) zur Microsoft Authenticator-App hinzu, um Ihre Identität mit der zweistufigen Überprüfung zu überprüfen.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
-ms.date: 01/24/2019
-ms.author: lizross
+ms.topic: end-user-help
+ms.date: 11/02/2020
+ms.author: curtand
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1521d2b3d47667466636a1ac15f107826e40942
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 21c8e75ac81a443b1dd9d4a0f43263bbf40bee88
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942927"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359199"
 ---
-# <a name="add-your-non-microsoft-accounts"></a>Hinzufügen Ihrer Nicht-Microsoft-Konten
+# <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Hinzufügen von Nicht-Microsoft-Konten zur Microsoft Authenticator-App
 
-Fügen Sie Ihre nicht von Microsoft stammenden Konten (z. B. für Google, Facebook oder GitHub) zur Microsoft Authenticator-App für die zweistufige Überprüfung hinzu. Die Microsoft Authenticator-App funktioniert mit jeder App, welche die zweistufige Überprüfung verwendet, und mit jedem Konto, das die Standards für zeitbasierte Einmalkennwörter (TOTP) unterstützt.
+Wenn Sie nicht von Microsoft stammende Konten haben (z. B. von Google, Facebook oder GitHub), können Sie diese in der Microsoft Authenticator-App für die zweistufige Überprüfung hinzufügen. Die Microsoft Authenticator-App funktioniert mit jeder App, für die eine zweistufige Überprüfung verwendet wird, und mit jedem Konto, das die Standards für zeitbasierte Einmalkennwörter (Time-based One-time Password, TOTP) unterstützt.
 
 >[!Important]
 >Bevor Sie Ihr Konto hinzufügen können, müssen Sie die Microsoft Authenticator-App herunterladen und installieren. Wenn Sie dies noch nicht getan haben, führen Sie die im Artikel [Herunterladen und Installieren der App](user-help-auth-app-download-install.md) aufgeführten Schritte aus.
@@ -35,9 +34,9 @@ Im Allgemeinen müssen Sie für alle Ihre persönlichen Konten wie folgt vorgehe
 2. Fügen Sie das Konto zur Microsoft Authenticator-App hinzu. Im Rahmen dieses Vorgangs werden Sie möglicherweise aufgefordert, einen QR-Code zu scannen.
 
     >[!Note]
-    >Wenn Sie die Microsoft Authenticator-App zum ersten Mal einrichten, werden Sie möglicherweise in einer Meldung gefragt, ob Sie der App den Zugriff auf Ihre Kamera (iOS) oder die Aufnahme von Foto- und Videodateien (Android) erlauben möchten. Sie müssen **Zulassen** auswählen, damit die Authenticator-App im nächsten Schritt auf Ihre Kamera zugreifen und den QR-Code aufnehmen kann. Wenn Sie den Zugriff auf die Kamera nicht zulassen, können Sie die App auch einrichten, müssen die Codeinformationen aber manuell hinzufügen. Informationen zum manuellen Hinzufügen des Codes finden Sie unter [Manuelles Hinzufügen eines Kontos zur App](user-help-auth-app-add-account-manual.md).
+    >Wenn Sie die Microsoft Authenticator-App zum ersten Mal einrichten, werden Sie möglicherweise in einer Meldung gefragt, ob Sie der App den Zugriff auf Ihre Kamera (iOS) oder die Aufnahme von Foto- und Videodateien (Android) erlauben möchten. Sie müssen **Zulassen** auswählen, damit die Authentifikator-App im nächsten Schritt auf Ihre Kamera zugreifen und den QR-Code aufnehmen kann. Wenn Sie den Zugriff auf die Kamera nicht zulassen, können Sie die Authentifikator-App auch einrichten, müssen die Codeinformationen aber manuell hinzufügen. Informationen zum manuellen Hinzufügen des Codes finden Sie unter [Manuelles Hinzufügen eines Kontos zur App](user-help-auth-app-add-account-manual.md).
 
-Wir geben hier den Vorgang für Facebook-, Google-, GitHub- und Amazon-Konten an, aber dieser Vorgang ist für alle anderen Apps (wie z. B. Instagram, Netflix oder Adobe) gleich.
+Wir geben hier den Vorgang für Facebook-, Google-, GitHub- und Amazon-Konten an, aber dieser Vorgang ist für andere Apps (wie Instagram oder Adobe) gleich.
 
 ## <a name="add-your-google-account"></a>Hinzufügen Ihres Google-Kontos
 
@@ -51,7 +50,7 @@ Fügen Sie Ihr Google-Konto hinzu, indem Sie die zweistufige Überprüfung aktiv
 
 ### <a name="add-your-google-account-to-the-app"></a>Hinzufügen Ihres Google-Kontos zur App
 
-1. Wechseln Sie auf Ihrem Computer auf der Google-Seite zum Abschnitt **Alternativen zweiten Schritt einrichten**, und wählen Sie im Abschnitt **Authenticator-App** die Option **Einrichten** aus.
+1. Wechseln Sie auf Ihrem Computer auf der Sicherheitsseite des Google-Kontos (https://myaccount.google.com/security) ) zum Abschnitt **Weitere zweite Schritte für die Identitätsbestätigung hinzufügen**, und wählen Sie im Abschnitt **Authenticator App** die Option **Einrichten** aus.
 
 2. Wählen Sie auf der Seite **Codes von der Authenticator App abrufen** basierend auf Ihrem Telefontyp entweder **Android** oder **iPhone** aus, und wählen Sie dann **Weiter** aus.
 
@@ -131,7 +130,7 @@ Fügen Sie Ihr GitHub-Konto hinzu, indem Sie die zweistufige Überprüfung aktiv
 
 1. Wählen Sie auf Ihrem Computer auf der Seite **Zweistufige Authentifizierung** die Option **Set up using an app** (Mit einer App einrichten) aus.
 
-2. Speichern Sie Ihre Wiederherstellungscodes, damit Sie wieder auf Ihr Konto zugreifen können, falls Sie den Zugriff verlieren, und wählen Sie dann **Next** (Weiter) aus. 
+2. Speichern Sie Ihre Wiederherstellungscodes, damit Sie wieder auf Ihr Konto zugreifen können, falls Sie den Zugriff verlieren, und wählen Sie dann **Next** (Weiter) aus.
 
     Sie können Ihre Codes speichern, indem Sie die Codes auf Ihr Gerät herunterladen, sie ausdrucken oder in ein Kennwort-Manager-Tool kopieren.
 

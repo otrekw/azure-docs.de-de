@@ -1,31 +1,26 @@
 ---
-title: Bereitstellen eines virtuellen Computers mit C# und einer Resource Manager-Vorlage | Microsoft Docs
+title: Bereitstellen eines virtuellen Computers mit C# und einer Resource Manager-Vorlage
 description: Erfahren Sie, wie Sie mit C# und einer Resource Manager-Vorlage einen virtuellen Azure-Computer bereitstellen.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: bfba66e8-c923-4df2-900a-0c2643b81240
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 65ce7711786e15a5455d91ce829a3bc0bdf4317d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 779a09532790ea272d8c95ac28f8c152216efc5a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103230"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008649"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Bereitstellen eines virtuellen Azure-Computers mit C# und einer Resource Manager-Vorlage
 
 In diesem Artikel wird gezeigt, wie Sie eine Azure Resource Manager-Vorlage mithilfe von C# bereitstellen. Mit der Vorlage, die Sie erstellen, wird ein einzelner virtueller Computer mit Windows Server in einem neuen virtuellen Netzwerk mit einem einzelnen Subnetz bereitgestellt.
 
-Eine ausführliche Beschreibung der Ressource des virtuellen Computers finden Sie unter [Virtuelle Computer in einer Azure Resource Manager-Vorlage](template-description.md). Weitere Informationen zu allen Ressourcen in einer Vorlage finden Sie unter [Exemplarische Vorgehensweise zu Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Eine ausführliche Beschreibung der Ressource des virtuellen Computers finden Sie unter [Virtuelle Computer in einer Azure Resource Manager-Vorlage](template-description.md). Weitere Informationen zu allen Ressourcen in einer Vorlage finden Sie unter [Exemplarische Vorgehensweise zu Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 Die Ausführung dieser Schritte dauert etwa 10 Minuten.
 
@@ -33,7 +28,7 @@ Die Ausführung dieser Schritte dauert etwa 10 Minuten.
 
 In diesem Schritt stellen Sie sicher, dass Visual Studio installiert ist, und erstellen eine Konsolenanwendung, die zum Bereitstellen der Vorlage verwendet wird.
 
-1. Wenn Sie dies noch nicht getan haben, installieren Sie [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wählen Sie auf der Seite „Workloads“ **.NET-Desktopentwicklung** aus, und klicken Sie dann auf **Installieren**. In der Zusammenfassung sehen Sie, dass **Entwicklungstools für .NET Framework 4 – 4.6** automatisch für Sie ausgewählt ist. Wenn Sie Visual Studio bereits installiert haben, können Sie die .NET-Workload mit dem Visual Studio-Startprogramm hinzufügen.
+1. Wenn Sie dies noch nicht getan haben, installieren Sie [Visual Studio](/visualstudio/install/install-visual-studio). Wählen Sie auf der Seite „Workloads“ **.NET-Desktopentwicklung** aus, und klicken Sie dann auf **Installieren**. In der Zusammenfassung sehen Sie, dass **Entwicklungstools für .NET Framework 4 – 4.6** automatisch für Sie ausgewählt ist. Wenn Sie Visual Studio bereits installiert haben, können Sie die .NET-Workload mit dem Visual Studio-Startprogramm hinzufügen.
 2. Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt**.
 3. Wählen Sie unter **Vorlagen** > **Visual C#** die Option **Konsolen-App (.NET Framework)** aus, geben Sie *myDotnetProject* als Name des Projekts ein, wählen Sie den Projektspeicherort, und klicken Sie dann auf **OK**.
 
@@ -198,7 +193,7 @@ Bevor Sie eine Vorlage bereitstellen können, stellen Sie sicher, dass Sie Zugri
     managementURI=https://management.core.windows.net/
     baseURL=https://management.azure.com/
     authURL=https://login.windows.net/
-    graphURL=https://graph.windows.net/
+    graphURL=https://graph.microsoft.com/
     ```
 
     Ersetzen Sie **&lt;subscription-id&gt;** durch Ihre Abonnement-ID, **&lt;application-id&gt;** durch die Active Directory-Anwendungs-ID, **&lt;authentication-key&gt;** durch den Anwendungsschlüssel und **&lt;tenant-id&gt;** durch die Mandanten-ID.
@@ -331,5 +326,5 @@ Die vollständige Ausführung dieser Konsolenanwendung sollte etwa fünf Minuten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Falls bei der Bereitstellung Probleme aufgetreten sind, sollten Sie den Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../../resource-manager-common-deployment-errors.md) lesen.
-* Informationen zum Bereitstellen einer virtuellen Maschine und deren unterstützende Ressourcen finden Sie unter [Bereitstellen eines virtuellen Azure-Computers mit C#](csharp.md).
+* Falls bei der Bereitstellung Probleme aufgetreten sind, sollten Sie den Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md) lesen.
+* Informationen zum Bereitstellen einer virtuellen Maschine und deren unterstützende Ressourcen finden Sie unter [Bereitstellen eines virtuellen Azure-Computers mit C#](../../azure-resource-manager/templates/deploy-rest.md).

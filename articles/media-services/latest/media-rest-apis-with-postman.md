@@ -1,26 +1,28 @@
 ---
-title: Konfigurieren von Postman für Azure Media Services-REST-API-Aufrufe
-description: Erfahren Sie, wie Sie Postman für Azure Media Services-REST-API-Aufrufe konfigurieren.
+title: Konfigurieren von Postman für Azure Media Services v3 REST-API-Aufrufe
+description: In diesem Artikel wird veranschaulicht, wie Sie Postman so konfigurieren, dass das Tool für den Aufruf von Azure Media Services-REST-APIs verwendet werden kann.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/11/2019
-ms.author: juliako
-ms.openlocfilehash: d25596884acdb356779eafa4348240239855ce37
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: aa10cb207011051c30866a3a3ed693e7113b5882
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308451"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89297704"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurieren von Postman für Media Services-REST-API-Aufrufe
+# <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Konfigurieren von Postman für Media Services v3 REST-API-Aufrufe
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In diesem Artikel wird veranschaulicht, wie Sie **Postman** so konfigurieren, dass das Tool für den Aufruf von Azure Media Services-REST-APIs verwendet werden kann. In diesem Artikel wird veranschaulicht, wie Umgebungs- und Sammlungsdateien in **Postman** importiert werden. Die Sammlung enthält gruppierte Definitionen von HTTP-Anforderungen, die Azure Media Services-REST-APIs aufrufen. Die Umgebungsdatei enthält Variablen, die von der Sammlung verwendet werden.
 
@@ -28,11 +30,11 @@ Bevor Sie mit der Entwicklung beginnen, lesen Sie [Entwickeln mit Media Services
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md) Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos. 
-- Beschaffen Sie die Informationen, die für den [Zugriff auf APIs](access-api-cli-how-to.md) benötigt werden.
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md) Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos. 
+- Beschaffen Sie die Informationen, die für den [Zugriff auf APIs](./access-api-howto.md) benötigt werden.
 - Installieren Sie den REST-Client von [Postman](https://www.getpostman.com/), um die REST-APIs auszuführen, die in einigen der AMS REST-Tutorials gezeigt werden. 
 
-    Wir verwenden **Postman**, aber jedes REST-Tool wäre geeignet. Weitere Alternativen sind: **Visual Studio Code** mit dem REST-Plug-In oder **Telerik Fiddler**. 
+    Wir verwenden **Postman**, aber jedes REST-Tool wäre geeignet. Andere Alternativen sind: **Visual Studio Code** mit dem REST-Plug-In oder **Telerik Fiddler**. 
 
 > [!IMPORTANT]
 > Informieren Sie sich über die [Namenskonventionen](media-services-apis-overview.md#naming-conventions).
@@ -47,11 +49,9 @@ Klonen Sie ein GitHub-Repository mit der Postman-Sammlung und den Umgebungsdatei
 
 ## <a name="configure-postman"></a>Konfigurieren von Postman
 
-In diesem Abschnitt wird Postman konfiguriert.
-
 ### <a name="configure-the-environment"></a>Konfigurieren der Umgebung 
 
-1. Öffnen Sie **Postman**.
+1. Öffnen Sie die App **Postman**.
 2. Wählen Sie auf der rechten Seite des Bildschirms die Option **Manage environment** (Umgebung verwalten) aus.
 
     ![Verwalten der Umgebung](./media/develop-with-postman/postman-import-env.png)
@@ -80,7 +80,7 @@ In diesem Abschnitt wird Postman konfiguriert.
 
 Bevor Sie mit dem Ändern von AMS v3-Ressourcen beginnen, müssen Sie das Azure AD-Token für die Dienstprinzipalauthentifizierung abrufen und festlegen.
 
-1. Klicken Sie im linken Fenster von Postman auf „Step 1: Get AAD Auth token“ (Schritt 1: AAD-Authentifizierungstoken abrufen).
+1. Wählen Sie im linken Fenster der Postman-App „Step 1: Get AAD Auth token“ (Schritt 1: AAD-Authentifizierungstoken abrufen).
 2. Klicken Sie anschließend auf „Get Azure AD Token for Service Principal Authentication“ (Azure AD-Token für Dienstprinzipalauthentifizierung abrufen).
 3. Klicken Sie auf **Senden**.
 
@@ -94,9 +94,13 @@ Bevor Sie mit dem Ändern von AMS v3-Ressourcen beginnen, müssen Sie das Azure 
 
     ![Abrufen des AAD-Tokens](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
+## <a name="troubleshooting"></a>Problembehandlung 
+
+* Wenn Ihre Anwendung den Fehler „HTTP 504: Gateway-Timeout“ anzeigt, stellen Sie sicher, dass die location-Variable nicht explizit auf einen anderen Wert als den erwarteten Speicherort des Media Services-Kontos festgelegt wurde. 
+* Wenn Sie den Fehler „Konto nicht gefunden“ erhalten, überprüfen Sie auch, ob die location-Eigenschaft in der Body-JSON-Meldung auf den Speicherort festgelegt ist, an dem sich das Media Services-Konto befindet. 
+
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Hochladen von Dateien in ein Media Services-Konto mit REST](upload-files-rest-how-to.md)
 - [Erstellen von Filtern mit der Media Services-REST-API](filters-dynamic-manifest-rest-howto.md)
 - [Auf Azure Resource Manager basierte REST-API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
 

@@ -1,20 +1,19 @@
 ---
 title: Testen mit Livedaten mit Azure Stream Analytics für Visual Studio
 description: Informationen zum lokalen Testen Ihres Azure Stream Analytics-Auftrags mithilfe von Livestreamingdaten
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ea55d2f96a87503d43a69d288ce85dcff32a39ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0788d8b4f659364fcedc690185c9159a24434125
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479781"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123913"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Lokales Testen von Livedaten mithilfe von Azure Stream Analytics-Tools für Visual Studio (Vorschauversion)
 
@@ -40,7 +39,6 @@ Die folgenden lokalen Testoptionen werden unterstützt:
 
    ![Azure Stream Analytics Visual Studio mit Live-Cloudeingabe](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
 
-
 3. Legen Sie die **Startzeit** fest, um zu definieren, wann der Auftrag mit der Verarbeitung von Eingabedaten beginnt. Der Auftrag muss Eingabedaten u.U. vorab lesen, um genaue Ergebnisse sicherzustellen. Die Standardzeit ist auf 30 Minuten in der Zukunft festgelegt.
 
    ![Azure Stream Analytics Visual Studio – Anfangszeit der Livedaten](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
@@ -61,11 +59,10 @@ Die folgenden lokalen Testoptionen werden unterstützt:
 
 * Power BI und Azure Data Lake Storage werden aufgrund von Einschränkungen des Authentifizierungsmodells nicht als Ausgabesenken unterstützt.
 
-* Nur Cloudeingabeoptionen unterstützen [Zeitrichtlinien](stream-analytics-out-of-order-and-late-events.md), lokale Eingabeoptionen nicht.
+* Nur Cloudeingabeoptionen unterstützen [Zeitrichtlinien](./stream-analytics-time-handling.md), lokale Eingabeoptionen nicht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen eines Stream Analytics-Auftrags mithilfe des Azure Stream Analytics-Tools für Visual Studio](stream-analytics-quick-create-vs.md)
-* [Installieren der Azure Stream Analytics-Tools für Visual Studio](stream-analytics-tools-for-visual-studio-install.md)
 * [Lokales Testen von Stream Analytics-Abfragen mit Visual Studio](stream-analytics-vs-tools-local-run.md)
 * [Anzeigen von Azure Stream Analytics-Aufträgen mit Visual Studio](stream-analytics-vs-tools.md)

@@ -1,6 +1,6 @@
 ---
-title: Erstellen von benutzerdefinierten Rollen für Azure-Ressourcen mit Azure PowerShell | Microsoft-Dokumentation
-description: Erfahren Sie, wie benutzerdefinierte Rollen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen mithilfe von Azure PowerShell erstellt werden. Dies umfasst das Auflisten, Erstellen, Aktualisieren und Löschen von benutzerdefinierten Rollen.
+title: Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen mithilfe von Azure PowerShell – Azure RBAC
+description: Erfahren Sie, wie Sie benutzerdefinierte Rollen mithilfe von Azure-PowerShell und Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung) auflisten, erstellen, aktualisieren oder löschen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,24 +8,29 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/20/2019
+ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ad1185cab2b2bd2d0fea10f21b7859fd9ab1339f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 799475db567c88f067192d027589e9185ee1782b
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158447"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369173"
 ---
-# <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>Erstellen benutzerdefinierter Rollen für Azure-Ressourcen mithilfe von Azure PowerShell
+# <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen mithilfe von Azure PowerShell
 
-Wenn die integrierten Rollen für Azure-Ressourcen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen [benutzerdefinierten Rollen](built-in-roles.md) erstellen. In diesem Artikel wird das Erstellen und Verwalten benutzerdefinierter Rollen mithilfe von Azure PowerShell beschrieben.
+> [!IMPORTANT]
+> Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ein ausführliches Tutorial zum Erstellen einer benutzerdefinierten Rolle finden Sie unter [Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe von Azure PowerShell](tutorial-custom-role-powershell.md).
+Wenn die [integrierten Azure-Rollen](built-in-roles.md) die Anforderungen Ihrer Organisation nicht erfüllen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Rollen mithilfe von Azure PowerShell auflisten, erstellen, aktualisieren oder löschen.
+
+Ein ausführliches Tutorial zum Erstellen einer benutzerdefinierten Rolle finden Sie unter [Tutorial: Erstellen einer benutzerdefinierten Azure-Rolle mithilfe von Azure PowerShell](tutorial-custom-role-powershell.md).
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -58,7 +63,7 @@ API Management Service Contributor                   False
 Im folgenden Beispiel werden nur die benutzerdefinierten Rollen aufgelistet, die für die Zuweisung im ausgewählten Abonnement verfügbar sind.
 
 ```azurepowershell
-Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
+Get-AzRoleDefinition -Custom | FT Name, IsCustom
 ```
 
 ```Example
@@ -74,7 +79,7 @@ Wenn sich das ausgewählte Abonnement nicht in der `AssignableScopes` der Rolle 
 Zum Auflisten der Definition einer benutzerdefinierten Rolle verwenden Sie [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition). Dies ist derselbe Befehl, den Sie für eine integrierte Rolle verwenden würden.
 
 ```azurepowershell
-Get-AzRoleDefinition <role name> | ConvertTo-Json
+Get-AzRoleDefinition <role_name> | ConvertTo-Json
 ```
 
 ```Example
@@ -109,7 +114,7 @@ PS C:\> Get-AzRoleDefinition "Virtual Machine Operator" | ConvertTo-Json
 Im folgenden Beispiel werden die Aktionen der Rolle aufgelistet:
 
 ```azurepowershell
-(Get-AzRoleDefinition <role name>).Actions
+(Get-AzRoleDefinition <role_name>).Actions
 ```
 
 ```Example
@@ -297,6 +302,42 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/22222222-2222-2222-2222-222222222222}
 ```
 
+Im folgenden Beispiel wird `AssignableScopes` für die benutzerdefinierte Rolle *Virtual Machine Operator* eine Verwaltungsgruppe hinzugefügt. Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase.
+
+```azurepowershell
+Get-AzManagementGroup
+
+$role = Get-AzRoleDefinition "Virtual Machine Operator"
+$role.AssignableScopes.Add("/providers/Microsoft.Management/managementGroups/{groupId1}")
+Set-AzRoleDefinition -Role $role
+```
+
+```Example
+PS C:\> Get-AzManagementGroup
+
+Id          : /providers/Microsoft.Management/managementGroups/marketing-group
+Type        : /providers/Microsoft.Management/managementGroups
+Name        : marketing-group
+TenantId    : 99999999-9999-9999-9999-999999999999
+DisplayName : Marketing group
+
+PS C:\> $role = Get-AzRoleDefinition "Virtual Machine Operator"
+PS C:\> $role.AssignableScopes.Add("/providers/Microsoft.Management/managementGroups/marketing-group")
+PS C:\> Set-AzRoleDefinition -Role $role
+
+Name             : Virtual Machine Operator
+Id               : 88888888-8888-8888-8888-888888888888
+IsCustom         : True
+Description      : Can monitor and restart virtual machines.
+Actions          : {Microsoft.Storage/*/read, Microsoft.Network/*/read, Microsoft.Compute/*/read,
+                   Microsoft.Compute/virtualMachines/start/action...}
+NotActions       : {}
+AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
+                   /subscriptions/11111111-1111-1111-1111-111111111111,
+                   /subscriptions/22222222-2222-2222-2222-222222222222,
+                   /providers/Microsoft.Management/managementGroups/marketing-group}
+```
+
 ### <a name="update-a-custom-role-with-a-json-template"></a>Aktualisieren einer benutzerdefinierten Rolle mit einer JSON-Vorlage
 
 Mithilfe der vorherigen JSON-Vorlage können Sie eine vorhandene benutzerdefinierte Rolle über das Hinzufügen oder Entfernen von Aktionen mühelos ändern. Aktualisieren Sie die JSON-Vorlage, indem Sie „Microsoft.Network“ die Aktion „Read“ hinzufügen (siehe unten). Die Definitionen in der Vorlage werden nicht kumulativ auf eine vorhandene Definition angewendet. Dies bedeutet, dass die Rolle entsprechend Ihren Angaben in der Vorlage angezeigt wird. Außerdem müssen Sie das Feld „ID“ mit der ID der Rolle aktualisieren. Wenn Sie nicht sicher sind, wie dieser Wert lautet, können Sie diese Informationen mit dem Cmdlet [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) abrufen.
@@ -360,6 +401,6 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe von Azure PowerShell](tutorial-custom-role-powershell.md)
-- [Benutzerdefinierte Rollen für Azure-Ressourcen](custom-roles.md)
-- [Vorgänge für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md)
+- [Tutorial: Erstellen einer benutzerdefinierten Azure-Rolle mithilfe von Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Benutzerdefinierte Azure-Rollen](custom-roles.md)
+- [Vorgänge für Azure-Ressourcenanbieter](resource-provider-operations.md)

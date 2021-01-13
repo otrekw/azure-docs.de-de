@@ -1,31 +1,25 @@
 ---
-title: 'Azure PowerShell-Skriptbeispiel: Wiederherstellen einer App-Sicherung in einem anderen Abonnement | Microsoft-Dokumentation'
-description: 'Azure PowerShell-Skriptbeispiel: Wiederherstellen einer Web-App aus einer Sicherung in einem anderen Abonnement'
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jpconnoc
-editor: ''
+title: 'Mit PowerShell: Wiederherstellen der Sicherung in einem anderen Abonnement'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie eine Sicherung in einem anderen Abonnement wiederherstellen.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 5f293f290bd0c8b6c5546d37a43dde64a5af4f82
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, seodec18, devx-track-azurepowershell
+ms.openlocfilehash: a0728d9926cc7f5d8b200a9003353b015dd3a97c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098404"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89075911"
 ---
 # <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>Wiederherstellen einer Web-App aus einer Sicherung in einem anderen Abonnement mithilfe von PowerShell
 
 Mit dem folgenden Skriptbeispiel wird eine zuvor erstellte Sicherung aus einer vorhandenen Web-App abgerufen und in einer Web-App in einem anderen Abonnement wiederhergestellt. 
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. 
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. 
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -54,6 +48,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Azure PowerShell-Beispiele für Azure App Service-Web-Apps finden Sie unter [Azure PowerShell-Beispiele](../samples-powershell.md).

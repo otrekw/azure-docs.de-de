@@ -1,32 +1,29 @@
 ---
-title: 'Azure Service Fabric: Konfigurieren eines vorhandenen Azure Service Fabric-Clusters zum Aktivieren der Unterstützung für verwaltete Identitäten | Microsoft-Dokumentation'
-description: In diesem Artikel erfahren Sie, wie Sie einen vorhandenen Azure Service Fabric-Cluster für die Unterstützung verwalteter Identitäten konfigurieren.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
+title: Konfigurieren von Unterstützung der verwalteten Identität in einem vorhandenen Service Fabric-Cluster
+description: 'Vorgehensweise: Aktivieren der Unterstützung der verwalteten Identität in einem vorhandenen Azure Service Fabric-Cluster'
 ms.topic: article
-ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: adc21358011454c8687998dc5d257052959b933b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 03/11/2019
+ms.openlocfilehash: 7bcba34e941f6fee038aa475d7c0869eb65aca2e
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640728"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574699"
 ---
-# <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support-preview"></a>Konfigurieren eines vorhandenen Azure Service Fabric-Clusters für die Unterstützung verwalteter Identitäten (Vorschauversion)
-Um auf die Funktion für verwaltete Identitäten für Azure Service Fabric-Anwendungen zuzugreifen, müssen Sie zunächst den **Tokendienst für verwaltete Identitäten** im Cluster aktivieren. Dieser Dienst ist für die Authentifizierung von Service Fabric-Anwendungen anhand ihrer verwalteten Identitäten und für das Abrufen von Zugriffstoken in ihrem Namen zuständig. Nachdem der Dienst aktiviert wurde, wird er im Service Fabric Explorer im Abschnitt **System** im linken Bereich unter dem Namen **fabric:/System/ManagedIdentityTokenService** angezeigt.
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Konfigurieren von Unterstützung der verwalteten Identität in einem vorhandenen Service Fabric-Cluster
+
+Um [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) in Ihren Service Fabric-Anwendungen zu verwenden, aktivieren Sie zunächst den *Tokendienst für verwaltete Identitäten* auf dem Cluster. Dieser Dienst ist für die Authentifizierung von Service Fabric-Anwendungen anhand ihrer verwalteten Identitäten und für den Abruf von Zugriffstoken in deren Auftrag zuständig. Nachdem der Dienst aktiviert wurde, wird er im Service Fabric Explorer im Abschnitt **System** im linken Bereich unter dem Namen **fabric:/System/ManagedIdentityTokenService** angezeigt.
 
 > [!NOTE]
 > Zum Aktivieren des **Tokendiensts für verwaltete Identitäten** ist mindestens Version 6.5.658.9590 der Service Fabric-Runtime erforderlich.  
-> 
+>
 > Sie finden die Service Fabric-Version eines Clusters im Azure-Portal. Öffnen Sie dazu dort die Clusterressource, und überprüfen Sie die Eigenschaft **Service Fabric-Version** im Abschnitt **Zusammenfassung**.
-> 
+>
 > Wenn sich der Cluster im **manuellen** Upgrademodus befindet, müssen Sie ihn zunächst auf Version 6.5.658.9590 oder höher aktualisieren.
 
+## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>Aktivieren des *Tokendiensts für verwaltete Identitäten* in einem vorhandenen Cluster
 
-## <a name="enable-the-managed-identity-token-service-in-an-existing-cluster"></a>Aktivieren des Tokendiensts für verwaltete Identitäten in einem vorhandenen Cluster
-Um den Tokendienst für verwaltete Identitäten in einem vorhandenen Cluster zu aktivieren, müssen Sie ein Clusterupgrade initiieren und dabei zwei Änderungen angeben: Aktivieren Sie den Tokendienst für verwaltete Identitäten, und fordern Sie einen Neustart jedes einzelnen Knotens an. Fügen Sie dazu die folgenden beiden Codeausschnitte in der Azure Resource Manager-Vorlage hinzu:
+Um den Tokendienst für verwaltete Identitäten in einem vorhandenen Cluster zu aktivieren, müssen Sie ein Clusterupgrade initiieren und dabei zwei Änderungen angeben: (1) Aktivieren Sie den Tokendienst für verwaltete Identitäten, und fordern Sie (2) einen Neustart jedes einzelnen Knotens an. Fügen Sie zunächst den folgenden Codeausschnitt Ihrer Azure Resource Manager-Clustervorlage hinzu:
 
 ```json
 "fabricSettings": [
@@ -42,7 +39,7 @@ Um den Tokendienst für verwaltete Identitäten in einem vorhandenen Cluster zu 
 ]
 ```
 
-Damit die Änderungen wirksam werden, müssen Sie auch die Upgraderichtlinie ändern, um auf jedem Knoten einen Neustart der Service Fabric-Runtime zu erzwingen, wenn das Upgrade den Cluster durchläuft. Mit diesem Neustart wird sichergestellt, dass der neu aktivierte Systemdienst auf jedem Knoten gestartet und ausgeführt wird. Im folgenden Codeausschnitt ist `forceRestart` die wesentliche Einstellung. Verwenden Sie Ihre vorhandenen Werte für die übrigen Einstellungen.  
+Damit die Änderungen wirksam werden, müssen Sie auch die Upgraderichtlinie ändern, um auf jedem Knoten einen Neustart der Service Fabric-Runtime zu erzwingen, wenn das Upgrade den Cluster durchläuft. Mit diesem Neustart wird sichergestellt, dass der neu aktivierte Systemdienst auf jedem Knoten gestartet und ausgeführt wird. Im folgenden Codeausschnitt ist `forceRestart` die wesentliche Einstellung, um den Neustart zu aktivieren. Verwenden Sie für die restlichen Parameter die unten beschriebenen Werte, oder verwenden Sie vorhandene benutzerdefinierte Werte, die bereits für die Clusterressource angegeben wurden. Benutzerdefinierte Einstellungen für die Fabric-Upgraderichtlinie („upgradeDescription“) können im Azure-Portal angezeigt werden, indem Sie in der Service Fabric-Ressource oder in „resources.azure.com“ die Option „Fabric-Upgrades“ auswählen. Standardoptionen für die Upgraderichtlinie („upgradeDescription“) können nicht über PowerShell oder „resources.azure.com“ angezeigt werden. Weitere Informationen finden Sie unter [ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet).  
 
 ```json
 "upgradeDescription": {

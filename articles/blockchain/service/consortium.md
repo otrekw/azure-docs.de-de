@@ -1,23 +1,17 @@
 ---
-title: Azure Blockchain-Dienstkonsortium
-description: ''
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
-ms.topic: article
-ms.service: azure-blockchain
+title: Azure Blockchain Service-Konsortium
+description: Übersicht über die Implementierung von Konsortium-Blockchainnetzwerken durch den Azure Blockchain Service.
+ms.date: 11/21/2019
+ms.topic: conceptual
 ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: e745a4ee4789ef46a61b5cb0bbf806c41ef631ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027618"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84712529"
 ---
-# <a name="azure-blockchain-service-consortium"></a>Azure Blockchain-Dienstkonsortium
+# <a name="azure-blockchain-service-consortium"></a>Azure Blockchain Service-Konsortium
 
 Mit dem Azure Blockchain-Dienst können Sie private Konsortium-Blockchainnetzwerke erstellen, bei denen jedes Blockchainnetzwerk auf bestimmte Teilnehmer im Netzwerk beschränkt werden kann. Nur Teilnehmer des privaten Konsortium-Blockchainnetzwerks können die Blockchain-Komponenten einsehen und mit ihren interagieren. Konsortium-Netzwerke im Azure Blockchain-Dienst können zwei Arten von Mitgliederteilnehmerrollen enthalten:
 
@@ -85,4 +79,4 @@ Sie können Ihr Ethereum-Konto zurücksetzen, indem Sie auf Ihr Mitgliedskonto k
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Verwalten der Mitglieder im Azure Blockchain-Dienst mithilfe von PowerShell](manage-consortium-powershell.md)
+Auf Konsortiumsverwaltungsaktionen kann über PowerShell zugegriffen werden. Weitere Informationen finden Sie unter [Verwalten der Konsortiumsmitglieder in Azure Blockchain Service mithilfe von PowerShell](manage-consortium-powershell.md).

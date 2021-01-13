@@ -3,25 +3,25 @@ title: Konfiguration des einmaligen Anmeldens (SSO) mit einem Klick für Ihre Az
 description: Schritte für die 1-Klick-Konfiguration von SSO für Ihre Anwendung aus dem Azure Marketplace.
 services: active-directory
 documentationCenter: na
-author: jeevansd
-manager: mtillman
-ms.reviewer: celested
+author: kenwith
+manager: celestedg
+ms.reviewer: kenwith
 ms.assetid: e0416991-4b5d-4b18-89bb-91b6070ed3ba
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 06/11/2019
-ms.author: jeedes
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a83d27af4fd783b95c53ef3a9169cb72bfc29d34
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: fe4e981782878ce4f86dd7dcb8ae635a60b2405a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872422"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658705"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>1-Klick-App-Konfiguration für einmaliges Anmelden
 
@@ -40,7 +40,7 @@ Das Feature „1-Klick-SSO“ wurde entwickelt, um einmaliges Anmelden für Azur
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Aktives Abonnement der Anwendung, die Sie mit SSO konfigurieren möchten. Außerdem benötigen Sie Administratoranmeldeinformationen.
-- Die **Erweiterung zur sicheren Anmeldung bei „Meine Apps“** von Microsoft, die im Browser installiert ist. Weitere Informationen finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
+- Die **Erweiterung zur sicheren Anmeldung bei „Meine Apps“** von Microsoft, die im Browser installiert ist. Weitere Informationen finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="one-click-sso-configuration-steps"></a>Schritte der 1-Klick-SSO-Konfiguration
 
@@ -48,7 +48,7 @@ Das Feature „1-Klick-SSO“ wurde entwickelt, um einmaliges Anmelden für Azur
 
 2. Wählen Sie **Einmaliges Anmelden**.
 
-3. Wählen Sie **Einmaliges Anmelden aktivieren**aus.
+3. Wählen Sie **Einmaliges Anmelden aktivieren** aus.
 
 4. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die erforderlichen Konfigurationswerte ein.
 
@@ -59,7 +59,7 @@ Das Feature „1-Klick-SSO“ wurde entwickelt, um einmaliges Anmelden für Azur
 
    ![Installieren der Browsererweiterung zur sicheren Anmeldung bei „Meine Apps“](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
-6. Nachdem Sie dem Browser die Erweiterung hinzugefügt haben, klicken Sie auf **Anwendungsnamen\< einrichten\>** . Sobald Sie zum Verwaltungsportal der Anwendung umgeleitet wurden, melden Sie sich als Administrator an.
+6. Wählen Sie nach dem Hinzufügen der Erweiterung zum Browser **\<Application Name\> einrichten** aus. Sobald Sie zum Verwaltungsportal der Anwendung umgeleitet wurden, melden Sie sich als Administrator an.
 
    ![Einrichten des Anwendungsnamens](./media/one-click-sso-tutorial/setup-sso.png)
 
@@ -84,6 +84,5 @@ Das Feature „1-Klick-SSO“ wurde entwickelt, um einmaliges Anmelden für Azur
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
-* [Was ist die Browsererweiterung zur sicheren Anmeldung bei „Meine Apps“?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
- 
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../saas-apps/tutorial-list.md)
+* [Was ist die Browsererweiterung zur sicheren Anmeldung bei „Meine Apps“?](../user-help/my-apps-portal-end-user-access.md)

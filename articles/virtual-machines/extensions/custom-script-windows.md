@@ -1,21 +1,22 @@
 ---
-title: Azure – benutzerdefinierte Skripterweiterung für Windows | Microsoft-Dokumentation
+title: Benutzerdefinierte Skripterweiterung von Azure für Windows
 description: Automatisieren von Konfigurationsaufgaben für virtuelle Windows-Computer mithilfe der benutzerdefinierten Skripterweiterung
 services: virtual-machines-windows
 manager: carmonm
 author: bobbytreed
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/02/2019
+ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: c0c160d9fc2fcfb8da004d02baae1dd410620cbb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: aa95d6792f2f5754a237c7bf5e90a11e2e011ede
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204202"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861773"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -30,7 +31,17 @@ In diesem Dokument erfahren Sie, wie Sie die benutzerdefinierte Skripterweiterun
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die Erweiterung für benutzerdefinierte Skripts für Windows wird auf den für Erweiterungen unterstützten Betriebssystemen ausgeführt. Weitere Informationen finden Sie unter [Azure-Erweiterung: unterstützte Betriebssysteme](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems).
+Die Erweiterung für benutzerdefinierte Skripts für Windows kann auf den von Erweiterungen unterstützten Betriebssystemen ausgeführt werden.
+### <a name="windows"></a>Windows
+
+* Windows Server 2008 R2
+* Windows Server 2012
+* Windows Server 2012 R2
+* Windows 10
+* Windows Server 2016
+* Windows Server 2016 Core
+* Windows Server 2019
+* Windows Server 2019 Core
 
 ### <a name="script-location"></a>Speicherort des Skripts
 
@@ -38,7 +49,7 @@ Sie können die Erweiterung so konfigurieren, dass mit Ihren Azure Blob Storage-
 
 ### <a name="internet-connectivity"></a>Internetverbindung
 
-Wenn Sie ein Skript extern herunterladen möchten, etwa von GitHub oder Azure Storage, müssen zusätzliche Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden. Wenn sich Ihr Skript beispielsweise in Azure Storage befindet, können Sie Zugriff über Azure-NSG-Diensttags für [Storage](../../virtual-network/security-overview.md#service-tags) gewähren.
+Wenn Sie ein Skript extern herunterladen möchten, etwa von GitHub oder Azure Storage, müssen zusätzliche Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden. Wenn sich Ihr Skript beispielsweise in Azure Storage befindet, können Sie Zugriff über Azure-NSG-Diensttags für [Storage](../../virtual-network/network-security-groups-overview.md#service-tags) gewähren.
 
 Befindet sich Ihr Skript auf einem lokalen Server, müssen eventuell dennoch weitere Firewall- und Netzwerksicherheitsgruppen-Ports geöffnet werden.
 
@@ -50,12 +61,14 @@ Befindet sich Ihr Skript auf einem lokalen Server, müssen eventuell dennoch wei
 * Die Skriptausführung darf maximal 90 Minuten dauern. Danach gilt die Bereitstellung der Erweiterung als nicht erfolgreich.
 * Das Skript darf keine Systemneustarts enthalten, da diese Aktion zu Problemen mit anderen Erweiterungen führt, die installiert werden. Außerdem wird die Erweiterung nach dem Neustart nicht fortgesetzt.
 * Wenn Sie ein Skript haben, das zu einem Neustart führt und dann Anwendungen installiert und Skripts ausführt, können Sie den Neustart mit einer Windows-Planungsaufgabe planen oder Tools wie DSC, Chef oder Puppet-Erweiterungen verwenden.
+* Es wird nicht empfohlen, ein Skript auszuführen, das bewirkt, dass der VM-Agent angehalten oder aktualisiert wird. Das kann dazu führen, dass die Erweiterung in einem Übergangszustand verbleibt, wodurch ein Timeout verursacht wird.
 * Die Erweiterung führt jedes Skript nur einmal aus. Soll ein Skript bei jedem Neustart des Systems ausgeführt werden, müssen Sie die Erweiterung zum Erstellen eines geplanten Windows-Tasks verwenden.
 * Wenn Sie den Ausführungszeitpunkt eines Skripts planen möchten, erstellen Sie mithilfe der Erweiterung einen geplanten Windows-Task.
 * Während der Skriptausführung wird im Azure-Portal sowie in der CLI nur ein Übergangsstatus für die Erweiterung angezeigt. Sollten Sie häufigere Statusaktualisierungen für ein ausgeführtes Skript benötigen, müssen Sie eine eigene Lösung erstellen.
 * Die Erweiterung für benutzerdefinierte Skripts verfügt über keine native Proxyserverunterstützung. Sie können innerhalb Ihres Skripts jedoch ein Dateiübertragungstool mit Proxyserverunterstützung verwenden (beispielsweise *cURL*).
 * Achten Sie auf nicht standardmäßige Verzeichnispfade, von denen Ihre Skripts oder Befehle gegebenenfalls abhängen, und verwenden Sie eine entsprechende Logik, um diese Situation zu behandeln.
 * Die benutzerdefinierte Skripterweiterung wird unter dem Konto „LocalSystem“ ausgeführt.
+* Wenn Sie die Eigenschaften *storageAccountName* und *storageAccountKey* verwenden möchten, müssen diese Eigenschaften in *protectedSettings* angeordnet sein.
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
@@ -81,7 +94,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
     "properties": {
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.9",
+        "typeHandlerVersion": "1.10",
         "autoUpgradeMinorVersion": true,
         "settings": {
             "fileUris": [
@@ -92,31 +105,36 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
         "protectedSettings": {
             "commandToExecute": "myExecutionCommand",
             "storageAccountName": "myStorageAccountName",
-            "storageAccountKey": "myStorageAccountKey"
+            "storageAccountKey": "myStorageAccountKey",
+            "managedIdentity" : {}
         }
     }
 }
 ```
 
 > [!NOTE]
+> Die managedIdentity-Eigenschaft **darf nicht** in Verbindung mit den Eigenschaften „storageAccountName“ oder "storageAccountKey" verwendet werden.
+
+> [!NOTE]
 > Auf einem virtuellen Computer kann jeweils nur eine Version einer Erweiterung installiert werden. Wenn Sie die Erweiterung für benutzerdefinierte Skripts zweimal in derselben Resource Manager-Vorlage für denselben Computer angeben, treten Fehler auf.
 
 > [!NOTE]
-> Dieses Schema kann in der VirtualMachine-Ressource oder als eigenständige Ressource verwendet werden. Der Name der Ressource muss das Format „virtualMachineName/extensionName“ haben, wenn diese Erweiterung als eigenständige Ressource in der ARM-Vorlage verwendet wird. 
+> Dieses Schema kann in der VirtualMachine-Ressource oder als eigenständige Ressource verwendet werden. Der Name der Ressource muss das Format „virtualMachineName/extensionName“ haben, wenn diese Erweiterung als eigenständige Ressource in der ARM-Vorlage verwendet wird.
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| NAME | Wert/Beispiel | Datentyp |
+| Name | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute | string |
-| type | CustomScriptExtension | string |
-| typeHandlerVersion | 1.9 | int |
+| publisher | Microsoft.Compute | Zeichenfolge |
+| type | CustomScriptExtension | Zeichenfolge |
+| typeHandlerVersion | 1.10 | INT |
 | fileUris (Beispiel) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
-| timestamp (Beispiel) | 123456789 | 32-Bit-Integer |
-| commandToExecute (Beispiel) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
-| storageAccountName (Beispiel) | examplestorageacct | string |
-| storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| timestamp (Beispiel) | 123456789 | 32-bit integer |
+| commandToExecute (Beispiel) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | Zeichenfolge |
+| storageAccountName (Beispiel) | examplestorageacct | Zeichenfolge |
+| storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | Zeichenfolge |
+| managedIdentity (z. B.) | { } oder { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" } oder { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | JSON-Objekt |
 
 >[!NOTE]
 >Bei Eigenschaftennamen wird zwischen Groß- und Kleinschreibung unterschieden. Um Bereitstellungsprobleme zu vermeiden, verwenden Sie die Namen wie hier gezeigt.
@@ -128,6 +146,9 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 * `timestamp` (optional, 32-Bit-Integer): Durch Ändern dieses Felds können Sie eine erneute Ausführung des Skripts auslösen.  Jeder Integerwert ist akzeptabel; er muss sich lediglich vom vorherigen Wert unterscheiden.
 * `storageAccountName` (optional, Zeichenfolge): der Name des Speicherkontos. Wenn Sie Speicheranmeldeinformationen angeben, muss es sich bei allen `fileUris` um URLs für Azure-Blobs handeln.
 * `storageAccountKey` (optional, Zeichenfolge): der Zugriffsschlüssel des Speicherkontos.
+* `managedIdentity` (optional, JSON-Objekt): die [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) zum Herunterladen von Dateien
+  * `clientId` (optional, Zeichenfolge): die Client-ID der verwalteten Identität
+  * `objectId` (optional, Zeichenfolge): die Objekt-ID der verwalteten Identität
 
 Die folgenden Werte können in öffentlichen oder geschützten Einstellungen festgelegt werden. Die Erweiterung lehnt jedoch jede Konfiguration ab, bei der die Werte sowohl in öffentlichen als auch in geschützten Einstellungen festgelegt sind.
 
@@ -137,11 +158,53 @@ Die Verwendung öffentlicher Einstellungen kann zwar beim Debuggen hilfreich sei
 
 Öffentliche Einstellungen werden in Klartext an den virtuellen Computer gesendet, auf dem das Skript ausgeführt wird.  Geschützte Einstellungen werden mit einem Schlüssel verschlüsselt, der nur in Azure und auf dem virtuellen Computer bekannt ist. Die Einstellungen werden unverändert auf dem virtuellen Computer gespeichert. Waren die Einstellungen also verschlüsselt, werden sie auch verschlüsselt auf dem virtuellen Computer gespeichert. Das Zertifikat zum Entschlüsseln der verschlüsselten Werte wird auf dem virtuellen Computer gespeichert und gegebenenfalls zur Laufzeit zum Entschlüsseln der Einstellungen verwendet.
 
+####  <a name="property-managedidentity"></a>Eigenschaft: managedIdentity
+> [!NOTE]
+> Diese Eigenschaft **muss** nur in geschützten Einstellungen angegeben werden.
+
+CustomScript (ab Version 1.10) unterstützt [verwaltete Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) zum Herunterladen von Dateien von URLs, die in der Einstellung „fileUris“ angegeben werden. So kann CustomScript auf private Azure Storage-Blobs oder -Container zugreifen, ohne dass der Benutzer Geheimnisse wie SAS-Token oder Speicherkontoschlüssel übergeben muss.
+
+Um diese Funktion verwenden zu können, muss der Benutzer der VM oder VMSS, auf der CustomScript ausgeführt werden soll, eine [vom System zugewiesene](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity) oder [vom Benutzer zugewiesene](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity) Identität hinzufügen und [der verwalteten Identität Zugriff auf den Azure Storage-Container oder das -Blob gewähren](../../active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage.md#grant-access).
+
+Um die vom System zugewiesene Identität für die Ziel-VM/VMSS zu verwenden, legen Sie das Feld „managedidentity“ auf ein leeres JSON-Objekt fest. 
+
+> Beispiel:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : {}
+> }
+> ```
+
+Um die vom Benutzer zugewiesene Identität für die Ziel-VM/VMSS zu verwenden, konfigurieren Sie das Feld „managedidentity“ mit der Client-ID oder der Objekt-ID der verwalteten Identität.
+
+> Beispiele:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" }
+> }
+> ```
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" }
+> }
+> ```
+
+> [!NOTE]
+> Die managedIdentity-Eigenschaft **darf nicht** in Verbindung mit den Eigenschaften storageAccountName oder storageAccountKey verwendet werden.
+
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
 Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Das im vorherigen Abschnitt erläuterte JSON-Schema kann in einer Azure Resource Manager-Vorlage zum Ausführen der benutzerdefinierten Skripterweiterung bei der Bereitstellung verwendet werden. Die folgenden Beispiele veranschaulichen die Verwendung der Erweiterung für benutzerdefinierte Skripts:
 
-* [Tutorial: Bereitstellen von VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
+* [Tutorial: Bereitstellen von VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-tutorial-deploy-vm-extensions.md)
 * [Deploy Two Tier Application on Windows and Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows) (Bereitstellen einer Zwei-Ebenen-Anwendung unter Windows und Azure SQL-Datenbank)
 
 ## <a name="powershell-deployment"></a>PowerShell-Bereitstellung
@@ -181,7 +244,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Name "buildserver1" `
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
-    -TypeHandlerVersion "1.9" `
+    -TypeHandlerVersion "1.10" `
     -Settings $settings    `
     -ProtectedSettings $protectedSettings `
 ```
@@ -199,7 +262,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Name "serverUpdate"
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
-    -TypeHandlerVersion "1.9" `
+    -TypeHandlerVersion "1.10" `
     -ProtectedSettings $protectedSettings
 
 ```
@@ -220,8 +283,13 @@ Wenn Sie [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/inv
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
 ```
+## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
+
+Informationen zum Bereitstellen der benutzerdefinierten Skripterweiterung für eine Skalierungsgruppe finden Sie unter [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0).
 
 ## <a name="classic-vms"></a>Klassische virtuelle Computer
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 Zum Bereitstellen der benutzerdefinierten Skripterweiterung auf klassischen virtuellen Computern können Sie das Azure-Portal oder klassische Azure PowerShell-Cmdlets verwenden.
 
@@ -235,7 +303,7 @@ Wählen Sie auf der Seite **Erweiterung installieren** die lokale PowerShell-Dat
 
 ### <a name="powershell"></a>PowerShell
 
-Mit dem Cmdlet [Set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure/set-azurevmcustomscriptextension) können Sie die benutzerdefinierte Skripterweiterung für einen vorhandenen virtuellen Computer bereitstellen.
+Mit dem Cmdlet [Set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure.service/set-azurevmcustomscriptextension) können Sie die benutzerdefinierte Skripterweiterung für einen vorhandenen virtuellen Computer bereitstellen.
 
 ```powershell
 # define your file URI

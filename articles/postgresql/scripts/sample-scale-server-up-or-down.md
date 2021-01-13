@@ -1,26 +1,29 @@
 ---
 title: 'Azure CLI-Skript: Skalieren und Überwachen einer Azure Database for PostgreSQL-Instanz'
 description: 'Azure CLI-Skriptbeispiel: Skalieren eines Azure-Datenbank für PostgreSQL-Servers auf eine andere Leistungsstufe nach Abfragen der Metriken.'
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurecli
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.topic: sample
 ms.date: 08/07/2019
-ms.openlocfilehash: 24aaf461576e6e043979660f9de968358763e003
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6bbf5f3a0a7d32425f80687de10444ee0819b9df
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882990"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660456"
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Überwachen und Skalieren eines einzelnen PostgreSQL-Servers mit der Azure CLI
-Dieses CLI-Beispielskript skaliert Compute- und Speicherressourcen für einen einzelnen Azure Database for PostgreSQL-Server nach Abfragen der Metriken. Computeressourcen können zentral hoch- oder herunterskaliert werden. Speicherressourcen können nur zentral hochskaliert werden. 
+Dieses CLI-Beispielskript skaliert Compute- und Speicherressourcen für einen einzelnen Azure Database for PostgreSQL-Server nach Abfragen der Metriken. Computeressourcen können hoch- oder herunterskaliert werden. Speicherressourcen können nur hochskaliert werden. 
 
-[!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
+> [!IMPORTANT] 
+> Der Speicher kann nur zentral hochskaliert und nicht herunterskaliert werden.
 
-Wenn Sie die Befehlszeilenschnittelle lokal ausführen, ist für diesen Artikel Azure CLI Version 2.0 oder höher erforderlich. Überprüfen Sie die Version, indem Sie `az --version` ausführen. Informationen zum Installieren oder Aktualisieren Ihrer Version der Azure CLI finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli).
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
+
+- Für diesen Artikel ist mindestens Version 2.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="sample-script"></a>Beispielskript
 Aktualisieren Sie das Skript mit Ihrer Abonnement-ID.

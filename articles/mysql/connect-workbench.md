@@ -1,26 +1,31 @@
 ---
-title: Herstellen einer Verbindung mit Azure Database for MySQL über MySQL Workbench
+title: 'Schnellstart: Herstellen einer Verbindung – MySQL Workbench – Azure Database for MySQL'
 description: Diese Schnellstartanleitung veranschaulicht die Verwendung von MySQL Workbench – einem Tool, mit dem Sie eine Verbindung mit Azure-Datenbank für MySQL herstellen und Daten daraus abfragen können.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: aa7d38171fdfaa6fb25b1863a09273a4e733b6e2
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 5/26/2020
+ms.openlocfilehash: 5e27cfec0a3f0a58c1e94a822e0c831f4efa1b32
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349942"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535536"
 ---
-# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: Verwenden von MySQL Workbench zum Verbinden und Abfragen von Daten
-Dieser Schnellstart zeigt, wie Sie mit der Anwendung MySQL Workbench eine Verbindung mit einer Azure-Datenbank für MySQL herstellen. 
+# <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von MySQL Workbench zum Herstellen einer Verbindung und zum Abfragen von Daten in Azure Database for MySQL
+
+Dieser Schnellstart zeigt, wie Sie mit der Anwendung MySQL Workbench eine Verbindung mit einer Azure-Datenbank für MySQL herstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
 - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe des Azure-Portals](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe der Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
+
+> [!IMPORTANT] 
+> Sicherstellen, dass der IP-Adresse, über die Sie eine Verbindung herstellen, die Firewallregeln des Servers über das [Azure-Portal](./howto-manage-firewall-using-portal.md) oder die [Azure CLI](./howto-manage-firewall-using-cli.md) hinzugefügt wurden
 
 ## <a name="install-mysql-workbench"></a>Installieren von MySQL Workbench
 Laden Sie MySQL-Workbench von der [MySQL-Website](https://dev.mysql.com/downloads/workbench/) auf Ihren Computer herunter, und installieren Sie die Anwendung.
@@ -35,25 +40,25 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 3. Klicken Sie auf den Servernamen.
 
 4. Notieren Sie sich im Bereich **Übersicht** des Servers den **Servernamen** und den **Anmeldenamen des Serveradministrators**. Wenn Sie Ihr Kennwort vergessen haben, können Sie es in diesem Bereich auch zurücksetzen.
- ![Servername für Azure-Datenbank für MySQL](./media/connect-php/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Servername für Azure-Datenbank für MySQL":::
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>Herstellen einer Verbindung mit dem Server unter Verwendung von MySQL Workbench 
 So stellen Sie eine Verbindung mit dem Server für Azure MySQL mithilfe des GUI-Tools „MySQL Workbench“ her:
 
-1.  Starten Sie die Anwendung MySQL Workbench auf dem Computer. 
+1.    Starten Sie die Anwendung MySQL Workbench auf dem Computer. 
 
-2.  Geben Sie im Dialogfeld **Setup New Connection** (Neue Verbindung einrichten) auf der Registerkarte **Parameter** folgende Informationen ein:
+2.    Geben Sie im Dialogfeld **Setup New Connection** (Neue Verbindung einrichten) auf der Registerkarte **Parameter** folgende Informationen ein:
 
-    ![Einrichten einer neuen Verbindung](./media/connect-workbench/2-setup-new-connection.png)
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="Einrichten einer neuen Verbindung":::
 
-    | **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung** |
-    |---|---|---|
-    |   Verbindungsname | Beispielverbindung | Geben Sie eine Bezeichnung für diese Verbindung an. |
-    | Verbindungsmethode | Standard (TCP/IP) | Standard (TCP/IP) ist ausreichend. |
-    | Hostname | *Servername* | Geben Sie den Servernamen an, den Sie zuvor beim Erstellen von Azure-Datenbank für MySQL verwendet haben. Unser Beispielserver heißt „mydemoserver.mysql.database.azure.com“. Verwenden Sie den vollqualifizierten Domänennamen (\*.mysql.database.azure.com), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt.  |
-    | Port | 3306 | Verwenden Sie immer den Port 3306, wenn Sie eine Verbindung mit Azure-Datenbank für MySQL herstellen. |
-    | Username |  *Anmeldename des Serveradministrators* | Geben Sie den Anmeldename des Serveradministrators ein, den Sie zuvor beim Erstellen von Azure-Datenbank für MySQL verwendet haben. Unser Beispielbenutzername lautet myadmin@mydemoserver. Sollten Sie sich nicht an Benutzernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. Das Format lautet: *Benutzername\@Servername*.
-    | Kennwort | Ihr Kennwort | Klicken Sie auf die Schaltfläche **In Vault speichern**, um das Kennwort zu speichern. |
+| **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung** |
+|---|---|---|
+|    Verbindungsname | Beispielverbindung | Geben Sie eine Bezeichnung für diese Verbindung an. |
+| Verbindungsmethode | Standard (TCP/IP) | Standard (TCP/IP) ist ausreichend. |
+| Hostname | *Servername* | Geben Sie den Servernamen an, den Sie zuvor beim Erstellen von Azure-Datenbank für MySQL verwendet haben. Unser Beispielserver heißt „mydemoserver.mysql.database.azure.com“. Verwenden Sie den vollqualifizierten Domänennamen (\*.mysql.database.azure.com), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt.  |
+| Port | 3306 | Verwenden Sie immer den Port 3306, wenn Sie eine Verbindung mit Azure-Datenbank für MySQL herstellen. |
+| Username |  *Anmeldename des Serveradministrators* | Geben Sie den Anmeldename des Serveradministrators ein, den Sie zuvor beim Erstellen von Azure-Datenbank für MySQL verwendet haben. Unser Beispielbenutzername lautet myadmin@mydemoserver. Sollten Sie sich nicht an Benutzernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. Das Format lautet: *Benutzername\@Servername*.
+| Kennwort | Ihr Kennwort | Klicken Sie auf die Schaltfläche **In Vault speichern**, um das Kennwort zu speichern. |
 
 3.   Klicken Sie auf **Verbindung testen**, um zu testen, ob alle Parameter richtig konfiguriert wurden. 
 
@@ -98,13 +103,23 @@ So stellen Sie eine Verbindung mit dem Server für Azure MySQL mithilfe des GUI-
 
     Der Screenshot zeigt ein Beispiel für SQL-Code in SQL Workbench und die Ausgabe nach der Ausführung.
     
-    ![SQL-Registerkarte in MySQL Workbench für die Ausführung von SQL-Beispielcode](media/connect-workbench/3-workbench-sql-tab.png)
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="SQL-Registerkarte in MySQL Workbench für die Ausführung von SQL-Beispielcode":::
 
 2. Um den SQL-Beispielcode auszuführen, klicken Sie auf der Registerkarte **SQL-Datei** auf der Symbolleiste auf das Blitzsymbol.
 3. Beachten Sie die drei im Registerkartenformat angezeigten Ergebnisse im Abschnitt **Ergebnisraster** in der Mitte der Seite. 
 4. Beachten Sie auch die Liste **Ausgabe** am unteren Rand der Seite. Der Status der einzelnen Befehle wird angezeigt. 
 
 Sie haben mithilfe von MySQL Workbench eine Verbindung mit Azure Database for MySQL hergestellt und Daten mit der Sprache SQL abgefragt.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Ressourcengruppe mit dem folgenden Befehl, um alle in dieser Schnellstartanleitung verwendeten Ressourcen zu bereinigen:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

@@ -1,21 +1,15 @@
 ---
-title: Referenz zur Azure Blockchain Workbench-Konfiguration
-description: Übersicht über die Anwendungskonfiguration in Azure Blockchain Workbench Preview.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 09/05/2019
+title: Referenz zu Azure Blockchain Workbench-Konfigurationsmetadaten
+description: Übersicht über die Anwendungskonfigurationsmetadaten in Azure Blockchain Workbench (Vorschauversion)
+ms.date: 12/09/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 1c737106b47b95fcc6d1abdadc81398a3bc9256d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: f0ba19bf1d7fdf05014ac199fae9392b5c3249d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845110"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87073077"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Referenz zur Azure Blockchain Workbench-Konfiguration
 
@@ -35,15 +29,15 @@ Jeder definierte Workflow legt Folgendes fest:
 * Benutzerrollen, die jede Aktion initiieren dürfen.
 * Intelligente Verträge, die die Geschäftslogik in Codedateien darstellen.
 
-## <a name="application"></a>Anwendung
+## <a name="application"></a>Application
 
 Eine Blockchainanwendung enthält Konfigurationsmetadaten, Workflows und Benutzerrollen, die innerhalb der Anwendung agieren oder teilnehmen können.
 
-| Feld | Description | Erforderlich |
+| Feld | Beschreibung | Erforderlich |
 |-------|-------------|:--------:|
 | ApplicationName | Eindeutiger Anwendungsname. Der entsprechende intelligente Vertrag muss den gleichen **Anwendungsnamen** für die jeweilige Vertragsklasse verwenden.  | Ja |
 | DisplayName | Der Anzeigename der Anwendung | Ja |
-| Description | Beschreibung der Anwendung | Nein |
+| BESCHREIBUNG | Beschreibung der Anwendung. | Nein |
 | ApplicationRoles | Sammlung von [Anwendungsrollen](#application-roles). Benutzerrollen, die innerhalb der Anwendung agieren oder teilnehmen können.  | Ja |
 | Workflows | Sammlung von [Workflows](#workflows). Jeder Workflow fungiert als Zustandsautomat, um den Ablauf der Geschäftslogik zu steuern. | Ja |
 
@@ -53,14 +47,14 @@ Ein Beispiel finden Sie unter [Beispielkonfigurationsdatei](#configuration-file-
 
 Die Geschäftslogik einer Anwendung kann als Zustandsautomat modelliert werden, bei der eine Aktion bewirkt, dass während des Ablaufs der Geschäftslogik von einem Zustand in einen anderen gewechselt wird. Ein Workflow ist eine Sammlung solcher Zustände und Aktionen. Jeder Workflow besteht aus mindestens einem intelligenten Vertrag, der die Geschäftslogik in Codedateien darstellt. Bei einem ausführbaren Vertrag handelt es sich um eine Instanz eines Workflows.
 
-| Feld | Description | Erforderlich | Max. Länge |
+| Feld | Beschreibung | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Eindeutiger Workflowname. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Vertragsklasse verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename des Workflows | Ja | 255 |
-| Description | Die Beschreibung des Workflows | Nein | 255 |
+| BESCHREIBUNG | Die Beschreibung des Workflows | Nein | 255 |
 | Initiators | Sammlung von [Anwendungsrollen](#application-roles). Rollen, die Benutzern zugeordnet sind, die zum Erstellen von Verträgen im Workflow berechtigt sind. | Ja | |
 | StartState | Der Name des Anfangszustands des Workflows | Ja | |
-| Properties | Sammlung von [Bezeichnern](#identifiers). Stellt Daten dar, die Off-Chain gelesen oder in einem Tool zum Erstellen von Benutzeroberflächen visualisiert werden können. | Ja | |
+| Eigenschaften | Sammlung von [Bezeichnern](#identifiers). Stellt Daten dar, die Off-Chain gelesen oder in einem Tool zum Erstellen von Benutzeroberflächen visualisiert werden können. | Ja | |
 | Konstruktor | Definiert Eingabeparameter für die Erstellung einer Instanz des Workflows. | Ja | |
 | Functions | Eine Sammlung von [Funktionen](#functions), die im Workflow ausgeführt werden können. | Ja | |
 | Zustände | Eine Sammlung von [Zuständen](#states) des Workflows. | Ja | |
@@ -71,14 +65,14 @@ Ein Beispiel finden Sie unter [Beispielkonfigurationsdatei](#configuration-file-
 
 Unterstützte Datentypen:
 
-| type | Description |
+| type | BESCHREIBUNG |
 |-------|-------------|
 | address  | Blockchainadresstyp, z. B. *Verträge* oder *Benutzer*. |
 | array    | Array mit einer Ebene vom Typ „Int“, „bool“, „money“ oder „time“. Arrays können statisch oder dynamisch sein. Verwenden Sie **ElementType**, um den Datentyp der Elemente im Array anzugeben. Siehe hierzu die [Beispielkonfiguration](#example-configuration-of-type-array). |
 | bool     | Boolean-Datentyp |
 | contract | Adresse vom Typ „Vertrag“ |
 | enum     | Aufgelisteter Satz von benannten Werten. Wenn Sie den enum-Typ verwenden, geben Sie auch eine Liste von „EnumValues“ an. Jeder Wert darf maximal 255 Zeichen lang sein. Gültige Zeichen für den Wert sind Groß-/Kleinbuchstaben (A-Z, a-z) und Zahlen (0-9). Informationen hierzu finden Sie unter [Beispielkonfiguration und Verwendung in Solidity](#example-configuration-of-type-enum). |
-| int      | Integer-Datentyp |
+| INT      | Integer-Datentyp |
 | money    | Money-Datentyp |
 | state    | Workflowstatus |
 | Zeichenfolge  | String-Datentyp Maximal 4000 Zeichen Siehe hierzu die [Beispielkonfiguration](#example-configuration-of-type-string). |
@@ -174,7 +168,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 Definiert Eingabeparameter für eine Instanz eines Workflows.
 
-| Feld | Description | Erforderlich |
+| Feld | Beschreibung | Erforderlich |
 |-------|-------------|:--------:|
 | Parameter | Sammlung von [Bezeichnern](#identifiers), die zum Initiieren eines intelligenten Vertrags erforderlich sind. | Ja |
 
@@ -207,11 +201,11 @@ Definiert Eingabeparameter für eine Instanz eines Workflows.
 
 Definiert Funktionen, die im Workflow ausgeführt werden können.
 
-| Feld | Description | Erforderlich | Max. Länge |
+| Feld | Beschreibung | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Der eindeutige Name der Funktion. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Funktion verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename der Funktion | Ja | 255 |
-| Description | Beschreibung der Funktion | Nein | 255 |
+| BESCHREIBUNG | Beschreibung der Funktion | Nein | 255 |
 | Parameter | Sammlung von [Bezeichnern](#identifiers), die den Parametern der Funktion entsprechen. | Ja | |
 
 ### <a name="functions-example"></a>Funktionsbeispiel
@@ -255,11 +249,11 @@ Definiert Funktionen, die im Workflow ausgeführt werden können.
 
 Eine Sammlung von eindeutigen Zuständen innerhalb eines Workflows. Jeder Zustand erfasst einen Schritt in der Ablaufsteuerung der Geschäftslogik. 
 
-| Feld | Description | Erforderlich | Max. Länge |
+| Feld | Beschreibung | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Eindeutiger Name des Zustands. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für den jeweiligen Zustand verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename des Zustands | Ja | 255 |
-| Description | Beschreibung des Zustands | Nein | 255 |
+| BESCHREIBUNG | Beschreibung des Zustands | Nein | 255 |
 | PercentComplete | Ein ganzzahliger Wert in der Blockchain Workbench-Benutzeroberfläche, der den Fortschritt der Ablaufsteuerung innerhalb der Geschäftslogik anzeigt. | Ja | |
 | Style | Visueller Hinweis, ob es sich um einen erfolgreichen oder fehlerhaften Zustand handelt. Es gibt zwei gültige Werte: `Success` oder `Failure`. | Ja | |
 | Transitions | Sammlung von verfügbaren [Übergängen](#transitions) von dem aktuellen Zustand in die nächsten Zustände. | Nein | |
@@ -324,12 +318,12 @@ Eine Sammlung von eindeutigen Zuständen innerhalb eines Workflows. Jeder Zustan
 
 Verfügbare Aktionen zum Erreichen des nächsten Zustands. Eine oder mehrere Benutzerrollen können in jedem Zustand eine Aktion ausführen, wobei eine Aktion einen Zustand in einen anderen Zustand im Workflow überführen kann. 
 
-| Feld | Description | Erforderlich |
+| Feld | Beschreibung | Erforderlich |
 |-------|-------------|:--------:|
 | AllowedRoles | Liste der Anwendungsrollen, die einen Übergang initiieren dürfen. Alle Benutzer der angegebenen Rolle können die Aktion möglicherweise ausführen. | Nein |
 | AllowedInstanceRoles | Liste der Benutzerrollen, die am intelligenten Vertrag teilnehmen oder darin festgelegt sind, um den Übergang zu initiieren. Instanzrollen werden in den **Eigenschaften** innerhalb von Workflows definiert. AllowedInstanceRoles stellt einen Benutzer dar, der bei einer Instanz eines Smart Contract involviert ist. Über AllowedInstanceRoles können Sie die Durchführung einer Aktion für eine Benutzerrolle in einer Vertragsinstanz beschränken.  Beispielsweise empfiehlt es sich, nur dem Benutzer, der den Vertrag erstellt hat (InstanceOwner), die Kündigung eines Vertrags zu ermöglichen, nicht allen Benutzern mit dem Rollentyp (Owner). Hierfür müssen Sie die Rolle in AllowedRoles angegeben haben. | Nein |
 | DisplayName | Der Anzeigename des Übergangs | Ja |
-| Description | Die Beschreibung des Übergangs | Nein |
+| BESCHREIBUNG | Die Beschreibung des Übergangs | Nein |
 | Funktion | Der Name der Funktion zum Initiieren des Übergangs | Ja |
 | NextStates | Eine Sammlung möglicher nächster Zustände nach einem erfolgreichen Übergang | Ja |
 
@@ -369,10 +363,10 @@ Verfügbare Aktionen zum Erreichen des nächsten Zustands. Eine oder mehrere Ben
 
 Anwendungsrollen definieren eine Reihe von Rollen, die Benutzern zugewiesen werden können, die innerhalb der Anwendung agieren oder teilnehmen möchten. Anwendungsrollen können verwendet werden, um Aktionen und Teilnahme innerhalb der Blockchainanwendung und entsprechender Workflows einzuschränken. 
 
-| Feld | Description | Erforderlich | Max. Länge |
+| Feld | Beschreibung | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Der eindeutige Name der Anwendungsrolle. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Rolle verwenden. Basistypnamen sind reserviert. Einer Anwendungsrolle kann nicht der Name eines [Typs](#type) gegeben werden.| Ja | 50 |
-| Description | Die Beschreibung der Anwendungsrolle | Nein | 255 |
+| BESCHREIBUNG | Die Beschreibung der Anwendungsrolle | Nein | 255 |
 
 ### <a name="application-roles-example"></a>Beispiel zu Anwendungsrollen (ApplicationRoles)
 
@@ -392,11 +386,12 @@ Anwendungsrollen definieren eine Reihe von Rollen, die Benutzern zugewiesen werd
 
 Bezeichner stellen eine Sammlung von Informationen zur Beschreibung von Workfloweigenschaften, Konstruktor und Funktionsparametern dar. 
 
-| Feld | Description | Erforderlich | Max. Länge |
+| Feld | Beschreibung | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Der eindeutige Name der Eigenschaft bzw. des Parameters. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Eigenschaft bzw. den jeweiligen Parameter verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename der Eigenschaft bzw. des Parameters | Ja | 255 |
-| Description | Die Beschreibung der Eigenschaft bzw. des Parameters | Nein | 255 |
+| BESCHREIBUNG | Die Beschreibung der Eigenschaft bzw. des Parameters | Nein | 255 |
+| type | Eigenschaft [data type](#type). | Ja |
 
 ### <a name="identifiers-example"></a>Beispiel zu Bezeichnern
 
@@ -1001,5 +996,4 @@ Die folgende Konfigurationsdatei dient als Beispiel für die Güterübertragung:
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Referenz zur REST-API von Azure Blockchain Workbench](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)
-
+> [Referenz zur REST-API von Azure Blockchain Workbench](/rest/api/azure-blockchain-workbench)

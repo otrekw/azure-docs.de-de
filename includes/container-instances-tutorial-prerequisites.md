@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: da63a5418ab94623f6ce3c9f35a085dd8b198d1a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 10fb9e8169b7f4159ccbf4a0ff36021f6033f811
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67178649"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75552415"
 ---
 Für dieses Tutorial müssen folgende Voraussetzungen erfüllt sein:
 
-**Azure CLI**: Auf dem lokalen Computer muss mindestens Version 2.0.29 der Azure-Befehlszeilenschnittstelle installiert sein. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI][azure-cli-install].
+**Azure CLI**: Auf dem lokalen Computer muss mindestens Version 2.0.29 der Azure-Befehlszeilenschnittstelle installiert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI][azure-cli-install].
 
 **Docker**: In diesem Tutorial wird vorausgesetzt, dass zentrale Docker-Konzepte wie Container und Containerimages sowie grundlegende `docker`-Befehle bekannt sind. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht][docker-get-started].
 
-**Docker-Engine:** Für dieses Tutorial muss die Docker-Engine lokal installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS][docker-mac], [Windows][docker-windows] und [Linux][docker-linux] zur Verfügung.
+**Docker**: Für dieses Tutorial muss Docker lokal installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS][docker-mac], [Windows][docker-windows] und [Linux][docker-linux] zur Verfügung.
 
 > [!IMPORTANT]
 > Da Azure Cloud Shell den Docker-Daemon nicht beinhaltet, *müssen* Sie sowohl die Azure-Befehlszeilenschnittstelle als auch die Docker-Engine auf Ihrem *lokalen Computer* installieren, um dieses Tutorial absolvieren zu können. Azure Cloud Shell kann für dieses Tutorial nicht verwendet werden.

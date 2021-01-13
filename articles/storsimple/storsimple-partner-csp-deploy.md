@@ -1,6 +1,6 @@
 ---
-title: Übersicht über Microsoft Azure StorSimple und das Cloudlösungsanbieter-Programm | Microsoft-Dokumentation
-description: Eine Übersicht über StorSimple und das Cloudlösungsanbieter-Programm für StorSimple-Partner.
+title: Bereitstellen von StorSimple Virtual Array für das Cloud Solution Provider-Programm
+description: Erfahren Sie, wie ein CSP-Partner einen neuen Kunden oder einem Bestandskunden ein neues Abonnement hinzufügen und dann einen Dienst zum Bereitstellen eines StorSimple Virtual Array im CSP-Programm erstellen kann.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 0dac86a696599a391cb243ad11e16931e00b8921
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60629895"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021859"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Bereitstellen von StorSimple Virtual Array für das Cloud Solution Provider-Programm
 
@@ -103,5 +103,5 @@ Möglicherweise gibt es schon einen Bestandskunden, dem Sie ein Abonnement hinzu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie weitere Fragen zu StorSimple im CSP-Programm haben, fahren Sie mit [StorSimple im CSP-Programm: Häufig gestellte Fragen (FAQs)](storsimple-partner-csp-faq.md) fort.
+- Wenn Sie weitere Fragen zu StorSimple im CSP-Programm haben, fahren Sie mit [StorSimple im CSP-Programm: Häufig gestellte Fragen](storsimple-partner-csp-faq.md) fort.
 - Wenn Sie zur Bereitstellung Ihrer StorSimple-Lösung bereit sind, lesen Sie unter [Deploy StorSimple Virtual Array for Cloud Solution Provider Program](storsimple-partner-csp-deploy.md) (Bereitstellen von StorSimple Virtual Array für das Programm für Cloudlösungsanbieter) weiter.

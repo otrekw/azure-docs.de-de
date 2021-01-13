@@ -1,25 +1,25 @@
-- name: Dokumentation zur RBAC für Azure-Ressourcen
+- name: Azure RBAC-Dokumentation
   href: index.yml
   items: null
 - name: Übersicht
   items:
-    - name: Was ist RBAC?
+    - name: Was ist Azure RBAC?
       href: overview.md
     - name: Grundlegendes zu den verschiedenen Rollen
       href: rbac-and-directory-admin-roles.md
 - name: Schnellstarts
   items:
-    - name: Anzeigen des Zugriffs für einen Benutzer
+    - name: Überprüfen des Zugriffs für einen Benutzer
       href: check-access.md
-- name: Lernprogramme
+    - name: ARM-Vorlage
+      displayName: Resource Manager
+      href: quickstart-role-assignments-template.md
+- name: Tutorials
   items:
     - name: 'Gewähren des Zugriffs für einen Benutzer: Portal'
       href: quickstart-assign-role-user-portal.md
     - name: 'Gewähren des Zugriffs für einen Benutzer: PowerShell'
       href: tutorial-role-assignments-user-powershell.md
-    - name: 'Gewähren des Zugriffs für einen Benutzer: Resource Manager-Vorlage'
-      displayName: 'ARM, resource manager template'
-      href: tutorial-role-assignments-user-template.md
     - name: 'Gewähren des Zugriffs für eine Gruppe: PowerShell'
       href: tutorial-role-assignments-group-powershell.md
     - name: 'Erstellen einer benutzerdefinierten Rolle: PowerShell'
@@ -28,31 +28,53 @@
       href: tutorial-custom-role-cli.md
 - name: Konzepte
   items:
-    - name: Grundlegendes zu Rollendefinitionen
+    - name: Rollendefinitionen
       href: role-definitions.md
-    - name: PIM für Azure-Ressourcen
-      href: pim-azure-resource.md
+    - name: Bereich
+      href: scope-overview.md
+    - name: Bewährte Methoden
+      href: best-practices.md
     - name: Bedingter Zugriff für die Azure-Verwaltung
       href: conditional-access-azure-management.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitskontrollen von Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Anleitungen
   items:
-    - name: Verwalten des Zugriffs
+    - name: Auflisten der Rollendefinitionen
+      href: role-definitions-list.md
+    - name: Auflisten der Rollenzuweisungen
       items:
+        - name: Portal
+          href: role-assignments-list-portal.md
+        - name: PowerShell
+          href: role-assignments-list-powershell.md
+        - name: Befehlszeilenschnittstelle (CLI)
+          href: role-assignments-list-cli.md
+        - name: REST-API
+          href: role-assignments-list-rest.md
+    - name: Hinzufügen oder Entfernen von Rollenzuweisungen
+      items:
+        - name: Schritte zum Hinzufügen einer Rollenzuweisung
+          href: role-assignments-steps.md
         - name: Portal
           href: role-assignments-portal.md
         - name: 'Portal: Gastbenutzer'
           href: role-assignments-external-users.md
         - name: PowerShell
           href: role-assignments-powershell.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: role-assignments-cli.md
         - name: REST-API
           href: role-assignments-rest.md
-        - name: Vorlage
+        - name: ARM-Vorlage
+          displayName: Resource Manager
           href: role-assignments-template.md
-    - name: Zugriff verweigern
+    - name: Auflisten von Ablehnungszuweisungen
       items:
-        - name: Ablehnungszuweisungen
+        - name: Übersicht
           href: deny-assignments.md
         - name: Portal
           href: deny-assignments-portal.md
@@ -60,22 +82,29 @@
           href: deny-assignments-powershell.md
         - name: REST-API
           href: deny-assignments-rest.md
-    - name: Benutzerdefinierte Rollen
+    - name: Erstellen von benutzerdefinierten Rollen
       items:
         - name: Übersicht
           href: custom-roles.md
+        - name: Portal
+          href: custom-roles-portal.md
         - name: PowerShell
           href: custom-roles-powershell.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: custom-roles-cli.md
         - name: REST-API
           href: custom-roles-rest.md
+        - name: ARM-Vorlage
+          displayName: Resource Manager
+          href: custom-roles-template.md
     - name: Anzeigen von Aktivitätsprotokollen
       href: change-history-report.md
-    - name: Erhöhen der Zugriffsrechte zum Verwalten aller Abonnements
+    - name: Erhöhen von Zugriffsrechten
       href: elevate-access-global-admin.md
     - name: Klassische Administratoren
       href: classic-administrators.md
+    - name: Übertragen eines Abonnements in ein anderes Verzeichnis
+      href: transfer-subscription.md
     - name: Problembehandlung
       href: troubleshooting.md
 - name: Verweis
@@ -84,21 +113,24 @@
       href: built-in-roles.md
     - name: Ressourcenanbietervorgänge
       href: resource-provider-operations.md
-    - name: RBAC-Grenzwerte
-      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+    - name: Azure RBAC-Grenzwerte
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-role-based-access-control-limits
     - name: Azure PowerShell
       href: /powershell/module/az.resources
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/role?view=azure-cli-latest
     - name: REST-API
       href: /rest/api/authorization/
-    - name: Resource Manager-Vorlagen
-      displayName: ARM
+    - name: ARM-Vorlagen
+      displayName: Resource Manager
       items:
         - name: Rollenzuweisungen
           href: /azure/templates/microsoft.authorization/roleassignments
         - name: Rollendefinitionen
           href: /azure/templates/microsoft.authorization/roledefinitions
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

@@ -1,29 +1,22 @@
 ---
-title: Erstellen eines Service Bus Messaging-Namespace mithilfe einer Azure Resource Manager-Vorlage | Microsoft-Dokumentation
+title: Erstellen eines Azure Service Bus-Namespace anhand einer Vorlage
 description: Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Service Bus Messaging-Namespace
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: dc0d6482-6344-4cef-8644-d4573639f5e4
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 06/21/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 4162775153a48dc8ea28e06f7c99f9927b9c602a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1b7aafca331170100ce99c084a11c96c97df7781
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444771"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88067391"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>Erstellen eines Service Bus-Namespace mithilfe einer Azure Resource Manager-Vorlage
 
-Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage zum Erstellen eines Service Bus-Namespace bereitstellen. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen. Weitere Informationen zum Erstellen von Vorlagen finden Sie in der [Dokumentation zu Azure Resource Manager](/azure/azure-resource-manager/).
+Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage zum Erstellen eines Service Bus-Namespace bereitstellen. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen. Weitere Informationen zum Erstellen von Vorlagen finden Sie in der [Dokumentation zu Azure Resource Manager](../azure-resource-manager/index.yml).
 
 Die folgenden Vorlagen stehen ebenfalls zum Erstellen von Service Bus-Namespaces zur Verfügung:
 
@@ -82,9 +75,9 @@ Write-Host "Press [ENTER] to continue ..."
 
 In diesem Tutorial wird Azure PowerShell verwendet, um die Vorlage bereitzustellen. Weitere Methoden zum Bereitstellen von Vorlagen finden Sie unter:
 
-* [Über das Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
-* [Mit der Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Mit der REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [Über das Azure-Portal](../azure-resource-manager/templates/deploy-portal.md).
+* [Mit der Azure CLI](../azure-resource-manager/templates/deploy-cli.md).
+* [Mit der REST-API](../azure-resource-manager/templates/deploy-rest.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

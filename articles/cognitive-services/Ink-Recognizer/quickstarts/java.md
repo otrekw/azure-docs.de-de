@@ -1,23 +1,26 @@
 ---
 title: 'Schnellstart: Erkennen von Freihandeingaben mit der Freihanderkennungs-REST-API und Java'
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Freihanderkennungs-REST-API, um Freihandstriche zu erkennen.
+description: Verwenden Sie in dieser Schnellstartanleitung die Freihanderkennungs-REST-API und Java, um Freihandstriche zu erkennen.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 09/23/2019
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 36ff0fe4550b140a722ed25f4e372f7c88581211
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.custom: devx-track-java
+ms.openlocfilehash: dea46a07a7357be6079c52634be8ea2ff79cc8f3
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212688"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369119"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Schnellstart: Erkennen von Freihandeingaben mit der Freihanderkennungs-REST-API und Java
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 In diesem Schnellstart werden die ersten Schritte zur Verwendung der Freihanderkennungs-API zum Erkennen von Freihandstrichen erläutert. Diese Java-Anwendung sendet eine API-Anforderung, die JSON-formatierte Freihandstrichdaten enthält, und erhält die Antwort.
 
@@ -39,36 +42,19 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
 
 - Die Beispiel-Freihandstrichdaten für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json).
 
-[!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
+### <a name="create-an-ink-recognizer-resource"></a>Erstellen einer Freihanderkennungsressource
+
+[!INCLUDE [creating an ink recognizer resource](../includes/setup-instructions.md)]
 
 ## <a name="create-a-new-application"></a>Erstellen einer neuen Anwendung
 
 1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt, und importieren Sie die folgenden Bibliotheken.
-
-    ```java
-    import org.apache.http.HttpEntity;
-    import org.apache.http.client.methods.CloseableHttpResponse;
-    import org.apache.http.client.methods.HttpPost;
-    import org.apache.http.entity.StringEntity;
-    import org.apache.http.impl.client.CloseableHttpClient;
-    import org.apache.http.impl.client.HttpClients;
-    import org.apache.http.util.EntityUtils;
-    import java.io.IOException;
-    import java.nio.file.Files;
-    import java.nio.file.Paths;
-    ```
-
-2. Erstellen Sie Variablen für Ihren Abonnementschlüssel und Ihren Endpunkt. Ersetzen Sie den folgenden Endpunkt durch den für die Freihanderkennungsressource generierten Endpunkt. Fügen Sie ihn an den Freihanderkennungs-URI an, um eine Verbindung mit der API herzustellen.
-
-    ```java
-    // Replace the subscriptionKey string value with your valid subscription key.
-    static final String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-    // Replace the dataPath string with a path to the JSON formatted ink stroke data file.
-    static final String dataPath = "PATH_TO_INK_STROKE_DATA";
     
-    static final String endpoint = "https://<your-custom-subdomain>.cognitiveservices.azure.com";
-    static final String inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
-    ```
+    [!code-java[import statements](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=imports)]
+
+2. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Endpunkt und die JSON-Datei. Der Endpunkt wird später an den Freihanderkennungs-URI angehängt.
+
+    [!code-java[initial vars](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>Erstellen einer Funktion zum Senden von Anforderungen
 
@@ -84,41 +70,13 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
 
 6. Erstellen Sie ein `HttpEntity`-Objekt, um den Inhalt der Antwort zu speichern. Rufen Sie den Inhalt mit `getEntity()` ab. Wenn die Antwort nicht leer ist, geben Sie sie zurück.
     
-    ```java
-    static String sendRequest(String apiAddress, String endpoint, String subscriptionKey, String requestData) {
-        try (CloseableHttpClient client = HttpClients.createDefault()) {
-            HttpPut request = new HttpPut(endpoint + apiAddress);
-            // Request headers.
-            request.setHeader("Content-Type", "application/json");
-            request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            request.setEntity(new StringEntity(requestData));
-            try (CloseableHttpResponse response = client.execute(request)) {
-                HttpEntity respEntity = response.getEntity();
-                if (respEntity != null) {
-                    return EntityUtils.toString(respEntity, "utf-8");
-                }
-            } catch (Exception respEx) {
-                respEx.printStackTrace();
-            }
-        } catch (IOException ex) {
-            System.err.println("Exception recognizing ink: " + ex.getMessage());
-            ex.printStackTrace();
-        }
-        return null;
-    }
-    ```
+    [!code-java[send a request](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=sendRequest)]
 
 ## <a name="send-an-ink-recognition-request"></a>Senden einer Freihanderkennungsanforderung
 
 Erstellen Sie eine Methode namens `recognizeInk()` zur Erkennung Ihrer Freihandstrichdaten. Rufen Sie die oben erstellte Methode `sendRequest()` mit dem Endpunkt, der URL, dem Abonnementschlüssel und den JSON-Daten auf. Rufen Sie das Ergebnis ab, und geben Sie es in der Konsole aus.
 
-```java
-static void recognizeInk(String requestData) {
-    System.out.println("Sending an ink recognition request");
-    String result = sendRequest(inkRecognitionUrl, endpoint, subscriptionKey, requestData);
-    System.out.println(result);
-}
-```
+[!code-java[recognizeInk](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=recognizeInk)]
 
 ## <a name="load-your-digital-ink-data-and-send-the-request"></a>Laden der digitalen Freihanddaten und Senden der Anforderung
 
@@ -126,12 +84,8 @@ static void recognizeInk(String requestData) {
 
 2. Rufen Sie die oben erstellte Freihanderkennungsfunktion auf.
     
-    ```java
-    public static void main(String[] args) throws Exception {
-        String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "UTF-8");
-        recognizeInk(requestData);
-    }
-    ```
+    [!code-java[main method](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=main)]
+
 
 ## <a name="run-the-application-and-view-the-response"></a>Ausführen der Anwendung und Anzeigen der Antwort
 
@@ -140,7 +94,7 @@ Führen Sie die Anwendung aus. Eine erfolgreiche Antwort wird im JSON-Format zur
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [REST-API-Referenz](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST-API-Referenz](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 
 Sehen Sie sich in den folgenden Beispielanwendungen auf GitHub an, wie die Freihanderkennungs-API in einer Freihandschriftinhalte-App funktioniert:

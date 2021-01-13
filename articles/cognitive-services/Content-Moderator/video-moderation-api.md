@@ -3,25 +3,26 @@ title: Analysieren von Videoinhalten auf anstößiges Material in C# – Content
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie Videoinhalte unter Verwendung des Content Moderator SDK für .NET auf verschiedenes anstößiges Material analysieren.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 1742db702a899d47110177532f5e85e74a59d91c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.topic: how-to
+ms.date: 05/18/2020
+ms.author: pafarley
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4f98eac4305333ec7225c90da2777b7e02f050a0
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564304"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853531"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analysieren von Videoinhalten auf anstößiges Material in C#
 
 Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den Einstieg in die Verwendung des [Content Moderator SDK für .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) erleichtern, um Videos auf jugendgefährdende oder anzügliche Inhalte zu überprüfen.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/), bevor Sie beginnen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Eine beliebige Edition von [Visual Studio 2015 oder 2017](https://www.visualstudio.com/downloads/)
@@ -32,7 +33,7 @@ Die Videomoderationsfunktion von Content Moderator ist als **Medienprozessor** i
 
 ### <a name="create-an-azure-media-services-account"></a>Erstellen eines Azure Media Services-Kontos
 
-Befolgen Sie die Anweisungen in [Erstellen eines Azure Media Services-Kontos](https://docs.microsoft.com/azure/media-services/media-services-portal-create-account), um AMS zu abonnieren und ein zugeordnetes Azure Storage-Konto zu erstellen. Erstellen Sie in diesem Speicherkonto einen neuen Blob Storage-Container.
+Befolgen Sie die Anweisungen in [Erstellen eines Azure Media Services-Kontos](../../media-services/previous/media-services-portal-create-account.md), um AMS zu abonnieren und ein zugeordnetes Azure Storage-Konto zu erstellen. Erstellen Sie in diesem Speicherkonto einen neuen Blob Storage-Container.
 
 ### <a name="create-an-azure-active-directory-application"></a>Erstellen einer Azure Active Directory-Anwendung
 
@@ -42,7 +43,7 @@ Wählen Sie im Abschnitt **Azure AD-App** die Option **Neue erstellen** und bene
 
 Wählen Sie Ihre App-Registrierung, und klicken Sie darunter auf **Anwendung verwalten**. Notieren Sie den Wert im Feld **Anwendungs-ID**. Diesen benötigen Sie später. Wählen Sie **Einstellungen** > **Schlüssel** aus, und geben Sie eine Beschreibung für einen neuen Schlüssel ein (z.B. „VideoModKey“). Klicken Sie auf **Speichern**, und notieren Sie den neuen Schlüsselwert. Kopieren Sie diese Zeichenfolge, und speichern Sie sie an einem sicheren Ort.
 
-Eine ausführlichere Erläuterung für das oben beschriebene Verfahren finden Sie unter [Erste Schritte mit Azure AD-Authentifizierung](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
+Eine ausführlichere Erläuterung für das oben beschriebene Verfahren finden Sie unter [Erste Schritte mit Azure AD-Authentifizierung](../../media-services/previous/media-services-portal-get-started-with-aad.md).
 
 Wenn Sie fertig sind, können Sie die Videomoderation des Medienprozessors auf zwei unterschiedliche Arten verwenden.
 
@@ -371,7 +372,7 @@ Nachdem der Content Moderator-Auftrag abgeschlossen ist, analysieren Sie die JSO
 > [!NOTE]
 > - `adultScore` gibt das mögliche Vorhandensein und die Vorhersage von Inhalten an, die in bestimmten Situationen als explizit sexuell oder nicht jugendfrei betrachtet werden können.
 > - `racyScore` gibt das mögliche Vorhandensein und die Vorhersage von Inhalten an, die in bestimmten Situationen als zweideutig/freizügig oder als für Erwachsene bestimmt betrachtet werden können.
-> - `adultScore` und `racyScore` liegen zwischen 0 und 1. Je höher der Wert ist, desto höher ist die vom Modell ermittelte Wahrscheinlichkeit, dass die Kategorie zutreffend ist. Diese Vorschauversion basiert nicht auf manuell programmierten Ergebnissen, sondern auf einem statistischen Modell. Es wird empfohlen, anhand Ihrer eigenen Inhalte zu testen, wie die jeweiligen Kategorien zu Ihren Anforderungen passen.
+> - `adultScore` und `racyScore` liegen zwischen 0 und 1. Je höher der Wert, desto höher die vom Modell ermittelte Wahrscheinlichkeit, dass die Kategorie zutreffend ist. Diese Vorschauversion basiert nicht auf manuell programmierten Ergebnissen, sondern auf einem statistischen Modell. Es wird empfohlen, anhand Ihrer eigenen Inhalte zu testen, wie die jeweiligen Kategorien zu Ihren Anforderungen passen.
 > - `reviewRecommended` ist entweder „true“ oder „false“ (abhängig von den internen Ergebnisschwellenwerten). Kunden müssen entscheiden, ob sie diesen Wert verwenden oder auf der Grundlage ihrer Inhaltsrichtlinien eigene Schwellenwerte festlegen möchten.
 
 ```json
@@ -429,9 +430,5 @@ Nachdem der Content Moderator-Auftrag abgeschlossen ist, analysieren Sie die JSO
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie [Videoüberprüfungen](video-reviews-quickstart-dotnet.md) aus Ihrer Moderationsausgabe generieren.
-
-Fügen Sie die [Transkriptmoderation](video-transcript-moderation-review-tutorial-dotnet.md) zu Ihren Videoüberprüfungen hinzu.
-
-In diesem ausführlichen Tutorial erhalten Sie weitere Informationen zum Erstellen einer [vollständigen Projektmappe zur Video- und Transkriptmoderation](video-transcript-moderation-review-tutorial-dotnet.md).
 
 Laden Sie die [Visual Studio-Projektmappe](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) für diesen und andere Content Moderator-Schnellstarts für .NET herunter.

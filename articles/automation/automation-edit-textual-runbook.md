@@ -1,72 +1,70 @@
 ---
 title: Bearbeiten von Textrunbooks in Azure Automation
-description: Dieser Artikel enthält verschiedene Verfahren zum Arbeiten mit PowerShell und PowerShell-Workflow-Runbooks in Azure Automation unter Verwendung des Text-Editors.
+description: In diesem Artikel wird beschrieben, wie Sie den Azure Automation-Text-Editor für das Arbeiten mit PowerShell- und PowerShell-Workflow-Runbooks verwenden.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bd220b6ff1102c2ef2f436e0af013f253b5820a3
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478280"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86186349"
 ---
-# <a name="editing-textual-runbooks-in-azure-automation"></a>Bearbeiten von Textrunbooks in Azure Automation
+# <a name="edit-textual-runbooks-in-azure-automation"></a>Bearbeiten von Textrunbooks in Azure Automation
 
-Mit dem Text-Editor in Azure Automation können Sie [PowerShell-Runbooks](automation-runbook-types.md#powershell-runbooks) und [PowerShell-Workflow-Runbooks](automation-runbook-types.md#powershell-workflow-runbooks) bearbeiten. Dieser Editor bietet neben den üblichen Features anderer Code-Editoren wie Intellisense und Farbcodierung zusätzliche spezielle Features, um den Zugriff auf für Runbooks typische Ressourcen zu ermöglichen. Dieser Artikel enthält detaillierte Schritte zum Ausführen verschiedener Funktionen mit diesem Editor.
+Mit dem Text-Editor in Azure Automation können Sie [PowerShell-Runbooks](automation-runbook-types.md#powershell-runbooks) und [PowerShell-Workflow-Runbooks](automation-runbook-types.md#powershell-workflow-runbooks) bearbeiten. Dieser Editor hat die typischen Merkmale anderer Code-Editoren, z. B. IntelliSense. Er verfügt außerdem über eine Farbcodierung mit zusätzlichen speziellen Features, die Ihnen den Zugriff auf Ressourcen erleichtern, die für Runbooks üblich sind. 
 
-Der Text-Editor enthält ein Feature zum Einfügen von Code für Cmdlets, Objekte und untergeordnete Runbooks in ein Runbook. Sie müssen den Code nicht selbst eingeben, sondern können eine Auswahl aus einer Liste verfügbarer Ressourcen treffen und den entsprechenden Code in das Runbook einfügen.
+Der Text-Editor enthält ein Feature zum Einfügen von Code für Cmdlets, Objekte und untergeordnete Runbooks in ein Runbook. Anstatt den Code selbst einzugeben, können Sie aus einer Liste verfügbarer Ressourcen auswählen und der Editor fügt den entsprechenden Code in das Runbook ein.
 
 Jedes Runbook in Azure Automation umfasst zwei Versionen: eine Entwurfsversion und eine veröffentlichte Version. Sie bearbeiten die Entwurfsversion des Runbooks und veröffentlichen sie anschließend, damit sie ausgeführt werden kann. Die veröffentlichte Version kann nicht bearbeitet werden. Weitere Informationen finden Sie unter [Veröffentlichen eines Runbooks](manage-runbooks.md#publish-a-runbook).
 
-Informationen zum Arbeiten mit [grafischen Runbooks](automation-runbook-types.md#graphical-runbooks) finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md).
+Dieser Artikel enthält detaillierte Schritte zum Ausführen verschiedener Funktionen mit diesem Editor. Diese gelten nicht für [Grafische Runbooks](automation-runbook-types.md#graphical-runbooks). Informationen zur Arbeit mit diesen Runbooks finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md).
 
-## <a name="to-edit-a-runbook-with-the-azure-portal"></a>So bearbeiten Sie ein Runbook mit dem Azure-Portal
-
-Gehen Sie wie folgt vor, um ein Runbook zur Bearbeitung im Text-Editor zu öffnen.
+## <a name="edit-a-runbook-with-the-azure-portal"></a>Bearbeiten eines Runbooks mit dem Azure-Portal
 
 1. Wählen Sie im Azure-Portal Ihr Automation-Konto aus.
 2. Klicken Sie unter **PROZESSAUTOMATISIERUNG** auf **Runbooks**, um die Liste mit den Runbooks zu öffnen.
-3. Wählen Sie das Runbook aus, das Sie bearbeiten möchten, und klicken Sie dann auf die Schaltfläche **Bearbeiten**.
+3. Wählen Sie das zu bearbeitende Runbook aus, und klicken Sie dann auf **Bearbeiten**.
 4. Bearbeiten Sie das Runbook.
 5. Klicken Sie auf **Speichern** , wenn die Bearbeitung abgeschlossen ist.
-6. Klicken Sie auf **Veröffentlichen** , wenn die aktuelle Entwurfsversion des Runbooks veröffentlicht werden soll.
+6. Klicken Sie auf **Veröffentlichen**, wenn Sie die neueste Entwurfsversion des Runbooks veröffentlichen möchten.
 
-### <a name="to-insert-a-cmdlet-into-a-runbook"></a>So fügen Sie ein Cmdlet in ein Runbook ein
+### <a name="insert-a-cmdlet-into-a-runbook"></a>Einfügen eines Cmdlets in ein Runbook
 
-1. Platzieren Sie den Cursor im Zeichenbereich des Text-Editors an der Position, an der Sie das Cmdlet einfügen möchten.
+1. Platzieren Sie den Cursor im Canvas des Text-Editors an der Position, an der Sie das Cmdlet einfügen möchten.
 2. Erweitern Sie im Bibliotheksteuerelement den Knoten **Cmdlets** .
-3. Erweitern Sie das Modul mit dem Cmdlet, das Sie verwenden möchten.
-4. Klicken Sie mit der rechten Maustaste auf das einzufügende Cmdlet, und wählen Sie **Add to canvas** (Zur Canvas hinzufügen). Wenn für das Cmdlet mehrere Parameter festgelegt sind, wird der Standardsatz hinzugefügt. Sie können das Cmdlet auch erweitern, um einen anderen Parametersatz auszuwählen.
-5. Der Code für das Cmdlet wird mit der gesamten Liste der Parameter eingefügt.
-6. Geben Sie für alle erforderlichen Parameter anstelle des Datentyps in spitzen Klammern (<>) einen zulässigen Wert ein. Entfernen Sie alle nicht benötigten Parameter.
+3. Erweitern Sie das Modul mit dem zu verwendenden Cmdlet.
+4. Klicken Sie mit der rechten Maustaste auf den Namen des einzufügenden Cmdlets, und wählen Sie **Zur Canvas hinzufügen** aus. Wenn das Cmdlet über mehrere Parametersätze verfügt, fügt der Editor den Standardsatz hinzu. Sie können das Cmdlet auch erweitern, um einen anderen Parametersatz auszuwählen.
+5. Beachten Sie, dass der Code für das Cmdlet mit der gesamten Liste der Parameter eingefügt wird.
+6. Geben Sie für jeden erforderlichen Parameter einen geeigneten Wert anstelle des von spitzen Klammern (<>) umgebenen Werts an. Entfernen Sie alle nicht erforderlichen Parameter.
 
-### <a name="to-insert-code-for-a-child-runbook-into-a-runbook"></a>So fügen Sie Code für ein untergeordnetes Runbook in ein Runbook ein
+### <a name="insert-code-for-a-child-runbook-into-a-runbook"></a>Einfügen von Code für ein untergeordnetes Runbook in ein Runbook
 
-1. Platzieren Sie den Cursor im Zeichenbereich des Text-Editors an der Position, an der Sie den Code für das [untergeordnete Runbook](automation-child-runbooks.md)einfügen möchten.
+1. Platzieren Sie den Cursor in der Canvas des Text-Editors an der Position, an der Sie den Code für das [untergeordnete Runbook](automation-child-runbooks.md) einfügen möchten.
 2. Erweitern Sie im Bibliotheksteuerelement den Knoten **Runbooks** .
 3. Klicken Sie mit der rechten Maustaste auf das einzufügende Runbook, und wählen Sie **Add to canvas** (Zur Canvas hinzufügen).
 4. Der Code für das untergeordnete Runbook wird mit allen Platzhaltern für alle Runbook-Parameter eingefügt.
 5. Ersetzen Sie die Platzhalter durch entsprechende Werte für jeden Parameter.
 
-### <a name="to-insert-an-asset-into-a-runbook"></a>So fügen Sie ein Objekt in ein Runbook ein
+### <a name="insert-an-asset-into-a-runbook"></a>Einfügen eines Objekts in ein Runbook
 
-1. Platzieren Sie den Cursor im Zeichenbereich des Text-Editors an der Position, an der Sie den Code für das untergeordnete Runbook einfügen möchten.
+1. Platzieren Sie den Cursor im Canvassteuerelement des Text-Editors an der Position, an der Sie den Code für das untergeordnete Runbook einfügen möchten.
 2. Erweitern Sie im Bibliotheksteuerelement den Knoten **Objekte** .
 3. Erweitern Sie den Knoten für den gewünschten Objekttyp.
-4. Klicken Sie mit der rechten Maustaste auf das einzufügende Objekt, und wählen Sie **Add to canvas** (Zur Canvas hinzufügen). Wählen Sie für [Variablenobjekte](automation-variables.md) entweder **„Variable abrufen“ zum Zeichenbereich hinzufügen** oder **„Variable festlegen“ zum Zeichenbereich hinzufügen** aus. Dies ist abhängig davon, ob Sie die Variable abrufen oder festlegen möchten.
-5. Der Code für das Objekt wird in das Runbook eingefügt.
+4. Klicken Sie mit der rechten Maustaste auf den Namen des einzufügenden Objekts, und wählen Sie **Zur Canvas hinzufügen** aus. Wählen Sie für [Variablenobjekte](./shared-resources/variables.md) entweder **„Variable abrufen“ zum Zeichenbereich hinzufügen** oder **„Variable festlegen“ zum Zeichenbereich hinzufügen** aus. Dies ist abhängig davon, ob Sie die Variable abrufen oder festlegen möchten.
+5. Beachten Sie, dass der Code für das Objekt in das Runbook eingefügt wird.
 
-## <a name="to-edit-an-azure-automation-runbook-using-windows-powershell"></a>So bearbeiten Sie ein Azure Automation-Runbook mit Windows PowerShell
+## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Bearbeiten eines Azure Automation-Runbooks mit Windows PowerShell
 
-Zum Bearbeiten eines Runbooks mit Windows PowerShell verwenden Sie einen Editor Ihrer Wahl und speichern es in einer Datei vom Typ `.ps1`. Mit dem Cmdlet [Export-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Export-AzureRmAutomationRunbook) können Sie den Inhalt des Runbooks abrufen, und mit dem Cmdlet [Import-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/import-azurermautomationrunbook) können Sie das vorhandene Entwurfsrunbook durch das geänderte Runbook ersetzen.
+Zum Bearbeiten eines Runbooks mit Windows PowerShell verwenden Sie einen Editor Ihrer Wahl und speichern dann das Runbook in einer **PS1**-Datei. Sie können das Cmdlet [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) verwenden, um den Inhalt des Runbooks abzurufen. Sie können das Cmdlet [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) verwenden, um den vorhandenen Entwurf des Runbooks durch das geänderte Runbook zu ersetzen.
 
-### <a name="to-retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>So rufen Sie den Inhalt eines Runbooks mit WindowsPowerShell ab
+### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>Abrufen des Inhalts eines Runbooks mit Windows PowerShell
 
 Die folgenden Beispielbefehle zeigen, wie das Skript für ein Runbook abgerufen und in einer Skriptdatei gespeichert wird. In diesem Beispiel wird die Entwurfsversion abgerufen. Sie können auch die veröffentlichte Version des Runbooks abrufen, auch wenn diese Version nicht geändert werden kann.
 
@@ -76,12 +74,12 @@ $automationAccountName = "MyAutomatonAccount"
 $runbookName = "Hello-World"
 $scriptFolder = "c:\runbooks"
 
-Export-AzureRmAutomationRunbook -Name $runbookName -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -OutputFolder $scriptFolder -Slot Draft
+Export-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -OutputFolder $scriptFolder -Slot Draft
 ```
 
-### <a name="to-change-the-contents-of-a-runbook-using-windows-powershell"></a>So ändern Sie den Inhalt eines Runbooks mit WindowsPowerShell
+### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>Ändern des Inhalts eines Runbooks mit Windows PowerShell
 
-Die folgenden Beispielbefehle zeigen, wie der vorhandene Inhalt eines Runbooks durch den Inhalt einer Skriptdatei ersetzt wird. Hierbei handelt es sich um das gleiche Beispielverfahren wie unter [So importieren Sie ein Runbook aus einer Skriptdatei mit Windows PowerShell](manage-runbooks.md#import-a-runbook).
+Die folgenden Beispielbefehle zeigen, wie der vorhandene Inhalt eines Runbooks durch den Inhalt einer Skriptdatei ersetzt wird. 
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"
@@ -89,18 +87,18 @@ $automationAccountName = "MyAutomatonAccount"
 $runbookName = "Hello-World"
 $scriptFolder = "c:\runbooks"
 
-Import-AzureRmAutomationRunbook -Path "$scriptfolder\Hello-World.ps1" -Name $runbookName -Type PowerShell -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -Force
-Publish-AzureRmAutomationRunbook -Name $runbookName -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName
+Import-AzAutomationRunbook -Path "$scriptfolder\Hello-World.ps1" -Name $runbookName -Type PowerShell -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -Force
+Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName
 ```
 
-## <a name="related-articles"></a>Verwandte Artikel
+## <a name="next-steps"></a>Nächste Schritte
 
 * [Verwalten von Runbooks in Azure Automation](manage-runbooks.md)
 * [Grundlagen des PowerShell-Workflows](automation-powershell-workflow.md)
 * [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md)
-* [Certificates](automation-certificates.md)
-* [Verbindungen](automation-connections.md)
-* [Anmeldeinformationen](automation-credentials.md)
-* [Zeitpläne](automation-schedules.md)
-* [Variablen](automation-variables.md)
-
+* [Zertifikate](./shared-resources/certificates.md):
+* [Verbindungen](automation-connections.md).
+* [Anmeldeinformationen:](./shared-resources/credentials.md)
+* [Zeitpläne:](./shared-resources/schedules.md)
+* [Variablen:](./shared-resources/variables.md)
+* [PowerShell-Cmdlet-Referenz](/powershell/module/az.automation/?view=azps-3.7.0#automation)

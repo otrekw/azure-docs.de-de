@@ -9,16 +9,22 @@ ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 06/18/2019
+ms.date: 06/24/2020
 ms.author: aahi
-ms.openlocfilehash: cfe198352cae95227a76535544d55a6be0c66abc
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 077c715616e377d8b296e53fdd5a861f944ab940
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203251"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349502"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Erstellen einer Suchclient-Konsolen-App in C#
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 In diesem Tutorial erfahren Sie, wie Sie eine einfache .NET Core-Konsolen-App erstellen, mit der Benutzer die Bing-Websuche-API abfragen und nach Rang sortierte Ergebnisse anzeigen können.
 
@@ -31,8 +37,9 @@ In diesem Tutorial wird Folgendes veranschaulicht:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- Visual Studio. Sollten Sie nicht über Visual Studio verfügen, [laden Sie die kostenlose Visual Studio 2017 Community Edition herunter, und installieren Sie sie](https://www.visualstudio.com/downloads/).
-- Einen Abonnementschlüssel für die Bing-Websuche-API. Falls Sie noch nicht über einen solchen Schlüssel verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) registrieren.
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
+* Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Erstellen einer Ressource für die Bing-Suche"  target="_blank"> im Azure-Portal eine Ressource für die Bing-Suche <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+* [Visual Studio-IDE](https://www.visualstudio.com/downloads/)
 
 ## <a name="create-a-new-console-app-project"></a>Erstellen eines neuen Konsolen-App-Projekts
 
@@ -46,7 +53,7 @@ Nennen Sie die Anwendung **MyConsoleSearchApp**, und klicken Sie anschließend a
 
 „JSON.net“ ermöglicht die Arbeit mit den von der API zurückgegebenen JSON-Antworten. Fügen Sie Ihrem Projekt das entsprechende NuGet-Paket hinzu:
 
-- Klicken Sie im**Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten...** aus.
+- Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten...** aus.
 - Suchen Sie auf der Registerkarte **Durchsuchen** nach `Newtonsoft.Json`. Wählen Sie die neueste Version aus, und klicken Sie auf **Installieren**.
 - Klicken Sie im Fenster **Änderungen überprüfen** auf die Schaltfläche **OK**.
 - Schließen Sie die Visual Studio-Registerkarte **NuGet: MyConsoleSearchApp**.
@@ -55,7 +62,7 @@ Nennen Sie die Anwendung **MyConsoleSearchApp**, und klicken Sie anschließend a
 
 Dieses Tutorial basiert auf der Assembly `System.Web`. Fügen Sie Ihrem Projekt einen Verweis auf diese Assembly hinzu:
 
-- Klicken Sie im**Projektmappen-Explorer** mit der rechten Maustaste auf **Verweise**, und klicken Sie anschließend auf **Verweis hinzufügen...** .
+- Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Verweise**, und klicken Sie anschließend auf **Verweis hinzufügen...** .
 - Klicken Sie auf **Assemblys > Framework**, scrollen Sie nach unten, und aktivieren Sie das Kontrollkästchen für **System.Web**
 - Klicken Sie auf **OK**.
 
@@ -70,7 +77,7 @@ using System.Net.Http;
 
 ## <a name="ask-the-user-for-a-query"></a>Anfordern einer Benutzerabfrage
 
-Öffnen Sie **Program.cs** im**Projektmappen-Explorer**. Aktualisieren Sie die Methode `Main()`:
+Öffnen Sie **Program.cs** im **Projektmappen-Explorer**. Aktualisieren Sie die Methode `Main()`:
 
 ```csharp
 static void Main()
@@ -221,7 +228,7 @@ Bevor wir darauf eingehen, wie Sie nach Rang sortierte Ergebnisse anzeigen, sehe
 }
 ```
 
-Das JSON-Objekt `rankingResponse` ([Dokumentation](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) beschreibt die korrekte Anzeigereihenfolge für Suchergebnisse. Es enthält mindestens eine der folgenden priorisierten Gruppen:
+Das JSON-Objekt `rankingResponse` ([Dokumentation](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) beschreibt die korrekte Anzeigereihenfolge für Suchergebnisse. Es enthält mindestens eine der folgenden priorisierten Gruppen:
 
 - `pole`: Die Suchergebnisse, die am sichtbarsten sein und beispielsweise über dem Hauptbereich und der Randleiste angezeigt werden sollen.
 - `mainline`: Die Suchergebnisse, die in der Hauptlinie angezeigt werden sollen.

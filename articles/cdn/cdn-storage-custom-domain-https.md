@@ -1,9 +1,9 @@
 ---
-title: 'Tutorial: Zugreifen auf Speicherblobs unter Verwendung einer benutzerdefinierten Azure CDN-Domäne über HTTPS | Microsoft-Dokumentation'
-description: ''
+title: Zugreifen auf Speicherblobs unter Verwendung einer benutzerdefinierten Azure CDN-Domäne über HTTPS
+description: Informieren Sie sich darüber, wie Sie eine benutzerdefinierte Azure CDN-Domäne hinzufügen und HTTPS in dieser Domäne für Ihren benutzerdefinierten Blobspeicher-Endpunkt aktivieren.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/15/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: e3b10760b95662570c8a6e802a57e1073e2faa0a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 6061de0a330518baaa829a9a1c8a05f196d68dcb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593369"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777842"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Tutorial: Zugreifen auf Speicherblobs unter Verwendung einer benutzerdefinierten Azure CDN-Domäne über HTTPS
 
@@ -37,18 +37,22 @@ Wenn Sie einen CDN-Endpunkt in Ihrem Profil erstellen, wird der Endpunktname, be
 Durch Verwenden des HTTPS-Protokolls für Ihre benutzerdefinierte Domäne stellen Sie sicher, dass Ihre Daten im Internet über die TLS-/SSL-Verschlüsselung sicher zugestellt werden. Wenn Ihr Webbrowser über HTTPS eine Verbindung mit einer Website herstellt, überprüft er das Sicherheitszertifikat der Website, um sicherzustellen, dass es von einer legitimen Zertifizierungsstelle stammt. Um HTTPS für Ihre benutzerdefinierte Domäne zu konfigurieren, befolgen Sie die Anweisungen in diesem Tutorial: [Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne](cdn-custom-ssl.md).
 
 ## <a name="shared-access-signatures"></a>Shared Access Signatures
-Wenn der Blobspeicher-Endpunkt so konfiguriert ist, dass anonyme Lesezugriffe unterbunden werden, müssen Sie bei jeder Anforderung an Ihre benutzerdefinierte Domäne ein [Shared Access Signature](cdn-sas-storage-support.md)-Token (SAS-Token) bereitstellen. Die Blob-Speicherendpunkte lehnen anonyme Lesezugriffe standardmäßig ab. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../storage/blobs/storage-manage-access-to-resources.md).
+Wenn der Blobspeicher-Endpunkt so konfiguriert ist, dass anonyme Lesezugriffe unterbunden werden, müssen Sie bei jeder Anforderung an Ihre benutzerdefinierte Domäne ein [Shared Access Signature](cdn-sas-storage-support.md)-Token (SAS-Token) bereitstellen. Die Blob-Speicherendpunkte lehnen anonyme Lesezugriffe standardmäßig ab. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../storage/blobs/anonymous-read-access-configure.md).
 
 Zum SAS-Token hinzugefügte Einschränkungen werden von Azure CDN ignoriert. Beispielsweise verfügen alle SAS-Token über eine Ablaufzeit, d.h., Inhalte sind auch mit einer abgelaufenen SAS weiterhin zugänglich, bis sie von den CDN-POP-Servern (Point-of-Presence) gelöscht werden. Über die Einstellung im Cacheantwortheader können Sie steuern, wie lange die Daten im Azure CDN zwischengespeichert werden. Weitere Informationen hierzu finden Sie unter [Verwalten des Ablaufs von Azure Storage-Blobs im Azure CDN](cdn-manage-expiration-of-blob-content.md).
 
 Wenn Sie für denselben Blobendpunkt mehrere SAS-URLs erstellen, sollten Sie das Aktivieren der Zwischenspeicherung von Abfragezeichenfolge in Betracht ziehen. Dadurch wird sichergestellt, dass jede URL als eindeutige Entität behandelt wird. Weitere Informationen finden Sie unter [Steuern des Azure CDN-Zwischenspeicherverhaltens mit Abfragezeichenfolgen](cdn-query-string.md).
 
 ## <a name="http-to-https-redirection"></a>HTTP-zu-HTTPS-Umleitung
-Sie können das Umleiten von HTTP-Datenverkehr an HTTPS festlegen, indem Sie bei der [Azure CDN-Regel-Engine](cdn-verizon-premium-rules-engine.md) eine [URL-Umleitungsregel](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect) erstellen. Für diese Option ist ein **Azure CDN Premium von Verizon**-Profil erforderlich.
+Sie können das Umleiten von HTTP-Datenverkehr an HTTPS festlegen, indem Sie bei der [Standard-Regel-Engine](cdn-standard-rules-engine.md) oder der [Verizon Premium-Regel-Engine](cdn-verizon-premium-rules-engine.md) eine URL-Umleitungsregel erstellen. Die Standard-Regel-Engine ist nur für Profile von Azure CDN von Microsoft verfügbar, während die Verizon Premium-Regel-Engine nur über Profile für Azure CDN Premium von Verizon verfügbar ist.
 
-![URL-Umleitungsregel](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+![Microsoft-Umleitungsregel](./media/cdn-storage-custom-domain-https/cdn-standard-redirect-rule.png)
 
-In dieser Regel bezieht sich *Cdn-endpoint-name* auf den Namen, den Sie für den CDN-Endpunkt konfiguriert haben und der aus der Dropdownliste ausgewählt werden kann. Der Wert für *origin-path* bezieht sich auf den Pfad in Ihrem Ursprungsspeicherkonto, in dem sich Ihr statischer Inhalt befindet. Wenn Sie alle statischen Inhalte in einem einzelnen Container hosten, ersetzen Sie *origin-path* durch den entsprechenden Containernamen.
+Wenn Sie in der oben genannten Regel Hostname, Pfad, Abfragezeichenfolge und Fragment unverändert lassen, werden die eingehenden Werte in der Umleitung verwendet. 
+
+![Verizon-Umleitungsregel](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+
+In der oben genannten Regel bezieht sich *Cdn-endpoint-name* auf den Namen, den Sie für den CDN-Endpunkt konfiguriert haben und der in der Dropdownliste ausgewählt werden kann. Der Wert für *origin-path* bezieht sich auf den Pfad in Ihrem Ursprungsspeicherkonto, in dem sich Ihr statischer Inhalt befindet. Wenn Sie alle statischen Inhalte in einem einzelnen Container hosten, ersetzen Sie *origin-path* durch den entsprechenden Containernamen.
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 Beim Zugriff auf Blobs über Azure CDN bezahlen Sie [Blobspeichergebühren](https://azure.microsoft.com/pricing/details/storage/blobs/) für den Datenverkehr zwischen POP-Servern und dem Ursprung (Blobspeicher). Weiterhin zahlen Sie [Azure CDN-Gebühren](https://azure.microsoft.com/pricing/details/cdn/) für Daten, auf die von den POP-Servern aus zugegriffen wird.
@@ -57,7 +61,3 @@ Wenn Sie beispielsweise in den Vereinigten Staaten ein Konto besitzen, auf das �
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Tutorial: Festlegen der Azure CDN-Cacheregeln](cdn-caching-rules-tutorial.md)
-
-
-
-

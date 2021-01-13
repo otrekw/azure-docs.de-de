@@ -1,33 +1,33 @@
 ---
-title: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen2 | Microsoft-Dokumentation
-description: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen2
+title: Optimieren von Azure Data Lake Storage Gen2 im Hinblick auf Leistung | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure Data Lake Storage Gen2 im Hinblick auf die Leistung optimieren können. Erfassen Sie Daten, strukturieren Sie Ihr Dataset, und führen Sie weitere Aktionen zur Leistungsoptimierung aus.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b134842303bebdf10efdf388057c8ad7b3be61be
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f0f64d910d03e42008c5fe6fef28a5b9c0917abd
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855568"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814464"
 ---
-# <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Optimieren der Leistung von Azure Data Lake Storage Gen2
+# <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimieren von Azure Data Lake Storage Gen2 im Hinblick auf Leistung
 
 Azure Data Lake Storage Gen2 unterstützt hohe Durchsätze für E/A-intensive Analysen und Datenverschiebungen.  In Data Lake Storage Gen2 ist es wichtig, den gesamten verfügbaren Durchsatz zu nutzen, um eine optimale Leistung zu erzielen. Der verfügbare Durchsatz bezieht sich hierbei auf die Menge an Daten, die pro Sekunde gelesen oder geschrieben werden können.  Dies wird erreicht, indem möglichst viele Lese- und Schreibvorgänge parallel ausgeführt werden.
 
 ![Leistung von Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
 
-Data Lake Storage Gen2 kann skaliert werden, um den erforderlichen Durchsatz für sämtliche Analyseszenarien bereitzustellen. Standardmäßig bietet ein Data Lake Storage Gen2-Konto automatisch genügend Durchsatz, um die Anforderungen eines breiten Spektrums an Anwendungsfällen zu erfüllen. Sollten Kunden das Standardlimit erreichen, kann das Data Lake Storage Gen2-Konto für die Bereitstellung eines höheren Durchsatzes konfiguriert werden. Wenden Sie sich hierzu an den [Azure-Support](https://azure.microsoft.com/support/faq/).
+Data Lake Storage Gen2 kann skaliert werden, um den erforderlichen Durchsatz für sämtliche Analyseszenarien bereitzustellen. Standardmäßig bietet ein Data Lake Storage Gen2-Konto in seiner Standardkonfiguration genügend Durchsatz, um die Anforderungen eines breiten Spektrums an Anwendungsfällen zu erfüllen. Sollten Kunden das Standardlimit erreichen, kann das Data Lake Storage Gen2-Konto für die Bereitstellung eines höheren Durchsatzes konfiguriert werden. Wenden Sie sich hierzu an den [Azure-Support](https://azure.microsoft.com/support/faq/).
 
 ## <a name="data-ingestion"></a>Datenerfassung
 
-Bei der Erfassung von Daten aus einem Quellsystem in Data Lake Storage Gen2 ist zu berücksichtigen, dass es bei der Quellhardware, bei der Quellnetzwerkhardware und bei der Netzwerkkonnektivität mit Data Lake Storage Gen2 zu Engpässen kommen kann.  
+Bei der Erfassung von Daten aus einem Quellsystem in Data Lake Storage Gen2 ist zu berücksichtigen, dass es bei der Quellhardware, bei der Quellnetzwerkhardware oder bei der Netzwerkkonnektivität mit Data Lake Storage Gen2 zu Engpässen kommen kann.  
 
-![Leistung von Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
+![Diagramm, das die Faktoren aufzeigt, die beim Erfassen von Daten aus einem Quellsystem in Data Lake Storage Gen2 zu berücksichtigen sind.](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
 Es ist unbedingt sicherzustellen, dass die Datenverschiebung durch diese Faktoren nicht beeinträchtigt wird.
 
@@ -43,11 +43,11 @@ Bei der Netzwerkkonnektivität zwischen Ihren Quelldaten und Data Lake Storage G
 
 Nachdem Sie die oben genannten Engpässe bei der Quellhardware und der Netzwerkkonnektivität behoben haben, können Sie nun Ihre Erfassungstools konfigurieren. In der folgenden Tabelle werden wichtige Einstellungen für verschiedene gängige Erfassungstools zusammengefasst und ausführliche Artikel zu ihrer Leistungsoptimierung angegeben.  Weitere Informationen darüber, welches Tool für Ihr Szenario geeignet ist, finden Sie in diesem [Artikel](data-lake-storage-data-scenarios.md).
 
-| Tool               | Einstellungen     | Weitere Informationen                                                                 |
+| Tool               | Einstellungen | Weitere Informationen                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (Mapper)   | [Link](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [Link](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | fs.azure.block.size, -m (Mapper)    |   [Link](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| Sqoop           | fs.azure.block.size, -m (Mapper)    |   [Link](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Strukturieren Ihres Datasets
 
@@ -57,7 +57,7 @@ Beim Speichern von Daten in Data Lake Storage Gen2 sind für die Leistung die Da
 
 In der Regel erzeugen Analyse-Engines wie HDInsight und Azure Data Lake Analytics Overhead pro Datei. Wenn Sie Ihre Daten in zahlreichen kleinen Dateien speichern, kann sich dies negativ auf die Leistung auswirken. Zur Verbesserung der Leistung empfiehlt es sich grundsätzlich, Daten in größeren Dateien (256 MB bis 100 GB) zu organisieren. Dateien mit einer Größe von mehr als 100 GB können von einigen Engines und Anwendungen unter Umständen nicht effizient verarbeitet werden.
 
-Mitunter können Datenpipelines Rohdaten mit vielen kleinen Dateien nur begrenzt nutzen. Es wird empfohlen, bei der Erstellung größere Dateien für die Verwendung bei Downstreamanwendungen zu generieren.
+Mitunter können Datenpipelines Rohdaten mit vielen kleinen Dateien nur begrenzt nutzen. Im Allgemeinen sollte Ihr System einen Prozess zum Aggregieren kleiner Dateien zu großen zur Verwendung durch nachgelagerte Anwendungen aufweisen.
 
 ### <a name="organizing-time-series-data-in-folders"></a>Organisieren von Zeitreihendaten in Ordnern
 
@@ -65,13 +65,13 @@ Bei Hive-Workloads kann durch Partition Pruning von Zeitreihendaten bewirkt werd
 
 Diese Pipelines, die Zeitreihendaten erfassen, versehen ihre Dateien oftmals mit einer äußerst strukturierten Datei- und Ordnerbenennung. Nachfolgend wird ein sehr gängiges Beispiel für Daten vorgestellt, die nach Datum strukturiert sind:
 
-    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
+*\DataSet\JJJJ\MM\TT\datafile_JJJJ_MM_TT.tsv*
 
 Beachten Sie, dass Informationen zu Datum/Uhrzeit sowohl im Ordnernamen als auch im Dateinamen angegeben werden.
 
 Im Folgenden wird ein allgemeines Muster für Datums- und Uhrzeitangaben vorgestellt:
 
-    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
+*\DataSet\JJJJ\MM\TT\HH\mm\datafile_JJJJ_MM_TT_HH_mm.tsv*
 
 Auch hier sollte die Wahl, die Sie bei der Ordner- und Dateiorganisation treffen, für größere Dateien und eine angemessene Anzahl von Dateien in den einzelnen Ordnern optimiert sein.
 
@@ -107,7 +107,7 @@ Es gibt drei Ebenen in einem HDInsight-Cluster, die sich optimieren lassen, um d
 
 **Führen Sie Cluster mit einer größeren Anzahl von Knoten und/oder größeren VMs aus.**  Bei einem größeren Cluster können Sie mehr YARN-Container ausführen, wie in der folgenden Abbildung gezeigt wird.
 
-![Leistung von Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/VM.png)
+![Diagramm, das zeigt, wie ein größerer Cluster es Ihnen ermöglicht, mehr YARN-Container auszuführen.](./media/data-lake-storage-performance-tuning-guidance/VM.png)
 
 **Verwenden Sie VMs mit mehr Netzwerkbandbreite.**  Ist die Netzwerkbandbreite kleiner als der Data Lake Storage Gen2-Durchsatz, kann dies zu einem Engpass führen.  Die Menge der Netzwerkbandbreite variiert je nach VM.  Wählen Sie einen VM-Typ, der die größtmögliche Netzwerkbandbreite aufweist.
 
@@ -115,7 +115,7 @@ Es gibt drei Ebenen in einem HDInsight-Cluster, die sich optimieren lassen, um d
 
 **Verwenden Sie kleinere YARN-Container.**  Reduzieren Sie die Größe der einzelnen YARN-Container, um mit derselben Menge an Ressourcen mehr Container zu erstellen.
 
-![Leistung von Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
+![Diagramm, das das Ergebnis zeigt, wenn Sie die Größe jedes YARN-Containers verringern, um mehr Container zu erstellen.](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
 
 Abhängig von Ihrer Workload ist stets eine Mindestgröße für YARN-Container erforderlich. Wenn Sie einen zu kleinen Container auswählen, treten bei Ihren Aufträgen Probleme aufgrund von unzureichendem Speicherplatz auf. In der Regel dürfen YARN-Container nicht kleiner als 1 GB sein. Üblich sind YARN-Container mit 3 GB. Für einige Workloads benötigen Sie möglicherweise größere YARN-Container.  
 
@@ -125,7 +125,7 @@ Abhängig von Ihrer Workload ist stets eine Mindestgröße für YARN-Container e
 
 **Verwenden Sie alle verfügbaren Container.**  Legen Sie die Anzahl von Aufgaben auf dieselbe oder eine höhere Anzahl der verfügbaren Containern fest, damit alle Ressourcen ausgelastet sind.
 
-![Leistung von Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
+![Diagramm, das die Verwendung aller Container zeigt.](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
 
 **Aufgaben, die mit Fehlern beendet werden, sind kostspielig.** Sind bei jeder Aufgabe große Mengen an Daten zu verarbeiten, führen fehlerhafte Aufgaben zu einer kostenintensiven Wiederholung.  Aus diesem Grund empfiehlt es sich, mehr Aufgaben zu erstellen, bei denen jeweils eine kleine Menge von Daten verarbeitet wird.
 

@@ -1,24 +1,17 @@
 ---
 title: Netzwerkleistungsmonitor-Lösung in Azure Log Analytics | Microsoft-Dokumentation
 description: Mit der ExpressRoute-Monitor-Funktion im Netzwerkleistungsmonitor können Sie die End-to-End-Konnektivität und -Leistung zwischen Ihren Zweigstellen und Azure über Azure ExpressRoute überwachen.
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/27/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: 7f9c0d905a7b2bc81063e59229d78a1200894d47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/27/2018
+ms.openlocfilehash: a9f268e5080a5c04c5cdb4767f2db5fd2d77cd3c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963744"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87326153"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-Monitor
 
@@ -147,4 +140,5 @@ Sie können die Benachrichtigungscodes sehen und über **LogAnalytics** Benachri
  
 
 ## <a name="next-steps"></a>Nächste Schritte
-Mit [Protokollsuchen](../../azure-monitor/log-query/log-query-overview.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.
+Mit [Protokollsuchen](../log-query/log-query-overview.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.
+

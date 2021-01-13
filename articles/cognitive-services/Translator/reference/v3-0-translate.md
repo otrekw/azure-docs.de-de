@@ -1,23 +1,23 @@
 ---
-title: Übersetzungsmethode der Textübersetzungs-API
+title: Translator-Methode „Translate“
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Übersetzungsmethode der Textübersetzungs-API.
+description: Hier finden Sie Informationen zu den Parametern, Headern und Textnachrichten für die Methode „Translate“ von Azure Cognitive Services Translator zur Übersetzung von Text.
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/01/2019
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 67d323d5a3574100760c78427db6983f6aff5ac8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 15f20bab91a4feab056a9f8cd6b012792f036be2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933993"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016546"
 ---
-# <a name="translator-text-api-30-translate"></a>Textübersetzungs-API 3.0: Translate
+# <a name="translator-30-translate"></a>Translator 3.0: Translate
 
 Übersetzt Text.
 
@@ -33,6 +33,8 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben:
 
+### <a name="required-parameters"></a>Erforderliche Parameter
+
 <table width="100%">
   <th width="20%">Query parameter (Abfrageparameter)</th>
   <th>BESCHREIBUNG</th>
@@ -41,20 +43,27 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
     <td><em>Erforderlicher Parameter</em>.<br/>Die vom Client angeforderte Version der API. Der Wert muss <code>3.0</code> sein.</td>
   </tr>
   <tr>
-    <td>from</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die <a href="./v3-0-languages.md">unterstützten Sprachen</a> mithilfe des<code>translation</code>-Bereichs. Wenn kein <code>from</code>-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet. <br/><br/>Sie müssen den Parameter <code>from</code> anstelle der automatischen Erkennung verwenden, wenn Sie die Funktion für ein <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamisches Wörterbuch</a> verwenden.</td>
-  </tr>
-  <tr>
     <td>zu</td>
     <td><em>Erforderlicher Parameter</em>.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum <code>translation</code>-Bereich hinzugefügten <a href="./v3-0-languages.md">unterstützten Sprachen</a> als Zielsprache auswählen. Verwenden Sie z.B. <code>to=de</code> für die Übersetzung ins Deutsche.<br/>Durch Wiederholen des Parameters in der Abfragezeichenfolge ist es möglich, in mehrere Sprachen gleichzeitig zu übersetzen. Verwenden Sie z.B. <code>to=de&to=it</code> für die Übersetzung ins Deutsche und Italienische.</td>
   </tr>
+</table>
+
+### <a name="optional-parameters"></a>Optionale Parameter
+
+<table width="100%">
+  <th width="20%">Query parameter (Abfrageparameter)</th>
+  <th>BESCHREIBUNG</th>
+  <tr>
+    <td>from</td>
+    <td><em>Optionaler Parameter</em>.<br/>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die <a href="./v3-0-languages.md">unterstützten Sprachen</a> mithilfe des<code>translation</code>-Bereichs. Wenn kein <code>from</code>-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet. <br/><br/>Sie müssen den Parameter <code>from</code> anstelle der automatischen Erkennung verwenden, wenn Sie die Funktion für ein <a href="/azure/cognitive-services/translator/dynamic-dictionary">dynamisches Wörterbuch</a> verwenden.</td>
+  </tr>  
   <tr>
     <td>textType</td>
-    <td><em>Optionaler Parameter</em>.<br/>Definiert, ob es sich bei dem zu übersetzenden Text um Nur-Text oder um HTML-Text handelt. Jede HTML muss ein wohlgeformtes vollständiges Element sein. Mögliche Werte sind: <code>plain</code> (Standard) oder <code>html</code>.</td>
+    <td><em>Optionaler Parameter</em>.<br/>Definiert, ob es sich bei dem zu übersetzenden Text um Nur-Text oder um HTML-Text handelt. Jede HTML muss ein wohlgeformtes vollständiges Element sein. Mögliche Werte: <code>plain</code> (Standard) oder <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
-    <td><em>Optionaler Parameter</em>.<br/>Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung angibt. Dieser Parameter wird verwendet, um Übersetzungen von einem benutzerdefinierten System zu erhalten, das mit <a href="../customization.md">Custom Translator</a> erstellt wurde. Fügen Sie diesem Parameter die Kategorie-ID Ihrer „Benutzerdefinierter Translator“-<a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">Projektdetails</a> hinzu, um Ihr bereitgestelltes angepasstes System zu verwenden. Der Standardwert ist <code>general</code>.</td>
+    <td><em>Optionaler Parameter</em>.<br/>Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung angibt. Dieser Parameter wird verwendet, um Übersetzungen von einem benutzerdefinierten System zu erhalten, das mit <a href="../customization.md">Custom Translator</a> erstellt wurde. Fügen Sie diesem Parameter die Kategorie-ID Ihrer „Benutzerdefinierter Translator“-<a href="/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">Projektdetails</a> hinzu, um Ihr bereitgestelltes angepasstes System zu verwenden. Der Standardwert ist <code>general</code>.</td>
   </tr>
   <tr>
     <td>profanityAction</td>
@@ -98,11 +107,11 @@ Anforderungsheader enthalten Folgendes:
   <th>BESCHREIBUNG</th>
   <tr>
     <td>Authentifizierungsheader</td>
-    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
+    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Gibt den Inhaltstyp der Nutzlast an. Mögliche Werte: <code>application/json</code>.</td>
+    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Gibt den Inhaltstyp der Nutzlast an.<br/> Der zulässige Wert ist <code>application/json; charset=UTF-8</code>.</td>
   </tr>
   <tr>
     <td>Content-Length</td>
@@ -110,7 +119,7 @@ Anforderungsheader enthalten Folgendes:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td><em>Optional</em>.<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Sie können diesen Header nur weglassen, wenn Sie die Ablaufverfolgungs-ID in die Abfragezeichenfolge über einen Abfrageparameter namens <code>ClientTraceId</code> einschließen.</td>
+    <td><em>Optional:</em><br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Sie können diesen Header nur weglassen, wenn Sie die Ablaufverfolgungs-ID in die Abfragezeichenfolge über einen Abfrageparameter namens <code>ClientTraceId</code> einschließen.</td>
   </tr>
 </table> 
 
@@ -127,7 +136,7 @@ Der Anforderungstext ist ein JSON-Array. Jedes Arrayelement ist ein JSON-Objekt 
 Es gelten die folgenden Einschränkungen:
 
 * Das Array kann höchstens über 100 Elemente verfügen.
-* Der gesamte Text, der in der Anforderung enthalten ist, darf 5.000 Zeichen (einschließlich Leerzeichen) nicht überschreiten.
+* Der gesamte Anforderungstext darf nicht mehr als 10.000 Zeichen enthalten (einschließlich Leerzeichen).
 
 ## <a name="response-body"></a>Antworttext
 
@@ -155,7 +164,7 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
     Das `transliteration`-Objekt ist nur dann enthalten, wenn eine Transliteration erfolgt.
 
-    * `alignment`: Ein Objekt mit einer einzelnen Zeichenfolgeneigenschaft namens `proj`, das dem übersetzten Text Eingabetext zuordnet. Die Informationen für die Ausrichtung werden nur bereitgestellt, wenn der Anforderungsparameter `includeAlignment` `true` ist. Die Ausrichtung wird als Zeichenfolgenwert mit dem folgenden Format zurückgegeben: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Der Doppelpunkt trennt Start- und Endindex, der Bindestrich trennt die Sprachen, und Leerzeichen trennen die Wörter. Ein Wort kann mit Null, einem oder mehreren Wörtern in der anderen Sprache übereinstimmen, und die ausgerichteten Wörter sind möglicherweise nicht zusammenhängend. Wenn keine Informationen für die Ausrichtung verfügbar sind, ist das Ausrichtungselement leer. Beispiele und Einschränkungen finden Sie in Abschnitt [Abrufen von Ausrichtungsinformationen](#obtain-alignment-information).
+    * `alignment`: Ein Objekt mit einer einzelnen Zeichenfolgeneigenschaft namens `proj`, das dem übersetzten Text Eingabetext zuordnet. Die Informationen für die Ausrichtung werden nur bereitgestellt, wenn der Anforderungsparameter `includeAlignment``true` ist. Die Ausrichtung wird als Zeichenfolgenwert mit dem folgenden Format zurückgegeben: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Der Doppelpunkt trennt Start- und Endindex, der Bindestrich trennt die Sprachen, und Leerzeichen trennen die Wörter. Ein Wort kann mit Null, einem oder mehreren Wörtern in der anderen Sprache übereinstimmen, und die ausgerichteten Wörter sind ggf. nicht zusammenhängend. Wenn keine Informationen für die Ausrichtung verfügbar sind, ist das Ausrichtungselement leer. Beispiele und Einschränkungen finden Sie in Abschnitt [Abrufen von Ausrichtungsinformationen](#obtain-alignment-information).
 
     * `sentLen`: Ein Objekt, das Satzgrenzen in den Eingabe- und Ausgabetexten zurückgibt.
 
@@ -163,7 +172,7 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
       * `transSentLen`:  Ein Integer-Array, das die Länge der Sätze im übersetzten Text darstellt. Die Länge des Arrays stellt die Anzahl von Sätzen dar, und die Werte stehen jeweils für die Länge der einzelnen Sätze.
 
-    Satzgrenzen sind nur enthalten, wenn der Anforderungsparameter `includeSentenceLength` `true` ist.
+    Satzgrenzen sind nur enthalten, wenn der Anforderungsparameter `includeSentenceLength``true` ist.
 
   * `sourceText`: Ein Objekt mit einer einzelnen Zeichenfolgeneigenschaft namens `text`, das den Eingabetext im Standardskript der Quellsprache bereitstellt. Die Eigenschaft `sourceText` ist nur vorhanden, wenn die Eingabe in einem Skript ausgedrückt wird, das nicht das übliche Skript für die Sprache ist. Wenn die Eingabe z.B. ein arabischer Text ist, der im lateinischen Skript verfasst wurde, würde `sourceText.text` diesen arabischen Text in das arabische Skript konvertieren.
 
@@ -193,7 +202,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   <th>BESCHREIBUNG</th>
   <tr>
     <td>200</td>
-    <td>Erfolgreich.</td>
+    <td>Erfolg.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -225,7 +234,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   </tr>
 </table> 
 
-Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Gängige Fehlercodes finden Sie auf der [Referenzseite zur Textübersetzungs-API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Häufige Fehlercodes finden Sie in der [Referenz zu Version 3 von Translator](./v3-0-reference.md#errors). 
 
 ## <a name="examples"></a>Beispiele
 
@@ -234,7 +243,7 @@ Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zur�
 Dieses Beispiel zeigt, wie ein einzelner Satz aus dem Englischen ins Chinesische (vereinfacht) übersetzt wird.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Der Antworttext lautet:
@@ -256,7 +265,7 @@ Das `translations` Array enthält ein Element, das die Übersetzung des einzelne
 Dieses Beispiel zeigt, wie ein einzelner Satz aus dem Englischen ins Chinesische (vereinfacht) übersetzt wird. Die Anforderung gibt keine Eingabesprache an. Es wird stattdessen die automatische Erkennung der Quellsprache verwendet.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Der Antworttext lautet:
@@ -271,14 +280,14 @@ Der Antworttext lautet:
     }
 ]
 ```
-Die Antwort ähnelt der Antwort aus dem vorherigen Beispiel. Da die automatische Spracherkennung angefordert wurde, enthält die Antwort auch Informationen über die erkannte Sprache für den Eingabetext. 
+Die Antwort ähnelt der Antwort aus dem vorherigen Beispiel. Da die automatische Spracherkennung angefordert wurde, enthält die Antwort auch Informationen über die erkannte Sprache für den Eingabetext. Ein längerer Eingabetext erhöht die Zuverlässigkeit der automatischen Spracherkennung.
 
 ### <a name="translate-with-transliteration"></a>Übersetzen mit Transliteration
 
 Das vorherige Beispiel wird jetzt durch Hinzufügen einer Transliteration erweitert. Die folgende Anforderung beinhaltet eine chinesische Übersetzung, die in einem lateinischen Skript verfasst wurde.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Der Antworttext lautet:
@@ -305,9 +314,10 @@ Das Übersetzungsergebnis beinhaltet nun eine `transliteration`-Eigenschaft, die
 Um mehrere Strings gleichzeitig zu übersetzen, muss lediglich ein Array von Zeichenfolgen im Anforderungstext angegeben werden.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
+Die Antwort enthält die Übersetzung aller Textteile in exakt derselben Reihenfolge wie in der Anforderung.
 Der Antworttext lautet:
 
 ```
@@ -330,7 +340,7 @@ Der Antworttext lautet:
 Dieses Beispiel zeigt, wie in einer Anforderung ein- und dieselbe Eingabe in mehrere Sprachen übersetzt wird.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Der Antworttext lautet:
@@ -384,7 +394,7 @@ Bei Verwendung von <code>ProfanityMarker=Tag</code> werden obszöne Wörter von 
 Beispiel:
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 Gibt Folgendes zurück:
 
@@ -401,7 +411,7 @@ Gibt Folgendes zurück:
 Verglichen mit:
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 
 Diese letzte Anforderung gibt Folgendes zurück:
@@ -428,7 +438,7 @@ Häufig werden Inhalte übersetzt, die Markups enthalten, wie z.B. Inhalte von e
 Zur Veranschaulichung finden Sie Folgenden ein Beispiel einer Anforderung.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
 ```
 
 Die Antwort lautet:
@@ -445,10 +455,18 @@ Die Antwort lautet:
 
 ### <a name="obtain-alignment-information"></a>Abrufen von Informationen zur Ausrichtung
 
+Die Ausrichtung wird als Zeichenfolgenwert des folgenden Formats für jedes Wort der Quelle zurückgegeben. Die Informationen für jedes Wort sind durch ein Leerzeichen getrennt. Dies gilt auch für Sprachen (Skripts), die keine Leerzeichen als Trennung enthalten, z.B. Chinesisch:
+
+[[SourceTextStartIndex]\:[SourceTextEndIndex]–[TgtTextStartIndex]\:[TgtTextEndIndex]] *
+
+Beispiel für Ausrichtungszeichenfolge: „0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21“.
+
+Anders ausgedrückt: Der Doppelpunkt trennt Start- und Endindex, der Bindestrich trennt die Sprachen, und Leerzeichen trennen die Wörter. Ein Wort kann mit Null, einem oder mehreren Wörtern in der anderen Sprache übereinstimmen, und die ausgerichteten Wörter sind ggf. nicht zusammenhängend. Wenn keine Informationen für die Ausrichtung verfügbar sind, ist das Ausrichtungselement leer. In diesem Fall gibt die Methode keinen Fehler zurück.
+
 Um Informationen über die Ausrichtung zu erhalten, geben Sie `includeAlignment=true` in der Abfragezeichenfolge ein.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation.'}]"
 ```
 
 Die Antwort lautet:
@@ -469,20 +487,24 @@ Die Antwort lautet:
 
 Die Informationen für die Ausrichtung beginnen mit `0:2-0:1`, was bedeutet, dass die ersten drei Zeichen im Quelltext (`The`) den beiden ersten Zeichen im übersetzten Text (`La`) zugeordnet sind.
 
-Beachten Sie folgende Einschränkungen:
+#### <a name="limitations"></a>Einschränkungen
+Das Abrufen der Ausrichtungsinformationen ist ein experimentelles Feature, das für prototypbasierte Untersuchungen und Umgebungen mit möglichen Ausdruckszuordnungen aktiviert wurde. Dieses Features wird in Zukunft unter Umständen nicht mehr unterstützt. Nachfolgend finden Sie einige relevante Einschränkungen bei der Unterstützung von Ausrichtungen:
 
+* Ausrichtung ist für Text im HTML-Format – d.h. textType=html – nicht verfügbar.
 * Die Ausrichtung wird nur für eine Teilmenge der Sprachpaare zurückgegeben:
-  - aus dem Englischen in eine andere Sprache;
-  - aus einer beliebigen anderen Sprache ins Englische mit Ausnahme von Chinesisch (vereinfacht) und Chinesisch (traditionell) sowie aus dem Lettischen ins Englische;
-  - aus dem Japanischen ins Koreanische und aus dem Koreanischen ins Japanische.
+  - Aus einer beliebigen Sprache ins Englische bzw. aus dem Englischen in eine beliebige Sprache, mit Ausnahme von Chinesisch (traditionell), Kantonesisch (traditionell) und Serbisch (Kyrillisch)
+  - Aus dem Japanischen ins Koreanische und aus dem Koreanischen ins Japanische
+  - Aus dem Japanischen ins Chinesische (vereinfacht) und umgekehrt 
+  - Aus dem Chinesischen (vereinfacht) ins Chinesische (traditionell) und umgekehrt 
 * Sie erhalten keine Ausrichtung, wenn es sich bei dem Satz um eine vordefinierte Übersetzung handelt. Beispiele für vordefinierte Übersetzung sind „This is a test“, „I love you“ und andere häufig verwendete Sätze.
+* Die Ausrichtung ist nicht verfügbar, wenn Sie einen der [hier beschriebenen](../prevent-translation.md) Ansätze zum Verhindern der Übersetzung anwenden.
 
 ### <a name="obtain-sentence-boundaries"></a>Abrufen von Satzgrenzen
 
 Um Informationen über die Satzlänge im Quell- und im übersetzten Text zu erhalten, geben Sie `includeSentenceLength=true` in der Abfragezeichenfolge an.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
 ```
 
 Die Antwort lautet:
@@ -503,18 +525,18 @@ Die Antwort lautet:
 
 ### <a name="translate-with-dynamic-dictionary"></a>Übersetzen mit dynamischem Wörterbuch
 
-Wenn Ihnen die Übersetzung eines Worts oder eines Ausdrucks bereits bekannt ist, können Sie diese als Markup in der Anforderung angeben. Das dynamische Wörterbuch ist nur für zusammengesetzte Substantive wie Eigennamen und Produktnamen sicher.
+Wenn Ihnen die Übersetzung eines Worts oder eines Ausdrucks bereits bekannt ist, können Sie diese als Markup in der Anforderung angeben. Das dynamische Wörterbuch ist nur für Eigennamen wie Personen- und Produktnamen sicher.
 
 Das anzugebende Markup verwendet die folgende Syntax.
 
 ``` 
-<mstrans:dictionary translation=”translation of phrase”>phrase</mstrans:dictionary>
+<mstrans:dictionary translation="translation of phrase">phrase</mstrans:dictionary>
 ```
 
 Sehen Sie sich hierzu den englischen Satz „The word wordomatic is a dictionary entry.“ an. Um das Wort _wordomatic_ in der Übersetzung beizubehalten, senden Sie die folgende Anforderung:
 
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
 ```
 
 Es wird folgendes Ergebnis ausgegeben:
@@ -523,7 +545,7 @@ Es wird folgendes Ergebnis ausgegeben:
 [
     {
         "translations":[
-            {"text":"Das Wort "wordomatic" ist ein Wörterbucheintrag.","to":"de"}
+            {"text":"Das Wort \"wordomatic\" ist ein Wörterbucheintrag.","to":"de"}
         ]
     }
 ]

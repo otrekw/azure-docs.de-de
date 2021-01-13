@@ -1,25 +1,23 @@
 ---
-title: Verwalten von Paketerfassungen mit Azure Network Watcher – Azure-Portal | Microsoft-Dokumentation
+title: 'Verwalten von Paketerfassungen: Azure-Portal'
+titleSuffix: Azure Network Watcher
 description: Erfahren Sie, wie das Network Watcher-Feature zur Paketerfassung über das Azure-Portal verwaltet wird.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 59edd945-34ad-4008-809e-ea904781d918
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: kumud
-ms.openlocfilehash: 00349a7e681beab447e585139e481c04755b7879
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: damendo
+ms.openlocfilehash: 099ead37b8d6b46b767ef59ff24a7e7ff9dc9e3c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102866"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966444"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Verwalten von Paketerfassungen mit Azure Network Watcher über das Portal
 
@@ -29,10 +27,14 @@ In diesem Artikel wird beschrieben, wie Sie eine Paketerfassung starten, beenden
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Für die Paketerfassung sind folgende Verbindungen erforderlich:
-* Ausgehende Verbindung mit einem Speicherkonto über Port 443
-* Eingehende und ausgehende Verbindung mit 169.254.169.254
-* Eingehende und ausgehende Verbindung mit 168.63.129.16
+Für Paketerfassung sind folgende ausgehende TCP-Verbindungen erforderlich:
+- mit dem ausgewählten Speicherkonto über Port 443
+- mit 169.254.169.254 über Port 80
+- mit 168.63.129.16 über Port 8037
+
+> [!NOTE]
+> Die in den beiden letztgenannten Fällen erwähnten Ports sind allen Network Watcher-Funktionen, die die Network Watcher-Erweiterung beinhalten, gemeinsam und können sich gelegentlich ändern.
+
 
 Wenn eine Netzwerksicherheitsgruppe der Netzwerkschnittstelle oder einem Subnetz, in dem sich die Netzwerkschnittstelle befindet, zugeordnet ist, stellen Sie sicher, dass Regeln definiert sind, die die oben genannten Ports zulassen. Auf ähnliche Weise kann das Hinzufügen von benutzerdefinierten Datenverkehrsrouten zu Ihrem Netzwerk Verbindungen mit den oben erwähnten IP-Adressen und Ports verhindern. Stellen Sie sicher, dass diese erreichbar sind. 
 
@@ -72,7 +74,7 @@ Nachdem das für die Paketerfassung festgelegte Zeitlimit abgelaufen ist, wird d
 > [!NOTE]
 > Im Portal werden folgende Vorgänge automatisch durchgeführt:
 >  * Erstellen einer Network Watcher-Instanz in der Region, in der sich der ausgewählte virtuelle Computer befindet, sofern in der Region noch keine Network Watcher-Instanz vorhanden ist.
->  * Hinzufügen der Erweiterung *AzureNetworkWatcherExtension* für virtuelle [Linux](../virtual-machines/linux/extensions-nwa.md)- oder [Windows](../virtual-machines/windows/extensions-nwa.md)-Computer, sofern sie noch nicht installiert ist.
+>  * Hinzufügen der Erweiterung *AzureNetworkWatcherExtension* für virtuelle [Linux](../virtual-machines/extensions/network-watcher-linux.md)- oder [Windows](../virtual-machines/extensions/network-watcher-windows.md)-Computer, sofern sie noch nicht installiert ist.
 
 ## <a name="delete-a-packet-capture"></a>Löschen einer Paketerfassung
 

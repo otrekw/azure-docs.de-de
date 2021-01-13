@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Synchronisierungsdienstinstanzen | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Synchronisierungsdienstinstanzen | Microsoft Docs'
 description: Diese Seite beschreibt besondere Überlegungen für Azure AD-Instanzen.
 services: active-directory
 documentationcenter: ''
@@ -16,15 +16,15 @@ ms.date: 05/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c4d8b0a33763a967550453d8a205258f7583084
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66298829"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90015261"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Besondere Überlegungen zu Instanzen
-Azure AD Connect wird am häufigsten mit der weltweiten Instanz von Azure AD und Office 365 verwendet. Es gibt jedoch noch weitere Instanzen, und für diese gelten andere Anforderungen an URLs sowie weitere besondere Überlegungen.
+Azure AD Connect wird am häufigsten mit der weltweiten Instanz von Azure AD und Microsoft 365 verwendet. Es gibt jedoch noch weitere Instanzen, und für diese gelten andere Anforderungen an URLs sowie weitere besondere Überlegungen.
 
 ## <a name="microsoft-cloud-germany"></a>Microsoft Cloud Deutschland
 Die [Microsoft Cloud Deutschland](https://www.microsoft.de/cloud-deutschland) ist eine unabhängige Cloud, die von einem deutschen Datentreuhänder betrieben wird.

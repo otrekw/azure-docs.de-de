@@ -9,14 +9,17 @@ ms.topic: include
 ms.date: 05/31/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: 887646c7e0ae87cd5e290a68ccc43b80dfbb109c
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 6e5885e076222cd23ba127f3be41c1218f327ca0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178500"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92379788"
 ---
-| Category (Kategorie) | Begrenzung |
-| --- | --- |
-| Vom Benutzer zugewiesene verwaltete Identitäten | <ul><li>Wenn Sie durch den Benutzer zugewiesene verwaltete Identitäten erstellen, werden nur alphanumerische Zeichen (0-9, a-z und A-Z) und der Bindestrich (-) unterstützt. Damit die Zuweisung zu einem virtuellen Computer oder einer VM-Skalierungsgruppe ordnungsgemäß funktioniert, darf der Name höchstens 24 Zeichen lang sein.</li><li>Wenn Sie die VM-Erweiterung für verwaltete Identitäten verwenden, ist die Begrenzung auf Unterstützung von 32 vom Benutzer zugewiesene verwaltete Identitäten festgelegt. Ohne die VM-Erweiterung für verwaltete Identität ist die Begrenzung auf Unterstützung von 512 vom Benutzer zugewiesene Identitäten festgelegt.</li>|
+- Jede verwaltete Identität wird auf den Objektkontingentgrenzwert in einem Azure AD-Mandanten angerechnet, wie unter [Dienst- und andere Einschränkungen für Azure AD](../articles/active-directory/enterprise-users/directory-service-limits-restrictions.md) beschrieben.
+-   Für die Rate, mit der verwaltete Identitäten erstellt werden können, gelten die folgenden Grenzwerte:
 
+    1. Pro Azure AD-Mandant und Azure-Region: 200 Erstellungsvorgänge pro 20 Sekunden
+    2. Pro Azure-Abonnement und Azure-Region: 40 Erstellungsvorgänge pro 20 Sekunden
+
+- Wenn Sie durch den Benutzer zugewiesene verwaltete Identitäten erstellen, werden nur alphanumerische Zeichen (0-9, a-z und A-Z) und der Bindestrich (-) unterstützt. Damit die Zuweisung zu einem virtuellen Computer oder einer VM-Skalierungsgruppe ordnungsgemäß funktioniert, darf der Name höchstens 24 Zeichen lang sein.

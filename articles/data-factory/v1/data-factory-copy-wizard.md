@@ -1,5 +1,5 @@
 ---
-title: Einfaches Kopieren von Daten mit dem Kopier-Assistenten – Azure | Microsoft-Dokumentation
+title: Einfaches Kopieren von Daten mit dem Kopier-Assistenten – Azure
 description: Erfahren Sie, wie Sie den Data Factory-Kopier-Assistenten verwenden, um Daten aus unterstützten Datenquellen in Senken zu kopieren.
 services: data-factory
 documentationcenter: ''
@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: f904972f-cd33-48db-9755-2b3196ae4168
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 90f78428601d7b039d00d39c1ca8339ab3ace9ba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 28169e43d0e6949a16cc56c7e7d5d91d6db1ef57
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487936"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003037"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Einfaches Kopieren oder Verschieben von Daten mit dem Kopier-Assistenten von Azure Data Factory
 > [!NOTE]
@@ -54,7 +53,7 @@ Der Kopier-Assistent ordnet Quell- und Zielschemaspalten automatisch zu. Sie kö
 
 ![Schemazuordnung](./media/data-factory-copy-wizard/schema-mapping.png)
 
-## <a name="filtering-data"></a>Daten filtern
+## <a name="filtering-data"></a>Filtern von Daten
 Mithilfe des Assistenten können Sie Quelldaten filtern, wenn nur bestimmte Daten in den Ziel-/Senkendatenspeicher kopiert werden sollen. Durch Filtern wird das Datenvolumen der in den Senkendatenspeicher kopierten Daten verringert. Der Durchsatz des Kopiervorgangs steigt. Der Assistent bietet flexible Möglichkeiten, die Daten einer relationalen Datenbank mittels der SQL-Abfragesprache oder Dateien in einem Azure-Blobordner mittels [Data Factory-Funktionen und -Systemvariablen](data-factory-functions-variables.md) zu filtern.   
 
 ### <a name="filtering-of-data-in-a-database"></a>Filtern von Datenbankdaten
@@ -67,16 +66,18 @@ Sie können im Ordnerpfad Variablen verwenden, um Daten aus einem Ordner zu kopi
 
 Angenommen, Sie haben Eingabeordner im folgenden Format:
 
-    2016/03/01/01
-    2016/03/01/02
-    2016/03/01/03
-    ...
+```text
+2016/03/01/01
+2016/03/01/02
+2016/03/01/03
+...
+```
 
 Klicken Sie auf die Schaltfläche **Durchsuchen** für **Datei oder Ordner**, navigieren Sie zu einem der Ordner (z.B. 2016->03->01->02), und klicken Sie auf **Auswählen**. Das Textfeld sollte jetzt `2016/03/01/02` enthalten. Ersetzen Sie nun **2016** durch **{year}** , **03** durch **{month}** , **01** durch **{day}** , **02** durch **{hour}** , und drücken Sie die TAB-TASTE. Daraufhin werden Dropdownlisten zum Auswählen des Formats für diese vier Variablen angezeigt:
 
 ![Verwenden von Systemvariablen](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Sie können auch eine **benutzerdefinierte** Variable und beliebige [unterstützte Formatzeichenfolgen](https://msdn.microsoft.com/library/8kb3ddd4.aspx)verwenden (siehe Screenshot unten). Um einen Ordner mit dieser Struktur auszuwählen, verwenden Sie zunächst die Schaltfläche **Durchsuchen** . Ersetzen Sie dann einen Wert mit **{custom}** , und betätigen Sie die TAB-Taste, um das Textfeld anzuzeigen, in dem Sie die Formatzeichenfolge eingeben können.     
+Sie können auch eine **benutzerdefinierte** Variable und beliebige [unterstützte Formatzeichenfolgen](/dotnet/standard/base-types/custom-date-and-time-format-strings)verwenden (siehe Screenshot unten). Um einen Ordner mit dieser Struktur auszuwählen, verwenden Sie zunächst die Schaltfläche **Durchsuchen** . Ersetzen Sie dann einen Wert mit **{custom}** , und betätigen Sie die TAB-Taste, um das Textfeld anzuzeigen, in dem Sie die Formatzeichenfolge eingeben können.     
 
 ![Verwenden von benutzerdefinierten Variablen](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
@@ -94,4 +95,3 @@ Ein einmaliger Kopiervorgang ermöglicht nur einmal das Verschieben von Daten au
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mit einer Kopieraktivität unter Verwendung des Data Factory-Kopier-Assistenten finden Sie im [Tutorial: Erstellen einer Pipeline mithilfe des Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md).
-

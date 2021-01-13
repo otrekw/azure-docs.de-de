@@ -1,21 +1,23 @@
 ---
 title: Erstellen einer Web-App mit der API für MongoDB von Azure Cosmos DB und dem .NET SDK
 description: Stellt ein .NET-Codebeispiel vor, mit dem Sie eine Verbindung herstellen und Abfragen über die API für MongoDB von Azure Cosmos DB durchführen können.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 73caa57fe7e721d69091bfb6ee74f7d88baf1ba3
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.date: 10/15/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5d3c73bdc107ce1971e2958073ad5c100c6bf6bd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979087"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349196"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Schnellstart: Erstellen einer .NET-Web-App mit der API für MongoDB von Azure Cosmos DB 
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -23,10 +25,10 @@ ms.locfileid: "65979087"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
-Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Cosmos DB zugrunde liegen. 
+Azure Cosmos DB ist die schnelle NoSQL-Datenbank von Microsoft mit offenen APIs für jede Größenordnung. Sie können schnell Dokument-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Cosmos DB zugrunde liegen. 
 
 In diesem Schnellstart wird veranschaulicht, wie ein Cosmos-Konto mit der [API für MongoDB von Azure Cosmos DB](mongodb-introduction.md) erstellt wird. Anschließend erstellen Sie eine Web-App für Aufgabenlisten mit dem [MongoDB .NET-Treiber](https://docs.mongodb.com/ecosystem/drivers/csharp/) und stellen diese bereit.
 
@@ -52,7 +54,7 @@ Laden Sie die Beispiel-App zunächst von GitHub herunter.
 1. Öffnen Sie eine Eingabeaufforderung, erstellen Sie einen neuen Ordner namens „git-samples“, und schließen Sie die Eingabeaufforderung.
 
     ```bash
-    md "C:\git-samples"
+    mkdir "C:\git-samples"
     ```
 
 2. Öffnen Sie ein Git-Terminalfenster (z.B. git bash), und verwenden Sie den Befehl `cd`, um in den neuen Ordner zu gelangen und dort die Beispiel-App zu installieren.
@@ -167,4 +169,4 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 In dieser Schnellstartanleitung haben Sie gelernt, wie Sie ein Cosmos-Konto erstellen, eine Sammlung erstellen und eine Konsolen-App ausführen. Jetzt können Sie zusätzliche Daten in Ihre Cosmos-Datenbank importieren. 
 
 > [!div class="nextstepaction"]
-> [Import MongoDB data into Azure Cosmos DB (Importieren von Daten aus MongoDB in Azure Cosmos DB)](mongodb-migrate.md)
+> [Import MongoDB data into Azure Cosmos DB (Importieren von Daten aus MongoDB in Azure Cosmos DB)](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

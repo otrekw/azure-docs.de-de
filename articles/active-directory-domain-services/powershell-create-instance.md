@@ -2,21 +2,22 @@
 title: Aktivieren von Azure AD Domain Services mithilfe von PowerShell | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure Active Directory Domain Services mithilfe von Azure AD PowerShell und Azure PowerShell konfigurieren und aktivieren.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 09/05/2019
-ms.author: iainfou
-ms.openlocfilehash: 163259af3797b652c9605c171447f4a7d2576c87
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.topic: sample
+ms.date: 10/02/2020
+ms.author: justinha
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 89061af04147d7cfaa0fdb3a6b1a8fb1cd8c8da7
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842714"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619146"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Aktivieren von Azure Active Directory Domain Services mithilfe von PowerShell
 
@@ -43,36 +44,43 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie f
 
 Azure AD DS erfordert einen Dienstprinzipal und eine Azure AD-Gruppe. Mit diesen Ressourcen kann die verwaltete Azure AD DS-Domäne Daten synchronisieren und definieren, welche Benutzer über Administratorrechte in der verwalteten Domäne verfügen.
 
-Erstellen Sie zunächst einen Azure AD-Dienstprinzipal für Azure AD DS für die Kommunikation und Authentifizierung. Es wird eine bestimmte Anwendungs-ID namens *Domänen Controller Services* mit der ID *2565bd9d-DA50-47d4-8B85-4c97f669dc36* verwendet. Ändern Sie diese Anwendungs-ID nicht.
+Erstellen Sie zunächst einen Azure AD-Dienstprinzipal für Azure AD DS für die Kommunikation und Authentifizierung. Es wird eine bestimmte Anwendungs-ID namens *Domain Controller Services* mit der ID *6ba9a5d4-8456-4118-b521-9c5ca10cdf84* verwendet. Ändern Sie diese Anwendungs-ID nicht.
 
 Erstellen Sie mit dem Cmdlet [New-AzureADServicePrincipal][New-AzureADServicePrincipal] einen Azure AD-Dienstprinzipal:
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
-Erstellen Sie nun eine Azure AD-Gruppe namens *AAD DC Administrators*. Den zu dieser Gruppe hinzugefügten Benutzern werden dann Berechtigungen zum Ausführen von Verwaltungsaufgaben in der verwalteten Azure AD DS-Domäne gewährt.
+Erstellen Sie nun eine Azure AD-Gruppe namens *AAD DC Administrators*. Den dieser Gruppe hinzugefügten Benutzern werden dann Berechtigungen zum Ausführen von Verwaltungsaufgaben für die verwaltete Domäne erteilt.
 
-Erstellen Sie die Gruppe *AAD DC Administrators* mithilfe des Cmdlets [New-AzureADGroup][New-AzureADGroup]:
-
-```powershell
-New-AzureADGroup -DisplayName "AAD DC Administrators" `
-  -Description "Delegated group to administer Azure AD Domain Services" `
-  -SecurityEnabled $true -MailEnabled $false `
-  -MailNickName "AADDCAdministrators"
-```
-
-Fügen Sie, nachdem Sie die Gruppe *AAD DC Administrators* erstellt haben, mit dem Cmdlet [Add-AzureADGroupMember][Add-AzureADGroupMember] einen Benutzer zur Gruppe hinzu. Zuerst rufen Sie mit dem Cmdlet [Get-AzureADGroup][Get-AzureADGroup] die Objekt-ID der Gruppe *AAD DC Administrators* und dann mit dem Cmdlet [Get-AzureADUser][Get-AzureADUser] die Objekt-ID des gewünschten Benutzers ab.
-
-Das folgende Beispiel zeigt die Objekt-ID des Benutzers für das Konto mit dem Benutzerprinzipalnamen `admin@contoso.onmicrosoft.com`. Ersetzen Sie dieses Benutzerkonto durch den Benutzerprinzipalnamen des Benutzers, den Sie der Gruppe *AAD DC Administrators* hinzufügen möchten:
+Rufen Sie zunächst mithilfe des Cmdlets [Get-AzureADGroup][Get-AzureADGroup] die Objekt-ID für die Gruppe *AAD DC Administrators* ab. Wenn die Gruppe nicht vorhanden ist, erstellen Sie sie mithilfe des Cmdlets [New-AzureADGroup][New-AzureADGroup] und der Gruppe *AAD DC Administrators*:
 
 ```powershell
-# First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
+# First, retrieve the object ID of the 'AAD DC Administrators' group.
 $GroupObjectId = Get-AzureADGroup `
   -Filter "DisplayName eq 'AAD DC Administrators'" | `
   Select-Object ObjectId
 
-# Now, retrieve the object ID of the user you'd like to add to the group.
+# If the group doesn't exist, create it
+if (!$GroupObjectId) {
+  $GroupObjectId = New-AzureADGroup -DisplayName "AAD DC Administrators" `
+    -Description "Delegated group to administer Azure AD Domain Services" `
+    -SecurityEnabled $true `
+    -MailEnabled $false `
+    -MailNickName "AADDCAdministrators"
+  }
+else {
+  Write-Output "Admin group already exists."
+}
+```
+
+Wenn die Gruppe *AAD DC Administrators* erstellt wurde, rufen Sie mithilfe des Cmdlets [Get-AzureADUser][Get-AzureADUser] die Objekt-ID des gewünschten Benutzers ab und fügen den Benutzer dann mithilfe des Cmdlets [Add-AzureADGroupMember][Add-AzureADGroupMember] zur Gruppe hinzu.
+
+Das folgende Beispiel zeigt die Objekt-ID des Benutzers für das Konto mit dem Benutzerprinzipalnamen `admin@contoso.onmicrosoft.com`. Ersetzen Sie dieses Benutzerkonto durch den Benutzerprinzipalnamen des Benutzers, den Sie der Gruppe *AAD DC Administrators* hinzufügen möchten:
+
+```powershell
+# Retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
   -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
   Select-Object ObjectId
@@ -81,7 +89,7 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-## <a name="create-supporting-azure-resources"></a>Erstellen unterstützender Azure-Ressourcen
+## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
 
 Registrieren Sie zunächst den Azure AD Domain Services-Ressourcenanbieter mithilfe des Cmdlets [Register-AzResourceProvider][Register-AzResourceProvider]:
 
@@ -108,11 +116,13 @@ Erstellen Sie die Subnetze mithilfe des Cmdlets [New-AzVirtualNetworkSubnetConfi
 ```powershell
 $VnetName = "myVnet"
 
-# Create the dedicated subnet for AAD Domain Services.
+# Create the dedicated subnet for Azure AD Domain Services.
+$SubnetName = "DomainServices"
 $AaddsSubnet = New-AzVirtualNetworkSubnetConfig `
-  -Name DomainServices `
+  -Name $SubnetName `
   -AddressPrefix 10.0.0.0/24
 
+# Create an additional subnet for your own VM workloads
 $WorkloadSubnet = New-AzVirtualNetworkSubnetConfig `
   -Name Workloads `
   -AddressPrefix 10.0.1.0/24
@@ -126,29 +136,98 @@ $Vnet= New-AzVirtualNetwork `
   -Subnet $AaddsSubnet,$WorkloadSubnet
 ```
 
-## <a name="create-an-azure-ad-ds-managed-domain"></a>Erstellen einer verwalteten Azure AD DS-Domäne
+### <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
-Jetzt erstellen Sie eine verwaltete Azure AD DS-Domäne. Legen Sie Ihre Azure-Abonnement-ID fest, und geben Sie dann einen Namen für die verwaltete Domäne an, z.B. *contoso.com*. Die ID Ihres Abonnements können Sie mithilfe des Cmdlets [Get-AzSubscription][Get-AzSubscription] abrufen.
+Für Azure AD DS wird eine Netzwerksicherheitsgruppe benötigt, um die Ports zu schützen, die für die verwaltete Domäne erforderlich sind, und den gesamten anderen Datenverkehr in eingehender Richtung zu blockieren. Eine [Netzwerksicherheitsgruppe (NSG)][nsg-overview] enthält eine Liste von Regeln, die den Netzwerkdatenverkehr für den Datenverkehr in einem virtuellen Azure-Netzwerk gestatten oder ablehnen. In Azure AD DS fungiert diese Netzwerksicherheitsgruppe als zusätzliche Schutzschicht zum Sperren des Zugriffs auf die verwaltete Domäne. Informationen zu den erforderlichen Ports finden Sie unter [Netzwerksicherheitsgruppen und erforderliche Ports][network-ports].
+
+Die folgenden PowerShell-Cmdlets verwenden [New-AzNetworkSecurityRuleConfig][New-AzNetworkSecurityRuleConfig], um die Regeln zu erstellen, und dann [New-AzNetworkSecurityGroup][New-AzNetworkSecurityGroup], um die Netzwerksicherheitsgruppe zu erstellen. Die Netzwerksicherheitsgruppe und die Regeln werden dann mit dem Cmdlet [Set-AzVirtualNetworkSubnetConfig][Set-AzVirtualNetworkSubnetConfig] dem Subnetz des virtuellen Netzwerks zugeordnet.
+
+```powershell
+$NSGName = "aaddsNSG"
+
+# Create a rule to allow inbound TCP port 443 traffic for synchronization with Azure AD
+$nsg101 = New-AzNetworkSecurityRuleConfig `
+    -Name AllowSyncWithAzureAD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 101 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 443
+
+# Create a rule to allow inbound TCP port 3389 traffic from Microsoft secure access workstations for troubleshooting
+$nsg201 = New-AzNetworkSecurityRuleConfig -Name AllowRD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 201 `
+    -SourceAddressPrefix CorpNetSaw `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 3389
+
+# Create a rule to allow TCP port 5986 traffic for PowerShell remote management
+$nsg301 = New-AzNetworkSecurityRuleConfig -Name AllowPSRemoting `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 301 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 5986
+
+# Create the network security group and rules
+$nsg = New-AzNetworkSecurityGroup -Name $NSGName `
+    -ResourceGroupName $ResourceGroupName `
+    -Location $AzureLocation `
+    -SecurityRules $nsg101,$nsg201,$nsg301
+
+# Get the existing virtual network resource objects and information
+$vnet = Get-AzVirtualNetwork -Name $VnetName -ResourceGroupName $ResourceGroupName
+$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $SubnetName
+$addressPrefix = $subnet.AddressPrefix
+
+# Associate the network security group with the virtual network subnet
+Set-AzVirtualNetworkSubnetConfig -Name $SubnetName `
+    -VirtualNetwork $vnet `
+    -AddressPrefix $addressPrefix `
+    -NetworkSecurityGroup $nsg
+$vnet | Set-AzVirtualNetwork
+```
+
+## <a name="create-a-managed-domain"></a>Erstellen einer verwalteten Domäne
+
+Jetzt erstellen wir eine verwaltete Domäne. Legen Sie Ihre Azure-Abonnement-ID fest, und geben Sie dann einen Namen für die verwaltete Domäne (z. B. *aaddscontoso.com*) an. Die ID Ihres Abonnements können Sie mithilfe des Cmdlets [Get-AzSubscription][Get-AzSubscription] abrufen.
+
+Wenn Sie eine Region mit Unterstützung von Verfügbarkeitszonen auswählen, werden die Azure AD DS-Ressourcen auf mehrere Zonen verteilt, um zusätzliche Redundanz zu erzielen.
+
+Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden.
+
+Für die Verteilung auf Zonen für Azure AD DS fällt für Sie kein Konfigurationsaufwand an. Die Verteilung der Ressourcen auf Zonen wird von der Azure-Plattform automatisch durchgeführt. Weitere Informationen, z. B. zur regionalen Verfügbarkeit, finden Sie unter [Was sind Verfügbarkeitszonen in Azure?][availability-zones].
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "contoso.com"
+$ManagedDomainName = "aaddscontoso.com"
 
 # Enable Azure AD Domain Services for the directory.
 New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
+  -ApiVersion "2017-06-01" `
   -Location $AzureLocation `
   -Properties @{"DomainName"=$ManagedDomainName; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
   -Force -Verbose
 ```
 
-Es dauert einige Minuten, bis die Ressource erstellt und die Steuerung an die PowerShell-Eingabeaufforderung zurückgegeben wird. Im Hintergrund wird weiterhin die verwaltete Azure AD DS-Domäne bereitgestellt, und es kann bis zu einer Stunde dauern, bis die Bereitstellung beendet ist. Während dieser Bereitstellungsphase wird im Azure-Portal auf der Seite **Übersicht** für Ihre verwaltete Azure AD DS-Domäne der aktuelle Status angezeigt.
+Es dauert einige Minuten, bis die Ressource erstellt und die Steuerung an die PowerShell-Eingabeaufforderung zurückgegeben wird. Die verwaltete Domäne wird weiterhin im Hintergrund bereitgestellt, und es kann bis zu einer Stunde dauern, bis die Bereitstellung abgeschlossen ist. In dieser Bereitstellungsphase wird im Azure-Portal auf der Seite **Übersicht** für Ihre verwaltete Domäne der aktuelle Status angezeigt.
 
-Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung für die verwaltete Azure AD DS-Domäne abgeschlossen ist, müssen Sie die folgenden Aufgaben ausführen:
+Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung der verwalteten Domäne abgeschlossen ist, müssen Sie die folgenden Aufgaben ausführen:
 
 * Aktualisieren Sie DNS-Einstellungen für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können.
-    * Wählen Sie zum Konfigurieren von DNS Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
-* [Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden können.
+    * Wählen Sie zum Konfigurieren von DNS Ihre verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
+* [Aktivieren Sie die Kennwortsynchronisierung für Azure AD DS](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden können.
 
 ## <a name="complete-powershell-script"></a>Vollständiges PowerShell-Skript
 
@@ -164,7 +243,7 @@ $ResourceGroupName = "myResourceGroup"
 $VnetName = "myVnet"
 $AzureLocation = "westus"
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "contoso.com"
+$ManagedDomainName = "aaddscontoso.com"
 
 # Connect to your Azure AD directory.
 Connect-AzureAD
@@ -173,18 +252,24 @@ Connect-AzureAD
 Connect-AzAccount
 
 # Create the service principal for Azure AD Domain Services.
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 
-# Create the delegated administration group for AAD Domain Services.
-New-AzureADGroup -DisplayName "AAD DC Administrators" `
-  -Description "Delegated group to administer Azure AD Domain Services" `
-  -SecurityEnabled $true -MailEnabled $false `
-  -MailNickName "AADDCAdministrators"
-
-# First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
+# First, retrieve the object ID of the 'AAD DC Administrators' group.
 $GroupObjectId = Get-AzureADGroup `
   -Filter "DisplayName eq 'AAD DC Administrators'" | `
   Select-Object ObjectId
+
+# Create the delegated administration group for Azure AD Domain Services if it doesn't already exist.
+if (!$GroupObjectId) {
+  $GroupObjectId = New-AzureADGroup -DisplayName "AAD DC Administrators" `
+    -Description "Delegated group to administer Azure AD Domain Services" `
+    -SecurityEnabled $true `
+    -MailEnabled $false `
+    -MailNickName "AADDCAdministrators"
+  }
+else {
+  Write-Output "Admin group already exists."
+}
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
@@ -203,6 +288,7 @@ New-AzResourceGroup `
   -Location $AzureLocation
 
 # Create the dedicated subnet for AAD Domain Services.
+$SubnetName = "DomainServices"
 $AaddsSubnet = New-AzVirtualNetworkSubnetConfig `
   -Name DomainServices `
   -AddressPrefix 10.0.0.0/24
@@ -218,31 +304,88 @@ $Vnet=New-AzVirtualNetwork `
   -Name $VnetName `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $AaddsSubnet,$WorkloadSubnet
+  
+$NSGName = "aaddsNSG"
+
+# Create a rule to allow inbound TCP port 443 traffic for synchronization with Azure AD
+$nsg101 = New-AzNetworkSecurityRuleConfig `
+    -Name AllowSyncWithAzureAD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 101 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 443
+
+# Create a rule to allow inbound TCP port 3389 traffic from Microsoft secure access workstations for troubleshooting
+$nsg201 = New-AzNetworkSecurityRuleConfig -Name AllowRD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 201 `
+    -SourceAddressPrefix CorpNetSaw `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 3389
+
+# Create a rule to allow TCP port 5986 traffic for PowerShell remote management
+$nsg301 = New-AzNetworkSecurityRuleConfig -Name AllowPSRemoting `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 301 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 5986
+
+# Create the network security group and rules
+$nsg = New-AzNetworkSecurityGroup -Name $NSGName `
+    -ResourceGroupName $ResourceGroupName `
+    -Location $AzureLocation `
+    -SecurityRules $nsg101,$nsg201,$nsg301
+
+# Get the existing virtual network resource objects and information
+$vnet = Get-AzVirtualNetwork -Name $VnetName -ResourceGroupName $ResourceGroupName
+$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $SubnetName
+$addressPrefix = $subnet.AddressPrefix
+
+# Associate the network security group with the virtual network subnet
+Set-AzVirtualNetworkSubnetConfig -Name $SubnetName `
+    -VirtualNetwork $vnet `
+    -AddressPrefix $addressPrefix `
+    -NetworkSecurityGroup $nsg
+$vnet | Set-AzVirtualNetwork
 
 # Enable Azure AD Domain Services for the directory.
 New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
+  -ApiVersion "2017-06-01" `
   -Location $AzureLocation `
   -Properties @{"DomainName"=$ManagedDomainName; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
   -Force -Verbose
 ```
 
-Es dauert einige Minuten, bis die Ressource erstellt und die Steuerung an die PowerShell-Eingabeaufforderung zurückgegeben wird. Im Hintergrund wird weiterhin die verwaltete Azure AD DS-Domäne bereitgestellt, und es kann bis zu einer Stunde dauern, bis die Bereitstellung beendet ist. Während dieser Bereitstellungsphase wird im Azure-Portal auf der Seite **Übersicht** für Ihre verwaltete Azure AD DS-Domäne der aktuelle Status angezeigt.
+Es dauert einige Minuten, bis die Ressource erstellt und die Steuerung an die PowerShell-Eingabeaufforderung zurückgegeben wird. Die verwaltete Domäne wird weiterhin im Hintergrund bereitgestellt, und es kann bis zu einer Stunde dauern, bis die Bereitstellung abgeschlossen ist. In dieser Bereitstellungsphase wird im Azure-Portal auf der Seite **Übersicht** für Ihre verwaltete Domäne der aktuelle Status angezeigt.
 
-Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung für die verwaltete Azure AD DS-Domäne abgeschlossen ist, müssen Sie die folgenden Aufgaben ausführen:
+Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung der verwalteten Domäne abgeschlossen ist, müssen Sie die folgenden Aufgaben ausführen:
 
 * Aktualisieren Sie DNS-Einstellungen für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können.
-    * Wählen Sie zum Konfigurieren von DNS Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
-* [Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden können.
+    * Wählen Sie zum Konfigurieren von DNS Ihre verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
+* [Aktivieren Sie die Kennwortsynchronisierung für Azure AD DS](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie eine Demo der verwalteten Azure AD DS-Domäne anzeigen möchten, können Sie [einen virtuellen Windows-Computer in die Domäne einbinden][windows-join], [sicheres LDAP konfigurieren][tutorial-ldaps] und die [Kennworthashsynchronisierung][tutorial-phs] konfigurieren.
+Wenn Sie die verwaltete Domäne in Aktion sehen möchten, können Sie [einen virtuellen Windows-Computer in die Domäne einbinden][windows-join], [sicheres LDAP konfigurieren][tutorial-ldaps] und die [Kennworthashsynchronisierung konfigurieren][tutorial-phs].
 
 <!-- INTERNAL LINKS -->
 [windows-join]: join-windows-vm.md
 [tutorial-ldaps]: tutorial-configure-ldaps.md
 [tutorial-phs]: tutorial-configure-password-hash-sync.md
+[nsg-overview]: ../virtual-network/network-security-groups-overview.md
+[network-ports]: network-considerations.md#network-security-groups-and-required-ports
 
 <!-- EXTERNAL LINKS -->
 [Connect-AzAccount]: /powershell/module/Az.Accounts/Connect-AzAccount
@@ -257,4 +400,8 @@ Wenn Sie eine Demo der verwalteten Azure AD DS-Domäne anzeigen möchten, könne
 [New-AzVirtualNetworkSubnetConfig]: /powershell/module/Az.Network/New-AzVirtualNetworkSubnetConfig
 [New-AzVirtualNetwork]: /powershell/module/Az.Network/New-AzVirtualNetwork
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
-[cloud-shell]: /azure/cloud-shell/cloud-shell-windows-users
+[cloud-shell]: ../cloud-shell/cloud-shell-windows-users.md
+[availability-zones]: ../availability-zones/az-overview.md
+[New-AzNetworkSecurityRuleConfig]: /powershell/module/az.network/new-aznetworksecurityruleconfig
+[New-AzNetworkSecurityGroup]: /powershell/module/az.network/new-aznetworksecuritygroup
+[Set-AzVirtualNetworkSubnetConfig]: /powershell/module/az.network/set-azvirtualnetworksubnetconfig

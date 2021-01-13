@@ -1,33 +1,36 @@
 ---
-title: Verwenden von Micrometer mit dem Azure Application Insights Java SDK | Microsoft-Dokumentation
-description: 'Eine Schritt-für-Schritt-Anleitung zur Verwendung von Micrometer mit Ihren Application Insights Spring Boot- und Spring Boot-fremden Anwendungen. '
-services: application-insights
-documentationcenter: java
-author: lgayhardt
-manager: carmonm
-ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Verwenden von Micrometer mit dem Azure Application Insights Java SDK
+description: Eine Schritt-für-Schritt-Anleitung zur Verwendung von Micrometer mit Ihren Application Insights Spring Boot- und Spring Boot-fremden Anwendungen.
 ms.topic: conceptual
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
 ms.date: 11/01/2018
-ms.author: lagayhar
-ms.openlocfilehash: 5bef5a6037c6eb29d0dc48e313958e2d243904eb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: bb5caafea944d21547a904b99f9043aef63a6ffa
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299569"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656465"
 ---
-# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Verwenden von Micrometer mit dem Azure Application Insights Java SDK
+# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>Verwenden von Micrometer mit dem Azure Application Insights Java SDK (nicht empfohlen)
+
+> [!IMPORTANT]
+> Der empfohlene Ansatz zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Die Micrometer-Telemetrie wird automatisch mit dem Application Insights Java 3.0-Agent erfasst. Befolgen Sie die Richtlinien für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md).
+
+> [!NOTE]
+> Das Java SDK für Application Insights unterstützt Spring Webflux nicht. Verwenden Sie stattdessen den [Application Insights Java 3.0-Agent](./java-in-process-agent.md). 
+>
+> Sowohl Webflux als auch Micrometer werden im [Application Insights-Java 3.0-Agent](./java-on-premises.md) unterstützt, ohne dass eine Instrumentierung erforderlich ist. 
+
 Die Micrometer-Anwendungsüberwachung misst die Metriken für JVM-basierten Anwendungscode und ermöglicht den Export der Daten in Ihre bevorzugten Überwachungssysteme. In diesem Artikel erfahren Sie, wie Sie Micrometer mit Ihren Application Insights Spring Boot- und Spring Boot-fremden Anwendungen verwenden.
 
 ## <a name="using-spring-boot-15x"></a>Verwenden von Spring Boot 1.5x
 Fügen Sie die folgenden Abhängigkeiten zur pom.xml- oder build.gradle-Datei hinzu: 
-* [Application Insights-Spring-Boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 oder höher
+* [Application Insights-Spring-Boot-Starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter) 2.5.0 oder höher
 * Micrometer Azure-Registrierung 1.1.0 oder höher
 * [Micrometer Spring Legacy](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 oder höher (dies unterstützt den Autoconfig-Code im Spring-Framework).
-* [ApplicationInsights-Ressource](../../azure-monitor/app/create-new-resource.md )
+* [ApplicationInsights-Ressource](./create-new-resource.md)
 
 Schritte
 
@@ -57,7 +60,7 @@ Schritte
 
      `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
 1. Erstellen und Ausführen Ihrer Anwendung
-2. Das oben Aufgeführte sollte mit vorab aggregierten Metriken, die automatisch in Azure Monitor gesammelt werden, funktionsfähig sein. Informationen zum Optimieren von der Application Insights Spring Boot Starter-Option finden Sie in der [Readme auf GitHub](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/README.md).
+2. Das oben Aufgeführte sollte mit vorab aggregierten Metriken, die automatisch in Azure Monitor gesammelt werden, funktionsfähig sein. Informationen zum Optimieren von der Application Insights Spring Boot Starter-Option finden Sie in der [Readme auf GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter/README.md).
 
 ## <a name="using-spring-2x"></a>Verwenden von Spring 2.x
 
@@ -65,7 +68,7 @@ Fügen Sie die folgenden Abhängigkeiten zur pom.xml- oder build.gradle-Datei hi
 
 * Application Insights-Spring-Boot-Starter2.1.2-BETA oder höher
 * Azure-Spring-Boot-Metrics-Starters 2.0.7 oder höher
-* [Eine Application Insights-Ressource](../../azure-monitor/app/create-new-resource.md )
+* [Eine Application Insights-Ressource](./create-new-resource.md)
 
 Schritte:
 
@@ -89,17 +92,17 @@ Standardmetriken:
 *    Automatisch konfigurierte Metriken für Tomcat, JVM, Logback-Metriken, Log4J-Metriken, Betriebszeitmetriken, Prozessormetriken, FileDescriptorMetrics.
 *    Wenn Netflix Hystrix im Klassenpfad vorhanden ist, erhalten wir diese Metriken z. B. ebenfalls. 
 *    Die folgenden Metriken können durch Hinzufügen der entsprechenden Beans verfügbar sein. 
-        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcastCache, JCache)     
+        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcastCache, JCache)
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
         - OkHttp3-Metriken 
         - Kafka-Metriken 
 
- 
+
 
 So deaktivieren Sie automatische Metrikauflistung: 
- 
+
 - JVM-Metriken: 
     - management.metrics.binders.jvm.enabled=false 
 - Logback-Metriken: 
@@ -124,7 +127,7 @@ Fügen Sie die folgenden Abhängigkeiten zur pom.xml- oder build.gradle-Datei hi
 
 * Application Insights Web Auto 2.5.0 oder höher
 * Micrometer Azure-Registrierung 1.1.0 oder höher
-* [Eine Application Insights-Ressource](../../azure-monitor/app/create-new-resource.md )
+* [Eine Application Insights-Ressource](./create-new-resource.md)
 
 Schritte:
 
@@ -136,7 +139,7 @@ Schritte:
             <artifactId>micrometer-registry-azure-monitor</artifactId>
             <version>1.1.0</version>
         </dependency>
-        
+
         <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>applicationinsights-web-auto</artifactId>
@@ -149,17 +152,17 @@ Schritte:
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-    
+
        <!-- The key from the portal: -->
        <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-    
+
        <!-- HTTP request component (not required for bare API) -->
        <TelemetryModules>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
        </TelemetryModules>
-    
+
        <!-- Events correlation (not required for bare API) -->
        <!-- These initializers add context data to each event -->
        <TelemetryInitializers>
@@ -169,7 +172,7 @@ Schritte:
           <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
        </TelemetryInitializers>
-    
+
     </ApplicationInsights>
     ```
 
@@ -178,17 +181,17 @@ Schritte:
     ```Java
         @WebServlet("/hello")
         public class TimedDemo extends HttpServlet {
-    
+
           private static final long serialVersionUID = -4751096228274971485L;
-    
+
           @Override
           @Timed(value = "hello.world")
           protected void doGet(HttpServletRequest request, HttpServletResponse response)
               throws ServletException, IOException {
-    
+
             response.getWriter().println("Hello World!");
             MeterRegistry registry = (MeterRegistry) getServletContext().getAttribute("AzureMonitorMeterRegistry");
-    
+
         //create new Timer metric
             Timer sampleTimer = registry.timer("timer");
             Stream<Integer> infiniteStream = Stream.iterate(0, i -> i+1);
@@ -207,9 +210,9 @@ Schritte:
           public void destroy() {
             System.out.println("Servlet " + this.getServletName() + " has stopped");
           }
-    
+
         }
-    
+
     ```
 
 4. Beispiel für Konfigurationsklasse:
@@ -217,10 +220,10 @@ Schritte:
     ```Java
          @WebListener
          public class MeterRegistryConfiguration implements ServletContextListener {
-     
+
            @Override
            public void contextInitialized(ServletContextEvent servletContextEvent) {
-     
+
          // Create AzureMonitorMeterRegistry
            private final AzureMonitorConfig config = new AzureMonitorConfig() {
              @Override
@@ -230,23 +233,23 @@ Schritte:
             @Override
                public Duration step() {
                  return Duration.ofSeconds(60);}
-     
+
              @Override
              public boolean enabled() {
                  return false;
              }
          };
-     
+
       MeterRegistry azureMeterRegistry = AzureMonitorMeterRegistry.builder(config);
-     
+
              //set the config to be used elsewhere
              servletContextEvent.getServletContext().setAttribute("AzureMonitorMeterRegistry", azureMeterRegistry);
-     
+
            }
-     
+
            @Override
            public void contextDestroyed(ServletContextEvent servletContextEvent) {
-     
+
            }
          }
     ```
@@ -278,4 +281,4 @@ Fügen Sie den folgenden Bindungscode zur Konfigurationsdatei hinzu:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu Micrometer finden Sie in der offiziellen [Micrometer-Dokumentation](https://micrometer.io/docs).
-* Informationen zu Spring in Azure finden Sie in der offiziellen [Dokumentation zu Spring in Azure](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable).
+* Informationen zu Spring in Azure finden Sie in der offiziellen [Dokumentation zu Spring in Azure](/java/azure/spring-framework/?view=azure-java-stable).

@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Infor CloudSuite | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Infor CloudSuite konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a2f4f843-00d2-4522-a29d-6496cc5a781a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9bb3d260b808e61f15ec85752c299bfeb3ab6fd
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f992bc6d1ff2062e9159fefcaee8ffa293c98930
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588555"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460256"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>Tutorial: Azure Active Directory-Integration mit Infor CloudSuite
 
@@ -32,7 +27,7 @@ Die Integration von Infor CloudSuite in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Infor CloudSuite anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -46,8 +41,8 @@ Um die Azure AD-Integration mit Infor CloudSuite konfigurieren zu können, benö
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Infor CloudSuite unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
-* Infor CloudSuite unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* Infor CloudSuite unterstützt **SP- und IDP** -initiiertes einmaliges Anmelden.
+* Infor CloudSuite unterstützt die **Just-in-Time** -Benutzerbereitstellung.
 
 ## <a name="adding-infor-cloudsuite-from-the-gallery"></a>Hinzufügen von Infor CloudSuite aus dem Katalog
 
@@ -59,15 +54,15 @@ Zum Konfigurieren der Integration von Infor CloudSuite in Azure AD müssen Sie I
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Infor CloudSuite** ein, wählen Sie im Ergebnisbereich **Infor CloudSuite** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Infor CloudSuite** ein, wählen Sie im Ergebnisbereich **Infor CloudSuite** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
 
     ![Infor CloudSuite in der Ergebnisliste](common/search-new-app.png)
 
@@ -99,51 +94,49 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Infor Clo
 
     ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten** , um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![SSO-Informationen zu Infor CloudSuite-Domäne und -URLs](common/idp-intiated.png)
+    ![Screenshot: Grundlegende SAML-Konfiguration, in der Sie den Bezeichner und die Antwort-URL eingeben sowie auf „Speichern“ klicken können](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein:
 
-    | | |
-    |-|-|
-    | `http://mingle-sso.inforcloudsuite.com`|
-    | `http://mingle-sso.se1.inforcloudsuite.com`|
-    | `http://mingle-sso.eu1.inforcloudsuite.com`|
-    | `http://mingle-sso.se2.inforcloudsuite.com`|
-    | |
+    ```http
+    http://mingle-sso.inforcloudsuite.com
+    http://mingle-sso.se1.inforcloudsuite.com
+    http://mingle-sso.eu1.inforcloudsuite.com
+    http://mingle-sso.se2.inforcloudsuite.com
+    ```
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein:
 
-    | | |
-    |-|-|
-    | `https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | `https://mingle-sso.se1.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | `https://mingle-sso.se2.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | `https://mingle-sso.eu1.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | |
+    ```http
+    https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.se1.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.se2.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.eu1.inforcloudsuite.com:443/sp/ACS.saml2
+    ```
 
-5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+5. Klicken Sie auf **Zusätzliche URLs festlegen** , und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zu Infor CloudSuite-Domäne und -URLs](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
 
-    | | |
-    |-|-|
-    | `https://mingle-portal.inforcloudsuite.com/Tenant-Name/`|
-    | `https://mingle-portal.eu1.inforcloudsuite.com/Tenant-Name/`|
-    | `https://mingle-portal.se1.inforcloudsuite.com/Tenant-Name/`|
-    | `https://mingle-portal.se2.inforcloudsuite.com/Tenant-Name/`|
+    ```http
+    https://mingle-portal.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.eu1.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.se1.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.se2.inforcloudsuite.com/Tenant-Name/
+    ```
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für den Infor CloudSuite-Client](mailto:support@infor.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen** , um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML** -Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
@@ -165,7 +158,7 @@ Um das einmalige Anmelden auf der Seite von **Infor CloudSuite** zu konfiguriere
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -181,9 +174,9 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
   
     b. Geben Sie im Feld **Benutzername** den Namen `brittasimon@yourcompanydomain.extension` ein. Zum Beispiel, BrittaSimon@contoso.com
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -201,7 +194,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen** , und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
@@ -213,18 +206,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-infor-cloudsuite-test-user"></a>Erstellen eines Infor CloudSuite-Testbenutzers
 
-In diesem Abschnitt wird in Infor CloudSuite eine Benutzerin namens Britta Simon erstellt. Infor CloudSuite unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Infor CloudSuite vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt. Wenden Sie sich an das  [Supportteam von Infor CloudSuite](mailto:support@infor.com), wenn Sie einen Benutzer manuell erstellen müssen.
+In diesem Abschnitt wird in Infor CloudSuite eine Benutzerin namens Britta Simon erstellt. Infor CloudSuite unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Infor CloudSuite vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt. Wenden Sie sich an das [Supportteam von Infor CloudSuite](mailto:support@infor.com), wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Infor CloudSuite“ klicken, sollten Sie automatisch bei Ihrer Infor CloudSuite-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Infor CloudSuite“ klicken, sollten Sie automatisch bei Ihrer Infor CloudSuite-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

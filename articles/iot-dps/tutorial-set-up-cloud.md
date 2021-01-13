@@ -1,34 +1,33 @@
 ---
-title: Einrichten einer Cloud für den Azure IoT Hub Device Provisioning-Dienst im Portal | Microsoft-Dokumentation
-description: Automatische IoT Hub-Gerätebereitstellung im Azure-Portal
+title: 'Tutorial: Einrichten einer Cloud für Azure IoT Hub Device Provisioning Service im Portal'
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von IoT Hub Device Provisioning Service (DPS) die Cloudressourcen für die Gerätebereitstellung im [Azure-Portal](https://portal.azure.com) einrichten.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8f06d3f033a2bf5907dc2ee324359bef0eb247d0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f45c3def84c548ba12221efa59e9ebbd4699df71
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170733"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91316068"
 ---
-# <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurieren von Cloudressourcen für die Gerätebereitstellung mit dem IoT Hub Device Provisioning-Dienst
+# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Tutorial: Konfigurieren von Cloudressourcen für die Gerätebereitstellung mit dem IoT Hub Device Provisioning-Dienst
 
 In diesem Tutorial wird gezeigt, wie die Cloud für die automatische Gerätebereitstellung mithilfe des IoT Hub Device Provisioning-Diensts eingerichtet wird. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines IoT Hub Device Provisioning-Diensts und Abrufen des ID-Bereichs mit dem Azure-Portal
-> * Erstellen eines IoT Hubs
+> * Erstellen eines IoT-Hubs
 > * Verknüpfen von IoT Hub mit dem Device Provisioning-Dienst
 > * Festlegen der Zuordnungsrichtlinie im Device Provisioning-Dienst
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
+## <a name="prerequisites"></a>Voraussetzungen
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -44,22 +43,22 @@ Führen Sie zum Erstellen einer neuen Device Provisioning-Dienstinstanz folgende
 
 4. Geben Sie in das Formular **IoT Hub Device Provisioning-Dienst** folgende Informationen ein:
     
-   | Einstellung       | Empfohlener Wert | Beschreibung | 
+   | Einstellung       | Vorgeschlagener Wert | Beschreibung | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Name** | Ein beliebiger eindeutiger Name | -- | 
    | **Abonnement** | Ihr Abonnement  | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
-   | **Ressourcengruppe** | myResourceGroup | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). |
+   | **Ressourcengruppe** | myResourceGroup | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |
    | **Location** | Gültiger Standort | Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). |   
 
    ![Eingeben grundlegender Informationen zu Ihrem Device Provisioning-Dienst im Portal](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. Klicken Sie auf **Create**. Nach einigen Augenblicken wird die Device Provisioning Service-Instanz erstellt und die Seite **Übersicht** angezeigt.
+5. Klicken Sie auf **Erstellen**. Nach einigen Augenblicken wird die Device Provisioning Service-Instanz erstellt und die Seite **Übersicht** angezeigt.
 
 6. Kopieren Sie auf der Seite **Übersicht** für die neue Dienstinstanz den Wert für **ID-Bereich** zur späteren Verwendung. Der Wert dient zum Identifizieren von Registrierungs-IDs und gewährleistet, dass die Registrierungs-ID eindeutig ist.
 
 7. Kopieren Sie außerdem den Wert unter **Dienstendpunkt** zur späteren Verwendung. 
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -117,7 +116,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen eines IoT Hub Device Provisioning-Diensts und Abrufen des ID-Bereichs mit dem Azure-Portal
-> * Erstellen eines IoT Hubs
+> * Erstellen eines IoT-Hubs
 > * Verknüpfen von IoT Hub mit dem Device Provisioning-Dienst
 > * Festlegen der Zuordnungsrichtlinie im Device Provisioning-Dienst
 

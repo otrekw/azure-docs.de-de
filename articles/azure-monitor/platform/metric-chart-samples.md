@@ -1,23 +1,22 @@
 ---
-title: Beispiele für Azure Monitor-Metrikdiagramme
+title: Beispiel für Azure Monitor-Metrikdiagramme
 description: Erfahren Sie mehr über die Visualisierung Ihrer Azure Monitor-Daten.
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: bbfeb428d38c23955df4497242184499349aecf9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 05dadfe88ed64aea8066b02298ba158a44a03c6f
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60256711"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760180"
 ---
-# <a name="metric-chart-samples"></a>Beispiele für Metrikdiagramme
+# <a name="metric-chart-examples"></a>Beispiele für Metrikdiagramme 
 
-Die Azure-Plattform stellt [mehr als tausend Metriken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) bereit, von denen viele Dimensionen umfassen. Durch die Verwendung von [Dimensionsfiltern](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), das Anwenden einer [Aufteilung](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), die Steuerung des Diagrammtyps und eine Anpassung der Diagrammeinstellungen können Sie leistungsstarke Diagnoseansichten und Dashboards erstellen, die Einblick in den Zustand Ihrer Infrastruktur und Anwendungen bieten. Dieser Artikel zeigt einige Beispiele für die Diagramme, die Sie mit dem [Metrik-Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) erstellen können, und erklärt die notwendigen Schritte zur Konfiguration jedes dieser Diagramme.
+Die Azure-Plattform stellt [mehr als tausend Metriken](./metrics-supported.md) bereit, von denen viele Dimensionen umfassen. Durch die Verwendung von [Dimensionsfiltern](./metrics-charts.md), das Anwenden einer [Aufteilung](./metrics-charts.md), die Steuerung des Diagrammtyps und eine Anpassung der Diagrammeinstellungen können Sie leistungsstarke Diagnoseansichten und Dashboards erstellen, die Einblick in den Zustand Ihrer Infrastruktur und Anwendungen bieten. Dieser Artikel zeigt einige Beispiele für die Diagramme, die Sie mit dem [Metrik-Explorer](./metrics-charts.md) erstellen können, und erklärt die notwendigen Schritte zur Konfiguration jedes dieser Diagramme.
 
 Möchten Sie Ihre Diagrammbeispiele für andere Benutzer zur Verfügung stellen? Tragen Sie zu dieser Seite auf GitHub bei, und teilen Sie hier Ihre eigenen Diagrammbeispiele!
 
@@ -25,7 +24,7 @@ Möchten Sie Ihre Diagrammbeispiele für andere Benutzer zur Verfügung stellen?
 
 Dieses Diagramm zeigt, ob die CPU-Auslastung für eine App Service-Ressource innerhalb des akzeptablen Bereichs liegt. Durch eine Aufschlüsselung nach Serverinstanz kann bestimmt werden, ob die Last in geeigneter Weise verteilt wurde. Aus dem Diagramm wird ersichtlich, dass die App vor 6 Uhr morgens auf einer einzelnen Serverinstanz ausgeführt und dann durch Hinzufügen einer weiteren Instanz zentral hochskaliert wurde.
 
-![Liniendiagramm der durchschnittlichen CPU-Nutzung in Prozent nach Serverinstanz](./media/metric-chart-samples/cpu-by-instance.png)
+![Liniendiagramm der durchschnittlichen CPU-Nutzung in Prozent nach Serverinstanz](./media/metrics-charts/cpu-by-instance.png)
 
 ### <a name="how-to-configure-this-chart"></a>Wie wird dieses Diagramm konfiguriert?
 
@@ -35,17 +34,17 @@ Wählen Sie Ihre App Service-Ressource aus, und suchen Sie nach der Metrik **CPU
 
 Zeigen Sie die Verfügbarkeit Ihrer Anwendung nach Regionen an, um festzustellen, an welchen geografischen Standorten Probleme vorliegen. Dieses Diagramm zeigt die Application Insights-Metrik zur Verfügbarkeit. Sie können sehen, dass für die überwachte Anwendung im Rechenzentrum „USA, Osten“ keine Probleme vorliegen, dass es aber in den Regionen „USA, Westen“ und „Asien, Osten“ teilweise zu Verfügbarkeitsproblemen kommt.
 
-![Diagramm der durchschnittlichen Verfügbarkeit nach Standort](./media/metric-chart-samples/availability-run-location.png)
+![Diagramm der durchschnittlichen Verfügbarkeit nach Standort](./media/metrics-charts/availability-by-location.png)
 
 ### <a name="how-to-configure-this-chart"></a>Wie wird dieses Diagramm konfiguriert?
 
-Sie müssen zunächst die [Application Insights-Verfügbarkeitsüberwachung](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability) für Ihre Website aktivieren. Anschließend wählen Sie die Application Insights-Ressource aus, und geben die Metrik zur Verfügbarkeit an. Wenden Sie auf die Dimension **Ausführungsort** eine Aufteilung an.
+Sie müssen zunächst die [Application Insights-Verfügbarkeitsüberwachung](../app/monitor-web-app-availability.md) für Ihre Website aktivieren. Anschließend wählen Sie die Application Insights-Ressource aus, und geben die Metrik zur Verfügbarkeit an. Wenden Sie auf die Dimension **Ausführungsort** eine Aufteilung an.
 
-## <a name="volume-of-storage-account-transactions-by-api-name"></a>Anzahl von Speicherkontotransaktionen nach API-Name
+## <a name="volume-of-failed-storage-account-transactions-by-api-name"></a>Anzahl fehlerhafter Speicherkontotransaktionen nach API-Name
 
-Für Ihre Speicherkontoressource wird eine übermäßige Anzahl von Transaktionen verzeichnet. Anhand der Transaktionsmetrik können Sie feststellen, welche API für die Überlastung verantwortlich ist. Beachten Sie, dass das folgende Diagramm bei Filterung und Aufteilung mit der gleichen Dimension (API-Name) konfiguriert ist, um die Ansicht nur auf die relevanten API-Aufrufe zu beschränken:
+Für Ihre Speicherkontoressource wird eine übermäßige Anzahl fehlerhafter Transaktionen verzeichnet. Anhand der Transaktionsmetrik können Sie feststellen, welche API für die übermäßige Fehler verantwortlich ist. Beachten Sie, dass das folgende Diagramm beim Aufteilen mit der gleichen Dimension (API-Name) konfiguriert wurde und nach dem fehlerhaften Antworttyp gefiltert wird:
 
-![Balkendiagramm der API-Transaktionen](./media/metric-chart-samples/transactions-by-api.png)
+![Balkendiagramm der API-Transaktionen](./media/metrics-charts/split-and-filter-example.png)
 
 ### <a name="how-to-configure-this-chart"></a>Wie wird dieses Diagramm konfiguriert?
 
@@ -53,5 +52,6 @@ Bei der Metrikauswahl geben Sie Ihr Speicherkonto und die Metrik **Transaktionen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu Azure Monitor-[Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)
+* Informationen zu Azure Monitor-[Arbeitsmappen](./workbooks-overview.md)
 * Weitere Informationen zum [Metrik-Explorer](metrics-charts.md)
+

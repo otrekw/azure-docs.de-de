@@ -1,10 +1,10 @@
 ---
-title: Aufrufen des SSIS-Pakets mithilfe von Azure Data Factory – Aktivität der gespeicherten Prozedur | Microsoft-Dokumentation
+title: Aufrufen des SSIS-Pakets mithilfe von Azure Data Factory – Aktivität der gespeicherten Prozedur
 description: In diesem Artikel wird das Aufrufen eines SSIS-Pakets (SQL Server Integration Services) aus einer Azure Data Factory-Pipeline mithilfe einer Aktivität einer gespeicherten Prozedur beschrieben.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 030617d3afd73c68793ca0a1d6185264c92b791f
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: c7a99e7e5f27f8c3503c7fa6124d27cfc4e7f4a4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839897"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012832"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Aufrufen eines SSIS-Pakets mithilfe einer Aktivität einer gespeicherten Prozedur in Azure Data Factory
 In diesem Artikel wird das Aufrufen eines SSIS-Pakets aus einer Azure Data Factory-Pipeline mithilfe einer Aktivität einer gespeicherten Prozedur beschrieben. 
@@ -29,10 +29,10 @@ In diesem Artikel wird das Aufrufen eines SSIS-Pakets aus einer Azure Data Facto
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="azure-sql-database"></a>Azure SQL-Datenbank 
-Die exemplarische Vorgehensweise in diesem Artikel verwendet eine Azure SQL-Datenbank, in der der SSIS-Katalog gehostet ist. Alternativ können Sie eine verwaltete Azure SQL-Datenbank-Instanz verwenden.
+In der exemplarischen Vorgehensweise in diesem Artikel wird Azure SQL-Datenbank verwendet. Alternativ können Sie eine verwaltete Azure SQL-Instanz verwenden.
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Erstellen einer Azure SSIS Integration Runtime
-Erstellen Sie eine Azure-SSIS Integration Runtime, falls Sie noch keine besitzen. Befolgen Sie dazu die ausführliche Anleitung unter [Tutorial: Bereitstellen von SSIS-Paketen](../tutorial-create-azure-ssis-runtime-portal.md) befolgen. Sie können nicht Data Factory, Version 1 zum Erstellen einer Azure SSIS-Integration Runtime verwenden. 
+Erstellen Sie eine Azure-SSIS Integration Runtime, falls Sie noch keine besitzen. Befolgen Sie dazu die ausführliche Anleitung unter [Tutorial: Bereitstellen von SSIS-Paketen](../tutorial-deploy-ssis-packages-azure.md). Sie können nicht Data Factory, Version 1 zum Erstellen einer Azure SSIS-Integration Runtime verwenden. 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 In diesem Abschnitt erstellen Sie mithilfe von Azure PowerShell eine Data Factory-Pipeline mit einer Aktivität einer gespeicherten Prozedur, die ein SSIS-Paket aufruft.
@@ -44,7 +44,7 @@ Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisunge
 ### <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 Das folgende Verfahren beschreibt die Schritte zum Erstellen einer Data Factory. In dieser Data Factory erstellen Sie eine Pipeline mit einer Aktivität einer gespeicherten Prozedur. Die Aktivität der gespeicherten Prozedur führt eine gespeicherte Prozedur in der SSISDB-Datenbank aus, um Ihr SSIS-Paket auszuführen.
 
-1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehlstext nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) in doppelten Anführungszeichen an, und führen Sie dann den Befehl aus. Beispiel: `"adfrg"`. 
+1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehlstext nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../../azure-resource-manager/management/overview.md) in doppelten Anführungszeichen an, und führen Sie dann den Befehl aus. Beispiel: `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -82,7 +82,7 @@ Beachten Sie folgende Punkte:
 * Damit Sie Data Factory-Instanzen erstellen können, muss das Benutzerkonto, mit dem Sie sich bei Azure anmelden, ein Mitglied der Rolle **Mitwirkender** oder **Besitzer** oder ein **Administrator** des Azure-Abonnements sein.
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Erstellen eines verknüpften Azure SQL-Datenbank-Diensts
-In diesem Schritt erstellen Sie einen verknüpften Dienst, um Ihre Azure SQL-Datenbank, in der der SSIS-Katalog gehostet ist, mit der Data Factory zu verbinden. Die Data Factory verwendet Informationen in diesem verknüpften Dienst zum Herstellen der Verbindung mit der SSISDB-Datenbank und führt eine gespeicherte Prozedur zum Ausführen eines SSIS-Pakets aus. 
+In diesem Schritt erstellen Sie einen verknüpften Dienst, um Ihre Datenbanken in Azure SQL-Datenbank-Instanz, in der der SSIS-Katalog gehostet ist, mit der Data Factory zu verbinden. Die Data Factory verwendet Informationen in diesem verknüpften Dienst zum Herstellen der Verbindung mit der SSISDB-Datenbank und führt eine gespeicherte Prozedur zum Ausführen eines SSIS-Pakets aus. 
 
 1. Erstellen Sie im Ordner **C:\ADF\RUNSSISPackage** eine JSON-Datei mit dem Namen **AzureSQLDatabaseLinkedService.json** und folgendem Inhalt: 
 
@@ -190,7 +190,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Aktivität einer gespeic
 
     Sie können dieses Cmdlet weiter ausführen, bis der Slice den Status **Bereit** oder **Fehler** hat. 
 
-    Sie können in Ihrem Azure SQL Server die folgende Abfrage für die SSISDB-Datenbank ausführen, um zu überprüfen, ob das Paket ausgeführt wurde. 
+    Sie können auf Ihrem Server die folgende Abfrage für die SSISDB-Datenbank ausführen, um zu überprüfen, ob das Paket ausgeführt wurde. 
 
     ```sql
     select * from catalog.executions
@@ -198,4 +198,3 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Aktivität einer gespeic
 
 ## <a name="next-steps"></a>Nächste Schritte
 Detailinformationen zur Aktivität der gespeicherten Prozedur finden Sie im Artikel [Stored Procedure activity](data-factory-stored-proc-activity.md) (Aktivität einer gespeicherten Prozedur).
-

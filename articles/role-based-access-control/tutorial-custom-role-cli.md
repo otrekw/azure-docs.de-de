@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mit der Azure CLI | Microsoft-Dokumentation'
-description: Erste Schritte beim Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle
+title: 'Tutorial: Erstellen einer benutzerdefinierten Azure-Rolle mit der Azure CLI – Azure RBAC'
+description: Dieses Tutorial enthält Informationen zu den ersten Schritten beim Erstellen einer benutzerdefinierten Azure-Rolle mithilfe der Azure CLI und der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC).
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,22 +13,23 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: de1805d91f48b5718ecf293c2b8672ba40fb81a9
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 319bca74c8e781e5dc5022e9fb901b2edca24a80
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588159"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87485642"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe der Azure CLI
+# <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>Tutorial: Erstellen einer benutzerdefinierten Azure-Rolle mithilfe der Azure CLI
 
-Wenn die integrierten Rollen für Azure-Ressourcen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen [benutzerdefinierten Rollen](built-in-roles.md) erstellen. In diesem Tutorial erstellen Sie mithilfe der Azure CLI eine benutzerdefinierte Rolle namens „Reader Support Tickets“. Die benutzerdefinierte Rolle ermöglicht dem Benutzer, alle Inhalte der Verwaltungsebene eines Abonnement anzuzeigen und auch Supporttickets zu erstellen.
+Wenn die [integrierten Azure-Rollen](built-in-roles.md) die Anforderungen Ihrer Organisation nicht erfüllen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Tutorial erstellen Sie mithilfe der Azure CLI eine benutzerdefinierte Rolle namens „Reader Support Tickets“. Die benutzerdefinierte Rolle ermöglicht dem Benutzer, alle Inhalte der Verwaltungsebene eines Abonnement anzuzeigen und auch Supporttickets zu erstellen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer benutzerdefinierten Rolle
-> * Auflisten benutzerdefinierter Rollen 
+> * Auflisten benutzerdefinierter Rollen
 > * Aktualisieren einer benutzerdefinierten Rolle
 > * Löschen einer benutzerdefinierten Rolle
 
@@ -36,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um dieses Lernprogramm abzuschließen, benötigen Sie:
+Zum Durcharbeiten dieses Tutorials benötigen Sie Folgendes:
 
 - Berechtigungen zum Erstellen von benutzerdefinierten Rollen, etwa [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator)
 - [Azure Cloud Shell](../cloud-shell/overview.md) oder [Azure CLI](/cli/azure/install-azure-cli).
@@ -152,7 +153,7 @@ Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer J
 
     Die neue benutzerdefinierte Rolle ist jetzt verfügbar und kann wie integrierte Rollen Benutzern, Gruppen oder Dienstprinzipalen zugewiesen werden.
 
-## <a name="list-custom-roles"></a>Auflisten benutzerdefinierter Rollen 
+## <a name="list-custom-roles"></a>Auflisten benutzerdefinierter Rollen
 
 - Verwenden Sie zum Auflisten aller benutzerdefinierten Rollen den Befehl [az role definition list](/cli/azure/role/definition#az-role-definition-list) mit dem Parameter `--custom-role-only`.
 
@@ -269,4 +270,4 @@ Wenn Sie die benutzerdefiniert Rolle aktualisieren möchten, aktualisieren Sie d
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der Azure CLI](custom-roles-cli.md)
+> [Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen mithilfe der Azure CLI](custom-roles-cli.md)

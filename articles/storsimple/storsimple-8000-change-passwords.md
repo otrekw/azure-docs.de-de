@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ab874bbdcd47a4bfa9abfba721afa46d0f23a338
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 038084ba9ae43e14bc2eb42bf258912be27d062c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60638007"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023753"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Ändern von StorSimple-Kennwörtern
 
@@ -36,25 +36,25 @@ Das Kennwort, das zuerst über die Windows PowerShell-Schnittstelle während der
 
 2. Klicken Sie in der Tabelle mit den Geräten auf das Gerät, dessen Kennwort Sie ändern möchten.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd1.png)
+    ![Screenshot, der den StorSimple-Geräte-Manager-Dienst zeigt. Unter „Verwaltung“ ist „Geräte“ ausgewählt. In der Geräteliste ist ein Gerät ausgewählt.](./media/storsimple-8000-change-passwords/changepwd1.png)
 
 3. Wechseln Sie auf dem Blatt **Einstellungen** zu **Geräteeinstellungen > Sicherheit**.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd2.png)
+    ![Screenshot, der das Blatt „Einstellungen“ des Geräte-Manager-Diensts zeigt. Unter „Geräteeinstellungen“ ist „Sicherheit“ ausgewählt.](./media/storsimple-8000-change-passwords/changepwd2.png)
 
 4. Klicken Sie auf dem Blatt **Sicherheitseinstellungen** auf **Kennwort**, um das Geräteadministratorkennwort zu ändern.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd3.png)
+    ![Screenshot, der das Blatt „Sicherheitseinstellungen“ zeigt. Die Schaltfläche „Kennwort“ ist hervorgehoben.](./media/storsimple-8000-change-passwords/changepwd3.png)
 
 5. Geben Sie auf dem Blatt **Kennwort** ein Administratorkennwort ein, das 8 bis 15 Zeichen lang ist. Beim Kennwort muss es sich um eine Kombination aus mindestens drei der Elemente Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen handeln.
 
 6. Bestätigen Sie das Kennwort.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd4.png)
+    ![Screenshot, der das Blatt „Kennwort“ zeigt. Unter „Geräteadministratorkennwort“ sind die Felder „Neues Kennwort“ und „Kennwort bestätigen“ ausgefüllt.](./media/storsimple-8000-change-passwords/changepwd4.png)
 
 7. Klicken Sie auf **Speichern**. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd6.png)
+    ![Screenshot, der das Blatt „Kennwort“ zeigt. Die Schaltfläche „Speichern“ ist hervorgehoben.](./media/storsimple-8000-change-passwords/changepwd6.png)
 
 Das Geräteadministratorkennwort wurde jetzt aktualisiert. Sie können dieses geänderte Kennwort verwenden, um auf die Windows PowerShell-Schnittstelle zugreifen.
 
@@ -70,30 +70,30 @@ Sie können das Kennwort für StorSimple Snapshot Manager im Azure-Portal festle
 
 2. Klicken Sie in der Tabelle mit den Geräten auf das Gerät, dessen StorSimple Snapshot Manager-Kennwort Sie ändern möchten.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd1.png)
+     ![Screenshot, der den StorSimple-Geräte-Manager-Dienst zeigt. Unter „Verwaltung“ ist „Geräte“ ausgewählt. In der Geräteliste ist ein Gerät ausgewählt.](./media/storsimple-8000-change-passwords/changepwd1.png)
 
 3. Wechseln Sie auf dem Blatt **Einstellungen** zu **Geräteeinstellungen > Sicherheit**.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd2.png)
+     ![Screenshot, der das Blatt „Einstellungen“ des Geräte-Manager-Diensts zeigt. Unter „Geräteeinstellungen“ ist „Sicherheit“ ausgewählt.](./media/storsimple-8000-change-passwords/changepwd2.png)
 
 4. Klicken Sie auf dem Blatt **Sicherheitseinstellungen** auf **Kennwort**, um das Kennwort für StorSimple Snapshot Manager festzulegen oder zu ändern.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd3.png) 
+     ![Screenshot, der das Blatt „Sicherheitseinstellungen“ zeigt. Die Schaltfläche „Kennwort“ ist hervorgehoben.](./media/storsimple-8000-change-passwords/changepwd3.png) 
 
 5. Geben Sie auf dem Blatt **Kennwort** ein Kennwort mit einer Länge von 14 oder 15 Zeichen ein. Stellen Sie sicher, dass das Kennwort eine Kombination aus mindestens drei der Elemente Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen enthält.
 
 6. Bestätigen Sie das Kennwort.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd5.png)
+     ![Screenshot, der das Blatt „Kennwort“ zeigt. Unter „Snapshot Manager-Kennwort“ sind die Felder „Neues Kennwort“ und „Kennwort bestätigen“ ausgefüllt.](./media/storsimple-8000-change-passwords/changepwd5.png)
 
 7. Klicken Sie auf **Speichern**. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd6.png)
+     ![Screenshot, der das Blatt „Kennwort“ zeigt. Die Schaltfläche „Speichern“ ist hervorgehoben.](./media/storsimple-8000-change-passwords/changepwd6.png)
 
 Das Kennwort für StorSimple Snapshot Manager sollte jetzt aktualisiert sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zur [StorSimple-Sicherheit](storsimple-8000-security.md).
+* Weitere Informationen zur [StorSimple-Sicherheit](storsimple-8000-security.md)
 * Weitere Informationen zum [Ändern Ihrer Gerätekonfiguration](storsimple-8000-modify-device-config.md).
 * Erfahren Sie mehr [Verwalten von StorSimple-Geräten mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
 

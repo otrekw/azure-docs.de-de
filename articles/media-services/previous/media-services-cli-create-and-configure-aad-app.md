@@ -13,17 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: f136fb666e93adc0fe92aee014e3da9a37bbd6aa
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 12d6beac446f8a15a41daf0dfe8ca1783c95c775
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035810"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021111"
 ---
-# <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Erstellen einer Azure AD-App mithilfe der Azure-Befehlszeilenschnittstelle und Konfigurieren ihres Zugriffs auf die Media Services-API 
+# <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Erstellen einer Azure AD-App mithilfe der Azure-Befehlszeilenschnittstelle und Konfigurieren ihres Zugriffs auf die Media Services-API
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure CLI eine Azure AD-Anwendung (Azure Active Directory) und einen Dienstprinzipal erstellen, um auf Azure Media Services-Ressourcen zuzugreifen. 
 
@@ -63,9 +65,9 @@ So kann beispielsweise eine der folgenden Ebenen festgelegt sein:
 * Die **Ressourcengruppen**-Ebene.
 * Die **Ressourcen**-Ebene (z.B. ein Media-Konto).
 
-Weitere Informationen finden Sie unter [Erstellen eines Azure-Dienstprinzipals mit der Azure CLI](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)
+Weitere Informationen finden Sie unter [Erstellen eines Azure-Dienstprinzipals mit der Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)
 
-Siehe auch [Verwalten der rollenbasierten Zugriffssteuerung mit der Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md). 
+Lesen Sie auch [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

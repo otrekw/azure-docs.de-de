@@ -1,19 +1,16 @@
 ---
-title: Verwalten von Azure Service Fabric-Anwendungen mithilfe der Azure Service Fabric-Befehlszeilenschnittstelle (sfctl)
+title: Verwalten von Azure Service Fabric-Anwendungen mithilfe von sfctl
 description: Erfahren Sie, wie Sie Anwendungen aus einem Azure Service Fabric-Cluster mithilfe der Azure Service Fabric CLI bereitstellen und entfernen.
-services: service-fabric
 author: Christina-Kang
-manager: chackdan
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 9b0f785a6a43f984708645084a8a8036326d3d24
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60621376"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84711033"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Verwalten von Azure Service Fabric-Anwendungen mithilfe der Azure Service Fabric-Befehlszeilenschnittstelle (sfctl)
 
@@ -50,7 +47,7 @@ Laden Sie vor dem Erstellen einer Anwendung das Anwendungspaket in den Service F
 
 Wenn sich Ihr Anwendungspaket beispielsweise im Verzeichnis `app_package_dir` befindet, verwenden Sie die folgenden Befehle, um das Verzeichnis hochzuladen:
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir
 ```
 
@@ -60,7 +57,7 @@ Für große Anwendungspakete können Sie die `--show-progress`-Option festlegen,
 
 Wenn der Upload abgeschlossen ist, stellen Sie die Anwendung bereit. Um die Anwendung bereitzustellen, verwenden Sie den folgenden Befehl:
 
-```azurecli
+```shell
 sfctl application provision --application-type-build-path app_package_dir
 ```
 
@@ -72,7 +69,7 @@ Es wird empfohlen, nach erfolgreicher Registrierung der Anwendung das Anwendungs
 
 Um das Anwendungspaket aus dem Imagespeicher zu löschen, verwenden Sie den folgenden Befehl:
 
-```azurecli
+```shell
 sfctl store delete --content-path app_package_dir
 ```
 
@@ -82,7 +79,7 @@ sfctl store delete --content-path app_package_dir
 
 Nachdem Sie die Anwendung bereitgestellt haben, verwenden Sie den folgenden Befehl, um Ihre Anwendung zu benennen und zu erstellen:
 
-```azurecli
+```shell
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
@@ -94,7 +91,7 @@ Der Anwendungsname muss mit dem Präfix `fabric:/` beginnen.
 
 Nachdem Sie eine Anwendung erstellt haben, erstellen Sie Dienste aus der Anwendung. Im folgenden Beispiel erstellen wir einen neuen zustandslosen Dienst aus unserer Anwendung. Die Dienste, die Sie aus einer Anwendung erstellen können, sind in einem Dienstmanifest in dem zuvor bereitgestellten Anwendungspaket definiert.
 
-```azurecli
+```shell
 sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
 --stateless --instance-count 1 --singleton-scheme
 ```
@@ -103,14 +100,14 @@ sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-t
 
 Um sicherzustellen, dass alle Komponenten fehlerfrei sind, verwenden Sie die folgenden integritätsbezogenen Befehle:
 
-```azurecli
+```shell
 sfctl application list
 sfctl service list --application-id TestApp
 ```
 
 Um sicherzustellen, dass der Dienst fehlerfrei ist, verwenden Sie ähnliche Befehle zum Abrufen der Integrität des Dienstes und der Anwendung:
 
-```azurecli
+```shell
 sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
@@ -125,7 +122,7 @@ Um eine Anwendung zu entfernen, führen Sie die folgenden Aufgaben aus:
 
 Um die Anwendung zu löschen, verwenden Sie den folgenden Befehl:
 
-```azurecli
+```shell
 sfctl application delete --application-id TestEdApp
 ```
 
@@ -133,7 +130,7 @@ sfctl application delete --application-id TestEdApp
 
 Nachdem Sie die Anwendung gelöscht haben, können Sie die Bereitstellung des Anwendungstyps aufheben, wenn Sie diesen nicht mehr benötigen. Um die Bereitstellung des Anwendungstyps aufzuheben, verwenden Sie den folgenden Befehl:
 
-```azurecli
+```shell
 sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
@@ -145,7 +142,7 @@ Nach Erstellung Ihrer Anwendung können Sie dieselben Schritte wiederholen, um e
 
 Zur Durchführung eines Upgrades müssen Sie zunächst die nächste Version der Anwendung über dieselben Befehle wie zuvor bereitstellen:
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir_2
 sfctl application provision --application-type-build-path app_package_dir_2
 sfctl store delete --content-path app_package_dir_2
@@ -153,7 +150,7 @@ sfctl store delete --content-path app_package_dir_2
 
 Dann wird empfohlen, ein überwachtes automatisches Upgrade ausführen und dann das Upgrade zu starten, indem Sie den folgenden Befehl ausführen:
 
-```azurecli
+```shell
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 

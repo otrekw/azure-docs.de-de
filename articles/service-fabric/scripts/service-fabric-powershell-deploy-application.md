@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Bereitstellen einer Anwendung in einem Cluster | Microsoft-Dokumentation
+title: Bereitstellen einer Anwendung in einem Cluster in PowerShell
 description: Azure PowerShell-Skriptbeispiel – Bereitstellen einer Anwendung in einem Service Fabric-Cluster.
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: d03eec5101f932caff43bf876a41219e3f1fa75d
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 145372fa872c481ec1a7c3de016c35fdc0f9d960
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035564"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87083802"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Bereitstellen einer Anwendung in einem Service Fabric-Cluster
 
@@ -49,6 +49,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Service Fabric-PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/service-fabric/?view=azureservicefabricps).
+Weitere Informationen zum Service Fabric-PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/service-fabric/overview?view=azureservicefabricps).
 
 Zusätzliche PowerShell-Beispiele für Azure Service Fabric finden Sie unter [Azure PowerShell-Beispiele](../service-fabric-powershell-samples.md).

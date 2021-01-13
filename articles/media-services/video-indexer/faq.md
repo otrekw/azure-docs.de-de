@@ -1,23 +1,23 @@
 ---
 title: 'Häufig gestellte Fragen zu Video Indexer: Azure'
-titlesuffix: Azure Media Services
-description: Antworten auf häufig gestellte Fragen zu Video Indexer
+titleSuffix: Azure Media Services
+description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zum Video Indexer von Azure Media Services.
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: f20d718d0b1d3bbdf117e502a380897c79a7905f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 721af069a76497576b92c4203a93656d19c283aa
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799501"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217727"
 ---
-# <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+# <a name="video-indexer-frequently-asked-questions"></a>Häufig gestellte Fragen zu Video Indexer
 
 In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Video Indexer.
 
@@ -43,7 +43,7 @@ Weitere Informationen und weitere Video Indexer-Funktionen finden Sie in der [Ü
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>Wie mache ich mich mit der Nutzung von Video Indexer vertraut?
 
-Mit der kostenlosen Testversion von Video Indexer stehen Ihnen 600 Minuten in der webbasierten Oberfläche und 2.400 Minuten über die API zur Verfügung. [Melden Sie sich bei der webbasierten Oberfläche von Video Indexer an](https://www.videoindexer.ai/), und testen Sie den Dienst selbst. Dazu können Sie eine beliebige Webidentität verwenden und müssen kein Azure-Abonnement einrichten. 
+Mit der kostenlosen Testversion von Video Indexer stehen Ihnen 600 Minuten in der webbasierten Oberfläche und 2.400 Minuten über die API zur Verfügung. [Melden Sie sich bei der webbasierten Oberfläche von Video Indexer an](https://www.videoindexer.ai/), und testen Sie den Dienst selbst. Dazu können Sie eine beliebige Webidentität verwenden und müssen kein Azure-Abonnement einrichten. Folgen Sie [diesem einfachen Einführungslab](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md), um eine bessere Vorstellung der Verwendung von Video Indexer zu erhalten.
 
 Wenn Sie Video- und Audiodateien in großem Umfang indizieren möchten, können Sie Video Indexer mit einem kostenpflichtigen Microsoft Azure-Abonnement verknüpfen. Weitere Preisinformationen finden Sie auf der Seite mit der [Preisübersicht](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/).
 
@@ -59,23 +59,50 @@ Nein, Video Indexer ermöglicht die Integration mehrerer Machine Learning-Modell
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>Welche Medienformate werden von Video Indexer unterstützt?
 
-Video Indexer unterstützt die gängigsten Medienformate. Einzelheiten hierzu finden Sie in der Liste der [Standardformate von Azure Media Encoder](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats).
+Video Indexer unterstützt die gängigsten Medienformate. Einzelheiten hierzu finden Sie in der Liste der [Standardformate von Azure Media Encoder](../latest/media-encoder-standard-formats.md).
 
-### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Wie lade ich eine Mediendatei in Video Indexer hoch?
+### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>Wie lade ich eine Mediendatei in Video Indexer hoch, und welche Einschränkungen bestehen?
 
-Im webbasierten Video Indexer-Portal können Sie über das Dialogfeld zum Hochladen von Dateien eine Mediendatei hochladen. Alternativ dazu können Sie auch auf eine URL zeigen, welche die Quelldatei direkt hostet (siehe [Beispiel](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). URLs, die Medieninhalte mithilfe eines iFrames oder Einbindungscodes hosten, funktionieren nicht (siehe [Beispiel](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). Über die Video Indexer-API müssen Sie nun die Eingabedatei über eine URL oder ein Bytearray angeben. Uploads über eine URL mithilfe der API sind auf 10 GB beschränkt, haben jedoch kein Zeitlimit. Weitere Informationen finden Sie in dieser [ausführlichen Anleitung](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
+Im webbasierten Video Indexer-Portal können Sie über das Dialogfeld zum Hochladen von Dateien eine Mediendatei hochladen. Alternativ dazu können Sie auch auf eine URL zeigen, welche die Quelldatei direkt hostet (siehe [Beispiel](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). URLs, die Medieninhalte mithilfe eines iFrames oder Einbindungscodes hosten, funktionieren nicht (siehe [Beispiel](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). 
+
+Weitere Informationen finden Sie in dieser [ausführlichen Anleitung](./upload-index-videos.md).
+
+#### <a name="limitations"></a>Einschränkungen
+
+* Der Name des Videos darf nicht länger als 80 Zeichen sein.
+* Wenn Sie ein Video mit einem Bytearray hochladen, ist die Videogröße auf 2 GB beschränkt (30 GB bei Verwendung einer URL). 
+
+Eine umfassende Liste finden Sie unter [Überlegungen und Einschränkungen zum Hochladen](upload-index-videos.md#uploading-considerations-and-limitations).
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Wie lange dauert das Extrahieren von Informationen aus Mediendateien mit Video Indexer?
 
-Die Zeit, die Video Indexer für das Indizieren einer Video- oder Audiodatei benötigt – entweder mithilfe der Video Indexer-API oder über die webbasierte Video Indexer-Oberfläche – hängt von mehreren Parametern ab. Dazu zählen die Länge und Qualität der Datei, die Anzahl der in der Datei identifizierten Informationen, die Anzahl der [reservierten Einheiten](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) und die Aktivierung oder Deaktivierung des [Streamingendpunkts](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview). Es wird ein Testlauf mit mehreren Dateien Ihrer eigenen Inhalte empfohlen, um die durchschnittliche Dauer einschätzen zu können.
+Die Zeit, die Video Indexer für das Indizieren einer Video- oder Audiodatei benötigt – entweder mithilfe der Video Indexer-API oder über die webbasierte Video Indexer-Oberfläche – hängt von mehreren Parametern ab. Dazu zählen die Länge und Qualität der Datei, die Anzahl der in der Datei identifizierten Informationen, die Anzahl der [reservierten Einheiten](../previous/media-services-scale-media-processing-overview.md) und die Aktivierung oder Deaktivierung des [Streamingendpunkts](../previous/media-services-streaming-endpoints-overview.md). Es wird ein Testlauf mit mehreren Dateien Ihrer eigenen Inhalte empfohlen, um die durchschnittliche Dauer einschätzen zu können.
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Kann ich mit Video Indexer angepasste Workflows zur Automatisierung von Prozessen erstellen?
 
-Ja, Video Indexer lässt sich in serverlose Technologie wie Logic Apps, Flow und [Azure Functions](https://azure.microsoft.com/services/functions/) integrieren. Weitere Informationen zu den [Logic Apps](https://azure.microsoft.com/services/logic-apps/)- und [Flow](https://flow.microsoft.com/en-us/)-Connectors für Video Indexer finden Sie [hier](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/). 
+Ja, Video Indexer lässt sich in serverlose Technologie wie Logic Apps, Flow und [Azure Functions](https://azure.microsoft.com/services/functions/) integrieren. Weitere Informationen zu den [Logic Apps](https://azure.microsoft.com/services/logic-apps/)- und [Flow](https://flow.microsoft.com/en-us/)-Connectors für Video Indexer finden Sie [hier](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/). Einige Automatisierungsprojekte von Partnern finden Sie im Repository für [Video Indexer-Beispiele](https://github.com/Azure-Samples/media-services-video-indexer).
 
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>In welchen Azure-Regionen steht Video Indexer zur Verfügung?
 
 Eine Übersicht über die Azure-Regionen, in denen Video Indexer verfügbar ist, finden Sie auf der Seite [Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all).
+
+### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>Kann ich Video Indexer-Modelle an meinen speziellen Anwendungsfall anpassen? 
+
+Ja. In Video Indexer können Sie einige der verfügbaren Modelle anpassen, sodass diese Ihre Anforderungen besser erfüllen. 
+
+Unser Modell für Personen beispielsweise unterstützt von vorneherein 1.000.000 Gesichter von Prominenten, Sie können es aber auch trainieren, sodass weitere Gesichter erkannt werden, die sich nicht in dieser Datenbank befinden. 
+
+Details dazu finden Sie in den Artikeln zum Anpassen der Modelle für [Personen](customize-person-model-overview.md), [Marken](customize-brands-model-overview.md) und [Sprache](customize-language-model-overview.md). 
+
+###  <a name="can-i-edit-the-videos-in-my-library"></a>Kann ich die Videos in meiner Bibliothek bearbeiten?
+
+Ja. Klicken Sie in der Bibliotheksanzeige auf die Schaltfläche **Video bearbeiten** oder in der Playeranzeige auf die Schaltfläche **In Editor öffnen**, um zur Registerkarte **Projekte** zu gelangen. Sie können ein neues Projekt erstellen und weitere Videos aus Ihrer Bibliothek hinzufügen, um sie gemeinsam zu bearbeiten. Wenn Sie damit fertig sind, können Sie das Video rendern und herunterladen. 
+
+Wenn Sie Erkenntnisse zu Ihrem neuen Video erhalten möchten, indizieren Sie es mit Video Indexer. Es wird dann mit den Erkenntnissen in Ihrer Bibliothek angezeigt.
+
+### <a name="can-i-index-multiple-audio-streams-or-channels"></a>Kann ich mehrere Audiodatenströme oder Kanäle indizieren?
+
+Wenn mehrere Audiodatenströme vorhanden sind, nimmt Video Indexer den ersten Datenstrom an, auf den er trifft, und verarbeitet nur diesen. In jedem Audiodatenstrom, den der Video Indexer verarbeitet, nimmt er die verschiedenen Kanäle an (sofern vorhanden) und verarbeitet sie gemeinsam als Monosignal. Zur Bearbeitung von Datenströmen/Kanälen können Sie vor der Indizierung ffmpeg-Befehle auf die Datei anwenden.
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Welche Vereinbarung zum Servicelevel (SLA) gilt für Video Indexer?
 
@@ -119,6 +146,21 @@ Video Indexer ist Teil der [Datenschutzbestimmungen von Microsoft](https://priva
 
 Video Indexer hat derzeit die SOC-Zertifizierung. Die Zertifizierung von Video Indexer finden Sie im [Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure).
 
+### <a name="what-is-the-difference-between-private-and-public-videos"></a>Was ist der Unterschied zwischen privaten und öffentlichen Videos? 
+
+Beim Hochladen von Videos in Video Indexer können Sie aus zwei Datenschutzeinstellungen auswählen: privat oder öffentlich. Öffentliche Videos sind für alle zugänglich, einschließlich anonymer und nicht identifizierter Benutzer. Private Videos sind ausschließlich auf Mitglieder des Kontos beschränkt. 
+
+### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>Ich habe versucht, ein Video mit der Option „öffentlich“ hochzuladen, aber es wurde als unpassend oder anstößig gekennzeichnet. Was bedeutet das? 
+
+Beim Hochladen eines Videos in Video Indexer führen Algorithmen und Modelle eine automatische Inhaltsanalyse durch, um sicherzustellen, dass keine unpassenden Inhalte öffentlich präsentiert werden. Wenn ein Video als möglicherweise anstößig eingestuft wird, kann es nicht als „öffentlich“ festgelegt werden. Die Mitglieder des Kontos können jedoch weiterhin als privates Video darauf zugreifen (anzeigen, Erkenntnisse und extrahierte Artefakte herunterladen und andere Vorgänge ausführen, die Kontomitgliedern zur Verfügung stehen).   
+
+Um ein Video für den öffentlichen Zugriff festzulegen, haben Sie folgende Möglichkeiten: 
+
+* Erstellen Sie eine eigene Schnittstellenschicht (z. B. eine App oder eine Website), und verwenden Sie diese für die Interaktion mit dem Video Indexer-Dienst. Auf diese Weise bleibt das Video in unserem Portal privat, und Ihre Benutzer können über Ihre Schnittstelle damit interagieren. In Ihrer Schnittstelle können Sie beispielsweise weiterhin Erkenntnisse abrufen oder die Anzeige des Videos zulassen. 
+* Fordern Sie die Überprüfung des Inhalts durch eine Person an. Unter der Voraussetzung, dass der Inhalt tatsächlich nicht anstößig ist, führt dies zur Aufhebung der Einschränkung. 
+
+    Diese Option kann dann geeignet sein, wenn die Video Indexer-Website direkt von Ihren Benutzern als Schnittstellenschicht verwendet wird und wenn das Video öffentlich (durch nicht authentifizierte Benutzer) einsehbar ist. 
+
 ## <a name="api-questions"></a>Fragen zu APIs
 
 ### <a name="what-apis-does-video-indexer-offer"></a>Welche APIs stellt Video Indexer bereit?
@@ -141,7 +183,7 @@ Derzeit bestehen einige Überlappungen bei den von der Video Indexer-API und der
 
 Die Video Indexer-API enthält eine Autorisierungs-API und eine Operations-API. Die Autorisierungs-API enthält Aufrufe, über die Sie Zugriffstoken erhalten. Jeder Aufruf der Operations-API sollte einem Zugriffstoken zugeordnet sein und mit dem Autorisierungsbereich des Aufrufs übereinstimmen.
 
-Zugriffstoken sind bei der Verwendung von Video Indexer-APIs aus Sicherheitsgründen erforderlich. Dadurch wird sichergestellt, dass alle Aufrufe von Ihnen oder zugriffsberechtigten Personen auf Ihr Konto stammen. 
+Zugriffstoken sind bei der Verwendung von Video Indexer-APIs aus Sicherheitsgründen erforderlich. Dadurch wird sichergestellt, dass alle Aufrufe von Ihnen oder zugriffsberechtigten Personen auf Ihr Konto stammen. 
 
 ### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>Was ist der Unterschied zwischen Zugriffstoken für Konten, Benutzer und Videos?
 
@@ -152,6 +194,12 @@ Zugriffstoken sind bei der Verwendung von Video Indexer-APIs aus Sicherheitsgrü
 ### <a name="how-often-do-i-need-to-get-a-new-access-token-when-do-access-tokens-expire"></a>Wie oft muss das Zugriffstoken erneuert werden? Nach welcher Zeit laufen Zugriffstoken ab?
 
 Zugriffstoken laufen nach einer Stunde ab. Daher müssen Sie einmal pro Stunde ein neues Zugriffstoken generieren. 
+
+### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Welche Anmeldeoptionen bestehen für das Entwicklerportal für Video Indexer?
+
+Sie können sich mithilfe von Azure AD, einem Microsoft-Konto, einem Google-Konto oder einem Facebook-Konto anmelden. 
+
+Nachdem Sie Ihr E-Mail-Konto mithilfe eines Identitätsanbieters registriert haben, können Sie das betreffende E-Mail-Konto nicht mehr mit einem anderen Identitätsanbieter verwenden.
 
 ## <a name="billing-questions"></a>Fragen zur Abrechnung
 
@@ -169,4 +217,5 @@ Ja, Video Indexer stellt eine kostenlose Testversion bereit, die einen vollstän
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Übersicht](video-indexer-overview.md)
+* [Übersicht](video-indexer-overview.md)
+* [Stack Overflow](https://stackoverflow.com/search?q=video-indexer)

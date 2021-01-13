@@ -1,19 +1,14 @@
 ---
-title: Inhaltsvertrauen in Azure Container Registry
-description: Erfahren Sie, wie Inhaltsvertrauen für Ihre Azure-Containerregistrierung aktiviert wird und signierte Images gepusht und gepullt werden.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Verwalten von signierten Images
+description: Erfahren Sie, wie Inhaltsvertrauen für Ihre Azure-Containerregistrierung aktiviert wird und signierte Images gepusht und gepullt werden. Das Inhaltsvertrauen implementiert Docker-Inhaltsvertrauen und ist ein Feature der Dienstebene „Premium“.
 ms.topic: article
-ms.date: 09/06/2019
-ms.author: danlep
-ms.openlocfilehash: f14d4d32d2423b12786095da17305af605088fb7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 09/18/2020
+ms.openlocfilehash: f44cea09521dc235ad0d555264b165c9a3842a14
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300417"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148586"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhaltsvertrauen in Azure Container Registry
 
@@ -45,7 +40,7 @@ Der erste Schritt ist das Aktivieren des Inhaltsvertrauens auf Ebene der Registr
 
 Zum Aktivieren des Inhaltsvertrauens für Ihre Registrierung navigieren Sie zunächst im Azure-Portal zur Registrierung. Wählen Sie unter **Richtlinien** die Optionen **Inhaltsvertrauen** > **Aktiviert** > **Speichern** aus. Sie können auch den Azure CLI-Befehl [az acr config content-trust update][az-acr-config-content-trust-update] verwenden.
 
-![Aktivieren von Inhaltsvertrauen für eine Registrierung im Azure-Portal][content-trust-01-portal]
+![Screenshot, der das Aktivieren von Inhaltsvertrauen für eine Registrierung im Azure-Portal zeigt.][content-trust-01-portal]
 
 ## <a name="enable-client-content-trust"></a>Aktivieren von Inhaltsvertrauen für Clients
 
@@ -76,20 +71,22 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 
 Nur Benutzer oder Systeme, denen Sie die entsprechende Berechtigung erteilt haben, können vertrauenswürdige Images per Push an Ihre Registrierung übertragen. Um einem Benutzer (oder ein System mit einem Dienstprinzipal) die Berechtigung zur Pushübertragung von Images zu gewähren, teilen Sie dessen Azure Active Directory-Identitäten die Rolle `AcrImageSigner` zu. Dies erfolgt zusätzlich zur Rolle `AcrPush` (oder einer ähnlichen Rolle), die für die Pushübertragung von Images an die Registrierung erforderlich ist. Ausführliche Informationen hierzu finden Sie unter [Azure Container Registry: Rollen und Berechtigungen](container-registry-roles.md).
 
-> [!NOTE]
-> Dem [Administratorkonto](container-registry-authentication.md#admin-account) einer Azure-Containerregistrierung kann keine Pushberechtigung für vertrauenswürdige Images erteilt werden.
+> [!IMPORTANT]
+> Sie können den folgenden Administratorkonten keine Pushberechtigung für vertrauenswürdige Images erteilen: 
+> * dem [Administratorkonto](container-registry-authentication.md#admin-account) einer Azure Container Registry
+> * einem Benutzerkonto in Azure Active Directory mit der [klassischen Systemadministratorrolle](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 Details zum Erteilen der Rolle `AcrImageSigner` im Azure-Portal und in der Azure CLI folgen.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Navigieren Sie im Azure-Portal zu Ihrer Registrierung, und wählen Sie dann **Zugriffssteuerung (IAM)**  > **Rollenzuweisung hinzufügen** aus. Wählen Sie unter **Rollenzuweisung hinzufügen** für **Rolle** die Option `AcrImageSigner` aus. Wählen Sie dann unter **Auswählen** mindestens einen Benutzer oder Dienstprinzipal aus, und klicken Sie auf **Speichern**.
+Navigieren Sie im Azure-Portal zu Ihrer Registrierung, und wählen Sie dann **Zugriffssteuerung (IAM)**  > **Rollenzuweisung hinzufügen** aus. Wählen Sie unter **Rollenzuweisung hinzufügen** für **Rolle** die Option `AcrImageSigner` aus. Wählen Sie dann unter **Auswählen** mindestens einen Benutzer oder Dienstprinzipal aus, und klicken Sie auf **Speichern** .
 
-In diesem Beispiel wurde die Rolle `AcrImageSigner` zwei Entitäten zugewiesen: einem Dienstprinzipal mit dem Namen „Dienstprinzipal“, und einem Benutzer mit dem Namen „Azure-Benutzer“.
+In diesem Beispiel wurde die Rolle `AcrImageSigner` zwei Entitäten zugewiesen: einem Dienstprinzipal mit dem Namen „service-principal“ (Dienstprinzipal), und einem Benutzer mit dem Namen „Azure User“ (Azure-Benutzer).
 
-![Aktivieren von Inhaltsvertrauen für eine Registrierung im Azure-Portal][content-trust-02-portal]
+![Gewähren von Berechtigungen zum Signieren von ACR-Images im Azure-Portal][content-trust-02-portal]
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Um einem Benutzer mit der Azure CLI Berechtigungen zum Signieren zu gewähren, weisen Sie ihm Rolle `AcrImageSigner` zu, die auf Ihre Registrierung beschränkt ist. Das Format des Befehls lautet:
 
@@ -97,15 +94,16 @@ Um einem Benutzer mit der Azure CLI Berechtigungen zum Signieren zu gewähren, w
 az role assignment create --scope <registry ID> --role AcrImageSigner --assignee <user name>
 ```
 
-Beispiel: Um sich die Rolle selbst zu erteilen, können Sie z.B. die folgenden Befehle in einer authentifizierten Azure CLI-Sitzung ausführen. Ändern Sie den Wert von `REGISTRY` in den Namen Ihrer Azure-Containerregistrierung.
+Beispiel: Um einem Benutzer, der kein Administrator ist, die Rolle zu erteilen, können Sie z. B. die folgenden Befehle in einer authentifizierten Azure CLI-Sitzung ausführen. Ändern Sie den Wert von `REGISTRY` in den Namen Ihrer Azure-Containerregistrierung.
 
 ```bash
 # Grant signing permissions to authenticated Azure CLI user
 REGISTRY=myregistry
-USER=$(az account show --query user.name --output tsv)
 REGISTRY_ID=$(az acr show --name $REGISTRY --query id --output tsv)
+```
 
-az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee $USER
+```azurecli
+az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee azureuser@contoso.com
 ```
 
 Sie können auch einem [Dienstprinzipal](container-registry-auth-service-principal.md) die Rechte zur Pushübertragung von vertrauenswürdigen Images an Ihre Registrierung gewähren. Die Verwendung eines Dienstprinzipals empfiehlt sich für Buildsysteme und andere unbeaufsichtigte Systeme, die vertrauenswürdige Images per Push an Ihre Registrierung übertragen müssen. Das Format ist mit dem Gewähren einer Benutzerberechtigung vergleichbar, Sie geben jedoch eine Dienstprinzipal-ID als `--assignee`-Wert an.
@@ -114,17 +112,18 @@ Sie können auch einem [Dienstprinzipal](container-registry-auth-service-princip
 az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee <service principal ID>
 ```
 
-Die `<service principal ID>` kann das **appId**- oder **objectId**-Element des Dienstprinzipal oder eines seiner **ServicePrincipalNames**-Elemente sein. Weitere Informationen zum Arbeiten mit Dienstprinzipalen und Azure Container Registry finden Sie unter [Azure Container Registry-Authentifizierung mit Dienstprinzipalen](container-registry-auth-service-principal.md).
+Die `<service principal ID>` kann das **appId** - oder **objectId** -Element des Dienstprinzipal oder eines seiner **ServicePrincipalNames** -Elemente sein. Weitere Informationen zum Arbeiten mit Dienstprinzipalen und Azure Container Registry finden Sie unter [Azure Container Registry-Authentifizierung mit Dienstprinzipalen](container-registry-auth-service-principal.md).
 
 > [!IMPORTANT]
-> Führen Sie nach Rollenänderungen `az acr login` aus, um das lokale Identitätstoken für die Azure CLI zu aktualisieren, damit die neuen Rollen wirksam werden können. Informationen zur Überprüfung von Rollen für eine Identität finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der Azure CLI](../role-based-access-control/role-assignments-cli.md) sowie unter [Problembehandlung von RBAC für Azure-Ressourcen](../role-based-access-control/troubleshooting.md).
+> Führen Sie nach Rollenänderungen `az acr login` aus, um das lokale Identitätstoken für die Azure CLI zu aktualisieren, damit die neuen Rollen wirksam werden können. Informationen zur Überprüfung von Rollen für eine Identität finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle](../role-based-access-control/role-assignments-cli.md) sowie unter [Behandeln von Problemen bei Azure RBAC](../role-based-access-control/troubleshooting.md).
 
 ## <a name="push-a-trusted-image"></a>Pushübertragung eines vertrauenswürdigen-Images
 
-Um ein vertrauenswürdiges Image-Tag per Push an Ihre Containerregistrierung zu übertragen, aktivieren Sie das Inhaltsvertrauen und führen die Pushübertragung des Image mit `docker push` durch. Bei der ersten Pushübertragung eines signierten Tags werden Sie aufgefordert, eine Passphrase für einen Stammsignaturschlüssel und einen Repository-Signaturschlüssel zu erstellen. Die Stamm- und die Repositoryschlüssel werden generiert und lokal auf Ihrem Computer gespeichert.
+Um ein vertrauenswürdiges Image-Tag per Push an Ihre Containerregistrierung zu übertragen, aktivieren Sie das Inhaltsvertrauen und führen die Pushübertragung des Image mit `docker push` durch. Nach Abschluss der ersten Pushübertragung mit einem signierten Tag werden Sie aufgefordert, eine Passphrase für einen Stammsignaturschlüssel und für einen Repositorysignaturschlüssel zu erstellen. Die Stamm- und die Repositoryschlüssel werden generiert und lokal auf Ihrem Computer gespeichert.
 
 ```console
 $ docker push myregistry.azurecr.io/myimage:v1
+[...]
 The push refers to repository [myregistry.azurecr.io/myimage]
 ee83fc5847cb: Pushed
 v1: digest: sha256:aca41a608e5eb015f1ec6755f490f3be26b48010b178e78c00eac21ffbe246f1 size: 524
@@ -159,16 +158,19 @@ Status: Downloaded newer image for myregistry.azurecr.io/myimage@sha256:0800d17e
 Tagging myregistry.azurecr.io/myimage@sha256:0800d17e37fb4f8194495b1a188f121e5b54efb52b5d93dc9e0ed97fce49564b as myregistry.azurecr.io/myimage:signed
 ```
 
-Wenn ein Client mit aktiviertem Inhaltsvertrauen versucht, ein nicht signiertes Tag abzurufen, schlägt der Vorgang fehl:
+Wenn ein Client mit aktiviertem Inhaltsvertrauen versucht, ein nicht signiertes Tag abzurufen, schlägt der Vorgang mit einem dem folgenden ähnlichen Fehler fehl:
 
 ```console
 $ docker pull myregistry.azurecr.io/myimage:unsigned
-No valid trust data for unsigned
+Error: remote trust data does not exist
 ```
 
 ### <a name="behind-the-scenes"></a>Abläufe im Hintergrund
 
 Beim Ausführen von `docker pull` verwendet der Docker-Client die gleiche Bibliothek wie in der die [Notar-CLI][docker-notary-cli], um die Zuordnung des per Pull abgerufenen Tags zu SHA-256 anzufordern. Nach der Überprüfung der Signaturen der Vertrauensdaten weist der Client die Docker-Engine an, einen Pull-Vorgang per Digest auszuführen. Während des Pull-Vorgangs verwendet die Engine die SHA-256-Prüfsumme als Inhaltsadresse zum Anzufordern und Überprüfen des Image-Manifests aus der Azure-Containerregistrierung.
+
+> [!NOTE]
+> Azure Container Registry unterstützt offiziell nicht die Notary CLI, ist aber mit der Notary Server-API kompatibel, die in Docker Desktop enthalten ist. Zurzeit wird die Notary-Version  **0.6.0** empfohlen.
 
 ## <a name="key-management"></a>Schlüsselverwaltung
 
@@ -191,15 +193,15 @@ Zusammen mit den lokal erstellten Stamm- und Repositoryschlüsseln werden mehrer
 Wenn Sie den Zugriff auf Ihren Stammschlüssel verlieren, verlieren Sie den Zugriff auf die signierten Tags in allen Repositorys, deren Tags mit diesem Schlüssel signiert wurden. Azure Container Registry kann den Zugriff auf Image-Tags, die mit einem verlorenen Stammschlüssel signiert sind, nicht wiederherstellen. Zum Entfernen aller Vertrauensdaten (Signaturen) für Ihre Registrierung deaktivieren Sie das Inhaltsvertrauen für die Registrierung und aktivieren es anschließend wieder.
 
 > [!WARNING]
-> Durch Deaktivieren und erneutes Aktivieren von Inhaltsvertrauen in Ihrer Registrierung **werden alle Vertrauensdaten für alle signierten Tags in jedem Repository in Ihrer Registrierung gelöscht**. Diese Aktion kann nicht rückgängig gemacht werden – Azure Container Registry kann gelöschte Vertrauensdaten nicht wiederherstellen. Die Images selbst werden durch Deaktivieren des Inhaltsvertrauens nicht gelöscht.
+> Durch Deaktivieren und erneutes Aktivieren von Inhaltsvertrauen in Ihrer Registrierung **werden alle Vertrauensdaten für alle signierten Tags in jedem Repository in Ihrer Registrierung gelöscht** . Diese Aktion kann nicht rückgängig gemacht werden – Azure Container Registry kann gelöschte Vertrauensdaten nicht wiederherstellen. Die Images selbst werden durch Deaktivieren des Inhaltsvertrauens nicht gelöscht.
 
-Zum Deaktivieren des Inhaltsvertrauens für Ihre Registrierung navigieren Sie im Azure-Portal zur Registrierung. Wählen Sie unter **Richtlinien** die Optionen **Inhaltsvertrauen** > **Deaktiviert** > **Speichern** aus. Sie werden vor dem Verlust aller Signaturen in der Registrierung gewarnt. Wählen Sie **OK**, um alle Signaturen in Ihrer Registrierung endgültig zu löschen.
+Zum Deaktivieren des Inhaltsvertrauens für Ihre Registrierung navigieren Sie im Azure-Portal zur Registrierung. Wählen Sie unter **Richtlinien** die Optionen **Inhaltsvertrauen** > **Deaktiviert** > **Speichern** aus. Sie werden vor dem Verlust aller Signaturen in der Registrierung gewarnt. Wählen Sie **OK** , um alle Signaturen in Ihrer Registrierung endgültig zu löschen.
 
 ![Deaktivieren von Inhaltsvertrauen für eine Registrierung im Azure-Portal][content-trust-03-portal]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Zusätzliche Informationen zu Inhaltsvertrauen finden Sie unter [Content trust in Docker][docker-content-trust] (Inhaltsvertrauen in Docker). In diesem Artikel wurden einige wichtige Punkte angesprochen, das Inhaltsvertrauen ist jedoch ein umfangreiches Thema und wird in der Dokumentation zu Docker ausführlicher behandelt.
+* Zusätzliche Informationen zu Inhaltsvertrauen finden Sie unter [Inhaltsvertrauen in Docker][docker-content-trust], einschließlich [docker trust](https://docs.docker.com/engine/reference/commandline/trust/)-Befehlen und [Vertrauensdelegierungen](https://docs.docker.com/engine/security/trust/trust_delegation/). In diesem Artikel wurden einige wichtige Punkte angesprochen, das Inhaltsvertrauen ist jedoch ein umfangreiches Thema und wird in der Dokumentation zu Docker ausführlicher behandelt.
 
 * In der [Azure Pipelines](/azure/devops/pipelines/build/content-trust)-Dokumentation finden Sie ein Beispiel für die Verwendung von Inhaltsvertrauen beim Erstellen und Pushen eines Docker-Images.
 

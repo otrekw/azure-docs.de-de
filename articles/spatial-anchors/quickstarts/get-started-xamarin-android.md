@@ -1,19 +1,19 @@
 ---
-title: 'Schnellstart: Erstellen einer Xamarin-Android-App mit Azure Spatial Anchors | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen einer Xamarin-Android-App'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Verwendung von Spatial Anchors und Xamarin eine Android-App erstellen.
-author: craigktreasure
-manager: virivera
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 07/22/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0958961f1e66be130dd2be816f6002dd34465dc6
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1626dfa739df6b7cf971aa570f14d36ac6c532e7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931421"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96022614"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Schnellstart: Erstellen einer Xamarin-Android-App mit Azure Spatial Anchors
 
@@ -34,11 +34,13 @@ Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes ve
 - Einen Windows- oder macOS-Computer:
   - Bei Verwendung von Windows:
     - Eine aktuelle Version von <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 16.2 oder höher</a>.
-    - <a href="https://git-scm.com/download/win" target="_blank">Git für Windows</a>
+    - <a href="https://git-scm.com/download/win" target="_blank">Git für Windows</a>.
+    - <a href="https://git-lfs.github.com/">Git LFS</a>.
   - Bei Verwendung von macOS:
-    - Eine aktuelle Version von <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio für Mac 8.1 oder höher</a>.
-    - <a href="https://git-scm.com/download/mac" target="_blank">Git für macOS</a>
-- Die neueste Version von Xamarin.Android, installiert und ausgeführt auf einer Plattform Ihrer Wahl. Eine Anleitung zum Installieren von Xamarin.Android finden Sie im [Installationsleitfaden zu Xamarin.Android](https://docs.microsoft.com/xamarin/android/get-started/installation/index).
+    - Eine aktuelle Version von <a href="/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio für Mac 8.1 oder höher</a>.
+    - <a href="https://git-scm.com/download/mac" target="_blank">Git für macOS</a>.
+    - <a href="https://git-lfs.github.com/">Git LFS</a>.
+- Die neueste Version von Xamarin.Android, installiert und ausgeführt auf einer Plattform Ihrer Wahl. Eine Anleitung zum Installieren von Xamarin.Android finden Sie im [Installationsleitfaden zu Xamarin.Android](/xamarin/android/get-started/installation/index).
 - Ein <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">für Entwickler geeignetes</a> und <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore-fähiges</a> Android-Gerät.
   - Möglicherweise sind zusätzliche Gerätetreiber erforderlich, damit Ihr Computer mit Ihrem Android-Gerät kommunizieren kann. Weitere Informationen finden Sie [hier](https://developer.android.com/studio/run/device.html).
 - Ihre App muss für ARCore **1.8** geeignet sein.
@@ -61,19 +63,21 @@ Suchen Sie nach dem Feld `SpatialAnchorsAccountKey`, und ersetzen Sie `Set me` d
 
 Suchen Sie nach dem Feld `SpatialAnchorsAccountId`, und ersetzen Sie `Set me` durch den Kontobezeichner.
 
+Suchen Sie nach dem Feld `SpatialAnchorsAccountDomain`, und ersetzen Sie `Set me` durch die Kontodomäne.
+
 ## <a name="deploy-the-app-to-your-android-device"></a>Bereitstellen der App auf Ihrem Android-Gerät
 
 Schalten Sie das Android-Gerät ein, melden Sie sich an, und verbinden Sie es per USB-Kabel mit dem Computer.
 
 Legen Sie das Startprojekt als **SampleXamarin.Android** fest, ändern Sie die **Projektmappenkonfiguration** in **Release**, und wählen Sie in der Dropdownliste der Geräteauswahl das Gerät aus, auf dem die Bereitstellung erfolgen soll.
 
-# <a name="windowstabdeploy-windows"></a>[Windows](#tab/deploy-windows)
+# <a name="windows"></a>[Windows](#tab/deploy-windows)
 
-![Visual Studio-Konfiguration](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
+![Screenshot, der das Menü zum Auswählen des Projekts und des Geräts in Windows zeigt.](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
 Wählen Sie **Debuggen** > **Debuggen starten** aus, um Ihre App bereitzustellen und zu starten.
 
-# <a name="macostabdeploy-macos"></a>[macOS](#tab/deploy-macos)
+# <a name="macos"></a>[macOS](#tab/deploy-macos)
 
 ![Visual Studio-Konfiguration](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 

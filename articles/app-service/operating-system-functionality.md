@@ -1,31 +1,22 @@
 ---
-title: Betriebssystemfunktionen für Azure App Service
-description: Erfahren Sie mehr über die Funktionen des Betriebssystems, die für Apps, mobile App Back-Ends und API-Apps in Azure App Service zur Verfügung stehen.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: mollybos
+title: Betriebssystemfunktionen
+description: Erfahren Sie etwas über die Betriebssystemfunktionalität in Azure App Service unter Windows. Lernen Sie die Arten des Zugriffs auf Dateien, Netzwerke und Registrierungen für Ihre App kennen.
 ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b108814caaace83cd417dc8858e27ed01d54c39e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066764"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001506"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Betriebssystemfunktionen für Azure App Service
-In diesem Artikel werden allgemeine, grundlegende Betriebssystemfunktionen beschrieben, die für alle Windows-Apps zur Verfügung stehen, die in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) ausgeführt werden. Diese Funktionen umfassen Zugriff auf Dateien, Netzwerke und Registrierung sowie Diagnoseprotokolle und Ereignisse. 
+In diesem Artikel werden allgemeine, grundlegende Betriebssystemfunktionen beschrieben, die für alle Windows-Apps zur Verfügung stehen, die in [Azure App Service](./overview.md) ausgeführt werden. Diese Funktionen umfassen Zugriff auf Dateien, Netzwerke und Registrierung sowie Diagnoseprotokolle und Ereignisse. 
 
 > [!NOTE] 
-> [Linux-Apps](containers/app-service-linux-intro.md) in App Service werden in eigenen Containern ausgeführt. Es wird kein Zugriff auf das Hostbetriebssystem gewährt, Sie erhalten Rootzugriff auf den Container. Ebenso erhalten Sie für [in Windows-Containern ausgeführte Apps](app-service-web-get-started-windows-container.md) Verwaltungszugriff auf die Container, aber keinen Zugriff auf das Hostbetriebssystem. 
+> [Linux-Apps](overview.md#app-service-on-linux) in App Service werden in eigenen Containern ausgeführt. Es wird kein Zugriff auf das Hostbetriebssystem gewährt, Sie erhalten Rootzugriff auf den Container. Ebenso erhalten Sie für [in Windows-Containern ausgeführte Apps](quickstart-custom-container.md?pivots=container-windows) Verwaltungszugriff auf die Container, aber keinen Zugriff auf das Hostbetriebssystem. 
 >
 
 <a id="tiers"></a>
@@ -54,7 +45,7 @@ In App Service gibt es viele Laufwerke, einschließlich lokaler Laufwerke und Ne
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>Lokale Laufwerke
-Im Grunde ist App Service ein Dienst, der auf der Azure-PaaS-Infrastruktur (Platform-as-a-Service) ausgeführt wird. Daher sind die lokalen Laufwerke, die an einen virtuellen Computer "angehängt" sind, die gleichen Laufwerkstypen wie die für jede in Azure ausgeführte Workerrolle verfügbaren Typen. Dies umfasst:
+Im Grunde ist App Service ein Dienst, der auf der Azure-PaaS-Infrastruktur (Platform-as-a-Service) ausgeführt wird. Daher sind die lokalen Laufwerke, die an einen virtuellen Computer "angehängt" sind, die gleichen Laufwerkstypen wie die für jede in Azure ausgeführte Workerrolle verfügbaren Typen. Dies schließt Folgendes ein:
 
 - Ein Betriebssystemlaufwerk (Laufwerk D:\)
 - Ein Anwendungslaufwerk mit den CSPKG-Dateien des Azure-Pakets, das ausschließlich von App Service verwendet wird (und auf das Kunden keinen Zugriff haben)
@@ -69,7 +60,7 @@ Die Überwachung der Datenträgerauslastung ist wichtig, wenn Ihre Anwendung wä
 
 <a id="NetworkDrives"></a>
 
-### <a name="network-drives-aka-unc-shares"></a>Netzwerklaufwerke (oder auch UNC-Freigaben)
+### <a name="network-drives-unc-shares"></a>Netzwerklaufwerke (UNC-Freigaben)
 Ein Alleinstellungsmerkmal von App Service, das die Webanwendungsbereitstellung und -wartung so unkompliziert macht, ist die Tatsache, dass alle Benutzerinhalte auf einem Satz an UNC-Freigaben gespeichert werden. Dieses Modell passt gut zum allgemeinen Muster der Inhaltsspeicherung, das von lokalen Webhostingumgebungen verwendet wird, die über mehrere Server mit Lastenausgleich verfügen. 
 
 In App Service werden in jedem Rechenzentrum mehrere UNC-Freigaben erstellt. Ein Prozentsatz der Benutzerinhalte aller Kunden in jedem Rechenzentrum wird auf alle UNC-Freigaben verteilt. Außerdem werden alle Dateiinhalte für das Abonnement eines Kunden immer auf derselben UNC-Freigabe abgelegt. 
@@ -135,4 +126,3 @@ App Service stellt keinen Remotedesktopzugriff auf die VM-Instanzen bereit.
 ## <a name="more-information"></a>Weitere Informationen
 
 [Azure App Service-Sandbox](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox): Aktuelle Informationen zur Ausführungsumgebung von App Service. Diese Seite wird direkt vom App Service-Entwicklungsteam betreut.
-

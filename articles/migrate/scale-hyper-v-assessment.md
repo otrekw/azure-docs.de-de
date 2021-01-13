@@ -1,18 +1,17 @@
 ---
 title: Bewerten einer großen Anzahl von Hyper-V-VMs für die Migration zu Azure mit Azure Migrate | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie eine große Anzahl von Hyper-V-VMs mithilfe des Azure Migrate-Diensts für die Migration zu Azure bewerten.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
-ms.topic: conceptual
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.author: raynew
-ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 92c275ee3f8e00e71b80e448c9adb94f0b6d21dc
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279439"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753721"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Bewerten einer großen Anzahl von virtuellen Hyper-V-Computern für die Migration zu Azure
 
@@ -30,7 +29,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 
 > [!NOTE]
-> Wenn Sie einen Proof of Concept ausprobieren möchten, um einige virtuelle Computer zu bewerten, bevor Sie eine Bewertung im gewünschtem Umfang durchführen, lesen Sie unsere [Tutorialreihe](tutorial-prepare-hyper-v.md).
+> Wenn Sie einen Proof of Concept ausprobieren möchten, um einige virtuelle Computer zu bewerten, bevor Sie eine Bewertung im gewünschtem Umfang durchführen, lesen Sie unsere [Tutorialreihe](./tutorial-discover-hyper-v.md).
 
 ## <a name="plan-for-assessment"></a>Planen für die Bewertung
 
@@ -66,7 +65,7 @@ Bereiten Sie Azure und Hyper-V für die Serverbewertung vor.
 2. Richten sie Berechtigungen für Ihr Azure-Konto zur Interaktion mit Azure Migrate ein.
 3. Bereiten Sie die Hyper-V-Hosts und VMs vor.
 
-Befolgen Sie die Anweisungen in [diesem Tutorial](tutorial-prepare-hyper-v.md), um diese Einstellungen zu konfigurieren.
+Befolgen Sie die Anweisungen in [diesem Tutorial](./tutorial-discover-hyper-v.md), um diese Einstellungen zu konfigurieren.
 
 ## <a name="create-a-project"></a>Erstellen eines Projekts
 
@@ -75,7 +74,7 @@ Führen Sie in Übereinstimmung mit Ihren Planungsanforderungen folgende Schritt
 1. Erstellen Sie Azure Migrate-Projekte.
 2. Fügen Sie den Projekten das Azure Migrate-Serverbewertungstool hinzu.
 
-[Weitere Informationen](how-to-add-tool-first-time.md)
+[Weitere Informationen](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>Erstellen und Überprüfen einer Bewertung
 

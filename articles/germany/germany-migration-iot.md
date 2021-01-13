@@ -1,22 +1,22 @@
 ---
 title: Migrieren von Azure-IoT-Ressourcen von Azure Deutschland zu Azure weltweit
 description: Dieser Artikel enthält Informationen zum Migrieren von Azure-IoT-Ressourcen von Azure Deutschland zu Azure weltweit.
+ms.topic: article
+ms.date: 10/16/2020
 author: gitralf
-services: germany
-cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 8/15/2018
-ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: d15dcffe22d63f4cdfce0cf6c7d90e0b85b80baa
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 6e480ef9c12bdf425a41f567f1941d3f1a654b08
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827620"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018583"
 ---
 # <a name="migrate-iot-resources-to-global-azure"></a>Migrieren von IoT-Ressourcen zu Azure weltweit
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 Dieser Artikel enthält Informationen dazu, wie Sie Azure-IoT-Ressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
@@ -54,11 +54,11 @@ Ein Migrieren von Azure Functions-Ressourcen von Azure Deutschland zu Azure welt
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Functions-Tutorials](https://docs.microsoft.com/azure/azure-functions) durcharbeiten.
-- Erfahren Sie, wie Sie [Resource Manager-Vorlagen exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Functions-Tutorials](../azure-functions/index.yml) durcharbeiten.
+- Erfahren Sie, wie Sie [Resource Manager-Vorlagen exportieren](../azure-resource-manager/templates/export-template-portal.md), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/management/overview.md).
 - Lesen Sie die [Übersicht zu Azure Functions](../azure-functions/functions-overview.md).
 - Lesen Sie die [Übersicht über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
-- Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
+- Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="notification-hubs"></a>Notification Hubs
 
@@ -70,7 +70,7 @@ Um Einstellungen von einer Instanz von Azure Notification Hubs zu einer anderen 
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Notification Hubs-Tutorials](https://docs.microsoft.com/azure/notification-hubs/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Notification Hubs-Tutorials](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md) durcharbeiten.
 - Lesen Sie die [Übersicht über Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md).
 
 ## <a name="iot-hub"></a>IoT Hub
@@ -82,7 +82,7 @@ Sie können zwar Azure IoT Hub-Instanzen von Azure Deutschland zu Azure weltweit
 
 ### <a name="step-1-re-create-the-iot-hub"></a>Schritt 1: Erneutes Erstellen des IoT-Hubs
 
-IoT Hub unterstützt nativ keine Klonvorgänge. Sie können jedoch über den Azure Resource Manager [eine Ressourcengruppe als Vorlage exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), um Ihre IoT Hub-Metadaten zu exportieren. Konfigurierte Routen und andere IoT-Hub-Einstellungen werden in die exportierten Metadaten einbezogen. Stellen Sie die Vorlage dann in Azure weltweit bereit. Möglicherweise finden Sie es einfacher, den IoT-Hub im Azure-Portal erneut zu erstellen, indem Sie sich die Details in der exportierten JSON-Datei ansehen.
+IoT Hub unterstützt nativ keine Klonvorgänge. Sie können jedoch über den Azure Resource Manager [eine Ressourcengruppe als Vorlage exportieren](../azure-resource-manager/templates/export-template-portal.md), um Ihre IoT Hub-Metadaten zu exportieren. Konfigurierte Routen und andere IoT-Hub-Einstellungen werden in die exportierten Metadaten einbezogen. Stellen Sie die Vorlage dann in Azure weltweit bereit. Möglicherweise finden Sie es einfacher, den IoT-Hub im Azure-Portal erneut zu erstellen, indem Sie sich die Details in der exportierten JSON-Datei ansehen.
 
 ### <a name="step-2-migrate-device-identities"></a>Schritt 2: Migrieren von Geräteidentitäten
 
@@ -107,12 +107,12 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 
 - [Compute](./germany-migration-compute.md)
 - [Netzwerk](./germany-migration-networking.md)
-- [Speicher](./germany-migration-storage.md)
+- [Storage](./germany-migration-storage.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
 - [Analyse](./germany-migration-analytics.md)
 - [Integration](./germany-migration-integration.md)
 - [Identität](./germany-migration-identity.md)
-- [Sicherheit](./germany-migration-security.md)
+- [Security](./germany-migration-security.md)
 - [Verwaltungstools](./germany-migration-management-tools.md)
 - [Medien](./germany-migration-media.md)

@@ -1,7 +1,7 @@
 ---
 title: Verwenden von PerfInsights in Microsoft Azure | Microsoft-Dokumentation
 description: Lernen Sie, wie Sie Leistungsprobleme bei virtuellen Windows-Computern mit PerfInsights behandeln.
-services: virtual-machines-windows'
+services: virtual-machines-windows
 documentationcenter: ''
 author: anandhms
 manager: dcscontentpm
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9e298bf39446024f384b9af142fe3000e936bb6d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058176"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656851"
 ---
-# <a name="how-to-use-perfinsights"></a>Verwenden von PerfInsights
+# <a name="how-to-use-perfinsights-in-azure"></a>Verwenden von PerfInsights in Azure
 
 [PerfInsights](https://aka.ms/perfinsightsdownload) ist ein Diagnosetool zur Selbsthilfe, das Diagnosedaten sammelt und analysiert. Außerdem erstellt das Tool einen Bericht, der beim Beheben von Leistungsproblemen mit virtuellen Windows-Computern in Azure helfen kann. PerfInsights kann auf virtuellen Computern als eigenständiges Tool oder direkt über das Portal ausgeführt werden. Verwenden Sie die [Leistungsdiagnose für Azure-VMs](performance-diagnostics.md), oder installieren Sie die [Azure-VM-Erweiterung für die Leistungsdiagnose](performance-diagnostics-vm-extension.md).
 
@@ -65,7 +65,7 @@ Dieses Szenario führt den [DiskSpd](https://github.com/Microsoft/diskspd)-Vergl
 
 ### <a name="performance-analysis"></a>Leistungsanalyse
 
-Dieses Szenario führt eine [Leistungsindikator](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx)-Ablaufverfolgung mithilfe der Indikatoren aus, die in der Datei „RuleEngineConfig.json“ angegeben werden. Wenn der virtuelle Computer als Server identifiziert wird, auf dem SQL Server ausgeführt wird, wird eine Leistungsindikator-Ablaufverfolgung durchgeführt. Hierfür werden die Leistungsindikatoren verwendet, die in der Datei „RuleEngineConfig.json“ enthalten sind. Dieses Szenario enthält auch Leistungsdiagnosedaten.
+Dieses Szenario führt eine [Leistungsindikator](/windows/win32/perfctrs/performance-counters-portal)-Ablaufverfolgung mithilfe der Indikatoren aus, die in der Datei „RuleEngineConfig.json“ angegeben werden. Wenn der virtuelle Computer als Server identifiziert wird, auf dem SQL Server ausgeführt wird, wird eine Leistungsindikator-Ablaufverfolgung durchgeführt. Hierfür werden die Leistungsindikatoren verwendet, die in der Datei „RuleEngineConfig.json“ enthalten sind. Dieses Szenario enthält auch Leistungsdiagnosedaten.
 
 ### <a name="azure-files-analysis"></a>Azure Files-Analyse
 
@@ -101,9 +101,8 @@ Bei der Ausführung einer erweiterten Leistungsanalyse wählen Sie Ablaufverfolg
 
 Informationen zu virtuellen Windows-Computern, Datenträger- oder Speicherpoolkonfiguration, Leistungsindikatoren, Protokollen und verschiedenen Ablaufverfolgungen werden erfasst. Dies hängt vom verwendeten Leistungsszenario ab. Details finden Sie in der folgenden Tabelle:
 
-|Gesammelte Daten                              |  |  | Leistungsszenarien |  |  | |
-|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Schnelle Leistungsanalyse | Benchmarktests | Leistungsanalyse | Azure Files-Analyse | Erweiterte Leistungsanalyse |
+| Gesammelte Daten | Schnelle Leistungsanalyse | Benchmarktests | Leistungsanalyse | Azure Files-Analyse | Erweiterte Leistungsanalyse |
+|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|
 | Informationen aus Ereignisprotokollen       | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Systeminformationen                | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Volumezuordnung                        | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
@@ -115,8 +114,8 @@ Informationen zu virtuellen Windows-Computern, Datenträger- oder Speicherpoolko
 | Filtertreiberinformationen                | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Netstat-Ausgabe                    | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Netzwerkkonfiguration             | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
-| Firewall-Konfiguration            | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
-| SQL Server-Konfiguration          | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Firewallkonfiguration            | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| SQL Server-Konfiguration          | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Leistungsdiagnose-Ablaufverfolgungen *  | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Leistungsindikator-Ablaufverfolgung **      |                            |                                    | Ja                      |                      | Ja                  |
 | SMB-Indikatorablaufverfolgung **              |                            |                                    |                          | Ja                  |                      |
@@ -124,10 +123,10 @@ Informationen zu virtuellen Windows-Computern, Datenträger- oder Speicherpoolko
 | XPerf-Ablaufverfolgung                       |                            |                                    |                          |                      | Ja                  |
 | StorPort-Ablaufverfolgung                    |                            |                                    |                          |                      | Ja                  |
 | Netzwerkablaufverfolgung                     |                            |                                    |                          | Ja                  | Ja                  |
-| DiskSpd-Vergleichstest-Ablaufverfolgung ***       |                            | Ja                                |                          |                      |                      |
+| DiskSpd-Vergleichstest-Ablaufverfolgung **_       |                            | Ja                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
-### <a name="performance-diagnostics-trace-"></a>Leistungsdiagnose-Ablaufverfolgung (*)
+### <a name="performance-diagnostics-trace-_"></a>Leistungsdiagnose-Ablaufverfolgung (_)
 
 Führt im Hintergrund eine regelbasiertes Engine aus, um Daten zu sammeln und akute Leistungsprobleme zu diagnostizieren. Die folgenden Regeln werden derzeit unterstützt:
 
@@ -155,7 +154,7 @@ Die Methode erfasst die folgenden Leistungsindikatoren:
 #### <a name="for-azure-files"></a>Für Azure Files
 \SMB Client Shares
 
-### <a name="diskspd-benchmark-trace-"></a>DiskSpd-Vergleichstest-Ablaufverfolgung (***)
+### <a name="diskspd-benchmark-trace-_"></a>DiskSpd-Vergleichstest-Ablaufverfolgung (**_)
 DiskSpd-E/A-Workloadtests (Betriebssystemdatenträger [Schreibzugriff] und Poollaufwerke [Lese-/Schreibzugriff])
 
 ## <a name="run-the-perfinsights-tool-on-your-vm"></a>Ausführen des Tools PerfInsights auf Ihrem virtuellen Computer
@@ -166,7 +165,14 @@ DiskSpd-E/A-Workloadtests (Betriebssystemdatenträger [Schreibzugriff] und Pooll
 
 -  Dieses Tool muss auf dem virtuellen Computer ausgeführt werden, auf dem das Leistungsproblem besteht. 
 
--  Folgende Betriebssysteme werden unterstützt: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016; Windows 8.1 und Windows 10.
+-  Die folgenden Betriebssysteme werden unterstützt: _ Windows Server 2019
+   * Windows Server 2016
+   * Windows Server 2012 R2
+   * Windows Server 2012
+   * Windows Server 2008 R2
+   * Windows 10
+   * Windows 8.1
+   * Windows 8
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Mögliche Probleme bei Ausführung des Tools auf Produktions-VMs
 
@@ -252,8 +258,8 @@ In der Datei **PerformanceDiagnostics\_jjjj-MM-tt\_hh-mm-ss-fff.zip** finden Sie
 
 Wählen Sie die Registerkarte **Ergebnisse**.
 
-![Screenshot des PerfInsights-Berichts](media/how-to-use-perfInsights/pi-finding-tab.png)
-![Screenshot des PerfInsights-Berichts](media/how-to-use-perfInsights/pi-findings.png)
+![Screenshot: Registerkarte „Übersicht“ des PerfInsights-Berichts](media/how-to-use-perfInsights/pi-finding-tab.png)
+![Screenshot: Registerkarte „Speicher“ des PerfInsights-Berichts](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > Bei Ergebnissen, die als „Hoch“ eingestuft werden, handelt es sich um bekannte Probleme, die zu Leistungsproblemen führen können. Ergebnisse vom Typ „Mittel“ sind suboptimale Konfigurationen, die nicht unbedingt Leistungsprobleme verursachen. Ergebnisse, die als „Niedrig“ eingestuft werden, dienen lediglich zur Information.
@@ -301,7 +307,7 @@ DiskSpd ist ein Speicherladegenerator- und Leistungstesttool von Microsoft. Weit
 
 ### <a name="xperf"></a>XPerf
 
-XPerf ist ein Befehlszeilentool zum Erfassen von Ablaufverfolgungen aus dem Windows Performance Toolkit. Weitere Informationen finden Sie unter [Windows Performance Toolkit – Xperf](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
+XPerf ist ein Befehlszeilentool zum Erfassen von Ablaufverfolgungen aus dem Windows Performance Toolkit. Weitere Informationen finden Sie unter [Windows Performance Toolkit – Xperf](/archive/blogs/ntdebugging/windows-performance-toolkit-xperf).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -314,4 +320,3 @@ Der folgende Screenshot zeigt eine Nachricht, die der an Sie gesendeten Nachrich
 Befolgen Sie die Anweisungen in der Nachricht, um auf den Arbeitsbereich für die Dateiübertragung zuzugreifen. Zur Erhöhung der Sicherheit müssen Sie das Kennwort bei der ersten Verwendung ändern.
 
 Nach der Anmeldung sehen Sie ein Dialogfeld zum Hochladen der von PerfInsights erfassten Datei **PerformanceDiagnostics\_jjjj-MM-tt\_hh-mm-ss-fff.zip**.
-

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f228da5afc5998d8fa59ce2d720cec4c9f955b67
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8dddfb8426b769c06cb5b7494431b7eee34dbf9e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67479047"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410894"
 ---
 # <a name="adsync-service-account"></a>ADSync-Dienstkonto
 Azure AD Connect installiert einen lokalen Dienst, der die Synchronisierung zwischen Active Directory und Azure Active Directory orchestriert.  Der Synchronisierungsdienst Microsoft Azure AD Sync (ADSync) wird auf einem Server in Ihrer lokalen Umgebung ausgeführt.  Die Anmeldeinformationen für den Dienst sind in den Express-Installationen standardmäßig festgelegt, können aber an die Sicherheitsanforderungen Ihrer Organisation angepasst werden.  Diese Anmeldeinformationen werden nicht verwendet, um eine Verbindung mit Ihren lokalen Gesamtstrukturen oder Azure Active Directory herzustellen.
@@ -46,9 +46,9 @@ Microsoft empfiehlt, den ADSync-Dienst entweder im Rahmen eines virtuellen Diens
 - Verwaltetes Dienstkonto: Verwenden Sie ein eigenständiges oder gruppenbasiertes verwaltetes Dienstkonto, das von Ihrem Administrator bereitgestellt wird.
 - Domänenkonto: Verwenden Sie ein Domänendienstkonto, das von Ihrem Administrator bereitgestellt wird.
 
-![](media/concept-adsync-service-account/adsync1.png)
+![Screenshot: Azure AD Connect-Seite „Express-Einstellungen“ mit den Schaltflächen „Anpassen“ und „Express-Einstellungen verwenden“](media/concept-adsync-service-account/adsync1.png)
 
-![](media/concept-adsync-service-account/adsync2.png)
+![Screenshot: Azure AD Connect-Seite „Erforderliche Komponenten installieren“ mit ausgewählter Option zur Verwendung eines vorhandenen verwalteten Dienstkontos](media/concept-adsync-service-account/adsync2.png)
 
 ## <a name="diagnosing-adsync-service-account-changes"></a>Untersuchen von Änderungen am ADSync-Dienstkonto
 Das Ändern der Anmeldeinformationen nach der Installation führt dazu, dass der Dienst nicht gestartet werden kann, den Zugriff auf die Synchronisierungsdatenbank verliert und sich nicht bei Ihren verbundenen Verzeichnissen (Azure und AD DS) authentifiziert.  Dem neuen ADSync-Dienstkonto den Datenbankzugriff zu gewähren, reicht nicht aus, um dieses Problem zu beheben. Es erfolgt keine Synchronisierung, bis die ursprünglichen Anmeldeinformationen wiederhergestellt sind.
@@ -59,19 +59,19 @@ Der ADSync-Dienst gibt eine Fehlermeldung im Ereignisprotokoll aus, wenn er nich
 
 Die AdSync-Dienstverschlüsselungsschlüssel konnten nicht gefunden werden und wurden erneut erstellt.  Die Synchronisierung erfolgt erst wieder, nachdem dieses Problem behoben wurde.
 
-Behandlung dieses Problems Auf die Microsoft Azure AD Sync-Verschlüsselungsschlüssel kann nicht mehr zugegriffen werden, wenn die Anmeldeinformationen für den AdSync-Dienst geändert werden.  Wenn die Anmeldeinformationen geändert wurden, ändern Sie mit der Anwendung „Dienste“ das Anmeldekonto zurück auf den ursprünglich konfigurierten Wert (z.B. NT SERVICE\AdSync), und starten Sie den Dienst neu.  Dadurch wird der ordnungsgemäße Betrieb des AdSync-Diensts sofort wiederhergestellt.
+Problembehandlung: Auf die Microsoft Azure AD Sync-Verschlüsselungsschlüssel kann nicht mehr zugegriffen werden, wenn die Anmeldeinformationen für den AdSync-Dienst geändert werden.  Wenn die Anmeldeinformationen geändert wurden, legen Sie das Anmeldekonto mithilfe der Anwendung „Dienste“ wieder auf den ursprünglich konfigurierten Wert (beispielsweise NT SERVICE\AdSync) fest, und starten Sie den Dienst neu.  Dadurch wird der ordnungsgemäße Betrieb des AdSync-Diensts sofort wiederhergestellt.
 
-Im folgenden [Artikel](https://go.microsoft.com/fwlink/?linkid=2086764) finden Sie weitere Informationen.
+Im folgenden [Artikel](./whatis-hybrid-identity.md) finden Sie weitere Informationen.
 
 ### <a name="example-2"></a>Beispiel 2
 
 Der Dienst konnte nicht gestartet werden, da keine Verbindung mit der lokalen Datenbank (localdb) hergestellt werden konnte.
 
-Behandlung dieses Problems Der Microsoft Azure AD Sync-Dienst verliert die Berechtigung zum Zugriff auf den lokalen Datenbankanbieter, wenn die Anmeldeinformationen des AdSync-Diensts geändert werden.  Wenn die Anmeldeinformationen geändert wurden, ändern Sie mit der Anwendung „Dienste“ das Anmeldekonto zurück auf den ursprünglich konfigurierten Wert (z.B. NT SERVICE\AdSync), und starten Sie den Dienst neu.  Dadurch wird der ordnungsgemäße Betrieb des AdSync-Diensts sofort wiederhergestellt.
+Problembehandlung: Der Microsoft Azure AD Sync-Dienst verliert die Berechtigung zum Zugriff auf den lokalen Datenbankanbieter, wenn die Anmeldeinformationen des AdSync-Diensts geändert werden.  Wenn die Anmeldeinformationen geändert wurden, legen Sie das Anmeldekonto mithilfe der Anwendung „Dienste“ wieder auf den ursprünglich konfigurierten Wert (beispielsweise NT SERVICE\AdSync) fest, und starten Sie den Dienst neu.  Dadurch wird der ordnungsgemäße Betrieb des AdSync-Diensts sofort wiederhergestellt.
 
-Im folgenden [Artikel](https://go.microsoft.com/fwlink/?linkid=2086764) finden Sie weitere Informationen.
+Im folgenden [Artikel](./whatis-hybrid-identity.md) finden Sie weitere Informationen.
 
-Weitere Details Die folgenden Fehlerinformationen wurden vom Anbieter zurückgegeben:
+Weitere Details: Die folgenden Fehlerinformationen wurden vom Anbieter zurückgegeben:
  
 
 ``` 

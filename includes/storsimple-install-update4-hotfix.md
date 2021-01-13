@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 0755c01fe8e13e8e39c0b453198f2b67c51a2bc4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cc42c22579346c272ee5a6f41147e6b5b09643ba
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178290"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561113"
 ---
 #### <a name="to-download-hotfixes"></a>So laden Sie Hotfixes herunter
 
@@ -52,18 +52,18 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
    
     Im Anschluss finden Sie eine Beispielausgabe für die Installation der erstrangigen Updates. Für das erstrangige Update müssen Sie auf die spezifische Datei verweisen.
    
-        ```
-        Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
-        \FirstOrderUpdate\HcsSoftwareUpdate.exe -Credential contoso\John
+    ```output
+    Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
+    \FirstOrderUpdate\HcsSoftwareUpdate.exe -Credential contoso\John
    
-        Confirm
+    Confirm
    
-        This operation starts the hotfix installation and could reboot one or
-        both of the controllers. If the device is serving I/Os, these will not
-        be disrupted. Are you sure you want to continue?
-        [Y] Yes [N] No [?] Help (default is "Y"): Y
-   
-        ```
+    This operation starts the hotfix installation and could reboot one or
+    both of the controllers. If the device is serving I/Os, these will not
+    be disrupted. Are you sure you want to continue?
+    [Y] Yes [N] No [?] Help (default is "Y"): Y
+
+    ```
 4. Geben Sie **Y** ein, um die Hotfixinstallation zu bestätigen.
 5. Überwachen Sie das Update mithilfe des `Get-HcsUpdateStatus` -Cmdlets. Das Update wird zunächst auf dem passiven Controller abgeschlossen. Nachdem der passive Controller aktualisiert wurde, findet ein Failover statt, und das Update wird dann auf dem anderen Controller angewendet. Die Aktualisierung ist abgeschlossen, wenn beide Controller aktualisiert wurden.
    
@@ -92,7 +92,7 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
     > [!NOTE]
     > In manchen Fällen gibt das Cmdlet `False` zurück, wenn das Update noch ausgeführt wird. Um sicherzustellen, dass das Update abgeschlossen ist, warten Sie einige Minuten, führen Sie diesen Befehl erneut aus, und überprüfen Sie, ob `RunInProgress` gleich `False` ist. Wenn dies der Fall ist, wurde das Hotfix abgeschlossen.
 
-6. Überprüfen Sie nach dem Abschließen des Softwareupdates die Versionen der Systemsoftware. Geben Sie Folgendes ein:
+6. Überprüfen Sie nach dem Abschließen des Softwareupdates die Versionen der Systemsoftware. Typ:
    
     `Get-HcsSystem`
    
@@ -101,7 +101,7 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 4.0`
    * `HcsSoftwareVersion: 6.3.9600.17820`
    
-     Wenn sich die Versionsnummern nach dem Anwenden des Updates nicht ändern, konnte der Hotfix nicht angewendet werden. Sollte dies der Fall sein, wenden Sie sich an den [Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md), um weitere Unterstützung zu erhalten.
+     Wenn sich die Versionsnummern nach dem Anwenden des Updates nicht ändern, konnte der Hotfix nicht angewendet werden. Sollte dies der Fall sein, wenden Sie sich an den [Microsoft Support](../articles/storsimple/storsimple-8000-contact-microsoft-support.md), um weitere Unterstützung zu erhalten.
      
      > [!IMPORTANT]
      > Sie müssen den aktiven Controller mit dem Cmdlet `Restart-HcsController` neu starten, bevor Sie das nächste Update anwenden können.
@@ -123,31 +123,33 @@ Beachten Sie, dass Sie diese Updates nicht installieren müssen, wenn Ihre Daten
 
 Folgen Sie den Anweisungen unten, um die Datenträger-Firmwareupdates zu installieren.
 
-1. Versetzen Sie das Gerät in den Wartungsmodus. **Es empfiehlt sich, kein Windows PowerShell-Remoting zu verwenden, wenn Sie eine Verbindung mit einem Gerät im Wartungsmodus herstellen. Führen Sie dieses Cmdlet stattdessen auf dem Gerätecontroller aus, wenn eine Verbindung über die serielle Konsole des Geräts besteht.** Geben Sie Folgendes ein:
+1. Versetzen Sie das Gerät in den Wartungsmodus. **Es empfiehlt sich, kein Windows PowerShell-Remoting zu verwenden, wenn Sie eine Verbindung mit einem Gerät im Wartungsmodus herstellen. Führen Sie dieses Cmdlet stattdessen auf dem Gerätecontroller aus, wenn eine Verbindung über die serielle Konsole des Geräts besteht.** Typ:
    
     `Enter-HcsMaintenanceMode`
    
     Nachfolgend sehen Sie eine Beispielausgabe.
+
+    ```output
+    Controller0>Enter-HcsMaintenanceMode
+    Checking device state...
    
-        Controller0>Enter-HcsMaintenanceMode
-        Checking device state...
+    In maintenance mode, your device will not service IOs and will be disconnected from the Microsoft Azure StorSimple Manager service. Entering maintenance mode will end the current session and reboot both controllers, which takes a few minutes to complete. Are you sure you want to enter maintenance mode?
+    [Y] Yes [N] No (Default is "Y"): Y
    
-        In maintenance mode, your device will not service IOs and will be disconnected from the Microsoft Azure StorSimple Manager service. Entering maintenance mode will end the current session and reboot both controllers, which takes a few minutes to complete. Are you sure you want to enter maintenance mode?
-        [Y] Yes [N] No (Default is "Y"): Y
+    -----------------------MAINTENANCE MODE------------------------
+    Microsoft Azure StorSimple Appliance Model 8600
+    Name: Update4-8600-mystorsimple
+    Copyright (C) 2014 Microsoft Corporation. All rights reserved.
+    You are connected to Controller0 - Passive
+    ---------------------------------------------------------------
    
-        -----------------------MAINTENANCE MODE------------------------
-        Microsoft Azure StorSimple Appliance Model 8600
-        Name: Update4-8600-mystorsimple
-        Copyright (C) 2014 Microsoft Corporation. All rights reserved.
-        You are connected to Controller0 - Passive
-        ---------------------------------------------------------------
-   
-        Serial Console Menu
-        [1] Log in with full access
-        [2] Log into peer controller with full access
-        [3] Connect with limited access
-        [4] Change language
-        Please enter your choice>
+    Serial Console Menu
+    [1] Log in with full access
+    [2] Log into peer controller with full access
+    [3] Connect with limited access
+    [4] Change language
+    Please enter your choice>
+    ```
    
     Daraufhin werden beide Controller im Wartungsmodus gestartet.
 2. Geben Sie Folgendes ein, um das Datenträger-Firmwareupdate zu installieren:
@@ -155,16 +157,19 @@ Folgen Sie den Anweisungen unten, um die Datenträger-Firmwareupdates zu install
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
    
     Nachfolgend sehen Sie eine Beispielausgabe.
-   
-        Controller1>Start-HcsHotfix -Path \\10.100.100.100\share\ThirdOrderUpdates\ -Credential contoso\john
-        Enter Password:
-        WARNING: In maintenance mode, hotfixes should be installed on each controller sequentially. After the hotfix is installed on this controller, install it on the peer controller.
-        Confirm
-        This operation starts a hotfix installation and could reboot one or both of the controllers. By installing new updates you agree to, and accept any additional terms associated with, the new functionality listed in the release notes (https://go.microsoft.com/fwLink/?LinkID=613790). Are you sure you want to continue?
-        [Y] Yes [N] No (Default is "Y"): Y
-        WARNING: Installation is currently in progress. This operation can take several minutes to complete.
+
+    ```output
+    Controller1>Start-HcsHotfix -Path \\10.100.100.100\share\ThirdOrderUpdates\ -Credential contoso\john
+    Enter Password:
+    WARNING: In maintenance mode, hotfixes should be installed on each controller sequentially. After the hotfix is installed on this controller, install it on the peer controller.
+    Confirm
+    This operation starts a hotfix installation and could reboot one or both of the controllers. By installing new updates you agree to, and accept any additional terms associated with, the new functionality listed in the release notes (https://go.microsoft.com/fwLink/?LinkID=613790). Are you sure you want to continue?
+    [Y] Yes [N] No (Default is "Y"): Y
+    WARNING: Installation is currently in progress. This operation can take several minutes to complete.
+    ```
+
 3. Überwachen Sie den Installationsstatus mit dem Befehl `Get-HcsUpdateStatus` . Das Update ist abgeschlossen, wenn `RunInProgress` in `False` geändert wird.
-4. Nachdem die Installation abgeschlossen ist, wird der Controller, auf dem der Hotfix für den Wartungsmodus installiert wurde, neu gestartet. Verwenden Sie Option 1, **Anmeldung mit Vollzugriff**, und überprüfen Sie die Firmwareversion des Datenträgers. Geben Sie Folgendes ein:
+4. Nachdem die Installation abgeschlossen ist, wird der Controller, auf dem der Hotfix für den Wartungsmodus installiert wurde, neu gestartet. Verwenden Sie Option 1, **Anmeldung mit Vollzugriff**, und überprüfen Sie die Firmwareversion des Datenträgers. Typ:
    
    `Get-HcsFirmwareVersion`
    
@@ -173,91 +178,92 @@ Folgen Sie den Anweisungen unten, um die Datenträger-Firmwareupdates zu install
    `XMGJ, XGEG, KZ50, F6C2, VR08, N002, 0106`
    
    Nachfolgend sehen Sie eine Beispielausgabe.
-   
-       -----------------------MAINTENANCE MODE------------------------
-       Microsoft Azure StorSimple Appliance Model 8600
-       Name: Update4-8600-mystorsimple
-       Software Version: 6.3.9600.17820
-       Copyright (C) 2014 Microsoft Corporation. All rights reserved.
-       You are connected to Controller1
-       ---------------------------------------------------------------
-   
-       Controller1>Get-HcsFirmwareVersion
-   
-       Controller0 : TalladegaFirmware
-           ActiveBIOS:0.45.0010
-              BackupBIOS:0.45.0006
-              MainCPLD:17.0.000b
-              ActiveBMCRoot:2.0.001F
-              BackupBMCRoot:2.0.001F
-              BMCBoot:2.0.0002
-              LsiFirmware:20.00.04.00
-              LsiBios:07.37.00.00
-              Battery1Firmware:06.2C
-              Battery2Firmware:06.2C
-              DomFirmware:X231600
-              CanisterFirmware:3.5.0.56
-              CanisterBootloader:5.03
-              CanisterConfigCRC:0x9134777A
-              CanisterVPDStructure:0x06
-              CanisterGEMCPLD:0x19
-              CanisterVPDCRC:0x142F7DC2
-              MidplaneVPDStructure:0x0C
-              MidplaneVPDCRC:0xA6BD4F64
-              MidplaneCPLD:0x10
-              PCM1Firmware:1.00|1.05
-              PCM1VPDStructure:0x05
-              PCM1VPDCRC:0x41BEF99C
-              PCM2Firmware:1.00|1.05
-              PCM2VPDStructure:0x05
-              PCM2VPDCRC:0x41BEF99C
 
-           EbodFirmware
-              CanisterFirmware:3.5.0.56
-              CanisterBootloader:5.03
-              CanisterConfigCRC:0xB23150F8
-              CanisterVPDStructure:0x06
-              CanisterGEMCPLD:0x14
-              CanisterVPDCRC:0xBAA55828
-              MidplaneVPDStructure:0x0C
-              MidplaneVPDCRC:0xA6BD4F64
-              MidplaneCPLD:0x10
-              PCM1Firmware:3.11
-              PCM1VPDStructure:0x03
-              PCM1VPDCRC:0x6B58AD13
-              PCM2Firmware:3.11
-              PCM2VPDStructure:0x03
-              PCM2VPDCRC:0x6B58AD13
+    ```output
+    -----------------------MAINTENANCE MODE------------------------
+    Microsoft Azure StorSimple Appliance Model 8600
+    Name: Update4-8600-mystorsimple
+    Software Version: 6.3.9600.17820
+    Copyright (C) 2014 Microsoft Corporation. All rights reserved.
+    You are connected to Controller1
+    ---------------------------------------------------------------
+   
+    Controller1>Get-HcsFirmwareVersion
+   
+    Controller0 : TalladegaFirmware
+        ActiveBIOS:0.45.0010
+           BackupBIOS:0.45.0006
+           MainCPLD:17.0.000b
+           ActiveBMCRoot:2.0.001F
+           BackupBMCRoot:2.0.001F
+           BMCBoot:2.0.0002
+           LsiFirmware:20.00.04.00
+           LsiBios:07.37.00.00
+           Battery1Firmware:06.2C
+           Battery2Firmware:06.2C
+           DomFirmware:X231600
+           CanisterFirmware:3.5.0.56
+           CanisterBootloader:5.03
+           CanisterConfigCRC:0x9134777A
+           CanisterVPDStructure:0x06
+           CanisterGEMCPLD:0x19
+           CanisterVPDCRC:0x142F7DC2
+           MidplaneVPDStructure:0x0C
+           MidplaneVPDCRC:0xA6BD4F64
+           MidplaneCPLD:0x10
+           PCM1Firmware:1.00|1.05
+           PCM1VPDStructure:0x05
+           PCM1VPDCRC:0x41BEF99C
+           PCM2Firmware:1.00|1.05
+           PCM2VPDStructure:0x05
+           PCM2VPDCRC:0x41BEF99C
 
-           DisksFirmware
-              SmrtStor:TXA2D20800GA6XYR:KZ50
-              SmrtStor:TXA2D20800GA6XYR:KZ50
-              SmrtStor:TXA2D20800GA6XYR:KZ50
-              SmrtStor:TXA2D20800GA6XYR:KZ50
-              SmrtStor:TXA2D20800GA6XYR:KZ50
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
+        EbodFirmware
+           CanisterFirmware:3.5.0.56
+           CanisterBootloader:5.03
+           CanisterConfigCRC:0xB23150F8
+           CanisterVPDStructure:0x06
+           CanisterGEMCPLD:0x14
+           CanisterVPDCRC:0xBAA55828
+           MidplaneVPDStructure:0x0C
+           MidplaneVPDCRC:0xA6BD4F64
+           MidplaneCPLD:0x10
+           PCM1Firmware:3.11
+           PCM1VPDStructure:0x03
+           PCM1VPDCRC:0x6B58AD13
+           PCM2Firmware:3.11
+           PCM2VPDStructure:0x03
+           PCM2VPDCRC:0x6B58AD13
+
+        DisksFirmware
+           SmrtStor:TXA2D20800GA6XYR:KZ50
+           SmrtStor:TXA2D20800GA6XYR:KZ50
+           SmrtStor:TXA2D20800GA6XYR:KZ50
+           SmrtStor:TXA2D20800GA6XYR:KZ50
+           SmrtStor:TXA2D20800GA6XYR:KZ50
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+    ```
    
     Führen Sie den Befehl `Get-HcsFirmwareVersion` auf dem zweiten Controller aus, um zu überprüfen, ob die Softwareversion aktualisiert wurde. Anschließend können Sie den Wartungsmodus beenden. Geben Sie hierzu den folgenden Befehl für jeden Gerätecontroller ein:
    
    `Exit-HcsMaintenanceMode`
 
 5. Beim Beenden des Wartungsmodus werden die Controller neu gestartet. Nachdem die Firmwareupdates für Datenträger erfolgreich installiert wurden und das Gerät den Wartungsmodus verlassen hat, kehren Sie zum klassischen Azure-Portal zurück. Beachten Sie, dass es bis zu 24 Stunden dauern kann, bis die Installation der Wartungsmodusupdates im Portal angezeigt wird.
-

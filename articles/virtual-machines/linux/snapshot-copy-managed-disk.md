@@ -1,27 +1,22 @@
 ---
-title: Erstellen einer Momentaufnahme einer VHD in Azure | Microsoft-Dokumentation
+title: Erstellen einer Momentaufnahme einer VHD mithilfe der Azure CLI
 description: Erfahren Sie, wie Sie eine Kopie einer VHD in Azure als Sicherung oder für die Behandlung von Problemen erstellen.
-documentationcenter: ''
 author: roygara
 manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 9f2f3ac3668f0e48716fc30fb69cd1782dbd4e56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6374108247b9bfb950c42495b13b501ded8a02d2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706974"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015960"
 ---
-# <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme 
+# <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>Erstellen einer Momentaufnahme mit dem Portal oder der Azure CLI
 
 Erstellen Sie eine Momentaufnahme eines Betriebssystems oder Datenträgers für die Sicherung oder zum Behandeln von VM-Problemen. Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer VHD. 
 
@@ -70,7 +65,7 @@ az snapshot list \
 5. Wählen Sie eine vorhandene Ressourcengruppe aus, oder geben Sie den Namen für eine neue Ressourcengruppe ein. 
 7. Wählen Sie für **Quelldatenträger** den verwalteten Datenträger aus, für den eine Momentaufnahme erstellt werden soll.
 8. Wählen Sie den **Kontotyp** aus, der zum Speichern der Momentaufnahme verwendet werden soll. Wir empfehlen **Standard-Festplattenlaufwerke**, es sei denn, Sie benötigen eine leistungsstarke SSD.
-9. Klicken Sie auf **Create**.
+9. Klicken Sie auf **Erstellen**.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

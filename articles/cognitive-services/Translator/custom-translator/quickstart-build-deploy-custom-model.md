@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: a450a91f29a9118c9e4c83f6bb964bac2d6ffb3c
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4fbac2c2d77d838ac7fc4f3caaa73983633c3e03
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595552"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366044"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Schnellstart: Erstellen, Bereitstellen und Verwenden eines benutzerdefinierten Modells für die Übersetzung
 
@@ -22,11 +22,28 @@ Dieser Artikel enthält ausführliche Anweisungen zum Erstellen eines Übersetzu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Für die Verwendung des [Custom Translator](https://portal.customtranslator.azure.ai)-Portals benötigen Sie ein [Microsoft-Konto](https://signup.live.com) oder [Azure AD-Konto](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (in Azure gehostetes Organisationskonto), um sich anzumelden.
+1. Für die Verwendung des [Custom Translator](https://portal.customtranslator.azure.ai)-Portals benötigen Sie ein [Microsoft-Konto](https://signup.live.com) oder [Azure AD-Konto](../../../active-directory/fundamentals/active-directory-whatis.md) (in Azure gehostetes Organisationskonto), um sich anzumelden.
 
-2. Abonnement für die Textübersetzungs-API über das Azure-Portal. Sie benötigen den Abonnementschlüssel der Textübersetzungs-API für die Zuordnung zu Ihrem Arbeitsbereich in Custom Translator. [Hier](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup) erfahren Sie, wie Sie sich für die Textübersetzungs-API registrieren.
+2. Abonnement für die Textübersetzungs-API über das Azure-Portal. Sie benötigen den Abonnementschlüssel der Textübersetzungs-API für die Zuordnung zu Ihrem Arbeitsbereich in Custom Translator. [Hier](../translator-how-to-signup.md) erfahren Sie, wie Sie sich für die Textübersetzungs-API registrieren.
 
-3. Sind die beiden Komponenten oben vorhanden, melden Sie sich beim [Custom Translator](https://portal.customtranslator.azure.ai)-Portal an. Navigieren Sie im Custom Translator-Portal zur Seite „Einstellungen“. Dort können Sie den Abonnementschlüssel Ihrer Microsoft-Textübersetzungs-API Ihrem Arbeitsbereich zuordnen.
+3. Sind die beiden Komponenten oben vorhanden, melden Sie sich beim Portal für den [benutzerdefinierten Translator](https://portal.customtranslator.azure.ai) an, um Arbeitsbereiche und Projekte zu erstellen, Dateien hochzuladen sowie Modelle zu erstellen und bereitzustellen.
+
+>[!Note]
+>Der benutzerdefinierte Translator unterstützt nicht das Erstellen eines Arbeitsbereichs für eine Textübersetzungs-API-Ressource, die innerhalb von [Enabled VNET](../../../api-management/api-management-using-with-vnet.md) erstellt wurde.
+
+## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
+
+Als Erstbenutzer werden Sie aufgefordert, den Vertragsbedingungen zuzustimmen, um einen Arbeitsbereich zu erstellen und dem Abonnement für die Microsoft-Textübersetzungs-API zuzuordnen.
+
+![Arbeitsbereich erstellen](media/quickstart/terms-of-service.png)
+![Arbeitsbereich erstellen (Bild 1)](media/quickstart/create-workspace-1.png)
+![Arbeitsbereich erstellen (Bild 2)](media/quickstart/create-workspace-2.png)
+![Arbeitsbereich erstellen (Bild 3)](media/quickstart/create-workspace-3.png)
+![Arbeitsbereich erstellen (Bild 4)](media/quickstart/create-workspace-4.png)
+![Arbeitsbereich erstellen (Bild 5)](media/quickstart/create-workspace-5.png)
+![Arbeitsbereich erstellen (Bild 6)](media/quickstart/create-workspace-6.png)
+
+Navigieren Sie bei nachfolgenden Besuchen im Portal für den benutzerdefinierten Translator zur Seite „Einstellungen“. Dort können Sie den Arbeitsbereich verwalten, weitere Arbeitsbereiche erstellen, den Abonnementschlüssel der Microsoft-Textübersetzungs-API Ihren Arbeitsbereichen zuordnen, Mitbesitzer hinzufügen und Abonnementschlüssel ändern.
 
 ## <a name="create-a-project"></a>Erstellen eines Projekts
 
@@ -37,7 +54,7 @@ Klicken Sie auf der Startseite des Custom Translator-Portals auf „Neues Projek
 
 ## <a name="upload-documents"></a>Hochladen von Dokumenten
 
-Laden Sie als Nächstes Dokumente für [Training](training-and-model.md#training-dataset-for-custom-translator), [Optimierung](training-and-model.md#tuning-dataset-for-custom-translator) und [Tests](training-and-model.md#testing-dataset-for-custom-translator) hoch. Sie können sowohl [parallele](what-are-parallel-documents.md) als auch kombinierte Dokumente hochladen. Darüber hinaus können Sie ein [Wörterbuch](what-is-dictionary.md) hochladen.
+Laden Sie als Nächstes Dokumente für [Training](training-and-model.md#training-document-type-for-custom-translator), [Optimierung](training-and-model.md#tuning-document-type-for-custom-translator) und [Tests](training-and-model.md#testing-dataset-for-custom-translator) hoch. Sie können sowohl [parallele](what-are-parallel-documents.md) als auch kombinierte Dokumente hochladen. Darüber hinaus können Sie ein [Wörterbuch](what-is-dictionary.md) hochladen.
 
 Dokumente können entweder über die Registerkarte für Dokumente oder über die Seite eines bestimmten Projekts hochgeladen werden.
 
@@ -45,13 +62,13 @@ Dokumente können entweder über die Registerkarte für Dokumente oder über die
 
 Wählen Sie beim Hochladen von Dokumenten den Dokumenttyp (Training, Optimierung oder Test) und das Sprachpaar aus. Beim Hochladen paralleler Dokumente müssen Sie darüber hinaus einen Dokumentnamen angeben. Weitere Informationen finden Sie unter [Upload document](how-to-upload-document.md) (Hochladen eines Dokuments).
 
-## <a name="create-a-model"></a>Modellerstellung
+## <a name="create-a-model"></a>Erstellen eines Modells
 
 Wurden alle erforderlichen Dokumente hochgeladen, erstellen Sie als Nächstes Ihr Modell.
 
-Wählen Sie das von Ihnen erstellte Projekt aus. Sie sehen alle hochgeladenen Dokumente, die das gleiche Sprachpaar wie dieses Projekt aufweisen. Wählen Sie die Dokumente aus, die im Modell enthalten sein sollen. Sie können [Trainingsdaten](training-and-model.md#training-dataset-for-custom-translator), [Optimierungsdaten](training-and-model.md#tuning-dataset-for-custom-translator) und [Testdaten](training-and-model.md#testing-dataset-for-custom-translator) oder nur Trainingsdaten auswählen und von Custom Translator automatisch Optimierungs- und Testsätze für Ihr Modell erstellen lassen.
+Wählen Sie das von Ihnen erstellte Projekt aus. Sie sehen alle hochgeladenen Dokumente, die das gleiche Sprachpaar wie dieses Projekt aufweisen. Wählen Sie die Dokumente aus, die im Modell enthalten sein sollen. Sie können [Trainingsdaten](training-and-model.md#training-document-type-for-custom-translator), [Optimierungsdaten](training-and-model.md#tuning-document-type-for-custom-translator) und [Testdaten](training-and-model.md#testing-dataset-for-custom-translator) oder nur Trainingsdaten auswählen und von Custom Translator automatisch Optimierungs- und Testsätze für Ihr Modell erstellen lassen.
 
-![Modellerstellung](media/quickstart/ct-how-to-train.png)
+![Erstellen eines Modells](media/quickstart/ct-how-to-train.png)
 
 Wenn Sie die gewünschten Dokumente ausgewählt haben, klicken Sie auf die Schaltfläche „Create Model“ (Modell erstellen), um Ihr Modell zu erstellen und mit dem Training zu beginnen. Auf der Registerkarte „Modelle“ können Sie den Status des Trainings und Details zu allen trainierten Modellen anzeigen.
 
@@ -67,9 +84,15 @@ Wenn Sie das trainierte Modell bereitstellen möchten, klicken Sie auf die Schal
 
 ![Bereitstellen eines trainierten Modells](media/quickstart/ct-how-to-deploy.png)
 
+## <a name="swap-deployed-model"></a>Austauschen eines bereitgestellten Modells
+
+Klicken Sie auf die Schaltfläche „Austauschen“ neben einem bereitgestellten Modell, um dieses innerhalb eines Projekts durch ein anderes auszutauschen. Während des Austauschs ist das bereitgestellte Modell weiterhin verfügbar, um Übersetzungsanforderungen zu verarbeiten. 
+
+![Austauschen eines bereitgestellten Modells](media/quickstart/ct-how-to-swap-model.png)
+
 ## <a name="use-a-deployed-model"></a>Verwenden eines bereitgestellten Modells
 
-Auf bereitgestellte Modelle kann über die [Microsoft-Textübersetzungs-API V3 durch Angabe der Kategorie-ID](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) zugegriffen werden. Weitere Informationen zur Textübersetzungs-API finden Sie auf der Webseite mit der [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference).
+Auf bereitgestellte Modelle kann über die [Microsoft-Textübersetzungs-API V3 durch Angabe der Kategorie-ID](../reference/v3-0-translate.md?tabs=curl) zugegriffen werden. Weitere Informationen zur Textübersetzungs-API finden Sie auf der Webseite mit der [API-Referenz](../reference/v3-0-reference.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,18 +1,14 @@
 ---
-title: Erstellen einer benutzerdefinierten Richtliniendefinition
-description: Es wird beschrieben, wie Sie eine benutzerdefinierte Richtliniendefinition für Azure Policy erstellen, um benutzerdefinierte Geschäftsregeln zu erzwingen.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 04/23/2019
+title: 'Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition'
+description: In diesem Tutorial erstellen Sie eine benutzerdefinierte Richtliniendefinition für Azure Policy, um benutzerdefinierte Geschäftsregeln für Ihre Azure-Ressourcen zu erzwingen.
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: e38eb1315cde3400b70925059d4dd50475a47835
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 817e6f494b024b9a789f39a4101236f64d8fa0cd
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979667"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882890"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition
 
@@ -35,6 +31,8 @@ Der Ansatz zur Erstellung einer benutzerdefinierten Richtlinie umfasst die folge
 > - Ermitteln der zu verwendenden Auswirkung
 > - Verfassen der Richtliniendefinition
 
+## <a name="prerequisites"></a>Voraussetzungen
+
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="identify-requirements"></a>Ermitteln der Anforderungen
@@ -54,23 +52,31 @@ Basierend auf der geschäftlichen Anforderung ist die Azure-Ressource, die mit A
 
 Es gibt viele Möglichkeiten, die Eigenschaften für eine Azure-Ressource zu ermitteln. In diesem Tutorial sehen wir uns die einzelnen Fälle an:
 
-- Resource Manager-Vorlagen
+- Azure Policy-Erweiterung für VS Code
+- Azure Resource Manager-Vorlagen (ARM-Vorlagen)
   - Export der vorhandenen Ressource
   - Umgebung für die Erstellung
   - Schnellstartvorlagen (GitHub)
   - Vorlagenreferenzdokumente
 - Azure-Ressourcen-Explorer
 
-### <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
+### <a name="view-resources-in-vs-code-extension"></a>Anzeigen von Ressourcen in der VS Code-Erweiterung
 
-Es gibt mehrere Möglichkeiten, sich eine [Resource Manager-Vorlage](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) anzusehen, die die zu verwaltende Eigenschaft enthält.
+Mit der [VS Code-Erweiterung](../how-to/extension-for-vscode.md#search-for-and-view-resources) können Sie Ressourcen in Ihrer Umgebung durchsuchen und die Resource Manager-Eigenschaften der einzelnen Ressourcen anzeigen.
+
+### <a name="arm-templates"></a>ARM-Vorlagen
+
+Es gibt mehrere Möglichkeiten, sich eine [ARM-Vorlage](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) anzusehen, die die zu verwaltende Eigenschaft enthält.
 
 #### <a name="existing-resource-in-the-portal"></a>Vorhandene Ressource im Portal
 
 Am einfachsten finden Sie Eigenschaften, indem Sie sich eine vorhandene Ressource desselben Typs ansehen. Ressourcen, die bereits mit der zu erzwingenden Einstellung konfiguriert sind, enthalten auch den Wert für den Vergleich.
 Sehen Sie sich im Azure-Portal die Seite **Exportvorlage** (unter **Einstellungen**) für die jeweilige Ressource an.
 
-![Seite zum Exportieren der Vorlage für eine vorhandene Ressource](../media/create-custom-policy-definition/export-template.png)
+> [!WARNING]
+> Die vom Azure-Portal exportierte ARM-Vorlage kann nicht direkt in die Eigenschaft `deployment` für eine ARM-Vorlage in einer Richtliniendefinition vom Typ [deployIfNotExists](../concepts/effects.md#deployifnotexists) integriert werden.
+
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Screenshot: Seite „Exportvorlage“ für eine vorhandene Ressource im Azure-Portal" border="false":::
 
 Wenn Sie so für ein Speicherkonto vorgehen, wird eine Vorlage bereitgestellt, die der Vorlage in diesem Beispiel ähnelt:
 
@@ -141,12 +147,11 @@ Hier wird der Eigenschaftentyp angegeben und außerdem bestätigt, dass es sich 
 
 #### <a name="quickstart-templates-on-github"></a>Schnellstartvorlagen auf GitHub
 
-Unter [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) auf GitHub finden Sie Hunderte von Resource Manager-Vorlagen, die für unterschiedliche Ressourcen bestimmt sind. Diese Vorlagen können eine gute Möglichkeit darstellen, um nach der gewünschten Ressourceneigenschaft zu suchen. Bei einigen Eigenschaften kann es erscheinen, als ob sie den gewünschten Zweck erfüllen, während sie eigentlich für die Steuerung eines anderen Sachverhalts gedacht sind.
+Unter [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) auf GitHub finden Sie Hunderte von ARM-Vorlagen, die für unterschiedliche Ressourcen bestimmt sind. Diese Vorlagen können eine gute Möglichkeit darstellen, um nach der gewünschten Ressourceneigenschaft zu suchen. Bei einigen Eigenschaften kann es erscheinen, als ob sie den gewünschten Zweck erfüllen, während sie eigentlich für die Steuerung eines anderen Sachverhalts gedacht sind.
 
 #### <a name="resource-reference-docs"></a>Referenzdokumente zu Ressourcen
 
-Gehen Sie wie folgt vor, um sich zu vergewissern, dass **supportsHttpsTrafficOnly** die richtige Eigenschaft ist: Überprüfen Sie die Resource Manager-Vorlagenreferenz für die [Speicherkontoressource](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) des Speicheranbieters.
-Das properties-Objekt verfügt über eine Liste mit gültigen Parametern. Wenn Sie den Link [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) auswählen, wird eine Tabelle mit zulässigen Eigenschaften angezeigt. **supportsHttpsTrafficOnly** ist vorhanden, und die Beschreibung passt zu den zu erfüllenden geschäftlichen Anforderungen.
+Gehen Sie wie folgt vor, um sich zu vergewissern, dass **supportsHttpsTrafficOnly** die richtige Eigenschaft ist: Überprüfen Sie die ARM-Vorlagenreferenz für die [Speicherkontoressource](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) des Speicheranbieters. Das properties-Objekt verfügt über eine Liste mit gültigen Parametern. Wenn Sie den Link [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) auswählen, wird eine Tabelle mit zulässigen Eigenschaften angezeigt. **supportsHttpsTrafficOnly** ist vorhanden, und die Beschreibung passt zu den zu erfüllenden geschäftlichen Anforderungen.
 
 ### <a name="azure-resource-explorer"></a>Azure-Ressourcen-Explorer
 
@@ -160,11 +165,18 @@ Wir haben die Ressourceneigenschaft identifiziert, aber wir müssen diese Eigens
 
 Es gibt verschiedene Möglichkeiten, die Aliase für eine Azure-Ressource zu ermitteln. In diesem Tutorial sehen wir uns die einzelnen Fälle an:
 
-- Azure-Befehlszeilenschnittstelle
+- Azure Policy-Erweiterung für VS Code
+- Azure CLI
 - Azure PowerShell
-- Azure Resource Graph
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="get-aliases-in-vs-code-extension"></a>Abrufen von Aliasen in der VS Code-Erweiterung
+
+Mit der Azure Policy-Erweiterung für die VS Code-Erweiterung können Sie ganz einfach Ihre Ressourcen durchsuchen und [Aliase ermitteln](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
+
+> [!NOTE]
+> Die VS Code-Erweiterung stellt nur Eigenschaften des Resource Manager-Modus zur Verfügung und zeigt keine Eigenschaften des [Ressourcenanbietermodus](../concepts/definition-structure.md#mode) an.
+
+### <a name="azure-cli"></a>Azure CLI
 
 In der Azure-Befehlszeilenschnittstelle wird die Befehlsgruppe `az provider` verwendet, um nach Ressourcenaliasen zu suchen. Wir filtern anhand der Details, die wir zuvor zur Azure-Ressource erhalten haben, nach dem Namespace **Microsoft.Storage**.
 
@@ -190,129 +202,11 @@ In Azure PowerShell wird das Cmdlet `Get-AzPolicyAlias` verwendet, um nach Resso
 
 Wie in der Azure-Befehlszeilenschnittstelle auch, wird in den Ergebnissen ein Alias angezeigt, der von den Speicherkonten unterstützt wird und den Namen **supportsHttpsTrafficOnly** hat.
 
-### <a name="azure-resource-graph"></a>Azure Resource Graph
-
-[Azure Resource Graph](../../resource-graph/overview.md) ist ein neuer Dienst, der sich in der Vorschauphase befindet. Mit diesem Dienst ist noch ein weiteres Verfahren zum Suchen nach Eigenschaften von Azure-Ressourcen möglich. Hier ist eine Beispielabfrage für die Suche nach einem einzelnen Speicherkonto mit Resource Graph angegeben:
-
-```kusto
-where type=~'microsoft.storage/storageaccounts'
-| limit 1
-```
-
-```azurecli-interactive
-az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
-```
-
-Die Ergebnisse ähneln den Daten, die in den Resource Manager-Vorlagen enthalten sind und über den Azure-Ressourcen-Explorer bereitgestellt werden. Azure Resource Graph-Ergebnisse können aber auch [Aliasdetails](../concepts/definition-structure.md#aliases) enthalten, indem die _Projektion_ für den _Aliasarray_ ausgeführt wird:
-
-```kusto
-where type=~'microsoft.storage/storageaccounts'
-| limit 1
-| project aliases
-```
-
-```azurecli-interactive
-az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-```
-
-Hier ist eine Beispielausgabe eines Speicherkontos für Aliase angegeben:
-
-```json
-"aliases": {
-    "Microsoft.Storage/storageAccounts/accessTier": null,
-    "Microsoft.Storage/storageAccounts/accountType": "Standard_LRS",
-    "Microsoft.Storage/storageAccounts/enableBlobEncryption": true,
-    "Microsoft.Storage/storageAccounts/enableFileEncryption": true,
-    "Microsoft.Storage/storageAccounts/encryption": {
-        "keySource": "Microsoft.Storage",
-        "services": {
-            "blob": {
-                "enabled": true,
-                "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-            },
-            "file": {
-                "enabled": true,
-                "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-            }
-        }
-    },
-    "Microsoft.Storage/storageAccounts/encryption.keySource": "Microsoft.Storage",
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyname": null,
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyvaulturi": null,
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyversion": null,
-    "Microsoft.Storage/storageAccounts/encryption.services": {
-        "blob": {
-            "enabled": true,
-            "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-        },
-        "file": {
-            "enabled": true,
-            "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-        }
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.blob": {
-        "enabled": true,
-        "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.blob.enabled": true,
-    "Microsoft.Storage/storageAccounts/encryption.services.file": {
-        "enabled": true,
-        "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.file.enabled": true,
-    "Microsoft.Storage/storageAccounts/networkAcls": {
-        "bypass": "AzureServices",
-        "defaultAction": "Allow",
-        "ipRules": [],
-        "virtualNetworkRules": []
-    },
-    "Microsoft.Storage/storageAccounts/networkAcls.bypass": "AzureServices",
-    "Microsoft.Storage/storageAccounts/networkAcls.defaultAction": "Allow",
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*]": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].action": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].id": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].state": [],
-    "Microsoft.Storage/storageAccounts/primaryEndpoints": {
-        "blob": "https://mystorageaccount.blob.core.windows.net/",
-        "file": "https://mystorageaccount.file.core.windows.net/",
-        "queue": "https://mystorageaccount.queue.core.windows.net/",
-        "table": "https://mystorageaccount.table.core.windows.net/"
-    },
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.blob": "https://mystorageaccount.blob.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.file": "https://mystorageaccount.file.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.queue": "https://mystorageaccount.queue.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.table": "https://mystorageaccount.table.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.web": null,
-    "Microsoft.Storage/storageAccounts/primaryLocation": "eastus2",
-    "Microsoft.Storage/storageAccounts/provisioningState": "Succeeded",
-    "Microsoft.Storage/storageAccounts/sku.name": "Standard_LRS",
-    "Microsoft.Storage/storageAccounts/sku.tier": "Standard",
-    "Microsoft.Storage/storageAccounts/statusOfPrimary": "available",
-    "Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly": false
-}
-```
-
-Azure Resource Graph (Vorschauversion) kann mit [Cloud Shell](https://shell.azure.com) verwendet werden. Dies ist eine schnelle und einfache Methode zum Erkunden der Eigenschaften Ihrer Ressourcen.
-
 ## <a name="determine-the-effect-to-use"></a>Ermitteln der zu verwendenden Auswirkung
 
-Die Entscheidung, was mit Ihren nicht konformen Ressourcen passieren soll, ist fast so wichtig wie die Entscheidung, was überhaupt evaluiert werden soll. Jede mögliche Reaktion auf eine nicht konforme Ressource wird als [Auswirkung](../concepts/effects.md) bezeichnet.
-Mit der Auswirkung wird gesteuert, ob die nicht konforme Ressource protokolliert oder blockiert wird, über angefügte Daten verfügt oder mit einer zugeordneten Bereitstellung versehen ist, um die Ressource wieder in einen konformen Zustand zu versetzen.
+Die Entscheidung, was mit Ihren nicht konformen Ressourcen passieren soll, ist fast so wichtig wie die Entscheidung, was überhaupt evaluiert werden soll. Jede mögliche Reaktion auf eine nicht konforme Ressource wird als [Auswirkung](../concepts/effects.md) bezeichnet. Mit der Auswirkung wird gesteuert, ob die nicht konforme Ressource protokolliert oder blockiert wird, über angefügte Daten verfügt oder mit einer zugeordneten Bereitstellung versehen ist, um die Ressource wieder in einen konformen Zustand zu versetzen.
 
-Für unser Beispiel ist „Deny“ die passende Auswirkung, da wir nicht möchten, dass in unserer Azure-Umgebung nicht konforme Ressourcen erstellt werden. Die Überwachung ist eine gute erste Wahl für eine Richtlinienauswirkung, um vor dem Festlegen einer Richtlinie auf „Deny“ zu ermitteln, welche Auswirkung damit verbunden ist. Eine Möglichkeit, die Änderung der Auswirkung pro Zuweisung zu vereinfachen, ist die Parametrisierung der Auswirkung. Genauere Informationen zur Vorgehensweise finden Sie unter [Parameter](#parameters).
+Für unser Beispiel ist „Deny“ die passende Auswirkung, weil wir nicht möchten, dass in unserer Azure-Umgebung nicht konforme Ressourcen erstellt werden. Die Überwachung ist eine gute erste Wahl für eine Richtlinienauswirkung, um vor dem Festlegen einer Richtlinie auf „Deny“ zu ermitteln, welche Auswirkung damit verbunden ist. Eine Möglichkeit, die Änderung der Auswirkung pro Zuweisung zu vereinfachen, ist die Parametrisierung der Auswirkung. Genauere Informationen zur Vorgehensweise finden Sie unter [Parameter](#parameters).
 
 ## <a name="compose-the-definition"></a>Verfassen der Definition
 
@@ -443,6 +337,16 @@ Nachdem alle drei Teile der Richtlinie festgelegt wurden, sieht die fertige Defi
 ```
 
 Die fertige Definition kann genutzt werden, um eine neue Richtlinie zu erstellen. Vom Portal und den einzelnen SDKs (Azure CLI, Azure PowerShell und REST-API) wird die Definition auf unterschiedliche Weise akzeptiert. Sehen Sie sich also jeweils die Befehle genau an, um die richtige Nutzung sicherzustellen. Führen Sie anschließend die Zuweisung zu den passenden Ressourcen durch, indem Sie die parametrisierte Auswirkung verwenden, um die Sicherheit Ihrer Speicherkonten zu verwalten.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Ressourcen dieses Tutorials nicht mehr benötigen, führen Sie die folgenden Schritte aus, um die erstellten Zuweisungen oder Definitionen zu löschen:
+
+1. Klicken Sie links auf der Seite „Azure Policy“ unter **Erstellung** auf **Definitionen** (oder auf **Zuweisungen**, wenn Sie eine Zuweisung löschen möchten).
+
+1. Suchen Sie nach der neuen Initiativ- oder Richtliniendefinition (bzw. der Zuweisung), die Sie entfernen möchten.
+
+1. Klicken Sie mit der rechten Maustaste auf die Zeile, oder wählen Sie die Auslassungspunkte am Ende der Definition (oder Zuweisung), und wählen Sie anschließend **Definition löschen** (bzw. **Zuweisung löschen**) aus.
 
 ## <a name="review"></a>Überprüfung
 

@@ -1,8 +1,6 @@
 ---
 title: Verwenden eines privaten Helm-Repositorys in Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: zr-msft
 ms.author: zarhoads
 ms.date: 08/22/2019
@@ -10,16 +8,18 @@ ms.topic: conceptual
 description: Verwenden eines privaten Helm-Repositorys in einem Azure Dev Space.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container, Helm
 manager: gwallace
-ms.openlocfilehash: d0f2cb739a502d614ac329eef1fc57b2fb15cb38
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 7c5f28595df2e552fd48033b44e4e1f0ea4ec306
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014277"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960336"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Verwenden eines privaten Helm-Repositorys in Azure Dev Spaces
 
-[Helm][helm] ist ein Paket-Manager für Kuberentes. Helm verwendet ein [Diagramm][helm-chart]format, um Abhängigkeiten zu packen. Helm-Diagramme werden in einem Repository gespeichert, das öffentlich oder privat sein kann. Azure Dev Spaces ruft Helm-Diagramme nur bei der Ausführung Ihrer Anwendung aus öffentlichen Repositorys ab. In Fällen, in denen das Helm-Repository privat ist oder Azure Dev Spaces nicht darauf zugreifen kann, können Sie ein Diagramm aus diesem Repository direkt zu Ihrer Anwendung hinzufügen. Wenn Sie das Diagramm direkt hinzufügen, kann Azure Dev Spaces Ihre Anwendung ausführen, ohne auf das private Helm-Repository zugreifen zu müssen.
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
+
+[Helm][helm] ist ein Paket-Manager für Kubernetes. Helm verwendet ein [Diagramm][helm-chart]format, um Abhängigkeiten zu packen. Helm-Diagramme werden in einem Repository gespeichert, das öffentlich oder privat sein kann. Azure Dev Spaces ruft Helm-Diagramme nur bei der Ausführung Ihrer Anwendung aus öffentlichen Repositorys ab. In Fällen, in denen das Helm-Repository privat ist oder Azure Dev Spaces nicht darauf zugreifen kann, können Sie ein Diagramm aus diesem Repository direkt zu Ihrer Anwendung hinzufügen. Wenn Sie das Diagramm direkt hinzufügen, kann Azure Dev Spaces Ihre Anwendung ausführen, ohne auf das private Helm-Repository zugreifen zu müssen.
 
 ## <a name="add-the-private-helm-repository-to-your-local-machine"></a>Hinzufügen des privaten Helm-Repositorys zu Ihrem lokalen Computer
 
@@ -35,8 +35,11 @@ helm repo update
 Navigieren Sie zum Verzeichnis Ihres Projekts, und führen Sie `azds prep` aus.
 
 ```cmd
-azds prep --public
+azds prep --enable-ingress
 ```
+
+> [!TIP]
+> Der Befehl `prep` versucht, [ein Dockerfile und Helm-Chart](../how-dev-spaces-works-prep.md#prepare-your-code) für Ihr Projekt zu generieren. Azure Dev Spaces nutzt diese Dateien zum Erstellen und Ausführen Ihres Codes. Sie können sie jedoch ändern, wenn Sie anpassen möchten, wie das Projekt erstellt und ausgeführt wird.
 
 Erstellen Sie eine Datei [requirements.yaml][helm-requirements] mit Ihrem Diagramm im Diagrammverzeichnis Ihrer Anwendung. Wenn Ihre Anwendung beispielsweise *app1* heißt, würden Sie *charts/app1/requirements.yaml* erstellen.
 
@@ -79,8 +82,8 @@ Service 'app1' port 80 (http) is available at http://localhost:54256
 Weitere Informationen zu [Helm und seine Funktionsweise][helm].
 
 [helm]: https://docs.helm.sh
-[helm-chart]: https://helm.sh/docs/developing_charts/
-[helm-dependency-update]: https://helm.sh/docs/helm/#helm-dependency-update
-[helm-repo-add]: https://helm.sh/docs/helm/#helm-repo-add
-[helm-repo-update]: https://helm.sh/docs/helm/#helm-repo-update
-[helm-requirements]: https://helm.sh/docs/developing_charts/#chart-dependencies
+[helm-chart]: https://helm.sh/docs/topics/charts/
+[helm-dependency-update]: https://helm.sh/docs/topics/charts/#managing-dependencies-with-the-dependencies-field
+[helm-repo-add]: https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
+[helm-repo-update]: https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
+[helm-requirements]: https://helm.sh/docs/topics/charts/#chart-dependencies

@@ -1,20 +1,15 @@
 ---
 title: Erstellen von Azure Service Bus-Warteschlangen und -Themen | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Service Bus-Warteschlangen und -Themen mit mehreren Nachrichtenbrokern partitioniert werden.
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 02/06/2019
-ms.author: aschhab
-ms.openlocfilehash: 699581c7ccd3f36da0cd0c1def623607b7c0a13b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/23/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9c500a69f853b11437a0dcaa48213fe3a84da53b
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589679"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796634"
 ---
 # <a name="partitioned-queues-and-topics"></a>Partitionierte Warteschlangen und Themen
 
@@ -25,13 +20,18 @@ Für Azure Service Bus werden mehrere Nachrichtenbroker verwendet, um Nachrichte
  
 Es ist nicht möglich, die Partitionierungsoption für eine vorhandene Warteschlange oder ein Thema zu ändern. Sie können die Option nur bei der Erstellung der Entität festlegen.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Jede partitionierte Warteschlange bzw. jedes Thema besteht aus mehreren Partitionen. Jede Partition wird in einem anderen Nachrichtenspeicher gespeichert und von einem anderen Nachrichtenbroker verarbeitet. Wenn eine Nachricht an eine partitionierte Warteschlange bzw. ein partitioniertes Thema gesendet wird, weist Service Bus die Nachricht einem der Partitionen zu. Service Bus nimmt die Auswahl willkürlich oder mithilfe eines Partitionsschlüssels vor, den der Absender angeben kann.
 
 Wenn ein Client eine Nachricht von einer partitionierten Warteschlange oder von einem Abonnement eines partitionierten Themas empfangen möchte, fragt Service Bus alle Partitionen auf Nachrichten ab. Anschließend wird die erste Nachricht zurückgegeben, die von einem der Nachrichtenspeicher an den Empfänger gesendet wird. Service Bus speichert die anderen Nachrichten zwischen und gibt sie zurück, wenn zusätzliche Empfangsanforderungen eingehen. Ein empfangender Client ist sich der Partitionierung nicht bewusst. Das Verhalten einer partitionierten Warteschlange oder eines Themas (z.B. „read“, „complete“, „defer“, „deadletter“, „prefetching“) dem Client gegenüber ist mit dem Verhalten einer normalen Entität identisch.
 
+Der Peekvorgang auf einer nicht partitionierten Entität gibt immer die älteste Nachricht zurück. Dies ist jedoch auf einer partitionierten Entität nicht der Fall. Stattdessen wird hier die älteste Nachricht in einer der Partitionen zurückgegeben, deren Nachrichtenbroker zuerst reagiert hat. Es gibt keine Garantie, dass es sich bei der zurückgegebenen Nachricht um die älteste auf allen Partitionen handelt. 
+
 Es fallen keine zusätzlichen Kosten an, wenn eine Nachricht an eine partitionierte Warteschlange oder ein Thema gesendet oder von dort empfangen wird.
+
+> [!NOTE]
+> Der Peekvorgang gibt die älteste Nachricht aus der Partition basierend auf ihrer Sequenznummer zurück. Bei partitionierten Entitäten wird die Sequenznummer relativ zur Partition ausgegeben. Weitere Informationen finden Sie unter [Nachrichtensequenzierung und Zeitstempel](../service-bus-messaging/message-sequencing.md).
 
 ## <a name="enable-partitioning"></a>Aktivieren der Partitionierung
 
@@ -47,7 +47,7 @@ In einem Namespace des Premium-Tarifs werden Partitionierungsentitäten nicht un
 
 ### <a name="create-a-partitioned-entity"></a>Erstellen einer partitionierten Entität
 
-Es gibt mehrere Möglichkeiten, eine partitionierte Warteschlange oder ein partitioniertes Thema zu erstellen. Wenn Sie die Warteschlange oder das Thema über Ihre Anwendung erstellen, können Sie die Partitionierung für die Warteschlange oder das Thema aktivieren, indem Sie die [QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning]- bzw. [TopicDescription.EnablePartitioning-Eigenschaft][TopicDescription.EnablePartitioning] auf **TRUE** festlegen. Diese Eigenschaften müssen zum Zeitpunkt der Erstellung der Warteschlange oder des Themas festgelegt werden und sind nur in der älteren [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)-Bibliothek verfügbar. Wie bereits erwähnt, ist es nicht möglich, diese Eigenschaften für eine vorhandene Warteschlange oder ein Thema zu ändern. Beispiel:
+Es gibt mehrere Möglichkeiten, eine partitionierte Warteschlange oder ein partitioniertes Thema zu erstellen. Wenn Sie die Warteschlange oder das Thema über Ihre Anwendung erstellen, können Sie die Partitionierung für die Warteschlange oder das Thema aktivieren, indem Sie die [QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning]- bzw. [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning]-Eigenschaft auf **TRUE** festlegen. Diese Eigenschaften müssen zum Zeitpunkt der Erstellung der Warteschlange oder des Themas festgelegt werden und sind nur in der älteren [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)-Bibliothek verfügbar. Wie bereits erwähnt, ist es nicht möglich, diese Eigenschaften für eine vorhandene Warteschlange oder ein Thema zu ändern. Beispiel:
 
 ```csharp
 // Create partitioned topic
@@ -95,8 +95,8 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 {
     Message msg = new Message("This is a message");
     msg.PartitionKey = "myPartitionKey";
-    messageSender.SendAsync(msg); 
-    ts.CompleteAsync();
+    await messageSender.SendAsync(msg); 
+    await ts.CompleteAsync();
 }
 committableTransaction.Commit();
 ```
@@ -115,8 +115,8 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 {
     Message msg = new Message("This is a message");
     msg.SessionId = "mySession";
-    messageSender.SendAsync(msg); 
-    ts.CompleteAsync();
+    await messageSender.SendAsync(msg); 
+    await ts.CompleteAsync();
 }
 committableTransaction.Commit();
 ```
@@ -128,7 +128,7 @@ Service Bus unterstützt die automatische Nachrichtenweiterleitung von und zwisc
 ## <a name="considerations-and-guidelines"></a>Aspekte und Richtlinien
 * **Features für hohe Konsistenz**: Wenn eine Entität Features wie Sitzungen, Duplikaterkennung oder die explizite Steuerung eines Partitionierungsschlüssels verwendet, werden die Messagingvorgänge immer an bestimmte Partitionen geleitet. Wenn für eine Partition hoher Datenverkehr auftritt oder der zugrunde liegende Speicher fehlerhaft ist, schlagen diese Vorgänge fehl, und die Verfügbarkeit wird reduziert. Insgesamt ist die Konsistenz trotzdem deutlich höher als bei nicht partitionierten Entitäten: Nur für eine Teilmenge des Datenverkehrs treten Probleme auf, und nicht für den gesamten Datenverkehr. Weitere Informationen hierzu finden Sie in dieser [Erläuterung von Verfügbarkeit und Konsistenz](../event-hubs/event-hubs-availability-and-consistency.md).
 * **Verwaltung**: Vorgänge wie das Erstellen, Aktualisieren und Löschen müssen für alle Partitionen der Entität durchgeführt werden. Wenn eine Partition fehlerhaft ist, kann dies zu Fehlern bei diesen Vorgängen führen. Für den Get-Vorgang müssen Informationen aus allen Partitionen aggregiert werden, z. B. die Nachrichtenanzahl. Wenn eine Partition einen Fehler aufweist, wird der Verfügbarkeitsstatus der Entität als „Eingeschränkt“ gemeldet.
-* **Nachrichtenszenarios mit geringem Volumen**: Für diese Szenarios, vor allem bei Verwendung des HTTP-Protokolls, müssen Sie ggf. mehrere Empfangsvorgänge durchführen, um alle Nachrichten zu erhalten. Für Empfangsanforderungen führt das Front-End den Empfangsvorgang für alle Partitionen durch und speichert alle empfangenen Antworten zwischen. Eine nachfolgende Empfangsanforderung derselben Verbindung profitiert von dieser Zwischenspeicherung, und die Latenzen für den Empfang sind niedriger. Wenn Sie über mehrere Verbindungen verfügen oder HTTP verwenden, wird für jede Anforderung eine neue Verbindung hergestellt. Es besteht also keine Garantie, dass sie auf demselben Knoten eintrifft. Wenn alle vorhandenen Nachrichten gesperrt sind und auf einem anderen Front-End zwischengespeichert werden, gibt der Empfangsvorgang **NULL** zurück. Nachrichten laufen nach einer gewissen Zeit ab und können von Ihnen dann erneut empfangen werden. Hierfür wird HTTP-Keep-Alive empfohlen.
+* **Nachrichtenszenarios mit geringem Volumen**: Für diese Szenarios, vor allem bei Verwendung des HTTP-Protokolls, müssen Sie ggf. mehrere Empfangsvorgänge durchführen, um alle Nachrichten zu erhalten. Für Empfangsanforderungen führt das Front-End den Empfangsvorgang für alle Partitionen durch und speichert alle empfangenen Antworten zwischen. Eine nachfolgende Empfangsanforderung derselben Verbindung profitiert von dieser Zwischenspeicherung, und die Latenzen für den Empfang sind niedriger. Wenn Sie über mehrere Verbindungen verfügen oder HTTP verwenden, wird für jede Anforderung eine neue Verbindung hergestellt. Es besteht also keine Garantie, dass sie auf demselben Knoten eintrifft. Wenn alle vorhandenen Nachrichten gesperrt sind und auf einem anderen Front-End zwischengespeichert werden, gibt der Empfangsvorgang **NULL** zurück. Nachrichten laufen nach einer gewissen Zeit ab und können von Ihnen dann erneut empfangen werden. Hierfür wird HTTP-Keep-Alive empfohlen. Wenn Partitionierung in Szenarien mit geringem Volumen verwendet wird, können Empfangsvorgänge länger als erwartet dauern. Daher wird empfohlen, in diesen Szenarien keine Partitionierung zu verwenden. Löschen Sie alle vorhandenen partitionierten Entitäten, und erstellen Sie sie mit deaktivierter Partitionierung neu.
 * **Durchsuchen/Einsehen von Nachrichten**: Nur in der älteren [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)-Bibliothek verfügbar. [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) gibt nicht immer die Anzahl von Nachrichten zurück, die in der [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount)-Eigenschaft angegeben sind. Für dieses Verhalten gibt es zwei häufige Ursachen. Ein Grund ist, dass die aggregierte Größe der Sammlung mit Nachrichten die maximale Größe von 256 KB übersteigt. Ein weiterer Grund ist: Wenn für die Warteschlange oder das Thema die [EnablePartitioning-Eigenschaft](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning) auf **TRUE** festgelegt ist, verfügt eine Partition ggf. nicht über genügend Nachrichten, um die angeforderte Anzahl von Nachrichten abzuarbeiten. Wenn eine Anwendung eine bestimmte Anzahl von Nachrichten empfangen möchte, sollte sie im Allgemeinen mehrfach [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) aufrufen, bis die benötigte Anzahl von Nachrichten erreicht ist oder keine einzusehenden Nachrichten mehr vorhanden sind. Weitere Informationen und Codebeispiele finden Sie in der API-Dokumentation unter [QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) oder [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch).
 
 ## <a name="latest-added-features"></a>Neueste Funktionen
@@ -153,4 +153,4 @@ Informieren Sie sich im [AMQP 1.0-Protokollhandbuch](service-bus-amqp-protocol-g
 [QueueDescription.EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
 [TopicDescription.EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablepartitioning
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto
-[AMQP 1.0 support for Service Bus partitioned queues and topics]: service-bus-partitioned-queues-and-topics-amqp-overview.md
+[AMQP 1.0 support for Service Bus partitioned queues and topics]: ./service-bus-amqp-protocol-guide.md

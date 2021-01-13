@@ -1,25 +1,25 @@
 ---
-title: Widerrufen eines Freigabeabonnements in Azure Data Share (Vorschauversion)
-description: Aufheben einer Abonnementfreigabe
-author: joannapea
-ms.author: joanpo
+title: Widerrufen eines Freigabeabonnements in Azure Data Share
+description: Hier erfahren Sie, wie Sie ein Freigabeabonnement von einem Empfänger mithilfe von Azure Data Share widerrufen.
+author: jifems
+ms.author: jife
 ms.service: data-share
-ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 08a48202c26df1c24216572b1a52ac45506c6229
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.topic: how-to
+ms.date: 07/30/2020
+ms.openlocfilehash: 102a0099c95073793ba6a1a85f518c7539327bf3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326539"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87511852"
 ---
-# <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share-preview"></a>Widerrufen eines Freigabeabonnements eines Consumers in Azure Data Share (Vorschauversion)
+# <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share"></a>Widerrufen eines Freigabeabonnements eines Consumers in Azure Data Share
 
-In diesem Artikel wird erläutert, wie ein Freigabeabonnement für einen oder mehrere Consumer über Azure Data Share (Vorschauversion) widerrufen wird. Hierdurch wird der Consumer daran gehindert, weitere Momentaufnahmen auszulösen. Wenn der Consumer noch keine Momentaufnahme ausgelöst hat, werden die Daten nach dem Aufheben des Freigabeabonnements nicht mehr empfangen. Wenn zuvor eine Momentaufnahme ausgelöst wurde, verbleiben die letzten Daten im Konto des Consumers.
+In diesem Artikel wird erläutert, wie ein Freigabeabonnement für einen oder mehrere Consumer über Azure Data Share widerrufen wird. Hierdurch wird der Consumer daran gehindert, weitere Momentaufnahmen auszulösen. Wenn der Consumer noch keine Momentaufnahme ausgelöst hat, werden die Daten nach dem Aufheben des Freigabeabonnements nicht mehr empfangen. Wenn zuvor eine Momentaufnahme ausgelöst wurde, verbleiben die letzten Daten im Konto des Consumers.
 
-## <a name="navigate-to-a-sent-data-share"></a>Navigieren zu einer gesendeten Datenfreigabe
+## <a name="navigate-to-a-sent-data-share"></a>Navigation zu einer gesendeten Datenfreigabe
 
-Navigieren Sie in Azure Data Share (Vorschauversion) zur gesendeten Freigabe, und klicken Sie auf die Registerkarte **Freigabeabonnements**.
+Navigieren Sie in Azure Data Share zur gesendeten Freigabe, und wählen Sie die Registerkarte **Freigabeabonnements** aus.
 
 ![Aufheben eines Freigabeabonnements](./media/how-to/how-to-revoke-share-subscription/revoke-share-subscription.png) 
 

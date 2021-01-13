@@ -1,25 +1,25 @@
 ---
-title: Kopieren von Daten aus Netezza mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Netezza mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus Netezza mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 5d0c09c9cff2fefcc2eee20b9fd2f93dd375115f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7f98fee687fca6a2b6e746b24ca582671e28391f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090015"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84216392"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopieren von Daten aus Netezza mithilfe von Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Netezza zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -57,14 +57,14 @@ Folgende Eigenschaften werden für den mit Netezza verknüpften Dienst unterstü
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **Netezza** festgelegt werden. | Ja |
-| connectionString | Eine ODBC-Verbindungszeichenfolge zum Herstellen einer Verbindung mit Netezza. <br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch das Kennwort in Azure Key Vault speichern und die `pwd`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| connectionString | Eine ODBC-Verbindungszeichenfolge zum Herstellen einer Verbindung mit Netezza. <br/>Sie können auch das Kennwort in Azure Key Vault speichern und die `pwd`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 Eine typische Verbindungszeichenfolge ist `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. Die folgende Tabelle beschreibt weitere Eigenschaften, die Sie festlegen können:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| SecurityLevel | Der Sicherheitsgrad (SSL/TLS), den der Treiber für die Verbindung mit dem Datenspeicher verwendet. Beispiel: `SecurityLevel=preferredSecured`. Folgende Werte werden unterstützt:<br/>- **Nur ungesichert** (**onlyUnSecured**): Der Treiber verwendet SSL nicht.<br/>- **Bevorzugt ungesichert (preferredUnSecured) (Standard)** : Wenn der Server die Wahl zulässt, verwendet der Treiber SSL nicht. <br/>- **Bevorzugt gesichert (preferredSecured)** : Wenn der Server die Wahl zulässt, verwendet der Treiber SSL. <br/>- **Nur gesichert (onlySecured)** : Der Treiber stellt nur dann eine Verbindung her, wenn eine SSL-Verbindung verfügbar ist. | Nein |
+| SecurityLevel | Der Sicherheitsgrad, den der Treiber für die Verbindung mit dem Datenspeicher verwendet. Der Treiber unterstützt SSL-Verbindungen mit unidirektionaler Authentifizierung unter Verwendung der SSL-Version 3. <br>Beispiel: `SecurityLevel=preferredSecured`. Diese Werte werden unterstützt:<br/>- **Nur ungesichert** (**onlyUnSecured**): Der Treiber verwendet SSL nicht.<br/>- **Bevorzugt ungesichert (preferredUnSecured) (Standard)** : Wenn der Server die Wahl zulässt, verwendet der Treiber SSL nicht. <br/>- **Bevorzugt gesichert (preferredSecured)** : Wenn der Server die Wahl zulässt, verwendet der Treiber SSL. <br/>- **Nur gesichert (onlySecured)** : Der Treiber stellt nur dann eine Verbindung her, wenn eine SSL-Verbindung verfügbar ist. | Nein |
 | CaCertFile | Der vollständige Pfad zum vom Server verwendeten SSL-Zertifikat. Beispiel: `CaCertFile=<cert path>;`| Ja, wenn SSL aktiviert ist |
 
 **Beispiel**
@@ -75,10 +75,7 @@ Eine typische Verbindungszeichenfolge ist `Server=<server>;Port=<port>;Database=
     "properties": {
         "type": "Netezza",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
-            }
+            "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -96,10 +93,7 @@ Eine typische Verbindungszeichenfolge ist `Server=<server>;Port=<port>;Database=
     "properties": {
         "type": "Netezza",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;"
-            },
+            "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;",
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -129,7 +123,7 @@ Legen Sie zum Kopieren von Daten aus Netezza die **type**-Eigenschaft des Datase
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **NetezzaTable** | Ja |
 | schema | Name des Schemas. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
-| table | Name der Tabelle. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
+| table | Der Name der Tabelle. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
 | tableName | Name der Tabelle mit Schema. Diese Eigenschaft wird aus Gründen der Abwärtskompatibilität weiterhin unterstützt. Verwenden Sie `schema` und `table` für eine neue Workload. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
@@ -164,8 +158,8 @@ Legen Sie zum Kopieren von Daten aus Netezza den **Quelltyp** in der Kopieraktiv
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **NetezzaSource** festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"` | Nein (wenn „tableName“ im Dataset angegeben ist) |
-| partitionOptions | Gibt die Datenpartitionierungsoptionen an, mit denen Daten aus Netezza geladen werden. <br>Zulässige Werte sind: **None** (Standardwert), **DataSlice** und **DynamicRange**.<br>Wenn eine Partitionsoption aktiviert ist (d.h. nicht `None`), wird der Grad an Parallelität zum gleichzeitigen Laden von Daten aus einer Netezza-Datenbank durch die Einstellung [`parallelCopies`](copy-activity-performance.md#parallel-copy) für die Kopieraktivität gesteuert. | Nein |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"` | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| partitionOptions | Gibt die Datenpartitionierungsoptionen an, mit denen Daten aus Netezza geladen werden. <br>Zulässige Werte sind: **None** (Standardwert), **DataSlice** und **DynamicRange**.<br>Wenn eine Partitionsoption aktiviert ist (d.h. nicht `None`), wird der Grad an Parallelität zum gleichzeitigen Laden von Daten aus einer Netezza-Datenbank durch die Einstellung [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) für die Kopieraktivität gesteuert. | Nein |
 | partitionSettings | Geben Sie die Gruppe der Einstellungen für die Datenpartitionierung an. <br>Verwenden Sie diese Option, wenn die Partitionsoption nicht `None` lautet. | Nein |
 | partitionColumnName | Geben Sie den Namen der Quellspalte als **Integer** an, der von der Bereichspartitionierung für den parallelen Kopiervorgang verwendet wird. Ohne Angabe wird der Primärschlüssel der Tabelle automatisch erkannt und als Partitionsspalte verwendet. <br>Verwenden Sie diese Option, wenn die Partitionsoption `DynamicRange` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie `?AdfRangePartitionColumnName` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus Netezza](#parallel-copy-from-netezza). | Nein |
 | partitionUpperBound | Der Höchstwert der Partitionsspalte zum Herauskopieren von Daten. <br>Verwenden Sie ihn, wenn die Partitionsoption `DynamicRange` lautet. Wenn Sie Quelldaten per Abfrage abrufen, integrieren Sie `?AdfRangePartitionUpbound` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus Netezza](#parallel-copy-from-netezza). | Nein |
@@ -209,7 +203,7 @@ Der Data Factory-Netezza-Connector verfügt über eine integrierte Datenpartitio
 
 ![Screenshot der Partitionierungsoptionen](./media/connector-netezza/connector-netezza-partition-options.png)
 
-Wenn Sie partitioniertes Kopieren aktivieren, führt Data Factory parallele Abfragen für Ihre Netezza-Quelle aus, um Daten anhand von Partitionen zu laden. Der Parallelitätsgrad wird über die Einstellung [`parallelCopies`](copy-activity-performance.md#parallel-copy) der Kopieraktivität gesteuert. Wenn Sie zum Beispiel `parallelCopies` auf vier festlegen, werden von Data Factory vier Abfragen gleichzeitig generiert und ausgeführt. Diese Abfragen basieren auf den von Ihnen angegebenen Partitionsoptionen und -einstellungen, und jede Abfrage ruft einen Teil der Daten aus Ihrer Netezza-Datenbank ab.
+Wenn Sie partitioniertes Kopieren aktivieren, führt Data Factory parallele Abfragen für Ihre Netezza-Quelle aus, um Daten anhand von Partitionen zu laden. Der Parallelitätsgrad wird über die Einstellung [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) der Kopieraktivität gesteuert. Wenn Sie zum Beispiel `parallelCopies` auf vier festlegen, werden von Data Factory vier Abfragen gleichzeitig generiert und ausgeführt. Diese Abfragen basieren auf den von Ihnen angegebenen Partitionsoptionen und -einstellungen, und jede Abfrage ruft einen Teil der Daten aus Ihrer Netezza-Datenbank ab.
 
 Es wird empfohlen, das parallele Kopieren mit Datenpartitionierung zu aktivieren, vor allem, wenn Sie große Datenmengen aus Ihrer Netezza-Datenbank laden. Im Anschluss finden Sie empfohlene Konfigurationen für verschiedene Szenarien. Beim Kopieren von Daten in einen dateibasierten Datenspeicher wird empfohlen, mehrere Dateien in einen Ordner zu schreiben. (Geben Sie nur den Ordnernamen an.) In diesem Fall ist die Leistung besser als beim Schreiben in eine einzelne Datei.
 

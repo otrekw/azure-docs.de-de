@@ -1,33 +1,29 @@
 ---
-title: Azure-SAML-Protokoll für einmaliges Abmelden | Microsoft Docs
+title: SAML-Protokoll für einmaliges Abmelden in Azure
 description: In diesem Artikel wird das SAML-Protokoll für einmaliges Abmelden in Azure Active Directory beschrieben.
 services: active-directory
-documentationcenter: .net
-author: rwike77
+author: kenwith
 manager: CelesteDG
-editor: ''
-ms.assetid: 0e4aa75d-d1ad-4bde-a94c-d8a41fb0abe6
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/19/2017
-ms.author: ryanwi
+ms.author: kenwith
 ms.custom: aaddev
-ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66c509b1b901889241d6837611a2c373750fdb3a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.reviewer: paulgarn
+ms.openlocfilehash: 2064ab7e759798d8934facb8d293e8ac60ec6c82
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834794"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703414"
 ---
 # <a name="single-sign-out-saml-protocol"></a>SAML-Protokoll für einmaliges Abmelden
 
 Azure Active Directory (Azure AD) unterstützt das SAML 2.0-Webbrowserprofil für einmaliges Abmelden. Damit die einmalige Abmeldung ordnungsgemäß funktioniert, muss die **LogoutURL** der Anwendung bei der Anwendungsregistrierung explizit in Azure AD registriert worden sein. Azure AD verwendet die LogoutURL zur Umleitung von Benutzern nach deren Abmeldung.
+
+Azure AD unterstützt die Umleitungsbindung (HTTP GET), aber nicht die HTTP POST-Bindung.
 
 In der folgenden Abbildung ist der Workflow des Azure AD-Prozesses für das einmalige Abmelden dargestellt.
 
@@ -48,7 +44,7 @@ Für das an Azure AD gesendete `LogoutRequest` -Element sind die folgenden Attri
 
 * `ID`: Dieses Attribut dient zum Identifizieren der Abmeldeanforderung. Der Wert von `ID` darf nicht mit einer Zahl beginnen. Die übliche Vorgehensweise besteht darin, **id** an die Zeichenfolgendarstellung einer GUID anzufügen.
 * `Version`: Legen Sie den Wert dieses Elements auf **2.0** fest. Dieser Wert ist erforderlich.
-* `IssueInstant`: Bei diesem Attribut handelt es sich um eine `DateTime`-Zeichenfolge mit einem UTC-Wert (Coordinated Universal Time) und [Roundtripformat („o“)](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD erwartet einen Wert dieses Typs, aber der Wert wird nicht erzwungen.
+* `IssueInstant`: Bei diesem Attribut handelt es sich um eine `DateTime`-Zeichenfolge mit einem UTC-Wert (Coordinated Universal Time) und [Roundtripformat („o“)](/dotnet/standard/base-types/standard-date-and-time-format-strings). Azure AD erwartet einen Wert dieses Typs, aber der Wert wird nicht erzwungen.
 
 ### <a name="issuer"></a>Issuer (Aussteller)
 Das `Issuer`-Element in einem `LogoutRequest`-Element muss mit einem der **ServicePrincipalNames**-Werte im Clouddienst von Azure AD exakt übereinstimmen. Normalerweise ist es auf den **App-ID-URI** festgelegt, der bei der Anwendungsregistrierung angegeben wird.

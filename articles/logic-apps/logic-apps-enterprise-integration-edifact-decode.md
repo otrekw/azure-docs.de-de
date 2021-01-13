@@ -1,21 +1,19 @@
 ---
-title: Decodieren von EDIFACT-Nachrichten – Azure Logic Apps | Microsoft-Dokumentation
+title: Decodierung von EDIFACT-Nachrichten
 description: Überprüfen von EDI und Generieren von Bestätigungen mit dem EDIFACT-Nachrichtendecoder für Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.assetid: 0e61501d-21a2-4419-8c6c-88724d346e81
-ms.date: 01/27/2017
-ms.openlocfilehash: ccad6eab68fff0891ba287a076692f9437495a4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 04/22/2020
+ms.openlocfilehash: b36641677dbf36402c7f578b9b1887c52f441afd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696188"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000010"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Decodieren von EDIFACT-Nachrichten für Azure Logic Apps mit dem Enterprise Integration Pack
 
@@ -31,6 +29,10 @@ Sie benötigen Folgendes:
 * Eine bereits in Ihrem Integrationskonto definierte [EDIFACT-Vereinbarung](logic-apps-enterprise-integration-edifact.md).
 
 ## <a name="decode-edifact-messages"></a>Decodierung von EDIFACT-Nachrichten
+
+> [!IMPORTANT]
+> Der EDIFACT-Connector unterstützt nur UTF-8-Zeichen.
+> Wenn Ihre Ausgabe unerwartete Zeichen enthält, überprüfen Sie, ob Ihre EDIFACT-Nachrichten den UTF-8-Zeichensatz verwenden. 
 
 1. [Erstellen einer Logik-App](quickstart-create-first-logic-app-workflow.md)
 
@@ -82,13 +84,13 @@ Der Connector „EDIFACT-Nachricht decodieren“ führt folgende Aufgaben aus:
   * Überprüfen der Transaktionssatz-Kontrollnummer in Bezug auf andere Transaktionssatz-Kontrollnummern in dieser Gruppe
 * Trennen des Austauschs in Transaktionssätze oder Beibehalten des gesamten Austauschs:
   * Trennen des Austauschs in Transaktionssätze – Transaktionssätze bei Fehler anhalten: Trennt den Austausch in Transaktionssätze und analysiert die einzelnen Transaktionssätze. 
-  Die Aktion „X12 decodieren“ gibt nur die Transaktionssätze, die die Überprüfung nicht bestehen, in `badMessages` und die restlichen Transaktionssätze in `goodMessages` aus.
+  Die EDIFACT-Decodierungsaktion gibt nur die Transaktionssätze, die die Überprüfung nicht bestehen, in `badMessages` und die restlichen Transaktionssätze in `goodMessages` aus.
   * Trennen des Austauschs in Transaktionssätze – Austausch bei Fehler anhalten: Trennt den Austausch in Transaktionssätze und analysiert die einzelnen Transaktionssätze. 
-  Wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht, gibt die Aktion „X12 decodieren“ alle Transaktionssätze in diesem Austausch in `badMessages` aus.
+  Wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht, gibt die EDIFACT-Decodierungsaktion alle Transaktionssätze in diesem Austausch in `badMessages` aus.
   * Austausch beibehalten – Transaktionssätze bei Fehler anhalten: Behält den Austausch bei und verarbeitet den gesamten Batchaustausch. 
-  Die Aktion „X12 decodieren“ gibt nur die Transaktionssätze, die die Überprüfung nicht bestehen, in `badMessages` und die restlichen Transaktionssätze in `goodMessages` aus.
+  Die EDIFACT-Decodierungsaktion gibt nur die Transaktionssätze, die die Überprüfung nicht bestehen, in `badMessages` und die restlichen Transaktionssätze in `goodMessages` aus.
   * Austausch beibehalten – Austausch bei Fehler anhalten: Behält den Austausch bei und verarbeitet den gesamten Batchaustausch. 
-  Wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht, gibt die Aktion „X12 decodieren“ alle Transaktionssätze in diesem Austausch in `badMessages` aus.
+  Wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht, gibt die EDIFACT-Decodierungsaktion alle Transaktionssätze in diesem Austausch in `badMessages` aus.
 * Generieren einer technischen Bestätigung (Kontrollbestätigung) und/oder einer Funktionsbestätigung (sofern konfiguriert)
   * Eine technische Bestätigung (Kontrollbestätigung) meldet die Ergebnisse einer Syntaxüberprüfung des vollständigen empfangenen Austauschs.
   * Eine Funktionsbestätigung bestätigt das Akzeptieren oder Ablehnen eines empfangenen Austauschs oder einer Gruppe.
@@ -97,5 +99,5 @@ Der Connector „EDIFACT-Nachricht decodieren“ führt folgende Aufgaben aus:
 Informationen zum Anzeigen der Details zu Swagger für den EDIFACT-Connector finden Sie unter [EDIFACT](/connectors/edifact/).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack") 
+[Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Erfahren Sie mehr zum Enterprise Integration Pack.") 
 

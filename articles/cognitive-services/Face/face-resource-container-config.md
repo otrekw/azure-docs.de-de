@@ -1,22 +1,22 @@
 ---
-title: Konfigurieren von Containern – Gesichtserkennungs-API
+title: Konfigurieren von Containern – Gesichtserkennung
 titleSuffix: Azure Cognitive Services
-description: Konfigurationseinstellungen für Container
+description: Die Laufzeitumgebung für Container für die Gesichtserkennung wird über die Argumente des Befehls `docker run` konfiguriert. Es gibt sowohl erforderliche als auch optionale Einstellungen.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.author: dapine
-ms.openlocfilehash: a07f088f7f5699a2698c0ea8fb0e853b3d287572
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 2f608843e27b79d02697df8e2a7f2aba6695e10a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101953"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80878424"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurieren von Docker-Containern für die Gesichtserkennung
 
@@ -51,9 +51,9 @@ Diese Einstellung finden Sie hier:
 
 Denken Sie daran, die _Gesichtserkennungs_-Weiterleitung dem Endpunkt-URI anzufügen, wie im folgenden Beispiel dargestellt. 
 
-|Erforderlich| NAME | Datentyp | BESCHREIBUNG |
+|Erforderlich| Name | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
+|Ja| `Billing` | String | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](face-how-to-install-containers.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
 <!-- specific to face only -->
 
@@ -61,7 +61,7 @@ Denken Sie daran, die _Gesichtserkennungs_-Weiterleitung dem Endpunkt-URI anzuf�
 
 Die Konfigurationseinstellungen im Abschnitt `CloudAI` umfassen containerspezifische Optionen für Ihren Container. Die folgenden Einstellungen und Objekte werden beim Container für die Gesichtserkennung im Abschnitt `CloudAI` unterstützt:
 
-| NAME | Datentyp | BESCHREIBUNG |
+| Name | Datentyp | BESCHREIBUNG |
 |------|-----------|-------------|
 | `Storage` | Object | Das vom Container für die Gesichtserkennung verwendete Speicherszenario. Weitere Informationen zu Speicherszenarien und den zugehörigen Einstellungen für das `Storage`-Objekt finden Sie unter [Einstellungen für das Speicherszenario](#storage-scenario-settings). |
 
@@ -80,11 +80,11 @@ Der Container für die Gesichtserkennung kann Blob-, Cache-, Meta- und Warteschl
 
 Die Speicherszenarien und die zugehörigen Konfigurationseinstellungen werden vom `Storage`-Objekt unter dem Konfigurationsabschnitt `CloudAI` verwaltet. Die folgenden Konfigurationseinstellungen sind im `Storage`-Objekt verfügbar:
 
-| NAME | Datentyp | BESCHREIBUNG |
+| Name | Datentyp | BESCHREIBUNG |
 |------|-----------|-------------|
-| `StorageScenario` | Zeichenfolge | Das vom Container unterstützte Speicherszenario. Folgende Werte sind verfügbar:<br/>`Memory`: Standardwert. Der Container verwendet nicht persistenten und nicht verteilten Speicher im Arbeitsspeicher für die temporäre Nutzung durch einen einzelnen Knoten. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container zerstört.<br/>`Azure`: Der Container verwendet Azure-Ressourcen für die Speicherung. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container beibehalten.|
-| `ConnectionStringOfAzureStorage` | Zeichenfolge | Die Verbindungszeichenfolge für die Azure Storage-Ressource, die vom Container verwendet wird.<br/>Diese Einstellung gilt nur, wenn `Azure` für die Konfigurationseinstellung `StorageScenario` angegeben wurde. |
-| `ConnectionStringOfCosmosMongo` | Zeichenfolge | Die MongoDB-Verbindungszeichenfolge für die Azure Cosmos DB-Ressource, die vom Container verwendet wird.<br/>Diese Einstellung gilt nur, wenn `Azure` für die Konfigurationseinstellung `StorageScenario` angegeben wurde. |
+| `StorageScenario` | String | Das vom Container unterstützte Speicherszenario. Folgende Werte sind verfügbar:<br/>`Memory`: Standardwert. Der Container verwendet nicht persistenten und nicht verteilten Speicher im Arbeitsspeicher für die temporäre Nutzung durch einen einzelnen Knoten. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container zerstört.<br/>`Azure`: Der Container verwendet Azure-Ressourcen für die Speicherung. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container beibehalten.|
+| `ConnectionStringOfAzureStorage` | String | Die Verbindungszeichenfolge für die Azure Storage-Ressource, die vom Container verwendet wird.<br/>Diese Einstellung gilt nur, wenn `Azure` für die Konfigurationseinstellung `StorageScenario` angegeben wurde. |
+| `ConnectionStringOfCosmosMongo` | String | Die MongoDB-Verbindungszeichenfolge für die Azure Cosmos DB-Ressource, die vom Container verwendet wird.<br/>Diese Einstellung gilt nur, wenn `Azure` für die Konfigurationseinstellung `StorageScenario` angegeben wurde. |
 
 Der folgende Befehl gibt beispielsweise das Azure-Speicherszenario an und stellt Beispielverbindungszeichenfolgen für die Azure Storage- und Cosmos DB-Ressourcen bereit, die zum Speichern von Daten für Container für die Gesichtserkennung verwendet werden.
 
@@ -122,10 +122,10 @@ Die Container für die Gesichtserkennung verwenden keine Eingabe- oder Ausgabeei
 
 Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Betriebssystem des Hosts. Darüber hinaus ist es eventuell nicht möglich, auf den Bereitstellungspunkt auf dem [Hostcomputer](face-how-to-install-containers.md#the-host-computer) zuzugreifen, wenn ein Konflikt zwischen den vom Docker-Dienstkonto verwendeten Berechtigungen und den für den Bereitstellungspunkt auf dem Host verwendeten Berechtigungen besteht. 
 
-|Optional| NAME | Datentyp | BESCHREIBUNG |
+|Optional| Name | Datentyp | BESCHREIBUNG |
 |-------|------|-----------|-------------|
-|Nicht zulässig| `Input` | Zeichenfolge | Wird von Containern für die Gesichtserkennung nicht verwendet.|
-|Optional| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nicht zulässig| `Input` | String | Wird von Containern für die Gesichtserkennung nicht verwendet.|
+|Optional| `Output` | String | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“ 
 

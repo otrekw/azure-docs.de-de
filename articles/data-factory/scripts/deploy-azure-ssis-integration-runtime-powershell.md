@@ -1,21 +1,21 @@
 ---
-title: 'PowerShell-Skript: Bereitstellen der Azure-SSIS-Integrationslaufzeit | Microsoft-Dokumentation'
+title: Bereitstellen der Azure-SSIS Integration Runtime mithilfe von PowerShell
 description: Dieses PowerShell-Skript erstellt eine Azure-SSIS-Integrationslaufzeit, die SSIS-Pakete in der Cloud ausführen kann.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/12/2017
-author: swinarko
 ms.author: sawinark
-manager: craigg
-ms.openlocfilehash: a2d53ddb9f55942cd6ad396d42cc926f20c2d396
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+author: swinarko
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 09/12/2017
+ms.openlocfilehash: f753de618751300cd8d10ae009a354d9892729c1
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66166350"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637971"
 ---
 # <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShell-Skript: Bereitstellen der Azure-SSIS-Integrationslaufzeit
 
@@ -48,16 +48,16 @@ Das Skript verwendet die folgenden Befehle:
 
 | Get-Help | Notizen |
 |---|---|
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Erstellen einer Data Factory. |
 | [Set-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) | Erstellt eine Azure-SSIS-Integrationslaufzeit, die SSIS-Pakete in der Cloud ausführen kann. |
 | [Start-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) | Startet die Azure-SSIS-Integrationslaufzeit. |
 | [Get-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/get-Azdatafactoryv2integrationruntime) | Ruft Informationen zur Azure-SSIS-Integrationslaufzeit ab. |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/).
 
 Zusätzliche PowerShell-Skriptbeispiele für Azure Data Factory finden Sie unter [Azure PowerShell-Beispiele für Azure Data Factory](../samples-powershell.md).

@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse – Azure PowerShell | Microsoft-Dokumentation
+title: 'Erstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse: Azure PowerShell'
 description: Erfahren Sie, wie Sie mithilfe von PowerShell einen virtuellen Computer mit einer statischen privaten IP-Adresse erstellen.
 services: virtual-network
 documentationcenter: na
@@ -9,19 +9,20 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: d5f18929-15e3-40a2-9ee3-8188bc248ed8
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 9115386b0543e1ac840aec29fc7f57e7c98c03bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ced76b73a8a08e6886cf0cef04c74a82d05c75dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685332"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84708126"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Erstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse mithilfe von PowerShell
 
@@ -31,7 +32,7 @@ Sie können einen virtuellen Computer (VM) mit einer statischen privaten IP-Adre
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Auf dem lokalen Computer oder mithilfe von Azure Cloud Shell können Sie die folgenden Schritte durchführen. Um den lokalen Computer zu verwenden, stellen Sie sicher, dass [Azure PowerShell installiert ist](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Klicken Sie zum Verwenden von Azure Cloud Shell in der oberen rechten Ecke eines beliebigen Befehlsfelds auf **Testen**. Cloud Shell meldet Sie in Azure an.
+Auf dem lokalen Computer oder mithilfe von Azure Cloud Shell können Sie die folgenden Schritte durchführen. Um den lokalen Computer zu verwenden, stellen Sie sicher, dass [Azure PowerShell installiert ist](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Wählen Sie oben rechts in einem beliebigen Befehlsfelds **Testen** aus, um Azure Cloud Shell zu verwenden. Cloud Shell meldet Sie in Azure an.
 
 1. Wenn Sie Cloud Shell bereits verwenden, fahren Sie mit Schritt 2 fort. Öffnen Sie eine Befehlssitzung, und melden Sie sich mit `Connect-AzAccount` in Azure an.
 2. Erstellen Sie mit dem Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe in der Azure-Region „USA, Osten“ erstellt:

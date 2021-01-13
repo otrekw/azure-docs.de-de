@@ -1,20 +1,18 @@
 ---
 title: include file
 description: include file
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
 ms.date: 05/08/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e7e613adc98f6cec2fe8f369f1a6413cba6179c1
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: b72de9fb15eafd48c3b72aae4f35fef3bb1f1bef
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170756"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019502"
 ---
 Die Werte für Funktions-App-Einstellungen können auch im Code als Umgebungsvariablen gelesen werden. Weitere Informationen finden Sie im Abschnitt „Umgebungsvariablen“ dieser sprachspezifischen Referenzthemen:
 

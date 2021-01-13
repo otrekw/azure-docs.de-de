@@ -1,0 +1,102 @@
+- name: Dokumentation zur Anwendungs- und Personalbereitstellung
+  href: index.yml
+- name: Übersicht
+  expanded: true
+  items:
+    - name: Was ist die Anwendungsbereitstellung?
+      href: user-provisioning.md
+    - name: Neues in der Dokumentation
+      href: whats-new-docs.md
+- name: Tutorials
+  expanded: true
+  items:
+    - name: Erstellen eines SCIM-Endpunkts und Konfigurieren der Bereitstellung
+      href: use-scim-to-provision-users-and-groups.md
+    - name: Anpassen von Attributzuordnungen
+      href: customize-application-attributes.md
+    - name: App-spezifische Bereitstellungstutorials
+      href: /azure/active-directory/saas-apps
+- name: Konzepte
+  expanded: true
+  items:
+    - name: Funktionsweise der Anwendungsbereitstellung
+      href: how-provisioning-works.md
+    - name: Planen einer Anwendungsbereitstellung
+      href: plan-auto-user-provisioning.md
+    - name: Planen einer HR-Cloudbereitstellung
+      href: plan-cloud-hr-provision.md
+    - name: Grundlegendes zur Protokollierung mit Azure Monitor
+      href: application-provisioning-log-analytics.md
+- name: Anleitungen
+  expanded: true
+  items:
+    - name: Konfigurieren der Bereitstellung für eine Katalog-App
+      href: configure-automatic-user-provisioning-portal.md
+    - name: Einschließen oder Ausschließen von Benutzern und Gruppen aus dem Bereich
+      items:
+        - name: Definieren des Benutzer- oder Gruppenbereichs für die Bereitstellung
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: Überspringen des Löschvorgangs für Benutzer außerhalb des Gültigkeitsbereichs
+          href: skip-out-of-scope-deletions.md
+    - name: Bedarfsorientierte Bereitstellung
+      href: provision-on-demand.md
+    - name: Überwachen und Melden der Bereitstellung
+      items:
+        - name: Überwachen des Bereitstellungsstatus und der Leistung
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: Berichterstellung zur App-Bereitstellung
+          href: check-status-user-account-provisioning.md
+        - name: Exportieren und Importieren Ihrer Konfiguration
+          href: export-import-provisioning-configuration.md
+        - name: Bereitstellungsberichte
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+    - name: Automatisieren der Konfiguration mit MS Graph
+      href: /graph/application-provisioning-configure-api
+    - name: Problembehandlung bei der Anwendungsbereitstellung
+      items:
+        - name: Bekannte Probleme
+          href: known-issues.md
+        - name: Beheben von Konfigurationsproblemen
+          href: application-provisioning-config-problem.md
+        - name: Quarantänestatus
+          href: application-provisioning-quarantine-status.md
+        - name: Benutzer werden nicht bereitgestellt.
+          href: application-provisioning-config-problem-no-users-provisioned.md
+        - name: Fehlendes Quellattribut
+          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: Bereitstellungsprotokolle
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+- name: Verweis
+  items:
+    - name: "Einhaltung des SCIM\_2.0-Protokolls"
+      href: application-provisioning-config-problem-scim-compatibility.md
+    - name: SCIM- und Graphszenarien
+      href: scim-graph-scenarios.md
+    - name: Funktionsreferenz zum Schreiben von Ausdrücken für Attributzuordnungen
+      href: functions-for-customizing-application-data.md
+    - name: HR-Cloudbereitstellung
+      items:
+        - name: SuccessFactors-Integration
+          href: sap-successfactors-integration-reference.md
+        - name: SuccessFactors-Attributreferenz
+          href: sap-successfactors-attribute-reference.md
+        - name: Workday-Attributreferenz
+          href: workday-attribute-reference.md
+        - name: Versionsverlauf des Bereitstellungs-Agents
+          href: provisioning-agent-release-version-history.md
+- name: Ressourcen
+  items:
+    - name: Support- und Hilfeoptionen für Entwickler
+      href: ../develop/developer-support-help-options.md
+    - name: Azure-Feedbackforum
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: /answers/topics/azure-active-directory.html
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Videos
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

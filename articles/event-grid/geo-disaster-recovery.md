@@ -1,26 +1,22 @@
 ---
 title: Georedundante Notfallwiederherstellung in Azure Event Grid | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt, wie Azure Event Grid die georedundante Notfallwiederherstellung automatisch unterstützt.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/24/2019
-ms.author: spelluru
-ms.openlocfilehash: 5b5c973a8daa8776efb0909092c569ea46902265
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/19/2020
+ms.openlocfilehash: 10beaf0ae25f3ed9b7bcda5961a89494b18b84d9
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66307567"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980847"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Serverseitige georedundante Notfallwiederherstellung in Azure Event Grid
 Event Grid verfügt jetzt über eine automatische georedundante Notfallwiederherstellung (GeoDR) für Metadaten – nicht nur für neue, sondern auch für alle vorhandenen Domänen, Themen und Ereignisabonnements. Wenn eine vollständige Azure-Region ausfällt, hat Event Grid bereits alle ereignisbezogenen Infrastrukturmetadaten in ein Regionspaar synchronisiert. Neue Ereignisse werden übertragen, ohne dass Sie eingreifen müssen. 
 
 Die Notfallwiederherstellung wird anhand von zwei Metriken gemessen:
 
-- [Recovery Point Objective (RPO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective): Der Zeitraum in Minuten oder Stunden, innerhalb dessen Daten verloren gehen können.
-- [Recovery Time Objective (RTO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective): Der Zeitraum in Minuten oder Stunden, innerhalb dessen der Dienst ausfallen kann.
+- Recovery Point Objective (RPO): Der Zeitraum in Minuten oder Stunden, innerhalb dessen Daten verloren gehen können.
+- Recovery Time Objective (RTO): Der Zeitraum in Minuten oder Stunden, innerhalb dessen der Dienst ausfallen kann.
 
 Beim automatischen Failover von Event Grid gelten andere RPOs und RTOs für Ihre Metadaten (Ereignisabonnements usw.) und für Ihre Daten (Ereignisse). Wenn Sie andere Werte als die unten angegebenen benötigen, können Sie auch weiterhin ein eigenes [clientseitiges Failover mithilfe von APIs für die Themenintegrität](custom-disaster-recovery.md) implementieren.
 

@@ -1,23 +1,23 @@
 ---
-title: Streckenabdeckung in Azure Maps | Microsoft-Dokumentation
-description: Erfahren Sie mehr über Streckenabdeckung in Azure Maps
-author: jingjing-z
-ms.author: jinzh
+title: Streckenabdeckung | Microsoft Azure Maps
+description: Erfahren Sie, welchen Grad von Abdeckung Azure Maps in verschiedenen Regionen für Streckenplanung, Streckenplanung mit Verkehr und LKW-Streckenplanung bereitstellt.
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 0991a0df8d34ddbcebf3d4097c0219b47793120b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05c3cfc390fed905f4a1b09c221095b56867d540
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779943"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896173"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps-Streckenabdeckung
 
-Dieser Artikel bietet Informationen zur Abdeckung für die Azure Maps-Streckenplanung. Wenn Sie die optimale Route von Standort A nach B suchen, kann Azure Maps äußerst präzise Reisezeiten, Reiseinformationen mit Liveupdate und Routenanweisungen bereitstellen. Die Route berücksichtigt zusätzliche Suchbegriffe wie den aktuellen Verkehr, den Fahrzeugtyp und die zu vermeidenden Bedingungen. Die Möglichkeit zur Optimierung der Route hängt von der Region ab, da Azure Maps hinsichtlich Informationen und Genauigkeit über unterschiedliche Stufen für verschiedene Regionen verfügt. In der folgenden Tabelle sind die Regionen aufgeführt und welche Art von Informationen Sie für diese anfordern können.
+Dieser Artikel bietet Informationen zur Abdeckung für die Azure Maps-Streckenplanung. Bei einer Suchabfrage gibt Azure Maps eine optimale Route von Standort A nach Standort B zurück. Sie erhalten genaue Reisezeiten, Liveupdates von Reiseinformationen und Routenanweisungen. Sie können auch zusätzliche Suchparameter wie den aktuellen Verkehr, den Fahrzeugtyp und zu vermeidende Bedingungen hinzufügen. Die Optimierung der Route hängt von der Region ab. Der Grund dafür ist, dass Azure Maps für verschiedene Regionen unterschiedliche Ebenen von Informationen und Genauigkeit aufweist. In der folgenden Tabelle sind die Regionen aufgeführt und welche Art von Informationen Sie für diese anfordern können.
  
 Verschaffen Sie sich einen Überblick über die Abdeckung der [**Geocodierung**](geocoding-coverage.md).       
 Verschaffen Sie sich einen Überblick über die Abdeckung der [**Verkehrsinformationen**](traffic-coverage.md).  
@@ -90,7 +90,7 @@ In der folgenden Tabelle finden Sie Informationen zur Abdeckung für Azure Maps-
 | Barbados                       |        ✓       |                      |             |
 | Belize                         |        ✓       |                      |             |
 | Brasilien                         |        ✓       |         ✓            |     ✓       | 
-| Kanada                         |        ✓       |         ✓            |     ✓      |
+| Canada                         |        ✓       |         ✓            |     ✓      |
 | Chile                          |        ✓       |         ✓            |     ✓      |
 | Kolumbien                       |        ✓       |         ✓            |             |
 | Costa Rica                     |        ✓       |                      |             |
@@ -138,6 +138,7 @@ In der folgenden Tabelle finden Sie Informationen zur Abdeckung für Azure Maps-
 | Hongkong (SAR)                  |        ✓       |         ✓            |             |
 | Indien                          |        ✓       |         ✓            |             |
 | Indonesien                      |        ✓       |         ✓            |             |
+| Kasachstan                |        ✓       |                     |             |
 | Korea                          |        Ø       |                      |             |
 | Laos                           |        ✓       |                      |             |
 | Macau (SAR)                      |        ✓       |         ✓            |             |
@@ -205,7 +206,6 @@ In der folgenden Tabelle finden Sie Informationen zur Abdeckung für Azure Maps-
 | Rumänien                        |        ✓       |         ✓            |     ✓      | 
 | Russische Föderation             |        ✓       |         ✓            |     ✓      | 
 | San Marino                     |        ✓       |         ✓            |             |
-| +Sint Maarten                  |        ✓       |                      |             |
 | Serbien                         |        ✓       |                      |     ✓      | 
 | Slowakei                       |        ✓       |         ✓            |     ✓      | 
 | Slowenien                       |        ✓       |         ✓            |     ✓      |
@@ -214,7 +214,7 @@ In der folgenden Tabelle finden Sie Informationen zur Abdeckung für Azure Maps-
 | Schweiz                    |        ✓       |         ✓            |     ✓      | 
 | Türkei                         |        ✓       |         ✓            |     ✓      | 
 | Ukraine                        |        ✓       |         ✓            |             | 
-| Vereinigtes Königreich                 |        ✓       |         ✓            |     ✓      | 
+| United Kingdom                 |        ✓       |         ✓            |     ✓      | 
 | +Anguilla                      |        ✓       |                      |             |
 | +Bermuda                       |        ✓       |                      |             |
 | +Britische Jungferninseln        |        ✓       |                      |             |
@@ -245,4 +245,4 @@ In der folgenden Tabelle finden Sie Informationen zur Abdeckung für Azure Maps-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure Maps-Streckenplanung finden Sie auf den Referenzseiten zur [Streckenplanung](https://docs.microsoft.com/rest/api/maps/route).
+Weitere Informationen zur Azure Maps-Streckenplanung finden Sie auf den Referenzseiten zur [Streckenplanung](/rest/api/maps/route).

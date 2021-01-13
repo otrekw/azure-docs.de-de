@@ -1,19 +1,19 @@
 ---
-title: Spark Streaming-Aufträge mit Ereignisverarbeitung vom Typ „Exactly-Once“ – Azure HDInsight
+title: Spark Streaming und Ereignisverarbeitung vom Typ „Exactly-Once“ – Azure HDInsight
 description: Einrichten von Apache Spark Streaming zur ausschließlich einmaligen Verarbeitung eines Ereignisses.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 908c49a46fe7993bc20bcb63a3c15758e2de5343
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.topic: how-to
+ms.date: 11/15/2018
+ms.openlocfilehash: 8e0037f6aea4aef53efc192066027e0a0143bda1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091021"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86086176"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Erstellen von Apache Spark-Streamingaufträgen mit Ereignisverarbeitung vom Typ „Exactly-Once“
 
@@ -57,7 +57,7 @@ Für Worker, die Aufgaben mit den Ereignisdaten ausführen, wird jede RDD defini
 
 Die Auftragstreiber müssen neu gestartet werden können. Wenn der Treiber abstürzt, der Ihre Spark Streaming-Anwendung ausführt, reißt er alle ausgeführten Empfänger, Aufgaben und RDDs, die Ereignisdaten speichern, mit sich. In diesem Fall müssen Sie in der Lage sein, den Fortschritt des Auftrags zu speichern, sodass Sie ihn später fortsetzen können. Hierzu werden in regelmäßigen Abständen Prüfpunkte des gerichteten azyklischen Graphs (Directed Acyclic Graph, DAG) des DStream in einen fehlertoleranten Speicher geschrieben. Die DAG-Metadaten umfassen die Konfiguration, die zum Erstellen der Streaminganwendung verwendet wird, die Vorgänge, die die Anwendung definieren, und alle Batches, die in die Warteschlange gestellt wurden, aber noch nicht abgeschlossen sind. Anhand dieser Metadaten kann ein fehlerhafter Treiber mit den Prüfpunktinformationen neu gestartet werden. Wenn der Treiber neu gestartet wird, startet er neue Empfänger, die selbst die Ereignisdaten aus dem Write-Ahead-Protokoll in RDDs wiederherstellen.
 
-Prüfpunkte werden in Spark Streaming in zwei Schritten aktiviert. 
+Prüfpunkte werden in Spark Streaming in zwei Schritten aktiviert.
 
 1. Konfigurieren Sie im StreamingContext-Objekt den Speicherpfad für die Prüfpunkte:
 
@@ -81,7 +81,7 @@ Prüfpunkte werden in Spark Streaming in zwei Schritten aktiviert.
 
 Die Zielsenke, in die Ihr Auftrag Ergebnisse schreibt, muss die Situation behandeln können, dass sie das gleiche Ergebnis mehrmals erhält. Die Senke muss solche doppelten Ergebnisse erkennen und ignorieren können. Eine *idempotente* Senke kann mehrere Male mit denselben Daten ohne Änderung des Zustands aufgerufen werden.
 
-Sie können idempotente Senken durch Implementierung von Logik erstellen, die zuerst überprüft, ob das eingehende Ergebnis im Datenspeicher vorhanden ist. Wenn das Ergebnis bereits vorhanden ist, sollte der Schreibvorgang aus der Perspektive des Spark-Auftrags erfolgreich sein, jedoch sollte Ihr Datenspeicher in Wirklichkeit die doppelt vorhandenen Daten ignorieren. Wenn das Ergebnis nicht vorhanden ist, sollte die Senke dieses neue Ergebnis in den Speicher einfügen. 
+Sie können idempotente Senken durch Implementierung von Logik erstellen, die zuerst überprüft, ob das eingehende Ergebnis im Datenspeicher vorhanden ist. Wenn das Ergebnis bereits vorhanden ist, sollte der Schreibvorgang aus der Perspektive des Spark-Auftrags erfolgreich sein, jedoch sollte Ihr Datenspeicher in Wirklichkeit die doppelt vorhandenen Daten ignorieren. Wenn das Ergebnis nicht vorhanden ist, sollte die Senke dieses neue Ergebnis in den Speicher einfügen.
 
 Sie könnten z.B. eine gespeicherte Prozedur mit Azure SQL-Datenbank verwenden, die Ereignisse in eine Tabelle einfügt. Diese gespeicherte Prozedur sucht zuerst mit den Schlüsselfeldern nach dem Ereignis, und nur dann, wenn kein entsprechendes Ereignis gefunden wird, wird der Datensatz in die Tabelle eingefügt.
 

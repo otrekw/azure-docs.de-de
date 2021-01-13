@@ -1,23 +1,17 @@
 ---
 title: Azure Monitor-Diensteinschränkungen | Microsoft-Dokumentation
 description: Auflistung der Einschränkungen in verschiedenen Bereichen von Azure Monitor.
-author: bwren
-manager: carmonm
-editor: tysonn
-services: azure-monitor
-documentationcenter: azure-monitor
-ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/10/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 0386700c238c213fd9cde3ca1b49e5e598d05bfd
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 06/10/2019
+ms.openlocfilehash: 49a9c6663f0505d5104f54630b6925af98ec243f
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405659"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318070"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor-Diensteinschränkungen
 
@@ -31,6 +25,14 @@ In diesem Artikel werden Einschränkungen in verschiedenen Bereichen von Azure M
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-action-groups.md)]
 
+## <a name="autoscale"></a>Autoscale
+
+[!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-autoscale.md)]
+
+
+## <a name="data-collection-rules"></a>Regeln für die Datensammlung
+
+[!INCLUDE [data-collection-rules](../../includes/azure-monitor-limits-data-collection-rules.md)]
 ## <a name="log-queries-and-language"></a>Protokollieren von Abfragen und Sprache
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-log-queries.md)]

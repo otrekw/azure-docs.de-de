@@ -1,28 +1,28 @@
 ---
-title: Kopieren von Daten aus Sybase mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Sybase mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus Sybase mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 06/10/2020
 ms.author: jingwang
-ms.openlocfilehash: f6fcdddb2da005d563ee0a10381e7aa4f26487d0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ac9dff4b16d8ba1b346a2827f3b5487dbf97392e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089251"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84669833"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Kopieren von Daten aus Sybase mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-onprem-sybase-connector.md)
 > * [Aktuelle Version](connector-sybase.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Sybase-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -37,8 +37,10 @@ Sie können Daten aus einer Sybase-Datenbank in beliebige unterstützte Senkenda
 
 Dieser Sybase-Connector unterstützt insbesondere Folgendes:
 
-- SAP Sybase SQL Anywhere (ASA) **Version 16 und höher**; IQ und ASE werden nicht unterstützt.
+- SAP Sybase SQL Anywhere (ASA), **Version 16 und höher**.
 - Kopieren von Dateien unter Verwendung der **Standard**- oder **Windows**-Authentifizierung
+
+Sybase IQ und ASE werden nicht unterstützt. Stattdessen können Sie den generischen ODBC-Connector mit dem Sybase-Treiber verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -133,7 +135,7 @@ Beim Kopieren von Daten aus Sybase werden die folgenden Eigenschaften im Abschni
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SybaseSource** | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

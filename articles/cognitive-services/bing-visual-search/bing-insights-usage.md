@@ -1,7 +1,7 @@
 ---
 title: Beispiele für Bing-Auswertungen – Visuelle Bing-Suche
 titleSuffix: Azure Cognitive Services
-description: Hier finden Sie Beispiele für Bildauswertungen, die auf bing.com angezeigt werden.
+description: Dieser Artikel enthält Beispiele dafür, wie die visuelle Bing-Suche Bildauswertungen auf bing.com verwendet und anzeigt.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,14 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: scottwhi
-ms.openlocfilehash: 94f8d4ea98f42ad919597ef53dc63281825f0e6b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0a3bdc7e68301c067b7e1ca80a3e708522e0df1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60610332"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493354"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Beispiele für die Nutzung von Bing-Auswertungen
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Dieser Artikel enthält Beispiele dafür, wie Bing Bildauswertungen auf bing.com verwendet und anzeigt.
 
@@ -75,9 +80,12 @@ Nicht standardmäßige Tags umfassen den Begrenzungsrahmen, der den relevanten B
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Schnellstartanleitungen ermöglichen den Einstieg in die Verwendung Ihrer ersten Anforderung: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
+Die folgenden Schnellstartanleitungen ermöglichen den Einstieg in die Verwendung Ihrer ersten Anforderung:
 
+* [C#](quickstarts/csharp.md)
 
+* [Java](quickstarts/java.md)
 
+* [Node.js](quickstarts/nodejs.md)
 
-
+* [Python](quickstarts/python.md)

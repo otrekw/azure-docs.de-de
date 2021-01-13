@@ -1,5 +1,6 @@
 ---
-title: Tutorial zum Importieren von VHD-Daten auf verwaltete Datenträger mithilfe von Microsoft Azure Data Box Heavy | Microsoft-Dokumentation
+title: 'Tutorial: Kopieren von VHDs auf verwaltete Datenträger'
+titleSuffix: Azure Data Box Heavy
 description: Hier erfahren Sie, wie Sie Daten von VHDs aus lokalen VM-Workloads auf Azure Data Box Heavy kopieren.
 services: databox
 author: alkohli
@@ -8,12 +9,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a29cd142b3322c958f70aad8d5cad2bc30b87d76
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 335b564225bc2b7a4c2217c1d912f952239ecf24
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670836"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127198"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Tutorial: Verwenden von Data Box Heavy, um Daten als verwaltete Datenträger in Azure zu importieren
 
@@ -37,7 +38,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 4. Sie haben sich mit Folgendem vertraut gemacht:
 
     - Unterstützte Größen für verwaltete Datenträger und [Größenbeschränkungen für das Azure-Objekt](data-box-heavy-limits.md#azure-object-size-limits)
-    - [Einführung in verwaltete Azure-Datenträger](/azure/virtual-machines/windows/managed-disks-overview) 
+    - [Einführung in verwaltete Azure-Datenträger](../virtual-machines/managed-disks-overview.md) 
 
 ## <a name="connect-to-data-box-heavy"></a>Herstellen einer Verbindung mit Data Box Heavy
 
@@ -74,11 +75,11 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden
     > [!NOTE]
     > Sie sind für alle Freigaben für verwaltete Datenträger identisch.
 
-    ![Abrufen der Anmeldeinformationen für Freigaben 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![Abrufen der Anmeldeinformationen für die Freigabe](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
 2. Kopieren Sie im Dialogfeld „Auf Freigabe zugreifen und Daten kopieren“ die Werte für **Benutzername** und **Kennwort** für die Freigabe. Klicken Sie auf **OK**.
     
-    ![Abrufen der Anmeldeinformationen für Freigaben 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
+    ![Abrufen der Anmeldeinformationen für Freigaben 2](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
 3. Öffnen Sie ein Befehlsfenster, um über Ihren Hostcomputer auf die Freigaben zuzugreifen, die mit Ihrer Ressource (*mydbmdrg1* im folgenden Beispiel) verknüpft sind. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
@@ -100,7 +101,7 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden
 
 4. Drücken Sie WINDOWS-TASTE+R. Geben Sie im Fenster **Ausführen** die `\\<device IP address>\<ShareName>` an. Klicken Sie auf **OK**, um den Datei-Explorer zu öffnen.
     
-    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     In jeder Freigabe sollten nun die folgenden vorab erstellten Ordner vorhanden sein.
     
@@ -113,7 +114,7 @@ Wenn Sie einen Linux-Hostcomputer verwenden, führen Sie die folgenden Schritte 
 
 1. Geben Sie die IP-Adressen der zulässigen Clients an, die auf die Freigabe zugreifen können. Wechseln Sie in der lokalen Webbenutzeroberfläche zur Seite **Verbindung herstellen und Daten kopieren**. Klicken Sie unter **NFS-Einstellungen** auf **NFS-Clientzugriff**.
 
-    ![Konfigurieren des NFS-Clientzugriffs 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
+    ![Konfigurieren des NFS-Clientzugriffs](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
 2. Geben Sie die IP-Adresse des NFS-Clients an, und klicken Sie auf **Hinzufügen**. Sie können den Zugriff für mehrere NFS-Clients konfigurieren, indem Sie diesen Schritt wiederholen. Klicken Sie auf **OK**.
 
@@ -138,7 +139,7 @@ Beachten Sie Folgendes, bevor Sie mit dem Kopieren der Daten beginnen:
 
 - Kopieren Sie die VHDs immer in einen der vorab erstellten Ordner. Wenn Sie die VHDs an einen Ort außerhalb dieser Ordner oder in einen selbst erstellten Ordner kopieren, werden sie nicht als verwaltete Datenträger, sondern als Seitenblobs in das Azure Storage-Konto hochgeladen.
 - Zur Erstellung von verwalteten Datenträgern können nur feste VHDs hochgeladen werden. VHDX-Dateien oder differenzierende VHDs werden nicht unterstützt.
-- Der Name eines verwalteten Datenträgers muss in einer Ressourcengruppe über alle vorab erstellten Ordner hinweg eindeutig sein. Die VHDs, die in die vorab erstellten Ordner hochgeladen werden, müssen also jeweils einen eindeutigen Namen besitzen. Achten Sie darauf, dass der Name nicht mit dem Namen eines bereits vorhandenen verwalteten Datenträgers in einer Ressourcengruppe identisch ist.
+- Der Name eines verwalteten Datenträgers muss in einer Ressourcengruppe über alle vorab erstellten Ordner hinweg eindeutig sein. Die VHDs, die in die vorab erstellten Ordner hochgeladen werden, müssen also jeweils einen eindeutigen Namen aufweisen. Achten Sie darauf, dass der Name nicht mit dem Namen eines bereits vorhandenen verwalteten Datenträgers in einer Ressourcengruppe identisch ist.
 - Informationen zu Grenzwerten für verwaltete Datenträger finden Sie unter [Größenbeschränkungen für das Azure-Objekt](data-box-heavy-limits.md#azure-object-size-limits).
 
 Sie können Folgendes verwenden (abhängig davon, ob Sie die Verbindung über SMB oder über NFS herstellen):
@@ -181,4 +182,3 @@ Im nächsten Tutorial erfahren Sie, wie Sie Data Box Heavy an Microsoft zurücks
 
 > [!div class="nextstepaction"]
 > [Zurücksenden von Azure Data Box Heavy und Überprüfen des Datenuploads in Azure (Vorschauversion)](./data-box-heavy-deploy-picked-up.md)
-

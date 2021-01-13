@@ -1,0 +1,66 @@
+### YamlMime:Landing
+title: Dokumentation zur Sprachsynthese
+summary: Text-zu-Sprache im Speech-Dienst ermöglicht es Ihren Anwendungen, Tools oder Geräten, Text in menschenähnliche synthetisierte Sprache zu konvertieren.
+metadata:
+  title: 'Dokumentation zur Sprachsynthese: Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: trevorbye
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 03/10/2020
+  ms.author: trbye
+  ms.openlocfilehash: d9491c43382def26ca9106675997e1dc4f071535
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92756897"
+landingContent:
+- title: Informationen zur Sprachsynthese
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Text-zu-Sprache?
+      url: text-to-speech.md
+    - text: Verwenden der Speech-Befehlszeilenschnittstelle für Sprachsynthese ohne Code
+      url: spx-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Erste Schritte bei der Sprachsynthese
+      url: get-started-text-to-speech.md
+- title: Entwickeln mit der Sprachsynthese
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verbessern der Synthese mit SSML
+      url: speech-synthesis-markup.md
+    - text: Synthese langer Textausschnitte mit der API für lange Audioinhalte
+      url: long-audio-api.md
+  - linkListType: concept
+    links:
+    - text: Erste Schritte mit Custom Voice
+      url: how-to-custom-voice.md
+    - text: Erstellen und Verwenden von Custom Voice-Modellen
+      url: how-to-custom-voice-create-voice.md
+    - text: Abgrenzung von Custom Voice
+      url: concepts-gating-overview.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Unterstützung von Standardstimmen
+      url: language-support.md#standard-voices
+    - text: Unterstützung neuronaler Stimmen
+      url: language-support.md#neural-voices
+    - text: Phonetische SSML-Sätze
+      url: speech-ssml-phonetic-sets.md
+    - text: Preise der Sprachsynthese
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

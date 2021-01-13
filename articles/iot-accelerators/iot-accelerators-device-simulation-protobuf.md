@@ -6,15 +6,15 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 74bb2d181533f802e1428eaa8a855f60fb855193
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 77a795b8f704084b612a2dcbd364b8d5be0a3333
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447980"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852149"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serialisieren von Telemetriedaten mithilfe von Protocol Buffers
 
@@ -40,8 +40,8 @@ Zum Ausführen der Schritte in dieser Anleitung ist Folgendes erforderlich:
 * .NET Core. Sie können [.NET Core für Mac, Linux und Windows](https://www.microsoft.com/net/download) herunterladen.
 * Postman. Sie können [Postman für Mac, Windows oder Linux](https://www.getpostman.com/apps) herunterladen.
 * Einen [IoT Hub, der für Ihr Azure-Abonnement bereitgestellt wurde](../iot-hub/iot-hub-create-through-portal.md). Sie benötigen die Verbindungszeichenfolge des IoT Hubs zum Ausführen der Schritte in dieser Anleitung. Sie können diese Verbindungszeichenfolge aus dem Azure-Portal abrufen.
-* Eine [in Ihrem Azure-Abonnement bereitgestellte Cosmos DB-Datenbank](../cosmos-db/create-sql-api-dotnet.md#create-account), die die SQL-API verwendet und für [starke Konsistenz](../cosmos-db/manage-account.md) konfiguriert wurde. Sie benötigen die Verbindungszeichenfolge der Cosmos DB-Datenbank zum Ausführen der Schritte in dieser Anleitung. Sie können diese Verbindungszeichenfolge aus dem Azure-Portal abrufen.
-* Ein [in Ihrem Azure-Abonnement bereitgestelltes Azure Storage-Konto](../storage/common/storage-quickstart-create-account.md). Sie benötigen die Verbindungszeichenfolge des Speicherkontos zum Ausführen der Schritte in dieser Anleitung. Sie können diese Verbindungszeichenfolge aus dem Azure-Portal abrufen.
+* Eine [in Ihrem Azure-Abonnement bereitgestellte Cosmos DB-Datenbank](../cosmos-db/create-sql-api-dotnet.md#create-account), die die SQL-API verwendet und für [starke Konsistenz](../cosmos-db/how-to-manage-database-account.md) konfiguriert wurde. Sie benötigen die Verbindungszeichenfolge der Cosmos DB-Datenbank zum Ausführen der Schritte in dieser Anleitung. Sie können diese Verbindungszeichenfolge aus dem Azure-Portal abrufen.
+* Ein [in Ihrem Azure-Abonnement bereitgestelltes Azure Storage-Konto](../storage/common/storage-account-create.md). Sie benötigen die Verbindungszeichenfolge des Speicherkontos zum Ausführen der Schritte in dieser Anleitung. Sie können diese Verbindungszeichenfolge aus dem Azure-Portal abrufen.
 
 ## <a name="prepare-your-development-environment"></a>Vorbereiten Ihrer Entwicklungsumgebung
 
@@ -204,7 +204,7 @@ In diesem Abschnitt testen Sie das in den vorherigen Abschnitten erstellte Gerä
 
 #### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>Konfigurieren der Lösung mit den neuen Gerätemodelldateien
 
-Die JSON- und JS-Dateien des neuen Gerätemodells werden nicht automatisch in die erstellte Lösung kopiert. Sie müssen sie explizit einfügen.
+Standardmäßig werden die JSON- und JS-Dateien des neuen Gerätemodells nicht automatisch in die erstellte Lösung kopiert. Sie müssen sie explizit einfügen.
 
 Fügen Sie der Datei **services\services.csproj** einen Eintrag für jede Datei hinzu, die enthalten sein soll. Beispiel:
 
@@ -231,7 +231,7 @@ Bei dem nachstehenden Skript wird angenommen, dass der Name Ihres Hubs **device-
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Monitor telemetry sent to your hub
 az iot hub monitor-events --hub-name device-simulation-test
@@ -277,4 +277,4 @@ Viele IoT Hub-Features unterstützen Protobuf oder andere binäre Formate nicht 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie gelernt haben, wie Sie die Gerätesimulation so anpassen, dass Telemetriedaten mithilfe von Protobuf gesendet werden, erfahren Sie im nächsten Schritt, wie [ein benutzerdefiniertes Image in der Cloud bereitgestellt wird](iot-accelerators-device-simulation-deploy-image.md).
+Nachdem Sie gelernt haben, wie Sie die Gerätesimulation so anpassen, dass Telemetriedaten mithilfe von Protobuf gesendet werden, informieren Sie sich im nächsten Schritt im GitHub-Repository über weitere [Gerätesimulationen](https://github.com/Azure/device-simulation-dotnet).

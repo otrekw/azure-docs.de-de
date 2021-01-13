@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5722d0b14c43bcdee7a06ebf5545cfc6254f7508
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 5316a1647c96076696b14de157e74e2155a6b368
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562353"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860013"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -39,8 +39,8 @@ Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebun
 
 In diesem Tutorial wird vorausgesetzt, dass Sie mit Folgendem vertraut sind:
 
-* [Einführung in die Geräteverwaltung in Azure Active Directory](../device-management-introduction.md)
-* [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md)
+* [Einführung in die Geräteverwaltung in Azure Active Directory](./overview.md)
+* [Planen der Implementierung von Azure Active Directory (Azure AD) Hybrid Join](hybrid-azuread-join-plan.md)
 * [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](hybrid-azuread-join-control.md)
 
 Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie in Ihrem Unternehmen mit der Aktivierung von in Azure AD eingebundenen Hybridgeräten beginnen:
@@ -59,6 +59,9 @@ Stellen Sie sicher, dass Computer innerhalb Ihres Unternehmensnetzwerks zur Regi
 * `https://login.microsoftonline.com`
 * `https://device.login.microsoftonline.com`
 * Der STS Ihrer Organisation (für Verbunddomänen; muss in die lokalen Intraneteinstellungen des Benutzers eingeschlossen werden)
+
+> [!WARNING]
+> Wenn Ihre Organisation Proxyserver verwendet, die SSL-Datenverkehr für Szenarien wie die Verhinderung von Datenverlust oder Azure AD-Mandanteneinschränkungen abfangen, stellen Sie sicher, dass der Datenverkehr zu „https://device.login.microsoftonline.com“ von TLSI (TLS break and inspect) ausgeschlossen ist. Wird „https://device.login.microsoftonline.com“ nicht ausgeschlossen, kann dies zu Beeinträchtigungen bei der Clientzertifikatauthentifizierung führen und Probleme bei der Geräteregistrierung und beim gerätebasierten bedingten Zugriff verursachen.
 
 Falls Ihre Organisation die Verwendung von nahtlosem einmaligem Anmelden beabsichtigt, muss die folgende URL für Computer in Ihrer Organisation erreichbar sein. Sie muss ebenfalls der lokalen Intranetzone des Benutzers hinzugefügt werden.
 
@@ -85,13 +88,13 @@ Verwenden Sie die folgende Tabelle, um eine Übersicht über die Schritte zu erh
 | Konfigurieren des Dienstverbindungspunkts | ![Prüfen][1] | ![Prüfen][1] | ![Prüfen][1] |
 | Einrichten der Ausstellung von Ansprüchen |     | ![Prüfen][1] | ![Prüfen][1] |
 | Aktivieren von Geräten, auf denen nicht Windows 10 ausgeführt wird |       |        | ![Prüfen][1] |
-| Überprüfen der eingebundenen Geräte | ![Prüfen][1] | ![Prüfen][1] | [Überprüfung][1] |
+| Überprüfen der eingebundenen Geräte | ![Prüfen][1] | ![Prüfen][1] | ![Prüfen][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Konfigurieren eines Dienstverbindungspunkts
 
 Ihre Geräte verwenden im Rahmen der Registrierung ein SCP-Objekt (Service Connection Point, Dienstverbindungspunkt), um Informationen zum Azure AD-Mandanten zu ermitteln. In Ihrer lokalen Active Directory-Instanz muss sich das SCP-Objekt für die in Azure AD eingebundenen Hybridgeräte in der Partition für den Konfigurationsnamenskontext der Computergesamtstruktur befinden. Es gibt nur einen Konfigurationsnamenskontext pro Gesamtstruktur. In einer Active Directory-Konfiguration mit mehreren Gesamtstrukturen muss der Dienstverbindungspunkt in allen Gesamtstrukturen vorhanden sein, die in die Domäne eingebundene Computer enthalten.
 
-Sie können das [**Get-ADRootDSE**](https://technet.microsoft.com/library/ee617246.aspx)-Cmdlet verwenden, um den Konfigurationsnamenskontext aus Ihrer Gesamtstruktur abzurufen.  
+Sie können das [**Get-ADRootDSE**](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617246(v=technet.10))-Cmdlet verwenden, um den Konfigurationsnamenskontext aus Ihrer Gesamtstruktur abzurufen.  
 
 Für eine Gesamtstruktur mit dem Active Directory-Domänennamen *fabrikam.com* lautet der Konfigurationsnamenskontext:
 
@@ -140,7 +143,7 @@ Mit dem folgenden Skript wird ein Beispiel für die Verwendung des Cmdlets veran
 Für das `Initialize-ADSyncDomainJoinedComputerSync`-Cmdlet gilt Folgendes:
 
 * Es verwendet das Active Directory-PowerShell-Modul und die Tools von Azure Active Directory Domain Services (Azure AD DS). Diese Tools basieren auf Active Directory-Webdiensten, die auf einem Domänencontroller ausgeführt werden. Active Directory-Webdienste werden auf Domänencontrollern mit Windows Server 2008 R2 und höher unterstützt.
-* Es wird nur von der MSOnline PowerShell-Modulversion 1.1.166.0 unterstützt. Dieses Modul können Sie [hier](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/) herunterladen.
+* Es wird nur von der MSOnline PowerShell-Modulversion 1.1.166.0 unterstützt. Dieses Modul können Sie [hier](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0) herunterladen.
 * Wenn die AD DS-Tools nicht installiert sind, ist `Initialize-ADSyncDomainJoinedComputerSync` nicht erfolgreich. Die AD DS-Tools können über den Server-Manager unter **Features** > **Remoteserver-Verwaltungstools** > **Rollenverwaltungstools** installiert werden.
 
 Verwenden Sie für Domänencontroller mit Windows Server 2008 oder älteren Versionen das folgende Skript, um den Dienstverbindungspunkt zu erstellen. Verwenden Sie bei einer Active Directory-Konfiguration mit mehreren Gesamtstrukturen das folgende Skript, um den Dienstverbindungsendpunkt in allen Gesamtstrukturen zu erstellen, in denen Computer vorhanden sind.
@@ -164,9 +167,9 @@ Verwenden Sie für Domänencontroller mit Windows Server 2008 oder älteren Vers
 
 Im obigen Skript ist `$verifiedDomain = "contoso.com"` ein Platzhalter. Ersetzen Sie ihn durch einen Ihrer überprüften Domänennamen in Azure AD. Sie müssen die Domäne besitzen, um sie verwenden zu können.
 
-Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory-domains-add-azure-portal.md).
+Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../fundamentals/add-custom-domain.md).
 
-Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie das Cmdlet [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) verwenden.
+Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie das Cmdlet [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain) verwenden.
 
 ![Liste mit Unternehmensdomänen](./media/hybrid-azuread-join-manual/01.png)
 
@@ -185,7 +188,7 @@ Bei Verwendung von AD FS müssen Sie die folgenden WS-Trust-Endpunkte aktiviere
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> Die Endpunkte **adfs/services/trust/2005/windowstransport** und **adfs/services/trust/13/windowstransport** sollten nur als Endpunkte mit Intranetzugriff aktiviert werden und dürfen NICHT als Endpunkte mit Extranetzugriff über den Webanwendungsproxy verfügbar gemacht werden. Weitere Informationen zum Deaktivieren von WS-Trust-Windows-Endpunkten finden Sie unter [Deaktivieren von WS-Trust-Windows-Endpunkten auf dem Proxy](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
+> Die Endpunkte **adfs/services/trust/2005/windowstransport** und **adfs/services/trust/13/windowstransport** dürfen nur als Endpunkte mit Intranetzugriff aktiviert und NICHT als Endpunkte mit Extranetzugriff über den Webanwendungsproxy verfügbar gemacht werden. Weitere Informationen zum Deaktivieren von WS-Trust-Windows-Endpunkten finden Sie unter [Deaktivieren von WS-Trust-Windows-Endpunkten auf dem Proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
 
 > [!NOTE]
 >Falls Sie nicht AD FS als lokalen Verbunddienst nutzen, informieren Sie sich in der Anleitung Ihres jeweiligen Anbieters, ob WS-Trust 1.3- oder 2005-Endpunkte unterstützt und per MEX-Datei (Metadata Exchange) veröffentlicht werden.
@@ -200,7 +203,7 @@ Wenn Sie über mehr als einen verifizierten Domänennamen verfügen, müssen Sie
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`
 
-Falls Sie bereits einen ImmutableID-Anspruch ausstellen (etwa eine alternative Anmelde-ID), müssen Sie einen entsprechenden Anspruch für Computer bereitstellen:
+Falls Sie bereits einen ImmutableID-Anspruch ausstellen (z. B. mit einer `mS-DS-ConsistencyGuid` oder einem anderen Attribut als Quellwert für die ImmutableID), müssen Sie einen entsprechenden Anspruch für Computer bereitstellen:
 
 * `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`
 
@@ -323,13 +326,13 @@ Der Anspruch `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid` 
 
 Im obigen Anspruch ist `<verified-domain-name>` ein Platzhalter. Ersetzen Sie ihn durch einen Ihrer überprüften Domänennamen in Azure AD. Verwenden Sie z. B. `Value = "http://contoso.com/adfs/services/trust/"`.
 
-Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory-domains-add-azure-portal.md).  
+Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../fundamentals/add-custom-domain.md).  
 
-Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie das [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0)-Cmdlet verwenden.
+Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie das [Get-MsolDomain](/powershell/module/msonline/get-msoldomain)-Cmdlet verwenden.
 
 ![Liste mit Unternehmensdomänen](./media/hybrid-azuread-join-manual/01.png)
 
-### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-an-alternate-login-id-is-set"></a>Ausstellen der unveränderlichen ID (ImmutableID) für den Computer, wenn eine für Benutzer vorhanden ist (beispielsweise, wenn eine alternative Anmelde-ID festgelegt ist)
+### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-using-ms-ds-consistencyguid-as-the-source-for-immutableid"></a>Ausstellen der unveränderlichen ID (ImmutableID) für den Computer, wenn eine für Benutzer vorhanden ist (beispielsweise, unter Verwendung einer ms-DS-ConsistencyGuid als Quelle für die ImmutableID)
 
 Der Anspruch `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID` muss einen gültigen Wert für Computer enthalten. In AD FS können Sie wie folgt eine Ausstellungstransformationsregel erstellen:
 
@@ -478,7 +481,7 @@ Das folgende Skript unterstützt Sie beim Erstellen der oben beschriebenen Ausst
    Set-AdfsRelyingPartyTrust -TargetIdentifier urn:federation:MicrosoftOnline -IssuanceTransformRules $crSet.ClaimRulesString
    ```
 
-#### <a name="remarks"></a>Anmerkungen
+#### <a name="remarks"></a>Bemerkungen
 
 * Mit diesem Skript werden die Regeln an die bereits vorhandenen Regeln angefügt. Führen Sie das Skript nicht zweimal aus. Andernfalls wird der Regelsatz doppelt hinzugefügt. Stellen Sie sicher, dass keine entsprechenden Regeln für diese Ansprüche vorhanden sind (unter den jeweiligen Bedingungen), bevor Sie das Skript erneut ausführen.
 * Wenn Sie über mehrere verifizierte Domänennamen verfügen (wie im Azure AD-Portal oder über das Cmdlet **Get-MsolDomain** angegeben), legen Sie den Wert von **$multipleVerifiedDomainNames** im Skript auf **$true** fest. Entfernen Sie außerdem alle vorhandenen **issuerid**-Ansprüche, die unter Umständen von Azure AD Connect oder auf anderem Wege erstellt wurden. Hier sehen Sie ein Beispiel für diese Regel:
@@ -519,7 +522,7 @@ Ihr lokaler Verbunddienst muss das Ausstellen der Ansprüche **authenticationmet
 
 Wenn eine Anforderung dieser Art eingeht, muss der lokale Verbunddienst den Benutzer per integrierter Windows-Authentifizierung authentifizieren. Nach erfolgreicher Authentifizierung muss der Verbunddienst die beiden folgenden Ansprüche ausstellen:
 
-   `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/windows``http://schemas.microsoft.com/claims/wiaormultiauthn`
+   `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/windows` `http://schemas.microsoft.com/claims/wiaormultiauthn`
 
 In AD FS müssen Sie eine Ausstellungstransformationsregel hinzufügen, die die Authentifizierungsmethode durchläuft. Diese Regel wird wie folgt hinzugefügt:
 
@@ -527,13 +530,13 @@ In AD FS müssen Sie eine Ausstellungstransformationsregel hinzufügen, die die 
 1. Klicken Sie mit der rechten Maustaste auf das Vertrauensstellungsobjekt der vertrauenden Seite, „Microsoft Office 365 Identity Platform“, und wählen Sie dann **Anspruchsregeln bearbeiten** aus.
 1. Wählen Sie auf der Registerkarte **Ausstellungstransformationsregeln** die Option **Regel hinzufügen** aus.
 1. Wählen Sie in der Vorlagenliste **Anspruchsregel** die Option **Ansprüche mit benutzerdefinierter Regel senden** aus.
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 1. Geben Sie **Anspruchsregel für Authentifizierungsmethode** in das Textfeld **Anspruchsregelname** ein.
 1. Geben Sie im Feld **Anspruchsregel** die folgende Regel ein:
 
    `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-1. Geben Sie auf Ihrem Verbundserver den folgenden PowerShell-Befehl ein. Ersetzen Sie **\<RPObjectName\>** durch den Objektnamen der vertrauenden Seite für Ihr Azure AD-Vertrauensstellungsobjekt der vertrauenden Seite. Dieses Objekt trägt normalerweise den Namen **Microsoft Office 365 Identity Platform**.
+1. Geben Sie auf Ihrem Verbundserver den folgenden PowerShell-Befehl ein. Ersetzen Sie **\<RPObjectName\>** durch den Objektnamen der vertrauenden Seite für Ihr Azure AD-Vertrauensstellungsobjekt der vertrauenden Seite. Dieses Objekt trägt normalerweise den Namen **Microsoft Office 365 Identity Platform**.
 
    `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
@@ -549,16 +552,71 @@ Zum Registrieren von kompatiblen Windows-Geräten müssen Sie ein Windows Instal
 
 ## <a name="verify-joined-devices"></a>Überprüfen der eingebundenen Geräte
 
-Sie können die erfolgreiche Einbindung für die Geräte Ihrer Organisation überprüfen, indem Sie das Cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) im [Azure Active Directory PowerShell-Modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0) verwenden.
+Im Folgenden finden Sie drei Möglichkeiten, den Gerätezustand zu finden und zu überprüfen:
 
-In der Ausgabe dieses Cmdlets werden Geräte angezeigt, die in Azure AD registriert und eingebunden sind. Verwenden Sie zum Abrufen aller Geräte den Parameter **-All**, und filtern Sie sie anschließend mithilfe der Eigenschaft **deviceTrustType**. In die Domäne eingebundene Geräte weisen den Wert **In die Domäne eingebunden** auf.
+### <a name="locally-on-the-device"></a>Lokal auf dem Gerät
+
+1. Öffnen Sie Windows PowerShell.
+2. Geben Sie `dsregcmd /status` ein.
+3. Überprüfen Sie, ob sowohl **AzureAdJoined-** als auch **DomainJoined** auf **YES** festgelegt sind.
+4. Sie können die **DeviceId** verwenden und den Status des Diensts entweder ium Azure-Portal oder mithilfe der PowerShell vergleichen.
+
+### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
+
+1. Wechseln Sie zur Geräteseite über einen [direkten Link](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices).
+2. Informationen, wie Sie ein Gerät lokalisieren können, finden Sie unter [Verwalten von Geräteidentitäten mit dem Azure-Portal](./device-management-azure-portal.md#manage-devices).
+3. Wenn in der Spalte **Registriert** der Wert **Ausstehend** angezeigt wird, wurde Azure AD Hybrid Join nicht abgeschlossen. In Verbundumgebungen kann es hierzu nur kommen, wenn die Registrierung fehlgeschlagen ist und AAD Connect für die Synchronisierung der Geräte konfiguriert ist.
+4. Wenn die Spalte **Registriert** einen **Datum/Uhrzeit**-Wert enthält, wurde Azure AD Hybrid Join abgeschlossen.
+
+### <a name="using-powershell"></a>PowerShell
+
+Überprüfen Sie den Geräteregistrierungsstatus in Ihrem Azure-Mandanten mithilfe von **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** . Dieses Cmdlet befindet sich im [Azure Active Directory PowerShell-Modul](/powershell/azure/active-directory/install-msonlinev1).
+
+Bei Verwendung des Cmdlets **Get-MSolDevice** zur Überprüfung der Dienstdetails:
+
+- Ein Objekt mit der **Geräte-ID**, die der ID auf dem Windows-Client entspricht, muss vorhanden sein.
+- Der Wert für **DeviceTrustType** ist **Domänenbeitritt**. Diese Einstellung entspricht dem Status **Hybrid in Azure AD eingebunden** auf der Seite **Geräte** im Azure AD-Portal.
+- Für Geräte, die für den bedingten Zugriff verwendet werden, hat **Aktiviert** den Wert **True** und **DeviceTrustLevel** den Wert **Verwaltet**.
+
+1. Öffnen Sie Windows PowerShell als Administrator.
+2. Geben Sie `Connect-MsolService` ein, um die Verbindung mit Ihrem Azure-Mandanten herzustellen.
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>Zählen Sie alle in Azure AD Hybrid eingebundenen Geräte (ausgenommen der Zustand **Ausstehend**).
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Zählen Sie alle in Azure AD Hybrid eingebundenen Geräte mit dem Zustand **Ausstehend**.
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>Listen Sie alle in Hybrid Azure AD eingebundenen Geräte auf.
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Listen Sie alle in Azure AD Hybrid eingebundenen Geräte mit dem Zustand **Ausstehend** auf.
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-details-of-a-single-device"></a>Details einen einzelnen Geräts auflisten:
+
+1. Geben Sie `get-msoldevice -deviceId <deviceId>` ein (Dies ist die lokal auf dem Gerät abgerufene **DeviceId**).
+2. Vergewissern Sie sich, dass **Aktiviert** auf **True** festgelegt ist.
 
 ## <a name="troubleshoot-your-implementation"></a>Problembehandlung bei der Implementierung
 
-Sollten bei der Azure AD-Hybrideinbindung für in Domänen eingebundene Windows-Geräte Probleme auftreten, finden Sie weitere Informationen unter:
+Sollten bei der Azure AD-Hybrideinbindung für in Domänen eingebundene Windows-Geräte Probleme auftreten, finden Sie weitere Informationen unter:
 
-* [Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte](troubleshoot-hybrid-join-windows-current.md)
-* [Problembehandlung für in Azure AD eingebundene kompatible Windows-Hybridgeräte](troubleshoot-hybrid-join-windows-legacy.md)
+- [Problembehandlung von Geräten mit dem Befehl „dsregcmd“](./troubleshoot-device-dsregcmd.md)
+- [Beheben von Problemen mit Geräten mit Hybrid-Azure Active Directory-Einbindung](troubleshoot-hybrid-join-windows-current.md)
+- [Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

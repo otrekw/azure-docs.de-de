@@ -2,28 +2,22 @@
 title: Microsoft Identity Platform – Glossar für Entwickler | Azure
 description: Eine Liste von Begriffen für häufig verwendete Konzepte und Features für Entwickler von Microsoft Identity Platform.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/21/2019
+ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6b7c732a0af7fb3519cf255fa26478cd9ae82d2
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835120"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90705995"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform – Glossar für Entwickler
 
@@ -32,6 +26,8 @@ Dieser Artikel enthält Definitionen für einige der zentralen Entwicklerkonzept
 ## <a name="access-token"></a>Zugriffstoken
 
 Eine Art von [Sicherheitstoken](#security-token). Wird von einem [Autorisierungsserver](#authorization-server) ausgestellt und von einer [Clientanwendung](#client-application) für den Zugriff auf einen [geschützten Ressourcenserver](#resource-server) verwendet. Das Token liegt in der Regel in Form eines [JSON Web Token (JWT)][JWT] vor und stellt die Autorisierung dar, die dem Client durch den [Ressourcenbesitzer](#resource-owner) für eine angeforderte Zugriffsstufe gewährt wurde. Das Token enthält alle geltenden [Ansprüche](#claim) für den Antragsteller und kann von der Clientanwendung beim Zugriff auf eine bestimmte Ressource als eine Art von Anmeldeinformationen verwendet werden. Der Ressourcenbesitzer muss somit gegenüber dem Client keine Anmeldeinformationen angeben.
+
+Zugriffstoken sind nur für kurze Zeit gültig und können nicht widerrufen werden. Ein Autorisierungsserver kann auch ein [Aktualisierungstoken](#refresh-token) ausgeben, wenn das Zugriffstoken ausgestellt wird. Aktualisierungstoken werden in der Regel nur für vertrauliche Clientanwendungen bereitgestellt.
 
 Zugriffstoken werden abhängig von den vorgelegten Anmeldeinformationen gelegentlich auch als „Benutzer- und App-Token“ oder als „ App-exklusives Token“ bezeichnet. Beispielverwendungsszenarien für die Clientanwendung:
 
@@ -46,7 +42,7 @@ Der eindeutige Bezeichner, den Azure AD für eine Anwendungsregistrierung ausgib
 
 ## <a name="application-manifest"></a>Anwendungsmanifest
 
-Ein Feature des [Azure-Portals][AZURE-portal], das eine JSON-Darstellung der Identitätskonfiguration der Anwendung generiert. Diese wird als Mechanismus für die Aktualisierung der zugehörigen Entitäten [Anwendung][AAD-Graph-App-Entity] und [Dienstprinzipal][AAD-Graph-Sp-Entity] verwendet. Ausführlichere Informationen finden Sie unter [Grundlegendes zum Azure Active Directory-Anwendungsmanifest][AAD-App-Manifest].
+Ein Feature des [Azure-Portals][AZURE-portal], das eine JSON-Darstellung der Identitätskonfiguration der Anwendung generiert. Diese wird als Mechanismus für die Aktualisierung der zugehörigen Entitäten [Anwendung][Graph-App-Resource] und [Dienstprinzipal][Graph-Sp-Resource] verwendet. Ausführlichere Informationen finden Sie unter [Grundlegendes zum Azure Active Directory-Anwendungsmanifest][AAD-App-Manifest].
 
 ## <a name="application-object"></a>Anwendungsobjekt
 
@@ -101,7 +97,7 @@ Ein [Sicherheitstoken](#security-token) enthält Ansprüche, die Assertionen zu 
 
 Weitere Details finden Sie unter [Microsoft Identity Platform – Tokenreferenz][AAD-Tokens-Claims].
 
-## <a name="client-application"></a>Clientanwendung
+## <a name="client-application"></a>Clientanwendung (client application)
 
 Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] eine Anwendung, die im Auftrag des [Ressourcenbesitzers](#resource-owner) geschützte Ressourcen anfordert. Der Begriff „Client“ impliziert keine bestimmte Hardwareimplementierung (also beispielsweise, ob die Anwendung auf einem Server, Desktopcomputer oder anderen Gerät ausgeführt wird).
 
@@ -121,7 +117,7 @@ Weitere Details finden Sie unter [Microsoft Identity Platform – Tokenreferenz]
 
 ## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
 
-Die Microsoft Identity Platform ist eine Weiterentwicklung des Azure AD-Identitätsdiensts (Azure Active Directory) und der zugehörigen Entwicklerplattform. Sie ermöglicht Entwicklern das Erstellen von Anwendungen, mit denen alle Microsoft-Identitäten angemeldet werden, und das Erhalten von Token zum Aufrufen von Microsoft Graph, anderen Microsoft-APIs oder von Entwicklern erstellten APIs. Es handelt sich um eine Plattform mit vollem Funktionsumfang, die einen Authentifizierungsdienst, Bibliotheken, Anwendungsregistrierung und -konfiguration, eine vollständige Entwicklerdokumentation, Codebeispiele und andere Inhalte für Entwickler umfasst. Microsoft Identity Platform unterstützt die branchenüblichen Protokolle, z.B. OAuth 2.0 und OpenID Connect. Weitere Details finden Sie unter [Informationen zu Microsoft Identity Platform](about-microsoft-identity-platform.md).
+Microsoft Identity Platform ist eine Weiterentwicklung des Azure AD-Identitätsdiensts (Azure Active Directory) und der zugehörigen Entwicklerplattform. Sie ermöglicht Entwicklern das Erstellen von Anwendungen, mit denen alle Microsoft-Identitäten angemeldet werden, und das Abrufen von Token zum Aufrufen von Microsoft Graph, anderen Microsoft-APIs oder von Entwicklern erstellten APIs. Es handelt sich um eine Plattform mit vollem Funktionsumfang, die einen Authentifizierungsdienst, Bibliotheken, Anwendungsregistrierung und -konfiguration, eine vollständige Entwicklerdokumentation, Codebeispiele und andere Inhalte für Entwickler umfasst. Microsoft Identity Platform unterstützt die branchenüblichen Protokolle, z.B. OAuth 2.0 und OpenID Connect.
 
 ## <a name="multi-tenant-application"></a>Mehrinstanzenfähige Anwendung
 
@@ -142,7 +138,13 @@ Eine [Clientanwendung](#client-application) erhält Zugriff auf einen [Ressource
 
 Darüber hinaus werden sie im Rahmen des [Zustimmungsprozesses](#consent) verwendet, um dem Administrator oder Ressourcenbesitzer die Möglichkeit zu geben, den Clientzugriff auf Ressourcen in seinem Mandanten zu gewähren oder zu verweigern.
 
-Berechtigungsanforderungen für eine Anwendung werden im [Azure-Portal][AZURE-portal] auf der Seite **API-Berechtigungen** konfiguriert. Hier wählen Sie die gewünschten delegierten Berechtigungen sowie die gewünschten Anwendungsberechtigungen aus (für Letzteres ist die globale Administratorrolle erforderlich). Da ein [öffentlicher Client](#client-application) die Anmeldeinformationen nicht sicher verwalten kann, kann er nur delegierte Berechtigungen anfordern. Ein [vertraulicher Client](#client-application) kann dagegen sowohl delegierte Berechtigungen als auch Anwendungsberechtigungen anfordern. Das [Anwendungsobjekt](#application-object) des Clients speichert die deklarierten Berechtigungen in der [requiredResourceAccess-Eigenschaft][AAD-Graph-App-Entity].
+Berechtigungsanforderungen für eine Anwendung werden im [Azure-Portal][AZURE-portal] auf der Seite **API-Berechtigungen** konfiguriert. Hier wählen Sie die gewünschten delegierten Berechtigungen sowie die gewünschten Anwendungsberechtigungen aus (für Letzteres ist die globale Administratorrolle erforderlich). Da ein [öffentlicher Client](#client-application) die Anmeldeinformationen nicht sicher verwalten kann, kann er nur delegierte Berechtigungen anfordern. Ein [vertraulicher Client](#client-application) kann dagegen sowohl delegierte Berechtigungen als auch Anwendungsberechtigungen anfordern. Das [Anwendungsobjekt](#application-object) des Clients speichert die deklarierten Berechtigungen in der [requiredResourceAccess-Eigenschaft][Graph-App-Resource].
+
+## <a name="refresh-token"></a>Aktualisierungstoken
+
+Eine Art von [Sicherheitstoken](#security-token). Wird von einem [Autorisierungsserver](#authorization-server) ausgestellt und von einer [Clientanwendung](#client-application) für die Anforderung eines neuen [Zugriffstokens](#access-token) verwendet, ehe das aktuelle Zugriffstoken abläuft. In der Regel in Form eines [JSON-Webtokens (JWT)][JWT].
+
+Im Gegensatz zu Zugriffstoken können Aktualisierungstoken widerrufen werden. Wenn eine Clientanwendung versucht, mithilfe eines widerrufenen Aktualisierungstokens ein neues Zugriffstoken anzufordern, lehnt der Autorisierungsserver die Anforderung ab, und die Clientanwendung hat keine Berechtigung mehr, im Auftrag des [Ressourcenbesitzer](#resource-owner) auf den [Ressourcenserver](#resource-server) zuzugreifen.
 
 ## <a name="resource-owner"></a>Ressourcenbesitzers
 
@@ -152,29 +154,29 @@ Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] eine E
 
 Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] ein Server, der geschützte Ressourcen hostet und von [Clientanwendungen](#client-application), die ein [Zugriffstoken](#access-token) vorlegen, Anforderungen für geschützte Ressourcen akzeptieren und darauf reagieren kann. Wird auch als geschützter Ressourcenserver oder als Ressourcenanwendung bezeichnet.
 
-Ein Ressourcenserver macht APIs verfügbar und steuert den Zugriff auf seine geschützten Ressourcen über [Bereiche](#scopes) und [Rollen](#roles) (unter Verwendung des OAuth 2.0-Autorisierungsframeworks). Beispiele wären etwa die Azure AD Graph-API (bietet Zugriff auf Azure AD-Mandantendaten) und die Office 365-APIs (bieten Zugriff auf Daten wie E-Mails, Kalender und Dokumente). Beide stehen auch über die [Microsoft Graph-API][Microsoft-Graph] zur Verfügung.
+Ein Ressourcenserver macht APIs verfügbar und steuert den Zugriff auf seine geschützten Ressourcen über [Bereiche](#scopes) und [Rollen](#roles) (unter Verwendung des OAuth 2.0-Autorisierungsframeworks). Beispiele wären etwa die [Microsoft Graph-API][Microsoft-Graph] (bietet Zugriff auf Azure AD-Mandantendaten) und die Microsoft 365-APIs (bieten Zugriff auf Daten wie E-Mails und Kalender).
 
-Genau wie bei einer Clientanwendung wird auch die Identitätskonfiguration einer Ressourcenanwendung mittels [Registrierung](#application-registration) bei einem Azure AD-Mandanten eingerichtet und sowohl ein Anwendungs- als auch ein Dienstprinzipalobjekt bereitgestellt. Einige von Microsoft bereitgestellte APIs (etwa die Azure AD Graph-API) verfügen über vorab registrierte Dienstprinzipale, die bei der Bereitstellung in allen Mandanten verfügbar gemacht wurden.
+Genau wie bei einer Clientanwendung wird auch die Identitätskonfiguration einer Ressourcenanwendung mittels [Registrierung](#application-registration) bei einem Azure AD-Mandanten eingerichtet und sowohl ein Anwendungs- als auch ein Dienstprinzipalobjekt bereitgestellt. Einige von Microsoft bereitgestellte APIs (etwa die Microsoft Graph-API) verfügen über vorab registrierte Dienstprinzipale, die bei der Bereitstellung in allen Mandanten verfügbar gemacht wurden.
 
 ## <a name="roles"></a>roles
 
 Mithilfe von Rollen kann ein [Ressourcenserver](#resource-server) ähnlich wie mit [Bereichen](#scopes) den Zugriff auf seine geschützten Ressourcen steuern. Zwei Arten stehen zur Verfügung: Eine Benutzerrolle implementiert eine rollenbasierte Zugriffssteuerung für Benutzer/Gruppen, die Zugriff auf die Ressource benötigen. Eine Anwendungsrolle implementiert das Gleiche für [Clientanwendungen](#client-application), die Zugriff benötigen.
 
-Bei Rollen handelt es sich um ressourcendefinierte Zeichenfolgen (wie etwa „Ausgabengenehmiger“, „Schreibgeschützt“, „Directory.ReadWrite.All“). Sie werden im [Azure-Portal][AZURE-portal] über das [Anwendungsmanifest](#application-manifest) der Ressource verwaltet und in der [appRoles-Eigenschaft][AAD-Graph-Sp-Entity] der Ressource gespeichert. Über das Azure-Portal können Benutzer zu Benutzerrollen zugewiesen und [Clientanwendungsberechtigungen](#permissions) für den Zugriff auf eine Anwendungsrolle konfiguriert werden.
+Bei Rollen handelt es sich um ressourcendefinierte Zeichenfolgen (wie etwa „Ausgabengenehmiger“, „Schreibgeschützt“, „Directory.ReadWrite.All“). Sie werden im [Azure-Portal][AZURE-portal] über das [Anwendungsmanifest](#application-manifest) der Ressource verwaltet und in der [appRoles-Eigenschaft][Graph-Sp-Resource] der Ressource gespeichert. Über das Azure-Portal können Benutzer zu Benutzerrollen zugewiesen und [Clientanwendungsberechtigungen](#permissions) für den Zugriff auf eine Anwendungsrolle konfiguriert werden.
 
-Ausführliche Informationen zu den Anwendungsrollen, die von der Graph-API von Azure AD verfügbar gemacht werden, finden Sie unter [Graph-API-Berechtigungsbereiche][AAD-Graph-Perm-Scopes]. Ein Beispiel einer schrittweisen Implementierung finden Sie unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen][AAD-RBAC].
+Ausführliche Informationen zu den Anwendungsrollen, die von der Microsoft Graph-API verfügbar gemacht werden, finden Sie unter [Graph-API-Berechtigungsbereiche][Graph-Perm-Scopes]. Ein ausführliches Implementierungsbeispiel finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe des Azure-Portals][AAD-RBAC].
 
 ## <a name="scopes"></a>Bereiche
 
 Mithilfe von Bereichen kann ein [Ressourcenserver](#resource-server) ähnlich wie mit [Rollen](#roles) den Zugriff auf seine geschützten Ressourcen steuern. Bereiche dienen zum Implementieren einer [bereichsbasierten][OAuth2-Access-Token-Scopes] Zugriffssteuerung für eine [Clientanwendung](#client-application), der durch den Ressourcenbesitzer delegierter Zugriff auf die Ressource gewährt wurde.
 
-Bei Bereichen handelt es sich um ressourcendefinierte Zeichenfolgen (wie etwa „Mail.Read“, „Directory.ReadWrite.All“). Sie werden im [Azure-Portal][AZURE-portal] über das [Anwendungsmanifest](#application-manifest) der Ressource verwaltet und in der [oauth2Permissions-Eigenschaft][AAD-Graph-Sp-Entity] der Ressource gespeichert. Über das Azure-Portal können zudem [delegierte Berechtigungen](#permissions) für Clientanwendungen konfiguriert werden, die Zugriff auf einen Bereich ermöglichen.
+Bei Bereichen handelt es sich um ressourcendefinierte Zeichenfolgen (wie etwa „Mail.Read“, „Directory.ReadWrite.All“). Sie werden im [Azure-Portal][AZURE-portal] über das [Anwendungsmanifest](#application-manifest) der Ressource verwaltet und in der [oauth2Permissions-Eigenschaft][Graph-Sp-Resource] der Ressource gespeichert. Über das Azure-Portal können zudem [delegierte Berechtigungen](#permissions) für Clientanwendungen konfiguriert werden, die Zugriff auf einen Bereich ermöglichen.
 
-Als Benennungskonvention hat sich das Format „Ressource.Vorgang.Einschränkung“ bewährt. Ausführliche Informationen zu den Bereichen, die von der Azure AD Graph-API verfügbar gemacht werden, finden Sie unter [Graph-API-Berechtigungsbereiche][AAD-Graph-Perm-Scopes]. Informationen zu von Office 365-Diensten verfügbar gemachten Bereichen finden Sie unter [Office 365 API permissions reference][O365-Perm-Ref] (API-Berechtigungsreferenz für Office 365).
+Als Benennungskonvention hat sich das Format „Ressource.Vorgang.Einschränkung“ bewährt. Ausführliche Informationen zu den Bereichen, die von der Microsoft Graph-API verfügbar gemacht werden, finden Sie unter [Graph-API-Berechtigungsbereiche][Graph-Perm-Scopes]. Informationen zu von Microsoft 365-Diensten verfügbar gemachten Bereichen finden Sie unter [Referenz für Microsoft 365-API-Berechtigungen][O365-Perm-Ref].
 
 ## <a name="security-token"></a>Sicherheitstoken
 
-Ein signiertes Dokument mit Ansprüchen (etwa ein OAuth2-Token oder eine SAML 2.0-Assertion). Im Falle einer OAuth2-[Autorisierungsgewährung](#authorization-grant) handelt es sich bei einem [Zugriffstoken](#access-token) (OAuth2) und einem [ID-Token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) um Arten von Sicherheitstoken, und beide werden jeweils als [JSON Web Token (JWT)][JWT] implementiert.
+Ein signiertes Dokument mit Ansprüchen (etwa ein OAuth2-Token oder eine SAML 2.0-Assertion). Bei einer OAuth2-[Autorisierungsgewährung](#authorization-grant) zählen [Zugriffstoken](#access-token) (OAuth2), [Aktualisierungstoken](#refresh-token) und [ID-Token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) zu den Sicherheitstoken, die alle als [JSON Web Token (JWT)][JWT] implementiert werden.
 
 ## <a name="service-principal-object"></a>Dienstprinzipalobjekt
 
@@ -200,7 +202,7 @@ Eine Instanz eines Azure AD-Verzeichnisses wird als Azure AD-Mandant bezeichnet.
 * Authentifizierung von Benutzerkonten und registrierten Anwendungen
 * REST-Endpunkte, die zur Unterstützung verschiedener Protokolle (einschließlich OAuth2 und SAML) erforderlich sind, z.B. der [Autorisierungsendpunkt](#authorization-endpoint), der [Tokenendpunkt](#token-endpoint) und der allgemeine, von [mehrinstanzenfähigen Anwendungen](#multi-tenant-application) verwendete Endpunkt.
 
-Azure AD-Mandanten werden mit Azure- und Office 365-Abonnements während der Registrierung erstellt/zugewiesen und stellen Identity & Access Management-Features für das Abonnement bereit. Azure-Abonnementadministratoren können auch zusätzliche Azure AD-Mandanten über das Azure-Portal erstellen. Ausführliche Informationen zu den verschiedenen Möglichkeiten für den Zugriff auf einen Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten][AAD-How-To-Tenant]. Unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory][AAD-How-Subscriptions-Assoc] erfahren Sie mehr über die Beziehung zwischen Abonnements und Azure AD-Mandanten.
+Azure AD-Mandanten werden mit Azure- und Microsoft 365-Abonnements bei der Registrierung erstellt/zugewiesen und stellen Identity & Access Management-Features für das Abonnement bereit. Azure-Abonnementadministratoren können auch zusätzliche Azure AD-Mandanten über das Azure-Portal erstellen. Ausführliche Informationen zu den verschiedenen Möglichkeiten für den Zugriff auf einen Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten][AAD-How-To-Tenant]. Einzelheiten zur Beziehung zwischen Abonnements und einem Azure AD-Mandanten sowie Anweisungen zum Zuordnen oder Hinzufügen eines Abonnements zu einem Azure AD-Mandanten finden Sie unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten][AAD-How-Subscriptions-Assoc].
 
 ## <a name="token-endpoint"></a>Tokenendpunkt
 
@@ -212,7 +214,7 @@ Ein Typ von [Clientanwendung](#client-application), der Code von einem Webserver
 
 ## <a name="user-principal"></a>Benutzerprinzipal
 
-Ein Benutzerprinzipalobjekt ist (ähnlich wie ein Dienstprinzipalobjekt, das eine Anwendungsinstanz darstellt) eine weitere Art von Sicherheitsprinzipal und stellt einen Benutzer dar. Die Azure AD Graph-[Benutzerentität][AAD-Graph-User-Entity] definiert das Schema für ein Benutzerobjekt, einschließlich benutzerbezogener Eigenschaften wie Vorname und Nachname, Benutzerprinzipalname, Verzeichnisrollenmitgliedschaft usw. Dadurch kann die Konfiguration der Benutzeridentität für Azure AD bei der Ausführung einen Benutzerprinzipalnamen erstellen. Der Benutzerprinzipal stellt bei der Erfassung der Delegierung der [Zustimmung](#consent) sowie bei Zugriffssteuerungsentscheidungen und Ähnlichem einen authentifizierten Benutzer für das einmalige Anmelden dar.
+Ein Benutzerprinzipalobjekt ist (ähnlich wie ein Dienstprinzipalobjekt, das eine Anwendungsinstanz darstellt) eine weitere Art von Sicherheitsprinzipal und stellt einen Benutzer dar. Der Microsoft Graph-[Benutzerressourcentyp][Graph-User-Resource] definiert das Schema für ein Benutzerobjekt, einschließlich benutzerbezogener Eigenschaften wie Vorname und Nachname, Benutzerprinzipalname, Verzeichnisrollenmitgliedschaft usw. Dadurch kann die Konfiguration der Benutzeridentität für Azure AD bei der Ausführung einen Benutzerprinzipalnamen erstellen. Der Benutzerprinzipal stellt bei der Erfassung der Delegierung der [Zustimmung](#consent) sowie bei Zugriffssteuerungsentscheidungen und Ähnlichem einen authentifizierten Benutzer für das einmalige Anmelden dar.
 
 ## <a name="web-client"></a>Webclient
 
@@ -231,10 +233,10 @@ Senden Sie uns im folgenden Abschnitt für Kommentare Ihr Feedback, und unterst�
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
-[AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
-[AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
-[AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
+[Graph-Perm-Scopes]: /graph/permissions-reference
+[Graph-App-Resource]: /graph/api/resources/application
+[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-User-Resource]: /graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-How-To-Tenant]:quickstart-create-new-tenant.md
@@ -246,7 +248,7 @@ Senden Sie uns im folgenden Abschnitt für Kommentare Ihr Feedback, und unterst�
 [AAD-RBAC]: ../../role-based-access-control/role-assignments-portal.md
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [Microsoft-Graph]: https://developer.microsoft.com/graph
-[O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
+[O365-Perm-Ref]: /graph/permissions-reference
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
 [OAuth2-AuthZ-Endpoint]: https://tools.ietf.org/html/rfc6749#section-3.1
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3

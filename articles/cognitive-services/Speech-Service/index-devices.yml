@@ -1,0 +1,58 @@
+### YamlMime:Landing
+title: Dokumentation zu Speech-Geräten
+summary: Beim Speech-Geräte-SDK handelt es sich um eine vorab optimierte Bibliothek, die mit spezifischen mikrofonfähigen Development Kits kombiniert wurde.
+metadata:
+  title: 'Dokumentation zu Speech-Geräten: Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: trevorbye
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 03/10/2020
+  ms.author: trbye
+  ms.openlocfilehash: 66b4ec0186864e443babae0c26094bc4f613e67b
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92756907"
+landingContent:
+- title: Informationen zum Speech Devices SDK
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist das Speech Devices SDK?
+      url: speech-devices-sdk.md
+  - linkListType: quickstart
+    links:
+    - text: Verwenden des Speech Devices SDK (Windows)
+      url: speech-devices-sdk-quickstart.md?pivots=platform-windows
+    - text: Verwenden des Speech Devices SDK (Linux)
+      url: speech-devices-sdk-quickstart.md?pivots=platform-linux
+    - text: Verwenden des Speech Devices SDK (Android)
+      url: speech-devices-sdk-quickstart.md?pivots=platform-android
+- title: Entwickeln mit dem Speech Devices SDK
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Entwerfen eines Mikrofonarrays
+      url: speech-devices-sdk-microphone.md
+    - text: Einrichten des Roobo v1-Kits
+      url: speech-devices-sdk-roobo-v1.md
+- title: Verweis
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Versionshinweise
+      url: devices-sdk-release-notes.md
+  - linkListType: reference
+    links:
+    - text: Problembehandlung
+      url: speech-devices-sdk-troubleshooting.md
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

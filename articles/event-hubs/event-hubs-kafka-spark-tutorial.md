@@ -1,24 +1,17 @@
 ---
 title: 'Herstellen einer Verbindung mit Ihrer Apache Spark-App: Azure Event Hubs | Microsoft-Dokumentation'
 description: Dieser Artikel enthält Informationen zur Verwendung von Apache Spark mit Azure Event Hubs für Kafka.
-services: event-hubs
-documentationcenter: .net
-author: basilhariri
-manager: timlt
-ms.service: event-hubs
-ms.topic: tutorial
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: 93fdd85d1fd1b91e01d8f38b4890e1b588a5c704
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.topic: how-to
+ms.date: 06/23/2020
+ms.openlocfilehash: 84184ed3dffee97863b93c592d1cd577df313605
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091236"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913737"
 ---
-# <a name="connect-your-apache-spark-application-with-kafka-enabled-azure-event-hubs"></a>Herstellen einer Verbindung zwischen Ihrer Apache Spark-Anwendung und einer Kafka-fähigen Azure Event Hubs-Instanz
-In diesem Tutorial wird ausführlich beschrieben, wie Sie zum Zweck des Echtzeitstreamings eine Verbindung zwischen Ihrer Spark-Anwendung und einer Kafka-fähigen Event Hubs-Instanz herstellen. Diese Integration ermöglicht das Streaming, ohne dass die Protokollclients geändert oder eigene Kafka- oder Zookeeper-Cluster ausgeführt werden müssen. Für dieses Tutorial sind mindestens Apache Spark v2.4 und Apache Kafka v2.0 erforderlich.
+# <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Herstellen einer Verbindung zwischen Ihrer Apache Spark-Anwendung und Azure Event Hub
+In diesem Tutorial wird ausführlich beschrieben, wie Sie zum Zweck des Echtzeitstreamings eine Verbindung zwischen Ihrer Spark-Anwendung und einer Event Hubs-Instanz herstellen. Diese Integration ermöglicht Streaming, ohne dass die Protokollclients geändert oder eigene Kafka- oder Zookeeper-Cluster ausgeführt werden müssen. Für dieses Tutorial sind mindestens Apache Spark v2.4 und Apache Kafka v2.0 erforderlich.
 
 > [!NOTE]
 > Dieses Beispiel ist auf [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark/) verfügbar.
@@ -44,7 +37,7 @@ Stellen Sie vor dem Ausführen dieses Tutorials sicher, dass Sie über Folgendes
 
 
 ## <a name="create-an-event-hubs-namespace"></a>Erstellen eines Event Hubs-Namespace
-Ein Event Hubs-Namespace ist erforderlich, um Nachrichten an einen Event Hubs-Dienst zu senden und von diesem zu empfangen. Eine Anleitung zum Abrufen eines Event Hubs-Kafka-Endpunkts finden Sie unter [Creating a Kafka enabled Event Hub](event-hubs-create.md) (Erstellen eines Kafka-fähigen Event Hub). Rufen Sie die Event Hubs-Verbindungszeichenfolge und den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) zur späteren Verwendung ab. Anweisungen hierzu finden Sie unter [Get an Event Hubs connection string](event-hubs-get-connection-string.md) (Abrufen einer Event Hubs-Verbindungszeichenfolge). 
+Ein Event Hubs-Namespace ist erforderlich, um Nachrichten an einen Event Hubs-Dienst zu senden und von diesem zu empfangen. Anweisungen zum Erstellen eines Namespace und eines Event Hub finden Sie unter [Erstellen eines Event Hubs](event-hubs-create.md). Rufen Sie die Event Hubs-Verbindungszeichenfolge und den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) zur späteren Verwendung ab. Anweisungen hierzu finden Sie unter [Get an Event Hubs connection string](event-hubs-get-connection-string.md) (Abrufen einer Event Hubs-Verbindungszeichenfolge). 
 
 ## <a name="clone-the-example-project"></a>Klonen des Beispielprojekts
 Klonen Sie das Azure Event Hubs-Repository, und navigieren Sie zum Unterordner `tutorials/spark`:
@@ -69,7 +62,7 @@ val df = spark.readStream
     .option("kafka.request.timeout.ms", "60000")
     .option("kafka.session.timeout.ms", "30000")
     .option("kafka.group.id", GROUP_ID)
-    .option("failOnDataLoss", "false")
+    .option("failOnDataLoss", "true")
     .load()
 
 //Use dataframe like normal (in this example, write to console)
@@ -100,24 +93,12 @@ df.writeStream
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu Event Hubs und Event Hubs für Kafka finden Sie in folgenden Artikeln:  
 
-In diesem Tutorial haben Sie gelernt, wie Sie mit dem Spark-Kafka-Connector und Event Hubs für Kafka streamen. Sie haben die folgenden Schritte ausgeführt: 
-
-> [!div class="checklist"]
-> * Erstellen eines Event Hubs-Namespace
-> * Klonen des Beispielprojekts
-> * Ausführen von Spark
-> * Lesen aus Event Hubs für Kafka
-> * Schreiben in Event Hubs für Kafka
-
-Weitere Informationen zu Event Hubs und Event Hubs für Kafka finden Sie unter folgendem Thema:  
-
-- [Informationen zu Event Hubs](event-hubs-what-is-event-hubs.md)
-- [Event Hubs für Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Erstellen von Kafka-fähigen Event Hubs](event-hubs-create-kafka-enabled.md)
-- [Streamen von Ereignissen in Event Hubs aus Kafka-Anwendungen](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Spiegeln eines Kafka-Brokers in einem Kafka-fähigen Event Hub](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Verwenden von Apache Flink mit Azure Event Hubs für Apache Kafka](event-hubs-kafka-flink-tutorial.md)
-- [Integrieren von Kafka Connect in einen Kafka-fähigen Event Hub](event-hubs-kafka-connect-tutorial.md)
-- [Verbinden von Akka Streams mit einem Kafka-fähigen Event Hub](event-hubs-kafka-akka-streams-tutorial.md)
+- [Spiegeln eines Kafka-Brokers in einem Event Hub](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Verbinden von Apache Flink mit einem Event Hub](event-hubs-kafka-flink-tutorial.md)
+- [Integrieren von Kafka Connect in einen Event Hub](event-hubs-kafka-connect-tutorial.md)
 - [Erkunden von Beispielen auf GitHub](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [Verbinden von Akka Streams mit einem Event Hub](event-hubs-kafka-akka-streams-tutorial.md)
+- [Apache Kafka-Entwicklerleitfaden für Azure Event Hubs](apache-kafka-developer-guide.md)
+

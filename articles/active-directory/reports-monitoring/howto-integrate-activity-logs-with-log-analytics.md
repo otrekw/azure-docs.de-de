@@ -3,26 +3,26 @@ title: Streamen von Azure Active Directory-Protokollen in Azure Monitor-Protokol
 description: Hier erfahren Sie, wie Sie Azure Active Directory-Protokolle in Azure Monitor-Protokolle integrieren.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bffe16d604ac6b86b489092f50fbdc0b856867b3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 85e6a66f4520f12278266203211e1d1ae224c97f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989770"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180454"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle
 
@@ -46,6 +46,7 @@ Sie können Überwachungs- und Anmeldeaktivitätsprotokolle zur weiteren Analyse
 
 * **Überwachungsprotokolle**: Mit dem [Aktivitätsbericht zu Überwachungsprotokollen](concept-audit-logs.md) erhalten Sie Zugriff auf den Verlauf aller Aufgaben, die in Ihrem Mandanten durchgeführt werden.
 * **Anmeldeprotokolle**: Mit dem [Aktivitätsbericht zu Anmeldungen](concept-sign-ins.md) können Sie ermitteln, von wem die Aufgaben durchgeführt wurden, die in den Überwachungsprotokollen aufgeführt sind.
+* **Bereitstellungsprotokolle:** Mithilfe von [Bereitstellungsprotokollen](../app-provisioning/application-provisioning-log-analytics.md) können Sie überwachen, welche Benutzer in allen Ihren Anwendungen von Drittanbietern erstellt, aktualisiert und gelöscht wurden. 
 
 > [!NOTE]
 > B2C-bezogene Aktivitätsprotokolle für Überwachungen und Anmeldungen werden derzeit nicht unterstützt.
@@ -58,7 +59,11 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 * Ein Azure-Abonnement. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für eine kostenlose Testversion registrieren](https://azure.microsoft.com/free/).
 * Einen Azure AD-Mandanten.
 * Einen Benutzer, der als *globaler Administrator* oder *Sicherheitsadministrator* für den Azure AD-Mandanten fungiert.
-* Einen Log Analytics-Arbeitsbereich in Ihrem Azure-Abonnement. Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie [hier](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+* Einen Log Analytics-Arbeitsbereich in Ihrem Azure-Abonnement. Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie [hier](../../azure-monitor/learn/quick-create-workspace.md).
+
+## <a name="licensing-requirements"></a>Lizenzanforderungen
+
+Für die Verwendung dieses Features ist eine Azure AD Premium P1- oder P2-Lizenz erforderlich. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich: Allgemein verfügbare Features der Editionen Free, Basic und Premium](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="send-logs-to-azure-monitor"></a>Senden von Protokollen an Azure Monitor
 

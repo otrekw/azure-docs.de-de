@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 53ea54406969d246845018191960b13b8ee9a08a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 806f175db2abefd6bebcd875c7adf4eb22f57f58
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61129762"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89257363"
 ---
-# <a name="h264-multiple-bitrate-1080p-audio-51"></a>H264 Multiple Bitrate 1080p Audio 5.1 
+# <a name="h264-multiple-bitrate-1080p-audio-51"></a>H264 Multiple Bitrate 1080p Audio 5.1
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 `Media Encoder Standard` definiert eine Reihe von Codierungsvoreinstellungen, die Sie beim Erstellen von Codierungsaufträgen verwenden können. Sie können mithilfe von `preset name` angeben, in welchem Format Ihre Mediendatei codiert werden soll. Oder Sie erstellen eigene JSON- oder XML-basierte Voreinstellungen (mithilfe von UTF-8- oder UTF-16-Codierung). In diesem Fall übergeben Sie die benutzerdefinierte Voreinstellung dann an den Encoder. Eine Liste aller von diesem `Media Encoder Standard`-Encoder unterstützten Voreinstellungsnamen finden Sie unter [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md) (Aufgabenvoreinstellungen für Media Encoder Standard).  
   
@@ -30,7 +32,7 @@ ms.locfileid: "61129762"
  Diese Voreinstellung erzeugt einen Satz von acht MP4-Dateien mit GOP-Ausrichtung mit Werten zwischen 6.000 KBit/s und 400 KBit/s sowie AAC 5.1-Audio. Ausführliche Informationen zu Profil, Bitrate, Samplingrate usw. dieser Voreinstellung finden Sie im unten aufgeführten XML- bzw. JSON-Code. Erläuterungen zur Bedeutung der einzelnen Elemente sowie gültige Werte für jedes Element finden Sie unter [Media Encoder Standard schema](media-services-mes-schema.md) (Media Encoder Standard-Schema).  
   
 > [!NOTE]
->  Stellen Sie bei einer ebenenübergreifenden Änderung der Werte `Width` und `Height` sicher, dass das Seitenverhältnis konsistent bleibt. Beispiel:  1.920 × 1.080, 1.280 × 720, 1.080 × 576, 640 × 360. Sie sollten keine Mischung von Seitenverhältnissen wie etwa 1.280 × 720, 720 × 480 oder 640 × 360 verwenden.  
+>  Stellen Sie bei einer ebenenübergreifenden Änderung der Werte `Width` und `Height` sicher, dass das Seitenverhältnis konsistent bleibt. Beispiel: 1.920 × 1.080, 1.280 × 720, 1.080 × 576, 640 × 360. Sie sollten keine Mischung von Seitenverhältnissen wie etwa 1.280 × 720, 720 × 480 oder 640 × 360 verwenden.  
   
  XML  
   

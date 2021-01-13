@@ -1,26 +1,26 @@
 ---
-title: 'Tutorial: Bereitstellen einer ASP.NET Core-App in Azure Service Fabric mithilfe von Azure DevOps Projects'
-description: Azure DevOps Projects erleichtert die ersten Schritte mit Azure. Mit Azure DevOps Projects können Sie in wenigen Schritten Ihre ASP.NET Core-App in Azure Service Fabric bereitstellen.
+title: 'Tutorial: Bereitstellen einer ASP.NET Core-App in Azure Service Fabric mithilfe von Azure DevOps Starter'
+description: Azure DevOps Starter erleichtert die ersten Schritte mit Azure. Mit Azure DevOps Projects können Sie in wenigen Schritten Ihre ASP.NET Core-App in Azure Service Fabric bereitstellen.
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
-ms.date: 07/09/2018
+ms.date: 03/24/2020
 author: mlearned
-monikerRange: vsts
-ms.openlocfilehash: 8ba217cb9ce849e57b15d3e6cc73529c78bf340e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 723f46652643883dc8e718468a9ca9eead50e1aa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453756"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856023"
 ---
-# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>Tutorial: Bereitstellen einer ASP.NET Core-App in Azure Service Fabric mithilfe von Azure DevOps Projects
+# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-starter"></a>Tutorial: Bereitstellen einer ASP.NET Core-App in Azure Service Fabric mithilfe von Azure DevOps Starter
 
-Azure DevOps Projects bietet eine vereinfachte Umgebung, in der Sie Ihren vorhandenen Code und Ihr Git-Repository verwenden oder eine Beispielanwendung auswählen können, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen. 
+Azure DevOps Starter bietet eine vereinfachte Umgebung, in der Sie Ihren vorhandenen Code und Ihr Git-Repository verwenden oder eine Beispielanwendung auswählen können, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen. 
 
-Von DevOps Projects werden darüber hinaus die folgenden Aktionen ausgeführt:
+DevOps Starter ermöglicht außerdem:
+
 * Automatisches Erstellen von Azure-Ressourcen wie Azure Service Fabric
 * Erstellen und Konfigurieren einer Releasepipeline in Azure DevOps, mit der eine CI/CD-Pipeline eingerichtet wird
 * Erstellen einer Azure Application Insights-Ressource für die Überwachung
@@ -28,7 +28,7 @@ Von DevOps Projects werden darüber hinaus die folgenden Aktionen ausgeführt:
 In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen einer ASP.NET Core-App und Bereitstellen dieser App in Service Fabric mithilfe von DevOps Projects
+> * Erstellen einer ASP.NET Core-App und Bereitstellen dieser App in Service Fabric mithilfe von DevOps Starter
 > * Konfigurieren von Azure DevOps und eines Azure-Abonnements 
 > * Überprüfen der CI-Pipeline
 > * Überprüfen der CD-Pipeline
@@ -39,17 +39,15 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 * Ein Azure-Abonnement. Über [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) erhalten Sie ein kostenloses Abonnement.
 
-## <a name="use-devops-projects-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabric"></a>Erstellen einer ASP.NET Core-App und Bereitstellen dieser App in Service Fabric mithilfe von DevOps Projects
+## <a name="use-devops-starter-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabric"></a>Erstellen einer ASP.NET Core-App und Bereitstellen dieser App in Service Fabric mithilfe von DevOps Starter
 
-Mit DevOps Projects wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie können eine neue Azure DevOps-Organisation erstellen oder eine bestehende Organisation verwenden. Ferner werden mit DevOps Projects Azure-Ressourcen wie ein Service Fabric-Cluster im Azure-Abonnement Ihrer Wahl erstellt.
+Mit DevOps Starter wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie können eine neue Azure DevOps-Organisation erstellen oder eine bestehende Organisation verwenden. Ferner werden mit DevOps Starter Azure-Ressourcen wie ein Service Fabric-Cluster im Azure-Abonnement Ihrer Wahl erstellt.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Wählen Sie im linken Bereich **Ressource erstellen**.
+1. Geben Sie in das Suchfeld **DevOps Starter** ein, und wählen sie die Option dann aus. Klicken Sie auf **Hinzufügen**, um einen neuen zu erstellen.
 
-1. Geben Sie in das Suchfeld **DevOps Projects** ein, und wählen sie dann **Erstellen** aus.
-
-    ![DevOps Projects-Dashboard](_img/azure-devops-project-github/fullbrowser.png)
+    ![Das DevOps Starter-Dashboard](_img/azure-devops-starter-aks/search-devops-starter.png) 
 
 1. Wählen Sie **.NET** und anschließend **Weiter** aus.
 
@@ -65,70 +63,56 @@ Mit DevOps Projects wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie k�
 
 1. Wählen Sie Ihr Azure-Abonnement.
 
-1. Wählen Sie **Änderung** aus, um zusätzliche Azure-Konfigurationseinstellungen anzuzeigen und die VM-Größe und Betriebssystem des Knotens für den Service Fabric-Cluster zu bestimmen.  
-    In diesem Bereich werden verschiedene Optionen zum Konfigurieren von Typ und Speicherort der Azure-Dienste angezeigt.
+1. Wählen Sie **Änderung** aus, um zusätzliche Azure-Konfigurationseinstellungen anzuzeigen und die VM-Größe und Betriebssystem des Knotens für den Service Fabric-Cluster zu bestimmen. In diesem Bereich werden verschiedene Optionen zum Konfigurieren von Typ und Speicherort der Azure-Dienste angezeigt.
  
 1. Beenden Sie den Konfigurationsbereich von Azure, und wählen Sie **Fertig** aus.  
     Nach einigen Minuten ist der Vorgang abgeschlossen. Eine ASP.NET Core-Beispiel-App wird in einem Git-Repository in Ihrer Azure DevOps-Organisation eingerichtet, ein Service Fabric-Cluster wird erstellt, eine CI/CD-Pipeline wird ausgeführt, und Ihre App wird in Azure bereitgestellt. 
 
-    Wenn alle diese Schritte abgeschlossen sind, wird das DevOps Project-Dashboard im Azure-Portal angezeigt. Sie können das DevOps Projects-Dashboard auch direkt im Azure-Portal über **Alle Ressourcen** aufrufen. 
+    Nachdem alle diese Schritte abgeschlossen wurden, wird das DevOps Starter-Dashboard im Azure-Portal angezeigt. Sie können das DevOps Starter-Dashboard auch direkt im Azure-Portal über **Alle Ressourcen** aufrufen. 
 
     Dieses Dashboard bietet Einblick in Ihr Azure DevOps-Coderepository, in Ihre CI/CD-Pipeline und in Ihren Service Fabric-Cluster. Sie können zusätzliche Optionen für Ihre CI/CD-Pipeline in Azure Repos konfigurieren. Wählen Sie auf der rechten Seite **Durchsuchen** aus, um Ihre ausgeführte App anzuzeigen.
 
 ## <a name="examine-the-ci-pipeline"></a>Überprüfen der CI-Pipeline
 
-Mit DevOps Projects wird automatisch eine CI/CD-Pipeline in Azure Pipelines konfiguriert. Sie können die Pipeline untersuchen und anpassen. Gehen Sie wie folgt vor, um sich damit vertraut zu machen:
+Mit DevOps Starter wird automatisch eine CI/CD-Pipeline in Azure Pipelines konfiguriert. Sie können die Pipeline untersuchen und anpassen. Gehen Sie wie folgt vor, um sich damit vertraut zu machen:
 
-1. Navigieren Sie zum DevOps Projects-Dashboard.
+1. Navigieren Sie zum DevOps Starter-Dashboard.
 
-1. Wählen Sie oben auf dem DevOps Projects-Dashboard die Option **Buildpipelines** aus.  
-    Auf einer Browserregisterkarte wird die Buildpipeline für Ihr neues Projekt angezeigt.
+1. Wählen Sie oben im DevOps Starter-Dashboard die Option **Buildpipelines** aus. Auf einer Browserregisterkarte wird die Buildpipeline für Ihr neues Projekt angezeigt.
 
-1. Zeigen Sie auf das Feld **Status**, und wählen Sie dann die Auslassungspunkte (...) aus.  
-    In einem Menü werden verschiedene Optionen angezeigt, etwa zum Einreihen eines neuen Builds in die Warteschlange, zum Anhalten eines Builds und zum Bearbeiten der Buildpipeline.
+1. Zeigen Sie auf das Feld **Status**, und wählen Sie dann die Auslassungspunkte (...) aus. In einem Menü werden verschiedene Optionen angezeigt, etwa zum Einreihen eines neuen Builds in die Warteschlange, zum Anhalten eines Builds und zum Bearbeiten der Buildpipeline.
 
 1. Wählen Sie **Bearbeiten** aus.
 
-1. In diesem Bereich können Sie sich die verschiedenen Aufgaben ansehen, die Sie für Ihre Buildpipeline ausführen können.  
-    Vom Build werden verschiedene Aufgaben durchgeführt. Beispielsweise werden Quellen aus dem Git-Repository abgerufen, Abhängigkeiten wiederhergestellt und für Bereitstellungen verwendete Ausgaben veröffentlicht.
+1. In diesem Bereich können Sie sich die verschiedenen Aufgaben ansehen, die Sie für Ihre Buildpipeline ausführen können. Vom Build werden verschiedene Aufgaben durchgeführt. Beispielsweise werden Quellen aus dem Git-Repository abgerufen, Abhängigkeiten wiederhergestellt und für Bereitstellungen verwendete Ausgaben veröffentlicht.
 
-1. Wählen Sie oben in der Buildpipeline den Buildpipelinenamen. 
+1. Wählen Sie oben in der Buildpipeline den Buildpipelinenamen aus. 
 
-1. Wählen Sie unter dem Buildpipelinenamen **Verlauf** aus.  
-    In diesem Bereich wird ein Überwachungsprotokoll mit den letzten Änderungen für den Build angezeigt. An der Buildpipeline vorgenommene Änderungen werden von Azure DevOps nachverfolgt, sodass Sie verschiedene Versionen vergleichen können.
+1. Wählen Sie unter dem Buildpipelinenamen **Verlauf** aus. In diesem Bereich wird ein Überwachungsprotokoll mit den letzten Änderungen für den Build angezeigt. An der Buildpipeline vorgenommene Änderungen werden von Azure DevOps nachverfolgt, sodass Sie verschiedene Versionen vergleichen können.
 
-1. Wählen Sie **Trigger** aus.  
-    Mit DevOps Projects wird automatisch ein CI-Trigger erstellt, und mit jedem für das Repository ausgeführten Commit wird ein neuer Build gestartet. Optional können Sie Branches in den CI-Prozess einbeziehen oder davon ausschließen.
+1. Wählen Sie **Trigger** aus. Mit DevOps Starter wird automatisch ein CI-Trigger erstellt, und mit jedem für das Repository ausgeführten Commit wird ein neuer Build gestartet. Optional können Sie Branches in den CI-Prozess einbeziehen oder davon ausschließen.
 
-1. Wählen Sie **Aufbewahrung** aus.  
-    Abhängig vom Szenario können Sie Richtlinien zum Aufbewahren oder Entfernen einer bestimmten Anzahl von Builds festlegen.
+1. Wählen Sie **Aufbewahrung** aus. Abhängig vom Szenario können Sie Richtlinien zum Aufbewahren oder Entfernen einer bestimmten Anzahl von Builds festlegen.
 
 ## <a name="examine-the-cd-pipeline"></a>Überprüfen der CD-Pipeline
 
-Mit DevOps Projects werden die erforderlichen Schritte zum Bereitstellen über Ihre Azure DevOps-Organisation in Ihrem Azure-Abonnement automatisch erstellt und konfiguriert. Diese Schritte umfassen die Konfiguration einer Azure-Dienstverbindung zur Authentifizierung von Azure DevOps für Ihr Azure-Abonnement. Die Automatisierung erstellt darüber hinaus eine Releasepipeline, mit der CD in Azure bereitgestellt wird. Gehen Sie wie folgt vor, um weitere Informationen zur Releasepipeline zu erhalten:
+Mit DevOps Starter werden die erforderlichen Schritte zum Bereitstellen über Ihre Azure DevOps-Organisation in Ihrem Azure-Abonnement automatisch erstellt und konfiguriert. Diese Schritte umfassen die Konfiguration einer Azure-Dienstverbindung zur Authentifizierung von Azure DevOps für Ihr Azure-Abonnement. Die Automatisierung erstellt darüber hinaus eine Releasepipeline, mit der CD in Azure bereitgestellt wird. Gehen Sie wie folgt vor, um weitere Informationen zur Releasepipeline zu erhalten:
 
-1. Wählen Sie **Build und Release** und anschließend **Releases** aus.  
-    DevOps Projects erstellt eine Releasepipeline zum Verwalten von Bereitstellungen in Azure.
+1. Wählen Sie **Build und Release** und anschließend **Releases** aus. DevOps Starter erstellt eine Releasepipeline zum Verwalten von Bereitstellungen in Azure.
 
-1. Wählen Sie neben Ihrer Releasepipeline die Auslassungspunkte (...) und anschließend **Bearbeiten** aus.  
-    Die Releasepipeline enthält eine *Pipeline*, die den Releaseprozess definiert.
+1. Wählen Sie neben Ihrer Releasepipeline die Auslassungspunkte (...) und anschließend **Bearbeiten** aus. Die Releasepipeline enthält eine *Pipeline*, die den Releaseprozess definiert.
 
-1. Wählen Sie unter **Artefakte** die Option **Ablegen** aus.  
-    Die zuvor untersuchte Buildpipeline erzeugt die für das Artefakt verwendete Ausgabe. 
+1. Wählen Sie unter **Artefakte** die Option **Ablegen** aus. Die zuvor untersuchte Buildpipeline erzeugt die für das Artefakt verwendete Ausgabe. 
 
-1. Wählen Sie rechts neben dem Symbol **Ablegen** die Option **Continuous Deployment-Trigger** aus.  
-    Diese Releasepipeline enthält einen aktivierten CD-Trigger. Jedes Mal, wenn ein neues Buildartefakt verfügbar ist, wird von diesem CD-Trigger eine Bereitstellung ausgeführt. Optional können Sie den Trigger deaktivieren, sodass Ihre Bereitstellungen manuell ausgeführt werden müssen. 
+1. Wählen Sie rechts neben dem Symbol **Ablegen** die Option **Continuous Deployment-Trigger** aus. Diese Releasepipeline enthält einen aktivierten CD-Trigger. Jedes Mal, wenn ein neues Buildartefakt verfügbar ist, wird von diesem CD-Trigger eine Bereitstellung ausgeführt. Optional können Sie den Trigger deaktivieren, sodass Ihre Bereitstellungen manuell ausgeführt werden müssen. 
 
 1. Wählen Sie auf der rechten Seite **Releases anzeigen** aus, um einen Releaseverlauf anzuzeigen.
 
-1. Wählen Sie neben einem Release die Auslassungspunkte (...) und anschließend **Öffnen** aus.  
-    Sie können sich verschiedene Menüs ansehen, etwa eine Releasezusammenfassung, zugeordnete Arbeitselemente und Tests.
+1. Wählen Sie neben einem Release die Auslassungspunkte (...) und anschließend **Öffnen** aus. Sie können sich verschiedene Menüs ansehen, etwa eine Releasezusammenfassung, zugeordnete Arbeitselemente und Tests.
 
-1. Wählen Sie **Commits** aus.  
-    In dieser Ansicht werden die dieser Bereitstellung zugeordneten Codecommits angezeigt. Vergleichen Sie Releases, um die Commitunterschiede zwischen den einzelnen Bereitstellungen anzuzeigen.
+1. Wählen Sie **Commits** aus. In dieser Ansicht werden die dieser Bereitstellung zugeordneten Codecommits angezeigt. Vergleichen Sie Releases, um die Commitunterschiede zwischen den einzelnen Bereitstellungen anzuzeigen.
 
-1. Wählen Sie **Protokolle** aus.  
-    Die Protokolle enthalten nützliche Informationen zum Bereitstellungsprozess. Sie können während und nach Bereitstellungen angezeigt werden.
+1. Wählen Sie **Protokolle** aus. Die Protokolle enthalten nützliche Informationen zum Bereitstellungsprozess. Sie können während und nach Bereitstellungen angezeigt werden.
 
 ## <a name="commit-changes-to-git-and-automatically-deploy-them-to-azure"></a>Committen von Änderungen in Git und automatisches Bereitstellen dieser Änderungen in Azure 
 
@@ -144,18 +128,18 @@ Nun können Sie mithilfe eines CI/CD-Prozesses, mit dem Ihre aktuelle Arbeit auf
 1. Nehmen Sie eine Änderung an der Datei vor. Fügen Sie beispielsweise in einem der div-Tags Text hinzu. 
 
 1. Wählen Sie oben rechts **Committen** und dann erneut **Committen** aus, um Ihre Änderung per Push zu übertragen.  
-    Nach wenigen Augenblicken wird ein Build gestartet. Anschließend wird zur Bereitstellung der Änderungen ein Release ausgeführt. Sie können den Buildstatus auf dem DevOps Projects-Dashboard oder im Browser mit der Azure DevOps-Echtzeitprotokollierung überwachen.
+    Nach wenigen Augenblicken wird ein Build gestartet. Anschließend wird zur Bereitstellung der Änderungen ein Release ausgeführt. Sie können den Buildstatus auf dem DevOps Starter-Dashboard oder im Browser mit der Azure DevOps-Echtzeitprotokollierung überwachen.
 
 1. Aktualisieren Sie nach Abschluss des Release Ihre App, um Ihre Änderungen zu überprüfen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Beim Durchführen von Tests können Sie Gebühren vermeiden, indem Sie die Ressourcen bereinigen. Sie können den in diesem Tutorial erstellten Azure Service Fabric-Cluster und zugehörige Ressourcen löschen, wenn Sie sie nicht mehr benötigen. Verwenden Sie dazu die Funktion **Löschen** auf dem DevOps Projects-Dashboard.
+Beim Durchführen von Tests können Sie Gebühren vermeiden, indem Sie die Ressourcen bereinigen. Sie können den in diesem Tutorial erstellten Azure Service Fabric-Cluster und zugehörige Ressourcen löschen, wenn Sie sie nicht mehr benötigen. Verwenden Sie dazu die Funktion **Löschen** im DevOps Starter-Dashboard.
 
 > [!IMPORTANT]
-> Mit dem folgenden Verfahren werden Ressourcen endgültig gelöscht. Mit der Funktion *Löschen* werden die Daten, die vom Projekt in DevOps Projects erstellt wurden, in Azure und Azure DevOps gelöscht. Diese Daten können anschließend nicht wiederhergestellt werden. Verwenden Sie dieses Verfahren nur, nachdem Sie die Anweisungen sorgfältig gelesen haben.
+> Mit dem folgenden Verfahren werden Ressourcen endgültig gelöscht. Mit der Funktion *Löschen* werden die Daten in Azure und Azure DevOps gelöscht, die vom Projekt in DevOps Starter erstellt wurden. Diese Daten können anschließend nicht wiederhergestellt werden. Verwenden Sie dieses Verfahren nur, nachdem Sie die Anweisungen sorgfältig gelesen haben.
 
-1. Navigieren Sie im Azure-Portal zum DevOps Projects-Dashboard.
+1. Navigieren Sie im Azure-Portal zum DevOps Starter-Dashboard.
 1. Wählen Sie oben rechts **Löschen** aus. 
 1. Wählen Sie an der Eingabeaufforderung **Ja** aus, um die Ressourcen *endgültig zu löschen*.
 
@@ -164,7 +148,7 @@ Beim Durchführen von Tests können Sie Gebühren vermeiden, indem Sie die Resso
 Diese CI/CD-Pipeline können Sie optional an die Anforderungen Ihres Teams anpassen. Sie können dieses CI/CD-Muster auch als Vorlage für Ihre anderen Pipelines verwenden. In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Erstellen einer ASP.NET Core-App und Bereitstellen dieser App in Service Fabric mithilfe von DevOps Projects
+> * Erstellen einer ASP.NET Core-App und Bereitstellen dieser App in Service Fabric mithilfe von DevOps Starter
 > * Konfigurieren von Azure DevOps und eines Azure-Abonnements 
 > * Überprüfen der CI-Pipeline
 > * Überprüfen der CD-Pipeline
@@ -174,4 +158,4 @@ Diese CI/CD-Pipeline können Sie optional an die Anforderungen Ihres Teams anpas
 Weiter Informationen zu Service Fabric und Microservices finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [Use a microservices approach for building applications (Verwenden eines Microservices-Ansatzes zum Erstellen von Anwendungen)](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Use a microservices approach for building applications (Verwenden eines Microservices-Ansatzes zum Erstellen von Anwendungen)](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

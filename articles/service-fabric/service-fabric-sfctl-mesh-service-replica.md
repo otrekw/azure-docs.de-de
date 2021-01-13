@@ -1,24 +1,16 @@
 ---
-title: 'Azure Service Fabric CLI: sfctl mesh service-replica | Microsoft-Dokumentation'
-description: Beschreibt die sfctl mesh service-replica-Befehle der Service Fabric CLI.
-services: service-fabric
-documentationcenter: na
-author: Christina-Kang
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
+title: 'Azure Service Fabric CLI: sfctl mesh service-replica'
+description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle zum Abrufen von Replikatdetails für eine Anwendungsressource.
+author: jeffj6123
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 6819bb32eecf8477e2c0727b50641858db21c784
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: cbfdba30663e2aa531ab1db955b0e035a0588709
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035921"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86245720"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
 Ruft Replikatdetails ab und listet Replikate eines angegebenen Diensts in einer Anwendungsressource auf.
@@ -46,11 +38,11 @@ Ruft die Informationen zu allen Replikaten eines Diensts ab. Die Informationen u
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 ## <a name="sfctl-mesh-service-replica-show"></a>sfctl mesh service-replica show
 Ruft das angegebene Replikat des Diensts einer Anwendung ab.
@@ -69,13 +61,13 @@ Ruft die Informationen zum Dienstreplikat mit dem angegebenen Namen ab. Die Info
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle
-- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](/azure/service-fabric/scripts/sfctl-upgrade-application)
+- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](./scripts/sfctl-upgrade-application.md)

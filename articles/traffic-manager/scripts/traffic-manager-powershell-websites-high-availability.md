@@ -1,10 +1,10 @@
 ---
-title: 'Azure PowerShell-Skriptbeispiel: Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen | Microsoft-Dokumentation'
+title: Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen – Azure PowerShell – Traffic Manager
 description: 'Azure PowerShell-Skriptbeispiel: Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen'
 services: traffic-manager
 documentationcenter: traffic-manager
-author: asudbring
-manager: twooley
+author: duongau
+manager: kumudD
 editor: ''
 tags: azure-infrastructure
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
-ms.author: allensu
-ms.openlocfilehash: 1c04859e2fe8841eb679f0b3e22b54ce71f88230
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: duau
+ms.openlocfilehash: a8547a681d3b2b1cfb01750c4898b45f10d18d57
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050975"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89400210"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen mit Azure PowerShell
 
@@ -60,6 +60,6 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/overview).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/).
 
 Zusätzliche Netzwerk-PowerShell-Skriptbeispiele finden Sie unter [Azure-Dokumentation für Netzwerke – Übersicht](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

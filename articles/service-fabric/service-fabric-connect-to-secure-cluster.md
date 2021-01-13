@@ -1,25 +1,15 @@
 ---
-title: Herstellen einer sicheren Verbindung mit einem Azure Service Fabric-Cluster | Microsoft-Dokumentation
+title: Herstellen einer sicheren Verbindung mit einem Azure Service Fabric-Cluster
 description: Beschreibt das Authentifizieren des Clientzugriffs auf einen Service Fabric-Cluster und das Sichern der Kommunikation zwischen Clients und einem Cluster
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/29/2019
-ms.author: atsenthi
-ms.openlocfilehash: c350b53b2d0b235c5e34431386205f090f37b482
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2ce0325f7aebac92eb1e7deadd6f6875b75b3755
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599714"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89008810"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Herstellen einer Verbindung mit einem sicheren Cluster
 
@@ -35,7 +25,7 @@ Verwenden Sie den Befehl `sfctl cluster select`, um eine Verbindung mit einem Cl
 
 Clientzertifikate können in zwei unterschiedlichen Größen dargestellt werden, entweder als ein Zertifikat- und Schlüsselpaar oder als eine einzelne PFX-Datei. Für kennwortgeschützte PEM-Dateien, werden Sie automatisch zur Eingabe des Kennworts aufgefordert. Wenn Sie das Clientzertifikat als PFX-Datei erhalten, müssen Sie sie zuerst mit dem folgenden Befehl in eine PEM-Datei konvertieren. 
 
-```bash
+```shell
 openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
 ```
 
@@ -43,7 +33,7 @@ Wenn Ihre PFX-Datei nicht kennwortgeschützt ist, verwenden Sie „-passin pass:
 
 Wenn Sie das Clientzertifikat als Pem-Datei speichern möchten, geben Sie den Dateipfad im `--pem`-Argument an. Beispiel:
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
@@ -51,7 +41,7 @@ Kennwortgeschützte PEM-Dateien fordern zuerst das Kennwort an, bevor die Ausfü
 
 Um ein Zertifikat anzugeben, verwenden Schlüsselpaare die Argumente `--cert` und `--key`, um die Dateipfade auf jeder entsprechenden Datei anzugeben.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
@@ -60,13 +50,13 @@ Manchmal schlägt die Zertifikatsüberprüfung für Zertifikate fehl, die zum Si
 > [!WARNING]
 > Verwenden Sie die `no-verify`-Option nicht, wenn Sie sich zur Produktion von Service Fabric-Clustern verbinden.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
 Darüber hinaus können Sie Pfade zu den Verzeichnissen der Zertifikate von vertrauenswürdigen Zertifizierungsstellen oder zu individuellen Zertifikaten angeben. Um diese Pfade anzugeben, verwenden Sie das `--ca`-Argument. Beispiel:
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
 ```
 
@@ -156,7 +146,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 <a id="connectsecureclusterfabricclient"></a>
 
 ## <a name="connect-to-a-cluster-using-the-fabricclient-apis"></a>Herstellen einer Verbindung mit einem Cluster über die FabricClient-APIs
-Das Service Fabric SDK enthält die [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient)-Klasse für die Clusterverwaltung. Um die FabricClient-APIs zu verwenden, rufen Sie das Microsoft.ServiceFabric-NuGet-Paket ab.
+Das Service Fabric SDK enthält die [FabricClient](/dotnet/api/system.fabric.fabricclient)-Klasse für die Clusterverwaltung. Um die FabricClient-APIs zu verwenden, rufen Sie das Microsoft.ServiceFabric-NuGet-Paket ab.
 
 ### <a name="connect-to-an-unsecure-cluster"></a>Herstellen einer Verbindung mit einem unsicheren Cluster
 
@@ -174,7 +164,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Herstellen einer Verbindung mit einem sicheren Cluster mithilfe eines Clientzertifikats
 
-Die Knoten im Cluster müssen über gültige Zertifikate verfügen, deren allgemeiner Name oder DNS-Name im SAN in der [RemoteCommonNames](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials)-Eigenschaft angezeigt wird, die auf [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) festgelegt ist. Durch dieses Verfahren wird die gegenseitige Authentifizierung zwischen dem Client und dem Clusterknoten ermöglicht.
+Die Knoten im Cluster müssen über gültige Zertifikate verfügen, deren allgemeiner Name oder DNS-Name im SAN in der [RemoteCommonNames](/dotnet/api/system.fabric.x509credentials)-Eigenschaft angezeigt wird, die auf [FabricClient](/dotnet/api/system.fabric.fabricclient) festgelegt ist. Durch dieses Verfahren wird die gegenseitige Authentifizierung zwischen dem Client und dem Clusterknoten ermöglicht.
 
 ```csharp
 using System.Fabric;
@@ -242,7 +232,7 @@ catch (Exception e)
 
 Das folgende Beispiel basiert auf Microsoft.IdentityModel.Clients.ActiveDirectory, Version: 2.19.208020213.
 
-Weitere Informationen zum AAD-Tokenabruf finden Sie unter [Microsoft.IdentityModel.Clients.ActiveDirectory](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx).
+Weitere Informationen zum AAD-Tokenabruf finden Sie unter [Microsoft.IdentityModel.Clients.ActiveDirectory](/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet).
 
 ```csharp
 string tenantId = "C15CFCEA-02C1-40DC-8466-FBD0EE0B05D2";

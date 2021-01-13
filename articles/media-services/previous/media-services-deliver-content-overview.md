@@ -1,27 +1,26 @@
 ---
-title: Übermitteln von Inhalten an Kunden | Microsoft-Dokumentation
+title: Bereitstellen von Inhalten für Kunden
 description: Dieses Thema bietet eine Übersicht darüber, was zur Bereitstellung von Inhalten mit Azure Media Services erforderlich ist.
 services: media-services
-documentationcenter: ''
 author: Juliako
 manager: femila
-editor: ''
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5db2cb983c0c3cd0e2194f7686964d9ec3828d6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 363bb5389eda8336d04b1ff457f8246e89a042d8
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61232270"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014387"
 ---
 # <a name="deliver-content-to-customers"></a>Übermitteln von Inhalten an Kunden
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Bei der Übermittlung Ihrer Streaming- oder Video-on-Demand-Inhalte an Kunden möchten Sie qualitativ hochwertige Videos unter verschiedenen Netzwerkbedingungen an unterschiedliche Geräte senden.
 
 So erreichen Sie dieses Ziel:
@@ -55,7 +54,7 @@ Mit Media Services können Sie Filter für Ihre Medienobjekte definieren. Diese 
 
 Weitere Informationen finden Sie unter [Filter und dynamische Manifeste](media-services-dynamic-manifest-overview.md).
 
-## <a name="a-idlocatorslocators"></a><a id="locators"/>Locators
+## <a name="locators"></a><a name="locators"></a>Locators
 Um Ihren Benutzern eine URL für das Streaming bzw. Herunterladen des Inhalts angeben zu können, müssen Sie zunächst das Medienobjekt veröffentlichen, indem Sie einen Locator erstellen. Ein Locator bieten einen Einstiegspunkt für den Zugriff auf die in einem Medienobjekt enthaltenen Dateien. Media Services unterstützt zwei Arten von Locatorobjekten:
 
 * OnDemandOrigin-Locator. Diese werden zum Streamen von Medien (z.B. MPEG-DASH, HLS oder Smooth Streaming) und zum progressiven Download von Dateien verwendet.
@@ -70,9 +69,9 @@ Locator verfügen über ein Ablaufdatum. Im Azure-Portal wird ein Ablaufdatum vo
 > 
 > 
 
-Verwenden Sie zum Aktualisieren eines Ablaufdatums für einen Locator die [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator)- oder [.NET](https://go.microsoft.com/fwlink/?LinkID=533259)-APIs. Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.
+Verwenden Sie zum Aktualisieren eines Ablaufdatums für einen Locator die [REST](/rest/api/media/operations/locator#update_a_locator)- oder [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator)-APIs. Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.
 
-Locator sind nicht für die Verwaltung der Zugriffssteuerung pro Benutzer konzipiert. Mit den Lösungen zur Verwaltung digitaler Rechte (Digital Rights Management, DRM) können Sie einzelnen Benutzern verschiedene Zugriffsrechte erteilen. Weitere Informationen finden Sie unter [Sichern von Medien](https://msdn.microsoft.com/library/azure/dn282272.aspx).
+Locator sind nicht für die Verwaltung der Zugriffssteuerung pro Benutzer konzipiert. Mit den Lösungen zur Verwaltung digitaler Rechte (Digital Rights Management, DRM) können Sie einzelnen Benutzern verschiedene Zugriffsrechte erteilen. Weitere Informationen finden Sie unter [Sichern von Medien](/previous-versions/azure/dn282272(v=azure.100)).
 
 Beim Erstellen eines Locators tritt möglicherweise eine Verzögerung von 30 Sekunden auf, die durch die erforderlichen Speicher- und Weitergabeprozesse in Azure Storage verursacht wird.
 
@@ -82,12 +81,12 @@ Bei adaptiven Bitratentechnologien können Videoplayeranwendungen die Netzwerkbe
 Um Benutzern Streaming-URLs bereitzustellen, müssen Sie zuerst einen OnDemandOrigin-Locator erstellen. Beim Erstellen des Locators erhalten Sie den Basispfad für das Medienobjekt mit den Inhalten, die Sie streamen möchten. Um diese Inhalte streamen zu können, müssen Sie diesen Pfad jedoch ändern. Zum Erstellen einer vollständigen URL für die Streaming-Manifestdatei müssen Sie den Pfadwert des Locators mit dem Dateinamen des Manifests (dateiname.ism) verketten. Fügen Sie dem Locatorpfad anschließend **/Manifest** und (ggf.) ein geeignetes Format hinzu.
 
 > [!NOTE]
-> Sie können auch den Inhalt über eine SSL-Verbindung streamen. Zu diesem Zweck stellen Sie sicher, dass die Streaming-URLs mit HTTPS beginnen. Beachten Sie, dass SSL mit benutzerdefinierten Domänen derzeit nicht von AMS unterstützt wird.  
+> Sie können den Inhalt auch über eine TLS-Verbindung streamen. Zu diesem Zweck stellen Sie sicher, dass die Streaming-URLs mit HTTPS beginnen. Beachten Sie, dass TLS mit benutzerdefinierten Domänen derzeit nicht von AMS unterstützt wird.  
 > 
 
-Sie können nur über SSL streamen, wenn der Streamingendpunkt, von dem aus Sie Ihre Inhalte übermitteln, nach dem 10. September 2014 erstellt wurde. Wenn die Streaming-URLs auf Streamingendpunkten basieren, die nach dem 10. September 2014 erstellt wurden, enthält die URL „streaming.mediaservices.windows.net“. Streaming-URLs, die "origin.mediaservices.windows.net" (das alte Format) enthalten, unterstützen kein SSL. Wenn die URL im alten Format vorliegt und Sie über SSL streamen möchten, erstellen Sie einen neuen Streamingendpunkt. Verwenden Sie die URLs, die auf dem neuen Streamingendpunkt basieren, um Ihre Inhalte über SSL zu streamen.
+Sie können nur über TLS streamen, wenn der Streamingendpunkt, von dem aus Sie Ihre Inhalte übermitteln, nach dem 10. September 2014 erstellt wurde. Wenn die Streaming-URLs auf Streamingendpunkten basieren, die nach dem 10. September 2014 erstellt wurden, enthält die URL „streaming.mediaservices.windows.net“. Streaming-URLs, die „origin.mediaservices.windows.net“ (das alte Format) enthalten, unterstützen kein TLS. Wenn die URL im alten Format vorliegt und Sie über TLS streamen möchten, erstellen Sie einen neuen Streamingendpunkt. Verwenden Sie die URLs, die auf dem neuen Streamingendpunkt basieren, um Ihre Inhalte über TLS zu streamen.
 
-## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>Streaming-URL-Formate
+## <a name="streaming-url-formats"></a><a name="URLs"></a>Streaming-URL-Formate
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH-Format
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=mpd-time-csf)
@@ -118,19 +117,19 @@ Beispiel:
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
-### <a id="fmp4_v20"></a>Smooth Streaming 2.0-Manifest (Legacymanifest)
+### <a name="smooth-streaming-20-manifest-legacy-manifest"></a><a id="fmp4_v20"></a>Smooth Streaming 2.0-Manifest (Legacymanifest)
 Das Smooth Streaming-Manifestformat enthält standardmäßig das Wiederholungstag (r-Tag). Einige Player unterstützen das r-Tag jedoch nicht. Clients mit diesen Playern können ein Format verwenden, das das r-Tag deaktiviert:
 
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=fmp4-v20)
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)`
 
 ## <a name="progressive-download"></a>Progressiver Download
 Mit progressivem Download können Sie die Medienwiedergabe starten, bevor die gesamte Datei heruntergeladen ist. Dateien mit der Endung ISM* (ISMV, ISMA, ISMT, ISMC) können Sie nicht progressiv herunterladen.
 
 Verwenden Sie den "OnDemandOrigin"-Typ des Locator zum progressiven Herunterladen von Inhalten. Das folgende Beispiel zeigt die URL, die auf dem OnDemandOrigin-Typ des Locators basiert:
 
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
+`http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 
 Sie müssen alle speicherverschlüsselten Medienobjekte entschlüsseln, die Sie aus dem ursprünglichen Dienst für den progressiven Download streamen möchten.
 
@@ -139,7 +138,7 @@ Um Ihre Inhalte auf ein Clientgerät herunterzuladen, müssen Sie einen SAS-Loca
 
 Das folgende Beispiel zeigt die URL, die auf dem SAS-Locator basiert:
 
-    https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D
+`https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D`
 
 Es gelten die folgenden Bedingungen:
 
@@ -157,27 +156,30 @@ Ein Streamingendpunkt stellt einen Streamingdienst dar, der Inhalte zur weiteren
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Änderungen an der Smooth Streaming-Manifestversion
 Vor der Dienstversion vom Juli 2016 galt Folgendes: Wenn von Media Encoder Standard, Media Encoder Premium Workflow oder dem älteren Azure Media Encoder erstellte Medienobjekte mithilfe der dynamischen Paketerstellung gestreamt wurden, entsprach das zurückgegebene Smooth Streaming-Manifest der Version 2.0. In Version 2.0 wurden für die Dauer der Fragmente nicht die sog. Wiederholungstags („r“-Tags) verwendet. Beispiel:
 
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
-        <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
-            <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
-            <c t="0" d="2000" n="0" />
-            <c d="2000" />
-            <c d="2000" />
-            <c d="2000" />
-        </StreamIndex>
-    </SmoothStreamingMedia>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
+    <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
+        <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
+        <c t="0" d="2000" n="0" />
+        <c d="2000" />
+        <c d="2000" />
+        <c d="2000" />
+    </StreamIndex>
+</SmoothStreamingMedia>
+```
 
 Ab der Dienstversion vom Juli 2016 entspricht das generierte Smooth Streaming-Manifest der Version 2.2, wo für die Dauer von Fragmenten Wiederholungstags verwendet werden. Beispiel:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
-        <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
-            <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
-            <c t="0" d="2000" r="4" />
-        </StreamIndex>
-    </SmoothStreamingMedia>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
+    <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
+        <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
+        <c t="0" d="2000" r="4" />
+    </StreamIndex>
+</SmoothStreamingMedia>
+```
 
 Einige ältere Smooth Streaming-Clients unterstützen möglicherweise nicht die Wiederholungstags, sodass das Manifest nicht geladen werden kann. Um dieses Problem zu beheben, können Sie den älteren Manifestformatparameter **(format=fmp4-v20)** verwenden oder Ihren Client auf die neueste Version aktualisieren, die Wiederholungstags unterstützt. Weitere Informationen finden Sie unter [Smooth Streaming 2.0](media-services-deliver-content-overview.md#fmp4_v20).
 
@@ -189,4 +191,3 @@ Einige ältere Smooth Streaming-Clients unterstützen möglicherweise nicht die 
 
 ## <a name="related-topics"></a>Verwandte Themen
 [Aktualisieren von Media Services nach dem Austausch der Speicherschlüssel](media-services-roll-storage-access-keys.md)
-

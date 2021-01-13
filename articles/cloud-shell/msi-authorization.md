@@ -1,25 +1,21 @@
 ---
-title: Verwenden verwalteter Identitäten für Azure-Ressourcen in Azure Cloud Shell | Microsoft-Dokumentation
+title: Verwenden verwalteter Identitäten für Ressourcen in Azure Cloud Shell
 description: Authentifizieren von Code mit MSI in Azure Cloud Shell
 services: azure
-documentationcenter: ''
 author: maertendMSFT
-manager: timlt
+ms.author: damaerte
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
-ms.author: damaerte
-ms.openlocfilehash: 7cadaaf67f9c6923ee9e9eb2596941aa8e1f0c9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0fb19524079f84e92e1ddbc98a61917026492663
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199481"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89469897"
 ---
 # <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>Verwenden verwalteter Identitäten für Azure-Ressourcen in Azure Cloud Shell
 
@@ -47,8 +43,8 @@ Im lokalen MSI-Subsystem werden Token zwischengespeichert. Daher können Sie sie
 
 Wenn Sie das Token in Ihrem Code zwischenspeichern, sollten Sie auf die Behandlung von Szenarien vorbereitet sein, bei denen die Ressource angibt, dass das Token abgelaufen ist.
 
-Informationen zum Beheben von Tokenfehlern finden Sie unter [Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) eines virtuellen Azure-Computers für den Tokenabruf](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling).
+Informationen zum Beheben von Tokenfehlern finden Sie unter [Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) eines virtuellen Azure-Computers für den Tokenabruf](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#error-handling).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Weitere Informationen zu MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)  
-[Abrufen von Zugriffstoken von MSI-VMs](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)
+[Weitere Informationen zu MSI](../active-directory/managed-identities-azure-resources/overview.md)  
+[Abrufen von Zugriffstoken von MSI-VMs](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)

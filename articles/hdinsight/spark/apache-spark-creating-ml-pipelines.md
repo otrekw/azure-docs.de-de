@@ -6,14 +6,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/22/2019
-ms.openlocfilehash: 22583d82d8e422d8176fdb7cd70a98d229e8b6bb
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: c270e9865aff30184ea236f56ab20ede78c5d577
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736380"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86075449"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Erstellen einer Apache Spark-Machine Learning-Pipeline
 

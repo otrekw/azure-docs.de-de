@@ -1,0 +1,14 @@
+- name: Dokumentation für Azure Arc
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zu Azure Arc
+      href: overview.md
+- name: Server mit Arc-Unterstützung
+  href: ./servers/overview.md
+- name: Kubernetes mit Arc-Unterstützung
+  href: ./kubernetes/overview.md
+- name: "Arc-fähige Datendienste (Vorschauversion)\_>"
+  href: ./data/overview.md
+- name: "Arc-fähige SQL-Server-Instanz (Vorschauversion)\_>"
+  href: 'https://docs.microsoft.com/sql/sql-server/azure-arc/overview'

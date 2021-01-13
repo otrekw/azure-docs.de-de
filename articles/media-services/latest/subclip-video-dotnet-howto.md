@@ -3,26 +3,27 @@ title: Erstellen von Subclips für ein Video beim Codieren mit Azure Media Servi
 description: In diesem Artikel wird beschrieben, wie Sie beim Codieren mit Azure Media Services mithilfe des .NET SDK Subclips für ein Video erstellen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/09/2019
-ms.author: juliako
-ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1725fab30ddb4d40e0bf5345683588c878658052
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304782"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89296565"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Erstellen von Subclips für ein Video beim Codieren mit Media Services: .NET
 
-Sie können mithilfe eines [Auftrags](https://docs.microsoft.com/rest/api/media/jobs) Videos beim Codieren zuschneiden oder Subclips für diese erstellen. Dies funktioniert mit jeder [Transformation](https://docs.microsoft.com/rest/api/media/transforms), die entweder mit den [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)-Voreinstellungen oder mit den [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)-Voreinstellungen erstellt wird.
+Sie können mithilfe eines [Auftrags](/rest/api/media/jobs) Videos beim Codieren zuschneiden oder Subclips für diese erstellen. Dies funktioniert mit jeder [Transformation](/rest/api/media/transforms), die entweder mit den [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)-Voreinstellungen oder mit den [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset)-Voreinstellungen erstellt wird.
 
 Mithilfe des folgenden C#-Beispiels wird ein Auftrag erstellt, der ein Video in ein Objekt zuschneidet, sobald er einen Codierungsauftrag übermittelt. 
 
@@ -30,7 +31,7 @@ Mithilfe des folgenden C#-Beispiels wird ein Auftrag erstellt, der ein Video in 
 
 Für die in diesem Thema beschriebenen Schritte ist Folgendes erforderlich:
 
-- [Erstellen eines Azure Media Services-Kontos](create-account-cli-how-to.md)
+- [Erstellen eines Azure Media Services-Kontos](./create-account-howto.md)
 - Erstellen Sie eine Transformation sowie ein Eingabe- und ein Ausgabeobjekt. Informationen zum Erstellen einer Transformation sowie von Eingabe- und Ausgabeobjekten finden Sie im Tutorial [Hochladen, Codieren und Streamen von Videos](stream-files-tutorial-with-api.md).
 - Lesen Sie sich den Artikel [Encoding concept (Codierungskonzept)](encoding-concept.md) durch.
 

@@ -1,19 +1,19 @@
 ---
-title: 'Azure VMware-Lösung von CloudSimple: Erstellen eines virtuellen Computers in Azure mit VM-Vorlagen'
+title: 'Azure VMware Solution by CloudSimple: Erstellen eines virtuellen Computers in Azure mit VM-Vorlagen'
 description: Beschreibt, wie virtuelle Computer in Azure mithilfe von VM-Vorlagen in der VMware-Infrastruktur für Ihre private CloudSimple-Cloud erstellt werden.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: b01afe60a78a746eb0dc5f03cc7b45989f8cf81e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576061"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898758"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>Erstellen eines virtuellen Computers in Azure mithilfe von VM-Vorlagen für die VMware-Infrastruktur
 
@@ -44,8 +44,8 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     | ------------ | ------------- |
     | Subscription | Das mit Ihrer privaten Cloud verknüpfte Azure-Abonnement.  |
     | Ressourcengruppe | Die Ressourcengruppe, der die VM zugewiesen wird. Wählen Sie eine vorhandene Gruppe auswählen oder eine neue erstellen. |
-    | NAME | Der Name zur Identifizierung der VM.  |
-    | Location | Azure-Region, in der die VM gehostet wird.  |
+    | Name | Der Name zur Identifizierung der VM.  |
+    | Position | Azure-Region, in der die VM gehostet wird.  |
     | Private Cloud | Die private CloudSimple-Cloud, in der Sie den virtuellen Computer erstellen möchten. |
     | Ressourcenpool | Zugeordneter Ressourcenpool für die VM. Wählen Sie aus den verfügbaren Ressourcenpools aus. |
     | vSphere-Vorlage | vSphere-Vorlage für die VM.  |
@@ -62,18 +62,18 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
     Klicken Sie bei Netzwerkschnittstellen auf **Netzwerkschnittstelle hinzufügen**, und konfigurieren Sie die folgenden Einstellungen.
 
-    | Kontrolle | BESCHREIBUNG |
+    | Control | BESCHREIBUNG |
     | ------------ | ------------- |
-    | NAME | Geben Sie einen Namen zur Identifizierung der Schnittstelle ein.  |
+    | Name | Geben Sie einen Namen zur Identifizierung der Schnittstelle ein.  |
     | Netzwerk | Wählen Sie aus der Liste der konfigurierten verteilten Portgruppen in Ihrer Private Cloud vSphere aus.  |
     | Adapter | Wählen Sie einen vSphere-Adapter aus der Liste der verfügbaren Typen, die für die VM konfiguriert sind. Weitere Informationen finden Sie im VMware-Knowledge Base-Artikel [Auswählen eines Netzwerkadapters für Ihren virtuellen Computer](https://kb.vmware.com/s/article/1001805). |
     | Einschalten beim Starten | Wählen Sie, ob die NIC-Hardware beim Booten der VM aktiviert werden soll. Die Standardeinstellung ist **Aktiviert**. |
 
     Klicken Sie bei Datenträgern auf **Datenträger hinzufügen** und konfigurieren Sie die folgenden Einstellungen.
 
-    | Item | BESCHREIBUNG |
+    | Element | BESCHREIBUNG |
     | ------------ | ------------- |
-    | NAME | Geben Sie einen Namen zur Identifizierung des Datenträgers ein.  |
+    | Name | Geben Sie einen Namen zur Identifizierung des Datenträgers ein.  |
     | Size | Wählen Sie eine der verfügbaren Größen aus.  |
     | SCSI-Controller | Wählen Sie einen SCSI-Controller für den Datenträger aus.  |
     | Mode | Bestimmt, wie der Datenträger in Momentaufnahmen beteiligt ist. Wählen Sie eine der Optionen aus: <br> - Unabhängig dauerhaft: Alle Daten, die auf den Datenträger geschrieben werden, werden dauerhaft geschrieben.<br> - Unabhängig nicht dauerhaft: Auf dem Datenträger geschriebene Änderungen werden verworfen, wenn Sie den Computer ausschalten oder zurücksetzen.  Der unabhängige, nicht dauerhafte Modus ermöglicht es Ihnen, die VM immer im gleichen Zustand neu zu starten. Weitere Informationen finden Sie in der [VMware-Dokumentation](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html).

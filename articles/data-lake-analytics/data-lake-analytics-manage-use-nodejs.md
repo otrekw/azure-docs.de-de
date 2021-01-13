@@ -1,27 +1,24 @@
 ---
 title: Verwalten von Azure Data Lake Analytics mithilfe des Azure SDK für Node.js
 description: In diesem Artikel erfahren Sie, wie Sie das Azure SDK für Node.js zum Verwalten von Data Lake Analytics-Konten, -Datenquellen, -Aufträgen und -Benutzern verwenden.
-services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
-ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
-ms.topic: conceptual
+ms.reviewer: jasonh
+ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 3b5b11b148910e9bd1348b20a25fa8383fc2ec9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-js
+ms.openlocfilehash: ca1c865b31739e7163b0db26cb666a8a42edbaa2
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812737"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218458"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Verwalten von Azure Data Lake Analytics mithilfe des Azure SDK für Node.js
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Analytics-Konten, -Datenquellen, -Benutzer und -Aufträge mit einer App verwalten, die mithilfe des Azure SDK für Node.js geschrieben wurde. 
 
-Unterstützte Versionen:
+Die folgenden Versionen werden unterstützt:
 * **Node.js-Version: 0.10.0 oder höher**
 * **REST-API-Version für Konten: 2015-10-01-preview**
 * **REST-API-Version für Kataloge: 2015-10-01-preview**
@@ -131,5 +128,3 @@ catalogClient.catalog.listDatabases(accountName, function (err, result, request,
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Microsoft Azure SDK für Node.js](https://github.com/azure/azure-sdk-for-node)
-* [Microsoft Azure SDK für Node.js – Data Lake-Speicherverwaltung](https://github.com/Azure/azure-sdk-for-node/tree/autorest/lib/services/dataLake.Store)
-

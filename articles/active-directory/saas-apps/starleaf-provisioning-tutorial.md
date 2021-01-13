@@ -2,32 +2,28 @@
 title: 'Tutorial: Konfigurieren von StarLeaf für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in StarLeaf konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: 0676eb2830c2e0233eb182cfec0be3f39c6a39e9
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 07c476c0de644ac63c577d466f4691b5cf415334
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737376"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357932"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von StarLeaf für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die in StarLeaf und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in StarLeaf zu konfigurieren.
 
 > [!NOTE]
->  In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
+>  In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Dieser Connector befindet sich derzeit in der Vorschauversion. Weitere Informationen zu den allgemeinen Nutzungsbedingungen von Microsoft Azure für Previewfunktionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -36,7 +32,7 @@ In diesem Tutorial werden die Schritte erläutert, die in StarLeaf und Azure Act
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * Einen Azure AD-Mandanten.
-* Einen [StarLeaf-Mandanten](https://www.starleaf.com/solutions/).
+* Einen [StarLeaf-Mandanten](https://starleaf.com/).
 * Ein Benutzerkonto in StarLeaf mit Administratorberechtigungen.
 
 ## <a name="assign-users-to-starleaf"></a>Zuweisen von Benutzern zu StarLeaf
@@ -56,15 +52,15 @@ Bevor Sie StarLeaf für die automatische Benutzerbereitstellung mit Azure AD kon
 
 1. Melden Sie sich bei Ihrer [StarLeaf-Verwaltungskonsole](https://portal.starleaf.com/#page=login) an. Navigieren Sie zu **Integrations** > **Add integration** (Integrationen > Integration hinzufügen).
 
-    ![StarLeaf: Hinzufügen von SCIM](media/starleaf-provisioning-tutorial/image00.png)
+    ![Screenshot der StarLeaf-Administratorkonsole mit den aufgerufenen Optionen „Integrations“ und „Add integration“](media/starleaf-provisioning-tutorial/image00.png)
 
 2. Wählen Sie für **Type** (Typ) Microsoft Azure Active Directory aus. Geben Sie einen geeigneten Namen in das Feld **Name** ein. Klicken Sie auf **Anwenden**.
 
-    ![StarLeaf: Hinzufügen von SCIM](media/starleaf-provisioning-tutorial/image01.png)
+    ![Screenshot des Dialogfelds „Add integration“ mit den aufgerufenen Textfeldern für Typ und Name](media/starleaf-provisioning-tutorial/image01.png)
 
 3.  Daraufhin werden die Werte für **SCIM base URL** (SCIM-Basis-URL) und **Access token** (Zugriffstoken) angezeigt. Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer StarLeaf-Anwendung in das Feld **Mandanten-URL** bzw. **Geheimes Token** eingegeben. 
 
-    ![StarLeaf: Erstellen eines Tokens](media/starleaf-provisioning-tutorial/image02.png)
+    ![Screenshot des Dialogfelds „Edit integration“ mit den aufgerufenen Textfeldern für Typ, Name und SCIM-Basis-URL](media/starleaf-provisioning-tutorial/image02.png)
 
 ## <a name="add-starleaf-from-the-gallery"></a>Hinzufügen von StarLeaf aus dem Katalog
 
@@ -76,11 +72,11 @@ Bevor Sie StarLeaf für die automatische Benutzerbereitstellung mit Azure AD ko
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
@@ -101,13 +97,13 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt „Administratoranmeldeinformationen“ die zuvor abgerufenen Werte für **SCIM Base URL** (SCIM-Basis-URL) und **Access Token** (Zugriffstoken) in die Felder **Mandanten-URL** bzw. **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit StarLeaf herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr StarLeaf-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt „Administratoranmeldeinformationen“ die zuvor abgerufenen Werte für **SCIM Base URL** (SCIM-Basis-URL) und **Access Token** (Zugriffstoken) in die Felder **Mandanten-URL** bzw. **Geheimes Token** ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit StarLeaf herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr StarLeaf-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -119,14 +115,14 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit StarLeaf synchronisieren** aus.
 
-    ![StarLeaf: Erstellen eines Tokens](media/starleaf-provisioning-tutorial/usermapping.png)
+    ![Screenshot des Abschnitts „Zuordnungen“ mit der Option „Azure Active Directory-Benutzer mit StarLeaf synchronisieren“](media/starleaf-provisioning-tutorial/usermapping.png)
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit StarLeaf synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in StarLeaf für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit StarLeaf synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in StarLeaf für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
-    ![StarLeaf: Erstellen eines Tokens](media/starleaf-provisioning-tutorial/userattribute.png)
+    ![Screenshot des Abschnitts „Attributzuordnungen“ mit neun Zuordnungen](media/starleaf-provisioning-tutorial/userattribute.png)
 
 
-10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 
 11. Um den Azure AD-Bereitstellungsdienst für StarLeaf zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
@@ -143,7 +139,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in StarLeaf ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Reporting on automatic user account provisioning (Tutorial: Meldung zur automatischen Benutzerkontobereitstellung)](../manage-apps/check-status-user-account-provisioning.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Reporting on automatic user account provisioning (Tutorial: Meldung zur automatischen Benutzerkontobereitstellung)](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 
@@ -152,9 +148,9 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie [Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen](../manage-apps/check-status-user-account-provisioning.md).
+* Erfahren Sie, wie Sie [Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen](../app-provisioning/check-status-user-account-provisioning.md).

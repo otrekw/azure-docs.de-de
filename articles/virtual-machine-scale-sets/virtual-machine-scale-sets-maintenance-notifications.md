@@ -1,39 +1,34 @@
 ---
-title: Wartungsbenachrichtigungen für VM-Skalierungsgruppen in Azure | Microsoft Docs
+title: Benachrichtigungen zu Wartungen für VM-Skalierungsgruppen in Azure
 description: Anzeigen von Wartungsbenachrichtigungen für VM-Skalierungsgruppen in Azure und Starten einer Self-Service-Wartung.
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: shants123
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: ''
+author: mimckitt
+ms.author: mimckitt
+ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 08/20/2019
-ms.author: shants
-ms.openlocfilehash: 413301fd8b6b4b2a3b60501378cf6da23cc38d81
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.subservice: management
+ms.date: 11/12/2020
+ms.reviewer: jushiman
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 2aa589d237a8cfeb8e0dc947896dba82e755631c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018845"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564768"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Benachrichtigungen zu geplanten Wartungen für VM-Skalierungsgruppen
 
 
 Azure führt regelmäßig Updates aus, um die Zuverlässigkeit, Leistung und Sicherheit der Hostinfrastruktur für virtuelle Computer (VMs) zu verbessern. Zu Updates zählen z.B. Änderungen wie das Patchen der Hostingumgebung oder das Upgraden und die Außerbetriebnahme von Hardware. Die meisten Updates wirken sich nicht auf die gehosteten virtuellen Computer aus. Updates wirken sich jedoch in den folgenden Szenarien auf virtuelle Computer aus:
 
-- Wenn die Wartung keinen Neustart erfordert, verwendet Azure eine direkte Migration, um den virtuellen Computer anzuhalten, während der Host aktualisiert wird. Wartungsvorgänge, die keinen Neustart erfordern, werden auf eine Fehlerdomäne nach der anderen angewendet. Die Vorgänge werden beendet, wenn ein Integritätswarnungssignal empfangen wird.
+- Wenn die Wartung keinen Neustart erfordert, hält Azure den virtuellen Computer für einige Sekunden an, während der Host aktualisiert wird. Diese Art von Wartungsvorgängen werden auf eine Fehlerdomäne nach der anderen angewendet. Die Vorgänge werden beendet, wenn ein Integritätswarnungssignal empfangen wird.
 
 - Wenn die Wartung einen Neustart erfordert, werden Sie in einer Benachrichtigung über den geplanten Wartungstermin informiert. In diesen Fällen steht Ihnen ein Zeitfenster zur Verfügung (normalerweise 35 Tage), in dem Sie die Wartung zu einem für Sie günstigen Zeitpunkt selbst starten können.
 
 
 Geplante Wartungen, die einen Neustart erfordern, werden in Wellen geplant. Jede Welle bezieht sich auf einen anderen Umfang (Regionen):
 
-- Eine Welle beginnt mit einer Kundenbenachrichtigung. Die Benachrichtigung wird standardmäßig an den Abonnementbesitzer und die -mitbesitzer gesendet. Den Benachrichtigungen können mit Azure-[Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-logs-overview.md) Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks hinzugefügt werden.  
+- Eine Welle beginnt mit einer Kundenbenachrichtigung. Die Benachrichtigung wird standardmäßig an den Abonnementbesitzer und die -mitbesitzer gesendet. Den Benachrichtigungen können mit Azure-[Aktivitätsprotokollwarnungen](../azure-monitor/platform/platform-logs-overview.md) Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks hinzugefügt werden.  
 - Mit der Benachrichtigung wird ein *Self-Service-Zeitfenster* bereitgestellt. Während dieses Zeitfensters (normalerweise 35 Tage) können Sie ermitteln, welche Ihrer virtuellen Computer in der Welle enthalten sind. Sie können die Wartung proaktiv gemäß ihren eigenen Zeitplanungsanforderurngen starten.
 - Im Anschluss an das Self-Service-Zeitfenster beginnt das *Zeitfenster für die geplante Wartung*. Irgendwann in diesem Zeitfenster plant Azure die erforderliche Wartung und wendet sie auf Ihren virtuellen Computer an. 
 
@@ -94,7 +89,7 @@ Die Spalte **Self-Service-Wartung** wird nun in der Liste der VM-Skalierungsgrup
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Benachrichtigungen und Warnungen im Portal
 
-Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Überwachen der Abonnementaktivität mit dem Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md).
+Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Überwachen der Abonnementaktivität mit dem Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie die Option **Überwachen** im Menü auf der linken Seite aus. 
@@ -102,7 +97,7 @@ Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, 
 4. Wählen Sie auf der Seite **Aktivitätsprotokollwarnung hinzufügen** die angeforderten Informationen aus, oder geben Sie sie ein. Stellen Sie unter **Kriterien** sicher, dass Sie die folgenden Werte festgelegt haben:
    - **Ereigniskategorie**: Wählen Sie **Service Health**.
    - **Dienste**: Wählen Sie **Virtual Machine Scale Sets und Virtual Machines** aus.
-   - **Typ**: Wählen Sie **Geplante Wartung** aus. 
+   - **Typ:** Wählen Sie **Geplante Wartung** aus. 
     
 Weitere Informationen zum Konfigurieren von Aktivitätsprotokollwarnungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts.md).
     
@@ -117,7 +112,7 @@ Nach dem Starten der Wartung werden die betroffenen virtuellen Computer in Ihrer
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>Überprüfen des Wartungsstatus mithilfe von PowerShell
 
-Sie können mithilfe von Azure PowerShell einsehen, wann die Wartung von virtuellen Computern in Ihrer VM-Skalierungsgruppe geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) unter Verwendung des Parameters `-InstanceView` ermittelt werden.
+Sie können mithilfe von Azure PowerShell einsehen, wann die Wartung von virtuellen Computern in Ihrer VM-Skalierungsgruppe geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzVmss](/powershell/module/az.compute/get-azvmss) unter Verwendung des Parameters `-InstanceView` ermittelt werden.
  
 Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung geplant, die Auswirkungen auf die VM-Instanz besitzt, gibt das Cmdlet keine Wartungsinformationen zurück. 
 
@@ -152,7 +147,7 @@ Informationen zu geplanten Wartungen können mithilfe von [az vmss list-instance
  
 Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung geplant, die Auswirkungen auf die VM-Instanz besitzt, gibt das Cmdlet keine Wartungsinformationen zurück. 
 
-```azure-cli
+```azurecli
 az vmss list-instances -g rgName -n vmssName --expand instanceView
 ```
 
@@ -172,7 +167,7 @@ Unter **MaintenanceRedeployStatus** für die einzelnen VM-Instanzen werden die f
 
 Der folgende Aufruf initiiert die Wartung für eine VM-Instanz, wenn `IsCustomerInitiatedMaintenanceAllowed` auf **TRUE** festgelegt ist:
 
-```azure-cli
+```azurecli
 az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 ```
 
@@ -186,11 +181,11 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 **A:** In einer Verfügbarkeitsgruppe oder VM-Skalierungsgruppe bereitgestellte virtuelle Computer verwenden Updatedomänen. Bei der Wartung berücksichtigt Azure die Updatedomäneneinschränkung und startet virtuelle Computer aus einer anderen Updatedomäne (innerhalb derselben Verfügbarkeitsgruppe) nicht neu. Azure wartet auch mindestens 30 Minuten bis zum Wechsel zur nächsten Gruppe von virtuellen Computern. 
 
-Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Regionen und Verfügbarkeit für virtuelle Computer in Azure](../virtual-machines/windows/availability.md).
+Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Regionen und Verfügbarkeit für virtuelle Computer in Azure](../virtual-machines/availability.md).
 
 **F: Wie kann ich über eine geplante Wartung benachrichtigt werden?**
 
-**A:** Eine geplante Wartungsaktion beginnt mit dem Festlegen eines Zeitplans für eine oder mehrere Azure-Regionen. Bald danach wird eine E-Mail-Benachrichtigung an die Abonnementbesitzer gesendet (pro Abonnement eine E-Mail). Sie können Kanäle und Empfänger für diese Benachrichtigung mit Aktivitätsprotokollwarnungen hinzufügen. Wenn Sie einen virtuellen Computer in einer Region bereitstellen, in der eine Wartung bereits geplant ist, erhalten Sie die Benachrichtigung nicht. Überprüfen Sie stattdessen den Wartungsstatus des virtuellen Computers.
+**A:** Eine geplante Wartungsaktion beginnt mit dem Festlegen eines Zeitplans für eine oder mehrere Azure-Regionen. Bald danach wird eine E-Mail-Benachrichtigung an Abonnementadministratoren, Co-Administratoren, Besitzer und Mitwirkende gesendet (eine E-Mail pro Abonnement). Zusätzliche Kanäle und Empfänger für diese Benachrichtigung können mit Aktivitätsprotokollwarnungen konfiguriert werden. Falls Sie einen virtuellen Computer in einer Region bereitstellen, in der die geplante Wartung bereits eingeplant ist, erhalten Sie die Benachrichtigung nicht. Überprüfen Sie stattdessen den Wartungsstatus des virtuellen Computers.
 
 **F: Mir wird weder im Portal noch über PowerShell oder über die CLI ein Hinweis auf eine geplante Wartung angezeigt. Woran kann das liegen?**
 

@@ -1,23 +1,17 @@
 ---
-title: Abrufen von Azure Blockchain Workbench Preview-Datenbankinformationen
+title: Abrufen von Azure Blockchain Workbench-Datenbankinformationen
 description: Erfahren Sie, wie Sie Informationen zu Datenbank und Datenbankserver von Azure Blockchain Workbench Preview abrufen.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 09/05/2019
-ms.topic: article
-ms.service: azure-blockchain
+ms.topic: how-to
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: f4a4eaab9a03aeed27e29eb645b6e22a028b243b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 898360d8e22803e17ff4da7d3b63f5595cad47ba
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845080"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015484"
 ---
-# <a name="get-information-about-your-azure-blockchain-workbench-preview-database"></a>Abrufen von Informationen zu Ihrer Azure Blockchain Workbench Preview-Datenbank
+# <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Abrufen von Informationen zu Ihrer Azure Blockchain Workbench-Datenbank
 
 In diesem Artikel wird erläutert, wie Sie ausführliche Informationen zu Ihrer Azure Blockchain Workbench Preview-Datenbank abrufen.
 
@@ -37,7 +31,7 @@ So stellen Sie die Verbindung mit der Datenbank her:
 1. Melden Sie sich beim Azure-Portal mit einem Konto an, das über die Berechtigungen **Besitzer** für die Azure Blockchain Workbench-Ressourcen verfügt.
 2. Wählen Sie im linken Navigationsbereich die Option **Ressourcengruppen** aus.
 3. Wählen Sie den Namen der Ressourcengruppe für die Blockchain Workbench-Bereitstellung aus.
-4. Wählen Sie **Typ** aus, um die Ressourcenliste zu sortieren, und wählen Sie dann Ihren **SQL-Server** aus. Die sortierte Liste im nächsten Bildschirm zeigt zwei SQL-Datenbanken (eine "master"-Datenbank und eine weitere mit dem **Ressourcenpräfix** "lhgn").
+4. Wählen Sie **Typ** aus, um die Ressourcenliste zu sortieren, und wählen Sie dann Ihren **SQL-Server** aus. Die sortierte Liste im nächsten Bildschirm zeigt zwei Datenbanken (eine „master“-Datenbank und eine weitere mit dem **Ressourcenpräfix** „lhgn“).
 
    ![Sortierte Blockchain Workbench-Ressourcenliste](./media/getdb-details/sorted-workbench-resource-list.png)
 

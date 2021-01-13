@@ -1,25 +1,16 @@
 ---
-title: 'Azure Service Fabric: Einrichten von Überwachung mit Azure Monitor-Protokollen | Microsoft-Dokumentation'
+title: Einrichten der Überwachung mit Azure Monitor-Protokollen
 description: Erfahren Sie, wie Sie Azure Monitor-Protokolle für die Visualisierung und Analyse von Ereignissen einrichten, um Ihre Azure Service Fabric-Cluster zu überwachen.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: c8f7198b59a0fe7ed6775736f8b97f5b5a262640
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306858"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86258658"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Einrichten von Azure Monitor-Protokollen für einen Cluster
 
@@ -56,13 +47,13 @@ Wenn Sie Windows verwenden, fahren Sie mit den folgenden Schritten zum Verknüpf
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Verbinden des Log Analytics-Arbeitsbereichs mit Ihrem Cluster 
 
-1. Der Arbeitsbereich muss mit den Diagnosedaten aus Ihrem Cluster verknüpft werden. Navigieren Sie zu der Ressourcengruppe, in der Sie die Lösung der Service Fabric-Analyse erstellt haben. Wählen Sie **ServiceFabric\<-Arbeitsbereichsname\>** aus, und wechseln Sie zur zugehörigen Übersichtsseite. Dort können Sie Lösungseinstellungen und Arbeitsbereichseinstellungen ändern und auf den Log Analytics-Arbeitsbereich zugreifen.
+1. Der Arbeitsbereich muss mit den Diagnosedaten aus Ihrem Cluster verknüpft werden. Navigieren Sie zu der Ressourcengruppe, in der Sie die Lösung der Service Fabric-Analyse erstellt haben. Wählen Sie **ServiceFabric\<nameOfWorkspace\>** aus, und navigieren Sie zur zugehörigen Übersichtsseite. Dort können Sie Lösungseinstellungen und Arbeitsbereichseinstellungen ändern und auf den Log Analytics-Arbeitsbereich zugreifen.
 
 2. Wählen Sie im linken Navigationsmenü unter **Speicherkontoprotokolle** die Option **Arbeitsbereichsdatenquellen** aus.
 
 3. Wählen Sie auf der Seite **Speicherkontoprotokolle** ganz oben die Option **Hinzufügen** aus, um dem Arbeitsbereich die Protokolle Ihres Clusters hinzuzufügen.
 
-4. Wählen Sie **Speicherkonto** aus, um das geeignete in Ihrem Cluster erstellte Konto hinzuzufügen. Wenn Sie den Standardnamen verwendet haben, heißt das Speicherkonto **sfdg\<Ressourcengruppenname\>**. Sie können dies auch mithilfe der Azure Resource Manager-Vorlage überprüfen, die zum Bereitstellen des Clusters verwendet wurde, indem Sie den für **applicationDiagnosticsStorageAccountName** verwendeten Wert prüfen. Wenn der Name nicht angezeigt wird, scrollen Sie nach unten, und wählen Sie **Weitere laden** aus. Wählen Sie den Speicherkontonamen aus.
+4. Wählen Sie **Speicherkonto** aus, um das geeignete in Ihrem Cluster erstellte Konto hinzuzufügen. Wenn Sie den Standardnamen verwendet haben, heißt das Speicherkonto **sfdg\<resourceGroupName\>** . Sie können dies auch mithilfe der Azure Resource Manager-Vorlage überprüfen, die zum Bereitstellen des Clusters verwendet wurde, indem Sie den für **applicationDiagnosticsStorageAccountName** verwendeten Wert prüfen. Wenn der Name nicht angezeigt wird, scrollen Sie nach unten, und wählen Sie **Weitere laden** aus. Wählen Sie den Speicherkontonamen aus.
 
 5. Geben Sie den Datentyp an. Legen Sie ihn auf **Service Fabric-Ereignisse** fest.
 
@@ -100,7 +91,7 @@ Azure Resource Manager erkennt, dass es sich bei diesem Befehl um ein Update fü
 
 ## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Bereitstellen von Azure Monitor-Protokollen mit Azure PowerShell
 
-Sie können Ihre Protokollanalyseressource auch über PowerShell mit dem Befehl `New-AzOperationalInsightsWorkspace` bereitstellen. Stellen Sie hierfür sicher, dass [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) installiert ist. Erstellen Sie mithilfe dieses Skripts einen neuen Log Analytics-Arbeitsbereich, und fügen Sie diesem die Service Fabric-Lösung hinzu: 
+Sie können Ihre Protokollanalyseressource auch über PowerShell mit dem Befehl `New-AzOperationalInsightsWorkspace` bereitstellen. Stellen Sie hierfür sicher, dass [Azure PowerShell](/powershell/azure/install-az-ps) installiert ist. Erstellen Sie mithilfe dieses Skripts einen neuen Log Analytics-Arbeitsbereich, und fügen Sie diesem die Service Fabric-Lösung hinzu: 
 
 ```powershell
 
@@ -132,5 +123,5 @@ Mithilfe von PowerShell können Sie zudem weitere Lösungen hinzufügen oder and
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Stellen Sie den Log Analytics-Agent auf Ihren Knoten bereit](service-fabric-diagnostics-oms-agent.md), um Leistungsindikatoren zu erfassen und Docker-Statistiken und -Protokolle für Ihre Container zu sammeln.
-* Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokollen vertraut.
+* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../azure-monitor/log-query/log-query-overview.md) in Azure Monitor-Protokolle vertraut.
 * [Erstellen benutzerdefinierter Ansichten in Azure Monitor-Protokollen mithilfe des Ansicht-Designers](../azure-monitor/platform/view-designer.md)

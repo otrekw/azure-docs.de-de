@@ -9,15 +9,15 @@ editor: cgronlun
 ms.assetid: f6e75eb1-d0ae-47cf-bdb8-06684b7c0a94
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 434917c1cee26a4a8eeb7f27808e3fcb487f3f55
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878717"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350040"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Storage Gen1
 Erfahren Sie, wie Sie die Diagnoseprotokollierung für Ihr Azure Data Lake Storage Gen1-Konto aktivieren und wie Sie die für Ihr Konto erfassten Protokolle anzeigen.
@@ -33,11 +33,11 @@ Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Sto
 2. Öffnen Sie Ihr Data Lake Storage Gen1-Konto, und klicken Sie auf Ihrem Data Lake Storage Gen1-Kontoblatt auf **Diagnoseeinstellungen**.
 3. Klicken Sie auf dem Blatt **Diagnoseeinstellungen** auf **Diagnose aktivieren**.
 
-    ![Aktivieren der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Aktivieren von Diagnoseprotokollen")
+    ![Screenshot des Data Lake Storage Gen1-Kontos mit hervorgehobenen Optionen „Diagnoseeinstellung“ und „Diagnose aktivieren“.](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Aktivieren von Diagnoseprotokollen")
 
 3. Nehmen Sie auf dem Blatt **Diagnoseeinstellungen** die folgenden Änderungen vor, um die Diagnoseprotokollierung zu konfigurieren.
    
-    ![Aktivieren der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Aktivieren von Diagnoseprotokollen")
+    ![Screenshot des Abschnitts mit Diagnoseeinstellungen mit hervorgehobenem Textfeld „Name“ und hervorgehobener Option „Speichern“.](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Aktivieren von Diagnoseprotokollen")
    
    * Geben Sie unter **Name** einen Wert für die Konfiguration des Diagnoseprotokolls ein.
    * Sie können die Daten auf verschiedene Arten speichern/verarbeiten.
@@ -46,7 +46,7 @@ Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Sto
         
         * Wählen Sie die Option zum **Streamen an einen Event Hub**, um die Protokolldaten an einen Azure Event Hub zu streamen. Wahrscheinlich werden Sie diese Option verwenden, wenn Sie eine Downstreamverarbeitungs-Pipeline einsetzen, um eingehende Protokolle in Echtzeit zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
 
-        * Wählen Sie die Option zum **Senden an Log Analytics**, um die generierten Protokolldaten mithilfe des Azure Monitor-Diensts zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Log Analytics-Arbeitsbereich angeben, den Sie zum Ausführen der Protokollanalyse verwenden. Informationen zum Verwenden von Azure Monitor-Protokollen finden Sie unter [Anzeigen oder Analysieren der mit Azure Monitor-Protokollen gesammelten Daten](../azure-monitor/learn/tutorial-viewdata.md).
+        * Wählen Sie die Option zum **Senden an Log Analytics**, um die generierten Protokolldaten mithilfe des Azure Monitor-Diensts zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Log Analytics-Arbeitsbereich angeben, den Sie zum Ausführen der Protokollanalyse verwenden. Informationen zum Verwenden von Azure Monitor-Protokollen finden Sie unter [Anzeigen oder Analysieren der mit Azure Monitor-Protokollen gesammelten Daten](../azure-monitor/log-query/log-analytics-tutorial.md).
      
    * Geben Sie an, ob Sie Überwachungsprotokolle oder Anforderungsprotokolle oder beides abrufen möchten.
    * Geben Sie die Anzahl der Tage an, für die die Daten beibehalten werden müssen. Die Aufbewahrung ist nur zutreffend, wenn Sie Azure-Speicherkonten zum Archivieren von Protokolldaten verwenden.
@@ -73,13 +73,13 @@ Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Storage Gen1-Kon
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Im Azure Storage-Konto, das die Protokolldaten enthält
 1. Öffnen Sie das Azure Storage-Kontoblatt, das Data Lake Storage Gen1 zur Protokollierung zugeordnet ist, und klicken Sie dann auf „Blobs“. Auf dem Blatt **Blob-Dienst** werden zwei Container aufgelistet.
    
-    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Anzeigen von Diagnoseprotokollen")
+    ![Screenshot des Blatts „Data Lake Storage Gen1“ mit ausgewählter Option „Blobs“ und des Blatts „Blobdienst“ mit den hervorgehobenen Namen der beiden Blobdienste.](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Anzeigen von Diagnoseprotokollen")
    
    * Der Container **insights-logs-audit** enthält die Überwachungsprotokolle.
    * Der Container **insights-logs-requests** enthält die Anforderungsprotokolle.
 2. Innerhalb dieser Container werden die Protokolle in der folgenden Struktur gespeichert.
    
-    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Anzeigen von Diagnoseprotokollen")
+    ![Screenshot der im Container gespeicherten Protokollstruktur.](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Anzeigen von Diagnoseprotokollen")
    
     Der vollständige Pfad zu einem Überwachungsprotokoll könnte z.B. folgendermaßen lauten: `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
@@ -91,94 +91,98 @@ Die Überwachungs- und Anforderungsprotokolle liegen im JSON-Format vor. In dies
 ### <a name="request-logs"></a>Anforderungsprotokolle
 Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotokoll. Jedes Blob hat ein Stammobjekt namens **records** , das ein Array mit Protokollobjekten enthält.
 
+```json
+{
+"records": 
+  [        
+    . . . .
+    ,
     {
-    "records": 
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
-             "category": "Requests",
-             "operationName": "GETCustomerIngressEgress",
-             "resultType": "200",
-             "callerIpAddress": "::ffff:1.1.1.1",
-             "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
-             "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-             "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
-        }
-        ,
-        . . . .
-      ]
+        "time": "2016-07-07T21:02:53.456Z",
+        "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
+        "category": "Requests",
+        "operationName": "GETCustomerIngressEgress",
+        "resultType": "200",
+        "callerIpAddress": "::ffff:1.1.1.1",
+        "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
+        "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
+        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="request-log-schema"></a>Anforderungsprotokollschema
-| NAME | Type | BESCHREIBUNG |
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
-| time |string |Der Zeitstempel (UTC) des Protokolls. |
-| Ressourcen-ID |string |Die ID der Ressource, auf der der Vorgang stattfand. |
-| category |string |Die Protokollkategorie. Beispiel: **Anforderungen**. |
-| operationName |string |Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
-| resultType |string |Der Status des Vorgangs, beispielsweise 200. |
-| callerIpAddress |string |Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
-| correlationId |string |Die ID des Protokolls, die verwendet werden kann, um einen Satz verwandter Protokolleinträge zu gruppieren. |
+| time |String |Der Zeitstempel (UTC) des Protokolls. |
+| resourceId |String |Die ID der Ressource, auf der der Vorgang stattfand. |
+| category |String |Die Protokollkategorie. Beispiel: **Anforderungen**. |
+| operationName |String |Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
+| resultType |String |Der Status des Vorgangs, beispielsweise 200. |
+| callerIpAddress |String |Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
+| correlationId |String |Die ID des Protokolls, die verwendet werden kann, um einen Satz verwandter Protokolleinträge zu gruppieren. |
 | identity |Object |Die Identität, die das Protokoll erstellt hat. |
 | properties |JSON |Weitere Informationen siehe unten. |
 
 #### <a name="request-log-properties-schema"></a>Eigenschaftenschema des Anforderungsprotokolls
-| NAME | Type | BESCHREIBUNG |
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
-| HttpMethod |string |Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
-| `Path` |string |Der Pfad, in dem der Vorgang durchgeführt wurde. |
-| RequestContentLength |int |Die Inhaltslänge der HTTP-Anforderung. |
-| ClientRequestId |string |Die ID, die diese Anforderung eindeutig identifiziert. |
-| StartTime |string |Der Zeitpunkt, zu dem der Server die Anforderung empfangen hat. |
-| EndTime |string |Der Zeitpunkt, zu dem der Server eine Antwort gesendet hat. |
+| HttpMethod |String |Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
+| `Path` |String |Der Pfad, in dem der Vorgang durchgeführt wurde. |
+| RequestContentLength |INT |Die Inhaltslänge der HTTP-Anforderung. |
+| ClientRequestId |String |Die ID, die diese Anforderung eindeutig identifiziert. |
+| StartTime |String |Der Zeitpunkt, zu dem der Server die Anforderung empfangen hat. |
+| EndTime |String |Der Zeitpunkt, zu dem der Server eine Antwort gesendet hat. |
 
 ### <a name="audit-logs"></a>Überwachungsprotokolle
 Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsprotokoll. Jeder Blob hat ein Stammobjekt namens **records** , das ein Array von Protokollobjekten enthält.
 
+```json
+{
+"records": 
+  [        
+    . . . .
+    ,
     {
-    "records": 
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-08T19:08:59.359Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
-             "category": "Audit",
-             "operationName": "SeOpenStream",
-             "resultType": "0",
-             "resultSignature": "0",
-             "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
-             "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
-             "properties": {"StreamName":"adl://<data_lake_storage_gen1_account_name>.azuredatalakestore.net/logs.csv"}
-        }
-        ,
-        . . . .
-      ]
+        "time": "2016-07-08T19:08:59.359Z",
+        "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
+        "category": "Audit",
+        "operationName": "SeOpenStream",
+        "resultType": "0",
+        "resultSignature": "0",
+        "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
+        "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
+        "properties": {"StreamName":"adl://<data_lake_storage_gen1_account_name>.azuredatalakestore.net/logs.csv"}
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="audit-log-schema"></a>Überwachungsprotokollschema
-| NAME | Type | BESCHREIBUNG |
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
-| time |string |Der Zeitstempel (UTC) des Protokolls. |
-| Ressourcen-ID |string |Die ID der Ressource, auf der der Vorgang stattfand. |
-| category |string |Die Protokollkategorie. Beispiel: **Überwachung**. |
-| operationName |string |Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
-| resultType |string |Der Status des Vorgangs, beispielsweise 200. |
-| resultSignature |string |Weitere Details zum Vorgang |
-| correlationId |string |Die ID des Protokolls, die verwendet werden kann, um einen Satz verwandter Protokolleinträge zu gruppieren. |
+| time |String |Der Zeitstempel (UTC) des Protokolls. |
+| resourceId |String |Die ID der Ressource, auf der der Vorgang stattfand. |
+| category |String |Die Protokollkategorie. Beispiel: **Überwachung**. |
+| operationName |String |Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
+| resultType |String |Der Status des Vorgangs, beispielsweise 200. |
+| resultSignature |String |Weitere Details zum Vorgang |
+| correlationId |String |Die ID des Protokolls, die verwendet werden kann, um einen Satz verwandter Protokolleinträge zu gruppieren. |
 | identity |Object |Die Identität, die das Protokoll erstellt hat. |
 | properties |JSON |Weitere Informationen siehe unten. |
 
 #### <a name="audit-log-properties-schema"></a>Eigenschaftenschema des Überwachungsprotokolls
-| NAME | Type | BESCHREIBUNG |
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
-| StreamName |string |Der Pfad, in dem der Vorgang durchgeführt wurde. |
+| StreamName |String |Der Pfad, in dem der Vorgang durchgeführt wurde. |
 
 ## <a name="samples-to-process-the-log-data"></a>Beispiele für die Verarbeitung der Protokolldaten
-Beim Senden von Protokollen aus Azure Data Lake Storage Gen1 an Azure Monitor-Protokolle (Informationen zum Verwenden von Azure Monitor-Protokollen finden Sie unter [Anzeigen oder Analysieren der mit der Azure Monitor-Protokollsuche gesammelten Daten](../azure-monitor/learn/tutorial-viewdata.md)) gibt die folgende Abfrage eine Tabelle mit einer Liste der Benutzeranzeigenamen, die Uhrzeit der Ereignisse, die Anzahl von Ereignissen zur Zeit des Ereigniseintritts sowie ein visuelles Diagramm zurück. Diese kann ganz einfach bearbeitet werden, sodass Benutzer-GUIDs oder weitere Attribute angezeigt werden:
+Beim Senden von Protokollen aus Azure Data Lake Storage Gen1 an Azure Monitor-Protokolle (Informationen zum Verwenden von Azure Monitor-Protokollen finden Sie unter [Anzeigen oder Analysieren der mit der Azure Monitor-Protokollsuche gesammelten Daten](../azure-monitor/log-query/log-analytics-tutorial.md)) gibt die folgende Abfrage eine Tabelle mit einer Liste der Benutzeranzeigenamen, die Uhrzeit der Ereignisse, die Anzahl von Ereignissen zur Zeit des Ereigniseintritts sowie ein visuelles Diagramm zurück. Diese kann ganz einfach bearbeitet werden, sodass Benutzer-GUIDs oder weitere Attribute angezeigt werden:
 
 ```
 search *
@@ -192,4 +196,3 @@ Azure Data Lake Storage Gen1 stellt ein Muster bereit, nach dem die Protokolldat
 ## <a name="see-also"></a>Weitere Informationen
 * [Übersicht über Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Schützen von Daten in Data Lake Storage Gen1](data-lake-store-secure-data.md)
-

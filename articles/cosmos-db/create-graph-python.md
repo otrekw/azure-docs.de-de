@@ -1,21 +1,23 @@
 ---
 title: 'Schnellstart: Gremlin-API mit Python: Azure Cosmos DB'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Gremlin-API von Azure Cosmos DB eine Konsolenanwendung mit dem Azure-Portal und Python erstellen.
-author: luisbosquez
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
-ms.author: lbosq
-ms.openlocfilehash: 545f679b11295485567a817d144225b361a262ce
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.author: chrande
+ms.custom: devx-track-python
+ms.openlocfilehash: 91b04b05b810b2b0fc221943a73e81c49f7119dc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815195"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972474"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Schnellstart: Erstellen einer Graphdatenbank in Azure Cosmos DB mit Python und dem Azure-Portal
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin-Konsole](create-graph-gremlin-console.md)
@@ -26,22 +28,16 @@ ms.locfileid: "68815195"
 > * [PHP](create-graph-php.md)
 >  
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Python und der [Gremlin-API](graph-introduction.md) von Azure Cosmos DB eine Konsolen-App erstellen, indem Sie ein Beispiel von GitHub klonen. Außerdem wird in dieser Schnellstartanleitung die Erstellung eines Azure Cosmos DB-Kontos über das webbasierte Azure-Portal gezeigt.   
+In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB-Gremlin-API-Konto (Graph) im Azure-Portal und fügen Daten mithilfe einer über GitHub geklonten Python-App hinzu. Azure Cosmos DB ist ein Multimodell-Datenbankdienst, mit dem Sie mithilfe der Funktionen für globale Verteilung und horizontale Skalierung schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen können.
 
-Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB bietet.  
+## <a name="prerequisites"></a>Voraussetzungen
+- Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Oder [testen Sie Azure Cosmos DB kostenlos](https://azure.microsoft.com/try/cosmosdb/) ohne ein Azure-Abonnement.
+- [Python 3.5+](https://www.python.org/downloads/) einschließlich [pip](https://pip.pypa.io/en/stable/installing/)-Paketinstallationsprogramm
+- [Python-Treiber für Gremlin](https://github.com/apache/tinkerpop/tree/master/gremlin-python)
+- [Git](https://git-scm.com/downloads).
 
 > [!NOTE]
 > Für die in dieser Schnellstartanleitung beschriebenen Schritte benötigen Sie ein Graphdatenbankkonto, das nach dem 20. Dezember 2017 erstellt wurde. Bestehende Konten unterstützen Python, nachdem diese zur Version für die allgemeine Verfügbarkeit migriert wurden.
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternativ können Sie [Azure Cosmos DB ohne Azure-Abonnement testen](https://azure.microsoft.com/try/cosmosdb/) – kostenlos und ohne Verpflichtung.
-
-Außerdem haben Sie folgende Möglichkeiten:
-* [Python](https://www.python.org/downloads/) Version 3.5 oder höher
-* [pip-Paket-Manager](https://pip.pypa.io/en/stable/installing/)
-* [Git-Client](https://git-scm.com/)
-* [Python-Treiber für Gremlin](https://github.com/apache/tinkerpop/tree/master/gremlin-python)
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
@@ -77,9 +73,9 @@ Beginnen wir nun mit der Verwendung von Code. Klonen Sie eine Gremlin-API-App au
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
-Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressourcen im Code erstellt werden, können Sie sich die folgenden Codeausschnitte ansehen. Die Codeausschnitte stammen alle aus der Datei „connect.py“ im Ordner „C:\git-samples\azure-cosmos-db-graph-python-getting-started\“. Andernfalls können Sie mit [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-information) fortfahren. 
+Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressourcen im Code erstellt werden, können Sie sich die folgenden Codeausschnitte ansehen. Die Codeausschnitte stammen alle aus der Datei *connect.py* im Ordner *C:\git-samples\azure-cosmos-db-graph-python-getting-started\\* . Andernfalls können Sie mit [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-information) fortfahren. 
 
-* Der Gremlin-Client `client` wird in Zeile 104 `connect.py` initialisiert:
+* Der Gremlin-Client (`client`) wird in *connect.py* in Zeile 104 initialisiert:
 
     ```python
     ...
@@ -89,7 +85,7 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressou
     ...
     ```
 
-* Eine Reihe von Schritten für Gremlin wird am Anfang der Datei `connect.py` deklariert. Diese werden dann mit der Methode `client.submitAsync()` ausgeführt:
+* Am Anfang der Datei *connect.py* wird eine Reihe von Schritten für Gremlin deklariert. Diese werden dann mit der Methode `client.submitAsync()` ausgeführt:
 
     ```python
     client.submitAsync(_gremlin_cleanup_graph)
@@ -99,13 +95,13 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressou
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzurufen und in die App zu kopieren. Durch diese Einstellungen kann Ihre App mit Ihrer gehosteten Datenbank kommunizieren.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Schlüssel**. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) in Ihrem Azure Cosmos DB-Konto die Option **Schlüssel** aus. 
 
     Kopieren Sie den ersten Teil des URI-Werts.
 
-    ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“](./media/create-graph-python/keys.png)
+    :::image type="content" source="./media/create-graph-python/keys.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“":::
 
-2. Öffnen Sie die Datei „connect.py“, und fügen Sie in Zeile 104 den URI-Wert über `<YOUR_ENDPOINT>` hier ein:
+2. Öffnen Sie die Datei *connect.py*, und ersetzen Sie `<YOUR_ENDPOINT>` in Zeile 104 durch den URI-Wert:
 
     ```python
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
@@ -133,7 +129,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzur
         password="<YOUR_PASSWORD>")
     ```
 
-4. Verwenden Sie die Schaltfläche zum Kopieren im Azure-Portal, um den PRIMÄRSCHLÜSSEL zu kopieren und ihn über `<YOUR_PASSWORD>` in den Parameter `password=<YOUR_PASSWORD>` einzufügen.
+4. Kopieren Sie auf der Seite **Schlüssel** den PRIMÄRSCHLÜSSEL mithilfe der Kopierschaltfläche, und fügen Sie ihn im Parameter `password=<YOUR_PASSWORD>` für `<YOUR_PASSWORD>` ein.
 
     Das gesamte `client`-Objektdefinition sollte nun wie im folgenden Code aussehen:
     ```python
@@ -142,7 +138,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzur
         password="asdb13Fadsf14FASc22Ggkr662ifxz2Mg==")
     ```
 
-6. Speichern Sie die Datei `connect.py`.
+6. Speichern Sie die Datei *connect.py*.
 
 ## <a name="run-the-console-app"></a>Ausführen der Konsolenanwendung
 
@@ -175,23 +171,23 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzur
 
 Nach dem Einfügen der Scheitelpunkte und Kanten können Sie wieder zum Daten-Explorer zurückkehren, um sich die dem Graph hinzugefügten Scheitelpunkte anzusehen und weitere Datenpunkte hinzuzufügen.
 
-1. Erweitern Sie im **Daten-Explorer** **sample-graph**, klicken Sie auf **Graph**, und klicken Sie anschließend auf **Filter anwenden**. 
+1. Wählen Sie im Azure-Portal in Ihrem Azure Cosmos DB-Konto **Daten-Explorer** aus, erweitern Sie den Eintrag **sample-graph**, und wählen Sie **Graph** und anschließend **Filter anwenden** aus. 
 
-   ![Neue Dokumente im Daten-Explorer im Azure-Portal erstellen](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="Screenshot: In der API ausgewählter Graph mit der Option „Filter anwenden“":::
 
 2. Beachten Sie in der Liste **Ergebnisse** drei neue Benutzer, die dem Graph hinzugefügt wurden. Sie können die Scheitelpunkte bewegen, indem Sie sie ziehen und loslassen, zoomen, indem Sie das Mausrad verwenden, und die Größe des Graphen verändern, indem Sie auf den Doppelpfeil klicken. 
 
-   ![Neue Scheitelpunkte im Graph im Daten-Explorer im Azure-Portal](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png" alt-text="Neue Scheitelpunkte im Graph im Daten-Explorer im Azure-Portal":::
 
-3. Fügen Sie nun einige neue Benutzer hinzu. Klicken Sie auf die Schaltfläche **New Vertex** (Neuer Scheitelpunkt), um dem Graph Daten hinzuzufügen.
+3. Fügen Sie nun einige neue Benutzer hinzu. Wählen Sie die Schaltfläche **Neuer Vertex** aus, um dem Graph Daten hinzuzufügen.
 
-   ![Neue Dokumente im Daten-Explorer im Azure-Portal erstellen](./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Screenshot: Bereich „New Vertex“ (Neuer Scheitelpunkt), in dem Sie Werte eingeben können":::
 
 4. Geben Sie als Bezeichnung *Person* ein.
 
-5. Klicken Sie auf **Eigenschaft hinzufügen**, um die folgenden Eigenschaften hinzuzufügen: Beachten Sie, dass Sie für jede Person in Ihrem Graph eindeutige Eigenschaften erstellen können. Nur der id-Schlüssel ist erforderlich.
+5. Wählen Sie **Eigenschaft hinzufügen** aus, um die folgenden Eigenschaften hinzuzufügen. Beachten Sie, dass Sie für jede Person in Ihrem Graph eindeutige Eigenschaften erstellen können. Nur der id-Schlüssel ist erforderlich.
 
-    key|value|Notizen
+    Schlüssel|value|Notizen
     ----|----|----
     pk|/pk| 
     id|ashley|Der eindeutige Bezeichner für den Scheitelpunkt. Wenn Sie keine ID angeben, wird automatisch eine ID generiert.
@@ -203,13 +199,13 @@ Nach dem Einfügen der Scheitelpunkte und Kanten können Sie wieder zum Daten-Ex
 
 6. Klicken Sie auf **OK**. Der Bildschirm muss möglicherweise erweitert werden, damit **OK** am unteren Bildschirmrand zu sehen ist.
 
-7. Klicken Sie erneut auf **New Vertex** (Neuer Scheitelpunkt), und fügen Sie einen weiteren neuen Benutzer hinzu. 
+7. Wählen Sie erneut **New Vertex** (Neuer Scheitelpunkt) aus, und fügen Sie einen weiteren neuen Benutzer hinzu. 
 
 8. Geben Sie als Bezeichnung *Person* ein.
 
-9. Klicken Sie auf **Eigenschaft hinzufügen**, um die folgenden Eigenschaften hinzuzufügen:
+9. Wählen Sie **Eigenschaft hinzufügen** aus, um die folgenden Eigenschaften hinzuzufügen:
 
-    key|value|Notizen
+    Schlüssel|value|Notizen
     ----|----|----
     pk|/pk| 
     id|rakesh|Der eindeutige Bezeichner für den Scheitelpunkt. Wenn Sie keine ID angeben, wird automatisch eine ID generiert.
@@ -218,23 +214,23 @@ Nach dem Einfügen der Scheitelpunkte und Kanten können Sie wieder zum Daten-Ex
 
 10. Klicken Sie auf **OK**. 
 
-11. Klicken Sie auf die Schaltfläche **Filter anwenden** mit dem Standardfilter `g.V()`, um alle Werte des Graphen anzuzeigen. Daraufhin werden alle Benutzer in der Liste **Ergebnisse** angezeigt. 
+11. Wählen Sie die Schaltfläche **Filter anwenden** mit dem Standardfilter `g.V()` aus, um alle Werte des Graphen anzuzeigen. Daraufhin werden alle Benutzer in der Liste **Ergebnisse** angezeigt. 
 
-    Wenn Sie weitere Daten hinzufügen, können Sie Ihre Ergebnisse mithilfe von Filtern eingrenzen. Daten-Explorer verwendet standardmäßig `g.V()`, um alle Scheitelpunkte eines Graphen abzurufen. Sie können ihn in eine andere [Graphabfrage](tutorial-query-graph.md) wie z.B. `g.V().count()` ändern, um die Anzahl aller Scheitelpunkte eines Graphen im JSON-Format zurückzugeben. Wenn Sie den Filter geändert haben, ändern Sie den Filter zurück in `g.V()`, und klicken Sie auf **Filter anwenden**, um wieder alle Ergebnisse anzuzeigen.
+    Wenn Sie weitere Daten hinzufügen, können Sie Ihre Ergebnisse mithilfe von Filtern eingrenzen. Daten-Explorer verwendet standardmäßig `g.V()`, um alle Scheitelpunkte eines Graphen abzurufen. Sie können ihn in eine andere [Graphabfrage](tutorial-query-graph.md) wie z.B. `g.V().count()` ändern, um die Anzahl aller Scheitelpunkte eines Graphen im JSON-Format zurückzugeben. Wenn Sie den Filter geändert haben, ändern Sie den Filter zurück in `g.V()`, und wählen Sie **Filter anwenden** aus, um wieder alle Ergebnisse anzuzeigen.
 
-12. Als Nächstes verbinden wir „rakesh“ und „ashley“. Vergewissern Sie sich, dass **ashley** in der Liste **Ergebnisse** ausgewählt ist, und klicken Sie anschließend rechts unten neben **Ziele** auf die Bearbeitungsschaltfläche. Möglicherweise müssen Sie Ihr Fenster verbreitern, damit der Bereich **Eigenschaften** zu sehen ist.
+12. Als Nächstes verbinden wir „rakesh“ und „ashley“. Vergewissern Sie sich, dass **ashley** in der Liste **Ergebnisse** ausgewählt ist, und wählen Sie anschließend rechts unten neben **Ziele** die Bearbeitungsschaltfläche aus. Möglicherweise müssen Sie Ihr Fenster verbreitern, damit der Bereich **Eigenschaften** zu sehen ist.
 
-    ![Ändern des Ziels eines Scheitelpunkts in einem Graph](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Ändern des Ziels eines Scheitelpunkts in einem Graph":::
 
-13. Geben Sie im Feld **Ziel** die Zeichenfolge *rakesh* und im Feld **Edge label** (Edgebezeichner) die Zeichenfolge *knows* ein, und klicken Sie anschließend auf das Häkchen.
+13. Geben Sie im Feld **Ziel** die Zeichenfolge *rakesh* und im Feld **Kantenbezeichnung** die Zeichenfolge *knows* ein, und wählen Sie anschließend das Häkchen aus.
 
-    ![Hinzufügen einer Verbindung zwischen „ashley“ und „rakesh“ im Daten-Explorer](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="Hinzufügen einer Verbindung zwischen „ashley“ und „rakesh“ im Daten-Explorer":::
 
 14. Wählen Sie nun in der Ergebnisliste den Eintrag **rakesh** aus. Wie Sie sehen, sind „ashley“ und „rakesh“ miteinander verbunden. 
 
-    ![Zwei verbundene Scheitelpunkte im Daten-Explorer](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer.png" alt-text="Zwei verbundene Scheitelpunkte im Daten-Explorer":::
 
-    Damit haben Sie den Teil des Tutorials, in dem die Ressourcen erstellt werden, abgeschlossen. Sie können weiter Scheitelpunkte zu Ihrem Graphen hinzufügen, die vorhandenen Scheitelpunkte anpassen oder die Abfragen ändern. Sehen Sie sich nun die von Azure Cosmos DB bereitgestellten Metriken an, und bereinigen Sie anschließend die Ressourcen. 
+Damit haben Sie den Teil des Tutorials, in dem die Ressourcen erstellt werden, abgeschlossen. Sie können weiter Scheitelpunkte zu Ihrem Graphen hinzufügen, die vorhandenen Scheitelpunkte anpassen oder die Abfragen ändern. Sehen Sie sich nun die von Azure Cosmos DB bereitgestellten Metriken an, und bereinigen Sie anschließend die Ressourcen. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
 
@@ -246,7 +242,7 @@ Nach dem Einfügen der Scheitelpunkte und Kanten können Sie wieder zum Daten-Ex
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, einen Graph mit dem Daten-Explorer erstellen und eine App ausführen. Nun können Sie komplexere Abfragen erstellen und leistungsfähige Logik zum Traversieren von Graphen mit Gremlin implementieren. 
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, einen Graph mit dem Daten-Explorer erstellen und eine Python-App ausführen, um dem Graph Daten hinzuzufügen. Nun können Sie komplexere Abfragen erstellen und leistungsfähige Logik zum Traversieren von Graphen mit Gremlin implementieren. 
 
 > [!div class="nextstepaction"]
 > [Query using Gremlin (Abfragen mithilfe von Gremlin)](tutorial-query-graph.md)

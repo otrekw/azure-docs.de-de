@@ -2,14 +2,14 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 06/07/2019
+ms.date: 08/10/2020
 ms.author: rogarana
-ms.openlocfilehash: b28427b3ede0cfaeb9e08d3c73b15ea7f2961f1b
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 8dcb58499113b0b7ae0814419f0a76965a0ed945
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71180049"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94680937"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>Zusätzliche Freigabegrenzwerte für Dateien auf Premiumebene
 
@@ -23,11 +23,15 @@ ms.locfileid: "71180049"
 
 #### <a name="file-level-limits"></a>Grenzwerte auf Dateiebene
 
-|Bereich  |Premiumdateien  |Standarddateien |
+|Bereich  |Standarddateien  |Premiumdateien  |
 |---------|---------|---------|
-|Size                  |1 TiB         |1 TiB|
-|Max. IOPS pro Datei     |5\.000         |1\.000|
-|Gleichzeitige Handles    |2\.000         |2\.000|
-|Ausgehende Daten  |300 MiB/s|      Siehe: Durchsatzwerte für Standarddateien|
-|Eingehende Daten  |200 MiB/s| Siehe: Durchsatzwerte für Standarddateien|
-|Throughput| Siehe: Ein-/Ausgangswerte für Premiumdateien| Bis zu 60 MiB/s|
+|Size     |1 TiB         |4 TiB         |
+|Max. IOPS pro Datei      |1\.000         |Bis zu 8.000*         |
+|Gleichzeitige Handles     |2\.000         |2\.000         |
+|Ausgehende Daten     |Siehe: Durchsatzwerte für Standarddateien         |300 MiB/Sek. (bis zu 1 GiB/s bei SMB Multichannel Vorschau)**         |
+|Eingehende Daten     |Siehe: Durchsatzwerte für Standarddateien         |200 MiB/Sek. (bis zu 1 GiB/s bei SMB Multichannel Vorschau)**        |
+|Throughput     |Bis zu 60 MiB/s         |Siehe: Ein-/Ausgangswerte für Premiumdateien         |
+
+\* <sup> Gilt für Ein-/Ausgaben beim Lesen und Schreiben (normalerweise kleinere E/A-Größen <=64 K). Metadatenvorgänge (außer Lese-und Schreibvorgängen) können niedriger sein. </sup>
+
+\*\* <sup> Unterliegen Netzwerkgrenzwerten für Computer, verfügbarer Bandbreite, E/A-Größen, Warteschlangenlänge und anderen Faktoren. Weitere Informationen finden Sie unter [SMB Multichannel-Leistung](../articles/storage/files/storage-files-smb-multichannel-performance.md). </sup>

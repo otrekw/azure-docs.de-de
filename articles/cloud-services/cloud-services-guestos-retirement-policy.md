@@ -14,10 +14,10 @@ ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
 ms.openlocfilehash: fbe9b3379799fe3cf0a56d921ab257bc87606ca9
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68945451"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Unterstützungs- und Deaktivierungsrichtlinie für Azure-Gastbetriebssysteme

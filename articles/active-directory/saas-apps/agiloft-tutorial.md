@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Agiloft | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Agiloft konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: aca13814-cdbd-46b8-93dc-1578099c5ee4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7d86be9196eb425a356818c47fbef1cb1c0b5b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd926875eda5676da6c154a57b0ac18ca12d9b79
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107259"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671607"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Tutorial: Azure Active Directory-Integration mit Agiloft
 
@@ -31,7 +27,7 @@ Die Integration von Agiloft in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Agiloft anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -68,7 +64,7 @@ Zum Konfigurieren der Integration von Agiloft in Azure AD müssen Sie Agiloft au
 
 4. Geben Sie im Suchfeld **Agiloft** ein, wählen Sie im Ergebnisbereich **Agiloft** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Agiloft in der Ergebnisliste](common/search-new-app.png)
+    ![Agiloft in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -104,23 +100,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Agiloft 
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Agiloft](common/idp-intiated.png)
+    ![Screenshot, in dem die Textfelder „Bezeichner“ und „Antwort-URL“ hervorgehoben sind](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein:
 
-    | |
-    |-|-|
-    | `https://<subdomain>.saas.enterprisewizard.com/project/<KB_NAME>` |
-    | `https://<subdomain>.agiloft.com/project/<KB_NAME>` |
-    | |
+    ```http
+    https://<subdomain>.agiloft.com/<KB_NAME>
+    ```
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein:
 
-    | |
-    |-|-|
-    | `https://<subdomain>.saas.enterprisewizard.com:443/gui2/spsamlsso?project=<KB_NAME>` |
-    | `https://<subdomain>.agiloft.com:443/gui2/spsamlsso?project=<KB_NAME>` |
-    | |
+    ```http
+    https://<subdomain>.agiloft.com:443/gui2/spsamlsso?project=<KB_NAME>
+    ```
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
@@ -128,11 +120,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Agiloft 
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
 
-    | |
-    |-|-|
-    | `https://<subdomain>.saas.enterprisewizard.com/gui2/samlssologin.jsp?project=<KB_NAME>` |
-    | `https://<subdomain>.agiloft.com/gui2/samlssologin.jsp?project=<KB_NAME>` |
-    | |
+    ```http
+    https://<subdomain>.agiloft.com/gui2/samlssologin.jsp?project=<KB_NAME>
+    ```
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für den Agiloft-Client](https://www.agiloft.com/support-login.htm), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -157,11 +147,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Agiloft 
 
 2. Klicken Sie (im linken Bereich) auf **Setup**, und wählen Sie anschließend **Access** (Zugriff) aus.
 
-    ![Agiloft-Konfiguration](./media/agiloft-tutorial/setup1.png)
+    ![Screenshot, in dem der Abschnitt „Access“ hervorgehoben ist](./media/agiloft-tutorial/setup1.png)
 
 3. Klicken Sie auf die Schaltfläche **Configure SAML 2.0 Single Sign-On** (SAML 2.0-SSO konfigurieren).
 
-    ![Agiloft-Konfiguration](./media/agiloft-tutorial/setup2.png)
+    ![Screenshot, in dem die Schaltfläche „Configure SAML 2.0 Single Sign-On“ (SAML 2.0-SSO konfigurieren) hervorgehoben ist](./media/agiloft-tutorial/setup2.png)
 
 4. Ein Dialogfeld für einen Assistenten wird angezeigt. Klicken Sie im Dialogfeld auf **Identity Provider Details** (Details des Identitätsanbieters), und füllen Sie die folgenden Felder aus:  
 
@@ -194,13 +184,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -236,12 +226,12 @@ In diesem Abschnitt wird ein Benutzer mit dem Namen „Britta Simon“ in Agilof
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Agiloft“ klicken, sollten Sie automatisch bei der Agiloft-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Agiloft“ klicken, sollten Sie automatisch bei der Agiloft-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

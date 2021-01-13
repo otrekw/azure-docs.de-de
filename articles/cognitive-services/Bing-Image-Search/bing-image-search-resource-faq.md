@@ -10,14 +10,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 6841e573446103466e2719797da9e4161b70b5a6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e8502b1d01e0f3fbf5d42e924511cc978690bce4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881695"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342191"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Häufig gestellte Fragen (FAQ) zur Bing-Bildersuche-API
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 In diesem Artikel finden Sie Antworten zu häufig gestellten Fragen zu Konzepten, Code und Szenarios der Bing-Bildersuche-API für Microsoft Cognitive Services in Azure.
 
@@ -25,7 +30,7 @@ In diesem Artikel finden Sie Antworten zu häufig gestellten Fragen zu Konzepten
 
 Die folgenden Header können als Antworten der Bing-Bildersuche-API auftreten.
 
-| `Attribute`         | `Description` |
+| attribute           | BESCHREIBUNG   |
 | ------------------- | ------------- |
 | `X-MSEdge-ClientID` |Die eindeutige ID, die Bing dem Benutzer zugewiesen hat |
 | `BingAPIs-Market`   |Der Markt, der zur Erfüllung der Anforderung verwendet wurde |
@@ -35,19 +40,22 @@ Es ist besonders wichtig, die Client-ID beizubehalten und mit nachfolgenden Anfo
 
 Wenn Sie jedoch die Bing-Bildersuche-API von JavaScript aus aufrufen, kann es sein, dass die in Ihrem Browser integrierten Sicherheitsfunktionen (CORS) unterbinden, dass Sie auf die Werte dieser Header zuzugreifen können.
 
-Um Zugriff auf die Header zu erhalten, können Sie die Bing-Bildersuche-API über einen CORS-Proxy anfordern. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser enthält eine Whitelist mit Antwortheadern, die JavaScript zur Verfügung gestellt werden.
+Um Zugriff auf die Header zu erhalten, können Sie die Bing-Bildersuche-API über einen CORS-Proxy anfordern. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header, mit dem die Antwortheader gefiltert und für JavaScript verfügbar gemacht werden.
 
-Die Installation eines CORS-Proxys, mit dem die [Tutorial-App](tutorial-bing-image-search-single-page-app.md) auf die optionalen Clientheader zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie dann in einer Eingabeaufforderung den folgenden Befehl ein.
+Die Installation eines CORS-Proxys, mit dem die [Tutorial-App](tutorial-bing-image-search-single-page-app.md) auf die optionalen Clientheader zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie dann an einer Eingabeaufforderung den folgenden Befehl ein.
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
 Passen Sie den Endpunkt der Bing-Bildersuche-API in der HTML-Datei wie folgt an:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Starten Sie abschließend den CORS-Proxy mit folgendem Befehl:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Lassen Sie das Fenster während der Nutzung der Tutorial-App geöffnet. Wenn Sie das Fenster schließen, wird auch die Ausführung des Proxys beendet. Im Bereich mit den erweiterbaren HTTP-Headern unter den Suchergebnissen wird nun u.a. der `X-MSEdge-ClientID`-Header angezeigt. Hier können Sie überprüfen, ob dieser für alle Anforderungen identisch ist.
 

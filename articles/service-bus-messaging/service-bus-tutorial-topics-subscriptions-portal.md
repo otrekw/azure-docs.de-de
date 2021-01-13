@@ -1,22 +1,19 @@
 ---
-title: Tutorial – Aktualisieren des Einzelhandelsbestands-Sortiments mit Veröffentlichen/Abonnieren-Kanälen und Themenfiltern über das Azure-Portal | Microsoft-Dokumentation
+title: Aktualisieren des Bestands über das Azure-Portal und mithilfe von Themen/Abonnements
 description: In diesem Tutorial erfahren Sie, wie Sie Nachrichten für ein Thema und ein Abonnement senden und empfangen und Filterregeln per .NET hinzufügen und verwenden.
-services: service-bus-messaging
 author: spelluru
-manager: timlt
 ms.author: spelluru
-ms.date: 09/22/2018
+ms.date: 10/15/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: 5424a07f8ecd7eab962a4f865fac91741810e4b1
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f2c8d107c6de4965472c3fb04ff626841fb1f6ea
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991920"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95810734"
 ---
-# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands über das Azure-Portal und mithilfe von Themen/Abonnements
+# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands mit dem Azure-Portal und mit Themen/Abonnements
 
 Microsoft Azure Service Bus ist ein mehrinstanzenfähiger Cloudmessagingdienst, mit dem Informationen zwischen Anwendungen und Diensten gesendet werden. Asynchrone Vorgänge ermöglichen ein flexibles Brokermessaging sowie strukturiertes First-In-First-Out-Messaging (FIFO) und Funktionen zum Veröffentlichen/Abonnieren. In diesem Tutorial wird veranschaulicht, wie Sie Service Bus-Themen und -Abonnements in einem Einzelhandelsbestands-Szenario mit Veröffentlichen/Abonnieren-Kanälen über das Azure-Portal und .NET verwenden.
 
@@ -30,7 +27,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Ein Beispiel dieses Szenarios ist eine Aktualisierung des Bestandssortiments für mehrere Einzelhandelsgeschäfte. Hierbei erhält jedes Geschäft bzw. jede Gruppe von Geschäften Nachrichten, die jeweils die Aktualisierung der Sortimente betreffen. In diesem Tutorial wird veranschaulicht, wie Sie dieses Szenario mit Abonnements und Filtern implementieren. Zuerst erstellen Sie ein Thema mit drei Abonnements, fügen einige Regeln und Filter hinzu und führen dann das Senden und Empfangen von Nachrichten aus den Themen und Abonnements durch.
 
-![Thema](./media/service-bus-tutorial-topics-subscriptions-portal/about-service-bus-topic.png)
+![topic](./media/service-bus-tutorial-topics-subscriptions-portal/about-service-bus-topic.png)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] erstellen, bevor Sie beginnen.
 
@@ -55,7 +52,7 @@ Jedes [Abonnement eines Themas](service-bus-messaging-overview.md#topics) kann e
 
 Nachdem der Namespace und das Thema bzw. die Abonnements bereitgestellt wurden und Sie über die erforderlichen Anmeldeinformationen verfügen, sind Sie zum Erstellen von Filterregeln für die Abonnements bereit und können dann Nachrichten senden und empfangen. Sie können sich den Code in [diesem GitHub-Ordner mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) ansehen.
 
-### <a name="send-and-receive-messages"></a>Senden und Empfangen von Nachrichten
+## <a name="send-and-receive-messages"></a>Senden und Empfangen von Nachrichten
 
 Gehen Sie wie folgt vor, um den Code auszuführen:
 
@@ -65,7 +62,7 @@ Gehen Sie wie folgt vor, um den Code auszuführen:
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
-2. Navigieren Sie zum Beispielordner `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveTutorialwithFilters`.
+2. Navigieren Sie zum Beispielordner `azure-service-bus\samples\DotNet\Azure.Messaging.ServiceBus\BasicSendReceiveTutorialwithFilters`.
 
 3. Halten Sie die Verbindungszeichenfolge bereit, die Sie im Abschnitt „Abrufen der Verwaltungsanmeldeinformationen“ dieses Tutorials in den Editor kopiert haben. Außerdem benötigen Sie den Namen des Themas, das Sie im vorherigen Abschnitt erstellt haben.
 
@@ -75,7 +72,7 @@ Gehen Sie wie folgt vor, um den Code auszuführen:
    dotnet build
    ```
 
-5. Navigieren Sie zum Ordner `BasicSendReceiveTutorialwithFilters\bin\Debug\netcoreapp2.0`.
+5. Navigieren Sie zum Ordner `BasicSendReceiveTutorialwithFilters\bin\Debug\netcoreapp3.1`.
 
 6. Geben Sie den folgenden Befehl ein, um das Programm auszuführen. Ersetzen Sie `myConnectionString` durch den abgerufenen Wert und `myTopicName` durch den Namen des von Ihnen erstellten Themas:
 
@@ -178,12 +175,11 @@ private async Task RemoveDefaultFilters()
 
     try
     {
+        var client = new ServiceBusAdministrationClient(ServiceBusConnectionString);
         foreach (var subscription in Subscriptions)
         {
-            SubscriptionClient s = new SubscriptionClient(ServiceBusConnectionString, TopicName, subscription);
-            await s.RemoveRuleAsync(RuleDescription.DefaultRuleName);
+            await client.DeleteRuleAsync(TopicName, subscription, CreateRuleOptions.DefaultRuleName);
             Console.WriteLine($"Default filter for {subscription} has been removed.");
-            await s.CloseAsync();
         }
 
         Console.WriteLine("All default Rules have been removed.\n");
@@ -208,7 +204,7 @@ private async Task CreateCustomFilters()
     {
         for (int i = 0; i < Subscriptions.Length; i++)
         {
-            SubscriptionClient s = new SubscriptionClient(ServiceBusConnectionString, TopicName, Subscriptions[i]);
+            var client = new ServiceBusAdministrationClient(ServiceBusConnectionString);
             string[] filters = SubscriptionFilters[Subscriptions[i]];
             if (filters[0] != "")
             {
@@ -220,18 +216,18 @@ private async Task CreateCustomFilters()
                     string action = SubscriptionAction[Subscriptions[i]];
                     if (action != "")
                     {
-                        await s.AddRuleAsync(new RuleDescription
+                        await client.CreateRuleAsync(TopicName, Subscriptions[i], new CreateRuleOptions
                         {
-                            Filter = new SqlFilter(myFilter),
+                            Filter = new SqlRuleFilter(myFilter),
                             Action = new SqlRuleAction(action),
                             Name = $"MyRule{count}"
                         });
                     }
                     else
                     {
-                        await s.AddRuleAsync(new RuleDescription
+                        await client.CreateRuleAsync(TopicName, Subscriptions[i], new CreateRuleOptions
                         {
-                            Filter = new SqlFilter(myFilter),
+                            Filter = new SqlRuleFilter(myFilter),
                             Name = $"MyRule{count}"
                         });
                     }
@@ -263,14 +259,13 @@ private async Task CleanUpCustomFilters()
     {
         try
         {
-            SubscriptionClient s = new SubscriptionClient(ServiceBusConnectionString, TopicName, subscription);
-            IEnumerable<RuleDescription> rules = await s.GetRulesAsync();
-            foreach (RuleDescription r in rules)
+            var client = new ServiceBusAdministrationClient(ServiceBusConnectionString);
+            IAsyncEnumerator<RuleProperties> rules = client.GetRulesAsync(TopicName, subscription).GetAsyncEnumerator();
+            while (await rules.MoveNextAsync())
             {
-                await s.RemoveRuleAsync(r.Name);
-                Console.WriteLine($"Rule {r.Name} has been removed.");
+                await client.DeleteRuleAsync(TopicName, subscription, rules.Current.Name);
+                Console.WriteLine($"Rule {rules.Current.Name} has been removed.");
             }
-            await s.CloseAsync();
         }
         catch (Exception ex)
         {
@@ -292,16 +287,14 @@ public async Task SendMessages()
 {
     try
     {
-        TopicClient tc = new TopicClient(ServiceBusConnectionString, TopicName);
-
+        await using var client = new ServiceBusClient(ServiceBusConnectionString);
         var taskList = new List<Task>();
         for (int i = 0; i < Store.Length; i++)
         {
-            taskList.Add(SendItems(tc, Store[i]));
+            taskList.Add(SendItems(client, Store[i]));
         }
 
         await Task.WhenAll(taskList);
-        await tc.CloseAsync();
     }
     catch (Exception ex)
     {
@@ -310,23 +303,26 @@ public async Task SendMessages()
     Console.WriteLine("\nAll messages sent.\n");
 }
 
-private async Task SendItems(TopicClient tc, string store)
+private async Task SendItems(ServiceBusClient client, string store)
 {
+    // create the sender
+    ServiceBusSender tc = client.CreateSender(TopicName);
+
     for (int i = 0; i < NrOfMessagesPerStore; i++)
     {
         Random r = new Random();
         Item item = new Item(r.Next(5), r.Next(5), r.Next(5));
 
         // Note the extension class which is serializing an deserializing messages
-        Message message = item.AsMessage();
+        ServiceBusMessage message = item.AsMessage();
         message.To = store;
-        message.UserProperties.Add("StoreId", store);
-        message.UserProperties.Add("Price", item.getPrice().ToString());
-        message.UserProperties.Add("Color", item.getColor());
-        message.UserProperties.Add("Category", item.getItemCategory());
+        message.ApplicationProperties.Add("StoreId", store);
+        message.ApplicationProperties.Add("Price", item.GetPrice().ToString());
+        message.ApplicationProperties.Add("Color", item.GetColor());
+        message.ApplicationProperties.Add("Category", item.GetItemCategory());
 
-        await tc.SendAsync(message);
-        Console.WriteLine($"Sent item to Store {store}. Price={item.getPrice()}, Color={item.getColor()}, Category={item.getItemCategory()}"); ;
+        await tc.SendMessageAsync(message);
+        Console.WriteLine($"Sent item to Store {store}. Price={item.GetPrice()}, Color={item.GetColor()}, Category={item.GetItemCategory()}"); ;
     }
 }
 ```
@@ -349,34 +345,41 @@ public async Task Receive()
 
 private async Task ReceiveMessages(string subscription)
 {
-    var entityPath = EntityNameHelper.FormatSubscriptionPath(TopicName, subscription);
-    var receiver = new MessageReceiver(ServiceBusConnectionString, entityPath, ReceiveMode.PeekLock, RetryPolicy.Default, 100);
+    await using var client = new ServiceBusClient(ServiceBusConnectionString);
+    ServiceBusReceiver receiver = client.CreateReceiver(TopicName, subscription);
 
+    // In reality you would not break out of the loop like in this example but would keep looping. The receiver keeps the connection open
+    // to the broker for the specified amount of seconds and the broker returns messages as soon as they arrive. The client then initiates
+    // a new connection. So in reality you would not want to break out of the loop. 
+    // Also note that the code shows how to batch receive, which you would do for performance reasons. For convenience you can also always
+    // use the regular receive pump which we show in our Quick Start and in other github samples.
     while (true)
     {
         try
         {
-            IList<Message> messages = await receiver.ReceiveAsync(10, TimeSpan.FromSeconds(2));
+            //IList<Message> messages = await receiver.ReceiveAsync(10, TimeSpan.FromSeconds(2));
+            // Note the extension class which is serializing an deserializing messages and testing messages is null or 0.
+            // If you think you did not receive all messages, just press M and receive again via the menu.
+            IReadOnlyList<ServiceBusReceivedMessage> messages = await receiver.ReceiveMessagesAsync(maxMessages: 100);
+
             if (messages.Any())
             {
-                foreach (var message in messages)
+                foreach (ServiceBusReceivedMessage message in messages)
                 {
                     lock (Console.Out)
                     {
                         Item item = message.As<Item>();
-                        IDictionary<string, object> myUserProperties = message.UserProperties;
-                        Console.WriteLine($"StoreId={myUserProperties["StoreId"]}");
-
-                        if (message.Label != null)
+                        IReadOnlyDictionary<string, object> myApplicationProperties = message.ApplicationProperties;
+                        Console.WriteLine($"StoreId={myApplicationProperties["StoreId"]}");
+                        if (message.Subject != null)
                         {
-                            Console.WriteLine($"Label={message.Label}");
+                            Console.WriteLine($"Subject={message.Subject}");
                         }
-
                         Console.WriteLine(
-                            $"Item data: Price={item.getPrice()}, Color={item.getColor()}, Category={item.getItemCategory()}");
+                            $"Item data: Price={item.GetPrice()}, Color={item.GetColor()}, Category={item.GetItemCategory()}");
                     }
 
-                    await receiver.CompleteAsync(message.SystemProperties.LockToken);
+                    await receiver.CompleteMessageAsync(message);
                 }
             }
             else
@@ -389,17 +392,15 @@ private async Task ReceiveMessages(string subscription)
             Console.WriteLine(ex.ToString());
         }
     }
-
-    await receiver.CloseAsync();
 }
 ```
 
 > [!NOTE]
-> Sie können Service Bus-Ressourcen mit dem [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) verwalten. Mit dem Service Bus-Explorer können Benutzer eine Verbindung mit einem Service Bus-Namespace herstellen und Messagingentitäten auf einfache Weise verwalten. Das Tool stellt erweiterte Features wie Import-/Exportfunktionen oder Testmöglichkeiten für Themen, Warteschlangen, Abonnements, Relaydienste, Notification Hubs und Event Hubs zur Verfügung. 
+> Sie können Service Bus-Ressourcen mit dem [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) verwalten. Mit dem Service Bus-Explorer können Benutzer eine Verbindung mit einem Service Bus-Namespace herstellen und Messagingentitäten auf einfache Weise verwalten. Das Tool stellt erweiterte Features wie Import-/Exportfunktionen oder Testmöglichkeiten für Themen, Warteschlangen, Abonnements, Relaydienste, Notification Hubs und Event Hubs zur Verfügung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie mit dem Azure-Portal Ressourcen bereitgestellt und anschließend Nachrichten für ein Service Bus-Thema und die dazugehörigen Abonnements gesendet und empfangen. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie mit dem Azure-Portal Ressourcen bereitgestellt und anschließend Nachrichten für ein Service Bus-Thema und die dazugehörigen Abonnements gesendet und empfangen. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements für das Thema mit dem Azure-Portal
@@ -413,7 +414,7 @@ Falls Sie sich weitere Beispiele für das Senden und Empfangen von Nachrichten a
 Fahren Sie mit dem nächsten Tutorial fort, um weitere Informationen zur Verwendung der Veröffentlichen/Abonnieren-Funktionen von Service Bus zu erhalten.
 
 > [!div class="nextstepaction"]
-> [Aktualisieren des Bestands mit PowerShell und Themen/Abonnements](service-bus-tutorial-topics-subscriptions-powershell.md)
+> [Reagieren auf Ereignisse über Event Grid](service-bus-to-event-grid-integration-example.md)
 
 [kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

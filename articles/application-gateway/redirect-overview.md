@@ -1,24 +1,18 @@
 ---
 title: Übersicht über die Umleitung in Azure Application Gateway
-description: Hier finden Sie Informationen zur Umleitungsfunktion in Azure Application Gateway.
+description: Erhalten Sie Informationen über die Umleitungsfunktion in Azure Application Gateway zum Umleiten von an einem Listener empfangenem Datenverkehr an einen anderen Listener oder an eine externe Site.
 services: application-gateway
-documentationcenter: na
 author: amsriva
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 3/19/2018
+ms.topic: conceptual
+ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 8e88e0e11b3ccab7cc2c68b2617df2d588680780
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb01d5a4923410f693b682d66be8d5d09f9019d0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60715798"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90561577"
 ---
 # <a name="application-gateway-redirect-overview"></a>Übersicht über die Umleitung in Application Gateway
 
@@ -43,7 +37,7 @@ Die Application Gateway-Umleitung bietet Folgendes:
    Bei dieser Art von Umleitung kann HTTP nur für einen bestimmten Websitebereich zu HTTPS umgeleitet werden – etwa in einem durch /cart/* gekennzeichneten Einkaufswagenbereich.
 - **Umleitung an eine externe Website**
 
-![Umleitung](./media/redirect-overview/redirect.png)
+![Diagramm mit Benutzern und einer App Gateway-Instanz sowie Verbindungen zwischen den beiden, einschließlich eines roten HTTP-Pfeils (entsperrt), eines direkten roten Pfeils (301, nicht zulässig) und eines grünen HTTPS-Pfeils (gesperrt).](./media/redirect-overview/redirect.png)
 
 Aufgrund dieser Änderung müssen Kunden ein neues Umleitungskonfigurationsobjekt erstellen, das den Ziellistener oder die externe Website angibt, an den bzw. an die die Umleitung erfolgen soll. Das Konfigurationselement unterstützt auch Optionen zum Anfügen von URI-Pfad und Abfragezeichenfolge an die umgeleitete URL. Sie können auch den Typ der Umleitung auswählen. Die erstellte Umleitungskonfiguration wird mittels einer neuen Regel an den Quelllistener angefügt. Bei Verwendung einer einfachen Regel wird die Umleitungskonfiguration einem Quelllistener zugeordnet und fungiert als globale Umleitung. Wenn eine pfadbasierte Regel verwendet wird, wird die Umleitungskonfiguration in der URL-Pfadzuordnung definiert. Daher gilt sie nur für den bestimmten Pfadbereich einer Site.
 

@@ -1,6 +1,6 @@
 ---
-title: Übersicht zu SQL-Datenbank | Microsoft-Dokumentation
-description: Enthält hilfreiche Informationen zur Übersicht über SQL-Datenbank im Azure-Portal.
+title: Übersicht über SQL-Datenbank | Microsoft-Dokumentation
+description: Hilfreiche Informationen zur Übersicht über SQL-Datenbank im Azure-Portal
 services: sql-database
 author: sewatson
 manager: lwelicki
@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 04/09/2019
 ms.author: ninarn
-ms.openlocfilehash: 99f19971eafaa1ddad1f96b187e18b79810560a2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6d4f0c50f57661576f97ddd3772d78b9fa293153
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "61244458"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040519"
 ---
 # <a name="sql-database-documentation"></a>SQL-Datenbank-Dokumentation
 
@@ -23,13 +23,13 @@ Azure SQL-Datenbank ist eine universelle relationale DBaaS-Lösung (Database-as-
 
 Mit Azure SQL-Datenbank können Sie über das Azure-Portal, über die Azure CLI und über Azure PowerShell ganz einfach grundlegende Verwaltungsaufgaben ausführen. Informationen zum Ausführen grundlegender Verwaltungsaufgaben finden Sie in den folgenden Schnellstartbeispielen:
 
-- [Azure-Portal](/azure/sql-database/sql-database-single-database-get-started)
+- [Azure portal](/azure/sql-database/sql-database-single-database-get-started)
 - [Azure PowerShell](/azure/sql-database/sql-database-get-started-powershell)
 - [Azure-Befehlszeilenschnittstelle](/azure/sql-database/sql-database-get-started-cli)
 
 ## <a name="step-by-step-tutorials"></a>Schritt-für-Schritt-Tutorials
 
-Enthält Informationen dazu, wie Sie Datenbanken per SQL-Datenbank erstellen, verwalten und migrieren.
+Erfahren Sie, wie Sie Datenbanken mithilfe von SQL-Datenbank erstellen, verwalten und migrieren.
 
 - Ersten Schritte mit einer [einzelnen Datenbank](/azure/sql-database/sql-database-single-database-quickstart-guide) mithilfe unseres Schnellstarthandbuchs
 - Erstellen und Entwerfen des Schemas für eine neue Einzeldatenbank per [SSMS](/azure/sql-database/sql-database-design-first-database) oder [.NET](/azure/sql-database/sql-database-design-first-database-csharp)

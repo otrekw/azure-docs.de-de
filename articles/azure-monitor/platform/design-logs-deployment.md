@@ -1,24 +1,17 @@
 ---
 title: Entwerfen Ihrer Azure Monitor-Protokollbereitstellung | Microsoft-Dokumentation
 description: In diesem Artikel werden die Überlegungen und Empfehlungen für Kunden beschrieben, die sich auf die Bereitstellung eines Arbeitsbereichs in Azure Monitor vorbereiten.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
-ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 09/20/2019
-ms.author: magoedte
-ms.openlocfilehash: fa3c8b8cee0b8621a6a2800655f62a3d339f67c3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 034f2b3884d732487a9f7aff4d14740691983885
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211988"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536777"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Entwerfen Ihrer Azure Monitor-Protokollbereitstellung
 
@@ -32,7 +25,9 @@ Ein Log Analytics-Arbeitsbereich bietet Folgendes:
 
 * Einen geografischen Standort für die Speicherung von Daten.
 * Datenisolation durch Gewähren von Zugriffsrechten für verschiedene Benutzer gemäß einer unserer empfohlenen Entwurfsstrategien.
-* Bereich für die Konfiguration von Einstellungen wie [Tarif](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [Aufbewahrung](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period) und [Datenobergrenzen](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap).
+* Bereich für die Konfiguration von Einstellungen wie [Tarif](./manage-cost-storage.md#changing-pricing-tier), [Aufbewahrung](./manage-cost-storage.md#change-the-data-retention-period) und [Datenobergrenzen](./manage-cost-storage.md#manage-your-maximum-daily-data-volume).
+
+Arbeitsbereiche werden in physischen Clustern gehostet. Diese Cluster werden standardmäßig vom System erstellt und verwaltet. Bei Kunden, die mehr als 4 TB pro Tag erfassen, wird davon ausgegangen, dass sie eigene dedizierte Cluster für ihre Arbeitsbereiche erstellen, um so eine bessere Kontrolle und höhere Erfassungsrate zu ermöglichen.
 
 Dieser Artikel bietet eine ausführliche Übersicht über die Überlegungen zu Entwurf und Migration, eine Übersicht über die Zugriffssteuerung und Informationen zu den von uns empfohlenen Entwurfsimplementierungen für Ihre IT-Organisation.
 
@@ -48,24 +43,24 @@ Die Ermittlung der Anzahl benötigter Arbeitsbereiche wird durch eine oder mehre
 
 IT-Organisationen werden heute entweder zentralisiert oder dezentralisiert oder in einer Hybridversion beider Strukturen modelliert. Infolgedessen werden häufig die folgenden Modelle der Arbeitsbereichsbereitstellung entsprechend einer dieser Organisationsstrukturen verwendet:
 
-* **Zentralisiert**: Alle Protokolle werden in einem zentralen Arbeitsbereich gespeichert und von einem einzigen Team verwaltet, wobei Azure Monitor differenzierten Zugriff pro Team bietet. In diesem Szenario ist es einfach, Protokolle zu verwalten, ressourcenübergreifend zu durchsuchen und übergreifend zu korrelieren. Der Arbeitsbereich kann je nach Datenmenge, die von mehreren Ressourcen in Ihrem Abonnement gesammelt wird, erheblich anwachsen, und zusätzlichen Verwaltungsaufwand bei der Zugriffssteuerung für verschiedene Benutzer bedeuten.
+* **Zentralisiert**: Alle Protokolle werden in einem zentralen Arbeitsbereich gespeichert und von einem einzigen Team verwaltet, wobei Azure Monitor differenzierten Zugriff pro Team bietet. In diesem Szenario ist es einfach, Protokolle zu verwalten, ressourcenübergreifend zu durchsuchen und übergreifend zu korrelieren. Der Arbeitsbereich kann je nach Datenmenge, die von mehreren Ressourcen in Ihrem Abonnement gesammelt wird, erheblich anwachsen, und zusätzlichen Verwaltungsaufwand bei der Zugriffssteuerung für verschiedene Benutzer bedeuten. Dieses Modell wird als „Hub-and-Spoke“ (Nabe und Speiche) bezeichnet.
 * **Dezentralisiert**: Für jedes Team wird ein eigener Arbeitsbereich in einer Ressourcengruppe erstellt, den es besitzt und verwaltet, und die Protokolldaten werden nach Ressource getrennt. In diesem Szenario kann der Arbeitsbereich geschützt werden und die Zugriffssteuerung ist mit dem Ressourcenzugriff konsistent, doch ist es schwierig, Protokolle übergreifend zu korrelieren. Benutzer, die einen umfassenden Überblick über viele Ressourcen benötigen, können die Daten nicht auf sinnvolle Weise analysieren.
 * **Hybrid**: Konformitätsanforderungen für die Sicherheitsüberwachung machen dieses Szenario noch komplizierter, da viele Organisationen beide Bereitstellungsmodelle parallel implementieren. Dies führt häufig zu einer komplexen, teuren und schwer zu verwaltenden Konfiguration mit Lücken in der Protokollabdeckung.
 
-Wenn Sie die Log Analytics-Agents zum Sammeln von Daten verwenden, muss Ihnen zum Planen der Agentbereitstellung Folgendes bekannt sein:
+Wenn Sie die Log Analytics-Agents zum Sammeln von Daten verwenden, muss Ihnen zum Planen der Agent-Bereitstellung Folgendes bekannt sein:
 
-* Um Daten von Windows-Agents zu sammeln, können Sie [jeden Agent so konfigurieren, dass er Berichte an einen oder mehrere Arbeitsbereiche übermittelt](../../azure-monitor/platform/agent-windows.md), auch wenn er Berichte parallel an eine System Center Operations Manager-Verwaltungsgruppe sendet. Der Windows-Agent kann Berichte an bis zu vier Arbeitsbereiche übermitteln.
+* Um Daten von Windows-Agents zu sammeln, können Sie [jeden Agent so konfigurieren, dass er Berichte an einen oder mehrere Arbeitsbereiche übermittelt](./agent-windows.md), auch wenn er Berichte parallel an eine System Center Operations Manager-Verwaltungsgruppe sendet. Der Windows-Agent kann Berichte an bis zu vier Arbeitsbereiche übermitteln.
 * Der Linux-Agent bietet keine Unterstützung für Multihosting und kann Berichte nur an einen einzelnen Arbeitsbereich übermitteln.
 
 Wenn Sie System Center Operations Manager 2012 R2 oder höher verwenden, gilt Folgendes:
 
-* Jede Operations Manager-Verwaltungsgruppe kann [nur mit einem Arbeitsbereich verbunden sein](../platform/om-agents.md). 
+* Jede Operations Manager-Verwaltungsgruppe kann [nur mit einem Arbeitsbereich verbunden sein](./om-agents.md). 
 * Linux-Computer, die Berichte an eine Verwaltungsgruppe senden, müssen so konfiguriert sein, dass die Berichte direkt an einen Log Analytics-Arbeitsbereich übermittelt werden. Wenn Ihre Linux-Computer Berichte bereits direkt an einen Arbeitsbereich übermitteln und Sie diese mit Operations Manager überwachen möchten, führen Sie die Schritte zum [Senden von Berichten an eine Operations Manager-Verwaltungsgruppe](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) aus. 
-* Sie können den Log Analytics-Windows-Agent auf dem Windows-Computer installieren und ihn sowohl an Operations Manager, der in einen Arbeitsbereich integriert ist, als auch an einen anderen Arbeitsbereich berichten lassen.
+* Sie können den Log Analytics-Windows-Agent auf dem Windows-Computer installieren und so konfigurieren, dass er Berichte sowohl an die in einen Arbeitsbereich integrierte Operations Manager-Instanz als auch an einen anderen Arbeitsbereich sendet.
 
 ## <a name="access-control-overview"></a>Übersicht über die Zugriffssteuerung
 
-Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) können Sie Benutzern und Gruppen nur den Zugriff gewähren, den sie zum Arbeiten mit Überwachungsdaten in einem Arbeitsbereich benötigen. Dies ermöglicht Ihnen die Anpassung an das Betriebsmodell Ihrer IT-Organisation mit einem einzelnen Arbeitsbereich zum Speichern gesammelter Daten auf allen Ihren Ressourcen. Wenn Sie beispielsweise dem Team Zugriff gewähren, das für die auf virtuellen Azure-Computern (VMs) gehosteten Infrastrukturdienste zuständig ist, hat das Team nur Zugriff auf die Protokolle, die von den VMs generiert werden. Dies entspricht unserem neuen Ressourcenkontext-Protokollmodell. Die Grundlage für dieses Modell ist, dass jeder von einer Azure-Ressource ausgegebene Protokolldatensatz automatisch dieser Ressource zugeordnet wird. Protokolle werden an einen zentralen Arbeitsbereich weitergeleitet, der die Bereichsdefinition und RBAC basierend auf den Ressourcen beachtet.
+Mit der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) können Sie Benutzern und Gruppen nur den Zugriff gewähren, den sie zum Arbeiten mit Überwachungsdaten in einem Arbeitsbereich benötigen. Dies ermöglicht Ihnen die Anpassung an das Betriebsmodell Ihrer IT-Organisation mit einem einzelnen Arbeitsbereich zum Speichern gesammelter Daten auf allen Ihren Ressourcen. Wenn Sie beispielsweise dem Team Zugriff gewähren, das für die auf virtuellen Azure-Computern (VMs) gehosteten Infrastrukturdienste zuständig ist, hat das Team nur Zugriff auf die Protokolle, die von den VMs generiert werden. Dies entspricht unserem neuen Ressourcenkontext-Protokollmodell. Die Grundlage für dieses Modell ist, dass jeder von einer Azure-Ressource ausgegebene Protokolldatensatz automatisch dieser Ressource zugeordnet wird. Protokolle werden an einen zentralen Arbeitsbereich weitergeleitet, der die Bereichsdefinition und Azure RBAC basierend auf den Ressourcen beachtet.
 
 Die Daten, auf die ein Benutzer Zugriff hat, werden durch eine Kombination von Faktoren bestimmt, die in der folgenden Tabelle aufgeführt sind. Jeder dieser Faktoren wird in den folgenden Abschnitten beschrieben.
 
@@ -74,7 +69,7 @@ Die Daten, auf die ein Benutzer Zugriff hat, werden durch eine Kombination von F
 | [Zugriffsmodus](#access-mode) | Die Methode, die der Benutzer verwendet, um auf den Arbeitsbereich zuzugreifen.  Definiert den Bereich der verfügbaren Daten und den Zugriffssteuerungsmodus, der angewendet wird. |
 | [Zugriffssteuerungsmodus](#access-control-mode) | Eine Einstellung für den Arbeitsbereich, die definiert, ob Berechtigungen auf der Arbeitsbereich- oder Ressourcenebene angewendet werden. |
 | [Berechtigungen](manage-access.md) | Berechtigungen, die auf einzelne Benutzer oder Gruppen von Benutzern für den Arbeitsbereich oder die Ressource angewendet werden. Definiert, auf welche Daten der Benutzer zugreifen kann. |
-| [RBAC auf Tabellenebene](manage-access.md#table-level-rbac) | Optionale präzise Berechtigungen, die für alle Benutzer unabhängig von deren Zugriffs- oder Zugriffssteuerungsmodus gelten. Definiert die Datentypen, auf die ein Benutzer zugreifen kann. |
+| [Azure RBAC auf Tabellenebene](manage-access.md#table-level-azure-rbac) | Optionale präzise Berechtigungen, die für alle Benutzer unabhängig von deren Zugriffs- oder Zugriffssteuerungsmodus gelten. Definiert die Datentypen, auf die ein Benutzer zugreifen kann. |
 
 ## <a name="access-mode"></a>Zugriffsmodus
 
@@ -86,7 +81,7 @@ Benutzer haben zwei Möglichkeiten, auf die Daten zuzugreifen:
 
     ![Log Analytics-Kontext vom Arbeitsbereich](./media/design-logs-deployment/query-from-workspace.png)
 
-* **Ressourcenkontext**: Wenn Sie auf den Arbeitsbereich für eine bestimmte Ressource, eine Ressourcengruppe oder ein Abonnement zugreifen (etwa, wenn Sie **Protokolle** aus einem Ressourcenmenü im Azure-Portal auswählen), können Sie Protokolle nur für diese Ressource in allen Tabellen anzeigen, auf die Sie Zugriff besitzen. Abfragen in diesem Modus beziehen sich auf nur Daten, die dieser Ressource zugeordnet sind. Dieser Modus ermöglicht außerdem eine differenzierte rollenbasierte Zugriffssteuerung (RBAC).
+* **Ressourcenkontext**: Wenn Sie auf den Arbeitsbereich für eine bestimmte Ressource, eine Ressourcengruppe oder ein Abonnement zugreifen (etwa, wenn Sie **Protokolle** aus einem Ressourcenmenü im Azure-Portal auswählen), können Sie Protokolle nur für diese Ressource in allen Tabellen anzeigen, auf die Sie Zugriff besitzen. Abfragen in diesem Modus beziehen sich auf nur Daten, die dieser Ressource zugeordnet sind. Dieser Modus ermöglicht außerdem eine differenzierte rollenbasierte Zugriffssteuerung (RBAC) in Azure.
 
     ![Log Analytics-Kontext von der Ressource](./media/design-logs-deployment/query-from-resource.png)
 
@@ -96,7 +91,7 @@ Benutzer haben zwei Möglichkeiten, auf die Daten zuzugreifen:
     > - Service Fabric
     > - Application Insights
     >
-    > Sie können testen, ob Protokolle ordnungsgemäß ihrer Ressource zugeordnet wurden, indem Sie eine Abfrage ausführen und die Datensätze überprüfen, an denen Sie interessiert sind. Wenn sich die richtige Ressourcen-ID in der Eigenschaft [_ResourceId](log-standard-properties.md#_resourceid) befindet, stehen Daten für ressourcenbezogene Abfragen zur Verfügung.
+    > Sie können testen, ob Protokolle ordnungsgemäß ihrer Ressource zugeordnet wurden, indem Sie eine Abfrage ausführen und die Datensätze überprüfen, an denen Sie interessiert sind. Wenn sich die richtige Ressourcen-ID in der Eigenschaft [_ResourceId](./log-standard-columns.md#_resourceid) befindet, stehen Daten für ressourcenbezogene Abfragen zur Verfügung.
 
 Azure Monitor bestimmt automatisch den richtigen Modus je nach Kontext, aus dem Sie die Protokollsuche ausführen. Der Bereich wird immer im oberen linken Abschnitt von Log Analytics angezeigt.
 
@@ -104,26 +99,26 @@ Azure Monitor bestimmt automatisch den richtigen Modus je nach Kontext, aus dem 
 
 Die Zugriffsmodi werden in der folgenden Tabelle zusammengefasst:
 
-| | Arbeitsbereichskontext | Ressourcenkontext |
+| Problem | Arbeitsbereichskontext | Ressourcenkontext |
 |:---|:---|:---|
 | Für wen ist das jeweilige Modell vorgesehen? | Zentraladministration. Administratoren, die die Datensammlung konfigurieren müssen, und Benutzer, die Zugriff auf eine Vielzahl von Ressourcen benötigen. Zurzeit auch erforderlich für Benutzer, die Zugriff auf Protokolle für Ressourcen außerhalb von Azure benötigen. | Anwendungsteams. Administratoren von Azure-Ressourcen, die überwacht werden. |
 | Was ist für einen Benutzer erforderlich, um Protokolle anzuzeigen? | Berechtigungen für den Arbeitsbereich. Informationen finden Sie unter **Arbeitsbereichsberechtigungen** im Abschnitt [Zugriffsverwaltung mithilfe von Arbeitsbereichsberechtigungen](manage-access.md#manage-access-using-workspace-permissions). | Lesezugriff auf die Ressource. Informationen finden Sie unter **Ressourcenberechtigungen** im Abschnitt [Zugriffsverwaltung mithilfe von Azure-Berechtigungen](manage-access.md#manage-access-using-azure-permissions). Berechtigungen können vererbt (z.B. aus der enthaltenden Ressourcengruppe) oder der Ressource direkt zugeordnet werden. Die Berechtigung für die Protokolle für die Ressource wird automatisch zugewiesen. |
-| Welchen Geltungsbereich haben Berechtigungen? | Den Arbeitsbereich. Benutzer mit Zugriff auf den Arbeitsbereich können alle Protokolle in diesem Arbeitsbereich aus Tabellen abfragen, für die sie über Berechtigungen verfügen. Siehe [Tabellenzugriffssteuerung](manage-access.md#table-level-rbac). | Die Azure-Ressource. Der Benutzer kann Protokolle für bestimmte Ressourcen, Ressourcengruppen oder ein Abonnement, auf die bzw. das er Zugriff hat, aus jedem Arbeitsbereich abfragen, aber nicht Protokolle für andere Ressourcen. |
+| Welchen Geltungsbereich haben Berechtigungen? | Den Arbeitsbereich. Benutzer mit Zugriff auf den Arbeitsbereich können alle Protokolle in diesem Arbeitsbereich aus Tabellen abfragen, für die sie über Berechtigungen verfügen. Siehe [Tabellenzugriffssteuerung](manage-access.md#table-level-azure-rbac). | Die Azure-Ressource. Der Benutzer kann Protokolle für bestimmte Ressourcen, Ressourcengruppen oder ein Abonnement, auf die bzw. das er Zugriff hat, aus jedem Arbeitsbereich abfragen, aber nicht Protokolle für andere Ressourcen. |
 | Wie kann der Benutzer auf Protokolle zugreifen? | <ul><li>Starten von **Protokolle** im **Azure Monitor**-Menü</li></ul> <ul><li>Starten von **Protokolle** unter **Log Analytics-Arbeitsbereiche**</li></ul> <ul><li>Über Azure Monitor-[Arbeitsmappen](../visualizations.md#workbooks)</li></ul> | <ul><li>Starten von **Protokolle** im Menü für die Azure-Ressource</li></ul> <ul><li>Starten von **Protokolle** im **Azure Monitor**-Menü</li></ul> <ul><li>Starten von **Protokolle** unter **Log Analytics-Arbeitsbereiche**</li></ul> <ul><li>Über Azure Monitor-[Arbeitsmappen](../visualizations.md#workbooks)</li></ul> |
 
 ## <a name="access-control-mode"></a>Zugriffssteuerungsmodus
 
 Der *Zugriffssteuerungsmodus* ist eine Einstellung für jeden Arbeitsbereich, die definiert, wie Berechtigungen für den Arbeitsbereich bestimmt werden.
 
-* **Arbeitsbereichsberechtigungen erforderlich**: Dieser Steuerungsmodus ermöglicht keine differenzierte rollenbasierte Zugriffssteuerung (RBAC). Damit ein Benutzer auf den Arbeitsbereich zugreifen kann, müssen ihm Berechtigungen für den Arbeitsbereich oder für bestimmte Tabellen gewährt werden.
+* **Arbeitsbereichsberechtigungen erforderlich**: Dieser Steuerungsmodus ermöglicht keine differenzierte rollenbasierte Zugriffssteuerung (RBAC) in Azure. Damit ein Benutzer auf den Arbeitsbereich zugreifen kann, müssen ihm Berechtigungen für den Arbeitsbereich oder für bestimmte Tabellen gewährt werden.
 
     Wenn ein Benutzer auf den Arbeitsbereich gemäß dem Arbeitsbereichskontextmodus zugreift, besitzt er Zugriff auf alle Daten in allen Tabellen, für die ihm Zugriff erteilt wurde. Wenn ein Benutzer auf den Arbeitsbereich gemäß dem Ressourcenkontextmodus zugreift, besitzt er nur Zugriff auf Daten für diese Ressource in Tabellen, für die ihm Zugriff erteilt wurde.
 
     Dies ist die Standardeinstellung für alle Arbeitsbereiche, die vor März 2019 erstellt wurden.
 
-* **Ressourcen- oder Arbeitsbereichsberechtigungen verwenden**: Dieser Steuerungsmodus ermöglicht differenzierte rollenbasierte Zugriffssteuerung (RBAC). Benutzern kann nur Zugriff auf Daten gewährt werden, die den Ressourcen zugeordnet sind, die aufgrund der Zuweisung der Azure-Berechtigung `read` von den Benutzern angezeigt werden können. 
+* **Ressourcen- oder Arbeitsbereichsberechtigungen verwenden**: Dieser Steuerungsmodus ermöglicht eine differenzierte rollenbasierte Zugriffssteuerung (RBAC) in Azure. Benutzern kann nur Zugriff auf Daten gewährt werden, die den Ressourcen zugeordnet sind, die aufgrund der Zuweisung der Azure-Berechtigung `read` von den Benutzern angezeigt werden können. 
 
-    Wenn ein Benutzer auf den Arbeitsbereich im Arbeitsbereichskontextmodus zugreift, gelten Arbeitsbereichsberechtigungen. Wenn ein Benutzer im Ressourcenkontextmodus auf den Arbeitsbereich zugreift, werden nur die Ressourcenberechtigungen überprüft, und die Arbeitsbereichsberechtigungen werden ignoriert. Aktivieren Sie RBAC für einen Benutzer, indem Sie ihn aus den Arbeitsbereichberechtigungen entfernen und zulassen, dass seine Ressourcenberechtigungen erkannt werden.
+    Wenn ein Benutzer auf den Arbeitsbereich im Arbeitsbereichskontextmodus zugreift, gelten Arbeitsbereichsberechtigungen. Wenn ein Benutzer im Ressourcenkontextmodus auf den Arbeitsbereich zugreift, werden nur die Ressourcenberechtigungen überprüft, und die Arbeitsbereichsberechtigungen werden ignoriert. Aktivieren Sie Azure RBAC für einen Benutzer, indem Sie ihn aus den Arbeitsbereichsberechtigungen entfernen und zulassen, dass seine Ressourcenberechtigungen erkannt werden.
 
     Dies ist die Standardeinstellung für alle Arbeitsbereiche, die nach März 2019 erstellt werden.
 
@@ -132,17 +127,15 @@ Der *Zugriffssteuerungsmodus* ist eine Einstellung für jeden Arbeitsbereich, di
 
 Informationen zum Ändern des Zugriffssteuerungsmodus über das Portal, mit PowerShell oder mithilfe einer Resource Manager-Vorlage finden Sie unter [Konfigurieren des Zugriffssteuerungsmodus](manage-access.md#configure-access-control-mode).
 
-## <a name="ingestion-volume-rate-limit"></a>Ratenlimit für Datenerfassungsvolumen
+## <a name="scale-and-ingestion-volume-rate-limit"></a>Begrenzung der Skalierung und Erfassungsvolumenrate
 
-Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Der Standardschwellenwert für die Datenerfassungsrate ist auf **500 MB/min** pro Arbeitsbereich festgelegt. Wenn Sie Daten mit einer höheren Rate an einen einzelnen Arbeitsbereich senden, werden einige Daten gelöscht, und es wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn das Datenerfassungsvolumen weiterhin das Ratenlimit überschreitet oder Sie es wahrscheinlich in Kürze erreichen werden, können Sie eine Erhöhung für Ihren Arbeitsbereich anfordern, indem Sie eine Supportanfrage öffnen.
- 
-Damit Sie bei einem solchen Ereignis in Ihrem Arbeitsbereich benachrichtigt werden, erstellen Sie eine [Protokollwarnungsregel](alerts-log.md). Dazu verwenden Sie die folgende Abfrage mit der Warnungslogik basierend auf der Anzahl von Ergebnissen größer null.
+Azure Monitor ist ein Hochleistungsdatendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Petabytes von Daten senden. Arbeitsbereiche sind in Hinsicht auf ihren Speicherplatz nicht begrenzt und können auf Petabytes von Daten anwachsen. Es ist nicht erforderlich, Arbeitsbereiche aufgrund der Skalierung aufzuteilen.
 
-``` Kusto
-Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The rate of data crossed the threshold"
-``` 
+Um Azure Monitor-Kunden und die Back-End-Infrastruktur zu schützen und zu isolieren, gibt es eine Standardbegrenzung für die Erfassungsrate, die vor Spitzen und Überflutungen schützen soll. Der Standardwert für die Ratenbegrenzung liegt bei **6 GB pro Minute** und ist so ausgelegt, dass eine normale Erfassung möglich ist. Weitere Informationen zur Messung der Erfassungsvolumenbegrenzung finden Sie unter [Azure Monitor-Diensteinschränkungen](../service-limits.md#data-ingestion-volume-rate).
+
+Kunden, die weniger als 4 TB pro Tag erfassen, erreichen diese Grenzwerte in der Regel nicht. Kunden, bei denen höhere Erfassungsvolumen oder Spitzen während des normalen Betriebs auftreten, sollten eine Wechsel zu [dedizierten Clustern](../log-query/logs-dedicated-clusters.md) in Betracht ziehen, da dann der Grenzwert für die Erfassungsrate erhöht werden kann.
+
+Wenn die Erfassungsratenbegrenzung aktiviert ist oder 80 % des Schwellenwerts erreicht sind, wird der Tabelle *Vorgang* in Ihrem Arbeitsbereich ein Ereignis hinzugefügt. Es wird empfohlen, diese zu überwachen und eine Warnung zu erstellen. Weitere Informationen dazu finden Sie unter [Rate für Datenerfassungsvolumen](../service-limits.md#data-ingestion-volume-rate).
 
 
 ## <a name="recommendations"></a>Empfehlungen
@@ -151,9 +144,9 @@ Operation
 
 In diesem Szenario wird der Entwurf eines einzelnen Arbeitsbereichs im Abonnement Ihrer IT-Organisation behandelt, das nicht durch die Datensouveränität oder Einhaltung gesetzlicher Bestimmungen eingeschränkt ist oder den Regionen zugeordnet werden muss, in denen Ihre Ressourcen bereitgestellt werden. Es ermöglicht den Sicherheits- und IT-Administratorenteams Ihrer Organisation, die verbesserte Integration der Azure-Zugriffsverwaltung und eine sicherere Zugriffssteuerung zu nutzen.
 
-Alle Ressourcen, Überwachungslösungen und Insights (z.B. Application Insights und Azure Monitor für VMs), die die Infrastruktur und Anwendungen unterstützen, die von den verschiedenen Teams verwaltet werden, sind so konfiguriert, dass die gesammelten Protokolldaten an den zentralen gemeinsamen Arbeitsbereich der IT-Organisation weitergeleitet werden. Benutzer in jedem Team erhalten Zugriff auf Protokolle für Ressourcen, auf die Sie Zugriff haben.
+Alle Ressourcen, Überwachungslösungen und Insights (z. B. Application Insights und Azure Monitor für VMs), die die Infrastruktur und Anwendungen unterstützen, die von den verschiedenen Teams verwaltet werden, sind so konfiguriert, dass die gesammelten Protokolldaten an den zentralen gemeinsamen Arbeitsbereich der IT-Organisation weitergeleitet werden. Benutzer in jedem Team erhalten Zugriff auf Protokolle für Ressourcen, auf die Sie Zugriff haben.
 
-Nachdem Sie die Arbeitsbereichsarchitektur bereitgestellt haben, können Sie diese für Azure-Ressourcen mit [Azure Policy](../../governance/policy/overview.md) erzwingen. Dies bietet eine Möglichkeit, Richtlinien zu definieren und Konformität mit Ihren Azure-Ressourcen zu gewährleisten, damit alle Diagnoseprotokolle an einen bestimmten Arbeitsbereich gesendet werden. Beispielsweise können Sie bei virtuellen Azure-Computern oder Skalierungsgruppen für virtuelle Computer vorhandene Richtlinien verwenden, mit denen die Arbeitsbereichskompatibilität ausgewertet und Ergebnisse gemeldet werden, oder zur Behebung von Nichtkonformität Anpassungen vornehmen.  
+Nachdem Sie die Arbeitsbereichsarchitektur bereitgestellt haben, können Sie diese für Azure-Ressourcen mit [Azure Policy](../../governance/policy/overview.md) erzwingen. Dies bietet eine Möglichkeit, Richtlinien zu definieren und Konformität mit Ihren Azure-Ressourcen zu gewährleisten, damit alle Ressourcenprotokolle an einen bestimmten Arbeitsbereich gesendet werden. Beispielsweise können Sie bei virtuellen Azure-Computern oder Skalierungsgruppen für virtuelle Computer vorhandene Richtlinien verwenden, mit denen die Arbeitsbereichskompatibilität ausgewertet und Ergebnisse gemeldet werden, oder zur Behebung von Nichtkonformität Anpassungen vornehmen.  
 
 ## <a name="workspace-consolidation-migration-strategy"></a>Migrationsstrategie für die Arbeitsbereichskonsolidierung
 

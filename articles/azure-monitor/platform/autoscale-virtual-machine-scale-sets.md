@@ -1,25 +1,26 @@
 ---
 title: Erweiterte automatische Skalierung mit Azure Virtual Machines
-description: Hier werden Resource Manager und VM Scale Sets mit mehreren Regeln und Profilen verwendet, die mit Skalierungsaktionen E-Mails senden und Webhook-URLs aufrufen.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+description: Hier werden der Resource Manager und VM-Skalierungsgruppen mit mehreren Regeln und Profilen verwendet, die mit Skalierungsaktionen E-Mails senden und Webhook-URLs aufrufen.
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
-ms.date: 02/22/2016
-ms.author: ancav
+ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2020
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 96d8c32791bd968dd8740a2d4633496b42e9f3f4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787783"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91360972"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets
 Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrik-Schwellenwerten horizontal herunter- und hochskalieren – entweder nach einem sich wiederholenden Zeitplan oder zu einem bestimmten Datum. Außerdem können Sie E-Mail- und Webhookbenachrichtigungen für Skalierungsaktionen konfigurieren. Diese exemplarische Vorgehensweise zeigt ein Beispiel für die Konfiguration der oben genannten Objekte mithilfe einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe.
 
 > [!NOTE]
-> Während diese exemplarische Vorgehensweise die Schritte für VM-Skalierungsgruppen erläutert, gelten dieselben Informationen auch für die automatische Skalierung von [Clouddiensten](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Diensten](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Informationen zu einer einfachen Einstellung zum horizontalen Herunterskalieren bzw. Hochskalieren für eine VM-Skalierungsgruppe, die auf einer einfachen Leistungsmetrik wie „CPU“ basiert, finden Sie in den [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md)- und [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md)-Dokumenten.
+> Während diese exemplarische Vorgehensweise die Schritte für VM-Skalierungsgruppen erläutert, gelten dieselben Informationen auch für die automatische Skalierung von [Clouddiensten](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Diensten](../../api-management/api-management-key-concepts.md). Informationen zu einer einfachen Einstellung zum Abskalieren bzw. Aufskalieren für eine VM-Skalierungsgruppe, die auf einer einfachen Leistungsmetrik wie „CPU“ basiert, finden Sie in den [Linux](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md)- und [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md)-Dokumenten.
 >
 >
 
@@ -47,7 +48,7 @@ In dieser exemplarischen Vorgehensweise verwenden wir den [Azure-Ressourcen-Expl
 
 4. Dies ist ein hypothetisches Skalierungsszenario, das wir für diese exemplarische Vorgehensweise verwenden.
 
-   * **Lastbasiert:** Ich möchte je nach Last meiner Anwendung, die in meiner Skalierungsgruppe gehostet wird, horizontal hoch- oder herunterskalieren.*
+   * **Lastbasiert:** Ich möchte je nach Last meiner Anwendung, die in meiner Skalierungsgruppe gehostet wird, auf- oder abskalieren.*
    * **Länge der Nachrichtenwarteschlange:** Ich verwende eine Service Bus-Warteschlange für die eingehenden Nachrichten, die an meine Anwendung gerichtet sind. Ich verwende die Anzahl von Warteschlangennachrichten und CPU%. Außerdem konfiguriere ich ein Standardprofil zum Auslösen einer Skalierungsaktion, wenn entweder die Nachrichtenanzahl oder die CPU-Nutzung in Prozent den Schwellenwert erreicht.\*
    * **Zeitpunkt innerhalb einer Woche und Tageszeit:** Ich möchte ein sich wöchentlich wiederholendes, auf der Tageszeit basierendes Profil namens „Wochentage, morgens“ verwenden. Den Verlaufsdaten habe ich entnommen, dass es besser ist, über eine bestimmte Anzahl von VM-Instanzen zu verfügen, damit meine Anwendungslast während dieser Zeit bewältigt werden kann.\*
    * **Sondertermine:** Ich habe ein Profil vom Typ „Tag der Produkteinführung“ hinzugefügt. Ich plane für bestimmte Tage im Voraus, damit meine Anwendung die Last verarbeiten kann, die durch Marketingankündigungen und die Einführung neuer Produkte verursacht wird.\*
@@ -62,7 +63,7 @@ In dieser exemplarischen Vorgehensweise verwenden wir den [Azure-Ressourcen-Expl
 
 6. Klicken Sie auf "Bearbeiten". **Ersetzen** Sie das profiles-Element in der Einstellung für die automatische Skalierung durch folgende Konfiguration:
 
-    ![profiles](media/autoscale-virtual-machine-scale-sets/profiles.png)
+    ![Screenshot des profiles-Elements](media/autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {
@@ -194,7 +195,7 @@ In dieser exemplarischen Vorgehensweise verwenden wir den [Azure-Ressourcen-Expl
             }
           }
     ```
-    Die unterstützten Felder und ihre Werte finden Sie in der [Dokumentation zur REST-API für die automatische Skalierung](https://msdn.microsoft.com/library/azure/dn931928.aspx). Ihre Einstellung für die automatische Skalierung enthält jetzt die drei zuvor erläuterten Profile.
+    Die unterstützten Felder und ihre Werte finden Sie in der [Dokumentation zur REST-API für die automatische Skalierung](/rest/api/monitor/autoscalesettings). Ihre Einstellung für die automatische Skalierung enthält jetzt die drei zuvor erläuterten Profile.
 
 7. Betrachten Sie abschließend den Abschnitt **notification** der automatischen Skalierung. Mit Benachrichtigungen für die automatische Skalierung können Sie drei Aufgaben ausführen, wenn eine Aktion zum horizontalen Hoch- oder Herunterskalieren erfolgreich ausgelöst wurde.
    - Sie können den Administrator und Co-Administratoren Ihres Abonnements benachrichtigen.
@@ -242,9 +243,9 @@ Sie haben eine Einstellung für die automatische Skalierung für eine VM-Skalier
 
 [Empfohlene Methoden für die automatische Skalierung](autoscale-best-practices.md)
 
-[Verwalten der automatischen Skalierung mit PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+[Verwalten der automatischen Skalierung mit PowerShell](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
 
-[Verwalten der automatischen Skalierung über die CLI](cli-samples.md#autoscale)
+[Verwalten der automatischen Skalierung über die CLI](../samples/cli-samples.md#autoscale)
 
 [Konfigurieren von Webhook- und E-Mail-Benachrichtigungen für die automatische Skalierung](autoscale-webhook-email.md)
 

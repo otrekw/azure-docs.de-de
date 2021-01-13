@@ -1,282 +1,338 @@
 ---
-title: 'Schnellstart: Erstellen einer Warteschlange in Azure Storage mithilfe von .NET'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure Storage-Clientbibliothek für .NET eine Warteschlange erstellen und ihr Nachrichten hinzufügen. Im Anschluss erfahren Sie dann, wie Sie Nachrichten aus der Warteschlange lesen und verarbeiten.
+title: 'Schnellstart: Azure Queue Storage-Clientbibliothek v12 – .NET'
+description: Hier erfahren Sie, wie Sie mithilfe der Azure Queue Storage-Clientbibliothek v12 für .NET eine Warteschlange erstellen und ihr Nachrichten hinzufügen. Dann lernen Sie, wie Sie Nachrichten in der Warteschlange lesen und löschen. Zudem erfahren Sie, wie Sie eine Warteschlange löschen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/06/2018
+ms.date: 07/24/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.reviewer: cbrooks
-ms.openlocfilehash: d3706f8585c2644a31bf1f418f5425e0fa58d2a0
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 22038e4145acabc067083177fcf297464972ad58
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721258"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589524"
 ---
-# <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>Schnellstart: Erstellen einer Warteschlange in Azure Storage mithilfe von .NET
+# <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Schnellstart: Azure Queue Storage-Clientbibliothek v12 für .NET
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure Storage-Clientbibliothek für .NET eine Warteschlange erstellen und ihr Nachrichten hinzufügen. Im Anschluss erfahren Sie dann, wie Sie Nachrichten aus der Warteschlange lesen und verarbeiten. 
+Beginnen Sie mit dem Einsatz der Azure Queue Storage-Clientbibliothek, Version 12, für .NET. Azure Queue Storage ist ein Dienst zum Speichern einer großen Anzahl von Nachrichten, die später abgerufen und verarbeitet werden. Führen Sie die nachfolgenden Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben zu testen.
+
+Mit der Azure Queue Storage-Clientbibliothek v12 für .NET können Sie Folgendes ausführen:
+
+- Erstellen einer Warteschlange
+- Hinzufügen von Nachrichten zu einer Warteschlange
+- Einsehen von Nachrichten in einer Warteschlange
+- Aktualisieren einer Nachricht in einer Warteschlange
+- Empfangen von Nachrichten aus einer Warteschlange
+- Löschen von Nachrichten aus einer Warteschlange
+- Löschen einer Warteschlange
+
+Zusätzliche Ressourcen:
+
+- [API-Referenzdokumentation](/dotnet/api/azure.storage.queues)
+- [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
+- [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
+- [Beispiele](../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+- Azure Storage-Konto – [Erstellen eines Speicherkontos](../common/storage-account-create.md)
+- Aktuelles [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) für Ihr Betriebssystem. Laden Sie unbedingt das SDK und nicht die Runtime herunter.
 
-Laden Sie als Nächstes .NET Core 2.0 für Ihr Betriebssystem herunter, und führen Sie die Installation durch. Beim Ausführen von Windows können Sie Visual Studio installieren und bei Bedarf .NET Framework verwenden. Sie können auch einen Editor für die Verwendung mit Ihrem Betriebssystem installieren.
+## <a name="setting-up"></a>Einrichten
 
-### <a name="windows"></a>Windows
+In diesem Abschnitt wird beschrieben, wie Sie ein Projekt zum Arbeiten mit der Azure Queue Storage-Clientbibliothek v12 für .NET vorbereiten.
 
-- Installieren Sie [.NET Core für Windows](https://www.microsoft.com/net/download/windows) oder das [.NET Framework](https://www.microsoft.com/net/download/windows) (in Visual Studio für Windows enthalten).
-- Installieren Sie [Visual Studio für Windows](https://www.visualstudio.com/). Bei Verwendung von .NET Core ist die Installation von Visual Studio optional.  
+### <a name="create-the-project"></a>Erstellen des Projekts
 
-Informationen zur Wahl zwischen .NET Core und .NET Framework finden Sie unter [Wahl zwischen .NET Core und .NET Framework für Server-Apps](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
+Erstellen Sie eine .NET Core-Anwendung mit dem Namen `QueuesQuickstartV12`.
 
-### <a name="linux"></a>Linux
+1. Verwenden Sie in einem Konsolenfenster (z. B. cmd, PowerShell oder Bash) den Befehl `dotnet new` zum Erstellen einer neuen Konsolen-App mit dem Namen `QueuesQuickstartV12`. Dieser Befehl erstellt ein einfaches „Hallo Welt“-C#-Projekt mit der einzigen Quelldatei `Program.cs`.
 
-- Installieren Sie [.NET Core für Linux](https://www.microsoft.com/net/download/linux).
-- Optional können Sie [Visual Studio Code](https://www.visualstudio.com/) und die [C#-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp&dotnetid=963890049.1518206068) installieren.
+   ```console
+   dotnet new console -n QueuesQuickstartV12
+   ```
 
-### <a name="macos"></a>macOS
+1. Wechseln Sie zum neu erstellten Verzeichnis `QueuesQuickstartV12`.
 
-- Installieren Sie [.NET Core für macOS](https://www.microsoft.com/net/download/macos).
-- Optional können Sie [Visual Studio für Mac](https://www.visualstudio.com/vs/visual-studio-mac/) installieren.
+   ```console
+   cd QueuesQuickstartV12
+   ```
 
-## <a name="download-the-sample-application"></a>Herunterladen der Beispielanwendung
+### <a name="install-the-package"></a>Installieren des Pakets
 
-Die in diesem Schnellstart verwendete Beispielanwendung ist eine einfache Konsolenanwendung. Sie können die Beispielanwendung auf [GitHub](https://github.com/Azure-Samples/storage-queues-dotnet-quickstart) erkunden.
+Installieren Sie im Anwendungsverzeichnis mit dem Befehl `dotnet add package` das Paket für die Azure Queue Storage-Clientbibliothek für .NET.
 
-Verwenden Sie [Git](https://git-scm.com/), um eine Kopie der Anwendung in Ihre Entwicklungsumgebung herunterzuladen. 
-
-```bash
-git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
+```console
+dotnet add package Azure.Storage.Queues
 ```
 
-Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Suchen Sie zum Öffnen der Visual Studio-Projektmappe nach dem Ordner *storage-queues-dotnet-quickstart*, öffnen Sie ihn, und doppelklicken Sie auf *storage-queues-dotnet-quickstart.sln*. 
+### <a name="set-up-the-app-framework"></a>Einrichten des App-Frameworks
 
-[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
+Über das Projektverzeichnis:
 
-## <a name="configure-your-storage-connection-string"></a>Konfigurieren der Speicherverbindungszeichenfolge
+1. Öffnen Sie die Datei `Program.cs` in Ihrem Editor.
+1. Entfernen Sie die Anweisung `Console.WriteLine("Hello, World");`.
+1. Fügen Sie Anweisungen vom Typ `using` hinzu.
+1. Aktualisieren der `Main`-Methodendeklaration zur [Unterstützung von asynchronem Code](/dotnet/csharp/whats-new/csharp-7#async-main)
 
-Zum Ausführen der Anwendung müssen Sie die Verbindungszeichenfolge für das Speicherkonto angeben. Die Beispielanwendung liest die Verbindungszeichenfolge aus einer Umgebung und verwendet sie zum Autorisieren von Anforderungen an Azure Storage.
-
-Schreiben Sie die Verbindungszeichenfolge nach dem Kopieren in eine neue Umgebungsvariable auf dem lokalen Computer, auf dem die Anwendung ausgeführt wird. Öffnen Sie zum Festlegen der Umgebungsvariablen ein Konsolenfenster, und befolgen Sie die Anleitung für Ihr Betriebssystem. Ersetzen Sie `<yourconnectionstring>` durch Ihre Verbindungszeichenfolge:
-
-### <a name="windows"></a>Windows
-
-```cmd
-setx storageconnectionstring "<yourconnectionstring>"
-```
-
-Nachdem Sie die Umgebungsvariable hinzugefügt haben, müssen Sie unter Umständen alle ausgeführten Programme neu starten, von denen die Umgebungsvariable gelesen werden muss, z.B. das Konsolenfenster. Wenn Sie beispielsweise Visual Studio als Editor verwenden, müssen Sie Visual Studio neu starten, bevor Sie das Beispiel ausführen. 
-
-### <a name="linux"></a>Linux
-
-```bash
-export storageconnectionstring=<yourconnectionstring>
-```
-
-Führen Sie nach dem Hinzufügen der Umgebungsvariablen im Konsolenfenster `source ~/.bashrc` aus, damit die Änderungen wirksam werden.
-
-### <a name="macos"></a>macOS
-
-Bearbeiten Sie Ihr „.bash_profile“, und fügen Sie die Umgebungsvariable hinzu:
-
-```bash
-export STORAGE_CONNECTION_STRING=<yourconnectionstring>
-```
-
-Führen Sie nach dem Hinzufügen der Umgebungsvariablen im Konsolenfenster `source .bash_profile` aus, damit die Änderungen wirksam werden.
-
-## <a name="run-the-sample"></a>Ausführen des Beispiels
-
-Die Beispielanwendung erstellt eine Warteschlange und fügt ihr eine Nachricht hinzu. Die Anwendung prüft die Nachricht zunächst kurz, ohne sie aus der Warteschlange zu entfernen. Danach ruft die Anwendung die Nachricht ab und löscht sie aus der Warteschlange.
-
-### <a name="windows"></a>Windows
-
-Wenn Sie Visual Studio als Editor verwenden, können Sie **F5** drücken, um die Ausführung zu starten. 
-
-Navigieren Sie andernfalls zu Ihrem Anwendungsverzeichnis, und führen Sie die Anwendung mit dem Befehl `dotnet run` aus.
-
-```
-dotnet run
-```
-
-### <a name="linux"></a>Linux
-
-Navigieren Sie zu Ihrem Anwendungsverzeichnis, und führen Sie die Anwendung mit dem Befehl `dotnet run` aus.
-
-```
-dotnet run
-```
-
-### <a name="macos"></a>macOS
-
-Navigieren Sie zu Ihrem Anwendungsverzeichnis, und führen Sie die Anwendung mit dem Befehl `dotnet run` aus.
-
-```
-dotnet run
-```
-
-Die Ausgabe der Beispielanwendung ähnelt dem folgenden Beispiel:
-
-```
-Azure Queues - .NET Quickstart sample
-
-Created queue 'quickstartqueues-3136fe9a-fa52-4b19-a447-8999a847da52'
-
-Added message 'aa8fa95f-07ea-4df7-bf86-82b3f7debfb7' to queue 'quickstartqueues-3136fe9a-fa52-4b19-a447-8999a847da52'
-Message insertion time: 2/7/2019 4:30:46 AM +00:00
-Message expiration time: 2/14/2019 4:30:46 AM +00:00
-
-Contents of peeked message 'aa8fa95f-07ea-4df7-bf86-82b3f7debfb7': Hello, World
-
-Message 'aa8fa95f-07ea-4df7-bf86-82b3f7debfb7' becomes visible again at 2/7/2019 4:31:16 AM +00:00
-
-Processed and deleted message 'aa8fa95f-07ea-4df7-bf86-82b3f7debfb7'
-
-Press any key to delete the sample queue.
-```
-
-## <a name="understand-the-sample-code"></a>Grundlagen des Beispielcodes
-
-Erkunden Sie als Nächstes den Beispielcode, um sich mit der Funktionsweise vertraut zu machen.
-
-### <a name="try-parsing-the-connection-string"></a>Versuchtes Analysieren der Verbindungszeichenfolge
-
-In dem Beispiel wird als Erstes überprüft, ob die Umgebungsvariable eine Verbindungszeichenfolge enthält, die analysiert werden kann, um ein Objekt vom Typ [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) zu erstellen, das auf das Speicherkonto verweist. Um zu überprüfen, ob die Verbindungszeichenfolge gültig ist, wird in dem Beispiel die Methode [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) verwendet. Wenn **TryParse** erfolgreich ist, wird die Variable *storageAccount* initialisiert, und **true** wird zurückgegeben.
+Der Code lautet wie folgt:
 
 ```csharp
-// Retrieve the connection string for use with the application. The storage connection string is stored
-// in an environment variable called storageconnectionstring, on the machine where the application is running.
-// If the environment variable is created after the application is launched in a console or with Visual
-// Studio, the shell needs to be closed and reloaded to take the environment variable into account.
-string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");
+using Azure;
+using Azure.Storage.Queues;
+using Azure.Storage.Queues.Models;
+using System;
+using System.Threading.Tasks;
 
-// Check whether the connection string can be parsed.
-if (CloudStorageAccount.TryParse(storageConnectionString, out storageAccount))
+namespace QueuesQuickstartV12
 {
-    // If the connection string is valid, proceed with calls to Azure Queues here.
-    ...    
-}
-else
-{
-    Console.WriteLine(
-        "A connection string has not been defined in the system environment variables. " +
-        "Add an environment variable named 'storageconnectionstring' with your storage " +
-        "connection string as a value.");
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+        }
+    }
 }
 ```
 
-### <a name="create-the-queue"></a>Erstellen der Warteschlange
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
-In dem Beispiel wird zunächst eine Warteschlange erstellt und eine Nachricht hinzugefügt. 
+## <a name="object-model"></a>Objektmodell
+
+Azure Queue Storage ist ein Dienst für die Speicherung großer Nachrichtenmengen. Eine Warteschlangennachricht kann bis zu 64 KB groß sein. Eine Warteschlange kann Millionen Nachrichten enthalten, bis die maximale Kapazität eines Speicherkontos erreicht ist. Warteschlangen werden häufig verwendet, um ein Arbeits-Backlog zur asynchronen Verarbeitung zu erstellen. Queue Storage bietet drei Arten von Ressourcen:
+
+- Das Speicherkonto
+- Eine Warteschlange im Speicherkonto
+- Nachrichten in der Warteschlange
+
+Im folgenden Diagramm ist die Beziehung zwischen diesen Ressourcen dargestellt.
+
+![Diagramm der Queue Storage-Architektur](./media/storage-queues-introduction/queue1.png)
+
+Verwenden Sie die folgenden .NET-Klassen zur Interaktion mit folgenden Ressourcen:
+
+- [`QueueServiceClient`](/dotnet/api/azure.storage.queues.queueserviceclient): Mit dem `QueueServiceClient` können Sie alle Warteschlangen in Ihrem Speicherkonto verwalten.
+- [`QueueClient`](/dotnet/api/azure.storage.queues.queueclient): Mit der `QueueClient`-Klasse können Sie eine einzelne Warteschlange und die darin enthaltenen Nachrichten verwalten und bearbeiten.
+- [`QueueMessage`](/dotnet/api/azure.storage.queues.models.queuemessage): Die `QueueMessage`-Klasse repräsentiert die einzelnen Objekte, die beim Aufrufen von [`ReceiveMessages`](/dotnet/api/azure.storage.queues.queueclient.receivemessages) in einer Warteschlange zurückgegeben werden.
+
+## <a name="code-examples"></a>Codebeispiele
+
+Diese Beispielcodeausschnitte zeigen Ihnen, wie folgende Aktionen mit der Azure Queue Storage-Clientbibliothek für .NET ausgeführt werden:
+
+- [Abrufen der Verbindungszeichenfolge](#get-the-connection-string)
+- [Erstellen einer Warteschlange](#create-a-queue)
+- [Hinzufügen von Nachrichten zu einer Warteschlange](#add-messages-to-a-queue)
+- [Einsehen von Nachrichten in einer Warteschlange](#peek-at-messages-in-a-queue)
+- [Aktualisieren einer Nachricht in einer Warteschlange](#update-a-message-in-a-queue)
+- [Empfangen von Nachrichten aus einer Warteschlange](#receive-messages-from-a-queue)
+- [Löschen von Nachrichten aus einer Warteschlange](#delete-messages-from-a-queue)
+- [Löschen einer Warteschlange](#delete-a-queue)
+
+### <a name="get-the-connection-string"></a>Abrufen der Verbindungszeichenfolge
+
+Der folgende Code ruft die Verbindungszeichenfolge für das Speicherkonto ab. Die Verbindungszeichenfolge ist in der Umgebungsvariablen gespeichert, die Sie im Abschnitt [Konfigurieren der Speicherverbindungszeichenfolge](#configure-your-storage-connection-string) erstellt haben.
+
+Fügen Sie diesen Code in der `Main`-Methode hinzu:
 
 ```csharp
-// Create a queue called 'quickstartqueues' and append a GUID value so that the queue name 
-// is unique in your storage account. 
-queue = cloudQueueClient.GetQueueReference("quickstartqueues-" + Guid.NewGuid().ToString());
-await queue.CreateAsync();
+Console.WriteLine("Azure Queue Storage client library v12 - .NET quickstart sample\n");
 
-Console.WriteLine("Created queue '{0}'", queue.Name);
-Console.WriteLine();
+// Retrieve the connection string for use with the application. The storage
+// connection string is stored in an environment variable called
+// AZURE_STORAGE_CONNECTION_STRING on the machine running the application.
+// If the environment variable is created after the application is launched
+// in a console or with Visual Studio, the shell or application needs to be
+// closed and reloaded to take the environment variable into account.
+string connectionString = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONNECTION_STRING");
 ```
 
-### <a name="add-a-message"></a>Hinzufügen einer Nachricht
+### <a name="create-a-queue"></a>Erstellen einer Warteschlange
 
-Als Nächstes wird am Ende der Warteschlange eine Nachricht hinzugefügt. 
+Legen Sie einen Namen für die neue Warteschlange fest. Der folgende Code fügt einen GUID-Wert an den Warteschlangennnamen an, um sicherzustellen, dass er eindeutig ist.
 
-Die Nachricht muss in einem Format vorliegen, das in eine XML-Anforderung mit UTF-8-Codierung eingeschlossen werden kann, und kann bis zu 64 KB groß sein. Für Nachrichten mit Binärdaten empfiehlt Microsoft die Base64-Codierung der Nachricht.
+> [!IMPORTANT]
+> Warteschlangennamen dürfen nur Kleinbuchstaben, Ziffern und Bindestriche enthalten und müssen mit einem Buchstaben oder einer Ziffer beginnen. Vor und nach jedem Bindestrich muss ein Zeichen stehen, das kein Bindestrich ist. Der Name muss außerdem zwischen 3 und 63 Zeichen lang sein. Weitere Informationen finden Sie unter [Benennen von Warteschlangen und Metadaten](/rest/api/storageservices/naming-queues-and-metadata).
 
-Die maximale Gültigkeitsdauer für eine Nachricht beträgt standardmäßig sieben Tage. Sie können für die Gültigkeitsdauer der Nachricht eine beliebige positive Zahl angeben.
+Erstellen Sie eine Instanz der [`QueueClient`](/dotnet/api/azure.storage.queues.queueclient)-Klasse. Rufen Sie dann die [`CreateAsync`](/dotnet/api/azure.storage.queues.queueclient.createasync)-Methode auf, um die Warteschlange in Ihrem Speicherkonto zu erstellen.
+
+Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
 ```csharp
-// Create a message and add it to the queue. Set expiration time to 14 days.
-CloudQueueMessage message = new CloudQueueMessage("Hello, World");
-await queue.AddMessageAsync(message, new TimeSpan(14,0,0,0), null, null, null);
-Console.WriteLine("Added message '{0}' to queue '{1}'", message.Id, queue.Name);
-Console.WriteLine("Message insertion time: {0}", message.InsertionTime.ToString());
-Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToString());
-Console.WriteLine();
+// Create a unique name for the queue
+string queueName = "quickstartqueues-" + Guid.NewGuid().ToString();
+
+Console.WriteLine($"Creating queue: {queueName}");
+
+// Instantiate a QueueClient which will be
+// used to create and manipulate the queue
+QueueClient queueClient = new QueueClient(connectionString, queueName);
+
+// Create the queue
+await queueClient.CreateAsync();
 ```
 
-Um eine Nachricht hinzuzufügen, die nicht abläuft, verwenden Sie `Timespan.FromSeconds(-1)` in Ihrem Aufruf von [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
+### <a name="add-messages-to-a-queue"></a>Hinzufügen von Nachrichten zu einer Warteschlange
+
+Der folgende Codeausschnitt fügt der Warteschlange Nachrichten durch Aufrufen der [`SendMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync)-Methode asynchron hinzu. Außerdem wird ein von einem `SendMessageAsync`-Aufruf zurückgegebenes [`SendReceipt`](/dotnet/api/azure.storage.queues.models.sendreceipt) gespeichert. Die Bestätigung wird später im Programm zum Aktualisieren der Nachricht verwendet.
+
+Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
 ```csharp
-await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
+Console.WriteLine("\nAdding messages to the queue...");
+
+// Send several messages to the queue
+await queueClient.SendMessageAsync("First message");
+await queueClient.SendMessageAsync("Second message");
+
+// Save the receipt so we can update this message later
+SendReceipt receipt = await queueClient.SendMessageAsync("Third message");
 ```
 
-### <a name="peek-a-message-from-the-queue"></a>Einsehen einer Nachricht aus der Warteschlange
+### <a name="peek-at-messages-in-a-queue"></a>Einsehen von Nachrichten in einer Warteschlange
 
-Das Beispiel zeigt, wie Sie eine Nachricht aus der Warteschlange einsehen. Beim Einsehen einer Nachricht können Sie den Inhalt der Nachricht lesen. Die Nachricht bleibt jedoch für andere Clients sichtbar und kann anschließend von einem anderen Client abgerufen und verarbeitet werden.
+Durch Aufrufen der [`PeekMessagesAsync`](/dotnet/api/azure.storage.queues.queueclient.peekmessagesasync)-Methode können Sie die Nachrichten in der Warteschlange einsehen. Diese Methode ruft mindestens eine Nachricht vom Anfang der Warteschlange ab, ändert aber nicht die Sichtbarkeit der Nachricht.
+
+Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
 ```csharp
-// Peek at the message at the front of the queue. Peeking does not alter the message's 
-// visibility, so that another client can still retrieve and process it. 
-CloudQueueMessage peekedMessage = await queue.PeekMessageAsync();
+Console.WriteLine("\nPeek at the messages in the queue...");
 
-// Display the ID and contents of the peeked message.
-Console.WriteLine("Contents of peeked message '{0}': {1}", peekedMessage.Id, peekedMessage.AsString);
-Console.WriteLine();
+// Peek at messages in the queue
+PeekedMessage[] peekedMessages = await queueClient.PeekMessagesAsync(maxMessages: 10);
+
+foreach (PeekedMessage peekedMessage in peekedMessages)
+{
+    // Display the message
+    Console.WriteLine($"Message: {peekedMessage.MessageText}");
+}
 ```
 
-### <a name="dequeue-a-message"></a>Entfernen einer Nachricht aus der Warteschlange
+### <a name="update-a-message-in-a-queue"></a>Aktualisieren einer Nachricht in einer Warteschlange
 
-Das Beispiel zeigt auch, wie Sie eine Nachricht aus der Warteschlange entfernen. Wenn Sie eine Nachricht aus der Warteschlange entfernen, rufen Sie die Nachricht vom Anfang der Warteschlange ab und machen sie vorübergehend für andere Clients unsichtbar. Eine Nachricht ist standardmäßig 30 Sekunden lang unsichtbar. Während dieser Zeit kann Ihr Code die Nachricht verarbeiten. Löschen Sie die Nachricht direkt nach der Verarbeitung, um das Entfernen der Nachricht aus der Warteschlange abzuschließen und zu verhindern, dass ein anderer Client die gleiche Nachricht aus der Warteschlange entfernt.
-
-Sollte Ihr Code eine Nachricht aufgrund eines Hardware- oder Softwarefehlers nicht verarbeiten können, wird sie nach Ablauf des Unsichtbarkeitszeitraums wieder sichtbar. Ein anderer Client kann daraufhin die gleiche Nachricht abrufen und es erneut versuchen.
+Aktualisieren Sie den Inhalt einer Nachricht durch Aufrufen der [`UpdateMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.updatemessageasync)-Methode. Diese Methode kann das Sichtbarkeitstimeout und den Inhalt einer Nachricht ändern. Beim Nachrichteninhalt muss es sich um eine UTF-8-codierte Zeichenfolge handeln, die bis zu 64 KB groß sein darf. Übergeben Sie zusammen mit dem neuen Inhalt für die Nachricht Werte aus dem `SendReceipt`, das weiter oben im Code gespeichert wurde. Die `SendReceipt`-Werte identifizieren die Nachricht, die aktualisiert werden soll.
 
 ```csharp
-// Retrieve the message at the front of the queue. The message becomes invisible for 
-// a specified interval, during which the client attempts to process it.
-CloudQueueMessage retrievedMessage = await queue.GetMessageAsync();
+Console.WriteLine("\nUpdating the third message in the queue...");
 
-// Display the time at which the message will become visible again if it is not deleted.
-Console.WriteLine("Message '{0}' becomes visible again at {1}", retrievedMessage.Id, retrievedMessage.NextVisibleTime);
-Console.WriteLine();
-
-//Process and delete the message within the period of invisibility.
-await queue.DeleteMessageAsync(retrievedMessage);
-Console.WriteLine("Processed and deleted message '{0}'", retrievedMessage.Id);
-Console.WriteLine();
+// Update a message using the saved receipt from sending the message
+await queueClient.UpdateMessageAsync(receipt.MessageId, receipt.PopReceipt, "Third message has been updated");
 ```
 
-### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+### <a name="receive-messages-from-a-queue"></a>Empfangen von Nachrichten aus einer Warteschlange
 
-Das Beispiel löscht die Warteschlange, um die erstellten Ressourcen zu bereinigen. Beim Löschen der Warteschlange werden auch alle darin enthaltenen Nachrichten gelöscht.
+Laden Sie zuvor hinzugefügte Nachrichten durch Aufrufen der [`ReceiveMessagesAsync`](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync)-Methode herunter.
+
+Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
 ```csharp
-Console.WriteLine("Press any key to delete the sample queue.");
+Console.WriteLine("\nReceiving messages from the queue...");
+
+// Get messages from the queue
+QueueMessage[] messages = await queueClient.ReceiveMessagesAsync(maxMessages: 10);
+```
+
+### <a name="delete-messages-from-a-queue"></a>Löschen von Nachrichten aus einer Warteschlange
+
+Löschen Sie Nachrichten aus der Warteschlange, nachdem sie verarbeitet wurden. In diesem Fall besteht die Verarbeitung nur darin, dass die Nachricht in der Konsole angezeigt wird.
+
+Die App wird angehalten und wartet auf Benutzereingaben, indem `Console.ReadLine` aufgerufen wird, bevor die Nachrichten verarbeitet und gelöscht werden. Überprüfen Sie im [Azure-Portal](https://portal.azure.com), ob die Ressourcen ordnungsgemäß erstellt wurden, bevor sie gelöscht werden. Alle Nachrichten, die nicht explizit gelöscht werden, werden schlussendlich wieder in der Warteschlange angezeigt und ggf. erneut verarbeitet.
+
+Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
+
+```csharp
+Console.WriteLine("\nPress Enter key to 'process' messages and delete them from the queue...");
 Console.ReadLine();
-Console.WriteLine("Deleting the queue and any messages it contains...");
-Console.WriteLine();
-if (queue != null)
+
+// Process and delete messages from the queue
+foreach (QueueMessage message in messages)
 {
-    await queue.DeleteIfExistsAsync();
+    // "Process" the message
+    Console.WriteLine($"Message: {message.MessageText}");
+
+    // Let the service know we're finished with
+    // the message and it can be safely deleted.
+    await queueClient.DeleteMessageAsync(message.MessageId, message.PopReceipt);
 }
 ```
 
-## <a name="resources-for-developing-net-applications-with-queues"></a>Ressourcen für die Entwicklung von .NET-Anwendungen mit Warteschlangen
+### <a name="delete-a-queue"></a>Löschen einer Warteschlange
 
-Für die .NET-Entwicklung mit Azure-Warteschlangen stehen folgende zusätzliche Ressourcen zur Verfügung:
+Der folgende Code bereinigt die von der App erstellten Ressourcen, indem die Warteschlange mithilfe der [`DeleteAsync`](/dotnet/api/azure.storage.queues.queueclient.deleteasync)-Methode gelöscht wird.
 
-### <a name="binaries-and-source-code"></a>Binärdateien und Quellcode
+Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
-- Laden Sie die NuGet-Pakete für die aktuelle Version der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage/client) herunter.
-    - [Common](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-    - [Warteschlangen](https://www.nuget.org/packages/Azure.Storage.Queues/)
-- Zeigen Sie den [Quellcode der .NET-Clientbibliothek](https://github.com/Azure/azure-storage-net) auf GitHub an.
+```csharp
+Console.WriteLine("\nPress Enter key to delete the queue...");
+Console.ReadLine();
 
-### <a name="client-library-reference-and-samples"></a>Clientbibliothek – Referenz und Beispiele
+// Clean up
+Console.WriteLine($"Deleting queue: {queueClient.Name}");
+await queueClient.DeleteAsync();
 
-- Weitere Informationen zur .NET-Clientbibliothek finden Sie in der [Referenz zur .NET-API](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
-- Erkunden Sie [Queue Storage-Beispiele](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues), die unter Verwendung der .NET-Clientbibliothek geschrieben wurden.
+Console.WriteLine("Done");
+```
+
+## <a name="run-the-code"></a>Ausführen des Codes
+
+Diese App erstellt drei Nachrichten und fügt sie einer Azure-Warteschlange hinzu. Der Code listet die Nachrichten in der Warteschlange auf, ruft sie ab und löscht sie, bevor er letztendlich die Warteschlange löscht.
+
+Navigieren Sie im Konsolenfenster zu Ihrem Anwendungsverzeichnis, erstellen Sie die Anwendung, und führen Sie sie aus.
+
+```console
+dotnet build
+```
+
+```console
+dotnet run
+```
+
+Die Ausgabe der App sieht etwa wie das folgende Beispiel aus:
+
+```output
+Azure Queue Storage client library v12 - .NET quickstart sample
+
+Creating queue: quickstartqueues-5c72da2c-30cc-4f09-b05c-a95d9da52af2
+
+Adding messages to the queue...
+
+Peek at the messages in the queue...
+Message: First message
+Message: Second message
+Message: Third message
+
+Updating the third message in the queue...
+
+Receiving messages from the queue...
+
+Press Enter key to 'process' messages and delete them from the queue...
+
+Message: First message
+Message: Second message
+Message: Third message has been updated
+
+Press Enter key to delete the queue...
+
+Deleting queue: quickstartqueues-5c72da2c-30cc-4f09-b05c-a95d9da52af2
+Done
+```
+
+Wenn die App vor dem Empfangen von Nachrichten angehalten wird, überprüfen Sie Ihr Speicherkonto im [Azure-Portal](https://portal.azure.com). Überprüfen Sie, ob sich in der Warteschlange Nachrichten befinden.
+
+Drücken Sie die `Enter`, um Nachrichten zu empfangen und zu löschen. Wenn Sie dazu aufgefordert werden, drücken Sie erneut die `Enter`, um die Warteschlange zu löschen und die Demo zu beenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie gelernt, wie Sie mithilfe von .NET einer Warteschlange Nachrichten hinzufügen, Nachrichten aus einer Warteschlange einsehen und Nachrichten aus der Warteschlange entfernen und verarbeiten. 
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie mithilfe von asynchronem .NET-Code eine Warteschlange erstellen und dieser Nachrichten hinzufügen. Danach haben Sie erfahren, wie Sie Nachrichten einsehen, abrufen und löschen. Zum Schluss haben Sie gelernt, wie Sie eine Nachrichtenwarteschlange löschen.
+
+Tutorials, Beispiele, Schnellstartanleitungen und weiteres Dokumentationsmaterial finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [Kommunikation zwischen Anwendungen mit Azure Queue Storage](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [Azure für .NET- und .NET Core-Entwickler](/dotnet/azure/)
 
+- Weitere Informationen finden Sie unter [Azure Storage libraries for .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage) (Azure Storage-Bibliotheken für .NET).
+- Weitere Informationen zu Azure Queue Storage-Beispiel-Apps finden Sie unter [Azure Queue Storage-Clientbibliothek v12 für .NET – Beispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples).
 - Weitere Informationen zu .NET Core finden Sie unter [Get started with .NET in 10 minutes](https://www.microsoft.com/net/learn/get-started/) (Einstieg in .NET in 10 Minuten).

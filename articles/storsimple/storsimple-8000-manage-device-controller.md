@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 5e461f340e1c58f64c6d645a1e47cfd811bc4de5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 090797549cc61aa27945114e5ef8b666226b66e2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505968"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956992"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Verwalten von StorSimple-Gerätecontrollern
 
@@ -47,7 +47,7 @@ Das Neustarten eines Geräts hat keine schädlichen Auswirkungen auf verbundene 
 
 > [!IMPORTANT]
 > * **Ein aktiver Controller sollte nie physisch entfernt werden, da dies zu einem Verlust der Redundanz führen und das Ausfallrisiko erhöhen würde.**
-> * Das folgende Verfahren gilt nur für das physische StorSimple-Gerät. Informationen zum Starten, Beenden und Neustarten der StorSimple Cloud Appliance finden Sie unter [Arbeiten mit dem Cloudgerät](storsimple-8000-cloud-appliance-u2.md##work-with-the-storsimple-cloud-appliance).
+> * Das folgende Verfahren gilt nur für das physische StorSimple-Gerät. Informationen zum Starten, Beenden und Neustarten der StorSimple Cloud Appliance finden Sie unter [Arbeiten mit dem Cloudgerät](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance).
 
 Sie können einen einzelnen Gerätecontroller neu starten oder herunterfahren, indem Sie das Azure-Portal des StorSimple Manager-Diensts oder Windows PowerShell für StorSimple verwenden.
 
@@ -117,7 +117,7 @@ Führen Sie die folgenden Schritte aus, um das Microsoft Azure StorSimple-Gerät
    
     `Reset-HcsFactoryDefault`
    
-    Um stattdessen einen einzelnen Controller zurückzusetzen, verwenden Sie das Cmdlet [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) mit dem Parameter `-scope`.)
+    Um stattdessen einen einzelnen Controller zurückzusetzen, verwenden Sie das Cmdlet [Reset-HcsFactoryDefault](/previous-versions/windows/powershell-scripting/dn688132(v=wps.630)) mit dem Parameter `-scope`.)
    
     Das System wird mehrmals neu gestartet. Sie werden benachrichtigt, wenn das Zurücksetzen erfolgreich abgeschlossen wurde. Je nach Systemmodell kann es 45 bis 60 Minuten dauern, bis dieser Prozess für ein Gerät der Serie 8100 beendet ist. Für ein Gerät der Serie 8600 kann dieser Prozess 60 bis 90 Minuten dauern.
    
@@ -161,4 +161,3 @@ In diesem Abschnitt haben wir einige der häufig gestellten Fragen zur Verwaltun
 ## <a name="next-steps"></a>Nächste Schritte
 * [Wenden Sie sich an den Microsoft Support](storsimple-8000-contact-microsoft-support.md), falls ein Problem mit Ihren StorSimple-Gerätecontrollern auftritt, das Sie mit den Verfahren in diesem Tutorial nicht beheben können.
 * Weitere Informationen zum Verwenden des StorSimple-Geräte-Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
-

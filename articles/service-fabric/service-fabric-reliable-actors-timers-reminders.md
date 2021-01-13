@@ -1,25 +1,15 @@
 ---
-title: Timer und Erinnerungen für Reliable Actors | Microsoft Docs
-description: Einführung in Timer und Erinnerungen für Service Fabric Reliable Actors.
-services: service-fabric
-documentationcenter: .net
-author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 00c48716-569e-4a64-bd6c-25234c85ff4f
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Timer und Erinnerungen für Reliable Actors
+description: Einführung in Timer und Erinnerungen für Service Fabric Reliable Actors, einschließlich Anweisungen für die einzelnen Verwendungszwecke.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 323de842645cced3c6f490e98112fcbcd184aa64
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2b97b15ca4eb287f8d8f2c1af932f22acafae546
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726807"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89016545"
 ---
 # <a name="actor-timers-and-reminders"></a>Actor-Timer und -Erinnerungen
 Akteure können regelmäßige Arbeit an sich selbst einplanen, indem sie entweder Timer oder Erinnerungen registrieren. In diesem Artikel wird gezeigt, wie Timer und Erinnerungen verwendet werden können, und es werden die Unterschiede zwischen ihnen erklärt.
@@ -131,12 +121,17 @@ Der nächste Timerzeitraum beginnt nach Abschluss des Rückrufs. Dies bedeutet, 
 
 Die Actors-Laufzeit speichert die Änderungen, die im Zustands-Manager des Actors vorgenommen wurden, wenn der Rückruf endet. Tritt ein Fehler beim Speichern des Zustands auf, wird das Actor-Objekt deaktiviert und eine neue Instanz aktiviert.
 
+Im Gegensatz zu [Erinnerungen](#actor-reminders) können Timer nicht aktualisiert werden. Wenn `RegisterTimer` erneut aufgerufen wird, wird ein neuer Timer registriert.
+
 Alle Timer werden angehalten, wenn der Actor im Rahmen einer Garbage Collection deaktiviert wird. Danach werden keine Timerrückrufe mehr aufgerufen. Zur Actor-Laufzeit werden zudem keine Informationen über die Timer gespeichert, die vor der Deaktivierung ausgeführt wurden. Es ist die Aufgabe des Actors, alle für zukünftige Reaktivierungen erforderlichen Timer zu registrieren. Weitere Informationen finden Sie im Abschnitt zur [Actor Garbage Collection](service-fabric-reliable-actors-lifecycle.md).
 
 ## <a name="actor-reminders"></a>Actor-Erinnerungen
-Erinnerungen sind ein Mechanismus zum Auslösen persistenter Rückrufe für einen Actor zu bestimmten Zeiten. Die Funktionalität ähnelt dabei Timern. Im Gegensatz zu Timern werden Erinnerungen aber unter allen Umständen ausgelöst, bis ihre Registrierung vom Actor explizit aufgehoben oder der Actor explizit gelöscht wird. Erinnerungen werden insbesondere über Actor-Deaktivierungen und Failover ausgelöst, da zur Actor-Laufzeit Informationen über die Erinnerungen des Actors mithilfe des Actor-Zustandsanbieters gespeichert werden. Beachten Sie, dass die Zuverlässigkeit von Erinnerungen an die Garantien für die Zuverlässigkeit des Zustands des Actor-Zustandsanbieters gebunden ist. Dies bedeutet, dass für Actors, deren Zustandsdauerhaftigkeit auf „Keine“ festgelegt wird, die Erinnerungen nach einem Failover nicht ausgelöst werden. 
+Erinnerungen sind ein Mechanismus zum Auslösen persistenter Rückrufe für einen Actor zu bestimmten Zeiten. Die Funktionalität ähnelt dabei Timern. Im Gegensatz zu Timern werden Erinnerungen aber unter allen Umständen ausgelöst, bis ihre Registrierung vom Actor explizit aufgehoben oder der Actor explizit gelöscht wird. Erinnerungen werden insbesondere über Actor-Deaktivierungen und Failover ausgelöst, da zur Actor-Laufzeit Informationen über die Erinnerungen des Actors mithilfe des Actor-Zustandsanbieters gespeichert werden. Im Gegensatz zu Timern können vorhandene Erinnerungen auch aktualisiert werden, indem die Registrierungsmethode (`RegisterReminderAsync`) erneut mit dem gleichen *reminderName* aufgerufen wird.
 
-Zum Registrieren einer Erinnerung ruft ein Actor die in der Basisklasse bereitgestellte `RegisterReminderAsync` -Methode auf, wie im folgenden Beispiel gezeigt:
+> [!NOTE]
+> Die Zuverlässigkeit von Erinnerungen ist an die Garantien für die Zuverlässigkeit des Zustands des Actor-Zustandsanbieters gebunden. Dies bedeutet, dass für Actors, deren Zustandsdauerhaftigkeit auf *Keine* festgelegt wird, die Erinnerungen nach einem Failover nicht ausgelöst werden.
+
+Zum Registrieren einer Erinnerung ruft ein Actor die in der Basisklasse bereitgestellte [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks)-Methode auf, wie im folgenden Beispiel gezeigt:
 
 ```csharp
 protected override async Task OnActivateAsync()

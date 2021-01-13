@@ -1,17 +1,17 @@
 ---
-title: Query Performance Insight in Azure Database for PostgreSQL – Einzelserver
+title: Query Performance Insight – Azure Database for PostgreSQL – Einzelserver
 description: In diesem Artikel wird das Feature Query Performance Insight in Azure Database for PostgreSQL (Einzelserver) beschrieben.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 748c6f08da535013724f68b8be424e50a2d49dfd
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: babf2c8208732a194184549dfa5ed3228b376d0f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764428"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710259"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 
@@ -30,7 +30,7 @@ Die [Query Performance Insight](concepts-query-performance-insight.md)-Ansicht i
 
 Wählen Sie in der Portalseite Ihres Azure Database for PostgreSQL-Servers im Abschnitt **Intelligente Leistung** in der Menüleiste die Option **Query Performance Insight**.
 
-![Abfragen mit langer Ausführungszeit in Query Performance Insight](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-landing-page.png" alt-text="Abfragen mit langer Ausführungszeit in Query Performance Insight":::
 
 Die Registerkarte **Abfragen mit langer Ausführungszeit** zeigt die ersten fünf Abfragen nach durchschnittlicher Dauer pro Ausführung an, zusammengefasst in Intervallen von 15 Minuten. Sie können mehr Abfragen anzeigen, indem Sie in der Dropdownliste **Anzahl der Abfragen** eine Auswahl treffen. Dabei ändern sich unter Umständen die Diagrammfarben für eine bestimmte Abfrage-ID.
 
@@ -40,7 +40,7 @@ In der Tabelle unter dem Diagramm finden Sie weitere Informationen zu Abfragen m
 
 Auf der Registerkarte **Wartestatistik** werden die entsprechenden Visualisierungen zu Wartevorgängen angezeigt.
 
-![Query Performance Insight-Wartestatistiken](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Abfragen mit langer Ausführungszeit in Query Performance Insight":::
 
 ## <a name="considerations"></a>Überlegungen
 * Query Performance Insight ist für [Lesereplikate](concepts-read-replicas.md) nicht verfügbar.

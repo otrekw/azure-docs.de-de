@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentation zu Custom Vision
-summary: Azure Custom Vision ist ein Cognitive Services-Dienst zum Erstellen, Bereitstellen und Optimieren benutzerdefinierter Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der entsprechend den visuellen Merkmalen in einem Bild Bezeichnungen (die Klassen darstellen) auf Bilder anwendet.
+summary: Custom Vision ermöglicht Ihnen das Erstellen, Bereitstellen und Optimieren eigener Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der basierend auf den visuellen Merkmalen in einem Bild Bezeichnungen (die Klassen darstellen) auf Bilder anwendet.
 metadata:
-  title: Dokumentation zu Custom Vision
-  description: Azure Custom Vision ist ein Cognitive Services-Dienst zum Erstellen, Bereitstellen und Optimieren benutzerdefinierter Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der entsprechend den visuellen Merkmalen in einem Bild Bezeichnungen (die Klassen darstellen) auf Bilder anwendet.
+  title: Dokumentation zu Custom Vision – Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation
+  description: Custom Vision ermöglicht Ihnen das Erstellen, Bereitstellen und Optimieren eigener Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der basierend auf den visuellen Merkmalen in einem Bild Bezeichnungen (die Klassen darstellen) auf Bilder anwendet.
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: custom-vision
@@ -11,19 +11,23 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 931f67bd0f5c73426781da39ded3bcfff0a8dea3
-  ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+  ms.openlocfilehash: 9b88397f6ed507f2685bcd293ba16e55a6836f28
+  ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71211976"
+  ms.lasthandoff: 12/30/2020
+  ms.locfileid: "97813155"
 landingContent:
 - title: Informationen zu Custom Vision
   linkLists:
   - linkListType: overview
     links:
     - text: Was ist Custom Vision?
-      url: home.md
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Neues
+      url: whats-new.md
   - linkListType: video
     links:
     - text: Trainieren und Identifizieren eindeutiger Bilder
@@ -34,16 +38,8 @@ landingContent:
     links:
     - text: Verwenden des Webportals
       url: getting-started-build-a-classifier.md
-    - text: Verwenden des .NET SDK
-      url: csharp-tutorial.md
-    - text: Verwenden des Python SDK
-      url: python-tutorial.md
-    - text: Verwenden des Java SDK
-      url: java-tutorial.md
-    - text: Verwenden des Node.js SDK
-      url: node-tutorial.md
-    - text: Verwenden des Go SDK
-      url: go-tutorial.md
+    - text: Verwenden des SDK oder der REST-API von Custom Vision
+      url: quickstarts/image-classification.md
   - linkListType: how-to-guide
     links:
     - text: Verwenden der Vorhersage-API
@@ -54,16 +50,8 @@ landingContent:
     links:
     - text: Verwenden des Webportals
       url: get-started-build-detector.md
-    - text: Verwenden des .NET SDK
-      url: csharp-tutorial-od.md
-    - text: Verwenden des Python SDK
-      url: python-tutorial-od.md
-    - text: Verwenden des Java SDK
-      url: java-tutorial-od.md
-    - text: Verwenden des Node.js SDK
-      url: node-tutorial-object-detection.md
-    - text: Verwenden des Go SDK
-      url: go-tutorial-object-detection.md
+    - text: Verwenden des Custom Vision SDK
+      url: quickstarts/object-detection.md
   - linkListType: tutorial
     links:
     - text: Logoerkennung für mobile Geräte
@@ -80,7 +68,7 @@ landingContent:
       url: test-your-model.md
     - text: Verbessern Ihres Modells
       url: getting-started-improving-your-classifier.md
-    - text: Verwenden vorgeschlagener Tags
+    - text: Verwenden des intelligenten Beschriftungserstellers
       url: suggested-tags.md
 - title: Exportieren von Modellen
   linkLists:
@@ -102,8 +90,6 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Verschieben Ihres Projekts aus der eingeschränkten Testversion in Azure
-      url: move-your-project-to-azure.md
     - text: Aktualisieren Ihrer App auf die 3.0-API
       url: update-application-to-3.0-sdk.md
 - title: Verweis
@@ -115,16 +101,22 @@ landingContent:
     - text: Vorhersage-API
       url: https://go.microsoft.com/fwlink/?linkid=865445
     - text: .NET SDK
-      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet
+      url: /dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet
     - text: Python SDK
-      url: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/?view=azure-python
+      url: /python/api/azure-cognitiveservices-vision-customvision/?view=azure-python
     - text: Java-SDK
-      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable
+      url: /java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable
     - text: Go SDK (Training)
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training
     - text: Go SDK (Vorhersage)
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+      url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure-Befehlszeilenschnittstelle (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+      url: /cli/azure/cognitiveservices?view=azure-cli-latest
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/custom-vision-service/context/context

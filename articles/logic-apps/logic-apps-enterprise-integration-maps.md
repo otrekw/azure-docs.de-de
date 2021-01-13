@@ -1,22 +1,19 @@
 ---
-title: 'Transformieren von XML mit XSLT-Zuordnungen: Azure-Logik-Apps | Microsoft-Dokumentation'
+title: Transformieren von XML mit XSLT-Zuordnungen
 description: Hinzufügen von XSLT-Zuordnungen zum Transformieren von XML in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
-manager: carmonm
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 02/06/2019
-ms.openlocfilehash: d0d40ca0ae6ccd4f709d7d94d52764d4affcc215
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62c3d4533dd04dbb5a2ce0c73afa52b81d433913
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244696"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570776"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformieren von XML mit Zuordnungen in Azure Logic Apps mithilfe von Enterprise Integration Pack
 
@@ -39,14 +36,14 @@ Grenzwerte für Integrationskonten und Artefakte wie Zuordnungen finden Sie unte
   * Für Assemblys benötigen Sie einen Azure-Blobcontainer, in den Sie Ihre Assembly hochladen können, und den Containerspeicherort. Auf diese Weise können Sie diesen Speicherort später bereitstellen, wenn Sie die Assembly Ihrem Integrationskonto hinzufügen. 
   Für diese Aufgabe benötigen Sie folgende Elemente:
 
-    | Item | BESCHREIBUNG |
+    | Element | BESCHREIBUNG |
     |------|-------------|
-    | [Azure-Speicherkonto](../storage/common/storage-account-overview.md) | Unter diesem Konto erstellen Sie einen Azure-Blobcontainer für Ihre Assembly. Hier erfahren Sie, wie Sie ein [Speicherkonto erstellen](../storage/common/storage-quickstart-create-account.md). |
+    | [Azure-Speicherkonto](../storage/common/storage-account-overview.md) | Unter diesem Konto erstellen Sie einen Azure-Blobcontainer für Ihre Assembly. Hier erfahren Sie, wie Sie ein [Speicherkonto erstellen](../storage/common/storage-account-create.md). |
     | BLOB-Container | In diesen Container können Sie Ihre Assembly hochladen. Außerdem benötigen Sie den Containerspeicherort, wenn Sie die Assembly Ihrem Integrationskonto hinzufügen. Hier erfahren Sie, wie Sie einen [Blobcontainer erstellen](../storage/blobs/storage-quickstart-blobs-portal.md). |
     | [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Mit diesem Tool lassen sich Speicherkonten und Blobcontainer einfacher verwalten. Eine Möglichkeit zur Verwendung des Storage-Explorers besteht darin, [den Azure Storage-Explorer herunterzuladen und zu installieren](https://www.storageexplorer.com/). Verbinden Sie dann den Storage-Explorer mit Ihrem Speicherkonto, indem Sie die Schritte unter [Erste Schritte mit dem Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) ausführen. Weitere Informationen finden Sie unter [Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs im Objektspeicher](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Alternativ können Sie Ihr Speicherkonto im Azure-Portal suchen und auswählen. Wählen Sie im Menü „Speicherkonto“ **Storage-Explorer** aus. |
     |||
 
-  * Im Fall von Zuordnungen lassen sich derzeit größere Zuordnungen mithilfe von [Azure Logic Apps REST API – Zuordnungen](https://docs.microsoft.com/rest/api/logic/maps/createorupdate) hinzufügen.
+  * Im Fall von Zuordnungen lassen sich derzeit größere Zuordnungen mithilfe von [Azure Logic Apps REST API – Zuordnungen](/rest/api/logic/maps/createorupdate) hinzufügen.
 
 Zum Erstellen und Hinzufügen von Zuordnungen benötigen Sie keine Logik-App. Damit Sie eine Zuordnung verwenden können, muss Ihre Logik-App jedoch mit einem Integrationskonto verknüpft sein, in dem diese Zuordnung gespeichert ist. Erfahren Sie, wie Sie [Logik-Apps mit Integrationskonten verknüpfen](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Wenn Sie noch nicht über eine Logik-App verfügen, lesen Sie den Artikel zum [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -72,7 +69,7 @@ Zum Erstellen und Hinzufügen von Zuordnungen benötigen Sie keine Logik-App. Da
 
 1. Nachdem die Seite **Assemblys** geöffnet wurde, wählen Sie **Hinzufügen** aus.
 
-   ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
+   ![Screenshot, der die Schaltfläche „Hinzufügen“ auf der Seite „Assemblys“ hervorhebt.](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
 Je nach Größe Ihrer Assemblydatei führen Sie die Schritte zum Upload einer Assembly aus, die entweder [maximal 2 MB](#smaller-assembly) groß oder [größer als 2 MB (maximal 8 MB)](#larger-assembly) ist.
 Die Grenzwerte für die Anzahl von Assemblys in Integrationskonten finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).
@@ -223,7 +220,7 @@ Nachdem Sie alle Assemblys hochgeladen haben, auf die in Ihrer Zuordnung verwies
 
 ### <a name="add-maps-more-than-2-mb"></a>Hinzufügen von Zuordnungen mit mehr als 2 MB
 
-Größere Zuordnungen lassen sich derzeit mit [Azure Logic Apps REST API – Zuordnungen](https://docs.microsoft.com/rest/api/logic/maps/createorupdate) hinzufügen.
+Größere Zuordnungen lassen sich derzeit mit [Azure Logic Apps REST API – Zuordnungen](/rest/api/logic/maps/createorupdate) hinzufügen.
 
 <!--
 

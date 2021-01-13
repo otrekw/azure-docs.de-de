@@ -1,24 +1,24 @@
 ---
-title: 'Erstellen eines Projekts: Custom Translator'
+title: Erstellen eines Projekts – Benutzerdefinierter Translator
 titleSuffix: Azure Cognitive Services
-description: Erstellen eines Projekts in Custom Translator
+description: In diesem Artikel wird erklärt, wie Sie ein Projekt im benutzerdefinierten Translator von Azure Cognitive Services erstellen und verwalten.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a62cc6133fe01bf7478166c526e32b3215ceebf1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 3043ec0600f802a409387f0114aae5f56151da16
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595755"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88510976"
 ---
 # <a name="create-a-project"></a>Erstellen eines Projekts
 
-Ein Projekt ist ein Container für Modelle, Dokumente und Tests. Jedes Projekt enthält automatisch alle Dokumente, die in den Arbeitsbereich hochgeladen werden und über das korrekte Sprachpaar verfügen.
+Ein Projekt ist ein Container für Modelle, Dokumente und Tests. Jedes Projekt enthält automatisch alle Dokumente, die in den Arbeitsbereich hochgeladen werden und über das korrekte Sprachenpaar verfügen.
 
 Die Projekterstellung ist der erste Schritt auf dem Weg zur Modellerstellung.
 
@@ -52,7 +52,7 @@ Auf der Landing Page von Custom Translator werden die ersten zehn Projekte in Ih
 
 Wenn Sie ein Projekt auswählen, wird eine Projektseite mit Folgendem angezeigt:
 
-- CategoryID: Bei der Kategorie-ID handelt es sich um eine Verkettung von Arbeitsbereich-ID, Projektbezeichnung und Kategoriecode. Mithilfe der Kategorie-ID können Sie über die Textübersetzungs-API benutzerdefinierte Übersetzungen abrufen.
+- CategoryID: Bei der Kategorie-ID handelt es sich um eine Verkettung von Arbeitsbereich-ID, Projektbezeichnung und Kategoriecode. Mithilfe der Kategorie-ID können Sie über die Textübersetzungs-API benutzerdefinierte Übersetzungen abrufen. Klicken Sie zum Kopieren auf das Kopiersymbol.
 
 - Schaltfläche „Train“ (Trainieren): Diese Schaltfläche dient zum [Trainieren eines Modells](how-to-train-model.md).
 

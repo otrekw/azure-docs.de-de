@@ -1,28 +1,24 @@
 ---
-title: Verwenden von Umleitungs-URIs mit der Microsoft Authentication Library | Microsoft Identity Platform
+title: Verwenden von Umleitungs-URIs mit MSAL (iOS/macOS) | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die Unterschiede zwischen der Microsoft Authentication Library für Objective-C (MSAL für iOS und macOS) und der Azure AD-Authentifizierungsbibliothek für Objective-C (ADAL.ObjC) sowie über die Migration zwischen ihnen.
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a84ea0acc165b236e2dbe17e62a84269a16eedb9
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 95bd7b5ac325ef5484bd01284c46489acb919a32
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269288"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85830348"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Verwenden von Umleitungs-URIs mit der Microsoft Authentication Library für iOS und macOS
 
@@ -44,10 +40,12 @@ Die Umleitungs-URIs müssen für jede iOS-App unterschiedlich sein. So kann der 
 
 Im Azure-Portal ist die folgende Anwendungsregistrierung vorhanden:
 
-    Client ID: ABCDE-12345 (this is a single client ID)
-    RedirectUris: msauth.com.contoso.app1://auth, msauth.com.contoso.app2://auth, msauth.com.contoso.app3://auth
+* Client-ID: `ABCDE-12345` (ID für einen einzelnen Client)
+* RedirectUris: `msauth.com.contoso.app1://auth`, `msauth.com.contoso.app2://auth`, `msauth.com.contoso.app3://auth`
 
-App1 verwendet den Umleitungs-URI `msauth.com.contoso.app1://auth`, App2 verwendet `msauth.com.contoso.app2://auth`, App3 verwendet `msauth.com.contoso.app1://auth`
+App1 verwendet die Umleitung `msauth.com.contoso.app1://auth`.\
+App2 verwendet `msauth.com.contoso.app2://auth`.\
+App3 verwendet `msauth.com.contoso.app1://auth`.
 
 ### <a name="migrating-from-adal-to-msal"></a>Migrieren von ADAL zu MSAL
 
@@ -74,7 +72,6 @@ Wenn Sie Code, in dem die Azure AD-Authentifizierungsbibliothek (Azure AD Authen
         </dict>
     </array>
     ```
-    
 
 Die MSAL überprüft, ob der Umleitungs-URI ordnungsgemäß registriert ist, und gibt einen Fehler zurück, wenn dies nicht der Fall ist.
     
@@ -140,4 +137,4 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen über [Authentifizierungsflows und Anwendungsszenarien](authentication-flows-app-scenarios.md)
+Hier erfahren Sie mehr zu [Authentifizierungsfluss und Anwendungsszenarios](authentication-flows-app-scenarios.md)

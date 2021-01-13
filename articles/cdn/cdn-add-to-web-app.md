@@ -3,7 +3,7 @@ title: 'Tutorial: Hinzufügen von Azure CDN zu einer Azure App Service-Web-App |
 description: In diesem Tutorial wird einer Azure App Service-Web-App ein Content Delivery Network (CDN) hinzugefügt, um Ihre statischen Dateien über Server zwischenzuspeichern und bereitzustellen, die von Ihren weltweiten Kunden jeweils nicht weit entfernt sind.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/14/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 3f1dacb57931913edfb181f023bdf98717777d50
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594226"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562241"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Tutorial: Hinzufügen von Azure CDN zu einer Azure App Service-Web-App
 
@@ -43,13 +43,13 @@ Sie lernen Folgendes:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 - [Installation von Git](https://git-scm.com/)
-- [Installieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-web-app"></a>Erstellen der Web-App
 
-Befolgen Sie zum Erstellen der Web-App, die Sie verwenden werden, die Anleitung unter [Erstellen einer statischen HTML-Web-App in Azure in fünf Minuten](../app-service/app-service-web-get-started-html.md) bis zum Schritt **Navigieren zur App**.
+Befolgen Sie zum Erstellen der Web-App, die Sie verwenden werden, die Anleitung unter [Erstellen einer statischen HTML-Web-App in Azure in fünf Minuten](../app-service/quickstart-html.md) bis zum Schritt **Navigieren zur App**.
 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
@@ -60,7 +60,7 @@ Wenn Sie Ihren CDN-Endpunkt für die Beschleunigung dynamischer Websites (Dynami
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>Erstellen eines CDN-Profils und -Endpunkts
 
-Wählen Sie im Navigationsbereich auf der linken Seite die Option **App Services** und dann die App aus, die Sie unter [Erstellen einer statischen HTML-Web-App in Azure in fünf Minuten](../app-service/app-service-web-get-started-html.md) erstellt haben.
+Wählen Sie im Navigationsbereich auf der linken Seite die Option **App Services** und dann die App aus, die Sie unter [Erstellen einer statischen HTML-Web-App in Azure in fünf Minuten](../app-service/quickstart-html.md) erstellt haben.
 
 ![Auswählen der App Service-App im Portal](media/cdn-add-to-web-app/portal-select-app-services.png)
 
@@ -72,7 +72,7 @@ Geben Sie auf der Seite **Azure Content Delivery Network** die Einstellungen fü
 
 ![Erstellen des Profils und Endpunkts im Portal](media/cdn-add-to-web-app/portal-new-endpoint.png)
 
-| Einstellung | Empfohlener Wert | BESCHREIBUNG |
+| Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
 | ------- | --------------- | ----------- |
 | **CDN-Profil** | myCDNProfile | Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten mit demselben Tarif. |
 | **Preisstufe** | Standard Akamai | Über den [Tarif](cdn-features.md) werden der Anbieter und die verfügbaren Features angegeben. In diesem Tutorial wird *Standard Akamai* verwendet. |
@@ -135,7 +135,7 @@ In diesem Abschnitt des Tutorials stellen Sie eine Änderung für die Web-App be
 
 ```bash
 git commit -am "version 2"
-git push azure master
+git push azure main
 ```
 
 Navigieren Sie nach Abschluss der Bereitstellung zur Web-App-URL. Die Änderung wird angezeigt.
@@ -230,7 +230,7 @@ Aktualisieren Sie die Seite, um sicherzustellen, dass diese Seite im CDN zwische
 
 ```bash
 git commit -am "version 3"
-git push azure master
+git push azure main
 ```
 
 Navigieren Sie in einem Browser mit einer neuen Abfragezeichenfolge, z.B. `q=2`, zur CDN-Endpunkt-URL. Azure CDN ruft die aktuelle Datei *index.html* ab und zeigt *V3* an. Wenn Sie dagegen mit der Abfragezeichenfolge `q=1` zum CDN-Endpunkt navigieren, wird *V2* angezeigt.
@@ -269,5 +269,3 @@ Die folgenden Artikel enthalten Informationen zur Optimierung der CDN-Leistung:
 
 > [!div class="nextstepaction"]
 > [Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt](cdn-map-content-to-custom-domain.md)
-
-

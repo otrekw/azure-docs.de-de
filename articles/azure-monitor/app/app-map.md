@@ -1,24 +1,16 @@
 ---
 title: Anwendungszuordnung in Azure Application Insights | Microsoft-Dokumentation
 description: Überwachen von komplexen Anwendungstopologien mit der Anwendungsübersicht
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/15/2019
+ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: f895aa9aa4bc66c32f10d290b7ee708345be8c9b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 3383b4a3c2eab1f62d180c31e278f07b92c649c5
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983765"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853514"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 
@@ -42,7 +34,7 @@ Durch Klicken auf „Übersichtskomponenten aktualisieren“ wird die Übersicht
 
 Wenn es sich bei allen Komponenten um Rollen in einer einzelnen Application Insights-Ressource handelt, ist dieser Ermittlungsschritt nicht erforderlich. Nach dem ersten Ladevorgang für eine solche Anwendung sind alle Komponenten vorhanden.
 
-![Screenshot: Anwendungsübersicht](media/app-map/app-map-001.png)
+![Screenshot: Beispiel für eine Anwendungszuordnung](media/app-map/app-map-001.png)
 
 Eines der wichtigsten Ziele dieser Oberfläche ist es, komplexe Topologien mit Hunderten von Komponenten zu visualisieren.
 
@@ -74,13 +66,13 @@ Wählen Sie **Zu Details wechseln** aus, um das End-to-End-Transaktionserlebnis 
 
 ![Screenshot: Details von End-to-End-Transaktionen](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>In Analytics anzeigen
+### <a name="view-logs-analytics"></a>Anzeigen von Protokollen (Analytics)
 
-Klicken Sie auf **In Analytics anzeigen**, um Ihre Anwendungsdaten abzufragen und eingehender zu untersuchen.
+Klicken Sie auf **In Protokollen anzeigen (Analytics)** , um Ihre Anwendungsdaten abzufragen und eingehender zu untersuchen.
 
-![Screenshot: Schaltfläche „In Analytics anzeigen“](media/app-map/view-in-analytics.png)
+![Screenshot: Schaltfläche „In Analytics anzeigen“](media/app-map/view-logs.png)
 
-![Screenshot: Analytics-Bereich](media/app-map/analytics.png)
+![Screenshot: Analytics-Bereich Liniendiagramm, das die durchschnittliche Antwortdauer einer Anforderung in den letzten 12 Stunden zusammenfasst.](media/app-map/log-analytics.png)
 
 ### <a name="alerts"></a>Alerts
 
@@ -90,11 +82,14 @@ Wählen Sie **Warnungen** aus, um aktive Warnungen und die zugrunde liegenden Re
 
 ![Screenshot: Analytics-Bereich](media/app-map/alerts-view.png)
 
-## <a name="set-cloud-role-name"></a>Festlegen von „Cloudrollenname“
+## <a name="set-or-override-cloud-role-name"></a>Festlegen oder Außerkraftsetzen des Cloudrollennamens
 
-In der Anwendungsübersicht wird die Eigenschaft **Cloudrollenname** verwendet, um die Komponenten in der Zuordnung zu identifizieren. Das Application Insights SDK versieht die von Komponenten ausgegebenen Telemetriedaten automatisch mit der Eigenschaft „Cloudrollenname“. So fügt das SDK der Eigenschaft „Cloudrollenname“ beispielsweise einen Websitenamen oder einen Dienstrollennamen hinzu. Manchmal soll der Standardwert jedoch möglicherweise überschrieben werden. So überschreiben Sie den Cloudrollennamen und ändern den Inhalt der Anwendungsübersicht
+In der Anwendungsübersicht wird die Eigenschaft **Cloudrollenname** verwendet, um die Komponenten in der Zuordnung zu identifizieren. So können Sie den Cloudrollennamen manuell festlegen oder außer Kraft setzen und den Inhalt der Anwendungsübersicht ändern:
 
-### <a name="netnet-core"></a>.NET/.NET Core
+> [!NOTE]
+> Das Application Insights SDK oder der Application Insights-Agent versieht die von Komponenten in einer Azure App Service-Umgebung ausgegebenen Telemetriedaten automatisch mit der Eigenschaft „Cloudrollenname“.
+
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 **Schreiben Sie einen benutzerdefinierten Telemetrie-Initialisierer wie nachfolgend gezeigt.**
 
@@ -147,7 +142,7 @@ Alternativ können Sie für ASP.NET-Web-Apps den Initialisierer im Code instanzi
 ```
 
 > [!NOTE]
-> Das Hinzufügen eines Initialisieres mit `ApplicationInsights.config` oder `TelemetryConfiguration.Active` ist für ASP.NET Core-Anwendungen nicht zulässig. 
+> Das Hinzufügen eines Initialisierers mit `ApplicationInsights.config` oder `TelemetryConfiguration.Active` ist für ASP.NET Core-Anwendungen nicht zulässig. 
 
 **ASP.NET Core-Apps: Laden Sie den Initialisierer in die aktive TelemetryConfiguration.**
 
@@ -162,7 +157,42 @@ Zum Hinzufügen eines neuen `TelemetryInitializer` für [ASP.NET Core](asp-net-c
 }
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="java"></a>[Java](#tab/java)
+
+**Java-Agent**
+
+Für [Java-Agent 3.0](./java-in-process-agent.md) ist der Name der Cloudrolle wie folgt festgelegt:
+
+```json
+{
+  "role": {
+    "name": "my cloud role name"
+  }
+}
+```
+
+Sie können den Namen der Cloudrolle auch mithilfe der Umgebungsvariablen ```APPLICATIONINSIGHTS_ROLE_NAME``` festlegen.
+
+**Java SDK**
+
+Ab dem Java SDK 2.5.0 für Application Insights können Sie den Namen der Cloudrolle angeben, indem Sie der Datei `<RoleName>` den Eintrag `ApplicationInsights.xml` hinzufügen. Beispiel:
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
+Bei Verwendung von Spring Boot mit dem Application Insights Spring Boot-Startprogramm besteht die einzige erforderliche Änderung darin, Ihren benutzerdefinierten Namen für die Anwendung in der Datei „application.properties“ festzulegen.
+
+`spring.application.name=<name-of-app>`
+
+Das Spring Boot-Startprogramm weist dem von Ihnen für die Eigenschaft „spring.application.name“ eingegebenen Wert automatisch „Cloudrollenname“ zu.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -183,17 +213,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 });
 ```
 
-### <a name="java"></a>Java
-
-Bei Verwendung von Spring Boot mit dem Application Insights Spring Boot-Startprogramm besteht die einzige erforderliche Änderung darin, Ihren benutzerdefinierten Namen für die Anwendung in der Datei „application.properties“ festzulegen.
-
-`spring.application.name=<name-of-app>`
-
-Das Spring Boot-Startprogramm weist dem von Ihnen für die Eigenschaft „spring.application.name“ eingegebenen Wert automatisch „Cloudrollenname“ zu.
-
-Weitere Informationen zur Java-Korrelation und zum Konfigurieren von „Cloudrollenname“ für SpringBoot-fremde Anwendungen finden Sie in [diesem Abschnitt](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name) zur Korrelation.
-
-### <a name="clientbrowser-side-javascript"></a>Client-/Browserseitiger JavaScript-Code
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 appInsights.queue.push(() => {
@@ -203,6 +223,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+---
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>Grundlegendes zu „Cloudrollenname“ im Kontext der Anwendungsübersicht
 
@@ -230,7 +251,7 @@ Alternativ kann **Cloudrolleninstanz** hilfreich in Szenarien sein, in denen üb
 
 Ein Fall, bei dem Sie den Wert für „Cloudrolleninstanz“ überschreiben können, ist beispielsweise ein Szenario, in dem die Anwendung in einer Containerumgebung ausgeführt wird und die Kenntnis des einzelnen Servers nicht genügt, um ein bestimmtes Problem zu lokalisieren.
 
-Weitere Informationen zum Überschreiben der Eigenschaft „Cloudrollenname“ mit Telemetrieinitialisierern finden Sie unter [Add properties: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer) (Hinzufügen von Eigenschaften: ITelemetryInitializer).
+Weitere Informationen zum Überschreiben der Eigenschaft „Cloudrollenname“ mit Telemetrieinitialisierern finden Sie unter [Add properties: ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) (Hinzufügen von Eigenschaften: ITelemetryInitializer).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -240,15 +261,15 @@ Bei Problemen mit der Anwendungsübersicht können Sie Folgendes versuchen:
 
 1. Vergewissern Sie sich, dass Sie ein offiziell unterstütztes SDK verwenden. Nicht unterstützte SDKs oder Community-SDKs unterstützen möglicherweise keine Korrelation.
 
-    Eine Liste mit unterstützten SDKs finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/application-insights/app-insights-platforms).
+    Eine Liste mit unterstützten SDKs finden Sie in [diesem Artikel](./platforms.md).
 
 2. Upgraden Sie alle Komponenten auf die neueste SDK-Version.
 
-3. Wenn Sie Azure Functions mit C# verwenden, führen Sie ein Upgrade auf [Functions V2](https://docs.microsoft.com/azure/azure-functions/functions-versions) durch.
+3. Wenn Sie Azure Functions mit C# verwenden, führen Sie ein Upgrade auf [Functions V2](../../azure-functions/functions-versions.md) durch.
 
-4. Vergewissern Sie sich, dass [Cloudrollenname](#set-cloud-role-name) richtig konfiguriert wurde.
+4. Vergewissern Sie sich, dass [Cloudrollenname](#set-or-override-cloud-role-name) richtig konfiguriert wurde.
 
-5. Sollte eine Abhängigkeit fehlen, stellen Sie sicher, dass sie sich in der Liste [automatisch erfasster Abhängigkeiten](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies) befindet. Andernfalls können Sie sie auch manuell mit einem [TrackDependency-Aufruf](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency) nachverfolgen.
+5. Sollte eine Abhängigkeit fehlen, stellen Sie sicher, dass sie sich in der Liste [automatisch erfasster Abhängigkeiten](./auto-collect-dependencies.md) befindet. Andernfalls können Sie sie auch manuell mit einem [TrackDependency-Aufruf](./api-custom-events-metrics.md#trackdependency) nachverfolgen.
 
 ### <a name="too-many-nodes-on-the-map"></a>Zu viele Knoten in der Übersicht
 
@@ -262,7 +283,7 @@ Um dies zu beheben, müssen Sie die Instrumentierung ändern, um die Felder für
 
 * Der Abhängigkeitstyp muss den logischen Typ einer Abhängigkeit darstellen. HTTP, SQL oder Azure-Blob sind beispielsweise typische Abhängigkeitstypen. Er sollte keine eindeutigen IDs enthalten.
 
-* Der Zweck des Cloudrollennamens ist im [Abschnitt weiter oben](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name) beschrieben.
+* Der Zweck des Cloudrollennamens ist im [Abschnitt weiter oben](#set-or-override-cloud-role-name) beschrieben.
 
 ## <a name="portal-feedback"></a>Feedback zum Portal
 
@@ -272,6 +293,6 @@ Verwenden Sie für Feedback die Feedbackoption.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Funktionsweise der Korrelation in Application Insights finden Sie im [Artikel zur Telemetriekorrelation](https://docs.microsoft.com/azure/application-insights/application-insights-correlation).
+* Weitere Informationen zur Funktionsweise der Korrelation in Application Insights finden Sie im [Artikel zur Telemetriekorrelation](correlation.md).
 * Die [umfassende Benutzeroberfläche zur Transaktionsdiagnose](transaction-diagnostics.md) setzt die serverseitigen Telemetriedaten von allen Ihren mithilfe von Application Insights überwachten Komponenten automatisch in einer einzelnen Ansicht in Beziehung.
 * Informationen zu Szenarien mit erweiterter Korrelation in ASP.NET Core und ASP.NET finden Sie im Artikel zum [Nachverfolgen von benutzerdefinierten Vorgängen](custom-operations-tracking.md).

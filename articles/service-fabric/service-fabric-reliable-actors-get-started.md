@@ -1,30 +1,20 @@
 ---
-title: Erstellen eines akteurbasierten Diensts in Azure Service Fabric | Microsoft-Dokumentation
+title: Erstellen eines akteurbasierten Diensts in Azure Service Fabric
 description: Erfahren Sie, wie Sie Ihren ersten akteurbasierten Dienst in C# mithilfe von Service Fabric Reliable Actors erstellen, debuggen und bereitstellen.
-services: service-fabric
-documentationcenter: .net
-author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: d4aebe72-1551-4062-b1eb-54d83297f139
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: vturecek
-ms.openlocfilehash: d870690416f96a2e1c24e6de16bdc8faa060f6bd
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 225ccb67153a33ed47af68ebb1549dce37426278
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225171"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573460"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Erste Schritte mit Reliable Actors
 > [!div class="op_single_selector"]
 > * [C# unter Windows](service-fabric-reliable-actors-get-started.md)
-> * [Java unter Linux](service-fabric-reliable-actors-get-started-java.md)
+> * [Java unter Linux](./service-fabric-create-your-first-linux-application-with-java.md)
 
 Dieser Artikel führt Sie durch das Erstellen und Debuggen einer einfachen Reliable Actor-Anwendung in Visual Studio. Weitere Informationen zu Reliable Actors finden Sie unter [Einführung in Service Fabric Reliable Actors](service-fabric-reliable-actors-introduction.md).
 
@@ -116,7 +106,7 @@ Erstellen Sie eine einfache Konsolenanwendung zum Aufrufen des Actordiensts.
 
     Das NuGet-Paket und alle abhängigen Elemente werden im Projekt „ActorClient“ installiert.
 
-5. Das Clientprojekt erfordert auch einen Verweis auf das Schnittstellenprojekt.  Klicken Sie im Projekt „ActorClient“ mit der rechten Maustaste auf **Abhängigkeiten**, und klicken Sie dann auf **Verweis hinzufügen...** .  Wählen Sie **Projekte > Projektmappe** aus (sofern nicht bereits ausgewählt), und aktivieren Sie dann das Kontrollkästchen neben **HelloWorld.Interfaces**.  Klicken Sie auf **OK**.
+5. Das Clientprojekt erfordert auch einen Verweis auf das Schnittstellenprojekt.  Klicken Sie im Projekt „ActorClient“ mit der rechten Maustaste auf **Abhängigkeiten**, und klicken Sie dann auf **Projektverweis hinzufügen...** .  Wählen Sie **Projekte > Projektmappe** aus (sofern nicht bereits ausgewählt), und aktivieren Sie dann das Kontrollkästchen neben **HelloWorld.Interfaces**.  Klicken Sie auf **OK**.
     
     ![Dialogfeld „Verweis hinzufügen“][7]
 

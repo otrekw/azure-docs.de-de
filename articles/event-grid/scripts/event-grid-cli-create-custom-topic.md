@@ -1,22 +1,16 @@
 ---
 title: 'Azure CLI-Skriptbeispiel: Erstellen eines benutzerdefinierten Themas | Microsoft-Dokumentation'
-description: 'Azure CLI-Skriptbeispiel: Erstellen eines benutzerdefinierten Themas'
-services: event-grid
-documentationcenter: na
-author: tfitzmac
-ms.service: event-grid
+description: In diesem Artikel wird anhand eines Beispielskripts für die Azure-Befehlszeilenschnittstelle das Erstellen eines benutzerdefinierten Azure Event Grid-Themas veranschaulicht.
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: 16c6586939a6dad248cef3abdabd78faf04a2381
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.date: 07/08/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d61dac0e76fc7b7006fa36f1cb96965ccee3d863
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034267"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87494127"
 ---
 # <a name="create-event-grid-custom-topic-with-azure-cli"></a>Erstellen eines benutzerdefinierten Event Grid-Themas mit der Azure CLI
 
@@ -36,10 +30,10 @@ Dieses Skript verwendet den folgenden Befehl zum Erstellen des benutzerdefiniert
 
 | Get-Help | Notizen |
 |---|---|
-| [az eventgrid topic create](https://docs.microsoft.com/cli/azure/eventgrid/topic#az-eventgrid-topic-create) | Erstellt ein benutzerdefiniertes Event Grid-Thema. |
+| [az eventgrid topic create](/cli/azure/eventgrid/topic#az-eventgrid-topic-create) | Erstellt ein benutzerdefiniertes Event Grid-Thema. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Abfragen von Abonnements finden Sie unter [Abfragen von Event Grid-Abonnements](../query-event-subscriptions.md).
-* Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+* Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).

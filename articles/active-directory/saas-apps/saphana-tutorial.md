@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit SAP HANA | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und SAP HANA konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: cef4a146-f4b0-4e94-82de-f5227a4b462c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 231b9b6d217a9ad1fe5f4a6478f5e8799257b92b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 748566cf5b25157fcb8a2938a3f4bd307c930874
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67091622"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Tutorial: Azure Active Directory-Integration mit SAP HANA
 
@@ -31,7 +27,7 @@ Die Integration von SAP HANA in Azure AD bietet die folgenden Vorteile:
 * Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei SAP HANA anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -125,13 +121,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei SAP HANA
 
 5. Die SAP HANA-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot: Abschnitt „User Attributes“ (Benutzerattribute) mit dem Symbol „Bearbeiten“ ausgewählt](common/edit-attribute.png)
 
 6. Führen Sie im Dialogfeld **Benutzerattribute und Ansprüche** im Abschnitt **Benutzerattribute** die folgenden Schritte aus:
  
     a. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    ![image](./media/saphana-tutorial/tutorial_usermail.png)
+    ![Screenshot: Dialogfeld „Benutzerattribute und Ansprüche“, in dem das Symbol „Bearbeiten“ ausgewählt ist](./media/saphana-tutorial/tutorial_usermail.png)
 
     ![image](./media/saphana-tutorial/tutorial_usermailedit.png)
 
@@ -158,7 +154,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei SAP HANA
 
     a. Fügen Sie im Fenster **Add Identity Provider Info** (Identitätsanbieterinformationen hinzufügen) den Inhalt der aus dem Azure-Portal heruntergeladenen XML-Metadatendatei in das Feld **Metadata** (Metadaten) ein.
 
-    ![Einstellungen für Identitätsanbieter hinzufügen](./media/saphana-tutorial/sap2.png)
+    ![Screenshot: Bereich „Add Identity Provider Info“ (Identitätsanbieterinformationen hinzufügen), in dem „Metadata“ (Metadaten) und „Name“ hervorgehoben sind](./media/saphana-tutorial/sap2.png)
 
     b. Wenn der Inhalt des XML-Dokuments gültig ist, extrahiert der Analyseprozess die Informationen, die für die Felder **Subject, Entity ID, and Issuer** (Antragsteller, Entitäts-ID, Zertifikataussteller) im Bildschirmbereich **General data** (Allgemeine Daten) erforderlich sind. Darüber hinaus werden die Informationen für die URL-Felder im Bildschirmbereich **Ziel** extrahiert, z.B. **Basis-URL und SingleSignOn-URL (*)** .
 
@@ -200,7 +196,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -246,7 +242,7 @@ Wenn Sie manuell einen Benutzer erstellen müssen, führen Sie die folgenden Sch
 
 3. Klicken Sie auf **Add** (Hinzufügen), um den SAML-IDP hinzuzufügen.  Wählen Sie den entsprechenden SAML-IDP aus, und klicken Sie dann auf **OK**.
 
-4. Fügen Sie den Wert für **External Identity** (Externe ID) (in diesem Fall BrittaSimon) hinzu, oder wählen Sie **Any** (Beliebig). Wählen Sie dann **OK**aus.
+4. Fügen Sie den Wert für **External Identity** (Externe ID) (in diesem Fall BrittaSimon) hinzu, oder wählen Sie **Any** (Beliebig). Klicken Sie anschließend auf **OK**.
 
    > [!Note]
    > Wenn das Kontrollkästchen **Any** (Beliebig) nicht aktiviert ist, muss der Benutzername in HANA exakt dem Namen des Benutzers im Benutzerprinzipalnamen vor dem Domänensuffix entsprechen. (Beispiel: BrittaSimon@contoso.com wird in HANA zu „BrittaSimon“.)
@@ -264,13 +260,12 @@ Wenn Sie manuell einen Benutzer erstellen müssen, führen Sie die folgenden Sch
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „SAP HANA“ klicken, sollten Sie automatisch bei Ihrer SAP HANA-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „SAP HANA“ klicken, sollten Sie automatisch bei Ihrer SAP HANA-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

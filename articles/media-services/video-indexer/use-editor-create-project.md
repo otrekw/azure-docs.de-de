@@ -1,6 +1,6 @@
 ---
 title: Verwenden des Video Indexer-Editors zum Erstellen von Projekten
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: In diesem Thema wird veranschaulicht, wie Sie den Video Indexer-Editor zum Erstellen von Projekten verwenden.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: 725e265bb7f8c98db19971c50e690974cb38a0d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28186a7dcced47a42b3249f1f74b13e969b41978
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518149"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041357"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Verwenden des Video Indexer-Editors zum Erstellen von Projekten
 
@@ -35,7 +35,7 @@ In diesem Artikel wird gezeigt, wie Sie ein Projekt von Grund auf neu erstellen 
 1. Wählen Sie die Registerkarte **Projekte** aus. Wenn Sie bereits Projekte erstellt haben, werden hier alle Ihre anderen Projekte angezeigt.
 1. Klicken Sie auf **Neues Projekt erstellen**.  
 
-    ![Neues Projekt](./media/video-indexer-view-edit/new-project.png)
+    ![Screenshot der Seite „Video Indexer“ mit ausgewählter Registerkarte „Projekte“](./media/video-indexer-view-edit/new-project.png)
 1. Weisen Sie Ihrem Projekt einen Namen zu, indem Sie auf das Stiftsymbol klicken. Ersetzen Sie den Text „Unbenanntes Projekt“ durch Ihren Projektnamen, und klicken Sie auf das Häkchen.
 
     ![Neues Projekt](./media/video-indexer-view-edit/new-project3.png)
@@ -51,19 +51,19 @@ In diesem Artikel wird gezeigt, wie Sie ein Projekt von Grund auf neu erstellen 
     
     Im folgenden Bild suchen wir z. B. nach Videos, die „GitHub“ erwähnen.
     
-    ![GitHub](./media/video-indexer-view-edit/github.png)
+    ![Screenshot: Suche nach Videos, in denen GitHub erwähnt wird, mit zwei Ergebnissen](./media/video-indexer-view-edit/github.png)
 
     Sie können Ihre Ergebnisse weiter filtern, indem Sie **Ergebnisse filtern** auswählen. Sie können filtern, um Videos anzuzeigen, in denen sich eine bestimmte Person befindet, oder um festzulegen, dass Sie nur Videoergebnisse anzeigen möchten, die in einer bestimmten Sprache vorliegen oder einen bestimmten Besitzer aufweisen. <br/> Sie können auch den Bereich der Abfrage angeben. Wenn Sie z. B. „GitHub“ in der OCR suchen möchten, wählen Sie **Sichtbarer Text** aus.
 
-    ![Filter](./media/video-indexer-view-edit/visual-text.png)
+    ![Filtern](./media/video-indexer-view-edit/visual-text.png)
 
-    Sie können mehrere Filter in Ihrer Abfrage überlagern. Verwenden Sie die Schaltflächen **+** / **-** , um Filter hinzuzufügen/zu entfernen. Verwenden Sie **Filter löschen**, um alle Filter zu entfernen.
+    Sie können mehrere Filter in Ihrer Abfrage überlagern. Verwenden Sie die Schaltflächen **+** / **-** , um Filter hinzuzufügen/zu entfernen. Verwenden Sie **Filter löschen** , um alle Filter zu entfernen.
 1. Um Videos hinzuzufügen, wählen Sie sie aus, und wählen Sie anschließend **Hinzufügen** aus.
 1. Jetzt werden alle von Ihnen ausgewählten Videos angezeigt. Dies sind die Videos, aus denen Sie Clips für Ihr Projekt auswählen werden.
 
     Sie können die Reihenfolge der Videos durch Ziehen und Ablegen oder durch Auswählen der Listenmenüschaltfläche und anschließendem Auswählen von **Nach unten** oder **Nach oben** ändern. Über das Listenmenü können Sie auch das Video aus diesem Projekt entfernen. 
 
-    ![Neu anordnen](./media/video-indexer-view-edit/rearrange.png)
+    ![Screenshot: Video Indexer mit einem Kontextmenü zum Entfernen eines der Videos, zum Löschen der Auswahl oder zum Scrollen nach unten](./media/video-indexer-view-edit/rearrange.png)
     
     Sie haben die Möglichkeit, jederzeit weitere Videos zu diesem Projekt hinzuzufügen, indem Sie **Videos hinzufügen** auswählen. Sie können auch mehrere Vorkommen desselben Videos zu Ihrem Projekt hinzufügen. Sie können diese Option wählen, wenn Sie einen Clip aus einem Video und dann einen Clip aus einem anderen Video sowie anschließend einen anderen Clip aus dem ersten Video anzeigen möchten. 
 
@@ -81,7 +81,7 @@ Wenn Sie auf der rechten Seite der einzelnen Videos auf den Pfeil nach unten kli
 
     Sie können z. B. Clips anzeigen, in denen „GitHub“ erwähnt wird, während Donovan Brown auf dem Bildschirm zu sehen ist. Dazu müssen Sie einen „include“-Filter hinzufügen, der als Art der Einblicke „Personen“ enthält. Sie müssen dann „Donovan Brown“ in das Suchfeld für den Filter eingeben.
     
-    ![Include](./media/video-indexer-view-edit/include.png)
+    ![Screenshot: Video Indexer, in dem Personen für einen „include“-Filter ausgewählt wurden](./media/video-indexer-view-edit/include.png)
     
     Wenn Sie Clips auswählen möchten, bei denen „GitHub“ erwähnt wird, während Donovan Brown _nicht_ auf dem Bildschirm zu sehen ist, ändern Sie einfach über die Dropdownliste den „include“-Filter in einen „exclude“-Filter. 
 
@@ -96,7 +96,7 @@ Wenn Sie auf der rechten Seite der einzelnen Videos auf den Pfeil nach unten kli
 > [!TIP]
 > Während Sie Ihre Clips auswählen und sortieren, können Sie sich das Video im Player auf der rechten Seite der Seite ansehen. 
 
-![Vorschau](./media/video-indexer-view-edit/preview.png)
+![Screenshot: Video Indexer mit der Vorschau eines Videos rechts im Fenster](./media/video-indexer-view-edit/preview.png)
 
 Denken Sie daran, Ihr Projekt zu speichern, wenn Sie Änderungen vornehmen, indem Sie **Projekt speichern** auswählen. 
 
@@ -107,7 +107,7 @@ Denken Sie daran, Ihr Projekt zu speichern, wenn Sie Änderungen vornehmen, inde
 
 1. Wenn Sie fertig sind, stellen Sie sicher, dass Ihr Projekt gespeichert wurde. Sie können dieses Projekt jetzt rendern. Wählen Sie **Rendern und Herunterladen** aus. 
 
-    ![Speichern](./media/video-indexer-view-edit/save.png)
+    ![Screenshot: Video Indexer mit der Option zum Rendern und Herunterladen des Projekts](./media/video-indexer-view-edit/save.png)
 
     Es wird ein Popupfenster angezeigt, in dem Ihnen mitgeteilt wird, dass Video Indexer eine Datei rendert. Anschließend wird der Link zum Herunterladen an Ihre E-Mail-Adresse gesendet. Wählen Sie „Fortsetzen“ aus. 
     

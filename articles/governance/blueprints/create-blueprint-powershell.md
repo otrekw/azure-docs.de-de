@@ -1,40 +1,30 @@
 ---
-title: Erstellen einer Blaupause mit PowerShell
-description: Verwenden Sie Azure Blueprints, um Artefakte unter Verwendung von PowerShell zu erstellen, zu definieren und bereitzustellen.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 08/21/2019
+title: 'Schnellstart: Erstellen einer Blaupause mit PowerShell'
+description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprints, um Artefakte mithilfe von PowerShell zu erstellen, zu definieren und bereitzustellen.
+ms.date: 08/27/2020
 ms.topic: quickstart
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: d2069819203e821b42ea2f70e38f27b49053639e
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 339cd4628cda5f469a783db02c10f86259c93941
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910054"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89051490"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit PowerShell
 
-Wenn Sie mit der Erstellung und Zuweisung von Blaupausen vertraut sind, können Sie allgemeine Muster definieren, um wiederverwendbare und schnell bereitstellbare Konfigurationen zu entwickeln, die auf Resource Manager-Vorlagen, Richtlinien, Sicherheit usw. basieren. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Blueprint einige allgemeine Aufgaben im Zusammenhang mit der organisationsweiten Erstellung, Veröffentlichung und Zuweisung einer Blaupause ausführen:
-
-> [!div class="checklist"]
-> - Erstellen einer neuen Blaupause und Hinzufügen verschiedener unterstützter Artefakte
-> - Ändern einer vorhandenen Blaupause, die sich noch im **Entwurf** befindet
-> - Markieren einer Blaupause als bereit für die Zuweisung mit **Veröffentlicht**
-> - Zuweisen einer Blaupause zu einem vorhandenen Abonnement
-> - Überprüfen von Status und Fortschritt einer zugewiesenen Blaupause
-> - Entfernen einer Blaupause, die einem Abonnement zugewiesen wurde
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
+Wenn Sie mit der Erstellung und Zuweisung von Blaupausen vertraut sind, können Sie allgemeine Muster definieren, um wiederverwendbare und schnell bereitstellbare Konfigurationen zu entwickeln, die auf Azure Resource Manager-Vorlagen (ARM-Vorlagen), Richtlinien, Sicherheit usw. basieren. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Blueprint einige allgemeine Aufgaben im Zusammenhang mit der organisationsweiten Erstellung, Veröffentlichung und Zuweisung einer Blaupause ausführen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
+
 Falls das Modul **AZ.Blueprint** nicht bereits installiert ist, befolgen Sie die Anweisungen unter [Hinzufügen des Moduls „AZ.Blueprint“](./how-to/manage-assignments-ps.md#add-the-azblueprint-module), um das Modul aus dem PowerShell-Katalog zu installieren und zu überprüfen.
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-blueprint"></a>Erstellen einer Blaupause
 
-Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wird eine Blaupause aus den verfügbaren Ressourcen erstellt. Wir erstellen eine Blaupause namens „MyBlueprint“, um Rollen- und Richtlinienzuweisungen für das Abonnement zu konfigurieren. Anschließend fügen wir eine Ressourcengruppe, eine Resource Manager-Vorlage und eine Rollenzuweisung für die Ressourcengruppe hinzu.
+Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wird eine Blaupause aus den verfügbaren Ressourcen erstellt. Wir erstellen eine Blaupause namens „MyBlueprint“, um Rollen- und Richtlinienzuweisungen für das Abonnement zu konfigurieren. Anschließend fügen wir eine Ressourcengruppe, eine ARM-Vorlage und eine Rollenzuweisung für die Ressourcengruppe hinzu.
 
 > [!NOTE]
 > Bei Verwendung von PowerShell wird als Erstes das Objekt _blueprint_ erstellt. Für jedes hinzugefügte _Artefakt_, das über Parameter verfügt, müssen die Parameter vorab in der anfänglichen _Blaupause_ definiert werden.
@@ -197,9 +187,9 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'policyStorageTags' -ArtifactFile .\artifacts\policyStorageTags.json
      ```
 
-1. Fügen Sie eine Vorlage unter der Ressourcengruppe hinzu. **TemplateFile** für eine Resource Manager-Vorlage enthält die normale JSON-Komponente der Vorlage. Darüber hinaus verwendet die Vorlage auch die Vorlagenparameter **storageAccountType**, **tagName** und **tagValue** wieder, indem sie jeweils an die Vorlage übergeben werden. Die Blaupausenparameter werden für die Vorlage mithilfe des Parameters **TemplateParameterFile** bereitgestellt, und innerhalb des JSON-Codes der Vorlage wird der Wert mithilfe dieses Schlüssel-Wert-Paars eingefügt. Die Namen des Blaupausen- und des Vorlagenparameters können identisch sein.
+1. Fügen Sie eine Vorlage unter der Ressourcengruppe hinzu. **TemplateFile** für eine ARM-Vorlage enthält die normale JSON-Komponente der Vorlage. Darüber hinaus verwendet die Vorlage auch die Vorlagenparameter **storageAccountType**, **tagName** und **tagValue** wieder, indem sie jeweils an die Vorlage übergeben werden. Die Blaupausenparameter werden für die Vorlage mithilfe des Parameters **TemplateParameterFile** bereitgestellt, und innerhalb des JSON-Codes der Vorlage wird der Wert mithilfe dieses Schlüssel-Wert-Paars eingefügt. Die Namen des Blaupausen- und des Vorlagenparameters können identisch sein.
 
-   - Azure Resource Manager-Vorlagendatei im JSON-Format: \artifacts\templateStorage.json
+   - JSON-ARM-Vorlagendatei: \artifacts\templateStorage.json
 
      ```json
      {
@@ -253,7 +243,7 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
      }
      ```
 
-   - Azure Resource Manager-Vorlagenparameterdatei im JSON-Format: \artifacts\templateStorageParams.json
+   - JSON-ARM-Vorlagenparameterdatei: \artifacts\templateStorageParams.json
 
      ```json
      {
@@ -387,9 +377,11 @@ Nachdem eine Blaupause mithilfe von PowerShell veröffentlicht wurde, kann sie e
      Die **benutzerseitig zugewiesene verwaltete Identität** kann sich in einem beliebigen Abonnement/in einer beliebigen Ressourcengruppe befinden, für das/für die der Benutzer, der die Blaupause zuweist, über Berechtigungen verfügt.
 
      > [!IMPORTANT]
-     > Die benutzerseitig zugewiesene verwaltete Identität wird nicht durch Blaupausen verwaltet. Benutzer müssen angemessene Rollen und Berechtigungen zuweisen. Andernfalls ist die Blaupausenzuweisung nicht erfolgreich.
+     > Die benutzerseitig zugewiesene verwaltete Identität wird nicht von Azure Blueprints verwaltet. Benutzer müssen angemessene Rollen und Berechtigungen zuweisen. Andernfalls ist die Blaupausenzuweisung nicht erfolgreich.
 
-## <a name="unassign-a-blueprint"></a>Aufheben der Zuweisung einer Blaupause
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+### <a name="unassign-a-blueprint"></a>Aufheben der Zuweisung einer Blaupause
 
 Sie können eine Blaupause aus einem Abonnement entfernen. Dieser Schritt wird häufig ausgeführt, wenn die Artefaktressourcen nicht mehr benötigt werden. Wenn eine Blaupause entfernt wird, werden die als Teil der Blaupause zugewiesenen Artefakte beibehalten. Verwenden Sie zum Entfernen einer Blaupausenzuweisung das Cmdlet `Remove-AzBlueprintAssignment`:
 
@@ -401,9 +393,7 @@ Remove-AzBlueprintAssignment -Name 'assignMyBlueprint'
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](./concepts/lifecycle.md).
-- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](./concepts/parameters.md) vertraut.
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](./concepts/sequencing-order.md) anpassen können.
-- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](./concepts/resource-locking.md) können.
-- Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](./how-to/update-existing-assignments.md).
-- Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](./troubleshoot/general.md).
+In dieser Schnellstartanleitung haben Sie eine Blaupause mit PowerShell erstellt, zugewiesen und entfernt. Weitere Informationen zu Azure Blueprints finden Sie im Artikel zum Lebenszyklus von Blaupausen.
+
+> [!div class="nextstepaction"]
+> [Informationen zum Lebenszyklus von Blaupausen](./concepts/lifecycle.md)

@@ -1,23 +1,23 @@
 ---
-title: 'Tutorial: Ausführen von ETL-Vorgängen (Extrahieren, Transformieren und Laden) mit Interactive Query in Azure HDInsight'
-description: 'Tutorial: Hier erfahren Sie, wie Sie Daten aus einem unformatierten CSV-Dataset extrahieren, mithilfe von Interactive Query in HDInsight transformieren und die transformierten Daten mithilfe von Apache Sqoop in eine Azure SQL-Datenbankinstanz laden.'
+title: 'Tutorial: ETL-Vorgänge (Extrahieren, Transformieren und Laden) mit Interactive Query: Azure HDInsight'
+description: 'Tutorial: Erfahren Sie, wie Sie Daten aus einem unformatierten CSV-Dataset extrahieren. Transformieren Sie sie mit einer interaktiven Abfrage in HDInsight. Laden Sie die transformierten Daten anschließend mit Apache Sqoop in Azure SQL-Datenbank.'
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 07/02/2019
-ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: 9ff215bb687ea2b6aa32ecb01dba7a61385b15a4
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.date: 07/02/2019
+ms.openlocfilehash: 730a6bfa627eafcab799fc811db4e20a1d4cec48
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735833"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534582"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Interactive Query in Azure HDInsight
 
-In diesem Tutorial importieren Sie eine unformatierte CSV-Datendatei mit öffentlich verfügbaren Flugdaten in einen HDInsight-Clusterspeicher und transformieren die Daten anschließend mithilfe von Interactive Query in Azure HDInsight. Danach laden Sie die transformierten Daten mithilfe von [Apache Sqoop](https://sqoop.apache.org/) in eine Azure SQL-Datenbank.
+In diesem Tutorial laden Sie eine Rohdaten-CSV-Datendatei mit öffentlich verfügbaren Flugdaten herunter. Importieren Sie sie in den HDInsight-Clusterspeicher, und transformieren Sie die Daten dann mithilfe der interaktiven Abfrage in Azure HDInsight. Anschließend laden Sie die transformierten Daten mit [Apache Sqoop](https://sqoop.apache.org/) in eine Datenbank in Azure SQL-Datenbank.
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
@@ -25,14 +25,14 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Herunterladen der Beispielflugdaten
 > * Hochladen von Daten in einen HDInsight-Cluster
 > * Transformieren der Daten mit Interactive Query
-> * Erstellen einer Tabelle in Azure SQL-Datenbank
-> * Exportieren von Daten in eine Azure SQL-Datenbank mithilfe von Sqoop
+> * Erstellen einer Tabelle in einer Datenbank in Azure SQL-Datenbank
+> * Exportieren von Daten in eine Datenbank in Azure SQL-Datenbank mit Sqoop
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Interactive Query-Cluster in HDInsight. Siehe [Erstellen von Apache Hadoop-Clustern im Azure-Portal](../hdinsight-hadoop-create-linux-clusters-portal.md), und wählen Sie **Interactive Query** für **Clustertyp** aus.
 
-* Azure SQL-Datenbank. Sie verwenden eine Azure SQL-Datenbank als Zieldatenspeicher. Wenn Sie keine SQL-Datenbank besitzen, finden Sie Informationen unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](/azure/sql-database/sql-database-single-database-get-started).
+* Sie benötigen eine Datenbank in Azure SQL-Datenbank. Sie verwenden die Datenbank als Zieldatenspeicher. Wenn Sie noch nicht über eine Datenbank in Azure SQL-Datenbank verfügen, helfen Ihnen die Informationen unter [Erstellen einer Datenbank in Azure SQL-Datenbank im Azure-Portal](../../azure-sql/database/single-database-create-quickstart.md) weiter.
 
 * Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -42,11 +42,11 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 2. Löschen Sie auf der Seite die Inhalte aller Felder, und wählen Sie dann die folgenden Werte aus:
 
-   | NAME | Wert |
+   | Name | Wert |
    | --- | --- |
    | Filter Year |2019 |
    | Filter Period |January |
-   | Felder |Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Felder |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
 
 3. Wählen Sie **Herunterladen** aus. Sie erhalten eine ZIP-Datei mit den ausgewählten Datenfeldern.
 
@@ -60,7 +60,7 @@ Daten können auf unterschiedliche Weise in den zugeordneten Speicher eines HDIn
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
 
-    Wenn Sie zum Fortsetzen des Vorgangs zur Eingabe von „Ja“ oder „Nein“ aufgefordert werden, geben Sie an der Eingabeaufforderung „Ja“ ein, und drücken Sie die EINGABETASTE. Der Text wird während der Eingabe nicht im Fenster angezeigt.
+    Wenn Sie dazu aufgefordert werden, geben Sie „Ja“ oder „Nein“ ein. Der Text wird während der Eingabe nicht im Fenster angezeigt.
 
 2. Stellen Sie nach Abschluss des Uploadvorgangs eine SSH-Verbindung mit dem Cluster her. Bearbeiten Sie den folgenden Befehl, indem Sie `CLUSTERNAME` durch den Namen des HDInsight-Clusters ersetzen. Geben Sie dann den folgenden Befehl ein:
 
@@ -95,7 +95,7 @@ Daten können auf unterschiedliche Weise in den zugeordneten Speicher eines HDIn
 
 Ein Hive-Auftrag kann auf verschiedenste Arten in einem HDInsight-Cluster ausgeführt werden. In diesem Abschnitt verwenden Sie [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell), um einen Hive-Auftrag auszuführen. Informationen zu anderen Ausführungsmethoden für Hive-Aufträge finden Sie unter [Was sind Apache Hive und HiveQL in Azure HDInsight?](../hadoop/hdinsight-use-hive.md).
 
-Im Rahmen des Hive-Auftrags importieren Sie die Daten aus der CSV-Datei in eine Hive-Tabelle namens **Delays**.
+Im Rahmen des Hive-Auftrags importieren Sie die Daten aus der CSV-Datei in eine Hive-Tabelle namens **Delays** .
 
 1. Verwenden Sie an der SSH-Eingabeaufforderung, die bereits für den HDInsight-Cluster geöffnet ist, den folgenden Befehl, um eine neue Datei namens **flightdelays.hql** zu erstellen und zu bearbeiten:
 
@@ -165,7 +165,7 @@ Im Rahmen des Hive-Auftrags importieren Sie die Daten aus der CSV-Datei in eine 
     FROM delays_raw;
     ```
 
-3. Um die Datei zu speichern, drücken Sie **STRG+X**, dann **Y** und schließlich die EINGABETASTE.
+3. Um die Datei zu speichern, drücken Sie **STRG+X** , dann **Y** und schließlich die EINGABETASTE.
 
 4. Starten Sie Hive mit dem folgenden Befehl, und führen Sie die Datei **flightdelays.hql** aus:
 
@@ -205,7 +205,7 @@ Es gibt viele Möglichkeiten, eine Verbindung mit der SQL-Datenbank herzustellen
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. Sobald die Installation abgeschlossen ist, verwenden Sie den folgenden Befehl, um eine Verbindung mit dem SQL-Datenbank-Server herzustellen.
+2. Nachdem die Installation abgeschlossen ist, verwenden Sie den folgenden Befehl, um eine Verbindung mit SQL-Datenbank herzustellen.
 
     ```bash
     TDSVER=8.0 tsql -H $SQLSERVERNAME.database.windows.net -U $SQLUSER -p 1433 -D $DATABASE -P $SQLPASWORD
@@ -283,13 +283,13 @@ In den vorherigen Abschnitten haben Sie die transformierten Daten unter `/tutori
     GO
     ```
 
-    Es sollte eine Liste der Tabellendaten angezeigt werden. Die Tabelle enthält den Namen der Stadt und die durchschnittliche Flugverspätung für diese Stadt. 
+    Es sollte eine Liste der Tabellendaten angezeigt werden. Die Tabelle enthält den Namen der Stadt und die durchschnittliche Flugverspätung für diese Stadt.
 
     Geben Sie `exit` ein, um das Dienstprogramm tsql zu beenden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Nach Abschluss des Tutorials kann es ratsam sein, den Cluster zu löschen. Mit HDInsight werden Ihre Daten im Azure-Speicher gespeichert, sodass Sie einen Cluster problemlos löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen.
+Nach Abschluss des Tutorials kann es ratsam sein, den Cluster zu löschen. Mit HDInsight werden Ihre Daten in Azure Storage gespeichert, sodass Sie einen Cluster problemlos löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen.
 
 Informationen zum Löschen eines Clusters finden Sie unter [Löschen eines HDInsight-Clusters mit Ihrem Browser, PowerShell oder der Azure CLI](../hdinsight-delete-cluster.md).
 
@@ -298,4 +298,4 @@ Informationen zum Löschen eines Clusters finden Sie unter [Löschen eines HDIns
 In diesem Tutorial haben Sie eine unformatierte CSV-Datendatei in einen HDInsight-Clusterspeicher importiert und die Daten anschließend mithilfe von Interactive Query in Azure HDInsight transformiert.  Fahren Sie mit dem nächsten Tutorial fort, um mehr über den Apache Hive Warehouse Connector zu erfahren.
 
 > [!div class="nextstepaction"]
->[Integrieren von Apache Spark und Apache Hive per Hive Warehouse Connector](./apache-hive-warehouse-connector.md)
+> [Integrieren von Apache Spark und Apache Hive per Hive Warehouse Connector](./apache-hive-warehouse-connector.md)

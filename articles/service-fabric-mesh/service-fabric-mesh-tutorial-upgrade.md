@@ -1,25 +1,17 @@
 ---
-title: Tutorial – Aktualisieren einer Azure Service Fabric Mesh-Anwendung | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Service Fabric-Anwendungen mithilfe von Visual Studio aktualisieren.
-services: service-fabric-mesh
-documentationcenter: .net
-author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
+title: 'Tutorial: Aktualisieren einer Azure Service Fabric Mesh-Anwendung'
+description: Dieses Tutorial ist der vierte Teil einer Reihe und zeigt, wie Sie eine Azure Service Fabric Mesh-Anwendung direkt über Visual Studio aktualisieren.
+author: georgewallace
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/29/2018
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 20aa65f0a8e47485e71fd03d73ff144f5290bcb7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.author: gwallace
+ms.custom: mvc, devcenter, devx-track-csharp
+ms.openlocfilehash: 2d74841e1873e5bd84d839122e0e662ef65ccd11
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036087"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842001"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Tutorial: Erfahren Sie, wie Sie eine Service Fabric-Anwendungen mithilfe von Visual Studio aktualisieren.
 
@@ -101,7 +93,7 @@ public static ToDoItem Load(string description, int index, bool completed)
 
 ## <a name="modify-the-service"></a>Ändern des Dienstes
 
-Das Projekt `WebFrontEnd` ist eine ASP.NET Core-Anwendung mit einer Webseite, die To-Do-Listenelemente anzeigt. Öffnen Sie im Projekt `WebFrontEnd` `Index.cshtml` und fügen Sie die folgenden zwei Zeilen hinzu, um die Kategorie der Aufgabe anzuzeigen:
+Das Projekt `WebFrontEnd` ist eine ASP.NET Core-Anwendung mit einer Webseite, die To-Do-Listenelemente anzeigt. Öffnen Sie im Projekt `WebFrontEnd``Index.cshtml` und fügen Sie die folgenden zwei Zeilen hinzu, um die Kategorie der Aufgabe anzuzeigen:
 
 ```HTML
 <div>

@@ -2,28 +2,49 @@
 title: Neuerungen in der Personalisierung
 titleSuffix: Azure Cognitive Services
 description: Dieser Artikel enthält Neuigkeiten zur Personalisierung.
-author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: conceptual
-ms.date: 09/10/2019
-ms.author: diberry
-ms.openlocfilehash: d223bcbb13c29d74c1b6a038e5ce88766f61e766
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.topic: overview
+ms.date: 07/17/2020
+ms.openlocfilehash: a62c7dc8238b642aeaa59a7b470266378832e26e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886059"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363883"
 ---
 # <a name="whats-new-in-personalizer"></a>Neuerungen in der Personalisierung
 
-Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.  
+Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
 
-## <a name="release-notes"></a>Versionshinweise 
+## <a name="release-notes"></a>Versionshinweise
 
-### <a name="may-6-2019---build-conference"></a>6\. Mai 2019 – //Build-Konferenz
+### <a name="july-2020"></a>Juli 2020
+
+* Neues Tutorial: [Verwendung der Personalisierung in einem Chatbot](tutorial-use-personalizer-chat-bot.md)
+
+### <a name="june-2020"></a>Juni 2020
+
+* Neues Tutorial: [Verwendung der Personalisierung in einer Web-App](tutorial-use-personalizer-web-app.md)
+
+### <a name="may-2020---build-conference"></a>Mai 2020 – //Build-Konferenz
+
+Folgendes ist in der **Public Preview** verfügbar:
+
+ * [Ausbildungsmodus](concept-apprentice-mode.md) als Lernverhalten.
+
+### <a name="march-2020"></a>März 2020
+
+* TLS 1.2 wird nun für alle HTTP-Anforderungen erzwungen, die an diesen Dienst gerichtet werden. Weitere Informationen finden Sie unter [Sicherheit von Azure Cognitive Services](../cognitive-services-security.md).
+
+### <a name="november-2019---ignite-conference"></a>November 2019 – Ignite-Konferenz
+
+* Die Personalisierung ist allgemein verfügbar (GA)
+* Azure Notebooks-[Tutorial](tutorial-use-azure-notebook-generate-loop-data.md) mit dem gesamten Lebenszyklus
+
+### <a name="may-2019---build-conference"></a>Mai 2019 – //Build-Konferenz
 
 Die folgenden Previewfunktionen wurden bei der Build 2019-Konferenz veröffentlicht:
 
@@ -33,7 +54,7 @@ Die folgenden Previewfunktionen wurden bei der Build 2019-Konferenz veröffentli
 
 ### <a name="2019-build-videos"></a>Build 2019 – Videos
 
-* [Mit Cognitive Services Personalizer die richtigen Erfahrungen und Inhalte liefern, etwa für Xbox](https://mybuild.techcommunity.microsoft.com/sessions/76970?source=sessions#top-anchor)
+* [Mit Cognitive Services Personalizer die richtigen Erfahrungen und Inhalte liefern, etwa für Xbox](https://azure.microsoft.com/resources/videos/build-2019-deliver-the-right-experiences-and-content-with-cognitive-services-personalizer/)
 
 ## <a name="service-updates"></a>Dienstupdates
 
@@ -41,5 +62,5 @@ Die folgenden Previewfunktionen wurden bei der Build 2019-Konferenz veröffentli
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Erstellen einer Feedbackschleife in C#](csharp-quickstart-commandline-feedback-loop.md)
+* [Schnellstart: Erstellen einer Feedbackschleife in C#](./quickstart-personalizer-sdk.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
 * [Verwenden der interaktiven Demo](https://personalizationdemo.azurewebsites.net/)

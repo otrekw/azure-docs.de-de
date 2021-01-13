@@ -1,26 +1,18 @@
 ---
-title: Anmelden bei Azure Notebooks
-description: Melden Sie sich schnell bei Azure Notebooks an, und legen Sie eine Benutzer-ID fest. So haben Sie die Möglichkeit, auf gespeicherte Projekte zuzugreifen und Notebooks für andere Benutzer freizugeben.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: fb8c94b1-6d0a-4b77-8d14-ae6efcdd99f4
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Anmelden bei Azure Notebooks (Vorschauversion)
+description: Melden Sie sich schnell bei Azure Notebooks (Vorschauversion) an, und legen Sie eine Benutzer-ID fest. So haben Sie die Möglichkeit, auf gespeicherte Projekte zuzugreifen und Notebooks für andere Benutzer freizugeben.
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.author: kraigb
-ms.openlocfilehash: a9ba6fcc0c8b74664f5c4b32e54530fb4aaa2881
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 168da5d4d36cd4cfadb4ef120ddfabbd261cafaf
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751721"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109452"
 ---
-# <a name="quickstart-sign-in-and-set-a-user-id"></a>Schnellstart: Anmelden und Festlegen einer Benutzer-ID
+# <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>Schnellstart: Anmelden und Festlegen einer Benutzer-ID für Azure Notebooks (Vorschauversion).
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Zwar können Sie Azure-Notebooks jederzeit anzeigen, ohne sich anzumelden, um Notebooks auszuführen, auf gespeicherte Projekte und Notebooks zuzugreifen und Ihre Notebooks mit anderen zu teilen, müssen Sie sich aber anmelden.
 
@@ -67,4 +59,4 @@ Um sich abzumelden, wählen Sie Ihren Benutzernamen oben rechts auf der Seite un
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erstellen und Freigeben eines Notebooks](quickstart-create-share-jupyter-notebook.md)
+> [Schnellstart: Exportieren eines Jupyter Notebook-Projekts](quickstart-export-jupyter-notebook-project.md)

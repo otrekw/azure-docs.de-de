@@ -1,6 +1,7 @@
 ---
-title: Azure PowerShell-Beispiele | Microsoft-Dokumentation
-description: Erfahren Sie etwas über die Azure PowerShell-Skripts, die für Azure API Management verfügbar sind.
+title: Azure PowerShell-Beispiele
+titleSuffix: Azure API Management
+description: Hier erfahren Sie etwas über die Azure PowerShell-Beispielskripts, die für Azure API Management verfügbar sind, etwa zum Hinzufügen eines Benutzers oder zum Importieren einer API.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,29 +14,27 @@ ms.topic: sample
 ms.date: 10/09/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: e47432f6c82dc83cc13730c658ce61ba4a026c3d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 531c42b763f234baaf6a93924979b8c7dca57423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074177"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87905804"
 ---
 # <a name="azure-powershell-samples-for-api-management"></a>Azure PowerShell-Beispiele für API Management
 
 In der folgenden Tabelle sind die Beispielskripts zum Arbeiten mit dem API Management-Dienst von PowerShell enthalten.
 
-| | |
-|-|-|
-|**Bereitstellen und Verwalten**||
+| Bereitstellen und Verwalten | BESCHREIBUNG |
+| -------------------- | ----------- |
 |[Hinzufügen eines Benutzers](./scripts/powershell-add-user-and-get-subscription-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellt einen Benutzer in API Management und ruft einen Abonnementschlüssel ab|
 |[Einrichten eines APIM-Diensts](./scripts/powershell-create-apim-service.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Erstellt einen Entwickler-SKU-API Management-Dienst|
 |[Dienst wiederherstellen](./scripts/powershell-backup-restore-apim-service.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Sichert einen APIM-Dienst und stellt ihn wieder her|
 |[Skalieren eines APIM-Diensts](./scripts/powershell-scale-and-addregion-apim-service.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Skaliert den APIM-Dienst und fügt Regionen hinzu|
 |[Einrichten einer benutzerdefinierten Domäne](./scripts/powershell-setup-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Richtet eine benutzerdefinierte Domäne auf dem Proxy und dem Portalendpunkt des API Management-Diensts ein|
-|**Definieren der API**||
+|**Definieren der API**| **Beschreibung** |
 |[Importieren der API](./scripts/powershell-import-api-and-add-to-product.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Importiert eine API und fügt ein APIM-Produkt hinzu|
-|**Schützen**||
+|**Schützen**| **Beschreibung** |
 |[Schützen des Back-Ends](./scripts/powershell-secure-backend-with-mutual-certificate-authentication.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Schützt das Back-End durch gegenseitige Zertifikatauthentifizierung|
-|**Schützen**||
+|**Schützen**| **Beschreibung** |
 |[Einrichten einer Richtlinie für ein Ratenlimit](./scripts/powershell-setup-rate-limit-policy.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Wendet ein Ratenlimit als Richtlinie auf Produktebene an |
-|||

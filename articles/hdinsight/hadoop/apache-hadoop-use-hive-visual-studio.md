@@ -1,51 +1,48 @@
 ---
-title: Tools für Apache Hive mit Data Lake für Visual Studio – Azure HDInsight
+title: Apache Hive und Data Lake-Tools für Visual Studio – Azure HDInsight
 description: Erfahren Sie, wie Sie die Data Lake Tools für Visual Studio verwenden, um Apache Hive-Abfragen mit Apache Hadoop in Azure HDInsight auszuführen.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/14/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1e5e3854f0b132ede38e182f99435a569c04d49e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/27/2019
+ms.openlocfilehash: c8645ae9cb901b9fc95f00665d73e223a24fda63
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076279"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86076452"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Ausführen von Apache Hive-Abfragen mit Data Lake-Tools für Visual Studio
 
 Erfahren Sie, wie Sie die Data Lake Tools für Visual Studio für Abfragen in Apache Hive verwenden. Mithilfe der Data Lake Tools können Sie Hive-Abfragen an Apache Hadoop in Azure HDInsight ganz einfach erstellen, übermitteln und überwachen.
 
-## <a id="prereq"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Apache Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](./apache-hadoop-linux-tutorial-get-started.md).
+* Ein Apache Hadoop-Cluster in HDInsight. Informationen zum Erstellen dieses Elements finden Sie unter [Erstellen eines Apache Hadoop-Clusters in Azure HDInsight mit einer Resource Manager-Vorlage](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Visual Studio (eine der folgenden Versionen):
+* [Visual Studio](https://visualstudio.microsoft.com/vs/). Für die Schritte in diesem Artikel wird Visual Studio 2019 verwendet.
 
-    * Visual Studio 2015, 2017 (beliebige Edition)
-    * Visual Studio 2013 Community/Professional/Premium/Ultimate mit Update 4
+* HDInsight-Tools für Visual Studio oder Azure Data Lake-Tools für Visual Studio. Informationen zum Installieren und Konfigurieren der Tools finden Sie unter [Installieren von Data Lake-Tools für Visual Studio](apache-hadoop-visual-studio-tools-get-started.md#install-data-lake-tools-for-visual-studio).
 
-* HDInsight-Tools für Visual Studio oder Azure Data Lake-Tools für Visual Studio. Informationen zum Installieren und Konfigurieren der Tools finden Sie unter [Erste Schritte bei der Verwendung von Hadoop-Tools für Visual Studio für HDInsight](apache-hadoop-visual-studio-tools-get-started.md) .
-
-## <a id="run"></a> Ausführen von Apache Hive-Abfragen mit Visual Studio
+## <a name="run-apache-hive-queries-using-the-visual-studio"></a>Ausführen von Apache Hive-Abfragen mit Visual Studio
 
 Zum Erstellen und Ausführen von Hive-Abfragen stehen Ihnen zwei Möglichkeiten zur Auswahl:
 
-* Erstellen von Ad-hoc-Abfragen
-* Erstellen einer Hive-Anwendung
+* Erstellen von Ad-hoc-Abfragen.
+* Erstellen einer Hive-Anwendung.
 
-### <a name="ad-hoc"></a>Ad-hoc
+### <a name="create-an-ad-hoc-hive-query"></a>Erstellen einer Ad-hoc-Hive-Abfrage.
 
 Ad-hoc-Abfragen können entweder im Modus **Batch** oder **Interaktiv** ausgeführt werden.
 
-1. Öffnen Sie **Visual Studio**.
+1. Öffnen Sie **Visual Studio**, und wählen Sie **Ohne Code fortfahren** aus.
 
-2. Navigieren Sie im **Server-Explorer** zu **Azure** > **HDInsight**.
+2. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf **Azure**, klicken Sie auf **Verbindung mit Microsoft Azure-Abonnement herstellen**, und melden Sie sich an.
 
-3. Erweitern Sie **HDInsight**, und klicken Sie mit der rechten Maustaste auf den Cluster, in dem Sie die Abfrage ausführen möchten, und wählen Sie dann **Write a Hive Query** (Hive-Abfrage schreiben) aus.
+3. Erweitern Sie **HDInsight**, klicken Sie mit der rechten Maustaste auf den Cluster, in dem Sie die Abfrage ausführen möchten, und wählen Sie dann **Write a Hive Query** (Hive-Abfrage schreiben) aus.
 
 4. Geben Sie die folgende Hive-Abfrage ein:
 
@@ -53,39 +50,37 @@ Ad-hoc-Abfragen können entweder im Modus **Batch** oder **Interaktiv** ausgefü
     SELECT * FROM hivesampletable;
     ```
 
-5. Wählen Sie **Execute**(Ausführen). Beachten Sie, dass der Ausführungsmodus standardmäßig auf **Interaktiv** festgelegt ist.
+5. Wählen Sie **Execute**(Ausführen). Der Ausführungsmodus ist standardmäßig **Interaktiv**.
 
-    ![Screenshot: Ausführen interaktiver Hive-Abfragen](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
+    ![Ausführen einer interaktiver Hive-Abfrage, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
 
-6. Um dieselbe Abfrage im Modus **Batch** auszuführen, wechseln Sie in der Dropdownliste von **Interaktiv** zu **Batch**. Beachten Sie, dass die Schaltfläche für die Ausführung von **Execute** (Ausführen) zu **Submit** (Übermitteln) wechselt.
+6. Um dieselbe Abfrage im Modus **Batch** auszuführen, wechseln Sie in der Dropdownliste von **Interaktiv** zu **Batch**. Die Schaltfläche für die Ausführung wechselt von **Ausführen** zu **Übermitteln**.
 
-    ![Screenshot: Übermitteln einer Hive-Abfrage](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
+    ![Übermitteln einer Hive-Batchabfrage, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
     Der Hive-Editor unterstützt IntelliSense. Data Lake Tools für Visual Studio unterstützt das Laden von Remotemetadaten, wenn Sie Ihr Hive-Skript bearbeiten. Wenn Sie beispielsweise `SELECT * FROM` eingeben, listet IntelliSense alle vorgeschlagenen Tabellennamen auf. Wird ein Tabellenname angegeben, listet IntelliSense die Spaltennamen auf. Die Tools unterstützen die meisten Hive-DML-Anweisungen, Unterabfragen und integrierte UDFs. IntelliSense schlägt nur die Metadaten des Clusters vor, der auf der HDInsight-Symbolleiste ausgewählt ist.
 
-    ![Screenshot von Beispiel 1 für HDInsight Visual Studio-Tools](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "U-SQL IntelliSense")
-   
-    ![Screenshot von Beispiel 2 für HDInsight Visual Studio-Tools](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "U-SQL IntelliSense")
+7. Wählen Sie auf der Symbolleiste für Abfragen (der Bereich unterhalb der Registerkarte „Abfrage“ und über dem Abfragetext) entweder **Übermitteln** oder den Pulldownmenü-Pfeil neben **Übermitteln** und dann aus der Pulldownliste **Erweitert** aus. Wenn Sie die zweite Option auswählen,
 
-7. Klicken Sie auf **Submit** (Senden) oder **Submit (Advanced)** (Erweitertes Senden).
+8. Konfigurieren Sie den **Auftragsnamen**, **Argumente**, **zusätzliche Konfigurationen** und das **Statusverzeichnis** im Dialogfeld **Skript übermitteln**, wenn Sie die Option für erweitertes Senden auswählen. Klicken Sie dann auf **Senden**.
 
-   Wenn Sie die Option für erweitertes Senden auswählen, konfigurieren Sie den **Auftragsnamen**, **Argumente**, **zusätzliche Konfigurationen** und das **Statusverzeichnis** für das Skript:
+    ![Dialogfeld „Skript übermitteln“, HDInsight Hadoop Hive-Abfrage](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png)
 
-    ![Screenshot einer HDInsight Hadoop Hive-Abfrage](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Übermitteln von Abfragen")
+### <a name="create-a-hive-application"></a>Erstellen einer Hive-Anwendung
 
-### <a name="hive-application"></a>Hive-Anwendung
+Führen Sie die folgenden Schritte aus, um eine Hive-Abfrage durch Erstellen einer Hive-Anwendung auszuführen:
 
 1. Öffnen Sie **Visual Studio**.
 
-2. Navigieren Sie über die Menüleiste zu **Datei** > **Neu** > **Projekt**.
+2. Wählen Sie im Fenster **Start** die Option **Neues Projekt erstellen** aus.
 
-3. Navigieren Sie im Fenster **Neues Projekt** zu **Vorlagen** > **Azure Data Lake** > **HIVE (HDInsight)**  > **Hive-Anwendung**. 
+3. Geben Sie im Fenster **Neues Projekt erstellen** im Feld **Nach Vorlagen suchen** die Zeichenfolge *Hive* ein. Wählen Sie dann **Hive Application** (Hive-Anwendung) und anschließend **Weiter** aus.
 
-4. Geben Sie einen Namen für dieses Projekt an, und wählen Sie dann **OK** aus.
+4. Geben Sie im Fenster **Neues Projekt konfigurieren** einen **Projektnamen** ein, wählen Sie den **Speicherort** für das neue Projekt aus, oder erstellen Sie ihn, und wählen Sie dann **Erstellen** aus.
 
 5. Öffnen Sie die Datei **Script.hql** , die mit diesem Projekt erstellt wird, und fügen Sie dann die folgenden HiveQL-Anweisungen ein:
 
-    ```hiveql
+    ```hql
     set hive.execution.engine=tez;
     DROP TABLE log4jLogs;
     CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -96,36 +91,34 @@ Ad-hoc-Abfragen können entweder im Modus **Batch** oder **Interaktiv** ausgefü
 
     Diese Anweisungen führen die folgenden Aktionen aus:
 
-   * `DROP TABLE`: Wenn die Tabelle vorhanden ist, wird sie von dieser Anweisung gelöscht.
+    * `DROP TABLE`: Löscht die Tabelle, falls vorhanden.
 
-   * `CREATE EXTERNAL TABLE`: Erstellt eine neue „externe“ Tabelle in Hive. Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben am ursprünglichen Speicherort.
+    * `CREATE EXTERNAL TABLE`: Erstellt eine neue „externe“ Tabelle in Hive. Externe Tabellen speichern nur die Tabellendefinition in Hive. (Die Daten verbleiben an ihrem ursprünglichen Speicherort.)
 
-     > [!NOTE]  
-     > Externe Tabellen sollten Sie verwenden, wenn Sie erwarten, dass die zugrunde liegenden Daten aus einer externen Quelle aktualisiert werden. Beispielsweise einen MapReduce-Auftrag oder Azure-Dienst.
-     >
-     > Durch das Löschen einer externen Tabelle werden **nicht** die Daten, sondern nur die Tabellendefinitionen gelöscht.
+        > [!NOTE]  
+        > Externe Tabellen sollten Sie verwenden, wenn Sie erwarten, dass die zugrunde liegenden Daten aus einer externen Quelle aktualisiert werden, wie z.B. einem MapReduce-Auftrag oder einem Azure-Dienst.
+        >
+        > Durch das Löschen einer externen Tabelle werden **nicht** die Daten, sondern nur die Tabellendefinitionen gelöscht.
 
-   * `ROW FORMAT`: Teilt Hive mit, wie die Daten formatiert werden. In diesem Fall werden die Felder in den einzelnen Protokollen durch Leerzeichen getrennt.
+    * `ROW FORMAT`: Teilt Hive mit, wie die Daten formatiert werden. In diesem Fall werden die Felder in den einzelnen Protokollen durch Leerzeichen getrennt.
 
-   * `STORED AS TEXTFILE LOCATION`: Teilt Hive mit, dass die Daten im Verzeichnis „example/data“ als Text gespeichert sind.
+    * `STORED AS TEXTFILE LOCATION`: Teilt Hive mit, dass die Daten im Verzeichnis *example/data* als Text gespeichert sind.
 
-   * `SELECT`: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte `t4` den Wert `[ERROR]` enthält. Mit dieser Anweisung sollte der Wert `3` zurückgegeben werden, da dieser Wert in drei Zeilen enthalten ist.
+    * `SELECT`: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte `t4` den Wert `[ERROR]` enthält. Mit dieser Anweisung wird der Wert `3` zurückgegeben, da dieser Wert in drei Zeilen enthalten ist.
 
-   * `INPUT__FILE__NAME LIKE '%.log'`: Teilt Hive mit, dass nur Daten aus Dateien mit der Erweiterung „.log“ zurückgeben werden sollen. Diese Klausel schränkt die Suche auf die Datei „sample.log“ ein, die die Daten enthält.
+    * `INPUT__FILE__NAME LIKE '%.log'`: Teilt Hive mit, dass nur Daten aus Dateien mit der Erweiterung „.log“ zurückgeben werden sollen. Diese Klausel schränkt die Suche auf die Datei *sample.log* ein, die die Daten enthält.
 
-6. Wählen Sie auf der Symbolleiste den **HDInsight-Cluster**, den Sie für diese Abfrage verwenden möchten. Wählen Sie **Übermitteln**, um die Anweisungen als Hive-Auftrag auszuführen.
+6. Wählen Sie auf der Symbolleiste der Abfragedatei (die der Symbolleiste der Ad-hoc-Abfrage ähnelt) den HDInsight-Cluster aus, den Sie für diese Abfrage verwenden möchten. Ändern Sie dann **Interaktiv** in **Batch** (falls erforderlich), und wählen Sie **Übermitteln** aus, um die Anweisungen als Hive-Auftrag auszuführen.
 
-   ![Azure HDInsight-Symbolleiste: Übermitteln](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
+   Die **Hive-Auftragszusammenfassung** wird mit Informationen zum aktiven Auftrag angezeigt. Verwenden Sie den Link **Aktualisieren**, um die Auftragsinformationen zu aktualisieren, bis der **Auftragsstatus** zu **Abgeschlossen** wechselt.
 
-7. Die **Hive-Auftragszusammenfassung** wird mit Informationen zum aktiven Auftrag angezeigt. Verwenden Sie den Link **Aktualisieren**, um die Auftragsinformationen zu aktualisieren, bis der **Auftragsstatus** zu **Abgeschlossen** wechselt.
+   ![Abgeschlossene Hive-Auftragszusammenfassung, Hive-Anwendung, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
-   ![Auftragszusammenfassung, die einen abgeschlossenen Auftrag anzeigt](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
-
-8. Verwenden Sie den Link **Auftragsausgabe** , um die Ausgabe dieses Auftrags anzuzeigen. `[ERROR] 3` wird angezeigt – dies ist der Wert, der von dieser Abfrage zurückgegeben wird.
+7. Wählen Sie **Auftragsausgabe** aus, um die Ausgabe dieses Auftrags anzuzeigen. `[ERROR] 3` wird angezeigt – dies ist der Wert, der von dieser Abfrage zurückgegeben wird.
 
 ### <a name="additional-example"></a>Zusätzliches Beispiel
 
-Dieses Beispiel basiert auf der im vorherigen Schritt erstellten Tabelle `log4jLogs`.
+Das folgende Beispiel basiert auf der `log4jLogs`-Tabelle, die in der vorherigen Prozedur, [Erstellen einer Hive-Anwendungs](#create-a-hive-application) erstellt wurde.
 
 1. Klicken Sie in **Server-Explorer** mit der rechten Maustaste auf Ihren Cluster, und wählen Sie **Hive-Abfrage schreiben** aus.
 
@@ -140,32 +133,24 @@ Dieses Beispiel basiert auf der im vorherigen Schritt erstellten Tabelle `log4jL
     Diese Anweisungen führen die folgenden Aktionen aus:
 
     * `CREATE TABLE IF NOT EXISTS`: Erstellt eine Tabelle, sofern diese noch nicht vorhanden ist. Da das `EXTERNAL`-Schlüsselwort nicht verwendet wird, erstellt diese Anweisung eine interne Tabelle. Interne Tabellen werden im Hive-Data Warehouse gespeichert und von Hive verwaltet.
-    
-    > [!NOTE]  
-    > Anders als bei `EXTERNAL` Tabellen werden beim Löschen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
 
-    * `STORED AS ORC`: Speichert die Daten im ORC-Format (Optimized Row Columnar). ORC ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
-    
+        > [!NOTE]  
+        > Anders als bei `EXTERNAL` Tabellen werden beim Löschen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
+
+    * `STORED AS ORC`: Speichert die Daten im ORC-Format (*Optimized Row Columnar*). ORC ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
+
     * `INSERT OVERWRITE ... SELECT`: Wählt die Zeilen aus der `log4jLogs` Tabelle, die `[ERROR]` enthalten, und fügt dann die Daten in die `errorLogs` Tabelle ein.
 
-3. Führen Sie die Abfrage im **Batch**-Modus aus.
+3. Ändern Sie **Interaktiv** falls erforderlich in **Batch**, und wählen Sie dann **Übermitteln** aus.
 
-4. Verwenden Sie den **Server-Explorer**, und erweitern Sie **Azure** > **HDInsight** > Ihren HDInsight-Cluster > **Hive-Datenbanken** > **Standard**, um zu überprüfen, ob der Auftrag die Tabelle erstellt hat. Die Tabellen **errorLogs** und **log4jLogs** werden aufgelistet.
+4. Um zu überprüfen, ob der Auftrag die Tabelle erstellt hat, wechseln Sie zum **Server-Explorer**, und erweitern Sie **Azure** > **HDInsight**. Erweitern Sie den HDInsight-Cluster, und erweitern Sie dann **Hive-Datenbanken** > **Standard**. Die Tabellen **errorLogs** und **log4jLogs** werden aufgelistet.
 
-## <a id="nextsteps"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Wie Sie sehen, können Sie mit den HDInsight-Tools für Visual Studio mühelos mit Hive-Abfragen in HDInsight arbeiten.
 
-Allgemeine Informationen zu Hive in HDInsight:
+* Allgemeinere Informationen zu Hive in HDInsight finden Sie unter [Was sind Apache Hive und HiveQL in Azure HDInsight?](hdinsight-use-hive.md).
 
-* [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hdinsight-use-hive.md)
+* Informationen zu anderen Methoden zur Verwendung von Hadoop in HDInsight finden Sie unter [Verwenden von MapReduce mit Apache Hadoop in HDInsight](hdinsight-use-mapreduce.md).
 
-Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeiten können:
-
-* [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md)
-
-* [Verwenden von MapReduce mit Apache Hadoop in HDInsight](hdinsight-use-mapreduce.md)
-
-Weitere Informationen zu den HDInsight Tools für Visual Studio:
-
-* [Erste Schritte mit HDInsight Tools für Visual Studio](apache-hadoop-visual-studio-tools-get-started.md)
+* Weitere Informationen zu den HDInsight-Tools für Visual Studio finden Sie unter [Herstellen einer Verbindung mit Azure HDInsight und Ausführen von Apache Hive-Abfragen mithilfe von Data Lake Tools für Visual Studio](apache-hadoop-visual-studio-tools-get-started.md).

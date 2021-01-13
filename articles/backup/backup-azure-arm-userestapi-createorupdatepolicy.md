@@ -1,47 +1,26 @@
 ---
-title: 'Azure Backup: Erstellen von Sicherungsrichtlinien mithilfe der REST-API'
-description: Verwalten von Sicherungsrichtlinien (Zeitplan und Aufbewahrung) mithilfe der REST-API
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Azure VM backup; Azure VM restore;
-ms.service: backup
+title: Erstellen von Sicherungsrichtlinien mithilfe der REST-API
+description: In diesem Artikel erfahren Sie, wie Sie Sicherungsrichtlinien (Zeitplan und Aufbewahrung) mithilfe der REST-API erstellen und verwalten.
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 8b812ea053cb8e9da7cd3ef021ab6b74196d36ca
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e4e6f5b5cf28c3830a91a494ea60680eee1546f6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954970"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89179605"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Erstellen von Azure Recovery Services-Sicherungsrichtlinien mit der REST-API
 
-Die Schritte zum Erstellen einer Sicherungsrichtlinie für einen Azure Recovery Services-Tresor sind in der Dokumentation [Schutzrichtlinien – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate) beschrieben. Wir nutzen dieses Dokument als Referenz zum Erstellen einer Richtlinie für die Sicherung von Azure-VMs.
+Die Schritte zum Erstellen einer Sicherungsrichtlinie für einen Azure Recovery Services-Tresor sind in der Dokumentation [Schutzrichtlinien – Erstellen oder Aktualisieren](/rest/api/backup/protectionpolicies/createorupdate) beschrieben. Nutzen Sie dieses Dokument als Referenz zum Erstellen einer Richtlinie für die Sicherung von Azure-VMs.
 
-## <a name="backup-policy-essentials"></a>Grundlagen zu Sicherungsrichtlinien
-
-- Eine Sicherungsrichtlinie wird pro Tresor erstellt.
-- Eine Sicherungsrichtlinie kann für die Sicherung der folgenden Workloads erstellt werden.
-  - Azure VM
-  - SQL Server in Azure-VM
-  - Azure-Dateifreigabe
-- Eine Richtlinie kann einer Vielzahl von Ressourcen zugewiesen werden. Eine Azure-VM-Sicherungsrichtlinie kann verwendet werden, um eine Vielzahl von Azure-VMs zu schützen.
-- Eine Richtlinie besteht aus zwei Komponenten.
-  - Zeitplan: Diese Komponente gibt an, wann eine Sicherung durchgeführt werden soll.
-  - Aufbewahrung: Diese Komponente gibt an, wie lange jede einzelne Sicherung beibehalten werden soll.
-- Der Zeitplan kann als „täglich“ oder „wöchentlich“ mit einem bestimmten Zeitpunkt definiert werden.
-- Die Aufbewahrung kann für die Sicherungspunkte „täglich“, „wöchentlich“, „monatlich“ oder „jährlich“ definiert werden.
-- „wöchentlich“ bezieht sich auf eine Sicherung an einem bestimmten Tag der Woche, „monatlich“ auf eine Sicherung an einem bestimmten Tag des Monats und „jährlich“ auf eine Sicherung an einem bestimmten Tag des Jahres.
-- Die Aufbewahrung für die Sicherungspunkte „monatlich“ und „jährlich“ wird als „LongTermRetention“ bezeichnet.
-- Wenn ein Tresor erstellt wurde, wird auch eine Richtlinie für Azure-VM-Sicherungen mit dem Namen „DefaultPolicy“ erstellt. Diese kann zum Sichern von Azure-VMs verwendet werden.
+## <a name="create-or-update-a-policy"></a>Erstellen oder Aktualisieren einer Richtlinie
 
 Verwenden Sie den folgenden *PUT*-Vorgang, um eine Azure Backup-Richtlinie zu erstellen oder zu aktualisieren:
 
 ```http
-PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2016-12-01
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
 ```
 
 Der `{policyName}` und der `{vaultName}` werden im URI angegeben. Zusätzliche Informationen werden im Anforderungstext angegeben.
@@ -50,12 +29,12 @@ Der `{policyName}` und der `{vaultName}` werden im URI angegeben. Zusätzliche I
 
 Um z.B. eine Richtlinie für Azure-VM-Sicherungen zu erstellen, werden im Folgenden die Komponenten des Anforderungstexts angegeben.
 
-|NAME  |Erforderlich  |Typ  |BESCHREIBUNG  |
+|Name  |Erforderlich  |type  |BESCHREIBUNG  |
 |---------|---------|---------|---------|
-|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource-Eigenschaften        |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource-Eigenschaften        |
 |tags     |         | Object        |  Ressourcentags       |
 
-Die vollständige Liste von Definitionen im Anforderungstext finden Sie im Dokument [Schutzrichtlinien – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate).
+Die vollständige Liste von Definitionen im Anforderungstext finden Sie im Dokument [Schutzrichtlinien – Erstellen oder Aktualisieren](/rest/api/backup/protectionpolicies/createorupdate).
 
 ### <a name="example-request-body"></a>Beispiel für Anforderungstext
 
@@ -154,13 +133,13 @@ Die Richtlinie besagt Folgendes:
 
 ## <a name="responses"></a>Antworten
 
-Die Erstellung bzw. Aktualisierung von Sicherungsrichtlinien ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
+Die Erstellung bzw. Aktualisierung von Sicherungsrichtlinien ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|200 – OK     |    [ProtectionPolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
+|200 – OK     |    [ProtectionPolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 – Akzeptiert     |         |     Zulässig    |
 
 ### <a name="example-responses"></a>Beispielantworten
@@ -181,14 +160,14 @@ x-ms-correlation-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-routing-request-id: SOUTHINDIA:20180521T073907Z:db785be0-bb20-4598-bc9f-70c9428b170b
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 07:39:06 GMT
-Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2016-06-01
+Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
 Verfolgen Sie anschließend den resultierenden Vorgang mithilfe des location- oder Azure-AsyncOperation-Headers mit einem einfachen *GET*-Befehl nach.
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2016-06-01
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 ```
 
 Wenn der Vorgang abgeschlossen ist, wird 200 (OK) mit dem Richtlinieninhalt im Antworttext zurückgegeben.

@@ -1,5 +1,5 @@
 ---
-title: 'Speech Devices SDK „Roobo Smart Audio Dev Kit v1“: Speech-Dienst'
+title: Speech-Geräte-SDK „Roobo Smart Audio Dev Kit v1“ – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Voraussetzungen und Anweisungen für den Einstieg in das Speech Devices SDK „Roobo Smart Audio Dev Kit v1“
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 08bac7cd833f52d2dfec4561c2f87330a4119748
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 73eb1225ffc5fd01f9a27ca99ad2b059d45a36cf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552863"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015289"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>Gerät: Roobo Smart Audio Dev Kit
 
@@ -69,8 +69,8 @@ Weitere Informationen zur Entwicklung finden Sie im [Roobo-Entwicklungshandbuch]
 
 ## <a name="audio"></a>Audio
 
-Roobo bietet ein Tool, das sämtliche Audiosignale im Flashspeicher erfasst. Es kann Ihnen beim Beheben von Audioproblemen helfen. Für jede Development Kit-Konfiguration wird eine Version des Tools bereitgestellt. Wählen Sie Ihr Gerät auf der [Roobo-Website](https://ddk.roobo.com/) aus, und wählen Sie dann unten auf der Seite den Link **Roobo-Tools** aus.
+Roobo bietet ein Tool, das sämtliche Audiosignale im Flashspeicher erfasst. Es kann Ihnen beim Beheben von Audioproblemen helfen. Für jede Development Kit-Konfiguration wird eine Version des Tools bereitgestellt. Wählen Sie Ihr Gerät auf der [Roobo-Website](http://ddk.roobo.com/) aus, und wählen Sie dann unten auf der Seite den Link **Roobo-Tools** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Ausführen der Android-Beispiel-App](speech-devices-sdk-android-quickstart.md)
+* [Ausführen der Android-Beispiel-App](./speech-devices-sdk-quickstart.md?pivots=platform-android%253fpivots%253dplatform-android)

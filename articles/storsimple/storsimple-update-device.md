@@ -3,7 +3,7 @@ title: Aktualisieren von StorSimple-Geräten | Microsoft Docs
 description: Erläutert, wie die Updatefunktion von StorSimple für das Installieren regelmäßiger und Wartungsmodus-Updates und -Hotfixes verwendet wird.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 786059f5-2a38-4105-941d-0860ce4ac515
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
-ms.author: v-sharos
-ms.openlocfilehash: d973a16c121a1e8ebee10826d135bcbb33ef748c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: alkohli
+ms.openlocfilehash: faf06775b78c5a7c90cea000ac0a1eb768107ef4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61409933"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956839"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>Aktualisieren von Geräten der StorSimple 8000-Serie
 > [!NOTE]
-> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [FAQ: Move to Azure portal (Verschieben in das Azure-Portal: häufig gestellte Fragen (FAQ))](./index.yml).
 
 ## <a name="overview"></a>Übersicht
 Mit den Updatefunktionen von StorSimple können Sie Ihr StorSimple-Gerät ganz einfach auf dem neuesten Stand halten. Je nach Updatetyp können Sie Updates über das klassische Azure-Portal oder über die Windows PowerShell-Benutzeroberfläche auf dem Gerät anwenden. In diesem Lernprogramm werden die Updatetypen und deren Installation beschrieben.
@@ -84,22 +84,22 @@ Wenn Sie Wartungsmodus-Updates anwenden müssen, erhalten Sie über das klassisc
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>Schritt 1: Herstellen einer Verbindung mit der seriellen Konsole <a name="step1">
+### <a name="step-1-connect-to-the-serial-console"></a>Schritt 1: Herstellen einer Verbindung mit der seriellen Konsole <a name="step1"></a>
 Verwenden Sie eine Anwendung wie PuTTY, um auf die serielle Konsole zuzugreifen. Die folgende Vorgehensweise erläutert, wie Sie PuTTY für die Verbindung mit der seriellen Konsole verwenden.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>Schritt 2: Wechseln in den Wartungsmodus <a name="step2">
+### <a name="step-2-enter-maintenance-mode"></a>Schritt 2: Wechseln in den Wartungsmodus <a name="step2"></a>
 Nachdem Sie eine Verbindung mit der Konsole hergestellt haben, bestimmen Sie, ob Updates installiert werden müssen. Wechseln Sie dann in den Wartungsmodus, um sie zu installieren.
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
-### <a name="step-3-install-your-updates-a-namestep3"></a>Schritt 3: Installieren Ihrer Updates <a name="step3">
+### <a name="step-3-install-your-updates"></a>Schritt 3: Installieren der Updates <a name="step3"></a>
 Installieren Sie anschließend die Updates.
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>Schritt 4: Beenden des Wartungsmodus <a name="step4">
+### <a name="step-4-exit-maintenance-mode"></a>Schritt 4: Beenden des Wartungsmodus <a name="step4"></a>
 Beenden Sie zum Schluss den Wartungsmodus.
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]
@@ -120,6 +120,5 @@ Die folgenden Vorgehensweisen erläutern, wie Sie mit Windows PowerShell für St
 Wenn ein Gerät auf die Werkseinstellungen zurückgesetzt wird, gehen alle Updates verloren. Nach dem Registrieren und Konfigurieren des auf Werkseinstellungen zurückgesetzten Geräts müssen Sie die Updates manuell über das klassische Azure-Portal und/oder Windows PowerShell für StorSimple installieren. Weitere Informationen zum Zurücksetzen auf Werkseinstellungen finden Sie unter [Zurücksetzen des Geräts auf die Standardwerkseinstellungen](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr zur [Verwendung von Windows PowerShell für StorSimple zum Verwalten Ihres StorSimple-Geräts](storsimple-windows-powershell-administration.md).
-* Weitere Informationen zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
-
+* Erfahren Sie mehr zur [Verwendung von Windows PowerShell für StorSimple zum Verwalten Ihres StorSimple-Geräts](./storsimple-8000-windows-powershell-administration.md).
+* Weitere Informationen zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](./storsimple-8000-manager-service-administration.md).

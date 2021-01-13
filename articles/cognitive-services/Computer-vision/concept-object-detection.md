@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0625d8371b9ecaaadd05e302413054948fd4b27b
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 4269209017ecc0afa740bc3ed56cbdcbd915201e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967039"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533841"
 ---
 # <a name="detect-common-objects-in-images"></a>Erkennen von alltäglichen Objekten in Bildern
 
-Die Objekterkennung ist vergleichbar mit dem [Tagging](concept-tagging-images.md), die API gibt aber die Koordinaten des umgebenden Felds (in Pixel) für jedes gefundene Objekt zurück. Wenn ein Bild z.B. einen Hund, eine Katze und eine Person enthält, werden diese Objekte bei der Erkennung zusammen mit ihren Koordinaten im Bild aufgelistet. Sie können diese Funktion verwenden, um die Beziehungen zwischen den Objekten in einem Bild zu verarbeiten. Außerdem können Sie ermitteln, ob mehrere Instanzen des gleichen Tags in einem Bild enthalten sind.
+Die Objekterkennung ist vergleichbar mit dem [Tagging](concept-tagging-images.md), die API gibt aber die Koordinaten des umgebenden Felds (in Pixel) für jedes gefundene Objekt zurück. Wenn ein Bild z. B. einen Hund, eine Katze und eine Person enthält, werden diese Objekte bei der Erkennung zusammen mit ihren Koordinaten im Bild aufgelistet. Sie können diese Funktion verwenden, um die Beziehungen zwischen den Objekten in einem Bild zu verarbeiten. Außerdem können Sie ermitteln, ob mehrere Instanzen des gleichen Tags in einem Bild enthalten sind.
 
 Die Erkennungs-API wendet Tags basierend auf den Objekten oder Lebewesen, die im Bild identifiziert wurden, an. Es gibt aktuell keine formale Beziehung zwischen der Taggingtaxonomie und der Objekterkennungstaxonomie. Auf konzeptioneller Ebene findet die Erkennungs-API nur Objekte und lebende Dinge, während die Tag-API auch kontextbezogene Begriffe wie „drinnen“ einfügen kann, die über die umgebenden Felder nicht gefunden werden können.
 
@@ -97,7 +97,6 @@ Es ist wichtig, die Einschränkungen bei der Objekterkennung zu beachten, damit 
 
 ## <a name="use-the-api"></a>Verwenden der API
 
-Die Funktion zur Erkennung von Objekten ist Teil der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-API. Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Beziehen Sie `Objects` in den Abfrageparameter **visualFeatures** ein. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge auf den Inhalt im Abschnitt `"objects"`.
+Die Funktion zur Erkennung von Objekten ist Teil der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)-API. Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Beziehen Sie `Objects` in den Abfrageparameter **visualFeatures** ein. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge auf den Inhalt im Abschnitt `"objects"`.
 
-* [Schnellstart: Maschinelles Sehen (.NET SDK)](./quickstarts-sdk/csharp-sdk.md)
-* [Schnellstart: Analysieren eines Bilds (REST-API)](./quickstarts/csharp-analyze.md)
+* [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

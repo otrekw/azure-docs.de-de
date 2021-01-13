@@ -1,19 +1,19 @@
 ---
-title: Azure VMware-Lösung von CloudSimple – Erweitern eines lokalen Layer-2-Netzwerks in die private Cloud
+title: Azure VMware Solution by CloudSimple – Erweitern eines lokalen Layer-2-Netzwerks in die private Cloud
 description: Erfahren Sie, wie Sie ein Layer-2-VPN zwischen NSX-T in einer privaten CloudSimple-Cloud und einem lokalen, eigenständigen NSX Edge-Client einrichten.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9e0afd26b46fc6249b697c38983b9c219c42b1a0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 06446b6c36e36466fe891d7327d8151603cdecd2
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845476"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899370"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrieren von Workloads unter Verwendung von Layer-2-Stretchingnetzwerken
 
@@ -57,10 +57,10 @@ In der folgenden Tabelle sind die unterstützten vSphere-Versionen und Netzwerka
 
 | vSphere-Version | vSwitch-Quelltyp | Treiber der virtuellen NIC | vSwitch-Zieltyp | Unterstützt? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Alle | DVS | Alle | DVS | Ja |
+| All | DVS | All | DVS | Ja |
 | vSphere 6.7UI oder höher, 6.5P03 oder höher | DVS | VMXNET3 | N-VDS | Ja |
 | vSphere 6.7UI oder höher, 6.5P03 oder höher | DVS | E1000 | N-VDS | [Nicht von VMware unterstützt](https://kb.vmware.com/s/article/56991) |
-| vSphere 6.7UI oder 6.5P03, NSX-V oder Versionen unter NSX-T2.2, 6.5P03 oder höher | Alle | Alle | N-VDS | [Nicht von VMware unterstützt](https://kb.vmware.com/s/article/56991) |
+| vSphere 6.7UI oder 6.5P03, NSX-V oder Versionen unter NSX-T2.2, 6.5P03 oder höher | All | All | N-VDS | [Nicht von VMware unterstützt](https://kb.vmware.com/s/article/56991) |
 
 Ab Release VMware NSX-T 2.3:
 
@@ -108,7 +108,7 @@ Weitere Informationen finden Sie in der VMware-Dokumentation unter [Virtual Priv
 
 Die folgenden Schritte zeigen, wie Sie die ID des logischen Routers der logischen Routerinstanz für die Notfallwiederherstellung der Ebene 0 der IPsec- und L2VPN-Dienste abrufen. Die ID des logischen Routers wird später bei der Implementierung des L2VPN benötigt.
 
-1. Melden Sie sich beim NSX-T-Manager https://*nsx-t-manager-ip-address* an, und wählen Sie **Networking** > **Routers** > **Provider-LR** > **Overview** (Netzwerk > Router > Anbieter-LR > Übersicht) aus. Wählen Sie für **High Availability Mode** (Hochverfügbarkeitsmodus) die Option **Active-Standby** (Aktiver Standbymodus) aus. Mit dieser Aktion wird ein Popupfenster geöffnet, in dem die Edge-VM angezeigt wird, auf der der Router der Ebene 0 derzeit aktiv ist.
+1. Melden Sie sich beim NSX-T-Manager `https://*nsx-t-manager-ip-address*` an, und wählen Sie **Networking** > **Routers** > **Provider-LR** > **Overview** (Netzwerk > Router > Anbieter-LR > Übersicht) aus. Wählen Sie für **High Availability Mode** (Hochverfügbarkeitsmodus) die Option **Active-Standby** (Aktiver Standbymodus) aus. Mit dieser Aktion wird ein Popupfenster geöffnet, in dem die Edge-VM angezeigt wird, auf der der Router der Ebene 0 derzeit aktiv ist.
 
     ![Auswählen von „active-standby“](media/l2vpn-fetch01.png)
 
@@ -118,7 +118,7 @@ Die folgenden Schritte zeigen, wie Sie die ID des logischen Routers der logische
 
 3. Öffnen Sie eine SSH-Sitzung mit der Verwaltungs-IP-Adresse der Edge-VM. Führen Sie den Befehl ```get logical-router``` mit dem Benutzernamen **admin** und dem Kennwort **CloudSimple 123!** aus.
 
-    ![Abrufen der Ausgabe des logischen Routers](media/l2vpn-fetch03.png)
+    ![Screenshot: Offene SSH-Sitzung](media/l2vpn-fetch03.png)
 
 4. Wenn der Eintrag „DR-Provider-LR“ nicht angezeigt wird, führen Sie die folgenden Schritte aus.
 
@@ -132,12 +132,12 @@ Die folgenden Schritte zeigen, wie Sie die ID des logischen Routers der logische
 
 7. Führen Sie den Befehl `get logical-router` erneut in der SSH-Sitzung auf der Edge-VM aus. Die UUID des logischen Routers „DR-Provider-LR“ wird angezeigt. Notieren Sie sich die UUID. Diese wird für das Konfigurieren des L2VPN benötigt.
 
-    ![Abrufen der Ausgabe des logischen Routers](media/l2vpn-fetch06.png)
+    ![Screenshot: UUID für den logischen Router](media/l2vpn-fetch06.png)
 
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>Abrufen der ID des logischen Switches für L2VPN
 
-1. Melden Sie sich beim [NSX-T-Manager](https://nsx-t-manager-ip-address) an.
-2. Wählen Sie **Networking** > **Switching** > **Switches** > **<\Logischer Switch>\ ** > **Overview** aus (Netzwerk > Switching > Switches > **<\Logischer Switch>\ ** > Übersicht) aus.
+1. Melden Sie sich beim NSX-T-Manager an (`https://nsx-t-manager-ip-address`).
+2. Wählen Sie **Networking** > **Switching** > **Switches** >  **<\Logical switch\>**  > **Overview** (Netzwerk > Switching > Switches > <\Logischer Switch > Übersicht) aus.
 3. Notieren Sie sich die UUID des logischen Switches für die Erweiterung. Diese wird für das Konfigurieren des L2VPN benötigt.
 
     ![Abrufen der Ausgabe des logischen Routers](media/l2vpn-fetch-switch01.png)
@@ -180,7 +180,7 @@ Die IP-Adressen, die für die Loopback-und Tunnelschnittstellen für L2VPN ausge
 ```
 Loopback interface ip : 192.168.254.254/32
 Tunnel interface subnet : 5.5.5.0/29
-Logical-router ID : UUID of Tier0 DR logical router obtained in section “Steps to fetch Logical-Router ID needed for L2VPN”
+Logical-router ID : UUID of Tier0 DR logical router obtained in section "Steps to fetch Logical-Router ID needed for L2VPN"
 Logical-switch ID(Stretch) : UUID of Stretch Logical Switch obtained earlier
 IPSec Service ID :
 IKE profile ID :
@@ -356,7 +356,7 @@ POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
 
 Für den folgenden POST-Befehl ist die ID des L2VPN-Diensts die ID, die Sie soeben abgerufen haben, und die ID der IPsec-VPN-Sitzung ist die ID, die Sie im vorherigen Abschnitt abgerufen haben.
 
-``` 
+```    
 POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
 
 {
@@ -430,7 +430,7 @@ Stellen Sie vor der Bereitstellung sicher, dass Ihre lokalen Firewallregeln eing
 
 2. Wechseln Sie zum Ordner mit allen extrahierten Dateien. Wählen Sie alle VMDK-Dateien aus („NSX-l2t-client-large.mf“ und „NSX-l2t-client-large.ovf“ für große Appliances bzw. „NSX-l2t-client-Xlarge.mf“ und „NSX-l2t-client-Xlarge.ovf“ für sehr große Appliances). Klicken Sie auf **Weiter**.
 
-    ![Auswählen der Vorlage](media/l2vpn-deploy-client02.png) ![Auswählen der Vorlage](media/l2vpn-deploy-client03.png)
+    ![Vorlage auswählen](media/l2vpn-deploy-client02.png) ![Screenshot: Ausgewählte VMDKS-Dateien](media/l2vpn-deploy-client03.png)
 
 3. Geben Sie einen Namen für den eigenständigen NSX-T-Client ein, und klicken Sie auf **Next** (Weiter).
 

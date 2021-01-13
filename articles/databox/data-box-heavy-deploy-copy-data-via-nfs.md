@@ -1,6 +1,6 @@
 ---
 title: Tutorial zum Kopieren von Daten auf Azure Data Box Heavy über NFS | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Daten über NFS auf Ihr Azure Data Box Heavy-Gerät kopieren.
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe des NFS über die lokale Webbenutzeroberfläche eine Verbindung herstellen und Daten von Ihrem Hostcomputer auf Ihr Azure Data Box Heavy-Gerät kopieren.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4361cee3d07408c3abb5031d2ab18c15c92c5e0a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: a8199039ea803d5919e168edccaaa03c18985725
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595809"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87921026"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>Tutorial: Kopieren von Daten auf Azure Data Box Heavy über NFS
 
@@ -55,7 +55,7 @@ Unter Freigaben für Azure Files:
 
 Die folgende Tabelle enthält den UNC-Pfad zu den Freigaben auf Ihrem Data Box Heavy-Gerät und die Azure Storage-Pfad-URL für den Datenupload. Die endgültige URL des Azure Storage-Pfads kann aus dem UNC-Freigabepfad abgeleitet werden.
  
-|                   |                                                            |
+| Storage           | UNC-Pfad                                                                       |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure-Blockblobs | <li>UNC-Pfad zu den Freigaben: `//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Azure Storage-URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure-Seitenblobs  | <li>UNC-Pfad zu den Freigaben: `//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Azure Storage-URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  

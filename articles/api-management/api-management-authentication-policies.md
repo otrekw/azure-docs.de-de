@@ -11,19 +11,19 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 69584b434ac0442df48dcdea2a7d9f2aca9c1ccd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 44ebd2d3084ab8df63f2c941e6e924e6f2a86d65
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073738"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071284"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-Authentifizierungsrichtlinien
-Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
+Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
 
-##  <a name="AuthenticationPolicies"></a> Authentifizierungsrichtlinien
+##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a> Authentifizierungsrichtlinien
 
 -   [Standardauthentifizierung](api-management-authentication-policies.md#Basic) – Authentifizierung mit einem Back-End-Dienst unter Verwendung der Standardauthentifizierung.
 
@@ -31,7 +31,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 -   [Authentifizierung mit verwalteter Identität](api-management-authentication-policies.md#ManagedIdentity) – Authentifizierung für den API Management-Dienst mit der [verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md).
 
-##  <a name="Basic"></a> Standardauthentifizierung
+##  <a name="authenticate-with-basic"></a><a name="Basic"></a> Standardauthentifizierung
  Verwenden Sie die Richtlinie `authentication-basic` für die Authentifizierung mit einem Back-End-Dienst unter Verwendung der Standardauthentifizierung. Diese Richtlinie legt letztlich den HTTP-Autorisierungsheader auf den Wert fest, der den Anmeldeinformationen in der Richtlinie entspricht.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
@@ -48,26 +48,26 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente
 
-|NAME|BESCHREIBUNG|Erforderlich|
+|Name|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |authentication-basic|Stammelement|Ja|
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
-|NAME|BESCHREIBUNG|Erforderlich|Standard|
+|Name|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |username|Gibt den Benutzernamen für die Standardanmeldeinformationen an.|Ja|–|
 |password|Gibt das Kennwort für die Standardanmeldeinformationen an.|Ja|–|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-##  <a name="ClientCertificate"></a> Authentifizieren mit Clientzertifikat
- Verwenden Sie die Richtlinie `authentication-certificate` für die Authentifizierung mit einem Back-End-Dienst unter Verwendung eines Clientzertifikats. Das Zertifikat muss zuerst [in API Management installiert](https://go.microsoft.com/fwlink/?LinkID=511599) werden, es wird durch seinen Fingerabdruck identifiziert.
+##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a> Authentifizieren mit Clientzertifikat
+ Verwenden Sie die Richtlinie `authentication-certificate` für die Authentifizierung mit einem Back-End-Dienst unter Verwendung eines Clientzertifikats. Das Zertifikat muss zuerst [in API Management installiert](./api-management-howto-mutual-certificates.md) werden, es wird durch seinen Fingerabdruck identifiziert.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
@@ -77,50 +77,92 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="examples"></a>Beispiele
 
-In diesem Beispiel wird das Clientzertifikat durch seinen Fingerabdruck identifiziert.
+In diesem Beispiel wird das Clientzertifikat durch seinen Fingerabdruck identifiziert:
+
 ```xml
 <authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
 ```
-In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identifiziert.
+
+In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identifiziert:
+
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
-```  
+``` 
+
+In diesem Beispiel wird das Clientzertifikat in der Richtlinie festgelegt und nicht aus dem integrierten Zertifikatspeicher abgerufen:
+
+```xml
+<authentication-certificate body="@(context.Variables.GetValueOrDefault<byte[]>("byteCertificate"))" password="optional-certificate-password" />
+```
 
 ### <a name="elements"></a>Elemente  
   
-|NAME|BESCHREIBUNG|Erforderlich|  
+|Name|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
 |authentication-certificate|Stammelement|Ja|  
   
-### <a name="attributes"></a>Attribute  
+### <a name="attributes"></a>Attributes  
   
-|NAME|BESCHREIBUNG|Erforderlich|Standard|  
+|Name|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|Der Fingerabdruck für das Clientzertifikat.|Entweder `thumbprint` oder `certificate-id` muss vorhanden sein.|–|  
-|certificate-id|Der Zertifikatressourcenname.|Entweder `thumbprint` oder `certificate-id` muss vorhanden sein.|–|  
+|thumbprint|Der Fingerabdruck für das Clientzertifikat.|Entweder `thumbprint` oder `certificate-id` muss vorhanden sein.|–|
+|certificate-id|Der Zertifikatressourcenname.|Entweder `thumbprint` oder `certificate-id` muss vorhanden sein.|–|
+|body|Clientzertifikat als Bytearray|Nein|–|
+|password|Das Kennwort für das Clientzertifikat|Dieses Attribut wird verwendet, wenn das in `body` angegebene Zertifikat kennwortgeschützt ist.|–|
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte**: inbound  
   
 -   **Richtlinienbereiche:** alle Bereiche  
 
-##  <a name="ManagedIdentity"></a> Authentifizierung mit verwalteter Identität  
- Verwenden Sie die `authentication-managed-identity`-Richtlinie, um sich mit der verwalteten Identität des API Management-Diensts bei einem Back-End-Dienst zu authentifizieren. Diese Richtlinie verwendet im Grunde die verwaltete Identität, um aus Azure Active Directory ein Zugriffstoken für den Zugriff auf die angegebene Ressource abzurufen. Wenn das Token erfolgreich abgerufen wurde, legt die Richtlinie den Wert des Tokens unter Verwendung des Schemas `Bearer` im Header `Authorization` fest.
+##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a> Authentifizierung mit verwalteter Identität  
+ Verwenden Sie die Richtlinie `authentication-managed-identity` für die Authentifizierung mit einem Back-End-Dienst unter Verwendung einer verwalteten Identität. Diese Richtlinie verwendet im Grunde die verwaltete Identität, um aus Azure Active Directory ein Zugriffstoken für den Zugriff auf die angegebene Ressource abzurufen. Wenn das Token erfolgreich abgerufen wurde, legt die Richtlinie den Wert des Tokens unter Verwendung des Schemas `Bearer` im Header `Authorization` fest.
+
+Sowohl eine systemseitig zugewiesene Identität als auch eine der benutzerseitig zugewiesenen Identitäten können verwendet werden, um Token anzufordern. Wenn `client-id` nicht bereitgestellt wird, wird die systemseitig zugewiesene Identität angenommen. Wenn die `client-id`-Variable bereitgestellt wird, wird das Token für die entsprechende benutzerseitig zugewiesene Identität aus Azure Active Directory angefordert.
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
   
 ```xml  
-<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
+<authentication-managed-identity resource="resource" client-id="clientid of user-assigned identity" output-token-variable-name="token-variable" ignore-error="true|false"/>  
 ```  
   
 ### <a name="example"></a>Beispiel  
 #### <a name="use-managed-identity-to-authenticate-with-a-backend-service"></a>Verwenden der verwalteten Identität für die Authentifizierung bei einem Back-End-Dienst
 ```xml  
-<authentication-managed-identity resource="https://graph.windows.net"/> 
+<authentication-managed-identity resource="https://graph.microsoft.com"/> 
 ```
-  
+```xml  
+<authentication-managed-identity resource="https://management.azure.com/"/> <!--Azure Resource Manager-->
+```
+```xml  
+<authentication-managed-identity resource="https://vault.azure.net"/> <!--Azure Key Vault-->
+```
+```xml  
+<authentication-managed-identity resource="https://servicebus.azure.net/"/> <!--Azure Service Bus-->
+```
+```xml  
+<authentication-managed-identity resource="https://storage.azure.com/"/> <!--Azure Blob Storage-->
+```
+```xml  
+<authentication-managed-identity resource="https://database.windows.net/"/> <!--Azure SQL-->
+```
+
+```xml
+<authentication-managed-identity resource="api://Client_id_of_Backend"/> <!--Your own Azure AD Application-->
+```
+
+#### <a name="use-managed-identity-and-set-header-manually"></a>Verwenden der verwalteten Identität und manuelles Festlegen des Headers
+
+```xml
+<authentication-managed-identity resource="api://Client_id_of_Backend"
+   output-token-variable-name="msi-access-token" ignore-error="false" /> <!--Your own Azure AD Application-->
+<set-header name="Authorization" exists-action="override">
+   <value>@("Bearer " + (string)context.Variables["msi-access-token"])</value>
+</set-header>
+```
+
 #### <a name="use-managed-identity-in-send-request-policy"></a>Verwenden der verwalteten Identität in einer Richtlinie vom Typ „send-request“
 ```xml  
 <send-request mode="new" timeout="20" ignore-error="false">
@@ -132,20 +174,21 @@ In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identi
 
 ### <a name="elements"></a>Elemente  
   
-|NAME|BESCHREIBUNG|Erforderlich|  
+|Name|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |Stammelement|Ja|  
   
-### <a name="attributes"></a>Attribute  
+### <a name="attributes"></a>Attributes  
   
-|NAME|BESCHREIBUNG|Erforderlich|Standard|  
+|Name|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|resource|Eine Zeichenfolge. Der App-ID-URI der Ziel-Web-API (geschützte Ressource) in Azure Active Directory.|Ja|–|  
+|resource|Eine Zeichenfolge. Die App-ID der Ziel-Web-API (geschützte Ressource) in Azure Active Directory.|Ja|–|
+|client-id|Eine Zeichenfolge. Die App-ID der benutzerseitig zugewiesenen Identität in Azure Active Directory.|Nein|Systemseitig zugewiesene Identität|
 |output-token-variable-name|Eine Zeichenfolge. Name der Kontextvariablen, die den Tokenwert als Objekttyp erhält `string`. |Nein|–|  
 |ignore-error|Boolesch. Bei Festlegung auf `true` wird die Richtlinienpipeline auch dann weiter ausgeführt, wenn kein Zugriffstoken abgerufen wird.|Nein|false|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte**: inbound  
   
@@ -156,5 +199,5 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 
 + [Richtlinien in Azure API Management](api-management-howto-policies.md)
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
-+ Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
-+ [API Management policy samples](policy-samples.md) (API Management-Richtlinienbeispiele)
++ Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
++ [API Management-Richtlinienbeispiele](./policy-reference.md)

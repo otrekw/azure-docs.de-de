@@ -1,22 +1,22 @@
 ---
-title: Migrieren von Azure-Sicherheitsressourcen von Azure Deutschland zu Azure weltweit
+title: Migrieren von Azure-Sicherheitsressourcen – Azure Deutschland zu Azure weltweit
 description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Sicherheitsressourcen von Azure Deutschland zu Azure weltweit.
+ms.topic: article
+ms.date: 10/16/2020
 author: gitralf
-services: germany
-cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 08/15/2018
-ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 6640a65205c8c237905292be9bfd8e05f8aab75a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 10d52899195f6dfc1598bc95a07c22a68ef8c278
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827621"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96006534"
 ---
 # <a name="migrate-security-resources-to-global-azure"></a>Migrieren von Sicherheitsressourcen zu Azure weltweit
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 Dieser Artikel enthält Informationen dazu, wie Sie Azure-Sicherheitsressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
@@ -47,8 +47,8 @@ Get-AzKeyVaultSecret -vaultname mysecrets -name Deploydefaultpw
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Key Vault](https://docs.microsoft.com/azure/key-vault/) durcharbeiten.
-- Lesen Sie die [Übersicht über Key Vault](../key-vault/key-vault-overview.md).
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Key Vault](../key-vault/index.yml) durcharbeiten.
+- Lesen Sie die [Übersicht über Key Vault](../key-vault/general/overview.md).
 - Lesen Sie die Referenz zu den [PowerShell-Cmdlets für Key Vault](/powershell/module/az.keyvault/).
 
 ## <a name="vpn-gateway"></a>VPN Gateway
@@ -61,10 +61,10 @@ Stellen Sie sicher, dass Sie Ihre lokale Konfiguration aktualisieren. Löschen S
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VPN Gateway](../vpn-gateway/index.yml) durcharbeiten.
 - Im Artikel [Herstellen einer Site-to-Site-Verbindung](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) finden Sie weitere Informationen zu diesem Thema.
 - Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzVirtualNetworkGateway](/powershell/module/az.network/get-azvirtualnetworkgateway).
-- Lesen Sie den Blogbeitrag [Herstellen einer Site-to-Site-Verbindung](https://blogs.technet.microsoft.com/ralfwi/2017/02/02/connecting-clouds/).
+- Lesen Sie den Blogbeitrag [Herstellen einer Site-to-Site-Verbindung](/archive/blogs/ralfwi/connecting-clouds).
   
 ## <a name="application-gateway"></a>Application Gateway
 
@@ -74,7 +74,7 @@ Informationen zu Ihrer aktuellen Gatewaykonfiguration können Sie über das Port
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Application Gateway](../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md) durcharbeiten.
 - Im Artikel [Erstellen eines Application Gateways](../application-gateway/quick-create-portal.md) finden Sie weitere Informationen zu diesem Thema.
 - Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzApplicationGateway](/powershell/module/az.network/get-azapplicationgateway).
 
@@ -84,7 +84,7 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 
 - [Compute](./germany-migration-compute.md)
 - [Netzwerk](./germany-migration-networking.md)
-- [Speicher](./germany-migration-storage.md)
+- [Storage](./germany-migration-storage.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
 - [Analyse](./germany-migration-analytics.md)
@@ -93,4 +93,3 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 - [Identität](./germany-migration-identity.md)
 - [Verwaltungstools](./germany-migration-management-tools.md)
 - [Medien](./germany-migration-media.md)
-

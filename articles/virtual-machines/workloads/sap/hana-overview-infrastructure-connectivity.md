@@ -3,22 +3,23 @@ title: Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen) |
 description: Konfigurieren Sie die benötigte Verbindungsinfrastruktur, um SAP HANA in Azure (große Instanzen) zu verwenden.
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4fa0fe072fe98d565ad9d6f947540b7e1b039732
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4f6f8a057651ce56731c180a2ccbb05e35d8fefc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101156"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967549"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>Bereitstellung von SAP HANA (große Instanzen) 
 
@@ -36,7 +37,7 @@ Microsoft benötigt zum Bereitstellen der Einheiten vom Typ „HANA (große Inst
 - Für jede Azure-Bereitstellungsregion:
     - Ein /29-IP-Adressbereich für ER-P2P-Verbindungen, über die virtuelle Azure-Netzwerke mit HANA (große Instanzen) verbunden werden.
     - Ein /24-CIDR-Block, der für den HANA (große Instanzen)-Server-IP-Pool verwendet wird.
-    - Bei der Verwendung von [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) zum Aktivieren des direkten Umleitens lokaler Einheiten an Einheiten großer HANA-Instanzen oder zum Umleiten zwischen Einheiten großer HANA-Instanzen in verschiedenen Azure-Regionen müssen Sie einen weiteren /29-IP-Adressbereich reservieren. Dieser Bereich darf sich mit keinem der anderen IP-Adressbereiche überschneiden, die Sie zuvor definiert haben.
+    - Bei der Verwendung von [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) zum Aktivieren des direkten Umleitens lokaler Einheiten an Einheiten großer HANA-Instanzen oder zum Umleiten zwischen Einheiten großer HANA-Instanzen in verschiedenen Azure-Regionen müssen Sie einen weiteren /29-IP-Adressbereich reservieren. Dieser Bereich darf sich mit keinem der anderen IP-Adressbereiche überschneiden, die Sie zuvor definiert haben.
 - Die IP-Adressbereichswerte, die im Attribut für den „Adressraum des virtuellen Netzwerks“ jedes virtuellen Azure-Netzwerks verwendet werden, für das Verbindungen mit HANA (große Instanzen) hergestellt werden.
 - Daten für jedes System vom Typ „HANA (große Instanzen)“:
   - Der gewünschte Hostname – idealerweise mit vollqualifiziertem Domänennamen.
@@ -53,4 +54,3 @@ Verwenden Sie die folgende Sequenz, um eine Verbindung mit HANA (große Instanze
 1. [Verbinden von virtuellen Azure-Computern mit HANA (große Instanzen)](hana-connect-azure-vm-large-instances.md)
 2. [Herstellen einer ExpressRoute-Verbindung zwischen einem VNET und HANA (große Instanzen)](hana-connect-vnet-express-route.md)
 3. [Zusätzliche Netzwerkanforderungen (optional)](hana-additional-network-requirements.md)
-

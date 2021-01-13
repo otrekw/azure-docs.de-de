@@ -1,19 +1,19 @@
 ---
-title: Häufig gestellte Fragen zu Azure Spatial Anchors | Microsoft-Dokumentation
-description: Azure Spatial Anchors ist ein verwalteter Clouddienst und eine Entwicklerplattform für geräteübergreifende Mixed Reality-Umgebungen mit mehreren Benutzern für HoloLens-, iOS- und Android-Geräte. Bei diesen häufig gestellten Fragen geht es um die technische Seite des Diensts.
-author: ramonarguelles
-manager: vicenterivera
+title: Häufig gestellte Fragen
+description: Häufig gestellte Fragen zum Azure Spatial Anchors-Dienst
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 06936a196813dacfc1fc9d02945bee4119b7eea8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 01eb0ce83efa54366e027d35d9c3c3bbf86eff7b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927507"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95487366"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Häufig gestellte Fragen zu Azure Spatial Anchors
 
@@ -33,21 +33,25 @@ Weitere Informationen finden Sie unter [Azure Spatial Anchors-Übersicht](overvi
 
 **F: Welche Konnektivitätsanforderungen gelten für Azure Spatial Anchors?**
 
-**A:** Azure Spatial Anchors funktioniert für WLAN- und mobile Breitbandverbindungen.
+**A:** Azure Spatial Anchors funktioniert mit WLAN- und mobile Breitbandverbindungen.
 
 **F: Wie präzise können mit Azure Spatial Anchors Anker gefunden werden?**
 
-**A:** Es gibt viele Faktoren, die sich auf das Präzision beim Auffinden von Ankern auswirken: Lichtverhältnisse, Objekte in der Umgebung und sogar die Oberfläche, auf der der Anker angeordnet ist. Gehen Sie wie folgt vor, um zu ermitteln, ob die Präzision für Ihre Zwecke ausreicht: Probieren Sie die Anker in Umgebungen aus, die für die später verwendeten Umgebungen repräsentativ sind. Falls Umgebungen vorhanden sind, in denen die Präzision Ihre Anforderungen nicht erfüllt, helfen Ihnen die Informationen unter [Logging and diagnostics in Azure Spatial Anchors](./concepts/logging-diagnostics.md) (Protokollierung und Diagnose in Azure Spatial Anchors) weiter.
+**A:** Es gibt viele Faktoren, die sich auf die Präzision beim Auffinden von Ankern auswirken: Lichtverhältnisse, Objekte in der Umgebung und sogar die Oberfläche, auf der der Anker angeordnet ist. Gehen Sie wie folgt vor, um zu ermitteln, ob die Präzision für Ihre Zwecke ausreicht: Probieren Sie die Anker in Umgebungen aus, die für die später verwendeten Umgebungen repräsentativ sind. Falls Umgebungen vorhanden sind, in denen die Präzision Ihre Anforderungen nicht erfüllt, helfen Ihnen die Informationen unter [Logging and diagnostics in Azure Spatial Anchors](./concepts/logging-diagnostics.md) (Protokollierung und Diagnose in Azure Spatial Anchors) weiter.
 
 **F: Wie lange dauert es, Anker zu erstellen und zu finden?**
 
-**A:** Die Dauer für das Erstellen und Finden von Ankern hängt von vielen Faktoren ab: Netzwerkverbindung, Verarbeitungseigenschaften und Last des Geräts und spezifische Umgebung. Unsere Kunden entwickeln Anwendungen in vielen Branchen, z. B. Fertigung, Einzelhandel und Gaming. Dies verdeutlicht, dass der Dienst in all diesen Fällen die Schaffung einer hervorragenden Benutzerumgebung für das jeweilige Szenario ermöglicht.
+**A:** Die Dauer für das Erstellen und Finden von Ankern hängt von vielen Faktoren ab: der Netzwerkverbindung, den Verarbeitungseigenschaften und der Last des Geräts sowie der konkreten Umgebung. Unsere Kunden entwickeln Anwendungen in vielen Branchen, z. B. Fertigung, Einzelhandel und Gaming. Dies verdeutlicht, dass der Dienst in all diesen Fällen die Schaffung einer hervorragenden Benutzerumgebung für das jeweilige Szenario ermöglicht.
 
 ## <a name="privacy-faq"></a>Datenschutz: Häufig gestellte Fragen
 
 **F: Wenn meine Anwendung einen räumlichen Anker an einem bestimmten Ort platziert, haben dann alle Apps Zugriff darauf?**
 
 **A:** Anker liegen jeweils nach Azure-Konto isoliert vor. Nur Apps, denen Sie Zugriff auf Ihr Konto gewähren, können im Konto auf Anker zugreifen.
+
+**F: Wie speichert Azure Spatial Anchors Daten?**
+
+**A:** Alle Daten werden verschlüsselt mit einem von Microsoft verwalteten Datenverschlüsselungsschlüssel gespeichert, und alle Daten werden für jede der Ressourcen regional gespeichert.
 
 **F: Welche Informationen zu einer Umgebung werden bei Verwendung von Azure Spatial Anchors für den Dienst übertragen und gespeichert? Werden Bilder der Umgebung übertragen und gespeichert?**
 
@@ -60,7 +64,6 @@ Für Azure Spatial Anchors werden [Servicevertrag & Bestimmungen](https://go.mic
 ![Umgebung und abgeleitete Punktwolke mit Verknüpfungspunkten](./media/sparse-point-cloud.png)
 *Abbildung 1: Umgebung und abgeleitete Punktwolke mit Verknüpfungspunkten*
 
-
 **F: Gibt es eine Möglichkeit zum Senden von Diagnoseinformationen an Microsoft?**
 
 **A:** Ja. Azure Spatial Anchors verfügt über einen Diagnosemodus, den Entwickler über die Azure Spatial Anchors-API nutzen können. Dies ist beispielsweise hilfreich, wenn Sie in einer Umgebung Anker nicht auf vorhersagbare Weise erstellen und finden können. Unter Umständen werden Sie von uns gefragt, ob Sie einen Diagnosebericht mit Informationen übermitteln können, die für den Debugvorgang nützlich sind. Weitere Informationen finden Sie unter [Logging and diagnostics in Azure Spatial Anchors](./concepts/logging-diagnostics.md) (Protokollierung und Diagnose in Azure Spatial Anchors).
@@ -69,25 +72,25 @@ Für Azure Spatial Anchors werden [Servicevertrag & Bestimmungen](https://go.mic
 
 **F: Wird eine Vereinbarung zum Servicelevel (SLA) bereitgestellt?**
 
-**A:** Wie bei Azure-Diensten üblich, streben wir eine Verfügbarkeit von über 99,9 % an. Beachten Sie, dass sich Azure Spatial Anchors derzeit in der Vorschauphase befindet und daher die Angaben unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) gelten.
+**A:** Wie bei Azure-Diensten üblich, streben wir eine Verfügbarkeit von über 99,9 % an. 
 
 **F: Kann ich meine Apps mit Azure Spatial Anchors in App Stores veröffentlichen? Kann ich Azure Spatial Anchors für unternehmenskritische Produktionsszenarien nutzen?**
 
-**A:** Azure Spatial Anchors befindet sich derzeit in der Vorschauphase. Während dieser Phase laden wir Sie ein, Apps zu entwickeln, [Feedback zum Produkt zu geben](https://feedback.azure.com/forums/919252-azure-spatial-anchors) und Ihre Bereitstellungen für die Produktion zu planen.
-
-Die Zeitpunkte für die allgemeine Verfügbarkeit (General Availability, GA) werden in Kürze bekanntgegeben.
+**A:** Ja, Azure Spatial Anchors ist allgemein verfügbar und verfügt über eine Standard-SLA für Azure-Dienste. Gerne können Sie Apps für Ihre Produktionsbereitstellungen entwickeln und uns Ihr [Feedback](https://feedback.azure.com/forums/919252-azure-spatial-anchors) zum Produkt mitteilen.
 
 **F: Gelten bestimmte Drosselungslimits?**
 
-**A:** Ja, es gelten Drosselungslimits.  Es ist nicht zu erwarten, dass Sie diese Limits bei typischen Vorgängen der Anwendungsentwicklung und beim Testen überschreiten. Für Produktionsbereitstellungen haben wir das Ziel, die hohen Skalierungsanforderungen unserer Kunden zu unterstützen. [Nehmen Sie Kontakt mit uns auf](mailto:azuremrs@microsoft.com), um dies mit uns zu besprechen. Während dieser Phase der Vorschauversion haben wir unsere Tiering- und Preisstruktur noch nicht veröffentlicht, aber dies soll in Kürze erfolgen.
+**A:** Ja, es gelten Drosselungslimits.  Es ist nicht zu erwarten, dass Sie diese Limits bei typischen Vorgängen der Anwendungsentwicklung und beim Testen überschreiten. Für Produktionsbereitstellungen haben wir das Ziel, die hohen Skalierungsanforderungen unserer Kunden zu unterstützen. [Nehmen Sie Kontakt mit uns auf](mailto:azuremrs@microsoft.com), um dies mit uns zu besprechen. 
 
 **F: In welchen Regionen ist Azure Spatial Anchors verfügbar?**
 
-**A:** Sie können noch heute ein Azure Spatial Anchors-Konto in der Azure-Region „USA, Osten 2“ erstellen. Dies bedeutet, dass sich sowohl die Compute- als auch die Speicherressourcen dieses Diensts in dieser Region befinden. Es gelten aber keine Einschränkungen in Bezug darauf, wo sich Ihre Clients befinden. In Zukunft werden wir die regionale Verfügbarkeit des Diensts auf alle primären Azure-Regionen erweitern.
+**A:** Azure Spatial Anchors ist derzeit in den folgenden Regionen verfügbar: „USA, Westen 2“, „USA, Osten“, „USA, Osten 2“, „USA, Süden-Mitte“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Süden“ und „Australien, Osten“. Weitere Regionen werden im Laufe der Zeit verfügbar.
 
-**F: Fallen für Azure Spatial Anchors Gebühren an? Wann werden diese Gebühren berechnet?**
+Dies bedeutet, dass sich sowohl die Compute- als auch die Speicherressourcen dieses Diensts in diesen Regionen befinden. Es gelten aber keine Einschränkungen in Bezug darauf, wo sich Ihre Clients befinden. 
 
-**A:** Ausführliche Informationen zu den Preisen, die während der Vorschauphase gelten, finden Sie auf unserer [Seite mit den Preisen](https://azure.microsoft.com/pricing/details/spatial-anchors/).
+**F: Fallen für Azure Spatial Anchors Gebühren an?**
+
+**A:** Ausführliche Informationen zu den geltenden Preisen finden Sie auf unserer [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/spatial-anchors/).
 
 ## <a name="technical-faqs"></a>Häufig gestellte Fragen: Technik
 
@@ -112,6 +115,7 @@ Wenn Sie einen Anker erstellen, erfasst das Client-SDK die Umgebungsinformatione
 **A:** Entwickler können Apps mit Azure Spatial Anchors erstellen, indem sie vertraute Tools und Frameworks für ihr Gerät verwenden:
 
 - Unity für HoloLens, iOS und Android
+- Xamarin unter iOS und Android
 - Swift oder Objective-C unter iOS
 - Java oder das Android NDK unter Android
 - C++/WinRT für HoloLens
@@ -124,4 +128,4 @@ Wenn Sie einen Anker erstellen, erfasst das Client-SDK die Umgebungsinformatione
 
 **F: Welche Ports und Protokolle verwendet Azure Spatial Anchors?**
 
-**A:** Azure Spatial Anchors kommuniziert über den TCP-Port 443 mithilfe eines verschlüsselten Protokolls. Für die Authentifizierung wird [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) verwendet, das über HTTPS und Port 443 kommuniziert.
+**A:** Azure Spatial Anchors kommuniziert über den TCP-Port 443 mithilfe eines verschlüsselten Protokolls. Für die Authentifizierung wird [Azure Active Directory](../active-directory/index.yml) verwendet, das über HTTPS und Port 443 kommuniziert.

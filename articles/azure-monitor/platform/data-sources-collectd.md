@@ -1,24 +1,17 @@
 ---
 title: Sammeln von Daten aus CollectD in Azure Monitor | Microsoft-Dokumentation
 description: CollectD ist ein Open-Source-Linux-Deamon, der regelmäßig Daten aus Anwendungen und Informationen aus der Betriebssystemebene sammelt.  In diesem Artikel erfahren Sie, wie Sie Daten aus CollectD in Azure Monitor sammeln.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+author: bwren
+ms.author: bwren
 ms.date: 11/27/2018
-ms.author: magoedte
-ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 488f273336da05738609333f911fe3a90ba59496
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764945"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86111982"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Sammeln von Daten aus CollectD mithilfe von Linux-Agents in Azure Monitor
 [CollectD](https://collectd.org/) ist ein Open-Source-Linux-Deamon, der regelmäßig Leistungsmetriken aus Anwendungen und Informationen aus der Betriebssystemebene sammelt. Beispiele für diese Anwendungen sind Java Virtual Machine (JVM), MySQL Server und Nginx. In diesem Artikel erfahren Sie, wie Sie in Azure Monitor Leistungsdaten aus CollectD sammeln.
@@ -31,26 +24,30 @@ Die folgende CollectD-Konfiguration ist im Log Analytics-Agent für Linux enthal
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-    LoadPlugin write_http
+```xml
+LoadPlugin write_http
 
-    <Plugin write_http>
-         <Node "oms">
-         URL "127.0.0.1:26000/oms.collectd"
-         Format "JSON"
-         StoreRates true
-         </Node>
-    </Plugin>
+<Plugin write_http>
+   <Node "oms">
+      URL "127.0.0.1:26000/oms.collectd"
+      Format "JSON"
+      StoreRates true
+   </Node>
+</Plugin>
+```
 
 Sollten Sie eine ältere collectD-Version als 5.5 verwenden, müssen Sie stattdessen die folgende Konfiguration verwenden.
 
-    LoadPlugin write_http
+```xml
+LoadPlugin write_http
 
-    <Plugin write_http>
-       <URL "127.0.0.1:26000/oms.collectd">
-        Format "JSON"
-         StoreRates true
-       </URL>
-    </Plugin>
+<Plugin write_http>
+   <URL "127.0.0.1:26000/oms.collectd">
+      Format "JSON"
+      StoreRates true
+   </URL>
+</Plugin>
+```
 
 Die CollectD-Konfiguration verwendet das standardmäßige `write_http`-Plug-In, um Leistungsmetrikdaten über Port 26000 an den Log Analytics-Agent für Linux zu senden. 
 
@@ -59,16 +56,20 @@ Die CollectD-Konfiguration verwendet das standardmäßige `write_http`-Plug-In, 
 
 Der Log Analytics-Agent für Linux lauscht an Port 26000 auf CollectD-Metriken und konvertiert diese dann in Azure Monitor-Schemametriken. Im Folgenden wird der Log Analytics-Agent für die Linux-Konfiguration `collectd.conf` beschrieben.
 
-    <source>
-      type http
-      port 26000
-      bind 127.0.0.1
-    </source>
+```xml
+<source>
+   type http
+   port 26000
+   bind 127.0.0.1
+</source>
 
-    <filter oms.collectd>
-      type filter_collectd
-    </filter>
+<filter oms.collectd>
+   type filter_collectd
+</filter>
+```
 
+> [!NOTE]
+> CollectD ist standardmäßig für das Lesen von Werten in einem 10-Sekunden-[Intervall](https://collectd.org/wiki/index.php/Interval) eingestellt. Da sich dies direkt auf die Menge der Daten auswirkt, die an Azure Monitor-Protokolle gesendet werden, müssen Sie dieses Intervall möglicherweise in der CollectD-Konfiguration optimieren, um ein gutes Verhältnis zwischen den Überwachungsanforderungen, den damit verbundenen Kosten und der Nutzung für Azure Monitor-Protokolle zu erreichen.
 
 ## <a name="versions-supported"></a>Unterstützte Versionen
 - Azure Monitor unterstützt derzeit CollectD Version 4.8 und höhere Versionen.
@@ -88,11 +89,15 @@ Im Folgenden werden die grundlegenden Schritte für die Konfiguration des Sammel
 
     Ihr CollectD-Konfigurationsverzeichnis befindet sich in /etc/collectd.d/:
 
-        sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd.d/oms.conf
+    ```console
+    sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd.d/oms.conf
+    ```
 
     Ihr CollectD-Konfigurationsverzeichnis befindet sich in /etc/collectd/collectd.conf.d/:
 
-        sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
+    ```console
+    sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
+    ```
 
     >[!NOTE]
     >Für CollectD-Versionen vor 5.5 müssen Sie die Tags in `oms.conf` wie oben beschrieben ändern.
@@ -100,12 +105,17 @@ Im Folgenden werden die grundlegenden Schritte für die Konfiguration des Sammel
 
 2. Kopieren Sie collectd.conf in das gewünschte omsagent-Konfigurationsverzeichnis des Arbeitsbereichs.
 
-        sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
-        sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
+    ```console
+    sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
+    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
+    ```
 
 3. Starten Sie CollectD und den Log Analytics-Agent für Linux mit den folgenden Befehlen neu.
 
-    sudo service collectd restart  sudo /opt/microsoft/omsagent/bin/service_control restart
+    ```console
+    sudo service collectd restart
+    sudo /opt/microsoft/omsagent/bin/service_control restart
+    ```
 
 ## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>Sammeln von CollectD-Metriken für die Azure Monitor-Schemakonvertierung
 Um ein vertrautes Modell zwischen den bereits vom Log Analytics-Agent für Linux gesammelten Infrastrukturmetriken und den neuen von CollectD gesammelten Metriken zu erhalten, wird die folgende Schemazuordnung verwendet:

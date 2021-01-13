@@ -1,22 +1,20 @@
 ---
-title: Verwenden von Renderinganwendungen – Azure Batch
-description: Verwenden von Renderinganwendungen mit Azure Batch
-services: batch
-ms.service: batch
+title: Verwenden von Renderinganwendungen
+description: Verwenden von Renderinganwendungen mit Azure Batch. Dieser Artikel enthält eine kurze Beschreibung dazu, wie die einzelnen Renderinganwendungen ausgeführt werden.
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 4c93abdfb5c523d48ce115ed7d3251a346937f5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: how-to
+ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775388"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85964871"
 ---
 # <a name="rendering-applications"></a>Renderinganwendungen
 
-Renderinganwendungen werden verwendet, indem Batch-Aufträge und -Aufgaben erstellt werden. Mit der Befehlszeileneigenschaft für die Aufgabe werden die entsprechende Befehlszeile und die Parameter angegeben.  Die einfachste Möglichkeit zur Erstellung der Auftragsaufgaben ist das Verwenden der Batch Explorer-Vorlagen, wie in [diesem Artikel](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer) angegeben.  Die Vorlagen können angezeigt werden, und bei Bedarf können auch geänderte Versionen erstellt werden.
+Renderinganwendungen werden verwendet, indem Batch-Aufträge und -Aufgaben erstellt werden. Mit der Befehlszeileneigenschaft für die Aufgabe werden die entsprechende Befehlszeile und die Parameter angegeben.  Die einfachste Möglichkeit zur Erstellung der Auftragsaufgaben ist das Verwenden der Batch Explorer-Vorlagen, wie in [diesem Artikel](./batch-rendering-using.md#using-batch-explorer) angegeben.  Die Vorlagen können angezeigt werden, und bei Bedarf können auch geänderte Versionen erstellt werden.
 
 Dieser Artikel enthält eine kurze Beschreibung dazu, wie die einzelnen Renderinganwendungen ausgeführt werden.
 

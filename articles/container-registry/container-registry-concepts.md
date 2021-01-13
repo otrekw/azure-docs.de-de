@@ -1,18 +1,14 @@
 ---
-title: Repositorys und Images in Azure Container Registry
+title: Informationen zu Repositorys und Images
 description: Einführung in die grundlegenden Konzepte von Azure-Containerregistrierungen, Repositorys und Containerimages.
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: article
-ms.date: 09/10/2019
-ms.author: danlep
-ms.openlocfilehash: 9a3d4a7d9c3fd4a0465d4e780024559a71372d9d
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 06/16/2020
+ms.openlocfilehash: cd2f93c119817c722401f7290064894f3d39dac9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300201"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335893"
 ---
 # <a name="about-registries-repositories-and-images"></a>Informationen zu Registrierungen, Repositorys und Images
 
@@ -20,7 +16,7 @@ Dieser Artikel stellt die grundlegenden Konzepte von Containerregistern, Reposit
 
 ## <a name="registry"></a>Registrierung
 
-Eine Container-*Registrierung* ist ein Dienst, der Containerimages verteilt und speichert. Docker Hub ist eine öffentliche Containerregistrierung, die die Open-Source-Community unterstützt und als allgemeiner Katalog von Images dient. Azure Container Registry bietet Benutzern die direkte Steuerung ihrer Images mit integrierter Authentifizierung, [Georeplikation](container-registry-geo-replication.md), die die globale Verteilung und Zuverlässigkeit netzwerknaher Bereitstellungen unterstützt, [Konfiguration von virtuellen Netzwerken und Firewalls](container-registry-vnet.md), [Tagsperren](container-registry-image-lock.md) und vielen anderen erweiterten Funktionen. 
+Eine Container- *Registrierung* ist ein Dienst, der Containerimages verteilt und speichert. Docker Hub ist eine öffentliche Containerregistrierung, die die Open-Source-Community unterstützt und als allgemeiner Katalog von Images dient. Azure Container Registry bietet Benutzern die direkte Steuerung ihrer Images mit integrierter Authentifizierung, [Georeplikation](container-registry-geo-replication.md), die die globale Verteilung und Zuverlässigkeit netzwerknaher Bereitstellungen unterstützt, [Konfiguration von virtuellen Netzwerken und Firewalls](container-registry-vnet.md), [Tagsperren](container-registry-image-lock.md) und vielen anderen erweiterten Funktionen. 
 
 Zusätzlich zu den Docker-Containerimages unterstützt Azure Container Registry verwandte [Inhaltsartefakte](container-registry-image-formats.md) einschließlich Open Container Initiative-Imageformaten (OCI).
 
@@ -28,43 +24,38 @@ Zusätzlich zu den Docker-Containerimages unterstützt Azure Container Registry 
 
 Die Adresse eines Elements in einer Azure-Containerregistrierung enthält die folgenden Elemente. 
 
-```
-[loginUrl]/[namespace]/[artifact:][tag]
-```
+`[loginUrl]/[repository:][tag]`
 
-* **loginUrl**: Der vollqualifizierte Name des Registrierungshosts. Der Registrierungshost in einer Azure-Containerregistrierung hat das Format *meineregistrierung*.azurecr.io (nur Kleinbuchstaben). Sie müssen die loginUrl angeben, wenn Sie Docker oder andere Clienttools verwenden, um Artefakte in eine Azure-Containerregistrierung zu pullen oder pushen. 
-* **namespace**: Schrägstrichgetrennte logische Gruppierung verwandter Images oder Artefakte – z.B. für eine Arbeitsgruppe oder App
-* **artifact**: Der Name eines Repositorys für ein bestimmtes Image oder Artefakt
-* **tag**: Eine bestimmte Version eines in einem Repository gespeicherten Images oder Artefakts
-
+* **loginUrl** : Der vollqualifizierte Name des Registrierungshosts. Der Registrierungshost in einer Azure-Containerregistrierung hat das Format *meineregistrierung*.azurecr.io (nur Kleinbuchstaben). Sie müssen die loginUrl angeben, wenn Sie Docker oder andere Clienttools verwenden, um Artefakte in eine Azure-Containerregistrierung zu pullen oder pushen. 
+* **Repository** : Name einer logischen Gruppierung mit mindestens einem verknüpften Image oder Artefakt, z. B. die Images für eine Anwendung oder ein Basisbetriebssystem. Kann einen *Namespacepfad* enthalten. 
+* **Tag** : Bezeichner für eine bestimmte Version eines in einem Repository gespeicherten Images oder Artefakts.
 
 Beispielsweise kann der vollständige Name eines Images in einer Azure-Containerregistrierung so aussehen:
 
-```
-myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2
-```
+*myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2*
 
 Weitere Informationen zu diesen Elementen finden Sie in den folgenden Abschnitten.
 
 ## <a name="repository-name"></a>Name des Repositorys
 
-Containerregistrierungen verwalten *Repositorys*, Sammlungen von Containerimages oder andere Artefakte mit dem gleichen Namen, aber anderen Tags. Die folgenden drei Images befinden sich beispielsweise im Repository „acr-helloworld“:
+Ein *Repository* ist eine Sammlung von Containerimages oder anderen Artefakten mit dem gleichen Namen, aber anderen Tags. Die folgenden drei Images befinden sich beispielsweise im Repository „acr-helloworld“:
 
-```
-acr-helloworld:latest
-acr-helloworld:v1
-acr-helloworld:v2
-```
 
-Repository-Namen können auch [Namespaces](container-registry-best-practices.md#repository-namespaces) enthalten. Namespaces ermöglichen die Gruppierung von Images mit durch Schrägstrich getrennten Repositorynamen. Beispiel:
+- *acr-helloworld:latest*
+- *acr-helloworld:v1*
+- *acr-helloworld:v2*
 
-```
-marketing/campaign10-18/web:v2
-marketing/campaign10-18/api:v3
-marketing/campaign10-18/email-sender:v2
-product-returns/web-submission:20180604
-product-returns/legacy-integrator:20180715
-```
+Repository-Namen können auch [Namespaces](container-registry-best-practices.md#repository-namespaces) enthalten. Mit Namespaces können Sie verwandte Repositorys und den Artefaktbesitz in Ihrer Organisation identifizieren, indem Sie durch Schrägstriche getrennte Namen verwenden. Allerdings verwaltet die Registrierung alle Repositorys unabhängig voneinander und nicht als Hierarchie. Zum Beispiel:
+
+- *marketing/campaign10-18/web:v2*
+- *marketing/campaign10-18/api:v3*
+- *marketing/campaign10-18/email-sender:v2*
+- *product-returns/web-submission:20180604*
+- *product-returns/legacy-integrator:20180715*
+
+Repositorynamen dürfen nur alphanumerische Kleinbuchstaben, Punkte, Bindestriche, Unterstriche und Schrägstriche enthalten. 
+
+Vollständige Repositorybenennungsregeln finden Sie in der Spezifikation der [Open Container Initiative-Distribution](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview).
 
 ## <a name="image"></a>Image
 
@@ -74,13 +65,15 @@ Ein Containerimage oder sonstiges Artefakt in einer Registrierung wird einem ode
 
 Das *Tag* für ein Image oder anderes Artefakt gibt die Version an. Einem einzelnen Artefakt in einem Repository kann eines oder mehrere Tags zugewiesen werden, und Tags können auch entfernt werden. Sie können also alle Tags aus einem Image löschen, während die Daten des Images (die Ebenen) in der Registrierung verbleiben.
 
-Das Repository (oder Repository und Namespace) plus ein Tag definieren den Namen eines Images. Sie können Push- und Pull-Vorgänge für Images ausführen, indem Sie deren Namen im Push- oder Pull-Vorgang festlegen.
+Das Repository (oder Repository und Namespace) plus ein Tag definieren den Namen eines Images. Sie können Push- und Pull-Vorgänge für Images ausführen, indem Sie deren Namen im Push- oder Pull-Vorgang festlegen. Das Tag `latest` wird standardmäßig verwendet, wenn Sie keine Angabe in Ihren Docker-Befehlen bereitstellen.
 
 Wie Sie Containerimages mit Tags versehen, hängt von den Szenarien ihrer Entwicklung oder Bereitstellung ab. So werden beispielsweise dauerhafte Tags für die Pflege Ihrer Basisimages und eindeutige Tags für die Bereitstellung von Images empfohlen. Weitere Informationen finden Sie unter [Empfehlungen für das Taggen und die Versionsverwaltung von Containerimages](container-registry-image-tag-version.md).
 
+Informationen zu Benennungsregeln für Tags finden Sie in der [Docker-Dokumentation](https://docs.docker.com/engine/reference/commandline/tag/).
+
 ### <a name="layer"></a>Ebene
 
-Containerimages bestehen aus einer oder mehreren *Ebenen*, die jeweils einer Zeile in der Dockerfile-Datei entsprechen, die das Image definiert. Images in einer Registrierung teilen allgemeine Ebenen, die die Speichereffizienz verbessern. Z.B. können mehrere Bilder in verschiedenen Repositorys dieselbe Alpine Linux-Basisebene teilen, aber nur eine Kopie dieser Ebene wird in der Registrierung gespeichert.
+Containerimages bestehen aus einer oder mehreren *Ebenen* , die jeweils einer Zeile in der Dockerfile-Datei entsprechen, die das Image definiert. Images in einer Registrierung teilen allgemeine Ebenen, die die Speichereffizienz verbessern. Z.B. können mehrere Bilder in verschiedenen Repositorys dieselbe Alpine Linux-Basisebene teilen, aber nur eine Kopie dieser Ebene wird in der Registrierung gespeichert.
 
 Die Ebenenfreigabe optimiert außerdem die Ebenenverteilung auf Knoten mit mehreren Images, die gemeinsame Ebenen verwenden. Wenn ein Image auf einem Knoten beispielsweise die Alpine Linux-Ebene als Basis enthält, wird beim nachfolgenden Pull-Vorgang eines anderen Images, das auf dieselbe Ebene des Knotens verweist, die Ebene nicht auf den Knoten übertragen. Stattdessen verweist es auf die Ebene, die bereits auf dem Knoten vorhanden ist.
 
@@ -96,8 +89,11 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName>
 
 Listen Sie beispielsweise die Manifeste für das Repository "acr-helloworld" auf:
 
-```console
-$ az acr repository show-manifests --name myregistry --repository acr-helloworld
+```azurecli
+az acr repository show-manifests --name myregistry --repository acr-helloworld
+```
+
+```output
 [
   {
     "digest": "sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108",
@@ -132,9 +128,7 @@ Sie können ein Image aus einer Registrierung pullen, indem Sie den Digest im Pu
 
 Hier ein Beispiel für das Pullen eines Images aus dem Repository „acr-helloworld“ per Manifest-Digest:
 
-```console
-$ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108
-```
+`docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108`
 
 > [!IMPORTANT]
 > Wenn Sie wiederholt geänderte Bilder mit identischen Tags per Push übertragen, kann das zu verwaisten Images führen – Images ohne Tags, die Speicherplatz in der Registrierung belegen. Images ohne Tags werden beim Auflisten oder Anzeigen von Images nach Tag nicht in der Azure-Befehlszeilenschnittstelle oder im Azure-Portal angezeigt. Die Ebenen sind jedoch noch vorhanden und verbrauchen Speicherplatz in der Registrierung. Das Löschen eines nicht markierten Image gibt Speicherplatz in der Registrierung frei, wenn das Manifest das einzige oder letzte ist, das auf eine bestimmte Ebene zeigt. Informationen zum Freigeben von Speicherplatz, der von Images ohne Tags verwendet wird, finden Sie unter [Löschen von Containerimages in Azure Container Registry](container-registry-delete.md).

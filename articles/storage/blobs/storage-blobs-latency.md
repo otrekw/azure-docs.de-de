@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d4fae87d999bd0f6b0b388613098a17c181dae0c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 78440b8150a0992bed2e2a3e597fdac8e7a1c7b0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392739"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "75749724"
 ---
-# <a name="latency-in-blob-storage"></a>Wartezeit in Blob Storage
+# <a name="latency-in-blob-storage"></a>Latenz im Blobspeicher
 
 Wartezeit wird gelegentlich auch als Antwortzeit bezeichnet und ist die Zeit, die eine Anwendung auf den Abschluss einer Anforderung warten muss. Die Wartezeit kann sich direkt auf die Leistung einer Anwendung auswirken. Eine kurze Wartezeit ist häufig wichtig in Szenarien mit menschlicher Interaktion – etwa bei Kreditkartentransaktionen oder beim Laden von Webseiten. Systeme, die eine hohe Verarbeitungsrate für Ereignisse benötigen (beispielsweise IoT-Ereignisse oder Protokollierung von Telemetriedaten) sind ebenfalls auf kurze Wartezeiten angewiesen. In diesem Artikel erfahren Sie, wie Sie die Wartezeit für Vorgänge in Blockblobs nachvollziehen und messen und wie Sie Anwendungen mit kurzer Wartezeit entwerfen.
 
@@ -67,5 +67,5 @@ Bestimmen Sie zur Bewertung der Wartezeit zunächst Baselinemetriken für Ihr Sz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Skalierbarkeits- und Leistungsziele für Speicherkonten in Azure Storage](../common/storage-scalability-targets.md)
-- [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../common/storage-performance-checklist.md)
+- [Skalierbarkeits- und Leistungsziele für Blob Storage](scalability-targets.md).
+- [Checkliste zu Leistung und Skalierbarkeit für Blob Storage](storage-performance-checklist.md)

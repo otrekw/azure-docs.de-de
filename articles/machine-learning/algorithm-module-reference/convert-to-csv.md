@@ -1,24 +1,24 @@
 ---
 title: 'Convert to CSV: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit dem Modul „Convert to CSV“ (Konvertieren in das CSV-Format) in Azure Machine Learning Service ein Dataset in ein CSV-Format konvertieren, das heruntergeladen, exportiert oder mit R- oder Python-Skriptmodulen gemeinsam genutzt werden kann.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mit dem Modul Convert to CSV im Azure Machine Learning-Designer ein Dataset in eine CSV-Datei konvertieren, die später wiederverwendet werden kann.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 2b8f235014efe440e518f1f9c4d0d454f6918955
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 10/22/2019
+ms.openlocfilehash: cc58689e30e9b03e490c0871f3decd50372371fa
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128910"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421922"
 ---
 # <a name="convert-to-csv-module"></a>Modul „Convert to CSV (Konvertieren in das CSV-Format)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Nutzen Sie dieses Modul, um ein Dataset in ein CSV-Format konvertieren, das heruntergeladen, exportiert oder mit R- oder Python-Skriptmodulen gemeinsam genutzt werden kann.
 
@@ -30,30 +30,28 @@ Auch wenn Sie den größten Teil der Arbeit in Azure Machine Learning erledigen,
 
 + Laden Sie die CSV-Datei herunter, um sie in Excel zu öffnen, oder importieren Sie sie in eine relationale Datenbank.  
 + Speichern Sie die CSV-Datei im Cloudspeicher, und verbinden Sie sie mit Power BI, um Visualisierungen zu erstellen.  
-+ Verwenden Sie das CSV-Format, um Daten zur Verwendung in R und Python aufzubereiten. Klicken Sie einfach mit der rechten Maustaste auf die Ausgabe des Moduls, um den Code zu generieren, der für den direkten Zugriff auf die Daten in Python oder einem Jupyter-Notebook benötigt wird. 
++ Verwenden Sie das CSV-Format, um Daten zur Verwendung in R und Python aufzubereiten. 
 
-Wenn Sie einen Datensatz in das CSV-Format konvertieren, wird die Datei in Ihrem Azure ML-Arbeitsbereich gespeichert. Sie können ein Azure-Speicherhilfsprogramm verwenden, um die Datei zu öffnen und direkt zu nutzen, oder Sie können mit der rechten Maustaste auf die Modulausgabe klicken und die CSV-Datei auf Ihren Computer herunterladen oder sie in R- oder Python-Code verwenden.  
+Wenn Sie einen Datensatz in das CSV-Format konvertieren, wird die CSV-Datei in Ihrem Azure ML-Arbeitsbereich gespeichert. Sie können ein Azure-Speicherhilfsprogramm verwenden, um die Datei direkt zu öffnen und zu verwenden. Sie können auch auf die CSV-Datei im Designer zugreifen, indem Sie das Modul **Convert to CSV** (In CSV konvertieren) und dann das Histogrammsymbol unter der Registerkarte **Ausgaben** im rechten Fensterbereich auswählen, um die Ausgabe anzuzeigen. Sie können die CSV-Datei aus dem Ergebnisordner in ein lokales Verzeichnis herunterladen.  
 
 ## <a name="how-to-configure-convert-to-csv"></a>Konfigurieren von „Convert to CSV“
 
-1.  Fügen Sie das Modul [Convert to CSV](./convert-to-csv.md) Ihrem Experiment hinzu. Sie finden dieses Modul auf der Benutzeroberfläche in der Gruppe **Data Format Conversions**. 
+
+1.  Fügen Sie Ihrer Pipeline das Modul „Convert to CSV“ (In CSV konvertieren) hinzu. Das Modul befindet sich im Designer in der Gruppe **Datentransformation**. 
 
 2. Verbinden Sie es mit einem beliebigen Modul, das ein Dataset ausgibt.   
   
-3.  Führen Sie das Experiment aus.
+3.  Übermitteln Sie die Pipeline.
 
 ### <a name="results"></a>Ergebnisse
   
 
-Doppelklicken Sie auf die Ausgabe von [Convert to CSV](./convert-to-csv.md), und wählen Sie eine der folgenden Optionen aus.  
+Wählen Sie die Registerkarte **Ausgaben** im rechten Bereich von **Convert to CSV** (In CSV konvertieren) aus, und wählen Sie dann eines dieser Symbole unter den **Portausgaben** aus.  
 
- + **Result Dataset -> Download** (Ergebnisdataset -> Herunterladen): Öffnet unmittelbar eine Kopie der Daten im CSV-Format, die Sie in einem lokalen Ordner speichern können. Wenn Sie keinen Ordner angeben, wird ein Standarddateiname übernommen, und die CSV-Datei wird in der lokalen Bibliothek **Downloads** gespeichert.
++ **Dataset registrieren**: Wählen Sie das Symbol aus, und speichern Sie die CSV-Datei als separates Dataset in den Azure ML-Arbeitsbereich zurück. Sie finden das Dataset als Modul in der Modulstruktur unter dem Abschnitt **My Datasets** (Meine Datasets).
 
-
- + **Result Dataset -> Save as Dataset** (Ergebnisdataset -> Als Dataset speichern): Speichert die CSV-Datei als separates Dataset in den Azure ML-Arbeitsbereich zurück.
-
- + **Generate Data Access Code** (Datenzugriffscode generieren): Azure ML generiert zwei Codesätze, damit Sie auf die Daten zugreifen können, entweder mithilfe von Python oder R. Um auf die Daten zuzugreifen, kopieren Sie den Codeausschnitt in Ihre Anwendung. ( *„Generate data access code“ wird in Kürze verfügbar sein.* )
+ + **Ausgabe anzeigen**: Wählen Sie das Augensymbol aus, und folgen Sie den Anweisungen, um den Ordner **Results_dataset** zu durchsuchen und die Datei „data.csv“ herunterzuladen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

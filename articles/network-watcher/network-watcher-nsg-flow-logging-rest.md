@@ -1,30 +1,28 @@
 ---
-title: Verwalten von Flowprotokollen für Netzwerksicherheitsgruppen mit Azure Network Watcher – REST-API | Microsoft-Dokumentation
+title: Verwalten von NSG-Flowprotokollen – Azure-REST-API
+titleSuffix: Azure Network Watcher
 description: Auf dieser Seite wird erläutert, wie Flowprotokolle für Netzwerksicherheitsgruppen in Azure Network Watcher mit der REST-API verwaltet werden.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 2ab25379-0fd3-4bfe-9d82-425dfc7ad6bb
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 88173b24ecfca72e05d6f930b45d732aefad0e56
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.author: damendo
+ms.openlocfilehash: 936501674fcf1d428de936174575440edad71de2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563416"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84738514"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurieren von Flowprotokollen für Netzwerksicherheitsgruppen mit der REST-API
 
 > [!div class="op_single_selector"]
-> - [Azure-Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure-Befehlszeilenschnittstelle](network-watcher-nsg-flow-logging-cli.md)
 > - [REST-API](network-watcher-nsg-flow-logging-rest.md)
@@ -35,7 +33,7 @@ Datenflussprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Fe
 
 ARMclient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden [ARMClient auf Chocolatey](https://chocolatey.org/packages/ARMClient).
 
-Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen.
+Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben.
 
 > [!Important]
 > Für Network Watcher-REST-API-Aufrufe ist der Ressourcengruppenname im Anforderungs-URI die Ressourcengruppe, die die Network Watcher-Instanz enthält, nicht die Ressourcen, für die Sie die Diagnoseaktionen ausführen.
@@ -58,7 +56,7 @@ Melden Sie sich mit Ihren Azure-Anmeldeinformationen bei ARMClient an.
 armclient login
 ```
 
-## <a name="register-insights-provider"></a>Registrieren eines Anbieters von Insights
+## <a name="register-insights-provider"></a>Registrieren von Insights-Anbietern
 
 Der Anbieter **Microsoft.Insights** muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Wenn Sie sich nicht sicher sind, ob der Anbieter **Microsoft.Insights** registriert ist, führen Sie folgendes Skript aus.
 
@@ -216,9 +214,6 @@ Wenn ein Speicherkonto angegeben wird, werden Paketerfassungsdateien in einem Sp
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
-
-> [!IMPORTANT]
-> Zurzeit gibt es ein Problem, bei dem die [Datenflussprotokolle für Netzwerksicherheitsgruppen (NSG)](network-watcher-nsg-flow-logging-overview.md) für Network Watcher nicht auf Grundlage der Einstellungen für die Aufbewahrungsrichtlinie automatisch aus dem Blobpeicher gelöscht werden. Wenn eine Aufbewahrungsrichtlinie ungleich Null vorhanden ist, wird empfohlen, die Speicher-Blobs, deren Aufbewahrungszeitraum überschritten ist, regelmäßig zu löschen, um Gebühren zu vermeiden. Weitere Informationen zum Löschen des Speicherblobs mit NSG-Flowprotokoll finden Sie unter [Löschen von Speicherblobs mit NSG-Flowprotokollen](network-watcher-delete-nsg-flow-log-blobs.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

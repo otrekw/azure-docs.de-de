@@ -1,19 +1,15 @@
 ---
 title: Aktivieren und Anzeigen von Diagnoseprotokollen für Azure Data Lake Analytics
 description: Enthält eine Beschreibung der Grundlagen zum Einrichten von Diagnoseprotokollen und zum damit verbundenen Zugriff für Azure Data Lake Analytics.
-services: data-lake-analytics
 ms.service: data-lake-analytics
-author: jasonwhowell
-ms.author: jasonh
-ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cd339729f2300ff7e13e7422bf73373b4ce4658e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60616496"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221008"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics
 
@@ -29,7 +25,7 @@ Die Diagnoseprotokollierung ermöglicht Ihnen das Erfassen von Zugriffsüberwach
 
 2. Öffnen Sie Ihr Data Lake Analytics-Konto, und wählen Sie im Abschnitt __Überwachung__ die Option **Diagnoseprotokolle** aus. Wählen Sie anschließend __Diagnose aktivieren__.
 
-    ![Aktivieren der Diagnose zum Sammeln von Überwachungs- und Anforderungsprotokollen](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
+    ![Der Screenshot zeigt, dass die Aktion „Diagnoseprotokolle“ aktiviert und die Aktion „Diagnosen zum Erfassen der folgenden Protokolle aktivieren“ hervorgehoben ist.](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
 3. Geben Sie unter __Diagnoseeinstellungen__ einen __Namen__ für diese Protokollierungskonfiguration ein, und wählen Sie dann Protokollierungsoptionen aus.
 
@@ -60,32 +56,34 @@ Die Diagnoseprotokollierung ermöglicht Ihnen das Erfassen von Zugriffsüberwach
 
 2. Innerhalb der Container werden die Protokolle in der folgenden Dateistruktur gespeichert:
 
-        resourceId=/
-          SUBSCRIPTIONS/
-            <<SUBSCRIPTION_ID>>/
-              RESOURCEGROUPS/
-                <<RESOURCE_GRP_NAME>>/
-                  PROVIDERS/
-                    MICROSOFT.DATALAKEANALYTICS/
-                      ACCOUNTS/
-                        <DATA_LAKE_ANALYTICS_NAME>>/
-                          y=####/
-                            m=##/
-                              d=##/
-                                h=##/
-                                  m=00/
-                                    PT1H.json
+   ```text
+   resourceId=/
+     SUBSCRIPTIONS/
+       <<SUBSCRIPTION_ID>>/
+         RESOURCEGROUPS/
+           <<RESOURCE_GRP_NAME>>/
+             PROVIDERS/
+               MICROSOFT.DATALAKEANALYTICS/
+                 ACCOUNTS/
+                   <DATA_LAKE_ANALYTICS_NAME>>/
+                     y=####/
+                       m=##/
+                         d=##/
+                           h=##/
+                             m=00/
+                               PT1H.json
+   ```
 
    > [!NOTE]
    > Auf dem Blatt `##` -Einträge im Pfad enthalten Jahr, Monat, Tag und Stunde der Protokollerstellung. Data Lake Analytics erstellt eine Datei pro Stunde, sodass `m=` immer den Wert `00` enthält.
 
     Der vollständige Pfad zu einem Überwachungsprotokoll kann beispielsweise wie folgt lauten:
 
-        https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json
+    `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
 
     Entsprechend kann der vollständige Pfad zu einem Anforderungsprotokoll wie folgt lauten:
 
-        https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json
+    `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
 ## <a name="log-structure"></a>Protokollstruktur
 
@@ -95,97 +93,97 @@ Die Überwachungs- und Anforderungsprotokolle liegen in einem strukturierten JSO
 
 Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotokoll. Jedes Blob hat ein Stammobjekt namens **records** , das ein Array mit Protokollobjekten enthält.
 
+```json
+{
+"records":
+  [
+    . . . .
+    ,
     {
-    "records":
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_analytics_account_name>",
-             "category": "Requests",
-             "operationName": "GetAggregatedJobHistory",
-             "resultType": "200",
-             "callerIpAddress": "::ffff:1.1.1.1",
-             "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
-             "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-             "properties": {
-                 "HttpMethod":"POST",
-                 "Path":"/JobAggregatedHistory",
-                 "RequestContentLength":122,
-                 "ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8",
-                 "StartTime":"2016-07-07T21:02:52.472Z",
-                 "EndTime":"2016-07-07T21:02:53.456Z"
-                 }
-        }
-        ,
-        . . . .
-      ]
+         "time": "2016-07-07T21:02:53.456Z",
+         "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_analytics_account_name>",
+         "category": "Requests",
+         "operationName": "GetAggregatedJobHistory",
+         "resultType": "200",
+         "callerIpAddress": "::ffff:1.1.1.1",
+         "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
+         "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
+         "properties": {
+             "HttpMethod":"POST",
+             "Path":"/JobAggregatedHistory",
+             "RequestContentLength":122,
+             "ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8",
+             "StartTime":"2016-07-07T21:02:52.472Z",
+             "EndTime":"2016-07-07T21:02:53.456Z"
+             }
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="request-log-schema"></a>Anforderungsprotokollschema
 
-| NAME | Type | BESCHREIBUNG |
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
-| time |string |Der Zeitstempel (UTC) des Protokolls. |
-| Ressourcen-ID |string |Die ID der Ressource, für die der Vorgang erfolgt ist |
-| category |string |Die Protokollkategorie. Beispiel: **Anforderungen**. |
-| operationName |string |Der Name des protokollierten Vorgangs. Beispiel: GetAggregatedJobHistory. |
-| resultType |string |Der Status des Vorgangs, beispielsweise 200. |
-| callerIpAddress |string |Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
-| correlationId |string |Der Bezeichner des Protokolls. Dieser Wert kann verwendet werden, um einen Satz zusammengehöriger Protokolleinträgen zu gruppieren. |
+| time |String |Der Zeitstempel (UTC) des Protokolls. |
+| resourceId |String |Die ID der Ressource, für die der Vorgang erfolgt ist |
+| category |String |Die Protokollkategorie. Beispiel: **Anforderungen**. |
+| operationName |String |Der Name des protokollierten Vorgangs. Beispiel: GetAggregatedJobHistory. |
+| resultType |String |Der Status des Vorgangs, beispielsweise 200. |
+| callerIpAddress |String |Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
+| correlationId |String |Der Bezeichner des Protokolls. Dieser Wert kann verwendet werden, um einen Satz zusammengehöriger Protokolleinträgen zu gruppieren. |
 | identity |Object |Die Identität, die das Protokoll erstellt hat. |
 | properties |JSON |Details hierzu finden Sie im nächsten Abschnitt (Eigenschaftenschema des Anforderungsprotokolls). |
 
 #### <a name="request-log-properties-schema"></a>Eigenschaftenschema des Anforderungsprotokolls
 
-| NAME | Type | BESCHREIBUNG |
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
-| HttpMethod |string |Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
-| `Path` |string |Der Pfad, in dem der Vorgang durchgeführt wurde. |
-| RequestContentLength |int |Die Inhaltslänge der HTTP-Anforderung. |
-| ClientRequestId |string |Der Bezeichner, der diese Anforderung eindeutig identifiziert |
-| StartTime |string |Der Zeitpunkt, zu dem der Server die Anforderung empfangen hat. |
-| EndTime |string |Der Zeitpunkt, zu dem der Server eine Antwort gesendet hat. |
+| HttpMethod |String |Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
+| `Path` |String |Der Pfad, in dem der Vorgang durchgeführt wurde. |
+| RequestContentLength |INT |Die Inhaltslänge der HTTP-Anforderung. |
+| ClientRequestId |String |Der Bezeichner, der diese Anforderung eindeutig identifiziert |
+| StartTime |String |Der Zeitpunkt, zu dem der Server die Anforderung empfangen hat. |
+| EndTime |String |Der Zeitpunkt, zu dem der Server eine Antwort gesendet hat. |
 
 ### <a name="audit-logs"></a>Überwachungsprotokolle
 
 Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsprotokoll. Jedes Blob hat ein Stammobjekt namens **records** , das ein Array mit Protokollobjekten enthält.
 
+```json
+{
+"records":
+  [
     {
-    "records":
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-28T19:15:16.245Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_ANALYTICS_account_name>",
-             "category": "Audit",
-             "operationName": "JobSubmitted",
-             "identity": "user@somewhere.com",
-             "properties": {
-                 "JobId":"D74B928F-5194-4E6C-971F-C27026C290E6",
-                 "JobName": "New Job",
-                 "JobRuntimeName": "default",
-                 "SubmitTime": "7/28/2016 7:14:57 PM"
-                 }
-        }
-        ,
-        . . . .
-      ]
+         "time": "2016-07-28T19:15:16.245Z",
+         "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_ANALYTICS_account_name>",
+         "category": "Audit",
+         "operationName": "JobSubmitted",
+         "identity": "user@somewhere.com",
+         "properties": {
+             "JobId":"D74B928F-5194-4E6C-971F-C27026C290E6",
+             "JobName": "New Job",
+             "JobRuntimeName": "default",
+             "SubmitTime": "7/28/2016 7:14:57 PM"
+             }
     }
+  ]
+}
+```
 
 #### <a name="audit-log-schema"></a>Überwachungsprotokollschema
 
-| NAME | Type | BESCHREIBUNG |
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
-| time |string |Der Zeitstempel (UTC) des Protokolls. |
-| Ressourcen-ID |string |Die ID der Ressource, für die der Vorgang erfolgt ist |
-| category |string |Die Protokollkategorie. Beispiel: **Überwachung**. |
-| operationName |string |Der Name des protokollierten Vorgangs. Beispiel: JobSubmitted. |
-| resultType |string |Ein Unterstatus für den Auftragsstatus (operationName). |
-| resultSignature |string |Weitere Informationen zum Auftragsstatus (operationName). |
-| identity |string |Der Benutzer, der den Vorgang angefordert hat. Beispiel: susan@contoso.com. |
+| time |String |Der Zeitstempel (UTC) des Protokolls. |
+| resourceId |String |Die ID der Ressource, für die der Vorgang erfolgt ist |
+| category |String |Die Protokollkategorie. Beispiel: **Überwachung**. |
+| operationName |String |Der Name des protokollierten Vorgangs. Beispiel: JobSubmitted. |
+| resultType |String |Ein Unterstatus für den Auftragsstatus (operationName). |
+| resultSignature |String |Weitere Informationen zum Auftragsstatus (operationName). |
+| identity |String |Der Benutzer, der den Vorgang angefordert hat. Beispiel: susan@contoso.com. |
 | properties |JSON |Details hierzu finden Sie im nächsten Abschnitt (Eigenschaftenschema des Überwachungsprotokolls). |
 
 > [!NOTE]
@@ -195,15 +193,15 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 
 #### <a name="audit-log-properties-schema"></a>Eigenschaftenschema des Überwachungsprotokolls
 
-| NAME | Type | BESCHREIBUNG |
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
-| JobId |string |Die ID, die dem Auftrag zugewiesen ist. |
-| JobName |string |Der Name, der für den Auftrag angegeben wurde. |
-| JobRunTime |string |Die zum Verarbeiten des Auftrags verwendete Laufzeit. |
-| SubmitTime |string |Der Zeitpunkt (UTC), zu dem der Auftrag übermittelt wurde. |
-| StartTime |string |Die Uhrzeit (UTC), zu der der Auftrag nach der Übermittlung gestartet wurde |
-| EndTime |string |Die Uhrzeit, zu der der Auftrag beendet wurde |
-| Parallelität |string |Die Anzahl von Data Lake Analytics-Einheiten, die für diesen Auftrag während der Übermittlung angefordert wurden |
+| JobId |String |Die ID, die dem Auftrag zugewiesen ist. |
+| JobName |String |Der Name, der für den Auftrag angegeben wurde. |
+| JobRunTime |String |Die zum Verarbeiten des Auftrags verwendete Laufzeit. |
+| SubmitTime |String |Der Zeitpunkt (UTC), zu dem der Auftrag übermittelt wurde. |
+| StartTime |String |Die Uhrzeit (UTC), zu der der Auftrag nach der Übermittlung gestartet wurde |
+| EndTime |String |Die Uhrzeit, zu der der Auftrag beendet wurde |
+| Parallelität |String |Die Anzahl von Data Lake Analytics-Einheiten, die für diesen Auftrag während der Übermittlung angefordert wurden |
 
 > [!NOTE]
 > **SubmitTime**, **StartTime**, **EndTime** und **Parallelität** bietet Informationen zu einem Vorgang. Diese Einträge enthalten nur dann einen Wert, wenn ein Vorgang gestartet oder beendet wurde. Beispiel: **SubmitTime** enthält nur einen Wert, sobald **operationName** den Wert **JobSubmitted** hat.
@@ -213,4 +211,5 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 Azure Data Lake Analytics stellt ein Muster bereit, nach dem die Protokolldaten verarbeitet und analysiert werden sollen. Sie finden das Beispiel unter [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md)
+
+[Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md)

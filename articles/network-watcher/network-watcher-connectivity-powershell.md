@@ -1,24 +1,23 @@
 ---
-title: Problembehandlung für Verbindungen mit Azure Network Watcher – PowerShell | Microsoft-Dokumentation
+title: Problembehandlung bei Verbindungen – Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Hier erfahren Sie, wie Sie mithilfe von PowerShell die Funktion zur Problembehandlung für Verbindungen von Azure Network Watcher nutzen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: kumud
-ms.openlocfilehash: 82bd92de8b2cbb0da4d6d37911a6a3f71186b592
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.author: damendo
+ms.openlocfilehash: 15ce453b607855072ca6e7c7ee32f63000e1d754
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802037"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492487"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Problembehandlung für Verbindungen mit Azure Network Watcher und PowerShell
 
@@ -39,7 +38,7 @@ Hier erfahren Sie, wie Sie mit der Problembehandlung für Verbindungen überprü
 * Virtuelle Computer zum Ausführen der Problembehandlung für Verbindungen
 
 > [!IMPORTANT]
-> Für die Problembehandlung für Verbindungen muss auf dem virtuellen Computer, auf dem Sie die Problembehandlung ausführen, die VM-Erweiterung `AzureNetworkWatcherExtension` installiert sein. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Die Erweiterung ist nicht auf dem Zielendpunkt erforderlich.
+> Für die Problembehandlung für Verbindungen muss auf dem virtuellen Computer, auf dem Sie die Problembehandlung ausführen, die VM-Erweiterung `AzureNetworkWatcherExtension` installiert sein. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/extensions/network-watcher-windows.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/extensions/network-watcher-linux.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Die Erweiterung ist nicht auf dem Zielendpunkt erforderlich.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Überprüfen der Konnektivität zu einem virtuellen Computer
 
@@ -62,9 +61,9 @@ $networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Va
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationId $VM2.Id -DestinationPort 80
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
-Die folgende Antwort stammt aus dem vorherigen Beispiel.  In dieser Antwort ist der `ConnectionStatus` **Nicht erreichbar**. Wie Sie sehen, sind alle gesendeten Tests fehlgeschlagen. Bei der Konnektivität ist am virtuellen Gerät ein Fehler aufgetreten. Der Grund dafür ist eine benutzerdefinierte `NetworkSecurityRule` mit der Bezeichnung **UserRule_Port80**, deren Konfiguration eingehenden Datenverkehr über Port 80 blockiert. Diese Informationen können bei der Untersuchung von Konnektivitätsproblemen verwendet werden.
+Die folgende Antwort stammt aus dem vorherigen Beispiel.  In dieser Antwort ist der `ConnectionStatus`**Nicht erreichbar**. Wie Sie sehen, sind alle gesendeten Tests fehlgeschlagen. Bei der Konnektivität ist am virtuellen Gerät ein Fehler aufgetreten. Der Grund dafür ist eine benutzerdefinierte `NetworkSecurityRule` mit der Bezeichnung **UserRule_Port80**, deren Konfiguration eingehenden Datenverkehr über Port 80 blockiert. Diese Informationen können bei der Untersuchung von Konnektivitätsproblemen verwendet werden.
 
 ```
 ConnectionStatus : Unreachable
@@ -153,7 +152,7 @@ $networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Va
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress 13.107.21.200 -DestinationPort 80
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Im folgenden Beispiel wird der `ConnectionStatus` als **Nicht erreichbar** angezeigt. In den `Hops`-Details können Sie unter `Issues` sehen, dass der Datenverkehr aufgrund einer `UserDefinedRoute` blockiert war. 
 
@@ -217,7 +216,7 @@ $networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Va
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://bing.com/
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 In der folgenden Antwort wird der `ConnectionStatus` als **Erreichbar** angezeigt. Wenn eine Verbindung erfolgreich ist, werden Latenzwerte bereitgestellt.
 
@@ -269,7 +268,7 @@ $networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Va
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://contosostorageexample.blob.core.windows.net/ 
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Der folgende JSON-Code ist die Beispielantwort auf die Ausführung des vorherigen Cmdlets. Da das Ziel erreichbar ist, wird die `ConnectionStatus`-Eigenschaft als **Erreichbar** angezeigt.  Die Einzelheiten in Bezug auf die Anzahl der Hops, die zum Erreichen des Speicherblobs und der Latenz benötigt werden, werden bereitgestellt.
 

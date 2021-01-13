@@ -1,31 +1,29 @@
 ---
-title: Senden von Pushbenachrichtigungen an Xamarin.iOS-Apps mit Azure Notification Hubs | Microsoft-Dokumentation
+title: Senden von Pushbenachrichtigungen an Xamarin mit Azure Notification Hubs | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs eine Pushbenachrichtigung an eine Xamarin.iOS-Anwendung senden.
 services: notification-hubs
 keywords: iOS-Pushbenachrichtigungen,Pushnachrichten,Pushbenachrichtigungen,Pushnachricht
 documentationcenter: xamarin
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 4d4dfd42-c5a5-4360-9d70-7812f96924d2
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 05/23/2019
+ms.custom: mvc, devx-track-csharp
+ms.date: 07/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: 7427421719b44839e766234194640817ea686e3c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 7b53767aea9df2da8dbf89e26fff03c792918016
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213581"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893678"
 ---
-# <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an Xamarin.iOS-Apps mit Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an Xamarin.iOS-Apps mit Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -108,21 +106,21 @@ Die Absolvierung dieses Tutorials ist eine Voraussetzung für alle anderen Notif
         if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
         {
             UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound,
-                                                                    (granted, error) =>
-            {
-                if (granted)
-                    InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications);
-            });
-        } else if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
-            var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
+                                                                    (granted, error) => InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications));
+        }
+        else if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+        {
+            var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(
                     UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
-                    new NSSet ());
+                    new NSSet());
 
-            UIApplication.SharedApplication.RegisterUserNotificationSettings (pushSettings);
-            UIApplication.SharedApplication.RegisterForRemoteNotifications ();
-        } else {
+            UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
+            UIApplication.SharedApplication.RegisterForRemoteNotifications();
+        }
+        else
+        {
             UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
-            UIApplication.SharedApplication.RegisterForRemoteNotificationTypes (notificationTypes);
+            UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationTypes);
         }
 
         return true;
@@ -136,7 +134,7 @@ Die Absolvierung dieses Tutorials ist eine Voraussetzung für alle anderen Notif
     {
         Hub = new SBNotificationHub(Constants.ListenConnectionString, Constants.NotificationHubName);
 
-        Hub.UnregisterAllAsync (deviceToken, (error) => {
+        Hub.UnregisterAll (deviceToken, (error) => {
             if (error != null)
             {
                 System.Diagnostics.Debug.WriteLine("Error calling Unregister: {0}", error.ToString());
@@ -144,9 +142,9 @@ Die Absolvierung dieses Tutorials ist eine Voraussetzung für alle anderen Notif
             }
 
             NSSet tags = null; // create tags if you want
-            Hub.RegisterNativeAsync(deviceToken, tags, (errorCallback) => {
+            Hub.RegisterNative(deviceToken, tags, (errorCallback) => {
                 if (errorCallback != null)
-                    System.Diagnostics.Debug.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
+                    System.Diagnostics.Debug.WriteLine("RegisterNative error: " + errorCallback.ToString());
             });
         });
     }
@@ -191,8 +189,9 @@ Die Absolvierung dieses Tutorials ist eine Voraussetzung für alle anderen Notif
                 //Manually show an alert
                 if (!string.IsNullOrEmpty(alert))
                 {
-                    UIAlertView avAlert = new UIAlertView("Notification", alert, null, "OK", null);
-                    avAlert.Show();
+                    var myAlert = UIAlertController.Create("Notification", alert, UIAlertControllerStyle.Alert);
+                    myAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+                    UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(myAlert, true, null);
                 }
             }
         }
@@ -206,7 +205,7 @@ Die Absolvierung dieses Tutorials ist eine Voraussetzung für alle anderen Notif
 
 ## <a name="send-test-push-notifications"></a>Senden von Test-Pushbenachrichtigungen
 
-Mit der Option *Testsendevorgang* im [Azure-Portal] können Sie den Empfang von Benachrichtigungen in Ihrer App testen. Diese Option sendet zu Testzwecken eine Pushbenachrichtigung an Ihr Gerät.
+Mit der Option *Testsendevorgang* im [Azure portal] können Sie den Empfang von Benachrichtigungen in Ihrer App testen. Diese Option sendet zu Testzwecken eine Pushbenachrichtigung an Ihr Gerät.
 
 ![Azure-Portal – Testsendung][30]
 
@@ -238,4 +237,4 @@ In diesem Tutorial haben Sie Broadcastbenachrichtigungen an alle iOS-Geräte ges
 [Apple Push Notification Service]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [Apple Push Notification Service fwlink]: https://go.microsoft.com/fwlink/p/?LinkId=272584
 [GitHub]: https://github.com/xamarin/mobile-samples/tree/master/Azure/NotificationHubs
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com

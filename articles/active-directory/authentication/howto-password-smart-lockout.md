@@ -1,58 +1,60 @@
 ---
-title: Verhindern von Brute-Force-Angriffen mithilfe von Azure AD Smart Lockout – Azure Active Directory
-description: Azure AD Smart Lockout trägt dazu bei, Ihre Organisation vor Brute-Force-Angriffen zu schützen, bei denen versucht wird, Kennwörter zu erraten.
+title: 'Verhindern von Angriffen mithilfe von Smart Lockout: Azure Active Directory'
+description: Hier erfahren Sie, wie Smart Lockout von Azure Active Directory dazu beiträgt, Ihre Organisation vor Brute-Force-Angriffen zu schützen, bei denen versucht wird, Benutzerkennwörter zu erraten.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 07/25/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: how-to
+ms.date: 07/20/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a762009a7aaf1a965333ac573efe55d792c3f04b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b8a57e77ea572f899bf540714e8ac9968988f028
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125015"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741727"
 ---
-# <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory Smart Lockout
+# <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Schützen von Benutzerkonten vor Angriffen mithilfe von Smart Lockout von Azure Active Directory
 
-Smart Lockout unterstützt Sie beim Sperren von Angreifern, die versuchen, Benutzerkennwörter zu erraten oder mithilfe von Brute-Force-Methoden in Ihr System einzudringen. Smart Lockout kann Anmeldungen gültiger Benutzer erkennen und anders behandeln als Anmeldungen von Angreifern und anderen unbekannten Quellen. Smart Lockout sperrt die Angreifer aus, während Ihre Benutzer weiterhin auf ihre Konten zugreifen und produktiv arbeiten können.
+Smart Lockout unterstützt Sie dabei, Angreifer auszusperren, die versuchen, Benutzerkennwörter zu erraten oder sich mithilfe von Brute-Force-Methoden Zugang zu verschaffen. Smart Lockout kann Anmeldungen gültiger Benutzer erkennen und anders behandeln als Anmeldungen von Angreifern und anderen unbekannten Quellen. Angreifer werden ausgesperrt, während Ihre Benutzer weiterhin auf ihre Konten zugreifen und produktiv arbeiten können.
 
-Nach zehn Fehlversuchen sperrt Smart Lockout das Konto standardmäßig eine Minute lang für Anmeldeversuche. Das Konto wird nach jedem weiteren fehlgeschlagenen Anmeldeversuch zuerst für eine Minute und bei anschließenden Versuchen länger gesperrt.
+## <a name="how-smart-lockout-works"></a>Funktionsweise von Smart Lockout
 
-Smart Lockout verfolgt die letzten drei fehlerhaften Kennworthashes, um zu vermeiden, dass der Sperrungszähler für dasselbe Kennwort erhöht wird. Wenn eine Person mehrere Male das falsche Kennwort eingibt, wird dadurch keine Kontosperre verursacht.
+Nach zehn Fehlversuchen sperrt Smart Lockout das Konto standardmäßig eine Minute lang für Anmeldeversuche. Das Konto wird nach jedem weiteren fehlgeschlagenen Anmeldeversuch zuerst für eine Minute und bei anschließenden Versuchen länger gesperrt. Um die Möglichkeiten eines Angreifers zum Umgehen dieses Verhaltens auf ein Minimum zu beschränken, geben wir nicht bekannt, mit welcher Rate der Sperrzeitraum bei weiteren erfolglosen Anmeldeversuchen ausgeweitet wird.
 
- > [!NOTE]
- > Eine Funktion zur Hashnachverfolgung ist nicht für Kunden verfügbar, die die Pass-Through-Authentifizierung aktiviert haben, da die Authentifizierung lokal und nicht in der Cloud erfolgt.
+Smart Lockout verfolgt die letzten drei fehlerhaften Kennworthashes, um zu vermeiden, dass der Sperrungszähler für dasselbe Kennwort erhöht wird. Wenn eine Person mehrmals das falsche Kennwort eingibt, hat dies keine Sperrung des Kontos zur Folge.
 
-Verbundbereitstellungen mit AD FS 2016 und AD FS 2019 können Ihnen mithilfe von [AD FS Extranet Lockout und Extranet Smart Lockout](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) ähnliche Vorteile verschaffen.
+> [!NOTE]
+> Für Kunden mit aktivierter Passthrough-Authentifizierung ist die Hashnachverfolgung nicht verfügbar, da die Authentifizierung lokal und nicht in der Cloud stattfindet.
 
-Smart Lockout ist für alle Azure AD-Kunden ständig aktiv und bietet standardmäßig die richtige Mischung aus Sicherheit und Nutzbarkeit. Wenn Sie die Smart Lockout-Einstellungen mit spezifischen Werten für Ihre Organisation konfigurieren möchten, benötigen Sie kostenpflichtige Azure AD-Lizenzen für Ihre Benutzer.
+Verbundbereitstellungen mit AD FS 2016 und AD FS 2019 können mit [AD FS Extranet Lockout und Extranet Smart Lockout](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) ähnliche Vorteile bieten.
 
-Die Verwendung von Smart Lockout garantiert nicht, dass ein echter Benutzer niemals gesperrt wird. Wenn ein Benutzerkonto durch Smart Lockout gesperrt wird, versuchen wir unser Bestes, nicht den echten Benutzer zu sperren. Der Sperrdienst versucht sicherzustellen, dass Angreifer keinen Zugriff auf die Konten echter Benutzer erhalten.  
+Smart Lockout ist für alle Azure AD-Kunden ständig aktiv und bietet standardmäßig die richtige Mischung aus Sicherheit und Benutzerfreundlichkeit. Wenn Sie die Smart Lockout-Einstellungen mit spezifischen Werten für Ihre Organisation konfigurieren möchten, benötigen Sie mindestens Azure AD Premium P1-Lizenzen für Ihre Benutzer.
 
-* Sperren werden von den einzelnen Azure Active Directory-Rechenzentren unabhängig voneinander verfolgt. Ein Benutzer besitzt (Schwellenwert * Rechenzentrumsanzahl) Versuche, wenn der Benutzer auf die einzelnen Rechenzentren trifft.
-* Ein böswilliger Benutzer und ein echter Benutzer werden von Smart Lockout über einen bekannten/unbekannten Standort unterschieden. Unbekannte und bekannte Standorte weisen jeweils separate Zähler für Sperren auf.
+Die Verwendung von Smart Lockout garantiert nicht, dass ein echter Benutzer niemals ausgesperrt wird. Wenn ein Benutzerkonto durch Smart Lockout gesperrt wird, versuchen wir unser Bestes, nicht den echten Benutzer auszusperren. Der Sperrdienst versucht sicherzustellen, dass Angreifer keinen Zugriff auf die Konten echter Benutzer erhalten. Es gelten die folgenden Bedingungen:
 
-Smart Lockout ist in Hybridbereitstellungen integrierbar und kann mittels Kennworthashsynchronisierung oder Passthrough-Authentifizierung verhindern, dass lokale Active Directory-Konten von Angreifern gesperrt werden. Durch korrektes Festlegen von Smart Lockout-Richtlinien in Azure AD können Angriffe herausgefiltert werden, bevor sie die lokale Active Directory-Instanz erreichen.
+* Sperren werden von den einzelnen Azure AD-Rechenzentren unabhängig voneinander nachverfolgt. Ein Benutzer hat (*Schwellenwert · Rechenzentrumsanzahl*) Versuche, wenn der Benutzer auf die einzelnen Rechenzentren trifft.
+* Ein böswilliger Benutzer und ein echter Benutzer werden von Smart Lockout über einen bekannten/unbekannten Standort unterschieden. Unbekannte und bekannte Standorte verfügen jeweils über separate Zähler für Sperren.
 
-Bei Verwendung der [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta.md) muss Folgendes sichergestellt werden:
+Smart Lockout ist in Hybridbereitstellungen integrierbar und kann mittels Kennworthashsynchronisierung oder Passthrough-Authentifizierung verhindern, dass lokale AD DS-Konten (Active Directory Domain Services) durch Angreifer gesperrt werden. Durch korrektes Festlegen von Smart Lockout-Richtlinien in Azure AD können Angriffe herausgefiltert werden, bevor sie die lokale AD DS-Instanz erreichen.
 
-* Der Azure AD-Sperrschwellenwert ist **kleiner** als der Schwellenwert für eine Active Directory-Kontosperrung. Legen Sie die Werte so fest, dass der Schwellenwert für eine Active Directory-Kontosperrung mindestens das Zwei- oder Dreifache des Azure AD-Sperrschwellenwerts beträgt. 
-* Die Azure AD-Sperrdauer muss länger als die Active Directory-Zurücksetzungsdauer des Kontosperrungszählers festgelegt sein. Beachten Sie, dass die Azure AD-Dauer in Sekunden und die AD-Dauer in Minuten festgelegt wird. 
+Bei Verwendung der [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta.md) gilt Folgendes:
 
-Wenn Sie beispielsweise möchten, dass Ihr Azure AD-Zähler höher als der AD-Wert ist, dann ist die Azure AD-Dauer 120 Sekunden (2 Minuten), während Ihr lokales AD auf 1 Minute (60 Sekunden) festgelegt ist.
+* Der Azure AD-Sperrschwellenwert ist **kleiner** als der Schwellenwert für eine AD DS-Kontosperrung. Legen Sie die Werte so fest, dass der Schwellenwert für eine AD DS-Kontosperrung mindestens das Zwei- oder Dreifache des Azure AD-Sperrschwellenwerts beträgt.
+* Die Azure AD-Sperrdauer muss länger sein als die AD DS-Zurücksetzungsdauer des Kontosperrungszählers. Die Azure AD-Dauer wird in Sekunden festgelegt, die AD-Dauer dagegen in Minuten.
+
+Wenn der Azure AD-Zähler also beispielsweise höher sein soll als der AD DS-Wert, muss der Azure AD-Wert auf 120 Sekunden (2 Minuten) und der Wert Ihrer lokalen AD-Instanz auf eine Minute (60 Sekunden) festgelegt werden.
 
 > [!IMPORTANT]
 > Derzeit können die Cloudkonten der Benutzer nicht von einem Administrator entsperrt werden, wenn sie von Smart Lockout gesperrt wurden. Der Administrator muss warten, bis die Sperrdauer abgelaufen ist. Der Benutzer kann das Konto jedoch von einem vertrauenswürdigen Gerät oder Standort aus mithilfe der Self-Service-Kennwortzurücksetzung (SSPR) entsperren.
 
 ## <a name="verify-on-premises-account-lockout-policy"></a>Überprüfen der lokalen Kontosperrungsrichtlinie
 
-Gehen Sie wie folgt vor, um Ihre lokale Active Directory-Kontosperrungsrichtlinie zu überprüfen:
+Führen Sie auf einem in die Domäne eingebundenen System mit Administratorrechten die folgenden Schritte aus, um Ihre lokale AD DS-Kontosperrungsrichtlinie zu überprüfen:
 
 1. Öffnen Sie das Gruppenrichtlinienverwaltungstool.
 2. Bearbeiten Sie die Gruppenrichtlinie, die die Kontosperrungsrichtlinie Ihrer Organisation enthält (beispielsweise die **Standarddomänenrichtlinie**).
@@ -63,13 +65,19 @@ Gehen Sie wie folgt vor, um Ihre lokale Active Directory-Kontosperrungsrichtlini
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Verwalten der Werte für Azure AD Smart Lockout
 
-Abhängig von den Anforderungen Ihrer Organisation müssen die Werte für Smart Lockout ggf. angepasst werden. Wenn Sie die Smart Lockout-Einstellungen mit spezifischen Werten für Ihre Organisation konfigurieren möchten, benötigen Sie kostenpflichtige Azure AD-Lizenzen für Ihre Benutzer.
+Die Werte für Werte für Azure AD Smart Lockout können auf die Anforderungen Ihrer Organisation abgestimmt werden. Wenn Sie die Smart Lockout-Einstellungen mit spezifischen Werten für Ihre Organisation konfigurieren möchten, benötigen Sie mindestens Azure AD Premium P1-Lizenzen für Ihre Benutzer.
 
-Gehen Sie wie folgt vor, um die Smart Lockout-Werte zu überprüfen und ggf. für Ihre Organisation anzupassen:
+Gehen Sie wie folgt vor, um die Smart Lockout-Werte zu überprüfen und ggf. für Ihre Organisation anzupassen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Azure Active Directory** > **Authentifizierungsmethoden** > **Kennwortschutz**.
-1. Legen Sie **Schwellenwert für Sperre** auf die Anzahl nicht erfolgreicher Anmeldeversuche fest, nach der das Konto erstmals gesperrt werden soll. (Standardwert: 10.)
-1. Legen unter **Sperrdauer in Sekunden** fest, wie viele Sekunden die Sperre jeweils dauern soll. Der Standardwert ist 60 Sekunden (eine Minute).
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Suchen Sie nach *Azure Active Directory*, und wählen Sie die entsprechende Option aus. Wählen Sie anschließend **Sicherheit** > **Authentifizierungsmethoden** > **Kennwortschutz** aus.
+1. Legen Sie **Schwellenwert für Sperre** auf die Anzahl nicht erfolgreicher Anmeldeversuche fest, nach der das Konto erstmals gesperrt werden soll.
+
+    Der Standardwert ist 10.
+
+1. Legen unter **Sperrdauer in Sekunden** fest, wie viele Sekunden die Sperre jeweils dauern soll.
+
+    Der Standardwert ist 60 Sekunden (eine Minute).
 
 > [!NOTE]
 > Ist der erste Anmeldeversuch nach einer Sperre wieder nicht erfolgreich, wird das Konto erneut sperrt. Bei wiederholter Kontosperrung erhöht sich die Sperrdauer.
@@ -80,9 +88,10 @@ Gehen Sie wie folgt vor, um die Smart Lockout-Werte zu überprüfen und ggf. fü
 
 Wenn der Schwellenwert von Smart Lockout ausgelöst wird, wird das Konto gesperrt und die folgende Meldung angezeigt:
 
-**Ihr Konto wurde vorübergehend gesperrt, um eine unbefugte Nutzung zu verhindern. Versuchen Sie es später noch mal. Wenden Sie sich an Ihren Administrator, wenn das Problem weiterhin besteht.**
+*Ihr Konto wurde vorübergehend gesperrt, um eine unbefugte Nutzung zu verhindern. Versuchen Sie es später noch mal. Wenden Sie sich an Ihren Administrator, wenn das Problem weiterhin besteht.*
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie mithilfe von Azure AD ungültige Kennwörter aus Ihrer Organisation verbannen.](howto-password-ban-bad.md)
-* [Konfigurieren Sie die Self-Service-Kennwortzurücksetzung, damit Benutzer ihre Konten selbst entsperren können.](quickstart-sspr.md)
+Zur weiteren Anpassung können Sie [benutzerdefinierte gesperrte Kennwörter für den Azure AD-Kennwortschutz konfigurieren](tutorial-configure-custom-password-protection.md).
+
+Um Benutzer beim Zurücksetzen oder Ändern ihres Kennworts über einen Webbrowser zu unterstützen, können Sie die [Self-Service-Kennwortzurücksetzung in Azure AD konfigurieren](tutorial-enable-sspr.md).

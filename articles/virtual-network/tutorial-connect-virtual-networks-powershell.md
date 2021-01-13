@@ -1,28 +1,26 @@
 ---
-title: Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peering virtueller Netzwerke – PowerShell | Microsoft-Dokumentation
+title: 'Herstellen von Verbindungen zwischen virtuellen Netzwerken mittels VNET-Peering: Azure PowerShell'
 description: In diesem Artikel erfahren Sie, wie Sie mit Azure PowerShell durch Peering virtueller Netzwerke Verbindungen zwischen virtuellen Netzwerken herstellen.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: f5c90b7d79b31c321b00869c90b0261c0b4730d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6ec552ea525abe6a84bb5e34e00ad317cae038bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66727758"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89077843"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peering virtueller Netzwerke mit PowerShell
 
@@ -179,7 +177,7 @@ Eine RDP-Datei (Remotedesktopprotokoll) wird erstellt, auf Ihren Computer herunt
 Aktivieren Sie auf der VM *myVm1* das Internet Control Message-Protokoll (ICMP) für die Windows-Firewall, damit Sie diese VM in einem späteren Schritt mit PowerShell über *myVm2* per Ping erreichen können:
 
 ```powershell
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
 ```
 
 In diesem Artikel wird Ping zwar für die Kommunikation zwischen VMs verwendet, aber das Zulassen des ICMP für die Windows-Firewall wird für Produktionsbereitstellungen nicht empfohlen.
@@ -208,6 +206,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie zwei Netzwerke in derselben Azure-Region durch das Peering virtueller Netzwerke verbunden werden. Sie können auch virtuelle Netzwerke in unterschiedlichen [ unterstützten Regionen](virtual-network-manage-peering.md#cross-region) und [verschiedenen Azure-Abonnements](create-peering-different-subscriptions.md#powershell) durch Peering verbinden und [Netzwerke vom Typ „Nabe und Speiche“](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) mit Peering erstellen. Weitere Informationen zum Peering in virtuellen Netzwerken finden Sie unter [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md) und [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md).
+In diesem Artikel haben Sie erfahren, wie zwei Netzwerke in derselben Azure-Region durch das Peering virtueller Netzwerke verbunden werden. Sie können auch virtuelle Netzwerke in unterschiedlichen [ unterstützten Regionen](virtual-network-manage-peering.md#cross-region) und [verschiedenen Azure-Abonnements](create-peering-different-subscriptions.md#powershell) durch Peering verbinden und [Netzwerke vom Typ „Nabe und Speiche“](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) mit Peering erstellen. Weitere Informationen zum Peering in virtuellen Netzwerken finden Sie unter [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md) und [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md).
 
 Sie können über ein VPN [eine Verbindung zwischen Ihrem eigenen Computer und einem virtuellen Netzwerk herstellen](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und mit Ressourcen in einem virtuellen Netzwerk oder in durch Peering verbundenen virtuellen Netzwerken interagieren. Wiederverwendbare Skripts, um viele der in den Artikeln zu virtuellen Netzwerken behandelten Aufgaben durchzuführen, finden Sie unter [Azure CLI-Beispiele für Linux-VMs](powershell-samples.md).

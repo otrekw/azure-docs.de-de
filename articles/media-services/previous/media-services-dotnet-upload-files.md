@@ -1,6 +1,6 @@
 ---
 title: Hochladen von Dateien in ein Media Services-Konto mit .NET | Microsoft Docs
-description: Erfahren Sie, wie Sie Medieninhalte in Media Services nutzen können, indem Sie Medienobjekte erstellen und hochladen.
+description: Erfahren Sie, wie Sie Medieninhalte in Media Services nutzen können, indem Sie Medienobjekte mithilfe von .NET erstellen und hochladen.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,17 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 03b9995eab503ac1fcd4615882419dde31d4f8bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 83e9b0278e99867cafa7e633bc382e490ec273c1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250526"
 ---
-# <a name="upload-files-into-a-media-services-account-using-net"></a>Hochladen von Dateien in ein Media Services-Konto mit .NET 
+# <a name="upload-files-into-a-media-services-account-using-net"></a>Hochladen von Dateien in ein Media Services-Konto mit .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 In Media Services laden Sie Ihre digitalen Dateien in ein Medienobjekt hoch oder erfassen sie auf diese Weise. Die Entität **Asset** kann Videos, Audiodateien, Bilder, Miniaturansichtssammlungen, Texttitel und Untertiteldateien (und die Metadaten zu diesen Dateien) enthalten.  Nachdem die Dateien hochgeladen wurden, werden Ihre Inhalte zur weiteren Verarbeitung und zum Streaming sicher in der Cloud gespeichert.
 
@@ -34,7 +37,7 @@ Die Dateien im Medienobjekt heißen **Medienobjektdateien**. Die **AssetFile** -
 
 Es gelten die folgenden Bedingungen:
  
- * Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der IAssetFile.Name-Eigenschaft (z. B. http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der **Name**-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) enthalten: !*'();:@&=+$,/?%#[]". Darüber hinaus wird für die Dateinamenerweiterung nur ein Punkt (.) unterstützt.
+ * Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der IAssetFile.Name-Eigenschaft (z. B. http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der **Name**-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) enthalten: ! * '();:@&=+$,/?%#[]". Darüber hinaus wird für die Dateinamenerweiterung nur ein Punkt (.) unterstützt.
 * Die Länge des Namens darf 260 Zeichen nicht überschreiten.
 * Bei der Verarbeitung in Media Services werden nur Dateien bis zu einer bestimmten Größe unterstützt. Ausführliche Informationen zur Dateigrößenbeschränkung finden Sie in [diesem Artikel](media-services-quotas-and-limitations.md).
 * Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen dazu finden Sie in [diesem Artikel](media-services-dotnet-manage-entities.md#limit-access-policies).
@@ -53,7 +56,7 @@ Wenn Sie Medienobjekte erstellen, können Sie die folgenden Verschlüsselungsopt
 
 Wenn Sie für Ihr Medienobjekt eine Verschlüsselung unter Verwendung der **CommonEncrypted**-Option oder der **EnvelopeEncypted**-Option angeben, müssen Sie dem Medienobjekt ein **ContentKey**-Element zuordnen. Weitere Informationen finden Sie unter [Erstellen eines ContentKey](media-services-dotnet-create-contentkey.md). 
 
-Wenn Sie für Ihr Medienobjekt eine Verschlüsselung mit einer **StorageEncrypted**-Option angeben, wird vom Media Services SDK für .NET ein **ContentKey**-Element vom Typ **StorateEncrypted** für Ihr Medienobjekt erstellt.
+Wenn Sie für Ihr Medienobjekt eine Verschlüsselung mit einer Option vom Typ **StorageEncrypted** angeben, wird vom Media Services SDK für .NET ein Inhaltsschlüssel (**ContentKey**) vom Typ **StorateEncrypted** für Ihr Medienobjekt erstellt.
 
 In diesem Artikel wird beschrieben, wie Sie mit dem Media Services .NET SDK und den Media Services .NET SDK-Erweiterungen Dateien in ein Media Services-Medienobjekt hochladen.
 
@@ -167,7 +170,7 @@ Beachten Sie beim Hochladen einer großen Anzahl von Medienobjekten Folgendes:
 * Erhöhen Sie NumberOfConcurrentTransfers vom Standardwert 2 auf einen höheren Wert wie 5. Das Festlegen dieser Eigenschaft wirkt sich auf alle Instanzen von **CloudMediaContext**aus. 
 * Behalten Sie für ParallelTransferThreadCount den Standardwert 10 bei.
 
-## <a id="ingest_in_bulk"></a>Sammelerfassung von Medienobjekten mithilfe von Media Services .NET SDK
+## <a name="ingesting-assets-in-bulk-using-media-services-net-sdk"></a><a id="ingest_in_bulk"></a>Sammelerfassung von Medienobjekten mithilfe von Media Services .NET SDK
 Das Hochladen großer Medienobjektdateien kann während der Erstellung von Medienobjekten einen Engpass verursachen. Beim Erfassen von Medienobjekten in einem Massenvorgang bzw. bei der "Sammelerfassung" wird die Erstellung von Medienobjekten vom Uploadvorgang entkoppelt. Zur Verwendung der Sammelerfassung erstellen Sie ein Manifest (IngestManifest), in dem das Medienobjekt und die zugeordneten Dateien beschrieben werden. Laden Sie dann die zugeordneten Dateien mithilfe der gewünschten Uploadmethode in den Blobcontainer des Manifests hoch. Microsoft Azure Media Services überwacht den dem Manifest zugeordneten Blobcontainer. Nachdem eine Datei in den Blobcontainer hochgeladen wurde, wird die Erstellung des Medienobjekts basierend auf dessen Konfiguration im Manifest (IngestManifestAsset) durch Microsoft Azure Media Services abgeschlossen.
 
 Zum Erstellen eines neuen Manifests (IngestManifest) rufen Sie die Create-Methode auf, die von der IngestManifests-Auflistung in „CloudMediaContext“ verfügbar gemacht wird. Mit dieser Methode wird ein neues Manifest (IngestManifest) mit dem von Ihnen angegebenen Manifestnamen erstellt.
@@ -312,7 +315,6 @@ Sie können auch mithilfe von Azure Functions einen Codierungsauftrag auslösen,
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Nächster Schritt
-Sie haben nun ein Medienobjekt in Media Services hochgeladen und können mit dem Artikel [Abrufen eines Medienprozessors][How to Get a Media Processor] fortfahren.
+Sie haben nun ein Medienobjekt in Media Services hochgeladen und können mit dem Artikel [Gewusst wie: Abrufen einer Medienprozessorinstanz][How to Get a Media Processor] fortfahren.
 
 [How to Get a Media Processor]: media-services-get-media-processor.md
-

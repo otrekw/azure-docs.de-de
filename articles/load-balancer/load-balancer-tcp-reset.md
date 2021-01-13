@@ -1,35 +1,34 @@
 ---
-title: Load Balancer mit TCP-Rücksetzung bei Leerlauf
-titlesuffix: Azure Load Balancer
-description: Load Balancer mit bidirektionalen TCP-RST-Paketen bei Leerlauftimeout
+title: TCP-Zurücksetzung und Leerlauftimeout in Azure für Load Balancer
+titleSuffix: Azure Load Balancer
+description: In diesem Artikel erfahren Sie über Load Balancer mit bidirektionalen TCP-RST-Paketen bei Leerlauftimeout.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/03/2019
+ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: 8485f4b6e8d4ff55de4930b3cfb7a07802cf1d41
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 0d02b46345af13770f77a7dac452127a665e01fd
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274154"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696743"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer mit TCP-Rücksetzung bei Leerlauf (öffentliche Vorschau)
+# <a name="load-balancer-tcp-reset-and-idle-timeout"></a>TCP-Zurücksetzung und Leerlauftimeout für Load Balancer
 
-Sie können [Load Balancer Standard ](load-balancer-standard-overview.md) verwenden, um ein besser vorhersagbares Anwendungsverhalten für Ihre Szenarien zu erzielen, indem Sie für eine bestimmte Regel die TCP-Rücksetzung bei Leerlauf aktivieren. Das Standardverhalten von Load Balancer besteht darin, Flows ohne Rückmeldung zu verwerfen, wenn das Leerlauftimeout eines Flows erreicht ist.  Das Aktivieren dieser Funktion bewirkt, dass Load Balancer bidirektionale TCP-Rücksetzungen (TCP-RST-Paket) bei einem Leerlauftimeout sendet.  Dadurch werden Ihre Anwendungsendpunkte darüber informiert, dass bei der Verbindung ein Timeout aufgetreten ist und sie nicht mehr verwendet werden kann.  Die Endpunkte können dann bei Bedarf sofort eine neue Verbindung herstellen.
+Sie können [Load Balancer Standard ](./load-balancer-overview.md) verwenden, um ein besser vorhersagbares Anwendungsverhalten für Ihre Szenarien zu erzielen, indem Sie für eine bestimmte Regel die TCP-Rücksetzung bei Leerlauf aktivieren. Das Standardverhalten von Load Balancer besteht darin, Flows ohne Rückmeldung zu verwerfen, wenn das Leerlauftimeout eines Flows erreicht ist.  Das Aktivieren dieser Funktion bewirkt, dass Load Balancer bidirektionale TCP-Rücksetzungen (TCP-RST-Paket) bei einem Leerlauftimeout sendet.  Dadurch werden Ihre Anwendungsendpunkte darüber informiert, dass bei der Verbindung ein Timeout aufgetreten ist und sie nicht mehr verwendet werden kann.  Die Endpunkte können dann bei Bedarf sofort eine neue Verbindung herstellen.
 
 ![Load Balancer mit TCP-Rücksetzung](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
-
->[!NOTE] 
->Die Funktion von Load Balancer mit TCP-Rücksetzung bei Leerlauftimeout ist zurzeit als Public Preview verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
-Sie ändern dieses Standardverhalten und ermöglichen das Senden von TCP-Rücksetzungen bei Leerlauftimeout in NAT-Eingangsregeln, Lastenausgleichsregeln und [Ausgangsregeln](https://aka.ms/lboutboundrules).  Wenn dies durch eine Regel aktiviert ist, sendet Load Balancer zum Zeitpunkt des Leerlauftimeouts für alle passenden Flows bidirektionale TCP-Rücksetzungen (TCP-RST-Pakete) sowohl an den Client- als auch an den Serverendpunkt.
+## <a name="tcp-reset"></a>TCP-Zurücksetzung
+
+Sie ändern dieses Standardverhalten und ermöglichen das Senden von TCP-Rücksetzungen bei Leerlauftimeout in NAT-Eingangsregeln, Lastenausgleichsregeln und [Ausgangsregeln](./load-balancer-outbound-connections.md#outboundrules).  Wenn dies durch eine Regel aktiviert ist, sendet Load Balancer zum Zeitpunkt des Leerlauftimeouts für alle passenden Flows bidirektionale TCP-Rücksetzungen (TCP-RST-Pakete) sowohl an den Client- als auch an den Serverendpunkt.
 
 Endpunkte, die TCP-RST-Pakete empfangen, schließen den entsprechenden Socket sofort. Damit werden Endpunkte sofort darüber benachrichtigt, dass die Verbindung getrennt wurde und jegliche weitere Kommunikation über die gleiche TCP-Verbindung zu einem Fehler führt.  Anwendungen können Verbindungen bereinigen, wenn der Socket geschlossen wird, und Verbindungen bei Bedarf erneut herstellen, ohne auf das Timeout der TCP-Verbindung zu warten.
 
@@ -39,44 +38,31 @@ Wenn die Leerlaufzeiträume die in der Konfiguration erlaubten Werte überschrei
 
 Überprüfen Sie das gesamte Szenario sorgfältig, um zu entscheiden, ob Sie – ggf. bei angepassten Leerlauftimeouts – von TCP-Rücksetzungen profitieren und ob zusätzliche Schritte erforderlich sind, um das gewünschte Anwendungsverhalten sicherzustellen.
 
-## <a name="enabling-tcp-reset-on-idle-timeout"></a>Aktivieren der TCP-Rücksetzung bei Leerlauftimeout
+## <a name="configurable-tcp-idle-timeout"></a>Konfigurierbares TCP-Leerlauftimeout
 
-Mithilfe der API-Version 2018-07-01 können Sie das Senden von bidirektionalen TCP-Rücksetzungen bei Leerlauftimeout für die einzelnen Regeln aktivieren:
+Azure Load Balancer weist den folgenden Leerlauftimeoutbereich auf:
+-  4 Minuten bis 100 Minuten für Ausgangsregeln
+-  4 Minuten bis 30 Minuten für Load Balancer-Regeln und NAT-Regeln für eingehenden Datenverkehr
 
-```json
-      "loadBalancingRules": [
-        {
-          "enableTcpReset": true | false,
-        }
-      ]
-```
+Standardmäßig ist der Wert auf vier Minuten festgelegt. Wenn die Dauer einer Inaktivitätsperiode den Timeoutwert überschreitet, gibt es keine Garantie dafür, dass die TCP- oder HTTP-Sitzung zwischen dem Client und Ihrem Clouddienst aufrechterhalten wird.
 
-```json
-      "inboundNatRules": [
-        {
-          "enableTcpReset": true | false,
-        }
-      ]
-```
+Sobald die Verbindung geschlossen wird, wird in der Clientanwendung möglicherweise die folgende Fehlermeldung angezeigt: „Die zugrunde liegende Verbindung wurde geschlossen: Eine Verbindung, deren Aufrechterhaltung erwartet wurde, wurde vom Server geschlossen.“
 
-```json
-      "outboundRules": [
-        {
-          "enableTcpReset": true | false,
-        }
-      ]
-```
+Eine gängige Methode zur Aufrechterhaltung von Verbindungen ist TCP-Keep-Alive. Dadurch bleibt die Verbindung länger aktiv. Weitere Informationen finden Sie in [diesen .NET-Beispielen](/dotnet/api/system.net.servicepoint.settcpkeepalive). Bei aktivierter Keep-Alive-Funktion werden während inaktiver Phasen Pakete über die Verbindung gesendet. Keep-Alive-Pakete sorgen dafür, dass der Wert für das Leerlauftimeout nicht erreicht und die Verbindung über einen langen Zeitraum aufrechterhalten wird.
 
-## <a name="regions"></a> Regionale Verfügbarkeit
+Die Einstellung funktioniert nur für eingehende Verbindungen. Um den Verlust der Verbindung zu vermeiden, konfigurieren Sie ein TCP-Keep-Alive-Intervall, das kürzer ist als das Leerlauftimeout, oder erhöhen Sie den Leerlauftimeout-Wert. Für diese Szenarien wurde Unterstützung für konfigurierbare Leerlauftimeouts hinzugefügt.
 
-In allen Regionen verfügbar.
+TCP-Keep-Alive eignet sich für Szenarien, in denen die Akkulaufzeit keine Einschränkung darstellt. Bei mobilen Anwendungen ist die Verwendung dieser Funktion hingegen nicht empfehlenswert. TCP-Keep-Alive kann bei mobilen Anwendungen zu einer schnelleren Entladung des Geräteakkus führen.
+
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Sie können TCP-Rücksetzungen im Portal weder konfigurieren noch ansehen.  Verwenden Sie stattdessen Vorlagen, die REST-API, die Azure CLI 2.0 oder PowerShell.
-- TCP RST sendete nur während der TCP-Verbindung im Status ESTABLISHED.
+- TCP-Zurücksetzung wird nur während der TCP-Verbindung im Status ESTABLISHED gesendet.
+- TCP-Zurücksetzung wird nicht für interne Load Balancer mit konfigurierten HA-Ports gesendet.
+- Der TCP-Leerlauftimeout wirkt sich nicht auf die Lastenausgleichsregeln des UDP-Protokolls aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [Load Balancer Standard](load-balancer-standard-overview.md).
-- Erfahren Sie mehr über [Ausgangsregeln](load-balancer-outbound-rules-overview.md).
+- Erfahren Sie mehr über [Load Balancer Standard](./load-balancer-overview.md).
+- Erfahren Sie mehr über [Ausgangsregeln](./load-balancer-outbound-connections.md#outboundrules).
+- [Konfigurieren von TCP RST bei Leerlauftimeout](load-balancer-tcp-idle-timeout.md)

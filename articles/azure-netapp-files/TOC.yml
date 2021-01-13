@@ -4,7 +4,9 @@
   items:
     - name: Was ist Azure NetApp Files?
       href: azure-netapp-files-introduction.md
-    - name: Grundlegendes zur Speicherhierarchie
+    - name: Neues
+      href: whats-new.md
+    - name: Speicherhierarchie von Azure NetApp Files
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: Schnellstarts
   expanded: true
@@ -23,18 +25,42 @@
       items:
         - name: Überlegungen zur Leistung für Azure NetApp Files
           href: azure-netapp-files-performance-considerations.md
-        - name: Testergebnisse von Leistungsbenchmarks für Azure NetApp Files
-          href: azure-netapp-files-performance-benchmarks.md
         - name: Testempfehlungen von Leistungsbenchmarks für Azure NetApp Files
           href: azure-netapp-files-performance-metrics-volumes.md
+        - name: Leistungsbenchmarks für Linux
+          href: performance-benchmarks-linux.md
+        - name: Leistung von Oracle-Datenbanken auf einzelnen Azure NetApp Files-Volumes
+          href: performance-oracle-single-volumes.md
+        - name: Häufig gestellte Fragen zur SMB-Leistung
+          href: azure-netapp-files-smb-performance.md
     - name: Kostenmodell für Azure NetApp Files
       href: azure-netapp-files-cost-model.md
     - name: Richtlinien für die Azure NetApp Files-Netzwerkplanung
       href: azure-netapp-files-network-topologies.md
-    - name: Lösungsarchitekturen mit Azure NetApp Files
-      href: azure-netapp-files-solution-architectures.md
+    - name: Manueller QoS-Kapazitätspool
+      href: manual-qos-capacity-pool-introduction.md
+    - name: Regionsübergreifende Replikation
+      items:
+        - name: Grundlegendes zur regionsübergreifenden Replikation
+          href: cross-region-replication-introduction.md
+        - name: 'Regionsübergreifende Replikation: Anforderungen und Überlegungen'
+          href: cross-region-replication-requirements-considerations.md
+    - name: Lösungen
+      items:
+        - name: Lösungsarchitekturen mit Azure NetApp Files
+          href: azure-netapp-files-solution-architectures.md
+        - name: Vorteile der Verwendung von Azure NetApp Files
+          items:
+            - name: Vorteile der Verwendung von Azure NetApp Files mit Oracle Database
+              href: solutions-benefits-azure-netapp-files-oracle-database.md
+            - name: Vorteile der Verwendung von Azure NetApp Files für die elektronische Entwurfsautomatisierung
+              href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+            - name: Vorteile der Verwendung von Azure NetApp Files mit Windows Virtual Desktop
+              href: solutions-windows-virtual-desktop.md
     - name: Häufig gestellte Fragen zu Azure NetApp Files
       href: azure-netapp-files-faqs.md
+    - name: Worum handelt es sich beim Tool für konsistente Momentaufnahmen in Azure-Anwendungen?
+      href: azacsnap-introduction.md
 - name: Anleitungen
   items:
     - name: Registrieren für Azure NetApp Files
@@ -43,33 +69,105 @@
       href: azure-netapp-files-create-netapp-account.md
     - name: Einrichten eines Kapazitätspools
       href: azure-netapp-files-set-up-capacity-pool.md
+    - name: Verwalten eines manuellen QoS-Kapazitätspools
+      href: manage-manual-qos-capacity-pool.md
     - name: Delegieren eines Subnetzes an Azure NetApp Files
       href: azure-netapp-files-delegate-subnet.md
-    - name: Erstellen eines NFS-Volumes für Azure NetApp Files
-      href: azure-netapp-files-create-volumes.md
-    - name: Erstellen eines SMB-Volumes für Azure NetApp Files
+    - name: Erstellen und Verwalten eines NFS-Volumes
+      items:
+        - name: Erstellen eines NFS-Volumes
+          href: azure-netapp-files-create-volumes.md
+        - name: Konfigurieren der NFSv4.1-Standarddomäne
+          href: azure-netapp-files-configure-nfsv41-domain.md
+        - name: Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung
+          href: configure-kerberos-encryption.md
+        - name: Konfigurieren eines NFS-Clients für Azure NetApp Files
+          href: configure-nfs-clients.md
+        - name: Konfigurieren der Exportrichtlinie für ein NFS-Volume
+          href: azure-netapp-files-configure-export-policy.md
+    - name: Erstellen eines SMB-Volumes
       href: azure-netapp-files-create-volumes-smb.md
-    - name: Konfigurieren der Exportrichtlinie für ein NFS-Volume
-      href: azure-netapp-files-configure-export-policy.md
-    - name: Verwalten von Volumes
-      href: azure-netapp-files-manage-volumes.md
+    - name: Erstellen eines Dual-Protokoll-Volumes
+      href: create-volumes-dual-protocol.md
     - name: Einbinden oder Aufheben der Einbindung eines Volumes auf virtuellen Windows- oder Linux-Computern
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: Verwalten von Momentaufnahmen
       href: azure-netapp-files-manage-snapshots.md
     - name: Ändern der Größe eines Kapazitätspools oder Volumes
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: Dynamisches Ändern der Dienstebene eines Volumes
+      href: dynamic-change-volume-service-level.md
+    - name: Verwalten der regionsübergreifenden Replikation
+      items:
+        - name: Erstellen der Volumereplikation
+          href: cross-region-replication-create-peering.md
+        - name: Anzeigen des Integritätsstatus der Replikationsbeziehung
+          href: cross-region-replication-display-health-status.md
+        - name: Verwalten der Notfallwiederherstellung
+          href: cross-region-replication-manage-disaster-recovery.md
+        - name: Löschen von Volumereplikationen oder Volumes
+          href: cross-region-replication-delete.md
     - name: Entwickeln
       items:
-        - name: REST
+        - name: REST-API
           href: azure-netapp-files-develop-with-rest-api.md
-        - name: Azure NetApp Files SDKs und CLI-Tools
+        - name: REST-API mit PowerShell
+          href: develop-rest-api-powershell.md
+        - name: 'SDKs, CLI-Tools und ARM-Vorlagen'
           href: azure-netapp-files-sdk-cli.md
-        - name: Beheben von Fehlern mit Azure NetApp Files-Ressourcenanbietern
+    - name: Problembehandlung
+      items:
+        - name: Problembehandlung für Kapazitätspools
+          href: troubleshoot-capacity-pools.md
+        - name: Problembehandlung für die regionsübergreifende Replikation
+          href: troubleshoot-cross-region-replication.md
+        - name: Problembehandlung für Volumes mit dualem Protokoll
+          href: troubleshoot-dual-protocol-volumes.md
+        - name: Problembehandlung für NFSv4.1-Kerberos-Volumes
+          href: troubleshoot-nfsv41-kerberos-volumes.md
+        - name: Problembehandlung für Momentaufnahmenrichtlinien
+          href: troubleshoot-snapshot-policies.md
+        - name: Beheben von Ressourcenanbieterfehlern
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: Verweis
   items:
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/netapp/'
+      href: /rest/api/netapp/
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.netapp/allversions
+    - name: Tool für konsistente Momentaufnahmen in Azure-Anwendungen (AzAcSnap)
+      items:
+        - name: Erste Schritte mit AzAcSnap
+          href: azacsnap-get-started.md
+        - name: Installieren von AzAcSnap
+          href: azacsnap-installation.md
+        - name: Notfallwiederherstellung mithilfe von AzAcSnap
+          href: azacsnap-disaster-recovery.md
+        - name: Tipps und Tricks für die Verwendung von AzAcSnap
+          href: azacsnap-tips.md
+        - name: Problembehandlung für AzAcSnap
+          href: azacsnap-troubleshoot.md
+        - name: AzAcSnap-Befehlsreferenz
+          items:
+            - name: Konfigurieren von AzAcSnap
+              href: azacsnap-cmd-ref-configure.md
+            - name: Testen von AzAcSnap
+              href: azacsnap-cmd-ref-test.md
+            - name: Sichern mithilfe von AzAcSnap
+              href: azacsnap-cmd-ref-backup.md
+            - name: Abrufen von Details mithilfe von AzAcSnap
+              href: azacsnap-cmd-ref-details.md
+            - name: Löschen mithilfe von AzAcSnap
+              href: azacsnap-cmd-ref-delete.md
+            - name: Wiederherstellen mithilfe von AzAcSnap
+              href: azacsnap-cmd-ref-restore.md
+- name: Ressourcen
+  items:
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/netapp/'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=netapp'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla/netapp/'
+    - name: Videos
+      href: azure-netapp-files-videos.md

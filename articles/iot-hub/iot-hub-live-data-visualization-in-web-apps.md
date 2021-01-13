@@ -1,5 +1,5 @@
 ---
-title: Visualisieren von Echtzeit-Sensordaten aus Azure IoT Hub in einer Web-App | Microsoft-Dokumentation
+title: Visualisierung von Echtzeitdaten Ihrer IoT Hub-Daten in einer Web-App
 description: Verwenden Sie eine Webanwendung, um Daten zur Temperatur und Luftfeuchtigkeit zu visualisieren, die von einem Sensor erfasst und an Ihren IoT-Hub gesendet werden.
 author: robinsh
 ms.service: iot-hub
@@ -8,12 +8,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 22b15a95e529d4f09560e9b7e59d9f78f70651bc
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Data Analytics'
+- devx-track-azurecli
+ms.openlocfilehash: 7753c6c118d763163e6bc8f69f5b4eee13fe2393
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476002"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588793"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Visualisieren von Echtzeit-Sensordaten aus Azure IoT Hub in einer Webanwendung
 
@@ -47,17 +51,11 @@ In diesem Tutorial erfahren Sie, wie Sie vom IoT-Hub empfangene Echtzeit-Sensord
 
 * Bei den Schritten in diesem Artikel wird ein Windows-Entwicklungscomputer vorausgesetzt. Allerdings können Sie diese Schritte auch problemlos auf einem Linux-System in Ihrer bevorzugten Shell ausführen.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Microsoft Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
-
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>Hinzufügen einer Consumergruppe zu Ihrem IoT Hub
 
-[Consumergruppen](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) bieten unabhängige Ansichten in den Ereignisstream, die es Apps und Azure-Diensten ermöglichen, unabhängig voneinander Daten desselben Event Hub-Endpunkts zu nutzen. In diesem Abschnitt fügen Sie dem integrierten IoT-Hub-Endpunkt, aus dem die Web-App Daten liest, eine Consumergruppe hinzu.
+[Consumergruppen](../event-hubs/event-hubs-features.md#event-consumers) bieten unabhängige Ansichten des Ereignisstreams, die es Apps und Azure-Diensten ermöglichen, unabhängig voneinander Daten desselben Event Hub-Endpunkts zu nutzen. In diesem Abschnitt fügen Sie dem integrierten IoT-Hub-Endpunkt, aus dem die Web-App Daten liest, eine Consumergruppe hinzu.
 
 Führen Sie den folgenden Befehl aus, um dem integrierten Endpunkt Ihres IoT-Hubs eine Consumergruppe hinzuzufügen:
 
@@ -153,11 +151,11 @@ In der Konsolenausgabe sollten auch die Nachrichten angezeigt werden, die die We
 
 ## <a name="host-the-web-app-in-app-service"></a>Hosten der Web-App in App Service
 
-Die [Web-Apps-Funktion des Azure App Service](https://docs.microsoft.com/azure/app-service/overview) bietet ein PAAS (Platform-as-a-Service)-Feature zum Hosten von Webanwendungen. In Azure App Service gehostete Webanwendungen profitieren von leistungsstarken Azure-Features wie zusätzlicher Sicherheit, Lastenausgleich und Skalierbarkeit sowie von DevOps-Lösungen von Azure und Partnern wie Continuous Deployment, Paketverwaltung usw. Azure App Service unterstützt Webanwendungen in zahlreichen gängigen Programmiersprachen, die in einer Windows- oder Linux-Infrastruktur bereitgestellt werden.
+Die [Web-Apps-Funktion des Azure App Service](../app-service/overview.md) bietet ein PAAS (Platform-as-a-Service)-Feature zum Hosten von Webanwendungen. In Azure App Service gehostete Webanwendungen profitieren von leistungsstarken Azure-Features wie zusätzlicher Sicherheit, Lastenausgleich und Skalierbarkeit sowie von DevOps-Lösungen von Azure und Partnern wie Continuous Deployment, Paketverwaltung usw. Azure App Service unterstützt Webanwendungen in zahlreichen gängigen Programmiersprachen, die in einer Windows- oder Linux-Infrastruktur bereitgestellt werden.
 
-In diesem Abschnitt stellen Sie eine Web-App in App Service bereit und implementieren den Code für die App mithilfe von Azure CLI-Befehlen. Details zu den verwendeten Befehlen finden Sie in der [az webapp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest)-Dokumentation. Stellen Sie zu Beginn sicher, dass Sie die folgenden Schritte ausgeführt haben: [Hinzufügen einer Ressourcengruppe zum IoT-Hub](#add-a-consumer-group-to-your-iot-hub), [Abrufen einer Dienst-Verbindungszeichenfolge für den IoT-Hub](#get-a-service-connection-string-for-your-iot-hub) und [Herunterladen der Web-App von GitHub](#download-the-web-app-from-github).
+In diesem Abschnitt stellen Sie eine Web-App in App Service bereit und implementieren den Code für die App mithilfe von Azure CLI-Befehlen. Details zu den verwendeten Befehlen finden Sie in der [az webapp](/cli/azure/webapp?view=azure-cli-latest)-Dokumentation. Stellen Sie zu Beginn sicher, dass Sie die folgenden Schritte ausgeführt haben: [Hinzufügen einer Ressourcengruppe zum IoT-Hub](#add-a-consumer-group-to-your-iot-hub), [Abrufen einer Dienst-Verbindungszeichenfolge für den IoT-Hub](#get-a-service-connection-string-for-your-iot-hub) und [Herunterladen der Web-App von GitHub](#download-the-web-app-from-github).
 
-1. Mit einem [App Service-Plan](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) wird eine Gruppe von Computeressourcen definiert, die für eine in App Service gehostete App ausgeführt werden. In diesem Tutorial verwenden wir den Developer-/Free-Tarif zum Hosten der Web-App. Bei Nutzung des Free-Tarifs wird Ihre Web-App auf freigegebenen Windows-Ressourcen zusammen mit anderen App Service-Apps ausgeführt, einschließlich Apps anderer Kunden. Azure bietet außerdem App Service-Pläne zum Bereitstellen von Web-Apps auf Linux-Computeressourcen. Sie können diesen Schritt überspringen, wenn Sie bereits einen App Service-Plan verfügen, den Sie verwenden möchten.
+1. Mit einem [App Service-Plan](../app-service/overview-hosting-plans.md) wird eine Gruppe von Computeressourcen definiert, die für eine in App Service gehostete App ausgeführt werden. In diesem Tutorial verwenden wir den Developer-/Free-Tarif zum Hosten der Web-App. Bei Nutzung des Free-Tarifs wird Ihre Web-App auf freigegebenen Windows-Ressourcen zusammen mit anderen App Service-Apps ausgeführt, einschließlich Apps anderer Kunden. Azure bietet außerdem App Service-Pläne zum Bereitstellen von Web-Apps auf Linux-Computeressourcen. Sie können diesen Schritt überspringen, wenn Sie bereits einen App Service-Plan verfügen, den Sie verwenden möchten.
 
    Führen Sie den folgenden Befehl aus, um einen App Service-Plan mit dem Free-Tarif von Windows zu erstellen. Verwenden Sie dieselbe Ressourcengruppe, in der der IoT-Hub enthalten ist. Der Name des App Service-Plans darf Groß- und Kleinbuchstaben, Ziffern und Bindestriche enthalten.
 
@@ -165,16 +163,16 @@ In diesem Abschnitt stellen Sie eine Web-App in App Service bereit und implement
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Stellen Sie jetzt eine Web-App im App Service-Plan bereit. Durch den `--deployment-local-git`-Parameter kann der Code der Web-App hochgeladen und aus einem Git-Repository auf Ihrem lokalen Computer bereitgestellt werden. Der Name der Web-App muss global eindeutig sein und darf Groß- und Kleinbuchstaben, Ziffern und Bindestriche enthalten.
+2. Stellen Sie jetzt eine Web-App im App Service-Plan bereit. Durch den `--deployment-local-git`-Parameter kann der Code der Web-App hochgeladen und aus einem Git-Repository auf Ihrem lokalen Computer bereitgestellt werden. Der Name der Web-App muss global eindeutig sein und darf Groß- und Kleinbuchstaben, Ziffern und Bindestriche enthalten. Stellen Sie sicher, dass Sie für den Parameter `--runtime` mindestens Node Version 10.6 angeben, je nach der von Ihnen verwendeten Version der Node.js-Runtime. Sie können mit dem Befehl `az webapp list-runtimes` eine Liste der unterstützten Runtimes abrufen.
 
    ```azurecli-interactive
-   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --deployment-local-git
+   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
 3. Fügen Sie jetzt Anwendungseinstellungen für die Umgebungsvariablen hinzu, die die IoT-Hub-Verbindungszeichenfolge und die Event Hub-Consumergruppe angeben. Einzelne Einstellungen sind im `-settings`-Parameter durch Leerzeichen getrennt. Verwenden Sie die Dienst-Verbindungszeichenfolge für Ihren IoT-Hub und die zuvor in diesem Tutorial erstellte Consumergruppe. Die Werte dürfen nicht in Anführungszeichen stehen.
 
    ```azurecli-interactive
-   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString=<your IoT hub connection string>
+   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString="<your IoT hub connection string>"
    ```
 
 4. Aktivieren Sie das WebSocket-Protokoll für die Web-App, und konfigurieren Sie die Web-App so, dass sie ausschließlich HTTPS-Anforderungen empfängt (HTTP-Anforderungen werden zu HTTPS umgeleitet).
@@ -184,9 +182,9 @@ In diesem Abschnitt stellen Sie eine Web-App in App Service bereit und implement
    az webapp update -n <your web app name> -g <your resource group name> --https-only true
    ```
 
-5. Um den Code für App Service bereitzustellen, verwenden Sie Ihre [Anmeldeinformationen für die Bereitstellung auf Benutzerebene](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials). Ihre Anmeldeinformationen für die Bereitstellung auf Benutzerebene unterscheiden sich von Ihren Azure-Anmeldeinformationen und werden für lokale Git- und FTP-Bereitstellungen für eine Web-App verwendet. Nachdem sie festgelegt wurden, gelten sie für alle App Service-Apps in allen Abonnements unter Ihrem Azure-Konto. Wenn Sie zuvor bereits Anmeldeinformationen für die Bereitstellung auf Benutzerebene festgelegt haben, können Sie diese verwenden.
+5. Um den Code für App Service bereitzustellen, verwenden Sie Ihre [Anmeldeinformationen für die Bereitstellung auf Benutzerebene](../app-service/deploy-configure-credentials.md). Ihre Anmeldeinformationen für die Bereitstellung auf Benutzerebene unterscheiden sich von Ihren Azure-Anmeldeinformationen und werden für lokale Git- und FTP-Bereitstellungen für eine Web-App verwendet. Nachdem sie festgelegt wurden, gelten sie für alle App Service-Apps in allen Abonnements unter Ihrem Azure-Konto. Wenn Sie zuvor bereits Anmeldeinformationen für die Bereitstellung auf Benutzerebene festgelegt haben, können Sie diese verwenden.
 
-   Wenn Sie zuvor noch keine Anmeldeinformationen für die Bereitstellung auf Benutzerebene festgelegt oder Ihr Kennwort vergessen haben, führen Sie den folgenden Befehl aus. Ihr Benutzername für die Bereitstellung muss in Azure eindeutig sein und darf bei lokalen Git-Pushes kein „@“-Symbol enthalten. Geben Sie Ihr neues Kennwort ein, und bestätigen Sie es, sobald Sie dazu aufgefordert werden. Das Kennwort muss mindestens acht Zeichen lang sein und zwei der folgenden drei Elemente enthalten: Buchstaben, Zahlen und Symbole.
+   Wenn Sie zuvor noch keine Anmeldeinformationen für die Bereitstellung auf Benutzerebene festgelegt oder Ihr Kennwort vergessen haben, führen Sie den folgenden Befehl aus. Ihr Benutzername für die Bereitstellung muss in Azure eindeutig sein und darf bei lokalen Git-Pushes kein „\@“-Symbol enthalten. Geben Sie Ihr neues Kennwort ein, und bestätigen Sie es, sobald Sie dazu aufgefordert werden. Das Kennwort muss mindestens acht Zeichen lang sein und zwei der folgenden drei Elemente enthalten: Buchstaben, Zahlen und Symbole.
 
    ```azurecli-interactive
    az webapp deployment user set --user-name <your deployment user name>
@@ -198,16 +196,16 @@ In diesem Abschnitt stellen Sie eine Web-App in App Service bereit und implement
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. Fügen Sie dem Klon einen Remotespeicherort hinzu, der auf das Git-Repository für die Web-App in App Service verweist. Verwenden Sie als \<Git-Klon-URL\> die im vorherigen Schritt zurückgegebene URL. Führen Sie folgenden Befehl im Befehlsfenster aus.
+7. Fügen Sie dem Klon einen Remotespeicherort hinzu, der auf das Git-Repository für die Web-App in App Service verweist. Verwenden Sie als \<Git clone URL\> die im vorherigen Schritt zurückgegebene URL. Führen Sie folgenden Befehl im Befehlsfenster aus.
 
    ```cmd
    git remote add webapp <Git clone URL>
    ```
 
-8. Um den Code für App Service bereitzustellen, geben Sie den folgenden Befehl im Befehlsfenster ein. Wenn Sie zur Eingabe von Anmeldeinformationen aufgefordert werden, geben Sie die Anmeldeinformationen für die Bereitstellung auf Benutzerebene ein, die Sie in Schritt 5 erstellt haben. Stellen Sie sicher, dass der Pushvorgang zum Masterbranch des App Service-Remotespeicherorts erfolgt.
+8. Um den Code für App Service bereitzustellen, geben Sie den folgenden Befehl im Befehlsfenster ein. Wenn Sie zur Eingabe von Anmeldeinformationen aufgefordert werden, geben Sie die Anmeldeinformationen für die Bereitstellung auf Benutzerebene ein, die Sie in Schritt 5 erstellt haben. Stellen Sie sicher, dass Sie zum Mainbranch des App Service-Remotespeicherorts pushen.
 
     ```cmd
-    git push webapp master:master
+    git push webapp main:main
     ```
 
 9. Der Status der Bereitstellung wird im Befehlsfenster aktualisiert. Bei einer erfolgreichen Bereitstellung werden am Ende in etwa folgende Zeilen ausgegeben:
@@ -218,7 +216,7 @@ In diesem Abschnitt stellen Sie eine Web-App in App Service bereit und implement
     remote: Running post deployment command(s)...
     remote: Deployment successful.
     To https://contoso-web-app-3.scm.azurewebsites.net/contoso-web-app-3.git
-    6b132dd..7cbc994  master -> master
+    6b132dd..7cbc994  main -> main
     ```
 
 10. Führen Sie den folgenden Befehl aus, um den Status Ihrer Web-App abzufragen und sicherzustellen, dass sie ausgeführt wird:

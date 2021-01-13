@@ -1,30 +1,34 @@
 ---
-title: Integration von Azure MFA-Server und Active Directory – Azure Active Directory
+title: Azure MFA-Server und Active Directory – Azure Active Directory
 description: Erfahren Sie, wie Sie den Azure Multi-Factor Authentication-Server in Active Directory integrieren, damit Sie die Verzeichnisse synchronisieren können.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 11/21/2019
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eac6cff0f0f12daaf772549f547aafd670600d61
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 8b3778ea68edf1fbbb41efb899749e6f35b39bae
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536980"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742288"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Verzeichnisintegration zwischen Azure MFA-Server und Active Directory
 
 Verwenden Sie den Abschnitt „Verzeichnisintegration“ des Azure MFA-Servers für die Integration in Active Directory oder ein anderes LDAP-Verzeichnis. Sie können Attribute für das Verzeichnisschema konfigurieren und die automatische Synchronisierung von Benutzern einrichten.
 
 > [!IMPORTANT]
-> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
+> Seit dem 1. Juli 2019 bietet Microsoft für neue Bereitstellungen keine MFA-Server mehr an. Neue Kunden, die bei Benutzeranmeldeereignissen eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) verlangen möchten, sollten cloudbasierte Azure AD Multi-Factor Authentication verwenden.
+>
+> Informationen zu den ersten Schritten mit der cloudbasierten MFA finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Bestandskunden, die ihren MFA-Server vor dem 1. Juli 2019 aktiviert haben, können weiterhin die neuesten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
 
 ## <a name="settings"></a>Einstellungen
 
@@ -33,9 +37,9 @@ Standardmäßig ist der Azure MFA-Server (Multi-Factor Authentication) zum Impor
 ![Bearbeiten der LDAP-Konfiguration im MFA-Server](./media/howto-mfaserver-dir-ad/dirint.png)
 
 > [!NOTE]
-> Es gibt keine Garantie dafür, dass die Verzeichnisintegration mit anderen Verzeichnissen als Active Directory Domain Services funktioniert.
+> Die Verzeichnisintegration funktioniert mit anderen Verzeichnissen als Active Directory Domain Services möglicherweise nicht.
 
-| Feature | BESCHREIBUNG |
+| Funktion | BESCHREIBUNG |
 | --- | --- |
 | Active Directory verwenden |Wählen Sie die Option „Active Directory verwenden“ aus, um Active Directory zum Importieren und Synchronisieren zu nutzen.  Dies ist die Standardeinstellung. <br>Hinweis: Damit die Active Directory-Integration richtig funktioniert, binden Sie den Computer in eine Domäne ein und melden sich mit einem Domänenkonto an. |
 | Vertrauenswürdige Domänen einschließen |Aktivieren Sie **Vertrauenswürdige Domänen einschließen**. Der Agent versucht dann, eine Verbindung mit Domänen herzustellen, die von der aktuellen Domäne als vertrauenswürdig angesehen werden, oder mit einer anderen Domäne in der Gesamtstruktur bzw. mit an einer Gesamtstruktur-Vertrauensstellung beteiligten Domänen.  Wenn Sie keine Benutzer aus den vertrauenswürdigen Domänen importieren bzw. keine Synchronisierung dafür durchführen, sollten Sie das Kontrollkästchen deaktivieren, um die Leistung zu verbessern.  Diese Option ist standardmäßig aktiviert. |
@@ -45,9 +49,9 @@ Standardmäßig ist der Azure MFA-Server (Multi-Factor Authentication) zum Impor
 
 In der folgenden Tabelle sind die LDAP-Konfigurationseinstellungen beschrieben.
 
-| Feature | BESCHREIBUNG |
+| Funktion | BESCHREIBUNG |
 | --- | --- |
-| Server |Geben Sie den Hostnamen oder die IP-Adresse des Servers ein, auf dem das LDAP-Verzeichnis ausgeführt wird.  Sie können auch einen Sicherungsserver durch ein Semikolon getrennt angeben. <br>Hinweis: Wenn der Bindungstyp SSL lautet, ist ein vollqualifizierter Hostname erforderlich. |
+| Server |Geben Sie den Hostnamen oder die IP-Adresse des Servers ein, auf dem das LDAP-Verzeichnis ausgeführt wird.  Sie können auch einen Sicherungsserver durch ein Semikolon getrennt angeben. <br>Hinweis: Wenn der Bindungstyp SSL (TLS) lautet, ist ein vollqualifizierter Hostname erforderlich. |
 | Basis-DN |Geben Sie den Distinguished Name des Basisverzeichnisobjekts an, von dem alle Verzeichnisabfragen ausgehen.  Beispiel: dc=abc,dc=com. |
 | Bindungstyp – Abfragen |Wählen Sie den entsprechenden Bindungstyp für Bindungen zum Durchsuchen des LDAP-Verzeichnisses aus.  Dieser wird für Importe, die Synchronisierung und die Auflösung des Benutzernamens verwendet. <br><br>  Anonym: Es wird eine anonyme Bindung durchgeführt.  „Bindungs-DN“ und „Bindungskennwort“ werden nicht verwendet.  Dies funktioniert nur, wenn das LDAP-Verzeichnis die anonyme Bindung zulässt und Berechtigungen das Abfragen der entsprechenden Datensätze und Attribute zulassen.  <br><br> Einfach: Bindungs-DN und Bindungskennwort werden für die Bindung an das LDAP-Verzeichnis im Nur-Text-Format übergeben.  Dies ist für Testzwecke bestimmt, um zu überprüfen, ob der Server erreicht werden kann und das Bindungskonto über die erforderlichen Zugriffsrechte verfügt. Verwenden Sie stattdessen SSL, nachdem das entsprechende Zertifikat installiert wurde.  <br><br> SSL: Bindungs-DN und Bindungskennwort werden per SSL verschlüsselt, um die Bindung an das LDAP-Verzeichnis herzustellen.  Installieren Sie lokal ein Zertifikat, das für das LDAP-Verzeichnis vertrauenswürdig ist.  <br><br> Windows: Bindungsbenutzername und Bindungskennwort werden verwendet, um eine sichere Verbindung mit einem Active Directory-Domänencontroller oder ADAM-Verzeichnis herzustellen.  Wenn „Bindungsbenutzername“ leer gelassen wird, wird für die Bindung das Konto des angemeldeten Benutzers verwendet. |
 | Bindungstyp – Authentifizierungen |Wählen Sie den passenden Bindungstyp aus, der beim Durchführen der LDAP-Bindungsauthentifizierung verwendet werden soll.  Beschreibungen der Bindungstypen finden Sie unter „Bindungstyp – Abfragen“.  Hiermit kann beispielsweise die Bindung „Anonym“ für Abfragen verwendet werden, während die SSL-Bindung zum Schützen von LDAP-Bindungsauthentifizierungen genutzt wird. |
@@ -68,7 +72,7 @@ Azure Multi-Factor Authentication verfügt über die folgenden drei Filteroption
 * **Sicherheitsgruppenfilter:** Geben Sie die Filterkriterien an, die beim Durchführen einer Verzeichnissuche zum Qualifizieren von Sicherheitsgruppendatensätzen verwendet werden sollen.  Für Active Directory und ADAM wird normalerweise (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)) verwendet.  Für andere LDAP-Verzeichnisse sollten je nach Verzeichnisschema Filterkriterien, mit denen die einzelnen Arten von Sicherheitsgruppenobjekten qualifiziert werden, verwendet werden.  <br>Hinweis:  Wenn das Feld leer gelassen wird, wird standardmäßig „(&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648))“ verwendet.
 * **Benutzerfilter:** Geben Sie die Filterkriterien an, die beim Durchführen einer Verzeichnissuche zum Qualifizieren von Benutzerdatensätzen verwendet werden sollen.  Für Active Directory und ADAM wird normalerweise (&(objectClass=user)(objectCategory=person)) verwendet.  Verwenden Sie für andere LDAP-Verzeichnisse je nach Verzeichnisschema (objectClass=inetOrgPerson) oder etwas Ähnliches. <br>Hinweis:  Wenn das Feld leer gelassen wird, wird standardmäßig „(&(objectCategory=person)(objectClass=user))“ verwendet.
 
-## <a name="attributes"></a>Attribute
+## <a name="attributes"></a>Attributes
 
 Sie können Attribute je nach Bedarf für ein bestimmtes Verzeichnis anpassen.  Dadurch können Sie benutzerdefinierte Attribute hinzufügen und die Synchronisierung nur mit den benötigten Attributen optimieren. Verwenden Sie den Namen des Attributs, der im Verzeichnisschema für den Wert jedes Attributfelds definiert ist. Die folgende Tabelle enthält zusätzliche Informationen zu den einzelnen Funktionen.
 
@@ -76,11 +80,11 @@ Attribute können manuell eingegeben werden und müssen nicht mit einem Attribut
 
 ![Anpassen der Verzeichnisintegrationsattribute im MFA-Server](./media/howto-mfaserver-dir-ad/dirint3.png)
 
-| Feature | BESCHREIBUNG |
+| Funktion | BESCHREIBUNG |
 | --- | --- |
 | Eindeutiger Bezeichner |Geben Sie den Attributnamen des Attributs ein, das als eindeutiger Bezeichner von Container-, Sicherheitsgruppen- und Benutzerdatensätzen dient.  In Active Directory ist dies normalerweise „objectGUID“. In anderen LDAP-Implementierungen kann dies „entryUUID“ oder etwas Ähnliches sein.  Der Standardwert lautet „objectGUID“. |
 | Typ des eindeutigen Bezeichners |Wählen Sie den Typ des eindeutigen Bezeichnerattributs aus.  In Active Directory hat das objectGUID-Attribut den Typ GUID. In anderen LDAP-Implementierungen kann der Typ „ASCII-Bytearray“ oder „Zeichenfolge“ lauten.  Der Standardwert lautet GUID. <br><br>Es ist wichtig, diesen Typ richtig festzulegen, weil auf Synchronisierungselemente anhand ihres eindeutigen Bezeichners verwiesen wird. Der Typ des eindeutigen Bezeichners wird verwendet, um das Objekt im Verzeichnis direkt zu ermitteln.  Falls dieser Typ auf „Zeichenfolge“ festgelegt wird, wenn der Wert im Verzeichnis als Bytearray mit ASCII-Zeichen gespeichert wird, funktioniert die Synchronisierung nicht richtig. |
-| Distinguished Name |Geben Sie den Attributnamen des Attributs ein, das den Distinguished Name für die einzelnen Datensätze enthält.  In Active Directory ist dies normalerweise „distinguishedName“. In anderen LDAP-Implementierungen kann dies „entryDN“ oder etwas Ähnliches sein.  Der Standardwert lautet „distinguishedName“. <br><br>Wenn kein Attribut vorhanden ist, das nur den Distinguished Name enthält, kann das ads path-Attribut verwendet werden.  Der Teil „LDAP://\<Server\>/“ des Pfads wird automatisch entfernt, sodass nur der Distinguished Name des Objekts übrig bleibt. |
+| Distinguished Name |Geben Sie den Attributnamen des Attributs ein, das den Distinguished Name für die einzelnen Datensätze enthält.  In Active Directory ist dies normalerweise „distinguishedName“. In anderen LDAP-Implementierungen kann dies „entryDN“ oder etwas Ähnliches sein.  Der Standardwert lautet „distinguishedName“. <br><br>Wenn kein Attribut vorhanden ist, das nur den Distinguished Name enthält, kann das ads path-Attribut verwendet werden.  Der Teil „LDAP://\<server\>/“ des Pfads wird automatisch entfernt, sodass nur der Distinguished Name des Objekts übrig bleibt. |
 | Containername |Geben Sie den Attributnamen des Attributs ein, das den Namen in einem Containerdatensatz enthält.  Der Wert dieses Attributs wird in der Containerhierarchie angezeigt, wenn aus Active Directory importiert wird oder Synchronisierungselemente hinzugefügt werden.  Die Standardeinstellung lautet „name“. <br><br>Verwenden Sie Semikolons, um mehrere Containernamenattribute voneinander zu trennen, wenn für unterschiedliche Container verschiedene Attribute für ihre Namen verwendet werden.  Das erste Containernamenattribut eines Containerobjekts wird zum Anzeigen des Namens verwendet. |
 | Sicherheitsgruppenname |Geben Sie den Attributnamen des Attributs ein, das den Namen in einem Sicherheitsgruppendatensatz enthält.  Der Wert dieses Attributs wird in der Liste „Sicherheitsgruppe“ angezeigt, wenn aus Active Directory importiert wird oder Synchronisierungselemente hinzugefügt werden.  Die Standardeinstellung lautet „name“. |
 | Username |Geben Sie den Attributnamen des Attributs ein, das den Benutzernamen in einem Benutzerdatensatz enthält.  Der Wert dieses Attributs wird als Benutzername für den Multi-Factor Authentication-Server verwendet.  Ein zweites Attribut kann als Backup für das erste Attribut angegeben werden.  Das zweite Attribut wird nur verwendet, wenn das erste Attribut keinen Wert für den Benutzer enthält.  Die Standardwerte lauten „userPrincipalName“ und „sAMAccountName“. |
@@ -107,7 +111,7 @@ Klicken Sie zum Bearbeiten von Attributen auf der Registerkarte „Attribute“ 
 
 ![Bearbeiten der Verzeichnisattributzuordnung im MFA-Server](./media/howto-mfaserver-dir-ad/dirint4.png)
 
-## <a name="synchronization"></a>Synchronisierung
+## <a name="synchronization"></a>Synchronization
 
 Die Synchronisierung sorgt dafür, dass die Azure MFA-Benutzerdatenbank (Multi-Factor Authentication) mit den Benutzern in Active Directory oder einem anderen LDAP-Protokoll (Lightweight Directory Protocol) synchron bleibt. Der Prozess ähnelt dem manuellen Importieren von Benutzern aus Active Directory, aber es wird regelmäßig abgefragt, ob Änderungen bei den Active Directory-Benutzern und Sicherheitsgruppen verarbeitet werden müssen.  Außerdem werden Benutzer deaktiviert oder entfernt, die aus einem Container, einer Sicherheitsgruppe oder Active Directory entfernt wurden.
 
@@ -121,7 +125,7 @@ Wenn das LDAP-Verzeichnis DirSync unterstützt und dafür konfiguriert ist, funk
 
 Die folgende Tabelle enthält zusätzliche Informationen zu den einzelnen Einstellungen auf der Registerkarte „Synchronisierung“.
 
-| Feature | BESCHREIBUNG |
+| Funktion | BESCHREIBUNG |
 | --- | --- |
 | Synchronisierung mit Active Directory aktivieren |Wenn dieses Kontrollkästchen aktiviert ist, fragt der Multi-Factor Authentication-Server-Dienst Active Directory regelmäßig auf Änderungen ab. <br><br>Hinweis: Es muss mindestens ein Synchronisierungselement hinzugefügt und der Schritt „Jetzt synchronisieren“ ausgeführt werden, damit der Multi-Factor Authentication-Server-Dienst mit dem Verarbeiten von Änderungen beginnt. |
 | Synchronisierung alle |Geben Sie das Zeitintervall an, wie lange der Multi-Factor Authentication-Server-Dienst zwischen dem Abrufen und Verarbeiten von Änderungen wartet. <br><br> Hinweis: Das angegebene Intervall ist der Zeitraum zwischen dem Startzeitpunkt der jeweiligen Zyklen.  Wenn die Zeit zum Verarbeiten von Änderungen das Intervall überschreitet, startet der Dienst sofort wieder einen Abruf. |

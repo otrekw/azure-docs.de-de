@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.openlocfilehash: 124af71e458e103392c554a9c86d679f691df5b9
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.custom: mqtt, devx-track-js
+ms.openlocfilehash: e1992c806619154fa7b3c33500b2e54fbc919f20
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147645"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151436"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Planen und Übertragen von Aufträgen (Node.js)
 
@@ -54,7 +55,9 @@ Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Apps:
 
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -297,4 +300,4 @@ In diesem Tutorial haben Sie einen Auftrag zum Planen einer direkten Methode fü
 
 Weitere Informationen zu den ersten Schritten mit IoT Hub und Geräteverwaltungsmustern, z. B. drahtloses Firmware-Remoteupdate, finden Sie unter [Tutorial: Durchführen eines Firmwareupdates](tutorial-firmware-update.md).
 
-Weitere Informationen zu den ersten Schritten mit IoT Hub finden Sie unter [Erste Schritte mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).
+Weitere Informationen zu den ersten Schritten mit IoT Hub finden Sie unter [Erste Schritte mit Azure IoT Edge](../iot-edge/quickstart-linux.md).

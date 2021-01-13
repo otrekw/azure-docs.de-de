@@ -1,17 +1,17 @@
 ---
-title: Erstellen einer Azure Data Catalog-Instanz
+title: 'Schnellstart: Erstellen einer Azure Data Catalog-Instanz'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie über das Azure-Portal eine Azure Data Catalog-Instanz erstellen.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
-ms.date: 08/01/2019
-ms.openlocfilehash: 854760ea0158d356cc5449c9f1fdab6161588640
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.date: 05/26/2020
+ms.openlocfilehash: a7d575b92bff69c13ded70187005ce1db018ea4c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976863"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151996"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Schnellstart: Erstellen einer Azure Data Catalog-Instanz
 
@@ -22,6 +22,9 @@ Diese Schnellstartanleitung unterstützt Sie bei den ersten Schritten zur Erstel
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+> [!Note]
+> Aufgrund der Azure-Sicherheitsanforderungen hat Azure Data Catalog die Verwendung von Transport Layer Security (TLS) 1.2 erzwungen. TLS 1.0 und TLS 1.1 wurden deaktiviert. Möglicherweise treten bei der Ausführung des Registrierungstools Fehler auf, wenn Ihr Computer nicht für die Verwendung von TLS 1.2 aktualisiert wurde. Informationen zum Aktualisieren Ihres Computers für die Verwendung von TLS 1.2 finden Sie unter [Aktivieren von Transport Layer Security (1.2)](/mem/configmgr/core/plan-design/security/enable-tls-1-2).
 
 Für Ihre ersten Schritte benötigen Sie Folgendes:
 

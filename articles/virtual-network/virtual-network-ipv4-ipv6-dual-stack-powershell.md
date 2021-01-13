@@ -1,57 +1,36 @@
 ---
-title: Bereitstellen einer IPv6-Anwendung mit dualem Stapel und Basic-Load Balancer in Azure – PowerShell
+title: Bereitstellen einer IPv6-Anwendung mit dualem Stapel – Load Balancer Basic –PowerShell
 titlesuffix: Azure Virtual Network
 description: Dieser Artikel zeigt, wie eine IPv6-Anwendung mit dualem Stapel in Azure Virtual Network mit Azure PowerShell bereitgestellt wird.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/08/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 0ce051892cde9cb50b43a6d4f66ed3d461e71285
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 9a8b9e82f71be83254a263ae28598a43dd7c8b9f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011434"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95994450"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell-preview"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel und Basic-Load Balancer – PowerShell (Vorschau)
+# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel und Basic-Load Balancer – PowerShell
 
-In diesem Artikel wird veranschaulicht, wie Sie eine Anwendung mit dualem Stapel (IPv4 und IPv6) mit einem Basic-Load Balancer unter Verwendung der Azure CLI bereitstellen. Diese umfasst ein virtuelles Netzwerk mit dualem Stapel und ein Subnetz, einen Basic-Load Balancer mit dualen Front-End-Konfigurationen (IPv4 und IPv6), VMs mit NICs und einer dualen IP-Konfiguration, eine Netzwerksicherheitsgruppe und öffentliche IP-Adressen.
+In diesem Artikel wird veranschaulicht, wie Sie eine Anwendung mit dualem Stapel (IPv4 und IPv6) mit einem Basic-Load Balancer unter Verwendung von Azure PowerShell bereitstellen. Sie umfasst ein virtuelles Netzwerk mit dualem Stapel und ein Subnetz, einen Basic-Load Balancer mit dualen Front-End-Konfigurationen (IPv4 und IPv6), VMs mit NICs und einer dualen IP-Konfiguration, eine Netzwerksicherheitsgruppe und öffentliche IP-Adressen.
 
 Informationen zum Bereitstellen einer Anwendung mit dualem Stapel (IPv4 und IPv6) mithilfe von Load Balancer Standard finden Sie unter dem Thema zum [Bereitstellen einer IPv6-Anwendung mit dualem Stapel und Load Balancer Standard mithilfe von Azure PowerShell](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md).
 
-> [!Important]
-> Die IPv6-Unterstützung für Azure Virtual Network ist derzeit als Public Preview verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 6.9.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
-## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie eine Anwendung mit dualem Stapel in Azure bereitstellen, müssen Sie Ihr Abonnement für diese Previewfunktion mit dem folgenden Azure PowerShell-Befehl konfigurieren:
-
-Führen Sie die Registrierung wie folgt aus:
-
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-Es dauert bis zu 30 Minuten, bis die Featureregistrierung abgeschlossen ist. Sie können den Registrierungsstatus überprüfen, indem Sie den folgenden Azure PowerShell-Befehl ausführen: Überprüfen Sie die Registrierung wie folgt:
-```azurepowershell
-Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-Führen Sie im Anschluss an die Registrierung den folgenden Befehl aus:
-
-```azurepowershell
-Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -129,7 +108,11 @@ $backendPoolv4 = New-AzLoadBalancerBackendAddressPoolConfig `
 $backendPoolv6 = New-AzLoadBalancerBackendAddressPoolConfig `
 -Name "dsLbBackEndPool_v6"
 ```
-
+### <a name="create-a-health-probe"></a>Erstellen eines Integritätstests
+Fügen Sie [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) hinzu, um einen Integritätstest zum Überwachen der Integrität der VMs zu erstellen.
+```azurepowershell
+$probe = New-AzLoadBalancerProbeConfig -Name MyProbe -Protocol tcp -Port 3389 -IntervalInSeconds 15 -ProbeCount 2
+```
 ### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 
 Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. Um sicherzustellen, dass nur fehlerfreie virtuelle Computer Datenverkehr empfangen, können Sie optional einen Integritätstest definieren. Der grundlegende Lastenausgleich verwendet einen IPv4-Test, um die Integrität sowohl für IPv4- als auch für IPv6-Endpunkte auf den virtuellen Computern zu bewerten. Der Standardlastenausgleich unterstützt explizite IPv6-Integritätstests.
@@ -143,7 +126,8 @@ $lbrule_v4 = New-AzLoadBalancerRuleConfig `
   -BackendAddressPool $backendPoolv4 `
   -Protocol Tcp `
   -FrontendPort 80 `
-  -BackendPort 80
+  -BackendPort 80 `
+  -probe $probe
 
 $lbrule_v6 = New-AzLoadBalancerRuleConfig `
   -Name "dsLBrule_v6" `
@@ -151,7 +135,8 @@ $lbrule_v6 = New-AzLoadBalancerRuleConfig `
   -BackendAddressPool $backendPoolv6 `
   -Protocol Tcp `
   -FrontendPort 80 `
-  -BackendPort 80
+  -BackendPort 80 `
+  -probe $probe
 ```
 
 ### <a name="create-load-balancer"></a>Erstellen eines Load Balancers
@@ -244,14 +229,14 @@ Erstellen Sie mit [New-AzVirtualNetwork](/powershell/module/az.network/new-azvir
 # Create dual stack subnet
 $subnet = New-AzVirtualNetworkSubnetConfig `
 -Name "dsSubnet" `
--AddressPrefix "10.0.0.0/24","ace:cab:deca:deed::/64"
+-AddressPrefix "10.0.0.0/24","fd00:db8:deca:deed::/64"
 
 # Create the virtual network
 $vnet = New-AzVirtualNetwork `
   -ResourceGroupName $rg.ResourceGroupName `
   -Location $rg.Location  `
   -Name "dsVnet" `
-  -AddressPrefix "10.0.0.0/16","ace:cab:deca::/48"  `
+  -AddressPrefix "10.0.0.0/16","fd00:db8:deca::/48"  `
   -Subnet $subnet
 ```
 
@@ -260,17 +245,17 @@ $vnet = New-AzVirtualNetwork `
 Erstellen Sie mit [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) virtuelle NICs. Das folgende Beispiel erstellt zwei virtuelle Netzwerkkarten mit IPv4- und IPv6-Konfigurationen. (jeweils eine virtuelle NIC pro virtuellem Computer, den Sie in den folgenden Schritten für Ihre App erstellen).
 
 ```azurepowershell-interactive
-  $Ip4Config=New-AzNetworkInterfaceIpConfig `
-    -Name dsIp4Config `
+  $Ip4Config=New-AzNetworkInterfaceIpConfig `
+    -Name dsIp4Config `
     -Subnet $vnet.subnets[0] `
-    -PrivateIpAddressVersion IPv4 `
+    -PrivateIpAddressVersion IPv4 `
     -LoadBalancerBackendAddressPool $backendPoolv4 `
     -PublicIpAddress  $RdpPublicIP_1
-    
-  $Ip6Config=New-AzNetworkInterfaceIpConfig `
-    -Name dsIp6Config `
+      
+  $Ip6Config=New-AzNetworkInterfaceIpConfig `
+    -Name dsIp6Config `
     -Subnet $vnet.subnets[0] `
-    -PrivateIpAddressVersion IPv6 `
+    -PrivateIpAddressVersion IPv6 `
     -LoadBalancerBackendAddressPool $backendPoolv6
     
   $NIC_1 = New-AzNetworkInterface `
@@ -280,10 +265,10 @@ Erstellen Sie mit [New-AzNetworkInterface](/powershell/module/az.network/new-azn
     -NetworkSecurityGroupId $nsg.Id `
     -IpConfiguration $Ip4Config,$Ip6Config 
     
-  $Ip4Config=New-AzNetworkInterfaceIpConfig `
-    -Name dsIp4Config `
+  $Ip4Config=New-AzNetworkInterfaceIpConfig `
+    -Name dsIp4Config `
     -Subnet $vnet.subnets[0] `
-    -PrivateIpAddressVersion IPv4 `
+    -PrivateIpAddressVersion IPv4 `
     -LoadBalancerBackendAddressPool $backendPoolv4 `
     -PublicIpAddress  $RdpPublicIP_2  
 
@@ -367,8 +352,6 @@ Sie können das virtuelle IPv6-Dual Stack-Netzwerk im Azure-Portal wie folgt anz
 
   ![Virtuelles IPv6-Dual Stack-Netzwerk in Azure](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
-> [!NOTE]
-> Das virtuelle IPv6-Netzwerk für Azure ist im Azure-Portal schreibgeschützt für diese Vorschauversion verfügbar.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

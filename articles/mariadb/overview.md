@@ -1,29 +1,29 @@
 ---
-title: Übersicht über den relationalen Datenbankdienst Azure Database for MariaDB
-description: Übersicht über den relationalen Datenbankdienst Azure Database for MariaDB
-author: ajlam
-ms.author: andrela
+title: 'Übersicht: Azure Database for MariaDB'
+description: Hier finden Sie Informationen zum Azure Database for MariaDB-Dienst, einem relationalen Datenbankdienst in der Microsoft-Cloud, der auf der MySQL Community-Edition basiert.
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 08/13/2019
-ms.openlocfilehash: 20f6ff518daae71856446415099ae4cb095ff728
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.date: 3/18/2020
+ms.openlocfilehash: 8115625099543d378728a6313a8cc4c95fec0cd2
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013613"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536998"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Was ist Azure Database for MariaDB?
 
 Azure Database for MariaDB ist ein relationaler Datenbankdienst in der Microsoft-Cloud. Azure Database for MariaDB basiert auf den Versionen 10.2 und 10.3 der Datenbank-Engine [MariaDB Community Edition](https://mariadb.org/download/) (verfügbar unter der GPLv2-Lizenz).
 
-Azure Database for MariaDB bietet Folgendes:
+Azure Database for MariaDB-Server stellt Folgendes bereit:
 
 - Integrierte Hochverfügbarkeit ohne zusätzliche Kosten.
 - Vorhersagbare Leistung inklusive nutzungsbasierter Bezahlung.
-- Bedarfsgerechte Skalierung in Sekundenschnelle.
-- Schutz von sensiblen Daten (sowohl in Ruhe als auch während der Übertragung).
+- Skalierung je nach Bedarf innerhalb von Sekunden.
+- Sicherer Schutz von sensiblen Daten im Ruhezustand und während der Übertragung.
 - Automatische Sicherungen und Point-in-Time-Wiederherstellung für bis zu 35 Tage.
 - Sicherheit und Konformität auf Unternehmensniveau.
 
@@ -41,7 +41,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Anpassen von Leistung und Skalierung in nur wenigen Sekunden
 
-Für den Azure Database for MariaDB-Dienst sind verschiedene Dienstebenen verfügbar: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Jeder Tarif bietet verschiedene Leistungsstufen und Funktionen zur Unterstützung geringer und hoher Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Dank dynamischer Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter  [Tarife](concepts-pricing-tiers.md).
+Für den Azure Database for MariaDB-Dienst sind verschiedene Dienstebenen verfügbar: „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“. Jeder Tarif bietet verschiedene Leistungsstufen und Funktionen zur Unterstützung geringer und hoher Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Dank dynamischer Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter [Tarife](concepts-pricing-tiers.md).
 
 ## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
 
@@ -53,11 +53,7 @@ Die branchenführende SLA von Azure mit einer Verfügbarkeit von 99,99 Prozent w
 
 ## <a name="secure-your-data"></a>Sichern der Daten
 
-Azure-Datenbankdienste sind für ihren Datenschutz bekannt. Diese Tradition wird auch von Azure Database for MariaDB fortgeführt. Azure Database for MariaDB bietet Features zur Einschränkung des Zugriffs, zum Schutz von Daten (sowohl in Ruhe als auch während der Übertragung) sowie zur Überwachung von Aktivitäten. Weitere Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/en-us/trustcenter/security).
-
-Der Azure Database for MariaDB-Dienst verwendet Speicherverschlüsselung für ruhende Daten und ist mit FIPS 140-2 konform. Daten werden auf dem Datenträger verschlüsselt. Das gilt auch für Sicherungsdaten. (Temporäre Dateien, die von der Engine beim Ausführen von Abfragen erstellt werden, werden auf dem Datenträger nicht verschlüsselt.) Der Dienst verwendet das in der Azure-Speicherverschlüsselung inbegriffene AES-256-Bit-Verschlüsselungsverfahren. Die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
-
-In der Standardeinstellung ist der Azure Database for MariaDB-Dienst so konfiguriert, dass für Daten während der Übertragung innerhalb des Netzwerks [SSL-Verbindungssicherheit](./concepts-ssl-connection-security.md) erforderlich ist. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird. Falls Ihre Clientanwendung keine SSL-Konnektivität unterstützt, können Sie optional die SSL-Anforderung deaktivieren, um eine Verbindung mit Ihrem Datenbankdienst herstellen zu können.
+Azure-Datenbankdienste sind für ihren Datenschutz bekannt. Diese Tradition wird auch von Azure Database for MariaDB fortgeführt. Azure Database for MariaDB bietet Features zur Einschränkung des Zugriffs, zum Schutz von Daten (sowohl in Ruhe als auch während der Übertragung) sowie zur Überwachung von Aktivitäten. Weitere Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/trustcenter/security). Weitere Informationen zu den Sicherheitsfeatures von Azure Database for MariaDB finden Sie in der [Übersicht über die Sicherheit](concepts-security.md).
 
 ## <a name="contacts"></a>Kontakte
 

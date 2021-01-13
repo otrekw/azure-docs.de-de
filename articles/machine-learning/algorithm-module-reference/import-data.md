@@ -1,80 +1,97 @@
 ---
 title: 'Import Data (Daten importieren): Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Import Data“ (Daten importieren) in Azure Machine Learning Service verwenden, um Daten aus bestehenden Clouddatendiensten in ein Machine Learning-Experiment zu laden.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul Import Data in Azure Machine Learning verwenden, um Daten aus vorhandenen Clouddatendiensten in eine Machine Learning-Pipeline zu laden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: e8522c759efb0cc599bbcf8e7569f6045da571a8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 11/13/2020
+ms.openlocfilehash: 69d27c102ca059974da87224e44f0ad7aa103fff
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128783"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592633"
 ---
 # <a name="import-data-module"></a>Modul „Import Data“ (Daten importieren)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
-Verwenden Sie dieses Modul, um Daten aus bestehenden Clouddatendiensten in ein Machine Learning-Experiment zu laden.  
-Das Modul bietet jetzt einen Assistenten, mit dem Sie eine Speicheroption und bestehende Abonnements und Konten einfach auswählen können, um alle Optionen schnell zu konfigurieren. Müssen Sie eine bestehende Datenverbindung bearbeiten? Kein Problem, der Assistent lädt alle vorherigen Konfigurationsdetails, damit Sie nicht ganz von vorne beginnen müssen. 
-  
-Nachdem Sie die gewünschten Daten definiert und eine Verbindung mit der Quelle hergestellt haben, leitet das Modul [Import Data](./import-data.md) den Datentyp jeder Spalte basierend auf den darin enthaltenen Werten ab und lädt die Daten in Ihren Azure Machine Learning-Arbeitsbereich. Das Modul [Import Data](./import-data.md) gibt ein Dataset aus, das für beliebige Experimente verwendet werden kann.
+Verwenden Sie dieses Modul, um Daten aus vorhandenen Clouddatendiensten in eine Machine Learning-Pipeline zu laden. 
 
-  
-Wenn sich Ihre Quelldaten ändern, können Sie das Dataset aktualisieren und neue Daten hinzufügen, indem Sie [Import Data](./import-data.md) erneut ausführen. Wenn die Daten jedoch nicht bei jeder Ausführung des Experiments erneut aus der Quelle gelesen werden sollen, legen Sie die Option **Use cached results** (Zwischengespeicherte Ergebnisse verwenden) auf TRUE fest. Wenn diese Option ausgewählt ist, überprüft das Modul, ob das Experiment zuvor unter Verwendung derselben Quelle und derselben Eingabeoptionen ausgeführt wurde. Wenn eine frühere Ausführung gefunden wird, werden die Daten aus dem Cache verwendet, statt die Daten erneut aus der Quelle zu laden.
- 
+> [!Note]
+> Alle von diesem Modul bereitgestellten Funktionen können über **Datenspeicher** und **Datasets** auf der Landing Page des Arbeitsbereichs ausgeführt werden. Die Verwendung von **Datenspeichern** und **Datasets** wird empfohlen, da hierbei zusätzliche Features wie Datenüberwachung eingeschlossen sind. Weitere Informationen finden Sie in den Artikeln [Zugreifen auf Daten](../how-to-access-data.md) und [Registrieren von Datasets](../how-to-create-register-datasets.md).
+> Nachdem Sie ein Dataset registriert haben, finden Sie es auf der Designer-Oberfläche in der Kategorie **Datasets** -> **My Datasets** (Meine Datasets). Dieses Modul ist für Benutzer von Studio (klassisch) reserviert, die eine vertraute Benutzeroberfläche verwenden möchten. 
+>
 
-## <a name="data-sources"></a>Datenquellen
+Das Modul **Import Data** unterstützt das Lesen von Daten aus den folgenden Quellen:
 
-Das Modul „Import Data“ unterstützt die folgenden Datenquellen: Klicken Sie auf die Links, um ausführliche Anleitungen und Beispiele zur Verwendung der einzelnen Datenquellen zu erhalten. 
- 
-Wenn Sie nicht sicher sind, wie bzw. wo Daten gespeichert werden sollen, informieren Sie sich in diesem Leitfaden über allgemeine Datenszenarien im Data Science-Prozess:  [Szenarien für die erweiterte Analyse in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-plan-sample-scenarios). 
+- URL über HTTP
+- Azure-Cloudspeicher über [**Datenspeicher**](../how-to-access-data.md)
+    - Azure-Blobcontainer
+    - Azure-Dateifreigabe
+    - Azure Data Lake
+    - Azure Data Lake Gen2
+    - Azure SQL-Datenbank
+    - Azure PostgreSQL    
+
+Bevor Sie Cloudspeicher verwenden können, müssen Sie zunächst einen Datenspeicher in Ihrem Azure Machine Learning-Arbeitsbereich registrieren. Weitere Informationen hierzu finden Sie unter [Zugreifen auf Daten](../how-to-access-data.md). 
+
+Nachdem Sie die gewünschten Daten definiert und eine Verbindung mit der Quelle hergestellt haben, leitet **[Import Data](./import-data.md)** den Datentyp jeder Spalte basierend auf den darin enthaltenen Werten ab und lädt die Daten in Ihre Designer-Pipeline. **Import Data** gibt ein Dataset aus, das mit beliebigen Designer-Pipelines verwendet werden kann.
+
+Wenn sich Ihre Quelldaten ändern, können Sie das Dataset aktualisieren und neue Daten hinzufügen, indem Sie [Import Data](./import-data.md) erneut ausführen.
+
+> [!WARNING]
+> Wenn sich Ihr Arbeitsbereich in einem virtuellen Netzwerk befindet, müssen Sie Ihre Datenspeicher so konfigurieren, dass sie die Features des Designers zur Datenvisualisierung verwenden. Weitere Informationen zur Verwendung von Datenspeichern und Datasets in virtuellen Netzwerken finden Sie unter [Verwenden von Azure Machine Learning Studio in einem virtuellen Azure-Netzwerk](../how-to-enable-studio-virtual-network.md).
 
 
-|Datenquelle| Nutzung|
-|-----------|-----------|  
-|[Web URL via HTTP](./import-from-web-url-via-http.md)|Ruft Daten ab, die unter einer Web-URL gehostet sind. Die Web-URL verwendet HTTP und wurde im CSV-, TSV-, ARFF- oder SvmLight-Format bereitgestellt.|  
-|[Import from Azure Blob Storage](./import-from-azure-blob-storage.md) (Daten aus Azure Blob Storage importieren) |Ruft Daten ab, die im Blob-Dienst von Azure gespeichert sind.|  
+## <a name="how-to-configure-import-data"></a>Konfigurieren von „Import Data“ (Daten importieren)
 
-## <a name="how-to-use-import-data"></a>Gewusst wie: Importieren von Daten
- 
-1. Fügen Sie das Modul **Import Data** Ihrem Experiment hinzu. Sie finden dieses Modul in der Kategorie **Data Input and Output** (Dateieingabe und -ausgabe) in der Oberfläche.
+1. Fügen Sie Ihrer Pipeline das Modul **Import Data** (Daten importieren) hinzu. Sie finden dieses Modul in der Kategorie **Data Input and Output** (Dateieingabe und -ausgabe) im Designer.
 
-2. Klicken Sie auf **Launch Data Import Wizard** (Datenimport-Assistenten starten), um die Datenquelle mithilfe eines Assistenten zu konfigurieren.
+1. Wählen Sie das Modul aus, um den rechten Bereich zu öffnen.
 
-    Der Assistent ruft den Kontonamen und die Anmeldeinformationen ab und unterstützt Sie bei der Konfiguration weiterer Optionen. Wenn Sie eine bestehende Konfiguration bearbeiten, werden die aktuellen Werte zuerst geladen.
+1. Wählen Sie **Datenquelle** und dann den Datenquellentyp aus. Dabei kann es sich um „HTTP“ oder „Datenspeicher“ handeln.
 
-3. Wenn Sie den Assistenten nicht verwenden möchten, klicken Sie auf **Data source** (Datenquelle), und wählen Sie den Typ des cloudbasierten Speichers, aus dem Sie Daten lesen. 
+    Wenn Sie „Datenspeicher“ auswählen, können Sie vorhandene Datenspeicher auswählen, die bereits in Ihrem Azure Machine Learning-Arbeitsbereich registriert sind, oder einen neuen Datenspeicher erstellen. Anschließend definieren Sie den Pfad der zu importierenden Daten im Datenspeicher. Sie können den Pfad leicht durchsuchen, indem Sie auf **Pfad durchsuchen** klicken. ![Der Screenshot zeigt den Link „Pfad durchsuchen“, der das Dialogfeld für die Pfadauswahl öffnet.](media/module/import-data-path.png)
 
-    Zusätzliche Einstellungen hängen vom ausgewählten Speichertyp und davon ab, ob der Speicher gesichert ist oder nicht. Möglicherweise müssen Sie den Kontonamen, den Dateityp oder Anmeldeinformationen angeben. Einige Quellen erfordern keine Authentifizierung, bei anderen werden Sie jedoch u. U. nach Kontonamen, Schlüssel oder Containernamen gefragt.
+    > [!NOTE]
+    > Das Modul **Import Data** (Daten importieren) ist nur für Daten vom Typ **Tabular** (Tabellarisch) vorgesehen.
+    > Wenn Sie mehrere tabellarische Datendateien einmal importieren möchten, müssen folgende Bedingungen erfüllt sein, damit keine Fehler auftreten:
+    > 1. Wenn Sie alle Datendateien im Ordner einschließen möchten, müssen Sie `folder_name/**` für **Path** (Pfad) eingeben.
+    > 2. Alle Datendateien müssen in Unicode-8 codiert sein.
+    > 3. Bei allen Datendateien müssen Spaltenanzahl und Spaltennamen identisch sein.
+    > 4. Das Ergebnis des Importierens mehrerer Datendateien ist, alle Zeilen aus mehreren Dateien in der richtigen Reihenfolge zu verketten.
 
-4. Wählen Sie die Option **Use cached results**, wenn Sie das Dataset für sukzessive Ausführungen zwischenspeichern möchten.
+1. Wählen Sie das Vorschauschema aus, um die Spalten zu filtern, die Sie einschließen möchten. Sie können auch erweiterte Einstellungen wie Trennzeichen in den Analyseoptionen definieren.
 
-    Sofern keine weiteren Änderungen an den Modulparametern vorgenommen werden, lädt das Experiment die Daten erst bei der erstmaligen Ausführung des Moduls. Anschließend wird eine zwischengespeicherte Version des Datasets verwendet.
+    ![import-data-preview](media/module/import-data.png)
 
-    Deaktivieren Sie diese Option, wenn Sie die Daten bei jeder Ausführung des Experiments erneut laden müssen.
+1. Das Kontrollkästchen **Ausgabe erneut generieren** legt fest, ob das Modul zum erneuten Generieren der Ausgabe zur Laufzeit ausgeführt werden soll. 
 
-5. Führen Sie das Experiment aus.
+    Die Option ist standardmäßig deaktiviert. Dies bedeutet, dass das System die Ausgabe der letzten Ausführung wiederverwendet, um die Laufzeit zu verkürzen, wenn das Modul bereits mit denselben Parametern ausgeführt wurde. 
 
-    Wenn die Daten durch „Import Data“ in die Oberfläche geladen werden, wird der Datentyp jeder Spalte basierend auf den darin enthaltenen Werten (entweder numerisch oder kategorisch) abgeleitet.
+    Wenn sie ausgewählt ist, führt das System das Modul erneut aus, um die Ausgabe neu zu generieren. Wählen Sie also diese Option aus, wenn die zugrunde liegenden Daten im Speicher aktualisiert werden, um die neuesten Daten zu erhalten.
 
-    - Sofern eine Spaltenüberschrift vorhanden ist, wird diese zur Benennung der Spalten im Ausgabedataset verwendet.
 
-    - Wenn keine Spaltenüberschriften in den Daten enthalten sind, werden neue Spaltennamen im Format col1, col2,... , coln* generiert.
+1. Übermitteln Sie die Pipeline.
+
+    Wenn die Daten durch Import Data in den Designer geladen werden, wird der Datentyp jeder Spalte basierend auf den darin enthaltenen Werten (numerisch oder kategorisch) abgeleitet.
+
+    Sofern eine Spaltenüberschrift vorhanden ist, wird diese zur Benennung der Spalten im Ausgabedataset verwendet.
+
+    Wenn keine Spaltenüberschriften in den Daten enthalten sind, werden neue Spaltennamen im Format col1, col2,... , coln* generiert.
 
 ## <a name="results"></a>Ergebnisse
 
-Nachdem der Import abgeschlossen wurde, klicken Sie auf das Ausgabedataset, und wählen Sie **Visualize** (Visualisieren) aus, um zu überprüfen, ob die Daten erfolgreich importiert wurden.
+Nachdem der Import abgeschlossen wurde, klicken Sie mit der rechten Maustaste auf das Ausgabedataset, und wählen Sie **Visualize** (Visualisieren) aus, um zu überprüfen, ob die Daten erfolgreich importiert wurden.
 
-Wenn Sie die Daten zur Wiederverwendung speichern möchten, anstatt bei jeder Ausführung des Experiments einen neuen Satz von Daten zu importieren, klicken Sie mit der rechten Maustaste auf die Ausgabe, und wählen Sie **Save as Dataset** (Als Dataset speichern) aus. Wählen Sie einen Namen für das Dataset aus. Die Daten werden beim Speichern in das gespeicherte Dataset übernommen und auch bei der erneuten Ausführung des Experiments nicht aktualisiert. Dies gilt auch, wenn sich das Dataset während des Experiments ändert. Dies kann hilfreich sein, um Momentaufnahmen von Daten zu erstellen.
+Wenn Sie die Daten zur Wiederverwendung speichern möchten, anstatt bei jeder Pipelineausführung ein neues Dataset zu importieren, wählen Sie das Symbol für **Dataset registrieren** unter der Registerkarte **Outputs+logs** (Ausgaben und Protokolle) im rechten Bereich des Moduls aus. Wählen Sie einen Namen für das Dataset aus. Das gespeicherte Dataset enthält die Daten zum Zeitpunkt der Speicherung. Das Dataset wird bei erneuter Ausführung der Pipeline nicht aktualisiert. Das gilt auch, wenn sich das Dataset in der Pipeline ändert. Dies kann hilfreich sein, um Momentaufnahmen von Daten zu erstellen.
 
 Nach dem Importieren der Daten können einige zusätzliche Vorbereitungen zur Modellierung und Analyse erforderlich sein:
-
 
 - Verwenden Sie [Edit Metadata](./edit-metadata.md) (Metadaten bearbeiten), um Spaltennamen zu ändern, einen abweichenden Datentyp für eine Spalte festzulegen, oder um anzugeben, dass einige Spalten für Bezeichnungen oder Features stehen.
 
@@ -84,4 +101,4 @@ Nach dem Importieren der Daten können einige zusätzliche Vorbereitungen zur Mo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

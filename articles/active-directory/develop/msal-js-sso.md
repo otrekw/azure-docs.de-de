@@ -1,28 +1,24 @@
 ---
-title: Einmaliges Anmelden (Microsoft-Authentifizierungsbibliothek für JavaScript) | Azure
+title: Einmaliges Anmelden (MSAL.js) | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie etwas über das Erstellen von Umgebungen mit einmaligem Anmelden mithilfe der Microsoft-Authentifizierungsbibliothek für JavaScript (MSAL.js).
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1f102307256852ac92616c7fb707e0e2739e5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544153"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84690777"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Einmaliges Anmelden mit MSAL.js
 
@@ -39,7 +35,7 @@ Standardmäßig verwendet MSAL.js `sessionStorage`, der keine gemeinsame Verwend
 ```javascript
 const config = {
     auth: {
-        clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”
+        clientId: "abcd-ef12-gh34-ikkl-ashdjhlhsdg"
     },
     cache: {
         cacheLocation: 'localStorage'
@@ -161,7 +157,7 @@ var authContext = new AuthenticationContext(config);
 // In latest MSAL.js version
 const config = {
     auth: {
-        clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”
+        clientId: "abcd-ef12-gh34-ikkl-ashdjhlhsdg"
     },
     cache: {
         cacheLocation: 'localStorage'

@@ -1,31 +1,31 @@
 ---
-title: Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps mithilfe eines Azure AD-Anwendungsproxys | Microsoft-Dokumentation
+title: Benutzerdefinierte Startseite für veröffentlichte Apps – Azure AD-Anwendungsproxys
 description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungsproxyconnectors.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51596e4db8999de5089748e40f9b24bd46c84e56
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 155a91ded6c814e2d868e8edd4572459460d006f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807830"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88642060"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps mithilfe eines Azure AD-Anwendungsproxys
 
-In diesem Artikel wird erläutert, wie Sie eine App so konfigurieren, dass sie Benutzer zu einer benutzerdefinierten Homepage weiterleiten. Wenn Sie eine App mit dem Anwendungsproxy veröffentlichen, legen Sie eine interne URL fest. Dies ist jedoch in einigen Fällen nicht die Seite, die den Benutzern zuerst angezeigt werden soll. Legen Sie eine benutzerdefinierte Startseite fest, sodass die Benutzer beim Zugreifen auf die App zur richtigen Seite gelangen. Benutzern wird die benutzerdefinierte Startseite angezeigt, die Sie festlegen, egal ob sie über den Azure Active Directory-Zugriffsbereich oder den Office 365-App-Starter auf die App zugreifen.
+In diesem Artikel wird erläutert, wie Sie eine App so konfigurieren, dass sie Benutzer zu einer benutzerdefinierten Homepage weiterleiten. Wenn Sie eine App mit dem Anwendungsproxy veröffentlichen, legen Sie eine interne URL fest. Dies ist jedoch in einigen Fällen nicht die Seite, die den Benutzern zuerst angezeigt werden soll. Legen Sie eine benutzerdefinierte Startseite fest, sodass die Benutzer beim Zugreifen auf die App zur richtigen Seite gelangen. Benutzern wird die benutzerdefinierte Startseite angezeigt, die Sie festlegen, egal ob sie über „Meine Apps“ in Azure Active Directory oder das Microsoft 365-App-Startfeld auf die App zugreifen.
 
 Wenn ein Benutzer die App startet, wird er standardmäßig zur Stammdomänen-URL der veröffentlichten App weitergeleitet. Die Zielseite wird in der Regel als URL der Startseite festgelegt. Definieren Sie mithilfe des Azure AD-PowerShell-Moduls eine benutzerdefinierte Homepage-URL, wenn App-Benutzer zu einer bestimmten Seite innerhalb der App gelangen sollen.
 
@@ -37,7 +37,7 @@ Hier ist ein Szenario, das erklärt, warum Ihr Unternehmen eine benutzerdefinier
 - Sie möchten `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` als URL der Homepage festlegen, damit externen Benutzern zuerst die Anmeldeseite angezeigt wird.
 
 > [!NOTE]
-> Wenn Sie Benutzern Zugriff auf veröffentlichte Apps erteilen, werden die Apps im [Azure AD-Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md) und im [Office 365-Startfeld](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/) angezeigt.
+> Wenn Sie Benutzern Zugriff auf veröffentlichte Apps erteilen, werden die Apps in [Meine Apps](../user-help/my-apps-portal-end-user-access.md) und im [Office 365-App-Startfeld](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/) angezeigt.
 
 ## <a name="before-you-start"></a>Vorbereitung
 

@@ -1,22 +1,18 @@
 ---
-title: Herstellen einer Verbindung mit SMTP über Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit SMTP aus Azure Logic Apps
 description: Automatisieren von Aufgaben und Workflows, die mithilfe von Azure Logic Apps E-Mails über Ihr SMTP-Konto (Simple Mail Transfer Protocol) senden
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 1649f197d4dbd88e2b485ab32f254a2d09696a84
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 9989d0ebd95bfe5ee49be2ba76b73e07630b519a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050744"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87283944"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Senden von E-Mails von Ihrem SMTP-Konto mithilfe von Azure Logic Apps
 
@@ -60,7 +56,7 @@ Mit Azure Logic Apps und dem SMTP-Connector (Simple Mail Transfer Protocol) kön
    | **Benutzername** | Ja | Der Benutzername für Ihr SMTP-Konto | 
    | **Kennwort** | Ja | Das Kennwort für Ihr SMTP-Konto | 
    | **SMTP-Serverport** | Nein | Ein bestimmter Port auf Ihrem SMTP-Server, den Sie verwenden möchten | 
-   | **SSL aktivieren?** | Nein | Aktivieren oder Deaktivieren der SSL-Verschlüsselung | 
+   | **SSL aktivieren?** | Nein | Aktivieren oder Deaktivieren der TLS/SSL-Verschlüsselung. | 
    |||| 
 
 1. Geben Sie die erforderlichen Informationen zu Ihrer ausgewählten Aktion ein. 
@@ -69,12 +65,10 @@ Mit Azure Logic Apps und dem SMTP-Connector (Simple Mail Transfer Protocol) kön
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite](/connectors/smtpconnector/) des Connectors.
+Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/smtpconnector/).
 
-## <a name="get-support"></a>Support
-
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
+> [!NOTE]
+> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

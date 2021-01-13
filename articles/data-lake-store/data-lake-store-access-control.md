@@ -1,6 +1,6 @@
 ---
 title: Übersicht über die Zugriffssteuerung in Data Lake Storage Gen1 | Microsoft-Dokumentation
-description: Grundlegende Informationen zur Funktionsweise der Zugriffssteuerung in Azure Data Lake Storage Gen1
+description: Hier erfahren Sie mehr über die Grundlagen des Zugriffssteuerungsmodells von Azure Data Lake Storage Gen1, das von HDFS abgeleitet ist.
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226093"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094861"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Zugriffssteuerung in Azure Data Lake Storage Gen1
 
@@ -29,12 +29,10 @@ Es gibt zwei Arten von Zugriffssteuerungslisten (Access Control Lists, ACLs): **
 
 * **Zugriffs-ACLs**: Diese Listen steuern den Zugriff auf ein Objekt. Dateien und Ordner verfügen jeweils über Zugriffs-ACLs.
 
-* **Standard-ACLs**: Hierbei handelt es sich um eine Art Vorlage für ACLs, die einem Ordner zugeordnet sind und die Zugriffs-ACLs für alle untergeordneten Elemente festlegen, die unter diesem Ordner erstellt werden. Dateien verfügen über keine Standard-ACLs.
+* **Standard-ACLs**: Hierbei handelt es sich um eine Art Vorlage für ACLs, die einem Ordner zugeordnet sind und die Zugriffs-ACLs für alle untergeordneten Elemente bestimmen, die in unter diesem Ordner erstellt werden. Dateien verfügen über keine Standard-ACLs.
 
 
 Zugriffs- und Standard-ACLs besitzen die gleiche Struktur.
-
-
 
 > [!NOTE]
 > Änderungen an der Standard-ACL für ein übergeordnetes Element haben keine Auswirkungen auf die Zugriffs- oder Standard-ACL bereits vorhandener untergeordneter Elemente.
@@ -45,7 +43,7 @@ Zugriffs- und Standard-ACLs besitzen die gleiche Struktur.
 
 Die Berechtigungen für ein Dateisystemobjekt sind **Lesen**, **Schreiben** und **Ausführen**. Sie können wie in der folgenden Tabelle beschrieben auf Dateien und Ordner angewendet werden:
 
-|            |    File     |   Ordner |
+|            |    Datei     |   Ordner |
 |------------|-------------|----------|
 | **Lesen (Read, R)** | Berechtigt zum Lesen von Dateiinhalten | Erfordert **Lesen** und **Ausführen**, um den Inhalt des Ordners aufzulisten.|
 | **Schreiben (Write, W)** | Berechtigt zum Schreiben in eine Datei sowie zum Anfügen an eine Datei | Erfordert **Schreiben** und **Ausführen**, um untergeordnete Elemente in einem Ordner zu erstellen. |
@@ -74,7 +72,7 @@ Im Folgenden sind einige allgemeine Szenarien aufgeführt, die veranschaulichen,
 | Vorgang | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | Lesen      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Anfügen an | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Anfügen an | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `-W-`          |
 | Löschen    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Erstellen    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | List      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
@@ -132,8 +130,8 @@ Da den Benutzern in Data Lake Storage Gen1 keine „primäre Gruppe“ zugeordne
 
 **Zuweisen der zuständigen Gruppe für eine neue Datei oder einen neuen Ordner**
 
-* **Fall 1**: Der Stammordner „/“. Dieser Ordner wird erstellt, wenn ein Data Lake Storage Gen1-Konto erstellt wird. In diesem Fall wird die zuständige Gruppe auf eine GUID festgelegt, die nur aus Nullen besteht.  Bei diesem Wert ist kein Zugriff zulässig.  Es ist ein Platzhalter, der bis zur Zuweisung einer Gruppe gilt.
-* **Fall 2** (jeder andere Fall): Beim Erstellen eines neuen Elements wird die zuständige Gruppe aus dem übergeordneten Ordner kopiert.
+* **1. Fall**: Der Stammordner „/“. Dieser Ordner wird erstellt, wenn ein Data Lake Storage Gen1-Konto erstellt wird. In diesem Fall wird die zuständige Gruppe auf eine GUID festgelegt, die nur aus Nullen besteht.  Bei diesem Wert ist kein Zugriff zulässig.  Es ist ein Platzhalter, der bis zur Zuweisung einer Gruppe gilt.
+* **2. Fall** (jeder andere Fall): Beim Erstellen eines neuen Elements wird die zuständige Gruppe aus dem übergeordneten Ordner kopiert.
 
 **Ändern der zuständigen Gruppe**
 
@@ -280,7 +278,11 @@ Einträge in den ACLs werden als GUIDs gespeichert, die Benutzern in Azure AD en
 
 ### <a name="why-do-i-sometimes-see-guids-in-the-acls-when-im-using-the-azure-portal"></a>Warum werden im Azure-Portal manchmal GUIDs in den ACLs angezeigt?
 
-Eine GUID wird angezeigt, wenn der Benutzer in Azure AD nicht mehr vorhanden ist. Dies ist meist der Fall, wenn der Benutzer aus dem Unternehmen ausgeschieden ist oder sein Konto in Azure AD gelöscht wurde.
+Eine GUID wird angezeigt, wenn der Benutzer in Azure AD nicht mehr vorhanden ist. Dies ist meist der Fall, wenn der Benutzer aus dem Unternehmen ausgeschieden ist oder sein Konto in Azure AD gelöscht wurde. Stellen Sie außerdem sicher, dass Sie die richtige ID zum Festlegen von ACLs verwenden (Informationen dazu finden Sie unter der folgenden Frage).
+
+### <a name="when-using-service-principal-what-id-should-i-use-to-set-acls"></a>Welche ID sollte ich bei Verwendung des Dienstprinzipals zum Festlegen von ACLs verwenden?
+
+Navigieren Sie im Azure-Portal zu **Azure Active Directory > Unternehmensanwendungen**, und wählen Sie Ihre Anwendung aus. Auf der Registerkarte **Übersicht** sollte eine Objekt-ID angezeigt werden, die beim Hinzufügen von ACLs für den Datenzugriff zu verwenden ist (und nicht die Anwendungs-ID).
 
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Unterstützt Data Lake Storage Gen1 die Vererbung von ACLs?
 

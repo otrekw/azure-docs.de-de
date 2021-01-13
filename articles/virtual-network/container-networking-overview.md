@@ -1,6 +1,6 @@
 ---
 title: Containernetzwerk mit Azure Virtual Network | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Verwendung eines virtuellen Azure-Netzwerks für Container festlegen.
+description: Erfahren Sie mehr über das CNI-Plug-In (Container Network Interface) von Azure Virtual Network und wie Sie Containern die Nutzung von Azure Virtual Network ermöglichen.
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -10,18 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 2ebc678bffbbbe5d512d620b8f77ac0a245c0aff
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: bd86b2ec803b2327d3daa2d4274f13328fec8c27
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579120"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87283213"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>Verwenden von Azure Virtual Network-Funktionen für Container
 
@@ -53,7 +53,7 @@ Damit Pods auf das Internet zugreifen können, werden mit dem Plug-In *iptables*
 
 ## <a name="limits"></a>Einschränkungen
 
-Das Plug-In unterstützt bis zu 250 Pods pro virtuellem Computer und bis zu 16.000 Pods in einem virtuellen Netzwerk. Für [Azure Kubernetes Service](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits) gelten andere Einschränkungen.
+Das Plug-In unterstützt bis zu 250 Pods pro virtuellem Computer und bis zu 16.000 Pods in einem virtuellen Netzwerk. Für [Azure Kubernetes Service](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits) gelten andere Einschränkungen.
 
 ## <a name="using-the-plug-in"></a>Verwenden des Plug-Ins
 

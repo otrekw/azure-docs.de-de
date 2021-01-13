@@ -1,17 +1,14 @@
 ---
-title: Übersicht über Azure Resource Health | Microsoft-Dokumentation
-description: Übersicht über Azure Resource Health
-author: stephbaron
-ms.author: stbaron
+title: Übersicht über Azure Resource Health
+description: Erfahren Sie, wie Azure Resource Health Sie bei der Diagnose und bei Supportanfragen unterstützt, wenn Dienstprobleme Auswirkungen auf Ihre Azure-Ressourcen haben.
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 05/10/2019
-ms.openlocfilehash: 9c2096f94f38d13288c6ce3742252bc6d576835a
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854226"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90967875"
 ---
 # <a name="resource-health-overview"></a>Übersicht über Resource Health
  
@@ -21,7 +18,7 @@ Azure Resource Health unterstützt Sie bei der Diagnose und bei Supportanfragen,
 
 ## <a name="resource-definition-and-health-assessment"></a>Ressourcendefinition und Integritätsbewertung
 
-*Eine Ressource* ist eine bestimmte Instanz eines Azure-Diensts, z. B. ein virtueller Computer, eine Web-App oder eine SQL-Datenbank. Resource Health ermittelt anhand von Signalen der verschiedenen Azure-Dienste, ob eine Ressource fehlerfrei ist. Wenn eine Ressource fehlerhaft ist, analysiert Resource Health zusätzliche Informationen, um die Quelle des Problems zu bestimmen. Der Dienst erstellt auch Berichte zu Aktionen, die von Microsoft zum Beheben des Problems ergriffen werden, und gibt Maßnahmen an, die Sie zur Behebung unternehmen können.
+Eine *Ressource* ist eine bestimmte Instanz eines Azure-Diensts, z. B. ein virtueller Computer, eine Web-App oder SQL-Datenbank. Resource Health ermittelt anhand von Signalen der verschiedenen Azure-Dienste, ob eine Ressource fehlerfrei ist. Wenn eine Ressource fehlerhaft ist, analysiert Resource Health zusätzliche Informationen, um die Quelle des Problems zu bestimmen. Der Dienst erstellt auch Berichte zu Aktionen, die von Microsoft zum Beheben des Problems ergriffen werden, und gibt Maßnahmen an, die Sie zur Behebung unternehmen können.
 
 Weitere Informationen zur Bewertung der Integrität entnehmen Sie der Liste von Ressourcentypen und Integritätsprüfungen in [Azure Resource Health](resource-health-checks-resource-types.md).
 
@@ -41,7 +38,7 @@ Die Integrität einer Ressource wird als einer der folgenden Status angezeigt.
 
 #### <a name="platform-events"></a>Plattformereignisse
 
-Plattformereignisse werden von mehreren Komponenten der Azure-Infrastruktur ausgelöst. Dazu zählen sowohl geplante Aktionen (z.B. geplante Wartung) als auch unerwartete Vorfälle (z.B. ein nicht geplanter Neustart eines Hosts).
+Plattformereignisse werden von mehreren Komponenten der Azure-Infrastruktur ausgelöst. Dazu zählen sowohl geplante Aktionen (z. B. geplante Wartung) als auch unerwartete Vorfälle (z. B. ein nicht geplanter Neustart eines Hosts oder heruntergestufte Hosthardware, deren Ausfall nach einem bestimmten Zeitfenster vorhergesagt wird).
 
 Resource Health stellt weitere Details zum Ereignis und zum Wiederherstellungsprozess bereit. Darüber hinaus können Sie sich selbst dann an den Microsoft-Support wenden, wenn Sie nicht über eine aktive Supportvereinbarung verfügen.
 
@@ -79,7 +76,7 @@ Wenn Sie glauben, dass der aktuelle Integritätsstatus falsch ist, können Sie u
 
 ## <a name="history-information"></a>Verlaufsinformationen
 
-Im Abschnitt **Integritätsverlauf** von Resource Health stehen bis zu 14 Tage alte Verlaufsdaten zur Verfügung.
+Im Abschnitt **Integritätsverlauf** von Resource Health stehen bis zu 30 Tage alte Verlaufsdaten zur Verfügung.
 
 ![Liste der Resource Health-Ereignisse in den letzten zwei Wochen](./media/resource-health-overview/history-blade.png)
 

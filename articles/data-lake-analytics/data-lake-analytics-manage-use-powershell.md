@@ -1,22 +1,19 @@
 ---
 title: Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell
 description: In diesem Artikel wird beschrieben, wie Sie Azure PowerShell zum Verwalten von Data Lake Analytics-Konten, -Datenquellen, -Benutzern und -Aufträgen verwenden.
-services: data-lake-analytics
 ms.service: data-lake-analytics
-author: matt1883
-ms.author: mahi
-ms.reviewer: jasonwhowell
-ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
-ms.topic: conceptual
+ms.reviewer: jasonh
+ms.topic: how-to
 ms.date: 06/29/2018
-ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afa21e6aae769e69e8bc83b9fa0d4f9b76396f7e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66156438"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220311"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell
+
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 In diesem Artikel wird beschrieben, wie Sie Azure Data Lake Analytics-Konten, -Datenquellen, -Benutzer und -Aufträge mit Azure PowerShell verwalten.
@@ -25,13 +22,13 @@ In diesem Artikel wird beschrieben, wie Sie Azure Data Lake Analytics-Konten, -D
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Sammeln Sie die folgenden Informationen, um PowerShell mit Data Lake Analytics zu verwenden: 
+Sammeln Sie die folgenden Informationen, um PowerShell mit Data Lake Analytics zu verwenden:
 
-* **Abonnement-ID**: Die ID des Azure-Abonnements, das Ihr Data Lake Analytics-Konto enthält.
-* **Ressourcengruppe**: Der Name der Azure-Ressourcengruppe, die Ihr Data Lake Analytics-Konto enthält.
-* **Name des Data Lake Analytics-Kontos:** Der Name Ihres Data Lake Analytics-Kontos.
-* **Name des Data Lake Store-Standardkontos:** Jedes Data Lake Analytics-Konto verfügt über ein Data Lake Store-Standardkonto.
-* **Standort**: Der Standort des Data Lake Analytics-Kontos, z.B. „USA, Osten 2“, oder andere unterstützte Standorte.
+* **Abonnement-ID** : ID des Azure-Abonnements, das Ihr Data Lake Analytics-Konto enthält.
+* **Ressourcengruppe** : der Name der Azure-Ressourcengruppe, die Ihr Data Lake Analytics-Konto enthält
+* **Name des Data Lake Analytics-Kontos** : Name Ihres Data Lake Analytics-Kontos.
+* **Name des Data Lake Store-Standardkontos** : Jedes Data Lake Analytics-Konto verfügt über ein Data Lake Store-Standardkonto.
+* **Standort** : der Standort des Data Lake Analytics-Kontos, z.B. „USA, Osten 2“ oder andere unterstützte Standorte.
 
 In den PowerShell-Codeausschnitten dieses Tutorials werden die folgenden Variablen zum Speichern dieser Informationen verwendet:
 
@@ -54,7 +51,7 @@ Anmelden per Abonnement-ID oder Abonnementname
 Connect-AzAccount -SubscriptionId $subId
 
 # Using subscription name
-Connect-AzAccount -SubscriptionName $subname 
+Connect-AzAccount -SubscriptionName $subname
 ```
 
 ## <a name="saving-authentication-context"></a>Speichern des Authentifizierungskontexts
@@ -66,23 +63,22 @@ Das Cmdlet `Connect-AzAccount` fordert immer zur Eingabe von Anmeldeinformatione
 Save-AzAccounts -Path D:\profile.json  
 
 # Load login session information
-Select-AzAccounts -Path D:\profile.json 
+Select-AzAccounts -Path D:\profile.json
 ```
 
 ### <a name="log-in-using-a-service-principal-identity-spi"></a>Anmelden per Service Principal Identity (SPI)
 
 ```powershell
 $tenantid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"  
-$spi_appname = "appname" 
-$spi_appid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" 
-$spi_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" 
+$spi_appname = "appname"
+$spi_appid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+$spi_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 $pscredential = New-Object System.Management.Automation.PSCredential ($spi_appid, (ConvertTo-SecureString $spi_secret -AsPlainText -Force))
 Login-AzAccount -ServicePrincipal -TenantId $tenantid -Credential $pscredential -Subscription $subid
 ```
 
 ## <a name="manage-accounts"></a>Konten verwalten
-
 
 ### <a name="list-accounts"></a>Auflisten von Konten
 
@@ -96,7 +92,7 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg
 
 ### <a name="create-an-account"></a>Erstellen eines Kontos
 
-Für jedes Data Lake Analytics-Konto ist ein Data Lake Store-Standardkonto erforderlich, das zum Speichern von Protokollen verwendet wird. Sie können ein vorhandenes Konto wiederverwenden oder ein Konto erstellen. 
+Für jedes Data Lake Analytics-Konto ist ein Data Lake Store-Standardkonto erforderlich, das zum Speichern von Protokollen verwendet wird. Sie können ein vorhandenes Konto wiederverwenden oder ein Konto erstellen.
 
 ```powershell
 # Create a data lake store if needed, or you can re-use an existing one
@@ -118,13 +114,14 @@ Get-AdlAnalyticsAccount -Name $adla
 Test-AdlAnalyticsAccount -Name $adla
 ```
 
-## <a name="manage-data-sources"></a>Verwalten von Datenquellen
+## <a name="manage-data-sources"></a>Datenquellen verwalten
+
 Azure Data Lake Analytics unterstützt derzeit die folgenden Datenquellen:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 * [Azure Storage (in englischer Sprache)](../storage/common/storage-introduction.md)
 
-Für jedes Data Lake Analytics-Konto ist ein Data Lake Store-Standardkonto vorhanden. Das Data Lake Store-Standardkonto dient zum Speichern von Auftragsmetadaten und -überwachungsprotokollen. 
+Für jedes Data Lake Analytics-Konto ist ein Data Lake Store-Standardkonto vorhanden. Das Data Lake Store-Standardkonto dient zum Speichern von Auftragsmetadaten und -überwachungsprotokollen.
 
 ### <a name="find-the-default-data-lake-store-account"></a>Ermitteln des Data Lake-Standardspeicherkontos
 
@@ -136,7 +133,7 @@ $dataLakeStoreName = $adla_acct.DefaultDataLakeAccount
 Sie können das Standardkonto für den Data Lake-Speicher finden, indem Sie die Liste der Datenquellen nach der `IsDefault`-Eigenschaft filtern:
 
 ```powershell
-Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault } 
+Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault }
 ```
 
 ### <a name="add-a-data-source"></a>Hinzufügen einer Datenquelle
@@ -150,7 +147,7 @@ Add-AdlAnalyticsDataSource -Account $adla -Blob $AzureStorageAccountName -Access
 
 # Add an additional Data Lake Store account.
 $AzureDataLakeStoreName = "<AzureDataLakeStoreAccountName"
-Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName 
+Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName
 ```
 
 ### <a name="list-data-sources"></a>Auflisten von Datenquellen
@@ -172,8 +169,8 @@ Get-AdlAnalyticsDataSource -Account $adla | where -Property Type -EQ "Blob"
 
 ```powershell
 $script = @"
-@a  = 
-    SELECT * FROM 
+@a  =
+    SELECT * FROM
         (VALUES
             ("Contoso", 1500.0),
             ("Woodgrove", 2700.0)
@@ -184,7 +181,7 @@ OUTPUT @a
 "@
 
 $scriptpath = "d:\test.usql"
-$script | Out-File $scriptpath 
+$script | Out-File $scriptpath
 
 Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 ```
@@ -193,7 +190,7 @@ Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 
 ```powershell
 $scriptpath = "d:\test.usql"
-$script | Out-File $scriptpath 
+$script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla –ScriptPath $scriptpath -Name "Demo"
 ```
 
@@ -245,7 +242,7 @@ Verwenden Sie den Parameter `-Result`, um zu erkennen, ob die beendeten Aufträg
 * Abgebrochen
 * Fehler
 * Keine
-* Succeeded
+* Erfolgreich
 
 ``` powershell
 # List Successful jobs.
@@ -267,7 +264,6 @@ Get-AdlJob -Account $adla -Submitter "joe@contoso.com"
 
 Der Parameter `-SubmittedAfter` ist nützlich, um nach einem Zeitbereich zu filtern.
 
-
 ```powershell
 # List  jobs submitted in the last day.
 $d = [DateTime]::Now.AddDays(-1)
@@ -285,7 +281,6 @@ Rufen Sie den Status eines bestimmten Auftrags ab.
 ```powershell
 Get-AdlJob -AccountName $adla -JobId $job.JobId
 ```
-
 
 ### <a name="cancel-a-job"></a>Abbrechen eines Auftrags
 
@@ -322,7 +317,6 @@ $recurrences = Get-AdlJobRecurrence -Account $adla
 $recurrence = Get-AdlJobRecurrence -Account $adla -RecurrenceId "<recurrence ID>"
 ```
 
-
 ## <a name="manage-compute-policies"></a>Verwalten von Computerichtlinien
 
 ### <a name="list-existing-compute-policies"></a>Auflisten vorhandener Computerichtlinien
@@ -342,9 +336,10 @@ $userObjectId = (Get-AzAdUser -SearchString "garymcdaniel@contoso.com").Id
 
 New-AdlAnalyticsComputePolicy -Account $adla -Name "GaryMcDaniel" -ObjectId $objectId -ObjectType User -MaxDegreeOfParallelismPerJob 50 -MinPriorityPerJob 250
 ```
+
 ## <a name="manage-files"></a>Verwalten von Dateien
 
-### <a name="check-for-the-existence-of-a-file"></a>Überprüfen Sie das Vorhandensein einer Datei.
+### <a name="check-for-the-existence-of-a-file"></a>Überprüfen des Vorhandenseins einer Datei
 
 ```powershell
 Test-AdlStoreItem -Account $adls -Path "/data.csv"
@@ -355,7 +350,7 @@ Test-AdlStoreItem -Account $adls -Path "/data.csv"
 Laden Sie eine Datei hoch.
 
 ```powershell
-Import-AdlStoreItem -AccountName $adls -Path "c:\data.tsv" -Destination "/data_copy.csv" 
+Import-AdlStoreItem -AccountName $adls -Path "c:\data.tsv" -Destination "/data_copy.csv"
 ```
 
 Laden Sie einen gesamten Ordner rekursiv hoch.
@@ -381,13 +376,13 @@ Export-AdlStoreItem -AccountName $adls -Path "/" -Destination "c:\myData\" -Recu
 
 ## <a name="manage-the-u-sql-catalog"></a>Verwalten des U-SQL-Katalogs
 
-Der U-SQL-Katalog wird zum Strukturieren von Daten und Code verwendet, damit diese von U-SQL-Skripts gemeinsam genutzt werden können. Der Katalog ermöglicht die höchstmögliche Leistung mit Daten in Azure Data Lake. Weitere Informationen finden Sie unter [Verwenden des U-SQL-Katalogs](data-lake-analytics-use-u-sql-catalog.md).
+Der U-SQL-Katalog wird zum Strukturieren von Daten und Code verwendet, damit diese von U-SQL-Skripts gemeinsam genutzt werden können. Der Katalog ermöglicht die höchstmögliche Leistung mit Daten in Azure Data Lake. Weitere Informationen finden Sie unter [Verwenden des U-SQL-Katalogs](./data-lake-analytics-u-sql-get-started.md).
 
 ### <a name="list-items-in-the-u-sql-catalog"></a>Auflisten von Elementen im U-SQL-Katalog
 
 ```powershell
 # List U-SQL databases
-Get-AdlCatalogItem -Account $adla -ItemType Database 
+Get-AdlCatalogItem -Account $adla -ItemType Database
 
 # List tables within a database
 Get-AdlCatalogItem -Account $adla -ItemType Table -Path "database"
@@ -480,7 +475,6 @@ Set-AdlAnalyticsAccount -Name $adla -FirewallState Enabled
 Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 ```
 
-
 ## <a name="working-with-azure"></a>Arbeiten mit Azure
 
 ### <a name="get-error-details"></a>Abrufen von Fehlerdetails
@@ -553,9 +547,9 @@ foreach ($sub in $subs)
 
 ## <a name="create-a-data-lake-analytics-account-using-a-template"></a>Erstellen eines Data Lake Analytics-Kontos mithilfe einer Vorlage
 
-Sie können eine Azure-Ressourcengruppenvorlage auch mit dem folgenden Beispiel verwenden: [Erstellen eines Data Lake Analytics-Kontos mithilfe einer Vorlage](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
+Sie können mithilfe des folgenden Beispiels auch eine Vorlage für eine Azure-Ressourcengruppe verwenden: [Erstellen eines Data Lake Analytics-Kontos mithilfe einer Vorlage](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * Erste Schritte mit Data Lake Analytics mithilfe [des Azure-Portals](data-lake-analytics-get-started-portal.md) | [von Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [der Azure CLI](data-lake-analytics-get-started-cli.md)
-* Verwalten von Azure Data Lake Analytics mithilfe [des Azure-Portals](data-lake-analytics-manage-use-portal.md) | [von Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [der Befehlszeilenschnittstelle](data-lake-analytics-manage-use-cli.md) 
+* Verwalten von Azure Data Lake Analytics mithilfe [des Azure-Portals](data-lake-analytics-manage-use-portal.md) | [von Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [der Befehlszeilenschnittstelle](data-lake-analytics-manage-use-cli.md)

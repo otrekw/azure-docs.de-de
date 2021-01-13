@@ -13,16 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 6813dfca4a89263a10887ef4fa58c7403a9b1294
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2ccc765a3fb0063d92382edcec260808183f27a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60637555"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89259250"
 ---
-# <a name="import-the-postman-environment"></a>Importieren der Postman-Umgebung  
+# <a name="import-the-postman-environment"></a>Importieren der Postman-Umgebung
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 Dieser Artikel enthält eine Definition der **Postman**-Umgebungsvariablen, die in der [Postman-Sammlung](postman-collection.md) verwendet werden, die gruppierte HTTP-Anforderungen enthält, die Media Services-REST-APIs aufrufen. Die Umgebungs- und Sammlungsdateien werden vom Tutorial [Konfigurieren von Postman für Media Services-REST-API-Aufrufe](media-rest-apis-with-postman.md) verwendet.
+
+> [!NOTE]
+> Der Wert von `AzureADSTSEndpoint ` = `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`. Um Ihre Mandanten-ID zu erhalten, können Sie mit der Maus im Portal auf Ihren Benutzernamen zeigen (in der rechten oberen Ecke). Sie befindet sich dann unter „Verzeichnis: Microsoft ({{MANDANTEN-ID}})“.
 
 ```
 {

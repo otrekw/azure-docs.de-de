@@ -1,19 +1,14 @@
 ---
-title: Automatisieren von Erstellungs-, Test- und Patchvorgängen für Images mit Azure Container Registry-Tasks mit mehreren Schritten
+title: Tasks mit mehreren Schritten zum Erstellen, Testen und Patchen eines Images
 description: Diese Artikel ist eine Einführung in Tasks mit mehreren Schritten, ein Feature von ACR Tasks in Azure Container Registry, das taskbasierte Workflows bereitstellt, um Containerimages in der Cloud zu erstellen, zu testen und zu patchen.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
-ms.author: danlep
-ms.openlocfilehash: 89962fbce6863b16a0d8b229047eb19a821e37bb
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310567"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "78399703"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Ausführen von Erstellungs-, Test- und Patchtasks mit mehreren Schritten in ACR Tasks
 
@@ -55,36 +50,36 @@ Ein aus mehreren Schritten bestehender Task in ACR Tasks ist als eine Reihe von 
 Die folgenden Codeausschnitte zeigen, wie solche Taskschritttypen kombiniert werden. Tasks mit mehreren Schritten können einfach nur das Erstellen eines einzelnen Images aus einem Dockerfile und dessen Übertragung in Ihre Registrierung umfassen. Dabei wird eine ähnliche YAML-Datei wie diese verwendet:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - build: -t $Registry/hello-world:$ID .
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 Sie können auch komplexer sein, z.B. wie bei dieser fiktiven Definition mit mehreren Schritten für Erstellen, Testen, Helm-Paket und Helm-Bereitstellung (Containerregistrierung und Helm-Repository nicht gezeigt):
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - id: build-web
-    build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+    build: -t $Registry/hello-world:$ID .
     when: ["-"]
   - id: build-tests
-    build -t {{.Run.Registry}}/hello-world-tests ./funcTests
+    build -t $Registry/hello-world-tests ./funcTests
     when: ["-"]
   - id: push
-    push: ["{{.Run.Registry}}/helloworld:{{.Run.ID}}"]
+    push: ["$Registry/helloworld:$ID"]
     when: ["build-web", "build-tests"]
   - id: hello-world-web
-    cmd: {{.Run.Registry}}/helloworld:{{.Run.ID}}
+    cmd: $Registry/helloworld:$ID
   - id: funcTests
-    cmd: {{.Run.Registry}}/helloworld:{{.Run.ID}}
+    cmd: $Registry/helloworld:$ID
     env: ["host=helloworld:80"]
-  - cmd: {{.Run.Registry}}/functions/helm package --app-version {{.Run.ID}} -d ./helm ./helm/helloworld/
-  - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
+  - cmd: $Registry/functions/helm package --app-version $ID -d ./helm ./helm/helloworld/
+  - cmd: $Registry/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image=$Registry/helloworld:$ID
 ```
 
-Unter [Taskbeispiele][task-examples] finden Sie vollständige YAML-Dateien und Dockerfiles mit mehreren Schritten für verschiedene Szenarien.
+Unter [Taskbeispiele](container-registry-tasks-samples.md) finden Sie YAML-Dateien und Dockerfiles mit mehreren Schritten für verschiedene Szenarios.
 
 ## <a name="run-a-sample-task"></a>Ausführen eines Beispieltasks
 
@@ -100,8 +95,11 @@ az acr run --registry <acrName> -f build-push-hello-world.yaml https://github.co
 
 Wenn Sie den Task ausführen, sollte die Ausgabe den Status jedes in der YAML-Datei definierten Schritts zeigen. In der folgenden Ausgabe werden die Schritt als `acb_step_0` und `acb_step_1` angezeigt.
 
-```console
-$ az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
+```azurecli
+az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
+```
+
+```output
 Sending context to registry: myregistry...
 Queued a run with ID: yd14
 Waiting for an agent...
@@ -155,7 +153,7 @@ Weitere Informationen zu automatisierten Builds per Git-Commit oder Update des B
 Hier finden Sie Referenzen und Beispiele für Tasks mit mehreren Schritten:
 
 * [Taskreferenz](container-registry-tasks-reference-yaml.md): Arten von Taskschritten, zugehörige Eigenschaften und Verwendung
-* [Taskbeispiele][task-examples]: Beispieldateien vom Typ `task.yaml` für verschiedene Szenarien (von einfach bis komplex)
+* [Taskbeispiele](container-registry-tasks-samples.md): Beispieldateien und Docker-Dateien vom Typ `task.yaml` für verschiedene Szenarios (von einfach bis komplex)
 * [Cmd-Repository](https://github.com/AzureCR/cmd): Eine Sammlung von Containern als Befehle für ACR-Tasks.
 
 <!-- IMAGES -->

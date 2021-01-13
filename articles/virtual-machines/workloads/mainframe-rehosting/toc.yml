@@ -4,7 +4,7 @@
       items:
         - name: Erste Schritte
           href: overview.md
-        - name: Workloads
+        - name: Arbeitsauslastungen
           href: partner-workloads.md
     - name: Konzepte
       items:
@@ -18,6 +18,8 @@
           href: microfocus/get-started.md
         - name: Installieren von Enterprise Server
           href: microfocus/set-up-micro-focus-azure.md
+        - name: Bereitstellen von Enterprise Server in AKS
+          href: microfocus/deploy-micro-focus-enterprise-server.md
         - name: Ausführen von CICS BankDemo
           href: microfocus/demo.md
         - name: Enterprise Server in Containern
@@ -37,9 +39,9 @@
         - name: Einrichten von ADCD in zD&T
           href: ibm/demo.md
         - name: IBM DB2 pureScale
-          href: /azure/virtual-machines/linux/ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+          href: ../../linux/ibm-db2-purescale-azure.md?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
         - name: Bereitstellen von IBM DB2 pureScale
-          href: /azure/virtual-machines/linux/deploy-ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+          href: ../../linux/deploy-ibm-db2-purescale-azure.md?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
     - name: Ressourcen
       items:
         - name: Whitepaper

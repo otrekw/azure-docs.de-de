@@ -1,20 +1,15 @@
 ---
 title: Behandeln von externen Ereignissen in Durable Functions – Azure
 description: Es wird beschrieben, wie Sie externe Ereignisse in der Erweiterung Durable Functions für Azure Functions behandeln.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: e38f118e10c9d0e2347edb7cbaa5d7b68a0e63f2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 3cd04c93d508bd06c4ddd2e05074084202b9fc60
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933411"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87014938"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Behandeln von externen Ereignissen in Durable Functions (Azure Functions)
 
@@ -25,14 +20,14 @@ Orchestratorfunktionen können warten und auf externe Ereignisse lauschen. Das F
 
 ## <a name="wait-for-events"></a>Warten auf Ereignisse
 
-Die [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_)-Methode ermöglicht einer Orchestratorfunktion, asynchron auf ein externes Ereignis zu warten und darauf zu lauschen. Die lauschende Orchestratorfunktion deklariert den *Namen* des Ereignisses und die *Form der Daten*, die sie zu empfangen erwartet.
+Mit den Methoden [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.NET), `waitForExternalEvent` (JavaScript) und `wait_for_external_event` (Python) der [Orchestrierungstriggerbindung](durable-functions-bindings.md#orchestration-trigger) kann eine Orchestratorfunktion asynchron auf ein externes Ereignis warten und lauschen. Die lauschende Orchestratorfunktion deklariert den *Namen* des Ereignisses und die *Form der Daten*, die sie zu empfangen erwartet.
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BudgetApproval")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool approved = await context.WaitForExternalEvent<bool>("Approval");
     if (approved)
@@ -46,7 +41,10 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+> [!NOTE]
+> Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -61,16 +59,34 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    approved = context.wait_for_external_event('Approval')
+    if approved:
+        # approval granted - do the approved action
+    else:
+        # approval denied - send a notification
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
+
 Im vorangehenden Beispiel wird auf ein bestimmtes einzelnes Ereignis gelauscht und bei Empfang eine entsprechende Aktion ausgeführt.
 
 Sie können wie im folgenden Beispiel, in dem auf eine von drei möglichen Ereignisbenachrichtigungen gewartet wird, auf mehrere Ereignisse gleichzeitig lauschen.
 
-#### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Select")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var event1 = context.WaitForExternalEvent<float>("Event1");
     var event2 = context.WaitForExternalEvent<bool>("Event2");
@@ -92,7 +108,10 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+> [!NOTE]
+> Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -113,14 +132,38 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    event1 = context.wait_for_external_event('Event1')
+    event2 = context.wait_for_external_event('Event2')
+    event3 = context.wait_for_external_event('Event3')
+
+    winner = context.task_any([event1, event2, event3])
+    if winner == event1:
+        # ...
+    elif winner == event2:
+        # ...
+    elif winner == event3:
+        # ...
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
+
 Im vorherigen Beispiel wird auf *alle* von mehreren Ereignissen gelauscht. Es ist auch möglich, auf *alle* Ereignisse zu warten.
 
-#### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("NewBuildingPermit")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string applicationId = context.GetInput<string>();
 
@@ -135,7 +178,12 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+> [!NOTE]
+> Der vorherige Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+
+Wenn in .NET die Ereignisnutzlast nicht in den erwarteten Typ `T` konvertiert werden kann, wird eine Ausnahme ausgelöst.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -154,32 +202,61 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) wartet unbegrenzt auf Eingaben.  Die Funktionen-App kann während des Wartens problemlos entladen werden. Wenn ein Ereignis für diese Orchestrierungsinstanz eingeht, wird sie automatisch aktiviert und verarbeitet das Ereignis sofort.
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    application_id = context.get_input()
+    
+    gate1 = context.wait_for_external_event('CityPlanningApproval')
+    gate2 = context.wait_for_external_event('FireDeptApproval')
+    gate3 = context.wait_for_external_event('BuildingDeptApproval')
+
+    yield context.task_all([gate1, gate2, gate3])
+    yield context.call_activity('IssueBuildingPermit', application_id)
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
+
+`WaitForExternalEvent` wartet unbegrenzt auf Eingaben.  Die Funktionen-App kann während des Wartens problemlos entladen werden. Wenn ein Ereignis für diese Orchestrierungsinstanz eingeht, wird sie automatisch aktiviert und verarbeitet das Ereignis sofort.
 
 > [!NOTE]
-> Wenn Ihre Funktions-App den Verbrauchstarif verwendet, fallen, während eine Orchestratorfunktion auf eine Aufgabe von `WaitForExternalEvent` (.NET) oder `waitForExternalEvent` (JavaScript) wartet, keine Kosten an, unabhängig davon, wie lange sie wartet.
-
-Wenn in .NET die Ereignisnutzlast nicht in den erwarteten Typ `T` konvertiert werden kann, wird eine Ausnahme ausgelöst.
+> Wenn Ihre Funktions-App den Verbrauchstarif verwendet, fallen keine Kosten an, während eine Orchestratorfunktion auf einen Task von `WaitForExternalEvent` (.NET), `waitForExternalEvent` (JavaScript) oder `wait_for_external_event` (Python) wartet, und zwar unabhängig davon, wie lange sie wartet.
 
 ## <a name="send-events"></a>Senden von Ereignisse
 
-Die [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_)-Methode der [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)-Klasse sendet die Ereignisse, auf die `WaitForExternalEvent` (.NET) oder `waitForExternalEvent` (JavaScript) wartet.  Die `RaiseEventAsync`-Methode übernimmt *eventName* und *eventData* als Parameter. Die Ereignisdaten müssen JSON-serialisierbar sein.
+Mit der Methode [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) (.NET) oder `raiseEventAsync` (JavaScript) kann ein externes Ereignis an eine Orchestrierung gesendet werden. Diese Methoden werden durch die Bindung [Orchestrierungsclient](durable-functions-bindings.md#orchestration-client) verfügbar gemacht. Sie können auch die integrierte [HTTP-API zum Auslösen eines Ereignisses](durable-functions-http-api.md#raise-event) verwenden, um ein externes Ereignis an eine Orchestrierung zu senden.
+
+Ein ausgelöstes Ereignis enthält eine *Instanz-ID*, einen Ereignisnamen (*eventName*) und Ereignisdaten (*eventData*) als Parameter. Diese Ereignisse werden von Orchestratorfunktionen mithilfe der API `WaitForExternalEvent` (.NET) oder `waitForExternalEvent` (JavaScript) behandelt. Der Ereignisname (*eventName*) muss sowohl auf der Sende- als auch auf der Empfangsseite übereinstimmen, damit das Ereignis verarbeitet wird. Die Ereignisdaten müssen außerdem JSON-serialisierbar sein.
+
+Intern wird durch die Mechanismen von „raise event“ eine Nachricht in die Warteschlange eingereiht, die von der wartenden Orchestratorfunktion aufgegriffen wird. Falls die Instanz nicht auf den angegebenen *Ereignisnamen* wartet, wird die Ereignisnachricht einer In-Memory-Warteschlange hinzugefügt. Wenn die Orchestrierungsinstanz später auf den *Ereignisnamen* lauscht, überprüft sie die Warteschlange auf Ereignisnachrichten.
+
+> [!NOTE]
+> Ist keine Orchestrierungsinstanz mit der angegebenen *Instanz-ID* vorhanden, wird die Ereignisnachricht verworfen.
 
 Im Folgenden finden Sie eine durch eine Warteschlange ausgelöste Beispielfunktion, die ein „Genehmigungs“-Ereignis an eine Orchestratorfunktionsinstanz sendet. Die Orchestrierungsinstanz-ID stammt aus dem Text der Warteschlangennachricht.
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalQueueProcessor")]
 public static async Task Run(
     [QueueTrigger("approval-queue")] string instanceId,
-    [OrchestrationClient] DurableOrchestrationClient client)
+    [DurableClient] IDurableOrchestrationClient client)
 {
     await client.RaiseEventAsync(instanceId, "Approval", true);
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+> [!NOTE]
+> Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -190,13 +267,36 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Intern fügt `RaiseEventAsync` (.NET) oder `raiseEvent` (JavaScript) eine Nachricht in die Warteschlange ein, die von der wartenden Orchestratorfunktion übernommen wird. Falls die Instanz nicht auf den angegebenen *Ereignisnamen* wartet, wird die Ereignisnachricht einer In-Memory-Warteschlange hinzugefügt. Wenn die Orchestrierungsinstanz später auf den *Ereignisnamen* lauscht, überprüft sie die Warteschlange auf Ereignisnachrichten.
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(instance_id:str, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    await client.raise_event(instance_id, 'Approval', True)
+```
+
+---
+
+Intern fügt `RaiseEventAsync` (.NET), `raiseEvent` (JavaScript) oder `raise_event` (Python) eine Nachricht in die Warteschlange ein, die von der wartenden Orchestratorfunktion erfasst wird. Falls die Instanz nicht auf den angegebenen *Ereignisnamen* wartet, wird die Ereignisnachricht einer In-Memory-Warteschlange hinzugefügt. Wenn die Orchestrierungsinstanz später auf den *Ereignisnamen* lauscht, überprüft sie die Warteschlange auf Ereignisnachrichten.
 
 > [!NOTE]
-> Ist keine Orchestrierungsinstanz mit der angegebenen *Instanz-ID* vorhanden, wird die Ereignisnachricht verworfen. Weitere Informationen zu diesem Verhalten finden Sie unter [Expected behavior when unexpected event is received?](https://github.com/Azure/azure-functions-durable-extension/issues/29) (Erwartetes Verhalten, wenn ein unerwartetes Ereignis empfangen wird?). 
+> Ist keine Orchestrierungsinstanz mit der angegebenen *Instanz-ID* vorhanden, wird die Ereignisnachricht verworfen.
 
-> [!WARNING]
-> Wenn Sie lokal in JavaScript entwickeln, müssen Sie die Umgebungsvariable `WEBSITE_HOSTNAME` auf `localhost:<port>` festlegen, z. B. `localhost:7071`, um Methoden mit `DurableOrchestrationClient` zu verwenden. Weitere Informationen zu dieser Anforderung finden Sie unter [GitHub-Probleme](https://github.com/Azure/azure-functions-durable-js/issues/28).
+### <a name="http"></a>HTTP
+
+Im Anschluss finden Sie ein Beispiel für eine HTTP-Anforderung, durch die ein Genehmigungsereignis für eine Orchestrierungsinstanz ausgelöst wird. 
+
+```http
+POST /runtime/webhooks/durabletask/instances/MyInstanceId/raiseEvent/Approval&code=XXX
+Content-Type: application/json
+
+"true"
+```
+
+In diesem Fall ist die Instanz-ID als *MyInstanceId* hartcodiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

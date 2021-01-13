@@ -1,19 +1,15 @@
 ---
 title: Allgemeines Warnungsschema für Azure Monitor-Warnungen
 description: Enthält grundlegende Informationen zum allgemeinen Warnungsschema, zu den Vorteilen der Nutzung und zur Vorgehensweise bei der Aktivierung.
-author: anantr
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 9b142e00543d425b73c4102914bba2dd92c75b8b
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.date: 03/14/2019
+ms.openlocfilehash: aa619976c8fa03b925d66e884ad03fc4e385693e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702923"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565601"
 ---
 # <a name="common-alert-schema"></a>Allgemeines Warnungsschema
 
@@ -25,7 +21,7 @@ Mit dem allgemeinen Warnungsschema wird die Benutzeroberfläche für Warnungsben
 
 Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache der Warnung** beschrieben. Diese Instanzen werden im allgemeinen Schema in den folgenden Abschnitten beschrieben:
 * **Zusammenfassung**: Eine Gruppe **standardisierter Felder** (für alle Warnungstypen gleich), die beschreiben, auf **welcher Ressource** sich die Warnung befindet, sowie zusätzliche allgemeine Warnungsmetadaten (z. B. Schweregrad oder Beschreibung). 
-* **Warnungskontext**: Eine Gruppe von Feldern, mit denen die **Ursache der Warnung** beschrieben wird. Die Felder variieren **basierend auf dem Warnungstyp**. Eine Metrikwarnung enthält im Warnungskontext beispielsweise Felder wie den Metriknamen und -wert, während eine Aktivitätsprotokollwarnung Informationen zu dem Ereignis enthält, von dem die Warnung generiert wurde. 
+* **Warnungskontext**: Eine Gruppe von Feldern, mit denen die **Ursache der Warnung** beschrieben wird. Die Felder variieren **basierend auf dem Warnungstyp**. Eine Metrikwarnung enthält im Warnungskontext beispielsweise Felder wie den Metriknamen und -wert, während eine Aktivitätsprotokollwarnung Informationen zum Ereignis enthält, von dem die Warnung generiert wurde. 
 
 Die typischen Integrationsszenarien, über die uns von Kunden berichtet wird, umfassen das Routing der Warnungsinstanz an das entsprechende Team anhand eines Verbindungselements (z. B. eine Ressourcengruppe) und die anschließende Bearbeitung durch das zuständige Team. Mit dem allgemeinen Warnungsschema können Sie über Warnungstypen hinweg eine standardisierte Routinglogik verwenden, indem Sie die wichtigen Felder nutzen und die Kontextfelder unverändert lassen, damit diese später von den jeweiligen Teams untersucht werden können.
 
@@ -35,7 +31,7 @@ Dies bedeutet, dass Sie unter Umständen über eine geringere Zahl von Integrati
 
 Das allgemeine Warnungsschema manifestiert sich hauptsächlich in Ihren Warnungsbenachrichtigungen. Hier sind die vorhandenen Verbesserungen aufgeführt:
 
-| Aktion | Verbesserungen|
+| Aktion | Erweiterungen|
 |:---|:---|
 | sms | Eine einheitliche SMS-Vorlage für alle Warnungstypen. |
 | Email | Eine einheitliche und detaillierte E-Mail-Vorlage, mit der Sie Probleme leicht auf einen Blick diagnostizieren können. Mit eingebetteten Deep-Links für die Warnungsinstanz im Portal und die betroffene Ressource wird sichergestellt, dass Sie schnell mit dem Lösungsprozess beginnen können. |
@@ -43,7 +39,7 @@ Das allgemeine Warnungsschema manifestiert sich hauptsächlich in Ihren Warnungs
 
 Mit dem neuen Schema wird in naher Zukunft auch eine umfassendere Oberfläche für die Nutzung von Warnungen bereitgestellt – sowohl im Azure-Portal als auch in der mobilen Azure-App. 
 
-[Erfahren Sie mehr zu den Schemadefinitionen für Webhooks/Logik-Apps/Azure Functions/Automation-Runbooks.](https://aka.ms/commonAlertSchemaDefinitions)
+[Erfahren Sie mehr zu den Schemadefinitionen für Webhooks/Logik-Apps/Azure Functions/Automation-Runbooks.](./alerts-common-schema-definitions.md)
 
 > [!NOTE]
 > Für die folgenden Aktionen wird das allgemeine Warnungsschema nicht unterstützt: ITSM-Connector.
@@ -56,8 +52,8 @@ Sie können sowohl im Portal als auch in der REST-API über Aktionsgruppen eine 
 > 1. Für die folgenden Warnungstypen wird das allgemeine Schema standardmäßig unterstützt (keine Aktivierung erforderlich):
 >     * Warnungen der intelligenten Erkennung
 > 1. Von den folgenden Warnungstypen wird das allgemeine Schema derzeit nicht unterstützt:
->     * Von [Azure Monitor für VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) generierte Warnungen
->     * Von [Azure Cost Management](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario) generierte Warnungen
+>     * Von [Azure Monitor für VMs](../insights/vminsights-overview.md) generierte Warnungen
+>     * Von [Azure Cost Management](../../cost-management-billing/manage/cost-management-budget-scenario.md) generierte Warnungen
 
 ### <a name="through-the-azure-portal"></a>Über das Azure-Portal
 
@@ -68,9 +64,9 @@ Sie können sowohl im Portal als auch in der REST-API über Aktionsgruppen eine 
 
 ### <a name="through-the-action-groups-rest-api"></a>Über die Aktionsgruppen-REST-API
 
-Sie können auch die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) verwenden, um das allgemeine Warnungsschema zu aktivieren. Beim Durchführen des REST-API-Aufrufs zum [Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) können Sie das Flag „useCommonAlertSchema“ für die folgenden Aktionen auf „true“ (Aktivierung) oder „false“ (keine Aktivierung) festlegen: E-Mail, Webhook, Logik-App, Azure-Funktion oder Automation-Runbook.
+Sie können auch die [Aktionsgruppen-API](/rest/api/monitor/actiongroups) verwenden, um das allgemeine Warnungsschema zu aktivieren. Beim Durchführen des REST-API-Aufrufs zum [Erstellen oder Aktualisieren](/rest/api/monitor/actiongroups/createorupdate) können Sie das Flag „useCommonAlertSchema“ für die folgenden Aktionen auf „true“ (Aktivierung) oder „false“ (keine Aktivierung) festlegen: E-Mail, Webhook, Logik-App, Azure-Funktion oder Automation-Runbook.
 
-Mit dem folgenden Anforderungstext für den REST-API-Vorgang zum [Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) wird beispielsweise Folgendes durchgeführt:
+Mit dem folgenden Anforderungstext für den REST-API-Vorgang zum [Erstellen oder Aktualisieren](/rest/api/monitor/actiongroups/createorupdate) wird beispielsweise Folgendes durchgeführt:
 
 * Aktivieren des allgemeinen Warnungsschemas für die E-Mail-Aktion „John Doe's email“
 * Deaktivieren des allgemeinen Warnungsschemas für die E-Mail-Aktion „Jane Smith's email“
@@ -124,8 +120,5 @@ Mit dem folgenden Anforderungstext für den REST-API-Vorgang zum [Erstellen oder
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Definitionen des allgemeinen Warnungsschemas für Webhooks/Logic Apps/Azure Functions/Automation Runbooks](https://aka.ms/commonAlertSchemaDefinitions)
-- [Erfahren Sie, wie Sie eine Logik-App erstellen, die das allgemeine Warnungsschema nutzt, um all Ihre Warnungen zu verarbeiten.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
-
-
-
+- [Definitionen des allgemeinen Warnungsschemas für Webhooks/Logic Apps/Azure Functions/Automation Runbooks](./alerts-common-schema-definitions.md)
+- [Erfahren Sie, wie Sie eine Logik-App erstellen, die das allgemeine Warnungsschema nutzt, um all Ihre Warnungen zu verarbeiten.](./alerts-common-schema-integrations.md)

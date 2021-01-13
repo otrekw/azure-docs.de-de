@@ -1,31 +1,29 @@
 ---
-title: Automatisieren der NSG-Überwachung mit der Azure Network Watcher-Sicherheitsgruppenansicht | Microsoft-Dokumentation
+title: 'Automatisieren der NSG-Überwachung: Sicherheitsgruppenansicht'
+titleSuffix: Azure Network Watcher
 description: Diese Seite enthält Anweisungen zum Konfigurieren der Überwachung einer Netzwerksicherheitsgruppe.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 78a01bcf-74fe-402a-9812-285f3501f877
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 8e0eddd07fc0c473e4777d9dd90d0b2c64145e34
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.author: damendo
+ms.openlocfilehash: 177215775c9e83286aa98872eed0ab211a8f36ff
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165136"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948747"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatisieren der NSG-Überwachung mit der Azure Network Watcher-Sicherheitsgruppenansicht
 
 Kunden stehen häufig vor der Herausforderung, den Sicherheitsstatus ihrer Infrastruktur abzufragen. Diese Abfrage muss auch für die virtuellen Computer in Azure durchgeführt werden. Es ist wichtig, ein ähnliches Sicherheitsprofil basierend auf den Regeln von Netzwerksicherheitsgruppen (NSGs) anzuwenden. In der Sicherheitsgruppenansicht können Sie jetzt die Liste der Regeln abrufen, die innerhalb einer NSG auf einen virtuellen Computer angewendet sind. Sie können ein Gold-Sicherheitsprofil für die NSG definieren, die Sicherheitsgruppenansicht im Wochenrhythmus initiieren, die Ausgabe mit dem Gold-Profil vergleichen und einen Bericht erstellen. Auf diese Weise können Sie problemlos alle virtuellen Computer identifizieren, die nicht dem vorgeschriebenen Sicherheitsprofil entsprechen.
 
-Wenn Sie mit Netzwerksicherheitsgruppen nicht vertraut sind, informieren Sie sich in der [Übersicht über die Netzwerksicherheit](../virtual-network/security-overview.md).
+Wenn Sie mit Netzwerksicherheitsgruppen nicht vertraut sind, informieren Sie sich in der [Übersicht über die Netzwerksicherheit](../virtual-network/network-security-groups-overview.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -34,7 +32,7 @@ Wenn Sie mit Netzwerksicherheitsgruppen nicht vertraut sind, informieren Sie sic
 
 In diesem Szenario vergleichen Sie eine bekannte gute Grundlage mit den für einen virtuellen Computer zurückgegebenen Ergebnissen der Sicherheitsgruppenansicht.
 
-Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben, um eine Network Watcher-Instanz zu erstellen. Ferner wird davon ausgegangen, dass eine Ressourcengruppe mit einem gültigen virtuellen Computer vorhanden ist und verwendet werden kann.
+Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben. Ferner wird davon ausgegangen, dass eine Ressourcengruppe mit einem gültigen virtuellen Computer vorhanden ist und verwendet werden kann.
 
 ## <a name="scenario"></a>Szenario
 
@@ -191,16 +189,3 @@ SideIndicator            : <=
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Einstellungen geändert wurden, finden Sie unter [Verwalten von Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md) Informationen zum Ermitteln der fraglichen Netzwerksicherheitsgruppe und Sicherheitsregeln.
-
-
-
-
-
-
-
-
-
-
-
-
-

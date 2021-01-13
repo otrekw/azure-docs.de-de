@@ -1,20 +1,20 @@
 ---
-title: 'Microsoft Genomics: Häufig gestellte Fragen | Microsoft-Dokumentation'
-titleSuffix: Azure
-description: Antworten auf häufig gestellte Fragen zu Microsoft Genomics.
+title: Häufig gestellte Fragen
+titleSuffix: Microsoft Genomics
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Verwendung des Microsoft Genomics-Diensts, einschließlich Informationen zu technischen Fragen, zu SLAs und zur Abrechnung.
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: d36a2c6379a95cc67a55c2cc266ced94b4a0179a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672228"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018323"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Häufig gestellte Fragen
 
@@ -24,6 +24,8 @@ In diesem Artikel finden Sie die wichtigsten Fragen im Zusammenhang mit Microsof
 ## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>Wie führe ich GATK4-Workflows für Microsoft Genomics aus?
 Legen Sie in der Datei „config.txt“ für den Microsoft Genomics-Dienst den process_name als `gatk4` fest. Beachten Sie, dass Ihnen die regulären Abrechnungstarife in Rechnung gestellt werden.
 
+## <a name="how-do-i-enable-output-compression"></a>Wie aktiviere ich die Ausgabekomprimierung?
+Sie können die VCF- oder GVCF-Ausgabe mithilfe eines optionalen Arguments für die Ausgabekomprimierung komprimieren. Dies entspricht dem Ausführen von `-bgzip` gefolgt von `-tabix` in der VCF- oder GVCF-Ausgabe, um die Dateien `.gz` (BGZIP-Ausgabe) und `.tbi` (TABIX-Ausgabe) zu erstellen. `bgzip` komprimiert die VCF-oder GVCF-Datei, und `tabix` erstellt einen Index für die komprimierte Datei. Das Argument ist ein boolescher Wert, der für die VCF-Ausgabe standardmäßig auf `false` und für die GVCF-Ausgabe standardmäßig auf `true` festgelegt ist. Wenn Sie die Befehlszeile verwenden möchten, geben Sie `-bz` oder `--bgzip-output` mit `true` (BGZIP und TABIX ausführen) oder `false` an. Wenn Sie dieses Argument in der Datei „config.txt“ verwenden möchten, fügen Sie in der Datei die Angabe `bgzip_output: true` oder `bgzip_output: false` hinzu.
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Wie lautet die Vereinbarung zum Servicelevel für Microsoft Genomics?
 Wir garantieren, dass der Microsoft Genomics-Dienst 99,9% der Zeit für den Empfang von Workflow-API-Anforderungen zur Verfügung steht. Weitere Informationen finden Sie unter [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/).

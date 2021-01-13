@@ -1,9 +1,9 @@
 ---
 title: Verknüpfen von Barracuda-Daten mit Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Barracuda-Daten mit Azure Sentinel verknüpfen.
+description: Erfahren Sie, wie Sie den Connector für Barracuda Web Application Firewall (WAF) verwenden, um Barracuda-Protokolle mit Azure Sentinel zu verbinden.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 3b33b4aa-7286-4d79-b461-8e1812edc2e1
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: b3ca93d9e70456d25d5f78b2ca1fde8e4ea24f8d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.date: 12/30/2019
+ms.author: yelevin
+ms.openlocfilehash: f28243be6b4f998e8bdea0ce02da3ceedde23e02
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240199"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85559123"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Verbinden Ihrer Barracuda-Appliance 
 
@@ -37,10 +37,7 @@ Barracuda Web Application Firewall kann Protokolle über den Log Analytics-Agent
 1. Wechseln Sie zu [Barracuda WAF configuration flow](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/) (Barracuda WAF-Konfigurationsflow), und befolgen Sie die Anweisungen zum Einrichten der Verbindung unter Verwendung der folgenden Parameter:
     - **Workspace ID** (Arbeitsbereichs-ID): Kopieren Sie den Wert Ihrer Arbeitsbereichs-ID von der Seite des Azure Sentinel-Barracuda-Connectors.
     - **Primary key** (Primärer Schlüssel): Kopieren Sie den Wert Ihres primären Schlüssels von der Seite des Azure Sentinel-Barracuda-Connectors.
-2. Wechseln Sie im Azure Sentinel-Portal zu dem Arbeitsbereich, in dem Sie Azure Sentinel bereitgestellt haben, wählen Sie die Auslassungspunkte (...) am Ende der Zeile und dann **Erweiterte Einstellungen** aus. 
-1. Wählen Sie **Daten** und dann **Syslog** aus.
-1. Achten Sie darauf, dass die in Barracuda ausgewählte Einrichtung vorhanden ist, legen Sie den Schweregrad fest, und klicken Sie auf **Speichern**.
-6. Um das relevante Schema in Log Analytics für die Barracuda-Ereignisse zu verwenden, suchen Sie nach **CommonSecurityLog** und **barracuda_CL**.
+1. Um das relevante Schema in Log Analytics für die Barracuda-Ereignisse zu verwenden, suchen Sie nach **CommonSecurityLog** und **barracuda_CL**.
 
 
 ## <a name="validate-connectivity"></a>Überprüfen der Konnektivität
@@ -53,4 +50,6 @@ Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeig
 In diesem Artikel haben Sie gelernt, wie Sie Barracuda-Appliances mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
+
 

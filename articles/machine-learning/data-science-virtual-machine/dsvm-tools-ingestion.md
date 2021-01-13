@@ -6,16 +6,16 @@ keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für D
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: lobrien
+ms.author: laobri
 ms.topic: conceptual
-ms.date: 09/11/2017
-ms.openlocfilehash: 2d3d37bcb6ee4bae82d82cf676211e9e1546cfad
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 12/12/2019
+ms.openlocfilehash: 89cf81f8d0a66c29a345f56676fbb97601743710
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191988"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308973"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Datenerfassungstools für die Data Science-VM
 
@@ -25,65 +25,75 @@ Nachstehend sind einige der Datenverschiebungstools aufgeführt, die in der DSVM
 
 ## <a name="adlcopy"></a>AdlCopy
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | Ein Tool zum Kopieren von Daten aus Azure-Blobspeicher in Azure Data Lake Store. Kann auch zum Kopieren von Daten zwischen zwei Azure Data Lake Store-Konten verwendet werden.      |
 | Unterstützte DSVM-Versionen      | Windows      |
 | Typische Verwendung      | Importieren mehrerer Blobs aus Azure-Blobspeicher in Azure Data Lake Store.      |
 |  Verwendung/Ausführung    |   Öffnen Sie eine Eingabeaufforderung, und geben Sie `adlcopy` ein, um die Hilfe anzuzeigen.    |
-| Links zu Beispielen      | [Verwenden von AdlCopy](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
+| Links zu Beispielen      | [Verwenden von AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)      |
 | Verwandte Tools auf der DSVM      | AzCopy, Azure CLI     |
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli"></a>Azure CLI
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | Ein Verwaltungstool für Azure. Enthält auch Befehlsverben zum Verschieben von Daten aus Azure-Datenplattformen wie Azure-Blobspeicher und Azure Data Lake Store.     |
 | Unterstützte DSVM-Versionen      | Windows, Linux     |
 | Typische Verwendung      | Importieren und Exportieren von Daten in bzw. aus Azure Storage und Azure Data Lake Store.      |
 |  Verwendung/Ausführung    |   Öffnen Sie eine Eingabeaufforderung, und geben Sie `az` ein, um die Hilfe anzuzeigen.    |
-| Links zu Beispielen      | [Verwenden der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure)     |
+| Links zu Beispielen      | [Verwenden der Azure-Befehlszeilenschnittstelle](/cli/azure)     |
 | Verwandte Tools auf der DSVM      | AzCopy, AdlCopy      |
 
 
 ## <a name="azcopy"></a>AzCopy
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | Ein Tool zum Kopieren von Daten in lokale und aus lokalen Dateien sowie in und aus Azure-Blobspeicher, -Dateien und -Tabellen.      |
 | Unterstützte DSVM-Versionen      | Windows      |
 | Typische Verwendung      | Kopieren von Dateien in Azure-Blobspeicher und Kopieren von Blobs zwischen Konten.      |
 |  Verwendung/Ausführung    |   Öffnen Sie eine Eingabeaufforderung, und geben Sie `azcopy` ein, um die Hilfe anzuzeigen.    |
-| Links zu Beispielen      | [AzCopy unter Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
+| Links zu Beispielen      | [AzCopy unter Windows](../../storage/common/storage-use-azcopy-v10.md)      |
 | Verwandte Tools auf der DSVM      | AdlCopy     |
 
 
 ## <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB-Datenmigrationstool
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
-| Was ist das?   | Tool, mit dem Daten aus verschiedenen Quellen in Azure Cosmos DB importiert werden können. Zu diesen Quellen gehören JSON-Dateien, CSV-Dateien, SQL, MongoDB, Azure-Tabellenspeicher, Amazon DynamoDB und Azure Cosmos DB-SQL-API-Sammlungen.      |
+| Was ist das?   | Tool, mit dem Daten aus verschiedenen Quellen in Azure Cosmos DB importiert werden können, eine NoSQL-Datenbank in der Cloud. Zu diesen Quellen gehören JSON-Dateien, CSV-Dateien, SQL, MongoDB, Azure-Tabellenspeicher, Amazon DynamoDB und Azure Cosmos DB-SQL-API-Sammlungen.      |
 | Unterstützte DSVM-Versionen      | Windows      |
 | Typische Verwendung      | Importieren von Dateien von einem virtuellen Computer in CosmosDB, Importieren von Daten aus Azure-Tabellenspeicher in CosmosDB und Importieren von Daten aus einer Microsoft SQL Server-Datenbank in CosmosDB     |
 |  Verwendung/Ausführung    |   Öffnen Sie zum Verwenden der Befehlszeilenversion eine Eingabeaufforderung, und geben Sie `dt` ein. Öffnen Sie zum Verwenden des GUI-Tools eine Eingabeaufforderung, und geben Sie `dtui` ein.    |
-| Links zu Beispielen      | [Importieren von Daten in Azure Cosmos DB mit der DocumentDB-API](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
+| Links zu Beispielen      | [Importieren von Daten in Azure Cosmos DB mit der DocumentDB-API](../../cosmos-db/import-data.md)      |
 | Verwandte Tools auf der DSVM      | AzCopy, AdlCopy      |
+
+## <a name="azure-storage-explorer"></a>Azure Storage-Explorer
+
+| Category | Wert |
+| ------------- | ------------- |
+| Was ist das?   | Grafische Benutzeroberfläche für die Interaktion mit Dateien, die in der Azure-Cloud gespeichert sind. |
+| Unterstützte DSVM-Versionen      | Windows      |
+| Typische Verwendung      | Importieren und Exportieren von Daten aus der DSVM.    |
+|  Verwendung/Ausführung    | Suchen Sie im Startmenü nach „Azure Storage-Explorer“. |
+| Links zu Beispielen      | [Azure Storage-Explorer](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
 ## <a name="bcp"></a>bcp
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | SQL Server-Tool zum Kopieren von Daten zwischen SQL Server und einer Datendatei.      |
 | Unterstützte DSVM-Versionen      | Windows      |
 | Typische Verwendung      | Importieren einer CSV-Datei in eine SQL Server-Tabelle und Exportieren einer SQL Server-Tabelle in eine Datei.      |
 |  Verwendung/Ausführung    |   Öffnen Sie eine Eingabeaufforderung, und geben Sie `bcp` ein, um die Hilfe anzuzeigen.    |
-| Links zu Beispielen      | [bcp-Hilfsprogramm](https://docs.microsoft.com/sql/tools/bcp-utility)      |
+| Links zu Beispielen      | [bcp-Hilfsprogramm](/sql/tools/bcp-utility)      |
 | Verwandte Tools auf der DSVM      | SQL Server, sqlcmd      |
 
 ## <a name="blobfuse"></a>blobfuse
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | Ein Tool zum Einbinden eines Azure-Blobspeichercontainers in das Linux-Dateisystem.      |
 | Unterstützte DSVM-Versionen      | Linux      |
@@ -91,15 +101,3 @@ Nachstehend sind einige der Datenverschiebungstools aufgeführt, die in der DSVM
 |  Verwenden und Ausführen    |   Führen Sie _blobfuse_ auf einem Terminal aus.    |
 | Links zu Beispielen      | [blobfuse auf GitHub](https://github.com/Azure/azure-storage-fuse)      |
 | Verwandte Tools auf der DSVM      | Azure-Befehlszeilenschnittstelle      |
-
-
-## <a name="microsoft-data-management-gateway"></a>Microsoft-Datenverwaltungsgateway
-
-|    |           |
-| ------------- | ------------- |
-| Was ist das?   | Ein Tool zum Verknüpfen lokaler Datenquellen mit Clouddiensten, um sie zu nutzen.      |
-| Unterstützte DSVM-Versionen      | Windows      |
-| Typische Verwendung      | Herstellen einer Verbindung zwischen einem virtuellen Computer und einer lokalen Datenquelle      |
-|  Verwendung/Ausführung    |   Öffnen Sie das Microsoft-Datenverwaltungsgateway über das Startmenü.    |
-| Links zu Beispielen      | [Gateway zur Datenverwaltung](https://msdn.microsoft.com/library/dn879362.aspx)      |
-| Verwandte Tools auf der DSVM      | AzCopy, AdlCopy, bcp    |

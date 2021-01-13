@@ -1,17 +1,17 @@
 ---
-title: 'Advanced Threat Protection: Azure Database for MariaDB | Microsoft-Dokumentation'
+title: Advanced Threat Protection – Azure Database for MariaDB
 description: Advanced Threat Protection erkennt anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: a96d8c3b9f9e3f9b1aedf269bce141da3e4ccf42
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.date: 3/18/2020
+ms.openlocfilehash: 018ba33271f8a3a81c3b7109607334b076d8609c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869377"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95977025"
 ---
 # <a name="azure-database-for-mariadb-advanced-threat-protection"></a>Azure Database for MariaDB: Advanced Threat Protection
 
@@ -42,6 +42,6 @@ Advanced Threat Protection für Azure Database for MariaDB erkennt anomale Aktiv
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Weitere Informationen zu [Azure Security Center](../security-center/security-center-introduction.md)
 * Weitere Informationen zu Tarifen finden Sie unter [Azure Database for MariaDB – Preise](https://azure.microsoft.com/pricing/details/mariadb/). 
-* Konfigurieren von [Azure Database for MariaDB: Advanced Threat Protection](howto-database-threat-protection-portal.md) mit dem Azure-Portal  
+* Konfigurieren von [Azure Database for MariaDB: Advanced Threat Protection](howto-database-threat-protection-portal.md) mit dem Azure-Portal

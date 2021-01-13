@@ -1,26 +1,19 @@
 ---
-title: Von der Community vorgeschlagenes Drittanbieter-VPN oder Firewallgeräteeinstellungen für Azure VPN Gateway | Microsoft-Dokumentation
+title: Von der Community vorgeschlagene Geräteeinstellungen für Drittanbieter-VPNs oder Firewalls für Azure VPN Gateway
 description: Erfahren Sie mehr über von der Community vorgeschlagenes Drittanbieter-VPN oder Firewallgeräteeinstellungen für Azure VPN Gateway.
 services: vpn-gateway
-documentationcenter: ''
 author: chadmath
 manager: dcscontentpm
-editor: ''
-tags: azure-vpn-gateway
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: aa4650897abcd38fec4d45f57969d4bf30b9d773
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 7e9544fb73c8599b219ef7a566032adfe5e33d08
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058855"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658501"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Von der Community vorgeschlagenes Drittanbieter-VPN oder Firewallgeräteeinstellungen für Azure VPN Gateway
 
@@ -48,7 +41,6 @@ Die folgende Tabelle enthält mehrere gemeinsame Geräte und verwandte Hilfe:
 
 ## <a name="next-step"></a>Nächster Schritt
 
-[Azure-Gatewayeinstellungen](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
+[Azure-Gatewayeinstellungen](./vpn-gateway-about-vpn-devices.md)
 
-[Bekannte kompatible Geräte](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
-
+[Bekannte kompatible Geräte](./vpn-gateway-about-vpn-devices.md)

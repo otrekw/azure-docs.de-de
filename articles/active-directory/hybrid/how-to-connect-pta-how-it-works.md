@@ -11,19 +11,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59cd52dbdf6c13900cde592aeb52d8bf9abf850f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fe92f761ac0b16da7c3cc3c69c1fa4b00f4e7579
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347776"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996592"
 ---
-# <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung: Technischer Einblick
+# <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Passthrough-Authentifizierung mit Azure Active Directory: Technische Einzelheiten
 Dieser Artikel enthält eine Übersicht über die Funktionsweise der Passthrough-Authentifizierung mit Azure Active Directory (Azure AD). Ausführliche technische und sicherheitsbezogene Informationen finden Sie im Artikel [Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit](how-to-connect-pta-security-deep-dive.md).
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Funktionsweise der Passthrough-Authentifizierung mit Azure Active Directory
@@ -43,7 +43,7 @@ Wenn ein Benutzer versucht, sich bei einer durch Azure AD gesicherten Anwendung 
 8. Der Agent überprüft dann mithilfe von Standard-Windows-APIs den Benutzernamen und das Kennwort in Active Directory (ein ähnlicher Mechanismus wie bei den Active Directory-Verbunddiensten (AD FS)). Beim Benutzernamen kann es sich entweder um den lokalen Standardbenutzernamen (in der Regel `userPrincipalName`) handeln oder um ein anderes (als `Alternate ID` bezeichnetes) Attribut, das in Azure AD Connect konfiguriert ist.
 9. Der lokale Active Directory-Domänencontroller (DC) wertet die Anforderung aus und gibt die entsprechende Antwort (Erfolg, Fehler, Kennwort abgelaufen oder Benutzer gesperrt) an den Agenten zurück.
 10. Der Authentifizierungs-Agent gibt diese Antwort wiederum an Azure AD zurück.
-11. Azure AD wertet die Antwort aus und gibt eine entsprechende Antwort an den Benutzer zurück. Beispiel: Der Benutzer wird sofort angemeldet, oder es wird Azure Multi-Factor Authentication angefordert.
+11. Azure AD wertet die Antwort aus und gibt eine entsprechende Antwort an den Benutzer zurück. Beispiel: Azure AD meldet den Benutzer sofort an oder verlangt Azure AD Multi-Factor Authentication.
 12. Wenn die Anmeldung erfolgreich ist, kann der Benutzer auf die Anwendung zugreifen.
 
 Das folgende Diagramm veranschaulicht die dafür notwendigen Schritte und Komponenten:
@@ -51,13 +51,13 @@ Das folgende Diagramm veranschaulicht die dafür notwendigen Schritte und Kompon
 ![Passthrough-Authentifizierung](./media/how-to-connect-pta-how-it-works/pta2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Aktuelle Einschränkungen](how-to-connect-pta-current-limitations.md): Informieren Sie sich darüber, welche Szenarien unterstützt werden.
-- [Schnellstart](how-to-connect-pta-quick-start.md): Aktivieren und Ausführen der Passthrough-Authentifizierung von Azure AD.
+- [Aktuelle Einschränkungen:](how-to-connect-pta-current-limitations.md) Informationen zu den unterstützten und nicht unterstützten Szenarien
+- [Schnellstart:](how-to-connect-pta-quick-start.md) Aktivieren und Ausführen der Passthrough-Authentifizierung von Azure AD
 - [Migrieren von AD FS zur Passthrough-Authentifizierung](https://aka.ms/adfstoPTADP): Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung
-- [Smart Lockout](../authentication/howto-password-smart-lockout.md): Konfigurieren Sie die Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen.
-- [Häufig gestellte Fragen:](how-to-connect-pta-faq.md) Finden Sie Antworten auf häufig gestellte Fragen.
-- [Problembehandlung](tshoot-connect-pass-through-authentication.md): Hier finden Sie Informationen zum Beheben von allgemeinen Problemen, die bei der Passthrough-Authentifizierung auftreten können.
-- [Ausführliche Informationen zur Sicherheit:](how-to-connect-pta-security-deep-dive.md) Hier erhalten Sie ausführliche technische Informationen zur Pass-Through-Authentifizierung.
-- [Nahtloses einmaliges Anmelden mit Azure AD:](how-to-connect-sso.md) Erfahren Sie mehr über diese Ergänzungsfunktion.
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Fordern Sie neue Features über das Azure Active Directory-Forum an.
+- [Smart Lockout:](../authentication/howto-password-smart-lockout.md) Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen
+- [Häufig gestellte Fragen:](how-to-connect-pta-faq.md) Antworten auf häufig gestellte Fragen
+- [Problembehandlung:](tshoot-connect-pass-through-authentication.md) Informationen zum Beheben von allgemeinen Problemen, die bei der Passthrough-Authentifizierung auftreten können
+- [Ausführliche Informationen zur Sicherheit:](how-to-connect-pta-security-deep-dive.md) Technische Informationen zur Passthrough-Authentifizierung
+- [Nahtloses SSO mit Azure AD](how-to-connect-sso.md): Informationen zu dieser Ergänzungsfunktion
+- [UserVoice:](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Anfordern neuer Features über das Azure Active Directory-Forum
 

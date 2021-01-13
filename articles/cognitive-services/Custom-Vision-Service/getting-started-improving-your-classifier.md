@@ -1,7 +1,7 @@
 ---
 title: Verbessern der Klassifizierung – Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Hier wird beschrieben, wie Sie die Qualität Ihrer Klassifizierung verbessern.
+description: In diesem Artikel erfahren Sie, wie die Menge, Qualität und Vielfalt der Daten die Qualität Ihres Klassifizierers im Custom Vision-Dienst verbessern kann.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,13 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: d71c750185589fd488df70b63fd48e9e674ee3dc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: a77d3d5c1225fdd85e27db20cdae23e0c77a5e28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561047"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271357"
 ---
 # <a name="how-to-improve-your-classifier"></a>Verbessern der Klassifizierung
 

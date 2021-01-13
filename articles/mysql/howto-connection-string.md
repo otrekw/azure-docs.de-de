@@ -1,17 +1,18 @@
 ---
-title: Herstellen einer Verbindung zwischen Anwendungen und Azure Database for MySQL
+title: Verbindungszeichenfolgen – Azure Database for MySQL
 description: In diesem Dokument sind alle derzeit unterstützten Verbindungszeichenfolgen für Anwendungen aufgeführt, um eine Verbindung mit Azure-Datenbank für MySQL herzustellen. Hierzu zählen ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python und Ruby.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 503b7764ba7958a5448903b217b00e204ffcbf61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: how-to
+ms.date: 3/18/2020
+ms.custom: devx-track-python, devx-track-js
+ms.openlocfilehash: 40af2660f0052a876ef9310bc2426295ba67558b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459268"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541486"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Herstellen einer Verbindung zwischen Anwendungen und Azure-Datenbank für MySQL
 In diesem Thema sind alle von Azure Database for MySQL unterstützten Typen von Verbindungszeichenfolgen sowie Vorlagen und Beispiele aufgeführt. Ihre Verbindungszeichenfolge enthält unter Umständen andere Parameter und Einstellungen.
@@ -62,7 +63,7 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Abrufen von Details zur Verbindungszeichenfolge aus dem Azure-Portal
-Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Azure Database for MySQL-Server, und klicken Sie dann auf **Verbindungszeichenfolgen**, um die Zeichenfolgenliste für Ihre Instanz abzurufen: ![Bereich „Verbindungszeichenfolgen“ im Azure-Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Azure Database for MySQL-Server, und klicken Sie dann auf **Verbindungszeichenfolgen**, um die Zeichenfolgenliste für Ihre Instanz abzurufen: :::image type="content" source="./media/howto-connection-strings/connection-strings-on-portal.png" alt-text="Bereich „Verbindungszeichenfolgen“ im Azure-Portal":::
 
 Die Zeichenfolge enthält Details wie Treiber, Server und andere Parameter für die Datenbankverbindung. Passen Sie diese Beispiele mit Ihren eigenen Parametern an, z.B. Ihrem Datenbanknamen und Ihrem Kennwort. Sie können diese Zeichenfolge dann verwenden, um eine Verbindung zwischen Ihrem Code sowie Ihren Anwendungen und dem Server herzustellen.
 

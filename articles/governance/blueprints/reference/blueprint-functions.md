@@ -1,22 +1,18 @@
 ---
 title: Azure Blueprints-Funktionen
-description: Beschreibt die für die Verwendung mit Azure Blueprints-Definitionen und -Zuweisungen gedachten Funktionen.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 04/15/2019
+description: Beschreibt die Funktionen, die mit Blaupausenartefakten in Azure Blueprints-Definitionen und -Zuweisungen verwendet werden können.
+ms.date: 08/27/2020
 ms.topic: reference
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: dcf073c58a723b8dbd835ac331c0ce9d16187445
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: fe984ee7664b0d50fb891d946f9f40a200ccce09
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232848"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89050759"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funktionen für die Verwendung mit Azure Blueprints
 
-Azure Blueprints bietet Funktionen, durch die eine Blaupausendefinition dynamischer wird. Diese Funktionen dienen zur Verwendung mit Blaupausendefinitionen und Blaupausenartefakten. Ein Resource Manager-Vorlagenartefakt unterstützt die vollständige Verwendung von Resource Manager-Funktionen zusätzlich zum Abrufen eines dynamischen Werts über einen Blaupausenparameter.
+Azure Blueprints bietet Funktionen, durch die eine Blaupausendefinition dynamischer wird. Diese Funktionen dienen zur Verwendung mit Blaupausendefinitionen und Blaupausenartefakten. Ein Artefakt einer Azure Resource Manager-Vorlage (ARM-Vorlage) unterstützt die umfassende Verwendung von Resource Manager-Funktionen zusätzlich zum Abrufen eines dynamischen Werts über einen Blaupausenparameter.
 
 Folgende Funktionen werden unterstützt:
 
@@ -33,11 +29,14 @@ Folgende Funktionen werden unterstützt:
 
 Gibt ein Objekt von Eigenschaften zurück, die mit den Ausgaben dieses Blaupausenartefakts aufgefüllt sind.
 
+> [!NOTE]
+> Die `artifacts()`-Funktion kann nicht in einer ARM-Vorlage verwendet werden. Die-Funktion kann nur im JSON-Code der Blaupausendefinition oder des Artifakts verwendet werden, wenn die Blaupause mit Azure PowerShell oder REST-API im Rahmen von [Blaupausen als Code](https://github.com/Azure/azure-blueprints/blob/master/README.md) verwaltet wird.
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| artifactName |Ja |string |Der Name eines Blaupausenartefakts. |
+| artifactName |Ja |Zeichenfolge |Der Name eines Blaupausenartefakts. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -61,9 +60,9 @@ Ein Objekt von Ausgabeeigenschaften. Die **Ausgaben**eigenschaften sind abhängi
 }
 ```
 
-#### <a name="resource-manager-template-artifact"></a>Resource Manager-Vorlagenartefakt
+#### <a name="arm-template-artifact"></a>ARM-Vorlagenartefakt
 
-Die **Ausgaben**eigenschaften des zurückgegebenen Objekts sind in der Resource Manager-Vorlage definiert und werden von der Bereitstellung zurückgegeben.
+Die **Ausgaben**eigenschaften des zurückgegebenen Objekts sind in der ARM-Vorlage definiert und werden von der Bereitstellung zurückgegeben.
 
 #### <a name="role-assignment-artifact"></a>Rollenzuweisungsartefakt
 
@@ -79,7 +78,7 @@ Die **Ausgaben**eigenschaften des zurückgegebenen Objekts sind in der Resource 
 
 ### <a name="example"></a>Beispiel
 
-Ein Resource Manager-Vorlagenartefakt mit der ID _myTemplateArtifact_, das die folgende Beispielausgabeeigenschaft enthält:
+Ein ARM-Vorlagenartefakt mit der ID _myTemplateArtifact_, das die folgende Beispielausgabeeigenschaft enthält:
 
 ```json
 {
@@ -110,10 +109,10 @@ Einige Beispiele für das Abrufen von Daten aus dem _myTemplateArtifact_-Beispie
 | Ausdruck | type | Wert |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "second"\] |
-|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Zeichenfolge | "first" |
-|`[artifacts("myTemplateArtifact").outputs.myString]` | Zeichenfolge | "my string value" |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | String | "my string value" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | { "myproperty": "my value", "anotherProperty": true } |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Zeichenfolge | "my value" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "my value" |
 |`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>concat
@@ -124,18 +123,18 @@ Kombiniert mehrere Zeichenfolgenwerte und gibt die verkettete Zeichenfolge zurü
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| string1 |Ja |string |Der erste Wert für die Verkettung. |
-| zusätzliche Argumente |Nein |string |Weitere Werte in sequenzieller Reihenfolge für die Verkettung. |
+| string1 |Ja |Zeichenfolge |Der erste Wert für die Verkettung. |
+| zusätzliche Argumente |Nein |Zeichenfolge |Weitere Werte in sequenzieller Reihenfolge für die Verkettung. |
 
 ### <a name="return-value"></a>Rückgabewert
 
 Eine Zeichenfolge aus verketteten Werten.
 
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
 
-Die Azure Blueprint-Funktion unterscheidet sich von der Azure Resource Manager-Vorlagenfunktion darin, dass sie nur mit Zeichenfolgen arbeitet.
+Die Azure Blueprint-Funktion unterscheidet sich von der ARM-Vorlagenfunktion darin, dass sie nur mit Zeichenfolgen arbeitet.
 
 ### <a name="example"></a>Beispiel
 
@@ -149,17 +148,17 @@ Gibt einen Blaupausenparameterwert zurück. Der angegebene Parametername muss in
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ja |string |Der Name des zurückzugebenden Parameter. |
+| parameterName |Ja |Zeichenfolge |Der Name des zurückzugebenden Parameter. |
 
 ### <a name="return-value"></a>Rückgabewert
 
 Der Wert des angegebenen Blaupausen- oder Blaupausenartefaktparameters.
 
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
 
-Die Azure Blueprint-Funktion unterscheidet sich von der Azure Resource Manager-Vorlagenfunktion darin, dass sie nur mit Blaupausenparametern arbeitet.
+Die Azure Blueprint-Funktion unterscheidet sich von der ARM-Vorlagenfunktion darin, dass sie nur mit Blaupausenparametern arbeitet.
 
 ### <a name="example"></a>Beispiel
 
@@ -175,7 +174,7 @@ Definieren des Parameters _principalIds_ in der Blaupausendefinition:
                 "type": "array",
                 "metadata": {
                     "displayName": "Principal IDs",
-                    "description": "This is a blueprint parameter that any artifact can reference. We'll display these descriptions for you in the info bubble. Supply principal IDs for the users,groups, or service principals for the RBAC assignment.",
+                    "description": "This is a blueprint parameter that any artifact can reference. We'll display these descriptions for you in the info bubble. Supply principal IDs for the users,groups, or service principals for the Azure role assignment.",
                     "strongType": "PrincipalId"
                 }
             }
@@ -217,9 +216,9 @@ Das zurückgegebene Objekt hat das folgende Format:
 }
 ```
 
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
 
-Die Azure Blueprint-Funktion unterscheidet sich von der Azure Resource Manager-Vorlagenfunktion. Die `resourceGroup()`-Funktion kann nicht in einem Artefakt der Abonnementebene oder der Blaupausendefinition verwendet werden. Sie kann nur in Blaupausenartefakten verwendet werden, die Teil eines Ressourcengruppenartefakts sind.
+Die Azure Blueprint-Funktion unterscheidet sich von der ARM-Vorlagenfunktion. Die `resourceGroup()`-Funktion kann nicht in einem Artefakt der Abonnementebene oder der Blaupausendefinition verwendet werden. Sie kann nur in Blaupausenartefakten verwendet werden, die Teil eines Ressourcengruppenartefakts sind.
 
 Die `resourceGroup()`-Funktion wird häufig verwendet, um Ressourcen am gleichen Speicherort wie das Ressourcengruppenartefakt zu erstellen.
 
@@ -270,9 +269,9 @@ Gibt ein Objekt zurück, das das angegebene Ressourcengruppenartefakt darstellt.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| placeholderName |Ja |string |Der Platzhaltername des Ressourcengruppenartefakts, der zurückgegeben werden soll. |
+| placeholderName |Ja |Zeichenfolge |Der Platzhaltername des Ressourcengruppenartefakts, der zurückgegeben werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 

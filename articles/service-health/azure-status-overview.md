@@ -1,22 +1,18 @@
 ---
 title: Übersicht über Azure-Status | Microsoft-Dokumentation
 description: Eine globale Ansicht der Integrität von Azure-Diensten
-services: Azure status
-ms.topic: article
-author: stephbaron
-ms.author: stbaron
-ms.service: service-health
+ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 91f8ae72d1926c8b7ce9097947afe5ca99a153c3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6e0813ad5fde19069662c13fcba7bd81b055de2a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073540"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "82732549"
 ---
 # <a name="azure-status-overview"></a>Azure-Statusübersicht
 
-Der [Azure-Status](https://status.azure.com/status/) bietet Ihnen eine globale Ansicht der Integrität von Azure-Diensten und -Regionen. Mit Azure-Status können Sie minutengenaue Informationen zur Dienstverfügbarkeit abrufen. Der Azure-Status steht allgemein zur Verfügung, um alle Dienste, die über ihren Dienstzustand melden, sowie Vorfälle mit weitreichenden Auswirkungen anzuzeigen. Wenn Sie ein aktueller Azure-Benutzer sind, wir empfehlen Ihnen jedoch ausdrücklich, die personalisierte [Azure Service Health](https://aka.ms/azureservicehealth)-Umgebung zu verwenden. Azure Service Health weist alle Ausfälle, bevorstehende geplante Wartungsarbeiten und Dienstempfehlungen aus.
+Der [Azure-Status](https://status.azure.com/status/) bietet Ihnen eine globale Ansicht der Integrität von Azure-Diensten und -Regionen. Mit dem Azure-Status können Sie Informationen zur Dienstverfügbarkeit abrufen. Der Azure-Status steht allgemein zur Verfügung, um alle Dienste, die über ihren Dienstzustand melden, sowie Vorfälle mit weitreichenden Auswirkungen anzuzeigen. Wenn Sie ein aktueller Azure-Benutzer sind, wir empfehlen Ihnen jedoch ausdrücklich, die personalisierte [Azure Service Health](https://aka.ms/azureservicehealth)-Umgebung zu verwenden. Azure Service Health weist alle Ausfälle, bevorstehende geplante Wartungsarbeiten und Dienstempfehlungen aus.
 
 ![Azure-Statusseite](./media/azure-status-overview/azure-status.PNG)
 
@@ -28,9 +24,7 @@ Die Azure-Statusseite wird bei Änderung der Integrität von Azure-Diensten in E
 
 ## <a name="azure-status-history"></a>Azure-Statusverlauf
 
-Während die Azure-Statusseite immer die aktuellen Integritätsinformationen anzeigt, finden Sie ältere Ereignisse auf der [Azure Status-Verlaufsseite](https://status.azure.com/status/history/).
-
-Dort werden Ereignisse angezeigt, die bis zu 90 Tage zurückliegen, einschließlich einer vorläufigen Ursache, Entschärfung und nächsten Schritten für Azure.
+Während die Azure-Statusseite immer die aktuellen Integritätsinformationen anzeigt, finden Sie ältere Ereignisse auf der [Azure Status-Verlaufsseite](https://status.azure.com/status/history/). Die Seite „Verlauf“ enthält alle Ursachenanalysen für Vorfälle ab dem 20. November 2019 sowie einen fünfjährigen Ursachenanalyseverlauf ab diesem Datum. Ursachenanalysen, die vor dem 20. November 2019 erstellt wurden, sind nicht verfügbar.
 
 ## <a name="rss-feed"></a>RSS-Feed
 

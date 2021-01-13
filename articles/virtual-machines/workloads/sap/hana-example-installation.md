@@ -4,21 +4,22 @@ description: Hier erfahren Sie, wie Sie HANA unter SAP HANA in Azure (große Ins
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d266f458894d93540977c995ff7e8ab71414083f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 994130ce2ecb4578a8d34f1f77b310bb558d3c7a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101278"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967906"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>Installieren von HANA unter SAP HANA in Azure (große Instanzen)
 

@@ -1,34 +1,41 @@
 ---
-title: Installieren und Ausführen von Containern für die Verwendung der Anomalieerkennungs-API
+title: Installieren und Ausführen von Docker-Containern für die Anomalieerkennungs-API
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie den erweiterten Algorithmus der Anomalieerkennungs-API, um Anomalien in Zeitreihendaten zu identifizieren.
+description: Verwenden Sie die Algorithmen der Anomalieerkennungs-API, um mithilfe eines Docker-Containers lokal Anomalien in Ihren Daten zu finden.
 services: cognitive-services
-author: IEvangelist
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: dapine
-ms.openlocfilehash: 11f041ed06117a7e3d495fb43d3a4904f6001520
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.date: 09/28/2020
+ms.author: mbullwin
+ms.custom: cog-serv-seo-aug-2020
+keywords: lokal, Docker, Container, Streaming, Algorithmen
+ms.openlocfilehash: 70e5950f6577ce2cca2f28be070f3ba372d46a7e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316391"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862314"
 ---
-# <a name="install-and-run-anomaly-detector-containers"></a>Installieren und Ausführen von Containern für die Anomalieerkennung
+# <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Installieren und Ausführen von Docker-Containern für die Anomalieerkennungs-API 
 
-Die Anomalieerkennung umfasst die folgenden Container: 
+[!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
-|Funktion|Features|
-|-|-|
-|Anomalieerkennung| <li> Erkennt Anomalien in Echtzeit <li> Erkennt Anomalien für das ganze Dataset als Batch <li> Leitet den normalen zu erwartenden Bereich Ihrer Daten ab <li> Unterstützt die Anpassung der Anomalieerkennung an Ihre Daten |
+Mithilfe von Containern können Sie die Anomalieerkennungs-API in Ihrer eigenen Umgebung verwenden. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie einen Container für die Anomalieerkennung herunterladen, installieren und ausführen.
 
-Ausführliche Informationen zu den APIs finden Sie unter:
+Die Anomalieerkennung bietet einen einzelnen Docker-Container für die lokale Verwendung der API. Verwenden Sie den Container für Folgendes:
+* Verwenden der Algorithmen der Anomalieerkennung für Ihre Daten
+* Überwachen von Streamingdaten und Erkennen von Anomalien in Echtzeit, wenn sie auftreten
+* Erkennen von Anomalien für das ganze Dataset als Batch 
+* Erkennen von Trendänderungspunkten in Ihrem Dataset als Batch
+* Anpassen der Sensitivität des Algorithmus für die Anomalieerkennung, damit er besser auf Ihre Daten ausgerichtet ist
+
+Ausführliche Informationen zur API finden Sie unter:
 * [Erfahren Sie mehr über den Anomalieerkennungs-API-Dienst.](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,24 +44,16 @@ Zum Verwenden des Containers für die Anomalieerkennung müssen die folgenden Vo
 |Erforderlich|Zweck|
 |--|--|
 |Docker-Engine| Die Docker-Engine muss auf einem [Hostcomputer](#the-host-computer) installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können. <br><br> **Unter Windows** muss Docker auch für die Unterstützung von Linux-Containern konfiguriert werden.<br><br>|
-|Kenntnisse zu Docker | Sie sollten über Grundkenntnisse der Konzepte von Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen und die grundlegenden `docker`-Befehle kennen.| 
+|Kenntnisse zu Docker | Sie sollten über Grundkenntnisse der Konzepte von Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen und die grundlegenden `docker`-Befehle kennen.|
 |Anomalieerkennungsressource |Um diese Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ _Anomalieerkennung_, um den entsprechenden API-Schlüssel und den URI des Endpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf der Übersichts- und auf der Schlüsselseite der **Anomalieerkennung** zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{API_KEY}** : Einer der beiden verfügbaren Ressourcenschlüssel auf der Seite **Schlüssel**<br><br>**{ENDPOINT_URI}** : Der Endpunkt, der auf der Seite **Übersicht** angegeben ist|
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
-
-## <a name="request-access-to-the-container-registry"></a>Anfordern des Zugriffs auf die Containerregistrierung
-
-Sie müssen zuerst das [Formular zum Anfordern von Containern für die Anomalieerkennung](https://aka.ms/adcontainer) ausfüllen und übermitteln, um Zugriff auf den Container anzufordern.
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
 
 ## <a name="the-host-computer"></a>Der Hostcomputer
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-<!--* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/). For instructions of deploying Anomaly Detector module in IoT Edge, see [How to deploy Anomaly Detector module in IoT Edge](how-to-deploy-anomaly-detector-module-in-iot-edge.md).-->
+<!--* [Azure IoT Edge](../../iot-edge/index.yml). For instructions of deploying Anomaly Detector module in IoT Edge, see [How to deploy Anomaly Detector module in IoT Edge](how-to-deploy-anomaly-detector-module-in-iot-edge.md).-->
 
 ### <a name="container-requirements-and-recommendations"></a>Containeranforderungen und -empfehlungen
 
@@ -75,7 +74,7 @@ Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/referenc
 
 | Container | Repository |
 |-----------|------------|
-| cognitive-services-anomaly-detector | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest` |
+| cognitive-services-anomaly-detector | `mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
@@ -85,15 +84,15 @@ For a full description of available tags, such as `latest` used in the preceding
 ### <a name="docker-pull-for-the-anomaly-detector-container"></a>Ausführen von „docker pull“ für den Container für die Anomalieerkennung
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>Verwenden des Containers
 
 Wenn sich der Container auf dem [Hostcomputer](#the-host-computer) befindet, können Sie über den folgenden Prozess mit dem Container arbeiten.
 
-1. [Führen Sie den Container aus](#run-the-container-with-docker-run), und verwenden Sie dabei die erforderlichen Abrechnungseinstellungen. Es sind noch weitere [Beispiele](anomaly-detector-container-configuration.md#example-docker-run-commands) für den Befehl `docker run` verfügbar. 
-1. [Fragen Sie den Vorhersageendpunkt des Containers ab.](#query-the-containers-prediction-endpoint) 
+1. [Führen Sie den Container aus](#run-the-container-with-docker-run), und verwenden Sie dabei die erforderlichen Abrechnungseinstellungen. Es sind noch weitere [Beispiele](anomaly-detector-container-configuration.md#example-docker-run-commands) für den Befehl `docker run` verfügbar.
+1. [Fragen Sie den Vorhersageendpunkt des Containers ab.](#query-the-containers-prediction-endpoint)
 
 ## <a name="run-the-container-with-docker-run"></a>Ausführen des Containers mit `docker run`
 
@@ -103,7 +102,7 @@ Es sind [Beispiele](anomaly-detector-container-configuration.md#example-docker-r
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest \
+mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -114,7 +113,7 @@ Dieser Befehl:
 * Führt einen Container für die Anomalieerkennung auf der Grundlage des Containerimages aus
 * Weist einen einzelnen CPU-Kern und 4 GB Arbeitsspeicher zu
 * Verfügbarmachen des TCP-Ports 5000 und Zuweisen einer Pseudo-TTY-Verbindung für den Container
-* Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar. 
+* Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
@@ -123,11 +122,11 @@ Dieser Befehl:
 
 Wenn Sie beabsichtigen, mehrere Container mit offengelegten Ports auszuführen, stellen Sie sicher, dass jeder Container mit einem anderen Port ausgeführt wird. Führen Sie beispielsweise den ersten Container an Port 5000 und den zweiten Container an Port 5001 aus.
 
-Ersetzen Sie `<container-registry>` und `<container-name>` durch die Werte der von Ihnen verwendeten Container. Dabei muss es sich nicht um die gleichen Container handeln. Sie können den Container für die Anomalieerkennung und den LUIS-Container zusammen auf dem Host ausführen, oder Sie können mehrere Container für die Anomalieerkennung ausführen. 
+Ersetzen Sie `<container-registry>` und `<container-name>` durch die Werte der von Ihnen verwendeten Container. Dabei muss es sich nicht um die gleichen Container handeln. Sie können den Container für die Anomalieerkennung und den LUIS-Container zusammen auf dem Host ausführen, oder Sie können mehrere Container für die Anomalieerkennung ausführen.
 
-Führen Sie den ersten Container an Port 5000 aus. 
+Führen Sie den ersten Container an Port 5000 aus.
 
-```bash 
+```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 <container-registry>/microsoft/<container-name> \
 Eula=accept \
@@ -138,7 +137,7 @@ ApiKey={API_KEY}
 Führen Sie den zweiten Container an Port 5001 aus.
 
 
-```bash 
+```bash
 docker run --rm -it -p 5000:5001 --memory 4g --cpus 1 \
 <container-registry>/microsoft/<container-name> \
 Eula=accept \
@@ -146,11 +145,11 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Jeder weitere Container sollte an einem anderen Port ausgeführt werden. 
+Jeder weitere Container sollte an einem anderen Port ausgeführt werden.
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Abfragen des Vorhersageendpunkts des Containers
 
-Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit. 
+Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit.
 
 Verwenden Sie für Container-APIs den Host http://localhost:5000.
 
@@ -170,22 +169,18 @@ Wenn Sie den Container mit einer [Ausgabenbereitstellung](anomaly-detector-conta
 
 ## <a name="billing"></a>Abrechnung
 
-Der Container für die Anomalieerkennung sendet Abrechnungsinformationen an Azure und verwendet dafür eine Ressource vom Typ _Anomalieerkennung_ in Ihrem Azure-Konto. 
+Der Container für die Anomalieerkennung sendet Abrechnungsinformationen an Azure und verwendet dafür eine Ressource vom Typ _Anomalieerkennung_ in Ihrem Azure-Konto.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Weitere Informationen zu diesen Optionen finden Sie unter [Konfigurieren von Containern](anomaly-detector-container-configuration.md).
-
-<!--blogs/samples/video coures -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Zusammenfassung
 
 In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Installieren und Ausführen von Containern für die Anomalieerkennung kennengelernt. Zusammenfassung:
 
 * Die Anomalieerkennung stellt einen Linux-Container für Docker bereit, der die Anomalieerkennung kapselt. Sie kann auf Batches oder Streams ausgeführt werden und bietet Bereichsrückschlüsse sowie eine Optimierung der Genauigkeit.
-* Containerimages werden aus einer privaten Azure Container Registry-Instanz für Containervorschauversionen heruntergeladen.
+* Containerimages werden aus einer privaten Azure Container Registry-Instanz für Container heruntergeladen.
 * Containerimages werden in Docker ausgeführt.
 * Sie können entweder die REST-API oder das SDK verwenden, um Vorgänge in Containern für die Anomalieerkennung über den Host-URI des Containers aufzurufen.
 * Bei der Instanziierung eines Containers müssen Sie Abrechnungsinformationen angeben.

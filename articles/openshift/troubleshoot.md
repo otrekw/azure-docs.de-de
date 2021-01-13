@@ -1,19 +1,17 @@
 ---
-title: Problembehandlung für Azure Red Hat OpenShift | Microsoft-Dokumentation
+title: Problembehandlung für Azure Red Hat OpenShift
 description: Behandlung und Lösung häufiger Probleme mit Azure Red Hat OpenShift
-services: container-service
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: 7f2bdf643f12671bec3d0c087d8775844099fe9a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55360ef295ff80b700b059d053203458f9f384db
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306244"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89469081"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Problembehandlung für Azure Red Hat OpenShift
 
@@ -32,7 +30,7 @@ Derzeit ist die Ressource `Microsoft.ContainerService/openShiftManagedClusters`,
 
 ## <a name="creating-a-cluster-results-in-error-that-no-registered-resource-provider-found"></a>Erstellung eines Clusters führt zu einem Fehler mit dem Hinweis, dass kein registrierter Ressourcenanbieter gefunden wurde
 
-Wenn die Erstellung eines Clusters zu einem Fehler der Art `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview` führt, haben Sie die Vorschauversion genutzt. Sie müssen nun [reservierte Azure-VM-Instanzen erwerben](https://aka.ms/openshift/buy), um das allgemein verfügbare Produkt zu verwenden. Eine Reservierung senkt Ihre Ausgaben, da Sie im Voraus für vollständig verwaltete Azure-Datendienste zahlen. Unter [*Was sind Azure-Reservierungen*](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations) erhalten Sie weitere Informationen zu Reservierungen und erfahren, wie Sie damit Geld sparen können.
+Wenn die Erstellung eines Clusters zu einem Fehler der Art `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview` führt, haben Sie die Vorschauversion genutzt. Sie müssen nun [reservierte Azure-VM-Instanzen erwerben](https://aka.ms/openshift/buy), um das allgemein verfügbare Produkt zu verwenden. Eine Reservierung senkt Ihre Ausgaben, da Sie im Voraus für vollständig verwaltete Azure-Datendienste zahlen. Unter [*Was sind Azure-Reservierungen*](../cost-management-billing/reservations/save-compute-costs-reservations.md) erhalten Sie weitere Informationen zu Reservierungen und erfahren, wie Sie damit Geld sparen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

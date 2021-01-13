@@ -1,25 +1,17 @@
 ---
-title: Verwenden eines hochverfügbaren Service Fabric Reliable Disk-Volumes in einer Azure Service Fabric Mesh-Anwendung | Microsoft-Dokumentation
+title: Service Fabric Reliable Disk Volume mit Service Fabric Mesh
 description: Hier erfahren Sie, wie Sie durch Einbinden eines auf Service Fabric Reliable Disk basierenden Volumes im Container mit der Azure CLI den Status in der Azure Service Fabric Mesh-Anwendung speichern.
-services: service-fabric-mesh
-documentationcenter: .net
 author: ashishnegi
-manager: raunakpandya
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 25bd298c412db38ec4d3b7859580d58ac9b151fb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 86822c5a9cef84ff4b51bc94b6b2dd3dbdee91bf
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036156"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702008"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Bereitstellen eines auf Service Fabric Reliable Disk basierenden Volumes in einer Azure Service Fabric Mesh-Anwendung 
 Die gängige Methode, den Zustand mit Container-Apps persistent zu speichern, ist die Verwendung von Remotespeicher wie Azure File Storage oder Datenbanken wie Azure Cosmos DB. Dies führt für den Remotespeicher zu erheblicher Netzwerklatenz durch Lese- und Schreibzugriffe.
@@ -54,6 +46,11 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
+>[!NOTE]
+> Ab dem 2. November 2020 [gelten die Grenzwerte für die Downloadrate](https://docs.docker.com/docker-hub/download-rate-limit/) für anonyme und authentifizierte Anforderungen an Docker Hub von Docker-Konten im Plan „Free“. Diese Grenzwerte werden durch die IP-Adresse erzwungen. 
+> 
+> Diese Vorlage nutzt öffentliche Images aus Docker Hub. Beachten Sie, dass möglicherweise Ratenbeschränkungen gelten. Ausführlichere Informationen finden Sie unter [Authentifizieren mit Docker Hub](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub).
+
 Der folgende Befehl stellt eine Linux-Anwendung mit der Vorlage [counter.sfreliablevolume.linux.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json) bereit. Zum Bereitstellen einer Windows-Anwendung verwenden Sie die Vorlage [counter.sfreliablevolume.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json). Beachten Sie, dass die Bereitstellung größerer Containerimages länger dauern kann.
 
 ```azurecli-interactive
@@ -63,7 +60,7 @@ az mesh deployment create --resource-group myResourceGroup --template-uri https:
 Sie können mit dem Befehl auch den Zustand der Bereitstellung anzeigen.
 
 ```azurecli-interactive
-az group deployment show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
+az deployment group show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
 ```
 
 Beachten Sie den Namen der Gatewayressource, die den Ressourcentyp `Microsoft.ServiceFabricMesh/gateways` aufweist. Dieser wird beim Abrufen der öffentlichen IP-Adresse der App verwendet.

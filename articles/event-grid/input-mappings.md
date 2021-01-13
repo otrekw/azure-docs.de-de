@@ -1,29 +1,18 @@
 ---
 title: Zuordnen benutzerdefinierter Felder zum Azure Event Grid-Schema
-description: Dieser Artikel beschreibt, wie Sie ein benutzerdefiniertes Schema in das Azure Event Grid-Schema konvertieren.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
+description: In diesem Artikel wird beschrieben, wie Sie Ihr benutzerdefiniertes Schema in das Azure Event Grid-Schema konvertieren, wenn die Ereignisdaten nicht dem Event Grid-Schema entsprechen.
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: spelluru
-ms.openlocfilehash: a0e054be3ab7d4818ac323eb5fb93968f57eca4f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/07/2020
+ms.openlocfilehash: 34381782c9337631b0aa04e47eb5897a8071139a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565496"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109197"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Zuordnen benutzerdefinierter Felder zum Event Grid-Schema
 
 Auch wenn Ihre Daten nicht dem erwarteten [Event Grid-Schema](event-schema.md) entsprechen, können Sie dennoch Event Grid verwenden, um Ereignisse an Abonnenten weiterzuleiten. Dieser Artikel beschreibt, wie Sie Ihr Schema dem Event Grid-Schema zuordnen.
-
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
-
-## <a name="install-preview-feature"></a>Installieren des Vorschaufeatures
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="original-event-schema"></a>Ursprüngliches Ereignisschema
 
@@ -45,7 +34,7 @@ Obwohl dieses Format nicht dem erforderlichen Schema entspricht, ermöglicht Eve
 
 Wenn Sie ein benutzerdefiniertes Thema erstellen, geben Sie an, wie Felder aus Ihrem ursprünglichen Ereignis dem Event Grid-Schema zugeordnet werden sollen. Zum Anpassen der Zuordnung werden drei Werte verwendet:
 
-* Mit dem Wert **input schema** wird der Typ des Schemas angegeben. Die verfügbaren Optionen sind das CloudEvents-Schema, das benutzerdefinierte Ereignisschema und das Event Grid-Schema. Der Standardwert ist das Event Grid-Schema. Wenn Sie eine benutzerdefinierte Zuordnung zwischen Ihrem Schema und dem Event Grid-Schema erstellen, verwenden Sie das benutzerdefinierte Ereignisschema (customeventschema). Wenn Ereignisse im CloudEvents-Schema vorhanden sind, verwenden Sie das CloudEvents-Schema.
+* Mit dem Wert **input schema** wird der Typ des Schemas angegeben. Die verfügbaren Optionen sind das CloudEvents-Schema, das benutzerdefinierte Ereignisschema und das Event Grid-Schema. Der Standardwert ist das Event Grid-Schema. Wenn Sie eine benutzerdefinierte Zuordnung zwischen Ihrem Schema und dem Event Grid-Schema erstellen, verwenden Sie das benutzerdefinierte Ereignisschema (customeventschema). Wenn Ereignisse im CloudEvents-Format vorhanden sind, verwenden Sie das CloudEvents-Schema.
 
 * Mit der **mapping default values**-Eigenschaft werden die Standardwerte für Felder im Event Grid-Schema angegeben. Sie können Standardwerte für `subject`, `eventtype` und `dataversion` festlegen. In der Regel verwenden Sie diesen Parameter, wenn Ihr benutzerdefiniertes Schema kein Feld enthält, das einem dieser drei Felder entspricht. Sie können z.B. angeben, dass die Dataversion immer auf **1.0** festgelegt wird.
 
@@ -54,10 +43,6 @@ Wenn Sie ein benutzerdefiniertes Thema erstellen, geben Sie an, wie Felder aus I
 Verwenden Sie Folgendes, um mit der Azure CLI ein benutzerdefiniertes Thema zu erstellen:
 
 ```azurecli-interactive
-# If you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid topic create \
   -n demotopic \
   -l eastus2 \
@@ -70,11 +55,7 @@ az eventgrid topic create \
 Verwenden Sie für PowerShell Folgendes:
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
-New-AzureRmEventGridTopic `
+New-AzEventGridTopic `
   -ResourceGroupName myResourceGroup `
   -Name demotopic `
   -Location eastus2 `
@@ -112,9 +93,9 @@ az eventgrid event-subscription create \
 Im folgenden Beispiel wird ein Event Grid-Thema abonniert und das Event Grid-Schema verwendet. Verwenden Sie für PowerShell Folgendes:
 
 ```azurepowershell-interactive
-$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
+$topicid = (Get-AzEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName eventsub1 `
   -EndpointType webhook `
@@ -125,7 +106,7 @@ New-AzureRmEventGridSubscription `
 Das nächste Beispiel verwendet das Eingabeschema des Ereignisses:
 
 ```azurepowershell-interactive
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName eventsub2 `
   -EndpointType webhook `
@@ -151,8 +132,8 @@ curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 Verwenden Sie für PowerShell Folgendes:
 
 ```azurepowershell-interactive
-$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
-$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName myResourceGroup -Name demotopic
+$endpoint = (Get-AzEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
+$keys = Get-AzEventGridTopicKey -ResourceGroupName myResourceGroup -Name demotopic
 
 $htbody = @{
     myEventTypeField="Created"

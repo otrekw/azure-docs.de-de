@@ -1,23 +1,25 @@
 ---
-title: Grundlegendes zu Azure Data Factory-Preisen anhand von Beispielen | Microsoft-Dokumentation
+title: Grundlegendes zu Azure Data Factory-Preisen anhand von Beispielen
 description: In diesem Artikel wird das Preismodell für Azure Data Factory mit ausführlichen Beispielen veranschaulicht.
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/25/2018
-ms.openlocfilehash: f08dea90e7700082b6eeb708b576451060f81255
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/14/2020
+ms.openlocfilehash: cea8ae07585f09c644f0ef6e1e6142998ddc7f08
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140940"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497502"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Grundlegendes zu Azure Data Factory-Preisen anhand von Beispielen
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In diesem Artikel wird das Preismodell für Azure Data Factory mit ausführlichen Beispielen veranschaulicht.
 
@@ -36,7 +38,7 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 
 3. Einen Zeitplantrigger, der die Pipeline einmal pro Stunde ausführt.
 
-   ![Szenario1](media/pricing-concepts/scenario1.png)
+   ![Diagramm einer Pipeline mit einem Zeitplantrigger. In der Pipeline fließt die Kopieraktivität in ein Eingabedataset, das zu einem verknüpften AWS-S3-Dienst fließt. Außerdem fließt die Kopieraktivität auch in ein Ausgabedataset, das zu einem verknüpften Azure Storage-Dienst fließt.](media/pricing-concepts/scenario1.png)
 
 | **Vorgänge** | **Typen und Einheiten** |
 | --- | --- |
@@ -46,7 +48,7 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 | Abrufen der Pipeline | 1 Lese-/Schreibzugriffentität |
 | Ausführen der Pipeline | 2 Aktivitätsausführungen (1 für den Trigger, 1 für die Aktivität) |
 | Annahme für Kopieren der Daten: Ausführungszeit = 10 Minuten | 10 \* 4 Azure Integration Runtime (Standard-DIU-Einstellung = 4) Weitere Informationen zu Datenintegrationseinheiten und Optimieren der Kopierleistung finden Sie in [diesem Artikel](copy-activity-performance.md) |
-| Annahme für Überwachung der Pipeline: Nur 1 Ausführung ist aufgetreten | 2 wiederholte Überwachungsausführungsaufzeichnungen (1 für die Pipelineausführung, 1 für die Aktivitätsausführung) |
+| Annahme für Überwachung der Pipeline: Nur 1 Ausführung ist aufgetreten | 2 abgerufene Überwachungsausführungsaufzeichnungen (1 für Pipelineausführung, 1 für Aktivitätsausführung) |
 
 **Preis für gesamtes Szenario: 0,16811 US-$**
 
@@ -67,7 +69,7 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 2. Eine Azure Databricks-Aktivität für die Datentransformation.
 3. Ein Zeitplantrigger, um die Pipeline einmal pro Stunde auszuführen.
 
-![Szenario2](media/pricing-concepts/scenario2.png)
+![Diagramm einer Pipeline mit einem Zeitplantrigger. In der Pipeline fließt die Kopieraktivität in ein Eingabedataset, ein Ausgabedataset und eine Databricks-Aktivität, die in Azure Databricks ausgeführt wird. Das Eingabedataset fließt in einen verknüpften AWS-S3-Dienst. Das Ausgabedataset fließt in einen verknüpften Azure Storage-Dienst.](media/pricing-concepts/scenario2.png)
 
 | **Vorgänge** | **Typen und Einheiten** |
 | --- | --- |
@@ -77,7 +79,7 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 | Abrufen der Pipeline | 1 Lese-/Schreibzugriffentität |
 | Ausführen der Pipeline | 3 Aktivitätsausführungen (1 für den Trigger, 2 für die Aktivität) |
 | Annahme für Kopieren der Daten: Ausführungszeit = 10 Minuten | 10 \* 4 Azure Integration Runtime (Standard-DIU-Einstellung = 4) Weitere Informationen zu Datenintegrationseinheiten und Optimieren der Kopierleistung finden Sie in [diesem Artikel](copy-activity-performance.md) |
-| Annahme für Überwachung der Pipeline: Nur 1 Ausführung ist aufgetreten | 3 wiederholte Überwachungsausführungsaufzeichnungen (1 für die Pipelineausführung, 2 für die Aktivitätsausführung) |
+| Annahme für Überwachung der Pipeline: Nur 1 Ausführung ist aufgetreten | 3 abgerufene Überwachungsausführungsaufzeichnungen (1 für Pipelineausführung, 2 für Aktivitätsausführung) |
 | Annahme für Ausführung der Databricks-Aktivität: Ausführungszeit = 10 Minuten | 10 Minuten Ausführung der externen Pipelineaktivität |
 
 **Preis für gesamtes Szenario: 0,16916 US-$**
@@ -101,7 +103,7 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 3. Eine Azure Databricks-Aktivität für die Datentransformation.
 4. Ein Zeitplantrigger, um die Pipeline einmal pro Stunde auszuführen.
 
-![Szenario3](media/pricing-concepts/scenario3.png)
+![Diagramm einer Pipeline mit einem Zeitplantrigger. In der Pipeline fließt die Kopieraktivität in ein Eingabedataset, ein Ausgabedataset und eine Suchaktivität, die in eine Databricks-Aktivität fließt, die in Azure Databricks ausgeführt wird. Das Eingabedataset fließt in einen verknüpften AWS-S3-Dienst. Das Ausgabedataset fließt in einen verknüpften Azure Storage-Dienst.](media/pricing-concepts/scenario3.png)
 
 | **Vorgänge** | **Typen und Einheiten** |
 | --- | --- |
@@ -111,7 +113,7 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 | Abrufen der Pipeline | 1 Lese-/Schreibzugriffentität |
 | Ausführen der Pipeline | 4 Aktivitätsausführungen (1 für den Trigger, 3 für die Aktivität) |
 | Annahme für Kopieren der Daten: Ausführungszeit = 10 Minuten | 10 \* 4 Azure Integration Runtime (Standard-DIU-Einstellung = 4) Weitere Informationen zu Datenintegrationseinheiten und Optimieren der Kopierleistung finden Sie in [diesem Artikel](copy-activity-performance.md) |
-| Annahme für Überwachung der Pipeline: Nur 1 Ausführung ist aufgetreten | 4 wiederholte Überwachungsausführungsaufzeichnungen (1 für Pipelineausführung, 3 für Aktivitätsausführung) |
+| Annahme für Überwachung der Pipeline: Nur 1 Ausführung ist aufgetreten | 4 abgerufene Überwachungsausführungsaufzeichnungen (1 für Pipelineausführung, 3 für Aktivitätsausführung) |
 | Annahme für Ausführung der Suchaktivität: Ausführungszeit = 1 Minute | 1 Minute Ausführung der Pipelineaktivität |
 | Annahme für Ausführung der Databricks-Aktivität: Ausführungszeit = 10 Minuten | 10 Minuten Ausführung der externen Pipelineaktivität |
 
@@ -126,15 +128,19 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
   - Pipelineaktivität = 0,00003 US-$ (anteilig für die Ausführungszeit von 1 Minute. 0,002 US-$/Stunde auf Azure Integration Runtime)
   - Externe Pipelineaktivität = 0,000041 US-$ (anteilig für die Ausführungszeit von 10 Minuten. 0,00025 US-$/Stunde auf Azure Integration Runtime)
 
-## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>Verwenden des Debuggens für Mapping Data Flow für einen normalen Arbeitstag (Vorschaupreise)
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Verwenden der Zuordnungsdatenfluss-Debugfunktion für einen normalen Arbeitstag
 
-Als Dateningenieur sind Sie täglich für das Entwerfen, Erstellen und Testen von Mapping Data Flows verantwortlich. Sie melden sich morgens in der ADF-Oberfläche an und aktivieren den Debugmodus für Datenflüsse. Die Standardgültigkeitsdauer (TTL) für Debugsitzungen ist 60 Minuten. Sie arbeiten den ganzen Tag 10 Stunden lang, sodass Ihre Debugsitzung nie abläuft. Daher fallen für diesen Tag folgende Gebühren an:
+Als Dateningenieur ist Sam täglich für das Entwerfen, Erstellen und Testen von Zuordnungsdatenflüssen verantwortlich. Sam melden sich morgens in der ADF-Benutzeroberfläche an und aktiviert den Debugmodus für Datenflüsse. Die Standardgültigkeitsdauer (TTL) für Debugsitzungen ist 60 Minuten. Sam arbeitet den ganzen Tag 8 Stunden lang, sodass die Debugsitzung nie abläuft. Daher fallen für diesen Tag folgende Gebühren für Sam an:
 
-**10 (Stunden) X 8 (Kerne) x 0,112 US-$ = 8,96 US-$**
+**8 (Stunden) x 8 (computeoptimierte Kerne) x 0,193 US-$ = 12,35 US-$**
 
-## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>Transformieren von Daten im Blob-Speicher Mapping Data Flows (Vorschaupreise)
+Gleichzeitig meldet sich Chris, ein anderer Datenengineer, ebenfalls bei der Browserbenutzeroberfläche von ADF an, um Datenprofile zu erstellen und an ETL-Entwürfen zu arbeiten. Chris arbeitet nicht wie Sam den ganzen Tag in ADF. Chris muss lediglich den Datenflussdebugger für eine Stunde innerhalb desselben Zeitraums und an demselben Tag wie Sam oben verwenden. Diese Gebühren fallen bei Chris für die Debugnutzung an:
 
-In diesem Szenario möchten Sie Daten in einem Blob-Speicher visuell in ADF Mapping Data Flows einem stundenweise ausgeführten Zeitplan transformieren.
+**1 (Stunde) × 8 (universelle Kerne) × 0,274 USD = 2,19 USD**
+
+## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Transformieren von Daten im Blobspeicher mit Zuordnungsdatenflüssen
+
+In diesem Szenario möchten Sie stündlich Daten in einem Blob-Speicher visuell in ADF Mapping Data Flows transformieren.
 
 Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Elementen erstellen:
 
@@ -153,17 +159,57 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 | Erstellen der Pipeline | 3 Lese-/Schreibzugriffentitäten (1 für Pipelineerstellung, 2 für Datasetverweise) |
 | Abrufen der Pipeline | 1 Lese-/Schreibzugriffentität |
 | Ausführen der Pipeline | 2 Aktivitätsausführungen (1 für den Trigger, 1 für die Aktivität) |
-| Data Flow-Annahmen: Ausführungszeit = 10 Minuten + 10 Minuten TTL | 10 \* 8 allgemeine Computekerne mit einem TTL-Wert von 10 |
-| Annahme für Überwachung der Pipeline: Nur 1 Ausführung ist aufgetreten | 2 wiederholte Überwachungsausführungsaufzeichnungen (1 für die Pipelineausführung, 1 für die Aktivitätsausführung) |
+| Data Flow-Annahmen: Ausführungszeit = 10 Minuten + 10 Minuten TTL | 10 \* 16 allgemeine Computekerne mit einer TTL von 10 |
+| Annahme für Überwachung der Pipeline: Nur 1 Ausführung ist aufgetreten | 2 abgerufene Überwachungsausführungsaufzeichnungen (1 für Pipelineausführung, 1 für Aktivitätsausführung) |
 
-**Preis für gesamtes Szenario: 0,3011 US-$**
+**Preis für gesamtes Szenario: 1,4631 US-$**
 
 - Data Factory-Vorgänge = **0,0001 US-$**
   - Lesen/Schreiben = 10\*00001 = 0,0001 US-$ [1 R/W = 0,50 US-$/50.000 = 0,00001]
   - Überwachung = 2\*000005 = 0,00001 US-$ [1 Überwachung = 0,25 US-$/50.000 = 0,000005]
-- Pipelineorchestrierung &amp; -ausführung = **0,301 US-$**
+- Pipelineorchestrierung &amp; -ausführung = **1,463 US-$**
   - Aktivitätsausführungen = 001\*2 = 0,002 [1 Ausführung = 1 US-$/1.000 = 0,001]
-  - Data Flow-Aktivitäten = 0,299 US-$ anteilig für 20 Minuten (10 Minuten Ausführungszeit + 10 Minuten TTL). 0,112 US-$ pro Stunde für die Azure Integration Runtime mit 8 allgemeinen Computekernen
+  - Datenflussaktivitäten = 1,461 US-$ anteilig für 20 Minuten (10 Minuten Ausführungszeit + 10 Minuten TTL). 0,274 US-$ pro Stunde für die Azure Integration Runtime mit 16 allgemeinen Computekernen
+
+## <a name="data-integration-in-azure-data-factory-managed-vnet"></a>Datenintegration in einem verwalteten Azure Data Factory-VNET
+In diesem Szenario möchten Sie die ursprünglichen Dateien in Azure Blob Storage löschen und Daten aus Azure SQL-Datenbank in Azure Blob Storage kopieren. Diese Ausführung erfolgt zweimal für unterschiedliche Pipelines. Die Ausführungszeit dieser beiden Pipelines überschneidet sich.
+![Szenario 4:](media/pricing-concepts/scenario-4.png) Um dieses Szenario zu realisieren, müssen Sie zwei Pipelines mit folgenden Elementen erstellen:
+  - Eine Pipelineaktivität – Löschaktivität.
+  - Eine Kopieraktivität mit einem Eingabedataset für die aus Azure Blob Storage zu kopierenden Daten.
+  - Ein Ausgabedataset für die Daten in Azure SQL-Datenbank.
+  - Einen Zeitplantrigger zum Ausführen der Pipeline.
+
+
+| **Vorgänge** | **Typen und Einheiten** |
+| --- | --- |
+| Erstellen eines verknüpften Diensts | 4 Lese-/Schreibzugriffentitäten |
+| Erstellen von Datasets | 8 Lese-/Schreibzugriffentitäten (4 für Dataseterstellung, 4 für Verweise auf verknüpfte Dienste) |
+| Erstellen der Pipeline | 6 Lese-/Schreibzugriffentitäten (2 für Pipelineerstellung, 4 für Datasetverweise) |
+| Abrufen der Pipeline | 2 Lese-/Schreibzugriffentitäten |
+| Ausführen der Pipeline | 6 Aktivitätsausführungen (2 für Triggerausführung, 4 für die Aktivität) |
+| Ausführen der Löschaktivität: jede Ausführungszeit = 5 min. Die Ausführung der Löschaktivität in der ersten Pipeline liegt zwischen 10:00 Uhr UTC und 10:05 Uhr UTC. Die Ausführung der Löschaktivität in der zweiten Pipeline liegt zwischen 10:02 Uhr UTC und 10:07 Uhr UTC.|Insgesamt eine 7-minütige Ausführung der Pipelineaktivitäten im verwalteten VNET. Die Pipelineaktivität unterstützt eine Parallelität von bis zu 50 im verwalteten VNET. |
+| Annahme für die Kopieraktivität: jede Ausführungszeit = 10 min. Die Ausführung der Kopieraktivität in der ersten Pipeline liegt zwischen 10:06 Uhr UTC und 10:15 Uhr UTC. Die Ausführung der Löschaktivität in der zweiten Pipeline liegt zwischen 10:08 Uhr UTC und 10:17 Uhr UTC. | 10 × 4 Azure Integration Runtime (Standard-DIU-Einstellung = 4) Weitere Informationen zu Datenintegrationseinheiten und Optimieren der Kopierleistung finden Sie in [diesem Artikel](copy-activity-performance.md). |
+| Annahme für Überwachung der Pipeline: Nur 2 Ausführungen aufgetreten | 6 abgerufene Überwachungsausführungsaufzeichnungen (2 für Pipelineausführung, 4 für Aktivitätsausführung) |
+
+
+**Preis für gesamtes Szenario: 0,45523 USD**
+
+- Data Factory-Vorgänge = 0,00023 USD
+  - Lesen/Schreiben = 20 × 0,00001 = 0,0002 USD [1 R/W = 0,50 USD/50.000 = 0,00001]
+  - Überwachung = 6 × 0,000005 = 0,00003 USD [1 Überwachung = 0,25 USD/50.000 = 0,000005]
+- Pipelineorchestrierung und -ausführung = 0,455 USD
+  - Aktivitätsausführungen = 0,001 × 6 = 0,006 [1 Ausführung = 1 USD/1.000 = 0,001]
+  - Datenverschiebungsaktivitäten = 0,333 USD (anteilig für die Ausführungszeit von 10 Minuten. 0,25 US-$/Stunde auf Azure Integration Runtime)
+  - Pipelineaktivität = 0,116 USD (anteilig für die Ausführungszeit von 7 Minuten. 1 USD/Stunde auf Azure Integration Runtime)
+
+> [!NOTE]
+> Diese Preise dienen nur als Beispiel.
+
+**Häufig gestellte Fragen**
+
+F: Können diese Aktivitäten gleichzeitig ausgeführt werden, wenn Sie mehr als 50 Pipelineaktivitäten ausführen möchten?
+
+A: Es sind höchstens 50 gleichzeitige Pipelineaktivitäten zulässig.  Die 51. Pipelineaktivität wird in die Warteschlange eingereiht, bis ein Slot frei wird. Das gilt auch für externe Aktivitäten. Es sind höchstens 800 gleichzeitige externe Pipelineaktivitäten zulässig.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

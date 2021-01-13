@@ -4,25 +4,25 @@ description: Häufig gestellte Fragen zur Self-Service-Kennwortzurücksetzung in
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: how-to
+ms.date: 07/20/2020
+ms.author: justinha
+author: justinha
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4001f3c88b676a2786159946a8981823e18ea5f6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 0874f6aeb74b028e92e10d972757cc5971735e39
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274412"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744311"
 ---
-# <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
+# <a name="self-service-password-reset-frequently-asked-questions"></a>Häufig gestellte Fragen zur Self-Service-Kennwortzurücksetzung
 
-Im Folgenden werden einige häufig gestellte Fragen (FAQ) rund um die Kennwortzurücksetzung aufgeführt.
+Im Folgenden sind einige häufig gestellte Fragen (FAQ) rund um die Self-Service-Kennwortzurücksetzung aufgeführt.
 
-Wenn Sie eine allgemeine Frage zu Azure Active Directory (Azure AD) und zur Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) haben, die hier nicht beantwortet wird, können Sie die Community in den [Azure AD-Foren](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD) um Unterstützung bitten. Zu den Mitgliedern der Community gehören Techniker, Produktmanager MVPs und andere IT-Experten.
+Wenn Sie eine allgemeine Frage zu Azure Active Directory (Azure AD) und zur Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) haben, die hier nicht beantwortet wird, können Sie die Community auf der [Microsoft-Frageseite „Q&A“ für Azure Active Directory](/answers/topics/azure-active-directory.html) um Unterstützung bitten. Zu den Mitgliedern der Community gehören Techniker, Produktmanager MVPs und andere IT-Experten.
 
 Diese FAQ sind in folgende Abschnitte unterteilt:
 
@@ -38,10 +38,10 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 
   > **A:** Ja. Wenn die Kennwortzurücksetzung aktiviert ist und die Benutzer lizenziert sind, können diese das Kennwortregistrierungsportal (https://aka.ms/ssprsetup) öffnen und ihre Authentifizierungsdaten registrieren. Benutzer können sich auch über den Zugriffsbereich (https://myapps.microsoft.com) registrieren. Bei der Registrierung über den Zugriffsbereich müssen die Benutzer ihr Profilbild auswählen. Anschließend wählen sie **Profil** und dann die Option **Für das Zurücksetzen des Kennworts registrieren** aus.
   >
-  >
+  > Wenn Sie die [kombinierte Registrierung](concept-registration-mfa-sspr-combined.md) aktivieren, können sich Benutzer gleichzeitig für SSPR und Azure AD Multi-Factor Authentication registrieren.
 * **F:  Wenn ich Kennwortzurücksetzung für eine Gruppe aktiviere und mich anschließend entscheide, sie für alle zu aktivieren, müssen sich meine Benutzer dann erneut registrieren?**
 
-  > **A:**  Nein. Benutzer mit aufgefüllten Authentifizierungsdaten müssen sich nicht erneut registrieren.
+  > **A:** Nein. Benutzer mit aufgefüllten Authentifizierungsdaten müssen sich nicht erneut registrieren.
   >
   >
 * **F:  Kann ich im Namen meiner Benutzer Daten zur Kennwortzurücksetzung definieren?**
@@ -61,7 +61,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Müssen meine Benutzer registriert werden, damit sie die Kennwortzurücksetzung verwenden können?**
 
-  > **A:**  Nein. Wenn Sie genügend Authentifizierungsinformationen in ihrem Auftrag definieren, müssen Benutzer sich nicht registrieren. Das Zurücksetzen des Kennworts funktioniert, solange Sie in den entsprechenden Feldern im Verzeichnis ordnungsgemäß formatierte Daten gespeichert haben.
+  > **A:** Nein. Wenn Sie genügend Authentifizierungsinformationen in ihrem Auftrag definieren, müssen Benutzer sich nicht registrieren. Das Zurücksetzen des Kennworts funktioniert, solange Sie in den entsprechenden Feldern im Verzeichnis ordnungsgemäß formatierte Daten gespeichert haben.
   >
   >
 * **F:  Kann ich die Felder „Telefon für Authentifizierung“, „E-Mail-Adresse zur Authentifizierung“ oder „Alternatives Telefon für Authentifizierung“ im Namen meiner Benutzer synchronisieren oder festlegen?**
@@ -80,7 +80,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
   >
 
-## <a name="password-reset"></a>Zurücksetzen des Kennworts
+## <a name="password-reset"></a>Zurücksetzen von Kennwörtern
 
 * **F:  Verhindern Sie, dass Benutzer in kurzer Zeit mehrfach versuchen, ein Kennwort zurückzusetzen?**
 
@@ -104,7 +104,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   > * Überprüfen Sie, ob die Authentifizierungsdaten im Verzeichnis richtig formatiert sind, z.B. „+1 4255551234“ oder *user\@contoso.com*. 
 * **F:  Welche Sprachen werden von der Kennwortzurücksetzung unterstützt?**
 
-  > **A:** Die Benutzeroberfläche der Kennwortzurücksetzung, die SMS-Nachrichten und die Sprachanrufe wurden in dieselben Sprachen lokalisiert, die in Office 365 unterstützt werden.
+  > **A:** Die Benutzeroberfläche für die Kennwortzurücksetzung, SMS-Nachrichten und Sprachanrufe wurden in dieselben Sprachen lokalisiert, die in Microsoft 365 unterstützt werden.
   >
   >
 * **F:  Welche Teile der Oberfläche zur Kennwortzurücksetzung werden angepasst, wenn ich die organisationsspezifischen Brandingelemente auf der Registerkarte „Konfigurieren“ für mein Verzeichnis festlege?**
@@ -114,7 +114,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Wie informiere ich meine Benutzer, wo sie ihre Kennwörter zurücksetzen können?**
 
-  > **A:** Nutzen Sie die Vorschläge in unserem [Artikel zur SSPR-Bereitstellung](howto-sspr-deployment.md#communications-plan).
+  > **A:** Nutzen Sie die Vorschläge in unserem [Artikel zur SSPR-Bereitstellung](howto-sspr-deployment.md#plan-communications).
   >
   >
 * **F:  Kann ich diese Seite von einem mobilen Gerät aus verwenden?**
@@ -159,7 +159,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Kann ein Benutzer sich für dieselbe Sicherheitsfrage mehrmals registrieren?**
 
-  > **A:**  Nein. Sobald ein Benutzer sich für eine bestimmte Frage registriert, kann er sich kein zweites Mal für dieselbe Frage registrieren.
+  > **A:** Nein. Sobald ein Benutzer sich für eine bestimmte Frage registriert, kann er sich kein zweites Mal für dieselbe Frage registrieren.
   >
   >
 * **F:  Ist es möglich, eine Mindestanzahl von Sicherheitsfragen für die Registrierung und Zurücksetzung festzulegen?**
@@ -197,7 +197,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Können meine Benutzer im Office-Portal benachrichtigt werden, wenn ihr lokales Kennwort abläuft?**
 
-  > **A:** Ja, das ist möglich, wenn Sie die Active Directory-Verbunddienste (AD FS) verwenden. Wenn Sie AD FS verwenden, befolgen Sie die Anweisungen im Artikel [Senden von Kennwortrichtlinienansprüchen mit AD FS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396). Wenn Sie die Kennworthashsynchronisierung verwenden, ist dies derzeit nicht möglich. Da wir keine Kennwortrichtlinien aus lokalen Verzeichnissen synchronisieren, können wir auch keine Ablaufbenachrichtigungen in Cloudumgebungen veröffentlichen. In beiden Fällen können Sie [Benutzer, deren Kennwörter demnächst ablaufen, auch über PowerShell benachrichtigen](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
+  > **A:** Ja, das ist möglich, wenn Sie die Active Directory-Verbunddienste (AD FS) verwenden. Wenn Sie AD FS verwenden, befolgen Sie die Anweisungen im Artikel [Senden von Kennwortrichtlinienansprüchen mit AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396). Wenn Sie die Kennworthashsynchronisierung verwenden, ist dies derzeit nicht möglich. Da wir keine Kennwortrichtlinien aus lokalen Verzeichnissen synchronisieren, können wir auch keine Ablaufbenachrichtigungen in Cloudumgebungen veröffentlichen. In beiden Fällen können Sie [Benutzer, deren Kennwörter demnächst ablaufen, auch über PowerShell benachrichtigen](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
   >
   >
 * **F:  Kann ich das Ändern von Kennwörtern durch Benutzer blockieren?**
@@ -235,7 +235,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Gibt es eine API, um auf die Daten der Kennwortzurücksetzung oder des Registrierens für die Kennwortzurücksetzung zuzugreifen?**
 
-  > **A:** Ja. Informationen zum Zugreifen auf den Berichtsdatenstrom für die Kennwortzurücksetzung finden Sie unter [Informationen zum programmgesteuerten Zugreifen auf die Berichterstellungsereignisse zur Kennwortzurücksetzung](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
+  > **A:** Ja. Informationen dazu, wie Sie auf die Berichtsdaten zur Kennwortzurücksetzung zugreifen können, finden Sie in der [Referenz zur Azure Log Analytics-REST-API](/rest/api/loganalytics/).
   >
   >
 
@@ -243,7 +243,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 
 * **F:  Wie funktioniert das Kennwortrückschreiben im Detail?**
 
-  > **A:** Im Artikel [Funktionsweise des Kennwortrückschreibens](howto-sspr-writeback.md) wird erläutert, was geschieht, wenn Sie das Kennwortrückschreiben aktivieren, und wie Daten durch das System wieder in Ihre lokale Umgebung übertragen werden.
+  > **A:** Im Artikel [Funktionsweise des Kennwortrückschreibens](./tutorial-enable-sspr-writeback.md) wird erläutert, was geschieht, wenn Sie das Kennwortrückschreiben aktivieren, und wie Daten durch das System wieder in Ihre lokale Umgebung übertragen werden.
   >
   >
 * **F:  Wie lange dauert es, bis das Kennwortrückschreiben funktioniert? Gibt es eine Synchronisierungsverzögerung wie bei der Kennworthashsynchronisierung?**
@@ -263,7 +263,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Für welche Arten von Konten funktioniert das Kennwortrückschreiben?**
 
-  > **A:** Das Kennwortrückschreiben kann für Benutzerkonten verwendet werden, die aus dem lokalen Active Directory mit Azure AD synchronisiert werden. Dies schließt Verbundbenutzer, Benutzer mit Kennworthashsynchronisierung und Benutzer mit Pass-Through-Authentifizierung ein.
+  > **A:** Das Kennwortrückschreiben kann für Benutzerkonten verwendet werden, die aus dem lokalen Active Directory mit Azure AD synchronisiert werden. Dies schließt Verbundbenutzer, Benutzer mit Kennworthashsynchronisierung und Benutzer mit Pass-Through-Authentifizierung ein.
   >
   >
 * **F:  Werden die Kennwortrichtlinien meiner Domäne durch die Kennwortrückschreibung durchgesetzt?**
@@ -273,7 +273,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Ist die Kennwortrückschreibung sicher?  Wie kann ich sicher sein, dass ich nicht gehackt werde?**
 
-  > **A:** Ja, das Kennwortrückschreiben ist sicher. Weitere Informationen zu den mehrere Sicherheitsstufen, die durch den Dienst zum Kennwortrückschreiben implementiert werden, finden Sie im Abschnitt [Sicherheit für das Kennwortrückschreiben](concept-sspr-writeback.md#password-writeback-security) im Artikel [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md).
+  > **A:** Ja, das Kennwortrückschreiben ist sicher. Weitere Informationen zu den mehrere Sicherheitsstufen, die durch den Dienst zum Kennwortrückschreiben implementiert werden, finden Sie im Abschnitt [Sicherheit für das Kennwortrückschreiben](concept-sspr-writeback.md#password-writeback-security) im Artikel [Übersicht über die Kennwortrückschreibung](./tutorial-enable-sspr-writeback.md).
   >
   >
 
@@ -286,7 +286,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
 * [Authentifizierungsmethoden](concept-sspr-howitworks.md#authentication-methods)
 * [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](concept-sspr-policy.md)
-* [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md)
+* [Übersicht über die Kennwortrückschreibung](./tutorial-enable-sspr-writeback.md)
 * [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](howto-sspr-reporting.md)
 * [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](concept-sspr-howitworks.md)
-* [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
+* [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](./troubleshoot-sspr.md)

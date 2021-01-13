@@ -1,18 +1,16 @@
 ---
-title: Erstellen eines Eingangscontrollers für ein internes Netzwerk in Azure Kubernetes Service (AKS)
+title: Eingangscontroller im internen Netzwerk
+titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller für ein internes privates Netzwerk in einem Azure Kubernetes Service-Cluster (AKS) installieren und konfigurieren.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
-ms.date: 05/24/2019
-ms.author: mlearned
-ms.openlocfilehash: 935b96bd553c9ae73b55086483baa0ea7c4aeaa4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/17/2020
+ms.openlocfilehash: 6c848160afc6a6a755e967dd8517e48240bc113e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615465"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685884"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Erstellen eines Eingangscontrollers für ein internes virtuelles Netzwerk in Azure Kubernetes Service (AKS)
 
@@ -20,7 +18,7 @@ Ein Eingangscontroller ist eine Softwarekomponente, die einen Reverseproxy, konf
 
 Dieser Artikel beschreibt, wie Sie den [NGINX-Eingangscontroller][nginx-ingress] in einem AKS-Cluster (Azure Kubernetes Service) bereitstellen. Der Eingangscontroller wurde für ein internes privates virtuelles Netzwerk und eine IP-Adresse konfiguriert. Externer Zugriff ist nicht zulässig. Es werden zwei Anwendungen im AKS-Cluster ausgeführt, die jeweils über eine einzelne IP-Adresse zugänglich sind.
 
-Weitere Funktionen:
+Sie können außerdem:
 
 - [Erstellen eines einfachen Eingangscontrollers mit Konnektivität mit einem externen Netzwerk][aks-ingress-basic]
 - [Aktivieren des Add-Ons für das HTTP-Anwendungsrouting][aks-http-app-routing]
@@ -29,15 +27,15 @@ Weitere Funktionen:
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In diesem Artikel wird Helm verwendet, um den NGINX-Eingangscontroller, cert-manager und eine Beispiel-Web-App zu installieren. Helm muss im AKS-Cluster initialisiert sein und ein Dienstkonto für Tiller verwenden. Weitere Informationen zum Konfigurieren und Verwenden von Helm finden Sie unter [Installieren von Anwendungen mit Helm in Azure Kubernetes Service (AKS)][use-helm].
+In diesem Artikel wird [Helm 3][helm] für die Installation des NGINX-Eingangscontrollers verwendet. Stellen Sie sicher, dass Sie die neueste Version von Helm verwenden und auf das Helm-Repository *ingress-nginx* zugreifen können. Weitere Informationen zum Konfigurieren und Verwenden von Helm finden Sie unter [Installieren von Anwendungen mit Helm in Azure Kubernetes Service (AKS)][use-helm].
 
-Für den Artikel wird außerdem mindestens Version 2.0.64 der Azure-Befehlszeilenschnittstelle benötigt. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+Für den Artikel wird außerdem mindestens Version 2.0.64 der Azure-Befehlszeilenschnittstelle benötigt. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 ## <a name="create-an-ingress-controller"></a>Erstellen eines Eingangscontrollers
 
 Standardmäßig wird ein NGINX-Eingangscontroller mit Zuweisung einer dynamischen öffentlichen IP-Adresse erstellt. Eine verbreitete Konfigurationsanforderung stellt die Verwendung eines internen privaten Netzwerks und einer IP-Adresse dar. Dieser Ansatz ermöglicht die Beschränkung des Zugriffs auf Ihre Dienste auf interne Benutzer, sodass kein externer Zugriff möglich ist.
 
-Erstellen Sie eine Datei mit dem Namen *internal-ingress.yaml* anhand der folgenden Beispielmanifestdatei. In diesem Beispiel wird *10.240.0.42* der Ressource *loadBalancerIP* zugewiesen. Geben Sie eine eigene interne IP-Adresse für die Verwendung für den Eingangscontroller an. Stellen Sie sicher, dass diese IP-Adresse nicht bereits in Ihrem virtuellen Netzwerk verwendet wird.
+Erstellen Sie eine Datei mit dem Namen *internal-ingress.yaml* anhand der folgenden Beispielmanifestdatei. In diesem Beispiel wird *10.240.0.42* der Ressource *loadBalancerIP* zugewiesen. Geben Sie eine eigene interne IP-Adresse für die Verwendung für den Eingangscontroller an. Stellen Sie sicher, dass diese IP-Adresse nicht bereits in Ihrem virtuellen Netzwerk verwendet wird. Wenn Sie außerdem ein vorhandenes virtuelles Netzwerk und Subnetz verwenden, müssen Sie Ihren AKS-Cluster mit den richtigen Berechtigungen zur Verwaltung des virtuellen Netzwerks und Subnetzes konfigurieren. Weitere Informationen finden Sie unter [Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)][aks-configure-kubenet-networking] oder [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)][aks-configure-advanced-networking].
 
 ```yaml
 controller:
@@ -49,20 +47,23 @@ controller:
 
 Nun stellen Sie das *nginx-ingress*-Diagramm mit Helm bereit. Um die im vorherigen Schritt erstellte Manifestdatei verwenden zu können, fügen Sie den Parameter `-f internal-ingress.yaml` hinzu. Für zusätzliche Redundanz werden zwei Replikate der NGINX-Eingangscontroller mit dem Parameter `--set controller.replicaCount` bereitgestellt. Um vollständig von der Ausführung von Replikaten des Eingangscontrollers zu profitieren, stellen Sie sicher, dass sich mehr als ein Knoten im AKS-Cluster befindet.
 
-Der Eingangscontroller muss ebenfalls auf einem Linux-Knoten geplant werden. Windows Server-Knoten (derzeit in der Vorschau in AKS) dürfen nicht auf dem Eingangscontroller ausgeführt werden. Ein Knotenselektor wird mit dem Parameter `--set nodeSelector` angegeben, um den Kubernetes-Scheduler anzuweisen, den NGINX-Eingangscontroller auf einem Linux-basierten Knoten auszuführen.
+Der Eingangscontroller muss ebenfalls auf einem Linux-Knoten geplant werden. Windows Server-Knoten dürfen nicht auf dem Eingangscontroller ausgeführt werden. Ein Knotenselektor wird mit dem Parameter `--set nodeSelector` angegeben, um den Kubernetes-Scheduler anzuweisen, den NGINX-Eingangscontroller auf einem Linux-basierten Knoten auszuführen.
 
 > [!TIP]
-> Im folgenden Beispiel wird der Kubernetes-Namespace *ingress-basic* für die Eingangsressourcen erstellt. Geben Sie ggf. einen Namespace für Ihre eigene Umgebung an. Wenn in Ihrem AKS-Cluster die RBAC nicht aktiviert ist, fügen Sie den Helm-Befehlen `--set rbac.create=false` hinzu.
+> Im folgenden Beispiel wird der Kubernetes-Namespace *ingress-basic* für die Eingangsressourcen erstellt. Geben Sie ggf. einen Namespace für Ihre eigene Umgebung an. Wenn in Ihrem AKS-Cluster die rollenbasierte Zugriffssteuerung (RBAC) von Kubernetes nicht aktiviert ist, fügen Sie den Helm-Befehlen `--set rbac.create=false` hinzu.
 
 > [!TIP]
-> Wenn Sie die [Beibehaltung der Clientquell-IP][client-source-ip] für Anforderungen an Container in Ihrem Cluster aktivieren möchten, fügen Sie dem Helm-Installationsbefehl `--set controller.service.externalTrafficPolicy=Local` hinzu. Die Clientquell-IP wird in der Anforderungskopfzeile unter *X-Forwarded-For* gespeichert. Bei der Verwendung eines Eingangscontrollers mit aktivierter Clientquell-IP-Beibehaltung funktioniert SSL-Pass-Through nicht.
+> Wenn Sie die [Beibehaltung der Clientquell-IP][client-source-ip] für Anforderungen an Container in Ihrem Cluster aktivieren möchten, fügen Sie dem Helm-Installationsbefehl `--set controller.service.externalTrafficPolicy=Local` hinzu. Die Clientquell-IP wird in der Anforderungskopfzeile unter *X-Forwarded-For* gespeichert. Bei der Verwendung eines Eingangscontrollers mit aktivierter Clientquell-IP-Beibehaltung funktioniert TLS-Pass-Through nicht.
 
 ```console
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
 
+# Add the ingress-nginx repository
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+
 # Use Helm to deploy an NGINX ingress controller
-helm install stable/nginx-ingress \
+helm install nginx-ingress ingress-nginx/ingress-nginx \
     --namespace ingress-basic \
     -f internal-ingress.yaml \
     --set controller.replicaCount=2 \
@@ -70,41 +71,108 @@ helm install stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Wird der Kubernetes-Lastenausgleichsdienst für den NGINX-Eingangscontroller erstellt, wird Ihre interne IP-Adresse zugewiesen, wie in der folgenden Beispielausgabe gezeigt:
+Wird der Kubernetes-Lastenausgleichsdienst für den NGINX-Eingangscontroller erstellt, wird Ihre interne IP-Adresse zugewiesen. Sie rufen die öffentliche IP-Adresse mit dem Befehl `kubectl get service` ab.
+
+```console
+kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
+```
+
+Es dauert ein paar Minuten, bis die IP-Adresse dem Dienst zugewiesen ist, wie in der folgenden Beispielausgabe gezeigt wird:
 
 ```
-$ kubectl get service -l app=nginx-ingress --namespace ingress-basic
+$ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 
-NAME                                              TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)                      AGE
-alternating-coral-nginx-ingress-controller        LoadBalancer   10.0.97.109   10.240.0.42   80:31507/TCP,443:30707/TCP   1m
-alternating-coral-nginx-ingress-default-backend   ClusterIP      10.0.134.66   <none>        80/TCP                       1m
+NAME                                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
+nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_IP     80:32486/TCP,443:30953/TCP   44s   app.kubernetes.io/component=controller,app.kubernetes.io/instance=nginx-ingress,app.kubernetes.io/name=ingress-nginx
 ```
 
 Es wurden noch keine Eingangsregeln erstellt, sodass die Standard-404-Seite des NGINX-Eingangscontrollers angezeigt wird, wenn Sie zur internen IP-Adresse navigieren. Eingangsregeln werden in den folgenden Schritten konfiguriert.
 
 ## <a name="run-demo-applications"></a>Ausführen von Demoanwendungen
 
-Um den Eingangscontroller in Aktion zu sehen, führen wir zwei Demoanwendungen im AKS-Cluster aus. In diesem Beispiel wird Helm verwendet, um mehrere Instanzen einer einfachen Hallo-Welt-Anwendung auszuführen.
+Um den Eingangscontroller in Aktion zu sehen, führen Sie zwei Demoanwendungen im AKS-Cluster aus. In diesem Beispiel verwenden Sie `kubectl apply`, um mehrere Instanzen einer einfachen *Hallo Welt*-Anwendung auszuführen.
 
-Bevor Sie Helm-Beispieldiagramme installieren können, fügen Sie das Azure-Beispielrepository wie folgt Ihrer Helm-Umgebung hinzu:
+Erstellen Sie die Datei *aks-helloworld.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
-```console
-helm repo add azure-samples https://azure-samples.github.io/helm-charts/
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld
+  template:
+    metadata:
+      labels:
+        app: aks-helloworld
+    spec:
+      containers:
+      - name: aks-helloworld
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "Welcome to Azure Kubernetes Service (AKS)"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: aks-helloworld
 ```
 
-Erstellen Sie die erste Demoanwendung aus einem Helm-Diagramm mit dem folgenden Befehl:
+Erstellen Sie die Datei *ingress-demo.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
-```console
-helm install azure-samples/aks-helloworld --namespace ingress-basic
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingress-demo
+  template:
+    metadata:
+      labels:
+        app: ingress-demo
+    spec:
+      containers:
+      - name: ingress-demo
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "AKS Ingress Demo"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-demo
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: ingress-demo
 ```
 
-Installieren Sie nun eine zweite Instanz der Demoanwendung. Geben Sie für die zweite Instanz einen neuen Titel an, sodass sich die beiden Anwendungen visuell unterscheiden. Sie geben auch einen eindeutigen Dienstnamen an:
+Führen Sie die beiden Demoanwendungen mit `kubectl apply` aus:
 
 ```console
-helm install azure-samples/aks-helloworld \
-    --namespace ingress-basic \
-    --set title="AKS Ingress Demo" \
-    --set serviceName="ingress-demo"
+kubectl apply -f aks-helloworld.yaml --namespace ingress-basic
+kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 ```
 
 ## <a name="create-an-ingress-route"></a>Erstellen einer Eingangsroute
@@ -116,7 +184,7 @@ Im folgenden Beispiel wird der Datenverkehr an die Adresse `http://10.240.0.42/`
 Erstellen Sie eine Datei mit dem Namen `hello-world-ingress.yaml`, und fügen Sie den folgenden YAML-Beispielcode ein.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -124,6 +192,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
@@ -132,14 +201,24 @@ spec:
       - backend:
           serviceName: aks-helloworld
           servicePort: 80
-        path: /(.*)
+        path: /hello-world-one(/|$)(.*)
       - backend:
           serviceName: ingress-demo
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
+      - backend:
+          serviceName: aks-helloworld
+          servicePort: 80
+        path: /(.*)
 ```
 
 Erstellen Sie die Eingangsressource mit dem Befehl `kubectl apply -f hello-world-ingress.yaml`.
+
+```console
+kubectl apply -f hello-world-ingress.yaml
+```
+
+Die folgende Beispielausgabe zeigt, wie die Eingangsressource erstellt wird.
 
 ```
 $ kubectl apply -f hello-world-ingress.yaml
@@ -170,7 +249,7 @@ curl -L http://10.240.0.42
 Die Adresse wurde ohne zusätzlichen Pfad angegeben, sodass der Eingangscontroller standardmäßig die Route */* verwendet. Die erste Demoanwendung wird zurückgegeben, wie in der folgenden verkürzten Beispielausgabe gezeigt:
 
 ```
-$ curl -L 10.240.0.42
+$ curl -L http://10.240.0.42
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -195,7 +274,7 @@ $ curl -L -k http://10.240.0.42/hello-world-two
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-In diesem Artikel wird Helm verwendet, um die Eingangskomponenten und die Beispiel-Apps zu installieren. Wenn Sie ein Helm-Diagramm bereitstellen, werden eine Reihe von Kubernetes-Ressourcen erstellt. Diese Ressourcen enthalten Pods, Bereitstellungen und Dienste. Sie können zur Bereinigung der Ressourcen entweder den gesamten Beispielnamespace oder die einzelnen Ressourcen löschen.
+In diesem Artikel wird Helm verwendet, um die Eingangskomponenten zu installieren. Wenn Sie ein Helm-Diagramm bereitstellen, werden eine Reihe von Kubernetes-Ressourcen erstellt. Diese Ressourcen enthalten Pods, Bereitstellungen und Dienste. Sie können zur Bereinigung der Ressourcen entweder den gesamten Beispielnamespace oder die einzelnen Ressourcen löschen.
 
 ### <a name="delete-the-sample-namespace-and-all-resources"></a>Löschen des Beispielnamespace und aller Ressourcen
 
@@ -205,39 +284,42 @@ Verwenden Sie den `kubectl delete`-Befehl mit dem Namespacenamen, um den gesamte
 kubectl delete namespace ingress-basic
 ```
 
-Entfernen Sie als Nächstes das Helm-Repository für die „Hallo Welt“-AKS-App:
-
-```console
-helm repo remove azure-samples
-```
-
 ### <a name="delete-resources-individually"></a>Löschen einzelner Ressourcen
 
-Mehr Kontrolle bietet eine andere Vorgehensweise, bei der Sie einzelne Ressourcen löschen. Listen Sie mit dem Befehl `helm list` die Helm-Releases auf. Suchen Sie nach Diagrammen mit den Namen *nginx-ingress* und *aks-helloworld*, wie in der folgenden Beispielausgabe gezeigt:
-
-```
-$ helm list
-
-NAME                REVISION    UPDATED                     STATUS      CHART                   APP VERSION NAMESPACE
-kissing-ferret      1           Tue Oct 16 17:13:39 2018    DEPLOYED    nginx-ingress-0.22.1    0.15.0      kube-system
-intended-lemur      1           Tue Oct 16 17:20:59 2018    DEPLOYED    aks-helloworld-0.1.0                default
-pioneering-wombat   1           Tue Oct 16 17:21:05 2018    DEPLOYED    aks-helloworld-0.1.0                default
-```
-
-Löschen Sie die Versionen mit dem Befehl `helm delete`. Im folgenden Beispiel werden die NGINX-Eingangsbereitstellung und die beiden Hallo-Welt-AKS-Beispiel-Apps gelöscht.
-
-```
-$ helm delete kissing-ferret intended-lemur pioneering-wombat
-
-release "kissing-ferret" deleted
-release "intended-lemur" deleted
-release "pioneering-wombat" deleted
-```
-
-Entfernen Sie als Nächstes das Helm-Repository für die Hallo-Welt-AKS-App:
+Mehr Kontrolle bietet eine andere Vorgehensweise, bei der Sie einzelne Ressourcen löschen. Listen Sie mit dem Befehl `helm list` die Helm-Releases auf. 
 
 ```console
-helm repo remove azure-samples
+helm list --namespace ingress-basic
+```
+
+Suchen Sie nach Diagrammen mit den Namen *nginx-ingress* und *aks-helloworld*, wie in der folgenden Beispielausgabe gezeigt:
+
+```
+$ helm list --namespace ingress-basic
+
+NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
+nginx-ingress           ingress-basic   1               2020-01-06 19:55:46.358275 -0600 CST    deployed        nginx-ingress-1.27.1    0.26.1  
+```
+
+Deinstallieren Sie die Versionen mit dem Befehl `helm uninstall`.
+
+```console
+helm uninstall nginx-ingress --namespace ingress-basic
+```
+
+Im folgenden Beispiel wird die NGINX-Eingangsbereitstellung deinstalliert.
+
+```
+$ helm uninstall nginx-ingress --namespace ingress-basic
+
+release "nginx-ingress" uninstalled
+```
+
+Entfernen Sie als nächstes die beiden Beispielanwendungen:
+
+```console
+kubectl delete -f aks-helloworld.yaml --namespace ingress-basic
+kubectl delete -f ingress-demo.yaml --namespace ingress-basic
 ```
 
 Entfernen Sie die Eingangsroute, die Datenverkehr an die Beispiel-Apps weitergeleitet hat:
@@ -259,7 +341,7 @@ In diesem Artikel werden einige externe Komponenten in AKS berücksichtigt. Weit
 - [Helm-Befehlszeilenschnittstelle][helm-cli]
 - [NGINX-Eingangscontroller][nginx-ingress]
 
-Weitere Funktionen:
+Sie können außerdem:
 
 - [Erstellen eines einfachen Eingangscontrollers mit Konnektivität mit einem externen Netzwerk][aks-ingress-basic]
 - [Aktivieren des Add-Ons für das HTTP-Anwendungsrouting][aks-http-app-routing]
@@ -267,7 +349,8 @@ Weitere Funktionen:
 - [Erstellen eines Eingangscontrollers mit einer statischen öffentlichen IP-Adresse und Konfigurieren von Let's Encrypt für das automatische Generieren von TLS-Zertifikaten][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
+[helm]: https://helm.sh/
+[helm-cli]: ./kubernetes-helm.md
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 
 <!-- LINKS - internal -->
@@ -279,3 +362,5 @@ Weitere Funktionen:
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [client-source-ip]: concepts-network.md#ingress-controllers
+[aks-configure-kubenet-networking]: configure-kubenet.md
+[aks-configure-advanced-networking]: configure-azure-cni.md

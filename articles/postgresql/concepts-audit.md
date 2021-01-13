@@ -1,36 +1,39 @@
 ---
-title: Überwachungsprotokollierung mithilfe von pgAudit in Azure Database for PostgreSQL (Einzelserver)
+title: Überwachungsprotokollierung – Azure Database for PostgreSQL (Einzelserver)
 description: Konzepte für die pgAudit-Überwachungsprotokollierung in Azure Database for PostgreSQL (Einzelserver).
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: 8b4cbe309e310ef1fc384224c952a6f04385b1dd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 01/28/2020
+ms.openlocfilehash: 615297a4bf47d80c9313f011b90d343b7ae680e3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092467"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488043"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Überwachungsprotokollierung in Azure Database for PostgreSQL (Einzelserver)
 
 Die Überwachungsprotokollierung von Datenbankaktivitäten in Azure Database for PostgreSQL (Einzelserver) ist über die PostgreSQL-Überwachungserweiterung [pgAudit](https://www.pgaudit.org/) verfügbar. pgAudit bietet eine ausführliche Sitzungs- und/oder Objektüberwachungsprotokollierung.
 
 > [!NOTE]
-> pgAudit kann nur auf universellen und arbeitsspeicheroptimierten Servern aktiviert werden.
+> pgAudit befindet sich in Azure Database for PostgreSQL in der Vorschau.
+> Die Erweiterung kann nur auf universellen und arbeitsspeicheroptimierten Servern aktiviert werden.
+
+Wenn Sie Azure-Protokolle auf Ressourcenebene für Vorgänge wie Compute- und Speicherskalierung erfassen möchten, lesen Sie den Artikel zum [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="usage-considerations"></a>Überlegungen zur Verwendung
 Standardmäßig werden pgAudit-Protokollanweisungen zusammen mit ihren regulären Protokollanweisungen mithilfe der Standardprotokollierungsfunktion von Postgres ausgegeben. In Azure Database for PostgreSQL können diese LOG-Dateien über das Azure-Portal oder die CLI herunterladen werden. Der maximale Speicherplatz für die Sammlung von Dateien beträgt 1 GB, und jede Datei ist für maximal sieben Tage verfügbar (der Standardwert ist drei Tage). Bei diesem Dienst handelt es sich um eine kurzfristige Speicheroption.
 
-Alternativ können Sie alle Protokolle so konfigurieren, dass sie an den Diagnoseprotokolldienst von Azure Monitor ausgegeben werden. Wenn Sie die Azure Monitor-Diagnoseprotokollierung aktivieren, werden Ihre Protokolle abhängig von Ihrer Wahl automatisch (im JSON-Format) an Azure Storage, Event Hubs und/oder Azure Monitor-Protokolle gesendet.
+Alternativ können Sie alle Protokolle so konfigurieren, dass sie an den Azure Monitor-Protokollspeicher für spätere Analysen in Log Analytics gesendet werden. Wenn Sie die Azure Monitor-Ressourcenprotokollierung aktivieren, werden Ihre Protokolle abhängig von Ihrer Wahl automatisch (im JSON-Format) an Azure Storage, Event Hubs und/oder Azure Monitor-Protokolle gesendet.
 
-Durch das Aktivieren von pgAudit wird ein großes Volumen von Protokollierung auf einem Server generiert, was sich auf die Leistung und den Protokollspeicher auswirkt. Wir empfehlen, dass Sie den Azure-Diagnoseprotokolldienst verwenden, der langfristigere Speicheroptionen sowie Analyse- und Benachrichtigungsfunktionen bietet. Es wird empfohlen, die Standardprotokollierung zu deaktivieren, um die Auswirkungen der zusätzlichen Protokollierung auf die Leistung zu reduzieren:
+Durch das Aktivieren von pgAudit wird ein großes Volumen von Protokollierung auf einem Server generiert, was sich auf die Leistung und den Protokollspeicher auswirkt. Es wird empfohlen, Azure Monitor-Protokolle zu verwenden, die langfristigere Speicheroptionen sowie Analyse- und Benachrichtigungsfunktionen bieten. Es wird empfohlen, die Standardprotokollierung zu deaktivieren, um die Auswirkungen der zusätzlichen Protokollierung auf die Leistung zu reduzieren:
 
    1. Legen Sie den Parameter `logging_collector` auf „OFF“ fest. 
    2. Starten Sie den Server neu, um diese Änderung zu übernehmen.
 
-Weitere Informationen zum Einrichten der Protokollierung für Azure Storage, Event Hubs oder Azure Monitor-Protokolle finden Sie im Abschnitt „Diagnoseprotokolle“ des Artikels [Serverprotokolle](concepts-server-logs.md).
+Weitere Informationen zum Einrichten der Protokollierung für Azure Storage, Event Hubs oder Azure Monitor-Protokolle finden Sie im Abschnitt „Ressourcenprotokolle“ des Artikels [Serverprotokolle](concepts-server-logs.md).
 
 ## <a name="installing-pgaudit"></a>Installieren von pgAudit
 
@@ -62,10 +65,8 @@ pgAudit ermöglicht es Ihnen, die Sitzungs- oder Objektüberwachungsprotokollier
 Nachdem Sie [pgAudit installiert haben](#installing-pgaudit), können Sie die zugehörigen Parameter so konfigurieren, dass die Protokollierung gestartet wird. Die [pgAudit-Dokumentation](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) stellt die Definition der einzelnen Parameter bereit. Testen Sie zuerst die Parameter, und vergewissern Sie sich, dass Sie das erwartete Verhalten aufweisen.
 
 > [!NOTE]
-> Wenn `pgaudit.log_client` auf „ON“ festgelegt wird, werden Protokolle an einen Clientprozess (z.B. psql) umgeleitet, anstatt in eine Datei geschrieben zu werden. Diese Einstellung sollte in der Regel deaktiviert bleiben.
-
-> [!NOTE]
-> `pgaudit.log_level` ist nur aktiviert, wenn `pgaudit.log_client` aktiviert ist. Außerdem gibt es im Azure-Portal derzeit einen Fehler bei `pgaudit.log_level`: ein Kombinationsfeld wird angezeigt, das impliziert, dass mehrere Ebenen ausgewählt werden können. Es sollte aber nur eine Ebene ausgewählt werden. 
+> Wenn `pgaudit.log_client` auf „ON“ festgelegt wird, werden Protokolle an einen Clientprozess (z.B. psql) umgeleitet, anstatt in eine Datei geschrieben zu werden. Diese Einstellung sollte in der Regel deaktiviert bleiben. <br> <br>
+> `pgaudit.log_level` ist nur aktiviert, wenn `pgaudit.log_client` aktiviert ist.
 
 > [!NOTE]
 > In Azure Database for PostgreSQL kann `pgaudit.log` nicht mit einer Minuszeichenverknüpfung („`-`“) festgelegt werden, wie in der pgAudit-Dokumentation beschrieben. Alle erforderlichen Anweisungsklassen (READ, WRITE usw.) sollten einzeln angegeben werden.
@@ -84,6 +85,22 @@ Weitere Informationen zu `log_line_prefix` finden Sie in der [PostgreSQL-Dokumen
 ### <a name="getting-started"></a>Erste Schritte
 Legen Sie zum schnellen Einstieg `pgaudit.log` auf `WRITE` fest, und öffnen Sie Ihre Protokolle, um die Ausgabe zu überprüfen. 
 
+## <a name="viewing-audit-logs"></a>Anzeigen von Überwachungsprotokollen
+Wenn Sie LOG-Dateien verwenden, sind Ihre Überwachungsprotokolle in derselben Datei enthalten wie Ihre PostgreSQL-Fehlerprotokolle. Sie können Protokolldateien aus dem Azure-[Portal](howto-configure-server-logs-in-portal.md) oder der [CLI](howto-configure-server-logs-using-cli.md) herunterladen. 
+
+Wenn Sie Azure-Ressourcenprotokollierung verwenden, hängt die Art und Weise, wie Sie auf die Protokolle zugreifen, vom gewählten Endpunkt ab. Informationen zu Azure Storage finden Sie im Artikel [Protokollspeicherkonto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Informationen zu Event Hubs finden Sie im Artikel zum [Streamen von Azure-Protokollen](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
+
+Bei Azure Monitor-Protokollen werden die Protokolle an den von Ihnen ausgewählten Arbeitsbereich gesendet. Für die Postgres-Protokolle wird der Sammlungsmodus **AzureDiagnostics** verwendet, damit sie über die Tabelle „AzureDiagnostics“ abgefragt werden können. Die Felder der Tabelle sind unten beschrieben. Weitere Informationen zu Abfragen und Warnungen finden Sie in der Übersicht über [Abfragen für Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md).
+
+Sie können diese Abfrage für den Einstieg verwenden. Sie können Warnungen basierend auf Abfragen konfigurieren.
+
+Suchen nach allen Postgres-Protokollen des letzten Tags für einen bestimmten Server
+```
+AzureDiagnostics
+| where LogicalServerName_s == "myservername"
+| where TimeGenerated > ago(1d) 
+| where Message contains "AUDIT:"
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Weitere Informationen zur Protokollierung in Azure Database for PostgreSQL](concepts-server-logs.md)

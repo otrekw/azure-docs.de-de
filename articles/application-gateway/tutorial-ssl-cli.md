@@ -1,51 +1,51 @@
 ---
-title: Erstellen eines Anwendungsgateways mit SSL-Terminierung – Azure-Befehlszeilenschnittstelle
-description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Terminierung hinzufügen.
+title: TLS-Terminierung mithilfe der CLI – Azure Application Gateway
+description: Erfahren Sie, wie Sie mithilfe der Azure CLI ein Anwendungsgateway erstellen und ein Zertifikat für die TLS-Terminierung hinzufügen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 08/01/2019
+ms.topic: how-to
+ms.date: 11/14/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: d6df504d46a829298d0fff8d69b05019c26baa75
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 24dafd63de1a37140c6a56547c4701729df1c8fb
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688127"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566553"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit SSL-Terminierung mithilfe der Azure-Befehlszeilenschnittstelle
+# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit TLS-Terminierung mithilfe der Azure CLI
 
-Sie können die Azure-Befehlszeilenschnittstelle verwenden, um ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die [SSL-Terminierung](ssl-overview.md) zu erstellen. Für Back-End-Server können Sie eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) verwenden. In diesem Beispiel enthält die Skalierungsgruppe zwei VM-Instanzen, die zum standardmäßigen Back-End-Pool des Anwendungsgateways hinzugefügt werden.
+Sie können die Azure CLI verwenden, um ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die [TLS-Terminierung](ssl-overview.md) zu erstellen. Für Back-End-Server können Sie eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/overview.md) verwenden. In diesem Beispiel enthält die Skalierungsgruppe zwei VM-Instanzen, die zum standardmäßigen Back-End-Pool des Anwendungsgateways hinzugefügt werden.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Erstellen eines selbstsignierten Zertifikats
-> * Einrichten eines Netzwerks
-> * Erstellen eines Anwendungsgateways mit dem Zertifikat
-> * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
+* Erstellen eines selbstsignierten Zertifikats
+* Einrichten eines Netzwerks
+* Erstellen eines Anwendungsgateways mit dem Zertifikat
+* Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
 
 Sie können für dieses Verfahren auch [Azure PowerShell](tutorial-ssl-powershell.md) verwenden.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+ - Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
 
 Für die Produktion sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat importieren. Für diesen Artikel erstellen Sie mit dem openssl-Befehl ein selbstsigniertes Zertifikat und eine PFX-Datei.
 
-```azurecli-interactive
+```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
 ```
 
 Geben Sie Werte ein, die für Ihr Zertifikat sinnvoll sind. Sie können die Standardwerte übernehmen.
 
-```azurecli-interactive
+```console
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 

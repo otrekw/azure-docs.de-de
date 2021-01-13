@@ -1,19 +1,19 @@
 ---
 title: 'Tutorial: Verwenden der Apache Kafka Streams-API – Azure HDInsight '
 description: 'Tutorial: Erfahren Sie, wie Sie die Apache Kafka Streams-API mit Kafka in HDInsight verwenden. Mit dieser API können Sie eine Streamverarbeitung zwischen Themen in Kafka ausführen.'
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 06/25/2019
-ms.openlocfilehash: 0639ecaa0e4ae0581a6c88e1ea9a47de870a8355
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.custom: hdinsightactive
+ms.date: 03/20/2020
+ms.openlocfilehash: 7a5982cb96891b3c0724007aa98527a07daba0fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446391"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532553"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Tutorial: Verwenden der Apache Kafka Streams-API in Azure HDInsight
 
@@ -39,7 +39,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 * Führen Sie die im Dokument [Apache Kafka Producer- und Consumer-APIs](apache-kafka-producer-consumer-api.md) beschriebenen Schritte aus. Die Schritte in diesem Dokument verwenden die Beispielanwendung und die Themen, die in diesem Tutorial erstellt werden.
 
-* [Version 8 des Java Developer Kit (JDK)](https://aka.ms/azure-jdks) oder eine vergleichbare Lösung (etwa OpenJDK).
+* [Version 8 des Java Developer Kit (JDK)](/azure/developer/java/fundamentals/java-jdk-long-term-support) oder eine vergleichbare Lösung (etwa OpenJDK).
 
 * Ordnungsgemäße [Installation](https://maven.apache.org/install.html) von [Apache Maven](https://maven.apache.org/download.cgi) (gemäß Apache).  Maven ist ein Projekterstellungssystem für Java-Projekte.
 
@@ -61,9 +61,9 @@ Wichtige Informationen zur `pom.xml`-Datei:
     ```xml
     <!-- Kafka client for producer/consumer operations -->
     <dependency>
-      <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka-clients</artifactId>
-      <version>${kafka.version}</version>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
     </dependency>
     ```
 
@@ -72,7 +72,7 @@ Wichtige Informationen zur `pom.xml`-Datei:
 * Plug-Ins: Maven-Plug-Ins bieten verschiedene Funktionen. In diesem Projekt werden die folgenden Plug-Ins verwendet:
 
     * `maven-compiler-plugin`: Wird verwendet, um die vom Projekt verwendete Java-Version auf 8 festzulegen. Java 8 ist für HDInsight 3.6 erforderlich.
-    * `maven-shade-plugin`: Wird zum Generieren einer Uber-JAR-Datei verwendet, die diese Anwendung sowie alle Abhängigkeiten enthält. Es wird auch zum Festlegen des Einstiegspunkts der Anwendung verwendet, damit Sie die JAR-Datei direkt ausführen können, ohne die Hauptklasse angeben zu müssen.
+    * `maven-shade-plugin`: Wird zum Generieren einer Uber-JAR-Datei verwendet, die diese Anwendung und alle Abhängigkeiten enthält. Es wird auch zum Festlegen des Einstiegspunkts der Anwendung verwendet, damit Sie die JAR-Datei direkt ausführen können, ohne die Hauptklasse angeben zu müssen.
 
 ### <a name="streamjava"></a>Stream.Java
 
@@ -159,31 +159,31 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
     sudo apt -y install jq
     ```
 
-3. Richten Sie Umgebungsvariablen ein. Ersetzen Sie `PASSWORD` und `CLUSTERNAME` durch das Kennwort für die Clusteranmeldung bzw. durch den Clusternamen, und geben Sie anschließend den folgenden Befehl ein:
+3. Richten Sie eine Kennwortvariable ein. Ersetzen Sie `PASSWORD` durch das Kennwort für die Clusteranmeldung, und geben Sie dann den folgenden Befehl ein:
 
     ```bash
     export password='PASSWORD'
-    export clusterNameA='CLUSTERNAME'
     ```
 
-4. Extrahieren Sie den Clusternamen mit korrekter Groß-/Kleinschreibung. Die tatsächliche Schreibweise des Clusternamens kann je nach Clustererstellung anders sein als erwartet. Dieser Befehl ruft den Namen mit korrekter Groß-/Kleinschreibung ab, speichert ihn in einer Variablen und zeigt anschließend den Namen mit korrekter Groß-/Kleinschreibung sowie den Namen an, den Sie zuvor angegeben haben. Geben Sie den folgenden Befehl ein:
+4. Extrahieren Sie den Clusternamen mit korrekter Groß-/Kleinschreibung. Die tatsächliche Schreibweise des Clusternamens kann je nach Clustererstellung anders sein als erwartet. Mit diesem Befehl wird die tatsächliche Schreibweise abgerufen und in einer Variable gespeichert. Geben Sie den folgenden Befehl ein:
 
     ```bash
-    export clusterName=$(curl -u admin:$password -sS -G "https://$clusterNameA.azurehdinsight.net/api/v1/clusters" \
-  	| jq -r '.items[].Clusters.cluster_name')
-    echo $clusterName, $clusterNameA
+    export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
 
-5. Um die Kafka-Brokerhosts und die Apache Zookeeper-Hosts abzurufen, verwenden Sie die folgenden Befehle. Geben Sie bei der entsprechenden Aufforderung das Kennwort des Anmeldekontos (Administrator) für den Cluster ein. Sie werden zweimal aufgefordert, das Kennwort einzugeben.
+    > [!Note]  
+    > Falls Sie diesen Vorgang außerhalb des Clusters ausführen, gilt für das Speichern des Clusternamens eine andere Vorgehensweise. Rufen Sie den Clusternamen in Kleinbuchstaben aus dem Azure-Portal ab. Ersetzen Sie dann im folgenden Befehl den Clusternamen durch `<clustername>`, und führen Sie den Befehl aus: `export clusterName='<clustername>'`.  
+
+5. Um die Kafka-Brokerhosts und die Apache Zookeeper-Hosts abzurufen, verwenden Sie die folgenden Befehle. Geben Sie bei der entsprechenden Aufforderung das Kennwort des Anmeldekontos (Administrator) für den Cluster ein.
 
     ```bash
-    export KAFKAZKHOSTS=`curl -sS -u admin:$password -G \
-    https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER \
-  	| jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`;
-    export KAFKABROKERS=`curl -sS -u admin:$password -G \
-    https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER \
-  	| jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`;
+    export KAFKAZKHOSTS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2);
+
+    export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
+
+    > [!Note]  
+    > Für diese Befehle ist Zugriff auf Ambari erforderlich. Wird Ihr Cluster durch eine NSG geschützt, führen Sie diese Befehle auf einem Computer aus, über den auf Ambari zugegriffen werden kann.
 
 6. Um die vom Streamingvorgang verwendeten Themen zu erstellen, verwenden Sie die folgenden Befehle:
 
@@ -231,23 +231,25 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
     Die `--property`-Parameter teilen dem Konsolenconsumer mit, dass der Schlüssel (Wort) zusammen mit der Anzahl (Wert) ausgegeben werden soll. Diese Parameter konfigurieren auch das Deserialisierungsprogramm, das beim Lesen dieser Werte aus Kafka verwendet werden soll.
 
     Die Ausgabe sieht in etwa wie folgender Text aus:
-   
-        dwarfs  13635
-        ago     13664
-        snow    13636
-        dwarfs  13636
-        ago     13665
-        a       13803
-        ago     13666
-        a       13804
-        ago     13667
-        ago     13668
-        jumped  13640
-        jumped  13641
-   
+
+    ```output
+    dwarfs  13635
+    ago     13664
+    snow    13636
+    dwarfs  13636
+    ago     13665
+    a       13803
+    ago     13666
+    a       13804
+    ago     13667
+    ago     13668
+    jumped  13640
+    jumped  13641
+    ```
+
     Der Parameter `--from-beginning` konfiguriert den Consumer so, dass er am Anfang der im Thema gespeicherten Datensätze beginnt. Die Anzahl erhöht sich jedes Mal, wenn ein Wort angetroffen wird, sodass das Thema mehrere Einträge für jedes Wort enthält – mit zunehmender Anzahl.
 
-4. Drücken Sie __STRG+C__, um den Producer zu beenden. Drücken Sie __STRG+C__ erneut, um die Anwendung und den Consumer zu beenden.
+4. Drücken Sie __STRG+C__ , um den Producer zu beenden. Drücken Sie __STRG+C__ erneut, um die Anwendung und den Consumer zu beenden.
 
 5. Verwenden Sie die folgenden Befehle, um die vom Streamingvorgang verwendeten Themen zu löschen:
 
@@ -264,9 +266,9 @@ Zum Bereinigen der im Rahmen dieses Tutorials erstellten Ressourcen können Sie 
 
 So entfernen Sie die Ressourcengruppe über das Azure-Portal:
 
-1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf __Ressourcengruppen__, um die Liste mit Ihren Ressourcengruppen anzuzeigen.
+1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf __Ressourcengruppen__ , um die Liste mit Ihren Ressourcengruppen anzuzeigen.
 2. Suchen Sie die zu löschende Ressourcengruppe, und klicken Sie mit der rechten Maustaste rechts neben dem Eintrag auf die Schaltfläche __Mehr__ (...).
-3. Klicken Sie auf __Ressourcengruppe löschen__, und bestätigen Sie den Vorgang.
+3. Klicken Sie auf __Ressourcengruppe löschen__ , und bestätigen Sie den Vorgang.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,19 +1,20 @@
 ---
-title: Erstellen eines Anwendungsgateways als Host für mehrere Websites – Azure-Befehlszeilenschnittstelle
+title: Hosten mehrerer Websites mithilfe der CLI
+titleSuffix: Azure Application Gateway
 description: Erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, mit dem mehrere Websites gehostet werden.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 07/31/2019
+ms.topic: how-to
+ms.date: 11/13/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: eceb380112002ef951d6d5e74998d944da01bd7a
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 350962aed89d04c5508e7b2c50e8a838cd5a7174
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688235"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566145"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways als Host für mehrere Websites mit der Azure-Befehlszeilenschnittstelle
 
@@ -21,23 +22,22 @@ Sie können mit der Azure-Befehlszeilenschnittstelle ein [Hosting mehrerer Websi
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Anwendungsgateways
-> * Erstellen von Back-End-Listenern
-> * Erstellen von Routingregeln
-> * Erstellen von VM-Skalierungsgruppen mit den Back-End-Pools
-> * Erstellen eines CNAME-Eintrags in Ihrer Domäne
+* Einrichten des Netzwerks
+* Erstellen eines Anwendungsgateways
+* Erstellen von Back-End-Listenern
+* Erstellen von Routingregeln
+* Erstellen von VM-Skalierungsgruppen mit den Back-End-Pools
+* Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-![Beispiel zum Routing für mehrere Websites](./media/tutorial-multiple-sites-cli/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Anwendungsgateway für mehrere Standorte":::
 
 Sie können für dieses Verfahren auch [Azure PowerShell](tutorial-multiple-sites-powershell.md) verwenden.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens die Azure CLI-Version 2.0.4 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+ - Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -95,7 +95,7 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress
 ```
 
-Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt ist. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
+Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
 
 - *appGatewayBackendPool*: Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
 - *appGatewayBackendHttpSettings*: Gibt an, dass zur Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.
@@ -118,9 +118,13 @@ az network application-gateway address-pool create \
   --name fabrikamPool
 ```
 
-### <a name="add-backend-listeners"></a>Hinzufügen von Back-End-Listenern
+### <a name="add-listeners"></a>Hinzufügen der Listener
 
-Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) die Back-End-Listener hinzu, die zum Weiterleiten von Datenverkehr erforderlich sind.
+Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) die Listener hinzu, die zum Weiterleiten von Datenverkehr erforderlich sind.
+
+>[!NOTE]
+> Mit der SKU für Application Gateway oder WAF v2 können Sie auch bis zu fünf Hostnamen pro Listener konfigurieren und Platzhalterzeichen im Hostnamen verwenden. Weitere Informationen finden Sie unter [Hostnamen mit Platzhalterzeichen im Listener](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
+>Um in der Azure CLI mehrere Hostnamen und Platzhalterzeichen in einem Listener zu verwenden, müssen Sie `--host-names` statt `--host-name` verwenden. Sie können bis zu fünf Hostnamen als durch Leerzeichen getrennte Werte angeben. Zum Beispiel, `--host-names "*.contoso.com *.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \

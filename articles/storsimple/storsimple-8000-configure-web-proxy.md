@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48671e7558ea1bd613d33372c96fa3c563407e81
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204248"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017218"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Konfigurieren des Webproxys für Ihr StorSimple-Gerät
 
@@ -62,7 +62,7 @@ Der Setup-Assistent führt Sie durch die einzelnen Schritte für die Webproxykon
 1. Wählen Sie im Menü der seriellen Konsole die erste Option (**Anmeldung mit Vollzugriff**) aus, und geben Sie das **Geräteadministratorkennwort** ein. Geben Sie den folgenden Befehl ein, um eine Sitzung des Setup-Assistenten zu starten:
    
     `Invoke-HcsSetupWizard`
-2. Bei erstmaliger Verwendung des Setup-Assistenten für die Geräteregistrierung müssen Sie alle erforderlichen Netzwerkeinstellungen konfigurieren, um zur Webproxykonfiguration zu gelangen. Ist Ihr Gerät bereits registriert, übernehmen Sie alle konfigurierten Netzwerkeinstellungen, bis Sie die Webproxykonfiguration erreichen. Geben Sie im Setup-Assistenten **Ja**ein, wenn Sie zum Konfigurieren der Webproxyeinstellungen aufgefordert werden.
+2. Bei erstmaliger Verwendung des Setup-Assistenten für die Geräteregistrierung müssen Sie alle erforderlichen Netzwerkeinstellungen konfigurieren, um zur Webproxykonfiguration zu gelangen. Ist Ihr Gerät bereits registriert, übernehmen Sie alle konfigurierten Netzwerkeinstellungen, bis Sie die Webproxykonfiguration erreichen. Geben Sie im Setup-Assistenten **Ja** ein, wenn Sie zum Konfigurieren der Webproxyeinstellungen aufgefordert werden.
 3. Geben Sie als **Webproxy-URL** die IP-Adresse oder den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) des Webproxyservers sowie die TCP-Portnummer ein, die das Gerät bei der Kommunikation mit der Cloud verwenden soll. Verwenden Sie das folgende Format:
    
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
@@ -154,6 +154,5 @@ Wenn die Webproxyeinstellungen nicht ordnungsgemäß konfiguriert sind, werden i
 > * Im Azure-Portal Ihres StorSimple-Geräte-Manager-Diensts werden keine Fehler für Webproxyeinstellungen angezeigt. Liegt nach Abschluss der Konfiguration ein Problem mit dem Webproxy vor, wechselt der Gerätestatus im klassischen Portal zu **Offline** .|
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum Behandeln von Problemen beim Bereitstellen Ihres Geräts oder beim Konfigurieren der Webproxyeinstellungen finden Sie unter [Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten](storsimple-troubleshoot-deployment.md).
+* Informationen zum Behandeln von Problemen beim Bereitstellen Ihres Geräts oder beim Konfigurieren der Webproxyeinstellungen finden Sie unter [Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten](./storsimple-8000-troubleshoot-deployment.md).
 * Informationen zum Verwenden des StorSimple-Geräte-Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
-

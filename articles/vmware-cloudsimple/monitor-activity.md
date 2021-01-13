@@ -1,21 +1,22 @@
 ---
-title: 'Azure-VMware-Lösung von CloudSimple: Überwachen der Aktivität in der privaten Cloud'
-description: Beschreibt die Informationen, die zur Aktivität in der Azure-VMware-Lösung durch die CloudSimple-Umgebung verfügbar sind, einschließlich Warnungen, Ereignissen, Aufgaben und Überwachung.
-author: sharaths-cs
-ms.author: b-shsury
+title: Überwachen von Aktivitäten in der privaten Cloud
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Beschreibt die Informationen, die zur Aktivität in der Azure VMware Solution by CloudSimple-Umgebung verfügbar sind, einschließlich Warnungen, Ereignissen, Aufgaben und Überwachung.
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/13/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ddb3741c987e839fafb8bc222231547988d72f01
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543764"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899302"
 ---
-# <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>Überwachen der VMware-Lösung durch CloudSimple-Aktivität
+# <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>Überwachen der VMware Solution by CloudSimple-Aktivität
 
 CloudSimple-Aktivitätsprotokolle bieten Einblicke in Vorgänge, die im CloudSimple-Portal durchgeführt werden.  Die Liste enthält Warnungen, Ereignisse, Aufgaben und Überwachung.  Verwenden Sie die Aktivitätsprotokolle, um zu bestimmen, wann welche Vorgänge ausgeführt wurden, und wer sie ausgeführt hat.  Aktivitätsprotokolle enthalten keine Lesevorgänge, die von einem Benutzer durchgeführt werden.
 
@@ -39,7 +40,7 @@ Klicken Sie auf eine Spaltenüberschrift, um die Anzeige zu sortieren.  Sie kön
 
 ## <a name="alerts"></a>Alerts
 
-Bei Warnungen handelt es sich um Benachrichtigungen über wichtige Aktivitäten in der CloudSimple-Umgebung.  Warnungen enthalten Ereignisse, die sich auf die Abrechnung oder den Benutzerzugriff auswirken.
+Bei Warnungen handelt es sich um Benachrichtigungen zu wichtigen Aktivitäten in der CloudSimple-Umgebung.  Warnungen enthalten Ereignisse, die sich auf die Abrechnung oder den Benutzerzugriff auswirken.
 
 Wenn Sie Warnungen bestätigen und aus der Liste entfernen möchten, wählen Sie mindestens eine in der Liste aus, und klicken Sie auf **Bestätigen**.
 
@@ -79,14 +80,14 @@ Die folgenden Spalten mit Informationen sind für Warnungen verfügbar. Klicken 
 
 | Column | BESCHREIBUNG |
 ------------ | ------------- |
-| ID der Aufgabe | Eindeutiger Bezeichner für die Aufgabe. |
+| Task-ID | Eindeutiger Bezeichner für die Aufgabe. |
 | Vorgang | Aktion, die die Aufgabe ausführt. |
 | Benutzer | Der Benutzer, dem die Durchführung der Aufgabe zugewiesen ist. |
 | Ressourcenname | Name, der der Ressource zugewiesen ist. |
 | Ressourcentyp | Kategorie der Ressource: Private Cloud, Cloud-Rack. |
 | Ressourcen-ID | Bezeichner der Ressource. |
 | Start | Startzeit für die Aufgabe. |
-| End | Endzeit für die Aufgabe. |
+| Ende | Endzeit für die Aufgabe. |
 | Status | Aktueller Aufgabenstatus. |
 | Verstrichene Zeit | Zeitspanne, die die Durchführung der Aufgabe (sofern durchgeführt) in Anspruch nahm bzw. (bei laufender Durchführung) bisher in Anspruch genommen hat. |
 | BESCHREIBUNG | Aufgabenbeschreibung. |

@@ -1,36 +1,59 @@
 ---
-title: SaaS Fulfillment APIs | Azure Marketplace
-description: Vorgestellt werden die Versionen der Fulfillment-APIs, mit denen Sie Ihre SaaS-Angebote in den Azure Marketplace integrieren können.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: SaaS-Fulfillment-APIs im kommerziellen Microsoft-Marketplace
+description: Hier finden Sie eine Einführung in die Fulfillment-APIs, mit denen Sie Ihre SaaS-Angebote in Microsoft AppSource und in den Azure Marketplace integrieren können.
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: evansma
-ms.openlocfilehash: 7896ed77d9dbb3358ddb1c809ca342828280f66a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/18/2020
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 2e6381afb19018822f6f37171a5ca4b3d929b42e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66259352"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88037523"
 ---
-# <a name="saas-fulfillment-apis"></a>SaaS-Fulfillment-APIs
+# <a name="saas-fulfillment-apis-in-the-microsoft-commercial-marketplace"></a>SaaS-Fulfillment-APIs im kommerziellen Microsoft-Marketplace
 
-Mit den SaaS-Fulfillment-APIs können unabhängige Softwarehersteller (ISVs) ihre SaaS-Anwendungen in den Azure Marketplace integrieren. Mit diesen APIs können ISVs für ihre Anwendungen alle Handelskanäle nutzen: direkt, über Partner (Reseller) und über den Vertrieb.  Sie sind eine Voraussetzung für die Auflistung transaktionsfähiger SaaS-Angebote im Azure Marketplace.
+Mit den SaaS-Fulfillment-APIs können Herausgeber – auch als unabhängige Softwarehersteller (Independent Software Vendors, ISVs) bezeichnet – ihre SaaS-Anwendungen in Microsoft AppSource, in Azure Marketplace und im Azure-Portal veröffentlichen und vertreiben. Mit diesen APIs können ISVs für ihre Anwendungen alle Handelskanäle nutzen: direkt, über Partner (Reseller) und über den Vertrieb.  Die Integration dieser APIs ist eine Voraussetzung für das Erstellen und Veröffentlichen transaktionsfähiger SaaS-Angebote im Partner Center.
 
-> [!WARNING]
-> Die aktuelle Version dieser API ist Version 2, die für alle neuen SaaS-Angebote verwendet werden sollte.  Version 1 der API ist veraltet und wird zur Unterstützung vorhandener Angebote noch gepflegt.
+ISVs müssen die folgenden API-Flows implementieren und ihrem SaaS-Dienstcode hinzufügen, um sowohl für ISVs als auch für Microsoft denselben Abonnementstatus aufrechtzuerhalten:
 
+* Flow „Angebotsseite“:  Microsoft benachrichtigt den Herausgeber, dass sein SaaS-Angebot von einem Kunden im Marketplace gekauft wurde.
+* Flow „Aktivierung“:  Der Herausgeber benachrichtigt Microsoft, dass aufseiten des Herausgebers ein neu erworbenes SaaS-Konto konfiguriert wurde.
+* Flow „Aktualisierung“: Änderung des erworbenen Plans und/oder der Anzahl erworbener Arbeitsplätze.
+* Flow „Aussetzen und reaktivieren“: Das erworbene SaaS-Angebot wird ausgesetzt, falls die Zahlungsmethode des Kunden nicht mehr gültig ist. Das ausgesetzte Angebot kann reaktiviert werden, wenn das Problem mit der Zahlungsmethode behoben wurde.
+* Flows „Webhook“: Microsoft benachrichtigt den Herausgeber über Änderungen und Kündigungen des SaaS-Abonnements, die der Kunde bei Microsoft veranlasst hat.
 
-## <a name="business-model-support"></a>Geschäftsmodellunterstützung
+Bei einer Kündigung des erworbenen SaaS-Abonnements ist die Integration optional, da sie vom Kunden aufseiten von Microsoft vorgenommen werden kann.
 
-Diese API unterstützt die folgenden Geschäftsmodellfunktionen für folgende Aufgaben:
+Die ordnungsgemäße Integration der SaaS-Fulfillment-APIs ist wichtig, um Folgendes zu gewährleisten:
 
-* Definieren mehrerer Pläne für ein Angebot. Diese Pläne haben unterschiedliche Funktionen und werden möglicherweise unterschiedlich berechnet.
-* Bereitstellen eines Angebots auf Website- oder Benutzer-Abrechnungsbasis.
-* Bereitstellen monatlicher und jährlicher (Vorauszahlung) Abrechnungsoptionen.
-* Bereitstellen eines privaten Preismodells für einen Kunden auf der Grundlage einer ausgehandelten Geschäftsvereinbarung.
+* Endkunden, die das SaaS-Angebot des Herausgebers erworben haben, werden ordnungsgemäß von Microsoft abgerechnet.
+* Endkunden profitieren beim Kauf, der Konfiguration, der Nutzung und der Verwaltung der im Marketplace erworbenen SaaS-Abonnements von einer reibungslosen Benutzererfahrung.
 
+Mit diesen APIs kann der Herausgeber alle Handelskanäle für seine Angebote nutzen:
+
+* direkt
+* Partner (Handelspartner, CSP)
+* Vertrieb
+
+Im Szenario für Handelspartner (CSP) erwirbt ein CSP das SaaS-Angebot im Namen des Endkunden. Es wird davon ausgegangen, dass der Kunde das SaaS-Angebot nutzt, folgende Abläufe aber in der Verantwortung des CSPs liegen:
+
+* Abrechnen des Kunden
+* Ändern von Abonnementplänen/der Anzahl erworbener Arbeitsplätze
+* Kündigen von Abonnements
+
+Es ist nicht erforderlich, dass der Herausgeber die Flows für API-Aufrufe für dieses Szenario auf andere Weise implementiert.
+
+Weitere Informationen zum CSP finden Sie unter https://partner.microsoft.com/licensing.
+
+>[!Warning]
+>Die aktuelle Version dieser API ist Version 2, die für alle neuen SaaS-Angebote verwendet werden sollte. Version 1 der API ist veraltet und wird zur Unterstützung vorhandener Angebote noch gepflegt.
+
+>[!Note]
+>Die SaaS-Fulfillment-APIs müssen ausschließlich von einem Back-End-Dienst des Herausgebers aufgerufen werden. Die direkte Integration der APIs auf der Webseite des Herausgebers wird nicht unterstützt. Es sollte nur der Authentifizierungsflow von Dienst zu Dienst verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

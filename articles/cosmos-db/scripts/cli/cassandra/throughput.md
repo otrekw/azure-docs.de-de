@@ -1,30 +1,31 @@
 ---
-title: Aktualisieren der Anforderungseinheiten pro Sekunde (RU/s) für einen Cassandra-Keyspace und eine Cassandra-Tabelle für Azure Cosmos DB
-description: Aktualisieren der Anforderungseinheiten pro Sekunde (RU/s) für einen Cassandra-Keyspace und eine Cassandra-Tabelle für Azure Cosmos DB
+title: 'Azure CLI-Skripts für Durchsatzvorgänge (RU/s): Ressourcen der Cassandra-API für Azure Cosmos DB'
+description: 'Azure CLI-Skripts für Durchsatzvorgänge (RU/s): Ressourcen der Cassandra-API für Azure Cosmos DB'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-ms.date: 9/25/2019
-ms.openlocfilehash: 3615157543d826050b8adf0e6ae59bf62ad9cb1b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.date: 10/07/2020
+ms.openlocfilehash: 1979c59af53ebeccdbd7c910a87fb4c2536fe403
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827298"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565578"
 ---
-# <a name="update-rus-for-a-cassandra-keyspace-and-table-using-azure-cli"></a>Aktualisieren der Anforderungseinheiten pro Sekunde (RU/s) für einen Cassandra-Keyspace und eine Cassandra-Tabelle mit der Azure-Befehlszeilenschnittstelle (Azure CLI)
+# <a name="throughput-rus-operations-with-azure-cli-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Durchsatzvorgänge (RU/s) mit der Azure CLI für einen Keyspace oder eine Tabelle für Azure Cosmos DB: Cassandra-API
+[!INCLUDE[appliesto-cassandra-api](../../../includes/appliesto-cassandra-api.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, ist es für dieses Thema erforderlich, die Azure CLI-Version 2.0.73 oder höher auszuführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.12.1 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="sample-script"></a>Beispielskript
 
-Dieses Skript erstellt einen Cassandra-Keyspace mit freigegebenem Durchsatz sowie eine Cassandra-Tabelle mit dediziertem Durchsatz und aktualisiert dann den Durchsatz für den Keyspace und die Tabelle.
+Dieses Skript erstellt einen Cassandra-Keyspace mit freigegebenem Durchsatz sowie eine Cassandra-Tabelle mit dediziertem Durchsatz und aktualisiert dann den Durchsatz für den Keyspace und die Tabelle. Anschließend führt das Skript die Migration vom standardmäßigen zum automatisch skalierten Durchsatz durch, und nach Abschluss der Migration wird dann der Wert des automatisch skalierten Durchsatzes gelesen.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/cassandra/throughput.sh "Update RU/s for Cassandra keyspace and table.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/cassandra/throughput.sh "Throughput operations for Cassandra keyspace and table.")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
@@ -44,8 +45,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Erstellt ein Konto für Azure Cosmos DB. |
 | [az cosmosdb cassandra keyspace create](/cli/azure/cosmosdb/cassandra/keyspace#az-cosmosdb-cassandra-keyspace-create) | Erstellt einen Azure Cosmos-Cassandra-Keyspace. |
 | [az cosmosdb cassandra table create](/cli/azure/cosmosdb/cassandra/table#az-cosmosdb-cassandra-table-create) | Erstellt eine Azure Cosmos-Cassandra-Tabelle. |
-| [az cosmosdb cassandra keyspace throughput update](/cli/azure/cosmosdb/cassandra/keyspace/throughput?view=azure-cli-latest#az-cosmosdb-cassandra-keyspace-throughput-update) | Aktualisiert die Anforderungseinheiten pro Sekunde (RU/s) für einen Azure Cosmos-Cassandra-Keyspace. |
+| [az cosmosdb cassandra keyspace throughput update](/cli/azure/cosmosdb/cassandra/keyspace/throughput#az-cosmosdb-cassandra-keyspace-throughput-update) | Aktualisiert die Anforderungseinheiten pro Sekunde (RU/s) für einen Azure Cosmos-Cassandra-Keyspace. |
 | [az cosmosdb cassandra table throughput update](/cli/azure/cosmosdb/cassandra/table/throughput#az-cosmosdb-cassandra-table-throughput-update) | Aktualisiert die Anforderungseinheiten pro Sekunde (RU/s) für eine Azure Cosmos-Cassandra-Tabelle. |
+| [az cosmosdb cassandra keyspace throughput migrate](/cli/azure/cosmosdb/cassandra/keyspace/throughput#az_cosmosdb_cassandra_keyspace_throughput_migrate) | Migriert den Durchsatz für einen Azure Cosmos-Cassandra-Keyspace. |
+| [az cosmosdb cassandra table throughput migrate](/cli/azure/cosmosdb/cassandra/table/throughput#az_cosmosdb_cassandra_table_throughput_migrate) | Migriert den Durchsatz für eine Azure Cosmos-Cassandra-Tabelle. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,58 +1,57 @@
 ---
-title: Die Qualifikation „Stimmung“ der kognitiven Suche – Azure Search
-description: Extrahieren Sie einen Positiv-Negativ-Stimmungswert aus Text in einer Azure Search-Anreicherungspipeline.
-services: search
+title: Der kognitive Skill „Stimmung“
+titleSuffix: Azure Cognitive Search
+description: Extrahieren eines Positiv-Negativ-Stimmungswerts aus Text in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 8610506b7d62542e9eb801b06dd49a5e130fa7fa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 06/17/2020
+ms.openlocfilehash: 895e22d94122539ee68bcac8ee4debce2d824ff0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265737"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88935278"
 ---
-#   <a name="sentiment-cognitive-skill"></a>Der kognitive Skill „Stimmung“
+# <a name="sentiment-cognitive-skill"></a>Der kognitive Skill „Stimmung“
 
-Der Skill **Stimmung** bewertet unstrukturierten Text anhand eines Positiv-Negativ-Kontinuums und gibt für jeden Datensatz einen numerischen Wert zwischen 0 und 1 zurück. Dabei weisen Werte nahe 1 auf eine positive Stimmung und Werte nahe 0 auf eine negative Stimmung hin. Bei dieser Qualifikation werden die Machine Learning-Modelle verwendet, die in Cognitive Services über die [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) bereitgestellt werden.
+Der Skill **Stimmung** bewertet unstrukturierten Text anhand eines Positiv-Negativ-Kontinuums und gibt für jeden Datensatz einen numerischen Wert zwischen 0 und 1 zurück. Dabei weisen Werte nahe 1 auf eine positive Stimmung und Werte nahe 0 auf eine negative Stimmung hin. Bei dieser Qualifikation werden die Machine Learning-Modelle verwendet, die in Cognitive Services über die [Textanalyse](../cognitive-services/text-analytics/overview.md) bereitgestellt werden.
 
 > [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/) angegeben.
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SentimentSkill
 
 ## <a name="data-limits"></a>Datengrenzwerte
-Die maximale Größe eines Datensatzes beträgt 5.000 Zeichen (gemessen durch [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an das Stimmungsanalysetool senden, verwenden Sie den [Skill „Text teilen“](cognitive-search-skill-textsplit.md).
+Die maximale Größe eines Datensatzes beträgt 5.000 Zeichen (gemessen durch [`String.Length`](/dotnet/api/system.string.length)). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an das Stimmungsanalysetool senden, verwenden Sie den [Skill „Text teilen“](cognitive-search-skill-textsplit.md).
 
 
 ## <a name="skill-parameters"></a>Skillparameter
 
 Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
-| Parametername |                      |
+| Parametername | BESCHREIBUNG |
 |----------------|----------------------|
-| defaultLanguageCode | (Optional) Der Sprachcode, der für Dokumente gilt, die nicht explizit eine Sprache angeben. <br/> Siehe die [vollständige Liste der unterstützten Sprachen](../cognitive-services/text-analytics/text-analytics-supported-languages.md). |
+| `defaultLanguageCode` | (Optional) Der Sprachcode, der für Dokumente gilt, die nicht explizit eine Sprache angeben. <br/> Siehe die [vollständige Liste der unterstützten Sprachen](../cognitive-services/text-analytics/language-support.md). |
 
 ## <a name="skill-inputs"></a>Skilleingaben 
 
 | Eingabename | BESCHREIBUNG |
 |--------------------|-------------|
-| text | Der zu analysierende Text|
-| languageCode  |  (Optional) Eine Zeichenfolge, die die Sprache der Datensätze angibt. Wenn dieser Parameter nicht festgelegt ist, wird der Standardwert „en“ verwendet. <br/>Siehe die [vollständige Liste der unterstützten Sprachen](../cognitive-services/text-analytics/text-analytics-supported-languages.md).|
+| `text` | Der zu analysierende Text|
+| `languageCode`    |  (Optional) Eine Zeichenfolge, die die Sprache der Datensätze angibt. Wenn dieser Parameter nicht angegeben wird, ist der Standardwert „en“. <br/>Siehe die [vollständige Liste der unterstützten Sprachen](../cognitive-services/text-analytics/language-support.md).|
 
 ## <a name="skill-outputs"></a>Skillausgaben
 
 | Ausgabename | BESCHREIBUNG |
 |--------------------|-------------|
-| Ergebnis Ihrer App | Ein Wert zwischen 0 und 1, der die Stimmung des analysierten Textes repräsentiert. Werte nahe 0 stehen für eine negative, nahe 0,5 für eine neutrale und nahe 1 für eine positive Stimmung.|
+| `score` | Ein Wert zwischen 0 und 1, der die Stimmung des analysierten Textes repräsentiert. Werte nahe 0 stehen für eine negative, nahe 0,5 für eine neutrale und nahe 1 für eine positive Stimmung.|
 
 
 ##  <a name="sample-definition"></a>Beispieldefinition
@@ -119,5 +118,5 @@ Wenn eine Sprache nicht unterstützt wird, wird eine Fehlermeldung generiert und
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Vordefinierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)

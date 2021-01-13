@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: 3b8c9c80c93430d8dc5a888742e4e4e96ba99400
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 52508a6820ce0cbbbe3a0341a99894f8b92b1645
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695325"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87831225"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Grundlegendes zu allgemeinen Fehlermeldungen bei der Verwaltung virtueller Computer in Azure
 
@@ -37,7 +37,7 @@ Auf Azure-VMs wird für Fehlerantworten das folgende JSON-Format verwendet:
     "message":"Top level error message",
     "details":[
      {
-      "code":"Inner evel error code",
+      "code":"Inner level error code",
       "message":"Inner level error message"
      }
     ]
@@ -176,7 +176,7 @@ In diesem Abschnitt sind die allgemeinen Fehlermeldungen aufgeführt, die bei de
 |  OSProvisioningClientError  |  Der für die VM angegebene Benutzername ist für diese Linux-Distribution ungültig. Fehlerdetails: {0}.  |
 |  OSProvisioningInternalError  |  Interner Fehler bei der Betriebssystembereitstellung für den virtuellen Computer „{0}“.  |
 |  OSProvisioningTimedOut  |  Betriebssystembereitstellung für virtuellen Computer „{0}“ wurde nicht in der zugewiesenen Zeit abgeschlossen. Der virtuelle Computer kann dennoch erfolgreich bereitgestellt werden. Überprüfen Sie den Bereitstellungszustand später.  |
-|  OSProvisioningTimedOut  |  Betriebssystembereitstellung für virtuellen Computer „{0}“ wurde nicht in der zugewiesenen Zeit abgeschlossen. Der virtuelle Computer kann dennoch erfolgreich bereitgestellt werden. Überprüfen Sie den Bereitstellungszustand später. Stellen Sie außerdem sicher, dass das Image ordnungsgemäß vorbereitet (generalisiert) wurde.   <ul><li>Anleitungen für Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Anleitungen für Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  Betriebssystembereitstellung für virtuellen Computer „{0}“ wurde nicht in der zugewiesenen Zeit abgeschlossen. Der virtuelle Computer kann dennoch erfolgreich bereitgestellt werden. Überprüfen Sie den Bereitstellungszustand später. Stellen Sie außerdem sicher, dass das Image ordnungsgemäß vorbereitet (generalisiert) wurde.   <ul><li>Anweisungen für [Windows]( ../windows/upload-generalized-managed.md).</li><li> Anweisungen für [Linux](../linux/capture-image.md).</li></ul>  |
 |  OSProvisioningTimedOut  |  Betriebssystembereitstellung für virtuellen Computer „{0}“ wurde nicht in der zugewiesenen Zeit abgeschlossen. Es wurde jedoch erkannt, dass der VM-Gast-Agent ausgeführt wird. Dies deutet darauf hin, dass das Gastbetriebssystem nicht ordnungsgemäß für die Verwendung als VM-Image vorbereitet wurde (mit CreateOption=FromImage). Um dieses Problem zu lösen, verwenden Sie die VHD unverändert mit CreateOption=Attach, oder bereiten Sie sie ordnungsgemäß für die Verwendung als Image vor:   <ul><li>Anleitungen für Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Anleitungen für Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  Die erforderliche VM-Größe ist aktuell am ausgewählten Speicherort nicht verfügbar.  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  Eine Ressourcenaktualisierung ist zurzeit nicht möglich, weil ein Plattformupdate ausgeführt wird. Versuchen Sie es später noch mal.  |

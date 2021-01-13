@@ -1,26 +1,20 @@
 ---
-title: 'Häufig gestellte Fragen zur Anwendungsleistung: Azure App Service | Microsoft-Dokumentation'
-description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Verfügbarkeits-, Leistungs- und Anwendungsproblemen in Azure App Service-Web-Apps.
-services: app-service\web
-documentationcenter: ''
+title: Häufig gestellte Fragen zur Anwendungsleistung
+description: Erhalten Sie Antworten auf häufig gestellte Fragen zu Verfügbarkeits-, Leistungs- und Anwendungsproblemen in Azure App Service.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9cd529424a022edfa64f9053a53cbbe9f756637e
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122068"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88958997"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Anwendungsleistung von Web-Apps in Azure
 
@@ -38,21 +32,21 @@ Mehrere Faktoren können für eine langsame App-Leistung verantwortlich sein. Au
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Wie behebe ich das Problem einer hohen CPU-Auslastung?
 
-In einigen Szenarien mit hoher CPU-Auslastung kann Ihre App tatsächlich mehr Computeressourcen benötigen. Erwägen Sie in diesem Fall eine Skalierung auf eine höhere Dienstebene, damit die Anwendung alle Ressourcen erhält, die sie benötigt. In einigen Fällen wird eine hohe CPU-Auslastung möglicherweise durch eine fehlerhafte Schleife oder einen fehlerhaften Programmierstil verursacht. Das Gewinnen von Einblicken, wodurch die gestiegene CPU-Auslastung ausgelöst wird, erfolgt in zwei Schritten. Erstellen Sie zunächst ein Speicherabbild des Prozesses, das Sie anschließend untersuchen. Weitere Informationen finden Sie unter [Capture and analyze a dump file for high CPU consumption for Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/) (Erfassen und Analysieren einer Speicherabbilddatei bei hohe CPU-Nutzung durch Web-Apps).
+In einigen Szenarien mit hoher CPU-Auslastung kann Ihre App tatsächlich mehr Computeressourcen benötigen. Erwägen Sie in diesem Fall eine Skalierung auf eine höhere Dienstebene, damit die Anwendung alle Ressourcen erhält, die sie benötigt. In einigen Fällen wird eine hohe CPU-Auslastung möglicherweise durch eine fehlerhafte Schleife oder einen fehlerhaften Programmierstil verursacht. Das Gewinnen von Einblicken, wodurch die gestiegene CPU-Auslastung ausgelöst wird, erfolgt in zwei Schritten. Erstellen Sie zunächst ein Speicherabbild des Prozesses, das Sie anschließend untersuchen. Weitere Informationen finden Sie unter [Capture and analyze a dump file for high CPU consumption for Web Apps](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app) (Erfassen und Analysieren einer Speicherabbilddatei bei hohe CPU-Nutzung durch Web-Apps).
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Wie behebe ich das Problem einer hohen Arbeitsspeicherbelegung?
 
-In einigen Szenarien mit hoher Arbeitsspeicherbelegung kann Ihre App tatsächlich mehr Computeressourcen benötigen. Erwägen Sie in diesem Fall eine Skalierung auf eine höhere Dienstebene, damit die Anwendung alle Ressourcen erhält, die sie benötigt. Mitunter kann ein Fehler im Code einen Arbeitsspeicherverlust verursachen. Ein bestimmter Programmierstil kann auch die Arbeitsspeichernutzung erhöhen. Das Gewinnen von Einblicken, wodurch die gestiegene Arbeitsspeichernutzung ausgelöst wird, erfolgt in zwei Schritten. Erstellen Sie zunächst ein Speicherabbild des Prozesses, das Sie anschließend untersuchen. Mit dem Tool Crash Diagnoser im Katalog mit den Azure-Websiteerweiterungen können Sie diese beiden Schritte effizient ausführen. Weitere Informationen finden Sie unter [Capture and analyze a dump file for intermittent high memory for Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/) (Erfassen und Analysieren einer Speicherabbilddatei bei zeitweiliger hoher Arbeitsspeichernutzung durch Web-Apps).
+In einigen Szenarien mit hoher Arbeitsspeicherbelegung kann Ihre App tatsächlich mehr Computeressourcen benötigen. Erwägen Sie in diesem Fall eine Skalierung auf eine höhere Dienstebene, damit die Anwendung alle Ressourcen erhält, die sie benötigt. Mitunter kann ein Fehler im Code einen Arbeitsspeicherverlust verursachen. Ein bestimmter Programmierstil kann auch die Arbeitsspeichernutzung erhöhen. Das Gewinnen von Einblicken, wodurch die gestiegene Arbeitsspeichernutzung ausgelöst wird, erfolgt in zwei Schritten. Erstellen Sie zunächst ein Speicherabbild des Prozesses, das Sie anschließend untersuchen. Mit dem Tool Crash Diagnoser im Katalog mit den Azure-Websiteerweiterungen können Sie diese beiden Schritte effizient ausführen. Weitere Informationen finden Sie unter [Capture and analyze a dump file for intermittent high memory for Web Apps](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app) (Erfassen und Analysieren einer Speicherabbilddatei bei zeitweiliger hoher Arbeitsspeichernutzung durch Web-Apps).
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Wie automatisiere ich App Service-Web-Apps mithilfe von PowerShell?
 
-Sie können PowerShell-Cmdlets verwenden, um App Service-Web-Apps zu verwalten und zu warten. Im Blogbeitrag [Automate web apps hosted in Azure App Service by using PowerShell](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/) (Automatisieren von Web-Apps, die in Azure App Service gehostet werden, mithilfe von PowerShell) wird beschrieben, wie Sie auf Azure Resource Manager basierende PowerShell-Skripts zum Automatisieren gängiger Aufgaben verwenden können. Der Blogbeitrag enthält außerdem Beispielcode für verschiedene Verwaltungsaufgaben für Web-Apps. Beschreibungen und Syntax für alle Cmdlets für App Service-Web-Apps-finden Sie unter [Az.Websites](/powershell/module/az.websites).
+Sie können PowerShell-Cmdlets verwenden, um App Service-Web-Apps zu verwalten und zu warten. Im Blogbeitrag [Automate web apps hosted in Azure App Service by using PowerShell](/archive/blogs/puneetgupta/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way) (Automatisieren von Web-Apps, die in Azure App Service gehostet werden, mithilfe von PowerShell) wird beschrieben, wie Sie auf Azure Resource Manager basierende PowerShell-Skripts zum Automatisieren gängiger Aufgaben verwenden können. Der Blogbeitrag enthält außerdem Beispielcode für verschiedene Verwaltungsaufgaben für Web-Apps. Beschreibungen und Syntax für alle Cmdlets für App Service-Web-Apps-finden Sie unter [Az.Websites](/powershell/module/az.websites).
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Wie zeige ich Ereignisprotokolle meiner Web-App an?
 
 So zeigen Sie die Ereignisprotokolle für Ihre Web-App an
 
-1. Melden Sie sich bei Ihrer [Kudu-Website](https://*yourwebsitename*.scm.azurewebsites.net) an.
+1. Melden Sie sich bei Ihrer **Kudu-Website** (`https://*yourwebsitename*.scm.azurewebsites.net`) an.
 2. Wählen Sie im Menü **Debug Console** > **CMD** aus.
 3. Wählen Sie den Ordner **LogFiles** aus.
 4. Zum Überprüfen von Ereignisprotokollen aktivieren Sie das Stiftsymbol neben **eventlog.xml**.
@@ -62,7 +56,7 @@ So zeigen Sie die Ereignisprotokolle für Ihre Web-App an
 
 So erfassen Sie ein Speicherabbild im Benutzermodus Ihrer Web-App
 
-1. Melden Sie sich bei Ihrer [Kudu-Website](https://*yourwebsitename*.scm.azurewebsites.net) an.
+1. Melden Sie sich bei Ihrer **Kudu-Website** (`https://*yourwebsitename*.scm.azurewebsites.net`) an.
 2. Wählen Sie das Menü **Process Explorer** aus.
 3. Klicken Sie mit der rechten Maustaste auf den Prozess **w3wp.exe** oder Ihren WebJob-Prozess.
 4. Wählen Sie **Download Memory Dump** > **Download Memory Dump** (Speicherabbild herunterladen > Vollständiges Speicherabbild) aus.
@@ -75,7 +69,7 @@ Sie haben zwei Optionen zum Anzeigen von Informationen auf Prozessebene für Ihr
     1. Öffnen Sie den **Prozess-Explorer** für die Web-App.
     2. Um die Details anzuzeigen, wählen Sie den Prozess **w3wp.exe** aus.
 *   Gehen Sie in der Kudu-Konsole so vor:
-    1. Melden Sie sich bei Ihrer [Kudu-Website](https://*yourwebsitename*.scm.azurewebsites.net) an.
+    1. Melden Sie sich bei Ihrer **Kudu-Website** (`https://*yourwebsitename*.scm.azurewebsites.net`) an.
     2. Wählen Sie das Menü **Process Explorer** aus.
     3. Wählen Sie für den Prozess **w3wp.exe** die Option **Properties** (Eigenschaften) aus.
 
@@ -87,19 +81,20 @@ Drei Bedingungen können diesen Fehler verursachen:
 * Die Web-App wurde im Portal beendet.
 * Die Web-App hat einen Kontingentgrenzwert für Ressourcen erreicht, der für einen Serviceplan des Typs „Free“ oder „Shared“ gelten kann.
 
-Um die Ursache des Fehlers zu ermitteln und das Problem zu beheben, führen Sie die Schritte unter [Web-Apps: Error 403 – This web app is stopped](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/) (Web-Apps: Fehler 403 – Diese Web-App wurde beendet) aus.
+Um die Ursache des Fehlers zu ermitteln und das Problem zu beheben, führen Sie die Schritte unter [Web-Apps: Error 403 – This web app is stopped](/archive/blogs/waws/azure-web-apps-error-403-this-web-app-is-stopped) (Web-Apps: Fehler 403 – Diese Web-App wurde beendet) aus.
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Wo kann ich mehr zu Kontingenten und Limits für verschiedene App Service-Pläne erfahren?
 
-Informationen zu Kontingenten und Limits finden Sie unter [App Service-Limits](../azure-subscription-service-limits.md#app-service-limits). 
+Informationen zu Kontingenten und Limits finden Sie unter [App Service-Limits](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits). 
 
 ## <a name="how-do-i-decrease-the-response-time-for-the-first-request-after-idle-time"></a>Wie verringere ich die Antwortzeit für die erste Anforderung nach einer Leerlaufzeit?
 
 Web-Apps werden standardmäßig entladen, wenn sie einen festgelegten Zeitraum im Leerlauf waren. Dadurch kann das System Ressourcen sparen. Der Nachteil ist, dass die Antwort auf die erste Anforderung nach Entladen der Web-App länger dauert, um der Web-App das Laden und Beginnen mit dem Senden von Antworten zu ermöglichen. In den Serviceplänen „Basic“ und „Standard“ können Sie die Einstellung **Always On** aktivieren, damit die App stets geladen bleibt. Dies verhindert nach einer Leerlaufzeit der App längere Ladezeiten. So ändern Sie die **Always On**-Einstellung
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Web-App.
-2. Wählen Sie **Anwendungseinstellungen** aus.
-3. Aktivieren Sie für **Always On** die Einstellung **Ein**.
+2. Wählen Sie **Konfiguration** aus.
+3. Wählen Sie **Allgemeine Einstellungen** aus.
+4. Aktivieren Sie für **Always On** die Einstellung **Ein**.
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>Wie schalte ich die Ablaufverfolgung für Anforderungsfehler ein?
 
@@ -172,7 +167,7 @@ WebJobs werden zur Hintergrundverarbeitung eingesetzt. Sie können in einem WebJ
 
 Ein bekanntes Problem mit einer früheren [Kestrel-Version](https://github.com/aspnet/KestrelHttpServer/issues/1182) kann möglicherweise dazu führen, dass eine ASP.NET Core 1.0-App, die in App Service gehostet wird, zeitweise nicht mehr reagiert. Möglicherweise wird auch die folgende Meldung angezeigt: „Fehler bei der angegebenen CGI-Anwendung, und der Server hat den Prozess beendet.“
 
-Dieses Problem wurde in der Kestrel-Version 1.0.2 behoben. Diese Version ist im Update für ASP.NET Core 1.0.3 enthalten. Um dieses Problem zu beheben, aktualisieren Sie Ihre App-Abhängigkeiten auf Kestrel 1.0.2. Alternativ können Sie eine der beiden Problemumgehungen nutzen, die im Blogbeitrag [ASP.NET Core 1.0 slow perf issues in App Service web apps](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites) (ASP.NET Core 1.0-Probleme aufgrund langsamer Leistung in App Service-Web-Apps) beschrieben werden.
+Dieses Problem wurde in der Kestrel-Version 1.0.2 behoben. Diese Version ist im Update für ASP.NET Core 1.0.3 enthalten. Um dieses Problem zu beheben, aktualisieren Sie Ihre App-Abhängigkeiten auf Kestrel 1.0.2. Alternativ können Sie eine der beiden Problemumgehungen nutzen, die im Blogbeitrag [ASP.NET Core 1.0 slow perf issues in App Service web apps](/archive/blogs/waws/asp-net-core-slow-perf-issues-on-azure-websites) (ASP.NET Core 1.0-Probleme aufgrund langsamer Leistung in App Service-Web-Apps) beschrieben werden.
 
 
 ## <a name="i-cant-find-my-log-files-in-the-file-structure-of-my-web-app-how-can-i-find-them"></a>Ich kann meine Protokolldateien nicht in der Dateistruktur meiner Web-App finden. Wie kann ich sie finden?
@@ -193,4 +188,4 @@ Weitere Informationen zu ausgehenden Verbindungen in Ihrer Web-App finden Sie im
 
 ## <a name="how-do-i-use-visual-studio-to-remote-debug-my-app-service-web-app"></a>Wie verwende ich Visual Studio zum Remotedebuggen meiner App Service-Web-App?
 
-Eine ausführliche exemplarische Vorgehensweise, die Ihnen zeigt, wie Sie Ihre Web-App mithilfe von Visual Studio debuggen, finden Sie unter [Remotedebuggen Ihrer App Service-Web-App](https://blogs.msdn.microsoft.com/benjaminperkins/2016/09/22/remote-debug-your-azure-app-service-web-app/).
+Eine ausführliche exemplarische Vorgehensweise, die Ihnen zeigt, wie Sie Ihre Web-App mithilfe von Visual Studio debuggen, finden Sie unter [Remotedebuggen Ihrer App Service-Web-App](/archive/blogs/benjaminperkins/remote-debug-your-azure-app-service-web-app).

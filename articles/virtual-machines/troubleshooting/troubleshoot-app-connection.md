@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: caf73ffbc18a603ace22acfbd0da490048da698a
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: dec5aeaac6f39a106899094e674864d3bd10dc02
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058115"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966337"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Beheben von Anwendungskonnektivitätsproblemen auf virtuellen Computern in Azure
 
@@ -84,7 +84,7 @@ Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie die folgenden
 
 Verwenden Sie bei Windows- und Linux-basierten virtuellen Computern den Befehl **netstat -a** , um die aktiven Überwachungsports anzuzeigen. Überprüfen Sie die Ausgabe für die erwarteten Ports, die die Anwendung überwachen soll. Starten Sie die Anwendung neu, oder konfigurieren Sie sie so, dass die erwarteten Ports nach Bedarf verwendet werden, und versuchen Sie erneut, lokal auf die Anwendung zuzugreifen.
 
-## <a id="step2"></a>Schritt 2: Zugreifen auf die Anwendung von einem anderen virtuellen Computer im gleichen virtuellen Netzwerk
+## <a name="step-2-access-application-from-another-vm-in-the-same-virtual-network"></a><a id="step2"></a>Schritt 2: Zugreifen auf die Anwendung von einem anderen virtuellen Computer im gleichen virtuellen Netzwerk
 Versuchen Sie, von einer anderen VM im gleichen virtuellen Netzwerk auf die Anwendung zuzugreifen. Verwenden Sie dazu den VM-Hostnamen oder die von Azure zugewiesene öffentliche, private oder Anbieter-IP-Adresse. Verwenden Sie für mithilfe des klassischen Bereitstellungsmodells erstellte virtuelle Computer nicht die öffentliche IP-Adresse des Clouddiensts.
 
 ![Anwendung von einer anderen VM starten](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
@@ -104,7 +104,7 @@ Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie die folgenden
 
 Verwenden Sie auf einem Windows-basierten virtuellen Computer die Windows-Firewall mit erweiterter Sicherheit, um zu bestimmen, ob die Firewallregeln den eingehenden und ausgehenden Datenverkehr der Anwendung ausschließen.
 
-## <a id="step3"></a>Schritt 3: Zugreifen auf die Anwendung von einem Computer außerhalb des virtuellen Netzwerks
+## <a name="step-3-access-application-from-outside-the-virtual-network"></a><a id="step3"></a>Schritt 3: Zugreifen auf die Anwendung von einem Computer außerhalb des virtuellen Netzwerks
 Versuchen Sie, von einem Computer, der sich nicht im gleichen Netzwerk wie der virtuelle Computer befindet, auf dem die Anwendung ausgeführt wird, auf die Anwendung zuzugreifen. Verwenden Sie ein anderes Netzwerk als der ursprüngliche Clientcomputer.
 
 ![Anwendung von einem Computer außerhalb des virtuellen Netzwerks starten](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
@@ -117,12 +117,12 @@ Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie die folgenden
   
   * Stellen Sie sicher, dass die Endpunktkonfiguration für den virtuellen Computer eingehenden Datenverkehr zulässt, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern.
   * Stellen Sie sicher, dass die Zugriffssteuerungslisten (Access Control Lists, ACLs) auf dem Endpunkt aus dem Internet eingehenden Datenverkehr nicht verhindern.
-  * Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../windows/classic/setup-endpoints.md).
+  * Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints).
 * Bei virtuellen Computern, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden:
   
   * Stellen Sie sicher, dass die Konfiguration der eingehenden NAT-Regel für den virtuellen Computer eingehenden Datenverkehr zulässt, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern.
   * Stellen Sie sicher, dass die Netzwerksicherheitsgruppen die eingehende Anforderung und den ausgehenden Antwortdatenverkehr zulassen.
-  * Weitere Informationen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe?](../../virtual-network/security-overview.md).
+  * Weitere Informationen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe?](../../virtual-network/network-security-groups-overview.md).
 
 Wenn der virtuelle Computer oder der Endpunkt Mitglied einer Gruppe mit Lastenausgleich ist:
 
@@ -138,11 +138,9 @@ Wenn Sie auf die Anwendung zugreifen können, stellen Sie sicher, dass Ihre Inte
 
 ## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>Schritt 4: Wenn Sie auf die Anwendung nicht zugreifen können, überprüfen Sie die Einstellungen mithilfe der IP-Überprüfung. 
 
-Weitere Informationen finden Sie unter [Übersicht über die Azure-Netzwerküberwachung](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
+Weitere Informationen finden Sie unter [Übersicht über die Azure-Netzwerküberwachung](../../network-watcher/network-watcher-monitoring-overview.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-[Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md)
+[Behandeln von Problemen mit Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md)
 
 [Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](troubleshoot-ssh-connection.md)
-
-

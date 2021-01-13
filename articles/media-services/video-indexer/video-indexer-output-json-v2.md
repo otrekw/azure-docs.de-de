@@ -1,39 +1,59 @@
 ---
-title: Untersuchen der von der v2-API erstellten Video Indexer-Ausgabe von Azure Media Services
-titlesuffix: Azure Media Services
-description: In diesem Thema wird die Video Indexer-Ausgabe untersucht, die von der v2-API erstellt wird.
+title: Untersuchen der von der v2-API erzeugten Video Indexer-Ausgabe – Azure
+titleSuffix: Azure Media Services
+description: In diesem Thema wird die von der v2-API generierte Azure Media Services Video Indexer-Ausgabe untersucht.
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: 205dc7d9e69788ea29a48ff342844a4b74e143bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf48f873127a12c3cabb28da33d34cedcda2793b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799083"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831565"
 ---
-# <a name="examine-the-video-indexer-output-produced-by-api"></a>Untersuchen der von der API erstellten Video Indexer-Ausgabe
+# <a name="examine-the-video-indexer-output"></a>Überprüfen der Video Indexer-Ausgabe
 
-Wenn Sie die API zum Abrufen des Videoindex (**Get Video Index**) aufrufen und der Antwortstatus „OK“ lautet, erhalten Sie eine ausführliche JSON-Ausgabe als Inhalt der Antwort. Die JSON-Daten enthalten Details zu den angegebenen Erkenntnissen aus Videos. Zu diesen Erkenntnissen gehören z. B. folgende Dimensionen: Transkripts, OCRs, Gesichter, Themen, Blöcke usw. Die Dimensionen verfügen über Instanzen von Zeitbereichen, die angezeigt werden, wenn die einzelnen Dimensionen im Video angezeigt werden.  
+Beim Indizieren eines Videos erzeugt Video Indexer den JSON-Inhalt, der Details zu den angegebenen Videoinformationen enthält. Zu diesen Erkenntnissen gehören Transkripts, OCRs, Gesichter, Themen, Blöcke usw. Jeder Erkenntnistyp enthält Instanzen von Zeitbereichen, die anzeigen, wann die Erkenntnis im Video angezeigt wird. 
 
-Sie können die zusammengefassten Erkenntnisse des Videos auch visuell untersuchen, indem Sie auf der [Video Indexer-Website](https://www.videoindexer.ai/) auf die Schaltfläche **Wiedergabe** klicken. Weitere Informationen finden Sie unter [View and edit video insights](video-indexer-view-edit.md) (Anzeigen und Bearbeiten von Videoinformationen).
+Sie können die zusammengefassten Erkenntnisse des Videos visuell untersuchen, indem Sie auf der [Video Indexer-Website](https://www.videoindexer.ai/) auf die Schaltfläche **Wiedergabe** klicken. 
+
+Sie können auch die API verwenden. Wenn Sie die **Get Video Index**-API aufrufen und der Antwortstatus „OK“ lautet, erhalten Sie eine ausführliche JSON-Ausgabe als Inhalt der Antwort.
 
 ![Einblicke](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
-In diesem Artikel wird der JSON-Inhalt untersucht, der von der API zum Abrufen des Videoindex (**Get Video Index**) zurückgegeben wird. 
+In diesem Artikel wird die Video Indexer-Ausgabe (JSON-Inhalt) untersucht. <br/>Informationen über die Features und Erkenntnisse, die Ihnen zur Verfügung stehen, finden Sie unter [Video Indexer-Erkenntnisse](video-indexer-overview.md#video-insights).
 
 > [!NOTE]
 > Der Zeitraum bis zum Ablauf aller Zugriffstoken in Video Indexer beträgt eine Stunde.
 
+## <a name="get-the-insights"></a>Abrufen der Erkenntnisse
 
-## <a name="root-elements"></a>Stammelemente
+### <a name="insightsoutput-produced-in-the-websiteportal"></a>Auf der Website/im Portal erstellte Erkenntnisse/Ausgaben
 
-|NAME|BESCHREIBUNG|
+1. Navigieren Sie zur [Video Indexer](https://www.videoindexer.ai/)-Website, und melden Sie sich an.
+1. Suchen Sie nach einem Video, dessen Ausgabe Sie untersuchen möchten.
+1. Klicken Sie auf die Schaltfläche für die **Wiedergabe**.
+1. Wählen Sie die Registerkarte **Erkenntnisse** (zusammengefasste Erkenntnisse) oder **Zeitachse** aus (ermöglicht das Filtern der relevanten Erkenntnisse).
+1. Laden Sie Artefakte und was in ihnen enthalten ist herunter.
+
+Weitere Informationen finden Sie unter [View and edit video insights](video-indexer-view-edit.md) (Anzeigen und Bearbeiten von Videoinformationen).
+
+## <a name="insightsoutput-produced-by-api"></a>Von der API produzierte Erkenntnisse/Ausgaben
+
+1. Rufen Sie zum Abrufen der JSON-Datei die [Get-Video-Index-API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) auf.
+1. Falls Sie sich auch für spezifische Artefakte interessieren, rufen Sie die [Get-Video-Artifact-Download-URL-API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?) auf.
+
+    Geben Sie in dem API-Aufruf den angeforderten Artefakttyp (OCR, Gesichter, Keyframes usw.) an.
+
+## <a name="root-elements-of-the-insights"></a>Stammelemente der Erkenntnisse
+
+|Name|BESCHREIBUNG|
 |---|---|
 |accountId|Die VI-Konto-ID der Wiedergabeliste.|
 |id|Die ID der Wiedergabeliste.|
@@ -73,7 +93,7 @@ In diesem Artikel wird der JSON-Inhalt untersucht, der von der API zum Abrufen d
 
 In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 
-|Attribut | BESCHREIBUNG|
+|attribute | BESCHREIBUNG|
 |---|---|
 |name|Der Name des Videos. Beispiel: Azure Monitor.|
 |id|Die ID des Videos. Beispiel: 63c6d532ff.|
@@ -81,19 +101,19 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |duration|Enthält eine Dauer, mit der der Zeitbereich beschrieben wird, in dem eine Erkenntnis gewonnen wurde. Die Dauer wird in Sekunden angegeben.|
 |thumbnailVideoId|Die ID des Videos, aus dem die Miniaturansicht entnommen wurde.
 |thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) auf, und übergeben Sie „thumbnailVideoId“ und „thumbnailId“, um die eigentliche Miniaturansicht zu erhalten.|
-|faces|Kann null oder mehr Gesichter enthalten. Ausführlichere Informationen finden Sie unter [faces](#faces).|
+|faces/animatedCharacters|Kann null oder mehr Gesichter enthalten. Ausführlichere Informationen finden Sie unter [faces/animatedCharacters](#facesanimatedcharacters).|
 |keywords|Kann null oder mehr Schlüsselwörter enthalten. Ausführlichere Informationen finden Sie unter [keywords](#keywords).|
 |sentiments|Kann null oder mehr Stimmungen enthalten. Ausführlichere Informationen finden Sie unter [sentiments](#sentiments).|
-|audioEffects| Kann null oder mehr Audioeffekte (audioEffects) enthalten. Ausführlichere Informationen finden Sie unter [audioEffects](#audioEffects).|
+|audioEffects| Kann null oder mehr Audioeffekte (audioEffects) enthalten. Ausführlichere Informationen finden Sie unter [audioEffects](#audioeffects).|
 |Bezeichnungen| Kann null oder mehr Bezeichnungen enthalten. Weitere Informationen finden Sie unter [labels](#labels).|
 |brands| Kann null oder mehr Marken enthalten. Ausführlichere Informationen finden Sie unter [brands](#brands).|
 |statistics | Ausführlichere Informationen finden Sie unter [statistics](#statistics).|
 |emotions| Kann null oder mehrere Emotionen enthalten. Ausführlichere Informationen finden Sie unter [emotions](#emotions).|
-|topics|Kann null oder mehrere Themen enthalten. Die Dimension [topics](#topics).|
+|topics|Kann null oder mehrere Themen enthalten. Die Erkenntnis [topics](#topics).|
 
 ## <a name="videos"></a>videos
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |accountId|Die VI-Konto-ID des Videos.|
 |id|Die ID des Videos.|
@@ -145,7 +165,7 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 ```
 ### <a name="insights"></a>insights
 
-Bei „insights“ (Erkenntnissen) handelt es sich um eine Reihe von Dimensionen (z.B. Transkriptzeilen, Gesichter, Marken usw.), wobei jede Dimension eine Liste mit eindeutigen Elementen umfasst (z.B. face1, face2, face3). Außerdem verfügt jedes Element über eigene Metadaten und eine Liste mit den zugehörigen Instanzen (Zeitbereiche mit zusätzlichen optionalen Metadaten).
+Jede Erkenntnis (z. B. Transkriptzeilen, Gesichter, Marken) umfasst eine Liste mit eindeutigen Elementen (z. B. face1, face2, face3). Außerdem verfügt jedes Element über eigene Metadaten und eine Liste mit den zugehörigen Instanzen (Zeitbereiche mit zusätzlichen optionalen Metadaten).
 
 Ein Gesicht kann eine ID, einen Namen, eine Miniaturansicht, andere Metadaten und eine Liste mit seinen temporalen Instanzen aufweisen (Beispiele: 00:00:05 – 00:00:10, 00:01:00 – 00:02:30 und 00:41:21 – 00:41:49). Jede temporale Instanz kann über zusätzliche Metadaten verfügen. Ein Beispiel hierfür sind die Rechteckkoordinaten des Gesichts (20,230,60,60).
 
@@ -153,20 +173,21 @@ Ein Gesicht kann eine ID, einen Namen, eine Miniaturansicht, andere Metadaten un
 |---|---|
 |sourceLanguage|Die Quellsprache des Videos (Annahme: eine Hauptsprache). Diese Angabe hat die Form einer [BCP-47](https://tools.ietf.org/html/bcp47)-Zeichenfolge.|
 |language|Die Sprache der Erkenntnisse (Übersetzung aus der Quellsprache). Diese Angabe hat die Form einer [BCP-47](https://tools.ietf.org/html/bcp47)-Zeichenfolge.|
-|Transkript|Die Dimension [transcript](#transcript).|
-|ocr|Die Dimension [OCR](#ocr).|
-|keywords|Die Dimension [keywords](#keywords).|
+|Transkript|Die Erkenntnis [transcript](#transcript).|
+|ocr|Die Erkenntnis [OCR](#ocr).|
+|keywords|Die Erkenntnis [keywords](#keywords).|
 |blocks|Kann einen oder mehrere Blöcke ([blocks](#blocks)) enthalten.|
-|faces|Die Dimension [faces](#faces).|
-|Bezeichnungen|Die Dimension [labels](#labels).|
-|shots|Die Dimension [shots](#shots).|
-|brands|Die Dimension [brands](#brands).|
-|audioEffects|Die Dimension [audioEffects](#audioEffects).|
-|sentiments|Die Dimension [sentiments](#sentiments).|
-|visualContentModeration|Die Dimension [visualContentModeration](#visualcontentmoderation).|
-|textualContentModeration|Die Dimension [textualConentModeration](#textualcontentmoderation).|
-|emotions| Die Dimension [emotions](#emotions).|
-|topics|Die Dimension [topics](#topics).|
+|faces/animatedCharacters|Die Erkenntnis [faces/animatedCharacters](#facesanimatedcharacters).|
+|Bezeichnungen|Die Erkenntnis [labels](#labels).|
+|shots|Die Erkenntnis [shots](#shots).|
+|brands|Die Erkenntnis [brands](#brands).|
+|audioEffects|Die Erkenntnis [audioEffects](#audioeffects).|
+|sentiments|Die Erkenntnis [sentiments](#sentiments).|
+|visualContentModeration|Die Erkenntnis [visualContentModeration](#visualcontentmoderation).|
+|textualContentModeration|Die Erkenntnis [textualContentModeration](#textualcontentmoderation).|
+|emotions| Die Erkenntnis [emotions](#emotions).|
+|topics|Die Erkenntnis [topics](#topics).|
+|speakers|Die Erkenntnis [speakers](#speakers).|
 
 Beispiel:
 
@@ -191,52 +212,61 @@ Beispiel:
 
 #### <a name="blocks"></a>blocks
 
-Attribut | BESCHREIBUNG
+attribute | BESCHREIBUNG
 ---|---
 id|Die ID des Blocks.|
 instances|Eine Liste mit Zeitbereichen dieses Blocks.|
 
 #### <a name="transcript"></a>Transkript
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Zeilen-ID.|
 |text|Das Transkript selbst.|
+|confidence|Die Konfidenz der Transkriptionsgenauigkeit.|
+|speakerId|Die ID des Sprechers.|
 |language|Die Sprache des Transkripts. Vorgesehen zur Unterstützung von Transkripts, bei denen jede Zeile eine andere Sprache enthalten kann.|
 |instances|Eine Liste der Zeitbereiche, in denen diese Zeile angezeigt wurde. Wenn die Instanz „transcript“ lautet, ist nur eine Instanz vorhanden.|
 
 Beispiel:
 
 ```json
-"transcript": [
+"transcript":[
 {
-    "id": 0,
-    "text": "Hi I'm Doug from office.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
-    }
-    ]
+  "id":1,
+  "text":"Well, good morning everyone and welcome to",
+  "confidence":0.8839,
+  "speakerId":1,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
 },
 {
-    "id": 1,
-    "text": "I have a guest. It's Michelle.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:02.7200000",
-        "end": "00:00:03.9600000"
-    }
-    ]
-}
-] 
+  "id":2,
+  "text":"ignite 2016. Your mission at Microsoft is to empower every",
+  "confidence":0.8944,
+  "speakerId":2,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
 ```
 
 #### <a name="ocr"></a>ocr
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die OCR-Zeilen-ID.|
 |text|Der OCR-Text.|
@@ -271,7 +301,7 @@ Beispiel:
 
 #### <a name="keywords"></a>keywords
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Stichwort-ID.|
 |text|Der Stichworttext.|
@@ -300,9 +330,13 @@ Beispiel:
 }
 ```
 
-#### <a name="faces"></a>faces
+#### <a name="facesanimatedcharacters"></a>faces/animatedCharacters
 
-|NAME|BESCHREIBUNG|
+Das `animatedCharacters`-Element ersetzt `faces` für den Fall, dass das Video mit einem Modell mit animierten Zeichen indiziert wurde. Dies erfolgt mithilfe eines benutzerdefinierten Modells in Custom Vision, das Video Indexer in Keyframes ausführt.
+
+Wenn Gesichter (keine animierten Zeichen) vorhanden sind, verwendet Video Indexer die Gesichtserkennungs-API in allen Frames des Videos, um Gesichter und Prominente zu erkennen.
+
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Gesichts-ID.|
 |name|Der Name des Gesichts. Möglich sind „Unknown #0“, ein identifizierter Prominenter oder eine vom Kunden trainierte Person.|
@@ -347,7 +381,7 @@ Beispiel:
 
 #### <a name="labels"></a>Bezeichnungen
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Bezeichnungs-ID.|
 |name|Der Bezeichnungsname (z. B. „Computer“, „TV“).|
@@ -406,7 +440,7 @@ Beispiel:
 
 #### <a name="scenes"></a>scenes
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Szenen-ID.|
 |instances|Eine Liste der Zeitbereiche dieser Szene (eine Szene kann nur eine Instanz aufweisen).|
@@ -439,7 +473,7 @@ Beispiel:
 
 #### <a name="shots"></a>shots
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID der Aufnahme.|
 |keyFrames|Eine Liste mit Keyframes innerhalb der Aufnahme (jede verfügt über eine ID und eine Liste der Zeitbereiche der Vorkommen). Jede keyFrame-Instanz verfügt über ein „thumbnailId“-Feld, das die Miniaturbild-ID von keyFrame enthält.|
@@ -489,7 +523,7 @@ Beispiel:
 
 Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennung bzw. in den Video-OCR-Daten erkannt werden. Die visuelle Erkennung von Marken oder die Logoerkennung sind hierin nicht enthalten.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Marken-ID.|
 |name|Der Name der Marke.|
@@ -548,7 +582,7 @@ Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennun
 
 #### <a name="statistics"></a>statistics
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |CorrespondenceCount|Anzahl von Korrespondenzen im Video.|
 |SpeakerWordCount|Die Anzahl von Wörtern pro Sprecher.|
@@ -556,9 +590,9 @@ Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennun
 |SpeakerLongestMonolog|Der längste Monolog des Sprechers. Falls der Sprecher bei seinem Monolog Sprechpausen einlegt, ist diese Zeit mit enthalten. Die Ruhephasen am Anfang und Ende des Monologs werden entfernt.| 
 |SpeakerTalkToListenRatio|Die Berechnung basiert auf der Zeit für den Monolog des Sprechers (ohne Sprechpausen) geteilt durch die Gesamtzeit des Videos. Der Zeitwert wird auf die dritte Dezimalstelle gerundet.|
 
-#### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
+#### <a name="audioeffects"></a>audioEffects
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID des Audioeffekts.|
 |type|Der Typ des Audioeffekts (z. B. Geklatsche, Sprache, Stille).|
@@ -587,7 +621,7 @@ Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennun
 
 Stimmungen werden anhand ihres Felds „SentimentType“ (neutral/positiv/negativ) aggregiert. Beispiel: 0-0,1, 0,1-0,2.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Stimmungs-ID.|
 |averageScore |Der Durchschnitt aller Bewertungen aller Vorkommen dieses Stimmungstyps: neutral/positiv/negativ|
@@ -626,7 +660,7 @@ Der visualContentModeration-Block enthält Zeitbereiche, für die von Video Inde
 
 Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sind unter Umständen nur für die private Wiedergabe verfügbar. Benutzer haben die Möglichkeit, für den Inhalt eine Überprüfung durch einen Menschen anzufordern. In diesem Fall enthält das IsAdult-Attribut das Ergebnis der Überprüfung durch den Menschen.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID für die Moderation des visuellen Inhalts.|
 |adultScore|Die Bewertung für nicht jugendfreien Inhalt (von Content Moderator).|
@@ -662,7 +696,7 @@ Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sin
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID für die Textinhaltsmoderation.|
 |bannedWordsCount |Die Anzahl von gesperrten Wörtern.|
@@ -672,7 +706,7 @@ Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sin
 
 Video Indexer erkennt Emotionen basierend auf Sprache und Audiosignalen. Bei den erkannten Emotionen kann es sich um Freude, Trauer, Wut oder Angst handeln.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID der Emotion.|
 |type|Der Moment der Emotion, der basierend auf Sprach- und Audiosignalen erkannt wurde. Bei den Emotionen kann es sich um Freude, Trauer, Wut oder Angst handeln.|
@@ -760,13 +794,13 @@ Video Indexer erkennt Emotionen basierend auf Sprache und Audiosignalen. Bei den
 
 #### <a name="topics"></a>topics
 
-Video Indexer zieht in den Transkripten einen Rückschluss auf Hauptthemen. Falls möglich, ist eine [IPTC](https://iptc.org/standards/media-topics/)-Taxonomie erster Ebene eingeschlossen. 
+Video Indexer zieht in den Transkripten einen Rückschluss auf Hauptthemen. Falls möglich, ist eine [IPTC](https://iptc.org/standards/media-topics/)-Taxonomie zweiter Ebene eingeschlossen. 
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID des Themas.|
 |name|Der Name des Themas, z.B.: „Pharmazeutika“.|
-|referenceId|Brotkrümel, die die Hierarchie der Themen reflektieren. Beispiel:  „Gesundheit und Wohlbefinden/Medizin und Gesundheitswesen/Pharmazeutika“.|
+|referenceId|Brotkrümel, die die Hierarchie der Themen reflektieren. Beispiel: „Gesundheit und Wohlbefinden/Medizin und Gesundheitswesen/Pharmazeutika“.|
 |confidence|Die Zuverlässigkeitsbewertung im Bereich [0,1]. Je höher, desto zuverlässiger.|
 |language|Die im Thema verwendete Sprache.|
 |iptcName|Falls erkannt, der Codename von IPTC-Medien.|
@@ -803,6 +837,42 @@ Video Indexer zieht in den Transkripten einen Rückschluss auf Hauptthemen. Fall
 . . .
 ```
 
+#### <a name="speakers"></a>speakers
+
+|Name|BESCHREIBUNG|
+|---|---|
+|id|Die Sprecher-ID.|
+|name|Der Name des Sprechers in der Form „Speaker # *<number>* “ (Sprecher Nr. <Nummer>), z. B.: „Speaker #1“.|
+|instances |Eine Liste der Zeitbereiche, in denen dieser Sprecher vorgekommen ist.|
+
+```json
+"speakers":[
+{
+  "id":1,
+  "name":"Speaker #1",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
+},
+{
+  "id":2,
+  "name":"Speaker #2",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
+` ` `
+```
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Entwicklerportal für Video Indexer](https://api-portal.videoindexer.ai)

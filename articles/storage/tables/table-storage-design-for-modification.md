@@ -1,19 +1,19 @@
 ---
-title: Entwerfen von Azure-Speichertabellen zur Datenänderung | Microsoft-Dokumentation
-description: Entwerfen von Tabellen zur Datenänderung in Azure Table Storage.
+title: Entwerfen von Azure-Tabellenspeicher zur Datenänderung | Microsoft-Dokumentation
+description: Hier finden Sie Informationen zum Entwerfen von Tabellen zur Datenänderung in Azure Table Storage. Optimieren Sie Einfüge-, Aktualisierungs- und Löschvorgänge. Stellen Sie Konsistenz in Ihren gespeicherten Entitäten sicher.
 services: storage
-author: MarkMcGeeAtAquent
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: e993d169025f9b76c5e813bae31ca6cb2a39ba71
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25785bc4b945f469e67f2a71eb6676940e091d56
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60325883"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88236759"
 ---
 # <a name="design-for-data-modification"></a>Entwurf für die Datenänderung
 Dieser Artikel konzentriert sich auf Entwurfsansätze zum Optimieren von Einfügungen, Aktualisierungen und Löschungen. In einigen Fällen müssen Sie einen Kompromiss finden zwischen Entwürfen, die nach Abfragen optimiert sind und Entwürfen, die nach Datenänderung optimiert sind, so wie sie dies auch bei Entwürfen für relationale Datenbanken vornehmen (obwohl die Techniken für die Verwaltung von Entwurfskompromissen für eine relationale Datenbank unterschiedlich sind). Der Abschnitt „Entwurfsmuster für die Tabelle“ beschreibt einige detaillierte Entwurfsmuster für den Tabellenspeicherdienst und stellt einige dieser Kompromisse heraus. In der Praxis werden Sie feststellen, dass viele für Abfragen von Entitäten optimierte Entwürfe sich auch zum Ändern von Entitäten eignen.  
@@ -34,7 +34,7 @@ Der andere wichtige Faktor, der Ihrer Schlüsselauswahl für die Optimierung von
 Die folgenden Muster im Artikel [Entwurfsmuster für die Tabelle](table-storage-design-patterns.md) befassen sich mit der Konsistenzverwaltung:  
 
 * [Sekundäres Indexmuster für Intra-Partition](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) – Speichern mehrerer Kopien jeder Entität mit unterschiedlichen **RowKey**-Werten (in der gleichen Partition) zur Ermöglichung schneller und effizienter Suchvorgänge und alternativer Sortierreihenfolgen mit unterschiedlichen **RowKey**-Werten.  
-* [Sekundäres Indexmuster für Inter-Partition](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – Speichern mehrerer Kopien der einzelnen Entitäten mithilfe verschiedener RowKey-Werte in separaten Partitionen oder in separaten Tabellen ermöglichen schnelle und effiziente Suchvorgänge und alternative Sortierreihenfolgen mit anderen **RowKey** -Werten.  
+* [Sekundäres Indexmuster für Inter-Partition](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – Speichern mehrerer Kopien der einzelnen Entitäten mithilfe verschiedener RowKey-Werte in separaten Partitionen oder in separaten Tabellen zur Aktivierung schneller und effizienter Suchvorgänge und alternativer Sortierreihenfolgen mit unterschiedlichen **RowKey**-Werten.  
 * [Eventual Consistency-Transaktionsmuster](table-storage-design-patterns.md#eventually-consistent-transactions-pattern) – Aktivieren Sie "Eventual Consistency" über Partitions- oder Speichersystemgrenzen hinweg, indem Sie Azure-Warteschlangen verwenden.
 * [Indexmuster für Entitäten](table-storage-design-patterns.md#index-entities-pattern) – Verwalten von Indexentitäten, um effiziente Suchvorgänge zu ermöglichen, die Listen mit Entitäten zurückgeben.  
 * [Denormalisierungsmuster](table-storage-design-patterns.md#denormalization-pattern) – Fassen Sie verknüpfte Daten in einer einzelnen Entität zusammen, damit Sie alle benötigten Daten mit einer einzelnen Punktabfrage abrufen können.  

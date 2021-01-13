@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Ausführen einer Websuche mit C# – Bing-Websuche-REST-API'
+title: 'Schnellstart: Ausführen einer Websuche mit Java – Bing-Websuche-REST-API'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung zum Senden einer Anforderung an die REST-API der Bing-News-Suche mit Java, um eine JSON-Antwort zu erhalten.
 services: cognitive-services
@@ -8,38 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 414287b4a279ac76abf62d3721a51627380a8668
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.custom: seodec2018, devx-track-java
+ms.openlocfilehash: f49de67504c3d3fea39d4c12ab4b06790693ad68
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423754"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351962"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit Java und der REST-API der Bing-News-Suche
 
-Verwenden Sie diese Schnellstartanleitung, um die Bing-News-Suche-API zum ersten Mal aufzurufen und die JSON-Antwort anzuzeigen. Diese einfache Java-Anwendung sendet eine Nachrichtensuchabfrage an die API und zeigt die Antwort an.
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Diese Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Bing-News-Suche-API zum ersten Mal aufzurufen. Diese einfache Java-Anwendung sendet eine Nachrichtensuchabfrage an die API und zeigt die JSON-Antwort an.
+
+Die Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel.
 
 Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Das [Java Development Kit (JDK) 7 oder 8](https://aka.ms/azure-jdks)
-
-* Die [Gson-Bibliothek](https://github.com/google/gson)
+* Das [Java Development Kit (JDK) 7 oder 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
+* Die [Gson-Bibliothek](https://github.com/google/gson).
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
-
 ## <a name="create-and-initialize-a-project"></a>Erstellen und Initialisieren eines Projekts
 
-1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt, und importieren Sie die folgenden Bibliotheken.
+1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt, und importieren Sie die folgenden Bibliotheken:
 
     ```java
     import java.net.*;
@@ -52,7 +54,7 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
     import com.google.gson.JsonParser;
     ```
 
-2. Erstellen Sie eine neue Klasse mit Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und einen Suchbegriff.
+2. Erstellen Sie eine neue Klasse. Fügen Sie Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und einen Suchbegriff hinzu. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -66,7 +68,7 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
 
 ## <a name="construct-the-search-request-and-receive-a-json-response"></a>Erstellen der Suchanforderung und Erhalten einer JSON-Antwort
 
-1. Verwenden Sie die Variablen aus dem vorherigen Schritt, um eine Such-URL für die API-Anforderung zu formatieren. Beachten Sie, dass Ihr Suchbegriff URL-codiert sein muss, bevor er der Anforderung angefügt werden kann.
+1. Verwenden Sie die Variablen aus dem vorherigen Schritt, um eine Such-URL für die API-Anforderung zu formatieren. Codieren Sie den Suchbegriff als URL, bevor Sie ihn an die Anforderung anhängen.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -90,6 +92,7 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
 ## <a name="process-the-json-response"></a>Verarbeiten der JSON-Antwort
 
 1. Trennen Sie die Bing-bezogenen HTTP-Header vom JSON-Text. Schließen Sie dann den Datenstrom, und geben Sie die API-Antwort zurück.
+
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -103,7 +106,8 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
     return results;
     ```
 
-2. Erstellen einer Methode zum Analysieren und erneuten Serialisieren des JSON-Texts
+2. Erstellen Sie eine Methode zum Analysieren und erneuten Serialisieren der JSON-Ergebnisse.
+
     ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
     public static String prettify(String json_text) {
@@ -115,7 +119,8 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
     ```
 
 3. Rufen Sie in der Hauptmethode Ihrer Anwendung die Suchmethode auf, und zeigen Sie die Ergebnisse an.
-    ```csharp
+
+    ```java
    public static void main (String[] args) {
        System.out.println("Searching the Web for: " + searchTerm);
        SearchResults result = SearchNews(searchTerm);
@@ -128,7 +133,7 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
     }
     ```
 
-## <a name="json-response"></a>JSON-Antwort
+## <a name="example-json-response"></a>JSON-Beispielantwort
 
 Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 

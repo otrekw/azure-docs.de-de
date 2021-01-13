@@ -11,19 +11,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1495c14ae4c588661452aa3696019da00be47548
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571381"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420528"
 ---
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Wenn Sie bereits über einen vorhandenen Mandanten verfügen
+# <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: Wenn Sie bereits über einen Mandanten verfügen
 Bei den meisten Themen zur Verwendung von Azure AD Connect wird davon ausgegangen, dass Sie mit einem neuen Azure AD-Mandanten starten und dass es keine weiteren Benutzer oder Objekte gibt. Wenn Sie jedoch bereits über einen Azure AD-Mandanten verfügen, der mit Benutzern und anderen Objekten aufgefüllt ist, und jetzt Connect verwenden möchten, eignet sich dieses Thema perfekt für Sie.
 
 ## <a name="the-basics"></a>Grundlagen
@@ -34,14 +34,14 @@ Sie können einige Benutzer lokal und andere in der Cloud verwalten. Ein häufig
 Wenn Sie damit begonnen haben, Benutzer in Azure AD zu verwalten, die sich auch im lokalen Azure Directory befinden, und später Connect verwenden möchten, sind einige weitere Aspekte zu berücksichtigen.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Synchronisieren mit vorhandenen Benutzern in Azure AD
-Wenn Sie Azure AD Connect installieren und mit der Synchronisierung beginnen, überprüft der Azure AD-Synchronisierungsdienst jedes neue Objekt (in Azure AD) und versucht, ein entsprechendes vorhandenes Objekt zu finden. Für diesen Prozess werden drei Attribute verwendet: **userPrincipalName**, **proxyAddresses** und **sourceAnchor**/**immutableID**. Eine Übereinstimmung bei **userPrincipalName** und **proxyAddresses** wird als **Soft Match** bezeichnet. Eine Übereinstimmung bei **sourceAnchor** wird als **Hard Match** bezeichnet. Für das Attribut **proxyAddresses** wird zur Auswertung nur der Wert mit **SMTP:** verwendet – dies ist die primäre E-Mail-Adresse.
+Wenn Sie Azure AD Connect installieren und mit der Synchronisierung beginnen, überprüft der Azure AD-Synchronisierungsdienst jedes neue Objekt (in Azure AD) und versucht, ein entsprechendes vorhandenes Objekt zu finden. Für diesen Prozess werden drei Attribute verwendet: **userPrincipalName** , **proxyAddresses** und **sourceAnchor**/**immutableID**. Eine Übereinstimmung bei **userPrincipalName** und **proxyAddresses** wird als **Soft Match** bezeichnet. Eine Übereinstimmung bei **sourceAnchor** wird als **Hard Match** bezeichnet. Für das Attribut **proxyAddresses** wird zur Auswertung nur der Wert mit **SMTP:** verwendet – dies ist die primäre E-Mail-Adresse.
 
 Die Übereinstimmung wird nur für neue, aus Connect eingehende Objekte ausgewertet. Wenn Sie ein vorhandenes Objekt so ändern, dass es einem dieser Attribute entspricht, wird stattdessen ein Fehler angezeigt.
 
-Wenn Azure AD ein Objekt findet, dessen Attributwerte die gleichen sind wie für ein aus Connect eingehendes Objekt, und das Objekt bereits in Azure AD vorhanden ist, wird das Objekt in Azure AD von Connect übernommen. Das zuvor in der Cloud verwaltete Objekt wird als „lokal verwaltet“ gekennzeichnet. Alle Attribute in Azure AD mit einem Wert im lokalen Active Directory werden mit dem lokalen Wert überschrieben. Ausgenommen hiervon sind Attribute, die lokal den Wert **NULL** aufweisen. In diesem Fall bleibt der Wert in Azure AD erhalten, Sie können das Attribut jedoch weiterhin nur lokal in einen anderen Wert ändern.
+Wenn Azure AD ein Objekt findet, dessen Attributwerte die gleichen sind wie für ein aus Connect eingehendes Objekt, und das Objekt bereits in Azure AD vorhanden ist, wird das Objekt in Azure AD von Connect übernommen. Das zuvor in der Cloud verwaltete Objekt wird als „lokal verwaltet“ gekennzeichnet. Alle Attribute in Azure AD mit einem Wert im lokalen Active Directory werden mit dem lokalen Wert überschrieben.
 
 > [!WARNING]
-> Da alle Attribute in Azure AD durch ihre lokalen Werte überschrieben werden, stellen Sie sicher, dass Ihre lokalen Daten richtig und vollständig sind. Ein Beispiel: Wenn Sie E-Mail-Adressen nur in Office 365 verwaltet und im lokalen AD DS nicht aktualisiert haben, gehen alle Werte aus Azure AD/Office 365 verloren, die nicht im AD DS vorhanden sind.
+> Da alle Attribute in Azure AD durch ihre lokalen Werte überschrieben werden, stellen Sie sicher, dass Ihre lokalen Daten richtig und vollständig sind. Ein Beispiel: Wenn Sie E-Mail-Adressen nur in Microsoft 365 verwaltet und im lokalen AD DS nicht aktualisiert haben, gehen alle Werte aus Azure AD/Microsoft 365 verloren, die nicht im AD DS vorhanden sind.
 
 > [!IMPORTANT]
 > Wenn Sie die Kennwortsynchronisierung verwenden – die bei Expresseinstellungen immer zum Einsatz kommt –, wird das Kennwort in Azure AD durch das Kennwort im lokalen Active Directory überschrieben. Wenn Ihre Benutzer daran gewöhnt sind, verschiedene Kennwörter zu verwenden, müssen Sie sie darüber informieren, dass sie ihr lokales Kennwort verwenden müssen, nachdem Sie Connect installiert haben.
@@ -63,8 +63,9 @@ Für e-mail-aktivierte Gruppen und Kontakte können Sie ein Soft-Match basierend
 Um zu verhindern, dass nicht vertrauenswürdige lokale Benutzer einem Cloudbenutzer mit einer Administratorrolle zugeordnet werden, ordnet Azure AD Connect Objekten mit Administratorrolle keine lokalen Benutzerobjekte zu. Dies ist die Standardeinstellung. Um dieses Verhalten zu umgehen, können Sie die folgenden Schritte ausführen:
 
 1.  Entfernen Sie die Verzeichnisrollen von dem reinen Cloudbenutzerobjekt.
-2.  Führen Sie eine Synchronisierung aus.
-3.  Fügen Sie optional die Verzeichnisrollen dem Benutzerobjekt in der Cloud wieder hinzu, nachdem die Zuordnung stattgefunden hat.
+2.  Wenn bei einem Benutzersynchronisierungsversuch ein Fehler aufgetreten ist, löschen Sie das unter Quarantäne gestellte Objekt in der Cloud endgültig.
+3.  Führen Sie eine Synchronisierung aus.
+4.  Fügen Sie optional die Verzeichnisrollen dem Benutzerobjekt in der Cloud wieder hinzu, nachdem die Zuordnung stattgefunden hat.
 
 
 

@@ -1,25 +1,23 @@
 ---
-title: Problembehandlung bei Azure Virtual Network-Gateways und -Verbindungen – PowerShell | Microsoft-Dokumentation
+title: Problembehandlung bei Azure VNet-Gateways und -Verbindungen – Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Auf dieser Seite wird erläutert, wie Azure Network Watcher zur Problembehandlung von PowerShell verwendet wird.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 40d576a980bd66fea44f9f8e4935fab3d777e4c8
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.author: damendo
+ms.openlocfilehash: 2c394eeef746db978360e4434295520536833558
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163872"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960511"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Problembehandlung bei Virtual Network-Gateways und -Verbindungen mit Azure Network Watcher und PowerShell
 
@@ -49,10 +47,10 @@ Die Ressourcenproblembehandlung bietet die Möglichkeit zum Behandeln von Proble
 Der erste Schritt besteht im Abrufen der Network Watcher-Instanz. Die Variable `$networkWatcher` wird in Schritt 4 an das Cmdlet `Start-AzNetworkWatcherResourceTroubleshooting` übergeben.
 
 ```powershell
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
+$networkWatcher = Get-AzNetworkWatcher -Location "WestCentralUS" 
 ```
 
-## <a name="retrieve-a-virtual-network-gateway-connection"></a>Abrufen einer Virtual Network-Gatewayverbindung
+## <a name="retrieve-a-virtual-network-gateway-connection"></a>Abrufen einer Virtual Connection-Gatewayverbindung
 
 In diesem Beispiel wird die Ressourcenproblembehandlung für eine Verbindung ausgeführt. Sie können auch ein Virtual Network-Gateway übergeben.
 
@@ -87,7 +85,7 @@ Sobald Sie das Cmdlet ausführen, überprüft Network Watcher die Ressource auf 
 
 Der Aktionstext enthält allgemeine Richtlinien zur Behebung des Problems. Wenn eine Aktion für das Problem ausgeführt werden kann, wird ein Link mit weiteren Anleitungen bereitgestellt. Falls es keine weitere Anleitungen gibt, enthält die Antwort die URL zum Öffnen einer Supportanfrage.  Weitere Informationen zu den Eigenschaften der Antwort und zu deren Inhalt finden Sie unter [Übersicht über die Network Watcher-Problembehandlung](network-watcher-troubleshoot-overview.md).
 
-Anweisungen zum Herunterladen von Dateien von Azure-Speicherkonten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter dem folgenden Link: [Storage-Explorer](https://storageexplorer.com/)
+Anweisungen zum Herunterladen von Dateien von Azure-Speicherkonten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter [Storage-Explorer](https://storageexplorer.com/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

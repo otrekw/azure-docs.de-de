@@ -1,35 +1,37 @@
 ---
-title: 'Schnellstart: Erstellen einer Klassifizierung – Custom Vision Service'
+title: 'Schnellstart: Erstellen einer Klassifizierung mit der Custom Vision-Website'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Custom Vision-Website ein Bildklassifizierungsmodell erstellen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Custom Vision-Website ein Bildklassifizierungsmodell erstellen, trainieren und testen.
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/12/2019
-ms.author: anroth
-ms.openlocfilehash: dfc137375e35d0d13a34ff45b0c6639bcf6784df
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 09/29/2020
+ms.author: pafarley
+ms.custom: cog-serv-seo-aug-2020
+keywords: bilderkennung, bilderkennungs-app, custom vision
+ms.openlocfilehash: b57720b9d8fb05a605b9eace279b70b060c18450
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561064"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91596870"
 ---
-# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Schnellstart: Erstellen einer Klassifizierung mit Custom Vision
+# <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>Schnellstart: Erstellen einer Klassifizierung mit der Custom Vision-Website
 
-In dieser Schnellstartanleitung erfahren Sie, wie eine Klassifizierung über die Custom Vision-Website erstellt wird. Nach der Erstellung eines Klassifizierungsmodells können Sie den Custom Vision Service für die Bildklassifizierung verwenden.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Custom Vision-Website ein Bildklassifizierungsmodell erstellen. Nachdem Sie ein Modell erstellt haben, können Sie es mit neuen Bildern testen und schließlich in Ihre eigene Bilderkennungs-App integrieren.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Eine Reihe von Bildern zum Trainieren Ihrer Klassifizierung. Tipps zum Auswählen von Bildern finden Sie unten.
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Erstellen von Custom Vision-Ressourcen im Azure-Portal
+## <a name="create-custom-vision-resources"></a>Erstellen von Custom Vision-Ressourcen
 
-Für die Verwendung des Custom Vision Service müssen Sie im Azure-Portal Custom Vision-Trainingsressourcen und -Vorhersageressourcen erstellen. Füllen Sie das Dialogfenster auf der Seite [Custom Vision erstellen](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) aus, um sowohl eine Trainings- als auch eine Vorhersageressource zu erstellen. 
+[!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>Erstellen eines neuen Projekts
 
@@ -45,17 +47,17 @@ Navigieren Sie im Webbrowser zur [Custom Vision-Webseite](https://customvision.a
 1. Geben Sie einen Namen und eine Beschreibung für das Projekt ein. Wählen Sie dann eine Ressourcengruppe aus. Wenn Ihr angemeldetes Konto einem Azure-Konto zugeordnet ist, zeigt die Dropdownliste „Ressourcengruppe“ alle Ihre Azure-Ressourcengruppen an, die eine Custom Vision Service-Ressource enthalten. 
 
    > [!NOTE]
-   > Wenn keine Ressourcengruppe verfügbar ist, sollten Sie sich vergewissern, dass Sie sich an [customvision.ai](https://customvision.ai) mit demselben Konto angemeldet haben, das Sie auch für die Anmeldung am [Azure-Portal](https://portal.azure.com/) verwendet haben. Stellen Sie darüber hinaus sicher, dass Sie im Custom Vision-Portal dasselbe Verzeichnis wie im Azure-Portal gewählt haben, in dem sich Ihre Custom Vision-Ressourcen befinden. An beiden Orten können Sie Ihr Verzeichnis jeweils oben rechts im Dropdownmenü mit den Konten auswählen. 
+   > Wenn keine Ressourcengruppe verfügbar ist, sollten Sie sich vergewissern, dass Sie sich an [customvision.ai](https://customvision.ai) mit demselben Konto angemeldet haben, das Sie auch für die Anmeldung am [Azure-Portal](https://portal.azure.com/) verwendet haben. Stellen Sie darüber hinaus sicher, dass Sie auf der Custom Vision-Website dasselbe „Verzeichnis“ wie im Azure-Portal gewählt haben, in dem sich Ihre Custom Vision-Ressourcen befinden. An beiden Orten können Sie Ihr Verzeichnis jeweils oben rechts im Dropdownmenü mit den Konten auswählen. 
 
 1. Wählen Sie unter __Projekttypen__ die Option __Klassifizierung__ aus. Wählen Sie unter __Klassifizierungstypen__ je nach Ihrem Anwendungsfall entweder **Multilabel** (Mehrere Bezeichnungen) oder **Multiclass** (Mehrere Klassen) aus. Die Klassifizierung mit mehreren Bezeichnungen wendet eine beliebige Anzahl Ihrer Tags (null oder mehr) auf ein Bild an, während die Klassifizierung mit mehreren Klassen Bilder in einzelne Kategorien sortiert (jedes übermittelte Bild wird dem wahrscheinlichsten Tag zugeteilt). Sie können den Klassifizierungstyp später bei Bedarf ändern.
 
 1. Wählen Sie dann eine der verfügbaren Domänen aus. Jede Domäne optimiert die Klassifizierung für bestimmte Bildtypen, wie in der folgenden Tabelle beschrieben. Sie können die Domäne später bei Bedarf ändern.
 
-    |Domäne|Zweck|
+    |Domain|Zweck|
     |---|---|
-    |__Allgemein__| Für eine breite Palette von Aufgaben in der Bildklassifizierung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die Domäne „Generic“. |
+    |__Allgemein__| Für eine breite Palette von Aufgaben in der Bildklassifizierung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die allgemeine Domäne. |
     |__Food (Lebensmittel)__|Für Fotos von Gerichten optimiert, wie sie beispielsweise auf der Speisekarte von Restaurants abgebildet werden. Wenn Sie Fotos von einzelnen Früchten oder Gemüsen klassifizieren möchten, verwenden Sie die Domäne „Food“.|
-    |__Landmarks (Wahrzeichen)__|Für erkennbare Wahrzeichen (Naturdenkmäler oder künstliche Wahrzeichen) optimiert. Diese Domäne funktioniert am besten, wenn das Wahrzeichen im Foto deutlich zu sehen ist. Die Domäne funktioniert auch, wenn das Wahrzeichen etwas von Personen im Vordergrund verdeckt wird.|
+    |__Landmarks (Wahrzeichen)__|Optimiert für erkennbare Wahrzeichen (Naturdenkmäler oder künstlich geschaffene Wahrzeichen). Diese Domäne funktioniert am besten, wenn das Wahrzeichen im Foto deutlich zu sehen ist. Die Domäne funktioniert auch, wenn das Wahrzeichen etwas von Personen im Vordergrund verdeckt wird.|
     |__Retail (Einzelhandel)__|Für Bilder optimiert, wie man sie in einem Einkaufskatalog oder auf einer Einkaufswebsite findet. Wenn Sie eine präzise Klassifizierung zwischen Kleidern, Hosen und Hemden wünschen, verwenden Sie diese Domäne.|
     |__Kompaktdomänen__| Für die Bedingungen der Echtzeitklassifizierung auf Mobilgeräten optimiert. Die von Kompaktdomänen generierten Modelle können für die lokale Ausführung exportiert werden.|
 
@@ -69,7 +71,7 @@ Navigieren Sie im Webbrowser zur [Custom Vision-Webseite](https://customvision.a
 
 In diesem Abschnitt laden Sie Bilder hoch und kennzeichnen diese manuell, um die Klassifizierung zu trainieren. 
 
-1. Klicken Sie zum Hinzufügen von Bildern auf die Schaltfläche __Bilder hinzufügen__, und wählen Sie dann __Lokale Dateien durchsuchen__ aus. Wählen Sie __Öffnen__ aus, um zur Kategorisierung zu gelangen. Ihre Tag-Auswahl wird auf die gesamte Gruppe von Bildern angewendet, die Sie zum Hochladen ausgewählt. Daher ist es einfacher, Bildern entsprechend den gewünschten Tags in separaten Gruppen hochzuladen. Sie können die Kategorie für einzelne Bilder auch nach dem Hochladen ändern.
+1. Klicken Sie zum Hinzufügen von Bildern auf die Schaltfläche __Bilder hinzufügen__, und wählen Sie dann __Lokale Dateien durchsuchen__ aus. Wählen Sie __Öffnen__ aus, um zur Kategorisierung zu gelangen. Ihre Tag-Auswahl wird auf die gesamte Gruppe von Bildern angewendet, die Sie zum Hochladen ausgewählt. Daher ist es einfacher, Bilder entsprechend den gewünschten Tags in separaten Gruppen hochzuladen. Sie können die Kategorie für einzelne Bilder auch nach dem Hochladen ändern.
 
     ![Das Steuerelement zum Hinzufügen von Bildern wird oben links und als Schaltfläche unten in der Mitte angezeigt.](./media/getting-started-build-a-classifier/add-images01.png)
 
@@ -109,7 +111,9 @@ Nach Abschluss des Trainings wird die Leistung des Modells geschätzt und angeze
 
 ## <a name="manage-training-iterations"></a>Verwalten von Trainingsiterationen
 
-Bei jedem Trainingsvorgang für Ihre Klassifizierung erstellen Sie eine neue _Iteration_ mit eigenen aktualisierten Leistungsmetriken. Sie können alle Ihre Iterationen im linken Bereich der Registerkarte **Leistung** anzeigen. Im linken Bereich befindet sich auch die Schaltfläche **Löschen**, mit der Sie veraltete Iterationen löschen können. Beim Löschen einer Iteration werden auch alle Bilder gelöscht, die dieser eindeutig zugeordnet sind.
+Bei jedem Trainingsvorgang für Ihre Klassifizierung erstellen Sie eine neue _Iteration_ mit eigenen aktualisierten Leistungsmetriken. Sie können alle Ihre Iterationen im linken Bereich der Registerkarte **Leistung** anzeigen. Dort befindet sich auch die Schaltfläche **Löschen**, mit der Sie veraltete Iterationen löschen können. Beim Löschen einer Iteration werden auch alle Bilder gelöscht, die dieser eindeutig zugeordnet sind.
+
+Informationen zum programmgesteuerten Zugriff auf die trainierten Modelle finden Sie unter [Verwenden des Modells mit der Vorhersage-API](./use-prediction-api.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -118,3 +122,4 @@ In dieser Schnellstartanleitung haben Sie erfahren, wie ein Bildklassifizierungs
 > [!div class="nextstepaction"]
 > [Testen und erneutes Trainieren eines Modells mit Custom Vision Service](test-your-model.md)
 
+* [Was ist Custom Vision?](./overview.md)

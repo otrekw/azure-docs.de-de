@@ -1,25 +1,24 @@
 ---
-title: 'Upgrade auf Azure Search .NET SDK Version 5: Azure Search'
+title: Upgrade auf Version 5 des Azure Search .NET SDK
+titleSuffix: Azure Cognitive Search
 description: Migrieren Sie Code von älteren Versionen zu Azure Search .NET SDK Version 5. Hier finden Sie Informationen zu Neuheiten und erfahren, welche Änderungen am Code erforderlich sind.
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: c64d13e4bcad11ef729f34ee71b7c7461a507fc7
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: 7f0e994cd41fc55824cf347a51ccfed25589a310
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183250"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91539536"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Upgrade auf Version 5 des Azure Search .NET SDK
+# <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Upgrade auf Version 5 des Azure Search .NET SDK
 
-Wenn Sie die Version „4.0-preview“ oder eine frühere Version des [Azure Search .NET SDK](https://aka.ms/search-sdk) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 5.
+Wenn Sie die Version 4.0-preview oder eine frühere Version des [.NET SDK](/dotnet/api/overview/azure/search) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 5.
 
 Eine allgemeinere exemplarische Vorgehensweise für das SDK sowie Beispiele finden Sie unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
 
@@ -36,7 +35,7 @@ Version 5 des Azure Search .NET SDK enthält einige Änderungen zu früheren Ver
 Version 5 des Azure Search .NET SDK ist für die neueste allgemein verfügbare Version der Azure Search-REST-API (2017-11-11) konzipiert. Dadurch können neue Features von Azure Search in einer .NET-Anwendung verwendet werden. Hierzu zählen etwa folgende:
 
 * [Synonyme](search-synonyms.md).
-* Sie können jetzt programmgesteuert im Ausführungsverlauf des Indexers auf Warnungen zugreifen (weitere Einzelheiten finden Sie unter der Eigenschaft `Warning` von `IndexerExecutionResult` in der [.NET-Referenz](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)).
+* Sie können jetzt programmgesteuert im Ausführungsverlauf des Indexers auf Warnungen zugreifen (weitere Einzelheiten finden Sie unter der Eigenschaft `Warning` von `IndexerExecutionResult` in der [.NET-Referenz](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult)).
 * Unterstützung für .NET Core 2.
 * Eine neue Paketstruktur unterstützt, dass nur die Teile des SDK verwendet werden, die Sie benötigen (weitere Einzelheiten finden Sie unter [Wichtige Änderungen in Version 5](#ListOfChanges)).
 
@@ -49,7 +48,9 @@ Nachdem NuGet die neuen Pakete und deren Abhängigkeiten heruntergeladen hat, er
 
 Wenn beim Erstellen ein Fehler auftritt, wird etwa folgende Buildfehlermeldung angezeigt:
 
-    The name 'SuggesterSearchMode' does not exist in the current context
+```output
+The name 'SuggesterSearchMode' does not exist in the current context
+```
 
 Der nächste Schritt besteht darin, diesen Buildfehler zu beheben. Unter [Wichtige Änderungen in Version 5](#ListOfChanges) finden Sie Informationen zur Fehlerursache und -behebung.
 

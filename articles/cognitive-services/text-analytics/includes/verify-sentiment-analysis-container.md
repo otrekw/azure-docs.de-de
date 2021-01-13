@@ -3,18 +3,19 @@ title: Überprüfen der Stimmungsanalyse-Containerinstanz
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Standpunktanalyse-Containerinstanz überprüfen.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
-ms.date: 09/12/2019
-ms.author: dapine
-ms.openlocfilehash: 2e201b4ec0d1364ea99b376171efabad65af0a50
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: d0a5e09f1d697c2f5f842edfb06be4b13229d095
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968575"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009883"
 ---
 ### <a name="verify-the-sentiment-analysis-container-instance"></a>Überprüfen der Stimmungsanalyse-Containerinstanz
 

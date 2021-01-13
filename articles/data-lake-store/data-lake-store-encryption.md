@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878394"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109152"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Verschlüsselung von Daten in Azure Data Lake Storage Gen1
 
@@ -22,7 +22,7 @@ Mit der Verschlüsselung in Azure Data Lake Storage Gen1 können Sie Ihre Daten 
 Data Lake Storage Gen1 unterstützt die Verschlüsselung von ruhenden Daten und Daten im Übergang. Für ruhende Daten unterstützt Data Lake Storage Gen1 die standardmäßig aktivierte, transparente Verschlüsselung. Das bedeutet Folgendes:
 
 * **Standardmäßig aktiviert**: Beim Erstellen eines neuen Data Lake Storage Gen1-Kontos wird die Verschlüsselung standardmäßig aktiviert. In Data Lake Storage Gen1 gespeicherte Daten werden daraufhin immer verschlüsselt, bevor sie auf persistenten Medien gespeichert werden. Das gilt für alle Daten und kann nach der Kontoerstellung nicht mehr geändert werden.
-* **Transparent:** Daten werden von Data Lake Storage Gen1 vor der persistenten Speicherung automatisch verschlüsselt und vor dem Abrufen entschlüsselt. Die Verschlüsselung wird auf der Data Lake Storage Gen1-Ebene von einem Administrator konfiguriert und verwaltet. Die Datenzugriffs-APIs werden nicht geändert. Folglich sind auch keine verschlüsselungsbedingten Änderungen in Anwendungen und Diensten erforderlich, die mit Data Lake Storage Gen1 interagieren.
+* **Transparent**: Daten werden von Data Lake Storage Gen1 vor der persistenten Speicherung automatisch verschlüsselt und vor dem Abrufen entschlüsselt. Die Verschlüsselung wird auf der Data Lake Storage Gen1-Ebene von einem Administrator konfiguriert und verwaltet. Die Datenzugriffs-APIs werden nicht geändert. Folglich sind auch keine verschlüsselungsbedingten Änderungen in Anwendungen und Diensten erforderlich, die mit Data Lake Storage Gen1 interagieren.
 
 Daten im Übergang (auch als „Daten in Bewegung“ bezeichnet) werden in Data Lake Storage Gen1 ebenfalls immer verschlüsselt. Zusätzlich zur Verschlüsselung von Daten vor dem Speichern auf persistenten Medien werden Daten auch während der Übertragung immer über HTTPS geschützt. Für die Data Lake Storage Gen1-REST-Schnittstellen wird ausschließlich das HTTPS-Protokoll unterstützt. Die folgende Abbildung zeigt, wie Daten in Data Lake Storage Gen1 verschlüsselt werden:
 
@@ -33,7 +33,7 @@ Daten im Übergang (auch als „Daten in Bewegung“ bezeichnet) werden in Data 
 
 Die Verschlüsselung für Data Lake Storage Gen1 wird während der Kontoerstellung eingerichtet und ist standardmäßig immer aktiviert. Sie können die Schlüssel entweder selbst verwalten oder die Verwaltung durch Data Lake Storage Gen1 zulassen (dies ist die Standardeinstellung).
 
-Weitere Informationen finden Sie in den [Ersten Schritten](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
+Weitere Informationen finden Sie in den [Ersten Schritten](./data-lake-store-get-started-portal.md).
 
 ## <a name="how-encryption-works-in-data-lake-storage-gen1"></a>Funktionsweise der Verschlüsselung in Data Lake Storage Gen1
 
@@ -52,8 +52,8 @@ In beiden Modi wird der Masterverschlüsselungsschlüssel geschützt, indem er A
 
 Im Anschluss folgt eine kurze Gegenüberstellung der Funktionen, die in den beiden MEK-Verwaltungsmodi zur Verfügung stehen:
 
-|  | Vom Dienst verwaltete Schlüssel | Vom Kunden verwaltete Schlüssel |
-| --- | --- | --- |
+| Frage | Vom Dienst verwaltete Schlüssel | Vom Kunden verwaltete Schlüssel |
+| -------- | -------------------- | --------------------- |
 |Wie werden die Daten gespeichert?|Immer verschlüsselt (vor dem Speichern)|Immer verschlüsselt (vor dem Speichern)|
 |Wo wird der Masterverschlüsselungsschlüssel gespeichert?|Key Vault|Key Vault|
 |Werden Verschlüsselungsschlüssel unverschlüsselt außerhalb von Key Vault gespeichert? |Nein|Nein|
@@ -74,7 +74,7 @@ Beachten Sie beim Auswählen des Modus für die Masterverschlüsselungsschlüsse
 
 Im Rahmen der Datenverschlüsselung gibt es drei Arten von Schlüsseln. In der folgenden Tabelle erhalten Sie einen Überblick:
 
-| Schlüssel                   | Abkürzung | Zugeordnet zu | Speicherort                             | Type       | Notizen                                                                                                   |
+| Schlüssel                   | Abkürzung | Zugeordnet zu | Speicherort                             | type       | Hinweise                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Masterverschlüsselungsschlüssel | MEK          | Ein Data Lake Storage Gen1-Konto | Key Vault                              | Asymmetrisch | Kann von Data Lake Storage Gen1 oder von Ihnen verwaltet werden.                                                              |
 | Datenverschlüsselungsschlüssel   | DEK          | Ein Data Lake Storage Gen1-Konto | Persistenter Speicher (vom Data Lake Storage Gen1-Dienst verwaltet) | Symmetrisch  | Der DEK wird vom MEK verschlüsselt. Der verschlüsselte DEK ist das, was auf einem persistenten Medium gespeichert wird. |
@@ -105,7 +105,7 @@ Das folgende Diagramm veranschaulicht dieses Konzepte:
 
 ## <a name="key-rotation"></a>Schlüsselrotation
 
-Wenn Sie vom Kunden verwaltete Schlüssel verwenden, ist eine Rotation des MEK möglich. Informationen zum Einrichten eines Data Lake Storage Gen1-Kontos mit vom Kunden verwalteten Schlüsseln finden Sie in den [Ersten Schritten](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
+Wenn Sie vom Kunden verwaltete Schlüssel verwenden, ist eine Rotation des MEK möglich. Informationen zum Einrichten eines Data Lake Storage Gen1-Kontos mit vom Kunden verwalteten Schlüsseln finden Sie in den [Ersten Schritten](./data-lake-store-get-started-portal.md).
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -135,4 +135,4 @@ Wenn Sie die Standardverschlüsselungsoptionen verwenden, werden Ihre Daten imme
 Der Vorgang dauert in der Regel weniger als zwei Minuten, und bei der Schlüsselrotation sind keine Ausfallzeiten zu erwarten. Nach Abschluss des Vorgangs wird die neue Version des Schlüssels verwendet.
 
 > [!IMPORTANT]
-> Nach Abschluss der Schlüsselrotation wird die alte Version des Schlüssels nicht mehr aktiv zum Verschlüsseln Ihrer Daten verwendet.  Allerdings können im seltenen Fall eines unerwarteten Fehlers, von dem selbst redundante Kopien Ihrer Daten betroffen sind, Daten aus einer Sicherung wiederhergestellt werden, die weiterhin den alten Schlüssel verwendet. Bewahren Sie daher eine Kopie der früheren Version Ihres Verschlüsselungsschlüssels auf, um in einem solchen Fall auf Ihre Daten zugreifen zu können. Bewährte Methoden für Ihre Notfallwiederherstellungsplanung finden Sie unter [Leitfaden zur Notfallwiederherstellung für Daten in Data Lake Storage Gen1](data-lake-store-disaster-recovery-guidance.md). 
+> Nach Abschluss der Schlüsselrotation wird die alte Version des Schlüssels nicht mehr aktiv zum Verschlüsseln Ihrer Daten verwendet.  Allerdings können im seltenen Fall eines unerwarteten Fehlers, von dem selbst redundante Kopien Ihrer Daten betroffen sind, Daten aus einer Sicherung wiederhergestellt werden, die weiterhin den alten Schlüssel verwendet. Bewahren Sie daher eine Kopie der früheren Version Ihres Verschlüsselungsschlüssels auf, um in einem solchen Fall auf Ihre Daten zugreifen zu können. Bewährte Methoden für Ihre Notfallwiederherstellungsplanung finden Sie unter [Leitfaden zur Notfallwiederherstellung für Daten in Data Lake Storage Gen1](data-lake-store-disaster-recovery-guidance.md).

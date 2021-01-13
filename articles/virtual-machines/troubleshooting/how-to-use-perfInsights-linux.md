@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 340164ef86d34f273b3d5a98b62300bc6cc50df7
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080510"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109418"
 ---
 # <a name="how-to-use-perfinsights"></a>Verwenden von PerfInsights
 
@@ -44,7 +44,7 @@ In diesem Szenario werden grundlegende Informationen wie Speicher- und Hardwarek
 
 - Speicherinformationen
 
-- Konfiguration virtueller Azure-Computer (erfasst mithilfe von [Azure Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service))
+- Konfiguration virtueller Azure-Computer (erfasst mithilfe von [Azure Instance Metadata Service](../windows/instance-metadata-service.md))
 
 - Liste aktiver Prozesse sowie Datenträger-, Arbeitsspeicher- und CPU-Auslastung
 
@@ -99,6 +99,7 @@ Es werden Informationen zum virtuellen Linux-Computer, zum Betriebssystem, zu Bl
   - /var/log/boot.log
   - /var/log/yum.log
   - /var/log/dpkg.log
+  - /var/log/sysstat or /var/log/sa [`**`]
   - /var/log/cloud-init.log
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
@@ -109,10 +110,12 @@ Es werden Informationen zum virtuellen Linux-Computer, zum Betriebssystem, zu Bl
   - /etc/waagent.config
   - Ausgabe von „journalctl“ für die letzten fünf Tage
 
-- [Metadaten der Azure-VM-Instanz](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+- [Metadaten der Azure-VM-Instanz](../windows/instance-metadata-service.md)
 
 >[!Note]
 >[`*`] Für Debian- und SLES-Distributionen werden noch keine PCI-Informationen erfasst.
+> 
+>[`**`] /var/log/sysstat or /var/log/sa enthält die SAR-Dateien (System Activity Report), die vom sysstat-Paket gesammelt werden. Wenn das sysstat-Paket nicht auf der VM installiert ist, empfiehlt das Tool PerfInsights die Installation.
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>Ausführen von PerfInsights Linux auf Ihrem virtuellen Computer
 
@@ -121,18 +124,18 @@ Es werden Informationen zum virtuellen Linux-Computer, zum Betriebssystem, zu Bl
 #### <a name="tool-requirements"></a>Toolanforderungen
 
 - Dieses Tool muss auf dem virtuellen Computer ausgeführt werden, auf dem das Leistungsproblem besteht.
-- Auf dem virtuellen Computer muss Python 2.7 installiert sein.
+- Auf der VM muss Python 3.x oder Python 2.7 installiert sein.
 
 - Aktuell werden folgende Distributionen unterstützt:
 
     | Distribution               | Version                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux Server        | 6.10 [`*`], 7.3, 7.6, 7.5 (Marketplace-Image „Oracle-Database-Ee 13.8“)|
-    | CentOS                     | 6.5 [`*`], 7.6                                    |
-    | RHEL                       | 7.2, 7.5, 8.0 [`*`]                               |
-    | Ubuntu                     | 14.04, 16.04, 18.04                               |
+    | Oracle Linux Server        | 6.10 [`*`], 7.3, 7.5, 7.6, 7.7, 7.8 |
+    | CentOS                     | 6.5 [`*`], 7.6, 7.7, 7.8                                    |
+    | RHEL                       | 7.2, 7.5, 8.0 [`*`], 8.1, 8.2                               |
+    | Ubuntu                     | 14.04, 16.04, 18.04, 20.04                               |
     | Debian                     | 8, 9, 10 [`*`]                                    |
-    | SLES                       | 12 SP4 [`*`]                                      |
+    | SLES                       | 12 SP4 [`*`], 12 SP5 [`*`], 15 [`*`], 15 SP1 [`*`], 15 SP2 [`*`]                                      |
     |                            |                                                   |
 
 >[!Note]
@@ -201,7 +204,7 @@ Gehen Sie wie folgt vor, um das Tool PerfInsights auszuführen:
     ```
 
     >[!Note]
-    >Vor dem Ausführen eines Szenarios wird der Benutzer von PerfInsights aufgefordert, dem Freigeben von Diagnoseinformationen und den Lizenzbedingungen zuzustimmen. Verwenden Sie die Option **„-a“ oder „--accept-disclaimer-and-share-diagnostics“** , um diese Eingabeaufforderungen zu überspringen.
+    >Vor dem Ausführen eines Szenarios wird der Benutzer von PerfInsights aufgefordert, dem Freigeben von Diagnoseinformationen und den Lizenzbedingungen zuzustimmen. Verwenden Sie die Option **„-a“ oder „--accept-disclaimer-and-share-diagnostics“**, um diese Eingabeaufforderungen zu überspringen.
     >
     >Wenn Sie über ein aktives Microsoft-Supportticket verfügen und PerfInsights gemäß Anweisung des zuständigen Supporttechnikers ausführen, geben Sie mithilfe der Option **„-s“ oder „--support-request“** die Nummer des Supporttickets an.
 
@@ -215,8 +218,8 @@ Die Datei **PerformanceDiagnostics\_jjjj-MM-tt\_hh-mm-ss-fff.tar.gz** enthält e
 
 Die Registerkarte **Übersicht** enthält grundlegende Ausführungsdetails und Informationen zum virtuellen Computer. Auf der Registerkarte **Ergebnisse** finden Sie eine Zusammenfassung der Empfehlungen aus den verschiedenen Abschnitten des PerfInsights-Berichts.
 
-![Screenshot: PerfInsights-Bericht](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
-![Screenshot: PerfInsights-Bericht](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
+![Screenshot: Registerkarte „Übersicht“ des PerfInsights-Berichts.](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
+![Screenshot: Registerkarte „Linux“ des PerfInsights-Berichts](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
 
 > [!NOTE]
 > Bei Ergebnissen, die als „Hoch“ eingestuft werden, handelt es sich um bekannte Probleme, die zu Leistungsproblemen führen können. Ergebnisse vom Typ „Mittel“ sind suboptimale Konfigurationen, die nicht unbedingt Leistungsprobleme verursachen. Ergebnisse, die als „Niedrig“ eingestuft werden, dienen lediglich zur Information.

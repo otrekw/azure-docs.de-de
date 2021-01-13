@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: alkohli
 ms.openlocfilehash: 2b0149bd2bb46de87b4575ccb5d44836dd74bde9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66242184"
 ---
 Es folgt eine Liste der für die lokale Webbenutzeroberfläche unterstützten Webbrowser.

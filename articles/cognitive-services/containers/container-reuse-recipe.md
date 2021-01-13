@@ -1,21 +1,21 @@
 ---
 title: Rezepte für Docker-Container
 titleSuffix: Azure Cognitive Services
-description: Hier finden Sie Containerrezepte für die Erstellung wiederverwendbarer Cognitive Services-Container. Container können mit einzelnen oder allen Konfigurationseinstellungen erstellt werden, sodass diese beim Start des Containers nicht benötigt werden. Nachdem Sie über diese neue Containerebene (mit Einstellungen) verfügen und sie lokal getestet haben, können Sie den Container in einer Containerregistrierung speichern. Beim Start des Containers werden nur die Einstellungen benötigt, die momentan nicht im Container gespeichert sind.
+description: Erfahren Sie, wie Sie Container mit einigen oder allen Konfigurationseinstellungen für die Bereitstellung und Wiederverwendung erstellen, testen und speichern.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
-ms.author: dapine
-ms.openlocfilehash: a8162f96051a73b9f6e6a6fe3ece020e0a94f08f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 7380ff58d033a68565de7e419ff318f7bdec121d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70068826"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80875077"
 ---
 # <a name="create-containers-for-reuse"></a>Erstellen wiederverwendbarer Container
 
@@ -122,7 +122,7 @@ Gehen Sie wie folgt vor, um das Dockerfile zu verwenden und das neue Image in Ih
 
 1. Melden Sie sich mit der Azure-Befehlszeilenschnittstelle über eine Konsole bei Ihrer privaten Registrierung an.
 
-    Ersetzen Sie den Wert in spitzen Klammern (`<my-registry>`) durch Ihren eigenen Registrierungsnamen.  
+    Ersetzen Sie die Werte in spitzen Klammern, und geben Sie für `<my-registry>` Ihren eigenen Registrierungsnamen an.  
 
     ```azurecli
     az acr login --name <my-registry>

@@ -1,25 +1,16 @@
 ---
-title: Manifestbeispiele für Azure Service Fabric-Containeranwendungen | Microsoft Docs
+title: Manifestbeispiele für Azure Service Fabric-Containeranwendungen
 description: Erfahren Sie, wie Sie die Einstellungen für das Anwendungs- und Dienstmanifest für eine Service Fabric-Anwendung mit mehreren Containern konfigurieren.
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: xml
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: ece0b763a2dbe501b0f46d026c59e1294a448c59
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650603"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84701165"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Mehrere Container: Beispiele für Anwendungs- und Dienstmanifeste
 Im Folgenden finden Sie Beispiele für die Anwendungs- und Dienstmanifeste für eine Service Fabric-Anwendung mit mehreren Containern. Der Zweck dieser Beispiele besteht darin, zu zeigen, welche Einstellungen verfügbar sind und wie sie verwendet werden. Diese Anwendungs- und Dienstmanifeste basieren auf den Manifesten für das [Windows Server 2016-Containerbeispiel](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows).
@@ -351,7 +342,7 @@ Die durch „EntryPoint“ angegebene ausführbare Datei ist üblicherweise der 
  Weitere Informationen finden Sie unter [ContainerHost-Element](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType).
 
 ### <a name="imagename-element"></a>ImageName-Element
-Das Repository und Image auf https://hub.docker.com oder Azure Container Registry. Weitere Informationen finden Sie unter [ImageName-Element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType).
+Das Repository und Image bei [https://hub.docker.com](https://hub.docker.com) oder Azure Container Registry. Weitere Informationen finden Sie unter [ImageName-Element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType).
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables-Element
 Dient zum Übergeben von Umgebungsvariablen an Ihren Container oder Ihre EXE-Datei.  Weitere Informationen finden Sie unter [EnvironmentVariables-Element](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType).
@@ -395,7 +386,7 @@ Die durch „EntryPoint“ angegebene ausführbare Datei ist üblicherweise der 
 Weitere Informationen finden Sie unter [ContainerHost-Element](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType).
 
 ### <a name="imagename-element"></a>ImageName-Element
-Das Repository und Image auf https://hub.docker.com oder Azure Container Registry. Weitere Informationen finden Sie unter [ImageName-Element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType).
+Das Repository und Image bei [https://hub.docker.com](https://hub.docker.com) oder Azure Container Registry. Weitere Informationen finden Sie unter [ImageName-Element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType).
 
 ### <a name="commands-element"></a>Commands-Element
 Dient zum Übergeben einer durch Kommas getrennten Liste mit Befehlen an den Container. Weitere Informationen finden Sie unter [Commands-Element](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType).

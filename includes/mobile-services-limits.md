@@ -1,15 +1,15 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: app-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 5e58429b6a3e2f7c7c39c13dc65af48b064f9771
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: be87d2af698bb71573952943b5ddc3f0910a3333
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178480"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85838806"
 ---
 | Tarif | Kostenlos | Basic | Standard |
 | --- | --- | --- | --- |

@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 4f9f4661a2c6c78438414029e803abc624a773ca
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.custom: mqtt, devx-track-java
+ms.openlocfilehash: 68908b7d62b8211c202262112831d5d2b523f594
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161976"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146959"
 ---
 # <a name="get-started-with-device-twins-java"></a>Erste Schritte mit Gerätezwillingen (Java)
 
@@ -30,13 +31,15 @@ In diesem Tutorial erstellen Sie zwei Java-Konsolen-Apps:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) Wählen Sie unter **Langfristiger Support** unbedingt **Java 8** aus, um zu den Downloads für JDK 8 zu gelangen.
+* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable) Wählen Sie unter **Langfristiger Support** unbedingt **Java 8** aus, um zu den Downloads für JDK 8 zu gelangen.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -377,7 +380,7 @@ Sie können nun die Konsolen-Apps ausführen.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Java IoT Hub-Dienst-App zum Aktualisieren von Tagwerten und Ausführen von Geräteabfragen](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
+    ![Der Screenshot zeigt die Ausgabe aus dem Befehl zur Ausführung der Dienst-App „add-tags-query“.](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
 
     Sie sehen die Tags **plant** und **region**, die dem Gerätezwilling hinzugefügt wurden. Die erste Abfrage gibt das Gerät zurück, die zweite jedoch nicht.
 
@@ -387,7 +390,7 @@ Sie können nun die Konsolen-Apps ausführen.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Der Geräteclient fügt die gemeldete **connectivityType**-Eigenschaft hinzu](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
+    ![Der Geräteclient fügt die gemeldete Eigenschaft „connectivityType“ hinzu.](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
 
 3. Führen Sie an der Eingabeaufforderung im Ordner **add-tags-query** den folgenden Befehl aus, um die Dienst-App **add-tags-query** ein zweites Mal auszuführen:
 

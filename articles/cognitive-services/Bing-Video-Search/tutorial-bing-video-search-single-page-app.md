@@ -1,23 +1,29 @@
 ---
 title: 'Tutorial: Erstellen einer Single-Page-Webanwendung für die Bing-Videosuche'
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel wird erläutert, wie Sie die Bing-Videosuche-API in einer Single-Page-Webanwendung verwenden.
+description: In diesem Tutorial wird erläutert, wie Sie die Bing-Videosuche-API in einer Single-Page-Webanwendung verwenden.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: d2cd3d37801fc1a42a9bcbd5f70a6a55e78aaf08
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.custom: devx-track-js
+ms.openlocfilehash: 76d7f4e31934480be57cd5ac133c1c7e6a9dd364
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500072"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349604"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Tutorial: Single-Page-Webanwendung für die Videosuche
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 Mit der Bing-Videosuche-API können Sie das Web durchsuchen und für eine Suchabfrage relevante Videoergebnisse abrufen. In diesem Tutorial wird eine Single-Page-Webanwendung erstellt, die unter Verwendung der Bing-Suche-API Suchergebnisse auf der Seite anzeigt. Die Anwendung enthält HTML-, CSS- und JavaScript-Komponenten.
 
 <!-- Remove until it can be replaced with a sanitized version.
@@ -41,7 +47,7 @@ Mit dieser Tutorial-App wird folgendes veranschaulicht:
 
 Die Tutorialseite ist unabhängig von anderen Komponenten und verwendet keine externen Frameworks, Stylesheets oder Bilddateien. Die Seite greift nur auf die am häufigsten unterstützten Features für JavaScript zurück und kann in aktuellen Versionen aller gängigen Webbrowser ausgeführt werden.
 
-In diesem Tutorial werden ausgewählte Teile des Quellcodes erläutert. Der vollständige [Quellcode](tutorial-bing-video-search-single-page-app-source.md) steht zur Verfügung. Zum Ausführen des Beispiels kopieren Sie den Quellcode, fügen Sie ihn in einen Text-Editor ein, und speichern Sie die Datei als `bing.html`.
+In diesem Tutorial werden ausgewählte Teile des Quellcodes erläutert. Der vollständige [Quellcode]() steht zur Verfügung. Zum Ausführen des Beispiels kopieren Sie den Quellcode, fügen Sie ihn in einen Text-Editor ein, und speichern Sie die Datei als `bing.html`.
 
 ## <a name="app-components"></a>App-Komponenten
 Diese Tutorial-App setzt sich ebenso wie alle anderen Single-Page-Web-Apps aus drei Teilen zusammen:
@@ -120,7 +126,7 @@ function bingSearchOptions(form) {
 
     var options = [];
     options.push("mkt=" + form.where.value);
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
 
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -138,10 +144,10 @@ function bingSearchOptions(form) {
 }
 ```
 
-Der Parameter `SafeSearch` kann bei einem API-Aufruf beispielsweise die Werte `strict`, `moderate` oder `off` annehmen, wobei `moderate` der Standardwert ist. In unserem Formular wird hingegen ein Kontrollkästchen verwendet, das nur über zwei Zustände verfügt. Der JavaScript-Code konvertiert diese Einstellung entweder in `strict` oder `off` (`moderate` wird nicht verwendet).
+Der Parameter `SafeSearch` kann bei einem tatsächlichen API-Aufruf beispielsweise den Wert `strict` oder `moderate` haben, wobei `moderate` der Standardwert ist.
 
 ## <a name="performing-the-request"></a>Ausführen der Anforderung
-Die `BingWebSearch`-Funktion verwendet auf der Grundlage der Abfrage, der Optionszeichenfolge und des API-Schlüssels ein `XMLHttpRequest`-Objekt, um die Anforderung an den Bing-Suche-API-Endpunkt zu senden.
+Die `BingWebSearch`-Funktion verwendet auf der Grundlage der Abfrage, der Optionszeichenfolge und des API-Schlüssels ein `XMLHttpRequest`-Objekt, um die Anforderung an den Bing-Suche-API-Endpunkt zu senden. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
 ```javascript
 // Search on the query, using search options, authenticated by the key.
@@ -270,7 +276,7 @@ Ein Großteil des Codes in den beiden vorangehenden Funktionen ist für die Fehl
 Fehler werden behandelt, indem `renderErrorMessage()` zusammen mit allen bekannten Fehlerinformationen aufgerufen wird. Wenn die Antwort alle Fehlertests besteht, wird `renderSearchResults()` zur Anzeige der Suchergebnisse auf der Seite aufgerufen.
 
 ## <a name="displaying-search-results"></a>Anzeigen der Suchergebnisse
-Die Hauptfunktion zum Anzeigen der Suchergebnisse ist `renderSearchResults()`. Diese Funktion nimmt den vom Bing-News-Suche-Dienst zurückgegebenen JSON-Code und rendert die News-Ergebnisse sowie verwandte Suchvorgänge (falls vorhanden).
+Die Hauptfunktion zum Anzeigen der Suchergebnisse ist `renderSearchResults()`. Diese Funktion verwendet den vom Bing-News-Suche-Dienst zurückgegebenen JSON-Code und rendert die News-Ergebnisse sowie verwandte Suchvorgänge (falls vorhanden).
 
 ```javascript
 // render the search results given the parsed JSON response
@@ -287,7 +293,7 @@ function renderSearchResults(results) {
     }
 }
 ```
-Die Suchergebnisse werden als `value`-Objekt der obersten Ebene in der JSON-Antwort zurückgegeben. Diese werden dann an die `renderResultsItems()`-Funktion übergeben, die diese durchläuft und eine Funktion zum Rendern der einzelnen Elemente in HTML aufruft. Der resultierende HTML-Code wird an `renderSearchResults()` zurückgegeben, wo es in den Bereich `results` auf der Seite eingefügt wird.
+Die Suchergebnisse werden als `value`-Objekt der obersten Ebene in der JSON-Antwort zurückgegeben. Diese werden dann an die `renderResultsItems()`-Funktion übergeben, die diese durchläuft und eine Funktion zum Rendern der einzelnen Elemente in HTML aufruft. Der resultierende HTML-Code wird an `renderSearchResults()` zurückgegeben, wo er in den Bereich `results` auf der Seite eingefügt wird.
 
 ```javascript
 // render search results
@@ -393,15 +399,18 @@ In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über ein
 
 Die Installation eines CORS-Proxys, mit dem die Tutorial-App auf den Client-ID-Header zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie anschließend folgenden Befehl in ein Befehlsfenster ein:
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
 Passen Sie den Endpunkt der Bing-Websuche-API in der HTML-Datei wie folgt an:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Starten Sie abschließend den CORS-Proxy mit folgendem Befehl:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Lassen Sie das Fenster während der Nutzung der Tutorial-App geöffnet. Wenn Sie das Fenster schließen, wird auch die Ausführung des Proxys beendet. Im Bereich mit den erweiterbaren HTTP-Headern unter den Suchergebnissen wird nun u.a. der `X-MSEdge-ClientID`-Header angezeigt. Hier können Sie überprüfen, ob dieser für alle Anforderungen identisch ist.
 

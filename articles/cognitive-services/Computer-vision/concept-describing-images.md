@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: dcf61c642a9f8ad7aa68d72736ce8fdb0e9a6e3c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 4fd328dad3544697ba1f4896f7383be857b097a5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945265"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530662"
 ---
 # <a name="describe-images-with-human-readable-language"></a>Beschreiben von Bildern in lesbarer Sprache
 
@@ -56,6 +56,12 @@ Die folgende JSON-Antwort veranschaulicht, was das maschinelle Sehen bei der Bes
 }
 ```
 
+## <a name="use-the-api"></a>Verwenden der API
+
+Das Bildbeschreibungsfeature ist Teil der [Bildanalyse-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b). Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Beziehen Sie `Description` in den Abfrageparameter **visualFeatures** ein. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge auf den Inhalt im Abschnitt `"description"`.
+
+* [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über Konzepte zum [Taggen von Bildern](concept-tagging-images.md) und [Kategorisieren von Bildern](concept-categorizing-images.md).
+Machen Sie sich mit den verwandten Konzepten [Taggen von Bildern](concept-tagging-images.md) und [Kategorisieren von Bildern](concept-categorizing-images.md) vertraut.

@@ -14,17 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a29381bded4bb2562227bd5f23ccb59bb5add028
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 24e4bf9940de0f7b0e851bdfdbd2d788757034e0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059208"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89267733"
 ---
-# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET 
+# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können Media Services-Auftragsbenachrichtigungen mit Azure-Webhooks oder [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md) überwachen. In diesem Artikel wird die Verwendung von Webhooks veranschaulicht.
 
@@ -61,7 +64,7 @@ Beim Entwickeln von Media Services-Funktionen ist es nützlich, Umgebungsvariabl
 
 Im Abschnitt [Anwendungseinstellungen](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) werden die Parameter definiert, die in dem in diesem Artikel definierten Webhook verwendet werden. Fügen Sie den App-Einstellungen außerdem die folgenden Parameter hinzu. 
 
-|NAME|Definition|Beispiel| 
+|Name|Definition|Beispiel| 
 |---|---|---|
 |SigningKey |Ein Signaturschlüssel| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | Eine Webhook-Endpunktadresse Nachdem die Webhookfunktion erstellt wurde, können Sie die URL aus dem Link **Funktions-URL abrufen** kopieren. | https:\//juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
@@ -354,25 +357,27 @@ Speichern Sie die Funktion, und führen Sie sie aus.
 
 Nachdem der Webhook ausgelöst wurde, erzeugt das obige Beispiel die folgende Ausgabe. Ihre Werte können davon abweichen.
 
-    C# HTTP trigger function processed a request. RequestUri=https://juliako001-functions.azurewebsites.net/api/Notification_Webhook_Function?code=9376d69kygoy49oft81nel8frty5cme8hb9xsjslxjhalwhfrqd79awz8ic4ieku74dvkdfgvi
-    Request Body = 
-    {
-      "MessageVersion": "1.1",
-      "ETag": "b8977308f48858a8f224708bc963e1a09ff917ce730316b4e7ae9137f78f3b20",
-      "EventType": 4,
-      "TimeStamp": "2017-02-16T03:59:53.3041122Z",
-      "Properties": {
-        "JobId": "nb:jid:UUID:badd996c-8d7c-4ae0-9bc1-bd7f1902dbdd",
-        "TaskId": "nb:tid:UUID:80e26fb9-ee04-4739-abd8-2555dc24639f",
-        "NewState": "Finished",
-        "OldState": "Processing",
-        "AccountName": "mediapkeewmg5c3peq",
-        "AccountId": "301912b0-659e-47e0-9bc4-6973f2be3424",
-        "NotificationEndPointId": "nb:nepid:UUID:cb5d707b-4db8-45fe-a558-19f8d3306093"
-      }
-    }
-    
-    URL to the manifest for client streaming using HLS protocol: http://mediapkeewmg5c3peq.streaming.mediaservices.windows.net/0ac98077-2b58-4db7-a8da-789a13ac6167/BigBuckBunny.ism/manifest(format=m3u8-aapl)
+```output
+C# HTTP trigger function processed a request. RequestUri=https://juliako001-functions.azurewebsites.net/api/otification_Webhook_Function?code=9376d69kygoy49oft81nel8frty5cme8hb9xsjslxjhalwhfrqd79awz8ic4ieku74dvkdfgvi
+Request Body = 
+{
+  "MessageVersion": "1.1",
+  "ETag": "b8977308f48858a8f224708bc963e1a09ff917ce730316b4e7ae9137f78f3b20",
+  "EventType": 4,
+  "TimeStamp": "2017-02-16T03:59:53.3041122Z",
+  "Properties": {
+    "JobId": "nb:jid:UUID:badd996c-8d7c-4ae0-9bc1-bd7f1902dbdd",
+    "TaskId": "nb:tid:UUID:80e26fb9-ee04-4739-abd8-2555dc24639f",
+    "NewState": "Finished",
+    "OldState": "Processing",
+    "AccountName": "mediapkeewmg5c3peq",
+    "AccountId": "301912b0-659e-47e0-9bc4-6973f2be3424",
+    "NotificationEndPointId": "nb:nepid:UUID:cb5d707b-4db8-45fe-a558-19f8d3306093"
+  }
+}
+
+URL to the manifest for client streaming using HLS protocol: http://mediapkeewmg5c3peq.streaming.mediaservices.windows.net/0ac98077-2b58-4db7-a8da-789a13ac6167/BigBuckBunny.ism/manifest(format=m3u8-aapl)
+```
 
 ## <a name="add-a-webhook-to-your-encoding-task"></a>Hinzufügen eines Webhooks zu Ihrer Codierungsaufgabe
 

@@ -1,42 +1,34 @@
 ---
-title: 'Tutorial: Löschen eines Azure Red Hat OpenShift-Clusters | Microsoft-Dokumentation'
+title: 'Tutorial: Löschen eines Azure Red Hat OpenShift-Clusters'
 description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Red Hat OpenShift-Cluster mithilfe der Azure-Befehlszeilenschnittstelle löschen.
-services: container-service
-author: jimzim
-ms.author: jzim
-manager: jeconnoc
+author: sakthi-vetrivel
+ms.custom: fasttrack-edit
+ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
-ms.date: 05/06/2019
-ms.openlocfilehash: 0ad70f4c3681705377a350fee8b02a55c526f26c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.date: 04/24/2020
+ms.openlocfilehash: 254a9737b805aeeae2008923a8178cd971602132
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669336"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677761"
 ---
-# <a name="tutorial-delete-an-azure-red-hat-openshift-cluster"></a>Tutorial: Löschen eines Azure Red Hat OpenShift-Clusters
+# <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>Tutorial: Löschen eines Azure Red Hat OpenShift 4-Clusters
 
-Dies ist das Ende des Tutorials. Wenn Sie das Testen des Beispielclusters abgeschlossen haben, erfahren Sie hier, wie Sie ihn und die ihm zugeordneten Ressourcen löschen, damit Ihnen nicht in Rechnung gestellt wird, was Sie nicht nutzen.
-
-Im dritten Teil der Serie lernen Sie Folgendes:
+In diesem Tutorial (Teil 3 von 3) erfahren Sie, wie Sie ein Azure Red Hat OpenShift-Cluster mit OpenShift 4 löschen. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Löschen eines Azure Red Hat OpenShift-Clusters
 
-In dieser Tutorialserie lernen Sie Folgendes:
-> [!div class="checklist"]
-> * [Erstellen eines Azure Red Hat OpenShift-Clusters](tutorial-create-cluster.md)
-> * [Skalieren eines Azure Red Hat OpenShift-Clusters](tutorial-scale-cluster.md)
-> * Löschen eines Azure Red Hat OpenShift-Clusters
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Voraussetzungen
 
-Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
+In den vorherigen Tutorials wurde erläutert, wie Sie ein Azure Red Hat OpenShift-Cluster erstellen und mithilfe der OpenShift-Webkonsole eine Verbindung herstellen. Falls Sie diese Schritte noch nicht ausgeführt haben und dies jetzt nachholen möchten, sollten Sie mit [Tutorial 1: Erstellen eines Azure Red Hat OpenShift 4-Clusters](tutorial-create-cluster.md) beginnen.
 
-* Erstellen Sie einen Cluster, indem Sie das Tutorial [Erstellen eines Azure Red Hat OpenShift-Clusters](tutorial-create-cluster.md) ausführen.
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 2.6.0 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="step-1-sign-in-to-azure"></a>Schritt 1: Anmelden bei Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Wenn Sie die Azure CLI lokal ausführen, führen Sie `az login` aus, um sich bei Azure anzumelden.
 
@@ -46,36 +38,27 @@ az login
 
 Wenn Sie Zugriff auf mehrere Abonnements haben, führen Sie `az account set -s {subscription ID}` aus, und ersetzen Sie `{subscription ID}` durch das zu verwendende Abonnement.
 
-## <a name="step-2-delete-the-cluster"></a>Schritt 2: Löschen des Clusters
+## <a name="delete-the-cluster"></a>Löschen des Clusters
 
-Öffnen Sie ein Bash-Terminal, und legen Sie die Variable CLUSTER_NAME auf den Namen Ihres Clusters fest:
-
-```bash
-CLUSTER_NAME=yourclustername
-```
-
-Jetzt löschen Sie Ihren Cluster:
+In den vorherigen Tutorials wurden die folgenden Variablen festgelegt.
 
 ```bash
-az openshift delete --resource-group $CLUSTER_NAME --name $CLUSTER_NAME
+CLUSTER=yourclustername
+RESOURCEGROUP=yourresourcegroup
 ```
 
-Sie werden gefragt, ob Sie den Cluster löschen möchten. Nachdem Sie mit `y` bestätigt haben, nimmt das Löschen des Clusters einige Minuten in Anspruch. Wenn der Befehl abgeschlossen ist, sind die gesamte Ressourcengruppe und alle darin enthaltenen Ressourcen einschließlich des Clusters gelöscht.
+Löschen Sie mithilfe dieser Werte Ihren Cluster:
 
-## <a name="deleting-a-cluster-using-the-azure-portal"></a>Löschen eines Clusters mit dem Azure-Portal
+```bash
+az aro delete --resource-group $RESOURCEGROUP --name $CLUSTER
+```
 
-Alternativ können Sie die zugeordnete Ressourcengruppe des Clusters online mithilfe des Azure-Portals löschen. Der Name der Ressourcengruppe stimmt mit dem Namen Ihres Clusters überein.
-
-Aktuell ist die `Microsoft.ContainerService/openShiftManagedClusters`-Ressource, die beim Erstellen des Clusters erstellt wird, im Azure-Portal ausgeblendet. Markieren Sie in der `Resource group`-Ansicht `Show hidden types`, um die Ressourcengruppe anzuzeigen.
-
-![Screenshot des Kontrollkästchens „Ausgeblendete Typen anzeigen“](./media/aro-portal-hidden-type.png)
-
-Durch das Löschen der Ressourcengruppe werden alle zugehörigen Ressourcen gelöscht, die beim Erstellen eines Azure Red Hat OpenShift-Clusters erstellt werden.
+Anschließend werden Sie aufgefordert, zu bestätigen, dass Sie den Cluster löschen möchten. Nachdem Sie mit `y` bestätigt haben, nimmt das Löschen des Clusters einige Minuten in Anspruch. Wenn der Befehl abgeschlossen ist, werden die gesamte Ressourcengruppe und alle darin enthaltenen Ressourcen einschließlich des Clusters gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Teil des Tutorials haben Sie Folgendes gelernt:
 > [!div class="checklist"]
-> * Löschen eines Azure Red Hat OpenShift-Clusters
+> * Löschen eines Azure Red Hat OpenShift 4-Clusters
 
-Weitere Informationen zur Verwendung von OpenShift finden Sie in der offiziellen [Red Hat OpenShift-Dokumentation](https://docs.openshift.com/aro/welcome/index.html)
+Weitere Informationen zur Verwendung von OpenShift finden Sie in der offiziellen [Red Hat OpenShift-Dokumentation](https://www.openshift.com/try)

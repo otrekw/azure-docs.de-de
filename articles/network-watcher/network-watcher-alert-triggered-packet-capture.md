@@ -1,25 +1,24 @@
 ---
-title: Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions | Microsoft-Dokumentation
+title: Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen – Azure Functions
+titleSuffix: Azure Network Watcher
 description: In diesem Artikel wird beschrieben, wie Sie eine per Warnung ausgelöste Paketerfassung mit Azure Network Watcher erstellen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: d894fabf3cfd4c6949aba94d558751bf007356d9
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.author: damendo
+ms.openlocfilehash: 3b6cb195f44bf6c868402481480d9b10802c4d59
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165155"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965669"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions
 
@@ -31,7 +30,7 @@ In Azure bereitgestellte Ressourcen werden rund um die Uhr ausgeführt. Für Sie
 
 Durch den Einsatz von Network Watcher, Warnungen und Funktionen im Azure-Ökosystem können Sie mit den entsprechenden Daten und Tools proaktiv reagieren, um Probleme im Netzwerk zu lösen.
 
-![Szenario][scenario]
+![Diagramm der Network Watcher-Erweiterung auf einem virtuellen Computer, die an TCP-Segmente überträgt und mehr als 100 Fehler sendet, die dann an Azure Functions, von dort an Network Watcher und schließlich zurück zur Network Watcher-Erweiterung übertragen werden][scenario]
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -40,7 +39,7 @@ Durch den Einsatz von Network Watcher, Warnungen und Funktionen im Azure-Ökosys
 
 * Die neueste Version von [Azure PowerShell](/powershell/azure/install-Az-ps)
 * Eine vorhandene Instanz von Network Watcher. Wenn Sie noch keine haben, [erstellen Sie eine Instanz von Network Watcher](network-watcher-create.md).
-* Ein virtueller Computer in der gleichen Region, in der sich auch die Network Watcher-Instanz befindet – mit der [Windows-Erweiterung](../virtual-machines/windows/extensions-nwa.md) oder mit der [Erweiterung für virtuelle Linux-Computer](../virtual-machines/linux/extensions-nwa.md)
+* Ein virtueller Computer in der gleichen Region, in der sich auch die Network Watcher-Instanz befindet – mit der [Windows-Erweiterung](../virtual-machines/extensions/network-watcher-windows.md) oder mit der [Erweiterung für virtuelle Linux-Computer](../virtual-machines/extensions/network-watcher-linux.md)
 
 ## <a name="scenario"></a>Szenario
 
@@ -69,7 +68,7 @@ In diesem Szenario passiert Folgendes:
 
 Im ersten Schritt wird eine Azure-Funktion zum Verarbeiten der Warnung und Erstellen einer Paketerfassung erstellt.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) **Ressource erstellen** > **Compute** > **Funktions-App** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com)**Ressource erstellen** > **Compute** > **Funktions-App** aus.
 
     ![Erstellen einer Funktions-App][1-1]
 
@@ -139,7 +138,7 @@ Um die Network Watcher-PowerShell-Cmdlets zu verwenden, laden Sie das neueste Po
 
 1. Klicken Sie mit der rechten Maustaste auf den Unterordner **Az.Network**, und wählen Sie **Dateien hochladen** aus. 
 
-6. Wechseln Sie zu Ihren Azure-Modulen. Wählen Sie im lokalen Ordner **Az.Network** alle Dateien aus. Wählen Sie dann **OK**aus. 
+6. Wechseln Sie zu Ihren Azure-Modulen. Wählen Sie im lokalen Ordner **Az.Network** alle Dateien aus. Klicken Sie anschließend auf **OK**. 
 
 7. Wiederholen Sie diese Schritte für **Az.Accounts** und **Az.Resources**.
 
@@ -341,20 +340,20 @@ Warnungen können konfiguriert werden, um Personen zu benachrichtigen, wenn eine
 
 ### <a name="create-the-alert-rule"></a>Erstellen der Warnungsregel
 
-Navigieren Sie zu einem vorhandenen virtuellen Computer, und fügen Sie eine Warnungsregel hinzu. Ausführlichere Informationen zum Konfigurieren von Warnungen finden Sie unter [Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – Azure-Portal](../monitoring-and-diagnostics/insights-alerts-portal.md). Geben Sie auf dem Blatt **Warnungsregel** die folgenden Werte ein, und wählen Sie dann **OK** aus.
+Navigieren Sie zu einem vorhandenen virtuellen Computer, und fügen Sie eine Warnungsregel hinzu. Ausführlichere Informationen zum Konfigurieren von Warnungen finden Sie unter [Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – Azure-Portal](../azure-monitor/platform/alerts-classic-portal.md). Geben Sie auf dem Blatt **Warnungsregel** die folgenden Werte ein, und wählen Sie dann **OK** aus.
 
   |**Einstellung** | **Wert** | **Details** |
   |---|---|---|
   |**Name**|TCP_Segments_Sent_Exceeded|Der Name der Warnungsregel.|
   |**Beschreibung**|Schwellenwertüberschreitung durch gesendete TCP-Segmente|Die Beschreibung für die Warnungsregel.|
   |**Metrik**|Gesendete TCP-Segmente| Die Metrik zur Auslösung der Warnung. |
-  |**Bedingung**|Größer als| Die Bedingung, die bei der Auswertung der Metrik verwendet werden soll.|
+  |**Condition**|Größer als| Die Bedingung, die bei der Auswertung der Metrik verwendet werden soll.|
   |**Schwellenwert**|100| Der Wert der Metrik, die die Warnung auslöst. Dieser Wert sollte auf einen gültigen Wert für Ihre Umgebung festgelegt werden.|
   |**Zeitraum**|In den letzten fünf Minuten| Bestimmt den Zeitraum, in dem der Schwellenwert für die Metrik geprüft werden soll.|
   |**Webhook**|[Webhook-URL aus der Funktions-App]| Die Webhook-URL aus der Funktions-App, die in den vorherigen Schritten erstellt wurde.|
 
 > [!NOTE]
-> Die Metrik der TCP-Segmente ist in der Standardeinstellung nicht aktiviert. Weitere Informationen dazu, wie Sie zusätzliche Metriken aktivieren, finden Sie unter [Aktivieren von Überwachung und Diagnose](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).
+> Die Metrik der TCP-Segmente ist in der Standardeinstellung nicht aktiviert. Weitere Informationen dazu, wie Sie zusätzliche Metriken aktivieren, finden Sie unter [Aktivieren von Überwachung und Diagnose](../azure-monitor/overview.md).
 
 ## <a name="review-the-results"></a>Überprüfen der Ergebnisse
 
@@ -364,11 +363,11 @@ Wenn die Kriterien für die Warnung erfüllt sind, wird eine Paketerfassung erst
 
 Wenn die Erfassungsdatei lokal gespeichert ist, können Sie sie abrufen, indem Sie sich auf dem virtuellen Computer anmelden.
 
-Eine Anleitung zum Herunterladen von Dateien aus Azure Storage-Konten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Sie können auch den [Storage-Explorer](https://storageexplorer.com/) verwenden.
+Eine Anleitung zum Herunterladen von Dateien aus Azure Storage-Konten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md). Sie können auch den [Storage-Explorer](https://storageexplorer.com/) verwenden.
 
 Nach dem Herunterladen Ihrer Erfassung können Sie diese mit einem beliebigen Tool anzeigen, das für Dateien vom Typ **.cap** geeignet ist. Hier finden Sie zwei Links zu geeigneten Tools:
 
-- [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
+- [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide)
 - [WireShark](https://www.wireshark.org/)
 
 ## <a name="next-steps"></a>Nächste Schritte

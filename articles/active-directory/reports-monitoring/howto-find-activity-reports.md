@@ -1,25 +1,25 @@
 ---
-title: Suchen von Benutzeraktivitätsberichten von Azure Active Directory im Azure-Portal | Microsoft-Dokumentation
+title: Suchen von Benutzeraktivitätsberichten im Azure-Portal | Microsoft-Dokumentation
 description: Erfahren Sie, wo sich die Azure Active Directory-Benutzeraktivitätsberichte im Azure-Portal befinden.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 42afa073da9197c12e4cbd316d311a7699d9a95f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127391"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013024"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Speicherorte von Aktivitätsberichten im Azure-Portal
 
@@ -52,13 +52,13 @@ Sie können die erweiterte Filterung im Überwachungsbericht verwenden, um auf e
 
 Zu den Kategorien zählen:
 
-- Alle
+- All
 - AdministrativeUnit
 - ApplicationManagement
 - Authentication
 - Authorization
 - Kontakt
-- Gerät
+- Sicherungsmedium
 - DeviceConfiguration
 - DirectoryManagement
 - EntitlementManagement
@@ -73,7 +73,7 @@ Mithilfe des Dropdownfilters **Dienst** können Sie auch nach einem bestimmten D
 
 Zu diesen Diensten gehören:
 
-- Alle
+- All
 - Zugriffsüberprüfungen
 - Kontobereitstellung 
 - Anwendungs-SSO
@@ -106,7 +106,7 @@ Greifen Sie wie folgt auf den Bericht „Anmeldungen“ zu:
 
 Sie können den Bericht „Anmeldungen“ verwenden, um Details zur Anwendungsnutzung anzuzeigen, indem Sie nach dem Benutzernamen oder Anwendungsnamen filtern.
 
-![Seite mit Filter nach Anmeldeereignissen](./media/howto-find-activity-reports/07.png "Seite mit Filter nach Anmeldeereignissen")
+![Seite „Anmeldeereignisse filtern“](./media/howto-find-activity-reports/07.png "Seite „Anmeldeereignisse filtern“")
 
 ## <a name="security-reports"></a>Sicherheitsberichte
 
@@ -114,7 +114,7 @@ Sie können den Bericht „Anmeldungen“ verwenden, um Details zur Anwendungsnu
 
 Berichte zu anomalen Aktivitäten enthalten Informationen zu sicherheitsbezogenen Risikoerkennungen, die in Azure AD erkannt und für die Berichte erstellt werden können.
 
-In der folgenden Tabelle sind die Azure AD-Sicherheitsberichte zu anomalen Aktivitäten und die entsprechenden Risikoerkennungstypen im Azure-Portal aufgeführt. Weitere Informationen finden Sie unter [Azure Active Directory-Risikoerkennungen](concept-risk-events.md).  
+In der folgenden Tabelle sind die Azure AD-Sicherheitsberichte zu anomalen Aktivitäten und die entsprechenden Risikoerkennungstypen im Azure-Portal aufgeführt. Weitere Informationen finden Sie unter [Azure Active Directory risk detections](../identity-protection/overview-identity-protection.md) (Azure Active Directory-Risikoerkennungen).  
 
 
 | Bericht zur anormalen Aktivität von Azure AD |  Identity Protection-Risikoerkennungstyp|
@@ -136,8 +136,8 @@ Folgende Azure AD-Sicherheitsberichte zu anomalen Aktivitäten sind nicht als R
 
 Sie können im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit** auf die Berichte zu erkannten Risikoerkennungen zugreifen. Die erkannten Risikoerkennungen werden in den folgenden Berichten nachverfolgt:   
 
-- [Gefährdete Benutzer](concept-user-at-risk.md)
-- [Riskante Anmeldungen](concept-risky-sign-ins.md)
+- [Gefährdete Benutzer](../identity-protection/overview-identity-protection.md)
+- [Riskante Anmeldungen](../identity-protection/overview-identity-protection.md)
 
     ![Sicherheitsberichte](./media/howto-find-activity-reports/04.png "Sicherheitsberichte")
 
@@ -149,7 +149,7 @@ Sie können im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Ac
 
 Ich habe die Aktivitätsprotokolle (Überwachung oder Anmeldungen) heruntergeladen, und für den ausgewählten Zeitraum werden nicht alle Datensätze angezeigt. Warum? 
 
- ![Berichterstellung](./media/troubleshoot-missing-data-download/01.png)
+ ![Screenshot der Schaltfläche „Herunterladen“ im Aktivitätsbericht](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>Ursache
 
@@ -165,16 +165,16 @@ Mithilfe von [Azure AD-Berichterstellungs-APIs](concept-reporting-api.md) könne
 
 Ich habe einige Aktionen im Azure-Portal ausgeführt und erwartet, die Überwachungsprotokolle für diese Aktionen auf dem Blatt `Activity logs > Audit Logs` zu finden. Ich kann sie jedoch nicht finden.
 
- ![Berichterstellung](./media/troubleshoot-missing-audit-data/01.png)
+ ![Screenshot des Aktivitätsberichts](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>Ursache
 
 Aktionen werden nicht sofort in den Aktivitätsprotokollen angezeigt. In der folgenden Tabelle sind unsere Latenzzahlen für Aktivitätsprotokolle aufgezählt. 
 
-| Bericht | &nbsp; | Wartezeit (P95) | Wartezeit (P99) |
-|--------|--------|---------------|---------------|
-| Verzeichnisüberwachung | &nbsp; | 2 Min. | 5 Min. |
-| Anmeldeaktivität | &nbsp; | 2 Min. | 5 Min. | 
+| Bericht | Wartezeit (P95) | Wartezeit (P99) |
+|--------|---------------|---------------|
+| Verzeichnisüberwachung | 2 Min. | 5 Min. |
+| Anmeldeaktivität | 2 Min. | 5 Min. |
 
 #### <a name="resolution"></a>Lösung
 
@@ -186,16 +186,16 @@ Warten Sie 15 Minuten bis zwei Stunden, und überprüfen Sie dann, ob die Aktion
 
 Ich habe mich kürzlich beim Azure-Portal angemeldet und erwartet, die Anmeldeprotokolle für diese Aktionen auf dem Blatt `Activity logs > Sign-ins` zu finden. Ich kann sie jedoch nicht finden.
 
- ![Berichterstellung](./media/troubleshoot-missing-audit-data/02.png)
+ ![Screenshot der Anmeldungen für Azure Active Directory](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>Ursache
 
 Aktionen werden nicht sofort in den Aktivitätsprotokollen angezeigt. In der folgenden Tabelle sind unsere Latenzzahlen für Aktivitätsprotokolle aufgezählt. 
 
-| Bericht | &nbsp; | Wartezeit (P95) | Wartezeit (P99) |
-|--------|--------|---------------|---------------|
-| Verzeichnisüberwachung | &nbsp; | 2 Min. | 5 Min. |
-| Anmeldeaktivität | &nbsp; | 2 Min. | 5 Min. | 
+| Bericht | Wartezeit (P95) | Wartezeit (P99) |
+|--------|---------------|---------------|
+| Verzeichnisüberwachung | 2 Min. | 5 Min. |
+| Anmeldeaktivität | 2 Min. | 5 Min. |
 
 #### <a name="resolution"></a>Lösung
 
@@ -207,16 +207,16 @@ Warten Sie 15 Minuten bis zwei Stunden, und überprüfen Sie dann, ob die Aktion
 
 Ich kann nur die Anmelde- und Überwachungsdaten der letzten 30 Tage aus dem Azure-Portal anzeigen. Warum? 
 
- ![Berichterstellung](./media/troubleshoot-missing-audit-data/03.png)
+ ![Screenshot des Menüs „Datum“](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>Ursache
 
 Je nach Lizenz gelten für die Speicherung von Aktivitätsberichten durch Azure Active Directory-Aktionen die folgenden Dauern:
 
-| Bericht           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| ---              | ----   |  ---           | ---                 | ---                 |
-| Verzeichnisprüfbericht  | &nbsp; |   7 Tage     | 30 Tage             | 30 Tage             |
-| Benutzeranmeldeaktivität | &nbsp; | Nicht verfügbar. Auf dem jeweiligen Benutzerprofilblatt können Sie auf Ihre eigenen Anmeldungen der letzten 7 Tage zugreifen. | 30 Tage | 30 Tage             |
+| Bericht           | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| ---              | ---           | ---                 | ---
+| Verzeichnisprüfbericht  | 7 Tage        | 30 Tage             | 30 Tage             |
+| Benutzeranmeldeaktivität | Nicht verfügbar. Auf dem jeweiligen Benutzerprofilblatt können Sie auf Ihre eigenen Anmeldungen der letzten 7 Tage zugreifen. | 30 Tage | 30 Tage             |
 
 Weitere Informationen finden Sie unter [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md).  
 
@@ -228,4 +228,4 @@ Sie haben zwei Möglichkeiten, um die Daten länger als 30 Tage beibehalten. Mit
 
 * [Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal](concept-audit-logs.md)
 * [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal](concept-sign-ins.md)
-* [Azure Active Directory-Risikoereignisse](concept-risk-events.md)
+* [Azure Active Directory-Risikoereignisse](../identity-protection/overview-identity-protection.md)

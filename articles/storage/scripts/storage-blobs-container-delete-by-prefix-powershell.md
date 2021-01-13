@@ -1,26 +1,21 @@
 ---
 title: Azure PowerShell-Skriptbeispiel – Löschen von Containern nach Präfix | Microsoft-Dokumentation
-description: Löschen Sie Azure Storage Blob-Container basierend auf einem Präfix des Containernamens.
+description: Lesen Sie ein Beispiel, in dem das Löschen einer Azure Blob Storage-Instanz basierend auf einem Präfix im Containernamen mithilfe von Azure PowerShell veranschaulicht wird.
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+ms.subservice: blobs
+ms.devlang: powershell
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: e0c41ed1fc2cdb7559d36a7056ebb7b9a6ecc186
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b95c5ab243fbd938e8a7eb1d3b9619b0d46fb046
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242769"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89072949"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Löschen von Containern basierend auf dem Präfix des Containernamens
 
@@ -34,7 +29,7 @@ Dieses Skript löscht Container in Azure Blob Storage basierend auf einem Präfi
 
 [!code-powershell[main](../../../powershell_scripts/storage/delete-containers-by-prefix/delete-containers-by-prefix.ps1 "Delete containers by prefix")]
 
-## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
+## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, die verbleibenden Container sowie alle zugehörigen Ressourcen zu entfernen.
 
@@ -54,6 +49,6 @@ Dieses Skript verwendet die folgenden Befehle, um basierend auf dem Präfix des 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Weitere PowerShell-Skriptbeispiele für Speicher finden Sie in den [PowerShell-Beispielen für Azure Blob Storage](../blobs/storage-samples-blobs-powershell.md).

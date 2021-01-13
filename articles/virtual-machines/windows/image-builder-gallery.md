@@ -1,188 +1,292 @@
 ---
-title: Verwenden Sie Azure Image Builder mit einem Imagekatalog für Windows-VMs (Vorschauversion)
-description: Erstellen Sie Windows-Images mit Azure Image Builder und einem Katalog für freigegebene Images.
+title: Verwenden von Azure Image Builder mit einem Imagekatalog für Windows-VMs (Vorschauversion)
+description: Erstellen Sie Azure Shared Gallery-Imageversionen mithilfe von Azure Image Builder und Azure PowerShell.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2019
-ms.topic: article
+ms.date: 05/05/2020
+ms.topic: how-to
 ms.service: virtual-machines-windows
-manager: gwallace
-ms.openlocfilehash: 33f13c09a06885523298bd7c23744e79f68e5301
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.subservice: imaging
+ms.openlocfilehash: 96603d27f53161c72c9e81bb7b84fdc6ab5d1ca2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698671"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91320063"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Vorschau: Erstellen eines Windows-Image und Verteilen in einem Katalog für freigegebene Images 
 
-In diesem Artikel erfahren Sie, wie Sie Azure Image Builder verwenden können, um eine Imageversion in einem [Katalog für freigegebene Images](shared-image-galleries.md) zu erstellen und dann global zu verteilen.
+In diesem Artikel erfahren Sie, wie Sie mit Azure Image Builder und Azure PowerShell eine Imageversion in einer [Shared Image Gallery](shared-image-galleries.md) erstellen und dann global verteilen. Sie können hierfür auch die [Azure-Befehlszeilenschnittstelle](../linux/image-builder-gallery.md) verwenden.
 
-Wir verwenden eine JSON-Vorlage, um das Image zu konfigurieren. Wir verwenden die JSON-Datei [helloImageTemplateforWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json). 
+Wir verwenden eine JSON-Vorlage, um das Image zu konfigurieren. Wir verwenden die JSON-Datei [armTemplateWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). Wir laden eine lokale Version der Vorlage herunter und bearbeiten diese, sodass in diesem Artikel die lokale PowerShell-Sitzung verwendet wird.
 
 Die Vorlage verwendet [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) als Wert für den `distribute`-Abschnitt der Vorlage, um das Image in einem Katalog für freigegebene Images zu verteilen.
 
+Azure Image Builder führt automatisch Sysprep aus, um das Image zu generalisieren. Dies ist ein generischer Sysprep-Befehl, den Sie bei Bedarf [außer Kraft setzen](../linux/image-builder-troubleshoot.md#vms-created-from-aib-images-do-not-create-successfully) können. 
+
+Achten Sie darauf, wie oft Sie Anpassungen nacheinander vornehmen. Sie können den Sysprep-Befehl auf einem einzelnen Windows-Image bis zu 8-mal ausführen. Nach dem achten Ausführen von Sysprep müssen Sie das Windows-Image neu erstellen. Weitere Informationen finden Sie unter [Grenzwerte für die Ausführung von Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep). 
+
 > [!IMPORTANT]
-> Azure Image Builder ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar.
+> Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="register-the-features"></a>Registrieren des Features
 Sie müssen das neue Feature registrieren, um Azure Image Builder während der Vorschauphase verwenden zu können.
 
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
+```powershell
+Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
 ```
 
 Überprüfen Sie den Status der Featureregistrierung.
 
-```azurecli-interactive
-az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
+```powershell
+Get-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
 ```
 
-Überprüfen Sie die Registrierung.
+Warten Sie, bis `RegistrationState` den Wert `Registered` aufweist, bevor Sie mit dem nächsten Schritt fortfahren.
 
-```azurecli-interactive
-az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-az provider show -n Microsoft.Storage | grep registrationState
-az provider show -n Microsoft.Compute | grep registrationState
+Überprüfen Sie Ihre Anbieterregistrierungen. Vergewissern Sie sich, dass jede `Registered` zurückgibt.
+
+```powershell
+Get-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages | Format-table -Property ResourceTypes,RegistrationState
+Get-AzResourceProvider -ProviderNamespace Microsoft.Storage | Format-table -Property ResourceTypes,RegistrationState 
+Get-AzResourceProvider -ProviderNamespace Microsoft.Compute | Format-table -Property ResourceTypes,RegistrationState
+Get-AzResourceProvider -ProviderNamespace Microsoft.KeyVault | Format-table -Property ResourceTypes,RegistrationState
 ```
 
-Wenn nicht „registered“ ausgegeben wird, führen Sie den folgenden Befehl aus:
+Wenn nicht `Registered` zurückgegeben wird, registrieren Sie die Anbieter wie folgt:
 
-```azurecli-interactive
-az provider register -n Microsoft.VirtualMachineImages
-az provider register -n Microsoft.Storage
-az provider register -n Microsoft.Compute
+```powershell
+Register-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages
+Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
+Register-AzResourceProvider -ProviderNamespace Microsoft.KeyVault
 ```
 
-## <a name="set-variables-and-permissions"></a>Festlegen von Variablen und Berechtigungen 
+## <a name="create-variables"></a>Erstellen von Variablen
 
 Einige Angaben verwenden wir wiederholt. Aus diesem Grund erstellen wir einige Variablen, um diese Informationen zu speichern. Ersetzen Sie die Werte für die Variablen, wie `username` und `vmpassword`, durch Ihre eigenen Angaben.
 
-```azurecli-interactive
-# Resource group name - we are using ibsigRG in this example
-sigResourceGroup=myIBWinRG
-# Datacenter location - we are using West US 2 in this example
-location=westus
-# Additional region to replicate the image to - we are using East US in this example
-additionalregion=eastus
-# name of the shared image gallery - in this example we are using myGallery
-sigName=my22stSIG
-# name of the image definition to be created - in this example we are using myImageDef
-imageDefName=winSvrimages
-# image distribution metadata reference name
-runOutputName=w2019SigRo
-# User name and password for the VM
-username="azureuser"
-vmpassword="passwordfortheVM"
-```
+```powershell
+# Get existing context
+$currentAzContext = Get-AzContext
 
-Erstellen Sie eine Variable für Ihre Abonnement-ID. Diese können Sie mit `az account show | grep id` abrufen.
+# Get your current subscription ID. 
+$subscriptionID=$currentAzContext.Subscription.Id
 
-```azurecli-interactive
-subscriptionID="Subscription ID"
-```
+# Destination image resource group
+$imageResourceGroup="aibwinsig"
 
-Erstellen Sie die Ressourcengruppe.
+# Location
+$location="westus"
 
-```azurecli-interactive
-az group create -n $sigResourceGroup -l $location
-```
+# Image distribution metadata reference name
+$runOutputName="aibCustWinManImg02ro"
 
+# Image template name
+$imageTemplateName="helloImageTemplateWin02ps"
 
-Erteilen Sie Azure Image Builder die Berechtigung, Ressourcen in dieser Ressourcengruppe erstellen zu können. Der Wert `--assignee` ist die App-Registrierungs-ID für den Image Builder-Dienst. 
+# Distribution properties object name (runOutput).
+# This gives you the properties of the managed image on completion.
+$runOutputName="winclientR01"
 
-```azurecli-interactive
-az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
+# Create a resource group for Image Template and Shared Image Gallery
+New-AzResourceGroup `
+   -Name $imageResourceGroup `
+   -Location $location
 ```
 
 
-## <a name="create-an-image-definition-and-gallery"></a>Erstellen einer Imagedefinition und eines Imagekatalogs
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Erstellen einer vom Benutzer zugewiesenen Identität und Festlegen von Berechtigungen für die Ressourcengruppe
+Image Builder verwendet die angegebene [Benutzeridentität](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md), um das Image in die Azure Shared Image Gallery (SIG) einzufügen. In diesem Beispiel erstellen Sie eine Azure-Rollendefinition, die über die präzisen Aktionen zur Verteilung des Images an die SIG verfügt. Die Rollendefinition wird dann der Benutzeridentität zugewiesen.
+
+```powershell
+# setup role def names, these need to be unique
+$timeInt=$(get-date -UFormat "%s")
+$imageRoleDefName="Azure Image Builder Image Def"+$timeInt
+$identityName="aibIdentity"+$timeInt
+
+## Add AZ PS module to support AzUserAssignedIdentity
+Install-Module -Name Az.ManagedServiceIdentity
+
+# create identity
+New-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $identityName
+
+$identityNameResourceId=$(Get-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $identityName).Id
+$identityNamePrincipalId=$(Get-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $identityName).PrincipalId
+```
+
+
+### <a name="assign-permissions-for-identity-to-distribute-images"></a>Zuweisen von Berechtigungen für die Identität zum Verteilen von Images
+
+Mit diesem Befehl wird eine Azure-Rollendefinitionsvorlage heruntergeladen und die Vorlage mit den zuvor angegebenen Parametern aktualisiert.
+
+```powershell
+$aibRoleImageCreationUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
+$aibRoleImageCreationPath = "aibRoleImageCreation.json"
+
+# download config
+Invoke-WebRequest -Uri $aibRoleImageCreationUrl -OutFile $aibRoleImageCreationPath -UseBasicParsing
+
+((Get-Content -path $aibRoleImageCreationPath -Raw) -replace '<subscriptionID>',$subscriptionID) | Set-Content -Path $aibRoleImageCreationPath
+((Get-Content -path $aibRoleImageCreationPath -Raw) -replace '<rgName>', $imageResourceGroup) | Set-Content -Path $aibRoleImageCreationPath
+((Get-Content -path $aibRoleImageCreationPath -Raw) -replace 'Azure Image Builder Service Image Creation Role', $imageRoleDefName) | Set-Content -Path $aibRoleImageCreationPath
+
+# create role definition
+New-AzRoleDefinition -InputFile  ./aibRoleImageCreation.json
+
+# grant role definition to image builder service principal
+New-AzRoleAssignment -ObjectId $identityNamePrincipalId -RoleDefinitionName $imageRoleDefName -Scope "/subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup"
+
+### NOTE: If you see this error: 'New-AzRoleDefinition: Role definition limit exceeded. No more role definitions can be created.' See this article to resolve:
+https://docs.microsoft.com/azure/role-based-access-control/troubleshooting
+```
+
+
+## <a name="create-the-shared-image-gallery"></a>Erstellen der Shared Image Gallery-Instanz
 
 Zum Verwenden von Image Builder mit einem Katalog mit freigegebenen Images benötigen Sie einen vorhandenen Imagekatalog und eine Imagedefinition. Imagekatalog und Imagedefinition werden nicht von Image Builder für Sie erstellt.
 
 Wenn Sie noch nicht über einen zu verwendenden Katalog und eine Imagedefinition verfügen, erstellen Sie diese zunächst. Erstellen Sie zuerst einen Imagekatalog.
 
-```azurecli-interactive
-az sig create \
-    -g $sigResourceGroup \
-    --gallery-name $sigName
+```powershell
+# Image gallery name
+$sigGalleryName= "myIBSIG"
+
+# Image definition name
+$imageDefName ="winSvrimage"
+
+# additional replication region
+$replRegion2="eastus"
+
+# Create the gallery
+New-AzGallery `
+   -GalleryName $sigGalleryName `
+   -ResourceGroupName $imageResourceGroup  `
+   -Location $location
+
+# Create the image definition
+New-AzGalleryImageDefinition `
+   -GalleryName $sigGalleryName `
+   -ResourceGroupName $imageResourceGroup `
+   -Location $location `
+   -Name $imageDefName `
+   -OsState generalized `
+   -OsType Windows `
+   -Publisher 'myCompany' `
+   -Offer 'WindowsServer' `
+   -Sku 'WinSrv2019'
 ```
 
-Erstellen Sie anschließend eine Imagedefinition.
-
-```azurecli-interactive
-az sig image-definition create \
-   -g $sigResourceGroup \
-   --gallery-name $sigName \
-   --gallery-image-definition $imageDefName \
-   --publisher corpIT \
-   --offer myOffer \
-   --sku 2019 \
-   --os-type Windows
-```
 
 
-## <a name="download-and-configure-the-json"></a>Herunterladen und Konfigurieren der JSON-Datei
+## <a name="download-and-configure-the-template"></a>Herunterladen und Konfigurieren der Vorlage
 
 Laden Sie die JSON-Vorlage herunter, und konfigurieren Sie diese mit Ihren Variablen.
 
-```azurecli-interactive
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json -o helloImageTemplateforWinSIG.json
-sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<rgName>/$sigResourceGroup/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<imageDefName>/$imageDefName/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<sharedImageGalName>/$sigName/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<region1>/$location/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforWinSIG.json
+```powershell
+
+$templateFilePath = "armTemplateWinSIG.json"
+
+Invoke-WebRequest `
+   -Uri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json" `
+   -OutFile $templateFilePath `
+   -UseBasicParsing
+
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<subscriptionID>',$subscriptionID | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<rgName>',$imageResourceGroup | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<runOutputName>',$runOutputName | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<imageDefName>',$imageDefName | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<sharedImageGalName>',$sigGalleryName | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<region1>',$location | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<region2>',$replRegion2 | Set-Content -Path $templateFilePath
+((Get-Content -path $templateFilePath -Raw) -replace '<imgBuilderId>',$identityNameResourceId) | Set-Content -Path $templateFilePath
 ```
+
 
 ## <a name="create-the-image-version"></a>Erstellen der Imageversion
 
-Im folgenden Teil erstellen Sie die Imageversion im Katalog. 
+Ihre Vorlage muss an den Dienst übermittelt werden. Dadurch werden alle abhängigen Artefakte wie Skripts heruntergeladen und mit dem Präfix *IT_* in der Stagingressourcengruppe gespeichert.
 
-Senden Sie die Imagekonfiguration an den Azure Image Builder-Dienst.
-
-```azurecli-interactive
-az resource create \
-    --resource-group $sigResourceGroup \
-    --properties @helloImageTemplateforWinSIG.json \
-    --is-full-object \
-    --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateforWinSIG01
+```powershell
+New-AzResourceGroupDeployment `
+   -ResourceGroupName $imageResourceGroup `
+   -TemplateFile $templateFilePath `
+   -apiversion "2019-05-01-preview" `
+   -imageTemplateName $imageTemplateName `
+   -svclocation $location
 ```
 
-Starten Sie den Imagebuild.
+Um das Image zu erstellen, müssen Sie „Ausführen“ für die Vorlage aufrufen.
 
-```azurecli-interactive
-az resource invoke-action \
-     --resource-group $sigResourceGroup \
-     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
-     -n helloImageTemplateforWinSIG01 \
-     --action Run 
+```powershell
+Invoke-AzResourceAction `
+   -ResourceName $imageTemplateName `
+   -ResourceGroupName $imageResourceGroup `
+   -ResourceType Microsoft.VirtualMachineImages/imageTemplates `
+   -ApiVersion "2019-05-01-preview" `
+   -Action Run
 ```
 
 Das Erstellen des Images und Replizieren in beiden Regionen kann einige Zeit in Anspruch nehmen. Warten Sie den Abschluss des Vorgangs ab, bevor Sie eine VM erstellen.
+
+Informationen zu den Optionen zum Automatisieren des Imagebuildstatus finden Sie in der [Infodatei](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query) für diese Vorlage auf GitHub.
 
 
 ## <a name="create-the-vm"></a>Erstellen des virtuellen Computers
 
 Erstellen Sie eine VM aus der Imageversion, die von Azure Image Builder erstellt wurde.
 
-```azurecli-interactive
-az vm create \
-  --resource-group $sigResourceGroup \
-  --name aibImgWinVm001 \
-  --admin-username $username \
-  --admin-password $vmpassword \
-  --image "/subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup/providers/Microsoft.Compute/galleries/$sigName/images/$imageDefName/versions/latest" \
-  --location $location
+Rufen Sie die erstellte Imageversion ab.
+```powershell
+$imageVersion = Get-AzGalleryImageVersion `
+   -ResourceGroupName $imageResourceGroup `
+   -GalleryName $sigGalleryName `
+   -GalleryImageDefinitionName $imageDefName
 ```
 
+Erstellen Sie die VM in der zweiten Region, in der das Image repliziert wurde.
+
+```powershell
+$vmResourceGroup = "myResourceGroup"
+$vmName = "myVMfromImage"
+
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a resource group
+New-AzResourceGroup -Name $vmResourceGroup -Location $replRegion2
+
+# Network pieces
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+$vnet = New-AzVirtualNetwork -ResourceGroupName $vmResourceGroup -Location $replRegion2 `
+  -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+$pip = New-AzPublicIpAddress -ResourceGroupName $vmResourceGroup -Location $replRegion2 `
+  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
+  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+  -DestinationPortRange 3389 -Access Allow
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $vmResourceGroup -Location $replRegion2 `
+  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
+$nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $vmResourceGroup -Location $replRegion2 `
+  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+
+# Create a virtual machine configuration using $imageVersion.Id to specify the shared image
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
+Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
+Set-AzVMSourceImage -Id $imageVersion.Id | `
+Add-AzVMNetworkInterface -Id $nic.Id
+
+# Create a virtual machine
+New-AzVM -ResourceGroupName $vmResourceGroup -Location $replRegion2 -VM $vmConfig
+```
 
 ## <a name="verify-the-customization"></a>Überprüfen der Anpassung
 Stellen Sie eine Remotedesktopverbindung mit der VM mit dem Benutzernamen und dem Kennwort her, die Sie beim Erstellen der VM festgelegt haben. Öffnen Sie in der VM eine Eingabeaufforderung, und geben Sie Folgendes ein:
@@ -200,54 +304,42 @@ Wenn Sie die Imageversion erneut anpassen möchten, um eine neue Version desselb
 
 Das erstellte Image und dessen Ressourcendateien werden gelöscht. Achten Sie darauf, dass Sie mit dieser Bereitstellung fertig sind, bevor Sie die Ressourcen löschen.
 
-Wenn Sie die Imagekatalogressourcen löschen, müssen Sie alle Imageversionen löschen, bevor Sie die Imagedefinition löschen können, die für deren Erstellung verwendet wurde. Sie müssen zunächst alle Imagedefinitionen im Katalog löschen, um den Katalog löschen zu können.
+Löschen Sie zuerst die Ressourcengruppenvorlage, andernfalls wird die von AIB verwendete Stagingressourcengruppe (*IT_* ) nicht bereinigt.
 
-Löschen Sie die Image Builder-Vorlage.
+Rufen Sie die Ressourcen-ID der Imagevorlage ab. 
 
-```azurecli-interactive
-az resource delete \
-    --resource-group $sigResourceGroup \
-    --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateforWinSIG01
+```powerShell
+$resTemplateId = Get-AzResource -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2019-05-01-preview"
 ```
 
-Rufen Sie die von Image Builder erstellte Imageversion ab (diese beginnt immer mit `0.`), und löschen Sie diese.
+Löschen Sie die Imagevorlage.
 
-```azurecli-interactive
-sigDefImgVersion=$(az sig image-version list \
-   -g $sigResourceGroup \
-   --gallery-name $sigName \
-   --gallery-image-definition $imageDefName \
-   --subscription $subscriptionID --query [].'name' -o json | grep 0. | tr -d '"')
-az sig image-version delete \
-   -g $sigResourceGroup \
-   --gallery-image-version $sigDefImgVersion \
-   --gallery-name $sigName \
-   --gallery-image-definition $imageDefName \
-   --subscription $subscriptionID
-```   
-
-
-Löschen Sie die Imagedefinition.
-
-```azurecli-interactive
-az sig image-definition delete \
-   -g $sigResourceGroup \
-   --gallery-name $sigName \
-   --gallery-image-definition $imageDefName \
-   --subscription $subscriptionID
+```powerShell
+Remove-AzResource -ResourceId $resTemplateId.ResourceId -Force
 ```
 
-Löschen Sie den Katalog.
+Löschen von Rollenzuweisungen
 
-```azurecli-interactive
-az sig delete -r $sigName -g $sigResourceGroup
+```powerShell
+Remove-AzRoleAssignment -ObjectId $identityNamePrincipalId -RoleDefinitionName $imageRoleDefName -Scope "/subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup"
+```
+
+Definitionen entfernen
+
+```powerShell
+Remove-AzRoleDefinition -Name "$identityNamePrincipalId" -Force -Scope "/subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup"
+```
+
+Identität löschen
+
+```powerShell
+Remove-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $identityName -Force
 ```
 
 Löschen Sie die Ressourcengruppe.
 
-```azurecli-interactive
-az group delete -n $sigResourceGroup -y
+```powerShell
+Remove-AzResourceGroup $imageResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,9 +1,9 @@
 ---
 title: Azure PowerShell-Beispiele für Traffic Manager | Microsoft-Dokumentation
-description: Azure PowerShell-Beispiele für Traffic Manager
+description: Verwenden Sie in diesem Beispiel Azure PowerShell, um Azure Traffic Manager bereitzustellen und zu konfigurieren.
 services: traffic-manager
 documentationcenter: traffic-manager
-author: asudbring
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 10/23/2018
-ms.author: allensu
-ms.openlocfilehash: b82cfe77ceead51dd78fc595eb0d504d91c7780d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: duau
+ms.openlocfilehash: 03b34312f168f49e65fd83f826b2ad9f5759226e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051025"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89400244"
 ---
 # <a name="azure-powershell-samples-for-traffic-manager"></a>Azure PowerShell-Beispiele für Traffic Manager
 

@@ -2,32 +2,28 @@
 title: 'Tutorial: Konfigurieren von Workgrid für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Workgrid konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fb48deae-4653-448a-ba2f-90258edab3a7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: c714fa736375e36d68a528dfea82c2c4b7ef448f
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: ec39e4796d2a06ad88a8e88ea99b953064eb6d21
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69908071"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348329"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workgrid für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die in Workgrid und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in Workgrid zu konfigurieren.
 
 > [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
+> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Dieser Connector befindet sich derzeit in der Public Preview-Phase. Weitere Informationen zu den allgemeinen Nutzungsbedingungen von Microsoft Azure für Previewfunktionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -58,15 +54,15 @@ Bevor Sie Workgrid für die automatische Benutzerbereitstellung in Azure AD kon
 
 1. Melden Sie sich bei Workgrid an. Navigieren Sie zu **Users > User Provisioning** (Benutzer > Benutzerbereitstellung).
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/user.png)
+    ![Screenshot der Workgrid-Benutzeroberfläche mit den hervorgehobenen Optionen „Users“ (Benutzer) und „User Provisioning“ (Benutzerbereitstellung).](media/Workgrid-provisioning-tutorial/user.png)
 
 2. Klicken Sie unter **Account Management API** (Kontoverwaltungs-API) auf **Create Credentials** (Anmeldeinformationen erstellen).
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/scim.png)
+    ![Screenshot des Abschnitts „Account Management API“ (Kontoverwaltungs-API) mit hervorgehobener Option „Create Credentials“ (Anmeldeinformationen erstellen).](media/Workgrid-provisioning-tutorial/scim.png)
 
 3. Kopieren Sie die Werte für **SCIM Endpoint** (SCIM-Endpunkt) und **Access Token** (Zugriffstoken). Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Workgrid-Anwendung in die Felder **Mandanten-URL** und **Geheimes Token** eingegeben.
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/token.png)
+    ![Screenshot des Abschnitts „Account Management API“ (Kontoverwaltungs-API), in dem „SCIM Endpoint“ (SCIM-Endpunkt) und „Access Token“ (Zugriffstoken) hervorgehoben sind.](media/Workgrid-provisioning-tutorial/token.png)
 
 
 ## <a name="add-workgrid--from-the-gallery"></a>Hinzufügen von Workgrid aus dem Katalog
@@ -104,17 +100,17 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste **Workgrid**aus.
+2. Wählen Sie in der Anwendungsliste **Workgrid** aus.
 
     ![Der Workgrid-Link in der Anwendungsliste](common/all-applications.png)
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt „Administratoranmeldeinformationen“ die zuvor abgerufenen Werte für **SCIM Endpoint** (SCIM-Endpunkt) und **Access Token** (Zugriffstoken) in die Felder **Mandanten-URL** bzw. **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Workgrid herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Workgrid-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
 
@@ -128,7 +124,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Workgrid synchronisieren** aus.
 
-    ![Benutzerzuordnungen in Workgrid](media/Workgrid-provisioning-tutorial/usermapping.png)
+    ![Screenshot des Abschnitts „Zuordnungen“ mit hervorgehobener Option „Azure Active Directory-Benutzer mit Workgrid synchronisieren“.](media/Workgrid-provisioning-tutorial/usermapping.png)
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Workgrid synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Workgrid für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
@@ -136,13 +132,13 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Groups to Workgrid** (Azure Active Directory-Gruppen mit Workgrid synchronisieren) aus.
 
-    ![Benutzerzuordnungen in Workgrid](media/Workgrid-provisioning-tutorial/groupmapping.png)
+    ![Screenshot des Abschnitts „Zuordnungen“ mit hervorgehobener Option „Azure Active Directory-Gruppen mit Workgrid synchronisieren“.](media/Workgrid-provisioning-tutorial/groupmapping.png)
 
 12. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Workgrid synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Workgrid für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Benutzerzuordnungen in Workgrid](media/Workgrid-provisioning-tutorial/groupattribute.png)
+    ![Screenshot des Abschnitts „Attributzuordnungen“ mit drei Zuordnungen.](media/Workgrid-provisioning-tutorial/groupattribute.png)
 
-13. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+13. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 14. Um den Azure AD-Bereitstellungsdienst für Workgrid zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
@@ -156,15 +152,15 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
-Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung nimmt mehr Zeit in Anspruch als die nachfolgenden Synchronisierungen. Unter [Überprüfen des Status der Benutzerbereitstellung](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users) finden Sie weitere Informationen dazu, wie lange das Bereitstellen von Benutzern und/oder Gruppen dauert.
+Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung nimmt mehr Zeit in Anspruch als die nachfolgenden Synchronisierungen. Unter [Überprüfen des Status der Benutzerbereitstellung](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users) finden Sie weitere Informationen dazu, wie lange das Bereitstellen von Benutzern und/oder Gruppen dauert.
 
-Im Abschnitt **Aktueller Status** können Sie den Fortschritt überwachen und Links zu Ihrem Bereitstellungsaktivitätsbericht folgen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst für Workgrid ausgeführt werden. Weitere Informationen finden Sie unter [Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Informationen zum Lesen der Azure AD-Bereitstellungsprotokolle finden Sie unter [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Im Abschnitt **Aktueller Status** können Sie den Fortschritt überwachen und Links zu Ihrem Bereitstellungsaktivitätsbericht folgen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst für Workgrid ausgeführt werden. Weitere Informationen finden Sie unter [Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Informationen zum Lesen der Azure AD-Bereitstellungsprotokolle finden Sie unter [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../app-provisioning/check-status-user-account-provisioning.md)

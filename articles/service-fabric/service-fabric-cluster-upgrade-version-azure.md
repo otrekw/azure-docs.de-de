@@ -1,25 +1,14 @@
 ---
-title: Upgrade eines Azure Service Fabric-Clusters | Microsoft Docs
+title: Upgrade der Azure Service Fabric-Version eines Clusters
 description: Upgraden Sie den Service Fabric-Code und/oder die Konfiguration für die Ausführung eines Service Fabric-Clusters, und machen Sie sich unter anderem mit dem Festlegen des Clusteraktualisierungsmodus, dem Upgraden von Zertifikaten, dem Hinzufügen von Anwendungsports und dem Anwenden von Betriebssystempatches vertraut. Was können Sie erwarten, wenn die Upgrades durchgeführt werden?
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
-ms.author: atsenthi
-ms.openlocfilehash: 03fd5f2950349f0dc76021d28845e383c0ba6a64
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 01fe916f0ee78c8481ac6b17b8f7409b47c852ee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599811"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90564286"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Aktualisieren der Service Fabric-Version eines Clusters
 
@@ -30,7 +19,7 @@ Sie können Ihren Cluster so konfigurieren, dass er Fabric-Upgrades automatisch 
 Hierzu legen Sie die Clusterkonfiguration „upgradeMode“ über das Portal oder mithilfe von Resource Manager fest – entweder zum Zeitpunkt der Clustererstellung oder später für einen aktiven Cluster. 
 
 > [!NOTE]
-> Achten Sie immer darauf, dass in Ihrem Cluster eine unterstützte Fabric-Version ausgeführt wird. Nach der Ankündigung einer neuen Service Fabric-Version beträgt die verbleibende Supportdauer der vorherigen Version noch mindestens 60 Tage. Neue Versionen werden im [Blog des Service Fabric-Teams](https://blogs.msdn.microsoft.com/azureservicefabric/)angekündigt. Ab dann kann die neue Version ausgewählt werden. 
+> Achten Sie immer darauf, dass in Ihrem Cluster eine unterstützte Fabric-Version ausgeführt wird. Nach der Ankündigung einer neuen Service Fabric-Version beträgt die verbleibende Supportdauer der vorherigen Version noch mindestens 60 Tage. Neue Versionen werden im [Blog des Service Fabric-Teams](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)angekündigt. Ab dann kann die neue Version ausgewählt werden. 
 > 
 > 
 
@@ -39,7 +28,7 @@ Hierzu legen Sie die Clusterkonfiguration „upgradeMode“ über das Portal ode
 ## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>Festlegen des Upgrademodus im Azure-Portal
 Bei der Clustererstellung haben Sie die Wahl zwischen einem automatischen und einem manuellen Modus:
 
-![Create_Manualmode][Create_Manualmode]
+![Screenshot mit dem Bereich „Service Fabric-Cluster erstellen“ mit ausgewählter Option 2 „Clusterkonfiguration“ sowie dem geöffneten Bereich für die Clusterkonfiguration][Create_Manualmode]
 
 Einen aktiven Cluster können Sie über die Verwaltungsoberfläche in den automatischen oder manuellen Modus versetzen. 
 
@@ -50,12 +39,12 @@ Wenn die Integritätsrichtlinien des Clusters nicht erfüllt sind, wird das Upgr
 
 Beheben Sie die Probleme, die zu dem Rollback geführt haben, und initiieren Sie das Upgrade erneut, indem Sie die gleichen Schritte ausführen wie zuvor.
 
-![Manage_Automaticmode][Manage_Automaticmode]
+![Screenshot mit dem Fenster zu Service Fabric-Clustern mit dem geöffneten Bereich zu Fabric-Upgrades und den hervorgehobenen Upgradeoptionen, einschließlich „automatisch“ und „manuell“][Manage_Automaticmode]
 
 ## <a name="set-the-upgrade-mode-using-a-resource-manager-template"></a>Festlegen des Upgrademodus mithilfe einer Resource Manager-Vorlage
 Fügen Sie der Microsoft.ServiceFabric/Clusterressourcendefinition die Konfiguration „upgradeMode“ hinzu, legen Sie „clusterCodeVersion“ wie unten gezeigt auf eine der unterstützten Fabric-Versionen fest, und stellen Sie dann die Vorlage bereit. Gültige Werte für „upgradeMode“ sind „Manual“ und „Automatic“.
 
-![ARMUpgradeMode][ARMUpgradeMode]
+![Screenshot mit Vorlage, in der der Klartext eingerückt ist, um die Struktur widerzuspiegeln; clusterCodeVersion und upgradeMode sind hervorgehoben][ARMUpgradeMode]
 
 ### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>Upgraden auf eine neue Version in einem Cluster im manuellen Modus mithilfe einer Resource Manager-Vorlage
 Wenn sich der Cluster im manuellen Modus befindet und Sie ein Upgrade auf eine neue Version durchführen möchten, legen Sie „clusterCodeVersion“ auf eine unterstützte Version fest, und stellen Sie sie bereit. Das Fabric-Upgrade wird durch die Bereitstellung der Vorlage automatisch initiiert. Bei dem Upgrade werden die Clusterintegritätsrichtlinien (eine Kombination aus Knotenintegrität und Integrität aller im Cluster ausgeführten Anwendungen) berücksichtigt.
@@ -121,7 +110,7 @@ Output:
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über das [Anpassen von Service Fabric-Clustereinstellungen](service-fabric-cluster-fabric-settings.md).
-* Machen Sie sich mit der Vorgehensweise zum [Skalieren Ihres Clusters](service-fabric-cluster-scale-up-down.md)
+* Machen Sie sich mit der Vorgehensweise zum [Skalieren Ihres Clusters](service-fabric-cluster-scale-in-out.md)
 * Machen Sie sich mit [Anwendungsupgrades](service-fabric-application-upgrade.md)
 
 <!--Image references-->

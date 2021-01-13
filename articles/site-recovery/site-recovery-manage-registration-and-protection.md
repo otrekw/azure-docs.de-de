@@ -1,18 +1,18 @@
 ---
 title: Entfernen von Servern und Deaktivieren des Schutzes | Microsoft Docs
 description: In diesem Artikel wird erläutert, wie Sie die Registrierung von Servern im Site Recovery-Tresor aufheben und den Schutz für virtuelle Computer und physische Server deaktivieren.
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.author: rajanaki
-ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: sharrai
+ms.openlocfilehash: a4f6c318a7521e1fbc03ff3a47e34e992cce44df
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875801"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89424785"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Entfernen von Servern und Deaktivieren des Schutzes
 
@@ -169,11 +169,11 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
    - **Replikation deaktivieren und entfernen (empfohlen)** – diese Option entfernt das replizierte Element aus Azure Site Recovery. Außerdem wird die Replikation für den Computer beendet. Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird bereinigt, und die Abrechnung für Site Recovery für diesen geschützten Server wird beendet.
    - **Entfernen** – diese Option sollte nur verwendet werden, wenn die Quellumgebung gelöscht wurde oder darauf nicht zugegriffen werden kann (keine Verbindung). Dadurch wird das replizierte Element aus Azure Site Recovery entfernt (und die Abrechnung wird beendet). Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird **nicht** bereinigt. 
 
- > [!NOTE]
-     > Wenn Sie die Option **Entfernen** ausgewählt haben, führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für den lokalen Hyper-V-Server zu bereinigen.
+    > [!NOTE]
+    > Wenn Sie die Option **Entfernen** ausgewählt haben, führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für den lokalen Hyper-V-Server zu bereinigen.
 
-> [!NOTE]
-> Wenn Sie bereits ein Failover für einen virtuellen Computer ausgeführt haben und dieser in Azure ausgeführt wird, sollten Sie beachten, dass dieser virtuelle Computer durch den deaktivierten Schutz nicht entfernt wird bzw. nicht davon betroffen ist.
+    > [!NOTE]
+    > Wenn Sie bereits ein Failover für einen virtuellen Computer ausgeführt haben und dieser in Azure ausgeführt wird, sollten Sie beachten, dass dieser virtuelle Computer durch den deaktivierten Schutz nicht entfernt wird bzw. nicht davon betroffen ist.
 
 1. Entfernen Sie auf dem Hyper-V-Quellhostserver die Replikation für den virtuellen Computer. Ersetzen Sie SQLVM1 durch den Namen des virtuellen Computers, und führen Sie das Skript in einer administrativen PowerShell aus.
 
@@ -196,8 +196,11 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
      > Wenn Sie die Option **Entfernen** ausgewählt haben, führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für den lokalen VMM-Server zu bereinigen.
 3. Führen Sie dieses Skript auf dem VMM-Quellserver mithilfe von PowerShell (Administratorrechte erforderlich) an der VMM-Konsole aus. Ersetzen Sie den Platzhalter **SQLVM1** durch den Namen des virtuellen Computers.
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. Mit den obigen Schritten werden die Replikationseinstellungen auf dem VMM-Server gelöscht. Um die Replikation für den virtuellen Computer zu beenden, der auf dem Hyper-V-Hostserver ausgeführt wird, führen Sie dieses Skript aus. Ersetzen Sie „SQLVM1“ durch den Namen Ihres virtuellen Computers und „host01.contoso.com“ durch den Namen des Hyper-V-Hostservers.
 
 ```powershell
@@ -220,17 +223,21 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
 
 3. Führen Sie dieses Skript auf dem VMM-Quellserver mithilfe von PowerShell (Administratorrechte erforderlich) an der VMM-Konsole aus. Ersetzen Sie den Platzhalter **SQLVM1** durch den Namen des virtuellen Computers.
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. Führen Sie auf dem sekundären VMM-Server das folgende Skript aus, um die Einstellungen für den sekundären virtuellen Computer zu bereinigen:
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Remove-SCVirtualMachine -VM $vm -Force
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Remove-SCVirtualMachine -VM $vm -Force
+    ```
+
 5. Aktualisieren Sie auf dem sekundären VMM-Server die virtuellen Computer auf dem Hyper-V-Hostserver, damit der sekundäre virtuelle Computer in der VMM-Konsole neu erkannt wird.
 6. Mit den obigen Schritten werden die Replikationseinstellungen auf dem VMM-Server gelöscht. Wenn Sie die Replikation für den virtuelle Computer beenden möchten, führen Sie das folgende Skript auf dem primären und sekundären virtuellen Computer aus. Ersetzen Sie „SQLVM1“ durch den Namen des virtuellen Computers.
 
-        Remove-VMReplication –VMName “SQLVM1”
-
-
-
-
+    ```powershell
+    Remove-VMReplication –VMName "SQLVM1"
+    ```

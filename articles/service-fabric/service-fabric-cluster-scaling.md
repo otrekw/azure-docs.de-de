@@ -1,24 +1,15 @@
 ---
-title: Azure Service Fabric-Clusterskalierung | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie für Azure Service Fabric-Cluster das horizontale und zentrale Hoch- und Herunterskalieren durchführen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Azure Service Fabric-Clusterskalierung
+description: Hier wird beschrieben, wie Sie für Azure Service Fabric-Cluster das horizontale und zentrale Hoch- und Herunterskalieren durchführen. Wenn sich Anwendungsanforderungen ändern, kann sich auch Service Fabric Cluster ändern.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: c4d7027438f19cd16fd87d629364cdf725e91607
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 126be55c63c625995ad52b84a51a8983e220652d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599842"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85610199"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Skalieren von Azure Service Fabric-Clustern
 Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. Cluster können Tausende von Knoten enthalten. Nach dem Erstellen eines Service Fabric-Clusters können Sie den Cluster horizontal (Änderung der Anzahl von Knoten) oder vertikal (Änderung der Ressourcen von Knoten) skalieren.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
@@ -37,14 +28,14 @@ Beachten Sie beim Skalieren eines Azure-Clusters die folgenden Richtlinien:
 - Primäre Knotentypen mit Ausführung von Produktionsworkloads sollten immer über mindestens fünf Knoten verfügen.
 - Andere Knotentypen mit Ausführung von zustandsbehafteten Produktionsworkloads sollten immer über mindestens fünf Knoten verfügen.
 - Andere Knotentypen mit Ausführung von zustandslosen Produktionsworkloads sollten immer über mindestens zwei Knoten verfügen.
-- Jeder Knotentyp mit der [Dauerhaftigkeitsstufe](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) „Gold“ oder „Silber“ sollte immer über mindestens fünf Knoten verfügen.
-- Entfernen Sie keine zufälligen VM-Instanzen/Knoten für einen Knotentyp, sondern verwenden Sie immer die Funktion zum zentralen Herunterskalieren für VM-Skalierungsgruppen. Das Löschen von zufälligen VM-Instanzen kann sich negativ auf die Fähigkeit des Systems zur Durchführung eines korrekten Lastenausgleichs auswirken.
+- Jeder Knotentyp mit der [Dauerhaftigkeitsstufe](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) „Gold“ oder „Silber“ sollte immer über mindestens fünf Knoten verfügen.
+- Entfernen Sie keine zufälligen VM-Instanzen/Knoten für einen Knotentyp, sondern verwenden Sie immer die Abskalierungsfunktion für VM-Skalierungsgruppen. Das Löschen von zufälligen VM-Instanzen kann sich negativ auf die Fähigkeit des Systems zur Durchführung eines korrekten Lastenausgleichs auswirken.
 - Wenn Sie Regeln für die automatische Skalierung verwenden, sollten Sie diese so festlegen, dass das horizontale Herunterskalieren (Entfernen von VM-Instanzen) jeweils nur für einen Knoten erfolgt. Es ist nicht sicher, mehrere Instanzen gleichzeitig herunterzuskalieren.
 
-Da die Service Fabric-Knotentypen in Ihrem Cluster auf dem Back-End aus VM-Skalierungsgruppen bestehen, können Sie für jeden Knotentyp bzw. jede VM-Skalierungsgruppe [Regeln für die automatische oder manuelle Skalierung einrichten](service-fabric-cluster-scale-up-down.md).
+Da die Service Fabric-Knotentypen in Ihrem Cluster auf dem Back-End aus VM-Skalierungsgruppen bestehen, können Sie für jeden Knotentyp bzw. jede VM-Skalierungsgruppe [Regeln für die automatische oder manuelle Skalierung einrichten](service-fabric-cluster-scale-in-out.md).
 
 ### <a name="programmatic-scaling"></a>Programmgesteuerte Skalierung
-In vielen Szenarien ist das [Skalieren eines Clusters mit einem manuellen Vorgang oder mit Regeln für die automatische Skalierung](service-fabric-cluster-scale-up-down.md) eine gute Lösung. Für anspruchsvollere Szenarien ist diese Vorgehensweise aber unter Umständen nicht geeignet. Mögliche Nachteile dieser Ansätze:
+In vielen Szenarien ist das [Skalieren eines Clusters mit einem manuellen Vorgang oder mit Regeln für die automatische Skalierung](service-fabric-cluster-scale-in-out.md) eine gute Lösung. Für anspruchsvollere Szenarien ist diese Vorgehensweise aber unter Umständen nicht geeignet. Mögliche Nachteile dieser Ansätze:
 
 - Das manuelle Skalieren erfordert, dass Sie sich anmelden und Skalierungsvorgänge explizit anfordern. Wenn Skalierungsvorgänge häufig oder zu unvorhersehbaren Zeiten erforderlich sind, ist dieser Ansatz u.U. keine geeignete Lösung.
 - Wenn Regeln für automatische Skalierung eine Instanz aus einer VM-Skalierungsgruppe entfernen, entfernen sie nicht automatisch Informationen dieses Knotens aus dem zugeordneten Service Fabric-Cluster, es sei denn, der Knotentyp weist die Dauerhaftigkeitsstufe „Gold“ oder „Silber“ auf. Da Regeln für automatische Skalierung auf Skalierungsgruppenebene gelten (anstatt auf Service Fabric-Ebene), können sie Service Fabric-Knoten entfernen, ohne diese ordnungsgemäß heruntergefahren. Diese grobe Knotenentfernung hinterlässt Service Fabric-Knoten nach Vorgängen zum horizontalen Herunterskalieren in verwaistem Zustand. Eine Person (oder ein Dienst) müsste den Zustand entfernter Knoten im Service Fabric-Cluster in regelmäßigen Abständen bereinigen.
@@ -68,14 +59,10 @@ Hierbei werden die Ressourcen (CPU, Arbeitsspeicher oder Speicher) von Knoten im
 - Vorteile: Die Software- und Anwendungsarchitektur bleibt gleich.
 - Nachteile: Begrenzte Skalierung, da eine Beschränkung in Bezug auf die Erhöhung von Ressourcen auf einzelnen Knoten besteht. Ausfallzeiten, da physische oder virtuelle Computer offline geschaltet werden müssen, um Ressourcen hinzuzufügen oder zu entfernen.
 
-VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern bereitstellen und verwalten können. Jeder Knotentyp, der in einem Azure-Cluster definiert ist, wird [als separate Skalierungsgruppe eingerichtet](service-fabric-cluster-nodetypes.md). Jeder Knotentyp kann dann separat verwaltet werden.  Das zentrale Hoch- oder Herunterskalieren eines Knotentyps umfasst das Ändern der SKU von VM-Instanzen in der Skalierungsgruppe. 
-
-> [!WARNING]
-> Wir empfehlen Ihnen, die VM-SKU einer Skalierungsgruppe bzw. eines Knotentyps nur dann zu ändern, wenn sie mit der [Dauerhaftigkeitsstufe „Silber“ oder höher](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) ausgeführt wird. Bei der Änderung der VM-SKU-Größe handelt es sich um einen für Daten schädlichen direkten Infrastrukturvorgang. Ohne eine Möglichkeit der Verzögerung oder Überwachung dieser Änderung ist es möglich, dass der Vorgang bei zustandsbehafteten Diensten zu Datenverlusten führt oder selbst bei zustandslosen Workloads unvorhergesehene Probleme auftreten. 
->
+VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern bereitstellen und verwalten können. Jeder Knotentyp, der in einem Azure-Cluster definiert ist, wird [als separate Skalierungsgruppe eingerichtet](service-fabric-cluster-nodetypes.md). Jeder Knotentyp kann dann separat verwaltet werden.  Das Hoch- oder Herunterskalieren eines Knotentyps umfasst das Hinzufügen eines neuen Knotentyps (mit aktualisierter VM-SKU) und das Entfernen des alten Knotentyps.
 
 Beachten Sie beim Skalieren eines Azure-Clusters die folgende Richtlinie:
-- Wenn Sie einen primären Knotentyp herunterskalieren, sollten Sie ihn nie weiter herunterskalieren, als für die [Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) zulässig ist.
+- Wenn Sie einen primären Knotentyp herunterskalieren, sollten Sie ihn nie weiter herunterskalieren, als für die [Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) zulässig ist.
 
 Der Prozess zum zentralen Hoch- oder Herunterskalieren eines Knotentyps unterscheidet sich jeweils in Abhängigkeit davon, ob es sich um einen primären oder einen anderen Knotentyp handelt.
 
@@ -83,9 +70,9 @@ Der Prozess zum zentralen Hoch- oder Herunterskalieren eines Knotentyps untersch
 Erstellen Sie einen neuen Knotentyp mit den erforderlichen Ressourcen.  Aktualisieren Sie die Platzierungseinschränkungen von ausgeführten Diensten, damit diese den neuen Knotentyp enthalten.  Reduzieren Sie die Instanzanzahl für den alten Knotentyp langsam (eine Instanz nach der anderen) bis auf null, damit die Zuverlässigkeit des Clusters nicht beeinträchtigt wird.  Dienste werden nach und nach zum neuen Knotentyp migriert, wenn der alte Knotentyp außer Betrieb genommen wird.
 
 ### <a name="scaling-the-primary-node-type"></a>Skalieren des primären Knotentyps
-Wir empfehlen Ihnen, die VM-SKU des primären Knotentyps nicht zu ändern. Falls Sie mehr Clusterkapazität benötigen, raten wir Ihnen, weitere Instanzen hinzuzufügen. 
+Stellen Sie einen neuen primären Knotentyp mit aktualisierter VM-SKU bereit, und deaktivieren Sie dann die ursprünglichen Instanzen des primären Knotentyps nacheinander, damit die Systemdienste zur neuen Skalierungsgruppe migriert werden. Überprüfen Sie, ob der Cluster und die neuen Knoten fehlerfrei sind, und entfernen Sie dann die ursprüngliche Skalierungsgruppe und den Knotenzustand für die gelöschten Knoten.
 
-Sollte dies nicht möglich sein, können Sie einen neuen Cluster erstellen und eine [Wiederherstellung des Anwendungszustands](service-fabric-reliable-services-backup-restore.md) (falls zutreffend) vom alten Cluster durchführen. Sie müssen keine Systemdienstzustände wiederherstellen, denn diese werden neu erstellt, wenn Sie Ihre Anwendungen im neuen Cluster bereitstellen. Wenn Sie in Ihrem Cluster ausschließlich zustandslose Anwendungen ausführen, stellen Sie lediglich Ihre Anwendungen im neuen Cluster bereit und müssen nichts wiederherstellen. Wenn Sie einen nicht unterstützten Weg einschlagen und die VM-SKU ändern möchten, können Sie das Modell der VM-Skalierungsgruppe an die neue SKU anpassen. Wenn der Cluster nur einen Knotentyp enthält, sollten Sie sicherstellen, dass Ihre gesamten zustandsbehafteten Anwendungen rechtzeitig auf alle [Lebenszyklus-Dienstereignisse für Replikate](service-fabric-reliable-services-lifecycle.md) (z.B. Unterbrechung der Replikaterstellung) reagieren und dass die Dauer für die Neuerstellung des Dienstreplikats weniger als fünf Minuten beträgt (für die Dauerhaftigkeitsstufe „Silber“). 
+Sollte dies nicht möglich sein, können Sie einen neuen Cluster erstellen und eine [Wiederherstellung des Anwendungszustands](service-fabric-reliable-services-backup-restore.md) (falls zutreffend) vom alten Cluster durchführen. Sie müssen keine Systemdienstzustände wiederherstellen, denn diese werden neu erstellt, wenn Sie Ihre Anwendungen im neuen Cluster bereitstellen. Wenn Sie in Ihrem Cluster ausschließlich zustandslose Anwendungen ausführen, stellen Sie lediglich Ihre Anwendungen im neuen Cluster bereit und müssen nichts wiederherstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Machen Sie sich mit der [Skalierbarkeit von Anwendungen](service-fabric-concepts-scalability.md) vertraut.

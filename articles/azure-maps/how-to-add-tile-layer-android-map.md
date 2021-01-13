@@ -1,25 +1,25 @@
 ---
-title: Hinzufügen einer Kachelebene zu Android-Karten in Azure Maps | Microsoft-Dokumentation
-description: Hinzufügen einer Kachelebene zu einer Karte mithilfe des Android SDK für Azure Maps
-author: walsehgal
-ms.author: v-musehg
+title: Hinzufügen einer Kachelebene zu einer Karte mithilfe des Android SDK für Azure Maps
+description: Erfahren Sie, wie Sie einer Karte eine Kachelebene hinzufügen. Sehen Sie sich ein Beispiel an, in dem das Android SDK für Microsoft Azure Maps verwendet wird, um einer Karte eine Wetterradarüberlagerung hinzuzufügen.
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5d5f50a38db95f6e62bdd8c51aefd5957041e682
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 22618a28f1a87e68c19467aedf639e96ec2fb91e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886453"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532675"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Hinzufügen einer Kachelebene zu einer Karte mithilfe des Android SDK für Azure Maps
 
 In diesem Artikel wird veranschaulicht, wie Sie mit dem Android SDK für Azure Maps eine Kachelebene auf einer Karte rendern können. Mithilfe von Kachelebenen lassen sich Bilder über die Azure Maps-Basiskartenkacheln legen. Weitere Informationen zum Azure Maps-Kachelsystem finden Sie in der Dokumentation [Zoomfaktoren und Linienraster](zoom-levels-and-tile-grid.md).
 
-Eine Kachelebene wird in Kacheln von einem Server geladen. Diese Bilder können wie jedes andere Bild auf einem Server vorab gerendert und gespeichert werden. Dabei muss eine für die Kachelebene verständliche Namenskonvention verwendet werden. Alternativ wird ein dynamischer Dienst genutzt, der die Bilder im laufenden Betrieb generiert. Es gibt drei verschiedene Namenskonventionen für Kacheldienste, die von der Azure Maps-Klasse TileLayer unterstützt werden: 
+Eine Kachelebene wird in Kacheln von einem Server geladen. Diese Bilder können wie jedes andere Bild vorab gerendert und auf einem Server gespeichert werden, wobei eine Namenskonvention verwendet wird, die von der Kachelebene verstanden wird. Sie können diese Bilder aber auch mit einem dynamischen Dienst rendern, der die Bilder nahezu in Echtzeit generiert. Es gibt drei verschiedene Namenskonventionen für Kacheldienste, die von der Azure Maps-Klasse TileLayer unterstützt werden:
 
 * Notation von X, Y, Zoomfaktor: Basierend auf dem Zoomfaktor ist X die Spalten- und Y die Zeilenposition der Kachel im Kachelraster.
 * Quadkey-Notation: Kombination der Informationen X, Y und Zoomfaktor in einem einzelnen Zeichenfolgenwert, der ein eindeutiger Bezeichner für eine Kachel ist.
@@ -35,20 +35,20 @@ Die in eine Kachelebene übergebene Kachel-URL muss eine HTTP/HTTPS-URL zu einer
 * `{z}`: Zoomfaktor der Kachel. Benötigt auch `{x}` und `{y}`.
 * `{quadkey}`: Kachel-Quadkey-Bezeichner basierend auf der Namenskonvention des Bing Maps-Kachelsystems.
 * `{bbox-epsg-3857}`: Eine Begrenzungsrahmen-Zeichenfolge mit dem Format `{west},{south},{east},{north}` im Raumbezugssystem EPSG 3857.
-* `{subdomain}`: Ein Platzhalter, bei dem die Unterdomänenwerte, falls angegeben, hinzugefügt werden.
+* `{subdomain}`: Ein Platzhalter für die Unterdomänenwerte, sofern angegeben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um den Vorgang in diesem Artikel abzuschließen, müssen Sie das [Android SDK für Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installieren, um eine Karte zu laden.
+Um den Vorgang in diesem Artikel abzuschließen, müssen Sie das [Android SDK für Azure Maps](./how-to-use-android-map-control-library.md) installieren, um eine Karte zu laden.
 
 
 ## <a name="add-a-tile-layer-to-the-map"></a>Hinzufügen einer Kachelebene zur Karte
 
- In diesem Beispiel wird das Erstellen einer Kachelebene veranschaulicht, die auf mehrere Kacheln verweisen, die das Kachelsystem „X, Y, Zoomfaktor“ verwenden. Die Quelle dieser Kachelebene ist eine Wetterradarüberlagerung aus dem [Iowa Environmental Mesonet der Iowa State University in den USA](https://mesonet.agron.iastate.edu/ogc/). 
+ In diesem Beispiel wird das Erstellen einer Kachelebene veranschaulicht, die auf mehrere Kacheln verweisen. Diese Kacheln verwenden das Kachelsystem „X, Y, Zoom“. Die Quelle dieser Kachelebene ist eine Wetterradarüberlagerung aus dem [Iowa Environmental Mesonet der Iowa State University in den USA](https://mesonet.agron.iastate.edu/ogc/). 
 
 Sie können mithilfe der folgenden Schritte der Karte eine Kachelebene hinzufügen.
 
-1. Bearbeiten Sie **res > layout > „activity_main.xml“** , sodass die Datei wie folgt aussieht:
+1. Bearbeiten Sie **res > layout > „activity_main.xml“**, sodass die Datei wie folgt aussieht:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ Sie können mithilfe der folgenden Schritte der Karte eine Kachelebene hinzufüg
     </FrameLayout>
     ```
 
-2. Kopieren Sie den folgenden Codeausschnitt in die **onCreate()** -Methode Ihrer `MainActivity.java`-Klasse.
+2. Kopieren Sie den folgenden Codeausschnitt in die **onCreate()**-Methode Ihrer `MainActivity.java`-Klasse.
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,7 +84,7 @@ Sie können mithilfe der folgenden Schritte der Karte eine Kachelebene hinzufüg
     });
     ```
     
-    Der obige Codeausschnitt ruft zuerst mit der Rückrufmethode **onReady()** eine Instanz des Azure Maps-Kartensteuerelements ab. Anschließend wird ein `TileLayer`-Objekt erstellt und eine formatierte**xyz**-Kachel-URL an die `tileUrl`-Option weitergeleitet. Die Deckkraft der Ebene ist auf `0.8` festgelegt, und da die Kacheln des Kacheldiensts 256 Pixel aufweisen, werden diese Informationen an die `tileSize`-Option übermittelt. Die Kachelebene wird dann an den Kartenebenen-Manager weitergeleitet.
+    Der obige Codeausschnitt ruft zuerst mit der Rückrufmethode **onReady()** eine Instanz des Azure Maps-Kartensteuerelements ab. Anschließend wird ein `TileLayer`-Objekt erstellt und eine formatierte **xyz**-Kachel-URL an die `tileUrl`-Option weitergeleitet. Die Deckkraft der Ebene ist auf `0.8` festgelegt, und da die Kacheln des Kacheldiensts 256 Pixel aufweisen, werden diese Informationen an die `tileSize`-Option übermittelt. Die Kachelebene wird dann an den Kartenebenen-Manager weitergeleitet.
 
     Nachdem Sie den obigen Codeausschnitt hinzugefügt haben, sollte `MainActivity.java` wie folgt aussehen:
     
@@ -179,4 +179,4 @@ Wenn Sie Ihre Anwendung jetzt ausführen, sollten Sie wie unten gezeigt eine Lin
 Im folgenden Artikel erfahren Sie mehr zum Festlegen von Kartenstilen.
 
 > [!div class="nextstepaction"]
-> [Ändern von Kartenstilen auf Android-Karten](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Ändern von Kartenstilen auf Android-Karten](./set-android-map-styles.md)

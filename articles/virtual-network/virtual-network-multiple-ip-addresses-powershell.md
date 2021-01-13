@@ -3,25 +3,22 @@ title: 'Mehrere IP-Adressen für virtuelle Azure-Computer: PowerShell | Microsof
 description: Informationen zum Zuweisen mehrerer IP-Adressen zu einem virtuellen Computer mit PowerShell. | Resource Manager
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c44ea62f-7e54-4e3b-81ef-0b132111f1f8
+author: asudbring
+manager: KumudD
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
-ms.author: kumud
-ms.reviewer: annahar
-ms.openlocfilehash: e9bad6ad614855c543ee6d75d4e6f4dc8e2255aa
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: allensu
+ms.openlocfilehash: 5cd050c88fbc954a211c3a75cdabcb557ae998c4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876223"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87073927"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe von PowerShell
 
@@ -33,11 +30,11 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure Resource Manager-Ber
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>Erstellen eines virtuellen Computers mit mehreren IP-Adressen
+## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>Erstellen eines virtuellen Computers mit mehreren IP-Adressen
 
 In den folgenden Schritten wird beschrieben, wie gemäß dem Szenario beispielhaft ein virtueller Computer mit mehreren IP-Adressen erstellt werden kann. Ändern Sie die Variablenwerte gemäß den Anforderungen Ihrer Implementierung.
 
-1. Öffnen Sie eine PowerShell-Eingabeaufforderung, und führen Sie die restlichen Schritte in diesem Abschnitt innerhalb einer einzelnen PowerShell-Sitzung aus. Wenn Sie PowerShell nicht installiert und konfiguriert haben, befolgen Sie die Anweisungen im Artikel [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) .
+1. Öffnen Sie eine PowerShell-Eingabeaufforderung, und führen Sie die restlichen Schritte in diesem Abschnitt innerhalb einer einzelnen PowerShell-Sitzung aus. Wenn Sie PowerShell nicht installiert und konfiguriert haben, befolgen Sie die Anweisungen im Artikel [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/) .
 2. Melden Sie sich mit dem Befehl `Connect-AzAccount` bei Ihrem Konto an.
 3. Ersetzen Sie *myResourceGroup* und *westus* durch einen Namen und Standort Ihrer Wahl. Erstellen Sie eine Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
@@ -97,7 +94,7 @@ In den folgenden Schritten wird beschrieben, wie gemäß dem Szenario beispielha
 
 6. Definieren Sie die primäre IP-Konfiguration für die Netzwerkkarte. Ändern Sie in dem von Ihnen erstellten Subnetz die Adresse 10.0.0.4 in eine gültige Adresse, wenn Sie nicht den zuvor definierten Wert verwendet haben. Bevor Sie eine statische IP-Adresse zuweisen, sollten Sie überprüfen, ob diese nicht bereits verwendet wird. Geben Sie den Befehl `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet` ein. Wenn die Adresse verfügbar ist, gibt die Ausgabe *TRUE* zurück. Wenn sie nicht verfügbar ist, gibt die Ausgabe *FALSE* und eine Liste der verfügbaren Adressen zurück. 
 
-    Ersetzen Sie in den folgenden Befehlen **\<replace-with-your-unique-name>** durch den zu verwendenden eindeutigen DNS-Namen. Der Name muss über alle öffentlichen IP-Adressen innerhalb einer Azure-Region eindeutig sein. Dieser Parameter ist optional. Er kann entfernt werden, wenn Sie Verbindungen zum virtuellen Computer nur über die öffentliche IP-Adresse herstellen möchten.
+    Ersetzen Sie in den folgenden Befehlen **\<replace-with-your-unique-name>** durch den zu verwendenden eindeutigen DNS-Namen. Der Name muss über alle öffentlichen IP-Adressen innerhalb einer Azure-Region eindeutig sein. Dies ist ein optionaler Parameter. Er kann entfernt werden, wenn Sie Verbindungen zum virtuellen Computer nur über die öffentliche IP-Adresse herstellen möchten.
 
     ```powershell
     
@@ -122,7 +119,7 @@ In den folgenden Schritten wird beschrieben, wie gemäß dem Szenario beispielha
     Wenn Sie einer Netzwerkkarte mehrere IP-Konfigurationen zuweisen, muss eine Konfiguration mit dem Wert *-Primary* zugewiesen werden.
 
     > [!NOTE]
-    > Für öffentliche IP-Adressen fällt eine geringe Gebühr an. Weitere Informationen zu den Preisen finden Sie auf der Seite [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses) . Die Anzahl der öffentlichen IP-Adressen, die in einem Abonnement verwendet werden können, ist beschränkt. Weitere Informationen über die Einschränkungen finden Sie im Artikel zu den [Azure-Einschränkungen](../azure-subscription-service-limits.md#networking-limits) .
+    > Für öffentliche IP-Adressen fällt eine geringe Gebühr an. Weitere Informationen zu den Preisen finden Sie auf der Seite [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses) . Die Anzahl der öffentlichen IP-Adressen, die in einem Abonnement verwendet werden können, ist beschränkt. Weitere Informationen über die Einschränkungen finden Sie im Artikel zu den [Azure-Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) .
 
 7. Definieren Sie die sekundären IP-Konfigurationen für die Netzwerkkarte. Sie können Konfigurationen je nach Bedarf hinzufügen oder entfernen. Jeder IP-Konfiguration muss eine private IP-Adresse zugewiesen sein. Jeder Konfiguration kann optional eine einzige öffentliche IP-Adresse zugewiesen sein.
 
@@ -195,11 +192,11 @@ In den folgenden Schritten wird beschrieben, wie gemäß dem Szenario beispielha
 
 10. Fügen Sie die privaten IP-Adressen dem Betriebssystem des virtuellen Computers hinzu. Führen Sie dazu die Schritte für Ihr Betriebssystem im Abschnitt [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) in diesem Artikel aus. Fügen Sie dem Betriebssystem nicht die öffentlichen IP-Adressen hinzu.
 
-## <a name="add"></a>Hinzufügen von IP-Adressen zu einem virtuellen Computer
+## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>Hinzufügen von IP-Adressen zu einem virtuellen Computer
 
 Sie können einer Azure-Netzwerkschnittstelle private und öffentliche IP-Adressen hinzufügen. Führen Sie dazu die folgenden Schritte aus. In den Beispielen in den folgenden Abschnitten wird davon ausgegangen, dass Sie bereits einen virtuellen Computer mit den im [Szenario](#scenario) in diesem Artikel beschriebenen drei IP-Konfigurationen erstellt haben, dies ist jedoch nicht erforderlich.
 
-1. Öffnen Sie eine PowerShell-Eingabeaufforderung, und führen Sie die restlichen Schritte in diesem Abschnitt innerhalb einer einzelnen PowerShell-Sitzung aus. Wenn Sie PowerShell nicht installiert und konfiguriert haben, befolgen Sie die Anweisungen im Artikel [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) .
+1. Öffnen Sie eine PowerShell-Eingabeaufforderung, und führen Sie die restlichen Schritte in diesem Abschnitt innerhalb einer einzelnen PowerShell-Sitzung aus. Wenn Sie PowerShell nicht installiert und konfiguriert haben, befolgen Sie die Anweisungen im Artikel [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/) .
 2. Ändern Sie die Werte der folgenden Variablen in den Namen der NIC, der Sie IP-Adressen hinzufügen möchten, und der Ressourcengruppe und des Standorts, in der bzw. an dem die NIC vorhanden ist:
 
    ```powershell
@@ -261,7 +258,7 @@ Sie können einer Azure-Netzwerkschnittstelle private und öffentliche IP-Adress
    Eine öffentliche IP-Adresse wird hinzugefügt, indem eine öffentliche IP-Adressressource entweder einer neuen oder einer vorhandenen IP-Konfiguration zugeordnet wird. Führen Sie gemäß Ihren Anforderungen die Schritte des entsprechenden Abschnitts durch.
 
    > [!NOTE]
-   > Für öffentliche IP-Adressen fällt eine geringe Gebühr an. Weitere Informationen zu den Preisen finden Sie auf der Seite [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses) . Die Anzahl der öffentlichen IP-Adressen, die in einem Abonnement verwendet werden können, ist beschränkt. Weitere Informationen über die Einschränkungen finden Sie im Artikel zu den [Azure-Einschränkungen](../azure-subscription-service-limits.md#networking-limits) .
+   > Für öffentliche IP-Adressen fällt eine geringe Gebühr an. Weitere Informationen zu den Preisen finden Sie auf der Seite [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses) . Die Anzahl der öffentlichen IP-Adressen, die in einem Abonnement verwendet werden können, ist beschränkt. Weitere Informationen über die Einschränkungen finden Sie im Artikel zu den [Azure-Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) .
    >
 
    **Zuordnen der öffentlichen IP-Adressressource zu einer neuen IP-Konfiguration**

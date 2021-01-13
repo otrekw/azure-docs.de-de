@@ -1,24 +1,24 @@
 ---
-title: Reagieren auf Schlüssel-Wert-Ereignisse von Azure App Configuration | Microsoft-Dokumentation
-description: Verwenden Sie Azure Event Grid, um App Configuration-Ereignisse zu abonnieren.
+title: Reagieren auf Schlüssel-Wert-Ereignisse von Azure App Configuration
+description: Verwenden Sie Azure Event Grid, um App Configuration-Ereignisse zu abonnieren, mit denen Anwendungen auf Änderungen in Schlüsselwerten reagieren können, ohne dass komplizierter Code erforderlich ist.
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
-ms.date: 05/30/2019
+ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: 601124aef37d2b285db71130f5c63b3620c7768f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 640be797b2653f9e6c969306b7e2b99393b99c39
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735879"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078203"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reagieren auf Azure App Configuration-Ereignisse
 
-Azure App Configuration-Ereignisse ermöglichen es Anwendungen, auf Schlüssel-Wert-Änderungen zu reagieren – ganz ohne komplizierten Code oder teure und ineffiziente Abrufdienste. Stattdessen werden die Ereignisse per Push über [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) an Abonnenten wie [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) oder sogar Ihren eigenen benutzerdefinierten HTTP-Listener übertragen, und Sie zahlen nur für das, was Sie tatsächliche verwenden.
+Azure App Configuration-Ereignisse ermöglichen es Anwendungen, auf Schlüssel-Wert-Änderungen zu reagieren – ganz ohne komplizierten Code oder teure und ineffiziente Abrufdienste. Stattdessen werden Ereignisse über [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) an Abonnenten wie [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) oder sogar Ihren eigenen benutzerdefinierten HTTP-Listener gepusht. Vor allem bezahlen Sie nur für die tatsächliche Nutzung.
 
-Azure App Configuration-Ereignisse werden an den Azure Event Grid-Dienst gesendet, der dank umfangreicher Wiederholungsrichtlinien und der Zustellung unzustellbarer Nachrichten zuverlässige Zustelldienste für Ihre Anwendungen bietet. Weitere Informationen finden Sie unter [Event Grid – Übermittlung und Wiederholung von Nachrichten](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
+Azure App Configuration-Ereignisse werden an den Azure Event Grid-Dienst gesendet, der dank umfangreicher Wiederholungsrichtlinien und der Zustellung unzustellbarer Nachrichten zuverlässige Zustelldienste für Ihre Anwendungen bietet. Weitere Informationen finden Sie unter [Event Grid – Übermittlung und Wiederholung von Nachrichten](../event-grid/delivery-and-retry.md).
 
 Zu gängigen Szenarien mit App-Konfigurationsereignissen zählen beispielsweise das Aktualisieren der Anwendungskonfiguration, das Auslösen von Bereitstellungen sowie andere konfigurationsorientierte Workflows. Wenn Änderungen selten sind, aber Ihr Szenario die sofortige Reaktion erfordert, kann die ereignisbasierte Architektur besonders effizient sein.
 
@@ -37,19 +37,19 @@ Event Grid verwendet [Ereignisabonnements](../event-grid/concepts.md#event-subsc
 ## <a name="event-schema"></a>Ereignisschema
 Azure App Configuration-Ereignisse enthalten alle Informationen, die Sie zur Reaktion auf Änderungen in Ihren Daten benötigen. Ein App -Konfigurationsereignis erkennen Sie daran, dass die eventType-Eigenschaft mit „Microsoft.AppConfiguration“ beginnt. Weitere Informationen zur Verwendung von Event Grid-Ereigniseigenschaften finden Sie unter [Event Grid-Ereignisschema](../event-grid/event-schema.md).  
 
-> |Eigenschaft|Typ|BESCHREIBUNG|
+> |Eigenschaft|type|BESCHREIBUNG|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |topic|Zeichenfolge|Vollständige Azure Resource Manager-ID der App-Konfiguration, die das Ereignis ausgibt.|
-> |subject|Zeichenfolge|Die URL des Schlüssel-Wert-Paars, das Gegenstand des Ereignisses ist.|
-> |eventTime|Zeichenfolge|Datum und Uhrzeit der Ereignisgenerierung im ISO 8601-Format.|
-> |eventType|Zeichenfolge|„Microsoft.AppConfiguration.KeyValueModified“ oder „Microsoft.AppConfiguration.KeyValueDeleted“.|
-> |id|Zeichenfolge|Ein eindeutiger Bezeichner für dieses Ereignis.|
-> |dataVersion|Zeichenfolge|Die Schemaversion des Datenobjekts.|
-> |metadataVersion|Zeichenfolge|Die Schemaversion der Eigenschaften oberster Ebene.|
-> |data|object|Eine Sammlung Azure App Configuration-spezifischer Ereignisdaten.|
-> |data.key|Zeichenfolge|Der Schlüssel des Schlüssel-Wert-Paars, das geändert oder gelöscht wurde.|
-> |data.label|Zeichenfolge|Die Bezeichnung (sofern vorhanden) des Schlüssel-Wert-Paars, das geändert oder gelöscht wurde.|
-> |data.etag|Zeichenfolge|Für `KeyValueModified`: Das ETag des neuen Schlüssel-Wert-Paars. Für `KeyValueDeleted`: Das ETag des gelöschten Schlüssel-Wert-Paars.|
+> |topic|string|Vollständige Azure Resource Manager-ID der App-Konfiguration, die das Ereignis ausgibt.|
+> |subject|string|Die URL des Schlüssel-Wert-Paars, das Gegenstand des Ereignisses ist.|
+> |eventTime|string|Datum und Uhrzeit der Ereignisgenerierung im ISO 8601-Format.|
+> |eventType|string|„Microsoft.AppConfiguration.KeyValueModified“ oder „Microsoft.AppConfiguration.KeyValueDeleted“.|
+> |Id|string|Ein eindeutiger Bezeichner für dieses Ereignis.|
+> |dataVersion|string|Die Schemaversion des Datenobjekts.|
+> |metadataVersion|string|Die Schemaversion der Eigenschaften oberster Ebene.|
+> |data|Objekt (object)|Eine Sammlung Azure App Configuration-spezifischer Ereignisdaten.|
+> |data.key|string|Der Schlüssel des Schlüssel-Wert-Paars, das geändert oder gelöscht wurde.|
+> |data.label|string|Die Bezeichnung (sofern vorhanden) des Schlüssel-Wert-Paars, das geändert oder gelöscht wurde.|
+> |data.etag|string|Für `KeyValueModified`: Das ETag des neuen Schlüssel-Wert-Paars. Für `KeyValueDeleted`: Das ETag des gelöschten Schlüssel-Wert-Paars.|
 
 Hier sehen Sie ein Beispiel für ein KeyValueModified-Ereignis:
 ```json
@@ -73,11 +73,12 @@ Hier sehen Sie ein Beispiel für ein KeyValueModified-Ereignis:
 Weitere Informationen finden Sie unter [Azure Event Grid-Ereignisschema für Azure App Configuration](../event-grid/event-schema-app-configuration.md).
 
 ## <a name="practices-for-consuming-events"></a>Methoden zum Nutzen von Ereignissen
-Anwendungen, die App-Konfigurationsereignisse behandeln, sollten einige empfohlene Methoden verwenden:
+Anwendungen, die App Configuration-Ereignisse behandeln, sollten diese empfohlenen Methoden verwenden:
 > [!div class="checklist"]
-> * Da mehrere Abonnements zum Weiterleiten von Ereignissen an den gleichen Ereignishandler konfiguriert werden können, ist es wichtig, nicht davon auszugehen, dass Ereignisse von einer bestimmten Quelle stammen, sondern das Thema der Nachricht zu überprüfen, um sicherzugehen, dass sie von der erwarteten App-Konfiguration stammt.
-> * Überprüfen Sie auf ähnliche Weise, ob Sie auf die Verarbeitung des eventType vorbereitet sind, und gehen Sie nicht davon aus, dass alle Ereignisse, die Sie empfangen, den von Ihnen erwarteten Typen entsprechen.
-> * Da Nachrichten in falscher Reihenfolge und mit Verzögerung eintreffen können, verwenden Sie die etag-Felder, um zu verstehen, ob Ihre Informationen zu Objekten weiterhin auf dem neuesten Stand ist.  Verwenden Sie auch die sequencer-Felder, um die Reihenfolge der Ereignisse für ein bestimmtes Objekt zu verstehen.
+> * Mehrere Abonnements können zum Weiterleiten von Ereignissen an denselben Ereignishandler konfiguriert werden. Gehen Sie daher nicht davon aus, dass Ereignisse aus einer bestimmten Quelle stammen. Überprüfen Sie stattdessen das Thema der Nachricht, um sicherzustellen, dass die App Configuration-Instanz das Ereignis sendet.
+> * Überprüfen Sie den eventType, und gehen Sie nicht davon aus, dass alle Ereignisse, die Sie empfangen, den erwarteten Typen entsprechen.
+> * Verwenden Sie die etag-Felder, um zu erfahren, ob Ihre Informationen zu Objekten noch auf dem aktuellen Stand sind.  
+> * Verwenden Sie die sequencer-Felder, um die Reihenfolge der Ereignisse für ein bestimmtes Objekt zu verstehen.
 > * Verwenden Sie das subject-Feld, um auf das geänderte Schlüssel-Wert-Paar zuzugreifen.
 
 

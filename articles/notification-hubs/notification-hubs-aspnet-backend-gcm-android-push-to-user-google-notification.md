@@ -1,30 +1,28 @@
 ---
-title: Senden von Pushbenachrichtigungen an bestimmte Android-Anwendungsbenutzer mit Azure Notification Hubs | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe von Azure Notification Hubs Pushbenachrichtigungen an bestimmte Benutzer senden.
+title: Senden von Benachrichtigungen an bestimmte Android-Anwendungen mit Azure Notification Hubs
+description: Hier erfahren Sie, wie Sie mithilfe von Azure Notification Hubs Pushbenachrichtigungen an bestimmte Android-Benutzer senden.
 documentationcenter: android
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: ae0e17a8-9d2b-496e-afd2-baa151370c25
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 01/04/2019
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 1b867d571e97209c4385c1f23b49fe5a03ab94d5
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: c137cbf0c2290bdbe228f7902e616e7f79cb459e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212078"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016980"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Android-Anwendungsbenutzer mit Azure Notification Hubs und Google Cloud Messaging (veraltet)
+# <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Android-Benutzer mit Azure Notification Hubs und Google Cloud Messaging (veraltet)
 
 > [!WARNING]
 > Seit dem 10. April 2018 wird Google Cloud Messaging (GCM) von Google nicht mehr unterstützt. Der GCM-Server und die Client-APIs sind veraltet und werden am 29. Mai 2019 entfernt. Weitere Informationen finden Sie unter [GCM and FCM Frequently Asked Questions](https://developers.google.com/cloud-messaging/faq) (Häufig gestellte Fragen zu GCM und FCM).
@@ -154,7 +152,7 @@ Aktualisieren Sie als Nächstes die Android-Anwendung, die Sie in [Tutorial: Sen
 
     Das grafische Layout von `main_activity.xml` sollte nun wie folgt aussehen:
 
-    ![][A1]
+    ![Screenshot einer App mit Feldern für Benutzername, Kennwort, Empfänger und Nachricht sowie mit Schaltflächen zum Anmelden und Senden von Benachrichtigungen.][A1]
 3. Erstellen Sie in dem Paket, in dem sich auch die Klasse `MainActivity` befindet, eine neue Klasse mit dem Namen `RegisterClient`. Verwenden Sie den folgenden Code für die neue Klassendatei.
 
     ```java
@@ -472,9 +470,9 @@ Aktualisieren Sie als Nächstes die Android-Anwendung, die Sie in [Tutorial: Sen
 
 1. Führen Sie die Anwendung unter Verwendung von Android Studio auf einem Gerät oder einen Emulator aus.
 2. Geben Sie in der Android-App einen Benutzernamen und ein Kennwort ein. Beide müssen den gleichen Zeichenfolgenwert aufweisen und dürfen keine Leerzeichen oder Sonderzeichen enthalten.
-3. Tippen Sie in der Android-App auf **Anmelden**. Warten Sie, bis die Popupmeldung **Logged in and registered**angezeigt wird. Dadurch wird die Schaltfläche **Send Notification (Benachrichtigung senden)** aktiviert.
+3. Tippen Sie in der Android-App auf **Anmelden**. Warten Sie, bis die Popupmeldung **Logged in and registered** angezeigt wird. Dadurch wird die Schaltfläche **Send Notification (Benachrichtigung senden)** aktiviert.
 
-    ![][A2]
+    ![Screenshot einer App. Eine Popupmeldung, die bestätigt, dass der Benutzer angemeldet und registriert ist, ist sichtbar, und die Schaltfläche „Benachrichtigung senden“ ist aktiviert.][A2]
 4. Klicken Sie auf die Umschaltflächen, um alle Plattformen zu aktivieren, auf denen Sie die App ausgeführt und einen Benutzer registriert haben.
 5. Geben Sie den Namen des Benutzers ein, der die Benachrichtigungsmeldung erhält. Dieser Benutzer muss für Benachrichtigungen auf dem Zielgerät registriert werden.
 6. Geben Sie eine Nachricht für den Benutzer ein, die als Pushbenachrichtigungsmeldung empfangen wird.

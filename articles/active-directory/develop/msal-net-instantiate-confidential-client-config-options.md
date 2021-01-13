@@ -1,28 +1,24 @@
 ---
-title: Instanziieren einer vertraulichen Clientanwendung mit Optionen (Microsoft Authentication Library für .NET) | Azure
+title: Instanziieren einer vertraulichen Client-App (MSAL.NET) | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie mithilfe der Microsoft Authentication Library für .NET (MSAL.NET) eine vertrauliche Clientanwendung mit Konfigurationsoptionen instanziieren.
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a05959311b7f62f88a7b474b907982e005b98b
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 140385a26dbfd754438d632ce327c3c4a3ea1b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532636"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88166177"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Instanziieren einer vertraulichen Clientanwendung mit Konfigurationsoptionen unter Verwendung von MSAL.NET
 

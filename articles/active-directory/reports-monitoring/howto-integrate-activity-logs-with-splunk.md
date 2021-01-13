@@ -1,28 +1,28 @@
 ---
-title: Integrieren von Azure Active Directory-Protokollen in Splunk mit Azure Monitor | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure Active Directory-Protokolle mit Azure Monitor in SumoLogic integrieren.
+title: Integrieren von Splunk mit Azure Monitor | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure Active Directory-Protokolle mithilfe von Azure Monitor in Splunk integrieren.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 05/13/2019
-ms.author: chadam
+ms.date: 03/10/2020
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a26df2b37a249f808cc044b41960ca1e210a311a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 351669453a5ce6930d3eb912e95e530d14febf61
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988218"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335849"
 ---
 # <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Gewusst wie: Integrieren von Azure Active Directory-Protokollen in Splunk mit Azure Monitor
 
@@ -31,8 +31,10 @@ In diesem Artikel erfahren Sie, wie Sie Azure Active Directory-Protokolle (Azure
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Sie benötigen Folgendes, um dieses Feature verwenden zu können:
-* Ein Azure Event Hub, der Azure AD-Aktivitätsprotokolle enthält. Erfahren Sie, [wie Sie Aktivitätsprotokolle an einen Event Hub streamen](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
-* Das Azure Monitor-Add-On für Splunk. [Laden Sie Ihre Splunk-Instanz herunter, und konfigurieren Sie sie](https://github.com/Microsoft/AzureMonitorAddonForSplunk/blob/master/README.md).
+
+- Ein Azure Event Hub, der Azure AD-Aktivitätsprotokolle enthält. Erfahren Sie, [wie Sie Aktivitätsprotokolle an einen Event Hub streamen](./tutorial-azure-monitor-stream-logs-to-event-hub.md). 
+
+-  Das [Microsoft Azure-Add-On für Splunk](https://splunkbase.splunk.com/app/3757/) 
 
 ## <a name="integrate-azure-active-directory-logs"></a>Integrieren von Azure Active Directory-Protokollen 
 

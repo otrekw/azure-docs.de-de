@@ -1,6 +1,6 @@
 ---
 title: C2D-Nachrichten mit Azure IoT Hub (Java) | Microsoft Docs
-description: Erfahren Sie, wie Sie mithilfe der Azure IoT SDKs für Java C2D-Nachrichten von einer Azure IoT Hub-Instanz an ein Gerät senden. Sie passen eine simulierte Geräte-App zum Empfangen von C2D-Nachrichten und eine Back-End-App zum Senden der C2D-Nachrichten an.
+description: Erfahren Sie, wie Sie mithilfe der Azure IoT SDKs für Java C2D-Nachrichten von einer Azure IoT Hub-Instanz an ein Gerät senden. Sie passen eine simulierte Geräte-App für den Empfang von C2D-Nachrichten und eine Back-End-App zum Senden der C2D-Nachrichten an.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,12 +9,16 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 4754d7c2182de79d583dce4982b33395bf037479
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.custom:
+- amqp
+- mqtt
+- devx-track-java
+ms.openlocfilehash: 763b9e05adc07c02265dbb511c073b42df44ea95
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161888"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146870"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Senden von C2D-Nachrichten mit IoT Hub (Java)
 
@@ -24,7 +28,7 @@ Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige un
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Dieses Tutorial baut auf [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Java)](quickstart-send-telemetry-java.md) auf. Sie erfahren darin, wie Sie Folgendes ausführen:
+Dieses Tutorial baut auf [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Python)](quickstart-send-telemetry-java.md) auf. Sie erfahren darin, wie Sie Folgendes ausführen:
 
 * Senden von C2D-Nachrichten aus Ihrem Lösungs-Back-End an ein einzelnes Gerät über IoT Hub.
 
@@ -47,11 +51,13 @@ Am Ende dieses Tutorials führen Sie zwei Java-Konsolen-Apps aus:
 
 * Eine vollständige, funktionierende Version der Schnellstartanleitung [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Java)](quickstart-send-telemetry-java.md) oder des Tutorials [Verwenden der Azure CLI und des Azure-Portals zum Konfigurieren des IoT Hub-Nachrichtenroutings](tutorial-routing.md).
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) Wählen Sie unter **Langfristiger Support** unbedingt **Java 8** aus, um zu den Downloads für JDK 8 zu gelangen.
+* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable) Wählen Sie unter **Langfristiger Support** unbedingt **Java 8** aus, um zu den Downloads für JDK 8 zu gelangen.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
 * Ein aktives Azure-Konto. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
+
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Empfangen von Nachrichten in der simulierten Geräte-App
 
@@ -82,14 +88,25 @@ In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie in [Schnells
     client.open();
     ```
 
-    > [!NOTE]
-    > Wenn Sie anstelle von MQTT oder AMQP den HTTPS-Transport verwenden, prüft die **DeviceClient**-Instanz nur selten (seltener als alle 25 Minuten), ob Nachrichten von IoT Hub vorliegen. Weitere Informationen zu den Unterschieden zwischen der MQTT-, AMQP- und HTTPS-Unterstützung sowie zur IoT Hub-Drosselung finden Sie im [Messagingabschnitt des Entwicklungsleitfadens für IoT Hub](iot-hub-devguide-messaging.md).
-
 4. Führen Sie zum Erstellen der App **simulated-device** mit Maven den folgenden Befehl an der Eingabeaufforderung im Ordner „simulated-device“ aus:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
+
+Die Methode `execute` in der Klasse `AppMessageCallback` gibt `IotHubMessageResult.COMPLETE` zurück. Dadurch wird IoT Hub informiert, dass die Nachricht erfolgreich verarbeitet wurde und aus der Gerätewarteschlange sicher entfernt werden kann. Das Gerät sollte diesen Wert zurückgeben, wenn seine Verarbeitung – unabhängig vom verwendeten Protokoll – erfolgreich abgeschlossen wurde.
+
+Mit AMQP und HTTPS, aber nicht MQTT, kann das Gerät auch folgende Aktionen ausführen:
+
+* Eine Nachricht vorübergehend verwerfen, sodass IoT Hub sie für zukünftige Nutzung in der Gerätewarteschlange beibehält.
+* Eine Nachricht ablehnen, wodurch sie aus der Warteschlange dauerhaft entfernt wird.
+
+Wenn etwas passiert, wodurch verhindert wird, dass das Gerät die Nachricht abschließt, vorübergehend verwirft oder ablehnt, stellt IoT Hub sie nach einem festgelegten Zeitlimit zur erneuten Übermittlung in die Warteschlange. Aus diesem Grund muss die Nachrichtenverarbeitungslogik in der Geräte-App *idempotent* sein, sodass der mehrmalige Empfang derselben Nachricht dasselbe Ergebnis erzeugt.
+
+Ausführlichere Informationen dazu, wie IoT Hub C2D-Nachrichten verarbeitet, einschließlich Details zum Lebenszyklus von C2D-Nachrichten, finden Sie unter [Senden von C2D-Nachrichten von einem IoT-Hub](iot-hub-devguide-messages-c2d.md).
+
+> [!NOTE]
+> Wenn Sie statt MQTT oder AMQP den HTTPS-Transport verwenden, prüft die **DeviceClient**-Instanz nur selten (mindestens alle 25 Minuten), ob Nachrichten von IoT Hub vorliegen. Weitere Informationen zu den Unterschieden zwischen der Unterstützung für MQTT, AMQP und HTTPS finden Sie unter [Leitfaden zur C2D-Kommunikation](iot-hub-devguide-c2d-guidance.md) und [Auswählen eines Kommunikationsprotokolls](iot-hub-devguide-protocols.md).
 
 ## <a name="get-the-iot-hub-connection-string"></a>Abrufen der IoT-Hub-Verbindungszeichenfolge
 

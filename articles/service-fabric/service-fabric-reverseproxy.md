@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric-Reverseproxy | Microsoft-Dokumentation
+title: Azure Service Fabric-Reverseproxy
 description: Verwenden Sie den Reverseproxy von Service Fabric für die Kommunikation mit Microservices innerhalb und außerhalb des Clusters.
-services: service-fabric
-documentationcenter: .net
 author: BharatNarasimman
-manager: chackdan
-editor: vturecek
-ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 6ce6f1f6559b43a64fb7edd0773a20f8ee0cf8a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fd8e6dd712801de49971c1ef27cea664d73a4cb0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837962"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005910"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverseproxy in Azure Service Fabric
 Über den in Azure Service Fabric integrierten Reverseproxy können die in einem Service Fabric-Cluster ausgeführten Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren.
@@ -87,7 +79,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **TargetReplicaSelector** Gibt an, wie das Zielreplikat oder die Zielinstanz ausgewählt werden soll.
   * Wenn der Zieldienst zustandsbehaftet ist, kann „TargetReplicaSelector“ einen der folgenden Werte haben:  „PrimaryReplica“, „RandomSecondaryReplica“ oder „RandomReplica“. Ist dieser Parameter nicht angegeben, lautet der Standardwert „PrimaryReplica“.
   * Wenn der Zieldienst zustandslos ist, wählt der Reverseproxy eine zufällige Instanz der Dienstpartition aus, an die die Anforderung weitergeleitet wird.
-* **Timeout**:  Gibt das Timeout für die HTTP-Anforderung an, die im Auftrag der Clientanforderung vom Reverseproxy für den Dienst erstellt wird. Der Standardwert beträgt 60 Sekunden. Dieser Parameter ist optional.
+* **Timeout**:  Gibt das Timeout für die HTTP-Anforderung an, die im Auftrag der Clientanforderung vom Reverseproxy für den Dienst erstellt wird. Der Standardwert beträgt 120 Sekunden. Dies ist ein optionaler Parameter.
 
 ### <a name="example-usage"></a>Beispielverwendung
 Nehmen wir als Beispiel den Dienst *fabric:/MyApp/MyService*, der einen HTTP-Listener für die folgende URL öffnet:
@@ -126,7 +118,7 @@ Der Service Fabric-Reverseproxy versucht erneut, eine Dienstadresse aufzulösen 
 
 Allerdings können Replikate oder Dienstinstanzen einen Hostprozess und auch einen Port freigeben, wenn ein http.sys-basierter Webserver als Host fungiert, wie z.B.:
 
-* [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
+* [System.Net.HttpListener](/dotnet/api/system.net.httplistener?view=netcore-3.1)
 * [ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
@@ -164,7 +156,7 @@ Service Fabric-Dienste, die innerhalb von Docker Compose-Containern ausgeführt 
 * [Diagnostizieren von Reverseproxyereignissen](service-fabric-reverse-proxy-diagnostics.md)
 * Ein Beispiel für die HTTP-Kommunikation zwischen Diensten finden Sie im [Beispielprojekt auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Remoteprozeduraufrufe mit Reliable Services-Remoting](service-fabric-reliable-services-communication-remoting.md)
-* [Web-API, die OWIN in Reliable Services verwendet](service-fabric-reliable-services-communication-webapi.md)
+* [Web-API, die OWIN in Reliable Services verwendet](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [WCF-Kommunikation mit Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png

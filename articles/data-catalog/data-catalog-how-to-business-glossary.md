@@ -4,14 +4,14 @@ description: Anleitungsartikel zum Unternehmensglossar in Azure Data Catalog zum
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 1065abecb1f0ef57eb13b1ec3f194f07ae01eaee
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: f91728435b885f3b4d9415bc81e18fdaaea0148f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976792"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021944"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>Einrichten des Unternehmensglossars für gesteuertes Markieren
 

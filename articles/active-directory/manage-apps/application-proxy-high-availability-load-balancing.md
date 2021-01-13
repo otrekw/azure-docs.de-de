@@ -1,27 +1,27 @@
 ---
-title: Hochverfügbarkeit und Lastenausgleich für Azure AD-Anwendungsproxy | Microsoft-Dokumentation
+title: Hochverfügbarkeit und Lastenausgleich – Azure AD-Anwendungsproxy
 description: Funktionsweise der Verteilung des Datenverkehrs mit Ihrer Anwendungsproxy-Bereitstellung. Enthält Tipps zum Optimieren der Connectorleistung und zum Verwenden des Lastenausgleichs für Back-End-Server.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/24/2019
-ms.author: mimart
+ms.date: 10/08/2019
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5f814eac095770990ecbc0c4b01d2e0cc6f931
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 403fa4cab94ad6149e388b10acccd9d5e7a2b7a8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667198"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658161"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Hochverfügbarkeit und Lastenausgleich von Anwendungsproxy-Connectors und -Anwendungen
 
@@ -39,17 +39,13 @@ Connectors richten Verbindungen basierend auf den Prinzipien für Hochverfügbar
 
 1. Ein Benutzer auf einem Clientgerät versucht, auf eine lokale Anwendung zuzugreifen, die über den Anwendungsproxy veröffentlicht wurde.
 2. Die Anforderung durchläuft eine Azure Load Balancer-Instanz, die bestimmt, welche Dienstinstanzen von Anwendungsproxy die Anforderung übernehmen sollen. Pro Region sind Dutzende Instanzen verfügbar, die die Anforderung akzeptieren können. Mit dieser Methode kann der Datenverkehr gleichmäßig auf die Dienstinstanzen verteilt werden.
-3. Die Anforderung wird an [Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/) gesendet.
-4. In Service Bus wird überprüft, ob für die Verbindung zuvor ein vorhandener Connector in der Connectorgruppe verwendet wurde. Wenn dies der Fall ist, wird die Verbindung wiederverwendet. Wenn noch kein Connector mit der Verbindung gekoppelt ist, wird ein verfügbarer Connector nach dem Zufallsprinzip ausgewählt, an den Signale gesendet werden. Der Connector übernimmt die Anforderung dann von Service Bus.
-
+3. Die Anforderung wird an [Service Bus](../../service-bus-messaging/index.yml) gesendet.
+4. Service Bus sendet ein Signal an einen verfügbaren Connector. Der Connector übernimmt die Anforderung dann von Service Bus.
    - In Schritt 2 werden Anforderungen an verschiedene Anwendungsproxy-Dienstinstanzen gesendet, sodass Verbindungen eher mit unterschiedlichen Connectors hergestellt werden. Folglich werden Connectors fast gleichmäßig innerhalb der Gruppe verwendet.
-
-   - Eine Verbindung wird nur wiederhergestellt, wenn sie getrennt wird oder eine Leerlaufzeit von 10 Minuten auftritt. Beispielsweise kann die Verbindung unterbrochen werden, wenn ein Computer oder Connectordienst neu gestartet wird oder wenn eine Netzwerkunterbrechung vorliegt.
-
 5. Der Connector übergibt die Anforderung an den Back-End-Server der Anwendung. Die Anwendung sendet dann die Antwort an den Connector zurück.
 6. Der Connector schließt die Antwort ab, indem eine ausgehende Verbindung mit der Dienstinstanz geöffnet wird, von der die Anforderung stammt. Diese Verbindung wird dann sofort geschlossen. Standardmäßig ist jeder Connector auf 200 gleichzeitige ausgehende Verbindungen beschränkt.
 7. Die Antwort wird dann von der Dienstinstanz an den Client zurückgegeben.
-8. Bei nachfolgenden Anforderungen über dieselbe Verbindung werden die oben beschriebenen Schritte wiederholt, bis die Verbindung getrennt wird oder sich 10 Minuten lang im Leerlauf befindet.
+8. Bei nachfolgenden Anforderungen von derselben Verbindung werden die oben angegebenen Schritte wiederholt.
 
 Eine Anwendung umfasst häufig viele Ressourcen und öffnet beim Laden mehrere Verbindungen. Jede Verbindung durchläuft die oben beschriebenen Schritte, damit sie einer Dienstinstanz zugeordnet wird. Wählen Sie einen neuen verfügbaren Connector aus, wenn die Verbindung noch nicht mit einem Connector gekoppelt wurde.
 
@@ -88,9 +84,9 @@ In diesem Szenario erfordert die Back-End-Webanwendung die Sitzungsbindung (Sitz
 Dieses Szenario kann komplizierter sein, da der Client in der Regel mehrere Verbindungen mit dem Anwendungsproxydienst herstellt. Anforderungen über verschiedene Verbindungen werden möglicherweise in unterschiedlichen Connectors und Servern in der Farm empfangen. Da jeder Connector seine eigene IP-Adresse für diese Kommunikation verwendet, kann der Load Balancer die Sitzungsbindung nicht basierend auf der IP-Adresse der Connectors sicherstellen. Auch die Quell-IP-Affinität kann nicht verwendet werden.
 Es folgen einige Optionen für Szenario 2:
 
-- Option 1: Basieren Sie die Sitzungspersistenz auf einem Sitzungscookie, das vom Lastenausgleich festgelegt wird. Diese Option wird empfohlen, da die Last gleichmäßiger auf die Back-End-Server verteilt werden kann. Hierfür ist ein Lastenausgleich der Ebene 7 mit dieser Funktion erforderlich, der den HTTP-Datenverkehr verarbeiten und die SSL-Verbindung beenden kann. Sie können Azure Application Gateway (Sitzungsaffinität) oder einen Lastenausgleich von einem anderen Anbieter verwenden.
+- Option 1: Basieren Sie die Sitzungspersistenz auf einem Sitzungscookie, das vom Lastenausgleich festgelegt wird. Diese Option wird empfohlen, da die Last gleichmäßiger auf die Back-End-Server verteilt werden kann. Hierfür ist ein Lastenausgleich auf Schicht 7 mit dieser Funktion erforderlich, der den HTTP-Datenverkehr verarbeiten und die TLS-Verbindung beenden kann. Sie können Azure Application Gateway (Sitzungsaffinität) oder einen Lastenausgleich von einem anderen Anbieter verwenden.
 
-- Option 2: Basieren Sie die Sitzungspersistenz auf dem Headerfeld „X-Forwarded-For“. Für diese Option ist ein Lastenausgleich der Ebene 7 mit dieser Funktion erforderlich, der den HTTP-Datenverkehr verarbeiten und die SSL-Verbindung beenden kann.  
+- Option 2: Basieren Sie die Sitzungspersistenz auf dem Headerfeld „X-Forwarded-For“. Für diese Option ist ein Lastenausgleich auf Schicht 7 mit dieser Funktion erforderlich, der den HTTP-Datenverkehr verarbeiten und die TLS-Verbindung beenden kann.  
 
 - Option 3: Konfigurieren Sie die Back-End-Anwendung so, dass keine Sitzungspersistenz erforderlich ist.
 
@@ -102,3 +98,4 @@ Informationen zu den Anforderungen für den Lastenausgleich der Back-End-Anwendu
 - [Aktivieren der einmaligen Anmeldung](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Aktivieren des bedingten Zugriffs](application-proxy-integrate-with-sharepoint-server.md)
 - [Problembehandlung von Anwendungsproxys](application-proxy-troubleshoot.md)
+- [Erfahren Sie, wie die Azure AD-Architektur Hochverfügbarkeit unterstützt](../fundamentals/active-directory-architecture.md).

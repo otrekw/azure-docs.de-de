@@ -1,26 +1,16 @@
 ---
-title: Tastenkombinationen für das Azure-Portal | Microsoft Docs
-description: Informationen zu den Tastenkombinationen, die im Azure-Portal unterstützt werden.
-services: azure-portal
-documentationcenter: ''
-author: adamabmsft
-manager: lwelicki
-editor: ''
+title: Tastenkombinationen für das Azure-Portal
+description: Das Azure-Portal unterstützt globale Tastenkombinationen, die Sie beim Ausführen von Aktionen, Navigieren und Wechseln zu Positionen im Azure-Portal unterstützen.
 ms.assetid: d9f58c69-9163-458d-a339-ab0855e342c6
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 04/08/2019
-ms.author: kfollis
+ms.date: 12/20/2019
 ms.custom: accessibility
-ms.openlocfilehash: fb0b347228fe82725d5246ae9eacdab8dff01257
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: de107d88fc404ead889a08f775054ce999e3233f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551429"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745909"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Tastenkombinationen im Azure-Portal
 
@@ -28,7 +18,7 @@ In diesem Artikel sind die Tastenkombinationen aufgelistet, die im gesamten Azur
 
 ## <a name="actions"></a>Aktionen
 
-|Aufgabe |Drücken Sie |
+|Aufgabe |Tastenkombination |
 | --- | --- |
 |Erstellen einer Ressource|G+N|
 |**Alle Dienste** öffnen|G+B|
@@ -39,21 +29,25 @@ In diesem Artikel sind die Tastenkombinationen aufgelistet, die im gesamten Azur
 
 ## <a name="navigation"></a>Navigation
 
-|Aufgabe |Drücken Sie |
+|Aufgabe |Tastenkombination |
 | --- | --- |
 |Fokus zur Befehlszeile verschieben |G+, |
 |Fokus zwischen Header und linker Seitenleiste umschalten | G+. |
 
 ## <a name="go-to"></a>Gehe zu
 
-|Aufgabe |Drücken Sie |
+|Aufgabe |Tastenkombination |
 | --- | --- |
 |Zu **Dashboard** wechseln |G+D |
 |Zu **Alle Ressourcen** wechseln|G+A |
 |Zu **Ressourcengruppen** wechseln|G+R |
 |Das Element auf der linken Seitenleiste an dieser Position öffnen |G+Zahl|
 
+## <a name="keyboard-shortcuts-for-specific-pages-in-the-azure-portal"></a>Tastaturkurzbefehle für bestimmte Seiten im Azure-Portal
+
+- [Azure Resource Graph-Explorer](../governance/resource-graph/reference/keyboard-shortcuts.md)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Aktivieren des hohen Kontrasts oder Ändern des Designs](azure-portal-change-theme-high-contrast.md)
-- [Unterstützte Browser und Geräte](../azure-preview-portal-supported-browsers-devices.md)
+- [Aktivieren des hohen Kontrasts oder Ändern des Designs](set-preferences.md#choose-a-theme-or-enable-high-contrast)
+- [Unterstützte Browser und Geräte](azure-portal-supported-browsers-devices.md)

@@ -1,25 +1,18 @@
 ---
-title: Erstellen eines Azure Service Bus-Themaabonnements und einer Regel anhand einer Azure Resource Manager-Vorlage | Microsoft-Dokumentation
+title: Erstellen eines Themenabonnements und einer Regel in Service Bus anhand einer Azure-Vorlage
 description: Erstellen eines Service Bus-Namespace mit einem Thema, einem Abonnement und einer Regel anhand einer Azure Resource Manager-Vorlage
-services: service-bus-messaging
-documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 9e0aaf58-0214-4bca-bd00-d29c08f9b1bc
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 01/23/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 8be34a85cb1a1863ee8a78c7b97af66627612fea
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 3f3287dd67f89f678a9875ddce93e2d0d26b2209
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444746"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89077623"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Erstellen eines Service Bus-Namespace mit einem Thema, einem Abonnement und einer Regel anhand einer Azure Resource Manager-Vorlage
 
@@ -40,8 +33,6 @@ Die vollständige Vorlage finden Sie unter [Service Bus-Namespace mit Thema, Abo
 > * [Create a Service Bus namespace with topic and subscription using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-topic.md)
 > 
 > Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][Azure Quickstart Templates] auf, und suchen Sie nach „Service Bus“.
-> 
-> 
 
 ## <a name="what-do-you-deploy"></a>Was stellen Sie bereit?
 
@@ -64,6 +55,7 @@ Definieren Sie mit Azure Resource Manager die Parameter für Werte, die Sie bei 
 Die Vorlage definiert die folgenden Parameter:
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 Der Name des zu erstellenden Service Bus-Namespace.
 
 ```json
@@ -73,6 +65,7 @@ Der Name des zu erstellenden Service Bus-Namespace.
 ```
 
 ### <a name="servicebustopicname"></a>serviceBusTopicName
+
 Der Name des Themas, das im Service Bus-Namespace erstellt wird.
 
 ```json
@@ -82,6 +75,7 @@ Der Name des Themas, das im Service Bus-Namespace erstellt wird.
 ```
 
 ### <a name="servicebussubscriptionname"></a>serviceBusSubscriptionName
+
 Der Name des Abonnements, das im Service Bus-Namespace erstellt wird.
 
 ```json
@@ -89,7 +83,9 @@ Der Name des Abonnements, das im Service Bus-Namespace erstellt wird.
 "type": "string"
 }
 ```
+
 ### <a name="servicebusrulename"></a>serviceBusRuleName
+
 Der Name der Regel (des Filters), die im Service Bus-Namespace erstellt wird.
 
 ```json
@@ -97,7 +93,9 @@ Der Name der Regel (des Filters), die im Service Bus-Namespace erstellt wird.
    "type": "string",
   }
 ```
+
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 Die Service Bus-API-Version der Vorlage.
 
 ```json
@@ -108,7 +106,9 @@ Die Service Bus-API-Version der Vorlage.
            "description": "Service Bus ApiVersion used by the template" 
        }
 ```
+
 ## <a name="resources-to-deploy"></a>Bereitzustellende Ressourcen
+
 Erstellt einen Service Bus-Standardnamespace vom Typ **Messaging** mit Thema, Abonnement und Regeln.
 
 ```json
@@ -164,22 +164,24 @@ Erstellt einen Service Bus-Standardnamespace vom Typ **Messaging** mit Thema, Ab
 JSON-Syntax und Eigenschaften finden Sie unter [namespaces](/azure/templates/microsoft.servicebus/namespaces), [topics](/azure/templates/microsoft.servicebus/namespaces/topics), [subscriptions](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions) und [rules](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions/rules).
 
 ## <a name="commands-to-run-deployment"></a>Befehle zum Ausführen der Bereitstellung
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
-```powershell
+
+```powershell-interactive
 New-AzureResourceGroupDeployment -Name \<deployment-name\> -ResourceGroupName \<resource-group-name\> -TemplateUri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-```azurecli
+
+```azurecli-interactive
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Im folgenden Thema wird erläutert, wie Sie einen Abonnementfilter erstellen: [Erstellen eines Service Bus-Namespace mit einem Thema, einem Abonnement und einer Regel anhand einer Azure Resource Manager-Vorlage](service-bus-resource-manager-namespace-topic-with-rule.md)
 
 In den folgenden Artikeln erfahren Sie, wie Sie diese Ressourcen verwalten:
 
@@ -187,12 +189,11 @@ In den folgenden Artikeln erfahren Sie, wie Sie diese Ressourcen verwalten:
 * [Verwalten von Service Bus mit PowerShell](service-bus-manage-with-ps.md)
 * [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 [Learn more about Service Bus topics and subscriptions]: service-bus-queues-topics-subscriptions.md
-[Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
-[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
-[Recommended naming conventions for Azure resources]: ../guidance/guidance-naming-conventions.md
+[Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/management/manage-resources-powershell.md
+[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/management/manage-resources-cli.md
+[Recommended naming conventions for Azure resources]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
 [Service Bus namespace with topic, subscription, and rule]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-subscription-rule/
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-

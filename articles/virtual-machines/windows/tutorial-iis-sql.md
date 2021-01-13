@@ -1,25 +1,19 @@
 ---
-title: 'Tutorial: Erstellen virtueller Computer mit ausgeführtem SQL-/IIS-/.NET-Stapel in Azure | Microsoft-Dokumentation'
+title: 'Tutorial: Erstellen virtueller Computer mit ausgeführtem SQL-/IIS-/.NET-Stapel in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie den Azure SQL-/IIS-/.NET-Stapel auf einem virtuellen Windows-Computer in Azure installieren.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8b2cf6f5475966426ee75cf73ce7bd84abc9ba42
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1c53194bd345c18ac582acd538f1e8f8e1e34d54
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101621"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87027851"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Tutorial: Installieren des SQL-/IIS-/.NET-Stapels auf einem virtuellen Windows-Computer mit Azure PowerShell
 
@@ -39,7 +33,7 @@ Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach d
 
 ## <a name="create-an-iis-vm"></a>Erstellen einer IIS-VM 
 
-In diesem Beispiel verwenden wir das Cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) in der PowerShell-Cloud Shell, um einen virtuellen Computer unter Windows Server 2016 zu erstellen und dann IIS und .NET Framework zu installieren. Der virtuelle IIS- und der virtuelle SQL-Computer gehören derselben Ressourcengruppe und demselben virtuellen Netzwerk an, daher erstellen wir Variablen für diese Namen.
+In diesem Beispiel verwenden wir das Cmdlet [New-AzVM](/powershell/module/az.compute/new-azvm) in der PowerShell-Cloud Shell, um einen virtuellen Computer unter Windows Server 2016 zu erstellen und dann IIS und .NET Framework zu installieren. Der virtuelle IIS- und der virtuelle SQL-Computer gehören derselben Ressourcengruppe und demselben virtuellen Netzwerk an, daher erstellen wir Variablen für diese Namen.
 
 
 ```azurepowershell-interactive
@@ -58,7 +52,7 @@ New-AzVm `
     -OpenPorts 80,3389 
 ```
 
-Installieren Sie IIS und .NET Framework mit dem Cmdlet [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) unter Verwendung der benutzerdefinierten Skripterweiterung.
+Installieren Sie IIS und .NET Framework mit dem Cmdlet [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) unter Verwendung der benutzerdefinierten Skripterweiterung.
 
 ```azurepowershell-interactive
 Set-AzVMExtension `
@@ -82,7 +76,7 @@ $vNet = Get-AzVirtualNetwork `
    -ResourceGroupName $resourceGroup
 ```
 
-Erstellen Sie mit [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig) eine Konfiguration für das Subnetz.
+Erstellen Sie mit [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) eine Konfiguration für das Subnetz.
 
 
 ```azurepowershell-interactive
@@ -93,7 +87,7 @@ Add-AzVirtualNetworkSubnetConfig `
    -ServiceEndpoint Microsoft.Sql
 ```
 
-Verwenden Sie [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork), um das VNET mit den neuen Subnetzinformationen zu aktualisieren.
+Verwenden Sie [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork), um das VNET mit den neuen Subnetzinformationen zu aktualisieren.
    
 ```azurepowershell-interactive   
 $vNet | Set-AzVirtualNetwork
@@ -117,7 +111,7 @@ New-AzVm `
     -OpenPorts 3389,1401 
 ```
 
-Verwenden Sie [Set-AzVMSqlServerExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsqlserverextension), um dem virtuellen SQL-Computer die [SQL Server-Erweiterung](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) hinzuzufügen.
+Verwenden Sie [Set-AzVMSqlServerExtension](/powershell/module/az.compute/set-azvmsqlserverextension), um dem virtuellen SQL-Computer die [SQL Server-Erweiterung](../../azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md) hinzuzufügen.
 
 ```azurepowershell-interactive
 Set-AzVMSqlServerExtension `
@@ -129,7 +123,7 @@ Set-AzVMSqlServerExtension `
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen SQL-/IIS-/.NET-Stapel mithilfe von Azure PowerShell installiert. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie einen SQL-/IIS-/.NET-Stapel mithilfe von Azure PowerShell installiert. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer VM 
@@ -137,8 +131,7 @@ In diesem Tutorial haben Sie einen SQL-/IIS-/.NET-Stapel mithilfe von Azure Powe
 > * Erstellen eines virtuellen Computers, auf dem SQL Server ausgeführt wird
 > * Installieren der SQL Server-Erweiterung
 
-Im nächsten Tutorial erfahren Sie, wie Sie einen IIS-Webserver mit SSL-Zertifikaten schützen.
+Im nächsten Tutorial erfahren Sie, wie Sie einen IIS-Webserver mit TLS/SSL-Zertifikaten schützen.
 
 > [!div class="nextstepaction"]
-> [Schützen eines IIS-Webservers mit SSL-Zertifikaten](tutorial-secure-web-server.md)
-
+> [Schützen eines IIS-Webservers mit TLS/SSL-Zertifikaten](tutorial-secure-web-server.md)

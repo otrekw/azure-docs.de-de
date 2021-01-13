@@ -1,26 +1,20 @@
 ---
-title: Azure CLI-Skriptbeispiel – Erstellen einer Azure Cache for Redis-Instanz | Microsoft-Dokumentation
-description: Azure CLI-Skriptbeispiel – Erstellen einer Azure Cache for Redis-Instanz
-services: cache
-documentationcenter: ''
+title: 'Erstellen einer Azure Cache for Redis-Instanz: Azure CLI'
+description: In diesem Azure CLI-Codebeispiel wird gezeigt, wie Sie mithilfe des Befehls „az redis create“ eine Azure Cache for Redis-Instanz erstellen.
 author: yegu-ms
-manager: jhubbard
-editor: ''
 tags: azure-service-management
-ms.assetid: afd7f6e0-9297-4c98-a95e-597be939cef7
 ms.service: cache
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.topic: sample
 ms.date: 08/30/2017
 ms.author: yegu
-ms.openlocfilehash: f4900242c9b6e5eecd5364d74bfcd8e2bc4efb2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 77a03ac7ca47e3ba40242adfbd5d57d9dbd21f30
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607757"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184143"
 ---
 # <a name="create-an-azure-cache-for-redis"></a>Erstellen einer Azure Cache for Redis-Instanz
 
@@ -40,12 +34,12 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az redis create](https://docs.microsoft.com/cli/azure/redis) | Erstellt eine Azure Cache for Redis-Instanz. |
+| [az group create](/cli/azure/group) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az redis create](/cli/azure/redis) | Erstellt eine Azure Cache for Redis-Instanz. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
 Zusätzliche Azure Cache for Redis-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure Cache for Redis](../cli-samples.md).

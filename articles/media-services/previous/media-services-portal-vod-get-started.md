@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 4a947c01d63e3842ead91481e480024a54380144
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: f8b2454bb0e39f5923af00502367f7b16bb040a4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69015056"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018983"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Erste Schritte zum Bereitstellen von On Demand-Inhalten über das Azure-Portal
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie einen einfachen Dienst zur Übermittlung von Video On Demand-Inhalten mit einer Azure Media Services-Anwendung in Azure-Portal implementieren.
 
@@ -106,26 +108,26 @@ Damit Sie Benutzern eine URL zum Streamen oder Herunterladen Ihrer Inhalte zur V
 
 Eine HLS-Streaming-URL können Sie erstellen, indem Sie *(format=m3u8-aapl)* an die URL anhängen:
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
+`{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)`
 
 Eine Streaming-URL für die Wiedergabe von Smooth Streaming-Medienobjekten hat das folgende Format:
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest
+`{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest`
 
 Eine MPEG-DASH-Streaming-URL können Sie erstellen, indem Sie *(format=mpd-time-csf)* an die URL anhängen:
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
+`{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)`
 
 Eine SAS-URL hat das folgende Format:
 
-    {blob container name}/{asset name}/{file name}/{shared access signature}
+`{blob container name}/{asset name}/{file name}/{shared access signature}`
 
 > [!NOTE]
 > Locators, die vor März 2015 über das Azure-Portal erstellt wurden, laufen nach zwei Jahren ab.  
 > 
 > 
 
-Das Ablaufdatum eines Locators kann mithilfe einer [REST-API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) oder mithilfe einer [.NET-API](https://go.microsoft.com/fwlink/?LinkID=533259) aktualisiert werden. 
+Das Ablaufdatum eines Locators kann mithilfe einer [REST-API](/rest/api/media/operations/locator#update_a_locator) oder mithilfe einer [.NET-API](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator) aktualisiert werden. 
 
 > [!NOTE]
 > Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.

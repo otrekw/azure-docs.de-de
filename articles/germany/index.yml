@@ -1,0 +1,46 @@
+### YamlMime:Landing
+title: Azure Deutschland-Dokumentation
+summary: Azure Deutschland ist eine physisch isolierte Instanz von Microsoft Azure mit erstklassigen Sicherheits- und Compliancediensten, die für die Einhaltung deutscher Datenschutzbestimmungen benötigt werden. Seit August 2018 haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Deutschland-Standorten bereitgestellt. Angesichts der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland gestartet, die Data Residency für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten.
+metadata:
+  title: Azure Deutschland-Dokumentation
+  description: Azure Deutschland ist eine physisch isolierte Instanz von Microsoft Azure mit erstklassigen Sicherheits- und Compliancediensten, die für die Einhaltung deutscher Datenschutzbestimmungen benötigt werden.
+  ms.service: germany
+  ms.topic: landing-page
+  author: rolyon
+  ms.author: rolyon
+  ms.date: 03/05/2020
+  ms.openlocfilehash: 9f8caa2172f57a47d918135d47d404c378e29c6d
+  ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "78674404"
+landingContent:
+- title: Informationen zu Azure Deutschland
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Deutschland?
+      url: germany-welcome.md
+  - linkListType: concept
+    links:
+    - text: Verfügbare Dienste
+      url: germany-services.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Entwicklerhandbuch
+      url: germany-developer-guide.md
+  - linkListType: how-to-guide
+    links:
+    - text: Herstellen einer Verbindung über das Azure-Portal
+      url: germany-get-started-connect-with-portal.md
+- title: Verwalten und Migrieren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwalten von und Verbinden mit Ihrem Abonnement
+      url: germany-manage-subscriptions.md
+    - text: Hinweise zur Migration
+      url: germany-migration-main.md

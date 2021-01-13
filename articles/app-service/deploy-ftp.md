@@ -1,44 +1,41 @@
 ---
-title: Bereitstellen von Inhalt mithilfe von FTP/S – Azure App Service | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Ihre App mithilfe von FTP oder FTPS in Azure App Service bereitstellen.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: Bereitstellen von Inhalt mithilfe von FTP/S
+description: Erfahren Sie, wie Sie Ihre App mithilfe von FTP oder FTPS in Azure App Service bereitstellen. Verbessern Sie die Websitesicherheit, indem Sie das unverschlüsselte Dateiübertragungsprotokoll deaktivieren.
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/18/2019
-ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 6e8a6820b3cf3031f11ab04d9baf4a7888491c81
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ce8c32b1afdf4178e3ffdc09e9c9176436fa771b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098072"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605075"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Bereitstellen der App in Azure App Service mithilfe von FTP/S
 
-In diesem Artikel erfahren Sie, wie Sie eine Web-App, das mobile App-Back-End oder eine API-App mithilfe von FTP oder FTPS in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) bereitstellen.
+In diesem Artikel erfahren Sie, wie Sie eine Web-App, das mobile App-Back-End oder eine API-App mithilfe von FTP oder FTPS in [Azure App Service](./overview.md) bereitstellen.
 
 Der FTP/S-Endpunkt für Ihre App ist bereits aktiv. Zum Aktivieren der FTP/S-Bereitstellung ist keine Konfiguration erforderlich.
 
 ## <a name="open-ftp-dashboard"></a>Öffnen des FTP-Dashboards
 
-Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Seite [Ressourcen](../azure-resource-manager/manage-resources-portal.md#manage-resources) Ihrer App.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services**, und wählen Sie den Eintrag aus.
 
-Um das FTP-Dashboard zu öffnen, klicken Sie auf **Bereitstellungscenter** > **FTP** > **Dashboard**.
+    ![Suchen Sie nach App Services.](media/app-service-continuous-deployment/search-for-app-services.png)
 
-![Öffnen des FTP-Dashboards](./media/app-service-deploy-ftp/open-dashboard.png)
+2. Wählen Sie die Web-App aus, die Sie bereitstellen möchten.
+
+    ![Wählen Sie Ihre App aus.](media/app-service-continuous-deployment/select-your-app.png)
+
+3. Wählen Sie **Bereitstellungscenter** > **FTP** > **Dashboard** aus.
+
+    ![Öffnen des FTP-Dashboards](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>Abrufen der FTP-Verbindungsinformationen
 
-Klicken Sie auf dem FTP-Dashboard auf **Kopieren**, um den FTPS-Endpunkt und App-Anmeldeinformationen zu kopieren.
+Klicken Sie auf dem FTP-Dashboard auf **Kopieren**, um den FTPS-Endpunkt und die App-Anmeldeinformationen zu kopieren.
 
 ![Kopieren von FTP-Informationen](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
@@ -70,7 +67,7 @@ Es wird empfohlen, **App-Anmeldeinformationen** für die Bereitstellung in Ihrer
 
 ## <a name="enforce-ftps"></a>Erzwingen von FTPS
 
-Aus Sicherheitsgründen sollten Sie nur FTP über SSL zulassen. Sie können auch FTP und FTPS deaktivieren, wenn Sie keine FTP-Bereitstellung verwenden.
+Aus Sicherheitsgründen sollten Sie nur FTP über TLS/SSL zulassen. Sie können auch FTP und FTPS deaktivieren, wenn Sie keine FTP-Bereitstellung verwenden.
 
 Wählen Sie auf der Ressourcenseite Ihrer App im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich **Konfiguration** > **Allgemeine Einstellungen** aus.
 
@@ -88,9 +85,18 @@ Informationen zur FTP-Bereitstellung mithilfe von [Azure PowerShell](/cli/azure)
 
 ## <a name="troubleshoot-ftp-deployment"></a>Problembehandlung bei der FTP-Bereitstellung
 
-- [Wie behebe ich Probleme bei der FTP-Bereitstellung?](#how-can-i-troubleshoot-ftp-deployment)
-- [Ich kann meinen Code nicht mit FTP erreichen und veröffentlichen. Wie kann ich das Problem beheben?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
-- [Wie kann ich in Azure App Service über den passiven Modus eine Verbindung mit FTP herstellen?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+- [Bereitstellen der App in Azure App Service mithilfe von FTP/S](#deploy-your-app-to-azure-app-service-using-ftps)
+  - [Öffnen des FTP-Dashboards](#open-ftp-dashboard)
+  - [Abrufen der FTP-Verbindungsinformationen](#get-ftp-connection-information)
+  - [Bereitstellen von Dateien in Azure](#deploy-files-to-azure)
+  - [Erzwingen von FTPS](#enforce-ftps)
+  - [Automatisieren mit Skripts](#automate-with-scripts)
+  - [Problembehandlung bei der FTP-Bereitstellung](#troubleshoot-ftp-deployment)
+    - [Wie behebe ich Probleme bei der FTP-Bereitstellung?](#how-can-i-troubleshoot-ftp-deployment)
+    - [Ich kann meinen Code nicht mit FTP erreichen und veröffentlichen. Wie kann ich das Problem beheben?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+    - [Wie kann ich in Azure App Service über den passiven Modus eine Verbindung mit FTP herstellen?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+  - [Nächste Schritte](#next-steps)
+  - [Weitere Ressourcen](#more-resources)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>Wie behebe ich Probleme bei der FTP-Bereitstellung?
 

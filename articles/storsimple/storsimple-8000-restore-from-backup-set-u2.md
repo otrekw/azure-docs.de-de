@@ -4,30 +4,24 @@ description: Erläutert, wie Sie den Sicherungskatalog des StorSimple-Geräte-Ma
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 05/23/2017
+ms.topic: how-to
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 6a2e022697ced90d968075b7a4abe4163be7a539
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff70df225b5ed27960c96889d409d7005f0fbcc4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723400"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950728"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Wiederherstellen eines StorSimple-Volumes aus einem Sicherungssatz
 
 ## <a name="overview"></a>Übersicht
 
 In diesem Tutorial wird der Wiederherstellungsvorgang auf einem StorSimple-Gerät der Serie 8000 mit einem vorhandenen Sicherungssatz beschrieben. Verwenden Sie das Blatt **Sicherungskatalog** zum Wiederherstellen eines Volumes aus einer lokalen oder einer Cloudsicherung. Auf dem Blatt **Sicherungskatalog** werden alle Sicherungssätze angezeigt, die mithilfe manueller oder automatisierter Sicherungen erstellt wurden. Das Volume wird durch die Wiederherstellung aus dem Sicherungssatz sofort online geschaltet, während die Daten im Hintergrund heruntergeladen werden.
-
-Eine alternative Methode zum Starten der Wiederherstellung können Sie unter **Geräte > [Ihr Gerät] > Volumes** durchführen. Wählen Sie auf dem Blatt **Volumes** ein Volume aus, klicken Sie mit der rechten Maustaste darauf, um das Kontextmenü aufzurufen, und wählen Sie dann **Wiederherstellen** aus.
 
 ## <a name="before-you-restore"></a>Vor der Wiederherstellung
 
@@ -69,7 +63,7 @@ In Update 4 können Windows PowerShell-Cmdlets zum Abfragen der ausgeführten Ak
 
 * `Set-HcsRehydrationJob`: Mit diesem Cmdlet können Sie den Aktivierungsauftrag unterbrechen, beenden und wiederaufnehmen, wenn die Aktivierung ausgeführt wird.
 
-Weitere Informationen zu den Cmdlets für die Aktivierung finden Sie in der [Cmdlet-Referenz für Windows PowerShell für StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
+Weitere Informationen zu den Cmdlets für die Aktivierung finden Sie in der [Cmdlet-Referenz für Windows PowerShell für StorSimple](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps).
 
 Bei der automatischen Aktivierung wird normalerweise eine höhere vorübergehende Leseleistung erwartet. Die tatsächlichen Optimierungen hängen von verschiedenen Faktoren wie dem Zugriffsmuster, der Datenänderungsrate und dem Datentyp ab. 
 
@@ -86,8 +80,8 @@ Das Blatt **Sicherungskatalog** bietet eine Abfrage, mit der Sie die Auswahl der
 Die gefilterten Sicherungssätze werden dann basierend auf den folgenden Attributen in Tabellenform angezeigt:
 
 * **Name** – der Name der Sicherungsrichtlinie oder des Volumes, der oder dem dieser Sicherungssatz zugeordnet ist.
-* **Typ** – Sicherungssätze können lokale Momentaufnahmen oder Cloudmomentaufnahmen sein. Eine lokale Momentaufnahme ist eine Sicherung aller Volumedaten, die auf dem lokalen Gerät gespeichert ist, während die Sicherung von Volumedaten in der Cloud als Cloudmomentaufnahme bezeichnet wird. Lokale Momentaufnahmen bieten schnelleren Zugriff, während Cloudmomentaufnahmen für Datenstabilität ausgewählt werden.
-* **Größe** – die tatsächliche Größe des Sicherungssatzes.
+* **Typ** : Sicherungssätze können lokale Momentaufnahmen oder Cloudmomentaufnahmen sein. Eine lokale Momentaufnahme ist eine Sicherung aller Volumedaten, die auf dem lokalen Gerät gespeichert ist, während die Sicherung von Volumedaten in der Cloud als Cloudmomentaufnahme bezeichnet wird. Lokale Momentaufnahmen bieten schnelleren Zugriff, während Cloudmomentaufnahmen für Datenstabilität ausgewählt werden.
+* **Größe** : die tatsächliche Größe des Sicherungssatzes.
 * **Erstellt am** – das Datum und die Uhrzeit der Erstellung der Sicherungen. 
 * **Volumes**: die Anzahl der Volumes, die dem Sicherungssatz zugeordnet sind
 * **Initiiert**: Die Sicherungen können automatisch nach einem Zeitplan oder manuell durch einen Benutzer initiiert werden. (Sie können eine Sicherungsrichtlinie verwenden, um Sicherungen zu planen. Es ist aber auch möglich, mithilfe der Option **Sicherung erstellen** eine interaktive, bedarfsgesteuerte Sicherung durchzuführen.)
@@ -121,7 +115,7 @@ Sie können Ihr StorSimple-Volume auf dem Blatt **Sicherungskatalog** aus einer 
    
 4. Navigieren Sie zurück zur Registerkarte **Sicherungskatalog** , und wählen Sie einen Sicherungssatz aus. Klicken Sie mit der rechten Maustaste, und wählen Sie im Kontextmenü **Wiederherstellen** aus.
 
-    ![Liste der Sicherungssätze](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![Liste der Sicherungssätze 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
 5. Sie werden aufgefordert, diesen Schritt zu bestätigen. Überprüfen Sie die Wiederherstellungsinformationen, und aktivieren Sie dann das Kontrollkästchen zur Bestätigung.
    
@@ -129,7 +123,7 @@ Sie können Ihr StorSimple-Volume auf dem Blatt **Sicherungskatalog** aus einer 
 
 7. Klicken Sie auf **Wiederherstellen**. Damit initiieren Sie einen Wiederherstellungsauftrag, den Sie auf der Seite **Aufträge** anzeigen können.
 
-   ![Bestätigungsseite](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![Bestätigungsseite 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. Überprüfen Sie, nachdem die Wiederherstellung abgeschlossen ist, ob die Inhalte der Volumes durch die aus der Sicherung ersetzt wurden.
 
@@ -143,4 +137,3 @@ Um den Wiederherstellungsvorgang erfolgreich abzuschließen, schalten Sie das Vo
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie [StorSimple-Volumes verwalten](storsimple-8000-manage-volumes-u2.md).
 * Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple-Geräte-Manager-Diensts verwalten](storsimple-8000-manager-service-administration.md).
-

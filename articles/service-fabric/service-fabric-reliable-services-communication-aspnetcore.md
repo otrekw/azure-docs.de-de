@@ -1,25 +1,15 @@
 ---
-title: Dienstkommunikation mit ASP.NET Core | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie ASP.NET Core in zustandslosen und zustandsbehafteten zuverlässigen Diensten verwenden.
-services: service-fabric
-documentationcenter: .net
-author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 8aa4668d-cbb6-4225-bd2d-ab5925a868f2
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Dienstkommunikation mit ASP.NET Core
+description: Hier erfahren Sie, wie Sie ASP.NET Core in zustandslosen und zustandsbehafteten Azure Service Fabric-Reliable Services-Anwendungen verwenden.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 10/12/2018
-ms.author: vturecek
-ms.openlocfilehash: 9648307bb7278f36686d8a53be90c2d9ef7159e1
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ba5626d477bbd6aa07d89703cc37b157f4cfd4d5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016710"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576790"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core in Azure Service Fabric Reliable Services
 
@@ -29,7 +19,7 @@ Dieser Artikel ist eine ausführliche Anleitung zum Hosten von ASP.NET Core-Dien
 
 Ein einführendes Tutorial auf ASP.NET Core in Service Fabric und Anweisungen zum Abrufen des Setups für Ihre Entwicklungsumgebung finden Sie unter [Tutorial: Erstellen und Bereitstellen einer Anwendung mit einem ASP.NET Core-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst](service-fabric-tutorial-create-dotnet-app.md).
 
-Im weiteren Verlauf dieses Artikels wird vorausgesetzt, dass Sie bereits mit ASP.NET Core vertraut sind. Wenn nicht, empfehlen wir Ihnen, die [ASP.NET Core-Grundlagen](https://docs.microsoft.com/aspnet/core/fundamentals/index) zu lesen.
+Im weiteren Verlauf dieses Artikels wird vorausgesetzt, dass Sie bereits mit ASP.NET Core vertraut sind. Wenn nicht, empfehlen wir Ihnen, die [ASP.NET Core-Grundlagen](/aspnet/core/fundamentals/index) zu lesen.
 
 ## <a name="aspnet-core-in-the-service-fabric-environment"></a>ASP.NET Core in der Service Fabric-Umgebung
 
@@ -103,7 +93,7 @@ Daher verwenden `ICommunicationListener`-Implementierungen von Kestrel und „HT
 ## <a name="httpsys-in-reliable-services"></a>„HTTP.sys“ in Reliable Services
 Sie können „HTTP.sys“ in Reliable Services verwenden, indem Sie das NuGet-Paket **Microsoft.ServiceFabric.AspNetCore.HttpSys** importieren. Dieses Paket enthält `HttpSysCommunicationListener`, eine Implementierung von `ICommunicationListener`. `HttpSysCommunicationListener` ermöglicht das Erstellen eines ASP.NET Core-Webhosts innerhalb eines zuverlässigen Diensts mit „HTTP.sys“ als Webserver.
 
-„HTTP.sys“ basiert auf der [Windows-HTTP-Server-API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx). Diese API verwendet den **HTTP.sys**-Kerneltreiber, um HTTP-Anforderungen zu verarbeiten und sie an Prozesse weiterzuleiten, die Webanwendungen ausführen. Dadurch können mehrere Prozesse auf dem gleichen physischen oder virtuellen Computer Webanwendungen am gleichen Port hosten. Die Unterscheidung erfolgt entweder anhand eines eindeutigen URL-Pfads oder anhand eines eindeutigen Hostnamens. Mit diesen Features können in Service Fabric mehrere Websites im gleichen Cluster gehostet werden.
+„HTTP.sys“ basiert auf der [Windows-HTTP-Server-API](/windows/win32/http/http-api-start-page). Diese API verwendet den **HTTP.sys**-Kerneltreiber, um HTTP-Anforderungen zu verarbeiten und sie an Prozesse weiterzuleiten, die Webanwendungen ausführen. Dadurch können mehrere Prozesse auf dem gleichen physischen oder virtuellen Computer Webanwendungen am gleichen Port hosten. Die Unterscheidung erfolgt entweder anhand eines eindeutigen URL-Pfads oder anhand eines eindeutigen Hostnamens. Mit diesen Features können in Service Fabric mehrere Websites im gleichen Cluster gehostet werden.
 
 >[!NOTE]
 >Die HTTP.sys-Implementierung funktioniert nur auf der Windows-Plattform.
@@ -142,9 +132,9 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="endpoint-configuration"></a>Endpunktkonfiguration
 
-Eine `Endpoint`-Konfiguration ist für Webserver erforderlich, die die Windows-HTTP-Server-API verwenden. Hierzu zählt auch „HTTP.sys“. Webserver, die die Windows-HTTP-Server-API verwenden, müssen ihre URL zuerst mit „HTTP.sys.“ reservieren. (Hierzu wird üblicherweise das Tool [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) verwendet.) 
+Eine `Endpoint`-Konfiguration ist für Webserver erforderlich, die die Windows-HTTP-Server-API verwenden. Hierzu zählt auch „HTTP.sys“. Webserver, die die Windows-HTTP-Server-API verwenden, müssen ihre URL zuerst mit „HTTP.sys.“ reservieren. (Hierzu wird üblicherweise das Tool [netsh](/windows/win32/http/netsh-commands-for-http) verwendet.) 
 
-Für diese Aktion sind erhöhte Rechte erforderlich, über die Ihre Dienste nicht standardmäßig verfügen. Mithilfe der Optionen „http“ und „https“ für die `Protocol`-Eigenschaft der `Endpoint`-Konfiguration in „ServiceManifest.xml“ wird die Service Fabric-Laufzeit spezifisch angewiesen, in Ihrem Auftrag eine URL mit „HTTP.sys“ zu registrieren. Dies geschieht mithilfe des URL-Präfixes für einen [*starken Platzhalter*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx).
+Für diese Aktion sind erhöhte Rechte erforderlich, über die Ihre Dienste nicht standardmäßig verfügen. Mithilfe der Optionen „http“ und „https“ für die `Protocol`-Eigenschaft der `Endpoint`-Konfiguration in „ServiceManifest.xml“ wird die Service Fabric-Laufzeit spezifisch angewiesen, in Ihrem Auftrag eine URL mit „HTTP.sys“ zu registrieren. Dies geschieht mithilfe des URL-Präfixes für einen [*starken Platzhalter*](/windows/win32/http/urlprefix-strings).
 
 Wenn Sie also beispielsweise `http://+:80` für einen Dienst reservieren möchten, verwenden Sie in „ServiceManifest.xml“ die folgende Konfiguration:
 
@@ -200,7 +190,7 @@ Ein von einer `Endpoint`-Konfiguration zugeordneter dynamischer Port stellt nur 
 ## <a name="kestrel-in-reliable-services"></a>Kestrel in zuverlässigen Diensten
 Sie können Kestrel in Reliable Services durch Importieren des NuGet-Pakets **Microsoft.ServiceFabric.AspNetCore.Kestrel** verwenden. Dieses Paket enthält `KestrelCommunicationListener`, eine Implementierung von `ICommunicationListener`. `KestrelCommunicationListener` ermöglicht das Erstellen eines ASP.NET Core-Webhosts innerhalb eines zuverlässigen Diensts mit Kestrel als Webserver.
 
-Kestrel ist ein plattformübergreifender Webserver für ASP.NET Core und basiert auf libuv, einer plattformübergreifenden asynchronen E/A-Bibliothek. Im Gegensatz zu „HTTP.sys“ verwendet Kestrel keinen zentralen Endpunkt-Manager. Und im Gegensatz zu „HTTP.sys“ unterstützt Kestrel keine Portfreigabe zwischen mehreren Prozessen. Jede Instanz von Kestrel muss einen eindeutigen Port verwenden.
+Kestrel ist ein plattformübergreifender Webserver für ASP.NET Core. Im Gegensatz zu „HTTP.sys“ verwendet Kestrel keinen zentralen Endpunkt-Manager. Und im Gegensatz zu „HTTP.sys“ unterstützt Kestrel keine Portfreigabe zwischen mehreren Prozessen. Jede Instanz von Kestrel muss einen eindeutigen Port verwenden. Weitere Informationen zu Kestrel finden Sie in den [Implementierungsdetails ](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2).
 
 ![Kestrel-Abbildung][4]
 
@@ -257,7 +247,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 In diesem Beispiel wird eine Singletoninstanz von `IReliableStateManager` für den Webhost-Abhängigkeitsinjektionscontainer bereitgestellt. Das ist zwar nicht zwingend erforderlich, ermöglicht aber die Verwendung von `IReliableStateManager` und zuverlässigen Sammlungen in Ihren MVC-Controlleraktionsmethoden.
 
-In einem zustandsbehafteten Dienst für `KestrelCommunicationListener` wird *kein* `Endpoint`-Konfigurationsname bereitgestellt. Dies wird im folgenden Abschnitt ausführlicher erläutert.
+In einem zustandsbehafteten Dienst für `KestrelCommunicationListener` wird *kein*`Endpoint`-Konfigurationsname bereitgestellt. Dies wird im folgenden Abschnitt ausführlicher erläutert.
 
 ### <a name="configure-kestrel-to-use-https"></a>Konfigurieren von Kestrel für die Verwendung von HTTPS
 Wenn Sie HTTPS mit Kestrel in Ihrem Dienst aktivieren, müssen Sie mehrere Optionen zum Lauschen festlegen. Aktualisieren Sie `ServiceInstanceListener`, um einen *EndpointHttps*-Endpunkt zu verwenden und an einen bestimmten Port (z.B. Port 443) zu lauschen. Wenn Sie den Webhost für die Verwendung des Kestrel-Webservers konfigurieren, müssen Sie Kestrel so konfigurieren, dass an allen Netzwerkschnittstellen auf IPv6-Adressen gelauscht wird: 
@@ -340,8 +330,11 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 
 In dieser Konfiguration wählt `KestrelCommunicationListener` automatisch einen nicht verwendeten Port aus dem Anwendungsportbereich aus.
 
+Für HTTPS sollte der Endpunkt mit dem HTTPS-Protokoll ohne einen in „ServiceManifest.xml“ angegebenen Port konfiguriert sein und den Endpunktnamen an den KestrelCommunicationListener-Konstruktor übergeben.
+
+
 ## <a name="service-fabric-configuration-provider"></a>Service Fabric-Konfigurationsanbieter
-Die App-Konfiguration in ASP.NET Core basiert auf Schlüssel-Wert-Paaren, die vom Konfigurationsanbieter eingerichtet werden. Lesen Sie [Konfiguration in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/), um mehr über die allgemeine Unterstützung der ASP.NET Core-Konfiguration zu erfahren.
+Die App-Konfiguration in ASP.NET Core basiert auf Schlüssel-Wert-Paaren, die vom Konfigurationsanbieter eingerichtet werden. Lesen Sie [Konfiguration in ASP.NET Core](/aspnet/core/fundamentals/configuration/), um mehr über die allgemeine Unterstützung der ASP.NET Core-Konfiguration zu erfahren.
 
 In diesem Abschnitt wird beschrieben, wie sich der Service Fabric-Konfigurationsanbieter in die ASP.NET Core-Konfiguration integriert, indem er das NuGet-Paket `Microsoft.ServiceFabric.AspNetCore.Configuration` importiert.
 
@@ -454,7 +447,7 @@ public Startup()
 ```
 
 ### <a name="configuration-updates"></a>Konfigurationsupdates
-Der Service Fabric-Konfigurationsanbieter unterstützt auch Konfigurationsupdates. Sie können `IOptionsMonitor` von ASP.NET Core verwenden, um Änderungsbenachrichtigungen zu erhalten, und dann `IOptionsSnapshot` verwenden, um Konfigurationsdaten erneut zu laden. Weitere Informationen finden Sie unter [ASP.NET Core-Optionen](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).
+Der Service Fabric-Konfigurationsanbieter unterstützt auch Konfigurationsupdates. Sie können `IOptionsMonitor` von ASP.NET Core verwenden, um Änderungsbenachrichtigungen zu erhalten, und dann `IOptionsSnapshot` verwenden, um Konfigurationsdaten erneut zu laden. Weitere Informationen finden Sie unter [ASP.NET Core-Optionen](/aspnet/core/fundamentals/configuration/options).
 
 Diese Optionen werden standardmäßig unterstützt. Es ist keine weitere Codierung erforderlich, um Konfigurationsupdates zu aktivieren.
 
@@ -476,8 +469,8 @@ Kestrel ist der empfohlene Webserver für Front-End-Dienste, die externe HTTP-En
  
 Ein für das Internet verfügbar gemachter zustandsloser Dienst muss einen bekannten und stabilen Endpunkt verwenden, der über einen Load Balancer erreichbar ist. Sie müssen diese URL für die Benutzer Ihrer Anwendung bereitstellen. Folgende Konfigurationen werden empfohlen:
 
-|  |  | **Hinweise** |
-| --- | --- | --- |
+| type | Empfehlung | Notizen |
+| ---- | -------------- | ----- |
 | Webserver | Kestrel | Kestrel ist der bevorzugte Webserver, da er unter Windows und Linux unterstützt wird. |
 | Portkonfiguration | Statisch | In der `Endpoints`-Konfiguration von „ServiceManifest.xml“ muss ein bekannter statischer Port konfiguriert werden – beispielsweise 80 für HTTP oder 443 für HTTPS. |
 | ServiceFabricIntegrationOptions | Keine | Verwenden Sie die Option `ServiceFabricIntegrationOptions.None`, wenn Sie Middleware für die Service Fabric-Integration konfigurieren, damit der Dienst nicht versucht, eingehende Anforderungen auf einen eindeutigen Bezeichner zu prüfen. Die eindeutig identifizierbaren Informationen, die von der Middleware verwendet werden, sind externen Benutzern Ihrer Anwendung nicht bekannt. |
@@ -501,18 +494,18 @@ Wenn sich mehrere extern verfügbar gemachte Dienste die gleichen Knoten teilen,
 ### <a name="internal-only-stateless-aspnet-core-service"></a>Zustandsloser ASP.NET Core-Dienst (nur intern)
 Zustandslose Dienste, die nur innerhalb des Clusters aufgerufen werden, sollten eindeutige URLs und dynamisch zugewiesene Ports verwenden, um die Zusammenarbeit zwischen mehreren Diensten zu gewährleisten. Folgende Konfigurationen werden empfohlen:
 
-|  |  | **Hinweise** |
-| --- | --- | --- |
+| type | Empfehlung | Notizen |
+| ---- | -------------- | ----- |
 | Webserver | Kestrel | Für interne zustandslose Dienste kann „HTTP.sys“ zwar verwendet werden, als Server wird jedoch Kestrel empfohlen, um die gemeinsame Verwendung eines Hosts durch mehrere Dienstinstanzen zu ermöglichen.  |
 | Portkonfiguration | Dynamisch zugewiesen | Mehrere Replikate eines zustandsbehafteten Diensts können gemeinsam einen Hostprozess oder ein Hostbetriebssystem verwenden und benötigen daher eindeutige Ports. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Bei dynamischer Portzuweisung verhindert diese Einstellung das weiter oben beschriebene Verwechslungsproblem. |
-| InstanceCount | beliebig | Die Einstellung für die Instanzenanzahl kann auf einen beliebigen Wert festgelegt werden, der für den Betrieb des Diensts erforderlich ist. |
+| InstanceCount | any | Die Einstellung für die Instanzenanzahl kann auf einen beliebigen Wert festgelegt werden, der für den Betrieb des Diensts erforderlich ist. |
 
 ### <a name="internal-only-stateful-aspnet-core-service"></a>Zustandsbehafteter ASP.NET Core-Dienst (nur intern)
 Zustandsbehaftete Dienste, die nur innerhalb des Clusters aufgerufen werden, sollten dynamisch zugewiesene Ports verwenden, um die Zusammenarbeit zwischen mehreren Diensten zu gewährleisten. Folgende Konfigurationen werden empfohlen:
 
-|  |  | **Hinweise** |
-| --- | --- | --- |
+| type | Empfehlung | Notizen |
+| ---- | -------------- | ----- |
 | Webserver | Kestrel | `HttpSysCommunicationListener` ist nicht für die Verwendung durch zustandsbehaftete Dienste konzipiert, in denen sich Replikate einen Hostprozess teilen. |
 | Portkonfiguration | Dynamisch zugewiesen | Mehrere Replikate eines zustandsbehafteten Diensts können gemeinsam einen Hostprozess oder ein Hostbetriebssystem verwenden und benötigen daher eindeutige Ports. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Bei dynamischer Portzuweisung verhindert diese Einstellung das weiter oben beschriebene Verwechslungsproblem. |

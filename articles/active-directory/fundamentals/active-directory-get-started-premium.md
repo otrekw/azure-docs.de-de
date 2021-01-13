@@ -2,23 +2,23 @@
 title: Registrieren für Premium-Editionen – Azure Active Directory | Microsoft-Dokumentation
 description: Enthält eine Anleitung dazu, wie Sie sich für Azure Active Directory Premium-Editionen registrieren.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 09/07/2017
 ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 016fbc8808c11f861dd4388ea5fb062c840187ea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 425809339cf4c468293801460fdeb79d9e467968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561985"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89565598"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Registrieren für Azure Active Directory Premium-Editionen
 Sie können Azure Active Directory (Azure AD) Premium-Editionen erwerben und Ihrem Azure-Abonnement zuordnen. Wenn Sie ein neues Azure-Abonnement erstellen müssen, müssen Sie außerdem Ihren Lizenzplan und den Azure AD-Dienstzugriff aktivieren.
@@ -28,7 +28,7 @@ Sie können Azure Active Directory (Azure AD) Premium-Editionen erwerben und Ihr
 
 Bevor Sie sich für Active Directory Premium 1 oder Premium 2 registrieren, müssen Sie zuerst festlegen, welches Ihrer vorhandenen Abonnements oder Pläne Sie verwenden möchten:
 
-- Ihr vorhandenes Azure- oder Office 365-Abonnement
+- Ihr vorhandenes Azure- oder Microsoft 365-Abonnement
 
 - Ihren Enterprise Mobility + Security-Lizenzplan
 
@@ -36,8 +36,8 @@ Bevor Sie sich für Active Directory Premium 1 oder Premium 2 registrieren, müs
 
 Durch die Registrierung über Ihr Azure-Abonnement und bereits erworbenen aktivierten Azure AD-Lizenzen werden automatisch die Lizenzen im selben Verzeichnis aktiviert. Wenn dies nicht der Fall ist, müssen Sie noch Ihren Lizenzplan und den Azure AD-Zugriff aktivieren. Weitere Informationen zum Aktivieren Ihres Lizenzplans finden Sie unter [Aktivieren des neuen Lizenzplans](#activate-your-new-license-plan). Weitere Informationen zum Aktivieren Ihres Azure AD-Zugriffs finden Sie unter [Aktivieren des Azure AD-Zugriffs](#activate-your-azure-ad-access). 
 
-## <a name="sign-up-using-your-existing-azure-or-office-365-subscription"></a>Registrieren über ein vorhandenes Azure- oder Office 365-Abonnement
-Abonnenten von Azure oder Office 365 können Azure Active Directory Premium-Editionen online erwerben. Ausführliche Schritte finden Sie unter [How to Purchase Azure Active Directory Premium - Existing Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) (Erwerben von Azure Active Directory Premium – Bestandskunden) oder [How to Purchase Azure Active Directory Premium - New Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers) (Erwerben von Azure Active Directory Premium – Neukunden).
+## <a name="sign-up-using-your-existing-azure-or-microsoft-365-subscription"></a>Registrieren über ein vorhandenes Azure- oder Microsoft 365-Abonnement
+Abonnenten von Azure oder Microsoft 365 können Azure Active Directory Premium-Editionen online erwerben. Ausführliche Anweisungen finden Sie unter [How to Purchase Azure Active Directory Premium - New Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers) (Erwerben von Azure Active Directory Premium – Neukunden).
 
 ## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>Registrieren über den Enterprise Mobility + Security-Lizenzplan
 Enterprise Mobility + Security (EMS) ist eine Suite bestehend aus Azure AD Premium, Azure Information Protection und Microsoft Intune. Wenn Sie bereits über eine EMS-Lizenz verfügen, können Sie für Ihre ersten Schritte mit Azure AD eine der folgenden Lizenzoptionen verwenden:

@@ -1,25 +1,15 @@
 ---
-title: Löschen von Azure Service Fabric Actors | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Service Fabric Reliable Actors und deren Zustand manuell löschen.
-services: service-fabric
-documentationcenter: .net
-author: amanbha
-manager: chackdan
-editor: vturecek
-ms.assetid: b91384cc-804c-49d6-a6cb-f3f3d7d65a8e
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Löschen von Azure Service Fabric-Actors
+description: Hier erfahren Sie, wie Sie Reliable Actors und deren Zustand in einer Azure Service Fabric-Anwendung manuell und vollständig löschen.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
-ms.author: amanbha
-ms.openlocfilehash: e297a6f42774f29e2eca4a410b695d5bbb636300
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 16d4ab6a3c155f897cf9212fb1cd6c34d977b9ec
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726603"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574019"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>Löschen von Reliable Actors und deren Zustand
 Eine Garbage Collection von deaktivierten Actors bereinigt nur das Actor-Objekt, entfernt jedoch keine Daten, die im Zustands-Manager eines Actors gespeichert sind. Wenn ein Actor reaktiviert wird, werden seine Daten durch den Zustands-Manager wieder zur Verfügung gestellt. Wenn Actors Daten im Zustands-Manager speichern und dann deaktiviert, aber nicht wieder aktiviert werden, kann eine Bereinigung ihrer Daten nötig sein.
@@ -58,7 +48,7 @@ Weitere Informationen zu Reliable Actors finden Sie hier:
 * [Actor-Ereignisse](service-fabric-reliable-actors-events.md)
 * [Actor-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md)
 * [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
-* [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Actor-API-Referenzdokumentation](/previous-versions/azure/dn971626(v=azure.100))
 * [C#-Beispielcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-Beispielcode](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

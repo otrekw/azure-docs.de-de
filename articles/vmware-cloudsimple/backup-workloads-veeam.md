@@ -1,19 +1,19 @@
 ---
-title: 'Azure VMware Solution von CloudSimple: Sichern virtueller Workloadcomputer in der privaten Cloud mit Veeam'
+title: 'Azure VMware Solution by CloudSimple: Sichern virtueller Workloadcomputer in der privaten Cloud mit Veeam'
 description: Beschreibt, wie Sie Ihre virtuellen Computer mit Veeam B&R 9.5 sichern können, die in einer Azure-basierten privaten CloudSimple-Cloud ausgeführt werden.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 930e482ab85113ac802932929fdbea358ee26035
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 7be606b3e23a594e67acf3f169d88353403d8577
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619479"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899336"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Sichern von Workload-VMs in einer privaten CloudSimple-Cloud mithilfe von Veeam B&R
 
@@ -56,7 +56,7 @@ Für Umgebungen, in denen weniger als 30 TB gesichert werden müssen, empfiehlt 
 * Ein Linux-basiertes primäres Sicherungsrepository in Azure, das als Ziel für Sicherungsaufträge konfiguriert ist.
 * `azcopy` wird verwendet, um die Daten aus dem primären Sicherungsrepository in einen Azure-Blobcontainer zu kopieren, der in eine andere Region repliziert wird.
 
-![Grundlegende Bereitstellungsszenarien](media/veeam-basicdeployment.png)
+![Diagramm grundlegender Bereitstellungsszenarien für Veeam.](media/veeam-basicdeployment.png)
 
 **Erweiterte Bereitstellung**
 
@@ -105,7 +105,7 @@ Folgendes ist erforderlich, bevor Sie mit der Veeam-Bereitstellung beginnen kön
 * Ein Azure-Abonnement, dessen Besitzer Sie sind.
 * Eine vorab Erstellte Azure-Ressourcengruppe.
 * Ein virtuelles Azure-Netzwerk in Ihrem Abonnement.
-* Ein Azure-Speicherkonto.
+* Ein Azure-Speicherkonto
 * Eine [private Cloud](create-private-cloud.md), die mithilfe des CloudSimple-Portals erstellt wurde.  
 
 Die folgenden Elemente werden während der Implementierungsphase benötigt:
@@ -170,7 +170,7 @@ Stellen Sie eine Verbindung zwischen Ihrem virtuellen Netzwerk und der privaten 
 3. Konfigurieren Sie eine Netzwerksicherheitsgruppe (NSG) für den virtuellen Computer. Vergewissern Sie sich, dass der virtuelle Computer nicht über eine öffentliche IP-Adresse verfügt und über das öffentliche Internet nicht erreichbar ist.
 4. Erstellen Sie einen Benutzernamen und ein kennwortbasiertes Benutzerkonto für die neue VM. Anleitungen dazu finden Sie unter [Erstellen eines virtuellen Linux-Computers im Azure-Portal](../virtual-machines/linux/quick-create-portal.md).
 5. Erstellen Sie eines HDD Standard-Datenträgers mit 1x512 GiB, und fügen Sie ihn an die Repository-VM an.  Anleitungen dazu finden Sie unter [Anfügen eines verwalteten Datenträgers an eine Windows-VM im Azure-Portal](../virtual-machines/windows/attach-managed-disk-portal.md).
-6. [Erstellen Sie ein XFS-Volume auf dem verwalteten Datenträger](https://www.digitalocean.com/docs/volumes/how-to/format-and-mount). Melden Sie sich mit den zuvor erwähnten Anmeldeinformationen bei der VM an. Führen Sie das folgende Skript aus, um ein logisches Volume zu erstellen, fügen Sie den Datenträger hinzu, erstellen Sie eine XFS-Dateisystempartition, und stellen Sie die Partition unter dem Pfad „/backup1“ bereit.
+6. [Erstellen Sie ein XFS-Volume auf dem verwalteten Datenträger](https://www.digitalocean.com/docs/volumes/how-to/). Melden Sie sich mit den zuvor erwähnten Anmeldeinformationen bei der VM an. Führen Sie das folgende Skript aus, um ein logisches Volume zu erstellen, fügen Sie den Datenträger hinzu, erstellen Sie eine [XFS-Dateisystempartition](https://www.digitalocean.com/docs/volumes/how-to/partition/), und [binden](https://www.digitalocean.com/docs/volumes/how-to/mount/) Sie die Partition unter dem Pfad „/backup1“ ein.
 
     Beispielskript:
 
@@ -194,8 +194,8 @@ Stellen Sie eine Verbindung zwischen Ihrem virtuellen Netzwerk und der privaten 
 
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Konfigurieren von Azure-Blobspeicher für die langfristige Datenaufbewahrung
 
-1. Erstellen Sie ein universelles Speicherkonto (GPv2) des Standardtyps und einen Blobcontainer, wie im Microsoft-Video [Getting Started with Azure Storage](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage) (Erste Schritte mit Azure Storage) beschrieben.
-2. Erstellen Sie einen Azure Storage-Container, wie in der Referenz [Erstellen eines Containers](https://docs.microsoft.com/rest/api/storageservices/create-container) beschrieben.
+1. Erstellen Sie ein universelles Speicherkonto (GPv2) des Standardtyps und einen Blobcontainer, wie im Microsoft-Video [Getting Started with Azure Storage](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage) (Erste Schritte mit Azure Storage) beschrieben.
+2. Erstellen Sie einen Azure Storage-Container, wie in der Referenz [Erstellen eines Containers](/rest/api/storageservices/create-container) beschrieben.
 2. Laden Sie das `azcopy`-Befehlszeilenhilfsprogramm für Linux von Microsoft herunter. Sie können die folgenden Befehle in der Bash-Shell in CentOS 7.5 verwenden.
 
     ```
@@ -206,7 +206,7 @@ Stellen Sie eine Verbindung zwischen Ihrem virtuellen Netzwerk und der privaten 
     sudo yum -y install icu
     ```
 
-3. Verwenden Sie den Befehl `azcopy`, um Sicherungsdateien in den und aus dem Blobcontainer zu kopieren.  Ausführliche Informationen zu den Befehlen finden Sie unter [Übertragen von Daten mit AzCopy unter Linux](../storage/common/storage-use-azcopy-linux.md).
+3. Verwenden Sie den Befehl `azcopy`, um Sicherungsdateien in den und aus dem Blobcontainer zu kopieren.  Ausführliche Informationen zu den Befehlen finden Sie unter [Übertragen von Daten mit AzCopy unter Linux](../storage/common/storage-use-azcopy-v10.md).
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>vCenter-Konsole der privaten Cloud: Installieren von Veeam B&R
 
@@ -260,7 +260,7 @@ Erstellen Sie eine Firewallregel, um dem Veeam-Sicherungsserver zu erlauben, ein
 
 Informationen zum Einschränken von Berechtigungen finden Sie unter [Einschränken von Berechtigungen](escalate-private-cloud-privileges.md#de-escalate-privileges).
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 ### <a name="cloudsimple-references"></a>CloudSimple-Referenzen
 
@@ -290,9 +290,9 @@ Informationen zum Einschränken von Berechtigungen finden Sie unter [Einschränk
 * [Verknüpfen eines VNET mit einer Verbindung – anderes Abonnement](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
 * [Erstellen eines virtuellen Linux-Computers im Azure-Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Anfügen eines verwalteten Datenträgers an eine Windows-VM im Azure-Portal](../virtual-machines/windows/attach-managed-disk-portal.md)
-* [Erste Schritte mit Azure Storage (Video)](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage)
-* [Erstellen eines Containers](https://docs.microsoft.com/rest/api/storageservices/create-container)
-* [Übertragen von Daten mit AzCopy unter Linux](../storage/common/storage-use-azcopy-linux.md)
+* [Erste Schritte mit Azure Storage (Video)](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
+* [Erstellen eines Containers](/rest/api/storageservices/create-container)
+* [Übertragen von Daten mit AzCopy unter Linux](../storage/common/storage-use-azcopy-v10.md)
 
 ### <a name="vmware-references"></a>VMware-Referenzen
 

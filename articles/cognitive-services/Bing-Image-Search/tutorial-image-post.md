@@ -1,25 +1,31 @@
 ---
-title: 'Tutorial: Extrahieren von Bilddetails mit der Bing-Bildersuche-API und C#'
+title: 'Tutorial: Extrahieren von Bilddetails mit der REST-API und C# – Bing-Bildersuche'
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie in diesem Artikel, wie Sie eine C#-Anwendung erstellen, die Bilddetails mithilfe der Bing-Bildersuche-API extrahiert.
+description: Erfahren Sie in diesem Tutorial, wie Sie eine C#-Anwendung erstellen, die Bilddetails mithilfe der Bing-Bildersuche-API extrahiert.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 12/06/2019
 ms.author: aahi
-ms.openlocfilehash: 995ccc8ffeb436526608803362cc361c74a75316
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.custom: devx-track-js
+ms.openlocfilehash: cef39b940f0d61fc60ea10156acfd781289157de
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790031"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591970"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Tutorial: Extrahieren von Bilddetails mit der Bing-Bildersuche-API und C#
 
-Die Bing-Bildersuche-API stellt mehrere [Endpunkte](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-endpoint) zur Verfügung. Der `/details`-Endpunkt akzeptiert eine POST-Anforderung mit einem Bild und kann zahlreiche Bilddetails zurückgegeben. Diese C#-Anwendung sendet ein Bild über diese API und zeigt die von Bing zurückgegebenen Details an, die JSON-Objekte sind, wie beispielsweise:
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+Die Bing-Bildersuche-API stellt mehrere [Endpunkte](./image-search-endpoint.md) zur Verfügung. Der `/details`-Endpunkt akzeptiert eine POST-Anforderung mit einem Bild und kann zahlreiche Bilddetails zurückgegeben. Diese C#-Anwendung sendet ein Bild über diese API und zeigt die von Bing zurückgegebenen Details an, die JSON-Objekte sind, wie beispielsweise:
 
 ![[JSON-Ergebnisse]](media/cognitive-services-bing-images-api/jsonResult.jpg)
 
@@ -42,7 +48,7 @@ Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Sam
 
 ## <a name="construct-an-image-details-search-request"></a>Erstellen einer Suchanforderung für Bilddetails
 
-Im Folgenden finden Sie den `/details`-Endpunkt, der POST-Anforderungen mit Bilddaten im Anforderungstext akzeptiert.
+Im Folgenden finden Sie den `/details`-Endpunkt, der POST-Anforderungen mit Bilddaten im Anforderungstext akzeptiert. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
@@ -98,7 +104,7 @@ Diese JSON-Antwort kann dann in der Konsole ausgegeben werden.
 
 ## <a name="use-an-image-insights-token-in-a-request"></a>Verwenden von ImageInsightsToken in einer Anforderung
 
-Um das `ImageInsightsToken`-Objekt zu verwenden, das mit den Ergebnissen von `POST` zurückgegeben wird, können Sie es einer `GET`-Anforderung hinzufügen. Beispiel: 
+Um das `ImageInsightsToken`-Objekt zu verwenden, das mit den Ergebnissen von `POST` zurückgegeben wird, können Sie es einer `GET`-Anforderung hinzufügen. Beispiel:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid_A2C4BB81AA2C9EF8E049C5933C546449*ccid_osS7gaos*mid_BF7CC4FC4A882A3C3D56E644685BFF7B8BACEAF2

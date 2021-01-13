@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: eb7deacc068661ca9a4f473ee2d36b7d4464c81c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199458"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87543451"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problembehandlung und Einschränkungen bei Azure Cloud Shell
 
@@ -29,6 +29,11 @@ Zu den bekannten Lösungen für die Behandlung von Problemen in Azure Cloud Shel
 
 ## <a name="general-troubleshooting"></a>Allgemeine Problembehandlung
 
+### <a name="error-running-azuread-cmdlets-in-powershell"></a>Fehler beim Ausführen von AzureAD-Cmdlets in PowerShell
+
+- **Details**: Beim Ausführen von AzureAD-Cmdlets wie `Get-AzureADUser` in Cloud Shell wird möglicherweise folgender Fehler angezeigt: `You must call the Connect-AzureAD cmdlet before calling any other cmdlets`. 
+- **Lösung:** Führen Sie das `Connect-AzureAD`-Cmdlet aus. In der Vergangenheit wurde dieses Cmdlet beim PowerShell-Start automatisch in Cloud Shell ausgeführt. Für eine verkürzte Startzeit wird das Cmdlet nun nicht mehr automatisch ausgeführt. Sie können das frühere Verhalten wiederherstellen, indem Sie `Connect-AzureAD` zur $PROFILE-Datei in PowerShell hinzufügen.
+
 ### <a name="early-timeouts-in-firefox"></a>Frühe Timeouts in Firefox
 
 - **Details**: Cloud Shell nutzt einen offenen Websocket für die Weitergabe der Ein- und Ausgaben an den Browser. Firefox verfügt über vordefinierte Richtlinien, die den Websocket vorzeitig schließen und damit frühe Timeouts in Cloud Shell verursachen können.
@@ -36,13 +41,13 @@ Zu den bekannten Lösungen für die Behandlung von Problemen in Azure Cloud Shel
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Deaktivieren von Cloud Shell in einer gesperrten Netzwerkumgebung
 
-- **Details**: Administratoren möchten möglicherweise den Zugriff auf Cloud Shell für Benutzer deaktivieren. Cloud Shell nutzt den Zugriff auf die Domäne `ux.console.azure.com`, der verweigert werden kann, wodurch jeglicher Zugriff auf Einstiegspunkte von Cloud Shell unterbrochen wird, einschließlich des Zugriffs auf portal.azure.com, shell.azure.com, die Azure-Kontoerweiterung für Visual Studio Code und docs.microsoft.com.
-- **Lösung:** Beschränken Sie den Zugriff auf `ux.console.azure.com` über die Netzwerkeinstellungen für Ihre Umgebung. Das Cloud Shell-Symbol ist dann immer noch auf portal.azure.com vorhanden, es kann aber keine Verbindung mit dem Dienst hergestellt werden.
+- **Details**: Administratoren möchten möglicherweise den Zugriff auf Cloud Shell für Benutzer deaktivieren. Cloud Shell nutzt den Zugriff auf die Domäne `ux.console.azure.com`, der verweigert werden kann, wodurch jeglicher Zugriff auf Einstiegspunkte von Cloud Shell unterbrochen wird, einschließlich des Zugriffs auf portal.azure.com, shell.azure.com, die Azure-Kontoerweiterung für Visual Studio Code und docs.microsoft.com. In der US Government-Cloud ist der Einstiegspunkt `ux.console.azure.us`, und es gibt keine Entsprechung für shell.azure.us.
+- **Lösung:** Beschränken Sie den Zugriff auf `ux.console.azure.com` oder `ux.console.azure.us` über die Netzwerkeinstellungen für Ihre Umgebung. Das Cloud Shell-Symbol ist dann immer noch im Azure-Portal vorhanden, es kann aber keine Verbindung mit dem Dienst hergestellt werden.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Speicherdialogfeld – Fehler: 403 RequestDisallowedByPolicy
 
-- **Details**: Das Erstellen eines Speicherkontos über Cloud Shell ist aufgrund einer von Ihrem Administrator eingerichteten Azure-Richtlinie nicht erfolgreich. Zu den Fehlermeldung zählt: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
-- **Lösung:** Wenden Sie sich an Ihren Azure-Administrator, um die Azure-Richtlinie, die die Speichererstellung verhindert, zu entfernen oder zu aktualisieren.
+- **Details**: Das Erstellen eines Speicherkontos über Cloud Shell ist aufgrund einer von Ihrem Administrator eingerichteten Azure-Richtlinienzuweisung nicht erfolgreich. Zu den Fehlermeldung zählt: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **Lösung:** Wenden Sie sich an Ihren Azure-Administrator, um die Azure-Richtlinienzuweisung, die die Speichererstellung verhindert, zu entfernen oder zu aktualisieren.
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>Speicherdialogfeld – Fehler: 400 DisallowedOperation
 
@@ -86,6 +91,12 @@ Zu den bekannten Lösungen für die Behandlung von Problemen in Azure Cloud Shel
 ## <a name="general-limitations"></a>Allgemeine Einschränkungen
 
 Für Azure Cloud Shell gelten die folgenden bekannten Einschränkungen:
+
+### <a name="quota-limitations"></a>Kontingenteinschränkungen
+
+Azure Cloud Shell hat ein Limit von 20 gleichzeitigen Benutzern pro Mandant pro Region. Wenn Sie versuchen, mehr gleichzeitige Sitzungen als das Limit zu öffnen, wird der Fehler „Tenant User Over Quota“ (Mandantenbenutzer über Kontingent) angezeigt. Wenn Sie einen legitimen Bedarf haben, mehr Sitzungen zu öffnen (z. B. für Trainingssitzungen), wenden Sie sich im Vorfeld Ihres erwarteten Bedarfs an den Support, um eine Erhöhung des Kontingents anzufordern.
+
+Cloud Shell wird als kostenloser Dienst bereitgestellt und dient der Konfiguration Ihrer Azure-Umgebung, nicht als allgemeine Computingplattform. Übermäßige automatisierte Nutzung kann als Verletzung der Azure-Vertragsbedingungen angesehen werden und dazu führen, dass der Zugriff auf Cloud Shell blockiert wird.
 
 ### <a name="system-state-and-persistence"></a>Systemstatus und Persistenz
 
@@ -131,36 +142,17 @@ Gehen Sie bei der Bearbeitung von „.bashrc“ vorsichtig vor, da sonst unerwar
 
 Derzeit ist `AzureAD.Standard.Preview` verfügbar, wobei es sich um eine Vorschauversion eines auf .NET Standard basierenden Moduls handelt. Dieses Modul verfügt über die gleiche Funktionalität wie `AzureAD`.
 
-### <a name="sqlserver-module-functionality"></a>`SqlServer`-Modulfunktionalität
-
-Das in Cloud Shell enthaltene `SqlServer`-Modul bietet nur Unterstützung für die Vorabversion von PowerShell Core. Insbesondere ist `Invoke-SqlCmd` noch nicht verfügbar.
-
-### <a name="default-file-location-when-created-from-azure-drive"></a>Standard-Dateispeicherort beim Erstellen vom Azure-Laufwerk
-
-Mithilfe von PowerShell-Cmdlets können Benutzer keine Dateien unter dem Azure-Laufwerk erstellen. Wenn Benutzer neue Dateien mit anderen Tools wie Vim oder nano erstellen, werden die Dateien standardmäßig in `$HOME` gespeichert.
-
-### <a name="tab-completion-can-throw-psreadline-exception"></a>Vervollständigung mit der TAB-Taste kann PSReadline-Ausnahme auslösen
-
-Wenn PSReadline EditMode für den Benutzer auf Emacs festgelegt ist, der Benutzer versucht, alle Möglichkeiten über die TAB-Vervollständigung anzuzeigen, und die Größe des Fensters zu klein zum Darstellen aller Möglichkeiten ist, wird für PSReadline ein Ausnahmefehler ausgelöst.
-
-### <a name="large-gap-after-displaying-progress-bar"></a>Große Lücke nach dem Anzeigen der Statusanzeige
-
-Wenn aufgrund eines Befehls oder einer Benutzeraktion eine Statusanzeige angezeigt wird, z.B. eine TAB-Vervollständigung für das Laufwerk `Azure:`, wird der Cursor ggf. nicht richtig angeordnet, und an der vorherigen Position der Statusanzeige ist eine Lücke zu sehen.
-
-### <a name="random-characters-appear-inline"></a>In der Eingabe angezeigte zufällige Zeichen
-
-Die Sequenzcodes für die Cursorposition, z.B. `5;13R`, können in der Benutzereingabe angezeigt werden. Die Zeichen können manuell entfernt werden.
-
 ## <a name="personal-data-in-cloud-shell"></a>Personenbezogene Daten in Cloud Shell
 
 Azure Cloud Shell nimmt Ihre personenbezogenen Daten ernst. Die vom Azure Cloud Shell-Dienst erfassten und gespeicherten Daten werden verwendet, um Standardwerte für Ihr Benutzererlebnis bereitzustellen, wie Ihre zuletzt verwendete Shell, Ihr bevorzugter Schriftgrad, Ihre bevorzugte Schriftart und Dateifreigabedetails, die das Cloudlaufwerk unterstützen. Wenn Sie diese Daten exportieren oder löschen möchten, hilft Ihnen die folgende Anleitung weiter.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-### <a name="export"></a>Export
+### <a name="export"></a>Exportieren
 Um die Benutzereinstellungen zu **exportieren**, die Cloud Shell für Sie speichert (wie bevorzugte Shell, Schriftgrad und Schriftart), führen Sie die folgenden Befehle aus.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
+1. [![Abbildung mit einer Schaltfläche mit der Bezeichnung „Azure Cloud Shell starten“.](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. Führen Sie die folgenden Befehle in Bash oder PowerShell aus:
 
 Bash:
@@ -170,7 +162,7 @@ Bash:
   curl https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token" -s | jq
   ```
 
-PowerShell:
+Mit PowerShell:
 
   ```powershell
   $token= ((Invoke-WebRequest -Uri "$env:MSI_ENDPOINT`?resource=https://management.core.windows.net/" -Headers @{Metadata='true'}).content |  ConvertFrom-Json).access_token
@@ -183,7 +175,8 @@ Um die Benutzereinstellungen zu **löschen**, die Cloud Shell für Sie speichert
 >[!Note]
 > Wenn Sie Ihre Benutzereinstellungen löschen, wird die eigentliche Azure Files-Freigabe nicht gelöscht. Navigieren Sie zu Ihrer Azure Files-Instanz, um diese Aktion durchzuführen.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
+1. [![Abbildung mit einer Schaltfläche mit der Bezeichnung „Azure Cloud Shell starten“.](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. Führen Sie die folgenden Befehle in Bash oder PowerShell aus:
 
 Bash:
@@ -193,9 +186,14 @@ Bash:
   curl -X DELETE https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token"
   ```
 
-PowerShell:
+Mit PowerShell:
 
   ```powershell
   $token= ((Invoke-WebRequest -Uri "$env:MSI_ENDPOINT`?resource=https://management.core.windows.net/" -Headers @{Metadata='true'}).content |  ConvertFrom-Json).access_token
   Invoke-WebRequest -Method Delete -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}
   ```
+## <a name="azure-government-limitations"></a>Azure Government-Einschränkungen
+Auf Azure Cloud Shell in Azure Government kann nur über das Azure-Portal zugegriffen werden.
+
+>[!Note]
+> Das Herstellen einer Verbindung mit GCC High- oder Government DoD-Clouds für Exchange Online wird derzeit nicht unterstützt.

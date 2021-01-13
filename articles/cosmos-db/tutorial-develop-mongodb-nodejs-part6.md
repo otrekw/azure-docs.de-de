@@ -1,6 +1,5 @@
 ---
-title: 'Erstellen einer Angular-App mit der API für MongoDB von Azure Cosmos DB: Hinzufügen von CRUD-Funktionen zur App'
-titleSuffix: Azure Cosmos DB
+title: Hinzufügen von CRUD-Funktionen zu einer Angular-App mit der Azure Cosmos DB-API für MongoDB
 description: Teil 6 der Tutorialreihe zur Erstellung einer MongoDB-App mit Angular und Note in Azure Cosmos DB unter Verwendung der gleichen APIs wie für MongoDB
 author: johnpapa
 ms.service: cosmos-db
@@ -9,16 +8,17 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: 42015ca816f2744ef28660c5396db4cfd93a76f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c8e2c707566b08219b495e76be7f6f6130d876ab
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040556"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081313"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Erstellen einer Angular-App mit der API für MongoDB von Azure Cosmos DB: Hinzufügen von CRUD-Funktionen zur App
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Dieses mehrteilige Tutorial zeigt, wie Sie eine in Node.js geschriebene neue App mit Express und Angular erstellen und mit Ihrem [Cosmos-Konto verbinden, das mit der API für MongoDB von Cosmos DB](mongodb-introduction.md) konfiguriert wurde. Teil 6 des Tutorials baut auf [Teil 5](tutorial-develop-mongodb-nodejs-part5.md) auf und umfasst folgende Aufgaben:
 
@@ -37,11 +37,11 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>Hinzufügen einer Post-Funktion zum hero-Dienst
 
-1. Öffnen Sie in Visual Studio Code die Dateien **routes.js** und **hero.service.js** mithilfe der Schaltfläche **Editor teilen** ![Schaltfläche „Editor teilen“ in Visual Studio](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png) nebeneinander.
+1. Öffnen Sie in Visual Studio Code die Dateien **routes.js** und **hero.service.js** mit der Schaltfläche **Editor teilen** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png":::.
 
     Wie Sie sehen, wird in Zeile 7 von „routes.js“ die Funktion `getHeroes` in Zeile 5 von **hero.service.js** aufgerufen.  Die gleiche Zuordnung muss für die Post-, Put- und Delete-Funktionen erstellt werden. 
 
-    ![„routes.js“ und „hero.service.js“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png" alt-text="„routes.js“ und „hero.service.js“ in Visual Studio Code":::
     
     Kümmern wir uns zunächst um den Code für den hero-Dienst. 
 
@@ -85,15 +85,15 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
     });
     ```
 
-5. Führen Sie die App aus, um sich zu vergewissern, dass alles geklappt hat. Speichern Sie alle Ihre Änderungen in Visual Studio Code. Wählen Sie im linken Bereich die Schaltfläche **Debuggen** ![Symbol „Debuggen“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) und anschließend die Schaltfläche **Debugging starten** ![Symbol „Debugging starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
+5. Führen Sie die App aus, um sich zu vergewissern, dass alles geklappt hat. Speichern Sie in Visual Studio Code Ihre gesamten Änderungen, und wählen Sie links die Schaltfläche **Debuggen** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png"::: und dann die Schaltfläche **Debuggen starten** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png"::: aus.
 
-6. Wechseln Sie nun wieder zu Ihrem Internetbrowser, drücken Sie F12 (auf den meisten Computern), um die Entwicklungstools zu öffnen, und navigieren Sie zur Registerkarte „Netzwerk“. Navigieren Sie zu [http://localhost:3000](http://localhost:3000), um sich die über das Netzwerk abgewickelten Aufrufe anzusehen.
+6. Wechseln Sie nun wieder zu Ihrem Internetbrowser, drücken Sie F12 (auf den meisten Computern), um die Entwicklungstools zu öffnen, und navigieren Sie zur Registerkarte „Netzwerk“. Navigieren Sie zu `http://localhost:3000`, um sich die über das Netzwerk abgewickelten Aufrufe anzusehen.
 
-    ![Chrome-Registerkarte „Netzwerk“ mit der Netzwerkaktivität](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Chrome-Registerkarte „Netzwerk“ mit der Netzwerkaktivität":::
 
 7. Fügen Sie einen neuen Helden hinzu, indem Sie die Schaltfläche **Add New Hero** (Neuen Helden hinzufügen) wählen. Geben Sie die ID „999“, den Namen „Fred“ und den Spruch „Hello“ ein, und wählen Sie anschließend **Speichern**. Auf der Registerkarte sehen Sie, dass Sie eine POST-Anforderung für einen neuen Helden gesendet haben. 
 
-    ![Chrome-Registerkarte „Netzwerk“ mit der Netzwerkaktivität für Get- und Post-Funktionen](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Chrome-Registerkarte „Netzwerk“ mit der Netzwerkaktivität für Get- und Post-Funktionen":::
 
     Im nächsten Schritt fügen wir der App die Put- und die Delete-Funktion hinzu.
 
@@ -170,7 +170,7 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
     };
     ```
 
-4. Wählen Sie nach der Aktualisierung des Codes in Visual Studio Code die Schaltfläche **Neu starten** ![Schaltfläche „Neu starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png).
+4. Da wir den Code nun aktualisiert haben, können Sie in Visual Studio Code die Schaltfläche **Neu starten** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png"::: auswählen.
 
 5. Aktualisieren Sie die Seite in Ihrem Internetbrowser, und wählen Sie die Schaltfläche **Add New Hero** (Neuen Helden hinzufügen). Fügen Sie einen neuen Helden mit der ID „9“, dem Namen „Starlord“ und dem Spruch „Hi“ hinzu. Wählen Sie die Schaltfläche **Save** (Speichern), um den neuen Helden zu speichern.
 
@@ -178,11 +178,11 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
     Nun können Sie die ID auf der Registerkarte „Netzwerk“ auswählen, um die Nutzlast anzuzeigen. In der Nutzlast sehen Sie, dass der Spruch jetzt „Bye“ lautet.
 
-    ![Heroes-App und Registerkarte „Netzwerk“ mit der Nutzlast](./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Heroes-App und Registerkarte „Netzwerk“ mit der Nutzlast"::: 
 
     Sie können auch einen der Helden über die Benutzeroberfläche löschen und sich ansehen, wie lange die Ausführung des Löschvorgangs dauert. Wählen Sie hierzu für den Helden „Fred“ die Schaltfläche „Delete“ (Löschen).
 
-    ![Heroes-App und die Registerkarte „Netzwerk“ mit der Ausführungsdauer der Funktionen](./media/tutorial-develop-mongodb-nodejs-part6/times.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Heroes-App und die Registerkarte „Netzwerk“ mit der Ausführungsdauer der Funktionen"::: 
 
     Wenn Sie die Seite aktualisieren, wird auf der Registerkarte „Netzwerk“ angezeigt, wie lange das Abrufen der Helden dauert. Die Zeiten sind zwar kurz, vieles hängt jedoch davon ab, wo auf der Welt sich Ihre Daten befinden und ob sie in einer Region in der Nähe Ihrer Benutzer georepliziert werden. Weitere Informationen zur Georeplikation finden Sie im nächsten Tutorial, das in Kürze veröffentlicht wird.
 

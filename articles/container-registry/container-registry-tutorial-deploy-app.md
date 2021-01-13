@@ -1,20 +1,15 @@
 ---
-title: Tutorial – Bereitstellen einer App aus einer georeplizierten Docker-Registrierung in Azure
+title: 'Tutorial: Bereitstellen über eine Registrierung mit Georeplikation'
 description: Stellen Sie eine Linux-basierte Web-App unter Verwendung eines Containerimages aus einer georeplizierten Azure-Containerregistrierung in zwei unterschiedlichen Azure-Regionen bereit. Dieses Tutorial ist der zweite Teil einer dreiteiligen Reihe.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 08/20/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ac4d78147820c2cf56549abbec7e1fbc873ea260
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146940"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148423"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Tutorial: Bereitstellen einer Web-App aus einer georeplizierten Azure-Containerregistrierung
 
@@ -32,7 +27,7 @@ Im nächsten Artikel der Reihe aktualisieren Sie die Anwendung und übertragen a
 
 ## <a name="automatic-deployment-to-web-apps-for-containers"></a>Automatisches Bereitstellen in Web-App für Container
 
-Azure Container Registry unterstützt die direkte Bereitstellung containerbasierter Anwendungen in [Web-Apps für Container](../app-service/containers/index.yml). In diesem Tutorial verwenden Sie das Azure-Portal, um das im vorherigen Tutorial erstellte Containerimage in zwei Web-App-Plänen in unterschiedlichen Azure-Regionen bereitzustellen.
+Azure Container Registry unterstützt die direkte Bereitstellung containerbasierter Anwendungen in [Web-Apps für Container](../app-service/index.yml). In diesem Tutorial verwenden Sie das Azure-Portal, um das im vorherigen Tutorial erstellte Containerimage in zwei Web-App-Plänen in unterschiedlichen Azure-Regionen bereitzustellen.
 
 Wenn Sie eine Web-App auf der Grundlage eines Containerimages in Ihrer Registrierung bereitstellen und in der gleichen Region über eine georeplizierte Registrierung verfügen, erstellt Azure Container Registry automatisch einen [Webhook](container-registry-webhook.md) für die Imagebereitstellung. Wenn Sie ein neues Image mithilfe von Push an Ihr Containerrepository übertragen, übernimmt der Webhook die Änderung und stellt automatisch das neue Containerimage für Ihre Web-App bereit.
 
@@ -63,7 +58,7 @@ Nachdem Sie „In Web-App bereitstellen“ aktiviert haben, geben Sie unter **We
 
 Klicken Sie auf **Erstellen**, um die Web-App in der Region *USA, Westen* bereitzustellen.
 
-![Konfiguration der Web-App unter Linux im Azure-Portal][deploy-app-portal-02]
+![Screenshot, der die Web-App für Container mit hervorgehobener Schaltfläche „Erstellen“ zeigt.][deploy-app-portal-02]
 
 ## <a name="view-the-deployed-web-app"></a>Anzeigen der bereitgestellten Web-App
 
@@ -73,11 +68,11 @@ Klicken Sie im Portal auf **App Services** und anschließend auf die Web-App, di
 
 Wählen Sie rechts oben in der **App Service-Übersicht** die als Link dargestellte URL der Web-App aus, um die ausgeführte Anwendung in Ihrem Browser anzuzeigen.
 
-![Konfiguration der Web-App unter Linux im Azure-Portal][deploy-app-portal-04]
+![Screenshot, der die App Service-Übersicht mit hervorgehobener Web-App-URL zeigt.][deploy-app-portal-04]
 
 Nachdem das Docker-Image über Ihre georeplizierte Containerregistrierung bereitgestellt wurde, wird ein Image angezeigt, das die Azure-Region darstellt, in der die Containerregistrierung gehostet wird.
 
-![Bereitgestellte Webanwendung, angezeigt in einem Browser][deployed-app-westus]
+![Screenshot, der die im Browser angezeigte, bereitgestellte Web-App zeigt.][deployed-app-westus]
 
 ## <a name="deploy-second-web-app-for-containers-instance"></a>Bereitstellen der zweiten Instanz von „Web-App für Container“
 
@@ -93,9 +88,9 @@ Gehen Sie wie im vorherigen Abschnitt beschrieben vor, um eine zweite Web-App in
 
 Klicken Sie auf **Erstellen**, um die Web-App in der Region *USA, Osten* bereitzustellen.
 
-![Konfiguration der Web-App unter Linux im Azure-Portal][deploy-app-portal-06]
+![Screenshot, der das Fenster „Erstellen“ der Web-App für Container mit hervorgehobener Schaltfläche „Erstellen“ zeigt.][deploy-app-portal-06]
 
-## <a name="view-the-deployed-web-app"></a>Anzeigen der bereitgestellten Web-App
+## <a name="view-the-second-deployed-web-app"></a>Anzeigen der zweiten bereitgestellten Web-App
 
 Auch hier können Sie die ausgeführte Anwendung anzeigen, indem Sie in Ihrem Browser zur URL der Anwendung navigieren.
 

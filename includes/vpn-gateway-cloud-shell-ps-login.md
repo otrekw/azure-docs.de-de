@@ -5,34 +5,34 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/01/2019
+ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: deabef0c2c3540e515fe72a161710c95a20fa86f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 24d146da7946176c92902698d0f52ae01baf79ee
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177954"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061613"
 ---
-Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten.
+Wenn Sie PowerShell lokal ausführen, öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Azure-Konto her. Das Cmdlet *Connect-AzAccount* fordert Sie zur Eingabe von Anmeldeinformationen auf. Nach der Authentifizierung werden Ihre Kontoeinstellungen heruntergeladen, damit sie Azure PowerShell zur Verfügung stehen.
 
+Wenn Sie Azure Cloud Shell verwenden, anstatt PowerShell lokal auszuführen, werden Sie feststellen, dass Sie *Connect-AzAccount* nicht ausführen müssen. Azure Cloud Shell stellt automatisch eine Verbindung mit Ihrem Azure-Konto her, nachdem Sie **Testen** ausgewählt haben.
 
+1. Wenn Sie PowerShell lokal ausführen, melden Sie sich an.
 
-Wenn Sie Azure PowerShell lokal ausführen, stellen Sie eine Verbindung mit Ihrem Azure-Konto her. Das Cmdlet *Connect-AzAccount* fordert Sie zur Eingabe von Anmeldeinformationen auf. Nach der Authentifizierung werden Ihre Kontoeinstellungen heruntergeladen, damit sie Azure PowerShell zur Verfügung stehen. Wenn Sie PowerShell nicht lokal ausführen und stattdessen über Azure Cloud Shell die Funktion zum Testen im Browser verwenden, können Sie diesen ersten Schritt überspringen. Es wird automatisch eine Verbindung mit Ihrem Azure-Konto hergestellt.
+   ```azurepowershell
+   Connect-AzAccount
+   ```
 
-```azurepowershell
-Connect-AzAccount
-```
+1. Falls Sie über mehrere Abonnements verfügen, rufen Sie eine Liste Ihrer Azure-Abonnements ab.
 
-Falls Sie über mehrere Abonnements verfügen, rufen Sie eine Liste Ihrer Azure-Abonnements ab.
+   ```azurepowershell-interactive
+   Get-AzSubscription
+   ```
 
-```azurepowershell-interactive
-Get-AzSubscription
-```
+1. Geben Sie das Abonnement an, das Sie verwenden möchten.
 
-Geben Sie das Abonnement an, das Sie verwenden möchten.
-
-```azurepowershell-interactive
-Select-AzSubscription -SubscriptionName "Name of subscription"
-```
+   ```azurepowershell-interactive
+   Select-AzSubscription -SubscriptionName "Name of subscription"
+   ```

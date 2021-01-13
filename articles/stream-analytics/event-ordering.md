@@ -1,29 +1,28 @@
 ---
 title: Konfigurieren von Richtlinien für die Ereignisreihenfolge in Azure Stream Analytics
 description: In diesem Artikel erfahren Sie, wie Sie die Einstellungen für die Ereignisreihenfolge in Stream Analytics konfigurieren.
-services: stream-analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: 47a8ee2c03e67d4fd9b34888430ed0cc702205f6
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.topic: how-to
+ms.date: 08/06/2020
+ms.openlocfilehash: 80567a211f08d6322c80b6645f8b70ec7df64b59
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273178"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130662"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Konfigurieren von Richtlinien für die Ereignisreihenfolge in Azure Stream Analytics
 
-Dieser Artikel beschreibt die Erstellung und Verwendung von Richtlinien für die Eingangsverzögerung und Ereignisse mit falscher Reihenfolge in Azure Stream Analytics. Diese Richtlinien werden nur angewendet, wenn Sie die Klausel [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) in der Abfrage verwenden.
+Dieser Artikel beschreibt die Erstellung und Verwendung von Richtlinien für die Eingangsverzögerung und Ereignisse mit falscher Reihenfolge in Azure Stream Analytics. Diese Richtlinien werden nur angewendet, wenn Sie die Klausel [TIMESTAMP BY](/stream-analytics-query/timestamp-by-azure-stream-analytics) in Ihrer Abfrage verwenden, und sie werden nur auf Cloudeingabequellen angewendet.
 
 ## <a name="event-time-and-arrival-time"></a>Ereigniszeit und Eingangszeit
 
 Ihr Stream Analytics-Auftrag kann Ereignisse basierend auf der *Ereigniszeit* oder der *Eingangszeit* verarbeiten. Die **Ereignis-/Anwendungszeit** ist der Zeitstempel in der Ereignisnutzlast (als das Ereignis generiert wurde). Die **Eingangszeit** ist der Zeitstempel, zu dem das Ereignis an der Eingabequelle (Event Hubs/IoT Hub/Blob Storage) eingegangen ist. 
 
-Stream Analytics verarbeitet Ereignisse standardmäßig nach der *Eingangszeit*. Sie können Ereignisse jedoch auch nach der *Ereigniszeit* verarbeiten, indem Sie die Klausel [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) in Ihrer Abfrage verwenden. Richtlinien für die Eingangsverzögerung und die falsche Reihenfolge werden nur angewendet, wenn Sie Ereignisse nach der Ereigniszeit verarbeiten. Berücksichtigen Sie beim Konfigurieren dieser Einstellungen die Anforderungen an die Latenz und die Richtigkeit für Ihr Szenario. 
+Stream Analytics verarbeitet Ereignisse standardmäßig nach der *Eingangszeit*. Sie können Ereignisse jedoch auch nach der *Ereigniszeit* verarbeiten, indem Sie die Klausel [TIMESTAMP BY](/stream-analytics-query/timestamp-by-azure-stream-analytics) in Ihrer Abfrage verwenden. Richtlinien für die Eingangsverzögerung und die falsche Reihenfolge werden nur angewendet, wenn Sie Ereignisse nach der Ereigniszeit verarbeiten. Berücksichtigen Sie beim Konfigurieren dieser Einstellungen die Anforderungen an die Latenz und die Richtigkeit für Ihr Szenario. 
 
 ## <a name="what-is-late-arrival-policy"></a>Was ist eine Richtlinie für die Eingangsverzögerung?
 
@@ -77,6 +76,11 @@ Mit dieser Meldung werden Sie informiert, dass mindestens eine Partition in Ihre
 1. Stellen Sie sicher, dass alle Partitionen Ihres Event Hubs oder IoT Hubs Eingaben empfangen. 
 2. Verwenden Sie in Ihrer Abfrage die Klausel „Partition by PartitionId“. 
 
+## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>Warum wird auch dann eine Verzögerung von 5 Sekunden angezeigt, wenn meine Richtlinie für Eingangsverzögerung auf 0 festgelegt ist?
+Dies geschieht, wenn eine Eingabepartition vorliegt, die nie Eingaben empfangen hat. Sie können die Eingabemetrik nach Partition überprüfen, um dieses Verhalten zu überprüfen. 
+
+Wenn eine Partition keine Daten für mehr als den konfigurierten Schwellenwert für die Eingangsverzögerung aufweist, verlegt Stream Analytics den Anwendungszeitstempel vor, wie im Abschnitt zu Überlegungen zur Ereignisreihenfolge erläutert. Dies erfordert die geschätzte Ankunftszeit. Wenn die Partition niemals Daten enthielt, schätzt Stream Analytics die Ankunftszeit nach der Formel *Ortszeit - 5 Sekunden*. Aufgrund dieser Partitionen, die niemals Daten enthielten, könnte eine Wasserzeichenverzögerung von 5 Sekunden angezeigt werden.  
+
 ## <a name="next-steps"></a>Nächste Schritte
 * [Grundlegendes zur Behandlung von Zeitangaben](stream-analytics-time-handling.md)
-* [In Stream Analytics verfügbare Metriken](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)
+* [In Stream Analytics verfügbare Metriken](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics)

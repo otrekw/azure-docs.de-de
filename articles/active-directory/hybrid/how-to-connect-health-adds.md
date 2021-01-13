@@ -8,22 +8,23 @@ manager: daveba
 editor: curtand
 ms.assetid: 19e3cf15-f150-46a3-a10c-2990702cd700
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73f30f4f16ad879468a424d6e5cbe81e68b7c33d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d75b439c2753db17cffecdc97b6389a7b31b833e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350648"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89279872"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Verwenden von Azure AD Connect Health mit AD DS
-Die folgende Dokumentation gilt speziell für die Überwachung von Active Directory-Domänendiensten mit Azure AD Connect Health. Unterstützte Versionen von AD DS: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016.
+Die folgende Dokumentation gilt speziell für die Überwachung von Active Directory-Domänendiensten mit Azure AD Connect Health. Folgende AD DS-Versionen werden unterstützt: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016.
 
 Weitere Informationen zum Überwachen von AD FS mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD FS](how-to-connect-health-adfs.md). Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](how-to-connect-health-sync.md).
 
@@ -56,11 +57,10 @@ Dieses Feature bietet grafische Trends für verschiedene Leistungsindikatoren, d
 Standardmäßig sind vorab vier Leistungsindikatoren ausgewählt. Sie können aber weitere Leistungsindikatoren hinzufügen, indem Sie auf den Befehl „Filter“ klicken und alle gewünschten Leistungsindikatoren aktivieren oder deaktivieren. Darüber hinaus können Sie auf ein Leistungsindikatordiagramm doppelklicken, um ein neues Blatt mit Datenpunkten für die einzelnen überwachten Domänencontroller zu öffnen.
 
 ## <a name="related-links"></a>Verwandte Links
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Installieren des Azure AD Connect Health-Agents](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health-Vorgänge](how-to-connect-health-operations.md)
 * [Verwenden von Azure AD Connect Health mit AD FS](how-to-connect-health-adfs.md)
 * [Verwenden von Azure AD Connect Health für die Synchronisierung](how-to-connect-health-sync.md)
 * [Azure AD Connect Health – FAQ](reference-connect-health-faq.md)
 * [Azure AD Connect Health: Versionsverlauf](reference-connect-health-version-history.md)
-

@@ -1,19 +1,14 @@
 ---
-title: 'Beispiele: CAF-Basisblaupause – Bereitstellungsschritte'
-description: Schritte zum Bereitstellen des CAF-Basisblaupausenbeispiels.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 08/20/2019
+title: Bereitstellen des CAF-Basisblaupausenbeispiels
+description: Bereitstellungsschritte für das CAF-Basisblaupausenbeispiel, einschließlich Details zum Blaupausenartefaktparameter.
+ms.date: 05/06/2020
 ms.topic: sample
-ms.service: blueprints
-manager: carmonm
-ms.custom: fasttrack-new
-ms.openlocfilehash: 98ade4e5c8a14c2d4f5c2a22c2c973fac844861f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: a2d3090e5e9fe265683c077d7056ebf2b108352d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802552"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "82871643"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Bereitstellen des Microsoft Cloud Adoption Frameworks-Basisblaupausenbeispiels für Azure
 

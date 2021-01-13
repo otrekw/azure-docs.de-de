@@ -1,18 +1,14 @@
 ---
-title: Importieren und Exportieren von Blaupausendefinitionen mit PowerShell
+title: Importieren und Exportieren von Blaupausen mit PowerShell
 description: Erfahren Sie, wie Sie mit Blaupausendefinitionen als Code arbeiten. Verwenden Sie die Export- und Importbefehle für Freigabe, Quellcodeverwaltung und Verwaltung.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 09/03/2019
-ms.topic: conceptual
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: f7bc3610841bcc3c40435f077073ffa0d55acd93
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.date: 08/27/2020
+ms.topic: how-to
+ms.openlocfilehash: 87e8f00013fec3abb8132f92c1c717f152d1e264
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242879"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89051439"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Importieren und Exportieren von Blaupausendefinitionen mit PowerShell
 
@@ -35,7 +31,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über angemessene Grundkenntn
 - Lesen Sie die Informationen zu den [Bereitstellungsstufen](../concepts/deployment-stages.md) und zum [Lebenszyklus von Blaupausen](../concepts/lifecycle.md)
 - [Erstellen](../create-blueprint-powershell.md) und [Verwalten](./manage-assignments-ps.md) von Blaupausendefinitionen und Zuweisungen mit PowerShell
 
-Befolgen Sie, falls das Modul **AZ.Blueprint** nicht bereits installiert ist, die Anweisungen unter [Hinzufügen des Moduls „AZ.Blueprint“](./manage-assignments-ps.md#add-the-azblueprint-module), um das Modul aus dem PowerShell-Katalog zu installieren und zu überprüfen.
+Falls das Modul **AZ.Blueprint** nicht bereits installiert ist, befolgen Sie die Anweisungen unter [Hinzufügen des Moduls „AZ.Blueprint“](./manage-assignments-ps.md#add-the-azblueprint-module), um das Modul aus dem PowerShell-Katalog zu installieren und zu überprüfen.
 
 ## <a name="folder-structure-of-a-blueprint-definition"></a>Ordnerstruktur einer Blaupausendefinition
 
@@ -64,7 +60,7 @@ Insgesamt sollte die Struktur Ihrer Blaupausendefinition als JSON-Dateien in Ord
 
 Die Schritte zum Exportieren Ihrer Blaupausendefinition sind ganz einfach. Das Exportieren von Blaupausendefinitionen kann nützlich sein, um diese freizugeben, zu sichern oder in die Quellcodeverwaltung zu übernehmen.
 
-- **Blueprint** [erforderlich]
+- **Blaupause** [erforderlich]
   - Gibt die Blaupausendefinition an.
   - Verwenden Sie `Get-AzBlueprint`, um das Verweisobjekt abzurufen.
 - **OutputPath** [erforderlich]
@@ -92,7 +88,7 @@ Die Schritte zum Exportieren Ihrer Blaupausendefinition sind ganz einfach. Das E
 
 Wenn Sie entweder [eine exportierte Blaupausendefinition](#export-your-blueprint-definition) oder eine manuell erstellte Blaupausendefinition in der [erforderlichen Ordnerstruktur](#folder-structure-of-a-blueprint-definition) haben, können Sie diese Blaupausendefinition in eine andere Verwaltungsgruppe oder ein anderes Abonnement importieren.
 
-Beispiele für integrierte Blaupausendefinitionen finden Sie im [GitHub-Repository „Azure Blueprints“](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins).
+Beispiele für integrierte Blaupausendefinitionen finden Sie im [GitHub-Repository „Azure Blueprints“](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins).
 
 - **Name** [erforderlich]
   - Gibt den Namen für die neue Blaupausendefinition an.

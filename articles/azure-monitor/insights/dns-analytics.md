@@ -1,24 +1,17 @@
 ---
 title: DNS-Analyse-Lösung in Azure Monitor | Microsoft-Dokumentation
 description: Richten Sie die DNS-Analyse-Lösung in Azure Monitor ein, und verwenden Sie sie, um Erkenntnisse über die DNS-Infrastruktur hinsichtlich Sicherheit, Leistung und Betrieb zu sammeln.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 03/20/2018
-ms.author: magoedte
-ms.openlocfilehash: 46045664e9ddeebc45c2dae7c1f0a9f6a0d6b004
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 7bdea9239faa4ec66fffa236bea40afd5e628e62
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265169"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607142"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Vorschaulösung
 
@@ -45,11 +38,11 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 | [Windows-Agents](../platform/agent-windows.md) | Ja | Die Lösung erfasst DNS-Informationen von Windows-Agents. |
 | [Linux-Agents](../learn/quick-collect-linux-computer.md) | Nein | Die Lösung erfasst keine DNS-Informationen von direkten Linux-Agents. |
 | [System Center Operations Manager-Verwaltungsgruppe](../platform/om-agents.md) | Ja | Die Lösung erfasst DNS-Informationen von Agents in einer verbundenen Operations Manager-Verwaltungsgruppe. Es ist keine direkte Verbindung zwischen dem Operations Manager-Agent und Azure Monitor erforderlich. Daten werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet. |
-| [Azure-Speicherkonto](../platform/collect-azure-metrics-logs.md) | Nein | Azure-Speicher wird von der Lösung nicht verwendet. |
+| [Azure-Speicherkonto](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nein | Azure-Speicher wird von der Lösung nicht verwendet. |
 
 ### <a name="data-collection-details"></a>Details zur Datensammlung
 
-Die Lösung sammelt Daten zum DNS-Inventar und zu DNS-Ereignissen von den DNS-Servern, auf denen ein Log Analytics-Agent installiert ist. Diese Daten werden dann in Azure Monitor hochgeladen und im Lösungsdashboard angezeigt. Inventardaten, z.B. die Anzahl der DNS-Server, Zonen und Ressourceneinträge, werden gesammelt, indem die DNS-PowerShell-Cmdlets ausgeführt werden. Die Daten werden einmal alle zwei Tage aktualisiert. Die Ereignisdaten werden nahezu in Echtzeit aus den [Analyse- und Überwachungsprotokollen](https://technet.microsoft.com/library/dn800669.aspx#enhanc) erfasst, die durch die verbesserte DNS-Protokollierung und -Diagnose in Windows Server 2012 R2 bereitgestellt werden.
+Die Lösung sammelt Daten zum DNS-Inventar und zu DNS-Ereignissen von den DNS-Servern, auf denen ein Log Analytics-Agent installiert ist. Diese Daten werden dann in Azure Monitor hochgeladen und im Lösungsdashboard angezeigt. Inventardaten, z.B. die Anzahl der DNS-Server, Zonen und Ressourceneinträge, werden gesammelt, indem die DNS-PowerShell-Cmdlets ausgeführt werden. Die Daten werden einmal alle zwei Tage aktualisiert. Die Ereignisdaten werden nahezu in Echtzeit aus den [Analyse- und Überwachungsprotokollen](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)#enhanc) erfasst, die durch die verbesserte DNS-Protokollierung und -Diagnose in Windows Server 2012 R2 bereitgestellt werden.
 
 ## <a name="configuration"></a>Konfiguration
 
@@ -64,13 +57,13 @@ Die Lösung beginnt ohne weitere Konfiguration mit dem Sammeln von Daten. Allerd
 
 Klicken Sie im Lösungsdashboard auf **Konfiguration**, um die DNS Analytics-Konfigurationsseite zu öffnen. Es gibt zwei Arten von Konfigurationsänderungen, die Sie vornehmen können:
 
-- **Domänennamen in der Whitelist**. Die Lösung verarbeitet nicht alle Suchabfragen. Sie verwaltet eine Whitelist mit Domänennamensuffixen. Die Suchabfragen, die in Domänennamen aufgelöst werden, die mit Domänennamensuffixen in dieser Whitelist übereinstimmen, werden von der Lösung nicht verarbeitet. Da die in der Whitelist enthalten Domänennamen nicht verarbeitet werden, werden die an Azure Monitor gesendeten Daten optimiert. Die Standardwhitelist enthält gängige öffentliche Domänennamen, z.B. www.google.com und www.facebook.com. Sie können die vollständige Standardliste mittels Scrollen anzeigen.
+- **Domänennamen auf der Positivliste**. Die Lösung verarbeitet nicht alle Suchabfragen. Sie verwaltet eine Positivliste mit Domänennamensuffixen. Die Suchabfragen, die in Domänennamen aufgelöst werden, die mit Domänennamensuffixen in dieser Positivliste übereinstimmen, werden von der Lösung nicht verarbeitet. Da die in der Positivliste enthalten Domänennamen nicht verarbeitet werden, werden die an Azure Monitor gesendeten Daten optimiert. Die Standardpositivliste enthält gängige öffentliche Domänennamen, z. B. www.google.com und www.facebook.com. Sie können die vollständige Standardliste mittels Scrollen anzeigen.
 
   Sie können die Liste ändern, um alle Domänennamensuffixe hinzuzufügen, zu denen Sie Suchergebnisse anzeigen möchten. Sie können auch alle Domänennamensuffixe entfernen, zu denen Sie keine Suchergebnisse anzeigen möchten.
 
 - **Schwellenwert für Clients mit hoher Aktivität**. DNS-Clients, die den Schwellenwert für die Anzahl der Suchanforderungen überschreiten, werden auf dem Blatt **DNS-Clients** hervorgehoben. Der Standardschwellenwert beträgt 1.000. Sie können den Schwellenwert bearbeiten.
 
-    ![Domänennamen in der Whitelist](./media/dns-analytics/dns-config.png)
+    ![Domänennamen auf der Positivliste](./media/dns-analytics/dns-config.png)
 
 ## <a name="management-packs"></a>Management Packs
 
@@ -106,7 +99,7 @@ Im Lösungsdashboard werden die folgenden Blätter angezeigt:
 
 ![Blatt „DNS-Sicherheit“](./media/dns-analytics/dns-security-blade.png)
 
-Wenn Sie auf eine Client-IP-Adresse in der Liste klicken, wird die Protokollsuche geöffnet und zeigt die Details der Suche für die jeweilige Abfrage an. Im folgenden Beispiel hat DNS Analytics erkannt, dass mit einem [IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot) kommuniziert wurde:
+Wenn Sie auf eine Client-IP-Adresse in der Liste klicken, wird die Protokollsuche geöffnet und zeigt die Details der Suche für die jeweilige Abfrage an. Im folgenden Beispiel hat DNS Analytics erkannt, dass mit einem [IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot&threatId=2621) kommuniziert wurde:
 
 ![Protokollsuchergebnisse mit IRCbot](./media/dns-analytics/ircbot.png)
 
@@ -117,7 +110,7 @@ Mit den Informationen können Sie Folgendes identifizieren:
 - IP-Adressen, in die der Domänenname aufgelöst wird.
 - Schädliche IP-Adresse.
 - Schweregrad des Problems.
-- Grund für die Aufnahme der schädlichen IP-Adresse in die Blacklist.
+- Grund für die Aufnahme der schädlichen IP-Adresse in die Sperrliste.
 - Zeitpunkt der Erkennung.
 
 **Abgefragte Domänen**. Gibt die am häufigsten von den DNS-Clients in Ihrer Umgebung abgefragten Domänennamen an. Sie können die Liste aller abgefragten Domänennamen anzeigen. Sie können auch Details von Suchanforderungen für einen bestimmten Domänennamen in der Protokollsuche anzeigen.
@@ -166,7 +159,7 @@ Sie können diese Abfragen als Ausgangspunkt für das Erstellen eigener Abfragen
 
 Auf der Protokollsucheseite können Sie eine Abfrage erstellen. Sie können die Suchergebnisse mit Facetsteuerelementen filtern. Sie können auch erweiterte Abfragen zum Transformieren, Filtern und Berichten für Ihre Ergebnisse erstellen. Beginnen Sie mit folgenden Abfragen:
 
-1. Geben Sie im **Feld für die Suchabfrage** `DnsEvents` ein, um alle DNS-Ereignisse anzuzeigen, die von den DNS-Servern generiert wurden, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für alle Ereignisse im Zusammenhang mit Suchabfragen, dynamischen Registrierungen und Konfigurationsänderungen auf.
+1. Geben Sie im **Feld für die Suchabfrage**`DnsEvents` ein, um alle DNS-Ereignisse anzuzeigen, die von den DNS-Servern generiert wurden, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für alle Ereignisse im Zusammenhang mit Suchabfragen, dynamischen Registrierungen und Konfigurationsänderungen auf.
 
     ![DnsEvents-Protokollsuche](./media/dns-analytics/log-search-dnsevents.png)  
 
@@ -176,17 +169,17 @@ Auf der Protokollsucheseite können Sie eine Abfrage erstellen. Sie können die 
 
     c. Um die Protokolldaten für Konfigurationsänderungen anzuzeigen, wählen Sie auf der linken Seite im Facetsteuerelement **ConfigurationChange** als **Untertyp**-Filter aus. Eine Tabelle mit allen Konfigurationsänderungsereignissen für den ausgewählten Zeitraum wird angezeigt.
 
-1. Geben Sie im **Feld für die Suchabfrage** `DnsInventory` ein, um alle DNS-Inventardaten für die DNS-Server anzuzeigen, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für DNS-Server, DNS-Zonen und Ressourceneinträge auf.
+1. Geben Sie im **Feld für die Suchabfrage**`DnsInventory` ein, um alle DNS-Inventardaten für die DNS-Server anzuzeigen, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für DNS-Server, DNS-Zonen und Ressourceneinträge auf.
 
     ![DnsInventory-Protokollsuche](./media/dns-analytics/log-search-dnsinventory.png)
     
-### <a name="troubleshooting"></a>Problembehandlung
+## <a name="troubleshooting"></a>Problembehandlung
 
 Allgemeine Schritte zur Problembehandlung:
 
 1. Fehlende DNS-Lookupdaten: Um dieses Problem zu beheben, setzen Sie die Konfiguration zurück, oder laden Sie die Konfigurationsseite einfach ein Mal im Portal. Ändern Sie zum Zurücksetzen nur eine Einstellung in einen anderen Wert, und ändern Sie sie anschließend erneut in den ursprünglichen Wert. Speichern Sie die Konfiguration dann.
 
-## <a name="feedback"></a>Feedback
+## <a name="suggestions"></a>Vorschläge
 
 Rufen Sie für Feedback die UserVoice-Seite für [Log Analytics](https://aka.ms/dnsanalyticsuservoice) auf, um Ideen zu wünschenswerten DNS Analytics-Features mitzuteilen. 
 

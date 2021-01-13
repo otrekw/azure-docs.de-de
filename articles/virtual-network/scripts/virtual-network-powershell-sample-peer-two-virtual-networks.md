@@ -1,13 +1,10 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Herstellen einer Peerverbindung zwischen zwei virtuellen Netzwerken | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Herstellen einer Peerverbindung zwischen zwei virtuellen Netzwerken
+title: 'Herstellen einer Peerverbindung zwischen zwei virtuellen Netzwerken: Azure PowerShell-Skriptbeispiel'
+description: Erstellen Sie zwei virtuelle Netzwerke in derselben Region, und stellen Sie eine Verbindung zwischen diesen her. Verwenden Sie das Azure-Skript für zwei virtuelle Peernetzwerke, um die Netzwerke über das Azure-Netzwerk zu verbinden.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: sample
@@ -15,12 +12,13 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 9f75d1078926772d71e10fe59e2759656aec9ab9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d268fe602f8acdcf3f8d5eff312ff2805bd1d952
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710216"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89075034"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>Skriptbeispiel für das Herstellen einer Peerverbindung zwischen zwei virtuellen Netzwerken
 
@@ -57,6 +55,6 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Weitere PowerShell-Skriptbeispiele für virtuelle Netzwerke finden Sie unter [PowerShell-Beispiele für virtuelle Netzwerke](../powershell-samples.md).

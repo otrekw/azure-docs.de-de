@@ -1,26 +1,23 @@
 ---
-title: Schnellstart mit Azure Application Insights | Microsoft-Dokumentation
-description: Dieser Artikel enthält Informationen zum schnellen Einrichten einer mobilen App für die Überwachung mit Application Insights und App Center.
-services: application-insights
-keywords: ''
+title: Überwachen von mobilen Apps mit Azure Monitor Application Insights
+description: Dieser Artikel enthält Informationen zum schnellen Einrichten einer mobilen App für die Überwachung mit Azure Monitor Application Insights und App Center.
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
-ms.service: application-insights
 ms.reviewer: daviste
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: 40b3e0260e08ab5a8870c726042d06d80393fb15
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 27b74f99d926bf72bc22f153a8d76deb56646987
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849083"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993886"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Analysieren Ihrer mobilen Apps mit App Center und Application Insights
 
-In diesem Schnellstart erfahren Sie, wie Sie die Instanz von App Center Ihrer App mit Application Insights verbinden. Mit Application Insights können Sie Ihre Telemetriedaten mit leistungsfähigen Tools abfragen, segmentieren, filtern und analysieren. Diese Tools sind leistungsstärker als die Tools, die im [Analytics](https://docs.microsoft.com/mobile-center/analytics/)-Dienst von App Center zur Verfügung stehen.
+In diesem Schnellstart erfahren Sie, wie Sie die Instanz von App Center Ihrer App mit Application Insights verbinden. Mit Application Insights können Sie Ihre Telemetriedaten mit leistungsfähigen Tools abfragen, segmentieren, filtern und analysieren. Diese Tools sind leistungsstärker als die Tools, die im [Analytics](/mobile-center/analytics/)-Dienst von App Center zur Verfügung stehen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -31,29 +28,32 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
  
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
+## <a name="sign-up-with-app-center"></a>Registrieren für App Center
+Erstellen Sie zunächst ein Konto, und [registrieren Sie sich für App Center](https://appcenter.ms/signup?utm_source=ApplicationInsights&utm_medium=Azure&utm_campaign=docs).
+
 ## <a name="onboard-to-app-center"></a>Integration in App Center
 
-Bevor Sie Application Insights mit Ihrer mobilen App verwenden können, müssen Sie Ihre App in [App Center](https://docs.microsoft.com/mobile-center/) aufnehmen. Application Insights erhält keine direkten Telemetriedaten Ihrer mobilen App. Stattdessen sendet Ihre App benutzerdefinierte Ereignistelemetriedaten an App Center. Anschließend exportiert App Center kontinuierlich mit dem Empfang Kopien dieser benutzerdefinierten Ereignisse in Application Insights. (Dies gilt nicht für das [Application Insights JS SDK](https://github.com/Microsoft/ApplicationInsights-JS) oder das [React Native-Plug-In](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native), bei denen die Telemetriedaten direkt an Application Insights gesendet werden.)
+Bevor Sie Application Insights mit Ihrer mobilen App verwenden können, müssen Sie Ihre App in [App Center](/mobile-center/) aufnehmen. Application Insights erhält keine direkten Telemetriedaten Ihrer mobilen App. Stattdessen sendet Ihre App benutzerdefinierte Ereignistelemetriedaten an App Center. Anschließend exportiert App Center kontinuierlich mit dem Empfang Kopien dieser benutzerdefinierten Ereignisse in Application Insights. (Dies gilt nicht für das [Application Insights JS SDK](https://github.com/Microsoft/ApplicationInsights-JS) oder das [React Native-Plug-In](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-react-native), bei denen die Telemetriedaten direkt an Application Insights gesendet werden.)
 
 Um Ihre App aufzunehmen, führen Sie den Schnellstart für App Center für jede Plattform durch, die von Ihrer App unterstützt wird. Erstellten Sie jeweils eine App Center-Instanz für jede Plattform:
 
-* [iOS](https://docs.microsoft.com/mobile-center/sdk/getting-started/ios)
-* [Android](https://docs.microsoft.com/mobile-center/sdk/getting-started/android)
-* [Xamarin](https://docs.microsoft.com/mobile-center/sdk/getting-started/xamarin)
-* [Universal Windows](https://docs.microsoft.com/mobile-center/sdk/getting-started/uwp)
-* [React Native](https://docs.microsoft.com/mobile-center/sdk/getting-started/react-native)
+* [iOS](/mobile-center/sdk/getting-started/ios)
+* [Android](/mobile-center/sdk/getting-started/android)
+* [Xamarin](/mobile-center/sdk/getting-started/xamarin)
+* [Universal Windows](/mobile-center/sdk/getting-started/uwp)
+* [React Native](/mobile-center/sdk/getting-started/react-native)
 
 ## <a name="track-events-in-your-app"></a>Nachverfolgen von Ereignissen in Ihrer App
 
 Nachdem Ihre App in App Center aufgenommen wurde, muss sie mit dem App Center-SDK angepasst werden, sodass sie benutzerdefinierte Ereignistelemetriedaten sendet. Benutzerdefinierte Ereignisse sind die einzige Art von App Center-Telemetriedaten, die in Application Insights exportiert werden.
 
-Um benutzerdefinierte Ereignisse von iOS-Apps zu senden, verwenden Sie die Methoden `trackEvent` und `trackEvent:withProperties` im App Center-SDK. [Erfahren Sie mehr zum Nachverfolgen von Ereignissen von iOS-Apps.](https://docs.microsoft.com/mobile-center/sdk/analytics/ios)
+Um benutzerdefinierte Ereignisse von iOS-Apps zu senden, verwenden Sie die Methoden `trackEvent` und `trackEvent:withProperties` im App Center-SDK. [Erfahren Sie mehr zum Nachverfolgen von Ereignissen von iOS-Apps.](/mobile-center/sdk/analytics/ios)
 
 ```Swift
 MSAnalytics.trackEvent("Video clicked")
 ```
 
-Um benutzerdefinierte Ereignisse von Android-Apps zu senden, verwenden Sie die `trackEvent`-Methode im App Center-SDK. [Erfahren Sie mehr zum Nachverfolgen von Ereignissen von Android-Apps.](https://docs.microsoft.com/mobile-center/sdk/analytics/android)
+Um benutzerdefinierte Ereignisse von Android-Apps zu senden, verwenden Sie die `trackEvent`-Methode im App Center-SDK. [Erfahren Sie mehr zum Nachverfolgen von Ereignissen von Android-Apps.](/mobile-center/sdk/analytics/android)
 
 ```Java
 Analytics.trackEvent("Video clicked")
@@ -71,7 +71,7 @@ Sobald Ihre App benutzerdefinierte Ereignisse sendet und diese von App Center em
 2. Klicken Sie auf **Ressource erstellen** > **Entwicklertools** > **Application Insights**.
 
     > [!NOTE]
-    > Wenn Sie zum ersten Mal eine Application Insights-Ressource erstellen, können Sie mehr dazu im Dokument [Erstellen einer Application Insights-Ressource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) erfahren.
+    > Wenn Sie zum ersten Mal eine Application Insights-Ressource erstellen, können Sie mehr dazu im Dokument [Erstellen einer Application Insights-Ressource](../app/create-new-resource.md) erfahren.
 
     Ein Konfigurationsfeld wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der unten stehenden Tabelle aus.
 
@@ -81,7 +81,7 @@ Sobald Ihre App benutzerdefinierte Ereignisse sendet und diese von App Center em
      | **Ressourcengruppe**     | Eine neue Ressourcengruppe, oder eine vorhandene aus dem Menü | Die Ressourcengruppe, in der die neue Application Insights-Ressource erstellt werden soll |
    | **Location** | Ein Standort aus dem Menü | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
-3. Klicken Sie auf **Create**.
+3. Klicken Sie auf **Erstellen**.
 
 Wenn Ihre App mehrere Plattformen unterstützt (iOS, Android usw.), ist es am sinnvollsten, mehrere Application Insights-Ressourcen zu erstellen, eine für jede Plattform.
 
@@ -98,7 +98,7 @@ Führen Sie in der [App Center](https://appcenter.ms/)-Instanz für Ihre App Fol
 
 Denken Sie daran, dass Sie diese Schritte für jede Plattform, die Ihre App unterstützt, durchführen müssen.
 
-Sobald der [Export](https://docs.microsoft.com/mobile-center/analytics/export) eingerichtet ist, wird jedes benutzerdefinierte Ereignis, das von App Center empfangen wird, in Application Insights kopiert. Es kann einige Minuten dauern, bis die Ereignisse Application Insights erreichen. Wenn sie also nicht sofort angezeigt werden, warten Sie erst ab, bevor Sie weitere Diagnosen durchführen.
+Sobald der [Export](/mobile-center/analytics/export) eingerichtet ist, wird jedes benutzerdefinierte Ereignis, das von App Center empfangen wird, in Application Insights kopiert. Es kann einige Minuten dauern, bis die Ereignisse Application Insights erreichen. Wenn sie also nicht sofort angezeigt werden, warten Sie erst ab, bevor Sie weitere Diagnosen durchführen.
 
 Um Ihnen bei der ersten Verbindung mehr Daten zur Verfügung zu stellen, werden die letzten 48 Stunden an benutzerdefinierten Ereignissen in App Center automatisch in Application Insights exportiert.
 
@@ -124,7 +124,7 @@ Application Insights kann die Telemetriedaten zu benutzerdefinierten Ereignissen
    1. Wählen Sie die Abfrage aus, indem Sie im Text-Editor an eine beliebige Stelle in der Abfrage klicken.
    2. Klicken Sie auf **Los**, um die Abfrage auszuführen. 
 
-   Erfahren Sie mehr zu [Application Insights Analytics](../../azure-monitor/app/analytics.md) und zur [Log Analytics-Abfragesprache](https://aka.ms/LogAnalyticsLanguageReference).
+   Erfahren Sie mehr zu [Application Insights Analytics](../log-query/log-query-overview.md) und zur [Log Analytics-Abfragesprache](/azure/data-explorer/kusto/query/).
 
 
 2. **Segmentieren und filtern Sie die Telemetriedaten zu benutzerdefinierten Ereignissen.** Klicken Sie auf der Seite **Übersicht** in Application Insights im Inhaltsverzeichnis auf **Benutzer**.
@@ -167,4 +167,4 @@ So löschen Sie die Application Insights-Erweiterung:
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erhalten Sie Einblick, wie die App von Kunden verwendet wird.](../../azure-monitor/app/usage-overview.md)
+> [Erhalten Sie Einblick, wie die App von Kunden verwendet wird.](../app/usage-overview.md)

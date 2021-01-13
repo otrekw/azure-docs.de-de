@@ -5,7 +5,7 @@
     - name: Was ist eine Hybrididentität?
       href: whatis-hybrid-identity.md
       maintainContext: true
-- name: Lernprogramme
+- name: Tutorials
   expanded: true
   items:
     - name: Integrieren einer AD-Umgebung mit einer AD-Gesamtstruktur in die Cloud mit PHS
@@ -24,12 +24,14 @@
           href: cloud-governed-management-for-on-premises.md
         - name: In vier Schritten zu einem starken Identitätsfundament
           href: four-steps.md
+        - name: Auswählen einer Authentifizierungsmethode für die Hybrididentität
+          href: choose-ad-authn.md
     - name: Azure AD Connect und Connect Health
       items:
         - name: Worum handelt es sich bei Azure AD Connect und Connect Health?
           href: whatis-azure-ad-connect.md
         - name: Auswählen der richtigen Authentifizierung
-          href: 'https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn'
+          href: ./choose-ad-authn.md
         - name: Identitätssynchronisierung und Resilienz bei doppelten Attributen
           href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     - name: Kennworthashsynchronisierung
@@ -104,6 +106,8 @@
           href: how-to-connect-install-express.md
         - name: Installieren eines Azure AD Connect-Verbunds oder andere benutzerdefinierte Einstellungen
           href: how-to-connect-install-custom.md
+        - name: Einstellungen der Import- und Exportkonfiguration
+          href: how-to-connect-import-export-config.md
         - name: 'Installieren von Azure AD Connect mit Passthrough-Authentifizierung (Pass-Through Authentication, PTA)'
           href: how-to-connect-pta-quick-start.md
         - name: Installieren von Azure AD Connect Health
@@ -128,6 +132,8 @@
           href: how-to-connect-install-existing-tenant.md
         - name: Aufgaben nach der Installation
           href: how-to-connect-post-installation.md
+        - name: Deinstallieren von Azure AD Connect
+          href: how-to-connect-uninstall.md
     - name: Planen und Entwerfen
       items:
         - name: Entwurfskonzepte
@@ -148,6 +154,10 @@
               href: plan-migrate-adfs-password-hash-sync.md
             - name: Migrieren vom Verbund zu PTA
               href: plan-migrate-adfs-pass-through-authentication.md
+            - name: Verschieben von Gruppen aus einer Gesamtstruktur in eine andere
+              href: how-to-connect-migrate-groups.md
+            - name: Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts
+              href: how-to-connect-staged-rollout.md
         - name: Überlegungen zum Entwurf der Hybrididentität
           items:
             - name: 'Überlegungen zum Entwurf der Hybrididentität: Übersicht'
@@ -182,6 +192,8 @@
       items:
         - name: Aktivieren des Geräterückschreibens
           href: how-to-connect-device-writeback.md
+        - name: Aktivieren des Gruppenrückschreibens
+          href: how-to-connect-group-writeback.md
         - name: Geräteoptionen
           href: how-to-connect-device-options.md
         - name: Zusätzliche Features in Azure AD Connect
@@ -194,7 +206,7 @@
           href: how-to-connect-configure-ad-ds-connector-account.md
         - name: Ändern des Kennworts für das Azure ADSync-Dienstkonto
           href: how-to-connect-sync-change-serviceacct-pass.md
-        - name: Ändern des Kennwort für das Azure AD Connector-Konto
+        - name: Ändern des Kennworts für das Azure AD-Connector-Konto
           href: how-to-connect-azureadaccount.md
         - name: Ändern des Kennworts für das AD DS-Connector-Konto
           href: how-to-connect-sync-change-addsacct-pass.md
@@ -204,6 +216,8 @@
           href: how-to-connect-pta-quick-start.md
         - name: 'Passthrough-Authentifizierung: häufig gestellte Fragen'
           href: how-to-connect-pta-faq.md
+        - name: Deaktivieren von PTA bei Verwendung von „Nicht konfigurieren“ für Azure AD Connect
+          href: how-to-connect-pta-disable-do-not-configure.md
     - name: Verwalten von Verbunddiensten
       items:
         - name: Verwalten des Verbunds mit Azure AD Connect
@@ -250,6 +264,8 @@
           href: how-to-connect-health-diagnose-sync-errors.md
         - name: 'Azure AD Connect Health: Warnungskatalog'
           href: how-to-connect-health-alert-catalog.md
+        - name: 'Azure AD Connect Health: Datenabruf'
+          href: how-to-connect-health-data-retrieval.md
     - name: Verwalten der Azure AD Connect-Synchronisierung
       items:
         - name: Stagingserver und Notfallwiederherstellung
@@ -270,6 +286,8 @@
           href: how-to-connect-sync-feature-scheduler.md
         - name: Erstellen und Anpassen einer Synchronisierungsregel
           href: how-to-connect-create-custom-sync-rule.md
+        - name: "Azure\_AD\_Connect-Synchronisierung: V2-Endpunkt-API"
+          href: how-to-connect-sync-endpoint-api-v2.md
         - name: Azure AD Connect-Synchronisierungsdienst-Manager
           items:
             - name: Verwalten der Registerkarte „Vorgänge“ des Dienst-Managers
@@ -312,6 +330,8 @@
           href: tshoot-connect-attribute-not-syncing.md
         - name: Probleme bei der Installation
           href: tshoot-connect-install-issues.md
+        - name: Änderungen des Benutzerprinzipalnamens
+          href: howto-troubleshoot-upn-changes.md
 - name: Verweis
   items:
     - name: Erforderliche Ports und Protokolle für die Hybrid-Identität
@@ -320,14 +340,18 @@
       href: reference-connect-version-history.md
     - name: 'Azure AD Connect Health: Versionsverlauf'
       href: reference-connect-health-version-history.md
+    - name: 'Azure AD-Pass-Through-Authentifizierung: Versionsverlauf des Agents'
+      href: reference-connect-pta-version-history.md
     - name: Connector-Versionsverlauf
-      href: reference-connect-sync-connector-version-history.md
+      href: /microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history
     - name: Konten und Berechtigungen
       href: reference-connect-accounts-permissions.md
     - name: Häufig gestellte Fragen zu Azure AD Connect
       href: reference-connect-faq.md
     - name: Azure AD Connect Health – FAQ
       href: reference-connect-health-faq.md
+    - name: Überlegungen zur Hybrididentität für Azure Government
+      href: reference-connect-government-cloud.md
     - name: 'Azure AD Connect: Datenschutz'
       href: reference-connect-user-privacy.md
     - name: 'Azure AD Connect Health: Datenschutz'
@@ -354,3 +378,5 @@
       href: reference-connect-msexchuserholdpolicies.md
     - name: "Grundlegendes zum Verschwinden eines Azure AD Connect\_1.4.xx.x-Geräts"
       href: reference-connect-device-disappearance.md
+    - name: Archiv des Azure AD Connect-Versionsverlaufs
+      href: reference-connect-version-history-archive.md

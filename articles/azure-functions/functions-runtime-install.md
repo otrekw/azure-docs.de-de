@@ -1,20 +1,16 @@
 ---
-title: Azure Functions Runtime-Installation | Microsoft-Dokumentation
+title: Installation der Azure Functions-Runtime
 description: Installieren der Vorschauversion 2 der Azure Functions-Laufzeit
-services: functions
 author: apwestgarth
-manager: stefsch
-ms.assetid: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 0fbc76f3cb3fea84347ef55e40e1b2bed9b98152
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085491"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86540382"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Installieren der Vorschauversion 2 der Azure Functions-Laufzeit
 
@@ -75,11 +71,11 @@ Zum Abschließen der Installation der Azure Functions-Laufzeit müssen Sie die K
 
     ![Konfigurationstool für die Vorschauversion der Azure Functions-Laufzeit][7]
 
-1. Klicken Sie auf die Registerkarte **Datenbank**, geben Sie die Verbindungsdetails für die SQL Server-Instanz ein, einschließlich der Angabe eines [Datenbankhauptschlüssels](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine), und klicken Sie auf **Übernehmen**.  Die Verbindung mit einer SQL Server-Instanz ist erforderlich, damit die Azure Functions-Laufzeit eine Datenbank zur Unterstützung der Laufzeit erstellt.
+1. Klicken Sie auf die Registerkarte **Datenbank**, geben Sie die Verbindungsdetails für die SQL Server-Instanz ein, einschließlich der Angabe eines [Datenbankhauptschlüssels](/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine), und klicken Sie auf **Übernehmen**.  Die Verbindung mit einer SQL Server-Instanz ist erforderlich, damit die Azure Functions-Laufzeit eine Datenbank zur Unterstützung der Laufzeit erstellt.
 
     ![Datenbankkonfiguration für die Vorschauversion der Azure Functions-Laufzeit][8]
 
-1. Klicken Sie auf die Registerkarte **Anmeldeinformationen**.  Hier müssen Sie zwei neue Anmeldeinformationen für die Verwendung mit einer Dateifreigabe erstellen, die alle Ihre Functions-Apps hostet.  Geben Sie Kombinationen aus **Benutzername** und **Kennwort** für den **Besitzer der Dateifreigabe** und für den **Benutzer der Dateifreigabe** an, und klicken Sie auf **Übernehmen**.
+1. Klicken Sie auf die Registerkarte **Anmeldeinformationen** .  Hier müssen Sie zwei neue Anmeldeinformationen für die Verwendung mit einer Dateifreigabe erstellen, die alle Ihre Functions-Apps hostet.  Geben Sie Kombinationen aus **Benutzername** und **Kennwort** für den **Besitzer der Dateifreigabe** und für den **Benutzer der Dateifreigabe** an, und klicken Sie auf **Übernehmen**.
 
     ![Anmeldeinformationen für die Vorschauversion der Azure Functions-Laufzeit][9]
 

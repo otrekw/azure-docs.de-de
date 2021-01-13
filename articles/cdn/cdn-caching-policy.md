@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Azure CDN-Zwischenspeicherungsrichtlinien in Azure Media Services | Microsoft-Dokumentation
-description: Hier wird erläutert, wie Sie Azure CDN-Zwischenspeicherungsrichtlinien in Azure Media Services verwalten.
+description: In diesem Artikel wird erläutert, wie Sie Azure CDN-Zwischenspeicherungsrichtlinien in Azure Media Services verwalten.
 services: media-services,cdn
 documentationcenter: .NET
 author: juliako
@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: 516df2f6177303987fc0354dde647c1fc26820ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5807d38e22d8cecf40b5ad4262f9e4662b77ec4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61069450"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779134"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Verwalten von Azure CDN-Zwischenspeicherungsrichtlinien in Azure Media Services
 Azure Media Services bietet HTTP-basiertes adaptives Streaming und progressive Downloads. HTTP-basiertes Streaming ist überaus skalierbar und bietet den Vorteil, dass Dateien auf Proxy- und CDN-Ebene sowie clientseitig zwischengespeichert werden können. Streamingendpunkte bieten allgemeine Streamingfunktionen sowie Konfigurationsoptionen für HTTP-Cacheheader. Streamingendpunkte legen die HTTP-Cachesteuerungsheader "max-age" und "Expires" fest. Weitere Informationen zu HTTP-Cacheheadern finden Sie unter [W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
@@ -40,10 +40,9 @@ Sie können das Azure-Portal oder Azure Media Services-APIs verwenden, um Cacheh
 
 1. Informationen zum Konfigurieren von Cacheheadern über das Azure-Portal finden Sie unter [Verwalten von Streamingendpunkten](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) im Abschnitt „Konfigurieren des Streamingendpunkts“.
 2. Azure Media Services-REST-API, [StreamingEndpoint](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl).
-3. Azure Media Services .NET SDK, [StreamingEndpointCacheControl-Eigenschaften](https://go.microsoft.com/fwlink/?LinkId=615302).
+3. Azure Media Services .NET SDK, [StreamingEndpointCacheControl-Eigenschaften](/dotnet/api/microsoft.windowsazure.mediaservices.client.streamingendpointcachecontrol).
 
 ## <a name="cache-configuration-precedence-order"></a>Rangfolge der Cachekonfiguration
 1. In Azure Media Services konfigurierte Cachewerte überschreiben Standardwerte.
 2. Wenn keine manuelle Konfiguration vorhanden ist, gelten die Standardwerte.
 3. Cacheheader zum Zwischenspeichern für 2 Sekunden werden unabhängig von der Azure Media- oder Azure Storage-Konfiguration auf Livestreamingmanifeste (Wiedergabelisten) angewendet. Dieser Wert kann nicht überschrieben werden.
-

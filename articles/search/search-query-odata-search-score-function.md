@@ -1,13 +1,13 @@
 ---
-title: Referenz zur search.score-Funktion von OData – Azure Search
-description: search.score-Funktion in Azure Search-Abfragen.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Referenz für die OData-Funktion „search.score“
+titleSuffix: Azure Cognitive Search
+description: Syntax und Referenzdokumentation für die Verwendung der search.score-Funktion in Azure Cognitive Search-Abfragen.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b6bf56a61ca685b306a15e474623336216ba531b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 0a84d0310573a1210e21157102a445fff9244782
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647512"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88923975"
 ---
-# <a name="odata-searchscore-function-in-azure-search"></a>OData-Funktion `search.score` in Azure Search
+# <a name="odata-searchscore-function-in-azure-cognitive-search"></a>OData-Funktion `search.score` in der kognitiven Azure-Suche
 
-Wenn Sie eine Abfrage an Azure Search ohne den [Parameter **$orderby**](search-query-odata-orderby.md) senden, werden die zurückgegebenen Ergebnisse in absteigender Reihenfolge nach Relevanz sortiert. Selbst wenn Sie **$orderby** verwenden, wird die Relevanzbewertung standardmäßig verwendet, um Verbindungen aufzuheben. Manchmal ist es jedoch sinnvoll, die Relevanzbewertung als erstes Sortierkriterium und einige andere Kriterien als Entscheidungshilfe zu verwenden. Die `search.score`-Funktion ermöglicht dies.
+Wenn Sie eine Abfrage ohne den [Parameter **$orderby**](search-query-odata-orderby.md) an die kognitive Azure-Suche senden, werden die zurückgegebenen Ergebnisse in absteigender Reihenfolge nach Relevanz sortiert. Selbst wenn Sie **$orderby** verwenden, wird die Relevanzbewertung standardmäßig verwendet, um Verbindungen aufzuheben. Manchmal ist es jedoch sinnvoll, die Relevanzbewertung als erstes Sortierkriterium und einige andere Kriterien als Entscheidungshilfe zu verwenden. Die `search.score`-Funktion ermöglicht dies.
 
 ## <a name="syntax"></a>Syntax
 
@@ -38,10 +38,12 @@ Die Syntax für `search.score` in **$orderby** ist `search.score()`. Die Funktio
 
 Sortieren von Hotels in absteigender Reihenfolge nach `search.score` und `rating` und anschließend in aufsteigender Reihenfolge nach der Entfernung von den angegebenen Koordinaten, sodass von zwei Hotels mit identischen Bewertungen das nächstgelegene zuerst aufgeführt wird:
 
+```odata-filter-expr
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Übersicht über die OData-Ausdruckssprache für Azure Search](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md)
-- [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst)
+- [Übersicht über die OData-Ausdruckssprache für Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](/rest/api/searchservice/Search-Documents)

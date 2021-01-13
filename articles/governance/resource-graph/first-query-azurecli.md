@@ -1,18 +1,15 @@
 ---
-title: Ausführen Ihrer ersten Abfrage mit der Azure CLI
-description: Dieser Artikel führt Sie durch die Schritte zum Aktivieren der Resource Graph-Erweiterung für die Azure-Befehlszeilenschnittstelle und Ausführen Ihrer ersten Abfrage.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 07/26/2019
+title: 'Schnellstart: Ihre erste Azure CLI-Abfrage'
+description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren der Resource Graph-Erweiterung für die Azure CLI und zum Ausführen Ihrer ersten Abfrage aus.
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 6fffd9e0bbaea47bfeac56a7972a38df0cbef351
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 216972fb3c64efa22dc4d344e5021a3c2da74266
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164690"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056769"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe der Azure CLI
 
@@ -20,13 +17,17 @@ Der erste Schritt der Verwendung von Azure Resource Graph ist, zu überprüfen, 
 
 Am Ende dieses Prozesses haben Sie die Erweiterung der Installation der Azure-Befehlszeilenschnittstelle Ihrer Wahl hinzugefügt und Ihre erste Resource Graph-Abfrage durchgeführt.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-extension"></a>Hinzufügen der Resource Graph-Erweiterung
 
-Um die Azure-Befehlszeilenschnittstelle für die Abfrage von Azure Resource Graph zu aktivieren, muss die Erweiterung hinzugefügt werden. Diese Erweiterung funktioniert überall, wo die Azure-Befehlszeilenschnittstelle verwendet werden kann, einschließlich [bash unter Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (sowohl eigenständig als auch innerhalb des Portals), [Azure CLI-Docker-Image](https://hub.docker.com/r/microsoft/azure-cli/) oder lokaler Installation.
+Um die Azure-Befehlszeilenschnittstelle für die Abfrage von Azure Resource Graph zu aktivieren, muss die Erweiterung hinzugefügt werden. Diese Erweiterung funktioniert überall, wo die Azure-Befehlszeilenschnittstelle verwendet werden kann, einschließlich [bash unter Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (sowohl eigenständig als auch innerhalb des Portals), [Azure CLI-Docker-Image](https://hub.docker.com/_/microsoft-azure-cli) oder lokaler Installation.
 
-1. Vergewissern Sie sich, dass die neueste Azure CLI (mindestens **2.0.45**) installiert ist. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+1. Vergewissern Sie sich, dass die neueste Azure CLI (mindestens **2.0.76**) installiert ist. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/cli/azure/install-azure-cli-windows).
 
 1. Importieren Sie sie mit folgendem Befehl in die Azure CLI-Umgebung Ihrer Wahl:
 
@@ -55,7 +56,7 @@ Nachdem die Azure CLI-Erweiterung der gewünschten Umgebung hinzugefügt wurde, 
    # Login first with az login if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   az graph query -q 'project name, type | limit 5'
+   az graph query -q 'Resources | project name, type | limit 5'
    ```
 
    > [!NOTE]
@@ -65,20 +66,20 @@ Nachdem die Azure CLI-Erweiterung der gewünschten Umgebung hinzugefügt wurde, 
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with 'order by'
-   az graph query -q 'project name, type | limit 5 | order by name asc'
+   az graph query -q 'Resources | project name, type | limit 5 | order by name asc'
    ```
 
    > [!NOTE]
-   > Genau wie bei der ersten Abfrage ergibt die mehrfache Ausführung dieser Abfrage vermutlich pro Anforderung einen anderen Satz von Ressourcen. Die Reihenfolge der Abfragebefehle ist wichtig. In diesem Beispiel kommt `order by` nach `limit`. Dies beschränkt zunächst die Ergebnisse der Abfrage und sortiert sie dann.
+   > Genau wie bei der ersten Abfrage ergibt die mehrfache Ausführung dieser Abfrage vermutlich pro Anforderung einen anderen Satz von Ressourcen. Die Reihenfolge der Abfragebefehle ist wichtig. In diesem Beispiel kommt `order by` nach `limit`. Durch diese Befehlsreihenfolge werden die Abfrageergebnisse zuerst eingeschränkt und dann sortiert.
 
 1. Aktualisieren Sie die Abfrage, sodass zuerst eine Sortierung (`order by`) nach der Eigenschaft **Name** vorgenommen wird, und begrenzen Sie die Ergebnisse mithilfe von `limit` auf die fünf relevantesten Ergebnisse:
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   az graph query -q 'project name, type | order by name asc | limit 5'
+   az graph query -q 'Resources | project name, type | order by name asc | limit 5'
    ```
 
-Wenn die letzte Abfrage mehrmals ausgeführt wird, sind die zurückgegebenen Ergebnisse – vorausgesetzt, dass sich in Ihrer Umgebung nichts ändert – konsistent und wie erwartet: sortiert nach der Eigenschaft **Name**, aber immer noch auf die fünf relevantesten Ergebnisse begrenzt.
+Wenn die letzte Abfrage mehrmals ausgeführt wird und in Ihrer Umgebung keine Änderungen vorgenommenen werden, sind die zurückgegebenen Ergebnisse konsistent und nach der Eigenschaft **Name** sortiert, aber immer noch auf die ersten fünf Ergebnisse begrenzt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -91,9 +92,7 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Abfragesprache](./concepts/query-language.md)
-- Lernen Sie, [Ressourcen zu untersuchen](./concepts/explore-resources.md)
-- Ausführen Ihrer ersten Abfrage mit [Azure PowerShell](first-query-powershell.md)
-- Siehe Beispiele der [einfachen Abfragen](./samples/starter.md)
-- Siehe Beispiele der [erweiterten Abfragen](./samples/advanced.md)
-- Senden von Feedback über [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)
+In dieser Schnellstartanleitung haben Sie die Resource Graph-Erweiterung Ihrer Azure CLI-Umgebung hinzugefügt und Ihre erste Abfrage ausgeführt. Wenn Sie mehr über die Resource Graph-Sprache erfahren möchten, fahren Sie mit der Seite mit den Details zur Abfragesprache fort.
+
+> [!div class="nextstepaction"]
+> [Erfahren Sie mehr über die Abfragesprache](./concepts/query-language.md).

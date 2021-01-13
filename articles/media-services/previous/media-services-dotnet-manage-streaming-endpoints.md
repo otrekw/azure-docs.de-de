@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Streamingendpunkten mit .NET SDK | Microsoft-Dokumentation
-description: Dieser Artikel zeigt, wie Sie Streamingendpunkte mithilfe des Azure-Portals verwalten.
+description: In diesem Artikel erfahren Sie, wie Sie Streamingendpunkte mithilfe des .NET SDK verwalten.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,17 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 0222450e1b85c255f2028adff750b9257f109be7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: faf9acc6e91b43e2dd82589127f8697c666d86e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61464962"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250527"
 ---
-# <a name="manage-streaming-endpoints-with-net-sdk"></a>Verwalten von Streamingendpunkten mit .NET SDK  
+# <a name="manage-streaming-endpoints-with-net-sdk"></a>Verwalten von Streamingendpunkten mit .NET SDK
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 >[!NOTE]
->Sehen Sie sich zunächst den Artikel [Übersicht](media-services-streaming-endpoints-overview.md) an. Lesen Sie außerdem [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+>Sehen Sie sich zunächst den Artikel [Übersicht](media-services-streaming-endpoints-overview.md) an. Lesen Sie außerdem [StreamingEndpoint](/rest/api/media/operations/streamingendpoint).
 
 Der Code in diesem Artikel zeigt, wie die folgenden Aufgaben mithilfe des Azure Media Services .NET SDK ausgeführt werden:
 
@@ -150,4 +153,3 @@ namespace AMSStreamingEndpoint
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

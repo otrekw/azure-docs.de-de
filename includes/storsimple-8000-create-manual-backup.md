@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 4fc92931979aa367bdead435c3d6fd758d66a397
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 89f7be31514f0b78c3bfb3efd6e6aca14658d5cd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178166"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376217"
 ---
 #### <a name="to-create-a-manual-backup"></a>So erstellen Sie eine manuelle Sicherung
 
@@ -21,13 +21,13 @@ ms.locfileid: "67178166"
 
 3. Führen Sie auf dem Blatt **Jetzt sichern** die folgenden Schritte aus:
 
-    1. Wählen Sie den entsprechenden **Momentaufnahmetyp** aus der Dropdownliste aus: **Lokale** Momentaufnahme oder **Cloudbasierte** Momentaufnahme. Wählen Sie für schnelle Sicherungen oder Wiederherstellungen die lokale Momentaufnahme, und wählen Sie die Cloudmomentaufnahme, um mehr Datenresilienz zu erzielen.
+    1. Wählen Sie in der Dropdownliste den passenden **Momentaufnahmetyp** aus: **Lokal** oder **Cloud**. Wählen Sie für schnelle Sicherungen oder Wiederherstellungen die lokale Momentaufnahme, und wählen Sie die Cloudmomentaufnahme, um mehr Datenresilienz zu erzielen.
 
-        ![Erstellen einer manuellen Sicherung](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
+        ![Erstellen einer manuellen Sicherung 2](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 
     2. Klicken Sie auf **OK**, um einen Auftrag zum Erstellen einer Momentaufnahme zu starten. Am oberen Rand der Seite wird eine Benachrichtigung angezeigt, nachdem der Auftrag erfolgreich erstellt wurde.
 
-        ![Erstellen einer manuellen Sicherung](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
+        ![Erstellen einer manuellen Sicherung 3](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
 
     3. Klicken Sie auf die Benachrichtigung, um den Auftrag zu überwachen. Sie gelangen auf das Blatt **Aufträge**, auf dem Sie den Auftragsstatus anzeigen können.
 

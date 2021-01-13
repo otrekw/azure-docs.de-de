@@ -1,20 +1,15 @@
 ---
-title: 'Azure Container Instances: Sicherheitsüberlegungen'
+title: Sicherheitsüberlegungen für Containerinstanzen
 description: Empfehlungen zum Schutz von Images und Secrets für Azure Container Instances und allgemeine Sicherheitsüberlegungen für jede Containerplattform
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
-ms.date: 04/29/2019
-ms.author: danlep
+ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 618d3a901698e46760d970f6d4fbc4157c5d2ea3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 898bdf77bf4b6636e78f5d735fc8650da4fde2b8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325921"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148670"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Sicherheitsüberlegungen für Azure Container Instances
 
@@ -24,21 +19,28 @@ Dieser Artikel stellt Sicherheitsüberlegungen für die Verwendung von Azure Con
 > * **Sicherheitsempfehlungen** für die Verwaltung von Images und Geheimnissen für Azure Container Instances
 > * **Überlegungen zum Containerökosystem** während des gesamten Lebenszyklus des Containers für alle Containerplattformen
 
+Umfassende Empfehlungen zur Verbesserung des Sicherheitsstatus Ihrer Bereitstellung finden Sie unter [Azure-Sicherheitsbaseline für Container Instances](security-baseline.md).
+
+
 ## <a name="security-recommendations-for-azure-container-instances"></a>Sicherheitsempfehlungen für Azure Container Instances
 
 ### <a name="use-a-private-registry"></a>Verwenden einer privaten Registrierung
 
-Container werden aus Images erstellt, die in einem oder mehreren Repositorys gespeichert sind. Diese Repositorys können zu einer öffentlichen Registrierung (etwa [Docker Hub](https://hub.docker.com)) oder zu einer privaten Registrierung gehören. Ein Beispiel für eine private Registrierung ist die [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/), die lokal oder in einer virtuellen privaten Cloud installiert werden kann. Sie können auch cloudbasierte private Containerregistrierungsdienste verwenden, z.B. [Azure Container Registry](../container-registry/container-registry-intro.md). 
+Container werden aus Images erstellt, die in einem oder mehreren Repositorys gespeichert sind. Diese Repositorys können zu einer öffentlichen Registrierung (etwa [Docker Hub](https://hub.docker.com)) oder zu einer privaten Registrierung gehören. Ein Beispiel für eine private Registrierung ist die [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/), die lokal oder in einer virtuellen privaten Cloud installiert werden kann. Sie können auch cloudbasierte private Containerregistrierungsdienste verwenden, z.B. [Azure Container Registry](../container-registry/container-registry-intro.md). 
 
-Ein öffentlich verfügbares Containerimage garantiert keine Sicherheit. Containerimages bestehen aus mehreren Softwareschichten, und in jeder Softwareschicht können Sicherheitsrisiken vorliegen. Um die Bedrohung durch Angriffe zu verringern, sollten Sie Images in einer privaten Registry (z.B. Azure Container Registry oder Docker Trusted Registry) speichern und daraus abrufen. Azure Container Registry stellt nicht nur eine verwaltete private Registrierung bereit, sondern unterstützt auch die [dienstprinzipalbasierte Authentifizierung](../container-registry/container-registry-authentication.md) über Azure Active Directory für grundlegende Authentifizierungsabläufe. Diese Authentifizierung umfasst rollenbasierten Zugriff für Lese- (pull), Schreib- (push) und Besitzerberechtigungen.
+Ein öffentlich verfügbares Containerimage garantiert keine Sicherheit. Containerimages bestehen aus mehreren Softwareschichten, und in jeder Softwareschicht können Sicherheitsrisiken vorliegen. Um die Bedrohung durch Angriffe zu verringern, sollten Sie Images in einer privaten Registry (z.B. Azure Container Registry oder Docker Trusted Registry) speichern und daraus abrufen. Azure Container Registry stellt nicht nur eine verwaltete private Registrierung bereit, sondern unterstützt auch die [dienstprinzipalbasierte Authentifizierung](../container-registry/container-registry-authentication.md) über Azure Active Directory für grundlegende Authentifizierungsabläufe. Diese Authentifizierung umfasst rollenbasierten Zugriff für Lese- (pull), Schreib- (push) und andere Berechtigungen.
 
 ### <a name="monitor-and-scan-container-images"></a>Überwachen und Überprüfen von Containerimages
 
-Sicherheitsüberwachungs- und -überprüfungslösungen wie [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) und [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) sind über Azure Marketplace verfügbar. Mit ihnen können Sie Containerimages in einer privaten Registrierung überprüfen und potenzielle Sicherheitslücken identifizieren. Es ist wichtig, die Überprüfungstiefe zu verstehen, die die verschiedenen Lösungen bieten. 
+Nutzen Sie Lösungen zum Überprüfen von Containerimages in einer privaten Registrierung und zum Identifizieren potenzieller Sicherheitsrisiken. Es ist wichtig, die Tiefe der Bedrohungserkennung zu verstehen, die die verschiedenen Lösungen bieten.
+
+Beispielsweise kann Azure Security Center optional [mit Azure Container Registry integriert](../security-center/defender-for-container-registries-introduction.md) werden, um automatisch alle Linux-Images zu überprüfen, die in eine Registrierung gepusht werden. Der integrierte Qualys-Scanner von Azure Security Center erkennt Sicherheitsrisiken von Images, klassifiziert sie und stellt Anleitungen zur Wartung bereit.
+
+Lösungen zur Sicherheitsüberwachung und Imageüberprüfung wie [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) und [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) sind ebenfalls über den Azure Marketplace verfügbar.  
 
 ### <a name="protect-credentials"></a>Schützen von Anmeldeinformationen
 
-Container können sich über mehrere Cluster und Azure-Regionen erstrecken. Daher müssen Sie die für Anmeldungen oder API-Zugriffe erforderlichen Anmeldeinformationen wie Kennwörter oder Token schützen. Stellen Sie sicher, dass nur berechtigte Benutzer auf diese Container während der Übertragung und im Ruhezustand zugreifen können. Inventarisieren Sie alle Anmeldegeheimnisse, und verlangen Sie dann von den Entwicklern, dass sie neue Tools für die Verwaltung von Geheimnissen verwenden, die für Containerplattformen konzipiert sind.  Stellen Sie sicher, dass Ihre Lösung verschlüsselte Datenbanken, TLS-Verschlüsselung für Geheimnisdaten während der Übertragung und [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) mit der geringsten Berechtigung beinhaltet. [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) ist ein Clouddienst und schützt Verschlüsselungsschlüssel und Geheimnisse (wie Zertifikate, Verbindungszeichenfolgen und Kennwörter) für Ihre containerisierten Anwendungen. Da es sich hierbei um vertrauliche und geschäftskritische Daten handelt, sichern Sie den Zugriff auf Key Vault-Instanzen so, dass nur autorisierte Anwendungen und Benutzer darauf zugreifen können.
+Container können sich über mehrere Cluster und Azure-Regionen erstrecken. Daher müssen Sie die für Anmeldungen oder API-Zugriffe erforderlichen Anmeldeinformationen wie Kennwörter oder Token schützen. Stellen Sie sicher, dass nur berechtigte Benutzer auf diese Container während der Übertragung und im Ruhezustand zugreifen können. Inventarisieren Sie alle Anmeldegeheimnisse, und verlangen Sie dann von den Entwicklern, dass sie neue Tools für die Verwaltung von Geheimnissen verwenden, die für Containerplattformen konzipiert sind.  Stellen Sie sicher, dass Ihre Lösung verschlüsselte Datenbanken, TLS-Verschlüsselung für Geheimnisdaten während der Übertragung und [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../role-based-access-control/overview.md) mit der geringsten Berechtigung beinhaltet. [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) ist ein Clouddienst und schützt Verschlüsselungsschlüssel und Geheimnisse (wie Zertifikate, Verbindungszeichenfolgen und Kennwörter) für Ihre containerisierten Anwendungen. Da es sich hierbei um vertrauliche und geschäftskritische Daten handelt, sichern Sie den Zugriff auf Key Vault-Instanzen so, dass nur autorisierte Anwendungen und Benutzer darauf zugreifen können.
 
 ## <a name="considerations-for-the-container-ecosystem"></a>Überlegungen zum Containerökosystem
 
@@ -95,13 +97,13 @@ Das Konzept der geringsten Berechtigungen ist eine grundlegende bewährte Sicher
 
 Sie können die potenzielle Angriffsfläche auch minimieren, indem Sie ungenutzte oder unnötige Prozesse oder Berechtigungen aus der Containerlaufzeit entfernen. Privilegierte Container werden als root-Benutzer ausgeführt. Wenn ein böswilliger Benutzer oder eine Workload in einem privilegierten Container entweicht, wird der Container dann als root auf diesem System ausgeführt.
 
-### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Erstellen einer Whitelist der Dateien und ausführbaren Dateien, auf die der Container zuzugreifen oder die er ausführen darf 
+### <a name="preapprove-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Genehmigen von Dateien und ausführbaren Dateien, auf die der Container zuzugreifen oder die er ausführen darf, im Voraus 
 
-Die Verringerung der Anzahl der Variablen oder Unbekannten hilft Ihnen, eine stabile, zuverlässige Umgebung zu verwalten. Die Einschränkung von Containern, sodass sie nur auf vorab genehmigte oder in der Whitelist enthaltene Dateien und ausführbare Dateien zugreifen oder diese ausführen können, ist eine bewährte Methode zur Begrenzung der Risikoexposition.  
+Die Verringerung der Anzahl der Variablen oder Unbekannten hilft Ihnen, eine stabile, zuverlässige Umgebung zu verwalten. Die Einschränkung von Containern, sodass sie nur auf vorab genehmigte oder in der Safelist enthaltene Dateien und ausführbare Dateien zugreifen oder diese ausführen können, ist eine bewährte Methode zur Eingrenzung der Angriffsfläche gegenüber Risiken.  
 
-Es ist viel einfacher, eine Whitelist zu verwalten, wenn diese von Anfang an implementiert ist. Eine Whitelist bietet ein gewisses Maß an Kontrolle und Verwaltbarkeit, während Sie herausfinden, welche Dateien und ausführbaren Dateien für die ordnungsgemäße Funktion der Anwendung erforderlich sind. 
+Es ist viel einfacher, eine Safelist zu verwalten, wenn sie von Anfang an implementiert wird. Eine Safelist bietet ein gewisses Maß an Kontrolle und Verwaltbarkeit, während Sie herausfinden, welche Dateien und ausführbaren Dateien für die ordnungsgemäße Funktion der Anwendung erforderlich sind. 
 
-Eine Whitelist verringert nicht nur die Angriffsfläche, sondern kann auch als Grundlage für Anomalien dienen und die Anwendungsfälle der Szenarien „Noisy Neighbor“ und Containerausbruch verhindern. 
+Eine Safelist verringert nicht nur die Angriffsfläche, sondern kann auch als Baseline für Anomalien dienen und die Anwendungsfälle der Szenarien „Noisy Neighbor“ und Containerausbruch verhindern. 
 
 ### <a name="enforce-network-segmentation-on-running-containers"></a>Erzwingen von Netzwerksegmentierung für ausgeführte Container  
 
@@ -113,7 +115,7 @@ So bietet beispielsweise das Partnertool [Aqua](https://azuremarketplace.microso
 
 Wie in jeder IT-Umgebung sollten Sie die Aktivitäten und den Benutzerzugriff auf Ihr Containerökosystem konsequent überwachen, um verdächtige oder böswillige Aktivitäten schnell zu identifizieren. Azure bietet Containerüberwachungslösungen:
 
-* [Azure Monitor für Container](../azure-monitor/insights/container-insights-overview.md) zur Überwachung der Leistung Ihrer Workloads, die in Kubernetes-Umgebungen bereitgestellt werden, die in Azure Kubernetes Service (AKS) gehostet werden. Azure Monitor für Container visualisiert die Leistung, indem anhand der Metrik-API die in Kubernetes verfügbaren Speicher- und Prozessormetriken von Controllern, Knoten und Containern erfasst werden. 
+* [Azure Monitor für Container](../azure-monitor/insights/container-insights-overview.md) überwacht die Leistung Ihrer Workloads in Kubernetes-Umgebungen, die in Azure Kubernetes Service (AKS) gehostet sind. Azure Monitor für Container visualisiert die Leistung, indem anhand der Metrik-API die in Kubernetes verfügbaren Speicher- und Prozessormetriken von Controllern, Knoten und Containern erfasst werden. 
 
 * Mit der [Azure-Containerüberwachungslösung](../azure-monitor/insights/containers.md) können Sie andere Docker- und Windows-Containerhosts an einem zentralen Ort anzeigen und verwalten. Beispiel:
 
@@ -130,14 +132,20 @@ Wie in jeder IT-Umgebung sollten Sie die Aktivitäten und den Benutzerzugriff au
 
 [Azure Monitor](../azure-monitor/overview.md) ermöglicht Azure-Diensten die Kernüberwachung durch die Sammlung von Metriken, Aktivitätsprotokollen und Diagnoseprotokollen. Beispielsweise können Sie dem Aktivitätsprotokoll entnehmen, wann neue Ressourcen erstellt oder geändert werden. 
 
-Metriken stehen zur Verfügung und liefern Leistungsstatistiken für verschiedene Ressourcen und sogar das Betriebssystem der virtuellen Computer. Sie können diese Daten mit einem der Explorer im Azure-Portal anzeigen und basierend auf diesen Metriken Benachrichtigungen erstellen. Azure Monitor bietet die schnellste Metrikpipeline (nur zwischen einer und fünf Minuten) und sollte daher für zeitkritische Warnungen und Benachrichtigungen verwendet werden. 
+  Metriken stehen zur Verfügung und liefern Leistungsstatistiken für verschiedene Ressourcen und sogar das Betriebssystem der virtuellen Computer. Sie können diese Daten mit einem der Explorer im Azure-Portal anzeigen und basierend auf diesen Metriken Benachrichtigungen erstellen. Azure Monitor bietet die schnellste Metrikpipeline (nur zwischen einer und fünf Minuten) und sollte daher für zeitkritische Warnungen und Benachrichtigungen verwendet werden. 
 
 ### <a name="log-all-container-administrative-user-access-for-auditing"></a>Protokollieren des gesamten administrativen Benutzerzugriffs auf Container für die Überwachung 
 
-Führen Sie ein genaues Überwachungsprotokoll für den administrativen Zugriff auf Ihr Containerökosystem, die Containerregistrierung und die Containerimages. Diese Protokolle können für Überprüfungszwecke erforderlich sein und sind als forensische Beweise nach einem Sicherheitsvorfall nützlich. Sie können die [Azure-Containerüberwachungslösung](../azure-monitor/insights/containers.md) zu diesem Zweck verwenden. 
+Führen Sie ein genaues Überwachungsprotokoll für den administrativen Zugriff auf Ihr Containerökosystem, einschließlich Ihres Kubernetes-Clusters, der Containerregistrierung und der Containerimages. Diese Protokolle können für Überprüfungszwecke erforderlich sein und sind als forensische Beweise nach einem Sicherheitsvorfall nützlich. Zu Azure-Lösungen zählen z. B. folgende:
+
+* [Integration von Azure Kubernetes Service in Azure Security Center](../security-center/defender-for-kubernetes-introduction.md) zum Überwachen der Sicherheitskonfiguration der Clusterumgebung und zum Generieren von Sicherheitsempfehlungen
+* [Azure-Containerüberwachungslösung](../azure-monitor/insights/containers.md)
+* Ressourcenprotokolle für [Azure Container Instances](container-instances-log-analytics.md) und [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Verwalten von Containersicherheitsrisiken mit Lösungen von [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) und [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/).
+* Umfassende Empfehlungen zur Verbesserung des Sicherheitsstatus Ihrer Bereitstellung finden Sie unter [Azure-Sicherheitsbaseline für Container Instances](security-baseline.md).
 
-* Weitere Informationen zur [Containersicherheit in Azure](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/).
+* Erfahren Sie mehr über die Verwendung von [Azure Security Center](../security-center/container-security.md) für die Echtzeiterkennung von Bedrohungen in Ihren Containerumgebungen.
+
+* Weitere Informationen zum Verwalten von Containersicherheitsrisiken mit Lösungen von [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) und [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/).

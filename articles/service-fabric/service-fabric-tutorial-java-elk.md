@@ -1,26 +1,15 @@
 ---
-title: Überwachen Ihrer Apps in Service Fabric in Azure mithilfe von ELK | Microsoft-Dokumentation
+title: Überwachen Ihrer Apps in Service Fabric mithilfe von ELK in Azure
 description: In diesem Tutorial erfahren Sie, wie Sie ELK einrichten und Ihre Service Fabric-Anwendungen überwachen.
-services: service-fabric
-documentationcenter: java
-author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
-ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: 689207339db0250d42fc64c33f43c42c18317d41
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 5faf26230618161a5b908c9a544a43ec5c33b807
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313004"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91532021"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Tutorial: Überwachen Ihrer Service Fabric-Anwendungen mithilfe von ELK
 
@@ -109,7 +98,7 @@ Sie können für dieses Tutorial eine vorkonfigurierte ELK-Umgebung verwenden un
     logstash-plugin install logstash-input-azureeventhub
     ```
 
-4. Erstellen Sie eine Logstash-Konfigurationsdatei mit folgendem Inhalt, oder passen Sie Ihre vorhandene Logstash-Konfigurationsdatei entsprechend an: Wenn Sie die Datei erstellen und das ELK-Bitnami-Image in Azure verwenden, muss die Datei unter ```/opt/bitnami/logstash/conf/access-log.conf``` erstellt werden.
+4. Erstellen Sie eine Logstash-Konfigurationsdatei mit folgendem Inhalt, oder passen Sie Ihre vorhandene Logstash-Konfigurationsdatei entsprechend an. Wenn Sie die Datei erstellen und das ELK-Bitnami-Image in Azure verwenden, muss die Datei unter ```/opt/bitnami/logstash/conf/access-log.conf``` erstellt werden.
 
     ```json
     input
@@ -151,7 +140,7 @@ Sie können für dieses Tutorial eine vorkonfigurierte ELK-Umgebung verwenden un
 
 8. Rufen Sie unter **http:\//SERVER-IP** Ihr Kibana-Dashboard auf, und geben Sie den Benutzernamen und das Kennwort für Kibana ein. Wenn Sie das ELK-Image in Azure verwendet haben, lautet der Standardbenutzername „User“, und als Kennwort wird das bei der **Startdiagnose** abgerufene Kennwort verwendet.
 
-    ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
+    ![Screenshot, der ein Kibana-Dashboard zur Visualisierung von Plattform- und Anwendungsprotokollen zeigt.](./media/service-fabric-tutorial-java-elk/kibana.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

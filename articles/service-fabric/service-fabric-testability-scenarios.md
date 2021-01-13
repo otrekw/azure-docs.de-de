@@ -1,25 +1,17 @@
 ---
-title: Erstellen von Chaos- und Failovertests für Azure Service Fabric | Microsoft-Dokumentation
+title: Erstellen von Chaos- und Failovertests für Azure Service Fabric
 description: Mithilfe der Chaos- und Failovertestszenarien von Service Fabric können Sie Fehler herbeiführen und die Zuverlässigkeit Ihrer Dienste überprüfen.
-services: service-fabric
-documentationcenter: .net
 author: motanv
-manager: rsinha
-editor: toddabel
-ms.assetid: 8eee7e89-404a-4605-8f00-7e4d4fb17553
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 06/07/2017
+ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: d12c5097d4ba5e0ccfe0e2b2cbc8ccd758c32d98
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 17f0af8c041042ddceccc1f8701e44ab8522840f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60865012"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89022121"
 ---
 # <a name="testability-scenarios"></a>Testability-Szenarien
 Große verteilte Systeme, z. B. Cloudinfrastrukturen, sind häufig unzuverlässig. Mit Azure Service Fabric können Entwickler Dienste schreiben, die für unzuverlässige Infrastrukturen ausgeführt werden. Um hochwertige Dienste schreiben zu können, müssen Entwickler dazu in der Lage sein, diese unzuverlässigen Infrastrukturen auszulösen, um die Stabilität ihrer Dienste testen zu können.
@@ -51,7 +43,7 @@ In seiner derzeitigen Form enthält die Fehlergenerierungs-Engine des Chaostests
 ### <a name="important-configuration-options"></a>Wichtige Konfigurationsoptionen
 * **TimeToRun**: Gesamtdauer der Ausführung des Tests, bevor er erfolgreich abgeschlossen wird. Beim Auftreten eines Überprüfungsfehlers kann der Test auch früher abgeschlossen werden.
 * **MaxClusterStabilizationTimeout**: Maximaler Zeitraum, wie lange auf die Wiederherstellung der Integrität des Clusters gewartet wird, bevor der Test als nicht erfolgreich gewertet wird. Folgende Überprüfungen werden durchgeführt: ob Clusterintegrität besteht, ob Dienstintegrität besteht, ob für die Dienstpartition die Größe der Zielreplikatgruppe erreicht wird und ob keine InBuild-Replikate vorhanden sind.
-* **MaxConcurrentFaults**: Die maximale Anzahl von gleichzeitigen Fehlern, die in jeder Iteration ausgelöst werden. Je höher die Anzahl ist, desto aggressiver ist der Test. Dies führt zu komplexeren Failovern und Übergangskombinationen. Mit dem Test wird garantiert, dass es bei einem Nichtvorhandensein von externen Fehlern nicht zu einem Quorum- oder Datenverlust kommt. Dabei spielt es keine Rolle, wie hoch der Wert für diese Konfiguration gewählt wurde.
+* **MaxConcurrentFaults**: Maximale Anzahl von gleichzeitigen Fehlern, die bei jeder Iteration ausgelöst werden. Je höher die Anzahl ist, desto aggressiver ist der Test. Dies führt zu komplexeren Failovern und Übergangskombinationen. Mit dem Test wird garantiert, dass es bei einem Nichtvorhandensein von externen Fehlern nicht zu einem Quorum- oder Datenverlust kommt. Dabei spielt es keine Rolle, wie hoch der Wert für diese Konfiguration gewählt wurde.
 * **EnableMoveReplicaFaults**: Aktiviert oder deaktiviert die Fehler, die zur Verschiebung der primären oder sekundären Replikate führen. Diese Fehler sind standardmäßig deaktiviert.
 * **WaitTimeBetweenIterations**: Gibt an, wie lange zwischen Iterationen gewartet wird (also nach einer Fehlerrunde und der entsprechenden Überprüfung).
 
@@ -133,6 +125,8 @@ class Test
 
 PowerShell
 
+Das Service Fabric PowerShell-Modul bietet zwei Möglichkeiten zum Start eines Chaos-Szenarios. Da `Invoke-ServiceFabricChaosTestScenario` clientbasiert ist, werden keine weiteren Fehler eingefügt, falls der Client-Computer während des Tests heruntergefahren wird. Ein alternativer Befehlssatz ist vorhanden, der den Test weiterlaufen lässt, falls der Computer heruntergefahren wird. `Start-ServiceFabricChaos` nutzt einen zustandsbehafteten und zuverlässigen Systemdienst namens FaultAnalysisService, um zu gewährleisten, dass bis zum Ablauf der TimeToRun weitere Fehler eingefügt werden. `Stop-ServiceFabricChaos` kann zum manuellen Abbruch des Szenarios verwendet werden, und `Get-ServiceFabricChaosReport` generiert einen Bericht. Weitere Informationen finden Sie unter [Azure Service Fabric PowerShell-Referenz](/powershell/module/servicefabric/?view=azureservicefabricps) und [In Microsoft Azure Service Fabric-Clustern kontrolliertes Chaos erzeugen](service-fabric-controlled-chaos.md).
+
 ```powershell
 $connection = "localhost:19000"
 $timeToRun = 60
@@ -160,7 +154,7 @@ Das Failovertestszenario ist eine Version des Chaostestszenarios für eine besti
 Beim Failovertest wird ein ausgewählter Fehler ausgelöst, und anschließend wird die Überprüfung für den Dienst durchgeführt, um dessen Stabilität sicherzustellen. Beim Failovertest wird nur jeweils ein Fehler ausgelöst, während beim Chaostest mehrere Fehler ausgelöst werden können. Wenn die Dienstpartition nach jedem Fehler nicht innerhalb des konfigurierten Zeitraums stabilisiert wird, ist der Test nicht erfolgreich. Beim Test werden nur sichere Fehler ausgelöst. Dies bedeutet, dass bei einem Nichtvorhandensein von externen Fehlern kein Quorum- oder Datenverlust auftritt.
 
 ### <a name="important-configuration-options"></a>Wichtige Konfigurationsoptionen
-* **PartitionSelector**: Selektorobjekt, mit dem die Partition angegeben wird, die getestet werden soll.
+* **PartitionSelector**: Selektorobjekt zum Angeben der gewünschten Partition.
 * **TimeToRun**: Gesamtdauer der Ausführung des Tests, bevor er abgeschlossen wird.
 * **MaxServiceStabilizationTimeout**: Maximaler Zeitraum, wie lange auf die Wiederherstellung der Integrität des Clusters gewartet wird, bevor der Test als nicht erfolgreich gewertet wird. Folgende Überprüfungen werden durchgeführt: ob Dienstintegrität besteht, ob für die Dienstpartition die Größe der Zielreplikatgruppe erreicht wird und ob keine InBuild-Replikate vorhanden sind.
 * **WaitTimeBetweenFaults**: Gibt an, wie lange zwischen den einzelnen Fehler- und Überprüfungszyklen gewartet wird.

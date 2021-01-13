@@ -8,16 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
-ms.date: 06/20/2019
-ms.author: metan
-ms.openlocfilehash: e0c85dba22a7c689631a853bc22d58d1cc4093aa
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 01/14/2020
+ms.author: metang
+ms.custom: devx-track-js
+ms.openlocfilehash: ac7bca305b0c23cceb00f97f426b3f68fbea91b3
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105006"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636441"
 ---
-# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Tutorial: Starten des plastischen Readers (Node.js)
+# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Tutorial: Starten von Plastischer Reader (Node.js)
 
 In der [Übersicht](./overview.md) haben Sie gelernt, was Plastischer Reader ist und wie das Tool bewährte Techniken implementiert, um das Leseverständnis von Sprachenlernenden, Leseanfängern und Schülern mit Lernunterschieden zu verbessern. In diesem Tutorial erfahren Sie, wie Sie eine Node.js-Webanwendung erstellen, die Plastischer Reader startet. In diesem Tutorial lernen Sie Folgendes:
 
@@ -29,11 +30,11 @@ In der [Übersicht](./overview.md) haben Sie gelernt, was Plastischer Reader ist
 > * Angeben der Benutzeroberflächensprache von Plastischer Reader
 > * Starten von Plastischer Reader mit mathematischem Inhalt
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Eine Ressource des plastischen Readers, die für die Authentifizierung mit Azure Active Directory (Azure AD) konfiguriert ist. Befolgen Sie [diese Anweisungen](./azure-active-directory-authentication.md) für die Einrichtung. Einige der hier erstellten Werte benötigen Sie bei der Konfiguration der Umgebungseigenschaften. Speichern Sie die Ausgabe Ihrer Sitzung zur späteren Verwendung in einer Textdatei.
+* Eine Ressource des plastischen Readers, die für die Authentifizierung mit Azure Active Directory konfiguriert ist. Befolgen Sie [diese Anweisungen](./how-to-create-immersive-reader.md) für die Einrichtung. Einige der hier erstellten Werte benötigen Sie bei der Konfiguration der Umgebungseigenschaften. Speichern Sie die Ausgabe Ihrer Sitzung zur späteren Verwendung in einer Textdatei.
 * [Node.js](https://nodejs.org/) und [YARN](https://yarnpkg.com)
 * Eine IDE (beispielsweise [Visual Studio Code](https://code.visualstudio.com/))
 
@@ -68,7 +69,7 @@ ClientSecret => Azure AD Application Service Principal password
 Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
 ````
 
-Erstellen Sie mit diesen Werten eine neue Datei namens _.env_, und fügen Sie den folgenden Code ein. Geben Sie dabei Ihre benutzerdefinierten Eigenschaftswerte von oben an.
+Erstellen Sie mit diesen Werten eine neue Datei namens _.env_ , und fügen Sie den folgenden Code ein. Geben Sie dabei Ihre benutzerdefinierten Eigenschaftswerte von oben an. Verwenden Sie weder Anführungszeichen noch die Zeichen „{“ und „}“.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -79,112 +80,108 @@ SUBDOMAIN={YOUR_SUBDOMAIN}
 
 Committen Sie diese Datei nicht in Ihre Quellcodeverwaltung, da sie Geheimnisse enthält, die nicht für die Öffentlichkeit bestimmt sind.
 
-Öffnen Sie als Nächstes die Datei _app.js_, und fügen Sie am Anfang der Datei Folgendes hinzu. Dadurch werden die in der ENV-Datei definierten Eigenschaften als Umgebungsvariablen in den Knoten geladen.
+Öffnen Sie als Nächstes die Datei _app.js_ , und fügen Sie am Anfang der Datei Folgendes hinzu. Dadurch werden die in der ENV-Datei definierten Eigenschaften als Umgebungsvariablen in den Knoten geladen.
 
 ```javascript
 require('dotenv').config();
 ```
 
-Öffnen Sie die Datei _routes\index.js_, und fügen Sie am Anfang der Datei den folgenden Code hinzu:
+Öffnen Sie die Datei _routes\index.js_ , und ersetzen Sie ihren Inhalt durch den folgenden Code.
+
+Dieser Code erstellt einen API-Endpunkt, der unter Verwendung Ihres Dienstprinzipalkennworts ein Azure AD-Authentifizierungstoken bezieht. Darüber hinaus wird die Unterdomäne abgerufen. Anschließend wird ein Objekt zurückgegeben, das das Token und die Unterdomäne enthält.
 
 ```javascript
 var request = require('request');
-```
+var express = require('express');
+var router = express.Router();
 
-Fügen Sie als Nächstes direkt nach dieser Zeile den folgenden Code hinzu. Dieser Code erstellt einen API-Endpunkt, der unter Verwendung Ihres Dienstprinzipalkennworts ein Azure AD-Authentifizierungstoken bezieht und zurückgibt. Es gibt auch einen zweiten Endpunkt zum Abrufen der Unterdomäne.
+router.get('/getimmersivereaderlaunchparams', function(req, res) {
+    request.post ({
+                headers: {
+                    'content-type': 'application/x-www-form-urlencoded'
+                },
+                url: `https://login.windows.net/${process.env.TENANT_ID}/oauth2/token`,
+                form: {
+                    grant_type: 'client_credentials',
+                    client_id: process.env.CLIENT_ID,
+                    client_secret: process.env.CLIENT_SECRET,
+                    resource: 'https://cognitiveservices.azure.com/'
+                }
+        },
+        function(err, resp, tokenResponse) {
+                if (err) {
+                    return res.status(500).send('CogSvcs IssueToken error');
+                }
 
-```javascript
-router.get('/getimmersivereadertoken', function(req, res) {
-  request.post ({
-          headers: {
-              'content-type': 'application/x-www-form-urlencoded'
-          },
-          url: `https://login.windows.net/${process.env.TENANT_ID}/oauth2/token`,
-          form: {
-              grant_type: 'client_credentials',
-              client_id: process.env.CLIENT_ID,
-              client_secret: process.env.CLIENT_SECRET,
-              resource: 'https://cognitiveservices.azure.com/'
-          }
-      },
-      function(err, resp, token) {
-          if (err) {
-              return res.status(500).send('CogSvcs IssueToken error');
-          }
-
-          return res.send(JSON.parse(token).access_token);
-      }
+                const token = JSON.parse(tokenResponse).access_token;
+                const subdomain = process.env.SUBDOMAIN;
+                return res.send({token: token, subdomain: subdomain});
+        }
   );
 });
 
-router.get('/subdomain', function (req, res) {
-    return res.send(process.env.SUBDOMAIN);
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
 });
+
+module.exports = router;
+
 ```
 
-Der API-Endpunkt **getimmersivereadertoken** muss durch eine Authentifizierung (beispielsweise [OAuth](https://oauth.net/2/)) geschützt werden, um zu verhindern, dass nicht autorisierte Benutzer Token abrufen und für Ihren Dienst „Plastischer Reader“ und die Abrechnung verwenden. Dies wird jedoch in diesem Tutorial nicht behandelt.
+Der API-Endpunkt **getimmersivereaderlaunchparams** muss durch eine Authentifizierung (beispielsweise [OAuth](https://oauth.net/2/)) geschützt werden, um zu verhindern, dass nicht autorisierte Benutzer Token abrufen und für Ihren Dienst „Plastischer Reader“ und die Abrechnung verwenden. Dies wird jedoch in diesem Tutorial nicht behandelt.
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>Starten von Plastischer Reader mit Beispielinhalt
 
-1. Öffnen Sie _views\layout.pug_, und fügen Sie unter dem Tag `head` den folgenden Code vor dem Tag `body` hinzu. Diese Tags vom Typ `script` laden das [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) sowie JQuery.
+1. Öffnen Sie _views\layout.pug_ , und fügen Sie unter dem Tag `head` den folgenden Code vor dem Tag `body` hinzu. Diese Tags vom Typ `script` laden das [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk) sowie JQuery.
 
     ```pug
     script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     ```
 
-2. Öffnen Sie die Datei _views\index.pug_, und ersetzen Sie ihren Inhalt durch den folgenden Code. Dieser Code füllt die Seite mit Beispielinhalten und fügt eine Schaltfläche zum Starten von Plastischer Reader hinzu.
+2. Öffnen Sie die Datei _views\index.pug_ , und ersetzen Sie ihren Inhalt durch den folgenden Code. Dieser Code füllt die Seite mit Beispielinhalten und fügt eine Schaltfläche zum Starten von Plastischer Reader hinzu.
 
     ```pug
     extends layout
 
     block content
-      h2(id='title') Geography
-      p(id='content') The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers.
-      div(class='immersive-reader-button' data-button-style='iconAndText' data-locale='en-US' onclick='launchImmersiveReader()')
-      script.
+          h2(id='title') Geography
+          p(id='content') The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers.
+          div(class='immersive-reader-button' data-button-style='iconAndText' data-locale='en-US' onclick='launchImmersiveReader()')
+          script.
 
-        function getImmersiveReaderTokenAsync() {
-            return new Promise((resolve, reject) => {
-                $.ajax({
-                    url: '/getimmersivereadertoken',
-                    type: 'GET',
-                    success: token => {
-                        resolve(token);
-                    },
-                    error: err => {
-                        console.log('Error in getting token!', err);
-                        reject(err);
-                    }
-                });
-            });
-        }
+            function getImmersiveReaderLaunchParamsAsync() {
+                    return new Promise((resolve, reject) => {
+                        $.ajax({
+                                url: '/getimmersivereaderlaunchparams',
+                                type: 'GET',
+                                success: data => {
+                                        resolve(data);
+                                },
+                                error: err => {
+                                        console.log('Error in getting token and subdomain!', err);
+                                        reject(err);
+                                }
+                        });
+                    });
+            }
 
-        function getSubdomainAsync() {
-            return new Promise((resolve, reject) => {
-                $.ajax({
-                    url: '/subdomain',
-                    type: 'GET',
-                    success: subdomain => { resolve(subdomain); },
-                    error: err => { reject(err); }
-                });
-            });
-        }
+            async function launchImmersiveReader() {
+                    const content = {
+                            title: document.getElementById('title').innerText,
+                            chunks: [{
+                                    content: document.getElementById('content').innerText + '\n\n',
+                                    lang: 'en'
+                            }]
+                    };
 
-        async function launchImmersiveReader() {
-            const content = {
-                title: document.getElementById('title').innerText,
-                chunks: [{
-                    content: document.getElementById('content').innerText + '\n\n',
-                    lang: 'en'
-                }]
-            };
+                    const launchParams = await getImmersiveReaderLaunchParamsAsync();
+                    const token = launchParams.token;
+                    const subdomain = launchParams.subdomain;
 
-            const token = await getImmersiveReaderTokenAsync();
-            const subdomain = await getSubdomainAsync();
-
-            ImmersiveReader.launchAsync(token, subdomain, content);
-        }
+                    ImmersiveReader.launchAsync(token, subdomain, content);
+            }
     ```
 
 3. Die Web-App ist nun bereit. Führen Sie den folgenden Befehl aus, um die App zu starten:
@@ -199,7 +196,7 @@ Der API-Endpunkt **getimmersivereadertoken** muss durch eine Authentifizierung (
 
 Plastischer Reader unterstützt zahlreiche Sprachen. Gehen Sie wie folgt vor, um die Sprache Ihres Inhalts anzugeben:
 
-1. Öffnen Sie _views\index.pug_, und fügen Sie unter dem Tag `p(id=content)`, das Sie im vorherigen Schritt hinzugefügt haben, den folgenden Code hinzu. Dieser Code fügt Ihrer Seite spanischen Inhalt hinzu.
+1. Öffnen Sie _views\index.pug_ , und fügen Sie unter dem Tag `p(id=content)`, das Sie im vorherigen Schritt hinzugefügt haben, den folgenden Code hinzu. Dieser Code fügt Ihrer Seite spanischen Inhalt hinzu.
 
     ```pug
     p(id='content-spanish') El estudio de las formas terrestres de la Tierra se llama geografía física. Los accidentes geográficos pueden ser montañas y valles. También pueden ser glaciares, lagos o ríos.
@@ -220,13 +217,13 @@ Plastischer Reader unterstützt zahlreiche Sprachen. Gehen Sie wie folgt vor, um
 
 Die Benutzeroberflächensprache von Plastischer Reader entspricht standardmäßig den Spracheinstellungen des Browsers. Mit dem folgenden Code können Sie auch die Benutzeroberflächensprache von Plastischer Reader angeben.
 
-1. Ersetzen Sie in _views\index.pug_ den Aufruf von `ImmersiveReader.launchAsync(token, content)` durch den folgenden Code:
+1. Ersetzen Sie in _views\index.pug_ den Aufruf von `ImmersiveReader.launchAsync(token, subdomain, content)` durch den folgenden Code:
 
     ```javascript
     const options = {
         uiLang: 'fr',
     }
-    ImmersiveReader.launchAsync(token, content, options);
+    ImmersiveReader.launchAsync(token, subdomain, content, options);
     ```
 
 2. Navigieren Sie zu _http://localhost:3000_ . Wenn Sie Plastischer Reader starten, wird die Benutzeroberfläche auf Französisch angezeigt.
@@ -264,5 +261,5 @@ Mathematische Inhalte können mithilfe von [MathML](https://developer.mozilla.or
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Machen Sie sich mit dem [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](./reference.md) vertraut.
+* Machen Sie sich mit dem [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](./reference.md) vertraut.
 * Sehen Sie sich Codebeispiele auf [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp).

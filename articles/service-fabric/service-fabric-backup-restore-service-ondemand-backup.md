@@ -1,25 +1,16 @@
 ---
-title: Bedarfsgesteuerte Sicherung in Azure Service Fabric | Microsoft-Dokumentation
+title: Bedarfsgesteuerte Sicherung in Azure Service Fabric
 description: Verwenden Sie das Feature für Sicherungen und Wiederherstellungen in Service Fabric, um eine Sicherung Ihrer Anwendungsdaten auf Bedarfsbasis zu ermöglichen.
-services: service-fabric
-documentationcenter: .net
 author: aagup
-manager: chackdan
-editor: aagup
-ms.assetid: 02DA262A-EEF6-4F90-842E-FFC4A09003E5
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: bed3402de83984cae9134fe44058980ec18861b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 04d8bb4a9f8157a229751d073e8d351f5448fa68
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413938"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86247896"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Bedarfsgesteuerte Sicherung in Azure Service Fabric
 
@@ -65,7 +56,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
 
 #### <a name="rest-call-using-powershell"></a>REST-Aufruf mithilfe von Powershell
 
-Richten Sie mit der [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition)-API die Auslösung für die bedarfsgesteuerte Sicherung für Partitions-ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` ein.
+Richten Sie mit der [BackupPartition](/rest/api/servicefabric/sfclient-api-backuppartition)-API die Auslösung für die bedarfsgesteuerte Sicherung für Partitions-ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` ein.
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/Backup?api-version=6.4"
@@ -73,7 +64,7 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-Aktivieren Sie mit der [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress)-API die Nachverfolgung des [Fortschritts der bedarfsgesteuerten Sicherung](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress).
+Aktivieren Sie mit der [GetBackupProgress](/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress)-API die Nachverfolgung des [Fortschritts der bedarfsgesteuerten Sicherung](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress).
 
 ### <a name="on-demand-backup-to-specified-storage"></a>Bedarfsgesteuerte Sicherung auf dem angegebenen Speicher
 
@@ -90,7 +81,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -AzureBlo
 
 #### <a name="rest-call-using-powershell"></a>REST-Aufruf mithilfe von Powershell
 
-Richten Sie mit der [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition)-API die Auslösung für die bedarfsgesteuerte Sicherung für Partitions-ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` ein. Beziehen Sie die folgenden Azure Storage-Informationen ein:
+Richten Sie mit der [BackupPartition](/rest/api/servicefabric/sfclient-api-backuppartition)-API die Auslösung für die bedarfsgesteuerte Sicherung für Partitions-ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` ein. Beziehen Sie die folgenden Azure Storage-Informationen ein:
 
 ```powershell
 $StorageInfo = @{
@@ -109,7 +100,18 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-Sie können mit der [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress)-API die Nachverfolgung des [Fortschritts der bedarfsgesteuerten Sicherung](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress) einrichten.
+Sie können mit der [GetBackupProgress](/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress)-API die Nachverfolgung des [Fortschritts der bedarfsgesteuerten Sicherung](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress) einrichten.
+
+### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+Stellen Sie sicher, dass der erweiterte Modus in den Service Fabric Explorer-Einstellungen aktiviert wurde.
+1. Wählen Sie die gewünschten Partitionen aus, und klicken Sie auf „Aktionen“. 
+2. Wählen Sie die Option zum Auslösen der Sicherung von Partitionen aus, und füllen Sie die Informationen für Azure aus:
+
+    ![Partitionssicherung auslösen][0]
+
+    oder FileShare:
+
+    ![Partitionssicherung auslösen FileShare][1]
 
 ## <a name="tracking-on-demand-backup-progress"></a>Nachverfolgung des Prozesses der bedarfsgesteuerten Sicherung
 
@@ -168,7 +170,7 @@ Anforderungen der bedarfsgesteuerten Sicherung können die folgenden Zustände a
     LsnOfLastBackupRecord   : 0
     FailureError            : @{Code=FABRIC_E_BACKUPCOPIER_UNEXPECTED_ERROR; Message=An error occurred during this operation.  Please check the trace logs for more details.}
     ```
-  - **Timeout**: Ein Sicherungsstatus _Timeout_ gibt an, dass die Partitionsstatussicherung nicht in einem bestimmten Zeitraum erstellt werden konnte. Der Standardtimeoutwert beträgt zehn Minuten. Initiieren Sie in diesem Szenario eine neue Anforderung einer bedarfsgesteuerten Sicherung mit längerem [BackupTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout).
+  - **Timeout**: Ein Sicherungsstatus _Timeout_ gibt an, dass die Partitionsstatussicherung nicht in einem bestimmten Zeitraum erstellt werden konnte. Der Standardtimeoutwert beträgt zehn Minuten. Initiieren Sie in diesem Szenario eine neue Anforderung einer bedarfsgesteuerten Sicherung mit längerem [BackupTimeout](/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout).
     ```
     BackupState             : Timeout
     TimeStampUtc            : 0001-01-01T00:00:00Z
@@ -182,4 +184,7 @@ Anforderungen der bedarfsgesteuerten Sicherung können die folgenden Zustände a
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Grundlegendes zur Konfiguration der regelmäßigen Sicherung](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [BackupRestore-REST-API-Referenz](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [BackupRestore-REST-API-Referenz](/rest/api/servicefabric/sfclient-index-backuprestore)
+
+[0]: ./media/service-fabric-backuprestoreservice/trigger-partition-backup.png
+[1]: ./media/service-fabric-backuprestoreservice/trigger-backup-fileshare.png

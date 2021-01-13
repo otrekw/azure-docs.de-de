@@ -1,9 +1,9 @@
-- name: VMware-Lösung von CloudSimple
-  href: /azure/vmware-cloudsimple
+- name: VMware Solution by CloudSimple
+  href: ./index.md
   items:
     - name: Übersicht
       items:
-        - name: Was ist die VMware-Lösung von CloudSimple?
+        - name: Was ist VMware Solution by CloudSimple?
           href: cloudsimple-vmware-solutions-overview.md
         - name: Schlüsselkonzepte für die Verwaltung
           href: key-concepts.md
@@ -40,7 +40,7 @@
           href: cloudsimple-public-ip-address.md
         - name: Azure-Netzwerkverbindung
           href: cloudsimple-azure-network-connection.md
-        - name: Kontenverwaltung
+        - name: Kontoverwaltung
           href: cloudsimple-account.md
         - name: Aktivitätenverwaltung
           href: cloudsimple-activity.md
@@ -52,9 +52,11 @@
           href: node-quota.md
         - name: Wartung und Updates
           href: cloudsimple-maintenance-updates.md
-        - name: Häufig gestellte Fragen
+        - name: Unzulässige Aktionen
+          href: forbidden-actions.md
+        - name: FAQ
           href: cloudsimple-faq.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Erstellen des CloudSimple-Diensts
           href: create-cloudsimple-service.md
@@ -134,6 +136,10 @@
               href: azure-expressroute-connection.md
             - name: Konfigurieren der DNS-Namensauflösung
               href: on-premises-dns-setup.md
+            - name: Konfigurieren von hochverfügbaren Site-to-Site-VPN-Verbindungen
+              href: high-availability-vpn-connection.md
+            - name: DNS-Konfiguration für Private Cloud für lokale Umgebung
+              href: private-cloud-dns-forwarding.md
         - name: VMware-Plattform
           items:
             - name: Kennenlernen des Berechtigungsmodells für private Clouds
@@ -174,3 +180,7 @@
               href: on-premises-connection.md
             - name: Azure Virtual Network-Verbindung mit ExpressRoute
               href: azure-expressroute-connection.md
+    - name: Anmerkungen zu diesem Release
+      items:
+        - name: CloudSimple-Update vom September 2020
+          href: update-plan-sept-2020.md

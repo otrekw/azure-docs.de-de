@@ -1,18 +1,19 @@
 ---
-title: 'Tutorial: Erstellen eines Azure DNS-Alias-Ressourceneintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager'
+title: 'Tutorial: Erstellen eines Aliaseintrags zur Unterstützung von Apex-Domänennamen: Traffic Manager'
+titleSuffix: Azure DNS
 description: In diesem Tutorial erfahren Sie, wie Sie einen Azure DNS-Alias-Ressourceneintrag für die Verwendung des Apex-Domänennamens mit Traffic Manager konfigurieren.
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: victorh
-ms.openlocfilehash: 6bb3506e60894db525efaf2985dd92f9eaaf9e0a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: rohink
+ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530959"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "77149948"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Tutorial: Konfigurieren eines Alias-Ressourceneintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager 
 
@@ -39,7 +40,7 @@ Die für dieses Tutorial verwendete Beispieldomäne lautet „contoso.com“. Ve
 
 ## <a name="create-the-network-infrastructure"></a>Erstellen der Netzwerkinfrastruktur
 Erstellen Sie zuerst ein virtuelles Netzwerk und ein Subnetz, um die Webserver darin zu platzieren.
-1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Klicken Sie links oben im Portal auf **Ressource erstellen**. Geben Sie *Ressourcengruppe* in das Suchfeld ein, und erstellen Sie eine Ressourcengruppe namens **RG-DNS-Alias-TM**.
 3. Wählen Sie **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
 4. Erstellen Sie ein virtuelles Netzwerk namens **VNet-Servers**. Platzieren Sie es in der Ressourcengruppe **RG-DNS-Alias-TM**, und nennen Sie das Subnetz **SN-Web**.
@@ -99,7 +100,7 @@ Wiederholen Sie dieses Verfahren, um den Endpunkt **Web-02** unter Verwendung de
 Erstellen Sie einen Alias-Ressourceneintrag, der auf das Traffic Manager-Profil verweist.
 
 1. Wählen Sie Ihre Azure DNS-Zone aus, um sie zu öffnen.
-2. Wählen Sie **Datensatzgruppe** aus.
+2. Wählen Sie **Ressourceneintragssatz**.
 3. Lassen Sie das Textfeld **Name** leer, um den Domänennamen-Apex darzustellen. Ein Beispiel wäre etwa „contoso.com“.
 4. Übernehmen Sie für **Typ** die Option **A-Eintrag**.
 5. Aktivieren Sie das Kontrollkästchen **Alias Record Set** (Aliaseintragssatz).

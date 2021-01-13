@@ -1,25 +1,24 @@
 ---
-title: 'Ändern einer ExpressRoute-Verbindung: PowerShell: klassisches Azure-Modell | Microsoft-Dokumentation'
+title: 'Azure ExpressRoute: Ändern einer Verbindung: PowerShell: klassisch'
 description: In diesem Artikel werden die Schritte beschrieben, die zum Überprüfen des Status, Aktualisieren oder Löschen und erneuten Bereitstellen Ihrer ExpressRoute-Verbindung mit klassischem Bereitstellungsmodell ausgeführt werden müssen.
 services: expressroute
-author: ganesr
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: ganesr
-ms.reviewer: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 7468338e7bc39128564e71831abe61bb1714ff72
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.topic: how-to
+ms.date: 11/05/2019
+ms.author: duau
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: be45d49d3f445810c7ac6a38e3e12abe178a4bed
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849241"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018157"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Ändern einer ExpressRoute-Verbindung mit PowerShell (klassisch)
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure-Befehlszeilenschnittstelle](howto-circuit-cli.md)
 > * [Azure Resource Manager-Vorlage](expressroute-howto-circuit-resource-manager-template.md)
@@ -35,43 +34,9 @@ In diesem Artikel werden die Schritte beschrieben, die zum Überprüfen des Stat
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Installieren Sie die aktuellen Versionen der PowerShell-Module für die Azure-Dienstverwaltung und das ExpressRoute-Modul.  Beachten Sie bei Verwendung des folgenden Beispiels, dass sich die Versionsnummer (hier: 5.1.1) ändert, wenn neuere Versionen der Cmdlets veröffentlicht werden.
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-Weitere Informationen zu PowerShell und eine ausführliche Anleitung zum Konfigurieren des Computers für die Verwendung der Azure PowerShell-Module finden Sie unter [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/azure/overview).
-
-Verwenden Sie das folgende Beispiel, um sich bei Ihrem Azure-Konto anzumelden:
-
-1. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. Überprüfen Sie die Abonnements für das Konto.
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. Verwenden Sie als nächstes das folgende Cmdlet, um PowerShell Ihr Azure-Abonnement für das klassische Bereitstellungsmodell hinzuzufügen.
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="get-the-status-of-a-circuit"></a>Abrufen des Status einer Verbindung
 
@@ -129,7 +94,7 @@ Sie können folgende Aufgaben ausführen, ohne Ausfallzeiten zu verursachen:
 * Aktivieren oder deaktivieren Sie ein ExpressRoute Premium-Add-On für Ihre ExpressRoute-Verbindung.
 * Erhöhen Sie die Bandbreite der ExpressRoute-Verbindung, sofern Kapazität am Port vorhanden ist. Ein Downgrade der Bandbreite einer Verbindung wird nicht unterstützt.
 * Sie können den Abrechnungsplan von „Volumentarif“ zu „Datenflatrate“ ändern. Ein Ändern des Abrechnungsplans von „Datenflatrate“ in „Datentaktung“ (Volumentarif) wird nicht unterstützt.
-* Sie können die Option *Klassische Vorgänge zulassen*aktivieren und deaktivieren.
+* Sie können die Option *Klassische Vorgänge zulassen* aktivieren und deaktivieren.
 
 Weitere Informationen zu Beschränkungen und Grenzwerten finden Sie unter [ExpressRoute – Häufig gestellte Fragen](expressroute-faqs.md) .
 

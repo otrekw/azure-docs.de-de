@@ -1,19 +1,19 @@
 ---
-title: Architektur der Azure-zu-Azure-Replikation in Azure Site Recovery | Microsoft-Dokumentation
-description: Dieser Artikel bietet einen Überblick über die Komponenten und die Architektur, die beim Einrichten der Notfallwiederherstellung zwischen Azure-Regionen für virtuelle Azure-Computer mit dem Azure Site Recovery-Dienst verwendet werden.
+title: Architektur der Notfallwiederherstellung von Azure zu Azure in Azure Site Recovery
+description: Überblick über die Architektur, die beim Einrichten der Notfallwiederherstellung zwischen Azure-Regionen für virtuelle Azure-Computer mit dem Azure Site Recovery-Dienst verwendet wird.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: d415f303976ae454cb99f07e8d6e15e338e24d7d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 64d1084fd7025c74676977f065062e5e94dabf1d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231456"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652244"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von Azure zu Azure
 
@@ -34,7 +34,7 @@ Die an der Notfallwiederherstellung beteiligten Komponenten für Azure-VMs werde
 **Cachespeicherkonto** | Sie benötigen ein Cachespeicherkonto im Quellnetzwerk. Während der Replikation werden VM-Änderungen im Cache gespeichert, bevor sie an den Zielspeicher gesendet werden.  Cachespeicherkonten müssen Standardkonten sein.<br/><br/> Ein Cache stellt sicher, dass die Auswirkungen auf die auf dem virtuellen Computer ausgeführten Produktionsanwendungen möglichst gering sind.<br/><br/> [Erfahren Sie mehr](azure-to-azure-support-matrix.md#cache-storage) über die Anforderungen an den Cachespeicher. 
 **Zielressourcen** | Zielressourcen werden während der Replikation und bei einem Failover verwendet. Site Recovery kann standardmäßig Zielressourcen einrichten, Sie können diese aber auch selbst erstellen oder bearbeiten.<br/><br/> Überprüfen Sie in der Zielregion, ob Sie virtuelle Computer erstellen können und ob Ihr Abonnement über ausreichend Ressourcen zur Unterstützung der VM-Größen verfügt, die in der Zielregion benötigt werden. 
 
-![Replikationsquelle und -ziel](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
+![Diagramm von Replikationsquelle und -ziel](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>Zielressourcen
 
@@ -55,8 +55,7 @@ Wenn Sie die Replikation für einen virtuellen Computer aktivieren, bietet Site 
 Sie können die Zielressourcen wie folgt verwalten:
 
 - Sie können Einstellungen für das Ziel ändern, während Sie die Replikation aktivieren.
-- Sie können Einstellungen für das Ziel ändern, nachdem die Replikation bereits ausgeführt wird. Die einzige Ausnahme bildet der Verfügbarkeitstyp (Einzelinstanz, Satz oder Zone). Zum Ändern dieser Einstellung müssen Sie die Replikation deaktivieren, anschließend die Einstellung ändern und die Replikation dann wieder aktivieren.
-
+- Sie können Einstellungen für das Ziel ändern, nachdem die Replikation bereits ausgeführt wird. Beachten Sie, dass die Standard-SKU für die Zielregion-VM die gleiche ist wie die SKU der Quell-VM (oder die nächstbeste verfügbare SKU im Vergleich zur SKU der Quell-VM). Ähnlich wie andere Ressourcen, z. B. die Zielressourcengruppe, der Zielname und andere, kann auch die VM SKU der Zielregion nach der Beginn der Replikation aktualisiert werden. Eine Ressource, die nicht aktualisiert werden kann, ist der Verfügbarkeitstyp (Einzelinstanz, Satz oder Zone). Zum Ändern dieser Einstellung müssen Sie die Replikation deaktivieren, anschließend die Einstellung ändern und die Replikation dann wieder aktivieren. 
 
 
 ## <a name="replication-policy"></a>Replikationsrichtlinie 
@@ -105,7 +104,7 @@ Eine absturzkonsistente Momentaufnahme erfasst Daten, die sich zum Zeitpunkt der
 
 **Beschreibung** | **Details** | **Empfehlung**
 --- | --- | ---
-App-konsistente Wiederherstellungspunkte werden aus App-konsistenten Momentaufnahmen erstellt.<br/><br/> Eine App-konsistente Momentaufnahme enthält alle Informationen in einer absturzkonsistenten Momentaufnahme sowie darüber hinaus alle Daten im Arbeitsspeicher und alle gerade bearbeiteten Transaktionen. | App-konsistente Momentaufnahmen verwenden den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS):<br/><br/>   1) Wenn eine Momentaufnahme initiiert wird, führt VSS einen COW-Vorgang (Copy-On-Write) auf dem Volume aus.<br/><br/>   2) Vor der Ausführung des COW-Vorgangs informiert VSS jede App auf dem Computer darüber, dass die im Arbeitsspeicher befindlichen Daten auf den Datenträger übertragen werden müssen.<br/><br/>   3) VSS erlaubt dann der Sicherungs-/Notfallwiederherstellungs-App (in diesem Fall Site Recovery) das Lesen der Momentaufnahmedaten und das Fortsetzen des Vorgangs. | App-konsistente Momentaufnahmen werden mit der von Ihnen angegebenen Häufigkeit erstellt. Diese Häufigkeit sollte immer kleiner sein als der Wert für die Beibehaltung von Wiederherstellungspunkten. Wenn Sie beispielsweise Wiederherstellungspunkte gemäß der Standardeinstellung von 24 Stunden beibehalten, sollten Sie die Häufigkeit auf weniger als 24 Stunden festlegen.<br/><br/>Sie sind komplexer und dauern daher länger als absturzkonsistente Momentaufnahmen.<br/><br/> Sie haben auch Auswirkungen auf die Leistung von Apps, die auf einem virtuellen Computer, für den die Replikation aktiviert wurde, ausgeführt werden. 
+App-konsistente Wiederherstellungspunkte werden aus App-konsistenten Momentaufnahmen erstellt.<br/><br/> Eine App-konsistente Momentaufnahme enthält alle Informationen in einer absturzkonsistenten Momentaufnahme sowie darüber hinaus alle Daten im Arbeitsspeicher und alle gerade bearbeiteten Transaktionen. | App-konsistente Momentaufnahmen verwenden den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS):<br/><br/>   1) Azure Site Recovery nutzt die Methode „Kopiesicherung“ (VSS_BT_COPY), bei der Uhrzeit und Sequenznummer der Microsoft SQL-Transaktionsprotokollsicherung nicht geändert werden. </br></br> 2) Wenn eine Momentaufnahme initiiert wird, führt VSS einen COW-Vorgang (Copy-On-Write) auf dem Volume aus.<br/><br/>   3) Vor der Ausführung des COW-Vorgangs informiert VSS jede App auf dem Computer darüber, dass die speicherresidenten Daten auf den Datenträger übertragen werden müssen.<br/><br/>   4) VSS erlaubt dann der Sicherungs-/Notfallwiederherstellungs-App (in diesem Fall Site Recovery) das Lesen der Momentaufnahmedaten und das Fortsetzen des Vorgangs. | App-konsistente Momentaufnahmen werden mit der von Ihnen angegebenen Häufigkeit erstellt. Diese Häufigkeit sollte immer kleiner sein als der Wert für die Beibehaltung von Wiederherstellungspunkten. Wenn Sie beispielsweise Wiederherstellungspunkte gemäß der Standardeinstellung von 24 Stunden beibehalten, sollten Sie die Häufigkeit auf weniger als 24 Stunden festlegen.<br/><br/>Sie sind komplexer und dauern daher länger als absturzkonsistente Momentaufnahmen.<br/><br/> Sie haben auch Auswirkungen auf die Leistung von Apps, die auf einem virtuellen Computer, für den die Replikation aktiviert wurde, ausgeführt werden. 
 
 ## <a name="replication-process"></a>Replikationsprozess
 
@@ -117,7 +116,7 @@ Wenn Sie die Replikation für eine Azure-VM aktivieren, geschieht Folgendes:
 4. Site Recovery verarbeitet die Daten im Cache und sendet sie an das Zielspeicherkonto oder an verwaltete Replikatdatenträger weiter.
 5. Nach der Verarbeitung der Daten werden alle fünf Minuten absturzkonsistente Wiederherstellungspunkte generiert. App-konsistente Wiederherstellungspunkte werden gemäß der Einstellung in der Replikationsrichtlinie generiert.
 
-![Schritt 2: Aktivieren des Replikationsprozesses](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![Diagramm des Replikationsvorgangs, Schritt 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **Replikationsprozess**
 
@@ -129,46 +128,54 @@ Wenn Sie die Replikation für eine Azure-VM aktivieren, geschieht Folgendes:
 
 Wenn der ausgehende Zugriff für virtuelle Computer über URLs gesteuert wird, erlauben Sie diese URLs.
 
-| **URL** | **Details** |
-| ------- | ----------- |
-| *.blob.core.windows.net | Ermöglicht das Schreiben von Daten aus der VM in das Cachespeicherkonto in der Quellregion |
-| login.microsoftonline.com | Stellt die Autorisierung und Authentifizierung für Site Recovery-Dienst-URLs bereit. |
-| *.hypervrecoverymanager.windowsazure.com | Ermöglicht die Kommunikation der VM mit Site Recovery |
-| *.servicebus.windows.net | Ermöglicht es der VM, die Site Recovery-Überwachung und -Diagnosedaten zu schreiben |
+| **Name**                  | **Kommerziell**                               | **Behörden**                                 | **Beschreibung** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Ermöglicht das Schreiben von Daten aus der VM in das Cachespeicherkonto in der Quellregion |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Stellt die Autorisierung und Authentifizierung für Site Recovery-Dienst-URLs bereit. |
+| Replikation               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | Ermöglicht die Kommunikation der VM mit Site Recovery |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Ermöglicht es der VM, die Site Recovery-Überwachung und -Diagnosedaten zu schreiben |
+| Key Vault                 | `*.vault.azure.net`                        | `*.vault.usgovcloudapi.net`                  | Ermöglicht über das Portal Zugriff zum Aktivieren der Replikation für VMs, für die ADE aktiviert ist |
+| Azure Automation          | `*.automation.ext.azure.com`               | `*.azure-automation.us`                      | Ermöglicht das Aktivieren automatischer Upgrades für den Mobilitäts-Agent für ein repliziertes Element über das Portal |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Ausgehende Konnektivität für IP-Adressbereiche
 
 Zum Steuern der ausgehenden Konnektivität für virtuelle Computer über IP-Adressen erlauben Sie diese Adressen.
-Einzelheiten zu den Netzwerkverbindungsanforderungen finden Sie unter [Netzwerkkonzepte für die Replikation zwischen Azure-Standorten](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges). 
+Beachten Sie, dass Sie im [Whitepaper zu Netzwerken](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) Einzelheiten zu den Netzwerkverbindungsanforderungen finden. 
 
 #### <a name="source-region-rules"></a>Regeln für die Quellregion
 
 **Regel** |  **Details** | **Diensttag**
 --- | --- | --- 
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Quellregion. | Speicher.\<Name-der-Region>.
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Active Directory (Azure AD).<br/><br/> Wenn zukünftig Azure AD-Adressen hinzugefügt werden, müssen Sie neue Regeln für Netzwerksicherheitsgruppen (NSG) erstellen.  | AzureActiveDirectory
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie den Zugriff auf [Site Recovery-Endpunkte](https://aka.ms/site-recovery-public-ips), die denen am Zielstandort entsprechen. 
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Quellregion. | Storage.\<region-name>
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Active Directory (Azure AD).  | AzureActiveDirectory
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Event Hub-Instanzen in der Zielregion. | EventsHub.\<region-name>
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Site Recovery.  | AzureSiteRecovery
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Key Vault (dies ist nur erforderlich, um die Replikation von VMs, für die ADE aktiviert ist, über das Portal zu aktivieren) | AzureKeyVault
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für den Azure Automation-Controller (dies ist nur erforderlich, um automatische Upgrades für den Mobilitäts-Agent für ein repliziertes Element über das Portal zu aktivieren) | GuestAndHybridManagement
 
 #### <a name="target-region-rules"></a>Regeln für die Zielregion
 
 **Regel** |  **Details** | **Diensttag**
 --- | --- | --- 
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Zielregion. | Speicher.\<Name-der-Region>.
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure AD.<br/><br/> Wenn zukünftig Azure AD-Adressen hinzugefügt werden, müssen Sie neue NSG-Regeln erstellen.  | AzureActiveDirectory
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie den Zugriff auf [Site Recovery-Endpunkte](https://aka.ms/site-recovery-public-ips), die denen am Quellstandort entsprechen. 
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Zielregion. | Storage.\<region-name>
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure AD.  | AzureActiveDirectory
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Event Hub-Instanzen in der Quellregion. | EventsHub.\<region-name>
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Site Recovery.  | AzureSiteRecovery
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Key Vault (dies ist nur erforderlich, um die Replikation von VMs, für die ADE aktiviert ist, über das Portal zu aktivieren) | AzureKeyVault
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für den Azure Automation-Controller (dies ist nur erforderlich, um automatische Upgrades für den Mobilitäts-Agent für ein repliziertes Element über das Portal zu aktivieren) | GuestAndHybridManagement
 
 
 #### <a name="control-access-with-nsg-rules"></a>Steuern des Zugriffs mit NSG-Regeln
 
-Wenn Sie die VM-Konnektivität durch Filtern des Netzwerkdatenverkehrs zu und aus Azure-Netzwerken/-Subnetzen mithilfe von [NSG-Regeln](https://docs.microsoft.com/azure/virtual-network/security-overview) steuern, beachten Sie die folgenden Voraussetzungen:
+Wenn Sie die VM-Konnektivität durch Filtern des Netzwerkdatenverkehrs zu und aus Azure-Netzwerken/-Subnetzen mithilfe von [NSG-Regeln](../virtual-network/network-security-groups-overview.md) steuern, beachten Sie die folgenden Voraussetzungen:
 
 - NSG-Regeln für die Azure-Quellregion sollten ausgehenden Zugriff für den Replikationsdatenverkehr zulassen.
 - Es wird empfohlen, die Regeln zunächst in einer Testumgebung zu erstellen, bevor sie in die Produktion übernommen werden.
-- Verwenden Sie [Diensttags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags), anstatt einzelne IP-Adressen zuzulassen.
+- Verwenden Sie [Diensttags](../virtual-network/network-security-groups-overview.md#service-tags), anstatt einzelne IP-Adressen zuzulassen.
     - Diensttags stellen eine Gruppe von IP-Adresspräfixen dar und vereinfachen die Erstellung von Sicherheitsregeln.
     - Microsoft aktualisiert die Diensttags im Lauf der Zeit automatisch. 
  
-Erfahren Sie mehr über [ausgehende Konnektivität](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) für Site Recovery und das [Steuern der Konnektivität mit Netzwerksicherheitsgruppen](concepts-network-security-group-with-site-recovery.md).
+Erfahren Sie mehr über [ausgehende Konnektivität](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) für Site Recovery und das [Steuern der Konnektivität mit Netzwerksicherheitsgruppen](concepts-network-security-group-with-site-recovery.md).
 
 
 ### <a name="connectivity-for-multi-vm-consistency"></a>Konnektivität für Multi-VM-Konsistenz
@@ -184,7 +191,7 @@ Wenn Sie die Multi-VM-Konsistenz aktivieren, kommunizieren Computer in der Repli
 
 Bei der Initiierung eines Failovers werden die VMs in der Zielressourcengruppe, im virtuellen Zielnetzwerk, im Zielsubnetz und in der Zielverfügbarkeitsgruppe erstellt. Bei einem Failover können Sie einen beliebigen Wiederherstellungspunkt verwenden.
 
-![Failoverprozess](./media/concepts-azure-to-azure-architecture/failover.png)
+![Diagramm des Failovervorgangs mit Quell- und Zielumgebung](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

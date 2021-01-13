@@ -3,19 +3,19 @@ title: Best Practices bei der Verwendung der Anomalieerkennungs-API
 titleSuffix: Azure Cognitive Services
 description: Informationen zu Best Practices bei der Anomalieerkennung mit der Anomalieerkennungs-API.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 03/26/2019
-ms.author: aahi
-ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: mbullwin
+ms.openlocfilehash: 9457c610b256dd4602ef0dc51a47eeffb3c63b49
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721627"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705148"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Best Practices bei der Verwendung der Anomalieerkennungs-API
 
@@ -50,9 +50,9 @@ Nachfolgend ist dasselbe Dataset unter Verwendung der Batchanomalieerkennung auf
 
 ![Ein Bild, das die Erkennung von Anomalien unter Verwendung der Batchmethode veranschaulicht](../media/entire.png)
 
-## <a name="data-preparation"></a>Vorbereitung der Daten
+## <a name="data-preparation"></a>Datenaufbereitung
 
-Die Anomalieerkennungs-API akzeptiert als JSON-Anforderungsobjekt formatierte Zeitreihendaten. Eine Zeitreihe kann aus beliebigen numerischen Daten bestehen, die über die Zeit sequenziell erfasst werden. Sie können Fenster Ihrer Zeitreihendaten an den Anomalieerkennungs-API-Endpunkt senden, um die Leistung der API zu verbessern. Dabei können zwischen 12 (Minimum) und 8640 (Maximum) Datenpunkten gesendet werden. [Granularität](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) wird als die Rate definiert, mit der Ihre Daten erfasst werden. 
+Die Anomalieerkennungs-API akzeptiert als JSON-Anforderungsobjekt formatierte Zeitreihendaten. Eine Zeitreihe kann aus beliebigen numerischen Daten bestehen, die über die Zeit sequenziell erfasst werden. Sie können Fenster Ihrer Zeitreihendaten an den Anomalieerkennungs-API-Endpunkt senden, um die Leistung der API zu verbessern. Dabei können zwischen 12 (Minimum) und 8640 (Maximum) Datenpunkten gesendet werden. Die [Granularität](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) wird als die Rate definiert, mit der Stichproben für die Daten erstellt werden. 
 
 Datenpunkte, die an die Anomalieerkennungs-API gesendet werden, müssen einen gültigen Zeitstempel der koordinierten Weltzeit (UTC) und einen numerischen Wert aufweisen. 
 
@@ -72,7 +72,7 @@ Datenpunkte, die an die Anomalieerkennungs-API gesendet werden, müssen einen g�
 }
 ```
 
-Wenn Ihre Daten mit einem nicht standardmäßigen Intervall erfasst werden, können Sie dies über das Hinzufügen des `customInterval`-Attributs in Ihrer Anforderung spezifizieren. Wenn Ihre Reihe zum Beispiel alle 5 Minuten erfasst wird, dann können Sie die folgende JSON-Anforderung hinzufügen:
+Werden Ihre Daten in einem nicht standardmäßigen Zeitintervall erfasst, können Sie es durch Hinzufügen des Attributs `customInterval` in Ihrer Anforderung angeben. Wenn Ihre Reihe beispielsweise alle fünf Minuten erfasst wird, können Sie Ihrer JSON-Anforderung Folgendes hinzufügen:
 
 ```json
 {
@@ -93,7 +93,7 @@ Die Anomalieerkennungs-API funktioniert am besten mit einer gleichmäßig vertei
 
 Wenn Sie wissen, dass Ihre Zeitreihendaten ein saisonales Muster haben (eines, das in regelmäßigen Abständen auftritt), können Sie die Genauigkeit und die Antwortzeit der API verbessern. 
 
-Das Angeben einer `period` beim Erstellen Ihrer JSON-Anforderung kann die Wartezeit bei der Anomalieerkennung um bis zu 50 % verkürzen. `period` ist eine ganze Zahl, die ungefähr angibt, nach wie vielen Datenpunkten der Zeitreihe sich ein Muster wiederholt. Beispielsweise hätte eine Zeitreihe mit einem Datenpunkt pro Tag die `period` `7`, und eine Zeitreihe mit einem Datenpunkt pro Stunde (mit demselben wöchentlichen Muster) eine `period` von `7*24`. Wenn Sie das Muster Ihrer Daten nicht kennen, müssen Sie diesen Parameter nicht angeben.
+Das Angeben einer `period` beim Erstellen Ihrer JSON-Anforderung kann die Wartezeit bei der Anomalieerkennung um bis zu 50 % verkürzen. `period` ist eine ganze Zahl, die ungefähr angibt, nach wie vielen Datenpunkten der Zeitreihe sich ein Muster wiederholt. Beispielsweise hätte eine Zeitreihe mit einem Datenpunkt pro Tag die `period``7`, und eine Zeitreihe mit einem Datenpunkt pro Stunde (mit demselben wöchentlichen Muster) eine `period` von `7*24`. Wenn Sie das Muster Ihrer Daten nicht kennen, müssen Sie diesen Parameter nicht angeben.
 
 Verwenden Sie für optimale Ergebnisse Datenpunkte für das Vierfache der `period` plus einen zusätzlichen Datenpunkt. Stündliche Daten mit einem wöchentlichen Muster wie oben beschrieben sollten im Anforderungstext beispielsweise 673 Datenpunkte bereitstellen (`7 * 24 * 4 + 1`).
 
@@ -104,4 +104,4 @@ Wenn Ihre Streamingdaten in einem kurzen Intervall (wie Sekunden oder Minuten) e
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Was ist die Anomalieerkennungs-API?](../overview.md)
-* [Schnellstart: Erkennen von Anomalien in Ihren Zeitreihendaten mit der Anomalieerkennungs-REST-API](../quickstarts/detect-data-anomalies-csharp.md)
+* [Schnellstart: Verwenden der Anomalieerkennungs-Clientbibliothek](../quickstarts/client-libraries.md)

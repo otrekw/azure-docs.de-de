@@ -3,21 +3,20 @@ title: Verlängern des Azure Application Gateway-Zertifikats
 description: Es wird beschrieben, wie Sie ein Zertifikat verlängern, das einem Anwendungsgateway-Listener zugeordnet ist.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: 90200f7be6c71346441922365fc4439111dd8701
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 413ae2ee19f0b8e427de9167b52971e413cdf573
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133691"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397211"
 ---
 # <a name="renew-application-gateway-certificates"></a>Verlängern von Application Gateway-Zertifikaten
 
-Sie müssen Ihre Zertifikate nach einiger Zeit verlängern, falls sie für Ihr Anwendungsgateway die SSL-Verschlüsselung konfiguriert haben.
+Sie müssen Zertifikate nach einiger Zeit verlängern, falls Sie für Ihr Anwendungsgateway die TLS/SSL-Verschlüsselung konfiguriert haben.
 
 Sie können ein Zertifikat, das einem Listener zugeordnet ist, verlängern, indem Sie entweder das Azure-Portal, Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden:
 
@@ -63,4 +62,4 @@ az network application-gateway ssl-cert update \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Konfigurieren der SSL-Auslagerung mit Azure Application Gateway finden Sie unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-portal.md).
+Informationen zum Konfigurieren der TLS-Abladung mit Azure Application Gateway finden Sie unter [Konfigurieren der TLS-Abladung](./create-ssl-portal.md).

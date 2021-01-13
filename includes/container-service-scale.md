@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66814882"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
@@ -41,7 +41,7 @@ az acs show -g myResourceGroup -n containerservice-myACSName
 Der Befehl gibt die Anzahl von Agents im `Count`-Wert unter `AgentPoolProfiles` zurück.
 
 ### <a name="use-the-az-acs-scale-command"></a>Verwenden des Befehls „az acs scale“
-Um die Anzahl von Agent-Knoten zu ändern, führen Sie den `az acs scale`-Befehl aus, und geben Sie die **Ressourcengruppe**, den **Namen des Containerdiensts** und die gewünschte **neue Agent-Anzahl** an. Durch Verwendung einer kleineren oder größeren Zahl können Sie jeweils zentral herunter- bzw. hochskalieren.
+Um die Anzahl von Agent-Knoten zu ändern, führen Sie den `az acs scale`-Befehl aus, und geben Sie die **Ressourcengruppe**, den **Namen des Containerdiensts** und die gewünschte **neue Agent-Anzahl** an. Durch Verwendung einer kleineren oder größeren Zahl können Sie jeweils herunter- bzw. hochskalieren.
 
 Um z.B. die Anzahl von Agents im vorherigen Cluster auf 10 zu ändern, geben Sie folgenden Befehl ein:
 

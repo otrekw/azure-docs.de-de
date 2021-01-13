@@ -1,5 +1,6 @@
 ---
-title: Eine benutzerdefinierte Domäne kann nicht mithilfe des Key Vault-Zertifikats in Azure API Management hinzugefügt werden | Microsoft-Dokumentation
+title: Fehler beim Hinzufügen einer benutzerdefinierten Domäne mit einem Key Vault-Zertifikat
+titleSuffix: Azure API Management
 description: Erfahren Sie, wie Sie das Problem beheben, dass Sie eine benutzerdefinierte Domäne in Azure API Management nicht mithilfe eines Key Vault-Zertifikats hinzufügen können.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
-ms.openlocfilehash: 5d31ec21e341c46c2f2d0ab49fdb2d4302c29dc6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121519"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75430579"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>Fehler beim Aktualisieren von Hostnamen des API Management-Diensts
 
@@ -46,7 +47,7 @@ Gehen Sie folgendermaßen vor, um das Problem zu beheben:
     - **Anhand einer Vorlage konfigurieren**: Keine
     - **Prinzipal auswählen**: Suchen Sie den Namen des API Management-Diensts, und wählen Sie ihn in der Liste aus.
     - **Schlüsselberechtigungen**: Keine
-    - **Berechtigungen für Geheimnis**: Get
+    - **Berechtigungen für Geheimnis**: Herunterladen
     - **Zertifikatberechtigungen**: Keine
 1. Wählen Sie **OK** aus, um die Zugriffsrichtlinie zu erstellen.
 1. Klicken Sie zum Speichern der Änderungen auf **Speichern**.

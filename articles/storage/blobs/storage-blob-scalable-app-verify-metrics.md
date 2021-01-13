@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: dc0f8171e18598e4f805a03a4bc6d17de220fbe1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 708a2369e5ba21f47f3d3fea509654b0385363f7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698987"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912313"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Überprüfen von Durchsatz- und Latenzmetriken für ein Speicherkonto
 
@@ -24,7 +24,7 @@ Im vierten Teil der Serie lernen Sie Folgendes:
 > * Konfigurieren von Diagrammen im Azure-Portal
 > * Überprüfen von Durchsatz- und Latenzmetriken
 
-[Azure-Speichermetrik](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) verwendet Azure Monitor, um einen einheitlichen Einblick in die Leistung und Verfügbarkeit Ihres Speicherkontos zu bieten.
+[Azure-Speichermetrik](./monitor-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) verwendet Azure Monitor, um einen einheitlichen Einblick in die Leistung und Verfügbarkeit Ihres Speicherkontos zu bieten.
 
 ## <a name="configure-metrics"></a>Konfigurieren von Metriken
 
@@ -34,7 +34,7 @@ Wählen Sie in der Dropdownliste **SUBDIENST** den Eintrag „Blob“ aus.
 
 Wählen Sie unter **METRIK** eine der in der folgenden Tabelle aufgeführten Metriken aus:
 
-Die folgenden Metriken vermitteln Ihnen einen Eindruck von der Latenz und dem Durchsatz der Anwendung. Die Metriken, die Sie im Portal konfigurieren, liegen bei 1 Minute im Durchschnitt. Wenn eine Transaktion in der Mitte einer Minute abgeschlossen ist, werden die Minutenwerte für den Durchschnitt halbiert. In der Anwendung wurden die Upload- und Downloadvorgänge zeitlich getaktet, und sie lieferten die Ausgabe der tatsächlichen Zeit, die für das Hoch- und Herunterladen der Dateien benötigt wurde. Diese Informationen können in Verbindung mit den Metriken im Portal verwendet werden, um den Durchsatz vollständig nachzuvollziehen.
+Die folgenden Metriken vermitteln Ihnen einen Eindruck von der Latenz und dem Durchsatz der Anwendung. Die Metriken, die Sie im Portal konfigurieren, liegen bei 1 Minute im Durchschnitt. Wenn eine Transaktion nach einer halben Minute abgeschlossen ist, wird dieser Minutenwert für den Durchschnitt halbiert. In der Anwendung wurden die Upload- und Downloadvorgänge zeitlich getaktet, und sie lieferten die Ausgabe der tatsächlichen Zeit, die für das Hoch- und Herunterladen der Dateien benötigt wurde. Diese Informationen können in Verbindung mit den Metriken im Portal verwendet werden, um den Durchsatz vollständig nachzuvollziehen.
 
 |Metrik|Definition|
 |---|---|
@@ -52,7 +52,7 @@ Diagrammen können mehrere Metriken zugewiesen sein, aber die Zuweisung von mehr
 
 ## <a name="dimensions"></a>Dimensionen
 
-[Dimensionen](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions) werden verwendet, um einen tieferen Einblick in die Diagramme und detailliertere Informationen zu erhalten. Unterschiedliche Metriken weisen unterschiedliche Dimensionen auf. Eine verfügbare Dimension ist die Dimension **API-Name**. Diese Dimension bricht das Diagramm in jeden einzelnen API-Aufruf auf. Die erste Abbildung unten enthält ein Beispieldiagramm der gesamten Transaktionen für ein Speicherkonto. In der zweiten Abbildung ist das gleiche Diagramm dargestellt. Hier ist jedoch die Dimension „API-Name“ ausgewählt. Wie Sie sehen können, ist jede Transaktion aufgeführt und gibt weitere Details darüber an, wie viele Aufrufe von „API-Name“ vorgenommen wurden.
+[Dimensionen](./monitor-blob-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions) werden verwendet, um einen tieferen Einblick in die Diagramme und detailliertere Informationen zu erhalten. Unterschiedliche Metriken weisen unterschiedliche Dimensionen auf. Eine verfügbare Dimension ist die Dimension **API-Name**. Diese Dimension bricht das Diagramm in jeden einzelnen API-Aufruf auf. Die erste Abbildung unten enthält ein Beispieldiagramm der gesamten Transaktionen für ein Speicherkonto. In der zweiten Abbildung ist das gleiche Diagramm dargestellt. Hier ist jedoch die Dimension „API-Name“ ausgewählt. Wie Sie sehen können, ist jede Transaktion aufgeführt und gibt weitere Details darüber an, wie viele Aufrufe von „API-Name“ vorgenommen wurden.
 
 ![Speicherkontometriken – Transaktionen ohne Dimension](./media/storage-blob-scalable-app-verify-metrics/transactionsnodimensions.png)
 

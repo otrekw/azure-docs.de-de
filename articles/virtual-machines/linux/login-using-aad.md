@@ -1,25 +1,18 @@
 ---
-title: Anmelden bei einem virtuellen Linux-Computer mit Azure Active Directory-Anmeldeinformationen | Microsoft-Dokumentation
+title: Anmelden bei einem virtuellen Linux-Computer mit Azure Active Directory-Anmeldeinformationen
 description: Es wird beschrieben, wie Sie eine Linux-VM erstellen und für die Anmeldung per Azure Active Directory-Authentifizierung konfigurieren.
-services: virtual-machines-linux
-documentationcenter: ''
-author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: ''
+author: SanDeo-MSFT
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
+ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 08/29/2019
-ms.author: cynthn
-ms.openlocfilehash: 946ccc61ead7f005667984a490761bc64560a69e
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 11/17/2020
+ms.author: sandeo
+ms.openlocfilehash: b4fc6b9facc79db109c5ce5be09576b16a2abdc7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300731"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510888"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung
 
@@ -42,7 +35,7 @@ Die Verwendung der Azure AD-Authentifizierung für die Anmeldung bei virtuellen 
   - Zum weiteren Schutz der Anmeldung bei virtuellen Azure-Computern können Sie die mehrstufige Authentifizierung konfigurieren.
   - Die Möglichkeit zur Anmeldung bei virtuellen Linux-Computern mit Azure Active Directory besteht auch für Kunden, die [Verbunddienste](../../active-directory/hybrid/how-to-connect-fed-whatis.md) verwenden.
 
-- **Nahtlose Zusammenarbeit:** Mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) können Sie angeben, wer sich bei einem bestimmten virtuellen Computer als normaler Benutzer oder als Benutzer mit Administratorrechten anmelden kann. Wenn Benutzer Ihrem Team beitreten oder es verlassen, können Sie die RBAC-Richtlinie für den virtuellen Computer aktualisieren, um den Zugriff entsprechend zuzuweisen. Diese Vorgehensweise ist wesentlich einfacher, als virtuelle Computer bereinigen zu müssen, um unnötige öffentliche SSH-Schlüssel zu entfernen. Wenn Mitarbeiter Ihre Organisation verlassen und ihre Benutzerkonten in Azure AD deaktiviert oder entfernt werden, haben sie keinen Zugriff mehr auf Ihre Ressourcen.
+- **Nahtlose Zusammenarbeit:** Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie angeben, wer sich bei einem bestimmten virtuellen Computer als normaler Benutzer oder als Benutzer mit Administratorrechten anmelden kann. Wenn Benutzer Ihrem Team beitreten oder es verlassen, können Sie die Azure RBAC-Richtlinie für den virtuellen Computer aktualisieren, um den Zugriff entsprechend zuzuweisen. Diese Vorgehensweise ist wesentlich einfacher, als virtuelle Computer bereinigen zu müssen, um unnötige öffentliche SSH-Schlüssel zu entfernen. Wenn Mitarbeiter Ihre Organisation verlassen und ihre Benutzerkonten in Azure AD deaktiviert oder entfernt werden, haben sie keinen Zugriff mehr auf Ihre Ressourcen.
 
 ## <a name="supported-azure-regions-and-linux-distributions"></a>Unterstützte Azure-Regionen und Linux-Distributionen
 
@@ -64,9 +57,25 @@ Während der Vorschauphase dieses Features werden derzeit die folgenden Azure-Re
 
 >[!IMPORTANT]
 > Zur Verwendung dieses Vorschaufeatures kann die Bereitstellung nur in einer unterstützten Linux-Distribution und in einer unterstützten Azure-Region durchgeführt werden. Das Feature wird in einer Azure Government Cloud oder Sovereign Cloud nicht unterstützt.
+>
+> Die Verwendung dieser Erweiterung für AKS-Cluster (Azure Kubernetes Service) wird nicht unterstützt. Weitere Informationen finden Sie unter [Unterstützungsrichtlinien für AKS](../../aks/support-policies.md).
 
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.31 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.31 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+
+## <a name="network-requirements"></a>Netzwerkanforderungen
+
+Zum Aktivieren der Azure AD-Authentifizierung für Ihre virtuellen Linux-Computer in Azure müssen Sie sicherstellen, dass die Netzwerkkonfiguration der virtuellen Computer den ausgehenden Zugriff auf die folgenden Endpunkte über TCP-Port 443 zulässt:
+
+* https:\//login.microsoftonline.com
+* https:\//login.windows.net
+* https:\//device.login.microsoftonline.com
+* https:\//pas.windows.net
+* https:\//management.azure.com
+* https:\//packages.microsoft.com
+
+> [!NOTE]
+> Derzeit können Azure-Netzwerksicherheitsgruppen nicht für VMs konfiguriert werden, die mit Azure AD-Authentifizierung aktiviert sind.
 
 ## <a name="create-a-linux-virtual-machine"></a>Erstellen einer virtuellen Linux-Maschine
 
@@ -88,7 +97,7 @@ Das Erstellen des virtuellen Computers und der unterstützenden Ressourcen dauer
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Installieren der VM-Erweiterung für die Azure AD-Anmeldung
 
 > [!NOTE]
-> Wenn Sie diese Erweiterung für eine zuvor erstellte VM bereitstellen, stellen Sie sicher, dass auf dem Computer mindestens 1 GB Speicher zugeordnet ist, da die Erweiterung andernfalls nicht installiert werden kann.
+> Wenn Sie diese Erweiterung für eine zuvor erstellte VM bereitstellen, stellen Sie sicher, dass auf dem Computer mindestens 1 GB Arbeitsspeicher zugeordnet ist, da die Erweiterung andernfalls nicht installiert werden kann.
 
 Für die Anmeldung bei einem virtuellen Linux-Computer mit Azure Active Directory-Anmeldeinformationen müssen Sie die VM-Erweiterung für die Azure Active Directory-Anmeldung installieren. VM-Erweiterungen sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Verwenden Sie [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set), um die Erweiterung *AADLoginForLinux* auf dem virtuellen Computer *myVM* in der Ressourcengruppe *myResourceGroup* zu installieren:
 
@@ -100,19 +109,19 @@ az vm extension set \
     --vm-name myVM
 ```
 
-Nachdem die Installation der Erweiterung auf dem virtuellen Computer erfolgreich abgeschlossen wurde, wird für *provisioningState* der Wert *Succeeded* angezeigt.
+Nachdem die Installation der Erweiterung auf dem virtuellen Computer erfolgreich abgeschlossen wurde, wird für *provisioningState* der Wert *Succeeded* angezeigt. Die VM benötigt einen aktuell ausgeführten VM-Agent, um die Erweiterung zu installieren. Weitere Informationen finden Sie unter [VM-Agent: Übersicht](../extensions/agent-windows.md).
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Konfigurieren der Rollenzuweisungen für den virtuellen Computer
 
-Mit der Azure RBAC-Richtlinie wird festgelegt, wer sich bei dem virtuellen Computer anmelden kann. Zur Autorisierung der Anmeldung bei virtuellen Computern werden zwei RBAC-Rollen verwendet:
+Mit der Richtlinie für die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) wird festgelegt, wer sich bei dem virtuellen Computer anmelden kann. Zur Autorisierung der VM-Anmeldung werden zwei Azure-Rollen verwendet:
 
 - **VM-Administratoranmeldung:** Benutzer, denen diese Rolle zugewiesen ist, können sich mit den Berechtigungen eines Windows-Administrators oder Linux-Root-Benutzers bei einem virtuellen Azure-Computer anmelden.
 - **VM-Benutzeranmeldung:** Benutzer, denen diese Rolle zugewiesen ist, können sich mit normalen Benutzerberechtigungen bei einem virtuellen Azure-Computer anmelden.
 
 > [!NOTE]
-> Damit sich ein Benutzer bei dem virtuellen Computer über SSH anmelden kann, müssen Sie ihm einer der Rollen *VM-Administratoranmeldung* oder *VM-Benutzeranmeldung* zuweisen. Ein Azure-Benutzer, dem eine der Rollen *Besitzer* oder *Mitwirkender* für einen virtuellen Computer zugewiesen ist, verfügt nicht automatisch über die Berechtigungen für die Anmeldung bei dem virtuellen Computer über SSH.
+> Damit sich ein Benutzer bei dem virtuellen Computer über SSH anmelden kann, müssen Sie ihm einer der Rollen *VM-Administratoranmeldung* oder *VM-Benutzeranmeldung* zuweisen. Die Rollen „Anmeldeinformationen des VM-Administrators“ und „Anmeldeinformationen für VM-Benutzer“ verwenden dataActions und können daher nicht im Bereich der Verwaltungsgruppe zugewiesen werden. Diese Rollen können derzeit nur im Abonnement-, Ressourcengruppen- oder Ressourcenbereich zugewiesen werden. Ein Azure-Benutzer, dem eine der Rollen *Besitzer* oder *Mitwirkender* für einen virtuellen Computer zugewiesen ist, verfügt nicht automatisch über die Berechtigungen für die Anmeldung bei dem virtuellen Computer über SSH. 
 
-Im folgenden Beispiel wird [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) verwendet, um dem aktuellen Azure-Benutzer die Rolle *VM-Administratoranmeldung* für den virtuellen Computer zuzuweisen. Der Benutzername des aktiven Azure-Kontos wird mit [az account show](/cli/azure/account#az-account-show) abgerufen, und der *Bereich* wird mit [az vm show](/cli/azure/vm#az-vm-show) auf den in einem vorherigen Schritt erstellten virtuellen Computer festgelegt. Der Bereich kann auch auf Ebene einer Ressourcengruppe oder eines Abonnements zugewiesen werden. Dann gelten normale RBAC-Vererbungsberechtigungen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung](../../role-based-access-control/overview.md).
+Im folgenden Beispiel wird [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) verwendet, um dem aktuellen Azure-Benutzer die Rolle *VM-Administratoranmeldung* für den virtuellen Computer zuzuweisen. Der Benutzername des aktiven Azure-Kontos wird mit [az account show](/cli/azure/account#az-account-show) abgerufen, und der *Bereich* wird mit [az vm show](/cli/azure/vm#az-vm-show) auf den in einem vorherigen Schritt erstellten virtuellen Computer festgelegt. Der Bereich kann auch auf Ebene einer Ressourcengruppe oder eines Abonnements zugewiesen werden. Dann gelten normale Azure RBAC-Vererbungsberechtigungen. Weitere Informationen finden Sie unter [Azure RBAC](../../role-based-access-control/overview.md).
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -127,9 +136,14 @@ az role assignment create \
 > [!NOTE]
 > Wenn die AAD-Domäne und die Domäne des Benutzeranmeldenamens nicht übereinstimmen, müssen Sie die Objekt-ID Ihres Benutzerkontos mit *----assignee-object-id* angeben. Die Angabe des Benutzernamens für *--assignee* reicht nicht aus. Sie können die Objekt-ID für Ihr Benutzerkonto mithilfe der [Azure Active Directory-Benutzerliste (az as user list)](/cli/azure/ad/user#az-ad-user-list) erhalten.
 
-Weitere Informationen zur Verwendung der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen finden Sie in den Artikeln zur Verwaltung der rollenbasierten Zugriffssteuerung mit [Azure CLI](../../role-based-access-control/role-assignments-cli.md), über das [Azure-Portal](../../role-based-access-control/role-assignments-portal.md) oder mit [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+Weitere Informationen zur Verwendung von Azure RBAC zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen finden Sie in den Artikeln zur Verwaltung der rollenbasierten Zugriffssteuerung mit der [Azure CLI](../../role-based-access-control/role-assignments-cli.md), über das [Azure-Portal](../../role-based-access-control/role-assignments-portal.md) oder mit [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
-Sie können Azure AD zudem so konfigurieren, dass für die Anmeldung eines bestimmten Benutzers bei dem virtuellen Linux-Computer eine mehrstufige Authentifizierung erforderlich ist. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication in der Cloud](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+## <a name="using-conditional-access"></a>Verwenden von bedingtem Zugriff
+
+Sie können Richtlinien für bedingten Zugriff erzwingen, z. B. die mehrstufige Authentifizierung oder Überprüfung des Anmelderisikos für Benutzer, bevor der Zugriff auf virtuelle Linux-Computer in Azure gewährt wird, für die die Azure AD-Anmeldung aktiviert ist. Zum Anwenden einer Richtlinie für bedingten Zugriff müssen Sie die App Azure Linux VM Sign-In über die Zuweisungsoption für Cloud-Apps oder Aktionen auswählen und dann „Anmelderisiko“ als Bedingung und/oder „Mehrstufige Authentifizierung erforderlich“ als Zugriffssteuerung verwenden. 
+
+> [!WARNING]
+> Eine aktivierte/erzwungene Authentifizierung über Azure AD Multi-Factor Authentication pro Benutzer wird für VM-Anmeldungen nicht unterstützt.
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Anmelden bei dem virtuellen Linux-Computer
 
@@ -141,7 +155,7 @@ az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o 
 
 Melden Sie sich mit Ihren Azure AD-Anmeldeinformationen bei dem virtuellen Azure Linux-Computer an. Mit dem Parameter `-l` können Sie die Adresse Ihres Azure AD-Kontos angeben. Ersetzen Sie das Beispielkonto durch Ihr eigenes Konto. Die Kontoadressen müssen ausschließlich in Kleinbuchstaben eingegeben werden. Ersetzen Sie die IP-Beispieladresse durch die öffentliche IP-Adresse Ihres virtuellen Computers aus dem vorherigen Befehl.
 
-```azurecli-interactive
+```console
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
@@ -162,6 +176,7 @@ Wenn Sie sudo das erste Mal ausführen, werden Sie aufgefordert, sich ein zweite
 ```bash
 %aad_admins ALL=(ALL) ALL
 ```
+
 Durch diese Zeile:
 
 ```bash
@@ -171,13 +186,13 @@ Durch diese Zeile:
 
 ## <a name="troubleshoot-sign-in-issues"></a>Beheben von Problemen bei der Anmeldung
 
-Zu den häufig auftretenden Fehlern beim Herstellen einer SSH-Verbindung mit Azure AD-Anmeldeinformationen gehören nicht zugewiesene RBAC-Rollen und wiederholte Aufforderungen zur Anmeldung. In den folgenden Abschnitten finden Sie Informationen zum Beheben dieser Probleme.
+Zu den häufig auftretenden Fehlern beim Herstellen einer SSH-Verbindung mit Azure AD-Anmeldeinformationen gehören nicht zugewiesene Azure-Rollen und wiederholte Aufforderungen zur Anmeldung. In den folgenden Abschnitten finden Sie Informationen zum Beheben dieser Probleme.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>Zugriff verweigert: RBAC-Rolle nicht zugewiesen
+### <a name="access-denied-azure-role-not-assigned"></a>Zugriff verweigert: Azure-Rolle nicht zugewiesen
 
-Wenn an der SSH-Eingabeaufforderung die folgende Fehlermeldung angezeigt wird, überprüfen Sie, ob Sie für den virtuellen Computer *RBAC-Richtlinien konfiguriert* haben, mit denen dem Benutzer eine der Rollen *VM-Administratoranmeldung* oder VM-Benutzeranmeldung zugewiesen wird:
+Wenn an der SSH-Eingabeaufforderung die folgende Fehlermeldung angezeigt wird, überprüfen Sie, ob Sie für den virtuellen Computer Azure RBAC-Richtlinien konfiguriert haben, mit denen dem Benutzer eine der Rollen *VM-Administratoranmeldung* oder *VM-Benutzeranmeldung* zugewiesen wird:
 
-```bash
+```output
 login as: azureuser@contoso.onmicrosoft.com
 Using keyboard-interactive authentication.
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FJX327AXD to authenticate. Press ENTER when ready.
@@ -185,6 +200,8 @@ Using keyboard-interactive authentication.
 Access denied:  to sign-in you be assigned a role with action 'Microsoft.Compute/virtualMachines/login/action', for example 'Virtual Machine User Login'
 Access denied
 ```
+> [!NOTE]
+> Wenn Probleme mit Azure-Rollenzuweisungen auftreten, finden Sie weitere Informationen unter [Behandeln von Problemen bei Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit).
 
 ### <a name="continued-ssh-sign-in-prompts"></a>Wiederholte Aufforderungen zur SSH-Anmeldung
 
@@ -193,6 +210,10 @@ Nachdem Sie die Authentifizierung in einem Webbrowser erfolgreich abgeschlossen 
 - Überprüfen Sie, ob der an der SSH-Eingabeaufforderung angegebene Anmeldename richtig ist. Ein Tippfehler im Anmeldenamen kann dazu führen, dass der an der SSH-Eingabeaufforderung angegebene Anmeldename nicht mit dem Konto übereinstimmt, mit dem Sie sich bei Azure AD angemeldet haben. Beispiel: Sie geben *azuresuer\@contoso.onmicrosoft.com* anstelle von *azureuser\@contoso.onmicrosoft.com* ein.
 - Wenn Sie über mehrere Benutzerkonten verfügen, achten Sie darauf, dass Sie im Browserfenster kein anderes Benutzerkonto als bei der Anmeldung bei Azure AD angeben.
 - Linux ist ein Betriebssystem, bei dem die Groß-/Kleinschreibung berücksichtigt wird. Es besteht also ein Unterschied zwischen „Azureuser@contoso.onmicrosoft.com“ und „azureuser@contoso.onmicrosoft.com“. Dies kann zu einer Nichtübereinstimmung führen. Stellen Sie sicher, dass Sie den Benutzerprinzipalnamen (UPN) an der SSH-Eingabeaufforderung mit der richtigen Groß- und Kleinschreibung angeben.
+
+### <a name="other-limitations"></a>Weitere Einschränkungen
+
+Benutzer, die Zugriffsrechte über geschachtelte Gruppen oder Rollenzuweisungen erben, werden zurzeit nicht unterstützt. Dem Benutzer oder der Gruppe müssen die [erforderlichen Rollenzuweisungen ](#configure-role-assignments-for-the-vm) direkt zugewiesen werden. Beispielsweise werden dem Benutzer durch die Verwendung von Verwaltungsgruppen oder geschachtelten Gruppenrollenzuweisungen nicht die richtigen Berechtigungen erteilt, damit er sich anmelden kann.
 
 ## <a name="preview-feedback"></a>Feedback zur Vorschauversion
 

@@ -1,35 +1,35 @@
 ---
 title: Probleme beim Anmelden bei Microsoft-Anwendungen | Microsoft-Dokumentation
-description: Behandlung von allgemeinen Problemen bei der Anmeldung in eigenen Microsoft-Anwendungen mithilfe von Azure AD (z.B. Office 365)
+description: Hier erhalten Sie Informationen zur Behandlung von allgemeinen Problemen bei der Anmeldung in eigenen Microsoft-Anwendungen mithilfe von Azure AD (z. B. Microsoft 365).
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/10/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57deed9d7fb178ba1cdc8d6e954d751752532de4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108302"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654404"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Probleme beim Anmelden bei Microsoft-Anwendungen
 
-Microsoft-Anwendungen (z.B. Office 365 Exchange, SharePoint, Yammer usw.) werden etwas anders und als SaaS-Anwendungen von Drittanbietern oder andere Anwendungen zugewiesen, die Sie für einmaliges Anmelden in Azure AD integrieren.
+Microsoft-Anwendungen (z. B. Exchange, SharePoint, Yammer usw.) werden nicht genau auf die gleiche Weise zugewiesen und verwaltet wie SaaS-Anwendungen von Drittanbietern oder andere Anwendungen, die Sie für das einmalige Anmelden mit Azure AD integrieren.
 
 Es gibt drei Hauptmethoden, über die ein Benutzer Zugriff auf eine von Microsoft veröffentlichte Anwendung erhalten kann.
 
--   Für Anwendungen in Office 365 oder anderen kostenpflichtigen Suites erhalten Benutzer Zugriff über **Lizenzzuweisungen** direkt in ihrem Benutzerkonto oder über eine Gruppe mithilfe der Funktion für gruppenbasierte Lizenzzuweisung.
+-   Für Anwendungen in Microsoft 365 oder anderen kostenpflichtigen Sammlungen erhalten Benutzer Zugriff über eine **Lizenzzuweisung** direkt in ihrem Benutzerkonto oder über eine Gruppe mithilfe der Funktion für gruppenbasierte Lizenzzuweisung.
 
 -   Für Anwendungen, die Microsoft oder ein Drittanbieter kostenlos für alle Benutzer veröffentlicht, erhalten Benutzer möglicherweise Zugriff über eine **Benutzerzustimmung**. Dies bedeutet, dass sie sich mit ihrem Geschäfts-, Schul- oder Unikonto von Azure AD bei der Anwendung anmelden und dieser den Zugriff auf eine begrenzte Menge von Daten in ihrem Konto gewähren.
 
@@ -63,7 +63,7 @@ Im Folgenden werden einige allgemeine Probleme beschrieben, die auftreten könne
 
   * Stellen Sie sicher, dass das Konto des Benutzers für Anmeldungen **aktiviert** ist. [Überprüfen des Status eines Benutzerkontos](#problems-with-the-users-account)
 
-  * Stellen Sie sicher, dass **Kennwort des Benutzers nicht abgelaufen ist oder vergessen wurde**. [Zurücksetzen eines Benutzerkennworts](#reset-a-users-password) oder [Aktivieren von Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+  * Stellen Sie sicher, dass **Kennwort des Benutzers nicht abgelaufen ist oder vergessen wurde**. [Zurücksetzen eines Benutzerkennworts](#reset-a-users-password) oder [Aktivieren von Self-Service-Kennwortzurücksetzung](../authentication/tutorial-enable-sspr.md)
 
   * Stellen Sie sicher, dass Benutzerzugriff nicht durch **Multi-Factor Authentication** blockiert wird. [Überprüfen des Multi-Factor Authentication-Status eines Benutzers](#check-a-users-multi-factor-authentication-status) oder [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info)
 
@@ -71,21 +71,21 @@ Im Folgenden werden einige allgemeine Probleme beschrieben, die auftreten könne
 
   * Stellen Sie sicher, dass die **Kontaktinformationen für die Authentifizierung** des Benutzers aktuell sind, sodass Multi-Factor Authentication-Richtlinien oder Richtlinien für bedingten Zugriff erzwungen werden können. [Überprüfen des Multi-Factor Authentication-Status eines Benutzers](#check-a-users-multi-factor-authentication-status) oder [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info)
 
-- Im Folgenden werden einige spezifische Probleme für **Microsoft**-**Anwendungen, die eine Lizenz erfordern** (z.B. Office 365) aufgeführt, die Sie überprüfen können, nachdem Sie die oben genannten allgemeinen Probleme ausgeschlossen haben:
+- Im Anschluss werden einige spezifische Probleme für **Microsoft**-**Anwendungen, die eine Lizenz erfordern** (beispielsweise Office 365) aufgeführt, die Sie überprüfen können, nachdem Sie die oben genannten allgemeinen Probleme ausgeschlossen haben:
 
   * Stellen Sie sicher, dass dem Benutzer eine **Lizenz zugewiesen** ist. [Überprüfen der zugewiesenen Lizenzen eines Benutzers](#check-a-users-assigned-licenses) oder [Überprüfen der zugewiesenen Lizenzen einer Gruppe](#check-a-groups-assigned-licenses)
 
-  * Wenn die Lizenz einer **statischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass der **Benutzer ein Mitglied** dieser Gruppe ist. [Überprüfen der Gruppenmitgliedschaften eines Benutzers](#check-a-users-group-memberships)
+  * Wenn die Lizenz einer **statischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass der **Benutzer ein Mitglied dieser Gruppe ist**. [Überprüfen der Gruppenmitgliedschaften eines Benutzers](#check-a-users-group-memberships)
 
   * Wenn die Lizenz einer **dynamischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass die **Regel der dynamischen Gruppe richtig festgelegt wurde**. [Überprüfen der Mitgliedschaftskriterien einer dynamischen Gruppe](#check-a-dynamic-groups-membership-criteria)
 
-  * Wenn die Lizenz einer **dynamischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass die dynamische Gruppe die Verarbeitung der Mitgliedschaften **abgeschlossen hat** und dass der **Benutzer ein Mitglied ist** (dies kann einige Zeit dauern). [Überprüfen der Gruppenmitgliedschaften eines Benutzers](#check-a-users-group-memberships)
+  * Wenn die Lizenz einer **dynamischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass die dynamische Gruppe die **Verarbeitung der Mitgliedschaften abgeschlossen hat** und dass der **Benutzer ein Mitglied ist**. (Dies kann einige Zeit dauern.) [Überprüfen der Gruppenmitgliedschaften eines Benutzers](#check-a-users-group-memberships)
 
   *  Nachdem Sie sichergestellt haben, dass die Lizenz zugewiesen ist, stellen Sie sicher, dass die Lizenz **nicht abgelaufen** ist.
 
   *  Stellen Sie sicher, dass sie Lizenz **für die Anwendung**, auf die der Benutzer zugreifen möchte, gültig ist.
 
-- Im Folgenden finden Sie einige weitere Aspekte, die Sie für **Microsoft**-**Anwendungen, die keine Lizenz erfordern**, überprüfen können:
+- Im Anschluss finden Sie einige weitere Aspekte, die Sie für **Microsoft**-**Anwendungen, die keine Lizenz erfordern**, überprüfen können:
 
   * Wenn die Anwendung **Berechtigungen auf Benutzerebene** (beispielsweise „Zugriff auf das Postfach dieses Benutzers“) anfordert, stellen Sie sicher, dass der Benutzer sich bei der Anwendung angemeldet und eine **Zustimmung auf Benutzerebene** durchgeführt hat, damit die Anwendung auf seine Daten zugreifen kann.
 
@@ -127,7 +127,7 @@ Um zu überprüfen, ob das Konto eines Benutzers vorhanden ist, führen Sie die 
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Überprüfen Sie die Eigenschaften des Benutzerobjekts, um sicherzustellen, dass diese ordnungsgemäß festgelegt sind und keine Daten fehlen.
 
@@ -179,9 +179,9 @@ Um das Kennwort eines Benutzers zurückzusetzen, führen Sie die folgenden Schri
 
 Um die Self-Service-Kennwortzurücksetzung zu aktivieren, führen Sie die folgenden Bereitstellungsschritte aus:
 
--   [Aktivieren von Benutzern für das Zurücksetzen ihrer Azure Active Directory-Kennwörter](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Aktivieren von Benutzern für das Zurücksetzen ihrer Azure Active Directory-Kennwörter](../authentication/tutorial-enable-sspr.md)
 
--   [Aktivieren von Benutzern für das Zurücksetzen oder Ändern ihrer lokalen Active Directory-Kennwörter](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Aktivieren von Benutzern für das Zurücksetzen oder Ändern ihrer lokalen Active Directory-Kennwörter](../authentication/tutorial-enable-sspr.md)
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>Überprüfen des Multi-Factor Authentication-Status eines Benutzers
 
@@ -438,7 +438,7 @@ So überprüfen oder validieren Sie eine einzelne Richtlinie für bedingten Zugr
 7. Vergewissern Sie sich, dass keine spezifischen Bedingungen, Zuweisungen oder anderen Einstellungen den Benutzerzugriff blockieren.
 
    >[!NOTE]
-   >Möglicherweise sollten Sie diese Richtlinie vorübergehend deaktivieren, um sicherzustellen, dass sie keine Auswirkungen auf Anmeldungen hat. Legen Sie hierzu den Umschalter **Richtlinie aktivieren** auf **Nein** fest, und klicken Sie auf die Schaltfläche **Speichern**.
+   >Möglicherweise möchten Sie diese Richtlinie vorübergehend deaktivieren, um Auswirkungen auf Anmeldungen auszuschließen. Legen Sie hierzu den Umschalter **Richtlinie aktivieren** auf **Nein** fest, und klicken Sie auf die Schaltfläche **Speichern**.
    >
    >
 
@@ -470,7 +470,7 @@ So überprüfen oder validieren Sie die derzeit konfigurierte Richtlinie für be
 9.  Vergewissern Sie sich, dass keine spezifischen Bedingungen, Zuweisungen oder anderen Einstellungen den Benutzerzugriff blockieren können.
 
      >[!NOTE]
-     >Möglicherweise sollten Sie diese Richtlinie vorübergehend deaktivieren, um sicherzustellen, dass sie keine Auswirkungen auf Anmeldungen hat. Legen Sie hierzu den Umschalter **Richtlinie aktivieren** auf **Nein** fest, und klicken Sie auf die Schaltfläche **Speichern**.
+     >Möglicherweise möchten Sie diese Richtlinie vorübergehend deaktivieren, um Auswirkungen auf Anmeldungen auszuschließen. Legen Sie hierzu den Umschalter **Richtlinie aktivieren** auf **Nein** fest, und klicken Sie auf die Schaltfläche **Speichern**.
      >
      >
 
@@ -508,26 +508,25 @@ Der Anwendungszugriff kann blockiert werden, wenn kein ordnungsgemäßer Berecht
 
 -   Für jede Anwendung, die für Open ID Connect aktiviert ist und Berechtigungen anfordert, wird beim Navigieren zum Anmeldebildschirm für die Anwendung eine Zustimmung auf Benutzerebene für den angemeldeten Benutzer bei dieser Anmeldung ausgeführt.
 
--   Wenn Sie dies programmgesteuert erledigen möchten, finden Sie weitere Informationen unter [Anfordern der Zustimmung einzelner Benutzer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent).
+-   Wenn Sie dies programmgesteuert erledigen möchten, finden Sie weitere Informationen unter [Anfordern der Zustimmung einzelner Benutzer](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent).
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Durchführen einer Zustimmung auf Administratorebene für alle Anwendungen
 
 -   Für **ausschließlich Anwendungen, die mit der ersten Version des Anwendungsmodells entwickelt wurden**, können Sie diese Zustimmung auf Administratorebene erzwingen, indem Sie am Ende der Anmelde-URL einer Anwendung die Zeichenfolge **?prompt=admin\_consent** anfügen.
 
--   Für **Anwendungen, die mit der zweiten Version des Anwendungsmodells entwickelt wurden**, können Sie diese Zustimmung auf Administratorebene erzwingen, indem Sie die Anweisungen im Abschnitt **Anfordern der Berechtigungen von einem Verzeichnisadministrator** von [Verwenden des Endpunkts für die Administratorzustimmung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint) befolgen.
+-   Für **Anwendungen, die mit der zweiten Version des Anwendungsmodells entwickelt wurden**, können Sie diese Zustimmung auf Administratorebene erzwingen, indem Sie die Anweisungen im Abschnitt **Anfordern der Berechtigungen von einem Verzeichnisadministrator** von [Verwenden des Endpunkts für die Administratorzustimmung](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint) befolgen.
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Durchführen einer Zustimmung auf Administratorebene für eine Anwendung mit einem Mandanten
 
 -   Für **Anwendungen mit einem Mandanten**, die Berechtigungen anfordern (z.B. Anwendungen, die Sie selbst entwickeln oder deren Besitzer in Ihrer Organisation Sie sind), können Sie eine **Zustimmung auf Administratorebene** im Namen aller Benutzer durchführen, indem Sie sich als globaler Administrator anmelden und oben im Bereich **Anwendungsregistrierung &gt; Alle Anwendungen &gt; App auswählen &gt; Erforderliche Berechtigungen** auf die Schaltfläche **Berechtigungen erteilen** klicken.
 
--   Für **Anwendungen, die mit der ersten oder zweiten Version des Anwendungsmodells entwickelt wurden**, können Sie diese Zustimmung auf Administratorebene erzwingen, indem Sie die Anweisungen im Abschnitt **Anfordern der Berechtigungen von einem Verzeichnisadministrator** von [Verwenden des Endpunkts für die Administratorzustimmung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint) befolgen.
+-   Für **Anwendungen, die mit der ersten oder zweiten Version des Anwendungsmodells entwickelt wurden**, können Sie diese Zustimmung auf Administratorebene erzwingen, indem Sie die Anweisungen im Abschnitt **Anfordern der Berechtigungen von einem Verzeichnisadministrator** von [Verwenden des Endpunkts für die Administratorzustimmung](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint) befolgen.
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Durchführen einer Zustimmung auf Administratorebene für eine mehrinstanzenfähige Anwendung
 
 -   Für **mehrinstanzenfähige Anwendungen**, die Berechtigungen anfordern (z.B. von Drittanbietern oder von Microsoft entwickelte Anwendungen), können Sie eine **Zustimmung auf Administratorebene** durchführen. Melden Sie sich als globaler Administrator an, und klicken Sie auf die Schaltfläche **Berechtigungen erteilen** im Bereich **Unternehmensanwendungen &gt; Alle Anwendungen &gt; App auswählen &gt; Berechtigungen** (demnächst verfügbar).
 
--   Sie können Sie diese Zustimmung auf Administratorebene auch erzwingen, indem Sie die Anweisungen im Abschnitt **Anfordern der Berechtigungen von einem Verzeichnisadministrator** von [Verwenden des Endpunkts für die Administratorzustimmung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint) befolgen.
+-   Sie können Sie diese Zustimmung auf Administratorebene auch erzwingen, indem Sie die Anweisungen im Abschnitt **Anfordern der Berechtigungen von einem Verzeichnisadministrator** von [Verwenden des Endpunkts für die Administratorzustimmung](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint) befolgen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Verwenden des Endpunkts für die Administratorzustimmung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
-
+[Verwenden des Endpunkts für die Administratorzustimmung](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint)

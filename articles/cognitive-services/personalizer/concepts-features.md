@@ -3,30 +3,28 @@ title: 'Features: Merkmale: Aktion und Kontext – Personalisierung'
 titleSuffix: Azure Cognitive Services
 description: Die Personalisierung verwendet Merkmale, Informationen über Aktionen und Kontext, um bessere Rangfolgenvorschläge zu machen. Merkmale können sehr allgemein oder spezifisch für ein Element sein.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 08/13/2019
-ms.author: diberry
-ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 10/14/2019
+ms.openlocfilehash: edd1549ddabef0ae1ba37150ad75a371ac6e6d85
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989090"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365515"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Merkmale sind Informationen über Aktionen und Kontext.
 
 Der Personalisierungsdienst funktioniert, indem er lernt, was Ihre Anwendung Benutzern in einem bestimmten Kontext anzeigen sollte.
 
-Die Personalisierung verwendet **Merkmale**, wobei es sich um Informationen über den **aktuellen Kontext** handelt, um die beste **Aktion** auszuwählen. Die Merkmale stellen alle Informationen dar, von denen Sie glauben, dass sie bei der Personalisierung hilfreich sein können, um höhere Belohnungen zu erzielen. Merkmale können sehr allgemein oder spezifisch für ein Element sein. 
+Die Personalisierung verwendet **Merkmale** , wobei es sich um Informationen über den **aktuellen Kontext** handelt, um die beste **Aktion** auszuwählen. Die Merkmale stellen alle Informationen dar, von denen Sie glauben, dass sie bei der Personalisierung hilfreich sein können, um höhere Belohnungen zu erzielen. Merkmale können sehr allgemein oder spezifisch für ein Element sein. 
 
 Beispielsweise können Sie ein **Merkmal** haben:
 
-* Die _Benutzerpersona_, wie z. B. `Sports_Shopper`. Dabei sollte es sich nicht um die ID eines einzelnen Benutzers handeln. 
-* Zu dem _Inhalt_, z. B. ob ein Video ein `Documentary` ist, ein `Movie` oder eine `TV Series`, oder ob ein Einzelhandelsartikel im Store verfügbar ist.
+* Die _Benutzerpersona_ , wie z. B. `Sports_Shopper`. Dabei sollte es sich nicht um die ID eines einzelnen Benutzers handeln. 
+* Zu dem _Inhalt_ , z. B. ob ein Video ein `Documentary` ist, ein `Movie` oder eine `TV Series`, oder ob ein Einzelhandelsartikel im Store verfügbar ist.
 * Zum _aktuellen_ Zeitraum dar, z. B. welcher Wochentag es ist.
 
 Die Personalisierung schreibt weder vor noch schränkt sie ein, welche Merkmale Sie für Aktionen und Kontext senden können:
@@ -43,8 +41,8 @@ Die Personalisierung unterstützt Merkmale der Typen Zeichenfolge, numerisch und
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Auswirkungen der Wahl des Merkmalstyps auf Machine Learning in der Personalisierung
 
-* **Zeichenfolgen**: Bei Zeichenfolgentypen erstellt jede Kombination aus Schlüssel und Wert neue Gewichtungen im Machine Learning-Modell „Personalisierung“. 
-* **Numerisch**: Sie sollten numerische Werte verwenden, wenn sich die Zahl proportional auf das Personalisierungsergebnis auswirken soll. Dies hängt stark vom Szenario ab. Hier ist ein vereinfachtes Beispiel: Bei der Personalisierung eines Kundenerlebnisses im Einzelhandel könnte „NumberOfPetsOwned“ (AnzahlVonHaustierenImBesitz) ein numerisches Merkmal sein, wenn Personen mit 2 oder 3 Haustieren das Personalisierungsergebnis zwei- oder dreimal so stark wie Personen beeinflussen sollen, die nur ein Haustier besitzen. Merkmale, die auf numerischen Einheiten basieren, bei denen aber die Bedeutung nicht linear ist – z.B. „Alter“, „Temperatur“ oder „Körpergröße einer Person“ – werden am besten als Zeichenfolgen codiert, und die Merkmalsqualität kann durch die Verwendung von Bereichen normalerweise verbessert werden. „Alter“ könnte beispielsweise codiert werden als „Alter“: „0–5“, „Alter“: „6–10“ usw.
+* **Zeichenfolgen** : Bei Zeichenfolgentypen erstellt jede Kombination aus Schlüssel und Wert neue Gewichtungen im Machine Learning-Modell „Personalisierung“. 
+* **Numerisch** : Sie sollten numerische Werte verwenden, wenn sich die Zahl proportional auf das Personalisierungsergebnis auswirken soll. Dies hängt stark vom Szenario ab. Hier ist ein vereinfachtes Beispiel: Bei der Personalisierung eines Kundenerlebnisses im Einzelhandel könnte „NumberOfPetsOwned“ (AnzahlVonHaustierenImBesitz) ein numerisches Merkmal sein, wenn Personen mit 2 oder 3 Haustieren das Personalisierungsergebnis zwei- oder dreimal so stark wie Personen beeinflussen sollen, die nur ein Haustier besitzen. Merkmale, die auf numerischen Einheiten basieren, bei denen aber die Bedeutung nicht linear ist – z.B. „Alter“, „Temperatur“ oder „Körpergröße einer Person“ – werden am besten als Zeichenfolgen codiert, und die Merkmalsqualität kann durch die Verwendung von Bereichen normalerweise verbessert werden. „Alter“ könnte beispielsweise codiert werden als „Alter“: „0–5“, „Alter“: „6–10“ usw.
 * **Boolesche** Werte, die mit dem Wert „false“ gesendet wurden, agieren so, als ob sie nie gesendet worden wären.
 
 Merkmale, die nicht vorhanden sind, sollten aus der Anforderung entfernt werden. Vermeiden Sie das Senden von Merkmalen mit einem Nullwert, weil dieser beim Trainieren des Modells als vorhanden und mit einem Wert von „Null“ verarbeitet wird.
@@ -69,7 +67,10 @@ Im Folgenden finden Sie Beispiele für Merkmalsnamespaces, die von Anwendungen v
 Sie können Merkmalsnamespaces nach Ihren eigenen Konventionen benennen, solange es sich dabei um gültige JSON-Schlüssel handelt. Namespaces werden zum Sortieren von Features in verschiedene Gruppen und zum Unterscheiden von Features mit ähnlichen Namen verwendet. Sie können sich Namespaces als „Präfix“ vorstellen, der zu Namen von Features hinzugefügt wird. Namespaces können nicht geschachtelt werden.
 
 
-Im folgenden JSON-Code sind `user`, `state` und `device` Merkmalsnamespaces. Hinweis zur Public Preview: Derzeit wird dringend empfohlen, UTF-8-basierte Namen mit verschiedenen Anfangsbuchstaben für Featurenamespaces zu verwenden. Beispielsweise Namen wie `user`, `state` und `device`, die jeweils mit `u`, `s` und `d` beginnen. Derzeit können Namespaces mit denselben Anfangsbuchstaben zu Konflikten in Indizes für maschinelles Lernen führen.
+Im folgenden JSON-Code sind `user`, `state` und `device` Merkmalsnamespaces. 
+
+> [!Note]
+> Derzeit wird dringend empfohlen, UTF-8-basierte Namen mit verschiedenen Anfangsbuchstaben für Featurenamespaces zu verwenden. Beispielsweise Namen wie `user`, `state` und `device`, die jeweils mit `u`, `s` und `d` beginnen. Derzeit können Namespaces mit denselben Anfangsbuchstaben zu Konflikten in Indizes für maschinelles Lernen führen.
 
 JSON-Objekte können geschachtelte JSON-Objekte und einfache Eigenschaften/Werte enthalten. Ein Array kann nur einbezogen werden, wenn die Arrayelemente Zahlen sind. 
 
@@ -98,6 +99,14 @@ JSON-Objekte können geschachtelte JSON-Objekte und einfache Eigenschaften/Werte
 }
 ```
 
+### <a name="restrictions-in-character-sets-for-namespaces"></a>Einschränkungen bei Zeichensätzen für Namespaces
+
+Die Zeichenfolge, die Sie für die Benennung des Namespace verwenden, muss einige Einschränkungen einhalten: 
+* Sie kann kein Unicode sein.
+* Sie können einige der druckbaren Symbole mit Codes < 256 für die Namespacenamen verwenden. 
+* Sie können keine Symbole mit Codes < 32 (nicht druckbar), 32 (Leerzeichen), 58 (Doppelpunkt), 124 (Pipe) und 126–140 verwenden.
+* Sie darf nicht mit einem Unterstrich "_" beginnen; andernfalls wird die Funktion ignoriert.
+
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Merkmalssätze für die Personalisierung effektiver gestalten
 
 Ein guter Merkmalssatz hilft der Personalisierung zu lernen, wie die Aktion vorherzusagen ist, die die höchste Belohnung erzeugt. 
@@ -106,7 +115,7 @@ Erwägen Sie, Merkmale an die Relevanz-API der Personalisierung zu senden, die d
 
 * Es gibt genügend Merkmale zum Betreiben der Personalisierung. Je exakter der Inhalt zielgerichtet sein muss, desto mehr Merkmale werden benötigt.
 
-* Es gibt genügend Merkmale vielfältiger *Dichten*. Ein Merkmal ist *dicht*, wenn viele Elemente in wenigen Buckets gruppiert sind. Beispielsweise lassen sich Tausende von Videos als „Lang“ (länger als 5 Minuten) oder „Kurz“ (kürzer als 5 Minuten) klassifizieren. Dies ist ein *sehr dichtes* Merkmal. Andererseits können dieselben Tausenden von Elementen ein Attribut namens „Titel“ besitzen, das praktisch nie denselben Wert bei zwei Elementen haben wird. Dies ist ein sehr undichtes Merkmal oder *von geringer Dichte*.  
+* Es gibt genügend Merkmale vielfältiger *Dichten*. Ein Merkmal ist *dicht* , wenn viele Elemente in wenigen Buckets gruppiert sind. Beispielsweise lassen sich Tausende von Videos als „Lang“ (länger als 5 Minuten) oder „Kurz“ (kürzer als 5 Minuten) klassifizieren. Dies ist ein *sehr dichtes* Merkmal. Andererseits können dieselben Tausenden von Elementen ein Attribut namens „Titel“ besitzen, das praktisch nie denselben Wert bei zwei Elementen haben wird. Dies ist ein sehr undichtes Merkmal oder *von geringer Dichte*.  
 
 Das Vorhandensein von Merkmalen mit hoher Dichte hilft der Personalisierung bei der Extrapolierung des Lernfortgangs von einem zum anderen Element. Wenn aber nur wenige Merkmale vorhanden und diese zu dicht sind, versucht die Personalisierung, Inhalt exakt zu treffen, wobei nur aus wenigen Buckets ausgewählt werden kann.
 
@@ -121,6 +130,8 @@ In diesen folgenden Abschnitten finden Sie allgemeine Methoden zur Verbesserung 
 Es ist möglich, Ihre Merkmalssätze zu verbessern, indem Sie sie bearbeiten, um sie größer und mehr oder weniger dicht zu machen.
 
 Ein Zeitstempel mit Sekundenangaben ist beispielsweise ein Merkmal von sehr geringer Dichte. Seine Dichte könnte erhöht (effektiver) werden, indem Zeiten in „Morgen“, „Mittag“, „Nachmittag“ usw. klassifiziert werden.
+
+Standortinformationen profitieren in der Regel auch von der Erstellung umfassenderer Klassifizierungen. Eine Koordinate mit Breitengrad-Längengrad wie Breitengrad: 47.67402° N, Längengrad: 122.12154° W ist z. B. zu präzise und zwingt das Modell, Breiten- und Längengrade als unterschiedliche Dimensionen zu erlernen. Wenn Sie versuchen, auf der Grundlage von Standortinformationen eine Personalisierung vorzunehmen, hilft es, Standortinformationen in größeren Sektoren zu gruppieren. Eine einfache Möglichkeit dazu besteht darin, eine geeignete Rundungsgenauigkeit für die Breitengrad-Längengrad-Zahlen auszuwählen und Breiten- und Längengrade zu „Bereichen“ zu kombinieren, indem sie zu einer Zeichenfolge zusammengefasst werden. Es wäre z. B. eine gute Möglichkeit, 47.67402° N, Längengrad: 122,12154° W in Regionen mit einer Breite von einigen Kilometern als "location":"34.3 , 12.1" darzustellen.
 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>Erweitern von Merkmalssätzen mit extrapolierten Informationen
@@ -141,10 +152,10 @@ Beispiel:
 
 Sie können mehrere weitere [Azure Cognitive Services](https://www.microsoft.com/cognitive-services) verwenden, z. B.
 
-* [Entitätsverknüpfung](../entitylinking/home.md)
+* [Entitätsverknüpfung](../text-analytics/index.yml)
 * [Textanalyse](../text-analytics/overview.md)
-* [Emotionen](../emotion/home.md)
-* [Maschinelles Sehen](../computer-vision/home.md)
+* [Emotionen](../face/overview.md)
+* [Maschinelles Sehen](../computer-vision/overview.md)
 
 ## <a name="actions-represent-a-list-of-options"></a>Aktionen stellen eine Liste mit Optionen dar.
 
@@ -166,7 +177,7 @@ Senden Sie beim Zuweisen von Rangfolgen für Aktionen nicht in mehr als 50 Aktio
 
 Die Aktionen, die Sie an die Relevanz-API senden, sind davon abhängig, was Sie zu personalisieren versuchen.
 
-Hier einige Beispiele:
+Im Folgenden finden Sie einige Beispiele:
 
 |Zweck|Aktion|
 |--|--|
@@ -311,4 +322,4 @@ JSON-Objekte können geschachtelte JSON-Objekte und einfache Eigenschaften/Werte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Vertiefendes Lernen](concepts-reinforcement-learning.md) 
+[Vertiefendes Lernen](concepts-reinforcement-learning.md)

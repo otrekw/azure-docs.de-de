@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Auswählen Ihres Installationstyps | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Wählen Sie Ihren Installationstyp | Microsoft-Dokumentation'
 description: Dieses Thema führt Sie durch die Schritte zum Auswählen des Installationstyps für Azure AD Connect.
 services: active-directory
 documentationcenter: ''
@@ -11,20 +11,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90a624a6b3b4696899af0d8606f653df260cc201
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7275d115210100bdd4a3a2eb683c867a6a4a4f4a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348279"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996609"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Auswählen des Installationstyps für Azure AD Connect
-Azure AD Connect bietet zwei Installationstypen für die Neuinstallation: Expressinstallation und benutzerdefinierte Installation. Dieses Thema hilft Ihnen, zu entscheiden, welche Option Sie während der Installation verwenden.
+Azure AD Connect bietet zwei Installationstypen für die Neuinstallation: Express und benutzerdefiniert. Dieses Thema hilft Ihnen, zu entscheiden, welche Option Sie während der Installation verwenden.
 
 ## <a name="express"></a>Express
 Express ist die am häufigsten verwendete Option und wird bei etwa 90% aller neuen Installationen verwendet. Sie wurde entwickelt, um eine geeignete Konfiguration für die gängigsten Kundenszenarien bereitzustellen.

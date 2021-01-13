@@ -1,15 +1,15 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: active-directory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: a8ee7cc28985d905a0d158745145ce7ffaa5ba6e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 57c64173ee3f307feb7bd879098f41505f5c5e32
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178497"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85838970"
 ---
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |

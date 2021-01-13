@@ -4,18 +4,18 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 8b919608dfc562d8db77619d5215a6828a53a4aa
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f7af6962c3343cd9d3e35e96d88650aa6a42c6b3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178033"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554989"
 ---
 1. Suchen Sie nach **Konfigurations-Manager**, während eine Verbindung mit dem virtuellen Computer über Remotedesktop besteht:
 
     ![SSCM öffnen](./media/virtual-machines-sql-server-connection-tcp-protocol/sql-server-configuration-manager.png)
 
-1. Erweitern Sie im SQL Server-Konfigurationsmanager im Konsolenbereich **SQL Server-Netzwerkkonfiguration**.
+1. Erweitern Sie im SQL Server-Konfigurations-Manager im Konsolenbereich den Knoten **SQL Server-Netzwerkkonfiguration**.
 
 1. Klicken Sie im Konsolenbereich auf **Protokolle für MSSQLSERVER** (der Standardinstanzenname). Klicken Sie im Detailbereich mit der rechten Maustaste auf **TCP**, und klicken Sie auf **Aktivieren**, wenn die Option noch nicht aktiviert ist.
 
@@ -27,4 +27,4 @@ ms.locfileid: "67178033"
 
 1. Schließen Sie den SQL Server-Konfigurations-Manager.
 
-Weitere Informationen zur Aktivierung von Protokollen für SQL Server-Datenbank-Engines finden Sie unter [Aktivieren oder Deaktivieren eines Servernetzwerkprotokolls](https://msdn.microsoft.com/library/ms191294.aspx).
+Weitere Informationen zur Aktivierung von Protokollen für SQL Server-Datenbank-Engines finden Sie unter [Aktivieren oder Deaktivieren eines Servernetzwerkprotokolls](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol).

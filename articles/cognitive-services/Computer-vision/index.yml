@@ -2,7 +2,7 @@
 title: Dokumentation zu maschinellem Sehen
 summary: Über die cloudbasierte Maschinelles Sehen-API haben Entwickler Zugriff auf erweiterte Algorithmen zum Verarbeiten von Bildern und zum Zurückgeben von Informationen. Durch das Hochladen eines Bilds oder das Angeben einer Bild-URL können Microsoft-Algorithmen für maschinelles Sehen visuelle Inhalte basierend auf Eingaben und der Benutzerauswahl auf unterschiedliche Arten analysieren. In unseren Schnellstartanleitungen, Tutorials und Beispielen erfahren Sie, wie Sie visuelle Inhalte auf unterschiedliche Weise analysieren.
 metadata:
-  title: Dokumentation zu maschinellem Sehen
+  title: Dokumentation zum maschinellen Sehen – Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation
   description: Über die cloudbasierte Maschinelles Sehen-API haben Entwickler Zugriff auf erweiterte Algorithmen zum Verarbeiten von Bildern und zum Zurückgeben von Informationen. Durch das Hochladen eines Bilds oder das Angeben einer Bild-URL können Microsoft-Algorithmen für maschinelles Sehen visuelle Inhalte basierend auf Eingaben und der Benutzerauswahl auf unterschiedliche Arten analysieren. In unseren Schnellstartanleitungen, Tutorials und Beispielen erfahren Sie, wie Sie visuelle Inhalte auf unterschiedliche Weise analysieren.
   services: cognitive-services
   ms.service: cognitive-services
@@ -10,40 +10,48 @@ metadata:
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
-  ms.date: 10/01/2019
-  ms.openlocfilehash: 184128c4b49bca1f8dd0849bd24b29c664ca0178
-  ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+  ms.date: 09/22/2020
+  ms.openlocfilehash: 8a1710a44ebd93db352dbc63bd350aad8bfa2785
+  ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/02/2019
-  ms.locfileid: "71718488"
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96533892"
 landingContent:
 - title: Informationen zu maschinellem Sehen
   linkLists:
   - linkListType: overview
     links:
     - text: Worum handelt es sich bei maschinellem Sehen?
-      url: Home.md
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Neues
+      url: whats-new.md
   - linkListType: video
     links:
     - text: Integrieren intelligenter Funktionen in Ihre Apps mit Maschinelles Sehen-APIs
       url: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-put-intelligence-into-your-business-apps/
-- title: Erkennen von gedrucktem und handschriftlichem Text
+- title: Optische Zeichenerkennung (OCR)
   linkLists:
   - linkListType: concept
     links:
-    - text: Erkennung von gedrucktem und handschriftlichem Text
+    - text: Optische Zeichenerkennung (OCR)
       url: concept-recognizing-text.md
   - linkListType: quickstart
     links:
     - text: Verwenden des .NET SDK
-      url: quickstarts-sdk/csharp-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
     - text: Verwenden des Python SDK
-      url: quickstarts-sdk/python-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
     - text: Verwenden des Java SDK
-      url: quickstarts-sdk/java-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
     - text: Verwenden des Node SDK
-      url: quickstarts-sdk/node-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
+    - text: Verwenden des Go SDK
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
+    - text: Verwenden der REST-API
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
 - title: Erkennen von Objekten in Bildern
   linkLists:
   - linkListType: concept
@@ -53,13 +61,17 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Verwenden des .NET SDK
-      url: quickstarts-sdk/csharp-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
     - text: Verwenden des Python SDK
-      url: quickstarts-sdk/python-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
     - text: Verwenden des Java SDK
-      url: quickstarts-sdk/java-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
     - text: Verwenden des Node SDK
-      url: quickstarts-sdk/node-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
+    - text: Verwenden des Go SDK
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
+    - text: Verwenden der REST-API
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
 - title: Anwenden von Inhaltstags auf Bilder
   linkLists:
   - linkListType: concept
@@ -69,18 +81,22 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Verwenden des .NET SDK
-      url: quickstarts-sdk/csharp-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
     - text: Verwenden des Python SDK
-      url: quickstarts-sdk/python-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
     - text: Verwenden des Java SDK
-      url: quickstarts-sdk/java-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
     - text: Verwenden des Node SDK
-      url: quickstarts-sdk/node-sdk.md
-- title: Verwenden von Containern
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
+    - text: Verwenden des Go SDK
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
+    - text: Verwenden der REST-API
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
+- title: Verwenden des Containers für das Lesen
   linkLists:
   - linkListType: get-started
     links:
-    - text: Installieren und Ausführen von Containern
+    - text: Installieren und Ausführen des Containers
       url: computer-vision-how-to-install-containers.md
   - linkListType: how-to-guide
     links:
@@ -92,6 +108,26 @@ landingContent:
       url: deploy-computer-vision-on-container-instances.md
     - text: Verwendung mit Kubernetes und Helm
       url: deploy-computer-vision-on-premises.md
+- title: Verwenden des Containers für die räumliche Analyse
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Installieren und Ausführen des Containers
+      url: spatial-analysis-container.md
+    - text: Konfigurieren von Vorgängen
+      url: spatial-analysis-operations.md
+  - linkListType: deploy
+    links:
+    - text: Bereitstellen einer App für die Erfassung der Personenanzahl
+      url: spatial-analysis-web-app.md
+  - linkListType: concept
+    links:
+    - text: Anordnung von Zonen und Linien
+      url: spatial-analysis-zone-line-placement.md
+    - text: Kameraplatzierung
+      url: spatial-analysis-camera-placement.md
+    - text: Protokollierung und Problembehandlung
+      url: spatial-analysis-logging.md
 - title: Gesichtserkennung in Bildern
   linkLists:
   - linkListType: concept
@@ -101,32 +137,42 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Verwenden des .NET SDK
-      url: quickstarts-sdk/csharp-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
     - text: Verwenden des Python SDK
-      url: quickstarts-sdk/python-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
     - text: Verwenden des Java SDK
-      url: quickstarts-sdk/java-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
     - text: Verwenden des Node SDK
-      url: quickstarts-sdk/node-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
+    - text: Verwenden des Go SDK
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
 - title: Verweis
   linkLists:
   - linkListType: reference
     links:
-    - text: Maschinelles Sehen-API v2.0
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44
-    - text: Maschinelles Sehen-API v1.0
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739
+    - text: Maschinelles Sehen-API v3.1
+      url: https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005
+    - text: Maschinelles Sehen-API v3.0
+      url: https://aka.ms/computer-vision-v3-ref
+    - text: Maschinelles Sehen-API v2.1
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641/operations/56f91f2e778daf14a499f21b
     - text: .NET SDK
-      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
+      url: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
     - text: Python SDK
-      url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python
+      url: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
     - text: Java-SDK
-      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
+      url: /java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
     - text: Node.js SDK
-      url: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-computervision?view=azure-node-latest
+      url: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
     - text: Go SDK
-      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/computervision
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+      url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure-Befehlszeilenschnittstelle (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+      url: /cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

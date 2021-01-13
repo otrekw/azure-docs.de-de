@@ -1,9 +1,9 @@
 ---
 title: Verknüpfen von Symantec ICDx-Daten mit Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Symantec ICDx-Daten mit Azure Sentinel verknüpfen.
+description: Finden Sie heraus, wie Sie den Symantec ICDx-Connector verwenden, um alle Protokolle Ihrer Symantec-Sicherheitslösung ganz einfach mit Azure Sentinel zu verbinden.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: d068223f-395e-46d6-bb94-7ca1afd3503c
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 0250780c85041c07fabf7d5ed268d1f3cdb63e18
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.date: 12/30/2019
+ms.author: yelevin
+ms.openlocfilehash: 67fc80b5f34cf3a98fd39ddc352cb2dd9a5e7151
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240650"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85564921"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Herstellen einer Verbindung mit Ihrer Symantec ICDx-Appliance 
 
@@ -42,15 +42,15 @@ Symantec ICDx kann mit Azure Sentinel integriert werden und Protokolle dann dire
 4. Klicken Sie unter **Forwarders** (Weiterleitungen) neben Microsoft Azure Sentinel (Log Analytics) auf **Add** (Hinzufügen). 
 4. Klicken Sie im Fenster **Microsoft Azure Sentinel (Log Analytics)** auf **Show Advanced** (Erweiterte anzeigen). 
 5. Gehen Sie am oberen Rand des erweiterten Fensters „Microsoft Azure Sentinel (Log Analytics)“ folgendermaßen vor:
-    -   **Name**: Geben Sie einen Namen für die Weiterleitung ein, der nicht mehr als 30 Zeichen lang ist. Wählen Sie einen eindeutigen, aussagekräftigen Namen. Dieser Name wird in der Liste der Weiterleitungen auf dem Bildschirm **Configuration** (Konfiguration) und in den Dashboards auf dem Bildschirm **Dashboard** angezeigt. Beispiel:  Microsoft Azure Log Analytics East. Dies ist ein Pflichtfeld.
-    -   **Beschreibung:** Geben Sie eine Beschreibung für die Weiterleitung ein. Diese Beschreibung wird auch in der Liste der Weiterleitungen auf dem Bildschirm **Configuration** (Konfiguration) angezeigt. Beziehen Sie Details wie z.B. den weitergeleiteten Ereignistyp und die Gruppe ein, die benötigt wird, um die Daten zu überprüfen.
+    -   **Name**: Geben Sie einen Namen für die Weiterleitung ein, der nicht mehr als 30 Zeichen lang ist. Wählen Sie einen eindeutigen, aussagekräftigen Namen. Dieser Name wird in der Liste der Weiterleitungen auf dem Bildschirm **Configuration** (Konfiguration) und in den Dashboards auf dem Bildschirm **Dashboard** angezeigt. Beispiel: Microsoft Azure Log Analytics East. Dies ist ein Pflichtfeld.
+    -   **Beschreibung**: Geben Sie eine Beschreibung für die Weiterleitung ein. Diese Beschreibung wird auch in der Liste der Weiterleitungen auf dem Bildschirm **Configuration** (Konfiguration) angezeigt. Beziehen Sie Details wie z.B. den weitergeleiteten Ereignistyp und die Gruppe ein, die benötigt wird, um die Daten zu überprüfen.
     -   **Startup Type** (Starttyp): Wählen Sie die Startmethode für die Weiterleitungskonfiguration aus. Sie können zwischen manuell und automatisch wählen.<br>Der Standard ist „Automatic“ (Automatisch). 
 6. Führen Sie unter **Events** (Ereignisse) folgende Schritte aus: 
     - **Quelle**: Wählen Sie mindestens ein Archiv aus, von wo Ereignisse weitergeleitet werden. Sie können aktive Collectorarchive (einschließlich Common Archive), verwaiste Collectorarchive (d.h. Archive für die Collectoren, die Sie gelöscht haben), ICDx-Empfängerarchive oder das System Archive auswählen. <br>Der Standard ist das Common Archive.
       > [!NOTE]
       > ICDx-Empfängerarchive werden separat nach Namen aufgelistet. 
  
-    - **Filter**: Hinzufügen eines Filters, der die Teilmenge der weiterzuleitenden Ereignisse angibt. Führen Sie einen der folgenden Schritte aus:
+    - **Filter**: Hinzufügen eines Filters, der die Teilmenge der weiterzuleitenden Ereignisse angibt. Führen Sie eines der folgenden Verfahren aus:
         - Um eine Filterbedingung auszuwählen, klicken Sie auf einen Typ, Attribut, Operator und Wert. 
         - Überprüfen Sie im Feld „Filter“ Ihre Filterbedingung. Sie können sie, wie erforderlich, direkt im Feld bearbeiten oder löschen.
         - Klicken Sie auf AND bzw. OR, um Ihre Filterbedingung hinzuzufügen.
@@ -78,4 +78,6 @@ Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeig
 In diesem Artikel haben Sie gelernt, wie Sie Symantec ICDx mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
+
 

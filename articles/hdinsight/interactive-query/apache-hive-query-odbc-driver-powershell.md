@@ -1,5 +1,5 @@
 ---
-title: Abfragen von Apache Hive mit ODBC-Treiber und PowerShell – Azure HDInsight
+title: Abfragen von Apache Hive mit ODBC-Treiber und PowerShell – Azure HDInsight
 description: Verwenden Sie den Microsoft Hive ODBC-Treiber und PowerShell zum Abfragen von Apache Hive-Clustern in Azure HDInsight.
 keywords: Hive, Hive ODBC, PowerShell
 author: hrasheed-msft
@@ -8,12 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.openlocfilehash: 04771ddc633c210ce8c7b3c42a9e46cb2f1ed349
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 211b23db56b6deebb519b9eaac4164ea83edabac
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122172"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89078570"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Tutorial: Abfragen von Apache Hive mit ODBC und PowerShell
 
@@ -32,11 +33,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
-* Einen Interactive Query-Cluster in HDInsight. Hinweise zum Erstellen finden Sie unter [Erste Schritte mit Azure HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Wählen Sie als Clustertyp **Interactive Query** aus.
+* Ein Interactive Query-Cluster in HDInsight. Hinweise zum Erstellen finden Sie unter [Erste Schritte mit Azure HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Wählen Sie als Clustertyp **Interactive Query** aus.
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Installieren des Microsoft Hive ODBC-Treibers
 
-Laden Sie den [Microsoft Hive ODBC-Treiber](https://go.microsoft.com/fwlink/?LinkID=286698) herunter, und installieren Sie ihn.
+Laden Sie den [Microsoft Hive ODBC-Treiber](https://www.microsoft.com/download/details.aspx?id=40886) herunter, und installieren Sie ihn.
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Erstellen einer Apache Hive ODBC-Datenquelle
 
@@ -54,7 +55,7 @@ Die folgenden Schritte zeigen Ihnen, wie Sie eine Apache Hive-ODBC-Datenquelle e
 
    | Eigenschaft | BESCHREIBUNG |
    | --- | --- |
-   |  Name der Datenquelle |Geben Sie einen Namen für die Datenquelle an. |
+   |  Datenquellenname |Geben Sie einen Namen für die Datenquelle an. |
    |  Host(s) |Geben Sie `CLUSTERNAME.azurehdinsight.net` ein. Zum Beispiel, `myHDICluster.azurehdinsight.net` |
    |  Port |Verwenden Sie **443**.|
    |  Datenbank |Verwenden Sie **default**. |

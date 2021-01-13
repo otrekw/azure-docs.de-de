@@ -1,233 +1,293 @@
 ---
-title: Verwenden von Helm-Repositorys in Azure Container Registry
-description: Informationen zum Verwenden eines Helm-Repositorys mit Azure Container Registry zum Speichern von Diagrammen für Ihre Anwendungen
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Speichern von Helm-Diagrammen
+description: Erfahren Sie, wie Sie Helm-Charts für Ihre Kubernetes-Anwendungen mithilfe von Depots in Azure Container Registry speichern.
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: iainfou
-ms.openlocfilehash: 2135a3a5a8f14cf6c2e7fd2984d9b221e2445c1d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 06/12/2020
+ms.openlocfilehash: 69b16f35589586787e1c31a0e9755b9030af755d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68309508"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86537866"
 ---
-# <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Verwenden Sie Azure Container Registry als Helm-Repository für Ihre Anwendungsdiagramme
+# <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Pushen und Pullen von Helm-Charts in Azure Container Registry
 
-Sie können den [Open Source-Paket-Manager von Helm][helm] verwenden, um Anwendungen für Kubernetes ohne großen Aufwand zu verwalten und bereitzustellen. Bei Helm werden Anwendungen als *Diagramme* definiert, die in einem Helm-Repository für Diagramme gespeichert werden. In diesen Diagrammen werden Konfigurationen und Abhängigkeiten definiert. Darüber hinaus können sie im gesamten Anwendungslebenszyklus mit einer Versionsangabe versehen werden. Azure Container Registry kann als Host für Helm-Repositorys für Diagramme verwendet werden.
+Sie können den [Open Source-Paket-Manager von Helm][helm] verwenden, um Anwendungen für Kubernetes ohne großen Aufwand zu verwalten und bereitzustellen. Bei Helm werden Anwendungspakete als [Charts](https://helm.sh/docs/topics/charts/) definiert, die gesammelt und in einem [Helm-Chartrepository](https://helm.sh/docs/topics/chart_repository/) gespeichert werden.
 
-Mit Azure Container Registry verfügen Sie über ein privates, sicheres Helm-Repository für Diagramme, das in Buildpipelines oder andere Azure-Dienste integriert werden kann. Helm-Repositorys für Diagramme in Azure Container Registry umfassen Georeplikationsfunktionen, damit Ihre Diagramme eng mit Bereitstellungen verbunden sind sowie zu Redundanzzwecken. Sie zahlen nur für den Speicher, der von den Diagrammen genutzt wird, und Ihnen stehen sämtliche Azure Container Registry-Tarife zur Verfügung.
-
-In diesem Artikel wird die Verwendung eines Helm-Repositorys für Diagramme erläutert, das in Azure Container Registry gespeichert ist.
+In diesem Artikel erfahren Sie, wie Sie mithilfe von Helm 3-Befehlen Helm-Chartrepositorys in einer Azure Container Registry-Instanz hosten. In vielen Szenarien würden Sie für Ihre selbst entwickelten Anwendungen eigene Charts erstellen und hochladen. Weitere Informationen zum Erstellen eigener Helm-Charts finden Sie unter [Entwicklerhandbuch für Chartvorlagen][develop-helm-charts]. Sie können auch ein vorhandenes Helm-Chart aus einem anderen Helm-Repository speichern.
 
 > [!IMPORTANT]
-> Diese Funktion steht derzeit als Vorschau zur Verfügung. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+> Die Unterstützung von Helm-Charts in Azure Container Registry befindet sich derzeit in der Vorschauphase. Wenn Sie Vorschauversionen nutzen möchten, müssen Sie die zusätzlichen [Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="helm-3-or-helm-2"></a>Helm 3 oder Helm 2?
 
-Für die Schritte in diesem Artikel müssen folgende Voraussetzungen erfüllt sein:
+Zum Speichern, Verwalten und Installieren von Helm-Charts verwenden Sie einen Helm-Client und die Helm-Befehlszeilenschnittstelle. Zu den Hauptversionen des Helm-Clients zählen Helm 3 und Helm 2. Ausführliche Informationen zu den Versionsunterschieden finden Sie in den [häufig gestellten Fragen (FAQ) zur Version](https://helm.sh/docs/faq/). 
 
-- **Azure Container Registry**: Erstellen Sie in Ihrem Azure-Abonnement eine Containerregistrierung. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md) oder die [Azure CLI](container-registry-get-started-azure-cli.md).
-- **Version 2.11.0 oder höher des Helm-Clients (keine RC-Version):** Führen Sie `helm version` aus, um Ihre aktuelle Version zu ermitteln. Darüber hinaus benötigen Sie einen Helm-Server (Tiller), der in einem Kubernetes-Cluster initialisiert wird. Bei Bedarf können Sie einen [Azure Kubernetes Service-Cluster erstellen][aks-quickstart]. Weitere Informationen zum Installieren und Aktualisieren von Helm finden Sie unter [Installieren von Helm][helm-install].
-- **Azure CLI-Version 2.0.46 oder höher** : Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+Helm 3 sollte zum Hosten von Helm-Charts in Azure Container Registry verwendet werden. Mit Helm 3 haben Sie folgende Möglichkeiten:
 
-## <a name="add-a-repository-to-helm-client"></a>Hinzufügen eines Repositorys zum Helm-Client
+* Erstellen von Helm-Repositorys in Azure Container Registry
+* Speichern von Helm 3-Charts in einer Registrierung als [OCI-Artefakte](container-registry-image-formats.md#oci-artifacts). Die Helm 3-Unterstützung für OCI ist momentan *experimentell*.
+* Authentifizieren bei Ihrer Registrierung mithilfe des Befehls `helm registry login`
+* Pushen, Pullen und Verwalten von Helm-Charts in einer Registrierung mithilfe von Befehlen vom Typ `helm chart` in der Helm-Befehlszeilenschnittstelle
+* Verwenden Sie `helm install`, um Charts aus einem lokalen Repositorycache in einem Kubernetes-Cluster zu installieren.
+> [!NOTE]
+> Ab Helm 3 gelten [az acr helm][az-acr-helm]-Befehle für die Verwendung mit dem Helm 2-Client als veraltet. Siehe die [Produktroadmap](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga). Wenn Sie zuvor Helm 2-Charts bereitgestellt haben, lesen Sie [Migrating Helm v2 to v3](https://helm.sh/docs/topics/v2_v3_migration/) (Migrieren von Helm v2 zu v3).
 
-Ein Helm-Repository ist ein HTTP-Server, auf dem Helm-Diagramme gespeichert werden können. Azure Container Registry kann diesen Speicher für Helm-Diagramme bereitstellen und die Indexdefinition verwalten, während Sie Diagramme zum Repository hinzufügen und daraus entfernen.
+## <a name="prerequisites"></a>Voraussetzungen
 
-Sie können Ihre Azure Container Registry als Repository für Helm-Diagramme über die Azure CLI hinzufügen. Bei diesem Ansatz wird Ihr Helm-Client mit dem URI und den Anmeldeinformationen für das von Azure Container Registry unterstützte Repository aktualisiert. Sie müssen diese Repositoryinformationen nicht manuell eingeben. Die Anmeldeinformationen werden folglich beispielsweise nicht im Befehlsverlauf verfügbar gemacht.
+Die folgenden Ressourcen sind für das Szenario in diesem Artikel erforderlich:
 
-Melden Sie sich bei Bedarf bei der Azure CLI an, und befolgen Sie die Eingabeaufforderungen:
+- Eine **Azure Container Registry**-Instanz in Ihrem Azure-Abonnement. Erstellen Sie bei Bedarf eine Registrierung im [Azure-Portal](container-registry-get-started-portal.md) oder über die [Azure-Befehlszeilenschnittstelle](container-registry-get-started-azure-cli.md).
+- **Version 3.1.0 oder höher des Helm-Clients:** Führen Sie `helm version` aus, um Ihre aktuelle Version zu ermitteln. Weitere Informationen zum Installieren und Aktualisieren von Helm finden Sie unter [Installieren von Helm][helm-install].
+- **Ein Kubernetes-Cluster**, in dem Sie später ein Helm-Chart installieren. Erstellen Sie bei Bedarf einen [Azure Kubernetes Service-Cluster][aks-quickstart]. 
+- **Version 2.0.71 oder höher der Azure-Befehlszeilenschnittstelle:** Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
-```azurecli
-az login
-```
+## <a name="enable-oci-support"></a>Aktivieren der OCI-Unterstützung
 
-Konfigurieren Sie mithilfe des Befehls [az configure][az-configure] die Standardwerte für die Azure-Befehlszeilenschnittstelle mit dem Namen Ihrer Azure Container Registry-Instanz. Ersetzen Sie im folgenden Beispiel `<acrName>` durch den Namen Ihrer Registrierung:
-
-```azurecli
-az configure --defaults acr=<acrName>
-```
-
-Fügen Sie nun Ihrem Helm-Client mithilfe des Befehls [az acr helm repo add][az-acr-helm-repo-add] Ihr Azure Container Registry-Helm-Chart-Repository hinzu. Mit diesem Befehl wird ein Authentifizierungstoken für Ihre Azure Container Registry abgerufen, das vom Helm-Client verwendet wird. Das Authentifizierungstoken ist eine Stunde lang gültig. Ähnlich wie `docker login` können Sie diesen Befehl in zukünftigen CLI-Sitzungen ausführen, um Ihren Helm-Client bei Ihrem Helm-Repository für Diagramme in Azure Container Registry zu authentifizieren:
-
-```azurecli
-az acr helm repo add
-```
-
-## <a name="add-a-chart-to-the-repository"></a>Hinzufügen eines Diagramms zum Repository
-
-Für diesen Artikel rufen wir aus dem öffentlichen Helm-Repository *stable* ein vorhandenes Helm-Diagramm ab. Bei dem Repository *stable* handelt es sich um ein zusammengestelltes, öffentliches Repository, das allgemeine Anwendungsdiagramme enthält. Paketverwalter können ihre Diagramme an das Repository *stable* übermitteln. Auf gleiche Weise stellt der Docker-Hub eine öffentliche Registrierung für allgemeine Containerimages bereit. Anschließend kann das über das Repository *stable* heruntergeladene Diagramm mithilfe von Push in Ihr privates Azure Container Registry-Repository übertragen werden. In den meisten Szenarios würden Sie für die von Ihnen entwickelten Anwendungen Ihre eigenen Diagramme erstellen und hochladen. Weitere Informationen zum Erstellen eigener Helm-Charts finden Sie unter [Charts][develop-helm-charts].
-
-Erstellen Sie zunächst unter *~/acr-helm* ein Verzeichnis, und laden Sie anschließend das vorhandene Diagramm *stable/wordpress* herunter:
+Verwenden Sie den Befehl `helm version`, um zu überprüfen, ob Sie Helm 3 installiert haben:
 
 ```console
-mkdir ~/acr-helm && cd ~/acr-helm
-helm fetch stable/wordpress
+helm version
 ```
 
-Listen Sie das heruntergeladene Diagramm auf, und notieren Sie sich die im Dateinamen enthaltene Wordpress-Version. Durch den Befehl `helm fetch stable/wordpress` wird keine bestimmte Version angegeben. Daher wurde die *aktuelle* Version abgerufen. Alle Helm-Charts enthalten gemäß dem Standard [SemVer 2][semver2] eine Versionsnummer im Dateinamen. In der folgenden Beispielausgabe weist das Wordpress-Diagramm die Version *2.1.10* auf:
+Legen Sie die folgende Umgebungsvariable fest, um die OCI-Unterstützung im Helm 3-Client zu aktivieren. Diese Unterstützung ist derzeit experimentell. 
 
-```
-$ ls
-
-wordpress-2.1.10.tgz
+```console
+export HELM_EXPERIMENTAL_OCI=1
 ```
 
-Pushen Sie das Chart nun über die Azure-Befehlszeilenschnittstelle mithilfe des Befehls [az acr helm push][az-acr-helm-push] in Ihr Helm-Chart-Repository in Azure Container Registry. Geben Sie den Namen des Helm-Diagramms an, das Sie im vorherigen Schritt heruntergeladen haben, wie z.B. *Wordpress-2.1.10.tgz*:
+## <a name="create-a-sample-chart"></a>Erstellen eines Beispielcharts
 
-```azurecli
-az acr helm push wordpress-2.1.10.tgz
+Erstellen Sie mithilfe der folgenden Befehle ein Testchart:
+
+```console
+mkdir helmtest
+
+cd helmtest
+helm create hello-world
 ```
 
-Nach kurzer Zeit meldet die Azure CLI, dass Ihr Diagramm gespeichert wurde, wie in der folgenden Beispielausgabe gezeigt wird:
+Wechseln Sie für dieses einfache Beispiel zunächst in den Ordner `templates`, und löschen Sie den Inhalt des Ordners:
 
+```console
+cd hello-world/templates
+rm -rf *
 ```
-$ az acr helm push wordpress-2.1.10.tgz
 
-{
-  "saved": true
-}
+Erstellen Sie im Ordner `templates` eine Datei namens `configmap.yaml`, indem Sie den folgenden Befehl ausführen:
+
+```console
+cat <<EOF > configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-world-configmap
+data:
+  myvalue: "Hello World"
+EOF
+```
+
+Weitere Informationen zum Erstellen und Ausführen dieses Beispiels finden Sie in der Helm-Dokumentation unter [Erste Schritte](https://helm.sh/docs/chart_template_guide/getting_started/).
+
+## <a name="save-chart-to-local-registry-cache"></a>Speichern des Charts im lokalen Registrierungscache
+
+Wechseln Sie in das Unterverzeichnis `hello-world`. Führen Sie anschließend `helm chart save` aus, um eine Kopie des Charts lokal zu speichern und einen Alias mit dem vollqualifizierten Namen der Registrierung (nur Kleinbuchstaben) sowie des Zielrepositorys und des Tags zu erstellen. 
+
+Im folgenden Beispiel lautet der Registrierungsname *mycontainerregistry*, das Zielrepository ist *hello-world*, und das Zielcharttag ist *v1*. Ersetzen Sie diese Werte jedoch durch Werte für Ihre Umgebung:
+
+```console
+cd ..
+helm chart save . hello-world:v1
+helm chart save . mycontainerregistry.azurecr.io/helm/hello-world:v1
+```
+
+Führen Sie `helm chart list` aus, um zu überprüfen, ob die Charts im lokalen Registrierungscache gespeichert wurden. Die Ausgabe Die Ausgabe lautet in etwa wie folgt:
+
+```console
+REF                                                      NAME            VERSION DIGEST  SIZE            CREATED
+hello-world:v1                                           hello-world       0.1.0   5899db0 3.2 KiB        2 minutes 
+mycontainerregistry.azurecr.io/helm/hello-world:v1       hello-world       0.1.0   5899db0 3.2 KiB        2 minutes
+```
+
+## <a name="authenticate-with-the-registry"></a>Authentifizieren bei der Registrierung
+
+Führen Sie in der Helm 3-Befehlszeilenschnittstelle den Befehl `helm registry login` aus, um sich [bei der Registrierung zu authentifizieren](container-registry-authentication.md), und verwenden Sie geeignete Anmeldeinformationen für Ihr Szenario.
+
+Erstellen Sie beispielsweise einen [Azure Active Directory-Dienstprinzipal mit Pull- und Pushberechtigungen](container-registry-auth-service-principal.md#create-a-service-principal) (AcrPush-Rolle) für die Registrierung. Geben Sie anschließend die Dienstprinzipal-Anmeldeinformationen für `helm registry login` an. Im folgenden Beispiel wird das Kennwort mithilfe einer Umgebungsvariablen angegeben:
+
+```console
+echo $spPassword | helm registry login mycontainerregistry.azurecr.io \
+  --username <service-principal-id> \
+  --password-stdin
+```
+
+## <a name="push-chart-to-registry"></a>Pushen eines Charts in die Registrierung
+
+Führen Sie den Befehl `helm chart push` in der Helm 3-Befehlszeilenschnittstelle aus, um das Chart in das vollqualifizierte Zielrepository zu pushen:
+
+```console
+helm chart push mycontainerregistry.azurecr.io/helm/hello-world:v1
+```
+
+Nach einem erfolgreichen Push ähnelt die Ausgabe der folgenden:
+
+```output
+The push refers to repository [mycontainerregistry.azurecr.io/helm/hello-world]
+ref:     mycontainerregistry.azurecr.io/helm/hello-world:v1
+digest:  5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
+size:    3.2 KiB
+name:    hello-world
+version: 0.1.0
 ```
 
 ## <a name="list-charts-in-the-repository"></a>Auflisten von Diagrammen im Repository
 
-Der Helm-Client verwaltet eine lokale, zwischengespeicherte Kopie der Inhalte des Remoterepositorys. Durch Änderungen an einem Remoterepository aktualisiert der Helm-Client die Liste der verfügbaren Diagramme, die ihm lokal bekannt sind, nicht automatisch. Wenn Sie über Repositorys hinweg nach Diagrammen suchen, verwendet Helm den lokal zwischengespeicherten Index. Damit das im vorherigen Schritt hochgeladene Diagramm verwendet werden kann, muss der lokale Index des Helm-Repositorys aktualisiert werden. Sie können die Repositorys im Helm-Client neu indizieren oder den Repositoryindex über die Azure CLI aktualisieren. Jedes Mal, wenn Sie ein Diagramm zu Ihrem Repository hinzufügen, müssen Sie den folgenden Schritt ausführen:
+Wie bei in Azure Container Registry gespeicherten Images können Sie mithilfe von [az acr repository][az-acr-repository]-Befehlen die Depots anzeigen, in denen Ihre Charts gehostet werden, sowie die Charttags und -manifeste. 
+
+Führen Sie z. B. [az acr repository show][az-acr-repository-show] aus, um die Eigenschaften des im vorherigen Schritt erstellten Repositorys anzuzeigen:
 
 ```azurecli
-az acr helm repo add
+az acr repository show \
+  --name mycontainerregistry \
+  --repository helm/hello-world
 ```
 
-Wenn in Ihrem Repository ein Diagramm gespeichert und der aktualisierte Index lokal verfügbar ist, können Sie einen Suchvorgang oder eine Installation mithilfe der regulären Befehle des Helm-Clients durchführen. Mit `helm search <acrName>` können Sie alle Diagramme in Ihrem Repository anzeigen. Geben Sie einen eigenen Azure Container Registry-Namen an:
+Die Ausgabe Die Ausgabe lautet in etwa wie folgt:
 
-```console
-helm search <acrName>
+```output
+{
+  "changeableAttributes": {
+    "deleteEnabled": true,
+    "listEnabled": true,
+    "readEnabled": true,
+    "writeEnabled": true
+  },
+  "createdTime": "2020-03-20T18:11:37.6701689Z",
+  "imageName": "helm/hello-world",
+  "lastUpdateTime": "2020-03-20T18:11:37.7637082Z",
+  "manifestCount": 1,
+  "registry": "mycontainerregistry.azurecr.io",
+  "tagCount": 1
+}
 ```
 
-Das Wordpress-Diagramm, das im vorherigen Schritt mithilfe von Push übertragen wurde, wird aufgelistet, wie in der folgenden Beispielausgabe gezeigt wird:
-
-```
-$ helm search myacrhelm
-
-NAME                CHART VERSION   APP VERSION DESCRIPTION
-helmdocs/wordpress  2.1.10          4.9.8       Web publishing platform for building blogs and websites.
-```
-
-Sie können die Charts auch über die Azure-Befehlszeilenschnittstelle auflisten. Verwenden Sie dazu den Befehl [az acr helm list][az-acr-helm-list]:
+Führen Sie den Befehl [az acr repository show-manifests][az-acr-repository-show-manifests] aus, um die Details des im Repository gespeicherten Charts anzuzeigen. Beispiel:
 
 ```azurecli
-az acr helm list
+az acr repository show-manifests \
+  --name mycontainerregistry \
+  --repository helm/hello-world --detail
 ```
 
-## <a name="show-information-for-a-helm-chart"></a>Anzeigen von Informationen zu einem Helm-Diagramm
+Die Ausgabe (in diesem Beispiel abgekürzt) zeigt `application/vnd.cncf.helm.config.v1+json` als `configMediaType` an:
 
-Wenn Sie im Repository Informationen zu einem bestimmten Diagramm anzeigen möchten, können Sie wieder den regulären Helm-Client verwenden. Verwenden Sie `helm inspect`, um Informationen zu dem Diagramm mit dem Namen *Wordpress* anzuzeigen.
+```output
+[
+  {
+    [...]
+    "configMediaType": "application/vnd.cncf.helm.config.v1+json",
+    "createdTime": "2020-03-20T18:11:37.7167893Z",
+    "digest": "sha256:0c03b71c225c3ddff53660258ea16ca7412b53b1f6811bf769d8c85a1f0663ee",
+    "imageSize": 3301,
+    "lastUpdateTime": "2020-03-20T18:11:37.7167893Z",
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "tags": [
+      "v1"
+    ]
+```
+
+## <a name="pull-chart-to-local-cache"></a>Pullen eines Charts in den lokalen Cache
+
+Um ein Helm-Chart in Kubernetes zu installieren, muss sich das Chart im lokalen Cache befinden. Führen Sie in diesem Beispiel zuerst `helm chart remove` aus, um das vorhandene lokale Chart mit dem Namen `mycontainerregistry.azurecr.io/helm/hello-world:v1` zu entfernen:
 
 ```console
-helm inspect <acrName>/wordpress
+helm chart remove mycontainerregistry.azurecr.io/helm/hello-world:v1
 ```
 
-Wenn keine Versionsnummer angegeben ist, wird die *aktuelle* Version verwendet. Helm Gibt ausführliche Informationen zu Ihrem Diagramm zurück, wie in der folgenden verkürzten Beispielausgabe gezeigt wird:
-
-```
-$ helm inspect myacrhelm/wordpress
-
-appVersion: 4.9.8
-description: Web publishing platform for building blogs and websites.
-engine: gotpl
-home: https://www.wordpress.com/
-icon: https://bitnami.com/assets/stacks/wordpress/img/wordpress-stack-220x234.png
-keywords:
-- wordpress
-- cms
-- blog
-- http
-- web
-- application
-- php
-maintainers:
-- email: containers@bitnami.com
-  name: bitnami-bot
-name: wordpress
-sources:
-- https://github.com/bitnami/bitnami-docker-wordpress
-version: 2.1.10
-[...]
-```
-
-Die Informationen zu einem Chart können auch über die Azure-Befehlszeilenschnittstelle angezeigt werden. Verwenden Sie dazu den Befehl [az acr helm show][az-acr-helm-show]. Auch hier wird standardmäßig die *aktuelle* Version eines Diagramms zurückgegeben. Sie können `--version` anfügen, um eine bestimmte Version eines Diagramms aufzulisten, z.B. *2.1.10*:
-
-```azurecli
-az acr helm show wordpress
-```
-
-## <a name="install-a-helm-chart-from-the-repository"></a>Installieren eines Helm-Diagramms aus dem Repository
-
-Das Helm-Diagramm in Ihrem Repository wird installiert, indem Sie den Namen des Repositorys angeben und anschließend auf den Namen des Diagramms klicken. Sie können das Wordpress-Diagramm mithilfe des Helm-Clients installieren:
+Führen Sie `helm chart pull` aus, um das Chart aus Azure Container Registry in Ihren lokalen Cache herunterzuladen:
 
 ```console
-helm install <acrName>/wordpress
+helm chart pull mycontainerregistry.azurecr.io/helm/hello-world:v1
 ```
 
-> [!TIP]
-> Wenn Sie das Diagramm mithilfe von Push in Ihr Helm-Repository für Diagramme in Azure Container Registry übertragen und später in einer neuen CLI-Sitzung zurückkehren, benötigt Ihr lokaler Helm-Client ein aktualisiertes Authentifizierungstoken. Mithilfe des Befehls [az acr helm repo add][az-acr-helm-repo-add] können Sie ein neues Authentifizierungstoken abrufen.
+## <a name="export-helm-chart"></a>Exportieren von Helm-Charts
 
-Während des Installationsprozesses werden die folgenden Schritte ausgeführt:
+Wenn Sie mit dem Chart weiterarbeiten möchten, exportieren Sie es mithilfe von `helm chart export` in ein lokales Verzeichnis. Exportieren Sie z. B. das Chart, das Sie in das Verzeichnis `install` gepullt haben:
 
-- Der Helm-Client durchsucht den lokalen Repositoryindex.
-- Das entsprechende Diagramm wird aus dem Azure Container Registry-Repository heruntergeladen.
-- Das Diagramm wird mit Tiller in Ihrem Kubernetes-Cluster bereitgestellt.
-
-Die folgende verkürzte Beispielausgabe zeigt die Kubernetes-Ressource, die über das Helm-Diagramm bereitgestellt wurden:
-
+```console
+helm chart export mycontainerregistry.azurecr.io/helm/hello-world:v1 \
+  --destination ./install
 ```
-$ helm install myacrhelm/wordpress
 
-NAME:   irreverent-jaguar
-LAST DEPLOYED: Thu Sep 13 21:44:20 2018
+Um Informationen zum exportierten Chart im Repository anzuzeigen, führen Sie den Befehl `helm show chart` in dem Verzeichnis aus, in das Sie das Chart exportiert haben.
+
+```console
+cd install
+helm show chart hello-world
+```
+
+Helm gibt ausführliche Informationen zur aktuellen Version Ihres Charts zurück, wie in der folgenden Beispielausgabe zu sehen:
+
+```output
+apiVersion: v2
+appVersion: 1.16.0
+description: A Helm chart for Kubernetes
+name: hello-world
+type: application
+version: 0.1.0    
+```
+
+## <a name="install-helm-chart"></a>Installieren von Helm-Charts
+
+Führen Sie `helm install` aus, um das Helm-Chart, das Sie in den lokalen Cache gepullt und exportiert haben, zu installieren. Geben Sie einen Releasenamen (beispielsweise *myhelmtest*) an, oder übergeben Sie den Parameter `--generate-name`. Beispiel:
+
+```console
+helm install myhelmtest ./hello-world
+```
+
+Die Ausgabe nach erfolgreicher Chartinstallation sieht in etwa wie folgt aus:
+
+```console
+NAME: myhelmtest
+LAST DEPLOYED: Fri Mar 20 14:14:42 2020
 NAMESPACE: default
-STATUS: DEPLOYED
-
-RESOURCES:
-==> v1/Pod(related)
-NAME                                          READY  STATUS   RESTARTS  AGE
-irreverent-jaguar-wordpress-7ff46d9b8c-b7v6m  0/1    Pending  0         1s
-irreverent-jaguar-mariadb-0                   0/1    Pending  0         1s
-[...]
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
 ```
 
-## <a name="delete-a-helm-chart-from-the-repository"></a>Löschen eines Helm-Diagramms aus dem Repository
+Führen Sie den Befehl `helm get manifest` aus, um die Installation zu überprüfen. 
 
-Wenn Sie ein Chart aus dem Repository löschen möchten, verwenden Sie den Befehl [az acr helm delete][az-acr-helm-delete]. Geben Sie den Namen des Diagramms, z.B. *Wordpress*, und die zu löschende Version an, z.B. *2.1.10*.
-
-```azurecli
-az acr helm delete wordpress --version 2.1.10
+```console
+helm get manifest myhelmtest
 ```
 
-Lassen Sie den Parameter `--version` aus, wenn alle Versionen des benannten Diagramms gelöscht werden sollen.
+Der Befehl gibt die YAML-Daten in der Vorlagendatei `configmap.yaml` zurück.
 
-Das Diagramm wird weiterhin in `helm search <acrName>` zurückgegeben. Auch hier aktualisiert der Helm-Client nicht automatisch die Liste der in einem Repository verfügbaren Diagramme. Mithilfe des Befehls [az acr helm repo add][az-acr-helm-repo-add] können Sie den Repositoryindex des Helm-Clients aktualisieren:
+Führen Sie `helm uninstall` aus, um das Chart-Release in Ihrem Cluster zu deinstallieren:
+
+```console
+helm uninstall myhelmtest
+```
+
+## <a name="delete-chart-from-the-registry"></a>Löschen eines Charts aus der Registrierung
+
+Wenn Sie ein Chart aus der Containerregistrierung löschen möchten, verwenden Sie den Befehl [az acr repository delete][az-acr-repository-delete]. Führen Sie den folgenden Befehl aus, und bestätigen Sie den Vorgang, wenn Sie dazu aufgefordert werden:
 
 ```azurecli
-az acr helm repo add
+az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurde ein vorhandenes Helm-Diagramm aus dem öffentlichen Repository *stable* verwendet. Weitere Informationen zum Erstellen und Bereitstellen von Helm-Charts finden Sie unter [Charts][develop-helm-charts].
-
-Helm-Diagramme können als Teil des Containererstellungsprozesses verwendet werden. Weitere Informationen finden Sie unter [Automatisieren von Containerimage-Builds und Wartung mit ACR Tasks][acr-tasks].
-
-Weitere Informationen zur Verwendung und Verwaltung von Azure Container Registry finden Sie unter [Bewährte Methoden für Azure Container Registry][acr-bestpractices].
+* Weitere Informationen zum Erstellen und Bereitstellen von Helm-Charts finden Sie unter [Charts][develop-helm-charts].
+* Weitere Informationen zum Installieren von Anwendungen mit Helm in Azure Kubernetes Service (AKS) finden Sie [hier](../aks/kubernetes-helm.md).
+* Helm-Diagramme können als Teil des Containererstellungsprozesses verwendet werden. Weitere Informationen finden Sie unter [Verwenden von Azure Container Registry Tasks][acr-tasks].
 
 <!-- LINKS - external -->
 [helm]: https://helm.sh/
-[helm-install]: https://docs.helm.sh/using_helm/#installing-helm
-[develop-helm-charts]: https://docs.helm.sh/developing_charts/
-[semver2]: https://semver.org/
+[helm-install]: https://helm.sh/docs/intro/install/
+[develop-helm-charts]: https://helm.sh/docs/chart_template_guide/
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - internal -->
@@ -236,9 +296,10 @@ Weitere Informationen zur Verwendung und Verwaltung von Azure Container Registry
 [acr-bestpractices]: container-registry-best-practices.md
 [az-configure]: /cli/azure/reference-index#az-configure
 [az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-helm-repo-add]: /cli/azure/acr/helm/repo#az-acr-helm-repo-add
-[az-acr-helm-push]: /cli/azure/acr/helm#az-acr-helm-push
-[az-acr-helm-list]: /cli/azure/acr/helm#az-acr-helm-list
-[az-acr-helm-show]: /cli/azure/acr/helm#az-acr-helm-show
-[az-acr-helm-delete]: /cli/azure/acr/helm#az-acr-helm-delete
+[az-acr-helm]: /cli/azure/acr/helm
+[az-acr-repository]: /cli/azure/acr/repository
+[az-acr-repository-show]: /cli/azure/acr/repository#az-acr-repository-show
+[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
+[az-acr-repository-show-tags]: /cli/azure/acr/repository#az-acr-repository-show-tags
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests
 [acr-tasks]: container-registry-tasks-overview.md

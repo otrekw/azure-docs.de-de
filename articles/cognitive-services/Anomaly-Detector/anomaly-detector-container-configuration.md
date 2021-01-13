@@ -3,19 +3,19 @@ title: Konfigurieren eines Containers für die Anomalieerkennungs-API
 titleSuffix: Azure Cognitive Services
 description: Die Containerlaufzeitumgebung der Anomalieerkennungs-API wird über die Argumente des Befehls `docker run` konfiguriert. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen.
 services: cognitive-services
-author: IEvangelist
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.author: dapine
-ms.openlocfilehash: 4a961080bc124e53a8c5fe4dcc5f3cd6f21e9e5c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 05/07/2020
+ms.author: mbullwin
+ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102571"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363713"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Konfigurieren von Containern für die Anomalieerkennung
 
@@ -28,12 +28,12 @@ Dieser Container hat die folgenden Konfigurationseinstellungen:
 |Erforderlich|Einstellung|Zweck|
 |--|--|--|
 |Ja|[ApiKey](#apikey-configuration-setting)|Wird zum Nachverfolgen von Abrechnungsinformationen verwendet.|
-|Nein|[ApplicationInsights](#applicationinsights-setting)|Ermöglicht das Hinzufügen von Unterstützung für [Azure Application Insights](https://docs.microsoft.com/azure/application-insights)-Telemetriedaten in Ihrem Container.|
+|Nein|[ApplicationInsights](#applicationinsights-setting)|Ermöglicht das Hinzufügen von Unterstützung für [Azure Application Insights](/azure/application-insights)-Telemetriedaten in Ihrem Container.|
 |Ja|[Abrechnung](#billing-configuration-setting)|Gibt den Endpunkt-URI der Dienstressource in Azure an.|
 |Ja|[Eula](#eula-setting)| Gibt an, dass Sie die Lizenz für den Container akzeptiert haben.|
 |Nein|[Fluentd](#fluentd-settings)|Schreibt Protokoll- und optional auch Metrikdaten auf einen Fluentd-Server.|
 |Nein|[HTTP-Proxy](#http-proxy-credentials-settings)|Konfigurieren Sie einen HTTP-Proxy für ausgehende Anforderungen.|
-|Nein|[Protokollierung](#logging-settings)|Bietet Unterstützung für die ASP.NET Core-Protokollierung für Ihren Container. |
+|Nein|[Logging](#logging-settings)|Bietet Unterstützung für die ASP.NET Core-Protokollierung für Ihren Container. |
 |Nein|[Mounts](#mount-settings)|Liest und schreibt Daten vom Hostcomputer in den Container und umgekehrt.|
 
 > [!IMPORTANT]
@@ -45,7 +45,7 @@ Die `ApiKey`-Einstellung gibt den Schlüssel der Azure-Ressourcen an, mit dem di
 
 Diese Einstellung finden Sie hier:
 
-* Azure-Portal: Ressourcenverwaltung der **Anomalieerkennung** (unter **Schlüssel**)
+* Azure-Portal: Ressourcenverwaltung der **Anomalieerkennung** (unter **Schlüssel** )
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights-Einstellung
 
@@ -59,9 +59,9 @@ Diese Einstellung finden Sie hier:
 
 * Azure-Portal: Übersicht über die **Anomalieerkennung** mit der Bezeichnung `Endpoint`
 
-|Erforderlich| NAME | Datentyp | BESCHREIBUNG |
+|Erforderlich| Name | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westus2.api.cognitive.microsoft.com` |
+|Ja| `Billing` | String | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](anomaly-detector-container-howto.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
@@ -88,10 +88,10 @@ Die Container für die Anomalieerkennung verwenden keine Eingabe- oder Ausgabeei
 
 Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Betriebssystem des Hosts. Darüber hinaus ist es eventuell nicht möglich, auf den Bereitstellungspunkt auf dem [Hostcomputer](anomaly-detector-container-howto.md#the-host-computer) zuzugreifen, wenn ein Konflikt zwischen den vom Docker-Dienstkonto verwendeten Berechtigungen und den für den Bereitstellungspunkt auf dem Host verwendeten Berechtigungen besteht. 
 
-|Optional| NAME | Datentyp | BESCHREIBUNG |
+|Optional| Name | Datentyp | BESCHREIBUNG |
 |-------|------|-----------|-------------|
-|Nicht zulässig| `Input` | Zeichenfolge | Wird von Containern für die Anomalieerkennung nicht verwendet.|
-|Optional| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nicht zulässig| `Input` | String | Wird von Containern für die Anomalieerkennung nicht verwendet.|
+|Optional| `Output` | String | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“ 
 
@@ -121,7 +121,7 @@ Im Folgenden finden Sie Docker-Beispiele für Container für die Anomalieerkennu
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector \
+  mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector \
   Eula=accept \
   Billing={ENDPOINT_URI} \
   ApiKey={API_KEY} 
@@ -131,7 +131,7 @@ Im Folgenden finden Sie Docker-Beispiele für Container für die Anomalieerkennu
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector \
+  mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector \
   Eula=accept \
   Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information

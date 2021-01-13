@@ -1,7 +1,7 @@
 ---
 title: Übersicht zur Dokumentation der Microsoft-Sicherheitscodeanalyse
-description: Dieser Artikel bietet eine Übersicht über die Erweiterung „Microsoft-Sicherheitscodeanalyse“.
-author: vharindra
+description: Erfahren Sie mehr über die Erweiterung „Microsoft-Sicherheitscodeanalyse“. Mit dieser Erweiterung können Sie die Sicherheitscodeanalyse in Azure DevOps-CI- und -ID-Pipelines integrieren.
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a7ab908673f60a651db48ae0485592a362741b6d
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: a3af3307892e82ecd0697124954e99837ad5eb9e
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242317"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515692"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informationen zur Microsoft-Sicherheitscodeanalyse
 
@@ -39,13 +39,13 @@ Tools der Microsoft-Sicherheitscodeanalyse werden der Azure DevOps-Pipeline gena
 
 ### <a name="clean-builds"></a>Bereinigte Builds
 
-Nachdem Sie die anfänglichen Probleme behoben haben, die von den Tools gemeldet wurden, können Sie die Erweiterung so konfigurieren, dass die Builds bei neuen Problemen unterbrochen werden. Das Einrichten von Continuous Integration-Builds bei jedem Pull Request ist ausgesprochen einfach.
+Nachdem Sie die anfänglichen Probleme behoben haben, die von den Tools gemeldet wurden, können Sie die Erweiterung so konfigurieren, dass die Builds bei neuen Problemen unterbrochen werden.  Das Einrichten von Continuous Integration-Builds bei jedem Pull Request ist ausgesprochen einfach.
 
 ### <a name="set-it-and-forget-it"></a>Einmal festlegen und dann vergessen
 
 Die Buildtasks und -tools bleiben standardmäßig auf dem neuesten Stand. Wenn es eine aktualisierte Version eines Tools gibt, muss diese nicht heruntergeladen und installiert werden. Dies erfolgt automatisch über die Erweiterung.
 
-### <a name="under-the-hood"></a>Im Hintergrund
+### <a name="under-the-hood"></a>Hinter den Kulissen
 
 Die Komplexität folgender Vorgänge wird durch die Buildtasks der Erweiterung abstrahiert:
   - Ausführen statischer Sicherheitsanalysetools
@@ -71,13 +71,9 @@ BinSkim ist ein einfacher PE-Scanner (Portable Executable, portierbar ausführba
 
 Kennwörter und andere Geheimnisse, die im Quellcode gespeichert sind, stellen ein erhebliches Problem dar. Credential Scanner ist ein proprietäres statisches Analysetool, mit dem das Problem behoben werden kann. Das Tool erkennt Anmeldeinformationen, Geheimnisse, Zertifikate und andere vertrauliche Inhalte im Quellcode und in der Buildausgabe.
 
-### <a name="microsoft-security-risk-detection"></a>Microsoft Security Risk Detection
-
-Microsoft Security Risk Detection (MSRD) ist ein cloudbasierter Fuzzing-Dienst. Er identifiziert ausnutzbare Sicherheitsfehler in der Software. Dieser Dienst erfordert einen separaten Onboardingprozess. Weitere Informationen finden Sie im [MSRD Developer Center](https://docs.microsoft.com/security-risk-detection/).
-
 ### <a name="roslyn-analyzers"></a>Roslyn Analyzers
 
-Roslyn Analyzers ist das in den Compiler integrierte statische Microsoft-Analysetool zum Analysieren von verwaltetem Code (C# und Visual Basic). Weitere Informationen finden Sie unter [Die auf Roslyn basierenden Analysetools](https://docs.microsoft.com/dotnet/standard/analyzers/).
+Roslyn Analyzers ist das in den Compiler integrierte statische Microsoft-Analysetool zum Analysieren von verwaltetem Code (C# und Visual Basic). Weitere Informationen finden Sie unter [Die auf Roslyn basierenden Analysetools](/dotnet/fundamentals/code-analysis/quality-rules/security-warnings).
 
 ### <a name="tslint"></a>TSLint
 
@@ -112,6 +108,6 @@ Sie können diesen Task so konfigurieren, dass der Build bei Problemen, die von 
 
 Anweisungen zum Onboarding und zur Installation der Microsoft-Sicherheitscodeanalyse finden Sie in der Anleitung zu [Onboarding und Installation](security-code-analysis-onboard.md).
 
-Weitere Informationen zum Konfigurieren der Buildtasks finden Sie in der [Konfigurationsanleitung](security-code-analysis-customize.md).
+Weitere Informationen zum Konfigurieren der Buildtasks finden Sie in der [Konfigurationsanleitung](security-code-analysis-customize.md) oder im [YAML-Konfigurationshandbuch](yaml-configuration.md).
 
 Wenn Sie weitere Fragen zur Erweiterung und zu den angebotenen Tools haben, lesen Sie unsere [Seite mit FAQs](security-code-analysis-faq.md).

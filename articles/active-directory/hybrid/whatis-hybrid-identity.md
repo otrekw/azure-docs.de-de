@@ -13,12 +13,12 @@ ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3d681dd06f07f6174e31b59cccf42df5dc16a1e
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 895355b5acebffe6ad24b15b0c709d21e8f20be4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779846"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90016647"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Was bedeutet Hybrididentität in Azure Active Directory?
 
@@ -36,7 +36,7 @@ Um Hybrididentität in Azure AD zu erreichen, kann je nach Szenario eine von dre
 
 Diese Authentifizierungsmethoden bieten auch [SSO](how-to-connect-sso.md)-Funktionen.  Einmaliges Anmelden meldet Benutzer automatisch bei ihren Unternehmensgeräten an, die mit dem Unternehmensnetzwerk verbunden sind.
 
-Weitere Informationen finden Sie unter [Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn). 
+Weitere Informationen finden Sie unter [Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](./choose-ad-authn.md). 
 
 ## <a name="common-scenarios-and-recommendations"></a>Gängige Szenarien und Empfehlungen 
 
@@ -45,7 +45,7 @@ Im Folgenden sind einige verbreitete Hybrididentitäts- und Zugriffsverwaltungss
 |Ziel|PHS und SSO<sup>1</sup>| PTA und SSO<sup>2</sup> | AD FS<sup>3</sup>| 
 |-----|-----|-----|-----| 
 |Automatisches Synchronisieren neuer Benutzer-, Kontakt- und Gruppenkonten, die in meiner lokalen Active Directory-Instanz erstellt werden, mit der Cloud|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
-|Einrichten meines Mandanten für Office 365-Hybridszenarios|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
+|Einrichten meines Mandanten für Microsoft 365-Hybridszenarios|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
 |Ermöglichen der Anmeldung und des Zugriffs auf Clouddienste für meine Benutzer mit ihrem lokalen Kennwort|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
 |Implementieren des einmaligen Anmeldens mit Anmeldeinformationen des Unternehmens|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)|  
 |Sicherstellen, dass keine Kennworthashes in der Cloud gespeichert werden| |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
@@ -60,7 +60,7 @@ Im Folgenden sind einige verbreitete Hybrididentitäts- und Zugriffsverwaltungss
 > 
 > <sup>3</sup> Einmalige Verbundanmeldung mit AD FS  
 >  
-> <sup>4</sup> AD FS kann in Ihre Unternehmens-PKI integriert werden, damit die Anmeldung mithilfe von Zertifikaten möglich ist. Bei diesen Zertifikaten kann es sich um Softzertifikate handeln, die über vertrauenswürdige Bereitstellungskanäle bereitgestellt werden, etwa MDM-, GPO- oder Smartcard-Zertifikate (einschließlich PIV/CAC-Karten) oder Hello for Business (cert-trust). Weitere Informationen zur Unterstützung der Smartcard-Authentifizierung finden Sie in [diesem Blog](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/). 
+> <sup>4</sup> AD FS kann in Ihre Unternehmens-PKI integriert werden, damit die Anmeldung mithilfe von Zertifikaten möglich ist. Bei diesen Zertifikaten kann es sich um Softzertifikate handeln, die über vertrauenswürdige Bereitstellungskanäle bereitgestellt werden, etwa MDM-, GPO- oder Smartcard-Zertifikate (einschließlich PIV/CAC-Karten) oder Hello for Business (cert-trust). Weitere Informationen zur Unterstützung der Smartcard-Authentifizierung finden Sie in [diesem Blog](/archive/blogs/samueld/adfs-certauth-aad-o365). 
 > 
 
 ## <a name="license-requirements-for-using-azure-ad-connect"></a>Lizenzanforderungen für die Verwendung von Azure AD Connect
@@ -73,5 +73,4 @@ Im Folgenden sind einige verbreitete Hybrididentitäts- und Zugriffsverwaltungss
 - [Was ist Kennworthashsynchronisierung (PHS)?](whatis-phs.md) 
 - [Worum handelt es sich bei der Passthrough-Authentifizierung (PTA)?](how-to-connect-pta.md) 
 - [Was ist ein Verbund?](whatis-fed.md) 
-- [Nahtlose einmalige Anmeldung mit Azure Active Directory](how-to-connect-sso.md) 
-
+- [Nahtlose einmalige Anmeldung mit Azure Active Directory](how-to-connect-sso.md)

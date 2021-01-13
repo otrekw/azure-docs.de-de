@@ -1,19 +1,19 @@
 ---
-title: Verschieben der Azure Site Recovery-Konfiguration in eine andere Azure-Region | Microsoft-Dokumentation
-description: Leitfaden zum Verschieben einer Site Recovery-Konfiguration in eine andere Azure-Region
+title: Verschieben eines Azure Site Recovery-Tresors in eine andere Region
+description: Es wird beschrieben, wie Sie einen Recovery Services-Tresor (Azure Site Recovery) in eine andere Azure-Region verschieben.
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 07/31/2019
-ms.author: rajanaki
+ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 2cf06a0c4e35d22cbad260201183516db2f07436
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: a8cb5ec782b5932c13e321b2ba2d6513597fef52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013461"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87422639"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Verschieben eines Recovery Services-Tresors und der Azure Site Recovery-Konfiguration in eine andere Azure-Region
 

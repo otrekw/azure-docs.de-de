@@ -1,8 +1,7 @@
 ---
-title: Verbinden mit 3270-Apps auf IBM Mainframes mit Azure – Azure Logic Apps
+title: Herstellen einer Verbindung mit 3270-Apps auf IBM-Mainframes
 description: Integrieren und Automatisieren von bildschirmgesteuerten 3270-Apps mit Azure mithilfe von Azure Logic Apps und IBM 3270-Connector
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: ChristopherHouser
 ms.author: chrishou
@@ -10,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 50b8fc6b6a350d0a5982cc84f94067979d018cce
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: ae99e3fa287cc9012e317142cc1e6aef36ce90d6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050676"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094998"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrieren von bildschirmgesteuerten 3270-Apps auf IBM Mainframes mit Azure mithilfe von Azure Logic Apps und IBM 3270-Connector
 
@@ -76,11 +75,11 @@ Die einzige Voraussetzung ist [Microsoft .NET Framework 4.6.1](https://aka.ms/ne
 
 ## <a name="create-metadata-overview"></a>Übersicht über das Erstellen von Metadaten
 
-In einer bildschirmgesteuerten 3270-App sind die Bildschirme und Datenfelder für Ihre Szenarien eindeutig. Daher benötigt der 3270-Connector diese Informationen über Ihre App, die Sie als Metadaten bereitstellen können. Diese Metadaten beschreiben Informationen, die Ihrer Logik-App helfen, Bildschirme zu identifizieren und zu erkennen, sie beschreiben, wie Sie zwischen Bildschirmen navigieren, wo Sie Daten eingeben, und wo Ergebnisse zu erwarten sind. Um diese Metadaten anzugeben und zu generieren, verwenden Sie das 3270-Designtool, das Sie durch diese spezifischen *Modi*, oder auch Phasen, führt, wie weiter unten ausführlicher beschrieben:
+In einer bildschirmgesteuerten 3270-App sind die Bildschirme und Datenfelder für Ihre Szenarien eindeutig. Daher benötigt der 3270-Connector diese Informationen über Ihre App, die Sie als Metadaten bereitstellen können. Diese Metadaten beschreiben Informationen, die Ihrer Logik-App helfen, Bildschirme zu identifizieren und zu erkennen, sie beschreiben, wie Sie zwischen Bildschirmen navigieren, wo Sie Daten eingeben, und wo Ergebnisse zu erwarten sind. Um diese Metadaten anzugeben und zu generieren, verwenden Sie das 3270-Designtool, das Sie durch diese spezifischen *Modi* , oder auch Phasen, führt, wie weiter unten ausführlicher beschrieben:
 
 * **Capture** (Erfassen): In diesem Modus zeichnen Sie die Bildschirme auf, die für das Durchführen einer bestimmten Aufgabe mit Ihrer Mainframe-App erforderlich sind, z. B. das Abrufen eines Kontostands.
 
-* **Navigation**: In diesem Modus geben Sie den Plan oder Pfad dafür an, wie durch die Bildschirme Ihrer Mainframe-App für die spezifische Aufgabe zu navigieren ist.
+* **Navigation** : In diesem Modus geben Sie den Plan oder Pfad dafür an, wie durch die Bildschirme Ihrer Mainframe-App für die spezifische Aufgabe zu navigieren ist.
 
 * **Methods** (Methoden): In diesem Modus definieren Sie die Methode, z. B. `GetBalance`, die den Bildschirmnavigationspfad beschreibt. Sie wählen auch die Felder auf jedem Bildschirm aus, die zu Eingabe- und Ausgabeparametern der Methode werden.
 
@@ -292,8 +291,8 @@ In diesem Modus definieren Sie eine Methode, die Ihrem Navigationsplan zugeordne
    | Eigenschaftenname | Mögliche Werte | 
    |---------------|-----------------|
    | **Datentyp** | Byte, Date Time, Decimal, Int, Long, Short, String |
-   | **Field Fill Technique** (Feldauffüllmethode) | Parameter unterstützen folgende Auffülltypen, wobei erforderlichenfalls mit Leerzeichen aufgefüllt wird: <p><p>- **Type**: Zeichen sequenziell in das Feld eingeben. <p>- **Fill**: Den Inhalt des Felds durch Zeichen ersetzen, wobei erforderlichenfalls mit Leerzeichen aufgefüllt wird. <p>- **EraseEofType**: Das Feld löschen und dann Zeichen sequenziell in das Feld eingeben. |
-   | **Format String** (Formatzeichenfolge) | Manche Parameterdatentypen verwenden eine Formatzeichenfolge, die dem 3270-Connector mitteilt, wie Text aus dem Bildschirm in einen .NET-Datentyp zu konvertieren ist: <p><p>- **DateTime**: Die Formatzeichenfolge „DateTime“ richtet sich nach den [benutzerdefinierten .NET-Formatzeichenfolgen für Datum und Uhrzeit](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Z. B. verwendet das Datum `06/30/2019` die Formatzeichenfolge `MM/dd/yyyy`. <p>- **Decimal**: Die Formatzeichenfolge „Decimal“ verwendet die [COBOL Picture-Klausel](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Z. B. verwendet die Zahl `100.35` die Formatzeichenfolge `999V99`. |
+   | **Field Fill Technique** (Feldauffüllmethode) | Parameter unterstützen folgende Auffülltypen, wobei erforderlichenfalls mit Leerzeichen aufgefüllt wird: <p><p>- **Type** : Zeichen sequenziell in das Feld eingeben. <p>- **Fill** : Den Inhalt des Felds durch Zeichen ersetzen, wobei erforderlichenfalls mit Leerzeichen aufgefüllt wird. <p>- **EraseEofType** : Das Feld löschen und dann Zeichen sequenziell in das Feld eingeben. |
+   | **Format String** (Formatzeichenfolge) | Manche Parameterdatentypen verwenden eine Formatzeichenfolge, die dem 3270-Connector mitteilt, wie Text aus dem Bildschirm in einen .NET-Datentyp zu konvertieren ist: <p><p>- **DateTime** : Die Formatzeichenfolge „DateTime“ richtet sich nach den [benutzerdefinierten .NET-Formatzeichenfolgen für Datum und Uhrzeit](/dotnet/standard/base-types/custom-date-and-time-format-strings). Z. B. verwendet das Datum `06/30/2019` die Formatzeichenfolge `MM/dd/yyyy`. <p>- **Decimal** : Die Formatzeichenfolge „Decimal“ verwendet die [COBOL Picture-Klausel](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasb/picture.htm). Z. B. verwendet die Zahl `100.35` die Formatzeichenfolge `999V99`. |
    |||
 
 ## <a name="save-and-view-metadata"></a>Speichern und Anzeigen von Metadaten
@@ -359,7 +358,7 @@ Wenn Sie alle diese Schritte abgeschlossen haben, können Sie die Aktion, die Si
 
 1. Wenn noch keine Verbindung besteht, geben Sie die erforderlichen Informationen für Ihre Verbindung an, und wählen Sie **Erstellen** aus.
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Verbindungsname** | Ja | <*connection-name*> | Name der Verbindung |
    | **ID des Integrationskontos** | Ja | <*integration-account-name*> | Name Ihres Integrationskontos |
@@ -369,7 +368,7 @@ Wenn Sie alle diese Schritte abgeschlossen haben, können Sie die Aktion, die Si
    | **Gerätetyp** | Nein | <*IBM-terminal-model*> | Der Name oder die Nummer des Modells für das zu emulierende IBM-Terminal. Wird das Feld nicht ausgefüllt, verwendet der Connector Standardwerte. |
    | **Codepage** | Nein | <*code-page-number*> | Die Codepagenummer für den Host. Wird das Feld nicht ausgefüllt, verwendet der Connector `37` als Standardwert. |
    | **Name der logischen Einheit** | Nein | <*logical-unit-name*> | Der Name der spezifischen logischen Einheit, die vom Host angefordert werden soll. |
-   | **SSL aktivieren?** | Nein | „Ein“ oder „Aus“ | Aktivieren oder Deaktivieren der SSL-Verschlüsselung |
+   | **SSL aktivieren?** | Nein | „Ein“ oder „Aus“ | Aktivieren oder Deaktivieren der TLS-Verschlüsselung |
    | **SSL-Zertifikat des Hosts überprüfen?** | Nein | „Ein“ oder „Aus“ | Aktivieren oder deaktivieren Sie die Überprüfung des Serverzertifikats. |
    ||||
 
@@ -379,7 +378,7 @@ Wenn Sie alle diese Schritte abgeschlossen haben, können Sie die Aktion, die Si
 
 1. Geben Sie die erforderlichen Informationen für die Aktion ein:
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **HIDX-Name** | Ja | <*HIDX-file-name*> | Wählen Sie die zu verwendende 3270 HIDX-Datei aus. |
    | **Methodenname** | Ja | <*method-name*> | Wählen Sie die Methode in der HIDX-Datei aus, die Sie verwenden möchten. Nachdem Sie eine Methode ausgewählt haben, wird die Liste **Neuen Parameter hinzufügen** angezeigt, sodass Sie Parameter auswählen können, die mit dieser Methode verwendet werden sollen. |
@@ -410,8 +409,12 @@ Wenn Sie alle diese Schritte abgeschlossen haben, können Sie die Aktion, die Si
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/si3270/).
+Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/si3270/).
+
+> [!NOTE]
+> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
+

@@ -1,18 +1,18 @@
 ---
 title: 'Azure-Schnellstart: Erstellen eines Blobs im Objektspeicher mithilfe von PHP | Microsoft-Dokumentation'
-description: Hier lernen Sie schnell, wie Sie mit PHP Objekte nach/aus Azure Blob Storage übertragen.
+description: Hier lernen Sie schnell, wie Sie mit PHP Objekte nach/aus Azure Blob Storage übertragen. Sie erfahren, wie Sie Blockblobs in einem Container in Azure Blob Storage hochladen, herunterladen und auflisten.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: af35927abfa491891dffe2c2397d6daf8c1ccde2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726391"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543118"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit PHP
 In diesem Schnellstart erfahren Sie, wie Sie mit PHP Blockblobs in einem Container in Azure Blob Storage hochladen, herunterladen und auflisten. 
@@ -42,14 +42,14 @@ Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Suche
 ## <a name="configure-your-storage-connection-string"></a>Konfigurieren der Speicherverbindungszeichenfolge
 In der Anwendung müssen Sie Ihren Speicherkontonamen sowie den Kontoschlüssel angeben, um die **BlobRestProxy**-Instanz für Ihre Anwendung zu erstellen. Es wird empfohlen, diese Bezeichner in einer Umgebungsvariablen auf dem lokalen Computer zu speichern, auf dem die Anwendung ausgeführt wird. Verwenden Sie je nach Betriebssystem die Schritte für eines der folgenden Beispiele, um die Umgebungsvariable zu erstellen. Ersetzen Sie die Werte **youraccountname** und **youraccountkey** durch Ihren Kontonamen und den Kontoschlüssel.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export ACCOUNT_NAME=<youraccountname>
 export ACCOUNT_KEY=<youraccountkey>
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```cmd
 setx ACCOUNT_NAME=<youraccountname>
@@ -57,7 +57,7 @@ setx ACCOUNT_KEY=<youraccountkey>
 ```
 ---
 
-## <a name="configure-your-environment"></a>Konfigurieren der Umgebung
+## <a name="configure-your-environment"></a>Konfigurieren Ihrer Umgebung
 Fügen Sie den Ordner aus Ihrem lokalen Git-Ordner in ein Verzeichnis ein, das von Ihrem PHP-Server bereitgestellt wird. Öffnen Sie anschließend eine Eingabeaufforderung für dieses Verzeichnis, und geben Sie `php composer.phar install` ein.
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels
@@ -91,7 +91,7 @@ Zunächst müssen die Verweise auf die Objekte erstellt werden, die zum Zugreife
 Wenn Sie über das **blobClient**-Containerobjekt verfügen, können Sie das **Block**-Blobobjekt erstellen, mit dem auf das gewünschte jeweilige Blob verwiesen wird. Anschließend können Sie Vorgänge wie das Hochladen, Herunterladen und Kopieren durchführen.
 
 > [!IMPORTANT]
-> Die Containernamen müssen klein geschrieben werden. Weitere Informationen zu Container- und Blobnamen finden Sie unter [Benennen von Containern, Blobs und Metadaten und Verweisen auf diese](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Die Containernamen müssen klein geschrieben werden. Weitere Informationen zu Container- und Blobnamen finden Sie unter [Benennen von Containern, Blobs und Metadaten und Verweisen auf diese](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 In diesem Abschnitt richten Sie eine Instanz des Azure Storage-Clients ein, instanziieren das Blob-Dienstobjekt, erstellen einen neuen Container und legen Berechtigungen für den Container fest, damit die Blobs öffentlich gemacht werden. Der Name des Containers lautet **quickstartblobs**. 
 
@@ -122,7 +122,7 @@ In diesem Abschnitt richten Sie eine Instanz des Azure Storage-Clients ein, inst
 
 Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. Blockblobs werden am häufigsten und auch in diesem Schnellstart verwendet.  
 
-Um eine Datei in einen Blob hochzuladen, rufen Sie den vollständigen Pfad der Datei ab, indem Sie den Verzeichnisnamen und den Dateinamen auf Ihrem lokalen Laufwerk verknüpfen. Sie können anschließend die Datei an den Speicherort unter dem angegebenen Pfad hochladen, indem Sie die **createBlockBlob()** -Methode verwenden. 
+Um eine Datei in einen Blob hochzuladen, rufen Sie den vollständigen Pfad der Datei ab, indem Sie den Verzeichnisnamen und den Dateinamen auf Ihrem lokalen Laufwerk verknüpfen. Sie können anschließend die Datei an den Speicherort unter dem angegebenen Pfad hochladen, indem Sie die **createBlockBlob()**-Methode verwenden. 
 
 Im Beispielcode wird eine lokale Datei nach Azure hochgeladen. Im Code wird die Datei als **myfile** und der Name des Blobs als **fileToUpload** gespeichert. Im folgenden Beispiel wird die Datei in einen Container mit dem Namen **quickstartblobs** hochgeladen.
 
@@ -141,11 +141,11 @@ Im Beispielcode wird eine lokale Datei nach Azure hochgeladen. Im Code wird die 
     $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 ```
 
-Verwenden Sie die **createblocklist()** -Methode, um eine Teilaktualisierung für den Inhalt eines Blockblobs durchzuführen. Blockblobs können eine Größe von bis zu 4,7 TB haben und alle Arten von Dateien sein, von Excel-Arbeitsblättern bis zu großen Videodateien. Seitenblobs werden in erster Linie für die VHD-Dateien verwendet, die IaaS-VMs zugrunde liegen. Anfügeblobs dienen der Protokollierung und können z.B. verwendet werden, um beim Schreiben in eine Datei zusätzliche Daten hinzuzufügen. Das Anfügeblob sollte nur in einem Writer-Modell verwendet werden. Die meisten Objekte, die in Blob Storage gespeichert werden, sind allerdings Blockblobs.
+Verwenden Sie die **createblocklist()**-Methode, um eine Teilaktualisierung für den Inhalt eines Blockblobs durchzuführen. Blockblobs können eine Größe von bis zu 4,7 TB haben und alle Arten von Dateien sein, von Excel-Arbeitsblättern bis zu großen Videodateien. Seitenblobs werden in erster Linie für die VHD-Dateien verwendet, die IaaS-VMs zugrunde liegen. Anfügeblobs dienen der Protokollierung und können z.B. verwendet werden, um beim Schreiben in eine Datei zusätzliche Daten hinzuzufügen. Das Anfügeblob sollte nur in einem Writer-Modell verwendet werden. Die meisten Objekte, die in Blob Storage gespeichert werden, sind allerdings Blockblobs.
 
 ### <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
 
-Sie können eine Liste mit Dateien des Containers abrufen, indem Sie die **listBlobs()** -Methode verwenden. Der folgende Code ruft die Liste der Blobs ab und durchläuft sie, um die Namen der in einem Container gefundenen Blobs anzuzeigen.  
+Sie können eine Liste mit Dateien des Containers abrufen, indem Sie die **listBlobs()**-Methode verwenden. Der folgende Code ruft die Liste der Blobs ab und durchläuft sie, um die Namen der in einem Container gefundenen Blobs anzuzeigen.  
 
 ```PHP
     $listBlobsOptions = new ListBlobsOptions();
@@ -166,7 +166,7 @@ Sie können eine Liste mit Dateien des Containers abrufen, indem Sie die **listB
 
 ### <a name="get-the-content-of-your-blobs"></a>Abrufen des Inhalts Ihres Blobs
 
-Rufen Sie den Inhalt Ihrer Blobs mit der **getBlob()** -Methode ab. Im folgenden Code wird der Inhalt des Blobs angezeigt, der in einem vorherigen Abschnitt hochgeladen wurde.
+Rufen Sie den Inhalt Ihrer Blobs mit der **getBlob()**-Methode ab. Im folgenden Code wird der Inhalt des Blobs angezeigt, der in einem vorherigen Abschnitt hochgeladen wurde.
 
 ```PHP
     $blob = $blobClient->getBlob($containerName, $fileToUpload);
@@ -174,7 +174,7 @@ Rufen Sie den Inhalt Ihrer Blobs mit der **getBlob()** -Methode ab. Im folgenden
 ```
 
 ### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Wenn Sie die in diesem Schnellstart hochgeladenen Blobs nicht mehr benötigen, können Sie mit der **deleteContainer()** -Methode den gesamten Container löschen. Wenn die erstellten Dateien nicht mehr benötigt werden, können Sie die **deleteBlob()** -Methode verwenden, um die Dateien zu löschen.
+Wenn Sie die in diesem Schnellstart hochgeladenen Blobs nicht mehr benötigen, können Sie mit der **deleteContainer()**-Methode den gesamten Container löschen. Wenn die erstellten Dateien nicht mehr benötigt werden, können Sie die **deleteBlob()** -Methode verwenden, um die Dateien zu löschen.
 
 ```PHP
     // Delete blob.

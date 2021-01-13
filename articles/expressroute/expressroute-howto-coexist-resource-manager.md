@@ -1,19 +1,19 @@
 ---
-title: 'Konfigurieren von parallel bestehenden ExpressRoute- und Site-to-Site-VPN-Verbindungen: PowerShell: Azure | Microsoft-Dokumentation'
+title: 'Konfigurieren von parallel bestehenden ExpressRoute- und S2S-VPN-Verbindungen: Azure PowerShell'
 description: Konfiguration von ExpressRoute- und Site-to-Site-VPN-Verbindungen, die für das Resource Manager-Modell gleichzeitig bestehen können, mithilfe von PowerShell.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 07/01/2019
-ms.author: charwen
+ms.topic: how-to
+ms.date: 12/11/2019
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: fdd267937db589156aa5eddc7608323b143266de
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: edbd36ad3444795ade4b3f8d29d8473b21a2fda8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508838"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91651512"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen mithilfe von PowerShell
 > [!div class="op_single_selector"]
@@ -38,9 +38,10 @@ Dieser Artikel enthält die Schritte für die Konfiguration beider Szenarien. Di
 ## <a name="limits-and-limitations"></a>Grenzwerte und Einschränkungen
 * **Transitrouting wird nicht unterstützt.** Ein Routing (über Azure) zwischen Ihrem lokalen Netzwerk mit Standort-zu-Standort-VPN-Verbindung und Ihrem lokalen Netzwerk mit ExpressRoute-Verbindung ist nicht möglich.
 * **Das einfache SKU-Gateway wird nicht unterstützt.** Sie müssen für das [ExpressRoute-Gateway](expressroute-about-virtual-network-gateways.md) und das [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) jeweils ein anderes Gateway als ein einfaches SKU-Gateway verwenden.
-* **Nur das routenbasierte VPN-Gateway wird unterstützt.** Sie müssen ein routenbasiertes [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) verwenden.
+* **Nur das routenbasierte VPN-Gateway wird unterstützt.** Sie müssen ein routenbasiertes [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) verwenden. Sie können auch ein routenbasiertes VPN-Gateway mit einer VPN-Verbindung verwenden, die für die richtlinienbasierte Datenverkehrsauswahl konfiguriert ist, wie unter [Herstellen einer Verbindung mit mehreren richtlinienbasierten VPN-Geräten](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) beschrieben.
 * **Für das VPN-Gateway sollte eine statische Route konfiguriert werden.** Wenn Ihr lokales Netzwerk mit ExpressRoute und einem Standort-zu-Standort-VPN verbunden ist, müssen Sie eine statische Route in Ihrem lokalen Netzwerk konfiguriert haben, um die Standort-zu-Standort-VPN-Verbindung an das öffentliche Internet weiterzuleiten.
 * **Ohne Angabe verwendet VPN Gateway standardmäßig ASN 65515.** Azure VPN Gateway unterstützt das BGP-Routingprotokoll. Sie können die AS-Nummer (ASN) für ein virtuelles Netzwerk angeben, indem Sie den Switch „-Asn“ hinzufügen. Ohne Angabe dieses Parameters wird standardmäßig die AS-Nummer 65515 verwendet. Sie können eine beliebige ASN für die Konfiguration verwenden. Sollten Sie sich für einen anderen Wert als 65515 entscheiden, müssen Sie allerdings das Gateway zurücksetzen, damit die Einstellung wirksam wird.
+* **Das Gatewaysubnetz muss /27 oder ein kürzeres Präfix sein** (z. B. /26 oder /25), andernfalls erhalten Sie eine Fehlermeldung, wenn Sie das Gateway für das virtuelle ExpressRoute-Netzwerk hinzufügen.
 
 ## <a name="configuration-designs"></a>Konfigurationsentwürfe
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Konfigurieren eines Standort-zu-Standort-VPN als Failoverpfad für ExpressRoute
@@ -51,7 +52,7 @@ Sie können eine Standort-zu-Standort-VPN-Verbindung als Sicherung für ExpressR
 > 
 > 
 
-![Koexistenz](media/expressroute-howto-coexist-resource-manager/scenario1.jpg)
+![Diagramm: Site-to-Site-VPN als Sicherung für ExpressRoute](media/expressroute-howto-coexist-resource-manager/scenario1.jpg)
 
 ### <a name="configure-a-site-to-site-vpn-to-connect-to-sites-not-connected-through-expressroute"></a>Konfigurieren einer Standort-zu-Standort-VPN zum Herstellen einer Verbindung mit Websites, die nicht über ExpressRoute verbunden sind
 Sie können Ihr Netzwerk so konfigurieren, dass einige Sites direkt mit Azure über ein Standort-zu-Standort-VPN und andere über ExpressRoute verbunden sind. 
@@ -77,12 +78,12 @@ Sie haben die Wahl zwischen zwei Vorgehensweisen. Welches Konfigurationsverfahre
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [working with cloud shell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 
-## <a name="new"></a>So erstellen Sie ein neues virtuelles Netzwerk und parallele Verbindungen
+## <a name="to-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>So erstellen Sie ein neues virtuelles Netzwerk und parallele Verbindungen
 Dieses Verfahren führt Sie durch das Erstellen eines VNETs sowie durch das Erstellen paralleler Site-to-Site- und ExpressRoute-Verbindungen. Für diese Konfiguration werden unter Umständen Cmdlets verwendet, mit denen Sie nicht so vertraut sind. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden.
 
 1. Melden Sie sich an, und wählen Sie Ihr Abonnement aus.
@@ -184,7 +185,7 @@ Dieses Verfahren führt Sie durch das Erstellen eines VNETs sowie durch das Erst
     New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -VirtualNetworkGateway1 $gw -PeerId $ckt.Id -ConnectionType ExpressRoute
     ```
 
-## <a name="add"></a>So konfigurieren Sie parallele Verbindungen für ein bereits vorhandenes VNET
+## <a name="to-configure-coexisting-connections-for-an-already-existing-vnet"></a><a name="add"></a>So konfigurieren Sie parallele Verbindungen für ein bereits vorhandenes VNET
 Wenn Sie über virtuelles Netzwerk mit nur einem zugehörigen Gateway (Standort-zu-Standort-VPN-Gateway) verfügen und ein weiteres Gateway eines anderen Typs (z.B. ExpressRoute-Gateway) hinzufügen möchten, überprüfen Sie die Größe des Gateway-Subnetzes. Bei einer Gateway-Subnetzgröße von mindestens /27 können Sie die folgenden Schritte überspringen und die Schritte im vorherigen Abschnitt ausführen, um entweder ein Standort-zu-Standort-VPN-Gateway oder ein ExpressRoute-Gateway hinzuzufügen. Wenn das Gatewaysubnetz die Größe /28 oder /29 hat, müssen Sie zunächst das Gateway des virtuellen Netzwerks löschen, um die Größe des Gatewaysubnetzes zu erhöhen. Führen Sie dazu die in diesem Abschnitt beschriebenen Schritte aus.
 
 Für diese Konfiguration werden unter Umständen Cmdlets verwendet, mit denen Sie nicht so vertraut sind. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden.
@@ -223,15 +224,13 @@ Für diese Konfiguration werden unter Umständen Cmdlets verwendet, mit denen Si
     ```azurepowershell-interactive
    $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
    $gwIP = New-AzPublicIpAddress -Name "ERGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
-   $gwIP = New-AzPublicIpAddress -Name "ERGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
-   $gwConfig = New-AzVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
    $gwConfig = New-AzVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
    ```
 
    Erstellen Sie das Gateway.
 
    ```azurepowershell-interactive
-   $gw = New-AzVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <yourresourcegroup> -Location <yourlocation) -IpConfigurations $gwConfig -GatewayType "ExpressRoute" -GatewaySku Standard
+   $gw = New-AzVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <yourresourcegroup> -Location <yourlocation> -IpConfigurations $gwConfig -GatewayType "ExpressRoute" -GatewaySku Standard
    ```
 
    Erstellen Sie die Verbindung.

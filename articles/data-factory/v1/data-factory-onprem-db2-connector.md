@@ -1,27 +1,26 @@
 ---
-title: Verschieben von Daten aus DB2 mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Verschieben von Daten aus DB2 mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie Daten aus einer lokalen DB2-Datenbank mit der Kopieraktivität von Azure Data Factory verschieben.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e473858ed02afce89313c0bfeffd95c785120d40
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839031"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001064"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Verschieben von Daten aus DB2 mithilfe der Kopieraktivität von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-onprem-db2-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-db2.md)
 
@@ -306,7 +305,7 @@ Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activ
 
 Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus einem DB2-Typ in einen .NET-Datentyp konvertiert:
 
-| DB2-Datenbanktyp | Typ ".NET Framework" |
+| DB2-Datenbanktyp | .NET Framework-Typ |
 | --- | --- |
 | SmallInt |Int16 |
 | Integer |Int32 |
@@ -317,23 +316,23 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Date |DateTime |
+| Date |Datetime |
 | Time |TimeSpan |
 | Timestamp |Datetime |
 | Xml |Byte[] |
-| Char |string |
-| VarChar |string |
-| LongVarChar |string |
-| DB2DynArray |string |
+| Char |String |
+| VarChar |String |
+| LongVarChar |String |
+| DB2DynArray |String |
 | Binary |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Graphic |string |
-| VarGraphic |string |
-| LongVarGraphic |string |
-| Clob |string |
+| Graphic |String |
+| VarGraphic |String |
+| LongVarGraphic |String |
+| Clob |String |
 | Blob |Byte[] |
-| DbClob |string |
+| DbClob |String |
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
@@ -343,11 +342,11 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Date |DateTime |
+| Date |Datetime |
 | Time |TimeSpan |
 | Timestamp |Datetime |
 | Xml |Byte[] |
-| Char |string |
+| Char |String |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quell-DataSet zu Spalten im Senken-DataSet finden Sie unter [Zuordnen von DataSet-Spalten in Azure Data Factory](data-factory-map-columns.md).

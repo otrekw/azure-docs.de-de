@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen eines benutzerdefinierten ZS-Zertifikats – Azure API Management | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie in Azure API Management ein benutzerdefiniertes ZS-Zertifikat hinzufügen.
+description: Erfahren Sie, wie Sie in Azure API Management ein benutzerdefiniertes ZS-Zertifikat hinzufügen. Sie können auch Anleitungen zum Löschen eines Zertifikats anzeigen.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 21d5869f2bcdfb6383b6ef89869d8098135ea7ee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 124bc053aa2c6e59e205bb6f33a9a96190799499
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073602"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102036"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Hinzufügen eines benutzerdefinierten ZS-Zertifikats in Azure API Management
 
@@ -29,7 +29,7 @@ Dieser Artikel erläutert die Verwaltung von ZS-Zertifikaten einer Azure API Man
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="step1"> </a>Hochladen eines ZS-Zertifikats
+## <a name="upload-a-ca-certificate"></a><a name="step1"> </a>Hochladen eines ZS-Zertifikats
 
 ![Hinzufügen von ZS-Zertifikaten](media/api-management-howto-ca-certificates/00.png)
 
@@ -41,20 +41,20 @@ Gehen Sie folgendermaßen vor, um ein neues ZS-Zertifikat hochzuladen. Falls Sie
 
 3. Klicken Sie auf die Schaltfläche **+ Hinzufügen**.  
 
-    ![Hinzufügen von ZS-Zertifikaten](media/api-management-howto-ca-certificates/01.png)  
+    ![Screenshot der Schaltfläche „+ Hinzufügen“ zum Hinzufügen eines ZS-Zertifikats](media/api-management-howto-ca-certificates/01.png)  
 
 4. Suchen Sie nach dem Zertifikat, und wählen Sie den Zertifikatspeicher aus. Es ist nur der öffentliche Schlüssel erforderlich, kein Kennwort.
 
-    ![Hinzufügen von ZS-Zertifikaten](media/api-management-howto-ca-certificates/02.png)  
+    ![Screenshot der Navigation zum Zertifikat](media/api-management-howto-ca-certificates/02.png)  
 
 5. Klicken Sie auf **Speichern**. Dieser Vorgang kann einige Minuten dauern.
 
-    ![Hinzufügen von ZS-Zertifikaten](media/api-management-howto-ca-certificates/03.png)  
+    ![Screenshot der Speicherung des Zertifikats](media/api-management-howto-ca-certificates/03.png)  
 
 > [!NOTE]
 > Sie können ein ZS-Zertifikat mithilfe des PowerShell-Befehls `New-AzApiManagementSystemCertificate` hochladen.
 
-## <a name="step1a"></a>Löschen eines Clientzertifikats
+## <a name="delete-a-client-certificate"></a><a name="step1a"> </a>Löschen eines Clientzertifikats
 
 Um ein Zertifikat zu löschen, klicken Sie auf das Kontextmenü **...** , und wählen Sie neben dem betreffenden Zertifikat **Löschen** aus.
 

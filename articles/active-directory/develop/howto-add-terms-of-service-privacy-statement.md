@@ -2,27 +2,22 @@
 title: Nutzungsbedingungen und Datenschutzbestimmungen für Apps | Azure
 description: Erfahren Sie, wie Sie die Nutzungsbedingungen und die Datenschutzerklärung für Apps konfigurieren können, die zur Verwendung von Azure AD registriert sind.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
-ms.reviwer: lenalepa, sureshja
+ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a01b50573405964b09339d03e84c62dbdd8582
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 73c4931533e3926086320531a0800a572d13808c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482864"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89535771"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Gewusst wie: Konfigurieren von Nutzungsbedingungen und Datenschutzbestimmungen für eine App
 
@@ -58,12 +53,12 @@ Nachdem die Nutzungsbedingungen und Datenschutzbestimmungen fertig konfiguriert 
 
 * [Über das Azure-Portal](#azure-portal)
 * [Mithilfe des JSON-Codes des App-Objekts](#app-object-json)
-* [Mithilfe der Betaversion der MSGraph-REST-API](#msgraph-beta-rest-api)
+* [Über die Microsoft Graph-API](#msgraph-rest-api)
 
-### <a name="azure-portal"></a>Verwenden des Azure-Portals
+### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Verwenden des Azure-Portals
 Führen Sie im Azure-Portal die folgenden Schritte aus.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie den richtigen AzureAD-Mandanten aus (nicht B2C).
 2. Navigieren Sie zum Abschnitt **App-Registrierungen**, und wählen Sie Ihre App aus.
 3. Öffnen Sie den Bereich **Branding**.
 4. Füllen Sie die Felder **URL zu den Vertragsbedingungen** und **URL zur Datenschutzerklärung** aus.
@@ -71,9 +66,14 @@ Führen Sie im Azure-Portal die folgenden Schritte aus.
 
     ![Eigenschaften der App mit URLs zu den Nutzungsbedingungen und zur Datenschutzerklärung](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
-### <a name="app-object-json"></a>Verwenden des JSON-Codes des App-Objekts
+### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>Verwenden des JSON-Codes des App-Objekts
 
 Wenn Sie direkt den JSON-Code des App-Objekts ändern möchten, können Sie über den Manifest-Editor im Azure-Portal oder App-Registrierungsportal Links zu den Nutzungsbedingungen und Datenschutzbestimmungen Ihrer App einfügen.
+
+1. Navigieren Sie zum Abschnitt **App-Registrierungen**, und wählen Sie Ihre App aus.
+2. Öffnen Sie den Bereich **Manifest**.
+3. STRG+F, suchen Sie nach „informationalUrls“. Geben Sie die Informationen ein.
+4. Speichern Sie die Änderungen.
 
 ```json
     "informationalUrls": { 
@@ -82,12 +82,12 @@ Wenn Sie direkt den JSON-Code des App-Objekts ändern möchten, können Sie übe
     }
 ```
 
-### <a name="msgraph-beta-rest-api"></a>Verwenden der Betaversion der MSGraph-REST-API
+### <a name="using-the-microsoft-graph-api"></a><a name="msgraph-rest-api"></a>Verwenden der Microsoft Graph-API
 
-Um alle Ihre Apps programmgesteuert zu aktualisieren, können Sie die Betaversion der MSGraph-REST-API verwenden, um alle Ihre Apps so zu ändern, dass sie Links zu den Dokumenten zu den Nutzungsbedingungen und Datenschutzbestimmungen enthalten.
+Zur programmgesteuerten Aktualisierung aller Ihrer Apps können Sie mithilfe der Betaversion der Microsoft Graph-API alle Ihre Apps so ändern, dass sie Links zu den Dokumenten zu den Nutzungsbedingungen und Datenschutzbestimmungen enthalten.
 
 ```
-PATCH https://graph.microsoft.com/beta/applications/{application id}
+PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 { 
     "appId": "{your application id}", 
     "info": { 
@@ -102,4 +102,4 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 
 > [!NOTE]
 > * Achten Sie darauf, dass Sie keine bereits vorhandenen Werte überschreiben, die Sie folgenden Feldern zugewiesen haben: `supportUrl`, `marketingUrl` und `logoUrl`
-> * Die Betaversion der MSGraph-REST-API kann nur verwendet werden, wenn Sie sich mit einem Azure AD-Konto anmelden. Persönliche Microsoft-Konten werden nicht unterstützt.
+> * Die Microsoft Graph-API funktioniert nur, wenn Sie sich mit einem Azure AD-Konto anmelden. Persönliche Microsoft-Konten werden nicht unterstützt.

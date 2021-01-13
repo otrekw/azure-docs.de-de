@@ -1,20 +1,21 @@
 ---
-title: Verwalten von Netzwerkschnittstellen in Azure Site Recovery für die lokale Notfallwiederherstellung in Azure | Microsoft-Dokumentation
+title: Verwalten von Netzwerkadaptern für die lokale Notfallwiederherstellung mit Azure Site Recovery
 description: Hier wird das Verwalten von Netzwerkschnittstellen für die lokale Notfallwiederherstellung in Azure mit Azure Site Recovery beschrieben.
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
-ms.author: mayg
-ms.openlocfilehash: 5d5dd7bc3f6b60c2f9d7c2179f2bd356ca101dc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: harshacs
+ms.openlocfilehash: 4dad7f76edf34782131c7c844978763cda53acc7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61471753"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90068114"
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Verwalten von Netzwerkschnittstellen auf virtuellen Computern für die lokale Notfallwiederherstellung in Azure
+# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Verwalten von VM-Netzwerkschnittstellen für die lokale Notfallwiederherstellung in Azure
+
 An einen virtuellen Computer (VM) in Azure muss mindestens eine Netzwerkschnittstelle angefügt sein. Es können so viele Netzwerkschnittstellen angefügt sein, wie die VM-Größe unterstützt.
 
 Standardmäßig wird die erste an einen virtuellen Azure-Computer angefügte Netzwerkschnittstelle als primäre Netzwerkschnittstelle definiert. Alle anderen Netzwerkschnittstellen auf dem virtuellen Computer sind sekundäre Netzwerkschnittstellen. Standardmäßig wird sämtlicher ausgehender Datenverkehr des virtuellen Computers über die IP-Adresse gesendet, die der primären IP-Konfiguration der primären Netzwerkschnittstelle zugewiesen ist.
@@ -25,7 +26,7 @@ Standardmäßig erstellt Azure Site Recovery so viele Netzwerkschnittstellen auf
 
 ## <a name="select-the-target-network"></a>Auswählen des Zielnetzwerks
 
-Für VMware und physische Computer sowie für Hyper-V-VMs (ohne System Center Virtual Machine Manager) können Sie das virtuelle Zielnetzwerk für einzelne virtuelle Computer angeben. Verwenden Sie für Hyper-V-VMs, die mit Virtual Machine Manager verwaltet werden, [Netzwerkzuordnung](site-recovery-network-mapping.md) zum Zuordnen von VM-Netzwerken auf einem Virtual Machine Manager-Quellserver und Azure-Zielnetzwerken.
+Für VMware und physische Computer sowie für Hyper-V-VMs (ohne System Center Virtual Machine Manager) können Sie das virtuelle Zielnetzwerk für einzelne virtuelle Computer angeben. Verwenden Sie für Hyper-V-VMs, die mit Virtual Machine Manager verwaltet werden, [Netzwerkzuordnung](./hyper-v-vmm-network-mapping.md) zum Zuordnen von VM-Netzwerken auf einem Virtual Machine Manager-Quellserver und Azure-Zielnetzwerken.
 
 1. Wählen Sie unter **Replizierte Elemente** in einem Recovery Dervices-Tresor ein beliebiges repliziertes Element aus, um auf die Einstellungen für dieses replizierte Element zuzugreifen.
 

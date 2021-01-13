@@ -1,27 +1,27 @@
 ---
-title: Durchführen der Problembehandlung für Anmeldefehler mit Azure Active Directory-Berichten | Microsoft-Dokumentation
+title: Durchführen der Problembehandlung für Anmeldefehlerberichte | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie die Problembehandlung für Anmeldefehler mit Azure Active Directory-Berichten im Azure-Portal durchführen.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c901395436c8ed660c50b7342a804143d57db3c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4de9f5a21f38f741dcf65d285446d9482716d4f2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988166"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85608125"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Gewusst wie: Beheben von Anmeldefehlern mit Azure Active Directory-Berichten
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Gewusst wie: Durchführen der Problembehandlung für Anmeldefehler mit Azure Active Directory-Berichten
 
 Mit dem [Bericht zu Anmeldeaktivitäten](concept-sign-ins.md) in Azure Active Directory (Azure AD) können Sie Antworten auf Fragen zur Verwaltung des Zugriffs auf die Anwendungen in Ihrer Organisation finden, z.B.:
 

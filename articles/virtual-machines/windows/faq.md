@@ -1,25 +1,18 @@
 ---
-title: Häufig gestellte Fragen zu virtuellen Windows-Computern in Azure | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zu virtuellen Windows-Computern in Azure
 description: Hier finden Sie Antworten auf die häufigsten Fragen zu virtuellen Windows-Computern, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-management
-ms.assetid: 757da816-a050-4889-a010-6f75d7978eb7
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 0b1af2052e8aa916bf5fd6a40bea3502ff81a02d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d5dda567d0cfa89863731a3e8e651aede4ab5957
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079480"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87825190"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Häufig gestellte Fragen zu virtuellen Windows-Computern
 Dieser Artikel enthält einige häufig gestellte Fragen zu virtuellen Windows-Computern, die in Azure mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Die Linux-Version dieses Themas finden Sie unter [Häufig gestellte Fragen zu virtuellen Linux-Computern](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -30,7 +23,7 @@ Alle Abonnenten können Serversoftware auf einem virtuellen Azure-Computer ausf�
 Bestimmte Versionen von Windows 7, Windows 8.1 und Windows 10 stehen für Azure-Abonnenten mit MSDN-Vorteilen und für Abonnenten von MSDN Dev/Test Pay-As-You-Go zu Entwicklungs- und Testzwecken bereit. Weitere Informationen, u.a. Anleitungen und Einschränkungen, finden Sie unter [Windows Client images for MSDN subscribers](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/) (Windows-Clientimages für MSDN-Abonnenten). 
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Wie viel Speicher kann mit einem virtuellen Computer verwendet werden?
-Jeder Datenträger kann bis zu 32.767 GiB groß sein. Die Anzahl der Datenträger, die Sie verwenden können, hängt von der Größe des virtuellen Computers ab. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Jeder Datenträger kann bis zu 32.767 GiB groß sein. Die Anzahl der Datenträger, die Sie verwenden können, hängt von der Größe des virtuellen Computers ab. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Azure Managed Disks ist die empfohlene Lösung für die dauerhafte Speicherung von Daten auf Datenträgern, die mit Azure Virtual Machines verwendet werden. Sie können für jeden virtuellen Computer mehrere Datenträger (Managed Disks) verwenden. Managed Disks bietet zwei Arten von permanentem Speicher: verwaltete Datenträger der Tarife Premium und Standard. Informationen zu den Preisen finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks).
 
@@ -39,7 +32,7 @@ Mit Azure-Speicherkonten kann auch Speicher für Betriebssystemdatenträger und 
 ## <a name="how-can-i-access-my-virtual-machine"></a>Wie kann ich auf meinen virtuellen Computer zugreifen?
 Richten Sie eine Remoteverbindung über Remotedesktopverbindung (Remote Desktop Connection, RDP) für einen virtuellen Windows-Computer ein. Anweisungen dazu finden Sie unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Es werden maximal zwei gleichzeitige Verbindungen unterstützt, es sei denn, der Server wurde als Sitzungshost für Remotedesktopdienste konfiguriert.  
 
-Wenn Probleme mit Remotedesktop auftreten, finden Sie weitere Informationen unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Wenn Probleme mit Remotedesktop auftreten, finden Sie weitere Informationen unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json). 
 
 Wenn Sie mit Hyper-V vertraut sind, suchen Sie möglicherweise nach einem ähnlichen Tool wie VMConnect. Azure bietet kein ähnliches Tool, da der Konsolenzugriff auf einem virtuellen Computer nicht unterstützt wird.
 
@@ -75,10 +68,10 @@ Ja. Unter [Erstellen eines virtuellen Linux-Computers in Azure mithilfe des Port
 Ja, dies ist jetzt möglich. Der virtuelle Computer muss zuerst beendet/freigegeben werden. Anschließend können Sie eine NIC hinzufügen oder entfernen (sofern es sich nicht um die letzte NIC auf dem virtuellen Computer handelt). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Gibt es Anforderungen an den Computernamen?
-Ja. Der Computername kann maximal 15 Zeichen lang sein. Weitere Informationen zum Benennen von Ressourcen finden Sie unter [Regeln und Einschränkungen der Namenskonventionen](/azure/architecture/best-practices/naming-conventions#compute).
+Ja. Der Computername kann maximal 15 Zeichen lang sein. Weitere Informationen zum Benennen von Ressourcen finden Sie unter [Regeln und Einschränkungen der Namenskonventionen](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Gelten für Namen von Ressourcengruppen bestimmte Anforderungen?
-Ja. Der Name der Ressourcengruppe darf maximal 90 Zeichen lang sein. Weitere Informationen zu Ressourcengruppen finden Sie unter [Regeln und Einschränkungen der Namenskonventionen](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions).
+Ja. Der Name der Ressourcengruppe darf maximal 90 Zeichen lang sein. Weitere Informationen zu Ressourcengruppen finden Sie unter [Regeln und Einschränkungen der Namenskonventionen](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming).
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Welche Anforderungen an den Benutzernamen gelten beim Erstellen eines virtuellen Computers?
 
@@ -86,17 +79,35 @@ Benutzernamen können maximal 20 Zeichen lang sein und dürfen nicht mit einem P
 
 Die folgenden Benutzernamen sind nicht zulässig:
 
-| | | | |
-|-----------------|-----------|--------------------|----------|
-| `administrator` | `admin`   | `user`             | `user1`  |
-| `test`          | `user2`   | `test1`            | `user3`  |
-| `admin1`        | `1`       | `123`              | `a`      |
-| `actuser`       | `adm`     | `admin2`           | `aspnet` |
-| `backup`        | `console` | `david`            | `guest`  |
-| `john`          | `owner`   | `root`             | `server` |
-| `sql`           | `support` | `support_388945a0` | `sys`    |
-| `test2`         | `test3`   | `user4`            | `user5`  |
-
+- `1`
+- `123`
+- `a`
+- `actuser`
+- `adm`
+- `admin`
+- `admin1`
+- `admin2`
+- `administrator`
+- `aspnet`
+- `backup`
+- `console`
+- `david`
+- `guest`
+- `john`
+- `owner`
+- `root`
+- `server`
+- `sql`
+- `support_388945a0`
+- `support`
+- `sys`
+- `test`
+- `test1`
+- `test2`
+- `test3`
+- `user`
+- `user1`
+- `user2`
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Welche Anforderungen an das Kennwort gelten beim Erstellen eines virtuellen Computers?
 

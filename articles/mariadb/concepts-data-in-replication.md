@@ -1,17 +1,17 @@
 ---
-title: Replizieren von Daten in Azure Database for MariaDB
-description: In diesem Artikel wird die Datenreplikation für Azure Database for MariaDB beschrieben.
-author: ajlam
-ms.author: andrela
+title: Datenreplikation – Azure Database for MariaDB
+description: Erfahren Sie mehr über das Verwenden der Datenreplikation zum Synchronisieren von Daten von einem externen Server mit dem Dienst Azure Database for MariaDB.
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.openlocfilehash: 3ceb8b4f3c2c50ac0ac3bd12831b5497f9a05afb
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.date: 3/18/2020
+ms.openlocfilehash: 331e064bcf11af31a778cb8dd06c463712421b7c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993044"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533428"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Replizieren von Daten in Azure Database for MariaDB
 
@@ -26,18 +26,18 @@ Zu den wichtigsten Szenarien, bei denen die Datenreplikation für Azure Database
 ## <a name="limitations-and-considerations"></a>Einschränkungen und Aspekte
 
 ### <a name="data-not-replicated"></a>Nicht replizierte Daten
-Die [*Systemdatenbank „mysql“* ](https://mariadb.com/kb/en/library/the-mysql-database-tables/) auf dem Masterserver wird nicht repliziert. Änderungen an Konten und Berechtigungen auf dem Masterserver werden nicht repliziert. Wenn Sie ein Konto auf dem Masterserver erstellen und dieses Konto über Zugriff auf den Replikatserver verfügen muss, erstellen Sie dasselbe Konto manuell auf dem Replikatserver. Einen Überblick über die Tabellen, die in der Systemdatenbank enthalten sind, finden Sie in der [Dokumentation zu MariaDB](https://mariadb.com/kb/en/library/the-mysql-database-tables/).
+Die [*Systemdatenbank „mysql“*](https://mariadb.com/kb/en/library/the-mysql-database-tables/) auf dem Quellserver wird nicht repliziert. Änderungen an Konten und Berechtigungen auf dem Quellserver werden nicht repliziert. Wenn Sie ein Konto auf dem Quellserver erstellen und dieses Konto über Zugriff auf den Replikatserver verfügen muss, erstellen Sie dasselbe Konto manuell auf dem Replikatserver. Einen Überblick über die Tabellen, die in der Systemdatenbank enthalten sind, finden Sie in der [Dokumentation zu MariaDB](https://mariadb.com/kb/en/library/the-mysql-database-tables/).
 
 ### <a name="requirements"></a>Requirements (Anforderungen)
-- Der Masterserver muss mindestens die MariaDB-Version 10.2 aufweisen.
-- Die Versionen des Master- und des Replikatservers müssen identisch sein. Beispiel: Auf beiden muss MariaDB-Version 10.2 vorliegen.
+- Der Quellserver muss mindestens die MariaDB-Version 10.2 aufweisen.
+- Die Versionen des Quell- und des Replikatservers müssen identisch sein. Beispiel: Auf beiden muss MariaDB-Version 10.2 vorliegen.
 - Jede Tabelle muss über einen Primärschlüssel verfügen.
-- Der Masterserver sollte die InnoDB-Engine verwenden.
-- Benutzer müssen über Berechtigungen zum Konfigurieren der binären Protokollierung und zum Erstellen neuer Benutzer auf dem Masterserver verfügen.
-- Wenn für den Masterserver SSL aktiviert ist, vergewissern Sie sich, dass das für die Domäne bereitgestellte SSL-Zertifizierungsstellenzertifikat in die gespeicherte Prozedur `mariadb.az_replication_change_master` eingefügt wurde. Sehen Sie sich die folgenden [Beispiele](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) und den Parameter `master_ssl_ca` an.
-- Vergewissern Sie sich, dass die IP-Adresse des Masterservers den Firewallregeln des Azure Database for MariaDB-Replikatservers hinzugefügt wurde. Aktualisieren Sie Firewallregeln über das [Azure-Portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) oder über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli).
-- Vergewissern Sie sich, dass für den Computer, der den Masterserver hostet, sowohl ein- als auch ausgehender Datenverkehr am Port 3306 zugelassen wird.
-- Stellen Sie sicher, dass der Masterserver eine **öffentliche IP-Adresse** aufweist, das DNS öffentlich zugänglich ist oder ein vollqualifizierter Domänenname (FQDN) verfügbar ist.
+- Der Quellserver sollte die InnoDB-Engine verwenden.
+- Benutzer müssen über Berechtigungen zum Konfigurieren der binären Protokollierung und zum Erstellen neuer Benutzer auf dem Quellserver verfügen.
+- Wenn für den Quellserver SSL aktiviert ist, vergewissern Sie sich, dass das für die Domäne bereitgestellte SSL-Zertifizierungsstellenzertifikat in die gespeicherte Prozedur `mariadb.az_replication_change_master` eingefügt wurde. Sehen Sie sich die folgenden [Beispiele](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication) und den Parameter `master_ssl_ca` an.
+- Vergewissern Sie sich, dass die IP-Adresse des Quellservers den Firewallregeln des Azure Database for MariaDB-Replikatservers hinzugefügt wurde. Aktualisieren Sie Firewallregeln über das [Azure-Portal](howto-manage-firewall-portal.md) oder über die [Azure-Befehlszeilenschnittstelle](howto-manage-firewall-cli.md).
+- Vergewissern Sie sich, dass für den Computer, der den Quellserver hostet, sowohl ein- als auch ausgehender Datenverkehr am Port 3306 zugelassen wird.
+- Stellen Sie sicher, dass der Quellserver eine **öffentliche IP-Adresse** aufweist, das DNS öffentlich zugänglich ist oder ein vollqualifizierter Domänenname (FQDN) verfügbar ist.
 
 ### <a name="other"></a>Andere
 - Die Datenreplikation wird nur in den Tarifen Universell und Arbeitsspeicheroptimiert unterstützt.

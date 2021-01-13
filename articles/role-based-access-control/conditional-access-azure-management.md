@@ -1,5 +1,5 @@
 ---
-title: Verwalten des Zugriffs auf die Azure-Verwaltung mit dem bedingten Zugriff in Azure Active Directory
+title: Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff in Azure AD
 description: Erfahren Sie, wie Sie den bedingten Zugriff in Azure AD nutzen, um den Zugriff auf die Azure-Verwaltung zu steuern.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: e4b7ce0701349cae3ef501213d0f822ee8d150d0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 2a52635dbaa7a76034f3a535b099320a901e8c07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142827"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83758774"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff
 
@@ -47,5 +47,4 @@ Die von Ihnen erstellte Richtlinie gilt für alle Azure-Verwaltungsendpunkte, ei
 
 Hinweis: Die Richtlinie gilt für Azure PowerShell, von dem die Azure Resource Manager-API aufgerufen wird. Sie gilt nicht für [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), von dem Microsoft Graph aufgerufen wird.
 
-
-Weitere Informationen zum Einrichten und Verwenden des bedingten Zugriffs finden Sie unter [Bedingter Zugriff in Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).
+Weitere Informationen zum Einrichten einer Beispielrichtlinie zum Aktivieren des bedingten Zugriffs für die Microsoft Azure-Verwaltung finden Sie im Artikel [Bedingter Zugriff: Vorschreiben der MFA für die Azure-Verwaltung](../active-directory/conditional-access/howto-conditional-access-policy-azure-management.md).

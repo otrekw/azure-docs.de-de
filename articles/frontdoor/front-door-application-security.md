@@ -1,31 +1,31 @@
 ---
-title: Azure Front Door Service – Sicherheit für die Anwendungsschicht | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, wie Azure Front Door Service das Schützen und Sichern Ihrer Anwendungs-Back-Ends ermöglicht.
+title: Azure Front Door – Sicherheit für die Anwendungsschicht | Microsoft-Dokumentation
+description: In diesem Artikel wird erläutert, wie Azure Front Door das Schützen und Sichern Ihrer Anwendungs-Back-Ends ermöglicht.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: c7b99548e2fe1ad0c1cab39953e28a97e7ebff4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: duau
+ms.openlocfilehash: 4ee50b4c7da27df3630c1b4d263f076da44189bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60193916"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89399938"
 ---
 # <a name="application-layer-security-with-front-door"></a>Sicherheit für die Anwendungsschicht mit Front Door
-Azure Front Door Service bietet Funktionen für den Schutz von Webanwendungen, um Ihre Webanwendungen vor Netzwerkangriffen und verbreiteten Sicherheitsrisiken und Exploits im Internet wie Einschleusung von SQL-Befehlen oder Cross-Site Scripting (XSS) zu schützen. Die Sicherheit für die Anwendungsschicht mit Front Door ist für HTTP(S)-Front-Ends aktiviert, global verteilt und immer aktiv. Sie beendet böswillige Angriffe im Randbereich des Azure-Netzwerks – weit entfernt von Ihren Back-Ends. Durch Erhöhung der Sicherheit und Leistungsoptimierungen ermöglicht Front Door schnelle und sichere Weberlebnisse für Ihre Endbenutzer.
+Azure Front Door bietet Funktionen für den Schutz von Webanwendungen, um Ihre Webanwendungen vor Netzwerkangriffen und verbreiteten Sicherheitsrisiken und Exploits im Internet wie Einschleusung von SQL-Befehlen oder Cross-Site Scripting (XSS) zu schützen. Die Sicherheit für die Anwendungsschicht von Front Door ist ein global verteiltes Always On-Feature für HTTP(S)-Front-Ends, das böswillige Angriffe auf das Azure-Netzwerkedge beendet – weit entfernt von Ihren Back-Ends. Durch höhere Sicherheit und Leistungsoptimierungen ermöglicht Front Door schnelle und sichere Weberlebnisse für Ihre Endbenutzer.
 
 ## <a name="application-protection"></a>Anwendungsschutz
-Der Anwendungsschutz von Front Door ist weltweit in jeder Edge-Umgebung in Übereinstimmung mit Anwendungen konfiguriert und blockiert Nicht-HTTP(S)-Datenverkehr automatisch, sodass er Ihre Webanwendungen nicht erreicht. Unsere verteilte mehrinstanzenfähige Architektur ermöglicht einen umfangreichen globalen Schutz ohne Leistungseinbußen. Für HTTP(S)-Workloads bietet der Front Door-Schutzdienst für Webanwendungen ein umfassendes Regelmodul für benutzerdefinierte Regeln, einen vorkonfigurierten Regelsatz für verbreitete Angriffe und eine ausführliche Protokollierung für alle Anforderungen, die mit einer Regel übereinstimmen. Flexible Aktionen wie „Zulassen“, „Blockieren“ oder „Nur Protokollieren“ werden unterstützt.
+Der Anwendungsschutz von Front Door ist weltweit in jeder Edge-Umgebung konfiguriert und auf Anwendungen abgestimmt und blockiert Nicht-HTTP(S)-Datenverkehr automatisch, sodass er Ihre Webanwendungen nicht erreicht. Unsere verteilte mehrinstanzenfähige Architektur ermöglicht einen umfangreichen globalen Schutz ohne Leistungseinbußen. Für HTTP(S)-Workloads bietet der Front Door-Schutzdienst für Webanwendungen ein umfassendes Regelmodul für benutzerdefinierte Regeln, einen vorkonfigurierten Regelsatz für verbreitete Angriffe und eine ausführliche Protokollierung für alle Anforderungen, die mit einer Regel übereinstimmen. Flexible Aktionen wie „Zulassen“, „Blockieren“ oder „Nur Protokollieren“ werden unterstützt.
 
 ## <a name="custom-access-control-rules"></a>Benutzerdefinierte Regeln für die Zugriffssteuerung
-- **Zugelassene und geblockte IP-Adressen**: Sie können benutzerdefinierte Regeln zum Steuern des Zugriffs auf Ihre Webanwendungen basierend auf einer Liste von Client-IP-Adressen konfigurieren. Sowohl IPv4 als auch IPv6 werden unterstützt.
+- **Liste zugelassener und gesperrter IP-Adressen**: Sie können benutzerdefinierte Regeln zum Steuern des Zugriffs auf Ihre Webanwendungen basierend auf einer Liste von Client-IP-Adressen konfigurieren. Sowohl IPv4 als auch IPv6 werden unterstützt.
 - **Geografiebasierte Zugriffssteuerung**: Sie können benutzerdefinierte Regeln konfigurieren, um den Zugriff auf Ihre Webanwendungen basierend auf dem Ländercode zu steuern, zu dem eine Client-IP-Adresse gehört.
 - **Filtern von HTTP-Parametern**: Sie können benutzerdefinierte Zugriffsregeln basierend auf übereinstimmenden HTTP(S)-Anforderungsparametern wie URL, Header und Abfragezeichenfolgen konfigurieren.
 
@@ -51,5 +51,5 @@ Die Sicherheit für die Anwendungsschicht von Front Door ist während der Vorsch
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Azure Front Door Service-Konfiguration](quickstart-create-front-door.md).
+- Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
 - Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).

@@ -1,32 +1,41 @@
 - name: Dokumentation zur Formularerkennung
   href: index.yml
 - name: Übersicht
+  expanded: true
   items:
     - name: Was ist die Formularerkennung?
       href: overview.md
-- name: Schnellstarts
+    - name: Neues
+      href: whats-new.md
+- name: Erste Schritte mit der Formularerkennung
   expaned: true
   items:
-    - name: Verwenden der REST-API
-      items:
-        - name: Trainieren eines benutzerdefinierten Modells und Extrahieren von Daten
-          items:
-            - name: cURL
-              href: quickstarts/curl-train-extract.md
-            - name: Python
-              href: quickstarts/python-train-extract.md
-        - name: Verwenden eines vordefinierten Belegmodells
-          items:
-            - name: cURL
-              href: quickstarts/curl-receipts.md
-            - name: Python
-              href: quickstarts/python-receipts.md
-    - name: Verwenden des .NET SDK
-      href: quickstarts/dotnet-sdk.md
+    - name: Verwenden der Clientbibliothek oder REST-API
+      href: quickstarts/client-library.md
+    - name: Verwenden des Samplebezeichnungstools
+      href: quickstarts/label-tool.md
+- name: Tutorials
+  items:
+    - name: Verwenden der Formularerkennung mit Cognitive Search
+      href: ../../search/cognitive-search-custom-skill-form.md
+    - name: Verwenden der Formularerkennung mit AI Builder
+      href: tutorial-ai-builder.md
+- name: Konzepte
+  items:
+    - name: Layoutextraktion
+      href: concept-layout.md
+    - name: Receipts
+      href: concept-receipts.md
+    - name: Visitenkarten
+      href: concept-business-cards.md
+    - name: Invoices
+      href: concept-invoices.md
 - name: Anleitungen
   items:
     - name: Erstellen eines Trainingsdatasets
       href: build-training-data-set.md
+    - name: Bereitstellen des Samplebezeichnungstools
+      href: deploy-label-tool.md
     - name: Verwenden von Containern
       items:
         - name: Installieren und Ausführen von Containern
@@ -36,26 +45,45 @@
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Verwenden von Containerinstanzen
-          href: deploy-form-recognizer-on-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
+        - name: "Dokumentation zu Cognitive\_Services-Containern"
+          href: ../containers/index.yml
+    - name: Sichern und Wiederherstellen von Modellen
+      href: disaster-recovery.md
 - name: Verweis
   items:
-    - name: Formularerkennungs-API
-      href: 'https://aka.ms/form-recognizer/api'
+    - name: Formularerkennungs-API Version 2.1 (Vorschau)
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync'
+    - name: Formularerkennungs-API Version 2.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
     - name: SDKs
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview'
+          href: /dotnet/api/overview/azure/ai.formrecognizer-readme
+        - name: Python
+          href: /python/api/azure-ai-formrecognizer/?view=azure-python
+        - name: Java
+          href: /java/api/overview/azure/ai-formrecognizer-readme
+        - name: JavaScript
+          href: /javascript/api/overview/azure/ai-form-recognizer-readme
 - name: Ressourcen
   items:
+    - name: Support- und Hilfeoptionen
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
     - name: Preise und Einschränkungen
-      href: 'https://go.microsoft.com/fwlink/?linkid=2087258'
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: UserVoice
       href: 'https://go.microsoft.com/fwlink/?linkid=2090535'
     - name: Stack Overflow
-      href: 'https://go.microsoft.com/fwlink/?linkid=2087186'
+      href: 'https://stackoverflow.com/questions/tagged/form-recognizer'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionale Verfügbarkeit
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
-    - name: Compliance
+    - name: Sprachunterstützung
+      href: language-support.md
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Verschlüsselung
+      href: form-recognizer-encryption-of-data-at-rest.md

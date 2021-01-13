@@ -1,38 +1,42 @@
 ---
-title: Überwachen von Azure Site Recovery mit Azure Monitor-Protokollen (Log Analytics)
+title: Überwachen von Azure Site Recovery mit Azure Monitor-Protokollen
 description: Erfahren Sie, wie Sie Azure Site Recovery mit Azure Monitor-Protokollen (Log Analytics) überwachen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 4eb88658437d3b29cc55d24bb83f73b660daea43
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: e3d3ce8218030bc8ba6c59b26b7360bf2299e02a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718229"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499814"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Überwachen von Site Recovery mit Azure Monitor-Protokollen
 
 In diesem Artikel wird beschrieben, wie Sie die von [Azure Site Recovery](site-recovery-overview.md) replizierten Computer mithilfe von [Azure Monitor-Protokollen](../azure-monitor/platform/data-platform-logs.md) und [Log Analytics](../azure-monitor/log-query/log-query-overview.md) überwachen.
 
-Azure Monitor-Protokolle bieten eine Protokolldatenplattform, die Aktivitäts- und Diagnoseprotokolle zusammen mit anderen Überwachungsdaten erfasst. Sie können in Azure Monitor-Protokollen Protokollabfragen mit Log Analytics schreiben und testen und Protokolldaten interaktiv analysieren. Sie können die Protokollergebnisse visualisieren und abfragen, und Sie können Warnungen konfigurieren, damit Aktionen basierend auf überwachten Daten durchgeführt werden.
+Azure Monitor-Protokolle bieten eine Protokolldatenplattform, die Aktivitäts- und Ressourcenprotokolle zusammen mit anderen Überwachungsdaten sammelt. Sie können in Azure Monitor-Protokollen Protokollabfragen mit Log Analytics schreiben und testen und Protokolldaten interaktiv analysieren. Sie können die Protokollergebnisse visualisieren und abfragen, und Sie können Warnungen konfigurieren, damit Aktionen basierend auf überwachten Daten durchgeführt werden.
 
 Für Site Recovery können Sie Azure Monitor-Protokolle für folgende Aufgaben verwenden:
 
 - **Überwachen von Integrität und Status von Site Recovery:** Sie können z. B. die Replikationsintegrität, den Testfailoverstatus, Site Recovery-Ereignisse, RPOs (Recovery Point Objectives, Wiederherstellungspunktziele) für geschützte Computer und die Änderungsraten von Datenträgern/Daten überwachen.
 - **Einrichten von Warnungen für Site Recovery:** Beispielsweise können Sie Warnungen für die Computerintegrität oder für den Testfailoverstatus oder Site Recovery-Aufträge konfigurieren.
 
-Die Verwendung von Azure Monitor-Protokollen mit Site Recovery wird für die Azure-zu-Azure-Replikation und die Replikation von VMware-VMs/physischen Servern zu Azure unterstützt.
+Die Verwendung von Azure Monitor-Protokollen mit Site Recovery wird für die **Azure-zu-Azure-Replikation** und die **Replikation von VMware-VMs/physischen Servern zu Azure** unterstützt.
+
+> [!NOTE]
+> Um die Änderungsdaten- und Uploadratenprotokolle für VMware- und physische Computer zu erhalten, müssen Sie einen Microsoft Monitoring Agent auf dem Prozessserver installieren. Dieser Agent sendet die Protokolle der replizierenden Computer an den Arbeitsbereich. Diese Funktion ist erst ab der Version 9.30 des des Mobilitäts-Agents verfügbar.
+
 ## <a name="before-you-start"></a>Vorbereitung
 
 Sie benötigen Folgendes:
 
 - Mindestens einen Computer, der in einem Recovery Services-Tresor geschützt ist
 - Einen Log Analytics-Arbeitsbereich zum Speichern von Site Recovery-Protokollen. Erfahren Sie mehr über das [Einrichten eines Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md).
-- Grundlegende Kenntnisse zum Schreiben, Ausführen und Analysieren von Protokollabfragen in Log Analytics. [Weitere Informationen](../azure-monitor/log-query/get-started-portal.md)
+- Grundlegende Kenntnisse zum Schreiben, Ausführen und Analysieren von Protokollabfragen in Log Analytics. [Weitere Informationen](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 Es wird empfohlen, vor dem Start die [allgemeinen Fragen zur Überwachung](monitoring-common-questions.md) zu lesen.
 
@@ -40,15 +44,34 @@ Es wird empfohlen, vor dem Start die [allgemeinen Fragen zur Überwachung](monit
 
 1. Klicken Sie im Tresor auf **Diagnoseeinstellungen** > **Diagnoseeinstellung hinzufügen**.
 
-    ![Auswählen der Diagnoseprotokollierung](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![Screenshot: Option „Diagnoseeinstellung hinzufügen“](./media/monitoring-log-analytics/add-diagnostic.png)
 
-2. Geben Sie unter**Diagnoseeinstellungen** einen Namen für die Protokollaktion an, und wählen Sie **An Log Analytics senden** aus.
+2. Geben Sie unter **Diagnoseeinstellungen** einen Namen an, und aktivieren Sie das Kontrollkästchen **An Log Analytics senden**.
 3. Wählen Sie das Abonnement der Azure Monitor-Protokolle und den Log Analytics-Arbeitsbereich aus.
-4. Wählen Sie in der Protokollliste alle Protokolle mit dem Präfix **AzureSiteRecovery** aus. Klicken Sie dann auf **OK**.
+4. Wählen mithilfe des Umschalters die Option **Azure-Diagnose** aus.
+5. Wählen Sie in der Protokollliste alle Protokolle mit dem Präfix **AzureSiteRecovery** aus. Klicken Sie dann auf **OK**.
 
-    ![Arbeitsbereich auswählen](./media/monitoring-log-analytics/select-workspace.png)
+    ![Screenshot: Bildschirm für Diagnoseeinstellung](./media/monitoring-log-analytics/select-workspace.png)
 
 Die Site Recovery-Protokolle werden nun in eine Tabelle (**AzureDiagnostics**) im ausgewählten Arbeitsbereich übertragen.
+
+## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>Konfigurieren des Microsoft Monitoring Agents auf dem Prozessserver zum Senden von Änderungsdaten- und Uploadratenprotokollen
+
+Sie können die Änderungsdateninformationen und die Quelldaten-Uploadrateninformationen für Ihre VMware-/physischen Computer lokal erfassen. Dazu muss ein Microsoft Monitoring Agent auf dem Prozessserver installiert sein.
+
+1. Wechseln Sie zum Log Analytics-Arbeitsbereich, und klicken Sie auf **Erweiterte Einstellungen**.
+2. Klicken Sie auf die Seite **Verbundene Quellen**, und wählen Sie dann **Windows-Server** aus.
+3. Laden Sie den Windows-Agent (64 Bit) auf den Prozessserver herunter. 
+4. [Abrufen von Arbeitsbereichs-ID und Schlüssel](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
+5. [Konfigurieren des Agents für die Verwendung von TLS 1.2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
+6. [Schließen Sie die Installation des Agents ab](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard), indem Sie die erhaltene Arbeitsbereichs-ID und den Schlüssel angeben.
+7. Nachdem die Installation abgeschlossen ist, wechseln Sie in den Log Analytics-Arbeitsbereich, und klicken Sie auf **Erweiterte Einstellungen**. Wechseln Sie zur Seite **Daten**, und klicken Sie dann auf **Windows-Leistungsindikatoren**. 
+8. Klicken Sie auf **„+“** , um die folgenden beiden Indikatoren mit dem Stichprobenintervall von 300 Sekunden hinzuzufügen:
+
+    - ASRAnalytics(*)\SourceVmChurnRate
+    - ASRAnalytics(*)\SourceVmThrpRate
+
+Die Änderungs- und Uploadratendaten werden in den Arbeitsbereich eingegeben.
 
 
 ## <a name="query-the-logs---examples"></a>Abfragen der Protokolle – Beispiele
@@ -102,7 +125,7 @@ rpoInSeconds_d <= 1800, "15-30Min", ">30Min") 
 | render barchart 
 ```
 
-![Abfragen des RPO](./media/monitoring-log-analytics/example1.png)
+![Screenshot: Balkendiagramm der Azure-VMs, die mit Site Recovery repliziert wurden](./media/monitoring-log-analytics/example1.png)
 
 ### <a name="query-site-recovery-jobs"></a>Abfragen von Site Recovery-Aufträgen
 
@@ -167,11 +190,11 @@ AzureDiagnostics  
 | project TimeGenerated, name_s , RPO_in_seconds = rpoInSeconds_d   
 | render timechart 
 ```
-![Abfragen des Computer-RPO](./media/monitoring-log-analytics/example2.png)
+![Screenshot: Trenddiagramm zur Nachverfolgung des RPO einer bestimmten Azure-VM](./media/monitoring-log-analytics/example2.png)
 
-### <a name="query-data-change-rate-churn-for-a-vm"></a>Abfragen der Datenänderungsrate (Änderung) für eine VM
+### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Abfragen der Datenänderungsrate (Churn) und der Uploadrate für eine Azure-VM
 
-Diese Abfrage zeichnet ein Trenddiagramm für eine bestimmte Azure-VM (ContosoVM123), das die Datenänderungsrate (geschriebene Bytes pro Sekunde) und die Datenuploadrate nachverfolgt. Diese Informationen sind nur für Azure-VMs verfügbar, die in eine sekundäre Azure-Region repliziert werden.
+Diese Abfrage zeichnet ein Trenddiagramm für eine bestimmte Azure-VM (ContosoVM123), das die Datenänderungsrate (geschriebene Bytes pro Sekunde) und die Datenuploadrate darstellt. 
 
 ```
 AzureDiagnostics   
@@ -184,7 +207,24 @@ Category contains "Upload", "UploadRate", "none") 
 | project TimeGenerated , InstanceWithType , Churn_MBps = todouble(Value_s)/1048576   
 | render timechart  
 ```
-![Abfragen von Datenänderungen](./media/monitoring-log-analytics/example3.png)
+![Screenshot: Trenddiagramm für eine bestimmte Azure-VM](./media/monitoring-log-analytics/example3.png)
+
+### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Abfragen der Datenänderungsrate (Churn) und der Uploadrate für einen VMware- oder physischen Computer
+
+> [!Note]
+> Stellen Sie sicher, dass Sie den Überwachungs-Agent auf dem Prozessserver einrichten, um diese Protokolle abzurufen. Weitere Informationen finden Sie unter [Schritte zum Konfigurieren des Überwachungs-Agents](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs).
+
+Diese Abfrage zeichnet ein Trenddiagramm für einen bestimmten Datenträger (**disk0**) eines replizierten Elements (**win-9r7sfh9qlru**), das die Datenänderungsrate (geschriebene Bytes pro Sekunde) und die Datenuploadrate darstellt. Sie finden den Datenträgernamen auf dem Blatt **Datenträger** des replizierten Elements im Recovery Services-Tresor. Der in der Abfrage zu verwendende Instanzenname ist der DNS-Name des Computers, gefolgt von „_“ und dem Datenträgernamen wie in diesem Beispiel.
+
+```
+Perf
+| where ObjectName == "ASRAnalytics"
+| where InstanceName contains "win-9r7sfh9qlru_disk0"
+| where TimeGenerated >= ago(4h) 
+| project TimeGenerated ,CounterName, Churn_MBps = todouble(CounterValue)/5242880 
+| render timechart
+```
+Der Prozessserver pusht diese Daten alle 5 Minuten in den Log Analytics-Arbeitsbereich. Diese Datenpunkte stellen den Durchschnitt dar, der für 5 Minuten berechnet wurde.
 
 ### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Abfragen der Zusammenfassung zur Notfallwiederherstellung (Azure-zu-Azure)
 
@@ -212,7 +252,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>Einrichten von Warnungen – Beispiele
 
-Sie können Site Recovery Warnungen basierend auf Azure Monitor-Daten einrichten. Informieren Sie sich über das [Einrichten von Protokollwarnungen](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal). 
+Sie können Site Recovery Warnungen basierend auf Azure Monitor-Daten einrichten. Informieren Sie sich über das [Einrichten von Protokollwarnungen](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal). 
 
 > [!NOTE]
 > In einigen Beispielen wird **replicationProviderName_s** auf **A2A** festgelegt. Hierdurch werden Warnungen für Azure-VMs eingerichtet, die in eine sekundäre Azure-Region repliziert werden. In diesen Beispielen können Sie **A2A** durch **InMageAzureV2** ersetzen, wenn Sie Warnungen für lokale VMware-VMs oder physische Server einrichten möchten, die nach Azure repliziert werden.

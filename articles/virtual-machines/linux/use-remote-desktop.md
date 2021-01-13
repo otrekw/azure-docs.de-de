@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Remotedesktop mit einem virtuellen Linux-Computer in Azure | Microsoft-Dokumente
+title: Verwenden von Remotedesktop mit einem virtuellen Linux-Computer in Azure
 description: Erfahren Sie, wie Sie Remotedesktop (XRDP) zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure mithilfe von Tools mit grafischer Benutzeroberfläche installieren und konfigurieren.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -10,18 +10,18 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 96f1f98f95bb726864553c81245e250cf907fb05
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: efcfb2fd431dd9626ddcf918127964672b0e5ce0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961541"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500477"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure
-Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](https://www.xrdp.org)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells.
+Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](http://xrdp.org)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -48,7 +48,7 @@ Installieren Sie anschließend XFCE mithilfe von `apt`, wie hier dargestellt:
 
 ```bash
 sudo apt-get update
-sudo apt-get install xfce4
+sudo apt-get -y install xfce4
 ```
 
 ## <a name="install-and-configure-a-remote-desktop-server"></a>Installieren und Konfigurieren eines Remotedesktopservers
@@ -84,7 +84,7 @@ sudo passwd azureuser
 
 
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Erstellen einer Netzwerksicherheitsgruppen-Regel für den Remotedesktop-Datenverkehr
-Um zuzulassen, dass Remotedesktop-Datenverkehr Ihren virtuellen Linux-Computer erreicht, muss eine Netzwerksicherheitsgruppen-Regel erstellt werden, die TCP an Port 3389 an Ihren virtuellen Computer durchlässt. Weitere Informationen zu Netzwerksicherheitsgruppen-Regeln finden Sie unter [Was ist eine Netzwerksicherheitsgruppe?](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Alternativ können Sie [das Azure-Portal zum Erstellen einer Netzwerksicherheitsgruppen-Regel verwenden](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Um zuzulassen, dass Remotedesktop-Datenverkehr Ihren virtuellen Linux-Computer erreicht, muss eine Netzwerksicherheitsgruppen-Regel erstellt werden, die TCP an Port 3389 an Ihren virtuellen Computer durchlässt. Weitere Informationen zu Netzwerksicherheitsgruppen-Regeln finden Sie unter [Was ist eine Netzwerksicherheitsgruppe?](../../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Alternativ können Sie [das Azure-Portal zum Erstellen einer Netzwerksicherheitsgruppen-Regel verwenden](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Im folgenden Beispiel wird eine Netzwerksicherheitsgruppen-Regel mit [az vm open-port](/cli/azure/vm#az-vm-open-port) für Port *3389* erstellt. Öffnen Sie über die Azure CLI – nicht die SSH-Sitzung mit Ihrem virtuellen Computer – die folgende Netzwerksicherheitsgruppen-Regel:
 
@@ -133,11 +133,10 @@ tail -f /var/log/syslog
 
 Andere Linux-Distributionen, wie etwa Red Hat Enterprise Linux und SUSE, verwenden möglicherweise andere Verfahren zum erneuten Starten von Diensten sowie andere Speicherorte für die zu überprüfenden Protokolldateien.
 
-Wenn Sie in Ihrem Remotedesktopclient keine Antwort empfangen und keine Ereignisse im Systemprotokoll finden, zeigt dieses Verhalten an, dass der Remotedesktop-Datenverkehr den virtuellen Computer nicht erreicht. Überprüfen Sie die Regeln Ihrer Netzwerksicherheitsgruppe, um sicherzustellen, dass eine Regel in Kraft ist, die TCP an Port 3389 zulässt. Weitere Informationen finden Sie unter [Behandlung von Konnektivitätsproblemen mit Anwendungen](../windows/troubleshoot-app-connection.md).
+Wenn Sie in Ihrem Remotedesktopclient keine Antwort empfangen und keine Ereignisse im Systemprotokoll finden, zeigt dieses Verhalten an, dass der Remotedesktop-Datenverkehr den virtuellen Computer nicht erreicht. Überprüfen Sie die Regeln Ihrer Netzwerksicherheitsgruppe, um sicherzustellen, dass eine Regel in Kraft ist, die TCP an Port 3389 zulässt. Weitere Informationen finden Sie unter [Behandlung von Konnektivitätsproblemen mit Anwendungen](../troubleshooting/troubleshoot-app-connection.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Erstellen und Verwenden von SSH-Schlüsseln mit virtuellen Linux-Computern finden Sie unter [Erstellen von SSH-Schlüsseln für virtuelle Linux-Computer in Azure](mac-create-ssh-keys.md).
 
 Informationen zum Verwenden von SSH unter Windows finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows](ssh-from-windows.md).
-

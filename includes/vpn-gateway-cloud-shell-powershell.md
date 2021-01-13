@@ -5,25 +5,16 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 06/04/2019
+ms.date: 03/11/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d1e12a5cbdf145bb95fc2166a20ca1e9a77539cf
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3a4946e39bb5f14708cf462f5f2c2a64ed6c0033
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059676"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "79137142"
 ---
-In diesem Artikel werden PowerShell-Cmdlets verwendet. Zum Ausführen der Cmdlets können Sie Azure Cloud Shell verwenden, eine interaktive Shell-Umgebung, die in Azure gehostet und über den Browser verwendet wird. In Azure Cloud Shell sind die Azure PowerShell-Cmdlets bereits vorinstalliert.
+In diesem Artikel werden PowerShell-Cmdlets verwendet. Um die Cmdlets auszuführen, können Sie Azure Cloud Shell verwenden. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert.
 
-Um in Azure Cloud Shell Code aus diesem Artikel auszuführen, öffnen Sie eine Cloud Shell-Sitzung, verwenden Sie für einen Codeblock die Schaltfläche **Kopieren**, um Code zu kopieren, und fügen Sie ihn mit __STRG+UMSCHALT+V__ (Windows und Linux) oder __BEFEHL+UMSCHALT+V__ (macOS) in die Cloud Shell-Sitzung ein. Eingefügter Code wird nicht automatisch ausgeführt. Sie müssen zum Ausführen von Code die **EINGABETASTE** drücken.
-
-Sie können Azure Cloud Shell wie folgt starten:
-
-|  |   |
-|-----------------------------------------------|---|
-| Klicken Sie in der rechten oberen Ecke eines Codeblocks auf **Ausprobieren**. Dadurch wird __nicht__ automatisch Text in Cloud Shell kopiert. | ![Beispiel für „Testen Sie es.“ für Azure Cloud Shell](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
-| Öffnen Sie [shell.azure.com](https://shell.azure.com) in einem Browser. | [![Schaltfläche zum Starten von Azure Cloud Shell](./media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
-| Klicken Sie im [Azure-Portal](https://portal.azure.com) rechts oben im Menü auf die Schaltfläche **Cloud Shell**: | ![Cloud Shell-Schaltfläche im Azure-Portal](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
-
+Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach die Option **Ausprobieren**. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte starten, indem Sie zu [https://shell.azure.com/powershell](https://shell.azure.com/powershell) navigieren. Wählen Sie **Kopieren**, um die Blöcke mit dem Code zu kopieren. Fügen Sie ihn anschließend in Cloud Shell ein, und drücken Sie die EINGABETASTE, um ihn auszuführen.

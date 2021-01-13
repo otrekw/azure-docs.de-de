@@ -1,39 +1,32 @@
 ---
-title: 'Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung: Azure'
-description: Erfahren Sie, wie eine Ihrer App Service-Umgebung vorgelagerte Web Application Firewall konfigurieren.
-services: app-service\web
-documentationcenter: ''
-author: naziml
-manager: erikre
-editor: jimbe
+title: Konfigurieren einer WAF
+description: Hier erfahren Sie, wie Sie entweder mit Azure Application Gateway oder mit der WAF eines Drittanbieters eine Web Application Firewall (WAF) vor Ihrer App Service-Umgebung konfigurieren.
+author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/03/2018
-ms.author: naziml
-ms.custom: seodec18
-ms.openlocfilehash: 01224e4270ba8a7c7df4a311823dd6156038438a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.author: stefsch
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 354568fa3ab3816b643a8f08305ab55868a9b0b6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070042"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90973711"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung
 ## <a name="overview"></a>Übersicht
 
-Web Application Firewalls (WAFs) tragen zum Schutz Ihrer Webanwendungen bei, indem sie eingehenden Webdatenverkehr untersuchen und die Einschleusung von SQL-Befehlen, websiteübergreifendes Scripting, das Hochladen von Schadsoftware sowie DDoS-Angriffe und andere Angriffe unterbinden. Darüber hinaus überprüfen sie die Antworten der Back-End-Webserver, um Datenverluste zu verhindern (Data Loss Prevention, DLP). Zusammen mit der von App Service-Umgebungen bereitgestellten Isolierung und zusätzlichen Skalierung ergibt sich dadurch eine ideale Umgebung für das Hosten geschäftswichtiger Webanwendungen, die böswilligen Anforderungen abwehren und hohe Datenverkehrsvolumen bewältigen müssen. Azure bietet eine WAF-Funktion mit [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).  Im Dokument [Integrieren Ihrer ILB-App Service-Umgebung in ein Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway) erfahren Sie, wie Sie Ihre App Service-Umgebung in eine Application Gateway-Instanz integrieren.
+Web Application Firewalls (WAFs) tragen zum Schutz Ihrer Webanwendungen bei, indem sie eingehenden Webdatenverkehr untersuchen und die Einschleusung von SQL-Befehlen, websiteübergreifendes Scripting, das Hochladen von Schadsoftware sowie DDoS-Angriffe und andere Angriffe unterbinden. Darüber hinaus überprüfen sie die Antworten der Back-End-Webserver, um Datenverluste zu verhindern (Data Loss Prevention, DLP). Zusammen mit der von App Service-Umgebungen bereitgestellten Isolierung und zusätzlichen Skalierung ergibt sich dadurch eine ideale Umgebung für das Hosten geschäftswichtiger Webanwendungen, die böswilligen Anforderungen abwehren und hohe Datenverkehrsvolumen bewältigen müssen. Azure bietet eine WAF-Funktion mit [Application Gateway](../../application-gateway/overview.md).  Im Dokument [Integrieren Ihrer ILB-App Service-Umgebung in ein Application Gateway](./integrate-with-application-gateway.md) erfahren Sie, wie Sie Ihre App Service-Umgebung in eine Application Gateway-Instanz integrieren.
 
-Neben Azure Application Gateway stehen verschiedene Marketplace-Optionen wie [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure) zur Verfügung, die über den [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) bezogen werden können. Im weiteren Verlauf dieses Dokuments erfahren Sie, wie Sie Ihre App Service-Umgebung in ein Barracuda WAF-Gerät integrieren.
+Neben Azure Application Gateway stehen verschiedene Marketplace-Optionen wie [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure) zur Verfügung, die über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice) bezogen werden können. Im weiteren Verlauf dieses Dokuments erfahren Sie, wie Sie Ihre App Service-Umgebung in ein Barracuda WAF-Gerät integrieren.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 Für dieses Dokument konfigurieren wir die App Service-Umgebung hinter mehreren Barracuda WAF-Instanzen mit Lastenausgleich, sodass nur Datenverkehr von der WAF die App Service-Umgebung erreichen kann und kein Zugriff aus der DMZ möglich ist. Außerdem haben wir Azure Traffic Manager die Barracuda WAF-Instanzen für den Lastenausgleich von Azure-Rechenzentren und Regionen vorgelagert. Ein allgemeines Diagramm der Einrichtung sieht aus wie in der folgenden Abbildung dargestellt:
 
-![Architecture][Architecture] 
+![Diagram: optionale Azure Traffic Manager-Instanz, die eine Verbindung mit Web Application Firewall-Instanzen herstellt, die wiederum eine Verbindung mit der Netzwerk-ACL herstellen, um nur Datenverkehr von der Firewall in einer App Service-Umgebung zuzulassen, die Web-, API- und Mobil-Apps für zwei Umgebungen enthält][Architecture] 
 
 > [!NOTE]
 > Mit der Einführung der [ILB-Unterstützung für die App Service-Umgebung](app-service-environment-with-internal-load-balancer.md) können Sie die ASE so konfigurieren, dass darauf von der DMZ nicht zugegriffen werden kann und sie nur im privaten Netzwerk zur Verfügung steht. 
@@ -41,7 +34,7 @@ Für dieses Dokument konfigurieren wir die App Service-Umgebung hinter mehreren 
 > 
 
 ## <a name="configuring-your-app-service-environment"></a>Konfigurieren der App Service-Umgebung
-Informationen zum Konfigurieren einer App Service-Umgebung finden Sie in [unserer Dokumentation](app-service-web-how-to-create-an-app-service-environment.md) zu diesem Thema. Sobald Sie eine App Service-Umgebung eingerichtet haben, können Sie in dieser Umgebung Web-Apps, API-Apps und [mobile Apps](../../app-service-mobile/app-service-mobile-value-prop.md) erstellen, die alle hinter der WAF geschützt werden, die wir im nächsten Abschnitt konfigurieren.
+Informationen zum Konfigurieren einer App Service-Umgebung finden Sie in [unserer Dokumentation](app-service-web-how-to-create-an-app-service-environment.md) zu diesem Thema. Sobald Sie eine App Service-Umgebung eingerichtet haben, können Sie in dieser Umgebung Web-Apps, API-Apps und [mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) erstellen, die alle hinter der WAF geschützt werden, die wir im nächsten Abschnitt konfigurieren.
 
 ## <a name="configuring-your-barracuda-waf-cloud-service"></a>Konfiguration des Barracuda WAF-Clouddiensts
 Barracuda hat einen [ausführlichen Artikel](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) zur Bereitstellung seiner WAF auf einem virtuellen Computer in Azure verfasst. Wir befolgen diese Anweisungen, wollen aber zugleich Redundanz und keine einzelne Fehlerquelle hinzufügen, weshalb wir mindestens zwei VMs mit WAF-Instanzen im selben Clouddienst bereitstellen.
@@ -78,7 +71,7 @@ Auf der Registerkarte **Dienste** können Sie Ihre WAF für die Dienste konfigur
 ![Verwaltungsdienste hinzufügen][ManagementAddServices]
 
 > [!NOTE]
-> Je nachdem, wie Ihre Anwendungen konfiguriert sind und welche Features in Ihrer App Service-Umgebung verwendet werden, müssen Sie Datenverkehr für alle TCP-Ports außer 80 und 443 weiterleiten, beispielsweise wenn Sie IP-SSL für eine App Service-App eingerichtet haben. Eine Liste der Netzwerkports, die in App Service-Umgebungen verwendet werden, finden Sie in der [Dokumentation zum Steuern des eingehenden Datenverkehrs](app-service-app-service-environment-control-inbound-traffic.md) im Abschnitt „Netzwerkports“.
+> Je nachdem, wie Ihre Anwendungen konfiguriert sind und welche Features in Ihrer App Service-Umgebung verwendet werden, müssen Sie Datenverkehr für alle TCP-Ports außer 80 und 443 weiterleiten, beispielsweise wenn Sie IP-TLS für eine App Service-App eingerichtet haben. Eine Liste der Netzwerkports, die in App Service-Umgebungen verwendet werden, finden Sie in der [Dokumentation zum Steuern des eingehenden Datenverkehrs](app-service-app-service-environment-control-inbound-traffic.md) im Abschnitt „Netzwerkports“.
 > 
 > 
 
@@ -98,7 +91,9 @@ Zum Weiterleiten der Traffic Manager-Pingsignale von Ihrer WAF zu Ihrer Anwendun
 ## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>Schützen des Datenverkehrs zu einer App Service-Umgebung mithilfe von Netzwerksicherheitsgruppen (NSGs)
 In der [Dokumentation zum Steuern des eingehenden Datenverkehrs](app-service-app-service-environment-control-inbound-traffic.md) finden Sie ausführliche Informationen zum Einschränken des Datenverkehrs zu Ihrer App Service-Umgebung von der WAF nur durch Verwenden der VIP-Adresse Ihres Clouddiensts. Hier ist ein PowerShell-Beispielbefehl zur Durchführung dieser Aufgabe für TCP-Port 80.
 
-    Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```azurepowershell-interactive
+Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```
 
 Ersetzen Sie "SourceAddressPrefix" durch die virtuelle IP-Adresse (VIP) des Clouddiensts Ihrer WAF.
 

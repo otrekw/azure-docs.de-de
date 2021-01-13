@@ -1,29 +1,32 @@
 ---
 title: Georedundante Notfallwiederherstellung in Azure Service Bus | Microsoft-Dokumentation
 description: Verwenden von geografischen Regionen für das Failover und zum Durchführen der Notfallwiederherstellung in Azure Service Bus
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: 24d6658733ea38c15f0673d10db3c0ff5ef51c23
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.date: 01/04/2021
+ms.openlocfilehash: c07721c07923a40da9fe28e0e3116bfd6a52210f
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190159"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862351"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Service Bus
 
-Falls gesamte Azure-Regionen oder -Datencenter ausfallen (wenn keine [Verfügbarkeitszonen](../availability-zones/az-overview.md) verwendet werden), ist es von entscheidender Bedeutung, dass die Datenverarbeitung in einer anderen Region oder in einem anderen Datencenter fortgesetzt werden kann. Daher ist die *georedundante Notfallwiederherstellung* eine wichtige Funktion für jedes Unternehmen. Azure Service Bus unterstützt die georedundante Notfallwiederherstellung auf Namespaceebene.
+Die Resilienz gegen katastrophale Ausfälle von Datenverarbeitungsressourcen ist für viele Unternehmen erforderlich und in einigen Fällen sogar Branchenvorschrift. 
 
-Das Feature für die georedundante Notfallwiederherstellung ist für die Service Bus Premium-SKU global verfügbar. 
+Mit Azure Service Bus wird das Risiko von schwerwiegenden Ausfällen einzelner Computer oder sogar der kompletten Racks in Clustern, die mehrere Fehlerdomänen in einem Rechenzentrum umfassen, verteilt. Außerdem werden mit Azure Service Bus transparente Fehlererkennungs- und Failovermechanismen implementiert. Somit wird der Dienst weiterhin innerhalb der garantierten Servicelevel und in der Regel ohne spürbare Unterbrechungen im Falle solcher Fehler ausgeführt. Wenn ein Service Bus-Namespace mit aktivierter Option für [Verfügbarkeitszonen](../availability-zones/az-overview.md) erstellt wurde, wird das Ausfallrisiko noch weiter auf drei physisch getrennte Einrichtungen verteilt. Der Dienst verfügt dann über genügend Kapazitätsreserven, um den vollständigen, katastrophalen Verlust einer gesamten Einrichtung sofort zu bewältigen. 
 
->[!NOTE]
-> Mit der georedundanten Notfallwiederherstellung wird derzeit nur sichergestellt, dass die Metadaten (Warteschlangen, Themen, Abonnements und Filter) vom primären Namespace in den sekundären Namespace kopiert werden, wenn sie gekoppelt sind.
+Das umfassend aktive Azure Service Bus-Clustermodell mit Unterstützung von Verfügbarkeitszonen ist jedem lokalen Nachrichtenbroker im Hinblick auf Resilienz gegen schwerwiegende Hardwareausfälle und sogar gegen den katastrophalen Verlust gesamter Rechenzentrumseinrichtungen überlegen. Dennoch kann es zu schwerwiegenden Situationen mit einer weit gestreuten physischen Zerstörung kommen, gegen die selbst diese Maßnahmen keinen ausreichenden Schutz bieten können. 
+
+Die georedundante Notfallwiederherstellung von Service Bus erleichtert die Wiederherstellung nach einem Notfall dieser Größenordnung und das endgültige Verwerfen einer Azure-Region, ohne die Anwendungskonfigurationen ändern zu müssen. Wenn Sie eine Azure-Region verwerfen, sind in der Regel mehrere Dienste betroffen. Dieses Feature soll vor allem helfen, die Integrität der gesamten Anwendungskonfiguration zu bewahren. Das Feature ist für die Service Bus Premium-SKU global verfügbar. 
+
+Die georedundante Notfallwiederherstellung stellt sicher, dass die gesamte Konfiguration eines Namespaces (Warteschlangen, Themen, Abonnements, Filter) ständig von einem primären Namespace in einen sekundären Namespace repliziert wird, wenn sie gekoppelt sind. Außerdem können Sie mit ihr jederzeit ein einmaliges Failover vom primären zum sekundären Namespace auslösen. Beim Failover wird der ausgewählte Aliasname für den Namespace dem sekundären Namespace zugeordnet, und die Kopplung wird dann aufgehoben. Das Failover erfolgt nach der Initiierung fast unmittelbar. 
+
+> [!IMPORTANT]
+> Das Feature ermöglicht die sofortige Fortsetzung von Vorgängen mit der gleichen Konfiguration, jedoch **werden die Nachrichten in Warteschlangen, Themenabonnements oder in Warteschlangen für unzustellbare Nachrichten nicht repliziert**. Damit die Warteschlangensemantik beibehalten wird, müssen bei einer solchen Replikation nicht nur die Nachrichtendaten, sondern auch jede Zustandsänderung im Broker repliziert werden. Bei den meisten Service Bus-Namespaces würde der erforderliche Replikationsdatenverkehr den Anwendungsdatenverkehr weit überschreiten. Zudem würden bei Warteschlangen mit hohem Durchsatz die meisten Nachrichten immer in den sekundären Namespace repliziert, während sie bereits vom primären Replikat gelöscht werden. Dies hätte übermäßigen unwirtschaftlichen Datenverkehr zur Folge. Bei Replikationsrouten mit hoher Latenz, wie dies auf viele Kopplungen zutrifft, die Sie für die georedundante Notfallwiederherstellung wählen würden, kann zudem der Replikationsdatenverkehr aufgrund der latenzbedingten Drosselungseffekte möglicherweise nicht nachhaltig mit dem Anwendungsdatenverkehr Schritt halten.
+ 
+> [!TIP]
+> Verwenden Sie zum Replizieren der Inhalte von Warteschlangen und Themenabonnements sowie für den Betrieb der entsprechenden Namespaces in Aktiv/Aktiv-Konfigurationen zur Bewältigung von Ausfällen und Notfällen nicht den Featuresatz der georedundanten Notfallwiederherstellung. Befolgen Sie stattdessen die [Replikationsanleitung](service-bus-federation-overview.md).  
 
 ## <a name="outages-and-disasters"></a>Ausfälle und Notfälle
 
@@ -49,7 +52,7 @@ In diesem Artikel werden die folgenden Begriffe verwendet:
 
 -  *Failover*: Der Vorgang zum Aktivieren des sekundären Namespace.
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 Der folgende Abschnitt enthält eine Übersicht über die Einrichtung der Kopplung zwischen den Namespaces.
 
@@ -57,14 +60,14 @@ Der folgende Abschnitt enthält eine Übersicht über die Einrichtung der Kopplu
 
 Der Einrichtungsvorgang verläuft wie folgt:
 
-1. Sie stellen einen ***primären*** Service Bus Premium-Namespace bereit.
+1. Sie stellen einen ***primären** _ Service Bus Premium-Namespace bereit.
 
-2. Sie stellen einen ***sekundären*** Service Bus Premium-Namespace in *einer anderen Region* als der Region bereit, in der der primäre Namespace bereitgestellt wird. Dies ermöglicht die Fehlerisolierung zwischen unterschiedlichen Rechenzentrumsregionen.
+2. Sie stellen einen _sekundären *Service Bus Premium-Namespace in _einer anderen Region_*_ als der Region bereit, in der der primäre Namespace bereitgestellt wird. Dies ermöglicht die Fehlerisolierung zwischen unterschiedlichen Rechenzentrumsregionen.
 
-3. Sie erstellen die Kopplung zwischen dem primären und dem sekundären Namespace, um den ***Alias*** zu erhalten.
+3. Sie erstellen die Kopplung zwischen dem primären und dem sekundären Namespace, um den ***Alias** _ zu erhalten.
 
     >[!NOTE] 
-    > Wenn Sie [Ihren Azure Service Bus Standard-Namespace zu Azure Service Bus Premium migriert haben](service-bus-migrate-standard-premium.md), müssen Sie den bereits vorhandenen Alias (d.h. Ihre Service Bus Standard-Namespaceverbindungszeichenfolge) verwenden, um die Notfallwiederherstellungs-Konfiguration über die **PS/CLI** oder **REST-API** zu erstellen.
+    > Wenn Sie [Ihren Azure Service Bus Standard-Namespace zu Azure Service Bus Premium migriert haben](service-bus-migrate-standard-premium.md), müssen Sie den bereits vorhandenen Alias (d. h. Ihre Service Bus-Standard-Namespaceverbindungszeichenfolge) verwenden, um die Notfallwiederherstellungs-Konfiguration über die _ *PS/CLI** oder **REST-API** zu erstellen.
     >
     >
     > Dies liegt daran, dass während der Migration Ihre Azure Service Bus Standard-Namespaceverbindungszeichenfolge bzw. der DNS-Name selbst zu einem Alias für Ihren Azure Service Bus Premium-Namespace geworden ist.
@@ -74,7 +77,7 @@ Der Einrichtungsvorgang verläuft wie folgt:
     > Wenn Sie das Portal verwenden, um die Konfiguration für die Notfallwiederherstellung einzurichten, wird das Portal diesen Nachteil vor Ihnen verbergen.
 
 
-4. Mithilfe des ***Alias*** aus Schritt 3 verbinden Sie Ihre Clientanwendungen mit dem für die georedundante Notfallwiederherstellung aktivierten primären Namespace. Der Alias verweist zunächst auf den primären Namespace.
+4. Mithilfe des **_Alias_* _ aus Schritt 3 verbinden Sie Ihre Clientanwendungen mit dem für die georedundante Notfallwiederherstellung aktivierten primären Namespace. Der Alias verweist zunächst auf den primären Namespace.
 
 5. [Optional:] Sie fügen einige Überwachungsfunktionen hinzu, um zu ermitteln, ob ein Failover erforderlich ist.
 
@@ -86,7 +89,7 @@ Ein Failover wird manuell vom Kunden (explizit durch einen Befehl oder über Ges
 
 Nach dem Auslösen des Failovers:
 
-1. Die Verbindungszeichenfolge des ***Alias*** wird so aktualisiert, dass sie auf den sekundären Premium-Namespace verweist.
+1. Die Verbindungszeichenfolge des _*_Alias_*_ wird so aktualisiert, dass sie auf den sekundären Premium-Namespace verweist.
 
 2. Clients (Sender und Empfänger) stellen automatisch eine Verbindung mit dem sekundären Namespace her.
 
@@ -107,7 +110,7 @@ Sie können das Failover entweder mit Überwachungssystemen oder mit benutzerdef
 
 ## <a name="management"></a>Verwaltung
 
-Falls Sie einen Fehler gemacht haben (z.B. eine Kopplung der falschen Regionen während des anfänglichen Setups), können Sie die Kopplung der beiden Namespaces jederzeit trennen. Löschen Sie den Alias, falls Sie die gekoppelten Namespaces als reguläre Namespaces verwenden möchten.
+Falls Sie einen Fehler gemacht haben (z.B. eine Kopplung der falschen Regionen während des anfänglichen Setups), können Sie die Kopplung der beiden Namespaces jederzeit trennen. Wenn Sie die gekoppelten Namespaces als reguläre Namespaces verwenden möchten, löschen Sie den Alias.
 
 ## <a name="use-existing-namespace-as-alias"></a>Verwenden des vorhandenen Namespace als Alias
 
@@ -133,22 +136,59 @@ Beachten Sie für diesen Release Folgendes:
 
 3. Die Durchführung eines Failovers für eine komplexe verteilte Infrastruktur sollte mindestens einmal [durchgespielt](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) werden.
 
-4. Das Synchronisieren von Entitäten kann einige Zeit dauern, z.B. eine Minute für 50 bis 100 Entitäten. Abonnements und Regeln zählen ebenfalls zu den Entitäten.
+4. Das Synchronisieren von Entitäten kann einige Zeit dauern (etwa eine Minute pro 50 bis 100 Entitäten). Abonnements und Regeln zählen ebenfalls zu den Entitäten.
 
 ## <a name="availability-zones"></a>Verfügbarkeitszonen
 
 Die Service Bus-Premium-SKU unterstützt zudem [Verfügbarkeitszonen](../availability-zones/az-overview.md), die fehlerisolierte Standorte innerhalb einer Azure-Region bieten.
 
 > [!NOTE]
-> Die Unterstützung für Verfügbarkeitszonen für Azure Service Bus Premium ist nur in [Azure-Regionen](../availability-zones/az-overview.md#services-support-by-region) verfügbar, in denen Verfügbarkeitszonen vorhanden sind.
+> Die Unterstützung für Verfügbarkeitszonen für Azure Service Bus Premium ist nur in [Azure-Regionen](../availability-zones/az-region.md) verfügbar, in denen Verfügbarkeitszonen vorhanden sind.
 
 Sie können Verfügbarkeitszonen nur für neue Namespaces über das Azure-Portal aktivieren. Service Bus bietet keine Unterstützung für die Migration vorhandener Namespaces. Sie können die Zonenredundanz nicht deaktivieren, wenn Sie sie für Ihren Namespace aktiviert haben.
 
 ![3][]
 
+## <a name="private-endpoints"></a>Private Endpunkte
+Dieser Abschnitt enthält zusätzliche Überlegungen zur Verwendung der georedundanten Notfallwiederherstellung mit Namespaces, bei denen private Endpunkte verwendet werden. Allgemeine Informationen zur Verwendung von privaten Endpunkten mit Service Bus finden Sie unter [Integrieren von Azure Service Bus in den Azure Private Link-Dienst](private-link-service.md).
+
+### <a name="new-pairings"></a>Neue Kopplungen
+Wenn Sie versuchen, eine Kopplung zwischen einem primären Namespace mit einem privaten Endpunkt und einem sekundären Namespace ohne einen privaten Endpunkt zu erstellen, wird die Kopplung nicht durchgeführt. Die Kopplung erfolgt nur, wenn sowohl der primäre als auch der sekundäre Namespace einen privaten Endpunkt aufweist. Wir empfehlen Ihnen, für den primären und den sekundären Namespace sowie für virtuelle Netzwerke, in denen private Endpunkte erstellt werden, die gleichen Konfigurationen zu verwenden. 
+
+> [!NOTE]
+> Wenn Sie versuchen, den primären Namespace mit einem privaten Endpunkt und dem sekundären Namespace zu koppeln, prüft der Überprüfungsprozess lediglich, ob ein privater Endpunkt im sekundären Namespace vorhanden ist. Es wird nicht überprüft, ob der Endpunkt funktioniert oder nach dem Failover ausgeführt wird. Sie selbst müssen sicherstellen, dass der sekundäre Namespace mit dem privaten Endpunkt nach dem Failover erwartungsgemäß funktioniert.
+>
+> Gehen Sie wie folgt vor, um die Konfigurationen des privaten Endpunkts zu testen: Senden Sie von einem Ort außerhalb des virtuellen Netzwerks eine [Get queues](/rest/api/servicebus/stable/queues/get)-Anforderung an den sekundären Namespace, und überprüfen Sie, ob Sie eine Fehlermeldung vom Dienst erhalten.
+
+### <a name="existing-pairings"></a>Vorhandene Kopplungen
+Wenn die Kopplung zwischen dem primären und dem sekundären Namespace bereits vorhanden ist, kann für den primären Namespace kein privater Endpunkt erstellt werden. Erstellen Sie zunächst einen privaten Endpunkt für den sekundären Namespace und dann einen privaten Endpunkt für den primären Endpunkt, um das Problem zu beheben.
+
+> [!NOTE]
+> Für den sekundären Namespace ist nur Lesezugriff möglich, Konfigurationen des privaten Endpunkts können dagegen aktualisiert werden. 
+
+### <a name="recommended-configuration"></a>Empfohlene Konfiguration
+Beim Erstellen einer Konfiguration für die Notfallwiederherstellung Ihrer Anwendung und Service Bus müssen Sie private Endpunkte für primäre und sekundäre Service Bus-Namespaces für die virtuellen Netzwerke erstellen, die primäre und sekundäre Instanzen der Anwendung enthalten.
+
+Angenommen, Sie verfügen über die beiden virtuellen Netzwerke VNET-1 und VNET-2 sowie diesen primären und sekundären Namespace: ServiceBus-Namespace1-Primary, ServiceBus-Namespace2-Secondary. Sie müssen dann die folgenden Schritte ausführen: 
+
+- Erstellen Sie für „ServiceBus-Namespace1-Primary“ zwei private Endpunkte, an denen Subnetze aus VNET-1 und VNET-2 verwendet werden.
+- Erstellen Sie für „ServiceBus-Namespace2-Secondary“ zwei private Endpunkte, an denen dieselben Subnetze aus VNET-1 und VNET-2 verwendet werden. 
+
+![Private Endpunkte und virtuelle Netzwerke](./media/service-bus-geo-dr/private-endpoints-virtual-networks.png)
+
+
+Der Vorteil dieses Ansatzes besteht darin, dass ein Failover auf Anwendungsebene unabhängig vom Service Bus-Namespace erfolgen kann. Betrachten Sie die folgenden Szenarien: 
+
+_ *Auf Anwendung beschränktes Failover:* * In diesem Fall ist die Anwendung nicht in VNET-1 vorhanden, wird aber in VNET-2 verschoben. Da beide privaten Endpunkte sowohl in VNET-1 als auch in VNET-2 für primäre und sekundäre Namespaces konfiguriert sind, wird die Anwendung ausgeführt. 
+
+**Nur Failover für Service Bus-Namespaces:** Da auch in diesem Fall beide privaten Endpunkte in beiden virtuellen Netzwerken für primäre und sekundäre Namespaces konfiguriert sind, wird die Anwendung ausgeführt. 
+
+> [!NOTE]
+> Eine Anleitung zur georedundanten Notfallwiederherstellung eines virtuellen Netzwerks finden Sie unter [Virtuelles Netzwerk: Geschäftskontinuität](../virtual-network/virtual-network-disaster-recovery-guidance.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Hier](/rest/api/servicebus/disasterrecoveryconfigs) finden Sie Informationen zur REST-API-Referenz für die georedundante Notfallwiederherstellung.
+- [Hier](/rest/api/servicebus/stable/disasterrecoveryconfigs) finden Sie Informationen zur REST-API-Referenz für die georedundante Notfallwiederherstellung.
 - Führen Sie das [Beispiel auf GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2) zur georedundanten Notfallwiederherstellung aus.
 - Sehen Sie sich das [Beispiel zur georedundanten Notfallwiederherstellung, mit dem Nachrichten an einen Alias gesendet werden](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) an.
 

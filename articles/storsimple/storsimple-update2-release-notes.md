@@ -3,7 +3,7 @@ title: Versionsanmerkungen zu Update 2 der StorSimple 8000-Serie | Microsoft Doc
 description: Beschreibt die neuen Features sowie Probleme und Problemumgehungen für Update 2 der StorSimple 8000-Serie.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: e2c8bffd-7fc5-4b77-b632-a4f59edacc3a
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
-ms.author: v-sharos
-ms.openlocfilehash: f23a507ab631be553613e22cafa037291548a8aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: alkohli
+ms.openlocfilehash: b68e338c2675a3aeefda390d12ab2d82ea1c7a9f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717140"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956652"
 ---
 # <a name="storsimple-8000-series-update-2-release-notes"></a>Versionsanmerkungen zu Update 2 der StorSimple 8000-Serie
 
@@ -53,7 +53,7 @@ In Update 2 werden die folgenden neuen Features eingeführt:
   * Routingverbesserungen mit festen Metriken für cloudfähige Blöcke.
   * Onlinewiederholung bei Ressourcenfehlern vor einem Failover.
   * Neue Warnungen für Dienstfehler.
-* **Updateverbesserungen:** In Update 1.2 und früheren Versionen wurde die StorSimple 8000-Serie über zwei Kanäle aktualisiert: Windows Update für Clustering, iSCSI usw. und Microsoft Update für Binärdateien und Firmware.
+* **Updateverbesserungen** : In Update 1.2 und früheren Versionen wurde die StorSimple 8000-Serie über zwei Kanäle aktualisiert: Windows Update für Clustering, iSCSI und so weiter und Microsoft Update für Binärdateien und Firmware.
     Update 2 verwendet Microsoft Update für alle Updatepakete. Auf diese Weise verringert sich der Zeitaufwand für Patches oder Failover. 
 * **Firmwareupdates** : Die folgenden Firmwareupdates sind enthalten:
   
@@ -64,23 +64,23 @@ In Update 2 werden die folgenden neuen Features eingeführt:
 ## <a name="issues-fixed-in-update-2"></a>In Update 2 behobene Probleme
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in Update 2 behoben wurden.    
 
-| Nein. | Feature | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein. | Funktion | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- |
 | 1 |Netzwerkschnittstellen |Nach dem Upgrade auf Update 1 hat der StorSimple Manager-Dienst gemeldet, dass die Ports „Data2“ und „Data3“ auf einem Controller Fehler verursachen. Dieses Problem wurde behoben. |Ja |Nein |
 | 2 |Aktualisierungen |Nach dem Upgrade auf Update 1 traten im klassischen Azure-Portal auf mehreren Geräten akustische Alarme auf. Dieses Problem wurde behoben. |Ja |Nein |
-| 3 |Openstack-Authentifizierung |Wenn Sie Openstack als Clouddienstanbieter verwenden, haben Sie möglicherweise eine Fehlermeldung erhalten, dass die Zeichenfolge zur Cloudauthentifizierung zu lang war. Dies wurde korrigiert. |Ja |Nein |
+| 3 |Openstack-Authentifizierung |Wenn Sie Openstack als Clouddienstanbieter verwenden, haben Sie möglicherweise eine Fehlermeldung erhalten, dass die Zeichenfolge zur Cloudauthentifizierung zu lang war. Dies wurde behoben. |Ja |Nein |
 
 ## <a name="known-issues-in-update-2"></a>Bekannte Probleme in Update 2
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme in dieser Version.
 
-| Nein. | Feature | Problem | Kommentare/Problemumgehung | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein. | Funktion | Problem | Kommentare/Problemumgehung | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Datenträgerquorum |In seltenen Fällen kann der Speicherpool offline geschaltet werden, wenn der Großteil der Datenträger im EBOD-Gehäuse eines 8600-Geräts getrennt wird, sodass kein Datenträgerquorum verfügbar ist. Der Speicherpool bleibt offline, auch wenn die Verbindung zu den Datenträgern wiederhergestellt wird. |Sie müssen das Gerät neu starten. Wenn das Problem weiterhin auftritt, wenden Sie sich an den Microsoft-Support, um Informationen zu den nächsten Schritten zu erhalten. |Ja |Nein |
 | 2 |Falsche Controller-ID |Beim Austausch eines Controllers kann es vorkommen, dass Controller 0 als Controller 1 angezeigt wird. Während des Controlleraustauschs kann die Controller-ID anfänglich als ID des Peercontrollers angezeigt werden, wenn das Image vom Peerknoten geladen wurde. In seltenen Fällen kann dieses Verhalten auch nach einem Neustart des Systems auftreten. |Es ist keine Benutzeraktion erforderlich. Dieses Problem löst sich von selbst, nachdem der Controlleraustausch abgeschlossen ist. |Ja |Nein |
 | 3 |Speicherkonten |Das Verwenden des Speicherdiensts zum Löschen des Speicherkontos wird nicht unterstützt. Dies führt dazu, dass keine Benutzerdaten abgerufen werden können. | |Ja |Ja |
 | 4 |Gerätefailover |Mehrere Failover eines Volumecontainers von demselben Quellgerät auf verschiedene Zielgeräte werden nicht unterstützt. Das Failover von einem einzelnen nicht reagierenden Gerät auf mehrere Geräte führt dazu, dass die Volumecontainer auf dem ersten Gerät mit erfolgtem Failover die Dateneigentümerschaft verlieren. Wenn Sie diese Volumecontainer nach einem solchen Failover im klassischen Azure-Portal betrachten, werden sie anders angezeigt oder verhalten sie sich anders. | |Ja |Nein |
 | 5 |Installation |Während der Installation von StorSimple-Adapter für SharePoint müssen Sie die IP-Adresse eines Geräts angeben, damit die Installation erfolgreich abgeschlossen wird. | |Ja |Nein |
-| 6 |Webproxy |Wenn Ihre Webproxykonfiguration das Protokoll "HTTPS" verwendet, ist die Kommunikation zwischen dem Gerät und dem Dienst beeinträchtigt, und das Gerät wird offline geschaltet. Supportpakete werden bei diesem Vorgang ebenfalls generiert. Sie beanspruchen auf Ihrem Gerät erhebliche Ressourcen. |Stellen Sie sicher, dass "HTTP" als Protokoll für die Webproxy-URL angegeben ist. Weitere Informationen finden Sie unter [Konfigurieren des Webproxys für Ihr Gerät](storsimple-configure-web-proxy.md). |Ja |Nein |
+| 6 |Webproxy |Wenn Ihre Webproxykonfiguration das Protokoll "HTTPS" verwendet, ist die Kommunikation zwischen dem Gerät und dem Dienst beeinträchtigt, und das Gerät wird offline geschaltet. Supportpakete werden bei diesem Vorgang ebenfalls generiert. Sie beanspruchen auf Ihrem Gerät erhebliche Ressourcen. |Stellen Sie sicher, dass "HTTP" als Protokoll für die Webproxy-URL angegeben ist. Weitere Informationen finden Sie unter [Konfigurieren des Webproxys für Ihr Gerät](./storsimple-8000-configure-web-proxy.md). |Ja |Nein |
 | 7 |Webproxy |Wenn Sie den Webproxy für ein registriertes Gerät konfigurieren und aktivieren, müssen Sie den aktiven Controller auf Ihrem Gerät neu starten. | |Ja |Nein |
 | 8 |Hohe Cloud-Latenzen und hohe E/A-Arbeitsauslastung |Wenn Ihr StorSimple-Gerät mit einer Kombination aus sehr hohen Cloud-Latenzen (mehrere Sekunden) und hoher E/A-Arbeitsauslastung konfrontiert wird, verschlechtert sich die Leistung der Gerätevolumes, und es tritt ggf. der E/A-Fehler "Gerät nicht bereit" auf. |Sie müssen die Gerätecontroller manuell neu starten oder ein Gerätefailover ausführen, um dieses Problem zu beheben. |Ja |Nein |
 | 9 |Azure PowerShell |Bei Verwendung des StorSimple-Cmdlets **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait**, um das erste Objekt zu markieren, damit ein neues **Volumecontainer**-Objekt erstellt werden kann, gibt das Cmdlet alle Objekte zurück. |Schließen Sie das Cmdlet wie folgt in Klammern ein: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |Ja |Ja |
@@ -107,5 +107,4 @@ Mit dieser Version werden der Treiber und die Datenträgerfirmware auf Ihrem Ger
 Dieses Update kann nicht auf das virtuelle Gerät angewendet werden. Es müssen neue virtuelle Geräte erstellt werden. 
 
 ## <a name="next-step"></a>Nächster Schritt
-Erfahren Sie, wie Sie [Update 2 auf Ihrem StorSimple-Gerät installieren](storsimple-install-update-2.md) .
-
+Erfahren Sie, wie Sie [Update 2 auf Ihrem StorSimple-Gerät installieren](./storsimple-8000-install-update-5.md) .

@@ -1,33 +1,26 @@
 ---
-title: Threat Modeling Tool-Releases – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
-description: Dokumentation der Versionshinweise für das Threat Modeling Tool
-services: security
-documentationcenter: na
+title: Microsoft Threat Modeling Tool, Release 2.7.2019
+titleSuffix: Azure
+description: Lesen Sie die Versionshinweise zum Update für das Threat Modeling Tool, das am 2.7.2019 veröffentlicht wurde. Die Hinweise enthalten Verbesserungen der Barrierefreiheit und Fehlerbehebungen.
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2019
-ms.author: jegeib
-ms.openlocfilehash: 44fd84af629fadfc96d738e81f2568359ee19d66
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 0e62f6950f90d7f15aa231783e292ec8eee0b4c4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219849"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87539117"
 ---
 # <a name="threat-modeling-tool-update-release-71607021---722019"></a>Threat Modeling Tool, Updaterelease 7.1.60702.1: 2.7.2019
 
 Version 7.1.60702.1 für das Microsoft Threat Modeling Tool (TMT) wurde am 2. Juli 2019 veröffentlicht und umfasst die folgenden Änderungen:
 
 - Verbesserungen der Barrierefreiheit
-- Fehlerbehebungen
+- Behebung von Programmfehlern
 - Hinzufügung eines Schablonensatzes der Open-Source-Community
 
 ## <a name="feature-changes"></a>Funktionsänderungen

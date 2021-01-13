@@ -3,30 +3,27 @@ title: 'Veröffentlichen einer App: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Wenn Sie das Erstellen und Testen Ihrer aktiven LUIS-App abgeschlossen haben, stellen Sie sie Ihrer Clientanwendung zur Verfügung, indem Sie sie am Endpunkt veröffentlichen.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 09/02/2019
-ms.author: diberry
-ms.openlocfilehash: f92776072038c5684e9334d2dda1690ebb7bcaa8
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.topic: how-to
+ms.date: 05/17/2020
+ms.openlocfilehash: b72f1fd64cca0fa77ebc486670a512c5228e1146
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257815"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541474"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Veröffentlichen Ihrer aktiven, trainierten App an einem Staging- oder Produktionsendpunkt
 
-Wenn Sie das Erstellen und Testen Ihrer aktiven LUIS-App abgeschlossen haben, stellen Sie sie Ihrer Clientanwendung zur Verfügung, indem Sie sie am Endpunkt veröffentlichen. 
-
-<a name="publish-your-trained-app-to-an-http-endpoint"></a>
+Wenn Sie das Erstellen, Trainieren und Testen Ihrer aktiven LUIS-App abgeschlossen haben, stellen Sie sie Ihrer Clientanwendung zur Verfügung, indem Sie sie am Endpunkt veröffentlichen.
 
 ## <a name="publishing"></a>Veröffentlichung
-
-1. Um am Endpunkt zu veröffentlichen, wählen Sie im Panel rechts oben **Veröffentlichen** aus. 
+1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie Ihr **Abonnement** und Ihre **Erstellungsressource** aus, um die Apps anzuzeigen, die dieser Erstellungsressource zugewiesen sind.
+1. Öffnen Sie Ihre App, indem Sie auf der Seite **Meine Apps** den Namen der App auswählen.
+1. Um am Endpunkt zu veröffentlichen, wählen Sie im Panel rechts oben **Veröffentlichen** aus.
 
     ![Schaltfläche „Veröffentlichen“ in oberer rechter Navigationsleiste](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
@@ -36,18 +33,21 @@ Wenn Sie das Erstellen und Testen Ihrer aktiven LUIS-App abgeschlossen haben, st
 
 ### <a name="publishing-slots"></a>Veröffentlichungsslots
 
-Wählen Sie den richtigen Slot aus, wenn das Popupfenster angezeigt wird: 
+Wählen Sie den richtigen Slot aus, wenn das Popupfenster angezeigt wird:
 
 * Staging
-* Produktion 
+* Bereitstellung
 
-Durch Verwenden beider Veröffentlichungsslots haben Sie die Möglichkeit, zwei unterschiedliche Versionen Ihrer App auf den veröffentlichten Endpunkten oder dieselbe Version auf zwei unterschiedlichen Endpunkten zu nutzen. 
+Durch Verwenden beider Veröffentlichungsslots haben Sie die Möglichkeit, zwei unterschiedliche Versionen Ihrer App auf den veröffentlichten Endpunkten oder dieselbe Version auf zwei unterschiedlichen Endpunkten zu nutzen.
 
 ### <a name="publishing-regions"></a>Veröffentlichungsregionen
 
-Die App wird in allen Regionen veröffentlicht, die den im LUIS-Portal hinzugefügten LUIS-Vorhersageendpunkt-Ressourcen zugeordnet sind. 
+Die App wird in allen Regionen veröffentlicht, die den im LUIS-Portal auf der Seite **Verwalten** ->  **[Azure-Ressourcen](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** hinzugefügten LUIS-Vorhersageendpunkt-Ressourcen zugeordnet sind.
 
 Wenn Sie beispielsweise für eine auf [www.luis.ai](https://www.luis.ai) erstellte App eine LUIS-Ressource in zwei Regionen, **westus** und **eastus**, erstellen und diese der App als Ressourcen hinzufügen, wird die App in beiden Regionen veröffentlicht. Weitere Informationen zu LUIS-Regionen finden Sie unter [Regionen](luis-reference-regions.md).
+
+> [!TIP]
+> Es gibt drei Erstellungsregionen. Sie müssen die Erstellung in der Region durchführen, in der Sie veröffentlichen möchten. Wenn Sie in allen Regionen veröffentlichen müssen, müssen Sie den Erstellungsprozess und das daraus resultierende trainierte Modell in allen drei Erstellungsregionen verwalten.
 
 
 ## <a name="configuring-publish-settings"></a>Konfigurieren der Einstellungen für die Veröffentlichung
@@ -55,32 +55,32 @@ Wenn Sie beispielsweise für eine auf [www.luis.ai](https://www.luis.ai) erstell
 Nachdem Sie den Slot ausgewählt haben, konfigurieren Sie die Veröffentlichungseinstellungen für:
 
 * Stimmungsanalyse
-* Rechtschreibkorrektur
-* Sprachvorbereitung 
+* [Rechtschreibkorrektur:](luis-tutorial-bing-spellcheck.md) nur V2-Vorhersageendpunkte
+* Sprachvorbereitung
 
-Nach der Veröffentlichung können Sie diese Einstellungen auf der zum Abschnitt **Verwalten** gehörenden Seite **Veröffentlichungseinstellungen** ändern. Sie können die Einstellungen mit jeder Veröffentlichung ändern. Wenn Sie eine Veröffentlichung abbrechen, werden alle Änderungen, die Sie während der Veröffentlichung vorgenommen haben, ebenfalls abgebrochen. 
+Nach der Veröffentlichung können Sie diese Einstellungen auf der zum Abschnitt **Verwalten** gehörenden Seite **Veröffentlichungseinstellungen** ändern. Sie können die Einstellungen mit jeder Veröffentlichung ändern. Wenn Sie eine Veröffentlichung abbrechen, werden alle Änderungen, die Sie während der Veröffentlichung vorgenommen haben, ebenfalls abgebrochen.
 
 ### <a name="when-your-app-is-published"></a>Nach Veröffentlichung Ihrer App
 
-Wenn Ihre App erfolgreich veröffentlicht wurde, wird eine grüne Erfolgsmeldung am oberen Rand des Browsers angezeigt. Die grüne Benachrichtigungsleiste enthält außerdem einen Link zu den Endpunkten. 
+Wenn Ihre App erfolgreich veröffentlicht wurde, wird eine Erfolgsmeldung am oberen Rand des Browsers angezeigt. Die Benachrichtigung enthält außerdem einen Link zu den Endpunkten.
 
-![Popupfenster „Veröffentlichung“ mit Link zum Endpunkt](./media/luis-how-to-publish-app/publish-success.png)
-
-Wenn Sie die Endpunkt-URL benötigen, wählen Sie den Link aus. Außerdem können Sie die Endpunkt-URLs ermitteln, indem Sie im oberen Menü die Option **Verwalten** und dann im linken Menü die Option **Azure-Ressourcen** auswählen. 
+Wenn Sie die Endpunkt-URL benötigen, wählen Sie den Link aus. Außerdem können Sie die Endpunkt-URLs ermitteln, indem Sie im oberen Menü die Option **Verwalten** und dann im linken Menü die Option **Azure-Ressourcen** auswählen.
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 
 <a name="enable-sentiment-analysis"></a>
 
-Die Standpunktanalyse ermöglicht LUIS die Integration mit der [Textanalyse](https://azure.microsoft.com/services/cognitive-services/text-analytics/), um die Analyse von Stimmungen und Formulierungen bereitzustellen. 
+Die Standpunktanalyse ermöglicht LUIS die Integration mit der [Textanalyse](https://azure.microsoft.com/services/cognitive-services/text-analytics/), um die Analyse von Stimmungen und Formulierungen bereitzustellen.
 
-Sie müssen keine Textanalyseschlüssel bereitstellen, und es entstehen keine Abrechnungskosten für diesen Dienst in Ihrem Azure-Konto. 
+Sie müssen keine Textanalyseschlüssel bereitstellen, und es entstehen keine Abrechnungskosten für diesen Dienst in Ihrem Azure-Konto.
 
-Stimmungsdaten stellen eine Bewertung zwischen 1 und 0 dar, die eine eher positive (näher an 1) oder negative (näher an 0) Stimmung in den Daten angibt. Die Stimmungsbezeichnung von `positive`, `neutral` und `negative` gilt jeweils pro unterstützter Kultur. Derzeit unterstützt nur Englisch Stimmungsbezeichnungen. 
+Stimmungsdaten stellen eine Bewertung zwischen 1 und 0 dar, die eine eher positive (näher an 1) oder negative (näher an 0) Stimmung in den Daten angibt. Die Stimmungsbezeichnung von `positive`, `neutral` und `negative` gilt jeweils pro unterstützter Kultur. Derzeit unterstützt nur Englisch Stimmungsbezeichnungen.
 
-Weitere Informationen zur JSON-Endpunktantwort im Zusammenhang mit der Standpunktanalyse finden Sie unter [Standpunktanalyse](luis-concept-data-extraction.md#sentiment-analysis).
+Weitere Informationen zur JSON-Endpunktantwort im Zusammenhang mit der Standpunktanalyse finden Sie unter [Standpunktanalyse](luis-reference-prebuilt-sentiment.md).
 
 ## <a name="spelling-correction"></a>Rechtschreibkorrektur
+
+[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
 Korrekturen an der Rechtschreibung werden vor der LUIS-Äußerungsvorhersage für den Benutzer vorgenommen. In der Antwort können Sie alle Änderungen an der ursprünglichen Äußerung, einschließlich Rechtschreibung, sehen.
 

@@ -1,26 +1,31 @@
 ---
 title: 'Schnellstart: Vorschlagen von Suchabfragen mit der Bing-Vorschlagssuche-REST-API und Java'
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie schnell beginnen können, mit der Bing-Vorschlagssuche-API Suchbegriffe in Echtzeit vorzuschlagen.
+description: Hier erfahren Sie, wie Sie schnell loslegen und mit der Bing-Vorschlagssuche-API und Java Suchbegriffe in Echtzeit vorschlagen können.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 05/06/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 0a0fb1e8f79587223ae1f25ca8a7e0d6dc7cc5bb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e2468fb6b3285739787d14a06f3d128e822c782f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565842"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352744"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Schnellstart: Vorschlagen von Suchabfragen mit der Bing-Vorschlagssuche-REST-API und Java
 
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Verwenden Sie diese Schnellstartanleitung, um zu beginnen, die Bing-Vorschlagssuche-API aufzurufen und die JSON-Antwort zu erhalten. Diese einfache Java-Anwendung sendet eine partielle Suchabfrage an die API und gibt Vorschläge für Suchen zurück. Diese Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java).
+In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-API aufrufen und die JSON-Antwort lesen. Diese einfache Java-Anwendung sendet eine partielle Suchabfrage an die API und gibt Vorschläge für Suchen zurück. Diese Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,7 +49,7 @@ Verwenden Sie diese Schnellstartanleitung, um zu beginnen, die Bing-Vorschlagssu
     import com.google.gson.JsonParser;
     ```
 
-2. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den API-Host und Pfad, Ihren [Market Code](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine Suchabfrage.
+2. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den API-Host und Pfad, Ihren [Market Code](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine Suchabfrage. Verwenden Sie den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md), der im Azure-Portal für Ihre Ressource angezeigt wird.
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -73,7 +78,7 @@ public static String prettify(String json_text) {
 
 1. Erstellen Sie eine neue Methode namens `get_suggestions()`, und führen Sie die folgenden Schritte aus:
 
-   1. Erstellen Sie die URL für Ihre Anforderung, indem Sie Ihren API-Host und -Pfad kombinieren und Ihre Suchabfrage codieren. Führen Sie unbedingt eine URL-Codierung der Abfrage durch, bevor Sie sie anfügen. Erstellen Sie eine Parameterzeichenfolge für die Abfrage, indem Sie den Market Code dem `mkt=`-Parameter und Ihre Abfrage dem `q=`-Parameter anfügen.
+   1. Erstellen Sie die URL für Ihre Anforderung, indem Sie Ihren API-Host und -Pfad kombinieren und Ihre Suchabfrage codieren. Führen Sie unbedingt eine URL-Codierung der Abfrage durch, bevor Sie sie anfügen. Erstellen Sie eine Parameterzeichenfolge für die Abfrage, indem Sie den Marktcode an den Parameter `mkt=` und Ihre Abfrage an den Parameter `q=` anfügen.
     
       ```java
   
@@ -84,7 +89,7 @@ public static String prettify(String json_text) {
       }
       ```
     
-   2. Erstellen Sie eine neue URL für die Anforderung mit dem API-Host, dem Pfad und den oben erstellten Parametern. 
+   2. Erstellen Sie für die Anforderung eine neue URL mit den Angaben für den Host, den Pfad und die Parameter der API, die Sie im vorherigen Schritt erstellt haben. 
     
        ```java
        //...
@@ -103,7 +108,7 @@ public static String prettify(String json_text) {
        //...
       ```
 
-   4. Lesen Sie die API-Antwort in einen `StringBuilder` ein. Nachdem die Antwort erfasst wurde, schließen Sie den `InputStreamReader`-Datenstrom, und geben Sie die Antwort zurück.
+   4. Speichern Sie die API-Antwort in `StringBuilder`. Nachdem die Antwort erfasst wurde, schließen Sie den `InputStreamReader`-Datenstrom, und geben Sie die Antwort zurück.
 
        ```java
        //...
@@ -119,7 +124,7 @@ public static String prettify(String json_text) {
        return response.toString();
        ```
 
-2. Rufen Sie in der main-Funktion Ihrer Anwendung `get_suggestions()` auf, und drucken Sie die Antwort mit `prettify()`.
+2. Rufen Sie in der main-Funktion Ihrer Anwendung `get_suggestions()` auf, und geben Sie die Antwort mit `prettify()` aus.
     
     ```java
     public static void main(String[] args) {
@@ -207,4 +212,4 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 > [Erstellen einer Single-Page-Web-App](../tutorials/autosuggest.md)
 
 - [Worum handelt es sich bei der Bing-Vorschlagssuche?](../get-suggested-search-terms.md)
-- [Referenz für die Bing-Vorschlagssuche-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Referenz für die Bing-Vorschlagssuche-API V7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

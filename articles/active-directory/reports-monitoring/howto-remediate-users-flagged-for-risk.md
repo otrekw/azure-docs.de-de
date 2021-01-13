@@ -2,25 +2,25 @@
 title: Benutzer mit Risikomarkierung im Azure Active Directory-Portal | Microsoft-Dokumentation
 description: Hier erfahren Sie mehr über den Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal.
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1412cacd453de01f1937fbcf5e712afdac88def
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989693"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308945"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Behandeln von „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
 
@@ -40,11 +40,11 @@ Dem Bericht „Benutzer mit Risikomarkierung“ können Sie für jeden Benutzer 
 - Festlegen, dass der Benutzer bei der nächsten Anmeldung eine sichere Kennwortzurücksetzung ausführen muss
 - Verwerfen des Benutzerrisikos, ohne eine Korrekturaktion auszuführen
 
-Weitere Informationen finden Sie unter [Sicherheitsbericht „Benutzer mit Risikomarkierung“](concept-user-at-risk.md).
+Weitere Informationen finden Sie unter [Sicherheitsbericht „Benutzer mit Risikomarkierung“](../identity-protection/overview-identity-protection.md).
 
-### <a name="azure-ad-subscription-for-office-365-customers"></a>Azure AD-Abonnement für Office 365-Kunden
+### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Azure AD-Abonnement für Microsoft 365-Kunden
 
-Außerdem können Sie mit Ihren Office 365-Anmeldeinformationen auch auf das **Azure Admin Center** zugreifen. Nachdem Sie Ihren Zugriff auf Azure AD aktiviert haben, werden Sie zum Azure AD-Portal umgeleitet. Auf der Abonnementebene „Basic“ stehen in den Berichten nur eingeschränkte Details zur Verfügung. Azure Premium-Abonnementen haben dagegen Zugang zu weiteren Daten und Analysen.
+Außerdem können Sie mit Ihren Microsoft 365-Anmeldeinformationen auch auf **Azure Admin Center** zugreifen. Nachdem Sie Ihren Zugriff auf Azure AD aktiviert haben, werden Sie zum Azure AD-Portal umgeleitet. Auf der Abonnementebene „Basic“ stehen in den Berichten nur eingeschränkte Details zur Verfügung. Azure Premium-Abonnementen haben dagegen Zugang zu weiteren Daten und Analysen.
 
 So greifen Sie im Microsoft 365 Admin Center auf den Bericht **Benutzer mit Risikomarkierung** zu
 
@@ -60,7 +60,7 @@ So greifen Sie im Microsoft 365 Admin Center auf den Bericht **Benutzer mit Ris
 Führen Sie die folgenden Schritte aus, um die betroffenen Konten zu korrigieren und Ihre Umgebung zu schützen:
 
 1.  [Überprüfen Sie die Informationen](https://aka.ms/MFAValid) für die mehrstufige Authentifizierung und die Self-Service-Kennwortzurücksetzung. 
-2.  [Aktivieren Sie die mehrstufige Authentifizierung](https://aka.ms/MFAuth) für alle Benutzer. 
+2.  [Aktivieren Sie die mehrstufige Authentifizierung](/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication) für alle Benutzer. 
 3.  Verwenden Sie [dieses Bereinigungsskript](https://aka.ms/remediate), um für jedes betroffene Konto automatisch folgende Schritte auszuführen: 
 
     a. Zurücksetzen des Kennworts, um das Konto zu schützen und die Beendigung aktiver Sitzungen zu erzwingen
@@ -79,18 +79,17 @@ Führen Sie die folgenden Schritte aus, um die betroffenen Konten zu korrigieren
 
     h. Erstellen eines Überwachungsprotokolls zur Überprüfung durch den Administrator
 
-4. Untersuchen Sie Ihren Office 365-Mandanten sowie die restliche IT-Infrastruktur – einschließlich aller Mandanteneinstellungen, Benutzerkonten und der benutzerspezifischen Konfigurationseinstellungen – auf mögliche Änderungen. Suchen Sie nach Anzeichen für Persistenzmethoden sowie nach Anzeichen dafür, dass ein Eindringling an VPN-Anmeldeinformationen gelangt ist oder sich Zugriff auf andere Ressourcen der Organisation verschafft hat. 
+4. Untersuchen Sie Ihren Microsoft 365-Mandanten sowie die restliche IT-Infrastruktur – einschließlich aller Mandanteneinstellungen, Benutzerkonten und der benutzerspezifischen Konfigurationseinstellungen – auf mögliche Änderungen. Suchen Sie nach Anzeichen für Persistenzmethoden sowie nach Anzeichen dafür, dass ein Eindringling an VPN-Anmeldeinformationen gelangt ist oder sich Zugriff auf andere Ressourcen der Organisation verschafft hat. 
 
 5.  Überlegen Sie sich im Rahmen Ihrer Untersuchung, ob Sie ggf. die Behörden (einschließlich der Strafverfolgungsbehörden) einschalten sollten.
 
 Darüber hinaus empfiehlt sich Folgendes:
 
-- Lesen und implementieren Sie diesen [Leitfaden für den Umgang mit ungewöhnlichen Aktivitäten](https://aka.ms/fixaccount). 
-- [Aktivieren Sie die Überwachungspipeline](https://aka.ms/improvesecurity), um die Analyse der Aktivitäten Ihres Mandanten zu vereinfachen. Nach Abschluss des Vorgangs wird Ihr Überwachungsspeicher mit den Aktivitätsprotokollen gefüllt. Nun können Sie auch die [Such- und Untersuchungsressourcen des Security & Compliance Centers](https://aka.ms/sccsearch) nutzen. 
-- Verwenden Sie [dieses Skript, um die Postfachüberwachung für alle Ihre Konten zu aktivieren](https://aka.ms/mailboxaudit1). 
+- Lesen und implementieren Sie diesen [Leitfaden für den Umgang mit ungewöhnlichen Aktivitäten](/archive/blogs/office365security/how-to-fix-a-compromised-hacked-microsoft-office-365-account). 
+- [Aktivieren Sie die Überwachungspipeline](/archive/blogs/office365security/using-office-365-activity-data-to-improve-your-cybersecurity-stance-and-capability), um die Analyse der Aktivitäten Ihres Mandanten zu vereinfachen. Nach Abschluss des Vorgangs wird Ihr Überwachungsspeicher mit den Aktivitätsprotokollen gefüllt. Nun können Sie auch die [Such- und Untersuchungsressourcen des Security & Compliance Centers](https://aka.ms/sccsearch) nutzen. 
 - Überprüfen Sie die Berechtigungen der Stellvertretung und die E-Mail-Weiterleitungsregeln für alle Ihre Postfächer. Hierzu können Sie [dieses PowerShell-Skript](https://aka.ms/delegateforwardrules) verwenden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-* [Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal](concept-user-at-risk.md)
+* [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
+* [Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal](../identity-protection/overview-identity-protection.md)

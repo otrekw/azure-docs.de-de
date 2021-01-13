@@ -1,25 +1,17 @@
 ---
-title: Erstellen eines Unterstützungspakets für ein Gerät der StorSimple 8000-Serie | Microsoft-Dokumentation
+title: Erstellen eines Unterstützungspakets für ein Gerät der StorSimple 8000-Serie
 description: Hier erfahren Sie, wie Sie ein Unterstützungspaket für Ihr Gerät der StorSimple 8000-Serie erstellen, entschlüsseln und bearbeiten.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: dfc2d8d763a1eb64a37af73e03992f2d948a6856
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a847b273472ecc9d2aaa3993ec9d88aa46f2e7f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61481874"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017167"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Erstellen und Verwalten eines Unterstützungspakets für ein Gerät der StorSimple 8000-Serie
 
@@ -79,7 +71,7 @@ Sie können die folgenden Parameter mit dem Export-HcsSupportPackage-Cmdlet verw
 | `-Credential` |Optional |Dient zum Angeben von Anmeldeinformationen für den Zugriff auf den freigegebenen Netzwerkordner. |
 | `-Force` |Optional |Dient zum Überspringen des Bestätigungsschritts für die Verschlüsselungspassphrase. |
 | `-PackageTag` |Optional |Dient zum Angeben eines Verzeichnisses unter *Path* , in dem das Unterstützungspaket platziert werden soll. Standardmäßig wird Folgendes verwendet: [Gerätename]-[aktuelles Datum und aktuelle Uhrzeit:JJJJ-MM-TT-HH-mm-ss]. |
-| `-Scope` |Optional |Geben Sie **Cluster** (Standardeinstellung) an, um ein Unterstützungspaket für beide Controller zu erstellen. Wenn Sie nur ein Paket für den aktuellen Controller erstellen möchten, geben Sie **Controller**an. |
+| `-Scope` |Optional |Geben Sie **Cluster** (Standardeinstellung) an, um ein Unterstützungspaket für beide Controller zu erstellen. Wenn Sie nur ein Paket für den aktuellen Controller erstellen möchten, geben Sie **Controller** an. |
 
 ## <a name="edit-a-support-package"></a>Bearbeiten eines Unterstützungspakets
 
@@ -106,44 +98,50 @@ Wenn Sie ein Unterstützungspaket vor dem Hochladen an die Microsoft Support-We
     ![Bearbeiten des Unterstützungspakets](./media/storsimple-8000-create-manage-support-package/IC750706.png)
 5. Geben Sie die bei der Paketerstellung verwendete Verschlüsselungspassphrase ein, wenn Sie dazu aufgefordert werden.
    
-        cmdlet Open-HcsSupportPackage at command pipeline position 1
-   
-        Supply values for the following parameters:EncryptionPassphrase: ****
+    ```powershell
+    cmdlet Open-HcsSupportPackage at command pipeline position 1
+
+    Supply values for the following parameters:EncryptionPassphrase: ****
+    ```
 6. Navigieren Sie zum Ordner mit den Protokolldateien. Da die Protokolldateien nun dekomprimiert und entschlüsselt sind, werden sie mit ihren ursprünglichen Dateierweiterungen angezeigt. Entfernen Sie alle kundenspezifischen Informationen wie Volumenamen und Geräte-IP-Adressen aus den Dateien, und speichern Sie sie.
 7. Schließen Sie die Dateien, damit sie mit Gzip komprimiert und mit AES-256 verschlüsselt werden. Dies macht die Übertragung des Unterstützungspakets über ein Netzwerk sicherer und schneller. Geben Sie zum Komprimieren und Verschlüsseln der Dateien Folgendes ein:
    
     `Close-HcsSupportPackage <Path to the folder that contains support package files>`
    
-    ![Bearbeiten des Unterstützungspakets](./media/storsimple-8000-create-manage-support-package/IC750707.png)
+    ![Bearbeiten des Unterstützungspakets 2](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. Geben Sie eine Verschlüsselungspassphrase für das geänderte Unterstützungspaket ein, wenn Sie dazu aufgefordert werden.
    
-        cmdlet Close-HcsSupportPackage at command pipeline position 1
-        Supply values for the following parameters:EncryptionPassphrase: ****
+    ```powershell
+    cmdlet Close-HcsSupportPackage at command pipeline position 1
+    Supply values for the following parameters:EncryptionPassphrase: ****
+    ```
 9. Notieren Sie sich die Passphrase, um Sie auf Anfrage dem Support von Microsoft mitteilen zu können.
 
 ### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>Beispiel: Bearbeiten von Dateien in einem Unterstützungspaket auf einer kennwortgeschützten Freigabe
 
 Das folgende Beispiel veranschaulicht das Entschlüsseln, Bearbeiten und erneute Verschlüsseln eines Unterstützungspakets:
 
-        PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
+```powershell
+PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
 
-        PS C:\WINDOWS\system32> Open-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
+PS C:\WINDOWS\system32> Open-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
 
-        cmdlet Open-HcsSupportPackage at command pipeline position 1
+cmdlet Open-HcsSupportPackage at command pipeline position 1
 
-        Supply values for the following parameters:
+Supply values for the following parameters:
 
-        EncryptionPassphrase: ****
+EncryptionPassphrase: ****
 
-        PS C:\WINDOWS\system32> Close-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
+PS C:\WINDOWS\system32> Close-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
 
-        cmdlet Close-HcsSupportPackage at command pipeline position 1
+cmdlet Close-HcsSupportPackage at command pipeline position 1
 
-        Supply values for the following parameters:
+Supply values for the following parameters:
 
-        EncryptionPassphrase: ****
+EncryptionPassphrase: ****
 
-        PS C:\WINDOWS\system32>
+PS C:\WINDOWS\system32>
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

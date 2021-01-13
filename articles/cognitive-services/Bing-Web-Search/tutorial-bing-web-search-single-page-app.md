@@ -8,16 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1203947efadf4fed328655c9cfb839f666a80b0c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.custom: devx-track-js
+ms.openlocfilehash: ff54d605fd81fa640314d99359f1aabacf7a469e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390046"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350380"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Tutorial: Erstellen einer Single-Page-Webanwendung mit der Bing-Websuche-API
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Diese einseitige App zeigt, wie Sie Suchergebnisse aus der Bing-Websuche-API abrufen, analysieren und anzeigen. Das Tutorial verwendet Standard-HTML und -CSS und konzentriert sich auf den JavaScript-Code. HTML-, CSS- und JS-Dateien sind in [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) mit Schnellstartanweisungen verfügbar.
 
@@ -30,16 +36,16 @@ Diese Beispiel-App kann:
 > * Abonnementschlüssel verwalten
 > * Fehlerbehandlung
 
-Zum Verwenden dieser App wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Bing-Suche-APIs benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) einen Abonnementschlüssel abrufen.
+Zum Verwenden dieser App wird ein [Azure Cognitive Services-Konto](../cognitive-services-apis-create-account.md) mit Bing-Suche-APIs benötigt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Folgende Voraussetzungen müssen erfüllt sein, damit die App ausgeführt werden kann:
 
-* Node.js 8 oder höher
-* Abonnementschlüssel
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
+* Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Erstellen einer Ressource für die Bing-Suche"  target="_blank"> im Azure-Portal eine Ressource für die Bing-Suche <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
 
-## <a name="get-the-source-code-and-install-dependencies"></a>Abrufen des Quellcodes und Installieren von Abhängigkeiten
+* Node.js 8 oder höher
 
 Der erste Schritt besteht darin, das Repository mit dem Quellcode der Beispiel-App zu klonen.
 
@@ -80,7 +86,7 @@ Dieses Tutorial konzentriert sich auf `scripts.js` und die erforderliche Logik, 
 
 ## <a name="query-options"></a>Abfrageoptionen
 
-Das HTML-Formular enthält Optionen, die Abfrageparametern in der [Bing-Websuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) zugeordnet sind. Diese Tabelle zeigt eine Aufschlüsselung, wie Benutzer Suchergebnisse mithilfe der Beispiel-App filtern können:
+Das HTML-Formular enthält Optionen, die Abfrageparametern in der [Bing-Websuche-API v7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) zugeordnet sind. Diese Tabelle zeigt eine Aufschlüsselung, wie Benutzer Suchergebnisse mithilfe der Beispiel-App filtern können:
 
 | Parameter | BESCHREIBUNG |
 |-----------|-------------|
@@ -93,7 +99,7 @@ Das HTML-Formular enthält Optionen, die Abfrageparametern in der [Bing-Websuche
 | `offset` | Verborgenes Feld. Der Offset für das erste Suchergebnis der Anforderung. Dieser wird zur Unterteilung der Suchergebnisse in mehrere Seiten verwendet. Der Offset wird für jede neue Anforderung auf `0` zurückgesetzt. |
 
 > [!NOTE]
-> Die Bing-Websuche-API bietet zusätzliche Abfrageparameter, mit denen Sie die Suchergebnisse verfeinern können. Dieses Beispiel verwendet nur einige davon. Eine vollständige Liste der verfügbaren Parameter finden Sie in der [Referenz für die Bing-Websuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters).
+> Die Bing-Websuche-API bietet zusätzliche Abfrageparameter, mit denen Sie die Suchergebnisse verfeinern können. Dieses Beispiel verwendet nur einige davon. Eine vollständige Liste der verfügbaren Parameter finden Sie in der [Referenz für die Bing-Websuche-API v7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters).
 
 Die Funktion `bingSearchOptions()` konvertiert diese Optionen in das für die Bing-Suche-API erforderliche Format.
 
@@ -105,7 +111,7 @@ function bingSearchOptions(form) {
     // Where option.
     options.push("mkt=" + form.where.value);
     // SafeSearch option.
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
     // Freshness option.
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -128,7 +134,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-`SafeSearch` kann auf `strict`, `moderate` oder `off` festgelegt werden, wobei `moderate` die Standardeinstellung für die Bing-Websuche ist. Dieses Formular verwendet ein Kontrollkästchen, das nur über zwei Zustände verfügt. In diesem Ausschnitt ist SafeSearch auf `strict` oder `off` festgelegt. `moderate` wird nicht verwendet.
+`SafeSearch` kann auf `strict`, `moderate` oder `off` festgelegt werden, wobei `moderate` die Standardeinstellung für die Bing-Websuche ist. Dieses Formular verwendet ein Kontrollkästchen mit zwei Zuständen: `strict` oder `moderate`.
 
 Wenn eines der Kontrollkästchen **Hochstufen** aktiviert ist, wird der Abfrage der `answerCount`-Parameter hinzugefügt. Bei der Verwendung des Parameters `promote` ist `answerCount` erforderlich. In diesem Ausschnitt wird der Wert auf `9` gesetzt, um alle verfügbaren Ergebnistypen zurückzugeben.
 > [!NOTE]
@@ -297,7 +303,7 @@ Fehler werden durch Aufrufen von `renderErrorMessage()` verarbeitet. Wenn die An
 
 ## <a name="display-search-results"></a>Anzeigen von Suchergebnissen
 
-Es gibt [Verwendungs- und Anzeigeanforderungen](useanddisplayrequirements.md) für Ergebnisse, die von der Bing-Websuche-API zurückgegeben werden. Da eine Antwort verschiedene Ergebnistypen beinhalten kann, reicht es nicht aus, die `WebPages`-Auflistung auf der obersten Ebene zu durchlaufen. Die Beispiel-App verwendet stattdessen `RankingResponse` zum Sortieren der anzugebenden Ergebnisse.
+Es gibt [Verwendungs- und Anzeigeanforderungen](./use-display-requirements.md) für Ergebnisse, die von der Bing-Websuche-API zurückgegeben werden. Da eine Antwort verschiedene Ergebnistypen beinhalten kann, reicht es nicht aus, die `WebPages`-Auflistung auf der obersten Ebene zu durchlaufen. Die Beispiel-App verwendet stattdessen `RankingResponse` zum Sortieren der anzugebenden Ergebnisse.
 
 > [!NOTE]
 > Wenn Sie nur einen einzigen Ergebnistyp wünschen, verwenden Sie den Abfrageparameter `responseFilter` oder einen anderen Endpunkt für die Bing-Suche, z.B. die Bing-Bildersuche.
@@ -437,12 +443,12 @@ Antworten von Bing-Suche-APIs können einen `X-MSEdge-ClientID`-Header enthalten
 
 Durch das Bereitstellen des `X-MSEdge-ClientID`-Headers können die Bing-Suche-APIs die Suchvorgänge eines Benutzers zuordnen. Erstens kann die Bing-Suchmaschine auf diese Weise Kontextinformationen aus vorherigen Suchvorgängen nutzen, um Ergebnisse anzuzeigen, die der Anforderung besser entsprechen. Wenn ein Benutzer in der Vergangenheit beispielsweise nach Segelbegriffen gesucht hat, können bei einer Suche nach „Knoten“ möglicherweise Informationen zu Segelknoten zurückgegeben werden. Zweitens wählt Bing möglicherweise Benutzer zufällig aus, die die Möglichkeit haben, neue Features zu testen, bevor diese allen Benutzern zur Verfügung gestellt werden. Wenn Sie bei jeder Anforderung dieselbe Client-ID bereitstellen, stellen Sie sicher, dass Benutzer, die zur Nutzung eines neuen Features ausgewählt wurden, dieses Feature dauerhaft nutzen können. Ohne die Client-ID wird das Feature in den Suchergebnissen möglicherweise scheinbar willkürlich aus- oder eingeblendet.
 
-Browsersicherheitsrichtlinien, z. B. CORS (Cross-Origin Resource Sharing), können verhindern, dass die Beispiel-App auf den `X-MSEdge-ClientID`-Header zugreift. Diese Einschränkung tritt auf, wenn sich der Ursprung der Suchantwort von dem der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da die Herkunft des Skripts mit derjenigen der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
+Browsersicherheitsrichtlinien, z. B. CORS (Cross-Origin Resource Sharing), können verhindern, dass die Beispiel-App auf den `X-MSEdge-ClientID`-Header zugreift. Diese Einschränkung tritt auf, wenn sich der Ursprung der Suchantwort von dem der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da der Ursprung des Skripts mit dem Ursprung der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
 
 > [!NOTE]
 > In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung in jedem Fall serverseitig ausführen. Andernfalls muss der Abonnementschlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Benutzer zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
 
-Zu Entwicklungszwecken können Sie eine Anforderung über ein CORS-Proxy senden. In der Antwort eines solchen Proxytys befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser enthält eine Whitelist mit Antwortheadern, die JavaScript zur Verfügung gestellt werden.
+Zu Entwicklungszwecken können Sie eine Anforderung über ein CORS-Proxy senden. In der Antwort eines solchen Proxytyps befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser filtert Antwortheader, die JavaScript zur Verfügung gestellt werden.
 
 Die Installation eines CORS-Proxys, mit dem die Beispiel-App auf den Client-ID-Header zugreifen kann, ist schnell und unkompliziert. Führen Sie den folgenden Befehl aus:
 

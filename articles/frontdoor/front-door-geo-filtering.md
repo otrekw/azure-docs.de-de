@@ -1,41 +1,41 @@
 ---
-title: Geofilterung in einer Domäne für Azure Front Door Service | Microsoft-Dokumentation
-description: Diese Artikel enthält Informationen zur Geofilterungsrichtlinie für Azure Front Door Service.
+title: Geofilterung in einer Domäne für Azure Front Door | Microsoft-Dokumentation
+description: Diese Artikel enthält Informationen zur Geofilterungsrichtlinie für Azure Front Door.
 services: frontdoor
 documentationcenter: ''
-author: KumudD
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
-ms.date: 03/21/2019
-ms.author: kumud
+ms.topic: article
+ms.date: 09/28/2020
+ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 7ad2d181b6343644205c58ab1d5fe83dc25542d4
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 42697a57d39f4a34eee4866b67e2cde947db1ff5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846423"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449266"
 ---
-# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Was ist Geofilterung in einer Domäne für Azure Front Door?
+# <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Geofilterung in einer Domäne für Azure Front Door
 
-Standardmäßig reagiert Azure Front Door Service auf alle Benutzeranforderungen, ganz gleich, wo sich der Benutzer befindet, von dem die Anforderung stammt. Manchmal ist jedoch unter Umständen eine länder-/regionsbasierte Einschränkung des Zugriffs auf Ihre Webanwendungen wünschenswert. Der Web Application Firewall-Dienst (WAF) in Front Door ermöglicht es Ihnen, eine Richtlinie mit benutzerdefinierten Schutzregeln für einen bestimmten Pfad an Ihrem Endpunkt zu definieren, um den Zugriff aus bestimmten Ländern/Regionen zuzulassen oder zu blockieren. 
+Standardmäßig reagiert Azure Front Door auf alle Benutzeranforderungen unabhängig davon, woher die Anforderung stammt. In einigen Szenarien ist jedoch unter Umständen eine länder-/regionsbasierte Einschränkung des Zugriffs auf Ihre Webanwendungen wünschenswert. Der Web Application Firewall-Dienst (WAF) in Front Door ermöglicht es Ihnen, eine Richtlinie mit benutzerdefinierten Schutzregeln für einen bestimmten Pfad an Ihrem Endpunkt zu definieren, um den Zugriff aus bestimmten Ländern/Regionen zuzulassen oder zu blockieren. 
 
-Eine WAF-Richtlinie enthält üblicherweise einige benutzerdefinierte Regeln. Eine Regel umfasst Übereinstimmungsbedingungen, eine Aktion und eine Priorität. In der Übereinstimmungsbedingung werden eine Übereinstimmungsvariable, ein Operator und ein Übereinstimmungswert definiert.  Eine Geofilterungsregel setzt sich aus der Übereinstimmungsvariablen „REMOTE_ADDR“, dem Operator „GeoMatch“ und einem aus zwei Buchstaben bestehenden Ländercode zusammen. Sie können eine GeoMatch-Bedingung mit einer Zeichenfolgen-Übereinstimmungsbedingung vom Typ „REQUEST_URI“ kombinieren, um eine pfadbasierte Geofilterungsregel zu erstellen.
+Eine WAF-Richtlinie enthält einige benutzerdefinierte Regeln. Die Regel umfasst Übereinstimmungsbedingungen, eine Aktion und eine Priorität. In einer Übereinstimmungsbedingung werden eine Übereinstimmungsvariable, ein Operator und ein Übereinstimmungswert definiert. Eine Geofilterungsregel setzt sich aus der Übereinstimmungsvariable „REMOTE_ADDR“, dem Operator „GeoMatch“ und einem aus zwei Buchstaben bestehenden Länder-/Regionscode als Wert zusammen. Sie können eine GeoMatch-Bedingung mit einer Zeichenfolgen-Übereinstimmungsbedingung vom Typ „REQUEST_URI“ kombinieren, um eine pfadbasierte Geofilterungsregel zu erstellen.
 
-Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front-door-tutorial-geo-filtering.md) oder mithilfe unserer [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering) konfiguriert werden.
+Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front-door-tutorial-geo-filtering.md) oder mithilfe einer [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering) konfiguriert werden.
 
-## <a name="country-code-reference"></a>Ländercodereferenz
+## <a name="countryregion-code-reference"></a>Referenz zu Länder-/Regionscodes
 
-|Landesvorwahl | Name des Lands |
+|Länder-/Regionscode | Name des Landes / der Region |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Vereinigte Arabische Emirate|
 | AF | Afghanistan|
-| AG | Antigua und Barbuda|
+| Verfügbarkeitsgruppe | Antigua und Barbuda|
 | AL | Albanien|
 | AM | Armenien|
 | AO | Angola|
@@ -43,7 +43,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front
 | AS | Amerikanisch-Samoa|
 | AT | Österreich|
 | AU | Australien|
-| AZ | Aserbaidschan|
+| RP | Aserbaidschan|
 | BA | Bosnien und Herzegowina|
 | BB | Barbados|
 | BD | Bangladesch|
@@ -62,7 +62,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front
 | BW | Botsuana|
 | BY | Belarus|
 | BZ | Belize|
-| CA | Kanada|
+| CA | Canada|
 | CD | Demokratische Republik Kongo|
 | CF | Zentralafrikanische Republik|
 | CH | Schweiz|
@@ -89,7 +89,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front
 | FJ | Fidschi|
 | FM | Föderierte Staaten von Mikronesien|
 | BV | Frankreich|
-| GB | Vereinigtes Königreich|
+| GB | United Kingdom|
 | GE | Georgien|
 | GF | Französisch-Guayana|
 | GH | Ghana|
@@ -105,7 +105,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front
 | HU | Ungarn|
 | id | Indonesien|
 | IE | Irland|
-| IL | Israel|
+| BY | Israel|
 | IN | Indien|
 | IQ | Irak|
 | IR | Islamische Republik Iran|
@@ -122,7 +122,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front
 | KP | Demokratische Volksrepublik Korea|
 | KR | Republik Korea|
 | KW | Kuwait|
-| KY | Kaimaninseln|
+| HE | Kaimaninseln|
 | KZ | Kasachstan|
 | LA | Demokratische Volksrepublik Laos|
 | LB | Libanon|
@@ -134,13 +134,13 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front
 | LU | Luxemburg|
 | LV | Lettland|
 | LY | Libyen |
-| MA | Marokko|
+| NI | Marokko|
 | MD | Republik Moldau|
 | MG | Madagaskar|
 | MK | Nordmazedonien|
 | ML | Mali|
 | MM | Myanmar|
-| MN | Mongolei|
+| BB | Mongolei|
 | MO | Macau (SAR)|
 | MQ | Martinique|
 | MR | Mauretanien|
@@ -155,7 +155,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front
 | NG | Nigeria|
 | NI | Nicaragua|
 | NL | Niederlande|
-| NO | Norwegen|
+| Nein | Norwegen|
 | NP | Nepal|
 | NR | Nauru|
 | NZ | Neuseeland|
@@ -212,5 +212,5 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über [Sicherheit für die Anwendungsschicht mit Front Door](front-door-application-security.md).
 - Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
+- Informationen zum [Einrichten einer WAF-Richtlinie für Geofilterung](front-door-tutorial-geo-filtering.md).

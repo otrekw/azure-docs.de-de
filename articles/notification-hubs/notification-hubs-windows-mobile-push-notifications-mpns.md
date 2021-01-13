@@ -1,5 +1,5 @@
 ---
-title: Senden von Benachrichtigungen an Windows Phone-Apps mit Azure Notification Hubs | Microsoft-Dokumentation
+title: Senden von Pushbenachrichtigungen an Windows Phone-Apps mit Azure Notification Hubs | Microsoft-Dokumentation
 description: In diesem Lernprogramm erfahren Sie, wie Sie mit Azure Notification Hubs Pushbenachrichtigungen an eine Windows Phone 8- oder Windows Phone 8.1 Silverlight-Anwendung senden können.
 services: notification-hubs
 documentationcenter: windows
@@ -13,19 +13,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7f026dd5953dd233b0183d8ce7978f647fb8c6af
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e91d250b8cc9b80f2c97910c7fa972af32fa9104
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213458"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88998338"
 ---
-# <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an Windows Phone-Apps mit Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an Windows Phone-Apps mit Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -65,7 +65,7 @@ Das Abschließen dieses Lernprogramms ist eine Voraussetzung für alle anderen N
     Der Hub ist jetzt erstellt und so konfiguriert, dass nicht authentifizierte Benachrichtigungen für Windows Phone gesendet werden.
 
     > [!NOTE]
-    > Dieses Lernprogramm verwendet MPNS im nicht authentifizierten Modus. Im nicht authentifizierten MPNS-Modus liegen Einschränkungen für Benachrichtigungen vor, die Sie an jeden Kanal senden können. Notification Hubs unterstützt den [authentifizierten MPNS-Modus](https://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx) , wodurch Sie Ihr Zertifikat hochladen können.
+    > Dieses Lernprogramm verwendet MPNS im nicht authentifizierten Modus. Im nicht authentifizierten MPNS-Modus liegen Einschränkungen für Benachrichtigungen vor, die Sie an jeden Kanal senden können. Notification Hubs unterstützt den [authentifizierten MPNS-Modus](/previous-versions/windows/apps/ff941099(v=vs.105)) , wodurch Sie Ihr Zertifikat hochladen können.
 
 ## <a name="create-a-windows-phone-application"></a>Erstellen einer Windows Phone-Anwendung
 
@@ -84,8 +84,11 @@ In diesem Abschnitt erstellen Sie eine Windows Phone-Anwendung, die sich selbst 
     ![Visual Studio – NuGet-Paket-Manager][20]
 4. Öffnen Sie die Datei "App.xaml.cs", und fügen Sie die folgenden `using` -Anweisungen hinzu:
 
-        using Microsoft.Phone.Notification;
-        using Microsoft.WindowsAzure.Messaging;
+    ```csharp
+    using Microsoft.Phone.Notification;
+    using Microsoft.WindowsAzure.Messaging;
+    ```
+
 5. Fügen Sie in `App.xaml.cs` am Anfang der Methode `Application_Launching` den folgenden Code hinzu:
 
     ```csharp
@@ -114,7 +117,7 @@ In diesem Abschnitt erstellen Sie eine Windows Phone-Anwendung, die sich selbst 
     ```
 
    > [!NOTE]
-   > Der Wert `MyPushChannel` ist ein Index, der verwendet wird, um nach einem vorhandenen Kanal in der Sammlung [HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) zu suchen. Wenn kein Kanal vorhanden ist, erstellen Sie einen neuen Eintrag mit diesem Namen.
+   > Der Wert `MyPushChannel` ist ein Index, der verwendet wird, um nach einem vorhandenen Kanal in der Sammlung [HttpNotificationChannel](/previous-versions/ff402781(v=vs.110)) zu suchen. Wenn kein Kanal vorhanden ist, erstellen Sie einen neuen Eintrag mit diesem Namen.
 
     Fügen Sie den Namen des Hubs und die Verbindungszeichenfolge `DefaultListenSharedAccessSignature` aus dem vorherigen Abschnitt ein.
     Dieser Code ruft den Kanal-URI für die App von MPNS ab und registriert dann diesen Kanal-URI bei Ihrem Benachrichtigungshub. Er sorgt außerdem dafür, dass der Kanal-URI in Ihrem Benachrichtigungshub registriert ist, sobald die Anwendung gestartet wird.
@@ -171,10 +174,10 @@ In diesem einfachen Beispiel haben Sie Pushbenachrichtigungen an all Ihre Window
 [213]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-console-app.png
 
 <!-- URLs. -->
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[MPNS authenticated mode]: https://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[MPNS authenticated mode]: /previous-versions/windows/apps/ff941099(v=vs.105)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-[toast catalog]: https://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
-[tile catalog]: https://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
-[Notification Hubs – Windows Phone Silverlight]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
+[toast catalog]: /previous-versions/windows/apps/jj662938(v=vs.105)
+[tile catalog]: /previous-versions/windows/apps/hh202948(v=vs.105)
+[Notification Hubs – Windows Phone Silverlight]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari

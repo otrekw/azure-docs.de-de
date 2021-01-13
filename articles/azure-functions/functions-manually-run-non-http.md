@@ -1,20 +1,16 @@
 ---
 title: Manuelles Ausführen einer Azure-Funktion ohne HTTP-Trigger
 description: Ausführen einer Azure-Funktion ohne HTTP-Trigger mithilfe einer HTTP-Anforderung
-services: functions
-keywords: ''
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
-ms.topic: tutorial
-ms.date: 12/12/2018
+ms.topic: article
+ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: cfebe5c783018cfab51f384cce578e43383c3905
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 79aebf7ed80fea370ff7a5d5cc40911da4144414
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479823"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537700"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Manuelles Ausführen einer Funktion ohne HTTP-Trigger
 
@@ -26,7 +22,7 @@ Im folgenden Beispiel wird [Postman](https://www.getpostman.com/) verwendet. Sie
 
 ## <a name="define-the-request-location"></a>Festlegen des Anforderungsorts
 
-Wenn Sie eine Funktion ohne HTTP-Trigger ausführen möchten, benötigen Sie eine Methode, mit der Sie die Ausführung der Funktion bei Azure anfordern können Die zum Senden dieser Anforderung verwendete URL hat ein bestimmtes Format.
+Wenn Sie eine Funktion ohne HTTP-Trigger ausführen möchten, benötigen Sie eine Methode, mit der Sie die Ausführung der Funktion bei Azure anfordern können. Die zum Senden dieser Anforderung verwendete URL hat ein bestimmtes Format.
 
 ![Festlegen des Anforderungsorts: Hostname + Ordnerpfad + Funktionsname](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
@@ -41,41 +37,47 @@ Dieser Anforderungsort wird in Postman zusammen mit dem Hauptschlüssel der Funk
 
 ## <a name="get-the-functions-master-key"></a>Abrufen des Hauptschlüssels der Funktion
 
-Navigieren Sie im Azure-Portal zu Ihrer Funktion, klicken Sie auf **Verwalten**, und navigieren Sie zum Abschnitt **Hostschlüssel**. Klicken Sie in der Zeile *_master* auf die Schaltfläche **Kopieren**, um den Hauptschlüssel in die Zwischenablage zu kopieren.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Funktions-App, und wählen Sie **App-Schlüssel** und dann den Schlüssel `_master` aus. 
 
-![Kopieren des Hauptschlüssels auf dem Bildschirm zur Funktionsverwaltung](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
 
-Klicken Sie nach dem Kopieren des Hauptschlüssels auf den Funktionsnamen, um zum Fenster mit der Codedatei zurückzukehren. Klicken Sie anschließend auf die Registerkarte **Protokolle**. Hier werden Meldungen zur Funktion protokolliert, wenn Sie die Funktion manuell über Postman ausführen.
+1. Kopieren Sie im Abschnitt **Schlüssel bearbeiten** den Schlüsselwert in die Zwischenablage, und wählen Sie dann **OK** aus.
+
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
+
+1. Klicken Sie nach dem Kopieren des *_master*-Schlüssels auf **Programmieren und testen**, und wählen Sie dann **Protokolle** aus. Hier werden Meldungen zur Funktion protokolliert, wenn Sie die Funktion manuell über Postman ausführen.
+
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
 
 > [!CAUTION]  
-> Aufgrund der erhöhten Berechtigungen, die der Hauptschlüssel in Ihrer Funktions-App gewährt, sollten Sie diesen Schlüssel nicht für Dritte freigeben oder in einer Anwendung verteilen.
+> Aufgrund der erhöhten Berechtigungen, die der Hauptschlüssel in Ihrer Funktions-App gewährt, sollten Sie diesen Schlüssel nicht für Dritte freigeben oder in einer Anwendung verteilen. Der Schlüssel darf nur an einen HTTPS-Endpunkt gesendet werden.
 
 ## <a name="call-the-function"></a>Aufrufen der Funktion
 
 Öffnen Sie Postman, und führen Sie die folgenden Schritte aus:
 
 1. Geben Sie den **Anforderungsort in das Textfeld für die URL** ein.
-2. Vergewissern Sie sich, dass die HTTP-Methode auf **POST** festgelegt ist.
-3. **Klicken** Sie auf die Registerkarte **Header**.
-4. Geben Sie **x-functions-key** als ersten **Schlüssel** ein, und fügen Sie den Hauptschlüssel (aus der Zwischenablage) ins Feld **Wert** ein.
-5. Geben Sie **Content-Type** als zweiten **Schlüssel** und **application/json** als **Wert** ein.
+1. Vergewissern Sie sich, dass die HTTP-Methode auf **POST** festgelegt ist.
+1. Wählen Sie die Registerkarte **Headers** (Header) aus.
+1. Geben Sie **x-functions-key** als ersten Schlüssel ein, und fügen Sie den Hauptschlüssel (aus der Zwischenablage) dann als Wert ein.
+1. Geben Sie **Content-Type** als zweiten Schlüssel und **application/json** als Wert ein.
 
-    ![Header-Einstellungen in Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
 
-6. **Klicken** Sie auf die Registerkarte **Text**.
-7. Geben Sie **{ "input": "test" }** als Anforderungstext ein.
+1. Wählen Sie die Registerkarte **Body (Hauptteil)** aus.
+1. Geben Sie **{ "input": "test" }** als Anforderungstext ein.
 
-    ![Postman-Einstellungen für den Anforderungstext](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
 
-8. Klicken Sie auf **Send**.
+1. Wählen Sie **Senden** aus.
+        
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
 
-    ![Senden einer Anforderung mit Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
+    Postman meldet anschließend den Status **202 – Akzeptiert**.
 
-Postman meldet anschließend den Status **202 – Akzeptiert**.
+1. Kehren Sie anschließend zu Ihrer Funktion im Azure-Portal zurück. Überprüfen Sie die Protokolle. In ihnen werden Meldungen aus dem manuellen Aufruf der Funktion angezeigt.
 
-Kehren Sie anschließend zu Ihrer Funktion im Azure-Portal zurück. Navigieren Sie zum Fenster *Protokolle*. Dort werden Meldungen aus dem manuellen Aufruf der Funktion angezeigt.
-
-![Funktionsprotokollergebnisse des manuellen Aufrufs](./media/functions-manually-run-non-http/azure-portal-function-log.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

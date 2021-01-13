@@ -1,25 +1,23 @@
 ---
-title: Analysieren der Netzwerksicherheit mit der Azure Network Watcher-Sicherheitsgruppenansicht – Azure CLI | Microsoft-Dokumentation
+title: 'Analysieren der Netzwerksicherheit mit der Sicherheitsgruppenansicht: Azure CLI'
+titleSuffix: Azure Network Watcher
 description: In diesem Artikel wird die Verwendung der Azure CLI zum Analysieren der Sicherheit eines virtuellen Computers über die Sicherheitsgruppenansicht beschrieben.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: a986ff4f-7e0c-4994-95e1-4ac824986500
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 68222a90eb60ab4f84a34b5e46833128ea081ec1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: b3aa963c4da7802a9db714f25e7b544b3a132d4b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724439"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948645"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>Analysieren der Sicherheit Ihres virtuellen Computers über die Sicherheitsgruppenansicht mithilfe der Azure CLI
 
@@ -27,6 +25,10 @@ ms.locfileid: "64724439"
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure-Befehlszeilenschnittstelle](network-watcher-security-group-view-cli.md)
 > - [REST-API](network-watcher-security-group-view-rest.md)
+
+> [!NOTE]
+> Die Sicherheitsgruppenansichts-API wird nicht mehr gepflegt und in Kürze außer Betrieb gesetzt. Verwenden Sie die [Funktion „Effektive Sicherheitsregeln“](./network-watcher-security-group-view-overview.md), die dieselbe Funktionalität bietet.
+
 
 Die Sicherheitsgruppenansicht gibt konfigurierte und effektive Netzwerksicherheitsregeln zurück, die auf einen virtuellen Computer angewendet werden. Diese Funktion eignet sich zur Überwachung und Diagnose von Netzwerksicherheitsgruppen und Regeln, die auf einem virtuellen Computer konfiguriert sind, um sicherzustellen, dass Datenverkehr ordnungsgemäß zugelassen oder verweigert wird. In diesem Artikel erfahren Sie, wie Sie die konfigurierten und effektiven Sicherheitsregeln mithilfe der Azure CLI auf einen virtuellen Computer abrufen.
 

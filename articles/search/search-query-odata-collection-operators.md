@@ -1,13 +1,13 @@
 ---
-title: Referenz zu OData-Sammlungsoperatoren – Azure Search
-description: OData-Sammlungsoperatoren (any und all) und Lambdaausdrücke in Azure Search-Abfragen.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Referenz zu OData-Sammlungsoperatoren
+titleSuffix: Azure Cognitive Search
+description: Beim Erstellen von Filterausdrücken in Azure Cognitive Search-Abfragen verwenden Sie die Operatoren „any“ und „all“ in Lambda-Ausdrücken, wenn der Filter in einer Sammlung oder einem komplexen Sammlungsfeld vorhanden ist.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e057d0b57162d10aab13d8b1f77e0eaddca2ec2a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4c1243d5d9122539466e94b6bbfdd5ced588e69a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647634"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88934904"
 ---
-# <a name="odata-collection-operators-in-azure-search---any-and-all"></a>OData-Sammlungsoperatoren in Azure Search: `any` und `all`
+# <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>OData-Sammlungsoperatoren in Azure Cognitive Search: `any` und `all`
 
-Beim Schreiben eines [OData-Filterausdrucks](query-odata-filter-orderby-syntax.md), der mit Azure Search verwendet werden soll, ist es oft hilfreich, nach Sammlungsfeldern zu filtern. Dies können dies mit den Operatoren `any` und `all` erreichen.
+Beim Schreiben eines [OData-Filterausdrucks](query-odata-filter-orderby-syntax.md), der mit Azure Cognitive Search verwendet werden soll, ist es oft hilfreich, nach Sammlungsfeldern zu filtern. Dies können dies mit den Operatoren `any` und `all` erreichen.
 
 ## <a name="syntax"></a>Syntax
 
@@ -48,10 +48,10 @@ lambda_expression ::= identifier ':' boolean_expression
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#collection_filter_expression)
+> [OData-Syntaxdiagramm für Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#collection_filter_expression)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie unter [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md).
 
 Es gibt drei Formen von Ausdrücken, die Sammlungen filtern.
 
@@ -66,35 +66,45 @@ Ein **Lambdaausdruck** in einem Sammlungsfilter ist wie der Textkörper einer Sc
 
 Abgleichen von Dokumenten, deren `tags`-Feld die genaue Zeichenfolge „wifi“ enthält:
 
-    tags/any(t: t eq 'wifi')
+```text
+tags/any(t: t eq 'wifi')
+```
 
 Abgleichen von Dokumenten, in denen jedes Element des `ratings`-Felds zwischen 3 und 5 (einschließlich) liegt:
 
-    ratings/all(r: r ge 3 and r le 5)
+```text
+ratings/all(r: r ge 3 and r le 5)
+```
 
 Abgleichen von Dokumenten, in denen jede der Geokoordinaten im `locations`-Feld im angegebenen Polygon liegt:
 
-    locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```text
+locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```
 
 Abgleichen von Dokumenten, bei denen das `rooms`-Feld leer ist:
 
-    not rooms/any()
+```text
+not rooms/any()
+```
 
 Abgleichen von Dokumenten, in denen das `rooms/amenities`-Feld für alle Zimmer „tv“ enthält und `rooms/baseRate` kleiner als 100 ist:
 
-    rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```text
+rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```
 
 ## <a name="limitations"></a>Einschränkungen
 
 Nicht jedes Merkmal von Filterausdrücken ist innerhalb des Textkörpers eines Lambdaausdrucks verfügbar. Die unterschiedlichen Einschränkungen hängen vom Datentyp des Sammlungsfelds ab, nach dem Sie filtern möchten. Die Einschränkungen werden in der folgenden Tabelle zusammengefasst.
 
-[!INCLUDE [Limitations on OData lambda expressions in Azure Search](../../includes/search-query-odata-lambda-limitations.md)]
+[!INCLUDE [Limitations on OData lambda expressions in Azure Cognitive Search](../../includes/search-query-odata-lambda-limitations.md)]
 
-Weitere Informationen zu diesen Einschränkungen sowie Beispiele finden Sie unter [Problembehandlung von Sammlungsfiltern in Azure Search](search-query-troubleshoot-collection-filters.md). Ausführlichere Informationen dazu, warum diese Einschränkungen vorhanden sind, finden Sie unter [Grundlegendes zu Sammlungsfiltern in Azure Search](search-query-understand-collection-filters.md).
+Weitere Informationen zu diesen Einschränkungen sowie Beispiele finden Sie unter [Problembehandlung von Sammlungsfiltern in Azure Cognitive Search](search-query-troubleshoot-collection-filters.md). Ausführlichere Informationen dazu, warum diese Einschränkungen vorhanden sind, finden Sie unter [Grundlegendes zu Sammlungsfiltern in Azure Cognitive Search](search-query-understand-collection-filters.md).
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Filter in Azure Search](search-filters.md)
-- [Übersicht über die OData-Ausdruckssprache für Azure Search](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md)
-- [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst)
+- [Filter in Azure Cognitive Search](search-filters.md)
+- [Übersicht über die OData-Ausdruckssprache für Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](/rest/api/searchservice/Search-Documents)

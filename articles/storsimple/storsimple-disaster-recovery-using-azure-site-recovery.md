@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 23049a2c-055e-4d0e-b8f5-af2a87ecf53f
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 650798fdb884e6494990efb533335a1dd8b4d89f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: e2d89718d953f05b3e5500db412ac8ac03bfa00b
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875392"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301947"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatische Lösung zur Notfallwiederherstellung mithilfe von Azure Site Recovery für auf StorSimple gehostete Dateifreigaben
 
@@ -44,7 +44,7 @@ Für das Implementieren einer Lösung zur Notfallwiederherstellung, die Azure Si
    - Ein lokales StorSimple-Speichergerät, das bei Azure StorSimple Manager registriert ist
    - StorSimple Cloud Appliance-Version, die im Azure StorSimple Manager erstellt wurde Die Anwendung kann in einem heruntergefahrenen Zustand beibehalten werden.
    - Dateifreigaben, die auf den vom StorSimple-Speichergerät konfigurierten Volumes gehostet werden.
-   - [Ein Azure Site Recovery Services-Tresor](../site-recovery/site-recovery-vmm-to-vmm.md) , der in einem Microsoft Azure-Abonnement erstellt wurde.
+   - [Ein Azure Site Recovery Services-Tresor](/azure/site-recovery/hyper-v-vmm-azure-tutorial) , der in einem Microsoft Azure-Abonnement erstellt wurde.
 
 Falls Azure Ihr Wiederherstellungsstandort ist, führen Sie zusätzlich das [Bereitschaftsbewertungstool für virtuelle Computer](https://azure.microsoft.com/downloads/vm-readiness-assessment/) auf VMs aus, um sicherzustellen, dass diese mit Azure VMs und Azure Site Recovery Services kompatibel sind.
 
@@ -76,7 +76,7 @@ Dieser Schritt erfordert, dass Sie die lokale Dateiserverumgebung vorbereiten, e
 1. Legen Sie die **Benutzerkontensteuerung** auf **Nie benachrichtigen** fest. Dies ist erforderlich, damit Sie Azure-Automatisierungsskripts zum Verbinden der iSCSI-Ziele nach dem Failover durch Azure Site Recovery verwenden können.
    
    1. Drücken Sie die Windows-Taste „+Q“, und suchen Sie nach **UAC**.  
-   1. Wählen Sie **Einstellungen der Benutzerkontensteuerung ändern**aus.  
+   1. Wählen Sie **Einstellungen der Benutzerkontensteuerung ändern** aus.  
    1. Ziehen Sie den Balken nach unten zu **Nie benachrichtigen**.  
    1. Klicken Sie auf **OK**, und wählen Sie dann **Ja** aus, wenn Sie dazu aufgefordert werden.  
    
@@ -94,10 +94,10 @@ Dieser Schritt erfordert, dass Sie die lokale Dateiserverumgebung vorbereiten, e
 1. Klicken Sie auf **Weiter**.
 1. Akzeptieren Sie die **Nutzungsbedingungen**, und klicken Sie anschließend auf **Weiter**.
 1. Klicken Sie auf **Fertig stellen**.
-1. Erstellen Sie Dateifreigaben mithilfe von Volumes, die aus dem StorSimple-Speicher stammen. Weitere Informationen finden Sie unter [Verwalten von Volumes mithilfe des StorSimple Manager-Diensts](storsimple-manage-volumes.md).
+1. Erstellen Sie Dateifreigaben mithilfe von Volumes, die aus dem StorSimple-Speicher stammen. Weitere Informationen finden Sie unter [Verwalten von Volumes mithilfe des StorSimple Manager-Diensts](./index.yml).
    
    1. Klicken Sie auf Ihren lokalen VMs die Windows-Taste „+Q“, und suchen Sie nach **iSCSI**.
-   1. Wählen Sie den **iSCSI-Initiator**aus.
+   1. Wählen Sie den **iSCSI-Initiator** aus.
    1. Wählen Sie die Registerkarte **Konfiguration** aus, und kopieren Sie den Initiatornamen.
    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
    1. Wählen Sie die Registerkarte **StorSimple** aus, und wählen Sie anschließend den StorSimple Manager-Dienst aus, der das physische Gerät enthält.
@@ -112,19 +112,19 @@ Dieser Schritt erfordert, dass Sie die lokale Dateiserverumgebung vorbereiten, e
    1. Verwenden Sie die Rolle „Datei- und Speicherdienste“, um Dateifreigaben auf diesen Volumes zu erstellen.
 
 #### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>So erstellen Sie einen Azure Site Recovery-Tresor und bereiten diesen vor
-Sehen Sie sich die [Azure Site Recovery-Dokumentation](../site-recovery/site-recovery-hyper-v-site-to-azure.md) an, um die ersten Schritte mit Azure Site Recovery auszuführen, bevor Sie die Dateiserver-VM schützen.
+Sehen Sie sich die [Azure Site Recovery-Dokumentation](/azure/site-recovery/) an, um die ersten Schritte mit Azure Site Recovery auszuführen, bevor Sie die Dateiserver-VM schützen.
 
 #### <a name="to-enable-protection"></a>So aktivieren Sie den Schutz
 1. Trennen Sie das iSCSI-Ziel/die iSCSI-Ziele von den lokalen VMs, die Sie durch Azure Site Recovery schützen möchten:
    
    1. Drücken Sie die Windows-Taste „+Q“, und suchen Sie nach **iSCSI**.
-   1. Wählen Sie **iSCSI-Initiator einrichten**aus.
+   1. Wählen Sie **iSCSI-Initiator einrichten** aus.
    1. Trennen Sie das StorSimple-Gerät,für das Sie zuvor eine Verbindung hergestellt haben. Alternativ können Sie während der Aktivierung des Schutzes den Dateiserver für ein paar Minuten abschalten.
       
    > [!NOTE]
    > Dies bewirkt, dass die Dateifreigaben vorübergehend nicht verfügbar sind.
    
-1. [Aktivieren Sie den Schutz für virtuelle Computer](../site-recovery/site-recovery-hyper-v-site-to-azure.md) der Dateiserver-VM im Azure Site Recovery-Portal.
+1. [Aktivieren Sie den Schutz für virtuelle Computer](/azure/site-recovery/hyper-v-azure-tutorial) der Dateiserver-VM im Azure Site Recovery-Portal.
 1. Wenn die erste Synchronisierung beginnt, können Sie die Verbindung mit dem Ziel wieder herstellen. Wechseln Sie zum iSCSI-Initiator, wählen Sie das StorSimple-Gerät, und klicken Sie auf **Verbinden**.
 1. Wenn die Synchronisierung abgeschlossen und der Status der VM **Geschützt** ist, wählen Sie die VM und die Registerkarte **Konfigurieren** aus, und aktualisieren Sie entsprechend das Netzwerk der VM (die VM[s], für die ein Failover ausgeführt wurde, werden Teil dieses Netzwerks). Falls das Netzwerk nicht angezeigt wird, bedeutet dies, dass die Synchronisierung immer noch ausgeführt wird.
 
@@ -142,7 +142,7 @@ Sie können den virtuellen Computer auf der Registerkarte **Replizierte Elemente
 Sie können einen Wiederherstellungsplan in ASR erstellen, um den Failoverprozess der Dateifreigaben zu automatisieren. Wenn eine Störung auftritt, können Sie die Dateifreigaben in wenigen Minuten mit nur einem einzigen Klick anzeigen. Sie benötigen ein Azure Automation-Konto, um diese Automatisierung zu aktivieren.
 
 #### <a name="to-create-an-automation-account"></a>So erstellen Sie ein Automation-Konto
-1. Wechseln Sie zu Azure-Portal &gt; **Automation**.
+1. Navigieren Sie zu Azure-Portal &gt; **Automation**.
 1. Klicken Sie auf die Schaltfläche **+ Hinzufügen**. Dadurch wird das unten angezeigte Blatt geöffnet.
    
    ![Automation-Konto hinzufügen](./media/storsimple-disaster-recovery-using-azure-site-recovery/image11.png)
@@ -174,7 +174,7 @@ Sie können einen Wiederherstellungsplan in ASR erstellen, um den Failoverprozes
    - _RecoveryPlanName_ **-ResourceGroupName**: Die Resource Manager-Gruppe, die über die StorSimple-Ressource verfügt.
    - _RecoveryPlanName_ **-ManagerName**: Die StorSimple-Ressource, die über das StorSimple-Gerät verfügt.
    - _RecoveryPlanName_ **-DeviceName**: Das StorSimple-Gerät, für das ein Failover ausgeführt werden muss.
-   - _RecoveryPlanName_ **-DeviceIpAddress**: Die IP-Adresse des Geräts (diese finden Sie auf der Registerkarte **Geräte** im Abschnitt „StorSimple-Geräte-Manager“ &gt; **Einstellungen** &gt; **Netzwerk** &gt; **Gruppe „DNS-Einstellungen“** ).
+   - _RecoveryPlanName_ **-DeviceIpAddress**: Die IP-Adresse des Geräts (diese finden Sie auf der Registerkarte **Geräte** im Abschnitt „StorSimple-Geräte-Manager“ &gt; **Einstellungen**&gt;  **Netzwerk** &gt; **Gruppe „DNS-Einstellungen“** ).
    - _RecoveryPlanName_ **-VolumeContainers**: Eine durch Trennzeichen getrennte Zeichenfolge von Volumecontainern, die sich auf dem Gerät befinden, und für die ein Failover ausgeführt werden muss, z.B. „volcon1“, „volcon2“, „volcon3“.
    - _RecoveryPlanName_ **-TargetDeviceName**: Die StorSimple Cloud Appliance, auf die das Failover für Container ausgeführt werden soll.
    - _RecoveryPlanName_ **-TargetDeviceIpAddress**: Die IP-Adresse des Zielgeräts (diese finden Sie im Abschnitt **Virtueller Computer** &gt; **Gruppe „Einstellungen“** &gt; **Registerkarte „Netzwerk“** ).
@@ -282,8 +282,8 @@ Finden Sie im Begleithandbuch [Active Directory-DR-Lösung](../site-recovery/sit
    
    ![Failover starten](./media/storsimple-disaster-recovery-using-azure-site-recovery/image8.png)
    
-1. Klicken Sie auf **OK**, um den Failovervorgang zu starten. Sie können den Fortschritt verfolgen, indem Sie auf den virtuellen Computer klicken, um die Eigenschaften zu öffnen. Alternativ können Sie unter „Tresorname“ > &gt; **Aufträge** &gt; **Site Recovery-Aufträge** auf den Auftrag **Testfailover** klicken.
-1. Nach Abschluss des Failovers sollte der Azure-Replikatcomputer im Azure-Portal &gt; **Virtuelle Computer** angezeigt werden. Sie können Ihre Überprüfungen durchführen.
+1. Klicken Sie auf **OK**, um den Failovervorgang zu starten. Sie können den Fortschritt verfolgen, indem Sie auf den virtuellen Computer klicken, um die Eigenschaften zu öffnen. Alternativ können Sie unter „Tresorname“ &gt; **Aufträge** &gt; **Site Recovery-Aufträge** auf den Auftrag **Testfailover** klicken.
+1. Nach Abschluss des Failovers sollte der Azure-Replikatcomputer im Azure-Portal unter **Virtuelle Computer** angezeigt werden. Sie können Ihre Überprüfungen durchführen.
 1. Nachdem die Überprüfungen abgeschlossen sind, klicken Sie auf **Überprüfungen abgeschlossen**. Dadurch werden die StorSimple-Volumes entfernt und die StorSimple Cloud Appliance heruntergefahren.
 1. Klicken Sie anschließend auf dem Wiederherstellungsplan auf **Cleanup-Test-Failover** (Testfailover bereinigen). Erfassen und speichern Sie unter „Hinweise“ alle Beobachtungen im Zusammenhang mit dem Testfailover. Dadurch wird der während des Testfailovers erstellte virtuelle Computer gelöscht.
 
@@ -294,7 +294,7 @@ Finden Sie im Begleithandbuch [Active Directory-DR-Lösung](../site-recovery/sit
 1. Wählen Sie im Azure-Portal den Tresor **Recovery Services** &gt; **Wiederherstellungspläne (Site Recovery)** &gt; **Wiederherstellungsplanname** aus, der für den virtuellen Computer des Dateiservers erstellt wurde.
 1. Klicken Sie auf dem Blatt „Wiederherstellungsplan“ auf **Mehr** &gt; **Geplantes Failover**.
 
-   ![Wiederherstellungsplan](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
+   ![Screenshot: Hervorgehobene Optionen „Geplantes Failover“ und „Failover“](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
 1. Wählen Sie auf dem Blatt **Geplanten Failover bestätigen** den Quell- und den Zielspeicheror und das Zielnetzwerk aus, und klicken Sie auf das Häkchen-Symbol ✓, um den Failoverprozess zu starten.
 1. Nach der Erstellung der virtuellen Replikatcomputer weist deren Status darauf hin, dass ein Commit aussteht. Klicken Sie auf **Commit**, um ein Commit für das Failover auszuführen.
 1. Nach Abschluss der Replikation werden die virtuellen Computer am sekundären Standort gestartet.

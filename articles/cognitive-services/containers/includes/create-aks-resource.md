@@ -3,18 +3,18 @@ title: Erstellen einer Azure Kubernetes Service-Clusterressource
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie eine Azure Kubernetes Service-Ressource (AKS) erstellen.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/3/2019
-ms.author: dapine
-ms.openlocfilehash: 5e442f38a8e81170eeeac2f31f00a7d0eeb08d2b
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: e7f5b6f3685a94b5497784360f8f12b22fb95012
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377448"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017855"
 ---
 ## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Erstellen einer Azure Kubernetes Service-Clusterressource
 
@@ -28,13 +28,13 @@ ms.locfileid: "68377448"
     |Resource group|Wählen Sie eine verfügbare Ressourcengruppe aus.|
     |Kubernetes-Clustername|Geben Sie einen Namen ein (Kleinbuchstaben).|
     |Region|Wählen Sie einen nahe gelegenen Speicherort aus.|
-    |Kubernetes-Version|1.12.8 (Standard).|
+    |Kubernetes-Version|Jeder Wert, der als **(Standard)** markiert ist.|
     |DNS-Namenspräfix|Wird automatisch erstellt, kann jedoch überschrieben werden.|
     |Knotengröße|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
     |Knotenanzahl|Lassen Sie den Schieberegler auf dem Standardwert.|
 
-1. Lassen Sie die Standardwerte auf der Registerkarte **Skalieren** für **virtuelle Knoten** und **VM-Skalierungsgruppen (Vorschau)** unverändert.
-1. Lassen Sie die Standardwerte auf der Registerkarte **Authentifizierung** für **Dienstprinzipal** und **RBAC aktivieren** unverändert.
+1. Behalten Sie auf der Registerkarte **Knotenpools** die Standardwerte für **virtuelle Knoten** und **VM-Skalierungsgruppen** bei.
+1. Behalten Sie Registerkarte **Authentifizierung** die Standardwerte für **Dienstprinzipal** und **RBAC aktivieren** bei.
 1. Geben Sie auf der Registerkarte **Netzwerk** die folgende Auswahl ein:
 
     |Einstellung|Wert|
@@ -42,7 +42,7 @@ ms.locfileid: "68377448"
     |HTTP-Anwendungsrouting|Nein|
     |Netzwerkkonfiguration|Basic|
 
-1. Stellen Sie auf der Registerkarte **Überwachung** sicher, dass **Containerüberwachung aktivieren** auf **Ja** festgelegt ist, und behalten Sie den Standardwert für **Log Analytics-Arbeitsbereich** bei.
+1. Stellen Sie auf der Registerkarte **Integrationen** sicher, dass **Containerüberwachung** auf **Aktiviert** festgelegt ist, und behalten Sie den Standardwert für den **Log Analytics-Arbeitsbereich** bei.
 1. Lassen Sie auf der Registerkarte **Tags** die Name/Wert-Paare vorerst leer.
 1. Klicken Sie auf **Überprüfen und erstellen**.
 1. Wenn die Überprüfung erfolgreich war, wählen Sie **Erstellen** aus.

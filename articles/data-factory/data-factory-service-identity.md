@@ -1,24 +1,25 @@
 ---
-title: Verwaltete Identität für Data Factory | Microsoft-Dokumentation
+title: Verwaltete Identität für Data Factory
 description: Erfahren Sie mehr über die verwaltete Identität für Azure Data Factory.
 services: data-factory
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 819f84eeb7540050fb001111690fb6d2ba484b2a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153418"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452301"
 ---
 # <a name="managed-identity-for-data-factory"></a>Verwaltete Identität für Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Dieser Artikel hilft Ihnen zu verstehen, was die verwaltete Identität für Data Factory (zuvor „Verwaltete Dienstidentität“ genannt) ist und wie diese funktioniert.
 
@@ -31,7 +32,7 @@ Wenn Sie eine Data Factory erstellen, kann beim Erstellen der Factory auch eine 
 Die verwaltete Identität für Data Factory profitiert von den folgenden Features:
 
 - [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md): In diesem Fall wird die verwaltete Identität für Data Factory für die Azure Key Vault-Authentifizierung verwendet.
-- Connectors, wie z.B. [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL-Datenbank](connector-azure-sql-database.md) und [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md).
+- Connectors wie z. B. [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL-Datenbank](connector-azure-sql-database.md) und [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md).
 - [Webaktivität](control-flow-web-activity.md).
 
 ## <a name="generate-managed-identity"></a>Generieren einer verwalteten Identität
@@ -56,7 +57,7 @@ Sollte Ihrer Data Factory nach dem Schritt [Abrufen einer verwalteten Identität
 
 ### <a name="generate-managed-identity-using-powershell"></a>Generieren der verwalteten Identität mit PowerShell
 
-Rufen Sie erneut den Befehl **Set-AzDataFactoryV2** auf, woraufhin die „Identity“-Felder neu generiert werden:
+Rufen Sie den Befehl **Set-AzDataFactoryV2** auf, woraufhin die „Identity“-Felder neu generiert werden:
 
 ```powershell
 PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
@@ -156,17 +157,19 @@ Sie können die verwaltete Identität über das Azure-Portal oder programmgesteu
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>Abrufen der verwalteten Identität über das Azure-Portal
 
-Sie finden die Informationen zur verwalteten Identität im Azure-Portal unter „Ihre Data Factory“ > „Eigenschaften“:
+Sie finden die Informationen zur verwalteten Identität im Azure-Portal unter „Ihre Data Factory“ > „Eigenschaften“.
 
 - Objekt-ID der verwalteten Identität
 - Mandant der verwalteten Identität
-- **Anwendungs-ID der verwalteten Identität** > diesen Wert kopieren
+- Anwendungs-ID der verwalteten Identität
 
-![Abrufen der verwalteten Identität](media/data-factory-service-identity/retrieve-service-identity-portal.png)
+Die Informationen zur verwalteten Identität werden auch angezeigt, wenn Sie einen verknüpften Dienst erstellen, der die Authentifizierung der verwalteten Identität unterstützt, z. B. Azure-Blob, Azure Data Lake Storage, Azure Key Vault usw.
+
+Wenn Sie eine Berechtigung erteilen, verwenden Sie die Objekt-ID oder den Data Factory-Namen (als Name der verwalteten Identität) zur Ermittlung dieser Identität.
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>Abrufen der verwalteten Identität mit PowerShell
 
-Die Prinzipal-ID und Mandanten-ID der verwalteten Identität werden wie folgt zurückgegeben, wenn Sie eine bestimmte Data Factory abrufen:
+Die Prinzipal-ID und Mandanten-ID der verwalteten Identität werden folgendermaßen zurückgegeben, wenn Sie eine bestimmte Data Factory abrufen: Verwenden Sie die **PrincipalId**, um Zugriff zu gewähren:
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -176,7 +179,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-Kopieren Sie die Prinzipal-ID, und führen Sie den unten angegebenen Azure Active Directory-Befehl mit der Prinzipal-ID als Parameter aus, um **ApplicationId** abzurufen. Diesen Wert verwenden Sie dann zum Gewähren des Zugriffs:
+Sie können die Anwendungs-ID abrufen, indem Sie die vorstehende Prinzipal-ID kopieren und dann den unten gezeigten Azure Active Directory Befehl mit der Prinzipal-ID als Parameter ausführen.
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -188,10 +191,65 @@ Id                    : 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
 Type                  : ServicePrincipal
 ```
 
+### <a name="retrieve-managed-identity-using-rest-api"></a>Abrufen der verwalteten Identität mit der REST-API
+
+Die Prinzipal-ID und Mandanten-ID der verwalteten Identität werden folgendermaßen zurückgegeben, wenn Sie eine bestimmte Data Factory abrufen:
+
+Rufen Sie die folgende API in der Anforderung auf:
+
+```
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
+```
+
+**Antwort**: Sie erhalten eine Antwort wie im nachfolgenden Beispiel gezeigt. Der Abschnitt für die Identität ist entsprechend ausgefüllt.
+
+```json
+{
+    "name":"<dataFactoryName>",
+    "identity":{
+        "type":"SystemAssigned",
+        "principalId":"554cff9e-XXXX-XXXX-XXXX-90c7d9ff2ead",
+        "tenantId":"72f988bf-XXXX-XXXX-XXXX-2d7cd011db47"
+    },
+    "id":"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>",
+    "type":"Microsoft.DataFactory/factories",
+    "properties":{
+        "provisioningState":"Succeeded",
+        "createTime":"2020-02-12T02:22:50.2384387Z",
+        "version":"2018-06-01",
+        "factoryStatistics":{
+            "totalResourceCount":0,
+            "maxAllowedResourceCount":0,
+            "factorySizeInGbUnits":0,
+            "maxAllowedFactorySizeInGbUnits":0
+        }
+    },
+    "eTag":"\"03006b40-XXXX-XXXX-XXXX-5e43617a0000\"",
+    "location":"<region>",
+    "tags":{
+
+    }
+}
+```
+
+> [!TIP] 
+> Fügen Sie zum Abrufen der verwalteten Identität aus einer ARM-Vorlage einen Abschnitt **outputs** im ARM JSON-Code hinzu:
+
+```json
+{
+    "outputs":{
+        "managedIdentityObjectId":{
+            "type":"string",
+            "value":"[reference(resourceId('Microsoft.DataFactory/factories', parameters('<dataFactoryName>')), '2018-06-01', 'Full').identity.principalId]"
+        }
+    }
+}
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 Lesen Sie die folgenden Themen, die Ihnen zeigen, wann und wie Sie die verwaltete Identität für Data Factory verwenden können:
 
 - [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md)
 - [Kopieren von Daten von/zu Azure Data Lake Store mit verwalteten Identitäten für die Ressourcenauthentifizierung mit Azure](connector-azure-data-lake-store.md)
 
-Weitere Hintergründe zu verwalteten Identitäten für Azure-Ressourcen (auf denen verwaltete Identitäten für Data Factory basieren) finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen – Übersicht](/azure/active-directory/managed-identities-azure-resources/overview). 
+Weitere Hintergründe zu verwalteten Identitäten für Azure-Ressourcen (auf denen verwaltete Identitäten für Data Factory basieren) finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen – Übersicht](../active-directory/managed-identities-azure-resources/overview.md).

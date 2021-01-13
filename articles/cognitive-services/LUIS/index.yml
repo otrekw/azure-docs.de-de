@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Language Understanding (LUIS) – Dokumentation
-summary: Es wird beschrieben, wie Sie den Dienst „Language Understanding“ verwenden, damit Ihre Anwendung es versteht, wenn eine Person Wünsche in ihrer eigenen Sprache äußert.
+summary: Erfahren Sie, wie Ihre Anwendung mithilfe von Language Understanding verstehen kann, wenn eine Person Wünsche in ihrer eigenen Sprache äußert.
 metadata:
   ms.topic: landing-page
-  ms.date: 09/19/2019
+  ms.date: 06/15/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -11,13 +11,13 @@ metadata:
   services: cognitive-services
   title: Language Understanding (LUIS) – Dokumentation
   titleSuffix: Azure Cognitive Services
-  description: Mit dem Dienst „Language Understanding“ (LUIS) kann Ihre Anwendung es verstehen, wenn eine Person Wünsche in ihrer eigenen Sprache äußert. Für LUIS wird das maschinelle Lernen genutzt, um Entwicklern das Erstellen von Anwendungen zu ermöglichen, die Benutzereingaben in natürlicher Sprache empfangen und die Bedeutung entschlüsseln können.
-  ms.openlocfilehash: 70249b540e53ab8182a25f81d7401697b2b888c1
-  ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+  description: Mit dem Language Understanding-Dienst (LUIS) kann Ihre Anwendung es verstehen, wenn eine Person Wünsche in ihrer eigenen Sprache äußert. Für LUIS wird das maschinelle Lernen genutzt, um Entwicklern das Erstellen von Anwendungen zu ermöglichen, die Benutzereingaben in natürlicher Sprache empfangen und die Bedeutung entschlüsseln können.
+  ms.openlocfilehash: ff928f1879f8cfd356fa020ff6afaa68b72f63c5
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71155030"
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95019380"
 landingContent:
 - title: Informationen zu Language Understanding (LUIS)
   linkLists:
@@ -25,20 +25,24 @@ landingContent:
     links:
     - text: Was ist Language Understanding?
       url: what-is-luis.md
-    - text: Neuigkeiten
-      url: whats-new.md
     - text: LUIS-Portal
       url: https://www.luis.ai
   - linkListType: concept
     links:
     - text: Planen der App
       url: luis-how-plan-your-app.md
-    - text: Der Dokumenterstellungszyklus Ihrer App
+    - text: Iteratives App-Design
       url: luis-concept-app-iteration.md
+    - text: DevOps-Methoden
+      url: luis-concept-devops-sourcecontrol.md
+  - linkListType: whats-new
+    links:
+    - text: Neuigkeiten
+      url: whats-new.md
   - linkListType: video
     links:
-    - text: 'KI-Roadshow: LUIS'
-      url: https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis
+    - text: 'Ignite 2019: Erweiterte NLU-Modelle (Natural Language Understanding, Verstehen natürlicher Sprache) mit LUIS'
+      url: https://www.youtube.com/watch?v=JdJEV2jV0_Y
 - title: Erstellen von Absichten, Entitäten und Features
   linkLists:
   - linkListType: concept
@@ -47,18 +51,18 @@ landingContent:
       url: luis-concept-intent.md
     - text: Entitäten
       url: luis-concept-entity-types.md
-    - text: Gutes Beispiel für eine Äußerung
+    - text: Äußerungen
       url: luis-concept-utterance.md
-    - text: Features von Begriffslisten
+    - text: Features für Ausdruckslisten
       url: luis-concept-feature.md
   - linkListType: quickstart
     links:
     - text: 'Portal: Erstellen einer neuen LUIS-App'
       url: get-started-portal-build-app.md
     - text: Mit C# SDK
-      url: sdk-python-quickstart-authoring-app.md
+      url: azure-sdk-quickstart.md?pivots=programming-language-csharp
     - text: Mit Python SDK
-      url: sdk-python-quickstart-authoring-app.md
+      url: azure-sdk-quickstart.md?pivots=programming-language-python
   - linkListType: how-to-guide
     links:
     - text: Erstellen einer neuen LUIS-App
@@ -66,7 +70,7 @@ landingContent:
     - text: Hinzufügen einer Absicht mit Beispieläußerungen
       url: luis-how-to-add-intents.md
     - text: Hinzufügen von Entitäten
-      url: luis-how-to-add-example-utterances.md
+      url: ./luis-how-to-add-entities.md
     - text: Hinzufügen eines Begriffslistenfeatures
       url: luis-how-to-add-features.md
 - title: Versionsverwaltung, Training, Test und Veröffentlichung
@@ -74,7 +78,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Versionsverwaltung
-      url: luis-concept-version.md
+      url: ./luis-concept-app-iteration.md
     - text: Interaktives Testen
       url: luis-concept-test.md
     - text: Testen in Batches
@@ -83,40 +87,38 @@ landingContent:
     links:
     - text: 'Portal: App für Vorhersageendpunkt bereitstellen'
       url: get-started-portal-deploy-app.md
-    - text: Mit C# SDK
-      url: sdk-python-quickstart-authoring-app.md#train-the-app
-    - text: Mit Python SDK
-      url: sdk-python-quickstart-authoring-app.md#train-the-app
+    - text: Verwenden des SDK
+      url: azure-sdk-quickstart.md
   - linkListType: how-to-guide
     links:
-    - text: Versionierung Ihrer App
+    - text: Versionen Ihrer App verwalten
       url: luis-how-to-manage-versions.md
-    - text: Interaktives Testen
+    - text: Durchführen von interaktives Tests
       url: luis-interactive-test.md
-    - text: Testen in Batches
+    - text: Durchführen von Batchtests
       url: luis-how-to-batch-test.md
     - text: Trainieren Ihrer App
       url: luis-how-to-train.md
-    - text: Veröffentlichung zur Verwendung des Vorhersageendpunkts
+    - text: Veröffentlichen eines Vorhersageendpunkts
       url: luis-how-to-publish-app.md
 - title: Abrufen der Vorhersage vom Endpunkt
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Mit C# .NET SDK
-      url: sdk-csharp-quickstart-query-prediction-endpoint.md
+    - text: Verwenden des SDK
+      url: azure-sdk-quickstart.md
   - linkListType: quickstart
     links:
     - text: Mit C# und REST
-      url: luis-get-started-cs-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: Mit Go und REST
-      url: luis-get-started-go-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: Mit Java und REST
-      url: luis-get-started-java-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: Mit Node.js und REST
-      url: luis-get-started-node-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: Mit Python und REST
-      url: luis-get-started-python-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
 - title: Verweis
   linkLists:
   - linkListType: reference
@@ -124,7 +126,7 @@ landingContent:
     - text: Entwicklerressourcen
       url: developer-reference-resource.md
     - text: App-Einschränkungen
-      url: luis-boundaries.md
+      url: luis-limits.md
     - text: Vordefinierte Entitäten
       url: luis-reference-prebuilt-entities.md
     - text: Benutzerdefinierte Entitäten
@@ -135,9 +137,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
     - text: Problembehandlung
       url: troubleshooting.md
-    - text: Stellen von Fragen zu Stack Overflow
-      url: https://stackoverflow.com/questions/tagged/LUIS
-    - text: Einflussnahme auf den Dienst mit UserVoice
-      url: https://cognitive.uservoice.com/forums/551524-luis

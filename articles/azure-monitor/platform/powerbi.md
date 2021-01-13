@@ -1,24 +1,17 @@
 ---
 title: Importieren von Log Analytics-Daten in Power BI | Microsoft Dokumentation
 description: Power BI ist ein cloudbasierter Business Analytics-Dienst von Microsoft, der umfassende Visualisierungen und Berichte zur Analyse verschiedener Datensätze bietet.  In diesem Artikel wird beschrieben, wie Log Analytics-Daten konfiguriert und in Power BI importiert werden und wie die automatische Aktualisierung konfiguriert wird.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 83edc411-6886-4de1-aadd-33982147b9c3
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/01/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 0b1627306f1a8e9d9285c72118bfebdcb53d369b
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.date: 05/01/2019
+ms.openlocfilehash: 53277f64c3d1b03572732157756da1fececbcd43
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626120"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184568"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importieren von Azure Monitor-Protokolldaten in Power BI
 
@@ -28,14 +21,14 @@ ms.locfileid: "67626120"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="overview"></a>Übersicht
-Zum Importieren von Daten aus einem [Log Analytics-Arbeitsbereich](manage-access.md) in Azure Monitor in Power BI erstellen Sie in Power BI basierend auf einer [Protokollabfrage](../log-query/log-query-overview.md) in Azure Monitor ein Dataset.  Die Abfrage wird bei jeder Aktualisierung des Datasets ausgeführt.  Sie können dann Power BI-Berichte erstellen, die Daten aus dem Dataset verwenden.  Zum Erstellen des Datasets in Power BI exportieren Sie Ihre Abfrage aus Log Analytics in die [Power Query-Sprache (M) ](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification).  Diese verwenden Sie dann zum Erstellen einer Abfrage in Power BI Desktop, die Sie anschließend als Dataset in Power BI veröffentlichen.  Die Details für diesen Prozess werden nachfolgend beschrieben.
+Zum Importieren von Daten aus einem [Log Analytics-Arbeitsbereich](manage-access.md) in Azure Monitor in Power BI erstellen Sie in Power BI basierend auf einer [Protokollabfrage](../log-query/log-query-overview.md) in Azure Monitor ein Dataset.  Die Abfrage wird bei jeder Aktualisierung des Datasets ausgeführt.  Sie können dann Power BI-Berichte erstellen, die Daten aus dem Dataset verwenden.  Zum Erstellen des Datasets in Power BI exportieren Sie Ihre Abfrage aus Log Analytics in die [Power Query-Sprache (M) ](/powerquery-m/power-query-m-language-specification).  Diese verwenden Sie dann zum Erstellen einer Abfrage in Power BI Desktop, die Sie anschließend als Dataset in Power BI veröffentlichen.  Die Details für diesen Prozess werden nachfolgend beschrieben.
 
 ![Von Log Analytics nach Power BI](media/powerbi/overview.png)
 
 ## <a name="export-query"></a>Exportieren einer Abfrage
-Erstellen Sie zunächst eine [Protokollabfrage](../log-query/log-query-overview.md), die die Daten zurückgibt, mit denen das Power BI-Dataset aufgefüllt werden soll.  Anschließend exportieren Sie die Abfrage in der [Power Query-Sprache (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification), die von Power BI Desktop verwendet werden kann.
+Erstellen Sie zunächst eine [Protokollabfrage](../log-query/log-query-overview.md), die die Daten zurückgibt, mit denen das Power BI-Dataset aufgefüllt werden soll.  Anschließend exportieren Sie die Abfrage in der [Power Query-Sprache (M)](/powerquery-m/power-query-m-language-specification), die von Power BI Desktop verwendet werden kann.
 
-1. [Erstellen Sie die Protokollabfrage in Log Analytics](../log-query/get-started-portal.md) zum Extrahieren der Daten für das Dataset.
+1. [Erstellen Sie die Protokollabfrage in Log Analytics](../log-query/log-analytics-tutorial.md) zum Extrahieren der Daten für das Dataset.
 2. Wählen Sie **Exportieren** > **Power BI Query (M)** (Power BI-Abfrage (M)) aus.  Damit wird die Abfrage in eine Textdatei mit dem Namen **PowerBIQuery.txt** exportiert. 
 
     ![Exportieren einer Protokollsuche](media/powerbi/export-analytics.png)
@@ -60,7 +53,7 @@ Power BI Desktop ist eine Desktopanwendung, die Ihnen das Erstellen von Datasets
 ## <a name="publish-to-power-bi"></a>Veröffentlichen in Power BI
 Wenn Sie in Power BI veröffentlichen, werden ein Dataset und ein Bericht erstellt.  Wenn Sie einen Bericht in Power BI Desktop erstellen, wird dieser mit Ihren Daten veröffentlicht.  Wenn nicht, wird ein leerer Bericht erstellt.  Sie können den Bericht in Power BI ändern oder einen neuen auf Basis des Datasets erstellen.
 
-1. Erstellen Sie einen Bericht auf Basis Ihrer Daten.  Wenn Sie mit Power BI Desktop nicht vertraut sind, lesen Sie in der [Dokumentation](https://docs.microsoft.com/power-bi/desktop-report-view) dazu nach.  
+1. Erstellen Sie einen Bericht auf Basis Ihrer Daten.  Wenn Sie mit Power BI Desktop nicht vertraut sind, lesen Sie in der [Dokumentation](/power-bi/desktop-report-view) dazu nach.  
 1. Wenn bereit sind, ihn an Power BI zu senden, klicken Sie auf **Veröffentlichen**.  
 1. Wählen Sie ein Ziel in Ihrem Power BI-Konto aus, wenn Sie dazu aufgefordert werden.  Sofern Sie kein bestimmtes Ziel verwenden möchten, verwenden Sie **Mein Arbeitsbereich**.
 

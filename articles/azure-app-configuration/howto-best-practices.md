@@ -1,23 +1,22 @@
 ---
 title: Bewährte Methoden für Azure App Configuration | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Azure App Configuration optimal verwenden.
+description: Hier erfahren Sie mehr über bewährte Methoden bei der Verwendung von Azure App Configuration. Zu den behandelten Themen gehören Schlüsselgruppierungen, Schlüssel-Wert-Kompositionen, App Configuration-Bootstraps und viele mehr.
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: 3d9a597e7ced631627a121f3f0757e472f9a4bae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: alkemper
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 038d19270fbdb672d397eb2bd56bd27e17ea7af9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393586"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929088"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Bewährte Methoden für Azure App Configuration
 
@@ -51,10 +50,12 @@ In Ihrem Code rufen Sie zuerst die Schlüsselwerte ohne Bezeichnungen ab, und da
 // Pull the connection string from an environment variable
 configBuilder.AddAzureAppConfiguration(options => {
     options.Connect(configuration["connection_string"])
-           .Use(KeyFilter.Any, LabelFilter.Null)
-           .Use(KeyFilter.Any, "Development");
+           .Select(KeyFilter.Any, LabelFilter.Null)
+           .Select(KeyFilter.Any, "Development");
 });
 ```
+
+Unter [Verwenden von Bezeichnungen zum Aktivieren verschiedener Konfigurationen für verschiedene Umgebungen](./howto-labels-aspnet-core.md) finden Sie ein vollständiges Beispiel.
 
 ## <a name="app-configuration-bootstrap"></a>App Configuration-Bootstrapping
 
@@ -67,9 +68,27 @@ Eine bessere Option ist die Verwendung des Features für verwaltete Identitäten
 Sie können Web-Apps oder Funktionen mit einer der folgenden Methoden Zugriff auf App Configuration gewähren:
 
 * Geben Sie über das Azure-Portal in den Anwendungseinstellungen von App Service die Verbindungszeichenfolge zu Ihrem App Configuration-Speicher ein.
-* Speichern Sie die Verbindungszeichenfolge zu Ihrem App Configuration-Speicher in Key Vault, und [verweisen Sie über App Service darauf](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
+* Speichern Sie die Verbindungszeichenfolge zu Ihrem App Configuration-Speicher in Key Vault, und [verweisen Sie über App Service darauf](../app-service/app-service-key-vault-references.md).
 * Verwenden Sie verwaltete Azure-Identitäten für den Zugriff auf den App Configuration-Speicher. Weitere Informationen finden Sie unter [Integrieren mit verwalteten Azure-Identitäten](howto-integrate-azure-managed-service-identity.md).
 * Übertragen Sie die Konfiguration aus App Configuration per Push an App Service. App Configuration bietet (im Azure-Portal und in der Azure-Befehlszeilenschnittstelle) eine Exportfunktion, die Daten direkt an App Service sendet. Bei dieser Methode müssen Sie den Anwendungscode gar nicht ändern.
+
+## <a name="reduce-requests-made-to-app-configuration"></a>Verringern der Anzahl der Anforderungen an die App-Konfiguration
+
+Übermäßige Anforderungen an die App-Konfiguration können zur Drosselung oder zu Überschreitungsgebühren führen. So verringern Sie die Anzahl der gesendeten Anforderungen
+
+* Erhöhen Sie das Aktualisierungstimeout, insbesondere wenn sich Ihre Konfigurationswerte nicht häufig ändern. Geben Sie ein neues Aktualisierungstimeout mithilfe der [`SetCacheExpiration`-Methode](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration) an.
+
+* Überwachen Sie eher einen einzelnen *Sentinel-Schlüssel*, anstatt einzelne Schlüssel zu überwachen. Aktualisieren Sie alle Konfigurationen nur, wenn sich der Sentinel-Schlüssel ändert. Ein Beispiel finden Sie unter [Verwenden der dynamischen Konfiguration in einer ASP.NET Core-App](enable-dynamic-configuration-aspnet-core.md).
+
+* Verwenden Sie Azure Event Grid, um Benachrichtigungen zu empfangen, wenn sich die Konfiguration ändert, anstatt ständig Änderungen abzufragen. Weitere Informationen finden Sie unter [Weiterleiten von Azure App Configuration-Ereignissen an einen Webendpunkt](./howto-app-configuration-event.md).
+
+## <a name="importing-configuration-data-into-app-configuration"></a>Importieren von Konfigurationsdaten in App Configuration
+
+App Configuration bietet die Möglichkeit, Ihre Konfigurationseinstellungen aus Ihren aktuellen Konfigurationsdateien massenhaft zu [importieren](./howto-import-export-data.md), entweder über das Azure-Portal oder mithilfe der CLI. Sie können auch dieselben Optionen verwenden, um Werte aus App Configuration zu exportieren, z. B. zwischen verwandten Stores. Wenn Sie eine fortlaufende Synchronisierung mit Ihrem GitHub-Repository einrichten möchten, können Sie unsere [GitHub-Aktion](./concept-github-action.md) verwenden, damit Sie Ihre vorhandenen Quellcodeverwaltungs-Verfahren weiterhin nutzen können und gleichzeitig die Vorteile von App Configuration genießen.
+
+## <a name="multi-region-deployment-in-app-configuration"></a>Bereitstellung in mehreren Regionen in App Configuration
+
+App Configuration ist ein regionaler Dienst. Bei Anwendungen mit unterschiedlichen Konfigurationen pro Region kann das Speichern dieser Konfigurationen in einer Instanz zu einem Single Point of Failure führen. Die Bereitstellung einer App Configuration-Instanz pro Region über mehrere Regionen hinweg ist unter Umständen die bessere Option. Dies kann bei der regionalen Notfallwiederherstellung, zur Sicherstellung der Leistung und bei der Erstellung von Sicherheitssilos hilfreich sein. Durch die Konfiguration nach Region wird auch die Wartezeit verkürzt, und es werden getrennte Drosselungskontingente verwendet, da die Drosselung pro Instanz erfolgt. Zur Anwendung von Notfallwiederherstellungsmaßnahmen können Sie [mehrere Konfigurationsspeicher](./concept-disaster-recovery.md) verwenden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

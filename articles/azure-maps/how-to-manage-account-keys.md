@@ -1,19 +1,19 @@
 ---
-title: Verwalten Ihres Azure Maps-Kontos | Microsoft-Dokumentation
-description: Sie können das Azure-Portal verwenden, um Ihr Azure Maps-Konto zu verwalten.
-author: walsehgal
-ms.author: v-musehg
-ms.date: 02/14/2019
-ms.topic: conceptual
+title: Verwalten des Azure Maps-Kontos im Azure-Portal | Microsoft Azure Maps
+description: Lernen Sie, wie Sie das Azure-Portal verwenden können, um ein Azure Maps-Konto zu verwalten. Erfahren Sie, wie Sie ein neues Konto erstellen und ein vorhandenes Konto löschen.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 01/27/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2871a4a0efaa40d20148ede7f0402a0dd874126c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c618e8193bed1f35cbbe884d5725c4ecfb25dd75
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957315"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013087"
 ---
 # <a name="manage-your-azure-maps-account"></a>Verwalten Ihres Azure Maps-Kontos
 
@@ -31,19 +31,19 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 4. Geben Sie die Informationen für Ihr neues Konto ein.
 
-![Eingeben von Kontoinformationen im Portal](./media/how-to-manage-account-keys/new-account-portal.png)
+[![Eingeben von Azure Maps-Kontoinformationen im Azure-Portal](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
 
 ## <a name="delete-an-account"></a>Löschen eines Kontos
 
 Sie können ein Konto im Azure-Portal löschen. Navigieren Sie zur Seite mit der Kontoübersicht, und klicken Sie auf **Löschen**.
 
-![Löschen des Kontos im Portal](./media/how-to-manage-account-keys/account-delete-portal.png)
+[![Löschen eines Azure Maps-Kontos im Azure-Portal](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
 
 Eine Bestätigungsseite wird angezeigt. Sie können das Löschen Ihres Kontos bestätigen, indem Sie dessen Namen eingeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Einrichten der Authentifizierung bei Azure Maps:
+Richten Sie die Authentifizierung mit Azure Maps ein, und erfahren Sie, wie Sie einen Azure Maps-Abonnementschlüssel erhalten:
 > [!div class="nextstepaction"]
 > [Verwalten der Authentifizierung](how-to-manage-authentication.md)
 

@@ -1,24 +1,17 @@
 ---
 title: Optimieren Ihrer SQL Server-Umgebung mit Azure Monitor | Microsoft-Dokumentation
 description: Mit Azure Monitor können Sie die SQL-Integritätsüberprüfung-Lösung verwenden, um die Risiken und die Integrität Ihrer Umgebungen in regelmäßigen Abständen zu bewerten.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/28/2019
-ms.author: magoedte
-ms.openlocfilehash: 94b23bc29c3c986e6a0cd74e0805b5d47ce35849
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+author: bwren
+ms.author: bwren
+ms.date: 05/05/2020
+ms.openlocfilehash: 98caca31e172f54c3e37f33c5a463790d9d27032
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62120630"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87325983"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimieren der SQL-Umgebung mit der SQL Server-Integritätsüberprüfung-Lösung in Azure Monitor
 
@@ -40,9 +33,9 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Bewertung durchgeführt wurd
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Für die SQL-Integritätsüberprüfung-Lösung muss eine unterstützte Version von .NET Framework 4 auf jedem Computer installiert sein, auf dem der Microsoft Monitoring Agent (MMA) installiert ist.  Der MMA-Agent wird von System Center 2016 – Operations Manager und Operations Manager 2012 R2 sowie Azure Monitor verwendet.  
-* Die Lösung unterstützt SQL Server Version 2012, 2014 und 2016.
-* Ein Log Analytics-Arbeitsbereich zum Hinzufügen der SQL-Integritätsüberprüfung-Lösung aus dem Azure Marketplace in das Azure-Portal.  Zum Installieren der Lösung müssen Sie ein Administrator oder Mitwirkender des Azure-Abonnements sein.
+* Für die SQL-Integritätsüberprüfung-Lösung muss eine unterstützte Version von .NET Framework 4.6.2 auf jedem Computer installiert sein, auf dem der Microsoft Monitoring Agent (MMA) installiert ist.  Der MMA-Agent wird von System Center 2016 – Operations Manager und Operations Manager 2012 R2 sowie Azure Monitor verwendet.  
+* Die Lösung unterstützt SQL Server Version 2012, 2014, 2016, 2017 und 2019.
+* Ein Log Analytics-Arbeitsbereich zum Hinzufügen der SQL-Integritätsüberprüfung-Lösung aus dem Azure Marketplace in das Azure-Portal. Zum Installieren der Lösung müssen Sie ein Administrator oder Mitwirkender des Azure-Abonnements sein.
 
   > [!NOTE]
   > Nachdem Sie die Lösung hinzugefügt haben, wird die Datei AdvisorAssessment.exe den Servern mit Agents hinzugefügt. Konfigurationsdaten werden gelesen und dann zur Verarbeitung an Azure Monitor in der Cloud gesendet. Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf.
@@ -51,9 +44,9 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Bewertung durchgeführt wurd
 
 Um die Integritätsüberprüfung für Ihre SQL Server auszuführen, sind ein Agent und Konnektivität mit Azure Monitor mithilfe einer der folgenden unterstützten Methoden erforderlich:
 
-1. Installieren Sie den [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md), wenn der Server nicht bereits durch System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird.
+1. Installieren Sie den [Microsoft Monitoring Agent (MMA)](../platform/agent-windows.md), wenn der Server nicht bereits durch System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird.
 2. Wenn er mit System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird, und die Verwaltungsgruppe nicht in Azure Monitor integriert ist, kann der Server mit Log Analytics mehrfach vernetzt werden, um Daten zu sammeln und an den Dienst weiterzuleiten, wobei er weiterhin von Operations Manager überwacht wird.  
-3. Wenn Ihre Operations Manager-Verwaltungsgruppe andernfalls in den Dienst integriert ist, müssen Sie die Domänencontroller für die Datensammlung durch den Dienst hinzufügen, indem Sie die Schritte unter [Herstellen einer Verbindung zwischen Operations Manager und OMS](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) nach der Aktivierung der Lösung in Ihrem Arbeitsbereich ausführen.  
+3. Wenn Ihre Operations Manager-Verwaltungsgruppe andernfalls in den Dienst integriert ist, müssen Sie die Domänencontroller für die Datensammlung durch den Dienst hinzufügen, indem Sie die Schritte unter [Herstellen einer Verbindung zwischen Operations Manager und OMS](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor) nach der Aktivierung der Lösung in Ihrem Arbeitsbereich ausführen.  
 
 Der Agent auf Ihrem SQL Server, der Berichte an die Operations Manager-Verwaltungsgruppe sendet, sammelt Daten, leitet sie an seinen zugewiesenen Verwaltungsserver weiter, und dann werden sie direkt von einem Verwaltungsserver an Azure Monitor gesendet.  Die Daten werden nicht in die Operations Manager-Datenbanken geschrieben.  
 
@@ -62,7 +55,7 @@ Wenn die SQL Server-Instanz von Operations Manager überwacht wird, müssen Sie 
 ## <a name="sql-health-check-data-collection-details"></a>SQL-Integritätsüberprüfung – Datensammlungsdetails
 Die SQL-Integritätsüberprüfung sammelt mithilfe des von Ihnen aktivierten Agent Daten aus den folgenden Quellen:
 
-* Windows-Verwaltungsinstrumentation (WMI)
+* Windows-Verwaltungsinstrumentation (WMI, Windows Management Instrumentation)
 * Registrierung
 * Leistungsindikatoren
 * Anzeigen der Ergebnisse der dynamischen SQL Server-Verwaltung
@@ -202,6 +195,19 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 3. Wenn Sie sich später dazu entscheiden, die ignorierten Empfehlungen anzuzeigen, entfernen Sie alle IgnoreRecommendations.txt-Dateien, oder entfernen Sie einzelne RecommendationIDs aus den Dateien.
 
 ## <a name="sql-health-check-solution-faq"></a>SQL-Integritätsüberprüfung-Lösung – häufig gestellte Fragen
+
+*Welche Überprüfungen werden von der SQL-Bewertungslösung durchgeführt?*
+
+* Die folgende Abfrage zeigt eine Beschreibung aller Überprüfungen, die derzeit ausgeführt werden:
+
+```Kusto
+SQLAssessmentRecommendation
+| distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
+| sort by FocusArea,ActionArea, Recommendation
+```
+Die Ergebnisse können dann zur weiteren Prüfung in Excel exportiert werden.
+
+
 *Wie oft wird eine Integritätsüberprüfung ausgeführt?*
 
 * Die Überprüfung wird alle sieben Tage ausgeführt.
@@ -252,3 +258,4 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Lesen Sie den Artikel zu [Protokollabfragen](../log-query/log-query-overview.md), um zu erfahren, wie Sie detaillierte Daten und Empfehlungen der SQL-Integritätsüberprüfung analysieren.
+

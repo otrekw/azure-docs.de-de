@@ -14,24 +14,28 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 2baa82bda1f92fe81bb0db69b84e6865b2709e42
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 8ed567ee20835cfe076c9b06234f2cba23f3a8bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058037"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002557"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Problembehandlung von Problemen bei der Bereitstellung von virtuellen Windows-Computern in Azure
 
 Um Bereitstellungsprobleme virtueller Computer (VMs) in Azure zu behandeln, sehen Sie sich die [wichtigsten Probleme](#top-issues) für häufige Fehler und die Lösungen dazu an.
 
-Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)Fragen stellen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)Fragen stellen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten** aus.
 
 ## <a name="top-issues"></a>Häufigste Probleme
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Der Cluster unterstützt nicht die angeforderte Größe des virtuellen Computers.
-\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
+\<properties
+supportTopicIds="123456789"
+resourceTags="windows"
+productPesIds="1234, 5678"
+/>
 - Wiederholen Sie die Anforderung mit einer geringeren Größe des virtuellen Computers.
 - Wenn die Größe des angeforderten virtuellen Computers nicht geändert werden kann:
     - Beenden Sie alle virtuellen Computer in der Verfügbarkeitsgruppe. Klicken Sie auf **Ressourcengruppen** > Ihre Ressourcengruppe > **Ressourcen** > Ihre Verfügbarkeitsgruppe > **virtuelle Computer** > Ihr virtueller Computer > **Beenden**.
@@ -40,7 +44,11 @@ Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötig
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>Der Cluster besitzt keine freien Ressourcen.
-\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
+\<properties
+supportTopicIds="123456789"
+resourceTags="windows"
+productPesIds="1234, 5678"
+/>
 - Versuchen Sie die Anforderung später erneut.
 - Wenn der neue virtuelle Computer Teil einer anderen Verfügbarkeitsgruppe sein kann
     - Erstellen Sie einen virtuellen Computer in einer anderen Verfügbarkeitsgruppe (in derselben Region).
@@ -70,7 +78,7 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 
  - [Hybridnutzungsvorteil von Azure für Windows Server und Windows-Client](../windows/hybrid-use-benefit-licensing.md)
 
- - [Wie kann ich den Hybridnutzungsvorteil in Azure verwenden](https://blogs.msdn.microsoft.com/azureedu/2016/04/13/how-can-i-use-the-hybrid-use-benefit-in-azure)
+ - [Wie kann ich den Hybridnutzungsvorteil in Azure verwenden](/archive/blogs/azureedu/how-can-i-use-the-hybrid-use-benefit-in-azure)
 
 ## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>Wie aktiviere ich mein monatliches Guthaben für Visual Studio Enterprise (BizSpark)
 
@@ -82,13 +90,13 @@ Die Möglichkeit zum Erstellen von Abonnements basierend auf dem Enterprise Dev/
 
 ## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Die Treiber für meine Windows-VM der N-Serie fehlen.
 
-Die Treiber für virtuelle Windows-basierten Computer befinden sich [hier](../windows/n-series-driver-setup.md).
+Anleitungen zum Installieren der Treiber für Windows-basierte VMs finden Sie [hier](../sizes-gpu.md#supported-operating-systems-and-drivers).
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Ich kann keine GPU-Instanz in meiner VM der N-Serie finden
 
-Nach der Bereitstellung müssen Sie auf jedem virtuellen Computer NVIDIA-Grafiktreiber installieren, um die GPU-Funktionen von virtuellen Azure-Computern der N-Serie mit Windows Server 2016 oder Windows Server 2012 R2 nutzen zu können. Informationen zur Einrichtung von Treibern stehen für [Windows-VMs](../windows/n-series-driver-setup.md) und [Linux-VMs](../linux/n-series-driver-setup.md) zur Verfügung.
+Nach der Bereitstellung müssen Sie auf jeder VM Grafiktreiber installieren, um die GPU-Funktionen von Azure-VMs der N-Serie nutzen zu können. Informationen zur Treibereinrichtung sind [hier](../sizes-gpu.md#supported-operating-systems-and-drivers) verfügbar.
 
-## <a name="is-n-series-vms-available-in-my-region"></a>Sind VMs der N-Serie in meiner Region verfügbar?
+## <a name="are-n-series-vms-available-in-my-region"></a>Stehen VMs der N-Serie in meiner Region zur Verfügung?
 
 Informationen zur Verfügbarkeit finden Sie in der [Tabelle verfügbarer Produkte nach Region](https://azure.microsoft.com/regions/services), und Informationen zu Preisen finden Sie [hier](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series).
 
@@ -107,6 +115,8 @@ Wenn eine VM ausgeführt wird, wird Sie auf einem physischen Server bereitgestel
 
 - Für VMs, die im klassischen Bereitstellungsmodell bereitgestellt werden, muss die Clouddienstbereitstellung entfernt werden und erneut bereitgestellt werden, um die Größe der VMs in eine andere Größenfamilie zu ändern.
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 - Für die im Resource Manager-Bereitstellungsmodell bereitgestellten virtuellen Computer müssen Sie alle VMs in der Verfügbarkeitsgruppe anhalten, bevor Sie die Größe einer VM in der Verfügbarkeitsgruppe ändern.
 
 ## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>Die aufgelistete Größe des virtuellen Computers wird bei der Bereitstellung in der Verfügbarkeitsgruppe nicht unterstützt.
@@ -121,4 +131,4 @@ Ja. Sie können einen vorhandenen klassischen virtuellen Computer in eine neue o
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)Fragen stellen.
 
-Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten** aus.

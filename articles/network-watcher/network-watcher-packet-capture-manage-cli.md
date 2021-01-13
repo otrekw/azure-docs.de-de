@@ -3,28 +3,26 @@ title: Verwalten von Paketerfassungen mit Azure Network Watcher – Azure CLI | 
 description: Auf dieser Seite wird erläutert, wie das Network Watcher-Feature zur Paketerfassung mithilfe der Azure-Befehlszeilenschnittstelle verwaltet wird.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: cb0c1d10-f7f2-4c34-b08c-f73452430be8
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 7e6b1d77d002b8c1ed32a4e7adbdd1a46cf65668
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 6e5f2a519564716d426c50bb9cc8dd245774321e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687084"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966495"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe der Azure-Befehlszeilenschnittstelle
 
 > [!div class="op_single_selector"]
-> - [Azure-Portal](network-watcher-packet-capture-manage-portal.md)
+> - [Azure portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure-Befehlszeilenschnittstelle](network-watcher-packet-capture-manage-cli.md)
 > - [Azure-REST-API](network-watcher-packet-capture-manage-rest.md)
@@ -45,35 +43,43 @@ Dieser Artikel führt Sie durch die verschiedenen Verwaltungsaufgaben, die derze
 In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Ressourcen verfügen:
 
 - Eine Instanz von Network Watcher in der Region, in der Sie eine Paketerfassung erstellen möchten
-- Ein virtueller Computer mit aktivierter Paketerfassungserweiterung
+- Einen virtuellen Computer mit aktivierter Paketerfassungserweiterung
 
 > [!IMPORTANT]
-> Für die Paketerfassung muss ein Agent auf dem virtuellen Computer ausgeführt werden. Der Agent wird als Erweiterung installiert. Anweisungen zu VM-Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Computer](../virtual-machines/windows/extensions-features.md).
+> Für die Paketerfassung muss ein Agent auf dem virtuellen Computer ausgeführt werden. Der Agent wird als Erweiterung installiert. Anweisungen zu VM-Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Computer](../virtual-machines/extensions/features-windows.md).
 
 ## <a name="install-vm-extension"></a>Installieren der VM-Erweiterung
 
 ### <a name="step-1"></a>Schritt 1
 
-Führen Sie das Cmdlet `az vm extension set` aus, um den Paketerfassungs-Agent auf dem virtuellen Gastcomputer zu installieren.
+Führen Sie den Befehl `az vm extension set` aus, um den Paketerfassungs-Agent auf dem virtuellen Gastcomputer zu installieren.
 
 Für virtuelle Windows-Computer:
 
-```azurecli
+```azurecli-interactive
 az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentWindows --version 1.4
 ```
 
 Für virtuelle Linux-Computer:
 
-```azurecli
-az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
+```azurecli-interactive
+az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux --version 1.4
 ```
 
 ### <a name="step-2"></a>Schritt 2
 
-Um sicherzustellen, dass der Agent installiert ist, führen Sie das Cmdlet `vm extension show` aus, und geben Sie die Ressourcengruppe und den Namen des virtuellen Computers an. Überprüfen Sie die Ergebnisliste, um sicherzustellen, dass der Agent installiert ist.
+Um sicherzustellen, dass der Agent installiert ist, führen Sie den Befehl `vm extension show` aus, und geben Sie die Ressourcengruppe und den Namen des virtuellen Computers an. Überprüfen Sie die Ergebnisliste, um sicherzustellen, dass der Agent installiert ist.
 
-```azurecli
+Für virtuelle Windows-Computer:
+
+```azurecli-interactive
 az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
+```
+
+Für virtuelle Linux-Computer:
+
+```azurecli-interactive
+az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name AzureNetworkWatcherExtension
 ```
 
 Das folgende Beispiel zeigt die Antwort nach der Ausführung von `az vm extension show`.
@@ -104,29 +110,21 @@ Nachdem Sie die vorherigen Schritte abgeschlossen haben, wird der Paketerfassung
 
 ### <a name="step-1"></a>Schritt 1
 
-Der nächste Schritt besteht im Abrufen der Network Watcher-Instanz. Der Name des Network Watchers wird in Schritt 4 an das Cmdlet `az network watcher show` übergeben.
+Erstellen Sie ein Speicherkonto. Dieses Speicherkonto wird verwendet, um die Paketerfassungsdatei zu speichern.
 
-```azurecli
-az network watcher show --resource-group resourceGroup --name networkWatcherName
+```azurecli-interactive
+az storage account list
 ```
 
 ### <a name="step-2"></a>Schritt 2
 
-Erstellen Sie ein Speicherkonto. Dieses Speicherkonto wird verwendet, um die Paketerfassungsdatei zu speichern.
+An diesem Punkt können Sie eine Paketerfassung erstellen.  Lassen Sie uns zunächst die Parameter untersuchen, die Sie möglicherweise konfigurieren möchten. Filter gehören zu den Parametern, die zur Einschränkung der Daten, die bei der Paketerfassung gespeichert werden, verwendet werden können. Im folgenden Beispiel wird eine Paketerfassung mit mehreren Filtern eingerichtet.  Die ersten drei Filter erfassen nur ausgehenden TCP-Datenverkehr von der lokalen IP-Adresse 10.0.0.3 an die Zielports 20, 80 und 443.  Mit dem letzten Filter wird nur UDP-Datenverkehr erfasst.
 
-```azurecli
-azure storage account list
-```
-
-### <a name="step-3"></a>Schritt 3
-
-Mithilfe von Filtern können die von der Paketerfassung gespeicherten Daten eingeschränkt werden. Im folgenden Beispiel wird eine Paketerfassung mit mehreren Filtern eingerichtet.  Die ersten drei Filter erfassen nur ausgehenden TCP-Datenverkehr von der lokalen IP-Adresse 10.0.0.3 an die Zielports 20, 80 und 443.  Mit dem letzten Filter wird nur UDP-Datenverkehr erfasst.
-
-```azurecli
+```azurecli-interactive
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-Das folgende Beispiel zeigt die erwartete Ausgabe nach Ausführen des Cmdlets `az network watcher packet-capture create`.
+Das folgende Beispiel zeigt die erwartete Ausgabe nach Ausführen des Befehls `az network watcher packet-capture create`.
 
 ```json
 {
@@ -181,43 +179,43 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>Abrufen einer Paketerfassung
 
-Durch Ausführen des Cmdlets `az network watcher packet-capture show-status` wird der Status einer zurzeit durchgeführten oder abgeschlossenen Paketerfassung abgerufen.
+Durch Ausführen des Befehls `az network watcher packet-capture show-status` wird der Status einer zurzeit durchgeführten oder abgeschlossenen Paketerfassung abgerufen.
 
-```azurecli
+```azurecli-interactive
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-Das folgende Beispiel zeigt die Ausgabe des Cmdlets `az network watcher packet-capture show-status`. Das folgende Beispiel zeigt die angehaltene Erfassung, wobei „TimeExceeded“ für „StopReason“ angegeben ist. 
+Das folgende Beispiel zeigt die Ausgabe des Befehls `az network watcher packet-capture show-status`. Das folgende Beispiel zeigt die angehaltene Erfassung, wobei „TimeExceeded“ für „StopReason“ angegeben ist.
 
 ```
 {
   "additionalProperties": {
     "status": "Succeeded"
   },
-  "captureStartTime": "2016-12-06T17:20:01.5671279Z",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/pa
+  "captureStartTime": "2016-12-06T17:20:01.5671279Z",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/pa
 cketCaptures/packetCaptureName",
-  "name": "packetCaptureName",
+  "name": "packetCaptureName",
   "packetCaptureError": [],
-  "packetCaptureStatus": "Stopped",
-  "stopReason": "TimeExceeded"
+  "packetCaptureStatus": "Stopped",
+  "stopReason": "TimeExceeded"
 }
 ```
 
 ## <a name="stop-a-packet-capture"></a>Beenden einer Paketerfassung
 
-Durch Ausführen des Cmdlets `az network watcher packet-capture stop` wird eine Sitzung, die ggf. gerade ausgeführt wird, beendet.
+Durch Ausführen des Befehls `az network watcher packet-capture stop` wird eine Sitzung, die ggf. gerade ausgeführt wird, beendet.
 
-```azurecli
+```azurecli-interactive
 az network watcher packet-capture stop --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
-> Das Cmdlet gibt keine Antwort zurück, wenn es für eine aktuell ausgeführte Erfassungssitzung oder eine vorhandene Sitzung ausgeführt wird, die bereits beendet wurde.
+> Der Befehl gibt keine Antwort zurück, wenn es für eine aktuell ausgeführte Erfassungssitzung oder eine vorhandene Sitzung ausgeführt wird, die bereits beendet wurde.
 
 ## <a name="delete-a-packet-capture"></a>Löschen einer Paketerfassung
 
-```azurecli
+```azurecli-interactive
 az network watcher packet-capture delete --name packetCaptureName --location westcentralus
 ```
 

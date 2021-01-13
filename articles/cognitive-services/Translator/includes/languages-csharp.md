@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a7715577936b0e95392f2d561e4b492b20c9dbf5
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9a69c0b7f204fb07e6d4ec94e8a2cecb0a404735
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906947"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921364"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -241,7 +242,7 @@ Entfernen Sie unbedingt alle vertraulichen Informationen wie etwa Abonnementschl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die API-Referenz an, um zu erfahren, welche Möglichkeiten die Textübersetzungs-API bietet.
+Machen Sie sich anhand der API-Referenz mit den Möglichkeiten von Translator vertraut.
 
 > [!div class="nextstepaction"]
 > [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

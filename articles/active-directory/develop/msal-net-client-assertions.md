@@ -1,30 +1,27 @@
 ---
-title: Client-Assertionen in der Microsoft Authentication Library für .NET | Azure
+title: Clientassertionen (MSAL.NET) | Azure
+titleSuffix: Microsoft identity platform
 description: Hier erfahren Sie mehr über signierte Client-Assertionen für vertrauliche Clientanwendungen in der Microsoft Authentication Library für .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 9/30/2020
 ms.author: jmprieur
-ms.reviewer: ''
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1ea75499334f3f6eb2f5d3c15526067fcef4eb8
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.reviewer: saeeda
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: bb1ce0a8ba568dc651accdc5f8c84e9c2c980e73
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442506"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91612811"
 ---
 # <a name="confidential-client-assertions"></a>Assertionen für vertrauliche Clients
+
 Um ihre Identität nachzuweisen, tauschen vertrauliche Clientanwendungen einen geheimen Schlüssel mit Azure AD aus. Folgende geheime Schlüssel sind möglich:
 - Ein geheimer Clientschlüssel (Anwendungskennwort)
 - Ein Zertifikat, mit dem eine signierte Assertion erstellt wird, die Standardansprüche enthält
@@ -37,37 +34,40 @@ MSAL.NET verfügt über vier Methoden, um für die vertrauliche Client-App Anmel
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
+> [!NOTE]
+> Obwohl es möglich ist, die `WithClientAssertion()`-API zum Abrufen von Token für den vertraulichen Client zu verwenden, empfiehlt es sich nicht, diese Methode standardmäßig zu verwenden, da sie komplexer ist und für sehr spezifische Szenarios konzipiert ist, die nicht häufig vorkommen. Die Verwendung der `.WithCertificate()`-API ermöglicht es MSAL.NET, dies für Sie zu verarbeiten. Diese API bietet Ihnen die Möglichkeit, Ihre Authentifizierungsanforderung bei Bedarf anzupassen, doch die von `.WithCertificate()` erstellte Standardassertion reicht für die meisten Authentifizierungsszenarien aus. Diese API kann auch als Problemumgehung in einigen Szenarien verwendet werden, in denen MSAL.NET den Signaturvorgang nicht intern ausführen kann.
+
 ### <a name="signed-assertions"></a>Signierte Assertionen
 
 Eine signierte Client Assertion hat die Form eines signierten, Base64-codierten JWT mit der Nutzlast, die die erforderlichen Authentifizierungsansprüche enthält, die von Azure AD vorgeschrieben sind. Gehen Sie zur Verwendung wie folgt vor:
 
-```CSharp
+```csharp
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(signedClientAssertion)
                                           .Build();
 ```
 
-Von Azure AD werden folgende Ansprüche erwartet:
+[Von Azure AD werden die folgenden Ansprüche erwartet](active-directory-certificate-credentials.md):
 
-Anspruchstyp | Wert | BESCHREIBUNG
+Anspruchstyp | value | BESCHREIBUNG
 ---------- | ---------- | ----------
-aud | https://login.microsoftonline.com/{tenantId}/v2.0 | Der Anspruch „aud“ (Zielgruppe) identifiziert die Empfänger, für die das JWT vorgesehen ist (hier Azure AD). [RFC 7519, Abschnitt 4.1.3]
-exp | Thu Jun 27 2019 15:04:17 GMT+0200 (Romance Daylight Time) | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf. [RFC 7519 Abschnitt 4.1.4]
-iss | {ClientID} | Der Anspruch „iss“ (Aussteller) identifiziert den Prinzipal, der das JWT ausgestellt hat. Die Verarbeitung dieses Anspruchs ist anwendungsspezifisch. Der Wert von „iss“ ist eine Zeichenfolge mit Beachtung der Groß-/Kleinschreibung, die einen StringOrURI-Wert enthält. [RFC 7519, Abschnitt 4.1.1]
-jti | (eine GUID) | Der Anspruch "jti" (JWT-ID) stellt einen eindeutigen Bezeichner für das JWT bereit. Es MUSS ein Bezeichnerwert zugewiesen werden, bei dem die Wahrscheinlichkeit vernachlässig ist, dass derselbe Wert versehentlich einem anderen Datenobjekt zugewiesen wird. Wenn die Anwendung mehrere Aussteller verwendet, MÜSSEN auch Konflikte zwischen von mehreren Ausstellern erstellten Werten verhindert werden. Der Anspruch „jti“ kann verwendet werden, um die erneute Wiedergabe des JWT zu verhindern. Der Wert von „JTI“ ist eine Zeichenfolge mit Beachtung der Groß-/Kleinschreibung. [RFC 7519, Abschnitt 4.1.7]
-nbf | Thu Jun 27 2019 14:54:17 GMT+0200 (Romance Daylight Time) | Der Anspruch „nbf“ (nicht vor) gibt die Zeit an, vor der das JWT NICHT für die Bearbeitung akzeptiert werden darf. [RFC 7519, Abschnitt 4.1.5]
-sub | {ClientID} | Der Anspruch „sub“ (Antragsteller) identifiziert den Antragsteller des JWT. Die Ansprüche in einem JWT sind normalerweise Angaben zum Antragsteller. Der Antragstellerwert MUSS entweder im Kontext des Ausstellers lokal eindeutig sein oder global eindeutig sein. [RFC 7519, Abschnitt 4.1.2]
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Der Anspruch „aud“ (audience, Zielgruppe) identifiziert die Empfänger, für die das JWT vorgesehen ist (hier Azure AD). Weitere Informationen finden Sie unter [RFC 7519, Abschnitt 4.1.3](https://tools.ietf.org/html/rfc7519#section-4.1.3).  In diesem Fall ist dieser Empfänger der Anmeldeserver (login.microsoftonline.com).
+exp | 1601519414 | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf. Weitere Informationen finden Sie unter [RFC 7519, Abschnitt 4.1.4](https://tools.ietf.org/html/rfc7519#section-4.1.4).  So kann die Assertion bis zu diesem Zeitpunkt verwendet werden. Daher sollte der Zeitraum kurz ausfallen, d. h. höchstens 5–10 Minuten nach `nbf` liegen.  In Azure AD gelten derzeit keine Einschränkungen für den `exp`-Zeitpunkt. 
+iss | {ClientID} | Der Anspruch „iss“ (issuer, Aussteller) identifiziert den Prinzipal, der das JWT ausgestellt hat, in diesem Fall Ihre Clientanwendung.  Verwenden Sie die GUID der Anwendungs-ID.
+jti | (eine GUID) | Der Anspruch "jti" (JWT-ID) stellt einen eindeutigen Bezeichner für das JWT bereit. Es MUSS ein Bezeichnerwert zugewiesen werden, bei dem die Wahrscheinlichkeit vernachlässig ist, dass derselbe Wert versehentlich einem anderen Datenobjekt zugewiesen wird. Wenn die Anwendung mehrere Aussteller verwendet, MÜSSEN auch Konflikte zwischen von mehreren Ausstellern erstellten Werten verhindert werden. Der Wert von „JTI“ ist eine Zeichenfolge mit Beachtung der Groß-/Kleinschreibung. [RFC 7519, Abschnitt 4.1.7](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+nbf | 1601519114 | Der Anspruch „nbf“ (nicht vor) gibt die Zeit an, vor der das JWT NICHT für die Bearbeitung akzeptiert werden darf. Weitere Informationen finden Sie unter [RFC 7519, Abschnitt 4.1.5](https://tools.ietf.org/html/rfc7519#section-4.1.5).  Die Verwendung der aktuellen Uhrzeit ist angemessen. 
+sub | {ClientID} | Der Anspruch „sub“ (subject, Antragsteller) identifiziert den Antragsteller des JWT, in diesem Fall ist das auch Ihre Anwendung. Verwenden Sie denselben Wert wie für `iss`. 
 
 Im folgenden Beispiel wird das Erstellen dieser Ansprüche veranschaulicht:
 
-```CSharp
+```csharp
 private static IDictionary<string, string> GetClaims()
 {
       //aud = https://login.microsoftonline.com/ + Tenant ID + /v2.0
-      string aud = "https://login.microsoftonline.com/72f988bf-86f1-41af-hd4m-2d7cd011db47/v2.0";
+      string aud = $"https://login.microsoftonline.com/{tenantId}/v2.0";
 
-      string ConfidentialClientID = "61dab2ba-145d-4b1b-8569-bf4b9aed5dhb" //client id
+      string ConfidentialClientID = "00000000-0000-0000-0000-000000000000" //client id
       const uint JwtToAadLifetimeInSeconds = 60 * 10; // Ten minutes
       DateTime validFrom = DateTime.UtcNow;
       var nbf = ConvertToTimeT(validFrom);
@@ -87,7 +87,7 @@ private static IDictionary<string, string> GetClaims()
 
 So erstellen Sie eine signierte Client-Assertion:
 
-```CSharp
+```csharp
 string Encode(byte[] arg)
 {
     char Base64PadCharacter = '=';
@@ -104,11 +104,11 @@ string Encode(byte[] arg)
     return s;
 }
 
-string GetAssertion()
+string GetSignedClientAssertion()
 {
     //Signing with SHA-256
     string rsaSha256Signature = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256";
-    X509Certificate2 certificate = ReadCertificate(config.CertificateName);
+     X509Certificate2 certificate = new X509Certificate2("Certificate.pfx", "Password", X509KeyStorageFlags.EphemeralKeySet);
 
     //Create RSACryptoServiceProvider
     var x509Key = new X509AsymmetricSecurityKey(certificate);
@@ -128,16 +128,62 @@ string GetAssertion()
     string token = Encode(Encoding.UTF8.GetBytes(JObject.FromObject(header).ToString())) + "." + Encode(Encoding.UTF8.GetBytes(JObject.FromObject(GetClaims())));
 
     string signature = Encode(rsa.SignData(Encoding.UTF8.GetBytes(token), new SHA256Cng()));
-    string SignedAssertion = string.Concat(token, ".", signature);
-    return SignedAssertion;
+    string signedClientAssertion = string.Concat(token, ".", signature);
+    return signedClientAssertion;
 }
+```
+
+### <a name="alternative-method"></a>Alternative Methode
+
+Sie haben auch die Möglichkeit, [Microsoft.IdentityModel.JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) zu verwenden, um die Assertion für Sie erstellen zu lassen. Der Code wird somit etwas eleganter, wie im folgenden Beispiel zu sehen ist:
+
+```csharp
+        string GetSignedClientAssertion()
+        {
+            var cert = new X509Certificate2("Certificate.pfx", "Password", X509KeyStorageFlags.EphemeralKeySet);
+
+            //aud = https://login.microsoftonline.com/ + Tenant ID + /v2.0
+            string aud = $"https://login.microsoftonline.com/{tenantID}/v2.0";
+
+            // client_id
+            string confidentialClientID = "00000000-0000-0000-0000-000000000000";
+
+            // no need to add exp, nbf as JsonWebTokenHandler will add them by default.
+            var claims = new Dictionary<string, object>()
+            {
+                { "aud", aud },
+                { "iss", confidentialClientID },
+                { "jti", Guid.NewGuid().ToString() },
+                { "sub", confidentialClientID }
+            };
+
+            var securityTokenDescriptor = new SecurityTokenDescriptor
+            {
+                Claims = claims,
+                SigningCredentials = new X509SigningCredentials(cert)
+            };
+
+            var handler = new JsonWebTokenHandler();
+            var signedClientAssertion = handler.CreateToken(securityTokenDescriptor);
+        }
+```
+
+Sobald Sie Ihre signierte Clientassertion besitzen, können Sie sie wie unten gezeigt mit den MSAL-APIs verwenden.
+
+```csharp
+            string signedClientAssertion = GetSignedClientAssertion();
+
+            var confidentialApp = ConfidentialClientApplicationBuilder
+                .Create(ConfidentialClientID)
+                .WithClientAssertion(signedClientAssertion)
+                .Build();
 ```
 
 ### <a name="withclientclaims"></a>WithClientClaims
 
 `WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` erzeugt standardmäßig eine signierte Assertion, die die von Azure AD erwarteten Ansprüche sowie zusätzliche Clientansprüche enthält, die Sie senden möchten. Im folgenden Codeausschnitt wird die Vorgehensweise gezeigt.
 
-```CSharp
+```csharp
 string ipAddress = "192.168.1.2";
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)

@@ -1,25 +1,16 @@
 ---
-title: Bewährte Methoden für Azure Service Fabric-Infrastructure-as-Code | Microsoft-Dokumentation
-description: Bewährte Methoden für die Verwaltung von Service Fabric als Infrastructure-as-Code.
-services: service-fabric
-documentationcenter: .net
+title: Bewährte Methoden für Azure Service Fabric-Infrastructure-as-Code
+description: Bewährte Methoden und Entwurfsüberlegungen für die Verwaltung von Azure Service Fabric als Infrastructure-as-Code.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 83439a913989875c5e26ee51901f10558e5debd5
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a0f0324d1f7308eb1392c4f7a98a6a5d226026be
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955608"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705505"
 ---
 # <a name="infrastructure-as-code"></a>Infrastructure-as-Code
 
@@ -36,7 +27,7 @@ ResourceGroupName="sfclustergroup"
 Location="westus"
 
 az group create --name $ResourceGroupName --location $Location 
-az group deployment create --name $ResourceGroupName  --template-file azuredeploy.json --parameters @azuredeploy.parameters.json
+az deployment group create --name $ResourceGroupName  --template-file azuredeploy.json --parameters @azuredeploy.parameters.json
 ```
 
 Erstellen einer Ressource mit PowerShell
@@ -53,7 +44,7 @@ New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -
 
 ## <a name="azure-service-fabric-resources"></a>Azure Service Fabric-Ressourcen
 
-Sie können Anwendungen und Dienste mithilfe von Azure Resource Manager in Ihrem Service Fabric-Cluster bereitstellen. Ausführliche Informationen finden Sie unter [Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource). Der folgende Codeausschnitt zeigt bewährte Service Fabric-spezifische Anwendungsressourcen, die Sie in Ihre Resource Manager-Vorlagenressourcen einschließen können.
+Sie können Anwendungen und Dienste mithilfe von Azure Resource Manager in Ihrem Service Fabric-Cluster bereitstellen. Ausführliche Informationen finden Sie unter [Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen](./service-fabric-application-arm-resource.md). Der folgende Codeausschnitt zeigt bewährte Service Fabric-spezifische Anwendungsressourcen, die Sie in Ihre Resource Manager-Vorlagenressourcen einschließen können.
 
 ```json
 {
@@ -82,7 +73,7 @@ Sie können Anwendungen und Dienste mithilfe von Azure Resource Manager in Ihrem
 }
 ```
 
-Um Ihre Anwendung mit Azure Resource Manager bereitzustellen, müssen Sie zunächst ein [Service Fabric-Anwendungspaket (SFPKG) erstellen](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg). Das folgende Python-Skript ist ein Beispiel für die Erstellung einer SFPKG-Datei:
+Um Ihre Anwendung mit Azure Resource Manager bereitzustellen, müssen Sie zunächst ein [Service Fabric-Anwendungspaket (SFPKG) erstellen](./service-fabric-package-apps.md#create-an-sfpkg). Das folgende Python-Skript ist ein Beispiel für die Erstellung einer SFPKG-Datei:
 
 ```python
 # Create SFPKG that needs to be uploaded to Azure Storage Blob Container
@@ -100,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Konfiguration des automatischen Betriebssystemupgrades für virtuelle Azure-Computer 
-Das Upgraden Ihrer virtuellen Computer ist ein vom Benutzer initiierter Vorgang, und es empfiehlt sich, [automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) für die Hostpatchverwaltung von Azure Service Fabric-Clustern zu verwenden. Die Patchorchestrierungsanwendung (POA) ist eine alternative Lösung für das Hosten außerhalb von Azure. Die POA kann zwar auch in Azure verwendet werden, aufgrund des Zusatzaufwands, der durch das Hosten von POA in Azure entsteht, werden für virtuelle Computer jedoch häufig automatische Betriebssystemupgrades über POA bevorzugt. Im Anschluss finden Sie die Resource Manager-Vorlageneigenschaften für Compute-VM-Skalierungsgruppen, um automatische Betriebssystemupgrades zu aktivieren:
+Das Upgraden Ihrer virtuellen Computer ist ein vom Benutzer initiierter Vorgang, und es empfiehlt sich, [automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) für die Hostpatchverwaltung von Azure Service Fabric-Clustern zu verwenden. Die Patchorchestrierungsanwendung (POA) ist eine alternative Lösung für das Hosten außerhalb von Azure. Die POA kann zwar auch in Azure verwendet werden, aufgrund des Zusatzaufwands, der durch das Hosten von POA in Azure entsteht, werden für virtuelle Computer jedoch häufig automatische Betriebssystemupgrades über POA bevorzugt. Im Anschluss finden Sie die Resource Manager-Vorlageneigenschaften für Compute-VM-Skalierungsgruppen, um automatische Betriebssystemupgrades zu aktivieren:
 
 ```json
 "upgradePolicy": {

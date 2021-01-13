@@ -2,18 +2,18 @@
 title: Verstehen und Beheben von WebHCat-Fehlern in HDInsight – Azure
 description: Erfahren Sie mehr zu Ursachen und Lösungen von Fehlern, die WebHCat in HDInsight zurückgibt.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: troubleshooting
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: cfbd42a67f9c9d6c66df3787b53575dc9e918e35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 04/14/2020
+ms.openlocfilehash: 951dba6e64561301dc7dbb6ebd6fd6b641c90a47
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067987"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285689"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Verstehen und Beheben von Fehlern in HDInsight, die von WebHCat ausgegeben wurden
 
@@ -21,17 +21,11 @@ Hier erhalten Sie Informationen zu Fehlern, die bei Verwendung von WebHCat mit H
 
 ## <a name="what-is-webhcat"></a>Was ist WebHCat?
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) ist eine REST-API für [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), eine Tabellen- und Speicherverwaltungsebene für Apache Hadoop. WebHCat ist in HDInsight-Clustern standardmäßig aktiviert und wird von verschiedenen Tools zum Übermitteln von Aufträgen, Abfragen des Auftragsstatus und ähnlichem verwendet, ohne dass eine Anmeldung beim Cluster erforderlich ist.
+[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) ist eine REST-API für [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), eine Tabellen- und Speicherverwaltungsebene für Apache Hadoop. WebHCat ist in HDInsight-Clustern standardmäßig aktiviert und wird von verschiedenen Tools zum Übermitteln von Aufträgen, Abfragen des Auftragsstatus usw. verwendet, ohne dass eine Anmeldung beim Cluster erforderlich ist.
 
 ## <a name="modifying-configuration"></a>Konfigurationsänderungen
 
-> [!IMPORTANT]  
-> Einige der in diesem Dokument aufgeführten Fehler treten auf, weil ein konfigurierter Maximalwert überschritten wurde. Wenn im Lösungsschritt erklärt wird, dass Sie einen Wert ändern sollten, müssen Sie für die Änderung wie folgt vorgehen:
-
-* Für **Windows**-Cluster: Verwenden Sie eine Skriptaktion, um den Wert während der Erstellung des Clusters zu konfigurieren. Weitere Informationen finden Sie unter [Entwickeln von Skriptaktionen](hdinsight-hadoop-script-actions-linux.md).
-
-* Für **Linux**-Cluster: Verwenden Sie Apache Ambari (Web- oder REST-API), um den Wert zu ändern. Weitere Informationen finden Sie unter [Verwalten von HDInsight mit Ambari](hdinsight-hadoop-manage-ambari.md)
-
+Einige der in diesem Dokument aufgeführten Fehler treten auf, weil ein konfigurierter Maximalwert überschritten wurde. Verwenden Sie Apache Ambari (Web- oder REST-API) zum Ändern eines Werts, wenn im Lösungsschritt erklärt wird, dass Sie einen Wert ändern können. Weitere Informationen finden Sie unter [Verwalten von HDInsight mit Ambari](hdinsight-hadoop-manage-ambari.md)
 
 ### <a name="default-configuration"></a>Standardkonfiguration
 
@@ -45,15 +39,15 @@ Die Überschreitung der folgenden Standardwerte kann die Leistung von WebHCat be
 
 ## <a name="too-many-requests"></a>Zu viele Anforderungen
 
-**HTTP-Statuscode**: 429
+**HTTP-Statuscode** : 429
 
 | Ursache | Lösung |
 | --- | --- |
-| Sie haben die maximale Anzahl an Anforderungen überschritten, die WebHCat pro Minute gleichzeitig bearbeiten kann (Standardwert 20). |Reduzieren Sie die Arbeitslast, um sicherzustellen, dass Sie nicht mehr als die maximale Anzahl gleichzeitig bearbeitbarer Anforderungen übergeben, oder erhöhen Sie den Grenzwert für gleichzeitig bearbeitbare Anforderungen durch Änderung von `templeton.exec.max-procs`. Weitere Informationen finden Sie unter [Konfigurationsänderungen](#modifying-configuration). |
+| Sie haben die maximale Anzahl an Anforderungen überschritten, die WebHCat pro Minute gleichzeitig bearbeiten kann (Standardwert 20). |Reduzieren Sie die Arbeitsauslastung, um sicherzustellen, dass Sie nicht mehr als die maximale Anzahl gleichzeitig bearbeitbarer Anforderungen übergeben, oder erhöhen Sie den Grenzwert für gleichzeitig bearbeitbare Anforderungen durch Änderung von `templeton.exec.max-procs`. Weitere Informationen finden Sie unter [Konfigurationsänderungen](#modifying-configuration). |
 
 ## <a name="server-unavailable"></a>Server nicht verfügbar
 
-**HTTP-Statuscode**: 503
+**HTTP-Statuscode** : 503
 
 | Ursache | Lösung |
 | --- | --- |
@@ -61,7 +55,7 @@ Die Überschreitung der folgenden Standardwerte kann die Leistung von WebHCat be
 
 ## <a name="bad-request-content-could-not-find-job"></a>Ungültiger Anforderungsinhalt: Auftrag nicht gefunden
 
-**HTTP-Statuscode**: 400
+**HTTP-Statuscode** : 400
 
 | Ursache | Lösung |
 | --- | --- |
@@ -71,16 +65,20 @@ Die Überschreitung der folgenden Standardwerte kann die Leistung von WebHCat be
 
 ## <a name="bad-gateway"></a>Ungültiger Gateway
 
-**HTTP-Statuscode**: 502
+**HTTP-Statuscode** : 502
 
 | Ursache | Lösung |
 | --- | --- |
 | Im WebHCat-Prozess findet eine interne Bereinigung statt. |Warten Sie, bis die Bereinigung den WebHCat-Dienst beendet oder neu gestartet hat. |
 | Timeout beim Warten auf eine Antwort vom ResourceManager-Dienst. Dieser Fehler kann auftreten, wenn die Anzahl der aktiven Anwendungen den konfigurierten Maximalwert (standardmäßig 10.000) überschreitet. |Warten Sie, bis die aktiven Aufträge abgeschlossen sind, oder erhöhen Sie den Grenzwert für gleichzeitig ausgeführte Aufträge durch Änderung von `yarn.scheduler.capacity.maximum-applications`. Weitere Informationen finden Sie im Abschnitt [Konfigurationsänderungen](#modifying-configuration). |
-| Versuch, alle Aufträge mit dem Aufruf [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) abzurufen, wenn `Fields` auf `*` festgelegt ist |Rufen Sie nicht *alle* Auftragsdetails ab. Rufen Sie stattdessen mit `jobid` nur die Details von Aufträgen ab, deren Auftrags-ID höher als ein bestimmter Wert ist. Oder Sie sollten kein `Fields` |
+| Versuch, alle Aufträge mit dem Aufruf [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) abzurufen, wenn `Fields` auf `*` festgelegt ist |Rufen Sie nicht *alle* Auftragsdetails ab. Rufen Sie stattdessen mit `jobid` nur die Details von Aufträgen ab, deren Auftrags-ID höher als ein bestimmter Wert ist. Verwenden Sie auch nicht `Fields`. |
 | Der WebHCat-Dienst ist während eines Failovers des Hauptknotens nicht verfügbar. |Warten Sie zwei Minuten, bevor Sie den Vorgang wiederholen. |
 | Von WebHCat wurden mehr als 500 Aufträge übermittelt, deren Verarbeitung noch aussteht. |Warten Sie, bis die derzeit ausstehenden Aufträge abgeschlossen sind, bevor Sie weitere Aufträge übermitteln. |
 
-[maximum-applications]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
+## <a name="next-steps"></a>Nächste Schritte
+
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]
+
+[maximum-applications]: https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
 [max-procs]: https://cwiki.apache.org/confluence/display/Hive/WebHCat+Configure#WebHCatConfigure-WebHCatConfiguration
 [max-age-ms]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/ds_Hadoop/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml

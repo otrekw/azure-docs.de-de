@@ -1,19 +1,19 @@
 ---
-title: 'Azure-VMware-Lösung von CloudSimple: Verbinden der privaten Cloud mit dem Azure-Netzwerk mithilfe von ExpressRoute'
+title: 'Azure VMware Solution by CloudSimple: Verbinden der privaten Cloud mit dem Azure-Netzwerk mithilfe von ExpressRoute'
 description: Beschreibt, wie Ihre private CloudSimple-Cloudumgebung mit dem virtuellen Azure-Netzwerk über ExpressRoute verbunden wird.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9bb68ec68f4de646239477ceeaac50a7a33989fc
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 98eec6b48d2b02c6eb7f6faea38994a9176bcf87
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536122"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895987"
 ---
 # <a name="connect-your-cloudsimple-private-cloud-environment-to-the-azure-virtual-network-using-expressroute"></a>Verbinden Ihrer privaten CloudSimple-Cloudumgebung mit dem virtuellen Azure-Netzwerk über ExpressRoute
 

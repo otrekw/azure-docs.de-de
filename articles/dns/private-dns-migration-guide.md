@@ -1,22 +1,29 @@
 ---
 title: Migrieren von älteren Azure DNS Private Zones zum neuen Ressourcenmodell
+titleSuffix: Azure DNS
 description: In dieser Anleitung wird Schritt für Schritt erläutert, wie ältere private DNS-Zonen zum aktuellen Ressourcenmodell migriert werden.
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: e7ebbf35cd572601f02a69930b58811686a92c86
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 63bd1d01adf66f33a8ee5349f35063473429b007
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276318"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964778"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Migrieren von älteren Azure DNS Private Zones zum neuen Ressourcenmodell
 
-Im Rahmen des Vorschauaktualisierungsrelease haben wir ein neues API- und Ressourcenmodell für Azure DNS Private Zones veröffentlicht. Mit der aktualisierten Vorschauversion werden neue Funktionen eingeführt und mehrere Einschränkungen der ersten öffentlichen Vorschauversion aufgehoben. Diese Neuerungen sind jedoch nicht für die privaten DNS-Zonen verfügbar, die mit der Legacy-API erstellt wurden. Um die Vorteile der neuen Version zu nutzen, müssen Sie die älteren privaten DNS-Zonenressourcen zum neuen Ressourcenmodell migrieren. Der Migrationsprozess ist einfach, und wir haben ein PowerShell-Skript bereitgestellt, um diesen Prozess zu automatisieren. In dieser Anleitung wird Schritt für Schritt beschrieben, wie Sie Ihre Azure DNS Private Zones zum neuen Ressourcenmodell migrieren.
+Während der öffentlichen Vorschauphase wurden private DNS-Zonen erstellt, indem die Ressource „dnszones“ mit Festlegung der „zoneType“-Eigenschaft auf „Private“ verwendet wurde. Zonen dieser Art werden nach dem 31. Dezember 2019 nicht mehr unterstützt und müssen zum allgemein verfügbaren Ressourcenmodell migriert werden, bei dem anstelle von „dnszones“ der Ressourcentyp „privateDnsZones“ verwendet wird. Der Migrationsprozess ist einfach, und wir haben ein PowerShell-Skript bereitgestellt, um diesen Prozess zu automatisieren. In dieser Anleitung wird Schritt für Schritt beschrieben, wie Sie Azure DNS Private Zones zum neuen Ressourcenmodell migrieren.
+
+Führen Sie den unten angegebenen Befehl in der Azure CLI aus, um die Ressourcen von „dnszones“ zu ermitteln, für die eine Migration erforderlich ist.
+```azurecli
+az account set --subscription <SubscriptionId>
+az network dns zone list --query "[?zoneType=='Private']"
+```
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -25,7 +32,7 @@ Stellen Sie sicher, dass Sie die aktuelle Version von Azure PowerShell installie
 Vergewissern Sie sich, dass das Az.PrivateDns-Modul für Azure PowerShell installiert ist. Um dieses Modul zu installieren, öffnen Sie ein PowerShell-Fenster mit erhöhten Rechten (Administratormodus), und geben Sie folgenden Befehl ein:
 
 ```powershell
-Install-Module -Name Az.PrivateDns -AllowPrerelease
+Install-Module -Name Az.PrivateDns
 ```
 
 >[!IMPORTANT]
@@ -44,6 +51,9 @@ Geben Sie „A“ ein, wenn Sie zur Installation des Skripts aufgefordert werden
 ![Installieren des Skripts](./media/private-dns-migration-guide/install-migration-script.png)
 
 Sie können die aktuelle Version des PowerShell-Skripts unter https://www.powershellgallery.com/packages/PrivateDnsMigrationScript auch manuell abrufen.
+
+>[!IMPORTANT]
+>Das Migrationsskript darf nicht in der Azure Cloud Shell ausgeführt werden, sondern dies muss auf einer VM oder einem lokalen Computer mit Internetverbindung erfolgen.
 
 ## <a name="running-the-script"></a>Ausführen des Skripts
 
@@ -92,15 +102,15 @@ Wenn Sie feststellen, dass die DNS-Abfragen nicht aufgelöst werden, warten Sie 
 
 In diesem Schritt werden die älteren DNS-Zonen entfernt. Dieser Schritt sollte nur ausgeführt werden, nachdem Sie überprüft haben, ob die DNS-Auflösung wie erwartet funktioniert. Sie werden aufgefordert, jede private DNS-Zone zu löschen. Geben Sie bei jeder Aufforderung „Y“ ein, nachdem Sie überprüft haben, ob die DNS-Auflösung für die entsprechende Zone ordnungsgemäß funktioniert.
 
-![Bereinigen](./media/private-dns-migration-guide/cleanup-migration-script.png)
+![Bereinigung](./media/private-dns-migration-guide/cleanup-migration-script.png)
 
 ## <a name="update-your-automation"></a>Aktualisieren der Automatisierung
 
 Wenn Sie die Automatisierung mit Vorlagen, PowerShell-Skripts oder benutzerdefiniertem mit dem SDK entwickelten Code verwenden, müssen Sie Ihre Automatisierung so aktualisieren, dass das neue Ressourcenmodell für die privaten DNS-Zonen verwendet wird. Nachfolgend finden Sie Links zur Dokumentation für die Befehlszeilenschnittstelle, PowerShell und das SDK für die neuen DNS-Zonen.
-* [Azure DNS Private Zones-REST-API](https://docs.microsoft.com/rest/api/dns/privatedns/privatezones)
-* [Azure DNS Private Zones-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
-* [Azure DNS Private Zones-PowerShell](https://docs.microsoft.com/powershell/module/az.privatedns/?view=azps-2.3.2)
-* [Azure DNS Private Zones-SDK](https://docs.microsoft.com/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
+* [Azure DNS Private Zones-REST-API](/rest/api/dns/privatedns/privatezones)
+* [Azure DNS Private Zones-Befehlszeilenschnittstelle](/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
+* [Azure DNS Private Zones-PowerShell](/powershell/module/az.privatedns/?view=azps-2.3.2)
+* [Azure DNS Private Zones-SDK](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 
 ## <a name="need-further-help"></a>Benötigen Sie weitere Hilfe?
 

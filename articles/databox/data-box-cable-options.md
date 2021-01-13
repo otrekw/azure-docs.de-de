@@ -1,19 +1,19 @@
 ---
 title: 'Azure Data Box: Verkabelungsoptionen | Microsoft-Dokumentation'
-description: Beschreibt die verschiedenen Verkabelungsoptionen für Azure Data Box.
+description: Erfahren Sie mehr über die verschiedenen Möglichkeiten zum Verkabeln ihrer Azure Data Box für die Datenübertragung über den MGMT- oder DATA-Port.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 4759676eff03606998759a586f758b7a26ead23d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a2c4cce492c48ebe6e09ad142f97bc6377a8a5e1
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077546"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334600"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Verkabelungsoptionen für Azure Data Box
 
@@ -74,14 +74,14 @@ Gehen Sie zur Verkabelung Ihres Geräts wie folgt vor:
 
 Gehen Sie zur Verkabelung Ihres Geräts wie folgt vor:
 
-1. Verbinden Sie den Server für die Konfiguration direkt über ein RJ45-Ethernetkabel mit dem MGMT-Anschluss.
+1. Verbinden Sie den separaten Computer für die Konfiguration direkt über ein RJ45-Ethernetkabel mit dem MGMT-Anschluss.
 2. Verwenden Sie ein RJ45-Kabel für DATA 3 oder ein SFP+-Kabel, um DATA 1 oder DATA 2 mit dem Server zu verbinden. Aus Leistungsgründen empfiehlt sich die Verwendung eines der 10-GbE-Anschlüsse (DATA 1 oder DATA 2). Die Datenanschlüsse werden über einen 10-GbE-Switch mit dem Datenserver verbunden.
 3. Konfigurieren Sie den Ethernet-Adapter des Laptops, über den Sie eine Verbindung mit dem Gerät herstellen, wie folgt:
 
    - **IP-Adresse:** 192.168.100.5
    - **Subnetz:** 255.255.255.0
-
-     ![Setup mit zwei Anschlüssen und einem Switch](media/data-box-cable-options/cabling-with-static-ip.png)
+  
+   ![Setup mit zwei Anschlüssen und einem Switch](media/data-box-cable-options/cabling-with-static-ip.png)
 
 3. Greifen Sie über die folgende IP-Adresse auf die lokale Webbenutzeroberfläche des Geräts zu: 192.168.100.10. Melden Sie sich an, und entsperren Sie Data Box mithilfe des Entsperrkennworts aus dem Azure-Portal.
 4. Ermitteln Sie die durch den DHCP-Server zugewiesenen IP-Adressen.
@@ -105,7 +105,7 @@ Gehen Sie zur Verkabelung Ihres Geräts wie folgt vor:
    - **IP-Adresse:** 192.168.100.5
    - **Subnetz:** 255.255.255.0
 
-     ![Setup mit zwei Anschlüssen und einem Switch](media/data-box-cable-options/cabling-with-switch-static-ip.png)
+     ![Setup mit zwei Anschlüssen und einem Switch 2](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
 3. Greifen Sie über die folgende IP-Adresse auf die lokale Webbenutzeroberfläche des Geräts zu: 192.168.100.10. Melden Sie sich an, und entsperren Sie Data Box mithilfe des Entsperrkennworts aus dem Azure-Portal.
 4. Weisen Sie den konfigurierten Datenanschlüssen statische IP-Adressen zu.
@@ -125,7 +125,8 @@ Gehen Sie zur Verkabelung Ihres Geräts wie folgt vor:
 
 1. Verwenden Sie ein RJ45- oder SFP+-Kabel, und verbinden Sie es über einen Switch (mit Zugang zum DHCP-Server) mit dem Server.
 
-    ![Setup mit zwei Anschlüssen und einem Switch](media/data-box-cable-options/cabling-dhcp-data-only.png)
+    ![Setup mit zwei Anschlüssen und einem Switch 3](media/data-box-cable-options/cabling-dhcp-data-only.png)
+
 2. Verwenden Sie den DHCP- oder DNS-Server, um die IP-Adresse zu ermitteln.
 3. Greifen Sie über einen Server im gleichen Netzwerk unter Verwendung der durch den DHCP-Server zugewiesenen IP-Adresse auf die lokale Webbenutzeroberfläche des Geräts zu. Melden Sie sich an, und entsperren Sie Data Box mithilfe des Entsperrkennworts aus dem Azure-Portal.
 

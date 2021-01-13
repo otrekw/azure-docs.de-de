@@ -1,6 +1,6 @@
 ---
 title: Azure-Infrastrukturüberwachung
-description: In diesem Artikel wird die Überwachung des Azure-Produktionsnetzwerks erläutert.
+description: Informieren Sie sich über Aspekte der Infrastrukturüberwachung des Azure-Produktionsnetzwerks wie die Überprüfung auf Sicherheitsrisiken.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: af9c157b4644156edc6dcdb1b53c141263576500
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7b75c9dc874a41d4221c55a8b00dd12d943e80fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727148"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87542941"
 ---
 # <a name="azure-infrastructure-monitoring"></a>Azure-Infrastrukturüberwachung   
 

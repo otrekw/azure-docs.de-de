@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Azure IoT Hub-Cloudgerätemessaging mit Azure IoT-Tools für Visual Studio Code | Microsoft-Dokumentation
+title: Verwenden von Azure IoT Tools für VSCode zum Verwalten von IoT Hub-Messaging
 description: In diesem Artikel erfahren Sie, wie Sie mit der Azure IoT-Tools für Visual Studio Code in Azure IoT Hub Gerät-zu-Cloud-Nachrichten überwachen und Cloud-zu-Gerät-Nachrichten senden.
 author: formulahendry
 ms.service: iot-hub
@@ -8,12 +8,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 1289e9c8f8cfc9360c9b2325507b43bab3a69028
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: b9d8f0c2a573ba1749b414a389cd7181ddd5f95a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838511"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87321682"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub mithilfe der Azure IoT-Tools für Visual Studio Code.
 
@@ -41,7 +43,7 @@ Sie erfahren, wie Sie mit den Azure IoT-Tools für Visual Studio Code Gerät-zu-
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-* [Azure IoT Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools), oder [öffnen Sie diesen Link in Visual Studio Code](vscode:extension/vsciot-vscode.azure-iot-tools).
+* [Azure IoT Tools für VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) oder kopieren Sie diese URL, und fügen Sie sie in ein Browserfenster ein: `vscode:extension/vsciot-vscode.azure-iot-tools`.
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Anmeldung zum Zugreifen auf Ihren IoT Hub
 
@@ -49,7 +51,7 @@ Sie erfahren, wie Sie mit den Azure IoT-Tools für Visual Studio Code Gerät-zu-
 
 2. Klicken Sie im Kontextmenü auf **IoT Hub auswählen**.
 
-3. In der unteren rechten Ecke wird ein Popupfenster angezeigt, mit der Sie sich zum ersten Mal bei Azure anmelden können.
+3. In der unteren rechten Ecke wird ein Popupfenster angezeigt, über das Sie sich zum ersten Mal bei Azure anmelden können.
 
 4. Nachdem Sie sich angemeldet haben, wird Ihre Liste der Azure-Abonnements angezeigt. Wählen Sie dann „Azure-Abonnement“ und „IoT Hub“ aus.
 
@@ -62,11 +64,11 @@ Sie erfahren, wie Sie mit den Azure IoT-Tools für Visual Studio Code Gerät-zu-
 
 Um Nachrichten zu überwachen, die von Ihrem Gerät an Ihren IoT Hub gesendet werden, gehen Sie folgendermaßen vor:
 
-1. Klicken Sie mit der rechten Maustaste auf Ihr Gerät, und klicken Sie auf **Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts starten).
+1. Klicken Sie mit der rechten Maustaste auf Ihr Gerät, und wählen Sie **Überwachung des integrierten Ereignisendpunkts starten** aus.
 
-2. Die überwachten Nachrichten werden in der Ansicht **AUSGABE** > **Azure IoT Hub Toolkit** angezeigt.
+2. Die überwachten Nachrichten werden in der Ansicht **AUSGABE** > **Azure IoT Hub** angezeigt.
 
-3. Um die Überwachung anzuhalten, klicken Sie mit der rechten Maustaste auf die Ansicht **AUSGABE**, und klicken Sie auf **Stop Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts beenden).
+3. Zum Anhalten der Überwachung klicken Sie mit der rechten Maustaste auf die Ansicht **AUSGABE**, und wählen Sie **Überwachung des integrierten Ereignisendpunkts beenden** aus.
 
 ## <a name="send-cloud-to-device-messages"></a>Senden von C2D-Nachrichten.
 
@@ -76,7 +78,7 @@ Um eine Nachricht von Ihrem IoT Hub zu Ihrem Gerät zu senden, gehen Sie folgend
 
 2. Geben Sie die Nachricht in das Eingabefeld ein.
 
-3. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT Hub Toolkit** angezeigt.
+3. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT Hub** angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,12 +1,12 @@
 ---
 title: Abrufen von Vorgängen mit langen Laufzeiten | Microsoft-Dokumentation
-description: In diesem Thema wird gezeigt, wie Vorgänge mit langen Laufzeiten abgerufen werden.
+description: Azure Media Services bietet APIs, die Anforderungen zum Starten von Vorgängen an Media Services senden (z. B. zum Erstellen, Starten, Beenden oder Löschen eines Kanals). Diese Vorgänge weisen lange Laufzeiten auf. In diesem Thema wird gezeigt, wie Vorgänge mit langen Laufzeiten abgerufen werden.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: Juliako
+writer: juliako
 manager: femila
 editor: ''
-ms.assetid: 9a68c4b1-6159-42fe-9439-a3661a90ae03
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,20 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 752c502268ef53d3c0575d92e75ce6a965fccd9f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 44cecbd8d2cdc95e342d7aaf2b33f6cc0192e182
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61464979"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89262027"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Bereitstellen von Livestreaming mit Azure Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Übersicht
 
 Microsoft Azure Media Services bietet APIs, die Anforderungen zum Starten von Vorgängen an Media Services senden (beispielsweise zum Erstellen, Starten, Beenden oder Löschen eines Kanals). Diese Vorgänge haben eine lange Laufzeit.
 
-Das Media Services .NET SDK stellt APIs bereit, die die Anforderung senden und auf den Abschluss des Vorgangs warten (intern fragen die APIs in regelmäßigen Intervallen den Vorgangsfortschritt ab). Wenn Sie beispielsweise "channel.Start()" aufrufen, wird die Methode nach dem Start des Kanals zurückgegeben. Sie können auch die asynchrone Version „await channel.StartAsync()“ verwenden (Informationen zu taskbasierten asynchronen Mustern finden Sie unter [TAP](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). APIs, die eine Vorgangsanforderung senden und den Status abfragen, bis der Vorgang abgeschlossen ist, werden als "Abfragemethoden" bezeichnet. Diese Methoden (insbesondere die asynchrone Version) werden für Rich Client-Anwendungen und/oder für zustandsbehaftete Dienste empfohlen.
+Das Media Services .NET SDK stellt APIs bereit, die die Anforderung senden und auf den Abschluss des Vorgangs warten (intern fragen die APIs in regelmäßigen Intervallen den Vorgangsfortschritt ab). Wenn Sie beispielsweise "channel.Start()" aufrufen, wird die Methode nach dem Start des Kanals zurückgegeben. Sie können auch die asynchrone Version „await channel.StartAsync()“ verwenden (Informationen zu taskbasierten asynchronen Mustern finden Sie unter [TAP](./media-services-mes-schema.md)). APIs, die eine Vorgangsanforderung senden und den Status abfragen, bis der Vorgang abgeschlossen ist, werden als "Abfragemethoden" bezeichnet. Diese Methoden (insbesondere die asynchrone Version) werden für Rich Client-Anwendungen und/oder für zustandsbehaftete Dienste empfohlen.
 
 Es gibt Szenarien, in denen eine Anwendung nicht auf eine HTTP-Anforderung mit langer Laufzeit warten kann und der Vorgangsfortschritt manuell abgerufen werden soll. Ein typisches Beispiel wäre die Interaktion mit einem zustandsloser Webdienst: Wenn der Browser die Erstellung eines Kanals anfordert, startet der Webdienst einen Vorgang mit langer Laufzeit und gibt die Vorgangs-ID an den Browser zurück. Der Browser kann dann beim Webdienst den Abruf des Vorgangsstatus basierend auf der ID anfordern. Das Media Services .NET SDK stellt APIs bereit, die für dieses Szenario von Nutzen sind. Diese APIs werden als "Methoden ohne Abfrage" bezeichnet.
 Die „Methoden ohne Abfrage“ weisen das folgende Benennungsmuster auf: Send*Vorgangsname*Operation (z.B. SendCreateOperation). Send*Vorgangsname*Operation-Methoden geben das **IOperation**-Objekt zurück. Das zurückgegebene Objekt enthält Informationen, die zum Nachverfolgen des Vorgangs verwendet werden können. Die Send*Vorgangsname*OperationAsync-Methoden geben **Task\<IOperation>** zurück.
@@ -215,4 +218,3 @@ Console.WriteLine(channelId);
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

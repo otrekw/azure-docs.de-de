@@ -1,57 +1,27 @@
 ---
 title: Einrichten von IBM Db2 HADR auf virtuellen Azure-Computern (VMs) | Microsoft-Dokumentation
 description: Richten Sie die Hochverfügbarkeit von IBM Db2 LUW auf virtuellen Azure-Computern (VMs) ein.
-services: virtual-machines-linux
-documentationcenter: ''
 author: msjuergent
-manager: patfilot
-editor: ''
-tags: azure-resource-manager
-keywords: SAP
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 04/10/2019
+ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: 4571b0e1a2c9207ce913901f11157f5155201393
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.reviewer: cynthn
+ms.openlocfilehash: 54bde8c9dd47e88ffdc831ccb9f7833720583238
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100036"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621381"
 ---
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
-[2233094]: https://launchpad.support.sap.com/#/notes/2233094
-[1612105]: https://launchpad.support.sap.com/#/notes/1612105
-
-[sles-for-sap-bp]:https://www.suse.com/documentation/sles-for-sap-12/
-[db2-hadr-11.1]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
-[db2-hadr-10.5]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
-[dbms-db2]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm
-[sles-pacemaker]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker
-[sap-instfind]:https://help.sap.com/viewer/9e41ead9f54e44c1ae1a1094b0f80712/ALL/en-US/576f5c1808de4d1abecbd6e503c9ba42.html
-[nfs-ha]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs
-[sles-ha-guide]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3/
-[ascs-ha]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse
-
-[dbms-guide]:dbms-guide.md
-[deployment-guide]:deployment-guide.md
-[planning-guide]:planning-guide.md
-[azr-sap-plancheck]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist
-
-
-
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Hochverfügbarkeit von IBM Db2 LUW auf Azure-VMs unter SUSE Linux Enterprise Server mit Pacemaker
 
 IBM Db2 für Linux, UNIX und Windows (LUW) in einer [HADR-Konfiguration (Hochverfügbarkeit und Notfallwiederherstellung)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html) besteht aus einem Knoten, auf dem eine primäre Datenbankinstanz ausgeführt wird, und mindestens einem Knoten, auf dem eine sekundäre Datenbankinstanz ausgeführt wird. Änderungen an der primären Datenbankinstanz werden, abhängig von Ihrer Konfiguration, synchron oder asynchron in eine sekundäre Datenbankinstanz repliziert. 
 
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf die Begriffe *Master* und *Slave*, die von Microsoft nicht mehr verwendet werden. Sobald diese Begriffe aus der Software entfernt wurden, werden sie auch aus diesem Artikel gelöscht.
+   
 Dieser Artikel beschreibt die Bereitstellung und Konfiguration der virtuellen Azure-Computer (VMs), die Installation des Clusterframeworks und die Installation von IBM Db2 LUW mit HADR-Konfiguration. 
 
 In diesem Artikel wird nicht behandelt, wie IBM Db2 LUW mit HADR installiert und konfiguriert wird oder die oder SAP-Softwareinstallation erfolgt. Um Ihnen bei der Bewältigung dieser Aufgaben zu helfen, stellen wir Ihnen Verweise auf SAP- und IBM-Installationshandbücher zur Verfügung. Der Schwerpunkt dieses Artikels liegt auf Vorgehensweisen, die speziell für die Azure-Umgebung gelten. 
@@ -80,14 +50,14 @@ Bevor Sie mit einer Installation beginnen, lesen Sie zunächst die folgenden SAP
 | [Bereitstellung von Azure Virtual Machines für SAP unter Linux][deployment-guide] (dieser Artikel) |
 | Anleitung [Azure Virtual Machines DBMS-Bereitstellung (Datenbank-Manager) für SAP unter Linux][dbms-guide] |
 | [Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure][azr-sap-plancheck] |
-| [Leitfäden für bewährte Methoden zu SUSE Linux Enterprise Server für SAP-Anwendungen 12 SP3][sles-for-sap-bp] |
-| [SUSE Linux Enterprise High Availability Extension 12 SP3][sles-ha-guide] |
+| [Leitfäden für bewährte Methoden zu SUSE Linux Enterprise Server for SAP Applications 12 SP4][sles-for-sap-bp] |
+| [SUSE Linux Enterprise High Availability Extension 12 SP4][sles-ha-guide] |
 | [Azure Virtual Machines – IBM Db2-DBMS-Bereitstellung für SAP-Workload][dbms-db2] |
 | [IBM Db2 HADR 11.1][db2-hadr-11.1] |
 | [IBM Db2 HADR R 10.5][db2-hadr-10.5] |
 
 ## <a name="overview"></a>Übersicht
-Um Hochverfügbarkeit zu erreichen, wird IBM Db2 LUW mit HADR auf mindestens zwei virtuellen Azure-Computern installiert, die in einer [Azure-Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) oder über [Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) bereitgestellt werden. 
+Um Hochverfügbarkeit zu erreichen, wird IBM Db2 LUW mit HADR auf mindestens zwei virtuellen Azure-Computern installiert, die in einer [Azure-Verfügbarkeitsgruppe](../../windows/tutorial-availability-sets.md) oder über [Azure-Verfügbarkeitszonen](./sap-ha-availability-zones.md) bereitgestellt werden. 
 
 Die folgenden Grafiken zeigen eine Konfiguration von zwei auf virtuellen Azure-Computern installierten Datenbankservern. Jeder dieser auf einem virtuellen Azure-Computer installierten Datenbankserver hat seinen eigenen zugeordneten Speicher und ist aktiv und wird ausgeführt. In HADR hat eine Datenbankinstanz auf einem der virtuellen Azure-Computer die Rolle der primären Instanz. Alle Clients werden mit dieser primären Instanz verbunden. Alle in Datenbanktransaktionen vorgenommenen Änderungen werden lokal im Db2-Transaktionsprotokoll gespeichert. Da die Transaktionsprotokolldatensätze lokal gespeichert werden, werden die Datensätze über TCP/IP an die Datenbankinstanz auf dem zweiten Datenbankserver übertragen, der als Standbyserver oder Standbyinstanz bezeichnet wird. In der Standbyinstanz wird die lokale Datenbank aktualisiert, indem ein Rollforward mit den übertragenen Transaktionsprotokolldatensätzen ausgeführt wird. Auf diese Weise bleibt der Standbyserver mit dem primären Server synchronisiert.
 
@@ -126,7 +96,7 @@ Um eine IBM Db2-Konfiguration bereitzustellen, müssen die folgenden Schritte au
 
 Abschließen des Planungsprozesses, bevor Sie die Bereitstellung ausführen. Planung bildet die Grundlage für die Bereitstellung einer Konfiguration von Db2 mit HADR in Azure. Schlüsselelemente, die in der Planung für IMB Db2 LUW (Datenbankteil der SAP-Umgebung) berücksichtigt werden müssen, werden in der folgenden Tabelle aufgeführt.
 
-| Thema | Kurzbeschreibung |
+| Thema | Kurze Beschreibung |
 | --- | --- |
 | Definieren von Azure-Ressourcengruppen | Ressourcengruppen, in denen Sie virtuelle Computer, VNET, Azure Load Balancer und andere Ressourcen bereitstellen. Können vorhanden oder neu sein. |
 | Definition von virtuellem Netzwerk/Subnetz | Umgebung, in der virtuelle Computer für IBM Db2 und Azure Load Balancer bereitgestellt werden. Kann vorhanden sein oder neu erstellt werden. |
@@ -137,7 +107,7 @@ Abschließen des Planungsprozesses, bevor Sie die Bereitstellung ausführen. Pla
 | Azure Load Balancer | Verwendung von Basic oder Standard (empfohlen), Testport für die Db2-Datenbank (Empfehlung ist 62500) Prüfpunkt; **probe-port**. |
 | Namensauflösung| Funktionsweise der Namensauflösung in der Umgebung. DNS-Dienst wird dringend empfohlen. Lokale hosts-Datei kann verwendet werden. |
     
-Weitere Informationen zu Linux Pacemaker in Azure finden Sie unter [Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker).
+Weitere Informationen zu Linux Pacemaker in Azure finden Sie unter [Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure](./high-availability-guide-suse-pacemaker.md).
 
 ## <a name="deployment-on-suse-linux"></a>Bereitstellung unter SUSE Linux
 
@@ -149,7 +119,7 @@ Erstellen Sie eine Liste aller Hostnamen, einschließlich der Namen virtueller H
 
 ### <a name="manual-deployment"></a>Manuelle Bereitstellung
 
-Vergewissern Sie sich, dass das ausgewählte Betriebssystem von IBM/SAP für IBM Db2 LUW unterstützt wird. Die Liste der unterstützten Betriebssystemversionen für virtuelle Azure-Computer und Db2-Versionen finden Sie im SAP-Hinweis [1928533]. Die Liste der Betriebssystemversionen zu den einzelnen Db2-Releases ist in der SAP-Produktverfügbarkeitsmatrix verfügbar. Es wird dringend empfohlen, mindestens SLES 12 SP3 zu verwenden, denn ab dieser SUSE Linux-Version gibt es Azure-bezogene Leistungsverbesserungen.
+Vergewissern Sie sich, dass das ausgewählte Betriebssystem von IBM/SAP für IBM Db2 LUW unterstützt wird. Die Liste der unterstützten Betriebssystemversionen für virtuelle Azure-Computer und Db2-Versionen finden Sie im SAP-Hinweis [1928533]. Die Liste der Betriebssystemversionen zu den einzelnen Db2-Releases ist in der SAP-Produktverfügbarkeitsmatrix verfügbar. Es wird dringend empfohlen, mindestens SLES 12 SP4 zu verwenden, denn ab dieser SUSE Linux-Version gibt es Azure-bezogene Leistungsverbesserungen.
 
 1. Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine Ressourcengruppe aus.
 1. Erstellen Sie ein virtuelles Netzwerks und ein Subnetz, oder wählen Sie vorhandene Ressourcen aus.
@@ -163,9 +133,9 @@ Vergewissern Sie sich, dass das ausgewählte Betriebssystem von IBM/SAP für IBM
     + Wählen Sie die Azure-Verfügbarkeitsgruppe aus, die Sie in Schritt 3 erstellt haben, oder wählen Sie eine Verfügbarkeitszone (nicht die gleiche Zone wie in Schritt 3) aus.
 1. Fügen Sie den virtuellen Computern Datenträger hinzu. Prüfen Sie dann die Empfehlung für die Dateisystemkonfiguration, die Sie im Artikel [Azure Virtual Machines – IBM DB2-DBMS-Bereitstellung für SAP-Workload][dbms-db2] finden.
 
-## <a name="create-the-pacemaker-cluster"></a>Erstellen des Pacemaker-Clusters
+## <a name="create-the-pacemaker-cluster"></a>Erstellen eines Pacemaker-Clusters
     
-Informationen zum Erstellen eines grundlegenden Pacemaker-Clusters für diesen IBM Db2-Server finden Sie unter  [Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure][sles-pacemaker]. 
+Informationen zum Erstellen eines grundlegenden Pacemaker-Clusters für diesen IBM Db2-Server finden Sie unter [Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure][sles-pacemaker]. 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>Installieren von IBM Db2 LUW und der SAP-Umgebung
 
@@ -341,11 +311,20 @@ Die folgenden Elemente haben eines der folgenden Präfixe:
 - **[2]** : Gilt nur für Knoten 2
 
 **[A]** Voraussetzungen für die Pacemaker-Konfiguration
-1. Fahren Sie beide Datenbankserver mit Benutzer „db2\<sid>“ mit „db2stop“ herunter.
-1. Ändern Sie die Shellumgebung für „db2\<sid> Benutzer“ in */bin/ksh*. Es wird empfohlen, das Yast-Tool zu verwenden. 
+1. Fahren Sie beide Datenbankserver mit dem Benutzer „db2\<sid>“ mit „db2stop“ herunter.
+1. Ändern Sie die Shellumgebung für „db2\<sid>“ in */bin/ksh*. Es wird empfohlen, das Yast-Tool zu verwenden. 
 
 
 ### <a name="pacemaker-configuration"></a>Pacemaker-Konfiguration
+
+> [!IMPORTANT]
+> Kürzlich durchgeführte Tests haben Situationen aufgezeigt, in denen netcat aufgrund von Backlog und der Einschränkung, nur eine Verbindung zu verarbeiten, nicht mehr auf Anforderungen reagiert. Die netcat-Ressource lauscht dann nicht mehr auf Azure Load Balancer-Anforderungen, und die Floating IP-Adresse ist nicht mehr verfügbar.  
+> Für vorhandene Pacemaker-Cluster wurde zuvor empfohlen, netcat durch socat zu ersetzen. Zurzeit wird empfohlen, den Ressourcen-Agent azure-lb zu verwenden, der Teil des Pakets resource-agents ist. Dabei gelten die folgenden Versionsanforderungen für das Paket:
+> - Für SLES 12 SP4/SP5 muss die Version mindestens resource-agents-4.3.018.a7fb5035-3.30.1 sein.  
+> - Für SLES 15/15 SP1 muss die Version mindestens resource-agents-4.3.0184.6ee15eb2-4.13.1 sein.  
+>
+> Beachten Sie, dass für die Änderung eine kurze Ausfallzeit erforderlich ist.  
+> Wenn die Konfiguration bei vorhandenen Pacemaker-Clustern bereits für die Verwendung von socat geändert wurde, wie unter [Azure Load Balancer-Erkennungshärtung](https://www.suse.com/support/kb/doc/?id=7024128) beschrieben, müssen Sie nicht sofort zum Ressourcen-Agent azure-lb wechseln.
 
 **[1]** IBM Db2 HADR-spezifische Pacemaker-Konfiguration:
 <pre><code># Put Pacemaker into maintenance mode
@@ -370,9 +349,7 @@ sudo crm configure primitive rsc_ip_db2ptr_<b>PTR</b> IPaddr2 \
         params ip="<b>10.100.0.10</b>"
 
 # Configure probe port for Azure load Balancer
-sudo crm configure primitive rsc_nc_db2ptr_<b>PTR</b> anything \
-        params binfile="/usr/bin/nc" cmdline_options="-l -k <b>62500</b>" \
-        op monitor timeout="20s" interval="10" depth="0"
+sudo crm configure primitive rsc_nc_db2ptr_<b>PTR</b> azure-lb port=<b>62500</b>
 
 sudo crm configure group g_ip_db2ptr_<b>PTR</b> rsc_ip_db2ptr_<b>PTR</b> rsc_nc_db2ptr_<b>PTR</b>
 
@@ -405,7 +382,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 #  <a name="stonith-sbd----stonithexternalsbd-started-azibmdb02"></a>stonith-sbd    (stonith:external/sbd): Started azibmdb02
 #  <a name="resource-group-g_ip_db2ptr_ptr"></a>Resource Group: g_ip_db2ptr_PTR
 #      <a name="rsc_ip_db2ptr_ptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Started azibmdb02
-#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Started azibmdb02
+#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatazure-lb------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (ocf::heartbeat:azure-lb):      Started azibmdb02
 #  <a name="masterslave-set-msl_db2_db2ptr_ptr-rsc_db2_db2ptr_ptr"></a>Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
 #      <a name="masters--azibmdb02-"></a>Masters: [ azibmdb02 ]
 #      <a name="slaves--azibmdb01-"></a>Slaves: [ azibmdb01 ]
@@ -416,7 +393,13 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
 
 ### <a name="configure-azure-load-balancer"></a>Konfigurieren von Azure Load Balancer
-Um Azure Load Balancer zu konfigurieren, empfehlen wir Ihnen, die [SKU „Azure Load Balancer Standard“](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) zu verwenden und dann wie folgt vorzugehen:
+Um Azure Load Balancer zu konfigurieren, empfehlen wir Ihnen, die [SKU „Azure Load Balancer Standard“](../../../load-balancer/load-balancer-overview.md) zu verwenden und dann wie folgt vorzugehen:
+
+> [!NOTE]
+> Bei der SKU „Azure Load Balancer Standard“ gibt es Einschränkungen, wenn von den Knoten unterhalb des Load Balancers aus auf öffentliche IP-Adressen zugegriffen wird. Im Artikel [Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden](./high-availability-guide-standard-load-balancer-outbound-connections.md) werden Verfahren beschrieben, wie diesen Knoten der Zugriff auf öffentliche IP-Adressen ermöglicht werden kann.
+
+> [!IMPORTANT]
+> Floating IP-Adressen werden in IP-Konfigurationen mit zwei NICs in Szenarien mit Lastenausgleich nicht unterstützt. Weitere Informationen finden Sie unter [Azure Load Balancer – Einschränkungen](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Wenn Sie zusätzliche IP-Adressen für die VM benötigen, stellen Sie eine zweite NIC bereit.  
 
 1. Erstellen eines Front-End-IP-Pools:
 
@@ -515,8 +498,8 @@ Es empfiehlt sich, eine allgemeine NFS-Freigabe zu konfigurieren, in die Protoko
 Sie können vorhandene hochverfügbare NFS-Freigaben für Datentransporte oder ein Profilverzeichnis verwenden. Weitere Informationen finden Sie unter
 
 - [Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server][nfs-ha] 
-- [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-- [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction) (zum Erstellen von NFS-Freigaben)
+- [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen](./high-availability-guide-suse-netapp-files.md)
+- [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) (zum Erstellen von NFS-Freigaben)
 
 
 ## <a name="test-the-cluster-setup"></a>Testen der Clustereinrichtung
@@ -538,7 +521,7 @@ Full list of resources:
 stonith-sbd     (stonith:external/sbd): Started azibmdb02
  Resource Group: g_ip_db2ptr_PTR
      rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Stopped
-     rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Stopped
+     rsc_nc_db2ptr_PTR  (ocf::heartbeat:azure-lb):      Stopped
  Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
      rsc_Db2_db2ptr_PTR      (ocf::heartbeat:db2):   Promoting azibmdb01
      Slaves: [ azibmdb02 ]
@@ -558,7 +541,7 @@ Der ursprüngliche Status in einem SAP-System ist in „Transaction DBACOCKPIT -
 > Bevor Sie den Test zu starten, stellen Sie Folgendes sicher:
 > * Pacemaker keine fehlerhaften Aktionen (crm Status) aufweist.
 > * Es keine Speicherorteinschränkungen (Überbleibsel von Migrationstests) gibt.
-> * Die IBM Db2-HADR-Synchronisierung funktioniert. Überprüfen Sie mit dem Benutzer „db2\<sid>“. <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * Die IBM Db2-HADR-Synchronisierung funktioniert. Überprüfen Sie die Funktionsweise mit dem Benutzer „db2\<sid>“ <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Migrieren Sie den Knoten, auf dem die primäre Db2-Datenbank ausgeführt wird, indem Sie folgenden Befehl ausführen:
@@ -575,7 +558,7 @@ Full list of resources:
 stonith-sbd     (stonith:external/sbd): Started azibmdb02
  Resource Group: g_ip_db2ptr_PTR
      rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Started azibmdb02
-     rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Started azibmdb02
+     rsc_nc_db2ptr_PTR  (ocf::heartbeat:azure-lb):      Started azibmdb02
  Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
      Masters: [ azibmdb02 ]
      Slaves: [ azibmdb01 ]
@@ -592,7 +575,7 @@ Migrieren Sie die Ressourcen zurück zu *azibmdb01*, und löschen Sie die Speich
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **crm resource migrate \<Ressourcenname> \<Host>:** Erstellt Speicherorteinschränkungen und kann Probleme mit Übernahmen verursachen.
+- **crm resource migrate \<res_name> \<host>:** Erstellt Speicherorteinschränkungen und kann Probleme mit Übernahmen verursachen.
 - **crm resource clear \<res_name>** : Löscht Speicherorteinschränkungen.
 - **crm resource cleanup \<res_name>** : Löscht alle Fehler der Ressource.
 
@@ -634,7 +617,7 @@ Full list of resources:
 stonith-sbd     (stonith:external/sbd): Started azibmdb02
  Resource Group: g_ip_db2ptr_PTR
      rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Started azibmdb02
-     rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Started azibmdb02
+     rsc_nc_db2ptr_PTR  (ocf::heartbeat:azure-lb):      Started azibmdb02
  Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
      Masters: [ azibmdb02 ]
      Stopped: [ azibmdb01 ]
@@ -666,7 +649,7 @@ Full list of resources:
  stonith-sbd    (stonith:external/sbd): Started azibmdb01
  Resource Group: g_ip_db2ptr_PTR
      rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Stopped
-     rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Stopped
+     rsc_nc_db2ptr_PTR  (ocf::heartbeat:azure-lb):      Stopped
  Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
      Slaves: [ azibmdb02 ]
      Stopped: [ azibmdb01 ]
@@ -689,7 +672,7 @@ Full list of resources:
  stonith-sbd    (stonith:external/sbd): Started azibmdb01
  Resource Group: g_ip_db2ptr_PTR
      rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Started azibmdb01
-     rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Started azibmdb01
+     rsc_nc_db2ptr_PTR  (ocf::heartbeat:azure-lb):      Started azibmdb01
  Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]
@@ -718,7 +701,7 @@ Full list of resources:
  stonith-sbd    (stonith:external/sbd): Started azibmdb01
  Resource Group: g_ip_db2ptr_PTR
      rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Started azibmdb01
-     rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Started azibmdb01
+     rsc_nc_db2ptr_PTR  (ocf::heartbeat:azure-lb):      Started azibmdb01
  Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
      rsc_Db2_db2ptr_PTR      (ocf::heartbeat:db2):   FAILED azibmdb02
      Masters: [ azibmdb01 ]
@@ -739,7 +722,7 @@ Full list of resources:
 stonith-sbd     (stonith:external/sbd): Started azibmdb01
  Resource Group: g_ip_db2ptr_PTR
      rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Started azibmdb01
-     rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Started azibmdb01
+     rsc_nc_db2ptr_PTR  (ocf::heartbeat:azure-lb):      Started azibmdb01
  Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]
@@ -762,7 +745,7 @@ Full list of resources:
 stonith-sbd     (stonith:external/sbd): Started azibmdb01
  Resource Group: g_ip_db2ptr_PTR
      rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Started azibmdb01
-     rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Started azibmdb01
+     rsc_nc_db2ptr_PTR  (ocf::heartbeat:azure-lb):      Started azibmdb01
  Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]</code></pre>
@@ -782,7 +765,7 @@ Full list of resources:
  stonith-sbd    (stonith:external/sbd): Started azibmdb01
  Resource Group: g_ip_db2ptr_PTR
      rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Stopped
-     rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Stopped
+     rsc_nc_db2ptr_PTR  (ocf::heartbeat:azure-lb):      Stopped
  Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
      rsc_Db2_db2ptr_PTR      (ocf::heartbeat:db2):   FAILED azibmdb01
      Slaves: [ azibmdb02 ]
@@ -802,7 +785,7 @@ Full list of resources:
 stonith-sbd     (stonith:external/sbd): Started azibmdb01
  Resource Group: g_ip_db2ptr_PTR
      rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Started azibmdb02
-     rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Started azibmdb02
+     rsc_nc_db2ptr_PTR  (ocf::heartbeat:azure-lb):      Started azibmdb02
  Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
      Masters: [ azibmdb02 ]
      Stopped: [ azibmdb01 ]
@@ -830,7 +813,7 @@ Full list of resources:
 stonith-sbd     (stonith:external/sbd): Started azibmdb02
  Resource Group: g_ip_db2ptr_PTR
      rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Started azibmdb01
-     rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Started azibmdb01
+     rsc_nc_db2ptr_PTR  (ocf::heartbeat:azure-lb):      Started azibmdb01
  Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]</code></pre>
@@ -855,7 +838,7 @@ Full list of resources:
 stonith-sbd     (stonith:external/sbd): Started azibmdb02
  Resource Group: g_ip_db2ptr_PTR
      rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Started azibmdb01
-     rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Started azibmdb01
+     rsc_nc_db2ptr_PTR  (ocf::heartbeat:azure-lb):      Started azibmdb01
  Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]</code></pre>
@@ -872,7 +855,7 @@ Full list of resources:
 stonith-sbd     (stonith:external/sbd): Started azibmdb02
  Resource Group: g_ip_db2ptr_PTR
      rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Started azibmdb02
-     rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Started azibmdb02
+     rsc_nc_db2ptr_PTR  (ocf::heartbeat:azure-lb):      Started azibmdb02
  Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
      Masters: [ azibmdb02 ]
      Stopped: [ azibmdb01 ] </code></pre>
@@ -890,14 +873,36 @@ Full list of resources:
 stonith-sbd     (stonith:external/sbd): Started azibmdb02
  Resource Group: g_ip_db2ptr_PTR
      rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):       Started azibmdb02
-     rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):      Started azibmdb02
+     rsc_nc_db2ptr_PTR  (ocf::heartbeat:azure-lb):      Started azibmdb02
  Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
      Masters: [ azibmdb02 ]
      Slaves: [ azibmdb01 ]</code></pre>
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
-- [Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
+- [Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver](./sap-high-availability-architecture-scenarios.md)
+- [Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure](./high-availability-guide-suse-pacemaker.md)
 
-     
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2233094]:https://launchpad.support.sap.com/#/notes/2233094
+[1612105]:https://launchpad.support.sap.com/#/notes/1612105
 
+[sles-for-sap-bp]:https://www.suse.com/documentation/sles-for-sap-12/
+[db2-hadr-11.1]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
+[db2-hadr-10.5]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
+[dbms-db2]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm
+[sles-pacemaker]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker
+[sap-instfind]:https://help.sap.com/viewer/9e41ead9f54e44c1ae1a1094b0f80712/ALL/en-US/576f5c1808de4d1abecbd6e503c9ba42.html
+[nfs-ha]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs
+[sles-ha-guide]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP4/
+[ascs-ha]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse
+
+[dbms-guide]:dbms-guide.md
+[deployment-guide]:deployment-guide.md
+[planning-guide]:planning-guide.md
+[azr-sap-plancheck]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist

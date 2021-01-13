@@ -1,26 +1,15 @@
 ---
-title: 'Tutorial: Erstellen der Infrastruktur für einen Service Fabric-Cluster in AWS – Azure Service Fabric | Microsoft-Dokumentation'
+title: Erstellen einer Infrastruktur für einen Cluster in AWS
 description: In diesem Tutorial erfahren Sie, wie Sie die AWS-Infrastruktur zum Ausführen eines Service Fabric-Clusters einrichten.
-services: service-fabric
-documentationcenter: .net
-author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/11/2018
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: c7a18b0dcdc04bdf66ac4b36ce7376ee018eb238
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302474"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842902"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Tutorial: Erstellen der AWS-Infrastruktur zum Hosten eines Service Fabric-Clusters
 
@@ -50,7 +39,7 @@ Klicken Sie auf **Launch Instance** (Instanz starten), und klicken Sie im nächs
 
 ![EC2-Instanzauswahl][aws-ec2instance]
 
-Wählen Sie **t2.medium** und anschließend **Next: Configure Instance Details** (Nächster Schritt: Instanzdetails konfigurieren) aus. Ändern Sie auf dem nächsten Bildschirm die Instanzenanzahl in `3`, und wählen Sie dann **Advanced Details** (Erweiterte Details) aus, um diesen Abschnitt zu erweitern.
+Wählen Sie **t2.medium** aus, und klicken Sie auf **Next: Configure Instance Details** (Nächster Schritt: Instanzdetails konfigurieren). Ändern Sie im nächsten Bildschirm die Instanzenanzahl in `3`, und klicken Sie anschließend auf **Advanced Details** (Erweiterte Details), um diesen Abschnitt zu erweitern.
 
 Damit Ihre virtuellen Computer in Service Fabric miteinander verbunden werden können, müssen die virtuellen Computer, die Ihre Infrastruktur hosten, die gleichen Anmeldeinformationen besitzen.  Konsistente Anmeldeinformationen lassen sich grundsätzlich auf zwei Arten erreichen: Sie können alle der gleichen Domäne hinzufügen oder auf jedem virtuellen Computer das gleiche Administratorkennwort festlegen.  In diesem Tutorial verwenden Sie ein Benutzerdatenskript, um alle EC2-Instanzen mit dem gleichen Kennwort zu konfigurieren.  In einer Produktionsumgebung sollten die Hosts aus Sicherheitsgründen einer Windows-Domäne hinzugefügt werden.
 
@@ -110,7 +99,7 @@ Nachdem Sie über alle IP-Adressen verfügen, wählen Sie zur Verbindungsherstel
 
 Vergewissern Sie sich nach erfolgreicher Verbindungsherstellung mit Ihrer Instanz, dass Sie eine Verbindung zwischen ihnen herstellen und auch Dateien freigeben können.  Sie haben die IP-Adressen für alle Instanzen erfasst. Wählen Sie eine Instanz, mit der momentan keine Verbindung besteht. Geben Sie unter **Start** die Zeichenfolge `cmd` ein, und klicken Sie auf **Eingabeaufforderung**.
 
-In diesen Beispielen wurde die RDP-Verbindung mit der folgenden IP-Adresse hergestellt: 172.31.21.141. Alle Konnektivitätstests werden daher für die andere IP-Adresse durchgeführt: 172.31.20.163.
+In diesen Beispielen wurde die RDP-Verbindung mit der IP-Adresse 172.31.21.141 hergestellt. Die Konnektivitätstests werden daher für eine andere IP-Adresse (172.31.20.163) durchgeführt.
 
 Verwenden Sie zur Überprüfung der grundlegenden Konnektivität den Pingbefehl.
 

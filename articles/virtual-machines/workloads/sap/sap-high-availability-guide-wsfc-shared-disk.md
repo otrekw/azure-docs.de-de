@@ -1,28 +1,204 @@
 ---
-title: Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure | Microsoft-Dokumentation
+title: Clustering von SAP ASCS/SCS-Instanzen auf WSFC mithilfe freigegebener Datenträger in Azure | Microsoft-Dokumentation
 description: Erhalten Sie Informationen zum Clustering von SAP ASCS/SCS-Instanzen auf Windows-Failoverclustern mithilfe freigegebener Clusterdatenträger.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: f6fb85f8-c77a-4af1-bde8-1de7e4425d2e
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
-ms.author: rclaus
+ms.date: 10/16/2020
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 848b15cef43efa62fdff6715bfcfef9819f4e100
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e46aa79bc84f3eba218932c1e8a463584de3f1bb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078273"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488952"
 ---
+# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure
+
+> ![Windows-Betriebssystem][Logo_Windows] Windows
+>
+
+Windows Server-Failoverclustering ist die Grundlage für eine SAP ASCS/SCS-Installation und ein DBMS in Windows mit Hochverfügbarkeit.
+
+Bei einem Failovercluster handelt es sich um eine Gruppe von 1+n unabhängigen Servern, die zur Steigerung der Verfügbarkeit von Anwendungen und Diensten zusammenarbeiten. Wenn ein Knotenfehler auftritt, berechnet das Windows Server-Failoverclustering die Anzahl von Fehlern, die auftreten können, und erhält weiterhin einen fehlerfreien Cluster für die Bereitstellung der Anwendungen und Dienste aufrecht. Sie können zwischen verschiedenen Quorummodi wählen, um das Failoverclustering zu erzielen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+Bevor Sie mit den Aufgaben in diesem Artikel beginnen, lesen Sie den folgenden Artikel:
+
+* [Azure Virtual Machines – Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver][sap-high-availability-architecture-scenarios]
+
+
+## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server-Failoverclustering in Azure
+
+Für das Windows Server-Failoverclustering mit Azure Virtual Machines sind zusätzliche Konfigurationsschritte erforderlich. Wenn Sie einen Cluster erstellen, müssen Sie mehrere IP-Adressen und virtuelle Hostnamen für die SAP ASCS/SCS-Instanz festlegen.
+
+### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Namensauflösung in Azure und Name des virtuellen Hosts für den Cluster
+
+Die Azure-Cloudplattform bietet keine Möglichkeit, virtuelle IP-Adressen, z.B. Floating IP-Adressen, zu konfigurieren. Sie benötigen eine alternative Lösung für die Einrichtung einer virtuellen IP-Adresse, um die Clusterressource in der Cloud zu erreichen. 
+
+Der Azure Load Balancer-Dienst stellt einen *internen Lastenausgleich* für Azure zur Verfügung. Mit dem internen Load Balancer erreichen Clients den Cluster über die virtuelle IP-Adresse des Clusters. 
+
+Stellen Sie den internen Lastenausgleich in der Ressourcengruppe mit den Clusterknoten bereit. Konfigurieren Sie dann alle erforderlichen Portweiterleitungsregeln mithilfe der Testports des internen Lastenausgleichs. Clients können über den virtuellen Hostnamen eine Verbindung herstellen. Der DNS-Server löst die IP-Adresse des Clusters auf. Der interne Load Balancer übernimmt die Weiterleitung an den aktiven Knoten des Clusters.
+
+> [!IMPORTANT]
+> Floating IP-Adressen werden für sekundäre NIC-IP-Konfigurationen in Szenarien mit Lastenausgleich nicht unterstützt. Ausführliche Informationen finden Sie unter [Azure Load Balancer – Einschränkungen](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Wenn Sie zusätzliche IP-Adressen für die VM benötigen, stellen Sie eine zweite NIC bereit.  
+
+![Abbildung 1: Konfiguration des Windows-Failoverclusterings in Azure ohne freigegebenen Datenträger][sap-ha-guide-figure-1001]
+
+_Konfiguration des Windows Server-Failoverclusterings in Azure ohne freigegebenen Datenträger_
+
+### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>SAP ASCS/SCS HA mit freigegebenen Clusterdatenträgern
+In Windows enthält eine SAP ASCS/SCS-Instanz SAP Central Services, SAP Message Server, Serverprozesse zum Einreihen in die Warteschlange und globale SAP-Hostdateien. Globale SAP-Hostdateien speichern zentrale Dateien für das gesamte SAP-System.
+
+Eine SAP ASCS/SCS-Instanz verfügt über die folgenden Komponenten:
+
+* SAP Central Services:
+    * Zwei Prozesse, Nachrichtenserver und Server zum Einreihen in die Warteschlange sowie \<ASCS/SCS virtual host name> für den Zugriff auf diese beiden Prozesse.
+    * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<instance number\>
+
+
+* Globaler SAP-Hostname:
+  * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\SYS\..
+  * Die sapmnt-Dateifreigabe, die den Zugriff auf dieses globalen „S:\usr\sap\\&lt;SID&gt;\SYS\...“-Dateien mithilfe des folgenden UNC-Pfads ermöglicht:
+
+    \\\\<Name des virtuellen ASCS/SCS-Hosts\>\sapmnt\\&lt;SID&gt;\SYS\..
+
+
+![Abbildung 2: Prozesse, Dateistruktur und sapmnt-Dateifreigabe des globalen Hosts einer SAP ASCS/SCS-Instanz][sap-ha-guide-figure-8001]
+
+_Prozesse, Dateistruktur und sapmnt-Dateifreigabe des globalen Hosts einer SAP ASCS/SCS-Instanz_
+
+Bei der Einstellung für die Hochverfügbarkeit erfolgt ein Clustering von SAP ASCS/SCS-Instanzen. Wir verwenden *freigegebene Clusterdatenträger* (in unserem Beispiel ist dies Laufwerk S:\), um Dateien von SAP ASCS/SCS und Dateien des globalen SAP-Hosts zu positionieren.
+
+![Abbildung 3: SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger][sap-ha-guide-figure-8002]
+
+_SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger_
+
+
+Enqueue-Server-Replikation 1-Architektur:
+* Es wird derselbe \<ASCS/SCS virtual host name> für den Zugriff auf Prozesse des SAP Message Servers und des Servers zum Einreihen in die Warteschlange sowie auf Dateien des globalen SAP-Hosts über die sapmnt-Dateifreigabe verwendet.
+* Es wird derselbe freigegebene Clusterdatenträger (Laufwerk S:) gemeinsam genutzt.  
+
+Enqueue-Server-Replikation 2-Architektur: 
+* Es wird derselbe \<ASCS/SCS virtual host name> für den Zugriff auf den SAP-Nachrichtenserverprozess sowie auf Dateien des globalen SAP-Hosts über die sapmnt-Dateifreigabe verwendet.
+* Es wird derselbe freigegebene Clusterdatenträger (Laufwerk S:) gemeinsam genutzt.
+* Es gibt einen separaten \<ERS virtual host name> für den Zugriff auf den Prozess des Servers zum Einreihen in die Warteschlange.  
+
+![Abbildung 4: SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger][sap-ha-guide-figure-8003]
+
+_SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger_
+
+#### <a name="shared-disk-and-enqueue-replication-server"></a>Freigegebener Datenträger und Enqueue Replication Server 
+
+1. Freigegebene Datenträger werden bei der Enqueue-Server-Replikation 1-Architektur unterstützt, wobei für die ERS-Instanz (Enqueue Replication Server) Folgendes gilt:   
+
+   - nicht gruppiert
+   - verwendet `localhost`-Namen
+   - wird auf lokalen Datenträgern auf den einzelnen Clusterknoten bereitgestellt
+
+2. Freigegebene Datenträger werden auch bei der Enqueue-Server-Replikation 2-Architektur unterstützt, wobei für die ERS2-Instanz (Enqueue Replication Server 2) Folgendes gilt:  
+
+   - ist gruppiert
+   - verwendet dedizierten virtuellen/Netzwerkhostnamen
+   - erfordert, dass zusätzlich zur (A)SCS-IP-Adresse die IP-Adresse des virtuellen ERS-Hostnamens auf dem internen Azure Load Balancer konfiguriert wird
+   - wird auf **lokalen Datenträgern** auf den einzelnen Clusterknoten bereitgestellt, sodass kein freigegebener Datenträger erforderlich ist
+
+   > [!TIP]
+   > Weitere Informationen zu Enqueue Replication Server 1 und 2 (ERS1 und ERS2) finden Sie unter folgenden Themen:  
+   > [Enqueue Replication Server in einem Microsoft-Failovercluster](https://help.sap.com/viewer/3741bfe0345f4892ae190ee7cfc53d4c/CURRENT_VERSION_SWPM20/en-US/8abd4b52902d4b17a105c2fabdf5c0cf.html)  
+   > [Neuer Enqueue Replicator in Failoverclusterumgebungen](https://blogs.sap.com/2019/03/19/new-enqueue-replicator-in-failover-cluster-environments/)  
+
+#### <a name="options-for-shared-disk-in-azure-for-sap-workloads"></a>Optionen für freigegebene Datenträger in Azure für SAP-Workloads
+
+Es gibt zwei Optionen für freigegebene Datenträger in einem Windows-Failovercluster in Azure:
+
+- [Freigegebene Azure-Datenträger](../../disks-shared.md): Dieses Feature ermöglicht das gleichzeitige Anfügen verwalteter Azure-Datenträger an mehrere VMs. 
+- Mithilfe der Drittanbietersoftware [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster) können Sie einen gespiegelten Speicher erstellen, der freigegebenen Clusterspeicher simuliert. 
+
+Beachten Sie beim Auswählen der Technologie für freigegebene Datenträger die folgenden Punkte:
+
+**Freigegebener Azure-Datenträger für SAP-Workloads**
+- Ermöglicht das gleichzeitige Anfügen verwalteter Azure-Datenträger an mehrere VMs, ohne dass zusätzliche Software gewartet und ausgeführt werden muss. 
+- Sie arbeiten mit einem einzelnen freigegebenen Azure-Datenträger in einem Speichercluster. Dies wirkt sich auf die Zuverlässigkeit Ihrer SAP-Lösung aus.
+- Derzeit wird nur die Bereitstellung mit freigegebenem Azure-Premium-Datenträger in der Verfügbarkeitsgruppe unterstützt. Ein freigegebener Azure-Datenträger in einer Zonenbereitstellung wird nicht unterstützt.     
+- Stellen Sie sicher, dass der Azure-Premium-Datenträger mit einer minimalen Datenträgergröße entsprechend den Angaben unter [SSD Premium-Bereiche](../../disks-shared.md#disk-sizes) bereitgestellt wird, um die erforderliche Anzahl von VMs gleichzeitig anfügen zu können (normalerweise zwei für den SAP ASCS-Windows-Failovercluster). 
+- Freigegebene Azure Ultra-Datenträger werden für SAP-Workloads nicht unterstützt, da sie keine Bereitstellung in einer Verfügbarkeitsgruppe oder Zonenbereitstellung unterstützen.  
+ 
+**SIOS**
+- Die SIOS-Lösung bietet synchrone Datenreplikation zwischen zwei Datenträgern in Echtzeit.
+- Bei der SIOS-Lösung arbeiten Sie mit zwei verwalteten Datenträgern. Wenn Sie Verfügbarkeitsgruppen oder Verfügbarkeitszonen verwenden, werden die verwalteten Datenträger auf unterschiedliche Speichercluster verteilt. 
+- Die Bereitstellung in Verfügbarkeitszonen wird unterstützt.
+- Erfordert das Installieren und Ausführen von Drittanbietersoftware, die Sie zusätzlich erwerben müssen.
+
+### <a name="shared-disk-using-azure-shared-disk"></a>Freigegebene Datenträger mithilfe freigegebener Azure-Datenträger
+
+Microsoft bietet [freigegebene Azure-Datenträger](../../disks-shared.md) an, mit denen SAP ASCS/SCS-Hochverfügbarkeit mit einem freigegebenen Datenträger implementiert werden kann.
+
+#### <a name="prerequisites-and-limitations"></a>Voraussetzungen und Einschränkungen
+
+Derzeit können Sie Azure SSD Premium-Datenträger als freigegebenen Azure-Datenträger für die SAP ASCS/SCS-Instanz verwenden. Derzeit gelten die folgenden Einschränkungen:
+
+-  Ein [Azure Ultra-Datenträger](../../disks-types.md#ultra-disk) wird nicht als freigegebener Azure-Datenträger für SAP-Workloads unterstützt. Derzeit ist es nicht möglich, Azure-VMs mithilfe eines Azure Ultra-Datenträgers in einer Verfügbarkeitsgruppe zu platzieren.
+-  Ein [freigegebener Azure-Datenträger](../../disks-shared.md) mit SSD Premium-Datenträgern wird nur für VMs in einer Verfügbarkeitsgruppe unterstützt. Bei der Bereitstellung in Verfügbarkeitszonen wird dies nicht unterstützt. 
+-  Der Wert [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) des freigegebenen Azure-Datenträgers bestimmt, wie viele Clusterknoten den freigegebenen Datenträger verwenden können. In der Regel werden für SAP ASCS/SCS-Instanzen zwei Knoten im Windows-Failovercluster konfiguriert. Daher muss der Wert für `maxShares` auf zwei festgelegt werden.
+-  Alle VMs im SAP ASCS/SCS-Cluster müssen in derselben [Azure-Näherungsplatzierungsgruppe](../../windows/proximity-placement-groups.md) (Proximity Placement Group, PPG) bereitgestellt werden.   
+   Zwar können Sie VMs im Windows-Cluster in einer Verfügbarkeitsgruppe mit freigegebenem Azure-Datenträger ohne PPG bereitstellen, doch gewährleistet PPG die physische Nähe von freigegebenen Azure-Datenträgern und Cluster-VMs und erzielt somit eine geringere Latenz zwischen den VMs und der Speicherebene.    
+
+Weitere Informationen zu Einschränkungen für freigegebene Azure-Datenträger finden Sie im Abschnitt [Einschränkungen](../../disks-shared.md#limitations) der entsprechenden Dokumentation.
+
+> [!IMPORTANT]
+> Beachten Sie beim Bereitstellen des SAP ASCS/SCS-Windows-Failoverclusters mit freigegebenem Azure-Datenträger, dass die Bereitstellung mit einem einzelnen freigegebenen Datenträger in nur einem Speichercluster erfolgt. Probleme mit dem Speichercluster, in dem der freigegebene Azure-Datenträger bereitgestellt wird, beeinträchtigen Ihre SAP ASCS/SCS-Instanz.    
+
+> [!TIP]
+> Wichtige Überlegungen zur Planung der SAP-Bereitstellung finden Sie im [Azure-Planungshandbuch für SAP NetWeaver](./planning-guide.md) und im [Azure Storage-Handbuch für SAP-Workloads](./planning-guide-storage.md).
+
+### <a name="supported-os-versions"></a>Unterstützte Betriebssystemversionen
+
+Sowohl Windows Server 2016 als auch 2019 werden unterstützt (verwenden Sie die neuesten Datacenter-Images).
+
+Aus folgenden Gründen wird dringend empfohlen, **Windows Server 2019 Datacenter** zu verwenden:
+- Der Windows 2019-Failoverclusterdienst ist Azure-fähig.
+- Durch die Überwachung auf geplante Azure-Ereignisse werden Integration und Kenntnisse über die Azure-Hostwartung sowie verbesserte Benutzerfreundlichkeit erzielt.
+- Es kann der Name des verteilten Netzwerks (Standardoption) verwendet werden. Dadurch ist keine dedizierte IP-Adresse für den Namen des Clusternetzwerks erforderlich. Außerdem muss diese IP-Adresse nicht auf dem internen Azure Load Balancer konfiguriert werden. 
+
+### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Freigegebener Datenträger in Azure mit SIOS DataKeeper
+
+Eine weitere Option für freigegebene Datenträger ist die Verwendung der Drittanbietersoftware SIOS DataKeeper Cluster Edition, die es Ihnen ermöglicht, einen gespiegelten Speicher zu erstellen, der freigegebenen Clusterspeicher simuliert. Die SIOS-Lösung bietet eine synchrone Datenreplikation in Echtzeit.
+
+So erstellen Sie eine freigegebene Datenträgerressource für einen Cluster
+
+1. Fügen Sie einen zusätzlichen Datenträger an sämtliche virtuelle Computer in einer Windows-Clusterkonfiguration an.
+2. Führen Sie SIOS DataKeeper Cluster Edition auf beiden virtuellen Computerknoten aus.
+3. Konfigurieren Sie SIOS DataKeeper Cluster Edition so, dass synchron der Inhalt des zusätzlich angefügten Datenträgervolumes vom virtuellen Quellcomputer im zusätzlich angefügten Datenträgervolume des virtuellen Zielcomputers gespiegelt wird. SIOS DataKeeper abstrahiert die lokalen Quell- und Zielvolumes und präsentiert diese beim Windows Server-Failoverclustering als einen freigegebenen Datenträger.
+
+Weitere Informationen zu [SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/).
+
+![Abbildung 5: Konfiguration des Windows Server-Failoverclusterings in Azure mit SIOS DataKeeper][sap-ha-guide-figure-1002]
+
+_Konfiguration des Windows-Failoverclusterings in Azure mit SIOS DataKeeper_
+
+> [!NOTE]
+> Sie benötigen bei einigen DBMS-Produkten wie SQL Server für Hochverfügbarkeit keine freigegebenen Datenträger. SQL Server AlwaysOn führt die Replikation von DBMS-Daten- und -Protokolldateien vom lokalen Datenträger eines Clusterknotens auf den lokalen Datenträger eines anderen Clusterknotens durch. In diesem Fall ist bei der Windows-Clusterkonfiguration kein freigegebener Datenträger erforderlich.
+>
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Vorbereiten der Azure-Infrastruktur für SAP HA mit einem Windows-Failovercluster und einem freigegebenen Datenträger für eine SAP ASCS/SCS-Instanz][sap-high-availability-infrastructure-wsfc-shared-disk]
+
+* [SAP NetWeaver HA-Installation auf einem Windows-Failovercluster und freigegebenen Datenträger für eine SAP ASCS/SCS-Instanz][sap-high-availability-installation-wsfc-shared-disk]
+
+
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553
@@ -31,8 +207,8 @@ ms.locfileid: "70078273"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -178,103 +354,6 @@ ms.locfileid: "70078273"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
-
-# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure
-
-> ![Windows][Logo_Windows] Windows
->
-
-Windows Server-Failoverclustering ist die Grundlage für eine SAP ASCS/SCS-Installation und ein DBMS in Windows mit Hochverfügbarkeit.
-
-Bei einem Failovercluster handelt es sich um eine Gruppe von 1+n unabhängigen Servern, die zur Steigerung der Verfügbarkeit von Anwendungen und Diensten zusammenarbeiten. Wenn ein Knotenfehler auftritt, berechnet das Windows Server-Failoverclustering die Anzahl von Fehlern, die auftreten können, und erhält weiterhin einen fehlerfreien Cluster für die Bereitstellung der Anwendungen und Dienste aufrecht. Sie können zwischen verschiedenen Quorummodi wählen, um das Failoverclustering zu erzielen.
-
-## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie mit den Aufgaben in diesem Artikel beginnen, lesen Sie den folgenden Artikel:
-
-* [Azure Virtual Machines-Architektur für Hochverfügbarkeit und Szenarien für SAP NetWeaver][sap-high-availability-architecture-scenarios]
-
-
-## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server-Failoverclustering in Azure
-
-Im Vergleich zu Bare-Metal- oder privaten Cloudbereitstellungen sind für virtuelle Azure-Computer zusätzliche Schritte erforderlich, um Windows Server-Failoverclustering zu konfigurieren. Wenn Sie einen Cluster erstellen, müssen Sie mehrere IP-Adressen und virtuelle Hostnamen für die SAP ASCS/SCS-Instanz festlegen.
-
-### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Namensauflösung in Azure und Name des virtuellen Hosts für den Cluster
-
-Die Azure-Cloudplattform bietet keine Möglichkeit, virtuelle IP-Adressen, z.B. Floating IP-Adressen, zu konfigurieren. Sie benötigen eine alternative Lösung für die Einrichtung einer virtuellen IP-Adresse, um die Clusterressource in der Cloud zu erreichen. 
-
-Der Azure Load Balancer-Dienst stellt einen *internen Lastenausgleich* für Azure zur Verfügung. Mit dem internen Load Balancer erreichen Clients den Cluster über die virtuelle IP-Adresse des Clusters. 
-
-Stellen Sie den internen Lastenausgleich in der Ressourcengruppe mit den Clusterknoten bereit. Konfigurieren Sie dann alle erforderlichen Portweiterleitungsregeln mithilfe der Testports des internen Lastenausgleichs. Clients können über den virtuellen Hostnamen eine Verbindung herstellen. Der DNS-Server löst die IP-Adresse des Clusters auf. Der interne Load Balancer übernimmt die Weiterleitung an den aktiven Knoten des Clusters.
-
-![Abbildung 1: Konfiguration des Windows-Failoverclusterings in Azure ohne freigegebenen Datenträger][sap-ha-guide-figure-1001]
-
-_**Abbildung 1:** Konfiguration des Windows Server-Failoverclusterings in Azure ohne freigegebenen Datenträger_
-
-### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>SAP ASCS/SCS HA mit freigegebenen Clusterdatenträgern
-In Windows enthält eine SAP ASCS/SCS-Instanz SAP Central Services, SAP Message Server, Serverprozesse zum Einreihen in die Warteschlange und globale SAP-Hostdateien. Globale SAP-Hostdateien speichern zentrale Dateien für das gesamte SAP-System.
-
-Eine SAP ASCS/SCS-Instanz verfügt über die folgenden Komponenten:
-
-* SAP Central Services:
-    * Zwei Prozesse, Nachrichtenserver und Server zum Einreihen in die Warteschlange sowie ein \<virtueller ASCS/SCS-Hostname> für den Zugriff auf diese beiden Prozesse.
-    * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<Instanzanzahl\>
-
-
-* Globaler SAP-Hostname:
-  * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\SYS\..
-  * Die sapmnt-Dateifreigabe, die den Zugriff auf dieses globalen „S:\usr\sap\\&lt;SID&gt;\SYS\...“-Dateien mithilfe des folgenden UNC-Pfads ermöglicht:
-
-    \\\\<Name des virtuellen ASCS/SCS-Hosts\>\sapmnt\\&lt;SID&gt;\SYS\..
-
-
-![Abbildung 2: Prozesse, Dateistruktur und sapmnt-Dateifreigabe des globalen Hosts einer SAP ASCS/SCS-Instanz][sap-ha-guide-figure-8001]
-
-_**Abbildung 2:** Prozesse, Dateistruktur und sapmnt-Dateifreigabe des globalen Hosts einer SAP ASCS/SCS-Instanz_
-
-Bei der Einstellung für die Hochverfügbarkeit erfolgt ein Clustering von SAP ASCS/SCS-Instanzen. Wir verwenden *freigegebene Clusterdatenträger* (in unserem Beispiel ist dies Laufwerk S:\), um Dateien von SAP ASCS/SCS und Dateien des globalen SAP-Hosts zu positionieren.
-
-![Abbildung 3: SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger][sap-ha-guide-figure-8002]
-
-_**Abbildung 3:** SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger_
-
-> [!IMPORTANT]
-> Diese beiden Komponenten werden unter der gleichen SAP ASCS/SCS-Instanz ausgeführt:
->* Es wird derselbe \<virtuelle ASCS/SCS-Hostname> für den Zugriff auf Prozesse des SAP Message Servers und des Servers zum Einreihen in die Warteschlange sowie auf Dateien des globalen SAP-Hosts über die sapmnt-Dateifreigabe verwendet.
->* Es wird derselbe freigegebene Clusterdatenträger (Laufwerk S:) gemeinsam genutzt.
->
-
-
-![Abbildung 4: SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger][sap-ha-guide-figure-8003]
-
-_**Abbildung 4:** SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger_
-
-### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Freigegebener Datenträger in Azure mit SIOS DataKeeper
-
-Sie benötigen freigegebenen Clusterspeicher für eine hoch verfügbare SAP ASCS/SCS-Instanz.
-
-Die Drittanbietersoftware SIOS DataKeeper Cluster Edition ermöglicht es Ihnen, einen gespiegelten Speicher zu erstellen, der freigegebenen Clusterspeicher simuliert. Die SIOS-Lösung bietet eine synchrone Datenreplikation in Echtzeit.
-
-So erstellen Sie eine freigegebene Datenträgerressource für einen Cluster
-
-1. Fügen Sie einen zusätzlichen Datenträger an sämtliche virtuelle Computer in einer Windows-Clusterkonfiguration an.
-2. Führen Sie SIOS DataKeeper Cluster Edition auf beiden virtuellen Computerknoten aus.
-3. Konfigurieren Sie SIOS DataKeeper Cluster Edition so, dass synchron der Inhalt des zusätzlich angefügten Datenträgervolumes vom virtuellen Quellcomputer im zusätzlich angefügten Datenträgervolume des virtuellen Zielcomputers gespiegelt wird. SIOS DataKeeper abstrahiert die lokalen Quell- und Zielvolumes und präsentiert diese beim Windows Server-Failoverclustering als einen freigegebenen Datenträger.
-
-Weitere Informationen zu [SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/).
-
-![Abbildung 5: Konfiguration des Windows Server-Failoverclusterings in Azure mit SIOS DataKeeper][sap-ha-guide-figure-1002]
-
-_**Abbildung 5:** Konfiguration des Windows-Failoverclusterings in Azure mit SIOS DataKeeper_
-
-> [!NOTE]
-> Sie benötigen bei einigen DBMS-Produkten wie SQL Server für Hochverfügbarkeit keine freigegebenen Datenträger. SQL Server AlwaysOn führt die Replikation von DBMS-Daten- und -Protokolldateien vom lokalen Datenträger eines Clusterknotens auf den lokalen Datenträger eines anderen Clusterknotens durch. In diesem Fall ist bei der Windows-Clusterkonfiguration kein freigegebener Datenträger erforderlich.
->
-
-## <a name="next-steps"></a>Nächste Schritte
-
-* [Vorbereiten der Azure-Infrastruktur für SAP HA mit einem Windows-Failovercluster und einem freigegebenen Datenträger für eine SAP ASCS/SCS-Instanz][sap-high-availability-infrastructure-wsfc-shared-disk]
-
-* [SAP NetWeaver HA-Installation auf einem Windows-Failovercluster und freigegebenen Datenträger für eine SAP ASCS/SCS-Instanz][sap-high-availability-installation-wsfc-shared-disk]

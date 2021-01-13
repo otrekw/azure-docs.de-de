@@ -1,38 +1,39 @@
 ---
-title: Ausführen von Workloads auf kostengünstigen VMs mit niedriger Priorität – Azure Batch | Microsoft-Dokumentation
+title: Ausführen von Workloads auf kostengünstigen VMs mit niedriger Priorität
 description: Erfahren Sie, wie Sie VMs mit niedriger Priorität bereitstellen, um die Kosten von Azure Batch-Workloads zu verringern.
-services: batch
 author: mscurrell
-manager: gwallace
-ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
-ms.service: batch
-ms.topic: article
-ms.workload: na
-ms.date: 03/19/2018
-ms.author: markscu
+ms.topic: how-to
+ms.date: 09/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 33d448bc95f4cb12f5a06232cbab168a43d522c1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bd5b73cf55110985a2e7eecbc161c77ca6d645cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095196"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89568454"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Verwenden von VMs mit niedriger Priorität mit Batch
 
 Azure Batch bietet virtuelle Computer (VMs) mit niedriger Priorität, um die Kosten für Batch-Workloads zu verringern. Durch VMs mit niedriger Priorität werden neue Typen von Batchworkloads möglich, indem eine große Menge an Computeleistung zu sehr niedrigen Kosten bereitgestellt wird.
- 
+
 VMs mit niedriger Priorität nutzen überschüssige Kapazitäten in Azure. Wenn Sie VMs mit niedriger Priorität in Pools angeben, kann Azure Batch diesen Überschuss nutzen, sobald er zur Verfügung steht.
- 
-Die Verwendung von VMs mit niedriger Priorität hat jedoch auch Nachteile: Möglicherweise stehen diese VMs für eine Zuweisung gerade nicht zur Verfügung, und sie können jederzeit vorzeitig entfernt werden, je nach der verfügbaren Kapazität. Aus diesem Grund sind VMs mit niedriger Priorität am besten für bestimmte Arten von Workloads geeignet. Verwenden Sie VMs mit niedriger Priorität für Batch und asynchrone Verarbeitungsworkloads, bei denen der Zeitpunkt des Auftragsabschlusses flexibel ist und die Arbeit über viele VMs verteilt wird.
- 
+
+Die Verwendung von VMs mit niedriger Priorität hat jedoch auch Nachteile: Möglicherweise stehen diese VMs für eine Zuweisung nicht immer zur Verfügung, und sie können jederzeit vorzeitig entfernt werden, je nach verfügbarer Kapazität. Aus diesem Grund sind VMs mit niedriger Priorität am besten für bestimmte Arten von Workloads geeignet. Verwenden Sie VMs mit niedriger Priorität für Batch und asynchrone Verarbeitungsworkloads, bei denen der Zeitpunkt des Auftragsabschlusses flexibel ist und die Arbeit über viele VMs verteilt wird.
+
 VMs mit niedriger Priorität werden im Vergleich zu dedizierten VMs zu einem deutlich günstigeren Preis angeboten. Ausführliche Preisinformationen finden Sie unter [Preise für Batch](https://azure.microsoft.com/pricing/details/batch/).
+
+> [!NOTE]
+> [Spot-VMs](https://azure.microsoft.com/pricing/spot/) sind jetzt für [VMs mit einer einfachen Instanz](../virtual-machines/spot-vms.md) und [VM-Skalierungsgruppen](../virtual-machine-scale-sets/use-spot.md) verfügbar. Spot-VMs sind eine Weiterentwicklung von VMs mit niedriger Priorität, unterscheiden sich aber dadurch, dass die Preise variieren können und bei der Zuweisung von Spot-VMs ein optionaler Maximalpreis festgelegt werden kann.
+>
+> Azure Batch-Pools unterstützen in wenigen Monaten Spot-VMs und sind dann mit neuen Versionen der [Batch-APIs und -Tools](./batch-apis-tools.md) allgemein verfügbar. Sobald die Unterstützt für Spot-VMs verfügbar ist, werden VMs mit niedriger Priorität für mindestens 12 Monate weiterhin unterstützt, indem die aktuellen API- und Toolversionen verwendet werden, damit ausreichend Zeit für die Migration zu Spot-VMs bleibt. 
+>
+> Spot-VMs werden für [Clouddienstkonfigurations](/rest/api/batchservice/pool/add#cloudserviceconfiguration)-Pools nicht unterstützt. Um Spot-VMs verwenden zu können, müssen Clouddienstpools zu [VM-Konfigurations](/rest/api/batchservice/pool/add#virtualmachineconfiguration)pools migriert werden.
 
 ## <a name="use-cases-for-low-priority-vms"></a>Anwendungsfälle für VMs mit niedriger Priorität
 
 Welche Workloads sind aufgrund der besonderen Merkmale von VMs mit niedriger Priorität für diese geeignet? Im Allgemeinen sind Batch-Workloads gut geeignet, da die Aufträge in viele parallele Aufgaben aufgeteilt werden oder viele Aufträge vorhanden sind, die horizontal hochskaliert und auf viele VMs verteilt werden.
 
--   Zur Maximierung der Verwendung von überschüssigen Kapazitäten in Azure können geeignete Aufträge horizontal hochskaliert werden.
+-   Zur Maximierung der Verwendung von überschüssigen Kapazitäten in Azure können geeignete Aufträge aufskaliert werden.
 
 -   Gelegentlich sind die VMs möglicherweise nicht verfügbar oder werden vorzeitig entfernt. Dies führt zu einer verringerten Kapazität für Aufträge und damit möglicherweise zu Unterbrechungen und einem erneutem Ausführen von Aufgaben. Aufträge müssen daher flexibel in der zeitlichen Dauer ihrer Ausführung sein.
 
@@ -70,8 +71,7 @@ Azure Batch stellt verschiedene Funktionen bereit, die die vorteilhafte Nutzung 
     Das Kontingent für VMs mit niedriger Priorität ist höher als bei dedizierten VMs, da VMs mit niedriger Priorität weniger kosten. Weitere Informationen finden Sie im Artikel [Batch-Dienst – Kontingente und Limits](batch-quota-limit.md#resource-quotas).    
 
 > [!NOTE]
-> VMs mit niedriger Priorität werden derzeit für Batch-Konten, die im Modus [Benutzerabonnement](batch-api-basics.md#account) erstellt wurden, nicht unterstützt.
->
+> VMs mit niedriger Priorität werden derzeit für Batch-Konten, die im Modus [Benutzerabonnement](accounts.md) erstellt wurden, nicht unterstützt.
 
 ## <a name="create-and-update-pools"></a>Erstellen und Aktualisieren von Pools
 
@@ -123,7 +123,7 @@ Poolknoten weisen eine Eigenschaft auf, die angibt, ob es sich bei einem Knoten 
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-Wenn ein oder mehrere Knoten in einem Pool vorzeitig entfernt werden, gibt ein Listenknotenvorgang im Pool diese Knoten weiterhin zurück. Die aktuelle Anzahl der Knoten mit niedriger Priorität bleibt unverändert, doch der Status dieser Knoten wird auf den Zustand **Vorzeitig entfernt** festgelegt. Batch versucht, Ersatz-VMs zu finden, und bei erfolgreicher Suche durchlaufen die Knoten die Zustände **Wird erstellt** und dann **Wird gestartet**, bevor sie für die Aufgabenausführung verfügbar sind – genau wie neue Knoten.
+Bei VM-Konfigurationspools gibt ein Listenknotenvorgang für den Pool alle Knoten weiterhin zurück, wenn ein oder mehrere Knoten vorzeitig entfernt werden. Die aktuelle Anzahl der Knoten mit niedriger Priorität bleibt unverändert, doch der Status dieser Knoten wird auf den Zustand **Vorzeitig entfernt** festgelegt. Batch versucht, Ersatz-VMs zu finden, und bei erfolgreicher Suche durchlaufen die Knoten die Zustände **Wird erstellt** und dann **Wird gestartet**, bevor sie für die Aufgabenausführung verfügbar sind – genau wie neue Knoten.
 
 ## <a name="scale-a-pool-containing-low-priority-vms"></a>Skalieren eines Pools mit VMs mit niedriger Priorität
 
@@ -142,7 +142,7 @@ Die Formel für die automatische Skalierung des Pools unterstützt VMs mit niedr
 -   Den Wert der vom Dienst definierten Variable **$CurrentLowPriorityNodes** können Sie abrufen.
 
 -   Den Wert der vom Dienst definierten Variable **$PreemptedNodeCount** können Sie abrufen. 
-    Diese Variable gibt die Anzahl der Knoten mit dem Status „Vorzeitig entfernt“ zurück und ermöglicht Ihnen, die Anzahl der dedizierten Knoten abhängig von der Anzahl der nicht verfügbaren vorzeitig entfernten Knoten zentral hoch oder herunter zu skalieren.
+    Diese Variable gibt die Anzahl der Knoten mit dem Status „Vorzeitig entfernt“ zurück und ermöglicht Ihnen, die Anzahl der dedizierten Knoten abhängig von der Anzahl der nicht verfügbaren vorzeitig entfernten Knoten hoch- oder herunterzuskalieren.
 
 ## <a name="jobs-and-tasks"></a>Aufträge und Aufgaben
 
@@ -155,10 +155,11 @@ Aufträge und Aufgaben erfordern nur wenige zusätzliche Konfigurationen für Kn
 
 ## <a name="handling-preemption"></a>Behandeln der vorzeitigen Entfernung
 
-VMs werden gelegentlich vorzeitig entfernt. In diesem Fall geschieht in Batch Folgendes:
+VMs können gelegentlich vorzeitig entfernt werden. Wenn dies geschieht, werden Tasks, die auf den VMs mit einem vorzeitig entfernten Knoten ausgeführt wurden, noch mal in die Warteschlange gestellt und nochmal ausgeführt.
+
+Für Konfigurationspools für virtuelle Computer führt Azure Batch auch folgende Aktionen aus:
 
 -   Der Status der vorzeitig entfernten VMs wird in **Vorzeitig entfernt** geändert.
--   Wenn auf den VMs der vorzeitig entfernten Knoten Aufgaben ausgeführt wurden, werden diese Aufgaben wieder in die Warteschlange gestellt und erneut ausgeführt.
 -   Die VM wird effektiv gelöscht, sodass alle auf der VM lokal gespeicherten Daten verloren gehen.
 -   Der Pool versucht fortlaufend, die Zielanzahl der verfügbaren Knoten mit niedriger Priorität zu erreichen. Wenn Ersatzkapazitäten gefunden werden, behalten die Knoten ihre IDs bei, werden jedoch erneut initialisiert und durchlaufen wieder die Zustände **Wird erstellt** und **Wird gestartet**, bevor sie zum Planen von Aufgaben verfügbar sind.
 -   Die Anzahl der vorzeitigen Entfernungen ist als Metrik im Azure-Portal verfügbar.
@@ -168,7 +169,7 @@ VMs werden gelegentlich vorzeitig entfernt. In diesem Fall geschieht in Batch Fo
 Im [Azure-Portal](https://portal.azure.com) sind neue Metriken für Knoten mit niedriger Priorität verfügbar. Diese Metriken sind:
 
 - Anzahl der Knoten mit niedriger Priorität
-- Anzahl von Kernen mit niedriger Priorität 
+- Anzahl von Kernen mit niedriger Priorität
 - Anzahl der vorzeitig entfernten Knoten
 
 Metriken im Azure-Portal anzeigen:
@@ -177,9 +178,10 @@ Metriken im Azure-Portal anzeigen:
 2. Wählen Sie **Metriken** im Abschnitt **Überwachung** aus.
 3. Wählen Sie die Metriken, die Sie erhalten möchten, aus der Liste **Verfügbare Metriken** aus.
 
-![Metriken für Knoten mit niedriger Priorität](media/batch-low-pri-vms/low-pri-metrics.png)
+![Screenshot, der die Metrikauswahl für Knoten mit niedriger Priorität zeigt](media/batch-low-pri-vms/low-pri-metrics.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sehen Sie sich die [Übersicht über Batch-Features für Entwickler](batch-api-basics.md) an. Diese enthält wichtige Informationen für Entwickler, die sich auf die Verwendung von Batch vorbereiten möchten. Der Artikel enthält ausführliche Informationen zu Batch-Dienstressourcen wie Pools, Knoten, Aufträgen und Aufgaben sowie zu den zahlreichen API-Funktionen, die beim Erstellen der Batch-Anwendung verwendet werden können.
-* Informieren Sie sich über die [Batch-APIs und Tools](batch-apis-tools.md), die für die Erstellung von Batch-Lösungen verfügbar sind.
+- Erfahren Sie mehr über den [Workflow des Batch-Diensts und primäre Ressourcen](batch-service-workflow-features.md) wie Pools, Knoten, Aufträge und Aufgaben.
+- Informieren Sie sich über die [Batch-APIs und Tools](batch-apis-tools.md), die für die Erstellung von Batch-Lösungen verfügbar sind.
+- Beginnen Sie mit der Planung der Umstellung von VMs mit niedriger Priorität auf Spot-VMs. Wenn Sie VMs mit niedriger Priorität mit **Clouddienstkonfigurations**-Pools verwenden, planen Sie, auf **VM-Konfigurations**pools umzusteigen.

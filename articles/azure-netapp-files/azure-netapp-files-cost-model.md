@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: aea783b818550b8219e1a0498256280f61f678e1
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 9c4eebae6909c9ef0969bc85bcb9a985db2a7c02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995116"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325605"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Kostenmodell für Azure NetApp Files 
 
-Das Verstehen des Kostenmodells für Azure NetApp Files hilft Ihnen bei der Verwaltung von auf den Dienst bezogenen Ausgaben.
+Das Verstehen des Kostenmodells für Azure NetApp Files hilft Ihnen bei der Verwaltung von auf den Dienst bezogenen Ausgaben. 
+
+Informationen zu speziellen Kostenmodellen für die regionsübergreifende Replikation finden Sie unter [Kostenmodell für die regionsübergreifende Replikation](cross-region-replication-introduction.md#cost-model-for-cross-region-replication).
 
 ## <a name="calculation-of-capacity-consumption"></a>Berechnung der Kapazitätsnutzung
 
@@ -51,6 +53,8 @@ Die folgende Abbildung veranschaulicht diese Konzepte.
 
 Wenn die insgesamt genutzte Kapazität eines Pools dessen bereitgestellte Kapazität überschreitet, sind Datenschreibvorgänge weiterhin zulässig.  Wenn nach Ablauf der Karenzzeit (eine Stunde) die genutzte Kapazität des Pools seine bereitgestellte Kapazität immer noch überschreitet, wird die Poolgröße automatisch in Schritten von 1 TiB erhöht, bis die bereitgestellte Kapazität größer als die gesamte genutzte Kapazität ist.  Wenn beispielsweise in der obigen Abbildung das Volume 3 weiter wächst und die tatsächliche Nutzung 1,2 TiB erreicht, wird der Pool nach Ablauf der Karenzzeit automatisch auf 5 TiB verkleinert.  Das Ergebnis ist, dass die bereitgestellten Poolkapazität (5 TiB) die genutzte Kapazität (4,2 TiB) überschreitet.  
 
+Der Kapazitätspool wird zwar automatisch vergrößert, um die Anforderungen des Volumes zu erfüllen, aber nicht automatisch verkleinert, wenn die Volumegröße abnimmt. Wenn Sie den Kapazitätspool verkleinern möchten, nachdem die Volumegröße abgenommen hat (etwa nach der Datenbereinigung eines Volumes), müssen Sie die Größe des Kapazitätspools manuell _verringern_.
+
 ## <a name="manual-changes-of-the-pool-size"></a>Manuelle Änderungen der Poolgröße  
 
 Sie können die Poolgröße manuell erhöhen oder verringern. Es gelten jedoch die folgenden Einschränkungen:
@@ -59,6 +63,7 @@ Sie können die Poolgröße manuell erhöhen oder verringern. Es gelten jedoch d
 * Ein 1-TiB-Schritt nach anfänglichem Kauf der Mindestgröße von 4 TiB
 * Mindestabrechnungsschritt von einer Stunde
 * Die Größe des bereitgestellten Pools darf nicht kleiner sein als die gesamte im Pool genutzte Kapazität.
+* Bei Kapazitätspools mit manueller QoS kann die Poolgröße nur verringert werden, wenn der aufgrund der Größe und Dienstebene bereitgestellte Durchsatz höher ist als der tatsächlich zugewiesene Durchsatz aller Volumes.
 
 ## <a name="behavior-of-maximum-size-pool-overage"></a>Verhalten bei Überschreitung der maximalen Poolgröße   
 
@@ -92,3 +97,4 @@ Die Kapazitätsnutzung von Momentaufnahmen in Azure NetApp Files wird mit dem Ko
 * [Seite mit den Preisen von Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/)
 * [Dienstebenen für Azure NetApp Files](azure-netapp-files-service-levels.md)
 * [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md)
+* [Kostenmodell für die regionsübergreifende Replikation](cross-region-replication-introduction.md#cost-model-for-cross-region-replication)

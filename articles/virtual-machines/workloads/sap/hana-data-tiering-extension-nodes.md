@@ -3,22 +3,23 @@ title: Data Tiering und Extension Nodes für SAP HANA in Azure (große Instanzen
 description: Data Tiering und Extension Nodes für SAP HANA in Azure (große Instanzen)
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 261009edc20f946fa86f0482d8ab5045f4b4f84b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9a1fc1c3b332d033e453db11ce4451cd626c4217
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099844"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967804"
 ---
 # <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>Verwenden von SAP HANA Data Tiering und Extension Nodes
 

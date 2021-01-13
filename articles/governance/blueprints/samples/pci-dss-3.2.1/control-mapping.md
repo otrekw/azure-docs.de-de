@@ -1,28 +1,23 @@
 ---
-title: Beispiel – Blaupause PCI-DSS v3.2.1 – Steuerungszuordnung
-description: Steuerungszuordnung des Blaupausenbeispiels Payment Card Industry Data Security Standard v3.2.1 zu Azure Policy und RBAC.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 06/24/2019
-ms.topic: conceptual
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 2ec299a79f852c553763439290b014a91d3a9414
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+title: Steuerungen des Blaupausenbeispiels „PCI-DSS v3.2.1“
+description: Steuerungszuordnung des Blaupausenbeispiels „Payment Card Industry Data Security Standard v3.2.1“ zu Azure Policy und Azure RBAC
+ms.date: 08/19/2020
+ms.topic: sample
+ms.openlocfilehash: 7391b32b23f6f0fb8b337a8178b83cffd7dba69b
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918600"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955687"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels PCI-DSS v3.2.1
 
 In diesem Artikel wird erläutert, wie das Blaupausenbeispiel PCI-DSS v3.2.1 von Azure Blueprints den Steuerungen von PCI-DSS v3.2.1 zugeordnet wird. Weitere Informationen zu den Steuerungen finden Sie unter [PCI-DSS v3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf).
 
-Die folgenden Zuordnungen gelten für die Steuerungen unter **PCI-DSS v3.2.1:2018**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Suchen Sie anschließend die integrierte Richtlinieninitiative **\[Vorschau\] PCI v3.2.1:2018-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen**, und wählen Sie sie aus.
+Die folgenden Zuordnungen gelten für die Steuerungen unter **PCI-DSS v3.2.1:2018**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Suchen Sie anschließend die integrierte Richtlinieninitiative **PCI v3.2.1:2018**, und wählen Sie sie aus.
 
 > [!IMPORTANT]
-> Jede Steuerung unten ist einer oder mehreren [Azure Policy](../../../policy/overview.md)-Definitionen zugeordnet. Diese Richtlinien können Ihnen bei der [Konformitätsbewertung](../../../policy/how-to/get-compliance-data.md) mit der Steuerung helfen. Es gibt jedoch oft keine 1:1- oder vollständige Übereinstimmung zwischen einer Steuerung und einer bzw. mehreren Richtlinien. Daher bezieht sich **Konform** in Azure Policy nur auf die Richtlinien selbst und gewährleistet nicht die vollständige Konformität mit allen Anforderungen einer Steuerung. Außerdem enthält der Kompatibilitätsstandard Steuerungen, die derzeit von keiner Azure Policy-Definitionen abgedeckt werden. Daher ist die Konformität in Azure Policy nur eine partielle Ansicht Ihres gesamten Konformitätsstatus. Die Zuordnungen zwischen Steuerungen und Azure Policy-Definitionen für dieses Konformitätsblaupausenbeispiel können sich im Laufe der Zeit ändern. Den Änderungsverlaufs finden Sie im [GitHub-Commit-Verlauf](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md).
+> Jede Steuerung unten ist einer oder mehreren [Azure Policy](../../../policy/overview.md)-Definitionen zugeordnet. Diese Richtlinien können Ihnen bei der [Konformitätsbewertung](../../../policy/how-to/get-compliance-data.md) mit der Steuerung helfen. Es gibt jedoch oft keine 1:1- oder vollständige Übereinstimmung zwischen einer Steuerung und einer bzw. mehreren Richtlinien. Daher bezieht sich **Konform** in Azure Policy nur auf die Richtlinien selbst und gewährleistet nicht die vollständige Konformität mit allen Anforderungen einer Steuerung. Außerdem enthält der Kompatibilitätsstandard Steuerungen, die derzeit von keiner Azure Policy-Definition abgedeckt werden. Daher ist die Konformität in Azure Policy nur eine partielle Ansicht Ihres gesamten Konformitätsstatus. Die Zuordnungen zwischen Steuerungen und Azure Policy-Definitionen für dieses Konformitätsblaupausenbeispiel können sich im Laufe der Zeit ändern. Den Änderungsverlaufs finden Sie im [GitHub-Commit-Verlauf](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md).
 
 ## <a name="132-and-134-boundary-protection"></a>1.3.2 und 1.3.4 Schutz von Grenzen
 
@@ -68,7 +63,7 @@ Bei nur einem Azure-Abonnementbesitzer ist keine administrative Redundanz mögli
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3.2, 7.2.1, 8.3.1.a und 8.3.1.b Verwaltung von Rechten für den privilegierten Zugriff
 
-Mit dieser Blaupause können Sie Rechte für den privilegierten Zugriff einschränken und steuern, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, um externe Konten mit Besitzer-, Schreib- und/oder Leseberechtigungen und Mitarbeiterkonten mit Besitzer- und/oder Schreibberechtigungen ohne aktivierte mehrstufige Authentifizierung zu überwachen. In Azure ist die rollenbasierte Zugriffssteuerung (RBAC) zur Verwaltung des Zugriffs auf Azure-Ressourcen implementiert. Wenn Sie wissen, wo benutzerdefinierte RBAC-Regeln implementiert sind, können Sie den Bedarf und die ordnungsgemäße Implementierung überprüfen, da benutzerdefinierte RBAC-Regeln fehleranfällig sind. Diese Blaupause weist auch [Azure Policy](../../../policy/overview.md)-Definitionen zu, um die Verwendung der Azure Active Directory-Authentifizierung für SQL-Server-Instanzen zu überwachen. Die Verwendung der Azure Active Directory-Authentifizierung vereinfacht die Verwaltung von Berechtigungen und zentralisiert die Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft  
+Mit dieser Blaupause können Sie Rechte für den privilegierten Zugriff einschränken und steuern, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, um externe Konten mit Besitzer-, Schreib- und/oder Leseberechtigungen und Mitarbeiterkonten mit Besitzer- und/oder Schreibberechtigungen ohne aktivierte mehrstufige Authentifizierung zu überwachen. Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie verwalten, wer Zugriff auf Azure-Ressourcen hat. Wenn Sie wissen, wo benutzerdefinierte Azure RBAC-Regeln implementiert sind, können Sie den Bedarf und die ordnungsgemäße Implementierung überprüfen, da benutzerdefinierte Azure RBAC-Regeln fehleranfällig sind. Diese Blaupause weist auch [Azure Policy](../../../policy/overview.md)-Definitionen zu, um die Verwendung der Azure Active Directory-Authentifizierung für SQL-Server-Instanzen zu überwachen. Die Verwendung der Azure Active Directory-Authentifizierung vereinfacht die Verwaltung von Berechtigungen und zentralisiert die Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft  
 -Diensten.
  
 - Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
@@ -82,7 +77,7 @@ Mit dieser Blaupause können Sie Rechte für den privilegierten Zugriff einschr�
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 und 8.1.5 Ansatz der geringsten Rechte und Überprüfung der Benutzerzugriffsrechte
 
-Azure implementiert eine rollenbasierte Zugriffskontrolle (RBAC), die Ihnen hilft, zu verwalten, wer Zugriff auf Ressourcen in Azure hat. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, um Konten zu überwachen, die für die Überprüfung priorisiert sind, einschließlich veralteter Konten und externer Konten mit erhöhten Rechten.
+Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie verwalten, wer Zugriff auf Ressourcen in Azure hat. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, um Konten zu überwachen, die für die Überprüfung priorisiert sind, einschließlich veralteter Konten und externer Konten mit erhöhten Rechten.
 
 - Veraltete Konten sollten aus Ihrem Abonnement entfernt werden.
 - Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
@@ -92,7 +87,7 @@ Azure implementiert eine rollenbasierte Zugriffskontrolle (RBAC), die Ihnen hilf
 
 ## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 Entfernung oder Anpassung von Zugriffsrechten
 
-In Azure ist die rollenbasierte Zugriffssteuerung (RBAC) zur Verwaltung des Zugriffs auf Azure-Ressourcen implementiert. Mithilfe von Azure Active Directory und RBAC können Sie Benutzerrollen aktualisieren, um Organisationsänderungen umzusetzen. Bei Bedarf kann die Anmeldung für Konten blockiert werden (oder Konten können entfernt werden), wodurch die Zugriffsrechte für Azure-Ressourcen sofort entfernt werden. Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zur Überprüfung des veralteten Kontos zu, die bei der Entfernung berücksichtigt werden sollten.
+Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie verwalten, wer Zugriff auf Ressourcen in Azure hat. Mithilfe von Azure Active Directory und Azure RBAC können Sie Benutzerrollen aktualisieren, um Organisationsänderungen umzusetzen. Bei Bedarf kann die Anmeldung für Konten blockiert werden (oder Konten können entfernt werden), wodurch die Zugriffsrechte für Azure-Ressourcen sofort entfernt werden. Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zur Überprüfung des veralteten Kontos zu, die bei der Entfernung berücksichtigt werden sollten.
 
 - Veraltete Konten sollten aus Ihrem Abonnement entfernt werden.
 - Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
@@ -106,14 +101,14 @@ Diese Blaupause hilft Ihnen bei der Durchsetzung sicherer Kennwörter, indem sie
 - \[Vorschau\]: Windows-VMs überwachen, für die keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
 - \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, für die keine Mindestkennwortlänge von 14 Zeichen gilt
 - \[Vorschau\]: Windows-VMs überwachen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
+- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
 
 ## <a name="103-and-1054-audit-generation"></a>10.3 und 10.5.4 Generierung von Überwachungsdatensätzen
 
 Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokolliert werden, indem Sie [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, die die Einstellungen des Überwachungsprotokolls auf Azure-Ressourcen überprüfen.
 Diagnoseprotokolle bieten Einblicke in Vorgänge, die in Azure-Ressourcen ausgeführt werden. Azure-Protokolle basieren auf synchronisierten internen Uhren, um eine zeitkorrelierte Aufzeichnung von Ereignissen über Ressourcen hinweg zu erstellen.
 
-- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein
+- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein.
 - Überwachen der Diagnoseeinstellung
 - Überwachungseinstellungen auf SQL Server-Ebene überwachen
 - Bereitstellen von Überwachung auf SQL-Server-Instanzen
@@ -135,7 +130,7 @@ Nachdem Sie sich nun die Steuerungszuordnung der PCI-DSS v3.2.1-Blaupause angese
 > [Steuerungszuordnung des Blaupausenbeispiels PCI-DSS v3.2.1](./index.md)
 > [PCI-DSS v3.2.1-Blaupause – Bereitstellungsschritte](./deploy.md)
 
-## <a name="addition-articles-about-blueprints-and-how-to-use-them"></a>Weitere Artikel zu Blaupausen und ihrer Nutzung:
+Weitere Artikel zu Blaupausen und ihrer Nutzung:
 
 - Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](../../concepts/lifecycle.md).
 - Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](../../concepts/parameters.md) vertraut.

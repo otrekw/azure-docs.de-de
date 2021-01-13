@@ -1,10 +1,10 @@
 ---
-title: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers – Schnellstart – Azure PowerShell | Microsoft Docs
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der IP-Flussüberprüfungsfunktion von Azure Network Watcher Probleme mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers diagnostizieren.
+title: 'Schnellstart: Diagnostizieren von Problemen mit dem Filter für VM-Netzwerkdatenverkehr – Azure PowerShell'
+titleSuffix: Azure Network Watcher
+description: Hier erfahren Sie, wie Sie Azure PowerShell verwenden, um mithilfe der IP-Flussüberprüfungsfunktion von Azure Network Watcher Probleme mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers diagnostizieren.
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 5cc735c6ad3986161b155ab97bbb3d6be5713d15
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.author: damendo
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 8483c0d3b112408091e10bd9b57451cf2378c859
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729872"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494476"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Schnellstart: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers – Azure PowerShell
 
@@ -100,7 +100,7 @@ Test-AzNetworkWatcherIPFlow `
 
 Nach einigen Sekunden werden Sie im zurückgegebenen Ergebnis darüber informiert, dass der Zugriff durch eine Sicherheitsregel mit dem Namen **AllowInternetOutbound** zugelassen wird.
 
-Testen Sie die ausgehende Kommunikation des virtuellen Computers für 172.31.0.100:
+Testen Sie die ausgehende Kommunikation des virtuellen Computers mit 172.31.0.100:
 
 ```azurepowershell-interactive
 Test-AzNetworkWatcherIPFlow `
@@ -177,9 +177,9 @@ Die zurückgegebene Ausgabe enthält den folgenden Text für die Regel **AllowIn
   },
 ```
 
-Sie können der Ausgabe entnehmen, dass **Internet** als **DestinationAddressPrefix** verwendet wird. Es ist jedoch nicht klar, wie sich 13.107.21.200, die Adresse, die Sie unter [Verwenden der IP-Datenflussüberprüfung](#use-ip-flow-verify) getestet haben, auf **Internet** bezieht. Unter **ExpandedDestinationAddressPrefix** sind mehrere Adresspräfixe aufgelistet. Eines der Präfixe in der Liste ist **12.0.0.0/6**, das den IP-Adressbereich 12.0.0.1 bis 15.255.255.254 umfasst. Weil 13.107.21.200 in diesem Adressbereich liegt, lässt die Regel **AllowInternetOutBound** den ausgehenden Datenverkehr zu. Darüber hinaus werden in der von `Get-AzEffectiveNetworkSecurityGroup` zurückgegebenen Ausgabe keine Regeln mit einer höheren **Priorität** (einer niedrigeren Zahl) aufgeführt, die diese Regel außer Kraft setzen. Um die ausgehende Kommunikation mit 13.107.21.200 zu verweigern, könnten Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die ausgehenden Datenverkehr über Port 80 zur IP-Adresse verweigert.
+Sie können der Ausgabe entnehmen, dass **Internet** als **DestinationAddressPrefix** verwendet wird. Es ist jedoch nicht klar, wie sich 13.107.21.200, die Adresse, die Sie unter [Verwenden der IP-Datenflussüberprüfung](#use-ip-flow-verify) getestet haben, auf **Internet** bezieht. Unter **ExpandedDestinationAddressPrefix** sind mehrere Adresspräfixe aufgelistet. Eines der Präfixe in der Liste ist **12.0.0.0/6**, das den IP-Adressbereich 12.0.0.1 bis 15.255.255.254 umfasst. Da 13.107.21.200 in diesem Adressbereich liegt, lässt die Regel **AllowInternetOutBound** den ausgehenden Datenverkehr zu. Darüber hinaus werden in der von `Get-AzEffectiveNetworkSecurityGroup` zurückgegebenen Ausgabe keine Regeln mit einer höheren **Priorität** (einer niedrigeren Zahl) aufgeführt, die diese Regel außer Kraft setzen. Um die ausgehende Kommunikation mit 13.107.21.200 zu verweigern, können Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die ausgehenden Datenverkehr über den Port 80 für die IP-Adresse verweigert.
 
-Beim Ausführen des Befehls `Test-AzNetworkWatcherIPFlow` zum Testen der ausgehenden Kommunikation mit 172.131.0.100 (im Abschnitt [Verwenden der IP-Datenflussüberprüfung](#use-ip-flow-verify)) wurden Sie in der Ausgabe darüber informiert, dass die Kommunikation durch die Regel **DefaultOutboundDenyAll** verweigert wurde. Die Regel **DefaultOutboundDenyAll** entspricht der Regel **DenyAllOutBound**, die in der folgenden Ausgabe des Befehls `Get-AzEffectiveNetworkSecurityGroup` aufgeführt ist:
+Beim Ausführen des Befehls `Test-AzNetworkWatcherIPFlow` zum Testen der ausgehenden Kommunikation mit 172.131.0.100 (im Abschnitt [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify)) wurden Sie in der Ausgabe darüber informiert, dass die Kommunikation durch die Regel **DefaultOutboundDenyAll** verweigert wurde. Die Regel **DefaultOutboundDenyAll** entspricht der Regel **DenyAllOutBound**, die in der folgenden Ausgabe des Befehls `Get-AzEffectiveNetworkSecurityGroup` aufgeführt ist:
 
 ```powershell
 {
@@ -205,7 +205,7 @@ Beim Ausführen des Befehls `Test-AzNetworkWatcherIPFlow` zum Testen der ausgehe
 }
 ```
 
-Die Regel listet **0.0.0.0/0** als **DestinationAddressPrefix** auf. Die Regel verweigert die ausgehende Kommunikation mit 172.131.0.100, weil die Adresse nicht im **DestinationAddressPrefix** einer der anderen ausgehenden Regeln in der Ausgabe des Befehls `Get-AzEffectiveNetworkSecurityGroup` enthalten ist. Um die ausgehende Kommunikation zuzulassen, könnten Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die ausgehenden Datenverkehr über Port 80 zu 172.131.0.100 zulässt.
+Die Regel listet **0.0.0.0/0** als **DestinationAddressPrefix** auf. Die Regel verweigert die ausgehende Kommunikation mit 172.131.0.100, weil die Adresse nicht im **DestinationAddressPrefix** einer der anderen ausgehenden Regeln in der Ausgabe des Befehls `Get-AzEffectiveNetworkSecurityGroup` enthalten ist. Um die ausgehende Kommunikation zuzulassen, können Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die ausgehenden Datenverkehr über den Port 80 für 172.131.0.100 zulässt.
 
 Beim Ausführen des Befehls `Test-AzNetworkWatcherIPFlow` zum Testen der eingehenden Kommunikation von 172.131.0.100 (im Abschnitt [Verwenden der IP-Datenflussüberprüfung](#use-ip-flow-verify)) wurden Sie in der Ausgabe darüber informiert, dass die Kommunikation durch die Regel **DefaultInboundDenyAll** verweigert wurde. Die Regel **DefaultInboundDenyAll** entspricht der Regel **DenyAllInBound**, die in der folgenden Ausgabe des Befehls `Get-AzEffectiveNetworkSecurityGroup` aufgeführt ist:
 
@@ -247,6 +247,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen virtuellen Computer erstellt sowie Filter für ein- und ausgehenden Netzwerkdatenverkehr diagnostiziert. Sie haben gelernt, dass Netzwerksicherheitsgruppen-Regeln den ein- und ausgehenden Datenverkehr eines virtuellen Computers zulassen oder verweigern. Erfahren Sie mehr über [Sicherheitsregeln](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und das [Erstellen von Sicherheitsregeln](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule).
+In dieser Schnellstartanleitung haben Sie einen virtuellen Computer erstellt sowie Filter für ein- und ausgehenden Netzwerkdatenverkehr diagnostiziert. Sie haben gelernt, dass Netzwerksicherheitsgruppen-Regeln den ein- und ausgehenden Datenverkehr eines virtuellen Computers zulassen oder verweigern. Erfahren Sie mehr über [Sicherheitsregeln](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und das [Erstellen von Sicherheitsregeln](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule).
 
 Auch wenn für den Netzwerkdatenverkehr die richtigen Filter vorhanden sind, kann die Kommunikation mit einem virtuellen Computer aufgrund der Routingkonfiguration fehlschlagen. Informationen zum Diagnostizieren von Routingproblemen in VM-Netzwerken finden Sie unter [Diagnostizieren von VM-Routingproblemen](diagnose-vm-network-routing-problem-powershell.md). Unter [Problembehandlung für Verbindungen](network-watcher-connectivity-powershell.md) erfahren Sie außerdem, wie Sie mit nur einem Tool Probleme mit Ausgangsrouting und Wartezeiten sowie Probleme mit dem Filtern des Datenverkehrs diagnostizieren.

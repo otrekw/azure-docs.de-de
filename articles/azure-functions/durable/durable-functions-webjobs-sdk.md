@@ -1,20 +1,15 @@
 ---
 title: Ausführen von Durable Functions als WebJobs – Azure
 description: Erfahren Sie, wie Sie Durable Functions so codieren und konfigurieren, dass diese in WebJobs mit dem WebJobs SDK ausgeführt werden.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 930a0c6e854823189bc3bf561bd42027e56f5600
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086926"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009499"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Ausführen von Durable Functions als WebJobs
 
@@ -24,7 +19,7 @@ Standardmäßig verwendet Durable Functions die Azure Functions-Runtime zum Host
 
 In Version 3.x des WebJobs SDK ist der Host eine Implementierung von `IHost`, und in Version 2.x verwenden Sie das Objekt `JobHost`.
 
-Das Beispiel für die Verkettung von Durable Functions ist in einer WebJobs SDK 2.x-Version verfügbar: Laden Sie das [Durable Functions-Repository](https://github.com/azure/azure-functions-durable-extension/) herunter oder klonen Sie es, und navigieren Sie zum Ordner *samples\\webjobssdk\\chaining*.
+Das Beispiel für die Verkettung von Durable Functions ist in einer WebJobs SDK 2.x-Version verfügbar: Laden Sie das [Durable Functions-Repository](https://github.com/azure/azure-functions-durable-extension/) herunter. Führen Sie einen Check-Out für den Branch *v1* durch, und navigieren Sie zum Ordner *samples\\webjobssdk\\chaining*.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,7 +31,7 @@ Dieser Artikel setzt voraus, dass Sie mit den Grundlagen des WebJobs SDK, der En
 
 Zur Durchführung der in diesem Artikel aufgeführten Schritte ist Folgendes erforderlich:
 
-* [Installieren Sie Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/) mit der Workload **Azure-Entwicklung**.
+* [Installieren Sie Visual Studio 2019](/visualstudio/install/) mit der Workload **Azure-Entwicklung**.
 
   Wenn Sie bereits über Visual Studio, jedoch nicht über diese Workload verfügen, müssen Sie die Workload hinzufügen, indem Sie **Tools** > **Tools und Features abrufen** auswählen.
 
@@ -52,7 +47,7 @@ In diesem Artikel wird erläutert, wie man ein WebJobs SDK 2.x-Projekt (entspric
 
 Sie müssen zuerst eine Konsolen-App erstellen, um Durable Functions als WebJobs ausführen zu können. Ein WebJobs SDK-Projekt ist lediglich ein Konsolen-App-Projekt, für das die entsprechenden NuGet-Pakete installiert sind.
 
-Wählen Sie im Visual Studio-Dialogfeld **Neues Projekt** die Option **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)** aus. In der Projektdatei sollte die `TargetFrameworkVersion` `v4.6.1` sein.
+Wählen Sie im Visual Studio-Dialogfeld **Neues Projekt** die Option **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)** aus. In der Projektdatei sollte die `TargetFrameworkVersion``v4.6.1` sein.
 
 Visual Studio bietet auch eine WebJob-Projektvorlage, die Sie verwenden können, indem Sie **Cloud** > **Azure WebJob (.NET Framework)** auswählen. Diese Vorlage installiert viele Pakete, von denen einige möglicherweise nicht benötigt werden.
 
@@ -63,7 +58,7 @@ Sie benötigen NuGet-Pakete für das WebJobs SDK, Hauptbindungen, das Protokolli
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions -version 2.2.0
 Install-Package Microsoft.Extensions.Logging -version 2.0.1
-Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.4.0
+Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.8.3
 ```
 
 Darüber hinaus benötigen Sie Protokollanbieter. Die folgenden Befehle installieren den Azure Application Insights-Anbieter und den `ConfigurationManager`. Mit dem `ConfigurationManager` können Sie den Application Insights-Instrumentierungsschlüssel aus den App-Einstellungen abrufen.
@@ -189,7 +184,7 @@ while (true)
 
 Sie haben Durable Functions für die Ausführung als WebJob-Dienst eingerichtet, und Sie verstehen, wie sich diese Ausführung von der Ausführung als eigenständiger Azure Functions-Dienst unterscheidet. An diesem Punkt kann es hilfreich sein, die Funktion in einem Beispiel zu sehen.
 
-Dieser Abschnitt bietet eine Übersicht über die Ausführung des [Beispielprojekts](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining). Ausführliche Anweisungen, wie Sie ein WebJobs SDK-Projekt lokal ausführen und in einem Azure WebJob bereitstellen, finden Sie unter [Erste Schritte mit dem WebJobs SDK](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob).
+Dieser Abschnitt bietet eine Übersicht über die Ausführung des [Beispielprojekts](https://github.com/Azure/azure-functions-durable-extension/tree/v1/samples/webjobssdk/chaining). Ausführliche Anweisungen, wie Sie ein WebJobs SDK-Projekt lokal ausführen und in einem Azure WebJob bereitstellen, finden Sie unter [Erste Schritte mit dem WebJobs SDK](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob).
 
 ### <a name="run-locally"></a>Lokales Ausführen
 
@@ -221,7 +216,7 @@ In diesem Artikel wird erläutert, wie man ein WebJobs SDK 2.x-Projekt entwickel
 
 Die wichtigste eingeführte Änderung ist die Verwendung von .NET Core anstelle von .NET Framework. Zum Erstellen eines WebJobs SDK 3.x-Projekts sind die Anweisungen identisch, mit diesen Ausnahmen:
 
-1. Erstellen Sie eine .NET Core-Konsolen-App. Wählen Sie im Visual Studio-Dialogfeld **Neues Projekt** die Option **.NET Core** > **Konsolen-App (.NET Core)** aus. Die Projektdatei gibt an, dass `TargetFramework` `netcoreapp2.x` ist.
+1. Erstellen Sie eine .NET Core-Konsolen-App. Wählen Sie im Visual Studio-Dialogfeld **Neues Projekt** die Option **.NET Core** > **Konsolen-App (.NET Core)** aus. Die Projektdatei gibt an, dass `TargetFramework``netcoreapp2.x` ist.
 
 1. Wählen Sie die Releaseversion WebJobs SDK 3.x der folgenden Pakete:
 

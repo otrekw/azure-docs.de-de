@@ -1,26 +1,15 @@
 ---
-title: 'Erste Schritte mit PowerShell: Azure Batch | Microsoft-Dokumentation'
+title: Erste Schritte mit PowerShell
 description: Schnelle Einführung in die Azure PowerShell-Cmdlets zum Verwalten von Batch-Ressourcen.
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: NA
-ms.topic: conceptual
-ms.tgt_pltfrm: powershell
-ms.workload: big-compute
+ms.topic: how-to
 ms.date: 01/15/2019
-ms.author: lahugh
-ms.custom: seodec18
-ms.openlocfilehash: 21930d5240225540159fa425d9d9fa518a1b19d5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 3c152733ee3a75732d119db16f7db7c266740fdb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323076"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89079845"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Verwalten von Batch-Ressourcen mit PowerShell-Cmdlets
 
@@ -32,7 +21,7 @@ Dieser Artikel basiert auf Cmdlets im Az Batch-Modul 1.0.0. Es empfiehlt sich, d
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Installieren und konfigurieren Sie das Azure PowerShell-Modul.](/powershell/azure/overview) Informationen zum Installieren eines bestimmten Azure Batch-Moduls (etwa eines vorab veröffentlichten Moduls) finden Sie im [PowerShell-Katalog](https://www.powershellgallery.com/packages/Az.Batch/1.0.0).
+* [Installieren und konfigurieren Sie das Azure PowerShell-Modul.](/powershell/azure/) Informationen zum Installieren eines bestimmten Azure Batch-Moduls (etwa eines vorab veröffentlichten Moduls) finden Sie im [PowerShell-Katalog](https://www.powershellgallery.com/packages/Az.Batch/1.0.0).
 
 * Führen Sie das Cmdlet **Connect-AzAccount** aus, um eine Verbindung mit Ihrem Abonnement herzustellen (die Azure Batch-Cmdlets sind Teil des Azure Resource Manager-Moduls):
 
@@ -125,7 +114,7 @@ Bei der Verwendung von vielen dieser Cmdlets müssen Sie zusätzlich zum Überge
 
 ### <a name="create-a-batch-pool"></a>Batch-Pool erstellen
 
-Beim Erstellen oder Aktualisieren eines Batch-Pools wählen Sie entweder die Konfiguration der Clouddienste oder die VM-Konfiguration für das Betriebssystem auf den Computeknoten aus (siehe [Übersicht über Azure Batch-Features](batch-api-basics.md#pool)). Wenn Sie die Konfiguration der Clouddienste angeben, werden Ihre Computeknoten mit einem Image der [Azure-Gastbetriebssystemversionen](../cloud-services/cloud-services-guestos-update-matrix.md#releases) versehen. Wenn Sie die VM-Konfiguration angeben, können Sie entweder eines der unterstützten Linux- oder Windows-VM-Images aus dem [Marketplace für virtuelle Azure-Computer][vm_marketplace] angeben oder ein eigenes benutzerdefiniertes Image bereitstellen.
+Beim Erstellen oder Aktualisieren eines Batch-Pools wählen Sie entweder die Konfiguration der Clouddienste oder die VM-Konfiguration für das Betriebssystem auf den Computeknoten aus (siehe [Knoten und Pools](nodes-and-pools.md#configurations)). Wenn Sie die Konfiguration der Clouddienste angeben, werden Ihre Computeknoten mit einem Image der [Azure-Gastbetriebssystemversionen](../cloud-services/cloud-services-guestos-update-matrix.md#releases) versehen. Wenn Sie die VM-Konfiguration angeben, können Sie entweder eines der unterstützten Linux- oder Windows-VM-Images aus dem [Marketplace für virtuelle Azure-Computer][vm_marketplace] angeben oder ein eigenes benutzerdefiniertes Image bereitstellen.
 
 Übergeben Sie beim Ausführen von **New-AzBatchPool** die Betriebssystemeinstellungen in einem PSCloudServiceConfiguration- oder PSVirtualMachineConfiguration-Objekt. Der folgende Codeausschnitt erstellt beispielsweise einen Batch-Pool mit Computeknoten der Größe „Standard_A1“ in der VM-Konfiguration mit Ubuntu Server 18.04-LTS-Image. Hier gibt der Parameter **VirtualMachineConfiguration** die Variable *$configuration* als PSVirtualMachineConfiguration-Objekt an. Mit dem Parameter **BatchContext** wird eine zuvor definierte Variable *$context* als BatchAccountContext-Objekt angegeben.
 
@@ -203,7 +192,7 @@ Get-AzBatchComputeNode -PoolId "myPool" -BatchContext $context | Restart-AzBatch
 
 Anwendungspakete ermöglichen eine vereinfachte Anwendungsbereitstellung auf den Computeknoten in Ihren Pools. Mit den Batch PowerShell-Cmdlets können Sie Anwendungspakete in Ihrem Batch-Konto hochladen und verwalten und Paketversionen für Computeknoten bereitstellen.
 
-**Erstellen** einer Anwendung:
+**erstellen** :
 
 ```powershell
 New-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication"
@@ -258,9 +247,10 @@ $appPackageReference.ApplicationId = "MyBatchApplication"
 $appPackageReference.Version = "1.0"
 ```
 
-Erstellen Sie nun den Pool, und geben Sie das Paketverweisobjekt als Argument für die Option `ApplicationPackageReferences` an:
+Erstellen Sie jetzt die Konfiguration und den Pool. In diesem Beispiel wird der Parameter **CloudServiceConfiguration** mit einem in `$configuration` initialisierten Objekt vom Typ `PSCloudServiceConfiguration` verwendet, das **OSFamily** auf `6` (für Windows Server 2019) und **OSVersion** auf `*` festlegt. Geben Sie das Paketverweisobjekt als Argument für die Option `ApplicationPackageReferences` an:
 
 ```powershell
+$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(6,"*")  # 6 = OSFamily 'Windows Server 2019'
 New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 ```
 
@@ -308,4 +298,4 @@ Get-AzBatchComputeNode -PoolId "PoolWithAppPackage" -BatchContext $context | Res
 * Die ausführliche Cmdlet-Syntax sowie Beispiele finden Sie in der [Referenz zu Azure Batch-Cmdlets](/powershell/module/az.batch).
 * Weitere Informationen zu Anwendungen und Anwendungspaketen unter Batch finden Sie unter [Anwendungsbereitstellung mit Azure Batch-Anwendungspaketen](batch-application-packages.md).
 
-[vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
+[vm_marketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1

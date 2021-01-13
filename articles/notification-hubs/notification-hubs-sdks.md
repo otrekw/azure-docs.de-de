@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 8a4b05c0ee76aca07fd740a16a76a634727504e9
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71213022"
 ---
 # <a name="azure-notification-hubs-sdks"></a>Azure Notification Hubs SDKs

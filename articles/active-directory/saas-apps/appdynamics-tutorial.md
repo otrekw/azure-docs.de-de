@@ -1,28 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit AppDynamics | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit AppDynamics | Microsoft Docs'
 description: In diesem Artikel erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und AppDynamics konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 25fd1df0-411c-4f55-8be3-4273b543100f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3d0a8151610658d8302d90f9a3cb3159a877925
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac85fc0478f4e775b92de21cf931358d63aa95b4
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106864"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672577"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Tutorial: Azure Active Directory-Integration mit AppDynamics
+# <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Lernprogramm: Azure Active Directory-Integration mit AppDynamics
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory (Azure AD) in AppDynamics integrieren.
 Die Integration von Azure AD in AppDynamics bietet die folgenden Vorteile:
@@ -31,7 +27,7 @@ Die Integration von Azure AD in AppDynamics bietet die folgenden Vorteile:
 * Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei AppDynamics anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -69,7 +65,7 @@ Zum Konfigurieren der Integration von Azure AD in AppDynamics müssen Sie AppDyn
 
 4. Geben Sie im Suchfeld **AppDynamics** ein, wählen Sie im Ergebnisbereich **AppDynamics** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![AppDynamics in der Ergebnisliste](common/search-new-app.png)
+    ![AppDynamics in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -138,11 +134,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in AppDynami
 
 1. Klicken Sie auf die Registerkarte **Authentication Provider** .
 
-    ![Authentifizierungsanbieter](./media/appdynamics-tutorial/ic790224.png "Authentifizierungsanbieter")
+    ![Authentication Provider (Authentifizierungsanbieter)](./media/appdynamics-tutorial/ic790224.png "Authentication Provider")
 
 1. Führen Sie im Abschnitt **Authentication Provider** die folgenden Schritte aus:
 
-   ![SAML-Konfiguration](./media/appdynamics-tutorial/ic790225.png "SAML-Konfiguration")
+    ![SAML Configuration (SAML-Konfiguration)](./media/appdynamics-tutorial/ic790225.png "SAML-Konfiguration")
 
    a. Wählen Sie als **Authentication Provider** (Authentifizierungsanbieter) die Option **SAML** aus.
 
@@ -171,13 +167,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -210,19 +206,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in AppDynamics. AppDynamics unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf AppDynamics ein neuer Benutzer erstellt.
 
 >[!Note]
->Setzen Sie sich mit dem [Supportteam für den AppDynamics-Client](https://www.appdynamics.com/support/) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+>Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam für den AppDynamics-Client](https://www.appdynamics.com/support/) in Verbindung.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „AppDynamics“ klicken, sollten Sie automatisch bei Ihrer AppDynamics-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „AppDynamics“ klicken, sollten Sie automatisch bei Ihrer AppDynamics-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

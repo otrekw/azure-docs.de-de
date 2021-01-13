@@ -1,0 +1,155 @@
+### YamlMime:Landing
+title: Dokumentation zu ARM-Vorlagen
+summary: Azure Resource Manager-Vorlagen sind JSON-Dateien (JavaScript Object Notation), in denen die Infrastruktur und die Konfiguration für Ihr Projekt definiert sind.
+metadata:
+  title: Dokumentation zu ARM-Vorlagen
+  description: Hier erfahren Sie, wie Sie Azure Resource Manager-Vorlagen entwickeln und damit Azure-Ressourcen bereitstellen.
+  services: azure-resource-manager
+  ms.service: azure-resource-manager
+  ms.subservice: templates
+  ms.topic: landing-page
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 11/06/2020
+  ms.openlocfilehash: 72129eb10de042252c33784d7d98081f0f22a8b9
+  ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 12/11/2020
+  ms.locfileid: "97346621"
+landingContent:
+- title: Über ARM-Vorlagen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was sind Vorlagen?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Bewährte Methoden
+      url: template-best-practices.md
+    - text: Häufig gestellte Fragen
+      url: frequently-asked-questions.md
+    - text: Vorlagenspezifikationen
+      url: template-specs.md
+    - text: Bereitstellungsmodi
+      url: deployment-modes.md
+    - text: Verknüpfte Vorlagen
+      url: linked-templates.md
+  - linkListType: video
+    links:
+    - text: Build 2020-Präsentation
+      url: https://mybuild.microsoft.com/sessions/82984db4-37a4-4ed3-bf8b-13298841ed18?source=sessions
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen von Vorlagen – Portal
+      url: quickstart-create-templates-use-the-portal.md
+    - text: Erstellen von Vorlagen – VS Code
+      url: quickstart-create-templates-use-visual-studio-code.md
+    - text: Erstellen und Bereitstellen von Vorlagenspezifikationen
+      url: quickstart-create-template-specs.md
+  - linkListType: tutorial
+    links:
+    - text: Tutorial für Anfänger
+      url: template-tutorial-create-first-template.md
+  - linkListType: learn
+    links:
+    - text: Bereitstellen mit ARM-Vorlagen
+      url: /learn/paths/deploy-manage-resource-manager-templates/
+- title: Entwickeln von Vorlagen
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Erweiterte Vorlagen
+      url: template-tutorial-use-template-reference.md
+    - text: Vorlagenspezifikationen
+      url: template-specs-create-linked.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verwenden von Funktionen
+      url: template-functions.md
+    - text: Definieren von Parametern
+      url: template-parameters.md
+    - text: Definieren von Variablen
+      url: template-variables.md
+    - text: Definieren von Ressourcen
+      url: template-syntax.md#resources
+    - text: Definieren der Ausgaben
+      url: template-outputs.md
+  - linkListType: reference
+    links:
+    - text: Vorlagendateisyntax
+      url: template-syntax.md
+    - text: Azure-Schnellstartvorlagen
+      url: https://azure.microsoft.com/resources/templates/
+- title: Bereitstellen von Vorlagen
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Bereitstellung
+      url: deployment-tutorial-local-template.md
+  - linkListType: how-to-guide
+    links:
+    - text: PowerShell
+      url: deploy-powershell.md
+    - text: Azure CLI
+      url: deploy-cli.md
+    - text: Portal
+      url: deploy-portal.md
+    - text: REST-API
+      url: deploy-rest.md
+    - text: Schaltfläche zum Bereitstellen in Azure
+      url: deploy-to-azure-button.md
+    - text: Cloud Shell
+      url: deploy-cloud-shell.md
+    - text: Was-wäre-wenn-Bereitstellung
+      url: template-deploy-what-if.md
+- title: Bereichsbezogene Bereitstellungen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Resource group
+      url: deploy-to-resource-group.md
+    - text: Subscription
+      url: deploy-to-subscription.md
+    - text: Verwaltungsgruppe
+      url: deploy-to-management-group.md
+    - text: Tenant
+      url: deploy-to-tenant.md
+    - text: Eingrenzen von Erweiterungsressourcen
+      url: scope-extension-resources.md
+    - text: Bereichsübergreifende Vorlagenfunktionen
+      url: scope-functions.md
+- title: Erkunden des Referenzinhalts
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Vorlagenreferenz
+      url: /azure/templates/
+    - text: REST-API
+      url: /rest/api/resources/
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources?view=azure-python
+- title: Verwalten von Vorlagen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Testtoolkit
+      url: test-toolkit.md
+    - text: Exportieren von Vorlagen
+      url: export-template-portal.md
+    - text: CI/CD
+      url: add-template-to-azure-pipelines.md
+    - text: Anzeigen des Bereitstellungsverlaufs
+      url: deployment-history.md

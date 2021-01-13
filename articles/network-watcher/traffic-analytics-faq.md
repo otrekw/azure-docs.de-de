@@ -3,22 +3,20 @@ title: Häufig gestellte Fragen zu Azure-Datenverkehrsanalysen | Microsoft-Dokum
 description: Hier finden Sie Antworten auf einige der am häufigsten gestellten Fragen zu Datenverkehrsanalysen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/08/2018
-ms.author: kumud
-ms.openlocfilehash: 45200e7620326dedcee92c579843e61bb07ff68e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 01/04/2021
+ms.author: damendo
+ms.openlocfilehash: a5fdde954d2826f34c671552a88365f9276b89a0
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610252"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895222"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
 
@@ -38,7 +36,7 @@ Für Traffic Analytics gelten folgende Voraussetzungen:
 
 Ihr Konto muss eine der folgenden Voraussetzungen erfüllen, um Traffic Analytics aktivieren zu können:
 
-- Ihr Konto muss eine der folgenden Rollen für die rollenbasierte Zugriffssteuerung (RBAC) im Abonnementumfang haben: Besitzer, Mitwirkender, Leser oder Netzwerkmitwirkender.
+- Ihr Konto muss eine der folgenden Azure-Rollen im Abonnementumfang haben: Besitzer, Mitwirkender, Leser oder Netzwerkmitwirkender.
 - Wenn Ihr Konto nicht einer der zuvor genannten Rollen zugewiesen ist, müssen Sie es einer benutzerdefinierten Rolle zuweisen, der auf Abonnementebene die folgenden Aktionen zugewiesen sind.
             
     - Microsoft.Network/applicationGateways/read
@@ -60,7 +58,7 @@ So überprüfen Sie die einem Benutzer für ein Abonnement zugewiesenen Rollen
 
 3. Listen Sie mit **Get-AzRoleAssignment -SignInName [E-Mail-Adresse des Benutzers] -IncludeClassicAdministrators** alle Rollen auf, die einem bestimmten Benutzer zugewiesen sind. 
 
-Falls keine Ausgabe erfolgt, wenden Sie sich an den zuständigen Abonnementadministrator, um den zur Ausführung der Befehle erforderlichen Zugriff zu erhalten. Weitere Informationen finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+Falls keine Ausgabe erfolgt, wenden Sie sich an den zuständigen Abonnementadministrator, um den zur Ausführung der Befehle erforderlichen Zugriff zu erhalten. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
 
 
 ## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>In welchen Azure-Regionen ist Traffic Analytics verfügbar?
@@ -91,19 +89,22 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
 - Japan, Osten
 - Japan, Westen
 - US Government, Virginia
+- China, Osten 2
 
 Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
 - Kanada, Mitte
 - USA, Westen-Mitte
-- USA (Westen)
-- USA, Westen 2
-- USA Süd Mitte
-- USA (Mitte)
 - East US
 - USA (Ost) 2
+- USA Nord Mitte
+- USA Süd Mitte
+- USA (Mitte)
+- USA (Westen)
+- USA, Westen 2
 - Frankreich, Mitte
 - Europa, Westen
 - Nordeuropa
+- UK, Westen
 - UK, Süden
 - Australien (Osten)
 - Australien, Südosten
@@ -113,6 +114,7 @@ Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
 - Indien, Mitte
 - Japan, Osten
 - US Government, Virginia
+- China, Osten 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Können sich die Netzwerksicherheitsgruppen, für die ich Datenflussprotokolle aktiviere, in anderen Regionen befinden als mein Arbeitsbereich?
 
@@ -124,7 +126,7 @@ Ja.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Kann ich einen bestehenden Arbeitsbereich verwenden?
 
-Ja. Wenn Sie einen bestehenden Arbeitsbereich auswählen, vergewissern Sie sich, dass dieser in die neue Abfragesprache geändert wurde. Wenn Sie kein Upgrade des Arbeitsbereichs ausführen möchten, müssen Sie einen neuen Arbeitsbereich anlegen. Weitere Informationen über die neue Abfragesprache finden Sie unter [Upgrade von Azure Monitor-Protokollen auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md).
+Ja. Wenn Sie einen bestehenden Arbeitsbereich auswählen, vergewissern Sie sich, dass dieser in die neue Abfragesprache geändert wurde. Wenn Sie kein Upgrade des Arbeitsbereichs ausführen möchten, müssen Sie einen neuen Arbeitsbereich anlegen. Weitere Informationen über die neue Abfragesprache finden Sie unter [Upgrade von Azure Monitor-Protokollen auf die neue Protokollsuche](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Kann mein Azure Storage-Konto zu einem Abonnement und mein Log Analytics-Arbeitsbereich zu einem anderen Abonnement gehören?
 
@@ -132,7 +134,7 @@ Ja, Ihr Azure Storage-Konto kann zu einem Abonnement und Ihr Log Analytics-Arbei
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>Kann ich unformatierte Protokolle in einem anderen Abonnement speichern?
 
-Nein. Sie können unformatierte Protokolle in jedem Speicherkonto speichern, in dem eine NSG für Datenflussprotokolle aktiviert ist. Allerdings müssen sich sowohl das Speicherkonto als auch die unformatierten Protokolle im selben Abonnement und in derselben Region befinden.
+Ja. Sie können NSG-Flowprotokolle so konfigurieren, dass sie an ein Speicherkonto in einem anderen Abonnement gesendet werden, sofern Sie über die entsprechenden Berechtigungen verfügen und sich das Speicherkonto in derselben Region wie die NSG befindet. Die NSG und das Zielspeicherkonto müssen außerdem demselben Azure Active Directory-Mandanten angehören.
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Was ist, wenn ich eine NSG aufgrund der Fehlermeldung „Nicht gefunden“ nicht für Traffic Analytics konfigurieren kann?
 
@@ -140,11 +142,11 @@ Wählen Sie eine unterstützte Region aus. Wenn Sie eine nicht unterstützte Reg
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>Was ist, wenn ich den Status „Fehler beim Laden“ unter der Seite mit den NSG-Datenflussprotokollen erhalte?
 
-Der Anbieter „Microsoft.Insights“ muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Wenn Sie sich nicht sicher sind, ob der Anbieter „Microsoft.Insights“ für Ihr Abonnement registriert ist, ersetzen Sie *xxxxx-xxxxx-xxxxxx-xxxx* im folgenden Befehl, und führen Sie dann die folgenden Befehle über PowerShell aus:
+Der Microsoft.Insights-Anbieter muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Wenn Sie sich nicht sicher sind, ob der Anbieter „Microsoft.Insights“ für Ihr Abonnement registriert ist, ersetzen Sie *xxxxx-xxxxx-xxxxxx-xxxx* im folgenden Befehl, und führen Sie dann die folgenden Befehle über PowerShell aus:
 
 ```powershell-interactive
-**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Ich habe die Lösung konfiguriert. Warum sehe ich davon nichts im Dashboard?
@@ -174,7 +176,7 @@ Sie sehen die Ressourceninformationen im Dashboard, aber es gibt keine datenflus
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>Kann ich Traffic Analytics mithilfe von PowerShell oder einer Azure Resource Manager-Vorlage bzw. einem ARM-Client konfigurieren?
 
-Sie können Traffic Analytics mithilfe von Windows PowerShell ab Version 6.2.1 konfigurieren. Informationen zum Konfigurieren der Datenflussprotokollierung und von Traffic Analytics für eine bestimmte Netzwerksicherheitsgruppe (Network Security Group, NSG) mithilfe des Cmdlets „Set“ finden Sie unter [Set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). Informationen zum Abrufen des Status der Datenflussprotokollierung und von Traffic Analytics für eine bestimmte NSG finden Sie unter [Get-AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
+Sie können Traffic Analytics mithilfe von Windows PowerShell ab Version 6.2.1 konfigurieren. Informationen zum Konfigurieren der Datenflussprotokollierung und von Traffic Analytics für eine bestimmte Netzwerksicherheitsgruppe (Network Security Group, NSG) mithilfe des Cmdlets „Set“ finden Sie unter [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). Informationen zum Abrufen des Status der Datenflussprotokollierung und von Traffic Analytics für eine bestimmte NSG finden Sie unter [Get-AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
 
 Derzeit können Sie keine Azure Resource Manager-Vorlage verwenden, um Traffic Analytics zu konfigurieren.
 
@@ -248,7 +250,7 @@ Beispiel für den [Tarif](https://azure.microsoft.com/pricing/details/network-wa
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>Wie oft werden Daten von Traffic Analytics verarbeitet?
 
-Informationen hierzu finden Sie im [Abschnitt zur Datenaggregation](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation) im Dokument „Schema und Datenaggregation in Traffic Analytics“.
+Informationen hierzu finden Sie im [Abschnitt zur Datenaggregation](./traffic-analytics-schema.md#data-aggregation) im Dokument „Schema und Datenaggregation in Traffic Analytics“.
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Wie entscheidet Traffic Analytics, ob eine IP-Adresse schädlich ist? 
 
@@ -260,7 +262,72 @@ Traffic Analytics bietet keine integrierte Unterstützung für Benachrichtigung
 - Sie können den Kurzlink für Log Analytics in Traffic Analytics verwenden. 
 - Verwenden Sie das [hier dokumentierte Schema](traffic-analytics-schema.md) zum Schreiben Ihrer Abfragen. 
 - Klicken Sie auf „Neue Warnungsregel“, um die Benachrichtigung zu erstellen.
-- Informationen zum Erstellen der Benachrichtigung finden Sie in der [Dokumentation zu Protokollwarnungen ](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log).
+- Informationen zum Erstellen der Benachrichtigung finden Sie in der [Dokumentation zu Protokollwarnungen ](../azure-monitor/platform/alerts-log.md).
+
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>Wie kann ich überprüfen, von welchen virtuellen Computern der meiste lokale Datenverkehr empfangen wird?
+
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+| where <Scoping condition>
+| mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+| where isnotempty(vm) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+| make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
+| render timechart
+```
+
+  Für IP-Adressen:
+
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+//| where <Scoping condition>
+| mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+| where isnotempty(IP) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+| make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
+| render timechart
+```
+
+Verwenden Sie für die Zeit das Format: jjjj-mm-tt 00:00:00
+
+## <a name="how-do-i-check-standard-deviation-in-traffic-received-by-my-vms-from-on-premises-machines"></a>Wie kann ich die Standardabweichung beim Datenverkehr überprüfen, den meine virtuellen Computer von lokalen Computern empfangen?
+
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+//| where <Scoping condition>
+| mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+| where isnotempty(vm) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + utboundBytes_d
+| summarize deviation = stdev(traffic)  by vm
+```
+
+Für IP-Adressen:
+
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+//| where <Scoping condition>
+| mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+| where isnotempty(IP) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+| summarize deviation = stdev(traffic)  by IP
+```
+
+## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>Wie kann ich überprüfen, welche Ports zwischen IP-Paaren mit NSG-Regeln erreichbar (oder blockiert) sind?
+
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
+| extend sourceIPs = iif(isempty(SrcIP_s), split(SrcPublicIPs_s, " ") , pack_array(SrcIP_s)),
+destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_s))
+| mvexpand SourceIp = sourceIPs to typeof(string)
+| mvexpand DestIp = destIPs to typeof(string)
+| project SourceIp = tostring(split(SourceIp, "|")[0]), DestIp = tostring(split(DestIp, "|")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s 
+| summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
+```
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Wie kann ich mit der Tastatur in der geografischen Kartenansicht navigieren?
 
@@ -289,7 +356,7 @@ Die Seite mit der geografischen Karte enthält zwei Hauptbereiche:
 ### <a name="keyboard-navigation-at-any-stage"></a>Tastaturnavigation in beliebiger Phase
     
 - `Esc` klappt die erweiterte Auswahl zu.
-- Die Taste `Up arrow` führt die gleiche Aktion wie `Esc` aus. Die Taste `Down arrow` führt die gleiche Aktion wie `Enter` aus.
+- Die Taste `Up-arrow` führt die gleiche Aktion wie `Esc` aus. Die Taste `Down arrow` führt die gleiche Aktion wie `Enter` aus.
 - Verwenden Sie `Shift+Plus` zum Vergrößern und `Shift+Minus` zum Verkleinern.
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Wie kann ich mit der Tastatur in der Ansicht der Topologie der virtuellen Netzwerke navigieren?
@@ -333,5 +400,7 @@ Die Seite mit der Topologie der Subnetze hat zwei Hauptabschnitte:
 - Nachdem Sie einen beliebigen Filter im Banner ausgewählt und `Ctrl+F6` gedrückt haben, bewegt sich der Fokus zu einem der hervorgehobenen Knoten (**Subnetz**) in der Topologieansicht.
 - Um zu anderen hervorgehobenen Knoten in der Topologieansicht zu gelangen, drücken Sie für die Vorwärtsbewegung `Shift+Right arrow`. 
 - Bei hervorgehobenen Knoten wird der Fokus zur **Infotoolbox** des Knotens verschoben. Standardmäßig wird der Fokus zur Schaltfläche **Weitere Details** in der **Infotoolbox** verschoben. Zur weiteren Navigation in der Ansicht **Box** drücken Sie die Taste `Right arrow` und `Left arrow`, um vorwärts bzw. rückwärts zu navigieren. Das Drücken von `Enter` hat die gleiche Wirkung wie die Auswahl der fokussierten Schaltfläche in der **Infotoolbox**.
-- Wenn Sie einen solchen Knoten auswählen, können Sie alle seine Verbindungen nacheinander aufrufen, indem Sie `Shift+Left arrow` drücken. Der Fokus wird zur **Infotoolbox** dieser Verbindung verschoben. Jederzeit kann der Fokus durch erneutes Drücken von `Shift+Right arrow` zurück zum Knoten verschoben werden.    
+- Wenn Sie einen solchen Knoten auswählen, können Sie alle seine Verbindungen nacheinander aufrufen, indem Sie `Shift+Left arrow` drücken. Der Fokus wird zur **Infotoolbox** dieser Verbindung verschoben. Jederzeit kann der Fokus durch erneutes Drücken von `Shift+Right arrow` zurück zum Knoten verschoben werden.
 
+## <a name="are-classic-nsgs-supported"></a>Werden klassische Netzwerksicherheitsgruppen unterstützt?
+Nein, Traffic Analytics unterstützt keine klassischen Netzwerksicherheitsgruppen (NSGs). Es wird empfohlen, IaaS-Ressourcen vom klassischen Schema zu Azure Resource Manager zu migrieren, da klassische Ressourcen als [veraltet](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation) markiert werden. [Lesen Sie diesen Artikel](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview), um zu erfahren, wie Sie die Migration ausführen.

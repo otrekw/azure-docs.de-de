@@ -1,21 +1,18 @@
 ---
 title: Ausführen von Azure Data Lake-U-SQL-Skripts auf dem lokalen Computer
 description: Erfahren Sie, wie Sie U-SQL-Aufträge mithilfe von Azure Data Lake Tools für Visual Studio auf dem lokalen Computer ausführen.
-services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
+author: liudan66
+ms.author: liud
+ms.reviewer: jasonh
 ms.service: data-lake-analytics
-ms.topic: conceptual
-ms.workload: big-data
+ms.topic: how-to
 ms.date: 07/03/2018
-ms.openlocfilehash: 42e58125fcbc3ab411c0d7503c42c14c28178428
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f9410cc91174420662bb5efc67c8904b5d5e647
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62113934"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018986"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>Ausführen von U-SQL-Skripts auf dem lokalen Computer
 
@@ -57,7 +54,7 @@ Azure Data Lake Tools für Visual Studio umfasst eine integrierte Engine für di
  
 ## <a name="local-runs-with-a-local-machine-account"></a>Lokale Ausführungen mit einem „Local-machine“-Konto
 
-Ein **Local-machine**-Konto ist ein freigegebenes lokales Computekonto mit einem einzelnen lokalen Datenstammordner als lokales Speicherkonto. Der Datenstammordner befindet sich standardmäßig unter **C:\Users\<Benutzername> \AppData\Local\USQLDataRoot**. Es ist auch über **Tools** > **Data Lake** > **Optionen und Einstellungen** konfigurierbar.
+Ein **Local-machine**-Konto ist ein freigegebenes lokales Computekonto mit einem einzelnen lokalen Datenstammordner als lokales Speicherkonto. Der Datenstammordner befindet sich standardmäßig unter **C:\Users\<username>\AppData\Local\USQLDataRoot**. Es ist auch über **Tools** > **Data Lake** > **Optionen und Einstellungen** konfigurierbar.
 
 ![Konfigurieren eines lokalen Datenstammordners](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
   

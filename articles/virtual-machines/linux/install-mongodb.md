@@ -1,25 +1,23 @@
 ---
-title: Installieren von MongoDB auf einem virtuellen Linux-Computer mit der Azure-CLI | Microsoft-Dokumentation
+title: Installieren von MongoDB auf einem virtuellen Linux-Computer mit der Azure CLI
 description: Informationen zum Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer mithilfe von Azure CLI
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
 manager: gwallace
-editor: ''
-ms.assetid: 3f55b546-86df-4442-9ef4-8a25fae7b96e
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: d75b00acac75b3b9680f862952e5c224336ca57a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e3bc8ed2745e06096e05f17319a8f7896f87f80f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671385"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702037"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer
 
@@ -127,10 +125,10 @@ Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI](/cli/azur
 az group create --name myResourceGroup --location eastus
 ```
 
-Stellen Sie als Nächstes mit dem Befehl [az group deployment create](/cli/azure/group/deployment) die MongoDB-Vorlage bereit. Geben Sie bei Aufforderung Ihre eigenen eindeutigen Werte für *newStorageAccountName*, *dnsNameForPublicIP* sowie den Administratorbenutzernamen und das Kennwort an:
+Stellen Sie als Nächstes mit dem Befehl [az deployment group create](/cli/azure/deployment/group) die MongoDB-Vorlage bereit. Geben Sie bei Aufforderung Ihre eigenen eindeutigen Werte für *newStorageAccountName*, *dnsNameForPublicIP* sowie den Administratorbenutzernamen und das Kennwort an:
 
 ```azurecli
-az group deployment create --resource-group myResourceGroup \
+az deployment group create --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
@@ -178,10 +176,10 @@ Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI](/cli/azur
 az group create --name myResourceGroup --location eastus
 ```
 
-Stellen Sie als Nächstes mit dem Befehl [az group deployment create](/cli/azure/group/deployment) die MongoDB-Vorlage bereit. Definieren Sie bei Bedarf Ihre eigenen Ressourcennamen und -größen, z.B. für *mongoAdminUsername*, *sizeOfDataDiskInGB* und *configNodeVmSize*:
+Stellen Sie als Nächstes mit dem Befehl [az deployment group create](/cli/azure/deployment/group) die MongoDB-Vorlage bereit. Definieren Sie bei Bedarf Ihre eigenen Ressourcennamen und -größen, z.B. für *mongoAdminUsername*, *sizeOfDataDiskInGB* und *configNodeVmSize*:
 
 ```azurecli
-az group deployment create --resource-group myResourceGroup \
+az deployment group create --resource-group myResourceGroup \
   --parameters '{"adminUsername": {"value": "azureuser"},
     "adminPassword": {"value": "P@ssw0rd!"},
     "mongoAdminUsername": {"value": "mongoadmin"},
@@ -200,10 +198,10 @@ az group deployment create --resource-group myResourceGroup \
   --no-wait
 ```
 
-Es kann über eine Stunde dauern, bis die Bereitstellung und die Konfiguration aller VM-Instanzen abgeschlossen ist. Das Flag `--no-wait` wird am Ende des vorherigen Befehls verwendet, sodass die Steuerung an die Eingabeaufforderung zurückgegeben wird, nachdem die Vorlagenbereitstellung auf der Azure-Plattform akzeptiert wurde. Sie können dann mit dem Befehl [az group deployment show](/cli/azure/group/deployment) den Bereitstellungsstatus anzeigen. Im folgenden Beispiel wird der Status für die Bereitstellung *myMongoDBCluster* in der Ressourcengruppe *myResourceGroup* angezeigt:
+Es kann über eine Stunde dauern, bis die Bereitstellung und die Konfiguration aller VM-Instanzen abgeschlossen ist. Das Flag `--no-wait` wird am Ende des vorherigen Befehls verwendet, sodass die Steuerung an die Eingabeaufforderung zurückgegeben wird, nachdem die Vorlagenbereitstellung auf der Azure-Plattform akzeptiert wurde. Sie können dann mit dem Befehl [az deployment group show](/cli/azure/deployment/group) den Bereitstellungsstatus anzeigen. Im folgenden Beispiel wird der Status für die Bereitstellung *myMongoDBCluster* in der Ressourcengruppe *myResourceGroup* angezeigt:
 
 ```azurecli
-az group deployment show \
+az deployment group show \
     --resource-group myResourceGroup \
     --name myMongoDBCluster \
     --query [properties.provisioningState] \
@@ -215,7 +213,6 @@ In diesen Beispielen wird vom virtuellen Computer eine lokale Verbindung mit der
 
 In diesen Beispielen wird die MongoDB-Kernumgebung für Entwicklungszwecke bereitgestellt. Wenden Sie die erforderlichen Optionen der Sicherheitskonfiguration für Ihre Umgebung an. Weitere Informationen finden Sie in den [Dokumenten zur MongoDB-Sicherheit](https://docs.mongodb.com/manual/security/).
 
-Weitere Informationen zur Erstellung mithilfe von Vorlagen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+Weitere Informationen zur Erstellung mithilfe von Vorlagen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md).
 
-Die Azure Resource Manager-Vorlagen verwenden die benutzerdefinierte Skripterweiterung zum Herunterladen und Ausführen von Skripts auf Ihren virtuellen Computern. Weitere Informationen finden Sie unter [Verwenden der benutzerdefinierten Skripterweiterung von Azure mit virtuellen Linux-Computern](extensions-customscript.md).
-
+Die Azure Resource Manager-Vorlagen verwenden die benutzerdefinierte Skripterweiterung zum Herunterladen und Ausführen von Skripts auf Ihren virtuellen Computern. Weitere Informationen finden Sie unter [Verwenden der benutzerdefinierten Skripterweiterung von Azure mit virtuellen Linux-Computern](../extensions/custom-script-linux.md).

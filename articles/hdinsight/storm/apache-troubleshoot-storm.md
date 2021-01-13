@@ -2,19 +2,19 @@
 title: Problembehandlung bei Storm mit Azure HDInsight
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit Apache Storm und Azure HDInsight.
 keywords: Azure HDInsight, Storm, FAQ, Problembehandlungshandbuch, allgemeine Probleme
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 08/15/2019
+ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 70030c9014e83984b2cd493ba0d3b2a36180feb3
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: fc08adb2f71c49fad3c8574e9cfd5315f13d7f44
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575070"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95982261"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Problembehandlung bei Apache Storm mit Azure HDInsight
 
@@ -95,7 +95,7 @@ Storm-Binärdateien für den aktuellen HDP-Stapel befinden sich in `/usr/hdp/cur
 
 In „/usr/hdp“ kann es für bestimmte HDP-Versionen mehrere Binärdateien geben (Beispiel: `/usr/hdp/2.5.0.1233/storm`). Der Ordner `/usr/hdp/current/storm-client` ist über einen SYM-Link mit der neuesten Version verknüpft, die im Cluster ausgeführt wird.
 
-Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem HDInsight-Cluster mit SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) und [Apache Storm](https://storm.apache.org/).
+Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem HDInsight-Cluster mit SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) und [Apache Storm](https://storm.apache.org/).
 
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Wie bestimme ich die Bereitstellungstopologie eines Storm-Clusters?
 
@@ -137,11 +137,11 @@ Weitere Informationen zur Verwendung von JAR-Dateien von Storm-EventHub-Spout mi
 
 ### <a name="java-based-topology"></a>Java-basierte Topologie
 
-[Verarbeiten von Ereignissen aus Azure Event Hubs mit Apache Storm in HDInsight (Java)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
+[Verarbeiten von Ereignissen aus Azure Event Hubs mit Apache Storm in HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C#-basierte Topologie (Mono in HDI 3.4+-Linux-Storm-Clustern)
 
-[Verarbeiten von Ereignissen aus Azure Event Hubs mit Apache Storm in HDInsight (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[Verarbeiten von Ereignissen aus Azure Event Hubs mit Apache Storm in HDInsight (C#)](./apache-storm-develop-csharp-event-hub-topology.md)
 
 ### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>Neueste Apache Storm-EventHub-Spout-Binärdateien für HDInsight 3.5+-Linux-Storm-Cluster
 
@@ -168,6 +168,16 @@ Die Worker Log4J-Konfiguration wird aus `/usr/hdp/\<HDP version>/storm/log4j2/wo
 Beispiele: `/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
 
+---
+
+## <a name="not-a-leader-exception"></a>Keine übergeordnete Ausnahme
+
+Wenn eine Topologie übermittelt wird, erhält der Benutzer möglicherweise eine Fehlermeldung ähnlich der folgenden: `Topology submission exception, cause not a leader, the current leader is NimbusInfo`.
+
+Um das Problem zu beheben, muss der Benutzer möglicherweise ein Ticket einreichen, damit die Knoten neu gestartet bzw. neu hochgefahren werden. Weitere Informationen finden Sie unter [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html).
+
+---
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
@@ -176,4 +186,4 @@ Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuche
 
 - Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
 
-- Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+- Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](../../azure-portal/supportability/how-to-create-azure-support-request.md). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.

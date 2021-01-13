@@ -3,24 +3,24 @@ title: 'Analysen für Azure HDInsight Hadoop mit Hive: Data Science-Prozesses'
 description: Beispiele des Team Data Science-Prozesses mit exemplarischer Vorgehensweise der Nutzung von Hive in Azure HDInsight Hadoop für Predictive Analytics.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d3c3278a058162632a6ba7ea9731e5f233190700
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f72ea6ed5f0eec076d181ef56c99c4f1308a7741
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60804659"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75864161"
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Exemplarische Data Science-Vorgehensweisen unter Verwendung von Hive in Azure HDInsight Hadoop 
 
-In diesen exemplarischen Vorgehensweisen wird Hive mit einem HDInsight Hadoop-Cluster für Predictive Analytics verwendet. Sie folgen den im Team Data Science-Prozess aufgeführten Schritten. Eine Übersicht über den Team Data Science-Prozess finden Sie unter [Data Science-Prozess](overview.md). Eine Einführung in Azure HDInsight finden Sie unter [Einführung in Azure HDInsight, den Hadoop-Technologiestapel und Hadoop-Cluster](../../hdinsight/hadoop/apache-hadoop-introduction.md).
+In diesen exemplarischen Vorgehensweisen wird Hive mit einem HDInsight Hadoop-Cluster für Predictive Analytics verwendet. Diese folgen den im Team Data Science-Prozess ausgeführten Schritten. Eine Übersicht über den Team Data Science-Prozess finden Sie unter [Data Science-Prozess](overview.md). Eine Einführung in Azure HDInsight finden Sie unter [Einführung in Azure HDInsight, den Hadoop-Technologiestapel und Hadoop-Cluster](../../hdinsight/hadoop/apache-hadoop-introduction.md).
 
 Weitere exemplarische Vorgehensweisen zu Data Science, in denen der Team Data Science-Prozess befolgt wird, sind nach der jeweils verwendeten **Plattform** gruppiert. Eine Aufschlüsselung dieser Beispiele finden Sie unter [Exemplarische Vorgehensweisen zum Ausführen des Team Data Science-Prozesses](walkthroughs.md).
 

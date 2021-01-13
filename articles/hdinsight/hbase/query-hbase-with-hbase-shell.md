@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 033227f085cd23c5fa26313cb4a2816070676560
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 572262cbece26171f9a67bf073906fa2dfd4d8e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076429"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "79371068"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Schnellstart: Abfragen von Apache HBase in Azure HDInsight mit HBase Shell
 
@@ -24,7 +24,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Apache HBase-Cluster. Weitere Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Erstellen von Clustern](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).  Stellen Sie sicher, dass Sie den Clustertyp **HBase** auswählen.
+* Ein Apache HBase-Cluster. Weitere Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Erstellen von Clustern](../hadoop/apache-hadoop-linux-tutorial-get-started.md).  Stellen Sie sicher, dass Sie den Clustertyp **HBase** auswählen.
 
 * Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 

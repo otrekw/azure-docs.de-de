@@ -2,26 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ADP | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und ADP konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7be5331b-0481-48f7-9d6b-619dfec657e1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b031ded2022078c31bd8570c6a6317c398715480
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 0d78f2c8da338a92ef88734371647a48ddb190c3
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162654"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591207"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ADP
 
@@ -31,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie ADP in Azure Active Directory (Azure AD
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei ADP anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -117,14 +112,14 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf ADP gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
-1. Wählen Sie in der Anwendungsliste die Option **ADP**aus.
+1. Wählen Sie in der Anwendungsliste die Option **ADP** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
@@ -160,11 +155,11 @@ Nach der Bestätigung durch Ihren ADP-Vertriebsbeauftragten konfigurieren Sie Ih
 
     ![Eigenschaften für SSO über Link](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
-    a.  Legen Sie den Wert im Feld **Aktiviert für die Benutzeranmeldung** auf **Ja** fest.
+    1. Legen Sie den Wert im Feld **Aktiviert für die Benutzeranmeldung** auf **Ja** fest.
 
-    b.  Legen Sie das Feld **Benutzerzuweisung erforderlich** auf **Ja** fest.
+    1. Legen Sie das Feld **Benutzerzuweisung erforderlich** auf **Ja** fest.
 
-    c.  Legen Sie das Feld **Für Benutzer sichtbar** auf **Ja** fest.
+    1. Legen Sie das Feld **Für Benutzer sichtbar** auf **Ja** fest.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **ADP** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 
@@ -176,39 +171,39 @@ Nach der Bestätigung durch Ihren ADP-Vertriebsbeauftragten konfigurieren Sie Ih
 
     ![Eigenschaften für einmaliges Anmelden](./media/adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
 
-    a. Fügen Sie die **URL für den Benutzerzugriff** ein, die Sie oben aus der Registerkarte **Eigenschaften** (aus der Haupt-ADP-App) kopiert haben.
-                                                             
-    b. Nachfolgend werden die 5 Apps aufgeführt, die unterschiedliche **Relayzustand-URLs** unterstützen. Sie müssen die geeignete **Relayzustand-URL** für die jeweilige Anwendung manuell an die **URL für den Benutzerzugriff** anfügen.
-    
-    * **ADP Workforce Now**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
+    1. Fügen Sie die **URL für den Benutzerzugriff** ein, die Sie oben aus der Registerkarte **Eigenschaften** (aus der Haupt-ADP-App) kopiert haben.
 
-    * **ADP Workforce Now Enhanced Time**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
-    
-    * **ADP Vantage HCM**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
+    1. Nachfolgend werden die 5 Apps aufgeführt, die unterschiedliche **Relayzustand-URLs** unterstützen. Sie müssen die geeignete **Relayzustand-URL** für die jeweilige Anwendung manuell an die **URL für den Benutzerzugriff** anfügen.
 
-    * **ADP Enterprise HR**
+        * **ADP Workforce Now**
 
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
 
-    * **MyADP**
+        * **ADP Workforce Now Enhanced Time**
 
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
 
-9. **Speichern** Sie die Änderungen.
+        * **ADP Vantage HCM**
 
-10. Beginnen Sie nach Bestätigung durch Ihren ADP-Vertriebsbeauftragten mit dem Test für einen oder zwei Benutzer.
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
 
-    a. Weisen Sie der ADP-Dienst-App einige Benutzer zu, um den Verbundzugriff zu testen.
+        * **ADP Enterprise HR**
 
-    b. Der Test ist erfolgreich, wenn die Benutzer auf die ADP-Dienst-App im Katalog und auf ihren ADP-Dienst zugreifen können.
- 
-11. Wenn der Test erfolgreich war, weisen Sie den ADP-Verbunddienst einzelnen Benutzern oder Benutzergruppen zu, und führen Sie ein Rollout für Ihre Mitarbeiter durch. Dies wird später in diesem Tutorial erläutert.
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+
+        * **MyADP**
+
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+
+1. **Speichern** Sie die Änderungen.
+
+1. Beginnen Sie nach Bestätigung durch Ihren ADP-Vertriebsbeauftragten mit dem Test für einen oder zwei Benutzer.
+
+    1. Weisen Sie der ADP-Dienst-App einige Benutzer zu, um den Verbundzugriff zu testen.
+
+    1. Der Test ist erfolgreich, wenn die Benutzer auf die ADP-Dienst-App im Katalog und auf ihren ADP-Dienst zugreifen können.
+
+1. Wenn der Test erfolgreich war, weisen Sie den ADP-Verbunddienst einzelnen Benutzern oder Benutzergruppen zu, und führen Sie ein Rollout für Ihre Mitarbeiter durch. Dies wird später in diesem Tutorial erläutert.
 
 ### <a name="create-adp-test-user"></a>Erstellen eines ADP-Testbenutzers
 
@@ -218,14 +213,12 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens B. Simon in
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „ADP“ klicken, sollten Sie automatisch bei Ihrer ADP-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „ADP“ klicken, sollten Sie automatisch bei Ihrer ADP-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [ADP mit Azure AD ausprobieren](https://aad.portal.azure.com)
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)

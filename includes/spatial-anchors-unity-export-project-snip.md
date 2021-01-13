@@ -1,15 +1,15 @@
 ---
-author: craigktreasure
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 1/2/2019
-ms.author: crtreasu
-ms.openlocfilehash: fa51e40f70764dcdb8ff750b06786dd665081926
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: af34106a0b8735ca65b7d86da60c9e4a0259b9df
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "67135128"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971555"
 ---
 Wählen Sie **Datei** > **Buildeinstellungen** aus, um **Buildeinstellungen** zu öffnen.
 

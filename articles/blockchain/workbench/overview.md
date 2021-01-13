@@ -1,21 +1,15 @@
 ---
 title: Übersicht über die Vorschauversion von Azure Blockchain Workbench
 description: Enthält eine Übersicht über die Vorschauversion von Azure Blockchain Workbench und die zugehörigen Funktionen.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 05/22/2020
 ms.topic: overview
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 097185502321c8810214ed737047bdf596d18bdb
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: fbd6be3907dbd10b003d065dfb14031a0e378478
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844104"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "87003145"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Was ist Azure Blockchain Workbench?
 
@@ -50,6 +44,20 @@ Bei vorhandenen Blockchain-Protokollen werden Blockchain-Identitäten als Adress
 ## <a name="synchronize-on-chain-data-with-off-chain-storage"></a>Synchronisieren von On-Chain-Daten mit Off-Chain-Speicher
 
 Azure Blockchain Workbench vereinfacht das Analysieren von Blockchain-Ereignissen und -Daten, indem Daten der Blockchain-Komponente automatisch mit dem Off-Chain-Speicher synchronisiert werden. Anstatt Daten direkt aus der Blockchain-Komponente zu extrahieren, können Sie Off-Chain-Datenbanksysteme abfragen, z.B. SQL Server. Für Endbenutzer, die Aufgaben zur Datenanalyse durchführen, ist kein Blockchain-Wissen erforderlich.
+
+## <a name="support-and-feedback"></a>Support und Feedback
+
+Neues zu Azure Blockchain: Mit dem [Azure Blockchain-Blog](https://azure.microsoft.com/blog/topics/blockchain/) bleiben Sie in Bezug auf Blockchain-Dienstangebote und Informationen vom Azure Blockchain-Technikteam immer auf dem Laufenden.
+
+Über das [Azure-Feedbackforum für Blockchain](https://aka.ms/blockchainuservoice) können Sie Produktfeedback senden, neue Features anfordern oder über Ideen abstimmen.
+
+### <a name="community-support"></a>Communityunterstützung
+
+Diskutieren Sie mit Microsoft-Technikern und Azure Blockchain-Communityexperten.
+
+* [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Blockchain Workbench](/answers/topics/azure-blockchain-workbench.html)
+* [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

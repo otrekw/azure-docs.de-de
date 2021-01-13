@@ -1,27 +1,51 @@
 ---
-title: Bekannte Probleme bei virtuellen Computern der HB- und HC-Serie – Azure Virtual Machines | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zu bekannten Problemen bei VM-Größen der HB-Serie in Azure.
-services: virtual-machines
-documentationcenter: ''
+title: Beheben von bekannten Problemen bei HPC- und GPU-VMs – Azure Virtual Machines | Microsoft-Dokumentation
+description: Erfahren Sie mehr über das Beheben bekannter Probleme bei HPC- und GPU-VM-Größen in Azure.
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
+ms.subservice: workloads
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 10/19/2020
 ms.author: amverma
-ms.openlocfilehash: 8d4b57fb2fee3849e102868c86fe3cab465fc70d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.reviewer: cynthn
+ms.openlocfilehash: f4e93deb40799cbcc9c86aff454e250f1ab71712
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707781"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963333"
 ---
-# <a name="known-issues-with-hb-series-and-hc-series-vms"></a>Bekannte Probleme bei virtuellen Computern der HB-Serie und der HC-Serie
+# <a name="known-issues-with-h-series-and-n-series-vms"></a>Bekannte Probleme bei virtuellen Computern der H-Serie und der N-Serie
 
-Dieser Artikel enthält Informationen zu den häufigsten Problemen bei der Verwendung virtueller Computer der HB- und HC-Serie sowie entsprechende Lösungen.
+Dieser Artikel enthält Informationen zu den häufigsten Problemen und zugehörigen Lösungen bei der Verwendung von HPC- und GPU-VMs der [H-Serie](../../sizes-hpc.md) und der [N-Serie](../../sizes-gpu.md).
+
+## <a name="infiniband-driver-installation-on-n-series-vms"></a>InfiniBand-Treiberinstallation auf virtuellen Computern der N-Serie
+
+NC24r_v3 und ND40r_v2 sind SR-IOV-fähig, während NC24r und NC24r_v2 nicht SR-IOV-fähig sind. Details dazu finden Sie [hier](../../sizes-hpc.md#rdma-capable-instances).
+InfiniBand (IB) kann für die SR-IOV-fähigen VM-Größen mit den OFED-Treibern konfiguriert werden, während die nicht SR-IOV-fähigen VM-Größen ND-Treiber erfordern. Diese IB-Unterstützung ist entsprechend auf [CentOS-HPC-VMIs](configure.md) verfügbar. Informationen zu Ubuntu finden Sie in der [dieser Anweisung](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351) zum Installieren der OFED- und ND-Treiber, wie in der [Dokumentation](enable-infiniband.md#vm-images-with-infiniband-drivers) beschrieben.
+
+## <a name="duplicate-mac-with-cloud-init-with-ubuntu-on-h-series-and-n-series-vms"></a>Doppelte MAC-Adresse mit cloud-init bei Ubuntu auf virtuellen Computern der H-Serie und der N-Serie
+
+Es gibt ein bekanntes Problem mit cloud-init für Ubuntu-VM-Images, wenn versucht wird, die IB-Schnittstelle zu aktivieren. Dieses Problem kann entweder beim Neustart eines virtuellen Computers oder beim Erstellen eines VM-Images nach der Generalisierung auftreten. In den VM-Startprotokollen wird möglicherweise ein Fehler wie der folgende angezeigt: „Starting Network Service...RuntimeError: duplicate mac found! both 'eth1' and 'ib0' have mac.“
+
+Diese „doppelte MAC-Adresse mit cloud-init bei Ubuntu“ ist ein bekanntes Problem. Die Problemumgehung sieht wie folgt aus:
+1) Stellen Sie das Marketplace-VM-Image (Ubuntu 18.04) bereit.
+2) Installieren Sie die erforderlichen Softwarepakete, um IB zu aktivieren ([Anleitung hier](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)).
+3) Bearbeiten Sie „waagent.conf“, um Folgendes zu ändern: EnableRDMA=y.
+4) Deaktivieren Sie die Netzwerkkonfiguration in cloud-init.
+    ```console
+    echo network: {config: disabled} | sudo tee /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
+    ```
+5) Bearbeiten Sie die von cloud-init generierte Netzwerkkonfigurationsdatei für netplan, um die MAC-Adresse zu entfernen.
+    ```console
+    sudo bash -c "cat > /etc/netplan/50-cloud-init.yaml" <<'EOF'
+    network:
+      ethernets:
+        eth0:
+          dhcp4: true
+      version: 2
+    EOF
+    ```
 
 ## <a name="dram-on-hb-series"></a>DRAM in der HB-Serie
 
@@ -29,15 +53,11 @@ Virtuelle Computer der HB-Serie können momentan nur 228 GB RAM für virtuelle
 
 ## <a name="accelerated-networking"></a>Beschleunigter Netzwerkbetrieb
 
-Der beschleunigte Netzwerkbetrieb von Azure ist momentan nicht aktiviert. Dies ändert sich im Laufe des Vorschauzeitraums aber noch. Kunden erhalten eine entsprechende Benachrichtigung, wenn dieses Feature unterstützt wird.
+Der beschleunigte Azure-Netzwerkbetrieb auf IB-fähigen HPC- und GPU-VMs ist derzeit nicht aktiviert. Kunden erhalten eine entsprechende Benachrichtigung, wenn dieses Feature unterstützt wird.
 
-## <a name="qp0-access-restriction"></a>qp0 Zugriffsbeschränkung
+## <a name="qp0-access-restriction"></a>qp0-Zugriffseinschränkung
 
-Um einen Low-Level-Hardwarezugriff zu verhindern, der zu Sicherheitsschwachstellen führen kann, ist Queue Pair 0 für Gast-VMs nicht zugänglich. Dies sollte nur Aktionen betreffen, die typischerweise mit der Verwaltung des ConnectX-5 NIC und der Ausführung einiger InfiniBand-Diagnosen wie ibdiagnet verbunden sind, nicht aber Endbenutzeranwendungen selbst.
-
-## <a name="ud-transport"></a>UD-Transport
-
-Beim Start unterstützen die HB- und HC-Serien keinen Dynamically Connected Transport (DCT). Die DCT-Unterstützung wird im Laufe der Zeit implementiert. RC-Transporte (Reliable Connection) und UD-Transporte (Unreliable Datagram) werden dagegen unterstützt.
+Um Zugriffe auf Low-Level-Hardware zu verhindern, die zu Sicherheitsrisiken führen können, haben virtuelle Gastcomputer keinen Zugriff auf das Warteschlangenpaar 0. Dies ist in der Regel nur für Aktionen im Zusammenhang mit der Verwaltung der ConnectX-5-NIC oder mit der Ausführung einiger InfiniBand-Diagnosen (beispielsweise „ibdiagnet“) relevant, nicht aber für Endbenutzeranwendungen.
 
 ## <a name="gss-proxy"></a>GSS Proxy
 
@@ -51,7 +71,7 @@ sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
 
 Auf HPC-Systemen empfiehlt es sich häufig, nach Abschluss eines Auftrags den Arbeitsspeicher zu bereinigen, bevor dem nächsten Benutzer der gleiche Knoten zugewiesen wird. Nach der Ausführung von Anwendungen unter Linux ist unter Umständen ein Rückgang des verfügbaren Arbeitsspeichers sowie eine Zunahme des Pufferspeichers zu beobachten, obwohl gar keine Anwendungen ausgeführt werden.
 
-![Screenshot der Eingabeaufforderung](./media/known-issues/cache-cleaning-1.png)
+![Screenshot der Eingabeaufforderung vor Bereinigung](./media/known-issues/cache-cleaning-1.png)
 
 `numactl -H` zeigt, mit welchen NUMA-Knoten der Arbeitsspeicher gepuffert wird. (Das können unter Umständen alle sein.) Unter Linux können Benutzer die Caches auf drei Arten bereinigen, um gepufferten Arbeitsspeicher oder CPU-Cache freizugeben. Dazu sind root- oder sudo-Berechtigungen erforderlich.
 
@@ -61,11 +81,11 @@ echo 2 > /proc/sys/vm/drop_caches [frees slab objects e.g. dentries, inodes]
 echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 ```
 
-![Screenshot der Eingabeaufforderung](./media/known-issues/cache-cleaning-2.png)
+![Screenshot der Eingabeaufforderung nach Bereinigung](./media/known-issues/cache-cleaning-2.png)
 
 ## <a name="kernel-warnings"></a>Kernelwarnungen
 
-Wenn Sie einen virtuellen Computer der HB-Serie unter Linux starten, werden unter Umständen folgende Kernelwarnmeldungen angezeigt:
+Wenn Sie einen virtuellen Computer der HB-Serie unter Linux starten, können Sie die folgenden Kernelwarnmeldungen ignorieren. Sie ist auf eine bekannte Einschränkung des Azure-Hypervisors zurückzuführen, die im Laufe der Zeit behandelt wird.
 
 ```console
 [  0.004000] WARNING: CPU: 4 PID: 0 at arch/x86/kernel/smpboot.c:376 topology_sane.isra.3+0x80/0x90
@@ -85,8 +105,9 @@ Wenn Sie einen virtuellen Computer der HB-Serie unter Linux starten, werden unte
 [  0.004000] ---[ end trace 73fc0e0825d4ca1f ]---
 ```
 
-Diese Warnung kann ignoriert werden. Sie ist auf eine bekannte Einschränkung des Azure-Hypervisors zurückzuführen, die im Laufe der Zeit behandelt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich ausführlicher über [High Performance Computing](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) in Azure.
+- Sehen Sie sich die [Übersicht über virtuelle Computer der HB-Serie](hb-series-overview.md) und die [Übersicht über virtuelle Computer der HC-Serie](hc-series-overview.md) an, um zu erfahren, wie Sie Workloads optimal konfigurieren, um die bestmögliche Leistung und Skalierbarkeit zu erzielen.
+- Informieren Sie sich in den [Tech Community-Blogs zu Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute) über die neuesten Ankündigungen, und machen Sie sich mit einigen HPC-Beispielen und Ergebnissen vertraut.
+- Eine allgemeinere Übersicht über die Architektur für die Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).

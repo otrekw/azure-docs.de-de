@@ -1,60 +1,67 @@
 ---
-title: Web-App, die Web-APIs aufruft (Anmelden) – Microsoft Identity Platform
-description: Erfahren Sie, wie Sie eine Web-App erstellen, die Web-APIs aufruft (Anmelden)
+title: Entfernen von Konten aus dem Tokencache bei der Abmeldung – Microsoft Identity Platform | Azure
+description: Erfahren Sie, wie Sie ein Konto bei der Abmeldung aus dem Tokencache entfernen
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 663cea72eb620217ad5fa8925d3bb00eedbf890c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7f59f235f4baa270b36b01cc4532227ab23fbc8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080058"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442530"
 ---
-# <a name="web-app-that-calls-web-apis---sign-in"></a>Web-App, die Web-APIs aufruft – Anmelden
+# <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Web-App, die Web-APIs aufruft: Entfernen von Konten aus dem Tokencache bei der globalen Abmeldung
 
-Sie wissen bereits, wie Ihrer Web-App Anmeldedaten hinzugefügt werden. Dies lernen Sie in [Web app that signs-in users - add sign-in (Web-App, die Benutzer anmeldet – Hinzufügen von Anmeldedaten)](scenario-web-app-sign-user-sign-in.md).
+Sie haben bereits erfahren, wie Sie Ihrer Web-App eine Anmeldefunktion hinzufügen (siehe [Web-App, die Benutzer anmeldet: An- und Abmeldung](scenario-web-app-sign-user-sign-in.md)).
 
-Der Unterschied besteht hier darin, dass Sie nach der Abmeldung des Benutzers von dieser oder einer anderen Anwendung den Tokencache mit den dem Benutzer zugeordneten Tokens leeren möchten.
+Bei einer Web-App, die Web-APIs aufruft, funktioniert die Abmeldung anders. Wenn sich der Benutzer von Ihrer Anwendung (oder von einer beliebigen Anwendung) abmeldet, müssen Sie die diesem Benutzer zugeordneten Token aus dem Tokencache entfernen.
 
-## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>Abfangen eines Rückrufs nach der Abmeldung – Einmaliges Abmelden
+## <a name="intercept-the-callback-after-single-sign-out"></a>Abfangen des Rückrufs nach einmaliger Abmeldung
 
-Ihre Anwendung kann das „after `logout`“-Ereignis abfangen, um beispielsweise den Eintrag aus dem Tokencache zu löschen, dem das abgemeldete Konto zugeordnet ist. Im zweiten Teil dieses Tutorials (über die Web-App, die Web-APIs abruft) erfahren Sie, dass die Web-App Zugriffstoken für den Benutzer in einem Cache speichert. Durch das Abfangen des „after `logout`“-Rückrufs kann Ihre Web-App den Benutzer aus dem Tokencache entfernen. Dieser Mechanismus wird in der `AddMsal()`-Methode von [StartupHelper.cs L137-143](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/b87a1d859ff9f9a4a98eb7b701e6a1128d802ec5/Microsoft.Identity.Web/StartupHelpers.cs#L137-L143) veranschaulicht.
+Um den Eintrag, der mit dem abgemeldeten Konto verbunden ist, aus dem Tokencache zu löschen, kann Ihre Anwendung das „after `logout`“-Ereignis abfangen. Web-Apps speichern die Zugriffstoken für die einzelnen Benutzer in einem Tokencache. Durch das Abfangen des „after `logout`“-Rückrufs kann Ihre Web-App den Benutzer aus dem Cache entfernen.
 
-Die **Abmelde-URL**, die Sie für Ihre Anwendung registriert haben, ermöglicht Ihnen das Implementieren der einmaligen Abmeldung. Der Microsoft Identity Platform-Endpunkt `logout` ruft die für Ihre Anwendung registrierte **Abmelde-URL** auf. Dieser Aufruf erfolgt, wenn die Abmeldung von Ihrer Web-App, einer anderen Web-App oder dem Browser initiiert wurde. Weitere Informationen finden Sie unter [Einmaliges Abmelden](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc#single-sign-out) in der konzeptuellen Dokumentation.
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-```CSharp
-public static IServiceCollection AddMsal(this IServiceCollection services, IEnumerable<string> initialScopes)
-{
-    services.AddTokenAcquisition();
+Microsoft.Identity.Web übernimmt die Implementierung der Abmeldung für Sie. Ausführliche Informationen finden Sie im [Microsoft.Identity.Web-Quellcode](https://github.com/AzureAD/microsoft-identity-web/blob/c29f1a7950b940208440bebf0bcb524a7d6bee22/src/Microsoft.Identity.Web/WebAppExtensions/WebAppCallsWebApiAuthenticationBuilderExtensions.cs#L168-L176).
 
-    services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
-    {
-     ...
-        // Handling the sign-out: removing the account from MSAL.NET cache
-        options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
-        {
-            // Remove the account from MSAL.NET token cache
-            var _tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
-            await _tokenAcquisition.RemoveAccount(context);
-        };
-    });
-    return services;
-}
-```
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
+
+Im ASP.NET-Beispiel werden Konten bei der globalen Abmeldung nicht aus dem Cache entfernt.
+
+# <a name="java"></a>[Java](#tab/java)
+
+Im Java-Beispiel werden Konten bei der globalen Abmeldung nicht aus dem Cache entfernt.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Im Python-Beispiel werden Konten bei der globalen Abmeldung nicht aus dem Cache entfernt.
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Abrufen eines Tokens für die Web-App](scenario-web-app-call-api-acquire-token.md)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
+
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [Abrufen eines Tokens für die Web-App](./scenario-web-app-call-api-acquire-token.md?tabs=aspnetcore).
+
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
+
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [Abrufen eines Tokens für die Web-App](./scenario-web-app-call-api-acquire-token.md?tabs=aspnet).
+
+# <a name="java"></a>[Java](#tab/java)
+
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [Abrufen eines Tokens für die Web-App](./scenario-web-app-call-api-acquire-token.md?tabs=java).
+
+# <a name="python"></a>[Python](#tab/python)
+
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [Abrufen eines Tokens für die Web-App](./scenario-web-app-call-api-acquire-token.md?tabs=python).
+
+---

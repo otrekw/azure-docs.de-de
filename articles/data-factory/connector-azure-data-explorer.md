@@ -1,28 +1,32 @@
 ---
-title: Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory
+title: Kopieren von Daten in oder aus Azure Data Explorer
 description: Erfahren Sie, wie Daten mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline in oder aus Azure Data Explorer kopiert werden.
 services: data-factory
-documentationcenter: ''
+ms.author: orspodek
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: orspodek
-ms.openlocfilehash: 6945e4dcf6baf44881bd5b13571dd03e3dee41ed
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.custom: seo-lt-2019
+ms.date: 02/18/2020
+ms.openlocfilehash: fa8219db0e11694b6f70547d5f75bd892fbfa1f8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300541"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633160"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in oder aus [Azure Data Explorer](../data-explorer/data-explorer-overview.md) zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in oder aus [Azure Data Explorer](/azure/data-explorer/data-explorer-overview) zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+
+>[!TIP]
+>Weitere Informationen zur Integration von Azure Data Factory und Azure Data Explorer im Allgemeinen finden Sie unter [Integration von Azure Data Explorer und Azure Data Factory](/azure/data-explorer/data-factory-integration).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -45,7 +49,7 @@ Mit dem Azure Data Explorer-Connector ist Folgendes möglich:
 ## <a name="getting-started"></a>Erste Schritte
 
 >[!TIP]
->Eine exemplarische Vorgehensweise zur Verwendung des Azure Data Explorer-Connectors finden Sie unter [Kopieren von Daten in Azure Data Explorer mithilfe von Azure Data Factory](../data-explorer/data-factory-load-data.md).
+>Eine exemplarische Vorgehensweise zur Verwendung des Azure Data Explorer-Connectors finden Sie unter [Kopieren von Daten in Azure Data Explorer mithilfe von Azure Data Factory](/azure/data-explorer/data-factory-load-data) und [Massenkopieren aus einer Datenbank zu Azure Data Explorer](/azure/data-explorer/data-factory-template).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -61,24 +65,24 @@ Der Azure Data Explorer-Connector verwendet die Dienstprinzipalauthentifizierung
     - Anwendungsschlüssel
     - Mandanten-ID
 
-2. Erteilen Sie dem Dienstprinzipal die geeigneten Berechtigungen in Azure Data Explorer. Unter [Verwalten der Berechtigungen für Datenbanken in Azure Data Explorer](../data-explorer/manage-database-permissions.md) finden Sie ausführliche Informationen zu Rollen und Berechtigungen sowie zur Verwaltung von Berechtigungen. Gehen Sie wie folgt vor:
+2. Erteilen Sie dem Dienstprinzipal die geeigneten Berechtigungen in Azure Data Explorer. Unter [Verwalten der Berechtigungen für Datenbanken in Azure Data Explorer](/azure/data-explorer/manage-database-permissions) finden Sie ausführliche Informationen zu Rollen und Berechtigungen sowie zur Verwaltung von Berechtigungen. Gehen Sie wie folgt vor:
 
     - Weisen Sie der Datenbank **als Quelle** mindestens die Rolle **Database viewer** (Anzeigender Datenbankbenutzer) zu.
     - Weisen Sie der Datenbank **als Senke** mindestens die Rolle **Database ingestor** (Datenbankerfasser) zu.
 
 >[!NOTE]
->Wenn Sie die Data Factory-Benutzeroberfläche für die Erstellung verwenden, wird Ihr Anmeldebenutzerkonto verwendet, um Azure Data Explorer-Cluster, -Datenbanken und -Tabellen aufzulisten. Geben Sie den Namen manuell ein, wenn Sie keine Berechtigung für diese Vorgänge haben.
+>Wenn Sie die Data Factory-Benutzeroberfläche für die Erstellung verwenden, wird Ihr Anmeldebenutzerkonto verwendet, um Azure Data Explorer-Cluster, -Datenbanken und -Tabellen aufzulisten. Geben Sie den Namen manuell ein, wenn Sie keine Berechtigung für diese Vorgänge besitzen.
 
 Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dienst unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft muss auf **AzureDataExplorer** festgelegt werden. | Ja |
+| type | Die **type** -Eigenschaft muss auf **AzureDataExplorer** festgelegt werden. | Ja |
 | endpoint | Endpunkt-URL des Azure Data Explorer-Clusters im Format `https://<clusterName>.<regionName>.kusto.windows.net` | Ja |
 | database | Name der Datenbank | Ja |
-| tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Dies wird in der [Kusto-Verbindungszeichenfolge](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties) als „Autoritäts-ID“ bezeichnet. Sie können ab abrufen, indem Sie im Azure-Portal mit dem Mauszeiger auf den Bereich oben rechts zeigen. | Ja |
-| servicePrincipalId | Geben Sie die Client-ID der Anwendung an. Dies wird in der [Kusto-Verbindungszeichenfolge](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties) als „AAD-Anwendungsclient-ID“ bezeichnet. | Ja |
-| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Dies wird in der [Kusto-Verbindungszeichenfolge](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties) als „AAD-Anwendungsschlüssel“ bezeichnet. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf in Azure Key Vault gespeicherte sichere Daten](store-credentials-in-key-vault.md). | Ja |
+| tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Dies wird in der [Kusto-Verbindungszeichenfolge](/azure/kusto/api/connection-strings/kusto#application-authentication-properties) als „Autoritäts-ID“ bezeichnet. Sie können ab abrufen, indem Sie im Azure-Portal mit dem Mauszeiger auf den Bereich oben rechts zeigen. | Ja |
+| servicePrincipalId | Geben Sie die Client-ID der Anwendung an. Dies wird in der [Kusto-Verbindungszeichenfolge](/azure/kusto/api/connection-strings/kusto#application-authentication-properties) als „AAD-Anwendungsclient-ID“ bezeichnet. | Ja |
+| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Dies wird in der [Kusto-Verbindungszeichenfolge](/azure/kusto/api/connection-strings/kusto#application-authentication-properties) als „AAD-Anwendungsschlüssel“ bezeichnet. Markieren Sie dieses Feld als **SecureString** , um es sicher in Data Factory zu speichern, oder [verweisen Sie auf in Azure Key Vault gespeicherte sichere Daten](store-credentials-in-key-vault.md). | Ja |
 
 **Beispiel für Eigenschaften des verknüpften Diensts:**
 
@@ -111,7 +115,7 @@ Folgende Eigenschaften werden unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft muss auf **AzureDataExplorerTable** festgelegt werden. | Ja |
+| type | Die **type** -Eigenschaft muss auf **AzureDataExplorerTable** festgelegt werden. | Ja |
 | table | Der Name der Tabelle, auf die der verknüpfte Dienst verweist. | Quelle: Ja, Senke: Nein |
 
 **Beispiel für Dataseteigenschaften:**
@@ -139,17 +143,17 @@ Eine vollständige Liste mit den verfügbaren Abschnitten und Eigenschaften zum 
 
 ### <a name="azure-data-explorer-as-source"></a>Azure Data Explorer als Quelle
 
-Legen Sie zum Kopieren von Daten aus Azure Data Explorer die **type**-Eigenschaft in der Quelle der Kopieraktivität auf **AzureDataExplorerSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
+Legen Sie zum Kopieren von Daten aus Azure Data Explorer die **type** -Eigenschaft in der Quelle der Kopieraktivität auf **AzureDataExplorerSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureDataExplorerSource** | Ja |
-| query | Eine in einem [KQL-Format](/azure/kusto/query/) angegebene schreibgeschützte Anforderung. Verwenden Sie die benutzerdefinierte KQL-Abfrage als Verweis. | Ja |
+| type | Die **type** -Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureDataExplorerSource** | Ja |
+| Abfrage | Eine in einem [KQL-Format](/azure/kusto/query/) angegebene schreibgeschützte Anforderung. Verwenden Sie die benutzerdefinierte KQL-Abfrage als Verweis. | Ja |
 | queryTimeout | Die Wartezeit vor dem Timeout der Abfrageanforderung. Der Standardwert ist 10 Minuten (00:10:00), der zulässige maximale Wert 1 Stunde (01:00:00). | Nein |
 | noTruncation | Gibt an, ob das zurückgegebene Resultset abgeschnitten werden soll. Standardmäßig wird das Ergebnis nach 500.000 Datensätzen oder 64 Megabyte (MB) abgeschnitten. Das Abschneiden wird dringend empfohlen, um das richtige Verhalten für die Aktivität sicherzustellen. |Nein |
 
 >[!NOTE]
->Standardmäßig ist die Azure Data Explorer-Quelle auf 500.000 Datensätze oder 64 MB begrenzt. Um alle Datensätze ohne Abschneiden abzurufen, können Sie `set notruncation;` am Anfang Ihrer Abfrage angeben. Weitere Informationen finden Sie unter [Abfragegrenzwerte](https://docs.microsoft.com/azure/kusto/concepts/querylimits).
+>Standardmäßig ist die Azure Data Explorer-Quelle auf 500.000 Datensätze oder 64 MB begrenzt. Um alle Datensätze ohne Abschneiden abzurufen, können Sie `set notruncation;` am Anfang Ihrer Abfrage angeben. Weitere Informationen finden Sie unter [Abfragegrenzwerte](/azure/kusto/concepts/querylimits).
 
 **Beispiel:**
 
@@ -190,8 +194,9 @@ Legen Sie zum Kopieren von Daten in Azure Data Explorer die type-Eigenschaft in 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureDataExplorerSink**. | Ja |
+| type | Die **type** -Eigenschaft der Senke der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureDataExplorerSink** . | Ja |
 | ingestionMappingName | Der Name einer vorab erstellten [Zuordnung](/azure/kusto/management/mappings#csv-mapping) für eine Kusto-Tabelle. Zum Zuordnen der Spalten aus der Quelle zu Azure Data Explorer (gilt für [alle unterstützten Quellspeicher und -formate](copy-activity-overview.md#supported-data-stores-and-formats), einschließlich der Formate CSV, JSON und Avro) können Sie die Kopieraktivität [Spaltenzuordnung](copy-activity-schema-and-type-mapping.md) (implizit anhand des Namens oder explizit wie konfiguriert) und/oder Azure Data Explorer-Zuordnungen verwenden. | Nein |
+| additionalProperties | Ein Eigenschaftenbehälter, mit dem Sie beliebige Erfassungseigenschaften angeben können, die nicht bereits von der Azure Data Explorer-Senke festgelegt sind. Dies kann besonders nützlich sein, um Erfassungstags anzugeben. Weitere Informationen finden Sie in der [Dokumentation zur Datenerfassung im Azure Data Explorer](/azure/data-explorer/ingestion-properties). | Nein |
 
 **Beispiel:**
 
@@ -206,7 +211,8 @@ Legen Sie zum Kopieren von Daten in Azure Data Explorer die type-Eigenschaft in 
             },
             "sink": {
                 "type": "AzureDataExplorerSink",
-                "ingestionMappingName": "<optional Azure Data Explorer mapping name>"
+                "ingestionMappingName": "<optional Azure Data Explorer mapping name>",
+                "additionalProperties": {<additional settings for data ingestion>}
             }
         },
         "inputs": [

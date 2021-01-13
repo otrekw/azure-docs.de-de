@@ -1,30 +1,31 @@
 ---
-title: Kopieren von Daten aus SAP Business Warehouse über Open Hub mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus SAP Business Warehouse mithilfe von Open Hub
 description: Erfahren Sie, wie Daten aus SAP Business Warehouse (BW) über Open Hub mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: jingwang
-ms.openlocfilehash: a35246aff99ec78e665e3be4afd47409959bef63
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom: seo-lt-2019
+ms.date: 06/12/2020
+ms.openlocfilehash: 930c7e7881a00cd0cb1f4abc6b219c0fbdeebac5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089719"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87533409"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopieren von Daten aus SAP Business Warehouse über Open Hub mithilfe von Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus SAP Business Warehouse (BW) über Open Hub zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 >[!TIP]
->Informationen zur allgemeinen Unterstützung des SAP-Datenintegrationsszenarios durch ADF finden Sie im [Whitepaper zur SAP-Datenintegration mit Azure Data Factory](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf). Dort finden Sie auch eine detaillierte Einführung, einen Vergleich sowie Anleitungen.
+>Informationen zur allgemeinen Unterstützung des SAP-Datenintegrationsszenarios durch ADF finden Sie im [Whitepaper zur SAP-Datenintegration mit Azure Data Factory](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf). Dort finden Sie auch eine detaillierte Einführung in jeden SAP-Connector, einen Vergleich und Anleitungen.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -37,10 +38,11 @@ Sie können Daten aus SAP Business Warehouse über Open Hub in jeden unterstütz
 
 Dieser SAP Business Warehouse Open Hub-Connector unterstützt insbesondere Folgendes:
 
-- SAP Business Warehouse **Version 7.01 oder höher (in einem aktuellen, nach 2015 veröffentlichten SAP-Supportpaket)** .
+- SAP Business Warehouse **Version 7.01 oder höher (in einem aktuellen, nach 2015 veröffentlichten SAP-Supportpaket)** . SAP BW4/HANA wird von diesem Connector nicht unterstützt.
 - Kopieren von Daten über lokale Open Hub Destination-Tabelle, wie z.B. DSO, InfoCube, MultiProvider, DataSource usw.
 - Kopieren von Daten mithilfe der Standardauthentifizierung
-- Herstellen einer Verbindung zum Anwendungsserver.
+- Herstellen einer Verbindung mit einem SAP-Anwendungsserver oder einem SAP-Nachrichtenserver.
+- Abrufen von Daten über RFC.
 
 ## <a name="sap-bw-open-hub-integration"></a>SAP BW Open Hub-Integration 
 
@@ -54,7 +56,7 @@ SAP BW Open Hub Destination (OHD) definiert das Ziel, an das die SAP-Daten weite
 
 ADF SAP BW Open Hub Connector verfügt über die beiden optionalen Eigenschaften `excludeLastRequest` und `baseRequestId`, die zum Behandeln der Deltalast von Open Hub verwendet werden können. 
 
-- **excludeLastRequestId**: Damit entscheiden Sie, ob die Datensätze der letzten Anforderung ausgeschlossen werden. Der Standardwert lautet „true“. 
+- **excludeLastRequestId**: Damit entscheiden Sie, ob die Datensätze der letzten Anforderung ausgeschlossen werden. Der Standardwert ist true. 
 - **baseRequestId**: Die ID der Anforderung für das Deltaladen. Sobald sie festgelegt ist, werden nur noch Daten abgerufen, bei denen requestId größer als der Wert dieser Eigenschaft ist. 
 
 Insgesamt umfasst die Extraktion von SAP InfoProviders in Azure Data Factory (ADF) zwei Schritte: 
@@ -109,6 +111,10 @@ Folgende Eigenschaften werden für den mit SAP Business Warehouse Open Hub verkn
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapOpenHub** | Ja |
 | server | Der Name des Servers, auf dem sich die SAP BW-Instanz befindet. | Ja |
 | systemNumber | Die Systemnummer des SAP BW-Systems.<br/>Zulässiger Wert: Zweistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | Ja |
+| messageServer | Der Hostname des SAP-Nachrichtenservers.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
+| messageServerService | Der Dienstname oder die Portnummer des Nachrichtenservers.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
+| systemId | Die ID des SAP-Systems, in dem sich die Tabelle befindet.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
+| logonGroup | Die Anmeldegruppe für das SAP-System.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
 | clientId | Client-ID des Clients im SAP BW-System.<br/>Zulässiger Wert: Dreistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | Ja |
 | language | Sprache, die das SAP-System verwendet. | Nein (Standardwert ist **EN**).|
 | userName | Der Name des Benutzers, der Zugriff auf den SAP-Server hat. | Ja |
@@ -189,7 +195,7 @@ Beim Kopieren von Daten aus SAP BW Open Hub werden die folgenden Eigenschaften i
 >[!TIP]
 >Wenn Ihre Open Hub-Tabelle z.B. nur die Daten enthält, die durch eine einzige Anforderungs-ID generiert wurden, Sie immer eine vollständige Ladung durchführen und die vorhandenen Daten in der Tabelle überschreiben, oder Sie den DTP nur einmal zum Testen ausführen, denken Sie daran, die Option „excludeLastRequest“ zu deaktivieren, um die Daten zu kopieren.
 
-Um das Laden der Daten zu beschleunigen, können Sie [`parallelCopies`](copy-activity-performance.md#parallel-copy) in der Kopieraktivität festlegen, um Daten parallel aus SAP BW Open Hub zu laden. Wenn Sie `parallelCopies` beispielsweise auf vier festlegen, führt Data Factory vier RFC-Aufrufe gleichzeitig aus. Jeder RFC-Aufruf ruft einen Teil der Daten aus Ihrer SAP BW Open Hub-Tabelle ab, die durch die DTP-Anforderungs-ID und Paket-ID partitioniert wurde. Dies gilt, wenn die Anzahl von eindeutigen DTP-Anforderungs-IDs plus der Anzahl der Paket-IDs größer als der Wert von `parallelCopies` ist. Beim Kopieren von Daten in einen dateibasierten Datenspeicher wird außerdem empfohlen, unter Verwendung von „Mehrere Dateien“ in einen Ordner zu schreiben (Sie müssen nur den Ordnernamen angeben). In diesem Fall ist die Leistung besser als beim Schreiben in eine einzelne Datei.
+Um das Laden der Daten zu beschleunigen, können Sie [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) in der Kopieraktivität festlegen, um Daten parallel aus SAP BW Open Hub zu laden. Wenn Sie `parallelCopies` beispielsweise auf vier festlegen, führt Data Factory vier RFC-Aufrufe gleichzeitig aus. Jeder RFC-Aufruf ruft einen Teil der Daten aus Ihrer SAP BW Open Hub-Tabelle ab, die durch die DTP-Anforderungs-ID und Paket-ID partitioniert wurde. Dies gilt, wenn die Anzahl von eindeutigen DTP-Anforderungs-IDs plus der Anzahl der Paket-IDs größer als der Wert von `parallelCopies` ist. Beim Kopieren von Daten in einen dateibasierten Datenspeicher wird außerdem empfohlen, unter Verwendung von „Mehrere Dateien“ in einen Ordner zu schreiben (Sie müssen nur den Ordnernamen angeben). In diesem Fall ist die Leistung besser als beim Schreiben in eine einzelne Datei.
 
 **Beispiel:**
 
@@ -237,12 +243,17 @@ Beim Kopieren von Daten aus SAP BW Open Hub werden die folgenden Zuordnungen von
 | T (Time) | String |
 | P (BCD Packed, Currency, Decimal, Qty) | Decimal |
 | N (Numc) | String |
-| X („Binary“ und „Raw“) | Zeichenfolge |
+| X („Binary“ und „Raw“) | String |
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 
 Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
 
+## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
+
+**Symptome:** Wenn Sie SAP BW auf HANA ausführen und beobachten, dass nur eine Teilmenge der Daten mit der ADF-Kopieraktivität kopiert wird (1 Million Zeilen), besteht die mögliche Ursache darin, dass Sie in Ihrer DTP die Option „SAP HANA-Ausführung" aktiviert haben. In diesem Fall kann ADF nur den ersten Datenstapel abrufen.
+
+**Lösung:** Deaktivieren Sie die Option „SAP HANA-Ausführung“ in DTP, verarbeiten Sie die Daten erneut, und versuchen Sie dann erneut, die Kopieraktivität auszuführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -1,25 +1,15 @@
 ---
-title: Übersicht über die Transaktionsverarbeitung in Azure Service Bus | Microsoft-Dokumentation
-description: Übersicht über atomare Azure Service Bus-Transaktionen und „send via“
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 64449247-1026-44ba-b15a-9610f9385ed8
-ms.service: service-bus-messaging
-ms.devlang: na
+title: Übersicht über die Transaktionsverarbeitung in Azure Service Bus
+description: In diesem Artikel erhalten Sie eine Übersicht über die Transaktionsverarbeitung und die Funktion „Senden über“ in Azure Service Bus.
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/22/2018
-ms.author: aschhab
-ms.openlocfilehash: a839a4cad824a74bde388317cf3aaddf9c5bd47f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 10/28/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9162b8578fe4f48cc3740b38d9d84ffaa2f260de
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332345"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023600"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Übersicht über die Service Bus-Transaktionsverarbeitung
 
@@ -37,8 +27,8 @@ Service Bus unterstützt Gruppierungsvorgänge für eine einzelne Nachrichtenent
 
 Die innerhalb eines Transaktionsbereichs ausführbaren Vorgänge sind:
 
-* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** : Send, SendAsync, SendBatch, SendBatchAsync 
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** : Complete, CompleteAsync, Abandon, AbandonAsync, Deadletter, DeadletterAsync, Defer, DeferAsync, RenewLock, RenewLockAsync 
+* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** : `Send`, `SendAsync`, `SendBatch`, `SendBatchAsync`
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** : `Complete`, `CompleteAsync`, `Abandon`, `AbandonAsync`, `Deadletter`, `DeadletterAsync`, `Defer`, `DeferAsync`, `RenewLock`, `RenewLockAsync` 
 
 Empfangsvorgänge sind nicht enthalten, da davon ausgegangen wird, dass die Anwendung Nachrichten mithilfe des Modus [ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) in einer Empfangsschleife oder über einen [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage)-Rückruf erhält. Erst dann öffnet die Anwendung einen Transaktionsbereich für die Verarbeitung der Nachricht.
 
@@ -46,9 +36,9 @@ Die Disposition der Nachricht (vollständig, verworfen, unzustellbar, zurückges
 
 ## <a name="transfers-and-send-via"></a>Übertragungen und „send via“
 
-Service Bus unterstützt *Übertragungen*, um Transaktionsübergaben von Daten aus einer Warteschlange an einen Prozessor und von dem Prozessor an eine weitere Warteschlange zu ermöglichen. Bei einem Übertragungsvorgang sendet ein Sender eine Nachricht zuerst an eine *Übertragungswarteschlange*. Die Übertragungswarteschlange verschiebt die Nachricht sofort zu der gewünschten Zielwarteschlange und verwendet dazu dieselbe stabile Übertragungsimplementierung, auf der auch die automatische Weiterleitung basiert. Die Nachricht wird im Protokoll der Übertragungswarteschlange niemals so committet, dass sie für die Consumer der Übertragungswarteschlange sichtbar wird.
+Service Bus unterstützt *Übertragungen*, um transaktionsbasierte Übergaben von Daten aus einer Warteschlange oder einem Thema an einen Prozessor und von dort an eine andere Warteschlange oder ein anderes Thema zu ermöglichen. Bei einem Übertragungsvorgang sendet ein Sender eine Nachricht zuerst an eine *Übertragungswarteschlange oder ein Übertragungsthema*. Die Übertragungswarteschlange bzw. das Übertragungsthema verschiebt die Nachricht sofort an die gewünschte Zielwarteschlange bzw. das gewünschte Zielthema und verwendet dazu dieselbe stabile Übertragungsimplementierung, auf der auch die automatische Weiterleitung basiert. Die Nachricht wird an das Protokoll der Übertragungswarteschlange oder des Themas niemals in einer Weise committet, dass sie für die Consumer der Übertragungswarteschlangebzw. des Themas sichtbar wird.
 
-Wenn die Übertragungswarteschlange selbst die Quelle der eingehenden Nachrichten des Absenders darstellt, offenbart sich die Leistungsfähigkeit dieser Transaktionsfunktion. Das bedeutet, dass Service Bus die Nachricht „via“ Übertragungswarteschlange an die Zielwarteschlange übermitteln kann. Gleichzeitig führt Service Bus einen vollständigen (zurückgestellten oder unzustellbaren) Vorgang für die Eingabenachricht aus, alles in einer atomaren Operation. 
+Wenn die Übertragungswarteschlange oder das Übertragungsthema selbst die Quelle der eingehenden Nachrichten des Absenders ist, offenbart sich die Leistungsfähigkeit dieser Transaktionsfunktion. Anders gesagt: Service Bus kann die Nachricht über die Übertragungswarteschlange bzw. das Übertragungsthema an die Zielwarteschlange bzw. das Zielthema übermitteln. Gleichzeitig führt Service Bus einen vollständigen (oder einen zurückgestellten oder unzustellbaren) Vorgang für die Eingabenachricht aus. All dies erfolgt in einem einzigen atomaren Vorgang. 
 
 ### <a name="see-it-in-code"></a>Codebeispiel
 
@@ -98,13 +88,16 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 }
 ```
 
+## <a name="timeout"></a>Timeout
+Eine Transaktion weist nach zwei Minuten einen Timeout auf. Der Transaktionszeitgeber startet, wenn der erste Vorgang in der Transaktion gestartet wird. 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Service Bus-Warteschlangen finden Sie in den folgenden Artikeln:
 
 * [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 * [Verketten von Service Bus-Entitäten mit automatischer Weiterleitung](service-bus-auto-forwarding.md)
-* [Auto Forward](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward) (Automatische Weiterleitung)
+* [Beispiel zur automatischen Weiterleitung](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
 * [Atomic Transactions with Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions) (Atomare Transaktionen mit Service Bus)
 * [Vergleich von Azure-Warteschlangen und Service Bus-Warteschlangen](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 

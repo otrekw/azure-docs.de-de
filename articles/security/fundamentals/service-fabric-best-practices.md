@@ -1,26 +1,18 @@
 ---
-title: Bewährte Methoden für die Azure Service Fabric-Sicherheit | Microsoft-Dokumentation
+title: Bewährte Methoden für die Azure Service Fabric-Sicherheit
 description: Dieser Artikel enthält bewährte Methoden für die Azure Service Fabric-Sicherheit.
-services: security
-documentationcenter: na
 author: unifycloud
-manager: barbkess
-editor: tomsh
-ms.assetid: ''
+ms.author: tomsh
 ms.service: security
 ms.subservice: security-fundamentals
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/16/2019
-ms.author: tomsh
-ms.openlocfilehash: dc063621e6b3e1d0d3e1a51d744ca9d9a6ef8c8d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a7396c9a29c7d9f69dbe6a9cc5cd085c72ebafde
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934625"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700945"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Bewährte Methoden für die Azure Service Fabric-Sicherheit
 Die Bereitstellung einer Anwendung in Azure ist schnell, einfach und kostengünstig. Bevor Sie Ihre Cloudanwendung für die Produktion bereitstellen, überprüfen Sie unsere Liste grundlegender und empfohlener bewährter Methoden zum Implementieren sicherer Cluster in der Anwendung.
@@ -40,7 +32,7 @@ Wir empfehlen die folgenden bewährten Methoden für die Azure Service Fabric-Si
 -   Verwenden von X.509-Zertifikaten
 -   Konfigurieren von Sicherheitsrichtlinien
 -   Implementieren der Reliable Actors-Sicherheitskonfiguration
--   Konfigurieren von SSL für Azure Service Fabric
+-   Konfigurieren von TLS für Azure Service Fabric
 -   Verwenden von Netzwerkisolation und -sicherheit mit Azure Service Fabric
 -   Konfigurieren von Azure Key Vault für die Sicherheit
 -   Zuweisen von Benutzern zu Rollen
@@ -68,7 +60,7 @@ Es gibt drei [Szenarien](../../service-fabric/service-fabric-cluster-security.md
 -   Knoten-zu-Knoten-Sicherheit: Mit diesem Szenario wird die Kommunikation zwischen den VMs und den Computern im Cluster geschützt. So wird sichergestellt, dass nur Computer, die zum Beitreten zum Cluster berechtigt sind, Anwendungen und Dienste im Cluster hosten können.
 In diesem Szenario können in Azure ausgeführte Cluster oder eigenständige unter Windows ausgeführte Cluster für Windows Server-Computer entweder die [Zertifikatsicherheit](../../service-fabric/service-fabric-windows-cluster-x509-security.md) oder die [Windows-Sicherheit](../../service-fabric/service-fabric-windows-cluster-windows-security.md) verwenden.
 -   Client-zu-Knoten-Sicherheit: Mit diesem Szenario wird die Kommunikation zwischen einem Service Fabric-Client und den einzelnen Knoten im Cluster geschützt.
--   Rollenbasierte Zugriffssteuerung (RBAC): In diesem Szenario werden separate Identitäten (Zertifikate, Azure AD usw.) für alle Administrator- und Clientrollen verwendet, die auf den Cluster zugreifen. Sie geben die Rollenidentitäten bei der Erstellung des Clusters an.
+-   Rollenbasierte Zugriffssteuerung in Service Fabric (Service Fabric RBAC): In diesem Szenario werden separate Identitäten (Zertifikate, Azure AD usw.) für alle Administrator- und Clientrollen verwendet, die auf den Cluster zugreifen. Sie geben die Rollenidentitäten bei der Erstellung des Clusters an.
 
 >[!NOTE]
 >**Sicherheitsempfehlung für Azure-Cluster:** Verwenden Sie Azure AD-Sicherheit, um Clients und Zertifikate für die Knoten-zu-Knoten-Sicherheit zu authentifizieren.
@@ -126,13 +118,13 @@ Jeder Akteur wird als Instanz eines Akteurtyps definiert (genau wie ein .NET-Obj
 [Replicator-Sicherheitskonfigurationen](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md) werden verwendet, um den während der Replikation verwendeten Kommunikationskanal zu schützen. Diese Konfiguration verhindert, dass Dienste den Replikationsdatenverkehr anderer Dienste sehen können, und sie stellt sicher, dass die hoch verfügbaren Daten sicher sind. Standardmäßig wird die Replikationssicherheit durch einen leeren Sicherheitskonfigurationsabschnitt verhindert.
 Replicator-Konfigurationen konfigurieren den Replicator, der dafür verantwortlich ist, den Status des Actor-Status-Anbieters hochverfügbar zu machen.
 
-## <a name="configure-ssl-for-azure-service-fabric"></a>Konfigurieren von SSL für Azure Service Fabric
-Der Serverauthentifizierungsprozess [authentifiziert](../../service-fabric/service-fabric-cluster-creation-via-arm.md) die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient. Der Verwaltungsclient erkennt damit, dass er mit dem tatsächlichen Cluster kommuniziert. Dieses Zertifikat stellt auch [SSL](../../service-fabric/service-fabric-cluster-creation-via-arm.md) für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit.
+## <a name="configure-tls-for-azure-service-fabric"></a>Konfigurieren von TLS für Azure Service Fabric
+Der Serverauthentifizierungsprozess [authentifiziert](../../service-fabric/service-fabric-cluster-creation-via-arm.md) die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient. Der Verwaltungsclient erkennt damit, dass er mit dem tatsächlichen Cluster kommuniziert. Dieses Zertifikat stellt auch [TLS](../../service-fabric/service-fabric-cluster-creation-via-arm.md) für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit.
 Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, den Sie für Ihren Cluster verwenden.
 
-Wenn Sie für eine Anwendung SSL konfigurieren möchten, müssen Sie zunächst ein SSL-Zertifikat abrufen, das von einer Zertifizierungsstelle signiert wurde. Die Zertifizierungsstelle ist eine vertrauenswürdige dritte Partei, die Zertifikate für die SSL-Sicherheit ausstellt. Wenn Sie noch kein SSL-Zertifikat haben, müssen Sie eines von einem Unternehmen erwerben, das SSL-Zertifikate verkauft.
+Wenn Sie für eine Anwendung TLS konfigurieren möchten, müssen Sie zunächst ein TLS-Zertifikat abrufen, das von einer Zertifizierungsstelle signiert wurde. Die Zertifizierungsstelle ist eine vertrauenswürdige dritte Partei, die Zertifikate für die TLS-Sicherheit ausstellt. Wenn Sie noch kein SSL-/TLS-Zertifikat besitzen, müssen Sie ein Zertifikat von einem Unternehmen erwerben, das SSL-/TLS-Zertifikate verkauft.
 
-Das Zertifikat muss die folgenden Anforderungen für SSL-Zertifikate in Azure erfüllen:
+Das Zertifikat muss die folgenden Anforderungen für SSL-/TLS-Zertifikate in Azure erfüllen:
 -   Das Zertifikat muss einen privaten Schlüssel enthalten.
 
 -   Das Zertifikat muss für den Schlüsselaustausch erstellt werden und in eine PFX-Datei (Persönlicher Informationsaustausch) exportiert werden können.
@@ -143,16 +135,16 @@ Das Zertifikat muss die folgenden Anforderungen für SSL-Zertifikate in Azure er
     - Verwenden Sie beim Anfordern eines Zertifikats von einer Zertifizierungsstelle einen Antragstellernamen, der dem benutzerdefinierte Domänenname des Diensts entspricht. Wenn beispielsweise der benutzerdefinierte Domänenname __contoso__ **.com** lautet, sollte das Zertifikat von der Zertifizierungsstelle den Antragstellernamen **.contoso.com** oder __www__ **.contoso.com** haben.
 
     >[!NOTE]
-    >Für die Domäne __cloudapp__ **.net** können Sie kein SSL-Zertifikat von einer Zertifizierungsstelle beziehen.
+    >Für die Domäne __cloudapp__ **.net** können Sie kein SSL-/TLS-Zertifikat von einer Zertifizierungsstelle beziehen.
 
 -   Das Zertifikat muss mindestens eine 2.048-Bit-Verschlüsselung aufweisen.
 
 Das HTTP-Protokoll ist unsicher und anfällig für Lauschangriffe. Daten, die über HTTP übertragen werden, werden als Klartext vom Webbrowser an den Webserver oder zwischen anderen Endpunkten übertragen. Dies bedeutet, dass Angreifer sensible Daten, z.B. Kreditkartendaten und Anmeldedaten für Konten, die über HTTP übermittelt werden, abfangen und anzeigen können. Wenn die Daten mithilfe von HTTPS über einen Browser gesendet oder bereitgestellt werden, wird mit SSL sichergestellt, dass vertrauliche Informationen verschlüsselt sind und nicht abgefangen werden können.
 
-Weitere Informationen zur Verwendung von SSL-Zertifikaten finden Sie unter [Konfigurieren von SSL für Azure-Anwendungen](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
+Weitere Informationen zur Verwendung von SSL-/TLS-Zertifikaten finden Sie unter [Konfigurieren von TLS für eine Anwendung in Azure](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Verwenden von Netzwerkisolation und -sicherheit mit Azure Service Fabric
-Richten Sie als Beispiel einen sicheren Cluster mit 3 Knoten mithilfe der [Azure Resource Manager-Vorlage](../../azure-resource-manager/resource-group-authoring-templates.md) ein. Sie steuern den ein- und ausgehenden Netzwerkdatenverkehr mithilfe der Vorlage und von Netzwerksicherheitsgruppen.
+Richten Sie als Beispiel einen sicheren Cluster mit 3 Knoten mithilfe der [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/template-syntax.md) ein. Sie steuern den ein- und ausgehenden Netzwerkdatenverkehr mithilfe der Vorlage und von Netzwerksicherheitsgruppen.
 
 Die Vorlage weist eine Netzwerksicherheitsgruppe für jede VM-Skalierungsgruppe auf und dient der Steuerung des Datenverkehrs in der Gruppe und aus dieser heraus. Standardmäßig werden die Regeln so konfiguriert, dass der gesamte von den Systemdiensten benötigte Datenverkehr und die in der Vorlage angegebenen Anwendungsports zugelassen werden. Überprüfen Sie diese Regeln, und ändern Sie sie nach Ihren Bedürfnissen, indem Sie z.B. neue Regeln für Ihre Anwendungen hinzufügen.
 
@@ -163,7 +155,7 @@ Zertifikate werden in Service Fabric zur Authentifizierung und Verschlüsselung 
 
 Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu schützen und Sicherheitsfunktionen für Anwendungen bereitzustellen. Azure Key Vault dient dem [Verwalten von Zertifikaten](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md) für Service Fabric-Cluster in Azure. Der Azure-Ressourcenanbieter, der die Cluster erstellt, ruft die Zertifikate aus einem Schlüsseltresor ab. Der Anbieter installiert die Zertifikate auf den virtuellen Computern, wenn der Cluster in Azure bereitgestellt wird.
 
-Eine Zertifikatbeziehung besteht zwischen [Azure Key Vault](../../key-vault/key-vault-secure-your-key-vault.md), dem Service Fabric-Cluster und dem Ressourcenanbieter, der die Zertifikate verwendet. Wenn der Cluster erstellt wird, werden Informationen über die Zertifikatbeziehung in einem Schlüsseltresor gespeichert.
+Eine Zertifikatbeziehung besteht zwischen [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md), dem Service Fabric-Cluster und dem Ressourcenanbieter, der die Zertifikate verwendet. Wenn der Cluster erstellt wird, werden Informationen über die Zertifikatbeziehung in einem Schlüsseltresor gespeichert.
 
 Das Einrichten eines Schlüsseltresors umfasst zwei grundlegende Schritte:
 1. Erstellen Sie eine neue Ressourcengruppe speziell für Ihren Schlüsseltresor.
@@ -174,18 +166,18 @@ Das Einrichten eines Schlüsseltresors umfasst zwei grundlegende Schritte:
 
     Der Schlüsseltresor muss für die Bereitstellung aktiviert sein. Der Computeressourcenanbieter kann dann die Zertifikate vom Tresor abrufen und auf den VM-Instanzen installieren.
 
-Weitere Informationen zum Einrichten eines Schlüsseltresors finden Sie unter [Was ist Azure Key Vault?](../../key-vault/key-vault-overview.md).
+Weitere Informationen zum Einrichten eines Schlüsseltresors finden Sie unter [Was ist Azure Key Vault?](../../key-vault/general/overview.md).
 
 ## <a name="assign-users-to-roles"></a>Zuweisen von Benutzern zu Rollen
 Nachdem Sie die Anwendungen für Ihren Cluster erstellt haben, müssen Ihre Benutzer den von Service Fabric unterstützten Rollen zugewiesen werden: „read-only“ (schreibgeschützt) und „admin“ (Administrator). Für die Rollenzuweisung können Sie das Azure-Portal verwenden.
 
 >[!NOTE]
-> Weitere Informationen zur Verwendung von Rollen in Service Fabric finden Sie unter [Rollenbasierte Zugriffssteuerung für Service Fabric-Clients](../../service-fabric/service-fabric-cluster-security-roles.md).
+> Weitere Informationen zur Verwendung von Rollen in Service Fabric finden Sie unter [Rollenbasierte Zugriffssteuerung in Service Fabric für Service Fabric-Clients](../../service-fabric/service-fabric-cluster-security-roles.md).
 
 Azure Service Fabric unterstützt zwei Zugriffssteuerungstypen für Clients, die mit einem [Service Fabric-Cluster](../../service-fabric/service-fabric-cluster-creation-via-arm.md) verbunden sind: Administrator und Benutzer. Mit der Zugriffssteuerung können Clusteradministratoren den Zugriff auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern einschränken. Diese Zugriffssteuerung macht den Cluster sicherer.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Checkliste für die Service Fabric-Sicherheit](service-fabric-checklist.md)
+- [Checkliste für die Service Fabric-Sicherheit](../../service-fabric/service-fabric-best-practices-security.md)
 - Richten Sie Ihre Service Fabric-[Entwicklungsumgebung](../../service-fabric/service-fabric-get-started.md) ein.
 - Informieren Sie sich über [Service Fabric-Supportoptionen](../../service-fabric/service-fabric-support.md).

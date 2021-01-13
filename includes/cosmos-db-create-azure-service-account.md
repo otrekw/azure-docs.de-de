@@ -2,21 +2,17 @@
 title: include file
 description: include file
 services: cosmos-db
-author: MarkMcGeeAtAquent
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 04/06/2018
-ms.author: mimig
+ms.date: 07/23/2020
+ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 5d779694ac107931b610f9d91a24dd715669aecd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 014d53b3f8ef8f5009ee5de03b8697a07e1317fd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67177841"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87171940"
 ---
-Sie können in Azure Table Storage oder in Azure Cosmos DB mit Tabellen arbeiten. Informationen über die Unterschiede zwischen den Diensten finden Sie unter [Tabellenangebote](../articles/cosmos-db/table-introduction.md#table-offerings). Sie müssen ein Konto für den Dienst erstellen, den Sie verwenden werden. 
-
-
-
-
+Sie können im Azure-Tabellenspeicher oder in Azure Cosmos DB mit Tabellen arbeiten. Weitere Informationen zu den Unterschieden zwischen Tabellenangeboten dieser beiden Dienste finden Sie im Artikel [Tabellenangebote](../articles/cosmos-db/table-introduction.md#table-offerings). Sie müssen ein Konto für den Dienst erstellen, den Sie verwenden werden. In den folgenden Abschnitten wird gezeigt, wie Sie sowohl den Azure-Tabellenspeicher als auch das Azure Cosmos DB-Konto erstellen können. Sie können jedoch auch nur eines von beiden verwenden. 

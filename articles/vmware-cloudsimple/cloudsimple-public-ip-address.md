@@ -1,6 +1,6 @@
 ---
-title: Azure-VMware-Lösung von CloudSimple – öffentliche IP-Adresse
-description: Erfahren Sie mehr über öffentliche IP-Adressen und deren Vorteile für die Azure-VMware-Lösung von CloudSimple.
+title: Azure VMware Solution by CloudSimple – öffentliche IP-Adresse
+description: Erfahren Sie mehr über öffentliche IP-Adressen und deren Vorteile für Azure VMware Solution by CloudSimple.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877681"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "77024975"
 ---
 # <a name="cloudsimple-public-ip-address-overview"></a>Öffentliche CloudSimple-IP-Adresse – Übersicht
 

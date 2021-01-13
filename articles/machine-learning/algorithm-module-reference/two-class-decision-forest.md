@@ -1,24 +1,24 @@
 ---
 title: 'Entscheidungswald mit zwei Klassen: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mithilfe des Moduls „Entscheidungswald mit zwei Klassen“ in Azure Machine Learning Service ein Modell für maschinelles Lernen erstellen, das auf dem Entscheidungswald-Algorithmus basiert.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mithilfe des Moduls „Entscheidungswald mit zwei Klassen“ in Azure Machine Learning ein Modell für maschinelles Lernen erstellen, das auf dem Entscheidungswald-Algorithmus basiert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 37a2ce77e438145219df9cb553d1881626e8a2c6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 09/03/2020
+ms.openlocfilehash: c4c303a7640454ba0cb6622b21fd161354266068
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128393"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375926"
 ---
 # <a name="two-class-decision-forest-module"></a>Modul „Entscheidungswald mit zwei Klassen“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul, um ein Modell für maschinelles Lernen zu erstellen, das auf dem Entscheidungswald-Algorithmus basiert.  
 
@@ -49,7 +49,7 @@ Weitere Informationen finden Sie unter [Entscheidungswälder](https://go.microso
 
 ## <a name="how-to-configure"></a>Vorgehensweise zur Konfiguration
   
-1.  Fügen Sie Ihrem Experiment in Azure Machine Learning das Modul **Entscheidungswald mit zwei Klassen** hinzu, und öffnen Sie den Bereich **Eigenschaften** des Moduls. 
+1.  Fügen Sie Ihrer Pipeline in Azure Machine Learning das Modul **Two-Class Decision Forest** hinzu, und öffnen Sie den Bereich **Eigenschaften** des Moduls. 
 
     Sie finden das Modul unter **Machine Learning**. Erweitern Sie **Initialize** (Initialisieren) und dann **Classification** (Klassifizierung).  
   
@@ -66,15 +66,16 @@ Weitere Informationen finden Sie unter [Entscheidungswälder](https://go.microso
 3.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.  
   
     -   **Single Parameter** (Einzelner Parameter): Wenn Sie wissen, wie Sie das Modell konfigurieren möchten, können Sie einen bestimmten Satz von Werten als Argumente angeben.
+
+    -   **Parameter Range** (Parameterbereich): Wenn Sie sich hinsichtlich der besten Parameter nicht sicher sind, können Sie optimale Parameter mithilfe des Moduls [Tune Model Hyperparameters](tune-model-hyperparameters.md) finden. Sie geben einen Wertebereich an, woraufhin das Training über mehrere Einstellungskombinationen iteriert, um die Wertekombination zu bestimmen, die das beste Ergebnis liefert.
   
 4.  Geben Sie in **Number of decision trees** die maximale Anzahl von Entscheidungsbäumen ein, die im Ensemble erstellt werden können. Mit einer höheren Anzahl von Entscheidungsbäumen erzielen Sie u. U. eine bessere Abdeckung, allerdings verlängert sich dadurch auch die Trainingsdauer.  
   
     > [!NOTE]
-    >  Dieser Wert steuert auch die Anzahl von Bäumen, die bei der Visualisierung des trainierten Modells angezeigt werden. Wenn Sie eine einzelne Struktur anzeigen oder ausgeben möchten, können Sie den Wert auf „1“ festlegen. Allerdings wird dann möglicherweise auch nur ein einzelner Baum (die Struktur mit dem anfänglichen Parametersatz) generiert, und es finden keine weiteren Iterationen statt.
+    >  Sie können den Wert auf 1 festlegen. Allerdings wird dann möglicherweise auch nur ein einzelner Baum (die Struktur mit dem anfänglichen Parametersatz) generiert, und es finden keine weiteren Iterationen statt.
   
 5.  Geben Sie in **Maximum depth of the decision trees** (Maximale Tiefe der Entscheidungsbäume) einen Wert ein, um die maximale Tiefe der Entscheidungsbäume zu begrenzen. Eine größere Tiefe des Baums kann die Genauigkeit erhöhen, wobei das Risiko einer Überanpassung und einer längeren Trainingsdauer besteht.
   
-6.  Geben Sie in **Number of random splits per node** (Anzahl der zufälligen Aufteilungen pro Knoten) die Anzahl der Aufteilungen ein, die beim Erstellen der einzelnen Knoten des Baums verwendet werden sollen. Eine *Aufteilung* bedeutet, dass Features auf jeder Ebene des Baums (Knotens) zufällig aufgeteilt werden.
   
 7.  Geben Sie unter **Minimum number of samples per leaf node** (Minimale Anzahl von Stichproben pro Blattknoten) die Mindestanzahl von Fällen an, die zum Erstellen eines Endknotens (Blatt) in einer Struktur erforderlich sind.
   
@@ -84,24 +85,28 @@ Weitere Informationen finden Sie unter [Entscheidungswälder](https://go.microso
 
      Wenn Sie diese Option deaktivieren, akzeptiert das Modell nur Werte, die in den Trainingsdaten enthalten sind.
   
-9. Fügen Sie ein bezeichnetes Dataset und eines der [Trainingsmodule hinzu](module-reference.md):  
+9. Fügen Sie ein bezeichnetes Dataset an, und trainieren Sie das Modell:
+
+    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie ein mit Tags versehenes Dataset und das Modul [Train Model](train-model.md) (Modell trainieren) verbinden.  
   
-    -   Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie das Modul [Train Model](./train-model.md) (Trainieren des Modells) verwenden.  
+    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Parameter Range** (Parameterbereich) festlegen, verbinden Sie ein markiertes Dataset, und trainieren Sie das Modell mithilfe des Moduls [Tune Model Hyperparameters](tune-model-hyperparameters.md).  
   
+    > [!NOTE]
+    > 
+    > Wenn Sie einen Parameterbereich an das Modul [Train Model](train-model.md) übergeben, wird nur der Standardwert in der Liste der Einzelparameter verwendet.  
+    > 
+    > Wenn Sie einen einzelnen Satz von Parameterwerten an das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) übergeben und ein Bereich von Einstellungen für jeden Parameter erwartet wird, werden die Werte ignoriert und stattdessen die Standardwerte für den Learner verwendet.  
+    > 
+    > Wenn Sie die Option **Parameter Range** (Parameterbereich) auswählen und einen einzelnen Wert für einen beliebigen Parameter eingeben, wird dieser angegebene einzelne Wert während des gesamten Löschvorgangs verwendet, auch wenn andere Parameter in einem Wertebereich geändert werden.  
     
 ## <a name="results"></a>Ergebnisse
 
 Nach Abschluss des Trainings:
 
-+ Um den Baum anzuzeigen, der bei jeder Iteration erstellt wurde, klicken Sie mit der rechten Maustaste auf die Ausgabe des Moduls [Train Model](./train-model.md), und wählen Sie **Visualize** aus.
-  
-    Klicken Sie auf den Baum, um Detailinformationen zu den Teilen sowie Regeln für die einzelnen Knoten anzuzeigen.
++ Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Registerkarte **Ausgaben** im rechten Bereich des Moduls **Train model** aus. Wählen Sie das Symbol **Register dataset** (Dataset registrieren) aus, um das Modell als wiederverwendbares Modul zu speichern.
 
-+ Um eine Momentaufnahme des Modells zu speichern, klicken Sie mit der rechten Maustaste auf die Ausgabe **Trained model** (Trainiertes Modell), und wählen Sie **Save Model** (Modell speichern) aus. Das gespeicherte Modell wird bei nachfolgenden Ausführungen des Experiments nicht aktualisiert.
-
-+ Um das Modell zur Bewertung zu verwenden, fügen Sie einem Experiment das Modul **Score Model** (Modell bewerten) hinzu.
-
++ Um das Modell zur Bewertung zu verwenden, fügen Sie einer Pipeline das Modul **Score Model** hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

@@ -1,27 +1,28 @@
 ---
-title: Leistung von Apache Spark-Workloads mit Azure HDInsight IO Cache (Vorschauversion)
+title: Leistung von Apache Spark – Azure HDInsight IO Cache (Vorschauversion)
 description: Enthält Informationen zu Azure HDInsight IO Cache und seiner Verwendung zum Verbessern der Apache Spark-Leistung.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: conceptual
-ms.date: 10/15/2018
-ms.openlocfilehash: f3f171d4dfd3642dc71724afbe084c3fcbf8beaa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.service: hdinsight
+ms.topic: how-to
+ms.date: 12/23/2019
+ms.openlocfilehash: 3e724e6336163a092c9b4385324b1aa037295bb6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091074"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86081756"
 ---
-# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Verbessern der Leistung von Apache Spark-Workloads per Azure HDInsight IO Cache 
+# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Verbessern der Leistung von Apache Spark-Workloads per Azure HDInsight IO Cache
 
 IO Cache ist ein Dienst zum Zwischenspeichern von Daten für Azure HDInsight, mit dem die Leistung von Apache Spark-Aufträgen verbessert wird. IO Cache funktioniert auch mit [Apache TEZ](https://tez.apache.org/)- und [Apache Hive](https://hive.apache.org/)-Workloads, die auf [Apache Spark](https://spark.apache.org/)-Clustern ausgeführt werden können. Für IO Cache wird eine Open-Source-Komponente für die Zwischenspeicherung mit dem Namen RubiX verwendet. RubiX ist ein lokaler Datenträgercache zur Verwendung mit Big Data-Analysemodulen, bei denen über Cloudspeichersysteme auf Daten zugegriffen wird. RubiX ist unter Zwischenspeicherungssystemen einzigartig, da SSDs (Solid-State Drives) genutzt werden, anstatt regulären Arbeitsspeicher für die Zwischenspeicherung zu reservieren. Der Dienst IO Cache startet und verwaltet RubiX-Metadatenserver auf jedem Workerknoten des Clusters. Außerdem werden alle Dienste des Clusters für die transparente Nutzung des RubiX-Caches konfiguriert.
 
 Die meisten SSDs ermöglichen eine Bandbreite von mehr als 1 GB pro Sekunde. Diese Bandbreite wird durch den In-Memory-Dateicache des Betriebssystems ergänzt und reicht aus, um Module für Big Data-Computeaufgaben, z.B. Apache Spark, zu laden. Das Betriebssystem bleibt für Apache Spark verfügbar, damit Aufgaben mit starker Abhängigkeit vom Arbeitsspeicher, z.B. Shufflevorgänge, verarbeitet werden können. Indem die exklusive Nutzung des regulären Arbeitsspeichers möglich ist, kann für Apache Spark eine optimale Ressourcennutzung erzielt werden.  
 
->[!Note]  
->Für IO Cache wird derzeit RubiX als Komponente für die Zwischenspeicherung genutzt, aber dies kann sich in zukünftigen Versionen des Diensts ändern. Es ist ratsam, IO Cache-Schnittstellen zu verwenden und keine direkten Abhängigkeiten von der RubiX-Implementierung einzurichten.
+> [!Note]  
+> Für IO Cache wird derzeit RubiX als Komponente für die Zwischenspeicherung genutzt, aber dies kann sich in zukünftigen Versionen des Diensts ändern. Es ist ratsam, IO Cache-Schnittstellen zu verwenden und keine direkten Abhängigkeiten von der RubiX-Implementierung einzurichten.
+>IO Cache wird derzeit nur für Azure Blob Storage unterstützt.
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Vorteile von Azure HDInsight IO Cache
 
@@ -31,21 +32,19 @@ Sie müssen keine Änderungen an Ihren Spark-Aufträgen vornehmen, um bei der Ve
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Azure HDInsight IO Cache ist in der Vorschauversion standardmäßig deaktiviert. IO Cache ist in Azure HDInsight 3.6+-Spark-Clustern verfügbar, in denen Apache Spark 2.3 ausgeführt wird.  Gehen Sie wie folgt vor, um IO Cache zu aktivieren:
+Azure HDInsight IO Cache ist in der Vorschauversion standardmäßig deaktiviert. IO Cache ist in Azure HDInsight 3.6+-Spark-Clustern verfügbar, in denen Apache Spark 2.3 ausgeführt wird.  Führen Sie die folgenden Schritte aus, um IO Cache in HDInsight 4.0 zu aktivieren:
 
-1. Wählen Sie Ihren HDInsight-Cluster im [Azure-Portal](https://portal.azure.com) aus.
-
-1. Wählen Sie auf der Seite **Übersicht** (wird bei Auswahl des Clusters standardmäßig geöffnet) unter **Clusterdashboards** die Option **Ambari Home**.
+1. Navigieren Sie in einem Webbrowser zu `https://CLUSTERNAME.azurehdinsight.net`, wobei `CLUSTERNAME` der Name Ihres Clusters ist.
 
 1. Wählen Sie auf der linken Seite den Dienst **IO Cache** aus.
 
-1. Wählen Sie **Aktionen** und dann **Aktivieren**.
+1. Wählen Sie **Aktionen** (**Dienstaktionen** in HDI 3.6) und dann **Aktivieren** aus.
 
     ![Aktivieren des Diensts IO Cache in Ambari](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Aktivieren des Diensts IO Cache in Ambari")
 
 1. Vergewissern Sie sich, dass alle betroffenen Dienste im Cluster neu gestartet wurden.
 
->[!NOTE]  
+> [!NOTE]  
 > Auch wenn in der Statusanzeige „Aktiviert“ angezeigt wird, wird IO Cache erst aktiviert, nachdem Sie die anderen betroffenen Dienste neu gestartet haben.
 
 ## <a name="troubleshooting"></a>Problembehandlung
@@ -70,12 +69,12 @@ Unter Umständen erhalten Sie Datenträgerspeicher-Fehler, wenn Sie nach dem Akt
 
 1. Wählen Sie **Restart** > **Restart All Affected**.
 
-    ![Neustarten aller betroffenen Elemente](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Neustarten aller betroffenen Elemente")
+    ![Apache Ambari: Neustarten aller betroffenen Instanzen](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Neustarten aller betroffenen Instanzen")
 
 1. Wählen Sie **Confirm Restart All**.
 
-Deaktivieren Sie IO Cache, falls dies nicht funktioniert.
+Deaktivieren Sie IO Cache, falls dies nicht funktioniert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie in diesem Blogbeitrag mehr über IO Cache und zugehörige Leistungsbenchmarks: [Apache Spark jobs gain up to 9x speed up with HDInsight IO Cache](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/) (Apache Spark-Aufträge bis zu 9-mal schneller mit HDInsight IO Cache)
+Informieren Sie sich weiter über IO Cache, z.B. über Leistungsbenchmarks, in diesem Blogbeitrag: [Apache Spark jobs gain up to 9x speed up with HDInsight IO Cache](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/) (Bis zu neunfache Geschwindigkeit für Apache Spark-Aufträge mit HDInsight IO Cache).

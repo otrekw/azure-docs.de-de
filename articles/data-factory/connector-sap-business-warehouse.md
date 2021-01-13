@@ -1,33 +1,34 @@
 ---
-title: Kopieren von Daten aus SAP BW mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus SAP BW
 description: Erfahren Sie, wie Daten aus SAP Business Warehouse mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.author: jingwang
-ms.openlocfilehash: e53cb822d1100b3d13a96c9f86aee6db420e4bb1
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 86d4f82b70a6b6b3ceed262cf96fa291e26dd53c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089607"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87534378"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopieren von Daten aus SAP Business Warehouse mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [Aktuelle Version](connector-sap-business-warehouse.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus SAP Business Warehouse (BW) zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 >[!TIP]
->Informationen zur allgemeinen Unterstützung des SAP-Datenintegrationsszenarios durch ADF finden Sie im [Whitepaper zur SAP-Datenintegration mit Azure Data Factory](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf). Dort finden Sie auch eine detaillierte Einführung, einen Vergleich sowie Anleitungen.
+>Informationen zur allgemeinen Unterstützung des SAP-Datenintegrationsszenarios durch ADF finden Sie im [Whitepaper zur SAP-Datenintegration mit Azure Data Factory](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf). Dort finden Sie auch eine detaillierte Einführung in jeden SAP-Connector, einen Vergleich und Anleitungen.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -137,7 +138,7 @@ Beim Kopieren von Daten aus SAP BW werden die folgenden Eigenschaften im Abschni
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SapBwSource** | Ja |
-| query | Gibt die MDX-Abfrage an, mit der Daten aus der SAP BW-Instanz gelesen werden. | Ja |
+| Abfrage | Gibt die MDX-Abfrage an, mit der Daten aus der SAP BW-Instanz gelesen werden. | Ja |
 
 **Beispiel:**
 
@@ -200,7 +201,7 @@ Beim Kopieren von Daten aus SAP BW werden die folgenden Zuordnungen von SAP BW-D
 | UNIT | String |
 | DATS | String |
 | NUMC | String |
-| TIMS | Zeichenfolge |
+| TIMS | String |
 
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität

@@ -1,58 +1,53 @@
 ---
-title: Konfigurieren der Exportrichtlinie für ein NFS-Volume mit Azure NetApp Files | Microsoft-Dokumentation
+title: Konfigurieren der Exportrichtlinie für ein NFS-Volume – Azure NetApp Files
 description: Beschreibt, wie Sie die Exportrichtlinie zum Steuern des Zugriffs auf ein NFS-Volume mit Azure NetApp Files konfigurieren.
 services: azure-netapp-files
-documentationcenter: ''
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: b-juche
-ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: how-to
+ms.date: 07/27/2020
+ms.openlocfilehash: 77630ddcd61d17f3b47e6cb5d43396c1a6f0e904
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61086150"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517868"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Konfigurieren der Exportrichtlinie für ein NFS-Volume
 
-Sie können optional die Exportrichtlinie zum Steuern des Zugriffs auf ein Azure NetApp Files-Volume konfigurieren. Die Exportrichtlinie wird nur für NFS-Volumes unterstützt. 
+Sie können die Exportrichtlinie zum Steuern des Zugriffs auf ein Azure NetApp Files-Volume konfigurieren. Die Azure NetApp Files-Exportrichtlinie unterstützt Volumes, die das NFS-Protokoll (NFSv3 sowie NFSv4.1) und ein duales Protokoll (NFSv3 und SMB) verwenden. 
 
-## <a name="steps"></a>Schritte 
+Sie können bis zu fünf Exportrichtlinienregeln erstellen.
 
-1.  Klicken Sie auf dem Blatt für die Volumeverwaltung auf das Blatt **Create Export Policy** (Exportrichtlinie erstellen). 
+## <a name="configure-the-policy"></a>Konfigurieren der Richtlinie 
 
-2.  Geben Sie Informationen für die folgenden Felder an, um eine Exportrichtlinienregel zu erstellen:   
-    *  **Index**   
-        Geben Sie die Indexnummer für die Regel an.  
-        Eine Exportrichtlinie kann bis zu fünf Regeln umfassen. Regeln werden gemäß ihrer Reihenfolge in der Indexnummernliste ausgewertet. Regeln mit einer niedrigeren Indexnummer werden zuerst ausgewertet. So wird beispielsweise die Regel mit der Indexnummer 1 vor der Regel mit der Indexnummer 2 ausgewertet. 
+1.  Wählen Sie auf der Seite **Volumes** das Volume aus, für das Sie die Exportrichtlinie konfigurieren möchten, und wählen Sie dann **Exportrichtlinie** aus. Sie können die Exportrichtlinie auch während der Erstellung des Volumes konfigurieren.
 
-    * **Zulässige Clients**   
-        Geben Sie den Wert in einem der folgenden Formate an:  
-        * IPv4-Adresse (Beispiel: `10.1.12.24`) 
-        * IPv4-Adresse mit einer Subnetzmaske, ausgedrückt als Anzahl von Bits (Beispiel: `10.1.12.10/4`)
+2.  Geben Sie die folgenden Informationen an, um eine Exportrichtlinienregel zu erstellen:   
+    * **Index**: Geben Sie die Indexnummer für die Regel an.  
+      
+      Eine Exportrichtlinie kann bis zu fünf Regeln umfassen. Regeln werden gemäß ihrer Reihenfolge in der Indexnummernliste ausgewertet. Regeln mit einer niedrigeren Indexnummer werden zuerst ausgewertet. So wird beispielsweise die Regel mit der Indexnummer 1 vor der Regel mit der Indexnummer 2 ausgewertet. 
 
-    * **zugreifen**  
-        Wählen Sie einen der folgenden Berechtigungstypen aus:  
-        * Kein Zugriff 
-        * Lesen/Schreiben
-        * Nur Leseberechtigung
+    * **Zulässige Clients**: Geben Sie den Wert in einem der folgenden Formate an:  
+      * IPv4-Adresse. Ein Beispiel: `10.1.12.24`
+      * IPv4-Adresse mit einer Subnetzmaske, ausgedrückt als Anzahl von Bits. Ein Beispiel: `10.1.12.10/4`
+      * Durch Trennzeichen getrennte IP-Adressen. Sie können mehrere Host-IP-Adressen in einer einzigen Regel eingeben, indem Sie sie durch Kommas trennen. Ein Beispiel: `10.1.12.25,10.1.12.28,10.1.12.29`
 
-    * **Protokolle**   
-        Geben Sie das gewünschte Protokoll für die Exportrichtlinie an.   
-        Derzeit unterstützt die Azure NetApp Files-Exportrichtlinie nur NFSv3.
+    * **Zugriff**: Wählen Sie einen der folgenden Berechtigungstypen aus:  
+      * Kein Zugriff 
+      * Lesen/Schreiben
+      * Nur Leseberechtigung
 
-    ![Exportrichtlinie](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+    * **Nur Leseberechtigung** und **Lesen/Schreiben**: Wenn Sie die Kerberos-Verschlüsselung mit NFSv4.1 verwenden, befolgen Sie die Anweisungen unter [Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung](configure-kerberos-encryption.md).  Informationen zu den Leistungsauswirkungen von Kerberos finden Sie unter [Leistungsauswirkungen von Kerberos auf NFSv4.1](configure-kerberos-encryption.md#kerberos_performance). 
 
+      ![Kerberos-Sicherheitsoptionen](../media/azure-netapp-files/kerberos-security-options.png) 
+
+    * **Root-Zugriff**: Geben Sie an, ob das `root`-Konto auf das Volume zugreifen kann.  Standardmäßig ist der Root-Zugriff auf **Ein** festgelegt, und das `root`-Konto hat Zugriff auf das Volume.
+
+      ![Exportrichtlinie](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte 
-* [Verwalten von Volumes](azure-netapp-files-manage-volumes.md)
 * [Bereitstellen oder Aufheben der Bereitstellung eines Volumes für virtuelle Computer](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Verwalten von Momentaufnahmen](azure-netapp-files-manage-snapshots.md)

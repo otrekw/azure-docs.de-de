@@ -1,22 +1,21 @@
 ---
-title: Verweise auf Eingaben und Ausgaben in Pipelines für die kognitive Suche – Azure Search
-description: Erläutert die Syntax der Anmerkung und, wie auf eine Anmerkung in den Eingaben und Ausgaben eines Skillsets in einer Pipeline der kognitiven Suche in Azure Search verwiesen wird.
-services: search
+title: Verweisen auf Eingaben und Ausgaben in Skillsets
+titleSuffix: Azure Cognitive Search
+description: Erläutert die Anmerkungssyntax und wie auf eine Anmerkung in den Eingaben und Ausgaben eines Skillsets in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche verwiesen wird.
 manager: nitinme
-author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: LuisCabrer
 ms.author: luisca
-ms.openlocfilehash: 40559744f0650c64afb1dc63c38f56efaa0219d7
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 03431d861ca6d469b894e45c36fe2a3d7904c3a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265531"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88935533"
 ---
-# <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Verweisen auf Anmerkungen in einem Skillset der kognitiven Suche
+# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Verweisen auf Anmerkungen in einem Skillset der kognitiven Azure-Suche
 
 In diesem Artikel erfahren Sie, wie Sie auf Anmerkungen in Skilldefinitionen verweisen und verschiedene Szenarien anhand von Beispielen veranschaulichen können. Während der Inhalt eines Dokuments eine Reihe von Skills durchläuft, wird er mit Anmerkungen angereichert. Anmerkungen können als Eingaben für die nachfolgende Anreicherung verwendet oder einem Ausgabefeld in einem Index zugeordnet werden. 
  
@@ -32,7 +31,7 @@ Gehen Sie vor dem Überprüfen der Syntax nun noch einmal einige wichtige Konzep
 | Anreicherungskontext | Der Kontext, in dem die Anreicherung stattfindet, d.h. welches Element angereichert wird. Standardmäßig befindet sich der Anreicherungskontext auf der Ebene `"/document"`, die auf einzelne Dokumente bezogen ist. Wenn ein Skill ausgeführt wird, werden die Ergebnisse dieses Skills zu [Eigenschaften des definierten Kontexts](#example-2).|
 
 <a name="example-1"></a>
-## <a name="example-1-simple-annotation-reference"></a>Beispiel 1: Einfacher Anmerkungsverweis
+## <a name="example-1-simple-annotation-reference"></a>Beispiel 1: Einfacher Anmerkungsverweis
 
 Angenommen, Sie haben in Azure Blob Storage eine Vielzahl von Dateien, die Verweise auf die Namen von Personen enthalten, die Sie mithilfe der Entitätserkennung extrahieren möchten. In der folgenden Skilldefinition ist `"/document/content"` die Textdarstellung des gesamten Dokuments, und „people“ ist eine Extrahierung von vollständigen Namen für als Personen identifizierte Entitäten.
 
@@ -60,7 +59,7 @@ Da der Standardkontext `"/document"` ist, kann auf die Liste der Personen nun al
 
 <a name="example-2"></a>
 
-## <a name="example-2-reference-an-array-within-a-document"></a>Beispiel 2: Verweis auf ein Array innerhalb eines Dokuments
+## <a name="example-2-reference-an-array-within-a-document"></a>Beispiel 2: Verweisen auf ein Array innerhalb eines Dokuments
 
 Dieses Beispiel baut auf dem vorherigen auf und zeigt Ihnen, wie Sie einen Anreicherungsschritt mehrfach über dasselbe Dokument aufrufen können. Angenommen, das vorherige Beispiel generiert ein Array von Zeichenfolgen mit zehn Personennamen aus einem einzigen Dokument. Ein sinnvoller nächster Schritt könnte eine zweite Anreicherung sein, die den Nachnamen aus einem vollständigen Namen extrahiert. Da es zehn Namen gibt, soll dieser Schritt in diesem Dokument zehnmal aufgerufen werden, d.h. einmal pro Person. 
 
@@ -92,7 +91,7 @@ Wenn es sich bei Anmerkungen um Arrays oder Sammlungen von Zeichenfolgen handelt
 
 <a name="example-3"></a>
 
-## <a name="example-3-reference-members-within-an-array"></a>Beispiel 3: Verweis auf Elemente innerhalb eines Arrays
+## <a name="example-3-reference-members-within-an-array"></a>Beispiel 3: Verweisen auf Elemente innerhalb eines Arrays
 
 Manchmal müssen Sie alle Anmerkungen eines bestimmten Typs gruppieren, um sie an einen bestimmten Skill zu übergeben. Angenommen, es gibt einen hypothetischen benutzerdefinierten Skill, der den häufigsten Nachnamen aus allen in Beispiel 2 extrahierten Nachnamen identifiziert. Um dem benutzerdefinierten Skill nur die Nachnamen bereitzustellen, legen Sie den Kontext auf `"/document"` und die Eingabe auf `"/document/people/*/lastname"` fest.
 
@@ -124,5 +123,5 @@ Beachten Sie, dass die Kardinalität von `"/document/people/*/lastname"` größe
 ## <a name="see-also"></a>Weitere Informationen
 + [Integrieren eines benutzerdefinierten Skills in einer Anreicherungspipeline](cognitive-search-custom-skill-interface.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Erstellen eines Skillsets (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Erstellen eines Skillsets (REST)](/rest/api/searchservice/create-skillset)
 + [Zuordnen angereicherter Felder zu einem Index](cognitive-search-output-field-mapping.md)

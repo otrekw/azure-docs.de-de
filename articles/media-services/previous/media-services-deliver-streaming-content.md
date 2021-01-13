@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b1d0c070a9196eaa9a2706a607baa9a2926e2db4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a0343c607a342c3438d68627b97c71cdf05199b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051743"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89267784"
 ---
-# <a name="publish-media-services-content-using-net"></a>Veröffentlichen von Media Services-Inhalten mit .NET  
+# <a name="publish-media-services-content-using-net"></a>Veröffentlichen von Media Services-Inhalten mit .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -99,16 +103,15 @@ Erstellen von Streaming-URLs
 
 Die Ausgaben:
 
-    URL to manifest for client streaming using Smooth Streaming protocol:
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
-    URL to manifest for client streaming using HLS protocol:
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
-    URL to manifest for client streaming using MPEG DASH protocol:
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
-
+- URL des Manifests für das Clientstreaming mithilfe des Smooth Streaming-Protokolls:\
+  `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest`
+- URL des Manifests für das Clientstreaming mithilfe des HLS-Protokolls:\
+  `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)`
+- URL des Manifests für das Clientstreaming mithilfe des MPEG-DASH-Protokolls:\
+  `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)`
 
 > [!NOTE]
-> Sie können auch den Inhalt über eine SSL-Verbindung streamen. Zu diesem Zweck stellen Sie sicher, dass die Streaming-URLs mit HTTPS beginnen. AMS unterstützt derzeit SSL mit benutzerdefinierten Domänen nicht.
+> Sie können den Inhalt auch über eine TLS-Verbindung streamen. Zu diesem Zweck stellen Sie sicher, dass die Streaming-URLs mit HTTPS beginnen. AMS unterstützt derzeit TLS mit benutzerdefinierten Domänen nicht.
 > 
 > 
 
@@ -145,12 +148,12 @@ Erstellen von URLs für progressive Downloads
 ```
 Die Ausgaben:
 
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_2250kbps_AAC_und_ch2_96kbps.mp4
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4`
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4`
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_2250kbps_AAC_und_ch2_96kbps.mp4`
 
-    . . . 
+    erforderlich. erforderlich. erforderlich. 
 
 ### <a name="use-media-services-net-sdk-extensions"></a>Verwenden von Media Services .NET SDK-Erweiterungen
 Im folgenden Code werden .NET SDK-Erweiterungsmethoden aufgerufen, durch die ein Locator erstellt und die Smooth Streaming-, HLS- und MPEG-DASH-URLs für adaptives Streaming generiert werden.

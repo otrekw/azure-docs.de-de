@@ -1,32 +1,28 @@
 ---
-title: Erfassen und Analysieren von Windows-Ereignisprotokollen in Azure Monitor | Microsoft-Dokumentation
+title: Datenquellen für das Sammeln von Windows-Ereignisprotokolldaten mit dem Log Analytics-Agent in Azure Monitor
 description: Hier wird beschrieben, wie Sie das Sammeln von Windows-Ereignisprotokollen mit Azure Monitor konfigurieren und Details zu den von ihnen erstellten Datensätzen finden.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: ee52f564-995b-450f-a6ba-0d7b1dac3f32
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: cc81a8d8023d0724f4ecb71c157e8f575aa9edc8
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.date: 10/21/2020
+ms.openlocfilehash: 109e96f862ec2f3ddf879bccba114c44aecfe3c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997476"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012594"
 ---
-# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Datenquellen für Windows-Ereignisprotokolle in Azure Monitor
-Windows-Ereignisprotokolle sind eine der häufigsten [Datenquellen](agent-data-sources.md) zum Sammeln von Daten mithilfe von Windows-Agents, da viele Anwendungen Daten in das Windows-Ereignisprotokoll schreiben.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.
+# <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Datenquellen für das Sammeln von Windows-Ereignisprotokolldaten mit dem Log Analytics-Agent
+Windows-Ereignisprotokolle sind eine der gängigsten [Datenquellen](agent-data-sources.md) für Log Analytics-Agents auf virtuellen Windows-Computern, weil viele Anwendungen Daten in das Windows-Ereignisprotokoll schreiben.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.
+
+> [!IMPORTANT]
+> In diesem Artikel wird das Sammeln von Windows-Ereignissen mit dem [Log Analytics-Agent](log-analytics-agent.md) beschrieben, einem der von Azure Monitor verwendeten Agents. Andere Agents sammeln andere Daten und werden anders konfiguriert. Eine Liste der verfügbaren Agents und der von ihnen gesammelten Daten finden Sie unter [Übersicht über Azure Monitor-Agents](agents-overview.md).
 
 ![Windows-Ereignisse](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Konfigurieren der Windows-Ereignisprotokolle
-Sie konfigurieren Windows-Ereignisprotokolle über das [Menü „Daten“ in „Erweiterte Einstellungen“](agent-data-sources.md#configuring-data-sources).
+Sie konfigurieren Windows-Ereignisprotokolle über das [Menü „Daten“ in „Erweiterte Einstellungen“](agent-data-sources.md#configuring-data-sources) für den Log Analytics-Arbeitsbereich.
 
 Azure Monitor sammelt nur Ereignisse aus den Windows-Ereignisprotokollen, die in den Einstellungen angegeben wurden.  Sie können ein Ereignisprotokoll hinzufügen, indem Sie den Namen des Protokolls eingeben und auf **+** klicken.  Für jedes Protokoll werden nur die Ereignisse mit den ausgewählten Schweregraden gesammelt.  Überprüfen Sie die Schweregrade für das Protokoll, aus dem Sie Daten sammeln möchten.  Sie können keine zusätzlichen Kriterien zum Filtern von Ereignissen bereitstellen.
 
@@ -67,7 +63,7 @@ Windows-Ereignisdatensätze weisen den Typ **Event** auf und besitzen die in der
 ## <a name="log-queries-with-windows-events"></a>Protokollabfragen mit Windows-Ereignissen
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die Windows-Ereignisdatensätze abrufen.
 
-| Abfragen | BESCHREIBUNG |
+| Abfrage | BESCHREIBUNG |
 |:---|:---|
 | Ereignis |Alle Windows-Ereignisse. |
 | Event &#124; where EventLevelName == "error" |Alle Windows-Ereignisse mit dem Schweregrad „error“. |

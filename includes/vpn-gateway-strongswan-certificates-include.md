@@ -9,10 +9,10 @@ ms.date: 09/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1c2525b352c25f470814ce909a8d10ff821d9e32
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70961619"
 ---
 Generieren des Zertifizierungsstellenzertifikats

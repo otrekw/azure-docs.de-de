@@ -1,17 +1,14 @@
 ---
-title: Konfigurieren von Integritätswarnungen für Azure-Ressourcen mithilfe von Resource Manager-Vorlagen | Microsoft-Dokumentation
+title: Vorlage zum Erstellen von Resource Health-Warnungen
 description: Erstellen Sie programmgesteuert Warnungen, die Sie informieren, wenn Ihre Azure-Ressourcen nicht mehr verfügbar sind.
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 7ccd84042d11b586d524d4eb76eba03111e0b3c5
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 3859bb0ce2497b1c1f547c3750e53745ef6d6f28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099009"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537428"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen
 
@@ -19,60 +16,67 @@ In diesem Artikel wird gezeigt, wie Sie mithilfe von Azure Resource Manager-Vorl
 
 Azure Resource Health informiert Sie über den aktuellen und den vergangenen Integritätsstatus Ihrer Azure-Ressourcen. Azure Resource Health-Warnungen können Sie nahezu in Echtzeit informieren, wenn sich der Integritätsstatus dieser Ressourcen ändert. Die programmgesteuerte Erstellung von Resource Health-Warnungen ermöglicht Benutzern das Massenerstellen und -anpassen von Warnungen.
 
-> [!NOTE]
-> Resource Health-Warnungen sind derzeit als Vorschau verfügbar.
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Damit Sie die Anweisungen auf dieser Seite ausführen können, müssen Sie vorab einige Komponenten einrichten:
 
-1. Sie müssen das [Azure PowerShell-Modul](https://docs.microsoft.com/powershell/azure/install-Az-ps) installieren.
+1. Sie müssen das [Azure PowerShell-Modul](/powershell/azure/install-az-ps) installieren.
 2. Sie können [eine Aktionsgruppe erstellen oder wiederverwenden](../azure-monitor/platform/action-groups.md), die so konfiguriert ist, dass Sie benachrichtigt werden.
 
-## <a name="instructions"></a>Anleitung
+## <a name="instructions"></a>Instructions
 1. Melden Sie sich unter Verwendung von PowerShell und Ihres Kontos bei Azure an, und wählen Sie das gewünschte Abonnement aus.
 
-        Login-AzAccount
-        Select-AzSubscription -Subscription <subscriptionId>
+    ```azurepowershell
+    Login-AzAccount
+    Select-AzSubscription -Subscription <subscriptionId>
+    ```
 
     > Sie können mit `Get-AzSubscription` die Abonnements auflisten, auf die Sie Zugriff haben.
 
 2. Suchen Sie die vollständige Azure Resource Manager-ID für Ihre Aktionsgruppe, und speichern Sie sie.
 
-        (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+    ```azurepowershell
+    (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+    ```
 
 3. Erstellen Sie eine Resource Manager-Vorlage für Resource Health-Warnungen, und speichern Sie sie unter `resourcehealthalert.json`. ([Details siehe unten](#resource-manager-template-options-for-resource-health-alerts))
 
 4. Erstellen Sie mit dieser Vorlage eine neue Azure Resource Manager-Bereitstellung.
 
-        New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+    ```azurepowershell
+    New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+    ```
 
 5. Sie werden zur Eingabe des Warnungsnamen und der Ressourcen-ID der Aktionsgruppe aufgefordert, die Sie zuvor kopiert haben:
 
-        Supply values for the following parameters:
-        (Type !? for Help.)
-        activityLogAlertName: <Alert Name>
-        actionGroupResourceId: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.insights/actionGroups/<actionGroup>
+    ```azurepowershell
+    Supply values for the following parameters:
+    (Type !? for Help.)
+    activityLogAlertName: <Alert Name>
+    actionGroupResourceId: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.insights/actionGroups/<actionGroup>
+    ```
 
 6. Wurden alle Schritte erfolgreich ausgeführt, erhalten Sie eine Bestätigung in PowerShell.
 
-        DeploymentName          : ExampleDeployment
-        ResourceGroupName       : <resourceGroup>
-        ProvisioningState       : Succeeded
-        Timestamp               : 11/8/2017 2:32:00 AM
-        Mode                    : Incremental
-        TemplateLink            :
-        Parameters              :
-                                Name                     Type       Value
-                                ===============          =========  ==========
-                                activityLogAlertName     String     <Alert Name>
-                                activityLogAlertEnabled  Bool       True
-                                actionGroupResourceId    String     /...
-        
-        Outputs                 :
-        DeploymentDebugLogLevel :
+    ```output
+    DeploymentName          : ExampleDeployment
+    ResourceGroupName       : <resourceGroup>
+    ProvisioningState       : Succeeded
+    Timestamp               : 11/8/2017 2:32:00 AM
+    Mode                    : Incremental
+    TemplateLink            :
+    Parameters              :
+                            Name                     Type       Value
+                            ===============          =========  ==========
+                            activityLogAlertName     String     <Alert Name>
+                            activityLogAlertEnabled  Bool       True
+                            actionGroupResourceId    String     /...
+
+    Outputs                 :
+    DeploymentDebugLogLevel :
+    ```
 
 Hinweis: Wenn Sie diesen Prozess vollständig automatisieren möchten, müssen Sie einfach die Resource Manager-Vorlage so bearbeiten, dass in Schritt 5 nicht zur Eingabe der Werte aufgefordert wird.
 
@@ -180,12 +184,12 @@ Warnungen auf Abonnement- oder Ressourcengruppenebene enthalten unter Umständen
             "anyOf": [
                 {
                     "field": "resourceType",
-                    "equals": "Microsoft.Compute/virtualMachines",
+                    "equals": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
                     "containsAny": null
                 },
                 {
                     "field": "resourceType",
-                    "equals": "Microsoft.Storage/storageAccounts",
+                    "equals": "MICROSOFT.STORAGE/STORAGEACCOUNTS",
                     "containsAny": null
                 },
                 ...
@@ -198,7 +202,7 @@ Warnungen auf Abonnement- oder Ressourcengruppenebene enthalten unter Umständen
 Hier wird mit dem Wrapper `anyOf` zugelassen, dass die Ressourcenintegritätswarnung einer der angegebenen Bedingungen entspricht. Dadurch werden Warnungen für bestimmte Ressourcentypen ermöglicht.
 
 ### <a name="adjusting-the-resource-health-events-that-alert-you"></a>Anpassen der Resource Health-Ereignisse, die Sie benachrichtigen
-Wenn für Ressourcen ein Integritätsereignis auftritt, können sie eine Reihe von Phasen durchlaufen, die den Status des Integritätsereignisses darstellen: `Active`, `InProgress`, `Updated` und `Resolved`.
+Wenn für Ressourcen ein Integritätsereignis auftritt, können sie eine Reihe von Phasen durchlaufen, die den Status des Integritätsereignisses darstellen: `Active`, `In Progress`, `Updated` und `Resolved`.
 
 Sie möchten möglicherweise nur benachrichtigt werden, wenn eine Ressource fehlerhaft ist. In diesem Fall sollten Sie Ihre Warnung so konfigurieren, dass Sie nur benachrichtigt werden, wenn für `status` der Wert `Active` lautet. Wenn Sie jedoch auch über die anderen Phasen benachrichtigt werden möchten, können Sie diese Details wie folgt hinzufügen:
 
@@ -214,7 +218,7 @@ Sie möchten möglicherweise nur benachrichtigt werden, wenn eine Ressource fehl
                 },
                 {
                     "field": "status",
-                    "equals": "InProgress"
+                    "equals": "In Progress"
                 },
                 {
                     "field": "status",
@@ -231,6 +235,9 @@ Sie möchten möglicherweise nur benachrichtigt werden, wenn eine Ressource fehl
 ```
 
 Wenn Sie bei allen vier Phasen der Integritätsereignisse informiert werden möchten, können Sie diese Bedingung vollständig entfernen, und Sie werden unabhängig von der Eigenschaft `status` benachrichtigt.
+
+> [!NOTE]
+> Jeder Abschnitt „anyOf“ sollte nur einen Feldtypwert enthalten.
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>Anpassen der Resource Health-Warnungen, um Ereignisse vom Typ „Unknown“ (Unbekannt) zu vermeiden
 
@@ -409,7 +416,7 @@ Nachfolgend finden Sie eine Beispielvorlage mit den im vorherigen Abschnitt besc
                                 },
                                 {
                                     "field": "status",
-                                    "equals": "InProgress",
+                                    "equals": "In Progress",
                                     "containsAny": null
                                 },
                                 {
@@ -444,5 +451,5 @@ Erfahren Sie mehr über Resource Health:
 
 
 Erstellen von Service Health-Warnungen:
--  [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](./alerts-activity-log-service-notifications-portal.md) 
 -  [Ereignisschema des Azure-Aktivitätsprotokolls](../azure-monitor/platform/activity-log-schema.md)

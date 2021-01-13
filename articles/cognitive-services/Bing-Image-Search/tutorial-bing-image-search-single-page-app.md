@@ -8,16 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 7b530b3d415761956cbdb45fdc92bfed55a1bae5
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.custom: devx-track-js
+ms.openlocfilehash: bcb82ffcf4c4ad861c6523f507c816c666a71772
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868258"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351383"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Tutorial: Erstellen einer einseitigen Web-App mit der Bing-Bildersuche-API
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Mit der Bing-Bildersuche-API können Sie im Web nach relevanten Bildern in hoher Qualität suchen. Erstellen Sie mithilfe dieses Tutorials eine einseitige Webanwendung, die Suchabfragen an die API senden und die Ergebnisse auf der Webseite anzeigen kann. Dieses Tutorial ähnelt dem [entsprechenden Tutorial für die Bing-Websuche](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md).
 
@@ -40,7 +46,7 @@ Den vollständigen Quellcode für dieses Tutorial finden Sie auf [GitHub](https:
 
 ## <a name="manage-and-store-user-subscription-keys"></a>Verwalten und Speichern von Benutzerabonnementschlüsseln
 
-Diese Anwendung verwendet den beständigen Speicher des Webbrowsers zum Speichern von API-Abonnementschlüsseln. Wenn kein Schlüssel gespeichert ist, fordert die Webseite den Benutzer zur Eingabe seines Schlüssels auf. Dieser wird dann für die spätere Verwendung gespeichert. Wenn der Schlüssel später von der API abgelehnt wird, entfernt die App ihn aus dem Speicher.
+Diese Anwendung verwendet den beständigen Speicher des Webbrowsers zum Speichern von API-Abonnementschlüsseln. Wenn kein Schlüssel gespeichert ist, fordert die Webseite den Benutzer zur Eingabe seines Schlüssels auf. Dieser wird dann für die spätere Verwendung gespeichert. Wenn der Schlüssel später von der API abgelehnt wird, entfernt die App ihn aus dem Speicher. In diesem Beispiel wird der globale Endpunkt verwendet. Sie können auch den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
 
 Definieren Sie die Funktionen `storeValue` und `retrieveValue`, um das `localStorage`-Objekt (sofern vom Browser unterstützt) oder ein Cookie zu verwenden.
@@ -104,7 +110,7 @@ bingSearchOptions(this), getSubscriptionKey())">
 
 ## <a name="send-search-requests"></a>Senden von Suchanforderungen
 
-Diese Anwendung verwendet ein HTML-`<form>`-Objekt, um anfangs Suchanforderungen von Benutzern zu senden, und ruft mit dem Attribut `onsubmit` `newBingImageSearch()` auf.
+Diese Anwendung verwendet ein HTML-`<form>`-Objekt, um anfangs Suchanforderungen von Benutzern zu senden, und ruft mit dem Attribut `onsubmit``newBingImageSearch()` auf.
 
 ```html
 <form name="bing" onsubmit="return newBingImageSearch(this)">
@@ -116,9 +122,9 @@ Der `onsubmit`-Handler gibt standardmäßig `false` zurück, wodurch verhindert 
 
 ![[Bing-Bildersuche-Formular]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
 
-Die Bing-Bildersuche-API bietet mehrere [Filterabfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters), um Suchergebnisse einzuschränken und zu filtern. Das HTML-Formular in dieser Anwendung verwendet die folgenden Parameteroptionen und zeigt sie an:
+Die Bing-Bildersuche-API bietet mehrere [Filterabfrageparameter](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters), um Suchergebnisse einzuschränken und zu filtern. Das HTML-Formular in dieser Anwendung verwendet die folgenden Parameteroptionen und zeigt sie an:
 
-|              |                                                                                                                                                                                    |
+| Option | BESCHREIBUNG |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `where`      | Ein Dropdownmenü zur Auswahl des Markts (Ort und Sprache), der für die Suche verwendet wird.                                                                                             |
 | `query`      | Das Textfeld, in das die Suchbegriffe eingegeben werden.                                                                                                                                 |
@@ -347,7 +353,7 @@ Für diese Rendererfunktionen können die folgenden Parameter angegeben werden:
 Die Parameter `index` und `count` werden verwendet, um Ergebnisse zu nummerieren, HTML für Auflistungen zu generieren und Inhalte zu organisieren. Diese Parameter:
 
 * Berechnet die Miniaturbildgröße (die Breite variiert und weist einen Mindestwert von 120 Pixel auf, die Höhe ist auf 90 Pixel festgelegt).
-* Erstellt das HTML-`<img>`-Tag, mit dem das Miniaturbild angezeigt wird.
+* Erstellt das HTML-Tag `<img>`, mit dem das Miniaturbild angezeigt wird.
 * Erstellt die `<a>`-HTML-Tags, die eine Verknüpfung mit dem Bild und der Seite, die das Bild enthält, darstellen.
 * Erstellt die Beschreibung, die Informationen über das Bild und die Website, auf der sich das Bild befindet, angibt.
 
@@ -381,24 +387,27 @@ Erstens kann die Bing-Suchmaschine auf diese Weise Kontextinformationen aus vorh
 
 Zweitens wählt Bing möglicherweise Benutzer zufällig aus, die die Möglichkeit haben, neue Features zu testen, bevor diese allen Benutzern zur Verfügung gestellt werden. Indem Sie bei jeder Anforderung dieselbe Client-ID bereitstellen, stellen Sie sicher, dass Benutzer, die zur Nutzung eines neuen Features ausgewählt wurden, dieses Feature dauerhaft nutzen können. Ohne die Client-ID wird das Feature in den Suchergebnissen möglicherweise scheinbar willkürlich aus- oder eingeblendet.
 
-Durch Browsersicherheitsrichtlinien (CORS) kann der `X-MSEdge-ClientID`-Header möglicherweise nicht von JavaScript verwendet werden. Diese Einschränkung tritt auf, wenn sich der Ursprung der Suchantwort von dem der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da die Herkunft des Skripts mit derjenigen der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
+Durch Browsersicherheitsrichtlinien (CORS) kann der `X-MSEdge-ClientID`-Header möglicherweise nicht von JavaScript verwendet werden. Diese Einschränkung tritt auf, wenn sich der Ursprung der Suchantwort von dem der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da der Ursprung des Skripts mit dem Ursprung der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
 
 > [!NOTE]
-> In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung in jedem Fall serverseitig ausführen. Andernfalls müsste der Schlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Personen zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
+> In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung in jedem Fall serverseitig ausführen. Andernfalls muss der Schlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Personen zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
 
 In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header, der Antwortheader zulässt und für JavaScript zur Verfügung stellt.
 
 Die Installation eines CORS-Proxys, mit dem die Tutorial-App auf den Client-ID-Header zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie anschließend folgenden Befehl in ein Befehlsfenster ein:
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
 Passen Sie den Endpunkt der Bing-Websuche-API in der HTML-Datei wie folgt an:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Starten Sie abschließend den CORS-Proxy mit folgendem Befehl:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Lassen Sie das Fenster während der Nutzung der Tutorial-App geöffnet. Wenn Sie das Fenster schließen, wird auch die Ausführung des Proxys beendet. Im Bereich mit den erweiterbaren HTTP-Headern unter den Suchergebnissen wird nun u.a. der `X-MSEdge-ClientID`-Header angezeigt. Hier können Sie überprüfen, ob dieser für alle Anforderungen identisch ist.
 

@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 09/05/2019
-  ms.openlocfilehash: 8a4d99c195cd1341e491e5112a4f58013b074115
-  ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+  ms.date: 06/23/2020
+  ms.openlocfilehash: 06cce3f999b329d41c7ef7e5f381f55fdaee8054
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/11/2019
-  ms.locfileid: "70915428"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "88933748"
 landingContent:
 - title: Informationen zu Event Hubs
   linkLists:
@@ -37,7 +37,7 @@ landingContent:
     links:
     - text: Azure-Portal
       url: event-hubs-create.md
-    - text: Azure-Befehlszeilenschnittstelle
+    - text: Azure CLI
       url: event-hubs-quickstart-cli.md
     - text: Azure PowerShell
       url: event-hubs-quickstart-powershell.md
@@ -69,8 +69,6 @@ landingContent:
       url: event-hubs-kafka-stream-analytics.md
   - linkListType: how-to-guide
     links:
-    - text: Erstellen eines Apache Kafka-fähigen Event Hubs
-      url: event-hubs-create-kafka-enabled.md
     - text: Spiegeln eines Kafka-Brokers in einem Event Hub
       url: event-hubs-kafka-mirror-maker-tutorial.md
     - text: Verbinden von Apache Spark mit einem Event Hub
@@ -91,7 +89,7 @@ landingContent:
       url: event-hubs-java-get-started-send.md
     - text: Python
       url: event-hubs-python-get-started-send.md
-    - text: Node.js
+    - text: JavaScript
       url: event-hubs-node-get-started-send.md
     - text: Apache Kafka
       url: event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs
@@ -99,12 +97,34 @@ landingContent:
       url: event-hubs-storm-getstarted-receive.md
     - text: Go
       url: event-hubs-go-get-started-send.md
+- title: Event Hubs in Azure Stack Hub (Vorschau)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Übersicht
+      url: /azure-stack/user/event-hubs-overview
+    - text: Allgemeine Funktionsgruppe
+      url: /azure-stack/user/event-hubs-overview#features
+  - linkListType: how-to-guide
+    links:
+    - text: Kapazitätsplanung
+      url: /azure-stack/operator/event-hubs-rp-capacity-planning
+    - text: Installationsvoraussetzungen (Operator)
+      url: /azure-stack/operator/event-hubs-rp-prerequisites
+    - text: Installation (Operator)
+      url: /azure-stack/operator/event-hubs-rp-install
+    - text: Verwenden von Blob Storage als Prüfpunktspeicher
+      url: use-blob-storage-checkpoint-store-azure-stack-hub.md
+  - linkListType: quickstart
+    links:
+    - text: Erstellen eines Event Hubs-Clusters
+      url: /azure-stack/user/event-hubs-quickstart-cluster-portal
 - title: Erfassen von Ereignissen
   linkLists:
   - linkListType: overview
     links:
     - text: Erfassen von Ereignissen in Azure Blob Storage oder Azure Data Lake Storage
-      url: event-hubs-dedicated-overview.md
+      url: event-hubs-capture-overview.md
   - linkListType: quickstart
     links:
     - text: Verwenden des Azure-Portals zum Aktivieren der Erfassung von Ereignissen
@@ -122,7 +142,7 @@ landingContent:
     - text: Verarbeiten von Event Hubs für Apache Kafka-Ereignisse mit Stream Analytics
       url: event-hubs-kafka-stream-analytics.md
     - text: Streamen von Daten an Azure Databricks unter Verwendung von Event Hubs
-      url: ../azure-databricks/databricks-stream-from-eventhubs.md
+      url: /azure/databricks/scenarios/databricks-stream-from-eventhubs
 - title: Überwachen und Verwalten
   linkLists:
   - linkListType: how-to-guide
@@ -131,11 +151,11 @@ landingContent:
       url: event-hubs-metrics-azure-monitor.md
     - text: Einrichten von Diagnoseprotokollen
       url: event-hubs-diagnostic-logs.md
-    - text: Automatisches zentrales Hochskalieren von Durchsatzeinheiten
+    - text: Automatisches Hochskalieren von Durchsatzeinheiten
       url: event-hubs-auto-inflate.md
     - text: Problembehandlung bei Ausnahmen
       url: event-hubs-messaging-exceptions.md
-- title: Schützen
+- title: Sicher
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -143,7 +163,7 @@ landingContent:
       url: event-hubs-ip-filtering.md
     - text: Verwenden von VNET-Dienstendpunkten
       url: event-hubs-service-endpoints.md
+    - text: Verwenden privater Endpunkte
+      url: private-link-service.md
     - text: Konfigurieren der vom Kunden verwalteten Schlüssel für die Verschlüsselung ruhender Daten
       url: configure-customer-managed-key.md
-    - text: Aktivieren der Integration von virtuellen Netzwerken und von Firewalls
-      url: event-hubs-tutorial-virtual-networks-firewalls.md

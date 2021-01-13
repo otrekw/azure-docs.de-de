@@ -1,27 +1,23 @@
 ---
-title: Benutzerdefinierte Nachverfolgungsschemas für B2B-Nachrichten – Azure Logic Apps | Microsoft-Dokumentation
-description: Erstellen benutzerdefinierter Nachverfolgungsschemas zur Überwachung von B2B-Nachrichten in Integrationskonten für Azure Logic Apps mit Enterprise Integration Pack
+title: Benutzerdefinierte Nachverfolgungsschemas für B2B-Nachrichten
+description: Erstellen von benutzerdefinierten Nachverfolgungsschemas zum Überwachen von B2B-Nachrichten in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
-ms.date: 01/27/2017
-ms.openlocfilehash: 76a9ece9e925543e856136a798a60038316caad9
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.date: 01/01/2020
+ms.openlocfilehash: c82f9cbfaf2e23ddaa5e4b05f4aac4795d3e16a9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203042"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "76903051"
 ---
-# <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Erstellen benutzerdefinierter Nachverfolgungsschemas zur Überwachung von End-to-End-Workflows in Azure Logic Apps
+# <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-a"></a>Erstellen benutzerdefinierter Nachverfolgungsschemas zur Überwachung von End-to-End-Workflows in Azure Logic Apps
 
-Es gibt eine integrierte Nachverfolgung, die Sie für die verschiedenen Teile des B2B-Workflows aktivieren können, z.B. für die Überwachung von AS2- oder X12-Nachrichten. Wenn Sie Workflows erstellen, die eine Logik-App, BizTalk Server, SQL Server oder andere Ebenen enthalten, dann können Sie die benutzerdefinierte Nachverfolgung aktivieren, bei der Ereignisse vom Anfang bis zum Ende des Workflows protokolliert werden. 
-
-Dieser Artikel enthält benutzerdefinierten Code, den Sie in den Ebenen außerhalb Ihrer Logik-App verwenden können. 
+Azure Logic Apps verfügt über eine integrierte Nachverfolgung, die Sie für Teile Ihres Workflows aktivieren können. Sie können jedoch eine benutzerdefinierte Nachverfolgung einrichten, bei der Ereignisse vom Anfang bis zum Ende des Workflows protokolliert werden, z. B. Workflows, die eine Logik-App, BizTalk Server, SQL Server oder eine andere Ebene enthalten. Dieser Artikel enthält benutzerdefinierten Code, den Sie in den Ebenen außerhalb Ihrer Logik-App verwenden können.
 
 ## <a name="custom-tracking-schema"></a>Benutzerdefiniertes Nachverfolgungsschema
 
@@ -38,7 +34,7 @@ Dieser Artikel enthält benutzerdefinierten Code, den Sie in den Ebenen außerha
       "operation": {
          "operationName": "",
          "repeatItemScopeName": "",
-         "repeatItemIndex": "",
+         "repeatItemIndex": ,
          "trackingId": "",
          "correlationId": "",
          "clientRequestId": ""
@@ -49,39 +45,37 @@ Dieser Artikel enthält benutzerdefinierten Code, den Sie in den Ebenen außerha
          "eventLevel": "",
          "eventTime": "",
          "recordType": "",
-         "record": {                
-         }
+         "record": {}
       }
    ]
 }
 ```
 
-| Eigenschaft | Erforderlich | Typ | BESCHREIBUNG |
-| --- | --- | --- | --- |
-| sourceType | Ja |   | Typ der Ausführungsquelle Zulässige Werte sind **Microsoft.Logic/workflows** und **custom** (benutzerdefiniert). |
-| source | Ja |   | Wenn der Quelltyp **Microsoft.Logic/workflows** ist, müssen die Quellinformationen diesem Schema folgen. Wenn der Quelltyp **custom** ist, ist das Schema ist ein JToken. |
-| systemId | Ja | string | System-ID der Logik-App |
-| runId | Ja | string | Ausführungs-ID der Logik-App |
-| operationName | Ja | string | Name des Vorgangs (z.B. Aktion oder Trigger) |
-| repeatItemScopeName | Ja | string | Elementnamen wiederholen, wenn sich die Aktion innerhalb einer `foreach`/`until`-Schleife befindet. |
-| repeatItemIndex | Ja | Integer | Gibt an, ob sich die Aktion innerhalb einer `foreach`/`until`-Schleife befindet. Gibt den Index des Wiederholungselements an. |
-| trackingId | Nein | string | Überwachungs-ID zum Korrelieren der Nachrichten |
-| correlationId | Nein | string | Korrelations-ID zum Korrelieren der Nachrichten |
-| clientRequestId | Nein | string | Kann vom Client zum Korrelieren von Nachrichten ausgefüllt werden. |
-| eventLevel | Ja |   | Ebene des Ereignisses. |
-| eventTime | Ja |   | Zeit des Ereignisses im UTC-Format YYYY-MM-DDTHH:MM:SS.00000Z. |
-| recordType | Ja |   | Typ des Nachverfolgungsdatensatzes Der zulässige Wert ist **custom**. |
-| record | Ja |   | Benutzerdefinierter Datensatztyp Das zulässige Format ist JToken. |
-||||
+| Eigenschaft | Erforderlich | type | BESCHREIBUNG |
+|----------|----------|------|-------------|
+| sourceType | Ja | String | Der Typ der Ausführungsquelle mit den folgenden zulässigen Werten: `Microsoft.Logic/workflows`, `custom` |
+| source | Ja | Zeichenfolge oder JToken | Wenn der Quelltyp `Microsoft.Logic/workflows` ist, müssen die Quellinformationen diesem Schema folgen. Wenn der Quelltyp `custom` ist, ist das Schema ist ein JToken. |
+| systemId | Ja | String | System-ID der Logik-App |
+| runId | Ja | String | Ausführungs-ID der Logik-App |
+| operationName | Ja | String | Name des Vorgangs, z. B. Aktion oder Trigger |
+| repeatItemScopeName | Ja | String | Elementnamen wiederholen, wenn sich die Aktion innerhalb einer `foreach`- oder `until`-Schleife befindet. |
+| repeatItemIndex | Ja | Integer | Zeigt an, dass sich die Aktion in einer `foreach`- oder `until`-Schleife befindet, und ist die Indexzahl des wiederholten Elements. |
+| trackingId | Nein | String | Überwachungs-ID zum Korrelieren der Nachrichten |
+| correlationId | Nein | String | Korrelations-ID zum Korrelieren der Nachrichten |
+| clientRequestId | Nein | String | Der Client kann diese Eigenschaft auffüllen, um Nachrichten zu korrelieren |
+| eventLevel | Ja | String | Ebene des Ereignisses |
+| eventTime | Ja | Datetime | Zeitpunkt des Ereignisses im UTC-Format: *YYYY-MM-DDTHH:MM:SS.00000Z* |
+| recordType | Ja | String | Der Typ des Nachverfolgungseintrags mit nur diesem zulässigen Wert: `custom` |
+| Datensatz (record) | Ja | JToken | Benutzerdefinierter Eintragstyp nur im JToken-Format |
+|||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B-Protokollnachverfolgungsschemas
 
 Informationen zu B2B-Protokollnachverfolgungsschemas finden Sie unter:
 
-* [AS2-Nachverfolgungsschemas](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
+* [AS2-Nachverfolgungsschemas](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12-Nachverfolgungsschemas](logic-apps-track-integration-account-x12-tracking-schema.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Machen Sie sich mit der [Überwachung von B2B-Nachrichten](logic-apps-monitor-b2b-message.md) vertraut.
-* Informieren Sie sich über das [Nachverfolgen von B2B-Nachrichten in Azure Monitor-Protokollen](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Informationen zum [Überwachen von B2B-Nachrichten mit Azure Monitor-Protokollen](../logic-apps/monitor-b2b-messages-log-analytics.md)

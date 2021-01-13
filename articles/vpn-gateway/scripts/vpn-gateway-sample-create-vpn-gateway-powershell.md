@@ -1,20 +1,20 @@
 ---
 title: 'Azure PowerShell-Skriptbeispiel: Erstellen eines VPN-Gateways | Microsoft-Dokumentation'
-description: Erstellen Sie ein VPN-Gateway mithilfe von PowerShell.
+description: Hier erfahren Sie, wie Sie mithilfe eines PowerShell-Skripts ein virtuelles Netzwerk, ein Netzwerksubnetz und ein routenbasiertes VPN-Gateway erstellen.
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 04/17/2018
+ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: 433899c2b558a5182ca1a5c7c0e0ac76c87e0007
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a17cd1dcf9bca52936a8b10fa45045ff88df1b01
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66113755"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660745"
 ---
 # <a name="create-a-vpn-gateway-with-powershell"></a>Erstellen eines VPN-Gateways mithilfe von PowerShell
 
@@ -76,10 +76,10 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Erstellt eine Subnetzkonfiguration. Diese Konfiguration wird mit dem Prozess der Erstellung des virtuellen Netzwerks verwendet. |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Erstellen Sie ein virtuelles Netzwerk. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Erstellt eine öffentliche IP-Adresse. |
-|[New-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein VPN-Gateway. |
+|[New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein VPN-Gateway. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe und alle darin enthaltenen Ressourcen. |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Legt die Subnetzkonfiguration für das virtuelle Netzwerk fest. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).

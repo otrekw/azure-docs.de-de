@@ -1,6 +1,6 @@
 ---
-title: Löschen von Knoten für die VMware-Lösung von CloudSimple – Azure
-description: Erfahren Sie, wie Sie mit der CloudSimple-Bereitstellung Knoten aus Ihrer VMware-Lösung löschen.
+title: Löschen von Knoten für VMware Solution by CloudSimple – Azure
+description: Hier erfahren Sie, wie Sie mit der CloudSimple-Bereitstellung Knoten aus Ihrer VMware-Lösung löschen. CloudSimple-Knoten werden getaktet abgerechnet. Löschen Sie die nicht mehr verwendeten Knoten im Azure-Portal.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/05/2019
@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 569bc6350b1bfa01228d49d28a1d12e2ab62f6f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972832"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88142263"
 ---
-# <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Löschen von Knoten aus der Azure VMware-Lösung von CloudSimple
+# <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Löschen von Knoten aus Azure VMware Solution by CloudSimple
 
 CloudSimple-Knoten werden ab der Erstellung abgerechnet.  Die Knoten müssen gelöscht werden, um die Abrechnung zu beenden.  Sie löschen die nicht mehr verwendeten Knoten im Azure-Portal.
 
@@ -23,8 +23,8 @@ CloudSimple-Knoten werden ab der Erstellung abgerechnet.  Die Knoten müssen gel
 
 Ein Knoten kann nur unter folgenden Bedingungen gelöscht werden:
 
-* Eine mit den Knoten erstellte private Cloud wird gelöscht.  Informationen zum Löschen einer privaten Cloud finden Sie unter [Löschen einer privaten Cloud für die Azure VMware-Lösung von CloudSimple](delete-private-cloud.md).
-* Der Knoten wurde durch Verkleinern der privaten Cloud aus der privaten Cloud entfernt.  Informationen zum Verkleinern einer privaten Cloud finden Sie unter [Verkleinern einer privaten Cloud für die Azure VMware-Lösung von CloudSimple](shrink-private-cloud.md).
+* Eine mit den Knoten erstellte private Cloud wird gelöscht.  Informationen zum Löschen einer privaten Cloud finden Sie unter [Löschen einer privaten Cloud in Azure VMware Solution by CloudSimple](delete-private-cloud.md).
+* Der Knoten wurde durch Verkleinern der privaten Cloud aus der privaten Cloud entfernt.  Informationen zum Verkleinern einer privaten Cloud finden Sie unter [Verkleinern einer privaten Cloud in Azure VMware Solution by CloudSimple](shrink-private-cloud.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

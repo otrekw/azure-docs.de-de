@@ -2,194 +2,142 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Evidence.com | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Evidence.com konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f9a7cb7c-ff67-40dc-872c-1fa35f9dd03b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/07/2019
+ms.date: 04/24/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffee3b8fa1d152ce94513353c5c178adb5e3cc77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff77ace78dd3cdd4ee942308432795421f6da997
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102952"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453792"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>Tutorial: Azure Active Directory-Integration mit Evidence.com
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evidencecom"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Evidence.com
 
-In diesem Tutorial erfahren Sie, wie Sie Evidence.com in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Evidence.com in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Evidence.com in Azure Active Directory (Azure AD) integrieren. Die Integration von Evidence.com in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Evidence.com hat.
-* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Evidence.com anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Steuern Sie in Azure AD, wer Zugriff auf Evidence.com hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Evidence.com anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Evidence.com konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Ein Evidence.com-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Ein Evidence.com-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Evidence.com unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Nach dem Konfigurieren von Evidence.com können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="adding-evidencecom-from-the-gallery"></a>Hinzufügen von Evidence.com aus dem Katalog
 
 Zum Konfigurieren der Integration von Evidence.com in Azure AD müssen Sie Evidence.com aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Evidence.com aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Evidence.com** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Evidence.com** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-evidencecom"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Evidence.com
 
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Evidence.com mithilfe eines Testbenutzers mit dem Namen **B. Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Evidence.com eingerichtet werden.
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Evidence.com die folgenden Schritte aus:
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Evidence.com](#configure-evidencecom-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+    1. **[Erstellen eines Evidence.com-Testbenutzers](#create-evidencecom-test-user)** , um eine Entsprechung von B. Simon in Evidence.com zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-4. Geben Sie im Suchfeld **Evidence.com** ein, wählen Sie im Ergebnisbereich **Evidence.com** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Evidence.com** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration** , um die Einstellungen zu bearbeiten.
 
-     ![Evidence.com in der Ergebnisliste](common/search-new-app.png)
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Evidence.com basierend auf einem Testbenutzer mit dem Namen **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Evidence.com eingerichtet werden.
-
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Evidence.com müssen Sie die folgenden Bausteine ausführen:
-
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Evidence.com](#configure-evidencecom-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Evidence.com-Testbenutzers](#create-evidencecom-test-user)** , um eine Entsprechung von Britta Simon in Evidence.com zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
-
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Evidence.com die folgenden Schritte aus:
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Evidence.com** die Option **Einmaliges Anmelden**.
-
-    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
-
-2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
-
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
-
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
-
-    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
-
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
-
-    ![SSO-Informationen zur Domäne und zu den URLs für Evidence.com](common/sp-identifier.png)
+1. Führen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die folgenden Schritte aus:
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<yourtenant>.evidence.com`.
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<yourtenant>.evidence.com`.
 
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<your tenant>.evidence.com/?class=UIX&proc=Login`
+    
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von Evidence.com](https://communities.taser.com/support/SupportContactUs?typ=LE), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für die Anmelde-URL, den Bezeichner und die Antwort-URL. Wenden Sie sich an das [Clientsupportteam von Evidence.com](https://communities.taser.com/support/SupportContactUs?typ=LE), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen** , um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-6. Kopieren Sie im Abschnitt **Evidence.com einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+1. Kopieren Sie im Abschnitt **Evidence.com einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-    a. Anmelde-URL
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-    b. Azure AD-Bezeichner
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-    c. Abmelde-URL
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort** .
+   1. Klicken Sie auf **Erstellen** .
 
-### <a name="configure-evidencecom-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Evidence.com
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-1. Melden Sie sich in einem separaten Webbrowserfenster an Ihrem Evidence.com-Mandanten als Administrator an, und navigieren Sie zur Registerkarte **Admin** .
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Evidence.com gewähren.
+
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **Evidence.com** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
+
+   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
+    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
+
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen** .
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen** .
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
+
+## <a name="configure-evidencecom-sso"></a>Konfigurieren des einmaligen Anmeldens für Evidence.com
+
+1. Melden Sie sich in einem separaten Webbrowserfenster bei Ihrem Evidence.com-Mandanten als Administrator an, und navigieren Sie zur Registerkarte **Admin** .
 
 2. Klicken Sie auf **Agentur – einmaliges Anmelden**
 
 3. Wählen Sie die Option **SAML-basiertes einmaliges Anmelden**
 
-4. Kopieren Sie die Werte für **Azure AD-Bezeichner**, **Anmelde-URL** und **Abmelde-URL**, die im Azure-Portal angezeigt werden, in die entsprechenden Felder von Evidence.com.
+4. Kopieren Sie die Werte für **Azure AD-Bezeichner** , **Anmelde-URL** und **Abmelde-URL** , die im Azure-Portal angezeigt werden, in die entsprechenden Felder von Evidence.com.
 
 5. Öffnen Sie die heruntergeladene Datei „Zertifikat (Base64)“ in Editor, kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Security Certificate** (Sicherheitszertifikat) ein. 
 
 6. Speichern Sie die Konfiguration in Evidence.com.
-
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
-
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
-
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
-
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
-
-2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-
-    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
-
-3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
-
-    ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
-    Zum Beispiel, BrittaSimon@contoso.com
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
-
-    d. Klicken Sie auf **Create**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Evidence.com gewähren.
-
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Evidence.com**.
-
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
-
-2. Wählen Sie in der Anwendungsliste **Evidence.com** aus.
-
-    ![Evidence.com-Link in der Anwendungsliste](common/all-applications.png)
-
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
-
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
-
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
-
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ### <a name="create-evidencecom-test-user"></a>Erstellen eines Evidence.com-Testbenutzers
 
@@ -201,23 +149,28 @@ Damit sich Azure AD-Benutzer anmelden können, müssen sie für den Zugriff inne
 
 2. Navigieren Sie zur Registerkarte **Admin** .
 
-3. Klicken Sie auf **Benutzer hinzufügen**.
+3. Klicken Sie auf **Benutzer hinzufügen** .
 
 4. Klicken Sie auf die Schaltfläche **Hinzufügen** .
 
 5. Die **E-Mail-Adresse** des hinzugefügten Benutzers muss mit dem Benutzernamen des Benutzers in Azure AD übereinstimmen, dem Sie Zugriff gewähren möchten. Wenn der Benutzername und die E-Mail-Adresse in Ihrem Unternehmen nicht identisch sind, können Sie im Azure-Portal den Abschnitt **Evidence.com > Attribute > Einmaliges Anmelden** verwenden, um das an Evidence.com gesendete nameidenitifier-Element zu ändern und als E-Mail-Adresse zu verwenden.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Evidence.com“ klicken, sollten Sie automatisch bei der Evidence.com-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Evidence.com“ klicken, sollten Sie automatisch bei der Evidence.com-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
 
+- [Evidence.com mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+
+- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad)

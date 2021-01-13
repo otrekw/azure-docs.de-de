@@ -1,23 +1,22 @@
 ---
-title: Anmelden an Ihren Konten per Microsoft Authenticator-App – Azure Active Directory | Microsoft-Dokumentation
+title: Anmelden mit der Microsoft Authenticator-App – Azure AD
 description: Verwenden Sie die Microsoft Authenticator-App, um sich an Ihrem Geschäfts-, Schul- oder Unikonto oder Ihrem persönlichen Microsoft-Konto und anderen Konten anzumelden, indem Sie entweder die zweistufige Überprüfung oder die Anmeldung per Telefon nutzen.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
-ms.date: 01/24/2019
-ms.author: lizross
+ms.topic: end-user-help
+ms.date: 06/03/2020
+ms.author: curtand
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9af3549984bd29a6e896e498bf4a2e6c67d7e0e2
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3a9e4c8f3dd9e4cf291388bc102ae9a73d8de6dd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616009"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131563"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Anmelden an Ihren Konten per Microsoft Authenticator-App
 
@@ -50,15 +49,13 @@ Die Anmeldung per Telefon ist auf iOS- und Android-Geräten mit Android 6.0 oder
 
 ### <a name="turn-on-phone-sign-in"></a>Aktivieren der Anmeldung per Telefon
 
-- Öffnen Sie die Microsoft Authenticator-App, navigieren Sie zu Ihrem Geschäfts-, Schul- oder Unikonto, und aktivieren Sie die Anmeldung per Telefon:
+Öffnen Sie die Microsoft Authenticator-App, navigieren Sie zu Ihrem Geschäfts-, Schul- oder Unikonto, und aktivieren Sie die Anmeldung per Telefon.
 
-    - **Bei Anzeige des folgenden Symbols: ![Symbol zum Abschluss der Einrichtung](media/user-help-auth-app-sign-in/icon.png).** Wenn dieses Symbol neben dem Namen Ihres Geschäfts-, Schul- oder Unikontos angezeigt wird, bedeutet dies, dass Sie die telefonische Anmeldung für das Konto bereits durchgeführt haben. Unter Umständen werden Sie aufgefordert, Pushbenachrichtigungen für Ihr Konto hinzuzufügen, damit Sie außerhalb der App über Authentifizierungsanforderungen unterrichtet werden können.
+- **Wenn Sie auf die Kontokachel tippen** , wird eine Vollbildansicht des Kontos angezeigt. Wenn **Anmeldung per Telefon aktiviert** angezeigt wird, bedeutet dies, dass alles so eingerichtet wurde, dass Sie sich ohne Kennwort anmelden können. Wenn **Anmeldung per Telefon aktivieren** angezeigt wird, tippen Sie darauf, um die Anmeldung per Telefon zu aktivieren.
+- **Wenn Sie die App bereits für die zweistufige Überprüfung verwendet haben** , können Sie auf die Kontokachel tippen, um eine Vollbildansicht des Kontos anzuzeigen. Tippen Sie dann auf **Anmeldung per Telefon aktivieren** , um die Anmeldung per Telefon zu aktivieren.
+- **Falls Sie Ihr Geschäfts-, Schul- oder Unikonto** in der App unter **Konten** nicht finden können, bedeutet dies, dass Sie es der App noch nicht hinzugefügt haben. Fügen Sie Ihr Geschäfts-, Schul- oder Unikonto hinzu, indem Sie die Schritte im Hilfeartikel [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos](user-help-auth-app-add-work-school-account.md) ausführen.
 
-    - **Bei Nutzung der App für die zweistufige Überprüfung:** Wenn Sie die App und die zweistufige Überprüfung bereits genutzt haben, können Sie den Dropdownpfeil neben dem Kontonamen und dann die Option **Anmeldung per Telefon aktivieren** wählen.
-
-    - **Wenn Sie Ihr Geschäfts-, Schul- oder Unikonto nicht finden können:** Falls Sie Ihr Geschäfts-, Schul- oder Unikonto in der App unter **Konten** nicht finden können, bedeutet dies, dass Sie es der App noch nicht hinzugefügt haben. Fügen Sie Ihr Geschäfts-, Schul- oder Unikonto hinzu, indem Sie die Schritte im Artikel [Add your work or school account](user-help-auth-app-add-work-school-account.md) (Hinzufügen Ihrer Geschäfts-, Schul- oder Unikonten) ausführen.
-
-Nachdem Sie die Anmeldung per Telefon aktiviert haben, können Sie sich anmelden, indem Sie nur die Microsoft Authenticator-App nutzen.
+Nachdem Sie die Anmeldung per Telefon aktiviert haben, können Sie sich anmelden, indem Sie nur die Microsoft Authenticator-App nutzen. Gehen Sie dabei folgendermaßen vor:
 
 1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an.
 
@@ -66,7 +63,7 @@ Nachdem Sie die Anmeldung per Telefon aktiviert haben, können Sie sich anmelden
 
     ![Feld „Anmeldung genehmigen“ auf dem Computer](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in.png)
 
-2. Öffnen Sie die Benachrichtigung bzw. die Microsoft Authenticator-App auf Ihrem Gerät, und tippen Sie dann die Zahl ein, die mit der Zahl auf dem Bildschirm **Anmeldung genehmigen** auf Ihrem Computer übereinstimmt.
+2. Öffnen Sie die Benachrichtigung bzw. die Microsoft Authenticator-App auf Ihrem Gerät, und tippen Sie dann auf die Zahl, die mit der Zahl auf dem Bildschirm **Anmeldung genehmigen** auf Ihrem Computer übereinstimmt.
 
     ![Feld „Anmeldung genehmigen“ auf dem Gerät](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in-numbers.png)
 
@@ -83,13 +80,11 @@ Sie können die Anmeldung per Telefon für Ihr persönliches Microsoft-Konto akt
 
 ### <a name="turn-on-phone-sign-in"></a>Aktivieren der Anmeldung per Telefon 
 
-- Öffnen Sie die Microsoft Authenticator-App, navigieren Sie zu Ihrem persönlichen Microsoft-Konto, und aktivieren Sie die Anmeldung per Telefon:
+Öffnen Sie die Microsoft Authenticator-App, navigieren Sie zu Ihrem Geschäfts-, Schul- oder Unikonto, und aktivieren Sie die Anmeldung per Telefon.
 
-    - **Bei Anzeige des folgenden Symbols: ![Symbol zum Abschluss der Einrichtung](media/user-help-auth-app-sign-in/icon.png).** Wenn dieses Symbol neben dem Namen Ihres Kontos angezeigt wird, bedeutet dies, dass Sie die telefonische Anmeldung für das Konto bereits durchgeführt haben. Unter Umständen werden Sie aufgefordert, Pushbenachrichtigungen für Ihr Konto hinzuzufügen, damit Sie außerhalb der App über Authentifizierungsanforderungen unterrichtet werden können.
-
-    - **Bei Nutzung der App für die zweistufige Überprüfung:** Wenn Sie die App und die zweistufige Überprüfung bereits genutzt haben, können Sie den Dropdownpfeil neben dem Kontonamen und dann die Option **Anmeldung per Telefon aktivieren** wählen.
-
-    - **Wenn Sie Ihr Konto nicht finden können:** Falls Sie Ihr Konto in der App unter **Konten** nicht finden können, bedeutet dies, dass Sie es der App noch nicht hinzugefügt haben. Fügen Sie Ihr persönliches Microsoft-Konto hinzu, indem Sie die Schritte im Artikel [Add your personal Microsoft account](user-help-auth-app-add-personal-ms-account.md#add-your-personal-microsoft-account) (Hinzufügen Ihres persönlichen Microsoft-Kontos) ausführen.
+- **Wenn Sie auf die Kontokachel tippen** , wird eine Vollbildansicht des Kontos angezeigt. Wenn **Anmeldung per Telefon aktiviert** angezeigt wird, bedeutet dies, dass alles so eingerichtet wurde, dass Sie sich ohne Kennwort anmelden können. Wenn **Anmeldung per Telefon aktivieren** angezeigt wird, tippen Sie darauf, um die Anmeldung per Telefon zu aktivieren.
+- **Wenn Sie die App bereits für die zweistufige Überprüfung verwenden** , können Sie auf die Kontokachel tippen, um eine Vollbildansicht des Kontos anzuzeigen. Tippen Sie dann auf **Anmeldung per Telefon aktivieren** , um die Anmeldung per Telefon zu aktivieren.
+- **Falls Sie Ihr Konto** in der App unter **Konten** nicht finden können, bedeutet dies, dass Sie es der App noch nicht hinzugefügt haben. Fügen Sie Ihr persönliches Microsoft-Konto hinzu, indem Sie die Schritte im Artikel [Hinzufügen Ihres persönlichen Microsoft-Kontos](user-help-auth-app-add-personal-ms-account.md) ausführen.
 
 ### <a name="sign-in-to-your-account-using-phone-sign-in"></a>Anmelden an Ihrem Konto mit der Anmeldung per Telefon
 
@@ -101,7 +96,7 @@ Sie können die Anmeldung per Telefon für Ihr persönliches Microsoft-Konto akt
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>Anmelden per zweistufiger Überprüfung für Ihr Konto
 
-Bei der Standardmethode der zweistufigen Überprüfung müssen Sie Ihren Benutzernamen und das zugehörige Kennwort auf dem Gerät eingeben, an dem Sie sich anmelden. Wählen Sie anschließend aus, ob über die Microsoft Authenticator-App eine Benachrichtigung gesendet werden soll oder ob Sie den zugehörigen Prüfcode im Fenster **Konten** der Microsoft Authenticator-App kopieren möchten. Sie aktivieren die zweistufige Überprüfung für Ihr Konto im Rahmen des Prozesses zum Hinzufügen des Kontos zur Microsoft Authenticator-App.
+Bei der Standardmethode der zweistufigen Überprüfung müssen Sie Ihren Benutzernamen und das zugehörige Kennwort auf dem Gerät eingeben, an dem Sie sich anmelden. Danach wählen Sie aus, ob die Microsoft Authenticator-App eine Benachrichtigung empfangen soll oder ob Sie den Prüfcode von der Authenticator-App kopieren möchten. Auf einem Android-Gerät finden Sie diese Prüfcodes auf dem Bildschirm **Konten**. Auf einem iOS-Gerät finden Sie diese Prüfcodes je nach Kontotyp auf dem Bildschirm **Konten** oder in der Vollbildansicht eines Kontos. Sie aktivieren die zweistufige Überprüfung für Ihr Konto, wenn Sie das Konto zur Microsoft Authenticator-App hinzufügen.
 
 >[!Note]
 >Falls Ihr Geschäfts-, Schul- oder Unikonto oder Ihr persönliches Konto im Fenster **Konten** der Microsoft Authenticator-App nicht angezeigt wird, bedeutet dies, dass Sie es der Microsoft Authenticator-App noch nicht hinzugefügt haben. Informationen zum Hinzufügen Ihres Kontos finden Sie unter [Add your work or school account](user-help-auth-app-add-work-school-account.md) (Hinzufügen Ihrer Geschäfts-, Schul- oder Unikonten) bzw. [Add your personal accounts](user-help-auth-app-add-personal-ms-account.md) (Hinzufügen Ihrer persönlichen Microsoft-Konten).
@@ -112,12 +107,12 @@ Die erforderlichen Schritte für die Anmeldung an Ihrem Geschäfts-, Schul- oder
 
 | Frage | Lösung |
 | -------- | -------- |
-| Inwiefern ist die Anmeldung per Telefon sicherer als die Eingabe eines Kennworts? | Die meisten Benutzer melden sich heutzutage mit einem Benutzernamen und einem Kennwort bei einer Website oder App an. Leider können Kennwörter verlorengehen, gestohlen oder von Hackern erraten werden.<br><br>Nachdem Sie die Microsoft Authenticator-App eingerichtet haben, wird auf Ihrem Telefon ein Schlüssel zum Entsperren Ihres Kontos eingerichtet, der von der PIN Ihres Smartphones oder per biometrischer Sperre geschützt wird. Dieser Schlüssel wird dann verwendet, um bei der Anmeldung Ihre Identität zu bestätigen.<br><br>**Wichtig**<br>Ihre Daten werden nur verwendet, um Ihren Schlüssel lokal zu schützen. Er wird weder an die Cloud gesendet noch dort gespeichert. |
+| Inwiefern ist die Anmeldung per Telefon sicherer als die Eingabe eines Kennworts? | Die meisten Benutzer melden sich heutzutage mit einem Benutzernamen und einem Kennwort bei einer Website oder App an. Leider können Kennwörter verloren gehen, gestohlen oder von Hackern erraten werden.<br><br>Nachdem Sie die Microsoft Authenticator-App eingerichtet haben, wird auf Ihrem Telefon ein Schlüssel zum Entsperren Ihres Kontos eingerichtet, der von der PIN Ihres Smartphones oder per biometrischer Sperre geschützt wird. Dieser Schlüssel wird dann verwendet, um bei der Anmeldung Ihre Identität zu bestätigen.<br><br>**Wichtig**<br>Ihre Daten werden nur verwendet, um Ihren Schlüssel lokal zu schützen. Er wird weder an die Cloud gesendet noch dort gespeichert. |
 | Ersetzt die Anmeldung per Telefon die zweistufige Überprüfung? Sollte ich sie deaktivieren? | Die Anmeldung per Telefon ist eine Art der zweistufigen Überprüfung, bei der beide Schritte auf dem mobilen Gerät ausgeführt werden. Sie sollten die zweistufige Überprüfung aktiviert lassen, um für Ihr Konto für zusätzliche Sicherheit zu sorgen. |
 | Muss ich zwei Benachrichtigungen bestätigen, wenn ich die zweistufige Überprüfung für mein Konto aktiviert lasse? | Nein. Die Anmeldung bei Ihrem Microsoft-Konto mit Ihrem Telefon zählt ebenfalls als zweistufige Überprüfung, sodass keine zweite Genehmigung erforderlich ist. |
-| Was ist, wenn ich mein Smartphone verliere oder nicht zur Hand habe? Wie kann ich auf mein Konto zugreifen? | Sie können auf der Anmeldeseite jederzeit den Link „Stattdessen Ihr Kennwort verwenden“ auswählen und wieder Ihr Kennwort verwenden. Bei Verwendung der zweistufigen Überprüfung benötigen Sie jedoch weiterhin eine zweite Methode, um Ihre Identität zu bestätigen.<br><br>**Wichtig**<br>Sie sollten unbedingt sicherstellen, dass Sie Ihrem Konto mehr als eine Überprüfungsmethode zuordnen, die auf dem aktuellen Stand ist.<br><br>Sie können Ihre Überprüfungsmethoden für persönliche Konten auf Ihrer [Sicherheitseinstellungen](https://account.live.com/proofs/manage)-Seite verwalten. Für Geschäfts-, Schul- oder Unikonten können Sie zur Seite [Zusätzliche Sicherheitsüberprüfung](https://aka.ms/MFASetup) oder **Schützen Sie Ihr Konto** Ihrer Organisation wechseln, wenn Ihr Administrator die Sicherheitsinfos aktiviert hat. Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Übersicht über die Sicherheitsinformationen (Vorschau)](user-help-security-info-overview.md).<br><br>Wenn Sie Ihre Überprüfungsmethoden nicht verwalten können, müssen Sie sich an Ihren Administrator wenden. |
-| Wie kann ich die Verwendung des Features beenden und wieder zur Verwendung meines Kennworts zurückkehren? | Wählen Sie für persönliche Konten bei der Anmeldung den Link **Stattdessen Ihr Kennwort verwenden** aus. Ihre aktuelle Auswahl wird gespeichert und standardmäßig bei Ihrer nächsten Anmeldung angeboten. Falls Sie einmal zur Anmeldung per Telefon zurückkehren möchten, können Sie während der Anmeldung den Link **Stattdessen eine App verwenden** auswählen.<br><br>Für Geschäfts-, Schul- oder Unikonten müssen Sie entweder die Registrierung des Geräts auf der Seite **Einstellungen** der Microsoft Authenticator-App aufheben oder das Gerät im Bereich **Geräte und Aktivität** Ihres Profils deaktivieren. Weitere Informationen zum Deaktivieren Ihres Geräts in Ihrem Profil finden Sie unter [Aktualisieren Ihrer Profil- und Kontoinformationen im Portal „Meine Apps“](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information). |
-| Warum kann ich für die Anmeldung per Telefon nicht mehrere Geschäfts-, Schul- oder Unikonten verwenden? | Ein Telefon muss für ein einzelnes Geschäfts-, Schul- oder Unikonto registriert sein. Wenn Sie die Anmeldung per Telefon für ein anderes Geschäfts-, Schul- oder Unikonto aktivieren möchten, müssen Sie zuerst die Registrierung des alten Geräts über die Seite **Einstellungen** aufheben. |
+| Was ist, wenn ich mein Smartphone verliere oder nicht zur Hand habe? Wie kann ich auf mein Konto zugreifen? | Sie können auf der Anmeldeseite jederzeit den Link „Stattdessen Ihr Kennwort verwenden“ auswählen und wieder Ihr Kennwort verwenden. Bei Verwendung der zweistufigen Überprüfung benötigen Sie jedoch weiterhin eine zweite Methode, um Ihre Identität zu bestätigen.<br><br>**Wichtig**<br>Sie sollten unbedingt sicherstellen, dass Sie Ihrem Konto mehr als eine Überprüfungsmethode zuordnen, die auf dem aktuellen Stand ist.<br><br>Sie können Ihre Überprüfungsmethoden für persönliche Konten auf Ihrer [Sicherheitseinstellungen](https://account.live.com/proofs/manage)-Seite verwalten. Für Geschäfts-, Schul- oder Unikonten können Sie zur Seite [Zusätzliche Sicherheitsüberprüfung](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) oder **Schützen Sie Ihr Konto** Ihrer Organisation wechseln, wenn Ihr Administrator die Sicherheitsinfos aktiviert hat. Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Übersicht über die Sicherheitsinformationen (Vorschau)](./security-info-setup-signin.md).<br><br>Wenn Sie Ihre Überprüfungsmethoden nicht verwalten können, müssen Sie sich an Ihren Administrator wenden. |
+| Wie kann ich die Verwendung des Features beenden und wieder zur Verwendung meines Kennworts zurückkehren? | Wählen Sie für persönliche Konten bei der Anmeldung den Link **Stattdessen Ihr Kennwort verwenden** aus. Ihre aktuelle Auswahl wird gespeichert und standardmäßig bei Ihrer nächsten Anmeldung angeboten. Falls Sie einmal zur Anmeldung per Telefon zurückkehren möchten, können Sie während der Anmeldung den Link **Stattdessen eine App verwenden** auswählen.<br><br>Für Geschäfts-, Schul- oder Unikonten müssen Sie entweder die Registrierung des Geräts auf der Seite **Einstellungen** der Microsoft Authenticator-App aufheben oder das Gerät im Bereich **Geräte und Aktivität** Ihres Profils deaktivieren. Weitere Informationen zum Deaktivieren Ihres Geräts in Ihrem Profil finden Sie unter [Aktualisieren Ihrer Profil- und Kontoinformationen im Portal „Meine Apps“](./my-account-portal-devices-page.md#disable-a-device). |
+| Warum kann ich für die Anmeldung per Telefon nicht mehrere Geschäfts-, Schul- oder Unikonten verwenden? | Ein Telefon muss für ein einzelnes Geschäfts-, Schul- oder Unikonto registriert sein. Wenn Sie die Anmeldung per Telefon für ein anderes Geschäfts-, Schul- oder Unikonto aktivieren möchten, müssen Sie die Registrierung Ihres Kontos auf diesem Gerät über die Seite **Einstellungen** aufheben. |
 | Kann ich mich mithilfe meines Telefons bei meinem Computer anmelden? | Bei Ihrem Computer sollten Sie sich mithilfe von Windows Hello unter Windows 10 anmelden. Mit Windows Hello können Sie sich mit Ihrem Gesicht, Fingerabdruck oder Ihrer PIN anmelden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -128,4 +123,4 @@ Die erforderlichen Schritte für die Anmeldung an Ihrem Geschäfts-, Schul- oder
 
 - Weitere Informationen zur zweistufigen Überprüfung finden Sie unter [Einrichten meines Kontos für die Überprüfung in zwei Schritten](multi-factor-authentication-end-user-first-time.md).
 
-- Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Übersicht über die Sicherheitsinformationen (Vorschau)](user-help-security-info-overview.md).
+- Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Übersicht über die Sicherheitsinformationen (Vorschau)](./security-info-setup-signin.md).

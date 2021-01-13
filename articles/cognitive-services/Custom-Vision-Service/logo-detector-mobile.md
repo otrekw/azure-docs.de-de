@@ -1,25 +1,26 @@
 ---
 title: 'Tutorial: Verwenden der benutzerdefinierten Logoerkennung zum Erkennen von Azure-Diensten: Custom Vision'
 titleSuffix: Azure Cognitive Services
-description: In diesem Tutorial arbeiten Sie Schritt für Schritt eine Beispiel-App durch, die Azure Custom Vision im Rahmen eines Szenarios zur Logoerkennung verwendet. Erfahren Sie, wie Custom Vision mit anderen Komponenten verwendet wird, um eine End-to-End-Anwendung bereitzustellen.
+description: In diesem Tutorial arbeiten Sie Schritt für Schritt eine Beispiel-App durch, die Custom Vision im Rahmen eines Szenarios zur Logoerkennung verwendet. Erfahren Sie, wie Custom Vision mit anderen Komponenten verwendet wird, um eine End-to-End-Anwendung bereitzustellen.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: bdcf8a0d63b880075cd22c73305afa8cf09a2e3b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: e5e344aa84bfc6912266720083f0cd15f575883c
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261969"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95740249"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Tutorial: Erkennen von Azure-Dienstlogos in Bildern von der Kamera
 
-In diesem Tutorial erkunden Sie eine Beispiel-App, die Azure Custom Vision im Rahmen eines größeren Szenarios verwendet. Die AI Visual Provision-App (eine Xamarin.Forms-App für mobile Plattformen) analysiert Kamerabilder von Azure-Dienstlogos und stellt dann die eigentlichen Dienste im Azure-Konto des Benutzers bereit. Hier erfahren Sie, wie Custom Vision in Verbindung mit anderen Komponenten verwendet wird, um eine nützliche End-to-End-Anwendung bereitzustellen. Sie können das gesamte App-Szenario für sich selbst ausführen oder lediglich den Custom Vision-Teil des Setups absolvieren und sich ansehen, wie dieser von der App genutzt wird.
+In diesem Tutorial erkunden Sie eine Beispiel-App, die Custom Vision im Rahmen eines größeren Szenarios verwendet. Die AI Visual Provision-App (eine Xamarin.Forms-App für mobile Plattformen) analysiert Kamerabilder von Azure-Dienstlogos und stellt dann die eigentlichen Dienste im Azure-Konto des Benutzers bereit. Hier erfahren Sie, wie Custom Vision in Verbindung mit anderen Komponenten verwendet wird, um eine nützliche End-to-End-Anwendung bereitzustellen. Sie können das gesamte App-Szenario für sich selbst ausführen oder lediglich den Custom Vision-Teil des Setups absolvieren und sich ansehen, wie dieser von der App genutzt wird.
 
 In diesem Lernprogramm lernen Sie Folgendes:
 
@@ -28,14 +29,14 @@ In diesem Lernprogramm lernen Sie Folgendes:
 > - Verbinden Ihrer App mit der Maschinelles Sehen-API von Azure und Custom Vision
 > - Erstellen eines Azure-Dienstprinzipalkontos zum Bereitstellen von Azure-Diensten über die App
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Visual Studio 2017 oder höher](https://www.visualstudio.com/downloads/)
-- Xamarin-Workload für Visual Studio (siehe [Installieren von Xamarin](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
+- [Visual Studio 2017 oder höher](https://www.visualstudio.com/downloads/)
+- Xamarin-Workload für Visual Studio (siehe [Installieren von Xamarin](/xamarin/cross-platform/get-started/installation/windows))
 - iOS- oder Android-Emulator für Visual Studio
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (optional)
+- [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (optional)
 
 ## <a name="get-the-source-code"></a>Herunterladen des Quellcodes
 
@@ -93,7 +94,7 @@ Beginnen Sie mit der **GetResourcesAsync**-Methode, um weitere Informationen zur
 
 Der Custom Vision-Teil des Tutorials ist fertig. Wenn Sie die App ausführen möchten, müssen Sie auch den Dienst „Maschinelles Sehen“ integrieren. Die App nutzt das Feature für die Texterkennung per maschinellem Sehen als Erweiterung für den Logoerkennungsprozess. Ein Azure-Logo kann anhand seines Aussehens *oder* des in der Nähe gedruckten Texts erkannt werden. Anders als bei Custom Vision-Modellen wird das maschinelle Sehen vorab trainiert, um bestimmte Vorgänge für Bilder oder Videos durchzuführen.
 
-Abonnieren Sie den Dienst für maschinelles Sehen, um einen Schlüssel und eine Endpunkt-URL zu erhalten. Hilfe zu diesem Schritt finden Sie unter [Gewusst wie: Erhalten von Abonnementschlüsseln](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe).
+Abonnieren Sie den Dienst für maschinelles Sehen, um einen Schlüssel und eine Endpunkt-URL zu erhalten. Hilfe zu diesem Schritt finden Sie unter [Gewusst wie: Erhalten von Abonnementschlüsseln](../cognitive-services-apis-create-account.md?tabs=singleservice%2Cwindows).
 
 ![Dienst „Maschinelles Sehen“ im Azure-Portal mit ausgewähltem Schnellstartmenü. Ein Link für Schlüssel und die API-Endpunkt-URL sind hervorgehoben.](media/azure-logo-tutorial/comvis-keys.png)
 
@@ -103,11 +104,11 @@ Abonnieren Sie den Dienst für maschinelles Sehen, um einen Schlüssel und eine 
 
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Die App erfordert ein Azure-Dienstprinzipalkonto, um Dienste in Ihrem Azure-Abonnement bereitzustellen. Mit einem Dienstprinzipal können Sie mithilfe der rollenbasierten Zugriffssteuerung bestimmte Berechtigungen an eine App delegieren. Weitere Informationen finden Sie unter [Gewähren des Anwendungszugriffs auf Azure Stack-Ressourcen durch Erstellen von Dienstprinzipalen](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
+Die App erfordert ein Azure-Dienstprinzipalkonto, um Dienste in Ihrem Azure-Abonnement bereitzustellen. Mit einem Dienstprinzipal können Sie mithilfe der rollenbasierten Zugriffssteuerung in Azure bestimmte Berechtigungen an eine App delegieren. Weitere Informationen finden Sie unter [Gewähren des Anwendungszugriffs auf Azure Stack-Ressourcen durch Erstellen von Dienstprinzipalen](/azure-stack/operator/azure-stack-create-service-principals).
 
 Sie können einen Dienstprinzipal wie im Folgenden beschrieben mit Azure Cloud Shell oder mit der Azure CLI erstellen. Melden Sie sich zunächst an, und wählen Sie das gewünschte Abonnement aus.
 
-```console
+```azurecli
 az login
 az account list
 az account set --subscription "<subscription name or subscription id>"
@@ -115,7 +116,7 @@ az account set --subscription "<subscription name or subscription id>"
 
 Erstellen Sie anschließend Ihren Dienstprinzipal. (Dieser Vorgang kann einige Zeit dauern.)
 
-```console
+```azurecli
 az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongPassword>
 ```
 
@@ -175,7 +176,7 @@ Gehen Sie folgendermaßen vor, um die App auszuführen:
 
 Wenn Sie alle Schritte dieses Szenarios ausgeführt und die App zum Bereitstellen von Azure-Diensten für Ihr Konto verwendet haben, können Sie als Nächstes zum [Azure-Portal](https://ms.portal.azure.com/) navigieren. Kündigen Sie dort die Dienste, die Sie nicht nutzen möchten.
 
-Wenn Sie die Erstellung eines eigenen Objekterkennungsprojekts mit Custom Vision planen, kann es ratsam sein, das Logoerkennungsprojekt zu löschen, das Sie in diesem Tutorial erstellt haben. In der kostenlosen Testversion von Custom Vision können nur zwei Projekte erstellt werden. Öffnen Sie zum Löschen des Logoerkennungsprojekts auf der [Custom Vision-Website](https://customvision.ai) die Option **Projects** (Projekte), und wählen Sie dann unter **My New Project** (Mein neues Projekt) das Papierkorbsymbol.
+Wenn Sie die Erstellung eines eigenen Objekterkennungsprojekts mit Custom Vision planen, kann es ratsam sein, das Logoerkennungsprojekt zu löschen, das Sie in diesem Tutorial erstellt haben. Im kostenlosen Abonnement von Custom Vision können nur zwei Projekte erstellt werden. Öffnen Sie zum Löschen des Logoerkennungsprojekts auf der [Custom Vision-Website](https://customvision.ai) die Option **Projects** (Projekte), und wählen Sie dann unter **My New Project** (Mein neues Projekt) das Papierkorbsymbol.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

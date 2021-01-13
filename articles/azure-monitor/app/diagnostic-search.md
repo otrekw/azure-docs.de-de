@@ -1,29 +1,20 @@
 ---
 title: Verwenden von Search in Azure Application Insights | Microsoft-Dokumentation
 description: Durchsuchen und filtern Sie unformatierte Telemetriedaten, die von Ihrer Web-App gesendet werden.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.author: mbullwin
-ms.openlocfilehash: d08fd2ac6db63eee01c0653d2dbb1623fb1b51ed
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: f87a972b417bf6074de1c10b7a54bd2416f88daa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705421"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187016"
 ---
 # <a name="using-search-in-application-insights"></a>Verwenden von Search in Application Insights
 
-Search ist eine Funktion in [Application Insights](../../azure-monitor/app/app-insights-overview.md), mit der Sie einzelne Telemetrieelemente wie Seitenaufrufe, Ausnahmen und Webanforderungen suchen und untersuchen können. Außerdem können Sie Protokollablaufverfolgungen und Ereignisse anzeigen, die Sie programmiert haben.
+Search ist eine Funktion in [Application Insights](./app-insights-overview.md), mit der Sie einzelne Telemetrieelemente wie Seitenaufrufe, Ausnahmen und Webanforderungen suchen und untersuchen können. Außerdem können Sie Protokollablaufverfolgungen und Ereignisse anzeigen, die Sie programmiert haben.
 
-(Verwenden Sie [Analytics](../../azure-monitor/log-query/get-started-portal.md) zum Anwenden komplexerer Abfragen auf Ihre Daten.)
+(Verwenden Sie [Analytics](../log-query/log-analytics-tutorial.md) zum Anwenden komplexerer Abfragen auf Ihre Daten.)
 
 ## <a name="where-do-you-see-search"></a>Wo steht Search zur Verfügung?
 
@@ -65,13 +56,13 @@ Dadurch wird eine Detailansicht der gesamten Transaktion eingeblendet.
 
 Die Ereignistypen sind:
 
-* **Ablaufverfolgung** - [Diagnoseprotokolle](../../azure-monitor/app/asp-net-trace-logs.md), einschließlich TrackTrace, log4Net, NLog und Aufrufe von „System.Diagnostic.Trace“.
+* **Ablaufverfolgung** - [Diagnoseprotokolle](./asp-net-trace-logs.md), einschließlich TrackTrace, log4Net, NLog und Aufrufe von „System.Diagnostic.Trace“.
 * **Anforderung**: Von Ihrer Serveranwendung empfangene HTTP-Anforderungen, einschließlich Seiten, Skripts, Bilder, Formatdateien und Daten. Diese Ereignisse werden verwendet, um die Übersichtsdiagramme für Anforderungen und Antworten zu erstellen.
-* **Seitenaufruf** - [Vom Webclient gesendete Telemetriedaten](../../azure-monitor/app/javascript.md), die zum Erstellen von Seitenaufrufberichten verwendet werden.
-* **Benutzerdefiniertes Ereignis**: Wenn Sie Aufrufe von „TrackEvent()“ zum [Überwachen der Nutzung](../../azure-monitor/app/api-custom-events-metrics.md) eingefügt haben, können Sie diese hier suchen.
-* **Ausnahme**: Nicht vom [Server abgefangene Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md) und Ausnahmen, die Sie mit „TrackException()“ protokollieren können.
-* **Abhängigkeit** - [Aufrufe aus Ihrer Serveranwendung](../../azure-monitor/app/asp-net-dependencies.md) an andere Dienste wie REST-APIs oder Datenbanken und AJAX-Aufrufe aus Ihrem [Clientcode](../../azure-monitor/app/javascript.md).
-* **Verfügbarkeit**: Ergebnisse von [Verfügbarkeitstests](../../azure-monitor/app/monitor-web-app-availability.md).
+* **Seitenaufruf** - [Vom Webclient gesendete Telemetriedaten](./javascript.md), die zum Erstellen von Seitenaufrufberichten verwendet werden.
+* **Benutzerdefiniertes Ereignis**: Wenn Sie Aufrufe von „TrackEvent()“ zum [Überwachen der Nutzung](./api-custom-events-metrics.md) eingefügt haben, können Sie diese hier suchen.
+* **Ausnahme**: Nicht vom [Server abgefangene Ausnahmen](./asp-net-exceptions.md) und Ausnahmen, die Sie mit „TrackException()“ protokollieren können.
+* **Abhängigkeit** - [Aufrufe aus Ihrer Serveranwendung](./asp-net-dependencies.md) an andere Dienste wie REST-APIs oder Datenbanken und AJAX-Aufrufe aus Ihrem [Clientcode](./javascript.md).
+* **Verfügbarkeit**: Ergebnisse von [Verfügbarkeitstests](./monitor-web-app-availability.md).
 
 ## <a name="filter-on-property-values"></a>Filtern von Eigenschaftswerten
 
@@ -90,10 +81,10 @@ Wenn Sie alle Elemente mit dem gleichen Eigenschaftswert ermitteln möchten, geb
 ## <a name="search-the-data"></a>Durchsuchen der Daten
 
 > [!NOTE]
-> Um komplexere Abfragen zu stellen, öffnen Sie oben auf dem Blatt „Suche“ das Feld [**Protokolle (Analytics)** ](../../azure-monitor/log-query/get-started-portal.md).
+> Um komplexere Abfragen zu stellen, öffnen Sie oben auf dem Blatt „Suche“ das Feld [**Protokolle (Analytics)**](../log-query/log-analytics-tutorial.md).
 >
 
-Sie können alle Eigenschaftswerte nach Ausdrücken durchsuchen. Dies ist nützlich, wenn Sie [benutzerdefinierte Ereignisse](../../azure-monitor/app/api-custom-events-metrics.md) mit Eigenschaftswerten geschrieben haben.
+Sie können alle Eigenschaftswerte nach Ausdrücken durchsuchen. Dies ist nützlich, wenn Sie [benutzerdefinierte Ereignisse](./api-custom-events-metrics.md) mit Eigenschaftswerten geschrieben haben.
 
 Sie können auch einen Zeitbereich festlegen, da die Suche in einem kürzeren Bereich schneller erfolgt.
 
@@ -101,7 +92,7 @@ Sie können auch einen Zeitbereich festlegen, da die Suche in einem kürzeren Be
 
 Suchen Sie nach vollständigen Wörtern, nicht nach Teilzeichenfolgen. Verwenden Sie Anführungszeichen, um Sonderzeichen zu umschließen.
 
-| Zeichenfolge | *Nicht* gefunden | Gefunden |
+| String | *Nicht* gefunden | Gefunden |
 | --- | --- | --- |
 | HomeController.Info |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |USA|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
@@ -119,7 +110,7 @@ Dies sind einige Suchausdrücke, die Sie verwenden können:
 
 Wenn die App viele Telemetriedaten generiert (und Sie die ASP.NET SDK-Version 2.0.0-beta3 oder höher verwenden), reduziert das Modul für die adaptive Stichprobenerstellung automatisch die an das Portal gesendete Datenmenge, indem nur ein repräsentativer Bruchteil der Ereignisse gesendet wird. Ereignisse, die mit derselben Anforderung im Zusammenhang stehen, werden als Gruppe aus- oder abgewählt, sodass Sie zwischen verwandten Ereignissen navigieren können.
 
-[Erfahren Sie mehr über das Erstellen von Stichproben.](../../azure-monitor/app/sampling.md)
+[Erfahren Sie mehr über das Erstellen von Stichproben.](./sampling.md)
 
 ## <a name="create-work-item"></a>Erstellen eines Arbeitselements
 
@@ -137,24 +128,24 @@ Wenn Sie diesen Vorgang zum ersten Mal ausführen, werden Sie aufgefordert, eine
 
 Neben der standardmäßig vom Application Insights SDK gesendeten Telemetriedaten können Sie folgende Aktionen ausführen:
 
-* Erfassen von Protokollablaufverfolgungen mithilfe Ihres bevorzugten Protokollierungsframeworks in [.NET](../../azure-monitor/app/asp-net-trace-logs.md) oder [Java](../../azure-monitor/app/java-trace-logs.md). Das heißt, dass Sie Ihre Protokollablaufverfolgungen durchsuchen und mit Seitenaufrufen, Ausnahmen und anderen Ereignissen korrelieren können.
-* [Schreiben von Code](../../azure-monitor/app/api-custom-events-metrics.md) zum Senden benutzerdefinierter Ereignisse, Seitenaufrufe und Ausnahmen.
+* Erfassen von Protokollablaufverfolgungen mithilfe Ihres bevorzugten Protokollierungsframeworks in [.NET](./asp-net-trace-logs.md) oder [Java](./java-trace-logs.md). Das heißt, dass Sie Ihre Protokollablaufverfolgungen durchsuchen und mit Seitenaufrufen, Ausnahmen und anderen Ereignissen korrelieren können.
+* [Schreiben von Code](./api-custom-events-metrics.md) zum Senden benutzerdefinierter Ereignisse, Seitenaufrufe und Ausnahmen.
 
-[Erfahren Sie, wie Sie Protokolle und benutzerdefinierte Telemetrie an Application Insights senden können](../../azure-monitor/app/asp-net-trace-logs.md).
+[Erfahren Sie, wie Sie Protokolle und benutzerdefinierte Telemetrie an Application Insights senden können](./asp-net-trace-logs.md).
 
-## <a name="questions"></a>FRAGEN UND ANTWORTEN
+## <a name="q--a"></a><a name="questions"></a>FRAGEN UND ANTWORTEN
 
-### <a name="limits"></a>Wie viele Daten werden beibehalten?
+### <a name="how-much-data-is-retained"></a><a name="limits"></a>Wie viele Daten werden beibehalten?
 
-Entsprechende Informationen finden Sie unter [Zusammenfassung der Grenzwerte](../../azure-monitor/app/pricing.md#limits-summary).
+Entsprechende Informationen finden Sie unter [Zusammenfassung der Grenzwerte](./pricing.md#limits-summary).
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Wie kann ich die POST-Daten in meinen Serveranforderungen anzeigen?
 
-POST-Daten werden nicht automatisch protokolliert. Sie können jedoch [TrackTrace oder Protokollaufrufe](../../azure-monitor/app/asp-net-trace-logs.md) verwenden. Fügen Sie die POST-Daten in den "message"-Parameter ein. Sie können nicht anhand der Nachricht wie anhand von Eigenschaften filtern, aber dafür ist der Größengrenzwert höher.
+POST-Daten werden nicht automatisch protokolliert. Sie können jedoch [TrackTrace oder Protokollaufrufe](./asp-net-trace-logs.md) verwenden. Fügen Sie die POST-Daten in den "message"-Parameter ein. Sie können nicht anhand der Nachricht wie anhand von Eigenschaften filtern, aber dafür ist der Größengrenzwert höher.
 
-## <a name="add"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="add"></a>Nächste Schritte
 
-* [Stellen von komplexeren Abfragen mit Analytics](../../azure-monitor/log-query/get-started-portal.md)
-* [Senden von Protokollen und benutzerdefinierter Telemetrie an Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
-* [Einrichten von Tests der Verfügbarkeit und Reaktionsfähigkeit](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Problembehandlung](../../azure-monitor/app/troubleshoot-faq.md)
+* [Stellen von komplexeren Abfragen mit Analytics](../log-query/log-analytics-tutorial.md)
+* [Senden von Protokollen und benutzerdefinierter Telemetrie an Application Insights](./asp-net-trace-logs.md)
+* [Einrichten von Tests der Verfügbarkeit und Reaktionsfähigkeit](./monitor-web-app-availability.md)
+* [Problembehandlung](../faq.md)

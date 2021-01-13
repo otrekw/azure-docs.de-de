@@ -1,18 +1,18 @@
 ---
-title: Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie das Azure-SDK verwenden, um große Mengen von Zufallsdaten parallel in ein Azure Storage-Konto hochzuladen.
+title: Paralleles Hochladen großer Mengen von Zufallsdaten in Azure Storage
+description: Hier erfahren Sie, wie Sie die Azure Storage-Clientbibliothek verwenden, um große Mengen von Zufallsdaten parallel in ein Azure Storage-Konto hochzuladen.
 author: roygara
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/20/2018
+ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: e5c1a78bf2f482e99d8ff13590a8bb81f9601991
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 5dc1f8b8a7c46a3d6ad6f62d93bc91753e42c3ae
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698970"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545039"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto
 
@@ -26,9 +26,9 @@ Im zweiten Teil der Reihe lernen Sie Folgendes:
 > * Ausführen der Anwendung
 > * Überprüfen der Anzahl von Verbindungen
 
-Azure Blob Storage stellt einen skalierbaren Dienst zum Speichern Ihrer Daten bereit. Um sicherzustellen, dass Ihre Anwendung so leistungsfähig wie möglich ist, sollten Sie die Funktionsweise von Blobspeicher verstehen. Es ist unverzichtbar, die Grenzwerte für Azure-Blobspeicher zu kennen. Informationen zu diesen Grenzwerten finden Sie unter [Skalierbarkeitsziele für Azure Blob Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
+Azure Blob Storage stellt einen skalierbaren Dienst zum Speichern Ihrer Daten bereit. Um sicherzustellen, dass Ihre Anwendung so leistungsfähig wie möglich ist, sollten Sie die Funktionsweise von Blobspeicher verstehen. Es ist unverzichtbar, die Grenzwerte für Azure-Blobs zu kennen. Informationen zu diesen Grenzwerten finden Sie unter [Skalierbarkeits- und Leistungsziele für Blob Storage](../blobs/scalability-targets.md).
 
-[Partitionsbenennung](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) ist ein weiterer potenziell wichtiger Faktor beim Entwerfen einer Hochleistungsanwendung, die Blobs verwendet. Bei Blockgrößen größer oder gleich 4 MiB werden [Blockblobs mit hohem Durchsatz](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) verwendet, bei denen die Partitionsbenennung die Leistung nicht beeinträchtigt. Bei Blockgrößen kleiner als 4 MiB wird von Azure-Speicher ein bereichsbasiertes Partitionierungsschema verwendet, um Skalierung und Lastenausgleich vorzunehmen. Diese Konfiguration bedeutet, dass Dateien mit ähnlichen Benennungskonventionen oder Präfixen in derselben Partition gespeichert werden. Diese Logik beinhaltet den Namen des Containers, in den die Dateien hochgeladen werden. In diesem Tutorial verwenden Sie Dateien, die sowohl GUIDs für Namen als auch zufällig generierten Inhalt haben. Die Dateien werden dann in fünf verschiedene Container mit zufälligen Namen hochgeladen.
+[Partitionsbenennung](../blobs/storage-performance-checklist.md#partitioning) ist ein weiterer potenziell wichtiger Faktor beim Entwerfen einer Hochleistungsanwendung, die Blobs verwendet. Bei Blockgrößen größer oder gleich 4 MiB werden [Blockblobs mit hohem Durchsatz](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) verwendet, bei denen die Partitionsbenennung die Leistung nicht beeinträchtigt. Bei Blockgrößen kleiner als 4 MiB wird von Azure-Speicher ein bereichsbasiertes Partitionierungsschema verwendet, um Skalierung und Lastausgleich vorzunehmen. Diese Konfiguration bedeutet, dass Dateien mit ähnlichen Benennungskonventionen oder Präfixen in derselben Partition gespeichert werden. Diese Logik beinhaltet den Namen des Containers, in den die Dateien hochgeladen werden. In diesem Tutorial verwenden Sie Dateien, die sowohl GUIDs für Namen als auch zufällig generierten Inhalt haben. Die Dateien werden dann in fünf verschiedene Container mit zufälligen Namen hochgeladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -62,7 +62,7 @@ Drücken Sie `dotnet run`, um die Anwendung auszuführen. Wenn Sie `dotnet` erst
 dotnet run
 ```
 
-Die Anwendung erstellt fünf zufällig benannte Container und beginnt damit, die Dateien, die sich im Stagingverzeichnis befinden, in das Speicherkonto hochzuladen. Die Anwendung legt die Mindestanzahl von Threads auf 100 und das [DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(v=vs.110).aspx) auf 100 fest, um sicherzustellen, dass eine große Anzahl von gleichzeitigen Verbindungen zulässig ist, wenn die Anwendung ausgeführt wird.
+Die Anwendung erstellt fünf zufällig benannte Container und beginnt damit, die Dateien, die sich im Stagingverzeichnis befinden, in das Speicherkonto hochzuladen. Die Anwendung legt die Mindestanzahl von Threads auf 100 und das [DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) auf 100 fest, um sicherzustellen, dass eine große Anzahl von gleichzeitigen Verbindungen zulässig ist, wenn die Anwendung ausgeführt wird.
 
 Zusätzlich zum Festlegen der Thread- und der Verbindungsgrenzwerte werden die [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) für die [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync)-Methode so konfiguriert, dass Parallelismus verwendet und MD5-Hashvalidierung deaktiviert wird. Die Dateien werden in 100-MB-Blöcken hochgeladen. Diese Konfiguration bietet eine bessere Leistung, kann aber teuer sein, wenn ein leistungsschwaches Netzwerk verwendet wird, denn wenn ein Fehler auftritt, wird der gesamte 100-MB-Block wiederholt.
 
@@ -71,7 +71,7 @@ Zusätzlich zum Festlegen der Thread- und der Verbindungsgrenzwerte werden die [
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| Die Einstellung bewirkt, dass der Blob beim Hochladen in Blöcke aufgeteilt wird. Wenn die höchste Leistung erzielt werden soll, muss dieser Wert dem Achtfachen der Anzahl von Kernen entsprechen. |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Diese Eigenschaft deaktiviert die Überprüfung des MD5-Hashs des hochgeladenen Inhalts. Die Deaktivierung der MD5-Überprüfung führt zu einer schnelleren Übertragung. Die Gültigkeit oder Integrität der übertragenen Dateien wird jedoch nicht bestätigt.   |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Diese Eigenschaft bestimmt, ob ein MD5-Hash berechnet und mit der Datei gespeichert wird.   |
-| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| 2-Sekunden-Backoff mit max. 10 Wiederhol. |Bestimmt die Wiederholungsrichtlinie von Anforderungen. Nach einem Verbindungsfehler erfolgt eine Wiederholung. In diesem Beispiel wird eine [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry)-Richtlinie mit einem Backoff von 2 Sekunden und maximal 10 Wiederholungen konfiguriert. Diese Einstellung ist wichtig, wenn Ihre Anwendung den [Blobspeicher-Skalierbarkeitszielen](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets) nahekommt.  |
+| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| 2-Sekunden-Backoff mit max. 10 Wiederhol. |Bestimmt die Wiederholungsrichtlinie von Anforderungen. Nach einem Verbindungsfehler erfolgt eine Wiederholung. In diesem Beispiel wird eine [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry)-Richtlinie mit einem Backoff von 2 Sekunden und maximal 10 Wiederholungen konfiguriert. Diese Einstellung ist wichtig, wenn Ihre Anwendung den Skalierbarkeitszielen für Blobspeicher nahekommt. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Blob Storage](../blobs/scalability-targets.md).  |
 
 Der `UploadFilesAsync`-Task ist im folgenden Beispiel dargestellt:
 

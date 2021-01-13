@@ -1,0 +1,152 @@
+- name: Dokumentation zu Azure Communication Services
+  href: index.yml
+- name: Übersicht
+  expanded: true
+  items:
+    - name: Was ist Azure Communication Services?
+      href: overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: "Erstellen einer Communication\_Services-Ressource"
+      href: quickstarts/create-communication-resource.md
+    - name: Erstellen und Verwalten von Zugriffstoken
+      href: quickstarts/access-tokens.md
+    - name: Chat
+      items:
+        - name: Hinzufügen von Chatfunktionen zu Ihrer App
+          href: quickstarts/chat/get-started.md
+        - name: Beitreten mit einer Chat-App zu einer Teams-Besprechung
+          href: quickstarts/chat/meeting-interop.md
+    - name: Telefonie und SMS
+      items:
+        - name: Erhalten einer Telefonnummer
+          href: quickstarts/telephony-sms/get-phone-number.md
+        - name: Hinzufügen von Telefonanrufen zu Ihrer App
+          href: quickstarts/voice-video-calling/pstn-call.md
+        - name: Senden einer SMS
+          href: quickstarts/telephony-sms/send.md
+        - name: Behandeln von SMS-Ereignissen
+          href: quickstarts/telephony-sms/handle-sms-events.md
+        - name: Senden einer SMS in Azure Logic Apps
+          href: quickstarts/telephony-sms/logic-app.md
+    - name: Sprach- und Videoanrufe
+      items:
+        - name: Hinzufügen von Sprachanrufen zu Ihrer App
+          href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: Verwenden der Clientbibliothek für Telefonie
+          href: quickstarts/voice-video-calling/calling-client-samples.md
+        - name: Beitreten mit einer Telefonie-App zu einer Teams-Besprechung
+          href: quickstarts/voice-video-calling/get-started-teams-interop.md
+- name: Tutorials
+  expanded: false
+  items:
+    - name: Erstellen eines vertrauenswürdigen Authentifizierungsdiensts mithilfe von Azure Functions
+      href: tutorials/trusted-service-tutorial.md
+- name: Konzepte
+  expanded: false
+  items:
+    - name: Chat
+      items:
+        - name: Übersicht über die Clientbibliothek für Chats
+          href: concepts/chat/sdk-features.md
+        - name: Chatkonzepte
+          href: concepts/chat/concepts.md
+    - name: Telefonie und SMS
+      items:
+        - name: Übersicht über die Clientbibliothek für SMS
+          href: concepts/telephony-sms/sdk-features.md
+        - name: SMS-Konzepte
+          href: concepts/telephony-sms/concepts.md
+        - name: Planen Ihrer Telefonie- und SMS-Lösung
+          href: concepts/telephony-sms/plan-solution.md
+    - name: Sprach- und Videoanrufe
+      items:
+        - name: Übersicht über die Clientbibliothek für Telefonie
+          href: concepts/voice-video-calling/calling-sdk-features.md
+        - name: Sprach- und Videokonzepte
+          href: concepts/voice-video-calling/about-call-types.md
+        - name: Teams-Interoperabilität
+          href: concepts/voice-video-calling/teams-interop.md
+    - name: Client- und Serverarchitektur
+      href: concepts/client-and-server-architecture.md
+    - name: Anrufflows
+      href: concepts/call-flows.md
+    - name: Clientbibliotheken und REST-APIs
+      href: concepts/sdk-options.md
+    - name: Preismodell
+      href: concepts/pricing.md
+    - name: Datenschutz
+      href: concepts/privacy.md
+    - name: Identitätsmodell
+      href: concepts/identity-model.md
+    - name: Authentifizierung
+      href: concepts/authentication.md
+    - name: Behandlung von Ereignissen
+      href: concepts/event-handling.md
+    - name: Benachrichtigungen
+      href: concepts/notifications.md
+    - name: Protokollierung und Diagnose
+      href: concepts/logging-and-diagnostics.md
+    - name: Metriken
+      href: concepts/metrics.md
+    - name: Problembehandlung
+      href: concepts/troubleshooting-info.md
+- name: Proben
+  items:
+    - name: Hero-Beispiel für Gruppenanrufe
+      href: samples/calling-hero-sample.md
+    - name: Hero-Beispiel für Gruppenchats
+      href: samples/chat-hero-sample.md
+    - name: Beispiel für Webaufrufe
+      href: samples/web-calling-sample.md
+- name: References
+  items:
+    - name: Übersicht über die Referenzdokumentation
+      href: concepts/reference.md
+    - name: REST-API-Dokumentation
+      href: /rest/api/communication/
+    - name: Telefoniebibliotheken
+      items:
+        - name: Telefonie (JavaScript)
+          href: /javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js
+        - name: Telefonie (Android/Java)
+          href: /java/api/com.azure.communication.calling?view=communication-services-java-android
+        - name: Telefonie (iOS)
+          href: /objectivec/communication-services/calling/
+    - name: Chatbibliotheken
+      items:
+        - name: Chat (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-chat'
+        - name: Chat (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationchat'
+        - name: Chat (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-chat'
+    - name: SMS-Bibliotheken
+      items:
+        - name: SMS (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-sms'
+        - name: SMS (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationsms'
+        - name: SMS (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-sms'
+    - name: Verwaltungsbibliotheken
+      items:
+        - name: Verwaltung (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-administration'
+        - name: Verwaltung (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationadministration'
+        - name: Verwaltung (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-administration'
+    - name: Allgemeine Bibliotheken
+      items:
+        - name: Allgemein (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-common'
+        - name: Allgemein (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationcommon'
+        - name: Allgemein (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-common'
+- name: Ressourcen
+  items:
+    - name: Versionshinweise
+      href: 'https://github.com/Azure/Communication/blob/master/releasenotes'

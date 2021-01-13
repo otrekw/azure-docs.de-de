@@ -1,26 +1,19 @@
 ---
-title: 'Schnellstart: Erstellen eines virtuellen Windows-Computers mit Azure PowerShell | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen eines virtuellen Windows-Computers mit Azure PowerShell'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell einen virtuellen Windows-Computer erstellen.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 0a8e6ab04cbb1c5a3ef9be299a08380912aad7ef
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: d23bc83d9cfd60585a63df0acbfb2b4076cd83f4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088794"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89077323"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers in Azure mit PowerShell
 
@@ -37,7 +30,7 @@ Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach d
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
-Erstellen Sie mit [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
+Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -45,7 +38,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Erstellen Sie mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) einen virtuellen Computer. Geben Sie Namen für die einzelnen Ressourcen an. Diese werden dann durch das Cmdlet `New-AzVM` erstellt, sofern sie nicht bereits vorhanden sind.
+Erstellen Sie mit [New-AzVM](/powershell/module/az.compute/new-azvm) einen virtuellen Computer. Geben Sie Namen für die einzelnen Ressourcen an. Diese werden dann durch das Cmdlet `New-AzVM` erstellt, sofern sie nicht bereits vorhanden sind.
 
 Geben Sie bei entsprechender Aufforderung einen Benutzernamen und ein Kennwort als Anmeldeinformationen für den virtuellen Computer ein:
 
@@ -65,7 +58,7 @@ New-AzVm `
 
 Stellen Sie nach Abschluss der Bereitstellung eine RDP-Verbindung mit dem virtuellen Computer her. Wenn Sie den virtuellen Computer in Aktion sehen möchten, muss dann der IIS-Webserver installiert werden.
 
-Verwenden Sie zum Anzeigen der öffentlichen IP-Adresse des virtuellen Computers das Cmdlet [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress):
+Verwenden Sie zum Anzeigen der öffentlichen IP-Adresse der VM das Cmdlet [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress):
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
@@ -99,7 +92,7 @@ Nachdem Sie IIS installiert und Port 80 auf Ihrem virtuellen Computer für den Z
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn die Ressourcengruppe, die VM und alle dazugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Cmdlet [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) entfernen:
+Wenn die Ressourcengruppe, die VM und alle dazugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Cmdlet [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) entfernen:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup

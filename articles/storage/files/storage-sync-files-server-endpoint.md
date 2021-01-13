@@ -1,23 +1,23 @@
 ---
 title: Hinzufügen/Entfernen eines Serverendpunkts für die Azure-Dateisynchronisierung | Microsoft-Dokumentation
-description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung berücksichtigen müssen.
+description: Hier erfahren Sie, wie Sie mithilfe der Azure-Dateisynchronisierung Serverendpunkte hinzufügen oder entfernen. Ein Serverendpunkt ist ein bestimmter Speicherort auf einem registrierten Server, z. B. ein Ordner auf einem Servervolume.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f75f0d1ae12db11590f8ce62f3c7b4c0f3e12817
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932621"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013937"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Hinzufügen/Entfernen eines Azure-Dateisynchronisierungsserver-Endpunkts
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
 
-Ein *Serverendpunkt* stellt einen bestimmten Speicherort auf einem *registrierten Server* dar, z.B. einen Ordner auf einem Servervolume oder das Stammverzeichnis des Volumes. Mehrere Serverendpunkte können auf dem gleichen Volume vorhanden sein, wenn sich deren Namespaces nicht überschneiden (z.B. „F:\sync1“ und „F:\sync2“). Sie können Richtlinien für das Cloudtiering für jeden Serverendpunkt separat konfigurieren. Wenn Sie einen Serverspeicherort mit einem vorhandenen Satz von Dateien einer Synchronisierungsgruppe als Serverendpunkt hinzufügen, werden diese Dateien mit anderen Dateien, die sich bereits auf anderen Endpunkten in der Synchronisierungsgruppe befinden, zusammengeführt.
+Ein *Serverendpunkt* stellt einen bestimmten Speicherort auf einem *registrierten Server* dar, z.B. einen Ordner auf einem Servervolume oder das Stammverzeichnis des Volumes. Mehrere Serverendpunkte können auf dem gleichen Volume vorhanden sein, wenn sich deren Namespaces nicht überschneiden (z. B. „F:\sync1“ und „F:\sync2“) und jeder Endpunkt mit einer eindeutigen Synchronisierungsgruppe synchronisiert wird. Sie können Richtlinien für das Cloudtiering für jeden Serverendpunkt separat konfigurieren. Wenn Sie einen Serverspeicherort mit einem vorhandenen Satz von Dateien einer Synchronisierungsgruppe als Serverendpunkt hinzufügen, werden diese Dateien mit anderen Dateien, die sich bereits auf anderen Endpunkten in der Synchronisierungsgruppe befinden, zusammengeführt.
 
 Informationen zur End-to-End-Bereitstellung der Azure-Dateisynchronisierung finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
 
@@ -35,8 +35,8 @@ Um einen Serverendpunkt hinzuzufügen, navigieren Sie zu der gewünschten Synchr
 
 Unter **Serverendpunkt hinzufügen** sind die folgenden Informationen erforderlich:
 
-- **Registrierter Server**: Der Name des Servers oder Clusters, auf bzw. in dem der Serverendpunkt erstellt werden soll.
-- **Pfad**: Der Pfad auf dem Windows-Server, der als Teil der Synchronisierungsgruppe synchronisiert werden soll.
+- **Registrierter Server:** Der Name des Servers oder Clusters, auf bzw. in dem der Serverendpunkt erstellt werden soll.
+- **Pfad:** Der Pfad auf dem Windows-Server, der als Teil der Synchronisierungsgruppe synchronisiert werden soll.
 - **Cloudtiering**: Ein Schalter, mit dem Cloudtiering aktiviert oder deaktiviert wird. Wenn das Cloudtiering aktiviert ist, werden Dateien in Ihren Azure-Dateifreigaben *auf mehrere Speicherebenen aufgeteilt (Tiering)* . Hierbei werden lokale Dateifreigaben in einen Cache statt in eine vollständige Kopie des Datasets konvertiert, damit Sie die Speicherplatzeffizienz auf dem Server verwalten können.
 - **Freier Speicherplatz auf Volume:** Die Menge des freien Speicherplatzes auf dem Volume, auf dem sich der Serverendpunkt befindet. Wenn z.B. für ein Volume mit einem einzigen Serverendpunkt „Freier Speicherplatz auf Volume“ auf 50 % festgelegt ist, wird ungefähr die Hälfte der Daten in Azure Files ausgelagert. Die Azure-Dateifreigabe enthält immer eine vollständige Kopie der Daten in der Synchronisierungsgruppe, unabhängig davon, ob Cloudtiering aktiviert ist.
 

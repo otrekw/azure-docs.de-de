@@ -1,20 +1,15 @@
 ---
-title: Referenzarchitekturen für das Rendering in Azure – Azure Batch
+title: Referenzarchitekturen für das Rendering in Azure
 description: Architekturen für die Verwendung von Azure Batch und anderen Azure-Diensten zum Erweitern einer lokalen Render-Farm mittels Cloud Bursting in die Cloud
-services: batch
-ms.service: batch
-author: davefellows
-manager: gwallace
-ms.author: lahugh
 ms.date: 02/07/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: fa2d59b2a6d2dea72276ab38a5cb1ca7bfb579a4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 784fd89c3dea88e25a2058713897c7a655c8a3af
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323110"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83726518"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Referenzarchitekturen für das Rendering in Azure
 

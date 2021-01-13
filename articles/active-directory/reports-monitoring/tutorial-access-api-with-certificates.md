@@ -1,27 +1,28 @@
 ---
-title: 'Tutorial: Abrufen von Daten per Azure AD-Berichterstellungs-API mit Zertifikaten | Microsoft-Dokumentation'
+title: Tutorial für die Azure AD-Berichterstellungs-API mit Zertifikaten | Microsoft-Dokumentation
 description: In diesem Tutorial wird beschrieben, wie Sie die Azure AD-Berichterstellungs-API mit Zertifikatanmeldeinformationen verwenden, um Daten ohne Benutzereingriff aus Verzeichnissen abzurufen.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: tutorial
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdab5bc4be366f778213127a307fb4fcf7cf38a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.custom: has-adal-ref
+ms.openlocfilehash: c3443cb73e85fc69349e7293597a5f4a723959d3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989481"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130050"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Tutorial: Abrufen von Daten per Berichtserstellungs-API von Azure Active Directory mit Zertifikaten
 
@@ -44,7 +45,7 @@ In diesem Tutorial erfahren Sie, wie Sie ein Testzertifikat verwenden, um zu Ber
     - Zugriffstoken für Benutzer, Anwendungsschlüssel und Zertifikate mit Verwendung von ADAL
     - Graph-API zur Verarbeitung von auf Seiten aufgeteilten Ergebnissen
 
-6. Wenn Sie das Modul erstmalig verwenden, führen Sie **Install-MSCloudIdUtilsModule** aus. Ansonsten können Sie es einfach mit dem PowerShell-Befehl **Import-Module** importieren. Ihre Sitzung sollte etwa wie folgt aussehen: ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Wenn Sie das Modul erstmalig verwenden, führen Sie **Install-MSCloudIdUtilsModule** aus. Andernfalls können Sie es mit dem PowerShell-Befehl **Import-Module** importieren. Ihre Sitzung sollte etwa wie folgt aussehen: ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. Verwenden Sie das PowerShell-Cmdlet **New-SelfSignedCertificate**, um ein Testzertifikat zu erstellen.
 
@@ -63,13 +64,13 @@ In diesem Tutorial erfahren Sie, wie Sie ein Testzertifikat verwenden, um zu Ber
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), wählen Sie **Azure Active Directory** aus und dann **App-Registrierungen**, und wählen Sie Ihre Anwendung aus der Liste aus. 
 
-2. Wählen Sie **Einstellungen** > **Schlüssel** und dann **Öffentlichen Schlüssel** hochladen aus.
+2. Wählen Sie auf dem Blatt „Anwendungsregistrierung“ im Abschnitt **Verwalten** die Option **Zertifikate und Geheimnisse** aus, und wählen Sie dann **Zertifikat hochladen** aus.
 
-3. Wählen Sie die Zertifikatdatei aus dem vorherigen Schritt aus, und wählen Sie dann **Speichern** aus. 
+3. Wählen Sie die Zertifikatdatei aus dem vorherigen Schritt aus, und wählen Sie dann **Hinzufügen** aus. 
 
-4. Notieren Sie die Anwendungs-ID und den Fingerabdruck des Zertifikats, das Sie gerade in Ihrer Anwendung registriert haben. Um den Fingerabdruck zu finden, wechseln Sie auf Ihrer Anwendungsseite im Portal zu **Einstellungen**, und klicken Sie auf **Schlüssel**. Der Fingerabdruck befindet sich unter der Liste **Öffentliche Schlüssel**.
+4. Notieren Sie die Anwendungs-ID und den Fingerabdruck des Zertifikats, das Sie gerade in Ihrer Anwendung registriert haben. Um den Fingerabdruck zu finden, navigieren Sie auf Ihrer Anwendungsseite im Portal im Abschnitt **Verwalten** zu **Zertifikate und Geheimnisse**. Der Fingerabdruck befindet sich unter der Liste **Zertifikate**.
 
-5. Öffnen Sie das Anwendungsmanifest im Inline-Manifest-Editor, und ersetzen Sie die Eigenschaft *keyCredentials* durch Ihre neuen Zertifikatinformationen, indem Sie das folgende Schema verwenden. 
+5. Öffnen Sie das Anwendungsmanifest im Inline-Manifest-Editor, und überprüfen Sie, ob die Eigenschaft *keyCredentials* mit Ihren neuen Zertifikatinformationen aktualisiert wurde, wie unten dargestellt. 
 
    ```
    "keyCredentials": [
@@ -81,26 +82,25 @@ In diesem Tutorial erfahren Sie, wie Sie ein Testzertifikat verwenden, um zu Ber
             "value":  "$base64Value" //base64 encoding of the certificate raw data
         }
     ]
-   ```
+   ``` 
+6. Jetzt können Sie mit diesem Zertifikat ein Zugriffstoken für die MS Graph-API abrufen. Verwenden Sie das Cmdlet **Get-MSCloudIdMSGraphAccessTokenFromCert** aus dem PowerShell-Modul „MSCloudIdUtils“, und übergeben Sie dabei als Eingabe die Anwendungs-ID und den Fingerabdruck, die Sie im vorherigen Schritt erhalten haben. 
 
-6. Speichern Sie das Manifest. 
-  
-7. Jetzt können Sie mit diesem Zertifikat ein Zugriffstoken für die MS Graph-API abrufen. Verwenden Sie das Cmdlet **Get-MSCloudIdMSGraphAccessTokenFromCert** aus dem PowerShell-Modul „MSCloudIdUtils“, und übergeben Sie dabei als Eingabe die Anwendungs-ID und den Fingerabdruck, die Sie im vorherigen Schritt erhalten haben. 
+   ![Screenshot: PowerShell-Fenster mit einem Befehl, der ein Zugriffstoken erstellt](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
-   ![Azure-Portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
+7. Verwenden Sie das Zugriffstoken in Ihrem PowerShell-Skript, um die Graph-API abzufragen. Verwenden Sie das Cmdlet **Invoke-MSCloudIdMSGraphQuery** aus „MSCloudIDUtils“, um die Endpunkte „signins“ und „directoryAudits“ aufzuzählen. Mit diesem Cmdlet werden mehrseitige Ergebnisse verarbeitet, die an die PowerShell-Pipeline gesendet werden.
 
-8. Verwenden Sie das Zugriffstoken in Ihrem PowerShell-Skript zum Abfragen der Graph-API. Verwenden Sie das Cmdlet **Invoke-MSCloudIdMSGraphQuery** aus „MSCloudIDUtils“, um die Endpunkte „signins“ und „directoryAudits“ aufzuzählen. Mit diesem Cmdlet werden mehrseitige Ergebnisse verarbeitet, die an die PowerShell-Pipeline gesendet werden.
+8. Abfragen des Endpunkts „directoryAudits“, um die Überwachungsprotokolle abzurufen. 
 
-9. Abfragen des Endpunkts „directoryAudits“, um die Überwachungsprotokolle abzurufen. 
-   ![Azure-Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
+   ![Screenshot: PowerShell-Fenster mit einem Befehl zum Abfragen des Endpunkts „directoryAudits“ mithilfe des Zugriffstokens, das Sie weiter oben in diesem Verfahren abgerufen haben](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
-10. Abfragen des Endpunkts „signins“, um die Anmeldeprotokolle abzurufen.
-    ![Azure-Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
+9. Abfragen des Endpunkts „signins“, um die Anmeldeprotokolle abzurufen.
 
-11. Sie können nun diese Daten in eine CSV-Datei exportieren und Datei in einem SIEM-System speichern. Außerdem können Sie Ihr Skript mit einer geplanten Aufgabe umschließen, mit der Azure AD-Daten regelmäßig aus Ihrem Mandanten abgerufen werden, ohne dass Anwendungsschlüssel im Quellcode gespeichert werden müssen. 
+    ![Screenshot: PowerShell-Fenster mit einem Befehl zum Abfragen des Endpunkts „signins“ mithilfe des Zugriffstokens, das Sie weiter oben in diesem Verfahren abgerufen haben](./media/tutorial-access-api-with-certificates/query-signins.png)
+
+10. Sie können nun diese Daten in eine CSV-Datei exportieren und Datei in einem SIEM-System speichern. Außerdem können Sie Ihr Skript mit einer geplanten Aufgabe umschließen, mit der Azure AD-Daten regelmäßig aus Ihrem Mandanten abgerufen werden, ohne dass Anwendungsschlüssel im Quellcode gespeichert werden müssen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verschaffen eines ersten Eindrucks über die Berichterstellungs-APIs](concept-reporting-api.md)
-* [Referenz zur Überwachungs-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [Referenz zur Anmeldeaktivitätsbericht-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [Referenz zur Überwachungs-API](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [Referenz zur Anmeldeaktivitätsbericht-API](/graph/api/resources/signin?view=graph-rest-beta)

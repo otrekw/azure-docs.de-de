@@ -1,26 +1,21 @@
 ---
-title: 'Tutorial: Konfigurieren von Pingboard für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Benutzerbereitstellung für Pingboard – Azure AD'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Pingboard konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: 0b38ee73-168b-42cb-bd8b-9c5e5126d648
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f7e2fabc86374f7fe055303d056ae8e00f33389
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac36f5d6d1f57fd8453c54bcc8cf19dd964f47f6
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964371"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357894"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Pingboard für die automatische Benutzerbereitstellung
 
@@ -28,7 +23,7 @@ Zweck dieses Tutorials ist die Beschreibung der Schritte, die Sie ausführen mü
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Einen Azure AD-Mandanten
 * Ein [Pro-Konto](https://pingboard.com/pricing) für einen Pingboard-Mandanten
@@ -60,7 +55,7 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Pingboard
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory** > **Unternehmens-Apps** > **Alle Anwendungen**.
 
-1. Suchen Sie über das Suchfeld nach Ihrer Pingboard-Instanz, wenn Sie Pingboard bereits für einmaliges Anmelden konfiguriert haben. Wählen Sie andernfalls **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **Pingboard**. Wählen Sie **Pingboard** in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
+1. Suchen Sie über das Suchfeld nach Ihrer Pingboard-Instanz, wenn Sie Pingboard bereits für einmaliges Anmelden konfiguriert haben. Wählen Sie andernfalls **Hinzufügen** , und suchen Sie im Anwendungskatalog nach **Pingboard**. Wählen Sie **Pingboard** in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
 1. Wählen Sie Ihre Pingboard-Instanz und dann die Registerkarte **Bereitstellung** aus.
 
@@ -88,18 +83,18 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Pingboard
 
 1. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Pingboard synchronisieren** aus.
 
-1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Pingboard synchronisiert werden sollen. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Pingboard für Updatevorgänge verwendet werden. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen. Weitere Informationen finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](../manage-apps/customize-application-attributes.md).
+1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Pingboard synchronisiert werden sollen. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Pingboard für Updatevorgänge verwendet werden. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen. Weitere Informationen finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](../app-provisioning/customize-application-attributes.md).
 
 1. Um den Azure AD-Bereitstellungsdienst für Pingboard zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
-1. Klicken Sie auf **Speichern**, um die Erstsynchronisierung der Benutzer zu starten, die Pingboard zugewiesen sind.
+1. Klicken Sie auf **Speichern** , um die Erstsynchronisierung der Benutzer zu starten, die Pingboard zugewiesen sind.
 
 Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Überwachen Sie anhand des Abschnitts **Synchronisierungsdetails** den Fortschritt, und navigieren Sie über Links zu Protokollen zur Bereitstellungsaktivität. In den Protokollen werden sämtliche Aktionen beschrieben, die vom Bereitstellungsdienst für Ihre Pingboard-App ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurieren von einmaligem Anmelden](pingboard-tutorial.md)

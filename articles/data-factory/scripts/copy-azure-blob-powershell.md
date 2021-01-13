@@ -1,22 +1,21 @@
 ---
-title: 'PowerShell-Skript: Kopieren von Daten in der Cloud mithilfe von Azure Data Factory | Microsoft-Dokumentation'
+title: Kopieren von Daten in der Cloud mithilfe von PowerShell
 description: Dieses PowerShell-Skript kopiert Daten aus einem Speicherort in einem Azure Blob Storage in einen anderen Speicherort im gleichen Blob Storage.
 services: data-factory
+ms.author: jingwang
 author: linda33wj
-manager: craigg
-editor: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/12/2017
-ms.author: jingwang
-ms.openlocfilehash: 19cb37ea40daa1e416f0dea82b2ddc8ad107454c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: seo-lt-2019
+ms.date: 03/12/2020
+ms.openlocfilehash: 9550556aa022a9211072fd4c5fb18acb4ee7882e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66167443"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637988"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>Verwenden von PowerShell zum Erstellen einer Data Factory-Pipeline zum Kopieren von Daten in die Cloud
 
@@ -27,8 +26,8 @@ Dieses PowerShell-Beispielskript erstellt eine Pipeline in Azure Data Factory, d
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* **Azure Storage-Konto**. Sie verwenden den Blob Storage sowohl als **Quelldatenspeicher** als auch als **Senkendatenspeicher**. Falls Sie noch nicht über ein Azure-Speicherkonto verfügen, finden Sie unter [Erstellen Sie ein Speicherkonto.](../../storage/common/storage-quickstart-create-account.md) Informationen zur Erstellung. 
-* Erstellen Sie einen **Blobcontainer** in Blob Storage, erstellen Sie einen **Eingabeordner** im Container, und laden Sie einige Dateien in den Ordner. Sie können Tools wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, um eine Verbindung mit Azure Blob Storage herzustellen, einen Blobcontainer zu erstellen, eine Eingabedatei hochzuladen und die Ausgabedatei zu überprüfen.
+* **Azure Storage-Konto** . Sie verwenden den Blob Storage sowohl als **Quelldatenspeicher** als auch als **Senkendatenspeicher** . Falls Sie noch nicht über ein Azure-Speicherkonto verfügen, finden Sie unter [Erstellen Sie ein Speicherkonto.](../../storage/common/storage-account-create.md) Informationen zur Erstellung. 
+* Erstellen Sie einen **Blobcontainer** in Blob Storage, erstellen Sie einen **Eingabeordner** im Container, und laden Sie einige Dateien in den Ordner. Sie können mithilfe von Tools wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) eine Verbindung mit Azure Blob Storage herstellen, einen Blobcontainer erstellen, eine Eingabedatei hochladen und die Ausgabedatei überprüfen.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -45,7 +44,7 @@ Nach der Ausführung des Beispielskripts können Sie den folgenden Befehl ausfü
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
-Führen Sie den folgenden Befehl aus, um die Data Factory aus der Ressourcengruppe zu entfernen: 
+Führen Sie den folgenden Befehl aus, um die Data Factory aus der Ressourcengruppe zu entfernen:
 
 ```powershell
 Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
@@ -53,22 +52,22 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-Das Skript verwendet die folgenden Befehle: 
+Das Skript verwendet die folgenden Befehle:
 
 | Get-Help | Notizen |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Erstellen einer Data Factory. |
 | [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | Erstellt einen verknüpften Dienst in der Data Factory. Ein verknüpfter Dienst verbindet einen Datenspeicher oder ein Compute mit einer Data Factory. |
-| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | Erstellt ein Dataset in der Data Factory. Ein Dataset stellt die Eingabe/Ausgabe für eine Aktivität in einer Pipeline dar. | 
+| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | Erstellt ein Dataset in der Data Factory. Ein Dataset stellt die Eingabe/Ausgabe für eine Aktivität in einer Pipeline dar. |
 | [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | Erstellt eine Pipeline in der Data Factory. Eine Pipeline enthält eine oder mehrere Aktivitäten zur Ausführung eines bestimmten Vorgangs. In dieser Pipeline kopiert eine Kopieraktivität in einem Azure Blob Storage Daten von einem Speicherort an einen anderen. |
 | [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | Erstellt eine Ausführung für die Pipeline. Soll heißen, führt die Pipeline aus. |
-| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | Ruft Details zur Ausführung der Aktivität (Aktivitätsausführung) in der Pipeline ab. 
+| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | Ruft Details zur Ausführung der Aktivität (Aktivitätsausführung) in der Pipeline ab.
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/).
 
 Zusätzliche PowerShell-Skriptbeispiele für Azure Data Factory finden Sie unter [Azure PowerShell-Beispiele für Azure Data Factory](../samples-powershell.md).

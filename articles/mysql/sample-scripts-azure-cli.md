@@ -1,24 +1,24 @@
 ---
-title: Azure CLI-Beispiele für Azure-Datenbank für MySQL
+title: 'Azure CLI-Beispiele: Azure Database for MySQL'
 description: Dieser Artikel führt die Azure CLI-Codebeispiele auf, die für die Interaktion mit Azure-Datenbank für MySQL verfügbar sind.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
-ms.date: 02/28/2018
-ms.openlocfilehash: c5ecaf5ba893cce38327d38236d593e06b31abb9
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.custom: mvc, devx-track-azurecli
+ms.date: 12/02/2019
+ms.openlocfilehash: 1150b9e6f39f14cdfa3aa5c57d1cbacca0351b64
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350937"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537593"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>Azure CLI-Beispiele für Azure-Datenbank für MySQL 
 Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für Azure Datenbank für MySQL.
 
-| |  |
+| Beispiellink | BESCHREIBUNG  |
 |---|---|
 |**Erstellen eines Servers**||
 | [Erstellen eines Servers und einer Firewallregel](./scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Ein Azure CLI-Skript, das einen Azure-Datenbank für MySQL-Server erstellt und eine Firewallregel auf Serverebene konfiguriert. |

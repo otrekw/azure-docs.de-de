@@ -1,17 +1,17 @@
 ---
-title: Konfigurieren von Warnungen zu Metriken für Azure Database for PostgreSQL (Einzelserver) im Azure-Portal
+title: Konfigurieren von Warnungen – Azure-Portal – Azure Database for PostgreSQL (Einzelserver)
 description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal die Warnungen zu Metriken für Azure Database for PostgreSQL (Einzelserver) konfigurieren und auf diese zugreifen.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 000dfe2d3e594c71f9c7ebbff7bce7141243668a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f37dcc1d092de10c51c0492bbc8671047e4a90a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067293"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020108"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL (Einzelserver)
 
@@ -25,34 +25,34 @@ Sie können konfigurieren, dass bei einer Warnung die folgenden Aktionen ausgef�
 * Aufrufen eines Webhooks
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abrufen zugehöriger Informationen:
-* [Azure-Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure-Befehlszeilenschnittstelle](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Azure Monitor-REST-API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure Monitor-REST-API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Erstellen einer Warnungsregel anhand einer Metrik aus dem Azure-Portal
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) den zu überwachenden Azure Database for PostgreSQL-Server aus.
 
 2. Wählen Sie im Abschnitt **Überwachung** in der Randleiste die Option **Warnungen** aus, wie unten gezeigt:
 
-   ![„Warnungsregeln“ auswählen](./media/howto-alert-on-metric/2-alert-rules.png)
+   :::image type="content" source="./media/howto-alert-on-metric/2-alert-rules.png" alt-text="„Warnungsregeln“ auswählen":::
 
 3. Wählen Sie **Metrikwarnung hinzufügen** (Plussymbol) aus.
 
 4. Die Seite **Regel erstellen** wird geöffnet, wie unten gezeigt. Füllen Sie die erforderlichen Informationen aus:
 
-   ![Formular „Metrikwarnung hinzufügen“](./media/howto-alert-on-metric/4-add-rule-form.png)
+   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="Formular „Metrikwarnung hinzufügen“":::
 
 5. Wählen Sie im Abschnitt **Bedingung** **Bedingung hinzufügen**.
 
 6. Wählen Sie eine Metrik aus der Liste der Signale aus, bei denen eine Warnung erfolgen soll. Wählen Sie in diesem Beispiel „Speicher in Prozent“ aus.
    
-   ![Metrik auswählen](./media/howto-alert-on-metric/6-configure-signal-logic.png)
+   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Metrik auswählen":::
 
 7. Konfigurieren Sie die Warnungslogik, einschließlich der **Bedingung** (z.B. „Größer als“), **Schwellenwert** (z.B. 85 Prozent), **Zeitaggregation**, **Zeitraum**, die die Metrikregel erfüllen muss, ehe die Warnung ausgelöst wird (z.B. „Innerhalb der letzten 30 Minuten“) und **Häufigkeit**.
    
    Wählen Sie anschließend **Fertig** aus.
 
-   ![Metrik auswählen](./media/howto-alert-on-metric/7-set-threshold-time.png)
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="Screenshot mit hervorgehobenem Abschnitt „Warnungslogik“ und der Schaltfläche „Fertig“":::
 
 8. Wählen Sie im Abschnitt **Aktionsgruppen** die Option **Neu erstellen** aus, um eine neue Gruppe zum Empfangen von Benachrichtigungen zu Warnungen zu erhalten.
 
@@ -66,11 +66,11 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 
     Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-    ![Aktionsgruppe](./media/howto-alert-on-metric/10-action-group-type.png)
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Screenshot des Hinzufügens einer neuen Aktionsgruppe":::
 
 11. Geben Sie einen Namen, einen Beschreibung und den Schweregrad für die Warnungsregel an.
 
-    ![Aktionsgruppe](./media/howto-alert-on-metric/11-name-description-severity.png) 
+    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Aktionsgruppe"::: 
 
 12. Wählen Sie **Benachrichtigungsregel erstellen** aus, um die Benachrichtigung zu erstellen.
 
@@ -85,4 +85,4 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und folgende
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../azure-monitor/platform/alerts-webhooks.md).
-* Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
+* Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](../azure-monitor/platform/data-platform.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.

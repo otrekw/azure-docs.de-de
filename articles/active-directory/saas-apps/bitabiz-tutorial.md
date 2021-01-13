@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit BitaBIZ | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und BitaBIZ konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1a51e677-c62b-4aee-9c61-56926aaaa899
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e52b5478bc4b483b793f155eab2f41246552d49
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f564032873be6e4c70426d48c4576371862ea35d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106370"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673606"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>Tutorial: Azure Active Directory-Integration mit BitaBIZ
 
@@ -31,7 +27,7 @@ Die Integration von BitaBIZ in Azure AD hat folgende Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei BitaBIZ anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -67,7 +63,7 @@ Zum Konfigurieren der Integration von BitaBIZ in Azure AD müssen Sie BitaBIZ au
 
 4. Geben Sie im Suchfeld die Zeichenfolge **BitaBIZ** ein, wählen Sie im Ergebnisbereich die Option **BitaBIZ** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![BitaBIZ in der Ergebnisliste](common/search-new-app.png)
+    ![BitaBIZ in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -120,7 +116,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit BitaBIZ 
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-7. Kopieren Sie im Abschnitt **BitaBIZ einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+7. Kopieren Sie im Abschnitt **BitaBIZ**{3}einrichten{4} die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -136,15 +132,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit BitaBIZ 
 
 2. Klicken Sie auf **SETUP ADMIN** (ADMINISTRATOR EINRICHTEN).
 
-    ![BitaBIZ-Konfiguration](./media/bitabiz-tutorial/settings1.png)
+    ![Screenshot: Teil eines Browserfensters mit ausgewählter Schaltfläche „Setup Admin“ (Administrator einrichten)](./media/bitabiz-tutorial/settings1.png)
 
 3. Klicken Sie im Abschnitt **Add value** (Aufwerten) auf **Microsoft integrations** (Microsoft-Integrationen).
 
-    ![BitaBIZ-Konfiguration](./media/bitabiz-tutorial/settings2.png)
+    ![Screenshot: Fenster „Wert hinzufügen“ mit ausgewählter Option „Microsoft integrations“ (Microsoft-Integrationen)](./media/bitabiz-tutorial/settings2.png)
 
 4. Scrollen Sie zum Abschnitt **Microsoft Azure AD (Enable single sign on)** (Microsoft Azure AD (einmaliges Anmelden aktivieren)), und führen Sie die folgenden Schritte aus:
 
-    ![BitaBIZ-Konfiguration](./media/bitabiz-tutorial/settings3.png)
+    ![Screenshot: Microsoft Azure AD-Abschnitt, in dem Sie die in diesem Schritt beschriebenen Informationen eingeben](./media/bitabiz-tutorial/settings3.png)
 
     a. Kopieren Sie den Wert aus dem Textfeld **Entity ID (”Identifier” in Azure AD)** (Entitäts-ID ("Bezeichner" in Azure AD)), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Bezeichner** ein. 
 
@@ -177,13 +173,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -222,19 +218,19 @@ Im Fall von BitaBIZ muss die Bereitstellung manuell durchgeführt werden.
 
 2. Klicken Sie auf **SETUP ADMIN** (ADMINISTRATOR EINRICHTEN).
 
-    ![Hinzufügen eines Benutzers in BitaBIZ](./media/bitabiz-tutorial/settings1.png)
+    ![Screenshot: Teil Ihres Browserfensters mit ausgewählter Schaltfläche „Setup Admin“ (Administrator einrichten)](./media/bitabiz-tutorial/settings1.png)
 
 3. Klicken Sie im Abschnitt **Organization** (Organisation) auf **Add users** (Benutzer hinzufügen).
 
-    ![Hinzufügen eines Benutzers in BitaBIZ](./media/bitabiz-tutorial/user1.png)
+    ![Screenshot: Abschnitt „Unternehmen“ mit ausgewählter Option „Benutzer hinzufügen“](./media/bitabiz-tutorial/user1.png)
 
 4. Klicken Sie auf **Add new employee** (Neuen Mitarbeiter hinzufügen).
 
-    ![Hinzufügen eines Benutzers in BitaBIZ](./media/bitabiz-tutorial/user2.png)
+    ![Screenshot: „Benutzer hinzufügen“ mit ausgewählter Option „Add new employee“ (Neuen Mitarbeiter hinzufügen)](./media/bitabiz-tutorial/user2.png)
 
 5. Führen Sie auf der Dialogfeldseite **Add new employee** (Neuen Mitarbeiter hinzufügen) die folgenden Schritte aus:
 
-    ![Hinzufügen eines Benutzers in BitaBIZ](./media/bitabiz-tutorial/user3.png)
+    ![Screenshot der Seite, auf der Sie die in diesem Schritt beschriebenen Informationen eingeben](./media/bitabiz-tutorial/user3.png)
 
     a. Geben Sie im Textfeld **First Name** (Vorname) den Vornamen des Benutzers ein (beispielsweise „Britta“).
 
@@ -255,12 +251,12 @@ Im Fall von BitaBIZ muss die Bereitstellung manuell durchgeführt werden.
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „BitaBIZ“ klicken, sollten Sie automatisch bei der BitaBIZ-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „BitaBIZ“ klicken, sollten Sie automatisch bei der BitaBIZ-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

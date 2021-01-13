@@ -1,31 +1,23 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Erstellen einer App und Bereitstellen von Code im Stagingslot | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Erstellen einer Web-App und Bereitstellen von Code in einer Stagingumgebung
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: 'Mit PowerShell: Bereitstellen von Code im Stagingslot'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie Code in einer Stagingumgebung bereitstellen.
 tags: azure-service-management
 ms.assetid: 27cf0680-c3a9-4a58-9f71-6dec09f6b874
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 7d65a5977ff8db8d31fe7a46d4f99569a8c2270a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 1024aa360202b11d0cb1317db359f9c2e661ebb9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087610"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89070376"
 ---
 # <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>Erstellen einer Web-App und Bereitstellen von Code in einer Stagingumgebung
 
 Dieses Beispielskript erstellt eine Web-App in App Service mit einem zusätzlichen Bereitstellungsslot namens „staging“ und stellt dann eine Beispiel-App im „staging“-Slot bereit.
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -57,6 +49,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Azure PowerShell-Beispiele für Azure App Service-Web-Apps finden Sie unter [Azure PowerShell-Beispiele](../samples-powershell.md).

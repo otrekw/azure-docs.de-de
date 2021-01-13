@@ -1,6 +1,6 @@
 ---
 title: 'Features der Connected Factory-Lösung: Azure | Microsoft-Dokumentation'
-description: Hier erhalten Sie einen Überblick über die Features der vorkonfigurierten Connected Factory-Lösung.
+description: In diesem Artikel wird ein Überblick über die Features der vorkonfigurierten Connected Factory-Lösung beschrieben, z.B. Clouddashboard, Regeln und Warnungen.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 2a11640959a8c7fdd0d238aba92698eb47934969
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e492ebf70f69c985691852a1c1f2351d1e09578e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080449"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425012"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>Was ist der IoT Solution Accelerator für Connected Factory?
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den Inhalt auf dem neuesten Stand lesen.
 
 Connected Factory ist eine Open Source-Lösung und dient zur Implementierung der Azure IoT-Referenz von Microsoft in der Industrie. Sie können sie als Grundlage für ein kommerzielles Produkt verwenden. Über [Azure IoT Solution Accelerators](https://www.azureiotsolutions.com/#solutions/types/CF) können Sie eine vorgefertigte Version der Connected Factory-Lösung in Ihrem Azure-Abonnement bereitstellen.
 

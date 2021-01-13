@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4300860039b76bd076f19acfc252f59ef10d462b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60499884"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351843"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Anforderungen für die Verwendung und Anzeige der Bing-Suche-API
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Diese Verwendungs- und Anzeigeanforderungen gelten für jede Implementierung von Inhalten und zugehörigen Informationen aus den folgenden Bing-Suche-APIs, einschließlich der Beziehungen, Metadaten und anderer Signale.
 
@@ -34,10 +39,10 @@ Diese Verwendungs- und Anzeigeanforderungen gelten für jede Implementierung von
 ## <a name="definitions"></a>Definitionen
 
 
-|Begriff  |BESCHREIBUNG  |
+|Begriff  |Beschreibung  |
 |---------|---------|
 |Antwort     | Eine Kategorie von Ergebnissen, die in einer Antwort zurückgegeben werden. Eine Reaktion der Bing-Websuche-API kann beispielsweise Antworten in den Kategorien „Webseitenergebnisse“, „Bild“, „Video“ „Thema“ und „News“ enthalten. |
-|response     | Sämtliche Antworten und die zugehörigen Daten, die infolge eines einzelnen Aufrufs einer Suche-API empfangen werden. |
+|Antwort     | Sämtliche Antworten und die zugehörigen Daten, die infolge eines einzelnen Aufrufs einer Suche-API empfangen werden. |
 |Ergebnis    | Ein Informationselement in einer Antwort. Die Daten in Verbindung mit einem einzelnen Nachrichtenartikel sind beispielsweise ein Ergebnis in einer Nachrichtenantwort. |
 |Such-APIs    | Sammelbegriff für die APIs der benutzerdefinierten Bing-Suche, der Entitätssuche, der Bildersuche, der News-Suche, der Videosuche, der visuellen Suche, der Suche nach lokalen Unternehmen und der Websuche. |
 
@@ -71,7 +76,7 @@ Alle in einer Reaktion zurückgegebenen Daten dürfen ausschließlich im Rahmen 
 
 Die einzige Ausnahme für diese Anforderung bei der Internetsuche betrifft die URL-Ermittlung, wie weiter unten in diesem Artikel beschrieben. 
 
-### <a name="restrictions"></a>Einschränkungen
+### <a name="restrictions"></a>Beschränkungen
 
 Vermeiden Sie Folgendes:
 
@@ -127,7 +132,7 @@ Wenn Sie einem Benutzer die Weiterleitung einer Reaktion von einer Such-API an e
 
 Daten aus Reaktionen von Such-APIs dürfen nicht kopiert, gespeichert oder zwischengespeichert werden. Zur Gewährleistung der Kontinuität beim Dienstzugriff und beim Rendern von Daten ist es unter folgenden Bedingungen jedoch gestattet, Ergebnisse aufzubewahren:
 
-#### <a name="device"></a>Gerät
+#### <a name="device"></a>Sicherungsmedium
 
 Sie können einem Benutzer die Aufbewahrung von Ergebnissen auf einem Gerät für den kürzeren der beiden folgenden Zeiträume ermöglichen: (i) 24 Stunden ab dem Zeitpunkt der Abfrage oder (ii) bis ein Benutzer eine weitere Abfrage für aktualisierte Ergebnisse übermittelt – vorausgesetzt, die aufbewahrten Ergebnisse werden ausschließlich zu folgenden Zwecken verwendet:
 
@@ -167,5 +172,4 @@ Die vorhergehenden Abschnitte dieser Nutzungs- und Anzeigeanforderungen für Suc
 
 ## <a name="gdpr-compliance"></a>Einhaltung der DSGVO  
 
-Betreffend personenbezogenen Daten, die der Datenschutz-Grundverordnung (DSGVO) der Europäischen Union unterliegen und die im Zusammenhang mit Aufrufen an die Such-APIs, die Bing-Rechtschreibprüfungs-API oder die Bing-Vorschlagssuche-API verarbeitet werden, bestätigen Sie, dass Sie und Microsoft unabhängige Verantwortliche gemäß der DSGVO sind. Sie sind unabhängig voneinander für die Einhaltung der DSGVO verantwortlich.  
-
+Betreffend personenbezogenen Daten, die der Datenschutz-Grundverordnung (DSGVO) der Europäischen Union unterliegen und die im Zusammenhang mit Aufrufen an die Such-APIs, die Bing-Rechtschreibprüfungs-API oder die Bing-Vorschlagssuche-API verarbeitet werden, bestätigen Sie, dass Sie und Microsoft unabhängige Verantwortliche gemäß der DSGVO sind. Sie sind unabhängig voneinander für die Einhaltung der DSGVO verantwortlich.

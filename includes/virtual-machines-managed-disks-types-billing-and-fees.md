@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a416d1c6e813be558f034e15576c57efa6073788
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: c0627dd0833e3b20468eb5f50fbeb9fd9d9ae2b3
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968576"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864728"
 ---
 **Ausgehende Datenübertragungen**: [Ausgehende Datenübertragungen](https://azure.microsoft.com/pricing/details/bandwidth/) (Daten, die von den Azure-Datencentern ausgehen) verursachen Kosten bei der Bandbreitenverwendung.
 
@@ -26,6 +26,10 @@ Ausführliche Informationen zu den Preisen für Managed Disks, einschließlich d
 Virtuelle Azure-Computer können angeben, ob sie mit Ultra-Datenträgern kompatibel sind. Ein mit Ultra-Datenträgern kompatibler virtueller Computer weist dedizierte Bandbreitenkapazität zwischen der Compute-VM-Instanz und der Blockspeicher-Skalierungseinheit zu, um die Leistung zu optimieren und die Wartezeiten zu verringern. Das Hinzufügen dieser Funktion auf dem virtuellen Computer führt dazu, dass die Reservierungsgebühr nur erhoben wird, wenn Sie die Ultra-Datenträgerfunktion auf dem virtuellen Computer aktiviert haben, ohne ihr einen Ultra-Datenträger anzufügen. Wenn ein Ultra-Datenträger an den mit Ultra-Datenträgern kompatiblen virtuellen Computer angefügt ist, fällt diese Gebühr nicht an. Diese Gebühr fällt pro auf der VM bereitgestellter vCPU an. 
 
 > [!Note]
-> Für [VM-Größen mit eingeschränkter Anzahl der Kerne](../articles/virtual-machines/linux/constrained-vcpu.md) ergibt sich die Reservierungsgebühr anhand der tatsächlichen Anzahl der vCPUs und nicht anhand der eingeschränkten Kerne. Für Standard_E32-8s_v3 basiert die Reservierungsgebühr auf 32 Kernen. 
+> Für [VM-Größen mit eingeschränkter Anzahl der Kerne](../articles/virtual-machines/constrained-vcpu.md) ergibt sich die Reservierungsgebühr anhand der tatsächlichen Anzahl der vCPUs und nicht anhand der eingeschränkten Kerne. Für Standard_E32-8s_v3 basiert die Reservierungsgebühr auf 32 Kernen. 
 
 Preisdetails für Ultra-Datenträger finden Sie auf der [Seite mit der Preisübersicht für Azure-Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
+
+### <a name="azure-disk-reservation"></a>Azure-Datenträgerreservierung
+
+Die Datenträgerreservierung bietet die Möglichkeit, Datenträgerspeicher ein Jahr im Voraus zu Rabattkonditionen zu erwerben und so die Gesamtkosten zu reduzieren. Beim Erwerb einer Datenträgerreservierung wählen Sie eine bestimmte Datenträger-SKU in einer Zielregion aus, z. B. 10 P30 (1 TiB) Premium-SSDs in der Region USA, Osten 2 für eine Laufzeit von einem Jahr. Die Reservierung folgt einem Modell, das dem für reservierte VM-Instanzen ähnelt. Sie können VM- und Datenträgerreservierungen bündeln, um die Einsparungen zu maximieren. Derzeit bietet die Azure-Datenträgerreservierung einen Ein-Jahres-Verpflichtungsplan für Premium-SSD-SKUs von P30 (1 TiB) bis P80 (32 TiB) in allen Produktregionen. Weitere Informationen zu den Preisen für reservierte Datenträger finden Sie auf der [Seite mit der Preisübersicht für Azure-Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).

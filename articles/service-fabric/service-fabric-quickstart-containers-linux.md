@@ -1,26 +1,15 @@
 ---
-title: Erstellen einer Linux-Container-App unter Service Fabric in Azure | Microsoft-Dokumentation
+title: Erstellen einer Linux-Container-App unter Service Fabric in Azure
 description: In dieser Schnellstartanleitung erstellen Sie ein Docker-Image mit Ihrer Anwendung, übertragen Sie es per Push an eine Containerregistrierung und stellen dann Ihren Container in einem Service Fabric-Cluster bereit.
-services: service-fabric
-documentationcenter: linux
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: 0f6e24d2790f78ab0ec7292640fda3ab30e03a03
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 27d9c96643feb805a785e1e535cd8cac2602082b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599399"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741910"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Schnellstart: Bereitstellen von Linux-Containern in Service Fabric
 
@@ -63,14 +52,14 @@ Für die Bereitstellung der Anwendung in Azure benötigen Sie einen Service Fabr
 #!/bin/bash
 
 # Variables
-ResourceGroupName="containertestcluster" 
-ClusterName="containertestcluster" 
-Location="eastus" 
-Password="q6D7nN%6ck@6" 
-Subject="containertestcluster.eastus.cloudapp.azure.com" 
-VaultName="containertestvault" 
-VmPassword="Mypa$$word!321"
-VmUserName="sfadminuser"
+ResourceGroupName='containertestcluster' 
+ClusterName='containertestcluster' 
+Location='eastus' 
+Password='q6D7nN%6ck@6' 
+Subject='containertestcluster.eastus.cloudapp.azure.com' 
+VaultName='containertestvault' 
+VmPassword='Mypa$$word!321'
+VmUserName='sfadminuser'
 
 # Login to Azure and set the subscription
 az login
@@ -90,7 +79,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location --
 > Der Web-Front-End-Dienst ist für das Lauschen auf eingehenden Datenverkehr über Port 80 konfiguriert. Port 80 ist auf Ihren virtuellen Clustercomputern und dem Azure-Lastenausgleich standardmäßig geöffnet.
 >
 
-## <a name="configure-your-environment"></a>Konfigurieren der Umgebung
+## <a name="configure-your-environment"></a>Konfigurieren Ihrer Umgebung
 
 Service Fabric bietet mehrere Tools, mit denen Sie einen Cluster und die dazugehörigen Anwendungen verwalten können:
 
@@ -100,7 +89,7 @@ Service Fabric bietet mehrere Tools, mit denen Sie einen Cluster und die dazugeh
 
 In dieser Schnellstartanleitung verwenden Sie die Service Fabric-Befehlszeilenschnittstelle sowie Service Fabric Explorer (ein webbasiertes Tool). Damit Sie Service Fabric Explorer verwenden können, müssen Sie die PFX-Zertifikatdatei in den Browser importieren. Für die PFX-Datei ist standardmäßig kein Kennwort festgelegt.
 
-Der Standardbrowser in Ubuntu 16.04 ist Mozilla Firefox. Klicken Sie zum Importieren des Zertifikats rechts oben in Firefox auf die Menüschaltfläche und anschließend auf **Einstellungen**. Suchen Sie über das Suchfeld auf der Seite **Einstellungen** nach „Zertifikate“. Klicken Sie auf **Zertifikate anzeigen**, klicken Sie auf die Registerkarte **Ihre Zertifikate**, klicken Sie auf **Importieren**, und befolgen Sie die Anweisungen zum Importieren des Zertifikats.
+Der Standardbrowser in Ubuntu 16.04 ist Mozilla Firefox. Klicken Sie zum Importieren des Zertifikats rechts oben in Firefox auf die Menüschaltfläche und anschließend auf **Einstellungen** . Suchen Sie über das Suchfeld auf der Seite **Einstellungen** nach „Zertifikate“. Klicken Sie auf **Zertifikate anzeigen** , klicken Sie auf die Registerkarte **Ihre Zertifikate** , klicken Sie auf **Importieren** , und befolgen Sie die Anweisungen zum Importieren des Zertifikats.
 
    ![Installieren des Zertifikats in Firefox](./media/service-fabric-quickstart-containers-linux/install-cert-firefox.png)
 
@@ -118,9 +107,9 @@ Der Standardbrowser in Ubuntu 16.04 ist Mozilla Firefox. Klicken Sie zum Importi
     ./install.sh
     ```
 
-3. Navigieren Sie in einem Webbrowser zum Service Fabric Explorer-Endpunkt für Ihren Cluster. Der Endpunkt hat das folgende Format: **https://\<URL Ihres Azure Service Fabric-Clusters>:19080/Explorer**. Beispiel: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
+3. Navigieren Sie in einem Webbrowser zum Service Fabric Explorer-Endpunkt für Ihren Cluster. Der Endpunkt weist das folgende Format auf: **https://\<my-azure-service-fabric-cluster-url>:19080/Explorer** , beispielsweise `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
 
-4. Erweitern Sie den Knoten **Anwendungen**, um zu prüfen, ob nun ein Eintrag für den Voting-Anwendungstyp und die von Ihnen erstellte Instanz vorhanden ist.
+4. Erweitern Sie den Knoten **Anwendungen** , um zu prüfen, ob nun ein Eintrag für den Voting-Anwendungstyp und die von Ihnen erstellte Instanz vorhanden ist.
 
     ![Service Fabric Explorer][sfx]
 
@@ -141,8 +130,8 @@ Bei einem Ausfall sorgt Service Fabric dafür, dass Ihre Containerinstanzen auto
 Führen Sie die folgenden Schritte aus, um für den Front-End-Container ein Failover auszuführen:
 
 1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster. Beispiel: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`.
-2. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/Voting/azurevotefront**, und erweitern Sie den (durch eine GUID dargestellten) Partitionsknoten. Beachten Sie den Knotennamen in der Strukturansicht. Hier werden die Knoten angezeigt, auf denen der Container derzeit ausgeführt wird (beispielsweise `_nodetype_1`).
-3. Erweitern Sie in der Strukturansicht den Knoten **Knoten**. Klicken Sie neben dem Knoten, auf dem der Container ausgeführt wird, auf die Auslassungspunkte.
+2. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/Voting/azurevotefront** , und erweitern Sie den (durch eine GUID dargestellten) Partitionsknoten. Beachten Sie den Knotennamen in der Strukturansicht. Hier werden die Knoten angezeigt, auf denen der Container derzeit ausgeführt wird (beispielsweise `_nodetype_1`).
+3. Erweitern Sie in der Strukturansicht den Knoten **Knoten** . Klicken Sie neben dem Knoten, auf dem der Container ausgeführt wird, auf die Auslassungspunkte.
 4. Wählen Sie **Neu starten** aus, um den Knoten neu zu starten, und bestätigen Sie die Neustartaktion. Der Neustart bewirkt, dass für den Container ein Failover auf einen anderen Knoten im Cluster ausgeführt wird.
 
     ![Knotenansicht in Service Fabric Explorer][sfxquickstartshownodetype]
@@ -160,8 +149,8 @@ Führen Sie die folgenden Schritte aus, um den Web-Front-End-Dienst zu skalieren
 
     Sie können jetzt angeben, dass die Anzahl von Instanzen des Web-Front-End-Diensts skaliert werden soll.
 
-3. Ändern Sie die Anzahl in **2**, und klicken Sie auf **Scale Service** (Dienst skalieren).
-4. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/Voting/azurevotefront**, und erweitern Sie den (durch eine GUID dargestellten) Partitionsknoten.
+3. Ändern Sie die Anzahl in **2** , und klicken Sie auf **Scale Service** (Dienst skalieren).
+4. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/Voting/azurevotefront** , und erweitern Sie den (durch eine GUID dargestellten) Partitionsknoten.
 
     ![Service Fabric Explorer: Dienstskalierung abgeschlossen][containersquickstartscaledone]
 
@@ -189,9 +178,9 @@ az group delete --name $ResourceGroupName
 ```
 
 Nach Abschluss der Clusterverwendung können Sie das Zertifikat aus Ihrem Zertifikatspeicher entfernen. Beispiel:
-- Unter Windows: Verwenden Sie das [MMC-Snap-In „Zertifikate“](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Beim Hinzufügen des Snap-Ins muss **Mein Benutzerkonto** ausgewählt sein. Navigieren Sie zu `Certificates - Current User\Personal\Certificates`, und entfernen Sie das Zertifikat.
+- Unter Windows: Verwenden Sie das [MMC-Snap-In „Zertifikate“](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Beim Hinzufügen des Snap-Ins muss **Mein Benutzerkonto** ausgewählt sein. Navigieren Sie zu `Certificates - Current User\Personal\Certificates`, und entfernen Sie das Zertifikat.
 - Auf einem Macintosh: Verwenden Sie die Keychain-App.
-- Unter Ubuntu: Führen Sie die Schritte aus, die Sie zum Anzeigen von Zertifikaten verwendet haben, und entfernen Sie das Zertifikat.
+- Auf Ubuntu: Führen Sie die Schritte aus, die Sie zum Anzeigen von Zertifikaten verwendet haben, und entfernen Sie das Zertifikat.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

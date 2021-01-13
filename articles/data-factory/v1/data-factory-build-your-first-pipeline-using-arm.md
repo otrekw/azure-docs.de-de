@@ -1,22 +1,22 @@
 ---
-title: Erstellen der ersten Data Factory (Resource Manager-Vorlage) | Microsoft Docs
+title: Erstellen der ersten Data Factory (Resource Manager-Vorlage)
 description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Beispielpipeline mithilfe einer Azure Resource Manager-Vorlage.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: c4ff0f28f4f0058d388e3b2f9c753737fb6ee0d4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: e65039d39bea4063f717709f97b090e465c5e3c4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140503"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508508"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen der ersten Azure Data Factory mit einer Azure Resource Manager-Vorlage
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "70140503"
 > 
  
 > [!NOTE]
-> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Schnellstart: Erstellen einer Data Factory mit Data Factory](../quickstart-create-data-factory-dot-net.md) weiter.
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Schnellstart: Erstellen einer Data Factory und Pipeline mit dem .NET SDK](../quickstart-create-data-factory-dot-net.md) weiter.
 
 In diesem Artikel verwenden Sie eine Azure Resource Manager-Vorlage, um Ihre erste Azure Data Factory zu erstellen. Falls Sie das Tutorial mit anderen Tools/SDKs absolvieren möchten, wählen Sie in der Dropdownliste eine andere Option aus.
 
@@ -44,8 +44,8 @@ Die Pipeline in diesem Tutorial enthält nur eine Aktivität: eine **HDInsight H
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die Schritte zur Erfüllung der **Voraussetzungen** aus.
-* Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) zum Installieren der neuesten Version von Azure PowerShell auf Ihrem Computer.
-* Informationen zu Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md) . 
+* Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/) zum Installieren der neuesten Version von Azure PowerShell auf Ihrem Computer.
+* Informationen zu Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) . 
 
 ## <a name="in-this-tutorial"></a>Dieses Lernprogramm umfasst folgende Punkte
 
@@ -76,7 +76,7 @@ Das Grundgerüst einer Resource Manager-Vorlage zum Definieren einer Data Factor
         {
             "name": "[parameters('dataFactoryName')]",
             "apiVersion": "[variables('apiVersion')]",
-            "type": "Microsoft.DataFactory/datafactories",
+            "type": "Microsoft.DataFactory/factories",
             "location": "westus",
             "resources": [
                 { ... },
@@ -116,7 +116,7 @@ Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialARM.json** im Ordner **
       {
         "name": "[variables('dataFactoryName')]",
         "apiVersion": "2015-10-01",
-        "type": "Microsoft.DataFactory/datafactories",
+        "type": "Microsoft.DataFactory/factories",
         "location": "West US",
         "resources": [
           {
@@ -143,14 +143,14 @@ Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialARM.json** im Ordner **
             ],
             "apiVersion": "2015-10-01",
             "properties": {
-                  "type": "HDInsightOnDemand",
-                  "typeProperties": {
+                "type": "HDInsightOnDemand",
+                "typeProperties": {
                     "version": "3.5",
                     "clusterSize": 1,
                     "timeToLive": "00:05:00",
                     "osType": "Linux",
                     "linkedServiceName": "[variables('azureStorageLinkedServiceName')]"
-                  }
+                }
             }
           },
           {
@@ -338,15 +338,15 @@ Erstellen Sie eine JSON-Datei namens **ADFTutorialARM-Parameters.json** mit Para
 3. Klicken Sie auf dem Blatt **Data Factory** für Ihre Data Factory auf **Diagramm**.
 
      ![Kachel „Diagramm“](./media/data-factory-build-your-first-pipeline-using-arm/DiagramTile.png)
-4. In der **Diagrammansicht**sehen Sie eine Übersicht über die in diesem Tutorial verwendeten Pipelines und Datasets.
+4. In der **Diagrammansicht** sehen Sie eine Übersicht über die in diesem Tutorial verwendeten Pipelines und Datasets.
    
    ![Diagrammansicht](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 
 5. Doppelklicken Sie in der Diagrammansicht auf das Dataset **AzureBlobOutput**. Sie sehen den Slice, der gerade verarbeitet wird.
    
-    ![Datensatz](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
+    ![Screenshot des Datasets „AzureBlobOutput“](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
 6. Wenn die Verarbeitung abgeschlossen ist, wird der Slice mit dem Zustand **Bereit** angezeigt. Die Erstellung eines bedarfsgesteuerten HDInsight-Clusters dauert in der Regel einige Zeit (etwa 20 Minuten). Daher ist damit zu rechnen, dass die Pipeline **etwa 30 Minuten** zum Verarbeiten des Slice benötigt.
    
-    ![Datensatz](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    
+    ![Dataset](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    
 7. Sobald der Slice den Status **Bereit** hat, überprüfen Sie, ob die Ausgabedaten sich in Ihrem Blobspeicher im Ordner **partitioneddata** im Container **adfgetstarted** befinden.  
 
 Unter [Überwachen von Datasets und Pipelines](data-factory-monitor-manage-pipelines.md) finden Sie eine Anleitung zum Überwachen der in diesem Tutorial erstellten Pipeline und Datasets über die Blätter im Azure-Portal.
@@ -367,7 +367,7 @@ Das folgende Beispiel zeigt, wie Sie in der Resource Manager-Vorlage eine Data F
 {
     "name": "[variables('dataFactoryName')]",
     "apiVersion": "2015-10-01",
-    "type": "Microsoft.DataFactory/datafactories",
+    "type": "Microsoft.DataFactory/factories",
     "location": "West US"
 }
 ```
@@ -432,13 +432,14 @@ Der Artikel [Verknüpfte Computedienste](data-factory-compute-linked-services.md
     }
 }
 ```
+
 Beachten Sie folgende Punkte: 
 
 * Die Data Factory erstellt mit dem obigen JSON-Code einen **Linux-basierten** HDInsight-Cluster für Sie. Ausführliche Informationen finden Sie unter [Bedarfsgesteuerter verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . 
 * Anstelle eines bedarfsgesteuerten HDInsight-Clusters könnten Sie **Ihren eigenen HDInsight-Cluster** verwenden. Ausführliche Informationen finden Sie unter [Verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) .
 * Der HDInsight-Cluster erstellt einen **Standardcontainer** im Blobspeicher, den Sie im JSON-Code angegeben haben (**linkedServiceName**). HDInsight löscht diesen Container nicht, wenn der Cluster gelöscht wird. Dieses Verhalten ist beabsichtigt. Durch den bedarfsgesteuerten, mit HDInsight verknüpften Dienst wird jedes Mal ein HDInsight-Cluster erstellt, wenn ein Slice verarbeitet werden muss, es sei denn, ein aktiver Cluster (**timeToLive**) ist vorhanden und wird gelöscht, nachdem die Verarbeitung abgeschlossen ist.
   
-    Wenn mehr Segmente verarbeitet werden, werden in Azure Blob Storage viele Container angezeigt. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Die Namen dieser Container basieren auf dem folgenden Muster: „adf**ihrdatafactoryname**-**nameverknüpfterdienst**-datumuhrzeitstempel“. Verwenden Sie Tools wie den [Microsoft Storage-Explorer](https://storageexplorer.com/), um Container in Azure Blob Storage zu löschen.
+    Wenn mehr Segmente verarbeitet werden, werden in Azure Blob Storage viele Container angezeigt. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Die Namen dieser Container basieren auf dem folgenden Muster: „adf **ihrdatafactoryname**-**nameverknüpfterdienst**-datumuhrzeitstempel“. Verwenden Sie Tools wie den [Microsoft Azure Storage-Explorer](https://storageexplorer.com/), um Container in Ihrem Azure-Blobspeicher zu löschen.
 
 Ausführliche Informationen finden Sie unter [Bedarfsgesteuerter verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) .
 
@@ -525,37 +526,37 @@ Sie definieren eine Pipeline zum Transformieren von Daten, indem Sie Hive-Skript
     "properties": {
         "description": "Pipeline that transforms data using Hive script.",
         "activities": [
-        {
-            "type": "HDInsightHive",
-            "typeProperties": {
-                "scriptPath": "[concat(parameters('blobContainer'), '/', parameters('hiveScriptFolder'), '/', parameters('hiveScriptFile'))]",
-                "scriptLinkedService": "[variables('azureStorageLinkedServiceName')]",
-                "defines": {
-                    "inputtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('inputBlobFolder'))]",
-                    "partitionedtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('outputBlobFolder'))]"
-                }
-            },
-            "inputs": [
             {
-                "name": "[variables('blobInputDatasetName')]"
+                "type": "HDInsightHive",
+                "typeProperties": {
+                    "scriptPath": "[concat(parameters('blobContainer'), '/', parameters('hiveScriptFolder'), '/', parameters('hiveScriptFile'))]",
+                    "scriptLinkedService": "[variables('azureStorageLinkedServiceName')]",
+                    "defines": {
+                        "inputtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('inputBlobFolder'))]",
+                        "partitionedtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('outputBlobFolder'))]"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "[variables('blobInputDatasetName')]"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "[variables('blobOutputDatasetName')]"
+                    }
+                ],
+                "policy": {
+                    "concurrency": 1,
+                    "retry": 3
+                },
+                "scheduler": {
+                    "frequency": "Month",
+                    "interval": 1
+                },
+                "name": "RunSampleHiveActivity",
+                "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
             }
-            ],
-            "outputs": [
-            {
-                "name": "[variables('blobOutputDatasetName')]"
-            }
-            ],
-            "policy": {
-                "concurrency": 1,
-                "retry": 3
-            },
-            "scheduler": {
-                "frequency": "Month",
-                "interval": 1
-            },
-            "name": "RunSampleHiveActivity",
-            "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
-        }
         ],
         "start": "2017-07-01T00:00:00Z",
         "end": "2017-07-02T00:00:00Z",
@@ -598,11 +599,11 @@ Hier ist eine Resource Manager-Beispielvorlage zum Erstellen eines logischen Gat
         {
             "name": "[variables('dataFactoryName')]",
             "apiVersion": "[variables('apiVersion')]",
-            "type": "Microsoft.DataFactory/datafactories",
+            "type": "Microsoft.DataFactory/factories",
             "location": "eastus",
             "resources": [
                 {
-                    "dependsOn": [ "[concat('Microsoft.DataFactory/dataFactories/', variables('dataFactoryName'))]" ],
+                    "dependsOn": [ "[concat('Microsoft.DataFactory/factories/', variables('dataFactoryName'))]" ],
                     "type": "gateways",
                     "apiVersion": "[variables('apiVersion')]",
                     "name": "GatewayUsingARM",
@@ -617,7 +618,7 @@ Hier ist eine Resource Manager-Beispielvorlage zum Erstellen eines logischen Gat
 ```
 Mit dieser Vorlage wird eine Data Factory mit dem Namen „GatewayUsingArmDF“ und dem Gateway mit dem Namen „GatewayUsingARM“ erstellt. 
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 | Thema | BESCHREIBUNG |
 |:--- |:--- |

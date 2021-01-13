@@ -1,28 +1,30 @@
 ---
-title: Überwachen von Azure Media Services-Ereignissen mit Event Grid über das Portal | Microsoft-Dokumentation
+title: Überwachen von Azure Media Services-Ereignissen mit Event Grid über das Portal
 description: In diesem Artikel wird gezeigt, wie Sie ein Abonnement für Event Grid abschließen können, um Azure Media Services-Ereignisse zu überwachen.
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
 keywords: azure media services, streamen, übertragen, live, offline
 ms.service: media-services
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/15/2018
-ms.author: juliako
-ms.openlocfilehash: d4592c93cb7969c45a107d7365a1b9dabf11f412
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 65459dbdf8eaa92525fa20eda158f4beacf58780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60326509"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89294372"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Erstellen und Überwachen von Media Services-Ereignissen mit Event Grid über das Azure-Portal
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Event Grid ist ein Ereignisdienst für die Cloud. Dieser Dienst verwendet [Ereignisabonnements](../../event-grid/concepts.md#event-subscriptions) zum Weiterleiten von Ereignisnachrichten an Abonnenten. Media Services-Ereignisse enthalten alle Informationen, die Sie zur Reaktion auf Änderungen in Ihren Daten benötigen. Sie können ein Media Services-Ereignis daran erkennen, dass die eventType-Eigenschaft mit „Microsoft.Media“ beginnt. Weitere Informationen finden Sie unter [Media Services-Ereignisschemas](media-services-event-schemas.md).
 
@@ -33,7 +35,7 @@ Am Ende sehen Sie, dass die Ereignisdaten an die Web-App gesendet wurden.
 ## <a name="prerequisites"></a>Voraussetzungen 
 
 * Ein aktives Azure-Abonnement
-* Erstellen Sie ein Azure Media Services-Konto, wie in [dieser Schnellstartanleitung](create-account-cli-quickstart.md) beschrieben.
+* Erstellen Sie ein Azure Media Services-Konto, wie in [dieser Schnellstartanleitung](./create-account-howto.md) beschrieben.
 
 ## <a name="create-a-message-endpoint"></a>Erstellen eines Nachrichtenendpunkts
 
@@ -41,7 +43,7 @@ Vor dem Abonnieren der Ereignisse für das Media Services-Konto erstellen wir zu
 
 1. Wählen Sie **Deploy to Azure** (In Azure bereitstellen), um die Lösung für Ihr Abonnement bereitzustellen. Geben Sie im Azure-Portal Werte für die Parameter an.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   [![Abbildung einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
 
 1. Die Bereitstellung kann einige Minuten dauern. Nach erfolgreichem Abschluss der Bereitstellung können Sie Ihre Web-App anzeigen und sich vergewissern, dass sie ausgeführt wird. Navigieren Sie hierzu in einem Webbrowser zu `https://<your-site-name>.azurewebsites.net`.
 

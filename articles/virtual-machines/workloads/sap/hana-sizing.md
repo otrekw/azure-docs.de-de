@@ -3,22 +3,23 @@ title: Festlegen der Größe für SAP HANA in Azure (große Instanzen) | Microso
 description: Festlegen der Größe für SAP HANA in Azure (große Instanzen)
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2540a0f9ea702ff620ccd4b68208cbb2e70aafd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1750f1d61028cb186b02251b551b7a798e1df9d6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101143"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967532"
 ---
 # <a name="sizing"></a>Festlegen der Größe
 

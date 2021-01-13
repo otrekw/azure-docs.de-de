@@ -1,21 +1,21 @@
 ---
 title: Sprachunterstützung – Content Moderator-API
 titleSuffix: Azure Cognitive Services
-description: Dies ist eine Liste der von der Content Moderator-API unterstützten natürlichen Sprachen.
+description: Dies ist eine Liste der von der Azure Cognitive Services Content Moderator-API unterstützten natürlichen Sprachen.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 6c71cefc25296df5a05c19ee84eb4e24ea90aa9d
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.author: pafarley
+ms.openlocfilehash: 043e61f498417b74831cd49f046f78b02e907964
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562772"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84310307"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Sprachunterstützung für Content Moderator-API
 
@@ -29,7 +29,7 @@ ms.locfileid: "69562772"
 | -------------------- |-------------|--------|---------------------|
 | Arabisch (romanisiert)   | Afrikaans   | Arabisch   | Arabisch |
 | Balinesisch | Albanisch | Chinesisch (vereinfacht)    | Dänisch |
-| Bangla | Amharisch | Chinesisch (traditionell)     | Niederländisch |
+| Bengali | Amharisch | Chinesisch (traditionell)     | Niederländisch |
 | Buginesisch | Arabisch | Tschechisch                     | Englisch |
 | Buhid | Armenisch | Dänisch                     | Finnisch |
 | Karisch | Assamesisch | Niederländisch                     | Französisch |

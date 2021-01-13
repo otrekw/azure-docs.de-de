@@ -3,21 +3,21 @@ title: Verwenden von Moderationsaufträgen über die REST-API-Konsole – Conten
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie die Auftragsvorgänge der Überprüfungs-API, um End-to-End-Inhaltsmoderationsaufträge für Bild- und Textinhalt in Azure Content Moderator zu initiieren.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.author: sajagtap
-ms.openlocfilehash: af636deaafc05238c287d095e644588ed8c5f26d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.openlocfilehash: 924c21037a464770fac13c9b45ddcf261ff5a058
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880048"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905151"
 ---
-# <a name="define-and-use-moderation-jobs-rest"></a>Definieren und Verwenden von Moderationsaufträgen (REST)
+# <a name="define-and-use-moderation-jobs-api-console"></a>Definieren und Verwenden von Moderationsaufträgen (API-Konsole)
 
 Ein Moderationsauftrag dient als eine Art Wrapper für die Funktionen der Inhaltsmoderation und von Workflows und Überprüfungen. In dieser Anleitung wird erläutert, wie Sie mithilfe der REST-APIs für Aufträge Inhaltsmoderationsaufträge initiieren und überprüfen können. Nachdem Sie sich mit der Struktur der APIs vertraut gemacht haben, können Sie diese Aufrufe bequem zu jeder REST-kompatiblen Plattform portieren.
 
@@ -28,7 +28,7 @@ Ein Moderationsauftrag dient als eine Art Wrapper für die Funktionen der Inhalt
 
 ## <a name="create-a-job"></a>Erstellen eines Auftrags
 
-Navigieren Sie zum Erstellen eines Moderationsauftrags zur API-Referenzseite, und wählen Sie unter [Job – Create](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) (Auftrag – erstellen) die Schaltfläche für Ihre Schlüsselregion aus (diese finden Sie in der Endpunkt-URL auf der Seite **Anmeldeinformationen** des [Prüfungstools](https://contentmoderator.cognitive.microsoft.com/)). Dadurch wird die API-Konsole gestartet, über die Sie ganz einfach REST-API-Aufrufe erstellen und ausführen können.
+Um einen Moderationsauftrag zu erstellen, wechseln Sie zur API-Referenzseite [Auftrag – Erstellen](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5), und wählen Sie die Schaltfläche für Ihre Abonnementregion aus. Sie können Ihre Region in der Endpunkt-URL auf der Seite **Anmeldeinformationen** des [Prüfungstools](https://contentmoderator.cognitive.microsoft.com/) finden. Dadurch wird die API-Konsole gestartet, über die Sie ganz einfach REST-API-Aufrufe erstellen und ausführen können.
 
 ![Regionsauswahl auf der Seite „Job – Create“ (Auftrag – erstellen)](images/test-drive-job-1.png)
 
@@ -41,7 +41,7 @@ Geben Sie die folgenden Werte zum Erstellen des REST-Aufrufs ein:
 - **ContentId**: Eine benutzerdefinierte Bezeichnerzeichenfolge. Diese Zeichenfolge wird an die API übergeben und durch den Rückruf zurückgegeben. Sie ist nützlich, um interne Bezeichner oder Metadaten mit den Ergebnissen eines Moderationsauftrags zu verknüpfen.
 - **Workflowname:** Der Name des Workflows, den Sie zuvor erstellt haben (oder „default“ für den Standardworkflow).
 - **CallbackEndpoint:** (Optional:) Die URL zum Empfangen von Rückrufinformationen, wenn die Überprüfung abgeschlossen ist.
-- **Ocp-Apim-Subscription-Key**: Ihr Content Moderator-Schlüssel. Diesen finden Sie auf der Registerkarte **Einstellungen** des [Prüfungstools](https://contentmoderator.cognitive.microsoft.com).
+- **Ocp-Apim-Subscription-Key**: Ihr Content Moderator-Schlüssel. Diesen Schlüssel finden Sie auf der Registerkarte **Einstellungen** des [Prüfungstools](https://contentmoderator.cognitive.microsoft.com).
 
 ### <a name="fill-in-the-request-body"></a>Ausfüllen des Anforderungstexts
 
@@ -51,7 +51,7 @@ Der Text des REST-Aufrufs enthält ein Feld: **ContentValue**. Fügen Sie bei de
 
 ### <a name="submit-your-request"></a>Senden der Anforderung
 
-Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** wird eine ID für den Auftrag angezeigt. Kopieren Sie diese ID für die folgenden Schritte.
+Wählen Sie **Send** (Senden) aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus**`200 OK`, und im Feld **Antwortinhalt** wird eine ID für den Auftrag angezeigt. Kopieren Sie diese ID für die folgenden Schritte.
 
 ![Feld „Antwortinhalt“ mit Überprüfungs-ID in der Konsole „Überprüfen – Erstellen“](images/test-drive-job-3.PNG)
 
@@ -61,7 +61,7 @@ Um den Status und Details zu einem ausgeführten oder abgeschlossenen Auftrag ab
 
 ![Regionsauswahl auf der Seite „Job – Get“ (Auftrag – abrufen)](images/test-drive-region.png)
 
-Geben Sie die REST-Aufrufparameter wie im obigen Abschnitt ein. In diesem Schritt haben Sie beim Erstellen des Auftrags **JobId** als eindeutige ID-Zeichenfolge erhalten. Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** wird der Auftrag im JSON-Format wie folgt angezeigt:
+Geben Sie die REST-Aufrufparameter wie im obigen Abschnitt ein. In diesem Schritt haben Sie beim Erstellen des Auftrags **JobId** als eindeutige ID-Zeichenfolge erhalten. Wählen Sie **Send** (Senden) aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus**`200 OK`, und im Feld **Antwortinhalt** wird der Auftrag im JSON-Format wie folgt angezeigt:
 
 ```json
 {  

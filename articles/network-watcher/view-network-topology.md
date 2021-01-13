@@ -3,23 +3,20 @@ title: Anzeigen der Topologie des virtuellen Azure-Netzwerks | Microsoft-Dokumen
 description: Erfahren Sie, wie Sie die Ressourcen in einem virtuellen Netzwerk und die Beziehungen zwischen diesen Ressourcen anzeigen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
-ms.author: kumud
-ms.openlocfilehash: a67f1cca54c89ead9ae7fc46ef0c9fc8c5217c74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64682052"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84737528"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Anzeigen der Topologie eines virtuellen Azure-Netzwerks
 
@@ -29,7 +26,7 @@ Sie können die Topologie mithilfe des [Azure-Portals](#azure-portal), der [Azur
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name = "azure-portal"></a>Topologie anzeigen – Azure-Portal
+## <a name="view-topology---azure-portal"></a><a name = "azure-portal"></a>Topologie anzeigen – Azure-Portal
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, dem die erforderlichen [Berechtigungen](required-rbac-permissions.md) zugewiesen sind.
 2. Wählen Sie links oben im Portal die Option **Alle Dienste** aus.
@@ -48,9 +45,9 @@ Sie können die Topologie mithilfe des [Azure-Portals](#azure-portal), der [Azur
 
 6. Wählen Sie **Topologie herunterladen** aus, um die Abbildung als bearbeitbare Datei im SVG-Format herunterzuladen.
 
-Die im Diagramm dargestellten Ressourcen sind eine Teilmenge der Netzwerkkomponenten im virtuellen Netzwerk. Während eine Netzwerksicherheitsgruppe angezeigt wird, werden die Sicherheitsregeln darin beispielsweise nicht im Diagramm angezeigt. Obwohl dies im Diagramm nicht unterschieden wird, stellen die Linien eine von zwei Beziehungen dar: *Eigenständigkeit* oder *Zuordnung*. Um die vollständige Liste der Ressourcen im virtuellen Netzwerk und den Typ der Beziehung zwischen den Ressourcen anzuzeigen, generieren Sie die Topologie mit [PowerShell](#powershell) oder der [Azure-Befehlszeilenschnittstelle](#azure-cli).
+Die im Diagramm dargestellten Ressourcen sind eine Teilmenge der Netzwerkkomponenten im virtuellen Netzwerk. Während eine Netzwerksicherheitsgruppe angezeigt wird, werden die Sicherheitsregeln darin beispielsweise nicht im Diagramm angezeigt. Obwohl dies im Diagramm nicht unterschieden wird, stellen die Linien eine von zwei Beziehungen dar: *Kapselung* oder *Zugeordnet*. Um die vollständige Liste der Ressourcen im virtuellen Netzwerk und den Typ der Beziehung zwischen den Ressourcen anzuzeigen, generieren Sie die Topologie mit [PowerShell](#powershell) oder der [Azure-Befehlszeilenschnittstelle](#azure-cli).
 
-## <a name = "azure-cli"></a>Topologie anzeigen – Azure-Befehlszeilenschnittstelle
+## <a name="view-topology---azure-cli"></a><a name = "azure-cli"></a>Topologie anzeigen – Azure-Befehlszeilenschnittstelle
 
 Sie können die Befehle in den einzelnen Schritten folgendermaßen ausführen:
 - In Azure Cloud Shell durch Auswählen von **Try It** (Ausprobieren) rechts oben vom jeweiligen Befehl. Azure Cloud Shell ist eine kostenlose interaktive Shell, in der häufig verwendete Azure-Tools vorinstalliert sind und die für die Verwendung mit Ihrem Konto konfiguriert wurde.
@@ -83,7 +80,7 @@ Das verwendete Konto muss über die erforderlichen [Berechtigungen](required-rba
 
    Erfahren Sie mehr über die Beziehungen und [Eigenschaften](#properties) in der zurückgegebenen Ausgabe. Wenn Sie nicht über ein virtuelles Netzwerk verfügen, dessen Topologie Sie anzeigen können, können Sie eines mit dem Beispielskript [Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) erstellen. Um ein Diagramm der Topologie anzuzeigen und als bearbeitbare Datei herunterzuladen, verwenden Sie das [Portal](#azure-portal).
 
-## <a name = "powershell"></a>Topologie anzeigen – PowerShell
+## <a name="view-topology---powershell"></a><a name = "powershell"></a>Topologie anzeigen – PowerShell
 
 Sie können die Befehle in den einzelnen Schritten folgendermaßen ausführen:
 - In Azure Cloud Shell durch Auswählen von **Try It** (Ausprobieren) rechts oben vom jeweiligen Befehl. Azure Cloud Shell ist eine kostenlose interaktive Shell, in der häufig verwendete Azure-Tools vorinstalliert sind und die für die Verwendung mit Ihrem Konto konfiguriert wurde.
@@ -133,19 +130,19 @@ Alle in einer Topologie zurückgegebenen Ressourcen weisen einen der folgenden T
 
 | Beziehungstyp | Beispiel                                                                                                |
 | ---               | ---                                                                                                    |
-| Kapselung       | Ein virtuelles Netzwerk enthält ein Subnetz. Ein Subnetz enthält eine Netzwerkschnittstelle.                            |
+| Containment       | Ein virtuelles Netzwerk enthält ein Subnetz. Ein Subnetz enthält eine Netzwerkschnittstelle.                            |
 | Zugeordnet        | Eine Netzwerkschnittstelle ist einem virtuellen Computer zugeordnet. Eine öffentliche IP-Adresse ist einer Netzwerkschnittstelle zugeordnet. |
 
 ## <a name="properties"></a>Eigenschaften
 
 Alle in einer Topologie zurückgegebenen Ressourcen haben die folgenden Eigenschaften:
 
-- **Name**: Der Name der Ressource
-- **Id:** Der URI der Ressource
-- **Standort**: Die Azure-Region, in der sich die Ressource befindet
-- **Associations:** Eine Liste der Zuordnungen für das referenzierte Objekt. Jede Zuordnung weist die folgenden Eigenschaften auf:
-    - **AssociationType:** Verweist auf die Beziehung zwischen dem untergeordneten und dem übergeordneten Objekt. Gültige Werte sind *Contains* oder *Associated*.
-    - **Name**: Der Name der referenzierten Ressource
+- **Name:** der Name der Ressource
+- **Id:** der URI der Ressource
+- **Location:** die Azure-Region, in der sich die Ressource befindet
+- **Associations:** eine Liste der Zuordnungen für das referenzierte Objekt. Jede Zuordnung weist die folgenden Eigenschaften auf:
+    - **AssociationType:** verweist auf die Beziehung zwischen dem untergeordneten und dem übergeordneten Objekt. Gültige Werte sind *Contains* oder *Associated*.
+    - **Name:** der Name der referenzierten Ressource
     - **ResourceId:** der URI der Ressource, auf die in der Zuordnung verwiesen wird
 
 ## <a name="next-steps"></a>Nächste Schritte

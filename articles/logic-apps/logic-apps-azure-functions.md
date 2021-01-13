@@ -1,20 +1,18 @@
 ---
-title: Hinzufügen und Aufrufen von Azure-Funktionen aus Azure Logic Apps
-description: Hinzufügen und Ausführen von Azure-Funktionen aus Logik-Apps
+title: Hinzufügen und Aufrufen von Azure Functions aus Azure Logic Apps
+description: Aufrufen und Ausführen benutzerdefinierten Codes in Ihren Azure Functions aus automatisierten Aufgaben und Workflows in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 06/04/2019
-ms.reviewer: klam, LADocs
-ms.openlocfilehash: 524b927ec0966199c51cdee93e920d7b847139ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/01/2019
+ms.custom: devx-track-js
+ms.openlocfilehash: 75693c57a8d120aad53a15d03ae4054bac8262af
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66495131"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023056"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Aufrufen von Azure-Funktionen aus Azure Logic Apps
 
@@ -104,7 +102,9 @@ Nachdem Sie nun Ihre Azure-Funktion erstellt haben, können Sie die Schritte zum
 
 ## <a name="create-functions-inside-logic-apps"></a>Erstellen von Funktionen innerhalb von Logik-Apps
 
-Bevor Sie eine Azure-Funktion erstellen können, indem Sie in Ihrer Logik-App im Logik-App-Designer beginnen, müssen Sie zuerst über eine Azure-Funktions-App verfügen. Hierbei handelt es sich um einen Container für Ihre Funktionen. Erstellen Sie zuerst diese Funktionen-App, falls sie noch nicht vorhanden ist. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md).
+Sie können Azure-Funktionen direkt aus dem Workflow Ihrer Logik-App erstellen, indem Sie die integrierte Azure Functions-Aktion im Logik-App-Designer verwenden. Sie können diese Methode jedoch nur für in JavaScript geschriebene Azure-Funktionen verwenden. Für andere Sprachen können Sie Azure Functions-Instanzen auf der Azure Functions-Oberfläche im Azure-Portal erstellen. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md).
+
+Bevor Sie jedoch eine Azure-Funktion erstellen können, müssen Sie bereits über eine Azure-Funktions-App verfügen, die ein Container für Ihre Funktionen ist. Erstellen Sie zuerst diese Funktionen-App, falls sie noch nicht vorhanden ist. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md).
 
 1. Öffnen Sie Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
 
@@ -114,11 +114,11 @@ Bevor Sie eine Azure-Funktion erstellen können, indem Sie in Ihrer Logik-App im
 
    * Bewegen Sie Ihren Mauszeiger zwischen vorhandenen Schritten im Workflow Ihrer Logik-App auf den Pfeil, wählen Sie das Pluszeichen (+) und dann **Aktion hinzufügen** aus.
 
-1. Geben Sie im Suchfeld „azure functions“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Azure-Funktion auswählen – Azure Functions**
+1. Geben Sie im Suchfeld „azure functions“ als Filter ein. Wählen Sie in der Aktionsliste beispielsweise die Aktion **Azure-Funktion wählen** aus.
 
    ![Suchen nach „Azure Functions“](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-1. Wählen Sie in der Liste mit den Funktionen-Apps Ihre Funktionen-App aus. Wählen diese Aktion aus, nachdem die Liste mit den Aktionen geöffnet wurde: **Azure Functions – Neue Funktion erstellen**
+1. Wählen Sie in der Liste mit den Funktionen-Apps Ihre Funktionen-App aus. Wählen diese Aktion aus, nachdem die Liste mit den Aktionen geöffnet wurde: **Erstellen einer neuen Funktion**
 
    ![Auswählen Ihrer Funktionen-App](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
@@ -126,36 +126,36 @@ Bevor Sie eine Azure-Funktion erstellen können, indem Sie in Ihrer Logik-App im
 
    1. Geben Sie im Feld **Funktionsname** einen Namen für Ihre Funktion an.
 
-   1. Fügen Sie im Feld **Code** der Funktionsvorlage Ihren Code hinzu. Binden Sie auch die Antwort und Nutzlast ein, die für Ihre Logik-App zurückgegeben werden soll, nachdem die Ausführung Ihrer Funktion abgeschlossen ist.
+   1. Fügen Sie im Feld **Code** der Funktionsvorlage Ihren Code hinzu. Binden Sie auch die Antwort und Nutzlast ein, die für Ihre Logik-App zurückgegeben werden soll, nachdem die Ausführung Ihrer Funktion abgeschlossen ist. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
-      ![Definieren Ihrer Funktion](./media/logic-apps-azure-functions/function-definition.png)
+   Beispiel:
 
-      Im Code der Vorlage bezieht sich das *`context`-Objekt* auf die Nachricht, die Ihre Logik-App in einem späteren Schritt über das Feld **Anforderungstext** sendet. Verwenden Sie für den Zugriff auf die Eigenschaften des `context`-Objekts aus Ihrer Funktion heraus die folgende Syntax:
+   ![Definieren Ihrer Funktion](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-      `context.body.<property-name>`
+   Im Code der Vorlage bezieht sich das *`context`-Objekt* auf die Nachricht, die Ihre Logik-App in einem späteren Schritt über das Feld **Anforderungstext** sendet. Verwenden Sie für den Zugriff auf die Eigenschaften des `context`-Objekts aus Ihrer Funktion heraus die folgende Syntax:
 
-      Um beispielsweise auf die `content`-Eigenschaft im `context`-Objekt zu verweisen, verwenden Sie diese Syntax: 
+   `context.body.<property-name>`
 
-      `context.body.content`
+   Um beispielsweise auf die `content`-Eigenschaft im `context`-Objekt zu verweisen, verwenden Sie diese Syntax:
 
-      Der Vorlagencode enthält auch eine `input`-Variable, in der der Wert aus dem Parameter `data` gespeichert wird, damit Ihre Funktion Vorgänge an diesem Wert durchführen kann. Innerhalb der JavaScript-Funktionen ist die `data`-Variable außerdem eine Kurzform für `context.body`.
+   `context.body.content`
 
-      > [!NOTE]
-      > Die `body`-Eigenschaft gilt hier für das `context`-Objekt und ist mit dem **Body**-Token aus der Ausgabe einer Aktion nicht identisch, das Sie möglicherweise ebenfalls an Ihre Funktion übergeben.
+   Der Vorlagencode enthält auch eine `input`-Variable, in der der Wert aus dem Parameter `data` gespeichert wird, damit Ihre Funktion Vorgänge an diesem Wert durchführen kann. Innerhalb der JavaScript-Funktionen ist die `data`-Variable außerdem eine Kurzform für `context.body`.
 
-   1. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.
+   > [!NOTE]
+   > Die `body`-Eigenschaft gilt hier für das `context`-Objekt und ist mit dem **Body**-Token aus der Ausgabe einer Aktion nicht identisch, das Sie möglicherweise ebenfalls an Ihre Funktion übergeben.
 
 1. Geben Sie im Feld **Anforderungstext** die Eingabe für Ihre Funktion ein, die als JSON-Objekt (JavaScript Object Notation) formatiert werden muss.
 
-   Diese Eingabe ist das *Kontextobjekt* oder die Nachricht, das bzw. die von Ihrer Logik-App an Ihre Funktion gesendet wird. Wenn Sie in das Feld **Anforderungstext** klicken, wird die Liste mit dem dynamischen Inhalt angezeigt, und Sie können Token für Ausgaben aus vorherigen Schritten auswählen. In diesem Beispiel wird angegeben, dass die Kontextnutzlast die Eigenschaft `content` enthält, die den Wert des Tokens **Von** aus dem E-Mail-Trigger aufweist:
+   Diese Eingabe ist das *Kontextobjekt* oder die Nachricht, das bzw. die von Ihrer Logik-App an Ihre Funktion gesendet wird. Wenn Sie in das Feld **Anforderungstext** klicken, wird die Liste mit dem dynamischen Inhalt angezeigt, und Sie können Token für Ausgaben aus vorherigen Schritten auswählen. In diesem Beispiel wird angegeben, dass die Kontextnutzlast die Eigenschaft `content` enthält, die den Wert des Tokens **Von** aus dem E-Mail-Trigger aufweist.
 
    ![Beispiel „Anforderungstext“ –Nutzlast des Kontextobjekts](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   Hier wird das Kontextobjekt nicht in eine Zeichenfolge umgewandelt, sodass der Inhalt des Objekts der JSON-Nutzlast direkt hinzugefügt wird. Wenn das Kontextobjekt aber kein JSON-Token ist, das eine Zeichenfolge, ein JSON-Objekt oder ein JSON-Array übergibt, wird eine Fehlermeldung angezeigt. Wurde in diesem Beispiel stattdessen das Token **Empfangszeit** verwendet, können Sie das Kontextobjekt in eine Zeichenfolge umwandeln, indem Sie doppelte Anführungszeichen hinzufügen:  
+   Hier wird das Kontextobjekt nicht in eine Zeichenfolge umgewandelt, sodass der Inhalt des Objekts der JSON-Nutzlast direkt hinzugefügt wird. Wenn das Kontextobjekt aber kein JSON-Token ist, das eine Zeichenfolge, ein JSON-Objekt oder ein JSON-Array übergibt, wird eine Fehlermeldung angezeigt. Wurde in diesem Beispiel stattdessen das Token **Empfangszeit** verwendet, können Sie das Kontextobjekt in eine Zeichenfolge umwandeln, indem Sie doppelte Anführungszeichen hinzufügen.
 
    ![Umwandeln eines Objekts in eine Zeichenfolge](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. Um weitere Details wie die zu verwendende Methode, Anforderungskopfzeilen oder Abfrageparameter anzugeben, öffnen Sie die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Optionen aus.
+1. Um weitere Details wie die zu verwendende Methode, Anforderungskopfzeilen, Abfrageparameter oder Authentifizierung anzugeben, öffnen Sie die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Optionen aus. Bei der Authentifizierung unterscheiden sich die Optionen je nach der von Ihnen ausgewählten Funktion. Weitere Informationen finden Sie unter [Aktivieren der Authentifizierung für Azure Functions](#enable-authentication-functions).
 
 <a name="add-function-logic-app"></a>
 
@@ -165,9 +165,9 @@ Zum Aufrufen von vorhandenen Azure-Funktionen aus Ihren Logik-Apps können Sie A
 
 1. Öffnen Sie Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
 
-1. Wählen Sie im Schritt zum Hinzufügen der Funktion **Neuer Schritt** und dann **Aktion hinzufügen** aus.
+1. Wählen Sie im Schritt zum Hinzufügen der Funktion die Option **Neuer Schritt** aus.
 
-1. Geben Sie im Suchfeld „azure functions“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Azure-Funktion auswählen – Azure Functions**
+1. Geben Sie unter **Aktion auswählen** im Suchfeld „azure functions“ als Filter ein. Wählen Sie in der Aktionsliste die Aktion **Azure-Funktion wählen** aus.
 
    ![Suchen nach „Azure Functions“](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
@@ -175,13 +175,13 @@ Zum Aufrufen von vorhandenen Azure-Funktionen aus Ihren Logik-Apps können Sie A
 
    ![Auswählen Ihrer Funktionen-App und Azure-Funktion](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
 
-   Für Funktionen, die über API-Definitionen (Swagger-Beschreibungen) verfügen und [so eingerichtet sind, dass Ihre Logik-App diese Funktionen finden und darauf zugreifen kann](#function-swagger), können Sie **Swagger-Aktionen** auswählen:
+   Für Funktionen, die über API-Definitionen (Swagger-Beschreibungen) verfügen und [so eingerichtet sind, dass Ihre Logik-App diese Funktionen finden und darauf zugreifen kann](#function-swagger), können Sie **Swagger-Aktionen** auswählen.
 
-   ![Auswählen von Funktionen-App, „Swagger-Aktionen“ und Azure-Funktion](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
+   ![Auswählen von Funktions-App, „Swagger-Aktionen“ und Azure-Funktion](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
 1. Geben Sie im Feld **Anforderungstext** die Eingabe für Ihre Funktion ein, die als JSON-Objekt (JavaScript Object Notation) formatiert werden muss.
 
-   Diese Eingabe ist das *Kontextobjekt* oder die Nachricht, das bzw. die von Ihrer Logik-App an Ihre Funktion gesendet wird. Wenn Sie in das Feld **Anforderungstext** klicken, wird die Liste mit dem dynamischen Inhalt angezeigt, und Sie können Token für Ausgaben aus vorherigen Schritten auswählen. In diesem Beispiel wird angegeben, dass die Kontextnutzlast die Eigenschaft `content` enthält, die den Wert des Tokens **Von** aus dem E-Mail-Trigger aufweist:
+   Diese Eingabe ist das *Kontextobjekt* oder die Nachricht, das bzw. die von Ihrer Logik-App an Ihre Funktion gesendet wird. Wenn Sie in das Feld **Anforderungstext** klicken, wird die Liste mit dem dynamischen Inhalt angezeigt, und Sie können Token für Ausgaben aus vorherigen Schritten auswählen. In diesem Beispiel wird angegeben, dass die Kontextnutzlast die Eigenschaft `content` enthält, die den Wert des Tokens **Von** aus dem E-Mail-Trigger aufweist.
 
    ![Beispiel „Anforderungstext“ –Nutzlast des Kontextobjekts](./media/logic-apps-azure-functions/function-request-body-example.png)
 
@@ -189,13 +189,129 @@ Zum Aufrufen von vorhandenen Azure-Funktionen aus Ihren Logik-Apps können Sie A
 
    ![Umwandeln eines Objekts in eine Zeichenfolge](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. Um weitere Details wie die zu verwendende Methode, Anforderungskopfzeilen oder Abfrageparameter anzugeben, öffnen Sie die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Optionen aus.
+1. Um weitere Details wie die zu verwendende Methode, Anforderungskopfzeilen, Abfrageparameter oder Authentifizierung anzugeben, öffnen Sie die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Optionen aus. Bei der Authentifizierung unterscheiden sich die Optionen je nach der von Ihnen ausgewählten Funktion. Weitere Informationen finden Sie unter [Aktivieren der Authentifizierung in Azure-Funktionen](#enable-authentication-functions).
 
 <a name="call-logic-app"></a>
 
 ## <a name="call-logic-apps-from-azure-functions"></a>Aufrufen von Logik-Apps aus Azure Functions
 
 Wenn Sie eine Logik-App aus einer Azure-Funktion auslösen möchten, muss diese App mit einem Trigger starten, der einen aufrufbaren Endpunkt bereitstellt. So können Sie beispielsweise die Logik-App mit dem Trigger **HTTP**, **Anforderung**, **Azure-Warteschlangen** oder **Event Grid** starten. Senden Sie in Ihrer Funktion eine HTTP POST-Anforderung an die URL des Triggers, und binden Sie die Nutzlast ein, die von dieser Logik-App verarbeitet werden soll. Weitere Informationen hierzu finden Sie unter [Aufrufen, Auslösen oder Schachteln von Logik-Apps](../logic-apps/logic-apps-http-endpoint.md).
+
+<a name="enable-authentication-functions"></a>
+
+## <a name="enable-authentication-for-azure-functions"></a>Aktivieren der Authentifizierung für Azure-Funktionen
+
+Um den Zugriff auf andere Ressourcen, die von Azure Active Directory (Azure AD) geschützt werden, ohne Anmeldung oder Bereitstellung von Anmeldeinformationen oder Geheimnissen einfach zu authentifizieren, kann Ihre Logik-App eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) (früher als verwaltete Dienstidentität (Managed Service Identity, MSI) bezeichnet) verwenden. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse angeben oder eine Rotation dafür durchführen müssen. Erfahren Sie mehr zu [Azure-Diensten, die verwaltete Identitäten für die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+
+Wenn Sie Ihre Logik-App so einrichten, dass sie die vom System zugewiesene verwaltete Identität oder eine manuell erstellte benutzerseitig zugewiesene Identität verwendet, können die Azure-Funktionen in Ihrer Logik-App auch dieselbe Identität für die Authentifizierung verwenden. Weitere Informationen zur Unterstützung der Authentifizierung für Azure-Funktionen in Logik-Apps finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+
+Um die verwaltete Identität mit Ihrer Funktion einzurichten und zu verwenden, führen Sie diese Schritte aus:
+
+1. Aktivieren Sie die verwaltete Identität in Ihrer Logik-App, und richten den Zugriff dieser Identität auf die Zielressource ein. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps](../logic-apps/create-managed-service-identity.md).
+
+1. Aktivieren Sie die Authentifizierung in ihrer Azure-Funktion und der Funktions-App, indem Sie folgende Schritte ausführen:
+
+   * [Einrichten der anonymen Authentifizierung in ihrer Funktion](#set-authentication-function-app)
+   * [Einrichten der Azure AD-Authentifizierung in ihrer Funktions-App](#set-azure-ad-authentication)
+
+<a name="set-authentication-function-app"></a>
+
+### <a name="set-up-anonymous-authentication-in-your-function"></a>Einrichten der anonymen Authentifizierung in ihrer Funktion
+
+Um die verwaltete Identität Ihrer Logik-App in Ihrer Azure-Funktion zu verwenden, müssen Sie die Authentifizierungsebene Ihrer Funktion auf „Anonym“ festlegen. Andernfalls löst die Logik-App einen „BadRequest“-Fehler aus.
+
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrer Funktions-App, und wählen Sie sie aus. In diesen Schritten wird „FabrikamFunctionApp“ als Beispiel für eine Funktions-App verwendet.
+
+1. Wählen Sie im Bereich „Funktions-App“ **Plattformfeatures** aus. Wählen Sie unter **Entwicklungstools** die Option **Erweiterte Tools (Kudu)** aus.
+
+   ![Öffnen der erweiterten Tools für Kudu](./media/logic-apps-azure-functions/open-advanced-tools-kudu.png)
+
+1. Wählen Sie in der Titelleiste der Kudu-Website im Menü **Debugging-Konsole** **CMD** aus.
+
+   ![Auswählen der Option „CMD“ im Menü „Debugging-Konsole“](./media/logic-apps-azure-functions/open-debug-console-kudu.png)
+
+1. Wählen Sie auf der angezeigten nächsten Seite **Website** > **wwwroot** > *Ihre Funktion* aus der Ordnerliste aus. In diesen Schritten wird „FabrikamAzureFunction“ als Beispielfunktion verwendet.
+
+   ![Auswählen von „Website“ > „wwwroot“ > Ihre Funktion](./media/logic-apps-azure-functions/select-site-wwwroot-function-folder.png)
+
+1. Öffnet die Datei `function.json` zur Bearbeitung.
+
+   ![Klicken auf „Bearbeiten“ der „function.json“-Datei](./media/logic-apps-azure-functions/edit-function-json-file.png)
+
+1. Überprüfen Sie im Objekt `bindings`, ob die Eigenschaft `authLevel` vorhanden ist. Wenn die Eigenschaft vorhanden ist, setzen Sie den Eigenschaftswert auf `anonymous`. Fügen Sie die Eigenschaft andernfalls hinzu und legen Sie den Wert fest.
+
+   ![Hinzufügen der Eigenschaft „authLevel“ und Festlegen auf „Anonym“](./media/logic-apps-azure-functions/set-authentication-level-function-app.png)
+
+1. Wenn Sie fertig sind, speichern Sie Ihre Einstellungen, und fahren Sie mit den nächsten Abschnitt fort.
+
+<a name="set-azure-ad-authentication"></a>
+
+### <a name="set-up-azure-ad-authentication-for-your-function-app"></a>Einrichten der Azure AD-Authentifizierung für ihre Funktions-App
+
+Suchen Sie diese Werte vor dem Start dieser Aufgabe, und legen Sie sie zur späteren Verwendung zur Seite:
+
+* Die für die vom System zugewiesene Identität generierte Objekt-ID, die Ihre Logik-App darstellt
+
+  * Um diese Objekt-ID zu generieren, müssen [Sie die vom System zugewiesene Identität Ihrer Logik-App aktivieren](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app).
+
+  * Um diese Objekt-ID zu finden, öffnen Sie ansonsten Ihre Logik-App im Logik-App-Designer. Wählen Sie im Menü Ihrer Logik-App unter **Einstellungen** die Optionen **Identität** > **Vom System zugewiesen** aus.
+
+* Die Verzeichnis-ID für Ihren Mandanten in Azure Active Directory (Azure AD)
+
+  Um die Verzeichnis-ID Ihres Mandanten abzurufen, führen Sie den PowerShell-Befehl [`Get-AzureAccount`](/powershell/module/servicemanagement/azure.service/get-azureaccount) aus. Oder gehen Sie im Azure-Portal wie folgt vor:
+
+  1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrer Funktions-App, und wählen Sie sie aus.
+
+  1. Suchen Sie Ihren Azure AD-Mandanten, und wählen Sie ihn aus. In diesen Schritten wird „Fabrikam“ als Beispielmandant verwendet.
+
+  1. Wählen Sie im Menü des Mandanten unter **Verwalten** die Option **Eigenschaften** aus.
+
+  1. Kopieren Sie z. B. die Verzeichnis-ID Ihres Mandanten, und speichern Sie diese für die spätere Verwendung.
+
+     ![Suchen und Kopieren der Verzeichnis-ID des Azure AD-Mandanten](./media/logic-apps-azure-functions/azure-active-directory-tenant-id.png)
+
+* Die Ressourcen-ID der Zielressource, auf die Sie zugreifen möchten
+
+  * Für Informationen dazu, wie Sie diese Ressourcen-IDs finden, lesen Sie [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+
+  > [!IMPORTANT]
+  > Diese Zielressourcen-ID muss genau dem Wert entsprechen, den Azure AD erwartet, einschließlich aller erforderlichen nachgestellten Schrägstriche.
+
+  Diese Ressourcen-ID ist außerdem derselbe Wert, den Sie später in der Eigenschaft **Zielgruppe** verwenden, wenn Sie [Ihre Funktionsaktion so einrichten, dass sie die vom System zugewiesene Identität verwendet](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity).
+
+Jetzt können Sie die Azure AD-Authentifizierung für ihre Funktions-App einrichten.
+
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrer Funktions-App, und wählen Sie sie aus.
+
+1. Wählen Sie im Bereich „Funktions-App“ **Plattformfeatures** aus. Wählen Sie unter **Netzwerk** die Option **Authentifizierung/Autorisierung** aus.
+
+   ![Anzeigen von Authentifizierung und Autorisierung](./media/logic-apps-azure-functions/view-authentication-authorization-settings.png)
+
+1. Ändern Sie die Einstellung **App Service-Authentifizierung** in **Ein**. Wählen Sie in der Liste **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** die Option **Mit Azure Active Directory anmelden** aus. Wählen Sie unter **Authentifizierungsanbieter** die Option **Azure Active Directory** aus.
+
+   ![Aktivieren der Authentifizierung mit Azure AD](./media/logic-apps-azure-functions/turn-on-authentication-azure-active-directory.png)
+
+1. Führen Sie im Bereich **Azure Active Directory-Einstellungen** die folgenden Schritte aus:
+
+   1. Legen Sie den **Verwaltungsmodus** auf **Erweitert** fest.
+
+   1. Geben Sie unter **Client-ID** die Objekt-ID für die vom System zugewiesene Identität Ihrer Logik-App ein.
+
+   1. Geben Sie in der Eigenschaft **Aussteller-URL** die URL `https://sts.windows.net/` ein, und fügen Sie die Verzeichnis-ID Ihres Azure AD-Mandanten an.
+
+      `https://sts.windows.net/<Azure-AD-tenant-directory-ID>`
+
+   1. Geben Sie in der Eigenschaft **Zulässige Tokenzielgruppe** die Ressourcen-ID der Zielressource ein, auf die Sie zugreifen möchten.
+
+      Diese Ressourcen-ID ist derselbe Wert, den Sie später in der Eigenschaft **Zielgruppe** verwenden, wenn Sie [Ihre Funktionsaktion so einrichten, dass sie die vom System zugewiesene Identität verwendet](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity).
+
+   An dieser Stelle sieht Ihre Version in etwa wie in diesem Beispiel aus:
+
+   ![Azure Active Directory-Authentifizierungseinstellungen](./media/logic-apps-azure-functions/azure-active-directory-authentication-settings.png)
+
+1. Wenn Sie fertig sind, wählen Sie **OK**.
+
+1. Kehren Sie zum Logik-App-Designer zurück, und führen Sie die [Schritte zum Authentifizieren des Zugriffs mit der verwalteten Identität](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity) aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

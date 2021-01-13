@@ -1,25 +1,22 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Mozy Enterprise | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Mozy Enterprise | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Mozy Enterprise konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 489b5e62-85c2-45c9-8766-326632d48114
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 25e223fc9e8222441e70fefb3c21f951b0ba06c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97294bdd088f50a46786c3568f4230706f750c4c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096617"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Tutorial: Azure Active Directory-Integration mit Mozy Enterprise
 
@@ -30,7 +27,7 @@ Die Integration von Mozy Enterprise in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Mozy Enterprise anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -129,15 +126,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Mozy En
 
 2. Klicken Sie im Abschnitt **Konfiguration** auf **Authentication Policy** (Authentifizierungsrichtlinie).
    
-    ![Authentifizierungsrichtlinie](./media/mozy-enterprise-tutorial/ic777314.png "Authentifizierungsrichtlinie")
+    ![Screenshot: Auswahl von „Authentication Policy“ (Authentifizierungsrichtlinie) unter „Configuration“ (Konfiguration)](./media/mozy-enterprise-tutorial/ic777314.png "Authentifizierungsrichtlinie")
 
 3. Führen Sie im Abschnitt **Authentifizierungsrichtlinie** die folgenden Schritte aus:
    
-    ![Authentifizierungsrichtlinie](./media/mozy-enterprise-tutorial/ic777315.png "Authentifizierungsrichtlinie")
+    ![Screenshot: Abschnitt „Authentication Policy“ (Authentifizierungsrichtlinie), in dem Sie die beschriebenen Werte eingeben können](./media/mozy-enterprise-tutorial/ic777315.png "Authentifizierungsrichtlinie")
    
     a. Wählen Sie für **Directory Service** (Verzeichnisdienst) die Option **Anbieter** aus.
    
-    b. Wählen Sie **LDAP-Push verwenden**aus.
+    b. Wählen Sie **LDAP-Push verwenden** aus.
    
     c. Klicken Sie auf die Registerkarte **SAML-Authentifizierung** .
    
@@ -147,7 +144,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Mozy En
    
     f. Öffnen Sie das heruntergeladene Base64-codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie anschließend das gesamte Zertifikat in das Textfeld **SAML-Zertifikat** ein.
    
-    g. Wählen Sie **SSO für Administratoren zur Anmeldung mit den Netzwerkanmeldeinformationen aktivieren**aus.
+    g. Wählen Sie **SSO für Administratoren zur Anmeldung mit den Netzwerkanmeldeinformationen aktivieren** aus.
    
     h. Klicken Sie auf **Änderungen speichern**.
 
@@ -174,7 +171,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -207,7 +204,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 Damit sich Azure AD-Benutzer bei Mozy Enterprise anmelden können, müssen sie in Mozy Enterprise bereitgestellt werden. Im Fall von Mozy Enterprise ist die Bereitstellung eine manuelle Aufgabe.
 
 >[!NOTE]
->Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Mozy Enterprise-Benutzerkonten oder mithilfe der von Mozy Enterprise bereitgestellten APIs erstellen.
+>Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von Mozy Enterprise-Benutzerkonten oder mit den APIs von Mozy Enterprise bereitstellen.
 
 **Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:**
 
@@ -222,7 +219,7 @@ Damit sich Azure AD-Benutzer bei Mozy Enterprise anmelden können, müssen sie i
     
 3. Führen Sie im Dialogfeld „Neuer Benutzer“ die folgenden Schritte aus:
    
-    ![Benutzer hinzufügen](./media/mozy-enterprise-tutorial/ic777318.png "Benutzer hinzufügen")
+    ![Add Users (Benutzer hinzufügen)](./media/mozy-enterprise-tutorial/ic777318.png "Benutzer hinzufügen")
    
     a. Wählen Sie in der Liste **Gruppe auswählen** eine Gruppe aus.
    
@@ -232,7 +229,7 @@ Damit sich Azure AD-Benutzer bei Mozy Enterprise anmelden können, müssen sie i
    
     d. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse des Azure AD-Benutzers ein.
    
-    e. Wählen Sie **E-Mail mit Anweisungen an Benutzer senden**aus.
+    e. Wählen Sie **E-Mail mit Anweisungen an Benutzer senden** aus.
    
     f. Klicken Sie auf **Benutzer hinzufügen**.
 
@@ -243,13 +240,12 @@ Damit sich Azure AD-Benutzer bei Mozy Enterprise anmelden können, müssen sie i
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Mozy Enterprise“ klicken, sollten Sie automatisch bei der Mozy Enterprise-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Mozy Enterprise“ klicken, sollten Sie automatisch bei der Mozy Enterprise-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

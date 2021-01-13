@@ -3,7 +3,7 @@ title: Funktionsweise der Zwischenspeicherung | Microsoft-Dokumentation
 description: Unter Zwischenspeichern versteht man das lokale Speichern von Daten, um im Fall einer erneuten Anforderung dieser Daten schneller darauf zugreifen zu können.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: magattus
-ms.openlocfilehash: 92d93fbf9fa2f8df15acb62802d7ac53db836dc1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: allensu
+ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593845"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010162"
 ---
 # <a name="how-caching-works"></a>Funktionsweise der Zwischenspeicherung
 
@@ -65,7 +65,7 @@ Zum Definieren der Cacheaktualität können zwei Header verwendet werden: `Cache
 ## <a name="cache-directive-headers"></a>Header mit Cacheanweisungen
 
 > [!IMPORTANT]
-> Standardmäßig ignoriert ein für die DSA optimierter Azure CDN-Endpunkt Header mit Cacheanweisungen und umgeht die Zwischenspeicherung. Für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** können Sie die Behandlung dieser Header durch einen Azure CDN-Endpunkt anpassen, indem Sie [CDN-Cacheregeln](cdn-caching-rules.md) verwenden, um die Zwischenspeicherung zu aktivieren. Nur bei **Azure CDN Premium von Verizon**-Profilen verwenden Sie die [Regel-Engine](cdn-rules-engine.md), um die Zwischenspeicherung zu aktivieren.
+> Standardmäßig ignoriert ein für die DSA optimierter Azure CDN-Endpunkt Header mit Cacheanweisungen und umgeht die Zwischenspeicherung. Für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** können Sie die Behandlung dieser Header durch einen Azure CDN-Endpunkt anpassen, indem Sie [CDN-Cacheregeln](cdn-caching-rules.md) verwenden, um die Zwischenspeicherung zu aktivieren. Nur bei **Azure CDN Premium von Verizon**-Profilen verwenden Sie die [Regel-Engine](./cdn-verizon-premium-rules-engine.md), um die Zwischenspeicherung zu aktivieren.
 
 Azure CDN unterstützt die folgenden HTTP-Header mit Cacheanweisungen, die die Cachedauer und die -freigabe definieren.
 
@@ -112,11 +112,11 @@ Wenn der Cache veraltet ist, werden Validierungssteuerelemente des HTTP-Caches v
 
 Nicht alle Ressourcen können zwischengespeichert werden. Die folgende Tabelle zeigt, welche Ressourcen abhängig von der Art der HTTP-Antwort zwischengespeichert werden können. Mit HTTP-Antworten bereitgestellte Ressourcen, die nicht alle Bedingungen erfüllen, können nicht zwischengespeichert werden. Nur bei **Azure CDN Premium von Verizon** können Sie mithilfe der Regel-Engine einige dieser Bedingungen anpassen.
 
-|                   | Azure CDN von Microsoft          | Azure CDN von Verizon | Azure CDN von Akamai        |
-|-------------------|-----------------------------------|------------------------|------------------------------|
-| HTTP-Statuscodes | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
-| HTTP-Methoden      | GET, HEAD                         | GET                    | GET                          |
-| Dateigrößenbeschränkungen  | 300 GB                            | 300 GB                 | – Optimierung der allgemeinen Webbereitstellung: 1,8 GB<br />– Medienstreaming-Optimierungen: 1,8 GB<br />– Optimierung großer Dateien: 150 GB |
+|                       | Azure CDN von Microsoft          | Azure CDN von Verizon | Azure CDN von Akamai        |
+|-----------------------|-----------------------------------|------------------------|------------------------------|
+| **HTTP-Statuscodes (Azure Cognitive Search)** | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
+| **HTTP-Methoden**      | GET, HEAD                         | GET                    | GET                          |
+| **Dateigrößenbeschränkungen**  | 300 GB                            | 300 GB                 | – Optimierung der allgemeinen Webbereitstellung: 1,8 GB<br />– Medienstreaming-Optimierungen: 1,8 GB<br />– Optimierung großer Dateien: 150 GB |
 
 Damit das Zwischenspeichern von **Azure CDN Standard von Microsoft** bei einer Ressource funktioniert, muss der Ursprungsserver HEAD- und GET-HTTP-Anforderungen unterstützen, und die Inhaltslängenwerte müssen für alle HEAD- und GET-HTTP-Antworten für die Ressource identisch sein. Bei einer HEAD-Anforderung muss der Ursprungsserver die HEAD-Anforderung unterstützen und mit den gleichen Headern antworten wie beim Empfang einer GET-Anforderung.
 
@@ -137,6 +137,3 @@ In der folgenden Tabelle wird das Standardverhalten beim Zwischenspeichern bei d
 
 - Informationen zum Anpassen und Überschreiben des Standardverhaltens beim Zwischenspeichern im CDN anhand von Cacheregeln finden Sie unter [Steuern des Verhaltens beim Zwischenspeichern im Azure CDN mit Cacheregeln](cdn-caching-rules.md). 
 - Weitere Informationen zur Steuerung des Verhaltens beim Zwischenspeichern mithilfe von Abfragezeichenfolgen finden Sie unter [Steuern des Azure Content Delivery Network-Zwischenspeicherverhaltens mit Abfragezeichenfolgen](cdn-query-string.md).
-
-
-

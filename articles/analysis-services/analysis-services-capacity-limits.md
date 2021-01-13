@@ -1,19 +1,18 @@
 ---
 title: Grenzwerte von Azure Analysis Services-Ressourcen und -Objekten | Microsoft-Dokumentation
-description: Beschreibt die Grenzwerte von Azure Analysis Services-Ressourcen und -Objekten.
+description: Dieser Artikel beschreibt Ressourcen- und Objekteinschränkungen für einen Azure Analysis Services-Server.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 40a5b68a12724f2574af19bb10c276c54c5afba0
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: c2caab4e449f4299d00fff14b697887ec00f35e6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997587"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83697496"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Grenzwerte von Azure Analysis Services-Ressourcen und -Objekten
 
@@ -29,7 +28,7 @@ Hierbei handelt um theoretische Grenzwerte. Die Leistung wird bei geringeren Wer
 
 |Object|Maximale Größe/Anzahl|  
 |------------|----------------------------|  
-|Datenbanken in einer Instanz|16.000|  
+|Datenbank in einer Instanz|16.000|  
 |Kombinierte Anzahl an Tabellen und Spalten in einer Datenbank|16.000|  
 |Zeilen in einer Tabelle|Unbegrenzt<br /><br /> **Warnung:** Mit der Einschränkung, dass keine einzelne Spalte in der Tabelle mehr als 1.999.999.999.999.997 verschiedene Werte haben kann.|  
 |Hierarchien in einer Tabelle|15.999|  
@@ -38,7 +37,7 @@ Hierbei handelt um theoretische Grenzwerte. Die Leistung wird bei geringeren Wer
 |Schlüsselspalten in allen Tabellen|15.999|  
 |Messungen in Tabellen|2^31-1 = 2.147483.647|  
 |Von einer Abfrage zurückgegebene Zellen|2^31-1 = 2.147483.647|  
-|Datensatzgröße der Quellabfrage|64 K|  
+|Datensatzgröße in der Quellabfrage|64 K|  
 |Länge des Objektnamens|512 Zeichen|  
 
 

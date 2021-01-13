@@ -5,46 +5,40 @@ services: cdn
 author: SyntaxC4
 ms.service: azure-cdn
 ms.topic: include
-ms.date: 05/24/2018
+ms.date: 04/30/2020
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: 8aa6cb3f10b86a6821cd93190ecc2135508739cb
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: d73a8d743a948cbd94a3af81fe2e77c45c0eeb67
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593984"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "82996313"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Erstellen eines neuen CDN-Profils
 
 Ein CDN-Profil ist ein Container für CDN-Endpunkte und gibt einen Tarif an.
 
-1. Klicken Sie links oben im Azure-Portal auf **Ressource erstellen**. 
-    
-    Der Bereich **Neu** wird angezeigt.
+1. Wählen Sie im Azure-Portal die Option **Ressource erstellen** aus (links oben). Der Bereich **Neu** wird angezeigt.
    
-2. Klicken Sie auf **Web + Mobil** und anschließend auf **CDN**.
+1. Suchen Sie nach **CDN**, und wählen Sie diese Option und dann **Erstellen** aus:
    
     ![Klicken auf die Ressource „CDN“](./media/cdn-create-profile/cdn-new-resource.png)
 
     Der Bereich **CDN-Profil** wird angezeigt.
 
-3. Verwenden Sie für die CDN-Profileinstellungen die Werte aus der folgenden Tabelle:
+1. Geben Sie die folgenden Werte ein:
    
     | Einstellung  | Wert |
     | -------- | ----- |
-    | **Name** | Geben Sie *my-cdn-profile-123* als Profilname ein. Dieser Name muss global eindeutig sein. Sollte er bereits verwendet werden, können Sie einen anderen Namen eingeben. |
+    | **Name** | Geben Sie *cdn-profile-123* als Profilnamen ein. Dieser Name muss global eindeutig sein. Wenn er bereits verwendet wird, müssen Sie einen anderen Namen eingeben. |
     | **Abonnement** | Wählen Sie in der Dropdownliste ein Azure-Abonnement aus. |
-    | **Ressourcengruppe** | Klicken Sie auf **Neu erstellen**, und geben Sie *my-resource-group-123* als Ressourcengruppennamen ein. Sollte er bereits verwendet werden, können Sie die Option **Vorhandenes Element verwenden** und anschließend **my-resource-group-123** in der Dropdownliste auswählen. | 
-    | **Ressourcengruppenstandort** | Wählen Sie in der Dropdownliste die Option **USA, Mitte** aus. |
-    | **Preisstufe** | Wählen Sie in der Dropdownliste die Option **Verizon Standard** aus. |
+    | **Ressourcengruppe** | Wählen Sie **Neu erstellen** aus, und geben Sie *CDNQuickstart-rg* als Namen für Ihre Ressourcengruppe ein. Wählen Sie alternativ **Vorhandene verwenden** und dann *CDNQuickstart-rg* aus, falls die Gruppe bereits vorhanden ist. | 
+    | **Ressourcengruppenstandort** | Wählen Sie in der Dropdownliste einen Standort in Ihrer Nähe aus. |
+    | **Preisstufe** | Wählen Sie in der Dropdownliste eine **Akamai Standard**-Option aus. (Die Bereitstellungsdauer für den Akamai-Tarif beträgt ungefähr eine Minute. Für den Microsoft-Tarif werden ca. zehn Minuten benötigt, und für die Verizon-Tarife ca. 90 Minuten.) |
     | **Jetzt neuen CDN-Endpunkt erstellen** | Lassen Sie das Kontrollkästchen deaktiviert. |  
    
     ![Neues CDN-Profil](./media/cdn-create-profile/cdn-new-profile.png)
 
-4. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, um das erstellte Profil in Ihrem Dashboard zu speichern.
-    
-5. Wählen Sie **Erstellen**, um das Profil zu erstellen. 
-
-    Bei Profilen vom Typ **Azure CDN Standard von Microsoft** ist die Profilerstellung in der Regel in zwei Stunden abgeschlossen. 
+1. Wählen Sie **Erstellen**, um das Profil zu erstellen.
 

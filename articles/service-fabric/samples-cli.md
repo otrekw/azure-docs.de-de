@@ -1,26 +1,15 @@
 ---
 title: Beispiele für die Azure CLI (az) und die Azure Service Fabric CLI (sfctl)
-description: Beispiele für die Azure CLI (az) und die Azure Service Fabric CLI (sfctl)
-services: service-fabric
-documentationcenter: service-fabric
-author: athinanthny
-manager: chackdan
-editor: ''
-tags: ''
-ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
-ms.service: service-fabric
+description: Hier finden Sie Beispiele der Azure-Befehlszeilenschnittstelle (az) und der Azure Service Fabric-Befehlszeilenschnittstelle (sfctl) zum Verwalten von Clustern, Anwendungen und Diensten.
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: service-fabric
 ms.date: 04/09/2018
-ms.author: atsenthi
-ms.custom: mvc
-ms.openlocfilehash: 7057b4c06dfb69cdcc52e0dda7a2f746be263d56
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 12a48c525d1458b2d920f6a25d91d67e58749a96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035395"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87502425"
 ---
 # <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Beispiele für die Azure CLI (az) und die Azure Service Fabric CLI (sfctl)
 
@@ -28,7 +17,7 @@ Die folgende Tabelle enthält Links zu Beispielen für die Verwaltung von Servic
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-| | |
+| Beispiel | BESCHREIBUNG |
 |-|-|
 | **Erstellen des Clusters** (mit der Azure CLI)||
 | [Create a secure Linux cluster (Erstellen eines sicheren Linux-Clusters)](./scripts/cli-create-cluster.md)| Erstellt einen Azure Service Fabric-Cluster. |

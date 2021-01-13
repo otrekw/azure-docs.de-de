@@ -1,155 +1,187 @@
 ---
-title: Transformieren von Daten mithilfe von Databricks in Azure Data Factory | Microsoft-Dokumentation
+title: Transformation mit Azure Databricks
 description: Sie erfahren, wie in Azure Data Factory eine Lösungsvorlage zum Transformieren von Daten mithilfe eines Databricks-Notebooks verwendet wird.
 services: data-factory
-documentationcenter: ''
+ms.author: abnarain
 author: nabhishek
-manager: craigg
+ms.reviewer: douglasl
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/10/2018
-ms.author: abnarain
-ms.reviewer: douglasl
-ms.openlocfilehash: 562ce675acc43002ce468d60f8a8c412410be86c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: seo-lt-2019
+ms.date: 04/27/2020
+ms.openlocfilehash: 1c20508d27d03c00a6842979731fb905bbaa9def
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60395228"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461241"
 ---
-# <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Transformieren von Daten mithilfe von Databricks in Azure Data Factory
+# <a name="transformation-with-azure-databricks"></a>Transformation mit Azure Databricks
 
-In diesem Tutorial erstellen Sie in Data Factory eine End-to-End-Pipeline, welche die Aktivitäten **Nachschlagen**, **Kopieren** und **Databricks-Notebook** enthält.
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
--   Mit der **Nachschlagen**- oder GetMetadata-Aktivität wird sichergestellt, dass das Quelldataset für die nachgeschaltete Nutzung bereit ist, bevor der Kopier- und Analyseauftrag ausgelöst wird.
+In diesem Tutorial erstellen Sie in Azure Data Factory eine End-to-End-Pipeline, die die Aktivitäten **Validierung**, **Daten kopieren** und **Notebook** enthält.
 
--   Mit der **Kopieraktivität** wird die Quelldatei/das Quelldataset in den Senkenspeicher kopiert. Der Senkenspeicher wird als DBFS im Databricks-Notebook bereitgestellt, damit das Dataset direkt von Spark genutzt werden kann.
+- Die **Validierung** stellt sicher, dass das Quelldataset für die nachgeschaltete Nutzung bereit ist, bevor der Kopier- und Analyseauftrag ausgelöst wird.
 
--   Die **Databricks-Notebook-Aktivität** löst das Databricks-Notebook aus, welches das Datasets transformiert und es dann einem verarbeiteten Ordner/SQL-DW hinzufügt.
+- Mit **Daten kopieren** wird das Quelldataset im Senkenspeicher dupliziert, der im Azure Databricks-Notebook als DBFS eingebunden wird. Auf diese Weise kann das Dataset direkt von Spark genutzt werden.
 
-Um diese Vorlage einfach zu halten, wird damit kein geplanter Trigger erstellt. Sie können diese Funktion bei Bedarf hinzufügen.
+- Durch **Notebook** wird das Databricks-Notebook ausgelöst, das das Dataset transformiert. Außerdem wird das Dataset einem verarbeiteten Ordner oder Azure Synapse Analytics hinzugefügt.
 
-![1](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
+Der Einfachheit halber wird mit der Vorlage in diesem Tutorial kein geplanter Trigger erstellt. Sie können bei Bedarf einen solchen hinzufügen.
+
+![Diagramm der Pipeline](media/solution-template-Databricks-notebook/pipeline-example.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1.  Erstellen Sie ein **Blobspeicherkonto** und einen Container namens `sinkdata`, der als **Senke** verwendet wird. Notieren Sie den **Namen des Speicherkontos**, den **Containernamen** und den **Zugriffsschlüssel**, da später in der Vorlage darauf verwiesen wird.
+- Ein Azure Blob Storage-Konto mit einem Container mit dem Namen `sinkdata`, der als Senke verwendet werden soll.
 
-2.  Vergewissern Sie sich, dass Sie einen **Azure Databricks-Arbeitsbereich** haben, oder erstellen Sie einen neuen.
+  Notieren Sie sich den Speicherkontonamen, den Containernamen und den Zugriffsschlüssel. Sie benötigen diese Werte später in der Vorlage.
 
-1.  **Importieren Sie das Notebook für ETL**. Importieren Sie das folgende Transformations-Notebook in den Databricks-Arbeitsbereich. (Es muss sich nicht am gleichen Speicherort wie unten befinden, merken Sie sich aber den verwendeten Pfad für später.) Importieren Sie das Notebook aus der folgenden URL, indem Sie diese URL in das URL-Feld eingeben: `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`. Wählen Sie **Importieren** aus.
+- Einen Azure Databricks-Arbeitsbereich.
 
-    ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)
+## <a name="import-a-notebook-for-transformation"></a>Importieren eines Notebooks für die Transformation
 
-    ![3](media/solution-template-Databricks-notebook/Databricks-tutorial-image03.png)  
+So importieren Sie ein Notebook für die **Transformation** in den Databricks-Arbeitsbereich:
 
-1.  Jetzt aktualisieren wir das **Transformations**-Notebook mit den **Informationen für Ihre Speicherverbindung** (Name und Zugriffsschlüssel). Ersetzen Sie **Befehl 5** im importierten Notebook oben durch den folgenden Codeausschnitt, nachdem Sie die hervorgehobenen Werte ersetzt haben. Stellen Sie sicher, dass es sich bei diesem Konto um das zuvor erstellte Speicherkonto handelt und dass es den Container `sinkdata` enthält.
+1. Melden Sie sich bei Ihrem Azure Databricks-Arbeitsbereich an, und wählen Sie dann **Importieren** aus.
+       ![Menübefehl zum Importieren eines Arbeitsbereichs](media/solution-template-Databricks-notebook/import-notebook.png) Der Pfad Ihres Arbeitsbereichs kann sich von dem dargestellten unterscheiden, merken Sie sich ihn jedoch für später.
+1. Wählen Sie **Importieren aus: URL**. Geben Sie im Textfeld `https://adflabstaging1.blob.core.windows.net/share/Transformations.html` ein.
+
+   ![Auswahl zum Importieren eines Notebooks](media/solution-template-Databricks-notebook/import-from-url.png)
+
+1. Jetzt aktualisieren wir das Notebook für die **Transformation** mit den Speicherverbindungsinformationen.
+
+   Wechseln Sie im importierten Notebook zu **Befehl 5**, wie im folgenden Codeausschnitt gezeigt.
+
+   - Ersetzen Sie `<storage name>` und `<access key>` durch Ihre eigenen Speicherverbindungsinformationen.
+   - Verwenden Sie das Speicherkonto mit dem Container `sinkdata`.
 
     ```python
-    # Supply storageName and accessKey values  
-    storageName = "<storage name>"  
-    accessKey = "<access key>"  
+    # Supply storageName and accessKey values  
+    storageName = "<storage name>"  
+    accessKey = "<access key>"  
 
-    try:  
-      dbutils.fs.mount(  
-        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
-        mount_point = "/mnt/Data Factorydata",  
-        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
+    try:  
+      dbutils.fs.mount(  
+        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
+        mount_point = "/mnt/Data Factorydata",  
+        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
 
-    except Exception as e:  
-      # The error message has a long stack track. This code tries to print just the relevant line indicating what failed.
+    except Exception as e:  
+      # The error message has a long stack track. This code tries to print just the relevant line indicating what failed.
 
-    import re
-    result = re.findall(r"\^\s\*Caused by:\s*\S+:\s\*(.*)\$", e.message, flags=re.MULTILINE)
-    if result:
-      print result[-1] \# Print only the relevant error message
-    else:  
-      print e \# Otherwise print the whole stack trace.  
+    import re
+    result = re.findall(r"\^\s\*Caused by:\s*\S+:\s\*(.*)\$", e.message, flags=re.MULTILINE)
+    if result:
+      print result[-1] \# Print only the relevant error message
+    else:  
+      print e \# Otherwise print the whole stack trace.  
     ```
 
-1.  Generieren Sie ein **Databricks Zugriffstoken**, damit Data Factory auf Databricks zugreifen kann. **Speichern Sie das Zugriffstoken** für die spätere Verwendung bei der Erstellung eines mit Databricks verknüpften Diensts, der in etwa folgendermaßen aussieht: dapi32db32cbb4w6eee18b7d87e45exxxxxx.
+1. Generieren Sie ein **Databricks Zugriffstoken**, damit Data Factory auf Databricks zugreifen kann.
+   1. Wählen Sie in Ihrem Databricks-Arbeitsbereich in der oberen rechten Ecke das Symbol für Ihr Benutzerprofil aus.
+   1. Wählen Sie **Benutzereinstellungen** aus.
+    ![Menübefehl für Benutzereinstellungen](media/solution-template-Databricks-notebook/user-setting.png)
+   1. Wählen Sie auf der Registerkarte **Zugriffstoken** die Option **Neues Token generieren** aus.
+   1. Wählen Sie **Generieren** aus.
 
-    ![4](media/solution-template-Databricks-notebook/Databricks-tutorial-image04.png)
+    ![Schaltfläche „Generieren“](media/solution-template-Databricks-notebook/generate-new-token.png)
 
-    ![5](media/solution-template-Databricks-notebook/Databricks-tutorial-image05.png)
+   *Speichern Sie das Zugriffstoken* für die spätere Verwendung beim Erstellen eines verknüpften Databricks-Diensts. Das Zugriffstoken lautet ungefähr `dapi32db32cbb4w6eee18b7d87e45exxxxxx`.
 
-## <a name="create-linked-services-and-datasets"></a>Erstellen von verknüpfte Diensten und Datasets
+## <a name="how-to-use-this-template"></a>So verwenden Sie diese Vorlage
 
-1.  Erstellen Sie neue **verknüpfte Dienste** auf der Data Factory-Benutzeroberfläche, indem Sie zu *Verbindungen > Verknüpfte Dienste + neu* wechseln.
+1. Wechseln Sie zur Vorlage **Transformation mit Azure Databricks**, und erstellen Sie neue verknüpfte Dienste für die folgenden Verbindungen.
 
-    1.  **Quelle**: für den Zugriff auf Quelldaten. Für dieses Beispiel können Sie den öffentlichen Blobspeicher mit den Quelldateien verwenden.
+   ![Einstellung für Verbindungen](media/solution-template-Databricks-notebook/connections-preview.png)
 
-        Wählen Sie **Blob Storage**, und verwenden Sie den folgenden **SAS-URI** zum Herstellen der Verbindung mit dem Quellspeicher (schreibgeschützter Zugriff).
+    - **Quellblobverbindung**: Für den Zugriff auf die Quelldatenbank.
 
-        `https://storagewithdata.blob.core.windows.net/?sv=2017-11-09&ss=b&srt=sco&sp=rl&se=2019-12-31T21:40:53Z&st=2018-10-24T13:40:53Z&spr=https&sig=K8nRio7c4xMLnUV0wWVAmqr5H4P3JDwBaG9HCevI7kU%3D`
+       Für diese Übung können Sie den öffentlichen Blobspeicher verwenden, der die Quelldateien enthält. Der folgende Screenshot dient als Referenz für die Konfiguration. Verwenden Sie die folgende **SAS-URL** zum Herstellen einer Verbindung mit dem Quellspeicher (schreibgeschützter Zugriff):
 
-        ![6](media/solution-template-Databricks-notebook/Databricks-tutorial-image06.png)
+       `https://storagewithdata.blob.core.windows.net/data?sv=2018-03-28&si=read%20and%20list&sr=c&sig=PuyyS6%2FKdB2JxcZN0kPlmHSBlD8uIKyzhBWmWzznkBw%3D`
 
-    1.  **Senke**: zum Hineinkopieren von Daten.
+        ![Auswahl für die Authentifizierungsmethode und SAS-URL](media/solution-template-Databricks-notebook/source-blob-connection.png)
 
-        Wählen Sie ein Speicherkonto aus, das in Voraussetzung 1 im verknüpften Senkendienst erstellt wurde.
+    - **Zielblobverbindung**: Zum Speichern der kopierten Daten.
 
-        ![7](media/solution-template-Databricks-notebook/Databricks-tutorial-image07.png)
+       Wählen Sie im Fenster **Neuer verknüpfter Dienst** den Senkenspeicherblob aus.
 
-    1.  **Databricks**: zum Herstellen der Verbindung mit dem Databricks-Cluster.
+       ![Senkenspeicherblob als neuer verknüpfter Dienst](media/solution-template-Databricks-notebook/destination-blob-connection.png)
 
-        Erstellen Sie mithilfe des in Voraussetzung 2.c generierten Zugriffsschlüssels einen verknüpften Databricks-Dienst. Wenn Sie einen *interaktiven Cluster* haben, können Sie diesen auswählen. (In diesem Beispiel wird die Option *Neuer Auftragscluster* verwendet.)
+    - **Azure Databricks**: Zum Herstellen einer Verbindung mit dem Databricks-Cluster.
 
-        ![8](media/solution-template-Databricks-notebook/Databricks-tutorial-image08.png)
+        Erstellen Sie einen mit Databricks verknüpften Dienst, indem Sie den zuvor generierten Zugriffsschlüssel verwenden. Sie können einen *interaktiven Cluster* auswählen, sofern vorhanden. In diesem Beispiel wird die Option **Neuer Auftragscluster** verwendet.
 
-2.  **Erstellen von Datasets**
+        ![Optionen zum Herstellen einer Verbindung mit dem Cluster](media/solution-template-Databricks-notebook/databricks-connection.png)
 
-    1.  Erstellen Sie **„sourceAvailability_Dataset“** , um zu überprüfen, ob Quelldaten verfügbar sind.
+1. Klicken Sie auf **Diese Vorlage verwenden**. Sie sehen, dass eine Pipeline erstellt wird.
 
-    ![9](media/solution-template-Databricks-notebook/Databricks-tutorial-image09.png)
+    ![Erstellen einer Pipeline](media/solution-template-Databricks-notebook/new-pipeline.png)
 
-    1.  **Quelldataset**: zum Kopieren der Quelldaten (mit Binärkopie)
+## <a name="pipeline-introduction-and-configuration"></a>Einführung und Konfiguration der Pipeline
 
-    ![10](media/solution-template-Databricks-notebook/Databricks-tutorial-image10.png)
+In der neuen Pipeline sind die meisten Einstellungen automatisch mit den jeweiligen Standardwerten konfiguriert. Überprüfen Sie die Konfigurationen der Pipeline, und nehmen Sie ggf. erforderliche Änderungen vor.
 
-    1.  **Senkendataset**: zum Kopieren in die Senke/an den Zielspeicherort
+1. Überprüfen Sie, ob in der Aktivität **Validierung** mit dem Namen **Availability flag** der Wert für das Quell-**Dataset** auf das zuvor von Ihnen erstellte `SourceAvailabilityDataset` festgelegt ist.
 
-        1.  Verknüpfter Dienst: Wählen Sie das in 1.b erstellte Element „sinkBlob_LS“ aus.
+   ![Quelldatasetwert](media/solution-template-Databricks-notebook/validation-settings.png)
 
-        2.  Dateipfad: „sinkdata/staged_sink“
+1. Überprüfen Sie in der Aktivität **Daten kopieren** mit dem Namen **file-to-blob** die Registerkarten **Quelle** und **Senke**. Ändern Sie die Einstellungen bei Bedarf.
 
-        ![11](media/solution-template-Databricks-notebook/Databricks-tutorial-image11.png)
+   - Registerkarte **Quelle** ![Registerkarte „Quelle“](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-## <a name="create-activities"></a>Erstellen von Aktivitäten
+   - Registerkarte **Senke** ![Registerkarte „Senke“](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
-1.  Erstellen Sie die Nachschlageaktivität „**Availability flag**“, um eine Überprüfung der Quellverfügbarkeit durchzuführen („Lookup“ oder „GetMetadata“ kann verwendet werden). Wählen Sie das in 2.a erstellte Element „sourceAvailability_Dataset“ aus.
+1. Überprüfen Sie in der Aktivität **Notebook** mit dem Namen **Transformation** die Pfade und Einstellungen, und aktualisieren Sie sie ggf.
 
-    ![12](media/solution-template-Databricks-notebook/Databricks-tutorial-image12.png)
+   Der **verknüpfte Databricks-Dienst** sollte bereits mit dem Wert aus einem vorherigen Schritt aufgefüllt sein, wie hier gezeigt: ![Aufgefüllter Wert für den verknüpften Databricks-Dienst](media/solution-template-Databricks-notebook/notebook-activity.png)
 
-1.  Erstellen Sie die Kopieraktivität „**file-to-blob**“, um das Dataset aus der Quelle in die Senke zu kopieren. In diesem Fall handelt es sich bei den Daten um eine Binärdatei. Auf den folgenden Screenshots sehen Sie Quell- und Senkenkonfigurationen in der Kopieraktivität.
+   So überprüfen Sie die **Notebook**-Einstellungen:
+  
+    1. Wählen Sie die Registerkarte **Einstellungen** aus. Überprüfen Sie für **Notebook-Pfad**, ob der Standardpfad richtig ist. Möglicherweise müssen Sie den richtigen Notebook Pfad suchen und auswählen.
 
-    ![13](media/solution-template-Databricks-notebook/Databricks-tutorial-image13.png)
+       ![Notebook-Pfad](media/solution-template-Databricks-notebook/notebook-settings.png)
 
-    ![14](media/solution-template-Databricks-notebook/Databricks-tutorial-image14.png)
+    1. Erweitern Sie die Auswahl **Basisparameter**, und überprüfen Sie, ob die Parameter mit den im folgenden Screenshot gezeigten Parametern übereinstimmen. Diese Parameter werden von Data Factory an das Databricks-Notebook übergeben.
 
-1.  Definieren von **Pipelineparametern**
+       ![Basisparameter](media/solution-template-Databricks-notebook/base-parameters.png)
 
-    ![15](media/solution-template-Databricks-notebook/Databricks-tutorial-image15.png)
+1. Überprüfen Sie, ob die **Pipelineparameter** mit der Anzeige im folgenden Screenshot übereinstimmen: ![Pipelineparameter](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
-1.  Erstellen einer **Databricks-Aktivität**
+1. Stellen Sie eine Verbindung mit den Datasets her.
 
-    Wählen Sie den in einem vorherigen Schritt erstellten verknüpften Dienst aus.
+    >[!NOTE]
+    >In den folgenden Datasets wurde der Dateipfad in der Vorlage automatisch angegeben. Wenn Änderungen erforderlich sind, stellen Sie sicher, dass Sie den Pfad sowohl für **Container** als auch für **Verzeichnis** angeben, falls ein Verbindungsfehler auftreten sollte.
 
-    ![16](media/solution-template-Databricks-notebook/Databricks-tutorial-image16.png)
+   - **SourceAvailabilityDataset**: Um zu überprüfen, ob die Quelldaten verfügbar sind.
 
-    Konfigurieren Sie die **Einstellungen**. Erstellen Sie **Basisparameter** wie im Screenshot dargestellt, und erstellen Sie Parameter, die aus Data Factory in Databricks-Notebook übergeben werden. Suchen Sie den in **Voraussetzung 2** hochgeladenen **richtigen Notebook-Pfad**, und **wählen** Sie ihn aus.
+     ![Auswahl für den verknüpften Dienst und den Dateipfad für „SourceAvailabilityDataset“](media/solution-template-Databricks-notebook/source-availability-dataset.png)
 
-    ![17](media/solution-template-Databricks-notebook/Databricks-tutorial-image17.png)
+   - **SourceFilesDataset**: Für den Zugriff auf die Quelldaten.
 
-1.  **Ausführen der Pipeline**. Sie finden einen Link zu Databricks-Protokollen, um ausführlichere Spark-Protokolle zu erhalten.
+       ![Auswahl für den verknüpften Dienst und den Dateipfad für „SourceFilesDataset“](media/solution-template-Databricks-notebook/source-file-dataset.png)
 
-    ![18](media/solution-template-Databricks-notebook/Databricks-tutorial-image18.png)
+   - **DestinationFilesDataset**: Zum Kopieren der Daten in den Zielspeicherort de Senke. Verwenden Sie die folgenden Werte:
 
-    Sie können die Datendatei auch mit dem Speicher-Explorer überprüfen. (Für die Korrelation mit Data Factory-Pipelineausführungen, wird in diesem Beispiel die Pipelineausführungs-ID aus Data Factory dem Ausgabeordner angefügt. So können Sie die bei den einzelnen Ausführungen generierten Dateien nachverfolgen.)
+     - **Verknüpfter Dienst** - `sinkBlob_LS`, in einem vorherigen Schritt erstellt.
 
-![19](media/solution-template-Databricks-notebook/Databricks-tutorial-image19.png)
+     - **Dateipfad** - `sinkdata/staged_sink`.
+
+       ![Auswahl für den verknüpften Dienst und den Dateipfad für „DestinationFilesDataset“](media/solution-template-Databricks-notebook/destination-dataset.png)
+
+1. Wählen Sie **Debuggen** aus, um die Pipeline auszuführen. Hier finden Sie den Link zu Databricks-Protokollen, über den Sie ausführlichere Spark-Protokolle erhalten.
+
+    ![Link zu Databricks-Protokollen aus der Ausgabe](media/solution-template-Databricks-notebook/pipeline-run-output.png)
+
+    Sie können die Datendatei auch mit dem Azure Storage-Explorer überprüfen.
+
+    > [!NOTE]
+    > Für die Korrelation mit Data Factory-Pipelineausführungen wird in diesem Beispiel die Pipelineausführungs-ID aus der Data Factory an den Ausgabeordner angefügt. Dies erleichtert die Nachverfolgung der durch jede Ausführung generierten Dateien.
+    > ![Angefügte Pipelineausführungs-ID](media/solution-template-Databricks-notebook/verify-data-files.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

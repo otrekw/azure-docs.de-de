@@ -1,23 +1,14 @@
 ---
 title: Erstellen einer neuen Azure Application Insights-Ressource | Microsoft Docs
 description: Richten Sie manuell die Application Insights-Überwachung für eine neue Liveanwendung ein.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/16/2019
-ms.author: mbullwin
-ms.openlocfilehash: ae9c885b342664baf90f9c2b5702a092c9d838df
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.date: 12/02/2019
+ms.openlocfilehash: 3fd05e6bd68be89b964fe1ad32029bf44f3352ea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562837"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906368"
 ---
 # <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 
@@ -35,9 +26,13 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und erstellen 
 
    | Einstellungen        |  Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
-   | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert |
-   | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen oder vorhandenen Ressourcengruppe, die Application Insights-Daten hosten soll |
-   | **Location** | East US | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts aus, an dem Ihre App gehostet wird. |
+   | **Name**      | `Unique value` | Der Name, der die zu überwachende App identifiziert |
+   | **Ressourcengruppe**     | `myResourceGroup`      | Der Name der neuen oder vorhandenen Ressourcengruppe, die Application Insights-Daten hosten soll |
+   | **Region** | `East US` | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts aus, an dem Ihre App gehostet wird. |
+   | **Ressourcenmodus** | `Classic` oder `Workspace-based` | Arbeitsbereichsbasierte Ressourcen befinden sich derzeit in der Public Preview-Phase und ermöglichen Ihnen das Senden Ihrer Application Insights-Telemetrie an einen gemeinsamen Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie im [Artikel zu arbeitsbereichsbasierten Ressourcen](create-workspace-resource.md).
+
+> [!NOTE]
+> Obwohl Sie denselben Ressourcennamen für verschiedene Ressourcengruppen verwenden können, kann es vorteilhaft sein, einen global eindeutigen Namen zu verwenden. Dies kann hilfreich sein, wenn Sie planen, [ressourcenübergreifende Abfragen auszuführen](../log-query/cross-workspace-query.md#identifying-an-application), da dadurch die erforderliche Syntax vereinfacht wird.
 
 Geben Sie die entsprechenden Werte in die erforderlichen Felder ein, und wählen Sie dann **Überprüfen + erstellen** aus.
 
@@ -47,9 +42,10 @@ Wenn Ihre App erstellt wurde, wird ein neuer Bereich geöffnet. In diesem Bereic
 
 ## <a name="copy-the-instrumentation-key"></a>Kopieren des Instrumentationsschlüssels
 
-Der Instrumentierungsschlüssel identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Sie müssen den Instrumentierungsschlüssel kopieren, um ihn in Ihrem Anwendungscode hinzuzufügen.
+Der Instrumentierungsschlüssel identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Sie müssen den Instrumentierungsschlüssel kopieren und Ihrem Anwendungscode hinzufügen.
 
-![Auswählen und Kopieren des Instrumentierungsschlüssels](./media/create-new-resource/instrumentation-key.png)
+> [!IMPORTANT]
+> Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die [Verbindungszeichenfolge](./sdk-connection-string.md?tabs=net) identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
 
 ## <a name="install-the-sdk-in-your-app"></a>Installieren des SDK in Ihrer App
 
@@ -98,7 +94,7 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-Die vollständige PowerShell-Dokumentation für dieses Cmdlet und Informationen zum Abrufen des Instrumentierungsschlüssels finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0).
+Die vollständige PowerShell-Dokumentation für dieses Cmdlet und Informationen zum Abrufen des Instrumentierungsschlüssels finden Sie in der [Azure PowerShell-Dokumentation](/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0).
 
 ### <a name="azure-cli-preview"></a>Azure CLI (Vorschauversion)
 
@@ -155,16 +151,17 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-Die vollständige Azure CLI-Dokumentation zu diesem Befehl und Informationen zum Abrufen des Instrumentierungsschlüssels finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
+Die vollständige Azure CLI-Dokumentation zu diesem Befehl und Informationen zum Abrufen des Instrumentierungsschlüssels finden Sie in der [Azure CLI-Dokumentation](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md)
-* [Untersuchen von Metriken](../../azure-monitor/app/metrics-explorer.md)
-* [Schreiben von Analytics-Abfragen](../../azure-monitor/app/analytics.md)
+* [Diagnosesuche](./diagnostic-search.md)
+* [Untersuchen von Metriken](../platform/metrics-charts.md)
+* [Schreiben von Analytics-Abfragen](../log-query/log-query-overview.md)
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[api]: ./api-custom-events-metrics.md
+[diagnostic]: ./diagnostic-search.md
+[metrics]: ../platform/metrics-charts.md
+[start]: ./app-insights-overview.md
+

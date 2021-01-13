@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60321733"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014855"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Austauschen von Hardwarekomponenten auf Geräten der StorSimple 8000-Serie
 
@@ -28,16 +28,16 @@ ms.locfileid: "60321733"
 In den Tutorials zum Austausch von Hardwarekomponenten werden die Hardwarekomponenten Ihres Microsoft Azure StorSimple-Gerät der Serie 8000 sowie die erforderlichen Schritte zum Ausbauen und Austauschen dieser Komponenten erläutert. Dieser Artikel beschreibt die Sicherheitssymbole und enthält Verweise auf die ausführlichen Tutorials. Darüber hinaus sind die austauschbaren Komponenten aufgeführt.
 
 > [!IMPORTANT]
-> Bevor Sie versuchen, StorSimple-Komponenten auszubauen oder auszutauschen, sollten Sie sich mit den [Konventionen für Sicherheitssymbole](#safety-icon-conventions) und anderen [Sicherheitsvorkehrungen](storsimple-safety.md) vertraut machen.
-
+> Bevor Sie versuchen, StorSimple-Komponenten auszubauen oder auszutauschen, sollten Sie sich mit den [Konventionen für Sicherheitssymbole](#safety-icon-conventions) und anderen [Sicherheitsvorkehrungen](storsimple-8000-safety.md) vertraut machen.
 
 ### <a name="safety-icon-conventions"></a>Konventionen für Sicherheitssymbole
+
 In der folgenden Tabelle sind die in diesen Tutorials verwendeten Sicherheitssymbole beschrieben. Achten Sie bei den Schritten zum Ausbauen und Austauschen von Gerätekomponenten auf diese Sicherheitssymbole.
 
 | Symbol | Text | Zusätzliche Informationen |
 |:--- |:--- |:--- |
-| ![Symbol "Warnung"](./media/storsimple-hardware-component-replacement/Warning.png) |**GEFAHR!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen wird, wenn sie nicht vermieden wird. Dieses Signalwort wird nur für die extremsten Situationen verwendet. |
-| ![Symbol "Warnung"](./media/storsimple-hardware-component-replacement/Warning.png) |**WARNUNG!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
+| ![Warnungssymbol](./media/storsimple-hardware-component-replacement/Warning.png) |**GEFAHR!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen wird, wenn sie nicht vermieden wird. Dieses Signalwort wird nur für die extremsten Situationen verwendet. |
+| ![Warnungssymbol](./media/storsimple-hardware-component-replacement/Warning.png) |**WARNUNG!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
 | ![Symbol "Vorsicht"](./media/storsimple-hardware-component-replacement/Caution.png) |**VORSICHT!** |Zeigt eine Gefahrensituation an, die zu leichten bis mittelschweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
 | ![Symbol "Hinweis"](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**HINWEIS:** |Zeigt als wichtig erachtete Informationen an, die allerdings nicht mit Gefahren in Verbindung stehen. |
 | ![Symbol "Stromschlag"](./media/storsimple-hardware-component-replacement/Electric.png) |**Gefahr eines Stromschlags** |Gibt Hochspannung an. |
@@ -47,20 +47,22 @@ In der folgenden Tabelle sind die in diesen Tutorials verwendeten Sicherheitssym
 | ![Symbol "Kippgefahr"](./media/storsimple-hardware-component-replacement/TipHazard.png) |**Kippgefahr** | |
 
 ### <a name="before-you-begin"></a>Voraussetzungen
-Machen Sie sich mit den sicherheitsrelevanten Informationen zu Ihrem Gerät und den in diesem Tutorial verwendeten Sicherheitssymbolen vertraut. Umfassende Informationen finden Sie unter [Sichere Installation und Verwendung des StorSimple-Geräts](storsimple-safety.md) . Überprüfen Sie die [Sicherheitsvorkehrungen](storsimple-safety.md#handling-precautions) , bevor Sie Ihr StorSimple-Gerät verwenden.
+
+Machen Sie sich mit den sicherheitsrelevanten Informationen zu Ihrem Gerät und den in diesem Tutorial verwendeten Sicherheitssymbolen vertraut. Umfassende Informationen finden Sie unter [Sichere Installation und Verwendung des StorSimple-Geräts](storsimple-8000-safety.md) . Überprüfen Sie die [Sicherheitsvorkehrungen](storsimple-8000-safety.md#handling-precautions) , bevor Sie Ihr StorSimple-Gerät verwenden.
 
 Bevor Sie versuchen, eine Komponente auszutauschen, beachten Sie die folgenden Informationen.
 
-![Warning Icon](./media/storsimple-hardware-component-replacement/Warning.png)![Electrical Shock Icon](./media/storsimple-hardware-component-replacement/Electric.png)**WARNUNG!**
+![Symbol „Warnung“](./media/storsimple-hardware-component-replacement/Warning.png) ![Symbol „Vorsicht Stromschlag“](./media/storsimple-hardware-component-replacement/Electric.png) **WARNUNG!**
 
 * Erden Sie sich ordnungsgemäß mithilfe elektrostatischer Entladung oder einer Antistatikmatte, bevor Sie mit Modulen und Komponenten Ihres StorSimple-Gerät-Geräts hantieren.
 * Berühren Sie keine elektrischen Schaltungen. Verwenden Sie die bereitgestellten Griffe und Führungen, wenn Sie mit Komponenten hantieren, die ggf. elektrische Schaltungen haben.
 
-![Warning Icon](./media/storsimple-hardware-component-replacement/Warning.png)![Notice Icon](./media/storsimple-hardware-component-replacement/NoticeIcon.png)**HINWEIS:**
+![Symbol „Warnung“](./media/storsimple-hardware-component-replacement/Warning.png) ![Symbol „Hinweis“](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **HINWEIS:**
 
 Wenn Sie ein Modul austauschen, lassen Sie **NIEMALS ein Fach auf der Rückseite des Gehäuses leer**. Besorgen Sie ein Austausch- oder leeres Modul, bevor Sie das fehlerhafte Teil ausbauen.
 
 ## <a name="hardware-component-replacement-procedures"></a>Vorgehensweisen zum Austausch von Hardwarekomponenten
+
 Ihr StorSimple-Gerät der Serie 8000 besteht aus mehreren Steckmodulen im primären und/oder EBOD-Gehäuse. Das Modell 8100 hat ein einziges primäres Gehäuse, während das Modell 8600 ein Gerät mit zwei Gehäusen (einem primären Gehäuse und einem EBOD-Gehäuse) ist.
 
 Die wesentlichen Hardwarekomponenten des Geräts sind in der folgenden Tabelle zusammengefasst. Klicken Sie in der Spalte **Austauschverfahren** auf den Link, um zum dazugehörigen Tutorial zu gelangen.
@@ -121,6 +123,7 @@ Sowohl das primäre Gehäuse als auch das EBOD-Gehäuse haben Laufwerksträgermo
 | 4 |EBOD-Controller 1 |
 
 ## <a name="field-replaceable-units"></a>FRUs (Field Replaceable Units)
+
 Die folgenden FRUs (Field Replaceable Units) sind für Ihr StorSimple-Gerät verfügbar:
 
 * Gehäuse (einschließlich des integrierten Bedienfelds)
@@ -135,5 +138,5 @@ Die folgenden FRUs (Field Replaceable Units) sind für Ihr StorSimple-Gerät ver
 [Wenden Sie sich an den Microsoft-Support](storsimple-8000-contact-microsoft-support.md) , um diese Ersatzteile zu bestellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie die [Sicherheitsinformationen](storsimple-safety.md) vollständig, bevor Sie versuchen, eine StorSimple-Hardwarekomponente auszutauschen.
 
+Lesen Sie die [Sicherheitsinformationen](storsimple-8000-safety.md) vollständig, bevor Sie versuchen, eine StorSimple-Hardwarekomponente auszutauschen.

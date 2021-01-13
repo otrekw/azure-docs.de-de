@@ -5,7 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: KumudD
 manager: carmonm
-editor: tysonn
 ms.assetid: 1f509bec-bdd1-470d-8aa4-3cf2bb7f6134
 ms.service: virtual-network
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
-ms.openlocfilehash: 1bdc485dfb352144e8a8d0fb75965cbb78288e2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64575591"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86231708"
 ---
 # <a name="virtual-appliance-scenario"></a>Szenario für virtuelle Geräte
 Als gängiges Szenario müssen größere Azure-Kunden eine Anwendung mit zwei Ebenen bereitstellen, die über das Internet verfügbar ist und gleichzeitig den Zugriff auf die Back-End-Ebene über ein lokales Rechenzentrum ermöglicht. In diesem Dokument wird schrittweise ein Szenario mit benutzerdefinierten Routen (User Defined Routes, UDR), einem VPN-Gateway und virtuellen Netzwerkgeräten zum Bereitstellen einer Umgebung mit zwei Ebenen erläutert, die folgende Anforderungen erfüllt:
@@ -34,8 +33,8 @@ Dabei handelt es sich um ein Umkreisnetzwerk-Standardszenario (auch als DMZ beze
 
 |  | Vorteile | Nachteile |
 | --- | --- | --- |
-| NSG |Keine Kosten. <br/>In Azure RBAC integriert. <br/>Regeln können in Azure Resource Manager-Vorlagen erstellt werden. |Komplexität kann in größeren Umgebungen variieren. |
-| Firewall |Vollständige Kontrolle über die Datenebene. <br/>Zentrale Verwaltung über Firewallkonsole. |Kosten der Firewallgeräte. <br/>Nicht in Azure RBAC integriert. |
+| **NSG** |Keine Kosten. <br/>In Azure RBAC integriert. <br/>Regeln können in Azure Resource Manager-Vorlagen erstellt werden. |Komplexität kann in größeren Umgebungen variieren. |
+| **Firewall** |Vollständige Kontrolle über die Datenebene. <br/>Zentrale Verwaltung über Firewallkonsole. |Kosten der Firewallgeräte. <br/>Nicht in Azure RBAC integriert. |
 
 In der unten beschriebenen Lösung wird ein Szenario mit einem Umkreisnetzwerk (DMZ) bzw. ein geschütztes Netzwerk mithilfe virtueller Firewallgeräte implementiert.
 
@@ -78,30 +77,30 @@ Um sicherzustellen, dass die Kommunikation basierend auf der letzten oben angef�
 ### <a name="azgwudr"></a>azgwudr
 In diesem Szenario wird nur der Datenverkehr von lokalen Quellen zu Azure zum Verwalten der Firewalls durch Verbinden mit **AZF3** verwendet. Dieser Datenverkehr muss über die interne Firewall **AZF2** geleitet werden. Daher ist nur eine Route im **GatewaySubnet** erforderlich (siehe unten).
 
-| Ziel | Nächster Hop | Erklärung |
+| Destination | Nächster Hop | Erklärung |
 | --- | --- | --- |
 | 10.0.4.0/24 |10.0.3.11 |Ermöglicht, dass lokaler Datenverkehr zur Verwaltungsfirewall **AZF3** |
 
 ### <a name="azsn2udr"></a>azsn2udr
-| Ziel | Nächster Hop | Erklärung |
+| Destination | Nächster Hop | Erklärung |
 | --- | --- | --- |
 | 10.0.3.0/24 |10.0.2.11 |Ermöglicht den Datenverkehr zum Back-End-Subnetz, in dem der Anwendungsserver gehostet wird, über **AZF2** |
 | 0.0.0.0/0 |10.0.2.10 |Ermöglicht die Weiterleitung des gesamten anderen Datenverkehrs über **AZF1** |
 
 ### <a name="azsn3udr"></a>azsn3udr
-| Ziel | Nächster Hop | Erklärung |
+| Destination | Nächster Hop | Erklärung |
 | --- | --- | --- |
 | 10.0.2.0/24 |10.0.3.10 |Ermöglicht, dass der Datenverkehr an **azsn2** vom Anwendungsserver zum Webserver über **AZF2** geleitet wird |
 
 Sie müssen zudem Routingtabellen für die Subnetze in **onpremvnet** erstellen, um das lokale Rechenzentrum zu imitieren.
 
 ### <a name="onpremsn1udr"></a>onpremsn1udr
-| Ziel | Nächster Hop | Erklärung |
+| Destination | Nächster Hop | Erklärung |
 | --- | --- | --- |
 | 192.168.2.0/24 |192.168.1.4 |Ermöglicht den Datenverkehr zu **onpremsn2** über **OPFW** |
 
 ### <a name="onpremsn2udr"></a>onpremsn2udr
-| Ziel | Nächster Hop | Erklärung |
+| Destination | Nächster Hop | Erklärung |
 | --- | --- | --- |
 | 10.0.3.0/24 |192.168.2.4 |Ermöglicht den Datenverkehr zum Back-End-Subnetz in Azure über **OPFW** |
 | 192.168.1.0/24 |192.168.2.4 |Ermöglicht den Datenverkehr zu **onpremsn1** über **OPFW** |

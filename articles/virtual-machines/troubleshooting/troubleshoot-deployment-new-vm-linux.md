@@ -3,7 +3,7 @@ title: Behandeln von Problemen beim Bereitstellen virtueller Linux-Computer | Mi
 description: Behandeln von Ressourcen-Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
+author: DavidCBerry13
 manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
@@ -13,20 +13,20 @@ ms.workload: na
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
-ms.author: cjiang
-ms.openlocfilehash: f02e1f73460140c9fe9f2cf6d7ffda26533d570d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: daberry
+ms.openlocfilehash: f48963a4d18e80cb67bfbbdc532d34f89b8b5d8a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090023"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87028446"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Behandeln von Ressourcen-Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
 
-## <a name="top-issues"></a>Wichtigste Probleme
+## <a name="top-issues"></a>Häufigste Probleme
 [!INCLUDE [support-disclaimer](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
 Weitere VM-Bereitstellungsprobleme und Fragen finden Sie unter [Troubleshoot deploying Linux virtual machine issues in Azure (Behandlung von Problemen bei der Bereitstellung von virtuellen Linux-Computern)](troubleshoot-deploy-vm-linux.md).
@@ -34,15 +34,15 @@ Weitere VM-Bereitstellungsprobleme und Fragen finden Sie unter [Troubleshoot dep
 ## <a name="collect-activity-logs"></a>Erfassen von Aktivitätsprotokollen
 Sammeln Sie zur Problembehandlung zunächst die Aktivitätsprotokolle, um den Fehler zu ermitteln, auf den das Problem zurückzuführen ist. Die folgenden Links enthalten detaillierte Informationen zur Vorgehensweise.
 
-[Anzeigen von Bereitstellungsvorgängen](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Bereitstellungsvorgänge anzeigen](../../azure-resource-manager/templates/deployment-history.md)
 
-[Anzeigen von Aktivitätsprotokollen zum Verwalten von Azure-Ressourcen](../../resource-group-audit.md)
+[Anzeigen von Aktivitätsprotokollen zum Verwalten von Azure-Ressourcen](../../azure-resource-manager/management/view-activity-logs.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**J:** Bei einem generalisierten Linux-Betriebssystem, das mit der Generalisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf. Analog dazu gilt: Bei einem spezialisierten Linux-Betriebssystem, das mit der Spezialisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf.
+**Y** : Bei einem generalisierten Linux-Betriebssystem, das mit der Generalisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf. Analog dazu gilt: Bei einem spezialisierten Linux-Betriebssystem, das mit der Spezialisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf.
 
 **Uploadfehler:**
 
@@ -78,7 +78,7 @@ Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Comput
   * Nachdem alle virtuellen Computer beendet wurden, erstellen Sie den neuen virtuellen Computer in der gewünschten Größe.
   * Starten Sie zunächst den neuen virtuellen Computer, wählen Sie dann alle angehaltenen virtuellen Computer aus, und klicken Sie auf **Starten**.
 
-**Ursache 2:** Der Cluster verfügt über keine freien Ressourcen.
+**Ursache 2:** Der Cluster besitzt keine freien Ressourcen.
 
 **Lösung 2:**
 
@@ -88,5 +88,4 @@ Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Comput
   * Fügen Sie den neuen virtuellen Computer zum gleichen virtuellen Netzwerk hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn beim Starten eines beendeten virtuellen Linux-Computers oder beim Ändern der Größe eines vorhandenen virtuellen Linux-Computers Probleme in Azure auftreten, finden Sie Informationen unter [Problembehandlung von Resource Manager-Bereitstellungsproblemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Linux-Computers in Azure](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
+Wenn beim Starten eines beendeten virtuellen Linux-Computers oder beim Ändern der Größe eines vorhandenen virtuellen Linux-Computers Probleme in Azure auftreten, finden Sie Informationen unter [Problembehandlung von Resource Manager-Bereitstellungsproblemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Linux-Computers in Azure](./troubleshoot-deploy-vm-linux.md?toc=/azure/virtual-machines/linux/toc.json).

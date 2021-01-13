@@ -3,23 +3,23 @@ title: Moderieren von Bildern mit der API-Konsole – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Initiieren Sie über die Bildmoderations-API in Azure Content Moderator die Überprüfungsmoderationsworkflows für Bildinhalte.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 20353d488cba255925d21017b77d1def2d06b30b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 542fadd5e5ab91be7b7113064bf8c998dae08d12
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561246"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912938"
 ---
 # <a name="moderate-images-from-the-api-console"></a>Moderieren von Bildern über die API-Konsole
 
-Initiieren Sie über die [Bildmoderations-API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) in Azure Content Moderator die Überprüfungsmoderationsworkflows für Bildinhalte. Der Moderationsauftrag prüft Ihre Inhalte auf unerwünschte Ausdrücke und vergleicht sie mit benutzerdefinierten und gemeinsam genutzten Blacklists.
+Initiieren Sie über die [Bildmoderations-API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) in Azure Content Moderator die Überprüfungsmoderationsworkflows für Bildinhalte. Der Moderationsauftrag prüft Ihre Inhalte auf unerwünschte Ausdrücke und vergleicht sie mit benutzerdefinierten und gemeinsam genutzten Blocklisten.
 
 ## <a name="use-the-api-console"></a>Verwenden der API-Konsole
 Bevor Sie die API in der Onlinekonsole testen können, benötigen Sie Ihren Abonnementschlüssel. Dieser befindet sich auf der Registerkarte **Einstellungen** im Feld **Ocp-Apim-Subscription-Key**. Weitere Informationen finden Sie in der [Übersicht](overview.md).
@@ -28,7 +28,7 @@ Bevor Sie die API in der Onlinekonsole testen können, benötigen Sie Ihren Abon
 
    Die Bildmoderationsseite **Bild – Auswerten** wird geöffnet.
 
-2. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt. 
+2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
 
    ![Testen der Regionsauswahl auf der Seite „Bild – Auswerten“](images/test-drive-region.png)
   
@@ -50,7 +50,7 @@ Bevor Sie die API in der Onlinekonsole testen können, benötigen Sie Ihren Abon
 
 5. Wählen Sie **Senden** aus.
 
-6. Die API gibt eine Wahrscheinlichkeitsbewertung für jede Klassifizierung zurück. Sie gibt überdies zurück, ob das Bild die Bedingungen erfüllt (**true** oder **false**). 
+6. Die API gibt eine Wahrscheinlichkeitsbewertung für jede Klassifizierung zurück. Sie gibt überdies zurück, ob das Bild die Bedingungen erfüllt ( **true** oder **false** ). 
 
    ![Testen der Wahrscheinlichkeitsbewertung in der Konsole „Bild – Auswerten“ und Feststellung der Erfüllung der Bedingungen](images/try-image-api-3.PNG)
 
@@ -62,7 +62,7 @@ Bevor Sie die API in der Onlinekonsole testen können, benötigen Sie Ihren Abon
 
    Die Seite **Bild – Gesichter suchen** wird geöffnet.
 
-2. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt. 
+2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
 
    ![Testen der Regionsauswahl auf der Seite „Bild – Gesichter suchen“](images/test-drive-region.png)
 
@@ -86,7 +86,7 @@ Mit der OCR-Funktion von Content Moderator können Sie Texte in Bildern erkennen
 
    Die Seite **Bild – OCR** wird geöffnet.
 
-2. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt. 
+2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
 
    ![Regionsauswahl auf der Seite „Bild – OCR“](images/test-drive-region.png)
 
@@ -102,4 +102,4 @@ Mit der OCR-Funktion von Content Moderator können Sie Texte in Bildern erkennen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie die REST-API in Ihrem Code, oder beginnen Sie mit dem [.NET-Schnellstart zur Bildmoderation](image-moderation-quickstart-dotnet.md), die in Ihre Anwendung integriert werden sollen.
+Verwenden Sie die REST-API im Code, oder befolgen Sie die Anweisungen im [.NET SDK-Schnellstart](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp), um Ihrer Anwendung Bildmoderation hinzuzufügen.

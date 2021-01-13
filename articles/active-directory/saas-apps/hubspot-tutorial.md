@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit HubSpot | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und HubSpot konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 57343ccd-53ea-4e62-9e54-dee2a9562ed5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c53b7fed17ba4ef2000b905b202286338cd461ed
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68944448"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442936"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Tutorial: Azure Active Directory-Integration in HubSpot
 
@@ -33,7 +28,7 @@ Die Integration von HubSpot in Azure AD bietet die folgenden Vorteile:
 * Benutzer können sich mit ihren Azure AD-Konten automatisch bei HubSpot anmelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten an einem zentralen Ort, im Azure-Portal, verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -61,7 +56,7 @@ Damit Sie HubSpot in Azure AD integrieren können, müssen Sie HubSpot zur Liste
 
     ![Die Option „Azure Active Directory“](common/select-azuread.png)
 
-1. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen**.
+1. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen** .
 
     ![Bereich „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -75,7 +70,7 @@ Damit Sie HubSpot in Azure AD integrieren können, müssen Sie HubSpot zur Liste
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit HubSpot mithilfe eines Testbenutzers namens **Britta Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in HubSpot eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit HubSpot mithilfe eines Testbenutzers namens **Britta Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in HubSpot eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit HubSpot müssen Sie die folgenden Schritte ausführen:
 
@@ -106,16 +101,16 @@ In diesem Abschnitt konfigurieren Sie das einmalige Anmelden von Azure AD mit Hu
 
 1. Zum Konfigurieren des *IDP-initiierten Modus* führen Sie im Bereich **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    1. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: https:\//api.hubspot.com/login-api/v1/saml/login?portalId=\<KUNDEN-ID\>.
+    1. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: https:\//api.hubspot.com/login-api/v1/saml/login?portalId=\<CUSTOMER ID\>.
 
-    1. Geben Sie im Feld **Antwort-URL** eine URL im folgenden Format ein: https:\//api.hubspot.com/login-api/v1/saml/acs?portalId=\<KUNDEN-ID\>.
+    1. Geben Sie im Feld **Antwort-URL** eine URL im folgenden Format ein: https:\//api.hubspot.com/login-api/v1/saml/acs?portalId=\<CUSTOMER ID\>.
 
     ![SSO-Informationen zur Domäne und zu den URLs für HubSpot](common/idp-intiated.png)
 
     > [!NOTE]
     > Sie können sich zum Formatieren der URLs auch die Muster im Bereich **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. So konfigurieren Sie die Anwendung im *SP-initiierten Modus*:
+1. So konfigurieren Sie die Anwendung im *SP-initiierten Modus* :
 
     1. Wählen Sie **Zusätzliche URLs festlegen** aus.
 
@@ -163,7 +158,7 @@ In diesem Abschnitt konfigurieren Sie das einmalige Anmelden von Azure AD mit Hu
 
     1. Öffnen Sie im Windows-Editor das heruntergeladene Zertifikat (Base64). Kopieren Sie den Inhalt der Datei. Fügen Sie ihn anschließend in HubSpot in das Feld **X.509 Certificate** (X.509-Zertifikat) ein.
 
-    1. Wählen Sie **Überprüfen**aus.
+    1. Wählen Sie **Überprüfen** aus.
 
         ![Abschnitt „Set up single sign-on“ (Einmaliges Anmelden einrichten) in HubSpot](./media/hubspot-tutorial/config4.png)
 
@@ -183,11 +178,11 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Na
 
     1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
   
-    1. Geben Sie im Feld **Benutzername** den Namen **brittasimon\@\<IhreUnternehmensdomäne>.\<Erweiterung\>** ein. Beispiel: **brittasimon\@contoso.com**
+    1. Geben Sie in das Feld **Benutzername** den Namen **brittasimon\@\<your-company-domain>.\<extension\>** ein. Beispiel: **brittasimon\@contoso.com**
 
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**. Notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** . Notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    1. Klicken Sie auf **Erstellen**.
+    1. Klicken Sie auf **Erstellen** .
 
     ![Der Bereich „Benutzer“](common/user-properties.png)
 
@@ -207,13 +202,13 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf HubSpot, damit sie da
 
     ![Option „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-1. Klicken Sie auf **Benutzer hinzufügen**. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf **Benutzer hinzufügen** . Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Bereich **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus. Wählen Sie **Auswählen**.
+1. Wählen Sie im Bereich **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus. Wählen Sie **Auswählen** .
 
-1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Bereich **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Wählen Sie **Auswählen**.
+1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Bereich **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Wählen Sie **Auswählen** .
 
 1. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 
@@ -241,7 +236,7 @@ So stellen Sie in HubSpot ein Benutzerkonto bereit:
 
     ![Das Feld „Add email address(es)“ (E-Mail-Adresse(n) hinzufügen) im Abschnitt „Create users“ (Benutzer erstellen) in HubSpot](./media/hubspot-tutorial/user3.png)
 
-1. Wählen Sie im Abschnitt **Create users** (Benutzer erstellen) jede Registerkarte aus. Legen Sie auf jeder Registerkarte die relevanten Optionen und Berechtigungen für den Benutzer fest. Klicken Sie anschließend auf **Weiter**.
+1. Wählen Sie im Abschnitt **Create users** (Benutzer erstellen) jede Registerkarte aus. Legen Sie auf jeder Registerkarte die relevanten Optionen und Berechtigungen für den Benutzer fest. Klicken Sie anschließend auf **Weiter** .
 
     ![Registerkarten im Abschnitt „Create users“ (Benutzer erstellen) in HubSpot](./media/hubspot-tutorial/user4.png)
 
@@ -262,6 +257,6 @@ Nachdem Sie einmaliges Anmelden eingerichtet haben, werden Sie bei Auswahl von *
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+- [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

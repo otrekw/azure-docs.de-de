@@ -1,26 +1,18 @@
 ---
-title: Herstellen einer Remoteverbindung mit dem StorSimple-Gerät | Microsoft Docs
+title: Herstellen einer Remoteverbindung mit dem StorSimple-Gerät
 description: Erläutert, wie das Gerät für die Remoteverwaltung konfiguriert und über HTTP oder HTTPS eine Verbindung mit Windows PowerShell für StorSimple hergestellt wird.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: how-to
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05bec60f4c56c98e9b910b50e858656a2e5554b2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631782"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85514576"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Herstellen einer Remoteverbindung mit Geräten der StorSimple 8000-Serie
 
@@ -211,11 +203,11 @@ Diese anschließende Schritte werden im Folgenden beschrieben.
 
 ### <a name="connect-to-the-device-from-the-remote-host"></a>Herstellen einer Verbindung mit dem Gerät über den Remotehost
 
-Verwenden Sie Windows PowerShell und SSL, um auf dem Gerät über einen Remotehost oder Client eine SSAdmin-Sitzung zu starten. Die SSAdmin-Sitzung entspricht Option 1 im Menü der [seriellen Konsole](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) Ihres Geräts.
+Verwenden Sie Windows PowerShell und TLS, um auf dem Gerät über einen Remotehost oder Client eine SSAdmin-Sitzung zu starten. Die SSAdmin-Sitzung entspricht Option 1 im Menü der [seriellen Konsole](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) Ihres Geräts.
 
 Führen Sie die folgenden Schritte auf dem Computer aus, über den Sie die Windows PowerShell-Remoteverbindung herstellen möchten.
 
-#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-ssl"></a>So starten Sie mithilfe von Windows PowerShell und SSL eine SSAdmin-Sitzung auf dem Gerät
+#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-tls"></a>So starten Sie mithilfe von Windows PowerShell und TLS eine SSAdmin-Sitzung auf dem Gerät
 1. Starten Sie eine Windows PowerShell-Sitzung als Administrator. Bei der Verwendung eines Windows 10-Clients wird der Windows-Remoteverwaltungsdienst standardmäßig auf „manuell“ festgelegt. Möglicherweise müssen Sie den Dienst starten, indem Sie Folgendes eingeben:
 
     `Start-Service WinRM`
@@ -237,12 +229,12 @@ Führen Sie die folgenden Schritte auf dem Computer aus, über den Sie die Windo
      `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
    
     Geben Sie für den Parameter „-ComputerName“ im Cmdlet die <*Seriennummer des Zielgeräts*> an. Diese Seriennummer wurde der IP-Adresse von DATA 0 in der Datei "hosts" auf dem Remotehost zugeordnet, beispielsweise **SHX0991003G44MT** , wie in der folgenden Abbildung dargestellt.
-5. Geben Sie Folgendes ein:
+5. Typ:
    
      `Enter-PSSession $session`
-6. Sie müssen einige Minuten warten, und dann wird über HTTPS über SSL eine Verbindung mit Ihrem Gerät hergestellt. Es wird eine Meldung darüber angezeigt, dass Sie mit dem Gerät verbunden sind.
+6. Sie müssen einige Minuten warten, und dann wird über HTTPS und TLS eine Verbindung mit Ihrem Gerät hergestellt. Es wird eine Meldung darüber angezeigt, dass Sie mit dem Gerät verbunden sind.
    
-    ![PowerShell-Remoting über HTTP und SSL](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
+    ![PowerShell-Remoting über HTTP und TLS](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,25 +1,16 @@
 ---
-title: Angeben von Metriken und Platzierungseinstellungen in Azure Service Fabric | Microsoft-Dokumentation
+title: Angeben von Metriken und Platzierungseinstellungen
 description: Erfahren Sie, wie Sie einen Service Fabric-Dienst durch Angeben von Metriken, Platzierungseinschränkungen und anderen Platzierungsrichtlinien beschreiben.
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 16e135c1-a00a-4c6f-9302-6651a090571a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 21fcac62c9335652d0c682a6ac889be82e649464
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4dcd319000edb204ba188ed14b4c797dba5cd38
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60844141"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75610096"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Konfigurieren von Einstellungen des Clusterressourcen-Managers für Service Fabric-Dienste
 Der Clusterressourcen-Manager von Service Fabric ermöglicht eine detaillierte Steuerung der Regeln, die für jeden einzelnen benannten Dienst gelten. Jeder benannte Dienst kann Regeln für seine Zuordnung im Cluster angeben. Darüber hinaus kann jeder benannte Dienst die zu meldenden Metriken und deren jeweilige Bedeutung für den Dienst definieren. Zum Konfigurieren von Diensten müssen drei Aufgaben ausgeführt werden:
@@ -35,7 +26,7 @@ Platzierungseinschränkungen steuern, an welchen Knoten im Cluster ein Dienst ta
 Bei Metriken handelt es sich um einen Satz von Ressourcen, den ein bestimmter benannter Dienst benötigt. Die Metrikkonfiguration eines Diensts gibt unter anderem den Anteil der Ressource an, den jedes zustandsbehaftete Replikat und jede zustandslose Instanz dieses Diensts standardmäßig verbraucht. Metriken enthalten auch eine Gewichtung, die angibt, wie wichtig der Ausgleich dieser Metrik für den Dienst ist, falls Kompromisse erforderlich sind.
 
 ## <a name="advanced-placement-rules"></a>Fortgeschrittene Platzierungsregeln
-Es gibt weitere Typen von Platzierungsregeln, die in weniger häufigen Szenarien hilfreich sein können. Hier einige Beispiele:
+Es gibt weitere Typen von Platzierungsregeln, die in weniger häufigen Szenarien hilfreich sein können. Beispiele:
 - Einschränkungen, die bei geografisch verteilten Clustern hilfreich sind
 - Gewisse Anwendungsarchitekturen
 

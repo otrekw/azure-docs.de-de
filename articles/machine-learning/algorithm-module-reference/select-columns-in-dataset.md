@@ -1,24 +1,24 @@
 ---
 title: 'Select Columns in Dataset (Spalten im Dataset auswählen): Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Select Columns in Dataset“ (Spalten im Dataset auswählen) in Azure Machine Learning Service verwenden, um eine Teilmenge von Spalten für nachfolgende Vorgänge auszuwählen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul „Select Columns in Dataset“ (Spalten im Dataset auswählen) in Azure Machine Learning verwenden, um eine Teilmenge von Spalten für nachfolgende Vorgänge auszuwählen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 097477fb9fc10d954954815c7f4b0fef8947a526
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 10/22/2019
+ms.openlocfilehash: 7926d5dd33df5538713f8de152dbbace2bc29864
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128497"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90890294"
 ---
 # <a name="select-columns-in-dataset-module"></a>Modul „Select Columns in Dataset“ (Spalten im Dataset auswählen)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Wählen Sie mit diesem Modul eine Teilmenge von Spalten aus, die in nachfolgenden Vorgängen verwendet werden sollen. Das Modul entfernt die Spalten nicht physisch aus dem Quelldatensatz, sondern erstellt eine Teilmenge von Spalten ähnlich der *Sicht* oder *Projektion* einer Datenbank.
 
@@ -112,4 +112,4 @@ Beispiel: In einem Dataset, das die Spalten Col1, Col2, Col3 und Col4 enthält, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

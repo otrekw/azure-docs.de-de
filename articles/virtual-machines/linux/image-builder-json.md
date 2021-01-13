@@ -1,18 +1,19 @@
 ---
 title: Erstellen einer Azure Image Builder-Vorlage (Preview)
 description: Erfahren Sie, wie Sie eine Vorlage für die Verwendung mit Azure Image Builder erstellen.
-author: cynthn
-ms.author: cynthn
-ms.date: 07/31/2019
-ms.topic: article
-ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 240e0dadaebde6725974604b578328ede0b20652
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: danielsollondon
+ms.author: danis
+ms.date: 08/13/2020
+ms.topic: reference
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.reviewer: cynthn
+ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129056"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91307278"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Vorschau: Erstellen einer Azure Image Builder-Vorlage 
 
@@ -23,17 +24,25 @@ Das grundlegende Format der Vorlage:
 ```json
  { 
     "type": "Microsoft.VirtualMachineImages/imageTemplates", 
-    "apiVersion": "2019-05-01-preview", 
+    "apiVersion": "2020-02-14", 
     "location": "<region>", 
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+     },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
         "buildTimeoutInMinutes": <minutes>, 
-        "build": {}, 
+        "vmProfile": 
+            {
+            "vmSize": "<vmSize>",
+            "osDiskSizeGB": <sizeInGB>,
+            "vnetConfig": {
+                "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+                }
+            },
+        "source": {}, 
         "customize": {}, 
         "distribute": {} 
       } 
@@ -44,14 +53,14 @@ Das grundlegende Format der Vorlage:
 
 ## <a name="type-and-api-version"></a>Typ und API-Version
 
-`type` ist der Ressourcentyp, der `"Microsoft.VirtualMachineImages/imageTemplates"` entsprechen muss. `apiVersion` ändert sich im Laufe der Zeit, in der sich die API ändert. Für die Preview sollte jedoch `"2019-05-01-preview"` festgelegt sein.
+`type` ist der Ressourcentyp, der `"Microsoft.VirtualMachineImages/imageTemplates"` entsprechen muss. `apiVersion` ändert sich im Laufe der Zeit, in der sich die API ändert. Für die Preview sollte jedoch `"2020-02-14"` festgelegt sein.
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
-    "apiVersion": "2019-05-01-preview",
+    "apiVersion": "2020-02-14",
 ```
 
-## <a name="location"></a>Location
+## <a name="location"></a>Standort
 
 „Location“ entspricht der Region, in der das benutzerdefinierte Image erstellt wird. Die Image Builder-Preview unterstützt die folgenden Regionen:
 
@@ -60,12 +69,41 @@ Das grundlegende Format der Vorlage:
 - USA, Westen-Mitte
 - USA (Westen)
 - USA, Westen 2
+- Nordeuropa
+- Europa, Westen
 
 
 ```json
     "location": "<region>",
 ```
+## <a name="vmprofile"></a>vmProfile
+Standardmäßig wird von Image Builder eine Build-VM des Typs „Standard_D1_v2“ verwendet. Sie können dies überschreiben. Wenn Sie beispielsweise ein Image für eine GPU-VM anpassen möchten, benötigen Sie eine GPU-VM-Größe. Diese Eingabe ist optional.
 
+```json
+ {
+    "vmSize": "Standard_D1_v2"
+ },
+```
+
+## <a name="osdisksizegb"></a>osDiskSizeGB
+
+Standardmäßig ändert Image Builder die Größe des Images nicht. Es wird die Größe des Quellimages verwendet. Sie können **nur** die Größe des Betriebssystemdatenträgers erhöhen (Windows und Linux). Dies ist optional, und der Wert „0“ bedeutet, dass die Größe der Größe des Quellimages entspricht. Die Größe des Betriebssystemdatenträgers kann nicht auf einen Wert reduziert werden, der niedriger ist als die Größe des Quellimages.
+
+```json
+ {
+    "osDiskSizeGB": 100
+ },
+```
+
+## <a name="vnetconfig"></a>vnetConfig
+Wenn Sie keine VNET-Eigenschaften angeben, erstellt Image Builder ein eigenes VNet, eine öffentliche IP-Adresse und eine NSG. Die öffentliche IP-Adresse wird für die Kommunikation des Diensts mit der Build-VM verwendet. Wenn Sie jedoch nicht möchten, dass eine öffentliche IP-Adresse oder Image Builder Zugriff auf Ihre vorhandenen VNET-Ressourcen wie Konfigurationsserver (DSC, Chef, Puppet, Ansible), Dateifreigaben usw. hat, können Sie ein VNet angeben. Lesen Sie die [Netzwerkdokumentation](image-builder-networking.md), um weitere Informationen zu erhalten. Dieser Schritt ist optional.
+
+```json
+    "vnetConfig": {
+        "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+        }
+    }
+```
 ## <a name="tags"></a>`Tags`
 
 Dabei handelt es sich um Schlüssel-Wert-Paare, die Sie für das generierte Image angeben können.
@@ -78,12 +116,11 @@ Mit diesem optionalen Abschnitt kann sichergestellt werden, dass Abhängigkeiten
     "dependsOn": [],
 ```
 
-Weitere Informationen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
+Weitere Informationen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/define-resource-dependency.md#dependson).
 
 ## <a name="identity"></a>Identity
-Image Builder unterstützt standardmäßig die Verwendung von Skripts und das Kopieren von Dateien aus mehreren Quellen wie GitHub und Azure Storage. Diese müssen öffentlich zugänglich sein, damit sie verwendet werden können.
 
-Sie können auch eine von Ihnen definierte benutzerseitig zugewiesene Azure-Identität verwenden, um Image Builder den Zugriff auf Azure Storage zu gewähren, sofern die Identität mindestens über die Rolle „Storage-Blobdatenleser“ für das Azure Storage-Konto verfügt. Das heißt, Sie müssen weder den externen Zugriff auf die Speicherblobs noch SAS-Tokens einrichten.
+Erforderlich: Damit Image Builder die Berechtigung zum Lesen/Schreiben von Images hat, die in Skripts von Azure Storage eingelesen werden, müssen Sie eine benutzerseitig zugewiesene Azure-Identität erstellen, die über Berechtigungen für die einzelnen Azure-Ressourcen verfügt. Details zur Funktionsweise der Image Builder-Berechtigungen und zu den relevanten Schritten finden Sie in der [Dokumentation](image-builder-user-assigned-identity.md).
 
 
 ```json
@@ -95,53 +132,29 @@ Sie können auch eine von Ihnen definierte benutzerseitig zugewiesene Azure-Iden
         },
 ```
 
-Ein vollständiges Beispiel finden Sie unter [Use an Azure User-Assigned Managed Identity to access files in Azure Storage (Verwenden einer benutzerseitig zugewiesenen verwalteten Azure-Identität für den Zugriff auf Dateien in Azure Storage)](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
-Die Image Builder-Unterstützung für eine benutzerseitig zugewiesene Identität: •   unterstützt nur eine einzelne Identität •   unterstützt keine benutzerdefinierten Domänennamen
+Image Builder-Unterstützung für eine benutzerseitig zugewiesene Identität:
+* Unterstützt nur eine einzelne Identität
+* Unterstützt keine benutzerdefinierten Domänennamen
 
-Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
-Weitere Informationen zur Bereitstellung dieses Features finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
+Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../active-directory/managed-identities-azure-resources/overview.md).
+Weitere Informationen zur Bereitstellung dieses Features finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe der Azure-Befehlszeilenschnittstelle](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity).
 
 ## <a name="properties-source"></a>Eigenschaften: source
 
-Der Abschnitt `source` enthält Informationen über das Quellimage, das von Image Builder verwendet wird.
+Der Abschnitt `source` enthält Informationen über das Quellimage, das von Image Builder verwendet wird. Image Builder unterstützt derzeit nativ nur die Erstellung von Images der Hyper-V-Generation 1 (Gen1) für Azure Shared Image Gallery (SIG) oder Managed Image. Wenn Sie Gen2-Images erstellen möchten, müssen Sie ein Gen2-Quellimage verwenden und an VHD verteilen. Danach müssen Sie ein verwaltetes Image von der VHD erstellen und es als Gen2-Image in SIG einfügen.
 
 Die API erfordert eine SourceType-Eigenschaft, die die Quelle für die Imageerstellung definiert. Derzeit stehen die folgenden drei Typen zur Verfügung:
-- ISO: Verwenden Sie diesen Typ, wenn es sich beim Quellimage um ein RHEL-ISO-Image handelt.
 - PlatformImage: gibt an, dass es sich beim Quellimage um ein Marketplace-Image handelt.
 - ManagedImage: Verwenden Sie diesen Typ, wenn Sie mit einem normal verwalteten Image beginnen.
 - SharedImageVersion: Dieser Typ wird verwendet, wenn Sie eine Imageversion aus einem Katalog mit freigegebenen Images als Quellimage verwenden.
 
-### <a name="iso-source"></a>ISO-Quelle
-
-Azure Image Builder unterstützt in der Preview nur die Verwendung veröffentlichter, Binär-DVD-ISO-Dateien von Red Hat Enterprise Linux 7.x. Image Builder unterstützt:
-- RHEL 7.3 
-- RHEL 7.4 
-- RHEL 7.5 
- 
-```json
-"source": {
-       "type": "ISO",
-       "sourceURI": "<sourceURI from the download center>",
-       "sha256Checksum": "<checksum associated with ISO>"
-}
-```
-
-Öffnen Sie `https://access.redhat.com/downloads`, und wählen Sie dann das Produkt **Red Hat Enterprise Linux** und eine unterstützte Version aus, um die Werte `sourceURI` und `sha256Checksum` abzurufen. 
-
-Sie müssen den Link für die Binär-DVD von Red Hat Enterprise Linux 7.x und die Prüfsumme aus der Liste der **Installer und Images für Red Hat Enterprise Linux-Server** kopieren.
 
 > [!NOTE]
-> Die Zugriffstoken für die Links werden regelmäßig aktualisiert. Sie müssen also jedes Mal prüfen, ob die RH-Linkadresse geändert wurde, wenn Sie eine Vorlage übermitteln möchten.
- 
+> Bei Verwendung vorhandener benutzerdefinierter Windows-Images können Sie den Sysprep-Befehl bis zu 8-mal in einem einzigen Windows-Image ausführen. Weitere Informationen finden Sie in der Dokumentation zu [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep).
+
 ### <a name="platformimage-source"></a>PlatformImage-Quelle 
-Azure Image Builder unterstützt die folgenden Azure Marketplace-Images:
-* Ubuntu 18.04
-* Ubuntu 16.04
-* RHEL 7.6
-* CentOS 7.6
-* Windows 2016
-* Windows 2019
+Azure Image Builder unterstützt Windows Server- und -Client- sowie Azure Marketplace Linux-Images. Die vollständige Liste finden Sie [hier](../windows/image-builder-overview.md#os-support). 
 
 ```json
         "source": {
@@ -149,7 +162,7 @@ Azure Image Builder unterstützt die folgenden Azure Marketplace-Images:
                 "publisher": "Canonical",
                 "offer": "UbuntuServer",
                 "sku": "18.04-LTS",
-                "version": "18.04.201903060"
+                "version": "latest"
         },
 ```
 
@@ -160,12 +173,29 @@ Die Eigenschaften hier entsprechen denen, die zum Erstellen der VM verwendet wur
 az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all 
 ```
 
-> [!NOTE]
-> Die Eigenschaft für die Version kann nicht „latest“ sein, Sie müssen den obigen Befehl verwenden, um eine Versionsnummer abzurufen. 
+Sie können „latest“ in der Version verwenden. Die Version wird bei der Imageerstellung und nicht beim Übermitteln der Vorlage ausgewertet. Wenn Sie diese Funktion mit dem Shared Image Gallery-Ziel verwenden, können Sie die erneute Übermittlung der Vorlage vermeiden und die Imageerstellung in Intervallen erneut ausführen, sodass Ihre Images aus den neuesten Images neu erstellt werden.
 
+#### <a name="support-for-market-place-plan-information"></a>Unterstützung für Informationen zum Marketplaceplan
+Sie können auch Planinformationen angeben. Beispiel:
+```json
+    "source": {
+        "type": "PlatformImage",
+        "publisher": "RedHat",
+        "offer": "rhel-byos",
+        "sku": "rhel-lvm75",
+        "version": "latest",
+        "planInfo": {
+            "planName": "rhel-lvm75",
+            "planProduct": "rhel-byos",
+            "planPublisher": "redhat"
+       }
+```
 ### <a name="managedimage-source"></a>ManagedImage-Quelle
 
-Hiermit wird ein vorhandenes verwaltetes Image einer generalisierten VHD oder VM als Quellimage festgelegt. Das verwaltete Quellimage muss einem unterstützten Betriebssystem entsprechen und sich in derselben Region wie Ihre Azure Image Builder-Vorlage befinden. 
+Hiermit wird ein vorhandenes verwaltetes Image einer generalisierten VHD oder VM als Quellimage festgelegt.
+
+> [!NOTE]
+> Das verwaltete Quellimage muss ein Image eines unterstützten Betriebssystems sein und sich in derselben Region wie Ihre Azure Image Builder-Vorlage befinden. 
 
 ```json
         "source": { 
@@ -178,7 +208,11 @@ Hiermit wird ein vorhandenes verwaltetes Image einer generalisierten VHD oder VM
 
 
 ### <a name="sharedimageversion-source"></a>SharedImageVersion-Quelle
-Hiermit wird eine vorhandene Imageversion aus einem Katalog mit freigegebenen Images als Quellimage festgelegt. Die Imageversion muss einem unterstützten Betriebssystem entsprechen, und das Image muss in dieselbe Region wie Ihre Azure Image Builder-Vorlage repliziert werden. 
+Hiermit wird eine vorhandene Imageversion aus einem Katalog mit freigegebenen Images als Quellimage festgelegt.
+
+> [!NOTE]
+> Das verwaltete Quellimage muss ein Image eines unterstützten Betriebssystems sein und sich in derselben Region wie Ihre Azure Image Builder-Vorlage befinden. Wenn dies nicht der Fall ist, replizieren Sie die Imageversion in die Region der Image Builder-Vorlage.
+
 
 ```json
         "source": { 
@@ -189,6 +223,7 @@ Hiermit wird eine vorhandene Imageversion aus einem Katalog mit freigegebenen Im
 
 `imageVersionId` sollte dem ResourceId-Wert der Imageversion entsprechen. Verwenden Sie den Befehl [az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list), um die Imageversionen aufzulisten.
 
+
 ## <a name="properties-buildtimeoutinminutes"></a>Eigenschaften: buildTimeoutInMinutes
 
 Image Builder wird standardmäßig für 240 Minuten ausgeführt. Anschließend kommt es zu einem Timeout, und die Ausführung wird beendet – unabhängig davon, ob das Image erstellt wurde oder nicht. Bei Auftreten des Timeouts wird ein Fehler ähnlich dem folgenden angezeigt:
@@ -198,7 +233,7 @@ Image Builder wird standardmäßig für 240 Minuten ausgeführt. Anschließend k
 [ERROR] complete: 'context deadline exceeded'
 ```
 
-Wenn Sie keinen buildTimeoutInMinutes-Wert angeben oder diesen auf 0 festlegen, wird der Standardwert verwendet. Sie können den Wert verringern oder bis auf den Höchstwert von 960 Minuten (16 Stunden) erhöhen. Für Windows wird empfohlen, diese Einstellung nicht unter 60 Minuten festzulegen. Wenn es zu einem Timeout kommt, überprüfen Sie in den [Protokollen](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs), ob der Anpassungsschritt auf etwas wartet, z.B. auf eine Benutzereingabe. 
+Wenn Sie keinen buildTimeoutInMinutes-Wert angeben oder diesen Wert auf „0“ festlegen, wird der Standardwert verwendet. Sie können den Wert verringern oder bis auf den Höchstwert von 960 Minuten (16 Stunden) erhöhen. Für Windows wird empfohlen, diese Einstellung nicht unter 60 Minuten festzulegen. Wenn es zu einem Timeout kommt, überprüfen Sie in den [Protokollen](image-builder-troubleshoot.md#customization-log), ob der Anpassungsschritt auf etwas wartet, z.B. auf eine Benutzereingabe. 
 
 Wenn Sie mehr Zeit zum Abschließen der Anpassung benötigen, legen Sie die Einstellung auf die geschätzte benötigte Zeit plus einen kleinen Puffer fest. Wählen Sie aber keinen zu hohen Wert, da ein Fehler erst bei einem Timeout angezeigt wird. 
 
@@ -220,7 +255,8 @@ Folgendes ist bei Verwendung von `customize` zu beachten:
             {
                 "type": "Shell",
                 "name": "<name>",
-                "scriptUri": "<path to script>"
+                "scriptUri": "<path to script>",
+                "sha256Checksum": "<sha256 checksum>"
             },
             {
                 "type": "Shell",
@@ -235,7 +271,9 @@ Folgendes ist bei Verwendung von `customize` zu beachten:
 
  
 Der Abschnitt „customize“ ist ein Array. Azure Image Builder durchläuft die Anpassungen in sequenzieller Reihenfolge. Wenn ein Fehler bei einer beliebigen Anpassung auftritt, schlägt der gesamte Buildprozess fehl. 
- 
+
+> [!NOTE]
+> Inlinebefehle können in der Imagevorlagendefinition und vom Microsoft-Support bei der Hilfe in einem Supportfall angezeigt werden. Wenn Sie über sensible Informationen verfügen, sollten diese in Skripts in Azure Storage verschoben werden, wo der Zugriff eine Authentifizierung erfordert.
  
 ### <a name="shell-customizer"></a>Shellanpassung
 
@@ -246,7 +284,8 @@ Die Shellanpassung unterstützt das Ausführen von Shellskripts. Diese müssen �
         { 
             "type": "Shell", 
             "name": "<name>", 
-            "scriptUri": "<link to script>"        
+            "scriptUri": "<link to script>",
+            "sha256Checksum": "<sha256 checksum>"       
         }, 
     ], 
         "customize": [ 
@@ -266,30 +305,41 @@ Anpassungseigenschaften:
 - **name:** Name für die Nachverfolgung der Anpassung 
 - **scriptUri:** URI für den Speicherort der Datei 
 - **inline:** Array von Shellbefehlen, die durch Kommas getrennt sind
- 
+- **sha256Checksum**: Der Wert der SHA256-Prüfsumme der Datei, den Sie lokal generieren. Anschließend überprüft Image Builder die Prüfsumme und validiert sie.
+    * Um sha256Checksum mithilfe eines Terminals unter Mac/Linux zu generieren, führen Sie Folgendes aus: `sha256sum <fileName>`
+
+
+Damit Befehle mit superuser-Berechtigungen ausgeführt werden, muss ihnen das Präfix `sudo` vorangestellt werden.
+
 > [!NOTE]
-> Wenn Sie die Shellanpassung mit einer RHEL-ISO-Quelle ausführen, müssen Sie sicherstellen, dass Ihre erste Anpassungsshell die Registrierung bei einem Red Hat-Berechtigungsserver durchführt, bevor Anpassungen vorgenommen werden. Sobald die Anpassung abgeschlossen ist, sollte die Registrierung des Skripts beim Berechtigungsserver aufgehoben werden.
+> Inlinebefehle werden als Teil der Imagevorlagendefinition gespeichert, Sie können diese sehen, wenn Sie die Imagedefinition ausgeben. Sie sind auch für den Microsoft-Support im Falle eines Supportfalls zu Zwecken der Problembehandlung sichtbar. Wenn Sie vertrauliche Befehle oder Werte verwenden, wird dringend empfohlen, diese in Skripts zu verschieben und eine Benutzeridentität zur Authentifizierung bei Azure Storage zu verwenden.
 
 ### <a name="windows-restart-customizer"></a>Windows-Neustartanpassung 
 Mithilfe der Neustartanpassung können Sie eine Windows-VMM neu starten und darauf warten, dass sie wieder online geschaltet wird. Dies ermöglicht die Installation von Software, für die ein Neustart erforderlich ist.  
 
 ```json 
      "customize": [ 
-            "type{ ": "WindowsRestart", 
-            "restartCommand": "shutdown /r /f /t 0 /c", 
-            "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
-            "restartTimeout": "5m"
-         }],
+
+            {
+                "type": "WindowsRestart",
+                "restartCommand": "shutdown /r /f /t 0", 
+                "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
+                "restartTimeout": "5m"
+            }
+  
+        ],
 ```
 
 Betriebssystemunterstützung: Windows
  
 Anpassungseigenschaften:
-- **Typ**: WindowsRestart
+- **Typ:** WindowsRestart
 - **restartCommand:** Hiermit wird der Befehl zum Ausführen des Neustarts festgelegt (Optional). Der Standardwert lautet `'shutdown /r /f /t 0 /c \"packer restart\"'`.
 - **restartCheckCommand:** Befehl zur Überprüfung, ob der Neustart erfolgreich war (Optional). 
 - **restartTimeout:** Zeichenfolge von Größe und Einheit des Timeouts für den Neustart, z. B. `5m` (5 Minuten) oder `2h` (2 Stunden). Der Standardwert lautet: „5m“
 
+### <a name="linux-restart"></a>Linux-Neustart  
+Es gibt keine Anpassung für den Linux-Neustart, aber wenn Sie Treiber oder Komponenten installieren, die einen Neustart erfordern, können Sie diese installieren und einen Neustart mit der Shellanpassung aufrufen. Es gibt ein 20-minütiges SSH-Zeitlimit für die Build-VM.
 
 ### <a name="powershell-customizer"></a>PowerShell-Anpassung 
 Die Shellanpassung unterstützt das Ausführen von PowerShell-Skripts und Inlinebefehlen. Diese Skripts müssen öffentlich zugänglich sein, damit Image Builder auf diese zugreifen kann.
@@ -299,13 +349,16 @@ Die Shellanpassung unterstützt das Ausführen von PowerShell-Skripts und Inline
         { 
              "type": "PowerShell",
              "name":   "<name>",  
-             "scriptUri": "<path to script>" 
+             "scriptUri": "<path to script>",
+             "runElevated": "<true false>",
+             "sha256Checksum": "<sha256 checksum>" 
         },  
         { 
              "type": "PowerShell", 
              "name": "<name>", 
              "inline": "<PowerShell syntax to run>", 
-             "valid_exit_codes": "<exit code>" 
+             "validExitCodes": "<exit code>",
+             "runElevated": "<true or false>" 
          } 
     ], 
 ```
@@ -317,7 +370,11 @@ Anpassungseigenschaften:
 - **type:** PowerShell
 - **scriptUri:** URI für den Speicherort der PowerShell-Skriptdatei 
 - **inline:** Durch Kommas getrennte Inlinebefehle, die ausgeführt werden sollen
-- **valid_exit_codes:** gültige Codes, die vom Skript oder Inlinebefehl zurückgegeben werden können, um die Meldung eines Fehlers im Skript oder Inlinebefehl zu umgehen (Optional)
+- **validExitCodes**: Optional, gültige Codes, die vom Skript/Inlinebefehl zurückgegeben werden können, um die Meldung eines Fehlers im Skript/Inlinebefehl zu vermeiden.
+- **runElevated**: Optionaler boolescher Wert, Unterstützung für das Ausführen von Befehlen und Skripts mit erhöhten Berechtigungen.
+- **sha256Checksum**: Der Wert der SHA256-Prüfsumme der Datei, den Sie lokal generieren. Anschließend überprüft Image Builder die Prüfsumme und validiert sie.
+    * So generieren Sie sha256Checksum mithilfe des PowerShell-Befehls [Get-Hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) unter Windows
+
 
 ### <a name="file-customizer"></a>Dateianpassung
 
@@ -329,7 +386,8 @@ Mithilfe der Dateianpassung kann Image Builder eine Datei aus GitHub oder Azure 
             "type": "File", 
              "name": "<name>", 
              "sourceUri": "<source location>",
-             "destination": "<destination>" 
+             "destination": "<destination>",
+             "sha256Checksum": "<sha256 checksum>"
          }
      ]
 ```
@@ -353,25 +411,63 @@ Wenn beim Herunterladen der Datei oder beim Platzieren der Datei im festgelegten
 
 Dateien in der Dateianpassung können mithilfe der [verwalteten Dienstidentität](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage) aus Azure Storage heruntergeladen werden.
 
+### <a name="windows-update-customizer"></a>Windows Update-Anpassung
+Diese Anpassung basiert auf dem [Community Windows Update Provisioner](https://packer.io/docs/provisioners/community-supported.html) für Packer. Dabei handelt es sich um ein von der Packer-Community verwaltetes Open-Source-Projekt. Microsoft testet und überprüft den Provisioner mit dem Image Builder-Dienst und unterstützt das Untersuchen von Problemen mit dem Dienst sowie das Beheben von Problemen. Das Open-Source-Projekt wird jedoch nicht offiziell von Microsoft unterstützt. Eine ausführliche Dokumentation und Hilfe zu Windows Update Provisioner finden Sie im Projektrepository.
+
+```json
+     "customize": [
+            {
+                "type": "WindowsUpdate",
+                "searchCriteria": "IsInstalled=0",
+                "filters": [
+                    "exclude:$_.Title -like '*Preview*'",
+                    "include:$true"
+                            ],
+                "updateLimit": 20
+            }
+               ], 
+OS support: Windows
+```
+
+Anpassungseigenschaften:
+- **type**: WindowsUpdate.
+- **searchCriteria**: Optional, definiert, welche Art von Updates installiert werden (empfohlene Updates, wichtige Updates usw.), die Standardeinstellung ist „BrowseOnly=0 and „IsInstalled=0“ (Recommended).
+- **filters**: Optional können Sie einen Filter zum Ein- oder Ausschließen von Updates angeben.
+- **updateLimit**: Optional, definiert, wie viele Updates installiert werden können. Der Standardwert ist „1000“.
+ 
+> [!NOTE]
+> Die Windows Update-Anpassung kann einen Fehler verursachen, wenn Windows-Neustarts ausstehen oder Anwendungsinstallationen noch ausgeführt werden. in der Regel wird dieser Fehler in der Datei „customization.log“ angezeigt: `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016`. Es wird dringend empfohlen, einen Windows-Neustart hinzuzufügen und/oder Anwendungen mithilfe von [sleep] oder Wait-Befehlen (https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) in den Inlinebefehlen oder Skripts genug Zeit zum Abschluss ihrer Installation zu geben, bevor Sie Windows Update ausführen.
+
 ### <a name="generalize"></a>Generalize 
 Azure Image Builder führt außerdem standardmäßig Code zum „Aufheben der Bereitstellung“ nach jeder Imageanpassungsphase aus, um das Image zu „generalisieren“. Das Generalisieren ist ein Prozess, bei dem das Image so eingerichtet wird, dass es für die Erstellung mehrerer VMs wiederverwendet werden kann. Azure Image Builder verwendet Sysprep für Windows-VMs. Für Linux führt Azure Image Builder „waagent -deprovision“ aus. 
 
 Die Befehle, die Image Builder für die Generalisierung verwendet, eignen sich möglicherweise nicht für jede Situation, weshalb Azure Image Builder die Anpassung der Befehle bei Bedarf zulässt. 
 
-Wenn Sie vorhandene Anpassungen migrieren und verschiedene Sysprep- oder waagent-Befehle verwenden, können Sie die allgemeinen Image Builder-Befehle verwenden. Und wenn die VM-Erstellung fehlschlägt, können Sie Ihre eigenen Sysprep- oder waagent-Befehle verwenden.
+Wenn Sie vorhandene Anpassungen migrieren und verschiedene Sysprep- oder waagent-Befehle verwenden, können Sie die allgemeinen Image Builder-Befehle nutzen. Und wenn die VM-Erstellung fehlschlägt, können Sie Ihre eigenen Sysprep- oder waagent-Befehle verwenden.
 
 Wenn Azure Image Builder erfolgreich ein benutzerdefiniertes Windows-Image erstellt, Sie mit dem Image eine VM erstellen und die VM-Erstellung dann fehlschlägt bzw. nicht erfolgreich durchgeführt wird, müssen Sie die Dokumentation zu Windows Server-Sysprep zu Rate ziehen oder eine Supportanfrage beim Supportteam für den Kundendienst für Windows Server-Sysprep eröffnen, um Unterstützung bei der Problembehandlung und Tipps zur ordnungsgemäßen Nutzung von Sysprep zu erhalten.
 
 
 #### <a name="default-sysprep-command"></a>Sysprep-Standardbefehl
 ```powershell
-echo '>>> Waiting for GA to start ...'
+Write-Output '>>> Waiting for GA Service (RdAgent) to start ...'
 while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }
-while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }
+Write-Output '>>> Waiting for GA Service (WindowsAzureTelemetryService) to start ...'
+while ((Get-Service WindowsAzureTelemetryService) -and ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running')) { Start-Sleep -s 5 }
+Write-Output '>>> Waiting for GA Service (WindowsAzureGuestAgent) to start ...'
 while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }
-echo '>>> Sysprepping VM ...'
-if( Test-Path $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml ){ rm $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml -Force} & $Env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit
-while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 5  } else { break } }
+Write-Output '>>> Sysprepping VM ...'
+if( Test-Path $Env:SystemRoot\system32\Sysprep\unattend.xml ) {
+  Remove-Item $Env:SystemRoot\system32\Sysprep\unattend.xml -Force
+}
+& $Env:SystemRoot\System32\Sysprep\Sysprep.exe /oobe /generalize /quiet /quit
+while($true) {
+  $imageState = (Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\State).ImageState
+  Write-Output $imageState
+  if ($imageState -eq 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { break }
+  Start-Sleep -s 5
+}
+Write-Output '>>> Sysprep complete ...'
 ```
 #### <a name="default-linux-deprovision-command"></a>deprovision-Standardbefehl für Linux
 
@@ -385,7 +481,7 @@ Verwenden Sie zum Überschreiben der Befehle die Shell- oder PowerShell-Skriptbe
 * Windows: c:\DeprovisioningScript.ps1
 * Linux: /tmp/DeprovisioningScript.sh
 
-Diese Befehle werden von Image Builder gelesen und in den AIB-Protokollen („customization.log“) dokumentiert. Auf der Seite zur [Problembehandlung](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) erfahren Sie, wie Sie Protokolle erfassen.
+Diese Befehle werden von Image Builder gelesen und in den AIB-Protokollen („customization.log“) dokumentiert. Auf der Seite zur [Problembehandlung](image-builder-troubleshoot.md#customization-log) erfahren Sie, wie Sie Protokolle erfassen.
  
 ## <a name="properties-distribute"></a>Eigenschaften: distribute
 
@@ -395,31 +491,64 @@ Azure Image Builder unterstützt drei Verteilungsziele:
 - **sharedImage:** Katalog mit freigegebenen Images
 - **VHD:** VHD in einem Speicherkonto
 
-Sie können ein Image in einer Konfiguration an beide Zieltypen verteilen. Informationen dazu finden Sie in den [Beispielen](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
+Sie können ein Image in ein und derselben Konfiguration an beide Zieltypen verteilen.
 
-Da Sie mehrere Verteilungsziele verwenden können, verwaltet Image Builder für jedes Verteilungsziel einen Zustand, auf den durch Abfragen von `runOutputName` zugegriffen werden kann.  `runOutputName` ist ein Objekt, das Sie nach der Verteilung abfragen können, um Informationen über die Verteilung abzurufen. Sie können beispielsweise den Speicherort der VHD oder die Regionen abfragen, in denen die Imageversion repliziert wurde. Dies ist eine Eigenschaft aller Verteilungsziele. `runOutputName` muss für jedes Verteilungsziel eindeutig sein.
- 
+> [!NOTE]
+> Der standardmäßige AIB-Sysprep-Befehl enthält „/mode:vm“ nicht. Dies ist jedoch möglicherweise erforderlich, wenn Sie Images erstellen, in denen die HyperV-Rolle installiert ist. Wenn Sie dieses Befehlsargument hinzufügen müssen, müssen Sie den Sysprep-Befehl überschreiben.
+
+Da Sie mehrere Verteilungsziele verwenden können, verwaltet Image Builder für jedes Verteilungsziel einen Zustand, auf den durch Abfragen von `runOutputName` zugegriffen werden kann.  `runOutputName` ist ein Objekt, das Sie nach der Verteilung abfragen können, um Informationen über die Verteilung abzurufen. Sie können beispielsweise den Speicherort der VHD oder die Regionen abfragen, in denen die Imageversion repliziert wurde. Dies ist eine Eigenschaft aller Verteilungsziele. `runOutputName` muss für jedes Verteilungsziel eindeutig sein. Das folgende Beispiel fragt eine Shared Image Gallery-Distribution ab:
+
+```bash
+subscriptionID=<subcriptionID>
+imageResourceGroup=<resourceGroup of image template>
+runOutputName=<runOutputName>
+
+az resource show \
+        --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
+        --api-version=2020-02-14
+```
+
+Ausgabe:
+```json
+{
+  "id": "/subscriptions/xxxxxx/resourcegroups/rheltest/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/rhel77",
+  "identity": null,
+  "kind": null,
+  "location": null,
+  "managedBy": null,
+  "name": "rhel77",
+  "plan": null,
+  "properties": {
+    "artifactId": "/subscriptions/xxxxxx/resourceGroups/aibDevOpsImg/providers/Microsoft.Compute/galleries/devOpsSIG/images/rhel/versions/0.24105.52755",
+    "provisioningState": "Succeeded"
+  },
+  "resourceGroup": "rheltest",
+  "sku": null,
+  "tags": null,
+  "type": "Microsoft.VirtualMachineImages/imageTemplates/runOutputs"
+}
+```
+
 ### <a name="distribute-managedimage"></a>Distribute: managedImage
 
 Die Imageausgabe ist eine verwaltete Imageressource.
 
 ```json
-"distribute": [
-        {
-"type":"managedImage",
+{
+       "type":"managedImage",
        "imageId": "<resource ID>",
        "location": "<region>",
        "runOutputName": "<name>",
        "artifactTags": {
             "<name": "<value>",
-             "<name>": "<value>"
-               }
-         }]
+            "<name>": "<value>"
+        }
+}
 ```
  
 Verteilungseigenschaften:
 - **type:** managedImage 
-- **imageId:** die Ressourcen-ID des Zielimages; das folgende Format wird erwartet: /subscriptions/\<Abonnement-ID>/resourceGroups/\<Ziel-Ressourcengruppenname>/providers/Microsoft.Compute/images/\<Imagename>
+- **imageId:** die Ressourcen-ID des Zielimages; das folgende Format wird erwartet: /subscriptions/\<subscriptionId>/resourceGroups/\<destinationResourceGroupName>/providers/Microsoft.Compute/images/\<imageName>
 - **location:** der Speicherort des verwalteten Images.  
 - **runOutputName:** eindeutiger Name zur Identifikation der Verteilung.  
 - **artifactTags:** optionale vom Benutzer angegebene Schlüssel-Wert-Paar-Tags.
@@ -438,46 +567,56 @@ Ein Katalog mit freigegebenen Images besteht aus:
 - Imagedefinitionen: eine konzeptionelle Gruppierung von Images. 
 - Imageversionen: ein Imagetyp für die Bereitstellung einer VM oder Skalierungsgruppe. Imageversionen können in andere Regionen repliziert werden, in denen VMs bereitgestellt werden müssen.
  
-Bevor Sie ein Image an den Imagekatalog verteilen können, müssen Sie einen Katalog und eine Imagedefinition erstellen. Informationen dazu finden Sie unter [Erstellen eines Katalogs mit freigegebenen Images mit der Azure-Befehlszeilenschnittstelle](shared-images.md). 
+Bevor Sie ein Image an den Imagekatalog verteilen können, müssen Sie einen Katalog und eine Imagedefinition erstellen. Informationen dazu finden Sie unter [Erstellen eines Katalogs mit freigegebenen Images mit der Azure-Befehlszeilenschnittstelle](../shared-images-cli.md). 
 
 ```json
 {
-     "type": "sharedImage",
-     "galleryImageId": “<resource ID>”,
-     "runOutputName": "<name>",
-     "artifactTags": {
-          "<name": "<value>",
-           "<name>": "<value>"
-             }
-     "replicationRegions": [
+    "type": "SharedImage",
+    "galleryImageId": "<resource ID>",
+    "runOutputName": "<name>",
+    "artifactTags": {
+        "<name>": "<value>",
+        "<name>": "<value>"
+    },
+    "replicationRegions": [
         "<region where the gallery is deployed>",
         "<region>"
-    ]}
+    ]
+}
 ``` 
 
 Verteilungseigenschaften für Kataloge mit freigegebenen Images:
 
 - **type:** sharedImage  
-- **galleryImageId:** ID des Katalogs mit freigegebenen Images. Das Format lautet: /subscriptions/\<Abonnement-ID>/resourceGroups/\<Ressourcengruppenname>/providers/Microsoft.Compute/galleries/\<NameDesKatalogsMitFreigegebenenImages>/images/\<Imagekatalogname>.
+- **galleryImageId**: ID der Shared Image Gallery, die in zwei Formaten angegeben werden kann:
+    * Automatische Versionsverwaltung: Image Builder generiert eine monotone Versionsnummer für Sie. Dies ist nützlich, wenn Sie weiterhin Images aus derselben Vorlage neu erstellen möchten: Das Format ist `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>`.
+    * Explizite Versionsverwaltung: Sie können die Versionsnummer übergeben, die von Image Builder verwendet werden soll. Das Format ist `/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
+
 - **runOutputName:** eindeutiger Name zur Identifikation der Verteilung.  
 - **artifactTags:** optionale vom Benutzer angegebene Schlüssel-Wert-Paar-Tags.
-- **replicationRegions:** Array von Regionen für die Replikation. In einer der hier enthaltenen Regionen muss der Katalog bereitgestellt werden.
- 
+- **replicationRegions:** Array von Regionen für die Replikation. In einer der hier enthaltenen Regionen muss der Katalog bereitgestellt werden. Das Hinzufügen von Regionen bedeutet eine Erhöhung der Buildzeit, da der Build erst abgeschlossen wird, wenn die Replikation fertig ist.
+- **excludeFromLatest** (optional): Hiermit können Sie die von Ihnen erstellte Imageversion markieren, die nicht als neueste Version in der SIG-Definition verwendet wird. Der Standardwert ist „false“.
+- **storageAccountType** (optional): AIB unterstützt die Angabe dieser Speichertypen für die Imageversion, die erstellt werden soll:
+    * „Standard_LRS“
+    * „Standard_ZRS“
+
+
 > [!NOTE]
-> Sie können Azure Image Builder in einer Region verwenden, in der sich der Katalog nicht befindet, jedoch muss der Azure Image Builder-Dienst das Image zwischen den Rechenzentren übertragen, was länger dauert. Image Builder versieht das Image automatisch mit einer Version, basierend auf einem monotonen Integer, den Sie derzeit nicht festlegen können. 
+> Wenn sich die Imagevorlage und die referenzierten `image definition` nicht am gleichen Standort befinden, wird zusätzliche Zeit zum Erstellen von Images angezeigt. Image Builder verfügt derzeit nicht über einen `location`-Parameter für die Imageversionsressource, daher nehmen wir ihn von seiner übergeordneten `image definition`. Wenn sich z. B. eine Imagedefinition in „westus“ (USA, Westen) befindet und Sie möchten, dass die Imageversion nach „eastus“ (USA, Osten) repliziert wird, wird ein Blob nach „westus“ kopiert. Daraus wird eine Imageversionsressource in „westus“ erstellt und dann nach „eastus“ repliziert. Stellen Sie zur Vermeidung der zusätzlichen Replikationszeit sicher, dass sich `image definition` und die Imagevorlage am selben Standort befinden.
+
 
 ### <a name="distribute-vhd"></a>Distribute: VHD  
 Sie können die Ausgabe in einer VHD erstellen. Anschließend können Sie die VHD kopieren und für die Veröffentlichung im Azure Marketplace oder mit Azure Stack verwenden.  
 
 ```json
- { 
-     "type": "VHD",
-     "runOutputName": "<VHD name>",
-     "tags": {
-          "<name": "<value>",
-           "<name>": "<value>"
-             }
- }
+{ 
+    "type": "VHD",
+    "runOutputName": "<VHD name>",
+    "tags": {
+        "<name": "<value>",
+        "<name>": "<value>"
+    }
+}
 ```
  
 Betriebssystemunterstützung: Windows und Linux
@@ -497,17 +636,45 @@ az resource show \
 
 > [!NOTE]
 > Kopieren Sie die VHD so bald wie möglich an einen anderen Speicherort, sobald diese erstellt wurde. Die VHD wird in einem Speicherkonto in der temporären Ressourcengruppe gespeichert, die erstellt wird, wenn die Imagevorlage an den Azure Image Builder-Dienst übermittelt wird. Wenn Sie die Imagevorlage löschen, wird auch die VHD gelöscht. 
- 
+
+## <a name="image-template-operations"></a>Vorgänge für Imagevorlagen
+
+### <a name="starting-an-image-build"></a>Starten der Imageerstellung
+Um einen Build zu starten, müssen Sie „Ausführen“ für die Imagevorlagenressource aufrufen. Beispiele für `run`-Befehle:
+
+```PowerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Run -Force
+```
+
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Run 
+```
+
+### <a name="cancelling-an-image-build"></a>Abbrechen einer Imageerstellung
+Wenn Sie eine Imageerstellung ausführen, die Ihrer Meinung nach fehlerhaft ist, auf Benutzereingaben wartet oder von der Sie glauben, dass sie nie erfolgreich abgeschlossen werden kann, können Sie die Erstellung abbrechen.
+
+Der Build kann jederzeit abgebrochen werden. Wenn die Verteilungsphase begonnen hat, können Sie immer noch abbrechen, aber Sie müssen alle Images bereinigen, die möglicherweise nicht abgeschlossen sind. Der Abbruchbefehl wartet nicht auf den Abschluss des Abbruchs. Überwachen Sie `lastrunstatus.runstate` auf den Fortschritt des Abbruchs, indem Sie diese [Statusbefehle](image-builder-troubleshoot.md#customization-log) verwenden.
+
+
+Beispiele für `cancel`-Befehle:
+
+```powerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Cancel -Force
+```
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Cancel 
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 JSON-Beispieldateien für verschiedene Szenarios finden Sie im [GitHub-Repository für Azure Image Builder](https://github.com/danielsollondon/azvmimagebuilder).
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 

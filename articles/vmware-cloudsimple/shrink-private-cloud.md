@@ -1,19 +1,19 @@
 ---
-title: Verkleinern einer privaten Cloud für die Azure-VMware-Lösung von CloudSimple
-description: Beschreibt, wie Sie eine private Cloud von CloudSimple verkleinern.
-author: sharaths-cs
-ms.author: b-shsury
+title: Verkleinern einer privaten Cloud für Azure VMware Solution by CloudSimple
+description: Hier erfahren Sie, wie Sie eine private Cloud in CloudSimple dynamisch verkleinern, indem Sie einen Knoten aus einem vorhandenen vSphere-Cluster oder einen gesamten Cluster entfernen.
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 07/01/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00d0067fe51efef8efffe31860e16f4530adf3ac
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a99b9b56f17b78a98f37d47dcefab26dd9c859de
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972369"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899132"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>Verkleinern einer privaten Cloud von CloudSimple
 
@@ -24,7 +24,8 @@ CloudSimple bietet die Flexibilität, eine private Cloud dynamisch zu verkleiner
 Folgende Bedingungen müssen für das Verkleinern einer privaten Cloud erfüllt sein.  Verwaltungscluster (erster Cluster), die beim Erstellen einer privaten Cloud angelegt wurden, können nicht gelöscht werden.
 
 * Ein vSphere-Cluster muss aus drei Knoten bestehen.  Ein Cluster mit nur drei Knoten kann nicht verkleinert werden.
-* Der gesamte Speicherverbrauch darf die Gesamtkapazität nach dem Verkleinern des Clusters nicht überschreiten. 
+* Der gesamte Speicherverbrauch darf die Gesamtkapazität nach dem Verkleinern des Clusters nicht überschreiten.
+* Überprüfen Sie, ob die DRS-Regeln (Distributed Resource Scheduler) die vMotion-Ausführung eines virtuellen Computers verhindern.  Deaktivieren oder löschen Sie die Regeln, wenn Regeln vorhanden sind.  DRS-Regeln schließen virtuelle Computer zum Hosten von Affinitätsregeln ein.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -53,6 +54,11 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 8. Klicken Sie auf **Senden**, um die private Cloud zu verkleinern.
 
 Die Verkleinerung der privaten Cloud wird gestartet.  Sie können den Status unter „Aufgaben“ verfolgen.  Der Verkleinerungsprozess kann je nach den Daten, die mit vSAN erneut synchronisiert werden müssen, einige Stunden dauern.
+
+> [!NOTE]
+> 1. Wenn Sie eine private Cloud verkleinern, indem Sie den letzten bzw. den einzigen Cluster im Rechenzentrum löschen, wird das Rechenzentrum nicht gelöscht.
+> 2. Wenn eine DRS-Regelverletzung auftritt, wird der Knoten nicht aus dem Cluster entfernt und in der Aufgabenbeschreibung wird angezeigt, dass durch das Entfernen eines Knotens die DRS-Regeln im Cluster verletzt werden.    
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

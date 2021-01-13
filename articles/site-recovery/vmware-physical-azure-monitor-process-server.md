@@ -1,18 +1,18 @@
 ---
 title: Überwachen des Azure Site Recovery-Prozessservers
-description: In diesem Artikel wird beschrieben, wie Sie den Azure Site Recovery-Prozessserver überwachen.
+description: In diesem Artikel wird beschrieben, wie der Azure Site Recovery-Prozessserver überwacht wird, der für die Notfallwiederherstellung der VMware-VM bzw. des physischen Servers verwendet wird
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 00b424672b505a5bb3d576c0ca4d8e334e2a1753
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383203"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86134745"
 ---
 # <a name="monitor-the-process-server"></a>Überwachen des Prozessservers
 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie den [Site Recovery](site-recovery-ov
 
 [Erfahren Sie mehr](vmware-physical-azure-config-process-server-overview.md) über die Rolle und die Bereitstellung von Prozessservern.
 
-## <a name="monitoring-overview"></a>Übersicht zur Überwachung
+## <a name="monitoring-overview"></a>Übersicht über die Überwachung
 
 Da der Prozessserver so viele Rollen hat, insbesondere bei der Zwischenspeicherung, Komprimierung und Übertragung von replizierten Daten in Azure, ist es wichtig, die Integrität des Prozessservers kontinuierlich zu überwachen.
 
@@ -96,7 +96,7 @@ Außerdem können Sie Prozessserver im Tresor unter **Site Recovery-Infrastruktu
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Wenn Probleme mit dem Prozessserver auftreten, finden Sie Informationen unter [Problembehandlung des Prozessservers](vmware-physical-azure-troubleshoot-process-server.md).
-- Wenn Sie weitere Hilfe benötigen, können Sie Ihre Frage im [Azure Site Recovery-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) veröffentlichen. 
+- Wenn Sie weitere Hilfe benötigen, können Sie Ihre Frage auf der [Microsoft F&A-Seite für Azure Site Recovery](/answers/topics/azure-site-recovery.html) veröffentlichen. 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png

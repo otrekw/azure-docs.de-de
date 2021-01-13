@@ -3,19 +3,20 @@ title: Verwenden von Moderationsaufträgen mit .NET – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie das Content Moderator .NET SDK, um End-to-End-Inhaltsmoderationsaufträge für Bild- und Textinhalt in Azure Content Moderator zu initiieren.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.author: sajagtap
-ms.openlocfilehash: c291a914ae9e76ce548df2a52523d60b69f0a7b0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ec101786f33aa6f2525d685993d6b6c891ab2e9a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882716"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88936315"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>Definieren und Verwenden von Moderationsaufträgen (.NET)
 
@@ -67,8 +68,7 @@ Installieren Sie die folgenden NuGet-Pakete:
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -81,7 +81,7 @@ using System.Threading;
 Fügen Sie den folgenden Code hinzu, um einen Content Moderator-Client für Ihr Abonnement zu erstellen.
 
 > [!IMPORTANT]
-> Aktualisieren Sie die Felder **AzureRegion** und **CMSubscriptionKey** mit den Werten Ihres Regionsbezeichners und des Abonnementschlüssels.
+> Aktualisieren Sie die Felder **AzureEndpoint** und **CMSubscriptionKey** mit den Werten Ihrer Endpunkt-URL und Ihres Abonnementschlüssels.
 
 ```csharp
 /// <summary>
@@ -93,16 +93,9 @@ Fügen Sie den folgenden Code hinzu, um einen Content Moderator-Client für Ihr 
 public static class Clients
 {
     /// <summary>
-    /// The region/location for your Content Moderator account,
-    /// for example, westus.
-    /// </summary>
-    private static readonly string AzureRegion = "YOUR API REGION";
-
-    /// <summary>
     /// The base URL fragment for Content Moderator calls.
     /// </summary>
-    private static readonly string AzureBaseURL =
-        $"https://{AzureRegion}.api.cognitive.microsoft.com";
+    private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
     /// <summary>
     /// Your Content Moderator subscription key.
@@ -121,7 +114,7 @@ public static class Clients
         // Create and initialize an instance of the Content Moderator API wrapper.
         ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
 
-        client.Endpoint = AzureBaseURL;
+        client.Endpoint = AzureEndpoint;
         return client;
     }
 }
@@ -132,7 +125,7 @@ public static class Clients
 Fügen Sie der Klasse **Program** in „Program.cs“ die folgenden Konstanten und statischen Felder hinzu.
 
 > [!NOTE]
-> Legen Sie für die TeamName-Konstante den Namen fest, den Sie bei der Erstellung Ihres Content Moderator-Abonnements verwendet haben. Sie können die TeamName-Konstante von der [Website von Content Moderator](https://westus.contentmoderator.cognitive.microsoft.com/) beziehen.
+> Legen Sie für die TeamName-Konstante den Namen fest, den Sie bei der Erstellung Ihres Content Moderator-Abonnements verwendet haben. Sie können die TeamName-Konstante von der Website von Content Moderator beziehen.
 > Nachdem Sie sich angemeldet haben, klicken Sie im Menü **Einstellungen** (Zahnradsymbol) auf **Anmeldeinformationen**.
 >
 > Ihr Teamname ist der Wert des Felds **ID** im Abschnitt **API**.

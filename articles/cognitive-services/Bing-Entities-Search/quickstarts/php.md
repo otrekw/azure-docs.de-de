@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Senden einer Suchanforderung an die Bing-Entitätssuche-REST-API mithilfe von PHP'
+title: 'Schnellstart: Senden einer Suchanforderung an die REST-API mithilfe von PHP – Bing-Entitätssuche'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung zum Senden einer Anforderung an die Bing-Entitätssuche-REST-API mit PHP, und Sie erhalten eine JSON-Antwort.
 services: cognitive-services
@@ -8,16 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 5d57924a22ee097cfe7f492d18b8f84e7e658f41
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: fcb924b84865519e8def3b28f633f9752c038ca2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478958"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351417"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Schnellstart: Senden einer Suchanforderung an die Bing-Entitätssuche-REST-API mithilfe von PHP
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Verwenden Sie diese Schnellstartanleitung, um die Bing-Entitätssuche-API zum ersten Mal aufzurufen und die JSON-Antwort anzuzeigen. Diese einfache PHP-Anwendung sendet eine Nachrichtensuchabfrage an die API und zeigt die Antwort an. 
 
@@ -31,12 +36,13 @@ Diese Anwendung ist zwar in PHP geschrieben, an sich ist die API aber ein RESTfu
 
 ## <a name="search-entities"></a>Durchsuchen von Entitäten
 
-Führen Sie die folgenden Schritte aus, um diese Anwendung auszuführen.
+Führen Sie die folgenden Schritte aus, um diese Anwendung auszuführen:
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues PHP-Projekt.
 2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
-4. Führen Sie das Programm aus.
+4. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
+5. Führen Sie das Programm aus.
 
 ```php
 <?php
@@ -45,8 +51,8 @@ Führen Sie die folgenden Schritte aus, um diese Anwendung auszuführen.
 // ;extension=php_openssl.dll
 
 // **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+// **_ Update or verify the following values. _*_
+// _*********************************************
 
 // Replace the subscriptionKey string value with your valid subscription key.
 $subscriptionKey = 'ENTER KEY HERE';
@@ -82,7 +88,7 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**Antwort**
+## <a name="example-json-response"></a>JSON-Beispielantwort
 
 Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
@@ -153,4 +159,4 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 > [Erstellen einer Einzelseiten-Web-App](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Was ist die Bing-Entitätssuche-API?](../overview.md )
-* [Referenz zur Bing-Entitätssuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Referenz zur Bing-Entitätssuche-API](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

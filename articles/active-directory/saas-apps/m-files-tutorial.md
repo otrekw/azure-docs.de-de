@@ -1,25 +1,22 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit M-Files | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit M-Files | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und M-Files konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4536fd49-3a65-4cff-9620-860904f726d0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: c41da4417d230b49927ff203efce2b9f4ec0b6b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0df9e4722136dafe94d1bfc84a7767e1e0144d69
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097660"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997221"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Tutorial: Azure Active Directory-Integration mit M-Files
 
@@ -30,7 +27,7 @@ Die Integration von M-Files in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei M-Files angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -136,11 +133,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit M-Files 
 
 1. Öffnen Sie das Fenster **M-Files Desktop Settings** (M-Files-Desktopeinstellungen). Klicken Sie anschließend auf **Hinzufügen**.
    
-    ![Configure single sign-on](./media/m-files-tutorial/tutorial_m_files_10.png)
+    ![Screenshot: Abschnitt „M-Files Desktop Settings“ (M-Files-Desktopeinstellungen), in dem Sie „Add“ (Hinzufügen) auswählen können](./media/m-files-tutorial/tutorial_m_files_10.png)
 
 1. Führen Sie im Fenster **Document Vault Connection Properties** (Eigenschaften von Dokumenttresorverbindung) die folgenden Schritte aus:
    
-    ![Configure single sign-on](./media/m-files-tutorial/tutorial_m_files_11.png)  
+    ![Screenshot: Abschnitt „Document Vault Connection Properties“ (Eigenschaften von Dokumenttresorverbindung), in dem Sie die beschriebenen Werte eingeben können](./media/m-files-tutorial/tutorial_m_files_11.png)  
 
     Geben Sie im Abschnitt „Server“ die Werte wie folgt ein:  
 
@@ -179,7 +176,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -189,7 +186,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste **M-Files**aus.
+2. Wählen Sie in der Anwendungsliste **M-Files** aus.
 
     ![M-Files-Link in der Anwendungsliste](common/all-applications.png)
 
@@ -215,13 +212,12 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „M-Files“ klicken, sollten Sie automatisch bei der M-Files-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „M-Files“ klicken, sollten Sie automatisch bei der M-Files-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

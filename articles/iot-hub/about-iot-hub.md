@@ -5,15 +5,20 @@ author: nberdy
 ms.author: nberdy
 ms.date: 08/08/2019
 ms.topic: overview
-ms.custom: mvc
+ms.custom:
+- mvc
+- amqp
+- mqtt
+- 'role: Direction'
+- 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 0dde7bd9bd3372f0f5eddbbd56727eca3ae4a9dd
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: a460d77a032f36505c8036bc60aa37017f630e55
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950464"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501140"
 ---
 # <a name="what-is-azure-iot-hub"></a>Was ist Azure IoT Hub?
 
@@ -35,7 +40,7 @@ IoT Hub bietet einen sicheren Kommunikationskanal, über den Ihre Geräte Daten 
 
 * Sie verfügen über vollständige Kontrolle über den Gerätezugriff und können Verbindungen pro Gerät steuern.
 
-* Der [IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/) stellt Geräte automatisch für die richtige IoT Hub-Instanz bereit, wenn das Gerät zum ersten Mal gestartet wird.
+* Der [IoT Hub Device Provisioning Service](../iot-dps/index.yml) stellt Geräte automatisch für die richtige IoT Hub-Instanz bereit, wenn das Gerät zum ersten Mal gestartet wird.
 
 * Mehrere Authentifizierungstypen unterstützen eine Vielzahl von Gerätefunktionen:
 
@@ -59,13 +64,13 @@ Integrierte Funktionen für die Nachrichtenweiterleitung sorgen für Flexibilit�
 
 Sie können IoT Hub in andere Azure-Dienste integrieren, um vollständige End-to-End-Lösungen zu erstellen. Verwenden Sie z.B. Folgendes:
 
-* [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/): Mit diesem Dienst können Sie schnell, zuverlässig, skalierbar und sicher auf kritische Ereignisse reagieren.
+* [Azure Event Grid](../event-grid/index.yml): Mit diesem Dienst können Sie schnell, zuverlässig, skalierbar und sicher auf kritische Ereignisse reagieren.
 
-* [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/): Mit diesem Dienst automatisieren Sie Ihre Geschäftsprozesse.
+* [Azure Logic Apps](../logic-apps/index.yml): Mit diesem Dienst automatisieren Sie Ihre Geschäftsprozesse.
 
-* [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/): Mit diesem Dienst fügen Sie Ihrer Lösung Modelle für maschinelles Lernen und KI hinzu.
+* [Azure Machine Learning](iot-hub-weather-forecast-machine-learning.md): Mit diesem Dienst fügen Sie Ihrer Lösung Modelle für maschinelles Lernen und KI hinzu.
 
-* [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/): Mit diesem Dienst führen Sie in Echtzeit Analyseberechnungen für die Datenströme aus Ihren Geräten aus.
+* [Azure Stream Analytics](../stream-analytics/index.yml): Mit diesem Dienst führen Sie in Echtzeit Analyseberechnungen für die Datenströme aus Ihren Geräten aus.
 
 ## <a name="configure-and-control-your-devices"></a>Konfigurieren und Steuern von Geräten
 
@@ -83,9 +88,10 @@ Für [IoT Hub besteht eine Vereinbarung zum Servicelevel](https://azure.microsof
 
 ## <a name="connect-your-devices"></a>Verbinden von Geräten
 
-Verwenden Sie die Bibliotheken des [Azure IoT-Geräte-SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks), um Anwendungen zu erstellen, die auf Ihren Geräten ausgeführt werden und mit IoT Hub interagieren. Zu den unterstützten Plattformen gehören verschiedene Linux-Distributionen, Windows und Echtzeit-Betriebssysteme. Unterstützte Sprachen:
+Verwenden Sie die Bibliotheken des [Azure IoT-Geräte-SDK](./iot-hub-devguide-sdks.md), um Anwendungen zu erstellen, die auf Ihren Geräten ausgeführt werden und mit IoT Hub interagieren. Zu den unterstützten Plattformen gehören verschiedene Linux-Distributionen, Windows und Echtzeit-Betriebssysteme. Unterstützte Sprachen:
 
 * C
+* Embedded C
 * C#
 * Java
 * Python
@@ -103,7 +109,7 @@ Falls Ihre Lösung die Gerätebibliotheken nicht nutzen kann, können die Gerät
 
 Wenn Ihre Lösung keines der unterstützten Protokolle nutzen kann, können Sie IoT Hub so erweitern, dass benutzerdefinierte Protokolle unterstützt werden:
 
-* Verwenden Sie [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/), um ein Bereichsgateway zu erstellen, das die Protokollübersetzung im Edge ausführt.
+* Verwenden Sie [Azure IoT Edge](../iot-edge/index.yml), um ein Bereichsgateway zu erstellen, das die Protokollübersetzung im Edge ausführt.
 
 * Passen Sie das [Azure IoT-Protokollgateway](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) so an, dass die Protokollübersetzung in der Cloud erfolgt.
 
@@ -111,12 +117,22 @@ Wenn Ihre Lösung keines der unterstützten Protokolle nutzen kann, können Sie 
 
 Für jedes Azure-Abonnement gelten standardmäßig bestimmte Kontingentgrenzen, um den Missbrauch von Diensten zu verhindern. Diese Grenzwerte können den Umfang Ihrer IoT-Lösung beeinträchtigen. Der derzeitige Grenzwert liegt bei 50 IoT Hub-Instanzen pro Abonnement. Wenden Sie sich an den Support, um eine Erhöhung des Kontingents anzufordern. Weitere Informationen finden Sie unter [IoT Hub-Kontingente und -Drosselung](iot-hub-devguide-quotas-throttling.md). Weitere Details zu Kontingentgrenzen finden Sie in einem der folgenden Artikel:
 
-* [Einschränkungen bei Azure-Abonnementdiensten](../azure-subscription-service-limits.md)
+* [Einschränkungen bei Azure-Abonnementdiensten](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [IoT Hub throttling and you](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
+
+## <a name="iot-hub-on-azure-stack-hub-preview"></a>IoT Hub in Azure Stack Hub (Vorschau)
+
+Mit IoT Hub in Azure Stack Hub (Vorschau) können Sie hybride IoT-Lösungen erstellen. IoT Hub ist ein verwalteter Dienst, der als zentraler Nachrichtenhub für die bidirektionale Kommunikation zwischen Ihrer IoT-Anwendung und den Geräten fungiert, die von der Anwendung verwaltet werden. Sie können IoT Hub in Azure Stack Hub verwenden, um IoT-Lösungen mit zuverlässiger und sicherer Kommunikation zwischen IoT-Geräten und Ihren lokalen Lösungen zu erstellen.
+
+Während der Public Preview-Phase ist IoT Hub in Azure Stack Hub kostenlos. Weitere Informationen finden Sie in der [Übersicht über IoT Hub in Azure Stack Hub](/azure-stack/operator/iot-hub-rp-overview).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Um eine umfassende IoT-Lösung zu testen, lesen Sie die Schnellstartanleitungen zu IoT Hub:
 
-* [Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub](quickstart-send-telemetry-node.md)
+* [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](quickstart-send-telemetry-node.md)
+
+Weitere Informationen zu den Möglichkeiten, wie Sie IoT-Lösungen mit Azure IoT erstellen und bereitstellen können, finden Sie unter:
+
+* [Grundlagen: Azure IoT-Technologien und -Lösungen](../iot-fundamentals/iot-services-and-technologies.md).

@@ -1,31 +1,44 @@
 ---
-title: 'Einrichten der Sicherheitsinformation (Vorschauversion) zur Verwendung von Sicherheitsfragen: Azure Active Directory | Microsoft-Dokumentation'
-description: So richten Sie Ihre Sicherheitsinformation ein, um Ihre Identität mithilfe vordefinierter Sicherheitsfragen zu bestätigen.
+title: Einrichten von Sicherheitsfragen als Überprüfungsmethode – Azure AD
+description: Erfahren Sie, wie Sie Ihre Seite mit den Sicherheitsinformationen (Vorschau) einrichten, um Ihre Identität mithilfe vordefinierter Sicherheitsfragen als Überprüfungsmethode zu verifizieren.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/13/2019
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1c375b64d93662ec50923078549c4f2153fba0a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.author: curtand
+ms.openlocfilehash: 0c55f15d12ddc51573f59f56c742a8cac525af0b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382808"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83744431"
 ---
-# <a name="set-up-security-info-preview-to-use-security-questions"></a>Einrichten der Sicherheitsinformation (Vorschauversion) zur Verwendung von Sicherheitsfragen
+# <a name="set-up-security-questions-as-your-verification-method"></a>Einrichten von Sicherheitsfragen als Überprüfungsmethode
 
 Mit diesen Schritten können Sie Ihre Methode für die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformation** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
 
-Wenn Sie eine Methode für die Kennwortzurücksetzung eingerichtet haben, müssen Sie auch eine zweistufige Überprüfungsmethode per [Authentifikator-App](security-info-setup-auth-app.md), [SMS](security-info-setup-text-msg.md) oder [Telefonanruf](security-info-setup-phone-number.md) einrichten.
-
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+>[!Note]
+>Wenn die Option für Sicherheitsfragen nicht angezeigt wird, ist es möglich, dass Ihre Organisation die Verwendung dieser Option nicht als Kennwortzurücksetzungsmethode zulässt. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an den Helpdesk Ihrer Organisation wenden, um weitere Hilfe zu erhalten.
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Authentifizierung mittels Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
+
+Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
+
+| Methode | Syntaxelemente |
+| ------ | -------- |
+| Authenticator-App | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Textnachrichten | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Telefonanrufe | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Sicherheitsschlüssel | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| E-Mail-Konto | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
+| Sicherheitsfragen | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
 
 ## <a name="set-up-your-security-questions-from-the-security-info-page"></a>Einrichten Ihrer Sicherheitsfragen auf der Seite „Sicherheitsinformation“
 
@@ -42,7 +55,7 @@ Wenn Sie Sicherheitsfragen verwenden, wird empfohlen, diese in Verbindung mit ei
 
 ### <a name="to-set-up-your-security-questions"></a>So richten Sie Ihre Sicherheitsfragen ein
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf.
 
     ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile-page.png)
 
@@ -87,13 +100,13 @@ Basierend auf der Aktion, die Sie ausführen möchten, stehen zusätzliche Mögl
 
 - **Sicherheitsschlüssel:** Registrieren Sie Ihren Microsoft-kompatiblen Sicherheitsschlüssel, und verwenden Sie ihn zusammen mit einer PIN für die zweistufige Überprüfung oder die Kennwortzurücksetzung. Unter [Einrichten der Sicherheitsinformationen zur Verwendung eines Sicherheitsschlüssels (Vorschau)](security-info-setup-security-key.md) erfahren Sie Schritt für Schritt, wie Sie Ihre Identität mithilfe eines Sicherheitsschlüssels bestätigen.
 
-- **E-Mail-Adresse:** Geben Sie Ihre Geschäfts-, Schul- oder Uni-E-Mail-Adresse an, um eine E-Mail für die Kennwortzurücksetzung zu erhalten. Diese Option ist für die zweistufige Überprüfung nicht verfügbar. Ausführliche Anweisungen zum Einrichten Ihrer E-Mail-Adresse finden Sie unter [Einrichten der Sicherheitsinformationen zur Verwendung einer E-Mail-Adresse](security-info-setup-email.md).
+- **E-Mail-Adresse:** Geben Sie Ihre Geschäfts-, Schul- oder Uni-E-Mail-Adresse an, um eine E-Mail für die Kennwortzurücksetzung zu erhalten. Diese Option ist für die zweistufige Überprüfung nicht verfügbar. Ausführliche Anweisungen zum Einrichten Ihrer E-Mail-Adresse finden Sie unter [Einrichten der Sicherheitsinformation zur Verwendung einer E-Mail-Adresse](security-info-setup-email.md).
 
     >[!Note]
     >Wenn einige dieser Optionen fehlen, sind die entsprechenden Methoden in Ihrer Organisation wahrscheinlich nicht zugelassen. In diesem Fall müssen Sie eine verfügbare Methode auswählen oder sich an Ihren Administrator wenden, um weitere Unterstützung zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](user-help-reset-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
+- Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](active-directory-passwords-update-your-own-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
 
 - Der Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) enthält Tipps zur Problembehandlung bei Anmeldeproblemen.

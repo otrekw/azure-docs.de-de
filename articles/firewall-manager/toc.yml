@@ -1,0 +1,88 @@
+- name: Dokumentation für Azure Firewall Manager
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Was ist Azure Firewall Manager?
+      href: overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: 'Geschützter virtueller Hub: ARM-Vorlage'
+      displayName: Resource Manager
+      href: quick-secure-virtual-hub.md
+- name: Tutorials
+  items:
+    - name: 'Schützen Ihres virtuellen Hubs: Portal'
+      href: secure-cloud-network.md
+    - name: 'Schützen Ihres virtuellen Hubs: PowerShell'
+      href: secure-cloud-network-powershell.md
+    - name: 'Schützen Ihres virtuellen Hubnetzwerks: Portal'
+      href: secure-hybrid-network.md
+- name: Konzepte
+  items:
+    - name: Übersicht über Policy
+      href: policy-overview.md
+    - name: Was ist ein geschützter virtueller Hub?
+      href: secured-virtual-hub.md
+    - name: Allgemeiner Bereitstellungsprozess
+      href: deployment-overview.md
+    - name: Sicherheitspartneranbieter
+      href: trusted-security-partners.md
+    - name: Schützen von Hubs mithilfe von Check Point Cloudguard Connect
+      href: check-point-overview.md
+    - name: IP-Adressgruppen
+      href: ip-groups.md
+    - name: Regelverarbeitungslogik
+      href: rule-processing.md
+    - name: Architekturoptionen
+      href: vhubs-and-vnets.md
+    - name: Threat Intelligence-Einstellungen
+      href: threat-intelligence-settings.md
+    - name: FQDN in Netzwerkregeln
+      href: fqdn-filtering-network-rules.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
+- name: Anleitungen
+  items:
+    - name: Bereitstellen von Sicherheitspartneranbietern
+      href: deploy-trusted-security-partner.md
+    - name: 'Migrieren zur Firewallrichtlinie: PowerShell'
+      href: migrate-to-policy.md
+    - name: DNS-Einstellungen
+      href: dns-settings.md
+    - name: 'Bereitstellen mehrerer öffentlicher IP-Adressen: PowerShell'
+      href: multiple-public-ip-powershell.md
+    - name: Definieren einer Regelhierarchie
+      href: rule-hierarchy.md
+- name: Verweis
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/azure-firewall/network/firewall/policy
+    - name: Azure PowerShell
+      href: /powershell/module/az.network/new-azfirewallpolicy
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/virtualnetwork/firewallpolicies
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/management/overview.md
+- name: Ressourcen
+  items:
+    - name: Verfassen von Vorlagen
+      href: ../azure-resource-manager/templates/template-syntax.md
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Communityvorlagen
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/azure-firewall/'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/regions/services/'

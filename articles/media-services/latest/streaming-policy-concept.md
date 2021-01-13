@@ -3,24 +3,24 @@ title: Streamingrichtlinien in Azure Media Services | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, was Streamingrichtlinien sind und wie sie in Azure Media Services verwendet werden.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/28/2019
-ms.author: juliako
-ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: inhenkel
+ms.openlocfilehash: 9ecb4e0b8a74a163632967781c84d1a110ab3a9a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66392922"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89297211"
 ---
 # <a name="streaming-policies"></a>Streamingrichtlinien
 
-In Azure Media Services v3 können Sie mithilfe von [Streamingrichtlinien](https://docs.microsoft.com/rest/api/media/streamingpolicies) Streamingprotokolle und Verschlüsselungsoptionen für Ihre [Streaminglocator](streaming-locators-concept.md) definieren. Media Services v3 bietet einige vordefinierte Streamingrichtlinien, die Sie direkt für Tests oder in der Produktion verwenden können. 
+In Azure Media Services v3 können Sie mithilfe von [Streamingrichtlinien](/rest/api/media/streamingpolicies) Streamingprotokolle und Verschlüsselungsoptionen für Ihre [Streaminglocator](streaming-locators-concept.md) definieren. Media Services v3 bietet einige vordefinierte Streamingrichtlinien, die Sie direkt für Tests oder in der Produktion verwenden können. 
 
 Die folgenden vordefinierten Streamingrichtlinien sind aktuell verfügbar:<br/>
 * „Predefined_DownloadOnly“
@@ -34,21 +34,21 @@ Die folgenden „Entscheidungsstruktur“ hilft Ihnen bei der Auswahl einer vord
 
 > [!IMPORTANT]
 > * Eigenschaften von **Streamingrichtlinien** vom Datetime-Typ liegen immer im UTC-Format vor.
-> * Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. Weitere Informationen finden Sie unter [Kontingente und Einschränkungen](limits-quotas-constraints.md).
+> * Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. Weitere Informationen finden Sie unter [Kontingente und Grenzwerte](limits-quotas-constraints.md).
 
 ## <a name="decision-tree"></a>Entscheidungsstruktur
 
 Klicken Sie auf Bild, um es in voller Größe anzeigen.  
 
-<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
+[![Diagramm mit einer Entscheidungsstruktur, die Sie bei der Auswahl einer vordefinierten Streamingrichtlinie für Ihr Szenario unterstützen soll.](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
 Werden Ihre Inhalte verschlüsselt, müssen Sie eine [Richtlinie für Inhaltsschlüssel](content-key-policy-concept.md) erstellen. Zum Streamen oder Herunterladen in Klartext ist die **Richtlinie für Inhaltsschlüssel** nicht erforderlich. 
 
-Wenn Sie besondere Anforderungen haben (wenn Sie z. B. verschiedene Protokolle angeben möchten oder einen benutzerdefinierten Schlüsselbereitstellungsdienst oder eine klare Audiospur verwenden müssen), können Sie eine benutzerdefinierte Streamingrichtlinie [erstellen](https://docs.microsoft.com/rest/api/media/streamingpolicies/create). 
+Wenn Sie besondere Anforderungen haben (wenn Sie z. B. verschiedene Protokolle angeben möchten oder einen benutzerdefinierten Schlüsselbereitstellungsdienst oder eine klare Audiospur verwenden müssen), können Sie eine benutzerdefinierte Streamingrichtlinie [erstellen](/rest/api/media/streamingpolicies/create). 
 
 ## <a name="get-a-streaming-policy-definition"></a>Abrufen einer Streamingrichtliniendefinition  
 
-Wenn Sie die Definition einer Streamingrichtlinie anzeigen möchten, verwenden Sie [Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) und geben den Namen der Richtlinie an. Beispiel:
+Wenn Sie die Definition einer Streamingrichtlinie anzeigen möchten, verwenden Sie [Get](/rest/api/media/streamingpolicies/get) und geben den Namen der Richtlinie an. Beispiel:
 
 ### <a name="rest"></a>REST
 

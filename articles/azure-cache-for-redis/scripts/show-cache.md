@@ -1,26 +1,20 @@
 ---
-title: Azure CLI-Skriptbeispiel – Abrufen von Details zu einer Azure Cache for Redis-Instanz | Microsoft-Dokumentation
-description: Azure CLI-Skriptbeispiel – Abrufen von Details zu einer Azure Cache for Redis-Instanz
-services: cache
-documentationcenter: ''
+title: 'Abrufen von Details zu einer Azure Cache for Redis-Instanz: Azure CLI'
+description: In diesem Azure CLI-Codebeispiel erfahren Sie, wie die Details einer Azure Cache for Redis-Instanz abgerufen werden, einschließlich ihres Bereitstellungsstatus.
 author: yegu-ms
-manager: jhubbard
-editor: ''
+ms.author: yegu
 tags: azure-service-management
-ms.assetid: 155924e6-00d5-4a8c-ba99-5189f300464a
 ms.service: cache
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.topic: sample
 ms.date: 08/30/2017
-ms.author: yegu
-ms.openlocfilehash: 8b4c0311f935fa141170206f51e01b90eb4b98ae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 8901847a1c214b257243c4da0a74897061409bee
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60240293"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184245"
 ---
 # <a name="get-details-of-an-azure-cache-for-redis"></a>Abrufen von Details zu einer Azure Cache for Redis-Instanz
 
@@ -38,11 +32,11 @@ Dieses Skript verwendet die folgenden Befehle, um die Details einer Azure Cache 
 
 | Get-Help | Notizen |
 |---|---|
-| [az redis show](https://docs.microsoft.com/cli/azure/redis) | Ruft Details zu einer Azure Cache for Redis-Instanz ab. |
+| [az redis show](/cli/azure/redis) | Ruft Details zu einer Azure Cache for Redis-Instanz ab. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
 Zusätzliche Azure Cache for Redis-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure Cache for Redis](../cli-samples.md).

@@ -1,19 +1,19 @@
 ---
-title: 'Herunterladen von VPN-Gerätekonfigurationsskripts für S2S-VPN-Verbindungen: Azure Resource Manager | Microsoft-Dokumentation'
+title: Herunterladen von VPN-Gerätekonfigurationsskripts für S2S-VPN-Verbindungen
 description: In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie VPN-Gerätekonfigurationsskripts für S2S-VPN-Verbindungen mit Azure-VPN-Gateways unter Verwendung von Azure Resource Manager herunterladen.
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: yushwang
-manager: rossort
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 01/09/2019
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: f7ee53c10c6597dbf98f8f85fc31fe789137471e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70d9a8069979a299ad3031de37c525438ab0159d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157606"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89394600"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Herunterladen von VPN-Gerätekonfigurationsskripts für S2S-VPN-Verbindungen
 
@@ -25,7 +25,7 @@ Die folgenden Geräte haben verfügbare Skripts:
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="about"></a>Informationen zu VPN-Gerätekonfigurationsskripts
+## <a name="about-vpn-device-configuration-scripts"></a><a name="about"></a>Informationen zu VPN-Gerätekonfigurationsskripts
 
 Eine standortübergreifende VPN-Verbindung besteht aus einem Azure-VPN-Gateway, einem lokalen VPN-Gerät und einem IPsec-S2S-VPN-Tunnel dazwischen. Der Workflow umfasst üblicherweise folgende Schritte:
 
@@ -77,7 +77,7 @@ Führen Sie nach der Erstellung der Verbindungsressource die folgenden Schritte 
 
 ## <a name="download-the-configuration-script-using-azure-powershell"></a>Herunterladen des Konfigurationsskripts mithilfe von Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 Das Konfigurationsskript kann auch mithilfe von Azure PowerShell heruntergeladen werden, wie im folgenden Beispiel gezeigt:
 

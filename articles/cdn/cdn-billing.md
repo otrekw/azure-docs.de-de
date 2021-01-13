@@ -1,9 +1,9 @@
 ---
 title: Grundlegendes zur Abrechnung für Azure CDN | Microsoft-Dokumentation
-description: In diesen häufig gestellten Fragen erfahren Sie, wie die Azure CDN-Abrechnung funktioniert.
+description: Erfahren Sie mehr über die Abrechnungsstruktur für Inhalte, die von Azure Content Delivery Network gehostet werden, einschließlich Abrechnungsregionen, Übermittlungsgebühren und Kostenverwaltung.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
-ms.author: magattus
-ms.openlocfilehash: 8704d715a20b94dc170f232b07a0acd54bb1e6f1
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.author: allensu
+ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996806"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018680"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Grundlegendes zur Abrechnung für Azure CDN
 
@@ -38,7 +38,7 @@ Eine Abrechnungsregion ist ein geografisches Gebiet, mit dem bestimmt wird, welc
 
 - Zone 5: Indien
 
-Informationen zu POP-Regionen (Point of Presence) finden Sie unter [Azure CDN-POP-Standorte nach Region](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Ein in Mexiko befindlicher POP gehört beispielsweise zur Region Nordamerika und daher zur Zone 1. 
+Informationen zu POP-Regionen (Point of Presence) finden Sie unter [Azure CDN-POP-Standorte nach Region](./cdn-pop-locations.md). Ein in Mexiko befindlicher POP gehört beispielsweise zur Region Nordamerika und daher zur Zone 1. 
 
 Weitere Informationen zur Azure CDN-Preisgestaltung finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/).
 
@@ -113,9 +113,10 @@ Wenn Sie einen der folgenden Azure-Dienste als CDN-Ursprung verwenden, wird Ihne
 - HDInsight
 - Azure Cosmos DB
 - Azure Data Lake Store
-- Azure Machine Learning-Dienst 
-- Azure SQL-Datenbank
+- Azure Machine Learning 
+- Azure SQL-Datenbank
+- Verwaltete Azure SQL-Instanz
 - Azure Cache for Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Wie verwalte ich meine Kosten besonders effektiv?
-Legen Sie eine möglichst lange Gültigkeitsdauer für Ihre Inhalte fest. 
+Legen Sie eine möglichst lange Gültigkeitsdauer für Ihre Inhalte fest.

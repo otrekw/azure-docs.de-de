@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 760f5c6c929aa082993683d7a466a71c6484289a
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 5d977fe0b7459af35f678e77681d3b27c31431cc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67148134"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85849188"
 ---
 # <a name="troubleshoot-data-copy-issues-in-azure-data-box-disk"></a>Behandeln von Problemen beim Kopieren von Daten in Azure Data Box Disk
 
@@ -32,7 +32,9 @@ Dies kann auf ein fehlerhaftes Dateisystem zurückzuführen sein.
 
 Das erneute Einbinden eines Laufwerks mit Lese-/Schreibzugriff funktioniert nicht mit Data Box Disk-Datenträgern. Dieses Szenario wird mit Laufwerken, die mit dislocker entschlüsselt werden, nicht unterstützt. Möglicherweise haben Sie das Gerät mithilfe des folgenden Befehls erfolgreich erneut eingebunden:
 
-    `# mount -o remount, rw /mnt/DataBoxDisk/mountVol1`
+```
+# mount -o remount, rw /mnt/DataBoxDisk/mountVol1
+```
 
 Das erneute Einbinden war zwar erfolgreich, die Daten werden jedoch nicht beibehalten.
 

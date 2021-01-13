@@ -5,18 +5,22 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/21/2019
+ms.date: 03/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 67f1293ecb5b69e09ad3ce4db35c3920e2dfd9ce
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 8b5cf3caaaf8c2360bc8555b38713d21aaf811ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178027"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84424728"
 ---
-| SSD Premium-Größen | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 |
-|-------------------|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
-| Datenträgergröße in GiB | 32 | 64 | 128 | 256 | 512 | 1024 | 2\.048 | 4\.096 | 8\.192 | 16.384 | 32.767 |
-| IOPS pro Datenträger | Bis zu 120 | Bis zu 240 | Bis zu 500 | Bis zu 1.100 | Bis zu 2.300 | Bis zu 5.000 | Bis zu 7.500 | Bis zu 7.500 | Bis zu 16.000 | Bis zu 18.000 | Bis zu 20.000 |
-| Durchsatz pro Datenträger | Bis zu 25 MiB/s | Bis zu 50 MiB/s | Bis zu 100 MiB/s | Bis zu 125 MiB/s | Bis zu 150 MiB/s | Bis zu 200 MiB/s | Bis zu 250 MiB/s | Bis zu 250 MiB/s| Bis zu 500 MiB/s | Bis zu 750 MiB/s | Bis zu 900 MiB/s |
+| SSD Premium-Größen | P1 | P2 | P3 | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 |
+|-------------------|----|----|----|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
+| Datenträgergröße in GiB | 4 | 8 | 16 | 32 | 64 | 128 | 256 | 512 | 1\.024 | 2\.048 | 4\.096 | 8\.192 | 16.384 | 32.767 |
+| Bereitgestellte IOPS pro Datenträger | 120 | 120 | 120 | 120 | 240 | 500 | 1\.100 | 2\.300 | 5\.000 | 7\.500 | 7\.500 | 16.000 | 18.000 | 20.000 |
+| Bereitgestellter Durchsatz pro Datenträger | 25 MB/s | 25 MB/s | 25 MB/s | 25 MB/s | 50 MB/s | 100 MB/s | 125 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s| 500 MB/s | 750 MB/s | 900 MB/s |
+| Max. Burst-IOPS pro Datenträger | 3\.500 | 3\.500 | 3\.500 | 3\.500 | 3\.500 | 3\.500 | 3\.500 | 3\.500 |
+| Max. Burstdurchsatz pro Datenträger | 170 MB/s | 170 MB/s | 170 MB/s | 170 MB/s | 170 MB/s | 170 MB/s | 170 MB/s | 170 MB/s |
+| Max. Burstdauer | 30 Min.  | 30 Min.  | 30 Min.  | 30 Min.  | 30 Min.  | 30 Min.  | 30 Min.  | 30 Min.  |
+| Qualifiziert für Reservierung | Nein  | Nein  | Nein  | Nein  | Nein  | Nein  | Nein  | Nein  | Ja, bis zu einem Jahr | Ja, bis zu einem Jahr | Ja, bis zu einem Jahr | Ja, bis zu einem Jahr | Ja, bis zu einem Jahr | Ja, bis zu einem Jahr |

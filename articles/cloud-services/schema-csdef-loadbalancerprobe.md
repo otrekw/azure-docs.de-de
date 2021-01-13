@@ -1,5 +1,6 @@
 ---
-title: Azure Cloud Services-Definition LoadBalancerProbe-Schema | Microsoft-Dokumentation
+title: Azure Cloud Services – Definition LoadBalancerProbe-Schema | Microsoft-Dokumentation
+description: Der vom Kunden definierte LoadBalancerProbe ist ein Integritätstest von Endpunkten in Rolleninstanzen. Er wird mit Web- oder Workerrollen in einer Dienstdefinitionsdatei kombiniert.
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -7,13 +8,13 @@ ms.service: cloud-services
 ms.topic: reference
 caps.latest.revision: 14
 author: georgewallace
-ms.author: gwallace
-ms.openlocfilehash: 6f82406772f650b4565f2c9240efe580545dcad9
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360610"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "79537345"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services-Definition LoadBalancerProbe-Schema
 Der Lastenausgleichstest ist ein vom Kunden definierter Integritätstest von UDP-Endpunkten und Endpunkten in Rolleninstanzen. `LoadBalancerProbe` ist kein eigenständiges Element; es wird mit der Webrolle oder der Workerrolle in einer Dienstdefinitionsdatei kombiniert. Ein `LoadBalancerProbe` kann von mehreren Rollen verwendet werden.
@@ -46,22 +47,22 @@ Das Element `LoadBalancerProbes` der Dienstdefinitionsdatei umfasst folgende Ele
 - [Element LoadBalancerProbes](#LoadBalancerProbes)
 - [Element LoadBalancerProbe](#LoadBalancerProbe)
 
-##  <a name="LoadBalancerProbes"></a> Element LoadBalancerProbes
+##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a> Element LoadBalancerProbes
 Das Element `LoadBalancerProbes` beschreibt die Sammlung von Lastenausgleichstests. Dieses Element ist dem [LoadBalancerProbe-Element](#LoadBalancerProbe) übergeordnet. 
 
-##  <a name="LoadBalancerProbe"></a> Element LoadBalancerProbe
+##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a> Element LoadBalancerProbe
 Das Element `LoadBalancerProbe` definiert den Integritätstest für ein Modell. Sie können mehrere Lastenausgleichstests definieren. 
 
 In der folgenden Tabelle sind die Attribute des `LoadBalancerProbe`-Elements beschrieben:
 
-|Attribut|type|BESCHREIBUNG|
+|attribute|type|BESCHREIBUNG|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Erforderlich. Der Name des Lastenausgleichstests. Der Name muss eindeutig sein.|
-| `protocol`          | `string` | Erforderlich. Gibt das Protokoll des Endpunkts an. Mögliche Werte sind `http` und `tcp`. Wenn `tcp` angegeben wird, ist der Empfang einer Bestätigung erforderlich, damit der Test erfolgreich ist. Wenn `http` angegeben wird, ist eine 200 OK-Antwort vom angegebenen URI erforderlich, damit der Test erfolgreich ist.|
+| `protocol`          | `string` | Erforderlich. Gibt das Protokoll des Endpunkts an. Mögliche Werte sind `http` oder `tcp`. Wenn `tcp` angegeben wird, ist der Empfang einer Bestätigung erforderlich, damit der Test erfolgreich ist. Wenn `http` angegeben wird, ist eine 200 OK-Antwort vom angegebenen URI erforderlich, damit der Test erfolgreich ist.|
 | `path`              | `string` | Der URI, mit dem der Integritätsstatus über den virtuellen Computer angefordert wird. `path` ist erforderlich, wenn `protocol` auf `http` festgelegt ist. Andernfalls ist die Angabe nicht zulässig.<br /><br /> Es gibt keinen Standardwert.|
 | `port`              | `integer` | Optional. Der Port für die Übertragung des Tests. Dies ist für jeden Endpunkt optional, da derselbe Port anschließend für den Test verwendet wird. Sie können einen anderen Port für die Ausführung des Tests konfigurieren. Mögliche Werte reichen von 1 bis einschließlich 65535.<br /><br /> Der Standardwert wird vom Endpunkt festgelegt.|
 | `intervalInSeconds` | `integer` | Optional. Das Intervall in Sekunden, in dem der Endpunkt auf den Integritätsstatus getestet werden soll. In der Regel ist das Intervall etwas kleiner als die Hälfte des zugeordneten Zeitlimits (in Sekunden). Dies ermöglicht die Durchführung von zwei vollständigen Tests, bevor die Instanz von der Rotation ausgenommen wird.<br /><br /> Der Standardwert beträgt 15, der Mindestwert 5.|
 | `timeoutInSeconds`  | `integer` | Optional. Das Zeitlimit in Sekunden für den Test, bei dem keine Antwort dazu führt, dass die Übermittlung von weiterem Datenverkehr an den Endpunkt beendet wird. Mit diesem Wert können Endpunkte schneller oder langsamer als bei den typischen, in Azure verwendeten Zeiten (Standardwerte) von der Rotation ausgenommen werden.<br /><br /> Der Standardwert beträgt 31, der Mindestwert 11.|
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Clouddienst-Definitionsschema (klassisch)](schema-csdef-file.md)

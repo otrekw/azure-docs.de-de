@@ -1,25 +1,15 @@
 ---
-title: Erstellen einer Azure Service Fabric-Containeranwendung | Microsoft-Dokumentation
-description: Erstellen Sie Ihre erste Windows-Containeranwendung unter Azure Service Fabric. Erstellen Sie ein Docker-Image mit einer Python-Anwendung, übertragen Sie es per Pushvorgang an eine Containerregistrierung, erstellen Sie eine Service Fabric-Container-App, und stellen Sie diese bereit.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: jpconnock
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
+title: Erstellen einer Azure Service Fabric-Containeranwendung
+description: Erstellen Sie Ihre erste Windows-Containeranwendung unter Azure Service Fabric. Erstellen Sie ein Docker-Image mit einer Python-Anwendung, pushen Sie es an eine Containerregistrierung, erstellen Sie den Container, und stellen Sie ihn dann in Azure Service Fabric bereit.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 771a4ffde9f3929a55ee8ce48c2b38e16b83ad49
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.custom: devx-track-python
+ms.openlocfilehash: 197423670ffe05f15fdc5bfd351efdfba33b53cd
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650678"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533773"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 
@@ -27,7 +17,7 @@ ms.locfileid: "69650678"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Zum Ausführen einer vorhandenen Anwendung eines Windows-Containers in einem Service Fabric-Cluster sind keine Änderungen an Ihrer Anwendung erforderlich. In diesem Artikel wird schrittweise beschrieben, wie Sie ein Docker-Image mit einer Python [Flask](http://flask.pocoo.org/)-Webanwendung erstellen und in einem Service Fabric-Cluster bereitstellen, der auf Ihrem lokalen Computer ausgeführt wird. Außerdem stellen Sie Ihre Containeranwendung per [Azure Container Registry](/azure/container-registry/) bereit. In diesem Artikel werden grundlegende Kenntnisse von Docker vorausgesetzt. Weitere Informationen zu Docker finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/understanding-docker/).
+Zum Ausführen einer vorhandenen Anwendung eines Windows-Containers in einem Service Fabric-Cluster sind keine Änderungen an Ihrer Anwendung erforderlich. In diesem Artikel werden die einzelnen Schritte vorgestellt, mit denen Sie ein Docker-Image mit einer Python [Flask](http://flask.pocoo.org/)-Webanwendung erstellen und in einem Azure Service Fabric-Cluster bereitstellen. Außerdem stellen Sie Ihre Containeranwendung per [Azure Container Registry](../container-registry/index.yml) bereit. In diesem Artikel werden grundlegende Kenntnisse von Docker vorausgesetzt. Weitere Informationen zu Docker finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/understanding-docker/).
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf eine Windows-Entwicklungsumgebung.  Die Service Fabric-Clusterruntime und die Docker-Runtime müssen unter dem gleichen Betriebssystem ausgeführt werden.  Sie können Windows-Container nicht in einem Linux-Cluster ausführen.
@@ -46,20 +36,15 @@ Zum Ausführen einer vorhandenen Anwendung eines Windows-Containers in einem Ser
 
   Für diesen Artikel muss die Version (Build) von Windows Server mit Containern, die auf den Clusterknoten ausgeführt wird, mit der auf dem Entwicklungscomputer übereinstimmen. Dies ist erforderlich, da Sie das Docker-Image auf dem Entwicklungscomputer erstellen und zwischen den Versionen des Containerbetriebssystems und des Hostbetriebssystems für die Bereitstellung Kompatibilitätseinschränkungen bestehen. Weitere Informationen finden Sie unter [Kompatibilität zwischen Containerbetriebssystem und Hostbetriebssystem bei Windows Server](#windows-server-container-os-and-host-os-compatibility). 
   
-Zum Ermitteln der Version von Windows Server mit Containern, die Sie für Ihren Cluster benötigen, führen Sie den Befehl `ver` an einer Windows-Eingabeaufforderung auf dem Entwicklungscomputer aus:
-
-* Wenn die Version *x.x.14323.x* enthält, wählen Sie *WindowsServer 2016-Datacenter-with-Containers* als Betriebssystem aus, und [erstellen einen Cluster](service-fabric-cluster-creation-via-portal.md).
-  * Wenn die Version *x.x.16299.x* enthält, dann wählen Sie *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* als Betriebssystem aus, und [erstellen einen Cluster](service-fabric-cluster-creation-via-portal.md).
+    Zum Ermitteln der Version von Windows Server mit Containern, die Sie für Ihren Cluster benötigen, führen Sie den Befehl `ver` an einer Windows-Eingabeaufforderung auf dem Entwicklungscomputer aus. Lesen Sie [Kompatibilität des Windows Server-Containerbetriebssystems und des Hostbetriebssystems](#windows-server-container-os-and-host-os-compatibility), bevor Sie [einen Cluster erstellen](service-fabric-cluster-creation-via-portal.md).
 
 * Eine Registrierung in Azure Container Registry – erstellen Sie in Ihrem Azure-Abonnement eine [Containerregistrierung](../container-registry/container-registry-get-started-portal.md).
 
 > [!NOTE]
 > Das Bereitstellen von Containern für einen unter Windows 10 ausgeführten Service Fabric-Cluster wird nicht unterstützt.  In [diesem Artikel](service-fabric-how-to-debug-windows-containers.md) finden Sie Informationen dazu, wie Windows 10 für die Ausführung von Windows-Container konfiguriert werden kann.
->   
 
 > [!NOTE]
-> Service Fabric Versionen 6.2 und höher unterstützen die Bereitstellung von Containern für Cluster, die auf Windows Server Version 1709 ausgeführt werden.  
-> 
+> Service Fabric Versionen 6.2 und höher unterstützen die Bereitstellung von Containern für Cluster, die auf Windows Server Version 1709 ausgeführt werden.
 
 ## <a name="define-the-docker-container"></a>Definieren des Docker-Containers
 
@@ -119,10 +104,18 @@ if __name__ == "__main__":
 ```
 
 <a id="Build-Containers"></a>
-## <a name="build-the-image"></a>Erstellen des Image
-Führen Sie den Befehl `docker build` aus, um das Image zu erstellen, mit dem Ihre Webanwendung ausgeführt wird. Öffnen Sie ein PowerShell-Fenster, und navigieren Sie zu dem Verzeichnis, das die Dockerfile-Datei enthält. Führen Sie den folgenden Befehl aus:
+
+## <a name="login-to-docker-and-build-the-image"></a>Anmelden bei Docker und Erstellen des Images
+
+Nun erstellen Sie das Image, mit dem Ihre Webanwendung ausgeführt wird. Beim Pullen von öffentlichen Images aus Docker (wie `python:2.7-windowsservercore` in unserer Dockerfile-Datei) besteht eine bewährte Methode darin, sich mit Ihrem Docker Hub-Konto zu authentifizieren, anstatt einen anonymen Pull Request zu erstellen.
+
+> [!NOTE]
+> Beim Ausführen von häufigen anonymen Pull Requests wird möglicherweise ein Docker-Fehler wie `ERROR: toomanyrequests: Too Many Requests.` oder `You have reached your pull rate limit.` angezeigt. Authentifizieren Sie sich bei Docker Hub, um diese Fehler zu verhindern. Weitere Informationen finden Sie unter [Verwalten öffentlicher Inhalte mit Azure Container Registry](../container-registry/buffer-gate-public-content.md).
+
+Öffnen Sie ein PowerShell-Fenster, und navigieren Sie zu dem Verzeichnis, das die Dockerfile-Datei enthält. Führen Sie anschließend die folgenden Befehle aus:
 
 ```
+docker login
 docker build -t helloworldapp .
 ```
 
@@ -200,7 +193,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>Erstellen des im Container ausgeführten Diensts in Visual Studio
 Das Service Fabric-SDK und die Tools stellen eine Dienstvorlage bereit, um Sie beim Erstellen einer Containeranwendung zu unterstützen.
 
-1. Starten Sie Visual Studio. Wählen Sie **Datei** > **Neu** > **Projekt**.
+1. Starten Sie Visual Studio. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
 2. Wählen Sie **Service Fabric-Anwendung**, benennen Sie sie „MyFirstContainer“, und klicken Sie auf **OK**.
 3. Wählen Sie in der Liste **Dienstvorlagen** die Option **Container** aus.
 4. Geben Sie unter **Imagename** „myregistry.azurecr.io/samples/helloworldapp“ ein, das Image, das Sie mithilfe von Push an Ihr Containerrepository übertragen haben.
@@ -300,7 +293,7 @@ Ab dem neuesten Aktualisierungsrelease v6.4 können Sie festlegen, dass Docker-H
 
 Die Anweisung **HEALTHCHECK**, die auf die tatsächliche Prüfung zur Überwachung der Containerintegrität verweist, muss in der Dockerfile-Datei enthalten sein, die beim Generieren des Containerimages verwendet wurde.
 
-![HealthCheckHealthy][3]
+![Screenshot mit Details des bereitgestellten Dienstpakets „NodeServicePackage“][3]
 
 ![HealthCheckUnhealthyApp][4]
 
@@ -331,19 +324,19 @@ Falls Sie die **HEALTHCHECK**-Integration für den gesamten Service Fabric-Clust
 ## <a name="deploy-the-container-application"></a>Bereitstellen der Containeranwendung
 Speichern Sie alle Änderungen, und erstellen Sie die Anwendung. Klicken Sie zum Veröffentlichen Ihrer Anwendung im Projektmappen-Explorer mit der rechten Maustaste auf **MyFirstContainer**, und wählen Sie **Veröffentlichen**.
 
-Geben Sie in **Verbindungsendpunkt** den Verwaltungsendpunkt für den Cluster ein, z.B. „containercluster.westus2.cloudapp.azure.com:19000“. Den Clientverbindungsendpunkt finden Sie im [Azure-Portal](https://portal.azure.com) auf der Registerkarte „Übersicht“ für Ihren Cluster.
+Geben Sie in **Verbindungsendpunkt** den Verwaltungsendpunkt für den Cluster ein, Beispiel: `containercluster.westus2.cloudapp.azure.com:19000`. Den Clientverbindungsendpunkt finden Sie im [Azure-Portal](https://portal.azure.com) auf der Registerkarte „Übersicht“ für Ihren Cluster.
 
 Klicken Sie auf **Veröffentlichen**.
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) ist ein webbasiertes Tool zum Untersuchen und Verwalten von Anwendungen und Knoten in einem Service Fabric-Cluster. Navigieren Sie in einem Browser zu http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/, und führen Sie die Anwendungsbereitstellung durch. Die Anwendung wird bereitgestellt, befindet sich bis zum Herunterladen des Images auf die Clusterknoten aber in einem Fehlerzustand (je nach Imagegröße kann dies einige Zeit in Anspruch nehmen): ![Fehler][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) ist ein webbasiertes Tool zum Untersuchen und Verwalten von Anwendungen und Knoten in einem Service Fabric-Cluster. Navigieren Sie in einem Browser zu `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/`, und führen Sie die Anwendungsbereitstellung durch. Die Anwendung wird bereitgestellt, befindet sich bis zum Herunterladen des Images auf die Clusterknoten aber in einem Fehlerzustand (je nach Imagegröße kann dies einige Zeit in Anspruch nehmen): ![Fehler][1]
 
 Die Anwendung ist bereit, wenn Sie sich im Zustand ```Ready``` befindet: ![Bereit][2].
 
-Öffnen Sie einen Browser, und navigieren Sie zu http://containercluster.westus2.cloudapp.azure.com:8081. Die Überschrift „Hello World!“ wird im Browser angezeigt.
+Öffnen Sie einen Browser, und navigieren Sie zu `http://containercluster.westus2.cloudapp.azure.com:8081`. Die Überschrift „Hello World!“ wird im Browser angezeigt.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
-Während der Ausführung des Clusters fallen weiterhin Gebühren an. [Löschen](service-fabric-cluster-delete.md) Sie Ihren Cluster daher ggf.
+Während der Ausführung des Clusters fallen weiterhin Gebühren an. [Löschen](./service-fabric-tutorial-delete-cluster.md) Sie Ihren Cluster daher ggf.
 
 Wenn Sie das Image mithilfe von Push an die Containerregistrierung übertragen haben, können Sie das lokale Image von Ihrem Entwicklungscomputer löschen:
 
@@ -360,7 +353,7 @@ Windows Server-Container sind nicht mit allen Versionen eines Hostbetriebssystem
 - Windows Server-Container, die mit Windows Server 2016 erstellt wurden, funktionieren im Hyper-V-Isolationsmodus nur auf Hosts unter Windows Server Version 1709. 
 - Mit Windows Server-Containern, die mit Windows Server 2016 erstellt wurden, ist es möglicherweise erforderlich, sicherzustellen, dass die Revision des Containerbetriebssystems und des Hostbetriebssystems sind identisch, sofern die Ausführung im Isolationsmodus auf einem Host unter Windows Server 2016 erfolgt.
  
-Weitere Informationen finden Sie unter [Versionskompatibilität von Windows-Containern](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+Weitere Informationen finden Sie unter [Versionskompatibilität von Windows-Containern](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
 Beachten Sie die Kompatibilität von Hostbetriebssystem und Containerbetriebssystem beim Erstellen und Bereitstellen von Containern in Ihrem Service Fabric-Cluster. Beispiel:
 
@@ -544,7 +537,7 @@ Sie können den Service Fabric-Cluster so konfigurieren, dass er nicht verwendet
           },
           {
                 "name": "ContainerImagesToSkip",
-                "value": "microsoft/windowsservercore|microsoft/nanoserver|microsoft/dotnet-frameworku|..."
+                "value": "mcr.microsoft.com/windows/servercore|mcr.microsoft.com/windows/nanoserver|mcr.microsoft.com/dotnet/framework/aspnet|..."
           }
           ...
           }

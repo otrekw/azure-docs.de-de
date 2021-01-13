@@ -1,27 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von Flock | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in Flock | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Flock konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7b2c3ac5-17f1-49a0-8961-c541b258d4b1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 39f0db232e6207a5156707006c895473c5b5be77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae3ebdbc642ce8bf60a8caf35b8da0c8e16c5a87
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102417"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453217"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-flock"></a>Tutorial: Azure Active Directory-Integration von Flock
+# <a name="tutorial-azure-active-directory-integration-with-flock"></a>Tutorial: Azure Active Directory-Integration in Flock
 
 In diesem Tutorial erfahren Sie, wie Sie Flock in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Flock in Azure AD bietet die folgenden Vorteile:
@@ -30,7 +27,7 @@ Die Integration von Flock in Azure AD bietet die folgenden Vorteile:
 * Sie können Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Flock anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -44,7 +41,7 @@ Um die Azure AD-Integration in Flock konfigurieren zu können, benötigen Sie Fo
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Flock unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Flock unterstützt **SP** -initiiertes einmaliges Anmelden.
 
 ## <a name="adding-flock-from-the-gallery"></a>Hinzufügen von Flock aus dem Katalog
 
@@ -52,25 +49,25 @@ Zum Konfigurieren der Integration von Flock in Azure AD müssen Sie Flock aus de
 
 **So fügen Sie Flock aus dem Katalog hinzu**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory** .
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Flock** ein, wählen Sie im Ergebnisbereich **Flock** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Flock** ein, wählen Sie im Ergebnisbereich **Flock** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
 
      ![Flock in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Flock mithilfe eines Testbenutzers namens **Britta Simon**.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Flock mithilfe eines Testbenutzers namens **Britta Simon** .
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Flock eingerichtet werden.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Flock zu konfigurieren und zu testen:
@@ -96,7 +93,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
     ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten** , um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -111,7 +108,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von Flock](mailto:support@flock.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen** , um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
@@ -131,7 +128,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
 2. Wählen Sie im linken Navigationsbereich die Registerkarte **Authentication** (Authentifizierung) und dann **SAML Authentication** (SAML-Authentifizierung) aus.
 
-    ![Flock-Konfiguration](./media/flock-tutorial/configure1.png)
+    ![Screenshot: Registerkarte „Authentifizierung“ mit ausgewählter Option „SAML-Authentifizierung“](./media/flock-tutorial/configure1.png)
 
 3. Führen Sie im Abschnitt für die **SAML-Authentifizierung** die folgenden Schritte aus:
 
@@ -143,13 +140,13 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
     c. Öffnen Sie im Editor das **Zertifikat (Base64)** , das Sie im Azure-Portal heruntergeladen haben, und fügen Sie den Inhalt in das Textfeld **Public Certificate** (Öffentliches Zertifikat) ein.
 
-    d. Klicken Sie auf **Speichern**.
+    d. Klicken Sie auf **Speichern** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -163,18 +160,18 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung** .  
     Zum Beispiel, BrittaSimon@contoso.com
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Flock, damit sie das einmalige Anmelden von Azure verwenden kann.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** > **Flock** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen**  > **Flock** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -186,15 +183,15 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Flock, damit sie das 
 
     ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen** , und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen** .
 
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen** .
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
 
 ### <a name="create-flock-test-user"></a>Erstellen eines Flock-Testbenutzers
 
@@ -206,13 +203,13 @@ Damit sich Azure AD-Benutzer bei Flock anmelden können, müssen sie in Flock be
 
 2. Klicken Sie im linken Navigationsbereich auf **Manage Team** (Team verwalten).
 
-    ![Mitarbeiter hinzufügen](./media/flock-tutorial/user1.png)
+    ![Screenshot: Option „Team verwalten“ ausgewählt](./media/flock-tutorial/user1.png)
 
 3. Klicken Sie auf die Registerkarte **Add Member** (Mitglied hinzufügen), und wählen Sie **Team Members** (Teammitglieder) aus.
 
-    ![Mitarbeiter hinzufügen](./media/flock-tutorial/user2.png)
+    ![Screenshot: Registerkarte „Add Member“ (Mitglied hinzufügen) mit der Option „Team Members“ (Teammitglieder) ausgewählt](./media/flock-tutorial/user2.png)
 
-4. Geben Sie die E-Mail-Adresse des Benutzers ein, z. B. **Brittasimon\@contoso.com**, und wählen Sie dann **Add Users** (Benutzer hinzufügen) aus.
+4. Geben Sie die E-Mail-Adresse des Benutzers ein, z. B. **Brittasimon\@contoso.com** , und wählen Sie dann **Add Users** (Benutzer hinzufügen) aus.
 
     ![Mitarbeiter hinzufügen](./media/flock-tutorial/user3.png)
 
@@ -220,13 +217,12 @@ Damit sich Azure AD-Benutzer bei Flock anmelden können, müssen sie in Flock be
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Flock“ klicken, sollten Sie automatisch bei der Flock-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Flock“ klicken, sollten Sie automatisch bei der Flock-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

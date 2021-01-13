@@ -1,5 +1,5 @@
 ---
-title: 'StorSimple: Failover und Notfallwiederherstellung für ein physisches Gerät der StorSimple 8000-Serie | Microsoft-Dokumentation'
+title: Failover, Notfallwiederherstellung auf ein anderes StorSimple 8000-Gerät
 description: Erfahren Sie, wie für Ihr physisches Gerät der StorSimple 8000-Serie ein Failover auf ein anderes physisches Gerät erfolgt.
 services: storsimple
 documentationcenter: ''
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 5fcf95a1a3033a5150945dbd841f12d50ebb023b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 67d6fb1f3cc359288ed942d915e186542a62b0fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60577242"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017133"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Failover auf ein physisches Gerät der StorSimple 8000-Serie
 
@@ -75,7 +75,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem physischen Zielg
    
    1. Wählen Sie das Gerät aus, das Sie als Zielgerät für den Failovervorgang verwendet haben.
 
-       ![Gerät auswählen](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![Auswählen von Gerät 2](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
    2. Wechseln Sie zum Blatt **Volumecontainer**. Es sollten alle Volumecontainer und die Volumes des alten Geräts aufgeführt werden.
 

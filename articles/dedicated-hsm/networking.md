@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881287"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91359153"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure-Dienst für dedizierte HSMs – Netzwerke
 
@@ -78,12 +78,12 @@ Die HSM-Geräte haben die Möglichkeit, über Softwarebibliotheken Datenverkehr 
 
 ### <a name="cross-region-ha-using-vpn-gateway"></a>Regionen übergreifende HOCHVERFÜGBARKEIT mit VPN Gateway
 
-Für global verteilte Anwendungen oder regionale Failoverszenarien mit hoher Verfügbarkeit müssen virtuelle Netzwerke Regionen übergreifend verbunden werden. Mit dem Azure-Dienst für dedizierte HSMs kann Hochverfügbarkeit mit VPN Gateway erreicht werden, das einen sicheren Tunnel zwischen den beiden virtuellen Netzwerken bereitstellt. Weitere Informationen zu VNET-to-VNET-Verbindungen mit VPN Gateway finden Sie im Artikel [Was ist VPN Gateway?](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)
+Für global verteilte Anwendungen oder regionale Failoverszenarien mit hoher Verfügbarkeit müssen virtuelle Netzwerke Regionen übergreifend verbunden werden. Mit dem Azure-Dienst für dedizierte HSMs kann Hochverfügbarkeit mit VPN Gateway erreicht werden, das einen sicheren Tunnel zwischen den beiden virtuellen Netzwerken bereitstellt. Weitere Informationen zu VNET-to-VNET-Verbindungen mit VPN Gateway finden Sie im Artikel [Was ist VPN Gateway?](../vpn-gateway/design.md#V2V)
 
 > [!NOTE]
 > Globales VNET-Peering ist in regionsübergreifenden Konnektivitätsszenarien mit dedizierten HSMs zu diesem Zeitpunkt nicht verfügbar, und VPN Gateway sollte stattdessen verwendet werden. 
 
-![global-vnet](media/networking/global-vnet.png)
+![Das Diagramm zeigt zwei Regionen, die durch zwei VPN-Gateways verbunden sind. Jede Region enthält virtuelle Netzwerke mit Peering.](media/networking/global-vnet.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

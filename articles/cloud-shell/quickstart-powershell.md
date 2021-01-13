@@ -1,25 +1,20 @@
 ---
-title: Schnellstart für Azure Cloud Shell | Microsoft-Dokumentation
-description: Schnellstart für Azure Cloud Shell
-services: Azure
-documentationcenter: ''
+title: Schnellstart für Azure Cloud Shell – PowerShell
+description: Erfahren Sie, wie Sie PowerShell in Ihrem Browser mit Azure Cloud Shell verwenden.
 author: maertendmsft
-manager: timlt
+ms.author: damaerte
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
-ms.author: damaerte
-ms.openlocfilehash: f1184f9f3a4cf827f0afef9bca8a72308c371d76
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d4a7f1453ec686cfa16d260101ba81f429ce1da0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224565"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89469455"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Schnellstart für PowerShell in Azure Cloud Shell
 
@@ -28,17 +23,15 @@ Dieses Dokument erläutert die Verwendung von PowerShell in Cloud Shell im [Azur
 > [!NOTE]
 > Ein Schnellstart zu [Bash in Azure Cloud Shell](quickstart.md) ist ebenfalls verfügbar.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="start-cloud-shell"></a>Starten von Cloud Shell
 
 1. Klicken Sie im oberen Navigationsbereich des Azure-Portals auf die Schaltfläche **Cloud Shell**.
 
-   ![](media/quickstart-powershell/shell-icon.png)
+   ![Screenshot: Starten von Azure Cloud Shell über das Azure-Portal.](media/quickstart-powershell/shell-icon.png)
 
 2. Wählen Sie die PowerShell-Umgebung aus der Dropdownliste aus, und Sie befindet sich auf dem Azure-Laufwerk `(Azure:)`.
 
-   ![](media/quickstart-powershell/environment-ps.png)
+   ![Screenshot: Auswählen der PowerShell-Umgebung für die Azure Cloud Shell.](media/quickstart-powershell/environment-ps.png)
 
 ## <a name="run-powershell-commands"></a>Ausführen von PowerShell-Befehlen
 
@@ -268,7 +261,7 @@ Generieren Sie zum Authentifizieren für Server oder VMs per SSH das Paar aus ei
 
 ### <a name="using-ssh"></a>Verwenden von SSH
 
-Befolgen Sie die Anleitung [hier](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell), um eine neue VM-Konfiguration mit Azure PowerShell-Cmdlets zu erstellen.
+Befolgen Sie die Anleitung [hier](../virtual-machines/linux/quick-create-powershell.md), um eine neue VM-Konfiguration mit Azure PowerShell-Cmdlets zu erstellen.
 Fügen Sie der VM-Konfiguration vor dem Aufrufen von `New-AzVM` zum Starten der Bereitstellung den öffentlichen SSH-Schlüssel hinzu.
 Die neu erstellte VM enthält den öffentlichen Schlüssel unter `~\.ssh\authorized_keys`, um für die VM eine SSH-Sitzung ohne Anmeldeinformationen zu ermöglichen.
 
@@ -352,6 +345,6 @@ Geben Sie `exit` ein, um die Sitzung zu beenden.
 [bashqs]:quickstart.md
 [gallery]:https://www.powershellgallery.com/
 [customex]:https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript
-[profile]: https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/about/about_profiles
-[azmount]: https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows
+[profile]: /powershell/module/microsoft.powershell.core/about/about_profiles
+[azmount]: ../storage/files/storage-how-to-use-files-windows.md
 [githubtoken]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/

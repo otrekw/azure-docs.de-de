@@ -1,0 +1,29 @@
+---
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 02/09/2020
+ms.author: glenga
+ms.openlocfilehash: 1fc37c6f93fba34944caa7a91c2a89ce5dcdc398
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "78201021"
+---
+::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
+> [!TIP]
+> Beim Starten führt der Host den Download und die Installation der [Storage-Bindungserweiterung](../articles/azure-functions/functions-bindings-storage-queue.md#functions-2x-and-higher) und anderer Microsoft-Bindungserweiterungen durch. Diese Installation erfolgt, weil Bindungserweiterungen in der Datei *host.json* mit den folgenden Eigenschaften standardmäßig aktiviert sind:
+>
+> ```json
+> {
+>     "version": "2.0",
+>     "extensionBundle": {
+>         "id": "Microsoft.Azure.Functions.ExtensionBundle",
+>         "version": "[1.*, 2.0.0)"
+>     }
+> }
+> ```
+>
+> Falls bei Ihnen Fehler in Bezug auf Bindungserweiterungen auftreten, sollten Sie sich vergewissern, dass die obigen Eigenschaften in *host.json* enthalten sind.
+::: zone-end  

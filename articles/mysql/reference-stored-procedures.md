@@ -1,19 +1,19 @@
 ---
-title: Gespeicherte Prozeduren für Azure Database for MySQL
-description: In diesem Artikel werden gespeicherte Prozeduren speziell für Azure Database for MySQL erläutert.
-author: ajlam
-ms.author: andrela
+title: Gespeicherte Prozeduren für die Verwaltung in Azure Database for MySQL
+description: Erfahren Sie, welche gespeicherten Prozeduren in Azure Database for MySQL hilfreich sind, um Datenreplikation zu konfigurieren, die Zeitzone festzulegen und Abfragen abzubrechen.
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/19/2019
-ms.openlocfilehash: f01a0bf68e510133058dc0075f27cfcf6241c7a8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.date: 3/18/2020
+ms.openlocfilehash: 7a1aa061bb8c8be3a676e0e5bb690b2a9749b6c8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156548"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536131"
 ---
-# <a name="azure-database-for-mysql-stored-procedures"></a>Gespeicherte Prozeduren für Azure Database for MySQL
+# <a name="azure-database-for-mysql-management-stored-procedures"></a>Gespeicherte Prozeduren für die Azure Database for MySQL-Verwaltung
 
 Gespeicherte Prozeduren sind auf Azure Database for MySQL-Servern verfügbar, um die Verwaltung Ihres MySQL-Servers zu erleichtern. Dies schließt die Verwaltung der Verbindungen und Abfragen Ihres Servers sowie das Einrichten von Datenreplikation ein.  
 
@@ -21,17 +21,17 @@ Gespeicherte Prozeduren sind auf Azure Database for MySQL-Servern verfügbar, um
 
 Mithilfe der Replikation eingehender Daten können Sie Daten von einem MySQL-Server, der lokal, auf virtuellen Computern oder von Datenbankdiensten ausgeführt wird, die von anderen Cloudanbietern gehostet werden, mit dem Azure Database for MySQL-Dienst synchronisieren.
 
-Mit den folgenden gespeicherten Prozeduren wird die Datenreplikation zwischen einem Master und einem Replikat eingerichtet oder entfernt.
+Mit den folgenden gespeicherten Prozeduren wird die Datenreplikation zwischen einer Quelle und einem Replikat eingerichtet oder entfernt.
 
 |**Name der gespeicherten Prozedur**|**Eingabeparameter**|**Ausgabeparameter**|**Hinweis zur Verwendung**|
 |-----|-----|-----|-----|
 |*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|–|Um Daten im SSL-Modus zu übertragen, übergeben Sie im Parameter „master_ssl_ca“ den Kontext des Zertifizierungsstellenzertifikats. </br><br>Um Daten ohne SSL zu übertragen, übergeben Sie im Parameter „master_ssl_ca“ eine leere Zeichenfolge.|
 |*mysql.az_replication _start*|–|–|Startet die Replikation.|
 |*mysql.az_replication _stop*|–|–|Beendet die Replikation.|
-|*mysql.az_replication _remove_master*|–|–|Entfernt die Replikationsbeziehung zwischen dem Master und dem Replikat|
+|*mysql.az_replication _remove_master*|–|–|Entfernt die Replikationsbeziehung zwischen der Quelle und dem Replikat.|
 |*mysql.az_replication_skip_counter*|–|–|Überspringt einen Replikationsfehler.|
 
-Informationen zum Einrichten der Datenreplikation zwischen einem Master und einem Replikat in Azure Database for MySQL finden Sie unter [Konfigurieren der Datenreplikation](howto-data-in-replication.md).
+Informationen zum Einrichten der Datenreplikation zwischen einer Quelle und einem Replikat in Azure Database for MySQL finden Sie unter [Konfigurieren der Datenreplikation](howto-data-in-replication.md).
 
 ## <a name="other-stored-procedures"></a>Andere gespeicherte Prozeduren
 

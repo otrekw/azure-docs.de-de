@@ -8,68 +8,64 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
-ms.custom: mvc, seo-java-august2019, seo-java-september2019
+ms.custom:
+- mvc
+- seo-java-august2019
+- seo-java-september2019
+- mqtt
+- devx-track-java
+- devx-track-azurecli
 ms.date: 06/21/2019
-ms.openlocfilehash: 9fb110eff1d498b2b20952048759c76a2dac39f2
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 25ed259fa1f2858c0c818eafbdc7b35226067bc4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306485"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843059"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Schnellstart: Steuern eines mit einer Azure IoT Hub-Instanz verbundenen Geräts mit Java
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-In dieser Schnellstartanleitung verwenden Sie eine *direkte Methode*, um mit einer Java-Anwendung ein simuliertes Gerät zu steuern, das mit Ihrer Azure IoT Hub-Instanz verbunden ist. Sie können direkte Methoden verwenden, um das Verhalten eines mit Ihrer IoT Hub-Instanz verbundenen Geräts zu ändern. IoT Hub ist ein Azure-Dienst, mit dem Sie große Mengen von Telemetriedaten von Ihren IoT-Geräten in der Cloud erfassen und Ihre Geräte über die Cloud verwalten können. 
-
-In dieser Schnellstartanleitung werden zwei vorab geschriebene Java-Anwendungen verwendet:
-
-* Eine simulierte Geräteanwendung, die auf direkte Methoden reagiert, die von einer Back-End-Anwendung aufgerufen werden. Um die Aufrufe der direkten Methode zu empfangen, stellt diese Anwendung eine Verbindung mit einem gerätespezifischen Endpunkt in Ihrer IoT Hub-Instanz her.
-
-* Eine Back-End-Anwendung, die die direkten Methoden auf dem simulierten Gerät aufruft. Um eine direkte Methode auf einem Gerät aufzurufen, stellt diese Anwendung eine Verbindung mit einem dienstseitigen Endpunkt in Ihrer IoT Hub-Instanz her.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+In dieser Schnellstartanleitung verwenden Sie eine direkte Methode, um mit einer Java-Anwendung ein simuliertes Gerät zu steuern, das mit Azure IoT Hub verbunden ist. IoT Hub ist ein Azure-Dienst, mit dem Sie Ihre IoT-Geräte über die Cloud verwalten und große Mengen von Gerätetelemetriedaten zum Speichern oder Verarbeiten in der Cloud erfassen können. Sie können direkte Methoden verwenden, um das Verhalten eines mit Ihrer IoT Hub-Instanz verbundenen Geräts zu ändern. In dieser Schnellstartanleitung werden zwei Java-Anwendungen verwendet: eine simulierte Geräteanwendung, die auf direkte Methoden reagiert, die von einer Back-End-Anwendung aufgerufen werden, und eine Dienstanwendung, die die direkte Methode auf dem simulierten Gerät aufruft.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die beiden in dieser Schnellstartanleitung ausgeführten Beispielanwendungen sind in Java geschrieben. Sie benötigen auf Ihrem Entwicklungscomputer Java SE 8.
+* Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-Sie können Java SE Development Kit 8 für mehrere Plattformen unter [Langfristiger Java-Support für Azure und Azure Stack](https://docs.microsoft.com/en-us/java/azure/jdk/?view=azure-java-stable) herunterladen. Wählen Sie unter **Langfristiger Support** unbedingt **Java 8** aus, um zu den Downloads für JDK 8 zu gelangen.
+* Java SE Development Kit 8. Wählen Sie unter [Langfristiger Java-Support für Azure und Azure Stack](/java/azure/jdk/?view=azure-java-stable) unter **Langfristiger Support** die Option **Java 8** aus.
 
-Mit dem folgenden Befehl können Sie die aktuelle Java-Version auf Ihrem Entwicklungscomputer überprüfen:
+    Mit dem folgenden Befehl können Sie die aktuelle Java-Version auf Ihrem Entwicklungscomputer überprüfen:
 
-```cmd/sh
-java -version
-```
+    ```cmd/sh
+    java -version
+    ```
 
-Für die Erstellung der Beispiele müssen Sie Maven 3 installieren. Sie können Maven für mehrere Plattformen von [Apache Maven](https://maven.apache.org/download.cgi) herunterladen.
+* [Apache Maven 3](https://maven.apache.org/download.cgi)
 
-Mit dem folgenden Befehl können Sie die aktuelle Maven-Version auf Ihrem Entwicklungscomputer überprüfen:
+    Mit dem folgenden Befehl können Sie die aktuelle Maven-Version auf Ihrem Entwicklungscomputer überprüfen:
 
-```cmd/sh
-mvn --version
-```
+    ```cmd/sh
+    mvn --version
+    ```
 
-Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Microsoft Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
+* [Ein einfaches Java-Projekt](https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip)
 
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
+* Der Port 8883 muss in Ihrer Firewall geöffnet sein. Für das Beispielgerät in dieser Schnellstartanleitung wird das MQTT-Protokoll verwendet, das über den Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-Laden Sie das Java-Beispielprojekt von https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip herunter, und extrahieren Sie das ZIP-Archiv (falls nicht bereits erfolgt).
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-Wenn Sie das vorherige Tutorial [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-java.md) absolviert haben, können Sie diesen Schritt überspringen.
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
+
+Wenn Sie das vorherige Tutorial [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](quickstart-send-telemetry-java.md) abgeschlossen haben, können Sie diesen Schritt überspringen.
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Registrieren eines Geräts
 
-Wenn Sie das vorherige Tutorial [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-java.md) absolviert haben, können Sie diesen Schritt überspringen.
+Wenn Sie das vorherige Tutorial [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](quickstart-send-telemetry-java.md) abgeschlossen haben, können Sie diesen Schritt überspringen.
 
 Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung herstellen zu können. In dieser Schnellstartanleitung verwenden Sie Azure Cloud Shell, um ein simuliertes Gerät zu registrieren.
 
@@ -77,11 +73,11 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
    **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
-   **MyJavaDevice**: Der Name des Geräts, das Sie registrieren. Verwenden Sie **MyJavaDevice** wie gezeigt. Wenn Sie für Ihr Gerät einen anderen Namen wählen, müssen Sie diesen innerhalb des gesamten Artikels verwenden und den Gerätenamen in den Beispielanwendungen aktualisieren, bevor Sie sie ausführen.
+   **MyJavaDevice**: Der Name des Geräts, das Sie registrieren. Es empfiehlt sich, **MyJavaDevice** wie gezeigt zu verwenden. Wenn Sie für Ihr Gerät einen anderen Namen auswählen, müssen Sie diesen innerhalb des gesamten Artikels verwenden und den Gerätenamen in den Beispielanwendungen aktualisieren, bevor Sie sie ausführen.
 
     ```azurecli-interactive
     az iot hub device-identity create \
-      --hub-name YourIoTHubName --device-id MyJavaDevice
+      --hub-name {YourIoTHubName} --device-id MyJavaDevice
     ```
 
 2. Führen Sie die folgenden Befehle in Azure Cloud Shell aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
@@ -90,7 +86,7 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
-      --hub-name YourIoTHubName \
+      --hub-name {YourIoTHubName} \
       --device-id MyJavaDevice \
       --output table
     ```
@@ -108,16 +104,16 @@ Darüber hinaus benötigen Sie eine _Dienstverbindungszeichenfolge_, damit die B
 **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
 ```azurecli-interactive
-az iot hub show-connection-string --name YourIoTHubName --policy-name service --output table
+az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
 ```
 
 Notieren Sie sich die Dienstverbindungszeichenfolge, die wie folgt aussieht:
 
 `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-Dieser Wert wird später in der Schnellstartanleitung benötigt. Die Dienstverbindungszeichenfolge unterscheidet sich von der Geräteverbindungszeichenfolge.
+Dieser Wert wird später in der Schnellstartanleitung benötigt. Die Dienstverbindungszeichenfolge unterscheidet sich von der Geräteverbindungszeichenfolge, die Sie sich im vorherigen Schritt notiert haben.
 
-## <a name="listen-for-direct-method-calls"></a>Lauschen auf direkte Methodenaufrufe
+## <a name="listen-for-direct-method-calls"></a>Lauschen auf Aufrufe direkter Methoden
 
 Die simulierte Geräteanwendung stellt eine Verbindung mit einem gerätespezifischen Endpunkt in Ihrer IoT Hub-Instanz her, sendet simulierte Telemetriedaten und lauscht auf Aufrufe direkter Methoden aus Ihrem Hub. In dieser Schnellstartanleitung weist der Aufruf einer direkten Methode aus dem Hub das Gerät an, das Intervall zu ändern, in dem es Telemetriedaten sendet. Das simulierte Gerät sendet eine Bestätigung an Ihren Hub, nachdem es die direkte Methode ausgeführt hat.
 
@@ -125,7 +121,7 @@ Die simulierte Geräteanwendung stellt eine Verbindung mit einem gerätespezifis
 
 2. Öffnen Sie die Datei **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** in einem Text-Editor Ihrer Wahl.
 
-    Ersetzen Sie den Wert der Variablen `connString` durch die Geräteverbindungszeichenfolge, die sie sich zuvor notiert haben. Speichern Sie dann die Änderungen an der Datei **SimulatedDevice.java**.
+    Ersetzen Sie den Wert der Variablen `connString` durch die Geräteverbindungszeichenfolge, die Sie sich zuvor notiert haben. Speichern Sie dann die Änderungen an der Datei **SimulatedDevice.java**.
 
 3. Führen Sie im lokalen Terminalfenster die folgenden Befehle aus, um die erforderlichen Bibliotheken zu installieren und die simulierte Geräteanwendung zu erstellen:
 
@@ -141,17 +137,17 @@ Die simulierte Geräteanwendung stellt eine Verbindung mit einem gerätespezifis
 
     Der folgende Screenshot zeigt die Ausgabe, während die Anwendung zur Simulation eines Geräts Telemetriedaten an Ihre IoT Hub-Instanz sendet:
 
-    ![Ausführen des simulierten Geräts](./media/quickstart-control-device-java/SimulatedDevice-1.png)
+    ![Ausgabe der Telemetrie, die vom Gerät an den IoT-Hub gesendet wurde](./media/quickstart-control-device-java/iot-hub-application-send-telemetry-output.png)
 
 ## <a name="call-the-direct-method"></a>Aufrufen der direkten Methode
 
-Die Back-End-Anwendung stellt eine Verbindung mit einem dienstseitigen Endpunkt in Ihrer IoT Hub-Instanz her. Die Anwendung sendet über Ihre IoT Hub-Instanz Aufrufe direkter Methoden an ein Gerät und lauscht auf Bestätigungen. Eine IoT Hub-Back-End-Anwendung wird in der Regel in der Cloud ausgeführt.
+Die Back-End-Anwendung stellt eine Verbindung mit einem dienstseitigen Endpunkt in Ihrer IoT Hub-Instanz her. Die Anwendung sendet über Ihren IoT-Hub Aufrufe direkter Methoden an ein Gerät und lauscht auf Bestätigungen. Eine IoT Hub-Back-End-Anwendung wird in der Regel in der Cloud ausgeführt.
 
 1. Navigieren Sie in einem anderen lokalen Terminalfenster zum Stammordner des Java-Beispielprojekts. Navigieren Sie anschließend zum Ordner **iot-hub\Quickstarts\back-end-application**.
 
 2. Öffnen Sie die Datei **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** in einem Text-Editor Ihrer Wahl.
 
-    Ersetzen Sie den Wert der Variablen `iotHubConnectionString` durch die Verbindungszeichenfolge für den Dienst, die Sie sich zuvor notiert haben. Speichern Sie dann Ihre Änderungen an der Datei **BackEndApplication.js**.
+    Ersetzen Sie den Wert der Variablen `iotHubConnectionString` durch die Dienstverbindungszeichenfolge, die Sie sich zuvor notiert haben. Speichern Sie dann Ihre Änderungen an der Datei **BackEndApplication.java**.
 
 3. Führen Sie im lokalen Terminalfenster die folgenden Befehle aus, um die erforderlichen Bibliotheken zu installieren und die Back-End-Anwendung zu erstellen:
 
@@ -167,11 +163,11 @@ Die Back-End-Anwendung stellt eine Verbindung mit einem dienstseitigen Endpunkt 
 
     Der folgende Screenshot zeigt die Ausgabe, nachdem die Anwendung einen Aufruf einer direkten Methode an das Gerät gerichtet und eine Bestätigung empfangen hat:
 
-    ![Ausführen der Back-End-Anwendung](./media/quickstart-control-device-java/BackEndApplication.png)
+    ![Ausgabe, wenn die Anwendung einen direkten Methodenaufruf über Ihren IoT-Hub durchführt](./media/quickstart-control-device-java/iot-hub-direct-method-call-output.png)
 
     Nachdem Sie die Back-End-Anwendung ausgeführt haben, sehen Sie eine Nachricht im Konsolenfenster, in dem das simulierte Gerät ausgeführt wird, und die Häufigkeit, mit der das Gerät Nachrichten sendet, ändert sich:
 
-    ![Änderung im simulierten Client](./media/quickstart-control-device-java/SimulatedDevice-2.png)
+    ![Konsolenmeldung vom Gerät mit der Änderungsrate](./media/quickstart-control-device-java/iot-hub-sent-message-change-rate.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

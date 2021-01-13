@@ -1,42 +1,40 @@
 ---
-title: Verwenden von Visual Studio auf einem virtuellen Azure-Computer | Microsoft-Dokumentation
+title: Verwenden von Visual Studio auf einem virtuellen Azure-Computer
 description: Verwenden von Visual Studio auf einem virtuellen Azure-Computer
-services: virtual-machines-windows
-documentationcenter: virtual-machines
-author: PhilLee-MSFT
+author: cathysull
 manager: cathys
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.date: 09/24/2019
-ms.author: phillee
+ms.topic: conceptual
+ms.date: 11/17/2020
+ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 4664007bf892b2ae445d6b5174e4f346944e620b
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 315987060b96312c666bd5aa928588e27d13173b
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272297"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938102"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-Images in Azure
 Die Verwendung von Visual Studio auf einem vorkonfigurierten virtuellen Azure-Computer (VM) ist eine schnelle und einfache Methode zum Erzielen einer einsatzfähigen Entwicklungsumgebung ohne Ausgangsvoraussetzungen. Systemimages mit verschiedenen Visual Studio-Konfigurationen sind im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure) verfügbar.
 
 Neu bei Azure? [Erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/free).
 
+> [!NOTE]
+> Nicht alle Abonnements berechtigen zur Bereitstellung von Windows 10-Images. Weitere Informationen finden Sie unter [Verwenden des Windows-Clients in Azure für Entwicklungs-/Testszenarien](./client-images.md)
+
 ## <a name="what-configurations-and-versions-are-available"></a>Welche Konfigurationen und Versionen sind verfügbar?
 Images für die letzten Hauptversionen, Visual Studio 2019 und Visual Studio 2017 und Visual Studio 2015, finden Sie im Azure Marketplace.  Für jede veröffentlichte Hauptversion werden die ursprünglich im Web veröffentlichte Version (released to web, RTW) und die letzten aktualisierten Versionen aufgeführt.  Jede dieser Versionen bietet die Editionen „Visual Studio Enterprise“ und „Visual Studio Community“.  Diese Images werden mindestens einmal monatlich aktualisiert, um die neuesten Visual Studio- und Windows-Updates einzuschließen.  Jede Imagebeschreibung enthält die Produktinstallationsversion und das Erstellungsdatum des Image, während die Namen der Images unverändert bleiben.
 
 | Releaseversion                                                                                                                                                | Editionen              | Produktversion   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: Aktuelle Version (16.2)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise, Community | Version 16.3.0    |
-| [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enterprise, Community | Version 16.0.8    |
-| [Visual Studio 2017: Aktuelle Version (15.9)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enterprise, Community | Version 15.9.16   |
-| [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enterprise, Community | Version 15.0.25   |
-| [Visual Studio 2015: Aktuelle Version (Update 3)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Enterprise, Community | Version 14.0.25431.01 |
+| [Visual Studio 2019: Neueste Version (Version 16.8)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise, Community | Version 16.8.0    |
+| Visual Studio 2019: RTW                         | Enterprise | Version 16.0.20    |
+| Visual Studio 2017: Aktuelle Version (Version 15.9)           | Enterprise, Community | Version 15.9.29   |
+| Visual Studio 2017: RTW                             | Enterprise, Community | Version 15.0.28  |
+| Visual Studio 2015: Aktuelle Version (Update 3)               | Enterprise, Community | Version 14.0.25431.01 |
 
 > [!NOTE]
 > Im Einklang mit der Microsoft-Wartungsrichtlinie ist die ursprünglich veröffentlichte Version („RTW“) von Visual Studio 2015 für die Wartung abgelaufen. Visual Studio 2015 Update 3 ist die einzige verbleibende Version, die für die Visual Studio 2015-Produktlinie angeboten wird.
@@ -79,9 +77,9 @@ Azure bietet eine umfassende Palette von Größen für virtuelle Computer. Da Vi
    * Standard_D2S_v2
    * Standard_D3_v2
     
-Weitere Informationen zu den aktuellen VM-Größen finden Sie unter [Größen für virtuelle Windows-Computer in Azure](/azure/virtual-machines/windows/sizes).
+Weitere Informationen zu den aktuellen VM-Größen finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../sizes.md).
 
-Mit Azure können Sie die Größe des virtuellen Computers ändern, um einen erneuten Abgleich Ihrer ursprünglichen Wahl vorzunehmen. Sie können einen neuen virtuellen Computer mit einer besser geeigneten Größe bereitstellen oder die Größe des vorhandenen virtuellen Computers an verschiedene zugrunde liegende Hardware anpassen. Weitere Informationen finden Sie unter [Ändern der Größe eines virtuellen Windows-Computers](/azure/virtual-machines/windows/resize-vm).
+Mit Azure können Sie die Größe des virtuellen Computers ändern, um einen erneuten Abgleich Ihrer ursprünglichen Wahl vorzunehmen. Sie können einen neuen virtuellen Computer mit einer besser geeigneten Größe bereitstellen oder die Größe des vorhandenen virtuellen Computers an verschiedene zugrunde liegende Hardware anpassen. Weitere Informationen finden Sie unter [Ändern der Größe eines virtuellen Windows-Computers](./resize-vm.md).
 
 ## <a name="after-the-vm-is-running-whats-next"></a>Wie geht es weiter, wenn der virtuelle Computer ausgeführt wird?
 Visual Studio folgt in Azure dem Modell „Verwendung Ihrer eigenen Lizenz“. Wie bei einer Installation auf proprietärer Hardware besteht einer der ersten Schritte in der Lizenzierung Ihrer Visual Studio-Installation. Visual Studio lässt sich mit einer der folgenden Methoden entsperren:
@@ -98,7 +96,7 @@ Kurze Zusammenfassung: Verwenden Sie das Tool für die Systemvorbereitung (Syspr
 
 <img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*Abbildung 1: Erfassen eines Images über die Benutzeroberfläche des Azure-Portals*</center>
 
-Weitere Informationen finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](/azure/virtual-machines/windows/capture-image-resource).
+Weitere Informationen finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](./capture-image-resource.md).
 
 > [!IMPORTANT]
 > Vergessen Sie nicht, den virtuellen Computer mithilfe von Sysprep vorzubereiten. Wenn Sie diesen Schritt auslassen, kann Azure keinen virtuellen Computer aus dem Image bereitstellen.
@@ -106,7 +104,7 @@ Weitere Informationen finden Sie unter [Erstellen eines verwalteten Images eines
 > [!NOTE]
 > Für das Speichern der Images können weiterhin gewisse Kosten anfassen, diese inkrementellen Kosten fallen jedoch im Vergleich zu den Gemeinkosten für die Neuerstellung eines virtuellen Computers von Grund auf – für jedes Teammitglied, der einen benötigt – wahrscheinlich nicht ins Gewicht. Beispielsweise kostet es wenige Euro, ein Image von 127 GB zu erstellen und einen Monat lang zu speichern, das von Ihrem gesamten Team wiederverwendet werden kann. Diese Kosten sind jedoch im Vergleich zu den Stunden, die jeder Mitarbeiter für das Ausbauen und Überprüfen einer ordnungsgemäß konfigurierten Entwicklungsumgebung für den eigenen Gebrauch investiert, geringfügig.
 
-Darüber hinaus müssen Ihre Entwicklungsaufgaben oder Technologien möglicherweise weiter skaliert werden, etwa in Form von Varianten von Entwicklungskonfigurationen oder der Konfiguration mehrerer Computer. Mit Azure DevTest Labs können Sie _Rezepte_ erstellen, welche die Erstellung eines für Ihre Zwecke optimierten Images („Golden Image“) automatisieren. Außerdem können Sie mit DevTest Labs Richtlinien für die ausgeführten virtuellen Computer Ihres Teams verwalten. [Verwenden von Azure DevTest Labs für Entwickler](/azure/devtest-lab/devtest-lab-developer-lab) ist die beste Quelle für weitere Informationen zu DevTest Labs.
+Darüber hinaus müssen Ihre Entwicklungsaufgaben oder Technologien möglicherweise weiter skaliert werden, etwa in Form von Varianten von Entwicklungskonfigurationen oder der Konfiguration mehrerer Computer. Mit Azure DevTest Labs können Sie _Rezepte_ erstellen, welche die Erstellung eines für Ihre Zwecke optimierten Images („Golden Image“) automatisieren. Außerdem können Sie mit DevTest Labs Richtlinien für die ausgeführten virtuellen Computer Ihres Teams verwalten. [Verwenden von Azure DevTest Labs für Entwickler](../../devtest-labs/devtest-lab-developer-lab.md) ist die beste Quelle für weitere Informationen zu DevTest Labs.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nun, da Sie sich mit vorkonfigurierten Visual Studio-Images beschäftigt haben, besteht der nächste Schritt im Erstellen eines neuen virtuellen Computers:

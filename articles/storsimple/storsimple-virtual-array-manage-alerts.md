@@ -1,5 +1,5 @@
 ---
-title: Anzeigen und Verwalten von Microsoft Azure StorSimple Virtual Array-Warnungen | Microsoft Docs
+title: Anzeigen und Verwalten von Warnungen für StorSimple Virtual Array
 description: Es werden die Warnungsbedingungen und -schweregrade für StorSimple Virtual Array beschrieben, und Sie erfahren, wie Sie den StorSimple Manager-Dienst zum Verwalten von Warnungen verwenden.
 services: storsimple
 documentationcenter: NA
@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: 97ee25a1-0ec3-4883-9a0a-54b722598462
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bb6ef5a87c5610d90188471db961ef20dfb18835
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 12fcc9996697f3bbba35826d79bec238bfb0f8b3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60302730"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993007"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten von Warnungen für StorSimple Virtual Array
 
@@ -48,17 +48,17 @@ Nachdem Sie die E-Mail-Benachrichtigung für ein virtuelles Array aktiviert habe
     ![Warnungseinstellungen](./media/storsimple-virtual-array-manage-alerts/alerts2.png)
 2. Daraufhin öffnet sich das Blatt **Einstellungen**. Wählen Sie im Abschnitt **Geräteeinstellungen** die Option **Allgemein** aus. Daraufhin öffnet sich das Blatt **Allgemeine Einstellungen**.
    
-    ![Konfiguration von Warnungsbenachrichtigungen](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
+    ![Der Screenshot zeigt den Bereich „Geräteeinstellungen“ mit dem hervorgehobenen Bereich „Warnungseinstellungen“.](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
 3. Wechseln Sie auf dem Blatt **Allgemeine Einstellungen** zum Abschnitt **Warnungseinstellungen**, und legen Sie Folgendes fest:
    
    1. Wählen Sie im Feld **E-Mail-Benachrichtigung aktivieren** die Option **JA** aus.
    2. Klicken Sie im Feld **E-Mail an Dienstadministratoren** auf **JA**, wenn der Dienstadministrator und alle Co-Administratoren die Warnungsbenachrichtigungen erhalten sollen.
    3. Geben Sie im Feld **Weitere E-Mail-Empfänger** die E-Mail-Adressen aller weiteren Empfänger ein, die die Warnungsbenachrichtigungen erhalten sollen. Geben Sie Namen im Format *jemand\@irgendwo.com* ein. Verwenden Sie Semikolons, um mehrere E-Mail-Adressen zu trennen. Sie können maximal 20 E-Mail-Adressen pro virtuellem Gerät konfigurieren.
       
-       ![Konfiguration von Warnungsbenachrichtigungen](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
+       ![Der Screenshot zeigt die Details zu „Warnungseinstellungen“ mit den in diesem Schritt beschriebenen Einstellungen.](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
    4. Um eine E-Mail-Benachrichtigung als Test zu senden, klicken Sie auf **Test-E-Mail senden**. Der StorSimple-Geräte-Manager-Dienst zeigt beim Weiterleiten der Testbenachrichtigung Statusmeldungen an.
       
-       ![E-Mail zum Testen der Warnungsbenachrichtigung](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
+       ![Der Screenshot zeigt ein Informationsdialogfeld, in dem die Test-E-Mail überprüft wird.](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
       
       > [!NOTE]
       > Wenn die Testbenachrichtigung nicht gesendet werden kann, zeigt der StorSimple-Geräte-Manager-Dienst eine entsprechende Meldung an. Klicken Sie auf **OK**, warten Sie einige Minuten, und versuchen Sie dann, die Testnachricht erneut zu senden.
@@ -66,14 +66,14 @@ Nachdem Sie die E-Mail-Benachrichtigung für ein virtuelles Array aktiviert habe
       >
    5. Klicken Sie unten auf der Seite auf **Speichern** , um Ihre Konfiguration zu speichern. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**.
       
-      ![E-Mail zum Testen der Warnungsbenachrichtigung](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
+      ![Der Screenshot zeigt den Bereich „Einstellungen“ mit ausgewählter Schaltfläche „Speichern“.](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
 
 ## <a name="common-alert-conditions"></a>Häufige Warnungsbedingungen
 
 Ihr StorSimple Virtual Array generiert Warnungen als Reaktion auf viele verschiedene Bedingungen. Folgende Arten von Warnungsbedingungen kommen am häufigsten vor:
 
-* **Konnektivitätsprobleme**Diese Warnungen werden angezeigt, wenn es beim Übertragen von Daten zu Schwierigkeiten kommt. Während der Übertragung von Daten auf das bzw. aus dem Azure-Speicherkonto oder aufgrund einer fehlenden Verbindung zwischen den virtuellen Geräten und dem StorSimple-Geräte-Manager-Dienst können Kommunikationsprobleme auftreten. Die Behebung von Kommunikationsproblemen ist besonders schwierig, da die Anzahl der möglichen Fehlerquellen hoch ist. Sie sollten sich immer zuerst vergewissern, dass die Netzwerkverbindung und der Internetzugriff verfügbar sind, bevor Sie sich mit der eingehenderen Problembehandlung beschäftigen. Informationen zu Ports und Firewalleinstellungen finden Sie unter [Systemanforderungen für StorSimple Virtual Array](storsimple-ova-system-requirements.md). Weitere Informationen zur Problembehandlung finden Sie unter [Problembehandlung mit dem Cmdlet „Test-Connection“](storsimple-troubleshoot-deployment.md).
-* **Leistungsprobleme**Diese Warnungen werden verursacht, wenn Ihr System keine optimale Leistung aufweist, z.B. bei einer hohen Auslastung.
+* **Konnektivitätsprobleme** Diese Warnungen werden angezeigt, wenn es beim Übertragen von Daten zu Schwierigkeiten kommt. Während der Übertragung von Daten auf das bzw. aus dem Azure-Speicherkonto oder aufgrund einer fehlenden Verbindung zwischen den virtuellen Geräten und dem StorSimple-Geräte-Manager-Dienst können Kommunikationsprobleme auftreten. Die Behebung von Kommunikationsproblemen ist besonders schwierig, da die Anzahl der möglichen Fehlerquellen hoch ist. Sie sollten sich immer zuerst vergewissern, dass die Netzwerkverbindung und der Internetzugriff verfügbar sind, bevor Sie sich mit der eingehenderen Problembehandlung beschäftigen. Informationen zu Ports und Firewalleinstellungen finden Sie unter [Systemanforderungen für StorSimple Virtual Array](storsimple-ova-system-requirements.md). Weitere Informationen zur Problembehandlung finden Sie unter [Problembehandlung mit dem Cmdlet „Test-Connection“](./storsimple-8000-troubleshoot-deployment.md).
+* **Leistungsprobleme** Diese Warnungen werden verursacht, wenn Ihr System keine optimale Leistung aufweist, z.B. bei einer hohen Auslastung.
 
 Außerdem werden unter Umständen Warnungen zur Sicherheit, zu Updates oder zu Fehlern bei Aufträgen angezeigt.
 
@@ -101,7 +101,7 @@ Wenn Sie in der Liste auf eine Warnung klicken, werden weitere Details zur Warnu
 
 Sie können die Details der Warnung in eine Textdatei kopieren, wenn Sie die Informationen an den Microsoft Support senden möchten. Nachdem Sie die Empfehlung befolgt und die Warnungsbedingung lokal behoben haben, sollten Sie die Warnung aus der Liste löschen. Wählen Sie die Warnung aus der Liste aus, und klicken Sie auf **Löschen**. Zum Löschen mehrerer Warnungen wählen Sie die einzelnen Warnungen aus und klicken auf eine beliebige Spalte (außer der Spalte **Warnung**). Klicken Sie dann auf **Löschen**, nachdem Sie alle zu löschenden Warnungen ausgewählt haben.
 
-Wenn Sie auf **Löschen**klicken, können Sie Kommentare zur Warnung und die Schritte zur Behebung des Problems angeben.
+Wenn Sie auf **Löschen** klicken, können Sie Kommentare zur Warnung und die Schritte zur Behebung des Problems angeben.
 
 ![Warnungskommentare](./media/storsimple-virtual-array-manage-alerts/alerts17.png)
 

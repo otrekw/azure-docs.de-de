@@ -9,10 +9,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68883841"
 ---
 ## <a name="create-a-module-identity"></a>Erstellen einer Modulidentität

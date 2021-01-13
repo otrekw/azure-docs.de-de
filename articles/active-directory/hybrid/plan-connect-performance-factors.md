@@ -6,18 +6,19 @@ author: billmath
 manager: daveba
 tags: azuread
 ms.service: active-directory
+ms.subservice: hybrid
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a3a57fbe5df690e4dbdba8cbab85e62648bb298
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 15bcb0f7ca30c343072da396abeac8d08dee03a9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295370"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90087008"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Faktoren, die die Leistung von Azure AD Connect beeinflussen
 
@@ -40,9 +41,9 @@ Dieses Dokument beschreibt die Faktoren, die die Leistung der Azure AD Connect-B
 
 Das folgende Diagramm zeigt die leistungsstarke Architektur der Bereitstellungs-Engine, die mit einer einzigen Gesamtstruktur verbunden ist, obwohl mehrere Gesamtstrukturen unterstützt werden. Diese Architektur veranschaulicht, wie die verschiedenen Komponenten miteinander interagieren.
 
-![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
+![Das Diagramm zeigt, wie die verbundenen Verzeichnisse und die Azure AD Connect-Bereitstellungs-Engine interagieren, einschließlich des Connectorbereichs und der Metaverse-Komponenten in einer SQL-Datenbank. ](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
-Die Bereitstellungs-Engine stellt eine Verbindung mit jeder Active Directory-Gesamtstruktur und Azure AD her. Das Lesen von Informationen aus jedem Verzeichnis wird als „Import“ bezeichnet. Der „Export“ umfasst die Aktualisierung der Verzeichnisse aus der Bereitstellungs-Engine. Die Synchronisierung wertet die Regeln aus, wie sich Objekte in der Bereitstellungs-Engine bewegen. Weitere Informationen finden Sie unter [Azure AD Connect-Synchronisierung: Grundlagen der Architektur](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture).
+Die Bereitstellungs-Engine stellt eine Verbindung mit jeder Active Directory-Gesamtstruktur und Azure AD her. Das Lesen von Informationen aus jedem Verzeichnis wird als „Import“ bezeichnet. Der „Export“ umfasst die Aktualisierung der Verzeichnisse aus der Bereitstellungs-Engine. Die Synchronisierung wertet die Regeln aus, wie sich Objekte in der Bereitstellungs-Engine bewegen. Weitere Informationen finden Sie unter [Azure AD Connect-Synchronisierung: Grundlagen der Architektur](./concept-azure-ad-connect-sync-architecture.md).
 
 Azure AD Connect verwendet die folgenden Stagingbereiche, Regeln und Prozesse, um die Synchronisierung zwischen Active Directory und Azure AD zu ermöglichen:
 
@@ -51,7 +52,7 @@ Azure AD Connect verwendet die folgenden Stagingbereiche, Regeln und Prozesse, u
 * **Synchronisierungsregeln**: Sie entscheiden, welche Objekte erstellt (projiziert) oder mit Objekten in der Metaverse verbunden (verknüpft) werden. Die Synchronisierungsregeln bestimmen auch, welche Attributwerte in die und aus den Verzeichnissen kopiert oder transformiert werden.
 * **Ausführende Profile**: Sie bündeln die Prozessschritte beim Kopieren von Objekten und deren Attributwerten gemäß den Synchronisierungsregeln zwischen den Stagingbereichen und den verbundenen Verzeichnissen.
 
-Es gibt verschiedene ausführende Profile, um die Leistung der Bereitstellungs-Engine zu optimieren. Die meisten Organisationen verwenden Standardzeitpläne und -profile für normale Vorgänge, doch einige Organisationen müssen ggf. den[Zeitplan ändern](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler) oder andere ausführende Profile auslösen, um mit ungewöhnlichen Situationen umzugehen. Folgende ausführende Profile sind verfügbar:
+Es gibt verschiedene ausführende Profile, um die Leistung der Bereitstellungs-Engine zu optimieren. Die meisten Organisationen verwenden Standardzeitpläne und -profile für normale Vorgänge, doch einige Organisationen müssen ggf. den[Zeitplan ändern](./how-to-connect-sync-feature-scheduler.md) oder andere ausführende Profile auslösen, um mit ungewöhnlichen Situationen umzugehen. Folgende ausführende Profile sind verfügbar:
 
 ### <a name="initial-sync-profile"></a>Profil „Erste Synchronisierung“
 
@@ -95,7 +96,7 @@ Die folgenden Vorgänge sind in einem vollständigen Synchronisierungszyklus ent
 > [!NOTE]
 > Eine sorgfältige Planung ist erforderlich, wenn Sie Massenupdates für viele Objekte in Ihrer Active Directory-Instanz oder Azure AD ausführen. Massenupdates führen aufgrund zahlreicher Objektänderungen dazu, dass die Deltasynchronisierung mehr Zeit beim Import in Anspruch nimmt. Lange andauernde Importe sind auch dann möglich, wenn das Massenupdate keine Auswirkungen auf den Synchronisierungsprozess hat. Wenn Sie beispielsweise vielen Benutzern Lizenzen in Azure AD zuweisen, führt dies zu einem langen Importzyklus in Azure AD, jedoch nicht zu Attributänderungen in Active Directory.
 
-### <a name="synchronization"></a>Synchronisierung
+### <a name="synchronization"></a>Synchronization
 
 Die Laufzeit des Synchronisierungsprozesses weist folgende Leistungsmerkmale auf:
 
@@ -108,7 +109,7 @@ Die Laufzeit des Synchronisierungsprozesses weist folgende Leistungsmerkmale auf
 
 Die Größe der zu importierenden Active Directory-Topologie hat den größten Einfluss auf die Leistung der internen Bereitstellungs-Engine-Komponenten und ihre erforderliche Gesamtzeit.
 
-Verwenden Sie die [Filterung](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering), um die Objekte auf die synchronisierten zu reduzieren. Dadurch verhindern Sie, dass unnötige Objekte verarbeitet und in Azure AD exportiert werden. Diese Filtertechniken stehen in der folgenden empfohlenen Reihenfolge zur Verfügung:
+Verwenden Sie die [Filterung](./how-to-connect-sync-configure-filtering.md), um die Objekte auf die synchronisierten zu reduzieren. Dadurch verhindern Sie, dass unnötige Objekte verarbeitet und in Azure AD exportiert werden. Diese Filtertechniken stehen in der folgenden empfohlenen Reihenfolge zur Verfügung:
 
 
 
@@ -129,7 +130,7 @@ Viele persistente [Disconnectorobjekte](concept-azure-ad-connect-sync-architectu
 
 ### <a name="attribute-flows"></a>Attributflüsse
 
-Attributflüsse bezeichnen das Kopieren oder Transformieren der Attributwerte von Objekten aus einem verbundenen Verzeichnis in ein anderes verbundenes Verzeichnis. Sie sind als Teil der Synchronisierungsregeln definiert. Wenn beispielsweise die Telefonnummer eines Benutzers in Ihrer Active Directory-Instanz geändert wird, wird die Telefonnummer in Azure AD aktualisiert. Organisationen können die [Attributflüsse ändern](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-change-the-configuration), um verschiedenen Anforderungen zu erfüllen. Es wird empfohlen, die vorhandenen Attributflüsse vor dem Ändern zu kopieren.
+Attributflüsse bezeichnen das Kopieren oder Transformieren der Attributwerte von Objekten aus einem verbundenen Verzeichnis in ein anderes verbundenes Verzeichnis. Sie sind als Teil der Synchronisierungsregeln definiert. Wenn beispielsweise die Telefonnummer eines Benutzers in Ihrer Active Directory-Instanz geändert wird, wird die Telefonnummer in Azure AD aktualisiert. Organisationen können die [Attributflüsse ändern](./how-to-connect-sync-change-the-configuration.md), um verschiedenen Anforderungen zu erfüllen. Es wird empfohlen, die vorhandenen Attributflüsse vor dem Ändern zu kopieren.
 
 Einfache Umleitungen, z.B. das Verschieben eines Attributwerts zu einem anderen Attribut, haben keinen wesentlichen Einfluss auf die Leistung. Ein Beispiel für eine Umleitung ist das Senden einer Mobiltelefonnummer in Active Directory an die Bürotelefonnummer in Azure AD.
 
@@ -180,7 +181,7 @@ Beachten Sie die folgenden Empfehlungen, um die Leistung Ihrer Azure AD Connect 
 
 
 - Verwenden Sie die [empfohlene Hardwarekonfiguration](how-to-connect-install-prerequisites.md) basierend auf Ihrer Implementierungsgröße für den Azure AD Connect-Server.
-- Verwenden Sie für Azure AD Connect-Upgrades in großen Bereitstellungen die [Swingmigration](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration), um die geringste Downtime und die beste Zuverlässigkeit zu gewährleisten. 
+- Verwenden Sie für Azure AD Connect-Upgrades in großen Bereitstellungen die [Swingmigration](./how-to-upgrade-previous-version.md#swing-migration), um die geringste Downtime und die beste Zuverlässigkeit zu gewährleisten. 
 - Verwenden Sie SSDs für die SQL-Datenbank für die optimale Schreibleistung.
 - Wenden Sie domänenbasierte, OE- oder Attributfilter für den Active Directory-Bereich an, um nur die Objekte zu berücksichtigen, die in Azure AD bereitgestellt werden müssen.
 - Wenn Sie die Standardregeln von Attributflüssen ändern möchten, kopieren Sie zuerst die Regel, ändern Sie die Kopie, und deaktivieren Sie dann die ursprüngliche Regel. Denken Sie daran, eine vollständige Synchronisierung erneut auszuführen.

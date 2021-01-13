@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit direct | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und direct konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7c2cd1f0-d14c-42f0-94a8-9b800008b285
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: f1e201b5f86311aeaeca4d077140f4dc429a0357
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a3b9ae91118f714ce15f56cde0f79faa4fb4d640
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104204"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586586"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>Tutorial: Azure Active Directory-Integration mit direct
 
@@ -31,7 +27,7 @@ Die Integration von direct in Azure AD bietet die folgenden Vorteile:
 * Sie können es Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei direct angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -67,7 +63,7 @@ Zum Konfigurieren der Integration von direct in Azure AD müssen Sie Direct aus 
 
 4. Geben Sie im Suchfeld **direct** ein, wählen Sie im Ergebnisbereich **direct** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![direct in der Ergebnisliste](common/search-new-app.png)
+    ![direct in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -148,12 +144,12 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** den Namen brittasimon@yourcompanydomain.extension ein. Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -183,7 +179,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-direct-test-user"></a>Erstellen eines direct-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in direct eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur direct-Plattform vom [direct-Supportteam](https://direct4b.com/ja/support.html#inquiry) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in direct eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur direct-Plattform vom [Direct-Supportteam](https://direct4b.com/ja/support.html#inquiry) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
@@ -197,15 +193,14 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
     a. Wenn Sie im Zugriffsbereich auf die **direct**-Kachel klicken, werden Sie auf die Anmeldeseite der Anwendung umgeleitet.
 
-    b. Geben Sie Ihre `subdomain` in das angezeigte Textfeld ein, und drücken Sie „次へ“ (Weiter). Sie werden automatisch bei Ihrer **direct**-Anwendung angemeldet.
+    b. Geben Sie im angezeigten Textfeld Ihre `subdomain` ein, und wählen Sie **Weiter** aus. Sie sollten dann automatisch bei Ihrer **direct**-Anwendung angemeldet werden.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „direct“ klicken, sollten Sie automatisch bei der direct-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „direct“ klicken, sollten Sie automatisch bei der direct-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

@@ -4,15 +4,15 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: 16ce537a54fc77fc0f72b859d6d193501d86c1fc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5c2959a1bf6225c164f8538c3c437e464d834b96
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178324"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026511"
 ---
 ## <a name="create-a-ruby-application"></a>Erstellen einer Ruby-Anwendung
-Anweisungen finden Sie unter [Ruby on Rails-Webanwendung auf Azure VM](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md).
+Anweisungen finden Sie unter [Ruby on Rails-Webanwendung auf Azure VM](/previous-versions/azure/virtual-machines/linux/classic/ruby-rails-web-app).
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
 Um Service Bus zu verwenden, müssen Sie das Azure-Ruby-Paket herunterladen und verwenden. Dieses enthält eine Reihe von Bibliotheken, die mit den Speicher-REST-Diensten kommunizieren.
@@ -42,3 +42,14 @@ sb_host = "https://#{Azure.sb_namespace}.servicebus.windows.net"
 ```
 
 Legen Sie den Wert für den Namespace auf den von Ihnen erstellten Wert statt auf die gesamte URL fest. Verwenden Sie beispielsweise **Beispielnamespace**, anstelle von „Beispielnamespace.servicebus.windows.net“.
+
+Beim Arbeiten mit mehreren Namespaces können Sie den Schlüssel und seinen Namen beim Erstellen von `SharedAccessSigner`-Objekten an den Konstruktor übergeben.
+
+```ruby
+sb_namespace = '<your azure service bus namespace>'
+sb_sas_key_name = '<your azure service bus access keyname>'
+sb_sas_key = '<your azure service bus access key>'
+
+signer = Azure::ServiceBus::Auth::SharedAccessSigner.new(sb_sas_key_name, sb_sas_key)
+sb_host = "https://#{sb_namespace}.servicebus.windows.net"
+```

@@ -11,18 +11,18 @@ Customer intent: I want to filter network traffic to virtual machines that perfo
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: a1ade6e823201419c3a742a36c66a50a9dc09976
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7589b13dc517a23e8d9d65907fb3342e4e2490a9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728802"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000588"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über die Azure-Befehlszeilenschnittstelle
 
@@ -33,12 +33,11 @@ Sie können eingehenden und ausgehenden Netzwerkdatenverkehr im Subnetz eines vi
 * Bereitstellen von virtuellen Computern in einem Subnetz
 * Testen von Datenverkehrsfiltern
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.0.28 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). 
-
+- Für diesen Artikel ist mindestens Version 2.0.28 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
@@ -54,7 +53,7 @@ az group create \
   --location eastus
 ```
 
-Erstellen Sie mit [az network asg create](/cli/azure/network/asg) eine Anwendungssicherheitsgruppe. Mit einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Anforderungen an die Portfilterung gruppieren. Das folgende Beispiel erstellt zwei Anwendungssicherheitsgruppen.
+Erstellen Sie mit [az network asg create](/cli/azure/network/asg) eine Anwendungssicherheitsgruppe. Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Portfilterungsanforderungen gruppieren. Das folgende Beispiel erstellt zwei Anwendungssicherheitsgruppen:
 
 ```azurecli-interactive
 az network asg create \
@@ -81,7 +80,7 @@ az network nsg create \
 
 ### <a name="create-security-rules"></a>Erstellen von Sicherheitsregeln
 
-Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule) eine Sicherheitsregel. Das folgende Beispiel erstellt eine Regel, die eingehenden Datenverkehr aus dem Internet in die Anwendungssicherheitsgruppe *myWebServers* über die Ports 80 und 443 zulässt:
+Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule) eine Sicherheitsregel. Das folgende Beispiel erstellt eine Regel, die eingehenden Datenverkehr aus dem Internet für die Anwendungssicherheitsgruppe *myWebServers* über die Ports 80 und 443 zulässt:
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -128,7 +127,7 @@ az network vnet create \
   --address-prefixes 10.0.0.0/16
 ```
 
-Fügen Sie einem virtuellen Netzwerk mit [az network vnet subnet create](/cli/azure/network/vnet/subnet) ein Subnetz hinzu. Das folgende Beispiel fügt dem virtuellen Netzwerk ein Subnetz namens *mySubnet* hinzu und weist diesem die Netzwerksicherheitsgruppe *myNsg* zu:
+Fügen Sie einem virtuellen Netzwerk mit [az network vnet subnet create](/cli/azure/network/vnet/subnet) ein Subnetz hinzu. Das folgende Beispiel fügt dem virtuellen Netzwerk ein Subnetz namens *mySubnet* hinzu und weist ihm die Netzwerksicherheitsgruppe *myNsg* zu:
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -141,9 +140,9 @@ az network vnet subnet create \
 
 ## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk, sodass Sie in einem späteren Schritt die Datenverkehrsfilterung überprüfen können. 
+Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk, im in einem späteren Schritt die Datenverkehrsfilterung überprüfen zu können. 
 
-Erstellen Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer. Das folgende Beispiel erstellt einen virtuellen Computer, der als Webserver dienen wird. Durch die `--asgs myAsgWebServers`-Option fügt Azure die für den virtuellen Computer erstellte Netzwerkschnittstelle als Mitglied der Anwendungssicherheitsgruppe *myAsgWebServers* hinzu.
+Erstellen Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer. Das folgende Beispiel erstellt einen virtuellen Computer, der als Webserver fungiert. Durch die `--asgs myAsgWebServers`-Option fügt Azure die für den virtuellen Computer erstellte Netzwerkschnittstelle als Mitglied der Anwendungssicherheitsgruppe *myAsgWebServers* hinzu.
 
 Die `--nsg ""`-Option wird angegeben, um zu verhindern, dass Azure eine standardmäßige Netzwerksicherheitsgruppe für die Netzwerkschnittstelle erstellt, die Azure während der Erstellung des virtuellen Computers erstellt. Zur Vereinfachung dieses Artikels wird ein Kennwort verwendet. Schlüssel werden in der Regel in Produktionsbereitstellungen verwendet. Wenn Sie Schlüssel verwenden, müssen Sie für die verbleibenden Schritte außerdem die SSH-Agent-Weiterleitung konfigurieren. Weitere Informationen finden Sie in der Dokumentation Ihres SSH-Clients. Ersetzen Sie `<replace-with-your-password>` im folgenden Befehl durch ein Kennwort Ihrer Wahl.
 
@@ -164,7 +163,7 @@ az vm create \
 
 Die Erstellung des virtuellen Computers dauert einige Minuten. Nachdem der virtuelle Computer erstellt wurde, wird eine Ausgabe ähnlich des folgenden Beispiels zurückgegeben: 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVmWeb",
@@ -177,7 +176,7 @@ Die Erstellung des virtuellen Computers dauert einige Minuten. Nachdem der virtu
 }
 ```
 
-Notieren Sie sich **publicIpAddress**. Diese Adresse wird in einem späteren Schritt für den Zugriff auf den virtuellen Computer über das Internet verwendet.  Erstellen Sie einen virtuellen Computer, der als Verwaltungsserver dient:
+Notieren Sie sich **publicIpAddress**. Über diese Adresse wird in einem späteren Schritt über das Internet auf den virtuellen Computer zugegriffen.  Erstellen Sie einen virtuellen Computer, der als Verwaltungsserver fungiert:
 
 ```azurecli-interactive
 az vm create \
@@ -192,11 +191,11 @@ az vm create \
   --admin-password $adminPassword
 ```
 
-Die Erstellung des virtuellen Computers dauert einige Minuten. Nachdem der virtuelle Computer erstellt ist, beachten Sie die **publicIpAddress** in der zurückgegebenen Ausgabe. Diese Adresse wird im nächsten Schritt verwendet, um auf den virtuellen Computer zuzugreifen. Fahren Sie erst dann mit dem nächsten Schritt fort, wenn Azure die Erstellung des virtuellen Computers abgeschlossen hat.
+Die Erstellung des virtuellen Computers dauert einige Minuten. Nachdem der virtuelle Computer erstellt ist, beachten Sie die **publicIpAddress** in der zurückgegebenen Ausgabe. Diese Adresse wird im nächsten Schritt verwendet, um auf den virtuellen Computer zuzugreifen. Fahren Sie mit dem nächsten Schritt erst fort, wenn Azure die Erstellung des virtuellen Computers abgeschlossen hat.
 
 ## <a name="test-traffic-filters"></a>Testen von Datenverkehrsfiltern
 
-Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Computer *myVmMgmt*. Ersetzen Sie *\<publicIpAddress>* durch die öffentliche IP-Adresse Ihrer VM. Im Beispiel oben lautet die IP-Adresse *13.90.242.231*.
+Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Computer *myVmMgmt*. Ersetzen Sie *\<publicIpAddress>* durch die öffentliche IP-Adresse der VM. Im Beispiel oben lautet die IP-Adresse *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -212,7 +211,7 @@ Erstellen Sie mit dem folgenden Befehl eine SSH-Verbindung vom virtuellen Comput
 ssh azureuser@myVmWeb
 ```
 
-Die Verbindung kann erfolgreich hergestellt werden, weil eine Standardsicherheitsregel innerhalb jeder Netzwerksicherheitsgruppe Datenverkehr über alle Ports zwischen allen IP-Adressen in einem virtuellen Netzwerk zulässt. Sie können keine SSH-Verbindung mit dem virtuellen Computer *myVmWeb* aus dem Internet herstellen, weil die Sicherheitsregel für *myAsgWebServers* keinen eingehenden Datenverkehr aus dem Internet über Port 22 zulässt.
+Die Verbindung wird erfolgreich hergestellt, da eine Standardsicherheitsregel innerhalb jeder Netzwerksicherheitsgruppe Datenverkehr über alle Ports zwischen allen IP-Adressen in einem virtuellen Netzwerk zulässt. Sie können keine SSH-Verbindung mit dem virtuellen Computer *myVmWeb* aus dem Internet herstellen, weil die Sicherheitsregel für *myAsgWebServers* keinen eingehenden Datenverkehr aus dem Internet über Port 22 zulässt.
 
 Verwenden Sie die folgenden Befehle, um den nginx-Webserver auf dem virtuellen Computer *myVmWeb* zu installieren:
 
@@ -236,7 +235,7 @@ Melden Sie sich vom virtuellen Computer *myVmMgmt* ab. Um zu bestätigen, dass S
 
 Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit [az group delete](/cli/azure/group) entfernen.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 
@@ -244,4 +243,4 @@ az group delete --name myResourceGroup --yes
 
 In diesem Artikel haben Sie eine Netzwerksicherheitsgruppe erstellt und dem Subnetz eines virtuellen Netzwerks zugeordnet. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksicherheitsgruppen – Übersicht](security-overview.md) sowie unter [Verwalten einer Netzwerksicherheitsgruppe](manage-network-security-group.md).
 
-Azure leitet standardmäßig Datenverkehr zwischen Subnetzen weiter. Sie können Datenverkehr zwischen Subnetzen stattdessen auch über einen virtuellen Computer weiterleiten, der als Firewall dient. Informationen dazu finden Sie unter [Erstellen einer Routingtabelle](tutorial-create-route-table-cli.md).
+Azure leitet standardmäßig Datenverkehr zwischen Subnetzen weiter. Sie können Datenverkehr zwischen Subnetzen aber beispielsweise auch über einen virtuellen Computer weiterleiten, der als Firewall fungiert. Informationen dazu finden Sie unter [Erstellen einer Routingtabelle](tutorial-create-route-table-cli.md).

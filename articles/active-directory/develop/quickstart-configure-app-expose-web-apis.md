@@ -1,143 +1,122 @@
 ---
-title: 'Konfigurieren einer Anwendung zum Verfügbarmachen von Web-APIs: Microsoft Identity Platform'
-description: Es wird beschrieben, wie Sie eine Anwendung so konfigurieren, dass eine neue Berechtigung bzw. ein Bereich und eine Rolle bereitgestellt werden, um die Anwendung für Clientanwendungen verfügbar zu machen.
+title: 'Schnellstart: Registrieren und Verfügbarmachen einer Web-API | Azure'
+titleSuffix: Microsoft identity platform
+description: In dieser Schnellstartanleitung registrieren Sie eine Web-API bei Microsoft Identity Platform. Außerdem konfigurieren Sie deren Bereiche und machen die Web API für Clients für den berechtigungsbasierten Zugriff auf die API-Ressourcen verfügbar.
 services: active-directory
-documentationcenter: ''
-author: rwike77
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/14/2019
-ms.author: ryanwi
-ms.custom: aaddev
+ms.date: 09/03/2020
+ms.author: marsma
+ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4ebae7e97f9128bb9302e9076e71dd3164f0c29e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989272"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030959"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs
+# <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen einer Web-API
 
-Sie können eine Web-API entwickeln und sie Clientanwendungen zur Verfügung stellen, indem Sie [Berechtigungen/Bereiche](developer-glossary.md#scopes) und [Rollen](developer-glossary.md#roles) verfügbar machen. Eine ordnungsgemäß konfigurierte Web-API wird auf die gleiche Weise wie andere Microsoft-Web-APIs (einschließlich der Graph-API und der Office 365-APIs) zur Verfügung gestellt.
-
-In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Anwendung so konfigurieren, dass ein neuer Bereich bereitgestellt wird, um diesen für Clientanwendungen verfügbar zu machen.
+In dieser Schnellstartanleitung registrieren Sie eine Web-API bei Microsoft Identity Platform und machen sie durch Hinzufügen eines Beispielbereichs für Client-Apps verfügbar. Indem Sie Ihre Web-API registrieren und über Bereiche verfügbar machen, können Sie für autorisierte Benutzer und Client-Apps, die auf Ihre API zugreifen, einen berechtigungsbasierten Zugriff auf die Ressourcen bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie zunächst sicher, dass die folgenden Voraussetzungen erfüllt sind:
+* Ein Azure-Konto mit einem aktiven Abonnement ([kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
+* Abschluss von [Schnellstart: Einrichten eines Mandanten](quickstart-create-new-tenant.md)
 
-* Sie sind über die Unterstützung von [Berechtigungen und Zustimmung](v2-permissions-and-consent.md) informiert. Hiermit sollten Sie vertraut sein, wenn Sie Anwendungen erstellen, die von anderen Benutzern oder Anwendungen verwendet werden müssen.
-* Sie verfügen über einen Mandanten, unter dem Anwendungen registriert wurden.
-  * Wenn Sie keine Apps registriert haben, sollten Sie sich darüber informieren, [wie Sie Anwendungen bei der Microsoft Identity Platform registrieren](quickstart-register-app.md).
+## <a name="register-the-web-api"></a>Registrieren der Web-API
 
-## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Anmelden beim Azure-Portal und Auswählen der App
+Um einen bereichsbezogenen Zugriff auf die Ressourcen in Ihrer Web-API zu ermöglichen, müssen Sie die API zunächst bei Microsoft Identity Platform registrieren.
 
-Sie müssen die folgenden Schritte ausführen, bevor Sie die App konfigurieren können:
+1. Führen Sie dazu die Schritte im Abschnitt **Registrieren einer Anwendung** in [Schnellstart: Registrieren einer App bei Microsoft Identity Platform](quickstart-register-app.md) aus.
+1. Überspringen Sie die Abschnitte **Hinzufügen eines Umleitungs-URIs** und **Konfigurieren von Plattformeinstellungen**. Sie müssen keinen Umleitungs-URI für eine Web-API konfigurieren, da keine Benutzer interaktiv angemeldet werden.
+1. Überspringen Sie vorerst den Abschnitt **Hinzufügen von Anmeldeinformationen**. Ihre API würde nur eigene Anmeldeinformationen benötigen, wenn sie auf eine Downstream-API zugreifen müsste. Ein solches Szenario wird in diesem Artikel nicht behandelt.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
-1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen** aus.
-1. Wählen Sie die Anwendung aus, die Sie konfigurieren möchten. Nachdem Sie die App ausgewählt haben, wird die Seite **Übersicht** oder die Hauptseite für die Registrierung angezeigt.
-1. Wählen Sie aus, welche Methode Sie verwenden möchten (Benutzeroberfläche oder Anwendungsmanifest), um einen neuen Bereich verfügbar zu machen:
-    * [Verfügbarmachen eines neuen Bereichs über die Benutzeroberfläche](#expose-a-new-scope-through-the-ui)
-    * [Verfügbarmachen eines neuen Bereichs oder einer Rolle über das Anwendungsmanifest](#expose-a-new-scope-or-role-through-the-application-manifest)
+Nachdem Sie Ihre Web-API registriert haben, können Sie die Bereiche hinzufügen, mit denen der Code Ihrer API eine differenzierte Berechtigung für Nutzer Ihrer API bereitstellen kann.
 
-## <a name="expose-a-new-scope-through-the-ui"></a>Verfügbarmachen eines neuen Bereichs über die Benutzeroberfläche
+## <a name="add-a-scope"></a>Hinzufügen eines Bereichs
 
-[![Zeigt, wie eine API über die Benutzeroberfläche verfügbar gemacht wird](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+Der Code in einer Clientanwendung fordert die Berechtigung zum Ausführen von Vorgängen an, die von Ihrer Web-API definiert werden, indem er zusammen mit seinen Anforderungen ein Zugriffstoken an die geschützte Ressource (die Web-API) übergibt. Ihre Web-API führt anschließend den angeforderten Vorgang nur dann aus, wenn das empfangene Zugriffstoken die für den Vorgang erforderlichen Bereiche enthält.
 
-Machen Sie einen neuen Bereich wie folgt über die Benutzeroberfläche verfügbar:
+Führen Sie zuerst die folgenden Schritte aus, um einen Beispielbereich namens `Employees.Read.All` zu erstellen:
 
-1. Wählen Sie auf der Seite **Übersicht** der App den Abschnitt **Eine API verfügbar machen**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, der die Registrierung der Client-App enthält.
+1. Wählen Sie zuerst **Azure Active Directory** > **App-Registrierungen** und dann die App-Registrierung Ihrer API aus.
+1. Wählen Sie **Eine API verfügbar machen** > **Bereich hinzufügen** aus.
 
-1. Wählen Sie **Bereich hinzufügen**.
+    :::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-02-expose-api.png" alt-text="Bereich „Eine API verfügbar machen“ der App-Registrierung im Azure-Portal":::
 
-1. Wenn Sie keinen **Anwendungs-ID-URI** festgelegt haben, wird eine entsprechende Aufforderung angezeigt. Geben Sie Ihren Anwendungs-ID-URI ein, oder verwenden Sie den bereits vorhandenen URI, und wählen Sie dann **Speichern und fortfahren**.
+1. Sie werden aufgefordert, einen **Anwendungs-ID-URI** festzulegen, falls Sie noch keinen konfiguriert haben.
 
-1. Geben Sie die Informationen zu Ihrem Bereich ein, wenn die Seite **Bereich hinzufügen** angezeigt wird:
+   Der APP-ID-URI fungiert als Präfix für die Bereiche, auf die Sie in Ihrem API-Code verweisen, und muss global eindeutig sein. Sie können den bereitgestellten Standardwert im Format `api://<application-client-id>` verwenden, oder einen besser lesbaren URI wie `https://contoso.com/api` angeben.
 
-    | Feld | BESCHREIBUNG |
-    |-------|-------------|
-    | **Bereichsname** | Geben Sie einen aussagekräftigen Namen für Ihren Bereich ein.<br><br>Beispiel: `Employees.Read.All`. |
-    | **Zum Einwilligen berechtigte Personen** | Wählen Sie aus, ob für diesen Bereich die Einwilligung von Benutzern ausreicht oder ob die Einwilligung eines Administrators erforderlich ist. Wählen Sie für umfassendere Berechtigungen die Option **Nur Administratoren**. |
-    | **Anzeigename der Administratoreinwilligung** | Geben Sie eine aussagekräftige Beschreibung für Ihren Bereich ein, die für Administratoren angezeigt wird.<br><br>Zum Beispiel, `Read-only access to Employee records` |
-    | **Beschreibung der Administratoreinwilligung** | Geben Sie eine aussagekräftige Beschreibung für Ihren Bereich ein, die für Administratoren angezeigt wird.<br><br>Zum Beispiel, `Allow the application to have read-only access to all Employee data.` |
+1. Geben Sie als Nächstes unter **Bereich hinzufügen** die Attribute des Bereichs an. Für diese exemplarische Vorgehensweise können Sie die Beispielwerte verwenden oder eigene Werte angeben.
 
-    Geben Sie auch Werte für die folgenden Felder ein, wenn auch Benutzer die Einwilligung für Ihren Bereich erteilen können:
+    | Feld | BESCHREIBUNG | Beispiel |
+    |-------|-------------|---------|
+    | **Bereichsname** | Name des Bereichs. Eine häufige Benennungskonvention für Bereiche lautet `resource.operation.constraint`. | `Employees.Read.All` |
+    | **Zum Einwilligen berechtigte Personen** | Gibt an, ob für diesen Bereich die Einwilligung von Benutzern ausreicht oder die Einwilligung eines Administrators erforderlich ist. Wählen Sie für umfassendere Berechtigungen die Option **Nur Administratoren**. | **Administratoren und Benutzer** |
+    | **Anzeigename der Administratoreinwilligung** | Eine kurze Beschreibung des Zwecks für den Bereich, der nur Administratoren angezeigt wird. | `Read-only access to Employee records` |
+    | **Beschreibung der Administratoreinwilligung** | Eine ausführlichere Beschreibung der vom Bereich gewährten Berechtigung, die nur Administratoren angezeigt wird. | `Allow the application to have read-only access to all Employee data.` |
+    | **Anzeigename der Benutzereinwilligung** | Eine kurze Beschreibung des Zwecks für den Bereich. Wird Benutzern nur angezeigt, wenn Sie unter **Zum Einwilligen berechtigte Personen** die Option **Administratoren und Benutzer** festgelegt haben. | `Read-only access to your Employee records` |
+    | **Beschreibung der Benutzereinwilligung** | Eine ausführlichere Beschreibung der Berechtigung, die vom Bereich gewährt wird. Wird Benutzern nur angezeigt, wenn Sie unter **Zum Einwilligen berechtigte Personen** die Option **Administratoren und Benutzer** festgelegt haben. | `Allow the application to have read-only access to your Employee data.` |
 
-    | Feld | BESCHREIBUNG |
-    |-------|-------------|
-    | **Anzeigename der Benutzereinwilligung** | Geben Sie einen aussagekräftigen Namen für Ihren Bereich ein, der Benutzern angezeigt wird.<br><br>Zum Beispiel, `Read-only access to your Employee records` |
-    | **Beschreibung der Benutzereinwilligung** | Geben Sie eine aussagekräftige Beschreibung für Ihren Bereich ein, die Benutzern angezeigt wird.<br><br>Zum Beispiel, `Allow the application to have read-only access to your Employee data.` |
+1. Legen Sie den **Status** auf **Aktiviert** fest, und wählen Sie dann **Bereich hinzufügen** aus.
 
-1. Legen Sie den **Zustand** fest, und wählen Sie **Bereich hinzufügen**, wenn Sie fertig sind.
+1. (Optional) Soll Benutzern Ihrer App keine Einwilligungsaufforderung für die von Ihnen festgelegten Bereiche angezeigt werden, können Sie die Clientanwendung für den Zugriff auf Ihre Web-API *vorab autorisieren*. Sie sollten *nur* die Clientanwendungen vorab autorisieren, denen Sie vertrauen, da Ihre Benutzer keine Möglichkeit haben, ihre Einwilligung zu verweigern.
+    1. Wählen Sie unter **Autorisierte Clientanwendungen** die Option **Eine Clientanwendung hinzufügen** aus.
+    1. Geben Sie den Wert für **Anwendungs-ID (Client)** der Clientanwendung ein, die Sie vorab autorisieren möchten, beispielsweise den einer zuvor registrierten Webanwendung.
+    1. Wählen Sie unter **Autorisierte Bereiche** die Bereiche aus, für die Sie die Einwilligungsaufforderung unterdrücken möchten, und wählen Sie dann **Anwendung hinzufügen** aus.
 
-1. Führen Sie die Schritte aus, mit denen Sie [Überprüfen, ob die Web-API für andere Anwendungen verfügbar gemacht wurde](#verify-the-web-api-is-exposed-to-other-applications).
+    Wenn Sie diesen optionalen Schritt ausgeführt haben, ist die Client-App jetzt eine vorab autorisierte Client-App, und Benutzer werden bei der Anmeldung nicht zur Einwilligung aufgefordert.
 
-## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>Verfügbarmachen eines neuen Bereichs oder einer Rolle über das Anwendungsmanifest
+## <a name="add-a-scope-requiring-admin-consent"></a>Hinzufügen eines Bereichs, der Administratoreinwilligung erfordert
 
-[![Verfügbarmachen eines neuen Bereichs mit der oauth2Permissions-Sammlung im Manifest](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png#lightbox)
+Fügen Sie als Nächstes einen weiteren Beispielbereich namens `Employees.Write.All` mit ausschließlich Administratoreinwilligung hinzu. Bereiche, die Administratoreinwilligung erfordern, werden in der Regel für den Zugriff auf Vorgänge mit höheren Berechtigungen verwendet. Außerdem werden sie häufig von Clientanwendungen verwendet, die als Back-End-Dienste oder Daemons ausgeführt werden und keine Benutzer interaktiv anmelden.
 
-Machen Sie einen neuen Bereich oder einer Rolle wie folgt über das Anwendungsmanifest verfügbar:
+Um den Beispielbereich `Employees.Write.All` hinzuzufügen, führen Sie die im Abschnitt [Hinzufügen eines Bereichs](#add-a-scope) beschriebenen Schritte aus, und geben Sie unter **Bereich hinzufügen** die folgenden Werte an:
 
-1. Wählen Sie auf der Seite **Übersicht** der App den Abschnitt **Manifest**. Ein webbasierter Manifest-Editor wird geöffnet, mit dem Sie das Manifest im Portal bearbeiten können (**Bearbeiten**). Optional können Sie **Herunterladen** wählen und das Manifest lokal bearbeiten und dann **Hochladen** verwenden, um es wieder auf Ihre Anwendung anzuwenden.
-    
-    Im folgenden Beispiel wird veranschaulicht, wie Sie den neuen Bereich `Employees.Read.All` für die Ressource/API verfügbar machen können, indem Sie der Sammlung `oauth2Permissions` das folgende JSON-Element hinzufügen.
+| Feld                          | Beispielwert                                                      |
+|--------------------------------|--------------------------------------------------------------------|
+| **Bereichsname**                 | `Employees.Write.All`                                              |
+| **Zum Einwilligen berechtigte Personen**            | **Nur Administratoren**                                                    |
+| **Anzeigename der Administratoreinwilligung** | `Write access to Employee records`                                 |
+| **Beschreibung der Administratoreinwilligung**  | `Allow the application to have write access to all Employee data.` |
+| **Anzeigename der Benutzereinwilligung**  | *Keine (Feld leer lassen)*                                               |
+| **Beschreibung der Benutzereinwilligung**   | *Keine (Feld leer lassen)*                                               |
 
-      ```json
-      {
-        "adminConsentDescription": "Allow the application to have read-only access to all Employee data.",
-        "adminConsentDisplayName": "Read-only access to Employee records",
-        "id": "2b351394-d7a7-4a84-841e-08a6a17e4cb8",
-        "isEnabled": true,
-        "type": "User",
-        "userConsentDescription": "Allow the application to have read-only access to your Employee data.",
-        "userConsentDisplayName": "Read-only access to your Employee records",
-        "value": "Employees.Read.All"
-      }
-      ```
+## <a name="verify-the-exposed-scopes"></a>Überprüfen der verfügbar gemachten Bereiche
 
-   > [!NOTE]
-   > Der Wert `id` muss programmgesteuert oder mit einem Tool zum Generieren von GUIDs, z.B. [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx), generiert werden. Die `id` stellt einen eindeutigen Bezeichner für den Bereich dar, der von der Web-API bereitgestellt wird. Nachdem ein Client richtig mit Berechtigungen zum Zugreifen auf Ihre Web-API konfiguriert wurde, wird dafür von Azure AD ein OAuth 2.0-Zugriffstoken ausgestellt. Wenn der Client die Web-API aufruft, wird das Zugriffstoken präsentiert, für das der Bereichsanspruch (scp) auf die Berechtigungen festgelegt ist, die in der dazugehörigen Anwendungsregistrierung angefordert werden.
-   >
-   > Sie können später bei Bedarf zusätzliche Bereiche verfügbar machen. Berücksichtigen Sie, dass Ihre Web-API verschiedene Berechtigungen verfügbar machen kann, die einer Vielzahl von unterschiedlichen Funktionen zugeordnet sind. Ihre Ressource kann den Zugriff auf die Web-API zur Laufzeit steuern, indem die Bereichsansprüche (`scp`) im erhaltenen OAuth 2.0-Zugriffstoken ausgewertet werden.
+Wenn Sie die beiden in den vorherigen Abschnitten beschriebenen Beispielbereiche erfolgreich hinzugefügt haben, werden sie, ähnlich wie in der folgenden Abbildung gezeigt, im Bereich **Eine API verfügbar machen** der App-Registrierung Ihrer Web-API angezeigt:
 
-1. Klicken Sie abschließend auf **Speichern**. Ihre Web-API ist jetzt so konfiguriert, dass sie von anderen Anwendungen im Verzeichnis verwendet werden kann.
-1. Führen Sie die Schritte aus, mit denen Sie [Überprüfen, ob die Web-API für andere Anwendungen verfügbar gemacht wurde](#verify-the-web-api-is-exposed-to-other-applications).
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Screenshot des Bereiches „Eine API verfügbar machen“ mit zwei verfügbar gemachten Bereichen.":::
 
-## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Überprüfen, ob die Web-API für andere Anwendungen verfügbar gemacht wurde
+Wie aus der Abbildung hervorgeht, wird die vollständige Zeichenfolge eines Bereichs durch die Verkettung von **Anwendungs-ID-URI** der Web-API und **Bereichsname** des Bereichs gebildet.
 
-1. Wechseln Sie zurück zu Ihrem Azure AD-Mandanten, wählen Sie **App-Registrierungen**, und suchen Sie nach der Clientanwendung, die Sie konfigurieren möchten. Wählen Sie diese Clientanwendung aus.
-1. Wiederholen Sie die Schritte unter [Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs](quickstart-configure-app-access-web-apis.md).
-1. Wenn Sie zum Schritt [API auswählen](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
-) gelangen, wählen Sie Ihre Ressource aus. Der neue Bereich, der für Clientberechtigungsanforderungen verfügbar ist, sollte angezeigt werden.
+Wenn der Anwendungs-ID-URI Ihrer Web-API also beispielsweise `https://contoso.com/api` und der Bereichsname `Employees.Read.All` lautet, ergibt sich daraus die folgende Zeichenfolge für den vollständigen Bereich:
 
-## <a name="more-on-the-application-manifest"></a>Weitere Informationen zum Anwendungsmanifest
+`https://contoso.com/api/Employees.Read.All`
 
-Das Anwendungsmanifest dient als Mechanismus zum Aktualisieren der Anwendungsentität, die alle Attribute der Identitätskonfiguration einer Azure AD-Anwendung definiert. Weitere Informationen zur Anwendungsentität und zum dazugehörigen Schema finden Sie in der [Dokumentation zur Anwendungsentität der Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity). Der Artikel enthält umfassende Referenzinformationen zu den Anwendungsentitätselementen, die verwendet werden, um Berechtigungen für Ihre API anzugeben, z.B.:  
+## <a name="using-the-exposed-scopes"></a>Verwenden der verfügbar gemachten Bereiche
 
-* Das appRoles-Mitglied, bei es sich um eine Sammlung von [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type)-Entitäten handelt, die zum Definieren der [Anwendungsberechtigungen](developer-glossary.md#permissions) für eine Web-API verwendet werden.
-* Das oauth2Permissions-Mitglied, bei dem es sich um eine Sammlung von [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type)-Entitäten handelt, die zum Definieren der [delegierten Berechtigungen](developer-glossary.md#permissions) für eine Web-API verwendet werden.
+Im nächsten Artikel der Serie konfigurieren Sie die Registrierung einer Client-App mit Zugriff auf Ihre Web-API und den von Ihnen definierten Bereichen, indem Sie die Schritte in diesem Artikel ausführen.
 
-Weitere Informationen zu Anwendungsmanifestkonzepten im Allgemeinen finden Sie unter [Grundlegendes zum Azure Active Directory-Anwendungsmanifest](reference-app-manifest.md).
+Nachdem der Registrierung einer Client-App die Berechtigung für den Zugriff auf Ihre Web-API erteilt wurde, kann Microsoft Identity Platform für den Client ein OAuth 2.0-Zugriffstoken ausstellen. Wenn der Client die Web-API aufruft, präsentiert er ein Zugriffstoken, dessen Bereichs(`scp`)-Anspruch auf die Berechtigungen festgelegt ist, die Sie in der Client-App-Registrierung angegeben haben.
+
+Sie können später bei Bedarf zusätzliche Bereiche verfügbar machen. Beachten Sie, dass Ihre Web-API mehrere Bereiche verfügbar machen kann, die verschiedenen Vorgängen zugeordnet sind. Ihre Ressource kann zur Laufzeit durch Auswerten der Bereichs(`scp`)-Ansprüche im erhaltenen OAuth 2.0-Zugriffstoken den Zugriff auf die Web-API steuern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die anderen Schnellstartanleitungen zur App-Verwaltung an:
+Nachdem Sie nun Ihre Web-API durch Konfigurieren der Bereiche verfügbar gemacht haben, konfigurieren Sie die Registrierung Ihrer Client-App mit der Zugriffsberechtigung für diese Bereiche.
 
-* [Registrieren einer Anwendung bei der Microsoft Identity Platform](quickstart-register-app.md)
-* [Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs](quickstart-configure-app-access-web-apis.md)
-* [Ändern der von einer Anwendung unterstützten Konten](quickstart-modify-supported-accounts.md)
-* [Entfernen einer bei der Microsoft Identity Platform registrierten Anwendung](quickstart-remove-app.md)
+> [!div class="nextstepaction"]
+> [Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs](quickstart-configure-app-access-web-apis.md)
 
-Um mehr über die beiden Azure AD-Objekte, die eine registrierte Anwendung darstellen, und die Beziehung zwischen ihnen zu erfahren, lesen Sie [Anwendungsobjekte und Dienstprinzipalobjekte](app-objects-and-service-principals.md).
-
-Weitere Informationen zu den Brandingrichtlinien, die Sie bei der Entwicklung von Anwendungen mit Azure Active Directory verwenden sollten, finden Sie unter [Brandingrichtlinien für Anwendungen](howto-add-branding-in-azure-ad-apps.md).
+<!-- REF LINKS -->
+[ms-graph-application]: /graph/api/resources/application

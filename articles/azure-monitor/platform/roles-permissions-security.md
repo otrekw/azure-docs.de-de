@@ -1,38 +1,37 @@
 ---
-title: Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
+title: Rollen, Berechtigungen und Sicherheit in Azure Monitor
 description: Erfahren Sie mehr über die Verwendung der vordefinierten Rollen und Berechtigungen in Azure Monitor, um den Zugriff auf Überwachungsressourcen zu beschränken.
 author: johnkemnetz
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: c745375eb4f59208af79bbb03d45f8f0eea7f3ca
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 84ae5f6adfe2a02f62b5d4b1e776d8b5ac1d731b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260623"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95975348"
 ---
-# <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
+# <a name="roles-permissions-and-security-in-azure-monitor"></a>Rollen, Berechtigungen und Sicherheit in Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Viele Teams müssen den Zugriff auf Überwachungsdaten und -einstellungen streng regulieren. Wenn einige Ihrer Teammitglieder beispielsweise ausschließlich an der Überwachung arbeiten (Supporttechniker, DevOps-Techniker) oder wenn Sie einen verwalteten Dienstanbieter verwenden, sollten Sie diesen nur Zugriff auf Überwachungsdaten erteilen und deren Möglichkeit zum Erstellen, Ändern oder Löschen von Ressourcen einschränken. Dieser Artikel beschreibt, wie Sie schnell eine integrierte RBAC-Rolle zur Überwachung auf einen Benutzer in Azure anwenden oder Ihre eigene benutzerdefinierte Rolle für einen Benutzer erstellen, der eingeschränkte Überwachungsberechtigungen benötigt. Anschließend werden Sicherheitsaspekte für Ihre Azure Monitor-Ressourcen erörtert, und es wird beschrieben, wie Sie den Zugriff auf die darin enthaltenen Daten beschränken können.
+Viele Teams müssen den Zugriff auf Überwachungsdaten und -einstellungen streng regulieren. Wenn einige Ihrer Teammitglieder beispielsweise ausschließlich an der Überwachung arbeiten (Supporttechniker, DevOps-Techniker) oder wenn Sie einen verwalteten Dienstanbieter verwenden, sollten Sie diesen nur Zugriff auf Überwachungsdaten erteilen und deren Möglichkeit zum Erstellen, Ändern oder Löschen von Ressourcen einschränken. Dieser Artikel beschreibt, wie Sie schnell eine integrierte Azure-Rolle zur Überwachung auf einen Benutzer in Azure anwenden oder Ihre eigene benutzerdefinierte Rolle für einen Benutzer erstellen, der eingeschränkte Überwachungsberechtigungen benötigt. Anschließend werden Sicherheitsaspekte für Ihre Azure Monitor-Ressourcen erörtert, und es wird beschrieben, wie Sie den Zugriff auf die darin enthaltenen Daten beschränken können.
 
 ## <a name="built-in-monitoring-roles"></a>Integrierte Überwachungsrollen
-Die in Azure Monitor integrierten Rollen unterstützen Sie dabei, den Zugriff auf Ressourcen in einem Abonnement einzuschränken und gleichzeitig den Personen, die für die Überwachung der Infrastruktur verantwortlich sind, das Abrufen und Konfigurieren der benötigten Daten zu ermöglichen. Azure Monitor bietet zwei vorkonfigurierte Rollen: eine für Benutzer mit Leseberechtigung für Überwachungsdaten und eine für Mitwirkende an der Überwachung.
+Die in Azure Monitor integrierten Rollen unterstützen Sie dabei, den Zugriff auf Ressourcen in einem Abonnement einzuschränken und gleichzeitig den Personen, die für die Überwachung der Infrastruktur verantwortlich sind, das Abrufen und Konfigurieren der benötigten Daten zu ermöglichen. Azure Monitor bietet zwei vorkonfigurierte Rollen: eine für das Lesen von Überwachungsdaten und eine für Mitwirkende an der Überwachung.
 
 ### <a name="monitoring-reader"></a>Überwachungsleser
 Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überwachungsdaten in einem Abonnement anzeigen, aber keine Ressourcen ändern oder Einstellungen im Zusammenhang mit der Ressourcenüberwachung bearbeiten. Diese Rolle eignet sich für Benutzer in einer Organisation, beispielsweise Support- oder Betriebstechniker, die folgende Aufgaben erfüllen müssen:
 
 * Anzeigen von Überwachungsdashboards im Portal und Erstellen ihrer eigenen privaten Überwachungsdashboards.
 * Anzeigen von in [Azure-Warnungen](alerts-overview.md) definierten Warnungsregeln
-* Abfragen von Metriken über die [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-Cmdlets](powershell-quickstart-samples.md) oder die [plattformübergreifende Befehlszeilenschnittstelle](cli-samples.md).
+* Abfragen von Metriken über die [Azure Monitor-REST-API](/rest/api/monitor/metrics), [PowerShell-Cmdlets](../samples/powershell-samples.md) oder die [plattformübergreifende Befehlszeilenschnittstelle](../samples/cli-samples.md).
 * Abfragen des Aktivitätsprotokolls über das Portal, die Azure Monitor-REST-API, PowerShell-Cmdlets oder die plattformübergreifende Befehlszeilenschnittstelle.
 * Anzeigen der [Diagnoseeinstellungen](diagnostic-settings.md) für eine Ressource.
-* Anzeigen des [Protokollprofils](activity-log-export.md) für ein Abonnement.
+* Anzeigen des [Protokollprofils](./activity-log.md#legacy-collection-methods) für ein Abonnement.
 * Anzeigen von Einstellungen für die automatische Skalierung.
 * Anzeigen von Warnaktivitäten und -einstellungen.
 * Zugreifen auf Application Insights-Daten und Anzeigen von Daten in der AI-Analyse.
@@ -53,7 +52,7 @@ Personen, denen die Rolle für Überwachungsmitwirkende zugewiesen wird, können
 
 * Veröffentlichen von Überwachungsdashboards als freigegebenes Dashboard.
 * Festlegen von [Diagnoseeinstellungen](diagnostic-settings.md) für eine Ressource.\*
-* Festlegen des [Protokollprofils](activity-log-export.md) für ein Abonnement.\*
+* Festlegen des [Protokollprofils](./activity-log.md#legacy-collection-methods) für ein Abonnement.\*
 * Festlegen der Aktivität und der Einstellungen für Warnungsregeln über [Azure-Warnungen](alerts-overview.md).
 * Erstellen von Application Insights-Webtests und -Komponenten.
 * Auflisten gemeinsam verwendeter Schlüssel für Log Analytics-Arbeitsbereiche
@@ -68,8 +67,8 @@ Personen, denen die Rolle für Überwachungsmitwirkende zugewiesen wird, können
 > 
 > 
 
-## <a name="monitoring-permissions-and-custom-rbac-roles"></a>Überwachen von Berechtigungen und benutzerdefinierte RBAC-Rollen
-Wenn die oben genannten vordefinierten Rollen nicht den genauen Anforderungen Ihres Teams entsprechen, können Sie eine [benutzerdefinierte RBAC-Rolle](../../role-based-access-control/custom-roles.md) mit detaillierteren Berechtigungen erstellen. Im Folgenden sind die allgemeinen Azure Monitor-RBAC-Vorgänge mit ihren Beschreibungen aufgeführt.
+## <a name="monitoring-permissions-and-azure-custom-roles"></a>Überwachen von Berechtigungen und benutzerdefinierte Azure-Rollen
+Wenn die oben genannten vordefinierten Rollen nicht den genauen Anforderungen Ihres Teams entsprechen, können Sie eine [benutzerdefinierte Azure-Rolle](../../role-based-access-control/custom-roles.md) mit detaillierteren Berechtigungen erstellen. Im Folgenden sind die allgemeinen Azure RBAC-Vorgänge für Azure Monitor mit ihren Beschreibungen aufgeführt.
 
 | Vorgang | BESCHREIBUNG |
 | --- | --- |
@@ -98,7 +97,7 @@ Wenn die oben genannten vordefinierten Rollen nicht den genauen Anforderungen Ih
 > 
 > 
 
-Beispielsweise können Sie anhand der oben dargestellten Tabelle wie folgt eine benutzerdefinierte RBAC-Rolle für einen „Aktivitätsprotokollleser“ erstellen:
+Beispielsweise können Sie anhand der oben dargestellten Tabelle wie folgt eine benutzerdefinierte Azure-Rolle für einen „Aktivitätsprotokollleser“ erstellen:
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -127,7 +126,7 @@ Alle drei Datentypen können in einem Speicherkonto gespeichert oder an Event Hu
 * Erteilen Sie niemals die ListKeys-Berechtigung für Speicherkonten oder Event Hubs im Abonnementbereich, wenn ein Benutzer nur auf Überwachungsdaten zugreifen muss. Erteilen Sie dem Benutzer diese Berechtigungen stattdessen im Ressourcen- oder Ressourcengruppenbereich (wenn Sie eine dedizierte Überwachungsressourcengruppe verwenden).
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>Einschränken des Zugriffs auf überwachungsbezogene Speicherkonten
-Wenn ein Benutzer oder eine Anwendung Zugriff auf Überwachungsdaten in einem Speicherkonto benötigt, sollten Sie für das Speicherkonto, das Überwachungsdaten enthält, [eine Konto-SAS](https://msdn.microsoft.com/library/azure/mt584140.aspx) mit Nur-Lese-Zugriff auf Dienstebene für Blobspeicher erstellen. In PowerShell kann dies wie folgt aussehen:
+Wenn ein Benutzer oder eine Anwendung Zugriff auf Überwachungsdaten in einem Speicherkonto benötigt, sollten Sie für das Speicherkonto, das Überwachungsdaten enthält, [eine Konto-SAS](/rest/api/storageservices/create-account-sas) mit Nur-Lese-Zugriff auf Dienstebene für Blobspeicher erstellen. In PowerShell kann dies wie folgt aussehen:
 
 ```powershell
 $context = New-AzStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
@@ -136,7 +135,7 @@ $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permi
 
 Sie können das Token an die Entität übergeben, die aus dem jeweiligen Speicherkonto lesen muss, damit sie alle Blobs in diesem Speicherkonto auflisten und lesen kann.
 
-Wenn Sie diese Berechtigung mit RBAC steuern müssen, können Sie dieser Entität alternativ die Berechtigung „Microsoft.Storage/storageAccounts/listkeys/action“ für das jeweilige Speicherkonto erteilen. Dies ist für Benutzer notwendig, die eine Diagnoseeinstellung oder ein Protokollprofil für die Archivierung in einem Speicherkonto festlegen müssen. Beispielsweise könnten Sie die folgende benutzerdefinierte RBAC-Rolle für Benutzer oder Anwendungen erstellen, die nur aus einem einzigen Speicherkonto lesen müssen:
+Wenn Sie diese Berechtigung mit Azure RBAC steuern müssen, können Sie dieser Entität alternativ die Berechtigung „Microsoft.Storage/storageAccounts/listkeys/action“ für das jeweilige Speicherkonto erteilen. Dies ist für Benutzer notwendig, die eine Diagnoseeinstellung oder ein Protokollprofil für die Archivierung in einem Speicherkonto festlegen müssen. Beispielsweise könnten Sie die folgende benutzerdefinierte Azure-Rolle für Benutzer oder Anwendungen erstellen, die nur aus einem einzigen Speicherkonto lesen müssen:
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -160,7 +159,7 @@ New-AzRoleDefinition -Role $role
 Für Event Hubs können Sie einem ähnlichen Muster folgen, jedoch müssen Sie zunächst eine dedizierte Autorisierungsregel für Lauschvorgänge erstellen. Wenn Sie einer Anwendung Zugriff gewähren möchten, die nur auf überwachungsbezogene Event Hubs lauschen muss, gehen Sie wie folgt vor:
 
 1. Erstellen Sie eine SAS-Richtlinie für die Event Hubs, die für das Streamen von Überwachungsdaten mit ausschließlich Lauschansprüchen erstellt haben. Dies kann im Portal erfolgen. Beispielsweise könnten Sie die Richtlinie „MonitoringReadOnly“ nennen. Wenn möglich, sollten Sie diesen Schlüssel direkt an den Consumer übergeben und den nächsten Schritt überspringen.
-2. Wenn der Consumer den Schlüssel ad hoc abrufen können muss, gewähren Sie dem Benutzer die ListKeys-Aktion für diesen Event Hub. Dies ist auch für Benutzer notwendig, die eine Diagnoseeinstellung oder ein Protokollprofil für das Streamen in Event Hubs festlegen müssen. Beispielsweise können Sie eine RBAC-Regel erstellen:
+2. Wenn der Consumer den Schlüssel ad hoc abrufen können muss, gewähren Sie dem Benutzer die ListKeys-Aktion für diesen Event Hub. Dies ist auch für Benutzer notwendig, die eine Diagnoseeinstellung oder ein Protokollprofil für das Streamen in Event Hubs festlegen müssen. Beispielsweise können Sie eine Azure RBAC-Regel erstellen:
    
    ```powershell
    $role = Get-AzRoleDefinition "Reader"
@@ -182,13 +181,12 @@ Azure Monitor benötigt Zugriff auf Ihre Azure-Ressourcen, um die von Ihnen akti
 ### <a name="secured-storage-accounts"></a>Geschützte Speicherkonten 
 
 Überwachungsdaten werden häufig in ein Speicherkonto geschrieben. Sie sollten sicherstellen, dass die auf ein Speicherkonto kopierten Daten nicht von nicht autorisierten Benutzern eingesehen werden können. Für zusätzliche Sicherheit können Sie den Netzwerkzugriff sperren, um nur Ihren autorisierten Ressourcen und vertrauenswürdigen Microsoft-Diensten den Zugriff auf ein Speicherkonto zu ermöglichen, indem Sie ein Speicherkonto auf die Verwendung durch „ausgewählte Netzwerke“ beschränken.
-![Dialogfeld „Azure Storage-Einstellungen“](./media/roles-permissions-security/secured-storage-example.png): Azure Monitor gilt als einer dieser „vertrauenswürdigen Microsoft-Dienste“. Wenn Sie vertrauenswürdigen Microsoft-Diensten den Zugriff auf Ihren geschützten Speicher erlauben, hat Azure Monitor Zugriff auf Ihr geschütztes Speicherkonto und kann unter diesen geschützten Bedingungen Diagnoseprotokolle, Aktivitätsprotokolle und Metriken von Azure Monitor in Ihr Speicherkonto schreiben. Dadurch kann Log Analytics auch Protokolle aus dem geschützten Speicher lesen.   
+![Dialogfeld „Einstellungen“ von Azure Storage:](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor gilt als einer dieser vertrauenswürdigen Microsoft-Dienste. Wenn Sie vertrauenswürdigen Microsoft-Diensten den Zugriff auf Ihren geschützten Speicher erlauben, hat Azure Monitor Zugriff auf Ihr geschütztes Speicherkonto und kann unter diesen geschützten Bedingungen Ressourcenprotokolle, Aktivitätsprotokolle und Metriken von Azure Monitor in Ihr Speicherkonto schreiben. Dadurch kann Log Analytics auch Protokolle aus dem geschützten Speicher lesen.   
 
 
 Weitere Informationen finden Sie unter [Netzwerksicherheitsgruppen und Azure Storage](../../storage/common/storage-network-security.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Weitere Informationen zu RBAC und Berechtigungen in Resource Manager](../../role-based-access-control/overview.md)
-* [Übersicht über die Überwachung in Microsoft Azure](../../azure-monitor/overview.md)
-
+* [Weitere Informationen zu Azure RBAC und Berechtigungen in Resource Manager](../../role-based-access-control/overview.md)
+* [Übersicht über die Überwachung in Microsoft Azure](../overview.md)
 

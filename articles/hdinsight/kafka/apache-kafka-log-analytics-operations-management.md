@@ -1,25 +1,37 @@
 ---
 title: Azure Monitor-Protokolle für Apache Kafka – Azure HDInsight
 description: Erfahren Sie, wie Sie mithilfe von Azure Monitor-Protokollen Protokolle aus Apache Kafka-Clustern in Azure HDInsight analysieren.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 44eea1bc6390e743aff104550e5b6d7e97c45929
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.date: 02/17/2020
+ms.openlocfilehash: 5128ac7608dfce08471f7a7f97ed28a7971e62b2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960112"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534446"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analysieren von Protokollen für Apache Kafka in HDInsight
 
 Erfahren Sie, wie Sie mithilfe von Azure Monitor-Protokollen in Apache Kafka generierte Protokolle in HDInsight analysieren.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="logs-location"></a>Protokollspeicherort
+
+Apache Kafka-Protokolle im Cluster befinden sich unter `/var/log/kafka`. Kafka-Protokolle werden unabhängig davon, ob verwaltete Datenträger verwendet werden, nicht über Clusterlebenszyklen hinweg gespeichert oder beibehalten. Die verfügbaren Protokolle sind in der nachfolgenden Tabelle aufgeführt.
+
+|Log |BESCHREIBUNG |
+|---|---|
+|kafka.out|„stdout“ und „stderr“ des Kafka-Prozesses. In dieser Datei finden Sie die Protokolle zum Starten und Herunterfahren von Kafka.|
+|server.log|Das Hauptprotokoll des Kafka-Servers. Alle Kafka-Brokerprotokolle werden hierin aufgenommen.|
+|controller.log|Controllerprotokolle, wenn der Broker als Controller fungiert.|
+|statechange.log|Alle Statusänderungsereignisse für Broker werden in dieser Datei protokolliert.|
+|kafka-gc.log|Statistiken zur Kafka-Garbage Collection.|
 
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Azure Monitor-Protokolle für Apache Kafka aktivieren
 
@@ -43,7 +55,7 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
 * Datenträgerauslastung:
 
     ```kusto
-    Perf 
+    Perf
     | where ObjectName == "Logical Disk" and CounterName == "Free Megabytes" and InstanceName == "_Total" and ((Computer startswith_cs "hn" and Computer contains_cs "-") or (Computer startswith_cs "wn" and Computer contains_cs "-")) 
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
@@ -56,7 +68,7 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* Eingehende Nachrichten pro Sekunde:
+* Eingehende Nachrichten pro Sekunde: (Ersetzen Sie `your_kafka_cluster_name` durch den Namen Ihres Clusters.)
 
     ```kusto
     metrics_kafka_CL 
@@ -64,7 +76,7 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
     ```
 
-* Eingehende Bytes pro Sekunde:
+* Eingehende Bytes pro Sekunde: (Ersetzen Sie `wn0-kafka` durch den Hostnamen eines Workerknotens.)
 
     ```kusto
     metrics_kafka_CL 
@@ -72,7 +84,7 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* Ausgehende Bytes pro Sekunde:
+* Ausgehende Bytes pro Sekunde: (Ersetzen Sie `your_kafka_cluster_name` durch den Namen Ihres Clusters.)
 
     ```kusto
     metrics_kafka_CL 
@@ -80,26 +92,23 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-    > [!IMPORTANT]  
-    > Ersetzen Sie die Abfragewerte durch die jeweiligen Informationen Ihres Clusters. Beispielsweise muss `ClusterName_s` auf den Namen Ihres Clusters festgelegt werden. `HostName_s` muss auf den Domänennamen eines Workerknotens im Cluster festgelegt werden.
-    
     Sie können auch `*` eingeben, um alle protokollierte Typen zu suchen. Derzeit sind folgende Protokolle für Abfragen verfügbar:
-    
+
     | Protokolltyp | BESCHREIBUNG |
     | ---- | ---- |
     | log\_kafkaserver\_CL | server.log des Kafka-Brokers |
     | log\_kafkacontroller\_CL | controller.log des Kafka-Brokers |
     | metrics\_kafka\_CL | Kafka-JMX-Metriken |
-    
-    ![Abbildung der Suche nach der CPU-Auslastung](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
- 
+
+    ![Apache Kafka-Protokollanalyse – CPU-Auslastung](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Monitor finden Sie unter [Azure Monitor – Übersicht](../../log-analytics/log-analytics-get-started.md) und [Abfragen von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
+Weitere Informationen zu Azure Monitor finden Sie unter [Azure Monitor – Übersicht](../../azure-monitor/overview.md) und [Abfragen von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
 
 Weitere Informationen zum Arbeiten mit Apache Kafka finden Sie in den folgenden Dokumenten:
 
 * [Spiegeln von Apache Kafka zwischen HDInsight-Clustern](apache-kafka-mirroring.md)
-* [Erhöhen der Skalierbarkeit von Apache Kafka in HDInsight](apache-kafka-scalability.md)
+* [Konfigurieren von Speicher und Skalierbarkeit für Apache Kafka in HDInsight](apache-kafka-scalability.md)
 * [Verwenden von Apache Spark-Streaming (DStream) mit Apache Kafka](../hdinsight-apache-spark-with-kafka.md)
 * [Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

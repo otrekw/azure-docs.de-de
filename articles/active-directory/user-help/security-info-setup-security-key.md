@@ -1,32 +1,44 @@
 ---
-title: Einrichten der Sicherheitsinformationen zur Verwendung eines Sicherheitsschlüssels (Vorschau) – Azure Active Directory | Microsoft-Dokumentation
-description: Hier finden Sie Informationen dazu, wie Sie Ihre Sicherheitsinformationen einrichten, um Ihre Identität mithilfe eines FIDO2-Sicherheitsschlüssels (Fast Identity Online) zu bestätigen.
+title: Einrichten eines Sicherheitsschlüssels als Überprüfungsmethode – Azure AD
+description: Hier erfahren Sie, wie Sie Ihre Seite mit den Sicherheitsinformationen (Preview) einrichten, um Ihre Identität zur Verwendung eines FIDO2-Sicherheitsschlüssels (Fast Identity Online) als Überprüfungsmethode zu bestätigen.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: librown
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 07/18/2019
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ac894db42b2b5ee2612e2e3b2906bc2bffcc4c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.author: curtand
+ms.openlocfilehash: c056e439deac71417ff14dcfc3f2c3c95db41946
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717389"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88797665"
 ---
-# <a name="set-up-security-info-to-use-a-security-key-preview"></a>Einrichten der Sicherheitsinformationen zur Verwendung eines Sicherheitsschlüssels (Vorschau)
+# <a name="set-up-a-security-key-as-your-verification-method"></a>Einrichten eines Sicherheitsschlüssels als Überprüfungsmethode
 
-Sie können Sicherheitsschlüssel als kennwortlose Anmeldemethode in Ihrer Organisation verwenden. Ein Sicherheitsschlüssel ist ein physisches Gerät, das mit einer eindeutigen PIN zum Anmelden bei Ihrem Geschäfts-, Schul- oder Unikonto verwendet wird. Weil Sicherheitsschlüssel erfordern, dass Sie über das physische Gerät und etwas verfügen, das nur Ihnen bekannt ist, wird ein Sicherheitsschlüssel als eine sicherere Authentifizierungsmethode angesehen als ein Benutzername und Kennwort.
+Sie können Sicherheitsschlüssel als kennwortlose Anmeldemethode in Ihrer Organisation verwenden. Ein Sicherheitsschlüssel ist ein physisches Gerät, das mit einer eindeutigen PIN zum Anmelden bei Ihrem Geschäfts-, Schul- oder Unikonto verwendet wird. Weil Sicherheitsschlüssel erfordern, dass Sie über das physische Gerät und etwas verfügen, das nur Ihnen bekannt ist, wird ein Sicherheitsschlüssel als eine sicherere Überprüfungsmethode angesehen als ein Benutzername und Kennwort.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-key.md)]
 
->[!Important]
->Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
+>[!Note]
+> Wird keine Option mit Sicherheitscode angezeigt, lässt Ihre Organisation unter Umständen die Nutzung dieser Option für die Überprüfung nicht zu. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an den Helpdesk Ihrer Organisation wenden, um weitere Unterstützung zu erhalten.
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Authentifizierung mit Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
+
+Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
+
+| Methode | Syntaxelemente |
+| ------ | -------- |
+| Authenticator-App | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Textnachrichten | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Telefonanrufe | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Sicherheitsschlüssel | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| E-Mail-Konto | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
+| Sicherheitsfragen | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
 
 ## <a name="what-is-a-security-key"></a>Was ist ein Sicherheitsschlüssel?
 
@@ -35,7 +47,7 @@ Wir unterstützen derzeit mehrere Entwürfe und Anbieter von Sicherheitsschlüss
 Ihr Administrator oder Ihre Organisation stellt Ihnen einen Sicherheitsschlüssel zur Verfügung, wenn er für Ihr Geschäfts-, Schul- oder Unikonto erforderlich ist. Es gibt verschiedene Typen von Sicherheitsschlüsseln, die Sie verwenden können. So können Sie z. B. einen USB-Schlüssel an Ihr Gerät anschließen oder einen NFC-Schlüssel an ein NFC-Lesegerät halten. Weitere Informationen zu Ihrem Sicherheitsschlüssel, einschließlich des Typs, finden Sie in der Dokumentation des Herstellers.
 
 > [!Note]
-> Wenn Sie keinen FIDO2-Sicherheitsschlüssel verwenden können, sind andere kennwortlose Authentifizierungsmethoden verfügbar, die Sie nutzen können, beispielsweise die Microsoft Authenticator-App oder Windows Hello. Weitere Informationen zur Microsoft Authenticator-App finden Sie im Artikel [Was ist die Microsoft Authenticator-App?](user-help-auth-app-overview.md). Weitere Informationen zu Windows Hello finden Sie auf der Seite mit der [Übersicht über Windows Hello](https://www.microsoft.com/windows/windows-hello).
+> Wenn Sie keinen FIDO2-Sicherheitsschlüssel verwenden können, sind andere kennwortlose Überprüfungsmethoden verfügbar, die Sie nutzen können, beispielsweise die Microsoft Authenticator-App oder Windows Hello. Weitere Informationen zur Microsoft Authenticator-App finden Sie im Artikel [Was ist die Microsoft Authenticator-App?](user-help-auth-app-overview.md). Weitere Informationen zu Windows Hello finden Sie auf der Seite mit der [Übersicht über Windows Hello](https://www.microsoft.com/windows/windows-hello).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -51,7 +63,7 @@ Bevor Sie Ihren Sicherheitsschlüssel registrieren können, müssen folgende Vor
 
 Sie müssen Ihren Sicherheitsschlüssel erstellen und dabei eine eindeutige PIN angeben, bevor Sie sich mit dem Schlüssel bei Ihrem Geschäfts-, Schul- oder Unikonto anmelden können. Sie können für Ihr Konto maximal zehn Schlüssel registrieren. 
 
-1. Wechseln Sie zur Seite **Mein Profil** unter https://myprofile.microsoft.com, und melden Sie sich an, wenn Sie dies nicht bereits getan haben.
+1. Wechseln Sie zur Seite **Mein Profil** unter https://myaccount.microsoft.com, und melden Sie sich an, wenn Sie dies nicht bereits getan haben.
 
 2. Wählen Sie **Sicherheitsinformationen** aus, wählen Sie **Methode hinzufügen** aus, und wählen Sie dann in der Dropdownliste **Methode hinzufügen** den Eintrag **Sicherheitsschlüssel** aus.
 
@@ -80,7 +92,7 @@ Sie müssen Ihren Sicherheitsschlüssel erstellen und dabei eine eindeutige PIN 
 
     Daraufhin kehren Sie zum Dialogfeld **Ihre neue Anmeldemethode wird eingerichtet** zurück.
 
-7. Klicken Sie auf **Weiter**.
+7. Wählen Sie **Weiter** aus.
 
 8. Kehren Sie zur Seite **Sicherheitsinformationen** zurück, geben Sie einen Namen für Ihren neuen Sicherheitsschlüssel ein, den Sie später als solchen erkennen, und wählen Sie dann **Weiter** aus.
 
@@ -146,14 +158,14 @@ Sie können eine neue Sicherheitsschlüssel-PIN für Ihren Sicherheitsschlüssel
 
 ## <a name="additional-security-info-methods"></a>Weitere Methoden für Sicherheitsinformationen
 
-Um einen Sicherheitsschlüssel registrieren zu können, müssen Sie mindestens eine zusätzliche Methode für die Sicherheitsüberprüfung registriert haben. Weitere Informationen finden Sie im Abschnitt mit der [Übersicht](security-info-add-update-methods-overview.md). 
+Um einen Sicherheitsschlüssel registrieren zu können, müssen Sie mindestens eine zusätzliche Methode für die Sicherheitsüberprüfung registriert haben. Weitere Informationen finden Sie im Abschnitt mit der [Übersicht](./security-info-setup-auth-app.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie den Blogbeitrag [Microsoft Azure AD startet die öffentliche Vorschauversion von FIDO2-Sicherheitsschlüsseln, die kennwortlose Anmeldungen ermöglichen](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) oder die Artikel [Wozu dient die Microsoft Authenticator-App?](user-help-auth-app-overview.md) und [Windows Hello: Lernen Sie die Gesichtserkennung unter Windows 10 kennen](https://www.microsoft.com/windows/windows-hello), um weitere Informationen zu kennwortlosen Authentifizierungsmethoden zu erhalten.
+- Lesen Sie den Blogbeitrag [Microsoft Azure AD startet die öffentliche Vorschauversion von FIDO2-Sicherheitsschlüsseln, die kennwortlose Anmeldungen ermöglichen](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) oder die Artikel [Wozu dient die Microsoft Authenticator-App?](user-help-auth-app-overview.md) und [Übersicht über Windows Hello](https://www.microsoft.com/windows/windows-hello), um weitere Informationen zu kennwortlosen Überprüfungsmethoden zu erhalten.
 
-- Lesen Sie ausführlichere Informationen zu [Microsoft-kompatiblen Sicherheitsschlüsseln](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
+- Lesen Sie ausführlichere Informationen zu [Microsoft-kompatiblen Sicherheitsschlüsseln](/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 
-- Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](user-help-reset-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
+- Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](active-directory-passwords-update-your-own-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
 
 - Der Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) enthält Tipps zur Problembehandlung bei Anmeldeproblemen.

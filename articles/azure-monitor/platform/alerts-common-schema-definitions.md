@@ -1,23 +1,20 @@
 ---
-title: Definitionen des allgemeinen Warnungsschemas für Azure Monitor
+title: Warnungsschemadefinitionen in Azure Monitor
 description: Informationen zu Definitionen des allgemeinen Warnungsschemas für Azure Monitor
-author: anantr
-services: azure-monitor
-ms.service: azure-monitor
+author: ofirmanor
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 9e2c3849cca392539b96f47d8d7c32815851cf78
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.date: 03/14/2019
+ms.openlocfilehash: 2442d90adf224de68ff49e0f0ea98f2c9f3e5546
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702887"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507250"
 ---
 # <a name="common-alert-schema-definitions"></a>Definitionen des allgemeinen Warnungsschemas
 
-In diesem Artikel werden die [Definitionen des allgemeinen Warnungsschemas](https://aka.ms/commonAlertSchemaDocs) für Azure Monitor beschrieben. Dazu gehören die Definitionen für Webhooks, Azur Logic Apps, Azure Functions und Azure Automation Runbooks. 
+In diesem Artikel werden die [Definitionen des allgemeinen Warnungsschemas](./alerts-common-schema.md) für Azure Monitor beschrieben. Dazu gehören die Definitionen für Webhooks, Azur Logic Apps, Azure Functions und Azure Automation Runbooks. 
 
 Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der Warnung. Diese Instanzen werden im allgemeinen Schema in den folgenden Abschnitten beschrieben:
 * **Zusammenfassung**: Eine Gruppe standardisierter Felder (für alle Warnungstypen gleich), die beschreiben, auf welcher Ressource sich die Warnung befindet, sowie zusätzliche allgemeine Warnungsmetadaten (z.B. Schweregrad oder Beschreibung). 
@@ -72,7 +69,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 }
 ```
 
-## <a name="essentials"></a>Zusammenfassung
+## <a name="essentials"></a>Essentials
 
 | Feld | BESCHREIBUNG|
 |:---|:---|
@@ -152,7 +149,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 ### <a name="log-alerts"></a>Protokollwarnungen
 
 > [!NOTE]
-> Für Protokollwarnungen, für die eine benutzerdefinierte JSON-Nutzlast definiert ist, wird das Nutzlastschema durch die Aktivierung des allgemeinen Schemas wie unten beschrieben zurückgesetzt. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Suchergebnisse werden nicht in die Nutzlast der Protokollwarnungen eingebettet, wenn sie bewirken, dass die Warnungsgröße diesen Schwellenwert überschreitet. Sie können dies feststellen, indem Sie das Flag `IncludedSearchResults` überprüfen. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie die Suchabfrage in Verbindung mit der [Log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/query/get) verwenden. 
+> Für Protokollwarnungen mit benutzerdefiniertem E-Mail-Betreff und/oder benutzerdefinierter JSON-Nutzlast wird das E-Mail-Betreff- und/oder Nutzlastschema durch die Aktivierung des allgemeinen Schemas wie unten beschrieben zurückgesetzt. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Suchergebnisse werden nicht in die Nutzlast der Protokollwarnungen eingebettet, wenn sie bewirken, dass die Warnungsgröße diesen Schwellenwert überschreitet. Sie können dies feststellen, indem Sie das Flag `IncludeSearchResults` überprüfen. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie unter Verwendung von `LinkToFilteredSearchResultsAPI` oder `LinkToSearchResultsAPI` mit der [Log Analytics-API](/rest/api/loganalytics/dataaccess/query/get) auf die Suchergebnisse zugreifen.
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -160,13 +157,16 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 ```json
 {
   "alertContext": {
-    "SearchQuery": "search * \n| where Type == \"Heartbeat\" \n| where Category == \"Direct Agent\" \n| where TimeGenerated > ago(30m) ",
+    "SearchQuery": "Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
     "SearchIntervalStartTimeUtc": "3/22/2019 1:36:31 PM",
     "SearchIntervalEndtimeUtc": "3/22/2019 1:51:31 PM",
-    "ResultCount": 15,
-    "LinkToSearchResults": "https://portal.azure.com#@72f988bf-86f1-41af-91ab-2d7cd011db47/blade/Microsoft_OperationsManagementSuite_Workspace/AnalyticsBlade/initiator/AnalyticsShareLinkToQuery/isQueryEditorVisible/true/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%<subscription ID>%2FresourceGroups%2Fpipelinealertrg%2Fproviders%2FMicrosoft.OperationalInsights%2Fworkspaces%2FINC-OmsAlertRunner%22%7D%5D%7D/query/search%20%2A%20%0A%7C%20where%20Type%20%3D%3D%20%22Heartbeat%22%20%0A%7C%20where%20Category%20%3D%3D%20%22Direct%20Agent%22%20%0A%7C%20where%20TimeGenerated%20%3E%20%28datetime%282019-03-22T13%3A51%3A31.0000000%29%20-%2030m%29%20%20/isQuerybase64Compressed/false/timespanInIsoFormat/2019-03-22T13%3a36%3a31.0000000Z%2f2019-03-22T13%3a51%3a31.0000000Z",
+    "ResultCount": 2,
+    "LinkToSearchResults": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "LinkToFilteredSearchResultsUI": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "LinkToSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
+    "LinkToFilteredSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
     "SeverityDescription": "Warning",
-    "WorkspaceId": "2a1f50a7-ef97-420c-9d14-938e77c2a929",
+    "WorkspaceId": "12345a-1234b-123c-123d-12345678e",
     "SearchIntervalDurationMin": "15",
     "AffectedConfigurationItems": [
       "INC-Gen2Alert"
@@ -174,7 +174,13 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
     "SearchIntervalInMinutes": "15",
     "Threshold": 10000,
     "Operator": "Less Than",
-    "SearchResult": {
+    "Dimensions": [
+      {
+        "name": "Computer",
+        "value": "INC-Gen2Alert"
+      }
+    ],
+    "SearchResults": {
       "tables": [
         {
           "name": "PrimaryResult",
@@ -184,7 +190,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
               "type": "string"
             },
             {
-              "name": "Id",
+              "name": "Computer",
               "type": "string"
             },
             {
@@ -205,18 +211,18 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
             ]
           ]
         }
-      ],
-      "dataSources": [
-        {
-          "resourceId": "/subscriptions/a5ea27e2-7482-49ba-90b3-60e7496dd873/resourcegroups/nrt-tip-kc/providers/microsoft.operationalinsights/workspaces/nrt-tip-kc",
-          "tables": [
-            "Heartbeat"
-          ]
-        }
       ]
     },
-    "IncludedSearchResults": "True",
-    "AlertType": "Number of results"
+    "dataSources": [
+      {
+        "resourceId": "/subscriptions/a5ea55e2-7482-49ba-90b3-60e7496dd873/resourcegroups/test/providers/microsoft.operationalinsights/workspaces/test",
+        "tables": [
+          "Heartbeat"
+        ]
+      }
+    ],
+  "IncludeSearchResults": "True",
+  "AlertType": "Metric measurement"
   }
 }
 ```
@@ -227,17 +233,26 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 ```json
 {
   "alertContext": {
-    "SearchQuery": "search *",
+    "SearchQuery": "requests | where resultCode == \"500\" | summarize AggregatedValue = Count by bin(Timestamp, 5m), IP",
     "SearchIntervalStartTimeUtc": "3/22/2019 1:36:33 PM",
     "SearchIntervalEndtimeUtc": "3/22/2019 1:51:33 PM",
-    "ResultCount": 0,
-    "LinkToSearchResults": "https://portal.azure.com#@72f988bf-86f1-41af-91ab-2d7cd011db47/blade/Microsoft_OperationsManagementSuite_Workspace/AnalyticsBlade/initiator/AnalyticsShareLinkToQuery/isQueryEditorVisible/true/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%<subscription ID>%2FresourceGroups%2FPipeLineAlertRG%2Fproviders%2Fmicrosoft.insights%2Fcomponents%2FWEU-AIRunner%22%7D%5D%7D/query/search%20%2A/isQuerybase64Compressed/false/timespanInIsoFormat/2019-03-22T13%3a36%3a33.0000000Z%2f2019-03-22T13%3a51%3a33.0000000Z",
+    "ResultCount": 2,
+    "LinkToSearchResults": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "LinkToFilteredSearchResultsUI": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "LinkToSearchResultsAPI": "https://api.applicationinsights.io/v1/apps/0MyAppId0/metrics/requests/count",
+    "LinkToFilteredSearchResultsAPI": "https://api.applicationinsights.io/v1/apps/0MyAppId0/metrics/requests/count",
     "SearchIntervalDurationMin": "15",
     "SearchIntervalInMinutes": "15",
     "Threshold": 10000,
     "Operator": "Less Than",
     "ApplicationId": "8e20151d-75b2-4d66-b965-153fb69d65a6",
-    "SearchResult": {
+    "Dimensions": [
+      {
+        "name": "IP",
+        "value": "1.1.1.1"
+      }
+    ],
+    "SearchResults": {
       "tables": [
         {
           "name": "PrimaryResult",
@@ -251,7 +266,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
               "type": "string"
             },
             {
-              "name": "TimeGenerated",
+              "name": "Timestamp",
               "type": "datetime"
             }
           ],
@@ -271,15 +286,57 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
       ],
       "dataSources": [
         {
-          "resourceId": "/subscriptions/a5ea27e2-7482-49ba-90b3-60e7496dd873/resourcegroups/nrt-tip-kc/providers/microsoft.operationalinsights/workspaces/nrt-tip-kc",
+          "resourceId": "/subscriptions/a5ea27e2-7482-49ba-90b3-52e7496dd873/resourcegroups/test/providers/microsoft.operationalinsights/workspaces/test",
           "tables": [
             "Heartbeat"
           ]
         }
       ]
     },
-    "IncludedSearchResults": "True",
-    "AlertType": "Number of results"
+    "IncludeSearchResults": "True",
+    "AlertType": "Metric measurement"
+  }
+}
+```
+
+#### <a name="monitoringservice--log-alerts-v2"></a>`monitoringService` = `Log Alerts V2`
+
+**Beispielwerte**
+```json
+{
+  "alertContext": {
+    "properties": null,
+    "conditionType": "LogQueryCriteria",
+    "condition": {
+      "windowSize": "PT10M",
+      "allOf": [
+        {
+          "searchQuery": "Heartbeat",
+          "metricMeasure": null,
+          "targetResourceTypes": "['Microsoft.Compute/virtualMachines']",
+          "operator": "LowerThan",
+          "threshold": "1",
+          "timeAggregation": "Count",
+          "dimensions": [
+            {
+              "name": "Computer",
+              "value": "TestComputer"
+            }
+          ],
+          "metricValue": 0.0,
+          "failingPeriods": {
+            "numberOfEvaluationPeriods": 1,
+            "minFailingPeriodsToAlert": 1
+          },
+          "linkToSearchResultsUI": "https://portal.azure.com#@12345a-1234b-123c-123d-12345678e/blade/Microsoft_Azure_Monitoring_Logs/LogsBlade/source/Alerts.EmailLinks/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%212345a-1234b-123c-123d-12345678e%2FresourceGroups%2FContoso%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2FContoso%22%7D%5D%7D/q/eJzzSE0sKklKTSypUSjPSC1KVQjJzE11T81LLUosSU1RSEotKU9NzdNIAfJKgDIaRgZGBroG5roGliGGxlYmJlbGJnoGEKCpp4dDmSmKMk0A/prettify/1/timespan/2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z",
+          "linkToFilteredSearchResultsUI": "https://portal.azure.com#@12345a-1234b-123c-123d-12345678e/blade/Microsoft_Azure_Monitoring_Logs/LogsBlade/source/Alerts.EmailLinks/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%212345a-1234b-123c-123d-12345678e%2FresourceGroups%2FContoso%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2FContoso%22%7D%5D%7D/q/eJzzSE0sKklKTSypUSjPSC1KVQjJzE11T81LLUosSU1RSEotKU9NzdNIAfJKgDIaRgZGBroG5roGliGGxlYmJlbGJnoGEKCpp4dDmSmKMk0A/prettify/1/timespan/2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z",
+          "linkToSearchResultsAPI": "https://api.loganalytics.io/v1/subscriptions/12345a-1234b-123c-123d-12345678e/resourceGroups/Contoso/providers/Microsoft.Compute/virtualMachines/Contoso/query?query=Heartbeat%7C%20where%20TimeGenerated%20between%28datetime%282020-07-09T13%3A44%3A34.0000000%29..datetime%282020-07-09T13%3A54%3A34.0000000%29%29&timespan=2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z",
+          "linkToFilteredSearchResultsAPI": "https://api.loganalytics.io/v1/subscriptions/12345a-1234b-123c-123d-12345678e/resourceGroups/Contoso/providers/Microsoft.Compute/virtualMachines/Contoso/query?query=Heartbeat%7C%20where%20TimeGenerated%20between%28datetime%282020-07-09T13%3A44%3A34.0000000%29..datetime%282020-07-09T13%3A54%3A34.0000000%29%29&timespan=2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z"
+        }
+      ],
+      "windowStartTime": "2020-07-07T13:54:34Z",
+      "windowEndTime": "2020-07-09T13:54:34Z"
+    }
   }
 }
 ```
@@ -297,7 +354,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
         "scope": "/subscriptions/<subscription ID>/resourceGroups/PipeLineAlertRG/providers/Microsoft.Compute/virtualMachines/WCUS-R2-ActLog"
       },
       "channels": "Operation",
-      "claims": "{\"aud\":\"https://management.core.windows.net/\",\"iss\":\"https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/\",\"iat\":\"1553260826\",\"nbf\":\"1553260826\",\"exp\":\"1553264726\",\"aio\":\"42JgYNjdt+rr+3j/dx68v018XhuFAwA=\",\"appid\":\"e9a02282-074f-45cf-93b0-50568e0e7e50\",\"appidacr\":\"2\",\"http://schemas.microsoft.com/identity/claims/identityprovider\":\"https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/\",\"http://schemas.microsoft.com/identity/claims/objectidentifier\":\"9778283b-b94c-4ac6-8a41-d5b493d03aa3\",\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier\":\"9778283b-b94c-4ac6-8a41-d5b493d03aa3\",\"http://schemas.microsoft.com/identity/claims/tenantid\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"uti\":\"v5wYC9t9ekuA2rkZSVZbAA\",\"ver\":\"1.0\"}",
+      "claims": "{\"aud\":\"https://management.core.windows.net/\",\"iss\":\"https://sts.windows.net/12345a-1234b-123c-123d-12345678e/\",\"iat\":\"1553260826\",\"nbf\":\"1553260826\",\"exp\":\"1553264726\",\"aio\":\"42JgYNjdt+rr+3j/dx68v018XhuFAwA=\",\"appid\":\"e9a02282-074f-45cf-93b0-50568e0e7e50\",\"appidacr\":\"2\",\"http://schemas.microsoft.com/identity/claims/identityprovider\":\"https://sts.windows.net/12345a-1234b-123c-123d-12345678e/\",\"http://schemas.microsoft.com/identity/claims/objectidentifier\":\"9778283b-b94c-4ac6-8a41-d5b493d03aa3\",\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier\":\"9778283b-b94c-4ac6-8a41-d5b493d03aa3\",\"http://schemas.microsoft.com/identity/claims/tenantid\":\"12345a-1234b-123c-123d-12345678e\",\"uti\":\"v5wYC9t9ekuA2rkZSVZbAA\",\"ver\":\"1.0\"}",
       "caller": "9778283b-b94c-4ac6-8a41-d5b493d03aa3",
       "correlationId": "8ee9c32a-92a1-4a8f-989c-b0ba09292a91",
       "eventSource": "Administrative",
@@ -428,17 +485,17 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
     "operationName": "Microsoft.ServiceHealth/maintenance/action",
     "operationId": "<GUID>",
     "properties": {
-      "title": "Azure SQL DW Scheduled Maintenance Pending",
-      "service": "SQL Data Warehouse",
+      "title": "Azure Synapse Analytics Scheduled Maintenance Pending",
+      "service": "Azure Synapse Analytics",
       "region": "East US",
       "communication": "<MESSAGE>",
       "incidentType": "Maintenance",
       "trackingId": "<GUID>",
       "impactStartTime": "2019-06-26T04:00:00Z",
       "impactMitigationTime": "2019-06-26T12:00:00Z",
-      "impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"East US\"}],\"ServiceName\":\"SQL Data Warehouse\"}]",
-      "impactedServicesTableRows": "<tr>\r\n<td align='center' style='padding: 5px 10px; border-right:1px solid black; border-bottom:1px solid black'>SQL Data Warehouse</td>\r\n<td align='center' style='padding: 5px 10px; border-bottom:1px solid black'>East US<br></td>\r\n</tr>\r\n",
-      "defaultLanguageTitle": "Azure SQL DW Scheduled Maintenance Pending",
+      "impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"East US\"}],\"ServiceName\":\"Azure Synapse Analytics\"}]",
+      "impactedServicesTableRows": "<tr>\r\n<td align='center' style='padding: 5px 10px; border-right:1px solid black; border-bottom:1px solid black'>Azure Synapse Analytics</td>\r\n<td align='center' style='padding: 5px 10px; border-bottom:1px solid black'>East US<br></td>\r\n</tr>\r\n",
+      "defaultLanguageTitle": "Azure Synapse Analytics Scheduled Maintenance Pending",
       "defaultLanguageContent": "<MESSAGE>",
       "stage": "Planned",
       "communicationId": "<GUID>",
@@ -484,6 +541,5 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs).
-- Erfahren Sie, wie Sie eine [Logik-App erstellen, die das allgemeine Warnungsschema verwendet, um all Ihre Warnungen zu verarbeiten](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations). 
-
+- Erfahren Sie mehr über das [allgemeine Warnungsschema](./alerts-common-schema.md).
+- Erfahren Sie, wie Sie eine [Logik-App erstellen, die das allgemeine Warnungsschema verwendet, um all Ihre Warnungen zu verarbeiten](./alerts-common-schema-integrations.md).

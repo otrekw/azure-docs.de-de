@@ -1,7 +1,7 @@
 ---
-title: 'Azure CLI-Skriptbeispiel: Konfigurieren von virtuellen IPv6-Netzwerkendpunkten mit Load Balancer Standard (Vorschau)'
+title: 'Azure CLI-Skriptbeispiel: Konfigurieren eines IPv6-Front-Ends – Load Balancer Standard'
 titlesuffix: Azure Virtual Network
-description: Aktivieren von IPv6-Endpunkten mithilfe der Azure CLI in Azure Virtual Network
+description: Hier erfahren Sie, wie Sie IPv6-Endpunkte in einem Skriptbeispiel des virtuellen Netzwerks mit Load Balancer Standard konfigurieren.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,13 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: afeb0c83c6e9afca16d0f0b21adafac4b7f3f2c2
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 3e35d50abcb99b8bb67b611f0e03b3bdbc0c1c60
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269607"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "96000231"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>Konfigurieren von IPv6-Endpunkten im virtuellen Netzwerk: Skriptbeispiel mit Load Balancer Standard (Vorschau)
 
@@ -34,15 +35,17 @@ Um die Funktion IPv6 für das virtuelle Azure-Netzwerk zu nutzen, müssen Sie Ih
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
+
 Es dauert bis zu 30 Minuten, bis die Featureregistrierung abgeschlossen ist. Sie können Ihren Registrierungsstatus überprüfen, indem Sie den folgenden Azure CLI-Befehl ausführen:
 
-```azurelci
+```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
+
 Führen Sie im Anschluss an die Registrierung den folgenden Befehl aus:
 
-```azurelci
+```azurecli
 az provider register --namespace Microsoft.Network
 ```
 
@@ -203,7 +206,7 @@ az network vnet create \
 --name dsVNET \
 --resource-group DsResourceGroup01 \
 --location eastus  \
---address-prefixes "10.0.0.0/16" "ace:cab:deca::/48"
+--address-prefixes "10.0.0.0/16" "fd00:db8:deca::/48"
 
 # Create a single dual stack subnet
 
@@ -211,7 +214,7 @@ az network vnet subnet create \
 --name dsSubNET \
 --resource-group DsResourceGroup01 \
 --vnet-name dsVNET \
---address-prefixes "10.0.0.0/24" "ace:cab:deca:deed::/64" \
+--address-prefixes "10.0.0.0/24" "fd00:db8:deca:deed::/64" \
 --network-security-group dsNSG1
 
 # Create NICs
@@ -279,6 +282,7 @@ az vm create \
 --availability-set dsAVset \
 --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest 
 ```
+
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Anzeigen des virtuellen IPv6-Dual Stack-Netzwerks im Azure-Portal
 Sie können das virtuelle IPv6-Dual Stack-Netzwerk im Azure-Portal wie folgt anzeigen:
 1. Geben Sie in der Suchleiste des Portals *dsVnet* ein.

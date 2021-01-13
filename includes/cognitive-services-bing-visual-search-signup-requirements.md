@@ -3,20 +3,22 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/18/2019
-ms.openlocfilehash: 16ee9ae9a4eec6b38c57b984b3acb75479b437e6
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 05/19/2020
+ms.openlocfilehash: 53a7217a6023b6e1d7e5df32b4940f28ba51f5c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277262"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85805853"
 ---
-Sie benötigen ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Zugriff auf die Bing-Suche-APIs. Zum Fortsetzen benötigen Sie den Zugriffsschlüssel, der nach dem Erstellen eines Abonnements im Tarif „S9“ bereitgestellt wurde (siehe [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)). 
+## <a name="create-an-azure-resource"></a>Erstellen einer Azure-Ressource
 
-So erstellen Sie ein Abonnement im Azure-Portal:
-1. Geben Sie oben im Azure-Portal im Suchfeld `Search resources, services, and docs` den Suchbegriff „BingSearchV7“ ein.  
-2. Wählen Sie unter „Marketplace“ in der Dropdownliste `Bing Search v7` aus.
-3. Geben Sie `Name` für die neue Ressource ein.
-4. Wählen Sie das Abonnement `Pay-As-You-Go` aus.
-5. Wählen Sie den Tarif `S9` aus.
-6. Klicken Sie auf `Enable`, um das Abonnement zu erstellen.
+Beginnen Sie mit der Verwendung der API für die visuelle Bing-Suche, indem Sie eine der folgenden Azure-Ressourcen erstellen:
+
+[Ressource für Bing-Suche v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)
+   * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.
+   * Wählen Sie den `S9`-Tarif aus.
+
+[Ressource für mehrere Dienste](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)
+   * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.  
+   * Verwenden Sie für Ihre Anwendungen den gleichen Schlüssel und Endpunkt über mehrere Cognitive Services-Instanzen hinweg.

@@ -1,28 +1,21 @@
 ---
-title: Analysieren von Benutzernavigationsmustern mit Benutzerabläufen in Azure Application Insights | Microsoft-Dokumention
+title: Azure Application Insights-Tool für Benutzerabläufe analysiert Navigationsabläufe
 description: Analysieren Sie, wie Benutzer zwischen den Seiten und Features Ihrer Web-App navigieren.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 91274fad4e56c69777333c81ea3b32dccdcf64ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a31ab24b96fa44787d08801a0680f94ff98bb5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60373307"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87309268"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Analysieren von Benutzernavigationsmustern mit Benutzerabläufen in Application Insights
 
-![Application Insights-Tool für Benutzerabläufe](./media/usage-flows/00001-flows.png)
+![Application Insights-Tool für Benutzerabläufe](./media/usage-flows/flows.png)
 
 Das Tool für Benutzerabläufe visualisiert die Navigation von Benutzern zwischen den Seiten und Features Ihrer Website. Dadurch liefert es beispielsweise Antworten auf folgende Fragen:
 
@@ -34,13 +27,13 @@ Das Tool für Benutzerabläufe visualisiert die Navigation von Benutzern zwische
 Das Tool für Benutzerabläufe startet bei einem Seitenaufruf, einem benutzerdefinierten Ereignis oder einer von Ihnen angegebenen Ausnahme. Nach einem Ausgangsereignis dieser Art werden für die Benutzerabläufe die Ereignisse angezeigt, die im Verlauf von Benutzersitzungen vorher und nachher aufgetreten sind. Linien mit unterschiedlicher Stärke geben Aufschluss darüber, wie oft Benutzer den einzelnen Pfaden folgen. Mit speziellen Knoten vom Typ **Sitzung gestartet** wird angezeigt, wo die nachfolgenden Knoten mit einer Sitzung begonnen haben. Mit speziellen Knoten vom Typ **Sitzung beendet** wird angezeigt, wie viele Benutzer nach dem vorherigen Knoten keine Seitenaufrufe oder benutzerdefinierten Ereignisse mehr gesendet haben. Hierdurch wird deutlich, wo Benutzer Ihre Website wahrscheinlich verlassen haben.
 
 > [!NOTE]
-> Ihre Application Insights-Ressource muss Seitenaufrufe oder benutzerdefinierte Ereignisse enthalten, um das Tool für Benutzerabläufe verwenden zu können. [Informieren Sie sich darüber, wie Sie Ihre App so einrichten können, dass Seitenansichten automatisch mit dem Application Insights-JavaScript-SDK erfasst werden](../../azure-monitor/app/javascript.md).
+> Ihre Application Insights-Ressource muss Seitenaufrufe oder benutzerdefinierte Ereignisse enthalten, um das Tool für Benutzerabläufe verwenden zu können. [Informieren Sie sich darüber, wie Sie Ihre App so einrichten können, dass Seitenansichten automatisch mit dem Application Insights-JavaScript-SDK erfasst werden](./javascript.md).
 >
 >
 
 ## <a name="start-by-choosing-an-initial-event"></a>Starten durch Auswählen eines Ausgangsereignisses
 
-![Auswählen eines Ausgangsereignisses für Benutzerabläufe](./media/usage-flows/00002-flows-initial-event.png)
+![Auswählen eines Ausgangsereignisses für Benutzerabläufe](./media/usage-flows/initial-event.png)
 
 Wählen Sie zur Beantwortung von Fragen mit dem Tool für Benutzerabläufe einen Seitenaufruf, ein benutzerdefiniertes Ereignis oder eine Ausnahme als Ausgangspunkt für die Visualisierung aus:
 
@@ -59,13 +52,13 @@ Sollten bestimmte Seitenaufrufe oder benutzerdefinierte Ereignisse nicht wie erw
 * Überprüfen Sie im Menü **Bearbeiten** den Abschnitt **Ausgeschlossene Ereignisse**.
 * Verwenden Sie die Schaltflächen mit dem Pluszeichen für Knoten vom Typ **Andere**, um weniger häufige Ereignisse in die Visualisierung einzubinden.
 * Wenn der erwartete Seitenaufruf oder das erwartete benutzerdefinierte Ereignis nur selten von Benutzern gesendet wird, können Sie versuchen, den Zeitbereich der Visualisierung über das Menü **Bearbeiten** zu vergrößern.
-* Vergewissern Sie sich, dass der erwartete Seitenaufruf, das benutzerdefinierte Ereignis oder die Ausnahme im Quellcode Ihrer Website so eingerichtet ist, dass dies vom Application Insights SDK erfasst wird. Informationen zum Erfassen benutzerdefinierter Ereignisse finden Sie [hier](../../azure-monitor/app/api-custom-events-metrics.md).
+* Vergewissern Sie sich, dass der erwartete Seitenaufruf, das benutzerdefinierte Ereignis oder die Ausnahme im Quellcode Ihrer Website so eingerichtet ist, dass dies vom Application Insights SDK erfasst wird. Informationen zum Erfassen benutzerdefinierter Ereignisse finden Sie [hier](./api-custom-events-metrics.md).
 
 Verwenden Sie die Dropdownmenüs **Previous steps** (Vorherige Schritte) und **Next steps** (Nächste Schritte) oberhalb der Visualisierung, wenn Sie mehr Schritte anzeigen möchten.
 
 ## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Wohin wechseln Besucher nach dem Besuch einer Seite oder nach der Verwendung eines Features, und worauf klicken sie?
 
-![Verwenden von Benutzerabläufen, um nachzuvollziehen, worauf Benutzer klicken](./media/usage-flows/00003-flows-one-step.png)
+![Verwenden von Benutzerabläufen, um nachzuvollziehen, worauf Benutzer klicken](./media/usage-flows/one-step.png)
 
 Wenn es sich bei Ihrem Ausgangsereignis um einen Seitenaufruf handelt, können Sie über die erste Spalte der Visualisierung (Schritt 1) schnell ermitteln, welche Aktion Benutzer direkt im Anschluss an den Seitenbesuch ausgeführt haben. Öffnen Sie Ihre Website in einem Fenster neben der Visualisierung von Benutzerabläufen. Vergleichen Sie Ihre Erwartungen hinsichtlich der Benutzerinteraktion mit der Liste von Ereignissen aus der Spalte „Step 1“ (Schritt 1). Es kommt immer wieder vor, dass ein Seitenelement, dem Ihr Team keine besondere Bedeutung beimisst, zu den meistgenutzten Elementen der Seite gehört. Dies kann ein guter Ausgangspunkt für die Optimierung des Websitedesigns sein.
 
@@ -98,5 +91,6 @@ Verwenden Sie im Menü **Bearbeiten** die Optionen unter **Teilen nach**:
 
 * [Nutzungsübersicht](usage-overview.md)
 * [Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights](usage-segmentation.md)
-* [Bindung](usage-retention.md)
-* [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../../azure-monitor/app/api-custom-events-metrics.md)
+* [Vermerkdauer](usage-retention.md)
+* [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](./api-custom-events-metrics.md)
+

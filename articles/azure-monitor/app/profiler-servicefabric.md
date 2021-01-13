@@ -1,23 +1,18 @@
 ---
-title: Erstellen von Profilen für Azure Service Fabric-Liveanwendungen mit Application Insights | Microsoft-Dokumentation
+title: Erstellen von Profilen für Azure Service Fabric-Live-Apps mit Application Insights
 description: Aktivieren des Profilers für eine Service Fabric-Anwendung
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+ms.custom: devx-track-dotnet
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 5c01c2721a29bf142ee0ba53c9bc29ec66a7278f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: 317c02fe03a56ea3cd3a98b00f8a0080b3917108
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727914"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88930280"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Erstellen von Profilen für Azure Service Fabric-Liveanwendungen mit Application Insights
 
@@ -32,9 +27,9 @@ Application Insights Profiler ist in Azure-Diagnose enthalten. Sie können die A
 
 Zum Einrichten Ihrer Umgebung führen Sie folgende Schritte aus:
 
-1. Der Profiler unterstützt .NET Framework und .Net Core. Wenn Sie .NET Framework verwenden, stellen Sie sicher, dass Sie [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) oder höher verwenden. Es ist ausreichend zu bestätigen, dass das bereitgestellte Betriebssystem `Windows Server 2012 R2` oder höher ist. Der Profiler unterstützt .NET Core 2.1 und neuere Anwendungen.
+1. Der Profiler unterstützt .NET Framework und .Net Core. Wenn Sie .NET Framework verwenden, stellen Sie sicher, dass Sie [.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) oder höher verwenden. Es ist ausreichend zu bestätigen, dass das bereitgestellte Betriebssystem `Windows Server 2012 R2` oder höher ist. Der Profiler unterstützt .NET Core 2.1 und neuere Anwendungen.
 
-1. Suchen Sie nach der [Azure-Diagnoseerweiterung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) in der Bereitstellungsvorlagendatei.
+1. Suchen Sie nach der [Azure-Diagnoseerweiterung](../platform/diagnostics-extension-overview.md) in der Bereitstellungsvorlagendatei.
 
 1. Fügen Sie den folgenden `SinksConfig`-Abschnitt als untergeordnetes Element von `WadCfg` hinzu. Ersetzen Sie den `ApplicationInsightsProfiler`-Eigenschaftswert durch Ihren eigenen Application Insights-Instrumentierungsschlüssel:  
 
@@ -49,7 +44,7 @@ Zum Einrichten Ihrer Umgebung führen Sie folgende Schritte aus:
       }
       ```
 
-      Informationen zum Hinzufügen der Diagnoseerweiterung zu Ihrer Bereitstellungsvorlage finden Sie unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+      Informationen zum Hinzufügen der Diagnoseerweiterung zu Ihrer Bereitstellungsvorlage finden Sie unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](../../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json).
 
 1. Stellen Sie Ihren Service Fabric-Cluster über Ihre Azure Resource Manager-Vorlage bereit.  
   Wenn Ihre Einstellungen richtig sind, wird Application Insights Profiler installiert und aktiviert, sobald die Azure-Diagnoseerweiterung installiert wird. 

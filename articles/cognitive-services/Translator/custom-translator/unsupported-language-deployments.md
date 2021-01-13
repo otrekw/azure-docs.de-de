@@ -1,7 +1,7 @@
 ---
 title: Bereitstellungen in nicht unterstützten Sprachen – Benutzerdefinierter Translator
 titleSuffix: Azure Cognitive Services
-description: Informationen zum Bereitstellen nicht unterstützter Sprachenpaare im benutzerdefinierten Translator.
+description: In diesem Artikel erfahren Sie, wie Sie nicht unterstützte Sprachpaare im benutzerdefinierten Translator von Azure Cognitive Services bereitstellen.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 284a7e98c088edb73a2c770a4c14bb0a479a6621
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7498169c2c61b8337a90fbda082729f200f04635
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436067"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369034"
 ---
 # <a name="unsupported-language-deployments"></a>Bereitstellungen in nicht unterstützten Sprachen
 
@@ -35,11 +35,11 @@ Damit sich Ihre Modelle für die Bereitstellung eignen, müssen sie die folgende
 ## <a name="process"></a>Prozess
 Nachdem Sie Modelle aus dem Hub migriert haben, die Kandidaten für die Bereitstellung sind, können Sie diese finden, indem Sie zur Seite **Einstellungen** für Ihren Arbeitsbereich wechseln und zum Seitenende scrollen, wo der Abschnitt **Nicht unterstützte Translator-Hub-Trainings** angezeigt wird.  Dieser Abschnitt wird nur angezeigt, wenn Sie über Projekte verfügen, die die oben genannten Voraussetzungen erfüllen.
 
-![So führen Sie die Migration aus dem Hub durch](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
+![Screenshot: Hervorgehobener Abschnitt „Nicht unterstützte Translator-Hub-Trainings“](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
 
 Auf der Auswahlseite **Nicht unterstützte Translator-Hub-Trainings** enthält die Registerkarte für **nicht angeforderte Trainings** die für die Bereitstellung geeigneten Modelle.  Wählen Sie die Modelle aus, die Sie bereitstellen möchten, und übermitteln Sie eine Anforderung.   Vor Ablauf der Bereitstellungsfrist am 30. April können Sie beliebig viele Modelle für die Bereitstellung auswählen.
  
-![So führen Sie die Migration aus dem Hub durch](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
+![Screenshot: Registerkarte für nicht angeforderte Trainings](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
 
 Nach der Übermittlung ist das Modell nicht mehr auf der Registerkarte für **nicht angeforderte Trainings** verfügbar, sondern wird auf der Registerkarte für **angeforderte Trainings** angezeigt.  Sie können Ihre angeforderten Trainings jederzeit anzeigen.
 
@@ -57,4 +57,4 @@ Im Gegensatz zu den Standardmodellen des benutzerdefinierten Translators werden 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Trainieren eines Modells](how-to-train-model.md).
-- Beginnen Sie mit der Verwendung Ihres bereitstellten benutzerdefinierten Übersetzungsmodells über die [Microsoft-Textübersetzungs-API (V3)](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- Beginnen Sie mit der Verwendung Ihres bereitstellten benutzerdefinierten Übersetzungsmodells über die [Microsoft-Textübersetzungs-API (V3)](../reference/v3-0-translate.md?tabs=curl).

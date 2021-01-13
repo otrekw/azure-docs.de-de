@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: alkohli
 ms.openlocfilehash: 2c95095147f6984fb67ba3faa476ec42c9e7ec4e
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67812551"
 ---
 Im Folgenden finden Sie eine Liste der unterstützten Betriebssysteme für Datenkopiervorgänge über die Clients, die mit Ihrem Gerät verbunden sind.

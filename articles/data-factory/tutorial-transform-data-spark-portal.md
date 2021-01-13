@@ -1,24 +1,26 @@
 ---
-title: Transformieren von Daten mithilfe von Spark in Azure Data Factory | Microsoft-Dokumentation
+title: 'Transformieren von Daten mit Spark in Azure Data Factory '
 description: Dieses Tutorial enthält Schritt-für-Schritt-Anleitungen zum Transformieren von Daten mithilfe einer Spark-Aktivität in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: d13e0b95d57e3063292319961d5e1138f994076e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+manager: anandsub
+ms.openlocfilehash: 5b0bcdd66e17fb93a560b6073c13e3170e3ab37b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812277"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010145"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Transformieren von Daten in der Cloud mithilfe einer Spark-Aktivität in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 In diesem Tutorial verwenden Sie das Azure-Portal, um eine Azure Data Factory-Pipeline zu erstellen. In dieser Pipeline werden Daten transformiert, indem eine Spark-Aktivität und ein bedarfsabhängiger verknüpfter Azure HDInsight-Dienst verwendet wird. 
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -91,7 +93,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
       
    ![Bereich „Neue Data Factory“](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
-   Der Name der Azure Data Factory muss *global eindeutig*sein. Ändern Sie den Namen der Data Factory, wenn die folgende Fehlermeldung angezeigt wird. (Verwenden Sie beispielsweise **&lt;IhrName&gt;ADFTutorialDataFactory**.) Benennungsregeln für Data Factory-Artefakte finden Sie im Artikel [Azure Data Factory – Benennungsregeln](naming-rules.md).
+   Der Name der Azure Data Factory muss *global eindeutig* sein. Ändern Sie den Namen der Data Factory, wenn die folgende Fehlermeldung angezeigt wird. (Verwenden Sie beispielsweise **&lt;IhrName&gt;ADFTutorialDataFactory**.) Benennungsregeln für Data Factory-Artefakte finden Sie im Artikel [Azure Data Factory – Benennungsregeln](naming-rules.md).
   
    ![Fehler, wenn ein Name nicht verfügbar ist](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
 1. Wählen Sie unter **Abonnement** Ihr Azure-Abonnement aus, in dem die Data Factory erstellt werden soll. 
@@ -100,7 +102,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
    - Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe. 
    - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
          
-   Bei einigen Schritten dieses Tutorials wird davon ausgegangen, dass Sie eine Ressourcengruppe mit dem Namen **ADFTutorialResourceGroup** verwenden. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
+   Bei einigen Schritten dieses Tutorials wird davon ausgegangen, dass Sie eine Ressourcengruppe mit dem Namen **ADFTutorialResourceGroup** verwenden. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).  
 1. Wählen Sie **V2** als **Version** aus.
 1. Wählen Sie unter **Standort** den Standort für die Data Factory aus. 
 
@@ -242,7 +244,7 @@ Die Datei sollte für jedes Wort aus der Eingabetextdatei angeben, wie oft es in
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Die Pipeline in diesem Beispiel transformiert Daten mithilfe einer Spark-Aktivität und eines bedarfsgesteuerten verknüpften HDInsight-Diensts. Es wurde Folgendes vermittelt: 
+Die Pipeline in diesem Beispiel transformiert Daten mithilfe einer Spark-Aktivität und eines bedarfsgesteuerten verknüpften HDInsight-Diensts. Sie haben Folgendes gelernt: 
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory. 

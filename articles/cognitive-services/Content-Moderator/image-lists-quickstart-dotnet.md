@@ -3,19 +3,20 @@ title: Überprüfen von Bildern anhand benutzerdefinierter Listen in C# – Cont
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie Bilder mit benutzerdefinierten Bildlisten im Content Moderator SDK für C# moderieren.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: 915b308b0129d714e51ac50b4230d8447b5c933a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bec31f830adddfc7251ce36e13ef0bfaa0af7638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564483"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88931708"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>Moderieren mit benutzerdefinierten Bildlisten in C#
 
@@ -34,7 +35,7 @@ Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den Einstieg 
 
 Die Konsolenanwendung für den vorliegenden Leitfaden simuliert einige der Aufgaben, die Sie mit der Bildlisten-API ausführen können.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/), bevor Sie beginnen. 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Registrieren für Content Moderator-Dienste
 
@@ -62,8 +63,7 @@ Fügen Sie die folgenden `using`-Anweisungen hinzu:
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -73,10 +73,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Erstellen des Content Moderator-Clients
 
-Fügen Sie den folgenden Code hinzu, um einen Content Moderator-Client für Ihr Abonnement zu erstellen.
-
-> [!IMPORTANT]
-> Aktualisieren Sie die Felder **AzureRegion** und **CMSubscriptionKey** mit den Werten Ihres Regionsbezeichners und des Abonnementschlüssels.
+Fügen Sie den folgenden Code hinzu, um einen Content Moderator-Client für Ihr Abonnement zu erstellen. Aktualisieren Sie die Felder `AzureEndpoint` und `CMSubscriptionKey` mit den Werten Ihrer Endpunkt-URL und Ihres Abonnementschlüssels. Diese finden Sie auf der Registerkarte **Schnellstart** Ihrer Ressource im Azure-Portal.
 
 ```csharp
 /// <summary>
@@ -88,16 +85,9 @@ Fügen Sie den folgenden Code hinzu, um einen Content Moderator-Client für Ihr 
 public static class Clients
 {
     /// <summary>
-    /// The region/location for your Content Moderator account, 
-    /// for example, westus.
+    /// The base URL for Content Moderator calls.
     /// </summary>
-    private static readonly string AzureRegion = "YOUR API REGION";
-
-    /// <summary>
-    /// The base URL fragment for Content Moderator calls.
-    /// </summary>
-    private static readonly string AzureBaseURL =
-        $"https://{AzureRegion}.api.cognitive.microsoft.com";
+    private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
     /// <summary>
     /// Your Content Moderator subscription key.
@@ -116,7 +106,7 @@ public static class Clients
         // Create and initialize an instance of the Content Moderator API wrapper.
         ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
 
-        client.Endpoint = AzureBaseURL;
+        client.Endpoint = AzureEndpoint;
         return client;
     }
 }
@@ -598,7 +588,7 @@ private static IList<ImageList> GetAllListIds(ContentModeratorClient client)
 
 ## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>Hinzufügen von Code zum Simulieren der Verwendung einer Bildliste
 
-Fügen Sie der Methode **Main** den folgenden Code hinzu. Dieser Code simuliert viele Vorgänge, die Sie zu Definition und Verwaltung der Liste ausführen würden, sowie die Verwendung der Liste zum Überprüfen von Bildern. Mit den Protokollierungsfunktionen können Sie die Antwortobjekte anzeigen, die von den SDK-Aufrufen an den Content Moderator-Dienst generiert werden.
+Fügen Sie der Methode **Main** den folgenden Code hinzu. Dieser Code simuliert viele Vorgänge, die Sie zu Definition und Verwaltung der Liste ausführen würden, sowie die Verwendung der Liste zum Überprüfen von Bildern. Mit den Protokollierungsfunktionen können Sie die Antwortobjekte anzeigen, die von den SDK-Aufrufen des Content Moderator-Diensts generiert werden.
 
 ```csharp
 // Create the text writer to use for logging, and cache a static reference to it.

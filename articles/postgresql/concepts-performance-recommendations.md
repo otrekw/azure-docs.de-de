@@ -1,17 +1,17 @@
 ---
-title: Leistungsempfehlungen in Azure Database for PostgreSQL – Einzelserver
+title: Leistungsempfehlungen – Azure Database for PostgreSQL – Einzelserver
 description: In diesem Artikel wird das Feature für Leistungsempfehlungen in Azure Database for PostgreSQL (Einzelserver) beschrieben.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 5f1b64753d19158b17d4de1b3fbbe50d30ea0254
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d547844671e6485e71be7dd8c355de08f3dec5e6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764664"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710565"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Leistungsempfehlungen in Azure Database for PostgreSQL – Einzelserver
 
@@ -27,13 +27,13 @@ Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) ana
 
 Öffnen Sie im Abschnitt **Intelligente Leistung** auf der Menüleiste der Azure-Portalseite für Ihren PostgreSQL-Server die Option **Leistungsempfehlungen**.
 
-![Leistungsempfehlungen-Startseite](./media/concepts-performance-recommendations/performance-recommendations-page.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="Landing Page für Leistungsempfehlungen":::
 
 Wählen Sie **Analysieren** aus, und wählen Sie eine Datenbank aus, mit der die Analyse beginnt. Je nach Workload kann die Analyse einige Minuten dauern. Wenn die Analyse abgeschlossen ist, wird im Portal eine Benachrichtigung angezeigt. Die Analyse führt eine umfassende Untersuchung der Datenbank aus. Es wird empfohlen, Analysen während der Nebenzeiten durchzuführen. 
 
 Das Fenster **Empfehlungen** zeigt eine Liste mit den gefundenen Empfehlungen an.
 
-![Neue Seite „Leistungsempfehlungen“](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Landing Page für Leistungsempfehlungen":::
 
 Empfehlungen werden nicht automatisch angewendet. Kopieren Sie zum Anwenden der Empfehlung den Abfragetext, und führen Sie ihn auf dem gewünschten Client aus. Denken Sie daran, die implementierte Empfehlung zu testen und zu überwachen, um sie auszuwerten. 
 

@@ -1,19 +1,14 @@
 ---
-title: Festlegen von Umgebungsvariablen in Azure Container Instances
+title: Festlegen von Umgebungsvariablen in Containerinstanzen
 description: Es wird beschrieben, wie Sie Umgebungsvariablen in den Containern festgelegen, die Sie in Azure Container Instances ausführen.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/17/2019
-ms.author: danlep
-ms.openlocfilehash: 9cd62c378270da31079a38f89b040985105a4218
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 92ae59f69b7cb43fee1d3ce8190a85fc20a11f60
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68326036"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86169764"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Festlegen von Umgebungsvariablen in Container Instances
 
@@ -63,8 +58,8 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 Die Ausgabe der Container zeigt, wie Sie die das Skriptverhalten des zweiten Containers durch Festlegen von Umgebungsvariablen geändert haben.
 
-```console
-azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name mycontainer1
+**mycontainer1**
+```output
 [('the', 990),
  ('and', 702),
  ('of', 628),
@@ -75,8 +70,10 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
  ('my', 441),
  ('in', 399),
  ('HAMLET', 386)]
+```
 
-azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name mycontainer2
+**mycontainer2**
+```output
 [('CLAUDIUS', 120),
  ('POLONIUS', 113),
  ('GERTRUDE', 82),
@@ -169,7 +166,7 @@ Legen Sie eine sichere Umgebungsvariable fest, indem Sie für den Variablentypen
 Erstellen Sie eine `secure-env.yaml`-Datei mit dem folgenden Ausschnitt.
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: securetest
 properties:

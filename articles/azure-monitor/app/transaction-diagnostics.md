@@ -1,23 +1,15 @@
 ---
 title: Azure Application Insights-Transaktionsdiagnose | Microsoft-Dokumentation
 description: Application Insights-End-to-End-Transaktionsdiagnose
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: c6c44525018e2115f1df8ed2d3f15432b95490c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7623b7131e6344a67c468d0436884ebfef9b0058
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60783624"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746096"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Einheitliche komponentenübergreifende Transaktionsdiagnose
 
@@ -72,7 +64,7 @@ Dieser reduzierbare Bereich zeigt die anderen Ergebnisse an, die den Filterkrite
 
 ## <a name="profiler-and-snapshot-debugger"></a>Profiler und Momentaufnahmedebugger
 
-Der [Application Insights Profiler](../../azure-monitor/app/profiler.md) oder der [Momentaufnahmedebugger](snapshot-debugger.md) unterstützen die Diagnose von Leistungs- und Ausfallproblemen auf Codeebene. Dank dieser Benutzeroberfläche können Sie Profilerüberwachungen oder Momentaufnahmen von beliebigen Komponenten mit nur einem Klick anzeigen.
+Der [Application Insights Profiler](./profiler.md) oder der [Momentaufnahmedebugger](snapshot-debugger.md) unterstützen die Diagnose von Leistungs- und Ausfallproblemen auf Codeebene. Dank dieser Benutzeroberfläche können Sie Profilerüberwachungen oder Momentaufnahmen von beliebigen Komponenten mit nur einem Klick anzeigen.
 
 Setzen Sie sich bei Problemen mit dem Profiler unter **serviceprofilerhelp\@microsoft.com** mit uns in Verbindung.
 
@@ -88,9 +80,7 @@ Mögliche Ursachen:
 
 * Sind die anderen Komponenten mit Application Insights instrumentiert?
 * Verwenden sie das neueste stabile Application Insights-SDK?
-* Wenn es sich bei diesen Komponenten um separate Application Insights-Ressourcen handelt, haben Sie den erforderlichen Zugriff auf ihre Telemetrie?
-
-Wenn Sie Zugriff haben und die Komponenten mit den neuesten Application Insights-SDKs instrumentiert sind, informieren Sie uns über den Feedbackkanal in der oberen rechten Ecke.
+* Wenn es sich bei diesen Komponenten um separate Application Insights-Ressourcen handelt, haben Sie den erforderlichen [Zugriff](resources-roles-access-control.md)? Wenn Sie Zugriff haben und die Komponenten mit den neuesten Application Insights-SDKs instrumentiert sind, informieren Sie uns über den Feedbackkanal in der oberen rechten Ecke.
 
 *Ich sehe doppelte Zeilen für die Abhängigkeiten. Entspricht dies dem erwarteten Verhalten?*
 
@@ -103,3 +93,4 @@ Die Zeitachsen im Transaktionsdiagramm gleichen Uhrabweichungen aus. Sie können
 *Warum fehlen auf der neuen Benutzeroberfläche die meisten der zugehörigen Elementabfragen?*
 
 Dies ist beabsichtigt. Alle zugehörigen Elemente über alle Komponenten hinweg stehen bereits auf der linken Seite zur Verfügung (oberer und unterer Abschnitt). Die neue Benutzeroberfläche weist zwei zugehörige Elemente auf, die von der linken Seite nicht abgedeckt werden: die gesamte Telemetrie fünf Minuten vor und nach dem Ereignis und die Benutzerzeitachse.
+

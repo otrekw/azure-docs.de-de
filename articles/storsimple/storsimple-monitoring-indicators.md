@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 59dee7b9-ca6d-4fd9-96e6-a0071e8d248e
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630607"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015399"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Verwalten von Geräten mithilfe von StorSimple-Überwachungsindikatoren
 
@@ -46,7 +46,7 @@ Das vordere Bedienfeld enthält die folgenden Indikatoren:
 2. Betriebsanzeige-LED (grün/rot-bernsteinfarben)
 3. Modulfehleranzeige-LED (EIN rot-bernsteinfarben/AUS)
 4. Logische Fehleranzeige-LED (EIN rot-bernsteinfarben/AUS)
-5. Anzeige der Einheiten-ID  
+5. Anzeige der Gerätekennung  
 
 Der Hauptunterschied zwischen den LEDs des vorderen Bedienfelds am Gerät und am EBOD-Gehäuse ist die **Systemeinheit-ID** , die auf der LED-Anzeige dargestellt wird. Die auf dem Gerät angezeigte Standard-ID der Einheit lautet **00**, während die auf dem EBOD-Gehäuse angezeigte Standard-ID der Einheit **01** lautet. Auf diese Weise können Sie schnell zwischen dem Gerät und dem EBOD-Gehäuse unterscheiden, wenn das Gerät eingeschaltet wird. Wenn Ihr Gerät ausgeschaltet ist, verwenden Sie die unter dem Thema [Einschalten eines neuen Geräts](storsimple-turn-device-on-or-off.md#turn-on-a-new-device) bereitgestellten Informationen, um das Gerät vom EBOD-Gehäuse zu unterscheiden.  
 
@@ -77,8 +77,8 @@ Das StorSimple-Gerät verfügt über ein 764-W-PCM-Modul mit zusätzlichem Akku.
 LED-Legende:
 
 1. Stromausfall (Wechselstrom)
-2. Lüfterfehler
-3. Akkufehler
+2. Lüfterausfall
+3. Batterieausfall
 4. PCM OK
 5. Gleichstromfehler
 6. Akku OK  
@@ -200,7 +200,7 @@ Ein StorSimple-Gerät enthält akustische Alarme, die dem primären Gehäuse und
 Die verschiedenen Alarmzustände werden in der folgenden Tabelle beschrieben.  
 
 ### <a name="alarm-states"></a>Alarmzustände
-| Alarmzustand | Aktion | Aktion mit gedrückter Stummtaste |
+| Alarmzustand | Action | Aktion mit gedrückter Stummtaste |
 | --- | --- | --- |
 | S0 |Normaler Modus: lautlos |Zweimaliger Piepton |
 | S1 |Fehlermodus: eine Sekunde ein/eine Sekunde aus |Übergang in S2 oder S3 (siehe Anmerkungen) |
@@ -219,7 +219,7 @@ Der akustische Alarm kann durch Drücken der Stummschalttaste auf dem OPS-Bedien
 Die verschiedenen Alarmbedingungen werden in der folgenden Tabelle beschrieben.
 
 ### <a name="alarm-conditions"></a>Alarmbedingungen
-| Status | Severity | Alarm | LED des Bedienfelds |
+| Status | severity | Alarm | LED des Bedienfelds |
 | --- | --- | --- | --- |
 | PCM-Alarm – Verlust des Gleichstroms von einer PCM |Fehler – kein Verlust der Redundanz |S1 |Modulfehler |
 | PCM-Alarm – Verlust des Gleichstroms von einer PCM |Fehler – Verlust der Redundanz |S1 |Modulfehler |

@@ -1,22 +1,22 @@
 ---
-title: Planung und Ausführung mit Data Factory | Microsoft Docs
+title: Planung und Ausführung mit Data Factory
 description: Informationen zu den Planungs- und Ausführungsaspekten des Azure Data Factory-Anwendungsmodells.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6ea8a03f45a3655c5761e0011876c6232b5bf36b
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 60410eb2a9a5f18abf2daf87646943ffdc944402
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135305"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495173"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory – Planung und Ausführung
 > [!NOTE]
@@ -29,7 +29,7 @@ In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Fa
 * [Datasets](data-factory-create-datasets.md) 
 
 ## <a name="start-and-end-times-of-pipeline"></a>Start- und Endzeiten der Pipeline
-Eine Pipeline ist nur zwischen ihrer **Startzeit** und **Endzeit** aktiv. Sie wird weder vor der Startzeit noch nach der Endzeit ausgeführt. Wenn die Pipeline angehalten wird, wird sie unabhängig von Start- und Endzeit nicht ausgeführt. Wenn eine Pipeline ausgeführt werden soll, darf sie nicht angehalten werden. Sie finden diese Einstellungen (Start, Ende, angehalten) in der Pipelinedefinition: 
+Eine Pipeline ist nur zwischen ihrer **start**- und ihrer **end**-Zeit aktiv. Sie wird weder vor der Startzeit noch nach der Endzeit ausgeführt. Wenn die Pipeline angehalten wird, wird sie unabhängig von Start- und Endzeit nicht ausgeführt. Wenn eine Pipeline ausgeführt werden soll, darf sie nicht angehalten werden. Sie finden diese Einstellungen (Start, Ende, angehalten) in der Pipelinedefinition: 
 
 ```json
 "start": "2017-04-01T08:00:00Z",
@@ -179,7 +179,7 @@ Im vorherigen Beispiel ist der Zeitplan für Eingabe- und Ausgabedataset identis
 ## <a name="dataset-availability-and-policies"></a>Datasetverfügbarkeit und -richtlinien
 Sie haben die Verwendung der Eigenschaften „frequency“ und „interval“ im Abschnitt „availability“ der Definition des Datasets kennengelernt. Es gibt einige andere Eigenschaften, die Einfluss auf Zeitplan und Ausführung einer Aktivität haben. 
 
-### <a name="dataset-availability"></a>Datasetverfügbarkeit 
+### <a name="dataset-availability"></a>Dataset: availability 
 In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschnitt **availability** verwenden können:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
@@ -232,8 +232,8 @@ Der Abschnitt **policy** in der Datasetdefinition definiert die Kriterien oder d
 
 | Richtlinienname | BESCHREIBUNG | Angewendet auf | Erforderlich | Standard |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | Überprüft, ob die Daten in einem **Azure-Blob** die minimalen Größenanforderungen (in MB) erfüllen. |Azure-Blob |Nein |Nicht verfügbar |
-| minimumRows | Überprüft, ob die Daten in einer **Azure SQL-Datenbank** oder einer **Azure-Tabelle** die minimale Anzahl von Zeilen enthalten. |<ul><li>Azure SQL-Datenbank</li><li>Azure-Tabelle</li></ul> |Nein |Nicht verfügbar |
+| minimumSizeMB | Überprüft, ob die Daten in einem **Azure-Blob** die minimalen Größenanforderungen (in MB) erfüllen. |Azure Blob |Nein |Nicht verfügbar |
+| minimumRows | Überprüft, ob die Daten in **Azure SQL-Datenbank** oder in der **Azure-Tabelle** die Mindestanzahl von Zeilen enthalten. |<ul><li>Azure SQL-Datenbank</li><li>Azure Table</li></ul> |Nein |Nicht verfügbar |
 
 #### <a name="examples"></a>Beispiele
 **minimumSizeMB:**
@@ -294,7 +294,7 @@ Das Diagramm zeigt, dass bei den letzten drei Slices ein Fehler beim Erstellen d
 
 Mit den Data Factory-Überwachungs- und Verwaltungstools können Sie die Diagnoseprotokolle detailliert nach dem fehlerhaften Slice durchsuchen, um die Ursache des Problems leicht zu finden und zu beseitigen. Nachdem Sie das Problem behoben haben, können Sie die Aktivitätsausführung ganz einfach starten, um den fehlerhaften Slice zu erstellen. Weitere Informationen zur erneuten Ausführung und Grundlegendes zu Statusübergängen für Datenslices finden Sie unter [Überwachen und Verwalten von Pipelines mithilfe von Blättern im Azure-Portal](data-factory-monitor-manage-pipelines.md) oder [App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md).
 
-Nachdem Sie den Slice „9-10 AM“ für **Dataset2**erneut ausgeführt haben, startet Data Factory die Ausführung für den von „9-10 AM“ abhängigen Slice im endgültigen Dataset.
+Nachdem Sie den Slice „9-10 AM“ für **Dataset2** erneut ausgeführt haben, startet Data Factory die Ausführung für den von „9-10 AM“ abhängigen Slice im endgültigen Dataset.
 
 ![Wiederholen eines fehlerhaften Slices](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
 

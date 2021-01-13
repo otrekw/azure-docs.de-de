@@ -1,30 +1,19 @@
 ---
-title: Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen in Azure Service Fabric-Windows-Clustern | Microsoft-Dokumentation
+title: Einrichten eines Verschlüsselungszertifikats auf Windows-Clustern
 description: Hier erfahren Sie, wie Sie ein Verschlüsselungszertifikat einrichten und Geheimnisse in Windows-Clustern verschlüsseln.
-services: service-fabric
-documentationcenter: .net
-author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/04/2019
-ms.author: vturecek
-ms.openlocfilehash: 3d324c54d10433520a73f2bd836c26bd79f1b3bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb4909d62a2627c368f24dab572b25c6f1df30ec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615267"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "82583286"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen in Windows-Clustern
 In diesem Artikel wird veranschaulicht, wie Sie ein Verschlüsselungszertifikat einrichten und zum Verschlüsseln von Geheimnissen in Windows-Clustern verwenden. Informationen zu Linux-Clustern finden Sie unter [Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen in Linux-Clustern][secret-management-linux-specific-link].
 
-[Azure Key Vault][key-vault-get-started] wird als sicherer Speicherort für Zertifikate sowie zum Installieren von Zertifikaten auf Service Fabric-Clustern in Azure verwendet. Wenn die Bereitstellung nicht in Azure erfolgt, muss Key Vault nicht zum Verwalten von Geheimnissen in Service Fabric-Anwendungen eingesetzt werden. Die *Verwendung* von Geheimnissen in einer Anwendung ist jedoch cloudplattformunabhängig, sodass Anwendungen auf einem Cluster bereitgestellt werden können, der an einem beliebigen Standort gehostet wird. 
+[Azure Key Vault][key-vault-get-started] wird hier als sicherer Speicherort für Zertifikate sowie zum Installieren von Zertifikaten auf Service Fabric-Clustern in Azure verwendet. Wenn die Bereitstellung nicht in Azure erfolgt, muss Key Vault nicht zum Verwalten von Geheimnissen in Service Fabric-Anwendungen eingesetzt werden. Die *Verwendung* von Geheimnissen in einer Anwendung ist jedoch cloudplattformunabhängig, sodass Anwendungen auf einem Cluster bereitgestellt werden können, der an einem beliebigen Standort gehostet wird. 
 
 ## <a name="obtain-a-data-encipherment-certificate"></a>Abrufen eines Datenverschlüsselungszertifikats
 Ein Datenverschlüsselungszertifikat wird ausschließlich für die Ver- und Entschlüsselung von [Parametern][parameters-link] in der Datei „Settings.xml“ eines Diensts und von [Umgebungsvariablen][environment-variables-link] in der Datei „ServiceManifest.xml“ eines Diensts verwendet. Es wird nicht für die Authentifizierung oder Signierung von Verschlüsselungstext verwendet. Das Zertifikat muss die folgenden Anforderungen erfüllen:
@@ -55,7 +44,7 @@ Die resultierende Base64-codierte Zeichenfolge enthält sowohl den geheimen Chif
 Informieren Sie sich über das [Angeben von verschlüsselten Geheimnissen in einer Anwendung][secret-management-specify-encrypted-secrets-link].
 
 <!-- Links -->
-[key-vault-get-started]:../key-vault/key-vault-overview.md
+[key-vault-get-started]:../key-vault/general/overview.md
 [service-fabric-cluster-creation-via-arm]: service-fabric-cluster-creation-via-arm.md
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md
 [environment-variables-link]: service-fabric-how-to-specify-environment-variables.md

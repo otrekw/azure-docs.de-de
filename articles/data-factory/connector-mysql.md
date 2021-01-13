@@ -1,28 +1,29 @@
 ---
-title: Kopieren von Daten aus MySQL mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus MySQL mithilfe von Azure Data Factory
 description: Erfahren Sie mehr über den MySQL-Connector in Azure Data Factory, mit dem Sie Daten von einer MySQL-Datenbank in einem als Senke unterstützten Datenspeicher kopieren können.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 433160054dd653e1389c3d8c13faadb93782d7c0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 16f7a1481b15f280995bb71fa9e30ed3a129ab6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090034"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89612634"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopieren von Daten aus MySQL mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-onprem-mysql-connector.md)
 > * [Aktuelle Version](connector-mysql.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer MySQL-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -38,15 +39,13 @@ Der MySQL-Connector wird für die folgenden Aktivitäten unterstützt:
 
 Sie können Daten aus einer MySQL-Datenbank in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Dieser MySQL-Connector unterstützt insbesondere MySQL **Version 5.6 und 5.7**.
+Dieser MySQL-Connector unterstützt insbesondere MySQL **Version 5.6, 5.7 und 8.0**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 Die Integration Runtime bietet ab Version 3.7 einen integrierten MySQL-Treiber. Daher müssen keine Treiber manuell installiert werden.
-
-Bei einer selbstgehosteten IR-Version vor 3.7 müssen Sie den [MySQL-Connector bzw. .NET für Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (Version 6.6.5 bis 6.10.7) auf dem Computer mit der Integration Runtime installieren. Dieser 32-Bit-Treiber ist mit der 64-Bit-IR kompatibel.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -61,14 +60,16 @@ Folgende Eigenschaften werden für den mit MySQL verknüpften Dienst unterstütz
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **MySql** | Ja |
-| connectionString | Geben Sie Informationen an, die zum Herstellen einer Verbindung mit der Azure Database for MySQL-Instanz erforderlich sind.<br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch das Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| connectionString | Geben Sie Informationen an, die zum Herstellen einer Verbindung mit der Azure Database for MySQL-Instanz erforderlich sind.<br/> Sie können auch das Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 Eine typische Verbindungszeichenfolge ist `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Weitere Eigenschaften, die Sie für Ihren Fall festlegen können:
 
-| Eigenschaft | BESCHREIBUNG | Optionen | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Tastatur | Erforderlich |
 |:--- |:--- |:--- |:--- |
-| SSLMode | Diese Option gibt an, ob der Treiber beim Herstellen der Verbindung mit MySQL SSL-Verschlüsselung und Überprüfung verwendet. Beispiel: `SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(Standard)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nein |
+| SSLMode | Diese Option gibt an, ob der Treiber beim Herstellen der Verbindung mit MySQL die TLS-Verschlüsselung und -Überprüfung verwendet. Beispiel: `SSLMode=<0/1/2/3/4>`.| DISABLED (0) / PREFERRED (1) **(Standard)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nein |
+| SSLCert | Der vollständige Pfad und Name einer PEM-Datei mit dem SSL-Zertifikat, das als Identitätsnachweis für den Client verwendet wird. <br/> Wenn Sie einen privaten Schlüssel angeben möchten, um das Zertifikat vor dem Senden an den Server zu verschlüsseln, verwenden Sie die Eigenschaft `SSLKey`.| | Ja (bei Verwendung der bidirektionalen SSL-Überprüfung). |
+| SSLKey | Der vollständige Pfad und Name einer Datei mit dem privaten Schlüssel, der verwendet wird, um das clientseitige Zertifikat während der bidirektionalen SSL-Überprüfung zu verschlüsseln.|  | Ja (bei Verwendung der bidirektionalen SSL-Überprüfung). |
 | UseSystemTrustStore | Diese Option gibt an, ob ein Zertifizierungsstellenzertifikat aus dem Vertrauensspeicher des Systems oder aus einer angegebenen PEM-Datei verwendet werden soll. Beispiel: `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(Standard)** | Nein |
 
 **Beispiel:**
@@ -79,10 +80,7 @@ Eine typische Verbindungszeichenfolge ist `Server=<server>;Port=<port>;Database=
     "properties": {
         "type": "MySql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
-            }
+            "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -100,10 +98,7 @@ Eine typische Verbindungszeichenfolge ist `Server=<server>;Port=<port>;Database=
     "properties": {
         "type": "MySql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;"
-            },
+            "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -153,7 +148,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Zum Kopieren von Daten aus MySQL werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **MySqlTable** | Ja |
 | tableName | Name der Tabelle in der MySQL-Datenbank. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
@@ -186,10 +181,10 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Beim Kopieren von Daten aus MySQL werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **MySqlSource** | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

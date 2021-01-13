@@ -1,17 +1,17 @@
 ---
-title: Verbinden von Azure Kubernetes Service (AKS) mit Azure Database for PostgreSQL (Einzelserver)
-description: Erfahren Sie, wie Sie Azure Kubernetes Service mit Azure Database for PostgreSQL (Einzelserver) verbinden.
-author: rachel-msft
-ms.author: raagyema
+title: Verbinden mit Azure Kubernetes Service – Azure Database for PostgreSQL (Einzelserver)
+description: Erfahren Sie, wie Sie Azure Kubernetes Service (AKS) mit Azure Database for PostgreSQL (Einzelserver) verbinden.
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
-ms.date: 5/6/2019
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: a98d9b89db0406d67d1b067c3e53eb5c3dae7957
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b7da2fcc1310f03f894e048089658f25be3a149
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068941"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708848"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Verbinden von Azure Kubernetes Service mit Azure Database for PostgreSQL (Einzelserver)
 
@@ -41,13 +41,8 @@ Die Ausgabe ist die von AKS erstellte generierte Ressourcengruppe, die die Netzw
 az network nic list --resource-group nodeResourceGroup -o table
 ```
 
-## <a name="open-service-broker-for-azure"></a>Installieren von Service Broker für Azure 
-Mit [Open Service Broker für Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) können Sie Azure-Dienste direkt über Kubernetes oder Cloud Foundry bereitstellen. Es handelt sich um eine [Open Service Broker-API](https://www.openservicebrokerapi.org/)-Implementierung für Azure.
 
-Mit OSBA können Sie einen Azure Database for PostgreSQL-Server erstellen und per nativer Kubernetes-Sprache an Ihren AKS-Cluster binden. Informieren Sie sich auf der [GitHub-Seite zu OSBA](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md), wie Sie OSBA und Azure Database for PostgreSQL zusammen nutzen können. 
-
-
-## <a name="connection-pooling"></a>Verbindungspool
+## <a name="connection-pooling"></a>Verbindungspooling
 Eine Verbindungspoolfunktion minimiert die Kosten und die Zeit für das Erstellen neuer Verbindungen mit der Datenbank und das Schließen der Verbindungen. Der Pool ist eine Sammlung von Verbindungen, die wiederverwendet werden können. 
 
 Sie können mehrere Verbindungspoolfunktionen mit PostgreSQL verwenden. Eine davon ist [PgBouncer](https://pgbouncer.github.io/). In der Microsoft-Containerregistrierung bieten wir einen einfachen PgBouncer im Container, der in einem Sidecar verwendet werden kann, um Verbindungen von AKS mit Azure Database for PostgreSQL in einem Pool zusammenzufassen. Besuchen Sie die [Docker-Hubseite](https://hub.docker.com/r/microsoft/azureossdb-tools-pgbouncer/), um zu erfahren, wie Sie darauf zugreifen und dieses Image verwenden. 

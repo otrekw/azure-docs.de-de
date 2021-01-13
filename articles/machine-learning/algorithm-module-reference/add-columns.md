@@ -1,31 +1,31 @@
 ---
 title: 'Add Columns: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Add Columns“ (Hinzufügen von Spalten) in Azure Machine Learning Service verwenden können, um zwei Datensätze zu verketten.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Add Columns-Modul im Azure Machine Learning-Designer mit Drag & Drop-Funktion verwenden, um zwei Datensätze zu verketten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 630f8f7d4561ed6e7e9f943f4b3b123daeee4d67
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 10/22/2019
+ms.openlocfilehash: 36de827dff239dbeebc66e330a76b7a65fefb909
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129017"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421956"
 ---
 # <a name="add-columns-module"></a>Modul „Add Columns“ (Hinzufügen von Spalten)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul zum Verketten zweier Datasets. Sie kombinieren alle Spalten aus den beiden Datasets, die Sie als Eingaben angeben, zu einem einzigen Dataset. Wenn Sie mehr als zwei Datasets verketten müssen, verwenden Sie mehrere Instanzen von **Add Columns**.
 
 
 
 ## <a name="how-to-configure-add-columns"></a>Konfigurieren von „Add Columns“
-1. Fügen Sie das Modul **Add Columns** Ihrem Experiment hinzu.
+1. Fügen Sie Ihrer Pipeline das Modul **Add Columns** (Spalten hinzufügen) hinzu.
 
 2. Verbinden Sie die beiden Datasets, die Sie verketten möchten. Wenn Sie mehr als zwei Datasets kombinieren möchten, können Sie mehrere Kombinationen von **Add Columns** miteinander verketten.
 
@@ -33,12 +33,12 @@ Verwenden Sie dieses Modul zum Verketten zweier Datasets. Sie kombinieren alle S
 
     - Sie können keine einzelnen hinzuzufügenden Spalten auswählen. Alle Spalten aus jedem Dataset werden verkettet, wenn Sie **Add Columns** verwenden. Wenn Sie daher nur eine Teilmenge der Spalten hinzufügen möchten, verwenden Sie „Select Columns in Dataset“ (Spalten im Dataset auswählen), um ein Dataset mit den gewünschten Spalten zu erstellen.
 
-3. Führen Sie das Experiment aus.
+3. Übermitteln Sie die Pipeline.
 
 ### <a name="results"></a>Ergebnisse
-Nach Ausführung des Experiments:
+Gehen Sie nach der Pipelineausführung wie folgt vor:
 
-- Um die ersten Zeilen des neuen Datasets anzuzeigen, klicken Sie mit der rechten Maustaste auf die Ausgabe von **Add Columns**, und wählen Sie „Visualize“ (Visualisieren) aus.
+- Um die ersten Zeilen des neuen Datasets anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul **Add Columns** (Spalten hinzufügen), und wählen Sie „Visualisieren“ aus. Oder wählen Sie das Modul aus, wechseln Sie zur Registerkarte **Ausgaben** im rechten Bereich. Klicken Sie dann auf das Histogrammsymbol in **Portausgaben**, um das Ergebnis zu visualisieren.
 
 Die Anzahl der Spalten im neuen Dataset entspricht der Summe der Spalten beider Eingabedatasets.
 
@@ -46,4 +46,4 @@ Wenn es in den Eingabedatasets zwei Spalten mit dem gleichen Namen gibt, wird de
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

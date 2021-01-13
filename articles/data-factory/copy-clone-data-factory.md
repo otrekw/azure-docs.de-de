@@ -1,24 +1,26 @@
 ---
-title: Kopieren oder Klonen einer Data Factory in Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren oder Klonen einer Data Factory in Azure Data Factory
 description: Erfahren Sie, wie Sie eine Data Factory in Azure Data Factory kopieren oder klonen.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: chez-charlie
+ms.author: chez
 manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
-ms.date: 01/09/2019
-ms.openlocfilehash: 6e23cc583c9b403619ad2e47f2085ef7c0149bd2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 06/30/2020
+ms.openlocfilehash: 304c39f4b6f7852068d4e72adfad2d41eeefc26c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142367"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85552960"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Kopieren oder Klonen einer Data Factory in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie eine Data Factory in Azure Data Factory kopieren oder klonen.
 
@@ -26,25 +28,28 @@ In diesem Artikel wird beschrieben, wie Sie eine Data Factory in Azure Data Fact
 
 Im folgenden finden Sie einige Situationen, in denen es hilfreich sein kann, eine Data Factory zu kopieren oder zu klonen:
 
--   **Umbenennen von Ressourcen.** Azure unterstützt die Umbenennung von Ressourcen nicht. Wenn Sie eine Data Factory umbenennen möchten, können Sie sie unter einem anderen Namen klonen und dann die vorhandene löschen.
+- **Verschieben einer Data Factory** in eine neue Region. Wenn Sie Ihre Data Factory in eine andere Region verschieben möchten, empfiehlt es sich, eine Kopie in der Zielregion zu erstellen und die vorhandene Factory zu löschen.
 
--   **Debuggen von Änderungen**, wenn die Debugfeatures nicht ausreichen. Um die Änderungen zu testen, ist es manchmal sinnvoll, die Änderungen in einer anderen Factory zu testen, bevor Sie sie auf Ihre Hauptfactory anwenden. In den meisten Szenarien können Sie das Debuggen nutzen. Änderungen in Triggern, z.B. das Verhalten von Änderungen beim automatischen Aufrufen eines Triggers oder über ein Zeitintervall, können jedoch möglicherweise nicht einfach ohne Einchecken getestet werden. In diesen Fällen ist es sehr sinnvoll, die Factory zu klonen und die Änderungen dort anzuwenden. Da Azure Data Factory hauptsächlich über die Anzahl von Ausführungen abgerechnet wird, führt die zweite Factory nicht zu zusätzlichen Gebühren.
+- **Umbenennen der Data Factory**. Azure unterstützt die Umbenennung von Ressourcen nicht. Wenn Sie eine Data Factory umbenennen möchten, können Sie sie unter einem anderen Namen klonen und die vorhandene löschen.
+
+- **Debuggen von Änderungen**, wenn die Debugfeatures nicht ausreichen. In den meisten Szenarien können Sie das [Debuggen](iterative-development-debugging.md) nutzen. In anderen Szenarien ist das Testen von Änderungen in einer geklonten Sandboxumgebung sinnvoller. Das Verhalten der parametrisierten ETL-Pipelines beim Auslösen eines Triggers bei Dateieingang im Vergleich zu einem rollierenden Zeitfenster kann möglicherweise nicht einfach allein durch Debuggen getestet werden. In diesen Fällen empfiehlt es sich, eine Sandboxumgebung zum Testen zu klonen. Da Azure Data Factory hauptsächlich über die Anzahl von Ausführungen abgerechnet wird, führt eine zweite Factory nicht zu zusätzlichen Gebühren.
 
 ## <a name="how-to-clone-a-data-factory"></a>Klonen einer Data Factory
 
-1. Über die Data Factory-Benutzeroberfläche im Azure-Portal können Sie die gesamte Nutzlast Ihrer Data Factory zusammen mit einer Parameterdatei in eine Resource Manager-Vorlage exportieren, in der Sie Werte ändern können, bevor Sie Ihre Factory klonen.
+1. Als Voraussetzung müssen Sie zunächst die Ziel-Data Factory im Azure-Portal erstellen.
 
-1. Als Voraussetzung hierfür müssen Sie die Ziel-Data Factory über das Azure-Portal erstellen.
+1. Im Git-Modus:
+    1. Bei jedem Veröffentlichen über das Portal wird die Resource Manager-Vorlage der Factory in Git im Branch „adf\_publish“ des Repositorys gespeichert.
+    1. Verbinden Sie die neue Factory mit _demselben_ Repository, und erstellen Sie sie über den Branch „adf\_publish“. Ressourcen wie z. B. Pipelines, Datasets und Trigger werden übertragen.
 
-1. Wenn Sie eine SelfHosted IntegrationRuntime in Ihrer Quellfactory haben, müssen Sie sie mit dem gleichen Namen in der Zielfactory vorab erstellen. Wenn Sie die SelfHosted IRs zwischen verschiedenen Factorys freigeben möchten, können Sie das [hier](source-control.md#best-practices-for-git-integration) veröffentlichte Muster verwenden.
+1. Im Livemodus:
+    1. In der Data Factory-Benutzeroberfläche können Sie die gesamte Payload der Data Factory in eine Resource Manager-Vorlagendatei und eine Parameterdatei exportieren. Auf diese Dateien kann im Portal in der ARM-Vorlage über die Schaltfläche **Export Resource Manager template** (Resource Manager-Vorlage exportieren) zugegriffen werden.
+    1. Sie können entsprechende Änderungen an der Parameterdatei vornehmen und neue Werte für die neue Factory eingeben.
+    1. Dann können Sie sie mit Standardbereitstellungsmethoden für Resource Manager-Vorlagen bereitstellen.
 
-1. Wenn Sie sich im Git-Modus befinden, wird bei jedem Veröffentlichen über das Portal die Resource Manager-Vorlage der Factory in Git im Branch „adf_publish“ des Repositorys gespeichert.
+1. Wenn Sie eine SelfHosted IntegrationRuntime in Ihrer Quellfactory haben, müssen Sie sie mit dem gleichen Namen in der Zielfactory vorab erstellen. Wenn Sie die selbstgehostete Integration Runtime zwischen verschiedenen Factorys freigeben möchten, können Sie das [hier](create-shared-self-hosted-integration-runtime-powershell.md) veröffentlichte entsprechende Muster verwenden.
 
-1. In anderen Szenarien kann die Resource Manager-Vorlage durch Klicken auf die Schaltfläche **Export Resource Manager template** (Resource Manager-Vorlage exportieren) im Portal heruntergeladen werden.
-
-1. Nach dem Herunterladen der Resource Manager-Vorlage können Sie sie mit Standardbereitstellungsmethoden für Resource Manager-Vorlagen bereitstellen.
-
-1. Aus Sicherheitsgründen enthält die generierte Resource Manager-Vorlage keine geheimen Informationen wie Kennwörter für verknüpfte Dienste. Daher müssen Sie diese Kennwörter als Bereitstellungsparameter angeben. Wenn die Bereitstellung von Parametern nicht erwünscht ist, müssen Sie die Verbindungszeichenfolgen und die Kennwörter der verknüpfte Dienste aus Azure Key Vault abrufen.
+1. Aus Sicherheitsgründen enthält die generierte Resource Manager-Vorlage keine Geheimnisinformationen wie Kennwörter für verknüpfte Dienste. Daher müssen Sie die Anmeldeinformationen als Bereitstellungsparameter angeben. Wenn die manuelle Eingabe von Anmeldeinformationen in Ihren Einstellungen nicht vorgesehen ist, können Sie Verbindungszeichenfolgen und Kennwörter stattdessen aus Azure Key Vault abrufen. [Weitere Informationen](store-credentials-in-key-vault.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

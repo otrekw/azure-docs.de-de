@@ -1,24 +1,23 @@
 ---
-title: 'Erstellen einer ExpressRoute-Verbindung – Resource Manager-Vorlage: Azure | Microsoft-Dokumentation'
-description: Erstellen, Bereitstellen, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Verbindung.
-services: expressroute;azure-resource-manager
-author: cherylmc
+title: 'Azure ExpressRoute-Vorlage: Erstellen Sie eine ExpressRoute-Verbindung.'
+description: Erfahren Sie, wie Sie eine Azure ExpressRoute-Leitung erstellen, indem Sie eine Azure Resource Manager-Vorlage mit Azure PowerShell bereitstellen.
+services: expressroute
+author: duongau
 ms.service: expressroute
-ms.topic: article
-ms.date: 07/05/2019
-ms.author: cherylmc
-ms.reviewer: ganesr
-ms.openlocfilehash: 103c61b6ad244bf4b140f897c070ce5bfd54cded
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.topic: how-to
+ms.date: 11/13/2019
+ms.author: duau
+ms.openlocfilehash: 2e9b6ddc9da4467590946af12a47f1473a4ea494
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849220"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202054"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Erstellen einer ExpressRoute-Verbindung mithilfe einer Azure Resource Manager-Vorlage
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure-Befehlszeilenschnittstelle](howto-circuit-cli.md)
 > * [Azure Resource Manager-Vorlage](expressroute-howto-circuit-resource-manager-template.md)
@@ -26,7 +25,7 @@ ms.locfileid: "67849220"
 > * [PowerShell (klassisch)](expressroute-howto-circuit-classic.md)
 >
 
-Erfahren Sie, wie Sie eine ExpressRoute-Verbindung erstellen, indem Sie eine Azure Resource Manager-Vorlage mit Azure PowerShell bereitstellen. Weitere Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Resource Manager-Dokumentation](/azure/azure-resource-manager/) und der [Vorlagenreferenz](/azure/templates/microsoft.network/expressroutecircuits).
+Erfahren Sie, wie Sie eine ExpressRoute-Verbindung erstellen, indem Sie eine Azure Resource Manager-Vorlage mit Azure PowerShell bereitstellen. Weitere Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Resource Manager-Dokumentation](../azure-resource-manager/index.yml) und der [Vorlagenreferenz](/azure/templates/microsoft.network/expressroutecircuits).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -34,7 +33,7 @@ Erfahren Sie, wie Sie eine ExpressRoute-Verbindung erstellen, indem Sie eine Azu
 * Stellen Sie sicher, dass Sie über die notwendigen Berechtigungen verfügen, um neue Netzwerkressourcen zu erstellen. Wenden Sie sich an Ihren Kontoadministrator, wenn Sie nicht über die richtigen Berechtigungen verfügen.
 * Sie können sich das [Video ansehen](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit), bevor Sie beginnen, um die Schritte besser zu verstehen.
 
-## <a name="create"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
 
 [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) bieten eine gute Sammlung von Resource Manager-Vorlagen. Verwenden Sie eine der [vorhandenen Vorlagen](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/) zum Erstellen einer ExpressRoute-Verbindung.
 
@@ -64,8 +63,8 @@ So erstellen Sie eine ExpressRoute-Verbindung durch Bereitstellen einer Vorlage:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * Der **Tarif** bestimmt, ob ein ExpressRoute Standard- oder ein ExpressRoute Premium-Add-On aktiviert wird. Sie können **Standard** für die Standard-SKU bzw. **Premium** für das Premium-Add-On angeben.
-
+   * Der **SKU-Tarif** bestimmt, ob eine ExpressRoute-Verbindung eine [lokale](expressroute-faqs.md#expressroute-local), Standard- oder [Premium](expressroute-faqs.md#expressroute-premium)-Verbindung ist. Sie können *Lokal*, *Standard oder *Premium* angeben. Es ist nicht möglich, die SKU von *Standard/Premium* in *Local* zu ändern.
+   * Die **SKU-Familie** bestimmt den Abrechnungstyp. Sie können *Metereddata* für einen Volumentarif und *Unlimiteddata* für einen Plan mit Datenflatrate auswählen. Sie können den Abrechnungstyp von *Metereddata* in *Unlimiteddata* ändern, nicht jedoch umgekehrt (*Unlimiteddata* in *Metereddata*). Eine *lokale* Verbindung kann nur vom Typ *Unlimiteddata* sein.
    * Der **Peeringort** ist der physische Standort, an dem Ihr Peering mit Microsoft stattfindet.
 
      > [!IMPORTANT]
@@ -80,11 +79,11 @@ Es dauert einen Augenblick, einen Event Hub zu erstellen.
 
 In diesem Tutorial wird Azure PowerShell verwendet, um die Vorlage bereitzustellen. Weitere Methoden zum Bereitstellen von Vorlagen finden Sie unter:
 
-* [Über das Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
-* [Mit der Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md).
-* [Mit der REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md).
+* [Über das Azure-Portal](../azure-resource-manager/templates/deploy-portal.md).
+* [Mit der Azure CLI](../azure-resource-manager/templates/deploy-cli.md).
+* [Mit der REST-API](../azure-resource-manager/templates/deploy-rest.md).
 
-## <a name="delete"></a>Aufheben der Bereitstellung und Löschen einer ExpressRoute-Verbindung
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>Aufheben der Bereitstellung und Löschen einer ExpressRoute-Verbindung
 
 Sie können Ihre ExpressRoute-Verbindung löschen. Wählen Sie dazu das Symbol **Löschen** aus. Beachten Sie die folgenden Informationen:
 

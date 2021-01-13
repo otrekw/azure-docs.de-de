@@ -1,19 +1,18 @@
 ---
 title: Erfassen von benutzerdefinierten Metriken für einen virtuellen Linux-Computer mit dem InfluxData Telegraf-Agent
-description: Erfassen von benutzerdefinierten Metriken für einen virtuellen Linux-Computer mit dem InfluxData Telegraf-Agent
+description: Anweisungen zur Bereitstellung des InfluxData Telegraf-Agents auf einem virtuellen Linux-Computer in Azure und zur Konfiguration des Agents zur Veröffentlichung von Metriken in Azure Monitor
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e8164a111b9ad5ebcc67c248586e2576046334b0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883240"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008989"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Erfassen von benutzerdefinierten Metriken für einen virtuellen Linux-Computer mit dem InfluxData Telegraf-Agent
 
@@ -21,15 +20,21 @@ Mit Azure Monitor können Sie benutzerdefinierte Metriken über Ihre Anwendungst
 
 ## <a name="influxdata-telegraf-agent"></a>InfluxData Telegraf-Agent 
 
-[Telegraf](https://docs.influxdata.com/telegraf/v1.7/) ist ein Plug-In-gesteuerter Agent zur Erfassung von Metriken aus über 150 verschiedenen Quellen. Abhängig von den Workloads, die auf Ihrem virtuellen Computer ausgeführt werden, können Sie den Agent für die Nutzung spezieller Eingabe-Plug-Ins konfigurieren, um Metriken zu erfassen. Beispiele sind NGINX, MySQL und Apache. Über Ausgabe-Plug-Ins kann der Agent dann Schreibvorgänge an von Ihnen gewählten Zielen ausführen. Der Telegraf-Agent arbeitet direkt mit der Azure Monitor-REST-API für benutzerdefinierte Metriken zusammen. Er unterstützt ein Azure Monitor-Ausgabe-Plug-In. Über dieses Plug-In kann der Agent workloadspezifische Metriken auf Ihrem virtuellen Linux-Computer erfassen und als benutzerdefinierte Metriken an Azure Monitor übermitteln. 
+[Telegraf](https://docs.influxdata.com/telegraf/) ist ein Plug-In-gesteuerter Agent zur Erfassung von Metriken aus über 150 verschiedenen Quellen. Abhängig von den Workloads, die auf Ihrem virtuellen Computer ausgeführt werden, können Sie den Agent für die Nutzung spezieller Eingabe-Plug-Ins konfigurieren, um Metriken zu erfassen. Beispiele sind NGINX, MySQL und Apache. Über Ausgabe-Plug-Ins kann der Agent dann Schreibvorgänge an von Ihnen gewählten Zielen ausführen. Der Telegraf-Agent arbeitet direkt mit der Azure Monitor-REST-API für benutzerdefinierte Metriken zusammen. Er unterstützt ein Azure Monitor-Ausgabe-Plug-In. Über dieses Plug-In kann der Agent workloadspezifische Metriken auf Ihrem virtuellen Linux-Computer erfassen und als benutzerdefinierte Metriken an Azure Monitor übermitteln. 
 
  ![Übersicht über den Telegraf-Agent](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
+
+> [!NOTE]  
+> Benutzerdefinierte Metriken werden nicht in allen Regionen unterstützt. Die unterstützten Regionen sind [hier](./metrics-custom-overview.md#supported-regions) aufgeführt.
 
 ## <a name="send-custom-metrics"></a>Senden benutzerdefinierter Metriken 
 
 Im Rahmen dieses Tutorials wird ein virtueller Linux-Computer mit dem Betriebssystem Ubuntu 16.04 LTS bereitgestellt. Der Telegraf-Agent wird für die meisten Linux-Betriebssysteme unterstützt. Sowohl Debian- als auch RPM-Pakete sind zusammen mit nicht gepackten Linux-Binärdateien über das [InfluxData-Downloadportal](https://portal.influxdata.com/downloads) erhältlich. Weitere Informationen zu Installationsanweisungen und -optionen für Telegraf finden Sie in [dieser Installationsanleitung](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/). 
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+
+> [!NOTE]  
+> Wenn Sie klassische Alarmregeln migrieren und einen vorhandenen virtuellen Linux-Computer verwenden möchten, stellen Sie sicher, dass der virtuelle Computer über eine systemseitig zugewiesene Identität verfügt, die auf **Ein** festgelegt ist.
 
 Erstellen Sie einen neuen virtuellen Linux-Computer: 
 
@@ -39,7 +44,7 @@ Erstellen Sie einen neuen virtuellen Linux-Computer:
 1. Geben Sie einen VM-Namen an, z. B. **MyTelegrafVM**.  
 1. Behalten Sie den Datenträgertyp **SSD** bei. Geben Sie anschließend unter **Benutzername** einen Benutzernamen an (z. B. **azureuser**). 
 1. Wählen Sie als **Authentifizierungstyp** die Option **Kennwort** aus. Geben Sie ein Kennwort ein. Dieses Kennwort wird später verwendet, um eine SSH-Verbindung mit dem virtuellen Computer herzustellen. 
-1. Wählen Sie **Neue Ressourcengruppe erstellen** aus. Geben Sie einen Namen an (z. B. **myResourceGroup**). Wählen Sie Ihren **Standort** aus. Wählen Sie dann **OK**aus. 
+1. Wählen Sie **Neue Ressourcengruppe erstellen** aus. Geben Sie einen Namen an (z. B. **myResourceGroup**). Wählen Sie Ihren **Standort** aus. Klicken Sie anschließend auf **OK**. 
 
     ![Erstellen eines virtuellen Ubuntu-Computers](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
@@ -122,7 +127,7 @@ Nun erfasst der Agent die Metriken von jedem der angegebenen Eingabe-Plug-Ins un
 
 ## <a name="additional-configuration"></a>Zusätzliche Konfiguration 
 
-Die obige exemplarische Vorgehensweise enthält Informationen dazu, wie Sie den Telegraf-Agent konfigurieren, um Metriken aus einigen wenigen grundlegenden Eingabe-Plug-Ins zu erfassen. Der Telegraf-Agent unterstützt über 150 Eingabe-Plug-Ins, von denen wiederum einige zusätzliche Konfigurationsoptionen unterstützen. InfluxData hat eine [Liste der unterstützten Plug-Ins](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) und Anweisungen zu deren [Konfiguration](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/) veröffentlicht.  
+Die obige exemplarische Vorgehensweise enthält Informationen dazu, wie Sie den Telegraf-Agent konfigurieren, um Metriken aus einigen wenigen grundlegenden Eingabe-Plug-Ins zu erfassen. Der Telegraf-Agent unterstützt über 150 Eingabe-Plug-Ins, von denen wiederum einige zusätzliche Konfigurationsoptionen unterstützen. InfluxData hat eine [Liste der unterstützten Plug-Ins](https://docs.influxdata.com/telegraf/v1.15/plugins/inputs/) und Anweisungen zu deren [Konfiguration](https://docs.influxdata.com/telegraf/v1.15/administration/configuration/) veröffentlicht.  
 
 Darüber hinaus haben Sie in dieser exemplarischen Vorgehensweise mithilfe des Telegraf-Agents Metriken zu dem virtuellen Computer ausgegeben, auf dem der Agent bereitgestellt wurde. Der Telegraf-Agent kann auch als Collector und zur Weiterleitung von Metriken für andere Ressourcen verwendet werden. Informationen zur Konfiguration des Agent für die Ausgabe von Metriken für andere Azure-Ressourcen finden Sie im Artikel zur [benutzerdefinierten Metrikausgabe von Azure Monitor für Telegraf](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md).  
 
@@ -132,6 +137,3 @@ Wenn die Ressourcengruppe, der virtuelle Computer und die dazugehörigen Ressour
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [benutzerdefinierte Metriken](metrics-custom-overview.md).
-
-
-

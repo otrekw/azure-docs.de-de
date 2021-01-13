@@ -2,21 +2,20 @@
 author: dlepow
 ms.service: container-instances
 ms.topic: include
-ms.date: 08/19/2019
+ms.date: 04/27/2020
 ms.author: danlep
-ms.openlocfilehash: 26fe98f5c34e7a3cf7c6336792d7d3341529a5f2
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: de070f14dbcda0808d52250e5b83caae14dd652b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69626337"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "82583878"
 ---
 ### <a name="regions-and-resource-availability"></a>Regionen und Ressourcenverfügbarkeit
 
-| Location | OS | CPU | Arbeitsspeicher (GB) |
-| -------- | :---: | :---: | :-----------: |
-| „Europa, Norden“, „Asien, Südosten“, „USA, Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Süden-Mitte“, „USA, Westen 2“ | Linux | 4 | 16 |
-| Europa, Westen | Linux | 4 | 14 |
-| Japan, Osten | Linux | 2 | 8 |
-| USA (Westen) | Linux | 2 | 3,5 |
-| „Australien, Osten“, „USA, Westen-Mitte“ | Linux | 1 | 1.5 |
+| Regions | OS | Maximale CPU-Auslastung | Maximaler Speicher (GB) | Speicher (GB) |
+| -------- | :---: | :---: | :-----------: | :---: |
+| „Australien, Osten“, „Kanada, Mitte“, „USA, Mitte“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Europa, Westen“, „USA, Westen 2“ | Linux | 4 | 16 | 50 |
+| Japan, Osten | Linux | 2 | 8 | 50 |
+| „USA, Norden-Mitte“; „Indien, Süden“, „USA, Westen“ | Linux | 2 | 3,5 | 50 |
+

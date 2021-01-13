@@ -3,27 +3,27 @@ title: Azure Data Factory Editor – Beispiele
 description: Bietet Informationen zu Beispielen, die zum Funktionsumfang des Azure Data Factory-Diensts gehören.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 63db1810cbdd2133bc0577530325351997b31f30
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b373b5c440bf2ef2f50bf323baa2488981cdc775
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139260"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495190"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory Editor – Beispiele
 > [!NOTE]
 > Dieser Artikel gilt für Version 1 von Data Factory. Falls Sie die aktuelle Version des Data Factory-Diensts verwenden, lesen Sie [Azure PowerShell-Beispiele für Azure Data Factory](../samples-powershell.md) und [Azure-Codebeispiele](https://azure.microsoft.com/resources/samples/?service=data-factory).
 
 
-## <a name="samples-on-github"></a>Beispiele für GitHub
+## <a name="samples-on-github"></a>Beispiele bei GitHub
 Das [Azure-DataFactory-Repository auf GitHub](https://github.com/azure/azure-datafactory) enthält mehrere Beispiele, mit deren Hilfe Sie den Azure Data Factory-Dienst rasch in Betrieb nehmen können. Sie können die Skripts auch ändern, um sie in eigenen Anwendungen zu verwenden. Der Ordner "Samples\JSON" enthält JSON-Codeausschnitte für gängige Szenarien.
 
 | Beispiel | BESCHREIBUNG |
@@ -33,8 +33,8 @@ Das [Azure-DataFactory-Repository auf GitHub](https://github.com/azure/azure-dat
 | [Beispiel für ein Downloadprogramm für HTTP-Daten](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Dieses Beispiel demonstriert das Herunterladen von Daten von einem HTTP-Endpunkt nach Azure Blob Storage mithilfe einer benutzerdefinierten .NET-Aktivität. |
 | [Beispiel für eine anwendungsdomänenübergreifende .NET-Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Dieses Beispiel ermöglicht Ihnen das Erstellen einer .NET-Aktivität, die nicht auf die vom Azure Data Factory-Startprogramm verwendeten Assemblyversionen (z.B. WindowsAzure.Storage v4.3.0, Newtonsoft.Json v6.0.x usw.) beschränkt ist. |
 | [R-Skript ausführen](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Dieses Beispiel enthält die benutzerdefinierte Data Factory-Aktivität, die verwendet werden kann, um „RScript.exe“ aufzurufen. Dieses Beispiel funktioniert nur mit Ihrem eigenen (nicht bedarfsgesteuerten) HDInsight-Cluster, auf dem R bereits installiert ist. |
-| [Aufrufen von Spark-Aufträgen im HDInsight Hadoop-Cluster](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Dieses Beispiel zeigt, wie Sie die MapReduce-Aktivität verwenden, um ein Spark-Programm aufzurufen. Das Spark-Programm kopiert ganz einfach Daten von einem Azure-Blobcontainer in einen anderen. |
-| [Twitter-Analyse mithilfe der Azure Machine Learning-Batch-Bewertungsaktivität](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Dieses Beispiel zeigt, wie Sie AzureMLBatchScoringActivity verwenden, um ein Azure Machine Learning-Modell aufzurufen, das Twitter-Stimmungsanalysen, -Bewertungen, -Vorhersagen usw. durchführt. |
+| [Aufrufen von Spark-Aufträgen im HDInsight Hadoop-Cluster](../tutorial-transform-data-spark-portal.md) |Dieses Beispiel zeigt, wie Sie die MapReduce-Aktivität verwenden, um ein Spark-Programm aufzurufen. Das Spark-Programm kopiert ganz einfach Daten von einem Azure-Blobcontainer in einen anderen. |
+| [Twitter-Analyse mit der Batchbewertungsaktivität von Azure Machine Learning Studio (klassisch)](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Dieses Beispiel zeigt, wie Sie AzureMLBatchScoringActivity verwenden, um ein Azure Machine Learning-Modell aufzurufen, das Twitter-Stimmungsanalysen, -Bewertungen, -Vorhersagen usw. durchführt. |
 | [Twitter-Analyse mithilfe der benutzerdefinierten Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Dieses Beispiel zeigt, wie Sie eine benutzerdefinierte .NET-Aktivität verwenden, um ein Azure Machine Learning-Modell aufzurufen, das Twitter-Stimmungsanalysen, -Bewertungen, -Vorhersagen usw. durchführt. |
 | [Parametrisierte Pipelines für Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Das Beispiel bietet einen End-to-End-C#-Code zum Bereitstellen von N-Pipelines, um jede durch einen anderen Regionsparameter zu bewerten und erneut zu trainieren. Die Liste der Regionen stammt dabei aus der Datei „parameters.txt“, die in diesem Beispiel enthalten ist. |
 | [Aktualisierung von Verweisdaten für Azure Stream Analytics-Aufträge](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Dieses Beispiel zeigt, wie Sie Azure Data Factory und Azure Stream Analytics zusammen verwenden, um Abfragen mit Verweisdaten auszuführen und die Aktualisierung von Verweisdaten nach einem Zeitplan einzurichten. |
@@ -48,7 +48,7 @@ Auf GitHub finden Sie die folgenden Azure Resource Manager-Vorlagen für Data Fa
 
 | Vorlage | BESCHREIBUNG |
 | --- | --- |
-| [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Durch die Bereitstellung dieser Vorlage wird eine Azure Data Factory-Instanz mit einer Pipeline erstellt, die Daten aus der angegebenen Azure Blob Storage-Instanz in die Azure SQL-Datenbank kopiert. |
+| [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Durch die Bereitstellung dieser Vorlage wird eine Azure Data Factory-Instanz mit einer Pipeline erstellt, die Daten aus der angegebenen Azure Blob Storage-Instanz in Azure SQL-Datenbank kopiert. |
 | [Kopieren von Daten aus Salesforce in Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Durch die Bereitstellung dieser Vorlage wird eine Azure Data Factory-Instanz mit einer Pipeline erstellt, die Daten aus dem angegebenen Salesforce-Konto in die Azure Blob Storage-Instanz kopiert. |
 | [Transformieren von Daten durch Ausführen eines Hive-Skripts in einem Azure HDInsight-Cluster](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) |Durch die Bereitstellung dieser Vorlage wird eine Azure Data Factory-Instanz mit einer Pipeline erstellt, die Daten durch Ausführen des Hive-Beispielskripts in einem Azure HDInsight Hadoop-Cluster transformiert. |
 
@@ -62,7 +62,7 @@ Sie können die Kachel mit den **Beispielpipelines** auf der Startseite Ihrer Da
 3. Klicken Sie auf dem Blatt **Beispielpipelines** auf das **Beispiel**, das Sie bereitstellen möchten.
 
     ![Blatt "Beispielpipelines"](./media/data-factory-samples/SampleTile.png)
-4. Geben Sie die Konfigurationseinstellungen für das Beispiel an. Hierzu zählen beispielsweise Ihr Azure Storage-Konto und Ihr Kontoschlüssel, der Azure SQL-Servername, die Datenbank, die Benutzer-ID, das Kennwort usw.
+4. Geben Sie die Konfigurationseinstellungen für das Beispiel an. Hierzu zählen beispielsweise Ihr Azure Storage-Konto und Ihr Kontoschlüssel, der logische SQL-Servername, die Datenbank, die Benutzer-ID, das Kennwort usw.
 
     ![Blatt "Beispiel"](./media/data-factory-samples/SampleBlade.png)
 5. Wenn Sie mit den Konfigurationseinstellungen fertig sind, klicken Sie auf **Erstellen**, um die Beispielpipelines und die von den Pipelines verwendeten verknüpften Dienste und Tabellen zu erstellen bzw. bereitzustellen.
@@ -104,7 +104,7 @@ Folgendes muss auf Ihrem Computer installiert sein:
    4. Wählen Sie die **Ressourcengruppe** für die Data Factory aus.
    5. Wählen Sie **USA, Westen**, **USA, Osten** oder **Europa, Norden** als **Region** aus.
    6. Klicken Sie auf **Weiter**.
-6. Geben Sie auf der Seite **Datenspeicher konfigurieren** eine vorhandene **Azure SQL-Datenbank** und ein **Azure Storage-Konto** an, oder erstellen Sie eine Datenbank und einen Speicher, und klicken Sie dann auf „Weiter“.
+6. Geben Sie auf der Seite **Datenspeicher konfigurieren** eine vorhandene **Datenbank in Azure SQL-Datenbank** und ein **Azure Storage-Konto** an, oder erstellen Sie eine Datenbank/einen Speicher, und klicken Sie dann auf „Weiter“.
 7. Übernehmen Sie auf der Seite **Compute konfigurieren** die Standardwerte, und klicken Sie auf **Weiter**.
 8. Überprüfen Sie auf der Seite **Zusammenfassung** alle Einstellungen, und klicken Sie auf **Weiter**.
 9. Warten Sie auf der Seite **Bereitstellungsstatus**, bis die Bereitstellung abgeschlossen ist, und klicken Sie auf **Fertig stellen**.
@@ -122,4 +122,4 @@ Folgendes muss auf Ihrem Computer installiert sein:
 15. Prüfen Sie die Zusammenfassung, und klicken Sie auf **Weiter**, um den Bereitstellungsprozess zu starten und den **Bereitstellungsstatus** anzuzeigen.
 16. Auf der Seite **Bereitstellungsstatus** sollte der Status des Bereitstellungsprozesses angezeigt werden. Klicken Sie auf „Fertig stellen“, nachdem die Bereitstellung abgeschlossen ist.
 
-Einzelheiten zur Verwendung von Visual Studio zum Erstellen von Data Factory-Entitäten und ihrer Veröffentlichung in Azure finden Sie unter [Erstellen der ersten Azure Data Factory mit Microsoft Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) .          
+Einzelheiten zur Verwendung von Visual Studio zum Erstellen von Data Factory-Entitäten und ihrer Veröffentlichung in Azure finden Sie unter [Erstellen der ersten Azure Data Factory mit Microsoft Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) .

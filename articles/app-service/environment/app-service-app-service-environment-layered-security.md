@@ -1,28 +1,20 @@
 ---
-title: Mehrstufige Sicherheitsarchitektur mit App Service-Umgebungen – Azure
-description: Implementieren einer mehrstufigen Sicherheitsarchitektur mit App Service-Umgebungen.
-services: app-service
-documentationcenter: ''
+title: Mehrstufige Sicherheit v1
+description: Informieren Sie sich, wie Sie eine mehrstufige Sicherheitsarchitektur in Ihre App Service-Umgebung implementieren. Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 2d9eedcdc66dceabdd6506c5b64f0c15c874efee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ab26ad08947a4a9929ae0d41b669160b3d159224
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070129"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150226"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Implementieren einer mehrstufigen Sicherheitsarchitektur mit App Service-Umgebungen
-## <a name="overview"></a>Übersicht
 Da App Service-Umgebungen eine in einem virtuellen Netzwerk bereitgestellte isolierte Laufzeitumgebung bieten, können Entwickler eine mehrstufige Sicherheitsarchitektur erstellen, in der sie abgestuften Netzwerkzugriff für jede physische Anwendungsschicht gewähren können.
 
 Üblicherweise sollten API-Back-Ends nicht dem allgemeinen Internetzugriff preisgegeben werden, und APIs sollten nur von Upstream-Web-Apps aufgerufen werden können.  Um den öffentlichen Zugriff auf API-Anwendungen zu beschränken, können [Netzwerksicherheitsgruppen (Network Security Groups, NSGs)][NetworkSecurityGroups] in Subnetzen mit App Service-Umgebungen verwendet werden.
@@ -48,34 +40,63 @@ Sobald die ausgehenden IP-Adressen bekannt sind, besteht der nächste Schritt da
 
 In der Beispielarchitektur befinden sich die Umgebungen in der Region „USA, Süden-Mitte“, daher wird in dieser Region eine leere Netzwerksicherheitsgruppe erstellt:
 
-    New-AzureNetworkSecurityGroup -Name "RestrictBackendApi" -Location "South Central US" -Label "Only allow web frontend and loopback traffic"
+```azurepowershell-interactive
+New-AzureNetworkSecurityGroup -Name "RestrictBackendApi" -Location "South Central US" 
+-Label "Only allow web frontend and loopback traffic"
+```
 
 Zuerst wird eine explizite Zulassungsregel für die Azure-Verwaltungsinfrastruktur hinzugefügt, wie im Artikel zu [eingehendem Datenverkehr][InboundTraffic] für App Service-Umgebungen erläutert.
 
-    #Open ports for access by Azure management infrastructure
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET' -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
+```azurepowershell-interactive
+#Open ports for access by Azure management infrastructure
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" 
+-Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET' -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
+```
 
 Als Nächstes werden zwei Regeln hinzugefügt, die HTTP- und HTTPS-Aufrufe aus der ersten App Service-Upstreamumgebung („fe1ase“) zulassen.
 
-    #Grant access to requests from the first upstream web front-end
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe1ase" -Type Inbound -Priority 200 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe1ase" -Type Inbound -Priority 300 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+```azurepowershell-interactive
+#Grant access to requests from the first upstream web front-end
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe1ase" 
+-Type Inbound -Priority 200 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe1ase" 
+-Type Inbound -Priority 300 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+```
 
 Wiederholen Sie diesen Schritt für die zweite und dritte App Service-Upstreamumgebung („fe2ase“ und „fe3ase“).
 
-    #Grant access to requests from the second upstream web front-end
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe2ase" -Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe2ase" -Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+```azurepowershell-interactive
+#Grant access to requests from the second upstream web front-end
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe2ase" 
+-Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe2ase" 
+-Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-    #Grant access to requests from the third upstream web front-end
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe3ase" -Type Inbound -Priority 600 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe3ase" -Type Inbound -Priority 700 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+#Grant access to requests from the third upstream web front-end
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe3ase" 
+-Type Inbound -Priority 600 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe3ase" 
+-Type Inbound -Priority 700 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+```
 
 Zum Schluss wird der ausgehenden IP-Adresse der App Service-Umgebung der Back-End-API Zugriff gewährt, sodass diese API sich selbst aufrufen kann.
 
-    #Allow apps on the apiase environment to call back into itself
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP apiase" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS apiase" -Type Inbound -Priority 900 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+```azurepowershell-interactive
+#Allow apps on the apiase environment to call back into itself
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP apiase" 
+-Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS apiase" 
+-Type Inbound -Priority 900 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+```
 
 Es sind keine weiteren Netzwerksicherheitsregeln erforderlich, da jede Netzwerksicherheitsgruppe über einen Satz Standardregeln verfügt, die Zugriffsversuche aus dem Internet standardmäßig blockieren.
 
@@ -85,13 +106,16 @@ Unten sehen Sie die vollständige Liste der Regeln in der Netzwerksicherheitsgru
 
 Der letzte Schritt besteht darin, die Netzwerksicherheitsgruppe auf das Subnetz anzuwenden, in dem sich die App Service-Umgebung „apiase“ befindet.
 
-     #Apply the NSG to the backend API subnet
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'yourvnetnamehere' -SubnetName 'API-ASE-Subnet'
+```azurepowershell-interactive
+#Apply the NSG to the backend API subnet
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityGroupToSubnet 
+-VirtualNetworkName 'yourvnetnamehere' -SubnetName 'API-ASE-Subnet'
+```
 
 Nach Anwendung der Netzwerksicherheitsgruppe auf das Subnetz sind Aufrufe an die „apiase“-Umgebung nur noch für die drei App Service-Upstreamumgebungen sowie die App Service-Umgebung, die das API-Back-End umfasst, zulässig.
 
 ## <a name="additional-links-and-information"></a>Zusätzliche Links und Informationen
-Informationen zu [Netzwerksicherheitsgruppen](../../virtual-network/security-overview.md)
+Informationen zu [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md)
 
 Informationen zu [ausgehenden IP-Adressen][NetworkArchitecture] und App Service-Umgebungen.
 
@@ -100,7 +124,7 @@ Von App Service-Umgebungen verwendete [Netzwerkports][InboundTraffic].
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [NetworkArchitecture]:  app-service-app-service-environment-network-architecture-overview.md
 [InboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md
 

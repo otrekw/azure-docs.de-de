@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit der Modulidentität und dem Modulzwilling von Azure IoT Hub (.NET) | Microsoft-Dokumentation
+title: Erste Schritte mit der Modulidentität und dem Modulzwilling von Azure IoT Hub (.NET)
 description: Hier erfahren Sie, wie Sie mit IoT SDKs für .NET eine Modulidentität erstellen und den Modulzwilling aktualisieren.
 author: chrissie926
 ms.service: iot-hub
@@ -8,19 +8,20 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.openlocfilehash: abf8b18d13e2990f053dd4273645dd7b9a324c77
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.custom: amqp, devx-track-csharp
+ms.openlocfilehash: daba400b9daadf464c4c125ad266745237e71367
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147758"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142503"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub (.NET)
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [Modulidentitäten und Modulzwillinge](iot-hub-devguide-module-twins.md) ähneln den Geräteidentitäten und Gerätezwillingen von Azure IoT Hub, ermöglichen jedoch eine feinere Granularität. Azure IoT Hub-Geräteidentitäten und -Gerätezwillinge ermöglichen der Back-End-Anwendung die Konfiguration eines Geräts. Außerdem geben sie Aufschluss über den Gerätezustand. Modulidentitäten und Modulzwillinge bieten diese Funktionalität hingegen für einzelne Komponenten eines Geräts. Auf Geräten mit mehreren Komponenten (etwa auf betriebssystembasierten Geräten oder Firmwaregeräten) ermöglichen Modulidentitäten und Modulzwillinge isolierte Konfigurationen und Zustände für die einzelnen Komponenten.
+> [Modulidentitäten und Modulzwillinge](iot-hub-devguide-module-twins.md) ähneln den Geräteidentitäten und Gerätezwillingen von Azure IoT Hub, ermöglichen jedoch eine feinere Granularität. Azure IoT Hub-Geräteidentitäten und -Gerätezwillinge ermöglichen der Back-End-Anwendung die Konfiguration eines Geräts und geben Aufschluss über den Gerätezustand. Modulidentitäten und Modulzwillinge bieten diese Funktionalität für einzelne Komponenten eines Geräts. Auf Geräten mit mehreren Komponenten (etwa auf betriebssystembasierten Geräten oder Firmwaregeräten) ermöglichen Modulidentitäten und Modulzwillinge isolierte Konfigurationen und Zustände für die einzelnen Komponenten.
 
 Am Ende dieses Tutorials verfügen Sie über zwei .NET-Konsolen-Apps:
 
@@ -69,7 +70,7 @@ Rufen Sie vor dem Beginn die Modulverbindungszeichenfolge ab. Melden Sie sich be
 
 1. Suchen Sie nach **Microsoft.Azure.Devices.Client**, und wählen Sie diese Option aus. Wählen Sie dann **Installieren** aus.
 
-    ![Installieren des Azure IoT Hub-.NET-Dienst-SDK in der aktuellen Version](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
+    ![Der Screenshot zeigt die ausgewählte Option „Microsoft.Azure.Devices.Client“ mit hervorgehobener Schaltfläche „Installieren“.](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
 1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
 
@@ -180,4 +181,4 @@ Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen 
 
 * [Erste Schritte mit der Geräteverwaltung](iot-hub-node-node-device-management-get-started.md)
 
-* [Erste Schritte mit IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Erste Schritte mit IoT Edge](../iot-edge/quickstart-linux.md)

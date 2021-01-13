@@ -1,27 +1,27 @@
 ---
-title: Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy | Microsoft-Dokumentation
+title: Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy
 description: Erfahren Sie, wie Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy verwendet werden.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/06/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3b8176566593c5c9e9ff63a6ccbafcb2a35cd5
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 9b2563b238bae310d662220d2c244e863249c9c4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827988"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997510"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy
 
@@ -43,28 +43,26 @@ Sie können eine Platzhalteranwendung (*) erstellen, wenn Sie über eine Gruppe 
 
 Sie können Anwendungen mit Platzhaltern veröffentlichen, wenn sowohl interne als auch externe URLs im folgenden Format vorliegen:
 
-> http(s)://*.\<Domäne\>
+> http(s)://*.\<domain\>
 
 Beispiel: `http(s)://*.adventure-works.com`.
 
 Obwohl die internen und externen URLs unterschiedliche Domänen verwenden können, hat es sich bewährt, wenn diese identisch sind. Beim Veröffentlichen der Anwendung wird ein Fehler angezeigt, wenn eine der URLs keinen Platzhalter aufweist.
 
-Wenn weitere Anwendungen mit anderen Konfigurationseinstellungen vorhanden sind, müssen Sie diese Ausnahmen als separate Anwendungen veröffentlichen, um die für den Platzhalter festgelegten Standardwerte zu überschreiben. Anwendungen ohne Platzhalter haben stets Vorrang vor Platzhalteranwendungen. Aus Sicht der Konfiguration sind diese „nur“ normale Anwendungen.
-
 Die Erstellung einer Platzhalteranwendung basiert auf demselben [Ablauf für die Anwendungsveröffentlichung](application-proxy-add-on-premises-application.md), der auch für alle anderen Anwendungen gilt. Der einzige Unterschied besteht darin, dass Sie einen Platzhalter in den URLs und ggf. in der SSO-Konfiguration verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie zunächst sicher, dass Sie diesen Anforderung entsprechen.
+Stellen Sie zunächst sicher, dass Sie diese Anforderungen erfüllen.
 
 ### <a name="custom-domains"></a>Benutzerdefinierte Domänen
 
 Während [benutzerdefinierte Domänen](application-proxy-configure-custom-domain.md) für alle anderen Anwendungen optional sind, stellen Sie eine Voraussetzung für Platzhalteranwendungen dar. Zum Erstellen benutzerdefinierter Domänen müssen Sie die folgenden Schritte ausführen:
 
-1. Erstellen einer überprüften Domäne in Azure.
-1. Hochladen eines SSL-Zertifikats im PFX-Format in Ihren Anwendungsproxy
+1. Erstellen Sie eine überprüfte Domäne in Azure.
+1. Laden Sie ein TLS/SSL-Zertifikat im PFX-Format in Ihren Anwendungsproxy hoch.
 
-Erwägen Sie die Verwendung eines Platzhalterzertifikats für die Anwendung, die Sie erstellen möchten. Alternativ können Sie auch ein Zertifikat verwenden, in dem nur bestimmte Anwendungen aufgelistet werden. In diesem Fall kann über die Platzhalteranwendung nur auf die im Zertifikat aufgeführten Anwendungen zugegriffen werden.
+Erwägen Sie die Verwendung eines Platzhalterzertifikats für die Anwendung, die Sie erstellen möchten. 
 
 Aus Sicherheitsgründen ist dies eine zwingende Anforderung, und es werden keine Platzhalter für Anwendungen unterstützt, die keine benutzerdefinierte Domäne für die externe URL verwenden.
 
@@ -74,11 +72,11 @@ Bei der Verwendung benutzerdefinierter Domänen müssen Sie einen DNS-Eintrag mi
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
-Um sicherzustellen, dass Sie den CNAME-Eintrag ordnungsgemäß konfiguriert haben, können Sie [nslookup](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) für einen der Zielendpunkte, z.B. `expenses.adventure-works.com`, ausführen.  Die Antwort sollte den bereits erwähnten Alias (`<yourAADTenantId>.tenant.runtime.msappproxy.net`) enthalten.
+Um sicherzustellen, dass Sie den CNAME-Eintrag ordnungsgemäß konfiguriert haben, können Sie [nslookup](/windows-server/administration/windows-commands/nslookup) für einen der Zielendpunkte, z.B. `expenses.adventure-works.com`, ausführen.  Die Antwort sollte den bereits erwähnten Alias (`<yourAADTenantId>.tenant.runtime.msappproxy.net`) enthalten.
 
 ## <a name="considerations"></a>Überlegungen
 
-Hier sind einige Überlegungen, die Sie für Platzhalteranwendungen in Betracht ziehen sollten.
+Die folgenden Überlegungen sollten Sie im Hinblick auf Platzhalteranwendungen berücksichtigen.
 
 ### <a name="accepted-formats"></a>Zulässige Formate
 
@@ -105,7 +103,7 @@ Außerdem können Sie den Platzhalter über Ihre DNS-Verwaltung so einschränken
 
 Wenn Sie diese Option verwenden, benötigen Sie ggf. einen weiteren CNAME-Eintrag für den Wert `AppId.domain`, z.B. `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`, der auch auf das gleiche Ziel verweist. Sie finden die **App-ID** auf der Seite mit den Anwendungseigenschaften der Platzhalteranwendung:
 
-![Suchen Sie die ID der Anwendung auf der Eigenschaftenseite der Anwendung.](./media/application-proxy-wildcard/01.png)
+![Anwendungs-ID auf der Eigenschaftenseite der App suchen](./media/application-proxy-wildcard/01.png)
 
 ### <a name="setting-the-homepage-url-for-the-myapps-panel"></a>Festlegen der Homepage-URL für das MyApps-Panel
 
@@ -116,7 +114,7 @@ Die Platzhalteranwendung wird im [MyApps-Panel](https://myapps.microsoft.com) mi
 
 ### <a name="kerberos-constrained-delegation"></a>Eingeschränkte Kerberos-Delegierung
 
-Für Anwendungen mit [eingeschränkter Kerberos-Delegierung (KCD) wie der SSO-Methode](application-proxy-configure-single-sign-on-with-kcd.md) wird für den Dienstprinzipalnamen (SPN), der für die SSO-Methode aufgeführt ist, möglicherweise auch ein Platzhalter benötigt. Der SPN kann z.B. wie folgt aussehen: `HTTP/*.adventure-works.com`. Zudem müssen die einzelnen SPNs auf Ihren Back-End-Servern konfiguriert sein (z.B. `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
+Für Anwendungen mit [eingeschränkter Kerberos-Delegierung (KCD) wie der SSO-Methode](application-proxy-configure-single-sign-on-with-kcd.md) wird für den Dienstprinzipalnamen (SPN), der für die SSO-Methode aufgeführt ist, möglicherweise auch ein Platzhalter benötigt. Der SPN kann z.B. wie folgt aussehen: `HTTP/*.adventure-works.com`. Zudem müssen die einzelnen SPNs auf Ihren Back-End-Servern konfiguriert sein (z.B. `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
 
 ## <a name="scenario-1-general-wildcard-application"></a>Szenario 1: Allgemeine Platzhalteranwendung
 
@@ -150,17 +148,17 @@ Erstellen Sie entsprechend der [dokumentierten Schritte](application-proxy-add-o
 
 - Interner Anwendungs-SPN:
 
-    ![Beispiel: Platzhalter in SPN-Konfiguration](./media/application-proxy-wildcard/44.png)
+    ![Beispiel: Platzhalter in der SPN-Konfiguration](./media/application-proxy-wildcard/44.png)
 
 Durch die Veröffentlichung der Platzhalteranwendung können Sie jetzt auf Ihre drei Anwendungen zugreifen, indem Sie zu den gewohnten URLs navigieren (z.B. `travel.adventure-works.com`).
 
 Bei der Konfiguration wird die folgende Struktur implementiert:
 
-![Zeigt die Struktur, die von der Beispielkonfiguration implementiert wurde](./media/application-proxy-wildcard/05.png)
+![Zeigt die Struktur, die von der Beispielkonfiguration implementiert wird](./media/application-proxy-wildcard/05.png)
 
-| Farbe | BESCHREIBUNG |
+| Color | BESCHREIBUNG |
 | ---   | ---         |
-| Blau  | Anwendungen, die im Azure-Portal explizit veröffentlicht und angezeigt werden. |
+| Blau  | Anwendungen, die im Azure-Portal explizit veröffentlicht und angezeigt werden |
 | Grau  | Anwendungen, auf die über die übergeordnete Anwendung zugegriffen werden kann. |
 
 ## <a name="scenario-2-general-wildcard-application-with-exception"></a>Szenario 2: Allgemeine Platzhalteranwendung mit Ausnahme
@@ -173,19 +171,19 @@ Entsprechend der [dokumentierten Schritte](application-proxy-add-on-premises-app
 
 - Legen Sie im Feld **Interne URL** die Finanzabteilung **finance** anstelle eines Platzhalters fest.
 
-    ![Beispiel: Legen Sie „Finanzabteilung“ anstelle eines Platzhalters in der internen URL fest](./media/application-proxy-wildcard/52.png)
+    ![Beispiel: Im Feld „Interne URL“ „finance“ anstelle eines Platzhalters festlegen](./media/application-proxy-wildcard/52.png)
 
 - Legen Sie im Feld **Externe URL** die Finanzabteilung **finance** anstelle eines Platzhalters fest.
 
-    ![Beispiel: Legen Sie „Finanzabteilung“ anstelle eines Platzhalters in der externen URL fest](./media/application-proxy-wildcard/53.png)
+    ![Beispiel: Im Feld „Externe URL“ „finance“ anstelle eines Platzhalters festlegen](./media/application-proxy-wildcard/53.png)
 
 - Legen Sie für den internen Anwendungs-SPN die Finanzabteilung **finance** anstelle eines Platzhalters fest.
 
-    ![Beispiel: Legen Sie „Finanzabteilung“ anstelle eines Platzhalters in der SPN-Konfiguration fest](./media/application-proxy-wildcard/54.png)
+    ![Beispiel: Für die SPN-Konfiguration „finance“ anstelle eines Platzhalters festlegen](./media/application-proxy-wildcard/54.png)
 
 Bei dieser Konfiguration wird das folgende Szenario implementiert:
 
-![Zeigt die Konfiguration, die vom Beispielszenario implementiert wurde](./media/application-proxy-wildcard/09.png)
+![Zeigt die vom Beispielszenario implementierte Konfiguration](./media/application-proxy-wildcard/09.png)
 
 Da `finance.adventure-works.com` eine spezifischere URL als `*.adventure-works.com` ist, hat diese Vorrang. Benutzern, die zu `finance.adventure-works.com` navigieren, werden die in der Finanzressourcenanwendung festgelegten Optionen angezeigt. In diesem Fall können ausschließlich Mitarbeiter der Finanzabteilung auf `finance.adventure-works.com` zugreifen.
 
@@ -193,5 +191,5 @@ Wenn Sie für die Finanzabteilung mehrere Anwendungen veröffentlicht haben und 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Mehr über **benutzerdefinierte Domänen** erfahren Sie unter [„Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy“](application-proxy-configure-custom-domain.md).
-- Mehr über das **Veröffentlichen von Anwendungen** erfahren Sie unter [„Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy“](application-proxy-add-on-premises-application.md).
+- Weitere Informationen zu **benutzerdefinierten Domänen** finden Sie unter [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md).
+- Weitere Informationen zum **Veröffentlichen von Anwendungen** finden Sie unter [Veröffentlichen von Anwendungen mit dem Azure AD-Anwendungsproxy](application-proxy-add-on-premises-application.md).

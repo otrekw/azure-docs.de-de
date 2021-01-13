@@ -4,24 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Es wird beschrieben, wie VNet-Datenverkehr von Azure weitergeleitet wird und wie Sie das Routing von Azure anpassen können.
 services: virtual-network
 documentationcenter: na
-author: malopMSFT
+author: KumudD
 manager: ''
-editor: v-miegge
-tags: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
-ms.author: malop
-ms.reviewer: kumud
-ms.openlocfilehash: b26f876fbe07b1667a579fc040562f1d6ee8a85e
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: aldomel
+ms.openlocfilehash: ca6460497fa026feca503df741ad6811a95fb9e3
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871798"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936929"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -45,9 +42,9 @@ Jede Route enthält ein Adresspräfix und einen Typ des nächsten Hops. Wenn Dat
 
 Die in der obigen Tabelle aufgeführten Typen des nächsten Hops geben an, wie Datenverkehr von Azure weitergeleitet wird, der für das angegebene Adresspräfix bestimmt ist. Erklärungen zu den Typen des nächsten Hops:
 
-* **Virtuelles Netzwerk**: Leitet Datenverkehr zwischen Adressbereichen im [Adressraum](manage-virtual-network.md#add-or-remove-an-address-range) eines virtuellen Netzwerks weiter. Azure erstellt eine Route mit einem Adresspräfix, das jeweils dem Adressbereich entspricht, der im Adressraum eines virtuellen Netzwerks definiert ist. Wenn für den Adressraum des virtuellen Netzwerks mehrere Adressbereiche definiert sind, erstellt Azure für jeden Adressbereich eine gesonderte Route. Azure leitet Datenverkehr automatisch zwischen Subnetzen weiter, indem die Routen verwendet werden, die für jeden Adressbereich erstellt wurden. Es ist nicht erforderlich, dass Sie Gateways für Azure definieren, um Datenverkehr zwischen Subnetzen weiterzuleiten. Ein virtuelles Netzwerk enthält zwar Subnetze, und jedes Subnetz verfügt über einen definierten Adressbereich, aber von Azure werden *keine* Standardrouten für Subnetzadressbereiche erstellt. Der Grund ist, dass jeder Subnetzadressbereich in einem Adressbereich des Adressraums eines virtuellen Netzwerks liegt.<br>
+* **Virtuelles Netzwerk:** Leitet Datenverkehr zwischen Adressbereichen im [Adressraum](manage-virtual-network.md#add-or-remove-an-address-range) eines virtuellen Netzwerks weiter. Azure erstellt eine Route mit einem Adresspräfix, das jeweils dem Adressbereich entspricht, der im Adressraum eines virtuellen Netzwerks definiert ist. Wenn für den Adressraum des virtuellen Netzwerks mehrere Adressbereiche definiert sind, erstellt Azure für jeden Adressbereich eine gesonderte Route. Azure leitet Datenverkehr automatisch zwischen Subnetzen weiter, indem die Routen verwendet werden, die für jeden Adressbereich erstellt wurden. Es ist nicht erforderlich, dass Sie Gateways für Azure definieren, um Datenverkehr zwischen Subnetzen weiterzuleiten. Ein virtuelles Netzwerk enthält zwar Subnetze, und jedes Subnetz verfügt über einen definierten Adressbereich, aber von Azure werden *keine* Standardrouten für Subnetzadressbereiche erstellt. Der Grund ist, dass jeder Subnetzadressbereich in einem Adressbereich des Adressraums eines virtuellen Netzwerks liegt.<br>
 * **Internet**: Leitet Datenverkehr, der vom Adresspräfix angegeben wird, in das Internet weiter. Für die Systemstandardroute wird das Adresspräfix 0.0.0.0/0 angegeben. Wenn Sie die Standardrouten von Azure nicht außer Kraft setzen, leitet Azure Datenverkehr für alle Adressen, die nicht von einem Adressbereich in einem virtuellen Netzwerk angegeben sind, in das Internet weiter. Es gilt aber folgende Ausnahme: Wenn die Zieladresse die Adresse von einem der Azure-Dienste ist, leitet Azure den Datenverkehr über das Azure-Backbonenetzwerk direkt an den Dienst weiter, und nicht in das Internet. Der Datenverkehr zwischen Azure-Diensten wird nicht über das Internet übertragen. Dies gilt unabhängig davon, in welcher Azure-Region das virtuelle Netzwerk vorhanden ist oder in welcher Azure-Region eine Instanz des Azure-Diensts bereitgestellt wird. Sie können die Standardsystemroute von Azure für das Adresspräfix 0.0.0.0/0 durch eine [benutzerdefinierte Route](#custom-routes) außer Kraft setzen.<br>
-* **Keine**: Datenverkehr, der an den Typ **Keine** des nächsten Hops weitergeleitet wird, wird verworfen und nicht an Orte außerhalb des Subnetzes weitergeleitet. Azure erstellt automatisch Standardrouten für die folgenden Adresspräfixe:<br>
+* **Keine:** Datenverkehr, der an den Typ **Keine** des nächsten Hops weitergeleitet wird, wird verworfen und nicht an Orte außerhalb des Subnetzes weitergeleitet. Azure erstellt automatisch Standardrouten für die folgenden Adresspräfixe:<br>
 
     * **10.0.0.0/8 und 192.168.0.0/16**: Für die private Nutzung in RFC 1918 reserviert.<br>
     * **100.64.0.0/10**: In RFC 6598 reserviert.
@@ -60,16 +57,16 @@ Azure fügt zusätzliche Standardsystemrouten für unterschiedliche Azure-Funkti
 
 |`Source`                 |Adresspräfixe                       |Typ des nächsten Hops|Subnetz im virtuellen Netzwerk, dem die Route hinzugefügt wird|
 |-----                  |----                                   |---------                    |--------|
-|Standard                |Eindeutig für das virtuelle Netzwerk, z.B.: 10.1.0.0/16|VNet-Peering                 |Alle|
-|Gateway des virtuellen Netzwerks|Präfixe, die lokal oder per BGP angekündigt werden oder im Gateway des lokalen Netzwerks konfiguriert sind     |Gateway des virtuellen Netzwerks      |Alle|
+|Standard                |Eindeutig für das virtuelle Netzwerk, z.B.: 10.1.0.0/16|VNet-Peering                 |All|
+|Gateway des virtuellen Netzwerks|Präfixe, die lokal oder per BGP angekündigt werden oder im Gateway des lokalen Netzwerks konfiguriert sind     |Gateway des virtuellen Netzwerks      |All|
 |Standard                |Mehrere                               |VirtualNetworkServiceEndpoint|Nur das Subnetz, für das ein Dienstendpunkt aktiviert ist.|
 
 * **VNET-Peering**: Wenn Sie ein VNET-Peering zwischen zwei virtuellen Netzwerken erstellen, wird eine Route für jeden Adressbereich innerhalb des Adressraums der einzelnen virtuellen Netzwerke hinzugefügt, für die ein Peering erstellt wird. Weitere Informationen hierzu finden Sie unter [Peering virtueller Netzwerke](virtual-network-peering-overview.md).<br>
-* **Gateway für virtuelle Netzwerke**: Mindestens eine Route mit Angabe von *Gateway für virtuelle Netzwerke* als Typ des nächsten Hops wird hinzugefügt, wenn ein Gateway für virtuelle Netzwerke einem virtuellen Netzwerk hinzugefügt wird. Die Quelle ist ebenfalls das *Gateway für virtuelle Netzwerke*, da das Gateway die Routen dem Subnetz hinzufügt. Wenn Ihr Gateway des lokalen Netzwerks BGP-Routen ([Border Gateway Protocol](#border-gateway-protocol)) mit einem Gateway des virtuellen Azure-Netzwerks austauscht, wird eine Route für jede Route hinzugefügt, die vom Gateway des lokalen Netzwerks weiterverteilt wird. Es wird empfohlen, lokale Routen unter den größtmöglichen Adressbereichen zusammenzufassen, damit die geringste Anzahl von Routen an ein Gateway des virtuellen Azure-Netzwerks weiterverteilt wird. Es gelten Einschränkungen dafür, wie viele Routen Sie an ein Gateway des virtuellen Azure-Netzwerks weiterverteilen können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).<br>
+* **Gateway für virtuelle Netzwerke**: Mindestens eine Route mit Angabe von *Gateway für virtuelle Netzwerke* als Typ des nächsten Hops wird hinzugefügt, wenn ein Gateway für virtuelle Netzwerke einem virtuellen Netzwerk hinzugefügt wird. Die Quelle ist ebenfalls das *Gateway für virtuelle Netzwerke*, da das Gateway die Routen dem Subnetz hinzufügt. Wenn Ihr Gateway des lokalen Netzwerks BGP-Routen ([Border Gateway Protocol](#border-gateway-protocol)) mit einem Gateway des virtuellen Azure-Netzwerks austauscht, wird eine Route für jede Route hinzugefügt, die vom Gateway des lokalen Netzwerks weiterverteilt wird. Es wird empfohlen, lokale Routen unter den größtmöglichen Adressbereichen zusammenzufassen, damit die geringste Anzahl von Routen an ein Gateway des virtuellen Azure-Netzwerks weiterverteilt wird. Es gelten Einschränkungen dafür, wie viele Routen Sie an ein Gateway des virtuellen Azure-Netzwerks weiterverteilen können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).<br>
 * **VirtualNetworkServiceEndpoint**: Die öffentlichen IP-Adressen für bestimmte Dienste werden der Routentabelle von Azure hinzugefügt, wenn Sie einen Dienstendpunkt für den Dienst aktivieren. Dienstendpunkte werden für einzelne Subnetze in einem virtuellen Netzwerk aktiviert, sodass die Route nur der Routentabelle eines Subnetzes hinzugefügt wird, für das ein Dienstendpunkt aktiviert ist. Die öffentlichen IP-Adressen von Azure-Diensten ändern sich regelmäßig. Azure verwaltet die Adressen in der Routentabelle automatisch, wenn sich die Adressen ändern. Erfahren Sie mehr zu [VNET-Dienstendpunkten](virtual-network-service-endpoints-overview.md) und zu den Diensten, für die Sie Dienstendpunkte erstellen können.<br>
 
     > [!NOTE]
-    > Die Typen **VNet-Peering** und **VirtualNetworkServiceEndpoint** des nächsten Hops werden nur Routentabellen von Subnetzen in virtuellen Netzwerken hinzugefügt, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Die Typen des nächsten Hops werden dagegen nicht Routentabellen hinzugefügt, die Subnetzen von virtuellen Netzwerken zugeordnet sind, wenn diese mit dem klassischen Bereitstellungsmodell erstellt wurden. Erfahren Sie mehr über Azure-[Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    > Die Typen **VNet-Peering** und **VirtualNetworkServiceEndpoint** des nächsten Hops werden nur Routentabellen von Subnetzen in virtuellen Netzwerken hinzugefügt, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Die Typen des nächsten Hops werden dagegen nicht Routentabellen hinzugefügt, die Subnetzen von virtuellen Netzwerken zugeordnet sind, wenn diese mit dem klassischen Bereitstellungsmodell erstellt wurden. Erfahren Sie mehr über Azure-[Bereitstellungsmodelle](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="custom-routes"></a>Benutzerdefinierte Routen
 
@@ -77,7 +74,7 @@ Sie erstellen vom Benutzer definierte Routen, indem Sie entweder [benutzerdefini
 
 ### <a name="user-defined"></a>Benutzerdefiniert
 
-Sie können benutzerdefinierte Routen in Azure erstellen, um Standardsystemrouten von Azure außer Kraft zu setzen oder der Routentabelle eines Subnetzes zusätzliche Routen hinzuzufügen. In Azure erstellen Sie eine Routentabelle und ordnen die Routentabelle dann null oder mehr Subnetzen eines virtuellen Netzwerks zu. Jedem Subnetz können null oder mehr Routentabellen zugeordnet sein. Informationen zur maximalen Anzahl von Routen, die Sie einer Routentabelle hinzufügen können, und zur maximalen Anzahl von benutzerdefinierten Routentabellen, die Sie pro Azure-Abonnement erstellen können, finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Wenn Sie eine Routentabelle erstellen und einem Subnetz zuordnen, werden die darin enthaltenen Routen mit den Standardrouten, die Azure einem Subnetz standardmäßig hinzufügt, kombiniert oder dadurch außer Kraft gesetzt.
+Sie können benutzerdefinierte (statische) Routen in Azure erstellen, um Standardsystemrouten von Azure außer Kraft zu setzen oder der Routentabelle eines Subnetzes zusätzliche Routen hinzuzufügen. In Azure erstellen Sie eine Routentabelle und ordnen die Routentabelle dann null oder mehr Subnetzen eines virtuellen Netzwerks zu. Jedem Subnetz können null oder mehr Routentabellen zugeordnet sein. Informationen zur maximalen Anzahl von Routen, die Sie einer Routentabelle hinzufügen können, und zur maximalen Anzahl von benutzerdefinierten Routentabellen, die Sie pro Azure-Abonnement erstellen können, finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Wenn Sie eine Routentabelle erstellen und einem Subnetz zuordnen, werden die darin enthaltenen Routen mit den Standardrouten, die Azure einem Subnetz standardmäßig hinzufügt, kombiniert oder dadurch außer Kraft gesetzt.
 
 Beim Erstellen einer benutzerdefinierten Route können Sie die folgenden Typen des nächsten Hops angeben:
 
@@ -93,15 +90,15 @@ Beim Erstellen einer benutzerdefinierten Route können Sie die folgenden Typen d
     Sie können eine Route mit 0.0.0.0/0 als Adresspräfix und „Virtuelles Gerät“ als Typ des nächsten Hops definieren, sodass das Gerät den Datenverkehr untersuchen und ermitteln kann, ob dieser weitergeleitet oder verworfen werden soll. Wenn Sie eine benutzerdefinierte Route erstellen möchten, die das Adresspräfix 0.0.0.0/0 enthält, sollten Sie zuerst [Adresspräfix 0.0.0.0/0](#default-route) lesen.
 
 * **Gateway für virtuelle Netzwerke**: Geben Sie an, wenn Datenverkehr, der für bestimmte Adresspräfixe bestimmt ist, an ein Gateway für virtuelle Netzwerke weitergeleitet werden soll. Das Gateway für virtuelle Netzwerke muss mit dem Typ **VPN** erstellt werden. Sie können ein Gateway für virtuelle Netzwerke, das mit dem Typ **ExpressRoute** erstellt wurde, nicht in einer benutzerdefinierten Route angeben, da bei ExpressRoute für benutzerdefinierte Routen BGP verwendet werden muss. Sie können eine Route definieren, mit der Datenverkehr, der für das Adresspräfix 0.0.0.0/0 bestimmt ist, an ein [routenbasiertes](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#vpntype) Gateway für virtuelle Netzwerke geleitet wird. Es kann sein, dass Sie lokal ein Gerät nutzen, mit dem der Datenverkehr untersucht und ermittelt wird, ob der Datenverkehr weitergeleitet oder verworfen werden soll. Wenn Sie eine benutzerdefinierte Route für das Adresspräfix 0.0.0.0/0 erstellen möchten, sollten Sie zuerst [Adresspräfix 0.0.0.0/0](#default-route) lesen. Anstatt eine benutzerdefinierte Route für das Adresspräfix 0.0.0.0/0 zu konfigurieren, können Sie eine Route mit dem Präfix 0.0.0.0/0 per BGP ankündigen, wenn Sie [BGP für ein Gateway für virtuelle Netzwerke (VPN) aktiviert haben](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json).<br>
-* **Keine**: Geben Sie an, wenn Datenverkehr für ein Adresspräfix verworfen und nicht an ein Ziel weitergeleitet werden soll. Wenn Sie eine Funktion nicht vollständig konfiguriert haben, wird in Azure für einige optionale Systemrouten ggf. *Keine* angegeben. Wenn *Keine* beispielsweise als **IP-Adresse für nächsten Hop** mit *Gateway für virtuelle Netzwerke* oder *Virtuelles Gerät* unter **Typ des nächsten Hops** angezeigt wird, kann dies daran liegen, dass das Gerät nicht ausgeführt wird oder nicht vollständig konfiguriert ist. Azure erstellt [Standardrouten](#default) des Systems für reservierte Adresspräfixe mit **Keine** als Typ des nächsten Hops.<br>
-* **Virtuelles Netzwerk**: Geben Sie an, wenn Sie das Standardrouting in einem virtuellen Netzwerk außer Kraft setzen möchten. Unter [Routingbeispiel](#routing-example) finden Sie ein Beispiel dafür, warum es ratsam sein kann, eine Route mit dem Hop-Typ **Virtuelles Netzwerk** zu erstellen.<br>
+* **Keine:** Geben Sie an, wenn Datenverkehr für ein Adresspräfix verworfen und nicht an ein Ziel weitergeleitet werden soll. Wenn Sie eine Funktion nicht vollständig konfiguriert haben, wird in Azure für einige optionale Systemrouten ggf. *Keine* angegeben. Wenn *Keine* beispielsweise als **IP-Adresse für nächsten Hop** mit *Gateway für virtuelle Netzwerke* oder *Virtuelles Gerät* unter **Typ des nächsten Hops** angezeigt wird, kann dies daran liegen, dass das Gerät nicht ausgeführt wird oder nicht vollständig konfiguriert ist. Azure erstellt [Standardrouten](#default) des Systems für reservierte Adresspräfixe mit **Keine** als Typ des nächsten Hops.<br>
+* **Virtuelles Netzwerk:** Geben Sie an, wenn Sie das Standardrouting in einem virtuellen Netzwerk außer Kraft setzen möchten. Unter [Routingbeispiel](#routing-example) finden Sie ein Beispiel dafür, warum es ratsam sein kann, eine Route mit dem Hop-Typ **Virtuelles Netzwerk** zu erstellen.<br>
 * **Internet**: Geben Sie an, wenn Sie Datenverkehr, der für ein Adresspräfix im Internet bestimmt ist, explizit weiterleiten möchten oder wenn Datenverkehr, der für Azure-Dienste mit öffentlichen IP-Adressen bestimmt ist, im Azure-Backbonenetzwerk verbleiben soll.
 
 Es ist nicht möglich, **VNet-Peering** oder **VirtualNetworkServiceEndpoint** als Typ des nächsten Hops in benutzerdefinierten Routen anzugeben. Routen mit **VNet-Peering** oder **VirtualNetworkServiceEndpoint** als Typ des nächsten Hops werden von Azure nur dann erstellt, wenn Sie ein VNet-Peering oder einen Dienstendpunkt konfigurieren.
 
 ## <a name="next-hop-types-across-azure-tools"></a>Typ des nächsten Hops für Azure-Tools
 
-Der Name, der für Typen des nächsten Hops angezeigt und referenziert wird, unterscheidet sich für das Azure-Portal und Befehlszeilentools und die Bereitstellungsmodelle „Azure Resource Manager“ und „klassisch“. In der folgenden Tabelle sind die Namen aufgeführt, die zum Verweisen auf den Typ des nächsten Hops mit den unterschiedlichen Tools und [Bereitstellungsmodellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verwendet werden:
+Der Name, der für Typen des nächsten Hops angezeigt und referenziert wird, unterscheidet sich für das Azure-Portal und Befehlszeilentools und die Bereitstellungsmodelle „Azure Resource Manager“ und „klassisch“. In der folgenden Tabelle sind die Namen aufgeführt, die zum Verweisen auf den Typ des nächsten Hops mit den unterschiedlichen Tools und [Bereitstellungsmodellen](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verwendet werden:
 
 |Typ des nächsten Hops                   |Die Azure CLI und PowerShell (Resource Manager) |Die klassische Azure CLI und PowerShell (klassisch)|
 |-------------                   |---------                                       |-----|
@@ -110,8 +107,8 @@ Der Name, der für Typen des nächsten Hops angezeigt und referenziert wird, unt
 |Internet                        |Internet                                        |Internet (im ASM-Modus in der klassischen CLI nicht verfügbar)|
 |Virtuelles Gerät               |VirtualAppliance                                |VirtualAppliance|
 |Keine                            |Keine                                            |NULL (im ASM-Modus in der klassischen CLI nicht verfügbar)|
-|Peering in virtuellen Netzwerken         |VNet-Peering                                    |Nicht zutreffend|
-|VNET-Dienstendpunkt|VirtualNetworkServiceEndpoint                   |Nicht zutreffend|
+|Peering in virtuellen Netzwerken         |VNet-Peering                                    |Nicht verfügbar|
+|VNET-Dienstendpunkt|VirtualNetworkServiceEndpoint                   |Nicht verfügbar|
 
 ### <a name="border-gateway-protocol"></a>Border Gateway Protocol
 
@@ -122,7 +119,7 @@ Ein Gateway des lokalen Netzwerks kann Routen mit einem Gateway des virtuellen A
 
 Wenn Sie Routen mit Azure per BGP austauschen, wird der Routentabelle aller Subnetze in einem virtuellen Netzwerk für jedes angekündigte Präfix eine separate Route hinzugefügt. Die Route wird mit *Gateway für virtuelle Netzwerke* als Quelle und Typ des nächsten Hops hinzugefügt. 
 
-Die ER- und VPN Gateway-Routenverteilung kann für ein Subnetz mithilfe einer Eigenschaft für eine Routentabelle deaktiviert werden. Wenn Sie Routen unter Verwendung von BGP mit Azure austauschen, werden der Routingtabelle von Subnetzen mit deaktivierter Verteilung von Gatewayrouten virtueller Netzwerke keine Routen hinzugefügt. Die Konnektivität mit VPN-Verbindungen wird über [benutzerdefinierte Routen](#custom-routes) mit *Gateway für virtuelle Netzwerke* als Typ des nächsten Hops erreicht. Ausführliche Informationen finden Sie unter [Deaktivieren der Routenverteilung von Gatewayrouten des virtuellen Netzwerks](manage-route-table.md#create-a-route-table).
+Die ER- und VPN Gateway-Routenverteilung kann für ein Subnetz mithilfe einer Eigenschaft für eine Routentabelle deaktiviert werden. Wenn Sie Routen unter Verwendung von BGP mit Azure austauschen, werden der Routingtabelle von Subnetzen mit deaktivierter Verteilung von Gatewayrouten virtueller Netzwerke keine Routen hinzugefügt. Die Konnektivität mit VPN-Verbindungen wird über [benutzerdefinierte Routen](#custom-routes) mit *Gateway für virtuelle Netzwerke* als Typ des nächsten Hops erreicht. **Die Routenweitergabe sollte für das GatewaySubnet nicht deaktiviert werden. Das Gateway funktioniert nicht, wenn diese Einstellung deaktiviert ist.** Ausführliche Informationen finden Sie unter [Deaktivieren der Routenverteilung von Gatewayrouten des virtuellen Netzwerks](manage-route-table.md#create-a-route-table).
 
 ## <a name="how-azure-selects-a-route"></a>Auswahl einer Route durch Azure
 
@@ -149,7 +146,7 @@ Wenn Datenverkehr für eine IP-Adresse außerhalb der Adresspräfixe von anderen
 
 Eine umfassende Routentabelle mit Erklärungen der Routen in der Tabelle finden Sie unter [Routingbeispiel](#routing-example).
 
-## <a name="default-route"></a>Adresspräfix 0.0.0.0/0
+## <a name="00000-address-prefix"></a><a name="default-route"></a>Adresspräfix 0.0.0.0/0
 
 Eine Route mit dem Adresspräfix 0.0.0.0/0 weist Azure an, wie Datenverkehr für eine IP-Adresse, die nicht innerhalb des Adresspräfixes einer anderen Route in einer Routentabelle des Subnetzes liegt, weitergeleitet wird. Bei der Erstellung eines Subnetzes erstellt Azure eine Route vom Typ [Standard](#default) zum Adresspräfix 0.0.0.0/0 mit **Internet** als Typ des nächsten Hops. Wenn Sie diese Route nicht außer Kraft setzen, leitet Azure den gesamten Datenverkehr, der für IP-Adressen außerhalb des Adresspräfix einer anderen Route bestimmt ist, in das Internet weiter. Die Ausnahme besteht darin, dass Datenverkehr an die öffentlichen IP-Adressen von Azure im Azure-Backbonenetzwerk verbleibt und nicht in das Internet weitergeleitet wird. Wenn Sie diese Route mit einer [benutzerdefinierten](#custom-routes) Route außer Kraft setzen, wird Datenverkehr für Adressen, die nicht innerhalb der Adresspräfixe anderer Routen in der Routentabelle liegen, an ein virtuelles Netzwerkgerät oder ein Gateway für virtuelle Netzwerke gesendet. Dies hängt davon ab, was Sie in einer benutzerdefinierten Route angegeben haben.
 
@@ -170,7 +167,7 @@ Wenn Sie das Adresspräfix 0.0.0.0/0 außer Kraft setzen, werden zusätzlich daz
 
 Wenn Ihr virtuelles Netzwerk mit einem Azure-VPN-Gateway verbunden ist, ordnen Sie dem [Gatewaysubnetz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) keine Routingtabelle zu, die eine Route mit dem Ziel 0.0.0.0/0 enthält. Andernfalls ist die ordnungsgemäße Funktion des Gateways gefährdet. Ausführliche Informationen finden Sie unter [Häufig gestellte Fragen zum VPN-Gateway](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gatewayports) in der Frage *Warum werden auf meinem VPN-Gateway bestimmte Ports geöffnet?* .
 
-Implementierungsdetails bei Verwendung von Gateways für virtuelle Netzwerke und virtuellen Geräten zwischen dem Internet und Azure finden Sie unter [DMZ between Azure and your on-premises datacenter](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) (DMZ zwischen Azure und Ihrem lokalen Datencenter) und [DMZ zwischen Azure und dem Internet](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Implementierungsdetails bei Verwendung von Gateways für virtuelle Netzwerke zwischen dem Internet und Azure finden Sie unter [DMZ between Azure and your on-premises datacenter](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) (DMZ zwischen Azure und Ihrem lokalen Datencenter).
 
 ## <a name="routing-example"></a>Routingbeispiel
 
@@ -210,7 +207,7 @@ Mit den Pfeilen ist der Weg des Datenverkehrs angegeben.
 
 Die Routentabelle für *Subnet1* in der Abbildung enthält die folgenden Routen:
 
-|id  |`Source` |Zustand  |Adresspräfixe    |Typ des nächsten Hops          |IP-Adresse des nächsten Hops|Name der benutzerdefinierten Route| 
+|id  |`Source` |State  |Adresspräfixe    |Typ des nächsten Hops          |IP-Adresse des nächsten Hops|Name der benutzerdefinierten Route| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |Standard|Ungültig|10.0.0.0/16         |Virtuelles Netzwerk        |                   |              |
 |2   |Benutzer   |Aktiv |10.0.0.0/16         |Virtuelles Gerät      |10.0.100.4         |Within-VNet1  |
@@ -244,7 +241,7 @@ Es folgen Erklärungen der einzelnen Routen-IDs:
 
 Die Routentabelle für *Subnet2* in der Abbildung enthält die folgenden Routen:
 
-|`Source`  |Zustand  |Adresspräfixe    |Typ des nächsten Hops             |IP-Adresse des nächsten Hops|
+|`Source`  |State  |Adresspräfixe    |Typ des nächsten Hops             |IP-Adresse des nächsten Hops|
 |------- |-------|------              |-------                   |--------           
 |Standard |Aktiv |10.0.0.0/16         |Virtuelles Netzwerk           |                   |
 |Standard |Aktiv |10.1.0.0/16         |VNet-Peering              |                   |

@@ -1,20 +1,22 @@
 ---
 title: Whitepaper mit Beschreibungen von Azure Cosmos DB-Konzepten
-description: Diese Whitepaper enthalten eingehende Beschreibungen von Azure Cosmos DB-Konzepten.
+description: Hier finden Sie eine Liste der Whitepaper für Azure Cosmos DB, in denen die Konzepte ausführlich beschrieben werden.
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 12/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 69e75af8481b21929b8d36a14a2ce72ec3f9f5f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9ad69114dedfdec151480b97ceccc279bcbd683
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257162"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340395"
 ---
-# <a name="azure-cosmos-db-whitepapers"></a>Azure Cosmos DB-Whitepaper 
+# <a name="azure-cosmos-db-whitepapers"></a>Azure Cosmos DB-Whitepaper
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Whitepaper enthalten genauere Informationen zu Azure Cosmos DB-Konzepten. Dieser Artikel enthält eine Liste der verfügbaren Whitepaper für Azure Cosmos DB.
 

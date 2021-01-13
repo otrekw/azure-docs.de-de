@@ -2,32 +2,28 @@
 title: 'Tutorial: Konfigurieren von Druva für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Druva konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: a276c004-9f71-4efc-8cca-1f615760249f
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 27c8ca3a4b68d5f3a42777ff2cf9afa4b923c00b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2ef564ae61aab10e1d100ccaf2547248e4a6a8e8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641447"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352166"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Druva für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die in Druva und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in Druva zu konfigurieren.
 
 > [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
+> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Dieser Connector befindet sich derzeit in der Public Preview-Phase. Weitere Informationen zu den allgemeinen Nutzungsbedingungen von Microsoft Azure für Previewfunktionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -62,15 +58,15 @@ Bevor Sie Druva für die automatische Benutzerbereitstellung mit Azure AD konfi
 
 2. Navigieren Sie zu **Manage** > **Deployments** > **Users** (Verwalten > Bereitstellungen > Benutzer).
 
-    ![Druva: Hinzufügen von SCIM](media/druva-provisioning-tutorial/manage.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/manage.png" alt-text="Screenshot der Druva-Verwaltungskonsole. Die Option „Verwalten“ ist hervorgehoben, und das Menü „Verwalten“ wird angezeigt. In diesem Menü ist unter „Bereitstellungen“ die Option „Benutzer“ hervorgehoben." border="false":::
 
 3.  Navigieren zu **Einstellungen**. Klicken Sie dann auf **Generate Token** (Token generieren).
 
-    ![Druva: Hinzufügen von SCIM](media/druva-provisioning-tutorial/settings.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/settings.png" alt-text="Screenshot einer Seite der Druva-Verwaltungskonsole. Die Option „Einstellungen“ ist hervorgehoben, und die Registerkarte „Einstellungen“ ist geöffnet. Die Schaltfläche „Token generieren“ ist hervorgehoben." border="false":::
 
 4.  Kopieren Sie den Wert von **Auth token** (Authentifizierungstoken). Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Druva-Anwendung in das Feld **Geheimes Token** eingegeben.
     
-    ![Druva: Hinzufügen von SCIM](media/druva-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/auth.png" alt-text="Screenshot der Seite „Token generieren“ in der Druva-Verwaltungskonsole. Der Link „Token kopieren“ ermöglicht das Kopieren des Werts des Authentifizierungstokens." border="false":::
 
 ## <a name="add-druva-from-the-gallery"></a>Hinzufügen von Druva aus dem Katalog
 
@@ -113,13 +109,13 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5.  Geben Sie im Abschnitt „Administratoranmeldeinformationen“ in das Feld **Mandanten-URL** `https://apis.druva.com/insync/scim` ein. Geben Sie den Wert für das **Authentifizierungstoken** in das Feld **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Druva herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Druva-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5.  Geben Sie im Abschnitt „Administratoranmeldeinformationen“ in das Feld **Mandanten-URL**`https://apis.druva.com/insync/scim` ein. Geben Sie den Wert für das **Authentifizierungstoken** in das Feld **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Druva herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Druva-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -138,7 +134,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
     ![Benutzerattribute in Druva](media/druva-provisioning-tutorial/userattribute.png)
 
 
-10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Um den Azure AD-Bereitstellungsdienst für Druva zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
@@ -154,7 +150,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
     Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in Druva ausgeführt werden.
 
-    Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+    Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
     
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 
@@ -162,9 +158,9 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen](../manage-apps/check-status-user-account-provisioning.md).
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen](../app-provisioning/check-status-user-account-provisioning.md).

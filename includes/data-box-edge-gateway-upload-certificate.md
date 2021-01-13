@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/26/2019
 ms.author: alkohli
 ms.openlocfilehash: 09d9b5bbf3f9ca7a4eef37891d03c9c865e7f74b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67448623"
 ---
 Ein ordnungsgemäßes SSL-Zertifikat stellt sicher, dass Sie verschlüsselte Informationen an den richtigen Server senden. Neben der Verschlüsselung ermöglicht das Zertifikat auch die Authentifizierung. Sie können über die PowerShell-Schnittstelle des Geräts Ihr eigenes vertrauenswürdiges SSL-Zertifikat hochladen.

@@ -3,15 +3,15 @@ title: Verschieben einer Azure-Netzwerksicherheitsgruppe (NSG) in eine andere Az
 description: Verwenden einer Azure Resource Manager-Vorlage, um eine Azure-Netzwerksicherheitsgruppe über Azure PowerShell aus einer Azure-Region in eine andere zu verschieben.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 1be4882af781f884313fbc7b8e2f04f843b60068
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 04abc051cec8a6fb38ce6aa8f5347ae06cb8bd1d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71038888"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019751"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Verschieben einer Azure-Netzwerksicherheitsgruppe (NSG) in eine andere Region mit Azure PowerShell
 
@@ -32,7 +32,7 @@ Azure-Sicherheitsgruppen können nicht aus einer Region in eine andere verschobe
 
 - Vergewissern Sie sich, dass Sie mit Ihrem Azure-Abonnement NSGs in der verwendeten Zielregion erstellen können. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
 
-- Stellen Sie sicher, dass Ihr Abonnement genügend Ressourcen hat, um das Hinzufügen von NSGs für diesen Prozess zu unterstützen.  Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Stellen Sie sicher, dass Ihr Abonnement genügend Ressourcen hat, um das Hinzufügen von NSGs für diesen Prozess zu unterstützen.  Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Vorbereiten und Verschieben
@@ -61,7 +61,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Netzwerksicherheitsgruppe 
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
    ```
 
-4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die mit dem Befehl exportiert wurde und den Namen **\<source-resource-goup-name>.json** hat, und öffnen Sie sie in einem Editor Ihrer Wahl:
+4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die mit dem Befehl exportiert wurde und den Namen **\<resource-group-name>.json** hat, und öffnen Sie sie in einem Editor Ihrer Wahl:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -106,9 +106,9 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Netzwerksicherheitsgruppe 
     Get-AzLocation | format-table
     
     ```
-8. Sie können wahlweise auch andere Parameter in der Datei **\<resource-group-name>.json** ändern. Diese sind abhängig von Ihren Anforderungen optional:
+8. Sie können wahlweise auch andere Parameter in **\<resource-group-name>.json** ändern, die abhängig von Ihren Anforderungen optional sind:
 
-    * **Sicherheitsregeln**: Sie können festlegen, welche Regeln in der Ziel-NSG bereitgestellt werden, indem Sie dem Abschnitt **securityRules** in der Datei **\<resource-group-name>.json** Regeln hinzufügen oder Regeln aus diesem Abschnitt entfernen:
+    * **Sicherheitsregeln:** Sie können festlegen, welche Regeln in der Ziel-NSG bereitgestellt werden, indem Sie dem Abschnitt **securityRules** in der Datei **\<resource-group-name>.json** Regeln hinzufügen oder Regeln aus diesem Abschnitt entfernen:
 
         ```json
            "resources": [
@@ -211,7 +211,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 ```
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Um die Änderungen zu übernehmen und die Verschiebung der NSG abzuschließen, löschen Sie die Quell-NSG oder -Ressourcengruppe mit [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) oder [Remove-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/remove-aznetworksecuritygroup?view=azps-2.6.0):
 

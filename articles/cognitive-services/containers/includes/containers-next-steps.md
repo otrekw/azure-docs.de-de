@@ -1,18 +1,18 @@
 ---
 title: Nächste Schritte für Container
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/5/2019
-ms.author: dapine
-ms.openlocfilehash: a28dfc93fd007a5a0d83274af741a6a56fc747f5
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 3820d1d42449fe962c151655768c4aa063eb9529
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717096"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80876076"
 ---
 ## <a name="next-steps"></a>Nächste Schritte 
 

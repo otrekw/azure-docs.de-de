@@ -1,75 +1,117 @@
 ### YamlMime:Landing
-title: Dokumentation zur Vorschauversion von Azure Digital Twins
-summary: Erfahren Sie, wie mithilfe von Azure Digital Twins Personen, Orte und Dinge verbunden sowie IoT-Lösungen mit räumlicher Intelligenz erstellt werden. Arbeiten Sie den Schnellstart und die Tutorials durch, um ein imaginäres intelligentes Gebäude zu überwachen, ausführliche Konzepte kennenzulernen und eine IoT-Lösung der nächsten Generation zu erstellen, die Ihre physische Umgebung modelliert.
+title: Azure Digital Twins-Dokumentation
+summary: Hier erfahren Sie, wie Sie mit Azure Digital Twins eine digitale Darstellung Ihrer Ressourcen, Umgebungen und Geschäftssysteme erstellen, um IoT-Lösungen der nächsten Generation zu entwickeln, die als Modell für die reale Welt dienen.
 metadata:
-  title: 'Dokumentation zur Vorschauversion von Azure Digital Twins-Dokumentation: Tutorials, API-Referenz | Microsoft-Dokumentation'
-  description: Verwenden Sie Azure Digital Twins zum Erstellen von intelligenten räumlichen Lösungen.
-  services: digital-twins
+  title: Azure Digital Twins-Dokumentation – Tutorials, API-Referenz | Microsoft-Dokumentation
+  description: Hier erfahren Sie, wie mithilfe von Azure Digital Twins Personen, Orte und Dinge verbunden sowie IoT-Lösungen mit Raumauswertung erstellt werden.
   ms.service: digital-twins
-  ms.subservice: digital-twins
   ms.topic: landing-page
   ms.collection: collection
-  author: KingdomOfEnds
-  ms.author: v-adgera
-  ms.date: 09/03/2019
-  ms.openlocfilehash: b5a449d09b1068dbf874828b9e65b1ac318b58fd
-  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  author: philmea
+  ms.author: philmea
+  ms.date: 02/12/2020
+  ms.openlocfilehash: bcba2b48fdecda311ce349f90ba43023b906bd44
+  ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71219729"
+  ms.lasthandoff: 11/26/2020
+  ms.locfileid: "96186404"
 landingContent:
 - title: Über Azure Digital Twins
   linkLists:
   - linkListType: overview
     links:
     - text: Was ist Azure Digital Twins?
-      url: about-digital-twins.md
-  - linkListType: concept
-    links:
-    - text: Grundlegendes zum Digital Twins-Objektmodell und zum Raumintelligenzgraphen
-      url: concepts-objectmodel-spatialgraph.md
-  - linkListType: video
-    links:
-    - text: Einführung in Azure Digital Twins
-      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Digital-Twins-Introduction
-- title: Erste Schritte
+      url: overview.md
+- title: Erste Schritte mit der Schnellstartanleitung
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Ermitteln von verfügbaren Räumen
-      url: quickstart-view-occupancy-dotnet.md
+    - text: Erkunden eines Beispielszenarios
+      url: quickstart-adt-explorer.md
+- title: Weiterführende Tutorials
+  linkLists:
   - linkListType: tutorial
     links:
-    - text: Bereitstellen und konfigurieren
-      url: tutorial-facilities-setup.md
-    - text: Bereitstellen und Überwachen von Zuständen
-      url: tutorial-facilities-udf.md
-    - text: Benachrichtigen mit Logic Apps
-      url: tutorial-facilities-events.md
-    - text: Visualisieren von Ereignissen mit Time Series Insights
-      url: tutorial-facilities-analyze.md
-- title: Entwickeln mit Azure Digital Twins
+    - text: Codieren einer Client-App
+      url: tutorial-code.md
+  - linkListType: tutorial
+    links:
+    - text: Untersuchen der Grundlagen mit einer Beispielclient-App
+      url: tutorial-command-line-app.md
+  - linkListType: tutorial
+    links:
+    - text: Verbinden einer End-to-End-Lösung
+      url: tutorial-end-to-end.md
+- title: Lernen
   linkLists:
   - linkListType: concept
     links:
-    - text: Gerätekonnektivität und eingehende Telemetriedaten
-      url: concepts-device-ingress.md
-    - text: Datenverarbeitung und benutzerdefinierte Funktionen
-      url: concepts-user-defined-functions.md
+    - text: Benutzerdefinierte Modelle
+      url: concepts-models.md
+  - linkListType: concept
+    links:
+    - text: Digitale Zwillinge und der Zwillingsgraph
+      url: concepts-twins-graph.md
+  - linkListType: concept
+    links:
+    - text: Abfragesprache
+      url: concepts-query-language.md
+- title: Entwickeln
+  linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Einrichten von Postman
-      url: how-to-configure-postman.md
-    - text: Erstellen von benutzerdefinierten Funktionen
-      url: how-to-user-defined-functions.md
-- title: API-Referenz
+    - text: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle
+      url: how-to-use-cli.md
+  - linkListType: how-to-guide
+    links:
+    - text: Einrichten einer Instanz und der Authentifizierung
+      url: how-to-set-up-instance-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: Schreiben von App-Authentifizierungscode
+      url: how-to-authenticate-client.md
+- title: Ermitteln der APIs
   linkLists:
   - linkListType: reference
     links:
-    - text: Clientbibliothek mit benutzerdefinierten Funktionen
-      url: reference-user-defined-functions-client-library.md
+    - text: REST-APIs
+      url: /rest/api/azure-digitaltwins/
   - linkListType: how-to-guide
     links:
-    - text: Verwenden von Digital Twins Swagger
-      url: how-to-use-swagger.md
+    - text: Verwenden der Azure Digital Twins-APIs und SDKs
+      url: how-to-use-apis-sdks.md
+  - linkListType: how-to-guide
+    links:
+    - text: Senden von Anforderungen mit Postman
+      url: how-to-use-postman.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen benutzerdefinierter SDKs mit AutoRest
+      url: how-to-create-custom-sdks.md
+- title: Untersuchen von Codebeispielen
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: End-to-End-Beispiele
+      url: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
+  - linkListType: sample
+    links:
+    - text: Azure Digital Twins-Explorer (Beispiel)
+      url: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer
+  - linkListType: sample
+    links:
+    - text: DTDL-Validierungssteuerelement (Beispiel)
+      url: /samples/azure-samples/dtdl-validator/dtdl-validator/
+  - linkListType: sample
+    links:
+    - text: Beispiel für die DPS- und IoT Hub-Integration
+      url: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
+  - linkListType: sample
+    links:
+    - text: SignalR-Integrationsbeispiel
+      url: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
+  - linkListType: sample
+    links:
+    - text: Benutzerdefinierte Swagger für Logic Apps-Connector
+      url: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/

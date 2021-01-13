@@ -5,23 +5,16 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/20/2018
+ms.date: 01/28/2020
 ms.author: cynthn
-ms.custom: include file
-ms.openlocfilehash: 1ec3ecdafb8e475f5f13372789528612ccd7b8b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 6432c125c4fedd962faa28a4c84c7494300b0472
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66226021"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755315"
 ---
-## <a name="using-rbac-to-share-images"></a>Verwenden von RBAC zum Teilen von Abbildern
-
-Sie können Images zwischen Abonnements mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) teilen. Jeder Benutzer, der Leseberechtigungen für eine Imageversion besitzt, auch über Abonnements hinweg, kann mithilfe der Imageversion einen virtuellen Computer bereitstellen.
-
-Weitere Informationen zum Teilen von Ressourcen mittels RBAC finden Sie unter [Verwalten des Zugriffs mithilfe von RBAC und der Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
-
-
 ## <a name="list-information"></a>Auflisten von Informationen
 
 Den Speicherort, Status und weitere Informationen zu den verfügbaren Abbildkatalogen können Sit mit [az sig list](/cli/azure/sig#az-sig-list) abrufen.

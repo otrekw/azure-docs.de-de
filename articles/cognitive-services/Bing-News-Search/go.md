@@ -1,38 +1,42 @@
 ---
 title: 'Schnellstart: Abrufen von Nachrichten mit der Bing-News-Suche-REST-API und Go'
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie mit der Bing-News-Suche-API Ergebnisse für Nachrichten abrufen.
+description: In dieser Schnellstartanleitung wird Go zum Aufrufen der Bing-News-Suche-API verwendet. Die Ergebnisse enthalten Namen und URLs von Nachrichtenquellen, die in der Abfragezeichenfolge angegeben wurden.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/21/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 79e93e3ba0bbf9ac71a01bad0502b84dfee85297
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5314e1c2b13ab3b00fca3660c27d06179a4cbc2f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798499"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351979"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Schnellstart: Abrufen von Ergebnissen für Nachrichten mit der Bing-News-Suche-REST-API und Go
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 In dieser Schnellstartanleitung wird Go zum Aufrufen der Bing-News-Suche-API verwendet. Die Ergebnisse enthalten Namen und URLs von Nachrichtenquellen, die in der Abfragezeichenfolge angegeben wurden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Installieren Sie die [Go-Binärdateien](https://golang.org/dl/).
-* Installieren Sie die Bibliothek „go-spew“ zum Anzeigen der Ergebnisse mit Pretty Printer
-    * Installieren Sie diese Bibliothek: `$ go get -u https://github.com/davecgh/go-spew`.
+* Installieren Sie die Bibliothek „go-spew“, um einen Drucker für Schöndruck (Deep Pretty Printer) zum Anzeigen der Ergebnisse zu verwenden. Verwenden Sie diesen Befehl, um die Bibliothek zu installieren: `$ go get -u https://github.com/davecgh/go-spew`.
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-a-project-and-import-libraries"></a>Erstellen eines Projekts und Importieren von Bibliotheken
 
-Erstellen Sie in Ihrer IDE oder in einem Editor ein neues Go-Projekt. Importieren Sie anschließend `net/http` für Anforderungen, `ioutil` zum Lesen der Antwort und `encoding/json` zum Verarbeiten des JSON-Texts der Ergebnisse. Die Bibliothek „go-spew“ ist zum Analysieren des JSON-Texts erforderlich. 
+Erstellen Sie in Ihrer IDE oder in einem Editor ein neues Go-Projekt. Importieren Sie anschließend `net/http` für Anforderungen, `ioutil` zum Lesen der Antwort, `encoding/json` zum Verarbeiten des JSON-Texts der Ergebnisse und die `go-spew`-Bibliothek zum Analysieren der JSON-Ergebnisse. 
 
-```
+```go
 package main
 
 import (
@@ -47,9 +51,9 @@ import (
 
 ## <a name="create-a-struct-to-format-the-news-search-results"></a>Erstellen einer Struktur zum Formatieren der Suchergebnisse für Nachrichten
 
-Mit der `NewsAnswer`-Struktur werden die in der Antwort bereitgestellten Daten formatiert. Die JSON-Antwort enthält mehrere Ebenen und ist sehr komplex.  Mit der folgenden Implementierung sind die Grundlagen abgedeckt.
+Die `NewsAnswer`-Struktur formatiert die in der JSON-Antwort bereitgestellten Daten, bei denen es sich um komplexe Daten mit mehreren Ebenen handelt. Mit der folgenden Implementierung sind die Grundlagen abgedeckt:
 
-```
+```go
 // This struct formats the answer provided by the Bing News Search API.
 type NewsAnswer struct {
     ReadLink       string `json: "readLink"` 
@@ -73,13 +77,13 @@ type NewsAnswer struct {
                 Width   int  `json: "width"`
                 Height  int   `json: "height"`
             } `json: "thumbnail"` 
+            } `json: "image"` 
             Description  string  `json: "description"`
             Provider  []struct   {
                 Type   string    `json: "_type"`
                 Name  string     `json: "name"`
             } `json: "provider"` 
             DatePublished   string   `json: "datePublished"`
-        } `json: "image"` 
     } `json: "value"` 
 }
 
@@ -87,9 +91,9 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>Deklarieren der main-Funktion und Definieren der Variablen  
 
-Der folgende Code dient zum Deklarieren der main-Funktion und zum Zuweisen der erforderlichen Variablen. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `token` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto.
+Der folgende Code dient zum Deklarieren der main-Funktion und zum Zuweisen der erforderlichen Variablen. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `token` dann durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
-```
+```go
 func main() {
     // Verify the endpoint URI and replace the token string with a valid subscription key.  
     const endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
@@ -110,7 +114,7 @@ func main() {
 
 Fügen Sie die Abfragezeichenfolge und den Zugriffsschlüsselheader hinzu.
 
-```
+```go
 // Add the query to the request.  
 param := req.URL.Query()
 param.Add("q", searchTerm)
@@ -121,11 +125,11 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 ```
 
-## <a name="get-request"></a>Get-Anforderung
+## <a name="get-request"></a>GET-Anforderung
 
-Erstellen Sie den Client, und senden Sie die Get-Anforderung. 
+Erstellen Sie den Client, und senden Sie die GET-Anforderung. 
 
-```
+```go
 // Instantiate a client.  
 client := new(http.Client)
 
@@ -139,9 +143,9 @@ if err != nil {
 
 ## <a name="send-the-request"></a>Senden der Anforderung
 
-Senden Sie die Anforderung, und lesen Sie die Antwort mit `ioutil`.
+Senden Sie die Anforderung, und lesen Sie die Ergebnisse unter Verwendung von `ioutil`.
 
-```
+```go
 resp, err := client.Do(req)
     if err != nil {
         panic(err)
@@ -160,9 +164,9 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>Verarbeiten der Antwort
 
-Die Funktion `Unmarshall` extrahiert Informationen aus dem JSON-Text, der von der News-Suche-API zurückgegeben wird.  Anschließend können Sie Knoten aus den Ergebnissen mit Pretty Printer von `go-spew` anzeigen.
+Die Funktion `Unmarshall` extrahiert Informationen aus dem JSON-Text, der von der Bing-News-Suche-API zurückgegeben wird. Anschließend zeigen Sie Knoten aus den Ergebnissen mit dem `go-spew`-Drucker für Schöndruck an.
 
-```
+```go
 // Create a new answer object 
 ans := new(NewsAnswer)
 err = json.Unmarshal(body, &ans)
@@ -181,7 +185,7 @@ spew.Dump(result.Name, result.URL)
 
 ## <a name="results"></a>Ergebnisse
 
-Die Ergebnisse enthalten Name und URL der einzelnen Ergebnisse.
+Die folgende Ausgabe enthält den Namen und die URL der einzelnen Ergebnisse:
 
 ```
 (string) (len=91) "Cognitive Services Market: Global Industry Analysis and Opportunity Assessment, 2019 - 2025"

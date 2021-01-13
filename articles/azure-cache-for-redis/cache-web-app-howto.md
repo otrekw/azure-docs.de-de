@@ -1,26 +1,18 @@
 ---
-title: Erstellen einer ASP.NET-Web-App mit Azure Cache for Redis | Microsoft-Dokumentation
+title: Erstellen einer ASP.NET-Web-App mit Azure Cache for Redis
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine ASP.NET-Web-App mit Azure Cache for Redis erstellen.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/26/2018
+ms.date: 09/29/2020
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: 7cca9d020d5e999bda2c494853295957da5cca1a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: b880762d43cd4e105b79613aadb476611228a47e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326493"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536605"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Schnellstart: Verwenden von Azure Cache for Redis mit einer ASP.NET-Web-App 
 
@@ -28,8 +20,8 @@ In dieser Schnellstartanleitung erstellen Sie mit Visual Studio 2019 eine ASP.NE
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-- [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den Workloads **ASP.NET und Webentwicklung** und **Azure-Entwicklung**.
+- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/dotnet)
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den Workloads **ASP.NET und Webentwicklung** und **Azure-Entwicklung** .
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 
@@ -43,19 +35,19 @@ In dieser Schnellstartanleitung erstellen Sie mit Visual Studio 2019 eine ASP.NE
 
     b. Wählen Sie **Cloud** aus.
 
-    c. Wählen Sie **ASP.NET-Webanwendung**aus.
+    c. Wählen Sie **ASP.NET-Webanwendung** aus.
 
     d. Stellen Sie sicher, dass **.NET Framework 4.5.2** oder höher ausgewählt ist.
 
     e. Geben Sie im Feld **Name** einen Namen für das Projekt ein. In diesem Beispiel haben wir **ContosoTeamStats** verwendet.
 
-    f. Klicken Sie auf **OK**.
+    f. Klicken Sie auf **OK** .
    
 3. Wählen Sie als Projekttyp die Option **MVC** aus.
 
 4. Stellen Sie sicher, dass für die Einstellungen unter **Authentifizierung** die Option **Keine Authentifizierung** angegeben ist. Je nach Ihrer Version von Visual Studio kann die Standardeinstellung für **Authentifizierung** auch anders lauten. Um die Einstellung zu ändern, wählen Sie zunächst **Authentifizierung ändern** und anschließend **Keine Authentifizierung** aus.
 
-5. Wählen Sie **OK** aus, um das Projekt zu erstellen.
+5. Klicken Sie auf **OK** , um das Projekt zu erstellen.
 
 ## <a name="create-a-cache"></a>Erstellen eines Caches
 
@@ -67,13 +59,13 @@ Als Nächstes erstellen Sie den Cache für die App.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>So bearbeiten Sie die Datei *CacheSecrets.config*
 
-1. Erstellen Sie auf Ihrem Computer eine Datei mit dem Namen *CacheSecrets.config*. Speichern Sie sie an einem Ort, an dem sie nicht mit dem Quellcode Ihrer Beispielanwendung eingecheckt wird. In diesem Schnellstart befindet sich die Datei *CacheSecrets.config* im Verzeichnis *C:\AppSecrets\CacheSecrets.config*.
+1. Erstellen Sie auf Ihrem Computer eine Datei mit dem Namen *CacheSecrets.config* . Speichern Sie sie an einem Ort, an dem sie nicht mit dem Quellcode Ihrer Beispielanwendung eingecheckt wird. In diesem Schnellstart befindet sich die Datei *CacheSecrets.config* im Verzeichnis *C:\AppSecrets\CacheSecrets.config* .
 
-1. Bearbeiten Sie die Datei *CacheSecrets.config*. Fügen Sie anschließend folgenden Inhalt hinzu:
+1. Bearbeiten Sie die Datei *CacheSecrets.config* . Fügen Sie anschließend folgenden Inhalt hinzu:
 
     ```xml
     <appSettings>
-        <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,password=<access-key>"/>
+        <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=<access-key>"/>
     </appSettings>
     ```
 
@@ -102,7 +94,7 @@ Wenn Sie die Anwendung lokal ausführen, werden die Informationen in der Datei *
 Weil die Datei *CacheSecrets.config* nicht mit Ihrer Anwendung in Azure bereitgestellt wird, verwenden Sie die Datei nur, wenn Sie die Anwendung lokal testen. Speichern Sie diese Informationen so sicher wie möglich, um missbräuchlichen Zugriff auf Ihre Cachedaten zu verhindern.
 
 #### <a name="to-update-the-webconfig-file"></a>So aktualisieren Sie die Datei *web.config*
-1. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei *Web.config*, um sie zu öffnen.
+1. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei *Web.config* , um sie zu öffnen.
 
     ![Web.config](./media/cache-web-app-howto/cache-web-config.png)
 
@@ -127,7 +119,7 @@ Die ASP.NET-Laufzeit führt die Inhalte der externen Datei mit dem Markup im `<a
 
 ### <a name="to-update-the-homecontroller-and-layout"></a>So aktualisieren Sie HomeController und Layout
 
-1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Controller**, und öffnen Sie anschließend die Datei *HomeController.cs*.
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Controller** , und öffnen Sie anschließend die Datei *HomeController.cs* .
 
 2. Fügen Sie am Anfang der Datei die folgenden zwei `using`-Anweisungen hinzu, um die Cacheclient- und App-Einstellungen zu unterstützen.
 
@@ -139,48 +131,65 @@ Die ASP.NET-Laufzeit führt die Inhalte der externen Datei mit dem Markup im `<a
 3. Fügen Sie der `HomeController`-Klasse die folgende Methode hinzu, um eine neue `RedisCache`-Aktion zu unterstützen, die einige Befehle für den neuen Cache ausführt.
 
     ```csharp
-        public ActionResult RedisCache()
+    public ActionResult RedisCache()
+    {
+        ViewBag.Message = "A simple example with Azure Cache for Redis on ASP.NET.";
+            
+        IDatabase cache = Connection.GetDatabase();
+
+        // Perform cache operations using the cache object...
+
+        // Simple PING command
+        ViewBag.command1 = "PING";
+        ViewBag.command1Result = cache.Execute(ViewBag.command1).ToString();
+
+        // Simple get and put of integral data types into the cache
+        ViewBag.command2 = "GET Message";
+        ViewBag.command2Result = cache.StringGet("Message").ToString();
+
+        ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
+        ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
+
+        // Demonstrate "SET Message" executed as expected...
+        ViewBag.command4 = "GET Message";
+        ViewBag.command4Result = cache.StringGet("Message").ToString();
+
+        // Get the client list, useful to see if connection list is growing...
+        ViewBag.command5 = "CLIENT LIST";
+        StringBuilder sb = new StringBuilder();
+
+        var endpoint = (System.Net.DnsEndPoint)Connection.GetEndPoints()[0];
+        var server = Connection.GetServer(endpoint.Host, endpoint.Port);
+        var clients = server.ClientList();
+
+        sb.AppendLine("Cache response :");
+        foreach (var client in clients)
         {
-            ViewBag.Message = "A simple example with Azure Cache for Redis on ASP.NET.";
-
-            var lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-            {
-                string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
-                return ConnectionMultiplexer.Connect(cacheConnection);
-            });
-
-            // Connection refers to a property that returns a ConnectionMultiplexer
-            // as shown in the previous example.
-            IDatabase cache = lazyConnection.Value.GetDatabase();
-
-            // Perform cache operations using the cache object...
-
-            // Simple PING command
-            ViewBag.command1 = "PING";
-            ViewBag.command1Result = cache.Execute(ViewBag.command1).ToString();
-
-            // Simple get and put of integral data types into the cache
-            ViewBag.command2 = "GET Message";
-            ViewBag.command2Result = cache.StringGet("Message").ToString();
-
-            ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
-            ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
-
-            // Demonstrate "SET Message" executed as expected...
-            ViewBag.command4 = "GET Message";
-            ViewBag.command4Result = cache.StringGet("Message").ToString();
-
-            // Get the client list, useful to see if connection list is growing...
-            ViewBag.command5 = "CLIENT LIST";
-            ViewBag.command5Result = cache.Execute("CLIENT", "LIST").ToString().Replace(" id=", "\rid=");
-
-            lazyConnection.Value.Dispose();
-
-            return View();
+            sb.AppendLine(client.Raw);
         }
+
+        ViewBag.command5Result = sb.ToString();
+
+        return View();
+    }
+                
+    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+    {
+        string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+        return ConnectionMultiplexer.Connect(cacheConnection);
+    });
+
+    public static ConnectionMultiplexer Connection
+    {
+        get
+        {
+            return lazyConnection.Value;
+        }
+    }
+
     ```
 
-4. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten** > **Freigegeben**. Öffnen Sie anschließend die Datei *_Layout.cshtml*.
+4. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten** > **Freigegeben** . Öffnen Sie anschließend die Datei *_Layout.cshtml* .
 
     Ersetzen Sie:
     
@@ -196,9 +205,9 @@ Die ASP.NET-Laufzeit führt die Inhalte der externen Datei mit dem Markup im `<a
 
 ### <a name="to-add-a-new-rediscache-view"></a>So fügen Sie eine neue RedisCache-Ansicht hinzu
 
-1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten**, und klicken Sie dann mit der rechten Maustaste auf den Ordner **Home**. Wählen Sie **Hinzufügen** > **Ansicht...** aus.
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten** , und klicken Sie dann mit der rechten Maustaste auf den Ordner **Home** . Wählen Sie **Hinzufügen** > **Ansicht...** aus.
 
-2. Geben Sie im Dialogfeld **Ansicht hinzufügen** den Ansichtsnamen **RedisCache** ein. Wählen Sie anschließend **Hinzufügen**.
+2. Geben Sie im Dialogfeld **Ansicht hinzufügen** den Ansichtsnamen **RedisCache** ein. Wählen Sie anschließend **Hinzufügen** .
 
 3. Ersetzen Sie den Code in der Datei *RedisCache.cshtml* durch den folgenden Code:
 
@@ -240,7 +249,7 @@ Die ASP.NET-Laufzeit führt die Inhalte der externen Datei mit dem Markup im `<a
 
 ## <a name="run-the-app-locally"></a>Lokales Ausführen der App
 
-Standardmäßig ist das Projekt für das lokale Hosten der App in [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview) zum Testen und Debuggen konfiguriert.
+Standardmäßig ist das Projekt für das lokale Hosten der App in [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) zum Testen und Debuggen konfiguriert.
 
 ### <a name="to-run-the-app-locally"></a>So führen Sie die App lokal aus
 1. Wählen Sie in Visual Studio **Debuggen** > **Debugging starten** aus, um die App zum Testen und Debuggen lokal zu erstellen und zu starten.
@@ -261,7 +270,7 @@ Nachdem Sie die App erfolgreich lokal getestet haben, stellen Sie die App für A
 
     ![Veröffentlichen](./media/cache-web-app-howto/cache-publish-app.png)
 
-2. Wählen Sie **Microsoft Azure App Service**, **Neu erstellen** und anschließend **Veröffentlichen** aus.
+2. Wählen Sie **Microsoft Azure App Service** , **Neu erstellen** und anschließend **Veröffentlichen** aus.
 
     ![Veröffentlichen in App Service](./media/cache-web-app-howto/cache-publish-to-app-service.png)
 
@@ -271,14 +280,14 @@ Nachdem Sie die App erfolgreich lokal getestet haben, stellen Sie die App für A
     | ------- | :---------------: | ----------- |
     | **App-Name** | Verwenden Sie den Standardwert. | Bei der Bereitstellung der App für Azure wird der App-Name als Hostname für die App verwendet. Dem Namen kann bei Bedarf ein Zeitstempelsuffix hinzugefügt werden, um ihn eindeutig zu machen. |
     | **Abonnement** | Wählen Sie Ihr Azure-Abonnement aus. | Für dieses Abonnement werden alle damit verbundenen Hostingkosten berechnet. Wenn Sie über mehrere Azure-Abonnements verfügen, stellen Sie sicher, dass das gewünschte Abonnement ausgewählt ist.|
-    | **Ressourcengruppe** | Verwenden Sie die Ressourcengruppe, in der Sie den Cache erstellt haben (z.B. *TestResourceGroup*). | Die Ressourcengruppe hilft Ihnen, alle Ressourcen als Gruppe zu verwalten. Wenn Sie die App später löschen möchten, können Sie die Gruppe einfach löschen. |
-    | **App Service-Plan** | Wählen Sie **Neu** aus, und erstellen Sie anschließend einen neuen App Service-Plan mit dem Namen *TestingPlan*. <br />Verwenden Sie den gleichen **Speicherort**, den Sie beim Erstellen Ihres Caches verwendet haben. <br />Wählen Sie **Free** für die Größe aus. | Mit einem App Service-Plan wird ein Satz von Computeressourcen für die Ausführung einer Web-App definiert. |
+    | **Ressourcengruppe** | Verwenden Sie die Ressourcengruppe, in der Sie den Cache erstellt haben (z.B. *TestResourceGroup* ). | Die Ressourcengruppe hilft Ihnen, alle Ressourcen als Gruppe zu verwalten. Wenn Sie die App später löschen möchten, können Sie die Gruppe einfach löschen. |
+    | **App Service-Plan** | Wählen Sie **Neu** aus, und erstellen Sie anschließend einen neuen App Service-Plan mit dem Namen *TestingPlan* . <br />Verwenden Sie den gleichen **Speicherort** , den Sie beim Erstellen Ihres Caches verwendet haben. <br />Wählen Sie **Free** für die Größe aus. | Mit einem App Service-Plan wird ein Satz von Computeressourcen für die Ausführung einer Web-App definiert. |
 
     ![Dialogfeld „App Service“](./media/cache-web-app-howto/cache-create-app-service-dialog.png)
 
 4. Nachdem Sie die App Service-Hostingeinstellungen konfiguriert haben, wählen Sie **Erstellen** aus.
 
-5. Überwachen Sie in Visual Studio das Fenster **Ausgabe**, um den Veröffentlichungsstatus anzuzeigen. Nach der Veröffentlichung der App wird die URL für die App protokolliert:
+5. Überwachen Sie in Visual Studio das Fenster **Ausgabe** , um den Veröffentlichungsstatus anzuzeigen. Nach der Veröffentlichung der App wird die URL für die App protokolliert:
 
     ![Veröffentlichungsausgabe](./media/cache-web-app-howto/cache-publishing-output.png)
 

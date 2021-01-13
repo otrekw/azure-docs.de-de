@@ -1,6 +1,6 @@
 ---
 title: Integrität der Azure-Infrastruktur
-description: Dieser Artikel behandelt die Integrität der Azure-Infrastruktur.
+description: Erfahren Sie etwas über die Integrität der Azure-Infrastruktur und die Schritte, die Microsoft zur Absicherung durchführt, z. B. Virenscans für Softwarekomponentenbuilds.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: ef81e74b07a351139aa8feefbdf1b89ea7e4994f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: b0df14dfcf66f53e01989a27a95afa5e19fcb2fe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727186"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87543638"
 ---
 # <a name="azure-infrastructure-integrity"></a>Integrität der Azure-Infrastruktur
 

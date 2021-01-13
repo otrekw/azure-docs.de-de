@@ -1,25 +1,15 @@
 ---
-title: Übersicht über den Azure Service Fabric-Akteurlebenszyklus | Microsoft-Dokumentation
+title: Übersicht über den Azure Service Fabric-Akteurlebenszyklus
 description: Erläutert den Service Fabric Reliable Actor-Lebenszyklus, Garbage Collection und das manuelle Löschen von Actors und ihren Zuständen
-services: service-fabric
-documentationcenter: .net
-author: amanbha
-manager: chackdan
-editor: vturecek
-ms.assetid: b91384cc-804c-49d6-a6cb-f3f3d7d65a8e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/06/2017
-ms.author: amanbha
-ms.openlocfilehash: f81fde441a2f0dc2504601f82e5b890eb6e216de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 88db4bb2376cbc418d6954e274a18a6c18a280d1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105291"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576042"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Actor-Lebenszyklus, automatische Garbage Collection und manuelles Löschen
 Ein Actor wird aktiviert, wenn zum ersten Mal eine seiner Methoden aufgerufen wird. Ein Actor wird deaktiviert (Garbage Collection durch die Actors-Laufzeit), wenn er innerhalb eines konfigurierbaren Zeitraums nicht verwendet wird. Ein Actor und sein Zustand können jederzeit auch manuell gelöscht werden.
@@ -94,7 +84,7 @@ public class Program
     }
 }
 ```
-Für jeden aktiven Actor verfolgt die Actors-Laufzeit die Zeitspanne, während der er sich im Leerlauf befand (d.h. nicht verwendet wurde). Die Actors-Laufzeit überprüft jeden Actor in einem festgelegten Abstand (`ScanIntervalInSeconds`), um festzustellen, ob eine Garbage Collection für ihn durchgeführt werden kann, und sammelt ihn auf, wenn er sich seit einem gewissen Zeitraum (`IdleTimeoutInSeconds`) im Leerlauf befindet.
+Für jeden aktiven Actor verfolgt die Actors-Laufzeit die Zeitspanne, während der er sich im Leerlauf befand (d.h. nicht verwendet wurde). Die Actors-Runtime überprüft jeden Akteur regelmäßig (`ScanIntervalInSeconds`), um festzustellen, ob eine Garbage Collection für ihn durchgeführt werden kann, und markiert ihn, wenn er sich seit einem gewissen Zeitraum (`IdleTimeoutInSeconds`) im Leerlauf befindet.
 
 Bei jeder Verwendung eines Actors wird seine Leerlaufzeit auf 0 zurückgesetzt. Danach kann für den Actor nur dann eine Garbage Collection ausgeführt werden, wenn er erneut `IdleTimeoutInSeconds`lang im Leerlauf bleibt. Denken Sie daran, dass ein Actor als verwendet gilt, wenn entweder eine Actor-Schnittstellenmethode oder ein Actor-Erinnerungsrückruf ausgeführt wird. Ein Actor gilt **nicht** als verwendet, wenn der Timer-Rückruf ausgeführt wird.
 
@@ -121,7 +111,7 @@ Eine Garbage Collection von deaktivierten Actors bereinigt nur das Actor-Objekt,
 * [Actor-Ereignisse](service-fabric-reliable-actors-events.md)
 * [Actor-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md)
 * [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
-* [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Actor-API-Referenzdokumentation](/previous-versions/azure/dn971626(v=azure.100))
 * [C#-Beispielcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-Beispielcode](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

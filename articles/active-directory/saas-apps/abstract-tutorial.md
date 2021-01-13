@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Abstract | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Abstract konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2eb167ab-d769-4661-a8cb-ae371cb63d2a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81886fa9165269d89bde8306c5829be41952c190
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: e1c3236c4c1957b4d0daee8d30c71f03fb8674dd
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302582"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587824"
 ---
 # <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>Tutorial: Integrieren von Abstract in Azure Active Directory
 
@@ -31,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie Abstract in Azure Active Directory (Azu
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Abstract anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -125,7 +120,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -135,7 +130,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie in der Anwendungsliste den Eintrag **Abstract** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
@@ -151,7 +146,7 @@ So testen Sie einmaliges Anmelden für Abstract:
 
 1. Öffnen Sie die [Abstract-Web-App](https://app.abstract.com/).
 2. Navigieren Sie in der linken Seitenleiste zur Seite **Permissions** (Berechtigungen).
-3. Klicken Sie auf **Test with my Account** (Mit meinem Konto testen). Tritt beim Test ein Fehler auf, [wenden Sie sich an unser Supportteam](https://www.abstract.com/help/contact/).
+3. Klicken Sie auf **Test with my Account** (Mit meinem Konto testen). Tritt beim Test ein Fehler auf, [wenden Sie sich an unser Supportteam](https://help.abstract.com/hc/).
 
 >[!Note]
 >Sie müssen sich mit dem Administratorkonto einer Organisation authentifizieren, um auf die SSO-Einstellungen für Abstract zuzugreifen.
@@ -161,13 +156,12 @@ Dieses Organisationsadministratorkonto muss im Azure-Portal Abstract zugewiesen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Abstract“ klicken, sollten Sie automatisch bei der Abstract-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Abstract“ klicken, sollten Sie automatisch bei der Abstract-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)

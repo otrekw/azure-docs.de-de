@@ -1,26 +1,27 @@
 ---
-title: Konzepte, Terminologie und Entitäten – Microsoft Azure Scheduler | Microsoft-Dokumentation
+title: Konzepte, Bedingungen und Entitäten
 description: Informationen über die Konzepte, Terminologie und Entitätshierarchie (einschließlich Aufträge und Auftragssammlungen) in Microsoft Azure Scheduler
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
+ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 7e31f891cfd758b888e4045566ad2cd2d9ab6fb8
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 899c64e818896cde18e955d6abd82594734c4b57
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300950"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368161"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Konzepte, Terminologie und Entitäten in Microsoft Azure Scheduler
 
 > [!IMPORTANT]
-> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt den Microsoft Azure Scheduler, der [ eingestellt wird](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+>
+> Scheduler ist nicht mehr in der Azure-Portal verfügbar, aber die [REST-API](/rest/api/scheduler) und [Azure Scheduler-PowerShell-Cmdlets](scheduler-powershell-reference.md) sind weiterhin verfügbar, damit Sie Ihre Aufträge und Auftragssammlungen verwalten können.
 
 ## <a name="entity-hierarchy"></a>Entitätshierarchie
 
@@ -39,7 +40,7 @@ Allgemein betrachtet macht die Scheduler-REST-API die folgenden Vorgänge zum Ve
 
 ### <a name="job-management"></a>Auftragsverwaltung
 
-Unterstützt Vorgänge zum Erstellen und Bearbeiten von Aufträgen. Alle Aufträge müssen einer vorhandenen Auftragssammlung angehören. Eine implizite Erstellung ist folglich nicht möglich. Weitere Informationen finden Sie unter [Scheduler REST API – Jobs](https://docs.microsoft.com/rest/api/scheduler/jobs) (Scheduler-REST-API – Aufträge). Die URI-Adresse für diese Vorgänge lautet wie folgt:
+Unterstützt Vorgänge zum Erstellen und Bearbeiten von Aufträgen. Alle Aufträge müssen einer vorhandenen Auftragssammlung angehören. Eine implizite Erstellung ist folglich nicht möglich. Weitere Informationen finden Sie unter [Scheduler REST API – Jobs](/rest/api/scheduler/jobs) (Scheduler-REST-API – Aufträge). Die URI-Adresse für diese Vorgänge lautet wie folgt:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
@@ -47,7 +48,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-collection-management"></a>Auftragssammlungsverwaltung
 
-Unterstützt Vorgänge zum Erstellen und Bearbeiten von Aufträgen und Auftragssammlungen, denen Kontingente und gemeinsame Einstellungen zugeordnet sind. Kontingente geben beispielsweise die maximale Anzahl von Aufträgen und das kleinste Wiederholungsintervall an. Weitere Informationen finden Sie unter [Scheduler REST API – Job Collections](https://docs.microsoft.com/rest/api/scheduler/jobcollections) (Scheduler-REST-API – Auftragssammlungen). Die URI-Adresse für diese Vorgänge lautet wie folgt:
+Unterstützt Vorgänge zum Erstellen und Bearbeiten von Aufträgen und Auftragssammlungen, denen Kontingente und gemeinsame Einstellungen zugeordnet sind. Kontingente geben beispielsweise die maximale Anzahl von Aufträgen und das kleinste Wiederholungsintervall an. Weitere Informationen finden Sie unter [Scheduler REST API – Job Collections](/rest/api/scheduler/jobcollections) (Scheduler-REST-API – Auftragssammlungen). Die URI-Adresse für diese Vorgänge lautet wie folgt:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
@@ -55,7 +56,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>Auftragsverlaufsverwaltung
 
-Unterstützt den GET-Vorgang zum Abrufen des Auftragsausführungsverlaufs für 60 Tage. Dieser enthält unter anderem die verstrichene Zeit sowie die Ergebnisse der Auftragsausführung. Bietet Unterstützung für Abfragezeichenfolgenparameter zur Filterung auf der Grundlage des Zustands und Status. Weitere Informationen finden Sie unter [Scheduler REST API – Jobs – List Job History](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory) (Scheduler-REST-API – Aufträge – Auflisten des Auftragsverlaufs). Die URI-Adresse für diesen Vorgang lautet wie folgt:
+Unterstützt den GET-Vorgang zum Abrufen des Auftragsausführungsverlaufs für 60 Tage. Dieser enthält unter anderem die verstrichene Zeit sowie die Ergebnisse der Auftragsausführung. Bietet Unterstützung für Abfragezeichenfolgenparameter zur Filterung auf der Grundlage des Zustands und Status. Weitere Informationen finden Sie unter [Scheduler REST API – Jobs – List Job History](/rest/api/scheduler/jobs/listjobhistory) (Scheduler-REST-API – Aufträge – Auflisten des Auftragsverlaufs). Die URI-Adresse für diesen Vorgang lautet wie folgt:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -65,7 +66,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 Azure Scheduler unterstützt mehrere Auftragstypen: 
 
-* HTTP-Aufträge, einschließlich HTTPS-Aufträge, die SSL unterstützen, wenn Ihnen der Endpunkt für einen vorhandenen Dienst oder eine vorhandene Workload bekannt ist
+* HTTP-Aufträge, einschließlich HTTPS-Aufträge, die TLS unterstützen, wenn Ihnen der Endpunkt für einen vorhandenen Dienst oder eine vorhandene Workload bekannt ist
 * Storage-Warteschlangenaufträge für Workloads, die Storage-Warteschlangen verwenden (z. B. Veröffentlichung von Nachrichten in Storage-Warteschlangen)
 * Service Bus-Warteschlangenaufträge für Workloads, die Service Bus-Warteschlangen verwenden
 * Service Bus-Themenaufträge für Workloads, die Service Bus-Themen verwenden
@@ -84,7 +85,7 @@ Der Auftrag enthält auch vom System bereitgestellte Daten, beispielsweise die n
 | Element | Erforderlich | BESCHREIBUNG | 
 |---------|----------|-------------| 
 | [**startTime**](#start-time) | Nein | Die Startzeit für den Auftrag mit einem Zeitzonenoffset im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601) | 
-| [**action**](#action) | Ja | Die Details für die primäre Aktion (kann ein **errorAction**-Objekt enthalten) | 
+| [**action**](#action) | Ja | Die Details für die primäre Aktion (kann ein **errorAction** -Objekt enthalten) | 
 | [**errorAction**](#error-action) | Nein | Die Details für die sekundäre Aktion, die ausgeführt wird, wenn bei der primären Aktion ein Fehler auftritt |
 | [**recurrence**](#recurrence) | Nein | Die Details für einen Serienauftrag (z. B. Häufigkeit und Intervall) | 
 | [**retryPolicy**](#retry-policy) | Nein | Die Details zur Wiederholungshäufigkeit für eine Aktion | 
@@ -143,13 +144,13 @@ Das folgende Beispiel zeigt eine umfassende Auftragsdefinition für eine HTTP-Ak
 
 ## <a name="starttime"></a>startTime
 
-Im **startTime**-Objekt können Sie die Startzeit und einen Zeitzonenoffset im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601) angeben.
+Im **startTime** -Objekt können Sie die Startzeit und einen Zeitzonenoffset im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601) angeben.
 
 <a name="action"></a>
 
 ## <a name="action"></a>action
 
-Ihr Scheduler-Auftrag führt eine primäre **Aktion** basierend auf dem angegebenen Zeitplan aus. Scheduler unterstützt HTTP-Aktionen, Storage-Warteschlangenaktionen, Service Bus-Warteschlangenaktionen und Service Bus-Themenaktionen. Wenn bei der primären **Aktion** ein Fehler auftritt, kann Scheduler eine sekundäre Fehleraktion ([**errorAction**](#erroraction)) zum Behandeln des Fehlers ausführen. Das **action**-Objekt beschreibt die folgenden Elemente:
+Ihr Scheduler-Auftrag führt eine primäre **Aktion** basierend auf dem angegebenen Zeitplan aus. Scheduler unterstützt HTTP-Aktionen, Storage-Warteschlangenaktionen, Service Bus-Warteschlangenaktionen und Service Bus-Themenaktionen. Wenn bei der primären **Aktion** ein Fehler auftritt, kann Scheduler eine sekundäre Fehleraktion ( [**errorAction**](#erroraction)) zum Behandeln des Fehlers ausführen. Das **action** -Objekt beschreibt die folgenden Elemente:
 
 * Den Diensttyp der Aktion
 * Die Details der Aktion
@@ -213,13 +214,13 @@ Hier sehen Sie ein Beispiel für eine Service Bus-Themenaktion:
 },
 ```
 
-Weitere Informationen zu SAS-Token (Shared Access Signature) finden Sie unter [Autorisieren mit Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Weitere Informationen zu SAS-Token (Shared Access Signature) finden Sie unter [Autorisieren mit Shared Access Signatures (SAS)](../storage/common/storage-sas-overview.md).
 
 <a name="error-action"></a>
 
 ## <a name="erroraction"></a>errorAction
 
-Wenn bei der primären **Aktion** Ihres Auftrags ein Fehler auftritt, kann Scheduler eine sekundäre Fehleraktion (**errorAction**) zum Behandeln des Fehlers ausführen. In der primären **Aktion** können Sie ein **errorAction**-Objekt angeben, damit Scheduler einen Endpunkt für die Fehlerbehandlung aufrufen oder eine Benutzerbenachrichtigung senden kann. 
+Wenn bei der primären **Aktion** Ihres Auftrags ein Fehler auftritt, kann Scheduler eine sekundäre Fehleraktion ( **errorAction** ) zum Behandeln des Fehlers ausführen. In der primären **Aktion** können Sie ein **errorAction** -Objekt angeben, damit Scheduler einen Endpunkt für die Fehlerbehandlung aufrufen oder eine Benutzerbenachrichtigung senden kann. 
 
 Wenn beispielsweise ein Notfall am primären Endpunkt auftritt, können Sie mit **errorAction** einen sekundären Endpunkt aufrufen oder einen Endpunkt für die Fehlerbehandlung benachrichtigen. 
 
@@ -229,7 +230,7 @@ Wie bei der primären **Aktion** können Sie auch für die Fehleraktion eine ein
 
 ## <a name="recurrence"></a>recurrence
 
-Ein Auftrag wird wiederholt, wenn die JSON-Definition des Auftrags das **recurrence**-Objekt enthält. Hier ein Beispiel:
+Ein Auftrag wird wiederholt, wenn die JSON-Definition des Auftrags das **recurrence** -Objekt enthält. Hier ein Beispiel:
 
 ```json
 "recurrence": {
@@ -245,11 +246,11 @@ Ein Auftrag wird wiederholt, wenn die JSON-Definition des Auftrags das **recurre
 },
 ```
 
-| Eigenschaft | Erforderlich | Value | BESCHREIBUNG | 
+| Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
 |----------|----------|-------|-------------| 
 | **frequency** | Ja, wenn **recurrence** verwendet wird | Minute, Hour, Day, Week, Month, Year | Die Zeiteinheit zwischen Ausführungen. | 
 | **interval** | Nein | 1 bis einschließlich 1.000 | Eine positive ganze Zahl, die die Anzahl von Zeiteinheiten zwischen den einzelnen Ausführungen basierend auf dem Wert von **frequency** bestimmt. | 
-| **schedule** | Nein | Varies | Die Details für komplexere und erweiterte Zeitpläne. Siehe **hours**, **minutes**, **weekDays**, **months** und **monthDays**. | 
+| **schedule** | Nein | Varies | Die Details für komplexere und erweiterte Zeitpläne. Siehe **hours** , **minutes** , **weekDays** , **months** und **monthDays** . | 
 | **hours** | Nein | 1 bis 24 | Ein Array mit den Stundenmarkierungen für die Ausführung des Auftrags. | 
 | **minutes** | Nein | 0 bis 59 | Ein Array mit den Minutenmarkierungen für die Ausführung des Auftrags. | 
 | **months** | Nein | 1 bis 12 | Ein Array mit den Monaten für die Ausführung des Auftrags. | 
@@ -275,9 +276,9 @@ Für den Fall, dass bei einem Scheduler-Auftrag ein Fehler auftritt, können Sie
 },
 ```
 
-| Eigenschaft | Erforderlich | Value | BESCHREIBUNG | 
+| Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
 |----------|----------|-------|-------------| 
-| **retryType** | Ja | **Fixed**, **None** | Bestimmt, ob Sie eine Wiederholungsrichtlinie angeben (**fixed**) oder nicht (**none**). | 
+| **retryType** | Ja | **Fixed** , **None** | Bestimmt, ob Sie eine Wiederholungsrichtlinie angeben ( **fixed** ) oder nicht ( **none** ). | 
 | **retryInterval** | Nein | PT30S | Gibt das Intervall und die Häufigkeit zwischen den Wiederholungsversuchen im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) an. Der Mindestwert ist 15 Sekunden und der Höchstwert 18 Monate. | 
 | **retryCount** | Nein | 4 | Gibt die Anzahl von Wiederholungsversuchen an. Der Höchstwert ist 20. | 
 ||||
@@ -288,7 +289,7 @@ Weitere Informationen finden Sie unter [Hochverfügbarkeit und Zuverlässigkeit]
 
 ## <a name="state"></a>state
 
-Der Zustand eines Auftrags ist entweder**Enabled**, **Disabled**, **Completed** oder **Faulted**. Hier sehen Sie ein Beispiel: 
+Der Zustand eines Auftrags ist entweder **Enabled** , **Disabled** , **Completed** oder **Faulted** . Hier sehen Sie ein Beispiel: 
 
 `"state": "Disabled"`
 
@@ -299,7 +300,7 @@ Wenn ein Auftrag den Zustand **Completed** oder **Faulted** aufweist, ist es all
 
 ## <a name="status"></a>status
 
-Nachdem ein Auftrag gestartet wurde, gibt Scheduler Informationen zum Auftragsstatus über das **status**-Objekt zurück. Dieses Objekt wird nur von Scheduler gesteuert. Das **status**-Objekt ist jedoch innerhalb des **job**-Objekts zugänglich. Der Status eines Auftrags umfasst die folgenden Informationen:
+Nachdem ein Auftrag gestartet wurde, gibt Scheduler Informationen zum Auftragsstatus über das **status** -Objekt zurück. Dieses Objekt wird nur von Scheduler gesteuert. Das **status** -Objekt ist jedoch innerhalb des **job** -Objekts zugänglich. Der Status eines Auftrags umfasst die folgenden Informationen:
 
 * Zeit für die vorherige Ausführung (sofern vorhanden)
 * Zeit für die nächste geplante Ausführung für aktive Aufträge
@@ -319,11 +320,9 @@ Beispiel:
 }
 ```
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-* [Was ist der Azure Scheduler?](scheduler-intro.md)
-* [Konzepte, Terminologie und Entitätshierarchie](scheduler-concepts-terms.md)
 * [Erstellen komplexer Zeitpläne und erweiterter Serien](scheduler-advanced-complexity.md)
-* [Grenzwerte, Kontingente, Standardwerte und Fehlercodes](scheduler-limits-defaults-errors.md)
 * [Azure Scheduler-REST-API – Referenz](/rest/api/scheduler)
 * [Azure Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)
+* [Grenzwerte, Kontingente, Standardwerte und Fehlercodes](scheduler-limits-defaults-errors.md)

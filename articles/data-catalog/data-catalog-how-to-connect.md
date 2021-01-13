@@ -4,14 +4,14 @@ description: Anleitungsartikel zum Herstellen einer Verbindung mit Datenquellen,
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 5c8c545f01eb0df53ce9677b7db6f931b4d21af9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976784"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021927"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Herstellen einer Verbindung mit Datenquellen
 ## <a name="introduction"></a>Einführung
@@ -35,19 +35,19 @@ Bei Verwendung des Menüs „Öffnen in…“ für Datenquellen im Azure Data Ca
 
 | Öffnen in Anwendung | Dateierweiterung/Protokoll | Unterstützte Anwendungsversionen |
 | --- | --- | --- |
-| Excel |.odc |Excel 2010 oder höher |
-| Excel (Top 1.000) |.odc |Excel 2010 oder höher |
+| Excel |ODC |Excel 2010 oder höher |
+| Excel (Top 1.000) |ODC |Excel 2010 oder höher |
 | Power Query |.xlsx |Excel 2016 oder Excel 2010 oder Excel 2013 mit installiertem Add-In „Power Query für Excel“ |
 | Power BI Desktop |.pbix |Power BI Desktop Juli 2016 oder höher |
 | SQL Server Data Tools |vsweb:// |Visual Studio 2013 Update 4 oder höher mit installierten SQL Server-Tools |
-| Berichts-Manager |http:// |Informationen finden Sie in den [Browseranforderungen für SQL Server Reporting Services](https://technet.microsoft.com/library/ms156511.aspx) |
+| Berichts-Manager |http:// |Informationen finden Sie in den [Browseranforderungen für SQL Server Reporting Services](/sql/reporting-services/browser-support-for-reporting-services-and-power-view) |
 
 ## <a name="your-data-your-tools"></a>Ihre Daten, Ihre Tools
 Die im Menü verfügbaren Optionen hängen vom Typ der momentan ausgewählten Datenressource ab. Das Menü „Öffnen in“ enthält natürlich nicht alle möglichen Tools. Trotzdem können Sie mühelos mit jedem beliebigen Clienttool eine Verbindung mit der Datenquelle herstellen. Wenn eine Datenressource im **Azure Data Catalog** -Portal ausgewählt ist, wird der vollständige Speicherort im Eigenschaftenbereich angezeigt.
 
  ![Verbindungsinformationen für eine SQL Server-Tabelle](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
 
-Die Verbindungsdetails variieren je nach Datenquellentyp, das Portal enthält jedoch alle Informationen, die Sie benötigen, um in jedem Clienttool eine Verbindung mit der Datenquelle herzustellen. Benutzer können die Verbindungsdetails für die mit **Azure Data Catalog**gefundenen Datenquellen kopieren und im Tool ihrer Wahl mit den Daten arbeiten.
+Die Verbindungsdetails variieren je nach Datenquellentyp, das Portal enthält jedoch alle Informationen, die Sie benötigen, um in jedem Clienttool eine Verbindung mit der Datenquelle herzustellen. Benutzer können die Verbindungsdetails für die mit **Azure Data Catalog** gefundenen Datenquellen kopieren und im Tool ihrer Wahl mit den Daten arbeiten.
 
 ## <a name="connecting-and-data-source-permissions"></a>Herstellen einer Verbindung und Berechtigungen für Datenquellen
 **Azure Data Catalog** macht Datenquellen zwar auffindbar, der Zugriff auf die Daten selbst wird aber nach wie vor vom Datenquellenbesitzer oder Administrator gesteuert. Benutzer erhalten nicht automatisch Zugriffsberechtigungen für die Datenquellen, die sie in **Azure Data Catalog** finden.

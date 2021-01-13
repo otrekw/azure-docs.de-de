@@ -1,24 +1,17 @@
 ---
 title: Azure Application Insights-Trichter
 description: In diesem Artikel wird erläutert, wie Sie Trichter dazu verwenden können, sich über die Interaktionen der Kunden mit Ihrer Anwendung zu informieren.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/17/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 2cb7e15b701b53e74618c21bf219a355d495f985
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/17/2017
+ms.reviewer: mbullwin
+ms.openlocfilehash: a81c4f32385cf06238f36ca0162923f93d682807
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372915"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87323722"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Informieren Sie sich mit Application Insights-Trichtern darüber, wie die Kunden Ihre Anwendung verwenden
 
@@ -44,7 +37,7 @@ Der folgende Screenshot enthält ein Beispiel für die Art der Daten, die mit de
 ### <a name="funnels-features"></a>Trichter-Features
 Der obige Screenshot enthält fünf hervorgehobene Bereiche. Dies sind Features des Trichters. In der folgenden Liste werden die einzelnen Bereiche des Screenshots näher beschrieben:
 1. Wenn für Ihre App Stichproben erstellt werden, wird ein entsprechendes Banner angezeigt. Wenn Sie das Banner auswählen, wird ein Kontextbereich mit Informationen zum Deaktivieren der Stichprobenfunktion geöffnet. 
-2. Sie können den Trichter nach [Power BI](../../azure-monitor/app/export-power-bi.md ) exportieren.
+2. Sie können den Trichter nach [Power BI](./export-power-bi.md) exportieren.
 3. Wählen Sie einen Schritt aus, um rechts weitere Details anzuzeigen. 
 4. Im Graphen zum Verlauf der Abschlüsse sind die Abschlussraten für die letzten 90 Tage angegeben. 
 5. Entwickeln Sie ein besseres Verständnis Ihrer Benutzer, indem Sie auf das Benutzertool zugreifen. Sie können in jedem Schritt Filter verwenden. 
@@ -53,7 +46,7 @@ Der obige Screenshot enthält fünf hervorgehobene Bereiche. Dies sind Features 
   * [Nutzungsübersicht](usage-overview.md)
   * [Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights](usage-segmentation.md)
   * [Vermerkdauer](usage-retention.md)
-  * [Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)
+  * [Arbeitsmappen](../platform/workbooks-overview.md)
   * [Hinzufügen von Benutzerkontext](usage-send-user-context.md)
-  * [Exportieren nach Power BI](../../azure-monitor/app/export-power-bi.md )
+  * [Exportieren nach Power BI](./export-power-bi.md)
 

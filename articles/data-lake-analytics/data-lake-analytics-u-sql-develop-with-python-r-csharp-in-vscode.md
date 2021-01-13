@@ -1,19 +1,17 @@
 ---
-title: Entwickeln von U-SQL mit Python, R und C# für Azure Data Lake Analytics in Visual Studio Code
+title: Ausführen von U-SQL-Aufträgen in Python, R und C# – Azure Data Lake Analytics
 description: Hier erfahren Sie, wie Sie CodeBehind mit Python, R und C# verwenden, um Aufträge in Azure Data Lake zu übermitteln.
-services: data-lake-analytics
 ms.service: data-lake-analytics
-author: jejiang
-ms.author: jejiang
-ms.reviewer: jasonwhowell
-ms.topic: conceptual
+ms.reviewer: jasonh
+ms.topic: how-to
 ms.date: 11/22/2017
-ms.openlocfilehash: 6c234ad6756f4e65e172bf0ffc0ae5a1d35d109b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-python
+ms.openlocfilehash: d6066bd6ec2a4c986ae17ad0cce3e7f6f73b21e7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60814063"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219971"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Entwickeln von U-SQL mit Python, R und C# für Azure Data Lake Analytics in Visual Studio Code
 Hier erfahren Sie, wie Sie Visual Studio Code (VSCode) verwenden, um Python-, R- und C#-CodeBehind-Dateien mit U-SQL zu schreiben und Aufträge an den Azure Data Lake-Dienst zu übermitteln. Weitere Informationen zu Azure Data Lake Tools für VSCode finden Sie unter [Verwenden von Azure Data Lake Tools für Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -58,7 +56,7 @@ Registrieren Sie Assemblys für Python- und R-Erweiterungen für Ihr ADL-Konto.
         USING Outputters.Csv();
     ```
     
-3. Klicken Sie mit der rechten Maustaste auf eine Skriptdatei, und wählen Sie Folgendes aus: **ADL: Python-CodeBehind-Datei generieren**. 
+3. Klicken Sie mit der rechten Maustaste auf eine Skriptdatei, und klicken Sie dann auf **ADL: Generate Python Code Behind File** (ADL: Python-CodeBehind-Datei generieren). 
 4. Die Datei **xxx.usql.py** wird in Ihrem Arbeitsordner erstellt. Schreiben Sie Ihren Code in die Python-Datei. Im Anschluss sehen Sie ein Codebeispiel.
 
     ```Python
@@ -115,7 +113,7 @@ Registrieren Sie Assemblys für Python- und R-Erweiterungen für Ihr ADL-Konto.
     TO @OutputFilePredictions
     USING Outputters.Tsv();
     ```
-3. Klicken Sie mit der rechten Maustaste auf eine **USQL**-Datei, und wählen Sie Folgendes aus: **ADL: R-CodeBehind-Datei generieren**. 
+3. Klicken Sie mit der rechten Maustaste in die **USQL**-Datei, und klicken Sie dann auf **ADL: Generate R Code Behind File** (ADL: R-CodeBehind-Datei generieren). 
 4. Die Datei **xxx.usql.r** wird in Ihrem Arbeitsordner erstellt. Schreiben Sie Ihren Code in die R-Datei. Im Anschluss sehen Sie ein Codebeispiel.
 
     ```R
@@ -125,7 +123,7 @@ Registrieren Sie Assemblys für Python- und R-Erweiterungen für Ihr ADL-Konto.
 5. Klicken Sie mit der rechten Maustaste in die **USQL**-Datei. Sie können auf **Compile Script** (Skript kompilieren) oder **Auftrag übermitteln** klicken, um den Auftrag auszuführen.
 
 ## <a name="develop-c-file"></a>Entwickeln einer C#-Datei
-Eine CodeBehind-Datei ist eine C#-Datei, die einem U-SQL-Skript zugeordnet ist. Sie können ein Skript speziell für UDO, UDA, UDT und UDF in der CodeBehind-Datei definieren. UDO, UDA, UDT und UDF können direkt im Skript verwendet werden, ohne die Assembly zuvor zu registrieren. Die CodeBehind-Datei wird im gleichen Ordner wie die U-SQL-Skriptdatei für das Peering gespeichert. Wenn das Skript den Namen „xxx.usql“ erhält, heißt die CodeBehind-Datei „xxx.usql.cs“. Durch manuelles Löschen der CodeBehind-Datei wird das CodeBehind-Feature für das zugehörige U-SQL-Skript deaktiviert. Weitere Informationen zum Schreiben von benutzerdefiniertem Code für ein U-SQL-Skript finden Sie unter [Writing and Using Custom Code in U-SQL: User-Defined Functions]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/) (Schreiben und Verwenden von benutzerdefiniertem Code in U-SQL: benutzerdefinierte Funktionen).
+Eine CodeBehind-Datei ist eine C#-Datei, die einem U-SQL-Skript zugeordnet ist. Sie können ein Skript speziell für UDO, UDA, UDT und UDF in der CodeBehind-Datei definieren. UDO, UDA, UDT und UDF können direkt im Skript verwendet werden, ohne die Assembly zuvor zu registrieren. Die CodeBehind-Datei wird im gleichen Ordner wie die U-SQL-Skriptdatei für das Peering gespeichert. Wenn das Skript den Namen „xxx.usql“ erhält, heißt die CodeBehind-Datei „xxx.usql.cs“. Durch manuelles Löschen der CodeBehind-Datei wird das CodeBehind-Feature für das zugehörige U-SQL-Skript deaktiviert. Weitere Informationen zum Schreiben von Kundencode für ein U-SQL-Skript finden Sie unter [Writing and Using Custom Code in U-SQL: User-Defined Functions]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/) (Schreiben und Verwenden von benutzerdefiniertem Code in U-SQL: benutzerdefinierte Funktionen).
 
 1. Klicken Sie in Ihrem Arbeitsbereich auf **Neue Datei**.
 2. Schreiben Sie Ihren Code in die U-SQL-Datei. Im Anschluss sehen Sie ein Codebeispiel.
@@ -157,7 +155,7 @@ Eine CodeBehind-Datei ist eine C#-Datei, die einem U-SQL-Skript zugeordnet ist. 
         TO @"/output/SearchLogtest.txt" 
         USING Outputters.Tsv();
     ```
-3. Klicken Sie mit der rechten Maustaste auf eine **USQL**-Datei, und wählen Sie Folgendes aus: **ADL: CS-CodeBehind-Datei generieren**. 
+3. Klicken Sie mit der rechten Maustaste in die **USQL**-Datei, und klicken Sie dann auf **ADL: Generate CS Code Behind File** (ADL: CS-CodeBehind-Datei generieren). 
 4. Die Datei **xxx.usql.cs** wird in Ihrem Arbeitsordner erstellt. Schreiben Sie Ihren Code in die CS-Datei. Im Anschluss sehen Sie ein Codebeispiel.
 
     ```CS
@@ -184,4 +182,4 @@ Eine CodeBehind-Datei ist eine C#-Datei, die einem U-SQL-Skript zugeordnet ist. 
 * [Erste Schritte mit Data Lake Analytics mithilfe von PowerShell](data-lake-analytics-get-started-powershell.md)
 * [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
 * [Verwenden von Data Lake-Tools für Visual Studio zum Entwickeln von U-SQL-Anwendungen](data-lake-analytics-data-lake-tools-get-started.md)
-* [Verwenden des Azure Data Lake Analytics-Katalogs (U-SQL)](data-lake-analytics-use-u-sql-catalog.md)
+* [Verwenden des Azure Data Lake Analytics-Katalogs (U-SQL)](./data-lake-analytics-u-sql-get-started.md)

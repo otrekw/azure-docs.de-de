@@ -1,9 +1,9 @@
 ---
 title: Medienstreamingoptimierung über Azure CDN
-description: Optimieren des Streamings von Mediendateien für eine reibungslose Übermittlung
+description: Erfahren Sie mehr über die Optionen zur Optimierung von Streamingmedien in Azure Content Delivery Network, z. B. die teilweise Freigabe des Caches und die Wartezeit zum Auffüllen des Caches.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/01/2018
-ms.author: magattus
-ms.openlocfilehash: c6ed546735058e330368151adb0df7323f943050
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: allensu
+ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593667"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88192599"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Medienstreamingoptimierung über Azure CDN 
  
@@ -82,12 +82,11 @@ Nach Erstellung des Endpunkts wird die Optimierung auf alle Dateien angewendet, 
 Wenn **Azure CDN Standard von Akamai** erkennt, dass es sich bei der Ressource um ein Streamingmanifest oder -fragment handelt, verwendet es andere Cachingablaufzeiten als bei der allgemeinen Webbereitstellung. (Eine vollständige Liste finden Sie in der Tabelle weiter unten.) Auch hier werden vom Ursprungsserver gesendete Header vom Typ „cache-control“ oder „expires“ berücksichtigt. Falls es sich bei der Ressource nicht um ein Medienobjekt handelt, werden beim Caching die Ablaufzeiten für die allgemeine Webbereitstellung verwendet.
 
 Die kurze negative Zwischenspeicherungsdauer ermöglicht die Entlastung des Ursprungsservers, wenn viele Benutzer ein noch nicht vorhandenes Fragment anfordern. Ein Beispiel wäre etwa ein Livestream, dessen Pakete zum Anforderungszeitpunkt noch nicht auf dem Ursprungsserver verfügbar sind. Das längere Cachingintervall sorgt auch für eine Entlastung bei Anforderungen vom Ursprungsserver, da Videoinhalte in der Regel nicht geändert werden.
- 
 
-|   | Allgemeine Webbereitstellung | Allgemeines Medienstreaming | Video on Demand-Medienstreaming  
---- | --- | --- | ---
-Caching: Positiv <br> HTTP 200, 203, 300, <br> 301, 302 und 410 | 7 Tage |365 Tage | 365 Tage   
-Caching: Negativ <br> HTTP 204, 305, 404 <br> und 405 | Keine | 1 Sekunde | 1 Sekunde
+| Caching  | Allgemeine Webbereitstellung | Allgemeines Medienstreaming | Video on Demand-Medienstreaming  
+|--- | --- | --- | ---
+| Caching: Positiv <br> HTTP 200, 203, 300, <br> 301, 302 und 410 | 7 Tage |365 Tage | 365 Tage   
+| Caching: Negativ <br> HTTP 204, 305, 404 <br> und 405 | Keine | 1 Sekunde | 1 Sekunde
  
 ### <a name="deal-with-origin-failure"></a>Behandeln eines Ausfalls des Ursprungsservers  
 

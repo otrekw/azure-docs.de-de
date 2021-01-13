@@ -1,24 +1,24 @@
 ---
 title: 'Satzpaarbildung und -zuordnung: Custom Translator'
 titleSuffix: Azure Cognitive Services
-description: Während der Ausführung des Trainings werden aus den Sätzen in parallelen Dokumenten Paare gebildet, bzw. die Sätze werden einander zugeordnet. Custom Translator lernt Übersetzungen Satz für Satz durch Lesen eines Satzes und der zugehörigen Übersetzung. Anschließend werden Wörter und Ausdrücke in diesen beiden Sätzen einander zugeordnet.
+description: Während der Ausführung des Trainings werden aus den Sätzen in parallelen Dokumenten Paare gebildet, bzw. die Sätze werden einander zugeordnet. Custom Translator lernt Übersetzungen Satz für Satz durch Lesen eines Satzes und der zugehörigen Übersetzung. Danach werden Wörter und Ausdrücke in diesen beiden Sätzen einander zugeordnet.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e9bc5c876da6bd2be1b22b389b819e51330b2e50
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: e5d360933cbeb611046aede6164ec2e2fa497664
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595459"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347794"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Satzpaarbildung und -zuordnung in parallelen Dokumenten
 
-Während des Trainings werden aus den Sätzen in parallelen Dokumenten Paare gebildet, bzw. die Sätze werden einander zugeordnet. Custom Translator zeigt die Anzahl von Sätzen, für die ein Paar gebildet werden konnte, als „zugeordnete Sätze“ in jedem der Datasets an.
+Nach dem Hochladen der Dokumente werden aus den Sätzen in parallelen Dokumenten Paare gebildet, bzw. die Sätze werden einander zugeordnet. Custom Translator zeigt die Anzahl von Sätzen, für die ein Paar gebildet werden konnte, als „zugeordnete Sätze“ in jedem der Datasets an.
 
 ## <a name="pairing-and-alignment-process"></a>Paarbildungs- und Zuordnungsprozess
 
@@ -28,18 +28,23 @@ Custom Translator lernt Übersetzungen von Sätzen Satz für Satz. Dazu wird ein
 
 Wenn Sie wissen, dass Sie über parallele Dokumente verfügen, können Sie die Satzzuordnung außer Kraft setzen, indem Sie vorab zugeordnete Textdateien bereitstellen. Sie können alle Sätze aus beiden Dokumenten in eine Textdatei mit einem Satz pro Zeile extrahieren und die Datei mit der Erweiterung `.align` hochladen. Die Erweiterung `.align` signalisiert Custom Translator, dass die Satzzuordnung übersprungen werden soll.
 
-Um optimale Ergebnisse zu erzielen, sollten Sie darauf achten, dass Ihre Dateien einen Satz pro Zeile enthalten. Verwenden Sie keine Zeilenumbruchzeichen in einem Satz, da dies zu Zuordnungsfehlern führen kann.
+Um optimale Ergebnisse zu erzielen, sollten Sie darauf achten, dass Ihre Dateien einen Satz pro Zeile enthalten.  Verwenden Sie keine Zeilenumbruchzeichen in einem Satz, da dies zu Zuordnungsfehlern führen kann.
 
-## <a name="suggested-minimum-number-of-extracted-and-aligned-sentences"></a>Empfohlene Mindestanzahl von extrahierten und zugeordneten Sätzen
+## <a name="suggested-minimum-number-of-sentences"></a>Empfohlene Mindestanzahl von Sätzen
 
-In der folgenden Tabelle ist die für ein erfolgreiches Training erforderliche Mindestanzahl von extrahierten Sätzen und zugeordneten Sätzen in den einzelnen Datasets aufgeführt. Die empfohlene Mindestanzahl von extrahierten Sätzen ist wesentlich höher als die empfohlene Mindestanzahl von zugeordneten Sätzen. Dadurch wird der Tatsache Rechnung getragen, dass bei der Satzzuordnung möglicherweise nicht alle extrahierten Sätze erfolgreich zugeordnet werden können.
+Die folgende Tabelle enthält die für ein erfolgreiches Training erforderliche Mindestanzahl von Sätzen, die im jeweiligen Dokumenttyp enthalten sein müssen. Durch diese Einschränkung wird sichergestellt, dass Ihre parallelen Sätze genügend eindeutiges Vokabular zum erfolgreichen Trainieren eines Übersetzungsmodells enthalten. Faustregel: Eine höhere Anzahl bereichsspezifischer paralleler Sätze von menschlichen Übersetzern führt in der Regel zu einer höheren Modellqualität.
 
-| Dataset   | Empfohlene Mindestanzahl von extrahierten Sätzen | Empfohlene Mindestanzahl von zugeordneten Sätzen | Höchstanzahl von zugeordneten Sätzen |
-|------------|--------------------------------------------|------------------------------------------|--------------------------------|
-| Training   | 10.000                                     | 2\.000                                    | Keine Obergrenze                 |
-| Optimierung     | 2\.000                                      | 500                                      | 2\.500                          |
-| Testen    | 2\.000                                      | 500                                      | 2\.500                          |
-| Wörterbuch | 0                                          | 0                                        | Keine Obergrenze                 |
+| Dokumenttyp   | Empfohlene Mindestanzahl von Sätzen | Maximale Anzahl von Sätzen |
+|------------|--------------------------------------------|--------------------------------|
+| Training   | 10.000                                     | Keine Obergrenze                 |
+| Optimierung     | 500                                      | 2\.500       |
+| Testen    | 500                                      | 2\.500  |
+| Wörterbuch | 0                                          | Keine Obergrenze                 |
+
+> [!NOTE]
+> - Das Training wird nicht gestartet und ist nicht erfolgreich, wenn die Mindestanzahl von 10.000 Sätzen für das Training unterschritten wird. 
+> - „Optimierung“ und „Testen“ sind optional. Ohne diese Optionen entfernt das System einen gewissen Prozentsatz aus dem Training, um ihn für die Überprüfung und zu Testzwecken zu verwenden. 
+> - Sie können ein Modell nur mit Wörterbuchdaten trainieren. Weitere Informationen finden Sie unter [Definition: Wörterbuch](./what-is-dictionary.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

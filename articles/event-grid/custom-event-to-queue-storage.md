@@ -1,20 +1,15 @@
 ---
-title: 'Senden von benutzerdefinierten Ereignissen an die Speicherwarteschlange: Event Grid, Azure CLI'
-description: Verwenden Sie Azure Event Grid und die Azure CLI, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Für den Endpunkt wird eine Speicherwarteschlange verwendet.
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 01/07/2019
+title: 'Schnellstart: Senden von benutzerdefinierten Ereignissen an die Speicherwarteschlange: Event Grid, Azure CLI'
+description: 'Schnellstart: Verwenden Sie Azure Event Grid und die Azure CLI, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Für den Endpunkt wird eine Speicherwarteschlange verwendet.'
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: 9d1d9caccac0fcdeb4e1d2dae40e677f36de40ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4de7aa1c111b5b21a27b155474ae10f78feba083
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170256"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566315"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Schnellstart: Weiterleiten benutzerdefinierter Ereignisse an Azure Queue Storage mit Azure-CLI und Event Grid
 
@@ -22,12 +17,11 @@ Azure Event Grid ist ein Ereignisdienst für die Cloud. Azure Queue Storage ist 
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Azure CLI oder Azure PowerShell auf Ihrem lokalen Computer anstatt Cloud Shell im Azure-Portal verwenden, stellen Sie sicher, dass Sie über die folgenden Versionen der Azure CLI und von Azure PowerShell verfügen. 
+- Für diesen Artikel ist mindestens Version 2.0.56 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
-- Azure CLI Version 2.0.56 oder höher. Anweisungen zum Installieren der aktuellen Version der Azure CLI finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). 
-- Azure PowerShell Version 1.1.0 oder höher. Laden Sie die aktuelle Version von Azure PowerShell [Azure-Downloads – Befehlszeilentools](https://azure.microsoft.com/downloads/) auf Ihren Windows-Computer herunter. 
+- Wenn Sie Azure PowerShell auf Ihrem lokalen Computer anstatt Cloud Shell im Azure-Portal verwenden, stellen Sie sicher, dass Sie mindestens über Version 1.1.0 von Azure PowerShell verfügen. Laden Sie die aktuelle Version von Azure PowerShell [Azure-Downloads – Befehlszeilentools](https://azure.microsoft.com/downloads/) auf Ihren Windows-Computer herunter. 
 
 In diesem Artikel finden Sie Befehle für die Verwendung der Azure CLI. 
 
@@ -35,7 +29,7 @@ In diesem Artikel finden Sie Befehle für die Verwendung der Azure CLI.
 
 Event Grid-Themen sind Azure-Ressourcen und müssen in einer Azure-Ressourcengruppe platziert werden. Die Azure-Ressourcengruppe ist eine logische Sammlung, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. 
 
 Das folgende Beispiel erstellt eine Ressourcengruppe namens *gridResourceGroup* am Standort *westus2*.
 

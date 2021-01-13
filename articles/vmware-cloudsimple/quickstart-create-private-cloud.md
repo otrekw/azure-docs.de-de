@@ -1,6 +1,7 @@
 ---
-title: 'Azure-VMware-Lösung von CloudSimple – Schnellstart: Erstellen einer privaten Cloud'
-description: Erfahren Sie, wie Sie eine private Cloud mit der Azure-VMware-Lösung von CloudSimple erstellen und konfigurieren können.
+title: 'Schnellstart: Erstellen einer privaten Cloud'
+titleSuffix: Azure VMware Solutions by CloudSimple
+description: Hier erfahren Sie, wie Sie eine private Cloud mit Azure VMware Solution by CloudSimple erstellen und konfigurieren können.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/16/2019
@@ -8,16 +9,20 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bbb5b90ffac4a89c14a4a6df51022bb61b10fbb0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 487308aca3231650aee3fac5ae127006649e19b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845495"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87073910"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Schnellstart: Konfigurieren einer privaten Cloudumgebung
 
 In diesem Artikel erfahren Sie, wie Sie eine private CloudSimple-Cloud erstellen und Ihre private Cloudumgebung einrichten.
+
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Lesen Sie [Voraussetzungen für Netzwerke](cloudsimple-network-checklist.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -27,7 +32,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 Eine private Cloud ist ein isolierter VMware-Stapel, der ESXi-Hosts, vCenter, vSAN und NSX unterstützt.
 
-Private Clouds werden über das CloudSimple-Portal verwaltet. Sie verfügen über einen eigenen vCenter-Server in ihrer eigenen Verwaltungsdomäne. Der Stapel wird auf dedizierten Knoten und isolierten Bare-Metal-Hardwareknoten ausgeführt.
+Private Clouds werden über das CloudSimple-Portal verwaltet. Sie verfügen über einen eigenen vCenter-Server in einer eigenen Verwaltungsdomäne. Der Stapel wird auf dedizierten Knoten und isolierten Bare-Metal-Hardwareknoten ausgeführt.
 
 1. Wählen Sie **Alle Dienste** aus.
 2. Suchen Sie nach **CloudSimple Services**.
@@ -38,7 +43,7 @@ Private Clouds werden über das CloudSimple-Portal verwaltet. Sie verfügen übe
 
 5. Geben Sie im CloudSimple-Portal einen Namen für Ihre private Cloud an.
 6. Wählen Sie den **Standort** Ihrer privaten Cloud aus.
-7. Wählen Sie den **Knotentyp** aus, der mit dem in Azure erworbenen Knotentyp übereinstimmt. Sie können zwischen der [CS28- und CS36-Option](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku) wählen. Die zweite Option umfasst die maximale Compute- und Arbeitsspeicherkapazität.
+7. Wählen Sie den **Knotentyp** aus, der mit dem in Azure bereitgestellten Knotentyp übereinstimmt.
 8. Geben Sie die **Knotenanzahl** an.  Für das Erstellen einer privaten Cloud sind mindestens drei Knoten erforderlich.
 
     ![Erstellen einer privaten Cloud: grundlegende Informationen](media/create-private-cloud-basic-info.png)
@@ -53,7 +58,7 @@ Private Clouds werden über das CloudSimple-Portal verwaltet. Sie verfügen übe
 
 11. Klicken Sie auf **Weiter: Überprüfen und erstellen**.
 12. Überprüfen Sie die Einstellungen. Wenn Sie irgendeine der Einstellungen ändern müssen, klicken Sie auf **Zurück**.
-13. Klicken Sie auf **Create**.
+13. Klicken Sie auf **Erstellen**.
 
 Der Prozess der Bereitstellung der privaten Cloud wird gestartet.  Es kann bis zu zwei Stunden dauern, bis die private Cloud bereitgestellt wird.
 
@@ -135,7 +140,7 @@ Nach dem Erstellen einer privaten Clouds erstellen Sie ein VLAN, in dem Sie Ihre
 5. Wählen Sie eine VLAN-ID in der Liste aus.  
 6. Geben Sie einen Subnetznamen ein, um das Subnetz zu bezeichnen.
 7. Geben Sie den CIDR-Bereich und die Maske des Subnetzes an.  Dieser Bereich darf sich nicht mit irgendeinem vorhandenen Subnetz überlappen.
-8. Klicken Sie auf **Submit**.
+8. Klicken Sie auf **Submit**(Senden).
 
     ![Details zum Erstellen des VLANs/Subnetzes](media/create-new-vlan-subnet-details.png)
 
@@ -143,7 +148,7 @@ Die VLAN/Subnetz wird erstellt.  Sie können jetzt diese VLAN-ID verwenden, um e
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Verbinden Ihrer Umgebung mit einem virtuellen Azure-Netzwerk
 
-CloudSimple stellt Ihnen eine ExpressRoute-Leitung für Ihre private Cloud bereit. Sie können Ihr virtuelles Netzwerk in Azure mit der ExpressRoute-Verbindung verbinden. Ausführliche Informationen zum Einrichten der Verbindung finden Sie in den Schritten unter [Verbindung mit dem virtuellen Azure-Netzwerk mithilfe von ExpressRoute](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/).
+CloudSimple stellt Ihnen eine ExpressRoute-Leitung für Ihre private Cloud bereit. Sie können Ihr virtuelles Netzwerk in Azure mit der ExpressRoute-Verbindung verbinden. Ausführliche Informationen zum Einrichten der Verbindung finden Sie in den Schritten unter [Verbindung mit dem virtuellen Azure-Netzwerk mithilfe von ExpressRoute](./cloudsimple-azure-network-connection.md).
 
 ## <a name="sign-in-to-vcenter"></a>Anmelden bei vCenter
 
@@ -154,8 +159,8 @@ Sie können sich jetzt bei vCenter anmelden, um virtuelle Computer sowie Richtli
     ![VSphere-Client starten](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. Wählen Sie Ihren bevorzugten vSphere-Client aus, über den Sie auf vCenter zugreifen möchten, und melden Sie sich mit Ihrem Benutzernamen und Kennwort an.  Die Standardwerte sind:
-    * Benutzername: **CloudOwner@cloudsimple.local**
-    * Password (Kennwort): **CloudSimple123!**  
+    * Benutzername: `CloudOwner@cloudsimple.local`
+    * Kennwort: `CloudSimple123!`
 
 Die vCenter-Bildschirme in den nächsten Schritten stammen vom vSphere-Client für HTML5.
 
@@ -179,9 +184,9 @@ Wenn Sie ein Kennwort festlegen, das die Anforderungen nicht erfüllt:
 * Wenn Sie den vSphere-Flash-Client verwenden, meldet dieser einen Fehler.
 * Wenn Sie den HTML5-Client verwendet, wird kein Fehler gemeldet. Der Client akzeptiert die Änderung nicht, und das alte Kennwort funktioniert weiterhin.
 
-## <a name="change-nsx-administrator-password"></a>Ändern des NSX-Administratorkennworts
+## <a name="access-nsx-manager"></a>Zugreifen auf NSX Manager
 
-NSX Manager wird mit einem Standardkennwort bereitgestellt.  Es empfiehlt sich, dass Sie das Kennwort ändern, nachdem Sie Ihre private Cloud erstellt haben.
+NSX Manager wird mit einem Standardkennwort bereitgestellt. 
 
 * Benutzername: **admin**
 * Password (Kennwort): **CloudSimple123!**
@@ -194,8 +199,6 @@ Sie finden den vollständig qualifizierten Domänennamen (FQDN) und die IP-Adres
 4. Verwenden Sie den FQDN oder die IP-Adresse von **NSX Manager**, und stellen Sie über einen Webbrowser eine Verbindung her.
 
     ![Nach dem FQDN von NSX Manager suchen](media/private-cloud-nsx-manager-fqdn.png)
-
-Um das Kennwort zu ändern, folgen Sie den Anweisungen in [NSX Manager Installation](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html).
 
 ## <a name="create-a-port-group"></a>Erstellen einer Portgruppe
 

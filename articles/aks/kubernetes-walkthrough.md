@@ -1,37 +1,42 @@
 ---
-title: 'Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters'
+title: 'Schnellstart: Bereitstellen eines AKS-Clusters mithilfe der Azure CLI'
 description: Hier erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle schnell einen Kubernetes-Cluster erstellen, eine Anwendung bereitstellen und die Leistung in Azure Kubernetes Service (AKS) überwachen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: quickstart
-ms.date: 09/13/2019
-ms.author: mlearned
-ms.custom: H1Hack27Feb2017, mvc, devcenter, seo-javascript-september2019
-ms.openlocfilehash: 0ad1bb4acf27ff542b94b2e6f4aef82705f4b46a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.date: 09/11/2020
+ms.custom:
+- H1Hack27Feb2017
+- mvc
+- devcenter
+- seo-javascript-september2019
+- seo-javascript-october2019
+- seo-python-october2019
+- devx-track-azurecli
+- contperf-fy21q1
+ms.openlocfilehash: e69db59789dbaf45c0830ba6e6ac3afbe87f9a19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097989"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029429"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über die Azure-Befehlszeilenschnittstelle
+# <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters über die Azure-Befehlszeilenschnittstelle
 
-Azure Kubernetes Service (AKS) ist ein verwalteter Kubernetes-Dienst, mit dem Sie schnell Cluster bereitstellen und verwalten können. In dieser Schnellstartanleitung stellen Sie einen AKS-Cluster über die Azure-Befehlszeilenschnittstelle bereit. In dem Cluster wird eine Anwendung mit mehreren Containern ausgeführt, die ein Web-Front-End und eine Redis-Instanz enthält. Sie erfahren dann, wie Sie den Zustand des Clusters und der Pods überwachen können, in denen Ihre Anwendung ausgeführt wird.
+In dieser Schnellstartanleitung stellen Sie einen AKS-Cluster (Azure Kubernetes Service) über die Azure-Befehlszeilenschnittstelle bereit. AKS ist ein Managed Kubernetes-Dienst, mit dem Sie Cluster schnell bereitstellen und verwalten können. In dem Cluster wird eine Anwendung mit mehreren Containern ausgeführt, die ein Web-Front-End und eine Redis-Instanz enthält. Sie erfahren dann, wie Sie den Zustand des Clusters und der Pods überwachen können, in denen Ihre Anwendung ausgeführt wird.
 
-Wenn Sie Windows Server-Container verwenden möchten (derzeit in der Vorschauversion in AKS), finden Sie weitere Informationen unter [Erstellen eines AKS-Clusters, der Windows Server-Container unterstützt][windows-container-cli].
+Weitere Informationen zum Erstellen eines Windows Server-Knotenpools finden Sie unter [Erstellen eines AKS-Clusters, der Windows Server-Container unterstützt][windows-container-cli].
 
-![Abbildung der Navigation zu Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![In Azure Kubernetes Service bereitgestellte Abstimmungs-App](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
 
 Für diese Schnellstartanleitung werden Grundkenntnisse in Bezug auf die Kubernetes-Konzepte vorausgesetzt. Weitere Informationen finden Sie unter [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, benötigen Sie für diese Schnellstartanleitung mindestens Version 2.0.64 der Azure-Befehlszeilenschnittstelle. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+- Für diesen Artikel ist mindestens Version 2.0.64 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
-> [!Note]
+> [!NOTE]
 > Wenn Sie die Befehle in diesem Schnellstart (anstelle von Azure Cloud Shell) ausführen, stellen Sie sicher, dass Sie die Befehle als Administrator ausführen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
@@ -61,7 +66,22 @@ Die folgende Beispielausgabe zeigt, dass die Ressourcengruppe erfolgreich erstel
 
 ## <a name="create-aks-cluster"></a>Erstellen eines ACS-Clusters
 
-Erstellen Sie mithilfe des Befehls [az aks create][az-aks-create] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* erstellt. Azure Monitor für Container wird auch mit dem Parameter *--enable-addons monitoring* aktiviert.  Dieser Schritt dauert einige Minuten.
+Erstellen Sie mithilfe des Befehls [az aks create][az-aks-create] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* mit einem Knoten erstellt. Dieser Schritt dauert einige Minuten.
+
+> [!NOTE]
+> [Azure Monitor für Container][azure-monitor-containers] wird mithilfe des Parameters *--enable-addons monitoring* aktiviert. Dafür müssen *Microsoft.OperationsManagement* und *Microsoft.OperationalInsights* für Ihr Abonnement registriert sein. So überprüfen Sie den Registrierungsstatus:
+> 
+> ```azurecli
+> az provider show -n Microsoft.OperationsManagement -o table
+> az provider show -n Microsoft.OperationalInsights -o table
+> ```
+> 
+> Sind *Microsoft.OperationsManagement* und *Microsoft.OperationalInsights* nicht registriert, verwenden Sie den folgenden Befehl für die Registrierung:
+> 
+> ```azurecli
+> az provider register --namespace Microsoft.OperationsManagement
+> az provider register --namespace Microsoft.OperationalInsights
+> ```
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
@@ -69,7 +89,10 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 
 Nach wenigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werden Informationen zum Cluster im JSON-Format zurückgegeben.
 
-## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
+> [!NOTE]
+> Beim Erstellen eines AKS-Clusters wird automatisch eine zweite Ressourcengruppe erstellt, um die AKS-Ressourcen zu speichern. Weitere Informationen finden Sie unter [Warum werden zwei Ressourcengruppen mit AKS erstellt?](./faq.md#why-are-two-resource-groups-created-with-aks).
+
+## <a name="connect-to-the-cluster"></a>Herstellen einer Verbindung mit dem Cluster
 
 Verwenden Sie zum Verwalten eines Kubernetes-Clusters den Kubernetes-Befehlszeilenclient [kubectl][kubectl]. Bei Verwendung von Azure Cloud Shell ist `kubectl` bereits installiert. Verwenden Sie für die lokale Installation von `kubectl` den Befehl [az aks install-cli][az-aks-install-cli]:
 
@@ -83,7 +106,10 @@ Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kub
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Verwenden Sie zum Überprüfen der Verbindung mit Ihrem Cluster den Befehl [kubectl get][kubectl-get], um eine Liste der Clusterknoten zu erhalten.
+> [!NOTE]
+> Der obige Befehl verwendet den Standardspeicherort für die [Kubernetes-Konfigurationsdatei][kubeconfig-file], d. h. `~/.kube/config`. Sie können mit *--file* einen anderen Speicherort für Ihre Kubernetes-Konfigurationsdatei angeben.
+
+Überprüfen Sie die Verbindung mit Ihrem Cluster mithilfe des Befehls [kubectl get][kubectl-get], um eine Liste der Clusterknoten zurückzugeben.
 
 ```azurecli-interactive
 kubectl get nodes
@@ -98,12 +124,9 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Eine Kubernetes-Manifestdatei definiert einen gewünschten Zustand (Desired State) für den Cluster – also beispielsweise, welche Containerimages ausgeführt werden sollen. In dieser Schnellstartanleitung wird ein Manifest verwendet, um alle Objekte zu erstellen, die zum Ausführen der Azure Vote-Anwendung benötigt werden. Dieses Manifest umfasst zwei [Kubernetes-Bereitstellungen][kubernetes-deployment]: eine für die Azure Vote-Python-Beispielanwendungen und eine für eine Redis-Instanz. Außerdem werden zwei [Kubernetes-Dienste][kubernetes-service] erstellt: ein interner Dienst für die Redis-Instanz und ein externer Dienst, über den aus dem Internet auf die Azure Vote-Anwendung zugegriffen wird.
+Eine [Kubernetes-Manifestdatei][kubernetes-deployment] definiert einen gewünschten Zustand (Desired State) für den Cluster – also beispielsweise, welche Containerimages ausgeführt werden sollen. In dieser Schnellstartanleitung wird ein Manifest verwendet, um alle Objekte zu erstellen, die zum Ausführen der [Azure Vote-Anwendung][azure-vote-app] benötigt werden. Dieses Manifest umfasst zwei [Kubernetes-Bereitstellungen][kubernetes-deployment]: eine für die Azure Vote-Python-Beispielanwendungen und eine für eine Redis-Instanz. Außerdem werden zwei [Kubernetes-Dienste][kubernetes-service] erstellt: ein interner Dienst für die Redis-Instanz und ein externer Dienst, über den aus dem Internet auf die Azure Vote-Anwendung zugegriffen wird.
 
-> [!TIP]
-> In dieser Schnellstartanleitung führen Sie die manuelle Erstellung und Bereitstellung Ihrer Anwendungsmanifeste im AKS-Cluster durch. Bei Szenarien mit mehr Praxisnähe können Sie [Azure Dev Spaces][azure-dev-spaces] verwenden, um Ihren Code direkt im AKS-Cluster schnell zu durchlaufen und zu debuggen. Sie können Dev Spaces übergreifend für Betriebssystemplattformen und Entwicklungsumgebungen nutzen und mit anderen Teammitgliedern zusammenarbeiten.
-
-Erstellen Sie eine Datei namens `azure-vote.yaml`, und fügen Sie die folgende YAML-Definition ein. Bei Verwendung von Azure Cloud Shell kann diese Datei mit `vi` oder `nano` erstellt werden – genau wie bei der Verwendung eines virtuellen oder physischen Systems:
+Erstellen Sie eine Datei namens `azure-vote.yaml`, und fügen Sie die folgende YAML-Definition ein. Bei Verwendung von Azure Cloud Shell kann diese Datei mit `code`, `vi` oder `nano` erstellt werden – genau wie bei der Verwendung eines virtuellen oder physischen Systems:
 
 ```yaml
 apiVersion: apps/v1
@@ -124,7 +147,10 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: azure-vote-back
-        image: redis
+        image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+        env:
+        - name: ALLOW_EMPTY_PASSWORD
+          value: "yes"
         resources:
           requests:
             cpu: 100m
@@ -164,7 +190,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: azure-vote-front
-        image: microsoft/azure-vote-front:v1
+        image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
         resources:
           requests:
             cpu: 100m
@@ -192,11 +218,11 @@ spec:
 
 Stellen Sie die Anwendung über den Befehl [kubectl apply][kubectl-apply] bereit, und geben Sie den Namen Ihres YAML-Manifests an:
 
-```azurecli-interactive
+```console
 kubectl apply -f azure-vote.yaml
 ```
 
-In der folgende Beispielausgabe sind die erfolgreich erstellten Bereitstellungen und Dienste aufgeführt:
+In der folgenden Beispielausgabe sind die erfolgreich erstellten Bereitstellungen und Dienste aufgeführt:
 
 ```output
 deployment "azure-vote-back" created
@@ -222,17 +248,17 @@ NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Sobald die externe IP-Adresse (*EXTERNAL-IP*) von *ausstehend* in eine tatsächliche öffentliche IP-Adresse geändert wurde, wird, verwenden Sie `CTRL-C`, um die `kubectl`-Überwachung zu beenden. Die folgende Beispielausgabe zeigt eine gültige öffentliche IP-Adresse, die dem Dienst zugewiesen ist:
+Sobald die externe IP-Adresse (*EXTERNAL-IP*) von pending (*ausstehend*) in eine tatsächliche öffentliche IP-Adresse geändert wurde, verwenden Sie `CTRL-C`, um die `kubectl`-Überwachung zu beenden. Die folgende Beispielausgabe zeigt eine gültige öffentliche IP-Adresse, die dem Dienst zugewiesen ist:
 
 ```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-Öffnen Sie die externe IP-Adresse Ihres Diensts in einem Webbrowser, um die Azure Vote-App in Aktion zu sehen.
+Öffnen Sie die externe IP-Adresse Ihres Diensts in einem Webbrowser, um die Azure-Abstimmungs-App in Aktion zu sehen.
 
-![Abbildung der Navigation zu Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![In Azure Kubernetes Service bereitgestellte Abstimmungs-App](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
 
-Beim Erstellen des AKS-Clusters wurde [Azure Monitor für Container](../azure-monitor/insights/container-insights-overview.md) aktiviert, um Integritätsmetriken für die Clusterknoten und die Pods zu erfassen. Diese Integritätsmetriken sind im Azure-Portal verfügbar.
+Beim Erstellen des AKS-Clusters wurde [Azure Monitor für Container][azure-monitor-containers] aktiviert, um Integritätsmetriken für die Clusterknoten und die Pods zu erfassen. Diese Integritätsmetriken sind im Azure-Portal verfügbar.
 
 ## <a name="delete-the-cluster"></a>Löschen des Clusters
 
@@ -243,7 +269,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Wenn Sie den Cluster löschen, wird der vom AKS-Cluster verwendete Azure Active Directory-Dienstprinzipal nicht entfernt. Schritte zum Entfernen des Dienstprinzipals finden Sie unter den [Überlegungen zum AKS-Dienstprinzipal und dessen Löschung][sp-delete].
+> Wenn Sie den Cluster löschen, wird der vom AKS-Cluster verwendete Azure Active Directory-Dienstprinzipal nicht entfernt. Schritte zum Entfernen des Dienstprinzipals finden Sie unter den [Überlegungen zum AKS-Dienstprinzipal und dessen Löschung][sp-delete]. Wenn Sie eine verwaltete Identität verwendet haben, wird die Identität von der Plattform verwaltet und muss nicht entfernt werden.
 
 ## <a name="get-the-code"></a>Abrufen des Codes
 
@@ -265,11 +291,11 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[kubeconfig-file]: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
 
 <!-- LINKS - internal -->
 [kubernetes-concepts]: concepts-clusters-workloads.md
-[aks-monitor]: https://aka.ms/coingfonboarding
+[aks-monitor]: ../azure-monitor/insights/container-insights-onboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [az-aks-browse]: /cli/azure/aks?view=azure-cli-latest#az-aks-browse
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
@@ -278,6 +304,7 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli-install]: /cli/azure/install-azure-cli
+[azure-monitor-containers]: ../azure-monitor/insights/container-insights-overview.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
 [azure-portal]: https://portal.azure.com
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests

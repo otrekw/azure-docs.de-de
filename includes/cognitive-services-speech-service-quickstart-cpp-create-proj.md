@@ -2,16 +2,16 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/21/2019
+ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: 99a7dec6936b86af4ab9b80d266cd886dae66d12
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 967861363d5056a5a466aa88840cda2aafbeb86b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70381820"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188317"
 ---
-Zum Erstellen eines Visual Studio-Projekts für die C++-Desktopentwicklung müssen Sie Visual Studio-Entwicklungsoptionen einrichten, das Projekt erstellen, die Zielarchitektur auswählen und das Speech SDK installieren. 
+Zum Erstellen eines Visual Studio-Projekts für die C++-Desktopentwicklung müssen Sie Visual Studio-Entwicklungsoptionen einrichten, das Projekt erstellen, die Zielarchitektur auswählen und das Speech SDK installieren.
 
 ### <a name="set-up-visual-studio-development-options"></a>Einrichten von Visual Studio-Entwicklungsoptionen
 
@@ -19,13 +19,13 @@ Stellen Sie zunächst sicher, dass Visual Studio ordnungsgemäß für die C++-De
 
 1. Öffnen Sie Visual Studio 2019, um das **Startfenster** anzuzeigen.
 
-   ![Startfenster: Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png) 
+   ![Screenshot: Fenster „Start“ von Visual Studio 2019.](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
 
 1. Wählen Sie **Ohne Code fortfahren** aus, um zur Visual Studio-IDE zu wechseln.
 
 1. Wählen Sie auf der Visual Studio-Menüleiste **Extras** > **Tools und Features abrufen** aus, um den Visual Studio-Installer zu öffnen und das Dialogfeld **Änderung** anzuzeigen.
 
-   ![Registerkarte „Workloads“, Dialogfeld „Änderung“, Visual Studio-Installer](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
+   ![Screenshot: Registerkarte „Workloads“ des Dialogfelds „Änderung“ für den Visual Studio-Installer.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
 1. Suchen Sie auf der Registerkarte **Workloads** unter **Windows** nach der Workload **Desktopentwicklung mit C++** . Wenn das Kontrollkästchen neben dieser Workload nicht bereits aktiviert ist, aktivieren Sie es.
 
@@ -61,7 +61,7 @@ Installieren Sie schließlich das [Speech SDK-NuGet-Paket](https://aka.ms/csspee
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappe, und wählen Sie dann **NuGet-Pakete für Projektmappe verwalten**, um zum Fenster **NuGet – Projektmappe** zu wechseln.
 
-1. Wählen Sie **Durchsuchen**.
+1. Wählen Sie **Durchsuchen** aus.
 
    ![NuGet: Registerkarte „Projektmappe“, Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-03-manage-nuget-packages.png)
 
@@ -77,4 +77,4 @@ Installieren Sie schließlich das [Speech SDK-NuGet-Paket](https://aka.ms/csspee
 
 1. Wählen Sie im Dialogfeld **Vorschau der Änderungen anzeigen** die Option **OK**.
 
-1. Zeigen Sie im Dialogfeld **Zustimmung zur Lizenz** die Lizenz an, und wählen Sie dann **Ich stimme zu**. Die Paketinstallation beginnt, und nach Abschluss der Installation wird im **Ausgabebereich** eine Meldung mit etwa dem folgenden Text angezeigt: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.6.0' to helloworld`. 
+1. Zeigen Sie im Dialogfeld **Zustimmung zur Lizenz** die Lizenz an, und wählen Sie dann **Ich stimme zu**. Die Paketinstallation beginnt, und nach Abschluss der Installation wird im **Ausgabebereich** eine Meldung mit etwa dem folgenden Text angezeigt: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.13.0' to helloworld`.

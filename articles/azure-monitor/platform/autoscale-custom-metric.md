@@ -1,24 +1,21 @@
 ---
 title: Automatisches Skalieren in Azure mit einer benutzerdefinierten Metrik
 description: Erfahren Sie, wie Sie Ihre Ressource durch eine benutzerdefinierte Metrik in Azure skalieren.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: e6423f2ce3659fd3dd738dcc8a990261bc7bf60c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 8e744e6a91eb6fbe23a6b45f95c39b1acfdcb61f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60334340"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86539583"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Erste Schritte mit der automatischen Skalierung durch eine benutzerdefinierte Metrik in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre Ressource durch eine benutzerdefinierte Metrik im Azure-Portal skalieren.
 
-Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Die automatische Skalierung von Azure Monitor gilt nur für [VM-Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/), [Azure Data Explorer-Cluster](https://azure.microsoft.com/services/data-explorer/),   
+Integrationsdienstumgebung und [API Management-Dienste](../../api-management/api-management-key-concepts.md).
 
 ## <a name="lets-get-started"></a>Erste Schritte
 Dieser Artikel setzt voraus, dass Sie eine mit Application Insights konfigurierte Web-App haben. Wenn dies noch nicht geschehen ist, können Sie [Application Insights für Ihre ASP.NET-Website einrichten][1].
@@ -33,10 +30,10 @@ Dieser Artikel setzt voraus, dass Sie eine mit Application Insights konfiguriert
   ![Skalierungseinstellung für die neue Web-App][5]
 - Geben Sie einen Namen für die Skalierungseinstellung an, und klicken Sie dann auf „Regel hinzufügen“. Beachten Sie die Optionen für die Skalierungsregel, die auf der rechten Seite als Kontextbereich geöffnet wird. Standardmäßig wird die Option zum Skalieren der Anzahl Ihrer Instanzen auf „1“ festgelegt, wenn der CPU-Prozentsatz der Ressource 70 % überschreitet. Ändern Sie die Metrikquelle im oberen Bereich in „Application Insights“, wählen Sie in der Dropdownliste „Ressource“ die Application Insights-Ressource aus, und wählen Sie dann die benutzerdefinierte Metrik basierend auf dem zu skalierenden Inhalt.
   ![Skalieren anhand einer benutzerdefinierten Metrik][6]
-- Fügen Sie ähnlich wie beim obigen Schritt eine Skalierungsregel zum horizontalen Herunterskalieren hinzu, und verringern Sie die Anzahl der Skalierungen um 1, wenn die benutzerdefinierte Metrik unterhalb eines bestimmten Schwellenwerts liegt.
+- Fügen Sie ähnlich wie beim obigen Schritt eine Skalierungsregel zum Abskalieren hinzu, und verringern Sie die Anzahl der Skalierungen um 1, wenn die benutzerdefinierte Metrik unterhalb eines bestimmten Schwellenwerts liegt.
   ![Skalieren basierend auf der CPU][7]
 - Legen Sie die Instanzgrenzwerte fest. Wenn beispielsweise 2 bis 5 Instanzen abhängig von den Schwankungen benutzerdefinierter Metriken skaliert werden sollen, setzen Sie „Minimum“ auf „2“, „Maximum“ auf „5“ und „Standard“ auf „2“.
-  > Hinweis: Falls ein Problem beim Lesen der Ressourcenmetriken vorliegt und die aktuelle Kapazität unterhalb der Standardkapazität liegt, stellen Sie zum Gewährleisten der Verfügbarkeit der Ressource sicher, dass die Autoskalierung horizontal auf den Standardwert skaliert. Wenn die aktuelle Kapazität bereits über der Standardkapazität liegt, wird die automatische Skalierung nicht horizontal herunterskaliert.
+  > Hinweis: Falls ein Problem beim Lesen der Ressourcenmetriken vorliegt und die aktuelle Kapazität unterhalb der Standardkapazität liegt, stellen Sie zum Gewährleisten der Verfügbarkeit der Ressource sicher, dass die Autoskalierung auf den Standardwert aufskaliert. Wenn die aktuelle Kapazität bereits über der Standardkapazität liegt, wird durch die automatische Skalierung nicht abskaliert.
 - Klicken Sie auf „Speichern“.
 
 Herzlichen Glückwunsch. Sie haben nun Ihre Skalierungseinstellung erfolgreich für die automatische Skalierung Ihrer Web-App basierend auf einer benutzerdefinierten Metrik konfiguriert.
@@ -44,11 +41,10 @@ Herzlichen Glückwunsch. Sie haben nun Ihre Skalierungseinstellung erfolgreich f
 > Hinweis: Diese Schritte gelten auch für die ersten Schritte mit VMSS oder einer Clouddienstrolle.
 
 <!--Reference-->
-[1]: https://docs.microsoft.com/azure/application-insights/app-insights-asp-net
+[1]: ../app/asp-net.md
 [2]: https://portal.azure.com
 [3]: ./media/autoscale-custom-metric/azure-monitor-launch.png
 [4]: ./media/autoscale-custom-metric/discover-autoscale-azure-monitor.png
 [5]: ./media/autoscale-custom-metric/scale-setting-new-web-app.png
 [6]: ./media/autoscale-custom-metric/scale-by-custom-metric.png
 [7]: ./media/autoscale-custom-metric/autoscale-setting-custom-metrics-ai.png
-

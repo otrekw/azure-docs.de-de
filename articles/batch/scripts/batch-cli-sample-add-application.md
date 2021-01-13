@@ -1,33 +1,23 @@
 ---
-title: 'Azure CLI-Skriptbeispiel: Hinzufügen einer Anwendung in Batch | Microsoft-Dokumentation'
-description: 'Azure CLI-Skriptbeispiel: Hinzufügen einer Anwendung in Batch'
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: azurecli
+title: 'Azure CLI-Skriptbeispiel: Hinzufügen einer Anwendung in Batch'
+description: Dieses Beispielskript veranschaulicht das Hinzufügen einer Anwendung für die Verwendung mit einem Azure Batch-Pool oder einer Aufgabe.
 ms.topic: sample
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 01/29/2018
-ms.author: lahugh
-ms.openlocfilehash: ba7f64910e033751df7d158a6fddf36371f2933f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 414a401168b1b378ed33f4904607243de0267d22
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322239"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565805"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI-Beispiel: Hinzufügen einer Anwendung zu einem Azure Batch-Konto
 
 Dieses Skript veranschaulicht das Hinzufügen einer Anwendung für die Verwendung mit einem Azure Batch-Pool oder einer Azure Batch-Aufgabe. Um eine Anwendung einzurichten, die Sie Ihrem Batch-Konto hinzufügen können, fassen Sie die ausführbare Datei mit sämtlichen Abhängigkeiten in einer ZIP-Datei zusammen. 
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens die Azure CLI-Version 2.0.20 verwenden. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). 
+ - Für dieses Tutorial ist mindestens Version 2.0.20 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert. 
 
 ## <a name="example-script"></a>Beispielskript
 
@@ -59,4 +49,4 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).

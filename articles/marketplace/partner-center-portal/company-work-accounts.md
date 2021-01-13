@@ -1,18 +1,18 @@
 ---
 title: Geschäftskonten und Partner Center
 description: Überprüfen, ob Ihr Unternehmen ein Geschäftskonto eingerichtet hat, Erstellen eines neuen Geschäftskontos und Einrichten mehrerer Geschäftskonten für die Verwendung mit Partner Center
-author: ChJenk
-manager: evansma
-ms.author: parthp
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 744b4e4975c5d4cec5c705e639e9cc8d252a7dd6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 5b4aadc506b2f4a251ccef5e9488066b609ba5a5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194284"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130526"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Geschäftskonten und Partner Center
 
@@ -20,7 +20,7 @@ Partner Center verwendet Geschäftskonten (auch bekannt als Azure Active Directo
 
 ## <a name="check-whether-your-company-already-has-a-work-account"></a>Überprüfen, ob Ihr Unternehmen bereits über ein Geschäftskonto verfügt
 
-Wenn Ihr Unternehmen einen Microsoft-Clouddienst wie Azure, Microsoft Intune oder Office 365 abonniert hat, haben Sie bereits eine E-Mail-Kontodomäne (wird auch Azure Active Directory-Mandant bezeichnet), die mit Partner Center verwendet werden kann.
+Wenn Ihr Unternehmen einen Microsoft-Clouddienst wie Azure, Microsoft Intune oder Microsoft 365 abonniert hat, haben Sie bereits eine E-Mail-Kontodomäne (auch als Azure Active Directory-Mandant bezeichnet), die mit Partner Center verwendet werden kann.
 
 Führen Sie die folgenden Schritte aus, um dies zu überprüfen:
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Verwaltungsportal an.
@@ -39,19 +39,19 @@ Führen Sie die folgenden Schritte aus, um ein neues Geschäftskonto für Ihr Un
 
 1. Melden Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com)an.
 2. Wählen Sie im linken Navigationsbereich **Azure Active Directory** -> **Benutzer** aus.
-3. Wählen Sie **Neuer Benutzer** aus, und erstellen Sie ein neues Azure-Geschäftskonto, indem Sie einen Namen und eine E-Mail-Adresse eingeben. Stellen Sie sicher, dass die **Verzeichnisrolle** auf **Benutzer** festgelegt ist, und aktivieren Sie im unteren Bereich das Kontrollkästchen **Kennwort anzeigen**, um das automatisch generierte Kennwort anzuzeigen und zu notieren.
-4. Klicken Sie auf **Erstellen**, um den neuen Benutzer zu speichern.
+3. Wählen Sie **Neuer Benutzer** aus, und erstellen Sie ein neues Azure-Geschäftskonto, indem Sie einen Namen und eine E-Mail-Adresse eingeben. Stellen Sie sicher, dass die **Verzeichnisrolle** auf **Benutzer** festgelegt ist, und aktivieren Sie im unteren Bereich das Kontrollkästchen **Kennwort anzeigen** , um das automatisch generierte Kennwort anzuzeigen und zu notieren.
+4. Klicken Sie auf **Erstellen** , um den neuen Benutzer zu speichern.
 
 Die E-Mail-Adresse für das Benutzerkonto muss ein verifizierter Domänenname in Ihrem Verzeichnis sein. Wählen Sie im linken Navigationsmenü **Azure Active Directory** -> **Benutzerdefinierte Domänennamen** aus, um alle verifizierten Domänennamen in Ihrem Verzeichnis aufzulisten.
 
-Weitere Informationen zum Hinzufügen von benutzerdefinierten Domänen in Azure Active Directory finden Sie unter [Hinzufügen oder Zuordnen einer Domäne in Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain).
+Weitere Informationen zum Hinzufügen von benutzerdefinierten Domänen in Azure Active Directory finden Sie unter [Hinzufügen oder Zuordnen einer Domäne in Azure AD](../../active-directory/fundamentals/add-custom-domain.md).
 
 ## <a name="troubleshoot-work-email-sign-in"></a>Problembehandlung: Anmeldedaten für geschäftliche E-Mail-Konten
 
-Wenn Sie Probleme mit der Anmeldung bei Ihrem Geschäftskonto haben (auch bekannt als Azure AD-Mandant), suchen Sie unten im Diagramm das Szenario, das am besten zu Ihrer Situation passt, und führen Sie dann die empfohlenen Schritte aus.
+Wenn Sie Probleme mit der Anmeldung bei Ihrem Geschäftskonto haben (auch bekannt als Azure AD-Mandant), suchen Sie unten im Diagramm das Szenario, das Ihrer Situation am besten entspricht, und führen Sie dann die empfohlenen Schritte aus.
 
 ![Diagramm für Problembehandlung: Anmeldedaten für Geschäftskonto](./media/onboarding-aad-flow.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](./manage-account.md) 
+- [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](./manage-account.md)

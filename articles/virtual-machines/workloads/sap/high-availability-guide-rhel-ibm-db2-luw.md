@@ -9,56 +9,25 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/10/2019
+ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: 5487b90172788c08a4383a32462ea5a85c1763ee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 85f268990ac9e0c04cba1b9c409a232a24ce0d61
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099681"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608633"
 ---
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
-[2233094]: https://launchpad.support.sap.com/#/notes/2233094
-[1612105]: https://launchpad.support.sap.com/#/notes/1612105
-[2694118]: https://launchpad.support.sap.com/#/notes/2694118
-
-
-[db2-hadr-11.1]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
-[db2-hadr-10.5]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
-[dbms-db2]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm
-
-[sap-instfind]:https://help.sap.com/viewer/9e41ead9f54e44c1ae1a1094b0f80712/ALL/en-US/576f5c1808de4d1abecbd6e503c9ba42.html
-[rhel-ha-addon]:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index
-[rhel-ha-admin]:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index
-[rhel-ha-ref]:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index
-[rhel-azr-supp]:https://access.redhat.com/articles/3131341
-[rhel-azr-inst]:https://access.redhat.com/articles/3252491
-[rhel-db2-supp]:https://access.redhat.com/articles/3144221
-[ascs-ha-rhel]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel
-[glusterfs]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs
-[rhel-pcs-azr]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker
-[anf-rhel]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files
-
-[dbms-guide]:dbms-guide.md
-[deployment-guide]:deployment-guide.md
-[planning-guide]:planning-guide.md
-[azr-sap-plancheck]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist
-
-
-
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Hochverfügbarkeit von IBM DB2 LUW auf virtuellen Azure-Computern unter Red Hat Enterprise Linux Server
 
 IBM Db2 für Linux, UNIX und Windows (LUW) in einer [HADR-Konfiguration (Hochverfügbarkeit und Notfallwiederherstellung)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html) besteht aus einem Knoten, auf dem eine primäre Datenbankinstanz ausgeführt wird, und mindestens einem Knoten, auf dem eine sekundäre Datenbankinstanz ausgeführt wird. Änderungen an der primären Datenbankinstanz werden, abhängig von Ihrer Konfiguration, synchron oder asynchron in eine sekundäre Datenbankinstanz repliziert. 
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf die Begriffe *Master* und *Slave*, die von Microsoft nicht mehr verwendet werden. Sobald diese Begriffe aus der Software entfernt wurden, werden sie auch aus diesem Artikel gelöscht.
 
 Dieser Artikel beschreibt die Bereitstellung und Konfiguration der virtuellen Azure-Computer (VMs), die Installation des Clusterframeworks und die Installation von IBM Db2 LUW mit HADR-Konfiguration. 
 
@@ -102,7 +71,7 @@ Bevor Sie mit einer Installation beginnen, lesen Sie zunächst die folgenden SAP
 
 
 ## <a name="overview"></a>Übersicht
-Um Hochverfügbarkeit zu erreichen, wird IBM Db2 LUW mit HADR auf mindestens zwei virtuellen Azure-Computern installiert, die in einer [Azure-Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) oder über [Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) bereitgestellt werden. 
+Um Hochverfügbarkeit zu erreichen, wird IBM Db2 LUW mit HADR auf mindestens zwei virtuellen Azure-Computern installiert, die in einer [Azure-Verfügbarkeitsgruppe](../../windows/tutorial-availability-sets.md) oder über [Azure-Verfügbarkeitszonen](./sap-ha-availability-zones.md) bereitgestellt werden. 
 
 Die folgenden Grafiken zeigen eine Konfiguration von zwei auf virtuellen Azure-Computern installierten Datenbankservern. Jeder dieser auf einem virtuellen Azure-Computer installierten Datenbankserver hat seinen eigenen zugeordneten Speicher und ist aktiv und wird ausgeführt. In HADR hat eine Datenbankinstanz auf einem der virtuellen Azure-Computer die Rolle der primären Instanz. Alle Clients werden mit der primären Instanz verbunden. Alle in Datenbanktransaktionen vorgenommenen Änderungen werden lokal im Db2-Transaktionsprotokoll gespeichert. Da die Transaktionsprotokolldatensätze lokal gespeichert werden, werden die Datensätze über TCP/IP an die Datenbankinstanz auf dem zweiten Datenbankserver übertragen, der als Standbyserver oder Standbyinstanz bezeichnet wird. In der Standbyinstanz wird die lokale Datenbank aktualisiert, indem ein Rollforward mit den übertragenen Transaktionsprotokolldatensätzen ausgeführt wird. Auf diese Weise bleibt der Standbyserver mit dem primären Server synchronisiert.
 
@@ -141,7 +110,7 @@ Um eine IBM Db2-Konfiguration bereitzustellen, müssen die folgenden Schritte au
 
 Abschließen des Planungsprozesses, bevor Sie die Bereitstellung ausführen. Planung bildet die Grundlage für die Bereitstellung einer Konfiguration von Db2 mit HADR in Azure. Schlüsselelemente, die in der Planung für IMB Db2 LUW (Datenbankteil der SAP-Umgebung) berücksichtigt werden müssen, werden in der folgenden Tabelle aufgeführt.
 
-| Thema | Kurzbeschreibung |
+| Thema | Kurze Beschreibung |
 | --- | --- |
 | Definieren von Azure-Ressourcengruppen | Ressourcengruppen, in denen Sie virtuelle Computer, VNET, Azure Load Balancer und andere Ressourcen bereitstellen. Können vorhanden oder neu sein. |
 | Definition von virtuellem Netzwerk/Subnetz | Umgebung, in der virtuelle Computer für IBM Db2 und Azure Load Balancer bereitgestellt werden. Kann vorhanden sein oder neu erstellt werden. |
@@ -177,9 +146,9 @@ Vergewissern Sie sich, dass das ausgewählte Betriebssystem von IBM/SAP für IBM
     + Wählen Sie die Azure-Verfügbarkeitsgruppe aus, die Sie in Schritt 3 erstellt haben, oder wählen Sie eine Verfügbarkeitszone (nicht die gleiche Zone wie in Schritt 3) aus.
 1. Fügen Sie den virtuellen Computern Datenträger hinzu. Prüfen Sie dann die Empfehlung für die Dateisystemkonfiguration, die Sie im Artikel [Azure Virtual Machines – IBM DB2-DBMS-Bereitstellung für SAP-Workload][dbms-db2] finden.
 
-## <a name="create-the-pacemaker-cluster"></a>Erstellen des Pacemaker-Clusters
+## <a name="create-the-pacemaker-cluster"></a>Erstellen eines Pacemaker-Clusters
     
-Informationen zum Erstellen eines grundlegenden Pacemaker-Clusters für diesen IBM Db2-Server finden Sie unter [Einrichten von Pacemaker unter Red Hat Enterprise Linux in Azure][rhel-pcs-azr]. 
+Informationen zum Erstellen eines grundlegenden Pacemaker-Clusters für diesen IBM Db2-Server finden Sie unter [Einrichten von Pacemaker unter Red Hat Enterprise Linux in Azure][rhel-pcs-azr]. 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>Installieren von IBM Db2 LUW und der SAP-Umgebung
 
@@ -370,9 +339,9 @@ Die folgenden Elemente haben eines der folgenden Präfixe:
 - **[1]** : Gilt nur für Knoten 1 
 - **[2]** : Gilt nur für Knoten 2
 
-**[A]** Voraussetzungen für die Pacemaker-Konfiguration
-1. Fahren Sie beide Datenbankserver mit Benutzer „db2\<sid>“ mit „db2stop“ herunter.
-1. Ändern Sie die Shellumgebung für „db2\<sid> Benutzer“ in */bin/ksh*:
+**[A]** Voraussetzung für die Pacemaker-Konfiguration:
+1. Fahren Sie beide Datenbankserver mit dem Benutzer „db2\<sid>“ mit „db2stop“ herunter.
+1. Ändern Sie die Shellumgebung für „db2\<sid>“ in */bin/ksh*:
 <pre><code># Install korn shell:
 sudo yum install ksh
 # Change users shell:
@@ -433,7 +402,14 @@ Daemon Status: corosync: active/disabled pacemaker: active/disabled pcsd: active
 
 
 ### <a name="configure-azure-load-balancer"></a>Konfigurieren von Azure Load Balancer
-Um Azure Load Balancer zu konfigurieren, empfehlen wir Ihnen, die [SKU „Azure Load Balancer Standard“](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) zu verwenden und dann wie folgt vorzugehen:
+Um Azure Load Balancer zu konfigurieren, empfehlen wir Ihnen, die [SKU „Azure Load Balancer Standard“](../../../load-balancer/load-balancer-overview.md) zu verwenden und dann wie folgt vorzugehen:
+
+> [!NOTE]
+> Bei der SKU „Azure Load Balancer Standard“ gibt es Einschränkungen, wenn von den Knoten unterhalb des Load Balancers aus auf öffentliche IP-Adressen zugegriffen wird. Im Artikel [Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden](./high-availability-guide-standard-load-balancer-outbound-connections.md) werden Verfahren beschrieben, wie diesen Knoten der Zugriff auf öffentliche IP-Adressen ermöglicht werden kann.
+
+> [!IMPORTANT]
+> Floating IP-Adressen werden in IP-Konfigurationen mit zwei NICs in Szenarien mit Lastenausgleich nicht unterstützt. Weitere Informationen finden Sie unter [Azure Load Balancer – Einschränkungen](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Wenn Sie zusätzliche IP-Adressen für die VM benötigen, stellen Sie eine zweite NIC bereit.  
+
 
 1. Erstellen eines Front-End-IP-Pools:
 
@@ -541,7 +517,7 @@ Sie können vorhandene hoch verfügbare NFS-Freigaben oder GlusterFS für Datent
 
 - [GlusterFS auf virtuellen Azure-Computern unter Red Hat Enterprise Linux für SAP NetWeaver][glusterfs] 
 - [Hochverfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern unter Red Hat Enterprise Linux mit Azure NetApp Files für SAP-Anwendungen][anf-rhel]
-- [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction) (zum Erstellen von NFS-Freigaben)
+- [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) (zum Erstellen von NFS-Freigaben)
 
 ## <a name="test-the-cluster-setup"></a>Testen der Clustereinrichtung
 
@@ -587,7 +563,7 @@ Der ursprüngliche Status in einem SAP-System ist in „Transaction DBACOCKPIT -
 > Bevor Sie den Test zu starten, stellen Sie Folgendes sicher:
 > * Pacemaker keine fehlerhaften Aktionen (pcs status) aufweist.
 > * Es keine Speicherorteinschränkungen (Überbleibsel von Migrationstests) gibt.
-> * Die IBM Db2-HADR-Synchronisierung funktioniert. Überprüfen Sie mit dem Benutzer „db2\<sid>“. <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * Die IBM Db2-HADR-Synchronisierung funktioniert. Überprüfen Sie die Funktionsweise mit dem Benutzer „db2\<sid>“ <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Migrieren Sie den Knoten, auf dem die primäre Db2-Datenbank ausgeführt wird, indem Sie folgenden Befehl ausführen:
@@ -846,5 +822,38 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
      nc_db2id2_ID2      (ocf::heartbeat:azure-lb):      Started az-idb02</code></pre>
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
+- [Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver](./sap-high-availability-architecture-scenarios.md)
 - [Einrichten von Pacemaker unter Red Hat Enterprise Linux in Azure][rhel-pcs-azr]
+
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2233094]:https://launchpad.support.sap.com/#/notes/2233094
+[1612105]:https://launchpad.support.sap.com/#/notes/1612105
+[2694118]:https://launchpad.support.sap.com/#/notes/2694118
+
+
+[db2-hadr-11.1]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
+[db2-hadr-10.5]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
+[dbms-db2]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm
+
+[sap-instfind]:https://help.sap.com/viewer/9e41ead9f54e44c1ae1a1094b0f80712/ALL/en-US/576f5c1808de4d1abecbd6e503c9ba42.html
+[rhel-ha-addon]:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index
+[rhel-ha-admin]:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index
+[rhel-ha-ref]:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index
+[rhel-azr-supp]:https://access.redhat.com/articles/3131341
+[rhel-azr-inst]:https://access.redhat.com/articles/3252491
+[rhel-db2-supp]:https://access.redhat.com/articles/3144221
+[ascs-ha-rhel]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel
+[glusterfs]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs
+[rhel-pcs-azr]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker
+[anf-rhel]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files
+
+[dbms-guide]:dbms-guide.md
+[deployment-guide]:deployment-guide.md
+[planning-guide]:planning-guide.md
+[azr-sap-plancheck]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist

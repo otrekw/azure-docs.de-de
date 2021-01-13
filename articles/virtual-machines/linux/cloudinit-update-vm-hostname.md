@@ -1,25 +1,17 @@
 ---
-title: Verwenden von cloud-init zum Festlegen eines Hostnamens für eine Linux-VM in Azure | Microsoft-Dokumentation
+title: Verwenden von cloud-init zum Festlegen eines Hostnamens für eine Linux-VM
 description: Erfahren Sie, wie Sie cloud-init zum Anpassen einer Linux-VM während der Erstellung mithilfe der Azure CLI verwenden.
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 1e437200ec6af22d104f9878e7bdfd20141759fb
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 85d2772596224a3c4252d950ca6ca8d6af02991b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668202"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87373656"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>Verwenden von cloud-init zum Festlegen eines Hostnamens für eine Linux-VM in Azure
 In diesem Artikel wird gezeigt, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum Festlegen eines Hostnamens für einen virtuellen Computer (VM) oder eine VM-Skalierungsgruppe (VMSS) während der Bereitstellung in Azure verwenden. Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden. Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).

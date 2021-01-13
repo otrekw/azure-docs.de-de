@@ -1,27 +1,22 @@
 ---
-title: 'Azure AD-Anwendungsproxy: Versionsverlauf | Microsoft-Dokumentation'
+title: 'Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen'
 description: In diesem Artikel werden alle Versionen des Azure AD-Anwendungsproxys aufgeführt sowie neue Features und behobene Probleme beschrieben.
 services: active-directory
-documentationcenter: ''
-author: msmimart
-manager: CelesteDG
-editor: ''
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 07/22/2020
 ms.subservice: app-mgmt
-ms.author: mimart
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9ecd193282ed9b7333df44689530b4d057ad7f8
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.author: kenwith
+ms.openlocfilehash: 8000d07824c27f60dd5d8d6a457521691fe2b7d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693903"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658399"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen
 In diesem Artikel werden die veröffentlichten Versionen und Features des Anwendungsproxys von Azure Active Directory (Azure AD) aufgeführt. Das Azure AD-Team aktualisiert den Anwendungsproxy regelmäßig mit neuen Features und Funktionen. Anwendungsproxyconnectors werden automatisch aktualisiert, wenn eine neue Version veröffentlicht wird. 
@@ -35,6 +30,47 @@ Resource |  Details
 Aktivieren des Anwendungsproxys | In diesem [Tutorial](application-proxy-add-on-premises-application.md) werden die Voraussetzungen zum Aktivieren des Anwendungsproxys und zum Installieren und Registrieren eines Connectors beschrieben.
 Grundlegendes zu Azure AD-Anwendungsproxyconnectors | Erfahren Sie mehr über die [Connectorverwaltung](application-proxy-connectors.md) und die [automatische Aktualisierung](application-proxy-connectors.md#automatic-updates) von Connectors.
 Herunterladen des Azure AD-Anwendungsproxyconnectors |  [Laden Sie den aktuellen Connector herunter](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
+
+## <a name="1519750"></a>1.5.1975.0
+
+### <a name="release-status"></a>Releasestatus
+
+22. Juli 2020: Für den Download veröffentlicht: Diese Version steht nur über die Downloadseite zur Installation zur Verfügung. Ein automatisches Upgrade dieser Version wird zu einem späteren Zeitpunkt veröffentlicht.
+
+### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
+-   Verbesserte Unterstützung für Azure Government-Cloudumgebungen. Ausführliche Informationen zur ordnungsgemäßen Installation des Connectors für die Azure Government-Cloudprüfung finden Sie unter [Voraussetzungen](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) und [Installieren des Agents für die Azure Government-Cloud](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud).
+- Unterstützung für die Verwendung des Webclients der Remotedesktopdienste mit dem Anwendungsproxy. Weitere Informationen finden Sie unter [Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy](application-proxy-integrate-with-remote-desktop-services.md).
+- Verbesserte Aushandlungen für WebSocket-Erweiterungen 
+
+### <a name="fixed-issues"></a>Behobene Probleme
+- Behoben: WebSocket-Problem, das Zeichenfolgen in Kleinbuchstaben erzwingt
+- Behoben: Problem, das dazu führt, dass Connectors manchmal nicht reagieren
+
+## <a name="1516260"></a>1.5.1626.0
+
+### <a name="release-status"></a>Releasestatus
+
+17. Juli 2020 Für den Download veröffentlicht. Diese Version ist nur über die Downloadseite für die Installation verfügbar. Ein automatisches Upgrade dieser Version wird zu einem späteren Zeitpunkt veröffentlicht.
+
+### <a name="fixed-issues"></a>Behobene Probleme
+- Behoben: Arbeitsspeicherverlust in vorheriger Version
+- Allgemeine Verbesserungen der WebSocket-Unterstützung
+
+## <a name="1515260"></a>1.5.1526.0
+
+### <a name="release-status"></a>Releasestatus
+
+7\. April 2020: Für den Download veröffentlicht
+
+### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
+-   Connectors verwenden für alle Verbindungen ausschließlich TLS 1.2. Weitere Informationen finden Sie unter [Voraussetzungen für Connectors](application-proxy-add-on-premises-application.md#prerequisites).
+- Verbesserte Signalisierung zwischen Connector und Azure-Diensten. Dazu zählen die Unterstützung zuverlässiger Sitzungen für die WCF-Kommunikation zwischen Connector und Azure-Diensten sowie Verbesserungen des DNS-Caches für die WebSocket-Kommunikation.
+- Unterstützung für die Konfiguration eines Proxys zwischen dem Connector und der Back-End-Anwendung. Weitere Informationen finden Sie unter [Verwenden von vorhandenen lokalen Proxyservern](application-proxy-configure-connectors-with-proxy-servers.md).
+
+### <a name="fixed-issues"></a>Behobene Probleme
+- Das Fallback auf Port 8080 für die Kommunikation zwischen dem Connector und Azure-Diensten wurde entfernt.
+- Debugablaufverfolgungen für die WebSocket-Kommunikation wurden hinzugefügt. 
+- Das Beibehalten des SameSite-Attributs wurde behoben, wenn es in Back-End-Anwendungscookies festgelegt war.
 
 ## <a name="156120"></a>1.5.612.0
 

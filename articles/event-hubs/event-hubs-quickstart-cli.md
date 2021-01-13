@@ -1,21 +1,16 @@
 ---
 title: Erstellen eines Event Hubs mithilfe der Azure CLI – Azure Event Hubs | Microsoft-Dokumentation
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe der Azure CLI einen Event Hub erstellen und anschließend Ereignisse über Java senden und empfangen.
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: java
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 3bc7b409d590ac096b70431ae009fed36c968307
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9a47548fb1f94ac7fe9b561e798b010fa9176e9e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148246"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566298"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Schnellstart: Erstellen eines Event Hubs mithilfe der Azure CLI
 
@@ -23,22 +18,15 @@ Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungs
 
 In dieser Schnellstartanleitung erstellen Sie einen Event Hub mit der Azure CLI.
 
-## <a name="prerequisites"></a>Voraussetzungen
-Für diese Schnellstartanleitung benötigen Sie ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen][] erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Azure CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um Ihre Version zu überprüfen. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+## <a name="set-the-subscription-context"></a>Festlegen des Abonnementkontexts
 
 Die folgenden Schritte sind nicht erforderlich, wenn Sie Befehle in Cloud Shell ausführen. Bei lokaler Ausführung der CLI führen Sie die folgenden Schritte aus, um sich an Azure anzumelden und Ihr aktuelles Abonnement festzulegen:
-
-Führen Sie den folgenden Befehl aus, um sich bei Azure anzumelden:
-
-```azurecli-interactive
-az login
-```
 
 Legen Sie den aktuellen Abonnementkontext fest. Ersetzen Sie `MyAzureSub` durch den Namen des Azure-Abonnements, das Sie verwenden möchten:
 
@@ -70,22 +58,21 @@ Führen Sie den folgenden Befehl aus, um einen Event Hub zu erstellen:
 az eventhubs eventhub create --name <event hub name> --resource-group <resource group name> --namespace-name <Event Hubs namespace>
 ```
 
-Glückwunsch! Sie haben die Azure CLI verwendet, um einen Event Hubs-Namespace und einen darin enthaltenen Event Hub zu erstellen. 
+Herzlichen Glückwunsch! Sie haben die Azure CLI verwendet, um einen Event Hubs-Namespace und einen darin enthaltenen Event Hub zu erstellen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie eine Ressourcengruppe, einen Event Hubs-Namespace und einen Event Hub erstellt. Schritt-für-Schritt-Anleitungen zum Senden von Ereignissen an einen Event Hub oder Empfangen von Ereignissen von einem Event Hub finden Sie in den Tutorials zum **Senden und Empfangen von Ereignissen**: 
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-- [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)
 - [Python](event-hubs-python-get-started-send.md)
-- [Node.js](event-hubs-node-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (nur senden)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (nur empfangen)](event-hubs-storm-getstarted-receive.md)
 
-[kostenloses Konto erstellen]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[create a free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

@@ -1,25 +1,25 @@
 ---
 title: 'Schnellstart: Verwalten von Azure-Dateifreigaben mit dem Azure-Portal'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure Files über das Azure-Portal verwalten.
+description: Hier erfahren Sie, wie Sie Azure-Dateifreigaben im Azure-Portal erstellen und verwalten. Erstellen Sie ein Speicherkonto und eine Azure-Dateifreigabe, und verwenden Sie die Azure-Dateifreigabe.
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fef3daf6e9e535736002e309e3d27491364dc553
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 6a88124397812f7599ce54b46b23d22e626cf520
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260284"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629817"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit dem Azure-Portal 
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können unter Windows, Linux und macOS bereitgestellt werden. In dieser Anleitung werden die Grundlagen der Arbeit mit Azure-Dateifreigaben mit dem [Azure-Portal](https://portal.azure.com/) Schritt für Schritt beschrieben.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-storage-account"></a>Speicherkonto erstellen
+## <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
 
 ## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
@@ -33,10 +33,10 @@ So erstellen Sie eine Azure-Dateifreigabe:
 4. Geben Sie unter **Name** den Namen *myshare* ein.
 5. Klicken Sie auf **OK**, um die Azure-Dateifreigabe zu erstellen.
 
-Freigabenamen dürfen nur Kleinbuchstaben, Zahlen und einzelne Bindestriche enthalten und dürfen nicht mit einem Bindestrich beginnen. Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Freigabenamen dürfen nur Kleinbuchstaben, Zahlen und einzelne Bindestriche enthalten und dürfen nicht mit einem Bindestrich beginnen. Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
 ## <a name="use-your-azure-file-share"></a>Verwenden Ihrer Azure-Dateifreigabe
-Azure Files bietet zwei Methoden für die Arbeit mit Dateien und Ordnern in Ihrer Azure-Dateifreigabe: das [SMB-Protokoll (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) nach Industriestandard und das [REST-Protokoll „File“](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api). 
+Azure Files bietet drei Methoden für die Arbeit mit Dateien und Ordnern in Ihrer Azure-Dateifreigabe: das [SMB-Protokoll (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) nach Industriestandard, das NFS-Protokoll (Network File System, Vorschau) und das [REST-Protokoll „File“](/rest/api/storageservices/file-service-rest-api). 
 
 Informationen zum Einbinden einer Dateifreigabe mit SMB finden Sie im folgenden Dokument für Ihr jeweiliges Betriebssystem:
 - [Windows](storage-how-to-use-files-windows.md)

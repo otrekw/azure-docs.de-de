@@ -1,52 +1,49 @@
 ---
-title: Erstellen eines Anwendungsgateways mit einem Zertifikat – Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Terminierung hinzufügen.
+title: Umleitung von HTTP an HTTPS mit der CLI
+titleSuffix: Azure Application Gateway
+description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI eine HTTP-zu-HTTPS-Umleitung erstellen und ein Zertifikat für den TLS-Abschluss hinzufügen.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.topic: how-to
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 1a5479cb54e15c0e740d800c8ee248a67e5ec5fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d56a1c46f251307755416ef44991ac6f809f330
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133907"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566740"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über die Azure-Befehlszeilenschnittstelle
 
-Sie können die Azure-Befehlszeilenschnittstelle verwenden, um ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die SSL-Terminierung zu erstellen. Zum Umleiten des HTTP-Datenverkehrs an den HTTPS-Port in Ihrem Anwendungsgateway wird eine Routingregel verwendet. In diesem Beispiel erstellen Sie auch eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) für den Back-End-Pool des Anwendungsgateways, die zwei virtuelle Computerinstanzen enthält.
+Sie können die Azure CLI verwenden, um ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die TLS/SSL-Terminierung zu erstellen. Zum Umleiten des HTTP-Datenverkehrs an den HTTPS-Port in Ihrem Anwendungsgateway wird eine Routingregel verwendet. In diesem Beispiel erstellen Sie auch eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/overview.md) für den Back-End-Pool des Anwendungsgateways, die zwei virtuelle Computerinstanzen enthält.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Erstellen eines selbstsignierten Zertifikats
-> * Einrichten eines Netzwerks
-> * Erstellen eines Anwendungsgateways mit dem Zertifikat
-> * Hinzufügen eines Listeners und einer Umleitungsregel
-> * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
+* Erstellen eines selbstsignierten Zertifikats
+* Einrichten eines Netzwerks
+* Erstellen eines Anwendungsgateways mit dem Zertifikat
+* Hinzufügen eines Listeners und einer Umleitungsregel
+* Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+ - Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
 
 Für den Einsatz in einer Produktionsumgebung sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat importieren. Für dieses Tutorial erstellen Sie mit dem openssl-Befehl ein selbstsigniertes Zertifikat und eine PFX-Datei.
 
-```azurecli-interactive
+```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
 ```
 
 Geben Sie Werte ein, die für Ihr Zertifikat sinnvoll sind. Sie können die Standardwerte übernehmen.
 
-```azurecli-interactive
+```console
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 
@@ -208,9 +205,9 @@ az vmss extension set \
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, können Sie [az network public-ip show](/cli/azure/network/public-ip) verwenden. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste Ihres Browsers ein.
+Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, können Sie [az network public-ip show](/cli/azure/network/public-ip) verwenden. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein.
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
@@ -226,13 +223,4 @@ Wenn Sie ein selbstsigniertes Zertifikat verwendet haben und die Sicherheitswarn
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Erstellen eines selbstsignierten Zertifikats
-> * Einrichten eines Netzwerks
-> * Erstellen eines Anwendungsgateways mit dem Zertifikat
-> * Hinzufügen eines Listeners und einer Umleitungsregel
-> * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
-
-
+- [Erstellen eines Anwendungsgateways mit interner Umleitung über die Azure-Befehlszeilenschnittstelle](redirect-internal-site-cli.md)

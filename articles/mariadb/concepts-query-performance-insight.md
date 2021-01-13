@@ -1,24 +1,21 @@
 ---
-title: Query Performance Insight in Azure Database for MariaDB
+title: Query Performance Insight (Azure Database for MariaDB)
 description: In diesem Artikel wird das Feature Query Performance Insight in Azure Database for MariaDB beschrieben.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: 709428d420c7d5f725d1b7df85e4860aec765b48
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.date: 3/18/2020
+ms.openlocfilehash: b643ba3305736480e06d7c10d594b2271839038f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950659"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536331"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Query Performance Insight in Azure Database for MariaDB
 
 **Anwendungsbereich:** Azure Database for MariaDB 10.2
-
-> [!IMPORTANT]
-> Query Performance Insight befindet sich in der Vorschauphase.
 
 Mithilfe von Query Performance Insight können Sie schnell die Abfragen mit den längsten Ausführungszeiten identifizieren, wie sie sich im Laufe der Zeit ändern und welche Wartezeiten sie beeinflussen.
 
@@ -59,7 +56,7 @@ Durch Klicken und Ziehen im Diagramm können Sie die Zeit auf ein bestimmtes Zei
 ### <a name="wait-statistics"></a>Wartestatistiken 
 
 > [!NOTE]
-> Wartestatistiken sind für die Problembehandlung von Leistungsproblemen bei Abfragen vorgesehen. Es wird empfohlen, diese nur zu Problembehandlungszwecken zu aktivieren.
+> Wartestatistiken sind für die Problembehandlung von Leistungsproblemen bei Abfragen vorgesehen. Es wird empfohlen, diese nur zu Problembehandlungszwecken zu aktivieren. <br>Wenn Sie im Azure-Portal die Fehlermeldung „*Problem für ‚Microsoft.DMforMariaDB‘. Anforderung kann nicht erfüllt werden. Falls dieses Problem weiterhin besteht oder unerwartet war, wenden Sie sich mit diesen Informationen an den Support.* “ erhalten, während Sie Wartestatistiken anzeigen, verwenden Sie einen kleineren Zeitraum.
 
 Wartestatistiken bieten eine Ansicht der Warteereignisse, die während der Ausführung einer bestimmten Abfrage auftreten. Weitere Informationen zu den Warteereignistypen finden Sie in der [MySQL-Engine-Dokumentation](https://go.microsoft.com/fwlink/?linkid=2098206).
 

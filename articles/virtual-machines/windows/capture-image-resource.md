@@ -1,40 +1,37 @@
 ---
-title: Erstellen eines verwalteten Images in Azure | Microsoft-Dokumentation
+title: Erstellen eines verwalteten Images in Azure
 description: Erstellen Sie ein verwaltetes Image eines generalisierten virtuellen Computers oder einer VHD in Azure. Mit Images können mehrere virtuelle Computer erstellt werden, die verwaltete Datenträger verwenden.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: imaging
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: c133431bb2b84525a8ea875dea94cec8595733bb
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.custom: legacy
+ms.openlocfilehash: 751fa9f9fe2ba17a982b71a6332be302804f0dcc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273863"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89047291"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure
 
 Eine verwaltete Imageressource kann aus einem generalisierten virtuellen Computer erstellt werden, der entweder als verwalteter Datenträger oder als nicht verwalteter Datenträger in einem Speicherkonto gespeichert ist. Mit diesem Image können dann mehrere virtuelle Computer erstellt werden. Weitere Informationen dazu, wie verwaltete Images abgerechnet werden, finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+Ein verwaltetes Image unterstützt bis zu 20 Bereitstellungen gleichzeitig. Wenn Sie versuchen, mehr als 20 VMs gleichzeitig aus demselben verwalteten Image zu erstellen, kann dies aufgrund der Einschränkungen bei der Speicherleistung einer einzelnen VHD zu Timeouts bei der Bereitstellung führen. Wenn Sie mehr als 20 VMs gleichzeitig erstellen möchten, verwenden Sie ein Image für [Shared Image Gallerys](shared-image-galleries.md), das mit jeweils einem Replikat pro 20 gleichzeitige VM-Bereitstellungen konfiguriert wurde.
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Generalisieren der Windows-VM mithilfe von Sysprep
 
-Sysprep entfernt alle persönlichen Konto- und Sicherheitsinformationen und bereitet den Computer darauf vor, als Image verwendet zu werden. Ausführliche Informationen zu Sysprep finden Sie unter [Sysprep (System Preparation) Overview](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) (Sysprep (Systemvorbereitung): Übersicht).
+Sysprep entfernt alle persönlichen Konto- und Sicherheitsinformationen und bereitet den Computer darauf vor, als Image verwendet zu werden. Ausführliche Informationen zu Sysprep finden Sie unter [Sysprep (System Preparation) Overview](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) (Sysprep (Systemvorbereitung): Übersicht).
 
-Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sysprep unterstützt werden. Weitere Informationen finden Sie unter [Sysprep-Unterstützung für Serverrollen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) und [Nicht unterstützte Szenarien](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios).
+Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sysprep unterstützt werden. Weitere Informationen finden Sie unter [Sysprep-Unterstützung für Serverrollen](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) und [Nicht unterstützte Szenarien](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios). 
 
 > [!IMPORTANT]
 > Nachdem Sie Sysprep auf einem virtuellen Computer ausgeführt haben, gilt dieser als *generalisiert* und kann nicht neu gestartet werden. Der Generalisierungsprozess eines virtuellen Computers kann nicht rückgängig gemacht werden. Wenn Sie die ursprüngliche Funktionsweise des virtuellen Computers beibehalten müssen, erstellen Sie eine [Kopie des virtuellen Computers](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) und generalisieren diese Kopie. 
+>
+>Sysprep erfordert, dass die Laufwerke vollständig entschlüsselt werden. Wenn Sie die Verschlüsselung auf Ihrer VM aktiviert haben, deaktivieren Sie diese, bevor Sie Sysprep ausführen.
 >
 > Wenn Sie Sysprep vor dem Hochladen der virtuellen Festplatte in Azure zum ersten Mal ausführen möchten, stellen Sie sicher, dass Sie [Ihren virtuellen Computer vorbereitet](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) haben.  
 > 
@@ -44,24 +41,37 @@ Führen Sie zum Generalisieren Ihres virtuellen Windows-Computers die folgenden 
 
 1. Melden Sie sich beim virtuellen Windows-Computer an.
    
-2. Öffnen Sie ein Eingabeaufforderungsfenster als ein Administrator. Wechseln Sie in das Verzeichnis „%windir%\system32\sysprep“, und führen Sie anschließend `sysprep.exe` aus.
+2. Öffnen Sie ein Eingabeaufforderungsfenster als ein Administrator. 
+
+3. Löschen Sie das Verzeichnis „Panther“ (c:\Windows\Panther). Wechseln Sie dann in das Verzeichnis „%windir%\system32\sysprep“, und führen Sie anschließend `sysprep.exe` aus.
    
-3. Wählen Sie im Dialogfeld **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren**, und aktivieren Sie das Kontrollkästchen **Verallgemeinern**.
+4. Wählen Sie im Dialogfeld **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren**, und aktivieren Sie das Kontrollkästchen **Verallgemeinern**.
    
-4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren** aus.
+5. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren** aus.
    
-5. Klicken Sie auf **OK**.
+6. Klicken Sie auf **OK**.
    
     ![Starten von Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 
 6. Nach Abschluss von Sysprep wird der virtuelle Computer heruntergefahren. Starten Sie den virtuellen Computer nicht neu.
 
+> [!TIP]
+> **Optional:** Verwenden Sie [DISM](/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options), um Ihr Image zu optimieren und die Zeit für den ersten Start Ihrer VM zu verringern.
+>
+> Um das Image zu optimieren, binden Sie die VHD ein, indem Sie in Windows-Explorer darauf doppelklicken und dann DISM mit dem Parameter `/optimize-image` ausführen.
+>
+> ```cmd
+> DISM /image:D:\ /optimize-image /boot
+> ```
+> Dabei ist „D:“ der Pfad der eingebundenen VHD.
+>
+> Das Ausführen von `DISM /optimize-image` sollte die letzte Änderung sein, die Sie an Ihrer virtuellen Festplatte vornehmen. Wenn Sie vor der Bereitstellung Änderungen an der virtuellen Festplatte vornehmen, müssen Sie `DISM /optimize-image` erneut ausführen.
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Erstellen eines verwalteten Images im Portal 
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um das VM-Image zu verwalten. Suchen Sie nach **Virtuelle Computer**, und wählen Sie diese Option aus.
 
-2. Wählen Sie im Menü auf der linken Seite **Virtuelle Computer** aus, und wählen Sie dann den virtuellen Computer aus der Liste aus.
+2. Wählen Sie Ihren virtuellen Computer in der Liste aus.
 
 3. Wählen Sie auf der Seite **Virtueller Computer** des virtuellen Computers im oberen Menü die Option **Erfassen** aus.
 
@@ -69,7 +79,7 @@ Führen Sie zum Generalisieren Ihres virtuellen Windows-Computers die folgenden 
 
 4. Übernehmen Sie unter **Name** entweder den bereits angegebenen Wert, oder geben Sie einen Namen ein, der für das Image verwendet werden soll.
 
-5. Wählen Sie unter **Ressourcengruppe** entweder **Neu erstellen** aus, und geben Sie einen Namen ein, oder wählen Sie die Option **Vorhandene verwenden** und dann aus der Dropdownliste eine Ressourcengruppe aus.
+5. Wählen Sie unter **Ressourcengruppe** entweder **Neu erstellen** aus, und geben Sie einen Namen ein, oder wählen Sie in der Dropdownliste eine Ressourcengruppe aus.
 
 6. Wenn Sie die Quell-VM nach der Erstellung des Image löschen möchten, wählen Sie **Diesen virtuellen Computer nach dem Erstellen des Images automatisch löschen** aus.
 
@@ -77,13 +87,13 @@ Führen Sie zum Generalisieren Ihres virtuellen Windows-Computers die folgenden 
 
 8. Wählen Sie **Erstellen** aus, um das Image zu erstellen.
 
-9. Nachdem das Image erstellt wurde, wird es in der Ressourcengruppe in der Liste der Ressourcen als **Image** angezeigt.
+Nachdem das Image erstellt wurde, wird es in der Ressourcengruppe in der Liste der Ressourcen als **Image** angezeigt.
 
 
 
-## <a name="create-an-image-of-a-vm-using-powershell"></a>Erstellen eines Image einer VM mithilfe von PowerShell
+## <a name="create-an-image-of-a-vm-using-powershell"></a>Erstellen eines VM-Images mithilfe von PowerShell
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 Durch Erstellen eines Images direkt von einem virtuellen Computer lässt sich sicherstellen, dass das Image alle Datenträger umfasst, die dem virtuellen Computer zugeordnet sind, einschließlich des Betriebssystemdatenträgers und aller Datenträger für Daten. In diesem Beispiel wird gezeigt, wie ein verwaltetes Image von einer VM mit verwalteten Datenträgern erstellt wird.
 
@@ -172,7 +182,7 @@ Wenn Sie nur ein Image des Betriebssystemdatenträgers erstellen möchten, geben
     ``` 
 
 
-## <a name="create-an-image-from-a-snapshot-using-powershell"></a>Erstellen eines Image von einer Momentaufnahme mithilfe von PowerShell
+## <a name="create-an-image-from-a-snapshot-using-powershell"></a>Erstellen eines Images aus einer Momentaufnahme mithilfe von PowerShell
 
 Sie können ein verwaltetes Image aus einer Momentaufnahme eines generalisierten virtuellen Computers erstellen. Führen Sie dazu die folgenden Schritte aus:
 
@@ -241,4 +251,3 @@ Um ein verwaltetes Image aus einer VM zu erstellen, für die keine verwalteten D
     
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen eines virtuellen Computers aus einem verwalteten Image](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)    
-

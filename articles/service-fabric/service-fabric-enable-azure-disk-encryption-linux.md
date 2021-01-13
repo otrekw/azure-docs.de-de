@@ -1,24 +1,14 @@
 ---
-title: Aktivieren der Datenträgerverschlüsselung für Azure Service Fabric-Linux-Cluster | Microsoft-Dokumentation
+title: Aktivieren von Disk Encryption für Linux-Cluster
 description: Dieser Artikel beschreibt das Aktivieren der Datenträgerverschlüsselung für Azure Service Fabric-Clusterknoten unter Linux mit Azure Resource Manager und Azure Key Vault.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: navya
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/22/2019
-ms.author: atsenthi
-ms.openlocfilehash: 5bcfad63df69010851dde66b0c8935e63a509455
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c600d822d20b0e5a0ca613935b1dfa4be838fcec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599595"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "78252812"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>Aktivieren der Datenträgerverschlüsselung für Azure Service Fabric-Clusterknoten unter Linux 
 > [!div class="op_single_selector"]
@@ -27,9 +17,9 @@ ms.locfileid: "68599595"
 >
 >
 
-In diesem Tutorial erfahren Sie, wie Sie die Datenträgerverschlüsselung auf Azure Service Fabric-Clusterknoten unter Linux aktivieren. Sie müssen diese Schritte für alle Knotentypen und VM-Skalierungsgruppen befolgen. Für die Verschlüsselung der Knoten verwenden wir die Azure Disk Encryption-Funktion für VM-Skalierungsgruppen.
+In diesem Tutorial erfahren Sie, wie Sie die Datenträgerverschlüsselung auf Azure Service Fabric-Clusterknoten unter Linux aktivieren. Diese Schritte müssen für alle Knotentypen und VM-Skalierungsgruppen ausgeführt werden. Für die Verschlüsselung der Knoten verwenden wir die Azure Disk Encryption-Funktion für VM-Skalierungsgruppen.
 
-In dem Leitfaden werden die folgenden Themen behandelt:
+Der Leitfaden behandelt folgende Themen:
 
 * Schlüsselkonzepte, die Sie zum Aktivieren der Datenträgerverschlüsselung auf einer VM-Skalierungsgruppe im Service Fabric-Cluster unter Linux berücksichtigen müssen.
 * Schritte, die Sie vor dem Aktivieren der Datenträgerverschlüsselung auf Service Fabric-Clusterknoten unter Linux ausführen müssen.
@@ -43,20 +33,20 @@ In dem Leitfaden werden die folgenden Themen behandelt:
 
  **Selbstregistrierung**
 
-Die Vorschauversion der Datenträgerverschlüsselung für die VM-Skalierungsgruppe erfordert eine Selbstregistrierung. Führen Sie die folgenden Schritte aus:
+Die Vorschauversion der Datenträgerverschlüsselung für die VM-Skalierungsgruppe erfordert eine Selbstregistrierung. Führen Sie die folgenden Schritte durch:
 
 1. Führen Sie den folgenden Befehl aus: 
     ```powershell
     Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
     ```
-2. Warten Sie etwa 10 Minuten, bis der Status *Registriert* anzeigt. Sie können den Status überprüfen, indem Sie den folgenden Befehl ausführen:
+2. Warten Sie etwa zehn Minuten, bis der Status *Registriert* angezeigt wird. Sie können den Status überprüfen, indem Sie den folgenden Befehl ausführen:
     ```powershell
     Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
     Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
     ```
 **Azure Key Vault**
 
-1. Erstellen Sie einen Schlüsseltresor im selben Abonnement und in derselben Region wie die Skalierungsgruppe. Wählen Sie dann die Zugriffsrichtlinie **EnabledForDiskEncryption** für den Schlüsseltresor mit seinem PowerShell-Cmdlet aus. Sie können die Richtlinie auch unter Verwendung der Key Vault-Benutzeroberfläche im Azure-Portal mit folgendem Befehl festlegen:
+1. Erstellen Sie einen Schlüsseltresor im selben Abonnement und in derselben Region wie die Skalierungsgruppe. Wählen Sie dann die Zugriffsrichtlinie **EnabledForDiskEncryption** für den Schlüsseltresor mit seinem PowerShell-Cmdlet aus. Sie können die Richtlinie auch mit folgendem Befehl über die Key Vault-Benutzeroberfläche im Azure-Portal festlegen:
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
     ```
@@ -96,7 +86,7 @@ Set-AzContext -SubscriptionId <guid>
 
 ```
 
-```CLI
+```azurecli
 
 azure login
 az account set --subscription $subscriptionId
@@ -230,7 +220,7 @@ az vmss encryption show -g <resourceGroupName> -n <VMSS name>
 
 ```
 
-### <a name="disable-disk-encryption-for-a-virtual-machine-scale-set-in-a-service-fabric-cluster"></a>Deaktivieren der Datenträgerverschlüsselung für eine VM-Skalierungsgruppe in einem Service Fabric-Cluster
+### <a name="disable-disk-encryption-for-a-virtual-machine-scale-set-in-a-service-fabric-cluster"></a>Deaktivieren der Datenträgerverschlüsselung für eine VM-Skalierungsgruppe in einem Service Fabric-Cluster
 Deaktivieren Sie die Datenträgerverschlüsselung für eine VM-Skalierungsgruppe, indem Sie die folgenden Befehle ausführen. Beachten Sie, dass sich das Deaktivieren der Datenträgerverschlüsselung auf die gesamte VM-Skalierungsgruppe und nicht auf eine einzelne Instanz bezieht.
 
 ```powershell
@@ -247,4 +237,4 @@ az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-An diesem Punkt sollten Sie über einen sicheren Cluster verfügen und wissen, wie Sie die Datenträgerverschlüsselung für Service Fabric-Clusterknoten und VM-Skalierungsgruppen aktivieren und deaktivieren. Eine ähnliche Anleitung zu Service Fabric-Clusterknoten unter Linux finden Sie unter [Datenträgerverschlüsselung für Windows](service-fabric-enable-azure-disk-encryption-windows.md). 
+An diesem Punkt sollten Sie über einen sicheren Cluster verfügen und wissen, wie Sie die Datenträgerverschlüsselung für Service Fabric-Clusterknoten und VM-Skalierungsgruppen aktivieren und deaktivieren. Eine ähnliche Anleitung zu Service Fabric-Clusterknoten unter Linux finden Sie unter [Datenträgerverschlüsselung für Windows](service-fabric-enable-azure-disk-encryption-windows.md). 

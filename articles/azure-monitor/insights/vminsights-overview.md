@@ -1,67 +1,57 @@
 ---
-title: Was ist Azure Monitor für VMs (Vorschauversion)? | Microsoft-Dokumentation
-description: Azure Monitor for VMs ist ein Feature von Azure Monitor, das Integritäts- und Leistungsüberwachung des Azure VM-Betriebssystems mit der automatischen Erkennung von Anwendungskomponenten und Abhängigkeiten mit anderen Ressourcen kombiniert und die Kommunikation unter ihnen als Zuordnung darstellt. Dieser Artikel bietet eine Übersicht.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
-ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/13/2019
-ms.author: magoedte
-ms.openlocfilehash: 7d86b3fe9aeddd603d0c40b1c760cabdee42e396
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+title: Was ist Azure Monitor for VMs?
+description: Übersicht über die Azure Monitor für VMs-Lösung, mit der die Integrität und Leistung der Azure-VMs überwacht wird sowie Anwendungskomponenten und ihre Abhängigkeiten automatisch ermittelt und zugeordnet werden.
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
+ms.author: bwren
+ms.date: 07/22/2020
+ms.openlocfilehash: e5eaf2d7075ca09aeb3cfaa2dfea81fd0f8d65ad
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522108"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685306"
 ---
-# <a name="what-is-azure-monitor-for-vms-preview"></a>Was ist Azure Monitor für VMs (Vorschauversion)?
+# <a name="overview-of-azure-monitor-for-vms"></a>Übersicht über Azure Monitor für VMs
 
-Azure Monitor für VMs überwacht Ihre virtuellen Azure-Computer (VM) und VM-Skalierungsgruppen bedarfsorientiert. Der Dienst analysiert die Leistung und Integrität Ihrer Windows- und Linux-VMs und überwacht deren Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen. 
+Azure Monitor für VMs überwacht die Leistung und Integrität Ihrer virtuellen Computer und VM-Skalierungsgruppen, einschließlich ihrer ausgeführten Prozesse und Abhängigkeiten von anderen Ressourcen. Dieser Dienst kann die Bereitstellung von Vorhersagen zu Leistung und Verfügbarkeit wichtiger Anwendungen unterstützen, indem Leistungsengpässe und Netzwerkprobleme erkannt werden, und auch Informationen dazu liefern, ob ein Problem im Zusammenhang mit anderen Abhängigkeiten steht.
 
-Als Lösung umfasst Azure Monitor für VMs die Unterstützung für die Überwachung von Leistungs- und Anwendungsabhängigkeiten für VMs, die lokal oder bei einem anderen Cloudanbieter gehostet sind. Drei wichtige Features bieten tiefgreifende Einblicke:
+Azure Monitor für VMs unterstützt Windows- und Linux-Betriebssysteme auf folgenden Computern:
 
-* **Logische Komponenten von virtuellen Azure-Computern mit Windows und Linux**: Werden an vorkonfigurierten Integritätskriterien gemessen und benachrichtigen Sie, wenn die ausgewertete Bedingung erfüllt ist.  
+- Virtuelle Azure-Computer
+- Azure-VM-Skalierungsgruppen
+- Hybrid-VMs, die mit Azure Arc verbunden sind
+- Lokale virtuelle Computer
+- In einer anderen Cloudumgebung gehostete virtuelle Computer
+  
 
-* **Vordefinierte Diagramme zu Leistungstrends**: Zeigen Kernleistungsmetriken des Gast-VM-Betriebssystems an.
+Azure Monitor für VMs speichert die Daten in Azure Monitor-Protokollen und ermöglicht dadurch leistungsstarke Aggregation und Filterung sowie die Analyse von Datentrends im zeitlichen Verlauf. Sie können diese Daten direkt in einer einzelnen VM anzeigen, oder Sie können eine aggregierte Ansicht mehrerer VMs mit Azure Monitor bereitstellen.
 
-* **Abhängigkeitsdiagramm**: Zeigt die mit der VM verbundenen Komponenten aus verschiedenen Ressourcengruppen und Abonnements an.  
+![VM-Insights-Perspektive im Azure-Portal](media/vminsights-overview/vminsights-azmon-directvm.png)
 
-Die Features sind in Form von drei Perspektiven geordnet:
 
-* Health
-* Leistung
-* Map
+## <a name="pricing"></a>Preise
+Es fallen keine direkten Kosten für Azure Monitor für VMs an, doch werden Ihnen die Aktivitäten im Log Analytics-Arbeitsbereich in Rechnung gestellt. Basierend auf den Preisen, die auf der [Seite mit der Azure Monitor-Preisübersicht](https://azure.microsoft.com/pricing/details/monitor/) veröffentlicht sind, wird Azure Monitor für VMs für Folgendes abgerechnet:
 
->[!NOTE]
->Aktuell wird das Integritätsfeature nur für Azure-VMs angeboten. Die Features „Leistung“ und „Zuordnung“ unterstützen Azure-VMs, Azure-VM-Skalierungsgruppen und virtuelle Computer, die in Ihrer Umgebung oder von anderen Cloudanbietern gehostet werden.
+- Von Agents erfasste und im Arbeitsbereich gespeicherte Daten
+- Von der Gastintegrität gesammelte Integritätsstatusdaten (Vorschau)
+- Warnungsregeln basierend auf Protokoll- und Integritätsdaten
+- Von Warnungsregeln gesendete Benachrichtigungen
 
-Die Integration in Azure Monitor-Protokollen ermöglicht die leistungsstarke Aggregation und Filterung und bietet die Möglichkeit zum Analysieren von Datentrends im zeitlichen Verlauf. Eine derartig umfassende Überwachung Ihrer Workloads kann nicht mit Azure Monitor oder der Dienstzuordnung allein erreicht werden.  
+Die Protokollgröße unterscheidet sich je nach Zeichenfolgenlänge der Leistungsindikatoren und kann mit der Anzahl der logischen Datenträger und Netzwerkadapter anwachsen, die der VM zugeordnet sind. Wenn Sie bereits die Dienstzuordnung verwenden, besteht die einzige für Sie sichtbare Veränderung in den zusätzlichen Leistungsdaten, die an den Azure Monitor-Datentyp `InsightsMetrics` gesendet werden.
 
-Sie können diese Daten direkt in einem einzelnen virtuellen Computer anzeigen, oder Sie können eine aggregierte Ansicht Ihrer virtuellen Computer mit Azure Monitor bereitstellen. Diese Ansicht basiert auf der Perspektive der einzelnen Features:
 
-* **Integrität**: Die virtuellen Computer beziehen sich auf eine Ressourcengruppe.
-* **Zuordnung** und **Leistung**: Die virtuellen Computer sind für das Berichten an einen bestimmten Log Analytics-Arbeitsbereich konfiguriert.
+## <a name="configuring-azure-monitor-for-vms"></a>Konfigurieren von Azure Monitor für VMs
+Die Schritte zum Konfigurieren von Azure Monitor für VMs sind nachfolgend aufgeführt. Unter jedem Link finden Sie ausführliche Anleitungen zum jeweiligen Schritt:
 
-![VM-Insights-Perspektive im Azure-Portal](./media/vminsights-overview/vminsights-azmon-directvm-01.png)
+- [Erstellen eines Log Analytics-Arbeitsbereichs](vminsights-configure-workspace.md#create-log-analytics-workspace)
+- [Hinzufügen der VMInsights-Lösung zum Arbeitsbereich](vminsights-configure-workspace.md#add-vminsights-solution-to-workspace)
+- [Installieren von Agents auf zu überwachender VM und VM-Skalierungsgruppe](vminsights-enable-overview.md)
 
-Azure Monitor für VMs kann eine vorhersehbare Leistung und Verfügbarkeit wichtiger Anwendungen bieten. Es identifiziert kritische Ereignisse des Betriebssystems, Leistungsengpässe und Netzwerkprobleme. Azure Monitor für VMs kann außerdem Aufschluss darüber geben, ob ein Problem mit weiteren Abhängigkeiten zusammenhängt.  
 
-## <a name="data-usage"></a>Datennutzung 
-
-Wenn Sie Azure Monitor für VMs bereitstellen, werden die von Ihren virtuellen Computern gesammelten Daten erfasst und in Azure Monitor gespeichert. Metriken zu Integritätskriterien werden in Azure Monitor in einer Zeitreihendatenbank gespeichert, gesammelte Leistungs- und Abhängigkeitsdaten in einem Log Analytics-Arbeitsbereich. Basierend auf den Preisen, die auf der [Seite mit der Azure Monitor-Preisübersicht](https://azure.microsoft.com/pricing/details/monitor/) veröffentlicht sind, wird Azure Monitor für VMs für Folgendes abgerechnet:
-
-* Die erfassten und gespeicherten Daten.
-* Die Anzahl der auf Integritätskriterien bezogenen metrischem Zeitreihen, die überwacht werden.
-* Die erstellten Warnungsregeln.
-* Die gesendeten Benachrichtigungen. 
-
-Die Protokollgröße unterscheidet sich je nach Zeichenfolgenlänge der Leistungsindikatoren und kann mit der Anzahl der logischen Datenträger und Netzwerkadapter anwachsen, die der VM zugeordnet sind. Wenn Sie bereits über einen Arbeitsbereich verfügen und diese Indikatoren sammeln, erfolgt keine doppelte Belastung. Wenn Sie bereits die Dienstzuordnung verwenden, besteht die einzige für Sie sichtbare Veränderung in den zusätzlichen Verbindungsdaten, die an Azure Monitor gesendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zu den Anforderungen und Methoden, die Ihnen beim Überwachen Ihrer virtuellen Computer helfen, finden Sie unter [Bereitstellen von Azure Monitor für VMs](vminsights-enable-overview.md).
+
+- Informationen zu den Anforderungen und Methoden für die Aktivierung der Überwachung für Ihre virtuellen Computer finden Sie unter [Bereitstellen von Azure Monitor für VMs](vminsights-enable-overview.md).
+

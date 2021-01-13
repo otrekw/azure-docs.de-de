@@ -1,24 +1,15 @@
 ---
-title: Beibehalten von Ergebnissen oder Protokollen von abgeschlossenen Aufträgen und Tasks in einem Datenspeicher – Azure Batch | Microsoft-Dokumentation
+title: Speichern von Auftrags- und Aufgabenausgabe in einem Datenspeicher
 description: Lernen Sie verschiedene Optionen zum Beibehalten von Ausgabedaten von Batch-Tasks und -Aufträgen kennen. Sie können Daten in Azure Storage oder in einem anderen Datenspeicher beibehalten.
-services: batch
-author: laurenhughes
-manager: gwallace
-editor: ''
-ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
-ms.service: batch
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
+ms.topic: how-to
 ms.date: 11/14/2018
-ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d03fd754e5a8e2872063b8a10bd1293b94d8f3b6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094424"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85965109"
 ---
 # <a name="persist-job-and-task-output"></a>Persistente Aufträge und Aufgabenausgabe
 
@@ -44,23 +35,23 @@ Die folgenden Abschnitte enthalten eine kurze Erläuterung des jeweiligen Ansatz
 
 ### <a name="use-the-batch-service-api"></a>Verwenden der Batch-Dienst-API
 
-Der Batch-Dienst unterstützt die Angabe von Ausgabedateien in Azure Storage für Taskdaten, wenn Sie [einen Task einem Auftrag hinzufügen](https://docs.microsoft.com/rest/api/batchservice/add-a-task-to-a-job) oder [eine Sammlung von Tasks einem Auftrag hinzufügen](https://docs.microsoft.com/rest/api/batchservice/add-a-collection-of-tasks-to-a-job).
+Der Batch-Dienst unterstützt die Angabe von Ausgabedateien in Azure Storage für Taskdaten, wenn Sie [einen Task einem Auftrag hinzufügen](/rest/api/batchservice/add-a-task-to-a-job) oder [eine Sammlung von Tasks einem Auftrag hinzufügen](/rest/api/batchservice/add-a-collection-of-tasks-to-a-job).
 
 Weitere Informationen zum Beibehalten der Taskausgabe mit der Batch-Dienst-API, finden Sie unter [Persist task data to Azure Storage with the Batch service API (Beibehalten von Taskdaten in Azure Storage mit der Batch-Dienst-API)](batch-task-output-files.md).
 
 ### <a name="use-the-batch-file-conventions-library-for-net"></a>Verwenden der Batch-Dateikonventionenbibliothek für .NET
 
-Batch definiert einen optionalen Satz von Konventionen zum Benennen von Taskausgabedateien in Azure Storage. Der [Batch-Dateikonventionenstandard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) beschreibt diese Konventionen. Der Dateikonventionenstandard bestimmt die Namen des Zielcontainers und den Blobpfad in Azure Storage für eine gegebene Ausgabedatei, die auf den Namen des Auftrags und der Aufgabe basiert.
+Batch definiert einen optionalen Satz von Konventionen zum Benennen von Taskausgabedateien in Azure Storage. Der [Batch-Dateikonventionenstandard](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions) beschreibt diese Konventionen. Der Dateikonventionenstandard bestimmt die Namen des Zielcontainers und den Blobpfad in Azure Storage für eine gegebene Ausgabedatei, die auf den Namen des Auftrags und der Aufgabe basiert.
 
 Es liegt an Ihnen, ob Sie Dateikonventionenstandard für die Benennung Ihrer Ausgabedatendateien verwenden. Sie können auch den Zielcontainer und -blob benennen, wie Sie möchten. Wenn sie den Dateikonventionenstandard zum Benennen von Ausgabedateien verwenden, sind Ihre Ausgabedateien zur Anzeige im [Azure-Portal][portal] verfügbar.
 
-Entwickler, die Batch-Lösungen mit C# und .NET erstellen, können die [Dateikonventionenbibliothek für .NET][nuget_package] verwenden, um Taskdaten in einem Azure Storage-Konto gemäß [Batch-Dateikonventionenstandard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) beizubehalten. Die Dateikonventionenbibliothek behandelt das Verschieben von Ausgabedateien zu Azure Storage und das Benennen von Zielcontainern und Blobs auf bekannte Weise.
+Entwickler, die Batch-Lösungen mit C# und .NET erstellen, können die [Dateikonventionenbibliothek für .NET][nuget_package] verwenden, um Taskdaten in einem Azure Storage-Konto gemäß [Batch-Dateikonventionenstandard](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions) beizubehalten. Die Dateikonventionenbibliothek behandelt das Verschieben von Ausgabedateien zu Azure Storage und das Benennen von Zielcontainern und Blobs auf bekannte Weise.
 
 Informationen zum Beibehalten von Taskausgaben mit der Dateikonventionenbibliothek für .NET finden Sie unter [Beibehalten von Auftrags- und Taskdaten in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET](batch-task-output-file-conventions.md).
 
 ### <a name="implement-the-batch-file-conventions-standard"></a>Implementieren des Batch-Konventionenstandards
 
-Wenn Sie eine andere Sprache als .NET verwenden, können Sie den [Batch-Dateikonventionenstandard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) in Ihrer eigenen Anwendung implementieren.
+Wenn Sie eine andere Sprache als .NET verwenden, können Sie den [Batch-Dateikonventionenstandard](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions) in Ihrer eigenen Anwendung implementieren.
 
 Möglicherweise möchten Sie den Dateikonventionen-Benennungsstandard selbst implementieren, wenn Sie ein bewährtes Benennungsschema wollen oder die Taskausgabe im Azure-Portal anzeigen möchten.
 

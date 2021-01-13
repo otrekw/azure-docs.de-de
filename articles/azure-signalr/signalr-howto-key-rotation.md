@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 133edc64ac2f858a397a4a184c24497dae8af333
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67565724"
 ---
 # <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>Rotieren von Zugriffsschlüsseln für Azure SignalR Service

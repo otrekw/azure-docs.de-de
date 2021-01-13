@@ -4,28 +4,28 @@ description: Hier erfahren Sie, wie Sie mit dem HDInsight .NET SDK administrativ
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: abfbac552cc5cb4449a75c45d0c1ffdbcf6b770c
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 367b47e8dbe0e1ee56fea620d97109631ba87a06
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508111"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484881"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem .NET SDK
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Erfahren Sie, wie Sie HDInsight-Cluster mit dem [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)verwalten.
+Erfahren Sie, wie Sie HDInsight-Cluster mit dem [HDInsight.NET SDK](/dotnet/api/overview/azure/hdinsight)verwalten.
 
 **Voraussetzungen**
 
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
-* **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* **Ein Azure-Abonnement** . Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="connect-to-azure-hdinsight"></a>Verbinden mit Azure HDInsight
 
@@ -108,11 +108,8 @@ namespace HDInsightManagement
 
 Sie sehen eine Eingabeaufforderung, wenn Sie dieses Programm ausführen.  Wenn Sie diese Eingabeaufforderung nicht sehen möchten, finden Sie weitere Informationen unter [Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung](hdinsight-create-non-interactive-authentication-dotnet-applications.md).
 
-## <a name="create-clusters"></a>Erstellen von Clustern
 
-Siehe [Erstellen von Linux-basierten Clustern in HDInsight mit dem .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
-
-## <a name="list-clusters"></a>Auflisten von Clustern
+## <a name="list-clusters"></a>Auflisten der Cluster
 
 Im folgenden Codeausschnitt sind Cluster und einige Eigenschaften aufgeführt:
 
@@ -178,7 +175,7 @@ Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unt
     Es folgt ein Beispiel, wie die Storm-Topologie mithilfe des CLI-Befehls neu ausgeglichen werden kann:
     
 
-    ```cli
+    ```console
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
     ## the spout "blue-spout" to use 3 executors, and
     ## the bolt "yellow-bolt" to use 10 executors
@@ -269,9 +266,9 @@ Weitere Informationen finden Sie unter [Verwenden von Oozie mit Hadoop zum Defin
 
 Siehe [Hochladen von Daten in HDInsight][hdinsight-upload-data].
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
-* [Referenzdokumentation zum HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [Referenzdokumentation zum HDInsight .NET SDK](/dotnet/api/overview/azure/hdinsight)
 * [Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal](hdinsight-administer-use-portal-linux.md)
 * [Verwalten von HDInsight über eine Befehlszeilenschnittstelle][hdinsight-admin-cli]
 * [Erstellen von Hadoop-Clustern in HDInsight][hdinsight-provision]

@@ -1,25 +1,31 @@
 ---
 title: 'Schnellstart: Vorschlagen von Suchabfragen mit der Bing-Vorschlagssuche-REST-API und Node.js'
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie schnell loslegen und mit der Bing-Vorschlagssuche-API Suchbegriffe in Echtzeit vorschlagen können.
+description: Hier erfahren Sie, wie Sie schnell loslegen und mit der Bing-Vorschlagssuche-API und Node.js Suchbegriffe in Echtzeit vorschlagen können.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 0dd25f5ff3767e65eeb293d6a046da034d5c8879
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: devx-track-js
+ms.openlocfilehash: 03545aafa1cbf6efa82ae063e7e966443b1d5e8b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564665"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106120"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Schnellstart: Vorschlagen von Suchabfragen mit der Bing-Vorschlagssuche-REST-API und Node.js
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-API aufrufen und die JSON-Antwort erhalten. Diese einfache Node.js-Anwendung sendet eine partielle Suchabfrage an die API und gibt Vorschläge für Suchvorgänge zurück. Diese Anwendung ist zwar in JavaScript geschrieben, aber die API ist ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js).
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-API aufrufen und die JSON-Antwort lesen. Diese einfache Node.js-Anwendung sendet eine partielle Suchabfrage an die API und gibt Vorschläge für Suchvorgänge zurück. Diese Anwendung ist zwar in JavaScript geschrieben, aber die API ist ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +43,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-A
     let https = require ('https');
     ```
 
-2. Erstellen Sie Variablen für Ihren den Host und Pfad Ihres API-Endpunkts, Ihren Abonnementschlüssel, Ihren [Marktcode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine Suchabfrage.
+2. Erstellen Sie Variablen für Ihren den Host und Pfad Ihres API-Endpunkts, Ihren Abonnementschlüssel, Ihren [Marktcode](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine Suchabfrage. Verwenden Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md), der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```javascript
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -74,17 +80,17 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-A
     }
     ```
 
-    1. Verwenden Sie in der gleichen Funktion die Bibliothek für Anforderungen, um Ihre Abfrage an die API zu senden. `response_handler` wird im nächsten Abschnitt definiert.
+ 1. Verwenden Sie in der gleichen Funktion die Bibliothek für Anforderungen, um Ihre Abfrage an die API zu senden. `response_handler` wird im nächsten Abschnitt definiert.
     
-        ```javascript
+    ```javascript
         //...
         let req = https.request(request_params, response_handler);
         req.end();
-        ```
+    ```
 
 ## <a name="create-a-search-handler"></a>Erstellen eines Suchhandlers
 
-1. Definieren Sie eine Funktion mit der Bezeichnung `response_handler`, die einen HTTP-Aufruf, `response`, als Parameter verwendet. Führen Sie innerhalb dieser Funktion die folgenden Schritte aus:
+1. Definieren Sie eine Funktion mit der Bezeichnung `response_handler`, die einen HTTP-Aufruf (`response`) als Parameter verwendet. Führen Sie innerhalb dieser Funktion die folgenden Schritte aus:
     
     1. Definieren Sie eine Variable, die den Text der JSON-Antwort enthält.  
 
@@ -94,7 +100,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-A
         };
         ```
 
-    2. Speichern Sie den Text der Antwort, wenn das Flag **data** aufgerufen wird.
+    2. Speichern Sie den Text der Antwort, wenn das Flag `data` aufgerufen wird.
         
         ```javascript
         response.on ('data', function (d) {
@@ -102,7 +108,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-A
         });
         ```
 
-    3. Wird ein Flag vom Typ **end** angezeigt, geben Sie die Antwort mithilfe von `JSON.parse()` und `JSON.stringify()` aus.
+    3. Wird ein Flag vom Typ `end` angezeigt, geben Sie die Antwort mithilfe von `JSON.parse()` und `JSON.stringify()` aus.
     
         ```javascript
         response.on ('end', function () {
@@ -191,4 +197,4 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 > [Erstellen einer Single-Page-Web-App](../tutorials/autosuggest.md)
 
 - [Worum handelt es sich bei der Bing-Vorschlagssuche?](../get-suggested-search-terms.md)
-- [Referenz für die Bing-Vorschlagssuche-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Referenz für die Bing-Vorschlagssuche-API V7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

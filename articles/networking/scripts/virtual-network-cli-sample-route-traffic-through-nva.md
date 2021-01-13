@@ -1,28 +1,26 @@
 ---
-title: Azure CLI-Beispielskript – Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät | Microsoft-Dokumentation
+title: Azure CLI-Beispielskript – Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 description: Azure CLI-Beispielskript – Weiterleiten von Datenverkehr über ein virtuelles Firewall-Netzwerkgerät.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: KumudD
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: timlt
-ms.openlocfilehash: f2ba4d919cc17d1c454a39490377477e99aa17e2
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: kumud
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a349f8160e8ab5b6459b2085e21e7368570c57db
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875512"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87503836"
 ---
-# <a name="route-traffic-through-a-network-virtual-appliance"></a>Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
+# <a name="use-an-azure-cli-script-to-route-traffic-through-a-network-virtual-appliance"></a>Verwenden Sie ein Azure CLI-Skript zum Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät.
 
 In diesem Skriptbeispiel wird ein virtuelles Netzwerk mit Front-End- und Back-End-Subnetz erstellt. Es wird auch ein virtueller Computer mit IP-Weiterleitung erstellt, der zur Weiterleitung von Datenverkehr zwischen den zwei Subnetzen aktiviert ist. Nach dem Ausführen des Skripts können Sie dem virtuellen Computer Netzwerksoftware bereitstellen, z.B. eine Firewallanwendung.
 

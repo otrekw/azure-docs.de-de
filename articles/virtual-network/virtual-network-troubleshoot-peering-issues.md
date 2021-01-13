@@ -6,6 +6,7 @@ documentationcenter: na
 author: v-miegge
 manager: dcscontentpm
 editor: ''
+tags: virtual-network
 ms.assetid: 1a3d1e84-f793-41b4-aa04-774a7e8f7719
 ms.service: virtual-network
 ms.devlang: na
@@ -14,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 0898a65323957cbab4c2ab5278e9970cf0c16a90
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 9685c1739a00788a974c200ddabb8cc975696b62
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219236"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83587730"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Beheben von Problemen mit dem Peering virtueller Netzwerke
 
-In diesem Handbuch zur Problembehandlung finden Sie Schritte zum Beheben der meisten Probleme eines [Peerings virtueller Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+In diesem Handbuch zur Problembehandlung finden Sie Schritte zum Beheben der meisten Probleme eines [Peerings virtueller Netzwerke](virtual-network-peering-overview.md).
 
 ![Diagramm zu Peering virtueller Netzwerke](./media/virtual-network-troubleshoot-peering-issues/4489538_en_1.png)
 
@@ -233,6 +234,15 @@ Um dieses Problem zu beheben, löschen Sie das Peering aus beiden virtuellen Net
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Fehler beim Peering eines virtuellen Databricks-Netzwerks
 
 Um dieses Problem zu beheben, konfigurieren Sie das Peering virtueller Netzwerke unter **Azure Databricks**, und geben Sie dann das virtuelle Zielnetzwerk über die **Ressourcen-ID** an. Weitere Informationen finden Sie unter [Peer a Databricks virtual network to a remote virtual network](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
+
+### <a name="the-remote-virtual-network-lacks-a-gateway"></a>Dem virtuellen Remotenetzwerk fehlt ein Gateway
+
+Dieses Problem tritt auf, wenn Sie zwischen virtuellen Netzwerken von verschiedenen Mandanten Peeringverbindungen herstellen und später `Use Remote Gateways` konfigurieren möchten. Eine Einschränkung des Azure-Portals besteht darin, dass es das Vorhandensein eines virtuellen Netzwerkgateways im virtuellen Netzwerk eines anderen Mandanten nicht überprüfen kann.
+
+Es gibt zwei Möglichkeiten, dieses Problem zu beheben:
+
+ * Löschen Sie die Peerings, und aktivieren Sie die Option `Use Remote Gateways`, wenn Sie ein neues Peering erstellen.
+ * Verwenden Sie PowerShell oder die Befehlszeilenschnittstelle anstelle des Azure-Portals, um `Use Remote Gateways` zu aktivieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

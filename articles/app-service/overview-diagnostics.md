@@ -1,25 +1,18 @@
 ---
-title: Übersicht über die Azure App Service-Diagnose | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit der App Service-Diagnose Probleme bei einer App beheben können.
+title: Diagnose- und Lösungstool
+description: Erfahren Sie, wie Sie Probleme mit Ihrer App in Azure App Service mit dem Diagnose- und Lösungstool im Azure-Portal beheben können.
 keywords: App Service, Azure App Service, Diagnose, Unterstützung, Web-App, Problembehandlung, Selbsthilfe
-services: app-service
-documentationcenter: ''
 author: jen7714
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: c9d6bc8802b54e970fe863ed6a7283f01c947916
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d58341979b0bbe0699a5ca293b20394c43cde1d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066856"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88962807"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Übersicht über die Azure App Service-Diagnose
 
@@ -27,7 +20,7 @@ Wenn Sie eine Webanwendung ausführen, möchten Sie auf möglicherweise auftrete
 
 Diese Komponente ist besonders hilfreich, wenn innerhalb der letzten 24 Stunden Probleme bei der App aufgetreten sind, jedoch stehen Ihnen alle Diagnosediagramme jederzeit für die Analyse zur Verfügung.
 
-Die App Service-Diagnose funktioniert nicht nur bei Ihrer App unter Windows, sondern auch bei Apps für [Linux-Container](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro), die [App Service-Umgebung](https://docs.microsoft.com/azure/app-service/environment/intro) und [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview).
+Die App Service-Diagnose funktioniert nicht nur bei Ihrer App unter Windows, sondern auch bei Apps für [Linux-Container](./overview.md#app-service-on-linux), die [App Service-Umgebung](./environment/intro.md) und [Azure Functions](../azure-functions/functions-overview.md).
 
 ## <a name="open-app-service-diagnostics"></a>Öffnen der App Service-Diagnose
 
@@ -38,6 +31,10 @@ Navigieren Sie für Azure Functions zu Ihrer Funktions-App, klicken Sie im obere
 Auf der Startseite der App Service-Diagnose können Sie mithilfe der Schlüsselwörter auf den einzelnen Kacheln der Startseite die Kategorie auswählen, die auf das Problem mit Ihrer App am ehesten zutrifft. Außerdem finden Sie auf dieser Seite **Diagnosetools** für Windows-Apps. Weitere Informationen finden Sie unter [Diagnosetools (nur für Windows-Apps)](#diagnostic-tools-only-for-windows-app).
 
 ![Startseite](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
+
+> [!NOTE]
+> Wenn Ihre App nicht aktiv oder langsam ist, können Sie [eine Profilerstellungs-Ablaufverfolgung erfassen](https://azure.github.io/AppService/2018/06/06/App-Service-Diagnostics-Profiling-an-ASP.NET-Web-App-on-Azure-App-Service.html), um die Ursache des Problems zu identifizieren. Die Profilerstellung ist schlank und für Produktionsszenarien konzipiert.
+>
 
 ## <a name="interactive-interface"></a>Interaktive Benutzeroberfläche
 
@@ -74,7 +71,7 @@ Es gibt vier verschiedene Diagramme in der Integritätsüberprüfung.
 
 ### <a name="investigate-application-code-issues-only-for-windows-app"></a>Untersuchen von Problemen mit dem Anwendungscode (nur für Windows-Apps)
 
-Da viele App-Probleme auf Ihren Anwendungscode zurückzuführen sind, ist die App Service-Diagnose in [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) integriert, um Ausnahmen und Probleme mit Abhängigkeiten zur entsprechend ausgewählten Ausfallzeiten hervorzuheben. Application Insights muss separat aktiviert werden.
+Da viele App-Probleme auf Ihren Anwendungscode zurückzuführen sind, ist die App Service-Diagnose in [Application Insights](../azure-monitor/app/app-insights-overview.md) integriert, um Ausnahmen und Probleme mit Abhängigkeiten zur entsprechend ausgewählten Ausfallzeiten hervorzuheben. Application Insights muss separat aktiviert werden.
 
 ![Application Insights](./media/app-service-diagnostics/application-insights-7.png)
 
@@ -92,17 +89,17 @@ Diagnosetools umfassen erweiterte Diagnosetools, mit denen Sie Probleme mit dem 
 
 ### <a name="proactive-cpu-monitoring"></a>Proaktive CPU-Überwachung
 
-Die proaktive CPU-Überwachung stellt eine einfache und proaktive Möglichkeit für Sie dar, mit einer Aktion einzugreifen, wenn eine App oder ein untergeordneter Prozess der App CPU-Ressourcen in hohem Maße auslastet. Sie können eigene Regeln für den CPU-Schwellenwert festlegen, um eine hohe CPU-Auslastung vorübergehend zu beheben, bis die tatsächliche Ursache für das unerwartete Problem gefunden wird.
+Die proaktive CPU-Überwachung stellt eine einfache und proaktive Möglichkeit für Sie dar, mit einer Aktion einzugreifen, wenn eine App oder ein untergeordneter Prozess der App CPU-Ressourcen in hohem Maße auslastet. Sie können eigene Regeln für den CPU-Schwellenwert festlegen, um eine hohe CPU-Auslastung vorübergehend zu beheben, bis die tatsächliche Ursache für das unerwartete Problem gefunden wird. Weitere Informationen finden Sie unter [Behandeln von CPU-Problemen, bevor sie auftreten](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html).
 
 ![Proaktive CPU-Überwachung](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 
 ### <a name="auto-healing-and-proactive-auto-healing"></a>Automatische Reparatur und proaktive automatische Reparatur
 
-Die automatische Reparatur ist eine Abhilfemaßnahme, die Sie durchführen können, wenn Ihre App ein unerwartetes Verhalten aufweist. Sie können eigene Regeln basierend auf der Anzahl der Anforderungen, langsamen Anforderungen, dem Speicherlimit und dem HTTP-Statuscode festlegen, um Abhilfeaktionen auszulösen. Verwenden Sie das Tool, um ein unerwartetes Verhalten vorübergehend einzudämmen, bis Sie die Ursache gefunden haben.
+Die automatische Reparatur ist eine Abhilfemaßnahme, die Sie durchführen können, wenn Ihre App ein unerwartetes Verhalten aufweist. Sie können eigene Regeln basierend auf der Anzahl der Anforderungen, langsamen Anforderungen, dem Speicherlimit und dem HTTP-Statuscode festlegen, um Abhilfeaktionen auszulösen. Verwenden Sie das Tool, um ein unerwartetes Verhalten vorübergehend einzudämmen, bis Sie die Ursache gefunden haben. Weitere Informationen finden Sie unter [Announcing the new auto healing experience in app service diagnostics](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html) (Bekanntgabe der neuen Funktion zur automatischen Reparatur in der App Service-Diagnose).
 
 ![Automatische Reparatur](./media/app-service-diagnostics/auto-healing-10.png)
 
-Wie die proaktive CPU-Überwachung ist die proaktive automatische Reparatur eine einfache Lösung, unerwartetes Verhalten Ihrer App in den Griff zu bekommen. Die proaktive automatische Reparatur startet Ihre App neu, wenn App Service feststellt, dass sie sich in einem nicht wiederherstellbaren Zustand befindet. Weitere Informationen finden Sie unter [Announcing the new auto healing experience in app service diagnostics](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html) (Bekanntgabe der neuen Funktion zur automatischen Reparatur in der App Service-Diagnose).
+Wie die proaktive CPU-Überwachung ist die proaktive automatische Reparatur eine einfache Lösung, unerwartetes Verhalten Ihrer App in den Griff zu bekommen. Die proaktive automatische Reparatur startet Ihre App neu, wenn App Service feststellt, dass sie sich in einem nicht wiederherstellbaren Zustand befindet. Weitere Informationen finden Sie in der [Einführung in die proaktive automatische Reparatur](https://azure.github.io/AppService/2017/08/17/Introducing-Proactive-Auto-Heal.html).
 
 ## <a name="navigator-and-change-analysis-only-for-windows-app"></a>Navigator und Änderungsanalyse (nur für Windows-Apps)
 

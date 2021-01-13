@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 92041be4d3d5ef4d980c17fa0a5870b740c1784a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516672"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995006"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>Bereitstellen des StorSimple-Geräte-Manager-Diensts für StorSimple Virtual Array
 
@@ -36,7 +36,7 @@ Zu den allgemeinen Aufgaben im Zusammenhang mit einem StorSimple-Geräte-Manager
 * Abrufen des Dienstregistrierungsschlüssels
 * Neugenerieren des Dienstregistrierungsschlüssels
 
-In diesem Tutorial wird beschrieben, wie diese Aufgaben durchgeführt werden. Die in diesem Artikel enthaltenen Informationen gelten nur für StorSimple Virtual Arrays. Weitere Informationen zur StorSimple 8000-Serie finden Sie unter [Bereitstellen des StorSimple Manager-Diensts](storsimple-manage-service.md).
+In diesem Tutorial wird beschrieben, wie diese Aufgaben durchgeführt werden. Die in diesem Artikel enthaltenen Informationen gelten nur für StorSimple Virtual Arrays. Weitere Informationen zur StorSimple 8000-Serie finden Sie unter [Bereitstellen des StorSimple Manager-Diensts](./storsimple-8000-manage-service.md).
 
 ## <a name="create-a-service"></a>Erstellen von Diensten
 
@@ -89,7 +89,7 @@ Die Liste der Dienste wird aktualisiert.
  ![Aktualisierte Liste der Dienste](./media/storsimple-virtual-array-manage-service/deleteservice7.png)
 
 ## <a name="get-the-service-registration-key"></a>Abrufen des Dienstregistrierungsschlüssels
-Nachdem Sie einen Dienst erstellt haben, müssen Sie Ihr StorSimple-Gerät bei dem Dienst registrieren. Um Ihr erstes StorSimple-Gerät zu registrieren, benötigen Sie den Dienstregistrierungsschlüssel. Um zusätzliche Geräte bei einem vorhandenen StorSimple-Dienst zu registrieren, benötigen Sie den Registrierungsschlüssel und den Verschlüsselungsschlüssel für Dienstdaten (die während der Registrierung auf dem ersten Gerät generiert werden). Weitere Informationen zum Verschlüsselungsschlüssel für Dienstdaten finden Sie unter [StorSimple-Sicherheit](storsimple-security.md). Sie erhalten den Registrierungsschlüssel, indem Sie auf das Blatt **Schlüssel** für Ihren Dienst zugreifen.
+Nachdem Sie einen Dienst erstellt haben, müssen Sie Ihr StorSimple-Gerät bei dem Dienst registrieren. Um Ihr erstes StorSimple-Gerät zu registrieren, benötigen Sie den Dienstregistrierungsschlüssel. Um zusätzliche Geräte bei einem vorhandenen StorSimple-Dienst zu registrieren, benötigen Sie den Registrierungsschlüssel und den Verschlüsselungsschlüssel für Dienstdaten (die während der Registrierung auf dem ersten Gerät generiert werden). Weitere Informationen zum Verschlüsselungsschlüssel für Dienstdaten finden Sie unter [StorSimple-Sicherheit](./storsimple-8000-security.md). Sie erhalten den Registrierungsschlüssel, indem Sie auf das Blatt **Schlüssel** für Ihren Dienst zugreifen.
 
 Führen Sie die folgenden Schritte durch, um den Dienstregistrierungsschlüssel abzurufen.
 
@@ -109,7 +109,7 @@ Führen Sie die folgenden Schritte durch, um den Dienstregistrierungsschlüssel 
 #### <a name="to-regenerate-the-service-registration-key"></a>So generieren Sie den Dienstregistrierungsschlüssel neu
 1. Wechseln Sie auf dem Blatt **StorSimple-Geräte-Manager** zu **Management &gt;** **Schlüssel**.
    
-   ![Blatt „Schlüssel“](./media/storsimple-virtual-array-manage-service/getregkey2.png)
+   ![Blatt „Schlüssel“ (erneut)](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. Klicken Sie auf dem Blatt **Schlüssel** auf **Neu generieren**.
    
    ![Klicken Sie auf „Neu generieren“.](./media/storsimple-virtual-array-manage-service/getregkey5.png)
@@ -118,11 +118,10 @@ Führen Sie die folgenden Schritte durch, um den Dienstregistrierungsschlüssel 
    ![Erneutes Generierens des Schlüssels bestätigen](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. Ein neuer Dienstregistrierungsschlüssel wird angezeigt.
    
-    ![Erneutes Generierens des Schlüssels bestätigen](./media/storsimple-virtual-array-manage-service/getregkey4.png)
+    ![Erneutes Generieren eines zusätzlichen Schlüssels bestätigen](./media/storsimple-virtual-array-manage-service/getregkey4.png)
    
    Kopieren Sie diesen Schlüssel, und speichern Sie ihn für die Registrierung neuer Geräte bei diesem Dienst.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr zu den [ersten Schritten](storsimple-virtual-array-deploy1-portal-prep.md) mit einem StorSimple Virtual Array.
 * Erfahren Sie, wie Sie [Ihr StorSimple-Gerät verwalten](storsimple-ova-web-ui-admin.md).
-

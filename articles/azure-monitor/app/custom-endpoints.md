@@ -1,30 +1,28 @@
 ---
-title: Azure Monitor – Azure Application Insights – Überschreiben der SDK-Standardendpunkte | Microsoft-Dokumentation
-description: Informationen zum Ändern der Standardendpunkte des Azure Application Insights SDK für Regionen wie Azure Government.
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: 'Azure Application Insights: Außerkraftsetzen der SDK-Standardendpunkte'
+description: Ändern der Standardendpunkte des Azure Monitor Application Insights SDK für Regionen wie Azure Government
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.author: mbullwin
-ms.openlocfilehash: 25087c5b3a078b740764f51a7780a24277d5c642
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.custom: references_regions, devx-track-js
+ms.openlocfilehash: d6cea9044cd4898480fcc30532a05e6c8a407012
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639558"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91333289"
 ---
- # <a name="application-insights-overriding-default-endpoints"></a>Überschreiben der Standardendpunkte von Application Insights
+# <a name="application-insights-overriding-default-endpoints"></a>Überschreiben der Standardendpunkte von Application Insights
 
 Zum Senden von Daten aus Application Insights in bestimmten Regionen müssen Sie die standardmäßigen Endpunktadressen überschreiben. Jedes SDK erfordert geringfügig andere Änderungen, die in diesem Artikel beschrieben werden. Diese Änderungen erfordern eine Anpassung des Beispielcodes und das Ersetzen der Platzhalterwerte für `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address` und `Profile_Query_Endpoint_address` durch die tatsächlichen Endpunktadressen der jeweiligen Region. Am Ende dieses Artikels finden Sie Links zu den Endpunktadressen für Regionen, in denen diese Konfiguration erforderlich ist.
 
+> [!NOTE]
+> [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=net) sind die neue bevorzugte Methode zum Festlegen von benutzerdefinierten Endpunkten in Application Insights.
+
+---
+
 ## <a name="sdk-code-changes"></a>Änderungen am SDK-Code
 
-### <a name="net-with-applicationinsightsconfig"></a>.NET in „applicationinsights.config“
+# <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > Die Datei „applicationinsights.config“ wird automatisch überschrieben, wenn ein SDK-Upgrade erfolgt. Nachdem ein SDK-Upgrade erfolgt ist, müssen Sie die regionsspezifischen Endpunktwerte erneut eingeben.
@@ -49,7 +47,7 @@ Zum Senden von Daten aus Application Insights in bestimmten Regionen müssen Sie
 </ApplicationInsights>
 ```
 
-### <a name="aspnet-core"></a>ASP.NET Core
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 Ändern Sie die Datei „appsettings.json“ in Ihrem Projekt wie folgt, um den Hauptendpunkt anzupassen:
 
@@ -77,58 +75,13 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
     //Place in the ConfigureServices method. Place this before services.AddApplicationInsightsTelemetry("instrumentation key"); if it's present
 ```
 
-### <a name="azure-functions-v2x"></a>Azure Functions v2.x
+# <a name="azure-functions"></a>[Azure-Funktionen](#tab/functions)
 
-Installieren Sie die folgenden Pakete in Ihrem Funktionsprojekt:
+Für Azure Functions wird nun empfohlen, [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=net) zu verwenden, die in den Anwendungseinstellungen der Funktion festgelegt werden. Um im Funktionsbereich auf die Anwendungseinstellungen für Ihre Funktion zuzugreifen, wählen Sie **Einstellungen** > **Konfiguration** > **Anwendungseinstellungen** aus. 
 
-- Microsoft.ApplicationInsights, Version 2.10.0
-- Microsoft.ApplicationInsights.PerfCounterCollector, Version 2.10.0
-- Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel, Version 2.10.0
+Name: `APPLICATIONINSIGHTS_CONNECTION_STRING` Wert: `Connection String Value`
 
-Fügen Sie dann den Startcode für ihre Funktionsanwendung hinzu (oder ändern Sie ihn):
-
-```csharp
-[assembly: WebJobsStartup(typeof(Example.Startup))]
-namespace Example
-{
-  class Startup : FunctionsStartup
-  {
-      public override void Configure(IWebJobsBuilder builder)
-      {
-          var quickPulseFactory = builder.Services.FirstOrDefault(sd => sd.ServiceType == typeof(ITelemetryModule) && 
-                                               sd.ImplementationType == typeof(QuickPulseTelemetryModule));
-          if (quickPulseFactory != null)
-          {
-              builder.Services.Remove(quickPulseFactory);
-          }
-
-          var appIdFactory = builder.Services.FirstOrDefault(sd => sd.ServiceType == typeof(IApplicationIdProvider));
-          if (appIdFactory != null)
-          {
-              builder.Services.Remove(appIdFactory);
-          }
-
-          var channelFactory = builder.Services.FirstOrDefault(sd => sd.ServiceType == typeof(ITelemetryChannel));
-          if (channelFactory != null)
-          {
-              builder.Services.Remove(channelFactory);
-          }
-
-          builder.Services.AddSingleton<ITelemetryModule, QuickPulseTelemetryModule>(_ =>
-              new QuickPulseTelemetryModule
-              {
-                  QuickPulseServiceEndpoint = "QuickPulse_Endpoint_Address"
-              });
-
-          builder.Services.AddSingleton<IApplicationIdProvider, ApplicationInsightsApplicationIdProvider>(_ => new ApplicationInsightsApplicationIdProvider() { ProfileQueryEndpoint = "Profile_Query_Endpoint_address" });
-
-          builder.Services.AddSingleton<ITelemetryChannel>(_ => new ServerTelemetryChannel() { EndpointAddress = "TelemetryChannel_Endpoint_Address" });
-      }
-  }
-}
-```
-
-### <a name="java"></a>Java
+# <a name="java"></a>[Java](#tab/java)
 
 Ändern Sie in der Datei „applicationinsights.xml“ die Standardendpunktadresse.
 
@@ -163,7 +116,7 @@ namespace Example
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -182,7 +135,7 @@ Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 ```javascript
 <script type="text/javascript">
@@ -195,9 +148,15 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 </script>
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+Anleitungen zum Ändern des Erfassungsendpunkts für das opencensus-python-SDK finden Sie im [opencensus-python-Repository](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py).
+
+---
+
 ## <a name="regions-that-require-endpoint-modification"></a>Regionen, für die Endpunktänderungen erforderlich sind
 
-Derzeit sind [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) und [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) die einzigen Regionen, für die Endpunktänderungen erforderlich sind.
+Derzeit sind [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) und [Azure China](/azure/china/resources-developer-guide) die einzigen Regionen, für die Endpunktänderungen erforderlich sind.
 
 |Region |  Endpoint Name (Endpunktname) | Wert |
 |-----------------|:------------|:-------------|
@@ -221,5 +180,5 @@ Wenn Sie derzeit die [Application Insights-REST-API](https://dev.applicationinsi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Um mehr über die benutzerdefinierten Änderungen für Azure Government zu erfahren, lesen Sie die detaillierten Anleitungen für die [Überwachung und Verwaltung von Azure](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights).
-- Weitere Informationen zu Azure China finden Sie im [Playbook zu Azure China](https://docs.microsoft.com/azure/china/).
+- Um mehr über die benutzerdefinierten Änderungen für Azure Government zu erfahren, lesen Sie die detaillierten Anleitungen für die [Überwachung und Verwaltung von Azure](../../azure-government/compare-azure-government-global-azure.md#application-insights).
+- Weitere Informationen zu Azure China finden Sie im [Playbook zu Azure China](/azure/china/).

@@ -4,14 +4,14 @@ description: Anleitungsartikel zu den Funktionen in Azure Data Catalog zum Speic
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: a8545939fd027989519e0f7a161f750ec676749a
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 2d0baed53441893ec294784f0f8092fe89a347c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976815"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86523705"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Speichern von Suchen und Anheften von Datenobjekten in Azure Data Catalog
 ## <a name="introduction"></a>Einführung

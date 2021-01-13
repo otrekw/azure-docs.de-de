@@ -1,24 +1,26 @@
 ---
-title: Tool zum Kopieren von Daten in Azure Data Factory | Microsoft Docs
+title: Tool zum Kopieren von Daten in Azure Data Factory
 description: Stellt Informationen zum Tool zum Kopieren von Daten der Benutzeroberfläche von Azure Data Factory bereit.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/18/2018
+ms.date: 06/17/2020
 ms.author: yexu
-ms.openlocfilehash: 144a991eb911fa6a337b6711515bd5760456fc10
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: b0ba14a05ac42e9fccc1a146ad5943716652104d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996384"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89434196"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Tool zum Kopieren von Daten in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Das Tool zum Kopieren von Daten in Azure Data Factory vereinfacht und optimiert die Verarbeitung der Sammelerfassung von Daten in einem Data Lake. Dies ist normalerweise ein erster Schritt in einem End-to-End-Szenario für die Datenintegration.  Sie sparen Zeit, insbesondere bei Verwendung von Azure Data Factory für die erstmalige Sammelerfassung von Daten aus einer Datenquelle. Die Verwendung dieses Tools ist z.B. mit den folgenden Vorteilen verbunden:
 
 - Wenn Sie das Tool zum Kopieren von Daten in Azure Data Factory verwenden, müssen Sie die Data Factory-Definitionen für verknüpfte Dienste, Datasets, Pipelines, Aktivitäten und Trigger nicht verstehen. 
@@ -35,7 +37,7 @@ In der folgenden Tabelle finden Sie Hinweise dazu, unter welchen Umständen Sie 
 
 Klicken Sie zum Starten des Tools zum Kopieren von Daten auf der Startseite Ihrer Data Factory auf die Kachel **Daten kopieren**.
 
-![Seite „Erste Schritte“: Link zum Tool zum Kopieren von Daten](./media/copy-data-tool/get-started-page.png)
+![Seite „Erste Schritte“: Link zum Tool zum Kopieren von Daten](./media/doc-common-process/get-started-page.png)
 
 
 ## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Intuitiver Fluss zum Laden von Daten in einen Data Lake
@@ -67,7 +69,7 @@ Das Schema der Datenquelle ist in vielen Fällen ggf. nicht mit dem Schema des D
 Das Tool zum Kopieren von Daten überwacht und erlernt Ihr Verhalten beim Zuordnen von Spalten zwischen Quell- und Zielspeichern. Nachdem Sie mindestens eine Spalte aus dem Quelldatenspeicher ausgewählt und dem Zielschema zugeordnet haben, beginnt das Tool zum Kopieren von Daten das Muster für Spaltenpaare zu analysieren, die Sie auf beiden Seiten ausgewählt haben. Dann wendet es das gleiche Muster auf den Rest der Spalten an. Daher erkennen Sie bereits nach wenigen Klicks, dass alle Spalten auf die gewünschte Art und Weise dem Ziel zugeordnet wurden.  Wenn Sie mit der Auswahl der Spaltenzuordnung durch das Tool zum Kopieren von Daten nicht zufrieden sind, können Sie diese ignorieren und mit der manuellen Zuordnung der Spalten fortfahren. In der Zwischenzeit erlernt und aktualisiert das Tool zum Kopieren von Daten ständig das Muster und erreicht schließlich das richtige Muster für die gewünschte Spaltenzuordnung. 
 
 > [!NOTE]
-> Beim Kopieren von Daten aus SQL Server oder der Azure SQL-Datenbank in das Azure SQL Data Warehouse unterstützt das Tool zum Kopieren von Daten die automatische Erstellung der Tabelle unter Verwendung des Quellschemas, falls die Tabelle nicht im Zielspeicher vorhanden ist. 
+> Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure Synapse Analytics (vormals SQL Data Warehouse) unterstützt das Tool zum Kopieren von Daten die automatische Erstellung der Tabelle unter Verwendung des Quellschemas, sofern die Tabelle nicht im Zielspeicher vorhanden ist. 
 
 ## <a name="filter-data"></a>Filtern von Daten
 Sie können Quelldaten filtern, wenn nur bestimmte Daten in den Senkendatenspeicher kopiert werden sollen. Durch Filtern wird das Datenvolumen der in den Senkendatenspeicher kopierten Daten verringert. Der Durchsatz des Kopiervorgangs steigt. Das Tool zum Kopieren von Daten bietet flexible Möglichkeiten, die Daten einer relationalen Datenbank mittels der SQL-Abfragesprache oder Dateien in einem Azure-Blobordner zu filtern. 

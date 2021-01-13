@@ -1,9 +1,9 @@
 ---
 title: Bedrohungssuchfunktionen in Azure Sentinel | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie die Bedrohungssuchfunktionen von Azure Sentinel verwendet werden.
+description: Verwenden Sie die integrierten Suchabfragen von Azure Sentinel, um die richtigen Fragen zu stellen, mit denen Sie Probleme in Ihren Daten finden können.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 6aa9dd27-6506-49c5-8e97-cc1aebecee87
@@ -15,19 +15,17 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
-ms.author: rkarlin
-ms.openlocfilehash: b00f60394a24008ca39f3ac7b378b1936c46ef76
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.author: yelevin
+ms.openlocfilehash: ca483d993290e4d66ba257d4cb5de7fc3c952405
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240611"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660830"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel"></a>Suchen nach Bedrohungen mit Azure Sentinel
+# <a name="hunt-for-threats-with-azure-sentinel"></a>Suchen nach Bedrohungen mit Azure Sentinel
 
-
-
-Wenn Sie ein Ermittler sind, der proaktiv nach Sicherheitsbedrohungen suchen möchte, können Sie die leistungsstarken Bedrohungssuch- und Abfragetools von Azure Sentinel verwenden, um nach Sicherheitsbedrohungen in den Datenquellen Ihrer Organisation zu suchen. Aber Ihre Systeme und Sicherheitsappliances erzeugen Unmengen von Daten, für die es schwierig sein kann, sie zu aussagefähigen Ereignissen zu analysieren und zu filtern. Um Sicherheitsanalysten dabei zu unterstützen, proaktiv nach neuen Anomalien zu suchen, die von Ihren Sicherheitsanwendungen nicht erkannt wurden, werden Sie von den in Azure Sentinel integrierten Bedrohungssuchabfragen dazu geführt, die richtigen Fragen zu stellen, um Probleme in den Daten zu finden, die bereits in Ihrem Netzwerk vorhanden sind. 
+Wenn Sie ein Ermittler sind, der proaktiv nach Sicherheitsbedrohungen suchen möchte, können Sie die leistungsstarken Such- und Abfragetools von Azure Sentinel verwenden, um nach Sicherheitsbedrohungen in den Datenquellen Ihrer Organisation zu suchen. Aber Ihre Systeme und Sicherheitsappliances erzeugen Unmengen von Daten, für die es schwierig sein kann, sie zu aussagefähigen Ereignissen zu analysieren und zu filtern. Um Sicherheitsanalysten dabei zu unterstützen, proaktiv nach neuen Anomalien zu suchen, die von Ihren Sicherheitsanwendungen nicht erkannt wurden, werden Sie von den in Azure Sentinel integrierten Bedrohungssuchabfragen dazu geführt, die richtigen Fragen zu stellen, um Probleme in den Daten zu finden, die bereits in Ihrem Netzwerk vorhanden sind. 
 
 Zum Beispiel liefert eine integrierte Abfrage Daten über die ungewöhnlichsten Prozesse, die in Ihrer Infrastruktur ausgeführt werden – Sie möchten nicht, dass bei jeder Ausführung eines solchen Prozesse eine Benachrichtigung erfolgt, denn er könnte völlig unproblematisch sein, aber Sie möchten die Abfrage gelegentlich ausführen, um zu sehen, ob es etwas Ungewöhnliches gibt. 
 
@@ -56,7 +54,7 @@ Mit Azure Sentinel-Bedrohungssuche (Ermittlung) können Sie die folgenden Funkti
 
 3. Nehmen Sie eine schnelle Überprüfung der zugrunde liegenden Abfrage im Bereich für Abfragedetails vor, oder klicken Sie auf **Abfrageergebnis anzeigen** (View query result), um die Abfrage in Log Analytics zu öffnen. Überprüfen Sie im unteren Bereich die Übereinstimmungen für die Abfrage.
 
-4.  Klicken Sie auf die Zeile, und wählen **Lesezeichen hinzufügen** (Add bookmark) aus, um die Zeilen hinzuzufügen, die ausgewertet werden sollen. Sie können dies für jeden Eintrag ausführen, der verdächtig aussieht. 
+4.    Klicken Sie auf die Zeile, und wählen **Lesezeichen hinzufügen** (Add bookmark) aus, um die Zeilen hinzuzufügen, die ausgewertet werden sollen. Sie können dies für jeden Eintrag ausführen, der verdächtig aussieht. 
 
 5. Kehren Sie dann zur Hauptseite von **Suche** (Hunting) zurück, und klicken Sie auf die Registerkarte **Lesezeichen** (Bookmarks), um alle verdächtigen Aktivitäten anzuzeigen. 
 
@@ -68,7 +66,7 @@ Mit Azure Sentinel-Bedrohungssuche (Ermittlung) können Sie die folgenden Funkti
 
 ## <a name="query-language"></a>Abfragesprache 
 
-Bedrohungssuchen in Azure Sentinel basiert auf der Abfragesprache von Azure Log Analytics. Weitere Informationen zu der Abfragesprache und den unterstützten Operatoren finden Sie unter [Erste Schritte mit Azure Monitor-Protokollabfragen](https://docs.loganalytics.io/docs/Language-Reference/).
+Hunting (Bedrohungssuche) in Azure Sentinel basiert auf der Kusto-Abfragesprache. Weitere Informationen zu der Abfragesprache und den unterstützten Operatoren finden Sie unter [Erste Schritte mit Azure Monitor-Protokollabfragen](../azure-monitor/log-query/get-started-queries.md).
 
 ## <a name="public-hunting-query-github-repository"></a>Öffentliches GitHub-Repository für Bedrohungssuchabfragen (Hunting-Abfragen)
 

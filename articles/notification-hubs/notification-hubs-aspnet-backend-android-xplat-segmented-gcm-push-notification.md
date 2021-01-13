@@ -1,30 +1,28 @@
 ---
-title: Senden von Pushbenachrichtigungen an bestimmte Android-Geräte mit Azure Notification Hubs und Google Cloud Messaging | Microsoft-Dokumentation
+title: Senden von Benachrichtigungen an bestimmte Android-Geräte mit Azure Notification Hubs und Google Cloud Messaging | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe von Azure Notification Hubs und Google Cloud Messaging Pushbenachrichtigungen an bestimmte Android-Geräte senden.
 services: notification-hubs
 documentationcenter: android
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 3c23cb80-9d35-4dde-b26d-a7bfd4cb8f81
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 01/04/2019
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4a369b72d5c19a63c65f8d693d131b2c10ff2023
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: c0c0018ac3007f77da820b9b0cecbb69c68bef31
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212823"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308300"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Android-Geräte mit Azure Notification Hubs und Google Cloud Messaging (veraltet)
+# <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Android-Geräte mit Google Cloud Messaging (veraltet)
 
 > [!WARNING]
 > Seit dem 10. April 2018 wird Google Cloud Messaging (GCM) von Google nicht mehr unterstützt. Der GCM-Server und die Client-APIs sind veraltet und werden am 29. Mai 2019 entfernt. Weitere Informationen finden Sie unter [GCM and FCM Frequently Asked Questions](https://developers.google.com/cloud-messaging/faq) (Häufig gestellte Fragen zu GCM und FCM).
@@ -120,7 +118,7 @@ Der erste Schritt besteht daraus, Benutzeroberflächenelemente zur vorhandenen H
 
     Das grafische Layout von `main_activity.xml` sollte wie folgt aussehen:
 
-    ![][A1]
+    ![Screenshot einer Entwicklungsumgebung mit einem sichtbaren App-Bildschirm. Die App listet die Nachrichtenkategorien auf, die dem Code hinzugefügt wurden.][A1]
 3. Erstellen Sie in dem Paket, in dem sich auch die Klasse `MainActivity` befindet, eine Klasse vom Typ `Notifications`.
 
     ```java
@@ -338,10 +336,10 @@ In diesem Tutorial senden Sie Broadcastbenachrichtigungen an bestimmte Android-G
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253
 [Azure portal]: https://portal.azure.com
-[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
+[wns object]: /previous-versions/azure/reference/jj860484(v=azure.100)

@@ -1,21 +1,21 @@
 ---
-title: Verweisen einer Unternehmens-Internetdomäne auf einen Azure Traffic Manager-Domänennamen
+title: Verweisen einer Internetdomäne auf Traffic Manager – Azure Traffic Manager
 description: In diesem Artikel erfahren Sie, wie Sie mit Ihrem Unternehmensdomänennamen auf einen Traffic Manager-Domänennamen verweisen.
 services: traffic-manager
-author: asudbring
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
-ms.author: allensu
-ms.openlocfilehash: cd99d8829a8a7bb57b6affe98c1257eaa3ea8ce7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: duau
+ms.openlocfilehash: 93a8076f12b8f006d600cbd32ce39169f4b47c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070966"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014328"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Verweisen einer Unternehmens-Internetdomäne auf einen Azure Traffic Manager-Domänennamen
 
@@ -23,12 +23,12 @@ Wenn Sie ein Traffic Manager-Profil erstellen, weist Azure dem Profil automatisc
 
 Beispiel: Um mit dem Namen `www.contoso.com` auf den Traffic Manager-DNS-Namen `contoso.trafficmanager.net` zu verweisen, erstellen Sie den folgenden DNS-Ressourceneintrag:
 
-    www.contoso.com IN CNAME contoso.trafficmanager.net
+`www.contoso.com IN CNAME contoso.trafficmanager.net.`
 
 Alle Datenverkehrsanforderungen an *www\.contoso.com* werden an *contoso.trafficmanager.net* umgeleitet.
 
 > [!IMPORTANT]
-> Sie können nicht mit Domänen der zweiten Ebene wie *contoso.com*auf Traffic Manager-Domänen verweisen. Die DNS-Protokollstandards erlauben keine CNAME-Einträge für Domänennamen der zweiten Ebene.
+> Sie können nicht mit Domänen der zweiten Ebene wie *contoso.com* auf Traffic Manager-Domänen verweisen. Die DNS-Protokollstandards erlauben keine CNAME-Einträge für Domänennamen der zweiten Ebene.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,23 +1,21 @@
 ---
-title: Unterstützte Ressourcen für Azure Red Hat OpenShift | Microsoft-Dokumentation
+title: Unterstützte Ressourcen für Azure Red Hat OpenShift 3.11
 description: Sie erfahren, welche Azure-Regionen und VM-Größen von Microsoft Azure Red Hat OpenShift unterstützt werden.
-services: container-service
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: c226227797802ab58d1bcbaadb7e97e780b30560
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38203cede755d776ba9142ad16e1bea1fd1637a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306214"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "82203674"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift-Ressourcen
 
-In diesem Thema werden die Azure-Regionen und VM-Größen aufgeführt, die vom Microsoft Azure Red Hat OpenShift-Dienst unterstützt werden.
+In diesem Thema werden die Azure-Regionen und VM-Größen aufgeführt, die vom Microsoft Azure Red Hat OpenShift 3.11-Dienst unterstützt werden.
 
 ## <a name="azure-regions"></a>Azure-Regionen
 
@@ -36,7 +34,7 @@ Hier finden Sie die unterstützten Größen virtueller Computer, die Sie für di
 
 Die folgenden Computeknotengrößen werden von der Azure Red Hat OpenShift-REST-API unterstützt:
 
-|Größe|vCPU|RAM|
+|Size|vCPU|RAM|
 |-|-|-|
 |Standard D4s v3|4|16 GB|
 |Standard D8s v3|8|32 GB|
@@ -56,7 +54,7 @@ Die folgenden Computeknotengrößen werden von der Azure Red Hat OpenShift-REST-
 
 Die folgenden Master-/Infrastrukturknotengrößen werden von der Azure Red Hat OpenShift-REST-API unterstützt:
 
-|Größe|vCPU|RAM|
+|Size|vCPU|RAM|
 |-|-|-|
 |Standard D4s v3|4|16 GB|
 |Standard D8s v3|8|32 GB|

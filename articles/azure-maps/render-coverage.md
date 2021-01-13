@@ -1,25 +1,25 @@
 ---
-title: Renderabdeckung in Azure Maps | Microsoft-Dokumentation
-description: Erfahren Sie mehr über Renderabdeckung in Azure Maps
-author: jingjing-z
-ms.author: jinzh
+title: Renderabdeckung | Microsoft Azure Maps
+description: Erfahren Sie, wie Azure Maps verschiedene Regionen mit detaillierten oder vereinfachten Daten rendert. Lernen Sie, welche Ebene für Raster-Kachel- und Vektor-Kachel-Zuordnungen in diesen Regionen verwendet wird.
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/22/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 7feea92d48a826000fd8aa878b95658b79d6d908
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 69b122196cbeb7508cddf3a890768f83fdcd4727
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869993"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88030927"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps-Renderabdeckung
 
-Azure Maps verwendet sowohl Raster- als auch Vektorkacheln zum Erstellen von Karten. Mit der niedrigsten Auflösung passt die ganze Welt auf eine einzige Kachel. Mit der höchsten Auflösung stellt eine einzige Kachel 38 Quadratmeter dar. Wenn Sie eine Karte vergrößern, sehen Sie zunehmend mehr Details von Kontinenten, Regionen, Städten und einzelnen Straßen. Weitere Informationen finden Sie unter [Zoomstufen und Grobraster](zoom-levels-and-tile-grid.md).
+Azure Maps verwendet sowohl Raster- als auch Vektorkacheln zum Erstellen von Karten. Bei der niedrigsten Auflösung passt die ganze Welt auf eine einzige Kachel. Bei der höchsten Auflösung werden mit einer einzelnen Kachel 38 Quadratmeter abgebildet. Wenn Sie die Ansicht vergrößern, werden weitere Details zu Kontinenten, Regionen, Orten und einzelnen Straßen angezeigt. Weitere Informationen zu Kacheln finden Sie unter [Zoomfaktoren und Kachelraster](zoom-levels-and-tile-grid.md).
 
-Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informationen und Genauigkeit. Die folgenden Tabellen enthalten Informationen zum Detaillierungsgrad des Renderns, den Sie in den einzelnen Regionen erwarten können.
+Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informationen und Genauigkeit. In den folgenden Tabellen ist der Informationsgrad angegeben, den Sie für die einzelnen Regionen rendern können.
 
 ## <a name="legend"></a>Legende
 
@@ -105,7 +105,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Plurinationaler Staat Bolivien | ✓ | ✓ |
 | Bonaire, Sint Eustatius und Saba | ✓ | ✓ |
 | Brasilien                    | ✓ | ✓ |
-| Kanada                    | ✓ | ✓ |
+| Canada                    | ✓ | ✓ |
 | Kaimaninseln            | ✓ | ✓ |
 | Chile                     | ✓ | ✓ |
 | Kolumbien                  | ✓ | ✓ |
@@ -166,7 +166,6 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | China                     |   | Ø |
 | Kokosinseln   |   | Ø |
 | Demokratische Volksrepublik Korea |   | Ø |
-| Dokdo und Takeshima       |   | Ø |
 | Hongkong (SAR)             | ✓ | ✓ |
 | Indien                     | Ø | ✓ | 
 | Indonesien                 | ✓ | ✓ |
@@ -218,7 +217,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Französisch-Polynesien          |   | Ø |
 | Guam                      | ✓ | ✓ |
 | Kiribati                  |   | Ø |
-| Marshallinseln          |   | Ø |
+| Marshall-Inseln          |   | Ø |
 | Mikronesien                |   | Ø |
 | Nauru                     |   | Ø |
 | Neukaledonien             |   | Ø |
@@ -227,12 +226,12 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Norfolkinsel            |   | Ø |
 | Palau                     |   | Ø |
 | Papua-Neuguinea          |   | Ø |
-| Pitcairninseln                  |   | Ø |
+| Pitcairn                  |   | Ø |
 | Samoa                     |   | Ø |
 | Salomonen           |   | Ø|
 | Tokelau                   |   | Ø |
 | Tonga                     |   | Ø |
-| Tuwalu                    |   | Ø |
+| Tuvalu                    |   | Ø |
 | Vanuatu                   |   | Ø |
 | Wallis und Futuna         |   | Ø |
 
@@ -296,7 +295,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Schweiz               | ✓ | ✓ |
 | Türkei                    | ✓ | ✓ |
 | Ukraine                   | ✓ | ✓ |
-| Vereinigtes Königreich            | ✓ | ✓ |
+| United Kingdom            | ✓ | ✓ |
 | Vatikanstadt              | ✓ | ✓ |
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,19 +1,16 @@
 ---
-title: Lösen von Problemen aufgrund von Datenschiefe mithilfe von Azure Data Lake Tools für Visual Studio
+title: Auflösen der Datenschiefe – Azure Data Lake Tools für Visual Studio
 description: Problembehandlung bei möglichen Lösungen für Datenschiefe mithilfe von Azure Data Lake Tools für Visual Studio.
-services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/16/2016
-ms.openlocfilehash: 611439802c200b30586b73b82d0a4bbbc857e114
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b82ce187c06afa69e54ea93931e1745f0d52674
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606711"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219189"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Lösen von Problemen aufgrund von Datenschiefe mithilfe von Azure Data Lake Tools für Visual Studio
 
@@ -54,7 +51,9 @@ U-SQL stellt eine CREATE STATISTICS-Anweisung für Tabellen bereit. Diese Anweis
 
 Codebeispiel:
 
-    CREATE STATISTICS IF NOT EXISTS stats_SampleTable_date ON SampleDB.dbo.SampleTable(date) WITH FULLSCAN;
+```usql
+CREATE STATISTICS IF NOT EXISTS stats_SampleTable_date ON SampleDB.dbo.SampleTable(date) WITH FULLSCAN;
+```
 
 >[!NOTE]
 >Statistische Informationen werden nicht automatisch aktualisiert. Wenn Sie die Daten in einer Tabelle aktualisieren, ohne die Statistik neu zu erstellen, sinkt möglicherweise die Abfrageleistung.
@@ -65,62 +64,66 @@ Wenn Sie die Steuer für jeden Bundesstaat summieren möchten, müssen Sie mit G
 
 Üblicherweise können Sie die Parameter als 0,5 und 1 festlegen. 0,5 bedeutet ein geringes Maß an Schiefe, 1 bedeutet ein hohes Maß an Schiefe. Der Hinweis wirkt sich auf die Optimierung des Ausführungsplans für die aktuelle Anweisung und alle nachfolgenden Anweisungen aus. Stellen Sie daher sicher, dass Sie den Hinweis vor einer möglichen Aggregation schiefer Schlüssel hinzufügen.
 
-    SKEWFACTOR (columns) = x
+```usql
+SKEWFACTOR (columns) = x
+```
 
-    Provides a hint that the given columns have a skew factor x from 0 (no skew) through 1 (very heavy skew).
+Gibt einen Hinweis darauf, dass die angegebenen Spalten einen Schiefefaktor x von 0 (keine Schiefe) bis 1 (sehr hohes Maß an Schiefe) aufweisen.
 
 Codebeispiel:
 
-    //Add a SKEWFACTOR hint.
-    @Impressions =
-        SELECT * FROM
-        searchDM.SML.PageView(@start, @end) AS PageView
-        OPTION(SKEWFACTOR(Query)=0.5)
-        ;
+```usql
+//Add a SKEWFACTOR hint.
+@Impressions =
+    SELECT * FROM
+    searchDM.SML.PageView(@start, @end) AS PageView
+    OPTION(SKEWFACTOR(Query)=0.5)
+    ;
+//Query 1 for key: Query, ClientId
+@Sessions =
+    SELECT
+        ClientId,
+        Query,
+        SUM(PageClicks) AS Clicks
+    FROM
+        @Impressions
+    GROUP BY
+        Query, ClientId
+    ;
+//Query 2 for Key: Query
+@Display =
+    SELECT * FROM @Sessions
+        INNER JOIN @Campaigns
+            ON @Sessions.Query == @Campaigns.Query
+    ;
+```
 
-    //Query 1 for key: Query, ClientId
-    @Sessions =
-        SELECT
-            ClientId,
-            Query,
-            SUM(PageClicks) AS Clicks
-        FROM
-            @Impressions
-        GROUP BY
-            Query, ClientId
-        ;
-
-    //Query 2 for Key: Query
-    @Display =
-        SELECT * FROM @Sessions
-            INNER JOIN @Campaigns
-                ON @Sessions.Query == @Campaigns.Query
-        ;   
-
-### <a name="option-3-use-rowcount"></a>Option 3: Verwenden von ROWCOUNT  
+### <a name="option-3-use-rowcount"></a>Option 3: Verwenden von ROWCOUNT
 Wenn Sie bei bestimmten Joins mit schiefen Schlüsseln wissen, dass das andere verknüpfte Rowset klein ist, können Sie vor JOIN einen ROWCOUNT-Hinweis in die U-SQL-Anweisung einfügen, um den Optimierer darüber zu informieren. So kann der Optimierer eine Broadcastjoinstrategie auswählen, um die Leistung zu verbessern. Beachten Sie jedoch, dass ROWCOUNT das Problem mit der Datenschiefe nicht löst, sondern nur zusätzliche Unterstützung bieten kann.
 
-    OPTION(ROWCOUNT = n)
+```usql
+OPTION(ROWCOUNT = n)
+```
 
-    Identify a small row set before JOIN by providing an estimated integer row count.
+Identifizieren Sie vor JOIN ein Rowset mit geringem Umfang, indem Sie eine geschätzte ganzzahlige Zeilenanzahl angeben.
 
 Codebeispiel:
 
-    //Unstructured (24-hour daily log impressions)
-    @Huge   = EXTRACT ClientId int, ...
-                FROM @"wasb://ads@wcentralus/2015/10/30/{*}.nif"
-                ;
-
-    //Small subset (that is, ForgetMe opt out)
-    @Small  = SELECT * FROM @Huge
-                WHERE Bing.ForgetMe(x,y,z)
-                OPTION(ROWCOUNT=500)
-                ;
-
-    //Result (not enough information to determine simple broadcast JOIN)
-    @Remove = SELECT * FROM Bing.Sessions
-                INNER JOIN @Small ON Sessions.Client == @Small.Client
-                ;
+```usql
+//Unstructured (24-hour daily log impressions)
+@Huge   = EXTRACT ClientId int, ...
+            FROM @"wasb://ads@wcentralus/2015/10/30/{*}.nif"
+            ;
+//Small subset (that is, ForgetMe opt out)
+@Small  = SELECT * FROM @Huge
+            WHERE Bing.ForgetMe(x,y,z)
+            OPTION(ROWCOUNT=500)
+            ;
+//Result (not enough information to determine simple broadcast JOIN)
+@Remove = SELECT * FROM Bing.Sessions
+            INNER JOIN @Small ON Sessions.Client == @Small.Client
+            ;
+```
 
 ## <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>Lösung 3: Verbessern der benutzerdefinierten Reduzierungs- und Kombinierungsfunktion
 
@@ -136,19 +139,23 @@ Um eine nicht rekursive Reduzierungsfunktion als rekursiv festzulegen, müssen S
 
 Attribut einer rekursiven Reduzierungsfunktion:
 
-    [SqlUserDefinedReducer(IsRecursive = true)]
+```usql
+[SqlUserDefinedReducer(IsRecursive = true)]
+```
 
 Codebeispiel:
 
-    [SqlUserDefinedReducer(IsRecursive = true)]
-    public class TopNReducer : IReducer
+```usql
+[SqlUserDefinedReducer(IsRecursive = true)]
+public class TopNReducer : IReducer
+{
+    public override IEnumerable<IRow>
+        Reduce(IRowset input, IUpdatableRow output)
     {
-        public override IEnumerable<IRow>
-            Reduce(IRowset input, IUpdatableRow output)
-        {
-            //Your reducer code goes here.
-        }
+        //Your reducer code goes here.
     }
+}
+```
 
 ### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>Option 2: Verwenden des Kombinierungsmodus auf Zeilenebene, sofern möglich
 
@@ -165,7 +172,7 @@ Das folgende Beispiel zeigt ein getrenntes Rowset links. Für jede Ausgabezeile 
 
 Attribute des Kombinierungsmodus:
 
-- [SqlUserDefinedCombiner(Mode=CombinerMode.Full)]: Every output row potentially depends on all the input rows from left and right with the same key value.
+- SqlUserDefinedCombiner(Mode=CombinerMode.Full): Jede Ausgabezeile ist potenziell von allen Eingabezeilen von links und rechts mit dem gleichen Schlüsselwert abhängig.
 
 - SqlUserDefinedCombiner(Mode=CombinerMode.Left): Jede Ausgabezeile ist von einer einzelnen Eingabezeile von links (und potenziell von allen Zeilen von rechts mit dem gleichen Schlüsselwert) abhängig.
 
@@ -175,12 +182,14 @@ Attribute des Kombinierungsmodus:
 
 Codebeispiel:
 
-    [SqlUserDefinedCombiner(Mode = CombinerMode.Right)]
-    public class WatsonDedupCombiner : ICombiner
+```usql
+[SqlUserDefinedCombiner(Mode = CombinerMode.Right)]
+public class WatsonDedupCombiner : ICombiner
+{
+    public override IEnumerable<IRow>
+        Combine(IRowset left, IRowset right, IUpdatableRow output)
     {
-        public override IEnumerable<IRow>
-            Combine(IRowset left, IRowset right, IUpdatableRow output)
-        {
-        //Your combiner code goes here.
-        }
+    //Your combiner code goes here.
     }
+}
+```

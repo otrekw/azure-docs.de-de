@@ -1,26 +1,22 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit IdeaScale | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit IdeaScale | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und IdeaScale konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e16dda6b-fdf9-43cc-9bbb-a523f085a8af
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a312e0ca70ef3a37b43f1ffb68a974a8aedaf982
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef04bf9f6d9ca6ff5089d2826c05a5acfb759b04
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100797"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001659"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Tutorial: Azure Active Directory-Integration mit IdeaScale
 
@@ -31,7 +27,7 @@ Die Integration von IdeaScale in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei IdeaScale anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -109,10 +105,10 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit IdeaSca
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein:
     
-    | |
-    |--|
-    | `http://<companyname>.ideascale.com`  |
-    | `https://<companyname>.ideascale.com` |
+    ```http
+    http://<companyname>.ideascale.com
+    https://<companyname>.ideascale.com
+    ```
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von IdeaScale](https://support.ideascale.com/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -137,19 +133,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit IdeaSca
 
 2. Navigieren Sie zu **Communityeinstellungen**.
 
-    ![Communityeinstellungen](./media/ideascale-tutorial/ic790847.png "Communityeinstellungen")
+    ![Community Settings (Communityeinstellungen)](./media/ideascale-tutorial/ic790847.png "Communityeinstellungen")
 
 3. Navigieren Sie zu **Sicherheit \> Einstellungen für einmaliges Anmelden**.
 
-    ![Einstellungen für einmaliges Anmelden](./media/ideascale-tutorial/ic790848.png "Einstellungen für einmaliges Anmelden")
+    ![Screenshot: Ausgewählte Einstellungen für die einmalige Anmeldung im Menü „Sicherheit“](./media/ideascale-tutorial/ic790848.png "Einstellungen für einmaliges Anmelden")
 
 4. Wählen Sie für **SSO-Typ** die Einstellung **SAML 2.0** aus.
 
-    ![SSO-Typ](./media/ideascale-tutorial/ic790849.png "SSO-Typ")
+    ![Single Signon Type (SSO-Typ)](./media/ideascale-tutorial/ic790849.png "SSO-Typ")
 
 5. Führen Sie im Dialogfeld **Einstellungen für einmaliges Anmelden** die folgenden Schritte aus:
 
-    ![Einstellungen für einmaliges Anmelden](./media/ideascale-tutorial/ic790850.png "Einstellungen für einmaliges Anmelden")
+    ![Screenshot: Dialogfeld: „Single Sign-On Settings“ (Einstellungen für einmaliges Anmelden)](./media/ideascale-tutorial/ic790850.png "Einstellungen für einmaliges Anmelden")
 
     a. Fügen Sie in das Textfeld **SAML IdP Entity ID** (SAML-IdP-Entitäts-ID) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -182,7 +178,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -220,17 +216,17 @@ Damit sich Azure AD-Benutzer bei IdeaScale anmelden können, müssen sie in Idea
 
 2. Navigieren Sie zu **Communityeinstellungen**.
 
-    ![Communityeinstellungen](./media/ideascale-tutorial/ic790847.png "Communityeinstellungen")
+    ![Community Settings (Communityeinstellungen)](./media/ideascale-tutorial/ic790847.png "Communityeinstellungen")
 
 3. Navigieren Sie zu **Grundlegende Einstellungen \> Mitgliederverwaltung**.
 
 4. Klicken Sie auf **Mitglied hinzufügen**.
 
-    ![Mitgliederverwaltung](./media/ideascale-tutorial/ic790852.png "Mitgliederverwaltung")
+    ![Member Management (Mitgliederverwaltung)](./media/ideascale-tutorial/ic790852.png "Mitgliederverwaltung")
 
 5. Führen Sie im Abschnitt „Neues Mitglied hinzufügen“ die folgenden Schritte aus:
 
-    ![Neues Mitglied hinzufügen](./media/ideascale-tutorial/ic790853.png "Neues Mitglied hinzufügen")
+    ![Add New Member (Neues Mitglied hinzufügen)](./media/ideascale-tutorial/ic790853.png "Neues Mitglied hinzufügen")
 
     a. Geben Sie im Textfeld **E-Mail-Adressen** die E-Mail-Adresse eines gültigen Azure AD-Benutzerkontos ein, das Sie bereitstellen möchten.
 
@@ -240,19 +236,18 @@ Damit sich Azure AD-Benutzer bei IdeaScale anmelden können, müssen sie in Idea
     > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
 
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von IdeaScale-Benutzerkonten oder mithilfe der von IdeaScale bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von IdeaScale-Benutzerkonten oder mit den APIs von IdeaScale bereitstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „IdeaScale“ klicken, sollten Sie automatisch bei der IdeaScale-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „IdeaScale“ klicken, sollten Sie automatisch bei der IdeaScale-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

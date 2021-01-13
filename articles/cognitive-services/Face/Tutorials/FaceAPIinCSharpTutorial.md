@@ -1,31 +1,32 @@
 ---
 title: 'Tutorial: Erkennen und Anzeigen von Gesichtserkennungsdaten in einem Bild mit dem .NET SDK'
 titleSuffix: Azure Cognitive Services
-description: In diesem Tutorial erstellen Sie eine Windows-App, die die Gesichtserkennungs-API verwendet, um Gesichter in einem Bild zu erkennen und zu umranden.
+description: In diesem Tutorial erstellen Sie eine Windows-App, die den Gesichtserkennungsdienst verwendet, um Gesichter in einem Bild zu erkennen und zu umranden.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 93932fac9a5e5d4c21adc99bd31e9366a9709cc2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ab251e9a156005d47a1516d23cb018fb1907ab6e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859116"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95744771"
 ---
-# <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Tutorial: Erstellen einer WPF-App zum Anzeigen von Gesichtserkennungsdaten in einem Bild
+# <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Tutorial: Erstellen einer WPF-App (Windows Presentation Framework) zum Anzeigen von Gesichtserkennungsdaten in einem Bild
 
-In diesem Tutorial erfahren Sie, wie sie die Azure-Gesichtserkennungs-API über das .NET Client SDK verwenden, um Gesichter in einem Bild zu erkennen und diese Daten anschließend auf der Benutzeroberfläche darzustellen. Sie erstellen eine WPF-Anwendung (Windows Presentation Foundation), die Gesichter erkennt, einen Rahmen um jedes Gesicht zeichnet und eine Beschreibung des Gesichts auf der Statusleiste anzeigt. 
+In diesem Tutorial erfahren Sie, wie sie den Azure-Gesichtserkennungsdienst über das .NET Client SDK verwenden, um Gesichter in einem Bild zu erkennen und diese Daten anschließend auf der Benutzeroberfläche darzustellen. Sie erstellen eine WPF-Anwendung, die Gesichter erkennt, einen Rahmen um jedes Gesicht zeichnet und eine Beschreibung des Gesichts auf der Statusleiste anzeigt. 
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 > [!div class="checklist"]
 > - Erstellen einer WPF-Anwendung
-> - Installieren der Clientbibliothek für die Gesichtserkennungs-API
+> - Installieren der Clientbibliothek für die Gesichtserkennung
 > - Verwenden der Clientbibliothek zum Erkennen von Gesichtern in einem Bild
 > - Zeichnen eines Rahmens um jedes erkannte Gesicht
 > - Anzeigen einer Beschreibung des hervorgehobenen Gesichts auf der Statusleiste
@@ -34,13 +35,17 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 Der vollständige Beispielcode ist im Repository [Cognitive Face CSharp sample](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample) (CSharp-Beispiel für die Gesichtserkennung) auf GitHub verfügbar.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen. 
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Abonnementschlüssel für die Gesichtserkennungs-API. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten. [Erstellen Sie dann Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für die Schlüssel- und Dienstendpunkt-Zeichenfolge, und nennen Sie sie `FACE_SUBSCRIPTION_KEY` bzw. `FACE_ENDPOINT`.
-- Eine beliebige Edition von [Visual Studio 2015 oder 2017](https://www.visualstudio.com/downloads/).
+* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services/)
+* Sobald Sie über Ihr Azure-Abonnement verfügen, erstellen Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Erstellen einer Gesichtserkennungsressource"  target="_blank"> eine Gesichtserkennungsressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt zu erhalten. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+    * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Gesichtserkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
+    * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
+* [Erstellen Sie Umgebungsvariablen](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) für die Schlüssel- und Dienstendpunkt-Zeichenfolge, und nennen Sie sie `FACE_SUBSCRIPTION_KEY` bzw. `FACE_ENDPOINT`.
+- Eine beliebige Edition von [Visual Studio](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 
@@ -49,7 +54,7 @@ Führen Sie diese Schritte aus, um ein neues WPF-Anwendungsprojekt zu erstellen.
 1. Öffnen Sie in Visual Studio das Dialogfeld „Neues Projekt“. Erweitern Sie **Installiert** und dann **Visual C#** , und wählen Sie **WPF-App (.NET Framework)** aus.
 1. Geben Sie der Anwendung den Namen **FaceTutorial**, und klicken Sie anschließend auf **OK**.
 1. Rufen Sie die erforderlichen NuGet-Pakete ab. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, wählen Sie **NuGet-Pakete verwalten** aus, suchen Sie nach den folgenden Paketen, und installieren Sie sie:
-    - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
+    - [Microsoft.Azure.CognitiveServices.Vision.Face 2.6.0-preview.1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)
 
 ## <a name="add-the-initial-code"></a>Hinzufügen des anfänglichen Codes
 

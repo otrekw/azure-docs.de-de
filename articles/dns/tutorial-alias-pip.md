@@ -1,18 +1,18 @@
 ---
-title: 'Tutorial: Erstellen eines Azure DNS-Aliaseintrags, um auf eine öffentliche Azure-IP-Adresse zu verweisen'
+title: 'Tutorial: Erstellen eines Azure DNS-Aliaseintrags zum Verweisen auf eine öffentliche Azure-IP-Adresse'
 description: In diesem Tutorial wird gezeigt, wie Sie einen Azure DNS-Aliaseintrag konfigurieren, um auf eine öffentliche Azure-IP-Adresse zu verweisen.
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: victorh
-ms.openlocfilehash: 7dcbfdaf00b0e628541cfd1a3b79df8cf8334ed3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: rohink
+ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536877"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80985438"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Tutorial: Konfigurieren eines Aliaseintrags, um auf eine öffentliche Azure-IP-Adresse zu verweisen 
 
@@ -20,9 +20,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer Netzwerkinfrastruktur
-> * Erstellen eines virtuellen Webservercomputers
-> * Erstellen eines Aliaseintrags
-> * Testen des Aliaseintrags
+> * Erstellen eines virtuellen Webservercomputers mit öffentlicher IP-Adresse
+> * Erstellen eines Aliasdatensatzes, der auf die öffentliche IP-Adresse verweist
+> * Testen des Aliasdatensatzes
 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
@@ -36,7 +36,7 @@ Die für dieses Tutorial verwendete Beispieldomäne lautet „contoso.com“. Ve
 
 ## <a name="create-the-network-infrastructure"></a>Erstellen der Netzwerkinfrastruktur
 Erstellen Sie zuerst ein virtuelles Netzwerk und ein Subnetz, um die Webserver darin zu platzieren.
-1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Klicken Sie links oben im Portal auf **Ressource erstellen**. Geben Sie *Ressourcengruppe* in das Suchfeld ein, und erstellen Sie eine Ressourcengruppe namens **RG-DNS-Alias-pip**.
 3. Wählen Sie **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
 4. Erstellen Sie ein virtuelles Netzwerk namens **VNet-Servers**. Platzieren Sie es in der Ressourcengruppe **RG-DNS-Alias-pip**, und nennen Sie das Subnetz **SN-Web**.
@@ -48,7 +48,7 @@ Erstellen Sie zuerst ein virtuelles Netzwerk und ein Subnetz, um die Webserver d
 4. Wählen Sie unter **Einstellungen** das virtuelle Netzwerk **VNet-Servers** und das Subnetz **SN-Web** aus. Wählen Sie für die öffentlichen Eingangsports **HTTP** > **HTTPS** > **RDP (3389)** und anschließend **OK** aus.
 5. Klicken Sie auf der Seite **Zusammenfassung** auf **Erstellen**.
 
-Der Vorgang dauert einige Minuten.
+Der Vorgang dauert einige Minuten. Der virtuelle Computer verfügt über eine angefügte NIC mit der einfachen dynamischen öffentlichen IP-Adresse Web-01-ip. Die öffentliche IP-Adresse ändert sich jedes Mal, wenn der virtuelle Computer neu gestartet wird.
 
 ### <a name="install-iis"></a>Installieren von IIS
 
@@ -67,7 +67,7 @@ Installieren Sie IIS auf **Web-01**.
 Erstellen Sie einen Aliaseintrag, der auf die öffentliche IP-Adresse verweist.
 
 1. Wählen Sie Ihre Azure DNS-Zone aus, um sie zu öffnen.
-2. Wählen Sie **Ressourceneintragssatz** aus.
+2. Wählen Sie **Ressourceneintragssatz**.
 3. Wählen Sie im Textfeld **Name** den Namen **web01** aus.
 4. Übernehmen Sie für **Typ** die Option **A-Eintrag**.
 5. Aktivieren Sie das Kontrollkästchen **Alias Record Set** (Aliaseintragssatz).

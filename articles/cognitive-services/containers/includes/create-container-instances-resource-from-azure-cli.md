@@ -3,32 +3,32 @@ title: Containerunterstützung
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie eine Azure Container Instances-Ressource über die Azure CLI erstellen können.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/5/2019
-ms.author: dapine
-ms.openlocfilehash: 2080d283c6cb7466dcb4847a81d76a4c3109217a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 87007d3df3fe44ab04a330b09b8e495ec4b47e54
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012142"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97866100"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Erstellen einer Azure Container Instances-Ressource über die Azure CLI
 
-Im folgenden YAML-Code ist die Azure Container Instances-Ressource definiert. Kopieren Sie den Inhalt, und fügen Sie ihn in eine neue Datei mit dem Namen `my-aci.yaml` ein. Ersetzen Sie dann die kommentierten Werte durch Ihre eigenen. Gültigen YAML-Code finden Sie im [Vorlagenformat][template-format]. Die verfügbaren Imagenamen und entsprechenden Repositorys finden Sie unter [Containerrepositorys und -images][repositories-and-images].
+Im folgenden YAML-Code ist die Azure Container Instances-Ressource definiert. Kopieren Sie den Inhalt, und fügen Sie ihn in eine neue Datei mit dem Namen `my-aci.yaml` ein. Ersetzen Sie dann die kommentierten Werte durch Ihre eigenen. Gültigen YAML-Code finden Sie im [Vorlagenformat][template-format]. Die verfügbaren Imagenamen und entsprechenden Repositorys finden Sie unter [Containerrepositorys und -images][repositories-and-images]. Weitere Informationen zur YAML-Referenz für Containerinstanzen finden Sie unter [YAML-Referenz: Azure Container Instances][aci-yaml-ref].
 
 ```YAML
 apiVersion: 2018-10-01
 location: # < Valid location >
 name: # < Container Group name >
-imageRegistryCredentials:
+properties:
+  imageRegistryCredentials: # This is only required if you are pulling a non-public image that requires authentication to access. For example Text Analytics for health.
   - server: containerpreview.azurecr.io
     username: # < The username for the preview container registry >
     password: # < The password for the preview container registry >
-properties:
   containers:
   - name: # < Container name >
     properties:
@@ -47,6 +47,12 @@ properties:
       ports:
         - port: 5000
   osType: Linux
+  volumes: # This node, is only required for container instances that pull their model in at runtime, such as LUIS.
+  - name: aci-file-share
+    azureFile:
+      shareName: # < File share name >
+      storageAccountName: # < Storage account name>
+      storageAccountKey: # < Storage account key >
   restartPolicy: OnFailure
   ipAddress:
     type: Public
@@ -71,9 +77,9 @@ Bei Gültigkeit lautet die Ausgabe des Befehls `Running...`.Nach einiger Zeit ä
 > [!TIP]
 > Achten Sie genau auf die Speicherorte von Azure Cognitive Service-Angeboten in der öffentlichen Vorschau, da der YAML-Code entsprechend dem Speicherort angepasst werden muss.
 
-[azure-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
-[template-format]: https://docs.microsoft.com/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups#template-format
-
-[repositories-and-images]: ../../cognitive-services-container-support.md#container-repositories-and-images
-[location-to-resource]: ../../../container-instances/container-instances-region-availability.md#availability---general
+[azure-container-create]: /cli/azure/container#az-container-create
+[template-format]: /azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups#template-format
+[aci-yaml-ref]: ../../../container-instances/container-instances-reference-yaml.md
+[repositories-and-images]: ../container-image-tags.md
+[location-to-resource]: ../../../container-instances/container-instances-region-availability.md
 [secure-values]: ../../../container-instances/container-instances-environment-variables.md#secure-values

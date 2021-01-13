@@ -1,6 +1,6 @@
 ---
 title: Deaktivieren der Firewall des Gastbetriebssystems eines virtuellen Azure-Computers | Microsoft-Dokumentation
-description: ''
+description: Lernen Sie eine Problemumgehungsmethode für die Problembehandlung in Situationen kennen, in denen eine Firewall des Gastbetriebssystems den teilweisen oder vollständigen Datenverkehr zu einem virtuellen Computer filtert.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 9ae8620b803fa9a911f44840a5fff5d190a316a1
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: c0426c5359e4d82d0316613586b9298596d82605
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086530"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87009763"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Deaktivieren der Firewall des Gastbetriebssystems eines virtuellen Azure-Computers
 
@@ -27,7 +27,7 @@ Dieser Artikel enthält eine Referenz für Situationen, in denen Sie vermuten, d
 
 ## <a name="solution"></a>Lösung
 
-Der in diesem Artikel beschriebene Prozess soll als Problemumgehung verwendet werden, damit Sie sich auf Ihre eigentliche Aufgabe konzentrieren können – die richtige Einrichtung der Firewallregeln. Es ist eine Microsoft Best Practice, die Windows Firewall-Komponente zu aktivieren. Wie Sie die Firewallregeln konfigurieren, hängt von der erforderlichen Zugriffsebene des virtuellen Computers ab.
+Der in diesem Artikel beschriebene Prozess soll als Problemumgehung verwendet werden, damit Sie sich auf Ihre eigentliche Aufgabe konzentrieren können – die richtige Einrichtung der Firewallregeln. Es ist eine bewährte Methode von Microsoft, die Windows Firewall-Komponente zu aktivieren. Wie Sie die Firewallregeln konfigurieren, hängt von der erforderlichen Zugriffsebene des virtuellen Computers ab.
 
 ### <a name="online-solutions"></a>Onlinelösungen 
 
@@ -49,7 +49,7 @@ Mit einem Azure-Agent können Sie das Feature [Benutzerdefinierte Skripterweiter
 >   ```
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
 >   ```
 >   Sobald die Richtlinie erneut angewendet wird, werden Sie allerdings aus der Remotesitzung entfernt. Die endgültige Lösung für dieses Problem ist die Änderung der Richtlinie, die auf diesem Computer angewendet wird.
@@ -74,7 +74,7 @@ Mit einem Azure-Agent können Sie das Feature [Benutzerdefinierte Skripterweiter
 
 #### <a name="mitigation-3-pstools-commands"></a>Lösung 3: PSTools-Befehle
 
-1.  Laden Sie auf den virtuellen Computer, der zur Problembehandlung dient, [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools) herunter.
+1.  Laden Sie auf den virtuellen Computer, der zur Problembehandlung dient, [PSTools](/sysinternals/downloads/pstools) herunter.
 
 2.  Öffnen Sie eine CMD-Instanz, und greifen Sie dann über deren DIP-Adresse auf den virtuellen Computer zu.
 
@@ -92,7 +92,7 @@ Gehen Sie zur Verwendung der [Remoteregistrierung](https://support.microsoft.com
 
 1.  Starten Sie auf dem virtuellen Computer, der zur Problembehandlung dient, den Registrierungs-Editor, und wählen Sie **Datei** > **Mit Netzwerkregistrierung verbinden** aus.
 
-2.  Öffnen Sie die Verzweigung  *TARGET MACHINE*\SYSTEM, und geben Sie die folgenden Werte ein:
+2.  Öffnen Sie den Branch *TARGET MACHINE*\SYSTEM, und geben Sie die folgenden Werte ein:
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -100,15 +100,15 @@ Gehen Sie zur Verwendung der [Remoteregistrierung](https://support.microsoft.com
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3.  Starten Sie den Dienst neu. Da dies mit der Remoteregistrierung nicht möglich ist, müssen Sie „Dienstkonsole entfernen“ verwenden.
+3.  Starten Sie den Dienst neu. Da dies mit der Remoteregistrierung nicht möglich ist, müssen Sie die Remotedienstkonsole verwenden.
 
-4.  Öffnen Sie eine Instanz von  **Services.msc**.
+4.  Öffnen Sie eine Instanz von **Services.msc**.
 
 5.  Klicken Sie auf **Dienste (lokal)** .
 
 6.  Wählen Sie **Verbindung mit einem anderen Computer herstellen** aus.
 
-7.  Geben Sie die **Private IP-Adresse (DIP)**  des virtuellen Computers ein, auf dem das Problem auftritt.
+7.  Geben Sie die **Private IP-Adresse (DIP)** des virtuellen Computers ein, auf dem das Problem auftritt.
 
 8.  Starten Sie die lokale Firewallrichtlinie neu.
 
@@ -148,7 +148,7 @@ Wenn Sie den virtuellen Computer mit keiner Methode erreichen können, ist die �
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'BROKENSYSTEM\ControlSet00'+$ControlSet+'\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
-    # To ensure the firewall is not set thru AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
+    # To ensure the firewall is not set through AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'

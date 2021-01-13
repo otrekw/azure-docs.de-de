@@ -1,25 +1,24 @@
 ---
-title: Erstellen und Verwalten von Handelspartnerverträgen – Azure Logic Apps
+title: Handelspartnervereinbarungen
 description: Erstellen und Verwalten von Vereinbarungen zwischen Handelspartnern mithilfe von Azure Logic Apps und Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 4bfee4ec442c9e7b0351b0fd0c6a2b8e163a2541
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330304"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95992947"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Erstellen und Verwalten von Handelspartnerverträgen in Azure Logic Apps
 
 Ein [Handelspartner](../logic-apps/logic-apps-enterprise-integration-partners.md) 
- *Vereinbarung* hilft Organisationen und Unternehmen, die nahtlos miteinander kommunizieren können, definieren Sie das spezifische Branche zum Standard-Protokoll verwenden, beim Austausch von Nachrichten für die Business-to-Business (B2B). Vereinbarungen bieten allgemeine Vorteile. Beispiel:
+*Vereinbarung* hilft Organisationen und Unternehmen, die nahtlos miteinander kommunizieren können, definieren Sie das spezifische Branche zum Standard-Protokoll verwenden, beim Austausch von Nachrichten für die Business-to-Business (B2B). Vereinbarungen bieten allgemeine Vorteile. Beispiel:
 
 * Sie ermöglichen Organisationen den Austausch von Informationen über ein bekanntes Format.
 * Sie erhöhen die Effizienz beim Durchführen von B2B-Transaktionen.
@@ -58,7 +57,7 @@ Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. Geben Sie im Su
 
    ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Name** | Ja | <*agreement-name*> | Der Name für Ihre Vereinbarung. |
    | **Vereinbarungstyp** | Ja | **AS2**, **X12** oder **EDIFACT** | Der Protokolltyp für Ihre Vereinbarung. Wenn Sie Ihre Vereinbarungsdatei erstellen, muss der Inhalt dieser Datei mit dem Vereinbarungstyp übereinstimmen. | |  
@@ -69,6 +68,14 @@ Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. Geben Sie im Su
    | **Empfangseinstellungen** | Varies | Varies | Diese Eigenschaften legen fest, wie der Hostpartner alle Nachrichten vom in der Vereinbarung angegebenen Gastpartner empfängt. Weitere Informationen finden Sie unter dem jeweiligen Vereinbarungstyp: <p>- [AS2-Nachrichteneinstellungen](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact.md) <br>- [X12-Nachrichteneinstellungen](logic-apps-enterprise-integration-x12.md) |
    | **Sendeeinstellungen** | Varies | Varies | Die Eigenschaften legen fest, wie der Hostpartner alle Nachrichten an den in der Vereinbarung angegebenen Gastpartner sendet. Weitere Informationen finden Sie unter dem jeweiligen Vereinbarungstyp: <p>- [AS2-Nachrichteneinstellungen](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact.md) <br>- [X12-Nachrichteneinstellungen](logic-apps-enterprise-integration-x12.md) |
    |||||
+
+   > [!IMPORTANT]
+   > Die Auflösung für eine Vereinbarung hängt von der Übereinstimmung dieser Elemente ab, die in der Partner- und eingehenden Nachricht definiert sind:
+   >
+   > * Qualifizierer und Bezeichner des Absenders
+   > * Qualifizierer und Bezeichner des Empfängers
+   >
+   > Falls sich diese Werte für Ihren Partner ändern, stellen Sie sicher, dass Sie die Vereinbarung entsprechend aktualisieren.
 
 1. Wenn Sie die Erstellung Ihrer Vereinbarung abgeschlossen haben, wählen Sie auf der Seite **Hinzufügen** die Option **OK** aus, und kehren Sie zu Ihrem Integrationskonto zurück.
 

@@ -1,18 +1,18 @@
 ---
-title: 'Verbinden eines Azure Virtual Network mit einem anderen VNET per VNET-zu-VNET-Verbindung: PowerShell | Microsoft-Dokumentation'
+title: 'Verbinden eines VNets mit einem anderen VNet über eine Azure VPN Gateway-VNet-zu-VNet-Verbindung: PowerShell'
 description: Stellen Sie mithilfe von PowerShell eine VNet-zu-VNet-Verbindung zwischen virtuellen Netzwerken her.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
-ms.date: 02/15/2019
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: dbf59740af64bf8d403b6596a17646304c0f1eb0
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 7de83302dd91d7d679b9c35718d184a9767ba436
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385778"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655356"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurieren einer VNet-zu-VNet-VPN-Gatewayverbindung mithilfe von PowerShell
 
@@ -21,14 +21,14 @@ In diesem Artikel erfahren Sie, wie Sie zwischen virtuellen Netzwerken eine VNet
 Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsmodell und für die Verwendung von PowerShell. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Verbinden von verschiedenen Bereitstellungsmodellen – Azure-Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [Verbinden von virtuellen Netzwerken aus verschiedenen Bereitstellungsmodellen mit PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 
-## <a name="about"></a>Informationen zum Verbinden von VNets
+## <a name="about-connecting-vnets"></a><a name="about"></a>Informationen zum Verbinden von VNets
 
 VNets können auf unterschiedliche Weise verbunden werden. In den folgenden Abschnitten werden unterschiedliche Verbindungsmethoden für virtuelle Netzwerke beschrieben.
 
@@ -44,7 +44,7 @@ Wenn Sie mit einer komplizierten Netzwerkkonfiguration arbeiten, empfiehlt es si
 
 Es empfiehlt sich unter Umständen, VNets per VNet-Peering zu verbinden. Beim VNet-Peering wird kein VPN-Gateway verwendet, und es gelten andere Einschränkungen. Außerdem werden die [Preise für VNet-Peering](https://azure.microsoft.com/pricing/details/virtual-network) anders berechnet als die [Preise für VPN Gateway (VNet-zu-VNet)](https://azure.microsoft.com/pricing/details/vpn-gateway). Weitere Informationen finden Sie unter [VNet-Peering](../virtual-network/virtual-network-peering-overview.md).
 
-## <a name="why"></a>Gründe für die Erstellung einer VNet-zu-VNet-Verbindung
+## <a name="why-create-a-vnet-to-vnet-connection"></a><a name="why"></a>Gründe für die Erstellung einer VNet-zu-VNet-Verbindung
 
 Folgende Gründe sprechen für das Herstellen einer VNet-zu-VNet-Verbindung zwischen virtuellen Netzwerken:
 
@@ -58,7 +58,7 @@ Folgende Gründe sprechen für das Herstellen einer VNet-zu-VNet-Verbindung zwis
 
 Die VNET-zu-VNET-Kommunikation kann mit Konfigurationen für mehrere Standorte kombiniert werden. Auf diese Weise können Sie Netzwerktopologien einrichten, die standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren.
 
-## <a name="steps"></a>Welche VNet-zu-VNet-Schritte soll ich verwenden?
+## <a name="which-vnet-to-vnet-steps-should-i-use"></a><a name="steps"></a>Welche VNet-zu-VNet-Schritte soll ich verwenden?
 
 In diesem Artikel finden Sie zwei unterschiedliche Anleitungen: Schritte für [VNets, die sich unter demselben Abonnement befinden](#samesub), und Schritte für [VNets, die sich unter verschiedenen Abonnements befinden](#difsub).
 Der Hauptunterschied zwischen den beiden Vorgehensweisen besteht darin, dass Sie separate PowerShell-Sitzungen verwenden müssen, wenn Sie die Verbindungen für VNets konfigurieren, die sich unter verschiedenen Abonnements befinden. 
@@ -67,13 +67,13 @@ Für diese Übung können Sie Konfigurationen kombinieren oder nur die gewünsch
 
 * [VNETs im gleichen Abonnement](#samesub): Die Schritte für diese Konfiguration verwenden TestVNet1 und TestVNet4.
 
-  ![v2v-Diagramm](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+  ![Diagramm mit der Darstellung der VNet-zu-VNet-Schritte für VNets, die sich im gleichen Abonnement befinden](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 * [VNETs in unterschiedlichen Abonnements](#difsub): In den Schritten für diese Konfiguration werden TestVNet1 und TestVNet5 verwendet.
 
   ![v2v-Diagramm](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
-## <a name="samesub"></a>Verbinden von VNets in demselben Abonnement
+## <a name="how-to-connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>Verbinden von VNets in demselben Abonnement
 
 ### <a name="before-you-begin"></a>Voraussetzungen
 
@@ -81,9 +81,9 @@ Für diese Übung können Sie Konfigurationen kombinieren oder nur die gewünsch
 
 * Da es bis zu 45 Minuten dauert, ein Gateway zu erstellen, kommt es während dieser Übung regelmäßig zu Timeouts bei Azure Cloud Shell. Sie können Cloud Shell neu starten, indem Sie auf die obere linke Ecke des Terminals klicken. Stellen Sie sicher, dass Sie alle Variablen erneut deklarieren, wenn Sie das Terminal neu starten.
 
-* Wenn Sie lieber die neueste Version des Azure PowerShell-Moduls lokal installieren möchten, und sie Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+* Wenn Sie lieber die neueste Version des Azure PowerShell-Moduls lokal installieren möchten, und sie Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
 
-### <a name="Step1"></a>Schritt 1: Planen der IP-Adressbereiche
+### <a name="step-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>Schritt 1: Planen der IP-Adressbereiche
 
 In den folgenden Schritten erstellen Sie zwei virtuelle Netzwerke sowie die jeweiligen Gatewaysubnetze und Konfigurationen. Anschließend erstellen Sie eine VPN-Verbindung zwischen den beiden VNets. Es ist wichtig, die IP-Adressbereiche für Ihre Netzwerkkonfiguration zu planen. Denken Sie daran, dass Sie sicherstellen müssen, dass keiner der VNet-Bereiche oder der Bereiche des lokalen Netzwerks Überschneidungen aufweist. In diesen Beispielen verwenden wir keinen Namenserver. Wenn Sie eine Namensauflösung für die virtuellen Netzwerke möchten, finden Sie unter [Namensauflösung](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) Informationen dazu.
 
@@ -121,7 +121,7 @@ In den Beispielen werden die folgenden Werte verwendet:
 * Verbindungstyp: VNet2VNet
 
 
-### <a name="Step2"></a>Schritt 2: Erstellen und Konfigurieren von TestVNet1
+### <a name="step-2---create-and-configure-testvnet1"></a><a name="Step2"></a>Schritt 2: Erstellen und Konfigurieren von TestVNet1
 
 1. Überprüfen Sie Ihre Abonnementeinstellungen.
 
@@ -203,7 +203,7 @@ In den Beispielen werden die folgenden Werte verwendet:
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-Nachdem Sie die Befehle fertig gestellt haben, dauert es bis zu 45 Minuten, um dieses Gateway zu erstellen. Wenn Sie Azure Cloud Shell verwenden, können Sie Ihre Cloud Shell-Sitzung neu starten, indem Sie auf die linke obere Ecke des Cloud Shell-Terminal klicken und dann „TestVNet4“ konfigurieren. Sie müssen nicht warten, bis das Gateway „TestVNet1“ fertig ist.
+Nachdem Sie die Befehle fertig gestellt haben, dauert es bis zu 45 Minuten, um dieses Gateway zu erstellen. Wenn Sie Azure Cloud Shell verwenden, können Sie Ihre Cloud Shell-Sitzung neu starten, indem Sie auf die linke obere Ecke des Cloud Shell-Terminals klicken und dann „TestVNet4“ konfigurieren. Sie müssen nicht warten, bis das Gateway „TestVNet1“ fertig ist.
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>Schritt 3: Erstellen und Konfigurieren von TestVNet4
 
@@ -283,7 +283,7 @@ Warten Sie, bis beide Gateways fertig sind. Starten Sie Ihre Azure Cloud Shell-S
    -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet4gw -Location $Location1 `
    -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
    ```
-3. Erstellen Sie die Verbindung zwischen „TestVNet4“ und „TestVNet1“. Dieser Schritt ähnelt dem obigen Schritt, aber hier erstellen Sie jetzt die Verbindung von TestVNet4 mit TestVNet1. Stellen Sie sicher, dass die freigegebenen Schlüssel übereinstimmen. Nach einigen Minuten wird die Verbindung hergestellt.
+3. Erstellen Sie die Verbindung zwischen TestVNet4 und TestVNet1. Dieser Schritt ähnelt dem obigen Schritt, aber hier erstellen Sie jetzt die Verbindung von TestVNet4 mit TestVNet1. Stellen Sie sicher, dass die freigegebenen Schlüssel übereinstimmen. Nach einigen Minuten wird die Verbindung hergestellt.
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGatewayConnection -Name $Connection41 -ResourceGroupName $RG4 `
@@ -292,7 +292,7 @@ Warten Sie, bis beide Gateways fertig sind. Starten Sie Ihre Azure Cloud Shell-S
    ```
 4. Überprüfen Sie die Verbindung. Informationen hierzu finden Sie im Abschnitt [Überprüfen der Verbindung](#verify).
 
-## <a name="difsub"></a>Verbinden von VNets aus unterschiedlichen Abonnements
+## <a name="how-to-connect-vnets-that-are-in-different-subscriptions"></a><a name="difsub"></a>Verbinden von VNets aus unterschiedlichen Abonnements
 
 In diesem Szenario verbinden Sie TestVNet1 und TestVNet5. TestVNet1 und TestVNet5 befinden sich in unterschiedlichen Abonnements. Die Abonnements müssen nicht demselben Active Directory-Mandanten zugeordnet werden.
 
@@ -302,7 +302,7 @@ Wegen des sich ändernden Abonnementkontexts in dieser Übung könnte es einfach
 
 ### <a name="step-5---create-and-configure-testvnet1"></a>Schritt 5: Erstellen und Konfigurieren von TestVNet1
 
-Sie müssen [Schritt 1](#Step1) und [Schritt 2](#Step2) aus dem vorherigen Abschnitt ausführen, um „TestVNet1“ und das VPN Gateway für „TestVNet1“ zu erstellen und zu konfigurieren. Für diese Konfiguration ist es nicht erforderlich „TestVNet4“ aus dem vorherigen Abschnitt zu erstellen. Wenn Sie das VNet dennoch erstellen, führt dies aber nicht zu Konflikten mit den folgenden Schritten. Nachdem Sie die Schritte 1 und 2 ausgeführt haben, fahren Sie mit Schritt 6 fort, um TestVNet5 zu erstellen.
+Sie müssen [Schritt 1](#Step1) und [Schritt 2](#Step2) aus dem vorherigen Abschnitt ausführen, um „TestVNet1“ und das VPN Gateway für „TestVNet1“ zu erstellen und zu konfigurieren. Für diese Konfiguration ist es nicht erforderlich „TestVNet4“ aus dem vorherigen Abschnitt zu erstellen. Wenn Sie es dennoch erstellen, entstehen jedoch keine Konflikte mit den folgenden Schritten. Nachdem Sie die Schritte 1 und 2 ausgeführt haben, fahren Sie mit Schritt 6 fort, um TestVNet5 zu erstellen.
 
 ### <a name="step-6---verify-the-ip-address-ranges"></a>Schritt 6: Überprüfen der IP-Adressbereiche
 
@@ -448,7 +448,7 @@ Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinde
    PS C:\> $vnet5gw.Id
    /subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
    ```
-3. **[Abonnement 1]** Erstellen Sie die Verbindung zwischen „TestVNet1“ und „TestVNet5“. In diesem Schritt erstellen Sie die Verbindung von TestVNet1 mit TestVNet5. Der Unterschied hierbei ist, dass „$vnet5gw“ nicht direkt abgerufen werden kann, da es sich in einem anderen Abonnement befindet. Sie müssen ein neues PowerShell-Objekt mit den Werten erstellen, die in den obigen Schritten aus Abonnement 1 übermittelt wurden. Sehen Sie sich das Beispiel unten an. Ersetzen Sie Name, ID und gemeinsam verwendeten Schlüssel durch Ihre eigenen Werte. Wichtig ist dabei, dass der gemeinsam verwendete Schlüssel für beide Verbindungen übereinstimmen muss. Das Erstellen einer Verbindung kann etwas dauern.
+3. **[Abonnement 1]** Erstellen Sie die Verbindung zwischen „TestVNet1“ und „TestVNet5“. In diesem Schritt erstellen Sie die Verbindung von TestVNet1 mit TestVNet5. Der Unterschied hierbei ist, dass „$vnet5gw“ nicht direkt abgerufen werden kann, da es sich in einem anderen Abonnement befindet. Sie müssen ein neues PowerShell-Objekt mit den Werten erstellen, die in den obigen Schritten aus Abonnement 1 übermittelt wurden. Sehen Sie sich das Beispiel unten an. Ersetzen Sie Name, ID und gemeinsam verwendete Schlüssel durch Ihre eigenen Werte. Wichtig ist dabei, dass der gemeinsam verwendete Schlüssel für beide Verbindungen übereinstimmen muss. Das Erstellen einer Verbindung kann etwas dauern.
 
    Stellen Sie eine Verbindung mit Abonnement 1 her, bevor Sie das folgende Beispiel ausführen:
 
@@ -471,17 +471,17 @@ Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinde
    New-AzVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
    ```
 
-## <a name="verify"></a>Überprüfen einer Verbindung
+## <a name="how-to-verify-a-connection"></a><a name="verify"></a>Überprüfen einer Verbindung
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-[!INCLUDE [verify connections powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+[!INCLUDE [verify connections PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-## <a name="faq"></a>Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen
+## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Dokumentation zu Virtual Machines](https://docs.microsoft.com/azure/).
+* Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Dokumentation zu Virtual Machines](../index.yml).
 * Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).

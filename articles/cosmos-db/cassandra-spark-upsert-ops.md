@@ -6,16 +6,17 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 7770e7fbe846defc865b3fcc702fcb00bae1b73c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e65d526db2861bc0d30a40651bbf9cf46111eaf5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893411"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073195"
 ---
 # <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Upsert-Vorgang mit Daten in die Azure Cosmos-DB-Cassandra-API von Spark
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 In diesem Artikel wird beschrieben, wie Sie einen Upsert-Vorgang mit Daten in die Azure Cosmos-DB-Cassandra-API von Spark ausführen.
 
@@ -93,4 +94,4 @@ Lesen Sie die folgenden Artikel, um zu erfahren, wie Sie andere Vorgänge an den
  
 * [Löschvorgänge](cassandra-spark-delete-ops.md)
 * [Aggregationsvorgänge](cassandra-spark-aggregation-ops.md)
-* [Tabellenkopiervorgänge](cassandra-spark-table-copy-ops.md)
+* [Tabellenkopiervorgänge an der Azure Cosmos DB-Cassandra-API von Spark aus](cassandra-spark-table-copy-ops.md)

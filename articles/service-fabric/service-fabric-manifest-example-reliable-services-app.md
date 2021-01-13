@@ -1,24 +1,16 @@
 ---
-title: 'Azure Service Fabric: Beispiele für das Reliable Services-Anwendungsmanifest | Microsoft Docs'
+title: Beispiele für Reliable Services-Anwendungsmanifeste
 description: Erfahren Sie, wie Sie die Einstellungen für das Anwendungs- und Dienstmanifest für eine Service Fabric Reliable Services-Anwendung konfigurieren.
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: a5678b4c4c0f7a9d8d3f3cf6e838580de2059a8f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f40e54f5260f827f0b18c833d23d1f57b5ebc3a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035642"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84701097"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services: Beispiele für Anwendungs- und Dienstmanifeste
 Im Folgenden finden Sie Beispiele für die Anwendungs- und Dienstmanifeste einer Service Fabric-Anwendung mit einem ASP.NET Core Web-Front-End und einem zustandsbehafteten Back-End. Der Zweck dieser Beispiele besteht darin, zu zeigen, welche Einstellungen verfügbar sind und wie sie verwendet werden. Diese Anwendungs- und Dienstmanifeste basieren auf den [Service Fabric .NET-Schnellstart](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)manifesten.
@@ -77,7 +69,7 @@ Weitere Informationen zu bestimmten XML Elementen finden Sie unter [Anwendungsma
                                 MemorySwapInMB="[MemorySwapInMB]"/>
 
       <!-- Share the data package across multiple instances of the VotingData service-->
-      <PackageSharingPolicy PackageRef="VotingDataPkg.Data"/>
+      <PackageSharingPolicy PackageRef="Data"/>
 
       <!-- Give read rights on the "DataEndpoint" endpoint to the Customer2 account.-->
       <SecurityAccessPolicy GrantRights="Read" PrincipalRef="Customer2" ResourceRef="DataEndpoint" ResourceType="Endpoint"/>         

@@ -1,19 +1,19 @@
 ---
 title: Apache Storm-Beispieltopologien in Azure HDInsight
 description: Eine Liste von Beispieltopologien, die mit Apache Storm in HDInsight erstellt und getestet wurden, einschließlich der grundlegenden C#- und Java-Topologien, und mit Event Hubs funktionieren.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/30/2018
-ms.openlocfilehash: 42819749b019b4b1db77942e22e09ea31a137fe7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.date: 12/27/2019
+ms.openlocfilehash: cfc68b144eac16681f162b3574a82351397ed37c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813857"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86086856"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Apache Storm-Beispieltopologien und -komponenten für Apache Storm in HDInsight
 
@@ -26,7 +26,7 @@ Es folgt eine Liste von Beispielen zur Verwendung mit [Apache Storm](https://sto
 | [Entwickeln von Java-basierten Topologien für Apache Storm in HDInsight][5797064f] |Maven |Java |
 | [Entwickeln von C#-Topologien für Apache Storm in HDInsight mithilfe von Visual Studio][16fce2d1] |HDInsight Tools für Visual Studio |C#, Java |
 | [Verarbeiten von Ereignissen aus Azure Event Hubs mit Apache Storm in HDInsight (C#)][844d1d81] |Event Hubs |C# und Java |
-| [Verarbeitung von Ereignissen von Azure-Event-Hubs mit Storm auf HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/) |Event Hubs |Java |
+| [Verarbeitung von Ereignissen von Azure-Event-Hubs mit Storm auf HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) |Event Hubs |Java |
 | [Verarbeiten von Fahrzeugsensordaten von Event Hubs mit Apache Storm auf HDInsight][246ee964] |Event Hubs, Cosmos DB, Azure Storage Blob (WASB) |C#, Java |
 | [Extrahieren, Transformieren und Laden (ETL) von Azure Event Hubs in Apache HBase mit Apache Storm in HDInsight][b4b68194] |Event Hubs, HBase |C# |
 | [C#-Storm-Topologie-Vorlagenprojekt für die Arbeit mit Azure-Diensten über Apache Storm in HDInsight][ce0c02a2] |Event Hubs, Cosmos DB, SQL-Datenbank, HBase, SignalR |C#, Java |
@@ -47,7 +47,6 @@ Ein Beispiel der Python-Komponenten mit einer Flux-Topologie finden Sie unter [V
 * [Erstellen und Überwachen einer Apache Storm-Topologie in Azure HDInsight](./apache-storm-quickstart.md)
 * [Bereitstellen und Verwalten von Apache Storm-Topologien mit Apache Storm in HDInsight][6eb0d3b8]
 
-
 [6eb0d3b8]:apache-storm-deploy-monitor-topology-linux.md "Bereitstellen und Verwalten von Topologien mit dem webbasierten Apache Storm-Dashboard und der Storm-Benutzeroberfläche oder den HDInsight-Tools für Visual Studio"
 [16fce2d1]:apache-storm-develop-csharp-visual-studio-topology.md "Erfahren Sie, wie Sie C#-Storm-Topologien mithilfe der HDInsight-Tools für Visual Studio erstellen."
 [5797064f]:apache-storm-develop-java-topology.md "Erfahren Sie, wie Sie Storm-Topologien in Java mit Maven erstellen, indem Sie eine Grundtopologie zur Wortzählung erstellen."
@@ -56,4 +55,3 @@ Ein Beispiel der Python-Komponenten mit einer Flux-Topologie finden Sie unter [V
 [d6c540e3]: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/EventCountExample "Enthält mehrere Topologien, um den Durchsatz beim Lesen von Azure Event Hubs und das Speichern in einer SQL-Datenbank unter Verwendung von Apache Storm in HDInsight zu veranschaulichen."
 [b4b68194]: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample "Erfahren Sie, wie Sie Daten von Azure Event Hubs lesen, die Daten aggregieren und transformieren und dann in HBase in HDInsight speichern."
 [ce0c02a2]: https://github.com/hdinsight/hdinsight-storm-examples/tree/master/templates/HDInsightStormExamples "Dieses Projekt enthält Vorlagen für Spouts, Bolts und Topologien für die Interaktion mit verschiedenen Azure-Diensten wie Event Hubs, Cosmos DB und SQL-Datenbank."
-

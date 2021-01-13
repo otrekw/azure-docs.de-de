@@ -1,57 +1,176 @@
-- name: Virtual WAN-Dokumentation
+- name: "Dokumentation zu Virtual\_WAN"
   href: index.yml
 - name: Übersicht
   items:
-    - name: Über Virtual WAN
+    - name: "Was ist Virtual\_WAN?"
       href: virtual-wan-about.md
-- name: Lernprogramme
+- name: Tutorials
+  expanded: true
   items:
     - name: Herstellen einer Standort-zu-Standort-Verbindung
       href: virtual-wan-site-to-site-portal.md
+    - name: Erstellen von Benutzer-VPN-Verbindungen (Point-to-Site)
+      href: virtual-wan-point-to-site-portal.md
     - name: Herstellen einer ExpressRoute-Verbindung
       href: virtual-wan-expressroute-portal.md
 - name: Konzepte
   items:
-    - name: Standorte und Partner
-      href: virtual-wan-locations-partners.md
-    - name: IPsec-Richtlinien
-      href: virtual-wan-ipsec.md
-    - name: Architecture
+    - name: Remotearbeit
       items:
-        - name: Globale Übertragungsnetzwerkarchitektur
+        - name: Unterstützung von Remotearbeit
+          href: ../networking/working-remotely-support.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+        - name: Nutzen von Virtual WAN
+          href: work-remotely-support.md
+    - name: Standorte und Partner
+      items:
+        - name: Hub-Standorte und -Partner
+          href: virtual-wan-locations-partners.md
+        - name: Automatisierungsrichtlinien für Partner
+          href: virtual-wan-configure-automation-providers.md
+    - name: Aufbau
+      items:
+        - name: Migrieren zu Virtual WAN
+          href: migrate-from-hub-spoke-topology.md
+        - name: Globale Transitarchitektur
           href: virtual-wan-global-transit-network-architecture.md
-        - name: Office 365-Steuerebene in Virtual WAN
-          href: virtual-wan-office365-overview.md
+        - name: SD-WAN-Verbindungsarchitektur
+          href: sd-wan-connectivity-architecture.md
+        - name: Herstellen einer Verbindung mit China
+          href: interconnect-china.md
+    - name: Routing
+      items:
+        - name: Informationen zum Routing virtueller Hubs
+          href: about-virtual-hub-routing.md
+        - name: Routingszenarien
+          items:
+            - name: Any-to-Any
+              href: scenario-any-to-any.md
+            - name: Isolieren von virtuellen Netzwerken (VNETs)
+              href: scenario-isolate-vnets.md
+            - name: 'Isolieren von virtuellen Netzwerken: benutzerdefiniert'
+              href: scenario-isolate-vnets-custom.md
+            - name: VNETs für gemeinsam genutzte Dienste
+              href: scenario-shared-services-vnet.md
+            - name: Weiterleiten über ein NVA
+              href: scenario-route-through-nva.md
+            - name: 'Weiterleiten über ein NVA: benutzerdefiniert'
+              href: scenario-route-through-nvas-custom.md
+            - name: 'Azure Firewall: Benutzerdefiniert'
+              href: scenario-route-between-vnets-firewall.md
+    - name: Überwachung
+      items:
+        - name: Informationen zu Azure Monitor Insights für Virtual WAN
+          href: azure-monitor-insights.md
+    - name: Site-to-Site
+      items:
+        - name: Informationen zu IPsec-Richtlinien
+          href: virtual-wan-ipsec.md
+        - name: 'Mehrere ISP-Links: Azure-Pfadauswahl'
+          href: path-selection-multiple-links.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
+    - name: Preiskonzepte
+      href: pricing-concepts.md
+    - name: Informationen zu NVA in einem virtuellen Hub
+      href: about-nva-hub.md
 - name: Anleitungen
   items:
-    - name: Weiterleiten von Datenverkehr von einem virtuellen Hub an ein virtuelles Netzwerkgerät
+    - name: "Upgraden einer Virtual\_WAN-SKU"
+      href: upgrade-virtual-wan.md
+    - name: Erstellen eines NVA in einem virtuellen Hub
+      href: How-to-nva-hub.md
+    - name: Erstellen einer mandantenübergreifenden VNET-Verbindung
+      href: cross-tenant-vnet.md
+    - name: ExpressRoute
       items:
-        - name: Azure-Portal
-          href: virtual-wan-route-table-portal.md
-        - name: Azure PowerShell
-          href: virtual-wan-route-table.md
-    - name: Virtual WAN-Partner – Automatisierung
-      href: virtual-wan-configure-automation-providers.md
+        - name: Herstellen einer ExpressRoute-Verbindung
+          href: virtual-wan-expressroute-portal.md
+        - name: Konfigurieren der ExpressRoute-Verschlüsselung
+          href: vpn-over-expressroute.md
+    - name: Site-to-Site
+      items:
+        - name: Herstellen einer Standort-zu-Standort-Verbindung
+          href: virtual-wan-site-to-site-portal.md
+        - name: Herstellen einer Verbindung zwischen einem Gateway für virtuelle Netzwerke und Virtual WAN
+          href: connect-virtual-network-gateway-vwan.md
+        - name: Konfigurieren einer benutzerdefinierten IPsec-Richtlinie
+          href: virtual-wan-custom-ipsec-portal.md
+    - name: Benutzer-VPN (Point-to-Site)
+      items:
+        - name: Erstellen einer Benutzer-VPN-Verbindung
+          href: virtual-wan-point-to-site-portal.md
+        - name: Generieren von Zertifikaten
+          href: certificates-point-to-site.md
+        - name: "Konfigurieren eines Azure\_AD-Mandanten"
+          href: openvpn-azure-ad-tenant.md
+        - name: Clientprofil
+          href: about-vpn-profile-download.md
+        - name: Globales und hubbasiertes Profil
+          href: global-hub-profile.md
+        - name: "Konfigurieren von Azure VPN Client für Windows\_10"
+          href: openvpn-azure-ad-client.md
+        - name: Konfigurieren von OpenVPN-Clients
+          href: howto-openvpn-clients.md?
+        - name: "Konfigurieren eines Always\_On-VPN-Benutzertunnels"
+          href: howto-always-on-user-tunnel.md
+        - name: "Konfigurieren eines Always\_On-VPN-Gerätetunnels"
+          href: howto-always-on-device-tunnel.md
+        - name: Aktivieren von Multi-Factor Authentication (MFA)
+          href: openvpn-azure-ad-mfa.md
+        - name: Konfigurieren von Azure AD-Authentifizierung
+          href: virtual-wan-point-to-site-azure-ad.md
+        - name: "Konfigurieren der Azure\_AD-Authentifizierung für mehrere Anwendungen"
+          href: openvpn-azure-ad-tenant-multi-app.md
+    - name: Routing
+      items:
+        - name: Konfigurieren des Routings für virtuelle Hubs
+          href: how-to-virtual-hub-routing.md
+        - name: Anzeigen effektiver Routen eines virtuellen Hubs
+          href: effective-routes-virtual-hub.md
+        - name: Weiterleiten von Datenverkehr von einem virtuellen Hub an ein virtuelles Netzwerkgerät (Legacy)
+          items:
+            - name: Azure-Portal
+              href: virtual-wan-route-table-nva-portal.md
+            - name: Azure PowerShell
+              href: virtual-wan-route-table-nva.md
+    - name: Sicherheit
+      items:
+        - name: "Installieren einer Azure\_Firewall-Instanz in einem Hub"
+          href: howto-firewall.md
+        - name: "Konfigurieren von Private\_Link-Konnektivität"
+          href: howto-private-link.md
+        - name: 'Verwalten des Zugriffs auf Ressourcen: Spoke-VNET (P2S)'
+          href: manage-secure-access-resources-spoke-p2s.md
+    - name: Überwachung
+      items:
+        - name: Protokolle und Metriken
+          href: logs-metrics.md
 - name: Verweis
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#networking'
+      href: /powershell/module/az.network#networking
     - name: REST
       href: /rest/api/azure
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/ext/virtual-wan
+    - name: Python SDK
+      href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-network/10.0.0/azure.mgmt.network.v2019_02_01.operations.html#azure.mgmt.network.v2019_02_01.operations.VirtualWansOperations'
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
       href: virtual-wan-faq.md
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/?category=networking'
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Einschränkungen bei Abonnements und Diensten
-      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
+    - name: Einschränkungen bei Abonnements und Diensten
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: Netzwerkroadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Netzwerkblog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Ankündigungen von Netzwerkupdates
+      href: 'https://azure.microsoft.com/updates/?category=networking'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: SLA

@@ -1,25 +1,15 @@
 ---
-title: Häufig gestellte Fragen zu Microsoft Azure Service Fabric | Microsoft-Dokumentation
-description: Häufig gestellte Fragen zu Service Fabric und entsprechende Antworten
-services: service-fabric
-documentationcenter: .net
-author: chackdan
-manager: chackdan
-editor: ''
-ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Häufig gestellte Fragen zu Microsoft Azure Service Fabric
+description: Häufig gestellte Fragen zu Service Fabric, einschließlich Funktionen, Anwendungsfällen und gängige Szenarien.
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/18/2017
-ms.author: chackdan
-ms.openlocfilehash: 0bd8a7d403ad1fe0f7abb15356cc9c90ed6b3f02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: pepogors
+ms.openlocfilehash: 1655a8ed03b1f678cc5dba0a165e0bcca1d2517a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153834"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87292858"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
@@ -32,9 +22,9 @@ Es gibt viele häufig gestellte Fragen zu den Funktionen und zur Verwendung von 
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Wie kann ich ein Rollback für mein Service Fabric-Clusterzertifikat ausführen?
 
-Für das Rollback (Zurücksetzen) eines Upgrades für Ihre Anwendung ist vor dem Commit für die Änderung durch das Service Fabric-Clusterquorum eine Integritätsfehlererkennung erforderlich; für Änderungen mit erfolgtem Commit kann nur ein Rollforward ausgeführt werden. Möglicherweise muss ein Eskalationstechniker über die Kundensupportdienste Ihr Cluster wiederherstellen, wenn eine nicht überwachte wichtige Zertifikatsänderung eingeführt wurde.  Das [Service Fabric-Anwendungsupgrade](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) wendet [Anwendungsupgradeparameter](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master) an und verspricht ein Upgrade ohne Ausfallzeiten.  Entsprechend dem empfohlenen überwachten Modus für Anwendungsupgrades basiert der automatische Fortschritt der Domänenaktualisierung auf bestandenen Integritätsprüfungen. Ein Rollback erfolgt automatisch, wenn die Aktualisierung eines Standarddienstes fehlschlägt.
+Für das Rollback (Zurücksetzen) eines Upgrades für Ihre Anwendung ist vor dem Commit für die Änderung durch das Service Fabric-Clusterquorum eine Integritätsfehlererkennung erforderlich; für Änderungen mit erfolgtem Commit kann nur ein Rollforward ausgeführt werden. Möglicherweise muss ein Eskalationstechniker über die Kundensupportdienste Ihr Cluster wiederherstellen, wenn eine nicht überwachte wichtige Zertifikatsänderung eingeführt wurde.  Das [Service Fabric-Anwendungsupgrade](./service-fabric-application-upgrade.md?branch=master) wendet [Anwendungsupgradeparameter](./service-fabric-application-upgrade-parameters.md?branch=master) an und verspricht ein Upgrade ohne Ausfallzeiten.  Entsprechend dem empfohlenen überwachten Modus für Anwendungsupgrades basiert der automatische Fortschritt der Domänenaktualisierung auf bestandenen Integritätsprüfungen. Ein Rollback erfolgt automatisch, wenn die Aktualisierung eines Standarddienstes fehlschlägt.
  
-Wenn Ihr Cluster noch die klassische Eigenschaft „Zertifikatfingerabdruck“ in der Resource Manager-Vorlage nutzt, empfiehlt es sich, [„Zertifikatfingerabdruck“ in „Allgemeiner Name“](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn) für den Cluster zu ändern, um die modernen Verwaltungsfunktionen für geheime Schlüssel verwenden zu können.
+Wenn Ihr Cluster noch die klassische Eigenschaft „Zertifikatfingerabdruck“ in der Resource Manager-Vorlage nutzt, empfiehlt es sich, [„Zertifikatfingerabdruck“ in „Allgemeiner Name“](./service-fabric-cluster-change-cert-thumbprint-to-cn.md) für den Cluster zu ändern, um die modernen Verwaltungsfunktionen für geheime Schlüssel verwenden zu können.
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Kann ich einen Cluster erstellen, der mehrere Azure-Regionen oder eigene Datencenter umfasst?
 
@@ -46,12 +36,12 @@ Wenn Sie sich für dieses Szenario interessieren, wird empfohlen, entweder über
 
 Einige Aspekte, die zu berücksichtigen sind: 
 
-1. Die Service Fabric-Clusterressource in Azure ist derzeit regional, ebenso wie die VM-Skalierungsgruppen, auf denen der Cluster beruht. Das bedeutet, dass Sie bei einem regionalen Ausfall den Cluster nicht mehr über Azure Resource Manager oder das Azure-Portal verwalten können. Dieser Fall kann eintreten, auch wenn der Cluster weiterhin ausgeführt wird und Sie direkt mit ihm interagieren können. Darüber hinaus bietet Azure heute nicht die Möglichkeit, ein einzelnes virtuelles Netzwerk einzurichten, das in alle Regionen verwendet werden kann. Das bedeutet, dass für einen Cluster mit mehreren Regionen in Azure entweder [öffentliche IP-Adressen für jeden virtuellen Computer in den VM Scale Sets-Instanzen](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) oder [Azure-VPN-Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) erforderlich sind. Diese Netzwerkoptionen haben unterschiedliche Auswirkungen auf Kosten, Leistung und – in gewissem Maße – auf das Anwendungsdesign. Daher ist vor der Bereitstellung einer solchen Umgebung eine sorgfältige Analyse und Planung erforderlich.
+1. Die Service Fabric-Clusterressource in Azure ist derzeit regional, ebenso wie die VM-Skalierungsgruppen, auf denen der Cluster beruht. Das bedeutet, dass Sie bei einem regionalen Ausfall den Cluster nicht mehr über Azure Resource Manager oder das Azure-Portal verwalten können. Dieser Fall kann eintreten, auch wenn der Cluster weiterhin ausgeführt wird und Sie direkt mit ihm interagieren können. Darüber hinaus bietet Azure heute nicht die Möglichkeit, ein einzelnes virtuelles Netzwerk einzurichten, das in alle Regionen verwendet werden kann. Das bedeutet, dass für einen Cluster mit mehreren Regionen in Azure entweder [öffentliche IP-Adressen für jede VM in den VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) oder [Azure VPN Gateway-Instanzen](../vpn-gateway/vpn-gateway-about-vpngateways.md) erforderlich sind. Diese Netzwerkoptionen haben unterschiedliche Auswirkungen auf Kosten, Leistung und – in gewissem Maße – auf das Anwendungsdesign. Daher ist vor der Bereitstellung einer solchen Umgebung eine sorgfältige Analyse und Planung erforderlich.
 2. Wartung, Verwaltung und Überwachung dieser Computer können kompliziert werden, insbesondere, wenn sie sich über verschiedene _Arten_ von Umgebungen erstrecken (beispielsweise zwischen verschiedenen Cloudanbietern oder zwischen lokalen Ressourcen und Azure). Machen Sie sich daher unbedingt mit Upgrades, Überwachung, Verwaltung und Diagnose für Cluster und Anwendungen vertraut, bevor Sie Produktionsworkloads in einer solchen Umgebung ausführen. Wenn Sie bei der Behebung derartiger Probleme in Azure oder Ihren eigenen Datencentern bereits Erfahrung haben, können die gleichen Lösungsansätze wahrscheinlich auch beim Erstellen oder Ausführen des Service Fabric-Clusters angewendet werden. 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Erhalten Service Fabric-Knoten automatisch Betriebssystemupdates?
 
-Sie können das allgemein verfügbare Feature [Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) nutzen.
+Sie können das allgemein verfügbare Feature [Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) nutzen.
 
 Für Cluster, die NICHT in Azure ausgeführt werden, haben wir [eine Anwendung bereitgestellt](service-fabric-patch-orchestration-application.md), mit der die Betriebssysteme unter Ihren Service Fabric-Knoten gepatcht werden können.
 
@@ -69,7 +59,7 @@ Es gibt derzeit andere Probleme mit großen VM-Skalierungsgruppen, z.B. den Mang
 
 Die unterstützte Mindestgröße für einen Service Fabric-Cluster, auf dem Produktionsworkloads ausgeführt werden, beträgt fünf Knoten. Für Entwicklungszenarios unterstützen wir Cluster mit einem Knoten (optimiert für eine schnelle Entwicklung in Visual Studio) und Cluster mit fünf Knoten.
 
-Ein Produktionscluster muss aus den folgenden drei Gründen mindestens 5 Knoten umfassen:
+Ein Produktionscluster muss aus den folgenden drei Gründen mindestens fünf Knoten umfassen:
 1. Selbst wenn keine Benutzerdienste ausgeführt werden, führt ein Service Fabric-Cluster verschiedene zustandsbehaftete Systemdienste aus, darunter Naming Service und Failover-Manager-Dienst. Diese Systemdienste sind für die Aufrechterhaltung des Clusterbetriebs unerlässlich.
 2. Es wird immer ein Replikat eines Dienstes pro Knoten platziert, sodass die Clustergröße die Obergrenze für die Anzahl von Replikaten ist, die ein Dienst (eigentlich eine Partition) aufweisen kann.
 3. Da bei einem Clusterupgrade mindestens ein Knoten heruntergefahren wird, sollte ein Puffer von mindestens einem Knoten vorhanden sein. Deshalb wird angestrebt, dass ein Produktionscluster mindestens zwei Knoten *zusätzlich* zum absoluten Mindestwert aufweist. Der absolute Mindestwert ist die Quorumgröße eines Systemdienstes, wie nachstehend erläutert wird.  
@@ -104,7 +94,7 @@ Wenn Sie Cluster erstellen möchten, um Ihre Anwendung vor der Bereitstellung zu
 Wir arbeiten an einer optimierten Lösung, derzeit müssen Sie jedoch das Upgrade durchführen. Sie müssen das Betriebssystemimage nacheinander auf den einzelnen virtuellen Computern des Clusters aktualisieren. 
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Kann ich die angefügten Datenträger in einem Clusterknotentyp (VM-Skalierungsgruppe) verschlüsseln?
-Ja.  Weitere Informationen finden Sie unter [Erstellen eines Clusters mit angefügten Datenträgern](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [Verschlüsseln von Datenträgern (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) und [Verschlüsseln von Datenträgern (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
+Ja.  Weitere Informationen finden Sie unter [Erstellen eines Clusters mit angefügten Datenträgern](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) und [Azure Disk Encryption für VM-Skalierungsgruppen](../virtual-machine-scale-sets/disk-encryption-overview.md).
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Kann ich virtuelle Computer mit niedriger Priorität in einem Clusterknotentyp verwenden (VM-Skalierungsgruppe)?
 Nein. Virtuelle Computer mit niedriger Priorität werden nicht unterstützt. 
@@ -132,21 +122,22 @@ Nein. Virtuelle Computer mit niedriger Priorität werden nicht unterstützt.
 | FabricRM.exe |
 | FileStoreService.exe |
  
-### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Wie kann sich meine Anwendung bei KeyVault authentifizieren, um geheime Schlüssel abzurufen?
+### <a name="how-can-my-application-authenticate-to-key-vault-to-get-secrets"></a>Wie kann sich meine Anwendung bei Key Vault authentifizieren, um geheime Schlüssel abzurufen?
 Nachfolgend werden die Möglichkeiten für Ihre Anwendung zum Abrufen von Anmeldeinformationen für die Authentifizierung bei Key Vault aufgeführt:
 
 A. Während des Erstellungs-/Packauftrags Ihrer Anwendungen können Sie ein Zertifikat in das Datenpaket Ihrer Service Fabric-App pullen und dieses für die Authentifizierung bei Key Vault verwenden.
-B: Für MSI-fähige Hosts von VM-Skalierungsgruppen können Sie einen einfachen PowerShell-SetupEntryPoint für Ihre Service Fabric-App entwickeln, um [ein Zugriffstoken vom MSI-Endpunkt](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token) abzurufen und dann [Ihre geheimen Schlüssel aus KeyVault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret) abzurufen.
+B. Für MSI-fähige Hosts von VM-Skalierungsgruppen können Sie einen einfachen PowerShell-SetupEntryPoint für Ihre Service Fabric-App entwickeln, um [ein Zugriffstoken vom MSI-Endpunkt](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) abzurufen und dann [Ihre geheimen Schlüssel aus Key Vault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret) abzurufen.
 
 ## <a name="application-design"></a>Anwendungsentwurf
 
 ### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Was ist die beste Möglichkeit, Daten über Partitionen einer zuverlässigen Sammlung hinweg abzufragen?
 
-Zuverlässige Sammlungen sind in der Regel [partitioniert](service-fabric-concepts-partitioning.md), um eine horizontale Hochskalierung für bessere Leistung und einen verbesserten Durchsatz zu ermöglichen. Das bedeutet, dass der Zustand für einen bestimmten Dienst über Dutzende oder Hunderte von Computern verteilt sein kann. Um Vorgänge über dieses vollständige Dataset auszuführen, stehen Ihnen einige Optionen zur Verfügung:
+Zuverlässige Sammlungen sind in der Regel [partitioniert](service-fabric-concepts-partitioning.md), um eine Aufskalierung für bessere Leistung und einen verbesserten Durchsatz zu ermöglichen. Das bedeutet, dass der Zustand für einen bestimmten Dienst über Dutzende oder Hunderte von Computern verteilt sein kann. Um Vorgänge über dieses vollständige Dataset auszuführen, stehen Ihnen einige Optionen zur Verfügung:
 
 - Erstellen Sie einen Dienst, der alle Partitionen eines anderen Diensts abfragt, um die erforderlichen Daten abzurufen.
 - Erstellen Sie einen Dienst, der Daten von allen Partitionen eines anderen Diensts empfangen kann.
-- Verschieben Sie Daten aus den einzelnen Diensten regelmäßig mithilfe von Push in einen externen Speicher. Dieser Ansatz ist nur geeignet, wenn die von Ihnen durchgeführten Abfragen nicht Teil Ihrer Kerngeschäftslogik sind.
+- Verschieben Sie Daten aus den einzelnen Diensten regelmäßig mithilfe von Push in einen externen Speicher. Dieser Ansatz ist nur geeignet, wenn die von Ihnen durchgeführten Abfragen nicht Teil Ihrer Kerngeschäftslogik sind, da die Daten des externen Speichers veraltet sein werden.
+- Alternativ können Sie Daten speichern, die Abfragen über alle Datensätze hinweg direkt in einem Datenspeicher anstatt in einer zuverlässigen Sammlung unterstützen müssen. Dadurch wird das Problem mit veralteten Daten vermieden, aber die Vorteile zuverlässiger Sammlungen können nicht genutzt werden.
 
 
 ### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>Welche Möglichkeit bietet sich an, um Daten akteurübergreifend abzufragen?
@@ -164,7 +155,7 @@ Nehmen Sie beispielsweise an, Sie hätten eine zuverlässige Sammlung in einem D
 
 Denken Sie daran, dass jedes Objekt dreimal gespeichert werden muss (ein primäres Objekt und zwei Replikate). Demnach hätten Sie genügend Arbeitsspeicher für ca. 35 Millionen Objekte in Ihrer Sammlung, wenn Sie mit voller Kapazität arbeiten. Wir empfehlen jedoch, den gleichzeitigen Ausfall einer Fehlerdomäne und einer Upgradedomäne aufzufangen, was in etwa 1/3 der Kapazität ausmacht, und würden daher die Anzahl auf ungefähr 23 Millionen verringern.
 
-Beachten Sie, dass bei dieser Berechnung zudem Folgendes vorausgesetzt wird:
+Bei dieser Berechnung wird Folgendes vorausgesetzt:
 
 - Die Daten sind einigermaßen gleichmäßig über die Partitionen verteilt, oder Sie melden Auslastungsmetriken an den Resource Manager des Clusters. Standardmäßig führt Service Fabric basierend auf der Replikatanzahl einen Lastenausgleich durch. Im vorherigen Beispiel würden 10 primäre Replikate und 20 sekundäre Replikate auf jedem Knoten im Cluster platziert. Dies funktioniert gut für Lasten, die gleichmäßig auf die Partitionen verteilt sind. Wenn die Last nicht gleichmäßig verteilt ist, müssen Sie die Last melden, damit der Resource Manager kleinere Replikate zusammenlegen und zulassen kann, dass größere Replikate auf einem einzelnen Knoten mehr Arbeitsspeicher beanspruchen.
 
@@ -176,7 +167,13 @@ Beachten Sie, dass bei dieser Berechnung zudem Folgendes vorausgesetzt wird:
 
 Wie bei zuverlässigen Diensten wird die Menge der Daten, die Sie in einem Akteurdienst speichern können, nur durch den insgesamt verfügbaren Speicherplatz und Arbeitsspeicher auf den Knoten in Ihrem Cluster begrenzt. Einzelne Akteure sind jedoch am effektivsten, wenn sie zum Kapseln einer kleinen Menge von Zustandslogik und der zugehörigen Geschäftslogik verwendet werden. Allgemein gilt, dass ein einzelner Akteur einen Zustand aufweisen sollte, der in KB gemessen werden kann.
 
-## <a name="other-questions"></a>Weitere Fragen
+
+### <a name="where-does-azure-service-fabric-resource-provider-store-customer-data"></a>Wo speichert der Azure Service Fabric-Ressourcenanbieter Kundendaten?
+
+Der Azure Service Fabric-Ressourcenanbieter verschiebt oder speichert keine Kundendaten aus der Region, in der er bereitgestellt wurde.
+
+
+## <a name="other-questions"></a>Andere Fragen
 
 ### <a name="how-does-service-fabric-relate-to-containers"></a>Welcher Zusammenhang besteht zwischen Service Fabric und Containern?
 
@@ -186,10 +183,10 @@ Container bieten eine einfache Möglichkeit zum Paketieren von Diensten und ihre
 
 Wir haben Teile von Service Fabric ([Reliable Services-Framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [Reliable Actors-Framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.NET Core-Integrationsbibliotheken](https://github.com/Azure/service-fabric-aspnetcore), [Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer) und die [Service Fabric-Befehlszeilenschnittstelle](https://github.com/Azure/service-fabric-cli)) als Open-Source-Code auf GitHub bereitgestellt und akzeptieren Communitybeiträge für diese Projekte. 
 
-[Vor kurzem haben wir bekannt gegeben](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/), dass wir die Breitstellung der Service Fabric-Laufzeit als Open-Source-Code planen. Aktuell steht auf GitHub das [Service Fabric-Repository](https://github.com/Microsoft/service-fabric/) mit Erstellungs- und Testtools für Linux zur Verfügung. Sie können also das Repository klonen, Service Fabric für Linux erstellen, grundlegende Tests ausführen, Probleme melden und Pull Requests übermitteln. Wir arbeiten mit Hochdruck daran, auch die Windows-Buildumgebung zu migrieren – zusammen mit einer vollständigen CI-Umgebung.
+[Vor kurzem haben wir bekannt gegeben](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric), dass wir die Breitstellung der Service Fabric-Laufzeit als Open-Source-Code planen. Aktuell steht auf GitHub das [Service Fabric-Repository](https://github.com/Microsoft/service-fabric/) mit Erstellungs- und Testtools für Linux zur Verfügung. Sie können also das Repository klonen, Service Fabric für Linux erstellen, grundlegende Tests ausführen, Probleme melden und Pull Requests übermitteln. Wir arbeiten mit Hochdruck daran, auch die Windows-Buildumgebung zu migrieren – zusammen mit einer vollständigen CI-Umgebung.
 
-Folgen Sie dem [Service Fabric-Blog](https://blogs.msdn.microsoft.com/azureservicefabric/), in dem Sie weitere Details finden, sobald sie angekündigt werden.
+Folgen Sie dem [Service Fabric-Blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric), in dem Sie weitere Details finden, sobald sie angekündigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu [wesentlichen Service Fabric-Konzepten](service-fabric-technical-overview.md) und [Bewährte Methoden](service-fabric-best-practices-overview.md) [Service Fabric-Konzepte](service-fabric-technical-overview.md) und [Bewährte Methoden](service-fabric-best-practices-overview.md)
+Informationen zu [wesentlichen Service Fabric-Konzepten](service-fabric-technical-overview.md) und [bewährten Methoden](service-fabric-best-practices-overview.md)

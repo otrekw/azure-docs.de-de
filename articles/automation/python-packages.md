@@ -1,20 +1,17 @@
 ---
 title: Verwalten von Python 2-Paketen in Azure Automation
-description: Dieser Artikel beschreibt, wie Sie Python 2-Pakete in Azure Automation verwalten.
+description: In diesem Artikel wird erläutert, wie Sie Python 2-Pakete in Azure Automation verwalten.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 02/25/2019
+ms.date: 12/17/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: f98b1454ff59eae62bcab7792fd7fd742babfb23
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.custom: devx-track-python
+ms.openlocfilehash: fd830afd5628591019902ca583f9cbc8e2a7ecad
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478213"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683396"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Verwalten von Python 2-Paketen in Azure Automation
 
@@ -24,23 +21,23 @@ Mit Azure Automation können Sie Python 2-Runbooks in Azure und Hybrid Runbook W
 
 Wählen Sie in Ihrem Automation-Konto unter **Python 2-Pakete** die Option **Freigegebene Ressourcen** aus. Klicken Sie auf **Python 2-Paket hinzufügen**.
 
-![Hinzufügen eines Python-Pakets](media/python-packages/add-python-package.png)
+:::image type="content" source="media/python-packages/add-python-package.png" alt-text="Screenshot mit der Seite „Python 2-Pakete“ mit Python 2-Paketen im linken Menü und Hervorhebung von „Python 2-Paket hinzufügen“.":::
 
-Wählen Sie auf der Seite **Python 2-Paket hinzufügen** ein lokales Paket für den Upload aus. Das Paket kann eine Datei im Format `.whl` oder `.tar.gz` sein. Klicken Sie nach der Auswahl auf **OK**, um das Paket hochzuladen.
+Wählen Sie auf der Seite „Python 2-Paket hinzufügen“ ein lokales Paket für den Upload aus. Das Paket kann eine Datei im Format **.whl** oder **.tar.gz** sein. Klicken Sie nach der Auswahl des Pakets auf **OK**, um es hochzuladen.
 
-![Hinzufügen eines Python-Pakets](media/python-packages/upload-package.png)
+:::image type="content" source="media/python-packages/upload-package.png" alt-text="Screenshot der Seite „Python 2-Paket hinzufügen“ mit Auswahl der hochgeladenen Datei „tar.gz“.":::
 
-Sobald ein Paket importiert wurde, wird es in Ihrem Automation-Konto auf der Seite **Python 2-Pakete** aufgelistet. Um ein Paket zu entfernen, wählen Sie das gewünschte Paket und dann auf der Paketseite **Löschen** aus.
+Sobald ein Paket importiert wurde, wird es in Ihrem Automation-Konto auf der Seite „Python 2-Pakete“ aufgelistet. Um ein Paket zu entfernen, wählen Sie das Paket aus, und klicken Sie dann auf **Löschen**.
 
-![Paketliste](media/python-packages/package-list.png)
+:::image type="content" source="media/python-packages/package-list.png" alt-text="Screenshot der Seite „Python 2-Pakete“ nach dem Import eines Pakets.":::
 
 ## <a name="import-packages-with-dependencies"></a>Importieren von Paketen mit Abhängigkeiten
 
-Azure Automation löst Abhängigkeiten für Python-Pakete während des Importvorgangs nicht auf. Es gibt zwei Möglichkeiten, um ein Paket mit allen seinen Abhängigkeiten zu importieren. Nur eine der folgenden Schritte muss verwendet werden, um die Pakete in Ihr Automation-Konto zu importieren.
+Azure Automation löst Abhängigkeiten für Python-Pakete während des Importvorgangs nicht auf. Es gibt zwei Möglichkeiten, um ein Paket mit allen seinen Abhängigkeiten zu importieren. Nur einer der folgenden Schritte muss verwendet werden, um die Pakete in Ihr Automation-Konto zu importieren.
 
 ### <a name="manually-download"></a>Manuelles Herunterladen
 
-Führen Sie auf einem Windows-Computer (64-Bit), auf dem [python2.7](https://www.python.org/downloads/release/latest/python2) und [pip](https://pip.pypa.io/en/stable/) installiert sind, den folgenden Befehl aus, um ein Paket mit allen seinen Abhängigkeiten herunterzuladen:
+Führen Sie auf einem Windows-Computer (64-Bit), auf dem [Python2.7](https://www.python.org/downloads/release/latest/python2) und [pip](https://pip.pypa.io/en/stable/) installiert sind, den folgenden Befehl aus, um ein Paket mit allen seinen Abhängigkeiten herunterzuladen:
 
 ```cmd
 C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
@@ -50,22 +47,22 @@ Sobald die Pakete heruntergeladen sind, können Sie sie in Ihr Automation-Konto 
 
 ### <a name="runbook"></a>Runbook
 
-Importieren Sie das Python-Runbook [Python 2-Pakete aus pypi in Azure Automation-Konto importieren](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) aus dem Katalog in Ihr Automation-Konto. Stellen Sie sicher, dass die Ausführungseinstellungen auf **Azure** festgelegt sind, und starten Sie das Runbook mit den Parametern. Das Runbook erfordert ein „Ausführendes Konto“, damit das Automation-Konto funktioniert. Für jeden Parameter stellen Sie sicher, dass Sie ihn mit dem Parameter starten, wie er in der folgende Liste und Abbildung zu sehen ist:
+ Um ein Runbook zu erhalten, importieren Sie aus der Azure Automation-GitHub-Organisation [Python 2-Pakete aus pypi in Ihr Azure Automation-Konto](https://github.com/azureautomation/import-python-2-packages-from-pypi-into-azure-automation-account). Stellen Sie sicher, dass die Ausführungseinstellungen auf **Azure** festgelegt sind, und starten Sie das Runbook mit den Parametern. Das Runbook erfordert ein „Ausführendes Konto“, damit das Automation-Konto funktioniert. Für jeden Parameter stellen Sie sicher, dass Sie ihn mit dem Parameter starten, wie er in der folgende Liste und Abbildung zu sehen ist:
 
 * -s \<subscriptionId\>
 * -g \<resourceGroup\>
 * -a \<automationAccount\>
 * -m \<modulePackage\>
 
-![Paketliste](media/python-packages/import-python-runbook.png)
+:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="Screenshot der Seite „Übersicht“ für import_py2package_from_pypi mit dem Bereich „Runbook starten“ auf der rechten Seite.":::
 
-Das Runbook erlaubt Ihnen anzugeben, welches Paket heruntergeladen werden soll, z. B. werden durch `Azure` (der vierte Parameter) alle Azure-Module mit allen ihren Abhängigkeiten heruntergeladen, was etwa 105 sind.
+Mithilfe des Runbooks können Sie angeben, welches Paket heruntergeladen werden soll. Verwenden Sie beispielsweise den `Azure`-Parameter, um alle Azure-Module und alle Abhängigkeiten (etwa 105) herunterzuladen.
 
-Nach Abschluss des Runbooks können Sie die Seite **Python 2-Pakete** unter **Freigegebene Ressourcen** in Ihrem Automation-Konto überprüfen, um zu überprüfen, ob das Paket ordnungsgemäß importiert wurde.
+Nach Abschluss des Runbooks können Sie die Seite **Python 2-Pakete** unter **Freigegebene Ressourcen** in Ihrem Automation-Konto überprüfen, um zu überprüfen, ob das Paket ordnungsgemäß importiert wurde.
 
 ## <a name="use-a-package-in-a-runbook"></a>Verwenden eines Pakets in einem Runbook
 
-Nachdem Sie ein Paket importiert haben, können Sie es in einem Runbook verwenden. Das folgende Beispiel verwendet das [Azure Automation-Hilfsprogrammpaket](https://github.com/azureautomation/azure_automation_utility). Dieses Paket erleichtert die Verwendung von Python mit Azure Automation. Um das Paket zu verwenden, folgen Sie den Anweisungen im GitHub-Repository, und fügen Sie es dem Runbook hinzu, indem Sie beispielsweise mit `from azure_automation_utility import get_automation_runas_credential` die Funktion zum Abrufen des ausführenden Kontos importieren.
+Nachdem Sie ein Paket importiert haben, können Sie es in einem Runbook verwenden. Das folgende Beispiel verwendet das [Azure Automation-Hilfsprogrammpaket](https://github.com/azureautomation/azure_automation_utility). Dieses Paket erleichtert die Verwendung von Python mit Azure Automation. Um das Paket zu verwenden, folgen Sie den Anweisungen im GitHub-Repository, und fügen Sie es dem Runbook hinzu. Beispielsweise können Sie `from azure_automation_utility import get_automation_runas_credential` verwenden, um die Funktion zum Abrufen des ausführenden Kontos zu importieren.
 
 ```python
 import azure.mgmt.resource
@@ -93,4 +90,4 @@ Um Ihre Python 2-Runbooks offline zu entwickeln und zu testen, können Sie die f
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Einführung in Python 2-Runbooks finden Sie unter [Mein erstes Python 2-Runbook](automation-first-runbook-textual-python2.md).
+Informationen zum Vorbereiten eines Python-Runbooks finden Sie unter [Tutorial: Erstellen eines Python-Runbooks](learn/automation-tutorial-runbook-textual-python2.md).

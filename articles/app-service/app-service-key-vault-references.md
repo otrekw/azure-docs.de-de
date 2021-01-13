@@ -1,45 +1,37 @@
 ---
-title: Key Vault-Referenzen – Azure App Service | Microsoft-Dokumentation
-description: Konzeptverweis und Einrichtungsleitfaden für Azure Key Vault-Referenzen in Azure App Service und Azure Functions
-services: app-service
+title: Verwenden von Key Vault-Verweisen
+description: Erfahren Sie, wie Sie Azure App Service und Azure Functions einrichten, um Azure Key Vault-Verweise zu verwenden. Machen Sie Key Vault-Geheimnisse für den Anwendungscode verfügbar.
 author: mattchenderson
-manager: jeconnoc
-editor: ''
-ms.service: app-service
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 9c7f920c6b66995d53ef742a9faf574286a51d69
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: bb220da0b906c9d7a5f45dcc841129e14c7c6c51
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390446"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205845"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Verwenden von Key Vault-Verweisen in App Service und Azure Functions (Vorschauversion)
+# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Verwenden von Key Vault-Verweisen für App Service und Azure Functions
 
-> [!NOTE] 
-> Key Vault-Verweise befinden sich derzeit in der Vorschauversion.
-
-Dieses Thema zeigt Ihnen, wie Sie mit Geheimnissen von Azure Key Vault in Ihrer App Service- oder Azure Functions-Anwendung arbeiten können, ohne dass Codeänderungen erforderlich sind. [Azure Key Vault](../key-vault/key-vault-overview.md) ist ein Dienst, der eine zentralisierte Verwaltung von Geheimnissen mit voller Kontrolle über Zugriffsrichtlinien und Überprüfungsverlauf ermöglicht.
+Dieses Thema zeigt Ihnen, wie Sie mit Geheimnissen von Azure Key Vault in Ihrer App Service- oder Azure Functions-Anwendung arbeiten können, ohne dass Codeänderungen erforderlich sind. [Azure Key Vault](../key-vault/general/overview.md) ist ein Dienst, der eine zentralisierte Verwaltung von Geheimnissen mit voller Kontrolle über Zugriffsrichtlinien und Überprüfungsverlauf ermöglicht.
 
 ## <a name="granting-your-app-access-to-key-vault"></a>Gewähren des Zugriffs auf Key Vault für Ihre App
 
 Um Geheimnisse aus Key Vault auslesen zu können, müssen Sie einen Tresor erstellen und Ihrer App die Berechtigung erteilen, darauf zuzugreifen.
 
-1. Erstellen Sie einen Schlüsseltresor anhand dieser [Key Vault-Schnellstartanleitung](../key-vault/quick-create-cli.md).
+1. Erstellen Sie einen Schlüsseltresor anhand dieser [Key Vault-Schnellstartanleitung](../key-vault/secrets/quick-create-cli.md).
 
 1. Erstellen Sie eine [systemseitig zugewiesene verwaltete Identität](overview-managed-identity.md) für Ihre App.
 
    > [!NOTE] 
    > Key Vault-Verweise unterstützen derzeit nur systemseitig zugewiesene verwaltete Identitäten. Vom Benutzer zugewiesene Identitäten können nicht verwendet werden.
 
-1. Erstellen Sie eine [Zugriffsrichtlinie im Schlüsseltresor](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) für die zuvor von Ihnen erstellte Anwendungsidentität. Aktivieren Sie die „Get“-Geheimnisberechtigung für diese Richtlinie. Konfigurieren Sie nicht die Einstellungen „Autorisierte Anwendung“ oder `applicationId`, da dies mit einer verwalteten Identität nicht kompatibel ist.
+1. Erstellen Sie eine [Zugriffsrichtlinie im Schlüsseltresor](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) für die zuvor von Ihnen erstellte Anwendungsidentität. Aktivieren Sie die „Get“-Geheimnisberechtigung für diese Richtlinie. Konfigurieren Sie nicht die Einstellungen „Autorisierte Anwendung“ oder `applicationId`, da dies mit einer verwalteten Identität nicht kompatibel ist.
 
-    > [!NOTE]
-    > Key Vault-Verweise können derzeit keine Geheimnisse in einem Schlüsseltresor mit [Netzwerkeinschränkungen](../key-vault/key-vault-overview-vnet-service-endpoints.md) auflösen.
+   > [!IMPORTANT]
+   > Key Vault-Verweise können derzeit keine Geheimnisse in einem Schlüsseltresor mit [Netzwerkeinschränkungen](../key-vault/general/overview-vnet-service-endpoints.md) auflösen, es sei denn, die App wird in einer [App Service-Umgebung](./environment/intro.md) gehostet.
 
 ## <a name="reference-syntax"></a>Verweissyntax
 
@@ -48,13 +40,13 @@ Ein Key Vault-Verweis hat die Form `@Microsoft.KeyVault({referenceString})`, wob
 > [!div class="mx-tdBreakAll"]
 > | Verweiszeichenfolge                                                            | BESCHREIBUNG                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri=_secretUri_                                                       | **SecretUri** ist die vollständige URI der Datenebene eines Geheimnisses in Key Vault, einschließlich einer Version, z.B. https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931.  |
-> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** ist der Name Ihrer Key Vault-Ressource. **SecretName** ist der Name des Zielgeheimnisses. **SecretVersion** ist die Version des zu verwendenden Geheimnisses. |
+> | SecretUri= _secretUri_                                                       | **SecretUri** ist die vollständige URI der Datenebene eines Geheimnisses in Key Vault, einschließlich einer Version, z.B. https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931.  |
+> | VaultName= _vaultName_ ;SecretName= _secretName_ ;SecretVersion= _secretVersion_ | **VaultName** ist der Name Ihrer Key Vault-Ressource. **SecretName** ist der Name des Zielgeheimnisses. **SecretVersion** ist die Version des zu verwendenden Geheimnisses. |
 
 > [!NOTE] 
-> In der aktuelle Vorschau sind Versionen erforderlich. Beim Rotieren von Geheimnissen müssen Sie die Version in der Anwendungskonfiguration aktualisieren.
-
+> Zurzeit sind Versionen erforderlich. Beim Rotieren von Geheimnissen müssen Sie die Version in der Anwendungskonfiguration aktualisieren.
 Ein vollständiger Verweis kann beispielsweise wie folgt aussehen:
+
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
@@ -192,20 +184,22 @@ Wird ein Verweis nicht ordnungsgemäß aufgelöst, wird stattdessen der Verweisw
 
 Meist ist die Ursache hierfür eine fehlerhafte Konfiguration der [Key Vault-Zugriffsrichtlinie](#granting-your-app-access-to-key-vault). Ursache kann jedoch auch sein, dass ein Geheimnis nicht mehr vorhanden ist, oder dass ein Syntaxfehler im Verweis vorliegt.
 
-Ist die Syntax richtig, können Sie weitere Fehlerursachen anzeigen, indem Sie den aktuellen Auflösungsstatus mit einer integrierten Erkennung überprüfen.
+Ist die Syntax richtig, können Sie weitere Fehlerursachen anzeigen, indem Sie den aktuellen Auflösungsstatus im Portal überprüfen. Navigieren Sie zu Anwendungseinstellungen, und wählen Sie „Bearbeiten“ für den fraglichen Verweis aus. Unterhalb der Einstellungskonfiguration sollten Statusinformationen, einschließlich aller Fehler, angezeigt werden. Das Fehlen dieser Angaben impliziert, dass die Verweissyntax ungültig ist.
+
+Sie können auch einen der integrierten Detektoren verwenden, um zusätzliche Informationen abzurufen.
 
 ### <a name="using-the-detector-for-app-service"></a>Verwenden der Erkennung für App Service
 
 1. Navigieren Sie im Portal zu Ihrer App.
 2. Wählen Sie **Probleme diagnostizieren und beheben** aus.
 3. Wählen Sie **Leistung und Verfügbarkeit** aus, und wählen Sie **Web app down** aus.
-4. Suchen Sie nach **Key Vault Application Settings Diagnostics**, und klicken Sie auf **Details**.
+4. Suchen Sie nach **Key Vault Application Settings Diagnostics** , und klicken Sie auf **Details** .
 
 
 ### <a name="using-the-detector-for-azure-functions"></a>Verwenden der Erkennung für Azure Functions
 
 1. Navigieren Sie im Portal zu Ihrer App.
-2. Navigieren Sie zu **Plattformfeatures**.
+2. Navigieren Sie zu **Plattformfeatures** .
 3. Wählen Sie **Probleme diagnostizieren und beheben** aus.
 4. Wählen Sie **Leistung und Verfügbarkeit** aus, und wählen Sie **Function app down or reporting errors** aus.
-5. Klicken Sie auf **Key Vault Application Settings Diagnostics**.
+5. Klicken Sie auf **Key Vault Application Settings Diagnostics** .

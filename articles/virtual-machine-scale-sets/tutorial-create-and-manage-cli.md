@@ -1,27 +1,20 @@
 ---
-title: 'Tutorial: Erstellen und Verwalten einer Azure-VM-Skalierungsgruppe | Microsoft-Dokumentation'
+title: 'Tutorial: Erstellen und Verwalten einer VM-Skalierungsgruppe – Azure CLI'
 description: Hier erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle eine VM-Skalierungsgruppe erstellen und einige allgemeine Verwaltungsaufgaben ausführen, um beispielsweise eine Instanz zu starten und zu beenden oder die Kapazität der Skalierungsgruppe zu ändern.
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: b0d2a72567783ca1c127f76d94ddc9c5e007ea89
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.reviewer: mimckitt
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 0f94823b958ae5f95789dd4ef9a62057bdf764a8
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751020"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517460"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten einer VM-Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. In diesem Tutorial lernen Sie Folgendes:
@@ -33,15 +26,15 @@ Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch 
 > * Manuelles Skalieren einer Skalierungsgruppe
 > * Ausführen allgemeiner Verwaltungsaufgaben für Skalierungsgruppen
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.29 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
+- Für diesen Artikel ist mindestens Version 2.0.29 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert. 
 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor der VM-Skalierungsgruppe muss zunächst eine Ressourcengruppe erstellt werden. Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus* erstellt. 
+Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor der VM-Skalierungsgruppe muss zunächst eine Ressourcengruppe erstellt werden. Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus* erstellt. 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -77,7 +70,7 @@ az vmss list-instances \
 
 Die folgende Beispielausgabe zeigt zwei VM-Instanzen in der Skalierungsgruppe:
 
-```bash
+```output
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
 ------------  --------------------  ----------  ------------  -------------------  ---------------  ------------------------------------
            1  True                  eastus      myScaleSet_1  Succeeded            MYRESOURCEGROUP  c059be0c-37a2-497a-b111-41272641533c
@@ -106,9 +99,9 @@ az vmss list-instance-connection-info \
   --name myScaleSet
 ```
 
-Die folgende Beispielausgabe zeigt den Instanznamen, die öffentliche IP-Adresse des Lastenausgleichs und die Portnummer, an die Datenverkehr durch die NAT-Regeln weitergeleitet wird:
+Die folgende Beispielausgabe enthält den Instanznamen, die öffentliche IP-Adresse des Lastenausgleichs und die Portnummer, an die Datenverkehr von den NAT-Regeln weitergeleitet wird:
 
-```bash
+```output
 {
   "instance 1": "13.92.224.66:50001",
   "instance 3": "13.92.224.66:50003"
@@ -117,13 +110,13 @@ Die folgende Beispielausgabe zeigt den Instanznamen, die öffentliche IP-Adresse
 
 Stellen Sie eine SSH-Verbindung mit Ihrer ersten VM-Instanz her. Geben Sie mithilfe des Parameters `-p` Ihre öffentliche IP-Adresse und die Portnummer an, wie im vorherigen Befehl gezeigt:
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
 Nach der Anmeldung bei der VM-Instanz können Sie nach Bedarf einige manuelle Konfigurationsänderungen vornehmen. Schließen Sie die SSH-Sitzung vorerst ganz normal:
 
-```bash
+```console
 exit
 ```
 
@@ -137,7 +130,7 @@ az vm image list --output table
 
 Die folgende Beispielausgabe zeigt die gängigsten VM-Images in Azure. Mit *UrnAlias* können Sie bei der Erstellung einer Skalierungsgruppe eines dieser gängigen Images angeben.
 
-```bash
+```output
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 CentOS         OpenLogic               7.3                 OpenLogic:CentOS:7.3:latest                                     CentOS               latest
@@ -161,7 +154,7 @@ az vm image list --offer CentOS --all --output table
 
 Die folgende verkürzte Ausgabe zeigt einige der verfügbaren CentOS 7.3-Images:
 
-```azurecli-interactive 
+```output
 Offer    Publisher   Sku   Urn                                 Version
 -------  ----------  ----  ----------------------------------  -------------
 CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20161221   7.3.20161221
@@ -173,6 +166,9 @@ CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170925   7.3.20170925
 ```
 
 Wenn Sie eine Skalierungsgruppe mit einem bestimmten Image bereitstellen möchten, verwenden Sie den Wert aus der Spalte *Urn*. Wenn Sie das Image angeben, können Sie die Imageversionsnummer durch *latest* ersetzen, um die neueste Version der Distribution auszuwählen. Im folgenden Beispiel wird mithilfe des Arguments `--image` die neueste Version eines CentOS 7.3-Images angegeben.
+
+> [!IMPORTANT]
+> Wir empfehlen die Verwendung der *neuesten* Imageversion. Geben Sie „latest“ an, damit Sie die neueste Version eines Images verwenden können, das zum Zeitpunkt der Bereitstellung verfügbar ist. Bitte beachten Sie: Sollten Sie „latest“ verwenden, wird das VM-Image nach diesem Zeitpunkt selbst dann nicht automatisch aktualisiert, wenn eine neue Version verfügbar wird.
 
 Da die Erstellung und Konfiguration aller Ressourcen und VM-Instanzen der Skalierungsgruppe einige Minuten dauert, müssen Sie die folgende Skalierungsgruppe nicht bereitstellen:
 
@@ -192,14 +188,14 @@ Eine VM-Instanzgröße (oder *SKU*) bestimmt die Menge an Computeressourcen (CPU
 ### <a name="vm-instance-sizes"></a>VM-Instanzgrößen
 In der folgenden Tabelle sind gängige VM-Größen nach Anwendungsfall kategorisiert:
 
-| Type                     | Gängige Größen           |    BESCHREIBUNG       |
+| type                     | Gängige Größen           |    BESCHREIBUNG       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Allgemeiner Zweck](../virtual-machines/linux/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
-| [Computeoptimiert](../virtual-machines/linux/sizes-compute.md)   | Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |
-| [Arbeitsspeicheroptimiert](../virtual-machines/linux/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Hohes Verhältnis von Speicher zu Kern. Hervorragend geeignet für relationale Datenbanken, mittlere bis große Caches und In-Memory-Analysen.                 |
-| [Speicheroptimiert](../virtual-machines/linux/sizes-storage.md)      | Ls                | Datenträgerdurchsatz und -E/A auf hohem Niveau. Ideal für Big Data sowie SQL- und NoSQL-Datenbanken.                                                         |
-| [GPU](../virtual-machines/linux/sizes-gpu.md)          | NV, NC            | Spezialisierte virtuelle Computer für aufwendiges Grafikrendering und aufwendige Videobearbeitung.       |
-| [Hohe Leistung](../virtual-machines/linux/sizes-hpc.md) | H, A8-11          | Unsere virtuellen Computer mit den leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. 
+| [Allgemeiner Zweck](../virtual-machines/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
+| [Computeoptimiert](../virtual-machines/sizes-compute.md)   | Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |
+| [Arbeitsspeicheroptimiert](../virtual-machines/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Hohes Verhältnis von Speicher zu Kern. Hervorragend geeignet für relationale Datenbanken, mittlere bis große Caches und In-Memory-Analysen.                 |
+| [Speicheroptimiert](../virtual-machines/sizes-storage.md)      | Ls                | Datenträgerdurchsatz und -E/A auf hohem Niveau. Ideal für Big Data sowie SQL- und NoSQL-Datenbanken.                                                         |
+| [GPU](../virtual-machines/sizes-gpu.md)          | NV, NC            | Spezialisierte virtuelle Computer für aufwendiges Grafikrendering und aufwendige Videobearbeitung.       |
+| [Hohe Leistung](../virtual-machines/sizes-hpc.md) | H, A8-11          | Unsere virtuellen Computer mit den leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. 
 
 ### <a name="find-available-vm-instance-sizes"></a>Suchen nach verfügbaren VM-Instanzgrößen
 Eine Liste mit verfügbaren VM-Instanzgrößen einer bestimmten Region erhalten Sie mithilfe des Befehls [az vm list-sizes](/cli/azure/vm).
@@ -210,7 +206,7 @@ az vm list-sizes --location eastus --output table
 
 Die Ausgabe ähnelt dem folgenden verkürzten Beispiel, das die Ressourcen zeigt, die den einzelnen VM-Größen zugewiesen sind:
 
-```azurecli-interactive
+```output
   MaxDataDiskCount    MemoryInMb  Name                      NumberOfCores    OsDiskSizeInMb    ResourceDiskSizeInMb
 ------------------  ------------  ----------------------  ---------------  ----------------  ----------------------
                  4          3584  Standard_DS1_v2                       1           1047552                    7168

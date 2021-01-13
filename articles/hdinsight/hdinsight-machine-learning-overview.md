@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: 139d82079b5946b0628760f5b05bb08d208cae6f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: a3c050b414e322f08fd45a569a22cea2db591b99
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105416"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91302688"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine Learning in HDInsight
 
@@ -31,7 +31,7 @@ Die Microsoft Machine Learning-Bibliothek für Apache Spark ist [MMLSpark](https
 
 ![Training für die Vorhersage mit R Server](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
 
-Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts.  Außerdem können Sie R-Skripts über die Knoten des Clusters hinweg ausführen, indem Sie Hadoop MapReduce von ScaleR oder Spark-Computekontexte verwenden.
+Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts.  Außerdem können Sie R-Skripts in allen Knoten des Clusters ausführen, indem Sie Hadoop MapReduce von ScaleR oder Spark-Computekontexte verwenden.
 
 Mit ML Services in HDInsight mit Spark können Sie das Training auf den Knoten eines Clusters durch Verwenden eines Spark-Computekontexts parallel ausführen. Sie können R-Skripts direkt auf dem Edgeknoten ausführen und bei Bedarf alle verfügbaren Kerne parallel verwenden. Alternativ können Sie den Code auch über den Edgeknoten ausführen, um die Verarbeitung zu starten, die auf alle Knoten im Cluster verteilt wird. ML Services in HDInsight mit Spark ermöglicht zudem bei Bedarf das Parallelisieren der Funktionen von Open-Source-R-Paketen.
 
@@ -41,7 +41,7 @@ Azure Machine Learning verfügt über Tools zur Modellierung von Predictive Anal
 
 ![Microsoft Azure Machine Learning – Übersicht](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
-Sie können Features für Daten in einem HDInsight Hadoop-Cluster mit [Hive-Abfragen](../machine-learning/team-data-science-process/create-features-hive.md) erstellen. Bei der *Featureentwicklung* wird versucht, die Vorhersageleistung der Lernalgorithmen durch Erstellen von Merkmalen aus Rohdaten zu verbessern und mit diesen den Lernprozess zu vereinfachen. Mithilfe des [Import Data-Moduls](../machine-learning/studio/import-data.md) können Sie HiveQL-Abfragen von Azure Machine Learning Studio ausführen und auf in Hive verarbeitete und in Blob Storage gespeicherte Daten zugreifen.
+Sie können Features für Daten in einem HDInsight Hadoop-Cluster mit [Hive-Abfragen](../machine-learning/team-data-science-process/create-features-hive.md) erstellen. Bei der *Featureentwicklung* wird versucht, die Vorhersageleistung der Lernalgorithmen durch Erstellen von Merkmalen aus Rohdaten zu verbessern und mit diesen den Lernprozess zu vereinfachen. Mithilfe des [Import Data-Moduls](../machine-learning/classic/import-data.md) können Sie HiveQL-Abfragen von Azure Machine Learning Studio (klassisch) ausführen und auf in Hive verarbeitete und in Blob Storage gespeicherte Daten zugreifen.
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 
@@ -63,5 +63,4 @@ Um seine eigenen Bestrebungen im Deep Learning voranzutreiben, hat Microsoft das
 ### <a name="deep-learning-resources"></a>Deep Learning-Ressourcen
 
 * [Verwenden des Microsoft Cognitive Toolkit-Modells für intensives Lernen mit einem Azure HDInsight Spark-Cluster](spark/apache-spark-microsoft-cognitive-toolkit.md)
-* [Verwenden von Caffe in Azure HDInsight Spark für verteiltes Deep Learning](spark/apache-spark-deep-learning-caffe.md)
-* [Deep Learning- und KI-Frameworks für die Data Science Virtual Machine (DSVM)](../machine-learning/data-science-virtual-machine/dsvm-deep-learning-ai-frameworks.md)
+* [Deep Learning- und KI-Frameworks für die Data Science Virtual Machine (DSVM)](../machine-learning/data-science-virtual-machine/dsvm-tools-deep-learning-frameworks.md)

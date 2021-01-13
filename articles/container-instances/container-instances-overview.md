@@ -1,20 +1,15 @@
 ---
-title: Was ist Azure Container Instances?
+title: Serverlose Container in Azure
 description: Mit den Azure Container Instances-Dienst lassen sich isolierte Container in Azure besonders schnell und einfach ausführen, ohne dass Sie dazu virtuelle Computer verwalten oder einen übergeordneten Orchestrator einführen müssen.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: overview
-ms.date: 04/25/2019
-ms.author: danlep
+ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a07eda709c813e68bc3e4f08b6aab3f93dec65a6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325740"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "88121662"
 ---
 # <a name="what-is-azure-container-instances"></a>Was ist Azure Container Instances?
 
@@ -26,13 +21,29 @@ Azure Container Instances ist eine großartige Lösung für jedes Szenario, das 
 
 Container bieten im Vergleich zu virtuellen Computern (VMs) erhebliche Vorteile beim Start. Azure Container Instances kann in Sekundenschnelle Container in Azure starten, ohne virtuelle Computer bereitstellen und verwalten zu müssen.
 
-## <a name="public-ip-connectivity-and-dns-name"></a>Öffentliche IP-Konnektivität und DNS-Name
+Verwenden Sie Linux- oder Windows-Containerimages aus Docker Hub, aus einer privaten [Azure-Containerregistrierung](../container-registry/index.yml) oder aus einer anderen cloudbasierten Docker-Registrierung. Von Azure Container Instances werden verschiedene gängige Basis-Betriebssystemimages zwischengespeichert, um die Entwicklung Ihrer benutzerdefinierten Anwendungsimages zu beschleunigen.
 
-Mit Azure Container Instances können Sie Ihre Container direkt über eine öffentliche IP-Adresse und einen vollqualifizierten Domainnamen (FQDN) im Internet verfügbar machen. Beim Erstellen einer Containerinstanz können Sie eine benutzerdefinierte DNS-Namensbezeichnung angeben, sodass Ihre Anwendung unter „*customlabel*.*azureregion*.azurecontainer.io“ erreichbar ist.
+> [!NOTE]
+> Aktuell ist es nicht möglich, ein Image aus einer lokalen Registrierung in Azure Container Instances bereitzustellen.
 
-## <a name="hypervisor-level-security"></a>Sicherheit auf Hypervisor-Ebene
+## <a name="container-access"></a>Containerzugriff
+
+Mit Azure Container Instances können Sie Ihre Containergruppen direkt über eine öffentliche IP-Adresse und einen vollqualifizierten Domainnamen (FQDN) im Internet verfügbar machen. Beim Erstellen einer Containerinstanz können Sie eine benutzerdefinierte DNS-Namensbezeichnung angeben, sodass Ihre Anwendung unter „*customlabel*.*azureregion*.azurecontainer.io“ erreichbar ist.
+
+Azure Container Instances unterstützt auch das Ausführen eines Befehls in einem ausgeführten Container durch Bereitstellen einer interaktiven Shell zur Unterstützung durch Anwendungsentwicklung und Problembehandlung. Der Zugriff erfolgt über HTTPS und verwendet TLS zum Sichern von Clientverbindungen.
+
+> [!IMPORTANT]
+> Ab dem 13. Januar 2020 setzt Azure Container Instances voraus, dass alle sicheren Verbindungen von Servern und Anwendungen TLS 1.2 verwenden. Die Unterstützung für TLS 1.0 und 1.1 wird eingestellt.
+
+## <a name="compliant-deployments"></a>Konforme Bereitstellungen
+
+### <a name="hypervisor-level-security"></a>Sicherheit auf Hypervisor-Ebene
 
 In der Vergangenheit verfügten Container zwar über Anwendungsabhängigkeitsisolierung und Ressourcenkontrolle, galten aber nicht als ausreichend gehärtet, um in einer gefährlichen Umgebung mit mehreren Mandanten verwendet werden zu können. Azure Container Instances gewährleistet, dass Ihre Anwendung in einem Container isoliert ist – genau wie bei einem virtuellen Computer.
+
+### <a name="customer-data"></a>Kundendaten
+
+Der ACI-Dienst speichert die Kundendaten, die mindestens erforderlich sind, um sicherzustellen, dass Ihre Containergruppen erwartungsgemäß ausgeführt werden. Das Speichern von Kundendaten in einer einzelnen Region ist derzeit nur in der Region „Asien, Südosten“ (Singapur) des geografischen Raums „Asien-Pazifik“ möglich. Bei allen anderen Regionen werden Kundendaten unter [Geografien](https://azure.microsoft.com/global-infrastructure/geographies/) gespeichert. Weitere Informationen erhalten Sie vom Azure-Support.
 
 ## <a name="custom-sizes"></a>Benutzerdefinierte Größen
 
@@ -42,7 +53,7 @@ Bei rechenintensiven Aufträgen wie maschinelles Lernen kann Azure Container Ins
 
 ## <a name="persistent-storage"></a>Permanenter Speicher
 
-Dank der Möglichkeit zur direkten [Einbindung von Azure Files-Freigaben](container-instances-mounting-azure-files-volume.md) können Sie mit Azure Container Instances den Zustand abrufen und speichern.
+Dank der Möglichkeit zur durch Azure Storage gesicherten direkten [Einbindung von Azure Files-Freigaben](./container-instances-volume-azure-files.md) können Sie mit Azure Container Instances den Zustand abrufen und speichern.
 
 ## <a name="linux-and-windows-containers"></a>Linux- und Windows-Container
 
@@ -53,7 +64,7 @@ Einige Features sind momentan auf Linux-Container beschränkt:
 * Mehrere Container pro Containergruppe
 * Einbindung von Volumes ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [geheimes Volume](container-instances-volume-secret.md))
 * [Ressourcennutzungsmetriken](container-instances-monitor.md) von Azure Monitor
-* [Bereitstellung eines virtuellen Netzwerks](container-instances-vnet.md) (Vorschau)
+* [VNET-Bereitstellung](container-instances-vnet.md)
 * [GPU-Ressourcen](container-instances-gpu.md) (Vorschauversion)
 
 Verwenden Sie für Windows-Containerbereitstellungen Images, die auf allgemeinen [Windows-Basisimages](container-instances-faq.md#what-windows-base-os-images-are-supported) beruhen.
@@ -65,12 +76,9 @@ Verwenden Sie für Windows-Containerbereitstellungen Images, die auf allgemeinen
 
 Azure Container Instances unterstützt die Planung von [Gruppen mit mehreren Containern](container-instances-container-groups.md) mit gemeinsamem Hostcomputer, lokalem Netzwerk, Speicher und Lebenszyklus. Dadurch können Sie Ihren Hauptanwendungscontainer mit anderen unterstützenden Rollencontainern (beispielsweise Protokollierungs-Sidecars) kombinieren.
 
-## <a name="virtual-network-deployment-preview"></a>Bereitstellung eines virtuellen Netzwerks (Vorschau)
+## <a name="virtual-network-deployment"></a>VNET-Bereitstellung
 
-Dieses Feature von Azure Container Instances befindet sich derzeit in der Vorschauphase und ermöglicht die [Bereitstellung von Containerinstanzen in einem virtuellen Azure-Netzwerk](container-instances-vnet.md). Indem Containerinstanzen in einem Subnetz in Ihrem virtuellen Netzwerk bereitgestellt werden, können diese sicher mit anderen Ressourcen im virtuellen Netzwerk kommunizieren, einschließlich der lokalen Ressourcen (über das [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](../expressroute/expressroute-introduction.md)).
-
-> [!IMPORTANT]
-> Bestimmte Features von Azure Container Instances befinden sich in der Vorschauphase, und es gelten einige [Einschränkungen](container-instances-vnet.md#preview-limitations). Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieser Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+Azure Container Instances ermöglicht die [Bereitstellung von Containerinstanzen in einem virtuellen Azure-Netzwerk](container-instances-vnet.md). Bei Bereitstellung in einem Subnetz Ihres virtuellen Netzwerks können Containerinstanzen sicher mit anderen Ressourcen im virtuellen Netzwerk kommunizieren. Dies gilt auch für lokale Ressourcen (per [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](../expressroute/expressroute-introduction.md)).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

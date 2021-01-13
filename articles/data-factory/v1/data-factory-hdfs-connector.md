@@ -1,24 +1,23 @@
 ---
-title: Verschieben von Daten aus einem lokalen HDFS | Microsoft Docs
+title: Verschieben von Daten aus einem lokalen HDFS
 description: Erfahren Sie, wie Sie Daten aus einem lokalem HDFS mithilfe von Azure Data Factory verschieben.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 3215b82d-291a-46db-8478-eac1a3219614
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f28c7b94a9eb8131f0638a24a0d4b3cfccf062e5
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: c4393ebeb8b1e287bd881233418a902fc523f7f5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836296"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589614"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Verschieben von Daten aus einem lokalem HDFS mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -48,7 +47,7 @@ Grundsätzlich ist es zwar möglich, das Gateway auf dem gleichen lokalen Comput
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einer HDFS-Quelle verschiebt.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
 Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
@@ -73,7 +72,7 @@ Ein verknüpfter Dienst verbindet einen Data Store mit einer Data Factory. Sie e
 | userName |Der Benutzername für die Windows-Authentifizierung. Geben Sie für die Kerberos-Authentifizierung `<username>@<domain>.com` an. |Ja (für die Windows-Authentifizierung) |
 | password |Das Kennwort für die Windows-Authentifizierung. |Ja (für die Windows-Authentifizierung) |
 | gatewayName |Der Name des Gateways, das der Data Factory-Dienst zum Verbinden mit dem HDFS verwenden soll. |Ja |
-| encryptedCredential |[New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue)-Ausgabe der Zugriffsanmeldeinformationen. |Nein |
+| encryptedCredential |[New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue)-Ausgabe der Zugriffsanmeldeinformationen. |Nein |
 
 ### <a name="using-anonymous-authentication"></a>Verwenden der anonymen Authentifizierung
 
@@ -354,90 +353,98 @@ Zur Einrichtung der lokalen Umgebung für die Verwendung der Kerberos-Authentifi
 * Option 1: [Einrichten des Gatewaycomputers für den Beitritt zum Kerberos-Bereich](#kerberos-join-realm)
 * Option 2: [Aktivieren der gegenseitigen Vertrauensstellung zwischen der Windows-Domäne und dem Kerberosbereich](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>Option 1: Einrichten des Gatewaycomputers für den Beitritt zum Kerberos-Bereich
+### <a name="option-1-join-gateway-machine-in-kerberos-realm"></a><a name="kerberos-join-realm"></a>Option 1: Einrichten des Gatewaycomputers für den Beitritt zum Kerberos-Bereich
 
 #### <a name="requirement"></a>Anforderung:
 
 * Der Gatewaycomputer muss dem Kerberos-Bereich beitreten und darf in keine Windows-Domäne eingebunden sein.
 
-#### <a name="how-to-configure"></a>Konfiguration:
+#### <a name="how-to-configure"></a>Vorgehensweise zur Konfiguration:
 
 **Auf dem Gatewaycomputer:**
 
-1.  Führen Sie das Dienstprogramm **Ksetup** aus, um den Kerberos-KDC-Server und -Bereich zu konfigurieren.
+1.  Führen Sie das **Ksetup**-Hilfsprogramm aus, um den Kerberos-KDC-Server (Key Distribution Center) und -Bereich zu konfigurieren.
 
-    Der Computer muss als Mitglied einer Arbeitsgruppe konfiguriert werden, da sich Kerberos-Bereiche von Windows-Domänen unterscheiden. Sie erreichen dies, indem Sie den Kerberos-Bereich einrichten und einen KDC-Server hinzufügen, wie im Folgenden erläutert. Ersetzen Sie *REALM.COM* durch Ihren eigenen Bereich.
+    Der Computer muss als Mitglied einer Arbeitsgruppe konfiguriert werden, da sich Kerberos-Bereiche von Windows-Domänen unterscheiden. Sie erreichen dies, indem Sie den Kerberos-Bereich einrichten und einen KDC-Server hinzufügen, wie im Folgenden erläutert. Ersetzen Sie *REALM.COM* ggf. durch Ihren eigenen entsprechenden Bereich.
 
-            C:> Ksetup /setdomain REALM.COM
-            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    ```cmd
+    C:> Ksetup /setdomain REALM.COM
+    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    ```
 
     Nach Ausführung dieser beiden Befehle **starten Sie den Computer neu**.
 
-2.  Überprüfen Sie die Konfiguration mit dem Befehl **Ksetup**. Die Ausgabe sollte wie folgt sein:
+2.  Überprüfen Sie die Konfiguration mit dem **Ksetup**-Befehl. Die Ausgabe sollte wie folgt sein:
 
-            C:> Ksetup
-            default realm = REALM.COM (external)
-            REALM.com:
-                kdc = <your_kdc_server_address>
+    ```cmd
+    C:> Ksetup
+    default realm = REALM.COM (external)
+    REALM.com:
+        kdc = <your_kdc_server_address>
+    ```
 
 **In Azure Data Factory:**
 
 * Konfigurieren Sie den HDFS-Connector mithilfe der **Windows-Authentifizierung** zusammen mit dem Namen und Kennwort Ihres Kerberos-Prinzipals, um eine Verbindung mit der HDFS-Datenquelle herzustellen. Informationen zu den Konfigurationsdetails finden Sie im Abschnitt [Eigenschaften des mit HDFS verknüpften Diensts](#linked-service-properties).
 
-### <a name="kerberos-mutual-trust"></a>Option 2: Aktivieren der gegenseitigen Vertrauensstellung zwischen der Windows-Domäne und dem Kerberos-Bereich
+### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>Option 2: Aktivieren der gegenseitigen Vertrauensstellung zwischen der Windows-Domäne und dem Kerberosbereich
 
 #### <a name="requirement"></a>Anforderung:
 *   Der Gatewaycomputer muss einer Windows-Domäne beitreten.
 *   Sie benötigen die Berechtigung zum Aktualisieren der Einstellungen des Domänencontrollers.
 
-#### <a name="how-to-configure"></a>Konfiguration:
+#### <a name="how-to-configure"></a>Vorgehensweise zur Konfiguration:
 
 > [!NOTE]
-> Ersetzen Sie im folgenden Tutorial die Zeichenfolgen REALM.COM und AD.COM durch Ihren eigenen Bereich und Domänencontroller.
+> Ersetzen Sie REALM.COM und AD.COM im folgenden Tutorial ggf. durch Ihren eigenen Bereich und Domänencontroller.
 
 **Auf dem KDC-Server:**
 
 1. Bearbeiten Sie die KDC-Konfiguration in der Datei **krb5.conf** mithilfe der folgenden Konfigurationsvorlage so, dass KDC der Windows-Domäne vertraut. Standardmäßig befindet sich die Konfiguration unter **/etc/krb5.conf**.
 
-           [logging]
-            default = FILE:/var/log/krb5libs.log
-            kdc = FILE:/var/log/krb5kdc.log
-            admin_server = FILE:/var/log/kadmind.log
+   ```config
+   [logging]
+   default = FILE:/var/log/krb5libs.log
+   kdc = FILE:/var/log/krb5kdc.log
+   admin_server = FILE:/var/log/kadmind.log
 
-           [libdefaults]
-            default_realm = REALM.COM
-            dns_lookup_realm = false
-            dns_lookup_kdc = false
-            ticket_lifetime = 24h
-            renew_lifetime = 7d
-            forwardable = true
+   [libdefaults]
+   default_realm = REALM.COM
+   dns_lookup_realm = false
+   dns_lookup_kdc = false
+   ticket_lifetime = 24h
+   renew_lifetime = 7d
+   forwardable = true
 
-           [realms]
-            REALM.COM = {
-             kdc = node.REALM.COM
-             admin_server = node.REALM.COM
-            }
-           AD.COM = {
-            kdc = windc.ad.com
-            admin_server = windc.ad.com
-           }
+   [realms]
+   REALM.COM = {
+       kdc = node.REALM.COM
+       admin_server = node.REALM.COM
+   }
+   AD.COM = {
+   kdc = windc.ad.com
+   admin_server = windc.ad.com
+   }
 
-           [domain_realm]
-            .REALM.COM = REALM.COM
-            REALM.COM = REALM.COM
-            .ad.com = AD.COM
-            ad.com = AD.COM
+   [domain_realm]
+   .REALM.COM = REALM.COM
+   REALM.COM = REALM.COM
+   .ad.com = AD.COM
+   ad.com = AD.COM
 
-           [capaths]
-            AD.COM = {
-             REALM.COM = .
-            }
+   [capaths]
+   AD.COM = {
+       REALM.COM = .
+   }
+   ```
 
    Führen Sie nach der Konfiguration einen **Neustart** des KDC-Diensts aus.
 
 2. Bereiten Sie mit dem folgenden Befehl einen Prinzipal namens **krgtgt/REALM.COM\@AD.COM** auf dem KDC-Server vor:
 
-           Kadmin> addprinc krbtgt/REALM.COM@AD.COM
+   ```cmd
+   Kadmin> addprinc krbtgt/REALM.COM@AD.COM
+   ```
 
 3. Fügen Sie in der HDFS-Dienstkonfigurationsdatei **hadoop.security.auth_to_local** diese Zeichenfolge hinzu: `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`.
 
@@ -445,12 +452,16 @@ Zur Einrichtung der lokalen Umgebung für die Verwendung der Kerberos-Authentifi
 
 1.  Führen Sie die folgenden **Ksetup**-Befehle aus, um einen Bereichseintrag hinzuzufügen:
 
-            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-            C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+    ```cmd
+    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+    ```
 
 2.  Richten Sie eine Vertrauensstellung zwischen der Windows-Domäne und dem Kerberos-Bereich ein. [password] ist das Kennwort für den Prinzipal **krbtgt/REALM.COM\@AD.COM**.
 
-            C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
+    ```cmd
+    C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
+    ```
 
 3.  Wählen Sie den in Kerberos verwendeten Verschlüsselungsalgorithmus aus.
 
@@ -464,7 +475,9 @@ Zur Einrichtung der lokalen Umgebung für die Verwendung der Kerberos-Authentifi
 
     4. Verwenden Sie den Befehl **Ksetup**, um den Verschlüsselungsalgorithmus anzugeben, der in dem bestimmten Bereich verwendet werden soll.
 
-                C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+       ```cmd
+       C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+       ```
 
 4.  Erstellen Sie die Zuordnung zwischen dem Domänenkonto und dem Kerberos-Prinzipal, um den Kerberos-Prinzipal in der Windows-Domäne verwenden zu können.
 
@@ -482,8 +495,10 @@ Zur Einrichtung der lokalen Umgebung für die Verwendung der Kerberos-Authentifi
 
 * Führen Sie die folgenden **Ksetup**-Befehle aus, um einen Bereichseintrag hinzuzufügen.
 
-            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-            C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```cmd
+   C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```
 
 **In Azure Data Factory:**
 

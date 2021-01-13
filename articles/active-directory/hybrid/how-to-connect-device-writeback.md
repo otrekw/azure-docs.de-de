@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Aktivieren des Geräterückschreibens | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Aktivieren des Geräterückschreibens | Microsoft Docs'
 description: Dieses Dokument erläutert das Aktivieren des Geräterückschreibens mit Azure AD Connect
 services: active-directory
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 632f6f80184c6ba3409bd30ae070cbaefc77f036
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109501"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973421"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Aktivieren des Geräterückschreibens
 > [!NOTE]
@@ -31,16 +31,16 @@ ms.locfileid: "67109501"
 
 Die folgende Dokumentation enthält Informationen zum Aktivieren des Features "Geräterückschreiben" in Azure AD Connect. Das Geräterückschreiben wird in den folgenden Szenarien verwendet:
 
-* Aktivieren von [Windows Hello for Business mithilfe der Hybridbereitstellung von Zertifikatvertrauensstellungen](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
+* Aktivieren von [Windows Hello for Business mithilfe der Hybridbereitstellung von Zertifikatvertrauensstellungen](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
 * Aktivieren des bedingten Zugriffs basierend auf Geräten auf von ADFS (2012 R2 oder höher) geschützte Anwendungen (Vertrauensstellungen für vertrauende Seiten).
 
-Dies bietet zusätzliche Sicherheit und die Gewissheit, dass nur vertrauenswürdige Geräte auf die Anwendung zugreifen können. Weitere Informationen zum bedingten Zugriff finden Sie unter [Verwalten von Risiken mit bedingtem Zugriff](../active-directory-conditional-access-azure-portal.md) und [Einrichten des lokalen bedingten Zugriffs mithilfe von Azure Active Directory Device Registration](../../active-directory/active-directory-device-registration-on-premises-setup.md).
+Dies bietet zusätzliche Sicherheit und die Gewissheit, dass nur vertrauenswürdige Geräte auf die Anwendung zugreifen können. Weitere Informationen zum bedingten Zugriff finden Sie unter [Verwalten von Risiken mit bedingtem Zugriff](../conditional-access/overview.md) und [Einrichten des lokalen bedingten Zugriffs mithilfe von Azure Active Directory Device Registration](../devices/overview.md).
 
 > [!IMPORTANT]
 > <li>Geräte müssen sich in der gleichen Gesamtstruktur befinden wie die Benutzer. Da Geräte in eine einzelne Gesamtstruktur zurückgeschrieben werden müssen, unterstützt diese Funktion derzeit keine Bereitstellung mit mehreren Gesamtstrukturen für Benutzer.</li>
 > <li>In der lokalen Active Directory-Gesamtstruktur kann nur ein Konfigurationsobjekt für die Geräteregistrierung hinzugefügt werden. Diese Funktion ist nicht mit einer Topologie kompatibel, in der das lokale Active Directory mit mehreren Azure AD-Verzeichnissen synchronisiert wird.</li>
 
-## <a name="part-1-install-azure-ad-connect"></a>Teil 1: Installieren von Azure AD Connect
+## <a name="part-1-install-azure-ad-connect"></a>Teil 1: Installieren von Azure AD Connect
 Installieren Sie Azure AD Connect mit benutzerdefinierten Einstellungen oder Expresseinstellungen. Microsoft empfiehlt, zunächst alle Benutzer und Gruppen erfolgreich zu synchronisieren, bevor Sie das Geräterückschreiben aktivieren.
 
 ## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>Teil 2: Aktivieren des Geräterückschreibens in Azure AD Connect
@@ -59,9 +59,9 @@ Installieren Sie Azure AD Connect mit benutzerdefinierten Einstellungen oder Ex
 
 4. Die Seite **Gerätecontainer** enthält eine Option zum Vorbereiten von Active Directory, bei der Sie zwei Möglichkeiten haben:
 
-    a. **Angeben der Anmeldeinformationen eines Unternehmensadministrators:** Wenn die Anmeldeinformationen eines Unternehmensadministrators für die Gesamtstruktur angegeben werden, für die Geräte zurückgeschrieben werden müssen, bereitet Azure AD Connect die Gesamtstruktur während der Konfiguration des Geräterückschreibens automatisch vor.
+    a. **Anmeldeinformationen eines Unternehmensadministrators angeben**: Wenn die Anmeldeinformationen eines Unternehmensadministrators für die Gesamtstruktur angegeben werden, für die Geräte zurückgeschrieben werden müssen, bereitet Azure AD Connect die Gesamtstruktur während der Konfiguration des Geräterückschreibens automatisch vor.
 
-    b. **Herunterladen eines PowerShell-Skripts:** Azure AD Connect generiert automatisch ein PowerShell-Skript, mit dem Active Directory für das Geräterückschreiben vorbereitet werden kann. Falls die Anmeldeinformationen eines Unternehmensadministrators in Azure AD Connect nicht angegeben werden können, wird vorgeschlagen, das PowerShell-Skript herunterzuladen. Stellen Sie das heruntergeladene PowerShell-Skript **CreateDeviceContainer.psq** für den Unternehmensadministrator der Gesamtstruktur bereit, in die das Rückschreiben der Geräte erfolgt.
+    b. **PowerShell-Skript herunterladen**: Azure AD Connect generiert automatisch ein PowerShell-Skript, mit dem Active Directory für das Geräterückschreiben vorbereitet werden kann. Falls die Anmeldeinformationen eines Unternehmensadministrators in Azure AD Connect nicht angegeben werden können, wird vorgeschlagen, das PowerShell-Skript herunterzuladen. Stellen Sie das heruntergeladene PowerShell-Skript **CreateDeviceContainer.ps1** für den Unternehmensadministrator der Gesamtstruktur bereit, in die das Rückschreiben der Geräte erfolgt.
     ![Vorbereiten der Active Directory-Gesamtstruktur](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     Zur Vorbereitung der Active Directory-Gesamtstruktur werden die folgenden Vorgänge durchgeführt:
@@ -78,12 +78,12 @@ Das Geräterückschreiben sollte jetzt ordnungsgemäß ausgeführt werden. Beden
 
    ![Active Directory-Verwaltungscenter – registrierte Geräte](./media/how-to-connect-device-writeback/devicewriteback5.png)
 
-3. Die gegenwärtig registrierten Geräte sind hier aufgeführt.
+3. Die gegenwärtig registrierten Geräte werden hier aufgeführt.
 
    ![Active Directory-Verwaltungscenter – Liste der registrierten Geräte](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
 ## <a name="enable-conditional-access"></a>Aktivieren des bedingten Zugriffs
-Ausführliche Informationen zum Aktivieren dieses Szenarios finden Sie unter [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](../../active-directory/active-directory-device-registration-on-premises-setup.md).
+Ausführliche Informationen zum Aktivieren dieses Szenarios finden Sie unter [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](../devices/overview.md).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>Kontrollkästchen für das Rückschreiben ist weiterhin deaktiviert
@@ -126,9 +126,8 @@ Zuerst die wichtigen Dinge:
 ![Problembehandlung – Überprüfen der Berechtigungen für Device Registration Configuration](./media/how-to-connect-device-writeback/troubleshoot6.png)
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
-* [Verwalten von Risiken mit bedingtem Zugriff](../active-directory-conditional-access-azure-portal.md)
-* [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](../../active-directory/active-directory-device-registration-on-premises-setup.md)
+* [Verwalten von Risiken mit bedingtem Zugriff](../conditional-access/overview.md)
+* [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](../devices/overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md).
-

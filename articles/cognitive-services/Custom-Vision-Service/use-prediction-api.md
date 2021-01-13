@@ -3,19 +3,20 @@ title: Verwenden des Endpunkts der Vorhersage für das programmgesteuerte Testen
 titleSuffix: Azure Cognitive Services
 description: API-Nutzung für das programmgesteuerte Testen von Bildern mit Ihrer Custom Vision Service-Klassifizierung
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.author: anroth
-ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.author: pafarley
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7f1939536e033d2cf964dd2f4ee562e4ee20061b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966949"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88934751"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Verwenden des Modells mit der Vorhersage-API
 
@@ -119,13 +120,13 @@ Wenn Sie die Anwendung ausführen, werden Sie aufgefordert, einen Pfad zu einer 
 
 ```json
 {
-    "Id":"7796df8e-acbc-45fc-90b4-1b0c81b73639",
-    "Project":"8622c779-471c-4b6e-842c-67a11deffd7b",
-    "Iteration":"59ec199d-f3fb-443a-b708-4bca79e1b7f7",
-    "Created":"2019-03-20T16:47:31.322Z",
-    "Predictions":[
-        {"TagId":"d9cb3fa5-1ff3-4e98-8d47-2ef42d7fb373","TagName":"cat", "Probability":1.0},
-        {"TagId":"9a8d63fb-b6ed-4462-bcff-77ff72084d99","TagName":"dog", "Probability":0.1087869}
+    "id":"7796df8e-acbc-45fc-90b4-1b0c81b73639",
+    "project":"8622c779-471c-4b6e-842c-67a11deffd7b",
+    "iteration":"59ec199d-f3fb-443a-b708-4bca79e1b7f7",
+    "created":"2019-03-20T16:47:31.322Z",
+    "predictions":[
+        {"tagId":"d9cb3fa5-1ff3-4e98-8d47-2ef42d7fb373","tagName":"cat", "probability":1.0},
+        {"tagId":"9a8d63fb-b6ed-4462-bcff-77ff72084d99","tagName":"dog", "probability":0.1087869}
     ]
 }
 ```
@@ -134,8 +135,4 @@ Wenn Sie die Anwendung ausführen, werden Sie aufgefordert, einen Pfad zu einer 
 
 In dieser Anleitung haben Sie erfahren, wie Sie Bilder an Ihren benutzerdefinierten Bildklassifizierer bzw. an die Bilderkennung senden und eine programmgesteuerte Antwort mit dem C# SDK erhalten. Als Nächstes erfahren Sie, wie Sie End-to-End-Szenarien mit C# abschließen oder die ersten Schritte mit einem SDK für eine andere Sprache durchführen können.
 
-* [Schnellstart: .NET SDK](csharp-tutorial.md)
-* [Schnellstart: Python SDK](python-tutorial.md)
-* [Schnellstart: Java SDK](java-tutorial.md)
-* [Schnellstart: Node SDK](node-tutorial.md)
-* [Schnellstart: Go SDK](go-tutorial.md)
+* [Schnellstart: Custom Vision SDK](quickstarts/image-classification.md)

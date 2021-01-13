@@ -1,19 +1,14 @@
 ---
-title: Azure Container Registry-Authentifizierung mit einer verwalteten Identität
+title: Authentifizieren mit einer verwalteten Identität
 description: Ermöglichen Sie Zugriff auf Images in Ihrer privaten Containerregistrierung, indem Sie eine benutzerseitig oder systemseitig zugewiesene verwaltete Azure-Identität verwenden.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 01/16/2019
-ms.author: danlep
-ms.openlocfilehash: 0672fb71ba4f56d0faf332df029100cb48741c8b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68309886"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253461"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Verwenden einer verwalteten Azure-Identität für die Azure Container Registry-Authentifizierung 
 
@@ -26,7 +21,7 @@ In diesem Artikel erfahren Sie mehr über verwaltete Identitäten und lernen Fol
 > * Gewähren des Zugriffs auf eine Azure Container Registry-Instanz für die Identität
 > * Verwenden der verwalteten Identität, um auf die Registrierung zuzugreifen und ein Containerimage abzurufen 
 
-Um die in diesem Artikel verwendeten Azure-Ressourcen zu erstellen, müssen Sie mindestens Version 2.0.55 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+Um die in diesem Artikel verwendeten Azure-Ressourcen zu erstellen, müssen Sie mindestens Version 2.0.55 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 Um eine Containerregistrierung einzurichten und per Push ein Containerimage zu übertragen, muss außerdem Docker lokal installiert sein. Für Docker sind Pakete erhältlich, mit denen Docker auf einem [macOS][docker-mac]-, [Windows][docker-windows]- oder [Linux][docker-linux]-System problemlos konfiguriert werden kann.
 
@@ -84,6 +79,7 @@ ssh azureuser@publicIpAddress
 Führen Sie den folgenden Befehl aus, um Docker auf der VM zu installieren:
 
 ```bash
+sudo apt update
 sudo apt install docker.io -y
 ```
 
@@ -107,7 +103,7 @@ Führen Sie die in [Installieren der Azure CLI mit apt](/cli/azure/install-azure
 
 Beenden Sie die SSH-Sitzung.
 
-## <a name="example-1-access-with-a-user-assigned-identity"></a>Beispiel 1: Zugriff mit einer benutzerseitig zugewiesenen Identität
+## <a name="example-1-access-with-a-user-assigned-identity"></a>Beispiel 1: Zugriff mit einer benutzerseitig zugewiesenen Identität
 
 ### <a name="create-an-identity"></a>Erstellen einer Identität
 
@@ -183,7 +179,7 @@ Es sollte die Meldung `Login succeeded` angezeigt werden. Anschließend können 
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
 
-## <a name="example-2-access-with-a-system-assigned-identity"></a>Beispiel 2: Zugriff mit einer systemseitig zugewiesenen Identität
+## <a name="example-2-access-with-a-system-assigned-identity"></a>Beispiel 2: Zugriff mit einer systemseitig zugewiesenen Identität
 
 ### <a name="configure-the-vm-with-a-system-managed-identity"></a>Konfigurieren der VM mit einer systemseitig verwalteten Identität
 
@@ -234,6 +230,8 @@ Es sollte die Meldung `Login succeeded` angezeigt werden. Anschließend können 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
+> [!NOTE]
+> Systemseitig verwaltete Dienstidentitäten können von App Service sowie für die Interaktion mit ACRs verwendet werden. Es ist jedoch nicht möglich, beides zu kombinieren, da App Service nicht über MSI mit einer ACR-Instanz kommunizieren kann. Die einzige Möglichkeit besteht darin, den Administrator für ACR zu aktivieren und den Benutzernamen und das Kennwort des Administrators zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -244,7 +242,7 @@ In diesem Artikel haben Sie mehr über die Verwendung verwalteter Identitäten m
 > * Gewähren des Zugriffs auf eine Azure Container Registry-Instanz für die Identität
 > * Verwenden der verwalteten Identität, um auf die Registrierung zuzugreifen und ein Containerimage abzurufen
 
-* Erfahren Sie mehr über [verwaltete Identitäten für Azure-Ressourcen](/azure/active-directory/managed-identities-azure-resources/).
+* Erfahren Sie mehr über [verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/index.yml).
 
 
 <!-- LINKS - external -->

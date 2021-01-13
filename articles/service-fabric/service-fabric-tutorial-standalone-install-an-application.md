@@ -1,26 +1,15 @@
 ---
-title: 'Tutorial: Installieren einer Anwendung in Ihrem eigenständigen Service Fabric-Cluster –Azure Service Fabric | Microsoft-Dokumentation'
+title: Installieren einer App in einem eigenständigen Cluster
 description: In diesem Tutorial erfahren Sie, wie Sie in Ihrem eigenständigen Service Fabric-Cluster eine Anwendung installieren.
-services: service-fabric
-documentationcenter: .net
-author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 5e5260a2001d9cb0a38f4182e923a5416f76712b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ae946321b34f12c816a717db4a3d07f57feefe52
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384999"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485359"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Tutorial: Bereitstellen einer Anwendung in Ihrem eigenständigen Service Fabric-Cluster
 
@@ -28,7 +17,7 @@ Mit eigenständigen Service Fabric-Clustern können Sie Ihre eigene Umgebung wä
 
 Dieses Tutorial ist der dritte Teil einer Reihe.  Mit eigenständigen Service Fabric-Clustern können Sie Ihre eigene Umgebung wählen und einen Cluster im Rahmen unseres Konzepts „Jedes Betriebssystem, jede Cloud“ mit Service Fabric erstellen. In diesem Tutorial erfahren Sie, wie Sie die erforderliche AWS-Infrastruktur zum Hosten dieses eigenständigen Clusters erstellen.
 
-Im dritten Teil der Serie lernen Sie Folgendes:
+In diesem Artikel lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Herunterladen der Beispiel-App
@@ -61,7 +50,7 @@ Die heruntergeladene Anwendung kann direkt über Visual Studio in einem Cluster 
 
 4. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Anwendungsprojekt `Voting`, und klicken Sie anschließend auf **Veröffentlichen**.
 
-5. Klicken Sie auf das Dropdownmenü für den **Verbindungsendpunkt**, und geben Sie den öffentlichen DNS-Namen eines der Knoten in Ihrem Cluster ein.  Beispiel: `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Beachten Sie, dass in Azure ein voll qualifizierter Domänenname (Fully Qualified Domain Name, FQDN) nicht automatisch vergeben wird, aber einfach [auf der VM-Übersichtsseite eingerichtet werden kann](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn).
+5. Klicken Sie auf das Dropdownmenü für den **Verbindungsendpunkt**, und geben Sie den öffentlichen DNS-Namen eines der Knoten in Ihrem Cluster ein.  Beispiel: `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. In Azure wird ein voll qualifizierter Domänenname (Fully Qualified Domain Name, FQDN) nicht automatisch vergeben. Er kann aber einfach [auf der VM-Übersichtsseite eingerichtet werden](../virtual-machines/create-fqdn.md).
 
 6. Öffnen Sie Ihren bevorzugten Browser, und geben Sie die Clusteradresse ein (also den Verbindungsendpunkt, den diese App am Port 8080 bereitstellt; Beispiel: ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 
@@ -69,7 +58,7 @@ Die heruntergeladene Anwendung kann direkt über Visual Studio in einem Cluster 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im dritten Teil der Reihe haben Sie gelernt, wie Sie in Ihrem Cluster eine Anwendung bereitstellen:
+In diesem Artikel haben Sie gelernt, wie Sie in Ihrem Cluster eine Anwendung bereitstellen:
 
 > [!div class="checklist"]
 > * Herunterladen der Beispiel-App

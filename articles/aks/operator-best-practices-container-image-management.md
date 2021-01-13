@@ -2,17 +2,14 @@
 title: Best Practices für Entwickler – Containerimageverwaltung in Azure Kubernetes Service (AKS)
 description: Lernen Sie die bewährten Methoden für den Clusteroperator zum Verwalten und Absichern von Containerimages in Azure Kubernetes Service (AKS) kennen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: mlearned
-ms.openlocfilehash: 3feadaca361950df2a09f8da33fe380fc3763763
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 4d90ac5b8ab44925b73be2f22cd7a79458da9f5a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614827"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073550"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Containerimageverwaltung und Sicherheit in Azure Kubernetes Service (AKS)
 
@@ -25,6 +22,8 @@ In diesem Artikel wird erläutert, wie Container in AKS gesichert werden. Folgen
 > * Automatisches Triggern und erneutes Bereitstellen von Containerimages, wenn ein Basisimage aktualisiert wird
 
 Weitere Informationen finden Sie in den Best Practices für [Clustersicherheit][best-practices-cluster-security] und [Podsicherheit][best-practices-pod-security].
+
+Sie können auch [Containersicherheit in Security Center][security-center-containers] verwenden, um die Container auf Sicherheitsrisiken zu überprüfen.  Dank der [Integration von Azure Container Registry][security-center-acr] in Security Center können Sie zudem Ihre Images und die Registrierung vor Sicherheitsrisiken schützen.
 
 ## <a name="secure-the-images-and-run-time"></a>Sichern von Images und Runtime
 
@@ -61,3 +60,5 @@ In diesem Artikel wurde erläutert, wie Container gesichert werden. Wenn Sie ein
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md
+[security-center-containers]: ../security-center/container-security.md
+[security-center-acr]: ../security-center/defender-for-container-registries-introduction.md

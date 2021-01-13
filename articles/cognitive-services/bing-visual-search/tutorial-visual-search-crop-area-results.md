@@ -8,16 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 04/26/2019
-ms.author: rosh
-ms.openlocfilehash: a6b625325e2adfe441d8abd2012f100780b659b4
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.date: 03/31/2019
+ms.author: aahi
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0ad73d7086a2066517c24a8b10a7f54503535942
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910030"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490294"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Tutorial: Zuschneiden eines Bilds mithilfe des Bing Visual Search SDK für C#
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Mithilfe des Bing Visual Search SDK können Sie ein Bild vor der Suche nach ähnlichen Onlinebildern zuschneiden. Diese Anwendung schneidet ein Bild mit mehreren Personen auf eine einzelne Person zu und gibt anschließend Suchergebnisse mit ähnlichen Onlinebildern zurück.
 
@@ -81,20 +87,20 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
 
 Die vollständige Anwendung gibt Folgendes zurück:
 
-|ActionType  |URL  | |
-|---------|---------|---------|
+|ActionType  |URL  |
+|---------|---------|
 |PagesIncluding WebSearchURL     |         |
 |MoreSizes WebSearchURL     |         |  
 |VisualSearch WebSearchURL    |         |
 |ImageById WebSearchURL     |         |  
 |RelatedSearches WebSearchURL     |         |
-|Entity -> WebSearchUrl     | https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v=1&r=https%3a%2f%2fwww.bing.com%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5380.1        |
-|TopicResults -> WebSearchUrl    |  https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fnadella%2bsatya&p=DevEx,5382.1        |
-|ImageResults -> WebSearchUrl    |  https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5384.1        |
+|Entity -> WebSearchUrl     | https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v=1&r=https%3a%2f%2f www.bing.com%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5380.1        |
+|TopicResults -> WebSearchUrl    |  https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v=1&r=https%3a%2f%2f www.bing.com%2fdiscover%2fnadella%2bsatya&p=DevEx,5382.1        |
+|ImageResults -> WebSearchUrl    |  https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v=1&r=https%3a%2f%2f www.bing.com%2fimages%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5384.1        |
 
 Wie oben zu sehen, enthält der Aktionstyp `Entity` eine Bing-Suchabfrage, die Informationen zu einer erkennbaren Person, einem Ort oder einem Gegenstand zurückgibt. Die Typen `TopicResults` und `ImageResults` enthalten Abfragen für verwandte Bilder. Die URLs in der Liste sind Verknüpfungen zu Bing-Suchergebnissen.
 
-## <a name="get-urls-for-pagesincluding-actiontype-images"></a>Rufen Sie URLs für `PagesIncluding` `ActionType`-Bilder ab
+## <a name="get-urls-for-pagesincluding-actiontype-images"></a>Abrufen von URLs für Bilder vom Typ `PagesIncluding` `ActionType`
 
 Zum Abrufen der eigentlichen Bild-URLs ist eine Umwandlung erforderlich, bei der ein `ActionType`-Element als `ImageModuleAction` gelesen wird, das ein `Data`-Element mit einer Werteliste enthält. Jeder Wert ist die URL eines Bilds. Im Folgenden wird der Aktionstyp `PagesIncluding` in `ImageModuleAction` umgewandelt, und die Werte werden gelesen:
 
@@ -113,4 +119,4 @@ Zum Abrufen der eigentlichen Bild-URLs ist eine Umwandlung erforderlich, bei der
 > [Erstellen einer Single-Page-Web-App für die Visuelle Suche](tutorial-bing-visual-search-single-page-app.md)
 
 ## <a name="see-also"></a>Weitere Informationen
-> [Was ist die API für die Visuelle Bing-Suche?](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview)
+> [Was ist die API für die Visuelle Bing-Suche?](./overview.md)

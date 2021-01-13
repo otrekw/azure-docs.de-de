@@ -1,28 +1,21 @@
 ---
-title: Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen | Microsoft-Dokumentation
+title: Erstellen interaktiver Berichte mit Arbeitsmappen mithilfe von Azure Monitor für VMs
 description: Vereinfachen Sie komplexe Berichte mit vorgefertigten und benutzerdefiniert parametrisierten Arbeitsmappen für Azure Monitor für VMs.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/05/2019
-ms.author: magoedte
-ms.openlocfilehash: 90c236347380bb5d5e51db56d0f431d2659a7258
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
+ms.author: bwren
+ms.date: 03/12/2020
+ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61387157"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95985542"
 ---
-# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen
+# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Erstellen interaktiver Berichte mit Arbeitsmappen mithilfe von Azure Monitor für VMs
 
-Arbeitsmappen kombinieren Text,  [Protokollabfragen](../log-query/query-language.md), Metriken und Parameter zu umfassenden interaktiven Berichten. Arbeitsmappen können von anderen Teammitgliedern bearbeitet werden, die Zugriff auf dieselben Azure-Ressourcen haben.
+Arbeitsmappen kombinieren Text,  [Protokollabfragen](/azure/data-explorer/kusto/query/), Metriken und Parameter zu umfassenden interaktiven Berichten. Arbeitsmappen können von anderen Teammitgliedern bearbeitet werden, die Zugriff auf dieselben Azure-Ressourcen haben.
 
 Arbeitsmappen sind beispielsweise für folgende Szenarien hilfreich:
 
@@ -31,7 +24,7 @@ Arbeitsmappen sind beispielsweise für folgende Szenarien hilfreich:
 * Weitergeben der Ergebnisse eines Größenänderungsexperiments für Ihren virtuellen Computer an andere Mitglieder Ihres Teams. Sie können die Ziele des Experiments in Textform erläutern und anschließend die einzelnen Nutzungsmetriken und Analyseabfragen für die Auswertung des Experiments sowie eindeutige Anmerkungen dazu präsentieren, ob eine Metrik oberhalb oder unterhalb des Zielwerts lag.
 * Melden der Auswirkungen eines Ausfalls auf die Nutzung Ihres virtuellen Computers durch eine Kombination aus Daten, einer Erläuterung in Textform und einer Auflistung der nächsten Schritte, mit denen sich Ausfälle in Zukunft vermeiden lassen.
 
-Azure Monitor für VMs enthält mehrere Arbeitsmappen, um Ihnen den Einstieg zu erleichtern. Diese sind in der folgenden Tabelle zusammengefasst:
+Um Ihnen den Einstieg zu erleichtern, sind in der folgenden Tabelle die Arbeitsmappen zusammengefasst, die Azure Monitor für VMs enthält:
 
 | Arbeitsmappe | BESCHREIBUNG | `Scope` |
 |----------|-------------|-------|
@@ -47,7 +40,7 @@ Azure Monitor für VMs enthält mehrere Arbeitsmappen, um Ihnen den Einstieg zu 
 | Leistung | Eine anpassbare Version unserer Leistungsansicht, die alle von Ihnen aktivierten Log Analytics-Leistungsindikatoren nutzt. | Einzelne VM | 
 | Verbindungen | Eine detaillierte Darstellung der ein- und ausgehenden Verbindungen Ihrer virtuellen Computer. | Einzelne VM |
  
-## <a name="starting-with-a-template-or-saved-workbook"></a>Ausgehend von einer Vorlage oder einer gespeicherten Arbeitsmappe
+## <a name="creating-a-new-workbook"></a>Erstellen einer neuen Arbeitsmappe
 
 Eine Arbeitsmappe besteht aus Abschnitten, die wiederum aus unabhängig voneinander bearbeitbaren Diagrammen, Tabellen, Text und Eingabesteuerelementen bestehen. Zum besseren Verständnis von Arbeitsmappen öffnen wir eine Vorlage und sehen uns die einzelnen Schritte für die Erstellung einer benutzerdefinierten Arbeitsmappe an. 
 
@@ -57,27 +50,23 @@ Eine Arbeitsmappe besteht aus Abschnitten, die wiederum aus unabhängig voneinan
 
 3. Wählen Sie einen virtuellen Computer in der Liste aus.
 
-4. Wählen Sie auf der Seite der VM im Abschnitt **Überwachung** den Eintrag **Insights (Vorschau)** aus.
+4. Wählen Sie auf der Seite der VM im Abschnitt **Überwachung** den Eintrag **Insights** aus.
 
-5. Wählen Sie auf der Seite „VM Insights“ die Registerkarte **Leistung** oder **Zuordnen** aus, und wählen Sie anschließend über den Link auf der Seite die Option **Arbeitsmappen anzeigen** aus. 
-
-    ![Screenshot der Navigation zu Arbeitsmappen](media/vminsights-workbooks/workbook-option-01.png)
-
-6. Wählen Sie in der Dropdownliste die Option **Zum Katalog wechseln** (ganz unten in der Liste) aus.
+5. Wählen Sie auf der Seite „VM Insights“ die Registerkarte **Leistung** oder **Zuordnen** aus, und wählen Sie anschließend über den Link auf der Seite die Option **Arbeitsmappen anzeigen** aus. Wählen Sie in der Dropdownliste den Eintrag **Zum Katalog wechseln** aus.
 
     ![Screenshot: Dropdownliste mit Arbeitsmappen](media/vminsights-workbooks/workbook-dropdown-gallery-01.png)
 
     Daraufhin wird der Arbeitsmappenkatalog mit einer Reihe vordefinierter Arbeitsmappen gestartet, die Ihnen den Einstieg erleichtern.
 
-7. Wir beginnen mit der **Standardvorlage**, die sich unter der Überschrift **Schnellstart** befindet.
+7. Erstellen Sie eine neue Arbeitsmappe, indem Sie **Neu** auswählen.
 
     ![Screenshot des Arbeitsmappenkatalogs](media/vminsights-workbooks/workbook-gallery-01.png)
 
 ## <a name="editing-workbook-sections"></a>Bearbeiten von Arbeitsmappenabschnitten
 
-Arbeitsmappen verfügen über zwei Modi: **Bearbeitungsmodus** und **Lesemodus**. Wenn die Standard-Arbeitsmappenvorlage zum ersten Mal gestartet wird, wird sie im **Bearbeitungsmodus** geöffnet. In diesem Modus wird der gesamte Inhalt der Arbeitsmappe angezeigt, einschließlich aller Schritte und Parameter, die andernfalls ausgeblendet sind. Im **Lesemodus** wird eine vereinfachte, berichtartige Ansicht präsentiert. Der Lesemodus abstrahiert zwar die Komplexität der Berichterstellung, bei Bedarf können Sie jedoch jederzeit mit wenigen Klicks auf die zugrunde liegenden Mechanismen zugreifen, um Änderungen vorzunehmen.
+Arbeitsmappen verfügen über zwei Modi: **Bearbeitungsmodus** und **Lesemodus**. Wenn eine neue Arbeitsmappe zum ersten Mal gestartet wird, wird sie im **Bearbeitungsmodus** geöffnet. In diesem Modus wird der gesamte Inhalt der Arbeitsmappe angezeigt, einschließlich aller Schritte und Parameter, die andernfalls ausgeblendet sind. Im **Lesemodus** wird eine vereinfachte, berichtartige Ansicht präsentiert. Der Lesemodus abstrahiert zwar die Komplexität der Berichterstellung, bei Bedarf können Sie jedoch jederzeit mit wenigen Klicks auf die zugrunde liegenden Mechanismen zugreifen, um Änderungen vorzunehmen.
 
-![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
+![Screenshot: Abschnitt für Virtual Machines-Arbeitsmappe in Azure Monitor mit einer neuen Arbeitsmappe im Bearbeitungsmodus und hervorgehobenen Bearbeitungssteuerelementen](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 
 1. Klicken Sie in der linken unteren Ecke des Abschnitts auf **Bearbeitung abgeschlossen**, wenn Sie mit der Bearbeitung fertig sind.
 
@@ -113,7 +102,7 @@ Mithilfe des Bezeichners **workspace** können Sie Daten aus anderen Log Analyt
 
 Jeder Abschnitt verfügt über eigene erweiterte Einstellungen, auf die über das Symbol „Einstellungen“ ![Bearbeitungssteuerelemente Arbeitsmappenabschnitte](media/vminsights-workbooks/006-settings.png) rechts neben der Schaltfläche **Parameter hinzufügen** zugegriffen werden kann.
 
-![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/007-settings-expanded.png)
+![Screenshot: Dialogfeld „Erweiterte Einstellungen“ im Abschnitt für die Virtual Machines-Arbeitsmappe von Azure Monitor. Das Symbol, mit dem das Dialogfeld geöffnet wird, ist hervorgehoben.](media/vminsights-workbooks/007-settings-expanded.png)
 
 |         |          |
 | ---------------- |:-----|
@@ -129,11 +118,11 @@ Die vordefinierte Arbeitsmappe **TCP-Datenverkehr** enthält Informationen zu Ve
 
 Der erste Abschnitt der Arbeitsmappe basiert auf Protokollabfragedaten. Der zweite Abschnitt basiert ebenfalls auf Protokollabfragedaten, durch Auswählen einer Zeile in der ersten Tabelle wird jedoch der Inhalt der Diagramme interaktiv aktualisiert:
 
-![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
+![Screenshot: Abschnitt „Virtual Machines“ in Azure Monitor mit Anzeige des TCP-Datenverkehrs für die vordefinierte Arbeitsmappe](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
 
 Dieses Verhalten wird durch die erweiterte Einstellung **Bei Auswahl eines Elements Parameter exportieren** möglich, die in der Protokollabfrage der Tabelle aktiviert wird.
 
-![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/009-settings-export.png)
+![Screenshot: Dialogfeld „Erweiterte Einstellungen“ für eine Virtual Machines-Arbeitsmappe mit Aktivierung der Option „Bei Auswahl eines Elements Parameter exportieren“](media/vminsights-workbooks/009-settings-export.png)
 
 Wenn eine Zeile ausgewählt wird, werden die exportierten Werte von der zweiten Protokollabfrage genutzt, um eine Gruppe von Werten zu erstellen, die dann von der Abschnittsüberschrift und den Diagrammen verwendet werden. Wird keine Zeile ausgewählt, werden Abschnittsüberschrift und Diagramme ausgeblendet. 
 
@@ -152,7 +141,7 @@ Metrikabschnitte bieten Ihnen vollständigen Zugriff, um Metrikdaten von Azure M
 
 Hier sehen Sie ein Beispiel für Daten eines virtuellen Computers, die in eine Arbeitsmappe gepullt werden, um eine Rastervisualisierung der CPU-Leistung bereitzustellen:
 
-![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/010-metrics-grid.png)
+![Screenshot: Abschnitt mit Metriken einer VM-Arbeitsmappe in Azure Monitor. Die CPU-Leistung aller virtuellen Computer ist grafisch dargestellt.](media/vminsights-workbooks/010-metrics-grid.png)
 
 ## <a name="adding-parameter-sections"></a>Hinzufügen von Parameterabschnitten
 
@@ -191,11 +180,11 @@ Wenn die Spalte vom Typ „Zeichenfolge“ ist, wird eine Null-/leere Zeichenfol
 
 Sehen wir uns die Parameter im Verbindungsübersichtsbericht an. Klicken Sie neben **Richtung** auf das Bearbeitungssymbol.
 
-![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/011-workbook-using-dropdown.png)
+![Screenshot: Abschnitt zum Hinzufügen und Bearbeiten von Berichtsparametern in Azure Monitor. Das Symbol „Bearbeiten“ für den Parameter „Direction“ ist ausgewählt.](media/vminsights-workbooks/011-workbook-using-dropdown.png)
 
 Daraufhin wird das Menüelement **Parameter bearbeiten** gestartet.
 
-![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/012-workbook-edit-parameter.png)
+![Screenshot: Dialogfeld „Parameter bearbeiten“. Der Name des Parameters lautet „Direction“, der Parametertyp ist „Dropdown“, und für „Daten abrufen aus“ ist „JSON“ ausgewählt.](media/vminsights-workbooks/012-workbook-edit-parameter.png)
 
 Mithilfe des JSON-Codes können Sie eine beliebige Tabelle mit Inhalt generieren. Der folgende JSON-Code generiert beispielsweise zwei Werte im Dropdown-Steuerelement:
 
@@ -252,4 +241,7 @@ Gehen Sie wie folgt vor, um in einem Azure-Dashboard einen Link zu einer Arbeits
 3. Klicken Sie auf **An Dashboard anheften**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zur Verwendung des Integritätsfeatures finden Sie unter [Grundlegendes zur Integrität Ihrer Azure-VMs](vminsights-health.md). Informationen zum Anzeigen ermittelter Anwendungsabhängigkeiten finden Sie unter [Verwenden der Zuordnung in Azure Monitor für VMs (Vorschauversion) zum Verstehen von Anwendungskomponenten](vminsights-maps.md). 
+
+- Weitere Informationen zum Ermitteln von Beschränkungen und der Gesamtleistung einer VM finden Sie unter [Direktes Anzeigen der Leistung in einer Azure-VM](vminsights-performance.md).
+
+- Weitere Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Anzeigen der Zuordnung in Azure Monitor](vminsights-maps.md).

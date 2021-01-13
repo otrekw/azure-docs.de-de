@@ -1,30 +1,32 @@
 ---
-title: Azure-VMware-Lösung von CloudSimple
-description: Dokumentationsportal für Azure-VMware-Lösung von CloudSimple.
-author: sharaths-cs
-ms.author: b-mashar
+title: Azure VMware Solution by CloudSimple
+description: Hier finden Sie Informationen zu Azure VMware Solutions by CloudSimple, u. a. eine Übersicht, Schnellstartanleitungen, Konzepte, Tutorials und Anleitungen.
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 936a9eb4d9b33b45800fab213fc72a306a04146e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.custom: seo-azure-migrate
+keywords: VMS Unterstützung, Azure VMware Solution by CloudSimple, CloudSimple Azure, VMS Tools, VMware Dokumentation
+ms.openlocfilehash: a3514a011f940b82702984737d0a93c5da402b55
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972739"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108380"
 ---
-# <a name="azure-vmware-solution-by-cloudsimple"></a>Azure-VMware-Lösung von CloudSimple
+# <a name="azure-vmware-solution-by-cloudsimple"></a>Azure VMware Solution by CloudSimple
 
-Willkommen beim zentralen Portal, in dem Sie Hilfe zur Azure-VMware-Lösung von CloudSimple erhalten.
+Willkommen beim zentralen Portal, in dem Sie Hilfe zu Azure VMware Solution by CloudSimple erhalten.
 Auf der Dokumentationswebsite finden Sie Informationen zu den folgenden Themen:
 
 ## <a name="overview"></a>Übersicht
 
-Erfahren Sie mehr zur Azure-VMware-Lösung von CloudSimple
+Erfahren Sie mehr zu Azure VMware Solution by CloudSimple
 
-* Informationen zu den Features, Vorteilen und Nutzungsszenarien finden Sie unter [Was ist die Azure-VMware-Lösung von CloudSimple?](cloudsimple-vmware-solutions-overview.md).
+* Informationen zu den Features, Vorteilen und Nutzungsszenarien finden Sie unter [Was ist Azure VMware Solution by CloudSimple](cloudsimple-vmware-solutions-overview.md).
 * Sehen Sie sich die [Schlüsselkonzepte für die Verwaltung](key-concepts.md) an.
 
 ## <a name="quickstart"></a>Schnellstart
@@ -39,10 +41,10 @@ Erfahren Sie mehr zu den ersten Schritten mit der Lösung.
 
 Weitere Informationen zu den folgenden Konzepten
 
-* [CloudSimple-Dienst](cloudsimple-service.md) (auch als „Azure-VMware-Lösung von CloudSimple – Dienst“ bezeichnet). Diese Ressource muss einmal pro Region erstellt werden.
-* Erwerben Sie Kapazität für Ihre Umgebung, indem Sie eine oder mehrere Ressourcen vom Typ [CloudSimple-Knoten](cloudsimple-node.md) erstellen. Diese Ressourcen werden auch als „Azure VMware-Lösung von CloudSimple – Knoten“ bezeichnet.
+* [CloudSimple-Dienst](cloudsimple-service.md) (auch als „Azure VMware Solution by CloudSimple – Dienst“ bezeichnet). Diese Ressource muss einmal pro Region erstellt werden.
+* Erwerben Sie Kapazität für Ihre Umgebung, indem Sie eine oder mehrere Ressourcen vom Typ [CloudSimple-Knoten](cloudsimple-node.md) erstellen. Diese Ressourcen werden auch als „Azure VMware Solution by CloudSimple – Knoten“ bezeichnet.
 * Initialisieren und konfigurieren Sie die VMware-Umgebung mit den [privaten Clouds](cloudsimple-private-cloud.md).
-* Vereinheitlichen Sie die Verwaltung, indem Sie [virtuelle CloudSimple-Computer](cloudsimple-virtual-machines.md) verwenden (auch als „Azure VMware-Lösung von CloudSimple – Virtueller Computer“ bezeichnet).
+* Vereinheitlichen Sie die Verwaltung, indem Sie [virtuelle CloudSimple-Computer](cloudsimple-virtual-machines.md) verwenden (auch als „Azure VMware Solution by CloudSimple – Virtueller Computer“ bezeichnet).
 * Entwerfen Sie das zugrunde liegende Netzwerk mit [VLANs/Subnetzen](cloudsimple-vlans-subnets.md).
 * Segmentieren und schützen Sie Ihr zugrunde liegendes Netzwerk mit der Ressource [Firewalltabelle](cloudsimple-firewall-tables.md).
 * Verwenden Sie [VPN Gateway-Instanzen](cloudsimple-vpn-gateways.md), um sicheren Zugriff auf Ihre VMware-Umgebungen per WAN zu erhalten.
@@ -52,7 +54,7 @@ Weitere Informationen zu den folgenden Konzepten
 * Zeigen Sie Protokolle von Benutzer- und Systemaktivitäten über die Fenster der [Aktivitätenverwaltung](cloudsimple-activity.md) an.
 * Machen Sie sich mit den verschiedenen [VMware-Komponenten](vmware-components.md) vertraut.
 
-## <a name="tutorials"></a>Lernprogramme
+## <a name="tutorials"></a>Tutorials
 
 Informieren Sie sich darüber, wie Sie häufige Aufgaben durchführen, z. B.:
 

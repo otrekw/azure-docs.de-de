@@ -1,25 +1,19 @@
 ---
-title: Austauschen des Betriebssystem-Datenträgers für eine Azure-VM mit der CLI | Microsoft-Dokumentation
+title: Tauschen von Betriebssystemdatenträgern mithilfe der Befehlszeilenschnittstelle
 description: Ändern Sie den von einem virtuellen Azure-Computer verwendeten Betriebssystem-Datenträger mithilfe der CLI.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: disks
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 7b5f8a47b2b9c3692698b2ec6a7e5bc470b86a18
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: adcbc5b0ba0056c79576e8d4c8ded2150b206513
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091675"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87371871"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Ändern des von einem virtuellen Azure-Computer verwendeten Betriebssystem-Datenträgers mithilfe der CLI
 
@@ -30,7 +24,7 @@ Der virtuelle Computer muss sich im Zustand „Beendet (Zuordnung aufgehoben)“
 
 Stellen Sie sicher, dass VM-Größe und Speichertyp mit dem Datenträger kompatibel sind, den Sie anfügen möchten. Wenn der Datenträger, den Sie verwenden möchten, sich z.B. im Storage Premium befindet, dann muss der virtuelle Computer für Storage Premium geeignet sein (z.B. eine Größe der DS-Serie).
 
-Für diesen Artikel ist mindestens Version 2.0.25 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
+Für diesen Artikel ist mindestens Version 2.0.25 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
 
 
 Rufen Sie mit [az disk list](/cli/azure/disk) eine Liste der Datenträger in der Ressourcengruppe ab.

@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl rpm | Microsoft-Dokumentation
-description: Beschreibt die sfctl rpm-Befehle der Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI).
-services: service-fabric
-documentationcenter: na
-author: Christina-Kang
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
+title: 'Azure Service Fabric-Befehlszeilenschnittstelle: sfctl rpm'
+description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle für den Reparatur-Manager-Dienst.
+author: jeffj6123
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 3f40451087aba5af5b02625ad3ac1ca6231d976c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: 7317fd66303aaabf5232106aa7391439880bebaf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035874"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86260281"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Ermöglicht es, Befehle an den Reparatur-Manager-Dienst abzufragen und zu senden.
@@ -47,11 +39,11 @@ Diese API unterstützt die Service Fabric-Plattform. Sie ist nicht dazu vorgeseh
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 ## <a name="sfctl-rpm-delete"></a>sfctl rpm delete
 Löscht einen abgeschlossenen Reparaturtask.
@@ -69,11 +61,11 @@ Diese API unterstützt die Service Fabric-Plattform. Sie ist nicht dazu vorgeseh
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 ## <a name="sfctl-rpm-list"></a>sfctl rpm list
 Ruft eine Liste der Reparaturtasks ab, die dem angegebenen Filter entsprechen.
@@ -85,20 +77,20 @@ Diese API unterstützt die Service Fabric-Plattform. Sie ist nicht dazu vorgeseh
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --executor-filter | Der Name des Reparaturexecutors, dessen beanspruchte Tasks in der Liste enthalten sein sollen. |
-| --state-filter | Eine bitweise OR-Operation für die folgenden Werte, die angibt, welche Taskstatus in der Ergebnisliste enthalten sein sollen. <br> 1 – „Created“ <br>2 – „Claimed“  <br>4 – „Preparing“  <br>8 – „Approved“  <br>16 – „Executing“  <br>32 – „Restoring“  <br>64 – „Completed“ |
+| --state-filter | Eine bitweise OR-Operation für die folgenden Werte, die angibt, welche Taskstatus in der Ergebnisliste enthalten sein sollen. <ul><li>1 – „Created“</li><li>2 – „Claimed“</li><li>4 – „Preparing“</li><li>8 – „Approved“</li><li>16 – „Executing“</li><li>32 – „Restoring“</li><li>64 – „Completed“</li></ul>
 | --task-id-filter | Das Reparaturtask-ID-Präfix, das abgeglichen werden soll. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle
-- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](/azure/service-fabric/scripts/sfctl-upgrade-application)
+- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](./scripts/sfctl-upgrade-application.md)

@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: asudbring
   ms.author: allensu
-  ms.date: 08/20/2019
-  ms.openlocfilehash: cb6ecdf9c717602cb3309107bc0ac24805be5d0a
-  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.date: 05/07/2020
+  ms.openlocfilehash: de8b6cba87d0297841f4e6236ee69d4f6a856eb4
+  ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/27/2019
-  ms.locfileid: "70061876"
+  ms.lasthandoff: 01/08/2021
+  ms.locfileid: "98027875"
 landingContent:
 - title: Informationen zu Load Balancer
   linkLists:
@@ -24,22 +24,28 @@ landingContent:
     links:
     - text: Was ist der Lastenausgleich?
       url: load-balancer-overview.md
-    - text: Was ist Standard Load Balancer?
-      url: load-balancer-standard-overview.md
+    - text: Load Balancer-Algorithmus
+      url: concepts.md
+    - text: Load Balancer-Komponenten
+      url: components.md
+    - text: Neuigkeiten
+      url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
+    - text: Load Balancer-SKUs
+      url: skus.md
 - title: Erste Schritte
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Erstellen eines Load Balancers im Tarif „Basic“
-      url: quickstart-create-basic-load-balancer-portal.md
-    - text: Erstellen einer Load Balancer Standard-Instanz für den Lastenausgleich virtueller Computer
+    - text: Erstellen eines öffentlichen Lastenausgleichs für den Lastenausgleich virtueller Computer
       url: quickstart-load-balancer-standard-public-portal.md
+    - text: Erstellen eines internen Lastenausgleichs für den Lastenausgleich virtueller Computer
+      url: quickstart-load-balancer-standard-internal-portal.md
   - linkListType: tutorial
     links:
     - text: Vornehmen eines Lastausgleichs für Internetdatenverkehr virtueller Computer
       url: tutorial-load-balancer-standard-manage-portal.md
-    - text: Ausgleichen der internen Datenverkehrslast mithilfe eines Lastenausgleichs im Tarif „Basic“
-      url: tutorial-load-balancer-basic-internal-portal.md
+    - text: Verfügbarkeitszonenübergreifender Lastenausgleich für VMs mit einer Load Balancer Standard-Instanz
+      url: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - text: Konfigurieren der Portweiterleitung in Azure Load Balancer
       url: tutorial-load-balancer-port-forwarding-portal.md
 - title: Verwalten von Features und Optionen
@@ -54,26 +60,28 @@ landingContent:
       url: load-balancer-multivip-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe der Azure CLI
-      url: configure-load-balancer-outbound-cli.md
-    - text: Erstellen eines Lastenausgleichs mit Internetzugriff und IPv6 über PowerShell
+    - text: Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer (Azure CLI)
+      url: ./quickstart-load-balancer-standard-public-cli.md#create-outbound-rule-configuration
+    - text: Erstellen einer Load Balancer-Instanz mit Internetzugriff und IPv6 (PowerShell)
       url: load-balancer-ipv6-internet-ps.md
     - text: Konfigurieren des Verteilungsmodus
       url: load-balancer-distribution-mode.md
+    - text: Aktualisieren von „Basic“ auf „Standard“
+      url: upgrade-basic-standard.md
 - title: Bereitstellen
   linkLists:
   - linkListType: concept
     links:
     - text: Load Balancer Standard und Verfügbarkeitszonen
       url: load-balancer-standard-availability-zones.md
-    - text: Load Balancer mit TCP-Rücksetzung bei Leerlauf (öffentliche Vorschau)
+    - text: Load Balancer mit TCP-Rücksetzung bei Leerlauf
       url: load-balancer-tcp-reset.md
   - linkListType: how-to-guide
     links:
-    - text: Erstellen einer Load Balancer Standard-Instanz mit zonenredundantem Front-End
-      url: load-balancer-get-started-internet-az-portal.md
-    - text: Erstellen einer Load Balancer Standard-Instanz mit Zonen-Front-End
-      url: load-balancer-get-started-internet-availability-zones-zonal-portal.md
+    - text: Erstellen eines Lastenausgleichs mit zonenredundantem Front-End
+      url: ./quickstart-load-balancer-standard-public-portal.md
+    - text: Erstellen einer Load Balancer-Instanz mit einem Zonen-Front-End
+      url: ./quickstart-load-balancer-standard-public-portal.md
     - text: Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen
       url: load-balancer-multiple-ip.md
 - title: Problembehandlung
@@ -84,11 +92,27 @@ landingContent:
       url: load-balancer-standard-diagnostics.md
     - text: Beheben von Problemen mit Azure Load Balancer
       url: load-balancer-troubleshoot.md
+    - text: Häufige Azure Load Balancer-Fehler
+      url: load-balancer-common-deployment-errors.md
+    - text: Beheben allgemeiner Probleme bei der ausgehenden Verbindung
+      url: troubleshoot-outbound-connection.md
+    - text: Probleme mit dem Integritätsteststatus
+      url: load-balancer-troubleshoot-health-probe-status.md
+    - text: Datenverkehr des Back-End-Pools (VM)
+      url: load-balancer-troubleshoot-backend-traffic.md
+  - linkListType: video
+    links:
+    - text: Erstellen und Überwachen hochverfügbarer Apps mit Azure Load Balancer
+      url: https://techcommunity.microsoft.com/t5/video-hub/build-amp-monitor-highly-available-apps-w-azure-load-balancer/m-p/1703353
 - title: Verweis
   linkLists:
   - linkListType: reference
     links:
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.network/?view=azps-2.5.0#load_balancer
-    - text: Azure-Befehlszeilenschnittstelle
-      url: https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest
+      url: /powershell/module/az.network/?view=azps-2.5.0#load_balancer
+    - text: Azure CLI
+      url: /cli/azure/network/lb?view=azure-cli-latest
+    - text: ARM-Vorlagen
+      url: /azure/templates/microsoft.network/loadbalancers#quickstart-templates
+    - text: Häufig gestellte Fragen zu Load Balancer
+      url: load-balancer-faqs.md

@@ -1,5 +1,5 @@
 ---
-title: Einrichten der Notfallwiederherstellung für eine SharePoint-Anwendung mit mehreren Ebenen mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+title: Notfallwiederherstellung für eine SharePoint-Anwendung mit mehreren Ebenen mithilfe von Azure Site Recovery
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Site Recovery-Funktionen die Notfallwiederherstellung für eine SharePoint-Anwendung mit mehreren Ebenen einrichten.
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: e9b688d54049c21da3276a20e27dcc9ad3d4ceca
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231474"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013750"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Einrichten der Notfallwiederherstellung für eine SharePoint-Anwendung mit mehreren Ebenen mithilfe von Azure Site Recovery
 
@@ -38,8 +38,8 @@ Das folgende Video zeigt das Wiederherstellen einer Anwendung mit mehreren Ebene
 
 Stellen Sie zunächst sicher, dass Sie mit den folgenden Verfahren vertraut sind:
 
-1. [Replizieren von virtuellen VMware-Computern in Azure mithilfe von Site Recovery](site-recovery-vmware-to-azure.md)
-2. [Entwerfen Ihres Netzwerks für die Notfallwiederherstellung](site-recovery-network-design.md)
+1. [Replizieren von virtuellen VMware-Computern in Azure mithilfe von Site Recovery](./vmware-azure-tutorial.md)
+2. [Entwerfen Ihres Netzwerks für die Notfallwiederherstellung](./concepts-on-premises-to-azure-networking.md)
 3. [Testfailover in Azure in Site Recovery](site-recovery-test-failover-to-azure.md)
 4. [Failover in Site Recovery](site-recovery-failover.md)
 5. Replizieren eines Domänencontrollers unter [Schützen von Active Directory und DNS mit Azure Site Recovery](site-recovery-active-directory.md)
@@ -47,7 +47,7 @@ Stellen Sie zunächst sicher, dass Sie mit den folgenden Verfahren vertraut sind
 
 ## <a name="sharepoint-architecture"></a>SharePoint-Architektur
 
-SharePoint kann auf einem oder mehreren Servern mit mehrstufigen Topologien und Serverrollen bereitgestellt werden, um einen Farmentwurf zu implementieren, der bestimmte Zielsetzungen erfüllt. Eine typische große SharePoint-Serverfarm mit hohen Anforderungen, die eine große Anzahl gleichzeitiger Benutzer und eine Vielzahl von Inhaltselementen unterstützt, verwendet die Gruppierung von Diensten als Teil ihrer Skalierbarkeitsstrategie. Bei diesem Ansatz müssen Dienste auf dedizierten Servern ausgeführt, diese Dienste gruppiert und die Server anschließend als Gruppe horizontal hochskaliert werden. Die folgende Topologie veranschaulicht die Gruppierung von Diensten und Servern für eine SharePoint-Serverfarm mit drei Ebenen. Eine ausführliche Anleitung zu verschiedenen SharePoint-Topologien finden Sie in der SharePoint-Dokumentation und den Architekturen der Produktlinie. Weitere Informationen zur Bereitstellung von SharePoint 2013 finden Sie in [diesem Dokument](https://technet.microsoft.com/library/cc303422.aspx).
+SharePoint kann auf einem oder mehreren Servern mit mehrstufigen Topologien und Serverrollen bereitgestellt werden, um einen Farmentwurf zu implementieren, der bestimmte Zielsetzungen erfüllt. Eine typische große SharePoint-Serverfarm mit hohen Anforderungen, die eine große Anzahl gleichzeitiger Benutzer und eine Vielzahl von Inhaltselementen unterstützt, verwendet die Gruppierung von Diensten als Teil ihrer Skalierbarkeitsstrategie. Bei diesem Ansatz müssen Dienste auf dedizierten Servern ausgeführt, diese Dienste gruppiert und die Server anschließend als Gruppe horizontal hochskaliert werden. Die folgende Topologie veranschaulicht die Gruppierung von Diensten und Servern für eine SharePoint-Serverfarm mit drei Ebenen. Eine ausführliche Anleitung zu verschiedenen SharePoint-Topologien finden Sie in der SharePoint-Dokumentation und den Architekturen der Produktlinie. Weitere Informationen zur Bereitstellung von SharePoint 2013 finden Sie in [diesem Dokument](/SharePoint/sharepoint-server).
 
 
 
@@ -74,7 +74,7 @@ Wenn Sie einen freigegebenen, datenträgerbasierten Cluster als beliebige Ebene 
 
 ## <a name="replicating-virtual-machines"></a>Replizieren von virtuellen Computern
 
-Folgen Sie [dieser Anleitung](site-recovery-vmware-to-azure.md), um die Replikation der virtuellen Computer in Azure zu starten.
+Folgen Sie [dieser Anleitung](./vmware-azure-tutorial.md), um die Replikation der virtuellen Computer in Azure zu starten.
 
 * Sobald die Replikation abgeschlossen ist, wählen Sie für jeden virtuellen Computer der einzelnen Ebenen dieselbe Verfügbarkeitsgruppe unter „Repliziertes Element > Einstellungen > Eigenschaften > Compute und Netzwerk“ aus. Wenn Ihre Webebene beispielsweise über drei virtuelle Computer (VMs) verfügt, stellen Sie sicher, dass alle drei VMs als Teil derselben Verfügbarkeitsgruppe in Azure konfiguriert sind.
 
@@ -82,7 +82,7 @@ Folgen Sie [dieser Anleitung](site-recovery-vmware-to-azure.md), um die Replikat
 
 * Eine Anleitung zum Schutz von Active Directory und DNS finden Sie im Dokument [Schützen von Active Directory und DNS](site-recovery-active-directory.md).
 
-* Eine Anleitung zum Schutz von Datenbankebenen auf SQL Server finden Sie im Dokument [Schützen von SQL Server](site-recovery-active-directory.md).
+* Eine Anleitung zum Schutz von Datenbankebenen auf SQL Server finden Sie im Dokument [Schützen von SQL Server](site-recovery-sql.md).
 
 ## <a name="networking-configuration"></a>Netzwerkkonfiguration
 
@@ -99,7 +99,7 @@ Folgen Sie [dieser Anleitung](site-recovery-vmware-to-azure.md), um die Replikat
 
 ### <a name="dns-and-traffic-routing"></a>Routing von DNS und Datenverkehr
 
-[Erstellen Sie ein Traffic Manager-Profil vom Typ „Priorität“](../traffic-manager/traffic-manager-create-profile.md) im Azure-Abonnement für Websites mit Internetzugriff. Konfigurieren Sie anschließend Ihr DNS- und Traffic Manager-Profil folgendermaßen:
+[Erstellen Sie ein Traffic Manager-Profil vom Typ „Priorität“](../traffic-manager/quickstart-create-traffic-manager-profile.md) im Azure-Abonnement für Websites mit Internetzugriff. Konfigurieren Sie anschließend Ihr DNS- und Traffic Manager-Profil folgendermaßen:
 
 
 | **Where** | **Quelle** | **Ziel**|
@@ -163,7 +163,7 @@ Sie können die am häufigsten verwendeten Azure Site Recovery-Skripts in Ihrem 
     * Bei dieser Methode wird davon ausgegangen, dass vor Eintreten des Notfalls eine Sicherung der Suchdienstanwendung durchgeführt wurde und dass die Sicherung am Notfallwiederherstellungsstandort verfügbar ist.
     * Dies können Sie problemlos erreichen, indem Sie die Sicherung zeitlich planen (z.B. einmal täglich) und eine Kopierprozedur verwenden, um die Sicherung am Notfallwiederherstellungsstandort zu platzieren. Kopierprozeduren können Skriptprogramme wie z.B. AzCopy (Azure Copy) oder das Einrichten einer DFSR (Distributed File Services Replication) umfassen.
     * Nachdem die SharePoint-Farm nun ausgeführt wird, gehen Sie zu „Zentraladministration“, „Sichern und Wiederherstellen“, und wählen Sie „Wiederherstellen“ aus. Bei der Wiederherstellung wird der angegebene Sicherungsspeicherort abgefragt (möglicherweise müssen Sie den Wert aktualisieren). Wählen Sie die Sicherung der Suchdienstanwendung aus, die Sie wiederherstellen möchten.
-    * Die Suche wird wiederhergestellt. Beachten Sie, dass bei der Wiederherstellung dieselbe Topologie (gleiche Anzahl von Servern) und dieselben Laufwerkbuchstaben, die diesen Servern zugewiesen werden, erwartet werden. Weitere Informationen finden Sie im Dokument [Restore Search service application in SharePoint 2013](https://technet.microsoft.com/library/ee748654.aspx) (Wiederherstellen der Suchdienstanwendung in SharePoint 2013).
+    * Die Suche wird wiederhergestellt. Beachten Sie, dass bei der Wiederherstellung dieselbe Topologie (gleiche Anzahl von Servern) und dieselben Laufwerkbuchstaben, die diesen Servern zugewiesen werden, erwartet werden. Weitere Informationen finden Sie im Dokument [Restore Search service application in SharePoint 2013](/SharePoint/administration/restore-a-search-service-application) (Wiederherstellen der Suchdienstanwendung in SharePoint 2013).
 
 
 6. Zum Starten einer neuen Suchdienstanwendung, führen Sie die unten genannten Schritte aus.

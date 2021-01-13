@@ -1,28 +1,24 @@
 ---
-title: Übersicht über die Microsoft Authenticator-App – Azure Active Directory | Microsoft-Dokumentation
+title: Wozu dient die Microsoft Authenticator-App? – Azure Active Directory | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, was die Microsoft Authenticator-App ist, wie Sie funktioniert und welche Informationen sie enthält.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: overview
-ms.date: 01/24/2019
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3766436851cb2f31fa7bb070402191e03ad9ad1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.topic: end-user-help
+ms.date: 01/15/2020
+ms.author: curtand
+ms.openlocfilehash: 7f4c09a32794e13b0e0041ee916401b714d8509e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382336"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90055230"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Wozu dient die Microsoft Authenticator-App?
-
->[!Important]
->Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
 
 Die Microsoft Authenticator-App unterstützt Sie bei der Kontoanmeldung, wenn Sie die zweistufige Überprüfung verwenden. Mit der zweistufigen Überprüfung können Sie die Sicherheit des Zugriffs auf Ihre Konten erhöhen, insbesondere, wenn Sie vertrauliche Informationen anzeigen. Kennwörter können vergessen, gestohlen oder kompromittiert werden. Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert.
 
@@ -32,14 +28,12 @@ Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfol
 
 - Zur Anmeldung ohne Kennwort unter Verwendung Ihres Benutzernamens, der Authenticator-App und Ihres mobilen Geräts mit Fingerabdruck, Gesichtserkennung oder PIN
 
-- Als Codegenerator für andere Konten, die Authentifikator-Apps unterstützen
+- Dient als Codegenerator für andere Konten, die Authentifikator-Apps unterstützen.
 
 > [!Important]
 > Die Microsoft Authenticator-App funktioniert mit jedem Konto, für das die zweistufige Überprüfung verwendet wird, und unterstützt die Standards für zeitbasierte Einmalkennwörter (Time-Based One-Time Passwords, TOTPs).
 >
-> Ihre Organisation erfordert möglicherweise die Verwendung einer Authentifikator-App zum Anmelden und für den Zugriff auf Ihre Organisationsdaten und -dokumente. Ihr Benutzername kann in der App zwar angezeigt werden, das Konto ist jedoch erst tatsächlich als Überprüfungsmethode eingerichtet, nachdem Sie den Registrierungsprozess abgeschlossen haben. Weitere Informationen finden Sie unter [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos](user-help-auth-app-add-work-school-account.md).
-> 
-> Wenn Sie Probleme bei der Anmeldung bei Ihrem Konto haben, lesen Sie den Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429). Erhalten Sie weitere Informationen zur Meldung [Dieses Microsoft-Konto ist nicht vorhanden.](https://support.microsoft.com/help/13811), wenn Sie sich bei Ihrem Microsoft-Konto anmelden.
+>Dieser Artikel richtet sich an Benutzer, die die Microsoft Authenticator-App herunterladen und als Methode zur Sicherheitsüberprüfung verwenden möchten. Wenn Sie Administrator sind und Informationen zum Aktivieren der kennwortlosen Anmeldung mithilfe der Authenticator-App für Ihre Mitarbeiter und andere Verwendungszwecke benötigen, lesen Sie den Artikel [Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion)](../authentication/howto-authentication-passwordless-phone.md).
 
 ## <a name="terminology"></a>Begriff
 
@@ -47,8 +41,8 @@ Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfol
 | ----|-----------|
 | Zweistufige Überprüfung | Bei dieser Überprüfung benötigen Sie in der Regel nur zwei Angaben zur Überprüfung, etwa ein Kennwort und eine PIN. Die Microsoft Authenticator-App unterstützt sowohl die standardmäßige zweistufige Überprüfung als auch die Anmeldung ohne Kennwort. |
 | Multi-Factor Authentication (MFA) | Jede zweistufige Überprüfung stellt eine mehrstufige Authentifizierung dar. Dabei müssen Sie je nach den Anforderungen Ihrer Organisation *mindestens* zwei Angaben zur Überprüfung machen. |
-| Microsoft-Konto (auch MSA genannt) | Sie erstellen Ihre persönlichen Microsoft-Konten, um Zugriff auf Ihre verbraucherorientierten Microsoft-Produkte und -Clouddienste wie Outlook, OneDrive, MSN, Xbox LIVE oder Office 365 zu erhalten. Ihr Microsoft-Konto wird im von Microsoft betriebenen Microsoft-Kontosystem für Endbenutzeridentitäten erstellt und gespeichert. |
-| Geschäfts- oder Schulkonto | Ihre Organisation erstellt Ihr Geschäfts-, Schul- oder Unikonto (z.B. alain@contoso.com), über das Sie Zugriff auf interne und möglicherweise eingeschränkte Ressourcen wie Microsoft Azure, Windows Intune und Office 365 erhalten. |
+| Microsoft-Konto (auch MSA genannt) | Sie erstellen Ihre persönlichen Konten, um Zugriff auf Ihre verbraucherorientierten Microsoft-Produkte und -Clouddienste wie Outlook, OneDrive, MSN, Xbox LIVE oder Microsoft 365 zu erhalten. Ihr Microsoft-Konto wird im von Microsoft betriebenen Microsoft-Kontosystem für Endbenutzeridentitäten erstellt und gespeichert. |
+| Geschäfts- oder Schulkonto | Ihre Organisation erstellt Ihr Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com), über das Sie Zugriff auf interne und möglicherweise eingeschränkte Ressourcen wie Microsoft Azure, Windows Intune und Microsoft 365 erhalten. |
 | Prüfcode | Dies ist der sechsstellige Code, der in der Authenticator-App unter jedem hinzugefügten Konto angezeigt wird. Der Prüfcode wird alle 30 Sekunden geändert, um zu verhindern, dass Benutzer einen Code mehrmals verwenden. Dies wird auch als Einmalkennung (One-Time Passcode, OTP) bezeichnet. |
 
 ## <a name="how-two-factor-verification-works-with-the-app"></a>Funktionsweise der zweistufigen Überprüfung mit der App
@@ -75,7 +69,7 @@ Je nach Kontotyp entscheidet Ihre Organisation, ob Sie die zweistufige Überprü
 
 - **Hinzufügen Ihrer Nicht-Microsoft-Konten**. Sie können die zweistufige Überprüfung auch für Ihre nicht von Microsoft bereitgestellten Konten einrichten (z. B. alain@gmail.com). Ihre nicht von Microsoft bereitgestellten Konten verwenden möglicherweise nicht den Begriff „zweistufige Überprüfung“. Sie finden die Funktion jedoch in der Regel in den Einstellungen für die **Sicherheit** oder die **Anmeldung**. Die Microsoft Authenticator-App funktioniert mit allen Konten, für die Standards für zeitbasierte Einmalkennwörter (TOTP) unterstützt werden. Weitere Informationen zum Hinzufügen von Nicht-Microsoft-Konten finden Sie unter [Hinzufügen Ihrer Nicht-Microsoft-Konten](user-help-auth-app-add-non-ms-account.md).
 
-## <a name="in-this-section"></a>Inhalt dieses Abschnitts
+## <a name="in-this-section"></a>In diesem Abschnitt
 
 | Artikel | BESCHREIBUNG |
 | ------ | ------------ |

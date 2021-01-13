@@ -1,41 +1,32 @@
 ---
-title: Azure Service Fabric-Diagnose und -Überwachung | Microsoft-Dokumentation
+title: Azure Service Fabric-Diagnose und -Überwachung
 description: In diesem Artikel werden die Funktionen zur Leistungsüberwachung in der Service Fabric Reliable ServiceRemoting-Runtime beschrieben, z.B. die ausgegebenen Leistungsindikatoren.
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: suchiagicha
-ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2017
-ms.author: chackdan
-ms.openlocfilehash: 4e9aa2bbb99cac2ffc2b57ccb9299bf4ee7a729e
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: pepogors
+ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876259"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86245924"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnose und Leistungsüberwachung für Reliable ServiceRemoting
-Die Reliable ServiceRemoting-Runtime gibt [Leistungsindikatoren](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx) aus. Diese bieten einen Einblick in die Funktion von ServiceRemoting und unterstützen bei der Problembehandlung und Leistungsüberwachung.
+Die Reliable ServiceRemoting-Runtime gibt [Leistungsindikatoren](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1) aus. Diese bieten einen Einblick in die Funktion von ServiceRemoting und unterstützen bei der Problembehandlung und Leistungsüberwachung.
 
 
 ## <a name="performance-counters"></a>Leistungsindikatoren
 Die Reliable ServiceRemoting-Runtime definiert die folgenden Leistungsindikatorkategorien:
 
-| Category (Kategorie) | BESCHREIBUNG |
+| Category | BESCHREIBUNG |
 | --- | --- |
 | Service Fabric-Dienst |Leistungsindikatoren für Azure Service Fabric ServiceRemoting, beispielsweise die durchschnittliche Zeit zum Verarbeiten der Anforderung |
 | Service Fabric-Dienstmethode |Leistungsindikatoren für Methoden, die vom Service Fabric Remoting-Dienst implementiert werden, z.B. wie oft eine Dienstmethode aufgerufen wird |
 
 Jede der genannten Kategorien verfügt über einen oder mehrere Leistungsindikatoren.
 
-Die Anwendung [Windows-Systemmonitor](https://technet.microsoft.com/library/cc749249.aspx) , die standardmäßig im Windows-Betriebssystem verfügbar ist, kann zum Erfassen und Anzeigen von Leistungsindikatordaten verwendet werden. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) ist eine weitere Option für das Erfassen von Leistungsindikatordaten und Hochladen in Azure-Tabellen.
+Die Anwendung [Windows-Systemmonitor](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) , die standardmäßig im Windows-Betriebssystem verfügbar ist, kann zum Erfassen und Anzeigen von Leistungsindikatordaten verwendet werden. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) ist eine weitere Option für das Erfassen von Leistungsindikatordaten und Hochladen in Azure-Tabellen.
 
 ### <a name="performance-counter-instance-names"></a>Namen von Leistungsindikatorinstanzen
 Ein Cluster mit einer großen Anzahl von ServiceRemoting-Diensten oder -Partitionen weist eine große Anzahl von Leistungsindikatorinstanzen auf. Die Namen der Leistungsindikatorinstanzen können die Identifizierung der speziellen Partition und Dienstmethode (sofern zutreffend) erleichtern, mit denen die Leistungsindikatorinstanz verknüpft ist.
@@ -45,7 +36,7 @@ Für die Kategorie `Service Fabric Service`haben die Namen von Leistungsindikato
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx)-Methode mit dem Formatbezeichner „D“ generiert.
+*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_)-Methode mit dem Formatbezeichner „D“ generiert.
 
 *ServiceReplicaOrInstanceId* ist die Zeichenfolgendarstellung der Service Fabric-Replikat-/-Instanz-ID, der die Leistungsindikatorinstanz zugeordnet ist.
 
@@ -66,7 +57,7 @@ Für die Kategorie `Service Fabric Service Method`haben die Namen von Leistungsi
 
 *ServiceRuntimeMethodId* ist die Zeichenfolgendarstellung einer 32-Bit-Ganzzahl, die von der Fabric-Dienst-Runtime zur internen Verwendung generiert wird. Sie wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen Namen von Leistungsindikatorinstanzen zu vermeiden. Benutzer sollten nicht versuchen, diesen Teil des Namens der Leistungsindikatorinstanz zu interpretieren.
 
-*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx)-Methode mit dem Formatbezeichner „D“ generiert.
+*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_)-Methode mit dem Formatbezeichner „D“ generiert.
 
 *ServiceReplicaOrInstanceId* ist die Zeichenfolgendarstellung der Service Fabric-Replikat-/-Instanz-ID, der die Leistungsindikatorinstanz zugeordnet ist.
 
@@ -83,7 +74,7 @@ Im Beispiel oben ist `ivoicemailboxservice.leavemessageasync` der Methodenname, 
 
 Die Reliable Service-Runtime veröffentlicht die folgenden Leistungsindikatoren im Zusammenhang mit der Ausführung von Dienstmethoden.
 
-| Name der Kategorie | Name des Leistungsindikators | BESCHREIBUNG |
+| Kategoriename | Name des Leistungsindikators | BESCHREIBUNG |
 | --- | --- | --- |
 | Service Fabric-Dienstmethode |Aufrufe pro Sekunde |Anzahl der Aufrufe der Dienstmethode pro Sekunde |
 | Service Fabric-Dienstmethode |Durchschnittliche Anzahl von Millisekunden pro Aufruf |Ausführungsdauer der Dienstmethode in Millisekunden |
@@ -92,7 +83,7 @@ Die Reliable Service-Runtime veröffentlicht die folgenden Leistungsindikatoren 
 ### <a name="service-request-processing-performance-counters"></a>Leistungsindikatoren für die Dienstanforderungsverarbeitung
 Wenn ein Client eine Methode über ein Dienst-Proxy-Objekt aufruft, wird eine Anforderungsnachricht über das Netzwerk an den Remoting-Dienst gesendet. Der Dienst verarbeitet die Anforderungsnachricht und sendet eine Antwort an den Client zurück. Die Reliable ServiceRemoting-Runtime veröffentlicht die folgenden Leistungsindikatoren im Zusammenhang mit der Verarbeitung von Dienstanforderungen.
 
-| Name der Kategorie | Name des Leistungsindikators | BESCHREIBUNG |
+| Kategoriename | Name des Leistungsindikators | BESCHREIBUNG |
 | --- | --- | --- |
 | Service Fabric-Dienst |Anzahl von ausstehenden Anfragen |Anzahl von Anforderungen, die im Dienst verarbeitet werden |
 | Service Fabric-Dienst |Durchschnittliche Anzahl von Millisekunden pro Anforderung |Zeit (in Millisekunden), die der Dienst zum Verarbeiten einer Anforderung erforderte |
@@ -101,4 +92,4 @@ Wenn ein Client eine Methode über ein Dienst-Proxy-Objekt aufruft, wird eine An
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Beispielcode](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
-* [EventSource-Anbieter in PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+* [EventSource-Anbieter in PerfView](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

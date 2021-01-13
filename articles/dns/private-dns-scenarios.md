@@ -1,23 +1,22 @@
 ---
-title: Szenarien für private Azure DNS-Zonen
-description: Übersicht über allgemeine Szenarien für das Verwenden Azure DNS Private Zones.
+title: Szenarien für private Zonen – Azure DNS
+description: In diesem Artikel lernen Sie allgemeine Szenarien für das Verwenden von Azure DNS Private Zones kennen.
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 03/15/2018
-ms.author: victorh
-ms.openlocfilehash: 409595febded7b242eae876ebb2cb35ae4999e5e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 10/05/2019
+ms.author: rohink
+ms.openlocfilehash: ab850adb2e9a25778d5f44ba711eb0762fe562c8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60686839"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "76939337"
 ---
-# <a name="azure-dns-private-zones-scenarios"></a>Azure DNS Private Zones-Szenarien
-Azure DNS Private Zones bieten Namensauflösung in einem virtuellen Netzwerk sowie zwischen virtuellen Netzwerken. In diesem Artikel werden einige allgemeine Szenarien untersucht, die mit diesem Feature realisiert werden können. 
+# <a name="azure-dns-private-zones-scenarios"></a>Private Azure DNS-Zonen: Szenarien
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+Azure DNS Private Zones bieten Namensauflösung in einem virtuellen Netzwerk sowie zwischen virtuellen Netzwerken. In diesem Artikel werden einige allgemeine Szenarien untersucht, die mit diesem Feature realisiert werden können.
 
 ## <a name="scenario-name-resolution-scoped-to-a-single-virtual-network"></a>Szenario: Namensauflösung für ein einzelnes virtuelles Netzwerk
 In diesem Szenario haben Sie ein virtuelles Netzwerk in Azure, das eine Reihe von Azure-Ressourcen enthält, wozu auch virtuelle Computer gehören. Sie möchten die Ressourcen aus dem virtuellen Netzwerk über einen bestimmten Domänennamen (DNS-Zone) auflösen, und Sie fordern, dass die Namensauflösung privat und nicht über das Internet zugänglich ist. Außerdem fordern Sie für die virtuellen Computer im virtuellen Netzwerk, dass Azure sie automatisch in der DNS-Zone registriert. 
@@ -32,7 +31,7 @@ Dieses Szenario ist der üblichere Fall, in dem Sie eine private Zone mit mehrer
 
 Im folgenden Diagramm ist eine einfache Version dieses Szenarios dargestellt, in dem es nur zwei virtuelle Netzwerke gibt: A und B. A ist als ein virtuelles Registrierungsnetzwerk und B als ein virtuelles Auflösungsnetzwerk festgelegt. Vorgesehen ist, dass für beide virtuellen Netzwerke eine gemeinsame Zone „contoso.com“ verwendet wird. Wenn die Zone erstellt ist und das virtuelle Auflösungs- und das virtuelle Registrierungsnetzwerk mit der Zone verknüpft sind, registriert Azure automatisch DNS-Einträge für die virtuellen Computer (VNETA-VM1 und VNETA-VM2) aus dem virtuellen Netzwerk A. Sie können auch manuell DNS-Einträge in der Zone für virtuelle Computer im virtuellen Auflösungsnetzwerk B hinzufügen. Bei dieser Konfiguration ergibt sich das folgende Verhalten für Weiterleitungs- und Reverse-DNS-Abfragen:
 * Eine DNS-Abfrage von VNETB-VM1 im virtuellen Auflösungsnetzwerk B für „VNETA-VM1.contoso.com“ erhält eine DNS-Antwort, die die private IP-Adresse von VNETA-VM1 enthält.
-* Eine Reverse-DNS-Abfrage (PTR-Abfrage) von VNETB-VM2 im virtuellen Auflösungsnetzwerk B für 10.1.0.1 erhält eine DNS-Antwort, die „FQDN VNETB-VM1.contoso.com“ enthält. Der Grund ist, dass Reverse-DNS-Abfragen auf dasselbe virtuelle Netzwerk beschränkt sind. 
+* Eine Reverse-DNS-Abfrage (PTR-Abfrage) von VNETB-VM2 im virtuellen Auflösungsnetzwerk B für 10.1.0.1 erhält eine DNS-Antwort, die „FQDN VNETB-VM1.contoso.com“ enthält.  
 * Eine Reverse-DNS-Abfrage (PTR-Abfrage) von VNETB-VM3 im virtuellen Auflösungsnetzwerk B für 10.0.0.1 erhält NXDOMAIN. Der Grund ist, dass Reverse-DNS-Abfragen auf lediglich dasselbe virtuelle Netzwerk beschränkt sind. 
 
 
@@ -44,7 +43,7 @@ In diesem Szenario haben Sie einen Anwendungsfall, bei dem Sie je nachdem, wo si
 
 Im folgenden Diagramm ist dieses Szenario dargestellt. Sie haben ein virtuelles Netzwerk mit zwei virtuellen Computern (VNETA-VM1 und VNETA-VM2), denen jeweils sowohl eine private als auch eine öffentliche IP-Adresse zugeordnet sind. Sie erstellen eine öffentliche DNS-Zone namens „contoso.com“ und registrieren die öffentlichen IP-Adressen für diese virtuellen Computer als DNS-Einträge in der Zone. Sie erstellen außerdem eine private DNS-Zone, die ebenfalls den Namen „contoso.com“ hat, wobei Sie A als das virtuelle Registrierungsnetzwerk angeben. Azure registriert die virtuellen Computer automatisch als A-Datensätze in der privaten Zone, die auf ihre privaten IP-Adressen verweisen.
 
-Ab jetzt gibt Azure, wenn ein Internetclient eine DNS-Abfrage sendet, um „VNETA-VM1.contoso.com“ nachzuschlagen, den öffentlichen IP-Eintrag aus der öffentlichen Zone zurück. Wird die gleiche DNS-Abfrage von einem anderen virtuellen Computer (z. B. VNETA-VM2) im selben virtuellen Netzwerk A gesendet, gibt Azure den privaten IP-Eintrag aus der privaten Zone zurück. 
+Ab jetzt gibt Azure, wenn ein Internetclient eine DNS-Abfrage sendet, um „VNETA-VM1.contoso.com“ nachzuschlagen, den öffentlichen IP-Eintrag aus der öffentlichen Zone zurück. Wird die gleiche DNS-Abfrage von einem anderen virtuellen Computer (z. B. VNETA-VM2) im selben virtuellen Netzwerk gesendet, gibt Azure den privaten IP-Eintrag aus der privaten Zone zurück. 
 
 ![Split-Horizon-Auflösung](./media/private-dns-scenarios/split-brain-resolution.png)
 
@@ -53,7 +52,7 @@ Weitere Informationen zu privaten DNS-Zonen finden Sie unter [Using Azure DNS fo
 
 Erfahren Sie, wie Sie in Azure DNS [eine private DNS-Zone erstellen](./private-dns-getstarted-powershell.md).
 
-Weitere Informationen zu DNS-Zonen und -Einträgen finden Sie unter [Übersicht über DNS-Zonen und -Einträge](dns-zones-records.md).
+Erfahren Sie mehr zu DNS-Zonen und -Einträgen im folgenden Artikel: [DNS-Zonen und -Einträge: Übersicht](dns-zones-records.md).
 
 Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) von Azure.
 

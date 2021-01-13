@@ -1,36 +1,35 @@
 ---
-title: Die Qualifikation „Entität erkennen“ der kognitiven Suche – Azure Search
-description: Extrahieren Sie in Azure Search in einer Pipeline für die kognitive Suche verschiedene Entitätstypen aus Text.
-services: search
+title: Die kognitive Qualifikation „Entitätserkennung“
+titleSuffix: Azure Cognitive Search
+description: Extrahieren verschiedener Entitätstypen aus Text in einer Anreicherungspipeline in der kognitiven Azure-Suche.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: ad2fef96491c2d1a15ad9ff5f57d2911dfecaa36
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 06/17/2020
+ms.openlocfilehash: ddfca965ea32ca726df39f894ba45f9580225d9d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265786"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542460"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Die kognitive Qualifikation „Entitätserkennung“
 
-Mit der Qualifikation **Entitätserkennung** (EntityRecognitionSkill) können Sie Entitäten aus verschiedenen Arten von Text extrahieren. Bei dieser Qualifikation werden die Machine Learning-Modelle verwendet, die in Cognitive Services über die [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) bereitgestellt werden.
+Mit der Qualifikation **Entitätserkennung** (EntityRecognitionSkill) können Sie Entitäten aus verschiedenen Arten von Text extrahieren. Bei dieser Qualifikation werden die Machine Learning-Modelle verwendet, die in Cognitive Services über die [Textanalyse](../cognitive-services/text-analytics/overview.md) bereitgestellt werden.
 
 > [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/) angegeben.
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="data-limits"></a>Datengrenzwerte
-Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an die Schlüsselbegriffserkennung senden, denken Sie daran, den [Skill „Text teilen“](cognitive-search-skill-textsplit.md) zu verwenden.
+Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch [`String.Length`](/dotnet/api/system.string.length)). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an die Schlüsselbegriffserkennung senden, denken Sie daran, den [Skill „Text teilen“](cognitive-search-skill-textsplit.md) zu verwenden.
 
 ## <a name="skill-parameters"></a>Skillparameter
 
@@ -38,38 +37,37 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
-| categories    | Array von zu extrahierenden Kategorien.  Mögliche Kategorietypen: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"` und `"Email"`. Wenn keine Kategorie angegeben ist, werden alle Typen zurückgegeben.|
-|defaultLanguageCode |  Sprachcode des Eingabetexts. Die folgenden Sprachen werden unterstützt: `de, en, es, fr, it`|
-|minimumPrecision | Nicht verwendet. Für die zukünftige Verwendung reserviert. |
-|includeTypelessEntities | Wenn dieser Parameter auf „true“ festgelegt ist und der Text eine bekannte Entität enthält, die aber keiner unterstützten Kategorie zugeordnet werden kann, wird sie als Teil des komplexen Ausgabefelds `"entities"` zurückgegeben. 
-Hierbei handelt es sich um Entitäten, die gut bekannt, aber nicht als Teil der aktuellen unterstützten „Kategorien“ klassifiziert sind. „Windows 10“ ist z.B. eine gut bekannte Entität (ein Produkt), aber „Produkte“ sind nicht in den heute unterstützten Kategorien. Der Standardwert ist `false`. |
+| `categories`    | Array von zu extrahierenden Kategorien.  Mögliche Kategorietypen: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"` und `"Email"`. Wenn keine Kategorie angegeben ist, werden alle Typen zurückgegeben.|
+| `defaultLanguageCode` |    Sprachcode des Eingabetexts. Die folgenden Sprachen werden unterstützt: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`. Nicht alle Entitätskategorien werden für alle Sprachen unterstützt (siehe Anmerkung unten).|
+| `minimumPrecision` | Ein Wert zwischen 0 und 1 ein. Wenn die Zuverlässigkeitsbewertung (in der `namedEntities`-Ausgabe) unter diesem Wert liegt, wird die Entität nicht zurückgegeben. Die Standardeinstellung ist 0. |
+| `includeTypelessEntities` | Legen Sie diese Option auf `true` fest, wenn Sie bekannte Entitäten erkennen möchten, die nicht in die aktuellen Kategorien passen. Erkannte Entitäten werden im komplexen Ausgabefeld `entities` zurückgegeben. „Windows 10“ ist z.B. eine bekannte Entität (ein Produkt), aber da „Produkte“ keine unterstützte Kategorie ist, wäre diese Entität im Entitäten-Ausgabefeld enthalten. Die Standardeinstellung ist `false`. |
 
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
 | Eingabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
-| languageCode  | Optional. Der Standardwert ist `"en"`.  |
-| text          | Der zu analysierende Text          |
+| `languageCode`    | Optional. Der Standardwert ist `"en"`.  |
+| `text`          | Der zu analysierende Text          |
 
 ## <a name="skill-outputs"></a>Skillausgaben
 
 > [!NOTE]
-> Nicht alle Entitätskategorien werden für alle Sprachen unterstützt. Die Extraktion der Typen `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"` wird nur für _en_ und _es_ unterstützt.
+> Nicht alle Entitätskategorien werden für alle Sprachen unterstützt. Die Entitätskategorietypen `"Person"`, `"Location"` und `"Organization"` werden für die vollständige Liste der oben genannten Sprachen unterstützt. Nur _de_, _en_, _es_, _fr_ und _zh-hans_ unterstützen die Extraktion der Typen `"Quantity"`, `"Datetime"`, `"URL"` und `"Email"`. Weitere Informationen finden Sie unter [Sprach- und Regionsunterstützung für die Textanalyse-API](../cognitive-services/text-analytics/language-support.md).  
 
-| Ausgabename     | BESCHREIBUNG                   |
+| Ausgabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
-| persons      | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge den Namen einer Person darstellt. |
-| locations  | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge einen Ort darstellt. |
-| organizations  | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge eine Organisation darstellt. |
-| quantities  | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge eine Menge darstellt. |
-| dateTimes  | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge einen DateTime-Wert darstellt (wie im Text gezeigt). |
-| urls | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge eine URL darstellt. |
-| emails | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge eine E-Mail-Adresse darstellt. |
-| namedEntities | Ein Array mit komplexen Typen und den folgenden Feldern: <ul><li>category</li> <li>value (der tatsächliche Entitätsname)</li><li>offset (die Fundstelle im Text)</li><li>confidence (derzeit nicht verwendet; wird auf einen Wert von -1 festgelegt)</li></ul> |
-| entities | Ein Array mit komplexen Typen, die umfangreiche Informationen zu den aus dem Text extrahierten Entitäten enthalten, und den folgenden Feldern: <ul><li> name (der tatsächliche Entitätsname; stellt eine „normalisierte“ Form dar)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (Link zur Wikipedia-Seite für die Entität)</li><li>bingId</li><li>type (Kategorie der erkannten Entität)</li><li>subType (nur für bestimmte Kategorien verfügbar; ermöglicht eine präzisere Ansicht des Entitätstyps)</li><li> matches (eine komplexe Sammlung mit:)<ul><li>text (unformatierter Text für die Entität)</li><li>offset (Fundstelle)</li><li>length (Länge des unformatierten Texts für die Entität)</li></ul></li></ul> |
+| `persons`       | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge den Namen einer Person darstellt. |
+| `locations`  | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge einen Ort darstellt. |
+| `organizations`  | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge eine Organisation darstellt. |
+| `quantities`  | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge eine Menge darstellt. |
+| `dateTimes`  | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge einen DateTime-Wert darstellt (wie im Text gezeigt). |
+| `urls` | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge eine URL darstellt. |
+| `emails` | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge eine E-Mail-Adresse darstellt. |
+| `namedEntities` | Ein Array mit komplexen Typen und den folgenden Feldern: <ul><li>category</li> <li>value (der tatsächliche Entitätsname)</li><li>offset (die Fundstelle im Text)</li><li>Zuverlässigkeit (ein höherer Wert bedeutet, dass es sich mit höherer Wahrscheinlichkeit um eine echte Entität handelt)</li></ul> |
+| `entities` | Ein Array mit komplexen Typen, die umfangreiche Informationen zu den aus dem Text extrahierten Entitäten enthalten, und den folgenden Feldern: <ul><li> name (der tatsächliche Entitätsname; stellt eine „normalisierte“ Form dar)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (Link zur Wikipedia-Seite für die Entität)</li><li>bingId</li><li>type (Kategorie der erkannten Entität)</li><li>subType (nur für bestimmte Kategorien verfügbar; ermöglicht eine präzisere Ansicht des Entitätstyps)</li><li> matches (eine komplexe Sammlung mit:)<ul><li>text (unformatierter Text für die Entität)</li><li>offset (Fundstelle)</li><li>length (Länge des unformatierten Texts für die Entität)</li></ul></li></ul> |
 
-##  <a name="sample-definition"></a>Beispieldefinition
+##    <a name="sample-definition"></a>Beispieldefinition
 
 ```json
   {
@@ -77,6 +75,7 @@ Hierbei handelt es sich um Entitäten, die gut bekannt, aber nicht als Teil der 
     "categories": [ "Person", "Email"],
     "defaultLanguageCode": "en",
     "includeTypelessEntities": true,
+    "minimumPrecision": 0.5,
     "inputs": [
       {
         "name": "text",
@@ -98,7 +97,7 @@ Hierbei handelt es sich um Entitäten, die gut bekannt, aber nicht als Teil der 
     ]
   }
 ```
-##  <a name="sample-input"></a>Beispieleingabe
+##    <a name="sample-input"></a>Beispieleingabe
 
 ```json
 {
@@ -115,7 +114,7 @@ Hierbei handelt es sich um Entitäten, die gut bekannt, aber nicht als Teil der 
 }
 ```
 
-##  <a name="sample-output"></a>Beispielausgabe
+##    <a name="sample-output"></a>Beispielausgabe
 
 ```json
 {
@@ -132,7 +131,7 @@ Hierbei handelt es sich um Entitäten, die gut bekannt, aber nicht als Teil der 
             "category":"Person",
             "value": "John Smith",
             "offset": 35,
-            "confidence": -1
+            "confidence": 0.98
           }
         ],
         "entities":  
@@ -188,11 +187,12 @@ Hierbei handelt es sich um Entitäten, die gut bekannt, aber nicht als Teil der 
 }
 ```
 
+Beachten Sie, dass die für Entitäten in der Ausgabe dieses Skills zurückgegebenen Offsets direkt von der [Textanalyse-API](../cognitive-services/text-analytics/overview.md) zurückgegeben werden. Dies bedeutet, dass Sie, wenn Sie sie zum Indizieren in der ursprünglichen Zeichenfolge verwenden, die [StringInfo](/dotnet/api/system.globalization.stringinfo)-Klasse in .NET verwenden müssen, um den richtigen Inhalt zu extrahieren.  [Weitere Informationen finden Sie hier.](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="error-cases"></a>Auftretende Fehler
 Wird der Sprachcode für das Dokument nicht unterstützt, wird ein Fehler zurückgegeben, und es werden keine Entitäten extrahiert.
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Vordefinierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)

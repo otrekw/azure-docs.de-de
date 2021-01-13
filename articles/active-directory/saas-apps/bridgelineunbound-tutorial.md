@@ -1,28 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Bridgeline Unbound | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in Bridgeline Unbound | Microsoft-Dokumentation'
 description: In diesem Artikel erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Bridgeline Unbound konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b018472f-c8b3-403d-ae66-9ed26a35f413
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a958c693699cb83274e840f7cf36efceadc2ce5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34f72f0aa0b112cb12ebdd0b8c4afed2b49db47c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106003"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673204"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>Tutorial: Azure Active Directory-Integration mit Bridgeline Unbound
+# <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>Tutorial: Azure Active Directory-Integration in Bridgeline Unbound
 
 In diesem Tutorial erfahren Sie, wie Sie Bridgeline Unbound in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Azure AD in Bridgeline Unbound bietet die folgenden Vorteile:
@@ -31,7 +27,7 @@ Die Integration von Azure AD in Bridgeline Unbound bietet die folgenden Vorteile
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Bridgeline Unbound anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -68,7 +64,7 @@ Zum Konfigurieren der Integration von Bridgeline Unbound in Azure AD müssen Sie
 
 4. Geben Sie im Suchfeld **Bridgeline Unbound** ein, wählen Sie im Ergebnisbereich **Bridgeline Unbound** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Bridgeline Unbound in der Ergebnisliste](common/search-new-app.png)
+    ![Bridgeline Unbound in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -78,7 +74,7 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Bridgeline Unbound müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Bridgeline Unbound ](#configure-bridgeline-unbound-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+2. **[Konfigurieren des einmaligen Anmeldens für Bridgeline Unbound](#configure-bridgeline-unbound-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Erstellen eines Bridgeline Unbound-Testbenutzers](#create-bridgeline-unbound-test-user)** , um eine Entsprechung von Britta Simon in Bridgeline Unbound zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist
@@ -104,7 +100,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Bridgeli
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Bridgeline Unbound](common/idp-intiated.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners und einer Antwort-URL sowie zum Klicken auf „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `iApps_UPSTT_<ENVIRONMENTNAME>`
 
@@ -112,7 +108,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Bridgeli
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Bridgeline Unbound](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.iapps.com/CommonLogin/login?<INSTANCENAME>`
 
@@ -154,13 +150,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -193,18 +189,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in Bridgeline Unbound erstellt. Bridgeline Unbound unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Sollte ein Benutzer noch nicht in Bridgeline Unbound vorhanden sein, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 > [!Note]
-> Setzen Sie sich mit dem  [Supportteam von Bridgeline Unbound](mailto:support@iapps.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+> Setzen Sie sich mit dem [Supportteam von Bridgeline Unbound](mailto:support@iapps.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Bridgeline Unbound“ klicken, sollten Sie automatisch bei der Bridgeline Unbound-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Bridgeline Unbound“ klicken, sollten Sie automatisch bei der Bridgeline Unbound-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

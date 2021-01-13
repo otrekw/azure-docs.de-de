@@ -1,20 +1,14 @@
 ---
-title: Schützen von Azure Service Bus-Anwendungen vor Ausfällen und Notfällen | Microsoft Docs
-description: Verfahren, die Anwendungen vor einem potenziellen Service Bus-Ausfall schützen können.
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
+title: Schützen von Azure Service Bus-Anwendungen vor Ausfällen und Notfällen
+description: Dieser Artikel stellt Verfahren vor, die Anwendungen vor einem potenziellen Azure Service Bus-Ausfall schützen können.
 ms.topic: article
-ms.date: 09/14/2018
-ms.author: aschhab
-ms.openlocfilehash: 24fba1961c8fd95f1b9489716d690dd6eaa97b62
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 06/23/2020
+ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274844"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88065623"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Bewährte Methoden zum Schützen von Anwendungen vor Service Bus-Ausfällen und Notfällen
 
@@ -33,10 +27,10 @@ Service Bus Premium unterstützt die georedundante Notfallwiederherstellung auf 
 
 ### <a name="availability-zones"></a>Verfügbarkeitszonen
 
-Die Service Bus Premium-SKU unterstützt [Verfügbarkeitszonen](../availability-zones/az-overview.md), die fehlerisolierte Standorte innerhalb einer Azure-Region bieten.
+Die Service Bus Premium-SKU unterstützt [Verfügbarkeitszonen](../availability-zones/az-overview.md), die fehlerisolierte Standorte innerhalb einer Azure-Region bieten. Service Bus verwaltet drei Kopien des Messagingstores (ein primäres und zwei sekundäre Replikate). Service Bus hält alle drei Kopien für Daten- und Verwaltungsvorgänge synchron. Wenn bei der primären Kopie ein Fehler auftritt, wird eine der sekundären Kopien ohne wahrnehmbare Ausfallzeit zum primären Replikat heraufgestuft. Wenn bei den Anwendungen vorübergehende Trennungen von Service Bus auftreten, stellt die Wiederholungslogik im SDK automatisch erneut eine Verbindung mit Service Bus her. 
 
 > [!NOTE]
-> Die Unterstützung für Verfügbarkeitszonen für Azure Service Bus Premium ist nur in [Azure-Regionen](../availability-zones/az-overview.md#services-support-by-region) verfügbar, in denen Verfügbarkeitszonen vorhanden sind.
+> Die Unterstützung für Verfügbarkeitszonen für Azure Service Bus Premium ist nur in [Azure-Regionen](../availability-zones/az-region.md) verfügbar, in denen Verfügbarkeitszonen vorhanden sind.
 
 Sie können Verfügbarkeitszonen nur für neue Namespaces über das Azure-Portal aktivieren. Service Bus bietet keine Unterstützung für die Migration vorhandener Namespaces. Sie können die Zonenredundanz nicht deaktivieren, wenn Sie sie für Ihren Namespace aktiviert haben.
 
@@ -78,7 +72,7 @@ Bei Verwendung der passiven Replikation können Nachrichten in den folgenden Sze
 Im Beispiel für die [Georeplikation mit dem Standard-Tarif von Service Bus][Geo-replication with Service Bus Standard Tier] wird die passive Replikation von Nachrichtenentitäten veranschaulicht.
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Schutz von Relayendpunkten vor Rechenzentrumausfällen oder Notfällen
-Die Georeplikation von [Azure Relay](../service-bus-relay/relay-what-is-it.md)-Endpunkten ermöglicht die Verwendung eines Diensts, mit dem ein Relayendpunkt verfügbar gemacht wird, damit er bei Service Bus-Ausfällen zugänglich ist. Zum Erzielen der Georeplikation muss der Dienst zwei Relayendpunkte in unterschiedlichen Namespaces erstellen. Die Namespaces müssen sich in unterschiedlichen Rechenzentren befinden, und die beiden Endpunkte müssen unterschiedliche Namen haben. Ein primärer Endpunkt kann beispielsweise unter **contosoPrimary.servicebus.windows.net/myPrimaryService** erreichbar sein, während der sekundäre Endpunkt unter **contosoSecondary.servicebus.windows.net/mySecondaryService** erreichbar ist.
+Die Georeplikation von [Azure Relay](../azure-relay/relay-what-is-it.md)-Endpunkten ermöglicht die Verwendung eines Diensts, mit dem ein Relayendpunkt verfügbar gemacht wird, damit er bei Service Bus-Ausfällen zugänglich ist. Zum Erzielen der Georeplikation muss der Dienst zwei Relayendpunkte in unterschiedlichen Namespaces erstellen. Die Namespaces müssen sich in unterschiedlichen Rechenzentren befinden, und die beiden Endpunkte müssen unterschiedliche Namen haben. Ein primärer Endpunkt kann beispielsweise unter **contosoPrimary.servicebus.windows.net/myPrimaryService** erreichbar sein, während der sekundäre Endpunkt unter **contosoSecondary.servicebus.windows.net/mySecondaryService** erreichbar ist.
 
 Der Dienst lauscht dann an beiden Endpunkten, und ein Client kann den Dienst über einen der beiden Endpunkte aufrufen. Eine Clientanwendung wählt ein Relayelement als primären Endpunkt und sendet dessen Anforderung an den aktiven Endpunkt. Wenn der Vorgang mit einem Fehlercode fehlschlägt, wird in diesem Fehler darauf hingewiesen, dass der Relayendpunkt nicht verfügbar ist. Die Anwendung öffnet einen Kanal zum Backup-Endpunkt und gibt die Anforderung neu heraus. An diesem Punkt tauschen der aktive Endpunkt und der Backup-Endpunkt die Rollen: Die Clientanwendung sieht den alten aktiven Endpunkt als neuen Backup-Endpunkt und den alten Backup-Endpunkt als neuen aktiven Endpunkt an. Wenn beide Sendevorgänge fehlschlagen, bleiben die Rollen der beiden Entitäten unverändert, und es wird ein Fehler zurückgegeben.
 
@@ -95,7 +89,7 @@ Weitere Informationen zur Notfallwiederherstellung finden Sie in diesen Artikeln
 [BrokeredMessage.MessageId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [BrokeredMessage.Label]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Geo-replication with Service Bus Standard Tier]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
-[Azure SQL Database Business Continuity]: ../sql-database/sql-database-business-continuity.md
+[Azure SQL Database Business Continuity]:../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md
 [Azure resiliency technical guidance]: /azure/architecture/resiliency
 
 [1]: ./media/service-bus-outages-disasters/az.png

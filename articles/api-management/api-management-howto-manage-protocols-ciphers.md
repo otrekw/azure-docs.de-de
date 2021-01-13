@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Protokollen und Verschlüsselungen in Azure API Management | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Protokolle (TLS, SSL) und Verschlüsselungen (DES) in Azure API Management verwalten.
+description: Erfahren Sie, wie Sie Protokolle (TLS) und Verschlüsselungen (DES) in Azure API Management verwalten.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: f7c7fdd06480ce3da70c86d38ab0685b9b3aaaf2
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 043a3d0b63dfc74f587b58b3c2ac42f1a084cc4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072404"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86250310"
 ---
 # <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Verwalten von Protokollen und Verschlüsselungen in Azure API Management
 
@@ -42,5 +42,5 @@ Damit Sie den Schritten in diesem Artikel folgen können, benötigen Sie folgend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über [TLS (Transport Layer Security)](https://docs.microsoft.com/dotnet/framework/network-programming/tls).
+* Erfahren Sie mehr über [TLS (Transport Layer Security)](/dotnet/framework/network-programming/tls).
 * Hier finden Sie weitere [Videos](https://azure.microsoft.com/documentation/videos/index/?services=api-management) zu API Management.

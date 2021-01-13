@@ -10,50 +10,50 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 09/09/2019
-  ms.openlocfilehash: cf20801a8c1bf6c7ee9b2a7f62069c15388ffb74
-  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+  ms.openlocfilehash: a0376262468d076b64d1c22427bb5f9aa4ecc6df
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71173752"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91973681"
 landingContent:
 - title: Neueste Features
   linkLists:
   - linkListType: whats-new
     links:
-    - text: Dedizierte Hosts (Vorschauversion)
-      url: dedicated-hosts.md
-    - text: Näherungsplatzierungsgruppen (Vorschauversion)
+    - text: Spot-VMs
+      url: ../spot-vms.md
+    - text: Dedizierte Hosts
+      url: ../dedicated-hosts.md
+    - text: Näherungsplatzierungsgruppen
       url: proximity-placement-groups.md
-    - text: Kurzlebige Datenträger
-      url: ephemeral-os-disks.md
 - title: Erste Schritte
   linkLists:
   - linkListType: quickstart
     links:
     - text: Azure-Portal
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-portal
+      url: ./quick-create-portal.md
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-powershell
-    - text: Azure-Befehlszeilenschnittstelle
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-cli
+      url: ./quick-create-powershell.md
+    - text: Azure CLI
+      url: ./quick-create-cli.md
 - title: Ausführliche Leitfäden
   linkLists:
   - linkListType: tutorial
     links:
     - text: Erstellen und Verwalten von virtuellen Windows-Computern
-      url: /azure/virtual-machines/windows/tutorial-manage-vm
+      url: ./tutorial-manage-vm.md
     - text: VM-Datenträger
-      url: /azure/virtual-machines/windows/tutorial-manage-data-disk
+      url: ./tutorial-manage-data-disk.md
     - text: Automatisieren der VM-Konfiguration
-      url: /azure/virtual-machines/windows/tutorial-automate-vm-deployment
+      url: ./tutorial-automate-vm-deployment.md
     - text: Erstellen von benutzerdefinierten VM-Images
-      url: /azure/virtual-machines/windows/tutorial-custom-images
+      url: ./tutorial-custom-images.md
     - text: Verwalten virtueller Computer mit virtuellen Netzwerken
-      url: /azure/virtual-machines/windows/tutorial-virtual-network
+      url: ./tutorial-virtual-network.md
 - title: Eigenverantwortliches Training
   linkLists:
   - linkListType: learn
     links:
     - text: " Erstellen eines virtuellen Windows-Computers in Azure"
-      url: https://docs.microsoft.com/learn/modules/create-windows-virtual-machine-in-azure/
+      url: /learn/modules/create-windows-virtual-machine-in-azure/

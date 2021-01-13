@@ -2,7 +2,7 @@
 title: Dokumentation zur Vorschauversion von Azure Blockchain Workbench
 summary: Erfahren Sie, wie Sie Blockchain-Anwendungen entwickeln. In Tutorials, API-Referenzen und anderen Dokumentationen erfahren Sie, wie Sie Azure Blockchain Workbench bereitstellen und Blockchain-Anwendungen in Azure erstellen und verwalten.
 metadata:
-  title: 'Dokumentation zur Vorschauversion von Azure Blockchain Workbench: Tutorials, API-Referenz'
+  title: Dokumentation zur Vorschauversion von Azure Blockchain Workbench
   description: Erfahren Sie, wie Sie Blockchain-Anwendungen entwickeln. In Tutorials, API-Referenzen und anderen Dokumentationen erfahren Sie, wie Sie Azure Blockchain Workbench bereitstellen und Blockchain-Anwendungen in Azure erstellen und verwalten.
   services: azure-blockchain
   ms.service: azure-blockchain
@@ -10,12 +10,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 09/05/2019
-  ms.openlocfilehash: cc493ae3813cc1c53670b8f6ea46f915d7f9efee
-  ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+  ms.openlocfilehash: d94f01abdf3b2853e892925d5a19ec5468fd26f0
+  ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/10/2019
-  ms.locfileid: "70845026"
+  ms.lasthandoff: 01/07/2021
+  ms.locfileid: "97964472"
 landingContent:
 - title: Info zu Azure Blockchain Workbench
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
       url: overview.md
   - linkListType: concept
     links:
-    - text: Architecture
+    - text: Architektur
       url: architecture.md
   - linkListType: video
     links:
@@ -33,6 +33,12 @@ landingContent:
       url: https://channel9.msdn.com/Shows/Blocktalk/Introduction-to-Azure-Blockchain-Workbench
 - title: Erste Schritte
   linkLists:
+  - linkListType: learn
+    links:
+    - text: Befolgen des Microsoft Learn-Blockchain-Pfads
+      url: /learn/paths/ethereum-blockchain-development
+    - text: Ansehen der Blockchain-Reihe für Anfänger
+      url: https://channel9.msdn.com/Series/Beginners-Series-to-Blockchain
   - linkListType: deploy
     links:
     - text: Bereitstellen von Azure Blockchain Workbench

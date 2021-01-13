@@ -1,13 +1,13 @@
 ---
-title: Referenz zu den logischen OData-Operatoren – Azure Search
-description: Logische OData-Operatoren (and, or, and not) in Azure Search-Abfragen.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Referenz zu den logischen OData-Operatoren
+titleSuffix: Azure Cognitive Search
+description: Syntax und Referenzdokumentation für die Verwendung der logischen OData-Operatoren „and“, „or“ und „not“ in Azure Cognitive Search-Abfragen.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: bf4939a40a2fdf1c8fc6cf97beca0184b1604c98
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 27d5427d34de591f9cfeab2310d79a2fde217624
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647996"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88917872"
 ---
-# <a name="odata-logical-operators-in-azure-search---and-or-not"></a>Logische OData-Operatoren in Azure Search: `and`, `or`, `not`
+# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Logische OData-Operatoren in der kognitiven Azure-Suche: `and`, `or`, `not`
 
-[OData-Filterausdrücke](query-odata-filter-orderby-syntax.md) in Azure Search sind boolesche Ausdrücke, die in `true` oder `false` ausgewertet werden. Sie können einen komplexen Filter schreiben, indem Sie eine Reihe von [einfacheren Filtern](search-query-odata-comparison-operators.md) erstellen und diese dann mit den logischen Operatoren aus [boolescher Algebra](https://en.wikipedia.org/wiki/Boolean_algebra) zusammensetzen:
+[OData-Filterausdrücke](query-odata-filter-orderby-syntax.md) in der kognitiven Azure-Suche sind boolesche Ausdrücke, die in `true` oder `false` ausgewertet werden. Sie können einen komplexen Filter schreiben, indem Sie eine Reihe von [einfacheren Filtern](search-query-odata-comparison-operators.md) erstellen und diese dann mit den logischen Operatoren aus [boolescher Algebra](https://en.wikipedia.org/wiki/Boolean_algebra) zusammensetzen:
 
 - `and`: Ein binärer Operator, der in `true` auswertet wird, wenn sowohl seine linken als auch seine rechten Unterausdrücke in `true` ausgewertet werden.
 - `or`: Ein binärer Operator, der in `true` auswertet wird, wenn einer seiner linken oder rechten Unterausdrücke in `true` ausgewertet wird.
@@ -51,10 +51,10 @@ logical_expression ::=
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
+> [OData-Syntaxdiagramm für Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie unter [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md).
 
 Es gibt zwei Formen von logischen Ausdrücken: binär (`and`/`or`) mit zwei Unterausdrücken und unär (`not`) mit nur einem Unterausdruck. Die Unterausdrücke können beliebige boolesche Ausdrücke sein:
 
@@ -66,13 +66,13 @@ Es gibt zwei Formen von logischen Ausdrücken: binär (`and`/`or`) mit zwei Unte
 - Andere logische Ausdrücke, die mit `and`, `or` oder `not` gebildet werden.
 
 > [!IMPORTANT]
-> Unter bestimmten Umständen können nicht alle Arten von Unterausdrücken mit `and`/`or` verwendet werden, insbesondere innerhalb von Lambdaausdrücken. Details dazu finden Sie unter [OData-Sammlungsoperatoren in Azure Search](search-query-odata-collection-operators.md#limitations).
+> Unter bestimmten Umständen können nicht alle Arten von Unterausdrücken mit `and`/`or` verwendet werden, insbesondere innerhalb von Lambdaausdrücken. Details dazu finden Sie unter [OData-Sammlungsoperatoren in der kognitiven Azure-Suche](search-query-odata-collection-operators.md#limitations).
 
 ### <a name="logical-operators-and-null"></a>Logische Operatoren und `null`
 
 Die meisten booleschen Ausdrücke wie Funktionen und Vergleiche können keine `null`-Werte erzeugen, und die logischen Operatoren können nicht direkt auf das `null`-Literal angewendet werden (z.B. ist `x and null` unzulässig). Boolesche Felder können jedoch `null` sein, sodass Sie beachten müssen, wie sich die Operatoren `and`, `or` und `not` bei Vorhandensein von null verhalten. Dies wird in der folgenden Tabelle zusammengefasst, wobei `b` ein Feld vom Typ `Edm.Boolean` ist:
 
-| Ausdruck | Ergebnis, wenn `b` `null` ist |
+| Ausdruck | Ergebnis, wenn `b``null` ist |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -87,29 +87,37 @@ Die meisten booleschen Ausdrücke wie Funktionen und Vergleiche können keine `n
 | `b or true` | `true` |
 | `b or false` | `false` |
 
-Wenn ein boolesches Feld `b` von selbst in einem Filterausdruck vorkommt, verhält es sich, als wäre es `b eq true`. Wenn also `b` `null` ist, wird der Ausdruck in `false` ausgewertet. Auf ähnliche Weise verhält sich `not b` wie `not (b eq true)` und wird daher in `true` ausgewertet. Auf diese Weise verhalten sich `null`-Felder wie `false`. Dies entspricht dem Verhalten bei der Kombination mit anderen Ausdrücken unter Verwendung von `and` und `or`, wie in der Tabelle oben gezeigt. Dennoch wird ein direkter Vergleich mit `false` (`b eq false`) immer noch in `false` ausgewertet. Mit anderen Worten: `null` ist nicht gleich `false`, auch wenn es sich in booleschen Ausdrücken so verhält.
+Wenn ein boolesches Feld `b` von selbst in einem Filterausdruck vorkommt, verhält es sich, als wäre es `b eq true`. Wenn also `b``null` ist, wird der Ausdruck in `false` ausgewertet. Auf ähnliche Weise verhält sich `not b` wie `not (b eq true)` und wird daher in `true` ausgewertet. Auf diese Weise verhalten sich `null`-Felder wie `false`. Dies entspricht dem Verhalten bei der Kombination mit anderen Ausdrücken unter Verwendung von `and` und `or`, wie in der Tabelle oben gezeigt. Dennoch wird ein direkter Vergleich mit `false` (`b eq false`) immer noch in `false` ausgewertet. Mit anderen Worten: `null` ist nicht gleich `false`, auch wenn es sich in booleschen Ausdrücken so verhält.
 
 ## <a name="examples"></a>Beispiele
 
 Abgleichen von Dokumenten, bei denen das `rating`-Feld zwischen 3 und 5 (einschließlich) liegt:
 
+```odata-filter-expr
     rating ge 3 and rating le 5
+```
 
 Abgleichen von Dokumenten, bei denen alle Elemente des `ratings`-Felds kleiner als 3 oder größer als 5 sind:
 
+```odata-filter-expr
     ratings/all(r: r lt 3 or r gt 5)
+```
 
 Abgleichen von Dokumenten, bei denen das `location`-Feld im angegebenen Polygon liegt und das Dokument nicht den Begriff „public“ (öffentlich) enthält.
 
+```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))') and not search.ismatch('public')
+```
 
 Abgleichen von Dokumenten für Hotels in Vancouver (Kanada), die ein Luxuszimmer mit einem Basispreis kleiner als 160 bieten:
 
+```odata-filter-expr
     Address/City eq 'Vancouver' and Address/Country eq 'Canada' and Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 160)
+```
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Filter in Azure Search](search-filters.md)
-- [Übersicht über die OData-Ausdruckssprache für Azure Search](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md)
-- [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst)
+- [Filter in Azure Cognitive Search](search-filters.md)
+- [Übersicht über die OData-Ausdruckssprache für Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](/rest/api/searchservice/Search-Documents)

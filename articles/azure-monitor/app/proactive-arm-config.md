@@ -1,42 +1,33 @@
 ---
-title: Konfigurieren der Einstellungen für die intelligente Erkennungsregel von Azure Application Insights mit Azure Resource Manager-Vorlagen | Microsoft-Dokumentation
+title: Einstellungen für intelligente Erkennungsregeln – Azure Application Insights
 description: Automatisieren der Verwaltung und Konfiguration der intelligenten Erkennungsregeln von Azure Application Insights mit Azure Resource Manager-Vorlagen
-services: application-insights
-documentationcenter: ''
-author: harelbr
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: harelbr
+ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.author: harelbr
-ms.openlocfilehash: e7a54c2e207a27f3519375df09d0c930a92d52d6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 169ad40e32f688ae20a9d02f61db161844b1254a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193723"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890512"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Verwalten von intelligenten Erkennungsregeln von Azure Application Insights mit Azure Resource Manager-Vorlagen
 
-Intelligente Erkennungsregeln in Application Insights können mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md) verwaltet und konfiguriert werden.
+Intelligente Erkennungsregeln in Application Insights können mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) verwaltet und konfiguriert werden.
 Diese Methode kann bei der Bereitstellung neuer Application Insights-Ressourcen mit Azure Resource Manager-Automatisierung oder zur Änderung der Einstellungen vorhandener Ressourcen verwendet werden.
 
 ## <a name="smart-detection-rule-configuration"></a>Konfiguration der intelligenten Erkennungsregel
 
 Sie können die folgenden Einstellungen für intelligente Erkennungsregel konfigurieren:
-- Wenn die Regel aktiviert ist (der Standardwert ist **true**.)
-- Ob bei einer Erkennung E-Mails an Benutzer gesendet werden sollen, denen die Rollen [Überwachungsleser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) und [Überwachungsmitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) zugewiesen sind (Standardwert ist **true**).
+- Wenn die Regel aktiviert ist (der Standardwert ist **true** .)
+- Ob bei einer Erkennung E-Mails an Benutzer gesendet werden sollen, denen die Rollen [Überwachungsleser](../../role-based-access-control/built-in-roles.md#monitoring-reader) und [Überwachungsmitwirkender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) zugewiesen sind (Standardwert ist **true** ).
 - Alle weiteren E-Mail-Empfänger, die eine Benachrichtigung erhalten sollen, wenn eine Erkennung gefunden wird.
     -  Die E-Mail-Konfiguration ist für Regeln für die intelligente Erkennung, die als _Vorschauversion_ markiert sind, nicht verfügbar.
 
 Um die Konfiguration der Regeleinstellungen über den Azure Resource Manager zu ermöglichen, ist die Konfiguration der intelligenten Erkennungsregeln nun als interne Ressource innerhalb der Application Insights-Ressource mit dem Namen **ProactiveDetectionConfigs** verfügbar.
 Für maximale Flexibilität kann jede intelligente Erkennungsregel mit individuellen Benachrichtigungseinstellungen konfiguriert werden.
-
-## 
 
 ## <a name="examples"></a>Beispiele
 
@@ -53,7 +44,7 @@ Stellen Sie sicher, dass Sie den Application Insights-Ressourcennamen ersetzen u
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -84,7 +75,7 @@ Stellen Sie sicher, dass Sie den Application Insights-Ressourcennamen ersetzen u
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -115,7 +106,7 @@ Stellen Sie sicher, dass Sie den Application Insights-Ressourcennamen ersetzen u
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -129,7 +120,7 @@ Stellen Sie sicher, dass Sie den Application Insights-Ressourcennamen ersetzen u
           "properties": {
             "name": "longdependencyduration",
             "sendEmailsToSubscriptionOwners": true,
-            "customEmails": ['alice@contoso.com', 'bob@contoso.com'],
+            "customEmails": ["alice@contoso.com", "bob@contoso.com"],
             "enabled": true
           }
         }
@@ -138,9 +129,33 @@ Stellen Sie sicher, dass Sie den Application Insights-Ressourcennamen ersetzen u
 
 ```
 
-### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Warnungsregel für Fehleranomalien v2 (nicht klassisch)
 
-Mit dieser Azure Resource Manager-Vorlage wird gezeigt, wie eine Warnungsregel für Fehleranomalien v2 mit einem Schweregrad von 2 konfiguriert wird. Diese neue Version der Warnungsregel für Fehleranomalien ist Teil der neuen Azure-Warnungsplattform und ersetzt die klassische Version, die im Rahmen der [Einstellung klassischer Warnungen](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/) eingestellt wird.
+## <a name="smart-detection-rule-names"></a>Name der intelligente Erkennungsregel
+
+Im Folgenden finden Sie eine Tabelle mit den Namen der intelligenten Erkennungsregeln, wie sie im Portal angezeigt werden, zusammen mit ihren internen Namen, die in der Azure Resource Manager-Vorlage verwendet werden sollten.
+
+> [!NOTE]
+> Intelligente Erkennungsregeln, die als _Vorschauversion_ markiert sind, unterstützen keine E-Mail-Benachrichtigungen. Aus diesem Grund können Sie nur die _enabled_ -Eigenschaft für diese Regeln festlegen. 
+
+| Name der Regel im Azure-Portal | Interner Name
+|:---|:---|
+| Langsame Seitenladezeit | slowpageloadtime |
+| Langsame Serverantwortzeit | slowserverresponsetime |
+| Lange Abhängigkeitsdauer | longdependencyduration |
+| Beeinträchtigung der Serverantwortzeit | degradationinserverresponsetime |
+| Leistungsminderung der Abhängigkeitsdauer | degradationindependencyduration |
+| Verschlechterung des Schweregrads der Ablaufverfolgung (Vorschau) | extension_traceseveritydetector |
+| Anormaler Anstieg in Ausnahmevolume (Vorschau) | extension_exceptionchangeextension |
+| Möglicher Speicherverluste erkannt (Vorschau) | extension_memoryleakextension |
+| Mögliches Sicherheitsproblem erkannt (Vorschau) | extension_securityextensionspackage |
+| Anormaler Anstieg des täglichen Datenvolumens (Vorschauversion) | extension_billingdatavolumedailyspikeextension |
+
+### <a name="failure-anomalies-alert-rule"></a>Warnungsregel für Fehleranomalien
+
+Diese Azure Resource Manager-Vorlage zeigt, wie eine Warnungsregel für Fehleranomalien mit dem Schweregrad 2 konfiguriert wird. Diese neue Version der Warnungsregel für Fehleranomalien ist Teil der neuen Azure-Warnungsplattform und ersetzt die klassische Version, die im Rahmen der [Einstellung klassischer Warnungen](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/) eingestellt wird.
+
+> [!NOTE]
+> Fehleranomalien werden in einem globalen Dienst verarbeitet, daher wird die Regel für den globalen Speicherort erstellt.
 
 ```json
 {
@@ -153,7 +168,7 @@ Mit dieser Azure Resource Manager-Vorlage wird gezeigt, wie eine Warnungsregel f
             "name": "Failure Anomalies - my-app",
             "location": "global", 
             "properties": {
-                  "description": "Detects a spike in the failure rate of requests or dependencies",
+                  "description": "Failure Anomalies notifies you of an unusual rise in the rate of failed HTTP requests or dependency calls.",
                   "state": "Enabled",
                   "severity": "2",
                   "frequency": "PT1M",
@@ -171,32 +186,13 @@ Mit dieser Azure Resource Manager-Vorlage wird gezeigt, wie eine Warnungsregel f
 ```
 
 > [!NOTE]
-> Diese Azure Resource Manager-Vorlage gilt nur für die Warnungsregel für Fehleranomalien v2 und unterscheidet sich von den anderen klassischen Regeln für die intelligente Erkennung in diesem Artikel.   
-
-## <a name="smart-detection-rule-names"></a>Name der intelligente Erkennungsregel
-
-Im Folgenden finden Sie eine Tabelle mit den Namen der intelligenten Erkennungsregeln, wie sie im Portal angezeigt werden, zusammen mit ihren internen Namen, die in der Azure Resource Manager-Vorlage verwendet werden sollten.
-
-> [!NOTE]
-> Intelligente Erkennungsregeln, die als _Vorschauversion_ markiert sind, unterstützen keine E-Mail-Benachrichtigungen. Aus diesem Grund können Sie nur die _enabled_-Eigenschaft für diese Regeln festlegen. 
-
-| Name der Regel im Azure-Portal | Interner Name
-|:---|:---|
-| Langsame Seitenladezeit | slowpageloadtime |
-| Langsame Serverantwortzeit | slowserverresponsetime |
-| Lange Abhängigkeitsdauer | longdependencyduration |
-| Beeinträchtigung der Serverantwortzeit | degradationinserverresponsetime |
-| Leistungsminderung der Abhängigkeitsdauer | degradationindependencyduration |
-| Verschlechterung des Schweregrads der Ablaufverfolgung (Vorschau) | extension_traceseveritydetector |
-| Anormaler Anstieg in Ausnahmevolume (Vorschau) | extension_exceptionchangeextension |
-| Möglicher Speicherverluste erkannt (Vorschau) | extension_memoryleakextension |
-| Mögliches Sicherheitsproblem erkannt (Vorschau) | extension_securityextensionspackage |
-| Anormaler Anstieg des täglichen Datenvolumens (Vorschauversion) | extension_billingdatavolumedailyspikeextension |
+> Diese Azure Resource Manager-Vorlage gilt nur für die Warnungsregel für Fehleranomalien und unterscheidet sich von den anderen klassischen Regeln für die intelligente Erkennung, die in diesem Artikel beschrieben werden. Wenn Sie Fehleranomalien manuell verwalten möchten, erfolgt dies in Azure Monitor-Warnungen. Alle anderen Regeln für die intelligente Erkennung werden im Bereich „Intelligente Erkennung“ über die Benutzeroberfläche verwaltet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur automatischen Erkennung finden Sie hier:
 
-- [Anomalien bei Fehlern](../../azure-monitor/app/proactive-failure-diagnostics.md)
-- [Arbeitsspeicherverluste](../../azure-monitor/app/proactive-potential-memory-leak.md)
-- [Leistungsanomalien](../../azure-monitor/app/proactive-performance-diagnostics.md)
+- [Anomalien bei Fehlern](./proactive-failure-diagnostics.md)
+- [Arbeitsspeicherverluste](./proactive-potential-memory-leak.md)
+- [Leistungsanomalien](./proactive-performance-diagnostics.md)
+

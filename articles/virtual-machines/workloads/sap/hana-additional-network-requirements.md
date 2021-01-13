@@ -3,22 +3,23 @@ title: Zusätzliche Netzwerkanforderungen für SAP HANA in Azure (große Instanz
 description: Zusätzliche Netzwerkanforderungen für SAP HANA in Azure (große Instanzen)
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6fc4e797bd74c28fc741bf2a3928b46f0984b1b9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 44e9712466734c0e42fd2bea05c5110cbff6924b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099941"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964795"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>Zusätzliche Netzwerkanforderungen für große Instanzen
 

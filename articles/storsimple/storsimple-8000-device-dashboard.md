@@ -1,5 +1,5 @@
 ---
-title: Verwenden der Übersicht über Geräte der StorSimple 8000-Serie | Microsoft-Dokumentation
+title: Verwenden der Übersicht über Geräte im StorSimple-Geräte-Manager-Dienst
 description: Beschreibt die Übersicht über den StorSimple-Geräte-Manager-Dienst und erläutert, wie diese verwendet wird, um Speichermetriken und verbundene Initiatoren anzuzeigen sowie nach der Seriennummer und dem IQN zu suchen.
 services: storsimple
 documentationcenter: NA
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 1d88af2c0739c30b2562bad7660015b890e8159c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 34bbf4d723e46663efe77560245db74d9dea1fc4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578221"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017150"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Verwenden der Übersicht über Geräte im StorSimple-Geräte-Manager-Dienst
 
@@ -38,7 +38,7 @@ Auf dem Blatt mit der Geräteübersicht sehen Sie die Optionen zum Verwalten Ihr
 
 ![Befehlsleiste für die Verwaltung](./media/storsimple-8000-device-dashboard/device-summary2.png)
 
-## <a name="essentials"></a>Zusammenfassung
+## <a name="essentials"></a>Essentials
 
 Der Bereich „Zusammenfassung“ erfasst einige der wichtigen Eigenschaften wie z.B. Status, Modell, Ziel-IQN und Softwareversion. 
 
@@ -81,12 +81,12 @@ Der Bereich „Zusammenfassung“ erfasst einige der wichtigen Eigenschaften wie
      In diesem Zusammenhang bezieht sich *primärer Speicher* auf die Gesamtmenge der Daten, die vom Host geschrieben werden. Dieser Speicher kann nach Volumetyp untergliedert werden: Der *primäre mehrstufige Speicher* enthält lokal gespeicherte Daten sowie auch Daten, die in die Cloud ausgelagert wurden. Der *primäre lokale Speicher* enthält nur lokal gespeicherte Daten. *Cloudspeicher* ist demgegenüber ein Maß für die Gesamtmenge der Daten, die in der Cloud gespeichert sind. Dies umfasst mehrstufige Daten und Sicherungen. In der Cloud gespeicherte Daten sind dedupliziert und komprimiert, der Primärspeicher dagegen zeigt die Menge an Speicherplatz an, der belegt wird, bevor die Daten dedupliziert und komprimiert werden. (Sie können diese beiden Zahlen vergleichen, um einen Eindruck von der Komprimierungsrate zu erhalten.) Sowohl für primären als auch für Cloudspeicher basieren die angezeigten Mengen auf der Nachverfolgungshäufigkeit, die Sie konfigurieren. Wenn Sie beispielsweise eine Häufigkeit von einer Woche wählen, werden im Diagramm Daten für jeden Tag der vorherigen Woche angezeigt.
 
      Um die Menge des über einen Zeitraum beanspruchten Cloudspeichers anzuzeigen, aktivieren Sie die Option **VERWENDETER CLOUDSPEICHER**. Um die gesamte Speichermenge anzuzeigen, die vom Host geschrieben wurde, aktivieren Sie die Optionen **VERWENDETER PRIMÄRER MEHRSTUFIGER SPEICHER** und **VERWENDETER PRIMÄRER LOKALER SPEICHER**. 
-     Weitere Informationen finden Sie unter [Überwachen Ihres StorSimple-Geräts mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-monitor-device.md).
+     Weitere Informationen finden Sie unter [Überwachen Ihres StorSimple-Geräts mithilfe des StorSimple-Geräte-Manager-Diensts](./storsimple-8000-monitor-device.md).
 
 
 * Die Kachel **Kapazität** zeigt den primären Speicher, der bereitgestellt wurde und auf dem Gerät verbleibt, im Verhältnis zum verfügbaren Gesamtspeicher des Geräts. **Bereitgestellt** bezieht sich auf die Menge an Speicherplatz, die vorbereitet wird und für die Nutzung reserviert ist. **Verbleibend** bezieht sich auf die verbleibenden Kapazität, die über dieses Gerät bereitgestellt werden kann. 
 
-    ![Kachel „Nutzung“](./media/storsimple-8000-device-dashboard/device-summary8.png)
+    ![Kachel für Nutzung (2)](./media/storsimple-8000-device-dashboard/device-summary8.png)
 
     Klicken Sie auf diese Kachel, um anzuzeigen, wie die Kapazität für mehrstufige und lokale Volumes bereitgestellt wird. **Verbleibende mehrstufige Kapazität** bezeichnet die verfügbare Kapazität, einschließlich Cloud, die bereitgestellt werden kann. **Verbleibende lokale Kapazität** ist die verbleibende Kapazität auf den Datenträgern, die an dieses Gerät angeschlossen sind.
 
@@ -95,5 +95,4 @@ Der Bereich „Zusammenfassung“ erfasst einige der wichtigen Eigenschaften wie
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [Blatt „StorSimple-Dienstzusammenfassung“](storsimple-8000-service-dashboard.md).
-* Weitere Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
-
+* Erfahren Sie mehr [Verwalten von StorSimple-Geräten mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).

@@ -1,36 +1,37 @@
 ---
-title: 'Azure Site Recovery: Häufig gestellte Fragen | Microsoft-Dokumentation'
-description: Dieser Artikel enthält häufig gestellte Fragen zu Azure Site Recovery.
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
+title: Allgemeine Fragen zum Azure Site Recovery-Dienst
+description: In diesem Artikel werden häufig gestellte allgemeine Fragen zu Azure Site Recovery behandelt.
 ms.topic: conceptual
-ms.date: 6/27/2019
+ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: a9c7aa2be945e4fbaa65bdd2a145d576422c5539
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491766"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109554"
 ---
-# <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Site Recovery
-Dieser Artikel fasst häufig gestellte Fragen zur Azure Site Recovery zusammen.</br>
-Informationen zu bestimmten Abfragen in verschiedenen ASR-Szenarien finden Sie in den häufig gestellten Fragen zu bestimmten Szenarien.<br>
+# <a name="general-questions-about-azure-site-recovery"></a>Allgemeine Fragen zu Azure Site Recovery
 
-- [Notfallwiederherstellung von virtuellen Azure-Computern in Azure](azure-to-azure-common-questions.md)
-- [Notfallwiederherstellung von virtuellen VMware-Computern in Azure](vmware-azure-common-questions.md)
-- [Allgemeine Fragen: Hyper-V-Notfallwiederherstellung in Azure](hyper-v-azure-common-questions.md)
+Dieser Artikel fasst häufig gestellte Fragen zur Azure Site Recovery zusammen. In den folgenden Artikeln werden spezielle Szenarien behandelt:
+
+- [Fragen zur Notfallwiederherstellung von virtuellen Azure-Computern in Azure](azure-to-azure-common-questions.md)
+- [Fragen zur Notfallwiederherstellung von virtuellen VMware-Computern in Azure](vmware-azure-common-questions.md)
+- [Fragen zur Notfallwiederherstellung von virtuellen Hyper-V-Computern in Azure](hyper-v-azure-common-questions.md)
  
 ## <a name="general"></a>Allgemein
 
 ### <a name="what-does-site-recovery-do"></a>Welche Funktion hat Site Recovery?
+
 Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung, indem die Replikation von virtuellen Azure-Computern zwischen Regionen, von lokalen virtuellen Computern und physischen Servern in Azure und von lokalen Computer in ein sekundäres Rechenzentrum orchestriert und automatisiert werden. [Weitere Informationen](site-recovery-overview.md)
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Kann ich einen virtuellen Computer mit Docker-Datenträger schützen?
 
 Nein, dieses Szenario wird nicht unterstützt.
+
+### <a name="what-does-site-recovery-do-to-ensure-data-integrity"></a>Wie stellt Site Recovery die Datenintegrität sicher?
+
+Mit verschiedenen Maßnahmen stellt Site Recovery die Datenintegrität sicher. Zwischen allen Diensten wird mithilfe des HTTPS-Protokolls eine sichere Verbindung hergestellt. Dadurch wird sichergestellt, dass Malware oder externe Entitäten die Daten nicht manipulieren können. Eine weitere Maßnahme ist die Verwendung von Prüfsummen. Bei der Datenübertragung zwischen Quelle und Ziel werden Prüfsummen zwischen den Daten berechnet. So wird eine konsistente Datenübertragung sichergestellt.
 
 ## <a name="service-providers"></a>Dienstanbieter
 
@@ -55,7 +56,7 @@ Nein. Die Daten werden in einem Azure-Speicherkonto Ihres Abonnements repliziert
 Ja.
 
 ### <a name="what-platforms-do-you-currently-support"></a>Welche Plattformen werden derzeit unterstützt?
-Wir unterstützen Bereitstellungen auf der Grundlage von Azure Pack, Cloud Platform System und System Center (2012 und höher). [Erfahren Sie mehr](https://technet.microsoft.com/library/dn850370.aspx) zur Integration von Azure Pack und Site Recovery.
+Wir unterstützen Bereitstellungen auf der Grundlage von Azure Pack, Cloud Platform System und System Center (2012 und höher). [Erfahren Sie mehr](/previous-versions/azure/windows-server-azure-pack/dn850370(v=technet.10)) zur Integration von Azure Pack und Site Recovery.
 
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>Werden einzelne Bereitstellungen von Azure Pack und VMM-Servern unterstützt?
 Ja, Sie können virtuelle Hyper-V-Computer in Azure oder zwischen Dienstanbieterstandorten replizieren.  Beachten Sie, dass für die Replikation zwischen Dienstanbieterstandorten die Azure-Runbookintegration nicht verfügbar ist.
@@ -70,7 +71,7 @@ Sehen Sie sich die Details unter [Azure Site Recovery – Preise](https://azure.
 
 Sie können den [Preisrechner](https://aka.ms/asr_pricing_calculator) verwenden, um die Kosten für die Verwendung von Site Recovery zu schätzen.
 
-Für eine detaillierte Kostenschätzung können Sie das Bereitstellungsplanertool für [VMware](https://aka.ms/siterecovery_deployment_planner) oder [Hyper-V](https://aka.ms/asr-deployment-planner) ausführen und den [Kostenschätzungsbericht](https://aka.ms/asr_DP_costreport) verwenden.
+Für eine detaillierte Kostenschätzung können Sie das Bereitstellungsplanertool für [VMware](./site-recovery-deployment-planner.md) oder [Hyper-V](https://aka.ms/asr-deployment-planner) ausführen und den [Kostenschätzungsbericht](./site-recovery-vmware-deployment-planner-cost-estimation.md) verwenden.
 
 
 ### <a name="managed-disks-are-now-used-to-replicate-vmware-vms-and-physical-servers-do-i-incur-additional-charges-for-the-cache-storage-account-with-managed-disks"></a>Zum Replizieren von virtuellen VMware-Computern und physischen Servern werden jetzt verwaltete Datenträger verwendet. Fallen zusätzliche Gebühren für das Cachespeicherkonto mit verwalteten Datenträgern an?
@@ -104,10 +105,29 @@ Site Recovery ist nach ISO 27001:2013, 27018, HIPAA und DPA zertifiziert und dur
 Ja. Durch die Erstellung eines Site Recovery-Tresors in einer Region wird sichergestellt, dass alle Metadaten, die wir zum Ermöglichen und Orchestrieren von Replikation und Failover benötigen, innerhalb der geografischen Grenzen dieser Region bleiben.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Verschlüsselt Site Recovery die Replikation?
-Für virtuelle Computer und physische Server wird bei der Replikation zwischen lokalen Standorten die Verschlüsselung während der Übertragung unterstützt. Für virtuelle Computer und physische Server wird bei der Replikation in Azure sowohl die Verschlüsselung während der Übertragung als auch die [Verschlüsselung ruhender Daten (in Azure)](https://docs.microsoft.com/azure/storage/storage-service-encryption) unterstützt.
+Für virtuelle Computer und physische Server wird bei der Replikation zwischen lokalen Standorten die Verschlüsselung während der Übertragung unterstützt. Für virtuelle Computer und physische Server wird bei der Replikation in Azure sowohl die Verschlüsselung während der Übertragung als auch die [Verschlüsselung ruhender Daten (in Azure)](../storage/common/storage-service-encryption.md) unterstützt.
 
+### <a name="does-azure-to-azure-site-recovery-use-tls-12-for-all-communications-across-microservices-of-azure"></a>Verwendet Azure-zu-Azure-Site Recovery für die gesamte Kommunikation zwischen den verschiedenen Microservices von Azure TLS 1.2?
+Ja, das TLS 1.2-Protokoll wird standardmäßig für das Azure-zu-Azure-Site Recovery-Szenario erzwungen. 
 
+### <a name="how-can-i-enforce-tls-12-on-vmware-to-azure-and-physical-server-to-azure-site-recovery-scenarios"></a>Wie erzwinge ich TLS 1.2 in VMware-zu-Azure- und Physischer-Server-zu-Azure-Site Recovery-Szenarien?
+Auf den replizierten Elementen installierte Mobility-Agents kommunizieren ausschließlich über TLS 1.2 mit dem Prozessserver. Die Kommunikation zwischen dem Konfigurationsserver und Azure sowie zwischen dem Prozessserver und Azure kann jedoch über TLS 1.1 oder 1.0 erfolgen. Befolgen Sie die [Anweisungen](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi) zum Erzwingen von TLS 1.2 für alle von Ihnen eingerichteten Konfigurations- und Prozessserver.
 
+### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>Wie kann ich TLS 1.2 für HyperV-zu-Azure-Site Recovery-Szenarien erzwingen?
+Die gesamte Kommunikation zwischen den Microservices von Azure Site Recovery erfolgt über das TLS 1.2-Protokoll. Site Recovery verwendet Sicherheitsanbieter, die im System (BS) konfiguriert sind, und verwendet das neueste verfügbare TLS-Protokoll. Sie müssen TLS 1.2 explizit in der Registrierung aktivieren, und dann wird Site Recovery mit der Verwendung von TLS 1.2 zur Kommunikation mit Diensten beginnen. 
+
+### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>Wie erzwinge ich eingeschränkten Zugriff auf meine Speicherkonten, auf die der Site Recovery-Dienst zum Lesen/Schreiben von Replikationsdaten zugreift?
+Sie können die verwaltete Identität des Recovery Services-Tresors aktivieren, indem Sie zur *Identity*-Einstellung (Identität) wechseln. Nachdem der Tresor bei Azure Active Directory registriert wurde, können Sie zu Ihren Speicherkonten wechseln und den Tresor die folgenden Rollenzuweisungen zuweisen:
+
+- Resource Manager-basierte Speicherkonten (Standard):
+  - [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor)
+  - [Mitwirkender an Speicherblobdaten](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- Resource Manager-basierte Speicherkonten (Premium):
+  - [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor)
+  - [Besitzer von Speicherblobdaten](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+- Klassische Speicherkonten:
+  - [Mitwirkender von klassischem Speicherkonto](../role-based-access-control/built-in-roles.md#classic-storage-account-contributor)
+  - [Klassische Dienstrolle „Speicherkonto-Schlüsseloperator“](../role-based-access-control/built-in-roles.md#classic-storage-account-key-operator-service-role)
 
 ## <a name="disaster-recovery"></a>Notfallwiederherstellung
 
@@ -126,7 +146,7 @@ Ja. Wenn Sie Site Recovery zum Orchestrieren von Replikation und Failover in Zwe
 
 ### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Wird die Notfallwiederherstellung für virtuelle Azure-Computer unterstützt?
 
-Ja, Site Recovery unterstützt die Notfallwiederherstellung für virtuelle Azure-Computer zwischen Azure-Regionen. [Lesen Sie häufig gestellte Fragen](azure-to-azure-common-questions.md) zur Notfallwiederherstellung von virtuellen Azure-Computern.
+Ja, Site Recovery unterstützt die Notfallwiederherstellung für virtuelle Azure-Computer zwischen Azure-Regionen. [Lesen Sie häufig gestellte Fragen](azure-to-azure-common-questions.md) zur Notfallwiederherstellung von virtuellen Azure-Computern. Wenn Sie zwischen zwei Azure-Regionen auf demselben Kontinent replizieren möchten, verwenden Sie das Angebot für die Notfallwiederherstellung von Azure zu Azure. Sie müssen weder einen Konfigurationsserver/Prozessserver noch ExpressRoute-Verbindungen einrichten.
 
 ### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>Wird die Notfallwiederherstellung für virtuelle VMware-Computer unterstützt?
 
@@ -135,7 +155,7 @@ Ja, Site Recovery unterstützt die Notfallwiederherstellung von lokalen virtuell
 ### <a name="is-disaster-recovery-supported-for-hyper-v-vms"></a>Wird die Notfallwiederherstellung für virtuelle Hyper-V-Computer unterstützt?
 Ja, Site Recovery unterstützt die Notfallwiederherstellung von lokalen virtuellen Hyper-V-Computern. [Lesen Sie häufig gestellte Fragen](hyper-v-azure-common-questions.md) zur Notfallwiederherstellung von virtuellen Hyper-V-Computern.
 
-## <a name="is-disaster-recovery-supported-for-physical-servers"></a>Wird die Notfallwiederherstellung für physische Server unterstützt?
+### <a name="is-disaster-recovery-supported-for-physical-servers"></a>Wird die Notfallwiederherstellung für physische Server unterstützt?
 Ja, Site Recovery unterstützt die Notfallwiederherstellung von lokalen physischen Servern unter Windows und Linux in Azure oder an einem sekundären Standort. Erfahren Sie mehr über die Anforderungen für die Notfallwiederherstellung in [Azure](vmware-physical-azure-support-matrix.md#replicated-machines) und an [einem sekundären Standort](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 Beachten Sie, dass physische Server nach einem Failover als virtuelle Computer in Azure ausgeführt werden. Das Failback von Azure auf einen lokalen physischen Server wird derzeit nicht unterstützt. Ein Failback kann nur auf einen virtuellen VMware-Computer ausgeführt werden.
 
@@ -150,7 +170,7 @@ Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein A
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Warum kann ich nicht über VPN replizieren?
 
-Wenn Sie nach Azure replizieren, erreicht der Replikationsdatenverkehr die öffentlichen Endpunkte einer Azure Storage-Instanz. Daher kann die Replikation über das öffentliche Internet nur mit ExpressRoute (Microsoft-Peering oder öffentliches Peering) erfolgen und VPN funktioniert nicht.
+Wenn Sie nach Azure replizieren, erreicht der Replikationsdatenverkehr die öffentlichen Endpunkte einer Azure Storage-Instanz. Daher kann die Replikation nur über das öffentliche Internet oder ExpressRoute (Microsoft-Peering oder bestehendes öffentliches Peering) erfolgen.
 
 ### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Kann ich Riverbed SteelHeads für die Replikation verwenden?
 
@@ -159,10 +179,10 @@ Unser Partner Riverbed bietet eine detaillierte Anleitung zum Arbeiten mit Azure
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Kann ich virtuelle Computer mithilfe von ExpressRoute zu Azure replizieren?
 Ja, [ExpressRoute kann zum Replizieren virtueller Computer zu Azure verwendet werden](concepts-expressroute-with-site-recovery.md).
 
-- Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Wenn Sie ExpressRoute für die Site Recovery-Replikation verwenden möchten, müssen Sie [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) oder ein vorhandenes [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) (für neue Verbindungen veraltet) einrichten.
+- Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Wenn Sie ExpressRoute für die Site Recovery-Replikation verwenden möchten, müssen Sie [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) oder ein vorhandenes [öffentliches Peering](../expressroute/about-public-peering.md) (für neue Verbindungen veraltet) einrichten.
 - Microsoft-Peering ist die empfohlene Routingdomäne für die Replikation.
 - Replikation über privates Peering wird nicht unterstützt.
-- Falls Sie VMware-Computer oder physische Computer schützen, stellen Sie sicher, dass die [Netzwerkanforderungen](vmware-azure-configuration-server-requirements.md#network-requirements) auch für den Konfigurationsserver erfüllt sind. Der Konfigurationsserver muss für die Orchestrierung der Site Recovery-Replikation eine Verbindung mit bestimmten URLs aufnehmen. Für diese Verbindung können Sie ExpressRoute nicht nutzen.
+- Falls Sie VMware-Computer oder physische Computer schützen, stellen Sie sicher, dass die [Netzwerkanforderungen](vmware-azure-configuration-server-requirements.md#network-requirements) auch für den Konfigurationsserver erfüllt sind. Der Konfigurationsserver muss für die Orchestrierung der Site Recovery-Replikation eine Verbindung mit bestimmten URLs herstellen können. Für diese Verbindung kann ExpressRoute nicht verwendet werden.
 - Nachdem für die virtuellen Computer ein Failover auf ein virtuelles Azure-Netzwerk ausgeführt wurde, können Sie mithilfe der Einrichtung des [privaten Peering](../expressroute/expressroute-circuit-peerings.md#privatepeering) für das virtuelle Azure-Netzwerk darauf zugreifen.
 
 
@@ -171,7 +191,7 @@ Ja, [ExpressRoute kann zum Replizieren virtueller Computer zu Azure verwendet we
 Sie benötigen LRS- oder GRS-Speicher. Wir empfehlen Ihnen die Verwendung von GRS, damit Resilienz für die Daten besteht, wenn es zu einem regionalen Ausfall kommt oder wenn die primäre Region nicht wiederhergestellt werden kann. Das Konto muss sich in derselben Region wie der Recovery Services-Tresor befinden. Storage Premium wird für die Replikation von virtuellen VMware-Computern, virtuellen Hyper-V-Computern und physischen Servern verwendet, wenn Sie Site Recovery im Azure-Portal bereitstellen. Verwaltete Datenträger unterstützen nur LRS.
 
 ### <a name="how-often-can-i-replicate-data"></a>Wie oft kann ich Daten replizieren?
-* **Hyper-V:** Virtuelle Hyper-V-Computer können alle fünf Minuten oder alle 30 Sekunden repliziert werden (außer bei Storage Premium).
+* **Hyper-V:** Hyper-V-VMs können alle 30 Sekunden (außer bei Storage Premium), alle fünf Minuten oder alle 15 Minuten repliziert werden.
 * **Virtuelle Azure-Computer, virtuelle VMware-Computer und physische Server:** Hier ist eine Replikationshäufigkeit irrelevant. Die Replikation ist fortlaufend.
 
 ### <a name="can-i-extend-replication-from-existing-recovery-site-to-another-tertiary-site"></a>Kann die Replikation von vorhandenen Wiederherstellungsstandorten auf einen weiteren tertiären Standort erweitert werden?
@@ -191,8 +211,111 @@ Dynamische Datenträger werden beim Replizieren virtueller Hyper-V-Computer und 
 Ja. In folgenden Artikeln erfahren Sie mehr über die Drosselung der Bandbreite:
 
 * [Kapazitätsplanung für die Replikation von VMware-VMs und physischen Servern](site-recovery-plan-capacity-vmware.md)
-* [Kapazitätsplanung für die Replikation von Hyper-V-VMs in Azure](site-recovery-capacity-planning-for-hyper-v-replication.md)
+* [Kapazitätsplanung für die Replikation von Hyper-V-VMs in Azure](./hyper-v-deployment-planner-overview.md)
 
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Kann ich die Replikation mit App-Konsistenz auf Linux-Servern aktivieren? 
+Ja. Azure Site Recovery für Linux-Betriebssysteme unterstützt benutzerdefinierte Anwendungsskripts für App-Konsistenz. Das benutzerdefinierte Skript mit den „Pre“- und „Post“-Optionen wird vom Mobilitäts-Agent von Azure Site Recovery während des Vorgangs für die App-Konsistenz verwendet. Dies kann mithilfe folgender Schritte ermöglicht werden.
+
+1. Melden Sie sich beim Computer als Root-Benutzer an.
+2. Wechseln Sie in das Installationsverzeichnis des Mobilitäts-Agent von Azure Site Recovery. Der Standardwert ist „/usr/local/ASR“.<br>
+    `# cd /usr/local/ASR`
+3. Wechseln Sie im Installationsverzeichnis in „VX/Scripts“.<br>
+    `# cd VX/scripts`
+4. Erstellen Sie ein Bash-Shellskript mit dem Namen „customscript.sh“ mit Ausführungsberechtigungen für den Root-Benutzer.<br>
+    a. Das Skript sollte die Befehlszeilenoptionen „--pre“ und „--post“ (beachten Sie die doppelten Bindestriche) unterstützen.<br>
+    b. Wenn das Skript mit der „--pre“-Option aufgerufen wird, sollte es die Eingabe/Ausgabe der Anwendung einfrieren, und wenn es mit der „--post“-Option aufgerufen wird, sollte es die Eingabe/Ausgabe der Anwendung reaktivieren.<br>
+    c. Eine Beispielvorlage –<br>
+
+    `# cat customscript.sh`<br>
+
+```
+    #!/bin/bash
+
+    if [ $# -ne 1 ]; then
+        echo "Usage: $0 [--pre | --post]"
+        exit 1
+    elif [ "$1" == "--pre" ]; then
+        echo "Freezing app IO"
+        exit 0
+    elif [ "$1" == "--post" ]; then
+        echo "Thawed app IO"
+        exit 0
+    fi
+```
+
+5. Fügen Sie die Eingabe-/Ausgabebefehle zum Einfrieren und Reaktivieren in „--pre“- und „--post“-Schritten für Anwendungen hinzu, die App-Konsistenz erfordern. Sie können wahlweise ein weiteres Skript hinzufügen, das diese Befehle angibt, und von „customscript.sh“ aus mit „--pre“- und „--post“-Option aufrufen.
+
+>[!Note]
+>Zur Unterstützung von benutzerdefinierten Skripts sollte die Version des Site Recovery-Agents 9.24 oder höher sein.
+
+## <a name="replication-policy"></a>Replikationsrichtlinie
+
+### <a name="what-is-a-replication-policy"></a>Was ist eine Replikationsrichtlinie?
+
+Eine Replikationsrichtlinie definiert die Einstellungen für den Aufbewahrungsverlauf von Wiederherstellungspunkten. Die Richtlinie definiert auch die Häufigkeit anwendungskonsistenter Momentaufnahmen. Standardmäßig erstellt Azure Site Recovery eine neue Replikationsrichtlinie mit folgenden Standardeinstellungen:
+
+- 24 Stunden für den Aufbewahrungsverlauf von Wiederherstellungspunkten.
+- 4 Stunden für die Häufigkeit anwendungskonsistenter Momentaufnahmen.
+
+### <a name="what-is-a-crash-consistent-recovery-point"></a>Was ist ein absturzkonsistenter Wiederherstellungspunkt?
+
+Ein absturzkonsistenter Wiederherstellungspunkt enthält die Daten auf dem Datenträger, als ob Sie das Netzkabel während der Momentaufnahme vom Server abgezogen hätten. Der absturzkonsistente Wiederherstellungspunkt enthält nichts, was sich zum Zeitpunkt der Momentaufnahme im Arbeitsspeicher befand.
+
+Heutzutage können die meisten Anwendungen aus absturzkonsistenten Momentaufnahmen gut wiederhergestellt werden. Ein absturzkonsistenter Wiederherstellungspunkt ist normalerweise ausreichend für Betriebssysteme ohne Datenbank und Anwendungen wie Dateiserver, DHCP-Server und Druckerserver.
+
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Mit welcher Häufigkeit wird ein absturzkonsistenter Wiederherstellungspunkt generiert?
+
+Site Recovery erstellt alle 5 Minuten einen absturzkonsistenten Wiederherstellungspunkt.
+
+### <a name="what-is-an-application-consistent-recovery-point"></a>Was ist ein anwendungskonsistenter Wiederherstellungspunkt?
+
+Anwendungskonsistente Wiederherstellungspunkte werden aus anwendungskonsistenten Momentaufnahmen erstellt. Anwendungskonsistente Wiederherstellungspunkte erfassen dieselben Daten wie absturzkonsistente Momentaufnahmen. Zudem werden alle Daten im Arbeitsspeicher und alle laufenden Transaktionen erfasst.
+
+Durch diesen zusätzlichen Inhalt sind anwendungskonsistente Momentaufnahmen am stärksten involviert, und ihre Ausführung dauert am längsten. Anwendungskonsistente Wiederherstellungspunkte werden für Betriebssysteme mit Datenbank und Anwendungen wie SQL Server empfohlen.
+
+>[!Note]
+>Das Erstellen von anwendungskonsistenten Wiederherstellungspunkten führt auf einem Windows-Computer zu einem Fehler, wenn er mehr als 64 Volumes enthält.
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Welche Auswirkungen haben anwendungskonsistente Wiederherstellungspunkte auf die Anwendungsleistung?
+
+Anwendungskonsistente Wiederherstellungspunkte erfassen alle Daten im Arbeitsspeicher und in Prozessen. Da Wiederherstellungspunkte diese Daten erfassen, benötigen Sie ein Framework wie den Volumeschattenkopie-Dienst unter Windows, um die Anwendung in einen inaktiven Status zu versetzen. Wird der Erfassungsprozess häufig ausgeführt, kann sich dies auf die Leistung auswirken, wenn die Workload bereits hoch ist. Wir raten davon ab, für anwendungskonsistente Wiederherstellungspunkte bei Nicht-Datenbankworkloads ein kleines Intervall zu verwenden. Auch für die Datenbankworkloads reicht eine Stunde aus.
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Mit welcher Mindesthäufigkeit wird ein anwendungskonsistenter Wiederherstellungspunkt generiert?
+
+Site Recovery kann einen anwendungskonsistenten Wiederherstellungspunkt mit einer Mindesthäufigkeit von einmal pro Stunde erstellen.
+
+### <a name="how-are-recovery-points-generated-and-saved"></a>Wie werden Wiederherstellungspunkte generiert und gespeichert?
+
+Sehen Sie sich das folgende Beispiel für eine Replikationsrichtlinie an, um zu verstehen, wie Site Recovery Wiederherstellungspunkte generiert. Diese Replikationsrichtlinie verfügt über einen Wiederherstellungspunkt mit einem Aufbewahrungszeitfenster von 24 Stunden und einem Intervall von 1 Stunde für anwendungskonsistente Momentaufnahmen.
+
+Site Recovery erstellt alle 5 Minuten einen absturzkonsistenten Wiederherstellungspunkt. Der Benutzer kann diese Häufigkeit nicht ändern. Für die letzte Stunde können Sie zwischen 12 absturzkonsistenten und einem App-konsistenten Punkt wählen. Im Lauf der Zeit löscht Site Recovery alle Wiederherstellungspunkte, die älter als 1 Stunde sind, und speichert nur einen Wiederherstellungspunkt pro Stunde.
+
+Der folgende Screenshot veranschaulicht dieses Beispiel. Im Screenshot:
+
+- Innerhalb der letzten Stunde sind Wiederherstellungspunkte im Intervall von 5 Minuten vorhanden.
+- Für den Zeitraum vor der letzten Stunde bewahrt Site Recovery nur einen Wiederherstellungspunkt auf.
+
+   ![Liste der generierten Wiederherstellungspunkte](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+
+### <a name="how-far-back-can-i-recover"></a>Wie weit kann ich bei der Wiederherstellung zurückgehen?
+
+Der älteste Wiederherstellungspunkt, den Sie verwenden können, ist 72 Stunden alt.
+
+### <a name="i-have-a-replication-policy-of-24-hours-what-will-happen-if-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>Ich verfüge über eine Replikationsrichtlinie von 24 Stunden. Was passiert, wenn Site Recovery aufgrund eines Problems für mehr als 24 Stunden keinen Wiederherstellungspunkt generiert hat? Gehen meine vorherigen Wiederherstellungspunkte verloren?
+
+Nein. Site Recovery bewahrt alle Ihre vorherigen Wiederherstellungspunkte auf. Abhängig vom Aufbewahrungszeitfenster für Wiederherstellungspunkte ersetzt Site Recovery den ältesten Punkt nur, wenn er neue Punkte generiert. Aufgrund des Problems kann Site Recovery keine neuen Wiederherstellungspunkte generieren. Bis neue Wiederherstellungspunkte vorhanden sind, bleiben alle alten Punkte erhalten, auch wenn das Aufbewahrungszeitfenster erreicht ist.
+
+### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Wie ändere ich die Replikationsrichtlinie, nachdem die Replikation auf einer VM aktiviert wurde?
+
+Navigieren Sie zu **Site Recovery-Tresor** > **Site Recovery-Infrastruktur** > **Replikationsrichtlinien**. Wählen Sie die Richtlinie aus, die Sie bearbeiten möchten, und speichern Sie die Änderungen. Alle Änderungen werden auch auf alle vorhandenen Replikationen angewendet.
+
+### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Sind alle Wiederherstellungspunkte vollständige Kopien des virtuellen Computers oder gibt es Unterschiede?
+
+Der erste Wiederherstellungspunkt, der generiert wird, ist eine vollständige Kopie. Alle nachfolgenden Wiederherstellungspunkte enthalten nur die geänderten Daten (Deltaänderungen).
+
+### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Erhöhen sich durch eine längere Aufbewahrungsdauer der Wiederherstellungspunkte die Speicherkosten?
+
+Ja, wenn Sie die Aufbewahrungsdauer von 24 auf 72 Stunden erhöhen, speichert Site Recovery die Wiederherstellungspunkte für zusätzliche 48 Stunden. Durch die zusätzliche Zeit fallen Speicherkosten an. Beispiel: Ein einzelner Wiederherstellungspunkt weist Deltaänderungen von 10 GB auf, bei pro-GB-Kosten von $0,16 pro Monat. Die zusätzlichen Kosten betragen $1,60 × 48 pro Monat.
 
 
 ## <a name="failover"></a>Failover
@@ -214,13 +337,13 @@ Zum Automatisieren können Sie den lokalen Orchestrator oder Operations Manager 
 
 * [Weitere Informationen](site-recovery-create-recovery-plans.md) .
 * [Weitere Informationen](site-recovery-failover.md) .
-* [Weitere Informationen](site-recovery-failback-azure-to-vmware.md) .
+* [Weitere Informationen](./vmware-azure-failback.md) .
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-fail-back-to-a-different-host"></a>Angenommen, mein lokaler Host reagiert nicht mehr oder ist abgestürzt. Kann ein Failback auf einen anderen Host ausgeführt werden?
 Ja, Sie können über die Wiederherstellung an einem alternativen Speicherort ein Failback auf einen anderen Host als Azure ausführen.
 
 * [Für virtuelle VMware-Computer](concepts-types-of-failback.md#alternate-location-recovery-alr)
-* [Für virtuelle Hyper-V-Computer](hyper-v-azure-failback.md#perform-failback)
+* [Für virtuelle Hyper-V-Computer](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
 ## <a name="automation"></a>Automation
 
@@ -239,4 +362,3 @@ Ja. Sie können Site Recovery-Workflows mithilfe der REST-API, PowerShell oder A
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Lesen Sie die [Site Recovery-Übersicht](site-recovery-overview.md)
-

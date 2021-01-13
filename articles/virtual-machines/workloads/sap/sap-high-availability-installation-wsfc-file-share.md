@@ -3,25 +3,26 @@ title: SAP NetWeaver-Hochverfügbarkeitsinstallation in einem Windows-Failovercl
 description: SAP NetWeaver-Hochverfügbarkeitsinstallation in einem Windows-Failovercluster und auf einer Windows-Dateifreigabe für SAP ASCS/SCS-Instanzen
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 71296618-673b-4093-ab17-b7a80df6e9ac
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
-ms.author: rclaus
+ms.date: 08/04/2020
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7bdd1e1922d9d8845a8187cabb3fd39af4694ab
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c7df3934862efa9798735d0c163f7fb1bac98423
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70077895"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951042"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Installieren von SAP NetWeaver-Hochverfügbarkeit in einem Windows-Failovercluster und auf einer Windows-Dateifreigabe für SAP ASCS-/SCS-Instanzen in Azure
 
@@ -36,8 +37,8 @@ ms.locfileid: "70077895"
 
 [sap-powershell-scrips]:https://github.com/Azure-Samples/sap-powershell
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [s2d-in-win-2016]:https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview
 [sofs-overview]:https://technet.microsoft.com/library/hh831349(v=ws.11).aspx
@@ -193,7 +194,7 @@ ms.locfileid: "70077895"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -268,7 +269,7 @@ New-Item -Path $SAPGlobalFOlder -ItemType Directory
 $UsrSAPFolder = "C:\ClusterStorage\SAP$SAPSID\usr\sap\"
 
 # Create a SAPMNT file share and set share security
-New-SmbShare -Name sapmnt -Path $UsrSAPFolder -FullAccess "BUILTIN\Administrators", $ASCSClusterObjectNode1, $ASCSClusterObjectNode2 -ContinuouslyAvailable $false -CachingMode None -Verbose
+New-SmbShare -Name sapmnt -Path $UsrSAPFolder -FullAccess "BUILTIN\Administrators", $ASCSClusterObjectNode1, $ASCSClusterObjectNode2 -ContinuouslyAvailable $true -CachingMode None -Verbose
 
 # Get SAPMNT file share security settings
 Get-SmbShareAccess sapmnt
@@ -299,7 +300,7 @@ Erstellen Sie wie unter [Erstellen eines virtuellen Hostnamens für die SAP ASCS
 
 Installieren Sie eine ASCS/SCS-Instanz auf dem ersten ASCS/SCS-Clusterknoten. Navigieren Sie zum Installieren der Instanz im SAP SWPM-Installationstool zu:
 
-**\<Produkt>**  >  **\<DBMS>**  > **Installation** > **Anwendungsserver ABAP** (oder **Java**) > **Hochverfügbarkeitssystem** > **ASCS/SCS-Instanz** > **Erster Clusterknoten**.
+**\<Product>**  >  **\<DBMS>**  > **Installation** > **Anwendungsserver ABAP** (oder **Java**) > **Hochverfügbarkeitssystem** > **ASCS/SCS-Instanz** > **Erster Clusterknoten**.
 
 ### <a name="add-a-probe-port"></a>Hinzufügen eines Testports
 
@@ -309,7 +310,7 @@ Konfigurieren Sie eine SAP-Clusterressource und den SAP-SID-IP-Testport mithilfe
 
 Installieren Sie eine ASCS/SCS-Instanz auf dem zweiten ASCS/SCS-Clusterknoten. Navigieren Sie zum Installieren der Instanz im SAP SWPM-Installationstool zu:
 
-**\<Produkt>**  >  **\<DBMS>**  > **Installation** > **Anwendungsserver ABAP** (oder **Java**) > **Hochverfügbarkeitssystem** > **ASCS/SCS-Instanz** > **Weiterer Clusterknoten**.
+**\<Product>**  >  **\<DBMS>**  > **Installation** > **Anwendungsserver ABAP** (oder **Java**) > **Hochverfügbarkeitssystem** > **ASCS/SCS-Instanz** > **Weiterer Clusterknoten**.
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>Aktualisieren des SAP ASCS/SCS-Instanzprofils
@@ -323,6 +324,7 @@ Aktualisieren Sie die Parameter im SAP ASCS/SCS-Instanzprofil \<SID>_ASCS/SCS\<N
 | enque/encni/set_so_keepalive  | **true** |
 | service/ha_check_node | **1** |
 
+Der Parameter `enque/encni/set_so_keepalive` ist nur bei Verwendung von ENSA1 erforderlich.  
 Starten Sie die SAP ASCS/SCS-Instanz neu. Legen Sie `KeepAlive`-Parameter auf beiden SAP ASCS/SCS-Clusterknoten fest, und befolgen Sie die Anweisungen zum [Festlegen von Registrierungseinträgen auf den Clusterknoten der SAP ASCS/SCS-Instanz][high-availability-guide]. 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Installieren einer DBMS-Instanz und von SAP-Anwendungsservern
@@ -340,4 +342,4 @@ Schließen Sie die Installation Ihres SAP-Systems ab, indem Sie Folgendes instal
 
 * [Übersicht über Dateiserver mit horizontaler Skalierung für Anwendungsdaten][sofs-overview]
 
-* [Neuerungen beim Speicher in Windows Server 2016][new-in-win-2016-storage]
+* [Neuerungen beim Speicher in Windows Server 2016][new-in-win-2016-storage]

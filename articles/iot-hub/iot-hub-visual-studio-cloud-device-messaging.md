@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Azure IoT Hub-Cloudgerätemessaging mit Cloud-Explorer für Visual Studio | Microsoft-Dokumentation
+title: Verwenden von VS Cloud-Explorer zum Verwalten von Azure IoT Hub-Device Messaging
 description: In diesem Artikel erfahren Sie, wie Sie mit Cloud-Explorer für Visual Studio in Azure IoT Hub Gerät-zu-Cloud-Nachrichten überwachen und Cloud-zu-Gerät-Nachrichten senden.
 author: shizn
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: b8ea705b55c1485cab2e1478d2d455f1d4a427d3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: c56bb7030b2ebc12e3afc24e2d8cb29ce2dda0bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050305"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74079490"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub mithilfe von Cloud-Explorer für Visual Studio
 

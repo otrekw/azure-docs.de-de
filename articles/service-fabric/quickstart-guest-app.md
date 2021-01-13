@@ -1,25 +1,15 @@
 ---
-title: Schnelles Bereitstellen einer vorhandenen App für einen Azure Service Fabric-Cluster
+title: Schnelles Bereitstellen einer vorhandenen App in einem Cluster
 description: Verwenden Sie einen Azure Service Fabric-Cluster, um mit Visual Studio eine vorhandene Node.js-Anwendung zu hosten.
-services: service-fabric
-documentationcenter: nodejs
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 6cf9594e6e1db3e163d25843b1fec0c0ff98c250
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.custom: devx-track-js
+ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592448"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013597"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hosten einer Node.js.-Anwendung in Azure Service Fabric
 
@@ -41,7 +31,7 @@ Erstellen Sie mit `CTRL`+`SHIFT`+`N` ein Projekt.
 
 Wählen Sie im Dialogfeld **Neues Projekt** die Option **Cloud > Service Fabric-Anwendung** aus.
 
-Geben Sie der Anwendung den Namen **MyGuestApp**, und klicken Sie auf **OK**.
+Geben Sie der Anwendung den Namen **MyGuestApp**, und klicken Sie auf **Erstellen**.
 
 >[!IMPORTANT]
 >Bei Node.js kann es leicht passieren, dass für Pfade die maximale Zeichenzahl von 260 überschritten wird, die für Windows gilt. Verwenden Sie für das eigentliche Projekt einen kurzen Pfad, z.B. **c:\code\svc1**. Optional können Sie **[diese Anweisungen](https://stackoverflow.com/a/41687101/1664231)** befolgen, um lange Dateipfade unter Windows 10 zuzulassen.
@@ -52,7 +42,7 @@ Mit dem nächsten Dialogfeld können Sie eine beliebige Art von Service Fabric-D
 
 Geben Sie dem Dienst den Namen **MyGuestService**, und legen Sie für die Optionen auf der rechten Seite die folgenden Werte fest:
 
-| Einstellung                   | Wert |
+| Einstellung                   | value |
 | ------------------------- | ------ |
 | Codepaketordner       | _&lt;Ordner mit Ihrer Node.js-App&gt;_ |
 | Codepaketverhalten     | Ordnerinhalte in Projekt kopieren |

@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Zurücksenden von Azure Data Box Heavy | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie Azure Data Box Heavy an Microsoft zurücksenden.
+description: In diesem Tutorial erfahren Sie, wie Sie Azure Data Box Heavy zurücksenden. Die Informationen umfassen die Versandvorbereitung, den Versand von Data Box Heavy, die Überprüfung des Datenuploads sowie die Datenlöschung.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: e438fb38afb649f6f4c7f595059ef64800977242
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: fa4df7119763e835cf62e67512105b748c7e2265
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70240350"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921009"
 ---
 ::: zone target = "docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "70240350"
 
 ::: zone target = "chromeless"
 
-# <a name="return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Zurücksenden von Azure Data Box Heavy und Überprüfen des Datenuploads in Azure
+## <a name="return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Zurücksenden von Azure Data Box Heavy und Überprüfen des Datenuploads in Azure
 
 ::: zone-end
 

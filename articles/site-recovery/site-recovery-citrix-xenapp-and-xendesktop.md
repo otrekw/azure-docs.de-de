@@ -1,5 +1,5 @@
 ---
-title: Einrichten der Notfallwiederherstellung für eine Citrix XenDesktop- und XenApp-Bereitstellung mit mehreren Ebenen mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+title: Einrichten der Citrix XenDesktop-/XenApp-Notfallwiederherstellung mit Azure Site Recovery
 description: Dieser Artikel beschreibt, wie Sie die Notfallwiederherstellung für Citrix XenDesktop- und XenApp-Bereitstellungen mithilfe von Azure Site Recovery einrichten.
 author: ponatara
 manager: abhemraj
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 68f12bb7335da0a996aeadd752f59db0aa360a8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 90d54a8ded99dd8ab43aed688036add6aede20ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038232"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86134842"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>Einrichten der Notfallwiederherstellung für eine Citrix XenDesktop- und XenApp-Bereitstellung mit mehreren Ebenen
 
@@ -30,8 +30,8 @@ Dieses Dokument enthält detaillierte Schrittanleitungen zum Erstellen einer Not
 
 Stellen Sie zunächst sicher, dass Sie mit den folgenden Verfahren vertraut sind:
 
-1. [Replizieren von virtuellen VMware-Computern in Azure mithilfe von Site Recovery](site-recovery-vmware-to-azure.md)
-1. [Entwerfen Ihres Netzwerks für die Notfallwiederherstellung](site-recovery-network-design.md)
+1. [Replizieren von virtuellen VMware-Computern in Azure mithilfe von Site Recovery](./vmware-azure-tutorial.md)
+1. [Entwerfen Ihres Netzwerks für die Notfallwiederherstellung](./concepts-on-premises-to-azure-networking.md)
 1. [Testfailover in Azure in Site Recovery](site-recovery-test-failover-to-azure.md)
 1. [Failover in Site Recovery](site-recovery-failover.md)
 1. Replizieren eines Domänencontrollers unter [Schützen von Active Directory und DNS mit Azure Site Recovery](site-recovery-active-directory.md)
@@ -96,7 +96,7 @@ Unter [Schützen von Active Directory und DNS mit Azure Site Recovery](site-reco
 
 Unter [Schützen von SQL Server mit der Notfallwiederherstellung von SQL Server und Azure Site Recovery](site-recovery-sql.md) finden Sie technische Informationen zu den empfohlenen Optionen für den Schutz von SQL-Servern.
 
-Führen Sie [diese Schritte](site-recovery-vmware-to-azure.md) aus, um mit der Replikation der virtuellen Computer der anderen Komponenten zu beginnen.
+Führen Sie [diese Schritte](./vmware-azure-tutorial.md) aus, um mit der Replikation der virtuellen Computer der anderen Komponenten zu beginnen.
 
 ![Schutz von XenApp-Komponenten](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
 

@@ -1,49 +1,58 @@
 ---
-title: Verwalten der vom Benutzer zugewiesenen verwalteten Identitäten in Azure mithilfe von REST
-description: Ausführliche Anweisungen zum Erstellen, Auflisten und Löschen einer vom Benutzer zugewiesenen verwalteten Identität zum Durchführen von REST-API-Aufrufen
+title: Verwalten benutzerseitig zugewiesener verwalteter Identitäten mithilfe von REST – Azure AD
+description: Schrittweise Anweisungen zum Erstellen, Auflisten und Löschen einer vom Benutzer zugewiesenen verwalteten Identität zum Durchführen von REST-API-Aufrufen.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/26/2018
-ms.author: markvi
+ms.date: 12/02/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75867242358881c963ab4470bdb7963d0ea4671c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 117f9a1c173f2083dd4621f4f3f41b6e83d1d46b
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60440180"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546691"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mithilfe von REST-API-Aufrufen
+# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mit REST-API-Aufrufen
 
-[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
-
-Verwaltete Identitäten für Azure-Ressourcen ermöglichen Azure-Diensten, sich bei Diensten mit Unterstützung für die Azure AD-Authentifizierung zu authentifizieren, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. 
+Verwaltete Identitäten für Azure-Ressourcen ermöglichen Azure-Diensten, sich bei Diensten zu authentifizieren, die die Azure AD-Authentifizierung unterstützen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. 
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von cURL zum Durchführen von REST-API-Aufrufen eine vom Benutzer zugewiesene verwaltete Identität erstellen, auflisten und löschen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#how-does-it-work)** bewusst.
+- Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#managed-identity-types)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
-- Wenn Sie Windows verwenden, installieren Sie das [Windows-Subsystem für Linux](https://msdn.microsoft.com/commandline/wsl/about) oder verwenden Sie [Azure Cloud Shell](../../cloud-shell/overview.md) im Azure-Portal.
-- Wenn Sie das [Windows-Subsystem für Linux](https://msdn.microsoft.com/commandline/wsl/about) oder eine [Linux-Distribution](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) verwenden, [installieren Sie die lokale Konsole für die Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
-- Wenn Sie die lokale Konsole für die Azure-Befehlszeilenschnittstelle verwenden, melden Sie sich über `az login` bei Azure mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, in dem Sie vom Benutzer zugewiesene verwaltete Identitäten bereitstellen oder für das Sie Informationen zu diesen abrufen möchten.
-- Rufen Sie mit `az account get-access-token` ein Bearerzugriffstoken ab, um die folgenden Vorgänge für vom Benutzer zugewiesene verwaltete Identitäten auszuführen.
+- Sie können alle Befehle in diesem Artikel in der Cloud oder lokal ausführen:
+    - Verwenden Sie für die Ausführung in der Cloud [Azure Cloud Shell](../../cloud-shell/overview.md).
+    - Installieren Sie für die lokale Ausführung [curl](https://curl.haxx.se/download.html) und die [Azure CLI](/cli/azure/install-azure-cli).
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+## <a name="obtain-a-bearer-access-token"></a>Abrufen eines Bearerzugriffstokens
+
+1. Wenn Sie die Befehle lokal ausführen, melden Sie sich über die Azure CLI bei Azure an:
+
+    ```
+    az login
+    ```
+
+1. Rufen Sie mit [az account get-access-token](/cli/azure/account#az_account_get_access_token) ein Zugriffstoken ab.
+
+    ```azurecli-interactive
+    az account get-access-token
+    ```
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Erstellen einer benutzerseitig zugewiesenen verwalteten Identität 
 
-Ihrem Konto muss die Rolle [Mitwirkender für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) zugewiesen sein, damit eine benutzerseitig zugewiesene verwaltete Identität erstellt werden kann.
+Ihrem Konto muss die Rolle [Mitwirkender für verwaltete Identität](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) zugewiesen sein, damit eine benutzerseitig zugewiesene verwaltete Identität erstellt werden kann.
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -67,13 +76,13 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 
 **Anforderungstext**
 
-|NAME  |BESCHREIBUNG  |
+|Name  |BESCHREIBUNG  |
 |---------|---------|
 |location     | Erforderlich. Ressourcenspeicherort        |
 
 ## <a name="list-user-assigned-managed-identities"></a>Auflisten der vom Benutzer zugewiesenen verwalteten Identitäten
 
-Ihrem Konto muss die Rolle [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator) oder [Mitwirkender für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) zugewiesen sein, damit eine benutzerseitig zugewiesene verwaltete Identität aufgelistet/gelesen werden kann.
+Ihrem Konto muss die Rolle [Operator für verwaltete Identität](../../role-based-access-control/built-in-roles.md#managed-identity-operator) oder [Mitwirkender für verwaltete Identität](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) zugewiesen sein, damit eine benutzerseitig zugewiesene verwaltete Identität aufgelistet/gelesen werden kann.
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview' -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -90,10 +99,10 @@ GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/
 
 ## <a name="delete-a-user-assigned-managed-identity"></a>Löschen einer vom Benutzer zugewiesenen verwalteten Identität
 
-Ihrem Konto muss die Rolle [Mitwirkender für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) zugewiesen sein, damit eine benutzerseitig zugewiesene verwaltete Identität gelöscht werden kann.
+Ihrem Konto muss die Rolle [Mitwirkender für verwaltete Identität](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) zugewiesen sein, damit eine benutzerseitig zugewiesene verwaltete Identität gelöscht werden kann.
 
 > [!NOTE]
-> Durch das Löschen einer vom Benutzer zugewiesenen verwalteten Identität wird der Verweis nicht für andere Ressourcen entfernt, denen sie zugewiesen wurde. Informationen zum Entfernen einer vom Benutzer zugewiesenen verwalteten Identität von einem virtuellen Computer mithilfe von cURL finden Sie unter [Entfernen einer vom Benutzer zugewiesenen Identität von einem virtuellen Azure-Computer](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).
+> Durch das Löschen einer vom Benutzer zugewiesenen verwalteten Identität wird der Verweis nicht für andere Ressourcen entfernt, denen sie zugewiesen wurde. Informationen zum Entfernen einer vom Benutzer zugewiesenen verwalteten Identität von einem virtuellen Computer mithilfe von cURL finden Sie unter [Entfernen einer vom Benutzer zugewiesenen Identität von einem virtuellen Azure-Computer](qs-configure-rest-vm.md#remove-a-user-assigned-managed-identity-from-an-azure-vm).
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup

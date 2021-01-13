@@ -1,27 +1,27 @@
 ---
-title: 'FAQ: Azure VMware-Lösung von CloudSimple'
-description: Häufig gestellte Fragen (FAQ) zu Azure VMware-Lösung von CloudSimple
-author: sharaths-cs
-ms.author: b-shsury
+title: 'FAQ: Azure VMware Solution by CloudSimple'
+description: Auf dieser Seite mit häufig gestellten Fragen zu Azure VMware Solution by CloudSimple finden Sie u. a. Fragen zu Konnektivität, Netzwerken, Sicherheit, Speicher und Azure-Integration.
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d1cbca20b9f1ee1d5f7eefb760ed60fa4d019050
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 3551327f9aa07fe218d3b05f73057e36f92abcad
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972845"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895562"
 ---
-# <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Häufig gestellte Fragen (FAQ) zu VMware-Lösung von CloudSimple
+# <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Häufig gestellte Fragen (FAQ) zu VMware Solution by CloudSimple
 
 ## <a name="cloudsimple-service"></a>CloudSimple-Dienst
 
-**Was ist Azure-VMware-Lösung von CloudSimple?**
+**Was ist Azure VMware Solution by CloudSimple?**
 
-Azure VMware-Lösung von CloudSimple transformiert und erweitert VMware-Workloads in Minuten in private, dedizierte Clouds in Azure. CloudSimple übernimmt die Bereitstellung, Verwaltung der Infrastruktur und Orchestrierung der Workloads zwischen lokalen Standorten und Azure. Da Ihre Apps sowohl lokal als auch in Azure exakt gleich ausgeführt werden, profitieren Sie von der Flexibilität und den Diensten der Cloud, ohne die Komplexität eines Neuentwurfs Ihrer App-Architektur. CloudSimple verringert Ihre Gesamtkosten mit einem Cloudverbrauchsmodell, das bedarfsgesteuerte Bereitstellung, nutzungsbasierte Bezahlung und Kapazitätsoptimierung bereitstellt.  Informationen zu Funktionen, Vorteilen und Szenarien finden Sie unter [Was ist die VMware-Lösung in Azure von CloudSimple](cloudsimple-vmware-solutions-overview.md).
+Azure VMware Solution by CloudSimple transformiert und erweitert VMware-Workloads in Minuten in private, dedizierte Clouds in Azure. CloudSimple übernimmt die Bereitstellung, Verwaltung der Infrastruktur und Orchestrierung der Workloads zwischen lokalen Standorten und Azure. Da Ihre Apps sowohl lokal als auch in Azure exakt gleich ausgeführt werden, profitieren Sie von der Flexibilität und den Diensten der Cloud, ohne die Komplexität eines Neuentwurfs Ihrer App-Architektur. CloudSimple verringert Ihre Gesamtkosten mit einem Cloudverbrauchsmodell, das bedarfsgesteuerte Bereitstellung, nutzungsbasierte Bezahlung und Kapazitätsoptimierung bereitstellt.  Informationen zu Funktionen, Vorteilen und Szenarien finden Sie unter [Was ist die VMware-Lösung in Azure von CloudSimple](cloudsimple-vmware-solutions-overview.md).
 
 **Was ist eine CloudSimple Private Cloud?**
 
@@ -29,7 +29,7 @@ Eine private CloudSimple-Cloud ist eine private, dedizierte Cloud, die aus einer
 
 **Wo ist der CloudSimple-Dienst verfügbar?**
 
-CloudSimple ist in den Regionen „USA, Osten“ und „USA, Westen“ verfügbar. Weitere Regionen sind in naher Zukunft geplant.
+CloudSimple ist in den Regionen „USA, Osten“ „USA, Westen“ und „Europa, Westen“ verfügbar. Weitere Regionen sind in naher Zukunft geplant.
 
 **Wie aktiviere ich mein Abonnement für CloudSimple?**
 
@@ -37,7 +37,7 @@ Sie können sich an Ihren Microsoft-Kundenbetreuer unter [azurevmwaresales@micro
 
 **Wie greife ich auf das CloudSimple-Portal zu?**
 
-Sie greifen aus dem Azure-Portal auf das CloudSimple-Portal zu.  Weitere Informationen finden Sie unter [Zugreifen auf die VMware-Lösung mit dem CloudSimple-Portal über das Azure-Portal](access-cloudsimple-portal.md).
+Sie greifen aus dem Azure-Portal auf das CloudSimple-Portal zu.  Weitere Informationen finden Sie unter [Zugreifen auf das VMware Solution by CloudSimple-Portal über das Azure-Portal](access-cloudsimple-portal.md).
 
 **Wie erhöhe ich die Kapazität für eine Private Cloud?**
 
@@ -106,8 +106,9 @@ CloudSimple bietet die folgenden Sicherheitsfunktionen zur Sicherung Ihrer priva
 
 CloudSimple bietet die folgenden Hosttypen:
 
-* **CS28-Knoten:** CPU: 2 x 2,2 GHz, 28 Kerne insgesamt, 48 HT.  RAM: 256 GB.  Speicher: 1.600 GB NVMe-Cache, 5.760 GB Daten (All-Flash). Netzwerk: 2 x 25 GbE NIC
-* **CS36-Knoten:** CPU: 2 x 2,3 GHz, 36 Kerne insgesamt, 72 HT.  RAM: 512 GB.  Speicher: 3.200 GB NVMe-Cache 11.520 GB Daten (All-Flash).  Netzwerk: 2 x 25 GbE NIC
+* **CS28-Knoten:** CPU: 2 x 2,2 GHz, 28 Kerne insgesamt, 48 HT.  RAM: 256 GB.  Speicher: 1.600 GB NVMe-Cache, 5.760 GB Daten (All-Flash). Netzwerk: 4x25Gbe NIC
+* **CS36-Knoten:** CPU: 2 x 2,3 GHz, 36 Kerne insgesamt, 72 HT.  RAM: 512 GB.  Speicher: 3.200 GB NVMe-Cache 11.520 GB Daten (All-Flash).  Netzwerk: 4x25Gbe NIC
+* **CS36m-Knoten:** CPU: 2 x 2,3 GHz, 36 Kerne insgesamt, 72 HT.  RAM: 576 GB.  Speicher: 3200 GB NVMe-Cache 13360 GB Daten (All-Flash).  Netzwerk: 4x25Gbe NIC
 
 **Wie werden Hardwarefehler behandelt?**
 

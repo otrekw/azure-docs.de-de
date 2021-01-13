@@ -1,27 +1,28 @@
 ---
-title: Hochverfügbarkeit und Zuverlässigkeit – Azure Scheduler
+title: Hochverfügbarkeit und Zuverlässigkeit
 description: Erfahren Sie etwas über die Hochverfügbarkeit und Zuverlässigkeit bei Azure Scheduler.
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 3cc15d173ad735d77505f636bd230e0876371271
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 98a6672af7e74fdd0732f3ba03264d2f674eb44f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300931"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368144"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Hochverfügbarkeit und Zuverlässigkeit für Azure Scheduler
 
 > [!IMPORTANT]
-> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt den Microsoft Azure Scheduler, der [ eingestellt wird](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+>
+> Scheduler ist nicht mehr in der Azure-Portal verfügbar, aber die [REST-API](/rest/api/scheduler) und [Azure Scheduler-PowerShell-Cmdlets](scheduler-powershell-reference.md) sind weiterhin verfügbar, damit Sie Ihre Aufträge und Auftragssammlungen verwalten können.
 
-Azure Scheduler bietet sowohl [Hochverfügbarkeit](https://docs.microsoft.com/azure/architecture/guide/pillars#availability) als auch Zuverlässigkeit für Ihre Aufträge. Weitere Informationen finden Sie unter [SLA für Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
+Azure Scheduler bietet sowohl [Hochverfügbarkeit](/azure/architecture/framework/#resiliency) als auch Zuverlässigkeit für Ihre Aufträge. Weitere Informationen finden Sie unter [SLA für Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
 
@@ -29,7 +30,7 @@ Azure Scheduler ist [hochverfügbar] und bietet sowohl eine georedundante Dienst
 
 ### <a name="geo-redundant-service-deployment"></a>Georedundante Dienstbereitstellung
 
-Azure Scheduler ist im Azure-Portal in fast [jeder von Azure unterstützten geografischen Region](https://azure.microsoft.com/global-infrastructure/regions/#services) verfügbar. Wenn also ein Azure-Rechenzentrum in einer gehosteten Region nicht verfügbar ist, können Sie Azure Scheduler weiterhin verwenden, da die Failoverfunktionen Scheduler aus einem anderen Rechenzentrum verfügbar machen.
+Azure Scheduler ist in fast [jeder derzeit von Azure unterstützten geografischen Region](https://azure.microsoft.com/global-infrastructure/regions/#services) verfügbar. Wenn also ein Azure-Rechenzentrum in einer gehosteten Region nicht verfügbar ist, können Sie Azure Scheduler weiterhin verwenden, da die Failoverfunktionen Scheduler aus einem anderen Rechenzentrum verfügbar machen.
 
 ### <a name="geo-regional-job-replication"></a>Georegionale Auftragsreplikation
 
@@ -70,9 +71,9 @@ Der Aktionstyp der alternativen Aktion kann sich von dem für die ursprüngliche
 
 Weitere Informationen zum Einrichten eines alternativen Endpunkts finden Sie unter [errorAction](scheduler-concepts-terms.md#error-action).
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-* [Was ist der Azure Scheduler?](scheduler-intro.md)
 * [Konzepte, Terminologie und Entitätshierarchie](scheduler-concepts-terms.md)
-* [Erstellen komplexer Zeitpläne und erweiterter Serien](scheduler-advanced-complexity.md)
+* [Azure Scheduler-REST-API – Referenz](/rest/api/scheduler)
+* [Azure Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)
 * [Grenzwerte, Kontingente, Standardwerte und Fehlercodes](scheduler-limits-defaults-errors.md)

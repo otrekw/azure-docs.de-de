@@ -1,26 +1,26 @@
 ---
-title: Konfigurieren von Containern – maschinelles Sehen
+title: 'Konfigurieren von Read-OCR-Containern: maschinelles Sehen'
 titleSuffix: Azure Cognitive Services
-description: Konfigurieren Sie verschiedene Einstellungen für Texterkennungscontainer für maschinelles Sehen.
+description: In diesem Artikel erfahren Sie, wie Sie die erforderlichen und die optionalen Einstellungen für Read-OCR-Container in der maschinelles Sehen-API konfigurieren.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.author: dapine
+ms.date: 11/23/2020
+ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: aba846ade9e2b5e19304df87ea3e29713aacf4ba
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 0539f37fe15f68d8bfd47bf426333f9d5c67c37d
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129967"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96006870"
 ---
-# <a name="configure-computer-vision-docker-containers"></a>Konfigurieren von Docker-Containern für maschinelles Sehen
+# <a name="configure-read-ocr-docker-containers"></a>Konfigurieren von Read-OCR-Docker-Containern
 
-Sie können die Runtimeumgebung für Container für maschinelles Sehen über die Argumente des Befehls `docker run` konfigurieren. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Es sind noch viele [Beispiele](#example-docker-run-commands) für den Befehl verfügbar. Die containerspezifischen Einstellungen sind die für die Abrechnung. 
+Sie können die Runtimeumgebung für Read-OCR-Container für maschinelles Sehen über die Argumente des Befehls `docker run` konfigurieren. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Es sind noch viele [Beispiele](#example-docker-run-commands) für den Befehl verfügbar. Die containerspezifischen Einstellungen sind die für die Abrechnung. 
 
 ## <a name="configuration-settings"></a>Konfigurationseinstellungen
 
@@ -29,9 +29,20 @@ Sie können die Runtimeumgebung für Container für maschinelles Sehen über die
 > [!IMPORTANT]
 > Die Einstellungen [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting) und [`Eula`](#eula-setting) werden gemeinsam verwendet, und Sie müssen gültige Werte für alle drei angeben, da der Container andernfalls nicht startet. Weitere Informationen zum Instanziieren eines Containers mithilfe dieser Konfigurationseinstellungen finden Sie unter [Abrechnung](computer-vision-how-to-install-containers.md).
 
+Der Container hat außerdem die folgenden containerspezifischen Konfigurationseinstellungen:
+
+|Erforderlich|Einstellung|Zweck|
+|--|--|--|
+|Nein|ReadEngineConfig:ResultExpirationPeriod| Gilt nur für v2.0-Container. Ablaufzeitraum für das Ergebnis in Stunden. Der Standardwert beträgt 48 Stunden. Die Einstellung gibt an, wann das System Erkennungsergebnisse löschen soll. Wenn beispielsweise `resultExpirationPeriod=1` festgelegt ist, löscht das System das Erkennungsergebnis eine Stunde nach dem Prozess. Wird `resultExpirationPeriod=0` festgelegt, löscht das System das Erkennungsergebnis nach dem Abrufen des Ergebnisses.|
+|Nein|Cache:Redis| Gilt nur für v2.0-Container. Aktiviert Redis-Speicher zum Speichern von Ergebnissen. Ein Cache ist *erforderlich*, wenn mehrere Lesecontainer hinter einem Lastenausgleich platziert werden.|
+|Nein|Queue:RabbitMQ|Gilt nur für v2.0-Container. Aktiviert RabbitMQ zum Verteilen von Aufgaben. Die Einstellung ist nützlich, wenn mehrere Lesecontainer hinter einem Lastenausgleich platziert werden.|
+|Nein|Queue:Azure:QueueVisibilityTimeoutInMilliseconds | Gilt nur für v3.x-Container. Hiermit wir die Zeit angegeben, während der eine Nachricht nicht sichtbar ist, wenn sie von einem anderen Worker verarbeitet wird. |
+|Nein|Storage::DocumentStore::MongoDB|Gilt nur für v2.0-Container. Aktiviert MongoDB für den permanenten Ergebnisspeicher. |
+|Nein|Storage:ObjectStore:AzureBlob:ConnectionString| Gilt nur für v3.x-Container. Verbindungszeichenfolge für Azure Blob Storage. |
+
 ## <a name="apikey-configuration-setting"></a>Konfigurationseinstellung „ApiKey“
 
-Die `ApiKey`-Einstellung gibt den Schlüssel der Azure `Cognitive Services`-Ressourcen an, mit dem die Abrechnungsinformationen für den Container verfolgt werden. Sie müssen einen Wert für „ApiKey“ angeben. Bei diesem Wert muss es sich um einen gültigen Schlüssel für die Ressource vom Typ _Cognitive Services_ handeln, die für die Konfigurationseinstellung [`Billing`](#billing-configuration-setting) angegeben wurde.
+Die `ApiKey`-Einstellung gibt den Schlüssel der Azure `Cognitive Services`-Ressourcen an, mit dem die Abrechnungsinformationen für den Container verfolgt werden. Sie müssen einen Wert für ApiKey angeben. Bei diesem Wert muss es sich um einen gültigen Schlüssel für die Ressource vom Typ _Cognitive Services_ handeln, die für die Konfigurationseinstellung [`Billing`](#billing-configuration-setting) angegeben wurde.
 
 Diese Einstellung finden Sie hier:
 
@@ -51,9 +62,9 @@ Diese Einstellung finden Sie hier:
 
 Denken Sie daran, die `vision/v1.0`-Weiterleitung an den Endpunkt-URI anzufügen, wie in der folgenden Tabelle dargestellt. 
 
-|Erforderlich| NAME | Datentyp | BESCHREIBUNG |
+|Erforderlich| Name | Datentyp | Beschreibung |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|Ja| `Billing` | String | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
@@ -79,10 +90,10 @@ Die Container für Maschinelles Sehen verwenden keine Eingabe- oder Ausgabeeinbi
 
 Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Betriebssystem des Hosts. Darüber hinaus ist es eventuell nicht möglich, auf den Bereitstellungspunkt auf dem [Hostcomputer](computer-vision-how-to-install-containers.md#the-host-computer) zuzugreifen, wenn ein Konflikt zwischen den vom Docker-Dienstkonto verwendeten Berechtigungen und den für den Bereitstellungspunkt auf dem Host verwendeten Berechtigungen besteht. 
 
-|Optional| NAME | Datentyp | BESCHREIBUNG |
+|Optional| Name | Datentyp | BESCHREIBUNG |
 |-------|------|-----------|-------------|
-|Nicht zulässig| `Input` | Zeichenfolge | Wird von Containern für Maschinelles Sehen nicht verwendet.|
-|Optional| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nicht zulässig| `Input` | String | Wird von Containern für Maschinelles Sehen nicht verwendet.|
+|Optional| `Output` | String | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“
 
@@ -106,57 +117,58 @@ Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
 ## <a name="container-docker-examples"></a>Beispiele für Docker-Container
 
-#### <a name="readtabread"></a>[Lesen](#tab/read)
-
 Im Folgenden finden Sie Docker-Beispiele für den Container für das Lesen.
+
+
+# <a name="version-32-preview"></a>[Version 3.2 (Vorschauversion)](#tab/version-3-2)
 
 ### <a name="basic-example"></a>Einfaches Beispiel
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-read \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} 
-  ```
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+
+```
 
 ### <a name="logging-example"></a>Beispiel für die Protokollierung 
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-read \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} \
-  Logging:Console:LogLevel:Default=Information
-  ```
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
 
-#### <a name="recognize-texttabrecognize-text"></a>[Texterkennung](#tab/recognize-text)
-
-Im Folgenden finden Sie Docker-Beispiele für den Container für die Texterkennung.
+# <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
 
 ### <a name="basic-example"></a>Einfaches Beispiel
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} 
-  ```
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 
-### <a name="logging-example"></a>Beispiel für die Protokollierung
+```
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} \
-  Logging:Console:LogLevel:Default=Information
-  ```
+### <a name="logging-example"></a>Beispiel für die Protokollierung 
 
-***
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

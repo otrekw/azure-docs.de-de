@@ -1,26 +1,18 @@
 ---
-title: Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
-description: Erfahren Sie mehr über alle Funktionen im Threat Modeling Tool
-services: security
-documentationcenter: na
+title: Übersicht über die Features des Microsoft Threat Modeling Tools – Azure
+description: Erfahren Sie mehr über alle im Threat Modeling Tool verfügbaren Features wie die Analyseansicht und Berichte.
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: e3c6769cc832a897cfbab5548de5328d743884b2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728549"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90980678"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Übersicht über die Funktionen des Threat Modeling Tools
 
@@ -49,7 +41,7 @@ Die Benutzeroberfläche ist ähnlich wie bei anderen Microsoft-Produkten. Betrac
 
 | Bezeichnung                               | Details      |
 | --------------------------------------- | ------------ |
-| **Datei** | <ul><li>Dateien öffnen, speichern und schließen</li><li>Bei OneDrive-Konten an- und abmelden</li><li>Links teilen (Anzeigen und Bearbeiten)</li><li>Dateiinformationen anzeigen</li><li>Neue Vorlage auf vorhandene Modelle anwenden</li></ul> |
+| **File** | <ul><li>Dateien öffnen, speichern und schließen</li><li>Bei OneDrive-Konten an- und abmelden</li><li>Links teilen (Anzeigen und Bearbeiten)</li><li>Dateiinformationen anzeigen</li><li>Neue Vorlage auf vorhandene Modelle anwenden</li></ul> |
 | **Bearbeiten** | Aktionen rückgängig machen und wiederholen sowie Kopieren, Einfügen und Löschen |
 | **Ansicht** | <ul><li>Zwischen den Ansichten **Analyse** und **Entwurf** wechseln</li><li>Geschlossene Fenster öffnen (z.B. Schablonen, Elementeigenschaften und Meldungen)</li><li>Layout auf die Standardeinstellungen zurücksetzen</li></ul> |
 | **Diagramm** | Diagramme hinzufügen und löschen und durch die Registerkarten von Diagrammen navigieren |
@@ -120,7 +112,7 @@ Wenn Sie die App zu öffnen, wird der Bildschirm **Willkommen** angezeigt.
 
 ### <a name="open-a-model"></a>Öffnen eines Modells
 
-Zeigen Sie auf **Modell öffnen** um zwei Optionen anzuzeigen: **Auf diesem Computer öffnen** und **Auf OneDrive öffnen**. Mit der ersten Option wird der Bildschirm **Datei öffnen** angezeigt. Die zweite Option führt Sie durch den Anmeldevorgang für OneDrive. Nach erfolgreicher Authentifizierung können Sie Ordner und Dateien auswählen.
+Bewegen Sie den Mauszeiger über der Schaltfläche **Modell öffnen**, um zwei Optionen anzuzeigen: **Auf diesem Computer öffnen** und **Auf OneDrive öffnen**. Mit der ersten Option wird der Bildschirm **Datei öffnen** angezeigt. Die zweite Option führt Sie durch den Anmeldevorgang für OneDrive. Nach erfolgreicher Authentifizierung können Sie Ordner und Dateien auswählen.
 
 ![Modell öffnen](./media/threat-modeling-tool-feature-overview/openmodel.png)
 
@@ -130,7 +122,7 @@ Zeigen Sie auf **Modell öffnen** um zwei Optionen anzuzeigen: **Auf diesem Comp
 
 Wenn Sie **Feedback, Vorschläge und Probleme** auswählen, gelangen Sie zum MSDN-Forum für SDL-Tools. Sie können lesen, was andere Benutzer zum Tool zu sagen haben, sowie Problemumgehungen und neue Ideen finden.
 
-![Feedback](./media/threat-modeling-tool-feature-overview/feedback.png)
+![Screenshot einer Schaltfläche mit dem Text „Feedback, Suggestions and Issues“ (Feedback, Vorschläge und Probleme)](./media/threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>Entwurfsansicht
 
@@ -140,33 +132,33 @@ Beim Öffnen oder Erstellen eines neuen Modells wird die **Entwurfsansicht** ge�
 
 Sie können dem Raster Elemente auf zwei Arten hinzufügen:
 
-- **Drag & Drop**: Ziehen Sie das gewünschte Element in das Raster. Verwenden Sie dann die Elementeigenschaften, um zusätzliche Informationen anzugeben.
-- **Klicken mit der rechten Maustaste**: Klicken Sie mit der rechten Maustaste auf das Raster, und wählen Sie Optionen im Dropdownmenü aus. Auf dem Bildschirm wird eine generische Darstellung des ausgewählten Elements angezeigt.
+- **Drag &amp; Drop**: Ziehen Sie das gewünschte Element in das Raster. Verwenden Sie dann die Elementeigenschaften, um zusätzliche Informationen anzugeben.
+- **Klicken mit der rechten Maustaste**: Klicken Sie mit der rechten Maustaste auf das Raster, und wählen Sie Optionen im Kontextmenü. Auf dem Bildschirm wird eine generische Darstellung des ausgewählten Elements angezeigt.
 
 ### <a name="connect-elements"></a>Verbinden von Elementen
 
 Sie können Elemente auf zwei Arten verbinden:
 
-- **Drag & Drop**: Ziehen Sie den gewünschten Datenfluss in das Raster, und verbinden Sie beide Enden mit den entsprechenden Elementen.
+- **Drag &amp; Drop**: Ziehen Sie den gewünschten Datenfluss in das Raster, und verbinden Sie beide Enden mit den entsprechenden Elementen.
 - **Klicken bei gedrückter UMSCHALTTASTE**: Klicken Sie auf das erste Element (Daten werden gesendet), halten Sie die UMSCHALTTASTE gedrückt, und wählen Sie dann das zweite Element aus (Daten werden empfangen). Klicken Sie mit der rechten Maustaste, und wählen Sie **Verbinden** aus. Wenn Sie einen bidirektionalen Datenfluss verwenden, ist die Reihenfolge nicht so wichtig.
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 
  Um die Eigenschaften anzuzeigen, die für Schablonen geändert werden können, wählen Sie die Schablone aus, und das Eigenschaftenfenster wird entsprechend aufgefüllt. Das folgende Beispiel zeigt das Fenster vor und nach dem Ziehen der Schablone **Datenbank** auf das Diagramm:
 
-#### <a name="before"></a>Vorher
+#### <a name="before"></a>vor
 
-![Vorher](./media/threat-modeling-tool-feature-overview/properties1.png)
+![vor](./media/threat-modeling-tool-feature-overview/properties1.png)
 
-#### <a name="after"></a>Nachher
+#### <a name="after"></a>Nach
 
-![Nachher](./media/threat-modeling-tool-feature-overview/properties2.png)
+![Nach](./media/threat-modeling-tool-feature-overview/properties2.png)
 
 ### <a name="messages"></a>Meldungen
 
 Wenn Sie ein Bedrohungsmodell erstellen und vergessen, Datenflüsse mit Elementen zu verbinden, werden Sie benachrichtigt. Sie können die Meldung ignorieren oder die Anweisungen zum Beheben des Problems befolgen. 
 
-![Meldungen](./media/threat-modeling-tool-feature-overview/messages.png)
+![Screenshot eines Bedrohungsmodell-Connectors, der nicht mit Elementen verbunden ist, mit der Meldung, dass dies Probleme verursacht](./media/threat-modeling-tool-feature-overview/messages.png)
 
 ### <a name="notes"></a>Notizen
 
@@ -182,7 +174,7 @@ Nachdem Sie das Diagramm erstellt haben, wählen Sie auf der Symbolleiste das Sy
 
 Wenn Sie eine Bedrohung auswählen, können Sie drei verschiedene Funktionen verwenden:
 
-| Feature                               | Information      |
+| Funktion                               | Information      |
 | --------------------------------------- | ------------ |
 | **Markierung „Gelesen“** | <p>Die Bedrohung ist als „Gelesen“ markiert, sodass Sie leichter den Überblick über die bereits überprüften Elemente behalten.</p><p>![Markierung „Gelesen/Nicht gelesen“](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **Interaktionsfokus** | <p>Die zu einer Bedrohung gehörende Interaktion wird hervorgehoben.</p><p>![Interaktionsfokus](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
@@ -204,7 +196,7 @@ Wie in der vorherigen Abbildung dargestellt, können Sie die vom Tool generierte
 
 Nachdem Sie das Ändern von Prioritäten und Aktualisieren des Status der einzelnen generierten Bedrohungen abgeschlossen haben, können Sie die Datei speichern und/oder einen Bericht ausgeben. Wechseln Sie zu **Bericht** > **Vollständigen Bericht erstellen**. Benennen Sie den Bericht. Anschließend wird ein Bericht wie etwa in der folgenden Abbildung angezeigt:
 
-![Bericht](./media/threat-modeling-tool-feature-overview/report.png)
+![Screenshot eines Beispielberichts zur Bedrohungsmodellierung, einschließlich einer Zusammenfassung, Diagrammen und anderer Informationen](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

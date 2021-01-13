@@ -1,24 +1,14 @@
 ---
-title: Abrufen der Anzahl von Azure Service Bus-Nachrichten | Microsoft-Dokumentation
-description: Informationen zum Abrufen der Anzahl von Azure Service Bus-Nachrichten.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: 'Azure Service Bus: Nachrichtenanzahl'
+description: Rufen Sie die Anzahl der Nachrichten, die in Warteschlangen und Abonnements gespeichert sind, mit Azure Resource Manager und den NamespaceManager-APIs von Service Bus ab.
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: adfd8c5849cfee69805715378a3f56ec9f685b00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/23/2020
+ms.openlocfilehash: d0e1a7a5c6eb0b281b4e6ac08135f41f28ecbec8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60403957"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85341278"
 ---
 # <a name="message-counters"></a>Nachrichtenzähler
 
@@ -43,6 +33,11 @@ Die Anzahl aktiver Nachrichten zu kennen ist nützlich, um festzustellen, ob ein
 -   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): Nachrichten, deren Übertragung in eine andere Warteschlange oder ein anderes Thema aussteht.
 
 Wenn eine Anwendung Ressourcen anhand der Länge der Warteschlange skalieren möchte, sollte sie dies langsam tun. Die Erfassung der Nachrichtenzählern ist ein aufwendiger Vorgang innerhalb des Nachrichtenbrokers, dessen Ausführung häufig direkte und negative Auswirkungen auf die Leistung der Entität hat.
+
+> [!NOTE]
+> Die an ein Service Bus-Thema gesendeten Nachrichten werden an Abonnements für dieses Thema weitergeleitet. Somit ist die Anzahl aktiver Nachrichten für das Thema selbst 0, da diese Nachrichten erfolgreich an das Abonnement weitergeleitet wurden. Ermitteln Sie die Anzahl der Nachrichten für das Abonnement, und überprüfen Sie, ob sie größer als 0 ist. Auch wenn Nachrichten im Abonnement angezeigt werden, befinden sie sich tatsächlich in einem Speicher, der im Besitz des Themas ist. 
+
+Wenn Sie die Abonnements anzeigen, ist die Anzahl der Nachrichten im Abonnement ungleich 0 (null) (und beanspruchen einen Teil des Speicherplatzes von 323 MB für die gesamte Entität).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

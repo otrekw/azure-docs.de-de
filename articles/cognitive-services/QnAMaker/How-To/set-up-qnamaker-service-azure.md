@@ -1,39 +1,29 @@
 ---
 title: Einrichten eines QnA Maker-Diensts – QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Vor dem Erstellen von QnA Maker-Wissensdatenbanken müssen Sie zuerst einen QnA Maker-Dienst in Azure einrichten. Jeder mit der Berechtigung zum Erstellen neuer Ressourcen in einem Abonnement kann einen QnA Maker-Dienst einrichten.
-services: cognitive-services
-author: diberry
-manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.date: 11/09/2020
+ms.openlocfilehash: 83917214705546b21553e997ccab11a7511f77fd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984363"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353305"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-Ressourcen
 
 Vor dem Erstellen von QnA Maker-Wissensdatenbanken müssen Sie zuerst einen QnA Maker-Dienst in Azure einrichten. Jeder mit der Berechtigung zum Erstellen neuer Ressourcen in einem Abonnement kann einen QnA Maker-Dienst einrichten.
 
-## <a name="types-of-keys-in-qna-maker"></a>Typen von Schlüsseln in QnA Maker
+Ein fundiertes Verständnis der folgenden Konzepte ist hilfreich, bevor Sie Ihre Ressource erstellen:
 
-Ihr QnA Maker-Dienst verwendet zwei Arten von Schlüsseln: **Abonnementschlüssel** und **Endpunktschlüssel**.
-
-![Schlüsselverwaltung](../media/qnamaker-how-to-key-management/key-management.png)
-
-|NAME|Location|Zweck|
-|--|--|--|
-|Abonnementschlüssel|[Azure-Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Diese Schlüssel werden verwendet, um auf die [QnA Maker-Verwaltungsdienst-APIs](https://go.microsoft.com/fwlink/?linkid=2092179) zuzugreifen. Mit diesen APIs können Sie die Fragen und Antworten in Ihrer Wissensdatenbank bearbeiten und Ihre Wissensdatenbank veröffentlichen. Diese Schlüssel werden erstellt, wenn Sie einen neuen QnA Maker-Dienst erstellen.<br><br>Sie finden diese Schlüssel in der Ressource **Cognitive Services** auf der Seite **Schlüssel**.|
-|Endpunktschlüssel|[QnA Maker-Portal](http://www.qnamaker.ai)|Diese Schlüssel werden für den Zugriff auf den Endpunkt der veröffentlichten Wissensdatenbank verwendet, um eine Antwort auf eine Benutzerfrage abzurufen. In der Regel verwenden Sie diesen Endpunkt in Ihrem Chatbot oder im Clientanwendungscode, der eine Verbindung mit dem QnA Maker-Dienst herstellt. Diese Schlüssel werden erstellt, wenn Sie Ihre QnA Maker-Wissensdatenbank veröffentlichen.<br><br>Sie finden diese Schlüssel auf der Seite **Diensteinstellungen**. Suchen Sie diese Seite im Menü des Benutzers in der oberen rechten Ecke der Seite im Dropdownmenü.|
+* [QnA Maker-Ressourcen](../Concepts/azure-resources.md)
+* [Erstellungs- und Veröffentlichungsschlüssel](../Concepts/azure-resources.md#keys-in-qna-maker)
 
 ## <a name="create-a-new-qna-maker-service"></a>Erstellen eines neuen QnA Maker-Diensts
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 Mit diesem Verfahren werden die Azure-Ressourcen erstellt, die zum Verwalten des Inhalts der Wissensdatenbank benötigt werden. Nachdem Sie diese Schritte ausgeführt haben, finden Sie die _Abonnementschlüssel_ auf der Seite **Schlüssel** für die Ressource im Azure-Portal.
 
@@ -52,8 +42,8 @@ Mit diesem Verfahren werden die Azure-Ressourcen erstellt, die zum Verwalten des
     * Wählen Sie den **Tarif** für die QnA Maker-Verwaltungsdienste (Portal und Verwaltungs-APIs) aus. Lesen Sie [weitere Informationen zu SKU-Preisen](https://aka.ms/qnamaker-pricing).
     * Erstellen Sie eine neue **Ressourcengruppe** (empfohlen), oder verwenden Sie eine vorhandene Ressourcengruppe, in der diese QnA Maker-Ressource bereitgestellt werden soll. QnA Maker erstellt verschiedene Azure-Ressourcen. Wenn Sie eine Ressourcengruppe für diese Ressourcen erstellen, können Sie die Ressourcen anhand des Ressourcengruppennamens leicht finden, verwalten und löschen.
     * Wählen Sie einen **Ressourcengruppenstandort** aus.
-    * Wählen Sie den **Tarif für Suche** des Azure Search-Diensts aus. Wenn die Option „Free-Tarif“ nicht verfügbar (abgeblendet) ist, bedeutet dies, dass Sie einen Free-Tarif für Azure Search über Ihr Abonnement schon bereitgestellt haben. In diesem Fall müssen Sie mit dem Basic-Tarif für Azure Search beginnen. Siehe [Preisdetails zu Azure Search](https://azure.microsoft.com/pricing/details/search/).
-    * Wählen Sie den **Suchspeicherort** aus, an dem die Azure Search-Daten bereitgestellt werden sollen. Einschränkungen zu den verpflichtenden Speicherorten für Kundendaten helfen bei der Bestimmung des Speicherorts, den Sie für Azure Search wählen.
+    * Wählen Sie den **Tarif für Suche** des Azure Cognitive Search-Diensts aus. Wenn die Option „Free-Tarif“ nicht verfügbar (abgeblendet) ist, bedeutet dies, dass Ihnen schon über Ihr Abonnement ein kostenloser Dienst bereitgestellt wird. In diesem Fall müssen Sie mit dem Basic-Tarif beginnen. Siehe [Azure Cognitive Search – Preise](https://azure.microsoft.com/pricing/details/search/).
+    * Wählen Sie den **Suchspeicherort** aus, an dem die Azure Cognitive Search-Indizes bereitgestellt werden sollen. Einschränkungen zu den verpflichtenden Speicherorten für Kundendaten helfen bei der Bestimmung des Speicherorts, den Sie für Azure Cognitive Search wählen.
     * Geben Sie im Feld **App-Name** einen Namen für Ihre Azure App Service-Instanz ein.
     * Standardmäßig wird App Service nach dem Standardtarif (S1) abgerechnet. Sie können den Plan nach der Erstellung ändern. Erfahren Sie mehr über [App Service-Preise](https://azure.microsoft.com/pricing/details/app-service/).
     * Wählen Sie den **Website-Speicherort** aus, an dem App Service bereitgestellt werden soll.
@@ -63,7 +53,7 @@ Mit diesem Verfahren werden die Azure-Ressourcen erstellt, die zum Verwalten des
 
     * Wählen Sie, ob Sie **Application Insights** aktivieren möchten. Wenn **Application Insights** aktiviert ist, sammelt QnA Maker Telemetriedaten zu Datenverkehr, Chatprotokollen und Fehlern.
     * Wählen Sie den **App Insights-Speicherort** aus, an dem die Application Insights-Ressource bereitgestellt werden soll.
-    * Zur Kosteneinsparung können Sie einige, aber nicht alle Azure-Ressourcen, die für QnA Maker erstellt wurden, [freigeben](#share-existing-services-with-qna-maker). 
+    * Zur Kosteneinsparung können Sie einige, aber nicht alle Azure-Ressourcen, die für QnA Maker erstellt wurden, [freigeben](#configure-qna-maker-to-use-different-cognitive-search-resource).
 
 1. Nachdem Sie alle Felder überprüft haben, wählen Sie **Erstellen** aus. Der Vorgang kann einige Minuten dauern.
 
@@ -72,64 +62,6 @@ Mit diesem Verfahren werden die Azure-Ressourcen erstellt, die zum Verwalten des
    ![Im neuen QnA Maker-Dienst erstellte Ressource](../media/qnamaker-how-to-setup-service/resources-created.png)
 
     Die Ressource mit dem _Cognitive Services_-Typ enthält Ihre _Abonnementschlüssel_.
-
-## <a name="find-subscription-keys-in-the-azure-portal"></a>Suchen von Abonnementschlüsseln im Azure-Portal
-
-Sie können Ihre Abonnementschlüssel in dem Azure-Portal anzeigen und zurücksetzen, in dem Sie die QnA Maker-Ressource erstellt haben.
-
-1. Wechseln Sie im Azure-Portal zur QnA Maker-Ressource, und wählen Sie die Ressource mit dem _Cognitive Services_-Typ aus:
-
-    ![QnA Maker-Ressourcenliste](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
-
-2. Wechseln Sie zu **Schlüssel**:
-
-    ![Abonnementschlüssel](../media/qnamaker-how-to-key-management/subscription-key.PNG)
-
-## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Suchen von Endpunktschlüsseln im QnA Maker-Portal
-
-Der Endpunkt befindet sich in demselben Bereich wie die Ressource, da die Endpunktschlüssel verwendet werden, um einen Aufruf an die Wissensdatenbank zu senden.
-
-Endpunktschlüssel können im [QnA Maker-Portal](https://qnamaker.ai) verwaltet werden.
-
-1. Melden Sie sich beim [QnA Maker-Portal](https://qnamaker.ai) an, wechseln Sie zu Ihrem Profil, und wählen Sie **Diensteinstellungen** aus:
-
-    ![Endpunktschlüssel](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
-
-2. Zeigen Sie Ihre Schlüssel an, oder setzen Sie die Schlüssel zurück:
-
-    ![Endpunktschlüssel-Manager](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
-
-    >[!NOTE]
-    >Aktualisieren Sie Ihre Schlüssel, wenn Sie denken, dass sie gefährdet sind. Dazu müssen möglicherweise entsprechende Änderungen an Ihrem Clientanwendungs- oder Botcode vorgenommen werden.
-
-## <a name="share-existing-services-with-qna-maker"></a>Freigeben vorhandener Dienste mit QnA Maker
-
-QnA Maker erstellt verschiedene Azure-Ressourcen. Wenn Sie den Verwaltungsaufwand reduzieren und von der Kostenteilung profitieren möchten, informieren Sie sich anhand der folgenden Tabelle, was Sie freigeben können und was nicht:
-
-|Dienst|Freigabe|`Reason`|
-|--|--|--|
-|Cognitive Services|X|Programmbedingt nicht möglich.|
-|App Service-Plan|✔|Der für einen App Service-Plan zugewiesene Speicherplatz auf dem Datenträger. Wenn andere Apps, die denselben App Service-Plan gemeinsam nutzen, eine erhebliche Menge an Speicherplatz belegen, treten bei der QnAMaker App Service-Instanz Probleme auf.|
-|App Service|X|Programmbedingt nicht möglich.|
-|Application Insights|✔|Gemeinsame Nutzung möglich.|
-|Suchdienst|✔|1. `testkb` ist ein reservierter Name für den QnAMaker-Dienst, der von anderen Benutzern nicht verwendet werden kann.<br>2. Eine Synonymzuordnung nach dem Namen `synonym-map` ist für den QnAMaker-Dienst reserviert.<br>3. Die Anzahl von veröffentlichten Wissensdatenbanken wird durch den Suchdiensttarif begrenzt. Wenn freie Indizes verfügbar sind, können sie von anderen Diensten genutzt werden.|
-
-Erfahren Sie mehr über den [App-Dienst](../../../app-service/index.yml) und den [Suchdienst](../../../search/index.yml).
-
-### <a name="using-a-single-search-service"></a>Verwenden eines einzelnen Suchdiensts
-
-Wenn Sie einen QnA-Dienst und dessen Abhängigkeiten (z.B. Search) über das Portal erstellen, wird automatisch ein Suchdienst erstellt und mit dem QnA Maker-Dienst verknüpft. Nachdem diese Ressourcen erstellt wurden, können Sie die App Service-Einstellung aktualisieren, um einen bereits vorhandenen Suchdienst zu nutzen und den soeben erstellten Suchdienst zu entfernen.
-
-Wenn Sie einen QnA-Dienst über Azure Resource Manager-Vorlagen erstellen, können Sie alle Ressourcen erstellen und die App Service-Erstellung so steuern, dass sie einen vorhandenen Suchdienst nutzt.
-
-## <a name="upgrade-qna-maker"></a>Upgraden von QnA Maker
-
-|Upgrade|`Reason`|
-|--|--|
-|[Upgrade](#upgrade-qna-maker-sku) der QnA Maker Management-SKU|Ihre Wissensdatenbank soll mehr Fragen und Antworten enthalten.|
-|[Upgrade](#upgrade-app-service) der App Service-SKU|Ihre Wissensdatenbank muss mehr Anforderungen aus Ihrer Client-App verarbeiten, z.B. einen Chatbot.|
-|[Upgrade](#upgrade-the-azure-search-service) des Azure Search-Diensts|Sie benötigen voraussichtlich eine Vielzahl von Wissensdatenbanken.|
-
 
 ### <a name="upgrade-qna-maker-sku"></a>Upgraden der QnA Maker-SKU
 
@@ -149,15 +81,180 @@ So führen Sie ein Upgrade der QnA Maker Management-SKU aus:
 
  Wenn Ihre Wissensdatenbank mehr Anforderungen aus Ihrer Client-App verarbeiten muss, upgraden Sie Ihren App Service-Tarif.
 
-Sie können den App Service [zentral hochskalieren](https://docs.microsoft.com/azure/app-service/manage-scale-up) oder horizontal hochskalieren.
+Sie können den App Service [hochskalieren](../../../app-service/manage-scale-up.md) oder aufskalieren.
 
-Wechseln Sie im Azure-Portal zur App Service-Ressource, und wählen Sie nach Bedarf die Option **Zentral hochskalieren** oder **Horizontal hochskalieren** aus.
+Wechseln Sie im Azure-Portal zur App Service-Ressource, und wählen Sie nach Bedarf die Option **Hochskalieren** oder **Aufskalieren** aus.
 
 ![QnA Maker App Service-Staffelung](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-### <a name="upgrade-the-azure-search-service"></a>Upgraden des Azure Search-Diensts
+### <a name="get-the-latest-runtime-updates"></a>Abrufen der neuesten Runtime-Updates
 
-Wenn Sie voraussichtlich eine Vielzahl von Wissensdatenbanken benötigen, upgraden Sie den Tarif Ihres Azure Search-Diensts.
+Die QnA Maker-Runtime ist Teil der Azure App Service-Instanz, die beim [Erstellen eines QnA Maker-Diensts](./set-up-qnamaker-service-azure.md) im Azure-Portal bereitgestellt wird. Updates für die Runtime werden in regelmäßigen Abständen bereitgestellt. Die QnA Maker App Service-Instanz befindet sich nach der Websiteerweiterung vom April 2019 (Version 5+) im automatischen Updatemodus. Dieses Update ist so konzipiert, dass es während Upgrades keine Downtime berücksichtigt.
+
+Sehen Sie sich die aktuelle Version unter https://www.qnamaker.ai/UserSettings an. Wenn Ihre Version älter als Version 5.x ist, müssen Sie App Service neu starten, damit die neuesten Updates angewendet werden:
+
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem QnA Maker-Dienst (Ressourcengruppe).
+
+    > [!div class="mx-imgBorder"]
+    > ![Azure-Ressourcengruppe von QnA Maker](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
+
+1. Wählen Sie die App Service-Instanz aus, und öffnen Sie den Abschnitt **Übersicht**.
+
+    > [!div class="mx-imgBorder"]
+    > ![QnA Maker App Service-Instanz](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+
+
+1. Starten Sie App Service neu. Der Updateprozess sollte innerhalb weniger Sekunden abgeschlossen sein. Abhängige Anwendungen oder Bots, in denen dieser QnA Maker-Dienst verwendet wird, stehen während dieses Neustartzeitraums für Endbenutzer nicht zur Verfügung.
+
+    ![Neustarten der QnA Maker App Service-Instanz](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
+
+### <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>Konfigurieren der App Service-Leerlaufeinstellung zur Vermeidung von Timeouts
+
+Die App Service-Instanz, von der die QnA Maker-Vorhersageruntime für eine veröffentlichte Wissensdatenbank bereitgestellt wird, verfügt über eine Leerlauftimeoutkonfiguration, durch die standardmäßig automatisch ein Timeout ausgelöst wird, wenn sich der Dienst im Leerlauf befindet. Dies hat für QnA Maker zur Folge, dass für die generateAnswer-API Ihrer Vorhersageruntime gelegentlich ein Timeout auftritt, wenn eine Weile kein Datenverkehr übermittelt wurde.
+
+Legen Sie den Leerlauf auf „Immer aktiv“ fest, um zu gewährleisten, dass die Vorhersageendpunkt-App geladen bleibt, auch wenn kein Datenverkehr übermittelt wird.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Suchen Sie nach der App Service-Instanz Ihrer QnA Maker-Ressource, und wählen Sie sie aus. Sie hat den gleichen Namen wie die QnA Maker-Ressource, aber einen anderen **Typ** (App Service).
+1. Navigieren Sie zu **Einstellungen**, und wählen Sie **Konfiguration** aus.
+1. Wählen Sie im Konfigurationsbereich **Allgemeine Einstellungen** aus, navigieren Sie zu **Immer aktiv**, und wählen Sie **Ein** aus.
+
+    > [!div class="mx-imgBorder"]
+    > ![Wählen Sie im Konfigurationsbereich **Allgemeine Einstellungen** aus, navigieren Sie zu **Immer aktiv**, und wählen Sie **Ein** aus.](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
+
+1. Wählen Sie zum Speichern der Konfiguration **Speichern** aus.
+1. Sie werden gefragt, ob Sie die App neu starten möchten, um die neue Einstellung zu verwenden. Wählen Sie **Weiter**.
+
+Weitere Informationen zum Konfigurieren der allgemeinen App Service-Einstellungen finden Sie [hier](../../../app-service/configure-common.md#configure-general-settings).
+
+### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>Konfigurieren der App Service-Umgebung zum Hosten von QnA Maker App Service
+Die App Service-Umgebung kann verwendet werden, um QnA Maker App Service zu hosten. Sie müssen die folgenden Schritte ausführen, wenn es sich um eine interne App Service-Umgebung handelt:
+1. Erstellen Sie eine App Service-Instanz und einen Azure Search-Dienst.
+2. Stellen Sie den App-Dienst zur Verfügung, und gestatten Sie die Verfügbarkeit von QnA Maker als:
+    * Öffentlich verfügbar (Standard)
+    * DNS-Diensttag: `CognitiveServicesManagement`
+3. Erstellen Sie mit Azure Resource Manager eine Cognitive Services-Instanz für QnA Maker (Microsoft.CognitiveServices/accounts), und legen Sie den QnA Maker-Endpunkt hierfür auf die App Service-Umgebung fest.
+
+### <a name="network-isolation-for-app-service"></a>Netzwerkisolation für App Service
+
+QnA Maker Cognitive Service verwendet das Diensttag: `CognitiveServicesManagement`. Führen Sie die folgenden Schritte aus, um die IP-Adressbereiche einer Zulassungsliste hinzuzufügen:
+
+* Laden Sie [IP-Adressbereiche für alle Diensttags](https://www.microsoft.com/download/details.aspx?id=56519) herunter.
+* Wählen Sie die IPs von „CognitiveServicesManagement“ aus.
+* Navigieren Sie zum Abschnitt „Netzwerk“ Ihrer App Service-Ressource, und klicken Sie auf die Option „Zugriffseinschränkung konfigurieren“, um die IP-Adressen einer Zulassungsliste hinzuzufügen.
+
+Wir haben außerdem ein automatisiertes Skript, um dasselbe für Ihren App Service zu erledigen. Sie finden das [PowerShell-Skript, um eine Zulassungsliste zu konfigurieren](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1), auf GitHub. Sie müssen die Abonnement-ID, die Ressourcengruppe und den tatsächlichen App Service-Namen als Skriptparameter eingeben. Beim Ausführen des Skripts werden die IP-Adressen automatisch der Zulassungsliste von App Service hinzugefügt.
+
+### <a name="business-continuity-with-traffic-manager"></a>Geschäftskontinuität mit Traffic Manager
+
+Das Hauptziel des Geschäftskontinuitätsplans besteht darin, einen ausfallsicheren Wissensdatenbank-Endpunkt zu erstellen, der sicherstellen kann, dass keine Ausfallzeiten für den Bot oder die ihn verwendende Anwendung entstehen.
+
+> [!div class="mx-imgBorder"]
+> ![QnA Maker-Geschäftskontinuitätsplan](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
+
+Das oben dargestellte allgemeine Konzept lautet wie folgt:
+
+1. Richten Sie zwei parallele [QnA Maker-Dienste](set-up-qnamaker-service-azure.md) in [Azure-Regionspaaren](../../../best-practices-availability-paired-regions.md) ein.
+
+1. [Sichern](../../../app-service/manage-backup.md) Sie Ihren primären QnA Maker-App-Dienst, und [stellen](../../../app-service/web-sites-restore.md) Sie ihn bei der Sekundäreinrichtung wieder her. Dadurch wird sichergestellt, dass beide Setups mit demselben Hostnamen und denselben Schlüsseln arbeiten.
+
+1. Halten Sie die primären und sekundären Azure-Suchindizes synchron. Verwenden Sie das [hier](https://github.com/pchoudhari/QnAMakerBackupRestore) aufgeführte GitHub-Beispiel, um zu erfahren, wie Azure-Indizes gesichert und wiederhergestellt werden.
+
+1. Sichern Sie die Application Insights-Daten mithilfe des [fortlaufenden Exports](../../../azure-monitor/app/export-telemetry.md).
+
+1. Verwenden Sie [Traffic Manager](../../../traffic-manager/traffic-manager-overview.md) nach der Einrichtung der primären und sekundären Stapel, um die zwei Endpunkte zu konfigurieren und eine Routingmethode einzurichten.
+
+1. Sie müssten ein TLS-Zertifikat (Transport Layer Security), früher SSL-Zertifikat (Secure Sockets Layer) genannt, für Ihren Traffic Manager-Endpunkt erstellen. [Binden Sie das TLS/SSL-Zertifikat](../../../app-service/configure-ssl-bindings.md) an Ihre App-Dienste.
+
+1. Verwenden Sie dann den Traffic Manager-Endpunkt in Ihrem Bot oder in Ihrer App.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+
+Mit diesem Verfahren werden die Azure-Ressourcen erstellt, die zum Verwalten des Inhalts der Wissensdatenbank benötigt werden. Nachdem Sie diese Schritte ausgeführt haben, finden Sie die *Abonnementschlüssel* auf der Seite **Schlüssel** für die Ressource im Azure-Portal.
+
+1. Melden Sie sich beim Azure-Portal an, und [erstellen Sie eine QnA Maker-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker).
+
+1. Nachdem Sie die Geschäftsbedingungen gelesen haben, wählen Sie **Erstellen** aus:
+
+    ![Erstellen eines neuen QnA Maker-Diensts](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
+
+1. Aktivieren Sie in **QnA Maker** das Kontrollkästchen „Verwaltet (Vorschau)“, und wählen Sie die geeigneten Tarife und Regionen aus:
+
+    ![Erstellen eines neuen QnA Maker verwaltet-Diensts – Tarif und Regionen](../media/qnamaker-how-to-setup-service/enter-qnamaker-v2-info.png)
+
+    * Wählen Sie das **Abonnement** aus, unter dem die QnA Maker-Ressource bereitgestellt werden soll.
+    * Erstellen Sie eine neue **Ressourcengruppe** (empfohlen), oder verwenden Sie eine vorhandene Ressourcengruppe, in der diese QnA Maker verwaltet (Vorschau)-Ressource bereitgestellt werden soll. QnA Maker verwaltet (Vorschau) erstellt ein paar Azure-Ressourcen. Wenn Sie eine Ressourcengruppe für diese Ressourcen erstellen, können Sie die Ressourcen anhand des Ressourcengruppennamens leicht finden, verwalten und löschen.
+    * Geben Sie in das Feld **Name** einen eindeutigen Namen ein, um diesen QnA Maker verwaltet (Vorschau)-Dienst zu identifizieren. 
+    * Wählen Sie den **Standort** aus, an dem der QnA Maker verwaltet (Vorschau)-Dienst bereitgestellt werden soll. Die Verwaltungs-APIs und der Dienstendpunkt werden an diesem Standort gehostet. 
+    * Wählen Sie den **Tarif** für den QnA Maker verwaltet (Vorschau)-Dienst aus (für die Vorschauversion „Free“). Lesen Sie [weitere Informationen zu SKU-Preisen](https://aka.ms/qnamaker-pricing).
+    * Wählen Sie den **Suchspeicherort** aus, an dem die Azure Cognitive Search-Indizes bereitgestellt werden sollen. Einschränkungen zu den verpflichtenden Speicherorten für Kundendaten helfen bei der Bestimmung des Speicherorts, den Sie für Azure Cognitive Search wählen.
+    * Wählen Sie den **Tarif für Suche** des Azure Cognitive Search-Diensts aus. Wenn die Option „Free-Tarif“ nicht verfügbar (abgeblendet) ist, bedeutet dies, dass Ihnen schon über Ihr Abonnement ein kostenloser Dienst bereitgestellt wird. In diesem Fall müssen Sie mit dem Basic-Tarif beginnen. Siehe [Azure Cognitive Search – Preise](https://azure.microsoft.com/pricing/details/search/).
+
+1. Nachdem Sie alle Felder überprüft haben, wählen Sie **Überprüfen und erstellen** aus. Der Vorgang kann einige Minuten dauern.
+
+1. Nachdem die Bereitstellung abgeschlossen ist, werden die folgenden neu erstellten Ressourcen in Ihrem Abonnement angezeigt:
+
+    ![In einem neuen QnA Maker verwaltet (Vorschau)-Dienst erstellte Ressource](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
+
+    Die Ressource mit dem _Cognitive Services_-Typ enthält Ihre _Abonnementschlüssel_.
+
+---
+
+## <a name="find-authoring-keys-in-the-azure-portal"></a>Suchen von Erstellungsschlüsseln im Azure-Portal
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
+
+Sie können Ihre Erstellungsschlüssel in dem Azure-Portal anzeigen und zurücksetzen, in dem Sie die QnA Maker-Ressource erstellt haben. Diese Schlüssel können auch als Abonnementschlüssel bezeichnet werden.
+
+1. Wechseln Sie im Azure-Portal zur QnA Maker-Ressource, und wählen Sie die Ressource mit dem _Cognitive Services_-Typ aus:
+
+    ![QnA Maker-Ressourcenliste](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
+
+2. Wechseln Sie zu **Schlüssel**:
+
+    ![Abonnementschlüssel](../media/qnamaker-how-to-key-management/subscription-key.PNG)
+
+### <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Suchen von Abfrageendpunktschlüsseln im QnA Maker-Portal
+
+Der Endpunkt befindet sich in demselben Bereich wie die Ressource, da die Endpunktschlüssel verwendet werden, um einen Aufruf an die Wissensdatenbank zu senden.
+
+Endpunktschlüssel können im [QnA Maker-Portal](https://qnamaker.ai) verwaltet werden.
+
+1. Melden Sie sich beim [QnA Maker-Portal](https://qnamaker.ai) an, wechseln Sie zu Ihrem Profil, und wählen Sie **Diensteinstellungen** aus:
+
+    ![Endpunktschlüssel](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
+
+2. Zeigen Sie Ihre Schlüssel an, oder setzen Sie die Schlüssel zurück:
+
+    > [!div class="mx-imgBorder"]
+    > ![Endpunktschlüssel-Manager](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
+
+    >[!NOTE]
+    >Aktualisieren Sie Ihre Schlüssel, wenn Sie denken, dass sie gefährdet sind. Dazu müssen möglicherweise entsprechende Änderungen an Ihrem Clientanwendungs- oder Botcode vorgenommen werden.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+
+Sie können Ihre Erstellungsschlüssel in dem Azure-Portal anzeigen und zurücksetzen, in dem Sie die QnA Maker verwaltet (Vorschau)-Ressource erstellt haben. Diese Schlüssel können auch als Abonnementschlüssel bezeichnet werden.
+
+1. Wechseln Sie im Azure-Portal zur QnA Maker verwaltet (Vorschau)-Ressource, und wählen Sie die Ressource mit dem *Cognitive Services*-Typ aus:
+
+    ![QnA Maker verwaltet (Vorschau)-Ressourcenliste](../media/qnamaker-how-to-key-management/qnamaker-v2-resource-list.png)
+
+2. Wechseln Sie zu **Schlüssel und Endpunkt**:
+
+    ![QnA Maker verwaltet (Vorschau)-Abonnementschlüssel](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
+
+### <a name="update-the-resources"></a>Aktualisieren der Ressourcen
+
+Erfahren Sie, wie Sie die von Ihrer Wissensdatenbank genutzten Ressourcen aktualisieren können. QnA Maker verwaltet (Vorschau) ist während der Vorschauphase **kostenlos**. 
+
+---
+
+## <a name="upgrade-the-azure-cognitive-search-service"></a>Upgrade des Azure Cognitive Search-Diensts
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
+
+Wenn Sie voraussichtlich eine Vielzahl von Wissensdatenbanken benötigen, upgraden Sie den Tarif Ihres Azure Cognitive Search-Diensts.
 
 Sie können derzeit kein direktes Upgrade der Azure Search-SKU ausführen. Allerdings können Sie eine neue Azure Search-Ressource mit der gewünschten SKU erstellen, die Daten in der neuen Ressource wiederherstellen und anschließend eine Verknüpfung mit dem QnA Maker-Stapel herstellen. Gehen Sie dazu folgendermaßen vor:
 
@@ -183,31 +280,110 @@ Sie können derzeit kein direktes Upgrade der Azure Search-SKU ausführen. Aller
 
     ![Neustarten der QnA Maker App Service-Instanz](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
-## <a name="get-the-latest-runtime-updates"></a>Abrufen der neuesten Runtime-Updates
+### <a name="cognitive-search-consideration"></a>Überlegungen zu Cognitive Search
 
-Die QnA Maker-Runtime ist Teil der Azure App Service-Instanz, die beim [Erstellen eines QnA Maker-Diensts](./set-up-qnamaker-service-azure.md) im Azure-Portal bereitgestellt wird. Updates für die Runtime werden in regelmäßigen Abständen bereitgestellt. Die QnA Maker App Service-Instanz befindet sich nach der Websiteerweiterung vom April 2019 (Version 5+) im automatischen Updatemodus. Dieses Update ist so konzipiert, dass es während Upgrades keine Downtime berücksichtigt.
+Cognitive Search verfügt als separate Ressource über einige verschiedene Konfigurationen, die Sie kennen sollten.
 
-Sehen Sie sich die aktuelle Version unter https://www.qnamaker.ai/UserSettings an. Wenn Ihre Version älter als Version 5.x ist, müssen Sie App Service neu starten, damit die neuesten Updates angewendet werden:
+### <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>Konfigurieren von QnA Maker zur Verwendung einer anderen Cognitive Search-Ressource
 
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem QnA Maker-Dienst (Ressourcengruppe).
+Wenn Sie einen QnA-Dienst und dessen Abhängigkeiten (z.B. Search) über das Portal erstellen, wird automatisch ein Suchdienst erstellt und mit dem QnA Maker-Dienst verknüpft. Nachdem diese Ressourcen erstellt wurden, können Sie die App Service-Einstellung aktualisieren, um einen bereits vorhandenen Suchdienst zu nutzen und den soeben erstellten Suchdienst zu entfernen.
 
-    ![Azure-Ressourcengruppe von QnA Maker](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
+Die **App Service**-Ressource von QnA Maker verwendet die Cognitive Search-Ressource. Um die von QnA Maker verwendete Cognitive Search-Ressource zu ändern, müssen Sie die Einstellung im Azure-Portal ändern.
 
-1. Wählen Sie die App Service-Instanz aus, und öffnen Sie den Abschnitt **Übersicht**.
+1. Rufen Sie den **Administratorschlüssel** und den **Namen** der Cognitive Search-Ressource ab, die von QnA Maker verwendet werden soll.
 
-    ![QnA Maker App Service-Instanz](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und suchen Sie den **App Service**, der Ihrer QnA Maker-Ressource zugeordnet ist. Beide weisen denselben Namen auf.
 
-1. Starten Sie App Service neu. Der Updateprozess sollte innerhalb weniger Sekunden abgeschlossen sein. Abhängige Anwendungen oder Bots, in denen dieser QnA Maker-Dienst verwendet wird, stehen während dieses Neustartzeitraums für Endbenutzer nicht zur Verfügung.
+1. Wählen Sie **Einstellungen** und dann **Konfiguration** aus. Dadurch werden alle vorhandenen Einstellungen für den App Service des QnA Makers angezeigt.
 
-    ![Neustarten der QnA Maker App Service-Instanz](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot des Azure-Portals mit dargestellten Konfigurationseinstellungen für den App Service](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
 
-## <a name="management-service-region"></a>Verwaltungsdienstregion
+1. Ändern Sie die Werte für die folgenden Schlüssel:
 
-Der Verwaltungsdienst von QnA Maker wird nur für das QnA Maker-Portal und für die anfängliche Datenverarbeitung genutzt. Dieser Dienst steht nur in der Region „USA, Westen“ zur Verfügung. In diesem Dienst (USA, Westen) werden keine Kundendaten gespeichert.
+    * **AzureSearchAdminKey**
+    * **AzureSearchName**
+
+1. Um die neuen Einstellungen zu verwenden, müssen Sie den App Service neu starten. Wählen Sie **Übersicht** und dann **Neu starten** aus.
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot des Azure-Portals beim Neustart von App Service nach dem Ändern der Konfigurationseinstellungen](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
+
+Wenn Sie einen QnA-Dienst über Azure Resource Manager-Vorlagen erstellen, können Sie alle Ressourcen erstellen und die App Service-Erstellung so steuern, dass sie einen vorhandenen Suchdienst nutzt.
+
+Weitere Informationen zum Konfigurieren der App Service-Anwendungseinstellungen finden Sie [hier](../../../app-service/configure-common.md#configure-app-settings).
+
+### <a name="configuring-cognitive-search-as-a-private-endpoint-inside-a-vnet"></a>Konfigurieren von Cognitive Search als privater Endpunkt innerhalb eines VNET
+
+Wenn eine Suchinstanz während der Erstellung einer QnA Maker-Ressource erstellt wird, können Sie Cognitive Search zwingen, eine private Endpunktkonfiguration zu unterstützen, die vollständig innerhalb des virtuellen Netzwerks (VNet) eines Kunden erstellt wurde.
+
+Alle Ressourcen müssen in derselben Region erstellt werden, um einen privaten Endpunkt nutzen zu können.
+
+* QnA Maker-Ressource
+* Neue Cognitive Search-Ressource
+* Neue Virtual Network-Ressource
+
+Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com) aus:
+
+1. Erstellen Sie eine [QnA Maker-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker).
+1. Erstellen Sie eine neue Cognitive Search-Ressource mit Endpunktkonnektivität (Daten), die auf _Privat_ festgelegt ist. Erstellen Sie die Ressource in derselben Region wie die in Schritt 1 erstellte QnA Maker-Ressource. Erfahren Sie mehr über die [Erstellung einer Ressource für Cognitive Search](../../../search/search-create-service-portal.md), und wechseln Sie dann über diesen Link direkt zur [Erstellungsseite der Ressource](https://ms.portal.azure.com/#create/Microsoft.Search).
+1. Erstellen Sie eine neue [Virtual Network-Ressource](https://ms.portal.azure.com/#create/Microsoft.VirtualNetwork-ARM).
+1. Konfigurieren Sie das VNET auf der in Schritt 1 dieses Verfahrens erstellten App-Dienstressource.
+    1. Erstellen Sie einen neuen DNS-Eintrag im VNET für die in Schritt 2 erstellte neue Cognitive Search-Ressource. für die IP-Adresse von Cognitive Search.
+1. [Ordnen Sie den App-Dienst](#configure-qna-maker-to-use-different-cognitive-search-resource) mit der in Schritt 2 erstellten neuen Cognitive Search-Ressource zu. Dann können Sie die in Schritt 1 erstellte ursprüngliche Cognitive Search-Ressource löschen.
+
+Erstellen Sie Ihre erste Wissensdatenbank im [QnA Maker-Portal](https://www.qnamaker.ai/).
+
+
+### <a name="inactivity-policy-for-free-search-resources"></a>Richtlinie zur Inaktivität für kostenlose Search-Ressourcen
+
+Wenn Sie keine QnA Maker-Ressource verwenden, sollten Sie alle Ressourcen entfernen. Wenn Sie die nicht verwendeten Ressourcen nicht entfernen, wird Ihre Wissensdatenbank nicht mehr funktionieren, wenn Sie eine kostenlose Search-Ressource erstellt haben.
+
+Kostenlose Search-Ressourcen werden nach 90 Tagen gelöscht, wenn kein API-Aufruf empfangen wurde.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+
+Wenn Sie voraussichtlich eine Vielzahl von Wissensdatenbanken benötigen, upgraden Sie den Tarif Ihres Azure Cognitive Search-Diensts.
+
+Sie können derzeit kein direktes Upgrade der Azure Search-SKU ausführen. Allerdings können Sie eine neue Azure Search-Ressource mit der gewünschten SKU erstellen, die Daten in der neuen Ressource wiederherstellen und anschließend eine Verknüpfung mit dem QnA Maker-Stapel herstellen. Gehen Sie dazu folgendermaßen vor:
+
+1. Erstellen Sie im Azure-Portal eine neue Azure Search-Ressource, und wählen Sie die gewünschte SKU aus.
+
+    ![QnA Maker-Azure Search-Ressource](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
+
+1. Stellen Sie die Indizes aus Ihrer ursprünglichen Azure Search-Ressource in der neuen wieder her. Sehen Sie dazu den [Beispielcode für die Wiederherstellung aus einer Sicherung](https://github.com/pchoudhari/QnAMakerBackupRestore).
+
+1. Informationen, wie Sie die neue Azure Search-Ressource mit dem QnA Maker verwaltet (Vorschau)-Dienst verknüpfen, finden Sie im folgenden Thema.
+
+### <a name="configure-qna-maker-managed-preview-service-to-use-different-cognitive-search-resource"></a>Konfigurieren des QnA Maker verwaltet (Vorschau)-Diensts zur Verwendung einer anderen Cognitive Search-Ressource
+
+Wenn Sie einen QnA-Dienst verwaltet (Vorschau) und dessen Abhängigkeiten (z. B. Search) über das Portal erstellen, wird automatisch ein Suchdienst für Sie erstellt und mit dem QnA Maker verwaltet (Vorschau)-Dienst verknüpft. Nachdem diese Ressourcen erstellt wurden, können Sie den Suchdienst auf der Registerkarte **Konfiguration** aktualisieren.
+
+1. Wechseln Sie zu Ihrem QnA Maker verwaltet (Vorschau)-Dienst im Azure-Portal.
+
+1. Wählen Sie **Konfiguration** aus, und wählen Sie den Azure Cognitive Search-Dienst aus, den Sie mit Ihrem QnA Maker verwaltet (Vorschau)-Dienst verknüpfen möchten.
+
+    ![Screenshot der Seite „Konfiguration“ von QnA Maker verwaltet (Vorschau)](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-configuration.png)
+
+1. Klicken Sie auf **Speichern**.
+
+> [!NOTE]
+> Wenn Sie den dem QnA Maker zugeordneten Azure Search-Dienst ändern, verlieren Sie den Zugriff auf alle bereits darin vorhandenen Wissensdatenbanken. Stellen Sie sicher, dass Sie die vorhandenen Wissensdatenbanken exportieren, bevor Sie den Azure Search-Dienst ändern.
+### <a name="inactivity-policy-for-free-search-resources"></a>Richtlinie zur Inaktivität für kostenlose Search-Ressourcen
+
+Wenn Sie keine QnA Maker-Ressource verwenden, sollten Sie alle Ressourcen entfernen. Wenn Sie die nicht verwendeten Ressourcen nicht entfernen, wird Ihre Wissensdatenbank nicht mehr funktionieren, wenn Sie eine kostenlose Search-Ressource erstellt haben.
+
+Kostenlose Search-Ressourcen werden nach 90 Tagen gelöscht, wenn kein API-Aufruf empfangen wurde.
+
+---
+
+## <a name="delete-azure-resources"></a>Löschen von Azure-Ressourcen
+
+Wenn Sie Azure-Ressourcen löschen, die für Ihre QnA Maker-Wissensdatenbanken verwendet werden, funktionieren diese Wissensdatenbanken nicht mehr. Stellen Sie vor dem Löschen von Ressourcen sicher, dass Sie Ihre Wissensdatenbanken auf der Seite **Einstellungen** exportieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über den [App-Dienst](../../../app-service/index.yml) und den [Suchdienst](../../../search/index.yml).
 
 > [!div class="nextstepaction"]
-> [Erstellen und Veröffentlichen einer Wissensdatenbank](../Quickstarts/create-publish-knowledge-base.md)
+> [Erstellen zusammen mit anderen Personen](../index.yml)

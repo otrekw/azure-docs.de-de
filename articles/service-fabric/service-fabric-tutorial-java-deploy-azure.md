@@ -1,26 +1,15 @@
 ---
-title: Bereitstellen einer Java-App zu einem Service Fabric-Cluster in Azure | Microsoft-Dokumentation
+title: Bereitstellen einer Java-App in einem Service Fabric-Cluster in Azure
 description: In diesem Tutorial wird beschrieben, wie Sie eine Java Service Fabric-Anwendung in einem Azure Service Fabric-Cluster bereitstellen.
-services: service-fabric
-documentationcenter: java
-author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
-ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: c836fd122d9dba0cd7eb20fe405e63c3ca3f59eb
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.custom: mvc, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: c2e2b2883bfa01d3a36de5d58425449f6f973010
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306795"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702156"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Tutorial: Bereitstellen einer Java-Anwendung in einem Service Fabric-Cluster in Azure
 
@@ -46,7 +35,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Installieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Installieren des Service Fabric SDK für [Mac](service-fabric-get-started-mac.md) oder [Linux](service-fabric-get-started-linux.md)
 * [Installieren von Python 3](https://wiki.python.org/moin/BeginnersGuide/Download)
 
@@ -62,13 +51,13 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
 2. Anmelden bei Ihrem Azure-Konto
 
-    ```bash
+    ```azurecli
     az login
     ```
 
 3. Legen Sie Ihr Azure-Abonnement fest, das Sie zum Erstellen der Ressourcen verwenden möchten.
 
-    ```bash
+    ```azurecli
     az account set --subscription [SUBSCRIPTION-ID]
     ```
 
@@ -82,7 +71,7 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
     Mit dem obigen Befehl werden die folgenden Informationen zurückgegeben, die Sie sich zur späteren Verwendung notieren sollten.
 
-    ```
+    ```output
     Source Vault Resource Id: /subscriptions/<subscription_id>/resourceGroups/testkeyvaultrg/providers/Microsoft.KeyVault/vaults/<name>
     Certificate URL: https://<name>.vault.azure.net/secrets/<cluster-dns-name-for-certificate>/<guid>
     Certificate Thumbprint: <THUMBPRINT>
@@ -90,7 +79,7 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
 5. Erstellen einer Ressourcengruppe für das Speicherkonto, in dem Ihre Protokolle gespeichert sind
 
-    ```bash
+    ```azurecli
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
 
     Example: az group create --location westus --name teststorageaccountrg
@@ -98,7 +87,7 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
 6. Erstellen eines Speicherkontos, das zum Speichern der erstellten Protokolle verwendet wird
 
-    ```bash
+    ```azurecli
     az storage account create -g [RESOURCE-GROUP-NAME] -l [REGION] --name [STORAGE-ACCOUNT-NAME] --kind Storage
 
     Example: az storage account create -g teststorageaccountrg -l westus --name teststorageaccount --kind Storage
@@ -110,13 +99,13 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
 8. Kopieren Sie die Konto-SAS-URL, und bewahren Sie sie für die Erstellung Ihres Service Fabric-Clusters auf. Die URL lautet in etwa wie folgt:
 
-    ```
+    ```output
     ?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-31T03:24:04Z&st=2018-01-30T19:24:04Z&spr=https,http&sig=IrkO1bVQCHcaKaTiJ5gilLSC5Wxtghu%2FJAeeY5HR%2BPU%3D
     ```
 
 9. Erstellen Sie eine Ressourcengruppe, in der die Event Hub-Ressourcen enthalten sind. Event Hubs wird zum Senden von Nachrichten von Service Fabric an den Server verwendet, auf dem die ELK-Ressourcen ausgeführt werden.
 
-    ```bash
+    ```azurecli
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
 
     Example: az group create --location westus --name testeventhubsrg
@@ -124,11 +113,11 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
 10. Erstellen Sie mit dem folgenden Befehl eine Event Hubs-Ressource. Befolgen Sie die Anweisungen in den Aufforderungen, um Details für namespaceName, eventHubName, consumerGroupName, sendAuthorizationRule und receiveAuthorizationRule einzugeben.
 
-    ```bash
-    az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
+    ```azurecli
+    az deployment group create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
-    az group deployment create -g testeventhubsrg --template-file eventhubsdeploy.json
+    az deployment group create -g testeventhubsrg --template-file eventhubsdeploy.json
     Please provide string value for 'namespaceName' (? for help): testeventhubnamespace
     Please provide string value for 'eventHubName' (? for help): testeventhub
     Please provide string value for 'consumerGroupName' (? for help): testeventhubconsumergroup
@@ -167,7 +156,7 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
     Kopieren Sie den Wert des Felds **sr** in der zurückgegebenen JSON-Ausgabe. Der Wert des Felds **sr** ist das SAS-Token für EventHubs. Die folgende URL ist ein Beispiel für das Feld **sr**:
 
-    ```bash
+    ```output
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
@@ -194,7 +183,7 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
 14. Führen Sie den folgenden Befehl aus, um Ihren Service Fabric-Cluster zu erstellen:
 
-    ```bash
+    ```azurecli
     az sf cluster create --location 'westus' --resource-group 'testlinux' --template-file sfdeploy.json --parameter-file sfdeploy.parameters.json --secret-identifier <certificate_url_from_step4>
     ```
 
@@ -226,11 +215,11 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
     ./install.sh
     ```
 
-5. Öffnen Sie zum Zugreifen auf Service Fabric Explorer Ihren bevorzugten Browser, und geben Sie https://testlinuxcluster.westus.cloudapp.azure.com:19080 ein. Wählen Sie im Zertifikatspeicher das Zertifikat aus, das Sie zum Herstellen einer Verbindung mit diesem Endpunkt verwenden möchten. Wenn Sie einen Linux-Computer verwenden, müssen die Zertifikate, die mit dem Skript *new-service-fabric-cluster-certificate.sh* generiert wurden, in Chrome importiert werden, um Service Fabric Explorer anzuzeigen. Wenn Sie einen Macintosh verwenden, müssen Sie die PFX-Datei in Ihrem Schlüsselbund installieren. Sie sehen, dass die Anwendung im Cluster installiert wurde.
+5. Öffnen Sie zum Zugreifen auf Service Fabric Explorer Ihren bevorzugten Browser, und geben Sie `https://testlinuxcluster.westus.cloudapp.azure.com:19080` ein. Wählen Sie im Zertifikatspeicher das Zertifikat aus, das Sie zum Herstellen einer Verbindung mit diesem Endpunkt verwenden möchten. Wenn Sie einen Linux-Computer verwenden, müssen die Zertifikate, die mit dem Skript *new-service-fabric-cluster-certificate.sh* generiert wurden, in Chrome importiert werden, um Service Fabric Explorer anzuzeigen. Wenn Sie einen Macintosh verwenden, müssen Sie die PFX-Datei in Ihrem Schlüsselbund installieren. Sie sehen, dass die Anwendung im Cluster installiert wurde.
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
-6. Geben Sie https://testlinuxcluster.westus.cloudapp.azure.com:8080 ein, um auf Ihre Anwendung zuzugreifen.
+6. Geben Sie `https://testlinuxcluster.westus.cloudapp.azure.com:8080` ein, um auf Ihre Anwendung zuzugreifen.
 
     ![Abstimmungs-App – Java Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 

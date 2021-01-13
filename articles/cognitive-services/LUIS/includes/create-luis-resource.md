@@ -1,38 +1,43 @@
 ---
-title: Containerunterstützung
+title: Erstellen einer LUIS-Ressource
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/5/2019
-ms.author: dapine
-ms.openlocfilehash: 52d8e1355558b197b193a50c7cde571799541268
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.date: 11/20/2020
+ms.author: aahi
+ms.openlocfilehash: ee7fd384a198c5eff672b14b6cb479aac26cfe54
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717171"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972510"
 ---
-## <a name="create-a-luis-resource"></a>Erstellen einer LUIS-Ressource
+<a name="create-luis-resources"></a>
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Klicken Sie auf [**Language Understanding** erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUIS).
+## <a name="create-luis-resources-in-the-azure-portal"></a>Erstellen von LUIS-Ressourcen im Azure-Portal
+
+1. Unter [diesem Link](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) können Sie mit der Erstellung von LUIS-Ressourcen im Azure-Portal beginnen.
+
 1. Geben Sie alle erforderlichen Einstellungen ein:
 
-    |Einstellung|Wert|
+    |Name|Zweck|
     |--|--|
-    |NAME|Gewünschter Name (2 bis 64 Zeichen)|
-    |Abonnement|Wählen Sie ein passendes Abonnement aus|
-    |Location|Wählen Sie einen nahe gelegenen und verfügbaren Speicherort aus|
-    |Preisstufe|`F0` – der Mindesttarif|
-    |Ressourcengruppe|Wählen Sie eine verfügbare Ressourcengruppe aus|
+    |Subscription | Das Abonnement, unter dem die Ressource abgerechnet wird|
+    |Resource group| Ein benutzerdefinierter Ressourcengruppenname, den Sie auswählen oder erstellen. Mit Ressourcengruppen können Sie Azure-Ressourcen für den Zugriff und die Verwaltung gruppieren.|
+    |Name| ein von Ihnen gewählter benutzerdefinierter Name. Er wird als benutzerdefinierte Unterdomäne für Ihre Erstellungs- und Vorhersageendpunktabfragen verwendet.|
+    |Authoring location (Erstellungsstandort)|Die Region, die Ihrem Modell zugeordnet ist.|
+    |Authoring pricing tier (Erstellungstarif)|Bestimmt die maximale Anzahl von Transaktionen pro Sekunde und Monat.|
+    |Vorhersagestandort|Die Region, die Ihrer veröffentlichten Vorhersageendpunkt-Laufzeitumgebung zugeordnet ist.|
+    |Tarif für Vorhersagen|Bestimmt die maximale Anzahl von Transaktionen pro Sekunde und Monat.|
 
-1. Klicken Sie auf **Erstellen**, und warten Sie, bis die Ressource erstellt wird. Nachdem sie erstellt wurde, navigieren Sie zur Ressourcenseite.
-1. Erfassen Sie den konfigurierten `endpoint` und einen API-Schlüssel:
+    > [!div class="mx-imgBorder"]
+    > [![Screenshot: Registerkarte „Grundlagen“ unter „Erstellen“](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png)](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png#lightbox)
 
-    |Registerkarte „Ressource“ im Portal|Einstellung|Wert|
-    |--|--|--|
-    |**Übersicht**|Endpunkt|Kopieren Sie den Endpunkt. Er sieht etwa so aus: `https://luis.cognitiveservices.azure.com/luis/v2.0`.|
-    |**Schlüssel**|API-Schlüssel|Kopieren Sie einen der beiden Schlüssel. Es handelt sich um eine aus 32 alphanumerischen Zeichen bestehende Zeichenfolge ohne Leerzeichen oder Bindestriche, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+1. Wählen Sie **Überprüfen + erstellen** aus, und warten Sie, bis die Ressource erstellt wird.
+1. Nachdem beide Ressourcen erstellt wurden, wählen Sie im Azure-Portal die neue Erstellungsressource aus. Wählen Sie anschließend **Schlüssel und Endpunkt** aus, um die **Erstellungsendpunkt-URL** und den **Schlüssel** programmgesteuert für die Erstellung abzurufen.
+
+> [!TIP]
+> Um die Ressourcen verwenden zu können, müssen Sie sie im LUIS-Portal [zuweisen](../luis-how-to-azure-subscription.md#assign-an-authoring-resource-in-the-luis-portal-for-all-apps).

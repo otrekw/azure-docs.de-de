@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Adobe Experience Manager | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Adobe Experience Manager konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 88a95bb5-c17c-474f-bb92-1f80f5344b5a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81032fbad21b18b0b7ca2e7662b0c4b4b6c10901
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a98a77b9cc89b7a1a05e676048775aa38c83733
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107282"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671984"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Tutorial: Azure Active Directory-Integration mit Adobe Experience Manager
 
@@ -31,7 +27,7 @@ Die Integration von Adobe Experience Manager in Azure AD bietet die folgenden Vo
 * Sie können es Ihren Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei Adobe Experience Manager angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -69,7 +65,7 @@ Zum Konfigurieren der Integration von Adobe Experience Manager in Azure AD müss
 
 4. Geben Sie im Suchfeld **Adobe Experience Manager** ein, wählen Sie im Ergebnisbereich **Adobe Experience Manager** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Adobe Experience Manager in der Ergebnisliste](common/search-new-app.png)
+    ![Adobe Experience Manager in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -105,7 +101,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Adobe Experience Manager](common/idp-intiated.png)
+    ![Screenshot des Abschnitts „Grundlegende SAML-Konfiguration“, in dem die Textfelder „Bezeichner“ und „Antwort-URL“ hervorgehoben sind](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** einen eindeutigen Wert ein, den Sie auch auf dem AEM-Server definieren.
 
@@ -140,35 +136,35 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 2. Wählen Sie **Settings** (Einstellungen) > **Security** (Sicherheit) > **Users** (Benutzer) aus.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
+    ![Screenshot mit der Kachel „Users“ im Adobe Experience Manager](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
 
 3. Wählen Sie **Administrator** oder einen anderen relevanten Benutzer aus.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
+    ![Screenshot, in dem der Benutzer „Administrator“ hervorgehoben ist](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
 
 4. Klicken Sie auf **Account settings** > **Manage TrustStore** (Kontoeinstellungen > TrustStore verwalten).
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
+    ![Screenshot, in dem „Manage TrustStore“ unter „Account settings“ hervorgehoben ist](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
 
 5. Klicken Sie unter **Add Certificate from CER file** (Zertifikat aus CER-Datei hinzufügen) auf **Select Certificate File** (Zertifikatdatei auswählen). Suchen Sie die Zertifikatsdatei, die Sie bereits aus dem Azure-Portal heruntergeladen haben, und wählen Sie sie aus.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
+    ![Screenshot, in dem die Schaltfläche „Select Certificate File“ hervorgehoben ist](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
 
 6. Das Zertifikat wird dem TrustStore hinzugefügt. Notieren Sie den Alias des Zertifikats.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
+    ![Screenshot, der zeigt, dass das Zertifikat zu „TrustStore“ hinzugefügt wurde](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
 
 7. Wählen Sie auf der Seite **Users** (Benutzer) die Option **authentication-service** aus.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
+    ![Sreenshot, in dem „authentication-service“ auf dem Bildschirm hervorgehoben ist](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
 
 8. Wählen Sie **Account Settings** (Kontoeinstellungen) > **Create/Manage KeyStore** (KeyStore erstellen/verwalten) aus. Erstellen Sie den KeyStore durch Angeben eines Kennworts.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
+    ![Screenshot, in dem „Manage KeyStore“ hervorgehoben ist](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
 
 9. Wechseln Sie zurück zum Verwaltungsbildschirm. Klicken Sie dann auf **Settings** > **Operations** > **Web Console** (Einstellungen > Vorgänge > Webkonsole).
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
+    ![Screenshot, in dem im Abschnitt „Settings“ unter „Operations“ die Option „Web Console“ hervorgehoben ist](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
 
     Dadurch wird die Konfigurationsseite geöffnet.
 
@@ -176,7 +172,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 10. Suchen Sie **Adobe Granite SAML 2.0 Authentication Handler**. Klicken Sie dann auf das Symbol zum **Hinzufügen**.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
+    ![Screenshot, in dem „Adobe Granite SAML 2.0 Authentication Handler“ hervorgehoben ist](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
 
 11. Führen Sie auf dieser Seite die folgenden Aktionen aus:
 
@@ -219,13 +215,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -257,18 +253,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden von Azu
 
 In diesem Abschnitt erstellen Sie in Adobe Experience Manager eine Benutzerin namens Britta Simon. Wenn Sie die Option **Autocreate CRX Users** (CRX-Benutzer automatisch erstellen) aktiviert haben, werden nach der erfolgreichen Authentifizierung automatisch Benutzer erstellt.
 
-Wenn Sie Benutzer manuell erstellen möchten, können Sie sich an das [Adobe Experience Manager-Supportteam](https://helpx.adobe.com/support/experience-manager.html) wenden, um die Benutzer auf der Adobe Experience Manager-Plattform hinzufügen zu lassen.
+Wenn Sie Benutzer manuell erstellen möchten, wenden Sie sich an das [Adobe Experience Manager-Supportteam](https://helpx.adobe.com/support/experience-manager.html), um die Benutzer auf der Adobe Experience Manager-Plattform hinzuzufügen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Adobe Experience Manager“ klicken, sollten Sie automatisch bei Ihrer Adobe Experience Manager-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Adobe Experience Manager“ klicken, sollten Sie automatisch bei Ihrer Adobe Experience Manager-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

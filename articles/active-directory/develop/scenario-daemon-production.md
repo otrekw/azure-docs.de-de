@@ -1,38 +1,33 @@
 ---
-title: Daemon-App, die Web-APIs aufruft (Übergang in die Produktion) – Microsoft Identity Platform
-description: Erfahren Sie, wie Sie eine Daemon-App erstellen, die Web-APIs aufruft (Übergang in die Produktion).
+title: Verschieben einer Daemon-App, die Web-APIs aufruft, in die Produktion – Microsoft Identity Platform | Azure
+description: Hier erfahren Sie, wie Sie eine Daemon-App, die Web-APIs aufruft, in die Produktion verschieben.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c509e061c43c81f72682fb428529a8e72b34066a
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 72e6d0a8677f7a8175223b80541c99026a9eb16f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056320"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88119163"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Daemon-App, die Web-APIs aufruft (Übergang in die Produktion)
 
 Da Sie nun wissen, wie Sie ein Token für einen Dienst-zu-Dienst-Aufruf abrufen und verwenden, erfahren Sie im Folgenden, wie Sie Ihre App in die Produktion bringen.
 
-## <a name="deployment---case-of-multi-tenant-daemon-apps"></a>Bereitstellung: Daemon-Apps mit mehreren Mandanten
+## <a name="deployment---multitenant-daemon-apps"></a>Bereitstellung: mehrinstanzenfähige Daemon-Apps
 
-Wenn Sie ein unabhängiger Softwarehersteller sind, der eine Daemon-App erstellt, die in mehreren Mandanten ausgeführt werden kann, müssen Sie sicherstellen, dass die Mandantenadministratoren folgende Anforderungen erfüllen:
+Wenn Sie ein unabhängiger Softwarehersteller sind, der eine Daemon-App erstellt, die in mehreren Mandanten ausgeführt werden kann, müssen Sie sicherstellen, dass der Mandantenadministrator folgende Aufgaben ausführt:
 
-- Sie müssen einen Dienstprinzipal für die Anwendung bereitstellen
-- Sie müssen der Anwendung Einwilligung gewähren
+- Er muss einen Dienstprinzipal für die Anwendung bereitstellen.
+- Er muss der Anwendung Zustimmung gewähren.
 
 Sie müssen Ihren Kunden erklären, wie diese Vorgänge durchgeführt werden. Weitere Informationen finden Sie im Abschnitt zum [Anfordern der Zustimmung für einen gesamten Mandanten](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
@@ -42,32 +37,31 @@ Sie müssen Ihren Kunden erklären, wie diese Vorgänge durchgeführt werden. We
 
 Im Folgenden finden Sie Links zu weiteren Informationen:
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-- Sehen Sie sich den [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Konsolen-App anhand der Identität der App](./quickstart-v2-netcore-daemon.md) an, sofern Sie es noch nicht getan haben.
+- Schnellstart: [Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Konsolen-App anhand der Identität der App](./quickstart-v2-netcore-daemon.md).
 - In der Dokumentation finden Sie Informationen zum:
-  - Instanziieren von [ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)
-  - Aufrufen von [AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)
+  - Instanziieren von [ConfidentialClientApplication](/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder).
+  - Aufrufen von [AcquireTokenForClient](/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder).
 - Weitere Beispiele und Tutorials:
-  - [microsoft-identity-platform-console-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) umfasst eine einfache .NET Core-Daemon-Konsolenanwendung, die die Benutzer eines Mandanten anzeigt, der Microsoft Graph abfragt.
+  - [microsoft-identity-platform-console-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) ist eine einfache .NET Core-Daemon-Konsolenanwendung, die die Benutzer eines Mandanten anzeigt, die Microsoft Graph abfragen.
 
-    ![Topologie](media/scenario-daemon-app/daemon-app-sample.svg)
+    ![Beispieltopologie für Daemon-App](media/scenario-daemon-app/daemon-app-sample.svg)
 
-    Dasselbe Beispiel veranschaulicht die Variation der Zertifikate.
+    Dasselbe Beispiel zeigt auch eine Variante mit Zertifikaten:
 
-    ![Topologie](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
+    ![Beispieltopologie für Daemon-App: Zertifikate](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
 
-  - [microsoft-identity-platform-aspnet-webapp-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) umfasst eine ASP.NET MVC-Webanwendung, die Daten von Microsoft Graph mithilfe der Identität der Anwendung (statt im Auftrag eines Benutzers) synchronisiert. Das Beispiel veranschaulicht auch den Prozess für die Administratoreinwilligung.
+  - [microsoft-identity-platform-aspnet-webapp-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) ist eine ASP.NET MVC-Webanwendung, die Daten von Microsoft Graph mithilfe der Identität der Anwendung (statt im Namen eines Benutzers) synchronisiert. Das Beispiel veranschaulicht auch den Vorgang für die Administratoreinwilligung.
 
     ![Topologie](media/scenario-daemon-app/damon-app-sample-web.svg)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-MSAL Python befindet sich derzeit in der Public Preview.
-Weitere Informationen finden Sie in den [Beispielen im MSAL Python-Repository](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample).
+Arbeiten Sie den Schnellstart [Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Python-Konsolen-App anhand der Identität einer App](./quickstart-v2-python-daemon.md) durch.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-msal4j (MSAL.Java) ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar. Weitere Informationen finden Sie in den [Beispielen im MSAL Java-Repository](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
+MSAL Java ist derzeit als öffentliche Vorschauversion verfügbar. Weitere Informationen finden Sie in den [MSAL Java-Dev-Beispielen](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
 
 ---

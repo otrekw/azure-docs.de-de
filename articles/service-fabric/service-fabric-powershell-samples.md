@@ -1,39 +1,28 @@
 ---
-title: Azure PowerShell-Beispiele – Service Fabric| Microsoft-Dokumentation
-description: Azure PowerShell-Beispiele – Service Fabric
-services: service-fabric
-documentationcenter: service-fabric
-author: athinanthny
-manager: chackdan
-editor: ''
-tags: ''
-ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
-ms.service: service-fabric
+title: Azure PowerShell-Beispiele – Service Fabric
+description: Hier erfahren Sie mehr über die Erstellung und Verwaltung von Azure Service Fabric-Clustern, -Apps und -Diensten mithilfe von Powershell.
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: service-fabric
 ms.date: 11/29/2018
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 73e88e692b68d73c90176a6f5b8fce06bdf8b8c7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 4b85fd604eb27f0963af882b41e823d800005dda
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035792"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86187097"
 ---
-# <a name="azure-powershell-samples"></a>Azure PowerShell-Beispiele
+# <a name="azure-service-fabric-powershell-samples"></a>Azure Service Fabric PowerShell-Beispiele
 
 Die folgende Tabelle enthält Links zu Beispielen von PowerShell-Skripts, die Service Fabric-Cluster, -Anwendungen und -Dienste erstellen und verwalten.
 
-[!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-powershell.md)]
+[!INCLUDE [links to azure CLI and service fabric CLI](../../includes/service-fabric-powershell.md)]
 
-| | |
+| Skript | BESCHREIBUNG |
 |-|-|
 | **Cluster erstellen** ||
 | [Erstellen eines Clusters (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Erstellt einen Azure Service Fabric-Cluster. |
 | **Verwalten des Clusters, der Knoten und der Infrastruktur** ||
-| [Hinzufügen eines Anwendungszertifikats](./scripts/service-fabric-powershell-add-application-certificate.md)| Fügt allen Knoten in einem Cluster ein X.509-Anwendungszertifikat hinzu. |
+| [Hinzufügen eines Anwendungszertifikats](./scripts/service-fabric-powershell-add-application-certificate.md)| Erstellt ein X.509-Zertifikat für Key Vault und stellt es für eine VM-Skalierungsgruppe in Ihrem Cluster bereit. |
 | [Aktualisieren des RDP-Portbereichs auf Cluster-VMs](./scripts/service-fabric-powershell-change-rdp-port-range.md)|Ändert den RDP-Portbereich auf Clusterknoten-VMs in einem bereitgestellten Cluster|
 | [Aktualisieren des Administratorbenutzers und des zugehörigen Kennworts für Clusterknoten-VMs](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) | Aktualisiert den Administratorbenutzer und das zugehörige Kennwort für Clusterknoten-VMs |
 | [Öffnen eines Ports im Lastenausgleichsmodul](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) | Öffnen Sie einen Anwendungsport im Azure-Lastenausgleich, um eingehenden Datenverkehr an einem bestimmten Port zuzulassen. |

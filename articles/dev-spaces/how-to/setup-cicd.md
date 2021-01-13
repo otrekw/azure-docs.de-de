@@ -1,23 +1,23 @@
 ---
 title: Verwenden von CI/CD mit Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: DrEsteban
 ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
 manager: gwallace
-description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
+description: Einrichten von Continuous Integration/Continuous Deployment mithilfe von Azure DevOps mit Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
-ms.openlocfilehash: 01e1401c5054eb56d4e2313b5e03ce5a36d1b301
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: de409aa060034c9ba0faaaa56ce21f904b02cdac
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704063"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017779"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Verwenden von CI/CD mit Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 In diesem Artikel werden Sie durch die Einrichtung von Continuous Integration/Continuous Deployment (CI/CD) für den Azure Kubernetes Service (AKS) mit aktivierten Dev Spaces geführt. CI/CD für AKS ermöglicht die automatische Bereitstellung von App-Updates, wenn Code in Ihr Quellrepository übertragen wird, für den ein Commit ausgeführt wurde. Die Verwendung von CI/CD in Verbindung mit einem Dev Spaces-fähigen Cluster ist sinnvoll, da dadurch eine Baseline der Anwendung auf dem neuesten Stand gehalten werden kann, mit der das Team arbeiten kann.
 
@@ -26,12 +26,12 @@ In diesem Artikel werden Sie durch die Einrichtung von Continuous Integration/Co
 Obwohl Sie in diesem Artikel mit Azure DevOps geführt werden, gelten dieselben Konzepte für CI/CD-Systeme wie Jenkins, TeamCity, usw.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* [AKS-Cluster (Azure Kubernetes Service) mit aktivierten Azure Dev Spaces](../get-started-netcore.md)
+* AKS-Cluster (Azure Kubernetes Service) mit aktivierten Azure Dev Spaces
 * [Installierte Azure Dev Spaces-Befehlszeilenschnittstelle](upgrade-tools.md)
-* [Azure DevOps-Organisation mit einem Projekt](https://docs.microsoft.com/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
+* [Azure DevOps-Organisation mit einem Projekt](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
     * Verfügbare Details zum [Administratorkonto](../../container-registry/container-registry-authentication.md#admin-account) für Azure Container Registry
-* [Autorisieren des AKS-Clusters zum Ausführen eines Pulls von Azure Container Registry](../../container-registry/container-registry-auth-aks.md)
+* [Autorisieren des AKS-Clusters zum Ausführen eines Pulls von Azure Container Registry](../../aks/cluster-container-registry-integration.md)
 
 ## <a name="download-sample-code"></a>Beispielcode herunterladen
 Erstellen Sie eine Fork des Beispielcode-GitHub-Repositorys, um Zeit zu sparen. Wechseln Sie zu https://github.com/Azure/dev-spaces, und wählen Sie **Fork** aus. Nachdem der Fork-Prozess abgeschlossen ist, **klonen** Sie Ihre Fork-Version des Repositorys lokal. Standardmäßig wird der _Masterbranch_ ausgecheckt, aber wir haben einige zeitsparende Änderungen in den Branch _azds_updates_ einbezogen, die auch während Ihres Forks hätten übertragen werden sollen. Der Branch _azds_updates_ enthält Updates, die Sie in den Tutorialabschnitten zu Dev Spaces manuell vornehmen müssen, sowie einige vorgefertigte YAML- und JSON-Dateien zur Optimierung der Bereitstellung des CI/CD-Systems. Sie können einen Befehl wie `git checkout -b azds_updates origin/azds_updates` verwenden, um den Branch _azds_updates_ in Ihrem lokalen Repository auszuchecken.
@@ -43,7 +43,7 @@ Erstellen Sie einen neuen Bereich namens _dev_ mit dem Befehl `azds space select
 azds space select -n dev
 ```
 
-Wenn Sie zum Auswählen eines übergeordneten Entwicklungsbereichs aufgefordert werden, wählen Sie _\<Kein\>_ aus.
+Wenn Sie zum Auswählen eines übergeordneten Entwicklungsbereichs aufgefordert werden, wählen Sie _\<none\>_ aus.
 
 Nachdem Ihr dev-Bereich erstellt wurde, müssen Sie das Hostsuffix bestimmen. Verwenden Sie den Befehl `azds show-context`, um das Hostsuffix des Eingangscontrollers von Azure Dev Spaces anzuzeigen.
 
@@ -70,14 +70,14 @@ Die zu deaktivierende Option:
 > [!Note]
 > Die Azure DevOps-Previewfunktion _Neue Benutzeroberfläche zum Erstellen einer YAML-Pipeline_ steht zu diesem Zeitpunkt in Konflikt mit der Erstellung vordefinierter Buildpipelines. Sie müssen sie vorerst deaktivieren, um unsere vordefinierte Buildpipeline bereitzustellen.
 
-In den Branch _azds_updates_ haben wir eine einfache [Azure Pipeline YAML](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) einbezogen, die die für *mywebapi* und *webfrontend* erforderlichen Buildschritte definiert.
+In den Branch _azds_updates_ haben wir eine einfache [Azure Pipeline YAML](/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) einbezogen, die die für *mywebapi* und *webfrontend* erforderlichen Buildschritte definiert.
 
 Je nach gewählter Sprache wurde die Pipeline-YAML in einem ähnlichen Pfad wie dem folgenden eingecheckt: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
 So erstellen eine Pipeline aus dieser Datei
 1. Navigieren Sie auf der Hauptseite Ihres DevOps-Projekts zu „Pipelines“ > „Builds“.
 1. Wählen Sie die Option zum Erstellen einer **neuen** Buildpipeline aus.
-1. Wählen Sie **GitHub** als Quelle aus, autorisieren Sie sich bei Bedarf mit Ihrem GitHub-Konto, und wählen Sie den Branch _azds_updates_ aus Ihrer Fork-Version des Repositorys „dev-spaces sampleapp“ aus.
+1. Wählen Sie als Quelle **GitHub** aus, autorisieren Sie sich bei Bedarf bei Ihrem GitHub-Konto, und wählen Sie den Branch _azds_updates_ in Ihrer geforkten Version des Repositorys _dev-spaces_ mit der Beispielanwendung aus.
 1. Wählen Sie **Konfiguration als Code** oder **YAML** als Vorlage aus.
 1. Es wird Ihnen jetzt eine Konfigurationsseite für Ihre Buildpipeline angezeigt. Navigieren Sie wie oben erwähnt über die Schaltfläche **...** zum sprachspezifischen Pfad für den **YAML-Dateipfad**. Beispiel: `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
 1. Wechseln Sie zur Registerkarte **Variablen**.
@@ -121,7 +121,7 @@ Sie verfügen jetzt über eine CI-Lösung, die automatisch *mywebapi* und *webfr
 1. Klicken Sie oben rechts auf **Speichern** und dann auf **OK**.
 1. Klicken Sie auf **+ Release** (neben der Schaltfläche „Speichern“), und **erstellen Sie ein Release**.
 1. Vergewissern Sie sich, dass unter **Artefakte** der neueste Build aus Ihrer Buildpipeline ausgewählt ist.
-1. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Erstellen**.
 
 Jetzt beginnt ein automatisierter Releaseprozess und stellt die Diagramme *mywebapi* und *webfrontend* in Ihrem Kubernetes-Cluster im obersten Bereich von _dev_ bereit. Sie können den Releasefortschritt im Azure DevOps-Webportal verfolgen:
 
@@ -133,11 +133,11 @@ Jetzt beginnt ein automatisierter Releaseprozess und stellt die Diagramme *myweb
 Das Release ist erfolgt, wenn alle Aufgaben abgeschlossen sind.
 
 > [!TIP]
-> Wenn Ihr Release mit einer Fehlermeldung wie *FEHLER BEIM UPGRADE: Timeout beim Warten auf die Bedingung* fehlschlägt, versuchen Sie, die Pods in Ihrem Cluster [ mit dem Kubernetes-Dashboard](../../aks/kubernetes-dashboard.md) zu überprüfen. Wenn Sie feststellen, dass die Pods nicht mit Fehlermeldungen wie *Fehler beim Pullen von Image "azdsexample.azurecr.io/mywebapi:122": RPC-Fehler: code = Unbekannt desc = Fehlerantwort von Daemon: Abrufen von https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: nicht autorisiert: Authentifizierung erforderlich* beginnen können, kann es daran liegen, dass Ihr Cluster nicht die Berechtigung erhalten hat, einen Pull aus Ihrer Azure Container Registry auszuführen. Vergewissern Sie sich, dass Sie die Voraussetzung [Autorisieren des AKS-Clusters zum Ausführen eines Pulls von Azure Container Registry](../../container-registry/container-registry-auth-aks.md) abgeschlossen haben.
+> Wenn Ihr Release mit einer Fehlermeldung wie *FEHLER BEIM UPGRADE: Timeout beim Warten auf die Bedingung* fehlschlägt, versuchen Sie, die Pods in Ihrem Cluster [ mit dem Kubernetes-Dashboard](../../aks/kubernetes-dashboard.md) zu überprüfen. Wenn Sie feststellen, dass die Pods nicht mit Fehlermeldungen wie *Fehler beim Pullen von Image "azdsexample.azurecr.io/mywebapi:122": RPC-Fehler: code = Unbekannt desc = Fehlerantwort von Daemon: Abrufen von \//azdsexample.azurecr.io/v2/mywebapi/manifests/122: nicht autorisiert: Authentifizierung erforderlich* beginnen können, kann es daran liegen, dass Ihr Cluster nicht die Berechtigung erhalten hat, einen Pull aus Ihrer Azure Container Registry auszuführen. Vergewissern Sie sich, dass Sie die Voraussetzung [Autorisieren des AKS-Clusters zum Ausführen eines Pulls von Azure Container Registry](../../aks/cluster-container-registry-integration.md) abgeschlossen haben.
 
 Sie verfügen jetzt über eine vollständig automatisierte CI/CD-Pipeline für Ihre GitHub-Fork der Dev Spaces-Beispielanwendungen. Jedes Mal, wenn Sie einen Commit und Push für Code ausführen, erstellt die Buildpipeline die Images *mywebapi* und *webfrontend* und verschiebt sie in Ihre benutzerdefinierte ACR-Instanz. Dann stellt die Releasepipeline das Helm-Diagramm für jede Anwendung im Bereich _dev_ auf Ihrem Dev Spaces-fähigen Cluster bereit.
 
-## <a name="accessing-your-dev-services"></a>Zugreifen auf Ihre _dev_-Dienste
+## <a name="accessing-your-_dev_-services"></a>Zugreifen auf Ihre _dev_-Dienste
 Nach der Bereitstellung kann auf die _dev_-Version von *webfrontend* mit einer öffentlichen URL wie `http://dev.webfrontend.fedcba098.eus.azds.io` zugegriffen werden. Sie können diese URL finden, indem Sie den Befehl `azds list-uri` ausführen: 
 
 ```cmd
@@ -187,5 +187,7 @@ Hier folgt eine Beispielnamespacestruktur, die die Featureentwicklung, die Entwi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Weitere Informationen zur Funktionsweise von Azure Dev Spaces.
+
 > [!div class="nextstepaction"]
-> [Informationen zur Teamentwicklung mit Azure Dev Spaces](../team-development-netcore.md)
+> [Funktionsweise von Azure Dev Spaces](../how-dev-spaces-works.md)

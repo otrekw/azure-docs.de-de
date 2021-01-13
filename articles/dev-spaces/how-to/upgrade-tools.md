@@ -1,22 +1,21 @@
 ---
 title: Upgrade von Azure Dev Spaces-Tools
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/03/2018
 ms.topic: conceptual
-description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
+ms.custom: devx-track-azurecli
+description: Erfahren Sie, wie Sie ein Upgrade der Azure Dev Spaces-Befehlszeilentools, der Visual Studio Code-Erweiterung und der Visual Studio-Erweiterung ausführen
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
-ms.openlocfilehash: 24a66c5218bb75672ae784b19213116efdb83690
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 2c2878f71deedd8df39316290735df734b97b92a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232449"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960285"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Upgrade von Azure Dev Spaces-Tools
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Wenn eine neue Release vorliegt und Sie Azure Dev Spaces bereits verwenden, müssen Sie die Azure Dev Spaces-Clienttools eventuell aktualisieren.
 
@@ -31,7 +30,7 @@ Sie müssen die frühere Version nicht deinstallieren, sondern nur den geeignete
 
 Führen Sie den folgenden Befehl aus:
 
-```cmd
+```azurecli
 az aks use-dev-spaces -n <your-aks-cluster> -g <your-aks-cluster-resource-group> --update
 ```
 
@@ -39,12 +38,10 @@ az aks use-dev-spaces -n <your-aks-cluster> -g <your-aks-cluster-resource-group>
 
 Nach der Installation wird die Erweiterung automatisch aktualisiert. Sie müssen die Erweiterung möglicherweise erneut laden, um die neuen Features nutzen zu können. Öffnen Sie in VS Code den Bereich **Erweiterungen**, wählen Sie die **Azure Dev Spaces-Erweiterungen** aus, und wählen Sie **Erneut laden** aus.
 
-## <a name="update-the-visual-studio-extension"></a>Aktualisieren der Visual Studio-Erweiterung
+## <a name="update-visual-studio"></a>Aktualisieren von Visual Studio
 
-Wie bei anderen Erweiterungen und Updates erhalten Sie von Visual Studio eine Benachrichtigung, wenn ein Update für die Visual Studio-Tools für Kubernetes, die Azure Dev Spaces enthalten, verfügbar ist. Suchen Sie nach einem Flaggensymbol rechts oben auf dem Bildschirm.
-
-Um die Tools in Visual Studio zu aktualisieren, wählen Sie die Menüoption **Tools > Erweiterungen und Updates** aus, und wählen Sie auf der linken Seite **Updates** aus. Suchen Sie **Visual Studio-Tools für Kubernetes**, und wählen Sie die Schaltfläche **Aktualisieren** aus.
+Azure Dev Spaces ist Teil der Workload „Azure-Entwicklung“ und in allen Visual Studio-Updates enthalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Testen Sie die neuen Tools durch Erstellen eines neuen Clusters. Probieren Sie die Schnellstarts und Tutorials unter [Azure Dev Spaces](/azure/dev-spaces) aus.
+Testen Sie die neuen Tools durch Erstellen eines neuen Clusters. Probieren Sie die Schnellstarts und Tutorials unter [Azure Dev Spaces](../index.yml) aus.

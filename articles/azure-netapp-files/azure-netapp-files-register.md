@@ -1,6 +1,6 @@
 ---
 title: Registrieren für Azure NetApp Files | Microsoft-Dokumentation
-description: Informationen zur Registrierung für die Verwendung von Azure NetApp Files
+description: Erfahren Sie, wie Sie sich für Azure NetApp Files registrieren, indem Sie eine Wartelistenanforderung übermitteln und den Azure-Ressourcenanbieter für Azure NetApp Files registrieren.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/06/2019
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a61d6ba1f908a7dae56db066bfae329fc26f1c5c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299210"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696125"
 ---
 # <a name="register-for-azure-netapp-files"></a>Registrieren für Azure NetApp Files
 
@@ -28,15 +28,16 @@ ms.locfileid: "66299210"
 
 In diesem Artikel erfahren Sie, wie Sie sich für Azure NetApp Files registrieren, um den Dienst verwenden zu können.
 
-## <a name="waitlist"></a>Übermitteln einer Wartelistenanforderung für den Zugriff auf den Dienst
+## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>Übermitteln einer Wartelistenanforderung für den Zugriff auf den Dienst
 
-1. Übermitteln Sie über die [Seite für Wartelistenanforderungen für Azure NetApp Files](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u) eine Wartelistenanforderung für den Zugriff auf den Azure NetApp Files-Dienst. 
+1. Wechseln Sie zur folgenden Seite, und senden Sie eine Wartelistenanforderung für den Zugriff auf den Azure NetApp Files-Dienst:  
+    [**Seite zum Senden einer Azure NetApp Files-Warteliste**](https://aka.ms/azurenetappfiles) 
 
     Wenn Sie sich auf die Warteliste setzen lassen, ist das noch keine Garantie dafür, dass Sie sofort Zugriff auf den Dienst erhalten. 
 
 2. Warten Sie auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams, bevor Sie andere Aufgaben ausführen. 
 
-## <a name="resource-provider"></a>Registrieren des NetApp-Ressourcenanbieters
+## <a name="register-the-netapp-resource-provider"></a><a name="resource-provider"></a>Registrieren des NetApp-Ressourcenanbieters
 
 Um den Dienst zu verwenden, müssen Sie den Azure-Ressourcenanbieter für Azure NetApp Files registrieren.
 
@@ -50,18 +51,24 @@ Um den Dienst zu verwenden, müssen Sie den Azure-Ressourcenanbieter für Azure 
 
       ![Azure Cloud Shell-Symbol](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
 
-2. Wenn Sie in Ihrem Azure-Konto über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, das auf der Whitelist für Azure NetApp Files steht:
+2. Wenn Sie in Ihrem Azure-Konto über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, das für Azure NetApp Files genehmigt wurde:
     
-        az account set --subscription <subscriptionId>
+    ```azurepowershell
+    az account set --subscription <subscriptionId>
+    ```
 
-3. Geben Sie in der Azure Cloud Shell-Konsole den folgenden Befehl ein, um zu überprüfen, ob Ihr Abonnement auf der Whitelist steht:
+3. Geben Sie in der Azure Cloud Shell-Konsole den folgenden Befehl ein, um zu überprüfen, ob Ihr Abonnement genehmigt wurde:
     
-        az feature list | grep NetApp
+    ```azurepowershell
+    az feature list | grep NetApp
+    ```
 
    Die Ausgabe des Befehls sieht wie folgt aus:
    
-       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
-       "name": "Microsoft.NetApp/ANFGA" 
+    ```output
+    "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
+    "name": "Microsoft.NetApp/ANFGA" 
+    ```
        
    `<SubID>` ist Ihre Abonnement-ID.
 
@@ -69,21 +76,27 @@ Um den Dienst zu verwenden, müssen Sie den Azure-Ressourcenanbieter für Azure 
 
 4. Geben Sie in der Azure Cloud Shell-Konsole den folgenden Befehl ein, um den Azure-Ressourcenanbieter zu registrieren: 
     
-        az provider register --namespace Microsoft.NetApp --wait
+    ```azurepowershell
+    az provider register --namespace Microsoft.NetApp --wait
+    ```
 
    Der `--wait`-Parameter weist die Konsole an, auf den Abschluss der Registrierung zu warten. Der Registrierungsvorgang kann einige Zeit in Anspruch nehmen.
 
 5. Geben Sie in der Azure Cloud Shell-Konsole den folgenden Befehl ein, um zu überprüfen, ob der Azure-Ressourcenanbieter registriert wurde: 
     
-        az provider show --namespace Microsoft.NetApp
+    ```azurepowershell
+    az provider show --namespace Microsoft.NetApp
+    ```
 
    Die Ausgabe des Befehls sieht wie folgt aus:
    
-        {
-        "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",
-        "namespace": "Microsoft.NetApp", 
-        "registrationState": "Registered", 
-        "resourceTypes": […. 
+    ```output
+    {
+     "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",
+     "namespace": "Microsoft.NetApp", 
+     "registrationState": "Registered", 
+     "resourceTypes": […. 
+    ```
 
    `<SubID>` ist Ihre Abonnement-ID.  Der Parameterwert `state` gibt `Registered` an.
 

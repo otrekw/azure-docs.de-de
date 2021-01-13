@@ -1,28 +1,30 @@
 ---
-title: Herstellen einer Verbindung mit lokalen Dateisystemen – Azure Logic Apps
+title: Herstellen von Verbindungen mit lokalen Dateisystemen
 description: Automatisieren von Aufgaben und Workflows, die über das lokale Datengateway in Azure Logic Apps eine Verbindung mit lokalen Dateisystemen mit dem Dateisystem-Connector herstellen
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/13/2019
-ms.openlocfilehash: 5a6a57fb05d59e70df13f6800c8fa7bf87df91c6
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.date: 10/08/2020
+ms.openlocfilehash: 4715d7173dd959d12350229e457717c908a83756
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295890"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873233"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Dateisystemen mit Azure Logic Apps
 
-Mit dem Dateisystem-Connector und Azure Logic Apps können Sie automatisierte Aufgaben und Workflows erstellen, die Dateien auf einer lokalen Dateifreigabe erstellen und verwalten, um beispielsweise folgende Aufgaben auszuführen:  
+Mit Azure Logic Apps und dem Dateisystem-Connector können Sie automatisierte Aufgaben und Workflows erstellen, die Dateien auf einer lokalen Dateifreigabe erstellen und verwalten, um beispielsweise folgende Aufgaben auszuführen:
 
 - Erstellen, Abrufen, Anfügen, Aktualisieren und Löschen von Dateien.
 - Auflisten von Dateien in Ordnern oder Stammordnern
-- Abrufen von Dateiinhalten und Metadaten
+- Sie können Dateiinhalte und Metadaten abrufen.
+
+  > [!IMPORTANT]
+  > Der Dateisystemconnector unterstützt zurzeit nur Windows-Dateisysteme unter Windows-Betriebssystemen.  
 
 In diesem Artikel erfahren Sie anhand des folgenden Beispielszenarios, wie Sie eine Verbindung mit einem lokalen Dateisystem herstellen. In dem Szenario kopieren Sie eine in Dropbox hochgeladene Datei in eine Dateifreigabe und senden anschließend eine E-Mail. Logik-Apps verwenden das [lokale Datengateway](../logic-apps/logic-apps-gateway-connection.md), um eine sichere Verbindung mit lokalen Systemen herzustellen und auf sie zuzugreifen. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Connectorspezifische technische Informationen finden Sie in der [Referenz zum Dateisystemconnector](/connectors/filesystem/).
 
@@ -36,7 +38,10 @@ In diesem Artikel erfahren Sie anhand des folgenden Beispielszenarios, wie Sie e
 
 * Zugriff auf den Computer mit dem Dateisystem, das Sie verwenden. Wenn Sie z.B. das Datengateway auf dem gleichen Computer installieren, auf dem sich Ihr Dateisystem befindet, benötigen Sie die Anmeldeinformationen für diesen Computer.
 
-* Ein E-Mail-Konto eines von Logic Apps unterstützten E-Mail-Anbieters wie etwa Office 365 Outlook, Outlook.com oder Gmail. Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](https://docs.microsoft.com/connectors/). In dieser Logik-App verwenden wir ein Office 365 Outlook-Konto. Bei Verwendung eines anderen E-Mail-Kontos sind die Schritte im Großen und Ganzen identisch, aber die Benutzeroberfläche weicht ggf. etwas ab.
+* Ein E-Mail-Konto eines von Logic Apps unterstützten E-Mail-Anbieters wie etwa Office 365 Outlook, Outlook.com oder Gmail. Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](/connectors/). Diese Logik-App verwendet ein Geschäfts-, Schul- oder Unikonto. Bei Verwendung eines anderen E-Mail-Kontos sind die Schritte im Großen und Ganzen identisch, aber die Benutzeroberfläche weicht ggf. etwas ab.
+
+  > [!IMPORTANT]
+  > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Grundlegende Kenntnisse über das [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Für dieses Beispiel benötigen Sie eine leere Logik-App.
 
@@ -66,12 +71,12 @@ In diesem Artikel erfahren Sie anhand des folgenden Beispielszenarios, wie Sie e
 
    ![Erstellen der Verbindung](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    | -------- | -------- | ----- | ----------- |
    | **Verbindungsname** | Ja | <*connection-name*> | Der gewünschte Name für die Verbindung. |
    | **Stammordner** | Ja | <*Name des Stammordners*> | Der Stammordner für Ihr Dateisystem – beispielsweise, wenn Sie Ihr lokales Datengateway installiert haben, ein lokaler Ordner auf dem Computer, auf dem das lokale Datengateway installiert ist, oder der Ordner für eine Netzwerkfreigabe, auf die der Computer zugreifen kann. <p>Beispiel: `\\PublicShare\\DropboxFiles` <p>Der Stammordner ist der übergeordnete Hauptordner, der bei allen dateibezogenen Aktionen für relative Pfade verwendet wird. |
-   | **Authentifizierungstyp** | Nein | <*Authentifizierungstyp*> | Die Art der Authentifizierung, die von Ihrem Dateisystem verwendet wird (beispielsweise **Windows**). |
-   | **Benutzername** | Ja | <*Domäne*>\\<*Benutzername*> | Der Benutzername für den Computer, auf dem sich das Dateisystem befindet |
+   | **Authentifizierungstyp** | Nein | <*Authentifizierungstyp*> | Der Typ der Authentifizierung, der von Ihrem Dateisystem verwendet wird: **Windows** |
+   | **Benutzername** | Ja | <*Domäne*>\\<*Benutzername*> <p>Oder <p><*lokaler-Computer*>\\<*Benutzername*> | Der Benutzername für den Computer, auf dem sich Ihr Dateisystemordner befindet. <p>Wenn sich Ihr Dateisystemordner auf demselben Computer wie das lokale Datengateway befindet, können Sie <*lokaler-Computer*>\\<*Benutzername*> verwenden. |
    | **Kennwort** | Ja | <*Ihr Kennwort*> | Das Kennwort für den Computer, auf dem sich das Dateisystem befindet |
    | **Gateway** | Ja | <*Name des installierten Gateways*> | Der Name für das zuvor installierte Gateway. |
    |||||
@@ -94,7 +99,10 @@ In diesem Artikel erfahren Sie anhand des folgenden Beispielszenarios, wie Sie e
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite](/connectors/fileconnector/) des Connectors.
+Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/fileconnector/).
+
+> [!NOTE]
+> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

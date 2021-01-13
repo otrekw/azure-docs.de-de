@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von Knoten für die VMware-Lösung von CloudSimple – Azure
-description: Erfahren Sie, wie Sie mit CloudSimple-Bereitstellung Knoten zu Ihrer VMWare-Lösung hinzufügen können.
+title: Bereitstellen von Knoten für VMware Solution by CloudSimple – Azure
+description: Hier erfahren Sie, wie Sie im Azure-Portal mit der CloudSimple-Bereitstellung Knoten zu Ihrer VMWare-Lösung hinzufügen. Sie können für Ihre private Cloudumgebung eine Kapazität mit nutzungsbasierter Bezahlung einrichten.
 author: dikamath
 ms.author: dikamath
 ms.date: 08/14/2019
@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5806198968d98fea4c5cbf8731358ca4041f0935
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: ccff5b4dc6ed5a571e25ab0569b9fa92674e1340
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972871"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88140733"
 ---
-# <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Bereitstellen von Knoten für die Azure VMware-Lösung von CloudSimple
+# <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Bereitstellen von Knoten für Azure VMware Solution by CloudSimple
 
 Stellen Sie Knoten im Azure-Portal bereit. Danach können Sie Kapazität mit nutzungsbasierter Bezahlung für die Umgebung Ihrer privaten CloudSimple-Cloud einrichten.
 
@@ -40,7 +40,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 7. Geben Sie das Präfix ein, um die Knoten zu kennzeichnen.
 8. Wählen Sie den Standort für die Knotenressourcen aus.
 9. Wählen Sie den dedizierten Standort (Dedicated location) aus, in dem die Knotenressourcen gehostet werden sollen.
-10. Wählen Sie den Knotentyp aus. Sie können zwischen der [CS28- und CS36-Option](cloudsimple-node.md) wählen. Die zweite Option umfasst die maximale Compute- und Arbeitsspeicherkapazität.
+10. Wählen Sie den [Knotentyp](cloudsimple-node.md) aus.
 11. Wählen Sie die Anzahl der bereitzustellenden Knoten aus.
 12. Klicken Sie auf **Überprüfen + erstellen**.
 13. Überprüfen Sie die Einstellungen. Wenn Sie irgendwelche Einstellungen ändern möchten, klicken Sie auf **Zurück**.

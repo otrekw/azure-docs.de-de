@@ -3,17 +3,16 @@ title: Erste Schritte mit dem Azure-Metrik-Explorer
 description: Hier erfahren Sie, wie Sie Ihr erstes Metrikdiagramm mit dem Azure-Metrik-Explorer erstellen.
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: ceaefffaf04a3ab266cde300e8c4b93a5e804796
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 710de93a24037031784ca8d37a8ae0be76bff9e6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861080"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614591"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Erste Schritte mit dem Azure-Metrik-Explorer
 
@@ -30,28 +29,30 @@ Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portal
 
 Öffnen Sie die Registerkarte **Metriken**, und führen Sie die folgenden Schritte aus, um ein Metrikdiagramm aus Ihrer Ressource, Ressourcengruppe, Ihrem Abonnement oder einer Azure Monitor-Ansicht zu erstellen:
 
-1. Wählen Sie die Ressource, deren Metriken Sie anzeigen möchten, mithilfe der Ressourcenauswahl aus. (Wenn Sie die Registerkarte **Metriken** über den Kontext einer spezifischen Ressource ausgewählt haben, ist diese Ressource bereits ausgewählt.)
-
-    > ![Auswählen einer Ressource](./media/metrics-getting-started/resource-picker.png)
+1. Klicken Sie auf die Schaltfläche „Bereich auswählen“, um die Auswahl für den Ressourcenbereich zu öffnen. Auf diese Weise können Sie die Ressourcen auswählen, für die Sie Metriken anzeigen möchten. Wenn Sie den Metrik-Explorer über das Menü einer Ressource geöffnet haben, sollte die Ressource bereits ausgefüllt sein. In [diesem Artikel](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-dynamic-scope) erfahren Sie, wie Sie Metriken für mehrere Ressourcen anzeigen können.
+    > ![Auswählen einer Ressource](./media/metrics-getting-started/scope-picker.png)
 
 2. Für einige Ressourcen müssen Sie einen Namespace auswählen. Der Namespace dient lediglich der Organisation der Metriken, damit Sie sich mühelos finden können. Speicherkonten verfügen beispielsweise über separate Namespaces zum Speichern von Metriken zu Dateien, Tabellen, Blobs und Warteschlangen. Viele Ressourcentypen verfügen über nur einen Namespace.
 
 3. Wählen Sie eine Metrik aus der Liste der verfügbaren Metriken aus.
 
-    > ![Metrik auswählen](./media/metrics-getting-started/metric-picker.png)
+    > ![Metrik auswählen](./media/metrics-getting-started/metrics-dropdown.png)
 
-4. Optional können Sie die Metrikaggregation ändern, wenn Sie beispielsweise möchten, dass Ihr Diagramm nur die minimalen, maximalen oder durchschnittlichen Werte der Metrik anzeigt.
+4. Optional können Sie die [Metrikaggregation ändern](metrics-charts.md#changing-aggregation), wenn Sie beispielsweise möchten, dass Ihr Diagramm nur die minimalen, maximalen oder durchschnittlichen Werte der Metrik anzeigt.
 
-> [!NOTE]
+> [!TIP]
 > Klicken Sie auf **Metrik hinzufügen**, und wiederholen Sie diese Schritte, wenn mehrere Metriken im gleichen Diagramm angezeigt werden sollen. Wenn mehrere Diagramme in einer Ansicht angezeigt werden sollen, klicken Sie oben auf **Diagramm hinzufügen**.
 
 ## <a name="select-a-time-range"></a>Auswählen eines Zeitbereichs
 
+> [!WARNING]
+> [Die meisten Metriken werden in Azure 93 Tage lang gespeichert](data-platform-metrics.md#retention-of-metrics). Sie können jedoch maximal Daten für 30 Tage in einem einzelnen Diagramm abfragen. Diese Einschränkung gilt nicht für [protokollbasierte Metriken](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
+
 Das Diagramm zeigt standardmäßig die Metrikdaten der letzten 24 Stunden an. Verwenden Sie den Bereich **Zeitauswahl**, um den Zeitraum, die Vergrößerung oder die Verkleinerung Ihres Diagramms zu ändern. 
 
-![Bereich zum Ändern des Zeitraums](./media/metrics-getting-started/time-picker.png)
+![Bereich zum Ändern des Zeitraums](./media/metrics-getting-started/time.png)
 
-> [!NOTE]
+> [!TIP]
 > Verwenden Sie **Time Brush**, um einen interessanten Bereich des Diagramms (Spitze oder Senke) zu untersuchen. Setzen Sie den Mauszeiger an den Anfang des Bereichs, klicken und halten Sie die linke Maustaste gedrückt, ziehen Sie den Mauszeiger zur anderen Seite des Bereichs, und lassen Sie die Maustaste dann los. Im Diagramm wird dieser Zeitbereich vergrößert. 
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Anwenden von Dimensionsfiltern und Aufteilung
@@ -71,6 +72,7 @@ Sie können die Formatierung des Diagramms, den Titel und erweiterte Diagrammein
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erweiterte Funktionen des Metrik-Explorers](metrics-charts.md)
+* [Anzeigen mehrerer Ressourcen in Metrik-Explorer](metrics-dynamic-scope.md)
 * [Problembehandlung für den Metrik-Explorer](metrics-troubleshoot.md)
 * [Unterstützte Metriken von Azure Monitor](metrics-supported.md)
 * [Beispiele für Metrikdiagramme](metric-chart-samples.md)

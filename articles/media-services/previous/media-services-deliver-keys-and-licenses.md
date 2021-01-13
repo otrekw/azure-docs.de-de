@@ -14,20 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 73a76162efaf7317c5e2f1668b76325da6f018ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 88d21c7ee092f8d4971770699bdcade4bf40039d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868145"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89267801"
 ---
-# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Übermitteln von DRM-Lizenzen oder AES-Schlüsseln mithilfe von Media Services 
+# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Übermitteln von DRM-Lizenzen oder AES-Schlüsseln mithilfe von Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).   > Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
->
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Azure Media Services ermöglicht Ihnen das Erfassen, Codieren, Hinzufügen von Inhaltsschutz und Streamen Ihrer Inhalte. Weitere Informationen finden Sie unter [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-playready-widevine.md). Manche Kunden möchten Media Services nur zum Übermitteln von Lizenzen und/oder Schlüsseln verwenden und das Codieren, Verschlüsseln und Streamen mithilfe eigener, lokaler Server erledigen. Dieser Artikel beschreibt, wie Sie mit Media Services PlayReady- und/oder Widevine-Lizenzen bereitstellen und die restlichen Aufgaben auf Ihren lokalen Servern ausführen können. 
+
+Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="overview"></a>Übersicht
 Media Services bietet einen Dienst zum Übermitteln von PlayReady- und Widevine-DRM-Lizenzen (Digital Rights Management) und AES-128-Schlüsseln. Mithilfe der von Media Services bereitgestellten APIs können Sie die Rechte und Einschränkungen konfigurieren, die für die DRM-Laufzeit erzwungen werden sollen, wenn ein Benutzer mit DRM geschützte Inhalte wiedergibt. Wenn ein Benutzer die geschützten Inhalte anfordert, fordert die Playeranwendung eine Lizenz vom Media Services-Lizenzdienst an. Wenn die Lizenz autorisiert wird, gibt der Media Services-Lizenzdienst die Lizenz für den Player aus. PlayReady- und Widevine-Lizenzen enthalten den Entschlüsselungsschlüssel, der vom Clientplayer zum Entschlüsseln und Streamen des Inhalts verwendet werden kann.
@@ -343,6 +347,10 @@ namespace DeliverDRMLicenses
     }
 }
 ```
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

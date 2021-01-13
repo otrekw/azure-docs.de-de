@@ -1,26 +1,26 @@
 ---
-title: Migrieren von Azure-Identitätsressourcen von Azure Deutschland zu Azure weltweit
+title: Migrieren von Azure-Identitätsressourcen – Azure Deutschland zu Azure weltweit
 description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Identitätsressourcen von Azure Deutschland zu Azure weltweit.
+ms.topic: article
+ms.date: 10/16/2020
 author: gitralf
-services: germany
-cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 8/15/2018
-ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 07ecaa564f2fda21967ab6f0c30c06fa876e4171
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41f8019d8732560754be4757845f22f436cfcf70
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780814"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018584"
 ---
 # <a name="migrate-identity-resources-to-global-azure"></a>Migrieren von Identitätsressourcen zu Azure weltweit
 
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
+
 Dieser Artikel enthält Informationen dazu, wie Sie Azure-Identitätsressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
-Der Leitfaden für die Identitäts-/Mandantenmigration wurde für reine Azure-Kunden konzipiert. Wenn Sie allgemeine Azure Active Directory (Azure AD)-Mandanten für Azure und Office 365 (oder andere Microsoft-Produkte) verwenden, beinhaltet eine Identitätsmigration komplexe Vorgänge, und Sie sollten sich vor der Verwendung dieses Migrationsleitfadens zunächst an Ihren Kontomanager wenden.
+Der Leitfaden für die Identitäts-/Mandantenmigration wurde für reine Azure-Kunden konzipiert. Wenn Sie allgemeine Azure Active Directory-Mandanten (Azure AD) für Azure und Microsoft 365 (oder andere Microsoft-Produkte) verwenden, beinhaltet eine Identitätsmigration komplexe Vorgänge, und Sie sollten sich vor der Verwendung dieses Migrationsleitfadens zunächst an Ihren Kontomanager wenden.
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -123,9 +123,9 @@ $_.ObjectId | Format-Table}
 ```
 Weitere Informationen finden Sie unter:
 
-- Informationen zu [Hybrididentitätslösungen](../active-directory/choose-hybrid-identity-solution.md).
-- Lesen Sie den Blogbeitrag [Using ADConnect with multiple clouds](https://blogs.technet.microsoft.com/ralfwi/2017/01/24/using-adconnect-with-multiple-clouds/), um zu erfahren, welche Möglichkeiten es gibt, mit unterschiedlichen Cloudumgebungen zu synchronisieren.
-- Weitere Informationen zu [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).
+- Informationen zu [Hybrididentitätslösungen](../active-directory/hybrid/whatis-hybrid-identity.md).
+- Lesen Sie den Blogbeitrag [Using ADConnect with multiple clouds](/archive/blogs/ralfwi/using-adconnect-with-multiple-clouds), um zu erfahren, welche Möglichkeiten es gibt, mit unterschiedlichen Cloudumgebungen zu synchronisieren.
+- Weitere Informationen zu [Azure Active Directory](../active-directory/index.yml).
 - Lesen Sie über [benutzerdefinierte Domänennamen](../active-directory/fundamentals/add-custom-domain.md).
 - Erfahren Sie, wie [Daten aus einer CSV-Datei in Azure AD importiert](/powershell/azure/active-directory/importing-data) werden.
 
@@ -149,7 +149,7 @@ Weitere Informationen finden Sie unter:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Sie müssen in Ihrer neuen Umgebung Benutzer neu erstellen und Ihre Azure Multi-Factor Authentication-Instanz neu definieren. 
+Sie müssen in Ihrer neuen Umgebung Benutzer neu erstellen und Ihre Azure AD Multi-Factor Authentication-Instanz neu definieren. 
 
 So rufen Sie eine Liste von Benutzerkonten ab, für die mehrstufige Authentifizierung (Multi-Factor Authentication) aktiviert ist oder erzwungen wird:
 
@@ -159,7 +159,7 @@ So rufen Sie eine Liste von Benutzerkonten ab, für die mehrstufige Authentifizi
 
 Weitere Informationen finden Sie unter:
 
-- Erfahren Sie mehr über die [Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md).
+- Erfahren Sie mehr über [Azure AD Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -167,7 +167,7 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 
 - [Compute](./germany-migration-compute.md)
 - [Netzwerk](./germany-migration-networking.md)
-- [Speicher](./germany-migration-storage.md)
+- [Storage](./germany-migration-storage.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
 - [Analyse](./germany-migration-analytics.md)

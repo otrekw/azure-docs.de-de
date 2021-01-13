@@ -1,5 +1,5 @@
 ---
-title: Testergebnisse der Replikation von virtuellen Hyper-V-Computern in VMM-Clouds an einen sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation
+title: Testen der Replikation virtueller Hyper-V-Computer an einem sekundären Standort mit VMM und Azure Site Recovery
 description: Dieser Artikel bietet Informationen zu Leistungstests für die Replikation von virtuellen Hyper-V-Computern in VVM-Clouds an einen sekundären Standort mithilfe von Azure Site Recovery.
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: a7413b2dcb24a42092eb2af9816b1d29a8306e19
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 6c8219214e7053dcf6b119f6cd5dc97daaa355f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68377211"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327636"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Testergebnisse für die Hyper-V-Replikation an einen sekundären Standort
 
@@ -47,7 +47,7 @@ Von uns in der Testphase erledigte Schritte:
 * Hyper-V-Replikat nutzt selbstverwalteten Speichercache, um den IOPS-Zusatzaufwand für die Erfassung zu minimieren. Es speichert VHDX-Schreibvorgänge im Arbeitsspeicher und fügt sie der Protokolldatei hinzu, bevor das Protokoll an den Wiederherstellungsstandort gesendet wird. Das Leeren auf Festplatte findet auch statt, wenn die Schreibvorgänge einen zuvor festgelegten Schwellenwert erreichen.
 * Das folgende Diagramm zeigt den IOPS-Zusatzaufwand für die Replikation im stabilen Zustand. Wie Sie sehen, beträgt der replikationsbedingte IOPS-Zusatzaufwand gerade einmal etwa fünf Prozent.
 
-  ![Ergebnisse (primär)](./media/hyper-v-vmm-performance-results/IC744913.png)
+  ![Diagramm zur Veranschaulichung des IOPS-Zusatzaufwands für die Replikation im stabilen Zustand](./media/hyper-v-vmm-performance-results/IC744913.png)
 
 Hyper-V Replica nutzt Arbeitsspeicher auf dem primären Server, um die Datenträgerleistung zu optimieren. Wie im folgenden Diagramm zu sehen, ist die zusätzliche Arbeitsspeicherauslastung auf allen Servern im primären Cluster marginal. Bei der hier gezeigten Arbeitsspeicherauslastung handelt es sich um den von der Replikation beanspruchten Prozentsatz des installierten Gesamtspeichers auf dem Hyper-V-Server.
 
@@ -55,20 +55,20 @@ Hyper-V Replica nutzt Arbeitsspeicher auf dem primären Server, um die Datenträ
 
 Die zusätzliche CPU-Auslastung durch Hyper-V-Replikat ist minimal. Wie im Diagramm zu sehen, liegt der replikationsbedingte Zusatzaufwand zwischen zwei und drei Prozent.
 
-![Ergebnisse (primär)](./media/hyper-v-vmm-performance-results/IC744915.png)
+![Diagramm zur Veranschaulichung des replikationsbedingten Zusatzaufwands zwischen zwei und drei Prozent](./media/hyper-v-vmm-performance-results/IC744915.png)
 
 ## <a name="secondary-server-performance"></a>Leistung des sekundären Servers
 
 Hyper-V Replica verwendet einen kleinen Teil des Arbeitsspeichers auf dem Wiederherstellungsserver, um die Anzahl der Speichervorgänge zu optimieren. Das Diagramm fasst die Arbeitsspeicherauslastung auf dem Wiederherstellungsserver zusammen. Bei der hier gezeigten Arbeitsspeicherauslastung handelt es sich um den von der Replikation beanspruchten Prozentsatz des installierten Gesamtspeichers auf dem Hyper-V-Server.
 
-![Ergebnisse (sekundär)](./media/hyper-v-vmm-performance-results/IC744916.png)
+![Diagramm zur Zusammenfassung der Arbeitsspeicherauslastung auf dem Wiederherstellungsserver](./media/hyper-v-vmm-performance-results/IC744916.png)
 
 Die Menge der E/A-Vorgänge am Wiederherstellungsstandort ist eine Funktion der Anzahl von Schreibvorgängen am primären Standort. Vergleichen wir die Gesamtmenge der E/A-Vorgänge am Wiederherstellungsstandort mit der Gesamtmenge der E/A- und Schreibvorgänge am primären Standort. Die Diagramme zeigen, dass die Gesamtmenge der IOPS am Wiederherstellungsstandort:
 
 * etwa dem 1,5-fachen der Schreib-IOPS am primären Standort entspricht.
 * etwa 37 Prozent der Gesamt-IOPS am primären Standort ausmacht.
 
-![Ergebnisse (sekundär)](./media/hyper-v-vmm-performance-results/IC744917.png)
+![Diagramm zum Vergleich von IOPS am primären bzw. sekundären Standort](./media/hyper-v-vmm-performance-results/IC744917.png)
 
 ![Ergebnisse (sekundär)](./media/hyper-v-vmm-performance-results/IC744918.png)
 
@@ -133,10 +133,10 @@ Die Ergebnisse zeigen deutlich, dass Site Recovery in Kombination mit Hyper-V Re
 
 | Workload | E/A-Größe (KB) | Prozent (Zugriff) | Prozent (Lesen) | Ausstehende E/A-Vorgänge | E/A-Muster |
 | --- | --- | --- | --- | --- | --- |
-| Dateiserver |4<br />8<br />16<br />32<br />64 |60 %<br />20%<br />5 %<br />5 %<br />10% |80 %<br />80 %<br />80 %<br />80 %<br />80 % |8<br />8<br />8<br />8<br />8 |Alle 100 % zufällig |
-| SQL Server (Volume 1)<br />SQL Server (Volume 2) |8<br />64 |100 %<br />100 % |70 %<br />0 % |8<br />8 |100 % zufällig<br />100 % sequenziell |
+| Dateiserver |4<br />8<br />16<br />32<br />64 |60%<br />20%<br />5 %<br />5 %<br />10 % |80 %<br />80 %<br />80 %<br />80 %<br />80 % |8<br />8<br />8<br />8<br />8 |Alle 100 % zufällig |
+| SQL Server (Volume 1)<br />SQL Server (Volume 2) |8<br />64 |100 %<br />100 % |70 %<br />0 % |8<br />8 |100 % zufällig<br />100 % sequenziell |
 | Exchange |32 |100 % |67 % |8 |100 % zufällig |
-| Arbeitsstation/VDI |4<br />64 |66 %<br />34 % |70 %<br />95 % |1<br />1 |Beides 100 % zufällig |
+| Arbeitsstation/VDI |4<br />64 |66 %<br />34 % |70 %<br />95 % |1<br />1 |Beides 100 % zufällig |
 | Webdateiserver |4<br />8<br />64 |33 %<br />34 %<br />33 % |95 %<br />95 %<br />95 % |8<br />8<br />8 |Alle 75 % zufällig |
 
 ### <a name="vm-configuration"></a>Konfiguration des virtuellen Computers
@@ -150,8 +150,8 @@ Die Ergebnisse zeigen deutlich, dass Site Recovery in Kombination mit Hyper-V Re
 | SQL Server |51 |1 |4 |167 |10 |
 | Exchange Server |71 |1 |4 |552 |10 |
 | Dateiserver |50 |1 |2 |552 |22 |
-| VDI |149 |0,5 |1 |80 |6 |
-| Webserver |149 |0,5 |1 |80 |6 |
+| VDI |149 |.5 |1 |80 |6 |
+| Webserver |149 |.5 |1 |80 |6 |
 | GESAMT |470 | | |96,83 TB |4108 |
 
 ### <a name="site-recovery-settings"></a>Einstellungen für Site Recovery
@@ -170,15 +170,15 @@ Die Ergebnisse zeigen deutlich, dass Site Recovery in Kombination mit Hyper-V Re
 
 Der Tabelle fasst die Leistungsmetriken und -indikatoren zusammen, die für die Bereitstellung ermittelt wurden.
 
-| Metrik | Indikator |
+| Metrik | Leistungsindikator |
 | --- | --- |
 | CPU |\Processor(_Total)\%Prozessorzeit |
 | Verfügbarer Arbeitsspeicher |\Arbeitsspeicher\Verfügbare MB |
 | IOPS |\Physikalischer Datenträger(_Total)\Übertragungen/s |
 | VM-Lesevorgänge (IOPS)/s |\Virtuelles Hyper-V-Speichergerät(\<VHD>)\Lesevorgänge/s |
 | VM-Schreibvorgänge (IOPS)/s |\Virtuelles Hyper-V-Speichergerät(\<VHD>)\Schreibvorgänge/s |
-| VM-Lesedurchsatz |\Virtuelles Hyper-V-Speichergerät(\<VHD>)\Lesevorgänge in Byte/s |
-| VM-Schreibdurchsatz |\Virtuelles Hyper-V-Speichergerät(\<VHD>)\Schreibvorgänge in Byte/s |
+| VM-Lesedurchsatz |\Virtuelles Hyper-V-Speichergerät(\<VHD>)\Gelesene Bytes/s |
+| VM-Schreibdurchsatz |\Virtuelles Hyper-V-Speichergerät(\<VHD>)\Geschriebene Bytes/s |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

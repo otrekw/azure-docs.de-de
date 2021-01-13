@@ -1,25 +1,25 @@
 ---
 title: Problembehandlung bei der Azure CDN-Dateikomprimierung | Microsoft Docs
-description: Behandeln Sie Probleme mit der Azure CDN-Dateikomprimierung.
+description: Erfahren Sie, wie Sie Probleme mit der Dateikomprimierung im Azure Content Delivery Network beheben können. In diesem Artikel werden verschiedene mögliche Ursachen behandelt.
 services: cdn
 documentationcenter: ''
-author: zhangmanling
-manager: erikre
+author: sohamnc
+manager: danielgi
 editor: ''
 ms.assetid: a6624e65-1a77-4486-b473-8d720ce28f8b
 ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5195dc3c47d2a4377147b2ef49b23bab6b3fee77
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593326"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996150"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Problembehandlung bei der CDN-Dateikomprimierung
 Dieser Artikel unterstützt Sie bei der Behandlung von Problemen mit der [CDN-Dateikomprimierung](cdn-improve-performance.md).
@@ -42,6 +42,7 @@ Es gibt mehrere mögliche Ursachen, darunter folgende:
 * Der angeforderte Inhalt eignet sich nicht zur Komprimierung.
 * Die Komprimierung ist für den angeforderten Dateityp nicht aktiviert.
 * Die HTTP-Anforderung enthielt keinen Header, um einen gültigen Komprimierungstyp anzufordern.
+* Der Ursprung sendet segmentierten Inhalt.
 
 ## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 > [!TIP]
@@ -98,7 +99,7 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, un
 Überprüfen Sie mithilfe der Entwicklertools Ihres Browsers die Antwortheader, um sicherzustellen, dass die Datei in der Region zwischengespeichert wird, in der sie angefordert wird.
 
 * Überprüfen Sie den Antwortheader **Server** .  Dieser Header sollte wie im folgenden Beispiel das Format **Plattform (POP-/Server-ID)** aufweisen.
-* Überprüfen Sie den Antwortheader **X-Cache** .  Dieser Header sollte **HIT**lauten.  
+* Überprüfen Sie den Antwortheader **X-Cache** .  Dieser Header sollte **HIT** lauten.  
 
 ![CDN-Antwortheader](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
@@ -110,12 +111,12 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, un
 
 Um sich für die Komprimierung zu eignen, muss eine Datei folgende Größenanforderungen erfüllen:
 
-* Größer als 128 Bytes.
-* Kleiner als 1 MB.
+* Größer als 128 Bytes (Content-Length: 128)
+* Kleiner als 3 MB
 
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>Überprüfen Sie die Anforderung auf dem Ursprungsserver auf einen **Über** -Header.
 Der **Über** -HTTP-Header informiert den Webserver darüber, dass die Anforderung von einem Proxyserver übergeben wird.  Microsoft IIS-Webserver komprimieren Antworten standardmäßig nicht, wenn die Anforderung einen **Über** -Header enthält.  Führen Sie folgende Schritte aus, um dieses Verhalten außer Kraft zu setzen:
 
 * **IIS 6**: [Legen Sie in den IIS-Metabasiseigenschaften „HcNoCompressionForProxies="FALSE"“ fest](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
-* **IIS 7 und höher**: [Legen Sie in der Serverkonfiguration sowohl für **noCompressionForHttp10** als auch für **noCompressionForProxies** die Option „False“ fest](https://www.iis.net/configreference/system.webserver/httpcompression)
+* **IIS 7 oder höher**: [Legen Sie in der Serverkonfiguration sowohl für **noCompressionForHttp10** als auch für **noCompressionForProxies** die Option „False“ fest.](https://www.iis.net/configreference/system.webserver/httpcompression)
 

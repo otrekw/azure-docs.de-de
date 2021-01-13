@@ -1,27 +1,20 @@
 ---
-title: 'Tutorial: Installieren von Anwendungen in einer Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation'
+title: 'Tutorial: Installieren von Anwendungen in einer Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle'
 description: Hier wird beschrieben, wie Sie die Azure-Befehlszeilenschnittstelle zum Installieren von Anwendungen in VM-Skalierungsgruppen mit der benutzerdefinierten Skripterweiterung verwenden.
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: cli
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 38dec49083e84d105f4eed9cbc149bbc025c5e40
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.reviewer: mimckitt
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: d9969cf0fa453f857de421dd10934f63f5773f6c
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755712"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516729"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>Tutorial: Installieren von Anwendungen in VM-Skalierungsgruppen mit der Azure-Befehlszeilenschnittstelle
 Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müssen Sie zuerst die Anwendungskomponenten und erforderlichen Dateien installieren. In einem vorherigen Tutorial wurde beschrieben, wie Sie ein benutzerdefiniertes VM-Image erstellen und verwenden, um Ihre VM-Instanzen bereitzustellen. Dieses benutzerdefinierte Image umfasste manuelle Anwendungsinstallationen und -konfigurationen. Sie können die Installation von Anwendungen auch per Skalierungsgruppe automatisieren, nachdem die einzelnen VM-Instanzen bereitgestellt wurden, oder eine Anwendung aktualisieren, die bereits in einer Skalierungsgruppe ausgeführt wird. In diesem Tutorial lernen Sie Folgendes:
@@ -31,17 +24,17 @@ Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müss
 > * Verwenden der benutzerdefinierten Skripterweiterung von Azure
 > * Aktualisieren einer ausgeführten Anwendung in einer Skalierungsgruppe
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.29 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
+- Für diesen Artikel ist mindestens Version 2.0.29 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert. 
 
 
 ## <a name="what-is-the-azure-custom-script-extension"></a>Was ist die benutzerdefinierte Skripterweiterung von Azure?
 Die benutzerdefinierte Skripterweiterung lädt Skripts auf Azure-VMs herunter und führt sie aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Skripts können aus Azure Storage oder GitHub heruntergeladen oder dem Azure-Portal zur Laufzeit für die Erweiterung bereitgestellt werden.
 
-Die benutzerdefinierte Skripterweiterung kann in Azure Resource Manager-Vorlagen integriert und auch mit der Azure CLI, Azure PowerShell, dem Azure-Portal oder der REST-API verwendet werden. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/linux/extensions-customscript.md).
+Die benutzerdefinierte Skripterweiterung kann in Azure Resource Manager-Vorlagen integriert und auch mit der Azure CLI, Azure PowerShell, dem Azure-Portal oder der REST-API verwendet werden. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/extensions/custom-script-linux.md).
 
 Zum Verwenden der benutzerdefinierten Skripterweiterung mit der Azure CLI erstellen Sie eine JSON-Datei, mit der definiert wird, welche Dateien beschafft und welche Befehle ausgeführt werden sollen. Diese JSON-Definitionen können für die Bereitstellungen von Skalierungsgruppen übergreifend wiederverwendet werden, um einheitliche Anwendungsinstallationen zu erhalten.
 
@@ -57,6 +50,9 @@ Erstellen Sie in der aktuellen Shell eine Datei namens *customConfig.json*, und 
   "commandToExecute": "./automate_nginx.sh"
 }
 ```
+
+> [!CAUTION]
+> Möglicherweise müssen Sie die Verwendung der einfachen (') und doppelten Anführungszeichen (") innerhalb des JSON-Blocks umkehren, wenn Sie sich dazu entschließen, im Parameter *--settings* weiter unten direkt auf den JSON-Code zu verweisen (anstatt auf die Datei *customConfig.json*). 
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe

@@ -1,27 +1,31 @@
 ---
-title: Herstellen einer Verbindung mit Azure Database for MySQL per Go
+title: 'Schnellstart: Herstellen einer Verbindung unter Verwendung von Go: Azure Database for MySQL'
 description: Diese Schnellstartanleitung enthält mehrere Go-Codebeispiele, mit deren Hilfe Sie eine Verbindung mit Azure-Datenbank für MySQL herstellen und Daten daraus abfragen können.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 3cd25f935a38f5192811d7f7886d3c6654d5d221
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 5/26/2020
+ms.openlocfilehash: 0da32fb404972556a1c4c964eec692bad20a4db1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351795"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535757"
 ---
-# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: Verwenden von Go zum Herstellen einer Verbindung und Abfragen von Daten
+# <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von Go zum Herstellen einer Verbindung und zum Abfragen von Daten in Azure Database for MySQL
+
 In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Windows, Linux (Ubuntu) und macOS (Apple) mithilfe von Code in der Programmiersprache [Go](https://golang.org/) eine Verbindung mit einer Azure Database for MySQL-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Go-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
 - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe des Azure-Portals](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe der Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
+
+> [!IMPORTANT] 
+> Sicherstellen, dass der IP-Adresse, über die Sie eine Verbindung herstellen, die Firewallregeln des Servers über das [Azure-Portal](./howto-manage-firewall-using-portal.md) oder die [Azure CLI](./howto-manage-firewall-using-cli.md) hinzugefügt wurden
 
 ## <a name="install-go-and-mysql-connector"></a>Installieren von Go und dem MySQL-Connector
 Installieren Sie auf Ihrem Computer [Go](https://golang.org/doc/install) und den [„go-sql“-Treiber für MySQL](https://github.com/go-sql-driver/mysql#installation). Führen Sie je nach Plattform die folgenden Schritte im entsprechenden Abschnitt aus:
@@ -82,7 +86,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 2. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und suchen Sie dann nach dem soeben erstellten Server, z.B. **mydemoserver**.
 3. Klicken Sie auf den Servernamen.
 4. Notieren Sie sich im Bereich **Übersicht** des Servers den **Servernamen** und den **Anmeldenamen des Serveradministrators**. Wenn Sie Ihr Kennwort vergessen haben, können Sie es in diesem Bereich auch zurücksetzen.
- ![Servername für Azure-Datenbank für MySQL](./media/connect-go/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-go/1_server-overview-name-login.png" alt-text="Servername für Azure-Datenbank für MySQL":::
    
 
 ## <a name="build-and-run-go-code"></a>Erstellen und Ausführen von Go-Code 
@@ -289,7 +293,7 @@ func main() {
     rows, err := db.Exec("UPDATE inventory SET quantity = ? WHERE name = ?", 200, "banana")
     checkError(err)
     rowCount, err := rows.RowsAffected()
-    fmt.Printf("Deleted %d row(s) of data.\n", rowCount)
+    fmt.Printf("Updated %d row(s) of data.\n", rowCount)
     fmt.Println("Done.")
 }
 ```
@@ -346,6 +350,16 @@ func main() {
     fmt.Printf("Deleted %d row(s) of data.\n", rowCount)
     fmt.Println("Done.")
 }
+```
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Ressourcengruppe mit dem folgenden Befehl, um alle in dieser Schnellstartanleitung verwendeten Ressourcen zu bereinigen:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

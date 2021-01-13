@@ -6,14 +6,23 @@
       href: api-management-key-concepts.md
     - name: Verfügbarkeit von API Management-Features
       href: api-management-features.md
+    - name: Verwalten von in AKS bereitgestellten Mikrodiensten
+      href: api-management-kubernetes.md
 - name: Schnellstarts
   expanded: true
   items:
+    - name: 'Erstellen einer Instanz: CLI'
+      href: get-started-create-service-instance-cli.md
     - name: Erstellen einer Instanz – Portal
       href: get-started-create-service-instance.md
     - name: Erstellen einer Instanz – PowerShell
       href: powershell-create-service-instance.md
-- name: Lernprogramme
+    - name: 'Erstellen einer Instanz: Visual Studio Code'
+      href: vscode-create-service-instance.md
+    - name: 'Erstellen einer Instanz: ARM-Vorlage'
+      displayName: Resource Manager
+      href: quickstart-arm-template.md
+- name: Tutorials
   items:
     - name: '1: Importieren Ihrer ersten API'
       href: import-and-publish.md
@@ -32,11 +41,13 @@
     - name: '8: Hinzufügen mehrerer Versionen'
       href: api-management-get-started-publish-versions.md
     - name: '9: Anpassen des Entwicklerportals'
-      href: api-management-customize-styles.md
+      href: api-management-howto-developer-portal-customize.md
+    - name: '10: Verwalten von APIs in Visual Studio Code'
+      href: visual-studio-code-tutorial.md
 - name: Beispiele
   items:
     - name: Richtlinien
-      href: policy-samples.md
+      href: ./policies/index.md
     - name: Azure PowerShell
       href: powershell-samples.md
 - name: Konzepte
@@ -49,18 +60,30 @@
           href: api-management-howto-policies.md
         - name: Richtlinienreferenz – Index
           href: api-management-policies.md
+        - name: Fehlerbehandlung
+          href: api-management-error-handling-policies.md
     - name: Sicherheit
       items:
-        - name: Integrierte Sicherheitskontrollen
-          href: api-management-security-controls.md
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Abonnements
       href: api-management-subscriptions.md
+    - name: Versionen
+      href: api-management-versions.md
+    - name: Revisionen
+      href: api-management-revisions.md
     - name: Verwalten mithilfe von Automatisierung
       href: automation-manage-api-management.md
-    - name: Fehlerbehandlung
-      href: api-management-error-handling-policies.md
     - name: API-Importbeschränkungen
       href: api-management-api-import-restrictions.md
+    - name: Übersicht über das selbstgehostete Gateway
+      href: self-hosted-gateway-overview.md
+    - name: Einblick
+      href: observability.md
+    - name: CI/CD unter Verwendung von ARM-Vorlagen
+      href: devops-api-development-templates.md
+    - name: Vorläufiges Löschen
+      href: soft-delete.md
 - name: Anleitungen
   items:
     - name: Definieren von APIs
@@ -87,12 +110,26 @@
       items:
         - name: Kapazitätsmetrik
           href: api-management-capacity.md
+        - name: Planen und Verwalten von Kosten
+          href: plan-manage-costs.md
         - name: Aktualisieren und Skalieren
           href: upgrade-and-scale.md
         - name: Konfigurieren der automatischen Skalierung
           href: api-management-howto-autoscale.md
         - name: Konfigurieren einer benutzerdefinierten Domäne
           href: configure-custom-domain.md
+        - name: Bereitstellen für mehrere Azure-Regionen
+          href: api-management-howto-deploy-multi-region.md
+        - name: Bereitstellen eines selbstgehosteten Gateways
+          href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Bereitstellen eines selbstgehosteten Gateways für Azure Kubernetes Service
+          href: how-to-deploy-self-hosted-gateway-azure-kubernetes-service.md
+        - name: Bereitstellen eines selbstgehosteten Gateways für Kubernetes
+          href: how-to-deploy-self-hosted-gateway-kubernetes.md
+        - name: Bereitstellen eines selbstgehosteten Gateways für Docker
+          href: how-to-deploy-self-hosted-gateway-docker.md
+        - name: Konfigurieren einer benutzerdefinierte Domäne für ein selbstgehostetes Gateway
+          href: api-management-howto-configure-custom-domain-gateway.md
     - name: Cache
       items:
         - name: Hinzufügen von Caching zur Verbesserung der Leistung
@@ -109,6 +146,8 @@
       items:
         - name: Schützen Ihrer API mit Azure AD
           href: api-management-howto-protect-backend-with-aad.md
+        - name: Schützen Ihrer SPA-Back-End-API mit Azure AD B2C
+          href: howto-protect-backend-frontend-azure-ad-b2c.md
         - name: Herstellen einer Verbindung mit einem virtuellen Netzwerk
           href: api-management-using-with-vnet.md
         - name: Herstellen einer Verbindung mit einem internen virtuellen Netzwerk
@@ -123,15 +162,13 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: Anpassen der Entwickleroberfläche
       items:
-        - name: Zugreifen auf das neue Entwicklerportal und Anpassen dieses Portals
+        - name: Grundlegendes zum Entwicklerportal
           href: api-management-howto-developer-portal.md
-        - name: Ändern von Seiteninhalt und Layout
-          href: api-management-modify-content-layout.md
-        - name: Anpassen der Systemseiten mithilfe von Vorlagen
-          href: api-management-developer-portal-templates.md
-        - name: Authentifizierung mit Azure AD
+        - name: Migrieren vom veralteten zum neuen Entwicklerportal
+          href: developer-portal-deprecated-migration.md
+        - name: Authentifizierung über Azure AD
           href: api-management-howto-aad.md
-        - name: Authentifizierung mit Azure AD B2C
+        - name: Authentifizierung über Azure AD B2C
           href: api-management-howto-aad-b2c.md
         - name: Delegierte Authentifizierung
           href: api-management-howto-setup-delegation.md
@@ -139,10 +176,40 @@
           href: api-management-howto-configure-notifications.md
         - name: Aktivieren der OAuth-Konsolenunterstützung
           href: api-management-howto-oauth2.md
+        - name: 'Veraltetes Portal: Anpassen des Portals'
+          href: api-management-customize-styles.md
+        - name: 'Veraltetes Portal: Ändern von Seiten und Layouts'
+          href: api-management-modify-content-layout.md
+        - name: 'Veraltetes Portal: Anpassen mit Vorlagen'
+          href: api-management-developer-portal-templates.md
+    - name: 'Veraltetes Portal: Vorlagen'
+      items:
+        - name: Datenmodellreferenz
+          href: api-management-template-data-model-reference.md
+        - name: Seitensteuerelemente
+          href: api-management-page-controls.md
+        - name: Vorlagen
+          href: api-management-developer-portal-templates-reference.md
+        - name: APIs
+          href: api-management-api-templates.md
+        - name: Produkte
+          href: api-management-product-templates.md
+        - name: Anwendungen
+          href: api-management-application-templates.md
+        - name: Probleme
+          href: api-management-issue-templates.md
+        - name: Benutzerprofil
+          href: api-management-user-profile-templates.md
+        - name: Seiten
+          href: api-management-page-templates.md
+        - name: Vorlagenressourcen
+          href: api-management-template-resources.md
     - name: Definieren von Richtlinien
       items:
         - name: Festlegen oder Bearbeiten von Richtlinien
           href: set-edit-policies.md
+        - name: Debugrichtlinien
+          href: api-management-debug-policies.md
         - name: Richtlinienausdrücke
           href: api-management-policy-expressions.md
         - name: Benutzerdefiniertes Caching
@@ -153,7 +220,7 @@
           href: api-management-sample-flexible-throttling.md
         - name: Verwenden externer Dienste
           href: api-management-sample-send-request.md
-        - name: Verwalten von geheimen Schlüsseln mithilfe von Eigenschaften
+        - name: Verwalten von Geheimnissen mithilfe benannter Werte
           href: api-management-howto-properties.md
         - name: Richtlinien für die Zugriffsbeschränkung
           href: api-management-access-restriction-policies.md
@@ -167,40 +234,26 @@
           href: api-management-cross-domain-policies.md
         - name: Transformationsrichtlinien
           href: api-management-transformation-policies.md
-    - name: Vorlagenreferenz
-      items:
-        - name: Vorlagen
-          href: api-management-developer-portal-templates-reference.md
-        - name: APIs
-          href: api-management-api-templates.md
-        - name: Produkte
-          href: api-management-product-templates.md
-        - name: ANWENDUNGEN
-          href: api-management-application-templates.md
-        - name: Probleme
-          href: api-management-issue-templates.md
-        - name: Benutzerprofil
-          href: api-management-user-profile-templates.md
-        - name: Seiten
-          href: api-management-page-templates.md
-        - name: Vorlagenressourcen
-          href: api-management-template-resources.md
-    - name: Datenmodellreferenz
-      href: api-management-template-data-model-reference.md
-    - name: Seitensteuerelemente
-      href: api-management-page-controls.md
+        - name: Distributed Application Runtime-Integrationsrichtlinien (Dapr)
+          href: api-management-dapr-policies.md
     - name: Verwalten in Produktion
       items:
+        - name: Exportieren von APIs in Power Platform
+          href: export-api-power-platform.md
         - name: Verwalten von Gruppen
           href: api-management-howto-create-groups.md
-        - name: Bereitstellen für mehrere Azure-Regionen
-          href: api-management-howto-deploy-multi-region.md
         - name: Abrufen von IP-Adressen
           href: api-management-howto-ip-addresses.md
+        - name: Abrufen von API-Analysen
+          href: howto-use-analytics.md
         - name: Protokollieren von Ereignissen in Azure Event Hubs
           href: api-management-howto-log-event-hubs.md
         - name: Protokollieren von Anforderungen mit Azure Application Insights
           href: api-management-howto-app-insights.md
+        - name: Konfigurieren von Cloudmetriken und -protokollen für selbstgehostete Gateways
+          href: how-to-configure-cloud-metrics-logs.md
+        - name: Konfigurieren von lokalen Metriken und Protokollen für selbstgehostete Gateways
+          href: how-to-configure-local-metrics-logs.md
         - name: Einrichten der Notfallwiederherstellung mithilfe von Sicherung/Wiederherstellung
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: Verwalten von Benutzerkonten
@@ -217,18 +270,25 @@
           items:
             - name: Übersicht
               href: ../service-fabric/service-fabric-api-management-overview.md
-            - name: Tutorial
+            - name: Lernprogramm
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
 - name: Verweis
   items:
+    - name: Azure CLI
+      href: /cli/azure/apim
     - name: Azure PowerShell
-      href: /powershell/module/az.apimanagement/?view=azps-2.6.0
+      href: /powershell/module/az.apimanagement/
     - name: REST
       href: /rest/api/apimanagement/
     - name: REST (Original)
       href: /rest/api/apimanagement/ApiManagementREST/api-management-REST
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.apimanagement/allversions
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
+    - name: Ressourcenprotokollschema
+      href: gateway-log-schema-reference.md
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
@@ -243,13 +303,17 @@
       href: 'https://aka.ms/apimwish'
     - name: Videos
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=api-management'
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: /answers/topics/azure-api-management.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-api-management'
     - name: Leitfaden zum API-Design
-      href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json'
+      href: /azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: API-Implementierungsleitfaden
-      href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json'
-    - name: Behandeln eines Fehlers beim Aktualisieren von Hostnamen
-      href: api-management-troubleshoot-cannot-add-custom-domain.md
+      href: /azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
+    - name: Problembehandlung
+      items:
+        - name: Behandeln eines Fehlers beim Aktualisieren von Hostnamen
+          href: api-management-troubleshoot-cannot-add-custom-domain.md
+        - name: Problembehandlung bei Antworttimeouts und Fehlern
+          href: troubleshoot-response-timeout-and-errors.md

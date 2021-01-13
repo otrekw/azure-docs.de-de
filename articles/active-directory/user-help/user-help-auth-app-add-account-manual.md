@@ -2,22 +2,21 @@
 title: Manuelles Hinzufügen eines Kontos zur App – Azure Active Directory | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie der Microsoft Authenticator-App Ihre Konten für die zweistufige Überprüfung hinzufügen.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00f8a0e8d655f9412eceb7b0901ced829e490f78
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3838234f9f65fcf91f8de33e3d7196aa13f2b903
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616093"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83741723"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Manuelles Hinzufügen eines Kontos zur App
 

@@ -8,15 +8,19 @@ metadata:
   ms.date: 08/30/2019
   ms.service: data-catalog
   ms.topic: landing-page
-  ms.openlocfilehash: eb60085cd76fa9d3857b5e284b2cdd03f35fcb13
-  ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+  ms.openlocfilehash: 3b5e88b17136852129a408dff5c4f4fbf304c23a
+  ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/30/2019
-  ms.locfileid: "70172678"
+  ms.lasthandoff: 12/22/2020
+  ms.locfileid: "97732902"
 landingContent:
 - title: Informationen zu Azure Data Catalog
   linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 'Azure Purview: nächste Generation der einheitlichen Datengovernance'
+      url: ../purview/overview.md
   - linkListType: overview
     links:
     - text: Was ist Azure Data Catalog?

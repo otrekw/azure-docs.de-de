@@ -1,24 +1,17 @@
 ---
 title: VMware-Überwachungslösung in Azure Monitor | Microsoft-Dokumentation
 description: Erfahren Sie, wie die VMware-Überwachungslösung dabei helfen kann, Protokolle zu verwalten und ESXi-Hosts zu überwachen.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 16516639-cc1e-465c-a22f-022f3be297f1
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 05/04/2018
-ms.author: magoedte
-ms.openlocfilehash: eac6a27c3bcf64462a9f3d9a57da6df736f30c78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61386106"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91450397"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware-Überwachungslösung (veraltet) in Azure Monitor
 
@@ -34,7 +27,7 @@ Die Lösung verwendet die native Syslog-Funktionalität des ESXi-Hosts, um Daten
 ## <a name="install-and-configure-the-solution"></a>Installieren und Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
-* Fügen Sie Ihrem Abonnement anhand der unter [Installieren einer Überwachungslösung](../insights/solutions.md#install-a-monitoring-solution) beschriebenen Vorgehensweise die VMware-Überwachungslösung hinzu.
+* Fügen Sie Ihrem Abonnement anhand der unter [Installieren einer Überwachungslösung](./solutions.md#install-a-monitoring-solution) beschriebenen Vorgehensweise die VMware-Überwachungslösung hinzu.
 
 #### <a name="supported-vmware-esxi-hosts"></a>Unterstützte VMware ESXi-Hosts
 vSphere ESXi-Host 5.5, 6.0 und 6.5
@@ -73,7 +66,7 @@ Erstellen Sie eine VM mit Linux-Betriebssystem, um alle Syslog-Daten von den ESX
 
 1. Führen Sie im Azure-Portal eine Protokollabfrage für `VMware_CL` aus. Wenn Azure Monitor die syslog-Daten sammelt, bleibt das syslog-Format erhalten. Im Portal werden einige bestimmte Felder erfasst, z.B. *Hostname* und *ProcessName*.  
 
-    ![type](./media/vmware/type.png)  
+    ![Screenshot einer Protokollabfrage für „Type = VMware_CL“ mit einem Ergebnis mit Zeitstempel](./media/vmware/type.png)  
 
     Wenn die Protokollsuchergebnisse in Ihrer Ansicht so ähnlich wie die Abbildung oben aussehen, können Sie das Dashboard für die VMware-Überwachungslösung verwenden.  
 
@@ -82,7 +75,7 @@ Die VMware-Überwachungslösung sammelt die verschiedenen Leistungsmetriken und 
 
 Die folgende Tabelle zeigt die Datensammlungsmethoden und andere Details dazu, wie Daten gesammelt werden.
 
-| Plattform | Log Analytics-Agent für Linux | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
+| Plattform | Log Analytics-Agent für Linux | System Center Operations Manager-Agent | Azure Storage | Operations Manager erforderlich? | Daten vom Operations Manager-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |Alle 3 Minuten |
 
@@ -112,7 +105,7 @@ In der folgenden Tabelle sind Beispiele für Datenfelder aufgeführt, die von de
 ## <a name="vmware-monitoring-solution-overview"></a>Übersicht über die VMware-Überwachungslösung
 Die Kachel „VMware“ wird in Ihrem Log Analytics-Arbeitsbereich angezeigt. Sie bietet eine allgemeine Ansicht der Fehler. Wenn Sie auf die Kachel klicken, gelangen Sie zu einer Dashboardansicht.
 
-![Kachel](./media/vmware/tile.png)
+![Screenshot der VMware-Kachel mit Anzeige von neun Fehlern](./media/vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>Navigieren in der Dashboardansicht
 In der **VMware**-Dashboardansicht sind die Blätter nach Folgendem angeordnet:
@@ -134,36 +127,36 @@ Hier können Sie die Protokollabfrage bearbeiten, um nach etwas Bestimmtem zu su
 #### <a name="find-esxi-host-events"></a>Suchen von ESXi-Hostereignissen
 Ein einzelner ESXi-Host generiert basierend auf seinen Prozessen mehrere Protokolle. Die VMware-Überwachungslösung zentralisiert sie und fasst die auftretenden Ereignisse zusammen. Mit dieser zentralisierten Ansicht können Sie erkennen, auf welchem ESXi-Host eine große Anzahl von Ereignissen auftritt und welche Ereignisse in Ihrer Umgebung am häufigsten vorkommen.
 
-![event](./media/vmware/events.png)
+![Ereignis](./media/vmware/events.png)
 
 Sie können weitere Details anzeigen, indem Sie auf einen ESXi-Host oder einen Ereignistyp klicken.
 
 Wenn Sie auf einen ESXi-Hostnamen klicken, sehen Sie Informationen von diesem ESXi-Host. Wenn Sie die Ergebnisse mit dem Ereignistyp eingrenzen möchten, fügen Sie Ihrer Suchabfrage `“ProcessName_s=EVENT TYPE”` hinzu. Sie können **ProcessName** im Suchfilter auswählen. So werden die Informationen für Sie eingegrenzt.
 
-![Details](./media/vmware/eventhostdrilldown.png)
+![Screenshot der Blätter „Anzahl von ESXi-Hosts nach Ereignis“ und „Aufschlüsselung nach Ereignistyp“ in der Dashboardansicht der VMware-Überwachung](./media/vmware/eventhostdrilldown.png)
 
 #### <a name="find-high-vm-activities"></a>Suchen nach umfangreichen VM-Aktivitäten
 Ein virtueller Computer kann auf einem ESXi-Host erstellt und gelöscht werden. Es ist hilfreich für den Administrator zu bestimmen, wie viele virtuelle Computer ein ESXi-Host erstellt. Dies hilft wiederum dabei, die Leistungs- und Kapazitätsplanung zu verstehen. Die Nachverfolgung von VM-Aktivitätsereignissen ist entscheidend, wenn Sie Ihre Umgebung verwalten.
 
-![Details](./media/vmware/vmactivities1.png)
+![Screenshot des Blatts „Aktivitäten virtueller Computer“ im Dashboard der VMware-Überwachung mit einem Diagramm zur VM-Erstellung und -Löschung durch den ESXi-Host](./media/vmware/vmactivities1.png)
 
 Wenn Sie zusätzliche Daten zur VM-Erstellung auf einem ESXi-Host anzeigen möchten, klicken Sie auf einen ESXi-Hostnamen.
 
-![Details](./media/vmware/createvm.png)
+![Screenshot eines Bereichs vom Dashboard der VMware-Überwachung mit einer Tabelle, die eine Datenzeile für jeden von einem ESXi-Host erstellten virtuellen Computer enthält](./media/vmware/createvm.png)
 
 #### <a name="common-log-queries"></a>Allgemeine Protokollabfragen
 Die Lösung umfasst andere nützliche Abfragen, die Sie bei der Verwaltung Ihrer ESXi-Hosts unterstützen, z.B. hoher Speicherplatzbedarf, Speicherlatenz und Pfadfehler.
 
-![Abfragen](./media/vmware/queries.png)
+![Screenshot mit empfohlenen Suchvorgängen, bei denen es sich um nützliche gespeicherte Abfragen handelt](./media/vmware/queries.png)
 
 
 #### <a name="save-queries"></a>Speichern von Abfragen
 Das Speichern von Protokollabfragen ist ein Standardfeature in Azure Monitor und hilft Ihnen, Abfragen zu behalten, die Sie für nützlich befunden haben. Nachdem Sie eine Abfrage erstellt haben, die für Sie nützlich ist, speichern Sie sie, indem Sie auf **Favoriten** klicken. Eine gespeicherte Abfrage können Sie später auf einfache Weise über die Seite [Mein Dashboard](../learn/tutorial-logs-dashboards.md) wiederverwenden, wo Sie eigene benutzerdefinierte Dashboards erstellen können.
 
-![Docker-Dashboardansicht](./media/vmware/dockerdashboardview.png)
+![Screenshot eines Teils eines benutzerdefinierten Dashboards mit der Bezeichnung „Protokollsuche“ mit Symbolen für Rückgängigmachen, Exportieren, Warnung, Speichern, Favoriten und Verlauf](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Erstellen von Warnungen aus Abfragen
-Nachdem Sie Ihre Abfragen erstellt haben, könnten Sie die Abfragen dazu verwenden, dass Sie auf bestimmte Ereignisse hingewiesen werden. Informationen zum Erstellen von Warnungen finden Sie unter [Warnungen in Log Analytics](../platform/alerts-overview.md). Beispiele für Warnungen durch Abfragen und weitere Beispiele für Abfragen finden Sie im Blogbeitrag [Monitor VMware using Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) (Überwachen von VMware mit Log Analytics).
+Nachdem Sie Ihre Abfragen erstellt haben, könnten Sie die Abfragen dazu verwenden, dass Sie auf bestimmte Ereignisse hingewiesen werden. Informationen zum Erstellen von Warnungen finden Sie unter [Warnungen in Log Analytics](../platform/alerts-overview.md). Beispiele für Warnungen durch Abfragen und weitere Beispiele für Abfragen finden Sie im Blogbeitrag [Monitor VMware using Log Analytics](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) (Überwachen von VMware mit Log Analytics).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Was muss ich bei den ESXi-Hosteinstellungen beachten? Wie wirken diese sich auf meine aktuelle Umgebung aus?
@@ -207,3 +200,4 @@ Dafür kann es mehrere Gründe geben:
 * Verwenden Sie [Protokollabfragen](../log-query/log-query-overview.md) in Log Analytics, um ausführliche VMware-Hostdaten anzuzeigen.
 * [Erstellen Sie eigene Dashboards](../learn/tutorial-logs-dashboards.md), die VMware-Hostdaten anzeigen.
 * [Erstellen Sie Warnungen](../platform/alerts-overview.md) für das Auftreten bestimmter VMware-Hostereignisse.
+

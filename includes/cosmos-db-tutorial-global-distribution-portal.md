@@ -2,21 +2,21 @@
 title: 'Azure Cosmos DB: globale Verteilung'
 description: Hier erfahren Sie, wie Sie Daten mit Azure Cosmos DB im Azure-Portal global replizieren.
 services: cosmos-db
-author: rimman
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.topic: include
 ms.date: 12/26/2018
-ms.author: rimman
 ms.custom: include file
-ms.openlocfilehash: 751571820d52c003a7e740bd63af8c9d9e071c7a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 58788d6194454c8bd40730c9c350aa901924ba3d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177834"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027912"
 ---
-## <a id="addregion"></a>Hinzufügen globaler Datenbankregionen über das Azure-Portal
-Azure Cosmos DB ist in allen [Azure-Regionen][azureregions] weltweit verfügbar. Nachdem Sie die Standardkonsistenzebene für Ihr Datenbankkonto ausgewählt haben, können Sie dem Konto eine oder mehrere Regionen zuordnen (je nachdem, welche Konsistenzebene Sie ausgewählt haben und welche Anforderungen an eine globale Verteilung bestehen).
+## <a name="add-global-database-regions-using-the-azure-portal"></a><a id="addregion"></a>Hinzufügen globaler Datenbankregionen über das Azure-Portal
+Azure Cosmos DB ist in allen [Azure-Regionen][azureregions] weltweit verfügbar. Nachdem Sie die Standardkonsistenzebene für Ihr Datenbankkonto ausgewählt haben, können Sie dem Konto eine oder mehrere Regionen zuordnen (je nachdem, welche Konsistenzebene Sie ausgewählt haben und welche Anforderungen an eine globale Verteilung bestehen).
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der linken Leiste auf **Azure Cosmos DB**.
 2. Wählen Sie auf der Seite **Azure Cosmos DB** das zu ändernde Datenbankkonto aus.
@@ -59,7 +59,7 @@ While all regions associated with your Cosmos DB database account can serve read
 [3]: ./media/cosmos-db-tutorial-global-distribution-portal/azure-cosmos-db-manual-failover-2.png
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
-[bcdr]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
+[bcdr]: ../articles/best-practices-availability-paired-regions.md
 [consistency]: ../articles/cosmos-db/consistency-levels.md
 [azureregions]: https://azure.microsoft.com/regions/#services
 [offers]: https://azure.microsoft.com/pricing/details/cosmos-db/

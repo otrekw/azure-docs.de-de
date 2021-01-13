@@ -3,25 +3,25 @@ title: Häufige Starttasks für Clouddienste | Microsoft-Dokumentation
 description: Enthält einige Beispiele für häufige Starttasks, die Sie vielleicht in der Web- oder Workerrolle des Clouddiensts ausführen möchten.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 2eb299ad841444a3100eac207b225d5377959f85
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 77cea7ebd333b958675438aaeb5e0e2a326a5866
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358957"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075177"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Allgemeine Starttasks für Clouddienste
-Dieser Artikel enthält einige Beispiele für häufiger ausgeführte Starttasks, die Sie vielleicht im Clouddienst ausführen möchten. Mit Starttasks können Sie Vorgänge ausführen, bevor eine Rolle gestartet wird. Zu den Vorgängen, die Sie vielleicht ausführen möchten, gehören das Installieren von Komponenten, das Registrieren von COM-Komponenten, das Festlegen von Registrierungsschlüsseln und das Starten eines lang andauernden Prozesses. 
+Dieser Artikel enthält einige Beispiele für häufiger ausgeführte Starttasks, die Sie vielleicht im Clouddienst ausführen möchten. Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet wird. Zu den Vorgängen, die Sie vielleicht ausführen möchten, gehören das Installieren von Komponenten, das Registrieren von COM-Komponenten, das Festlegen von Registrierungsschlüsseln und das Starten eines lang andauernden Prozesses. 
 
 In [diesem Artikel](cloud-services-startup-tasks.md) erfahren Sie etwas über die Funktionsweise von Starttasks und insbesondere darüber, wie die Einträge zum Definieren einer Starttask erstellt werden.
 
 > [!NOTE]
-> Starttasks gelten nicht für virtuelle Computer, sondern nur für Web- und Workerrollen von Clouddiensten.
+> Startaufgaben gelten nicht für virtuelle Computer, sondern nur für Web- und Workerrollen von Clouddiensten.
 > 
 
 ## <a name="define-environment-variables-before-a-role-starts"></a>Definieren von Umgebungsvariablen vor dem Starten einer Rolle
@@ -52,7 +52,7 @@ Variablen können auch einen [gültigen Azure XPath-Wert](cloud-services-role-co
 
 
 ## <a name="configure-iis-startup-with-appcmdexe"></a>Konfigurieren des IIS-Startvorgangs mit "AppCmd.exe"
-Das Befehlszeilentool [AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) kann zum Verwalten von IIS-Einstellungen beim Start von Azure verwendet werden. *AppCmd.exe* bietet einen praktischen Zugriff über die Befehlszeile auf Konfigurationseinstellungen in den Azure-Starttasks. Mit *AppCmd.exe*können Einstellungen von Websites für Anwendungen und Websites hinzugefügt, geändert oder entfernt werden.
+Das Befehlszeilentool [AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) kann zum Verwalten von IIS-Einstellungen beim Start von Azure verwendet werden. *AppCmd.exe* bietet einen praktischen Zugriff über die Befehlszeile auf Konfigurationseinstellungen in den Azure-Starttasks. Mit *AppCmd.exe*können Einstellungen von Websites für Anwendungen und Websites hinzugefügt, geändert oder entfernt werden.
 
 Es gibt jedoch einige Dinge, die bei der Verwendung von *AppCmd.exe* als Starttask zu beachten sind:
 
@@ -90,7 +90,7 @@ REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. Th
 REM   batch file were executed twice. This can occur and must be accounted for in an Azure startup
 REM   task. To handle this situation, set the ERRORLEVEL to zero by using the Verify command. The Verify
 REM   command will safely set the ERRORLEVEL to zero.
-IF %ERRORLEVEL% EQU 183 DO VERIFY > NUL
+IF %ERRORLEVEL% EQU 183 VERIFY > NUL
 
 REM   If the ERRORLEVEL is not zero at this point, some other error occurred.
 IF %ERRORLEVEL% NEQ 0 (
@@ -119,7 +119,7 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>Hinzufügen von Firewallregeln
-In Azure sind tatsächlich zwei Firewalls vorhanden. Die erste Firewall kontrolliert Verbindungen zwischen dem virtuellen Computer und der Außenwelt. Diese Firewall wird durch das [EndPoints]-Element in der Datei [ServiceDefinition.csdef] gesteuert.
+In Azure sind tatsächlich zwei Firewalls vorhanden. Die erste Firewall kontrolliert Verbindungen zwischen dem virtuellen Computer und der Außenwelt. Diese Firewall wird durch das [Endpunkte]-Element in der Datei [ServiceDefinition.csdef] gesteuert.
 
 Die zweite Firewall kontrolliert Verbindungen zwischen einem virtuellen Computer und den Prozessen innerhalb dieses virtuellen Computers. Diese Firewall kann durch das Befehlszeilentool `netsh advfirewall firewall` gesteuert werden.
 
@@ -377,9 +377,7 @@ EXIT /B 0
 Hier sind einige bewährten Methoden, die Sie beim Konfigurieren eines Tasks für Ihre Web- oder Workerrolle befolgen sollten.
 
 ### <a name="always-log-startup-activities"></a>Protokollieren Sie stets alle Startaktivitäten
-Visual Studio bietet keinen Debugger zum schrittweisen Durchlaufen von Batchdateien, daher ist es ratsam, möglichst viele Daten über die Ausführung der Batchdateien zu erhalten. Beim Protokollieren der Ausgabe von Batchdateien können sowohl **stdout** als auch **stderr** wichtige Informationen beim Debuggen und Korrigieren von Batchdateien liefern. Um sowohl **stdout** als auch **stderr** in der Datei „StartupLog.txt“ in dem Verzeichnis zu protokollieren, auf das die **%TEMP%** -Umgebungsvariable verweist, fügen Sie den Text `>>  "%TEMP%\\StartupLog.txt" 2>&1` am Ende der Zeilen ein, die Sie protokollieren möchten. So führen Sie z.B. „setup.exe“ im **%PathToApp1Install%** -Verzeichnis aus:
-
-    "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
+Visual Studio bietet keinen Debugger zum schrittweisen Durchlaufen von Batchdateien, daher ist es ratsam, möglichst viele Daten über die Ausführung der Batchdateien zu erhalten. Beim Protokollieren der Ausgabe von Batchdateien können sowohl **stdout** als auch **stderr** wichtige Informationen beim Debuggen und Korrigieren von Batchdateien liefern. Um sowohl **stdout** als auch **stderr** in der Datei „StartupLog.txt“ in dem Verzeichnis zu protokollieren, auf das die **%TEMP%** -Umgebungsvariable verweist, fügen Sie den Text `>>  "%TEMP%\\StartupLog.txt" 2>&1` am Ende der Zeilen ein, die Sie protokollieren möchten. So führen Sie z.B. „setup.exe“ im **%PathToApp1Install%** -Verzeichnis aus: `"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 Zum Vereinfachen des XML-Codes können Sie eine *CMD*-Wrapperdatei erstellen, die alle Starttasks sowie die Protokollierung aufruft und sicherstellt, dass jeder untergeordnete Task die gleichen Umgebungsvariablen verwendet.
 
@@ -483,7 +481,7 @@ Die Rolle wird nur gestartet, wenn die **errorlevel** -Werte aller simple-Startt
 Ein Fehlen von `EXIT /B 0` am Ende einer Startbatchdatei ist eine häufige Ursache, wenn Rollen nicht gestartet werden.
 
 > [!NOTE]
-> Ich habe festgestellt, dass geschachtelte Batchdateien bei Verwendung des `/B`-Parameters manchmal hängenbleiben. Sie müssen sicherstellen, dass dieses Problem nicht auftritt, wenn eine andere Batchdatei die aktuelle Batchdatei aufruft, beispielsweise bei Verwendung des [Protokollwrappers](#always-log-startup-activities). In diesem Fall können Sie den `/B`-Parameter weglassen.
+> Ich habe festgestellt, dass geschachtelte Batchdateien bei Verwendung des `/B`-Parameters manchmal nicht mehr reagieren. Sie müssen sicherstellen, dass dieses Problem nicht auftritt, wenn eine andere Batchdatei die aktuelle Batchdatei aufruft, beispielsweise bei Verwendung des [Protokollwrappers](#always-log-startup-activities). In diesem Fall können Sie den `/B`-Parameter weglassen.
 > 
 > 
 
@@ -501,14 +499,14 @@ Erfahren Sie mehr über die Funktionsweise von [Tasks](cloud-services-startup-ta
 [Erstellen und Bereitstellen](cloud-services-how-to-create-deploy-portal.md) Ihres Clouddienstpakets durch.
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Aufgabe]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Umgebung]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[EndPoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
-[LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
-[LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[Aufgabe]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[Startup]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
+[Runtime]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[Umgebung]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
+[Variable]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
+[RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)
+[Endpunkte]: /previous-versions/azure/reference/gg557552(v=azure.100)#Endpoints
+[LocalStorage]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalStorage
+[LocalResources]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalResources
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue

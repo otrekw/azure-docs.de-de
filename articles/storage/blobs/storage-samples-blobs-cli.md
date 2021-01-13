@@ -1,24 +1,25 @@
 ---
 title: Azure CLI-Beispiele für Blob Storage | Microsoft-Dokumentation
-description: Azure CLI-Beispiele für das Arbeiten mit Azure Blob Storage
+description: Hier finden Sie Links zu Azure CLI-Beispielen für die Verwendung mit Azure Blob Storage, etwa zum Erstellen eines Speicherkontos, Löschen von Containern mit einem bestimmten Präfix usw.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 06/13/2017
 ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
-ms.openlocfilehash: 345710e1ade459d49602c18820d47826141e6f81
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 79ff7b3d174407da929f201bdce691cecf9b9a89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721945"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88035041"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Azure CLI-Beispiele für Azure Blob Storage
 
 Die folgende Tabelle enthält Links zu Bash-Skripts, die mithilfe der Azure CLI erstellt wurden und mit denen Azure Storage erstellt und verwaltet wird.
 
-| | |
+| Skript | BESCHREIBUNG |
 |---|---|
 |**Speicherkonten**||
 | [Erstellen eines Speicherkontos und Abrufen/Rotieren der Zugriffsschlüssel](../scripts/storage-common-rotate-account-keys-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt ein Azure Storage-Konto, ruft seine Zugriffsschlüssel ab und rotiert diese. |

@@ -3,22 +3,23 @@ title: Verwenden der Azure-Diagnose (.NET) mit Cloud Services | Microsoft Docs
 description: Verwenden von Azure-Diagnose zum Sammeln von Daten von Azure Cloud Services für Fehlerbehebung, Leistungsmessung, Überwachung, Datenverkehrsanalysen und mehr.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 05/22/2017
-ms.author: gwallace
-ms.openlocfilehash: 5f2ec77452b90d4270de043955fc0b443f045d5b
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: tagore
+ms.openlocfilehash: 6a015a8d56cf3991d04b212db73d5b752c13a793
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68359689"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077540"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Aktivieren der Azure-Diagnose in Azure Cloud Services
-Hintergrundinformationen über Azure-Diagnose finden Sie unter [Übersicht über Azure-Diagnose](../azure-diagnostics.md) .
+Hintergrundinformationen über Azure-Diagnose finden Sie unter [Übersicht über Azure-Diagnose](../azure-monitor/platform/diagnostics-extension-overview.md) .
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Aktivieren der Diagnose in einer Workerrolle
 In dieser Anleitung wird beschrieben, wie Sie eine Azure-Workerrolle implementieren, die mithilfe der .NET-EventSource-Klasse Telemetriedaten ausgibt. Die Telemetriedaten werden mit der Azure-Diagnose erfasst und in einem Azure-Speicherkonto gespeichert. Wenn Sie eine Workerrolle erstellen, aktiviert Visual Studio automatisch Diagnose 1.0 als Teil der Projektmappe in Azure SDKs für .NET 2.4 und früher. In den folgenden Anweisungen wird beschrieben, wie Sie die Workerrolle erstellen, die Diagnose 1.0 in der Projektmappe deaktivieren und die Diagnose 1.2 oder 1.3 in Ihrer Workerrolle bereitstellen.
@@ -136,7 +137,7 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Fügen Sie Ihrem Projekt **WorkerRole1** eine XML-Datei hinzu. Klicken Sie dazu mit der rechten Maustaste auf das Projekt **WorkerRole1**, und wählen Sie **Hinzufügen** -> **Neues Element…** -> **Visual C# Elemente**  -> **Daten**  -> **XML Datei** aus. Nennen Sie die Datei "WadExample.xml".
+2. Fügen Sie Ihrem Projekt **WorkerRole1** eine XML-Datei hinzu. Klicken Sie dazu mit der rechten Maustaste auf das Projekt **WorkerRole1**, und wählen Sie **Hinzufügen** -> **Neues Element…** -> **Visual C# Elemente** -> **Daten** -> **XML Datei** aus. Nennen Sie die Datei "WadExample.xml".
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. Ordnen Sie die Datei "WadConfig.xsd" der Konfigurationsdatei zu. Stellen Sie sicher, dass das Editorfenster mit "WadExample.xml" das aktive Fenster ist. Drücken Sie die Taste **F4**, um das Fenster **Eigenschaften** zu öffnen. Klicken Sie im Fenster **Eigenschaften** auf die Eigenschaft **Schemas**. Klicken Sie auf **...** . in the **…** . Klicken Sie in der Eigenschaft **Hinzufügen…** , navigieren Sie zum Speicherort der XSD-Datei, und wählen Sie die Datei "WadConfig.xsd" aus. Klicken Sie auf **OK**.
@@ -187,17 +188,17 @@ Navigieren Sie in Visual Studio im **Server-Explorer** zum Speicherkonto „wade
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Schema der Konfigurationsdatei
-Die Diagnosekonfigurationsdatei definiert Werte, die verwendet werden, um beim Start des Diagnoseagenten die Diagnosekonfigurationseinstellungen zu initialisieren. Gültige Werte und Beispiele finden Sie unter [Azure-Diagnose-Konfigurationsschemas](/azure/azure-monitor/platform/diagnostics-extension-schema) .
+Die Diagnosekonfigurationsdatei definiert Werte, die verwendet werden, um beim Start des Diagnoseagenten die Diagnosekonfigurationseinstellungen zu initialisieren. Gültige Werte und Beispiele finden Sie unter [Azure-Diagnose-Konfigurationsschemas](../azure-monitor/platform/diagnostics-extension-versions.md) .
 
 ## <a name="troubleshooting"></a>Problembehandlung
-Unter [Problembehandlung bei Azure-Diagnose](../azure-diagnostics-troubleshooting.md) finden Sie Informationen zur Behebung von häufig auftretenden Problemen.
+Unter [Problembehandlung bei Azure-Diagnose](../azure-monitor/platform/diagnostics-extension-troubleshooting.md) finden Sie Informationen zur Behebung von häufig auftretenden Problemen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[In der Liste der Artikel zur Azure-Diagnose im Zusammenhang mit virtuellen Computern](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics) finden Sie eine Anleitung zum Ändern erfasster Daten und zur Fehlerbehebung und erfahren mehr über Diagnose im Allgemeinen.
+[In der Liste der Artikel zur Azure-Diagnose im Zusammenhang mit virtuellen Computern](../azure-monitor/platform/diagnostics-extension-overview.md) finden Sie eine Anleitung zum Ändern erfasster Daten und zur Fehlerbehebung und erfahren mehr über Diagnose im Allgemeinen.
 
-[EventSource Class]: https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
+[EventSource Class]: /dotnet/api/system.diagnostics.tracing.eventsource
 
 [Debugging an Azure Application]: https://msdn.microsoft.com/library/windowsazure/ee405479.aspx   
-[Collect Logging Data by Using Azure Diagnostics]: https://msdn.microsoft.com/library/windowsazure/gg433048.aspx
+[Collect Logging Data by Using Azure Diagnostics]: /previous-versions/azure/gg433048(v=azure.100)
 [Free Trial]: https://azure.microsoft.com/pricing/free-trial/
-[Install and configure Azure PowerShell version 0.8.7 or later]: https://azure.microsoft.com/documentation/articles/install-configure-powershell/
+[Install and configure Azure PowerShell version 0.8.7 or later]: /powershell/azure/

@@ -9,10 +9,10 @@ ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 98d765e2f6909f00f8dfe76d06aef017aad67adf
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71174953"
 ---
 ## <a name="terminology"></a>Begriff

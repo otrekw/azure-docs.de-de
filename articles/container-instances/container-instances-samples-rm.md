@@ -1,19 +1,14 @@
 ---
-title: Beispiele für Azure Resource Manager-Vorlagen – Azure Container Instances
-description: Beispiele für Azure Resource Manager-Vorlagen für Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Beispiele für Azure Resource Manager-Vorlagen
+description: Hier finden Sie Beispiele für Azure Resource Manager-Vorlagen zum Bereitstellen von Azure Container Instances in verschiedenen Konfigurationen.
 ms.topic: article
 ms.date: 03/07/2019
-ms.author: danlep
-ms.openlocfilehash: 2089f024e1de2e92f6e401549c5876e26db17ebb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6c487087b39244178643fd81364150ceb3ac4a63
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325696"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86169645"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Resource Manager-Vorlagen für Azure Container Instances
 
@@ -23,7 +18,7 @@ Informationen zu Bereitstellungsoptionen finden Sie im Abschnitt [Bereitstellung
 
 ## <a name="sample-templates"></a>Beispielvorlagen
 
-| | |
+| Vorlage | Beschreibung |
 |-|-|
 | **Anwendungen** ||
 | [WordPress][app-wp] | Erstellt eine WordPress-Website und ihre MySQL-Datenbank in einer Containergruppe. Der Inhalt der WordPress-Website und MySQL-Datenbank werden persistent in einer Azure Files-Freigabe gespeichert. Erstellt auch ein Anwendungsgateway, um öffentlichen Netzwerkzugriff auf WordPress zu ermöglichen. |
@@ -35,7 +30,7 @@ Informationen zu Bereitstellungsoptionen finden Sie im Abschnitt [Bereitstellung
 | **Netzwerk** ||
 | [Container mit verfügbar gemachtem UDP][net-udp] | Stellt einen Windows- oder Linux-Container bereit, der einen UDP-Port verfügbar macht. |
 | [Linux-Container mit öffentlicher IP-Adresse][net-publicip] | Stellt einen einzelnen Linux-Container bereit, auf den über eine öffentliche IP-Adresse zugegriffen werden kann. |
-| [Bereitstellen einer Containergruppe mit einem virtuellen Netzwerk (Vorschauversion)][net-vnet] | Stellt ein neues virtuelles Netzwerk, Subnetz, Netzwerkprofil und eine neue Containergruppe bereit. |
+| [Bereitstellen einer Containergruppe mit einem virtuellen Netzwerk][net-vnet] | Stellt ein neues virtuelles Netzwerk, Subnetz, Netzwerkprofil und eine neue Containergruppe bereit. |
 | **Azure-Ressourcen** ||
 | [Erstellen eines Azure Storage-Kontos und einer Files-Freigabe][az-files] | Verwendet die Azure CLI in einer Containerinstanz zum Erstellen eines Speicherkontos und einer Azure Files-Freigabe.
 
@@ -47,7 +42,7 @@ Sie können zwischen verschiedenen Optionen für das Bereitstellen von Ressource
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure-Portal][deploy-portal]
+[Azure portal][deploy-portal]
 
 [REST-API][deploy-rest]
 
@@ -64,8 +59,8 @@ Sie können zwischen verschiedenen Optionen für das Bereitstellen von Ressource
 [vol-secret]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-linuxcontainer-volume-secret
 
 <!-- LINKS - Internal -->
-[deploy-cli]: ../azure-resource-manager/resource-group-template-deploy-cli.md
-[deploy-portal]: ../azure-resource-manager/resource-group-template-deploy-portal.md
-[deploy-powershell]: ../azure-resource-manager/resource-group-template-deploy.md
-[deploy-rest]: ../azure-resource-manager/resource-group-template-deploy-rest.md
+[deploy-cli]: ../azure-resource-manager/templates/deploy-cli.md
+[deploy-portal]: ../azure-resource-manager/templates/deploy-portal.md
+[deploy-powershell]: ../azure-resource-manager/templates/deploy-powershell.md
+[deploy-rest]: ../azure-resource-manager/templates/deploy-rest.md
 [ref]: /azure/templates/microsoft.containerinstance/containergroups

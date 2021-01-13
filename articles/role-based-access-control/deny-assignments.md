@@ -1,6 +1,6 @@
 ---
-title: Verstehen von Ablehnungszuweisungen für Azure-Ressourcen | Microsoft-Dokumentation
-description: Informationen zu Ablehnungszuweisungen in der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen
+title: Verstehen von Ablehnungszuweisungen für Azure-Ressourcen – Azure RBAC
+description: Informationen zu Ablehnungszuweisungen bei der rollenbasierten Zugriffssteuerung (Azure RBAC, Role-Based Access Control).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2019
+ms.date: 03/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: f15d6fd81337aa4a859539e86f37a516848c9370
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165980"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "82733770"
 ---
-# <a name="understand-deny-assignments-for-azure-resources"></a>Verstehen von Ablehnungszuweisungen für Azure-Ressourcen
+# <a name="understand-azure-deny-assignments"></a>Verstehen von Azure-Ablehnungszuweisungen
 
 Ähnlich wie eine Rollenzuweisung verknüpft eine *Ablehnungszuweisung* in einem bestimmten Bereich einen Satz von Aktionen mit einem Benutzer, einer Gruppe oder einem Dienstprinzipal, um den Zugriff zu verweigern. Ablehnungszuweisungen hindern Benutzer an der Ausführung bestimmter Aktionen für Azure-Ressourcen, auch wenn ihnen über eine Rollenzuweisung Zugriff erteilt wird.
 
@@ -30,7 +30,10 @@ In diesem Artikel wird die Definition von Ablehnungszuweisungen beschrieben.
 
 ## <a name="how-deny-assignments-are-created"></a>Wie werden Ablehnungszuweisungen erstellt?
 
-Ablehnungszuweisungen werden von Azure erstellt und verwaltet, um Ressourcen zu schützen. Azure Blueprints und von Azure verwaltete Apps verwenden Ablehnungszuweisungen beispielsweise, um systemseitig verwaltete Ressourcen zu schützen. Weitere Informationen finden Sie unter [Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren](../governance/blueprints/tutorials/protect-new-resources.md).
+Ablehnungszuweisungen werden von Azure erstellt und verwaltet, um Ressourcen zu schützen. Azure Blueprints und von Azure verwaltete Apps verwenden Ablehnungszuweisungen, um systemseitig verwaltete Ressourcen zu schützen. Azure Blueprints und von Azure verwaltete Apps stellen die einzige Möglichkeit dar, Ablehnungszuweisungen zu erstellen. Sie können Ihre eigenen Ablehnungszuweisungen nicht direkt erstellen. Weitere Informationen zur Verwendung von Ablehnungszuweisungen zum Sperren von Ressourcen durch Blueprints finden Sie unter [Grundlegendes zur Ressourcensperre in Azure Blueprints](../governance/blueprints/concepts/resource-locking.md).
+
+> [!NOTE]
+> Sie können Ihre eigenen Ablehnungszuweisungen nicht direkt erstellen.
 
 ## <a name="compare-role-assignments-and-deny-assignments"></a>Vergleich zwischen Rollenzuweisungen und Ablehnungszuweisungen
 
@@ -51,15 +54,15 @@ Ablehnungszuweisungen folgen einem ähnlichen Muster wie Rollenzuweisungen, weis
  Eine Ablehnungszuweisungen hat folgende Eigenschaften:
 
 > [!div class="mx-tableFixed"]
-> | Eigenschaft | Erforderlich | Typ | BESCHREIBUNG |
+> | Eigenschaft | Erforderlich | type | BESCHREIBUNG |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | Ja | string | Der Anzeigename der Ablehnungszuweisung. Namen müssen für einen bestimmten Bereich eindeutig sein. |
-> | `Description` | Nein | string | Die Beschreibung der Ablehnungszuweisung. |
+> | `DenyAssignmentName` | Ja | String | Der Anzeigename der Ablehnungszuweisung. Namen müssen für einen bestimmten Bereich eindeutig sein. |
+> | `Description` | Nein | String | Die Beschreibung der Ablehnungszuweisung. |
 > | `Permissions.Actions` | Mindestens ein Actions- oder ein DataActions-Element | String[] | Ein Array von Zeichenfolgen, welche die Verwaltungsvorgänge angeben, auf die die Ablehnungszuweisung den Zugriff blockiert. |
 > | `Permissions.NotActions` | Nein | String[] | Ein Array von Zeichenfolgen, welche die Verwaltungsvorgänge angeben, die von der Ablehnungszuweisung auszuschließen sind. |
 > | `Permissions.DataActions` | Mindestens ein Actions- oder ein DataActions-Element | String[] | Ein Array von Zeichenfolgen, welche die Datenvorgänge angeben, auf die die Ablehnungszuweisung den Zugriff blockiert. |
 > | `Permissions.NotDataActions` | Nein | String[] | Ein Array von Zeichenfolgen, welche die Datenvorgänge angeben, die von der Ablehnungszuweisung auszuschließen sind. |
-> | `Scope` | Nein | string | Eine Zeichenfolge, die den Bereich festlegt, für den die Ablehnungszuweisung gilt. |
+> | `Scope` | Nein | String | Eine Zeichenfolge, die den Bereich festlegt, für den die Ablehnungszuweisung gilt. |
 > | `DoNotApplyToChildScopes` | Nein | Boolean | Gibt an, ob die Ablehnungszuweisung für untergeordnete Bereiche gilt. Der Standardwert ist „false“. |
 > | `Principals[i].Id` | Ja | String[] | Ein Array aus Azure AD-Prinzipalobjekt-IDs (Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität), für die die Ablehnungszuweisung gilt. Die Festlegung einer leeren GUID `00000000-0000-0000-0000-000000000000` repräsentiert alle Prinzipale. |
 > | `Principals[i].Type` | Nein | String[] | Ein Array von Objekttypen, das durch „Principals[i].Id“ dargestellt wird. Eine leere GUID `SystemDefined` repräsentiert alle Prinzipale. |
@@ -86,5 +89,5 @@ Principals              : {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal](deny-assignments-portal.md)
-* [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](role-definitions.md)
+* [Tutorial: Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren](../governance/blueprints/tutorials/protect-new-resources.md)
+* [Auflisten von Ablehnungszuweisungen über das Azure-Portal](deny-assignments-portal.md)

@@ -6,22 +6,22 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 1028443eaaf6c483cd7cd57289b0dcf2a9f11902
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1076a4fe3a460fa07e061e9ec0ec41b088ec7eca
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595902"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88507262"
 ---
 # <a name="data-filtering"></a>Datenfilterung
 
-Wenn Sie Dokumente übermitteln, die für das Trainieren eines benutzerdefinierten Systems verwendet werden sollen, durchlaufen die Dokumente eine Reihe von Verarbeitungs- und Filterschritten als Vorbereitung für das Training. Diese Schritte werden hier erläutert. Die Wissen der Filterung kann Ihnen helfen, die im benutzerdefinierten Translator angezeigte Satzanzahl sowie die Schritte zu verstehen, die Sie selbst durchführen können, um die Dokumente für das Training mit dem benutzerdefinierten Translator vorzubereiten.
+Wenn Sie Dokumente übermitteln, die für das Trainieren eines benutzerdefinierten Systems verwendet werden sollen, durchlaufen die Dokumente eine Reihe von Verarbeitungs- und Filterschritten als Vorbereitung für das Training. Diese Schritte werden hier erläutert. Kenntnisse in der Verwendung von Filtervorgängen können Ihnen helfen, die im benutzerdefinierten Translator angezeigte Satzanzahl sowie die Schritte zu verstehen, die Sie selbst durchführen können, um die Dokumente für das Training mit dem benutzerdefinierten Translator vorzubereiten.
 
 ## <a name="sentence-alignment"></a>Satzausrichtung
-Wenn das Dokument nicht im XLIFF-, TMX- oder ALIGN-Format vorliegt, richtet der benutzerdefinierte Translator die Sätze Ihrer Quell- und Zieldokumente Satz für Satz aneinander aus. Der Translator führt keine Dokumentausrichtung durch. Er folgt Ihrer Benennung der Dokumente, um das entsprechende Dokument in der anderen Sprache zu finden. Innerhalb des Dokuments versucht der benutzerdefinierte Translator, den entsprechenden Satz in der anderen Sprache zu finden. Er verwendet Dokumentmarkups wie eingebettete HTML-Tags, um die Ausrichtung zu unterstützen.  
+Wenn das Dokument nicht im XLIFF-, TMX- oder ALIGN-Format vorliegt, richtet der benutzerdefinierte Translator die Sätze Ihrer Quell- und Zieldokumente Satz für Satz aneinander aus. Der benutzerdefinierte Translator führt keine Dokumentausrichtung durch. Er folgt Ihrer Benennung der Dokumente, um das entsprechende Dokument in der anderen Sprache zu finden. Innerhalb des Dokuments versucht der benutzerdefinierte Translator, den entsprechenden Satz in der anderen Sprache zu finden. Er verwendet Dokumentmarkups wie eingebettete HTML-Tags, um die Ausrichtung zu unterstützen.  
 
 Wenn Sie eine erhebliche Abweichung zwischen der Anzahl der Sätze in den Quell- und Zieldokumenten feststellen, war das Dokument möglicherweise von Anfang an nicht parallel oder aus anderen Gründen nicht problemlos ausrichtbar. Die Dokumentpaare mit einen großen Unterschied (> 10%) zwischen den Sätzen auf beiden Seiten sollten erneut überprüft werden, um sicherzustellen, dass sie tatsächlich parallel sind. Der benutzerdefinierte Translator zeigt eine Warnung neben dem Dokument an, wenn sich die Anzahl der Sätze verdächtig unterscheidet.  
 

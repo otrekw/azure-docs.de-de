@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 154160f9a3fbd485ee6383bf3d5ff1c291520a75
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 6b5864d40d2a4d8f8d6cf404df29f909a73f04e2
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088518"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832042"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Remotedesktop-Lizenzserver beim Herstellen einer Verbindung mit einer Azure-VM nicht verfügbar
 
@@ -87,7 +87,9 @@ Um dieses Problem zu lösen [erstellen Sie eine Sicherung des Betriebssystemdate
     2. Verwenden Sie den folgenden Befehl, um die Richtlinien zu überprüfen und ggf. neu zu konfigurieren:
 
        ```
-        reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\Licensing Core" /v LicensingMode reg query "HKLM\SYSTEM\CurrentControlSet\Services\TermService\Parameters" /v SpecifiedLicenseServers
+        reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\Licensing Core" /v LicensingMode
+
+        reg query "HKLM\SYSTEM\CurrentControlSet\Services\TermService\Parameters" /v SpecifiedLicenseServers
        ```
 
         Wenn der **LicensingMode**-Wert auf einen anderen Wert als 4 pro Benutzer festgelegt ist, legen Sie den Wert auf 4 fest:
@@ -122,7 +124,7 @@ Um dieses Problem zu lösen [erstellen Sie eine Sicherung des Betriebssystemdate
        telnet <FQDN / IP License Server> 135
        ```
 
-3. Wenn kein Remotedesktop-Lizenzserver in der Umgebung vorhanden ist und Sie einen solchen Lizenzserver verwenden möchten, können Sie einen [Remotedesktop-Lizenzierungsrollendienst installieren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731765(v=ws.11)). [Konfigurieren Sie die RDS-Lizenzierung](https://techcommunity.microsoft.com/t5/Ask-The-Performance-Team/RD-Licensing-Configuration-on-Windows-Server-2012/ba-p/375383) im Anschluss.
+3. Wenn kein Remotedesktop-Lizenzserver in der Umgebung vorhanden ist und Sie einen solchen Lizenzserver verwenden möchten, können Sie einen [Remotedesktop-Lizenzierungsrollendienst installieren](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc731765(v=ws.11)). [Konfigurieren Sie die RDS-Lizenzierung](https://techcommunity.microsoft.com/t5/Ask-The-Performance-Team/RD-Licensing-Configuration-on-Windows-Server-2012/ba-p/375383) im Anschluss.
 
 4. Wenn ein Remotedesktop-Lizenzserver konfiguriert ist und fehlerfrei arbeitet, stellen Sie sicher, dass der Remotedesktop-Lizenzserver mit Clientzugriffslizenzen (CALs) aktiviert ist.
 

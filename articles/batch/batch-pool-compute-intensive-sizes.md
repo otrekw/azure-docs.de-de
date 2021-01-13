@@ -1,23 +1,14 @@
 ---
-title: Verwenden rechenintensiver Azure-VMs mit Batch | Microsoft-Dokumentation
-description: So nutzen Sie die HPC- und GPU-VM-Größen in Azure Batch-Pools
-documentationcenter: ''
-author: laurenhughes
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
-ms.topic: article
+title: Verwenden rechenintensiver Azure-VMs mit Batch
+description: Informationen zum Nutzen der HPC- und GPU-VM-Größen in Azure Batch-Pools. Hier finden Sie Informationen zu Betriebssystemabhängigkeiten und erhalten einige Szenariobeispiele.
+ms.topic: how-to
 ms.date: 12/17/2018
-ms.author: lahugh
-ms.openlocfilehash: c3c54b003017f7512cd40c7798fc351e4e4a3f69
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094920"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86147345"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools
 
@@ -29,9 +20,9 @@ Für die Ausführung bestimmter Batch-Aufträge können Sie die Vorteile von Azu
 
 Dieser Artikel enthält Anweisungen und Anwendungsbeispiele für einige spezielle Größen in Azure für Batch-Pools. Technische Daten und Hintergrundinformationen finden Sie unter:
 
-* Größen von virtuellen HPC-Computern (High Performance Computing) – [Linux](../virtual-machines/linux/sizes-hpc.md), [Windows](../virtual-machines/windows/sizes-hpc.md) 
+* Größen von virtuellen HPC-Computern (High Performance Computing) – [Linux](../virtual-machines/sizes-hpc.md), [Windows](../virtual-machines/sizes-hpc.md) 
 
-* GPU-fähige VM-Größen ([Linux](../virtual-machines/linux/sizes-gpu.md), [Windows](../virtual-machines/windows/sizes-gpu.md)) 
+* GPU-fähige VM-Größen ([Linux](../virtual-machines/sizes-gpu.md), [Windows](../virtual-machines/sizes-gpu.md)) 
 
 > [!NOTE]
 > Bestimmte VM-Größen sind in den Regionen, in denen Sie Ihre Batch-Konten erstellen, möglicherweise nicht verfügbar. Informationen zu den verfügbaren Größen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/) und [Auswählen einer VM-Größe für einen Batch-Pool](batch-pool-vm-sizes.md).
@@ -44,7 +35,7 @@ Die RDMA- oder GPU-Funktionen rechenintensiver Größen in Batch werden nur unte
 
 | Size | Funktion | Betriebssysteme | Erforderliche Software | Pooleinstellungen |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS oder<br/>CentOS-basierter HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux-RDMA-Treiber | Knotenübergreifende Kommunikation aktivieren, parallele Taskausführung deaktivieren |
+| [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS oder<br/>CentOS-basierter HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux-RDMA-Treiber | Knotenübergreifende Kommunikation aktivieren, parallele Taskausführung deaktivieren |
 | [NC-, NCv2-, NCv3-, NDv2-Serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Ubuntu 16.04 LTS oder<br/>CentOS 7.3 oder 7.4<br/>(Azure Marketplace) | NVIDIA CUDA- oder CUDA Toolkit-Treiber | – | 
 | [NV-, NVv2-Serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS oder<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID-Treiber | – |
 
@@ -54,7 +45,7 @@ Die RDMA- oder GPU-Funktionen rechenintensiver Größen in Batch werden nur unte
 
 | Size | Funktion | Betriebssysteme | Erforderliche Software | Pooleinstellungen |
 | -------- | ------ | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 oder<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 oder höher oder<br/> Intel MPI 5<br/><br/>Windows-RDMA-Treiber | Knotenübergreifende Kommunikation aktivieren, parallele Taskausführung deaktivieren |
+| [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 oder<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 oder höher oder<br/> Intel MPI 5<br/><br/>Windows-RDMA-Treiber | Knotenübergreifende Kommunikation aktivieren, parallele Taskausführung deaktivieren |
 | [NC-, NCv2-, NCv3-, ND-, NDv2-Serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Windows Server 2016 oder <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA- oder CUDA Toolkit-Treiber| – | 
 | [NV-, NVv2-Serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 oder<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID-Treiber | – |
 
@@ -68,7 +59,7 @@ Die RDMA- oder GPU-Funktionen rechenintensiver Größen in Batch werden nur unte
 
 | Size | Funktion | Betriebssysteme | Erforderliche Software | Pooleinstellungen |
 | -------- | ------- | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016, 2012 R2, 2012 oder<br/>2008 R2 (Gastbetriebssystemfamilie) | Microsoft MPI 2012 R2 oder höher oder<br/>Intel MPI 5<br/><br/>Windows-RDMA-Treiber | Kommunikation zwischen Knoten aktivieren,<br/> parallele Taskausführung deaktivieren |
+| [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md) | RDMA | Windows Server 2016, 2012 R2, 2012 oder<br/>2008 R2 (Gastbetriebssystemfamilie) | Microsoft MPI 2012 R2 oder höher oder<br/>Intel MPI 5<br/><br/>Windows-RDMA-Treiber | Kommunikation zwischen Knoten aktivieren,<br/> parallele Taskausführung deaktivieren |
 
 ## <a name="pool-configuration-options"></a>Poolkonfigurationsoptionen
 
@@ -76,7 +67,7 @@ Für das Konfigurieren einer speziellen VM-Größe für Ihren Batch-Pool stehen 
 
 * Wählen Sie für Pools in der Konfiguration „Virtueller Computer“ ein vorkonfiguriertes [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/)-VM-Image aus, auf dem Treiber und Software vorinstalliert sind. Beispiele: 
 
-  * [CentOS-based 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74HPC?tab=Overview): umfasst RDMA-Treiber und Intel MPI 5.1
+  * [CentOS-based 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview): umfasst RDMA-Treiber und Intel MPI 5.1
 
   * [Data Science Virtual Machine](../machine-learning/data-science-virtual-machine/overview.md) für Linux oder Windows: umfasst NVIDIA CUDA-Treiber
 
@@ -86,9 +77,9 @@ Für das Konfigurieren einer speziellen VM-Größe für Ihren Batch-Pool stehen 
 
     * [Ubuntu Server (mit GPU- und RDMA-Treibern) für Azure Batch-Containerpools](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-batch.ubuntu-server-container-rdma?tab=Overview)
 
-* Erstellen Sie ein [benutzerdefiniertes Windows- oder Linux-VM-Image](batch-custom-images.md), auf dem Sie Treiber, Software oder andere erforderliche Einstellungen für die Größe des virtuellen Computers installiert haben. 
+* Erstellen Sie ein [benutzerdefiniertes Windows- oder Linux-VM-Image](batch-sig-images.md), auf dem Sie Treiber, Software oder andere erforderliche Einstellungen für die Größe des virtuellen Computers installiert haben. 
 
-* Erstellen Sie ein Batch-[Anwendungspaket](batch-application-packages.md) aus einem gezippten Treiber oder Anwendungsinstallationsprogramm, und konfigurieren Sie Azure Batch für die Bereitstellung des Pakets auf Poolknoten und für die Installation nach der Erstellung der einzelnen Knoten. Wenn das Anwendungspaket beispielsweise ein Installationsprogramm ist, erstellen Sie eine Befehlszeile für die [Startaufgabe](batch-api-basics.md#start-task), mit der die App auf allen Poolknoten im Hintergrund installiert wird. Ziehen Sie die Verwendung eines Anwendungspakets und einer Poolstartaufgabe in Betracht, wenn Ihre Workload von einer bestimmten Treiberversion abhängig ist.
+* Erstellen Sie ein Batch-[Anwendungspaket](batch-application-packages.md) aus einem gezippten Treiber oder Anwendungsinstallationsprogramm, und konfigurieren Sie Azure Batch für die Bereitstellung des Pakets auf Poolknoten und für die Installation nach der Erstellung der einzelnen Knoten. Wenn das Anwendungspaket beispielsweise ein Installationsprogramm ist, erstellen Sie eine Befehlszeile für die [Startaufgabe](jobs-and-tasks.md#start-task), mit der die App auf allen Poolknoten im Hintergrund installiert wird. Ziehen Sie die Verwendung eines Anwendungspakets und einer Poolstartaufgabe in Betracht, wenn Ihre Workload von einer bestimmten Treiberversion abhängig ist.
 
   > [!NOTE] 
   > Die Startaufgabe muss mit erhöhten Rechten (Administrator) ausgeführt werden und die erfolgreiche Ausführung abwarten. Bei lang andauernden Aufgaben erhöht sich die zum Bereitstellen eines Batch-Pools benötigte Zeit.
@@ -103,7 +94,7 @@ Um CUDA-Anwendungen in einem Pool von Windows-NC-Knoten ausführen zu können, m
 
 1. Laden Sie ein Setuppaket für die GPU-Treiber unter Windows Server 2016 von der [NVIDIA-Website](https://www.nvidia.com/Download/index.aspx) herunter, z. B. [Version 411.82](https://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe). Speichern Sie die Datei lokal, und verwenden Sie dabei einen Kurznamen wie *GPUDriverSetup.exe*.
 2. Erstellen Sie eine ZIP-Datei des Pakets.
-3. Laden Sie das Paket in Ihr Batch-Konto hoch. Anweisungen finden Sie in der Anleitung zum [Anwendungspaket](batch-application-packages.md). Geben Sie eine Anwendungs-ID (z. B. *GPUDriver*) und eine Version (z. B. *411.82*) an.
+3. Laden Sie das Paket in Ihr Batch-Konto hoch. Anweisungen finden Sie in der Anleitung zum [Anwendungspaket](batch-application-packages.md). Geben Sie eine Anwendungs-ID (z. B. *GPUDriver*) und eine Version (z. B. *411.82*) an.
 1. Erstellen Sie mit den Batch-APIs oder im Azure-Portal einen Pool in der Konfiguration „Virtueller Computer“ mit der gewünschten Anzahl von Knoten und der gewünschten Skalierung. In der folgenden Tabelle werden Beispieleinstellungen für die mithilfe einer Startaufgabe im Hintergrund ausgeführte Installation der NVIDIA GPU-Treiber aufgeführt:
 
 | Einstellung | Wert |
@@ -123,9 +114,9 @@ Um CUDA-Anwendungen in einem Pool von Linux-NC-Knoten ausführen zu können, mü
 1. Stellen Sie eine Azure-NC-Serien-VM mit Ubuntu 16.04 LTS bereit. Sie können den virtuellen Computer beispielsweise in der Region „USA, Süden-Mitte“ erstellen. 
 2. Fügen Sie dem VM die [Erweiterung für NVIDIA GPU-Treiber](../virtual-machines/extensions/hpccompute-gpu-linux.md
 ) hinzu. Verwenden Sie dazu das Azure-Portal, einen mit dem Azure-Abonnement verknüpften Clientcomputer oder Azure Cloud Shell. Alternativ können Sie auch die Schritte zum Herstellen einer Verbindung mit dem virtuellen Computer und zum manuellen [Installieren der CUDA-Treiber](../virtual-machines/linux/n-series-driver-setup.md) ausführen.
-3. Führen Sie die Schritte zum Erstellen einer [Momentaufnahme und eines benutzerdefinierten Linux-VM-Image](batch-custom-images.md) für Batch aus.
+3. Befolgen Sie die Schritte zum Erstellen eines [Shared Image Gallery-Images](batch-sig-images.md) für das Batch.
 4. Erstellen Sie ein Batch-Konto in einer Region, die NC-VMs unterstützt.
-5. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit dem benutzerdefinierten Image](batch-custom-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
+5. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit dem benutzerdefinierten Image](batch-sig-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
 
 | Einstellung | Wert |
 | ---- | ---- |
@@ -136,15 +127,14 @@ Um CUDA-Anwendungen in einem Pool von Linux-NC-Knoten ausführen zu können, mü
 
 ## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>Beispiel: Microsoft MPI in einem H16r-VM-Pool unter Windows
 
-Um Windows-MPI-Anwendungen in einem Pool von Azure H16r-VM-Knoten ausführen zu können, müssen Sie die Erweiterung „HpcVmDrivers“ konfigurieren und [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) installieren. Nachfolgend finden Sie Beispielschritte zum Bereitstellen eines benutzerdefinierten Windows Server 2016-Image mit den erforderlichen Treibern und der erforderlichen Software:
+Um Windows-MPI-Anwendungen in einem Pool von Azure H16r-VM-Knoten ausführen zu können, müssen Sie die Erweiterung „HpcVmDrivers“ konfigurieren und [Microsoft MPI](/message-passing-interface/microsoft-mpi) installieren. Nachfolgend finden Sie Beispielschritte zum Bereitstellen eines benutzerdefinierten Windows Server 2016-Image mit den erforderlichen Treibern und der erforderlichen Software:
 
 1. Stellen Sie einen Azure H16r-VM unter Windows Server 2016 bereit. Erstellen Sie den virtuellen Computer beispielsweise in der Region „USA, Westen“. 
-2. Fügen Sie dem VM die Erweiterung „HpcVmDrivers“ hinzu, indem Sie auf einem mit dem Azure-Abonnement verknüpften Clientcomputer [einen Azure PowerShell-Befehl](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances
-) ausführen oder Azure Cloud Shell verwenden. 
+2. Fügen Sie dem VM die Erweiterung „HpcVmDrivers“ hinzu, indem Sie auf einem mit dem Azure-Abonnement verknüpften Clientcomputer [einen Azure PowerShell-Befehl](../virtual-machines/sizes-hpc.md) ausführen oder Azure Cloud Shell verwenden. 
 1. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer her.
 1. Laden Sie das [Setuppaket](https://www.microsoft.com/download/details.aspx?id=57467) („MSMpiSetup.exe“) für die neueste Version von Microsoft MPI herunter, und installieren Sie Microsoft MPI.
-1. Führen Sie die Schritte zum Erstellen einer [Momentaufnahme und eines benutzerdefinierten Windows-VM-Image](batch-custom-images.md) für Batch aus.
-1. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit dem benutzerdefinierten Image](batch-custom-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
+1. Befolgen Sie die Schritte zum Erstellen eines [Shared Image Gallery-Images](batch-sig-images.md) für das Batch.
+1. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit der Shared Image Gallery](batch-sig-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
 
 | Einstellung | Wert |
 | ---- | ---- |
@@ -157,7 +147,7 @@ Um Windows-MPI-Anwendungen in einem Pool von Azure H16r-VM-Knoten ausführen zu 
 
 ## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>Beispiel: Intel MPI in einem H16r-VM-Pool unter Linux
 
-Eine Möglichkeit zum Ausführen von MPI-Anwendungen in einem Pool von Linux-Knoten der H-Serie besteht darin, das Image [CentOS-based 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74HPC?tab=Overview) aus dem Azure Marketplace zu verwenden. Linux-RDMA-Treiber und Intel MPI sind vorinstalliert. Dieses Image unterstützt auch Docker-Containerworkloads.
+Eine Möglichkeit zum Ausführen von MPI-Anwendungen in einem Pool von Linux-Knoten der H-Serie besteht darin, das Image [CentOS-based 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview) aus dem Azure Marketplace zu verwenden. Linux-RDMA-Treiber und Intel MPI sind vorinstalliert. Dieses Image unterstützt auch Docker-Containerworkloads.
 
 Erstellen Sie mit den Batch-APIs oder im Azure-Portal einen Pool mit diesem Image sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. In der folgenden Tabelle werden Beispielpooleinstellungen aufgeführt:
 
@@ -173,6 +163,6 @@ Erstellen Sie mit den Batch-APIs oder im Azure-Portal einen Pool mit diesem Imag
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Beispiele zur Ausführung von MPI-Aufträgen in einem Azure Batch-Pool stehen für [Windows](batch-mpi.md) und [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) zur Verfügung.
+* Beispiele zur Ausführung von MPI-Aufträgen in einem Azure Batch-Pool stehen für [Windows](batch-mpi.md) und [Linux](/archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch) zur Verfügung.
 
 * Beispiele für GPU-Workloads in Batch finden Sie in [Batch Shipyard](https://github.com/Azure/batch-shipyard/).

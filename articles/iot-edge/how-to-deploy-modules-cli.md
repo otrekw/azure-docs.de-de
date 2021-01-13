@@ -1,35 +1,37 @@
 ---
-title: Bereitstellen von Modulen über die Befehlszeile – Azure IoT Edge | Microsoft-Dokumentation
-description: Stellen Sie mithilfe der IoT-Erweiterung für die Azure CLI Module auf einem IoT Edge-Gerät bereit.
+title: Bereitstellen von Modulen über die Azure CLI-Befehlszeile – Azure IoT Edge
+description: Über die Azure CLI mit der IoT-Erweiterung können Sie – entsprechend der Konfiguration durch ein Bereitstellungsmanifest – ein IoT Edge-Modul per Push von Ihrem IoT Hub auf Ihr IoT Edge-Gerät übertragen.
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/16/2019
+ms.date: 10/13/2020
 ms.topic: conceptual
-ms.reviewer: menchi
 ms.service: iot-edge
+ms.custom: devx-track-azurecli
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: aa5c4747238b2f2427be3e57c3e84e03c81fd609
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 86cccbc9a72459ad038defca32e232381368ef45
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541765"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046688"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Bereitstellen von Azure IoT Edge-Modulen mit der Azure CLI
 
 Nachdem Sie IoT Edge-Module mit Ihrer Geschäftslogik erstellen, sollten Sie sie auf Ihren Geräten für den Betrieb im Edge-Bereich bereitstellen. Wenn bei Ihnen mehrere Module gemeinsam Daten erfassen und verarbeiten, können Sie alle auf einmal bereitstellen und die Routingregeln, mit denen sie verbunden werden, deklarieren.
 
-Die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) ist ein plattformübergreifendes Open-Source-Befehlszeilentool zum Verwalten von Azure-Ressourcen wie IoT Edge. Mit ihm können Sie Azure IoT Hub-Ressourcen, Instanzen des Device Provisioning Service und verknüpfte Hubs direkt ohne weitere Tools verwalten. Mit der neuen IoT-Erweiterung wird die Azure-Befehlszeilenschnittstelle um Features wie die Geräteverwaltung und um umfassende IoT Edge-Funktionen erweitert.
+Die [Azure-Befehlszeilenschnittstelle](/cli/azure) ist ein plattformübergreifendes Open-Source-Befehlszeilentool zum Verwalten von Azure-Ressourcen wie IoT Edge. Mit ihm können Sie Azure IoT Hub-Ressourcen, Instanzen des Device Provisioning Service und verknüpfte Hubs direkt ohne weitere Tools verwalten. Mit der neuen IoT-Erweiterung wird die Azure-Befehlszeilenschnittstelle um Features wie die Geräteverwaltung und um umfassende IoT Edge-Funktionen erweitert.
 
-In diesem Artikel wird gezeigt, wie Sie ein JSON-Bereitstellungsmanifest erstellen und anschließend mithilfe dieser Datei die Bereitstellung per Push an ein IoT Edge-Gerät übertragen. Informationen zum Erstellen einer Bereitstellung, die basierend auf freigegebenen Tags auf mehrere Geräte ausgerichtet ist, finden Sie unter [Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab](how-to-deploy-monitor-cli.md).
+In diesem Artikel wird gezeigt, wie Sie ein JSON-Bereitstellungsmanifest erstellen und anschließend mithilfe dieser Datei die Bereitstellung per Push an ein IoT Edge-Gerät übertragen. Informationen zum Erstellen einer Bereitstellung, die basierend auf freigegebenen Tags auf mehrere Geräte ausgerichtet ist, finden Sie unter [Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab](how-to-deploy-cli-at-scale.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) in Ihrem Azure-Abonnement.
-* Ein [IoT Edge-Gerät](how-to-register-device-cli.md) mit installierter IoT Edge-Runtime.
-* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ist in Ihrer Umgebung vorhanden. Ihre Azure CLI-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az --version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt.
+* Ein IoT Edge Gerät
+
+  Wenn Sie kein IoT Edge-Gerät eingerichtet haben, können Sie eines in einem virtuellen Azure-Computer erstellen. Führen Sie die Schritte in einem der Schnellstartartikel zu [Erstellen eines virtuellen Linux-Geräts](quickstart-linux.md) oder [Erstellen eines virtuellen Windows-Geräts](quickstart.md) aus.
+
+* Die [Azure CLI](/cli/azure/install-azure-cli) ist in Ihrer Umgebung vorhanden. Ihre Azure CLI-Version muss mindestens 2.0.70 lauten. Verwenden Sie `az --version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt.
 * Die [IoT-Erweiterung für die Azure CLI](https://github.com/Azure/azure-iot-cli-extension) ist vorhanden.
 
 ## <a name="configure-a-deployment-manifest"></a>Konfigurieren eines Bereitstellungsmanifests
@@ -40,69 +42,77 @@ Wenn Sie Module mithilfe der Azure CLI bereitstellen möchten, speichern Sie das
 
 Hier sehen Sie ein Beispiel für ein grundlegendes Bereitstellungsmanifest mit einem Modul:
 
-   ```json
-   {
-     "modulesContent": {
-       "$edgeAgent": {
-         "properties.desired": {
-           "schemaVersion": "1.0",
-           "runtime": {
-             "type": "docker",
-             "settings": {
-               "minDockerVersion": "v1.25",
-               "loggingOptions": "",
-               "registryCredentials": {}
-             }
-           },
-           "systemModules": {
-             "edgeAgent": {
-               "type": "docker",
-               "settings": {
-                 "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
-                 "createOptions": "{}"
-               }
-             },
-             "edgeHub": {
-               "type": "docker",
-               "status": "running",
-               "restartPolicy": "always",
-               "settings": {
-                 "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-                 "createOptions": "{}"
-               }
-             }
-           },
-           "modules": {
-             "SimulatedTemperatureSensor": {
-               "version": "1.0",
-               "type": "docker",
-               "status": "running",
-               "restartPolicy": "always",
-               "settings": {
-                 "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
-                 "createOptions": "{}"
-               }
-             }
-           }
-         }
-       },
-       "$edgeHub": {
-         "properties.desired": {
-           "schemaVersion": "1.0",
-           "routes": {
-               "route": "FROM /* INTO $upstream"
-           },
-           "storeAndForwardConfiguration": {
-             "timeToLiveSecs": 7200
-           }
-         }
-       },
-       "SimulatedTemperatureSensor": {
-         "properties.desired": {}
-       }
-     }
-   }
-   ```
+>[!NOTE]
+>In diesem Beispielbereitstellungsmanifest wird die Schemaversion 1.1 für den IoT Edge-Agent und den Hub verwendet. Die Schemaversion 1.1 wurde zusammen mit der IoT Edge Version 1.0.10 veröffentlicht und ermöglicht Features wie Startreihenfolge für Module und Priorisierung von Routen.
+
+```json
+{
+  "content": {
+    "modulesContent": {
+      "$edgeAgent": {
+        "properties.desired": {
+          "schemaVersion": "1.1",
+          "runtime": {
+            "type": "docker",
+            "settings": {
+              "minDockerVersion": "v1.25",
+              "loggingOptions": "",
+              "registryCredentials": {}
+            }
+          },
+          "systemModules": {
+            "edgeAgent": {
+              "type": "docker",
+              "settings": {
+                "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                "createOptions": "{}"
+              }
+            },
+            "edgeHub": {
+              "type": "docker",
+              "status": "running",
+              "restartPolicy": "always",
+              "settings": {
+                "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
+              }
+            }
+          },
+          "modules": {
+            "SimulatedTemperatureSensor": {
+              "version": "1.0",
+              "type": "docker",
+              "status": "running",
+              "restartPolicy": "always",
+              "settings": {
+                "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
+                "createOptions": "{}"
+              }
+            }
+          }
+        }
+      },
+      "$edgeHub": {
+        "properties.desired": {
+          "schemaVersion": "1.1",
+          "routes": {
+            "upstream": "FROM /messages/* INTO $upstream"
+          },
+          "storeAndForwardConfiguration": {
+            "timeToLiveSecs": 7200
+          }
+        }
+      },
+      "SimulatedTemperatureSensor": {
+        "properties.desired": {
+          "SendData": true,
+          "SendInterval": 5
+        }
+      }
+    }
+  }
+}
+```
 
 ## <a name="deploy-to-your-device"></a>Bereitstellen auf Ihrem Gerät
 
@@ -112,11 +122,11 @@ Wechseln Sie in den Ordner, in dem das Bereitstellungsmanifest gespeichert ist. 
 
 Wenden Sie die Konfiguration mit dem folgenden Befehl auf ein IoT Edge-Gerät an:
 
-   ```cli
+   ```azurecli
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
-Beim Parameter für die Geräte-ID muss die Groß-/Kleinschreibung beachtet werden. Der content-Parameter verweist auf die gespeicherte Bereitstellungsmanifestdatei.
+Beim Parameter für die Geräte-ID wird die Groß-/Kleinschreibung berücksichtigt. Der content-Parameter verweist auf die gespeicherte Bereitstellungsmanifestdatei.
 
    ![az iot edge set-modules-Ausgabe](./media/how-to-deploy-cli/set-modules.png)
 
@@ -126,14 +136,14 @@ Nachdem Sie die Module auf Ihrem Gerät bereitgestellt haben, können Sie sie mi
 
 Zeigen Sie die Module auf Ihrem IoT Edge-Gerät an:
 
-   ```cli
+   ```azurecli
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-Beim Parameter für die Geräte-ID muss ist Groß-/Kleinschreibung beachtet werden.
+Beim Parameter für die Geräte-ID wird die Groß-/Kleinschreibung berücksichtigt.
 
    ![az iot hub module-identity list-Ausgabe](./media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie [IoT Edge-Module im großen Maßstab bereitstellen und überwachen](how-to-deploy-monitor.md).
+Erfahren Sie, wie Sie [IoT Edge-Module im großen Maßstab bereitstellen und überwachen](how-to-deploy-at-scale.md).

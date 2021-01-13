@@ -5,14 +5,12 @@ author: craigshoemaker
 ms.author: cshoe
 ms.date: 9/12/2019
 ms.topic: article
-ms.service: azure-functions
-manager: gwallace
-ms.openlocfilehash: 39e785a1ca7a158ddb90a3e6ba914582c405612a
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 15af60ac5a862e6fb20e65ba6fbb92482420b7c0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997329"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74226872"
 ---
 # <a name="designing-azure-functions-for-identical-input"></a>Entwerfen von Azure-Funktionen für identische Eingaben
 

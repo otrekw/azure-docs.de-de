@@ -1,25 +1,16 @@
 ---
-title: Konfigurieren der gegenseitigen TLS-Authentifizierung – Azure App Service
-description: Erfahren Sie, wie Sie Ihre App zur Verwendung der Clientzertifikatauthentifizierung für TLS konfigurieren.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: jimbe
+title: Konfigurieren der gegenseitigen TLS-Authentifizierung
+description: Erfahren Sie, wie Clientzertifikate mit TLS authentifiziert werden. Azure App Service kann das Clientzertifikat für den App-Code zur Überprüfung verfügbar machen.
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/22/2019
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: c4e97a96687e5fa1d934ab8c0317b52cb753f72c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 12/11/2020
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088176"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347722"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurieren der gegenseitigen TLS-Authentifizierung für Azure App Service
 
@@ -29,17 +20,41 @@ Sie können den Zugriff auf Ihre Azure App Service-App einschränken, indem Sie 
 > Wenn Sie über HTTP und nicht HTTPS auf Ihre Website zugreifen, erhalten Sie kein Clientzertifikat. Wenn Ihre Anwendung also Clientzertifikate erfordert, sollten Sie keine Anforderungen an Ihre Anwendung über HTTP zulassen.
 >
 
+[!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
+
 ## <a name="enable-client-certificates"></a>Aktivieren von Clientzertifikaten
 
-Zum Einrichten Ihrer App für die Anforderung von Clientzertifikaten müssen Sie die Einstellung `clientCertEnabled` für die App auf `true` festlegen. Führen Sie zum Festlegen der Einstellung den folgenden Befehl in der [Cloud Shell](https://shell.azure.com) aus.
+So richten Sie Ihre App für das Erzwingen von Clientzertifikaten ein
+
+1. Wählen Sie auf der Verwaltungsseite Ihrer App im linken Navigationsbereich **Konfiguration** > **Allgemeine Einstellungen** aus.
+
+1. Legen Sie **Client certificate mode** (Clientzertifikatmodus) auf **Erforderlich** fest. Klicken Sie oben auf der Seite auf **Speichern**.
+
+Wenn Sie den Vorgang an der Azure-Befehlszeilenschnittstelle ausführen möchten, führen Sie den folgenden Befehl in der [Cloud Shell](https://shell.azure.com) aus:
 
 ```azurecli-interactive
-az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
+az webapp update --set clientCertEnabled=true --name <app-name> --resource-group <group-name>
 ```
+
+## <a name="exclude-paths-from-requiring-authentication"></a>Ausschließen von Pfaden von der Anforderung der Authentifizierung
+
+Wenn Sie die gegenseitige Authentifizierung für Ihre Anwendung aktivieren, erfordern alle Pfade unter dem Stammverzeichnis Ihrer App ein Clientzertifikat für den Zugriff. Um diese Anforderung für bestimmte Pfade aufzuheben, definieren Sie in Ihrer Anwendungskonfiguration Ausschlusspfade.
+
+1. Wählen Sie auf der Verwaltungsseite Ihrer App im linken Navigationsbereich **Konfiguration** > **Allgemeine Einstellungen** aus.
+
+1. Klicken Sie neben **Client exclusion paths** (Clientausschlusspfade) auf das Bearbeitungssymbol.
+
+1. Klicken Sie auf **Neuer Pfad**, geben Sie einen Pfad an, und klicken Sie auf **OK**.
+
+1. Klicken Sie oben auf der Seite auf **Speichern**.
+
+Im folgenden Screenshot wird für alle Verzeichnisse unter dem Pfad `/public` für Ihre App kein Clientzertifikat angefordert.
+
+![Zertifikatausschlusspfade][exclusion-paths]
 
 ## <a name="access-client-certificate"></a>Zugreifen auf das Clientzertifikat
 
-In App Service erfolgt die SSL-Terminierung der Anforderung auf dem Front-End-Load Balancer. Bei der Weiterleitung der Anforderung an Ihren App-Code mit [aktivierten Clientzertifikaten](#enable-client-certificates) fügt App Service einen `X-ARR-ClientCert`-Anforderungsheader mit dem Clientzertifikat ein. App Service verwendet dieses Clientzertifikat nur für dessen Weiterleitung an Ihre App. Ihr App-Code ist für die Überprüfung des Clientzertifikats zuständig.
+In App Service erfolgt die TLS-Terminierung der Anforderung auf dem Front-End-Load Balancer. Bei der Weiterleitung der Anforderung an Ihren App-Code mit [aktivierten Clientzertifikaten](#enable-client-certificates) fügt App Service einen `X-ARR-ClientCert`-Anforderungsheader mit dem Clientzertifikat ein. App Service verwendet dieses Clientzertifikat nur für dessen Weiterleitung an Ihre App. Ihr App-Code ist für die Überprüfung des Clientzertifikats zuständig.
 
 Für ASP.NET steht das Clientzertifikat über die Eigenschaft **HttpRequest.ClientCertificate** zur Verfügung.
 
@@ -55,7 +70,7 @@ Für andere Anwendungsstapel (Node.js, PHP usw.) steht das Clientzertifikat in I
 
     namespace ClientCertificateUsageSample
     {
-        public partial class cert : System.Web.UI.Page
+        public partial class Cert : System.Web.UI.Page
         {
             public string certHeader = "";
             public string errorString = "";
@@ -213,3 +228,101 @@ export class AuthorizationHandler {
     }
 }
 ```
+
+## <a name="java-sample"></a>Java-Beispiel
+
+Mit der folgenden Java-Klasse wird das Zertifikat aus `X-ARR-ClientCert` in eine `X509Certificate`-Instanz codiert. `certificateIsValid()` überprüft, ob der Fingerabdruck des Zertifikats mit dem im Konstruktor angegebenen übereinstimmt und das Zertifikat nicht abgelaufen ist.
+
+
+```java
+import java.io.ByteArrayInputStream;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.*;
+import java.security.MessageDigest;
+
+import sun.security.provider.X509Factory;
+
+import javax.xml.bind.DatatypeConverter;
+import java.util.Base64;
+import java.util.Date;
+
+public class ClientCertValidator { 
+
+    private String thumbprint;
+    private X509Certificate certificate;
+
+    /**
+     * Constructor.
+     * @param certificate The certificate from the "X-ARR-ClientCert" HTTP header
+     * @param thumbprint The thumbprint to check against
+     * @throws CertificateException If the certificate factory cannot be created.
+     */
+    public ClientCertValidator(String certificate, String thumbprint) throws CertificateException {
+        certificate = certificate
+                .replaceAll(X509Factory.BEGIN_CERT, "")
+                .replaceAll(X509Factory.END_CERT, "");
+        CertificateFactory cf = CertificateFactory.getInstance("X.509");
+        byte [] base64Bytes = Base64.getDecoder().decode(certificate);
+        X509Certificate X509cert =  (X509Certificate) cf.generateCertificate(new ByteArrayInputStream(base64Bytes));
+
+        this.setCertificate(X509cert);
+        this.setThumbprint(thumbprint);
+    }
+
+    /**
+     * Check that the certificate's thumbprint matches the one given in the constructor, and that the
+     * certificate has not expired.
+     * @return True if the certificate's thumbprint matches and has not expired. False otherwise.
+     */
+    public boolean certificateIsValid() throws NoSuchAlgorithmException, CertificateEncodingException {
+        return certificateHasNotExpired() && thumbprintIsValid();
+    }
+
+    /**
+     * Check certificate's timestamp.
+     * @return Returns true if the certificate has not expired. Returns false if it has expired.
+     */
+    private boolean certificateHasNotExpired() {
+        Date currentTime = new java.util.Date();
+        try {
+            this.getCertificate().checkValidity(currentTime);
+        } catch (CertificateExpiredException | CertificateNotYetValidException e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Check the certificate's thumbprint matches the given one.
+     * @return Returns true if the thumbprints match. False otherwise.
+     */
+    private boolean thumbprintIsValid() throws NoSuchAlgorithmException, CertificateEncodingException {
+        MessageDigest md = MessageDigest.getInstance("SHA-1");
+        byte[] der = this.getCertificate().getEncoded();
+        md.update(der);
+        byte[] digest = md.digest();
+        String digestHex = DatatypeConverter.printHexBinary(digest);
+        return digestHex.toLowerCase().equals(this.getThumbprint().toLowerCase());
+    }
+
+    // Getters and setters
+
+    public void setThumbprint(String thumbprint) {
+        this.thumbprint = thumbprint;
+    }
+
+    public String getThumbprint() {
+        return this.thumbprint;
+    }
+
+    public X509Certificate getCertificate() {
+        return certificate;
+    }
+
+    public void setCertificate(X509Certificate certificate) {
+        this.certificate = certificate;
+    }
+}
+```
+
+[exclusion-paths]: ./media/app-service-web-configure-tls-mutual-auth/exclusion-paths.png

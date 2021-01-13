@@ -1,20 +1,20 @@
 ---
 title: Voraussetzungen für Container
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 description: Die allgemeinen Voraussetzungen für Container
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/5/2019
-ms.author: dapine
-ms.openlocfilehash: f37fc1bf33074f74c58f10091f836992cd0c13f7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: c7978e7b29dab135a3439f256be8ea876f4cd5ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717191"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88246394"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Verwenden Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Verwenden Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services), bevor Sie beginnen.

@@ -1,28 +1,28 @@
 ---
 title: Referenz des Moduls „Feature Hashing“
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Feature Hashing“ im Azure Machine Learning-Dienst verwenden, um Textdaten in Merkmale zu zerlegen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mit dem Modul Feature Hashing im Azure Machine Learning-Designer Textdaten in Features zerlegen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 09/01/2019
-ms.openlocfilehash: bbcab6e94783583c7e13ae482d68fd013ba4c91d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+author: likebupt
+ms.author: keli19
+ms.date: 02/22/2020
+ms.openlocfilehash: cd48b32afee320aa3d252540d566317c374c73a8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170875"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420783"
 ---
 # <a name="feature-hashing-module-reference"></a>Referenz des Moduls „Feature Hashing“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul beschrieben, das in Azure Machine Learning-Designer enthalten ist.
 
 Verwenden Sie das Modul „Feature Hashing“, um einen Datenstrom aus englischem Text in eine Reihe von ganzzahligen Merkmalen umzuwandeln. Anschließend können Sie diese gehashte Merkmalssammlung an einen Machine Learning-Algorithmus übergeben, um ein Textanalysemodell zu trainieren.
 
-Die in diesem Modul bereitgestellte Feature Hashing-Funktionalität basiert auf dem nimbusml-Framework. Weitere Informationen finden Sie unter [NgramHash-Klasse](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
+Die in diesem Modul bereitgestellte Feature Hashing-Funktionalität basiert auf dem nimbusml-Framework. Weitere Informationen finden Sie unter [NgramHash-Klasse](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest&preserve-view=true).
 
 ## <a name="what-is-feature-hashing"></a>Was ist Feature Hashing?
 
@@ -39,7 +39,7 @@ Nehmen Sie z.B. eine Reihe von einfachen Sätzen wie diese an, gefolgt von einer
 
 Intern erstellt das Modul „Feature Hashing“ ein Wörterbuch mit N-Grammen. Die Liste der Bigramme für dieses Dataset würde beispielsweise folgendermaßen aussehen:
 
-|Ausdruck (Bigramme)|Frequency|
+|Ausdruck (Bigramme)|Häufigkeit|
 |------------|---------------|
 |This book (Dieses Buch)|3|
 |I loved (Ich mochte)|1|
@@ -48,7 +48,7 @@ Intern erstellt das Modul „Feature Hashing“ ein Wörterbuch mit N-Grammen. D
 
 Sie können die Größe der N-Gramme mithilfe der Eigenschaft **N-grams** steuern. Bei der Auswahl von Bigrammen werden auch Unigramme berechnet. Das Wörterbuch würde auch einzelne Begriffe wie die folgenden enthalten:
 
-|Begriff (Unigramme)|Frequency|
+|Begriff (Unigramme)|Häufigkeit|
 |------------|---------------|
 |book (Buch)|3|
 |I|3|
@@ -73,7 +73,7 @@ Numerische Ausgaben ermöglichen auch die Verwendung gängiger Machine Learning-
 
 ## <a name="configure-the-feature-hashing-module"></a>Konfigurieren des Moduls „Feature Hashing“
 
-1.  Fügen Sie dem Experiment in einer visuellen Benutzeroberfläche das Modul „Feature Hashing“ hinzu.
+1.  Fügen Sie das Modul „Feature Hashing“ zu Ihrer Pipeline im Designer hinzu.
 
 1. Verbinden Sie das Dataset, das den zu analysierenden Text enthält.
 
@@ -94,7 +94,7 @@ Numerische Ausgaben ermöglichen auch die Verwendung gängiger Machine Learning-
 
     Wenn Sie z.B. 3 eingeben, werden Unigramme, Bigramme und Trigramme erstellt.
 
-1. Führen Sie das Experiment aus.
+1. Übermitteln Sie die Pipeline.
 
 ## <a name="results"></a>Ergebnisse
 
@@ -111,7 +111,7 @@ Nach Abschluss der Verarbeitung gibt das Modul ein transformiertes Dataset aus, 
 
 Nachdem Sie das transformierte Dataset erstellt haben, können Sie es als Eingabe für das Modul „Train Model“ (Modell trainieren) verwenden.
  
-### <a name="best-practices"></a>Bewährte Methoden
+## <a name="best-practices"></a>Bewährte Methoden
 
 Die folgenden bewährten Methoden können Ihnen dabei helfen, das Modul „Feature Hashing“ optimal zu nutzen:
 
@@ -131,4 +131,4 @@ Der optimale Satz von Vorverarbeitungsmethoden, der in einer Lösung zum Einsatz
 
 ## <a name="next-steps"></a>Nächste Schritte
             
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an.

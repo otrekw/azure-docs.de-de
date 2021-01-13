@@ -1,36 +1,26 @@
 ---
-title: Verschieben einer Linux-VM in Azure | Microsoft-Dokumentation
-description: Verschieben Sie einen virtuellen Linux-Computer im Resource Manager-Bereitstellungsmodell in ein anderes Azure-Abonnement oder eine andere Ressourcengruppe.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Verschieben eines virtuellen Computers mit der Azure-Befehlszeilenschnittstelle
+description: Verschieben Sie mit der Azure-Befehlszeilenschnittstelle einen virtuellen Computer in ein anderes Azure-Abonnement oder eine andere Ressourcengruppe.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d635f0a5-4458-4b95-a5f8-eed4f41eb4d4
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 7c22fe8beea894bccb311a63a1be70c972188e59
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: db4c7e0126616e2d8bd120e7430c70b89c5cf36d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667284"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87291104"
 ---
-# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Verschieben einer Linux-VM in ein anderes Abonnement oder eine andere Ressourcengruppe
-In diesem Artikel erfahren Sie, wie Sie einen virtuellen Linux-Computer (Virtual Machine, VM) zwischen Ressourcengruppen oder Abonnements verschieben. Das Verschieben einer VM zwischen Abonnements kann nützlich sein, wenn Sie eine VM in einem persönlichen Abonnement erstellt haben und sie nun in das Abonnement Ihres Unternehmens verschieben möchten.
+# <a name="move-a-vm-to-another-subscription-or-resource-group"></a>Verschieben eines virtuellen Computers in ein anderes Abonnement oder eine andere Ressourcengruppe
+In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer (Virtual Machine, VM) zwischen Ressourcengruppen oder Abonnements verschieben. Das Verschieben einer VM zwischen Abonnements kann nützlich sein, wenn Sie eine VM in einem persönlichen Abonnement erstellt haben und sie nun in das Abonnement Ihres Unternehmens verschieben möchten.
 
 > [!IMPORTANT]
->Zum aktuellen Zeitpunkt können Azure Managed Disks nicht verschoben werden. 
+>Im Rahmen der Verschiebung werden neue Ressourcen-IDs erstellt. Nach dem Verschieben des virtuellen Computers müssen Sie Ihre Tools und Skripts aktualisieren, damit die neuen Ressourcen-IDs verwendet werden.
 >
->Im Rahmen der Verschiebung werden neue Ressourcen-IDs erstellt. Nach dem Verschieben des virtuellen Computers müssen Sie Ihre Tools und Skripts aktualisieren, damit die neuen Ressourcen-IDs verwendet werden. 
-> 
-> 
+
 
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>Verwenden der Azure-Befehlszeilenschnittstelle zum Verschieben einer VM
 
@@ -72,5 +62,4 @@ Wenn Sie aufgefordert werden, zu bestätigen, dass die angegebene Ressource vers
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können viele verschiedene Arten von Ressourcen zwischen Ressourcengruppen und Abonnements verschieben. Weitere Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../resource-group-move-resources.md).    
-
+Sie können viele verschiedene Arten von Ressourcen zwischen Ressourcengruppen und Abonnements verschieben. Weitere Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md).    

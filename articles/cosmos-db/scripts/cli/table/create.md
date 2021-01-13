@@ -6,19 +6,20 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 9/25/2019
-ms.openlocfilehash: aea0697471d62e5119bbeea6a618c6e962983054
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.date: 07/29/2020
+ms.openlocfilehash: c6efc013241925085ecc9a5e3ead804ba3e82dee
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71275007"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565958"
 ---
 # <a name="create-an-azure-cosmos-table-api-account-and-table-using-azure-cli"></a>Erstellen eines Azure Cosmos-Tabellen-API-Kontos sowie einer Tabelle mithilfe der Azure CLI
+[!INCLUDE[appliesto-table-api](../../../includes/appliesto-table-api.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, ist es für dieses Thema erforderlich, die Azure CLI-Version 2.0.73 oder höher auszuführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.9.1 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -40,7 +41,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Erstellt ein Konto für Azure Cosmos DB. |
-| [az cosmosdb table create](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) | Erstellt eine Azure Cosmos-Tabellen-API-Tabelle. |
+| [az cosmosdb table create](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) | Erstellt eine Azure Cosmos-Tabellen-API-Tabelle. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

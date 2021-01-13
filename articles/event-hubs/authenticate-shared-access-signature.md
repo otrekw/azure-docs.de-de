@@ -1,19 +1,15 @@
 ---
 title: Authentifizieren des Zugriffs auf Azure Event Hubs mit Shared Access Signatures
 description: In diesem Artikel erfahren Sie, wie Sie den Zugriff auf Event Hubs-Ressourcen mit Shared Access Signatures authentifizieren.
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.author: spelluru
-ms.openlocfilehash: cb5c53f3f473c10a3c9a12bb1aac20b109c06422
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 06/23/2020
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 26c921213168e1028f311eabaa417efdb76f5c97
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992366"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510089"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Authentifizieren des Zugriffs auf Event Hubs-Ressourcen mit Shared Access Signatures (SAS)
 Die Shared Access Signature (SAS) ermöglicht Ihnen die präzise Steuerung des Zugriffstyps, den Sie den Clients mit der Shared Access Signature gewähren. Folgende Kontrollen können Sie beispielsweise in einer SAS festlegen: 
@@ -22,7 +18,7 @@ Die Shared Access Signature (SAS) ermöglicht Ihnen die präzise Steuerung des Z
 - Berechtigungen, die von der SAS gewährt werden. Beispielsweise kann eine SAS für einen Event Hubs-Namespace die Berechtigung „Lauschen“, jedoch nicht die Berechtigung „Senden“ gewähren.
 - Nur Clients, die gültige Anmeldeinformationen bereitstellen, können Daten an einen Event Hub senden.
 - Ein Client kann nicht die Identität eines anderen Clients annehmen.
-- Ein nicht autorisierter Client kann daran gehindert werden, Daten an einen Event Hub zu senden.
+- Ein nicht autorisierter Client kann daran gehindert werden, Daten an einen Event Hub zu senden.
 
 In diesem Artikel wird die Authentifizierung des Zugriffs auf Event Hubs-Ressourcen mit SAS behandelt. Informationen zum **Autorisieren** des Zugriffs auf Event Hubs-Ressourcen mit SAS finden Sie in [diesem Artikel](authorize-access-shared-access-signature.md). 
 
@@ -33,7 +29,7 @@ In diesem Artikel wird die Authentifizierung des Zugriffs auf Event Hubs-Ressou
 
 
 ## <a name="configuring-for-sas-authentication"></a>Konfigurieren der SAS-Authentifizierung
-Sie können die Event Hubs-SAS-Autorisierungsregel für einen Event Hubs-Namespace oder eine Entität (Event Hub-Instanz oder Kafka-Thema in einem Event Hubs für Kafka-fähigen Namespace) konfigurieren. Das Konfigurieren einer SAS-Autorisierungsregel für eine Consumergruppe wird zurzeit nicht unterstützt, Sie können den Zugriff auf Consumergruppen jedoch mit den für einen Namespace oder eine Entität konfigurierten Regeln sichern. 
+Sie können die EventHubs-SAS-Autorisierungsregel für einen Event Hubs-Namespace oder eine Entität (Event Hub-Instanz oder Kafka-Thema in einer Event Hub-Instanz) konfigurieren. Das Konfigurieren einer SAS-Autorisierungsregel für eine Consumergruppe wird zurzeit nicht unterstützt, Sie können den Zugriff auf Consumergruppen jedoch mit den für einen Namespace oder eine Entität konfigurierten Regeln sichern. 
 
 Die folgende Abbildung zeigt, wie die Autorisierungsregeln auf Beispielentitäten angewendet werden. 
 
@@ -185,20 +181,31 @@ In der Regel setzt ein Event Hub einen Herausgeber pro Client ein. Alle Nachrich
 
 Jedem Event Hubs-Client wird ein eindeutiges Token zugewiesen, das auf den Client hochgeladen wird. Token werden so erzeugt, dass jedes eindeutige Token Zugriff auf einen anderen eindeutigen Herausgeber gewährt. Ein Client, der über ein Token verfügt, kann nur an einen Herausgeber Daten senden und an keinen anderen. Wenn mehrere Clients dasselbe Token gemeinsam nutzen, verwendet jeder von ihnen denselben Herausgeber.
 
-Alle Token werden mit SAS-Schlüsseln zugewiesen. Alle Token werden in der Regel mit demselben Schlüssel signiert. Clients kennen den Schlüssel nicht. Andere Clients können daher keine Token erzeugen. Clients verwenden die gleichen Token, bis diese ablaufen.
+Alle Token werden mit SAS-Schlüsseln zugewiesen. Alle Token werden in der Regel mit demselben Schlüssel signiert. Clients kennen den Schlüssel nicht. Clients können daher keine Token generieren. Clients verwenden die gleichen Token, bis diese ablaufen.
 
 Zum Definieren von Autorisierungsregeln, die nur für das Senden/Veröffentlichen von Daten an bzw. in Event Hubs gelten, müssen Sie beispielsweise eine Autorisierungsregel für das Senden definieren. Sie können die Regel auf der Namespaceebene definieren oder einen differenzierteren Bereich für eine bestimmte Entität (eine Event Hubs-Instanz oder ein Thema) festlegen. Ein Client oder eine Anwendung, für den bzw. die ein solch präziser Zugriff festgelegt ist, wird als Event Hubs-Herausgeber bezeichnet. Gehen Sie dazu folgendermaßen vor:
 
 1. Erstellen Sie einen SAS-Schlüssel für die Entität, die Sie veröffentlichen möchten, um ihr den Bereich **Senden** zuzuweisen. Weitere Informationen finden Sie unter [Shared access authorization policies](authorize-access-shared-access-signature.md#shared-access-authorization-policies) (SAS-Autorisierungsrichtlinien).
 2. Generieren Sie mit dem in Schritt 1 generierten Schlüssel ein SAS-Token mit einer Ablaufzeit für einen bestimmten Herausgeber.
-3. Stellen Sie das Token für den Herausgeberclient bereit, der nur an die Entität Daten senden kann, auf die das Token Zugriff gewährt.
-4. Nach dem Ablauf des Tokens verliert der Client seinen Sende-/Veröffentlichungszugriff auf die Entität. 
+
+    ```csharp
+    var sasToken = SharedAccessSignatureTokenProvider.GetPublisherSharedAccessSignature(
+                new Uri("Service-Bus-URI"),
+                "eventub-name",
+                "publisher-name",
+                "sas-key-name",
+                "sas-key",
+                TimeSpan.FromMinutes(30));
+    ```
+3. Stellen Sie das Token für den Herausgeberclient bereit, der nur an die Entität und den Herausgeber Daten senden kann, auf die das Token Zugriff gewährt.
+
+    Nach dem Ablauf des Tokens verliert der Client seinen Sende-/Veröffentlichungszugriff auf die Entität. 
 
 
 > [!NOTE]
-> Obwohl dies nicht empfohlen wird, ist es möglich, Geräte mit Token auszustatten, die Zugriff auf einen Event Hub gewähren. Alle Geräte mit diesem Token können Nachrichten direkt an den Event Hub senden. Darüber hinaus kann das Gerät nicht davon gesperrt werden, an den betreffenden Event Hub zu senden.
+> Obwohl dies nicht empfohlen wird, ist es möglich, Geräte mit Token auszustatten, die Zugriff auf einen Event Hub oder Namespace gewähren. Alle Geräte mit diesem Token können Nachrichten direkt an den Event Hub senden. Darüber hinaus kann das Gerät nicht davon gesperrt werden, an den betreffenden Event Hub zu senden.
 > 
-> Das oben beschriebene Verhalten tritt auf, wenn das gleiche Token an mehrere Geräte verteilt und somit Zugriff auf der Namespaceebene erteilt wird. In diesem Fall kann ein nicht autorisiertes Gerät/nicht autorisierter Herausgeber nicht isoliert und widerrufen werden. Es empfiehlt sich immer, spezifische und präzise Bereiche festzulegen.
+> Es empfiehlt sich immer, spezifische und präzise Bereiche festzulegen.
 
 > [!IMPORTANT]
 > Sobald die Token erstellt wurden, wird jedem Client sein eigenes eindeutiges Token bereitgestellt.
@@ -212,10 +219,10 @@ Zum Definieren von Autorisierungsregeln, die nur für das Senden/Veröffentliche
 Zum Authentifizieren von Back-End-Anwendungen, die von Event Hubs-Producern generierte Daten nutzen, erfordert die Event Hubs-Tokenauthentifizierung, dass den Clients entweder Rechte zum **Verwalten** oder die Berechtigung **Lauschen** für den Event Hubs-Namespace, die Event Hub-Instanz oder das Thema zugewiesen sind. Daten werden von Event Hubs mithilfe von Consumergruppen genutzt. Mit einer SAS-Richtlinie können Sie zwar einen präzisen Bereich festlegen, dieser Bereich wird aber nur auf der Entitätsebene definiert und nicht auf der Consumerebene. Die auf der Ebene des Namespaces, der Event Hub-Instanz oder des Themas definierten Berechtigungen werden folglich auf die Consumergruppen dieser Entität angewendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Authorize using SAS](authenticate-shared-access-signature.md) (Autorisieren mit SAS)
-- [Authorize using Role-base access control (RBAC)](authenticate-shared-access-signature.md) (Autorisieren mit der rollenbasierten Zugriffssteuerung (RBAC))
+- [Autorisieren mit rollenbasierter Zugriffssteuerung in Azure (Azure RBAC)](authenticate-shared-access-signature.md)
 - [Weitere Informationen zu Event Hubs](event-hubs-about.md)
 
 Weitere Informationen finden Sie in den folgenden verwandten Artikeln:

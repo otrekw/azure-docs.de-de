@@ -1,28 +1,24 @@
 ---
-title: Azure PowerShell-Beispiele für Azure Data Share | Microsoft-Dokumentation
-description: 'Azure PowerShell-Beispiele: Skripts, die Ihnen beim Erstellen und Verwalten von Datenfreigaben helfen.'
-services: data-share
+title: Azure PowerShell-Beispiele für Azure Data Share
+description: Erfahren Sie etwas über Azure PowerShell-Beispielskripts zum Erstellen und Verwalten von Datenfreigaben in Azure Data Share.
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 07/6/2019
 author: joannapea
 ms.author: joanpo
-ms.openlocfilehash: 90b23da3ae911038c67dc1d99c5b98d04b935281
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.topic: conceptual
+ms.date: 07/06/2019
+ms.openlocfilehash: cd7604e33a9f98d9104eecabb20369fe2fcee8a7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242855"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86119632"
 ---
 # <a name="azure-powershell-samples-for-azure-data-share"></a>Azure PowerShell-Beispiele für Azure Data Share
 
 Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für Azure Data Share.
 
-| |  |
+|PowerShell-Beispiele|BESCHREIBUNG|
 |---|---|
-|**PowerShell-Beispiele**||
 |[Erstellen eines neuen Data Share-Kontos](scripts/powershell/create-new-share-account-powershell.md)| Mit diesem PowerShell-Skript wird ein neues Data Share-Konto erstellt. |
 |[Erstellen einer neuen Datenfreigabe](scripts/powershell/create-new-share-powershell.md)| Mit diesem PowerShell-Skript wird eine neue Datenfreigabe erstellt. |
 |[Hinzufügen von Datasets zu einer Freigabe](scripts/powershell/add-datasets-powershell.md)| Mit diesem PowerShell-Skript wird einem vorhandenen Data Share-Konto ein Blobdataset hinzugefügt. |

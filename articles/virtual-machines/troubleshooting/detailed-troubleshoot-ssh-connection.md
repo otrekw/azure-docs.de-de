@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3807f713065d16d4c6743c65f6a770d158ac7191
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: c117f9697299b94a54d9184093e65c56822b8bd2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058504"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002628"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Ausführliche Schritte zum Beheben von SSH-Verbindungsproblemen mit einem virtuellen Azure-Computer unter Linux
 Wenn der SSH-Client nicht in der Lage ist, den SSH-Dienst auf dem virtuellen Computer zu erreichen, können dafür viele verschiedene Gründe vorliegen. Wenn Sie die [allgemeinen Schritte zur Problembehandlung bei SSH](troubleshoot-ssh-connection.md) befolgt haben, müssen Sie die Ursache der Verbindungsprobleme genauer untersuchen. Dieser Artikel führt Sie durch die detaillierten Schritte zur Problembehandlung, mit denen Sie ermitteln können, wo bei der SSH-Verbindung ein Fehler auftritt und wie Sie diesen beheben.
@@ -35,11 +35,11 @@ Mit den folgenden Schritten können Sie die Fehlerquelle isolieren und Lösungen
 1. Überprüfen Sie den Status des virtuellen Computers im Portal.
    Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Virtuelle Computer** > *VM-Name* aus.
 
-   Im Statusbereich für den virtuellen Computer sollte **Wird ausgeführt**angezeigt werden. Führen Sie einen Bildlauf nach unten durch, um aktuelle Aktivitäten für Compute-, Speicher- und Netzwerkressourcen anzuzeigen.
+   Im Statusbereich für den virtuellen Computer sollte **Wird ausgeführt** angezeigt werden. Führen Sie einen Bildlauf nach unten durch, um aktuelle Aktivitäten für Compute-, Speicher- und Netzwerkressourcen anzuzeigen.
 
 2. Wählen Sie **Einstellungen** aus, um Endpunkte, IP-Adressen, Netzwerksicherheitsgruppen und andere Einstellungen zu überprüfen.
 
-   Der virtuelle Computer sollte über einen für SSH-Datenverkehr definierten Endpunkt verfügen, den Sie in **Endpunkte** oder **[Netzwerksicherheitsgruppe](../../virtual-network/security-overview.md)** anzeigen können. Endpunkte in virtuellen Computern, die mit Resource Manager erstellt wurden, werden in einer Netzwerksicherheitsgruppe gespeichert. Stellen Sie sicher, dass die Regeln auf die Netzwerksicherheitsgruppe angewendet wurden und im Subnetz auf sie verwiesen wird.
+   Der virtuelle Computer sollte über einen für SSH-Datenverkehr definierten Endpunkt verfügen, den Sie in **Endpunkte** oder **[Netzwerksicherheitsgruppe](../../virtual-network/network-security-groups-overview.md)** anzeigen können. Endpunkte in virtuellen Computern, die mit Resource Manager erstellt wurden, werden in einer Netzwerksicherheitsgruppe gespeichert. Stellen Sie sicher, dass die Regeln auf die Netzwerksicherheitsgruppe angewendet wurden und im Subnetz auf sie verwiesen wird.
 
 Analysieren Sie zum Überprüfen der Netzwerkverbindung die konfigurierten Endpunkte, und überprüfen Sie, ob Sie über ein anderes Protokoll (z.B. HTTP oder über einen anderen Dienst) eine Verbindung mit dem virtuellen Computer herstellen können.
 
@@ -54,7 +54,7 @@ Das Verbindungsproblem zwischen dem SSH-Client auf Ihrem Computer und dem SSH-Di
 * [Netzwerksicherheitsgruppen](#source-4-network-security-groups)
 * [Linux-basierter virtueller Azure-Computer](#source-5-linux-based-azure-virtual-machine)
 
-## <a name="source-1-ssh-client-computer"></a>Quelle 1: SSH-Clientcomputer
+## <a name="source-1-ssh-client-computer"></a>Quelle 1: SSH-Clientcomputer
 Überprüfen Sie, ob Ihr Computer SSH-Verbindungen mit einem anderen Linux-basierten lokalen Computer herstellen kann, um Ihren Computer als Ursache des Fehlers auszuschließen.
 
 ![Diagramm, in dem die SSH-Clientcomputerkomponenten hervorgehoben sind](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot2.png)
@@ -75,8 +75,8 @@ Vergewissern Sie sich bei Verwendung der Zertifikatauthentifizierung, dass Sie f
 * Chmod 600 ~/.ssh/id_rsa (bzw. beliebige andere Dateien, in denen Ihre privaten Schlüssel gespeichert sind)
 * Chmod 644 ~/.ssh/known_hosts (enthält Hosts, mit denen Sie eine SSH-Verbindung hergestellt haben)
 
-## <a name="source-2-organization-edge-device"></a>Quelle 2: Edgegerät der Organisation
-Überprüfen Sie, ob ein direkt mit dem Internet verbundener Computer SSH-Verbindungen mit Ihrem virtuellen Azure-Computer herstellen kann, um das Edgegerät der Organisation als Fehlerquelle auszuschließen. Wenn der Zugriff auf den virtuellen Computer über ein S2S-VPN oder über eine Azure ExpressRoute-Verbindung erfolgt, fahren Sie mit [Quelle 4: Netzwerksicherheitsgruppen](#nsg) fort.
+## <a name="source-2-organization-edge-device"></a>Quelle 2: Edgegerät der Organisation
+Überprüfen Sie, ob ein direkt mit dem Internet verbundener Computer SSH-Verbindungen mit Ihrem virtuellen Azure-Computer herstellen kann, um das Edgegerät der Organisation als Fehlerquelle auszuschließen. Wenn der Zugriff auf den virtuellen Computer über ein Standort-zu-Standort-VPN oder über eine Azure ExpressRoute-Verbindung erfolgt, fahren Sie mit [Quelle 4: Netzwerksicherheitsgruppen](#nsg)fort.
 
 ![Diagramm, in dem das Edgegerät der Organisation hervorgehoben ist](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
@@ -90,9 +90,12 @@ Wenn Sie eine SSH-Verbindung mit einem direkt mit dem Internet verbundenen Compu
 
 Korrigieren Sie in Zusammenarbeit mit Ihrem Netzwerkadministrator die Einstellungen des Edgegeräts Ihrer Organisation, um SSH-Datenverkehr über das Internet zuzulassen.
 
-## <a name="source-3-cloud-service-endpoint-and-acl"></a>Quelle 3: Clouddienst-Endpunkt und ACL
+## <a name="source-3-cloud-service-endpoint-and-acl"></a>Quelle 3: Clouddienst-Endpunkt und ACL
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 > [!NOTE]
-> Diese Quelle gilt nur für virtuelle Computer, die mit dem klassischen Bereitstellungsmodell erstellt wurden. Für virtuelle Computer, die mit Resource Manager erstellt wurden, fahren Sie mit [Quelle 4: Netzwerksicherheitsgruppen](#nsg) fort.
+> Diese Quelle gilt nur für virtuelle Computer, die mit dem klassischen Bereitstellungsmodell erstellt wurden. Für virtuelle Computer, die mit Resource Manager erstellt wurden, fahren Sie mit [Quelle 4: Netzwerksicherheitsgruppen](#nsg)fort.
 
 Überprüfen Sie, ob ein anderer virtueller Azure-Computer im selben virtuellen Netzwerk eine Verbindung mit Ihrem virtuellen Computer über SSH herstellen kann, um den Clouddienst-Endpunkt und die Zugriffssteuerungsliste als Fehlerquelle auszuschließen.
 
@@ -103,24 +106,24 @@ Ist kein anderer virtueller Computer im gleichen virtuellen Netzwerk vorhanden, 
 Wenn Sie eine SSH-Verbindung mit einem virtuellen Computer im gleichen virtuellen Netzwerk herstellen können, überprüfen Sie folgende Bereiche:
 
 * **Die Endpunktkonfiguration für den SSH-Datenverkehr auf dem virtuellen Zielcomputer.** Der private TCP-Port des Endpunkts sollte dem TCP-Port entsprechen, an dem der SSH-Dienst auf dem virtuellen Computer lauscht. (Der Standardport ist 22.) Überprüfen Sie die SSH-TCP-Portnummer im Azure-Portal, indem Sie **Virtuelle Computer** > *VM-Name* > **Einstellungen** > **Endpunkte** auswählen.
-* **Die ACL für den SSH-Datenverkehrsendpunkt auf dem virtuellen Zielcomputer.** In ACLs können Sie anhand der Quell-IP-Adresse angeben, ob eingehender Datenverkehr aus dem Internet zugelassen oder verweigert wird. Falsch konfigurierte ACLs können dazu führen, dass eingehender SSH-Datenverkehr den Endpunkt nicht erreicht. Überprüfen Sie die ACLs, um sicherzustellen, dass eingehender Verkehr von den öffentlichen IP-Adressen des Proxy- oder eines anderen Edgeservers zugelassen wird. Weitere Informationen finden Sie unter [Was ist eine Netzwerk-Zugriffssteuerungsliste (Access Control List, ACL)?](../../virtual-network/virtual-networks-acl.md)
+* **Die ACL für den SSH-Datenverkehrsendpunkt auf dem virtuellen Zielcomputer.** In ACLs können Sie anhand der Quell-IP-Adresse angeben, ob eingehender Datenverkehr aus dem Internet zugelassen oder verweigert wird. Falsch konfigurierte ACLs können dazu führen, dass eingehender SSH-Datenverkehr den Endpunkt nicht erreicht. Überprüfen Sie die ACLs, um sicherzustellen, dass eingehender Verkehr von den öffentlichen IP-Adressen des Proxy- oder eines anderen Edgeservers zugelassen wird. Weitere Informationen finden Sie unter [Was ist eine Netzwerk-Zugriffssteuerungsliste (Access Control List, ACL)?](/previous-versions/azure/virtual-network/virtual-networks-acl)
 
-Entfernen Sie den aktuellen Endpunkt, und erstellen Sie einen anderen Endpunkt mit dem SSH-Namen und dem TCP-Port 22 als öffentliche und private Portnummer, um den Endpunkt als Problemquelle auszuschließen. Weitere Informationen finden Sie unter [Festlegen von Endpunkten auf einem virtuellen Computer in Azure](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Entfernen Sie den aktuellen Endpunkt, und erstellen Sie einen anderen Endpunkt mit dem SSH-Namen und dem TCP-Port 22 als öffentliche und private Portnummer, um den Endpunkt als Problemquelle auszuschließen. Weitere Informationen finden Sie unter [Festlegen von Endpunkten auf einem virtuellen Computer in Azure](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=/azure/virtual-machines/windows/classic/toc.json).
 
 <a id="nsg"></a>
 
 ## <a name="source-4-network-security-groups"></a>Quelle 4: Netzwerksicherheitsgruppen
 Netzwerksicherheitsgruppen ermöglichen Ihnen eine präzisere Steuerung des zulässigen eingehenden und ausgehenden Datenverkehrs. Sie können Regeln erstellen, die mehrere Subnetze und Clouddienste in einem virtuellen Azure-Netzwerk umfassen. Überprüfen Sie die Regeln der Netzwerksicherheitsgruppe, um sicherzustellen, dass sowohl eingehender als auch ausgehender SSH-Datenverkehr über das Internet zulässig ist.
-Weitere Informationen finden Sie unter [Informationen zu Netzwerksicherheitsgruppen](../../virtual-network/security-overview.md).
+Weitere Informationen finden Sie unter [Informationen zu Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md).
 
-Sie können die NSG-Konfiguration auch mithilfe der IP-Überprüfung überprüfen. Weitere Informationen finden Sie unter [Übersicht über die Azure-Netzwerküberwachung](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
+Sie können die NSG-Konfiguration auch mithilfe der IP-Überprüfung überprüfen. Weitere Informationen finden Sie unter [Übersicht über die Azure-Netzwerküberwachung](../../network-watcher/network-watcher-monitoring-overview.md). 
 
-## <a name="source-5-linux-based-azure-virtual-machine"></a>Quelle 5: Linux-basierter virtueller Azure-Computer
+## <a name="source-5-linux-based-azure-virtual-machine"></a>Quelle 5: Linux-basierter virtueller Azure-Computer
 Die letzte mögliche Problemquelle ist der virtuelle Azure-Computer selbst.
 
 ![Diagramm, in dem der Linux-basierte virtuelle Azure-Computer hervorgehoben ist](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
 
-Falls noch nicht erfolgt, führen Sie die unter [Zurücksetzen des lokalen Linux-Kennworts auf Azure-VMs](../linux/reset-password.md) beschriebenen Anweisungen aus.
+Falls noch nicht erfolgt, führen Sie die unter [Zurücksetzen des lokalen Linux-Kennworts auf Azure-VMs](./reset-password.md) beschriebenen Anweisungen aus.
 
 Versuchen Sie erneut, die Verbindung von Ihrem Computer aus herzustellen. Wenn dies weiterhin nicht möglich ist, können u.a. die folgenden Probleme der Grund dafür sein:
 
@@ -130,4 +133,4 @@ Versuchen Sie erneut, die Verbindung von Ihrem Computer aus herzustellen. Wenn d
 * Auf dem virtuellen Azure-Computer wird Software zur Netzwerküberwachung oder zur Erkennung von Eindringversuchen ausgeführt, die SSH-Verbindungen verhindert.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-Weitere Informationen zur Problembehandlung beim Anwendungszugriff finden Sie unter [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](../linux/troubleshoot-app-connection.md).
+Weitere Informationen zur Problembehandlung beim Anwendungszugriff finden Sie unter [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](./troubleshoot-app-connection.md).

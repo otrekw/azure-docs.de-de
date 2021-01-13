@@ -2,20 +2,20 @@
 title: include file
 description: include file
 services: cognitive-services
-author: diberry
-manager: cgronlun
+author: mrbullwinkle
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
-ms.date: 11/12/2018
-ms.author: diberry
-ms.openlocfilehash: fd6a4a4e2d779047d252fdc5e3eae8e3fba8b507
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 12/29/2020
+ms.author: mrbullwin
+ms.openlocfilehash: 8269cd3905ec7ea3ad0ff2ab6bfa31cc95da5b4f
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178391"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820752"
 ---
 ## <a name="request-and-response-json"></a>JSON-Anforderung und -Antwort
 

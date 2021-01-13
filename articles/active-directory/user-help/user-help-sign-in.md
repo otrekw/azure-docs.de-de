@@ -1,33 +1,32 @@
 ---
-title: Anmelden mit der zweistufigen Überprüfung oder mit Sicherheitsinformationen – Azure Active Directory | Microsoft-Dokumentation
+title: Anmelden mithilfe Ihrer Identitätsauthentifizierungsinformationen – Azure AD
 description: Hier erfahren Sie, wie Sie sich mithilfe der verschiedenen Methoden zur Identitätsüberprüfung in den Sicherheitsinformationen anmelden können.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: librown
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 07/18/2019
-ms.author: lizross
+ms.author: curtand
 ms.custom: user-help
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b20ea1131ceda0527ed35d1a1082d05f25da6bac
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 42ced6632ebfa56af8fe13a02f531b9835e13df3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382317"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88799382"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Anmelden mit der zweistufige Überprüfung oder einer Sicherheitsinformation
 
-Nachdem Sie die zweistufige Überprüfung oder eine Sicherheitsinformation eingerichtet haben, können Sie sich mit der von Ihnen angegebenen Authentifizierungsmethode bei Ihrem Konto anmelden.
+Nachdem Sie die zweistufige Überprüfung oder eine Sicherheitsinformation eingerichtet haben, können Sie sich mit der von Ihnen angegebenen Überprüfungsmethode bei Ihrem Konto anmelden.
 
 > [!Note]
-> Wenn Sie noch die zweistufige Überprüfung verwenden, müssen Sie die Authentifizierungsmethoden einrichten. Befolgen Sie dazu die Anweisungen im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
+> Wenn Sie noch die zweistufige Überprüfung verwenden, müssen Sie die Überprüfungsmethoden einrichten. Befolgen Sie dazu die Anweisungen im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
 >
-> Wenn Ihr Administrator die Benutzeroberfläche für Sicherheitsinformationen aktiviert hat, müssen Sie Ihre Authentifizierungsmethoden mithilfe der schrittweisen Anleitungen in folgenden Artikeln einrichten:<ul><li>[Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App](security-info-setup-auth-app.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung von SMS](security-info-setup-text-msg.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung von Telefonanrufen](security-info-setup-phone-number.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung eines Sicherheitsschlüssels](security-info-setup-security-key.md)</li></ul>
+> Wenn Ihr Administrator die Benutzeroberfläche für Sicherheitsinformationen aktiviert hat, müssen Sie Ihre Überprüfungsmethoden mithilfe der schrittweisen Anleitungen in folgenden Artikeln einrichten:<ul><li>[Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App](security-info-setup-auth-app.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung von SMS](security-info-setup-text-msg.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung von Telefonanrufen](security-info-setup-phone-number.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung eines Sicherheitsschlüssels](security-info-setup-security-key.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Anmelden mithilfe einer Authenticator-App-Benachrichtigung auf dem Mobilgerät
 
@@ -91,10 +90,10 @@ Wenn Sie aus einem bestimmten Grund Ihre primäre Anmeldemethode nicht verwenden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Unter [Übersicht über die Sicherheitsinformationen (Vorschau)](user-help-security-info-overview.md) erfahren Sie mehr über die Sicherheitsinformationen.
+- Unter [Übersicht über die Sicherheitsinformationen (Vorschau)](./security-info-setup-signin.md) erfahren Sie mehr über die Sicherheitsinformationen.
 
-- Informationen zur zweistufigen Überprüfung finden Sie im Artikel [Übersicht über die zweistufige Überprüfung](user-help-two-step-verification-overview.md).
+- Informationen zur zweistufigen Überprüfung finden Sie im Artikel [Übersicht über die zweistufige Überprüfung](./multi-factor-authentication-end-user-first-time.md).
 
 - Setzen Sie Ihr Kennwort im [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/) zurück, falls Sie es verloren oder vergessen haben.
 
-- Informieren Sie sich im Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) über Tipps zur Behandlung von Anmeldeproblemen.
+- Der Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) enthält Tipps zur Problembehandlung bei Anmeldeproblemen.

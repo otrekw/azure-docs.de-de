@@ -1,25 +1,18 @@
 ---
-title: Erstellen von Linux-Hosts in Azure mithilfe von Docker Machine | Microsoft-Dokumentation
+title: Erstellen von Linux-Hosts mithilfe von Docker Machine
 description: Beschreibt die Verwendung von Docker Machine zum Erstellen von Docker-Hosts in Azure.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: tysonn
-ms.assetid: 164b47de-6b17-4e29-8b7d-4996fa65bea4
 ms.service: virtual-machines-linux
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 1e946f82cf7dfcec0a6ff451012e6f5f0ac6e955
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 83799940f8c98952a435f582a9160585e9dbdfd4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671549"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87289802"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Erstellen von Hosts in Azure mithilfe von Docker Machine
 In diesem Artikel erfahren Sie, wie Sie mithilfe von [Docker Machine](https://docs.docker.com/machine/) Hosts in Azure erstellen. Der Befehl `docker-machine` erstellt in Azure einen virtuellen Linux-Computer und installiert anschließend Docker. Danach können Sie Ihre Docker-Hosts in Azure mit den gleichen lokalen Tools und Workflows verwalten. Um Docker-Computer unter Windows 10 zu verwenden, müssen Sie Linux-Bash verwenden.

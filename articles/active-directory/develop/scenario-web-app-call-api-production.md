@@ -1,45 +1,40 @@
 ---
-title: Web-App, die Web-APIs aufruft (Übergang in die Produktion) – Microsoft Identity Platform
-description: Erfahren Sie, wie Sie eine Web-App erstellen, die Web-APIs aufruft (Übergang in die Produktion)
+title: 'Web-App, die Web-APIs aufruft: Überführen in die Produktion – Microsoft Identity Platform | Azure'
+description: Hier erfahren Sie, wie Sie eine Web-App, die Web-APIs aufruft, in die Produktion überführen.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b326cdb7303ff392c6129e0f0fa460ffe088305
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f38755e669a62e9fe74aa6281daccdf39e1f117c
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080108"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443567"
 ---
-# <a name="web-app-that-calls-web-apis---move-to-production"></a>Web-App, die Web-APIs aufruft (Übergang in die Produktion)
+# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Web-App, die Web-APIs aufruft: Überführen in die Produktion
 
 Nachdem Sie nun wissen, wie Sie ein Token abrufen, um Web-APIs aufzurufen, erfahren Sie in diesem Artikel, wie Ihnen der Übergang in die Produktion gelingt.
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr, indem Sie das vollständige Tutorial zu ASP.NET Core-Web-App ausprobieren, das Sie Schritt für Schritt durch folgende Themen führt:
+Weitere Informationen finden Sie im vollständigen schrittweisen Tutorial zu ASP.NET Core-Web-Apps. Das Tutorial bietet Folgendes:
 
-- Anmelden von Benutzern mit mehreren Zielgruppen, nationalen Clouds oder mit Identitäten in sozialen Netzwerken
+- Anmelden von Benutzern bei mehreren Zielgruppen oder bei nationalen Clouds bzw. mithilfe sozialer Identitäten
 - Aufrufen von Microsoft Graph
 - Aufrufen mehrerer Microsoft-APIs
 - Behandeln der inkrementellen Zustimmung
 - Aufrufen Ihrer eigenen Web-API
 
-> [!div class="nextstepaction"]
-> [Tutorial: ASP.NET Core-Web-App](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
+[Tutorial: ASP.NET Core-Web-App](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
 
 <!--- Removing this diagram as it's already shown from the next step linked tutorial
 

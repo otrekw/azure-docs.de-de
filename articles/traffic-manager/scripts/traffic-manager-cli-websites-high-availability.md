@@ -1,11 +1,10 @@
 ---
-title: 'Azure CLI-Skriptbeispiel: Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen | Microsoft-Dokumentation'
+title: Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen – Azure CLI – Traffic Manager
 description: 'Azure CLI-Skriptbeispiel: Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen'
 services: traffic-manager
 documentationcenter: traffic-manager
-author: asudbring
+author: duongau
 manager: twooley
-editor: tysonn
 tags: azure-infrastructure
 ms.assetid: ''
 ms.service: traffic-manager
@@ -14,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
-ms.author: allensu
-ms.openlocfilehash: 2bf993dad3b9452424c5d3b450bf3908b38983c2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: duau
+ms.openlocfilehash: 86151efdc6d2b17c9eef722f2dc3c6306d5aa1b8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050994"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89400224"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen mit Azure CLI
 

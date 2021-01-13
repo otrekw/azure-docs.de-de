@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 252d5e551dad56108ad952eb0c7c3b39df0585d5
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b5b0b383cba45646a1e5a8f980b3a097767f9979
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901274"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89262599"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Verwalten von Media Services-Medienobjekten über mehrere Speicherkonten  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Sie können mehrere Speicherkonten an ein einzelnes Media Services-Konto anfügen. Die Möglichkeit, mehrere Speicherkonten an ein Media Services-Konto anzufügen, bietet die folgenden Vorteile:
 
@@ -48,19 +51,21 @@ Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den We
 
 Um Ihre Speicherkonten Ihrem AMS-Konto anzufügen, verwenden Sie [Azure Resource Manager-APIs](/rest/api/media/operations/azure-media-services-rest-api-reference) und [PowerShell](/powershell/module/az.media), wie im folgenden Beispiel gezeigt:
 
-    $regionName = "West US"
-    $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
-    $resourceGroupName = "SkyMedia-USWest-App"
-    $mediaAccountName = "sky"
-    $storageAccount1Name = "skystorage1"
-    $storageAccount2Name = "skystorage2"
-    $storageAccount1Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount1Name"
-    $storageAccount2Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount2Name"
-    $storageAccount1 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
-    $storageAccount2 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
-    $storageAccounts = @($storageAccount1, $storageAccount2)
+```azurepowershell
+$regionName = "West US"
+$subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
+$resourceGroupName = "SkyMedia-USWest-App"
+$mediaAccountName = "sky"
+$storageAccount1Name = "skystorage1"
+$storageAccount2Name = "skystorage2"
+$storageAccount1Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount1Name"
+$storageAccount2Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount2Name"
+$storageAccount1 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
+$storageAccount2 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
+$storageAccounts = @($storageAccount1, $storageAccount2)
     
-    Set-AzMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
+Set-AzMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
+```
 
 ### <a name="support-for-cool-storage"></a>Unterstützung für kalten Speicher
 

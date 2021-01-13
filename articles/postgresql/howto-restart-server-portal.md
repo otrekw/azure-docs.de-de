@@ -1,24 +1,25 @@
 ---
-title: Neustarten eines Azure Database for PostgreSQL-Einzelservers im Azure-Portal
+title: Neustarten von Servern – Azure-Portal – Azure Database for PostgreSQL (Einzelserver)
 description: In diesem Artikel wird beschrieben, wie Sie im Azure-Portal einen Azure Database for PostgreSQL-Einzelserver neu starten können.
-author: ajlam
-ms.author: andrela
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
-ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: fd92e27f53f52de3e9a7fd65d577c9dfea44991b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: how-to
+ms.date: 12/20/2020
+ms.openlocfilehash: faa61ff477f44347755890dc59ebf4b917afda6f
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65066835"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882941"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Neustarten eines Azure Database for PostgreSQL-Einzelservers im Azure-Portal
 In diesem Thema wird erläutert, wie Sie einen Azure Database for PostgreSQL-Server neu starten können. Es kann vorkommen, dass Sie Ihren Server zu Wartungszwecken neu starten müssen. In diesem Fall kommt es zu einem kurzen Ausfall, weil der Vorgang vom Server ausgeführt wird.
 
-Der Neustart des Servers wird blockiert, wenn der Dienst ausgelastet ist. Zum Beispiel kann der Dienst einen zuvor angeforderten Vorgang (z. B. das Skalieren von virtuellen Kernen) verarbeiten.
+Der Neustart des Servers wird blockiert, wenn der Dienst ausgelastet ist. Beispielsweise kann der Dienst einen zuvor angeforderten Vorgang (z. B. das Skalieren von virtuellen Kernen) verarbeiten.
  
-Die für einen Neustart benötigte Zeit hängt von dem PostgreSQL-Wiederherstellungsprozess ab. Um die Neustartzeit zu verkürzen, empfehlen wir, die Aktivitäten auf dem Server vor dem Neustart auf ein Minimum zu beschränken.
+> [!NOTE] 
+> Die für einen Neustart benötigte Zeit hängt von dem PostgreSQL-Wiederherstellungsprozess ab. Um die Neustartzeit zu verkürzen, empfehlen wir, die Aktivitäten auf dem Server vor dem Neustart auf ein Minimum zu beschränken. Sie sollten zudem die Prüfpunkthäufigkeit erhöhen. Darüber hinaus können Sie prüfpunktbezogene Parameterwerte optimieren, einschließlich `max_wal_size`. Außerdem wird empfohlen, vor dem Neustart des Servers den Befehl `CHECKPOINT` auszuführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
@@ -32,19 +33,19 @@ Mit den folgenden Schritten wird der PostgreSQL-Server neu gestartet:
 
 2. Klicken Sie auf der Seite **Übersicht** des Servers auf der Symbolleiste auf **Neu starten**.
 
-   ![Azure Database for PostgreSQL – Übersicht – Schaltfläche „Neu starten“](./media/howto-restart-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restart-server-portal/2-server.png" alt-text="Azure Database for PostgreSQL – Übersicht – Schaltfläche „Neu starten“":::
 
 3. Klicken Sie auf **Ja**, um den Neustart des Servers zu bestätigen.
 
-   ![Azure Database for PostgreSQL – Neustart bestätigen](./media/howto-restart-server-portal/3-restart-confirm.png)
+   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="Azure Database for PostgreSQL – Neustart bestätigen":::
 
-4. Beachten Sie, dass der Serverstatus zu „Wird neu gestartet“ wechselt.
+4. Beachten Sie, dass sich der Serverstatus in „Wird neu gestartet“ ändert.
 
-   ![Azure Database for PostgreSQL – Status „Wird neu gestartet“](./media/howto-restart-server-portal/4-restarting-status.png)
+   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="Azure Database for PostgreSQL – Status „Wird neu gestartet“":::
 
-5. Vergewissern Sie sich, das der Neustart des Servers erfolgreich ist.
+5. Vergewissern Sie sich, dass der Neustart des Servers erfolgreich war.
 
-   ![Azure Database for PostgreSQL – Erfolgreicher Neustart](./media/howto-restart-server-portal/5-restart-success.png)
+   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="Azure Database for PostgreSQL – Erfolgreicher Neustart":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

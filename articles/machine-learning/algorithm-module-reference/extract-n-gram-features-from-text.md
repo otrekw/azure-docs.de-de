@@ -1,24 +1,24 @@
 ---
 title: Referenz des Moduls „Extract N-Gram Features from Text“
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul zum Extrahieren von N-Grammen in Azure Machine Learning Service verwenden, um Textdaten in Merkmale zu zerlegen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Extract N-Gram-Modul im Azure Machine Learning-Designer verwenden, um Textdaten in Merkmale zu zerlegen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 09/01/2019
-ms.openlocfilehash: 0803627b8d2e9fb3db2c7c96d7dd74e9b275f5d8
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+author: likebupt
+ms.author: keli19
+ms.date: 12/08/2019
+ms.openlocfilehash: 37a10d90fa0e277fbe45d9f1377e365cb3d42996
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171000"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861459"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>Referenz des Moduls „Extract N-Gram Features from Text“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben. Verwenden Sie das Modul „Extract N-Gram Features from Text“ (N-Gramm-Merkmale aus Text extrahieren), um unstrukturierte Textdaten *in Merkmale zu zerlegen*. 
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben. Verwenden Sie das Modul „Extract N-Gram Features from Text“ (N-Gramm-Merkmale aus Text extrahieren), um unstrukturierte Textdaten *in Merkmale zu zerlegen*. 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>Konfiguration des Moduls „Extract N-Gram Features from Text“
 
@@ -28,11 +28,11 @@ Das Modul unterstützt die folgenden Szenarien für die Verwendung eines N-Gramm
 
 * [Verwenden einer vorhandenen Sammlung von Textmerkmalen](#use-an-existing-n-gram-dictionary), um eine Spalte mit freiem Text in Merkmale zu zerlegen.
 
-* [Bewerten oder Veröffentlichen eines Modells](#score-or-publish-a-model-that-uses-n-grams), das N-Gramme verwendet.
+* [Bewerten oder Bereitstellen eines Modells](#build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint), das N-Gramme verwendet
 
 ### <a name="create-a-new-n-gram-dictionary"></a>Erstellen eines neuen N-Gramm-Wörterbuchs
 
-1.  Fügen Sie das Modul „Extract N-Gram Features from Text“ (N-Gramm-Merkmale aus Text extrahieren) Ihrem Experiment hinzu, und verbinden Sie das Dataset, das den zu verarbeitenden Text enthält.
+1.  Fügen Sie das Modul Extract N-Gram Features from Text Ihrer Pipeline hinzu, und verbinden Sie das Dataset, das den zu verarbeitenden Text enthält.
 
 1.  Verwenden Sie **Text column** (Textspalte), um eine Spalte des Typs „string“ auszuwählen, die den zu extrahierenden Text enthält. Weil die Ergebnisse ausführlich sind, können Sie immer nur jeweils eine Spalte verarbeiten.
 
@@ -73,11 +73,11 @@ Das Modul unterstützt die folgenden Szenarien für die Verwendung eines N-Gramm
 
 1. Wählen Sie die Option **Normalize n-gram feature vectors** (N-Gramm-Merkmalsvektoren normalisieren) aus, um die Merkmalsvektoren zu normalisieren. Wenn diese Option aktiviert ist, wird jeder N-Gramm-Merkmalsvektor durch seine L2-Norm dividiert.
 
-1. Führen Sie das Experiment aus.
+1. Übermitteln Sie die Pipeline.
 
 ### <a name="use-an-existing-n-gram-dictionary"></a>Verwenden eines vorhandenen N-Gramm-Wörterbuchs
 
-1.  Fügen Sie das Modul „Extract N-Gram Features from Text“ (N-Gramm-Merkmale aus Text extrahieren) Ihrem Experiment hinzu, und verbinden Sie das Dataset, das den zu verarbeitenden Text enthält, mit dem **Dataset**-Port.
+1.  Fügen Sie das Modul Extract N-Gram Features from Text Ihrer Pipeline hinzu, und verbinden Sie das Dataset, das den zu verarbeitenden Text enthält, mit dem **Dataset**-Port.
 
 1.  Verwenden **Text column** (Textspalte), um die Textspalte auszuwählen, die den Text enthält, den Sie in Merkmale zerlegen möchten. Standardmäßig wählt das Modul alle Spalten des Typs **string** aus. Um optimale Ergebnisse zu erzielen, verarbeiten Sie jeweils eine einzelne Spalte.
 
@@ -92,19 +92,25 @@ Das Modul unterstützt die folgenden Szenarien für die Verwendung eines N-Gramm
 
 1.  Informationen zu allen anderen Optionen finden Sie in den Eigenschaftenbeschreibungen im [vorherigen Abschnitt](#create-a-new-n-gram-dictionary).
 
-1.  Führen Sie das Experiment aus.
+1.  Übermitteln Sie die Pipeline.
 
-### <a name="score-or-publish-a-model-that-uses-n-grams"></a>Bewerten oder Veröffentlichen eines Modells, das N-Gramme verwendet
+### <a name="build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint"></a>Erstellen von Rückschlusspipelines, die N-Gramme zum Bereitstellen eines Echtzeitendpunkts verwenden
 
-1.  Kopieren Sie das Modul **Extract N-Gram Features from Text** aus dem Trainingsdatenfluss in den Bewertungsdatenfluss.
+Eine Trainingspipeline mit **Extract N-Grams Feature From Text** und **Score Model** für Vorhersagen über das Testdataset wird in der folgenden Struktur erstellt:
 
-1.  Verbinden Sie die Ausgabe **Result Vocabulary** (Ergebnisvokabular) aus dem Trainingsdatenfluss mit dem **Input Vocabulary** (Eingabevokabular) für den Bewertungsdatenfluss.
+:::image type="content" source="./media/module/extract-n-gram-training-pipeline-score-model.png" alt-text="Beispiel für eine Trainingspipeline zum Extrahieren von N-Grammen" border="true":::
 
-1.  Ändern Sie im Bewertungsworkflow das Modul „Extract N-Gram Features from Text“, und legen Sie den **Vocabulary mode**-Parameter auf **ReadOnly** fest. Belassen Sie alle anderen Parameter ungeändert.
+Der **Vokabularmodus** des Moduls **Extract N-Grams Feature From Text** lautet **Create** (Erstellen), und der **Vokabularmodus** des Moduls, das mit dem Modul **Score Model** verbunden ist, lautet **ReadOnly** (Schreibgeschützt).
 
-1.  Um das Experiment zu veröffentlichen, speichern Sie das **Result Vocabulary** (Ergebnisvokabular) als Dataset.
+Nachdem Sie die obige Trainingspipeline erfolgreich übermittelt haben, können Sie die Ausgabe des eingekreisten Moduls als Dataset registrieren.
 
-1.  Verbinden Sie dann das gespeicherte Dataset mit dem Modul „Extract N-Gram Features from Text“ in Ihrem Bewertungsgraphen.
+:::image type="content" source="./media/module/extract-n-gram-output-voc-register-dataset.png" alt-text="Registrieren eines Datasets" border="true":::
+
+Danach können Sie eine Echtzeit-Rückschlusspipeline erstellen. Nachdem Sie die Rückschlusspipeline erstellt haben, müssen Sie diese manuell wie folgt anpassen:
+
+:::image type="content" source="./media/module/extract-n-gram-inference-pipeline.png" alt-text="Rückschlusspipeline" border="true":::
+
+Übermitteln Sie dann die Rückschlusspipeline, und stellen Sie einen Echtzeitendpunkt bereit.
 
 ## <a name="results"></a>Ergebnisse
 
@@ -120,7 +126,7 @@ Das Modul „Extract N-Gram Features from Text“ erstellt zwei Arten von Ausgab
 
 Das Vokabular enthält das N-Gramm-Wörterbuch mit den Bewertungen für die Begriffshäufigkeit, die als Teil der Analyse generiert werden. Die DF- und die IDF-Bewertung werden unabhängig von anderen Optionen generiert.
 
-+ **ID**: Ein Bezeichner, der für jedes eindeutige N-Gramm generiert wird.
++ **ID:** Ein Bezeichner, der für jedes eindeutige N-Gramm generiert wird.
 + **NGram**: Das N-Gramm. Leerzeichen oder andere Worttrennzeichen werden durch Unterstriche ersetzt.
 + **DF**: Die Bewertung für die Begriffshäufigkeit für das N-Gramm im ursprünglichen Korpus.
 + **IDF**: Die Bewertung für die inverse Dokumenthäufigkeit für das N-Gramm im ursprünglichen Korpus.
@@ -137,4 +143,4 @@ Sie können dieses Dataset manuell aktualisieren. Es könnte aber sein, dass Sie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an.

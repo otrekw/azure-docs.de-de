@@ -15,12 +15,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e015f7937db6788aa4473a8a04434121299901e9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60245496"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861781"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Benutzern, Gruppen und Kontakten
 Es gibt verschiedene Gründe, weshalb Sie möglicherweise über mehrere Active Directory-Gesamtstrukturen verfügen, und es gibt eine Reihe unterschiedlicher Bereitstellungstopologien. Häufige Modelle umfassen eine Kontoressourcenbereitstellung und per GAL synchronisierte Gesamtstrukturen nach einer Unternehmensfusion oder -übernahme. Es gibt zwar reine Modelle, Hybridmodelle sind jedoch ebenfalls häufig vorhanden. Die Standardkonfiguration der Azure AD Connect-Synchronisierung geht von keinem bestimmten Modell aus. Es können jedoch auf Basis des im Installationshandbuch ausgewählten Benutzerabgleichs unterschiedliche Verhaltensweisen beobachtet werden.
@@ -39,15 +39,15 @@ Wichtige Punkte, die beim Synchronisieren von Gruppen in Active Directory mit Az
 
 * Azure AD Connect schließt integrierte Sicherheitsgruppen von der Verzeichnissynchronisierung aus.
 
-* Azure AD Connect unterstützt nicht die Synchronisierung von [Mitgliedschaften in primären Gruppen](https://technet.microsoft.com/library/cc771489(v=ws.11).aspx) mit Azure AD.
+* Azure AD Connect unterstützt nicht die Synchronisierung von [Mitgliedschaften in primären Gruppen](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771489(v=ws.11)) mit Azure AD.
 
-* Azure AD Connect unterstützt nicht die Synchronisierung von [Mitgliedschaften in dynamischen Verteilergruppen](https://technet.microsoft.com/library/bb123722(v=exchg.160).aspx) mit Azure AD.
+* Azure AD Connect unterstützt nicht die Synchronisierung von [Mitgliedschaften in dynamischen Verteilergruppen](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups) mit Azure AD.
 
 * So synchronisieren Sie eine Active Directory-Gruppe mit Azure AD als E-Mail-aktivierte Gruppe:
 
     * Wenn das *proxyAddress*-Attribut der Gruppe leer ist, muss das *mail*-Attribut einen Wert enthalten.
 
-    * Wenn das *proxyAddress*-Attribut der Gruppe nicht leer ist, muss es mindestens einen SMTP-Proxyadresswert enthalten. Hier einige Beispiele:
+    * Wenn das *proxyAddress*-Attribut der Gruppe nicht leer ist, muss es mindestens einen SMTP-Proxyadresswert enthalten. Im Folgenden finden Sie einige Beispiele:
     
       * Eine Active Directory-Gruppe, deren proxyAddress-Attribut den Wert *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* hat, ist in Azure AD nicht E-Mail-aktiviert. Es enthält keine SMTP-Adresse.
       
@@ -76,4 +76,3 @@ Nachdem ein Objekt nach Azure AD exportiert wurde, kann der Wert für "sourceAn
 ## <a name="additional-resources"></a>Weitere Ressourcen
 * [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](how-to-connect-sync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md)
-

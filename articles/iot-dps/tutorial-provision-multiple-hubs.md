@@ -1,22 +1,21 @@
 ---
-title: Bereitstellen von Geräten für IoT Hubs mit Lastausgleich mithilfe des Azure IoT Hub Device Provisioning-Diensts | Microsoft-Dokumentation
-description: Automatische Device Provisioning Service-Gerätebereitstellung für IoT Hubs mit Lastausgleich im Azure-Portal
-author: sethmanheim
-ms.author: sethm
-ms.date: 09/05/2017
+title: 'Tutorial: Bereitstellen von Geräten für Hubs mit Lastenausgleich mithilfe von Azure IoT Hub Device Provisioning Service'
+description: In diesem Tutorial wird gezeigt, wie Device Provisioning Service (DPS) die automatische Gerätebereitstellung für IoT-Hubs mit Lastenausgleich im Azure-Portal ermöglicht.
+author: wesmc7777
+ms.author: wesmc
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 887bda92a1165a3dd17e9105e921a5df9e0c5534
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61248163"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91315999"
 ---
-# <a name="provision-devices-across-load-balanced-iot-hubs"></a>Bereitstellen von Geräten für IoT Hubs mit Lastausgleich
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Tutorial: Bereitstellen von Geräten für IoT Hubs mit Lastausgleich
 
 In diesem Tutorial wird gezeigt, wie Sie mit Device Provisioning Service Geräte für mehrere IoT Hubs mit Lastausgleich bereitstellen. In diesem Tutorial lernen Sie Folgendes:
 
@@ -68,8 +67,6 @@ Verknüpfen Sie Device Provisioning Service und die IoT Hub-Instanz, damit Devic
 4. Aktivieren Sie auf der Seite **Verknüpfung zu IoT Hub hinzufügen** die Optionsfelder, um anzugeben, ob sich der verknüpfte IoT Hub im aktuellen Abonnement oder in einem anderen Abonnement befindet. Wählen Sie dann im Feld **IoT Hub** den Namen von IoT Hub.
 5. Klicken Sie auf **Speichern**.
 
-## <a name="next-steps"></a>Nächste Schritte
-
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
@@ -78,8 +75,10 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Festlegen der Device Provisioning Service-Zuordnungsrichtlinie zur **gleichmäßigen Verteilung**
 > * Verknüpfen der neuen IoT Hub-Instanz mit Device Provisioning Service
 
+## <a name="next-steps"></a>Nächste Schritte
+
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md
 > [!div class="nextstepaction"]
-> [Bind an existing custom SSL certificate to Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
+> [Bind an existing custom SSL certificate to Azure Web Apps]()
 -->

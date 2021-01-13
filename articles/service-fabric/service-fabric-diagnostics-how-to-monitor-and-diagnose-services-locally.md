@@ -1,25 +1,16 @@
 ---
-title: Debuggen von Azure Service Fabric-Apps unter Windows | Microsoft-Dokumentation
+title: Debuggen von Azure Service Fabric-Apps unter Windows
 description: Erfahren Sie, wie Sie mit Microsoft Azure Service Fabric erstellte Dienste auf einem lokalen Entwicklungscomputer überwachen und diagnostizieren.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: edcc0631-ed2d-45a3-851d-2c4fa0f4a326
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 31c559c1ab314b7e1f29bd96f74d6d82cfcc0420
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60392829"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86247420"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Computer
 > [!div class="op_single_selector"]
@@ -31,7 +22,7 @@ ms.locfileid: "60392829"
 Überwachung, Erkennung, Diagnose und Problembehandlung ermöglichen das Ausführen von Diensten mit minimalen Unterbrechungen für Benutzer. Die Überwachung und Diagnose sind in einer tatsächlichen bereitgestellten Produktionsumgebung zwar wichtig, die Wirksamkeit hängt aber davon ab, ob bei der Entwicklung von Diensten ein ähnliches Modell verwendet wird. Nur so ist sichergestellt, dass die Dienste später tatsächlich funktionieren. Service Fabric erleichtert Dienstentwicklern das Implementieren von Diagnosen, die sowohl in einer lokalen Umgebung auf einem einzelnen Computer als auch in der tatsächlichen Konfiguration in einem Produktionscluster nahtlos verwendet werden können.
 
 ## <a name="event-tracing-for-windows"></a>Ereignisablaufverfolgung für Windows
-[Ereignisablaufverfolgung für Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (Event Tracing for Windows, ETW) ist die empfohlene Technologie für das Nachverfolgen von Meldungen in Service Fabric. Einige Vorteile der Verwendung von ETW sind wie folgt:
+[Event Tracing for Windows](/windows/win32/etw/event-tracing-portal) (ETW) ist die empfohlene Technologie für das Nachverfolgen von Meldungen in Service Fabric. Einige Vorteile der Verwendung von ETW sind wie folgt:
 
 * **ETW ist schnell.** ETW wurde als Technologie für die Ablaufverfolgung erstellt, die minimale Auswirkungen auf die Codeausführungszeiten hat.
 * **Die ETW-Ablaufverfolgung funktioniert nahtlos in lokalen Entwicklungsumgebungen und in realen Clusterkonfigurationen.** Das heißt, Sie müssen den Ablaufverfolgungscode nicht neu schreiben, wenn Sie den Code in einem echten Cluster bereitstellen.
@@ -65,6 +56,5 @@ Nachdem Sie die benutzerdefinierte ETW-Ablaufverfolgung dem Dienstcode hinzugef�
 ## <a name="next-steps"></a>Nächste Schritte
 Der Ablaufverfolgungscode, den Sie Ihrer Anwendung für die lokale Diagnose hinzugefügt haben, funktioniert auch mit den Tools für die Anzeige dieser Ereignisse, wenn Sie Ihre Anwendung in einem Azure-Cluster ausführen. Sehen Sie sich diese Artikel an, in denen die verschiedenen Optionen für die Tools erläutert werden und beschrieben wird, wie Sie sie einrichten können.
 
-* [Sammeln von Protokollen mit Azure-Diagnose](service-fabric-diagnostics-how-to-setup-wad.md)
+* [Sammeln von Protokollen mit Azure-Diagnose](./service-fabric-diagnostics-event-aggregation-wad.md)
 * [Ereignisaggregation und -sammlung mithilfe von EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md)
-

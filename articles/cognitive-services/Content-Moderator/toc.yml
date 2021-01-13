@@ -1,34 +1,25 @@
 - name: Content Moderator-Dokumentation
   href: index.yml
 - name: Übersicht
+  expanded: true
   items:
     - name: Was ist Content Moderator?
       href: overview.md
       expanded: true
+    - name: Neues
+      href: whats-new.md
 - name: Schnellstarts
   items:
     - name: Testen von Content Moderator im Web
       href: quick-start.md
-    - name: Verwenden des Client-SDK
-      items:
-        - name: Verwenden des .NET SDK
-          items:
-            - name: Analysieren von Bildinhalten
-              href: image-moderation-quickstart-dotnet.md
-            - name: Analysieren von Textinhalten
-              href: text-moderation-quickstart-dotnet.md
-        - name: Verwenden des Python SDK
-          href: python-sdk-quickstart.md
-        - name: Verwenden des Java SDK
-          href: java-sdk-quickstart.md
-- name: Lernprogramme
+    - name: Verwenden der Clientbibliothek oder REST-API
+      href: client-libraries.md
+- name: Tutorials
   items:
     - name: Moderieren von E-Commerce-Bildern
       href: ecommerce-retail-catalog-moderation.md
     - name: Moderieren von Facebook-Inhalten
       href: facebook-post-moderation.md
-    - name: Video- und Transkriptmoderation
-      href: video-transcript-moderation-review-tutorial-dotnet.md
 - name: Konzepte
   items:
     - name: Bildmoderation
@@ -45,7 +36,7 @@
   items:
     - name: Moderieren von Inhalten
       items:
-        - name: REST-API
+        - name: API-Konsole
           items:
             - name: Bilder – API-Konsole
               href: try-image-api.md
@@ -67,10 +58,8 @@
       items:
         - name: Prüfungstool (Browser)
           href: Review-Tool-User-Guide/Review-Moderated-Images.md
-        - name: REST-API
+        - name: API-Konsole
           href: try-review-api-review.md
-        - name: .NET SDK
-          href: moderation-reviews-quickstart-dotnet.md
         - name: Videoüberprüfungen (.NET)
           href: video-reviews-quickstart-dotnet.md
         - name: Videotranskript-Überprüfungen (.NET)
@@ -79,11 +68,11 @@
       items:
         - name: Prüfungstool (Browser)
           href: Review-Tool-User-Guide/Workflows.md
-        - name: REST-API
+        - name: API-Konsole
           href: try-review-api-workflow.md
     - name: Definieren und Verwenden von Aufträgen
       items:
-        - name: REST-API
+        - name: API-Konsole
           href: try-review-api-job.md
         - name: .NET SDK
           href: moderation-jobs-quickstart-dotnet.md
@@ -98,17 +87,19 @@
     - name: SDKs
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable'
+          href: /java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-contentmoderator/?view=azure-node-latest
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python'
+          href: /python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python
         - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
 - name: Ressourcen
   items:
+    - name: Support- und Hilfeoptionen
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
     - name: Beispiele
       items:
         - name: .NET SDK-Beispiele
@@ -117,10 +108,10 @@
           href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
         - name: Node.js SDK-Beispiele
           href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
-        - name: 'REST-API-Beispiele in C#'
+        - name: REST-API-Beispiele in C#
           href: samples-rest.md
         - name: Weitere Azure-Beispiele
-          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator'
+          href: /samples/browse/?products=azure&term=content-moderator
     - name: Azure-Webinarreihe
       href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
     - name: Preise und Einschränkungen
@@ -137,5 +128,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Verschlüsselung
+      href: content-moderator-encryption-of-data-at-rest.md

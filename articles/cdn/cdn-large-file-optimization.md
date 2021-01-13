@@ -1,9 +1,9 @@
 ---
 title: Optimierung großer Dateidownloads mit Azure CDN
-description: In diesem Artikel erfahren Sie, wie Sie große Dateidownloads optimieren können.
+description: Erfahren Sie, wie das Herunterladen großer Dateien in Azure Content Delivery Network optimiert werden kann. Dieser Artikel umfasst verschiedene Szenarien.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/01/2018
-ms.author: magattus
-ms.openlocfilehash: 4fe72985a799595908a0ff6bceb1a73dca823c8f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: allensu
+ms.openlocfilehash: ed5768e89482d32bb140e9ba7064de2d20809892
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593780"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020720"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optimierung großer Dateidownloads mit Azure CDN
 
@@ -44,10 +44,10 @@ Nachdem der Block im CDN-Edgebereich angekommen ist, wird er zwischengespeichert
 
 Weitere Informationen zur Bytebereichsanforderung finden Sie unter [RFC 7233](https://tools.ietf.org/html/rfc7233).
 
-Das CDN speichert alle Blöcke zwischen, sobald sie eingetroffen sind. Es ist nicht erforderlich, die gesamte Datei im CDN-Cache zwischenzuspeichern. Nachfolgende Anforderungen für die Datei- oder Bytebereiche werden aus dem CDN-Cache bereitgestellt. Wenn nicht alle Blöcke im CDN zwischengespeichert werden, wird das Vorab-Abrufen verwendet, um Blöcke vom Ursprung anzufordern. Diese Optimierung setzt voraus, dass der Ursprungsserver Bytebereichsanforderungen unterstützt. Andernfalls ist diese Optimierung nicht effektiv. 
+Das CDN speichert alle Blöcke zwischen, sobald sie eingetroffen sind. Es ist nicht erforderlich, die gesamte Datei im CDN-Cache zwischenzuspeichern. Nachfolgende Anforderungen für die Datei- oder Bytebereiche werden aus dem CDN-Cache bereitgestellt. Wenn nicht alle Blöcke im CDN zwischengespeichert werden, wird das Vorab-Abrufen verwendet, um Blöcke vom Ursprung anzufordern. Diese Optimierung setzt voraus, dass der Ursprungsserver Bytebereichsanforderungen unterstützt. Wenn der Ursprungsserver keine Bytebereichsanforderungen unterstützt, tritt bei Anforderungen von mehr als 8 MB Daten ein Fehler auf. 
 
 ### <a name="conditions-for-large-file-optimization"></a>Bedingungen für die Optimierung großer Dateien
-Die Features zur Optimierung großer Dateien für **Azure CDN Standard von Microsoft** werden standardmäßig aktiviert, wenn Sie den Optimierungstyp „Allgemeine Webbereitstellung“ verwenden. Es gilt keine Beschränkung in Bezug auf die maximale Dateigröße.
+Es gilt keine Beschränkung in Bezug auf die maximale Dateigröße.
 
 
 ## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Optimieren der Übermittlung großer Dateien mit Azure CDN von Verizon
@@ -107,8 +107,7 @@ Das CDN speichert alle Blöcke zwischen, sobald sie eingetroffen sind. Es ist ni
 ### <a name="caching"></a>Caching
 Für die Optimierung großer Dateien werden unterschiedliche Standardzeiten für den Ablauf der Zwischenspeicherung verwendet, die von der allgemeinen Webbereitstellung abweichen. Die Unterscheidung erfolgt zwischen der positiven und negativen Zwischenspeicherung basierend auf HTTP-Antwortcodes. Wenn der Ursprungsserver in der Antwort eine Ablaufzeit per Cache-Control- oder Expires-Header angibt, wird dieser Wert vom CDN berücksichtigt. Macht der Ursprungsserver keine Angabe und erfüllt die Datei die Typ- und Größenbedingungen für diesen Optimierungstyp, dann verwendet das CDN die Standardwerte für die Optimierung großer Dateien. Andernfalls verwendet das CDN die Standardeinstellungen für die allgemeine Webbereitstellung.
 
-
-|    | Allgemeine Webübermittlung | Optimierung großer Dateien 
+| Caching  | Allgemeine Webübermittlung | Optimierung großer Dateien 
 --- | --- | --- 
 Caching: Positiv <br> HTTP 200, 203, 300, <br> 301, 302 und 410 | 7 Tage |1 Tag  
 Caching: Negativ <br> HTTP 204, 305, 404 <br> und 405 | Keine | 1 Sekunde 
@@ -130,7 +129,7 @@ Minimale Dateigröße | 10 MB
 Maximale Dateigröße | 150 GB 
 Merkmale des Ursprungsservers | Muss Bytebereichsanforderungen unterstützen 
 
-## <a name="additional-considerations"></a>Zusätzliche Überlegungen
+## <a name="additional-considerations"></a>Weitere Überlegungen
 
 Berücksichtigen Sie für diesen Optimierungstyp auch folgende Punkte:
 

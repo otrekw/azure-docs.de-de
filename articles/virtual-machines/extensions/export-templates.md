@@ -1,5 +1,5 @@
 ---
-title: Exportieren von Azure-Ressourcengruppen, die VM-Erweiterungen enthalten | Microsoft-Dokumente
+title: Exportieren von Azure-Ressourcengruppen, die VM-Erweiterungen enthalten
 description: Exportieren von Resource Manager-Vorlagen, die Erweiterungen für virtuelle Computer enthalten.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 7f4e2ca6-f1c7-4f59-a2cc-8f63132de279
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 652ed732a7fe8f08e48aba6fc4bd1b52164d1fa0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 40b8ff01a5c8d00d3234af31877ea58c471026e8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169061"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955751"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Exportieren von Ressourcengruppen, die VM-Erweiterungen enthalten
 
@@ -33,18 +34,7 @@ Es sind viele Erweiterungen für virtuelle Computer verfügbar. Nicht alle Erwei
 
 Die folgenden Erweiterungen können mit dem Automatisierungsskriptfeature exportiert werden.
 
-| Erweiterung ||||
-|---|---|---|---|
-| Acronis Backup | Datadog Windows Agent | OS Patching For Linux | VM Snapshot Linux
-| Acronis Backup Linux | Docker-Erweiterung | Puppet Agent |
-| Bg Info | DSC Extension | Site 24x7 Apm Insight |
-| BMC CTM Agent Linux | Dynatrace Linux | Site 24x7 Linux Server |
-| BMC CTM Agent Windows | Dynatrace Windows | Site 24x7 Windows Server |
-| Chef Client | HPE Security Application Defender | Trend Micro DSA |
-| Custom Script | IaaS Antimalware | Trend Micro DSA Linux |
-| Benutzerdefinierte Skripterweiterung | IaaS-Diagnose | VM Access For Linux |
-| Custom Script for Linux | Linux Chef Client | VM Access For Linux |
-| Datadog Linux Agent | Linux-Diagnose | VM Snapshot |
+> Acronis Backup, Acronis Backup Linux, Bg Info, BMC CTM Agent Linux, BMC CTM Agent Windows, Chef Client, Custom Script, Custom Script Extension, Custom Script for Linux, Datadog Linux Agent, Datadog Windows Agent, Docker Extension, DSC Extension, Dynatrace Linux, Dynatrace Windows, HPE Security Application Defender, IaaS Antimalware, IaaS Diagnostics, Linux Chef Client, Linux Diagnostic, OS Patching For Linux, Puppet Agent, Site 24x7 Apm Insight, Site 24x7 Linux Server, Site 24x7 Windows Server, Trend Micro DSA, Trend Micro DSA Linux, VM Access For Linux, VM Access For Linux, VM Snapshot, VM Snapshot Linux
 
 ## <a name="export-the-resource-group"></a>Exportieren der Ressourcengruppe
 
@@ -148,7 +138,7 @@ Die endgültige Erweiterungsressource sieht ähnlich wie das folgende JSON-Beisp
 }
 ```
 
-Wenn Sie Vorlagenparameter zum Angeben von Eigenschaftswerten verwenden, müssen diese erstellt werden. Achten Sie beim Erstellen von Vorlagenparameter für geschützte Einstellungswerte darauf, den Parametertyp `SecureString` zu verwenden, damit vertrauliche Werte geschützt sind. Weitere Informationen zum Verwenden von Parametern finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../resource-group-authoring-templates.md).
+Wenn Sie Vorlagenparameter zum Angeben von Eigenschaftswerten verwenden, müssen diese erstellt werden. Achten Sie beim Erstellen von Vorlagenparameter für geschützte Einstellungswerte darauf, den Parametertyp `SecureString` zu verwenden, damit vertrauliche Werte geschützt sind. Weitere Informationen zum Verwenden von Parametern finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md).
 
 Im Beispiel der `IaasDiagnostic`-Erweiterung würden im Parameterabschnitt der Resource Manager-Vorlage die folgenden Parameter erstellt.
 

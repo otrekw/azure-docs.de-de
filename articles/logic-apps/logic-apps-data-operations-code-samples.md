@@ -1,21 +1,17 @@
 ---
-title: 'Beispiele für Datenvorgänge: Azure Logic Apps'
-description: Codebeispiele für Datenvorgangsaktionen in Azure Logic Apps
+title: Codebeispiele für die Verwendung von Datenvorgängen
+description: Testen Sie diese Codebeispiele, die zeigen, wie Sie Datenvorgänge in automatisierten Workflows verwenden können, die mit Azure Logic Apps erstellt wurden.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 09/01/2019
-ms.openlocfilehash: d692d943249c9fc6b46ed6eb1ddff3f07152f5b6
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179134"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84712444"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Codebeispiele für Datenvorgänge in Azure Logic Apps
 

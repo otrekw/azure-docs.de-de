@@ -1,25 +1,15 @@
 ---
-title: Hinweise zur Serialisierung des Actor-Typs in Reliable Actors | Microsoft Docs
+title: Hinweise zur Serialisierung des Actor-Typs in Reliable Actors
 description: Erörtert grundlegende Anforderungen für das Definieren serialisierbarer Klassen, die zum Definieren von Statusangaben und Schnittstellen für Service Fabric Reliable Actors verwendet werden können.
-services: service-fabric
-documentationcenter: .net
-author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 6e50e4dc-969a-4a1c-b36c-b292d964c7e3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: c8eeeb0ade6ca002adf3211cbf49127be9b76edb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2a1118e394046b217a288663659a2c910098e992
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725651"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576008"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Hinweise zur Typserialisierung von Service Fabric Reliable Actors
 Die Argumente aller Methoden, die Ergebnistypen der von jeder Methode zurückgegebenen Aufgaben in einer Actor-Schnittstelle sowie Objekte, die im Zustands-Manager des Akteurs gespeichert sind, müssen [mit DataContract serialisiert werden können](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). Dies gilt auch für die Argumente der Methoden, die in [Actor-Ereignisschnittstellen](service-fabric-reliable-actors-events.md)definiert werden. (In Actor-Ereignisschnittstellen definierte Methoden geben immer „void“ zurück).

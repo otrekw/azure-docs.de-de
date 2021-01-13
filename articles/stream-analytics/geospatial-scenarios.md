@@ -1,18 +1,17 @@
 ---
-title: Szenarien mit Geofencing und räumlicher Aggregation per Azure Stream Analytics
+title: Geofencing und räumliche Aggregation per Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie Sie Azure Stream Analytics für das Geofencing und die räumliche Aggregation verwenden.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: cc301855e4cdcb8eb687e753835577399cfe72b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 90d8c70ac0a34470e8121d2234fd6b898cfed1ab
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789562"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130594"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Szenarien mit Geofencing und räumlicher Aggregation per Azure Stream Analytics
 
@@ -126,4 +125,4 @@ In der Abbildung unten ist die Ausgabe der Abfrage für das Power BI-Dashboard d
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Einführung in Stream Analytics-Geofunktionen](stream-analytics-geospatial-functions.md)
-* [GeoSpatial Functions (Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/geospatial-functions) (Geofunktionen (Azure Stream Analytics))
+* [GeoSpatial Functions (Azure Stream Analytics)](/stream-analytics-query/geospatial-functions) (Geofunktionen (Azure Stream Analytics))

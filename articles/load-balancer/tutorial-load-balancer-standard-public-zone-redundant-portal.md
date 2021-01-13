@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Verfügbarkeitszonenübergreifende Load Balancer-VMs: Azure-Portal'
-titlesuffix: Azure Load Balancer
+title: 'Tutorial: Durchführen eines Lastenausgleichs über Verfügbarkeitszonen hinweg für VMs: Azure-Portal'
+titleSuffix: Azure Load Balancer
 description: In diesem Tutorial wird gezeigt, wie Sie einen Lastenausgleich im Tarif „Standard“ mit einem zonenredundanten Front-End erstellen, um mit dem Azure-Portal einen Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg durchzuführen.
 services: load-balancer
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 5b024321a18c6dec4f56a7cbc12c5a8fa748f903
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4e07285eca0fd10b73b386fcf139cdad5b94ddc2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273472"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696403"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Verfügbarkeitszonenübergreifender Lastenausgleich für VMs mit einer Load Balancer Standard-Instanz im Azure-Portal
 
@@ -37,9 +37,13 @@ Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der 
 
 Informationen zur Verwendung von Verfügbarkeitszonen mit Load Balancer Standard finden Sie unter [Load Balancer Standard und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
 
-Sie können dieses Tutorial auch mit der [Azure-Befehlszeilenschnittstelle](load-balancer-standard-public-zone-redundant-cli.md) durcharbeiten.
+Sie können dieses Tutorial auch mit der [Azure-Befehlszeilenschnittstelle](./quickstart-load-balancer-standard-public-cli.md) durcharbeiten.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Ein Azure-Abonnement
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -56,7 +60,7 @@ Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLBAZ* in das Textfeld ein.|
-    | NAME                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
     | type          | Wählen Sie **Öffentlich** aus.                                        |
     | SKU           | Wählen Sie **Standard** aus.                          |
@@ -69,16 +73,20 @@ Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-
 
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und virtuelle Computer in unterschiedlichen Zonen für die Region und installieren anschließend IIS auf den virtuellen Computern, um den zonenredundanten Lastenausgleich zu testen. Fällt eine Zone aus, tritt infolgedessen ein Fehler beim Integritätstest für die VM in derselben Zone auf, und der Datenverkehr wird weiterhin von VMs in den anderen Zonen verarbeitet.
 
-### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-Erstellen Sie ein virtuelles Netzwerk zum Bereitstellen Ihrer Back-End-Server.
+## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
-1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**, und geben Sie folgende Werte für das virtuelle Netzwerk ein:
-    - *myVnet*: Name des virtuellen Netzwerks
-    - *myResourceGroupLBAZ*: Für den Namen der vorhandenen Ressourcengruppe.
-    - *myBackendSubnet*: Subnetzname
-2. Klicken Sie auf **Erstellen**, um das virtuelle Netzwerk zu erstellen.
+In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ersetzt werden:
 
-    ![Erstellen eines virtuellen Netzwerks](./media/load-balancer-standard-public-availability-zones-portal/2-load-balancer-virtual-network.png)
+| Parameter                   | Wert                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupLBAZ (Wählen Sie die vorhandene Ressourcengruppe aus.) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Europa, Westen      |
+| **\<IPv4-address-space>**   | 10.0.0.0/16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0/24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
@@ -89,7 +97,7 @@ Erstellen Sie eine Netzwerksicherheitsgruppe, um eingehende Verbindungen für Ih
     - *myNetworkSecurityGroup*: Für den Namen der Netzwerksicherheitsgruppe.
     - *myResourceGroupLBAZ*: Für den Namen der vorhandenen Ressourcengruppe.
    
-![Erstellen eines virtuellen Netzwerks](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
+![Screenshot, der den Bereich „Netzwerksicherheitsgruppe erstellen“ zeigt.](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
 ### <a name="create-network-security-group-rules"></a>Erstellen von Netzwerksicherheitsgruppen-Regeln
 
@@ -108,7 +116,7 @@ In diesem Abschnitt erstellen Sie Netzwerksicherheitsgruppen-Regeln, um eingehen
     - *Allow HTTP* als Beschreibung der Lastenausgleichsregel
 4. Klicken Sie auf **OK**.
  
-   ![Erstellen eines virtuellen Netzwerks](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![Screenshot des Bereichs „Eingangssicherheitsregel hinzufügen“.](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. Wiederholen Sie die Schritte 2 bis 4, um eine weitere Regel namens *myRDPRule* zu erstellen und eine eingehende RDP-Verbindung über den Port 3389 zu ermöglichen. Verwenden Sie dabei die folgenden Werte:
     - *Service Tag* für **Quelle**
     - *Internet* für **Quelldiensttag**
@@ -136,9 +144,6 @@ Erstellen Sie virtuelle Computer in unterschiedlichen Zonen (Zone 1, Zone 2 und 
     - *myNetworkSecurityGroup*: Für den Namen der Netzwerksicherheitsgruppe (Firewall).
 5. Klicken Sie auf **Deaktiviert**, um die Startdiagnose zu deaktivieren.
 6. Klicken Sie auf **OK**, überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **Erstellen**.
-  
-   ![Erstellen eines virtuellen Computers](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
-
 7. Erstellen Sie anhand der Schritte 1–6 in Zone 2 eine zweite VM namens *VM2* und in Zone 3 eine dritte VM mit *myVnet* als virtuelles Netzwerk, *myBackendSubnet* als Subnetz und **myNetworkSecurityGroup* als Netzwerksicherheitsgruppe.
 
 ### <a name="install-iis-on-vms"></a>Installieren von IIS auf VMs
@@ -216,6 +221,7 @@ Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virt
     - *myHealthProbe*: Name des Integritätstests
 4. Klicken Sie auf **OK**.
     
+    
     ![Hinzufügen einer Lastenausgleichsregel](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)
 
 ## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
@@ -229,8 +235,10 @@ Sie können eine erzwungene Aktualisierung Ihres Webbrowsers durchführen, um zu
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Wählen Sie hierzu die Ressourcengruppe aus, die den Lastenausgleich enthält, und klicken Sie auf **Löschen**.
+Löschen Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Wählen Sie dazu die Ressourcengruppe aus, die den Lastenausgleich enthält, und wählen Sie **Löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Load Balancer Standard](load-balancer-standard-overview.md).
+Informieren Sie sich über den Lastenausgleich für virtuelle Computer innerhalb einer bestimmten Verfügbarkeitszone:
+> [!div class="nextstepaction"]
+> [Tutorial: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Verfügbarkeitszone mit Load Balancer Standard im Azure-Portal](tutorial-load-balancer-standard-public-zonal-portal.md)

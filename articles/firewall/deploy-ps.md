@@ -4,15 +4,15 @@ description: In diesem Artikel erfahren Sie, wie Sie Azure Firewall unter Verwen
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 4/10/2019
+ms.date: 12/03/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: 494beb6ba2bf8a9409962b4418089cdad0e182e1
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.topic: how-to
+ms.openlocfilehash: e39e27dbeb9394d19a9d7fd8791c147e11a56bdb
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114782"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558883"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Bereitstellen und Konfigurieren von Azure Firewall mithilfe von Azure PowerShell
 
@@ -25,23 +25,23 @@ Eine Möglichkeit zur Steuerung des ausgehenden Netzwerkzugriffs aus einem Subne
 
 Die konfigurierten Firewallregeln werden auf den Netzwerkdatenverkehr angewendet, wenn Sie Ihren Netzwerkdatenverkehr an die Firewall als Subnetz-Standardgateway weiterleiten.
 
-In diesem Artikel erstellen Sie der Einfachheit halber ein einzelnes vereinfachtes VNET mit drei Subnetzen. Für Produktionsbereitstellungen wird ein [Hub-Spoke-Modell](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) empfohlen, bei dem sich die Firewall in einem eigenen VNET befindet. Die Workloadserver befinden sich in per Peering verknüpften VNETs in derselben Region mit einem oder mehreren Subnetzen.
+In diesem Artikel erstellen Sie der Einfachheit halber ein einzelnes vereinfachtes VNET mit drei Subnetzen. Für Produktionsbereitstellungen wird ein [Hub-Spoke-Modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) empfohlen, bei dem sich die Firewall in einem eigenen VNET befindet. Die Workloadserver befinden sich in per Peering verknüpften VNETs in derselben Region mit einem oder mehreren Subnetzen.
 
 * **AzureFirewallSubnet:** Das Subnetz mit der Firewall.
 * **Workload-SN:** Das Subnetz mit dem Workloadserver. Der Netzwerkdatenverkehr dieses Subnetzes durchläuft die Firewall.
-* **Jump-SN:** Das Subnetz mit dem Sprungserver. Der Sprungserver besitzt eine öffentliche IP-Adresse, mit der Sie eine Remotedesktopverbindung herstellen können. Von dort aus können Sie dann über einen weiteren Remotedesktop eine Verbindung mit dem Workloadserver herstellen.
+* **AzureBastionSubnet:** Das für Azure Bastion verwendete Subnetz. Wird für die Verbindungsherstellung mit dem Workloadserver verwendet. Weitere Informationen zu Azure Bastion finden Sie unter [Was ist Azure Bastion?](../bastion/bastion-overview.md).
 
-![Netzwerkinfrastruktur des Tutorials](media/tutorial-firewall-rules-portal/Tutorial_network.png)
+![Netzwerkinfrastruktur des Tutorials](media/deploy-ps/tutorial-network.png)
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten einer Netzwerkumgebung zu Testzwecken
-> * Bereitstellen einer Firewall
-> * Erstellen einer Standardroute
-> * Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf www.google.com
-> * Konfigurieren einer Netzwerkregel, um den Zugriff auf externe DNS-Server zuzulassen
-> * Testen der Firewall
+
+* Einrichten einer Netzwerkumgebung zu Testzwecken
+* Bereitstellen einer Firewall
+* Erstellen einer Standardroute
+* Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf www.google.com
+* Konfigurieren einer Netzwerkregel, um den Zugriff auf externe DNS-Server zuzulassen
+* Testen der Firewall
 
 Sie können dieses Verfahren auch im [Azure-Portal](tutorial-firewall-deploy-portal.md) durchführen, wenn Sie das vorziehen.
 
@@ -49,7 +49,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Verfahren müssen Sie PowerShell lokal ausführen. Das Azure PowerShell-Modul muss installiert sein. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-Az-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Connect-AzAccount` aus, um eine Verbindung mit Azure zu erstellen.
+Für dieses Verfahren müssen Sie PowerShell lokal ausführen. Das Azure PowerShell-Modul muss installiert sein. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Connect-AzAccount` aus, um eine Verbindung mit Azure zu erstellen.
 
 ## <a name="set-up-the-network"></a>Einrichten des Netzwerks
 
@@ -63,56 +63,55 @@ Die Ressourcengruppe enthält alle Ressourcen für die Bereitstellung.
 New-AzResourceGroup -Name Test-FW-RG -Location "East US"
 ```
 
-### <a name="create-a-vnet"></a>Erstellen eines VNET
+### <a name="create-a-virtual-network-and-azure-bastion-host"></a>Erstellen eines virtuellen Netzwerks und eines Azure Bastion-Hosts
 
 Dieses virtuelle Netzwerk umfasst drei Subnetze:
 
 > [!NOTE]
-> Die Größe des Subnetzes „AzureFirewallSubnet“ beträgt /26. Weitere Informationen zur Subnetzgröße finden Sie unter [Azure Firewall – Häufig gestellte Fragen](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+> Die Größe des Subnetzes „AzureFirewallSubnet“ beträgt /26. Weitere Informationen zur Subnetzgröße finden Sie unter [Azure Firewall – Häufig gestellte Fragen](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
 ```azurepowershell
+$Bastionsub = New-AzVirtualNetworkSubnetConfig -Name AzureBastionSubnet -AddressPrefix 10.0.0.0/27
 $FWsub = New-AzVirtualNetworkSubnetConfig -Name AzureFirewallSubnet -AddressPrefix 10.0.1.0/26
 $Worksub = New-AzVirtualNetworkSubnetConfig -Name Workload-SN -AddressPrefix 10.0.2.0/24
-$Jumpsub = New-AzVirtualNetworkSubnetConfig -Name Jump-SN -AddressPrefix 10.0.3.0/24
 ```
 Erstellen Sie jetzt das virtuelle Netzwerk:
 
 ```azurepowershell
 $testVnet = New-AzVirtualNetwork -Name Test-FW-VN -ResourceGroupName Test-FW-RG `
--Location "East US" -AddressPrefix 10.0.0.0/16 -Subnet $FWsub, $Worksub, $Jumpsub
+-Location "East US" -AddressPrefix 10.0.0.0/16 -Subnet $Bastionsub, $FWsub, $Worksub
 ```
-
-### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
-
-Erstellen Sie nun die virtuellen Sprung- und Workloadcomputer, und platzieren Sie sie in den entsprechenden Subnetzen.
-Geben Sie bei entsprechender Aufforderung einen Benutzernamen und das Kennwort für den virtuellen Computer ein.
-
-Erstellen Sie den virtuellen Srv-Jump-Computer.
+### <a name="create-public-ip-address-for-azure-bastion-host"></a>Erstellen einer öffentlichen IP-Adresse für Azure Bastion-Host
 
 ```azurepowershell
-New-AzVm `
-    -ResourceGroupName Test-FW-RG `
-    -Name "Srv-Jump" `
-    -Location "East US" `
-    -VirtualNetworkName Test-FW-VN `
-    -SubnetName Jump-SN `
-    -OpenPorts 3389 `
-    -Size "Standard_DS2"
+$publicip = New-AzPublicIpAddress -ResourceGroupName Test-FW-RG -Location "East US" `
+   -Name Bastion-pip -AllocationMethod static -Sku standard
 ```
 
-Erstellen Sie einen virtuellen Workloadcomputer ohne öffentliche IP-Adresse.
+### <a name="create-azure-bastion-host"></a>Erstellen des Azure Bastion-Hosts
+
+```azurepowershell
+New-AzBastion -ResourceGroupName Test-FW-RG -Name Bastion-01 -PublicIpAddress $publicip -VirtualNetwork $testVnet
+```
+### <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
+
+Erstellen Sie nun den virtuellen Workloadcomputer, und platzieren Sie ihn im passenden Subnetz.
+Geben Sie bei entsprechender Aufforderung einen Benutzernamen und das Kennwort für den virtuellen Computer ein.
+
+
+Erstellen Sie einen virtuellen Workloadcomputer.
 Geben Sie bei entsprechender Aufforderung einen Benutzernamen und das Kennwort für den virtuellen Computer ein.
 
 ```azurepowershell
 #Create the NIC
-$NIC = New-AzNetworkInterface -Name Srv-work -ResourceGroupName Test-FW-RG `
- -Location "East US" -Subnetid $testVnet.Subnets[1].Id 
+$wsn = Get-AzVirtualNetworkSubnetConfig -Name  Workload-SN -VirtualNetwork $testvnet
+$NIC01 = New-AzNetworkInterface -Name Srv-Work -ResourceGroupName Test-FW-RG -Location "East us" -Subnet $wsn
 
 #Define the virtual machine
 $VirtualMachine = New-AzVMConfig -VMName Srv-Work -VMSize "Standard_DS2"
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName Srv-Work -ProvisionVMAgent -EnableAutoUpdate
-$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
-$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2016-Datacenter' -Version latest
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC01.Id
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version latest
 
 #Create the virtual machine
 New-AzVM -ResourceGroupName Test-FW-RG -Location "East US" -VM $VirtualMachine -Verbose
@@ -127,7 +126,7 @@ Stellen Sie nun die Firewall im virtuellen Netzwerk bereit.
 $FWpip = New-AzPublicIpAddress -Name "fw-pip" -ResourceGroupName Test-FW-RG `
   -Location "East US" -AllocationMethod Static -Sku Standard
 # Create the firewall
-$Azfw = New-AzFirewall -Name Test-FW01 -ResourceGroupName Test-FW-RG -Location "East US" -VirtualNetworkName Test-FW-VN -PublicIpName fw-pip
+$Azfw = New-AzFirewall -Name Test-FW01 -ResourceGroupName Test-FW-RG -Location "East US" -VirtualNetwork $testVnet -PublicIpAddress $FWpip
 
 #Save the firewall private IP address for future use
 
@@ -177,7 +176,7 @@ $AppRule1 = New-AzFirewallApplicationRule -Name Allow-Google -SourceAddress 10.0
 $AppRuleCollection = New-AzFirewallApplicationRuleCollection -Name App-Coll01 `
   -Priority 200 -ActionType Allow -Rule $AppRule1
 
-$Azfw.ApplicationRuleCollections = $AppRuleCollection
+$Azfw.ApplicationRuleCollections.Add($AppRuleCollection)
 
 Set-AzFirewall -AzureFirewall $Azfw
 ```
@@ -195,7 +194,7 @@ $NetRule1 = New-AzFirewallNetworkRule -Name "Allow-DNS" -Protocol UDP -SourceAdd
 $NetRuleCollection = New-AzFirewallNetworkRuleCollection -Name RCNet01 -Priority 200 `
    -Rule $NetRule1 -ActionType "Allow"
 
-$Azfw.NetworkRuleCollections = $NetRuleCollection
+$Azfw.NetworkRuleCollections.Add($NetRuleCollection)
 
 Set-AzFirewall -AzureFirewall $Azfw
 ```
@@ -205,24 +204,20 @@ Set-AzFirewall -AzureFirewall $Azfw
 In diesem Verfahren konfigurieren Sie zu Testzwecken die primäre und sekundäre DNS-Adresse des Servers. Hierbei handelt es sich nicht um eine generelle Azure Firewall-Anforderung.
 
 ```azurepowershell
-$NIC.DnsSettings.DnsServers.Add("209.244.0.3")
-$NIC.DnsSettings.DnsServers.Add("209.244.0.4")
-$NIC | Set-AzNetworkInterface
+$NIC01.DnsSettings.DnsServers.Add("209.244.0.3")
+$NIC01.DnsSettings.DnsServers.Add("209.244.0.4")
+$NIC01 | Set-AzNetworkInterface
 ```
 
 ## <a name="test-the-firewall"></a>Testen der Firewall
 
 Testen Sie nun die Firewall, um sicherzustellen, dass sie wie erwartet funktioniert.
 
-1. Notieren Sie die private IP-Adresse des virtuellen Computers **Srv-Work**:
+1. Stellen Sie unter Verwendung von Bastion eine Verbindung mit dem virtuellen Computer **Srv-Work** her, und melden Sie sich an. 
 
-   ```
-   $NIC.IpConfigurations.PrivateIpAddress
-   ```
+   :::image type="content" source="media/deploy-ps/bastion.png" alt-text="Herstellen einer Verbindung unter Verwendung von Bastion":::
 
-1. Verbinden Sie einen Remotedesktop mit der VM **Srv-Jump**, und melden Sie sich an. Öffnen Sie auf der VM eine Remotedesktopverbindung mit der privaten IP-Adresse von **Srv-Work**, und melden Sie sich an.
-
-3. Öffnen Sie auf **SRV-Work** ein PowerShell-Fenster, und führen Sie die folgenden Befehle aus:
+3. Öffnen Sie auf **Srv-Work** ein PowerShell-Fenster, und führen Sie die folgenden Befehle aus:
 
    ```
    nslookup www.google.com
@@ -241,7 +236,7 @@ Testen Sie nun die Firewall, um sicherzustellen, dass sie wie erwartet funktioni
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   Die Anforderungen an www.google.com sollten erfolgreich sein, die an www.microsoft.com sollten zu einem Fehler führen. Dies zeigt, dass Ihre Firewall-Regeln wie erwartet funktionieren.
+   Die `www.google.com`-Anforderungen sollten erfolgreich sein, und die `www.microsoft.com`-Anforderungen sollten fehlschlagen. Dies zeigt, dass Ihre Firewall-Regeln wie erwartet funktionieren.
 
 Damit haben Sie sich vergewissert, dass die Firewallregeln funktionieren:
 
@@ -258,4 +253,4 @@ Remove-AzResourceGroup -Name Test-FW-RG
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Tutorial: Überwachen von Azure Firewall-Protokollen](./tutorial-diagnostics.md)
+* [Tutorial: Überwachen von Azure Firewall-Protokollen](./firewall-diagnostics.md)

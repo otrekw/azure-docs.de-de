@@ -1,20 +1,16 @@
 ---
-title: 'Azure Service Fabric: Bereitstellen einer Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität | Microsoft-Dokumentation'
+title: Bereitstellen einer App mit einer benutzerseitig zugewiesenen verwalteten Identität
 description: In diesem Artikel wird das Bereitstellen einer Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität beschrieben.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 08/09/2019
-ms.author: atsenthi
-ms.openlocfilehash: 0cc1e51a4d5f9ad54866066a4247e1588da381a6
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 12/09/2019
+ms.openlocfilehash: 79d8654733b580be96d59e78f31105077929ac78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037487"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86260092"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Bereitstellen einer Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität (Vorschau)
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Bereitstellen einer Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität
 
 Zum Bereitstellen einer Service Fabric Anwendung mit verwalteter Identität muss die Anwendung über Azure Resource Manager bereitgestellt werden – in der Regel mit einer Azure Resource Manager-Vorlage. Weitere Informationen zum Bereitstellen von Service Fabric Anwendung über Azure Resource Manager finden Sie unter [Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen](service-fabric-application-arm-resource.md).
 
@@ -27,40 +23,42 @@ Zum Bereitstellen einer Service Fabric Anwendung mit verwalteter Identität muss
 
 ## <a name="user-assigned-identity"></a>Vom Benutzer zugewiesene Identität
 
-Wenn Sie die Anwendung mit einer vom Benutzer zugewiesenen Identität aktivieren möchten, fügen Sie zunächst der Anwendungsressource mit dem Typ **userAssigned** und den referenzierten benutzerseitig zugewiesenen Identitäten die **identity**-Eigenschaft hinzu. Fügen Sie dann im Abschnitt **properties** für die **Anwendungsressource** einen Abschnitt **managedIdentities** ein, der eine Liste von Zuordnungen von Anzeigename zu principalId für jede vom Benutzer zugewiesenen Identität enthält. Weitere Informationen zu benutzerseitig zugewiesenen Identitäten finden Sie unter [Erstellen, Auflisten oder Löschen einer benutzerseitig zugewiesenen verwalteten Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell).
+Wenn Sie die Anwendung mit einer vom Benutzer zugewiesenen Identität aktivieren möchten, fügen Sie zunächst der Anwendungsressource mit dem Typ **userAssigned** und den referenzierten benutzerseitig zugewiesenen Identitäten die **identity**-Eigenschaft hinzu. Fügen Sie dann im Abschnitt **properties** für die **Anwendungsressource** einen Abschnitt **managedIdentities** ein, der eine Liste von Zuordnungen von Anzeigename zu principalId für jede vom Benutzer zugewiesenen Identität enthält. Weitere Informationen zu benutzerseitig zugewiesenen Identitäten finden Sie unter [Erstellen, Auflisten oder Löschen einer benutzerseitig zugewiesenen verwalteten Identität](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
 ### <a name="application-template"></a>Anwendungsvorlage
 
 Wenn Sie die Anwendung mit einer vom Benutzer zugewiesenen Identität aktivieren möchten, fügen Sie zunächst der Anwendungsressource mit dem Typ **userAssigned** und den referenzierten vom Benutzer zugewiesenen Identitäten die **identity**-Eigenschaft hinzu. Fügen Sie dann ein **managedIdentities**-Objekt innerhalb des Abschnitts **properties** hinzu, das eine Liste der Zuordnungen von Anzeigename zu principalId für jede vom Benutzer zugewiesene Identität enthält.
 
-    {
-      "apiVersion": "2019-06-01-preview",
-      "type": "Microsoft.ServiceFabric/clusters/applications",
-      "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applicationTypes/', parameters('applicationTypeName'), '/versions/', parameters('applicationTypeVersion'))]",
-        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]"
-      ],
-      "identity": {
-        "type" : "userAssigned",
-        "userAssignedIdentities": {
-            "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]": {}
-        }
-      },
-      "properties": {
-        "typeName": "[parameters('applicationTypeName')]",
-        "typeVersion": "[parameters('applicationTypeVersion')]",
-        "parameters": {
-        },
-        "managedIdentities": [
-          {
-            "name" : "[parameters('userAssignedIdentityName')]",
-            "principalId" : "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName')), '2018-11-30').principalId]"
-          }
-        ]
-      }
+```json
+{
+  "apiVersion": "2019-06-01-preview",
+  "type": "Microsoft.ServiceFabric/clusters/applications",
+  "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applicationTypes/', parameters('applicationTypeName'), '/versions/', parameters('applicationTypeVersion'))]",
+    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]"
+  ],
+  "identity": {
+    "type" : "userAssigned",
+    "userAssignedIdentities": {
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]": {}
     }
+  },
+  "properties": {
+    "typeName": "[parameters('applicationTypeName')]",
+    "typeVersion": "[parameters('applicationTypeVersion')]",
+    "parameters": {
+    },
+    "managedIdentities": [
+      {
+        "name" : "[parameters('userAssignedIdentityName')]",
+        "principalId" : "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName')), '2018-11-30').principalId]"
+      }
+    ]
+  }
+}
+```
 
 Im Beispiel oben wird der Ressourcenname der vom Benutzer zugewiesenen Identität als Anzeigename der verwalteten Identität für die Anwendung verwendet. In den folgenden Beispielen wird davon ausgegangen, dass der tatsächliche Anzeigename „AdminUser“ lautet.
 

@@ -1,11 +1,10 @@
 ---
-title: Tutorial – Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Linux-Computer | Microsoft-Dokumentation
+title: 'Tutorial: Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Linux-Computer'
 description: In diesem Tutorial erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle zum Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Linux-Computer verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 5355144720eef886dbf6da9c3c00eca05ccf03b4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 72c7f1dd6652a51a960c80829a697b97fd74f8de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103573"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87500026"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Linux-Computer mit der Azure-Befehlszeilenschnittstelle
 
@@ -33,13 +32,13 @@ Virtuelle Azure-Computer nutzen Azure-Netzwerke für interne und externe Kommuni
 > * Netzwerkdatenverkehr absichern
 > * Erstellen eines virtuellen Back-End-Computers
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Dieses Tutorial verwendet die CLI innerhalb des Diensts [Azure Cloud Shell](../../cloud-shell/overview.md), der ständig auf die neueste Version aktualisiert wird. Wählen Sie zum Öffnen von Cloud Shell oben in einem Codeblock die Option **Ausprobieren** aus.
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="vm-networking-overview"></a>Übersicht über VM-Netzwerke
 
-Virtuelle Azure-Netzwerke ermöglichen sichere Netzwerkverbindungen zwischen virtuellen Computern, dem Internet und anderen Azure-Diensten wie Azure SQL-Datenbank. Virtuelle Netzwerke werden in logische Segmente, sogenannte Subnetze, unterteilt. Subnetze dienen zur Steuerung des Netzwerkdatenflusses und als Sicherheitsgrenze. Bei der Bereitstellung eines virtuellen Computers ist in der Regel eine virtuelle Netzwerkschnittstelle enthalten, die an ein Subnetz angefügt ist.
+Virtuelle Azure-Netzwerke ermöglichen sichere Netzwerkverbindungen zwischen virtuellen Computern, dem Internet und anderen Azure-Diensten wie Azure SQL-Datenbank. Virtuelle Netzwerke werden in logische Segmente, sogenannte Subnetze, unterteilt. Subnetze dienen zur Steuerung des Netzwerkdatenflusses und als Sicherheitsgrenze. Bei der Bereitstellung eines virtuellen Computers ist in der Regel eine virtuelle Netzwerkschnittstelle enthalten, die an ein Subnetz angefügt ist.
 
 Beim Ausführen dieses Tutorials werden die folgenden virtuellen Netzwerkressourcen erstellt:
 
@@ -292,7 +291,7 @@ az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Azure-Netzwerke in Bezug auf virtuelle Computer erstellt und erhalten. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie Azure-Netzwerke in Bezug auf virtuelle Computer erstellt und erhalten. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen eines virtuellen Netzwerks und des Subnetzes

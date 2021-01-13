@@ -1,28 +1,21 @@
 ---
-title: Integration von Azure Monitor für VMs in System Center Operations Manager | Microsoft-Dokumentation
+title: Integrieren des Zuordnungsfeatures von Azure Monitor für VMs in Operations Manager | Microsoft-Dokumentation
 description: Azure Monitor für VMs ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In diesem Artikel wird die Verwendung des Zuordnungsfeatures zum automatischen Erstellen von Diagrammen der verteilten Anwendungen in Operations Manager erörtert.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
-ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 07/12/2019
-ms.author: magoedte
-ms.openlocfilehash: b16505eb2c12819532b8675472cf0e6f4177f7bf
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 489b4bfee1eaa2c381b16e88dbcc0bcb7fd8555f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489723"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91441510"
 ---
-# <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>Integration des Zuordnungsfeatures von Azure Monitor für VMs in System Center Operations Manager
+# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrieren des Zuordnungsfeatures von Azure Monitor für VMs in System Center Operations Manager
 
-In Azure Monitor für VMs können Sie sich ermittelte Anwendungskomponenten für Windows- und Linux-VMs anzeigen lassen, die in Azure oder in Ihrer eigenen Umgebung ausgeführt werden. Durch diese Integration zwischen dem Zuordnungsfeature und System Center Operations Manager können Sie in Operations Manager automatisch Diagramme der verteilten Anwendungen erstellen, die auf den dynamischen Abhängigkeitszuordnungen in Azure Monitor für VMs basieren. 
+In Azure Monitor für VMs können Sie sich ermittelte Anwendungskomponenten für Windows- und Linux-VMs anzeigen lassen, die in Azure oder in Ihrer eigenen Umgebung ausgeführt werden. Durch diese Integration zwischen dem Zuordnungsfeature und System Center Operations Manager können Sie in Operations Manager automatisch Diagramme der verteilten Anwendungen erstellen, die auf den dynamischen Abhängigkeitszuordnungen in Azure Monitor für VMs basieren. In diesem Artikel wird beschrieben, wie Sie Ihre System Center Operations Manager-Verwaltungsgruppe für die Unterstützung dieses Features konfigurieren.
 
 >[!NOTE]
 >Wenn Sie die Dienstzuordnung bereits bereitgestellt haben, können Sie Ihre Zuordnungen in Azure Monitor für VMs anzeigen. Diese Lösung enthält zusätzliche Funktionen zum Überwachen der Integrität und Leistung von virtuellen Computern. Das Zuordnungsfeature von Azure Monitor für VMs soll die eigenständige Dienstzuordnungslösung ersetzen. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor für VMs](vminsights-overview.md).
@@ -80,11 +73,11 @@ Gehen Sie zum Konfigurieren der Integration des Zuordnungsfeatures von Azure Mon
 
 6. Optional: Wählen Sie den Ressourcenpool für alle Verwaltungsserver für die Kommunikation mit Log Analytics aus, und klicken Sie dann auf **Arbeitsbereich hinzufügen**.
 
-    ![Der Operations Manager-Konfigurationsressourcenpool](media/service-map-scom/scom-config-pool.png)
+    ![Screenshot: Bildschirm „Serverpool“ unter „Add Microsoft Operations Management Suite Workspace“ (Microsoft Operations Management Suite-Arbeitsbereich hinzufügen), auf dem „All Management Servers Resource Pool“ (Ressourcenpool für alle Verwaltungsserver) ausgewählt ist](media/service-map-scom/scom-config-pool.png)
 
     Es kann eine Minute dauern, den Log Analytics-Arbeitsbereich zu konfigurieren und registrieren. Nach Abschluss der Konfiguration des Arbeitsbereichs initiiert Operations Manager die erste Zuordnungssynchronisierung.
 
-    ![Der Operations Manager-Konfigurationsressourcenpool](media/service-map-scom/scom-config-success.png)
+    ![Screenshot: Bildschirm „Abschluss“ unter „Add Microsoft Operations Management Suite Workspace“ (Microsoft Operations Management Suite-Arbeitsbereich hinzufügen) mit der Bestätigung, dass der Arbeitsbereich hinzugefügt wurde](media/service-map-scom/scom-config-success.png)
 
 ## <a name="monitor-integration"></a>Überwachen der Integration
 
@@ -105,18 +98,18 @@ Der Ordner „Service Map“ umfasst vier Knoten:
 
 * **Computerabhängigkeitsansichten**: Listet alle Computergruppen auf, die über das Zuordnungsfeature synchronisiert werden. Sie können auf eine beliebige Gruppe klicken, um das entsprechende Diagramm der verteilten Anwendungen anzuzeigen.
 
-    ![Das Diagramm der verteilten Anwendungen im Operations Manager](media/service-map-scom/scom-group-dad.png)
+    ![Screenshot: Dienstzuordnung mit einem Diagramm mit Bildern für die einzelnen Computergruppen sowie Linien, die die Abhängigkeiten dazwischen darstellen](media/service-map-scom/scom-group-dad.png)
 
 * **Serverabhängigkeitsansichten**: Listet alle Server auf, die über das Zuordnungsfeature synchronisiert werden. Sie können auf einen beliebigen Server klicken, um das entsprechende Diagramm der verteilten Anwendungen anzuzeigen.
 
-    ![Das Diagramm der verteilten Anwendungen im Operations Manager](media/service-map-scom/scom-dad.png)
+    ![Screenshot: Dienstzuordnung mit einem Diagramm mit Bildern für die einzelnen Servern sowie Linien, die die Abhängigkeiten dazwischen darstellen](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Bearbeiten oder Löschen des Arbeitsbereichs
 
 Sie können den konfigurierten Arbeitsbereich im Bereich der **Service Map-Übersicht** (Bereich **Verwaltung** > **Operations Management Suite** > **Service Map**) bearbeiten oder löschen.
 
->[!NOTE]
->[Operations Management Suite war eine Sammlung von Diensten](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand), zu der auch Log Analytics, das jetzt Teil von [Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md) ist, gehörte.
+> [!NOTE]
+> [Operations Management Suite war eine Sammlung von Diensten](../terminology.md#april-2018---retirement-of-operations-management-suite-brand), zu der auch Log Analytics, das jetzt Teil von [Azure Monitor](../overview.md) ist, gehörte.
 
 In diesem aktuellen Release können Sie nur einen Log Analytics-Arbeitsbereich konfigurieren.
 
@@ -133,7 +126,7 @@ Die Regel *Microsoft.SystemCenter.ServiceMapImport.Rule* ruft regelmäßig Infor
 * **TimeoutSeconds**: Gibt die Zeitspanne bis zum Timeout der Anforderung an.
 * **TimeWindowMinutes**: Gibt das Zeitfenster zum Abfragen von Daten an. Der Standardwert ist 60 Minuten. Dies ist das maximal zulässige Intervall.
 
-## <a name="known-issues-and-limitations"></a>Bekannte Probleme und Einschränkungen
+## <a name="known-issues-and-limitations"></a>Einschränkungen und bekannte Probleme
 
 Das aktuelle Design weist folgende Probleme und Einschränkungen auf:
 
@@ -145,9 +138,11 @@ Das aktuelle Design weist folgende Probleme und Einschränkungen auf:
 
 Die offizielle Azure-Dokumentation zum Erstellen eines Dienstprinzipals finden Sie in den folgenden Dokumenten:
 
-* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
-* [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
+* [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../../active-directory/develop/howto-create-service-principal-portal.md)
 
-### <a name="feedback"></a>Feedback
+### <a name="suggestions"></a>Vorschläge
+
 Möchten Sie uns Feedback zur Integration des Zuordnungsfeatures von Azure Monitor für VMs oder zu dieser Dokumentation geben? Besuchen Sie unsere [UserVoice-Webseite](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), auf der Sie Features vorschlagen oder vorhandene Vorschläge unterstützen können.
+

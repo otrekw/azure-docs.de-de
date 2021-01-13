@@ -5,29 +5,42 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/30/2019
+ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e8ae2fd99ee57062a0bf99f0550e58a5bb4857a3
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: e978a5e7e76c8ddc9b7e6b80ec7170c45baa2cae
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68426889"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "82784111"
 ---
-In der folgenden Tabelle werden die verfügbaren unterstützten Regionen für allgemein verfügbare Features aufgelistet.
+### <a name="azure-regions-within-a-geopolitical-region"></a>Azure-Regionen in einer geopolitischen Region
+
+Virtual WAN ist für die folgenden Regionen verfügbar:
 
 |Geopolitische Region | Azure-Regionen|
 |---|---|
-|Nordamerika | USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |
-|Südamerika |Brasilien Süd |
-| Europa | „Frankreich, Mitte“, „Frankreich, Süden“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“ |
-| Asien | Ostasien, Südostasien |
-| Japan  | Japan West, Japan Ost |
-| Australien | Südostaustralien, Ostaustralien | 
 | Australische Behörden | Australien, Mitte; Australien, Mitte 2 |
+| Europa | „Frankreich, Mitte“, „Frankreich, Süden“, „Deutschland, Norden“, „Deutschland, Westen-Mitte“, „Europa, Norden“, „Norwegen, Osten“, „Schweiz, Norden“, „Schweiz, Westen“, „Europa, Westen“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“ |
+| Nordamerika | USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |
+| Asia | Ostasien, Südostasien |
 | Indien | Indien, Westen, Indien, Mitte, Indien, Süden |
-| Südkorea | Korea, Mitte, Korea, Süden |
+| Japan  | Japan West, Japan Ost |
+| Ozeanien | Südostaustralien, Ostaustralien |
 | Südafrika | „Südafrika, Norden“, „Südafrika, Westen“ |
+| Südamerika |Brasilien Süd |
+| Südkorea | Korea, Mitte, Korea, Süden |
+| Vereinigte Arabische Emirate | „VAE, Norden“, „VAE, Mitte“ |
 
-* Informationen zur ExpressRoute-Vorschau finden Sie unter [Virtual WAN und ExpressRoute – Vorschau](../articles/virtual-wan/virtual-wan-expressroute-portal.md#register).
+
+
+### <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Azure-Regionen und geopolitische Grenzen für nationale Clouds
+
+Virtual WAN ist für die folgenden Regionen verfügbar:
+
+|Geopolitische Region | Azure-Regionen|
+|---|---|
+| US-Government Cloud | „US Gov Arizona“, „US Gov Iowa“, „US Gov Texas“, „US Gov Virginia“, „US DoD, Mitte“, „US DoD, Osten“ |
+| China, Osten | China, Osten 2|
+| China, Norden | China, Norden 2 |

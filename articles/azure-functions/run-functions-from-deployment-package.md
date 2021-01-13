@@ -1,29 +1,20 @@
 ---
-title: Ausführen Ihrer Azure Functions aus einem Paket | Microsoft-Dokumentation
+title: Ausführen von Azure Functions aus einem Paket
 description: Lassen Sie die Azure Functions-Laufzeit Ihre Funktionen ausführen, indem Sie eine Bereitstellungspaketdatei einbinden, die Ihre Projektdateien für die Funktions-App enthält.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.author: glenga
-ms.openlocfilehash: b6a2347ff79268cdaf54993952d59bd700b781bc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b2d90cf78263b30b4315199cf1c543186a435f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095959"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88639884"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Ausführen Ihrer Azure Functions aus einem Paket
 
 In Azure können Sie Ihre Functions direkt aus der Bereitstellungspaketdatei in Ihrer Funktions-App ausführen. Die andere Option ist die Bereitstellung Ihrer Dateien im Verzeichnis `d:\home\site\wwwroot` Ihrer Funktions-App.
 
 Dieser Artikel beschreibt die Vorteile einer Ausführung Ihrer Functions aus einem Paket. Außerdem wir erläutert, wie Sie diese Funktionalität in Ihrer Funktions-App aktivieren.
-
-> [!IMPORTANT]
-> Wenn Sie Ihre Funktionen in einer Linux-Funktions-App in einem [Premium-Tarif](functions-scale.md#premium-plan) bereitstellen, sollte die Ausführung immer über die Paketdatei erfolgen, und Sie sollten [Ihre App unter Verwendung von Azure Functions Core Tools veröffentlichen](functions-run-local.md#project-file-deployment).
 
 ## <a name="benefits-of-running-from-a-package-file"></a>Vorteile der Ausführung aus einer Paketdatei
   
@@ -44,7 +35,7 @@ Damit Ihre Funktions-App aus einem Paket ausgeführt werden kann, müssen Sie nu
 | Wert  | BESCHREIBUNG  |
 |---------|---------|
 | **`1`**  | Für unter Windows ausgeführte Funktions-Apps empfohlen. Ausführen aus einer Paketdatei im Ordner `d:\home\data\SitePackages` der Funktions-App. Wenn Sie nicht [mit ZIP Deploy bereitstellen](#integration-with-zip-deployment), muss der Ordner für diese Option außerdem eine Datei namens `packagename.txt` enthalten. Diese Datei enthält nur den Namen der Paketdatei im Ordner ohne Leerzeichen. |
-|**`<url>`**  | Speicherort der spezifischen Paketdatei, die Sie ausführen möchten. Wenn Sie Blob Storage müssen Sie einen privaten Container mit einer [Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) verwenden, um die Functions-Laufzeit für den Zugriff auf das Paket zu aktivieren. Sie können den [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) zum Hochladen von Dateien in Ihr Blob Storage-Konto verwenden.         |
+|**`<URL>`**  | Speicherort der spezifischen Paketdatei, die Sie ausführen möchten. Wenn Sie Blob Storage müssen Sie einen privaten Container mit einer [Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) verwenden, um die Functions-Laufzeit für den Zugriff auf das Paket zu aktivieren. Sie können den [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) zum Hochladen von Dateien in Ihr Blob Storage-Konto verwenden. Wenn Sie eine URL angeben, müssen Sie nach dem Veröffentlichen eines aktualisierten Pakets auch [Trigger synchronisieren](functions-deployment-technologies.md#trigger-syncing). |
 
 > [!CAUTION]
 > Bei der Ausführung einer Funktions-App unter Windows ergibt die Option mit externer URL ein schlechteres Startverhalten. Beim Bereitstellen Ihrer Funktions-App unter Windows sollten Sie `WEBSITE_RUN_FROM_PACKAGE` auf `1` festlegen und per ZIP-Bereitstellung veröffentlichen.
@@ -58,11 +49,15 @@ Das folgende Beispiel zeigt eine Funktions-App, die so konfiguriert ist, dass Si
 
 ## <a name="integration-with-zip-deployment"></a>Integration mit einer ZIP-Bereitstellung
 
-[ZIP-Bereitstellung][Zip deployment for Azure Functions] ist eine Funktion von Azure App Service, mit der Sie Ihr Funktions-App-Projekt im Verzeichnis `wwwroot` bereitstellen können. Das Projekt ist als ZIP-Bereitstellungsdatei verpackt. Mit derselben API können Sie Ihr Paket im Ordner `d:\home\data\SitePackages` bereitstellen. Mit dem `WEBSITE_RUN_FROM_PACKAGE`-App-Einstellungswert von `1` kopieren die ZIP-Bereitstellungs-APIs Ihr Paket in den Ordner `d:\home\data\SitePackages`, anstatt die Dateien nach `d:\home\site\wwwroot` zu extrahieren. Außerdem wird die Datei `packagename.txt` erstellt. Die Funktions-App wird dann nach einem Neustart aus dem Paket heraus ausgeführt und `wwwroot` wird schreibgeschützt. Weitere Informationen zur ZIP-Bereitstellung finden Sie unter [ZIP-Bereitstellung für Azure Functions](deployment-zip-push.md).
+[ZIP-Bereitstellung][Zip deployment for Azure Functions] ist eine Funktion von Azure App Service, mit der Sie Ihr Funktions-App-Projekt im Verzeichnis `wwwroot` bereitstellen können. Das Projekt ist als ZIP-Bereitstellungsdatei verpackt. Mit derselben API können Sie Ihr Paket im Ordner `d:\home\data\SitePackages` bereitstellen. Mit dem `WEBSITE_RUN_FROM_PACKAGE`-App-Einstellungswert von `1` kopieren die ZIP-Bereitstellungs-APIs Ihr Paket in den Ordner `d:\home\data\SitePackages`, anstatt die Dateien nach `d:\home\site\wwwroot` zu extrahieren. Außerdem wird die Datei `packagename.txt` erstellt. Nach einem Neustart wird das Paket in `wwwroot` als schreibgeschütztes Dateisystem bereitgestellt. Weitere Informationen zur ZIP-Bereitstellung finden Sie unter [ZIP-Bereitstellung für Azure Functions](deployment-zip-push.md).
+
+> [!NOTE]
+> Wenn eine Bereitstellung erfolgt, wird ein Neustart der Funktions-App ausgelöst. Vor einem Neustart können alle bestehenden Funktionsausführungen abgeschlossen oder ein Timeout erreicht werden. Weitere Informationen finden Sie unter [Bereitstellungsverhalten](functions-deployment-technologies.md#deployment-behaviors).
 
 ## <a name="adding-the-website_run_from_package-setting"></a>Hinzufügen der Einstellung WEBSITE_RUN_FROM_PACKAGE
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -70,6 +65,7 @@ Das folgende Beispiel zeigt eine Funktions-App, die so konfiguriert ist, dass Si
 - Das TAR- und das GZIP-Format werden nicht unterstützt.
 - Diese Funktionalität funktioniert nicht mit lokalem Cache.
 - Um die Kaltstartleistung zu verbessern, verwenden Sie die lokale ZIP-Option (`WEBSITE_RUN_FROM_PACKAGE`=1).
+- Die Option „Aus Paket ausführen“ ist nicht mit der Anpassungsoption für die Bereitstellung (`SCM_DO_BUILD_DURING_DEPLOYMENT=true`) kompatibel. Der Erstellungsschritt wird während der Bereitstellung ignoriert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

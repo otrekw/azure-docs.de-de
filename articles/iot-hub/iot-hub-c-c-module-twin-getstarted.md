@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit der Modulidentität und dem Modulzwilling von Azure IoT Hub (C) | Microsoft-Dokumentation
+title: Erste Schritte mit der Modulidentität und dem Modulzwilling von Azure IoT Hub (C)
 description: Erfahren Sie, wie Sie mit IoT SDKs für C eine Modulidentität erstellen und den Modulzwilling aktualisieren.
 author: chrissie926
 ms.service: iot-hub
@@ -8,19 +8,22 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 9bc64a2eefbd268c5d7eae9b32a992ed29151f61
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 0cc874b4df7052c76fa58388bc982b8ffe3acc23
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813838"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142925"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub (C)
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [Modulidentitäten und Modulzwillinge](iot-hub-devguide-module-twins.md) ähneln den Geräteidentitäten und Gerätezwillingen von Azure IoT Hub, ermöglichen jedoch eine feinere Granularität. Azure IoT Hub-Geräteidentitäten und -Gerätezwillinge ermöglichen der Back-End-Anwendung die Konfiguration eines Geräts und geben Aufschluss über den Gerätezustand. Modulidentitäten und Modulzwillinge bieten diese Funktionalität hingegen für einzelne Komponenten eines Geräts. Auf Geräten mit mehreren Komponenten (etwa auf betriebssystembasierten Geräten oder Firmwaregeräten) ermöglichen sie isolierte Konfigurationen und Zustände für die einzelnen Komponenten.
+> [Modulidentitäten und Modulzwillinge](iot-hub-devguide-module-twins.md) ähneln den Geräteidentitäten und Gerätezwillingen von Azure IoT Hub, ermöglichen jedoch eine feinere Granularität. Azure IoT Hub-Geräteidentitäten und -Gerätezwillinge ermöglichen der Back-End-Anwendung die Konfiguration eines Geräts und geben Aufschluss über den Gerätezustand. Modulidentitäten und Modulzwillinge bieten diese Funktionalität für einzelne Komponenten eines Geräts. Auf Geräten mit mehreren Komponenten (etwa auf betriebssystembasierten Geräten oder Firmwaregeräten) ermöglichen sie isolierte Konfigurationen und Zustände für die einzelnen Komponenten.
 
 Am Ende dieses Tutorials verfügen Sie über zwei C-Apps:
 
@@ -37,7 +40,7 @@ Am Ende dieses Tutorials verfügen Sie über zwei C-Apps:
 
 * Das neueste [Azure IoT SDK für C](https://github.com/Azure/azure-iot-sdk-c).
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -190,7 +193,9 @@ In diesem Abschnitt erstellen Sie eine C-App auf Ihrem simulierten Gerät, die d
 
     ![Moduldetails im Azure-Portal](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **Erstellen der App UpdateModuleTwinReportedProperties:** Fügen Sie die folgenden `using`-Anweisungen oben in der Datei **Program.cs** ein:
+2. **Erstellen der App „UpdateModuleTwinReportedProperties“**
+   
+   Fügen Sie Ihrer C-Datei folgenden Code hinzu:
 
     ```C
     #include <stdio.h>
@@ -351,7 +356,7 @@ void iothub_module_client_sample_device_twin_run(void)
 
             (void)IoTHubModuleClient_LL_SetOption(iotHubModuleClientHandle, OPTION_LOG_TRACE, &traceOn);
 
-            // Check the return of all API calls when developing your solution. Return checks ommited for sample simplification.
+            // Check the return of all API calls when developing your solution. Return checks omitted for sample simplification.
 
             (void)IoTHubModuleClient_LL_SetModuleTwinCallback(iotHubModuleClientHandle, deviceTwinCallback, iotHubModuleClientHandle);
             (void)IoTHubModuleClient_LL_SendReportedState(iotHubModuleClientHandle, (const unsigned char*)reportedState, reportedStateSize, reportedStateCallback, iotHubModuleClientHandle);
@@ -386,4 +391,4 @@ int main(void)
 Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen anderer IoT-Szenarien finden Sie in den folgenden Artikeln:
 
 * [Erste Schritte mit der Geräteverwaltung](iot-hub-node-node-device-management-get-started.md)
-* [Erste Schritte mit IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Erste Schritte mit IoT Edge](../iot-edge/quickstart-linux.md)

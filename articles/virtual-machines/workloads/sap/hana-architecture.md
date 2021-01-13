@@ -3,22 +3,23 @@ title: Architektur von SAP HANA in Azure (große Instanzen) | Microsoft-Dokument
 description: Architektur zur Bereitstellung von SAP HANA in Azure (große Instanzen)
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1373221502db5b2d511bc6f32bd529090caa9e60
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a23a177945316bca89aa5cbcc46f840213dbe832
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101295"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964812"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Architektur von SAP HANA in Azure (große Instanzen)
 
@@ -41,7 +42,7 @@ Die dargestellte Architektur ist in drei Abschnitte unterteilt:
 
    Informationen zu SAP NetWeaver-Anwendungen und Datenbanken, deren Ausführung in Azure unterstützt wird, finden Sie im [SAP-Supporthinweis 1928533 – SAP applications on Azure: Supported products and Azure VM types](https://launchpad.support.sap.com/#/notes/1928533) (SAP-Anwendungen unter Azure: Unterstützte Produkte und Azure-VM-Typen). Eine Dokumentation zur Bereitstellung von SAP-Lösungen in Azure finden Sie in den Artikeln zu folgenden Themen:
 
-  -  [Verwenden von SAP auf Windows-VMs](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  -  [Verwenden von SAP auf Windows-VMs](./get-started.md?toc=/azure/virtual-machines/linux/toc.json)
   -  [Verwenden von SAP-Lösungen auf Azure-VMs](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 - **Links:** Zeigt die SAP HANA TDI-zertifizierte Hardware im Azure-Umfeld der großen Instanz. Die Einheiten von HANA (große Instanz) sind mit den virtuellen Netzwerken Ihres Azure-Abonnements verbunden. Für diese Verbindung wird die gleiche Technologie verwendet wie für die Konnektivität zwischen lokalen Systemen und Azure. Im Mai 2019 wurde eine Optimierung eingeführt, die die Kommunikation zwischen den Einheiten von HANA (große Instanz) und den virtuellen Azure-Computern ohne Beteiligung des ExpressRoute-Gateways ermöglicht. Diese Optimierung wird als ExpressRoute Fast Path bezeichnet und ist in dieser Architektur dargestellt (rote Linien). 
@@ -50,7 +51,7 @@ Im Azure-Stapel für große Instanzen selbst werden die folgenden Komponenten ko
 
 - **Computing:** Server, die auf verschiedenen Generationen von Intel Xeon-Prozessoren basieren, welche die erforderliche Rechenleistung bereitstellen und SAP HANA-zertifiziert sind.
 - **Netzwerk:** Ein einheitliches Hochgeschwindigkeitsnetzwerk-Fabric, das die Computing-, Speicher- und LAN-Komponenten miteinander verbindet.
-- **Speicher**: Eine Speicherinfrastruktur, auf die über ein einheitliches Netzwerkfabric zugegriffen wird. Die verfügbare spezifische Speicherkapazität hängt von der jeweiligen Konfiguration von SAP HANA in Azure (große Instanzen) ab, die bereitgestellt wird. Mehr Speicherkapazität ist gegen eine zusätzliche monatliche Gebühr erhältlich.
+- **Storage**: Eine Speicherinfrastruktur, auf die über ein einheitliches Netzwerkfabric zugegriffen wird. Die verfügbare spezifische Speicherkapazität hängt von der jeweiligen Konfiguration von SAP HANA in Azure (große Instanzen) ab, die bereitgestellt wird. Mehr Speicherkapazität ist gegen eine zusätzliche monatliche Gebühr erhältlich.
 
 Innerhalb der mehrinstanzenfähigen Infrastruktur des Stapels für große Instanzen werden Kunden als isolierte Mandanten bereitgestellt. Bei der Bereitstellung des Mandanten benennen Sie ein Azure-Abonnement in Ihrer Azure-Registrierung. Diesem Azure-Abonnement werden die Kosten von HANA (große Instanz) in Rechnung gestellt. Diese Mandanten weisen eine 1:1-Beziehung mit dem Azure-Abonnement auf. In einem Netzwerk ist der Zugriff auf eine Einheit von HANA (große Instanz), die in einem Mandanten in einer Azure-Region bereitgestellt ist, über verschiedene, zu unterschiedlichen Azure-Abonnements gehörende virtuelle Netzwerke möglich. Diese Azure-Abonnements müssen zur selben Azure-Registrierung gehören. 
 

@@ -4,14 +4,14 @@ description: Anleitungsartikel zum Hinzufügen von Anmerkungen zu Datenressource
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 61a91ca8a51886c28beee77853d1ae67911e00e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950260"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87081235"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Kommentieren von Datenquellen in Azure Data Catalog
 
@@ -21,7 +21,7 @@ ms.locfileid: "68950260"
 
 ## <a name="annotation-and-crowdsourcing"></a>Anmerkung und Crowdsourcing
 Jeder hat eine Meinung. Und das ist auch gut so.
-Data Catalog berücksichtigt die Tatsache, dass unterschiedliche Benutzer Unternehmensdatenquellen aus verschiedenen Perspektiven betrachten und jede dieser Perspektiven nützlich sein kann. Stellen Sie sich folgendes Szenario vor:
+Data Catalog berücksichtigt die Tatsache, dass unterschiedliche Benutzer Unternehmensdatenquellen aus verschiedenen Perspektiven betrachten und jede dieser Perspektiven nützlich sein kann. Nehmen Sie das folgende Szenario als Beispiel:
 
 * Der Systemadministrator kennt die Vereinbarung zum Servicelevel für die Server und Dienste, die die Datenquelle hosten.
 * Der Datenbankadministrator kennt den Sicherungszeitplan für jede Datenbank und die zulässigen ETL-Verarbeitungsfenster.

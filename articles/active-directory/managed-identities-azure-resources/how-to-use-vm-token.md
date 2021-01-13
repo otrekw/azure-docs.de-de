@@ -1,26 +1,26 @@
 ---
-title: Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer zum Abrufen eines Zugriffstokens
+title: Verwenden von verwalteten Identitäten auf einem virtuellen Computer zum Abrufen eines Zugriffstokens – Azure AD
 description: Schrittweise Anweisungen und Beispiele zur Verwendung verwalteter Identitäten für Azure-Ressourcen auf einem virtuellen Computer zum Abrufen eines OAuth-Zugriffstokens.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2017
-ms.author: markvi
+ms.date: 11/03/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bed64df921326ad4d219f934f7a7bc6860bfc7d8
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60290788"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861900"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens 
 
@@ -38,16 +38,16 @@ Wenn Sie die Azure PowerShell-Beispiele in diesem Artikel verwenden möchten, m�
 
 
 > [!IMPORTANT]
-> - Bei allen Beispielcodes/-skripts in diesem Artikel wird vorausgesetzt, dass der Client auf einem virtuellen Computer mit verwalteten Identitäten für Azure-Ressourcen ausgeführt wird. Verwenden Sie die Funktion „Verbinden“ für virtuelle Computer im Azure-Portal zum Herstellen einer Remoteverbindung mit Ihrem virtuellen Computer. Ausführliche Informationen zum Aktivieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](qs-configure-portal-windows-vm.md) oder in einem der verwandten Artikel (PowerShell, CLI, Vorlage oder Azure SDK). 
+> - Bei allen Beispielcodes/-skripts in diesem Artikel wird vorausgesetzt, dass der Client auf einem virtuellen Computer mit verwalteten Identitäten für Azure-Ressourcen ausgeführt wird. Verwenden Sie die Funktion „Verbinden“ für virtuelle Computer im Azure-Portal zum Herstellen einer Remoteverbindung mit Ihrem virtuellen Computer. Weitere Informationen zur Aktivierung von verwalteten Identitäten für Azure-Ressourcen auf einer VM finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einer VM über das Azure-Portal](qs-configure-portal-windows-vm.md) oder in einem der verwandten Artikel (PowerShell, CLI, Vorlage oder Azure SDK). 
 
 > [!IMPORTANT]
 > - Die Sicherheitsgrenze für verwaltete Identitäten für Azure-Ressourcen wird durch die Ressource vorgegeben, auf der sie verwendet werden. Der gesamte Code und alle Skripts, die auf einem virtuellen Computer ausgeführt werden, können Token für die darin verfügbaren verwalteten Identitäten anfordern und abrufen. 
 
 ## <a name="overview"></a>Übersicht
 
-Eine Clientanwendung kann ein [App-exklusives Zugriffstoken](../develop/developer-glossary.md#access-token) der verwalteten Identitäten für Azure-Ressourcen für den Zugriff auf eine bestimmte Ressource anfordern. Das Token [basiert auf dem Dienstprinzipal der verwalteten Identitäten für Azure-Ressourcen](overview.md#how-does-it-work). Daher muss sich der Client nicht selbst registrieren, um ein Zugriffstoken unter seinem eigenen Dienstprinzipal abzurufen. Das Token ist geeignet für die Nutzung als Bearertoken in [Dienst-zu-Dienst-Aufrufen, für die Clientanmeldeinformationen benötigt werden](../develop/v1-oauth2-client-creds-grant-flow.md).
+Eine Clientanwendung kann ein [App-exklusives Zugriffstoken](../develop/developer-glossary.md#access-token) der verwalteten Identitäten für Azure-Ressourcen für den Zugriff auf eine bestimmte Ressource anfordern. Das Token [basiert auf dem Dienstprinzipal der verwalteten Identitäten für Azure-Ressourcen](overview.md#managed-identity-types). Daher muss sich der Client nicht selbst registrieren, um ein Zugriffstoken unter seinem eigenen Dienstprinzipal abzurufen. Das Token ist geeignet für die Nutzung als Bearertoken in [Dienst-zu-Dienst-Aufrufen, für die Clientanmeldeinformationen benötigt werden](../develop/v2-oauth2-client-creds-grant-flow.md).
 
-|  |  |
+| Link | BESCHREIBUNG |
 | -------------- | -------------------- |
 | [Abrufen eines Tokens über HTTP](#get-a-token-using-http) | Protokolldetails zum Tokenendpunkt für verwaltete Identitäten für Azure-Ressourcen |
 | [Abrufen eines Tokens mit der Microsoft.Azure.Services.AppAuthentication-Bibliothek für .NET](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Beispiel für die Verwendung der Microsoft.Azure.Services.AppAuthentication-Bibliothek auf einem .NET-Client
@@ -75,7 +75,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `GET` | Das HTTP-Verb, mit dem angegeben wird, dass Sie Daten vom Endpunkt abrufen möchten. In diesem Fall ist dies ein OAuth-Zugriffstoken. | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | Der Endpunkt für verwaltete Identitäten für Azure-Ressourcen für den Instanzmetadatendienst. |
 | `api-version`  | Ein Abfragezeichenfolgenparameter, mit dem die API-Version für den IMDS-Endpunkt angegeben wird. Verwenden Sie API-Version `2018-02-01` oder höher. |
-| `resource` | Ein Abfragezeichenfolgenparameter, der den App-ID-URI der Zielressource angibt. Er wird auch im Anspruch `aud` (audience) des ausgestellten Tokens angezeigt. In diesem Beispiel wird ein Token für den Zugriff auf Azure Resource Manager angefordert, das über den App-ID-URI https://management.azure.com/ verfügt. |
+| `resource` | Ein Abfragezeichenfolgenparameter, der den App-ID-URI der Zielressource angibt. Er wird auch im Anspruch `aud` (audience) des ausgestellten Tokens angezeigt. In diesem Beispiel wird ein Token für den Zugriff auf Azure Resource Manager angefordert, das über den App-ID-URI `https://management.azure.com/` verfügt. |
 | `Metadata` | Ein HTTP-Anforderungsheader-Feld, das für verwaltete Identitäten für Azure-Ressourcen als Maßnahme gegen SSRF-Angriffe (Server Side Request Forgery) erforderlich ist. Dieser Wert muss auf „true“ (in Kleinbuchstaben) festgelegt werden. |
 | `object_id` | (Optional) Ein Abfragezeichenfolgen-Parameter, der den object_id-Wert der verwalteten Identität angibt, für die das Token gelten soll. Erforderlich, wenn Ihr virtueller Computer über mehrere vom Benutzer zugewiesene verwaltete Identitäten verfügt.|
 | `client_id` | (Optional) Ein Abfragezeichenfolgen-Parameter, der den client_id-Wert der verwalteten Identität angibt, für die das Token gelten soll. Erforderlich, wenn Ihr virtueller Computer über mehrere vom Benutzer zugewiesene verwaltete Identitäten verfügt.|
@@ -92,7 +92,7 @@ Metadata: true
 | ------- | ----------- |
 | `GET` | Das HTTP-Verb, mit dem angegeben wird, dass Sie Daten vom Endpunkt abrufen möchten. In diesem Fall ist dies ein OAuth-Zugriffstoken. | 
 | `http://localhost:50342/oauth2/token` | Der Endpunkt für verwaltete Identitäten für Azure-Ressourcen, wobei 50342 der Standardport und konfigurierbar ist. |
-| `resource` | Ein Abfragezeichenfolgenparameter, der den App-ID-URI der Zielressource angibt. Er wird auch im Anspruch `aud` (audience) des ausgestellten Tokens angezeigt. In diesem Beispiel wird ein Token für den Zugriff auf Azure Resource Manager angefordert, das über den App-ID-URI https://management.azure.com/ verfügt. |
+| `resource` | Ein Abfragezeichenfolgenparameter, der den App-ID-URI der Zielressource angibt. Er wird auch im Anspruch `aud` (audience) des ausgestellten Tokens angezeigt. In diesem Beispiel wird ein Token für den Zugriff auf Azure Resource Manager angefordert, das über den App-ID-URI `https://management.azure.com/` verfügt. |
 | `Metadata` | Ein HTTP-Anforderungsheader-Feld, das für verwaltete Identitäten für Azure-Ressourcen als Maßnahme gegen SSRF-Angriffe (Server Side Request Forgery) erforderlich ist. Dieser Wert muss auf „true“ (in Kleinbuchstaben) festgelegt werden.|
 | `object_id` | (Optional) Ein Abfragezeichenfolgen-Parameter, der den object_id-Wert der verwalteten Identität angibt, für die das Token gelten soll. Erforderlich, wenn Ihr virtueller Computer über mehrere vom Benutzer zugewiesene verwaltete Identitäten verfügt.|
 | `client_id` | (Optional) Ein Abfragezeichenfolgen-Parameter, der den client_id-Wert der verwalteten Identität angibt, für die das Token gelten soll. Erforderlich, wenn Ihr virtueller Computer über mehrere vom Benutzer zugewiesene verwaltete Identitäten verfügt.|
@@ -125,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Abrufen eines Tokens mit der Microsoft.Azure.Services.AppAuthentication-Bibliothek für .NET
 
-Bei .NET-Anwendungen und -Funktionen stellt die einfachste Methode für die Arbeit mit verwalteten Identitäten für Azure-Ressourcen das Microsoft.Azure.Services.AppAuthentication-Paket dar. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) oder der integrierten Active Directory-Authentifizierung. Weitere Informationen zu Optionen für die lokale Entwicklung mit dieser Bibliothek finden Sie in der [Microsoft.Azure.Services.AppAuthentication-Referenz](/azure/key-vault/service-to-service-authentication). In diesem Abschnitt werden die ersten Schritte mit der Bibliothek in Ihrem Code erläutert.
+Bei .NET-Anwendungen und -Funktionen stellt die einfachste Methode für die Arbeit mit verwalteten Identitäten für Azure-Ressourcen das Microsoft.Azure.Services.AppAuthentication-Paket dar. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der [Azure CLI](/cli/azure) oder der integrierten Active Directory-Authentifizierung. Weitere Informationen zu Optionen für die lokale Entwicklung mit dieser Bibliothek finden Sie in der [Microsoft.Azure.Services.AppAuthentication-Referenz](../../key-vault/general/service-to-service-authentication.md). In diesem Abschnitt werden die ersten Schritte mit der Bibliothek in Ihrem Code erläutert.
 
 1. Fügen Sie Ihrer Anwendung einen Verweis auf die NuGet-Pakete [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) und [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) hinzu.
 
@@ -141,7 +141,7 @@ Bei .NET-Anwendungen und -Funktionen stellt die einfachste Methode für die Arbe
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-Weitere Informationen zu Microsoft.Azure.Services.AppAuthentication und den zugehörigen Vorgängen finden Sie in der [Microsoft.Azure.Services.AppAuthentication-Referenz](/azure/key-vault/service-to-service-authentication) und im [.NET-Beispiel zu App Service und KeyVault mit verwalteten Identitäten für Azure-Ressourcen](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Weitere Informationen zu Microsoft.Azure.Services.AppAuthentication und den zugehörigen Vorgängen finden Sie in der [Microsoft.Azure.Services.AppAuthentication-Referenz](../../key-vault/general/service-to-service-authentication.md) und im [.NET-Beispiel zu App Service und KeyVault mit verwalteten Identitäten für Azure-Ressourcen](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
 ## <a name="get-a-token-using-c"></a>Abrufen eines Tokens über C#
 
@@ -371,9 +371,9 @@ Wenn ein Fehler auftritt, enthält der entsprechende HTTP-Antworttext JSON-Code 
 
 In diesem Abschnitt sind die möglichen Fehlerantworten aufgeführt. Der Status „200 OK“ ist eine erfolgreiche Antwort, und das Zugriffstoken ist im JSON-Antworttext im Element „access_token“ enthalten.
 
-| Statuscode | Error | Fehlerbeschreibung | Lösung |
+| Statuscode | Fehler | Fehlerbeschreibung | Lösung |
 | ----------- | ----- | ----------------- | -------- |
-| 400 – Ungültige Anforderung | invalid_resource | AADSTS50001: Die Anwendung namens *\<URI\>* wurde im Mandanten *\<TENANT-ID\>* nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie Ihre Authentifizierung an den falschen Mandanten gesendet. | (Nur Linux) |
+| 400 – Ungültige Anforderung | invalid_resource | AADSTS50001: Die Anwendung *\<URI\>* wurde im Mandanten *\<TENANT-ID\>* nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie Ihre Authentifizierung an den falschen Mandanten gesendet. | (Nur Linux) |
 | 400 – Ungültige Anforderung | bad_request_102 | Erforderlicher Metadatenheader nicht angegeben | Entweder fehlt der `Metadata`-Anforderungsheader in Ihrer Anforderung, oder er ist falsch formatiert. Der Wert muss als `true` (in Kleinbuchstaben) angegeben werden. Ein Beispiel finden Sie im vorherigen REST-Abschnitt unter „Beispiel für eine Anforderung“.|
 | 401 – Nicht autorisiert | unknown_source | Unbekannte Quelle *\<URI\>* | Stellen Sie sicher, dass Ihr HTTP GET-Anforderungs-URI richtig formatiert ist. Der Teil `scheme:host/resource-path` muss als `http://localhost:50342/oauth2/token` angegeben werden. Ein Beispiel finden Sie im vorherigen REST-Abschnitt unter „Beispiel für eine Anforderung“.|
 |           | invalid_request | In der Anforderung fehlt ein erforderlicher Parameter, ist ein ungültiger Parameter enthalten oder ist ein Parameter mehrfach vorhanden, oder die Anforderung ist auf andere Weise fehlerhaft. |  |
@@ -381,7 +381,7 @@ In diesem Abschnitt sind die möglichen Fehlerantworten aufgeführt. Der Status 
 |           | access_denied | Der Ressourcenbesitzer oder Autorisierungsserver hat die Anforderung verweigert. |  |
 |           | unsupported_response_type | Der Autorisierungsserver unterstützt das Abrufen eines Zugriffstokens mit dieser Methode nicht. |  |
 |           | invalid_scope | Der angeforderte Bereich ist ungültig, unbekannt oder falsch formatiert. |  |
-| 500 Interner Serverfehler | unknown | Beim Abrufen des Tokens aus Active Directory ist ein Fehler aufgetreten. Details finden Sie in den Protokollen unter *\<Dateipfad\>* . | Stellen Sie sicher, dass verwaltete Identitäten für Azure-Ressourcen auf dem virtuellen Computer aktiviert wurden. Hilfe zur Konfiguration des virtuellen Computers finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](qs-configure-portal-windows-vm.md).<br><br>Überprüfen Sie zudem, ob Ihr HTTP GET-Anforderungs-URI richtig formatiert ist. Dies gilt vor allem für den Ressourcen-URI, der in der Abfragezeichenfolge angegeben ist. Unter „Beispiel für eine Anforderung“ im vorherigen REST-Abschnitt finden Sie ein Beispiel, und unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](services-support-msi.md) finden Sie eine Liste mit Diensten und den dazugehörigen Ressourcen-IDs.
+| 500 Interner Serverfehler | unknown | Beim Abrufen des Tokens aus Active Directory ist ein Fehler aufgetreten. Einzelheiten finden Sie in den Protokollen unter *\<file path\>* . | Stellen Sie sicher, dass verwaltete Identitäten für Azure-Ressourcen auf dem virtuellen Computer aktiviert wurden. Hilfe zur Konfiguration des virtuellen Computers finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](qs-configure-portal-windows-vm.md).<br><br>Überprüfen Sie zudem, ob Ihr HTTP GET-Anforderungs-URI richtig formatiert ist. Dies gilt vor allem für den Ressourcen-URI, der in der Abfragezeichenfolge angegeben ist. Unter „Beispiel für eine Anforderung“ im vorherigen REST-Abschnitt finden Sie ein Beispiel, und unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](./services-support-managed-identities.md) finden Sie eine Liste mit Diensten und den dazugehörigen Ressourcen-IDs.
 
 ## <a name="retry-guidance"></a>Informationen zur Wiederholung 
 
@@ -397,17 +397,9 @@ Empfohlene Wiederholungsstrategie:
 
 ## <a name="resource-ids-for-azure-services"></a>Ressourcen-IDs für Azure-Dienste
 
-Eine Liste mit Ressourcen, die Azure AD unterstützen und mit verwalteten Identitäten für Azure-Ressourcen getestet wurden, und die jeweiligen zugehörigen Ressourcen-IDs finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](services-support-msi.md).
+Eine Liste mit Ressourcen, die Azure AD unterstützen und mit verwalteten Identitäten für Azure-Ressourcen getestet wurden, und die jeweiligen zugehörigen Ressourcen-IDs finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](./services-support-managed-identities.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Aktivieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](qs-configure-portal-windows-vm.md).
-
-
-
-
-
-
-
-

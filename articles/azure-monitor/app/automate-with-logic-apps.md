@@ -1,30 +1,25 @@
 ---
 title: Automatisieren von Azure Application Insights-Prozessen mithilfe von Logic Apps
 description: In diesem Artikel erfahren Sie, wie Sie wiederholbare Prozesse schnell automatisieren können, indem Sie Ihrer Logik-App den Application Insights-Connector hinzufügen.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.author: mbullwin
-ms.openlocfilehash: 61215adc2aee5cef3693d119bf0efb36526d748b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6406c2e6fb933c561a8ae54009499768c81a204
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60904352"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90970866"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatisieren von Application Insights-Prozessen mithilfe von Logic Apps
 
 Ertappen Sie sich dabei, wie Sie wiederholt dieselben Abfragen von Ihren Telemetriedaten ausführen, um zu überprüfen, ob Ihr Dienst ordnungsgemäß funktioniert? Möchten Sie diese Abfragen für die Suche nach Trends und Anomalien automatisieren und eigene Workflows dafür erstellen? Dann benötigen Sie den Azure Application Insights-Connector für Logic Apps.
 
+> [!NOTE]
+> Der Azure Application Insights-Connector wurde durch den [Azure Monitor-Connector](../platform/logicapp-flow-connector.md) ersetzt, der in Azure Active Directory integriert ist, statt einen API-Schlüssel zu erfordern, und Ihnen außerdem das Abrufen von Daten aus einem Log Analytics-Arbeitsbereich ermöglicht.
+
 Mit dieser Integration können Sie zahlreiche Prozesse automatisieren, ohne eine einzige Codezeile zu schreiben. Mit dem Application Insights-Connector können Sie Logik-Apps erstellen und schnell beliebige Application Insights-Prozesse automatisieren. 
 
-Sie können auch weitere Aktionen hinzufügen. Das Logic Apps-Feature von Azure App Service ermöglicht Hunderte von Aktionen. So können Sie mit einer Logik-App beispielsweise automatisch eine E-Mail-Benachrichtigung senden oder einen Fehler in Azure DevOps protokollieren. Darüber hinaus können Sie eine der zahlreichen verfügbaren [Vorlagen](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) verwenden, um die Erstellung Ihrer Logik-App zu beschleunigen. 
+Sie können auch weitere Aktionen hinzufügen. Das Logic Apps-Feature von Azure App Service ermöglicht Hunderte von Aktionen. So können Sie mit einer Logik-App beispielsweise automatisch eine E-Mail-Benachrichtigung senden oder einen Fehler in Azure DevOps protokollieren. Darüber hinaus können Sie eine der zahlreichen verfügbaren [Vorlagen](../../logic-apps/logic-apps-create-logic-apps-from-templates.md) verwenden, um die Erstellung Ihrer Logik-App zu beschleunigen. 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>Erstellen einer Logik-App für Application Insights
 
@@ -58,7 +53,7 @@ In diesem Tutorial erfahren Sie, wie Sie eine Logik-App erstellen, die den autom
 
 Für diesen Schritt benötigen Sie eine Anwendungs-ID und einen API-Schlüssel für Ihre Ressource. Diese können Sie über das Azure-Portal abrufen, wie in der folgenden Abbildung zu sehen:
 
-![Anwendungs-ID im Azure-Portal](./media/automate-with-logic-apps/5apiaccess.png)
+![Screenshot der Seite „API-Zugriff“ im Azure-Portal mit ausgewählter Schaltfläche „API-Schlüssel erstellen“](./media/automate-with-logic-apps/5apiaccess.png)
 
 ![Anwendungs-ID im Azure-Portal](./media/automate-with-logic-apps/6apikey.png)
 
@@ -108,7 +103,7 @@ Vergewissern Sie sich beim Erstellen eigener Abfragen, dass sie ordnungsgemäß 
     
    d. Klicken Sie auf die Dropdownliste **Neuen Parameter hinzufügen**, und wählen Sie „Anhänge“ und „Ist HTML“ aus.
 
-      ![Konfiguration von Office 365 Outlook](./media/automate-with-logic-apps/10emailbody.png)
+      ![Screenshot des Fensters „E-Mail senden“ mit hervorgehobenem Feld „Text“ und des Menüs „Dynamischer Inhalt“ mit hervorgehobener Option „Text“ auf der rechten Seite](./media/automate-with-logic-apps/10emailbody.png)
 
       ![Konfiguration von Office 365 Outlook](./media/automate-with-logic-apps/11emailparameter.png)
 
@@ -135,14 +130,10 @@ Wenn Ihre Logik-App ausgeführt wird, erhalten die Empfänger, die Sie in der E-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](../../azure-monitor/log-query/get-started-queries.md).
-- Informieren Sie sich ausführlicher über [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
+- Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](../log-query/get-started-queries.md).
+- Informieren Sie sich ausführlicher über [Logic Apps](../../logic-apps/logic-apps-overview.md).
 
 
 
 <!--Link references-->
-
-
-
-
 

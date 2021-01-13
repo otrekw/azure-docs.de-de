@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-Skriptbeispiel – Einrichten einer Richtlinie für ein Ratenlimit | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Einrichten einer Richtlinie für ein Ratenlimit
+description: Hier erfahren Sie, wie Sie eine Richtlinie für ein Ratenlimit mit Azure PowerShell einrichten. Sehen Sie sich ein Beispielskript an, und zeigen Sie zusätzliche verfügbare Ressourcen an.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: e9da57ffe89dd6e187b7681024924d4853463ee2
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 40bbd520eb265b70f95c6b365b590727af8ea144
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067367"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87851289"
 ---
 # <a name="set-up-rate-limit-policy"></a>Einrichten einer Richtlinie für ein Ratenlimit
 
@@ -42,6 +42,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 ```
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Weitere Azure PowerShell-Beispiele für Azure API Management finden Sie in den [PowerShell-Beispielen](../powershell-samples.md).

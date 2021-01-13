@@ -15,21 +15,25 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 37969986b1d015ed08113da42a309eef42df569c
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.custom: devx-track-csharp
+ms.openlocfilehash: be98ab20fb29ae50445494a3c5f1558fd43420a7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015522"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89268696"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Verwenden von .NET SDK, um Kanäle zu erstellen, von denen eine Livecodierung von Single-Bitrate- zu Multi-Bitrate-Datenströmen vorgenommen wird
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-> * [REST-API](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [REST-API](/rest/api/media/operations/channel)
 > 
 > [!NOTE]
-> Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
+> Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
 > 
 > 
 
@@ -44,7 +48,7 @@ Die folgenden Schritte beschreiben die Aufgaben zum Erstellen von gebräuchliche
 > [!NOTE]
 > Die maximal empfohlene Dauer eines Liveereignisses beträgt derzeit 8 Stunden. Wenden Sie sich an amshelp@microsoft.com, falls Sie einen Kanal über längere Zeiträume ausführen müssen.
 
-1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, von dem ein Einzelbitraten-Datenstrom in einem der folgenden Protokolle ausgegeben wird: RTMP oder Smooth Streaming. Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](https://go.microsoft.com/fwlink/?LinkId=532824).
+1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, von dem ein Single-Bitrate-Datenstrom in einem der folgenden Protokolle ausgegeben wird: RTMP oder Smooth Streaming. Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](https://go.microsoft.com/fwlink/?LinkId=532824).
 
     Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
 
@@ -90,7 +94,7 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Aufgaben ausführen:
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
 
-* Ein Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). Sie erhalten ein Guthaben, mit dem Sie andere kostenpflichtige Azure-Dienste ausprobieren können. Selbst, nachdem Sie dieses Guthaben aufgebraucht haben, können Sie das Konto behalten und kostenlose Azure-Dienste und -Features nutzen, z. B. das Web-Apps-Feature in Azure App Service.
+* Ein Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). Sie erhalten ein Guthaben, mit dem Sie andere kostenpflichtige Azure-Dienste ausprobieren können. Selbst, nachdem Sie dieses Guthaben aufgebraucht haben, können Sie das Konto behalten und kostenlose Azure-Dienste und -Features nutzen, z. B. das Web-Apps-Feature in Azure App Service.
 * Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Erstellen eines Kontos](media-services-portal-create-account.md).
 * Visual Studio 2010 SP1 (Professional, Premium, Ultimate oder Express) oder höhere Versionen.
 * Sie müssen das Media Services .NET SDK, Version 3.2.0.0 oder höher, verwenden.
@@ -508,5 +512,3 @@ namespace EncodeLiveStreamWithAmsClear
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
-

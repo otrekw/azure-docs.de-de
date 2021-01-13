@@ -1,7 +1,7 @@
 ---
-title: Transliterate-Methode der Textübersetzungs-API
+title: Translator-Methode „Transliterate“
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Transliterate-Methode der Textübersetzungs-API.
+description: Konvertieren Sie Text in einer Sprache aus einem Skript in ein anderes Skript mithilfe der Translator-Methode „Transliterate“.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 58c9399b3701e2d8f0737b48c00336159e9688a8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4b985d7b2eb07ca8bbd3556a237fbcaba5392fe5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931998"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016466"
 ---
-# <a name="translator-text-api-30-transliterate"></a>Textübersetzungs-API 3.0: Transliterate
+# <a name="translator-30-transliterate"></a>Translator 3.0: Transliterate
 
 Konvertiert Text in einer Sprache aus einem Skript in ein anderes Skript.
 
@@ -61,7 +61,7 @@ Anforderungsheader enthalten Folgendes:
   <th>BESCHREIBUNG</th>
   <tr>
     <td>Authentifizierungsheader</td>
-    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
+    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -73,7 +73,7 @@ Anforderungsheader enthalten Folgendes:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Optional*.<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Beachten Sie, dass Sie diesen Header weglassen können, wenn Sie die Ablaufverfolgungs-ID mithilfe eines Abfrageparameters namens `ClientTraceId` in die Abfragezeichenfolge einschließen.</td>
+    <td>*Optional:*<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Beachten Sie, dass Sie diesen Header weglassen können, wenn Sie die Ablaufverfolgungs-ID mithilfe eines Abfrageparameters namens `ClientTraceId` in die Abfragezeichenfolge einschließen.</td>
   </tr>
 </table> 
 
@@ -131,7 +131,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   <th>BESCHREIBUNG</th>
   <tr>
     <td>200</td>
-    <td>Erfolgreich.</td>
+    <td>Erfolg.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -159,7 +159,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   </tr>
 </table> 
 
-Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Gängige Fehlercodes finden Sie auf der [Referenzseite zur Textübersetzungs-API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Sollte ein Fehler auftreten, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Häufige Fehlercodes finden Sie in der [Referenz zu Version 3 von Translator](./v3-0-reference.md#errors). 
 
 ## <a name="examples"></a>Beispiele
 

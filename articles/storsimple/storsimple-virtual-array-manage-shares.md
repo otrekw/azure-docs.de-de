@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 0a799c83-fde5-4f3f-af0e-67535d1882b6
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 82a6cdb6c9a39a0d196049a7ba662681ea06b36a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 340b910319cabe3379bdb1bad1c09bc71c17f072
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62116865"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994943"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Verwalten von Freigaben auf dem StorSimple Virtual Array
 
@@ -33,8 +33,8 @@ Der StorSimple-Geräte-Manager-Dienst ist eine Erweiterung im Azure-Portal, mit 
 
 Es gibt folgende StorSimple-Freigaben:
 
-* **Lokal:** Daten in diesen Freigaben verbleiben durchgehend im Array und gelangen nicht in die Cloud.
-* **Mehrstufig:** Daten in diesen Freigaben können in die Cloud gelangen. Wenn Sie eine mehrstufige Freigabe erstellen, werden ca. 10 % des Speicherplatzes auf der lokalen Ebene und 90 % des Speicherplatzes in der Cloud bereitgestellt. Wenn Sie beispielsweise eine Freigabe mit 1 TB bereitstellen, befinden sich 100 GB lokal, und 900 GB werden in der Cloud zum Anordnen der Daten genutzt. Dies bedeutet wiederum Folgendes: Wenn der gesamte lokale Speicherplatz auf dem Gerät aufgebraucht ist, können Sie keine mehrstufige Freigabe bereitstellen (da die lokal erforderlichen 10 % nicht verfügbar sind).
+* **Lokal**: Daten in diesen Freigaben verbleiben durchgehend im Array und weichen nicht in die Cloud aus.
+* **Mehrstufig**: Daten in diesen Freigaben können in die Cloud ausweichen. Wenn Sie eine mehrstufige Freigabe erstellen, werden ca. 10 % des Speicherplatzes auf der lokalen Ebene und 90 % des Speicherplatzes in der Cloud bereitgestellt. Wenn Sie beispielsweise eine Freigabe mit 1 TB bereitstellen, befinden sich 100 GB lokal, und 900 GB werden in der Cloud zum Anordnen der Daten genutzt. Dies bedeutet wiederum Folgendes: Wenn der gesamte lokale Speicherplatz auf dem Gerät aufgebraucht ist, können Sie keine mehrstufige Freigabe bereitstellen (da die lokal erforderlichen 10 % nicht verfügbar sind).
 
 ### <a name="provisioned-capacity"></a>Bereitgestellte Kapazität
 
@@ -42,9 +42,9 @@ In der folgenden Tabelle finden Sie die bereitgestellte Maximalkapazität für d
 
 | **Begrenzungsbezeichner** | **Begrenzung** |
 | --- | --- |
-| Mindestgröße einer mehrstufigen Freigabe |500 GB |
+| Mindestgröße einer mehrstufigen Freigabe |500 GB |
 | Maximale Größe einer mehrstufigen Freigabe |20 TB |
-| Mindestgröße einer lokalen Freigabe |50 GB |
+| Mindestgröße einer lokalen Freigabe |50 GB |
 | Maximale Größe einer lokalen Freigabe |2 TB |
 
 ## <a name="the-shares-blade"></a>Das Blatt „Freigaben“

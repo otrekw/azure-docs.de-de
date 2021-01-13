@@ -1,36 +1,32 @@
 ---
-title: Clientanwendungen (Microsoft Authentication Library) | Azure
+title: Öffentliche und vertrauliche Client-Apps (MSAL) | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über öffentliche und vertrauliche Clientanwendungen in der Microsoft Authentication Library (MSAL).
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/25/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c854cc34a1ea50f37428cfc18146618d516de7d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 9c3292a31e5f750c16933acf94509e0ad226080a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532963"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81534311"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Öffentliche und vertrauliche Clientanwendungen
 Die Microsoft Authentication Library (MSAL) definiert zwei Arten von Clients: öffentliche und vertrauliche Clients. Diese beiden Clienttypen unterscheiden sich in ihrer Fähigkeit, sich auf sichere Weise bei einem Autorisierungsserver zu authentifizieren und die Vertraulichkeit ihrer Clientanmeldeinformationen zu gewährleisten. Die Azure AD-Authentifizierungsbibliothek (Azure AD Authentication Library, ADAL) dagegen funktioniert nach dem Konzept des *Authentifizierungskontexts* (hierbei handelt es sich um eine Verbindung mit Azure AD).
 
-- **Vertrauliche Clientanwendungen** sind Apps, die auf Servern ausgeführt werden (Web-Apps, Web-API-Apps oder sogar Dienst-/Daemonanwendungen). Sie gelten als schwer zugänglich und sind daher in der Lage, Anwendungsgeheimnisse sicher zu speichern. Vertrauliche Clients können Geheimnisse speichern, die zur Konfigurationszeit eingerichtet wurden. Jede Instanz eines Clients verfügt über eine eigene Konfiguration (einschließlich Client-ID und geheimem Clientschlüssel). Endbenutzer können diese Werte nur schwer extrahieren. Eine Web-App ist die häufigste Form eines vertraulichen Clients. Die Client-ID wird über den Webbrowser verfügbar gemacht, aber der geheime Schlüssel wird nur im Rückkanal übergeben und niemals direkt verfügbar gemacht.
+- **Vertrauliche Clientanwendungen** sind Apps, die auf Servern ausgeführt werden (Web-Apps, Web-API-Apps oder sogar Dienst-/Daemon-Apps). Sie gelten als schwer zugänglich und sind daher in der Lage, Anwendungsgeheimnisse sicher zu speichern. Vertrauliche Clients können Geheimnisse speichern, die zur Konfigurationszeit eingerichtet wurden. Jede Instanz eines Clients verfügt über eine eigene Konfiguration (einschließlich Client-ID und geheimem Clientschlüssel). Endbenutzer können diese Werte nur schwer extrahieren. Eine Web-App ist die häufigste Form eines vertraulichen Clients. Die Client-ID wird über den Webbrowser verfügbar gemacht, aber der geheime Schlüssel wird nur im Rückkanal übergeben und niemals direkt verfügbar gemacht.
 
     Vertrauliche Client-Apps: <BR>
-    ![Web-App](media/msal-client-applications/web-app.png) ![Web-API](media/msal-client-applications/web-api.png) ![Daemon/Dienst](media/msal-client-applications/daemon-service.png)
+    ![Web-App](media/msal-client-applications/web-app.png), ![Web-API](media/msal-client-applications/web-api.png), ![Daemon/Dienst](media/msal-client-applications/daemon-service.png)
 
 - **Öffentliche Clientanwendungen** sind Apps, die auf Geräten, Desktopcomputern oder in einem Webbrowser ausgeführt werden. Sie sind in Bezug auf eine sichere Speicherung von Anwendungsgeheimnissen nicht vertrauenswürdig und können daher nur im Namen eines Benutzers auf Web-APIs zugreifen. (Sie unterstützen nur öffentliche Clientflows.) Öffentliche Clients können keine zur Konfigurationszeit festgelegten Geheimnisse speichern und verfügen daher nicht über geheime Clientschlüssel.
 

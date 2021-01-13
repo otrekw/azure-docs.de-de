@@ -1,22 +1,22 @@
 ### YamlMime:Landing
 title: Dokumentation zur Formularerkennung
-summary: Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Unbeaufsichtigtes Lernen ermöglicht es dem Modell, das Layout und die Beziehungen zwischen Feldern und Einträgen zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensive Codierung und Verwaltung.
+summary: Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Unbeaufsichtigtes Lernen ermöglicht es dem Modell, das Layout und die Felddaten zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensives Programmieren. Sie können auch überwachtes Lernen mit manuell gekennzeichneten Daten ausführen. Modelle, die mit gekennzeichneten Daten trainiert werden, weisen eine bessere Leistung auf und können kompliziertere Dokumente verarbeiten.
 metadata:
-  title: Dokumentation zur Formularerkennung
-  description: Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Unbeaufsichtigtes Lernen ermöglicht es dem Modell, das Layout und die Beziehungen zwischen Feldern und Einträgen zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensive Codierung und Verwaltung.
+  title: 'Dokumentation zur Formularerkennung: Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  description: Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Unbeaufsichtigtes Lernen ermöglicht es dem Modell, das Layout und die Felddaten zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensives Programmieren. Sie können auch überwachtes Lernen mit manuell gekennzeichneten Daten ausführen. Modelle, die mit gekennzeichneten Daten trainiert werden, weisen eine bessere Leistung auf und können kompliziertere Dokumente verarbeiten.
   services: cognitive-services
   ms.service: cognitive-services
-  ms.subservice: form-recognizer
+  ms.subservice: forms-recognizer
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 0c450a79c0dbdd19732488af927c3c29df263a23
-  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.openlocfilehash: a94e30beb495d3ead38a14ef86c050dfc1afd0fd
+  ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/12/2019
-  ms.locfileid: "70931826"
+  ms.lasthandoff: 01/01/2021
+  ms.locfileid: "97845274"
 landingContent:
 - title: Informationen zur Formularerkennung
   linkLists:
@@ -24,6 +24,10 @@ landingContent:
     links:
     - text: Was ist die Formularerkennung?
       url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Neuerungen in der Formularerkennung
+      url: whats-new.md
   - linkListType: video
     links:
     - text: KI-basierte Prozessautomatisierung mit Formularerkennung
@@ -32,24 +36,86 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Mithilfe des .NET SDK
-      url: quickstarts/dotnet-sdk.md
-    - text: Mithilfe der REST-API (Python)
-      url: quickstarts/python-train-extract.md
-    - text: Mithilfe der REST-API (cURL)
-      url: quickstarts/curl-train-extract.md
-- title: Extrahieren von Daten aus Belegen
-  linkLists:
-  - linkListType: quickstart
-    links:
     - text: Verwenden des .NET SDK
-      url: quickstarts/dotnet-sdk.md
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: Verwenden des Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: Verwenden des Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: Verwenden des JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: Mithilfe der REST-API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
 - title: Erstellen eines Trainingsdatasets
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Erstellen eines Trainingsdatasets
       url: build-training-data-set.md
+- title: Trainieren eines benutzerdefinierten Modells mithilfe von Bezeichnungen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Gekennzeichnete Daten
+      url: overview.md#train-with-labels
+  - linkListType: quickstart
+    links:
+    - text: Trainieren mithilfe des Samplebezeichnungstools
+      url: quickstarts/label-tool.md
+- title: Extrahieren von Daten aus Belegen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Verwenden des .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: Verwenden des Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: Verwenden des Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: Verwenden des JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: Mithilfe der REST-API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
+  - linkListType: concept
+    links:
+    - text: Konzepte zu Belegen
+      url: concept-receipts.md?
+- title: Extrahieren von Daten aus Visitenkarten
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Verwenden des .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: Verwenden des Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: Verwenden des Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: Verwenden des JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: Mithilfe der REST-API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
+  - linkListType: concept
+    links:
+    - text: Konzepte zu Visitenkarten
+      url: concept-business-cards.md?
+- title: Abrufen von Textlayoutinformationen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Layoutkonzepte
+      url: concept-layout.md?
+  - linkListType: quickstart
+    links:
+    - text: Verwenden des .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: Verwenden des Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: Verwenden des Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: Verwenden des JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: Mithilfe der REST-API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
 - title: Verwenden von Containern
   linkLists:
   - linkListType: get-started
@@ -68,11 +134,23 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Formularerkennungs-API
-      url: https://aka.ms/form-recognizer/api
+    - text: Formularerkennungs-API Version 2.0
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm
     - text: .NET SDK
-      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview
+      url: /dotnet/api/overview/azure/ai.formrecognizer-readme
+    - text: Python SDK
+      url: /python/api/azure-ai-formrecognizer/?view=azure-python
+    - text: Java-SDK
+      url: /java/api/overview/azure/ai-formrecognizer-readme
+    - text: JavaScript SDK
+      url: /javascript/api/overview/azure/ai-form-recognizer-readme
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+      url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure-Befehlszeilenschnittstelle (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+      url: /cli/azure/cognitiveservices#az-cognitiveservices-list
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context

@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect in Microsoft Cloud Deutschland
-description: Azure AD Connect integriert Ihre lokalen Verzeichnisse in Azure Active Directory. Dadurch können Sie eine einzige Identität für in Azure AD integrierte in Office 365-, Azure- und SaaS-Anwendungen bereitstellen.
+description: Azure AD Connect integriert Ihre lokalen Verzeichnisse in Azure Active Directory. Dadurch können Sie eine gemeinsame Identität für Microsoft 365, Azure und mit Azure AD integrierte SaaS-Anwendungen bereitstellen.
 keywords: Einführung in Azure AD Connect, Übersicht über Azure AD Connect, was ist Azure AD Connect, Active Directory installieren, Deutschland, Black Forest
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62f0d82a543c0ae4e629eda3bca18b0a06322f2c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 246f8326f7112825de98ee824cf4bab7952a7878
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381235"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90014586"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Azure AD Connect in Microsoft Cloud Deutschland – Öffentliche Vorschau
 ## <a name="introduction"></a>Einführung

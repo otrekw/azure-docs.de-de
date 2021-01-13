@@ -1,27 +1,26 @@
 ---
-title: Kopieren von Daten in und aus Azure Blob Storage | Microsoft Docs
+title: Kopieren von Daten in und aus Azure Blob Storage
 description: 'Hier erfahren Sie, wie Sie Blobdaten in Azure Data Factory kopieren. Verwenden Sie unser Beispiel: Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank (und umgekehrt).'
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: bec8160f-5e07-47e4-8ee1-ebb14cfb805d
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 16d11a707851cdbb3e315c9a6d2fe592a97eca9a
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: fa6e19fd9759d6e489d0945b5521a2e0ae3881e0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839569"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462635"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-azure-blob-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-azure-blob-storage.md)
 
@@ -32,11 +31,11 @@ ms.locfileid: "67839569"
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten nach und aus Azure Blob Storage zu kopieren. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
 ## <a name="overview"></a>Übersicht
-Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azure Blob Storage bzw. aus Azure Blob Storage in einen beliebigen unterstützten Senkendatenspeicher kopieren. Die folgende Tabelle enthält eine Liste der Datenspeicher, die als Quellen oder Senken (Ziele) für die Kopieraktivität unterstützt werden. Beispielsweise können Sie Daten **aus** einer SQL Server-Datenbank oder einer Azure SQL-Datenbank **in** den Azure Blob Storage verschieben. Außerdem können Sie Daten **aus** Azure Blob Storage **in** eine Azure SQL Data Warehouse- oder Azure Cosmos DB-Sammlung kopieren.
+Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azure Blob Storage bzw. aus Azure Blob Storage in einen beliebigen unterstützten Senkendatenspeicher kopieren. Die folgende Tabelle enthält eine Liste der Datenspeicher, die als Quellen oder Senken (Ziele) für die Kopieraktivität unterstützt werden. Beispielsweise können Sie Daten **aus** einer SQL Server-Datenbank oder einer Datenbank in Azure SQL-Datenbank **in** den Azure Blob Storage verschieben. Außerdem können Sie Daten **aus** Azure Blob Storage **in** Azure Synapse Analytics oder in eine Azure Cosmos DB-Sammlung kopieren.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 Sie können Daten **aus Azure Blob Storage** in die folgenden Datenspeicher kopieren:
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
@@ -48,7 +47,7 @@ Sie können Daten aus den folgenden Datenspeichern **nach Azure Blob Storage** k
 > [!IMPORTANT]
 > Die Kopieraktivität unterstützt das Kopieren von Daten in und aus Azure Storage-Konten für allgemeine Zwecke und Blob Storage (Hot/Cool). Die Aktivität unterstützt das **Lesen aus Block-, Anfüge- und Seitenblobs**. Das **Schreiben wird jedoch nur für Blockblobs** unterstützt. Azure Premium Storage wird als Senke nicht unterstützt, da er vor dem Hintergrund von Seitenblobs funktioniert.
 >
-> Bei der Kopieraktivität werden die Daten nicht in der Quelle gelöscht, nachdem sie erfolgreich in das Ziel kopiert wurden. Wenn Sie Quelldaten nach dem erfolgreichen Kopieren löschen müssen, erstellen Sie eine [benutzerdefinierte Aktivität](data-factory-use-custom-activities.md), um die Daten zu löschen, und verwenden Sie die Aktivität in der Pipeline. Ein Beispiel finden Sie unter [Delete blob or folder](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity) (Löschen eines Blobs oder Ordners) auf GitHub.
+> Bei der Kopieraktivität werden die Daten nicht in der Quelle gelöscht, nachdem sie erfolgreich in das Ziel kopiert wurden. Wenn Sie Quelldaten nach dem erfolgreichen Kopieren löschen müssen, erstellen Sie eine [benutzerdefinierte Aktivität](data-factory-use-custom-activities.md), um die Daten zu löschen, und verwenden Sie die Aktivität in der Pipeline. Ein Beispiel finden Sie unter [Delete blob or folder](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity) (Löschen eines Blobs oder Ordners) auf GitHub.
 
 ## <a name="get-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs in und aus Azure Blob Storage verschiebt.
@@ -60,8 +59,8 @@ Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **V
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
 1. Eine **Data Factory**. Eine Data Factory kann eine oder mehrere Pipelines enthalten.
-2. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus Azure Blob Storage in Azure SQL-Datenbank kopieren, erstellen Sie zwei verknüpfte Dienste, um Ihr Azure Storage-Konto und die Azure SQL-Datenbank mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für Azure Blob Storage sind, finden Sie im Abschnitt [Eigenschaften des verknüpften Diensts](#linked-service-properties).
-2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. Im Beispiel, das im letzten Schritt erwähnt wurde, erstellen Sie ein Dataset, um den Blobcontainer und den Ordner mit den Eingabedaten anzugeben. Außerdem erstellen Sie ein weiteres Dataset zum Angeben der SQL-Tabelle in der Azure SQL-Datenbank, in der die aus dem Blobspeicher kopierten Daten enthalten sind. Informationen zu Dataset-Eigenschaften, die spezifisch für Azure Blob Storage sind, finden Sie im Abschnitt [Dataset-Eigenschaften](#dataset-properties).
+2. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus Azure Blob Storage in Azure SQL-Datenbank kopieren, erstellen Sie zwei verknüpfte Dienste, um Ihr Azure Storage-Konto und Azure SQL-Datenbank mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für Azure Blob Storage sind, finden Sie im Abschnitt [Eigenschaften des verknüpften Diensts](#linked-service-properties).
+2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. Im Beispiel, das im letzten Schritt erwähnt wurde, erstellen Sie ein Dataset, um den Blobcontainer und den Ordner mit den Eingabedaten anzugeben. Außerdem erstellen Sie ein weiteres Dataset zum Angeben der SQL-Tabelle in Azure SQL-Datenbank, in der die aus dem Blobspeicher kopierten Daten enthalten sind. Informationen zu Dataset-Eigenschaften, die spezifisch für Azure Blob Storage sind, finden Sie im Abschnitt [Dataset-Eigenschaften](#dataset-properties).
 3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. Im oben erwähnten Beispiel verwenden Sie „BlobSource“ als Quelle und „SqlSink“ als Senke für die Kopieraktivität. Wenn Sie einen Kopiervorgang von Azure SQL-Datenbank zu Azure Blob Storage durchführen, verwenden Sie entsprechend SqlSource und BlobSink in der Kopieraktivität. Informationen zu den Eigenschaften von Kopieraktivitäten, die spezifisch für Azure Blob Storage sind, finden Sie im Abschnitt [Eigenschaften der Kopieraktivität](#copy-activity-properties). Ausführliche Informationen zur Verwendung eines Datenspeichers als Quelle oder Senke erhalten Sie, indem Sie im vorherigen Abschnitt auf den Link für Ihren Datenspeicher klicken.
 
 Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Beispiele mit JSON-Definitionen für Data Factory-Entitäten für das Kopieren von Daten in und aus Azure Blob Storage finden Sie in diesem Artikel im Abschnitt [JSON-Beispiele](#json-examples-for-copying-data-to-and-from-blob-storage  ).
@@ -124,7 +123,7 @@ Im obigen Beispiel wird {Slice} durch den Wert der Data Factory-Systemvariablen 
 Im Beispiel oben werden Jahr, Monat, Tag und Uhrzeit von SliceStart in separate Variablen extrahiert, die von den Eigenschaften „folderPath“ und „fileName“ verwendet werden.
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
-Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabedatasets und Richtlinien sind für alle Arten von Aktivitäten verfügbar. Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken. Wenn Sie Daten aus Azure Blob Storage verschieben, legen Sie den Quelltyp in der Kopieraktivität auf **BlobSource**fest. Wenn Sie hingegen Daten in Azure Blob Storage verschieben, legen Sie den Senkentyp in der Kopieraktivität auf **BlobSink**fest. Dieser Abschnitt enthält eine Liste der Eigenschaften, die von „BlobSource“ und „BlobSink“ unterstützt werden.
+Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabedatasets und Richtlinien sind für alle Arten von Aktivitäten verfügbar. Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken. Wenn Sie Daten aus Azure Blob Storage verschieben, legen Sie den Quelltyp in der Kopieraktivität auf **BlobSource** fest. Wenn Sie hingegen Daten in Azure Blob Storage verschieben, legen Sie den Senkentyp in der Kopieraktivität auf **BlobSink** fest. Dieser Abschnitt enthält eine Liste der Eigenschaften, die von „BlobSource“ und „BlobSink“ unterstützt werden.
 
 **BlobSource** unterstützt die folgenden Eigenschaften im Abschnitt **typeProperties**:
 
@@ -164,18 +163,18 @@ Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für 
 
 | recursive | copyBehavior | Resultierendes Verhalten |
 | --- | --- | --- |
-| true |preserveHierarchy |Für den Quellordner „Ordner1“ mit der folgenden Struktur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei5<br/><br/>wird der Zielordner „Ordner1“ mit der gleichen Struktur erstellt wie die Quelle<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei5 |
-| true |flattenHierarchy |Für den Quellordner „Ordner1“ mit der folgenden Struktur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei5<br/><br/>wird der Zielordner „Ordner1“ mit der folgenden Struktur erstellt: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei5 |
-| true |mergeFiles |Für den Quellordner „Ordner1“ mit der folgenden Struktur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei5<br/><br/>wird der Zielordner „Ordner1“ mit der folgenden Struktur erstellt: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp; Inhalte von Datei1 + Datei2 + Datei3 + Datei4 + Datei5 werden in einer Datei mit einem automatisch generierten Namen zusammengeführt. |
-| false |preserveHierarchy |Für den Quellordner „Ordner1“ mit der folgenden Struktur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei5<br/><br/>wird der Zielordner „Ordner1“ mit der folgenden Struktur erstellt:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/><br/><br/>Unterordner1 mit Datei3, Datei4 und Datei5 wird nicht übernommen. |
-| false |flattenHierarchy |Für den Quellordner „Ordner1“ mit der folgenden Struktur:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei5<br/><br/>wird der Zielordner „Ordner1“ mit der folgenden Struktur erstellt:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei2<br/><br/><br/>Unterordner1 mit Datei3, Datei4 und Datei5 wird nicht übernommen. |
-| false |mergeFiles |Für den Quellordner „Ordner1“ mit der folgenden Struktur:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;Datei5<br/><br/>wird der Zielordner „Ordner1“ mit der folgenden Struktur erstellt:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inhalte von Datei1 + Datei2 werden zu einer Datei mit einem automatisch generierten Namen zusammengeführt. Automatisch generierter Name für Datei1<br/><br/>Unterordner1 mit Datei3, Datei4 und Datei5 wird nicht übernommen. |
+| true |preserveHierarchy |Für den Quellordner „Ordner1“ mit der folgenden Struktur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5<br/><br/>wird der Zielordner „Ordner1“ mit der gleichen Struktur erstellt wie die Quelle<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5 |
+| true |flattenHierarchy |Für den Quellordner „Ordner1“ mit der folgenden Struktur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5<br/><br/>wird der Zielordner „Ordner1“ mit der folgenden Struktur erstellt: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei5 |
+| true |mergeFiles |Für den Quellordner „Ordner1“ mit der folgenden Struktur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5<br/><br/>wird der Zielordner „Ordner1“ mit der folgenden Struktur erstellt: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp; Inhalte von Datei1 + Datei2 + Datei3 + Datei4 + Datei5 werden in einer Datei mit einem automatisch generierten Namen zusammengeführt. |
+| false |preserveHierarchy |Für den Quellordner „Ordner1“ mit der folgenden Struktur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5<br/><br/>wird der Zielordner „Ordner1“ mit der folgenden Struktur erstellt:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/><br/><br/>Unterordner1 mit Datei3, Datei4 und Datei5 wird nicht übernommen. |
+| false |flattenHierarchy |Für den Quellordner „Ordner1“ mit der folgenden Struktur:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5<br/><br/>wird der Zielordner „Ordner1“ mit der folgenden Struktur erstellt:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei2<br/><br/><br/>Unterordner1 mit Datei3, Datei4 und Datei5 wird nicht übernommen. |
+| false |mergeFiles |Für den Quellordner „Ordner1“ mit der folgenden Struktur:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5<br/><br/>wird der Zielordner „Ordner1“ mit der folgenden Struktur erstellt:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inhalte von Datei1 + Datei2 werden zu einer Datei mit einem automatisch generierten Namen zusammengeführt. Automatisch generierter Name für Datei1<br/><br/>Unterordner1 mit Datei3, Datei4 und Datei5 wird nicht übernommen. |
 
 ## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>Exemplarische Vorgehensweise: Verwenden des Kopier-Assistenten, um Daten in/aus Blob Storage zu kopieren
 Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kopiert werden können. In dieser exemplarischen Vorgehensweise haben sowohl der Quell- als auch der Zieldatenspeicher den Typ „Azure Blob Storage“. In der Pipeline in dieser exemplarischen Vorgehensweise werden Daten aus einem Ordner in einen anderen Ordner im selben BLOB-Container kopiert. Diese exemplarische Vorgehensweise ist bewusst einfach gehalten, um Einstellungen oder Eigenschaften für den Fall zu veranschaulichen, dass Blob Storage als Quelle oder Senke verwendet wird.
 
 ### <a name="prerequisites"></a>Voraussetzungen
-1. Erstellen Sie ein allgemein verwendbares **Azure Storage-Konto** (Azure-Speicherkonto), wenn Sie noch keines haben. In dieser exemplarischen Vorgehensweise verwenden Sie den Blob Storage sowohl als **Quell**- als auch als **Ziel**datenspeicher. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md) Schritte zum Erstellen eines Azure Storage-Kontos.
+1. Erstellen Sie ein allgemein verwendbares **Azure Storage-Konto** (Azure-Speicherkonto), wenn Sie noch keines haben. In dieser exemplarischen Vorgehensweise verwenden Sie den Blob Storage sowohl als **Quell**- als auch als **Ziel** datenspeicher. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md) Schritte zum Erstellen eines Azure Storage-Kontos.
 2. Erstellen Sie einen BLOB-Container namens **adfblobconnector** im Speicherkonto.
 4. Erstellen Sie einen Ordner namens **input** im **adfblobconnector**-Container.
 5. Erstellen Sie eine Datei namens **emp.txt** mit dem folgenden Inhalt, und laden Sie diese Datei in den Ordner **input** hoch, indem Sie ein Tool wie [Azure Storage-Explorer](https://azurestorageexplorer.codeplex.com/) verwenden.
@@ -189,16 +188,16 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
 2. Klicken Sie links oben auf **Ressource erstellen** und anschließend auf **Intelligence + Analyse** und **Data Factory**.
 3. Gehen Sie im Bereich **Neue Data Factory** wie folgt vor:  
     1. Geben Sie **ADFBlobConnectorDF** für **Name** ein. Der Name der Azure Data Factory muss global eindeutig sein. Sollte der Fehler `*Data factory name “ADFBlobConnectorDF” is not available` angezeigt werden, ändern Sie den Namen der Data Factory (etwa „IhrNameADFBlobConnectorDF“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .
-    2. Wählen Sie Ihr Azure- **Abonnement**aus.
+    2. Wählen Sie Ihr Azure- **Abonnement** aus.
     3. Wählen Sie für „Ressourcengruppe“ die Option **Vorhandene verwenden** aus, um eine vorhandene Ressourcengruppe auszuwählen, oder wählen Sie **Erstellen** aus, um einen Namen für eine Ressourcengruppe einzugeben.
     4. Wählen Sie einen **Standort** für die Data Factory aus.
     5. Aktivieren Sie unten auf dem Blatt das Kontrollkästchen **An Dashboard anheften**.
-    6. Klicken Sie auf **Create**.
+    6. Klicken Sie auf **Erstellen**.
 3. Nach Abschluss der Erstellung wird das Blatt **Data Factory** wie in der folgenden Abbildung dargestellt angezeigt:  ![Data Factory-Startseite](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>Kopier-Assistent
 1. Klicken Sie auf der Data Factory-Startseite auf die Kachel **Daten kopieren**, um den **Assistenten zum Kopieren von Daten** in einer eigenen Registerkarte zu starten.  
-    
+
     > [!NOTE]
     > Wenn Sie feststellen, dass der Webbrowser bei der Autorisierung hängen bleibt, deaktivieren Sie die Einstellung **Cookies und Websitedaten von Drittanbietern blockieren**, oder lassen Sie die Einstellung aktiviert, und erstellen Sie eine Ausnahme für **login.microsoftonline.com**. Versuchen Sie anschließend erneut, den Assistenten zu starten.
 2. Auf der Seite **Eigenschaften**:
@@ -222,17 +221,17 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
 5. Auf der Seite **Eingabedatei oder -ordner auswählen** :
     1. Doppelklicken Sie auf **adfblobcontainer**.
     2. Wählen Sie **input** aus, und klicken Sie auf **Auswählen**. In dieser exemplarischen Vorgehensweise wählen Sie den Ordner „input“ aus. Sie könnten stattdessen die Datei „emp.txt“ im Ordner auswählen.
-        ![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
+        ![Kopiertool: Auswählen der Eingabedatei oder des Eingabeordners 1](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
 6. Auf der Seite für **Eingabedatei oder -ordner auswählen**:
     1. Vergewissern Sie sich, dass **Datei oder Ordner** auf **adfblobconnector/input** festgelegt ist. Wenn sich die Dateien in Unterordnern befinden, z. B. „2017/04/01“, „2017/04/02“ usw., geben Sie „adfblobconnector/input/{year}/{month}/{day}“ für „Datei oder Ordner“ ein. Wenn Sie im Textfeld die TAB-TASTE drücken, werden drei Dropdownlisten angezeigt, in denen die Formate für Jahr (yyyy), Monat (MM) und Tag (dd) ausgewählt werden können.
     2. Aktivieren Sie nicht die Option **Dateien rekursiv kopieren**. Aktivieren Sie diese Option, wenn Sie die Ordner rekursiv durchlaufen möchten, um die in das Ziel zu kopierenden Dateien auszuwählen.
     3. Aktivieren Sie nicht die **Binärkopie**. Aktivieren Sie diese Option, um die Quelldatei als Binärkopie in das Ziel zu kopieren. Aktivieren Sie diese Option nicht für diese exemplarische Vorgehensweise, damit auf den nächsten Seiten weitere Optionen angezeigt werden.
     4. Vergewissern Sie sich, dass der **Komprimierungstyp** auf **Kein** festgelegt ist. Wählen Sie einen Wert für diese Option aus, wenn die Quelldateien in einem der unterstützten Formate komprimiert sind.
     5. Klicken Sie auf **Weiter**.
-    ![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
+    ![Kopiertool: Auswählen der Eingabedatei oder des Eingabeordners 2](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
 7. Auf der Seite **File format settings** (Dateiformateinstellungen) werden die Trennzeichen und das Schema angezeigt. Diese Informationen werden vom Assistenten beim Analysieren der Datei automatisch erkannt.
     1. Bestätigen Sie die folgenden Optionen:  
-        a. Das **Dateiformat** ist auf **Textformat** festgelegt. In der Dropdownliste werden alle unterstützten Formate angezeigt. Beispiel:  JSON, Avro, ORC, Parquet.
+        a. Das **Dateiformat** ist auf **Textformat** festgelegt. In der Dropdownliste werden alle unterstützten Formate angezeigt. Beispiel: JSON, Avro, ORC, Parquet.
        b. Das **Spaltentrennzeichen** ist auf `Comma (,)` festgelegt. Die weiteren Spaltentrennzeichen, die von Data Factory unterstützt werden, werden in der Dropdownliste angezeigt. Sie können auch ein benutzerdefiniertes Trennzeichen angeben.
        c. Das **Zeilentrennzeichen** ist auf `Carriage Return + Line feed (\r\n)` festgelegt. Die weiteren Zeilentrennzeichen, die von Data Factory unterstützt werden, werden in der Dropdownliste angezeigt. Sie können auch ein benutzerdefiniertes Trennzeichen angeben.
        d. Die **Anzahl zu überspringender Zeilen** ist auf **0** festgelegt. Wenn Sie möchten, dass einige Zeilen am Anfang der Datei übersprungen werden sollen, geben Sie hier die Anzahl ein.
@@ -248,7 +247,7 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
 9. Auf der Seite **Azure Blob Storage-Konto angeben**:  
     1. Geben Sie im Feld **Verbindungsname** den Text **AzureStorageLinkedService** ein.
     2. Überprüfen Sie, ob unter **Kontoauswahlmethode** die Option **Über Azure-Abonnements** ausgewählt ist.
-    3. Wählen Sie Ihr Azure- **Abonnement**aus.
+    3. Wählen Sie Ihr Azure- **Abonnement** aus.
     4. Wählen Sie Ihr Azure Storage-Konto aus.
     5. Klicken Sie auf **Weiter**.
 10. Auf der Seite für **Ausgabedatei oder -ordner auswählen**:  
@@ -273,7 +272,7 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
 
 1. Klicken Sie auf der Seite **Bereitstellung** auf den Link `Click here to monitor copy pipeline`.
 2. Nun sollte die **Anwendung für Überwachen und Verwalten** auf einer separaten Registerkarte angezeigt werden.  ![Anwendung für Überwachen und Verwalten](media/data-factory-azure-blob-connector/monitor-manage-app.png)
-3. Ändern Sie oben die **Start**zeit in `04/19/2017` und die **End**zeit in `04/27/2017`, und klicken Sie dann auf **Anwenden**.
+3. Ändern Sie oben die **Start** zeit in `04/19/2017` und die **End** zeit in `04/27/2017`, und klicken Sie dann auf **Anwenden**.
 4. In der Liste **AKTIVITÄTSFENSTER** sollten nun fünf Aktivitätsfenster zu sehen sein. Die Zeiten unter **Fensterstart** sollten alle Tage ab der Pipelinestart- bis zur Pipelinendzeit abdecken.
 5. Klicken Sie mehrmals auf die Schaltfläche **Aktualisieren** für die Liste **AKTIVITÄTSFENSTER**, bis der Status jedes Aktivitätsfensters auf „Bereit“ festgelegt ist.
 6. Vergewissern Sie sich jetzt, dass die Ausgabedateien im Container „adfblobconnector“ in dessen Ordner „output“ generiert wurden. Für den Ordner „output“ sollte die folgende Ordnerstruktur angezeigt werden:
@@ -549,7 +548,7 @@ Daten werden stündlich aus einem neuen Blob übernommen (frequency: hour, inter
 ```
 **Azure SQL-Ausgabedataset:**
 
-Das Beispiel kopiert Daten in eine Tabelle namens "MyTable" in einer Azure SQL-Datenbank. Erstellen Sie die Tabelle in der Azure SQL-Datenbank mit der gleichen Anzahl von Spalten, die Sie in der Blob-CSV-Datei erwarten. Neue Zeilen werden der Tabelle stündlich hinzugefügt.
+Das Beispiel kopiert Daten in eine Tabelle namens „MyTable“ in Azure SQL-Datenbank. Erstellen Sie die Tabelle in der SQL-Datenbank mit der gleichen Anzahl von Spalten, die Sie in der Blob-CSV-Datei erwarten. Neue Zeilen werden der Tabelle stündlich hinzugefügt.
 
 ```json
 {

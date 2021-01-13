@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
-ms.custom: seodec18
-ms.openlocfilehash: 417ff7ac345b9a83b3d3f4c50e9fd141d74bc99c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: e5e404e4cc0e4131ba7ade5ec8ec6115e26268a2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103545"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965895"
 ---
 # <a name="call-the-computer-vision-api"></a>Aufrufen der Maschinelles Sehen-API
 
@@ -25,14 +25,6 @@ In diesem Artikel wird beschrieben, wie die Maschinelles Sehen-API mithilfe der 
 - Abrufen von Tags, einer Beschreibung und Kategorien
 - Abrufen domänenspezifischer Informationen bzw. „Prominenten“
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-- Eine Bild-URL oder ein Pfad zum lokal gespeicherten Bild
-- Unterstützte Eingabemethoden: rohe Bildbinärdaten in Form einer Anwendung/eines Oktettdatenstroms oder einer Bild-URL
-- Unterstützte Bildformate: JPEG, PNG, GIF und BMP
-- Bilddateigröße: maximal 4 MB
-- Bildmaße: mindestens 50 &times; 50 Pixel
-  
 In den Beispielen dieses Artikels werden die folgenden Features gezeigt:
 
 * Analysieren eines Bilds zur Rückgabe eines Arrays an Tags und einer Beschreibung
@@ -42,21 +34,29 @@ Die Features bieten die folgenden Optionen:
 
 - **Option 1**: Bereichsbezogene Analyse – Analyse nur für ein angegebenes Modell
 - **Option 2**: Erweiterte Analyse – Analyse zur Bereitstellung zusätzlicher Details mit der [Taxonomie mit 86 Kategorien](../Category-Taxonomy.md)
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
+* Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Erstellen einer Ressource für maschinelles Sehen"  target="_blank"> im Azure-Portal eine Ressource für maschinelles Sehen <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+    * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um eine Verbindung Ihrer Anwendung mit dem Dienst für maschinelles Sehen herzustellen. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
+    * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
+* Eine Bild-URL oder ein Pfad zum lokal gespeicherten Bild
+* Unterstützte Eingabemethoden: rohe Bildbinärdaten in Form einer Anwendung/eines Oktettdatenstroms oder einer Bild-URL
+* Unterstützte Bildformate: JPEG, PNG, GIF und BMP
+* Bilddateigröße: maximal 4 MB
+* Bildmaße: mindestens 50 &times; 50 Pixel
   
 ## <a name="authorize-the-api-call"></a>Autorisieren des API-Aufrufs
 
 Für jeden Aufruf der Maschinelles Sehen-API ist ein Abonnementschlüssel erforderlich. Dieser Schlüssel muss entweder über einen Parameter mit der Abfragezeichenfolge übergeben oder im Anforderungsheader angegeben werden.
-
-Um einen kostenlosen Testschlüssel zu erhalten, führen Sie einen der folgenden Schritte aus:
-* Navigieren Sie zur Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). 
-* Wechseln Sie zur Seite [Erstellen einer Cognitive Services-Ressource](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), um maschinelles Sehen zu abonnieren.
 
 Sie können den Abonnementschlüssel übergeben, indem Sie eine der folgenden Aktionen ausführen:
 
 * Übergeben Sie ihn wie in diesem Beispiel für die Maschinelles Sehen-API über eine Abfragezeichenfolge:
 
   ```
-  https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+  https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
   ```
 
 * Geben Sie ihn im HTTP-Anforderungsheader an:
@@ -83,7 +83,7 @@ Rufen Sie für ein bestimmtes Bild Tags und eine Beschreibung mithilfe einer der
 ### <a name="option-1-get-a-list-of-tags-and-a-description"></a>Option 1: Abrufen einer Liste mit Tags und einer Beschreibung
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
 ```
 
 ```csharp
@@ -105,14 +105,14 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 Führen Sie für nur Tags Folgendes aus:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag?subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/tag?subscription-key=<Your subscription key>
 var tagResults = await visionClient.TagImageAsync("http://contoso.com/example.jpg");
 ```
 
 Führen Sie für nur eine Beschreibung Folgendes aus:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe?subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/describe?subscription-key=<Your subscription key>
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 {
   imageDescription = await visionClient.DescribeImageInStreamAsync(fs);
@@ -123,14 +123,14 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 
 ### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Option 1: Bereichsbezogene Analyse – Analyse nur für ein angegebenes Modell
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/models/celebrities/analyze
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/models/celebrities/analyze
 var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
 ```
 
 Bei dieser Option sind alle anderen Abfrageparameter {VisualFeatures, details} ungültig. Wenn alle unterstützten Modelle angezeigt werden sollen, verwenden Sie:
 
 ```
-GET https://westus.api.cognitive.microsoft.com/vision/v2.0/models 
+GET https://westus.api.cognitive.microsoft.com/vision/v2.1/models 
 var models = await visionClient.ListModelsAsync();
 ```
 
@@ -139,7 +139,7 @@ var models = await visionClient.ListModelsAsync();
 Für Anwendungen, bei denen Sie neben Details aus mindestens einem domänenspezifischen Modell auch eine generische Bildanalyse wünschen, erweitern Sie die v1-API mithilfe des Modellabfrageparameters.
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=celebrities
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?details=celebrities
 ```
 
 Wenn Sie diese Methode aufrufen, rufen Sie zuerst den Klassifizierer [86 Kategorien](../Category-Taxonomy.md) auf. Wenn eine der Kategorien mit der eines bekannten oder übereinstimmenden Modells übereinstimmt, wird der Klassifizierer ein zweites Mal aufgerufen. Wenn beispielsweise „celebrities“ in „details=all“ oder „details“ enthalten ist, rufen Sie nach dem 86-Kategorien-Klassifizierer das Prominentenmodell auf. Das Ergebnis enthält die Kategorieperson. Im Gegensatz zu Option 1 erhöht diese Methode die Wartezeit für Benutzer, die an Prominenten interessiert sind.
@@ -180,12 +180,12 @@ Hier sehen Sie ein Beispiel:
 Feld | type | Inhalt
 ------|------|------|
 `Tags`  | `object` | Das Objekt der obersten Ebene für das Array von Tags
-tags[].Name | `string`  | Das Schlüsselwort vom Tags-Klassifizierer
-tags[].Score    | `number`  | Die Zuverlässigkeitsbewertung, zwischen 0 und 1
-description  | `object` | Das Objekt der obersten Ebene für eine Beschreibung
+tags[].Name | `string`    | Das Schlüsselwort vom Tags-Klassifizierer
+tags[].Score    | `number`    | Die Zuverlässigkeitsbewertung, zwischen 0 und 1
+description     | `object`    | Das Objekt der obersten Ebene für eine Beschreibung
 description.tags[] |    `string`    | Die Liste der Tags.  Wenn nicht sicher ist, dass eine Beschriftung erstellt werden kann, sind diese Tags ggf. die einzigen Informationen, die dem Aufrufenden zur Verfügung stehen.
-description.captions[].text | `string`  | Ein Ausdruck, der das Bild beschreibt.
-description.captions[].confidence   | `number`  | Die Zuverlässigkeit für den Ausdruck
+description.captions[].text    | `string`    | Ein Ausdruck, der das Bild beschreibt.
+description.captions[].confidence    | `number`    | Die Zuverlässigkeit für den Ausdruck
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Abrufen und Nachvollziehen der JSON-Ausgabe für domänenspezifische Modelle
 
@@ -239,12 +239,12 @@ Bei domänenspezifischen Modellen mit Option 2 (erweiterte Analyse) wird der Rü
 
 Das Feld „categories“ ist eine Liste einer oder mehrerer der [86 Kategorien](../Category-Taxonomy.md) in der ursprünglichen Taxonomie. Kategorien, die mit einem Unterstrich enden, stimmen mit dieser Kategorie und ihren untergeordneten Kategorien überein (z.B. „people_“ sowie „people_group“, für Prominentenmodell).
 
-Feld   | type  | Inhalt
+Feld    | type    | Inhalt
 ------|------|------|
-categories | `object`   | Das Objekt der obersten Ebene
-categories[].name    | `string` | Der Name aus der Taxonomieliste mit 86 Kategorien
-categories[].score  | `number`  | Die Zuverlässigkeitsbewertung, zwischen 0 und 1
-categories[].detail  | `object?`      | (Optional) Das Detailobjekt
+categories | `object`    | Das Objekt der obersten Ebene
+categories[].name     | `string`    | Der Name aus der Taxonomieliste mit 86 Kategorien
+categories[].score    | `number`    | Die Zuverlässigkeitsbewertung, zwischen 0 und 1
+categories[].detail     | `object?`      | (Optional) Das Detailobjekt
 
 Wenn mehrere Kategorien übereinstimmen (z. B. wenn der 86-Kategorie-Klassifizierer eine Bewertung für „people_“ und „people_young“ zurückgibt, wenn „model=celebrities“), werden die Details an die allgemeinste Übereinstimmung angehängt („people_“ in diesem Beispiel).
 
@@ -254,4 +254,4 @@ Diese Fehler sind identisch mit den Fehlern in „vision.analyze“ mit dem zus�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um die REST-API zu verwenden, wechseln Sie zur [Referenz für die Maschinelles Sehen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44).
+Um die REST-API zu verwenden, wechseln Sie zur [Referenz für die Maschinelles Sehen-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b).

@@ -1,39 +1,33 @@
 ---
 title: Azure Application Insights für Konsolenanwendungen | Microsoft-Dokumentation
 description: Überwachen Sie Webanwendungen auf Verfügbarkeit, Leistung und Auslastung.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 05/21/2020
+ms.custom: devx-track-csharp
 ms.reviewer: lmolkova
-ms.author: mbullwin
-ms.openlocfilehash: b6ecf1e9cece51635afc0bf0f8025b6e117438ee
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: aa39a1eca04621fc4db75f755402d3679403e814
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169455"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920593"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights für .NET-Konsolenanwendungen
 
-Mit [Application Insights](../../azure-monitor/app/app-insights-overview.md) können Sie Ihre Webanwendung auf Verfügbarkeit, Leistung und Nutzung überwachen.
+Mit [Application Insights](./app-insights-overview.md) können Sie Ihre Webanwendung auf Verfügbarkeit, Leistung und Nutzung überwachen.
 
 Sie benötigen ein Abonnement für [Microsoft Azure](https://azure.com). Melden Sie sich mit einem Microsoft-Konto an, das Sie möglicherweise für Windows, Xbox Live oder andere Microsoft-Clouddienste verwenden. Falls Ihr Team über ein Unternehmensabonnement für Azure verfügt, können Sie den Besitzer bitten, Sie über Ihr Microsoft-Konto hinzuzufügen.
 
 > [!NOTE]
-> Es gibt ein neues Application Insights Beta-SDK mit Namen [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService), mit dem Application Insights für beliebige Konsolenanwendungen aktiviert werden kann. Es wird empfohlen, dieses Paket und die zugehörigen Anleitungen [hier](../../azure-monitor/app/worker-service.md) zu verwenden. Dieses Paket hat [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) zum Ziel und kann daher in .NET Core 2.0 oder höher und .NET Framework 4.7.2 oder höher verwendet werden.
-Dieses Dokument wird als veraltet markiert, sobald eine stabile Version dieses neuen Pakets veröffentlicht wird.
+> Es wird *dringend empfohlen*, das [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)-Paket und die zugehörigen Anweisungen [hier](./worker-service.md) für alle Konsolenanwendungen zu verwenden. Dieses Paket hat [`NetStandard2.0`](/dotnet/standard/net-standard) zum Ziel und kann daher in .NET Core 2.1 oder höher und .NET Framework 4.7.2 oder höher verwendet werden.
 
 ## <a name="getting-started"></a>Erste Schritte
 
-* Erstellen Sie im [Azure-Portal](https://portal.azure.com) [eine Application Insights-Ressource](../../azure-monitor/app/create-new-resource.md). Wählen Sie für den Typ **Allgemein** aus.
-* Erstellen Sie eine Kopie des Instrumentierungsschlüssels. Diesen finden Sie in der Dropdownliste **Essentials** der neuen Ressource, die Sie erstellt haben. 
+> [!IMPORTANT]
+> Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die [Verbindungszeichenfolge](./sdk-connection-string.md?tabs=net) identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
+
+* Erstellen Sie im [Azure-Portal](https://portal.azure.com)[eine Application Insights-Ressource](./create-new-resource.md). Wählen Sie für den Typ **Allgemein** aus.
+* Erstellen Sie eine Kopie des Instrumentierungsschlüssels. Diesen finden Sie in der Dropdownliste **Essentials** der neuen Ressource, die Sie erstellt haben.
 * Installieren Sie das neueste [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights)-Paket.
 * Legen Sie den Instrumentierungsschlüssel im Code fest, bevor Sie Telemetriedaten nachverfolgen (oder legen Sie die Umgebungsvariable APPINSIGHTS_INSTRUMENTATIONKEY fest). Anschließend sollten Sie Telemetriedaten manuell nachverfolgen und im Azure-Portal anzeigen können.
 
@@ -45,6 +39,10 @@ var telemetryClient = new TelemetryClient(configuration);
 telemetryClient.TrackTrace("Hello World!");
 ```
 
+> [!NOTE]
+> Telemetriedaten werden nicht sofort gesendet. Telemetrieelemente werden durch das Application Insights SDK zusammengefasst und gesendet. In Konsolen-Apps, die direkt nach dem Aufrufen von `Track()`-Methoden beendet werden, werden Telemetriedaten unter Umständen nur gesendet, wenn `Flush()` und `Sleep`/`Delay` vor der App-Beendigung ausgeführt werden, wie in dem [vollständigen Beispiel](#full-example) weiter unten in diesem Artikel gezeigt. `Sleep` ist nicht erforderlich, wenn Sie `InMemoryChannel` verwenden. Es gibt ein aktives Problem bezüglich der Notwendigkeit von `Sleep`, das hier nachverfolgt wird: [ApplicationInsights-dotnet/issues/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
+
+
 * Installieren Sie die neueste Version des Pakets [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector). Es verfolgt automatisch HTTP-, SQL- und einige andere externe Abhängigkeitsaufrufe.
 
 Sie können Application Insights im Code initialisieren und konfigurieren oder dazu die Datei `ApplicationInsights.config` verwenden. Stellen Sie sicher, dass die Initialisierung so früh wie möglich erfolgt. 
@@ -53,6 +51,7 @@ Sie können Application Insights im Code initialisieren und konfigurieren oder d
 > Anweisungen für **ApplicationInsights.config** gelten nur für Apps, die auf .NET Framework abzielen. Sie gelten nicht für .NET Core-Anwendungen.
 
 ### <a name="using-config-file"></a>Verwenden der Konfigurationsdatei
+
 Standardmäßig sucht das Application Insights SDK im Arbeitsverzeichnis nach der Datei `ApplicationInsights.config`, wenn `TelemetryConfiguration` erstellt wird.
 
 ```csharp
@@ -101,7 +100,7 @@ Ein vollständiges Beispiel der Konfigurationsdatei erhalten Sie, wenn Sie die n
 
 ### <a name="configuring-telemetry-collection-from-code"></a>Konfigurieren der Telemetrieerfassung im Code
 > [!NOTE]
-> Das Lesen von Konfigurationsdateien wird unter .NET Core nicht unterstützt. Unter Umständen ist es ratsam, das [Application Insights-SDK für ASP.NET Core](../../azure-monitor/app/asp-net-core.md) zu verwenden.
+> Das Lesen von Konfigurationsdateien wird unter .NET Core nicht unterstützt. Unter Umständen ist es ratsam, das [Application Insights-SDK für ASP.NET Core](./asp-net-core.md) zu verwenden.
 
 * Erstellen und konfigurieren Sie während des Starts der Anwendung die `DependencyTrackingTelemetryModule`-Instanz – sie muss ein Singleton sein und für die Lebensdauer der Anwendung beibehalten werden.
 
@@ -136,7 +135,7 @@ Wenn Sie die Konfiguration mit dem einfachen `TelemetryConfiguration()`-Konstruk
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
 ```
 
-* Sie können auch das Leistungsindikator-Sammlermodul installieren und initialisieren. Eine Beschreibung finden Sie [hier](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/).
+* Sie können auch das Leistungsindikator-Sammlermodul installieren und initialisieren. Eine Beschreibung finden Sie [hier](https://apmtips.com/posts/2017-02-13-enable-application-insights-live-metrics-from-code/).
 
 
 #### <a name="full-example"></a>Vollständiges Beispiel
@@ -159,7 +158,7 @@ namespace ConsoleApp
             configuration.InstrumentationKey = "removed";
             configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 
-            var telemetryClient = new TelemetryClient();
+            var telemetryClient = new TelemetryClient(configuration);
             using (InitializeDependencyTracking(configuration))
             {
                 // run app...
@@ -177,7 +176,8 @@ namespace ConsoleApp
             // before exit, flush the remaining data
             telemetryClient.Flush();
 
-            // flush is not blocking so wait a bit
+            // flush is not blocking when not using InMemoryChannel so wait a bit. There is an active issue regarding the need for `Sleep`/`Delay`
+            // which is tracked here: https://github.com/microsoft/ApplicationInsights-dotnet/issues/407
             Task.Delay(5000).Wait();
 
         }
@@ -195,7 +195,7 @@ namespace ConsoleApp
             module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("127.0.0.1");
 
             // enable known dependency tracking, note that in future versions, we will extend this list. 
-            // please check default settings in https://github.com/Microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/DependencyCollector/DependencyCollector/ApplicationInsights.config.install.xdt
+            // please check default settings in https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/WEB/Src/DependencyCollector/DependencyCollector/ApplicationInsights.config.install.xdt
 
             module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.ServiceBus");
             module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.EventHubs");
@@ -211,5 +211,6 @@ namespace ConsoleApp
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Überwachen Sie Abhängigkeiten](../../azure-monitor/app/asp-net-dependencies.md), um zu überprüfen, ob REST-, SQL- oder andere externe Ressourcen die Leistung beeinträchtigen.
-* [Verwenden Sie die API](../../azure-monitor/app/api-custom-events-metrics.md) , um Ihre eigenen Ereignisse und Metriken für eine detailliertere Ansicht der Leistung und Nutzung Ihrer App zu senden.
+* [Überwachen Sie Abhängigkeiten](./asp-net-dependencies.md), um zu überprüfen, ob REST-, SQL- oder andere externe Ressourcen die Leistung beeinträchtigen.
+* [Verwenden Sie die API](./api-custom-events-metrics.md) , um Ihre eigenen Ereignisse und Metriken für eine detailliertere Ansicht der Leistung und Nutzung Ihrer App zu senden.
+

@@ -10,14 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6d93b6d024fc966f3b260602f4798a2d77669a35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883546"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501157"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Sprach- und Regionsunterstützung für die API für die visuelle Bing-Suche
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Die API für die visuelle Bing-Suche unterstützt mehr als drei Dutzend Länder/Regionen, viele davon mit mehreren Sprachen. Jede Anforderung sollte das Land/die Region und die gewählte Sprache des Benutzers enthalten. Wenn der Markt des Benutzers bekannt ist, kann Bing entsprechende Ergebnisse zurückgeben. Wenn Sie kein Land/keine Region und keine Sprache angeben, versucht Bing, das Land/die Region und die Sprache des Benutzers zu ermitteln. Da die Ergebnisse Links zu Bing enthalten können, kann bei Kenntnis des Lands/der Region und der Sprache eine bevorzugte lokalisierte Bing-Benutzeroberfläche bereitgestellt werden, wenn der Benutzer auf die Bing-Links klickt.
 
@@ -43,7 +48,7 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Österreich|AT|
 |Belgien|BE|
 |Brasilien|BR|
-|Kanada|CA|
+|Canada|CA|
 |Chile|CL|
 |Dänemark|DK|
 |Finnland|FI|
@@ -59,7 +64,7 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Mexiko|MX|
 |Niederlande|NL|
 |Neuseeland|NZ|
-|Norwegen|NO|
+|Norwegen|Nein|
 |China|CN|
 |Polen|PL|
 |Portugal|PT|
@@ -72,7 +77,7 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Schweiz|CH|
 |Taiwan|TW|
 |Türkei|TR|
-|Vereinigtes Königreich|GB|
+|United Kingdom|GB|
 |USA|US|
 
 
@@ -86,8 +91,8 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Belgien|Niederländisch|nl-BE|
 |Belgien|Französisch|fr-BE|
 |Brasilien|Portugiesisch|pt-BR|
-|Kanada|Englisch|en-CA|
-|Kanada|Französisch|fr-CA|
+|Canada|Englisch|en-CA|
+|Canada|Französisch|fr-CA|
 |Chile|Spanisch|es-CL|
 |Dänemark|Dänisch|da-DK|
 |Finnland|Finnisch|fi-FI|
@@ -116,6 +121,6 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Schweiz|Deutsch|de-CH|
 |Taiwan|Chinesisch (traditionell)|zh-TW|
 |Türkei|Türkisch|tr-TR|
-|Vereinigtes Königreich|Englisch|en-GB|
-|USA|Englisch|en-US|
+|United Kingdom|Englisch|en-GB|
+|USA|Englisch|de-DE|
 |USA|Spanisch|es-US|

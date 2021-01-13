@@ -1,24 +1,16 @@
 ---
-title: 'Azure Service Fabric CLI: sfctl mesh secret| Microsoft-Dokumentation'
-description: Beschreibt die sfctl mesh secret-Befehle der Service Fabric CLI.
-services: service-fabric
-documentationcenter: na
-author: Christina-Kang
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
+title: Azure Service Fabric-CLI – sfctl mesh secret
+description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle zum Abrufen und Löschen von Service Fabric Mesh-Geheimnisressourcen.
+author: jeffj6123
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 5e58e6a401cc166c176dc465d58ba9e8a8ed83b0
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: 2c91a59e57613934c946e3cd56089b330893a51a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035962"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86260344"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
 Ruft die Mesh-Geheimnisressourcen ab bzw. löscht diese.
@@ -40,17 +32,17 @@ Löscht die angegebene Geheimnisressource und alle ihre benannten Werte.
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --name -n [Erforderlich] | Der Name des Geheimnisses. |
+| --name -n [Erforderlich] | Der Name der Geheimnisressource. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 ## <a name="sfctl-mesh-secret-list"></a>sfctl mesh secret list
 Listet alle Geheimnisressourcen auf.
@@ -61,11 +53,11 @@ Ruft die Informationen zu allen Geheimnisressourcen in einer bestimmten Ressourc
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 ## <a name="sfctl-mesh-secret-show"></a>sfctl mesh secret show
 Ruft die Geheimnisressource mit dem angegebenen Namen ab.
@@ -76,19 +68,19 @@ Ruft die Informationen zur Geheimnisressource mit dem angegebenen Namen ab. Die 
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --name -n [Erforderlich] | Der Name des Geheimnisses. |
+| --name -n [Erforderlich] | Der Name der Geheimnisressource. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle
-- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](/azure/service-fabric/scripts/sfctl-upgrade-application)
+- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](./scripts/sfctl-upgrade-application.md)

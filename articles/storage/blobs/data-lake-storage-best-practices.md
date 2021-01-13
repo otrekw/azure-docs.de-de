@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 1f1db1c347709ed7c8587ed8b5523a231e373999
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 0efcdfd1b14479edf84dc1892e7e1d9afabd5a81
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991871"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913554"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen2
 
-In diesem Artikel erfahren Sie mehr über die bewährten Methoden und Aspekte bei der Arbeit mit Azure Data Lake Storage Gen2. Der Artikel enthält Informationen zu den Bereichen Sicherheit, Leistung, Resilienz und Überwachung für Data Lake Storage Gen2. Vor der Einführung von Data Lake Storage Gen2 war die Arbeit mit wirklich großen Datenmengen (Big Data) in Diensten wie Azure HDInsight sehr komplex. Daten mussten per Sharding auf mehrere Blobspeicherkonten verteilt werden, um die Speicherung im Petabyte-Bereich und eine entsprechende optimale Leistung zu erzielen. Für Data Lake Storage Gen2 gelten die meisten festen Grenzwerte im Hinblick auf Größe und Leistung nicht mehr. In diesem Artikel werden aber trotzdem noch einige Aspekte beschrieben, damit Sie für Data Lake Storage Gen2 die bestmögliche Leistung erzielen können.
+In diesem Artikel erfahren Sie mehr über die bewährten Methoden und Aspekte bei der Arbeit mit Azure Data Lake Storage Gen2. Der Artikel enthält Informationen zu den Bereichen Sicherheit, Leistung, Resilienz und Überwachung für Data Lake Storage Gen2. Vor der Einführung von Data Lake Storage Gen2 war die Arbeit mit wirklich großen Datenmengen (Big Data) in Diensten wie Azure HDInsight sehr komplex. Daten mussten per Sharding auf mehrere Blobspeicherkonten verteilt werden, um die Speicherung im Petabyte-Bereich und eine entsprechende optimale Leistung zu erzielen. Data Lake Storage Gen2 unterstützt individuelle Dateigrößen bis zu 5 TB, und die meisten festen Leistungsgrenzen wurden entfernt. In diesem Artikel werden aber trotzdem noch einige Aspekte beschrieben, damit Sie für Data Lake Storage Gen2 die bestmögliche Leistung erzielen können.
 
 ## <a name="security-considerations"></a>Sicherheitshinweise
 
-Azure Data Lake Storage Gen2 ermöglicht POSIX-Zugriffssteuerungen für Azure Active Directory-Benutzer, -Gruppen und -Dienstprinzipale. Diese Zugriffssteuerungen können für vorhandene Dateien und Verzeichnisse festgelegt werden. Außerdem können die Zugriffssteuerungen zum Erstellen von Standardberechtigungen verwendet werden, die auf neue Dateien oder Verzeichnisse automatisch angewendet werden können. Weitere Details zu Data Lake Storage Gen2-Zugriffssteuerungslisten finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](storage-data-lake-storage-access-control.md).
+Azure Data Lake Storage Gen2 ermöglicht POSIX-Zugriffssteuerungen für Azure Active Directory-Benutzer, -Gruppen und -Dienstprinzipale. Diese Zugriffssteuerungen können für vorhandene Dateien und Verzeichnisse festgelegt werden. Außerdem können die Zugriffssteuerungen zum Erstellen von Standardberechtigungen verwendet werden, die auf neue Dateien oder Verzeichnisse automatisch angewendet werden können. Weitere Details zu Data Lake Storage Gen2-Zugriffssteuerungslisten finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md).
 
 ### <a name="use-security-groups-versus-individual-users"></a>Vergleich der Verwendung von Sicherheitsgruppen und einzelnen Benutzern
 
@@ -41,7 +41,7 @@ Azure Active Directory-Dienstprinzipale werden normalerweise von Diensten wie Az
 
 Data Lake Storage Gen2 unterstützt die Option zum Aktivieren einer Firewall und Beschränken des Zugriffs auf ausschließlich Azure-Dienste, was zum Begrenzen der Angriffsfläche für externe Angriffe empfohlen wird. Die Firewall kann im Azure-Portal für das Speicherkonto über die Option **Firewall** > **Firewall aktivieren (EIN)**  > **Zugriff auf Azure-Dienste erlauben** aktiviert werden.
 
-Wenn Sie über Azure Databricks auf Ihr Speicherkonto zugreifen möchten, stellen Sie Azure Databricks in Ihrem virtuellen Netzwerk bereit, und fügen Sie dann Ihrer Firewall das virtuelle Netzwerk hinzu. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Wenn Sie über Azure Databricks auf Ihr Speicherkonto zugreifen möchten, stellen Sie Azure Databricks in Ihrem virtuellen Netzwerk bereit, und fügen Sie dann Ihrer Firewall das virtuelle Netzwerk hinzu. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](../common/storage-network-security.md).
 
 ## <a name="resiliency-considerations"></a>Überlegungen zur Resilienz
 
@@ -49,7 +49,7 @@ Beim Erstellen der Systemarchitektur mit Data Lake Storage Gen2 oder einem belie
 
 ### <a name="high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung
 
-Hochverfügbarkeit (High availability, HA) und Notfallwiederherstellung (Disaster Recovery, DR) können auch kombiniert werden, obwohl die Strategien sich leicht unterscheiden – vor allem in Bezug auf die Daten. Data Lake Storage Gen2 bietet bereits standardmäßig eine Dreifachreplikation als Schutz vor lokalen Hardwarefehlern. Außerdem wird Hochverfügbarkeit durch andere Replikationsoptionen wie zonenredundanter Speicher oder GZRS (Vorschau) verbessert, während georedundanter Speicher und georedundanter Speicher mit Lesezugriff die Notfallwiederherstellung optimieren. Beim Erstellen eines Plans für die Hochverfügbarkeit benötigt die Workload bei einer Dienstunterbrechung so schnell wie möglich Zugriff auf die aktuellen Daten, indem zu einer separat replizierten Instanz gewechselt wird, die sich am lokalen Standort oder in einer neuen Region befindet.
+Hochverfügbarkeit (High availability, HA) und Notfallwiederherstellung (Disaster Recovery, DR) können auch kombiniert werden, obwohl die Strategien sich leicht unterscheiden – vor allem in Bezug auf die Daten. Data Lake Storage Gen2 bietet bereits standardmäßig eine Dreifachreplikation als Schutz vor lokalen Hardwarefehlern. Darüber wird Hochverfügbarkeit durch andere Replikationsoptionen wie zonenredundanter Speicher (ZRS) oder geozonenredundanter Speicher (GZRS) verbessert, während georedundanter Speicher (GRS) und georedundanter Speicher mit Lesezugriff (RA-GRS) die Notfallwiederherstellung optimieren. Beim Erstellen eines Plans für die Hochverfügbarkeit benötigt die Workload bei einer Dienstunterbrechung so schnell wie möglich Zugriff auf die aktuellen Daten, indem zu einer separat replizierten Instanz gewechselt wird, die sich am lokalen Standort oder in einer neuen Region befindet.
 
 Bei einer Strategie für die Notfallwiederherstellung ist es als Vorbereitung auf den unwahrscheinlichen Fall, dass eine Region aufgrund einer Katastrophe ausfällt, außerdem wichtig, dass Daten mithilfe der Replikation per georedundantem Speicher oder georedundantem Speicher mit Lesezugriff in eine andere Region repliziert werden. Sie müssen außerdem Ihre Anforderungen in Bezug auf Sonderfälle berücksichtigen, z. B. Datenbeschädigungen, in denen es ratsam sein kann, regelmäßige Momentaufnahmen als Fallbacklösung zu erstellen. Je nach Wichtigkeit und Größe der Daten können Sie erwägen, rollierende Deltamomentaufnahmen für Zeiträume von 1 Stunde, 6 Stunden und 24 Stunden zu erstellen. Dies richtet sich nach Risikotoleranzen.
 
@@ -57,7 +57,7 @@ Für Datenresilienz mit Data Lake Storage Gen2 wird empfohlen, für Ihre Daten e
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>Verwenden von Distcp für Datenverschiebungen zwischen zwei Standorten
 
-DistCp ist die Abkürzung von „distributed copy“. Es handelt sich um ein Linux-Befehlszeilentool, das zum Funktionsumfang von Hadoop gehört und verteilte Datenverschiebungen zwischen zwei Speicherorten ermöglicht. Die beiden Speicherorte können Data Lake Storage Gen2, HDFS, WASB oder S3 sein. Bei diesem Tool werden MapReduce-Aufträge in einem Hadoop-Cluster (z.B. HDInsight) verwendet, um das horizontale Hochskalieren auf allen Knoten durchzuführen. Distcp ist die schnellste Möglichkeit zum Verschieben von Big Data-Datenmengen ohne spezielle Einrichtungen für die Netzwerkkomprimierung. Distcp verfügt auch über eine Option zum alleinigen Aktualisieren von Deltadaten zwischen zwei Standorten und ermöglicht die Durchführung von automatischen Wiederholungsversuchen und die dynamische Computeskalierung. Dieser Ansatz ist äußerst effizient, was das Replizieren von Elementen wie Hive/Spark-Tabellen betrifft, die über viele große Dateien in einem einzelnen Verzeichnis verfügen, wenn Sie lediglich die geänderten Daten kopieren möchten. Aus diesen Gründen ist Distcp das empfohlene Tool zum Kopieren von Daten zwischen Big Data-Speichern.
+DistCp ist die Abkürzung von „distributed copy“. Es handelt sich um ein Linux-Befehlszeilentool, das zum Funktionsumfang von Hadoop gehört und verteilte Datenverschiebungen zwischen zwei Speicherorten ermöglicht. Die beiden Speicherorte können Data Lake Storage Gen2, HDFS, WASB oder S3 sein. Bei diesem Tool werden MapReduce-Aufträge in einem Hadoop-Cluster (z.B. HDInsight) verwendet, um das Aufskalieren auf allen Knoten durchzuführen. Distcp ist die schnellste Möglichkeit zum Verschieben von Big Data-Datenmengen ohne spezielle Einrichtungen für die Netzwerkkomprimierung. Distcp verfügt auch über eine Option zum alleinigen Aktualisieren von Deltadaten zwischen zwei Standorten und ermöglicht die Durchführung von automatischen Wiederholungsversuchen und die dynamische Computeskalierung. Dieser Ansatz ist äußerst effizient, was das Replizieren von Elementen wie Hive/Spark-Tabellen betrifft, die über viele große Dateien in einem einzelnen Verzeichnis verfügen, wenn Sie lediglich die geänderten Daten kopieren möchten. Aus diesen Gründen ist Distcp das empfohlene Tool zum Kopieren von Daten zwischen Big Data-Speichern.
 
 Kopieraufträge können von Apache Oozie-Workflows ausgelöst werden, indem Häufigkeits- oder Datentrigger verwendet werden, und über Linux-Cron-Aufträge. Für intensive Replikationsaufträge wird empfohlen, einen separaten HDInsight Hadoop-Cluster zu erstellen, der speziell für die Kopieraufträge optimiert und skaliert werden kann. So wird sichergestellt, dass es für Kopieraufträge nicht zu Konflikten mit kritischen Aufträgen kommt. Falls die Replikation mit einer ausreichend geringen Häufigkeit erfolgt, kann der Cluster zwischen den einzelnen Aufträgen ggf. sogar heruntergefahren werden. Stellen Sie beim Ausführen eines Failovers in eine sekundäre Region sicher, dass in der sekundären Region ein weiterer Cluster erstellt wird, damit neue Daten wieder unter dem primären Data Lake Storage Gen2-Konto repliziert werden können, sobald es wieder verfügbar ist. Beispiele für die Verwendung von DistCp finden Sie unter [Kopieren von Daten zwischen Azure Storage-Blobs und Data Lake Storage Gen2 mithilfe von DistCp](../blobs/data-lake-storage-use-distcp.md).
 
@@ -77,11 +77,11 @@ Beim Einfügen von Daten in eine Data Lake-Struktur ist es wichtig, die Struktur
 
 Bei IoT-Workloads können große Datenmengen im Datenspeicher landen, der übergreifend für verschiedene Produkte, Geräte, Organisationen und Kunden verwendet wird. Es ist wichtig, das Verzeichnislayout für nachgeschaltete Consumer in Bezug auf die Organisation, Sicherheit und effiziente Verarbeitung vorauszuplanen. Das folgende Layout kann hierbei als allgemeine Vorlage dienen:
 
-    {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+*{Region}/{SubjectMatter(s)}/jjjj/{mm}/{tt}/{hh}/*
 
 Die Zieltelemetrie für ein Flugzeugtriebwerk im Vereinigten Königreich kann beispielsweise wie die folgende Struktur aussehen:
 
-    UK/Planes/BA1293/Engine1/2017/08/11/12/
+*UK/Planes/BA1293/Engine1/2017/08/11/12/*
 
 Es gibt einen wichtigen Grund dafür, das Datum am Ende der Verzeichnisstruktur anzuordnen. Falls Sie bestimmte Regionen oder Themen für Benutzer oder Gruppen sperren möchten, ist dies mit POSIX-Berechtigungen leicht möglich. Falls die Anforderung besteht, eine bestimmte Sicherheitsgruppe auf die Anzeige der Daten für das Vereinigte Königreich oder bestimmte Ebenen zu beschränken, wäre bei einer höheren Anordnung der Datumsstruktur andernfalls eine separate Berechtigung für viele Verzeichnisse unter jedem Stundenverzeichnis erforderlich. Außerdem würde sich die Anzahl von Verzeichnissen im Laufe der Zeit exponentiell erhöhen, wenn die Datumsstruktur höher angeordnet wäre.
 
@@ -91,13 +91,13 @@ Ein häufiger allgemeiner Ansatz bei der Batchverarbeitung ist die Anordnung der
 
 Es kann vorkommen, dass die Dateiverarbeitung nicht erfolgreich ist, weil Daten beschädigt sind oder ein unerwartetes Format haben. In diesen Fällen kann für die Verzeichnisstruktur die Nutzung des Ordners **/bad** vorteilhaft sein, in den die Dateien zur weiteren Untersuchung verschoben werden können. Über den Batchauftrag können ggf. auch die Berichterstellung oder die Benachrichtigungsvorgänge für diese fehlerhaften Dateien (*bad* files) abgewickelt werden, um einen manuellen Eingriff zu ermöglichen. Erwägen Sie die Verwendung der folgenden Vorlagenstruktur:
 
-    {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+*{Region}/{SubjectMatter(s)}/In/jjjj/{mm}/{tt}/{hh}/* \
+*{Region}/{SubjectMatter(s)}/Out/jjjjj/{mm}/{tt}/{hh}/* \
+*{Region}/{SubjectMatter (e)}/Bad/jjjj/{mm}/{tt}/{hh}/*
 
 Es kann beispielsweise sein, dass ein Marketingunternehmen tägliche Datenextrakte aus Kundenupdates von seinen Kunden in Nordamerika erhält. Vor und nach der Verarbeitung kann dies ggf. wie im folgenden Codeausschnitt aussehen:
 
-    NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
-    NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+*NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv*\
+*NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv*
 
 Bei der normalen Verarbeitung von Batchdaten direkt in Datenbanken, z.B. Hive oder herkömmlichen SQL-Datenbanken, sind die Ordner **/in** und **/out** nicht erforderlich, da die Ausgabe bereits in einem separaten Ordner für die Hive-Tabelle oder externe Datenbank angeordnet wird. Die täglichen Extrakte von Kunden werden dann beispielsweise in die entsprechenden Ordner eingefügt, und die Orchestrierung per Azure Data Factory, Apache Oozie oder Apache Airflow würde einen täglichen Hive- oder Spark-Auftrag auslösen, mit dem die Daten verarbeitet und in eine Hive-Tabelle geschrieben werden.

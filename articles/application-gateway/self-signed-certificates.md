@@ -1,24 +1,25 @@
 ---
-title: Generieren eines selbstsignierten Azure Application Gateway-Zertifikats mit einer benutzerdefinierten Stammzertifizierungsstelle
+title: Generieren eines selbstsignierten Zertifikats mit einer benutzerdefinierten Stammzertifizierungsstelle
+titleSuffix: Azure Application Gateway
 description: Erfahren Sie, wie Sie ein selbstsigniertes Azure Application Gateway-Zertifikats mit einer benutzerdefinierten Stammzertifizierungsstelle generieren.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 659c4cb3a6f0d50176875b76eeb2784c711eafd1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: e60aa9f072a447af97aa7cc66534e6e893fdbcf6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967140"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396939"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generieren eines selbstsignierten Azure Application Gateway-Zertifikats mit einer benutzerdefinierten Stammzertifizierungsstelle
 
-Seit der Application Gateway v2-SKU können vertrauenswürdige Stammzertifikate verwendet werden, damit Back-End-Server zugelassen werden können. Hierdurch werden die Authentifizierungszertifikate ersetzt, die in der v1-SKU erforderlich sind. Das *Stammzertifikat* ist ein Base64-kodiertes Stammzertifikat im X.509-Format (.CER) vom Back-End-Zertifikatserver. Es kennzeichnet die Stammzertifizierungsstelle, die das Serverzertifikat ausgestellt hat. Das Serverzertifikat wird dann für die SSL-Kommunikation verwendet.
+Seit der Application Gateway v2-SKU können vertrauenswürdige Stammzertifikate verwendet werden, damit Back-End-Server zugelassen werden können. Hierdurch werden die Authentifizierungszertifikate ersetzt, die in der v1-SKU erforderlich sind. Das *Stammzertifikat* ist ein Base64-kodiertes Stammzertifikat im X.509-Format (.CER) vom Back-End-Zertifikatserver. Es kennzeichnet die Stammzertifizierungsstelle, die das Serverzertifikat ausgestellt hat. Das Serverzertifikat wird dann für die TLS/SSL-Kommunikation verwendet.
 
-Application Gateway vertraut standardmäßig dem Zertifikat Ihrer Website, wenn es von einer bekannten Zertifizierungsstelle (etwa GoDaddy oder Digicert) signiert ist. In diesem Fall müssen Sie das Stammzertifikat nicht explizit hochladen. Weitere Informationen finden Sie unter [Übersicht über SSL-Beendigung und End-to-End-SSL mit Application Gateway](ssl-overview.md). Wenn Sie jedoch eine Entwicklungs- oder Testumgebung haben und kein verifiziertes, von einer Zertifizierungsstelle signiertes Zertifikat kaufen möchten, können Sie Ihre eigene benutzerdefinierte Zertifizierungsstelle und dann ein selbstsigniertes Zertifikat erstellen. 
+Application Gateway vertraut standardmäßig dem Zertifikat Ihrer Website, wenn es von einer bekannten Zertifizierungsstelle (etwa GoDaddy oder DigiCert) signiert ist. In diesem Fall müssen Sie das Stammzertifikat nicht explizit hochladen. Weitere Informationen finden Sie unter [Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway](ssl-overview.md). Wenn Sie jedoch eine Entwicklungs- oder Testumgebung haben und kein verifiziertes, von einer Zertifizierungsstelle signiertes Zertifikat kaufen möchten, können Sie Ihre eigene benutzerdefinierte Zertifizierungsstelle und dann ein selbstsigniertes Zertifikat erstellen. 
 
 > [!NOTE]
 > Selbstsignierten Zertifikaten wird standardmäßig nicht vertraut, und es kann schwierig sein, sie zu verwalten. Außerdem kann es sein, dass für sie veraltete Hash- und Verschlüsselungssammlungen verwendet werden, die möglicherweise nicht stark sind. Um eine bessere Sicherheit zu erreichen, sollten Sie ein Zertifikat kaufen, das von einer bekannten Zertifizierungsstelle signiert ist.
@@ -66,7 +67,7 @@ Erstellen Sie Ihr Stammzertifikat der Zertifizierungsstelle mit OpenSSL.
    ```
    Mit den vorherigen Befehlen wird das Stammzertifikat erstellt. Sie verwenden dieses Zertifikat, um Ihr Serverzertifikat zu signieren.
 
-1. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort für den Stammschlüssel und die organisatorischen Informationen für die benutzerdefinierte Zertifizierungsstelle, z. B. Land, Bundesland/Region, Organisation, Abteilung, und den vollqualifizierten Domänennamen (dies ist die Domäne des Zertifikatausstellers) ein.
+1. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort für den Stammschlüssel und die Organisationsinformationen für die benutzerdefinierte Zertifizierungsstelle, z. B. Land, Bundesland/Region, Organisation, Organisationseinheit, und den vollqualifizierten Domänennamen (dies ist die Domäne des Zertifikatausstellers) ein.
 
    ![Stammzertifikat erstellen](media/self-signed-certificates/root-cert.png)
 
@@ -74,7 +75,7 @@ Erstellen Sie Ihr Stammzertifikat der Zertifizierungsstelle mit OpenSSL.
 
 Im nächsten Schritt erstellen Sie mit OpenSSL ein Serverzertifikat.
 
-### <a name="create-the-certificates-key"></a>Erstellen des Schlüssels des Zertifikats
+### <a name="create-the-certificates-key"></a>Erstellen des Zertifikatschlüssels
 
 Verwenden Sie den folgenden Befehl, um den Schlüssel für das Serverzertifikat zu generieren.
 
@@ -87,7 +88,7 @@ Verwenden Sie den folgenden Befehl, um den Schlüssel für das Serverzertifikat 
 Die Zertifikatsignieranforderung ist ein öffentlicher Schlüssel, der einer Zertifizierungsstelle erteilt wird, wenn ein Zertifikat angefordert wird. Die Zertifizierungsstelle gibt das Zertifikat für diese spezielle Anforderung aus.
 
 > [!NOTE]
-> Der allgemeine Name (Common Name, CN) für das Serverzertifikat muss sich von der Domäne des Zertifikatausstellers unterscheiden. In diesem Fall lautet der CN für den Aussteller z. B. www.contoso.com, und der CN des Serverzertifikats ist www.fabrikam.com.
+> Der allgemeine Name (Common Name, CN) für das Serverzertifikat muss sich von der Domäne des Zertifikatausstellers unterscheiden. In diesem Fall lautet der CN für den Aussteller z. B. `www.contoso.com`, und der CN des Serverzertifikats ist `www.fabrikam.com`.
 
 
 1. Verwenden Sie den folgenden Befehl, um die Zertifikatsignieranforderung zu generieren:
@@ -96,16 +97,16 @@ Die Zertifikatsignieranforderung ist ein öffentlicher Schlüssel, der einer Zer
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort für den Stammschlüssel sowie die organisatorischen Informationen für die benutzerdefinierte Zertifizierungsstelle ein: Land, Bundesland/Region, Organisation, Abteilung und der vollqualifizierte Domänenname. Dies ist die Domäne der Website, und diese Domäne muss sich vom Aussteller unterscheiden.
+1. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort für den Stammschlüssel sowie die organisatorischen Informationen für die benutzerdefinierte Zertifizierungsstelle ein: Land, Bundesland/Region, Organisation, Organisationseinheit und der vollqualifizierte Domänenname. Dies ist die Domäne der Website, und diese Domäne muss sich vom Aussteller unterscheiden.
 
    ![Serverzertifikat](media/self-signed-certificates/server-cert.png)
 
-### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>Generieren des Zertifikats mit der Zertifikatsignieranforderung und dem Schlüssel und Signieren des Zertifikats mit dem Stammschlüssel der Zertifizierungsstelle
+### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>Generieren des Zertifikats mit der Zertifikatsignieranforderung und dem Schlüssel sowie Signieren des Zertifikats mit dem Stammschlüssel der Zertifizierungsstelle
 
 1. Verwenden Sie den folgenden Befehl, um das Zertifikat zu erstellen:
 
    ```
-   openssl x509 -req -in fabrikam.csr -CA public.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
+   openssl x509 -req -in fabrikam.csr -CA  contoso.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
    ```
 ### <a name="verify-the-newly-created-certificate"></a>Überprüfen des neu erstellten Zertifikats
 
@@ -124,15 +125,15 @@ Die Zertifikatsignieranforderung ist ein öffentlicher Schlüssel, der einer Zer
    - fabrikam.crt
    - fabrikam.key
 
-## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>Konfigurieren des Zertifikats in den SSL-Einstellungen Ihres Webservers
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>Konfigurieren des Zertifikats in den TLS-Einstellungen Ihres Webservers
 
-Konfigurieren Sie SSL in Ihrem Webserver mit den Dateien „fabrikam.crt“ und „fabrikam.key“. Wenn Ihr Webserver nicht in der Lage ist, zwei Dateien zu akzeptieren, können Sie diese mit OpenSSL-Befehlen zu einer einzigen PEM-oder PFX-Datei kombinieren.
+Konfigurieren Sie TLS in Ihrem Webserver mit den Dateien „fabrikam.crt“ und „fabrikam.key“. Wenn Ihr Webserver nicht in der Lage ist, zwei Dateien zu akzeptieren, können Sie diese mit OpenSSL-Befehlen zu einer einzigen PEM- oder PFX-Datei kombinieren.
 
 ### <a name="iis"></a>IIS
 
 Anweisungen, wie ein Zertifikat importiert und als Serverzertifikat nach IIS hochgeladen wird, finden Sie unter [Gewusst wie: Installieren importierter Zertifikate auf einem Webserver in Windows Server 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
 
-Anweisungen zur SSL-Bindung finden Sie unter [How to Set Up SSL on IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
+Anweisungen zur TLS-Bindung finden Sie unter [Einrichtung von SSL auf IIS 7](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
 
 ### <a name="apache"></a>Apache
 
@@ -150,9 +151,9 @@ Die folgende Konfiguration ist ein Beispiel für einen [für SSL konfigurierten 
 
 ### <a name="nginx"></a>NGINX
 
-Die folgende Konfiguration ist ein Beispiel für einen [NGINX-Serverblock](https://nginx.org/docs/http/configuring_https_servers.html) mit SSL-Konfiguration:
+Die folgende Konfiguration ist ein Beispiel für einen [NGINX-Serverblock](https://nginx.org/docs/http/configuring_https_servers.html) mit TLS-Konfiguration:
 
-![NGINX mit SSL](media/self-signed-certificates/nginx-ssl.png)
+![NGINX mit TLS](media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>Zugreifen auf den Server, um die Konfiguration zu überprüfen
 
@@ -229,9 +230,9 @@ $probe = Get-AzApplicationGatewayProbeConfig `
   -Name testprobe `
   -ApplicationGateway $gw
 
-## Add the configuration to the HTTP Setting and don’t forget to set the “hostname” field
+## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server’s certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that TLS handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -261,14 +262,14 @@ Add-AzApplicationGatewayRequestRoutingRule `
 
 Set-AzApplicationGateway -ApplicationGateway $gw 
 ```
+
 ### <a name="verify-the-application-gateway-backend-health"></a>Überprüfen der Back-End-Integrität eines Anwendungsgateways
 
 1. Klicken Sie auf die **Back-End-Integrität**-Ansicht Ihres Anwendungsgateways, um zu prüfen, ob der Test fehlerfrei ist.
-1.  Sie sollten sehen, dass für den HTTPS-Test der Status **Fehlerfrei** angezeigt wird.
+1. Sie sollten sehen, dass für den HTTPS-Test der Status **Fehlerfrei** angezeigt wird.
 
-    ![HTTPS-Test](media/self-signed-certificates/https-probe.png)
+![HTTPS-Test](media/self-signed-certificates/https-probe.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu SSL/TLS in Application Gateway finden Sie unter [Übersicht über SSL-Beendigung und End-to-End-SSL mit Application Gateway](ssl-overview.md).
-
+Weitere Informationen zu SSL/TLS in Application Gateway finden Sie unter [Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway](ssl-overview.md).

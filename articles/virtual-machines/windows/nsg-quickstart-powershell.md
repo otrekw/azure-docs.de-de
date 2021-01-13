@@ -1,30 +1,25 @@
 ---
-title: Öffnen von Ports für einen virtuellen Computer mithilfe von Azure PowerShell | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit dem Azure Resource Manager-Bereitstellungsmodell und Azure PowerShell für Ihren virtuellen Windows-Computer einen Port öffnen oder einen Endpunkt erstellen.
-services: virtual-machines-windows
-documentationcenter: ''
+title: Öffnen von Ports für einen virtuellen Computer mithilfe von Azure PowerShell
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell für Ihre VM einen Port öffnen bzw. einen Endpunkt erstellen.
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: cf45f7d8-451a-48ab-8419-730366d54f1e
-ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: cd5aab6934e2f9692411e09046722cd59ad5e6a8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a432ce978f6fa9e3a472cb15e9ef9241bc41004d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089105"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891753"
 ---
-# <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Öffnen von Ports und Endpunkten für einen virtuellen Computer in Azure mit PowerShell
+# <a name="how-to-open-ports-and-endpoints-to-a-vm-using-powershell"></a>Öffnen von Ports und Endpunkten für einen virtuellen Computer mit PowerShell
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>Schnellbefehle
-Zum Erstellen einer Netzwerksicherheitsgruppe und von ACL-Regeln (Access Control Lists, Zugriffssteuerungslisten) müssen Sie [die neueste Version von Azure PowerShell installieren](/powershell/azureps-cmdlets-docs). Sie können [diese Schritte auch über das Azure-Portal ausführen](nsg-quickstart-portal.md).
+Zum Erstellen einer Netzwerksicherheitsgruppe und von ACL-Regeln (Access Control Lists, Zugriffssteuerungslisten) müssen Sie [die neueste Version von Azure PowerShell installieren](/powershell/azure/). Sie können [diese Schritte auch über das Azure-Portal ausführen](nsg-quickstart-portal.md).
 
 Melden Sie sich bei Ihrem Azure-Konto an:
 
@@ -32,9 +27,9 @@ Melden Sie sich bei Ihrem Azure-Konto an:
 Connect-AzAccount
 ```
 
-Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind etwa *myResourceGroup*, *myNetworkSecurityGroup* oder *myVnet*.
+Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind etwa *myResourceGroup* , *myNetworkSecurityGroup* oder *myVnet*.
 
-Erstellen Sie eine Regel mit [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig). Im folgenden Beispiel wird die Regel *myNetworkSecurityGroupRule* erstellt, um *TCP*-Datenverkehr an Port *80* zuzulassen:
+Erstellen Sie eine Regel mit [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig). Im folgenden Beispiel wird die Regel *myNetworkSecurityGroupRule* erstellt, um *TCP* -Datenverkehr an Port *80* zuzulassen:
 
 ```powershell
 $httprule = New-AzNetworkSecurityRuleConfig `
@@ -50,7 +45,7 @@ $httprule = New-AzNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-Als Nächstes erstellen Sie die Netzwerksicherheitsgruppe mit [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) und weisen die zuvor erstellte HTTP-Regel wie folgt zu. Im folgenden Beispiel wird die Netzwerksicherheitsgruppe *myNetworkSecurityGroup* erstellt:
+Als Nächstes erstellen Sie die Netzwerksicherheitsgruppe mit [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) und weisen die zuvor erstellte HTTP-Regel wie folgt zu. Im folgenden Beispiel wird die Netzwerksicherheitsgruppe *myNetworkSecurityGroup* erstellt:
 
 ```powershell
 $nsg = New-AzNetworkSecurityGroup `
@@ -60,7 +55,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-Nun weisen Sie Ihre Netzwerksicherheitsgruppe einem Subnetz zu. Im folgenden Beispiel wird mit [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) der Variable *$vnet* das vorhandene virtuelle Netzwerk *myVnet* zugewiesen:
+Nun weisen Sie Ihre Netzwerksicherheitsgruppe einem Subnetz zu. Im folgenden Beispiel wird mit [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) der Variable *$vnet* das vorhandene virtuelle Netzwerk *myVnet* zugewiesen:
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -68,7 +63,7 @@ $vnet = Get-AzVirtualNetwork `
     -Name "myVnet"
 ```
 
-Weisen Sie mit [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig) die Netzwerksicherheitsgruppe Ihrem Subnetz zu. Im folgenden Beispiel wird das Subnetz *mySubnet* Ihrer Netzwerksicherheitsgruppe zugewiesen:
+Weisen Sie mit [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) die Netzwerksicherheitsgruppe Ihrem Subnetz zu. Im folgenden Beispiel wird das Subnetz *mySubnet* Ihrer Netzwerksicherheitsgruppe zugewiesen:
 
 ```powershell
 $subnetPrefix = $vnet.Subnets|?{$_.Name -eq 'mySubnet'}
@@ -80,7 +75,7 @@ Set-AzVirtualNetworkSubnetConfig `
     -NetworkSecurityGroup $nsg
 ```
 
-Aktualisieren Sie abschließend Ihr virtuelles Netzwerk mit [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork), damit die Änderungen wirksam werden:
+Aktualisieren Sie abschließend Ihr virtuelles Netzwerk mit [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork), damit die Änderungen wirksam werden:
 
 ```powershell
 Set-AzVirtualNetwork -VirtualNetwork $vnet
@@ -95,7 +90,6 @@ Bei hoch verfügbaren Webanwendungen sollten Sie die virtuellen Computer hinter 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr zulässt. Informationen zum Erstellen von detaillierteren Umgebungen finden Sie in den folgenden Artikeln:
 
-* [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
-* [Was ist eine Netzwerksicherheitsgruppe?](../../virtual-network/security-overview.md)
-* [Übersicht über Azure Resource Manager für Load Balancer](../../load-balancer/load-balancer-arm.md)
-
+* [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md)
+* [Was ist eine Netzwerksicherheitsgruppe?](../../virtual-network/network-security-groups-overview.md)
+* [Übersicht über Azure Load Balancer](../../load-balancer/load-balancer-overview.md)

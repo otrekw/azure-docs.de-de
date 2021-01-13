@@ -1,18 +1,16 @@
 ---
-title: Best Practices für Operator – Erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
+title: Bewährte Methoden für Schedulerfunktionen
+titleSuffix: Azure Kubernetes Service
 description: Lernen Sie die Best Practices des Clusteroperators für die Verwendung erweiterter Schedulerfunktionen kennen, wie z.B. Taints und Toleranzen, Knotenselektoren und Affinität oder Pod-interne Affinität und Antiaffinität in Azure Kubernetes Service (AKS) kennen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: mlearned
-ms.openlocfilehash: 4caa4219d2bf7558dbdf71e92e4993722c6e8f6a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 1a8138b4b2fdab2cdef8d2cb4c27de8d12ef38cd
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614877"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107345"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
 
@@ -31,7 +29,7 @@ Dieser Artikel zu Best Practices konzentriert sich auf erweiterten Kubernetes-Pl
 
 Wenn Sie Ihren AKS-Cluster erstellen, können Sie Knoten mit GPU-Unterstützung oder einer großen Anzahl leistungsstarker CPUs bereitstellen. Diese Knoten werden häufig für große Datenverarbeitungsworkloads wie Machine Learning (ML) oder Künstliche Intelligenz (KI) verwendet. Da diese Art von Hardware in der Regel eine teure Knotenressource ist, die bereitgestellt werden muss, begrenzen Sie die Workloads, die auf diesen Knoten geplant werden können. Möglicherweise möchten Sie stattdessen einige Knoten im Cluster für die Ausführung von Eingangsdiensten und die Verhinderung anderer Workloads verwenden.
 
-Diese Unterstützung für verschiedene Knoten erhalten Sie durch die Verwendung von mehrerer Knotenpools. Ein AKS-Cluster bietet einen oder mehrere Knotenpools. Die Unterstützung für mehrere Knotenpools in AKS ist derzeit in der Vorschauversion verfügbar.
+Diese Unterstützung für verschiedene Knoten erhalten Sie durch die Verwendung von mehrerer Knotenpools. Ein AKS-Cluster bietet einen oder mehrere Knotenpools.
 
 Der Kubernetes-Planer kann Taints und Toleranzen verwenden, um einzuschränken, welche Workloads auf Knoten ausgeführt werden können.
 
@@ -54,7 +52,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -73,24 +71,23 @@ Wenn dieser Pod bereitgestellt wird, z.B. mit `kubectl apply -f gpu-toleration.y
 
 Wenn Sie Taints anwenden, arbeiten Sie mit Ihren Anwendungsentwicklern und -besitzern zusammen, damit sie die erforderlichen Toleranzen in ihren Bereitstellungen definieren können.
 
-Weitere Informationen zu Taints und Toleranzen finden Sie unter [Anwenden von Taints und Toleranzen][k8s-taints-tolerations].
-
 Weitere Informationen zur Verwendung mehrerer Knotenpools in AKS finden Sie unter [Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in AKS][use-multiple-node-pools].
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Verhalten von Taints und Toleranzen in AKS
 
 Wenn Sie ein Upgrade für einen Knotenpool in AKS durchführen, folgen Taints und Toleranzen einem festen Muster, da sie für neue Knoten angewendet werden:
 
-- **Standardcluster ohne VM-Skalierungsunterstützung**
-  - Stellen Sie sich vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Wenn Sie ein Upgrade durchführen, wird ein zusätzlicher Knoten (*node3*) erstellt.
+- **Standardcluster, die VM-Skalierungsgruppen verwenden**
+  - Sie können einen Knotenpool über die AKS-API [mit Taints versehen][taint-node-pool], damit neu aufskalierte Knoten die von der API angegebenen Knotentaints erhalten.
+  - Stellen Sie sich vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Sie führen ein Upgrade für den Knotenpool durch.
+  - Zwei zusätzliche Knoten werden erstellt, *node3* und *node4*, und die Taints werden entsprechend übergeben.
+  - Die ursprünglichen *node1* und *node2* werden gelöscht.
+
+- **Cluster ohne Unterstützung für VM-Skalierungsgruppen**
+  - Stellen Sie sich noch einmal vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Wenn Sie ein Upgrade durchführen, wird ein zusätzlicher Knoten (*node3*) erstellt.
   - Die Taints aus *node1* gelten für *node3*. *node1* wird gelöscht.
   - Ein weiterer neuer Knoten wird erstellt (mit dem Namen *node1*, da der vorherige *node1* gelöscht wurde), und die Taints aus *node2* gelten nun für den neuen *node1*. *node2* wird gelöscht.
   - Zusammengefasst wird *node1* zu *node3*, und *node2* wird zu *node1*.
-
-- **Cluster, die VM-Skalierungsgruppen verwenden** (derzeit in der Vorschau in AKS)
-  - Stellen Sie sich noch einmal vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Sie führen ein Upgrade für den Knotenpool durch.
-  - Zwei zusätzliche Knoten werden erstellt, *node3* und *node4*, und die Taints werden entsprechend übergeben.
-  - Die ursprünglichen *node1* und *node2* werden gelöscht.
 
 Wenn Sie einen Knotenpool in AKS skalieren, werden Taints und Toleranzen absichtlich nicht übertragen.
 
@@ -103,7 +100,7 @@ Taints und Toleranzen werden verwendet, um Ressourcen mit einem harten Cut-off l
 Sehen wir uns ein Beispiel für Knoten mit einer hohe Menge an Arbeitsspeicher an. Diese Knoten können Pods bevorzugen, für die viel Speicher erforderlich ist. Um sicherzustellen, dass die Ressourcen nicht ungenutzt bleiben, können sie auch andere Pods ausführen.
 
 ```console
-kubectl label node aks-nodepool1 hardware:highmem
+kubectl label node aks-nodepool1 hardware=highmem
 ```
 
 Eine Podspezifikation fügt dann die Eigenschaft `nodeSelector` hinzu, um einen Knotenselektor zu definieren, der mit der auf einem Knoten festgelegten Bezeichnung übereinstimmt:
@@ -116,7 +113,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -124,7 +121,7 @@ spec:
       limits:
         cpu: 4.0
         memory: 16Gi
-    nodeSelector:
+  nodeSelector:
       hardware: highmem
 ```
 
@@ -136,7 +133,7 @@ Weitere Informationen zur Verwendung von Knotenselektoren finden Sie unter [Zuwe
 
 Ein Knotenselektor ist eine grundlegende Methode, um einem bestimmten Knoten Pods zuzuordnen. Mehr Flexibilität ist anhand von *Knotenaffinität* möglich. Mit Knotenaffinität definieren Sie, was passiert, wenn der Pod nicht mit einem Knoten abgeglichen werden kann. Sie können *anfordern*, dass der Kubernetes-Scheduler einem Pod mit einem bezeichneten Host entspricht. Oder Sie können *eine Übereinstimmung bevorzugen*, aber erlauben, dass der Pod auf einem anderen Host geplant wird, wenn keine Übereinstimmung verfügbar ist.
 
-Im folgenden Beispiel wird die Knotenaffinität auf *RequiredDuringSchedulingIgnoredDuringExecution* festgelegt. Aufgrund dieser Affinität muss der Kubernetes-Scheduler einen Knoten mit einer übereinstimmenden Bezeichnung verwenden. Wenn kein Knoten verfügbar ist, muss der Pod warten, bis die Planung fortgesetzt wird. Damit der Pod auf einem anderen Knoten geplant werden kann, können Sie den Wert stattdessen auf *preferredDuringScheduledIgnoreDuringExecution* festlegen:
+Im folgenden Beispiel wird die Knotenaffinität auf *RequiredDuringSchedulingIgnoredDuringExecution* festgelegt. Aufgrund dieser Affinität muss der Kubernetes-Scheduler einen Knoten mit einer übereinstimmenden Bezeichnung verwenden. Wenn kein Knoten verfügbar ist, muss der Pod warten, bis die Planung fortgesetzt wird. Damit der Pod auf einem anderen Knoten geplant werden kann, können Sie den Wert stattdessen auf *preferredDuringSchedulingIgnoreDuringExecution* festlegen:
 
 ```yaml
 kind: Pod
@@ -146,7 +143,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -200,3 +197,4 @@ Dieser Artikel konzentriert sich auf erweiterte Funktionen des Kubernetes-Schedu
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[taint-node-pool]: use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool

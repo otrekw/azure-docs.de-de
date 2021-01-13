@@ -1,85 +1,94 @@
 ---
-title: Web-App, die Benutzer anmeldet (Übersicht) – Microsoft Identity Platform
+title: Anmelden von Benutzern aus einer Web-App – Microsoft Identity Platform | Azure
 description: Erfahren Sie, wie Sie eine Web-App erstellen, die Benutzer anmeldet (Übersicht).
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f9b6d4ce4048b31f17b50184f90aed4d2a8ba81
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 38ed7fb2930463e6657422e851a73f2b3b011f35
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086573"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443584"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Szenario: Web-App, die Benutzer anmeldet
 
-Erfahren Sie, wie Sie eine Web-App erstellen, die Benutzer mit Microsoft Identity Plattform anmeldet.
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+Hier erfahren Sie, wie Sie eine Web-App erstellen, die Benutzer unter Verwendung von Microsoft Identity Plattform anmeldet.
 
 ## <a name="getting-started"></a>Erste Schritte
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Wenn Sie Ihre ersten portablen ASP.NET Core-Web-Apps erstellen möchten, die Benutzer anmelden, führen Sie die Schritte im folgenden Schnellstart aus:
+Wenn Sie Ihre erste portable ASP.NET Core-Web-App mit Benutzeranmeldung erstellen möchten, verwenden Sie die folgende Schnellstartanleitung:
 
-> [!div class="nextstepaction"]
-> [Schnellstart: ASP.NET Core-Web-App, die Benutzer anmeldet](quickstart-v2-aspnet-core-webapp.md)
+[Schnellstart: ASP.NET Core-Web-App, die Benutzer anmeldet](quickstart-v2-aspnet-core-webapp.md)
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Wenn Sie wissen möchten, wie Sie die Anmeldung bei einer Legacy-ASP.NET-Webanwendung hinzufügen, probieren Sie das folgende Tutorial aus:
+Wenn Sie wissen möchten, wie Sie einer bereits vorhandenen ASP.NET-Webanwendung Anmeldefunktionen hinzufügen, verwenden Sie die folgende Schnellstartanleitung:
 
-> [!div class="nextstepaction"]
-> [Schnellstart: ASP.NET-Web-App für die Benutzeranmeldung](quickstart-v2-aspnet-webapp.md)
+[Schnellstart: ASP.NET-Web-App, die Benutzer anmeldet](quickstart-v2-aspnet-webapp.md)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-Wenn Sie Java-Entwickler sind, probieren Sie den folgenden Schnellstart aus:
+Für Java-Entwickler steht die folgende Schnellstartanleitung zur Verfügung:
 
-> [!div class="nextstepaction"]
-> [Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Java-Web-App](quickstart-v2-java-webapp.md)
+[Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Java-Web-App](quickstart-v2-java-webapp.md)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Wenn Sie mit Python entwickeln, probieren Sie Folgendes aus:
+Für Python-Entwickler steht die folgende Schnellstartanleitung zur Verfügung:
 
-> [!div class="nextstepaction"]
-> [Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Python-Web-App](quickstart-v2-python-webapp.md)
+[Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Python-Web-App](quickstart-v2-python-webapp.md)
 
 ---
 
 ## <a name="overview"></a>Übersicht
 
-Wenn Sie für Ihre Web-App eine Authentifizierung einsetzen, können Benutzer bei der App angemeldet werden. Dadurch kann Ihre App auf eingeschränkte Profilinformationen zugreifen und beispielsweise Funktionen für bestimmte Benutzer anpassen. Web-Apps authentifizieren Benutzer in einem Webbrowser. In diesem Szenario weist die Webanwendung den Browser des Benutzers an, diesen in Azure AD anzumelden. Azure AD gibt über den Browser des Benutzers eine Anmeldeantwort mit Benutzeransprüchen in einem Sicherheitstoken zurück. Bei der Anmeldung von Benutzern wird das Standardprotokoll [OpenID Connect](./v2-protocols-oidc.md) genutzt. Der Anmeldevorgang wird durch die Verwendung von [Middlewarebibliotheken](scenario-web-app-sign-user-app-configuration.md#libraries-used-to-protect-web-apps) noch vereinfacht.
+Eine Web-App mit Authentifizierung ist in der Lage, Benutzer anzumelden. Durch Hinzufügen einer Authentifizierung kann Ihre App auf eingeschränkte Profilinformationen zugreifen, um beispielsweise die Umgebung für Benutzer anpassen.
 
-![Web-App, die Benutzer anmeldet](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
+Web-Apps authentifizieren Benutzer in einem Webbrowser. In diesem Szenario weist die Web-App den Browser des Benutzers an, ihn bei Azure Active Directory (Azure AD) anzumelden. Azure AD gibt über den Browser des Benutzers eine Anmeldeantwort mit Benutzeransprüchen in einem Sicherheitstoken zurück. Bei der Benutzeranmeldung wird das Standardprotokoll [OpenID Connect](./v2-protocols-oidc.md) genutzt – vereinfacht durch die Verwendung von [Middlewarebibliotheken](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps).
 
-In einem zweiten Schritt können Sie die Anwendung so konfigurieren, dass sie für den angemeldeten Benutzer Web-APIs aufruft. Bei diesem nächsten Schritt handelt es sich um ein anderes Szenario, das unter [Web-App ruft Web-APIs auf](scenario-web-app-call-api-overview.md) beschrieben wird.
+![Web-App meldet Benutzer an](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
+
+In einem zweiten Schritt können Sie die Anwendung so konfigurieren, dass sie Web-APIs für den angemeldeten Benutzer aufruft. Bei diesem nächsten Schritt handelt es sich um ein anderes Szenario, das unter [Szenario: Web-App, die Web-APIs aufruft](scenario-web-app-call-api-overview.md) beschrieben wird.
 
 > [!NOTE]
-> Wenn Sie Ihre Web-App so konfigurieren, dass eine Anmeldung erforderlich ist, schützten Sie sie auf diese Weise. Außerdem wird ein Benutzertoken mithilfe von **Middlewarebilbliotheken** überprüft. Im Fall von .NET sind für dieses Szenario noch keine Microsoft Authentication Libraries (MSAL) erforderlich, mit denen ein Token zum Aufruf geschützter APIs abgerufen werden kann. Die Authentifizierungsbibliotheken werden erst im nächsten Szenario eingeführt, wenn die Web-App Web-APIs aufrufen muss.
+> Das Hinzufügen einer Anmeldung dient zum Schutz der Web-App sowie zur Überprüfung eines Benutzertokens. Zu diesem Zweck werden **Middlewarebibliotheken** verwendet. Im Falle von .NET sind für dieses Szenario noch keine Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) erforderlich. Diese Bibliothek dient zum Abrufen eines Tokens, um geschützte APIs aufrufen zu können. Authentifizierungsbibliotheken werden im nächsten Szenario eingeführt, wenn die Web-App Web-APIs aufrufen muss.
 
 ## <a name="specifics"></a>Besonderheiten
 
-- Bei der Anwendungsregistrierung müssen Sie eine oder – wenn die App an mehreren Standorten bereitgestellt wird – mehrere Antwort-URIs angeben. In einigen Fällen (etwa bei ASP.NET oder ASP.NET Core) müssen Sie das ID-Token aktivieren. Abschließend sollten Sie einen Abmelde-URI einrichten, damit Ihre Anwendung entsprechend reagiert, wenn sich ein Benutzer abmeldet.
-- Im Code für Ihre Anwendung müssen Sie die Autorität angeben, an die Ihre Web-App die Anmeldung delegiert. Sie sollten außerdem die Tokenüberprüfung (vor allem in ISV-Szenarios) anpassen.
-- Webanwendungen unterstützen alle Kontotypen. Weitere Informationen finden Sie unter [Supported account types (Unterstützte Kontotypen)](v2-supported-account-types.md).
+- Bei der Anwendungsregistrierung müssen Sie einen Antwort-URI oder – wenn die App an mehreren Standorten bereitgestellt wird – mehrere Antwort-URIs angeben. In bestimmten Fällen (etwa bei ASP.NET und ASP.NET Core) muss das ID-Token aktiviert werden. Außerdem empfiehlt es sich, einen Abmelde-URI einzurichten, damit Ihre Anwendung entsprechend reagiert, wenn sich ein Benutzer abmeldet.
+- Im Code für Ihre Anwendung muss die Autorität angegeben werden, an die Ihre Web-App die Anmeldung delegiert. Darüber hinaus empfiehlt es sich gegebenenfalls, die Tokenüberprüfung anzupassen (insbesondere in Partnerszenarien).
+- Webanwendungen unterstützen alle Kontotypen. Weitere Informationen finden Sie unter [Unterstützte Kontotypen](v2-supported-account-types.md).
+
+## <a name="recommended-reading"></a>Empfohlene Literatur
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [App-Registrierung](scenario-web-app-sign-user-app-registration.md)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
+
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [App-Registrierung](./scenario-web-app-sign-user-app-registration.md?tabs=aspnetcore).
+
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
+
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [App-Registrierung](./scenario-web-app-sign-user-app-registration.md?tabs=aspnet).
+
+# <a name="java"></a>[Java](#tab/java)
+
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [App-Registrierung](./scenario-web-app-sign-user-app-registration.md?tabs=java).
+
+# <a name="python"></a>[Python](#tab/python)
+
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [App-Registrierung](./scenario-web-app-sign-user-app-registration.md?tabs=python).
+
+---

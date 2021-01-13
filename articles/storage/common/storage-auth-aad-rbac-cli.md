@@ -1,40 +1,42 @@
 ---
-title: Verwenden der Azure CLI zum Verwalten von Azure AD-Zugriffsrechten für Blob- und Warteschlangendaten mit RBAC – Azure Storage
-description: Verwenden Sie die Azure CLI, um den Zugriff auf Container und Warteschlangen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) zuzuweisen. Azure Storage unterstützt für die Authentifizierung über Azure AD integrierte und benutzerdefinierte RBAC-Rollen.
+title: Zuweisen einer Azure-Rolle für den Datenzugriff mit der Azure-Befehlszeilenschnittstelle
+titleSuffix: Azure Storage
+description: Hier erfahren Sie, wie Sie mithilfe der Azure-CLI Berechtigungen für einen Azure Active Directory-Sicherheitsprinzipal mit rollenbasierter Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) zuweisen. Azure Storage unterstützt für die Authentifizierung über Azure AD integrierte und benutzerdefinierte Azure-Rollen.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/25/2019
+ms.topic: how-to
+ms.date: 12/07/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 606dd88fbad8cbd5c7e24d47dcf71199a25b49a2
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9b818b8b46b6ac3af98ff5f25ef69335231744cc
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673208"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779038"
 ---
-# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über die Azure CLI
+# <a name="use-azure-cli-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Verwenden der Azure-Befehlszeilenschnittstelle zum Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten
 
-Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md). Azure Storage bietet eine Reihe integrierter RBAC-Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- und Warteschlangendaten.
+Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md). Azure Storage bietet eine Reihe in Azure integrierter Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- und Warteschlangendaten.
 
-Wenn einem Azure AD-Sicherheitsprinzipal eine RBAC-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers oder einer Warteschlange begrenzt werden. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
+Wenn einem Azure AD-Sicherheitsprinzipal eine Azure-Rolle zugewiesen wird, gewährt ihm Azure Zugriff auf diese Ressourcen. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers oder einer Warteschlange begrenzt werden. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
 
-Dieser Artikel beschreibt, wie Sie mithilfe der Azure CLI integrierte RBAC-Rollen auflisten und diese Benutzern zuweisen. Weitere Informationen zur Verwendung der Azure CLI finden Sie unter [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure).
+In diesem Artikel wird beschrieben, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle integrierte Azure-Rollen auflisten und diese Benutzern zuweisen. Weitere Informationen zur Verwendung der Azure CLI finden Sie unter [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure).
 
-## <a name="rbac-roles-for-blobs-and-queues"></a>RBAC-Rollen für Blobs und Warteschlangen
+## <a name="azure-roles-for-blobs-and-queues"></a>Azure-Rollen für Blobs und Warteschlangen
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>Bestimmen des Ressourcenumfangs 
+## <a name="determine-resource-scope"></a>Bestimmen des Ressourcenumfangs
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
-## <a name="list-available-rbac-roles"></a>Auflisten verfügbarer RBAC-Rollen
+## <a name="list-available-azure-roles"></a>Auflisten verfügbarer Azure-Rollen
 
-Verwenden Sie zum Auflisten verfügbarer integrierter RBAC-Rollen mit der Azure CLI den Befehl [az role definition list](/cli/azure/role/definition#az-role-definition-list):
+Verwenden Sie zum Auflisten verfügbarer integrierter Azure-Rollen mit der Azure-Befehlszeilenschnittstelle den Befehl [az role definition list](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli-interactive
 az role definition list --out table
@@ -52,9 +54,12 @@ Storage Queue Data Message Sender         Allows for sending of Azure Storage qu
 Storage Queue Data Reader                 Allows for read access to Azure Storage queues and queue messages
 ```
 
-## <a name="assign-an-rbac-role-to-a-security-principal"></a>Zuweisen einer RBAC-Rolle zu einem Sicherheitsprinzipal
+## <a name="assign-an-azure-role-to-a-security-principal"></a>Zuweisen einer Azure-Rolle zu einem Sicherheitsprinzipal
 
-Verwenden Sie den Befehl [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create), um einem Sicherheitsprinzipal eine RBAC-Rolle zuzuweisen. Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein. Die folgenden Beispiele zeigen, wie Sie einem Benutzer eine Rolle in verschiedenen Bereichen zuweisen können. Sie können jedoch den gleichen Befehl verwenden, um eine Rolle einem beliebigen Sicherheitsprinzipal zuzuordnen.
+Verwenden Sie den Befehl [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create), um einem Sicherheitsprinzipal eine Azure-Rolle zuzuweisen. Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein. Die folgenden Beispiele zeigen, wie Sie einem Benutzer eine Rolle in verschiedenen Bereichen zuweisen können. Sie können jedoch den gleichen Befehl verwenden, um eine Rolle einem beliebigen Sicherheitsprinzipal zuzuordnen.
+
+> [!NOTE]
+> Wenn Sie ein Azure Storage-Konto erstellen, erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten über Azure AD. Sie müssen sich selbst explizit eine Azure-Rolle für Azure Storage zuweisen. Sie können sie auf Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers oder einer Warteschlange zuordnen.
 
 ### <a name="container-scope"></a>Containerbereich
 
@@ -137,6 +142,6 @@ az role assignment create \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-- [Grant access to Azure blob and queue data with RBAC using Azure PowerShell (Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über Azure PowerShell)](storage-auth-aad-rbac-powershell.md)
-- [Grant access to Azure blob and queue data with RBAC in the Azure portal (Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über das Azure-Portal)](storage-auth-aad-rbac-portal.md)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe des Azure PowerShell-Moduls](../../role-based-access-control/role-assignments-powershell.md)
+- [Verwenden des Azure PowerShell-Moduls zum Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten](storage-auth-aad-rbac-powershell.md)
+- [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](storage-auth-aad-rbac-portal.md)

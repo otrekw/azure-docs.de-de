@@ -2,17 +2,17 @@
 title: Übersicht über die Azure DNS-Delegierung
 description: Grundlegendes zum Ändern der Domänendelegierung und zum Verwenden von DNS-Namenserver zum Hosten von Domänen.
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.date: 2/19/2019
-ms.author: victorh
+ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 70c1c1ab0dd5d1998054cf0c68325022803dff06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563143"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "76939053"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegieren von DNS-Zonen mit Azure DNS
 

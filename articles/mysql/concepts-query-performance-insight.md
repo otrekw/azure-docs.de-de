@@ -1,24 +1,21 @@
 ---
-title: Query Performance Insight in Azure Database for MySQL
+title: Query Performance Insight – Azure Database for MySQL
 description: In diesem Artikel wird das Feature „Query Performance Insight“ in Azure Database for MySQL beschrieben.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: f6c74582760d77ae4318739c74f77d0bcd0501fe
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.date: 5/12/2020
+ms.openlocfilehash: 30457b950e6400c799f35924e7b2ee90d868a465
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950359"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535179"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Query Performance Insight in Azure Database for MySQL
 
-**Anwendungsbereich:** Azure Database for MySQL 5.7
-
-> [!IMPORTANT]
-> Query Performance Insight befindet sich in der Vorschauphase.
+**Anwendungsbereich:** Azure Database for MySQL 5.7, 8.0
 
 Mithilfe von Query Performance Insight können Sie schnell die Abfragen mit den längsten Ausführungszeiten identifizieren, wie sie sich im Laufe der Zeit ändern und welche Wartezeiten sie beeinflussen.
 
@@ -54,12 +51,12 @@ Die Registerkarte **Abfragen mit langer Ausführungszeit** zeigt die fünf Top-A
 
 Durch Klicken und Ziehen im Diagramm können Sie die Zeit auf ein bestimmtes Zeitfenster eingrenzen. Alternativ zeigen Sie mit den Symbolen zum Vergrößern oder Verkleinern einen kürzeren bzw. längeren Zeitraum an.
 
-![Abfragen mit langer Ausführungszeit in Query Performance Insight](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png) 
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-landing-page.png" alt-text="Abfragen mit langer Ausführungszeit in Query Performance Insight"::: 
 
 ### <a name="wait-statistics"></a>Wartestatistiken
 
 > [!NOTE]
-> Wartestatistiken sind für die Problembehandlung von Leistungsproblemen bei Abfragen vorgesehen. Es wird empfohlen, diese nur zu Problembehandlungszwecken zu aktivieren.
+> Wartestatistiken sind für die Problembehandlung von Leistungsproblemen bei Abfragen vorgesehen. Es wird empfohlen, diese nur zu Problembehandlungszwecken zu aktivieren. <br>Wenn Sie im Azure-Portal die Fehlermeldung „*Problem für ‚Microsoft.DBforMySQL‘. Anforderung kann nicht erfüllt werden. Falls dieses Problem weiterhin besteht oder unerwartet war, wenden Sie sich mit diesen Informationen an den Support.* “ erhalten, während Sie Wartestatistiken anzeigen, verwenden Sie einen kleineren Zeitraum.
 
 Wartestatistiken bieten eine Ansicht der Warteereignisse, die während der Ausführung einer bestimmten Abfrage auftreten. Weitere Informationen zu den Warteereignistypen finden Sie in der [MySQL-Engine-Dokumentation](https://go.microsoft.com/fwlink/?linkid=2098206).
 
@@ -67,7 +64,7 @@ Auf der Registerkarte **Wartestatistik** werden die entsprechenden Visualisierun
 
 In der Ansicht der Wartestatistik angezeigte Abfragen werden nach den Abfragen gruppiert, die die längsten Wartezeiten während des angegebenen Zeitintervalls aufweisen.
 
-![Query Performance Insight-Wartestatistiken](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight-Wartestatistiken":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

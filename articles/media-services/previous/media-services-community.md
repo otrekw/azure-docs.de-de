@@ -14,14 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8070d0cc302e0c0745216cdd40c9cbbf34e2bf58
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: f3cc775cd65293a39de28dfbdc8b1d06aeada3b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016630"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90987307"
 ---
-# <a name="azure-media-services-community"></a>Azure Media Services-Community  
+# <a name="azure-media-services-community"></a>Azure Media Services-Community
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 Auf dieser Seite der Azure Media Services-Community (AMS) lernen Sie verschiedene Möglichkeiten kennen, wie Sie Neuigkeiten zu AMS erfahren. Sie können auch neue Videos und Podcasts ansehen, Fragen stellen und Feedback geben.   
 
@@ -48,15 +50,15 @@ Die folgenden Foren können zum Stellen von Fragen zu aktuellen Produkten und Fe
 
 Derzeit ist MSDN das primäre Communityforum des Media Services-Teams.
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[:::image type="icon" source="./media/media-services-community/msdn.png" border="false":::](/answers/topics/azure-media-services.html) 
 
 Das Team überwacht auch Fragen, die in Stack Overflow mit „azure-media-services“ gekennzeichnet werden.
 
-[![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
+[:::image type="icon" source="./media/media-services-community/stack-overflow.png" border="false":::](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="contact-the-team"></a>Kontaktaufnahme mit dem Team
+## <a name="need-help"></a>Sie brauchen Hilfe?
 
-Die primäre E-Mail-Adresse für Azure Media Services lautet: **amshelp@microsoft.com** .
+Sie können ein Supportticket erstellen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

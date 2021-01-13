@@ -1,67 +1,77 @@
 ---
-title: Streamen von per Codec komprimierten Audiodaten mit dem Speech SDK – Speech Service
+title: Streamen von per Codec komprimierten Audiodaten mit dem Speech SDK – Speech-Dienst
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mit dem Speech SDK komprimierte Audiodaten an Azure Speech Services streamen. Verfügbar für C++, C# und Java für Linux.
+description: Hier erfahren Sie, wie Sie mit dem Speech SDK komprimierte Audiodaten an den Speech-Dienst streamen. Verfügbar für C++, C# und Java für Linux, Java in Android und Objective-C in iOS.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 03/30/2020
 ms.author: amishu
-ms.openlocfilehash: b29b42dea9522526d49c1bda017a522855946def
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: devx-track-csharp
+zone_pivot_groups: programming-languages-set-twenty-two
+ms.openlocfilehash: 410c0942b9040a6707a51e4ff9f375b9d4728668
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559544"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821569"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Verwenden von per Codec komprimierter Audioeingabe mit dem Speech SDK
+# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Verwenden von per Codec komprimierter Audioeingabe mit dem Speech SDK
 
-Die Speech SDK-API für **komprimierte Audioeingabestreams** bietet eine Möglichkeit zum Streamen von komprimierten Audiodaten an Speech Services mit PullStream oder PushStream.
+Die Speech Service SDK-API für **komprimierte Audioeingabestreams** ermöglicht das Streamen komprimierter Audiodaten an den Speech-Dienst mittels `PullStream` oder `PushStream`.
 
-> [!IMPORTANT]
-> Das Streamen komprimierter Audiodaten wird nur für C++, C# und Java unter Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9) unterstützt.
-> Das Speech SDK Version 1.4.0 oder höher ist erforderlich.
+Plattform | Sprachen | Unterstützte GStreamer-Version
+| :--- | ---: | :---:
+Windows (ohne universelle Windows-Plattform)  | C++, C#, Java, Python | [1.15.1](https://gstreamer.freedesktop.org/releases/gstreamer/1.5.1.html)
+Linux  | C++, C#, Java, Python | [Unterstützte Linux-Distributionen und Zielarchitekturen](~/articles/cognitive-services/speech-service/speech-sdk.md)
+Android  | Java | [1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/)
 
-Informationen zu WAV/PCM finden Sie in der Hauptdokumentation zu Speech.  Neben WAV/PCM werden folgende per Codec komprimierten Eingabeformate unterstützt:
+## <a name="speech-sdk-version-required-for-compressed-audio-input"></a>Erforderliche Speech SDK-Version für komprimierte Audioeingaben
+* Das Speech SDK, Version 1.10.0 oder höher ist für RHEL 8 und CentOS 8 erforderlich.
+* Das Speech SDK, Version 1.11.0 oder höher ist für Windows erforderlich.
 
-- MP3
-- OPUS/OGG
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
-## <a name="prerequisites-to-using-codec-compressed-audio-input"></a>Voraussetzungen für die Verwendung von per Codec komprimierter Audioeingabe
+## <a name="gstreamer-required-to-handle-compressed-audio"></a>GStreamer ist zum Verarbeiten komprimierter Audiodaten erforderlich.
 
-Installieren Sie die folgenden zusätzlichen Abhängigkeiten, um komprimierte Audioeingaben mit dem Speech SDK für Linux verwenden zu können:
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/csharp/prerequisites.md)]
+::: zone-end
 
-```sh
-sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
-```
+::: zone pivot="programming-language-cpp"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/cpp/prerequisites.md)]
+::: zone-end
+
+::: zone pivot="programming-language-java"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/java/prerequisites.md)]
+::: zone-end
+
+::: zone pivot="programming-language-python"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/python/prerequisites.md)]
+::: zone-end
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Beispielcode für die Verwendung von per Codec komprimierter Audioeingabe
 
-Erstellen Sie zum Streamen von komprimierten Audioformaten an Speech Services `PullAudioInputStream` oder `PushAudioInputStream`. Erstellen Sie dann eine `AudioConfig` aus einer Instanz Ihrer stream-Klasse, und geben Sie dabei das Komprimierungsformat des Streams an.
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/csharp/examples.md)]
+::: zone-end
 
-Angenommen, Sie verfügen über die Eingabestreamklasse `myPushStream` und verwenden OPUS/OGG. Ihr Code kann folgendermaßen aussehen:
+::: zone pivot="programming-language-cpp"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/cpp/examples.md)]
+::: zone-end
 
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
+::: zone pivot="programming-language-java"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/java/examples.md)]
+::: zone-end
 
-var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-
-// Create an audio config specifying the compressed audio format and the instance of your input stream class.
-var audioFormat = AudioStreamFormat.GetCompressedFormat(AudioStreamContainerFormat.OGG_OPUS);
-var audioConfig = AudioConfig.FromStreamInput(myPushStream, audioFormat);
-
-var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
-
-var result = await recognizer.RecognizeOnceAsync();
-
-var text = result.GetText();
-```
+::: zone pivot="programming-language-python"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/python/examples.md)]
+::: zone-end
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
-- [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)
+> [!div class="nextstepaction"]
+> [Schnellstart: Erkennen von Spracheingaben per Mikrofon](./get-started-speech-to-text.md)

@@ -1,5 +1,5 @@
 ---
-title: Verwenden der Azure Policy, um die Installation der VM-Erweiterung einzuschränken | Microsoft-Dokumentation
+title: Verwenden der Azure Policy, um die Installation der VM-Erweiterung einzuschränken (Windows)
 description: Verwenden Sie Azure Policy, um Erweiterungsbereitstellungen einzuschränken.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -7,26 +7,27 @@ author: axayjo
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: e096982c7bbf4f06b96ef4e3918ca1caa9d481a0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 558b23b4a89fd161b9e97265f6e1ed82624e8254
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169084"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955598"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Verwenden von Azure Policy, um die Installation von Erweiterungen auf virtuellen Windows-Computern einzuschränken
 
-Wenn Sie die Verwendung oder Installation von bestimmten Erweiterungen auf Ihren virtuellen Windows-Computern verhindern möchten, können Sie mit PowerShell eine Azure-Richtlinie zum Einschränken von Erweiterungen für virtuelle Computer innerhalb einer Ressourcengruppe erstellen. 
+Wenn Sie die Verwendung oder Installation bestimmter Erweiterungen auf Ihren Windows-VMs verhindern möchten, können Sie mit PowerShell eine Azure Policy-Definition zum Einschränken von Erweiterungen für VMs innerhalb einer Ressourcengruppe erstellen. 
 
 Dieses Tutorial verwendet Azure PowerShell innerhalb der Cloud Shell, die ständig auf die neueste Version aktualisiert wird. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="create-a-rules-file"></a>Erstellen einer Regeldatei
 
@@ -88,7 +89,6 @@ Kopieren Sie den folgenden JSON-Code, und fügen Sie ihn in die Datei ein.
         "type": "Array",
         "metadata": {
             "description": "The list of extensions that will be denied.",
-            "strongType": "type",
             "displayName": "Denied extension"
         }
     }
@@ -99,7 +99,7 @@ Wenn Sie fertig sind, drücken die **STRG + O** und dann die **EINGABETASTE** zu
 
 ## <a name="create-the-policy"></a>Erstellen der Richtlinie
 
-Eine Richtliniendefinition ist ein Objekt, mit dem die Konfiguration gespeichert wird, die Sie verwenden möchten. Die Richtliniendefinition verwendet die Regeln und Parameterdateien zum Definieren der Richtlinie. Erstellen Sie eine Richtliniendefinition mithilfe des Cmdlets [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition).
+Eine Richtliniendefinition ist ein Objekt, mit dem die Konfiguration gespeichert wird, die Sie verwenden möchten. Die Richtliniendefinition verwendet die Regeln und Parameterdateien zum Definieren der Richtlinie. Erstellen Sie eine Richtliniendefinition mithilfe des Cmdlets [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition).
 
  Die Richtlinienregeln und Parameter sind die Dateien, die Sie erstellt und als JSON-Dateien in Ihrer Cloud Shell gespeichert haben.
 
@@ -118,9 +118,9 @@ $definition = New-AzPolicyDefinition `
 
 ## <a name="assign-the-policy"></a>Zuweisen der Richtlinie
 
-In diesem Beispiel wird die Richtlinie mit [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) einer Ressourcengruppe zugewiesen. Alle in der Ressourcengruppe **myResourceGroup** erstellten virtuellen Computer werden nicht in der Lage sein, die VM Access Agent- oder Custom Script-Erweiterungen zu installieren. 
+In diesem Beispiel wird die Richtlinie mit [New-AzPolicyAssignment](/powershell/module/az.resources/new-azpolicyassignment) einer Ressourcengruppe zugewiesen. Alle in der Ressourcengruppe **myResourceGroup** erstellten virtuellen Computer werden nicht in der Lage sein, die VM Access Agent- oder Custom Script-Erweiterungen zu installieren. 
 
-Rufen Sie mit dem Cmdlet [Get-AzSubscription | Format-Table](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) Ihre Abonnement-ID ab, die Sie anstelle der im Beispiel angegebenen ID verwenden.
+Rufen Sie mit dem Cmdlet [Get-AzSubscription | Format-Table](/powershell/module/az.accounts/get-azsubscription) Ihre Abonnement-ID ab, die Sie anstelle der im Beispiel angegebenen ID verwenden.
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"

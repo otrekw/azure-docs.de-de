@@ -1,28 +1,21 @@
 ---
-title: Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights | Microsoft-Dokumentation
+title: Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights
 description: Demografische Analyse der Benutzer Ihrer Web-App.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d11b12ba37d543ec21985c52c4ffb3399bfc56d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372283"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87323518"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights
 
-Ermitteln Sie, wann Personen Ihre Web-App verwenden, für welche Seiten sie sich am meisten interessieren, wo sich die Benutzer befinden, und welche Browser und Betriebssysteme sie verwenden. Analysieren Sie Geschäfts- und Nutzungstelemetriedaten mithilfe von [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
+Ermitteln Sie, wann Personen Ihre Web-App verwenden, für welche Seiten sie sich am meisten interessieren, wo sich die Benutzer befinden, und welche Browser und Betriebssysteme sie verwenden. Analysieren Sie Geschäfts- und Nutzungstelemetriedaten mithilfe von [Azure Application Insights](./app-insights-overview.md).
 
 ![Screenshot der Application Insights-Benutzer](./media/usage-segmentation/0001-users.png)
 
@@ -36,9 +29,9 @@ Drei der Nutzungsblätter verwenden dasselbe Tool zum Aufteilen von Telemetrieda
 
 * **Benutzertool:** Wie viele Personen haben Ihre App und zugehörige Funktionen verwendet?  Benutzer werden mithilfe von anonymen, in Browsercookies gespeicherten IDs gezählt. Eine einzelne Person, die verschiedene Browser oder Computer benutzt, wird als mehrere Benutzer gezählt.
 * **Sitzungstool:** Bei wie vielen Benutzeraktivitätssitzungen wurden bestimmte Seiten und Funktionen der App verwendet? Eine Sitzung wird nach einer halben Stunde der Benutzerinaktivität oder nach 24 Stunden ununterbrochener Nutzung gezählt.
-* **Ereignistool:** Wie oft werden bestimmte Seiten und Funktionen der App verwendet? Eine Seitenansicht wird gezählt, wenn eine Seite Ihrer App in einem Browser geladen wird, vorausgesetzt, Sie haben sie [instrumentiert](../../azure-monitor/app/javascript.md). 
+* **Ereignistool:** Wie oft werden bestimmte Seiten und Funktionen der App verwendet? Eine Seitenansicht wird gezählt, wenn eine Seite Ihrer App in einem Browser geladen wird, vorausgesetzt, Sie haben sie [instrumentiert](./javascript.md). 
 
-    Ein benutzerdefiniertes Ereignis stellt eine Aktion in Ihrer App dar, häufig eine Benutzerinteraktion wie das Klicken auf eine Schaltfläche oder den Abschluss einer Aufgabe. Sie fügen Code in Ihre App ein, um [benutzerdefinierte Ereignisse zu generieren](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+    Ein benutzerdefiniertes Ereignis stellt eine Aktion in Ihrer App dar, häufig eine Benutzerinteraktion wie das Klicken auf eine Schaltfläche oder den Abschluss einer Aufgabe. Sie fügen Code in Ihre App ein, um [benutzerdefinierte Ereignisse zu generieren](./api-custom-events-metrics.md#trackevent).
 
 ## <a name="querying-for-certain-users"></a>Abfragen für bestimmte Benutzer
 
@@ -64,10 +57,11 @@ Der Abschnitt **Meet your users** (Informationen zu Benutzern) enthält Informat
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) oder [Seitenansichten](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](./api-custom-events-metrics.md#trackevent) oder [Seitenansichten](./api-custom-events-metrics.md#page-views).
 - Wenn Sie bereits benutzerdefinierte Ereignisse oder Seitenansichten senden, finden Sie mithilfe der Nutzungstools heraus, wie Benutzer den Dienst verwenden.
     - [Trichter](usage-funnels.md)
-    - [Aufbewahrung](usage-retention.md)
+    - [Vermerkdauer](usage-retention.md)
     - [Benutzerabläufe](usage-flows.md)
-    - [Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)
+    - [Arbeitsmappen](../platform/workbooks-overview.md)
     - [Hinzufügen von Benutzerkontext](usage-send-user-context.md)
+

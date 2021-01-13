@@ -1,21 +1,23 @@
 ---
-title: Erstellen einer Flask-Web-App mit der API für MongoDB von Azure Cosmos DB und dem Python SDK
+title: Erstellen einer Python Flask-Web-App mit der API für MongoDB von Azure Cosmos DB
 description: Stellt ein Python Flask-Codebeispiel vor, mit dem Sie eine Verbindung herstellen und Abfragen über die API für MongoDB von Azure Cosmos DB durchführen können.
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 07f213de3509ed16af627af5e0583cd985c278f6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.custom: devx-track-python
+ms.openlocfilehash: 3d066005ac18bf42f913885558bf6f0ee5fc50c4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954660"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349162"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Schnellstart: Erstellen einer Python-App mit der API für MongoDB von Azure Cosmos DB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -23,24 +25,16 @@ ms.locfileid: "65954660"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
-Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Cosmos DB zugrunde liegen.
-
-In diesem Schnellstart wird anhand des folgenden [Flask-Beispiels](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) gezeigt, wie Sie eine einfache Flask-Aufgaben-App unter Verwendung des [Azure Cosmos DB-Emulators](local-emulator.md) und der API für MongoDB von Azure Cosmos DB erstellen.
+In dieser Schnellstartanleitung verwenden Sie ein Azure Cosmos DB-Konto für die Mongo DB-API oder den Azure Cosmos DB-Emulator, um eine über GitHub geklonte Python Flask-To-Do-Web-App auszuführen. Azure Cosmos DB ist ein Multimodell-Datenbankdienst, mit dem Sie mithilfe der Funktionen für globale Verteilung und horizontale Skalierung schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Laden Sie den [Azure Cosmos DB-Emulator](local-emulator.md) herunter. Der Emulator wird derzeit nur unter Windows unterstützt. Das Beispiel zeigt, wie Sie das Beispiel mit einem Produktionsschlüssel von Azure verwenden, was mit jeder Plattform möglich ist.
-
-- Sollte [Visual Studio Code](https://code.visualstudio.com/Download) bei Ihnen noch nicht installiert sein, können Sie es schnell für Ihre Plattform (Windows, Mac, Linux) installieren.
-
-- Fügen Sie die Python-Sprachunterstützung hinzu, indem Sie eine der beliebten Python-Erweiterungen installieren.
-  1. Wählen Sie eine Erweiterung aus.
-  2. Geben Sie `ext install` in die Befehlspalette (`Ctrl+Shift+P`) ein, um die Erweiterung zu installieren.
-
-     In den Beispielen dieses Dokuments wird die beliebte und umfassende [Python-Erweiterung](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python) von Don Jayamanne verwendet.
+- Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Oder [testen Sie Azure Cosmos DB kostenlos](https://azure.microsoft.com/try/cosmosdb/) ohne ein Azure-Abonnement. Alternativ dazu können Sie den [Azure Cosmos DB-Emulator](local-emulator.md) verwenden. 
+- [Python 3.6+](https://www.python.org/downloads/)
+- [Visual Studio Code](https://code.visualstudio.com/Download) mit der [Python-Erweiterung](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python)
 
 ## <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
 
@@ -74,7 +68,7 @@ Klonen Sie als Nächstes eine Flask-MongoDB-App aus GitHub, legen Sie die Verbin
 
 Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressourcen im Code erstellt werden, können Sie sich die folgenden Codeausschnitte ansehen. Andernfalls können Sie mit [Ausführen der Web-App](#run-the-web-app) fortfahren. 
 
-Die folgenden Codeausschnitte stammen alle aus der Datei „app.py“ und verwenden die Verbindungszeichenfolge für den lokalen Azure Cosmos DB-Emulator. Das Kennwort muss wie weiter unten dargestellt aufgeteilt werden, da die Schrägstriche ansonsten nicht analysiert werden können.
+Die folgenden Codeausschnitte stammen alle aus der Datei *app.py* und verwenden die Verbindungszeichenfolge für den lokalen Azure Cosmos DB-Emulator. Das Kennwort muss wie weiter unten dargestellt aufgeteilt werden, da die Schrägstriche ansonsten nicht analysiert werden können.
 
 * Initialisieren Sie den MongoDB-Client, rufen Sie die Datenbank ab, und führen Sie die Authentifizierung durch.
 
@@ -106,33 +100,35 @@ Die folgenden Codeausschnitte stammen alle aus der Datei „app.py“ und verwen
 
 3. Legen Sie die Umgebungsvariable für die Flask-App mit `set FLASK_APP=app.py` bzw. mit `$env:FLASK_APP = app.py` für PowerShell-Editoren oder mit `export FLASK_APP=app.py` fest, wenn Sie einen Mac verwenden. 
 
-4. Führen Sie die App mit `flask run` aus, und navigieren Sie zu [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
+4. Führen Sie die App mit `flask run` aus, und navigieren Sie zu *http:\//127.0.0.1:5000/* .
 
 5. Fügen Sie Aufgaben hinzu, entfernen Sie Aufgaben, und verfolgen Sie, wie sie der Sammlung hinzugefügt bzw. darin geändert werden.
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
+Wenn Sie den Code mit einem aktiven Azure Cosmos DB-Konto testen möchten, erstellen Sie über das Azure-Portal ein Konto.
+
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
 ## <a name="update-your-connection-string"></a>Aktualisieren der Verbindungszeichenfolge
 
-Wenn Sie den Code mit einem aktiven Cosmos-Konto testen möchten, erstellen Sie über das Azure-Portal ein Konto, und rufen Sie die Informationen zur Verbindungszeichenfolge ab. Kopieren Sie sie anschließend in die App.
+Wenn Sie den Code mit einem aktiven Azure Cosmos DB-Konto testen möchten, rufen Sie die Informationen zur Verbindungszeichenfolge ab. Kopieren Sie sie anschließend in die App.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) in Ihrem Cosmos-Konto im linken Navigationsbereich auf **Verbindungszeichenfolge**, und klicken Sie anschließend auf **Lese-/Schreibschlüssel**. Kopieren Sie im nächsten Schritt mithilfe der Schaltflächen zum Kopieren auf der rechten Seite des Bildschirms den Benutzernamen, das Kennwort sowie den Host in die Datei „dal.cs“.
+1. Wählen Sie in Ihrem Azure Cosmos DB-Konto im Azure-Portal im linken Navigationsbereich die Option **Verbindungszeichenfolge** und anschließend **Lese-/Schreibschlüssel** aus. Sie verwenden die Schaltflächen zum Kopieren auf der rechten Seite des Bildschirms, um den Benutzernamen, die Verbindungszeichenfolge und das Kennwort zu kopieren. 
 
-2. Öffnen Sie die Datei **app.py** im Stammverzeichnis.
+2. Öffnen Sie die Datei *app.py* im Stammverzeichnis.
 
-3. Kopieren Sie den Wert für **Benutzername** aus dem Portal (mithilfe der Schaltfläche zum Kopieren), und legen Sie ihn in der Datei **app.py** als Wert für **Name** fest.
+3. Kopieren Sie den Wert für **Benutzername** aus dem Portal (mithilfe der Schaltfläche zum Kopieren), und legen Sie ihn in der Datei *app.py* als Wert für **Name** fest.
 
-4. Kopieren Sie dann den Wert Ihrer **Verbindungszeichenfolge** aus dem Portal, und legen Sie ihn in der Datei **app.py** als MongoClient-Wert fest.
+4. Kopieren Sie dann den Wert Ihrer **Verbindungszeichenfolge** aus dem Portal, und legen Sie ihn in der Datei *app.py* als **MongoClient**-Wert fest.
 
-5. Kopieren Sie schließlich das **Kennwort** aus dem Portal, und legen Sie es in der Datei **app.py** als **Kennwort** fest.
+5. Kopieren Sie schließlich das **Kennwort** aus dem Portal, und legen Sie es in der Datei *app.py* als **Kennwort** fest.
 
-Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikation mit Cosmos DB aktualisiert. Sie können sie nun auf die gleiche Weise ausführen wie zuvor.
+Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikation mit Azure Cosmos DB aktualisiert. Sie können sie nun auf die gleiche Weise ausführen wie zuvor.
 
 ## <a name="deploy-to-azure"></a>Bereitstellen in Azure
 
-Zum Bereitstellen dieser App können Sie in Azure eine neue Web-App erstellen und Continuous Deployment mit einer Verzweigung dieses GitHub-Repositorys aktivieren. Eine Anleitung zum Einrichten von Continuous Deployment mit GitHub in Azure finden Sie in [diesem Tutorial](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment).
+Zum Bereitstellen dieser App können Sie in Azure eine neue Web-App erstellen und Continuous Deployment mit einer Verzweigung dieses GitHub-Repositorys aktivieren. Eine Anleitung zum Einrichten von Continuous Deployment mit GitHub in Azure finden Sie in [diesem Tutorial](../app-service/deploy-continuous-deployment.md).
 
 Entfernen Sie beim Bereitstellen in Azure Ihre Anwendungsschlüssel, und stellen Sie sicher, dass der folgende Abschnitt auskommentiert ist:
 
@@ -142,9 +138,9 @@ Entfernen Sie beim Bereitstellen in Azure Ihre Anwendungsschlüssel, und stellen
     db.authenticate(name=os.getenv("MONGO_USERNAME"),password=os.getenv("MONGO_PASSWORD"))
 ```
 
-Fügen Sie anschließend „MONGOURL“, „MONGO_PASSWORD“ und „MONGO_USERNAME“ den Anwendungseinstellungen hinzu. Weitere Informationen zu Anwendungseinstellungen in Azure-Web-Apps finden Sie in [diesem Tutorial](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings).
+Fügen Sie anschließend „MONGOURL“, „MONGO_PASSWORD“ und „MONGO_USERNAME“ den Anwendungseinstellungen hinzu. Weitere Informationen zu Anwendungseinstellungen in Azure-Web-Apps finden Sie in [diesem Tutorial](../app-service/configure-common.md#configure-app-settings).
 
-Wenn Sie keine Verzweigung dieses Repositorys erstellen möchten, können Sie weiter unten auch auf die Schaltfläche für die Bereitstellung in Azure klicken. Richten Sie anschließend in Azure die Anwendungseinstellungen mit Ihren Cosmos DB-Kontoinformationen ein.
+Wenn Sie keinen Fork dieses Repositorys erstellen möchten, können Sie weiter unten auch die Schaltfläche **Bereitstellung in Azure** auswählen. Richten Sie anschließend in Azure die Anwendungseinstellungen mit Ihren Azure Cosmos DB-Kontoinformationen ein.
 
 <a href="https://deploy.azure.com/?repository=https://github.com/heatherbshapiro/To-Do-List---Flask-MongoDB-Example" target="_blank">
 <img src="https://azuredeploy.net/deploybutton.png" alt="Click to Deploy to Azure">
@@ -163,7 +159,7 @@ Wenn Sie keine Verzweigung dieses Repositorys erstellen möchten, können Sie we
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie erfahren, wie Sie ein Cosmos-Konto erstellen und eine Flask-App ausführen. Jetzt können Sie zusätzliche Daten in Ihre Cosmos-Datenbank importieren. 
+In dieser Schnellstartanleitung haben Sie erfahren, wie Sie ein Azure Cosmos DB-Konto für die Mongo DB-API erstellen und den Azure Cosmos DB-Emulator zum Ausführen einer über GitHub geklonten Python Flask-To-Do-Web-App verwenden. Jetzt können Sie zusätzliche Daten in Ihr Azure Cosmos DB-Konto importieren. 
 
 > [!div class="nextstepaction"]
-> [Import MongoDB data into Azure Cosmos DB (Importieren von Daten aus MongoDB in Azure Cosmos DB)](mongodb-migrate.md)
+> [Import MongoDB data into Azure Cosmos DB (Importieren von Daten aus MongoDB in Azure Cosmos DB)](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

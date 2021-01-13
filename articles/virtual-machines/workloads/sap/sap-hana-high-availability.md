@@ -1,23 +1,24 @@
 ---
-title: Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server | Microsoft-Dokumentation
+title: Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SLES | Microsoft-Dokumentation
 description: Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server
 services: virtual-machines-linux
 documentationcenter: ''
-author: MSSedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/15/2019
-ms.author: sedusch
-ms.openlocfilehash: 7b9d3791d44e9541df7fc95c34b5e8c83a4295b3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 10/16/2020
+ms.author: radeltch
+ms.openlocfilehash: 5af2c40dd1efa542ac13bd4cf96ba3017810bf00
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078387"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608672"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -25,17 +26,17 @@ ms.locfileid: "70078387"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2205917]: https://launchpad.support.sap.com/#/notes/2205917
-[1944799]: https://launchpad.support.sap.com/#/notes/1944799
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2205917]:https://launchpad.support.sap.com/#/notes/2205917
+[1944799]:https://launchpad.support.sap.com/#/notes/1944799
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2388694]:https://launchpad.support.sap.com/#/notes/2388694
-[401162]: https://launchpad.support.sap.com/#/notes/401162
+[401162]:https://launchpad.support.sap.com/#/notes/401162
 
 [hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
 [hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
@@ -112,7 +113,7 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
     - **Systemverfügbarkeit**: Wählen Sie **HA** (Hohe Verfügbarkeit).
     - **Administratorbenutzername und Administratorkennwort:** Ein neuer Benutzer wird erstellt, der für die Anmeldung beim Computer verwendet werden kann.
     - **Neues oder vorhandenes Subnetz:** Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt oder ein bestehendes Subnetz verwendet werden soll. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
-    - **Subnetz-ID**: Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: **/subscriptions/\<Abonnement-ID>/resourceGroups/\<Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/\<Name des virtuellen Netzwerks>/subnets/\<Name des Subnetzes>** .
+    - **Subnetz-ID**: Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID sieht in der Regel wie folgt aus: **/subscriptions/\<subscription ID>/resourceGroups/\<resource group name>/providers/Microsoft.Network/virtualNetworks/\<virtual network name>/subnets/\<subnet name>** .
 
 ### <a name="manual-deployment"></a>Manuelle Bereitstellung
 
@@ -124,7 +125,7 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 1. Erstellen Sie ein virtuelles Netzwerk.
 1. Erstellen Sie eine Verfügbarkeitsgruppe.
    - Richten Sie die maximale Updatedomäne ein.
-1. Erstellen Sie einen Lastenausgleich (intern).
+1. Erstellen Sie einen Lastenausgleich (intern). Sie sollten [Load Balancer Standard](../../../load-balancer/load-balancer-overview.md) verwenden.
    - Wählen Sie das virtuelle Netzwerk aus, das Sie in Schritt 2 erstellt haben.
 1. Erstellen Sie den virtuellen Computer 1.
    - Verwenden Sie ein SLES4SAP-Abbild im Azure-Katalog, das für SAP HANA auf dem von Ihnen ausgewählten VM-Typ unterstützt wird.
@@ -133,67 +134,111 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
    - Verwenden Sie ein SLES4SAP-Abbild im Azure-Katalog, das für SAP HANA auf dem von Ihnen ausgewählten VM-Typ unterstützt wird.
    - Wählen Sie die Verfügbarkeitsgruppe aus, die Sie in Schritt 3 erstellt haben. 
 1. Fügen Sie Datenträger hinzu.
-1. Konfigurieren Sie den Lastenausgleich. Erstellen Sie zunächst einen Front-End-IP-Pool:
-
-   1. Öffnen Sie den Lastenausgleich, und wählen Sie den **Front-End-IP-Pool** und dann **Hinzufügen** aus.
-   1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **hana-frontend**).
-   1. Legen Sie die **Zuweisung** auf **Statisch** fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.13**).
-   1. Klicken Sie auf **OK**.
-   1. Notieren Sie nach Erstellen des neuen Front-End-IP-Pools dessen IP-Adresse.
-
-1. Erstellen Sie als Nächstes einen Back-End-Pool:
-
-   1. Öffnen Sie den Lastenausgleich, und wählen Sie **Back-End-Pools** und dann **Hinzufügen** aus.
-   1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **hana-backend**).
-   1. Wählen Sie **Virtuellen Computer hinzufügen** aus.
-   1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie in Schritt 3 erstellt haben.
-   1. Wählen Sie die virtuellen Computer des SAP HANA-Clusters aus.
-   1. Klicken Sie auf **OK**.
-
-1. Erstellen Sie als Nächstes einen Integritätstest:
-
-   1. Öffnen Sie den Lastenausgleich, und wählen Sie **Integritätstests** und dann **Hinzufügen** aus.
-   1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **hana-hp**).
-   1. Wählen Sie als Protokoll **TCP** und als Port 625**03** aus. Behalten Sie für das **Intervall** den Wert „5“ und als **Fehlerschwellenwert** „2“ bei.
-   1. Klicken Sie auf **OK**.
-
-1. Erstellen Sie die Lastenausgleichsregeln für SAP HANA 1.0:
-
-   1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
-   1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. „hana-lb-3**03**15“).
-   1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest, die Sie zuvor erstellt haben (z.B. **hana-frontend**), aus.
-   1. Behalten Sie als **Protokoll** den Wert **TCP** bei, und geben Sie als Port 3**03**15 ein.
-   1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
-   1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
-   1. Klicken Sie auf **OK**.
-   1. Wiederholen Sie diese Schritte für den Port 3**03**17.
-
-1. Erstellen Sie für SAP HANA 2.0 Lastenausgleichsregeln für die Systemdatenbank:
-
-   1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
-   1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. „hana-lb-3**03**13“).
-   1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest, die Sie zuvor erstellt haben (z.B. **hana-frontend**), aus.
-   1. Behalten Sie als **Protokoll** den Wert **TCP** bei, und geben Sie als Port 3**03**13 ein.
-   1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
-   1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
-   1. Klicken Sie auf **OK**.
-   1. Wiederholen Sie diese Schritte für den Port 3**03**14.
-
-1. Erstellen Sie für SAP HANA 2.0 Lastenausgleichsregeln für die Mandantendatenbank:
-
-   1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
-   1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. „hana-lb-3**03**40“).
-   1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest, die Sie zuvor erstellt haben (z.B. **hana-frontend**) aus.
-   1. Behalten Sie als **Protokoll** den Wert **TCP** bei, und geben Sie als Port 3**03**40 ein.
-   1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
-   1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
-   1. Klicken Sie auf **OK**.
-   1. Wiederholen Sie diese Schritte für die Ports 3**03**41 und 3**03**42.
-
-Weitere Informationen zu den erforderlichen Ports für SAP HANA finden Sie im Kapitel zu [Verbindungen mit Mandantendatenbanken](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) im Handbuch zu [SAP HANA-Mandantendatenbanken](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) oder im [SAP-Hinweis 2388694][2388694].
 
 > [!IMPORTANT]
-> Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Floating IP-Adressen werden in IP-Konfigurationen mit zwei NICs in Szenarien mit Lastenausgleich nicht unterstützt. Weitere Informationen finden Sie unter [Azure Load Balancer – Einschränkungen](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Wenn Sie zusätzliche IP-Adressen für die VM benötigen, stellen Sie eine zweite NIC bereit.   
+
+> [!Note]
+> Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen Azure Load Balancer Standard-Instanz (ohne öffentliche IP-Adresse) platziert werden, liegt keine ausgehende Internetverbindung vor, sofern nicht in einer zusätzlichen Konfiguration das Routing an öffentliche Endpunkte zugelassen wird. Ausführliche Informationen zum Erreichen ausgehender Konnektivität finden Sie unter [Public endpoint connectivity for Virtual Machines using Azure Standard Load Balancer in SAP high-availability scenarios](./high-availability-guide-standard-load-balancer-outbound-connections.md) (Konnektivität mit öffentlichen Endpunkten für virtuelle Computer mithilfe von Azure Load Balancer Standard in SAP-Szenarien mit Hochverfügbarkeit).  
+
+1. Führen Sie bei Verwendung von Load Balancer Standard die folgenden Konfigurationsschritte aus:
+   1. Erstellen Sie zunächst einen Front-End-IP-Pool:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie den **Front-End-IP-Pool** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **hana-frontend**).
+      1. Legen Sie die **Zuweisung** auf **Statisch** fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.13**).
+      1. Klicken Sie auf **OK**.
+      1. Notieren Sie nach Erstellen des neuen Front-End-IP-Pools dessen IP-Adresse.
+   
+   1. Erstellen Sie als Nächstes einen Back-End-Pool:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Back-End-Pools** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **hana-backend**).
+      1. Wählen Sie **Virtuelles Netzwerk** aus.
+      1. Wählen Sie **Virtuellen Computer hinzufügen** aus.
+      1. Wählen Sie **Virtueller Computer** aus.
+      1. Wählen Sie die virtuellen Computer des SAP HANA-Clusters und deren IP-Adressen aus.
+      1. Wählen Sie **Hinzufügen**.
+   
+   1. Erstellen Sie als Nächstes einen Integritätstest:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Integritätstests** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **hana-hp**).
+      1. Wählen Sie als Protokoll **TCP** und als Port 625 **03** aus. Behalten Sie für das **Intervall** den Wert „5“ und als **Fehlerschwellenwert** „2“ bei.
+      1. Klicken Sie auf **OK**.
+   
+   1. Erstellen Sie als Nächstes die Lastenausgleichsregeln:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **hana-lb**).
+      1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **hana-frontend**, **hana-backend** und **hana-hp**).
+      1. Wählen Sie **HA-Ports** aus.
+      1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
+      1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
+      1. Klicken Sie auf **OK**.
+
+1. Wenn Ihr Szenario die Verwendung von Load Balancer Basic vorschreibt, führen Sie stattdessen die folgenden Konfigurationsschritte aus:
+   1. Erstellen Sie zunächst einen Front-End-IP-Pool:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie den **Front-End-IP-Pool** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **hana-frontend**).
+      1. Legen Sie die **Zuweisung** auf **Statisch** fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.13**).
+      1. Klicken Sie auf **OK**.
+      1. Notieren Sie nach Erstellen des neuen Front-End-IP-Pools dessen IP-Adresse.
+   
+   1. Erstellen Sie als Nächstes einen Back-End-Pool:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Back-End-Pools** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **hana-backend**).
+      1. Wählen Sie **Virtuellen Computer hinzufügen** aus.
+      1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie in Schritt 3 erstellt haben.
+      1. Wählen Sie die virtuellen Computer des SAP HANA-Clusters aus.
+      1. Klicken Sie auf **OK**.
+   
+   1. Erstellen Sie als Nächstes einen Integritätstest:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Integritätstests** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **hana-hp**).
+      1. Wählen Sie als Protokoll **TCP** und als Port 625 **03** aus. Behalten Sie für das **Intervall** den Wert „5“ und als **Fehlerschwellenwert** „2“ bei.
+      1. Klicken Sie auf **OK**.
+   
+   1. Erstellen Sie die Lastenausgleichsregeln für SAP HANA 1.0:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. „hana-lb-3 **03** 15“).
+      1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest, die Sie zuvor erstellt haben (z.B. **hana-frontend**), aus.
+      1. Behalten Sie als **Protokoll** den Wert **TCP** bei, und geben Sie als Port 3 **03** 15 ein.
+      1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
+      1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
+      1. Klicken Sie auf **OK**.
+      1. Wiederholen Sie diese Schritte für den Port 3 **03** 17.
+   
+   1. Erstellen Sie für SAP HANA 2.0 Lastenausgleichsregeln für die Systemdatenbank:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. „hana-lb-3 **03** 13“).
+      1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest, die Sie zuvor erstellt haben (z.B. **hana-frontend**), aus.
+      1. Behalten Sie als **Protokoll** den Wert **TCP** bei, und geben Sie als Port 3 **03** 13 ein.
+      1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
+      1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
+      1. Klicken Sie auf **OK**.
+      1. Wiederholen Sie diese Schritte für den Port 3 **03** 14.
+   
+   1. Erstellen Sie für SAP HANA 2.0 Lastenausgleichsregeln für die Mandantendatenbank:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. „hana-lb-3 **03** 40“).
+      1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest, die Sie zuvor erstellt haben (z.B. **hana-frontend**) aus.
+      1. Behalten Sie als **Protokoll** den Wert **TCP** bei, und geben Sie als Port 3 **03** 40 ein.
+      1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
+      1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
+      1. Klicken Sie auf **OK**.
+      1. Wiederholen Sie diese Schritte für die Ports 3 **03** 41 und 3 **03** 42.
+
+   Weitere Informationen zu den erforderlichen Ports für SAP HANA finden Sie im Kapitel zu [Verbindungen mit Mandantendatenbanken](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) im Handbuch zu [SAP HANA-Mandantendatenbanken](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) oder im [SAP-Hinweis 2388694][2388694].
+
+> [!IMPORTANT]
+> Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](../../../load-balancer/load-balancer-custom-probe-overview.md).
 > Siehe auch SAP-Hinweis [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="create-a-pacemaker-cluster"></a>Erstellen eines Pacemaker-Clusters
@@ -237,16 +282,20 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Erstellen Sie die logischen Volumes. Ein lineares Volume wird erstellt, wenn Sie `lvcreate` ohne den Schalter `-i` verwenden. Wir empfehlen für eine bessere E/A-Leistung, ein Stripesetvolume zu erstellen. Das Argument `-i` sollte der Anzahl der zugrunde liegenden physischen Volumes entsprechen. In diesem Dokument werden zwei physische Volumes für das Datenvolume verwendet, daher wird das Argument für den Schalter `-i` auf **2** festgelegt. Für das Protokollvolume wird ein physisches Volume verwendet, daher wird der Schalter `-i` nicht explizit verwendet. Verwenden Sie den Schalter `-i`, und ändern Sie die Zahl in die Anzahl der zugrunde liegenden physischen Volumes, wenn Sie für die einzelnen Daten-, Protokoll- oder freigegebenen Volumes mehrere physische Datenträger verwenden.
+   Erstellen Sie die logischen Volumes. Ein lineares Volume wird erstellt, wenn Sie `lvcreate` ohne den Schalter `-i` verwenden. Es wird empfohlen, ein Stripesetvolume für eine bessere E/A-Leistung zu erstellen und die Stripegrößen an die in [SAP HANA VM-Speicherkonfigurationen](./hana-vm-operations-storage.md) dokumentierten Werte anzupassen. Das `-i`-Argument sollte die Anzahl der zugrunde liegenden physischen Volumes und das `-I`-Argument die Stripegröße sein. In diesem Dokument werden zwei physische Volumes für das Datenvolume verwendet, daher wird das Argument für den Schalter `-i` auf **2** festgelegt. Die Stripegröße für das Datenvolume beträgt **256 KiB**. Für das Protokollvolume wird ein physisches Volume verwendet, sodass keine `-i`- oder `-I`-Schalter explizit für die Protokollvolumebefehle verwendet werden.  
 
-   <pre><code>sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
+   > [!IMPORTANT]
+   > Verwenden Sie den Schalter `-i`, und ändern Sie die Zahl in die Anzahl der zugrunde liegenden physischen Volumes, wenn Sie für die einzelnen Daten-, Protokoll- oder freigegebenen Volumes mehrere physische Datenträger verwenden. Verwenden Sie den Schalter `-I`, um die Stripegröße festzulegen, wenn Sie ein Stripesetvolume erstellen.  
+   > Informationen zu empfohlenen Speicherkonfigurationen, einschließlich Stripegrößen und Anzahl der Datenträger, finden Sie unter [SAP HANA VM-Speicherkonfigurationen](./hana-vm-operations-storage.md).  
+
+   <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_shared vg_hana_shared_<b>HN1</b>
    sudo mkfs.xfs /dev/vg_hana_data_<b>HN1</b>/hana_data
    sudo mkfs.xfs /dev/vg_hana_log_<b>HN1</b>/hana_log
    sudo mkfs.xfs /dev/vg_hana_shared_<b>HN1</b>/hana_shared
    </code></pre>
-
+  
    Erstellen Sie die Bereitstellungsverzeichnisse, und kopieren Sie die UUID aller logischen Volumes:
 
    <pre><code>sudo mkdir -p /hana/data/<b>HN1</b>
@@ -467,10 +516,23 @@ sudo crm configure primitive rsc_SAPHanaTopology_<b>HN1</b>_HDB<b>03</b> ocf:sus
   params SID="<b>HN1</b>" InstanceNumber="<b>03</b>"
 
 sudo crm configure clone cln_SAPHanaTopology_<b>HN1</b>_HDB<b>03</b> rsc_SAPHanaTopology_<b>HN1</b>_HDB<b>03</b> \
-  meta is-managed="true" clone-node-max="1" target-role="Started" interleave="true"
+  meta clone-node-max="1" target-role="Started" interleave="true"
 </code></pre>
 
 Erstellen Sie als Nächstes die HANA-Ressourcen:
+
+> [!IMPORTANT]
+> Kürzlich durchgeführte Tests haben Situationen aufgezeigt, in denen netcat aufgrund von Backlog und der Einschränkung, nur eine Verbindung zu verarbeiten, nicht mehr auf Anforderungen reagiert. Die netcat-Ressource lauscht dann nicht mehr auf Azure Load Balancer-Anforderungen, und die Floating IP-Adresse ist nicht mehr verfügbar.  
+> Für vorhandene Pacemaker-Cluster wurde zuvor empfohlen, netcat durch socat zu ersetzen. Zurzeit wird empfohlen, den Ressourcen-Agent azure-lb zu verwenden, der Teil des Pakets resource-agents ist. Dabei gelten die folgenden Versionsanforderungen für das Paket:
+> - Für SLES 12 SP4/SP5 muss die Version mindestens resource-agents-4.3.018.a7fb5035-3.30.1 sein.  
+> - Für SLES 15/15 SP1 muss die Version mindestens resource-agents-4.3.0184.6ee15eb2-4.13.1 sein.  
+>
+> Beachten Sie, dass für die Änderung eine kurze Ausfallzeit erforderlich ist.  
+> Wenn die Konfiguration bei vorhandenen Pacemaker-Clustern bereits für die Verwendung von socat geändert wurde, wie unter [Azure Load Balancer-Erkennungshärtung](https://www.suse.com/support/kb/doc/?id=7024128) beschrieben, müssen Sie nicht sofort zum Ressourcen-Agent azure-lb wechseln.
+
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf die Begriffe *Master* und *Slave*, die von Microsoft nicht mehr verwendet werden. Sobald diese Begriffe aus der Software entfernt wurden, werden sie auch aus diesem Artikel gelöscht.
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer. 
 
@@ -485,18 +547,17 @@ sudo crm configure primitive rsc_SAPHana_<b>HN1</b>_HDB<b>03</b> ocf:suse:SAPHan
   DUPLICATE_PRIMARY_TIMEOUT="7200" AUTOMATED_REGISTER="false"
 
 sudo crm configure ms msl_SAPHana_<b>HN1</b>_HDB<b>03</b> rsc_SAPHana_<b>HN1</b>_HDB<b>03</b> \
-  meta is-managed="true" notify="true" clone-max="2" clone-node-max="1" \
+  meta notify="true" clone-max="2" clone-node-max="1" \
   target-role="Started" interleave="true"
 
 sudo crm configure primitive rsc_ip_<b>HN1</b>_HDB<b>03</b> ocf:heartbeat:IPaddr2 \
-  meta target-role="Started" is-managed="true" \
+  meta target-role="Started" \
   operations \$id="rsc_ip_<b>HN1</b>_HDB<b>03</b>-operations" \
   op monitor interval="10s" timeout="20s" \
   params ip="<b>10.0.0.13</b>"
 
-sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> anything \
-  params binfile="/usr/bin/nc" cmdline_options="-l -k 625<b>03</b>" \
-  op monitor timeout=20s interval=10 depth=0
+sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> azure-lb port=625<b>03</b> \
+  meta resource-stickiness=0
 
 sudo crm configure group g_ip_<b>HN1</b>_HDB<b>03</b> rsc_ip_<b>HN1</b>_HDB<b>03</b> rsc_nc_<b>HN1</b>_HDB<b>03</b>
 
@@ -523,7 +584,6 @@ Stellen Sie sicher, dass der Clusterstatus gültig ist und alle Ressourcen gesta
 # Full list of resources:
 #
 # stonith-sbd     (stonith:external/sbd): Started hn1-db-0
-# rsc_st_azure    (stonith:fence_azure_arm):      Started hn1-db-1
 # Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
 #     Started: [ hn1-db-0 hn1-db-1 ]
 # Master/Slave Set: msl_SAPHana_HN1_HDB03 [rsc_SAPHana_HN1_HDB03]
@@ -531,7 +591,7 @@ Stellen Sie sicher, dass der Clusterstatus gültig ist und alle Ressourcen gesta
 #     Slaves: [ hn1-db-1 ]
 # Resource Group: g_ip_HN1_HDB03
 #     rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-#     rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+#     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
 </code></pre>
 
 ## <a name="test-the-cluster-setup"></a>Testen der Clustereinrichtung
@@ -575,7 +635,7 @@ stonith-sbd     (stonith:external/sbd): Started hn1-db-1
      Stopped: [ hn1-db-0 ]
  Resource Group: g_ip_HN1_HDB03
      rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-     rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
 
 Failed Actions:
 * rsc_SAPHana_HN1_HDB03_start_0 on hn1-db-0 'not running' (7): call=84, status=complete, exitreason='none',
@@ -617,7 +677,7 @@ stonith-sbd     (stonith:external/sbd): Started hn1-db-1
      Slaves: [ hn1-db-0 ]
  Resource Group: g_ip_HN1_HDB03
      rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-     rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
 </code></pre>
 
 ### <a name="test-the-azure-fencing-agent-not-sbd"></a>Testen des Azure-Umgrenzungs-Agent (nicht SBD)
@@ -705,7 +765,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Führen Sie die folgenden Befehle als „<hanasid\>adm on node hn1-db-0“ aus:
@@ -732,7 +792,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
 1. TEST 2: BEENDEN DER PRIMÄREN DATENBANK AUF KNOTEN 2
@@ -746,7 +806,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
    Führen Sie die folgenden Befehle als „<hanasid\>adm on node hn1-db-1“ aus:
@@ -773,7 +833,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 3: ABSTURZ DER PRIMÄREN DATENBANK AUF KNOTEN 1
@@ -787,7 +847,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Führen Sie die folgenden Befehle als „<hanasid\>adm on node hn1-db-0“ aus:
@@ -814,7 +874,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
 1. TEST 4: ABSTURZ DER PRIMÄREN DATENBANK AUF KNOTEN 2
@@ -828,7 +888,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
    Führen Sie die folgenden Befehle als „<hanasid\>adm on node hn1-db-1“ aus:
@@ -855,7 +915,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 5: ABSTURZ DES KNOTENS AM PRIMÄREN STANDORT (KNOTEN 1)
@@ -869,7 +929,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Führen Sie die folgenden Befehle als root auf dem Knoten „hn1-db-0“ aus:
@@ -906,7 +966,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
 1. TEST 6: ABSTURZ DES KNOTENS AM SEKUNDÄREN STANDORT (KNOTEN 2)
@@ -920,7 +980,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
    Führen Sie die folgenden Befehle als root auf dem Knoten „hn1-db-1“ aus:
@@ -957,7 +1017,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 7: BEENDEN DER SEKUNDÄREN DATENBANK AUF KNOTEN 2
@@ -971,7 +1031,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Führen Sie die folgenden Befehle als „<hanasid\>adm on node hn1-db-1“ aus:
@@ -994,7 +1054,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 8: ABSTURZ DER SEKUNDÄREN DATENBANK AUF KNOTEN 2
@@ -1008,7 +1068,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Führen Sie die folgenden Befehle als „<hanasid\>adm on node hn1-db-1“ aus:
@@ -1031,7 +1091,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 9: ABSTURZ DES KNOTENS AM SEKUNDÄREN STANDORT (KNOTEN 2), AUF DEM DIE SEKUNDÄRE HANA-DATENBANK AUSGEFÜHRT WIRD
@@ -1045,7 +1105,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Führen Sie die folgenden Befehle als root auf dem Knoten „hn1-db-1“ aus:
@@ -1078,7 +1138,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -1086,4 +1146,3 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
 * [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
 * [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
 * [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]
-* Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).

@@ -1,19 +1,18 @@
 ---
-title: Verschieben von virtuellen Azure IaaS-Computern zwischen Azure Government und öffentlichen Regionen mithilfe des Azure Site Recovery-Diensts | Microsoft-Dokumentation
-description: Verwenden Sie Azure Site Recovery, um virtuelle Azure IaaS-Computer zwischen Azure Government und öffentlichen Regionen zu verschieben.
-services: site-recovery
-author: rajani-janaki-ram
+title: Verschieben von Azure-VMs zwischen Government- und öffentlichen Regionen mit Azure Site Recovery
+description: Verwenden Sie Azure Site Recovery, um virtuelle Azure-Computer zwischen Azure Government- und öffentlichen Regionen zu verschieben.
+author: sideeksh
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 04/16/2019
-ms.author: rajanaki
+ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: bff6268507c0d2ec0aa1eac0c7e2e9d2513ded58
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a76ebf95b92b6e1251a04daa9ffb48a9abe15b50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376122"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89425346"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Verschieben von virtuellen Azure IaaS-Computern zwischen Azure Government und öffentlichen Regionen 
 
@@ -25,7 +24,7 @@ In diesem Tutorial erfahren Sie, wie Sie virtuelle Azure-Computer mithilfe von A
 
 > [!div class="checklist"]
 > * Überprüfen der Voraussetzungen
-> * Vorbereiten der Quell-VMs
+> * Vorbereiten der virtuellen Quellcomputer
 > * Vorbereiten der Zielregion
 > * Kopieren von Daten in die Zielregion
 > * Testen der Konfiguration
@@ -33,7 +32,7 @@ In diesem Tutorial erfahren Sie, wie Sie virtuelle Azure-Computer mithilfe von A
 > * Verwerfen der Ressourcen in der Quellregion
 
 > [!IMPORTANT]
-> Dieses Tutorial veranschaulicht, wie Sie virtuelle Azure-Computer zwischen Azure Government und öffentlichen Regionen oder zwischen Regionspaaren verschieben, die von der normalen Notfallwiederherstellungslösung für virtuelle Azure-Computer nicht unterstützt werden. Falls Ihre Paare aus Quell- und Zielregionen [unterstützt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support) werden, finden Sie in diesem [Dokument](azure-to-azure-tutorial-migrate.md) Informationen zum Verschieben. Falls Sie die Verfügbarkeit durch das Migrieren von virtuellen Computern in einer Verfügbarkeitsgruppe zu an Zonen angehefteten virtuellen Computern verbessern möchten, finden Sie in [diesem Tutorial](move-azure-VMs-AVset-Azone.md) weitere Informationen.
+> Dieses Tutorial veranschaulicht, wie Sie virtuelle Azure-Computer zwischen Azure Government und öffentlichen Regionen oder zwischen Regionspaaren verschieben, die von der normalen Notfallwiederherstellungslösung für virtuelle Azure-Computer nicht unterstützt werden. Falls Ihre Paare aus Quell- und Zielregionen [unterstützt](./azure-to-azure-support-matrix.md#region-support) werden, finden Sie in diesem [Dokument](azure-to-azure-tutorial-migrate.md) Informationen zum Verschieben. Falls Sie die Verfügbarkeit durch das Migrieren von virtuellen Computern in einer Verfügbarkeitsgruppe zu an Zonen angehefteten virtuellen Computern verbessern möchten, finden Sie in [diesem Tutorial](move-azure-VMs-AVset-Azone.md) weitere Informationen.
 
 > [!IMPORTANT]
 > Das Verwenden dieser Methode zum Konfigurieren von DR zwischen nicht unterstützten Regionspaaren ist nicht ratsam, da die Paare unter Berücksichtigung der Datenlatenz definiert werden, was für ein DR-Szenario kritisch ist.
@@ -54,7 +53,7 @@ In diesem Tutorial erfahren Sie, wie Sie virtuelle Azure-Computer mithilfe von A
 Vergewissern Sie sich, dass Ihr Azure-Konto über die Berechtigungen für die Replikation von virtuellen Computern in Azure verfügt.
 
 - Überprüfen Sie die [Berechtigungen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines), die Sie für das Replizieren von Computern in Azure benötigen.
-- Überprüfen Sie die Berechtigungen für den [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md), und passen Sie sie ggf. an. 
+- Überprüfen und ändern Sie Berechtigungen der [rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). 
 
 ### <a name="set-up-an-azure-network"></a>Richten Sie ein Azure-Netzwerk ein
 
@@ -66,7 +65,7 @@ Richten Sie ein [Azure-Zielnetzwerk](../virtual-network/quick-create-portal.md) 
 
 ### <a name="set-up-an-azure-storage-account"></a>Richten Sie ein Azure-Speicherkonto ein
 
-Richten Sie ein [Azure Storage-Konto](../storage/common/storage-quickstart-create-account.md) ein.
+Richten Sie ein [Azure Storage-Konto](../storage/common/storage-account-create.md) ein.
 
 - Site Recovery repliziert lokale Computer in den Azure-Speicher. Virtuelle Azure-Computer werden nach dem Failover aus dem Speicher erstellt.
 - Das Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
@@ -97,13 +96,13 @@ Der Mobilitätsdienst muss auf jedem Computer installiert sein, den Sie replizie
 
      Informationen zum Erstellen der für Sie relevanten am häufigsten verwendeten Netzwerkressourcen auf Grundlage der Quell-VM-Konfiguration finden Sie in den folgenden Dokumenten.
 
-    - [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Load Balancer](https://docs.microsoft.com/azure/load-balancer)
+    - [Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md)
+    - [Load Balancer](../load-balancer/index.yml)
     - [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
     
-    Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/#pivot=products&panel=network) zum Netzwerk. 
+    Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation](../index.yml?pivot=products&panel=network) zum Netzwerk.
 
-4. [Erstellen Sie manuell ein nicht für die Produktion vorgesehenes Netzwerk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) in der Zielregion, wenn Sie die Konfiguration vor der endgültigen Verschiebung in die Zielregion testen möchten. Diese Vorgehensweise wird empfohlen, da es so nur zu minimalen Beeinträchtigungen in der Produktionsumgebung kommt.
+4. [Erstellen Sie manuell ein nicht für die Produktion vorgesehenes Netzwerk](../virtual-network/quick-create-portal.md) in der Zielregion, wenn Sie die Konfiguration vor der endgültigen Verschiebung in die Zielregion testen möchten. Diese Vorgehensweise wird empfohlen, da es so nur zu minimalen Beeinträchtigungen in der Produktionsumgebung kommt.
 
 ## <a name="copy-data-to-the-target-region"></a>Kopieren von Daten in die Zielregion
 Im Folgenden wird erläutert, wie Sie Daten mithilfe von Azure Site Recovery in die Zielregion kopieren.
@@ -137,7 +136,7 @@ Richten Sie den Konfigurationsserver ein, registrieren Sie ihn im Tresor, und er
 Führen Sie zunächst folgende Schritte aus: 
 
 #### <a name="verify-time-accuracy"></a>Überprüfen der Zeitgenauigkeit
-Stellen Sie auf dem Konfigurationsservercomputer sicher, dass die Systemuhr mit einem [Zeitserver](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) synchronisiert ist. Die Zeiten sollten übereinstimmen. Falls der Unterschied 15 Minuten beträgt, ist das Setup unter Umständen nicht erfolgreich.
+Stellen Sie auf dem Konfigurationsservercomputer sicher, dass die Systemuhr mit einem [Zeitserver](/windows-server/networking/windows-time-service/windows-time-service-top) synchronisiert ist. Die Zeiten sollten übereinstimmen. Falls der Unterschied 15 Minuten beträgt, ist das Setup unter Umständen nicht erfolgreich.
 
 #### <a name="verify-connectivity"></a>Überprüfen der Konnektivität
 Stellen Sie sicher, dass der Computer ausgehend von Ihrer Umgebung auf die folgenden URLs zugreifen kann: 
@@ -198,7 +197,7 @@ Die Richtlinie wird dem Konfigurationsserver automatisch zugeordnet. Standardmä
    > [!WARNING]
    > Sie müssen die IP-Adresse des virtuellen Azure-Computers eingeben, den Sie verschieben möchten.
 
-10. Geben Sie unter **Eigenschaften** > **Eigenschaften konfigurieren**das Konto aus, das der Prozessserver zum automatischen Installieren des Mobilitätsdiensts auf dem Computer verwenden soll.
+10. Wählen Sie unter **Eigenschaften** > **Eigenschaften konfigurieren** das Konto aus, das der Prozessserver zum automatischen Installieren des Mobility Service auf dem Computer verwenden soll.
 11. Überprüfen Sie unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren**, ob die richtige Replikationsrichtlinie ausgewählt ist. 
 12. Klicken Sie auf **Replikation aktivieren**. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 
@@ -212,7 +211,7 @@ Zum Überwachen der hinzugefügten Server können Sie den letzten Zeitpunkt der 
 2. Wählen Sie unter **Testfailover** einen Wiederherstellungspunkt für das Failover aus:
 
    - **Letzte Verarbeitung**: Führt ein Failover des virtuellen Computers auf den letzten Wiederherstellungspunkt aus, der vom Site Recovery-Dienst verarbeitet wurde. Der Zeitstempel wird angezeigt. Mit dieser Option wird keine Zeit für die Verarbeitung von Daten verwendet und die Recovery Time Objective (RTO) niedrig gehalten.
-   - **Letzter anwendungskonsistenter Zeitpunkt**: Diese Option führt ein Failover aller virtuellen Computer auf den letzten App-konsistenten Wiederherstellungspunkt aus. Der Zeitstempel wird angezeigt.
+   - **Letzte App-Konsistenz**: Diese Option führt ein Failover aller virtuellen Computer auf den letzten App-konsistenten Wiederherstellungspunkt aus. Der Zeitstempel wird angezeigt.
    - **Benutzerdefiniert**: Wählen Sie einen beliebigen Wiederherstellungspunkt aus.
 
 3. Wählen Sie das virtuelle Azure-Zielnetzwerk aus, in das die Azure-VMs zum Testen der Konfiguration verschoben werden sollen. 
@@ -234,7 +233,7 @@ Zum Überwachen der hinzugefügten Server können Sie den letzten Zeitpunkt der 
 
 ## <a name="discard-the-resource-in-the-source-region"></a>Verwerfen der Ressourcen in der Quellregion 
 
-- Navigieren Sie zum virtuellen Computer.  Klicken Sie auf **Replikation deaktivieren**.  Dadurch wird der Prozess zum Kopieren der Daten für die VM angehalten.  
+- Navigieren Sie zum virtuellen Computer.  Klicken Sie auf **Replikation deaktivieren**.  Dadurch wird der Prozess zum Kopieren der Daten für den virtuellen Computer angehalten.  
 
    > [!IMPORTANT]
    > Führen Sie diesen Schritt unbedingt aus. Andernfalls werden Ihnen Gebühren für die Azure Site Recovery-Replikation in Rechnung gestellt.

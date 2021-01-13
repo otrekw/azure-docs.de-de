@@ -1,20 +1,19 @@
 ---
-title: Durchführen einer Notfallwiederherstellungsübung für lokale Computer in Azure mit Azure Site Recovery | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit Azure Site Recovery eine Notfallwiederherstellungsübung von lokalen Computern nach Azure durchführen.
+title: Durchführen einer Notfallwiederherstellungsübung in Azure mit Azure Site Recovery
+description: Es wird beschrieben, wie Sie mit Azure Site Recovery eine Übung zur Notfallwiederherstellung von lokalen Computern in Azure durchführen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 14ef3bf8420acf03f5c8329c6c78834dbc16ae40
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 5bd9f5316f8b8799633de8c0c84c61424c0e4f4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814281"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84699616"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Durchführen eines Notfallwiederherstellungsverfahrens in Azure
 

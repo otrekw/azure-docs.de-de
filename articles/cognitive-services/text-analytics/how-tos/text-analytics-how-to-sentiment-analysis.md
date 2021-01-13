@@ -1,279 +1,304 @@
 ---
-title: Standpunktanalyse unter Verwendung der Textanalyse-REST-API von Azure Cognitive Services
+title: Durchführen von Stimmungsanalysen und Opinion Mining mit der Textanalyse-REST-API
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API Standpunkte ermitteln.
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API von Azure Cognitive Services die Stimmung sowie Meinungen in einem Text ermitteln.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/23/2019
+ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: ea145239d38a4030423a4517fe02c62b8eefa08a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 6ea7b992a682537471ce0e78385b37674199d687
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211773"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673052"
 ---
-# <a name="example-detect-sentiment-with-text-analytics"></a>Beispiel: Ermitteln von Standpunkten mit der Textanalyse
+# <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Vorgehensweise: Stimmungsanalyse und Opinion Mining
 
-Die [Azure Standpunktanalyse-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) wertet eine Texteingabe aus und gibt für jedes Dokument eine Stimmungspunktzahl zurück. Die Werte liegen zwischen 0 (negativ) und 1 (positiv).
+Das Standpunktanalysefeature der Textanalyse-API bietet zwei Möglichkeiten zur Erkennung von positiver und negativer Stimmung. Wenn Sie eine Standpunktanalyseanforderung senden, gibt die API Stimmungsbezeichnungen (z. B. „negativ“, „neutral“ und „positiv“) und Zuverlässigkeitsbewertungen auf Satz- und Dokumentebene zurück. Der Endpunkt der Standpunktanalyse kann auch zum Senden von Opinion Mining-Anforderungen verwendet werden. Dieses Feature liefert detaillierte Informationen zu den Meinungen in Bezug auf im Text enthaltene Aspekte (beispielsweise Attribute von Produkten oder Dienstleistungen). 
 
-Diese Funktion ermöglicht die Erkennung positiver und negativer Standpunkte in sozialen Medien, Kundenbewertungen und Diskussionsforen. Der Inhalt wird von Ihnen bereitgestellt. Der Dienst liefert die Modelle und Trainingsdaten.
+Die von der API verwendeten KI-Modelle werden vom Dienst bereitgestellt. Sie müssen lediglich Inhalte für die Analyse senden.
 
-Aktuell unterstützt die Standpunktanalyse-API Englisch, Deutsch, Spanisch und Französisch. Andere Sprachen befinden sich in der Vorschauphase. Weitere Informationen finden Sie unter [Unterstützte Sprachen](../text-analytics-supported-languages.md).
+## <a name="sentiment-analysis-versions-and-features"></a>Versionen und Features der Standpunktanalyse
 
-> [!TIP]
-> Die Azure Textanalyse-API bietet darüber hinaus ein Linux-basiertes Docker-Containerimage für die Standpunktanalyse, damit Sie [den Textanalysecontainer nah bei Ihren Daten installieren und ausführen können](text-analytics-how-to-install-containers.md).
+| Funktion                                   | Standpunktanalyse v3 | Standpunktanalyse v3.1 (Vorschauversion) |
+|-------------------------------------------|-----------------------|-----------------------------------|
+| Methoden für Einzel- und Batchabfragen    | X                     | X                                 |
+| Bewertungen und Bezeichnungen der Standpunktanalyse             | X                     | X                                 |
+| Linux-basierte [Docker-Container](text-analytics-how-to-install-containers.md) | X  |  |
+| Opinion Mining                            |                       | X                                 |
 
-## <a name="concepts"></a>Konzepte
+## <a name="sentiment-analysis"></a>Standpunktanalyse
 
-Die Textanalyse generiert mithilfe eines Machine Learning-Klassifizierungsalgorithmus eine Stimmungspunktzahl zwischen 0 und 1. Eine gegen 1 tendierende Punktzahl deutet auf einen positiven Standpunkt hin, eine gegen 0 tendierende Punktzahl auf einen negativen. Das Modell wurde vorab mit umfangreichen standpunktbezogenen Texten trainiert. Eigene Trainingsdaten können derzeit nicht bereitgestellt werden. Das Modell verwendet während der Textanalyse eine Kombination aus verschiedenen Techniken. Zu den Techniken gehören Textverarbeitung, Sprachanalyse, Wortplatzierung und Wortzuordnungen. Weitere Informationen zum Algorithmus finden Sie unter [Introducing Text Analytics in the Azure ML Marketplace](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/) (Vorstellung der Textanalyse im Azure Machine Learning-Marketplace).
+In Version 3.x wendet die Standpunktanalyse Stimmungsbezeichnungen auf Texte an, die auf Satz- und Dokumentebene zurückgegeben werden, und gibt jeweils eine Zuverlässigkeitsbewertung an. 
 
-Die Standpunktanalyse wird für das gesamte Dokument durchgeführt, nicht für eine bestimmte Entität im Text. In der Praxis verbessert sich tendenziell die Genauigkeit der Bewertung, wenn Dokumente einen oder zwei Sätze enthalten anstatt einen großen Textblock. Im Rahmen einer Objektivitätsbewertungsphase bestimmt das Modell, ob ein Dokument insgesamt objektiv ist oder einen Standpunkt enthält. Für ein überwiegend objektives Dokument wird keine Standpunkterkennungsphase gestartet: Es erhält die Punktzahl 0,50 und wird nicht weiter verarbeitet. Für Dokumente, die die Pipeline weiter durchlaufen, generiert die nächste Phase eine Bewertung über oder unter 0,50. Das Ergebnis hängt vom im Dokument erkannten Grad der Stimmung ab.
+Die Bezeichnungen sind *positiv*, *negativ* und *neutral*. Auf Dokumentebene kann auch die Stimmungsbezeichnung *gemischt* zurückgegeben werden. Die Stimmung des Dokuments wird unten bestimmt:
 
-## <a name="preparation"></a>Vorbereitung
+| Stimmung von Sätzen                                                                            | Zurückgegebene Dokumentbezeichnung |
+|-----------------------------------------------------------------------------------------------|-------------------------|
+| Mindestens ein `positive`-Satz ist im Dokument enthalten. Die restlichen Sätze sind `neutral`. | `positive`              |
+| Mindestens ein `negative`-Satz ist im Dokument enthalten. Die restlichen Sätze sind `neutral`. | `negative`              |
+| Mindestens ein `negative`- und mindestens ein `positive`-Satz ist im Dokument enthalten.    | `mixed`                 |
+| Alle Sätze im Dokument sind `neutral`.                                                  | `neutral`               |
 
-Die Standpunktanalyse liefert bessere Ergebnisse, wenn Sie ihr kleinere Textblöcke zuführen. Bei der Schlüsselbegriffserkennung verhält es sich genau umgekehrt: Sie funktioniert besser, wenn sie für große Textblöcke durchgeführt wird. Um für beide Vorgänge optimale Ergebnisse zu erzielen, empfiehlt es sich ggf., die Eingaben entsprechend umzustrukturieren.
+Zuverlässigkeitsbewertungen liegen zwischen 1 und 0. Werte, die näher an 1 liegen, weisen auf eine höhere Zuverlässigkeit der Bezeichnungsklassifizierung hin, während niedrigere Bewertungen eine geringere Zuverlässigkeit bedeuten. Für jedes Dokument oder jeden Satz werden die vorhergesagten Bewertungen, die den Bezeichnungen zugeordnet sind (positiv, negativ und neutral), bis zu 1 hinzugefügt. Weitere Informationen finden Sie unter dem [Hinweis zur Transparenz der Textanalyse](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context). 
 
-Sie benötigen JSON-Dokumente im folgenden Format: ID, Text und Sprache.
+## <a name="opinion-mining"></a>Opinion Mining
 
-Ein Dokument darf maximal 5.120 Zeichen enthalten. Pro Sammlung können bis zu 1.000 Elemente (IDs) vorhanden sein. Die Sammlung wird im Hauptteil der Anforderung übermittelt. Das folgende Beispiel zeigt Inhalte, die Sie ggf. für die Standpunktanalyse übermitteln können:
+Opinion Mining ist ein Feature der Standpunktanalyse ab Version 3.1 Preview. Dieses Feature wird in der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) auch als aspektbasierte Standpunktanalyse bezeichnet und bietet feiner abgestufte Informationen zu den Meinungen in Bezug auf Aspekte (z. B. Attribute von Produkten oder Dienstleistungen) in Texten.
 
+Wenn ein Kunde für ein Hotel beispielsweise Feedback wie „Das Zimmer war toll, aber das Personal war unfreundlich.“ hinterlässt, werden vom Opinion Mining Aspekte im Text sowie die zugehörigen Meinungen und Stimmungen ermittelt. Von der Standpunktanalyse wird unter Umständen nur eine negative Stimmung gemeldet.
+
+:::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="Diagramm: Opinion Mining-Beispiel" lightbox="../media/how-tos/opinion-mining.png":::
+
+Wenn Sie Opinion Mining in Ihre Ergebnisse einbeziehen möchten, müssen Sie das Flag `opinionMining=true` in eine Stimmungsanalyseanforderung einschließen. Die Opinion Mining-Ergebnisse werden in die Antwort der Stimmungsanalyse eingeschlossen. Opinion Mining ist eine Standpunktanalyse-Erweiterung und in Ihrem aktuellen [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) enthalten.
+
+
+## <a name="sending-a-rest-api-request"></a>Senden einer REST-API-Anforderung 
+
+### <a name="preparation"></a>Vorbereitung
+
+Die Standpunktanalyse liefert bessere Ergebnisse, wenn Sie ihr kleinere Textmengen zuführen. Bei der Schlüsselbegriffserkennung verhält es sich genau umgekehrt: Sie funktioniert besser, wenn sie für große Textblöcke durchgeführt wird. Um für beide Vorgänge optimale Ergebnisse zu erzielen, empfiehlt es sich ggf., die Eingaben entsprechend umzustrukturieren.
+
+Sie benötigen JSON-Dokumente im folgenden Format: ID, Text und Sprache. Die Standpunktanalyse unterstützt eine Vielzahl von Sprachen – weitere befinden sich in der Vorschau. Weitere Informationen finden Sie unter [Unterstützte Sprachen](../language-support.md).
+
+Ein Dokument darf maximal 5.120 Zeichen enthalten. Die maximal zulässige Anzahl von Dokumenten in einer Sammlung finden Sie im Artikel [Datengrenzwerte und Ratenbegrenzungen für die Textanalyse-API](../concepts/data-limits.md?tabs=version-3) unter „Konzepte“. Die Sammlung wird im Hauptteil der Anforderung übermittelt.
+
+## <a name="structure-the-request"></a>Strukturieren der Anforderung
+
+Erstellen Sie eine POST-Anforderung. Um eine Anforderung schnell zu strukturieren und zu senden, können Sie in den folgenden Verweislinks [Postman](text-analytics-how-to-call-api.md) oder die **API-Testkonsole** verwenden. 
+
+#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
+
+[Referenz zu Standpunktanalyse v3.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
+
+#### <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
+[Referenz zu Standpunktanalyse v3](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment)
+
+---
+
+### <a name="request-endpoints"></a>Anforderungsendpunkte
+
+Legen Sie den HTTPS-Endpunkt für die Standpunktanalyse entweder mithilfe einer Textanalyseressource in Azure oder mithilfe eines instanziierten [Textanalysecontainers](text-analytics-how-to-install-containers.md) fest. Sie müssen die richtige URL für die Version einschließen, die Sie verwenden möchten. Beispiel:
+
+> [!NOTE]
+> Den Schlüssel und den Endpunkt für Ihre Textanalyseressource finden Sie im Azure-Portal. Sie befinden sich auf der Seite **Schnellstart** der Ressource unter **Ressourcenverwaltung**. 
+
+#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
+
+**Standpunktanalyse**
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
+
+**Opinion Mining**
+
+Um Opinion Mining-Ergebnisse zu erhalten, muss der Parameter `opinionMining=true` eingeschlossen werden. Beispiel:
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
+
+Dieser Parameter ist standardmäßig auf `false` festgelegt. 
+
+#### <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
+**Standpunktanalyse**
+
+In Version 3.0 ist nur der Endpunkt für die Standpunktanalyse verfügbar.
+ 
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
+
+---
+
+Legen Sie einen Anforderungsheader fest, um Ihren Textanalyse-API-Schlüssel einzubeziehen. Geben Sie im Anforderungstext die JSON-Dokumentsammlung an, die Sie für diese Analyse vorbereitet haben.
+
+### <a name="example-request-for-sentiment-analysis-and-opinion-mining"></a>Beispielanforderung für Standpunktanalyse und Opinion Mining  
+
+Das folgende Beispiel zeigt Inhalte, die Sie ggf. für die Standpunktanalyse übermitteln können: Das Anforderungsformat ist für `v3.0` und `v3.1-preview` identisch.
+    
 ```json
+{
+  "documents": [
     {
-        "documents": [
-            {
-                "language": "en",
-                "id": "1",
-                "text": "We love this trail and make the trip every year. The views are breathtaking and well worth the hike!"
-            },
-            {
-                "language": "en",
-                "id": "2",
-                "text": "Poorly marked trails! I thought we were goners. Worst hike ever."
-            },
-            {
-                "language": "en",
-                "id": "3",
-                "text": "Everyone in my family liked the trail but thought it was too challenging for the less athletic among us. Not necessarily recommended for small children."
-            },
-            {
-                "language": "en",
-                "id": "4",
-                "text": "It was foggy so we missed the spectacular views, but the trail was ok. Worth checking out if you are in the area."
-            },
-            {
-                "language": "en",
-                "id": "5",
-                "text": "This is my favorite trail. It has beautiful views and many places to stop and rest"
-            }
-        ]
+      "language": "en",
+      "id": "1",
+      "text": "The restaurant had great food and our waiter was friendly."
     }
+  ]
+}
 ```
 
-## <a name="step-1-structure-the-request"></a>Schritt 1: Strukturieren der Anforderung
-
-Weitere Informationen zur Anforderungsdefinition finden Sie unter [Aufrufen der Textanalyse-REST-API](text-analytics-how-to-call-api.md). Der Einfachheit halber sind hier noch einmal einige Punkte aufgeführt:
-
-+ Erstellen Sie eine POST-Anforderung. Die API-Dokumentation für diese Anforderung finden Sie unter [Standpunktanalyse-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9).
-
-+ Legen Sie den HTTP-Endpunkt für die Standpunktanalyse entweder mithilfe einer Textanalyseressource in Azure oder mithilfe eines instanziierten [Textanalysecontainers](text-analytics-how-to-install-containers.md) fest. Sie müssen `/text/analytics/v2.1/sentiment` in die URL einschließen. Beispiel: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`.
-
-+ Legen Sie einen Anforderungsheader fest, der den [Zugriffsschlüssel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) für Textanalysevorgänge enthält.
-
-+ Geben Sie im Anforderungstext die JSON-Dokumentsammlung an, die Sie für diese Analyse vorbereitet haben.
-
-> [!Tip]
-> Verwenden Sie [Postman](text-analytics-how-to-call-api.md), oder öffnen Sie die **API-Testkonsole** in der [Dokumentation](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9), um die Anforderung zu strukturieren und an den Dienst zu übermitteln.
-
-## <a name="step-2-post-the-request"></a>Schritt 2: Übermitteln der Anforderung
+### <a name="post-the-request"></a>Übermitteln der Anforderung
 
 Die Analyse erfolgt, wenn die Anforderung eingeht. Informationen zur Größe und Anzahl von Anforderungen, die Sie pro Minute und Sekunde senden können, finden Sie in der Übersicht im Abschnitt [Datengrenzwerte](../overview.md#data-limits).
 
-Vergessen Sie nicht, dass der Dienst zustandslos ist. In Ihrem Konto werden keine Daten gespeichert. Die Ergebnisse werden direkt in der Antwort zurückgegeben.
+Die Textanalyse-API ist zustandslos. Auf Ihrem Konto werden keine Daten gespeichert, und die Ergebnisse werden sofort in der Antwort zurückgegeben.
 
 
-## <a name="step-3-view-the-results"></a>Schritt 3: Zeigen Sie die Ergebnisse an
+### <a name="view-the-results"></a>Zeigen Sie die Ergebnisse an
 
-Die Standpunktanalyse klassifiziert den Text als vorwiegend positiv oder negativ. Hierzu wird dem Text eine Punktzahl zwischen 0 und 1 zugewiesen. Gegen 0,5 tendierende Werte sind neutral oder ungewiss. Die Punktzahl 0,5 steht für Neutralität. Wenn für eine Zeichenfolge keine Standpunktanalyse möglich ist oder eine Zeichenfolge keinen Standpunkt beinhaltet, ist die Punktzahl immer genau 0,5. Wenn Sie also beispielsweise eine spanische Zeichenfolge mit einem Sprachcode für Englisch übergeben, ist die Punktzahl 0,5.
+Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anwendung streamen, die JSON akzeptiert, oder die Ausgabe in einer Datei im lokalen System speichern. Importieren Sie dann die Ausgabe in eine Anwendung, mit der Sie die Daten sortieren, durchsuchen und bearbeiten können. Aufgrund der Unterstützung von Emojis und mehreren Sprachen enthält der Antworttext unter Umständen Textversätze. Weitere Informationen finden Sie unter [Textversätze in der Ausgabe der Textanalyse-API](../concepts/text-offsets.md).
 
-Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anwendung streamen, die JSON akzeptiert, oder die Ausgabe in einer Datei im lokalen System speichern. Importieren Sie dann die Ausgabe in eine Anwendung, mit der Sie die Daten sortieren, durchsuchen und bearbeiten können.
+#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
 
-Das folgende Beispiel zeigt die Antwort für die Dokumentsammlung in diesem Artikel:
+### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>Beispielantwort für Standpunktanalyse und Opinion Mining
 
-```json
-    {
-        "documents": [
-            {
-                "score": 0.9999237060546875,
-                "id": "1"
-            },
-            {
-                "score": 0.0000540316104888916,
-                "id": "2"
-            },
-            {
-                "score": 0.99990355968475342,
-                "id": "3"
-            },
-            {
-                "score": 0.980544924736023,
-                "id": "4"
-            },
-            {
-                "score": 0.99996328353881836,
-                "id": "5"
-            }
-        ],
-        "errors": []
-    }
-```
+> [!IMPORTANT]
+> Der folgende JSON-Code ist ein Beispiel für die Verwendung von Opinion Mining mit der Standpunktanalyse (in der API-Version 3.1). Wenn Sie kein Opinion Mining anfordern, ist die API-Antwort mit der Antwort auf der Registerkarte **Version 3.0** identisch.  
 
-## <a name="sentiment-analysis-v3-public-preview"></a>Öffentliche Vorschau der Standpunktanalyse v3
+Von Version 3.1 der Standpunktanalyse können Antwortobjekte für die Standpunktanalyse und für das Opinion Mining zurückgegeben werden.
+  
+Die Standpunktanalyse gibt eine Stimmungsbezeichnung und eine Zuverlässigkeitsbewertung für das gesamte Dokument und jeden Satz darin zurück. Werte, die näher an 1 liegen, weisen auf eine höhere Zuverlässigkeit der Bezeichnungsklassifizierung hin, während niedrigere Bewertungen eine geringere Zuverlässigkeit bedeuten. Ein Dokument kann mehrere Sätze enthalten, und die Zuverlässigkeitsbewertungen in jedem Dokument oder Satz ergeben addiert 1.
 
-Die [nächste Version der Standpunktanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-preview/operations/56f30ceeeda5650db055a3c9) ist nun als öffentliche Vorschauversion verfügbar. Sie bietet deutliche Verbesserungen hinsichtlich der Genauigkeit und Details der Textkategorisierung und -bewertung der API.
-
-> [!NOTE]
-> * Anforderungsformat und [Datenlimits](../overview.md#data-limits) der Standpunktanalyse v3 haben sich gegenüber der vorherigen Version nicht geändert.
-> * Zurzeit gilt Folgendes für die Standpunktanalyse v3:
->    * Sie unterstützt Englisch, Französisch, Italienisch, Japanisch, vereinfachtes Chinesisch und Chinesisch (traditionell).
->    * Sie ist in den folgenden Regionen verfügbar: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe` und `West US 2`.
-
-|Feature |BESCHREIBUNG  |
-|---------|---------|
-|Höhere Genauigkeit     | Deutliche Verbesserung bei der Erkennung positiver, neutraler, negativer und gemischter Stimmungen in Textdokumenten gegenüber früheren Versionen.           |
-|Stimmungsbewertung auf Dokument- und Satzebene     | Erkennen der Stimmung eines Dokuments und der darin enthaltenen Sätze. Wenn das Dokument mehrere Sätze enthält, wird jedem einzelnen Satz eine Stimmungsbewertung zugeordnet.         |
-|Stimmungskategorie und -bewertung     | Die API gibt neben der Stimmungsbewertung jetzt auch Stimmungskategorien für einen Text zurück. Diese Kategorien sind `positive`, `negative`, `neutral` und `mixed`.       |
-| Verbesserte Ausgabe | Die Standpunktanalyse gibt jetzt Informationen für ein vollständiges Textdokument und für die darin enthaltenen einzelnen Sätze zurück. |
-
-### <a name="sentiment-labeling"></a>Bezeichnung von Stimmungen
-
-Die Standpunktanalyse v3 kann Bewertungen und Bezeichnungen auf Satz- und Dokumentebene zurückgeben. Die Bewertungen und Bezeichnungen sind `positive`, `negative`und `neutral`. Auf Dokumentebene kann auch die Stimmungsbezeichnung `mixed` (keine Bewertung) zurückgegeben werden. Die Stimmung eines Dokuments wird durch Zusammenfassen der Bewertungen der einzelnen Sätze bestimmt.
-
-| Stimmung von Sätzen                                                        | Zurückgegebene Dokumentbezeichnung |
-|---------------------------------------------------------------------------|----------------|
-| Mindestens ein positiver Satz, alle anderen Sätze sind neutrale. | `positive`     |
-| Mindestens ein negativer Satz, alle anderen Sätze sind neutrale.  | `negative`     |
-| Mindestens ein negativer und mindestens ein positiver Satz.         | `mixed`        |
-| Alle Sätze sind neutral.                                                 | `neutral`      |
-
-### <a name="sentiment-analysis-v3-example-request"></a>Beispielanforderung der Standpunktanalyse v3
-
-Der folgende JSON-Code ist ein Beispiel für eine Anforderung, die an die neue Version der Standpunktanalyse gesendet wurde. Die Formatierung der Anforderung ist mit der vorherigen Version identisch:
+Beim Opinion Mining werden Aspekte im Text sowie die zugehörigen Meinungen und Stimmungen ermittelt. In der nachstehenden Antwort weist der Satz *Im Restaurant gab es großartiges Essen, und der Kellner war freundlich* zwei Aspekte auf: *Essen* und *Kellner*. Die `relations`-Eigenschaft jedes Aspekts enthält einen `ref`-Wert mit dem URI-Verweis auf die zugeordneten Objekte `documents`, `sentences` und `opinions`.
 
 ```json
-    {
-        "documents": [
+{
+    "documents": [
         {
-            "language": "en",
             "id": "1",
-            "text": "Hello world. This is some input text that I love."
-        },
-        {
-            "language": "en",
-            "id": "2",
-            "text": "It's incredibly sunny outside! I'm so happy."
+            "sentiment": "positive",
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
+                    },
+                    "offset": 0,
+                    "length": 58,
+                    "text": "The restaurant had great food and our waiter was friendly.",
+                    "aspects": [
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 25,
+                            "length": 4,
+                            "text": "food",
+                            "relations": [
+                                {
+                                    "relationType": "opinion",
+                                    "ref": "#/documents/0/sentences/0/opinions/0"
+                                }
+                            ]
+                        },
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 38,
+                            "length": 6,
+                            "text": "waiter",
+                            "relations": [
+                                {
+                                    "relationType": "opinion",
+                                    "ref": "#/documents/0/sentences/0/opinions/1"
+                                }
+                            ]
+                        }
+                    ],
+                    "opinions": [
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 19,
+                            "length": 5,
+                            "text": "great",
+                            "isNegated": false
+                        },
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 49,
+                            "length": 8,
+                            "text": "friendly",
+                            "isNegated": false
+                        }
+                    ]
+                }
+            ],
+            "warnings": []
         }
-        ],
-    }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
+}
 ```
 
-### <a name="sentiment-analysis-v3-example-response"></a>Beispielantwort der Standpunktanalyse v3
+#### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-Während das Anforderungsformat das gleiche ist wie in der vorherigen Version, hat sich das Antwortformat geändert. Der folgende JSON-Code ist eine Beispielantwort der neuen API-Version:
+### <a name="sentiment-analysis-example-response"></a>Beispielantwort der Standpunktanalyse
+
+Die Standpunktanalyse gibt eine Stimmungsbezeichnung und eine Zuverlässigkeitsbewertung für das gesamte Dokument und jeden Satz darin zurück. Werte, die näher an 1 liegen, weisen auf eine höhere Zuverlässigkeit der Bezeichnungsklassifizierung hin, während niedrigere Bewertungen eine geringere Zuverlässigkeit bedeuten. Ein Dokument kann mehrere Sätze enthalten, und die Zuverlässigkeitsbewertungen in jedem Dokument oder Satz ergeben addiert 1.
+
+Antworten von Standpunktanalyse v3 enthalten Stimmungsbezeichnungen und Standpunktergebnisse für jeden analysierten Satz und jedes analysierte Dokument.
 
 ```json
-    {
-        "documents": [
-            {
-                "id": "1",
-                "sentiment": "positive",
-                "documentScores": {
-                    "positive": 0.98570585250854492,
-                    "neutral": 0.0001625834556762,
-                    "negative": 0.0141316400840878
-                },
-                "sentences": [
-                    {
-                        "sentiment": "neutral",
-                        "sentenceScores": {
-                            "positive": 0.0785155147314072,
-                            "neutral": 0.89702343940734863,
-                            "negative": 0.0244610067456961
-                        },
-                        "offset": 0,
-                        "length": 12
-                    },
-                    {
-                        "sentiment": "positive",
-                        "sentenceScores": {
-                            "positive": 0.98570585250854492,
-                            "neutral": 0.0001625834556762,
-                            "negative": 0.0141316400840878
-                        },
-                        "offset": 13,
-                        "length": 36
-                    }
-                ]
+{
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
             },
-            {
-                "id": "2",
-                "sentiment": "positive",
-                "documentScores": {
-                    "positive": 0.89198976755142212,
-                    "neutral": 0.103382371366024,
-                    "negative": 0.0046278294175863
-                },
-                "sentences": [
-                    {
-                        "sentiment": "positive",
-                        "sentenceScores": {
-                            "positive": 0.78401315212249756,
-                            "neutral": 0.2067587077617645,
-                            "negative": 0.0092281140387058
-                        },
-                        "offset": 0,
-                        "length": 30
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
                     },
-                    {
-                        "sentiment": "positive",
-                        "sentenceScores": {
-                            "positive": 0.99996638298034668,
-                            "neutral": 0.0000060341349126,
-                            "negative": 0.0000275444017461
-                        },
-                        "offset": 31,
-                        "length": 13
-                    }
-                ]
-            }
-        ],
-        "errors": []
-    }
+                    "offset": 0,
+                    "length": 58,
+                    "text": "The restaurant had great food and our waiter was friendly."
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
+}
 ```
 
-### <a name="example-c-code"></a>C#-Beispielcode
-
-Eine C#-Beispielanwendung, die diese Version der Standpunktanalyse aufruft, finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs).
+---
 
 ## <a name="summary"></a>Zusammenfassung
 
-In diesem Artikel haben Sie sich mit Konzepten und mit dem Workflow für die Standpunktanalyse unter Verwendung der Textanalyse in Azure Cognitive Services vertraut gemacht. Zusammenfassung:
+In diesem Artikel haben Sie sich mit Konzepten und dem Workflow für die Standpunktanalyse unter Verwendung der Textanalyse-API vertraut gemacht. Zusammenfassung:
 
-+ Die [Standpunktanalyse-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) ist für ausgewählte Sprachen verfügbar.
++ Standpunktanalyse und Opinion Mining sind für ausgewählte Sprachen verfügbar.
 + JSON-Dokumente im Anforderungstext umfassen eine ID, Text und einen Sprachcode.
 + Die POST-Anforderung wird an einen Endpunkt vom Typ `/sentiment` gesendet. Dabei werden ein personalisierter [Zugriffsschlüssel und ein Endpunkt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) verwendet, der für Ihr Abonnement gültig ist.
-+ Bei der Antwortausgabe handelt es sich um eine Stimmungspunktzahl für die jeweilige Dokument-ID. Sie kann an eine beliebige JSON-fähige App gestreamt werden. Zu den Beispiel-Apps zählen Excel und Power BI, um nur einige zu nennen.
++ Verwenden Sie `opinionMining=true` in Standpunktanalyseanforderungen, um Opinion Mining-Ergebnisse zu erhalten.
++ Bei der Antwortausgabe handelt es sich um eine Stimmungspunktzahl für die jeweilige Dokument-ID. Sie kann an eine beliebige JSON-fähige App gestreamt werden. Beispielsweise Excel und Power BI.
 
 ## <a name="see-also"></a>Weitere Informationen
 
- [Übersicht über die Textanalyse](../overview.md) [Häufig gestellte Fragen (FAQ)](../text-analytics-resource-faq.md)</br>
- [Textanalysen (Produktseite)](//go.microsoft.com/fwlink/?LinkID=759712)
-
-## <a name="next-steps"></a>Nächste Schritte
-
-> [!div class="nextstepaction"]
-> [How to extract key phrases in Text Analytics](text-analytics-how-to-keyword-extraction.md) (Extrahieren von Schlüsselbegriffen mithilfe der Textanalyse)
+* [Übersicht über die Textanalyse](../overview.md)
+* [Verwenden der Textanalyse-Clientbibliothek](../quickstarts/client-libraries-rest-api.md)
+* [Neuigkeiten](../whats-new.md)

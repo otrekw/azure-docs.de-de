@@ -1,33 +1,23 @@
 ---
-title: SQLFilter-Syntaxreferenz in Azure Service Bus | Microsoft-Dokumentation
-description: Details zur SqlFilter-Grammatik
-services: service-bus-messaging
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
+title: SQL-Filtersyntax für Azure Service Bus-Abonnementregeln | Microsoft-Dokumentation
+description: Dieser Artikel enthält Details zur SQL-Filtersyntax. SQL-Filter unterstützen eine Teilmenge des SQL-92-Standards.
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: e490c7c24ed38e2988c1f097b09b508746f08178
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.date: 11/24/2020
+ms.openlocfilehash: 9bff18b2161e419d728c360c9ed950ac2867fea8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60591794"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498675"
 ---
-# <a name="sqlfilter-syntax"></a>SqlFilter-Syntax
+# <a name="subscription-rule-sql-filter-syntax"></a>SQL-Filtersyntax für Abonnementregeln
 
-Ein *SqlFilter*-Objekt ist eine Instanz der [SqlFilter-Klasse](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) und stellt einen auf der SQL-Sprache basierenden Filterausdruck dar, der mit [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ausgewertet wird. SqlFilter unterstützt eine Teilmenge des SQL-92-Standards.  
+*SQL-Filter* ist einer der verfügbaren Filtertypen für Service Bus-Themenabonnements. Es handelt sich dabei um einen Textausdruck, der auf einer Teilmenge des SQL-92-Standards basiert. Filterausdrücke werden mit dem `sqlExpression`-Element der sqlFilter-Eigenschaft einer Service Bus-`Rule` in einer [Azure Resource Manager-Vorlage](service-bus-resource-manager-namespace-topic-with-rule.md) oder dem [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create)-Argument eines `az servicebus topic subscription rule create`-Befehls in der Azure-Befehlszeilenschnittstelle sowie mehreren SDK-Funktionen für das Verwalten von Abonnementregeln verwendet.
+
+Service Bus Premium unterstützt auch die [JMS-SQL-Nachrichtenselektorsyntax](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) über die JMS 2.0-API.
+
   
- Dieses Thema enthält Details zur SqlFilter-Grammatik.  
-  
-```  
+``` 
 <predicate ::=  
       { NOT <predicate> }  
       | <predicate> AND <predicate>  
@@ -60,13 +50,13 @@ Ein *SqlFilter*-Objekt ist eine Instanz der [SqlFilter-Klasse](/dotnet/api/micro
   
 ## <a name="arguments"></a>Argumente  
   
--   `<scope>` ist eine optionale Zeichenfolge, die den Bereich von `<property_name>` angibt. Gültige Werte sind `sys` oder `user`. Der Wert `sys` gibt den Systembereich an, in dem `<property_name>` ein öffentlicher Eigenschafgenname der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. `user` gibt den Benutzerbereich an, in dem `<property_name>` ein Schlüssel des Wörterbuchs der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. Der `user`-Bereich ist der Standardbereich, wenn `<scope>` nicht angegeben wird.  
+-   `<scope>` ist eine optionale Zeichenfolge, die den Bereich von `<property_name>` angibt. Gültige Werte sind `sys` und `user`. Der Wert `sys` gibt den Systembereich an, in dem `<property_name>` ein öffentlicher Eigenschafgenname der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. `user` gibt den Benutzerbereich an, in dem `<property_name>` ein Schlüssel des Wörterbuchs der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. Der `user`-Bereich ist der Standardbereich, wenn `<scope>` nicht angegeben wird.  
   
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
 
 Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst einen Fehler aus, während der Versuch, auf eine nicht existierende Benutzereigenschaft zuzugreifen, keinen Fehler auslöst. Stattdessen wird eine nicht vorhandene Benutzereigenschaft intern als unbekannter Wert ausgewertet. Ein unbekannter Wert wird während der Operatorauswertung speziell behandelt.  
   
-## <a name="propertyname"></a>property_name  
+## <a name="property_name"></a>property_name  
   
 ```  
 <property_name> ::=  
@@ -102,7 +92,7 @@ Ein `<regular_identifier>` kann kein reserviertes Schlüsselwort sein.
   
 ```  
   
-`<quoted_identifier>` ist eine beliebige Zeichenfolge, die in doppelte Anführungszeichen eingeschlossen ist. Ein doppeltes Anführungszeichen im Bezeichner wird als zwei doppelte Anführungszeichen dargestellt. Es wird nicht empfohlen, die Bezeichner in Anführungszeichen zu setzen, da sie leicht mit einer Zeichenfolgenkonstante verwechselt werden. Verwenden Sie einen Begrenzungsbezeichner, wenn möglich. Im Anschluss finden Sie ein Beispiel für `<quoted_identifier>`:  
+`<quoted_identifier>` ist eine beliebige Zeichenfolge, die in doppelte Anführungszeichen eingeschlossen ist. Ein doppeltes Anführungszeichen im Bezeichner wird als zwei doppelte Anführungszeichen dargestellt. Die Bezeichner sollten nicht in Anführungszeichen eingeschlossen werden, da sie leicht mit einer Zeichenfolgenkonstante verwechselt werden können. Verwenden Sie einen Begrenzungsbezeichner, wenn möglich. Hier ist ein Beispiel für `<quoted_identifier>`:  
   
 ```  
 "Contoso & Northwind"  
@@ -115,22 +105,22 @@ Ein `<regular_identifier>` kann kein reserviertes Schlüsselwort sein.
       <expression>  
 ```  
   
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
   
 `<pattern>` muss ein Ausdruck sein, der als Zeichenfolge ausgewertet wird. Es wird als ein Muster für den LIKE-Operator verwendet.      Es kann die folgenden Platzhalterzeichen enthalten:  
   
--   `%`:  Eine beliebige Zeichenfolge von null oder mehr Zeichen.  
+-   `%`: Eine beliebige Zeichenfolge von null oder mehr Zeichen  
   
--   `_`: Ein einzelnes Zeichen.  
+-   `_`: Ein einzelnes Zeichen  
   
-## <a name="escapechar"></a>escape_char  
+## <a name="escape_char"></a>escape_char  
   
 ```  
 <escape_char> ::=  
       <expression>  
 ```  
   
-### <a name="remarks"></a>Anmerkungen  
+### <a name="remarks"></a>Bemerkungen  
 
 `<escape_char>` muss ein Ausdruck sein, der als Zeichenfolge der Länge 1 ausgewertet wird. Es wird als Escapezeichen für den LIKE-Operator verwendet.  
   
@@ -147,7 +137,7 @@ Ein `<regular_identifier>` kann kein reserviertes Schlüsselwort sein.
   
 -   `<integer_constant>` ist eine Zahlenzeichenfolge, die nicht in Anführungszeichen eingeschlossen ist und keine Dezimaltrennzeichen enthält. Die Werte werden intern als `System.Int64` gespeichert und folgen dem gleichen Bereich.  
   
-     Dies sind Beispiele für lange Konstanten:  
+     Im Folgenden finden Sie Beispiele für long-Konstanten:  
   
     ```  
     1894  
@@ -156,7 +146,7 @@ Ein `<regular_identifier>` kann kein reserviertes Schlüsselwort sein.
   
 -   `<decimal_constant>` ist eine Zahlenzeichenfolge, die nicht in Anführungszeichen eingeschlossen ist und ein Dezimaltrennzeichen enthält. Die Werte werden intern als `System.Double` gespeichert und folgen dem gleichen Bereich/der gleichen Genauigkeit.  
   
-     In einer zukünftigen Version wird diese Zahl möglicherweise in einem anderen Datentyp gespeichert, zur Unterstützung der genauen Zahlensemantik, weshalb Sie sich nicht darauf verlassen sollten, dass der zugrunde liegende Datentyp `System.Double` für `<decimal_constant>` ist.  
+     In einer zukünftigen Version wird diese Zahl möglicherweise in einem anderen Datentyp gespeichert, zur Unterstützung der genauen Zahlensemantik, daher sollten Sie sich nicht darauf verlassen, dass der zugrunde liegende Datentyp `System.Double` für `<decimal_constant>` ist.  
   
      Es folgen Beispiele von Dezimalkonstanten:  
   
@@ -172,24 +162,24 @@ Ein `<regular_identifier>` kann kein reserviertes Schlüsselwort sein.
     0.5E-2  
     ```  
   
-## <a name="booleanconstant"></a>boolean_constant  
+## <a name="boolean_constant"></a>boolean_constant  
   
 ```  
 <boolean_constant> :=  
       TRUE | FALSE  
 ```  
   
-### <a name="remarks"></a>Anmerkungen  
+### <a name="remarks"></a>Bemerkungen  
 
 Boolesche Konstanten werden durch die Schlüsselwörter **TRUE** oder **FALSE** dargestellt. Die Werte werden als `System.Boolean` gespeichert.  
   
-## <a name="stringconstant"></a>string_constant  
+## <a name="string_constant"></a>string_constant  
   
 ```  
 <string_constant>  
 ```  
   
-### <a name="remarks"></a>Anmerkungen  
+### <a name="remarks"></a>Bemerkungen  
 
 Zeichenfolgenkonstanten werden in einfache Anführungszeichen eingeschlossen und enthalten beliebige, gültige Unicodezeichen. Ein einfaches Anführungszeichen, das in eine Zeichenfolgenkonstante eingebettet ist, wird als zwei einfache Anführungszeichen dargestellt.  
   
@@ -201,9 +191,9 @@ Zeichenfolgenkonstanten werden in einfache Anführungszeichen eingeschlossen und
       property(name) | p(name)  
 ```  
   
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
   
-Die Funktion `newid()` gibt ein **System.Guid** zurück, das von der Methode `System.Guid.NewGuid()` generiert wird.  
+Die `newid()`-Funktion gibt ein `System.Guid` zurück, das von der `System.Guid.NewGuid()`-Methode generiert wird.  
   
 Die Funktion `property(name)` gibt den Wert der Eigenschaft zurück, auf die von `name` verwiesen wird. Der Wert `name` kann ein beliebiger, gültiger Ausdruck sein, der einen Zeichenfolgenwert zurückgibt.  
   
@@ -229,13 +219,13 @@ Beachten Sie die folgende [SqlFilter](/dotnet/api/microsoft.servicebus.messaging
   
   Unbekannte Auswertung in arithmetischen Operatoren:  
   
-- Wenn entweder die linke und/oder rechte Seite der Operanden für binäre Operatoren als **unknown** ausgewertet wird, ist das Ergebnis **unknown**.  
+- Wenn entweder die linke oder rechte Seite der Operanden für binäre Operatoren als **unknown** ausgewertet wird, ist das Ergebnis **unknown**.  
   
 - Wenn für unäre Operatoren ein Operand als **unknown** ausgewertet wird, lautet das Ergebnis **unknown**.  
   
   Unbekannte Auswertung in binären Vergleichsoperatoren:  
   
-- Wenn entweder die linke und/oder rechte Seite der Operanden als **unknown** ausgewertet wird, ist das Ergebnis **unknown**.  
+- Wenn entweder die linke oder rechte Seite der Operanden als **unknown** ausgewertet wird, ist das Ergebnis **unknown**.  
   
   Unbekannte Auswertung in `[NOT] LIKE`:  
   
@@ -279,8 +269,63 @@ Beachten Sie die folgende [SqlFilter](/dotnet/api/microsoft.servicebus.messaging
   
 -   Arithmetische Operatoren wie `+`, `-`, `*`, `/` und `%` folgen der gleichen Semantik wie der C#-Operator, der Datentypaktionen und implizite Konvertierungen einbindet.
 
+
+## <a name="examples"></a>Beispiele
+
+### <a name="set-rule-action-for-a-sql-filter"></a>Festlegen der Regelaktion für einen SQL-Filter
+
+```csharp
+// instantiate the ManagementClient
+this.mgmtClient = new ManagementClient(connectionString);
+
+// create the SQL filter
+var sqlFilter = new SqlFilter("source = @stringParam");
+
+// assign value for the parameter
+sqlFilter.Parameters.Add("@stringParam", "orders");
+
+// instantiate the Rule = Filter + Action
+var filterActionRule = new RuleDescription
+{
+    Name = "filterActionRule",
+    Filter = sqlFilter,
+    Action = new SqlRuleAction("SET source='routedOrders'")
+};
+
+// create the rule on Service Bus
+await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
+```
+
+### <a name="sql-filter-on-a-system-property"></a>SQL-Filter für eine Systemeigenschaft
+
+```csharp
+sys.Label LIKE '%bus%'`
+```
+
+### <a name="using-or"></a>Verwenden von ODER 
+
+```csharp
+ sys.Label LIKE '%bus%'` OR `user.tag IN ('queue', 'topic', 'subscription')
+```
+
+### <a name="using-in-and-not-in"></a>Verwenden von IN und NOT IN
+
+```csharp
+StoreId IN('Store1', 'Store2', 'Store3')"
+
+sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
+
+sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
+```
+
+Ein C# Beispiel finden Sie im [Beispiel für Themenfilter auf GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters).
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [SQLFilter-Klasse (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter-Klasse (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
-- [SQLRuleAction class (SQLRuleAction-Klasse)](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SqlFilter-Klasse (Java)](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
+- [SqlRuleFilter (JavaScript)](/javascript/api/@azure/service-bus/sqlrulefilter)
+- [Azure Service Bus-Themenabonnementregel](/cli/azure/servicebus/topic/subscription/rule)
+- [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

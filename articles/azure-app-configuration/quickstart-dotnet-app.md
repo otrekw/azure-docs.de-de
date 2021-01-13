@@ -1,25 +1,20 @@
 ---
 title: Schnellstart für Azure App Configuration mit .NET Framework | Microsoft-Dokumentation
-description: Enthält eine Schnellstartanleitung für die Verwendung von Azure App Configuration mit .NET Framework-Apps.
+description: In diesem Artikel erstellen Sie mit Azure App Configuration eine .NET Framework-App, um die Speicherung und Verwaltung von Anwendungseinstellungen getrennt von Ihrem Code zu zentralisieren.
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
-ms.devlang: csharp
+ms.custom: devx-track-csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: .NET
-ms.workload: tbd
-ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 8aa8c8132220965d55097c4fed8ba1b2e9501301
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 09/28/2020
+ms.author: alkemper
+ms.openlocfilehash: 62516218ed2c0249f829ad8d286e4ad8bbc471f8
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326526"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932089"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer .NET Framework-App mit Azure App Configuration
 
@@ -27,15 +22,15 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine auf .
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/dotnet)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4.7.1](https://dotnet.microsoft.com/download)
+- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>Erstellen eines App-Konfigurationsspeichers
+## <a name="create-an-app-configuration-store"></a>Erstellen eines App Configuration-Speichers
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
+7. Wählen Sie **Konfigurations-Explorer** > **Erstellen** > **Schlüssel-Wert** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
     | Schlüssel | Wert |
     |---|---|
@@ -43,22 +38,27 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine auf .
 
     Lassen Sie **Bezeichnung** und **Inhaltstyp** vorerst leer.
 
+8. Wählen Sie **Übernehmen**.
+
 ## <a name="create-a-net-console-app"></a>Erstellen einer .NET-Konsolen-App
 
 1. Starten Sie Visual Studio, und wählen Sie **Datei** > **Neu** > **Projekt** aus.
 
-2. Wählen Sie in **Neues Projekt** **Installiert** > **Visual C#**  > **Windows-Desktop** aus. Wählen Sie **Konsolen-App (.NET Framework)** aus, und geben Sie einen Namen für Ihr Projekt ein. Wählen Sie **.NET Framework 4.7.1** oder höher aus, und wählen Sie **OK** aus.
+1. Filtern Sie unter **Neues Projekt erstellen** nach dem Projekttyp **Konsole**, und klicken Sie auf **Console App (.NET Framework)** (Konsolen-App (.NET Framework)). Wählen Sie **Weiter** aus.
 
-## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App-Konfigurationsspeicher
+1. Geben Sie unter **Neues Projekt konfigurieren** einen Projektnamen ein. Wählen Sie unter **Framework** die Option **.NET Framework 4.7.1** oder höher aus. Klicken Sie auf **Erstellen**.
 
-1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie auf der Registerkarte **Durchsuchen** die folgenden NuGet-Pakete, und fügen Sie sie Ihrem Projekt hinzu. Wenn Sie sie nicht finden können, aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**.
+## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App Configuration-Speicher
+
+1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie auf der Registerkarte **Durchsuchen** die folgenden NuGet-Pakete, und fügen Sie sie Ihrem Projekt hinzu.
 
     ```
-    Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
-    Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later
+    Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 or later
+    Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 or later
+    System.Configuration.ConfigurationManager version 4.6.0 or later
     ```
 
-2. Aktualisieren Sie die Datei *App.config* Ihres Projekts wie folgt:
+1. Aktualisieren Sie die Datei *App.config* Ihres Projekts wie folgt:
 
     ```xml
     <configSections>
@@ -78,30 +78,25 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine auf .
     </appSettings>
     ```
 
-   Die Verbindungszeichenfolge Ihres App-Konfigurationsspeichers wird aus der Umgebungsvariablen `ConnectionString` gelesen. Fügen Sie den Konfigurations-Generator `Environment` vor `MyConfigStore` in der Eigenschaft `configBuilders` des Abschnitts `appSettings` ein.
+   Die Verbindungszeichenfolge Ihres App Configuration-Speichers wird aus der Umgebungsvariablen `ConnectionString` gelesen. Fügen Sie den Konfigurations-Generator `Environment` vor `MyConfigStore` in der Eigenschaft `configBuilders` des Abschnitts `appSettings` ein.
 
-3. Öffnen Sie die Datei *Program.cs*, und aktualisieren Sie die `Main`-Methode für die Verwendung von App Configuration, indem Sie `ConfigurationManager` aufrufen.
+1. Öffnen Sie die Datei *Program.cs*, und aktualisieren Sie die `Main`-Methode für die Verwendung von App Configuration, indem Sie `ConfigurationManager` aufrufen.
 
     ```csharp
     static void Main(string[] args)
     {
-        string message = ConfigurationManager.AppSettings["TestApp:Settings:Message"];
+        string message = System.Configuration.ConfigurationManager.AppSettings["TestApp:Settings:Message"];
 
         Console.WriteLine(message);
+        Console.ReadKey();
     }
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>Lokales Erstellen und Ausführen der App
 
-1. Legen Sie eine Umgebungsvariable mit dem Namen **ConnectionString** auf die Verbindungszeichenfolge Ihres App-Konfigurationsspeichers fest. Führen Sie bei Verwendung der Windows-Eingabeaufforderung den folgenden Befehl aus:
+1. Aktualisieren Sie die Datei **App.config**, indem Sie `${ConnectionString}` durch die tatsächliche Verbindungszeichenfolge zu ihrer Application Configuration-Instanz ersetzen. Sie finden diese im Azure-Portal auf der Registerkarte **Zugriffsschlüssel** der Application Configuration-Ressource.
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
-
-    Führen Sie bei Verwendung der Windows PowerShell den folgenden Befehl aus:
-
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
-
-2. Starten Sie Visual Studio, damit die Änderung wirksam wird. Drücken Sie STRG+F5, um die Konsolen-App zu erstellen und auszuführen.
+1. Drücken Sie STRG+F5, um die Konsolen-App zu erstellen und auszuführen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -109,7 +104,7 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine auf .
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen neuen App-Konfigurationsspeicher erstellt und mit einer .NET Framework-Konsolen-App verwendet. Weitere Informationen zur Verwendung von App Configuration finden Sie im nächsten Tutorial, in dem es um die Authentifizierung geht.
+In diesem Schnellstart haben Sie einen neuen App Configuration-Speicher erstellt und mit einer .NET Framework-Konsolen-App verwendet. Der Wert `AppSettings` von `ConfigurationManager` ändert sich nach dem Start der Anwendung nicht mehr. Die Bibliothek des .NET Standard-Konfigurationsanbieters App Configuration kann jedoch auch in einer .NET Framework-App verwendet werden. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre .NET Framework-App für das dynamische Aktualisieren der Konfigurationseinstellungen konfigurieren.
 
 > [!div class="nextstepaction"]
-> [Integration der verwalteten Identität](./howto-integrate-azure-managed-service-identity.md)
+> [Tutorial: Verwenden der dynamischen Konfiguration in einer .NET Framework-App](./enable-dynamic-configuration-dotnet.md)

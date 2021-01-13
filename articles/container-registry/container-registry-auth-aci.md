@@ -1,23 +1,18 @@
 ---
-title: Authentifizieren per Azure Container Registry über Azure Container Instances
+title: Zugriff aus Container Instances
 description: Es wird beschrieben, wie Sie Zugriff auf Images in Ihrer privaten Containerregistrierung über Azure Container Instances gewähren, indem Sie einen Azure Active Directory-Dienstprinzipal verwenden.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: danlep
-ms.openlocfilehash: d2099de9ad909b23b79a92a831d7730b1cf126e3
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311634"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74456508"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Authentifizieren per Azure Container Registry über Azure Container Instances
 
-Sie können einen Dienstprinzipal von Azure Active Directory (Azure AD) verwenden, um den Zugriff auf Ihre privaten Containerregistrierungen in Azure Container Registry zu gewähren.
+Sie können einen Azure AD-Dienstprinzipal (Azure Active Directory) verwenden, um Zugriff auf Ihre privaten Containerregistrierungen in Azure Container Registry zu gewähren.
 
 In diesem Artikel erfahren Sie, wie Sie einen Azure AD-Dienstprinzipal mit *Pull*-Berechtigungen für Ihre Registrierung erstellen und konfigurieren. Dann starten Sie einen Container in Azure Container Instances (ACI), der sein Image mit einem Pullvorgang aus Ihrer privaten Registrierung überträgt, indem er den Dienstprinzipal für die Authentifizierung verwendet.
 
@@ -57,7 +52,7 @@ Die obigen Beispielskripts für die Azure CLI auf GitHub sowie Versionen für Az
 Die folgenden Artikel enthalten weitere Informationen zum Arbeiten mit Dienstprinzipalen und ACR:
 
 * [Azure Container Registry-Authentifizierung mit Dienstprinzipalen](container-registry-auth-service-principal.md)
-* [Authentifizieren per Azure Container Registry über Azure Kubernetes Service (AKS)](container-registry-auth-aks.md)
+* [Authentifizieren per Azure Container Registry über Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md)
 
 <!-- IMAGES -->
 

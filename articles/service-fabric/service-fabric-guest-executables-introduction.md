@@ -1,25 +1,14 @@
 ---
-title: Bereitstellen einer ausführbaren Gastanwendungsdatei in Azure Service Fabric | Microsoft-Dokumentation
+title: Verpacken einer vorhandenen ausführbaren Datei für Azure Service Fabric
 description: Erfahren Sie, wie Sie ein Paket einer vorhandenen Anwendung als ausführbare Gastanwendungsdatei erstellen, um diese in einem Service Fabric-Cluster bereitzustellen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 03/15/2018
-ms.author: atsenthi
-ms.openlocfilehash: 521c7a198d9085cdc93d325e63ad9d46cc4c7928
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 8b808d092001196a4d2150e44d508e031db95554
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599454"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017745"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Bereitstellen einer vorhandenen ausführbaren Datei für Service Fabric
 Sie können jede Art von Code, z.B. Node.js, Java oder C++, in Azure Service Fabric als Dienst ausführen. In Service Fabric sind derartige Dienste ausführbare Gastdateien.
@@ -76,8 +65,7 @@ ApplicationPackageRoot enthält die Datei „ApplicationManifest.xml“, mit der
 ## <a name="next-steps"></a>Nächste Schritte
 Entsprechende Informationen und Aufgaben finden Sie in den folgenden Artikeln.
 * [Bereitstellen einer ausführbaren Gastanwendungsdatei](service-fabric-deploy-existing-app.md)
-* [Bereitstellen mehrerer ausführbarer Gastanwendungsdateien](service-fabric-deploy-multiple-apps.md)
+* [Bereitstellen mehrerer ausführbarer Gastanwendungsdateien](./service-fabric-deploy-existing-app.md)
 * [Erstellen Ihrer ersten ausführbaren Gastanwendungsdatei in Visual Studio](quickstart-guest-app.md)
 * [Beispiel für das Packen und Bereitstellen einer ausführbaren Gastdatei](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), einschließlich eines Links zur Vorabversion des Packtools
 * [Beispiel für zwei ausführbare Gastdateien (C# und Node.js), die über den Naming Service mithilfe von REST kommunizieren](https://github.com/Azure-Samples/service-fabric-containers)
-

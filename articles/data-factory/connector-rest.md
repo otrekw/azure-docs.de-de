@@ -1,29 +1,29 @@
 ---
-title: Kopieren von Daten aus einer REST-Quelle mithilfe von Azure Data Factory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Daten aus einer Cloud- oder lokalen REST-Quelle mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
+title: Kopieren von Daten von und zu einem REST-Endpunkt mithilfe von Azure Data Factory
+description: Erfahren Sie, wie Sie eine Kopieraktivität in einer Azure Data Factory-Pipeline verwenden, um Daten aus einer Cloud- oder lokalen REST-Quelle in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern in eine REST-Senke zu kopieren.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 0bd97a6b1636d4b540c616958e5531c86362f597
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 1b3ab569666ea413ba36da0dc00f6c37336c4443
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276621"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931301"
 ---
-# <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von einem REST-Endpunkt mithilfe von Azure Data Factory
+# <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von und zu einem REST-Endpunkt mithilfe von Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten von einem REST-Endpunkt zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten von und zu einem REST-Endpunkt zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
-Die Unterschiede zwischen diesem REST-Connector, dem [HTTP-Connector](connector-http.md) und dem [Webtabellenconnector](connector-web-table.md) sind die folgenden:
+Dies sind die Unterschiede zwischen diesem REST-Connector, dem [HTTP-Connector](connector-http.md) und dem [Webtabellenconnector](connector-web-table.md):
 
 - **REST-Connector:** Dieser unterstützt insbesondere das Kopieren von Daten aus RESTful-APIs. 
 - **HTTP-Connector:** Dieser dient allgemein dazu, Daten von jedem HTTP-Endpunkt abzurufen, z. B. um Dateien herunterzuladen. Solange der REST-Connector noch nicht verfügbar ist, verwenden Sie möglicherweise den HTTP-Connector, um Daten aus RESTful-APIs zu kopieren. Dieser wird unterstützt, verfügt jedoch über weniger Funktionen als der REST-Connector.
@@ -31,14 +31,14 @@ Die Unterschiede zwischen diesem REST-Connector, dem [HTTP-Connector](connector-
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Sie können Daten aus einer REST-Quelle in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die die Kopieraktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
+Sie können Daten aus einer REST-Quelle in beliebige unterstützte Senkendatenspeicher kopieren. Sie können Daten auch aus einem beliebigen unterstützten Quelldatenspeicher in eine REST-Senke kopieren. Eine Liste der Datenspeicher, die die Kopieraktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Dieser allgemeine REST-Connector unterstützt Folgendes:
 
-- Das Abrufen von Daten eines REST-Endpunkt mithilfe der Methoden **GET** und **POST**.
-- Das Abrufen von Daten mithilfe eines der folgenden Authentifizierungstypen: **Anonym**, **Standard**, **AAD-Dienstprinzipal** und **verwaltete Identitäten für Azure-Ressourcen**.
+- Kopieren von Daten von einem REST-Endpunkt mithilfe der Methoden **GET** oder **POST** und Kopieren von Daten in einen REST-Endpunkt mithilfe der Methoden **POST**, **PUT** oder **PATCH**.
+- Kopieren von Daten mithilfe eines der folgenden Authentifizierungstypen: **Anonym**, **Standard**, **AAD-Dienstprinzipal** und **verwaltete Identitäten für Azure-Ressourcen**.
 - Die **[Paginierung](#pagination-support)** in den REST-APIs.
-- Das Kopieren der [unveränderten](#export-json-response-as-is) REST-JSON-Antwort oder die Analyse mithilfe der [Schemazuordnung](copy-activity-schema-and-type-mapping.md#schema-mapping). In **JSON** wird lediglich die Antwortnutzlast unterstützt.
+- Wenn REST die Quelle ist: Kopieren der [unveränderten](#export-json-response-as-is) REST-JSON-Antwort oder Analysieren der Antwort mithilfe der [Schemazuordnung](copy-activity-schema-and-type-mapping.md#schema-mapping). In **JSON** wird lediglich die Antwortnutzlast unterstützt.
 
 > [!TIP]
 > Um eine Anforderung für den Datenabruf zu testen, bevor Sie den REST-Connector in Data Factory konfigurieren, informieren Sie sich über die API-Spezifikation für Header- und Textanforderungen. Sie können Tools wie Postman oder einen Webbrowser für die Überprüfung verwenden.
@@ -61,7 +61,7 @@ Folgende Eigenschaften werden für den mit REST verknüpften Dienst unterstützt
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **RestService** festgelegt werden. | Ja |
 | url | Die Basis-URL des REST-Diensts. | Ja |
-| enableServerCertificateValidation | Hiermit wird festgelegt, ob das serverseitige SSL-Zertifikat beim Herstellen einer Verbindung mit dem Endpunkt überprüft werden soll. | Nein<br /> (der Standardwert ist **TRUE**) |
+| enableServerCertificateValidation | Hiermit wird festgelegt, ob das serverseitige TLS-/SSL-Zertifikat beim Herstellen einer Verbindung mit dem Endpunkt überprüft werden soll. | Nein<br /> (der Standardwert ist **TRUE**) |
 | authenticationType | Typ der Authentifizierung für die Verbindung mit dem REST-Dienst. Zulässige Werte: **Anonymous**, **Basic**, **AadServicePrincipal** und **ManagedServiceIdentity**. Weitere Informationen zu anderen Eigenschaften und Beispiele finden Sie weiter unten in den jeweiligen Abschnitten. | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, verwendet diese Eigenschaft die standardmäßige Azure Integration Runtime. |Nein |
 
@@ -107,7 +107,8 @@ Legen Sie die **authenticationType**-Eigenschaft auf **AadServicePrincipal** fes
 | servicePrincipalId | Geben Sie die Client-ID der Azure Active Directory-Anwendung an. | Ja |
 | servicePrincipalKey | Geben Sie den Schlüssel der Azure Active Directory-Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie den Mauszeiger über den rechten oberen Bereich im Azure-Portal bewegen. | Ja |
-| aadResourceId | Geben Sie die Azure AD-Ressource an, für die Sie eine Autorisierung anfordern, z. B. `https://management.core.windows.net`.| Ja |
+| aadResourceId | Geben Sie die AAD-Ressource an, für die Sie eine Autorisierung anfordern, z. B. `https://management.core.windows.net`.| Ja |
+| azureCloudType | Geben Sie für die Dienstprinzipalauthentifizierung die Art der Azure-Cloudumgebung an, bei der Ihre AAD-Anwendung registriert ist. <br/> Zulässige Werte sind **AzurePublic**, **AzureChina**, **AzureUsGovernment** und **AzureGermany**. Standardmäßig wird die Cloudumgebung der Data Factory verwendet. | Nein |
 
 **Beispiel**
 
@@ -135,13 +136,13 @@ Legen Sie die **authenticationType**-Eigenschaft auf **AadServicePrincipal** fes
 }
 ```
 
-### <a name="managed-identity"></a> So verwenden Sie verwaltete Identitäten für die Azure-Ressourcenauthentifizierung
+### <a name="use-managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> So verwenden Sie verwaltete Identitäten für die Azure-Ressourcenauthentifizierung
 
 Legen Sie die **authenticationType**-Eigenschaft auf **ManagedServiceIdentity** fest. Geben Sie zusätzlich zu den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| aadResourceId | Geben Sie die Azure AD-Ressource an, für die Sie eine Autorisierung anfordern, z. B. `https://management.core.windows.net`.| Ja |
+| aadResourceId | Geben Sie die AAD-Ressource an, für die Sie eine Autorisierung anfordern, z. B. `https://management.core.windows.net`.| Ja |
 
 **Beispiel**
 
@@ -174,9 +175,9 @@ Zum Kopieren von Daten aus REST werden die folgenden Eigenschaften unterstützt:
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft des Datasets muss auf **RestResource** festgelegt sein. | Ja |
-| relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn die Eigenschaft nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. | Nein |
+| relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn die Eigenschaft nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. Der HTTP-Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service]/[relative URL specified in dataset]`. | Nein |
 
-Wenn Sie `requestMethod`, `additionalHeaders`, `requestBody` und `paginationRules` im Dataset festgelegt haben, wird es weiterhin unverändert unterstützt. Es wird jedoch empfohlen, zukünftig das neue Modell in der Aktivitätsquelle zu verwenden.
+Wenn Sie `requestMethod`, `additionalHeaders`, `requestBody` und `paginationRules` im Dataset festgelegt haben, wird es weiterhin unverändert unterstützt. Es wird jedoch empfohlen, zukünftig das neue Modell in der Aktivität zu verwenden.
 
 **Beispiel:**
 
@@ -199,7 +200,7 @@ Wenn Sie `requestMethod`, `additionalHeaders`, `requestBody` und `paginationRule
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 
-Dieser Abschnitt enthält eine Liste der Eigenschaften, die die REST-Quelle unterstützt.
+Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der REST-Quelle und -Senke unterstützt werden.
 
 Eine vollständige Liste mit den verfügbaren Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie unter [Pipelines](concepts-pipelines-activities.md). 
 
@@ -210,12 +211,15 @@ Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unter
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **RestSource** festgelegt werden. | Ja |
-| requestMethod | Die HTTP-Methode. Zulässige Werte sind **Get** (Standardwert) und **Post**. | Nein |
+| requestMethod | Die HTTP-Methode. Zulässige Werte sind **GET** (Standardwert) und **POST**. | Nein |
 | additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein |
 | requestBody | Der Text der HTTP-Anforderung. | Nein |
 | paginationRules | Die Paginierungsregeln zum Zusammenstellen der nächsten Seitenanforderungen. Ausführliche Informationen finden Sie im Abschnitt [Unterstützung der Paginierung](#pagination-support). | Nein |
 | httpRequestTimeout | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout zum Empfangen einer Antwort, nicht um das Timeout zum Lesen von Antwortdaten. Der Standardwert ist **00:01:40**.  | Nein |
 | requestInterval | Die Wartezeit vor dem Senden der Anforderung für die nächste Seite. Der Standardwert lautet **00:00:01** |  Nein |
+
+>[!NOTE]
+>Der REST-Connector ignoriert jeden in `additionalHeaders` angegebenen "Accept"-Header. Da der REST-Connector nur Antworten in JSON unterstützt, wird automatisch eine Kopfzeile vom Typ `Accept: application/json` generiert.
 
 **Beispiel 1: Verwenden der GET-Methode mit der Paginierung**
 
@@ -289,9 +293,69 @@ Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unter
 ]
 ```
 
+### <a name="rest-as-sink"></a>REST als Senke
+
+Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| Typ | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **RestSink** festgelegt werden. | Ja |
+| requestMethod | Die HTTP-Methode. Zulässige Werte sind **POST** (Standardwert), **PUT** und **PATCH**. | Nein |
+| additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein |
+| httpRequestTimeout | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout für den Empfang einer Antwort, nicht um das Timeout für das Schreiben der Daten. Der Standardwert ist **00:01:40**.  | Nein |
+| requestInterval | Das Zeitintervall zwischen verschiedenen Anforderungen in Millisekunden. Der Wert für das Anforderungsintervall sollte eine Zahl zwischen 10 und 60000 sein. |  Nein |
+| httpCompressionType | Der HTTP-Komprimierungstyp, der zum Senden von Daten mit der optimalen Komprimierungsstufe verwendet werden soll. Zulässige Werte sind **none** und **gzip**. | Nein |
+| writeBatchSize | Die Anzahl von Datensätzen, die pro Batch in die REST-Senke geschrieben werden sollen. Der Standardwert ist 10.000. | Nein |
+
+Ein REST-Connector als Senke funktioniert mit den REST-APIs, die JSON akzeptieren. Die Daten werden im JSON-Format mit dem folgenden Muster gesendet. Bei Bedarf können Sie die Kopieraktivität [Schemazuordnung](copy-activity-schema-and-type-mapping.md#schema-mapping) verwenden, um die Quelldaten so zu strukturieren, dass sie der erwarteten Nutzlast von der Rest-API entsprechen.
+
+```json
+[
+    { <data object> },
+    { <data object> },
+    ...
+]
+```
+
+**Beispiel:**
+
+```json
+"activities":[
+    {
+        "name": "CopyToREST",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<REST output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "RestSink",
+                "requestMethod": "POST",
+                "httpRequestTimeout": "00:01:40",
+                "requestInterval": 10,
+                "writeBatchSize": 10000,
+                "httpCompressionType": "none",
+            },
+        }
+    }
+]
+```
+
 ## <a name="pagination-support"></a>Unterstützung der Paginierung
 
-In der Regel beschränkt die REST-API ihre Größe der Antwortnutzlast für eine einzelne Anforderung auf einen angemessenen Wert. Beim Zurückgegeben großer Datenmengen werden die Ergebnisse auf mehrere Seiten aufgeteilt, und Aufrufer werden zum Senden aufeinanderfolgender Anforderungen aufgefordert, um die nächste Seite der Ergebnisse abzurufen. In der Regel ist die Anforderung für eine Seite dynamisch und besteht aus den Informationen, die von der Antwort der vorherigen Seite zurückgegeben werden.
+Beim Kopieren von Daten von REST-APIs beschränkt die REST-API in der Regel ihre Größe der Antwortnutzlast für eine einzelne Anforderung auf einen angemessenen Wert. Beim Zurückgegeben großer Datenmengen werden die Ergebnisse auf mehrere Seiten aufgeteilt, und Aufrufer werden zum Senden aufeinanderfolgender Anforderungen aufgefordert, um die nächste Seite der Ergebnisse abzurufen. In der Regel ist die Anforderung für eine Seite dynamisch und besteht aus den Informationen, die von der Antwort der vorherigen Seite zurückgegeben werden.
 
 Dieser generische REST-Connector unterstützt die folgenden Paginierungsmuster: 
 
@@ -321,7 +385,7 @@ In Paginierungsregeln **unterstützte Werte**:
 
 **Beispiel:**
 
-In der folgenden Struktur gibt die Facebook-Graph-API eine Antwort zurück. In diesem Fall wird die URL der nächsten Seite in ***paging.next*** dargestellt:
+Die Facebook-Graph-API gibt eine Antwort in der folgenden Struktur zurück. In diesem Fall wird die URL der nächsten Seite in **_paging.next_* _ dargestellt:
 
 ```json
 {
@@ -369,6 +433,75 @@ Die entsprechende Konfiguration der Quelle für die REST-Kopieraktivität (insbe
     }
 }
 ```
+
+## <a name="use-oauth"></a>Verwenden von OAuth
+In diesem Abschnitt wird beschrieben, wie Sie eine Lösungsvorlage verwenden, um Daten aus dem REST-Connector mithilfe von OAuth in Azure Data Lake Storage im JSON-Format zu kopieren. 
+
+### <a name="about-the-solution-template"></a>Informationen zur Lösungsvorlage
+
+Die Vorlage enthält zwei Aktivitäten:
+- Eine Aktivität vom Typ _ *Web** ruft das Bearertoken ab und übergibt es als Autorisierung an die nachfolgende Kopieraktivität.
+- **Kopieraktivität** kopiert Daten aus REST in Azure Data Lake Storage.
+
+Die Vorlage definiert zwei Parameter:
+- **SinkContainer** ist der Stammordnerpfad, in den die Daten in Ihrem Azure Data Lake Storage kopiert werden. 
+- **SinkDirectory** ist der Verzeichnispfad unter dem Stamm, in den die Daten in Ihrem Azure Data Lake Storage kopiert werden. 
+
+### <a name="how-to-use-this-solution-template"></a>So verwenden Sie diese Lösungsvorlage
+
+1. Wechseln Sie zur Vorlage **Copy from REST or HTTP using OAuth** (Kopieren aus REST oder HTTP mithilfe von OAuth). Erstellen Sie eine neue Verbindung für „Quellverbindung“. 
+    ![Erstellen neuer Verbindungen](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
+
+    Nachstehend sind die wichtigsten Schritte für Einstellungen für neue verknüpfte Dienste (REST) aufgeführt:
+    
+     1. Geben Sie unter **Basis-URL** den URL-Parameter für Ihren eigenen REST-Quelldienst an. 
+     2. Wählen Sie als **Authentifizierungstyp** den Typ *Anonym* aus.
+        ![Neue REST-Verbindung](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
+
+2. Erstellen Sie eine neue Verbindung für „Zielverbindung“.  
+    ![Neue Gen2-Verbindung](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
+
+3. Klicken Sie auf **Diese Vorlage verwenden**.
+    ![Diese Vorlage verwenden](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
+
+4. Sie sehen, dass die Pipeline erstellt wurde, wie im nachstehenden Beispiel gezeigt wird:  ![Der Screenshot zeigt die aus der Vorlage erstellte Pipeline.](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+
+5. Wählen Sie die Aktivität **Web** aus. Geben Sie in **Einstellungen** die entsprechenden Werte für **URL**, **Methode**, **Header** und **Body** an, um das OAuth-Bearertoken aus der Anmelde-API des Diensts abzurufen, aus dem Sie Daten kopieren möchten. Der Platzhalter in der Vorlage zeigt ein Beispiel für Azure Active Directory (AAD) OAuth. Beachten Sie, dass die AAD-Authentifizierung vom REST-Connector systemintern unterstützt wird. Dies hier ist nur ein Beispiel für den OAuth-Fluss. 
+
+    | Eigenschaft | Beschreibung |
+    |:--- |:--- |:--- |
+    | URL |Geben Sie die URL an, aus der das OAuth-Bearertoken abgerufen werden soll. Im Beispiel hier ist dies https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token. |. 
+    | Methode | Die HTTP-Methode. Zulässige Werte sind **Post** und **Get**. | 
+    | Header | Der Header wird vom Benutzer definiert und verweist auf einen einzigen Headernamen in der HTTP-Anforderung. | 
+    | Body | Der Text der HTTP-Anforderung. | 
+
+    ![Pipeline](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
+
+6. Wählen Sie in der Aktivität **Daten kopieren** die Registerkarte *Quelle* aus. Dann können Sie sehen, dass das aus dem vorherigen Schritt abgerufene Bearertoken („access_token“) unter „Zusätzliche Header“ als **Autorisierung** an die Aktivität übergeben wird. Bestätigen Sie die Einstellungen für die folgenden Eigenschaften, bevor Sie eine Pipelineausführung starten.
+
+    | Eigenschaft | BESCHREIBUNG |
+    |:--- |:--- |:--- | 
+    | Anforderungsmethode | Die HTTP-Methode. Zulässige Werte sind **Get** (Standardwert) und **Post**. | 
+    | Zusätzliche Header | Zusätzliche HTTP-Anforderungsheader| 
+
+   ![Kopieren der Quellauthentifizierung](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
+
+7. Klicken Sie auf **Debuggen**, geben Sie die **Parameter** ein, und klicken Sie dann auf **Fertig stellen**.
+   ![Pipelineausführung](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
+
+8. Wenn die Pipelineausführung erfolgreich abgeschlossen wurde, wird das Ergebnis ähnlich wie im nachstehenden Beispiel angezeigt: ![Ergebnis der Pipelineausführung](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+
+9. Klicken Sie in der Spalte **Aktionen** auf das Symbol „Ausgabe“ von „WebActivity“. Dann sehen Sie das vom Dienst zurückgegebene „access_token“.
+
+   ![Tokenausgabe](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
+
+10. Klicken Sie in der Spalte **Aktionen** auf das Symbol „Eingabe“ von „CopyActivity“. Dann sehen Sie, dass das von „WebActivity“ abgerufene „access_token“ an „CopyActivity“ zur Authentifizierung übergeben wird. 
+
+    ![Tokeneingabe](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
+        
+    >[!CAUTION] 
+    >Wenn Sie vermeiden möchten, dass das Token im Nur-Text-Format protokolliert wird, aktivieren Sie in der Webaktivität „Sichere Ausgabe“ und in der Kopieraktivität „Sichere Eingabe“.
+
 
 ## <a name="export-json-response-as-is"></a>Exportieren der unveränderten JSON-Antwort
 

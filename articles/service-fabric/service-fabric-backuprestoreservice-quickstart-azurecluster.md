@@ -1,27 +1,16 @@
 ---
-title: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric | Microsoft-Dokumentation
+title: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric
 description: Verwenden Sie das Feature für regelmäßige Sicherungen und Wiederherstellungen von Service Fabric, um eine regelmäßige Datensicherung Ihrer Anwendungsdaten zu ermöglichen.
-services: service-fabric
-documentationcenter: .net
-author: hrushib
-manager: chackdan
-editor: hrushib
-ms.assetid: FAA58600-897E-4CEE-9D1C-93FACF98AD1C
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 5/24/2019
-ms.author: hrushib
-ms.openlocfilehash: 7078a1a5edc310c799690f0f7236dd0947e3290b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18d10b365cb2e4f4b4e3592233d5f467714bd5b5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059184"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91538669"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric 
+# <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Regelmäßiges Sichern und Wiederherstellen in einem Azure Service Fabric-Cluster
 > [!div class="op_single_selector"]
 > * [Cluster in Azure](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [Eigenständige Cluster](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
@@ -185,6 +174,16 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ```
 
+#### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+
+1. Navigieren Sie in Service Fabric Explorer zur Registerkarte „Sicherungen“, und wählen Sie „Aktionen“ > „Sicherungsrichtlinie erstellen“ aus.
+
+    ![Sicherungsrichtlinie erstellen][6]
+
+2. Geben Sie alle Informationen ein. Für Azure-Cluster muss „AzureBlobStore“ ausgewählt werden.
+
+    ![Erstellen einer Sicherungsrichtlinie für Azure Blob Storage][7]
+
 ### <a name="enable-periodic-backup"></a>Aktivieren der regelmäßigen Sicherung
 Nach dem Definieren der Sicherungsrichtlinie zum Erfüllen der Datenschutzanforderungen der Anwendung muss die Sicherungsrichtlinie mit der Anwendung verknüpft werden. Je nach Anforderungen kann die Sicherungsrichtlinie einer Anwendung, einem Dienst oder einer Partition zugeordnet werden.
 
@@ -209,6 +208,17 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ``` 
+
+#### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+
+1. Wählen Sie eine Anwendung aus, und navigieren Sie zur Aktion. Klicken Sie auf „Anwendungssicherung aktivieren/aktualisieren“.
+
+    ![Aktivieren der Anwendungssicherung][3]
+
+2. Wählen Sie schließlich die gewünschte Richtlinie aus, und klicken Sie auf „Sicherung aktivieren“.
+
+    ![Auswählen der Richtlinie][4]
+
 
 ### <a name="verify-that-periodic-backups-are-working"></a>Sicherstellen, dass die regelmäßigen Sicherungen funktionieren
 
@@ -280,14 +290,24 @@ CreationTimeUtc         : 2018-04-06T21:25:36Z
 FailureError            : 
 ```
 
+#### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+
+Um Sicherungen in Service Fabric Explorer anzuzeigen, navigieren Sie zu einer Partition, und wählen Sie die Registerkarte „Sicherungen“ aus.
+
+![Aufzählen von Sicherungen][5]
+
 ## <a name="limitation-caveats"></a>Einschränkungen/ Vorbehalte
 - Service Fabric PowerShell-Cmdlets befinden sich im Vorschaumodus.
 - Keine Unterstützung für Service Fabric-Cluster unter Linux.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Grundlegendes zur Konfiguration der regelmäßigen Sicherung](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [REST-API-Referenz zu Sicherung/Wiederherstellung](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [REST-API-Referenz zu Sicherung/Wiederherstellung](/rest/api/servicefabric/sfclient-index-backuprestore)
 
-[0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent_Azure.png
+[0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event-azure.png
 [1]: ./media/service-fabric-backuprestoreservice/enable-backup-restore-service-with-portal.png
-
+[3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
+[4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
+[5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png
+[6]: ./media/service-fabric-backuprestoreservice/create-bp.png
+[7]: ./media/service-fabric-backuprestoreservice/creation-bp.png

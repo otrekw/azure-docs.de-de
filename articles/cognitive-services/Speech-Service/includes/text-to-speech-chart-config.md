@@ -3,19 +3,19 @@ title: Installieren von Speech-Containern
 titleSuffix: Azure Cognitive Services
 description: Beschreibt die Konfigurationsoptionen für ein Helm-Diagramm zur Sprachsynthese.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 08/22/2019
-ms.author: dapine
-ms.openlocfilehash: c87132c3ae41dec82e3493f9a0ee2397455ff881
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 22168974ab8b285413b4fa6e947c05f65a73ae12
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971351"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002274"
 ---
 ### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>Sprachsynthese (Unterdiagramm: charts/textToSpeech)
 

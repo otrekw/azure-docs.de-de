@@ -1,19 +1,18 @@
 ---
-title: 'Konfigurieren von Global Reach – ExpressRoute: Azure | Microsoft-Dokumentation'
+title: 'Azure ExpressRoute: Konfigurieren von Global Reach'
 description: Dieser Artikel hilft Ihnen, ExpressRoute-Leitungen miteinander zu verbinden, um ein privates Netzwerk zwischen Ihren lokalen Netzwerken aufzubauen und Global Reach zu aktivieren.
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2019
-ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: de9cbd9cfac766e2a67274684d3fb6b447e45200
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: duau
+ms.openlocfilehash: 2365317d83a4c11fa17cb5c449a25b70da17c2eb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64572758"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368365"
 ---
 # <a name="configure-expressroute-global-reach"></a>Konfigurieren von ExpressRoute Global Reach
 
@@ -30,7 +29,7 @@ Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie mi
 
 ### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -39,7 +38,7 @@ Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie mi
 1. Um mit der Konfiguration zu beginnen, melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie das zu verwendende Abonnement aus.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. Identifizieren Sie die ExpressRoute-Leitungen, die Sie verwenden möchten. Sie können ExpressRoute Global Reach zwischen zwei beliebigen ExpressRoute-Leitungen aktivieren, solange sich diese in den unterstützten Ländern/Regionen befinden und an verschiedenen Peeringstandorten erstellt wurden. 
+2. Identifizieren Sie die ExpressRoute-Leitungen, die Sie verwenden möchten. Sie können ExpressRoute Global Reach zwischen dem privaten Peering von zwei beliebigen ExpressRoute-Leitungen aktivieren, solange sich diese in den unterstützten Ländern/Regionen befinden und an verschiedenen Peeringstandorten erstellt wurden. 
 
    * Wenn beide Leitungen Ihrem Abonnement zugewiesen sind, können Sie eine der beiden Leitungen auswählen, um die Konfiguration in den folgenden Abschnitten auszuführen.
    * Wenn sich die beiden Leitungen in unterschiedlichen Azure-Abonnements befinden, benötigen Sie die Autorisierung eines der Azure-Abonnements. Den Autorisierungsschlüssel übergeben Sie, wenn Sie den Konfigurationsbefehl im anderen Azure-Abonnement ausführen.
@@ -106,17 +105,17 @@ Wenn der vorherige Vorgang abgeschlossen ist, verfügen Sie dank der beiden Expr
 
 Verwenden Sie den folgenden Befehl, um die Konfiguration für die Leitung zu überprüfen, für die die Konfiguration vorgenommen wurde (Leitung 1 im obigen Beispiel).
 ```azurepowershell-interactive
-$ckt1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
+$ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
 ```
 
-Wenn Sie in PowerShell *$ckt1* ausführen, wird *CircuitConnectionStatus* in der Ausgabe angezeigt. So können Sie ermitteln, ob die Verbindung hergestellt wurde. Mögliche Werte: „Connected“ (Verbunden) und „Disconnected“ (Getrennt). 
+Wenn Sie einfach *$ckt_1* in PowerShell ausführen, wird *CircuitConnectionStatus* in der Ausgabe angezeigt. So können Sie ermitteln, ob die Verbindung hergestellt wurde. Mögliche Werte: „Connected“ (Verbunden) und „Disconnected“ (Getrennt). 
 
 ## <a name="disable-connectivity"></a>Deaktivieren der Konnektivität
 
 Um die Konnektivität zwischen Ihren lokalen Netzwerken zu deaktivieren, führen Sie die Befehle für die Leitung aus, in der die Konfiguration vorgenommen wurde (z.B. Leitung 1 im vorherigen Beispiel).
 
 ```azurepowershell-interactive
-$ckt1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
+$ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
 Remove-AzExpressRouteCircuitConnectionConfig -Name "Your_connection_name" -ExpressRouteCircuit $ckt_1
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 ```

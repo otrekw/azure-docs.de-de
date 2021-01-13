@@ -1,25 +1,20 @@
 ---
-title: Übersicht zu OpenShift in Azure | Microsoft-Dokumentation
+title: OpenShift in Azure – Übersicht
 description: Eine Übersicht zu OpenShift in Azure.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: haroldwongms
 manager: mdotson
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
+ms.subservice: workloads
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 80f0ec57aa287bae9b10d9a4cdb013014aab3332
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 989c67d0d1b1cd8257da089ec9c31f247228018e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082551"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87367944"
 ---
 # <a name="openshift-in-azure"></a>OpenShift in Azure
 
@@ -35,7 +30,7 @@ Von OpenShift sind mehrere Versionen verfügbar.  Von diesen Versionen können d
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Microsoft Azure Red Hat OpenShift ist ein vollständig verwaltetes OpenShift-Angebot, das in Azure ausgeführt wird. Dieser Dienst wird gemeinsam von Microsoft und Red Hat verwaltet und unterstützt. Weitere Informationen finden Sie in der Dokumentation zu [Azure Red Hat OpenShift Service](https://docs.microsoft.com/azure/openshift/).
+Microsoft Azure Red Hat OpenShift ist ein vollständig verwaltetes OpenShift-Angebot, das in Azure ausgeführt wird. Dieser Dienst wird gemeinsam von Microsoft und Red Hat verwaltet und unterstützt. Weitere Informationen finden Sie in der Dokumentation zu [Azure Red Hat OpenShift Service](../../openshift/index.yml).
 
 ## <a name="openshift-container-platform"></a>OpenShift Container Platform
 
@@ -49,9 +44,9 @@ OKD ist ein [Open Source](https://www.okd.io/) Upstream-Projekt von OpenShift, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Konfigurieren allgemeiner Voraussetzungen für OpenShift in Azure](./openshift-prerequisites.md)
-- [Bereitstellen von OpenShift Container Platform in Azure](./openshift-container-platform.md)
-- [Bereitstellen eines selbstverwalteten OpenShift Container Platform-Marketplace-Angebots](./openshift-marketplace-self-managed.md)
+- [Konfigurieren allgemeiner Voraussetzungen für OpenShift in Azure](./openshift-container-platform-3x-prerequisites.md)
+- [Bereitstellen von OpenShift Container Platform in Azure](./openshift-container-platform-3x.md)
+- [Bereitstellen eines selbstverwalteten OpenShift Container Platform-Marketplace-Angebots](./openshift-container-platform-3x-marketplace-self-managed.md)
 - [Bereitstellen von OpenShift in Azure Stack](./openshift-azure-stack.md)
-- [Aufgaben nach der Bereitstellung](./openshift-post-deployment.md)
-- [Beheben von Problemen bei der Bereitstellung von OpenShift](./openshift-troubleshooting.md)
+- [Aufgaben nach der Bereitstellung](./openshift-container-platform-3x-post-deployment.md)
+- [Beheben von Problemen bei der Bereitstellung von OpenShift](./openshift-container-platform-3x-troubleshooting.md)

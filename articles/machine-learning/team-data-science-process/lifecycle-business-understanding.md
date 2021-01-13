@@ -3,20 +3,20 @@ title: Kenntnis der Geschäftsanforderungen im Team Data Science-Prozess
 description: Die Ziele, Aufgaben und Projektleistungen für die Phase der geschäftlichen Aspekte Ihrer Data Science-Projekte im Team Data Science-Prozess.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 35d03a52125bd2646f86b96bcffe123d9fab7f64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303552"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "76710338"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Die Phase der geschäftlichen Aspekte des Lebenszyklus des Team Data Science-Prozesses.
 
@@ -40,7 +40,7 @@ Dies ist eine visuelle Darstellung des TDSP-Lebenszyklus:
 ## <a name="how-to-do-it"></a>Vorgehensweise
 In dieser Phase werden zwei Hauptaufgaben durchgeführt: 
 
-   * **Definieren von Zielen**: Ermitteln Sie zusammen mit Ihrem Kunden und anderen Projektbeteiligten die geschäftlichen Probleme, um sich damit vertraut zu machen. Formulieren Sie Fragen, mit denen die geschäftlichen Ziele definiert werden und die mit Data Science-Verfahren gelöst werden können.
+   * **Definieren von Zielen:** Ermitteln Sie zusammen mit Ihrem Kunden und anderen Projektbeteiligten die geschäftlichen Probleme, um sich damit vertraut zu machen. Formulieren Sie Fragen, mit denen die geschäftlichen Ziele definiert werden und die mit Data Science-Verfahren gelöst werden können.
    * **Identifizieren von Datenquellen**: Suchen Sie nach den relevanten Daten, mit denen Sie die Fragen beantworten können, die den Zielen des Projekts zugrunde liegen.
 
 ### <a name="define-objectives"></a>Definieren von Zielen
@@ -77,9 +77,9 @@ Sie könnten z.B. feststellen, dass vorhandene Systeme zusätzliche Arten von Da
 ## <a name="artifacts"></a>Artefakte
 Hier sind die Ergebnisse dieser Phase angegeben:
 
-   * [Charta-Dokument](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): In der Strukturdefinition des TDSP-Projekts ist eine Standardvorlage enthalten. Das Charta-Dokument ist ein dynamisches Dokument. Sie passen die Vorlage im Verlauf des Projekts an, wenn Sie neue Erkenntnisse gewinnen oder sich die Geschäftsanforderungen ändern. Der Schlüssel ist, dass dieses Dokument immer wieder durchlaufen wird und während des Ermittlungsprozesses weitere Details hinzugefügt werden. Beziehen Sie den Kunden und andere Projektbeteiligte in das Vornehmen der Änderungen ein, und informieren Sie sie eindeutig über die Gründe für die Änderungen.  
-   * [Datenquellen](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): Dies ist der Abschnitt **Raw Data Sources** (Rohdatenquellen) des Berichts **Datendefinitionen** im Ordner **Data Report** (Datenbericht) des TDSP-Projekts. Er enthält die Datenquellen. In diesem Abschnitt werden der Quell- und Zielspeicherort für die Rohdaten angegeben. In späteren Phasen fügen Sie weitere Details ein, z.B. Skripts für das Verschieben der Daten in die Analyseumgebung.  
-   * [Data dictionaries](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries) (Datenwörterbücher): Dieses Dokument enthält Beschreibungen der Daten, die durch den Kunden bereitgestellt werden. Diese Beschreibungen enthalten Informationen zum Schema (Datentypen und Informationen zu Validierungsregeln, sofern vorhanden) und zu den Diagrammen zu den Entitätsbeziehungen, sofern vorhanden.
+   * [Charta-Dokument:](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md) In der Strukturdefinition des TDSP-Projekts ist eine Standardvorlage enthalten. Das Charta-Dokument ist ein dynamisches Dokument. Sie passen die Vorlage im Verlauf des Projekts an, wenn Sie neue Erkenntnisse gewinnen oder sich die Geschäftsanforderungen ändern. Der Schlüssel ist, dass dieses Dokument immer wieder durchlaufen wird und während des Ermittlungsprozesses weitere Details hinzugefügt werden. Beziehen Sie den Kunden und andere Projektbeteiligte in das Vornehmen der Änderungen ein, und informieren Sie sie eindeutig über die Gründe für die Änderungen.  
+   * [Datenquellen:](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources) Dies ist der Abschnitt **Raw Data Sources** (Rohdatenquellen) des Berichts **Datendefinitionen** im Ordner **Data Report** (Datenbericht) des TDSP-Projekts. Er enthält die Datenquellen. In diesem Abschnitt werden der Quell- und Zielspeicherort für die Rohdaten angegeben. In späteren Phasen fügen Sie weitere Details ein, z.B. Skripts für das Verschieben der Daten in die Analyseumgebung.  
+   * [Data Dictionaries](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries) (Datenwörterbücher): Dieses Dokument enthält Beschreibungen der Daten, die durch den Kunden bereitgestellt werden. Diese Beschreibungen enthalten Informationen zum Schema (Datentypen und Informationen zu Validierungsregeln, sofern vorhanden) und zu den Diagrammen zu den Entitätsbeziehungen, sofern vorhanden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -91,4 +91,4 @@ Hier finden Sie Links zu jedem Schritt im Lebenszyklus des TDSP:
    4. [Bereitstellung](lifecycle-deployment.md)
    5. [Kundenakzeptanz](lifecycle-acceptance.md)
 
-Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für bestimmte Szenarien gezeigt werden, sind ebenfalls verfügbar. Der Artikel mit [exemplarischen Vorgehensweisen](walkthroughs.md) enthält eine Liste der Szenarien mit Links und Kurzbeschreibungen. Die exemplarischen Vorgehensweisen zeigen auch, wie Cloud- und lokale Tools sowie Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 
+Wir bieten vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für bestimmte Szenarien gezeigt werden. Der Artikel mit [exemplarischen Vorgehensweisen](walkthroughs.md) enthält eine Liste der Szenarien mit Links und Kurzbeschreibungen. Die exemplarischen Vorgehensweisen zeigen auch, wie Cloud- und lokale Tools sowie Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 

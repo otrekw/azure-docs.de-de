@@ -3,7 +3,7 @@ title: 'Schnellstart: Herunterladen eines Anmeldeberichts über das Azure-Portal
 description: Erfahren Sie, wie Sie einen Anmeldebericht über das Azure-Portal herunterladen.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 9131f208-1f90-4cc1-9c29-085cacd69317
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cbd71696c3508a464b1343d552cba4a3391066f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 86bc72f69903134afa3750ad6b72486a713b6cc0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989669"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011913"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>Schnellstart: Herunterladen eines Anmeldeberichts über das Azure-Portal
 
@@ -32,7 +32,7 @@ In diesem Schnellstart erfahren Sie, wie Sie die Anmeldedaten Ihres Mandanten f�
 
 Erforderlich:
 
-* Ein Azure Active Directory-Mandant mit einer Premium-Lizenz zum Anzeigen des Berichts zu Anmeldeaktivitäten. Unter [Erste Schritte mit Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) erfahren Sie, wie Sie ein Upgrade für Ihre Azure Active Directory-Edition durchführen. Hinweis: Lagen vor dem Upgrade keine Aktivitätsdaten vor, dauert es nach dem Upgrade auf eine Premium-Lizenz einige Tage, bis Daten in den Berichten angezeigt werden.
+* Ein Azure Active Directory-Mandant mit einer Premium-Lizenz zum Anzeigen des Berichts zu Anmeldeaktivitäten. Unter [Erste Schritte mit Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) erfahren Sie, wie Sie ein Upgrade für Ihre Azure Active Directory-Edition durchführen. Beachten Sie Folgendes: Wenn Sie vor dem Upgrade über keine Aktivitätsdaten verfügten, dauert es ein paar Tage, bis die Daten in den Berichten angezeigt werden, nachdem Sie ein Upgrade auf eine Premium-Lizenz durchgeführt haben.
 * Ein Benutzer, der über die Rolle **Sicherheitsadministrator**, **Sicherheitsleseberechtigter**, **Benutzer mit Leseberechtigung für Berichte** oder **globaler Administrator** für den Mandanten verfügt. Darüber hinaus kann jeder Benutzer im Mandanten auf die eigenen Anmeldungen zugreifen.
 
 ## <a name="quickstart-download-a-sign-in-report"></a>Schnellstart: Herunterladen eines Anmeldeberichts

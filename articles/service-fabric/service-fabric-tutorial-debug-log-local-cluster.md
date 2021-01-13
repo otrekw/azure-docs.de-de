@@ -1,26 +1,15 @@
 ---
-title: Debuggen einer Java-App in einem lokalen Service Fabric-Cluster | Microsoft-Dokumentation
+title: Debuggen einer Java-App in einem lokalen Service Fabric-Cluster
 description: In diesem Tutorial erfahren Sie, wie Sie eine in einem lokalen Cluster ausgeführte Service Fabric-Java-Anwendung debuggen und Protokolle daraus abrufen.
-services: service-fabric
-documentationcenter: java
-author: suhuruli
-manager: mfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
-ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: c5ff1a0373fcce339bea2b235d86f20dc861a15c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 801702d43bae6d925fa4f7fbc37cf44bf585fa6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444258"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91531989"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Tutorial: Debuggen einer in einem lokalen Service Fabric-Cluster bereitgestellten Java-Anwendung
 

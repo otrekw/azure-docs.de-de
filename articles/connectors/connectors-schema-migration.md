@@ -1,20 +1,17 @@
 ---
-title: Migrieren von Apps zum aktuellen Schema – Azure Logic Apps | Microsoft-Dokumentation
-description: Migrieren Ihrer Logik-Apps zur aktuellen Schemaversion
+title: Migrieren von Apps zum aktuellen Schema
+description: Migrieren von JSON-Definitionen für den Logik-App-Workflow zur aktuellsten Schema Version der Workflowdefinitionssprache
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.assetid: 3e177e49-fd69-43e9-9b9b-218abb250c31
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
-ms.openlocfilehash: bf27739bd42106550c18e3bbc27a1ff8b3770747
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 114b8b32d4abb1fd9b7e641625cd1b132470bafd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60447151"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87281445"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>Migrieren von Logik-Apps zur aktuellen Schemaversion
 
@@ -43,4 +40,5 @@ Hier finden Sie einige bewährte Methoden für das Migrieren von Logik-Apps zur 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum [manuellen Migrieren von Logik-Apps](../logic-apps/logic-apps-schema-2015-08-01.md)
+* Informationen zum [manuellen Migrieren von Logik-Apps](../logic-apps/logic-apps-schema-2016-04-01.md)
+

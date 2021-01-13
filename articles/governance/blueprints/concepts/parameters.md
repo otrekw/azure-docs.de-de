@@ -1,22 +1,18 @@
 ---
 title: Verwenden von Parametern für das Erstellen dynamischer Blaupausen
-description: Hier erhalten Sie Informationen zu statischen und dynamischen Parametern und dazu, wie deren Verwendung zur Erstellung dynamischer Blaupausen führt.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 03/12/2019
+description: Hier erhalten Sie Informationen zu statischen und dynamischen Parametern und dazu, wie Sie sie zum Erstellung sicherer und dynamischer Blaupausen verwenden können.
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: ee44d744c580dd9fbf20e7186b6e76fdc74cc5d0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b6cefe7ec75ec622cb341d8f12edfd9c0cfa66e6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004085"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89651945"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Erstellen dynamischer Blaupausen mithilfe von Parametern
 
-Eine vollständig definierte Blaupause mit verschiedenen Artefakten (etwa Ressourcengruppen, Resource Manager-Vorlagen, Richtlinien oder Rollenzuweisungen) ermöglicht eine schnelle und konsistente Bereitstellung von Objekten in Azure. Um eine flexible Verwendung dieser wiederverwendbaren Entwurfsmuster und Container zu ermöglichen, unterstützt Azure Blueprint die Verwendung von Parametern. Der Parameter gewährleistet sowohl bei der Definition als auch bei der Zuweisung die Flexibilität, Eigenschaften für die von der Blaupause bereitgestellten Artefakte zu ändern.
+Eine vollständig definierte Blaupause mit verschiedenen Artefakten – z. B. etwa Ressourcengruppen, Azure Resource Manager-Vorlagen (ARM-Vorlagen), Richtlinien oder Rollenzuweisungen – ermöglicht die schnelle und konsistente Bereitstellung von Objekten in Azure. Um eine flexible Verwendung dieser wiederverwendbaren Entwurfsmuster und Container zu ermöglichen, unterstützt Azure Blueprint die Verwendung von Parametern. Der Parameter gewährleistet sowohl bei der Definition als auch bei der Zuweisung die Flexibilität, Eigenschaften für die von der Blaupause bereitgestellten Artefakte zu ändern.
 
 Ein einfaches Beispiel ist das Ressourcengruppenartefakt. Bei der Erstellung einer Ressourcengruppe müssen zwei erforderliche Werte angegeben werden: Name und Standort. Gäbe es keine Parameter, müssten Sie beim Hinzufügen einer Ressourcengruppe zur Blaupause diesen Namen und Standort bei jeder Verwendung der Blaupause definieren. Diese Wiederholung würde dazu führen, dass bei jeder Verwendung der Blaupause Artefakte in derselben Ressourcengruppe erstellt werden. Ressourcen innerhalb der Ressourcengruppe würden dadurch dupliziert und einen Konflikt verursachen.
 
@@ -24,7 +20,7 @@ Ein einfaches Beispiel ist das Ressourcengruppenartefakt. Bei der Erstellung ein
 > Zwei verschiedene Blaupausen können eine Ressourcengruppe desselben Namens enthalten.
 > Wenn eine in einer Blaupause enthaltene Ressourcengruppe bereits vorhanden ist, erstellt die Blaupause weiterhin die entsprechenden Artefakte in dieser Ressourcengruppe. Dies kann zu einem Konflikt führen, weil zwei Ressourcen mit demselben Namen und demselben Ressourcentyp nicht innerhalb eines Abonnements vorhanden sein dürfen.
 
-Dieses Problem lässt sich mithilfe von Parametern lösen. Mit Blueprints können Sie den Wert für jede Eigenschaft des Artefakts im Rahmen der Zuweisung zu einem Abonnement definieren. Der Parameter ermöglicht die Wiederverwendung einer Blaupause, die eine Ressourcengruppe und andere Ressourcen innerhalb eines einzelnen Abonnements erstellt, ohne einen Konflikt zu verursachen.
+Dieses Problem lässt sich mithilfe von Parametern lösen. Mit Azure Blueprints können Sie den Wert für jede Eigenschaft des Artefakts im Rahmen der Zuweisung zu einem Abonnement definieren. Der Parameter ermöglicht die Wiederverwendung einer Blaupause, die eine Ressourcengruppe und andere Ressourcen innerhalb eines einzelnen Abonnements erstellt, ohne einen Konflikt zu verursachen.
 
 ## <a name="blueprint-parameters"></a>Blaupausenparameter
 
@@ -32,8 +28,7 @@ Dieses Problem lässt sich mithilfe von Parametern lösen. Mit Blueprints könne
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>Verwenden der Parameter „secureString“ und „secureObject“
 
-Während ein _Artefakt_ der Resource Manager-Vorlage Parameter der Typen **secureString** und **secureObject** unterstützt, müssen diese in Azure Blueprint jeweils mit einem Azure-Schlüsseltresor verbunden sein.
-Diese Sicherheitsmaßnahme verhindert die unsichere Vorgehensweise, Geheimnisse zusammen mit der Blaupause zu speichern, und fördert die Verwendung sicherer Muster. Azure Blueprints unterstützt diese Sicherheitsmaßnahme und erkennt, ob ein _Artefakt_ einer Resource Manager-Vorlage einen der sicheren Parameter enthält. Während der Zuweisung fordert der Dienst dann bei jedem erkannten sicheren Parameter zur Eingabe der folgenden Key Vault-Eigenschaften auf:
+Während ein _Artefakt_ einer ARM-Vorlage Parameter der Typen **secureString** und **secureObject** unterstützt, müssen diese in Azure Blueprints jeweils mit einer Azure Key Vault-Instanz verbunden sein. Diese Sicherheitsmaßnahme verhindert die unsichere Vorgehensweise, Geheimnisse zusammen mit der Blaupause zu speichern, und fördert die Verwendung sicherer Muster. Azure Blueprints unterstützt diese Sicherheitsmaßnahme und erkennt, ob ein _Artefakt_ einer ARM-Vorlage einen der sicheren Parameter enthält. Während der Zuweisung fordert der Dienst dann bei jedem erkannten sicheren Parameter zur Eingabe der folgenden Key Vault-Eigenschaften auf:
 
 - Key Vault-Ressourcen-ID
 - Name des Key Vault-Geheimnisses
@@ -44,9 +39,9 @@ Wenn für die Blaupausenzuweisung eine **systemseitig zugewiesene verwaltete Ide
 Wenn für die Blaupausenzuweisung eine **benutzerseitig zugewiesene verwaltete Identität** verwendet wird, _kann_ der Key Vault, auf den verwiesen wird, in einem zentralen Abonnement vorhanden sein. Der verwalteten Identität müssen vor der Blaupausenzuweisung die entsprechenden Rechte für den Key Vault gewährt werden.
 
 > [!IMPORTANT]
-> In beiden Fällen muss für den Key Vault auf der Seite **Zugriffsrichtlinien** die Option **Zugriff auf Azure Resource Manager für Vorlagenbereitstellung aktivieren** konfiguriert sein. Eine Anleitung zum Aktivieren dieses Features finden Sie unter [Key Vault – Aktivieren der Vorlagenbereitstellung](../../../managed-applications/key-vault-access.md#enable-template-deployment).
+> In beiden Fällen muss für den Key Vault auf der Seite **Zugriffsrichtlinien** die Option **Zugriff auf Azure Resource Manager für Vorlagenbereitstellung aktivieren** konfiguriert sein. Eine Anleitung zum Aktivieren dieses Features finden Sie unter [Key Vault – Aktivieren der Vorlagenbereitstellung](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment).
 
-Weitere Informationen zu Azure Key Vault finden Sie im [Überblick über Azure Key Vault](../../../key-vault/key-vault-overview.md).
+Weitere Informationen zu Azure Key Vault finden Sie im [Überblick über Azure Key Vault](../../../key-vault/general/overview.md).
 
 ## <a name="parameter-types"></a>Parametertypen
 
@@ -60,17 +55,17 @@ Ein Parameterwert, der in der Definition einer Blaupause definiert ist, wird als
 
 1. Wählen Sie auf der Seite links die Option **Blaupausendefinitionen**.
 
-1. Klicken Sie auf eine vorhandene Blaupause, und klicken Sie anschließend auf **Blaupause bearbeiten**, oder klicken Sie auf **+ Blaupause erstellen**, und geben Sie die Informationen auf der Registerkarte **Grundlagen** ein.
+1. Wählen Sie eine vorhandene Blaupause aus, und wählen Sie anschließend **Blaupause bearbeiten** aus, ODER wählen Sie **+ Blaupause erstellen** aus, und geben Sie die Informationen auf der Registerkarte **Grundlagen** ein.
 
-1. Klicken Sie auf **Weiter: Artefakte**, oder klicken Sie auf die Registerkarte **Artefakte**.
+1. Klicken Sie auf **Weiter: Artefakte**, ODER wählen Sie die Registerkarte **Artefakte** aus.
 
-1. Bei Artefakten, die der Blaupause mit Parameteroptionen hinzugefügt werden, wird **X von Y Parametern aufgefüllt** in der Spalte **Parameter** angezeigt. Klicken Sie auf die Artefaktzeile, um die Artefaktparameter zu bearbeiten.
+1. Bei Artefakten, die der Blaupause mit Parameteroptionen hinzugefügt werden, wird **X von Y Parametern aufgefüllt** in der Spalte **Parameter** angezeigt. Wählen Sie die Artefaktzeile aus, um die Artefaktparameter zu bearbeiten.
 
-   ![Blaupausenparameter in einer Blaupausendefinition](../media/parameters/parameter-column.png)
+   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Screenshot einer Blaupausendefinition mit Hervorhebung von „X von Y Parametern aufgefüllt“" border="false":::
 
 1. Die Seite **Artefakt bearbeiten** zeigt Wertoptionen an, die für das ausgewählte Artefakt geeignet sind. Jeder Parameter des Artefakts weist einen Titel, ein Wertfeld und ein Kontrollkästchen auf. Deaktivieren Sie das Kontrollkästchen, um einen **statischen Parameter** zu definieren. Im folgenden Beispiel ist nur _Standort_ ein **statischer Parameter**, weil das Kontrollkästchen deaktiviert ist. Das Kontrollkästchen für _Ressourcengruppenname_ ist aktiviert.
 
-   ![Statische Blaupausenparameter in einem Blaupausenartefakt](../media/parameters/static-parameter.png)
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Screenshot einer Blaupausendefinition mit Hervorhebung von „X von Y Parametern aufgefüllt“" border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>Festlegen statischer Parameter über die REST-API
 
@@ -177,15 +172,15 @@ Das Gegenteil eines statischen Parameters ist ein **dynamischer Parameter**. Die
 
 1. Wählen Sie auf der Seite links die Option **Blaupausendefinitionen**.
 
-1. Klicken Sie mit der rechten Maustaste auf die Blaupause, die Sie zuweisen möchten. Wählen Sie **Blaupause zuweisen** aus, oder klicken Sie auf die Blaupause, die Sie zuweisen möchten, und klicken Sie dann auf die Schaltfläche **Blaupause zuweisen**.
+1. Klicken Sie mit der rechten Maustaste auf die Blaupause, die Sie zuweisen möchten. Wählen Sie **Blaupause zuweisen** aus, ODER wählen Sie die Blaupause aus, die Sie zuweisen möchten, und verwenden Sie dann die Schaltfläche **Blaupause zuweisen**.
 
 1. Auf der Seite **Blaupause zuweisen** finden Sie den Abschnitt **Artefaktparameter**. Für jedes Artefakt mit mindestens einem **dynamischen Parameter** werden das Artefakt und die zugehörigen Konfigurationsoptionen angezeigt. Geben Sie erforderliche Werte für die Parameter an, bevor Sie die Blaupause zuweisen. Im folgenden Beispiel ist _Name_ ein **dynamischer Parameter**, der definiert werden muss, um die Blaupausenzuweisung abzuschließen.
 
-   ![Dynamische Blaupausenparameter während der Blaupausenzuweisung](../media/parameters/dynamic-parameter.png)
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Screenshot einer Blaupausendefinition mit Hervorhebung von „X von Y Parametern aufgefüllt“" border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Festlegen dynamischer Parameter über die REST-API
 
-Zum Festlegen von **dynamischen Parametern** während der Zuweisung wird der jeweilige Wert direkt eingegeben. Anstelle einer Funktion wie [parameters()](../reference/blueprint-functions.md#parameters) wird eine passende Zeichenfolge als Wert angegeben. Artefakte für eine Ressourcengruppe werden mit einem Vorlagennamen und den Eigenschaften **name** und **location** definiert. Alle anderen Parameter für das enthaltene Artefakt werden unter **parameters** mit einem **\<Name\>** -**Wert**-Schlüsselpaar definiert. Wenn die Blaupause für einen dynamischen Parameter konfiguriert ist, der bei der Zuweisung nicht angegeben wird, tritt bei der Zuweisung ein Fehler auf.
+Zum Festlegen von **dynamischen Parametern** während der Zuweisung wird der jeweilige Wert direkt eingegeben. Anstelle einer Funktion wie [parameters()](../reference/blueprint-functions.md#parameters) wird eine passende Zeichenfolge als Wert angegeben. Artefakte für eine Ressourcengruppe werden mit einem Vorlagennamen und den Eigenschaften **name** und **location** definiert. Alle anderen Parameter für das enthaltene Artefakt werden unter **parameters** mit einem **\<name\>** -**Wert**-Schlüsselpaar definiert. Wenn die Blaupause für einen dynamischen Parameter konfiguriert ist, der bei der Zuweisung nicht angegeben wird, tritt bei der Zuweisung ein Fehler auf.
 
 - REST-API-URI
 
@@ -239,8 +234,8 @@ Zum Festlegen von **dynamischen Parametern** während der Zuweisung wird der jew
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen finden Sie in der Liste der [Blaupausenfunktionen](../reference/blueprint-functions.md).
-- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](lifecycle.md).
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](sequencing-order.md) anpassen können.
-- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](resource-locking.md) können.
+- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](./lifecycle.md).
+- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](./sequencing-order.md) anpassen können.
+- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](./resource-locking.md) können.
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
 - Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).

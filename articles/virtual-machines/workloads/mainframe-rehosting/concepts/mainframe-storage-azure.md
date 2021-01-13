@@ -6,16 +6,16 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: dc78f87d9b47745119da91b8ed1f8f6c8572968c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f57210ff6b65ee3a893fb344a48629466e90004
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190442"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095354"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Verschieben von Mainframespeicher zu Azure
 
-Um Mainframeworkloads auf Microsoft Azure auszuführen, müssen Sie wissen, wie sich die Funktionen Ihres Mainframes im Vergleich zu Azure verhalten. Die hochgradig skalierbaren Speicherressourcen können Organisationen beim Einstieg in die Modernisierung unterstützen, ohne dass die aktuell verwendeten Anwendungen aufgegeben werden müssen.
+Um Mainframeworkloads unter Microsoft Azure auszuführen, müssen Sie wissen, welche Entsprechungen der Funktionen Ihres Mainframes in Azure verfügbar sind. Die hochgradig skalierbaren Speicherressourcen können Organisationen beim Einstieg in die Modernisierung unterstützen, ohne dass die aktuell verwendeten Anwendungen aufgegeben werden müssen.
 
 Azure bietet mainframeähnliche Funktionen und Speicherkapazität, die mit IBM z14-basierten Systemen vergleichbar ist (bezogen auf das neueste Modell zum Zeitpunkt des Verfassens dieses Artikels). In diesem Artikel erfahren Sie, wie Sie auf Azure vergleichbare Resultate erzielen.
 
@@ -45,19 +45,19 @@ Azure-IaaS-Optionen ([ Infrastructure-as-a-Service](https://azure.microsoft.com/
 
 Microsoft bietet Petabytes an Speicher für in Azure gehostete Anwendungen, und es besteht eine Reihe von Speicheroptionen. Diese reichen von SSD-Speicher für hohe Leistung bis zu preisgünstigem Blob-Speicher für die Massenspeicherung und Archive. Darüber hinaus bietet Azure eine Datenredundanzoption für die Speicherung – etwas, was sich in einer Mainframeumgebung nur mit größerem Aufwand realisieren lässt.
 
-Azure-Speicher steht in Form von [Azure-Datenträgern](/azure/virtual-machines/windows/managed-disks-overview), [Azure Files](/azure/storage/files/storage-files-introduction) und [Azure-Blobs](/azure/storage/blobs/storage-blobs-overview) zur Verfügung, wie in der folgenden Tabelle zusammengefasst. Erfahren Sie mehr über die [Einsatzzwecke der einzelnen Optionen](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+Azure-Speicher steht in Form von [Azure-Datenträgern](../../../managed-disks-overview.md), [Azure Files](../../../../storage/files/storage-files-introduction.md) und [Azure-Blobs](../../../../storage/blobs/storage-blobs-overview.md) zur Verfügung, wie in der folgenden Tabelle zusammengefasst. Erfahren Sie mehr über die [Einsatzzwecke der einzelnen Optionen](../../../../storage/common/storage-introduction.md).
 
 <!-- markdownlint-disable MD033 -->
 
 <table>
 <thead>
-    <tr><th>Type</th><th>BESCHREIBUNG</th><th>Für diese Zwecke geeignet:</th></tr>
+    <tr><th>type</th><th>BESCHREIBUNG</th><th>Für diese Zwecke geeignet:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files
 </td>
 <td>
-Bietet eine SMB-Schnittstelle, Clientbibliotheken und eine <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST-Schnittstelle</a>, mit denen Sie von überall auf gespeicherte Dateien zugreifen können.
+Bietet eine SMB-Schnittstelle, Clientbibliotheken und eine <a href="/rest/api/storageservices/file-service-rest-api">REST-Schnittstelle</a>, mit denen Sie von überall auf gespeicherte Dateien zugreifen können.
 </td>
 <td><ul>
 <li>Verschieben einer Anwendung mit der „Lift and Shift“-Methode in die Cloud, wenn die Anwendung bereits die nativen Dateisystem-APIs verwendet, um Daten für andere in Azure ausgeführte Anwendungen freizugeben.</li>
@@ -67,7 +67,7 @@ Bietet eine SMB-Schnittstelle, Clientbibliotheken und eine <a href="https://docs
 </tr>
 <tr><td>Azure-Blobs
 </td>
-<td>Bietet Clientbibliotheken und eine <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST-Schnittstelle</a>, der große Mengen an unstrukturierten Daten in Blockblobs gespeichert und abgerufen werden können. Blob Storage unterstützt darüber hinaus <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> für Big Data-Analyselösungen auf Unternehmensniveau.
+<td>Bietet Clientbibliotheken und eine <a href="/rest/api/storageservices/blob-service-rest-api">REST-Schnittstelle</a>, der große Mengen an unstrukturierten Daten in Blockblobs gespeichert und abgerufen werden können. Blob Storage unterstützt darüber hinaus <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> für Big Data-Analyselösungen auf Unternehmensniveau.
 </td>
 <td><ul>
 <li>Unterstützung von Streaming und direktem Zugriff in einer Anwendung.</li>
@@ -77,7 +77,7 @@ Bietet eine SMB-Schnittstelle, Clientbibliotheken und eine <a href="https://docs
 </tr>
 <tr><td>Azure Disks
 </td>
-<td>Bietet Clientbibliotheken und eine <a href="https://docs.microsoft.com/rest/api/compute/disks">REST-Schnittstelle</a>, mit der Sie Daten beständig von einer angefügten virtuellen Festplatte speichern und abrufen können.
+<td>Bietet Clientbibliotheken und eine <a href="/rest/api/compute/disks">REST-Schnittstelle</a>, mit der Sie Daten beständig von einer angefügten virtuellen Festplatte speichern und abrufen können.
 </td>
 <td><ul>
 <li>Verschieben von Anwendungen mit der „Lift and Shift“-Methode, die native Dateisystem-APIs verwenden, um Daten in beständigen Datenträgern zu lesen und dort hinein zu schreiben.</li>
@@ -94,7 +94,7 @@ Der Typ des Speichers für ein bestimmtes System hängt von den Anforderungen de
 
 SSDs bietet auf Azure die höchste Speicherleistung. Die folgenden Optionen sind verfügbar (zum Zeitpunkt, da dieses Dokument geschrieben wird):
 
-| Type         | Größe           | IOPS                  |
+| type         | Size           | IOPS                  |
 |--------------|----------------|-----------------------|
 | SSD Ultra    | 4 GB bis 64 TB  | 1\.200 bis 160.000 IOPS |
 | SSD Premium  | 32 GB bis 32 TB | 12 bis 15.000 IOPS     |
@@ -105,10 +105,10 @@ Blob-Speicher bietet das größte Speichervolumen auf Azure. Neben der Speicherg
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Mainframemigration](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Mainframerehosting auf virtuellen Azure-Computern](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Mainframerehosting auf virtuellen Azure-Computern](../overview.md)
 - [Move mainframe compute to Azure (Migrieren von Mainframecomputeressourcen zu Azure)](mainframe-compute-Azure.md)
-- [Deciding when to use Azure Blobs, Azure Files, or Azure Disks (Kriterien für den Einsatz von Azure-Blobs, Azure-Dateifreigaben und verwalteten Azure-Datenträgern)](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
-- [Verwaltete SSD Standard-Datenträger für Azure-VM-Workloads](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
+- [Deciding when to use Azure Blobs, Azure Files, or Azure Disks (Kriterien für den Einsatz von Azure-Blobs, Azure-Dateifreigaben und verwalteten Azure-Datenträgern)](../../../../storage/common/storage-introduction.md)
+- [Verwaltete SSD Standard-Datenträger für Azure-VM-Workloads](../../../disks-types.md#standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM-Ressourcen
 
@@ -126,6 +126,5 @@ Blob-Speicher bietet das größte Speichervolumen auf Azure. Neben der Speicherg
 
 ### <a name="more-migration-resources"></a>Weitere Migrationsressourcen
 
-- [Platform Modernization Alliance: IBM Db2 on Azure (Platform Modernization Alliance: IBM Db2 unter Azure)](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 - [Virtuelles Azure-Rechenzentrum: Lift and Shift-Leitfaden](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
-- [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [GlusterFS iSCSI](https://glusterdocs.readthedocs.io/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

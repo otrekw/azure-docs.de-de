@@ -1,19 +1,19 @@
 ---
-title: 'Azure-VMware-Lösung von CloudSimple: Lokale Verbindung mithilfe von ExpressRoute'
+title: 'Azure VMware Solution by CloudSimple: Lokale Verbindung mithilfe von ExpressRoute'
 description: Beschreibt, wie eine lokale Verbindung mithilfe von ExpressRoute aus dem CloudSimple-Regionsnetzwerk angefordert wird.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 27d1d9e54838d9f45a28d634fa1c24fb8785aee1
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910546"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899234"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Herstellen einer Verbindung aus der lokalen Umgebung mit CloudSimple mithilfe von ExpressRoute
 
@@ -66,7 +66,7 @@ Zum Einrichten der ExpressRoute-Verbindung müssen Sie eine Autorisierung für I
 6. Reichen Sie ein Ticket für die zu erstellende Verbindung beim <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">Support</a> ein.
     * Problemtyp: **Technisch**
     * Abonnement: **Abonnement, in dem der CloudSimple-Dienst bereitgestellt wird**
-    * Dienst: **VMware-Lösung von CloudSimple**
+    * Dienst: **VMware Solution by CloudSimple**
     * Problemtyp: **Dienstanforderung**
     * Problemuntertyp: **Erstellen einer ExpressRoute-Verbindung mit der lokalen Umgebung**
     * Geben Sie die Ressourcen-ID und den Autorisierungsschlüssel an, den Sie im Detailbereich kopiert und gespeichert haben.

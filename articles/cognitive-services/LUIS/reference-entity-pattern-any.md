@@ -3,21 +3,19 @@ title: Entität vom Typ „Pattern.any“ – LUIS
 titleSuffix: Azure Cognitive Services
 description: Pattern.any ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um zu kennzeichnen, wo die Entität beginnt und endet.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/24/2019
-ms.author: diberry
-ms.openlocfilehash: cda6c724a36a73dc34c2bf8e7158e3e3ec92d46b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 09/29/2019
+ms.openlocfilehash: ec23be3709cebc534c059a21c52452abff683b18
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563226"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542205"
 ---
-# <a name="patternany-entity"></a>Entität „Pattern.any“ 
+# <a name="patternany-entity"></a>Entität „Pattern.any“
 
 Pattern.any ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um zu kennzeichnen, wo die Entität beginnt und endet.  
 
@@ -25,13 +23,13 @@ Pattern.any-Entitäten müssen in [Pattern](luis-how-to-model-intent-pattern.md)
 
 **Diese Entität ist gut geeignet, wenn Folgendes gilt**:
 
-* Die Endung der Entität kann leicht mit dem verbleibenden Text der Äußerung verwechselt werden. 
+* Die Endung der Entität kann leicht mit dem verbleibenden Text der Äußerung verwechselt werden.
 
 ## <a name="usage"></a>Verwendung
 
-Bei einer Clientanwendung, mit der anhand des Titels nach Büchern gesucht wird, wird mit pattern.any der vollständige Titel extrahiert. Eine Vorlagenäußerung mit pattern.any für diese Buchsuche lautet `Was {BookTitle} written by an American this year[?]` (Wurde {Buchtitel} in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?). 
+Bei einer Clientanwendung, mit der anhand des Titels nach Büchern gesucht wird, wird mit pattern.any der vollständige Titel extrahiert. Eine Vorlagenäußerung mit pattern.any für diese Buchsuche lautet `Was {BookTitle} written by an American this year[?]` (Wurde {Buchtitel} in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?).
 
-In der folgenden Tabelle enthält jede Zeile zwei Versionen der Äußerung. Die obere Äußerung entspricht dem, wie die Äußerung anfänglich in LUIS dargestellt wird. Es ist nicht klar, wo der Buchtitel beginnt und endet. Die untere Äußerung verwendet eine Pattern.any-Entität, um Anfang und Ende der Entität zu markieren. 
+In der folgenden Tabelle enthält jede Zeile zwei Versionen der Äußerung. Die obere Äußerung entspricht dem, wie die Äußerung anfänglich in LUIS dargestellt wird. Es ist nicht klar, wo der Buchtitel beginnt und endet. Die untere Äußerung verwendet eine Pattern.any-Entität, um Anfang und Ende der Entität zu markieren.
 
 |Äußerung mit Entität in Fettformatierung|
 |--|
@@ -41,49 +39,71 @@ In der folgenden Tabelle enthält jede Zeile zwei Versionen der Äußerung. Die 
 |`Was There's A Wocket In My Pocket! written by an American this year?`<br><br>Wurde **There's A Wocket In My Pocket!** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
 ||
 
+
+
 ## <a name="example-json"></a>JSON-Beispiel
 
+Betrachten Sie die folgende Abfrage:
+
+`where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
+
+Mit dem eingebetteten Formularnamen, der als „Pattern.any“ extrahiert werden soll:
+
+`Understand your responsibilities as a member of the community`
+
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+
 ```JSON
-{
-  "query": "where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?",
-  "topScoringIntent": {
-    "intent": "FindForm",
-    "score": 0.999999464
-  },
-  "intents": [
-    {
-      "intent": "FindForm",
-      "score": 0.999999464
-    },
-    {
-      "intent": "GetEmployeeBenefits",
-      "score": 4.883697E-06
-    },
-    {
-      "intent": "None",
-      "score": 1.02040713E-06
-    },
-    {
-      "intent": "GetEmployeeOrgChart",
-      "score": 9.278342E-07
-    },
-    {
-      "intent": "MoveAssetsOrPeople",
-      "score": 9.278342E-07
-    }
-  ],
-  "entities": [
-    {
-      "entity": "understand your responsibilities as a member of the community",
-      "type": "FormName",
-      "startIndex": 18,
-      "endIndex": 78,
-      "role": ""
-    }
-  ]
+"entities": [
+  {
+    "entity": "understand your responsibilities as a member of the community",
+    "type": "FormName",
+    "startIndex": 18,
+    "endIndex": 78,
+    "role": ""
+  }
+```
+
+
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+
+Dies ist der JSON-Code, wenn `verbose=false` in der Abfragezeichenfolge festgelegt ist:
+
+```json
+"entities": {
+    "FormName": [
+        "Understand your responsibilities as a member of the community"
+    ]
 }
 ```
 
+Dies ist der JSON-Code, wenn `verbose=true` in der Abfragezeichenfolge festgelegt ist:
+
+```json
+"entities": {
+    "FormName": [
+        "Understand your responsibilities as a member of the community"
+    ],
+    "$instance": {
+        "FormName": [
+            {
+                "type": "FormName",
+                "text": "Understand your responsibilities as a member of the community",
+                "startIndex": 18,
+                "length": 61,
+                "modelTypeId": 7,
+                "modelType": "Pattern.Any Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+* * *
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem [Tutorial](luis-tutorial-pattern-any.md) verwenden Sie die Entität **Pattern.any**, um Daten aus Äußerungen zu extrahieren, in denen die Äußerungen wohlgeformt sind und das Ende der Daten nicht leicht von den restlichen Wörtern der Äußerung unterschieden werden kann.
+In diesem [Tutorial](luis-tutorial-pattern.md) verwenden Sie die Entität **Pattern.any**, um Daten aus Äußerungen zu extrahieren, in denen die Äußerungen wohlgeformt sind und das Ende der Daten nicht leicht von den restlichen Wörtern der Äußerung unterschieden werden kann.

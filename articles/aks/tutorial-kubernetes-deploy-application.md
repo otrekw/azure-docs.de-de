@@ -2,18 +2,15 @@
 title: 'Tutorial zu Kubernetes in Azure: Bereitstellen einer Anwendung'
 description: In diesem Azure Kubernetes Service-Tutorial (AKS) stellen Sie mithilfe eines in Azure Container Registry gespeicherten benutzerdefinierten Images eine Anwendung mit mehreren Containern in Ihrem Cluster bereit.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
-ms.author: mlearned
+ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: 85471323a7f8918d80b7c0944fe5c255e9fa836a
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 8114aa0b6c2483d543376727a44d14041ed02b37
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "69018918"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576488"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Tutorial: Ausführen von Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -32,7 +29,7 @@ Für diese Schnellstartanleitung werden Grundkenntnisse in Bezug auf die Kuberne
 
 In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, das Image wurde in Azure Container Registry hochgeladen, und es wurde ein Kubernetes-Cluster erstellt.
 
-Für dieses Tutorial benötigen Sie die vorab erstellte Kubernetes-Manifestdatei `azure-vote-all-in-one-redis.yaml`. Diese Datei wurde in einem vorherigen Tutorial mit dem Anwendungsquellcode heruntergeladen. Stellen Sie sicher, dass Sie das Repository geklont und Verzeichnisse im geklonten Repository geändert haben. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, sollten Sie mit [Tutorial 1: Erstellen von Containerimages][aks-tutorial-prepare-app] beginnen.
+Für dieses Tutorial benötigen Sie die vorab erstellte Kubernetes-Manifestdatei `azure-vote-all-in-one-redis.yaml`. Diese Datei wurde in einem vorherigen Tutorial mit dem Anwendungsquellcode heruntergeladen. Stellen Sie sicher, dass Sie das Repository geklont und Verzeichnisse im geklonten Repository geändert haben. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, beginnen Sie mit [Tutorial 1: Erstellen von Containerimages][aks-tutorial-prepare-app].
 
 Für dieses Tutorial müssen Sie mindestens Version 2.0.53 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
@@ -57,7 +54,7 @@ Ersetzen Sie *microsoft* durch Ihren ACR-Anmeldeservernamen. Der Imagename befin
 ```yaml
 containers:
 - name: azure-vote-front
-  image: microsoft/azure-vote-front:v1
+  image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
 ```
 
 Geben Sie Ihren eigenen ACR-Anmeldeservernamen an, sodass Ihre Manifestdatei wie im folgenden Beispiel aussieht:
@@ -105,7 +102,7 @@ Die *EXTERNAL-IP*-Adresse für den Dienst *azure-vote-front* wird zunächst als 
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
-Sobald die *EXTERNAL-IP*-Adresse von *ausstehend* in eine tatsächliche öffentliche IP-Adresse geändert wurde, wird, verwenden Sie `CTRL-C`, um die `kubectl`-Überwachung zu beenden. Die folgende Beispielausgabe zeigt eine gültige öffentliche IP-Adresse, die dem Dienst zugewiesen ist:
+Sobald die externe IP-Adresse (*EXTERNAL-IP*) von *ausstehend* in eine tatsächliche öffentliche IP-Adresse geändert wurde, wird, verwenden Sie `CTRL-C`, um die `kubectl`-Überwachung zu beenden. Die folgende Beispielausgabe zeigt eine gültige öffentliche IP-Adresse, die dem Dienst zugewiesen ist:
 
 ```
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
@@ -115,11 +112,11 @@ azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   6
 
 ![Abbildung: Kubernetes-Cluster in Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-Wurde die Anwendung nicht geladen, liegt möglicherweise ein Autorisierungsproblem mit Ihrer Imageregistrierung vor. Verwenden Sie den Befehl `kubectl get pods`, um den Status Ihrer Container anzuzeigen. Wenn die Containerimages nicht per Pull abgerufen werden können, finden Sie unter [Zugreifen per Kubernetes-Geheimnis](https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret) weitere Informationen.
+Wurde die Anwendung nicht geladen, liegt möglicherweise ein Autorisierungsproblem mit Ihrer Imageregistrierung vor. Verwenden Sie den Befehl `kubectl get pods`, um den Status Ihrer Container anzuzeigen. Können die Containerimages nicht gepullt werden, lesen Sie die Informationen unter [Authentifizieren bei Azure Container Registry aus Azure Kubernetes Service](cluster-container-registry-integration.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde eine Azure Vote-Beispielanwendung in einem Kubernetes-Cluster in AKS bereitgestellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial wurde eine Azure Vote-Beispielanwendung in einem Kubernetes-Cluster in AKS bereitgestellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Aktualisieren einer Kubernetes-Manifestdatei

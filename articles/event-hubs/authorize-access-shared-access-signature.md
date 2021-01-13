@@ -1,19 +1,14 @@
 ---
 title: Autorisieren des Zugriffs mit einer Shared Access Signature in Azure Event Hubs
 description: Dieser Artikel enthält Informationen zur Autorisierung des Zugriffs auf Azure Event Hubs-Ressourcen mit Shared Access Signatures (SAS).
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.author: spelluru
-ms.openlocfilehash: bdb1896f8a40c6de21ae76b536bfccec316341cd
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 06/23/2020
+ms.openlocfilehash: 6a2d7385f82864e8d378055333377fb9c3f73c19
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992446"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85323116"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Shared Access Signatures
 Mit einer Shared Access Signature (SAS) können Sie eingeschränkten Zugriff auf Ressourcen in Ihrem Event Hubs-Namespace gewähren. SAS schützt den Zugriff auf Event Hubs-Ressourcen mit Autorisierungsregeln. Diese Regeln werden entweder in einem Namespace oder in einer Entität (Event Hub oder Thema) konfiguriert. Dieser Artikel enthält eine Übersicht über das SAS-Modell und eine Beschreibung der bewährten Methoden für SAS.
@@ -67,7 +62,7 @@ Mit den folgenden Empfehlungen für die Verwendung von Shared Access Signatures 
 Shared Access Signatures sind nützlich, um für Ihre Clients eingeschränkte Berechtigungen für Event Hubs-Ressourcen bereitzustellen. Es handelt sich hierbei um einen wichtigen Teil des Sicherheitsmodells für alle Anwendungen, die Azure Event Hubs verwenden. Wenn Sie sich an die in diesem Artikel beschriebenen bewährten Methoden halten, können Sie mit SAS eine größere Flexibilität für den Zugriff auf Ihre Ressourcen erzielen, ohne die Sicherheit Ihrer Anwendung zu gefährden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen finden Sie in den folgenden verwandten Artikeln: 
+Weitere Informationen finden Sie in den folgenden verwandten Artikeln: 
 
 - [Authentifizieren von Anforderungen an Event Hubs über eine Anwendung mithilfe von Azure Active Directory](authenticate-application.md)
 - [Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Event Hubs-Ressourcen](authenticate-managed-identity.md)

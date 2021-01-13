@@ -1,6 +1,6 @@
 ---
 title: Behandeln von RDP-Verbindungsfehlern bei virtuellen Azure-Computern anhand der Ereignis-ID | Microsoft-Dokumentation
-description: ''
+description: Verwenden Sie Ereignis-IDs zum Behandeln von verschiedenen Problemen, die eine RDP-Verbindung (Remotedesktopprotokoll) mit einem virtuellen Azure-Computer (VM) verhindern.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 166648402eec7f8033c090a3f7862a902bae4be6
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154204"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87088596"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Behandeln von RDP-Verbindungsfehlern bei virtuellen Azure-Computern anhand der Ereignis-ID 
 
@@ -56,36 +56,36 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 
 **Protokollname**:      System <br />
 **Quelle:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Datum:**          *Uhrzeit* <br />
+**Datum:**          *Zeit* <br />
 **Ereignis-ID:**      1058 <br />
 **Aufgabenkategorie:** Keine <br />
-**Ebene:**         Error <br />
+**Ebene:**         Fehler <br />
 **Schlüsselwörter:**      Klassisch <br />
 **Benutzer:**          – <br />
 **Computer:**      *Computer* <br />
-**Beschreibung:** Der RD-Sitzungshostserver konnte das abgelaufene selbstsignierte Zertifikat nicht ersetzen, das für die Authentifizierung des RD-Sitzungshostservers bei SSL-Verbindungen verwendet wird. Der relevante Statuscode war „Zugriff verweigert“.
+**Beschreibung:** Der RD-Sitzungshostserver konnte das abgelaufene selbstsignierte Zertifikat nicht ersetzen, das für die Authentifizierung des RD-Sitzungshostservers bei TLS-Verbindungen verwendet wird. Der relevante Statuscode war „Zugriff verweigert“.
 
 **Protokollname**:      System <br />
 **Quelle:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Datum:**          *Uhrzeit* <br />
+**Datum:**          *Zeit* <br />
 **Ereignis-ID:**      1058 <br />
 **Aufgabenkategorie:** Keine <br />
-**Ebene:**         Error <br />
+**Ebene:**         Fehler <br />
 **Schlüsselwörter:**      Klassisch <br />
 **Benutzer:**          – <br />
 **Computer:**      *Computer* <br />
-**Beschreibung:** Der RD-Sitzungshostserver konnte kein neues selbstsigniertes Zertifikat für die Authentifizierung des RD-Sitzungshostservers bei SSL-Verbindungen erstellen, der relevante Statuscode war „Objekt bereits vorhanden“.
+**Beschreibung:** Der RD-Sitzungshostserver konnte kein neues selbstsigniertes Zertifikat für die Authentifizierung des RD-Sitzungshostservers bei TLS-Verbindungen erstellen, der relevante Statuscode war „Objekt bereits vorhanden“.
 
 **Protokollname**:      System <br />
 **Quelle:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Datum:**          *Uhrzeit* <br />
+**Datum:**          *Zeit* <br />
 **Ereignis-ID:**      1057 <br />
 **Aufgabenkategorie:** Keine <br />
-**Ebene:**         Error <br />
+**Ebene:**         Fehler <br />
 **Schlüsselwörter:**      Klassisch <br />
 **Benutzer:**          – <br />
 **Computer:**      *Computer* <br />
-**Beschreibung:** Der RD-Sitzungshostserver konnte kein neues selbstsigniertes Zertifikat für die Authentifizierung des RD-Sitzungshostservers bei SSL-Verbindungen erstellen. Der relevante Statuscode war „Keyset nicht vorhanden“.
+**Beschreibung:** Der RD-Sitzungshostserver konnte kein neues selbstsigniertes Zertifikat für die Authentifizierung des RD-Sitzungshostservers bei TLS-Verbindungen erstellen. Der relevante Statuscode war „Keyset nicht vorhanden“.
 
 Sie können außerdem nach den SCHANNEL-Fehlerereignissen 36872 und 36870 suchen, indem Sie die folgenden Befehle ausführen:
 
@@ -99,11 +99,11 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Datum:**          — <br />
 **Ereignis-ID:**      36870 <br />
 **Aufgabenkategorie:** Keine <br />
-**Ebene:**         Error <br />
+**Ebene:**         Fehler <br />
 **Schlüsselwörter:**       <br />
 **Benutzer:**          SYSTEM <br />
 **Computer:**      *Computer* <br />
-**Beschreibung:** Schwerwiegender Fehler beim Versuch, auf den privaten Schlüssel der SSL-Server-Anmeldeinformationen zuzugreifen. Der vom Kryptografiemodul zurückgegebene Fehlercode ist 0x8009030D.  <br />
+**Beschreibung:** Schwerwiegender Fehler beim Versuch, auf den privaten Schlüssel der TLS-Server-Anmeldeinformationen zuzugreifen. Der vom Kryptografiemodul zurückgegebene Fehlercode ist 0x8009030D.  <br />
 Der interne Fehlerstatus ist 10001.
 
 ### <a name="cause"></a>Ursache
@@ -186,9 +186,9 @@ Wenn Sie das Zertifikat nicht erneuern können, befolgen Sie diese Schritte, um 
 
 Versuchen Sie noch einmal, mithilfe von RDP auf die VM zuzugreifen.
 
-#### <a name="update-secure-sockets-layer-ssl-certificate"></a>Aktualisieren des SSL-Zertifikats (Secure Sockets Layer)
+#### <a name="update-tlsssl-certificate"></a>Aktualisieren des TSL/SSL-Zertifikats
 
-Wenn Sie die VM für die Verwendung eines SSL-Zertifikats einrichten, führen Sie den folgenden Befehl aus, um den Fingerabdruck abzurufen. Überprüfen Sie dann, ob er mit dem Fingerabdruck des Zertifikats übereinstimmt:
+Wenn Sie die VM für die Verwendung eines TLS/SSL-Zertifikats einrichten, führen Sie den folgenden Befehl aus, um den Fingerabdruck abzurufen. Überprüfen Sie dann, ob er mit dem Fingerabdruck des Zertifikats übereinstimmt:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash
@@ -206,7 +206,7 @@ Sie können außerdem versuchen, den Schlüssel zu löschen, so dass RDP das sel
 reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash
 ```
 
-## <a name="scenario-2"></a>Szenario 2:
+## <a name="scenario-2"></a>Szenario 2
 
 ### <a name="event-log"></a>Ereignisprotokoll
 
@@ -221,7 +221,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Datum:**          — <br />
 **Ereignis-ID:**      36871 <br />
 **Aufgabenkategorie:** Keine <br />
-**Ebene:**         Error <br />
+**Ebene:**         Fehler <br />
 **Schlüsselwörter:**       <br />
 **Benutzer:**          SYSTEM <br />
 **Computer:**      *Computer* <br />
@@ -237,7 +237,7 @@ RDP verwendet TLS 1.0 als Standardprotokoll. Allerdings kann das Protokoll in TL
 
 Informationen zur Behandlung dieses Problems finden Sie unter [Problembehandlung von Authentifizierungsfehlern bei der Verwendung von RDP für das Herstellen von Verbindungen mit Azure-VMs](troubleshoot-authentication-error-rdp-vm.md#tls-version).
 
-## <a name="scenario-3"></a>Szenario 3
+## <a name="scenario-3"></a>Szenario 3
 
 Wenn Sie die **Remotedesktop-Verbindungsbroker**-Rolle auf der VM installiert haben, überprüfen Sie, ob innerhalb der letzten 24 Stunden Ereignis 2056 oder Ereignis 1296 aufgetreten sind. Führen Sie in einer CMD-Instanz die folgenden Befehle aus: 
 
@@ -248,13 +248,13 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 
 **Protokollname**:      Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
 **Quelle:**        Microsoft-Windows-TerminalServices-SessionBroker <br />
-**Datum:**          *Uhrzeit* <br />
+**Datum:**          *Zeit* <br />
 **Ereignis-ID:**      2056 <br />
 **Aufgabenkategorie:** (109) <br />
-**Ebene:**         Error <br />
+**Ebene:**         Fehler <br />
 **Schlüsselwörter:**       <br />
 **Benutzer:**          NETZWERKDIENST <br />
-**Computer:**      *Computer fqdn* <br />
+**Computer:**      *FQDN des Computers* <br />
 **Beschreibung:** Die Beschreibung für Ereignis-ID 2056 aus der Quelle „Microsoft-Windows-TerminalServices-SessionBroker“ wurde nicht gefunden. Entweder ist die Komponente, die dieses Ereignis auslöst, auf Ihrem lokalen Computer nicht installiert, oder die Installation ist beschädigt. Sie können die Komponente auf dem lokalen Computer installieren oder reparieren. <br />
 Würde das Ereignis von einem anderen Computer stammen, hätten die Anzeigeinformationen zusammen mit dem Ereignis gespeichert werden müssen. <br />
 Das Ereignis beinhaltet die folgenden Informationen: <br />
@@ -264,13 +264,13 @@ Fehler bei der Anmeldung bei der Datenbank.
 
 **Protokollname**:      Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
 **Quelle:**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
-**Datum:**          *Uhrzeit* <br />
+**Datum:**          *Zeit* <br />
 **Ereignis-ID:**      1296 <br />
 **Aufgabenkategorie:** (104) <br />
-**Ebene:**         Error <br />
+**Ebene:**         Fehler <br />
 **Schlüsselwörter:**       <br />
 **Benutzer:**          NETZWERKDIENST <br />
-**Computer:**      *Computer fqdn* <br />
+**Computer:**      *FQDN des Computers* <br />
 **Beschreibung:** Die Beschreibung für Ereignis-ID 1296 aus der Quelle „Microsoft-Windows-TerminalServices-SessionBroker-Client“ wurde nicht gefunden. Entweder ist die Komponente, die dieses Ereignis auslöst, auf Ihrem lokalen Computer nicht installiert, oder die Installation ist beschädigt. Sie können die Komponente auf dem lokalen Computer installieren oder reparieren.
 Würde das Ereignis von einem anderen Computer stammen, hätten die Anzeigeinformationen zusammen mit dem Ereignis gespeichert werden müssen.
 Das Ereignis beinhaltet die folgenden Informationen:  <br />
@@ -290,13 +290,12 @@ Um dieses Problem zu lösen, müssen die Remotedesktop-Verbindungsbroker-Rolle u
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[SChannel-Ereignisse](https://technet.microsoft.com/library/dn786445(v=ws.11).aspx)
+[SChannel-Ereignisse](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786445(v=ws.11))
 
-[Schannel SSP – technische Übersicht](https://technet.microsoft.com/library/dn786429(v=ws.11).aspx)
+[Schannel SSP – technische Übersicht](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786429(v=ws.11))
 
-[RDP Fails with Event ID 1058 & Event 36870 with Remote Desktop Session Host Certificate & SSL Communication](https://blogs.technet.microsoft.com/askperf/2014/10/22/rdp-fails-with-event-id-1058-event-36870-with-remote-desktop-session-host-certificate-ssl-communication/) (RDP-Fehler mit Ereignis-ID 1058 und Ereignis 36870 mit Remotedesktop-Sitzungshostzertifikat und SSL-Kommunikation)
+[RDP Fails with Event ID 1058 & Event 36870 with Remote Desktop Session Host Certificate & SSL Communication](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) (RDP-Fehler mit Ereignis-ID 1058 und Ereignis 36870 mit Remotedesktop-Sitzungshostzertifikat und SSL-Kommunikation)
 
-[Schannel 36872 oder Schannel 36870 auf einem Domänencontroller](https://blogs.technet.microsoft.com/instan/2009/01/05/schannel-36872-or-schannel-36870-on-a-domain-controller/)
+[Schannel 36872 oder Schannel 36870 auf einem Domänencontroller](/archive/blogs/instan/schannel-36872-or-schannel-36870-on-a-domain-controller)
 
-[Ereignis-ID 1058 – Remotedesktopdienste, Authentifizierung und Verschlüsselung](https://technet.microsoft.com/library/ee890862(v=ws.10).aspx)
-
+[Ereignis-ID 1058 – Remotedesktopdienste, Authentifizierung und Verschlüsselung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee890862(v=ws.10))

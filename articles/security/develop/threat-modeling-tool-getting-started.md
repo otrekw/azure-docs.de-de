@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
-description: Dies ist eine detailliertere Übersicht über das Threat Modeling Tool in Aktion.
+description: Informieren Sie sich über die ersten Schritte mit dem Threat Modeling Tool. Erstellen Sie ein Diagramm, identifizieren und entschärfen Sie Bedrohungen, und überprüfen Sie jede Entschärfungsmaßnahme.
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 322f5f6a79bdce23706b2211ccc04ef2451675d0
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728331"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515726"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Erste Schritte mit dem Threat Modeling Tool
 
 Das Microsoft Threat Modeling Tool 2018 wurde im September 2018 als kostenlos **[per Mausklick](https://aka.ms/threatmodelingtool)** herunterladbare Version für die Allgemeinheit veröffentlicht. Die Änderung am Übermittlungsmechanismus ermöglicht uns, die neuesten Verbesserungen und Fehlerkorrekturen per Push an Kunden zu übertragen, sobald sie das Tool öffnen, wodurch es einfacher zu warten und zu nutzen ist.
 Dieser Artikel begleitet Sie durch die ersten Schritte mit dem Bedrohungsmodellierungsansatz des Microsoft Security Development Lifecycle (SDL) und veranschaulicht, wie Sie das Tool einsetzen, um überzeugende Bedrohungsmodelle als tragende Säule Ihres Sicherheitsprozesses zu entwickeln.
 
-Dieser Artikel setzt auf vorhandenen Kenntnissen zum SDL-Bedrohungsmodellierungsansatz auf. Eine Kurzübersicht finden Sie im Artikel zur **[Bedrohungsmodellierung für Webanwendungen](https://msdn.microsoft.com/library/ms978516.aspx)** und in einer archivierten Version des 2006 veröffentlichten MSDN-Artikels **[Uncover Security Flaws Using the STRIDE Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** (Aufdecken von Sicherheitslücken mit der STRIDE-Methode).
+Dieser Artikel setzt auf vorhandenen Kenntnissen zum SDL-Bedrohungsmodellierungsansatz auf. Eine Kurzübersicht finden Sie im Artikel zur **[Bedrohungsmodellierung für Webanwendungen](/previous-versions/msp-n-p/ff648006(v=pandp.10))** und in einer archivierten Version des 2006 veröffentlichten MSDN-Artikels **[Uncover Security Flaws Using the STRIDE Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** (Aufdecken von Sicherheitslücken mit der STRIDE-Methode).
 
 Kurz zusammengefasst, umfasst diese Methode das Erstellen eines Diagramms, das Bestimmen von Bedrohungen und deren Entschärfung sowie das Überprüfen jeder Entschärfung. Es folgt ein Diagramm dieses Prozesses:
 
@@ -87,7 +87,7 @@ Was Ricardo gerade eben Cristina gezeigt hat, ist ein **[Datenflussdiagramm](htt
 
 ## <a name="analyzing-threats"></a>Analysieren von Bedrohungen
 
-Nachdem er auf der Menüleiste mit den Symbolen auf die Analyseansicht (Datei mit Lupe) geklickt hat, gelangt er zu einer Liste generierter Bedrohungen, die das Threat Modeling Tool basierend auf der Standardvorlage gefunden hat. Diese befolgt den DSL-Ansatz **[STRIDE (Spoofing, Tampering, Info Disclosure, Denial of Service and Elevation of Privilege, dt. Spoofing, Manipulation, Veröffentlichung von Informationen, Nichtanerkennung, Denial of Service, Rechteerweiterungen)](https://en.wikipedia.org/wiki/STRIDE_(security))** . Die Idee ist, dass Software mit einer vorhersagbaren Gruppe von Bedrohungen geliefert wird, die mithilfe dieser sechs Kategorien gefunden werden können.
+Nachdem er auf der Menüleiste mit den Symbolen auf die Analyseansicht (Datei mit Lupe) geklickt hat, gelangt er zu einer Liste generierter Bedrohungen, die das Threat Modeling Tool basierend auf der Standardvorlage gefunden hat. Diese befolgt den DSL-Ansatz **[STRIDE (Spoofing, Tampering, Info Disclosure, Denial of Service and Elevation of Privilege, dt. Spoofing, Manipulation, Veröffentlichung von Informationen, Nichtanerkennung, Denial of Service, Rechteerweiterungen)](https://en.wikipedia.org/wiki/STRIDE_(security))**. Die Idee ist, dass Software mit einer vorhersagbaren Gruppe von Bedrohungen geliefert wird, die mithilfe dieser sechs Kategorien gefunden werden können.
 
 Diese Methode ist vergleichbar mit dem Absichern Ihres Hauses, indem sichergestellt wird, dass alle Türen und Fenster über einen Sperrmechanismus verfügen, ehe Sie eine Alarmanlage hinzufügen oder dem Dieb nachjagen.
 
@@ -97,11 +97,11 @@ Ricardo beginnt mit der Auswahl des ersten Elements in der Liste. Hier geschieht
 
 Erstens wird die Interaktion zwischen den beiden Schablonen verbessert.
 
-![Interaktion](./media/threat-modeling-tool-getting-started/interaction.png)
+![Screenshot: Zwei Schablonen und der gebogene Pfeil, mit dem sie über eine dickere Linie miteinander verbunden sind](./media/threat-modeling-tool-getting-started/interaction.png)
 
 Zweitens werden weitere Informationen zur Bedrohung im Fenster „Bedrohungseigenschaften“ hinzugefügt.
 
-![Interaktionsinformationen](./media/threat-modeling-tool-getting-started/interactioninfo.png)
+![Screenshot des Fensters „Bedrohungseigenschaften“, das Titel, Kategorie, Beschreibung, Interaktion und Priorität enthält.](./media/threat-modeling-tool-getting-started/interactioninfo.png)
 
 Die generierte Bedrohung hilft ihm, potenzielle Schwächen im Entwurf zu verstehen. Die STRIDE-Kategorisierung bietet ihm eine Vorstellung potenzieller Angriffsvektoren, während ihn die zusätzliche Beschreibung informiert, was genau falsch ist und welche potenziellen Entschärfungsmöglichkeiten es gibt. Er kann in den editierbaren Felder Notizen in die Begründungsdetails eingeben oder die Prioritätsstufen abhängig von der Fehlerleiste seiner Organisation ändern.
 
@@ -118,7 +118,7 @@ Bedrohungen, die für den Entwurf aufgrund vorhandener Entschärfungen oder Sich
 
 Nachdem Ricardo die Liste mit Cristina durchlaufen und wichtige Notizen, Entschärfungen/Begründungen, eine Priorität und Statusänderungen hinzugefügt hat, wählt er „Berichte -> Vollständigen Bericht erstellen -> Bericht speichern“. Den ausgegebenen Bericht geht er mit Kollegen durch, um sicherzustellen, dass die Sicherheitsmaßnahmen ordnungsgemäß umgesetzt wurden.
 
-![Interaktionsinformationen](./media/threat-modeling-tool-feature-overview/report.png)
+![Screenshot mit einem repräsentativen Bericht zur Bedrohungsmodellierung.](./media/threat-modeling-tool-feature-overview/report.png)
 
 Wenn Ricardo stattdessen die Datei freigeben möchte, kann er sie dazu mühelos im OneDrive-Konto der Organisation speichern. Im Anschluss kann er den Dokumentlink kopieren und für seine Kollegen freigeben. 
 

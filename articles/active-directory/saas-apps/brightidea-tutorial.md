@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Brightidea | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Brightidea konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3adae3e0-f43b-492f-b373-6a512d2d6046
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa15a91a6b82a8858bf46a08e8a9dbe11a51d8d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9967f349011b52a2218681956885c33456ba1d46
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105936"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672760"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Tutorial: Azure Active Directory-Integration mit Brightidea
 
@@ -31,7 +27,7 @@ Die Integration von Brightidea in Azure AD hat folgende Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Brightidea anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -70,7 +66,7 @@ Zum Konfigurieren der Integration von Brightidea in Azure AD müssen Sie Brighti
 
 4. Geben Sie **Brightidea** in das Suchfeld ein, wählen Sie im Ergebnisbereich **Brightidea** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Brightidea in der Ergebnisliste](common/search-new-app.png)
+    ![Brightidea in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -116,14 +112,14 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     c. Nachdem die Metadatendatei erfolgreich hochgeladen wurde, werden die Werte **Bezeichner** und **Antwort-URL** im Textfeld des Brightidea-Abschnitts automatisch aufgefüllt:
 
-    ![image](common/idp-intiated.png)
+    ![Screenshot der grundlegenden S A M L-Konfiguration, in der Sie I D und Antwort-U R L eingeben und „Speichern“ auswählen](common/idp-intiated.png)
 
     > [!Note]
     > Sollten die Werte **Bezeichner** und **Antwort-URL** nicht automatisch aufgefüllt werden, geben Sie die erforderlichen Werte manuell ein.
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.brightidea.com`
 
@@ -147,33 +143,33 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 2. Navigieren Sie in Ihrem Brightidea-System zu **Enterprise Setup** (Unternehmenseinrichtung) -> Registerkarte **Authentication** (Authentifizierung). Dort befinden sich zwei untergeordnete Registerkarten: „Auth Selection“ (Authentifizierungsauswahl) und „SAML Profiles“ (SAML-Profile).
 
-    ![Brightidea-Konfiguration](./media/brightidea-tutorial/configure1.png)
+    ![Screenshot: Brightidea-Website mit ausgewählter Registerkarte „Authentication“](./media/brightidea-tutorial/configure1.png)
 
 3. Wählen Sie **Auth Selection** (Authentifizierungsauswahl) aus. Standardmäßig werden nur zwei Standardmethoden angezeigt: „Brightidea Login“ (Brightidea-Anmeldung) und „Registration“ (Registrierung). Wenn eine SSO-Methode hinzugefügt wird, wird sie in der Liste angezeigt.
 
-    ![Brightidea-Konfiguration](./media/brightidea-tutorial/configure2.png)
+    ![Screenshot der Registerkarte „Authentication“ auf Brightidea, auf der „Auth Selection“ ausgewählt ist](./media/brightidea-tutorial/configure2.png)
 
 4. Wählen Sie **SAML Profiles** (SAML-Profile) aus, und gehen Sie wie folgt vor:
 
-    ![Brightidea-Konfiguration](./media/brightidea-tutorial/configure3.png)
+    ![Screenshot der Registerkarte „Authentication“ auf Brightidea, auf der „SAML Profiles“ mit den Optionen zum Herunterladen von Metadaten und Hinzufügen eines neuen Profils ausgewählt ist](./media/brightidea-tutorial/configure3.png)
 
     a. Klicken Sie auf **Download Metadata** (Metadaten herunterladen), und laden Sie sie im Abschnitt **Grundlegende SAML-Konfiguration** des Azure-Portals hoch.
 
     b. Klicken Sie unter **Identity Provider Setting** (Identitätsanbietereinstellung) auf die Schaltfläche **Add New** (Neu hinzufügen), und führen Sie die folgenden Schritte aus:
-    
-    ![Brightidea-Konfiguration](./media/brightidea-tutorial/configure4.png)
-    
-   * Geben Sie den **Namen des SAML-Profils**ein (beispielsweise `Azure Ad SSO`).
-    
+
+    ![Screenshot der Brightidea-Identitätsanbietereinstellungen, in denen Sie Informationen eingeben](./media/brightidea-tutorial/configure4.png)
+
+   * Geben Sie den **Namen des SAML-Profils** ein (beispielsweise `Azure Ad SSO`).
+
    * Klicken Sie unter **Upload Metadata** (Metadaten hochladen) auf die Dateiauswahloption, und laden Sie die heruntergeladene Metadatendatei aus dem Azure-Portal hoch.
 
      > [!NOTE]
      > Nach dem Hochladen der Metadatendatei werden die restlichen Felder (**Single Sign-on Service, Identity Provider Issuer, Upload Public Key** („SSO-Dienst“, „Aussteller des Identitätsanbieters“, „Öffentlichen Schlüssel hochladen“)) automatisch aufgefüllt.
 
    * Geben Sie im Textfeld **Email** (E-Mail-Adresse) den Wert `mail` ein.
-     
+
    * Geben Sie im Textfeld **Screen Name** (Anzeigename) den Wert `givenName` ein.
-     
+
    * Klicken Sie auf **Änderungen speichern**.  
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
@@ -193,13 +189,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -235,13 +231,12 @@ In diesem Abschnitt wird in Brightidea ein Benutzer namens Britta Simon erstellt
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Brightidea“ klicken, sollten Sie automatisch bei der Brightidea-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Brightidea“ klicken, sollten Sie automatisch bei der Brightidea-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

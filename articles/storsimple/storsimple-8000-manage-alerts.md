@@ -1,25 +1,17 @@
 ---
-title: Anzeigen und Verwalten von Warnungen für Geräte der StorSimple 8000-Serie | Microsoft-Dokumentation
+title: Anzeigen und Verwalten von Warnungen für Geräte der StorSimple 8000-Serie
 description: Beschreibt die StorSimple-Warnungsbedingungen und -Schweregrade, die Vorgehensweise zum Konfigurieren von Warnungsbenachrichtigungen sowie die Verwaltung von Warnungen mithilfe des StorSimple-Geräte-Manager-Diensts.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: c3be0cdf2ef33c26dfa9d177e9b34f808b1b862a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 36ed87a75d590a8647e5347b3e90e6f5159dc6b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60320387"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016844"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Anzeigen und Verwalten von StorSimple-Warnungen mithilfe des StorSimple-Geräte-Manager-Diensts
 
@@ -36,8 +28,8 @@ In diesem Tutorial werden häufige Warnungsbedingungen, Warnungsschweregrade und
 Ihr StorSimple-Gerät generiert Warnungen als Reaktion auf viele verschiedene Bedingungen. Folgende Arten von Warnungsbedingungen kommen am häufigsten vor:
 
 * **Hardwareprobleme** – Diese Warnungen informieren Sie über die Integrität der Hardware. Sie erfahren, wann Firmwareaktualisierungen erforderlich sind, ob für eine Netzwerkschnittstelle ein Problem besteht oder ob ein Fehler für ein Datenlaufwerk aufgetreten ist.
-* **Konnektivitätsprobleme**Diese Warnungen werden angezeigt, wenn es beim Übertragen von Daten zu Schwierigkeiten kommt. Kommunikationsprobleme können während der Übertragung von Daten in das bzw. aus dem Azure-Speicherkonto oder aufgrund einer fehlenden Verbindung zwischen den Geräten und dem StorSimple-Geräte-Manager-Dienst auftreten. Die Behebung von Kommunikationsproblemen ist besonders schwierig, da die Anzahl der möglichen Fehlerquellen hoch ist. Sie sollten sich immer zuerst vergewissern, dass die Netzwerkverbindung und der Internetzugriff verfügbar sind, bevor Sie sich mit der eingehenderen Problembehandlung beschäftigen. Weitere Informationen zur Problembehandlung finden Sie unter [Problembehandlung mit dem Cmdlet „Test-Connection“](storsimple-8000-troubleshoot-deployment.md).
-* **Leistungsprobleme**Diese Warnungen werden verursacht, wenn Ihr System keine optimale Leistung aufweist, z.B. bei einer hohen Auslastung.
+* **Konnektivitätsprobleme** Diese Warnungen werden angezeigt, wenn es beim Übertragen von Daten zu Schwierigkeiten kommt. Kommunikationsprobleme können während der Übertragung von Daten in das bzw. aus dem Azure-Speicherkonto oder aufgrund einer fehlenden Verbindung zwischen den Geräten und dem StorSimple-Geräte-Manager-Dienst auftreten. Die Behebung von Kommunikationsproblemen ist besonders schwierig, da die Anzahl der möglichen Fehlerquellen hoch ist. Sie sollten sich immer zuerst vergewissern, dass die Netzwerkverbindung und der Internetzugriff verfügbar sind, bevor Sie sich mit der eingehenderen Problembehandlung beschäftigen. Weitere Informationen zur Problembehandlung finden Sie unter [Problembehandlung mit dem Cmdlet „Test-Connection“](storsimple-8000-troubleshoot-deployment.md).
+* **Leistungsprobleme** Diese Warnungen werden verursacht, wenn Ihr System keine optimale Leistung aufweist, z.B. bei einer hohen Auslastung.
 
 Außerdem werden unter Umständen Warnungen zur Sicherheit, zu Updates oder zu Fehlern bei Aufträgen angezeigt.
 
@@ -83,7 +75,7 @@ Nachdem Sie die E-Mail-Benachrichtigung für ein Gerät aktiviert haben, erhalte
 
 5. Wenn Sie die Konfiguration abgeschlossen haben, klicken Sie auf **Speichern**. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**.
 
-     ![E-Mail zum Testen der Warnungsbenachrichtigung](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
+     ![E-Mail zum Testen der Warnungsbenachrichtigung 2](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
 
 ## <a name="view-and-track-alerts"></a>Anzeigen und Nachverfolgen von Warnungen
 
@@ -99,7 +91,7 @@ Wenn Sie in der Liste auf eine Warnung klicken, werden weitere Details zur Warnu
 
 Sie können die Details der Warnung in eine Textdatei kopieren, wenn Sie die Informationen an den Microsoft Support senden möchten. Nachdem Sie die Empfehlung befolgt und die Warnungsbedingung lokal behoben haben, sollten Sie die Warnung vom Gerät löschen, indem Sie sie auf dem Blatt **Warnungen** markieren und auf **Löschen** klicken. Zum Löschen mehrerer Warnungen wählen Sie die einzelnen Warnungen aus und klicken auf eine beliebige Spalte (außer der Spalte **Warnung**). Klicken Sie dann auf **Löschen**, nachdem Sie alle zu löschenden Warnungen ausgewählt haben. Beachten Sie, dass einige Warnungen automatisch gelöscht werden, wenn das Problem behoben ist oder wenn die Warnung mit neuen Informationen aktualisiert wird.
 
-Wenn Sie auf **Löschen**klicken, können Sie Kommentare zur Warnung und die Schritte zur Behebung des Problems angeben. Einige Ereignisse werden gelöscht, falls ein anderes Ereignis mit neuen Informationen ausgelöst wird. In diesem Fall wird die folgende Meldung angezeigt:
+Wenn Sie auf **Löschen** klicken, können Sie Kommentare zur Warnung und die Schritte zur Behebung des Problems angeben. Einige Ereignisse werden gelöscht, falls ein anderes Ereignis mit neuen Informationen ausgelöst wird. In diesem Fall wird die folgende Meldung angezeigt:
 
 ![Warnungsmeldung löschen](./media/storsimple-manage-alerts/admin_alerts_system_clear.png)
 
@@ -128,6 +120,7 @@ In den folgenden Tabellen sind einige Microsoft Azure StorSimple-Warnungen aufge
 * [Leistungswarnungen](#performance-alerts)
 * [Sicherheitswarnungen](#security-alerts)
 * [Warnungen zum Supportpaket](#support-package-alerts)
+* [Gehäuseumgebungswarnungen](#enclosure-environment-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>Warnungen zur Cloudkonnektivität
 
@@ -200,14 +193,14 @@ Wenn die Cloudverbindung für das StorSimple-Gerät in der Produktion ausfällt,
 | Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
 |:--- |:--- |:--- |
 | StorSimple-Dienst konnte nicht gestartet werden. |Datenpfadfehler |Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
-| Doppelte IP-Adresse für „Data0“ erkannt. | |Das System hat einen Konflikt für die IP-Adresse „10.0.0.1“ erkannt. Die Netzwerkressource „Data0“ auf dem Gerät *\<Gerät1>* ist offline. Stellen Sie sicher, dass diese IP-Adresse nicht von einer anderen Entität in diesem Netzwerk verwendet wird. Zum Beheben von Netzwerkproblemen finden Sie weitere Informationen unter [Problembehandlung mit dem Cmdlet „Get-NetAdapter“](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Hilfe bei der Lösung dieses Problems erhalten Sie von Ihrem Netzwerkadministrator. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
-| IPv4- (oder IPv6-) Adresse für „Data0“ ist offline. | |Die Netzwerkressource „Data0“ mit der IP-Adresse „10.0.0.1.“ und der Präfixlänge „22“ auf dem Gerät *\<Gerät1>* ist offline. Stellen Sie sicher, dass die Switchports, mit denen diese Schnittstelle verbunden ist, betriebsbereit sind. Zum Beheben von Netzwerkproblemen finden Sie weitere Informationen unter [Problembehandlung mit dem Cmdlet „Get-NetAdapter“](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
+| Doppelte IP-Adresse für „Data0“ erkannt. | |Das System hat einen Konflikt für die IP-Adresse „10.0.0.1“ erkannt. Die Netzwerkressource „Data0“ auf dem Gerät *\<device1>* ist offline. Stellen Sie sicher, dass diese IP-Adresse nicht von einer anderen Entität in diesem Netzwerk verwendet wird. Zum Beheben von Netzwerkproblemen finden Sie weitere Informationen unter [Problembehandlung mit dem Cmdlet „Get-NetAdapter“](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Hilfe bei der Lösung dieses Problems erhalten Sie von Ihrem Netzwerkadministrator. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
+| IPv4- (oder IPv6-) Adresse für „Data0“ ist offline. | |Die Netzwerkressource „Data0“ mit der IP-Adresse „10.0.0.1.“ und der Präfixlänge „22“ auf dem Gerät *\<device1>* ist offline. Stellen Sie sicher, dass die Switchports, mit denen diese Schnittstelle verbunden ist, betriebsbereit sind. Zum Beheben von Netzwerkproblemen finden Sie weitere Informationen unter [Problembehandlung mit dem Cmdlet „Get-NetAdapter“](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
 | Es konnte keine Verbindung mit dem Authentifizierungsdienst hergestellt werden. |Datenpfadfehler |Die URL für die Authentifizierung ist nicht erreichbar. Stellen Sie sicher, dass Ihre Firewall das für das StorSimple-Gerät angegebene URL-Muster umfasst. Weitere Informationen zu URL-Mustern im Azure-Portal finden Sie unter „https:\//aka.ms/ss-8000-network-reqs“. Wenn Sie Azure Government Cloud verwenden, finden Sie hier Informationen zu URL-Mustern: „https:\//aka.ms/ss8000-gov-network-reqs“.|
 
 ### <a name="performance-alerts"></a>Leistungswarnungen
 
-| Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen | |
-|:--- |:--- |:--- | --- |
+| Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
+|:--- |:--- |:--- |
 | Die Gerätelast hat <*Schwellenwert*> überschritten. |Die Reaktionszeiten sind langsamer als erwartet. |Ihr Gerät meldet die Nutzung unter hoher Eingabe-/Ausgabeauslastung. Dies kann dazu führen, dass das Gerät nicht optimal funktioniert. Überprüfen Sie die Workloads des Geräts, und ermitteln Sie, ob einige auf ein anderes Gerät verschoben werden können oder nicht mehr erforderlich sind.|
 | StorSimple-Dienst konnte nicht gestartet werden. |Datenpfadfehler |Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
 
@@ -227,7 +220,12 @@ Wenn die Cloudverbindung für das StorSimple-Gerät in der Produktion ausfällt,
 |:--- |:--- |:--- |
 | Erstellung des Unterstützungspakets fehlgeschlagen. |StorSimple konnte das Paket nicht generieren. |Wiederholen Sie diesen Vorgang. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. Nachdem das Problem behoben wurde, löschen Sie diese Warnung von der Warnungsseite. |
 
+### <a name="enclosure-environment-alerts"></a>Gehäuseumgebungswarnungen
+
+| Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
+|:--- |:--- |:--- |
+| Hardware component Ambient temperature sensor reports status as failed. (Der Umgebungstemperatursensor für Hardwarekomponenten meldet einen Fehlerzustand.)  | Gehäusetyp: Hauptgehäuse | Diese Warnung wird ausgelöst, wenn die Umgebungstemperatur für StorSimple oberhalb eines akzeptablen Bereichs liegt. Überprüfen Sie die Umgebungstemperatur oder den Luftstrom des Klimaanlagenschachts im Rechenzentrum. Wenn die Temperatur wieder auf einen normalen Wert sinkt, wird die Warnung nach einer Weile automatisch gelöscht. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.   |
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über [StorSimple-Fehler und die Behandlung von Problemen bei der Bereitstellung von Geräten](storsimple-8000-troubleshoot-deployment.md).
-

@@ -1,25 +1,25 @@
 ---
-title: 'Azure HPC Cache-Datenerfassung (Vorschau): msrsync'
+title: 'Azure HPC Cache-Datenerfassung: msrsync'
 description: Verwenden von msrsync zum Verschieben von Daten in ein Blobspeicherziel in Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
-ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: 265ec55a6e013a37cf963b6256e900c070311f72
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.topic: how-to
+ms.date: 10/30/2019
+ms.author: v-erkel
+ms.openlocfilehash: 323ecd6a2dd001c3c8df1b2ec15f0ae8402ec70c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180932"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87092404"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---msrsync-method"></a>Azure HPC Cache-Datenerfassung (Vorschau): msrsync-Methode
+# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC Cache-Datenerfassung: msrsync-Methode
 
 Dieser Artikel enthält detaillierte Anweisungen zum Verwenden des ``msrsync``-Hilfsprogramms zum Kopieren von Daten in einen Azure-Blobspeichercontainer für die Verwendung mit Azure HPC Cache.
 
-Weitere Informationen zum Verschieben von Daten in einen Blobspeicher für Ihren Azure HPC Cache finden Sie unter [Verschieben von Daten in Azure Blob Storage für Azure HPC Cache](hpc-cache-ingest.md).
+Weitere Informationen zum Verschieben von Daten in einen Blobspeicher für Ihren Azure HPC Cache-Dienst finden Sie unter [Verschieben von Daten in Azure Blob Storage](hpc-cache-ingest.md).
 
-Das ``msrsync``-Tool kann verwendet werden, um Daten in ein Back-End-Speicherziel für den Azure HPC Cache zu verschieben. Dieses Tool wurde entwickelt, um die Bandbreitenauslastung durch die Ausführung mehrerer paralleler ``rsync``-Prozesse zu optimieren. Es ist bei GitHub unter https://github.com/jbd/msrsync erhältlich.
+Das Tool ``msrsync`` kann verwendet werden, um Daten in ein Back-End-Speicherziel für Azure HPC Cache zu verschieben. Dieses Tool wurde entwickelt, um die Bandbreitenauslastung durch die Ausführung mehrerer paralleler ``rsync``-Prozesse zu optimieren. Es ist bei GitHub unter https://github.com/jbd/msrsync erhältlich.
 
 ``msrsync`` unterteilt das Quellverzeichnis in separate „Buckets“ und führt dann einzelne ``rsync``-Prozesse für die einzelnen Buckets aus.
 

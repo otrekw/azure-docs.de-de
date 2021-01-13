@@ -3,24 +3,31 @@ title: Hosten von statischen Websites in Azure Storage
 description: Das Hosten von statischen Websites in Azure Storage bietet eine kostengünstige, skalierbare Lösung zum Hosten von modernen Webanwendungen.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/29/2019
+ms.date: 09/04/2020
 ms.subservice: blobs
-ms.openlocfilehash: 85f7ea11638278a010b2a94d9c6472857f51b687
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.custom: devx-track-js
+ms.openlocfilehash: b9eb65311951706863c3b18c5fc91bae8c41c7dc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710168"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96007340"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
 
-Sie können statische Inhalte (HTML, CSS, JavaScript und Bilddateien) direkt über einen Speichercontainer namens *$web* bereitstellen. Das Hosten von Inhalten in Azure Storage ermöglicht die Verwendung serverloser Architekturen mit [Azure Functions](/azure/azure-functions/functions-overview) und anderen PaaS-Diensten (Platform-as-a-Service).
+Sie können statische Inhalte (HTML, CSS, JavaScript und Bilddateien) direkt über einen Speichercontainer namens *$web* bereitstellen. Das Hosten von Inhalten in Azure Storage ermöglicht die Verwendung serverloser Architekturen mit [Azure Functions](../../azure-functions/functions-overview.md) und anderen PaaS-Diensten (Platform-as-a-Service). Das statische Hosting von Websites mit Azure Storage ist eine ideale Option für Fälle, in denen Sie keinen Webserver zum Rendern von Inhalten benötigen.
+
+[Static Web Apps von App Service](https://azure.microsoft.com/services/app-service/static/) sind eine hervorragend Alternative zum statischen Hosting von Websites mit Azure Storage, die sich auch für Fälle eignet, in denen Sie keinen Webserver zum Rendern von Inhalten benötigen. Static Web Apps von App Service bieten Ihnen einen vollständig verwalteten Continuous Integration- und Continuous Delivery-Workflow (CI/CD) von der GitHub-Quelle bis zur globalen Bereitstellung.
+
+Wenn Sie einen Webserver zum Rendern von Inhalten benötigen, können Sie [Azure App Service](https://azure.microsoft.com/services/app-service/)verwenden.
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
-> Sollte Ihre Website von serverseitigem Code abhängig sein, verwenden Sie stattdessen [Azure App Service](/azure/app-service/overview).
+> Erstellen Sie unbedingt ein Standardspeicherkonto vom Typ „Universell v2 (GPv2)“. Statische Websites sind in keinem anderen Speicherkontotyp verfügbar.
 
 ## <a name="setting-up-a-static-website"></a>Einrichten einer statischen Website
 
@@ -39,30 +46,33 @@ Bei Dateien im Container **$web** wird die Groß-/Kleinschreibung beachtet. Sie 
 Inhalte können mit einem der folgenden Tools in den Container **$web** hochgeladen werden:
 
 > [!div class="checklist"]
-> * [Azure-Befehlszeilenschnittstelle](storage-blob-static-website-how-to.md#cli)
-> * [Azure PowerShell-Modul](storage-blob-static-website-how-to.md#powershell)
+> * [Azure-Befehlszeilenschnittstelle](storage-blob-static-website-how-to.md?tabs=azure-cli)
+> * [Azure PowerShell-Modul](storage-blob-static-website-how-to.md?tabs=azure-powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Visual Studio Code-Erweiterung](/azure/javascript/tutorial-vscode-static-website-node-01)
+> * [Visual Studio Code-Erweiterung](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
 
 ## <a name="viewing-content"></a>Anzeigen von Inhalten
 
-Benutzer können Websiteinhalte in einem Browser unter der öffentlichen URL der Website anzeigen. Die URL können Sie im Azure-Portal, über die Azure-Befehlszeilenschnittstelle oder mithilfe von PowerShell ermitteln. Verwenden Sie diese Tabelle als Richtlinie.
+Benutzer können Websiteinhalte in einem Browser unter der öffentlichen URL der Website anzeigen. Die URL können Sie im Azure-Portal, über die Azure-Befehlszeilenschnittstelle oder mithilfe von PowerShell ermitteln. Siehe [Suchen der Website-URL](storage-blob-static-website-how-to.md#portal-find-url).
 
-|Tool| Anleitungen |
-|----|----|
-|**Azure-Portal** | [Find the website URL by using the Azure portal](storage-blob-static-website-how-to.md#portal-find-url) (Ermitteln der Website-URL über das Azure-Portal) |
-|**Azure-Befehlszeilenschnittstelle** | [Find the website URL by using the Azure CLI](storage-blob-static-website-how-to.md#cli-find-url) (Ermitteln der Website-URL mithilfe der Azure-Befehlszeilenschnittstelle) |
-|**Azure PowerShell-Modul** | [Find the website URL by using PowerShell](storage-blob-static-website-how-to.md#powershell-find-url) (Ermitteln der Website-URL mithilfe von PowerShell) |
+Wenn der Server einen 404-Fehler zurückgibt und Sie beim Aktivieren der Website kein Fehlerdokument angegeben haben, wird an den Benutzer eine 404-Standardseite zurückgegeben.
+
+> [!NOTE]
+> [Cross-Origin Resource Sharing-Unterstützung (CORS) für Azure Storage](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) wird bei statischen Websites nicht unterstützt.
+
+### <a name="regional-codes"></a>Regionscodes
 
 Die URL Ihrer Website enthält einen Regionscode. Die URL `https://contosoblobaccount.z22.web.core.windows.net/` enthält beispielsweise den Regionscode `z22`.
 
-Dieser Code muss zwar in der URL bleiben, er wird jedoch nur intern genutzt und muss nicht anderweitig verwendet werden.
+Dieser Code muss zwar in der URL verbleiben, wird jedoch nur intern genutzt und muss nicht anderweitig verwendet werden.
 
-Das Indexdokument, das Sie beim Aktivieren des Hostens von statischen Websites angeben, wird angezeigt, wenn Benutzer beim Aufrufen der Website keine bestimmte Datei angeben (Beispiel: `https://contosoblobaccount.z22.web.core.windows.net`).  
+Das Indexdokument, das Sie beim Aktivieren des Hostens von statischen Websites angeben, wird angezeigt, wenn Benutzer beim Aufrufen der Website keine bestimmte Datei angeben (Beispiel: `https://contosoblobaccount.z22.web.core.windows.net`).
 
-Wenn der Server einen 404-Fehler zurückgibt und Sie beim Aktivieren der Website kein Fehlerdokument angegeben haben, wird an den Benutzer eine 404-Standardseite zurückgegeben.
+### <a name="secondary-endpoints"></a>Sekundäre Endpunkte
+
+Wenn Sie [Redundanz in einer sekundären Region](../common/storage-redundancy.md#redundancy-in-a-secondary-region) einrichten, können Sie auch über einen sekundären Endpunkt auf Websiteinhalte zugreifen. Da Daten asynchron in sekundäre Regionen repliziert werden, sind die am sekundären Endpunkt verfügbaren Dateien nicht immer mit den Dateien synchron, die auf dem primären Endpunkt verfügbar sind.
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Auswirkungen der Einstellung der öffentlichen Zugriffsebene des Webcontainers
 
@@ -70,7 +80,7 @@ Sie können zwar die öffentliche Zugriffsebene des Containers **$web** ändern,
 
 Der folgende Screenshot zeigt die Einstellung der öffentlichen Zugriffsebene im Azure-Portal:
 
-![Screenshot: Festlegen der öffentlichen Zugriffsebene im Azure-Portal](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![Screenshot: Festlegen der öffentlichen Zugriffsebene im Azure-Portal](./media/anonymous-read-access-configure/configure-public-access-container.png)
 
 Der primäre Endpunkt der statischen Website ist von einer Änderung der öffentlichen Zugriffsebene zwar nicht betroffen, eine solche Änderung hat jedoch Auswirkungen auf den primären Endpunkt des Blobdiensts.
 
@@ -78,28 +88,35 @@ Wenn Sie also beispielsweise die öffentliche Zugriffsebene des Containers **$we
 
 Der öffentliche Zugriff auf den primären Endpunkt des Blobdiensts (`https://contosoblobaccount.blob.core.windows.net/$web/index.html`) ändert sich hingegen von privat in öffentlich. Nun können Benutzer die Datei unter Verwendung eines der beiden Endpunkte öffnen.
 
-## <a name="content-delivery-network-cdn-and-secure-socket-layer-ssl-support"></a>Unterstützung von Content Delivery Network (CDN) und Secure Socket Layer (SSL)
+Die Deaktivierung des öffentlichen Zugriffs auf ein Speicherkonto wirkt sich nicht auf statische Websites aus, die in diesem Speicherkonto gehostet werden. Weitere Informationen finden Sie unter [Konfigurieren des anonymen öffentlichen Lesezugriffs für Container und Blobs](anonymous-read-access-configure.md).
 
-Informationen dazu, wie Sie Ihre statischen Websitedateien über Ihre benutzerdefinierte Domäne und HTTPS verfügbar machen, finden Sie unter [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](storage-https-custom-domain-cdn.md). Im Rahmen dieses Prozesses müssen Sie Ihr CDN auf den primären Endpunkt der *statischen Website* verweisen (nicht auf den primären Endpunkt des *Blobdiensts*). Unter Umständen dauert es ein paar Minuten, bis Ihre Inhalte angezeigt werden, da die CDN-Konfiguration nicht sofort ausgeführt wird.
+## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Zuordnen einer benutzerdefinierten Domäne zu einer URL einer statischen Website
 
-Wenn Sie Ihre statische Website aktualisieren, stellen Sie sicher, dass Sie zwischengespeicherte Inhalte auf den CDN-Edge-Servern löschen, indem Sie den CDN-Endpunkt bereinigen. Weitere Informationen finden Sie unter [Löschen eines Azure CDN-Endpunkts](../../cdn/cdn-purge-endpoint.md).
+Sie können Ihre statische Website über eine benutzerdefinierte Domäne verfügbar machen.
 
-> [!NOTE]
-> HTTPS wird nativ über den Webendpunkt des Kontos unterstützt, sodass sowohl per HTTP als auch per HTTPS auf den Webendpunkt zugegriffen werden kann. Wenn das Speicherkonto jedoch für die sichere Übertragung über HTTPS konfiguriert ist, müssen Benutzer den HTTPS-Endpunkt verwenden. Weitere Informationen finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../common/storage-require-secure-transfer.md).
->
-> Die Verwendung von benutzerdefinierten Domänen über HTTPS erfordert derzeit die Verwendung von Azure CDN.
+Es ist einfacher, den HTTP-Zugriff für Ihre benutzerdefinierte Domäne zu aktivieren, weil dies von Azure Storage nativ unterstützt wird. Zum Aktivieren von HTTPS müssen Sie Azure CDN verwenden, weil Azure Storage HTTPS bei benutzerdefinierten Domänen noch nicht nativ unterstützt. Eine Schritt-für-Schritt-Anleitung finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md).
 
-## <a name="custom-domain-names"></a>Benutzerdefinierte Domänennamen
+Wenn das Speicherkonto für die [sichere Übertragung](../common/storage-require-secure-transfer.md) über HTTPS konfiguriert ist, müssen Benutzer den HTTPS-Endpunkt verwenden.
 
-Sie können Ihre statische Website über eine benutzerdefinierte Domäne verfügbar machen. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure Storage-Konto](storage-custom-domain-name.md).
+> [!TIP]
+> Ziehen Sie das Hosten Ihrer Domäne in Azure in Betracht. Weitere Informationen finden Sie unter [Hosten Ihrer Domäne in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
 
-Einen detaillierten Einblick in das Hosten Ihrer Domäne in Azure finden Sie unter [Hosten Ihrer Domäne in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
+## <a name="adding-http-headers"></a>Hinzufügen von HTTP-Headern
+
+Es gibt keine Möglichkeit, Header im Rahmen des Features für die statische Website zu konfigurieren. Sie können jedoch Azure CDN zum Hinzufügen von Headern und Anfügen (oder Überschreiben) von Headerwerten verwenden. Informationen dazu finden Sie in der [Referenz zur Standardregel-Engine für Azure CDN](../../cdn/cdn-standard-rules-engine-reference.md).
+
+Wenn Sie Header zum Steuern der Zwischenspeicherung verwenden möchten, finden Sie Informationen dazu unter [Steuern des Azure CDN-Zwischenspeicherverhaltens mit Chacheregeln](../../cdn/cdn-caching-rules.md).
+
+## <a name="multi-region-website-hosting"></a>Hosting von Websites in mehreren Regionen
+
+Wenn Sie beabsichtigen, eine Website in mehreren Regionen zu hosten, empfiehlt es sich, ein [Content Delivery Network](../../cdn/index.yml) für regionales Zwischenspeichern zu verwenden. Setzen Sie [Azure Front Door](../../frontdoor/index.yml) ein, wenn Sie in den einzelnen Regionen unterschiedliche Inhalte bereitstellen möchten. Zudem werden von dieser Lösung Failoverfunktionen geboten. [Azure Traffic Manager](../../traffic-manager/index.yml) wird nicht empfohlen, wenn Sie den Einsatz einer benutzerdefinierten Domäne vorhaben. Probleme können sich daraus ergeben, wie Azure Storage benutzerdefinierte Domänennamen verifiziert.
+
 
 ## <a name="pricing"></a>Preise
 
 Die Aktivierung des Hostings statischer Websites ist kostenlos. Ihnen werden lediglich der von Ihrer Website genutzte Blobspeicher sowie die Betriebskosten in Rechnung gestellt. Weitere Informationen zu Preisen für Azure Blob Storage finden Sie auf der Seite [Preise für Azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="metrics"></a>metrics
+## <a name="metrics"></a>Metriken
 
 Sie können Metriken für Seiten der statischen Website aktivieren. Nachdem Sie Metriken aktiviert haben, werden Datenverkehrsstatistiken zu Dateien im Container **$web** im Dashboard für Metriken gemeldet.
 
@@ -108,9 +125,8 @@ Informationen zum Aktivieren von Metriken für Seiten Ihrer statischen Website f
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Host a static website in Azure Storage](storage-blob-static-website-how-to.md) (Hosten einer statischen Website in Azure Storage)
-* [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](storage-https-custom-domain-cdn.md)
-* [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](storage-custom-domain-name.md)
-* [Azure-Funktionen](/azure/azure-functions/functions-overview)
-* [Azure App Service](/azure/app-service/overview)
-* [Build a serverless web app in Azure](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database) (Erstellen einer serverlosen Web-App in Azure)
+* [Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md)
+* [Azure-Funktionen](../../azure-functions/functions-overview.md)
+* [Azure App Service](../../app-service/overview.md)
+* [Build a serverless web app in Azure](/azure/functions/tutorial-static-website-serverless-api-with-database) (Erstellen einer serverlosen Web-App in Azure)
 * [Tutorial: Hosten Ihrer Domäne in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)

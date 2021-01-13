@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 9f7957fb0e6e888367c1f8ded1abfb3828697cbb
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 0b00785fed7708986885e9da9102e8f1b4fd4539
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087091"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86508881"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Remotedesktopdienste für eine Azure-VM werden nicht gestartet
 
 Dieser Artikel beschreibt, wie Sie Probleme beim Verbinden mit einem virtuellen Azure-Computer (Azure-VM) beheben, wenn die Remotedesktopdienste bzw. TermService nicht starten/startet oder ein Startfehler auftritt.
 
-> [!NOTE]  
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager und klassische Bereitstellung](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Resource Manager-Bereitstellungsmodells. Es wird empfohlen, dieses Modell anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen zu verwenden.
 
 ## <a name="symptoms"></a>Symptome
 
@@ -37,19 +35,21 @@ Wenn Sie versuchen, eine Verbindung mit einer VM herzustellen, beobachten Sie di
 - Sie können die Ereignisprotokolle in der VM mit der Ereignisanzeige remote anzeigen. Sie sehen, dass die Remotedesktopdienste bzw. TermService nicht starten/startet oder ein Startfehler auftritt. Dieses Protokoll dienst als Beispiel:
 
     **Protokollname:**      System </br>
-    **Quelle:**        Dienststeuerungs-Manager </br>
+    **Quelle**:        Dienststeuerungs-Manager </br>
     **Datum:**          12/16/2017 11:19:36 AM</br>
     **Ereignis-ID:**      7022</br>
     **Aufgabenkategorie:** Keine</br>
-    **Ebene:**         Error</br>
+    **Ebene**:         Fehler</br>
     **Schlüsselwörter:**      Klassisch</br>
     **Benutzer:**          –</br>
     **Computer:**      vm.contoso.com</br>
-    **Beschreibung:** Die Remotedesktopdienste wurden nicht ordnungsgemäß gestartet. 
+    **Beschreibung**: Die Remotedesktopdienste wurden nicht ordnungsgemäß gestartet. 
 
     Sie können diese Fehler auch über die serielle Zugriffskonsole suchen. Führen Sie dazu die folgende Abfrage aus: 
 
-        wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more 
+    ```console
+   wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+    ```
 
 ## <a name="cause"></a>Ursache
  
@@ -96,7 +96,7 @@ Verwenden Sie die serielle Konsole, um dieses Problem zu beheben. Alternativ kö
    ```
 8. Wenn der Dienst nicht gestartet wird, befolgen Sie je nach der erhaltenen Fehlermeldung die entsprechende Anweisung zur Problembehandlung:
 
-    |  Error |  Vorschlag |
+    |  Fehler |  Vorschlag |
     |---|---|
     |5 – ACCESS DENIED |Weitere Informationen finden Sie unter [TermService-Dienst wird aufgrund eines „Zugriff verweigert“-Fehlers beendet](#termservice-service-is-stopped-because-of-an-access-denied-problem). |
     |1053 – ERROR_SERVICE_REQUEST_TIMEOUT  |Weitere Informationen finden Sie unter [TermService-Dienst ist deaktiviert](#termservice-service-is-disabled).  |  
@@ -141,14 +141,14 @@ Verwenden Sie die serielle Konsole, um dieses Problem zu beheben. Alternativ kö
    procmon /Terminate 
    ```
 
-5. Erfassen Sie die Datei  **c:\temp\ProcMonTrace.PML**:
+5. Erfassen Sie die Datei **c:\temp\ProcMonTrace.PML**:
 
     1. [Fügen Sie einen Datenträger an die VM an.](../windows/attach-managed-disk-portal.md
 )
     2. Verwenden Sie die serielle Konsole, um die Datei in das neue Laufwerk zu kopieren. Beispiel: `copy C:\temp\ProcMonTrace.PML F:\`. In diesem Befehl ist „F“ der Laufwerkbuchstabe des angefügten Datenträgers.
     3. Trennen Sie das Datenlaufwerk, und fügen Sie es an eine ausgeführte VM an, auf der die Prozessüberwachung „ubstakke“ installiert ist.
 
-6. Öffnen Sie **ProcMonTrace.PML** mit der Prozessüberwachung der ausgeführten VM. Filtern Sie wie im folgenden Screenshot nach  **Ergebnis ist Zugriff verweigert**:
+6. Öffnen Sie **ProcMonTrace.PML** mit der Prozessüberwachung der ausgeführten VM. Filtern Sie wie im folgenden Screenshot nach **Ergebnis ist Zugriff verweigert**:
 
     ![Filtern nach Ergebnissen in der Prozessüberwachung](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
@@ -181,29 +181,44 @@ Verwenden Sie die serielle Konsole, um dieses Problem zu beheben. Alternativ kö
 
 1. Dieses Problem tritt auf, wenn das Startkonto des Diensts geändert wurde. Stellen Sie dafür den Standardwert wieder her: 
 
-        sc config TermService obj= 'NT Authority\NetworkService'
+    ```console
+    sc config TermService obj= 'NT Authority\NetworkService'
+    ```
+
 2. Starten Sie den Dienst:
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 3. Versuchen Sie, über Remotedesktop eine Verbindung mit der VM herzustellen.
 
 #### <a name="termservice-service-crashes-or-hangs"></a>TermService-Dienst stürzt ab oder reagiert nicht
 1. Wenn der Dienst im Status **Wird gestartet** oder **Wird beendet** verbleibt, beenden Sie den Dienst: 
 
-        sc stop TermService
+    ```console
+    sc stop TermService
+    ```
+
 2. Isolieren Sie den Dienst auf seinem eigenen „svchost“-Container:
 
-        sc config TermService type= own
+    ```console
+    sc config TermService type= own
+    ```
+
 3. Starten Sie den Dienst:
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 4. Wenn der Dienst noch immer nicht startet, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="repair-the-vm-offline"></a>Reparieren des virtuellen Computers im Offlinestatus
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Anfügen des Betriebssystemdatenträgers an eine VM für die Wiederherstellung
 
-1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](./troubleshoot-recovery-disks-portal-windows.md).
 2. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her. Stellen Sie sicher, dass der angefügte Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Achten Sie auf den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
 3. Öffnen Sie eine Eingabeaufforderungsinstanz mit erhöhten Rechten (**Als Administrator ausführen**). Führen Sie dann das folgende Skript aus. Es wird angenommen, dass der Laufwerkbuchstabe, der dem angefügten Betriebssystemdatenträger zugeordnet ist, **F** ist. Ersetzen Sie ihn durch den entsprechenden Wert in Ihrer VM. 
 
@@ -219,7 +234,7 @@ Verwenden Sie die serielle Konsole, um dieses Problem zu beheben. Alternativ kö
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [Trennen Sie den Betriebssystemdatenträger, und erstellen die VM neu.](../windows/troubleshoot-recovery-disks-portal.md) Überprüfen Sie dann, ob das Problem behoben ist.
+4. [Trennen Sie den Betriebssystemdatenträger, und erstellen die VM neu.](./troubleshoot-recovery-disks-portal-windows.md) Überprüfen Sie dann, ob das Problem behoben ist.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 

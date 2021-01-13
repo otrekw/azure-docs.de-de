@@ -1,24 +1,23 @@
 ---
-title: Richtlinien für unzustellbare Nachrichten und Wiederholungen für Azure Event Grid-Abonnements
+title: Richtlinien für unzustellbare Nachrichten und Wiederholungen – Azure Event Grid
 description: Hier erfahren Sie, wie Sie Ereignisübermittlungsoptionen für Event Grid anpassen. Legen Sie ein Ziel für unzustellbare Nachrichten fest, und geben Sie an, wie lange die Übermittlung wiederholt wird.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/06/2019
-ms.author: spelluru
-ms.openlocfilehash: 63bae62ed89bd0bbc167a88274002d1fa1e9b86d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 07/20/2020
+ms.openlocfilehash: 7d8cd74ccfb77bcec45d06071a4f46fb2a640cf8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933373"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460936"
 ---
-# <a name="dead-letter-and-retry-policies"></a>Richtlinien für unzustellbare Nachrichten und Wiederholungen
+# <a name="set-dead-letter-location-and-retry-policy"></a>Festlegen eines Speicherorts und einer Wiederholungsrichtlinie für unzustellbare Nachrichten
 
 Bei der Erstellung von Ereignisabonnements können Sie die Einstellungen für die Ereignisübermittlung anpassen. In diesem Artikel wird erläutert, wie Sie einen Speicherort für unzustellbare Nachrichten einrichten und die Wiederholungseinstellungen anpassen. Informationen zu diesen Features finden Sie unter [Event Grid – Übermittlung und Wiederholung von Nachrichten](delivery-and-retry.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> Informationen zur Nachrichtenübermittlung, Wiederholungsversuchen und unzustellbaren Nachrichten finden Sie im folgenden Konzeptartikel: [Event Grid – Übermittlung und Wiederholung von Nachrichten](delivery-and-retry.md)
 
 ## <a name="set-dead-letter-location"></a>Festlegen eines Speicherorts für unzustellbare Nachrichten
 
@@ -29,7 +28,7 @@ Zum Festlegen eines Speicherorts für unzustellbare Nachrichten benötigen Sie e
 > - Der Event Grid-Dienst erstellt Blobs in diesem Container. Die Namen der Blobs enthalten den Namen des Event Grid-Abonnements mit allen Buchstaben in Großbuchstaben. Wenn beispielsweise der Name des Abonnements „My-Blob-Subscription“ lautet, enthalten die Namen der Blobs für unzustellbare Nachrichten „MY-BLOB-SUBSCRIPTION“: „myblobcontainer/MY-BLOB-SUBSCRIPTION/2019/8/8/5/111111111-1111-1111-1111-111111111111.json“. Dies dient dem Schutz vor Problemen durch Unterschiede bei der Behandlung der Groß-/Kleinschreibung von Azure-Diensten.
 
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 containername=testcontainer
@@ -75,7 +74,7 @@ Bei der Erstellung eines Event Grid-Abonnements können Sie festlegen, wie lange
 
 Sie können den [Wiederholungszeitplan](delivery-and-retry.md#retry-schedule-and-duration) nicht konfigurieren.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 So legen Sie die auf 1440 Minuten festgelegte Ereignislebensdauer auf einen anderen Wert fest:
 
@@ -99,7 +98,8 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-Wenn Sie sowohl `event-ttl` als auch `max-deliver-attempts` festlegen, verwendet Event Grid den zuerst ablaufenden Wert, um zu ermitteln, wann die Ereignisübermittlung beendet werden soll.
+> [!NOTE]
+> Wenn Sie sowohl `event-ttl` als auch `max-deliver-attempts` festlegen, verwendet Event Grid den zuerst ablaufenden Wert, um zu ermitteln, wann die Ereignisübermittlung beendet werden soll. Angenommen, Sie legen einen TTL-Wert (Time to Live) von 30 Minuten und maximal 10 Wiederholungsversuche fest. Wenn ein Ereignis nach 30 Minuten nicht zugestellt (oder) nach 10 Versuchen nicht übermittelt wurde (je nachdem, welcher Fall zuerst eintritt), wird das Ereignis als unzustellbar eingestuft.  
 
 ### <a name="powershell"></a>PowerShell
 
@@ -127,7 +127,8 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-Wenn Sie sowohl `EventTtl` als auch `MaxDeliveryAttempt` festlegen, verwendet Event Grid den zuerst ablaufenden Wert, um zu ermitteln, wann die Ereignisübermittlung beendet werden soll.
+> [!NOTE]
+> Wenn Sie sowohl `event-ttl` als auch `max-deliver-attempts` festlegen, verwendet Event Grid den zuerst ablaufenden Wert, um zu ermitteln, wann die Ereignisübermittlung beendet werden soll. Angenommen, Sie legen einen TTL-Wert (Time to Live) von 30 Minuten und maximal 10 Wiederholungsversuche fest. Wenn ein Ereignis nach 30 Minuten nicht zugestellt (oder) nach 10 Versuchen nicht übermittelt wurde (je nachdem, welcher Fall zuerst eintritt), wird das Ereignis als unzustellbar eingestuft.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

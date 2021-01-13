@@ -1,27 +1,20 @@
 ---
-title: 'Azure CLI-Beispiele: Erstellen einer VM-Skalierungsgruppe | Microsoft-Dokumentation'
-description: Azure CLI-Beispiele
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.devlang: azurecli
+title: 'Azure CLI-Beispiele: Erstellen einer VM-Skalierungsgruppe'
+description: Dieses Skript erstellt eine Azure-VM-Skalierungsgruppe mit einem Ubuntu-Betriebssystem und den dazugehörigen Netzwerkressourcen (einschließlich eines Lastenausgleichs).
+author: mimckitt
+ms.author: mimckitt
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 7327468722f4f3b0fc7048bc8afcdb757df50bc7
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.service: virtual-machine-scale-sets
+ms.subservice: cli
+ms.date: 06/25/2020
+ms.reviewer: jushiman
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 31c90879d6f80f598ba71846ba68da814f254677
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695627"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91825186"
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Erstellen einer VM-Skalierungsgruppe mithilfe der Azure CLI
 Dieses Skript erstellt eine Azure-VM-Skalierungsgruppe mit einem Ubuntu-Betriebssystem und den dazugehörigen Netzwerkressourcen (einschließlich eines Lastenausgleichs). Nach dem Ausführen des Skripts können Sie über SSH auf die VM-Instanzen zugreifen.
@@ -31,7 +24,27 @@ Dieses Skript erstellt eine Azure-VM-Skalierungsgruppe mit einem Ubuntu-Betriebs
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-script"></a>Beispielskript
-[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine-scale-sets/simple-scale-set/simple-scale-set.sh "Create a simple virtual machine scale set")]
+```azurecli-interactive
+#!/bin/bash
+
+# Create a resource group
+az group create --name myResourceGroup --location eastus
+
+# Create a Network Security Group and allow access to port 22
+az network nsg create --resource-group MyResourceGroup --name MyNsg
+az network nsg rule create --resource-group MyResourceGroup --name AllowSsh --nsg-name MyNsg --priority 100 --destination-port-ranges 22
+
+# Create a scale set
+# Network resources such as an Azure load balancer are automatically created
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
+  --image UbuntuLTS \
+  --upgrade-policy-mode automatic \
+  --admin-username azureuser \
+  --generate-ssh-keys
+  --nsg MyNsg
+```
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, die Skalierungsgruppe und alle dazugehörigen Ressourcen zu entfernen.
@@ -50,6 +63,4 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 | [az group delete](/cli/azure/ad/group) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
-
-Weitere Azure CLI-Skriptbeispiele für VM-Skalierungsgruppen finden Sie in der [Dokumentation zu Azure-VM-Skalierungsgruppen](../cli-samples.md).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure/overview).

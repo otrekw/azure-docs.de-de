@@ -1,21 +1,19 @@
 ---
-title: Verwalten von Artefaktmetadaten in Integrationskonten – Azure Logic Apps| Microsoft-Dokumentation
+title: Verwalten von Artefaktmetadaten in Integrationskonten
 description: Hinzufügen oder Abrufen von Artefaktmetadaten aus Integrationskonten in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 01/17/2019
-ms.openlocfilehash: 5ebdf45bec4e7cfceb75354af40c7a21c22c6eef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60846200"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74792474"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Hinzufügen oder Abrufen von Artefaktmetadaten in Integrationskonten in Azure Logic Apps und Enterprise Integration Pack
 
@@ -63,7 +61,7 @@ Sie können benutzerdefinierte Metadaten für Artefakte in Integrationskonten de
 
 1. Geben Sie diese Informationen für das gesuchte Artefakt ein:
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG | 
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
    |----------|---------|-------|-------------| 
    | **Artefakttyp** | Ja | **Schema**, **Zuordnung**, **Partner**, **Vereinbarung** oder ein benutzerdefinierter Typ | Der Typ des gewünschten Artefakts | 
    | **Artefaktname** | Ja | <*artifact-name*> | Der Name des gewünschten Artefakts | 
@@ -85,11 +83,11 @@ Sie können benutzerdefinierte Metadaten für Artefakte in Integrationskonten de
 
       Beispiel: Sie möchten die `routingUrl`-Metadaten abrufen, die Sie zuvor hinzugefügt haben. Diese Eigenschaftswerte könnten Sie angeben: 
 
-      | Eigenschaft | Erforderlich | Value | BESCHREIBUNG | 
+      | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
       |----------|----------|-------|-------------| 
       | **Methode** | Ja | <*operation-to-run*> | Der HTTP-Vorgang, der auf das Artefakt ausgeführt werden soll. Diese HTTP-Aktion verwendet z.B. die **GET**-Methode. | 
       | **URI** | Ja | <*metadata-location*> | Um auf den `routingUrl`-Metadatenwert des abgerufenen Artefakts zuzugreifen, können Sie einen Ausdruck verwenden. Beispiel: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
-      | **Header** | Nein | <*header-values*> | Alle Headerausgaben des Auslösers, die Sie in die HTTP-Aktion übergeben möchten. Um den `headers`-Eigenschaftswert des Auslöser zu übergeben, können Sie beispielsweise einen Ausdruck verwenden. Beispiel: <p>`@triggeroutputs()['headers']` | 
+      | **Headers** | Nein | <*header-values*> | Alle Headerausgaben des Auslösers, die Sie in die HTTP-Aktion übergeben möchten. Um den `headers`-Eigenschaftswert des Auslöser zu übergeben, können Sie beispielsweise einen Ausdruck verwenden. Beispiel: <p>`@triggeroutputs()['headers']` | 
       | **Text** | Nein | <*body-content*> | Alle anderen Inhalte, die Sie über die `body`-Eigenschaft der HTTP-Aktion übergeben möchten. In diesem Beispiel werden die `properties`-Werte in die HTTP-Aktion übergeben: <p>1. Klicken Sie in die Eigenschaft **Body**, damit die dynamische Inhaltsliste angezeigt wird. Wenn keine Eigenschaften angezeigt werden, wählen Sie **Mehr anzeigen**. <br>2. Wählen Sie aus der dynamischen Inhaltsliste unter **Artefaktsuche für Integrationskonto** die Option **Eigenschaften**. | 
       |||| 
 

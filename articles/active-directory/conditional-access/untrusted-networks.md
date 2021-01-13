@@ -1,22 +1,22 @@
 ---
-title: Vorschreiben der mehrstufigen Authentifizierung (MFA) für den Zugriff von nicht vertrauenswürdigen Netzwerken mit bedingtem Zugriff von Azure Active Directory (Azure AD) | Microsoft-Dokumentation
+title: Vorschreiben der Verwendung der MFA für den Zugriff von nicht vertrauenswürdigen Netzwerken – Azure Active Directory
 description: Erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff in Azure Active Directory (Azure AD) für Zugriffsversuche von nicht vertrauenswürdigen Netzwerken konfigurieren.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 12/10/2018
+ms.topic: how-to
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b75e9aa3c588f5046ec55c0d809ca74060ad9c2
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: e4c020a9be7683bf045dbcc747dad3cb45058dd7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509342"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077675"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Gewusst wie: Vorschreiben der Verwendung der MFA für den Zugriff von nicht vertrauenswürdigen Netzwerken mit bedingtem Zugriff   
 
@@ -26,10 +26,7 @@ Dieser Artikel enthält Informationen, die zum Konfigurieren einer Richtlinie f�
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind: 
-
-- Mit den [grundlegenden Konzepten](overview.md) des bedingten Azure AD-Zugriffs 
-- Mit den [Best Practices](best-practices.md) für das Konfigurieren von Richtlinien für bedingten Zugriff im Azure-Portal
+In diesem Artikel wird davon ausgegangen, dass Sie mit den [grundlegenden Konzepten](overview.md) des bedingten Zugriffs vertraut sind. 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -45,28 +42,28 @@ Mit dem bedingten Zugriff in Azure AD können Sie diese Anforderung mit einer ei
 
 ## <a name="implementation"></a>Implementierung
 
-Die Herausforderung dieses Szenarios besteht darin, *den Zugriff von einem nicht vertrauenswürdigen Netzwerk* in eine Bedingung für den bedingten Zugriff umzuwandeln. In einer Richtlinie für bedingten Zugriff können Sie die [Standortbedingung so konfigurieren](location-condition.md), dass sie Szenarien adressiert, die sich auf Netzwerkadressen beziehen. Die Standortbedingung ermöglicht es Ihnen, benannte Standorte auszuwählen, die logische Gruppierungen von IP-Adressbereichen, Ländern und Regionen sind.  
+Die Herausforderung dieses Szenarios besteht darin, *den Zugriff von einem nicht vertrauenswürdigen Netzwerk* in eine Bedingung für den bedingten Zugriff umzuwandeln. In einer Richtlinie für bedingten Zugriff können Sie die [Standortbedingung](location-condition.md) so konfigurieren, dass sie Szenarien adressiert, die sich auf Netzwerkadressen beziehen. Die Standortbedingung ermöglicht es Ihnen, benannte Standorte auszuwählen, die logische Gruppierungen von IP-Adressbereichen, Ländern und Regionen sind.  
 
-Typischerweise besitzt Ihre Organisation einen oder mehrere Adressbereiche, z.B. 199.30.16.0 bis 199.30.16.24.
+Typischerweise besitzt Ihre Organisation einen oder mehrere Adressbereiche, z. B. 199.30.16.0 bis 199.30.16.15.
 Sie können einen benannten Speicherort wie folgt konfigurieren:
 
-- Festlegen dieses Bereichs (199.30.16.0/24) 
+- Festlegen dieses Bereichs (199.30.16.0/28) 
 - Zuweisen eines beschreibenden Namens wie **Unternehmensnetzwerk** 
 
 Anstatt zu versuchen, alle Standorte zu definieren, die nicht vertrauenswürdig sind, können Sie:
 
 - Alle Standorte einschließen 
 
-   ![Bedingter Zugriff](./media/untrusted-networks/02.png)
+   :::image type="content" source="./media/untrusted-networks/02.png" alt-text="Screenshot: Bereich mit den Azure AD-Standorten. „Konfigurieren“ ist auf „Ja“ festgelegt, die Registerkarte „Einschließen“ wird angezeigt, und die Option für beliebige Standorte ist ausgewählt und hervorgehoben." border="false":::
 
 - Alle vertrauenswürdigen Standorte ausschließen 
 
-   ![Bedingter Zugriff](./media/untrusted-networks/01.png)
+   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="Screenshot: Bereich mit den Azure AD-Standorten. „Konfigurieren“ ist auf „Ja“ festgelegt, die Registerkarte „Ausschließen“ wird angezeigt, und die Option für alle vertrauenswürdigen Standorte ist ausgewählt." border="false":::
 
 ## <a name="policy-deployment"></a>Richtlinienbereitstellung
 
-Mit dem in diesem Artikel beschriebenen Ansatz können Sie nun eine Richtlinie für den bedingten Zugriff für nicht vertrauenswürdige Standorte konfigurieren. Um die erwartete Funktionsweise der Richtlinie sicherzustellen, empfiehlt es sich, sie zu testen, bevor Sie sie in der Produktionsumgebung verwenden. Idealerweise sollten Sie in einem Testmandanten überprüfen, ob die neue Richtlinie wie erwartet funktioniert. Weitere Informationen finden Sie unter [Wie stellen Sie eine neue Richtlinie bereit?](best-practices.md#how-should-you-deploy-a-new-policy) 
+Mit dem in diesem Artikel beschriebenen Ansatz können Sie nun eine Richtlinie für den bedingten Zugriff für nicht vertrauenswürdige Standorte konfigurieren. Um die erwartete Funktionsweise der Richtlinie sicherzustellen, empfiehlt es sich, sie zu testen, bevor Sie sie in der Produktionsumgebung verwenden. Idealerweise sollten Sie in einem Testmandanten überprüfen, ob die neue Richtlinie wie erwartet funktioniert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum bedingten Zugriff finden Sie unter [Was ist bedingter Zugriff in Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
+Weitere Informationen zum bedingten Zugriff finden Sie unter [Was ist bedingter Zugriff in Azure Active Directory?](./overview.md)

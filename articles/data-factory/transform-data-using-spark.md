@@ -1,27 +1,28 @@
 ---
-title: Transformieren von Daten mit der Spark-Aktivität in Azure Data Factory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Daten durch Ausführen von Spark-Programmen in einer Azure Data-Factory-Pipeline mithilfe der Spark-Aktivität transformieren können.
+title: Transformieren von Daten mit einer Spark-Aktivität
+description: Hier erfahren Sie, wie Sie Daten durch Ausführen von Spark-Programmen in einer Azure Data Factory-Pipeline mithilfe der Spark-Aktivität transformieren können.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/31/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: c493dbc99edc794dd5a261dfc004c2c8c1cb6d52
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+manager: shwang
+ms.custom: seo-lt-2019
+ms.date: 05/08/2020
+ms.openlocfilehash: cac64b17e7aad9aa2bf88386f21d5f82b3013fa3
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312088"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566774"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Spark-Aktivität in Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-spark.md)
 > * [Aktuelle Version](transform-data-using-spark.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Die Spark-Aktivität in einer Data Factory-[Pipeline](concepts-pipelines-activities.md) führt Spark-Programme in [Ihrem eigenen](compute-linked-services.md#azure-hdinsight-linked-service) oder [bedarfsabhängigen](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight-Cluster aus. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet. Wenn Sie einen bedarfsgesteuerten mit Spark verknüpften Dienst verwenden, erstellt Data Factory für Sie automatisch bei Bedarf einen Spark-Cluster zum Verarbeiten der Daten und löscht dann den Cluster, sobald die Verarbeitung abgeschlossen ist. 
 
@@ -64,14 +65,14 @@ Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definiti
 | description           | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein       |
 | type                  | Für die Spark-Aktivität ist der Aktivitätstyp „HDInsightSpark“. | Ja      |
 | linkedServiceName     | Name des mit HDInsight Spark verknüpften Diensts, in dem das Spark-Programm ausgeführt wird. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md). | Ja      |
-| SparkJobLinkedService | Der verknüpfte Azure Storage-Dienst, der die Datei sowie die Abhängigkeiten und Protokolle für den Spark-Auftrag enthält.  Wenn Sie für diese Eigenschaft keinen Wert angeben, wird der Speicher verwendet, der dem HDInsight-Cluster zugeordnet ist. Der Wert dieser Eigenschaft darf nur ein mit Azure Storage verknüpfter Dienst sein. | Nein       |
+| SparkJobLinkedService | Der verknüpfte Azure Storage-Dienst, der die Datei sowie die Abhängigkeiten und Protokolle für den Spark-Auftrag enthält. Hier werden nur die verknüpften **[Azure Blob Storage](./connector-azure-blob-storage.md)** und **[ADLS Gen2](./connector-azure-data-lake-storage.md)** -Dienste unterstützt. Wenn Sie für diese Eigenschaft keinen Wert angeben, wird der Speicher verwendet, der dem HDInsight-Cluster zugeordnet ist. Der Wert dieser Eigenschaft darf nur ein mit Azure Storage verknüpfter Dienst sein. | Nein       |
 | rootPath              | Der Azure-Blobcontainer und -ordner mit der Spark-Datei. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. Details zur Struktur dieses Ordners finden Sie im Abschnitt „Ordnerstruktur“ (nächster Abschnitt). | Ja      |
 | entryFilePath         | Der relative Pfad zum Stammordner des Spark-Codes bzw. -Pakets. Die Eingabedatei muss eine Python-Datei oder eine JAR-Datei sein. | Ja      |
 | className             | Die Java-/Spark-Hauptklasse der Anwendung.      | Nein       |
-| arguments             | Eine Liste der Befehlszeilenargumente für das Spark-Programm. | Nein       |
+| Argumente             | Eine Liste der Befehlszeilenargumente für das Spark-Programm. | Nein       |
 | proxyUser             | Das Benutzerkonto, dessen Identität angenommen werden soll, um das Spark-Programm auszuführen. | Nein       |
 | sparkConfig           | Geben Sie Werte für die Spark-Konfigurationseigenschaften an, die im Thema [Spark-Konfiguration – Anwendungseigenschaften](https://spark.apache.org/docs/latest/configuration.html#available-properties) aufgeführt sind. | Nein       |
-| getDebugInfo          | Gibt an, ob die Spark-Protokolldateien in den Azure-Speicher kopiert werden, der vom HDInsight-Cluster verwendet (oder) von sparkJobLinkedService angegeben wird. Zulässige Werte: „None“, „Always“ oder „Failure“. Standardwert: None (Keine): | Nein       |
+| getDebugInfo          | Gibt an, ob die Spark-Protokolldateien in den Azure-Speicher kopiert werden, der vom HDInsight-Cluster verwendet (oder) von sparkJobLinkedService angegeben wird. Zulässige Werte: „None“, „Always“ oder „Failure“. Standardwert: Keine. | Nein       |
 
 ## <a name="folder-structure"></a>Ordnerstruktur
 Spark-Aufträge lassen sich besser erweitern als Pig- oder Hive-Aufträge. Bei Spark-Aufträgen können Sie mehrere Abhängigkeiten wie z.B. jar-Pakete (im Java-CLASSPATH platziert), Python-Dateien (im PYTHONPATH platziert) sowie beliebige andere Dateien bereitstellen.
@@ -118,5 +119,5 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [Hadoop-Streamingaktivität](transform-data-using-hadoop-streaming.md)
 * [Spark-Aktivität](transform-data-using-spark.md)
 * [Benutzerdefinierte .NET-Aktivität](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning-Batchausführungsaktivität](transform-data-using-machine-learning.md)
+* [Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)](transform-data-using-machine-learning.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)

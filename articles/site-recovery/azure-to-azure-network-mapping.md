@@ -1,18 +1,18 @@
 ---
-title: Zuordnung virtueller Netzwerke zwischen zwei Azure-Regionen in Azure Site Recovery | Microsoft-Dokumentation
-description: Azure Site Recovery koordiniert Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server. Informieren Sie sich über das Failover zu Azure oder zu einem sekundären Rechenzentrum.
-author: mayurigupta13
+title: Zuordnung virtueller Netzwerke zwischen zwei Regionen in Azure Site Recovery
+description: Erfahren Sie mehr über die Zuordnung virtueller Netzwerke zwischen zwei Azure-Regionen für die Notfallwiederherstellung von virtuellen Azure-Computern mit Azure Site Recovery.
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
-ms.author: mayg
-ms.openlocfilehash: 8c24352fdbc6b81e7d263ac8c511b7c61792e6ae
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 10/15/2019
+ms.author: harshacs
+ms.openlocfilehash: ff1f80641dc3db1f6b69fc0223c60022f8cf8435
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907873"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95811625"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Einrichten der Netzwerkzuordnung und IP-Adressierung für VNETs
 
@@ -33,7 +33,7 @@ Ordnen Sie Netzwerke wie folgt zu:
 3. Wählen Sie unter **Netzwerkzuordnung hinzufügen** die Quell- und Zielstandorte aus. In unserem Beispiel wird die Quell-VM in der Region „Asien, Osten“ ausgeführt und in der Region „Asien, Südosten“ repliziert.
 
     ![Auswählen von Quelle und Ziel](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
-3. Nun erstellen Sie eine Netzwerkzuordnung im entgegengesetzten Verzeichnis. In unserem Beispiel ist die Quelle nun „Asien, Südosten“ und das Ziel „Asien, Osten“.
+3. Erstellen Sie nun eine Netzwerkzuordnung in umgekehrter Richtung. In unserem Beispiel ist die Quelle nun „Asien, Südosten“ und das Ziel „Asien, Osten“.
 
     ![Bereich „Netzwerkzuordnung hinzufügen“ – Auswählen der Quell- und Zielstandorte für das Zielnetzwerk](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 
@@ -67,8 +67,8 @@ Das Subnetz der Ziel-VM wird basierend auf dem Namen des Subnetzes der Quell-VM 
 
 Die IP-Adresse für die einzelnen Netzwerkkarten auf einem virtuellen Zielcomputer wird wie folgt konfiguriert:
 
-- **DHCP:** Wenn die Netzwerkkarte der Quell-VM DHCP verwendet, wird die Netzwerkkarte der Ziel-VM ebenfalls als DHCP festgelegt.
-- **Statische IP-Adresse:** Wenn die Netzwerkkarte der Quell-VM die statische IP-Adressierung verwendet, verwendet die Netzwerkkarte der Ziel-VM auch eine statische IP-Adresse.
+- **DHCP**: Falls die Netzwerkkarte der Quell-VM DHCP verwendet, wird die Netzwerkkarte der Ziel-VM ebenfalls als DHCP festgelegt.
+- **Statische IP-Adresse**: Wenn die Netzwerkkarte der Quell-VM die statische IP-Adressierung verwendet, verwendet die Netzwerkkarte der Ziel-VM auch eine statische IP-Adresse.
 
 
 ## <a name="ip-address-assignment-during-failover"></a>IP-Adresszuweisung beim Failover
@@ -76,8 +76,7 @@ Die IP-Adresse für die einzelnen Netzwerkkarten auf einem virtuellen Zielcomput
 **Quell- und Zielsubnetze** | **Details**
 --- | ---
 Gleicher Adressraum | Die IP-Adresse der Netzwerkkarte der Quell-VM wird als IP-Adresse der Netzwerkkarte der Ziel-VM festgelegt.<br/><br/> Wenn die Adresse nicht verfügbar ist, wird die nächste verfügbare IP-Adresse als Ziel festgelegt.
-
-Unterschiedlicher Adressraum<br/><br/> Die nächste verfügbare IP-Adresse im Zielsubnetz wird als Netzwerkkartenadresse der Ziel-VM festgelegt.
+Unterschiedlicher Adressraum | Die nächste verfügbare IP-Adresse im Zielsubnetz wird als Netzwerkkartenadresse der Ziel-VM festgelegt.
 
 
 
@@ -85,8 +84,8 @@ Unterschiedlicher Adressraum<br/><br/> Die nächste verfügbare IP-Adresse im Zi
 
 **Zielnetzwerk** | **Details**
 --- | ---
-Das Zielnetzwerk ist das Failover-VNET. | – Die Ziel-IP-Adresse ist statisch, aber nicht die gleiche IP-Adresse, die für das Failover reserviert wurde.<br/><br/>  – Die zugewiesene IP-Adresse ist die nächste verfügbare IP-Adresse vom Ende des Subnetzbereichs.<br/><br/> Beispiel:  Wenn die Quell-IP-Adresse 10.0.0.19 lautet und das Failovernetzwerk den Bereich 10.0.0.0/24 verwendet, lautet die nächste IP-Adresse, die der Ziel-VM zugewiesen wird, 10.0.0.254.
-Das Zielnetzwerk ist nicht das Failover-VNET. | – Die Ziel-IP-Adresse ist statisch und die gleiche IP-Adresse, die für das Failover reserviert wurde.<br/><br/>  – Wenn dieselbe IP-Adresse bereits zugewiesen wurde, ist die IP-Adresse die nächste verfügbare IP-Adresse am Ende des Subnetzbereichs.<br/><br/> Beispiel:  Wenn die statische Quell-IP-Adresse 10.0.0.19 lautet und ein Failover in einem Netzwerk ausgeführt wird, das nicht das Failovernetzwerk mit dem Bereich 10.0.0.0/24 darstellt, lautet die statische IP-Zieladresse 10.0.0.0.19, falls verfügbar, und andernfalls 10.0.0.254.
+Das Zielnetzwerk ist das Failover-VNET. | – Die Ziel-IP-Adresse ist statisch mit derselben IP-Adresse. <br/><br/>  – Wenn dieselbe IP-Adresse bereits zugewiesen wurde, ist die IP-Adresse die nächste verfügbare IP-Adresse am Ende des Subnetzbereichs. Beispiel: Wenn die IP-Quelladresse 10.0.0.19 lautet und das Failovernetzwerk den Bereich 10.0.0.0/24 verwendet, lautet die nächste IP-Adresse, die der Ziel-VM zugewiesen wird, 10.0.0.254.
+Das Zielnetzwerk ist nicht das Failover-VNET. | – Die Ziel-IP-Adresse ist statisch mit derselben IP-Adresse.<br/><br/>  – Wenn dieselbe IP-Adresse bereits zugewiesen wurde, ist die IP-Adresse die nächste verfügbare IP-Adresse am Ende des Subnetzbereichs.<br/><br/> Beispiel: Wenn die statische Quell-IP-Adresse 10.0.0.19 lautet und ein Failover in einem Netzwerk ausgeführt wird, das nicht das Failovernetzwerk mit dem Bereich 10.0.0.0/24 darstellt, lautet die statische IP-Zieladresse 10.0.0.19, falls verfügbar, und andernfalls 10.0.0.254.
 
 - Das Failover-VNET ist das Zielnetzwerk, das Sie beim Einrichten der Notfallwiederherstellung auswählen.
 - Es wird empfohlen, immer ein Netzwerk für das Testfailover zu verwenden, das nicht für die Produktion bestimmt ist.
@@ -95,5 +94,5 @@ Das Zielnetzwerk ist nicht das Failover-VNET. | – Die Ziel-IP-Adresse ist stat
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zur Notfallwiederherstellung bei Azure-VMs finden Sie unter [Grundlegendes zu Netzwerken bei Replikationen mit Azure als Quelle und Ziel](site-recovery-azure-to-azure-networking-guidance.md).
+- Informationen zur Notfallwiederherstellung bei Azure-VMs finden Sie unter [Grundlegendes zu Netzwerken bei Replikationen mit Azure als Quelle und Ziel](./azure-to-azure-about-networking.md).
 - Erfahren Sie mehr über [die Beibehaltung von IP-Adressen nach einem Failover](site-recovery-retain-ip-azure-vm-failover.md).

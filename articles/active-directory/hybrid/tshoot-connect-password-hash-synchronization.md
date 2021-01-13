@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60383092"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317564"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Problembehandlung für die Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 
@@ -120,7 +120,7 @@ Jeder lokale Active Directory-Connector ist mit einem eigenen Kennworthashsynchr
 
 Wenn das AD DS-Konto, das vom lokalen Active Directory-Connector zum Synchronisieren von Kennworthashes verwendet wird, nicht über die entsprechenden Berechtigungen verfügt, wird folgende Fehlermeldung zurückgegeben:
 
-![Falsche Anmeldeinformationen](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
+![Screenshot mit dem Fehler, der zurückgegeben wird, wenn das AD DS-Konto einen falschen Benutzernamen oder ein falsches Kennwort aufweist](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
 
 #### <a name="incorrect-ad-ds-account-username-or-password"></a>Falscher Benutzername oder falsches Kennwort für das AD DS-Konto
 
@@ -173,13 +173,13 @@ Im restlichen Teil dieses Abschnitts werden bestimmte Ergebnisse, die vom Cmdlet
 
 #### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>Active Directory-Objekt wird nicht nach Azure AD exportiert
 
-Bei der Kennworthashsynchronisierung für dieses lokale Active Directory-Konto ist ein Fehler aufgetreten, da kein entsprechendes Objekt im Azure AD-Mandanten vorhanden ist. Die folgende Fehlermeldung wird zurückgegeben:
+Bei der Kennworthashsynchronisierung für dieses lokale Active Directory-Konto ist ein Fehler aufgetreten, da kein entsprechendes Objekt im Azure AD-Mandanten vorhanden ist. Der folgende Fehler wird zurückgegeben:
 
 ![Azure AD-Objekt fehlt](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnotexported.png)
 
 #### <a name="user-has-a-temporary-password"></a>Benutzer besitzt ein temporäres Kennwort
 
-Gegenwärtig bietet Azure AD Connect keine Unterstützung für die Synchronisierung temporärer Kennwörter mit Azure AD. Ein Kennwort gilt als temporär, wenn die Option **Kennwort bei der nächsten Anmeldung ändern** für den lokalen Active Directory-Benutzer festgelegt wird. Die folgende Fehlermeldung wird zurückgegeben:
+Gegenwärtig bietet Azure AD Connect keine Unterstützung für die Synchronisierung temporärer Kennwörter mit Azure AD. Ein Kennwort gilt als temporär, wenn die Option **Kennwort bei der nächsten Anmeldung ändern** für den lokalen Active Directory-Benutzer festgelegt wird. Der folgende Fehler wird zurückgegeben:
 
 ![Temporäres Kennwort wurde nicht exportiert](./media/tshoot-connect-password-hash-synchronization/phssingleobjecttemporarypassword.png)
 
@@ -206,9 +206,9 @@ So behandeln Sie Probleme für den Fall, dass keine Kennwörter synchronisiert w
 
 2. Führen Sie `Set-ExecutionPolicy RemoteSigned` oder `Set-ExecutionPolicy Unrestricted` aus.
 
-3. Führen Sie `Import-Module ADSyncDiagnostics`aus.
+3. Führen Sie `Import-Module ADSyncDiagnostics` aus.
 
-4. Führen Sie `Invoke-ADSyncDiagnostics -PasswordSync`aus.
+4. Führen Sie `Invoke-ADSyncDiagnostics -PasswordSync` aus.
 
 
 
@@ -227,7 +227,7 @@ So behandeln Sie Probleme für den Fall, dass keine Kennwörter für einen Benut
 
 2. Führen Sie `Set-ExecutionPolicy RemoteSigned` oder `Set-ExecutionPolicy Unrestricted` aus.
 
-3. Führen Sie `Import-Module ADSyncDiagnostics`aus.
+3. Führen Sie `Import-Module ADSyncDiagnostics` aus.
 
 4. Führen Sie das folgende Cmdlet aus:
 
@@ -288,12 +288,15 @@ Wenn Sie eine benutzerdefinierte Installation verwendet haben, legen Sie die Ber
 6. Sind die Domänencontroller durch Azure AD Connect erreichbar? Wenn der Connect-Server mit keinem der Domänencontroller eine Verbindung herstellen kann, konfigurieren Sie **Nur bevorzugten Domänencontroller verwenden**.  
     
     ![Vom Active Directory-Connector verwendeter Domänencontroller](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
-    
+
 7. Navigieren Sie zurück zum **Synchronization Service Manager** und **Verzeichnispartition konfigurieren**. 
  
 8. Wählen Sie unter **Verzeichnispartitionen auswählen** Ihre Domäne aus, aktivieren Sie das Kontrollkästchen **Nur bevorzugten Domänencontroller verwenden**, und klicken Sie auf **Konfigurieren**. 
 
 9. Geben Sie in der Liste die Domänencontroller ein, die Connect zur Kennwortsynchronisierung verwenden soll. Die gleiche Liste wird ebenfalls für den Import und Export verwendet. Führen Sie diese Schritte für alle Ihre Domänen aus.
+
+> [!NOTE]
+> Um diese Änderungen anzuwenden, starten Sie den Dienst **Microsoft Azure AD Sync** (AADSync) neu.
 
 10. Wenn der Skriptausgabe zufolge kein Takt vorhanden ist, führen Sie das Skript unter [Auslösen einer vollständigen Synchronisierung aller Kennwörter](#trigger-a-full-sync-of-all-passwords) aus.
 
@@ -335,7 +338,7 @@ Sie können Probleme mit der Kennworthashsynchronisierung einfach beheben, indem
 
     i. Klicken Sie auf **Metaverseobjekteigenschaften**, um eine Liste von Benutzerattributen anzuzeigen.  
 
-    ![Metaverseinformationen](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
+    ![Screenshot der Liste mit Benutzerattributen für die Metaverseobjekteigenschaften](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
 
     Stellen Sie sicher, dass kein **cloudFiltered**-Attribut vorhanden ist. Stellen Sie sicher, dass die Domänenattribute (domainFQDN und domainNetBios) über die erwarteten Werte verfügen.
 
@@ -353,13 +356,13 @@ Die Statusspalte kann die folgenden Werte enthalten:
 
 | Status | BESCHREIBUNG |
 | --- | --- |
-| Erfolgreich |Das Kennwort wurde erfolgreich synchronisiert. |
+| Erfolg |Das Kennwort wurde erfolgreich synchronisiert. |
 | FilteredByTarget |Das Kennwort wird auf **Benutzer muss Kennwort bei der nächsten Anmeldung ändern**festgelegt. Das Kennwort wurde nicht synchronisiert. |
 | NoTargetConnection |Im Metaverse oder im Azure AD-Connectorbereich befindet sich kein Objekt. |
 | SourceConnectorNotPresent |Im lokalen Active Directory Connector-Bereich wurde kein Objekt gefunden. |
 | TargetNotExportedToDirectory |Das Objekt im Azure AD-Connectorbereich wurde noch nicht exportiert. |
 | MigratedCheckDetailsForMoreInfo |Der Protokolleintrag wurde vor Build 1.0.9125.0 erstellt und wird im Zustand der Vorversion angezeigt. |
-| Error |Dienst hat einen unbekannten Fehler zurückgegeben. |
+| Fehler |Dienst hat einen unbekannten Fehler zurückgegeben. |
 | Unknown |Fehler beim Versuch, einen Batch von Kennworthashes zu verarbeiten.  |
 | MissingAttribute |Bestimmte Attribute (z.B. Kerberos-Hash), die von Azure Active Directory Domain Services angefordert werden, sind nicht verfügbar. |
 | RetryRequestedByTarget |Bestimmte Attribute (z.B. Kerberos-Hash), die von Azure Active Directory Domain Services angefordert werden, waren zuvor nicht verfügbar. Es wird versucht, den Kennworthash des Benutzers neu zu synchronisieren. |

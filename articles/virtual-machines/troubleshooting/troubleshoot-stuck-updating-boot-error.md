@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: 226151d81319dc4e6f132e76ce2d310f88a484e8
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: fe2d444bbdc09ed5ab0205d4139591e3288e3358
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087020"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734564"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Startvorgang des virtuellen Azure-Computers bleibt bei Windows-Update hängen
 
 In diesem Artikel wird beschrieben, wie Sie das Problem beheben, wenn Ihr virtueller Computer (Virtual Machine, VM) beim Startvorgang in der Windows Update-Phase hängen bleibt. 
 
-> [!NOTE] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Ressourcen-Manager-Bereitstellungsmodells. Es wird empfohlen, dieses Modell anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen zu verwenden.
 
 ## <a name="symptom"></a>Symptom
 
@@ -50,14 +48,19 @@ Abhängig von der Anzahl der Updates, die installiert werden oder für die ein R
 
 4. Öffnen Sie eine Eingabeaufforderungsinstanz mit erhöhten Rechten („Als Administrator ausführen“). Führen Sie den folgenden Befehl aus, um die Liste mit den Updatepaketen abzurufen, die sich auf dem angefügten Betriebssystemdatenträger befinden:
 
-        dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
+    ```console
+    dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
+    ```
 
     Ist dem angefügten Betriebssystemdatenträger beispielsweise Laufwerk „F“ zugeordnet, führen Sie den folgenden Befehl aus:
 
-        dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
+    ```console
+    dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
+    ```
+
 5. Öffnen Sie die Datei „C:\temp\Patch_level.txt“, und lesen Sie die Datei von unten nach oben. Suchen Sie nach dem Update mit dem Status **Installation steht aus** oder **Deinstallation steht aus**.  Im Folgenden finden Sie ein Beispiel für den Updatestatus:
 
-     ```
+    ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
     State : Install Pending
     Release Type : Security Update
@@ -77,4 +80,4 @@ Abhängig von der Anzahl der Updates, die installiert werden oder für die ein R
     > [!NOTE] 
     > Abhängig von der Größe des Pakets benötigt das DISM-Tool eine Weile, um die Deinstallation zu verarbeiten. Normalerweise wird der Vorgang innerhalb von 16 Minuten abgeschlossen.
 
-7. [Trennen Sie den Betriebssystemdatenträger, und erstellen die VM neu.](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk) Überprüfen Sie dann, ob das Problem behoben ist.
+7. [Trennen Sie den Betriebssystemdatenträger, und erstellen die VM neu.](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-the-original-virtual-hard-disk) Überprüfen Sie dann, ob das Problem behoben ist.

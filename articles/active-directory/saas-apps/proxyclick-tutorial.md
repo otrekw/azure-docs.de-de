@@ -1,28 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Proxyclick | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in Proxyclick | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Proxyclick konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5c58a859-71c2-4542-ae92-e5f16a8e7f18
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 6a4d1c8a390ebd1194d14c057bb32d3111bf39be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23ae1a2c1371cda9435ea76f02cebc79c141c904
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67093489"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522239"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Tutorial: Azure Active Directory-Integration mit Proxyclick
+# <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Tutorial: Azure Active Directory-Integration in Proxyclick
 
 In diesem Tutorial erfahren Sie, wie Sie Proxyclick in Azure Active Directory (Azure AD) integrieren.
 Diese Integration bietet die folgenden Vorteile:
@@ -31,7 +27,7 @@ Diese Integration bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Proxyclick anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten: im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -52,15 +48,15 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Einrichten der Integration von Proxyclick in Azure AD müssen Sie Proxyclick aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory**:
+1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory** :
 
     ![Wählen Sie „Azure Active Directory“.](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**:
+2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen** :
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Um eine Anwendung hinzuzufügen, wählen Sie oben im Fenster die Option **Neue Anwendung**:
+3. Um eine Anwendung hinzuzufügen, wählen Sie oben im Fenster die Option **Neue Anwendung** :
 
     ![Auswählen von „Neue Anwendung“](common/add-new-app.png)
 
@@ -135,7 +131,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Proxycli
 
     1. **Azure AD-Bezeichner**
 
-    1. **Abmelde-URL**:
+    1. **Abmelde-URL** :
 
 ### <a name="configure-proxyclick-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Proxyclick
 
@@ -185,11 +181,11 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „
 
     1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
   
-    1. Geben Sie im Feld **Benutzername** die Zeichenfolge **BrittaSimon@\<IhreUnternehmensdomäne>.\<Erweiterung>** ein. (Beispiel: BrittaSimon@contoso.com.)
+    1. Geben Sie in das Feld **Benutzername** den Namen **BrittaSimon@\<yourcompanydomain>.\<extension>** ein. (Beispiel: BrittaSimon@contoso.com.)
 
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den im Feld **Kennwort** angezeigten Wert.
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den im Feld **Kennwort** angezeigten Wert.
 
-    1. Klicken Sie auf **Erstellen**.
+    1. Klicken Sie auf **Erstellen** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -211,9 +207,9 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Auswählen von „Benutzer hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Fenster auf die Schaltfläche **Auswählen**.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Fenster auf die Schaltfläche **Auswählen** .
 
-6. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Klicken Sie unten im Fenster auf die Schaltfläche **Auswählen**.
+6. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Klicken Sie unten im Fenster auf die Schaltfläche **Auswählen** .
 
 7. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 
@@ -237,11 +233,11 @@ Zum Erstellen eines Benutzerkontos führen Sie die folgenden Schritte aus:
 
     ![Abschnitt „Add a colleague“ (Kollegen hinzufügen)](./media/proxyclick-tutorial/user3.png)
 
-    1. Geben Sie im Feld **Email** (E-Mail) die E-Mail-Adresse des Benutzers ein. In diesem Fall: **brittasimon\@contoso.com**.
+    1. Geben Sie im Feld **Email** (E-Mail) die E-Mail-Adresse des Benutzers ein. In diesem Fall: **brittasimon\@contoso.com** .
 
-    1. Geben Sie im Textfeld **First Name** (Vorname) den Vornamen des Benutzers ein. In diesem Fall ist dies **Britta**.
+    1. Geben Sie im Textfeld **First Name** (Vorname) den Vornamen des Benutzers ein. In diesem Fall ist dies **Britta** .
 
-    1. Geben Sie im Textfeld **Last Name** (Nachname) den Nachnamen des Benutzers ein. In diesem Fall ist dies **Simon**.
+    1. Geben Sie im Textfeld **Last Name** (Nachname) den Nachnamen des Benutzers ein. In diesem Fall ist dies **Simon** .
 
     1. Wählen Sie **Add User** (Benutzer hinzufügen) aus.
 
@@ -249,13 +245,12 @@ Zum Erstellen eines Benutzerkontos führen Sie die folgenden Schritte aus:
 
 Jetzt müssen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich testen.
 
-Wenn Sie im Zugriffsbereich die Kachel „Proxyclick“ auswählen, sollten Sie automatisch bei der Proxyclick-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich die Kachel „Proxyclick“ auswählen, sollten Sie automatisch bei der Proxyclick-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

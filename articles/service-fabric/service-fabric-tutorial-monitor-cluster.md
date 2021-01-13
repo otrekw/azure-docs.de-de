@@ -1,26 +1,17 @@
 ---
-title: Überwachen eines Service Fabric-Clusters in Azure | Microsoft-Dokumentation
+title: Überwachen eines Service Fabric-Clusters in Azure
 description: In diesem Tutorial erfahren Sie, wie Sie einen Cluster überwachen, indem Sie Service Fabric-Ereignisse anzeigen, die EventStore-APIs abfragen, Leistungsindikatoren überwachen und Integritätsberichte anzeigen.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: srrengar
-ms.custom: mvc
-ms.openlocfilehash: 63069dcdebf19c64d7bcde298fa234622a6d9a2b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: f9ad0f443b1647499f7085693f34f4da9ec85398
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385276"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331990"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Tutorial: Überwachen eines Service Fabric-Clusters in Azure
 
@@ -50,7 +41,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Installieren Sie [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) oder die [Azure CLI](/cli/azure/install-azure-cli).
+* Installieren Sie [Azure PowerShell](/powershell/azure/install-az-ps) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 * Erstellen Sie einen sicheren [Windows-Cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md). 
 * Richten Sie eine [Diagnosesammlung](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor) für den Cluster ein.
 * Aktivieren Sie den [EventStore-Dienst](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor) im Cluster.
@@ -66,7 +57,7 @@ Wählen Sie die Ressource **ServiceFabric(mysfomsworkspace)** aus.
 
 In der **Übersicht** werden Kacheln in Form eines Diagramms (Graphs) für jede der aktivierten Lösungen angezeigt, auch für Service Fabric. Klicken Sie auf den Graph **Service Fabric**, um mit der Service Fabric-Analyse-Lösung fortzufahren.
 
-![Service Fabric-Lösung](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
+![Screenshot: Service Fabric-Graph.](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
 
 In der folgenden Abbildung ist die Startseite der Service Fabric-Analyse-Lösung dargestellt. Diese Startseite bietet eine Momentaufnahmeansicht der Vorgänge im Cluster.
 
@@ -133,7 +124,7 @@ ServiceFabricOperationalEvent
 | project EventId, EventName = 'NodeUpOperational', TaskName, Computer, EventMessage, TimeGenerated
 | sort by TimeGenerated 
 ``` 
- 
+
 Geben Sie Integritätsberichte mit dem Integritätsstatus 3 (Fehler) („HealthState == 3“) zurück, und extrahieren Sie weitere Eigenschaften aus dem Feld „EventMessage“:
 
 ```kusto
@@ -200,7 +191,7 @@ ServiceFabricReliableServiceEvent
 | sort by TimeGenerated desc
 ```
 
-Es werden unterschiedliche Ereignisse für den Start und das Ende des runasync-Diensts angezeigt. Dies erfolgt normalerweise bei Bereitstellungen und Upgrades.
+Es werden unterschiedliche Ereignisse für den Start und das Ende des Diensts `runasync` angezeigt. Dies erfolgt normalerweise bei Bereitstellungen und Upgrades.
 
 ![Service Fabric-Lösung – Reliable Services](media/service-fabric-tutorial-monitor-cluster/oms-reliable-services-events-selection.png)
 
@@ -496,5 +487,5 @@ Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie einen Cluste
 > [!div class="nextstepaction"]
 > [Skalieren eines Clusters](service-fabric-tutorial-scale-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json

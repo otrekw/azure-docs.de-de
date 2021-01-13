@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Aufrufen der Bing-Bildersuche-REST-API mithilfe von Java'
+title: 'Schnellstart: Suche nach Bildern mithilfe der Bing-Bildersuche-REST-API und Java'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung, um Bildsuchanforderungen mithilfe von Java an die Bing-Bildersuche-REST-API zu senden und JSON-Antworten zu empfangen.
 services: cognitive-services
@@ -9,25 +9,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 07/22/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 415613d99b3a7b9f3845a458886e93e5655842c8
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: c806780664576c424665d1d58c69d164f8504d3f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899708"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341919"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Schnellstart: Suchen nach Bildern mit der Bing-Bildersuche-API, einer Komponente von Azure Cognitive Services 
+# <a name="quickstart-search-for-images-with-the-bing-image-search-api-and-java"></a>Schnellstart: Suchen nach Bildern mit der Bing-Bildersuche-API und Java 
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie Suchanforderungen an die Bing-Bildersuche-API in Azure Cognitive Services senden. Diese Java-Anwendung sendet eine Suchabfrage an die API und zeigt die URL des ersten Bilds in den Ergebnissen an. Diese Anwendung ist in Java geschrieben, die API ist jedoch ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+In dieser Schnellstartanleitung erfahren Sie, wie Sie Suchanforderungen an die Bing-Bildersuche-API in Azure Cognitive Services senden. Diese Java-Anwendung sendet eine Suchabfrage an die API und zeigt die URL des ersten Bilds in den Ergebnissen an. Die Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel.
 
 Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) mit zusätzlichen Fehlerbehandlungen und Anmerkungen verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Das [Java Development Kit (JDK)](https://aka.ms/azure-jdks)
+* Das [Java Development Kit (JDK)](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * Die [Gson-Bibliothek](https://github.com/google/gson)
 
@@ -35,7 +40,7 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
 
 ## <a name="create-and-initialize-a-project"></a>Erstellen und Initialisieren eines Projekts
 
-1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt, und importieren Sie die folgenden Bibliotheken.
+1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt, und importieren Sie die folgenden Bibliotheken:
 
     ```java
     import java.net.*;
@@ -48,7 +53,7 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
     import com.google.gson.JsonParser;
     ```
 
-2. Erstellen Sie Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und einen Suchbegriff.
+2. Erstellen Sie Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und einen Suchbegriff. Für `host` können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```java
     static String subscriptionKey = "enter key here";
@@ -59,14 +64,14 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
 
 ## <a name="construct-the-search-request-and-query"></a>Erstellen der Suchanforderung und -abfrage
 
-1. Verwenden Sie die Variablen aus dem vorherigen Schritt, um eine Such-URL für die API-Anforderung zu formatieren. Der Suchbegriff muss URL-codiert sein, bevor er an die Anforderung angefügt werden kann.
+Verwenden Sie die Variablen aus dem vorherigen Schritt, um eine Such-URL für die API-Anforderung zu formatieren. Codieren Sie den Suchbegriff als URL, bevor Sie ihn an die Anforderung anhängen.
 
-    ```java
-    // construct the search request URL (in the form of endpoint + query string)
-    URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
-    HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
-    connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-    ```
+```java
+// construct the search request URL (in the form of endpoint + query string)
+URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
+HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
+connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+```
 
 ## <a name="receive-and-process-the-json-response"></a>Empfangen und Verarbeiten der JSON-Antwort
 
@@ -80,6 +85,7 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
     ```
 2. Trennen Sie die Bing-bezogenen HTTP-Header vom JSON-Text.
+
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -160,9 +166,8 @@ Antworten der Bing-Bildersuche-API werden im JSON-Format zurückgegeben. Diese B
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Was ist die Bing-Bildersuche?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Interaktive Onlinedemo testen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* [Details zu den Preisen](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) für die Bing-Suche-APIs 
-* [Abrufen eines kostenlosen Cognitive Services-Zugriffsschlüssels](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentation zu Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
-* [Referenz zur Bing-Bildersuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Was ist die Bing-Bildersuche-API?](../overview.md)  
+* [Interaktive Onlinedemo testen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
+* [Details zu den Preisen für die Bing-Suche-APIs](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
+* [Dokumentation zu Azure Cognitive Services](../../index.yml)
+* [Referenz zur Bing-Bildersuche-API](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

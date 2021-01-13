@@ -1,91 +1,82 @@
 ---
 title: Weiterleiten von Azure Automation-Auftragsdaten an Azure Monitor-Protokolle
-description: In diesem Artikel wird erläutert, wie Auftragsstatus und Runbookauftrags-Datenströme an Azure Monitor-Protokolle gesendet werden, um zusätzliche Einblicke und Verwaltungsoptionen zu erhalten.
+description: In diesem Artikel wird erläutert, wie Auftragsstatus und Runbookauftragsstreams an Azure Monitor-Protokolle gesendet werden.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 02/05/2019
+ms.date: 09/02/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ff455ed355d4412bcf042208d2fd1e7a2a11b965
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 2e7e798967541748b5572994d48cb5bdf7474cb1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186787"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182868"
 ---
-# <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Azure Monitor-Protokolle
+# <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Weiterleiten von Azure Automation-Auftragsdaten an Azure Monitor-Protokolle
 
-Automation kann Runbookauftragsstatus und Auftragsdatenströme an Ihren Log Analytics-Arbeitsbereich senden. Dieser Prozess beinhaltet nicht die Arbeitsbereichsverknüpfung. Er ist vollkommen unabhängig. Auftragsprotokolle und -streams werden im Azure-Portal oder mit PowerShell für einzelne Aufträge angezeigt, d.h., Sie können einfache Untersuchen durchführen. Mit Azure Monitor-Protokollen können Sie jetzt:
+Azure Automation kann Runbookauftragsstatus und Auftragsdatenströme an Ihren Log Analytics-Arbeitsbereich senden. Dieser Prozess beinhaltet nicht die Arbeitsbereichsverknüpfung. Er ist vollkommen unabhängig. Auftragsprotokolle und -streams werden im Azure-Portal oder mit PowerShell für einzelne Aufträge angezeigt, d.h., Sie können einfache Untersuchen durchführen. Mit Azure Monitor-Protokollen können Sie jetzt:
 
-* Gewinnen Sie Einblicke in Ihre Automation-Aufträge.
+* Gewinnen Sie Erkenntnisse über den Status Ihrer Automation-Aufträge.
 * Lösen Sie basierend auf Ihrem Runbookauftragsstatus (beispielsweise „Fehler“ oder „Angehalten“) das Senden einer E-Mail oder einer Warnung aus.
 * Schreiben Sie erweiterte Abfragen für Ihre Auftragsdatenströme.
 * Korrelieren Sie Aufträge über Automation-Konten hinweg.
-* Visualisieren Sie Ihren Auftragsverlauf.
+* Benutzerdefinierte Ansichten und Suchabfragen zum Visualisieren von Runbookergebnissen, Runbookauftragsstatus und anderer wichtiger Schlüsselindikatoren oder Metriken verwenden
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
-## <a name="prerequisites-and-deployment-considerations"></a>Voraussetzungen und Überlegungen zur Bereitstellung
+## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Senden Ihrer Automation-Protokolle an Azure Monitor-Protokolle benötigen Sie:
 
-* Das aktuelle Release von [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
-* Einen Log Analytics-Arbeitsbereich Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokollen](../log-analytics/log-analytics-get-started.md).
+* Das aktuelle Release von [Azure PowerShell](/powershell/azure/)
+
+* Einen Log Analytics-Arbeitsbereich und seine Ressourcen-ID Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokolle](../azure-monitor/overview.md).
+
 * Die Ressourcen-ID für Ihr Azure Automation-Konto
 
-So ermitteln Sie die Ressourcen-ID für Ihr Azure Automation-Konto:
+## <a name="how-to-find-resource-ids"></a>Ermitteln von Ressourcen-IDs
 
-```powershell-interactive
-# Find the ResourceId for the Automation Account
-Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
-```
+1. Verwenden Sie den folgenden Befehl, um die Ressourcen-ID für Ihr Azure Automation-Konto zu ermitteln:
 
-Führen Sie zum Ermitteln der Ressourcen-ID für Ihren Log Analytics-Arbeitsbereich den folgenden PowerShell-Befehl aus:
+    ```powershell-interactive
+    # Find the ResourceId for the Automation account
+    Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
+    ```
 
-```powershell-interactive
-# Find the ResourceId for the Log Analytics workspace
-Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
-```
+2. Kopieren Sie den Wert für **ResourceID**.
 
-Sollten Sie über mehrere Automation-Konten (oder über mehrere Arbeitsbereiche) verfügen, suchen Sie in der Ausgabe der vorherigen Befehle den *Namen*, den Sie konfigurieren müssen, und kopieren Sie den Wert für *ResourceId*.
+3. Verwenden Sie den folgenden Befehl, um die Ressourcen-ID Ihres Log Analytics-Arbeitsbereichs zu ermitteln:
 
-Wenn Sie den *Namen* Ihres Automation-Kontos suchen müssen, wählen Sie im Azure-Portal auf dem Blatt **Automation-Konto** Ihr Automation-Konto aus, und wählen Sie dann **Alle Einstellungen**. Wählen Sie auf dem Blatt **Alle Einstellungen** unter **Kontoeinstellungen** die Option **Eigenschaften** aus.  Die Werte werden auf dem Blatt **Eigenschaften** angezeigt.<br> ![Automation-Konto – Eigenschaften](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
+    ```powershell-interactive
+    # Find the ResourceId for the Log Analytics workspace
+    Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
+    ```
 
-## <a name="set-up-integration-with-azure-monitor-logs"></a>Einrichten der Integration in Azure Monitor-Protokolle
+4. Kopieren Sie den Wert für **ResourceID**.
 
-1. Starten Sie auf Ihrem Computer **Windows PowerShell** über den **Startbildschirm**.
-2. Führen Sie das folgende PowerShell-Skript aus, und bearbeiten Sie den Wert für `[your resource id]` und `[resource id of the log analytics workspace]` mit den Werten aus dem vorherigen Schritt.
+Um Ergebnisse aus einer bestimmten Ressourcengruppe zurückzugeben, schließen Sie den Parameter `-ResourceGroupName` ein. Weitere Informationen finden Sie unter [Get-AzResource](/powershell/module/az.resources/get-azresource).
 
-   ```powershell-interactive
-   $workspaceId = "[resource id of the log analytics workspace]"
-   $automationAccountId = "[resource id of your automation account]"
+Wenn Sie über mehrere Automation-Konten oder einen Arbeitsbereich in der Ausgabe der vorherigen Befehle verfügen, können Sie folgendermaßen den Namen und andere zugehörige Eigenschaften ermitteln, die Teil der vollständigen Ressourcen-ID Ihres Automation-Kontos sind:
 
-   Set-AzDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled 1
-   ```
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im Azure-Portal auf der Seite **Automation-Konten** Ihr Automation-Konto aus.
+1. Wählen Sie auf der Seite des ausgewählten Automation-Kontos unter **Kontoeinstellungen** die Option **Eigenschaften** aus.
+1. Beachten Sie auf der Seite **Eigenschaften** die unten aufgeführten Details.
 
-Nach dem Ausführen dieses Skripts kann es eine Stunde dauern, bis in Azure Monitor-Protokolle Datensätze neu geschriebener Auftragsprotokolle oder -streams angezeigt werden.
+    ![Automation-Konto – Eigenschaften](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
 
-Um die Protokolle anzuzeigen, führen Sie die folgende Abfrage in der Log Analytics-Protokollsuche durch: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+## <a name="configure-diagnostic-settings"></a>Konfigurieren von Diagnoseeinstellungen
 
-### <a name="verify-configuration"></a>Überprüfen der Konfiguration
+Automatisierungsdiagnoseeinstellungen unterstützen die Weiterleitung der folgenden Plattformprotokolle und Metrikdaten:
 
-Vergewissern Sie sich, dass Ihr Automation-Konto Protokolle an Ihren Log Analytics-Arbeitsbereich sendet. Überprüfen Sie hierzu mithilfe des folgenden PowerShell-Befehls, ob die Diagnose für das Automation-Konto ordnungsgemäß konfiguriert ist:
+* JobLogs
+* JobStreams
+* DSCNodeStatus
+* Metriken: Aufträge gesamt, Updateausführungen von Bereitstellungscomputern gesamt, Updatebereitstellungsausführungen gesamt
 
-```powershell-interactive
-Get-AzDiagnosticSetting -ResourceId $automationAccountId
-```
-
-Überprüfen Sie in der Ausgabe Folgendes:
-
-* Unter *Protokolle* muss *Aktiviert* den Wert *True* haben.
-* Der Wert für *WorkspaceId* muss der Ressourcen-ID Ihres Log Analytics-Arbeitsbereichs entsprechen.
+Um mit dem Senden Ihrer Automatisierungsprotokolle an Azure Monitor-Protokolle zu beginnen, lesen Sie [Erstellen von Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-settings.md), um die Funktion und Methoden zu verstehen, die zur Konfiguration von Diagnoseeinstellungen zum Senden von Plattformprotokollen zur Verfügung stehen.
 
 ## <a name="azure-monitor-log-records"></a>Protokolldatensätze in Azure Monitor
 
-Die Diagnose von Azure Automation erstellt zwei Arten von Datensätzen in Azure Monitor-Protokolle und kennzeichnet sie als **AzureDiagnostics**. In den folgenden Abfragen wird die aktualisierte Abfragesprache für Azure Monitor-Protokolle verwendet. Informationen zu allgemeinen Abfragen zwischen der alten Abfragesprache und der neuen Azure Kusto-Abfragesprache finden Sie unter [Legacy to new Azure Kusto Query Language cheat sheet](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language) (Cheat Sheet: Gegenüberstellung von alter Abfragesprache und Azure Kusto-Abfragesprache).
+Die Diagnose von Azure Automation erstellt zwei Typen von Datensätzen in Azure Monitor-Protokollen, gekennzeichnet als `AzureDiagnostics`. Die Tabellen in den nächsten Abschnitten sind Beispiele für Datensätze, die von Azure Automation generiert werden, und für die Datentypen, die in Protokollsuchergebnissen angezeigt werden.
 
 ### <a name="job-logs"></a>Auftragsprotokolle
 
@@ -93,102 +84,116 @@ Die Diagnose von Azure Automation erstellt zwei Arten von Datensätzen in Azure 
 | --- | --- |
 | TimeGenerated |Ausführungsdatum und -uhrzeit des Runbookauftrags. |
 | RunbookName_s |Der Name des Runbooks. |
-| Caller_s |Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System. |
-| Tenant_g | GUID, die den Mandanten für den Aufrufer identifiziert. |
-| JobId_g |Die GUID, bei der es sich um die ID des Runbookauftrags handelt. |
+| Caller_s |Der Aufrufer, der den Vorgang initiiert hat. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System. |
+| Tenant_g | Die GUID, die den Mandanten für den Aufrufer identifiziert. |
+| JobId_g |Die GUID, der den Runbookauftrag identifiziert. |
 | ResultType |Der Status des Runbookauftrags. Mögliche Werte:<br>- Neu<br>- Erstellt<br>- Gestartet<br>- Beendet<br>- Ausgesetzt<br>- Fehler<br>- Abgeschlossen |
-| Category (Kategorie) | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobLogs“. |
-| OperationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“. |
-| Resource | Name des Automation-Kontos |
-| SourceSystem | So erfasst Azure Monitor-Protokolle die Daten Immer *Azure* für Azure-Diagnose. |
-| ResultDescription |Beschreibt den resultierenden Zustand des Runbookauftrags. Mögliche Werte:<br>- Auftrag gestartet<br>- Fehler beim Ausführen des Auftrags<br>- Auftrag abgeschlossen |
-| CorrelationId |Die GUID, bei der es sich um die Korrelations-ID des Runbookauftrags handelt. |
-| resourceId |Gibt die Ressourcen-ID des Runbooks für das Azure Automation-Konto an. |
-| SubscriptionId | Die Azure-Abonnement-ID (GUID) für das Automation-Konto. |
-| ResourceGroup | Name der Ressourcengruppe für das Automation-Konto. |
-| ResourceProvider | MICROSOFT.AUTOMATION |
-| ResourceType | AUTOMATIONACCOUNTS |
-
+| Category | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobLogs“. |
+| Vorgangsname | Der Typ des in Azure ausgeführten Vorgangs. Für Automation lautet der Wert „Job“. |
+| Resource | Den Namen des Automation-Kontos. |
+| SourceSystem | Das System, das Azure Monitor-Protokolle verwenden, um die Daten zu erfassen. Für Azure-Diagnose ist der Wert immer „Azure“. |
+| ResultDescription |Der Ergebniszustand des Runbookauftrags. Mögliche Werte:<br>- Auftrag gestartet<br>- Fehler beim Ausführen des Auftrags<br>- Auftrag abgeschlossen |
+| CorrelationId |Die Korrelations-GUID des Runbookauftrags. |
+| resourceId |Die Ressourcen-ID für das Azure Automation-Konto des Runbooks. |
+| SubscriptionId | Die Azure-Abonnement-GUID für das Automation-Konto. |
+| ResourceGroup | Der Name der Ressourcengruppe für das Automation-Konto. |
+| ResourceProvider | Der Ressourcenanbieter. Der Wert lautet „MICROSOFT.AUTOMATION“. |
+| ResourceType | Der Ressourcentyp. Der Wert lautet „AUTOMATIONACCOUNTS“. |
 
 ### <a name="job-streams"></a>Auftragsdatenströme
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | TimeGenerated |Ausführungsdatum und -uhrzeit des Runbookauftrags. |
 | RunbookName_s |Der Name des Runbooks. |
-| Caller_s |Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System. |
+| Caller_s |Der Aufrufer, der den Vorgang initiiert hat. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System. |
 | StreamType_s |Der Typ des Auftragsstreams. Mögliche Werte:<br>\- Status<br>- Ausgabe<br>- Warnung<br>- Fehler<br>- Debuggen<br>- Ausführlich |
-| Tenant_g | GUID, die den Mandanten für den Aufrufer identifiziert. |
-| JobId_g |Die GUID, bei der es sich um die ID des Runbookauftrags handelt. |
+| Tenant_g | Die GUID, die den Mandanten für den Aufrufer identifiziert. |
+| JobId_g |Die GUID, der den Runbookauftrag identifiziert. |
 | ResultType |Der Status des Runbookauftrags. Mögliche Werte:<br>– In Bearbeitung |
-| Category (Kategorie) | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobStreams“. |
-| OperationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“. |
-| Resource | Name des Automation-Kontos |
-| SourceSystem | So erfasst Azure Monitor-Protokolle die Daten Immer *Azure* für Azure-Diagnose. |
-| ResultDescription |Enthält den Ausgabedatenstrom des Runbooks. |
-| CorrelationId |Die GUID, bei der es sich um die Korrelations-ID des Runbookauftrags handelt. |
-| resourceId |Gibt die Ressourcen-ID des Runbooks für das Azure Automation-Konto an. |
-| SubscriptionId | Die Azure-Abonnement-ID (GUID) für das Automation-Konto. |
-| ResourceGroup | Name der Ressourcengruppe für das Automation-Konto. |
-| ResourceProvider | MICROSOFT.AUTOMATION |
-| ResourceType | AUTOMATIONACCOUNTS |
+| Category | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobStreams“. |
+| Vorgangsname | Der Typ des in Azure ausgeführten Vorgangs. Für Automation lautet der Wert „Job“. |
+| Resource | Der Namen des Automation-Kontos. |
+| SourceSystem | Das System, das Azure Monitor-Protokolle verwenden, um die Daten zu erfassen. Für Azure-Diagnose ist der Wert immer „Azure“. |
+| ResultDescription |Die Beschreibung, die den Ausgabedatenstrom des Runbooks enthält. |
+| CorrelationId |Die Korrelations-GUID des Runbookauftrags. |
+| resourceId |Die Ressourcen-ID für das Azure Automation-Konto des Runbooks. |
+| SubscriptionId | Die Azure-Abonnement-GUID für das Automation-Konto. |
+| ResourceGroup | Der Name der Ressourcengruppe für das Automation-Konto. |
+| ResourceProvider | Der Ressourcenanbieter. Der Wert lautet „MICROSOFT.AUTOMATION“. |
+| ResourceType | Der Ressourcentyp. Der Wert lautet „AUTOMATIONACCOUNTS“. |
 
-## <a name="viewing-automation-logs-in-azure-monitor-logs"></a>Anzeigen von Automation-Protokollen in Azure Monitor-Protokolle
+## <a name="view-automation-logs-in-azure-monitor-logs"></a>Anzeigen von Automation-Protokollen in Azure Monitor-Protokollen
 
-Nachdem Sie damit begonnen haben, Ihre Automation-Auftragsprotokolle an Azure Monitor-Protokolle zu senden, sehen wir uns nun an, wie Sie diese Protokolle in Azure Monitor-Protokolle verwenden können.
+Nachdem Sie damit begonnen haben, Ihre Automation-Auftragsstreams und -protokolle an Azure Monitor-Protokolle zu senden, sehen wir uns nun an, wie Sie diese Protokolle in Azure Monitor-Protokollen verwenden können.
 
 Führen Sie die folgende Abfrage aus, um die Protokolle anzuzeigen: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>Senden einer E-Mail, wenn ein Runbookauftrag mit einem Fehler abgebrochen oder angehalten wird
-Einer der häufigsten Kundenwünsche ist die Möglichkeit, eine E-Mail oder SMS zu senden, wenn bei einem Runbookauftrag ein Problem auftritt.
+
+Die folgenden Schritte zeigen, wie Sie Warnungen in Azure Monitor einrichten, damit Sie benachrichtigt werden, wenn bei einem Runbookauftrag ein Fehler auftritt.
 
 Zum Erstellen einer Warnungsregel erstellen Sie zunächst eine Protokollsuche für die Datensätze des Runbookauftrags, die die Warnung auslösen sollen. Klicken Sie auf die Schaltfläche **Warnung**, um die Warnungsregel zu erstellen und zu konfigurieren.
 
 1. Klicken Sie auf der Seite „Übersicht“ für den Log Analytics-Arbeitsbereich auf **Protokolle anzeigen**.
-2. Erstellen Sie eine Protokollsuchabfrage für Ihre Warnung, indem Sie folgenden Text in das Abfragefeld eingeben: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")` Sie können auch eine Gruppierung nach RunbookName vornehmen, indem Sie Folgendes eingeben: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
-   Wenn Sie Protokolle von mehreren Automation-Konten oder Abonnements in Ihrem Arbeitsbereich eingerichtet haben, können Sie Ihre Warnungen nach Abonnement und Automation-Konto gruppieren. Der Name des Automation-Kontos kann dem Ressourcenfeld in der JobLogs-Suche entnommen werden.
+2. Erstellen Sie eine Protokollsuchabfrage für Ihre Warnung, indem Sie folgenden Text in das Abfragefeld eingeben: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`<br><br>Sie können auch eine Gruppierung nach Runbookname vornehmen, indem Sie Folgendes eingeben: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
+
+   Wenn Sie Protokolle von mehreren Automation-Konten oder Abonnements in Ihrem Arbeitsbereich eingerichtet haben, können Sie Ihre Warnungen nach Abonnement und Automation-Konto gruppieren. Der Name des Automation-Kontos kann dem `Resource`-Feld in der `JobLogs`-Suche entnommen werden.
+
 3. Klicken Sie oben auf der Seite auf **Neue Warnungsregel**, um den Bildschirm **Regel erstellen** zu öffnen. Weitere Informationen zu den Konfigurationsoptionen für Warnungen finden Sie unter [Protokollwarnungen in Azure Monitor – Warnungen](../azure-monitor/platform/alerts-unified-log.md).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Durchführen einer Suche nach allen Aufträgen, die mit Fehlern abgeschlossen wurden
+
 Neben dem Erstellen von Warnungen für Fehler können Sie auch ermitteln, wenn ein Runbook-Auftrag einen Fehler ohne Abbruch aufweist. In diesen Fällen erzeugt PowerShell einen Fehlerdatenstrom, die Fehler ohne Abbruch führen jedoch nicht dazu, dass der Auftrag unterbrochen wird oder fehlschlägt.
 
 1. Klicken Sie in Ihrem Log Analytics-Arbeitsbereich auf **Protokolle**.
-2. Geben Sie in das Abfragefeld `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g` ein, und klicken Sie dann auf die Schaltfläche **Suchen**.
+
+2. Geben Sie in das Abfragefeld `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g` ein.
+
+3. Klicken Sie auf die Schaltfläche **Suchen**.
 
 ### <a name="view-job-streams-for-a-job"></a>Anzeigen von Auftragsdatenströmen für einen Auftrag
-Wenn Sie einen Auftrag debuggen, sollten Sie ggf. auch einen Blick in die Auftragsdatenströme werfen. Mit der folgenden Abfrage werden alle Datenströme für einen einzelnen Auftrag mit der GUID „2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0“ abgerufen:
 
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and JobId_g == "2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0" | sort by TimeGenerated asc | project ResultDescription`
+Wenn Sie einen Auftrag debuggen, sollten Sie ggf. auch einen Blick in die Auftragsdatenströme werfen. Mit der folgenden Abfrage werden alle Datenströme für einen einzelnen Auftrag mit der GUID `2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0` abgerufen:
 
-### <a name="view-historical-job-status"></a>Anzeigen des Auftragsstatusverlaufs
-Abschließend möchten Sie möglicherweise Ihren Auftragsverlauf visualisieren. Sie können die folgende Abfrage verwenden, um nach dem Statusverlauf Ihrer Aufträge zu suchen.
-
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`
-<br> ![Diagramm zum Auftragsstatusverlauf in Log Analytics](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
-
-## <a name="remove-diagnostic-settings"></a>Entfernen von Diagnoseeinstellungen
-
-Führen Sie zum Entfernen der Diagnoseeinstellung aus dem Automation-Konto die folgenden Befehle aus:
-
-```powershell-interactive
-$automationAccountId = "[resource id of your automation account]"
-
-Remove-AzDiagnosticSetting -ResourceId $automationAccountId
+```kusto
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and JobId_g == "2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0"
+| sort by TimeGenerated asc
+| project ResultDescription
 ```
 
-## <a name="summary"></a>Zusammenfassung
+### <a name="view-historical-job-status"></a>Anzeigen des Auftragsstatusverlaufs
 
-Sie erhalten einen besseren Einblick in den Status Ihrer Automation-Aufträge, wenn Sie den Status und die Streamdaten Ihres Automation-Auftrags an Azure Monitor-Protokolle senden und:
-+ Warnungen einrichten, um bei Problemen benachrichtigt zu werden.
-+ Benutzerdefinierte Ansichten und Suchabfragen zum Anzeigen von Runbook-Ergebnissen, Runbook-Auftragsstatus und anderer wichtiger Schlüsselindikatoren oder Metriken verwenden.
+Abschließend sollten Sie Ihren Auftragsverlauf visualisieren. Sie können die folgende Abfrage verwenden, um nach dem Statusverlauf Ihrer Aufträge zu suchen.
 
-Azure Monitor-Protokolle bietet eine höhere operative Transparenz für Ihre Automation-Aufträge, sodass schneller auf Vorfälle reagiert werden kann.
+```kusto
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started"
+| summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)
+```
+
+![Diagramm zum Auftragsstatusverlauf in Log Analytics](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)
+
+### <a name="filter-job-status-output-converted-into-a-json-object"></a>Filtern der Auftragsstatusausgabe, die in eine JSON-Objekt konvertiert wurde
+
+Kürzlich haben wir das Verhalten geändert, wie die Automation-Protokolldaten in die `AzureDiagnostics`-Tabelle im Log Analytics-Dienst geschrieben werden, in der die JSON-Eigenschaften nicht mehr in separate Felder aufgeschlüsselt werden. Wenn Sie das Runbook so konfiguriert haben, dass Objekte im Ausgabestream im JSON-Format als separate Spalten formatiert werden, müssen Sie Ihre Abfragen so neu konfigurieren, dass dieses Feld in ein JSON-Objekt analysiert wird, um auf diese Eigenschaften zuzugreifen. Dies erfolgt mithilfe von [parsejson](/azure/data-explorer/kusto/query/samples?pivots=#parsejson), um auf ein bestimmtes JSON-Element in einem bekannten Pfad zuzugreifen.
+
+Ein Runbook formatiert z. B. die *ResultDescription*-Eigenschaft im Ausgabestream im JSON-Format mit mehreren Feldern. Um nach dem Status Ihrer Aufträge zu suchen, die sich in einem fehlerhaften Zustand befinden, der in einem Feld namens **Status** angegeben wird, verwenden Sie diese Beispielabfrage, um *ResultDescription* mit einem Status von **Failed** zu durchsuchen:
+
+```kusto
+AzureDiagnostics
+| where Category == 'JobStreams'
+| extend jsonResourceDescription = parse_json(ResultDescription)
+| where jsonResourceDescription.Status == 'Failed'
+```
+
+![Auftragsstatusverlauf im JSON-Format von Log Analytics](media/automation-manage-send-joblogs-log-analytics/job-status-format-json.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Weitere Informationen zum Erstellen von Suchabfragen und zur Überprüfung der Automation-Auftragsprotokolle mit Azure Monitor-Protokolle finden Sie unter [Protokollsuchen in Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md).
+* Unter [Runbookausgabe und -meldungen in Azure Automation](automation-runbook-output-and-messages.md) erfahren Sie, wie Sie die Ausgabe und Fehlermeldungen von Runbooks erstellen und abrufen.
+* Weitere Informationen zum Ausführen von Runbooks und zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Ausführen von Runbooks in Azure Automation](automation-runbook-execution.md).
+* Weitere Informationen zu Azure Monitor-Protokolle und Datensammlungsquellen finden Sie unter [Sammeln von Azure Storage-Daten in Azure Monitor-Protokolle – Übersicht](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
 * Informationen zur Problembehandlung in Log Analytics finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).
-* Weitere Informationen zum Erstellen verschiedener Suchabfragen und zur Überprüfung der Automation-Auftragsprotokolle mit Azure Monitor-Protokolle finden Sie unter [Protokollsuchen in Azure Monitor-Protokolle](../log-analytics/log-analytics-log-searches.md).
-* Unter [Runbookausgabe und -meldungen](automation-runbook-output-and-messages.md) erfahren Sie, wie Sie die Ausgabe und Fehlermeldungen von Runbooks erstellen und abrufen.
-* Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md).
-* Weitere Informationen zu Azure Monitor-Protokolle und Datensammlungsquellen finden Sie unter [Sammeln von Azure Storage-Daten in Azure Monitor-Protokolle – Übersicht](../azure-monitor/platform/collect-azure-metrics-logs.md).
-

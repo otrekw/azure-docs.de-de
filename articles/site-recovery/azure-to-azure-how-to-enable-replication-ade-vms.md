@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der Replikation für ADE-fähige (Azure Disk Encryption) virtuelle Computer in Azure Site Recovery
+title: Aktivieren der Replikation für verschlüsselte virtuelle Azure-Computer in Azure Site Recovery
 description: In diesem Artikel erfahren Sie, wie Sie die Replikation ADE-fähiger (Azure Disk Encryption) virtueller Azure-Computer zwischen Azure-Regionen mithilfe von Site Recovery konfigurieren.
 author: asgang
 manager: rochakm
@@ -7,22 +7,22 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: bf0ee89bb091a13560a7a7d8d9e77c74827d94a2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861316"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86135790"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replizieren von ADE-fähigen (Azure Disk Encryption) virtuellen Computern in einer anderen Azure-Region
 
 In diesem Artikel erfahren Sie, wie Sie virtuelle Azure-Computer mit aktivierter Azure Disk Encryption (ADE) zwischen Azure-Regionen replizieren.
 
 >[!NOTE]
-> Site Recovery unterstützt derzeit ADE mit und ohne Azure Active Directory (AAD) für virtuelle Computer, auf denen Windows ausgeführt wird.  Für Computer, auf denen ADE 1.1 (ohne AAD) ausgeführt wird, müssen die virtuellen Windows-Computer verwaltete Datenträger verwenden. Virtuelle Computer mit nicht verwalteten Datenträgern werden nicht unterstützt. Wenn Sie von ADE 0.1 (mit AAD) zu 1.1 wechseln, müssen Sie die Replikation deaktivieren und die Replikation für einen virtuellen Computer aktivieren, nachdem Sie 1.1 aktiviert haben.
+> Site Recovery unterstützt derzeit ADE mit und ohne Azure Active Directory (AAD) für virtuelle Computer, auf denen Windows-Betriebssysteme ausgeführt werden. Für Linux-Betriebssysteme wird nur ADE ohne AAD unterstützt. Bei Computern mit ADE 1.1 (ohne AAD) müssen die virtuellen Computer außerdem verwaltete Datenträger verwenden. Virtuelle Computer mit nicht verwalteten Datenträgern werden nicht unterstützt. Wenn Sie von ADE 0.1 (mit AAD) zu 1.1 wechseln, müssen Sie die Replikation deaktivieren und die Replikation für einen virtuellen Computer aktivieren, nachdem Sie 1.1 aktiviert haben.
 
 
-## <a id="required-user-permissions"></a> Erforderliche Benutzerberechtigungen
+## <a name="required-user-permissions"></a><a id="required-user-permissions"></a> Erforderliche Benutzerberechtigungen
 Site Recovery erfordert, dass der Benutzer über Berechtigungen zum Erstellen des Schlüsseltresors in der Zielregion und zum Kopieren von Schlüsseln aus dem Schlüsseltresor der Quellregion in den Schlüsseltresor der Zielregion verfügt.
 
 Um die Replikation von Azure Disk Encryption-fähigen VMs aus dem Azure-Portal aktivieren zu können, muss der Benutzer über die folgenden Berechtigungen für den Schlüsseltresor der **Quellregion und der Zielregion** verfügen.
@@ -93,7 +93,7 @@ In Beispiel ist die primäre Azure-Region „Asien, Osten“, und die sekundäre
     - **Zielspeicherort**: Der Standort, an den die Daten Ihrer virtuellen Quellcomputer repliziert werden. Site Recovery stellt eine Liste geeigneter Zielregionen bereit, die auf dem Standort des ausgewählten Computers basiert. Es empfiehlt sich, denselben Standort wie für den Recovery Services-Tresor zu verwenden.
     - **Zielabonnement**: Das Zielabonnement für die Notfallwiederherstellung. Zielabonnement und Quellabonnement sind standardmäßig identisch.
     - **Zielressourcengruppe**: Die Ressourcengruppe, der all Ihre replizierten virtuellen Computer angehören. Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe. Der Name erhält das Suffix „asr“. Falls bereits eine von Azure Site Recovery erstellte Ressourcengruppe vorhanden ist, wird diese wiederverwendet. Sie können die Gruppe auch anpassen, wie im folgenden Abschnitt gezeigt. Der Speicherort der Zielressourcengruppe kann eine beliebige Azure-Region sein, mit Ausnahme der Region, in der die virtuellen Quellcomputer gehostet werden.
-    - **Virtuelles Zielnetzwerk**: Site Recovery erstellt standardmäßig in der Zielregion ein neues virtuelles Netzwerk. Der Name erhält das Suffix „asr“. Es wird Ihrem Quellnetzwerk zugeordnet und für alle zukünftigen Schutzaktivitäten verwendet. Informationen zur Netzwerkzuordnung finden Sie [hier](site-recovery-network-mapping-azure-to-azure.md).
+    - **Virtuelles Zielnetzwerk**: Site Recovery erstellt standardmäßig in der Zielregion ein neues virtuelles Netzwerk. Der Name erhält das Suffix „asr“. Es wird Ihrem Quellnetzwerk zugeordnet und für alle zukünftigen Schutzaktivitäten verwendet. Informationen zur Netzwerkzuordnung finden Sie [hier](./azure-to-azure-network-mapping.md).
     - **Zielspeicherkonten (wenn die Quell-VM keine verwalteten Datenträger verwendet)** : Standardmäßig erstellt Site Recovery ein neues Zielspeicherkonto und übernimmt dabei die Speicherkonfiguration Ihrer Quell-VM. Sollte bereits ein Speicherkonto vorhanden sein, wird dieses wiederverwendet.
     - **Verwaltete Replikatdatenträger (wenn die Quell-VM verwaltete Datenträger verwendet)** : Site Recovery erstellt neue verwaltete Replikatdatenträger in der Zielregion, um die verwalteten Datenträger der Quell-VM zu spiegeln. Dabei wird der gleiche Speichertyp (Standard oder Premium) verwendet wie für die verwalteten Datenträger der Quell-VM.
     - **Cachespeicherkonten**: Site Recovery benötigt als zusätzliches Speicherkonto in der Quellregion ein sogenanntes *Cachespeicherkonto*. Alle Änderungen an den virtuellen Quellcomputern werden nachverfolgt und an das Cachespeicherkonto gesendet. Anschließend werden sie an den Zielspeicherort repliziert.
@@ -133,7 +133,7 @@ Sie können mit einem [Skript](#copy-disk-encryption-keys-to-the-dr-region-by-us
 
 ![Dialogfeld zum Aktualisieren von ADE-Einstellungen](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
-## <a id="trusted-root-certificates-error-code-151066"></a>Beheben von Problemen mit der Berechtigung für den Schlüsseltresor während der Azure-zu-Azure-VM-Replikation
+## <a name="troubleshoot-key-vault-permission-issues-during--azure-to-azure-vm-replication"></a><a id="trusted-root-certificates-error-code-151066"></a>Beheben von Problemen mit der Berechtigung für den Schlüsseltresor während der Azure-zu-Azure-VM-Replikation
 
 Azure Site Recovery erfordert mindestens die Leseberechtigung für den Schlüsseltresor der Quellregion und die Schreibberechtigung für den Schlüsseltresor der Zielregion, um das Geheimnis zu lesen und in den Schlüsseltresor der Zielregion zu kopieren. 
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
-ms.openlocfilehash: aa9d776df50306ab1705426c923413b5a5d545a5
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: d441284b265ab11dd5ece42ec3737e455d662435
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717349"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023566"
 ---
 # <a name="monitor-site-recovery"></a>Überwachen von Azure Site Recovery
 
@@ -36,7 +36,7 @@ Machen Sie sich ggf. zunächst mit [allgemeinen Fragen zur Überwachung](monitor
 
 2. Zeigen Sie über das Dashboard Detailinformationen zu verschiedenen Bereichen an. 
 
-    ![Site Recovery-Dashboard](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png).
+    ![Screenshot der Bereiche im Dashboard, in denen Sie einen Drilldown ausführen können](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png)erforderlich.
 
 3. Klicken Sie unter **Replizierte Elemente** auf **Alle anzeigen**, um alle Server im Tresor anzuzeigen.
 4. Klicken Sie in den einzelnen Abschnitten auf die Statusdetails, um Detailinformationen anzuzeigen.
@@ -51,7 +51,7 @@ Machen Sie sich ggf. zunächst mit [allgemeinen Fragen zur Überwachung](monitor
 Healthy | Die Replikation verläuft normal. Es werden keine Fehler oder Warnungssymptome erkannt.
 Warnung | Mindestens ein Warnungssymptom wird erkannt, das sich auf die Replikation auswirken kann.
 Kritisch | Mindestens ein Symptom eines schwerwiegenden Replikationsfehlers wurde erkannt.<br/><br/> Diese Fehlersymptome weisen in der Regel darauf hin, dass die Replikation hängen geblieben ist oder nicht so schnell verläuft, wie die Datenänderung fortschreitet.
-Nicht zutreffend | Server, für die derzeit keine Replikation erwartet wird. Dazu können Computer gehören, für die ein Failover ausgeführt wurde.
+Nicht verfügbar | Server, für die derzeit keine Replikation erwartet wird. Dazu können Computer gehören, für die ein Failover ausgeführt wurde.
 
 ## <a name="monitor-test-failovers"></a>Überwachen der Testfailover
 
@@ -64,7 +64,7 @@ Nicht zutreffend | Server, für die derzeit keine Replikation erwartet wird. Daz
 --- | ---
 Test empfohlen | Computer, für die seit Aktivierung des Schutzes kein Testfailover ausgeführt wurde
 Erfolgreich ausgeführt | Computer mit mindestens einem erfolgreichen Testfailover
-Nicht zutreffend | Computer, die derzeit nicht zu einem Testfailover berechtigt sind. Für Computer, für die ein Failover ausgeführt wird, wird beispielsweise gerade die erste Replikation/ein Testfailover/ein Failover ausgeführt.
+Nicht verfügbar | Computer, die derzeit nicht zu einem Testfailover berechtigt sind. Für Computer, für die ein Failover ausgeführt wird, wird beispielsweise gerade die erste Replikation/ein Testfailover/ein Failover ausgeführt.
 
 ## <a name="monitor-configuration-issues"></a>Überwachen von Konfigurationsproblemen
 
@@ -154,12 +154,12 @@ Unter **Replizierte Elemente** erhalten Sie eine Liste der replizierten Computer
 5. Klicken Sie mit der rechten Maustaste auf einen Computer, um für ihn Vorgänge wie Testfailover zu initiieren oder bestimmte Fehlerdetails anzuzeigen.
 6. Klicken Sie auf einen Computer, um weitere Details zu ihm anzuzeigen. Zu den Details gehören:
    - **Replikationsinformationen:** Aktueller Status und Integrität des Computers.
-   - **RPO** (Recovery Point Objective): Aktuelles RPO für den virtuellen Computer und die Uhrzeit, an dem das RPO zuletzt berechnet wurde.
-   - **Wiederherstellungspunkte:** Letzte verfügbare Wiederherstellungspunkte für den Computer.
-   - **Failoverbereitschaft:** Gibt an, ob ein Testfailover für den Computer ausgeführt wurde, und zeigt die auf dem Computer ausgeführte Agent-Version (für Computer mit dem Mobilitätsdienst) und etwaige Konfigurationsprobleme an.
-   - **Fehler:** Liste der Replikationsfehlersymptome, die derzeit auf dem Computer beobachtet werden, sowie mögliche Ursachen und empfohlene Aktionen.
-   - **Ereignisse:** Chronologische Liste der aktuellen Ereignisse, die den Computer beeinträchtigen. Während Fehlerdetails die derzeit auf dem Computer feststellbaren Fehlersymptome anzeigen, sind die Ereignisse eine historische Aufzeichnung von Problemen, die Auswirkungen auf den Computer gehabt haben.
-   - **Infrastrukturansicht:** Zeigt den Status der Infrastruktur für das Szenario an, wenn Computer in Azure repliziert werden.
+   - **RPO** (Recovery Point Objective): Aktuelle RPO für den virtuellen Computer und die Uhrzeit, an dem die RPO zuletzt berechnet wurde.
+   - **Wiederherstellungspunkte**: Neueste verfügbare Wiederherstellungspunkte für den Computer.
+   - **Failoverbereitschaft**: Gibt an, ob ein Testfailover für den Computer ausgeführt wurde, und zeigt die auf dem Computer ausgeführte Agent-Version (für Computer mit dem Mobilitätsdienst) und etwaige Konfigurationsprobleme an.
+   - **Fehler**: Liste der Replikationsfehlersymptome, die derzeit auf dem Computer beobachtet werden, sowie mögliche Ursachen und empfohlene Aktionen.
+   - **Ereignisse**: Eine chronologische Liste der aktuellen Ereignisse, die den Computer beeinträchtigen. Während Fehlerdetails die derzeit auf dem Computer feststellbaren Fehlersymptome anzeigen, sind die Ereignisse eine historische Aufzeichnung von Problemen, die Auswirkungen auf den Computer gehabt haben.
+   - **Infrastrukturansicht**: Zeigt den Status der Infrastruktur für das Szenario an, wenn Computer in Azure repliziert werden.
 
      ![Details/Übersicht der replizierten Elemente in Site Recovery](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 

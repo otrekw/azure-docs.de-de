@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Entwerfen einer mehrmandantenfähigen Datenbank mit Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau)
-description: In diesem Tutorial erfahren Sie, wie Sie verteilte Tabellen in Azure Database for PostgreSQL Hyperscale (Citus) (Vorschau) erstellen, auffüllen und abfragen.
+title: 'Tutorial: Entwerfen einer mehrinstanzenfähigen Datenbank – Hyperscale (Citus) – Azure Database for PostgreSQL'
+description: In diesem Tutorial erfahren Sie, wie Sie eine skalierbare mehrinstanzenfähige Anwendung mit Azure Database for PostgreSQL – Hyperscale (Citus) entwerfen und ausführen.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,16 +9,16 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d8dee086f55c5596af50245b5271d98536eb7e57
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163983"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026198"
 ---
-# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Tutorial: Entwerfen einer mehrmandantenfähigen Datenbank mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau)
+# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Tutorial: Entwerfen einer mehrinstanzenfähigen Datenbank mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus)
 
-In diesem Tutorial verwenden Sie Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau), um Folgendes zu lernen:
+In diesem Tutorial verwenden Sie Azure Database for PostgreSQL – Hyperscale (Citus), um Folgendes zu lernen:
 
 > [!div class="checklist"]
 > * Erstellen einer Hyperscale (Citus)-Servergruppe
@@ -35,7 +35,7 @@ In diesem Tutorial verwenden Sie Azure Database for PostgreSQL – Hyperscale (C
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Verwenden des psql-Hilfsprogramms zum Erstellen eines Schemas
 
-Nach dem Herstellen der Verbindung mit der Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau) mithilfe von psql können Sie ein paar einfache Aufgaben ausführen. Dieses Tutorial führt Sie durch die Erstellung einer Web-App, die Werbetreibenden das Nachverfolgen ihrer Kampagnen ermöglicht.
+Nach dem Herstellen der Verbindung mit Azure Database for PostgreSQL – Hyperscale (Citus) mithilfe von psql können Sie ein paar einfache Aufgaben ausführen. Dieses Tutorial führt Sie durch die Erstellung einer Web-App, die Werbetreibenden das Nachverfolgen ihrer Kampagnen ermöglicht.
 
 Die App kann von mehreren Firmen verwendet werden, erstellen wir also eine Tabelle, die die Firmen enthält, und eine weitere für ihre Kampagnen. Führen Sie in der psql-Konsole diese Befehle aus:
 
@@ -139,6 +139,8 @@ SELECT create_distributed_table('ads',         'company_id');
 SELECT create_distributed_table('clicks',      'company_id');
 SELECT create_distributed_table('impressions', 'company_id');
 ```
+
+[!INCLUDE [azure-postgresql-hyperscale-dist-alert](../../includes/azure-postgresql-hyperscale-dist-alert.md)]
 
 ## <a name="ingest-sample-data"></a>Erfassen von Beispieldaten
 
@@ -273,6 +275,5 @@ In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Servergruppe ers
 
 In diesem Tutorial haben Sie erfahren, wie Sie eine Hyperscale (Citus)-Servergruppe bereitstellen. Sie haben mithilfe von psql eine Verbindung mit ihr hergestellt, haben ein Schema erstellt und Daten verteilt. Sie haben gelernt, Daten sowohl innerhalb von als auch zwischen Mandanten abzufragen und das Schema mandantenweise anzupassen.
 
-Lernen Sie als Nächstes die Konzepte von Hyperscale kennen.
-> [!div class="nextstepaction"]
-> [Hyperscale-Knotentypen](https://aka.ms/hyperscale-concepts)
+- Weitere Informationen zu [Knotentypen](./concepts-hyperscale-nodes.md) von Servergruppen
+- Bestimmen der besten [Anfangsgröße](howto-hyperscale-scale-initial.md) für Ihre Servergruppe

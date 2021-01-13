@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 50d0ed644b5afa744e8bce478199079fd4fb7432
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a5c5f9a4033b70a664071d6077a69f38c905093
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878945"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452215"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen1
 
@@ -33,7 +33,7 @@ Angenommen, Sie verfügen über einen Ordner mit 100.000 untergeordneten Objekte
 
 Beim Arbeiten mit Big Data in Data Lake Storage Gen1 wird in den meisten Fällen ein Dienstprinzipal genutzt, damit Dienste wie Azure HDInsight die Daten verwenden können. Es kann aber auch Fälle geben, in denen einzelne Benutzer ebenfalls Zugriff auf die Daten benötigen. In diesen Fällen müssen Sie Azure Active Directory-[Sicherheitsgruppen](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory) nutzen, anstatt Ordnern und Dateien einzelne Benutzer zuzuweisen.
 
-Nachdem einer Sicherheitsgruppe Berechtigungen zugewiesen wurden, sind für das Hinzufügen oder Entfernen von Benutzern der Gruppe keine Updates für Data Lake Storage Gen1 erforderlich. So können Sie auch sicherstellen, dass die Grenze von [32 Zugriffs- und Standard-ACLs](../azure-subscription-service-limits.md#data-lake-store-limits) nicht überschritten wird (dies umfasst auch die vier ACLs im POSIX-Format, die jeder Datei und jedem Ordner immer zugeordnet sind: [der zuständige Benutzer](data-lake-store-access-control.md#the-owning-user), [die zuständige Gruppe](data-lake-store-access-control.md#the-owning-group), [die Maske](data-lake-store-access-control.md#the-mask) und andere).
+Nachdem einer Sicherheitsgruppe Berechtigungen zugewiesen wurden, sind für das Hinzufügen oder Entfernen von Benutzern der Gruppe keine Updates für Data Lake Storage Gen1 erforderlich. So können Sie auch sicherstellen, dass die Grenze von [32 Zugriffs- und Standard-ACLs](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits) nicht überschritten wird (dies umfasst auch die vier ACLs im POSIX-Format, die jeder Datei und jedem Ordner immer zugeordnet sind: [der zuständige Benutzer](data-lake-store-access-control.md#the-owning-user), [die zuständige Gruppe](data-lake-store-access-control.md#the-owning-group), [die Maske](data-lake-store-access-control.md#the-mask) und andere).
 
 ### <a name="security-for-groups"></a>Sicherheit für Gruppen
 
@@ -49,7 +49,7 @@ Data Lake Storage Gen1 unterstützt die Option zum Aktivieren einer Firewall und
 
 ![Firewalleinstellungen in Data Lake Storage Gen1](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Firewalleinstellungen in Data Lake Storage Gen1")
 
-Nachdem die Firewall aktiviert wurde, haben nur Azure-Dienste, z.B. HDInsight, Data Factory, SQL Data Warehouse usw., Zugriff auf Data Lake Storage Gen1. Aufgrund der von Azure verwendeten internen Netzwerkadressübersetzung unterstützt die Data Lake Storage Gen1-Firewall die Einschränkung bestimmter Dienste per IP-Adresse nicht. Dies ist nur für Einschränkungen von Endpunkten außerhalb von Azure gedacht, z.B. lokale Standorte.
+Nachdem die Firewall aktiviert wurde, haben nur Azure-Dienste wie HDInsight, Data Factory, Azure Synapse Analytics usw. Zugriff auf Data Lake Storage Gen1. Aufgrund der von Azure verwendeten internen Netzwerkadressübersetzung unterstützt die Data Lake Storage Gen1-Firewall die Einschränkung bestimmter Dienste per IP-Adresse nicht. Dies ist nur für Einschränkungen von Endpunkten außerhalb von Azure gedacht, z.B. lokale Standorte.
 
 ## <a name="performance-and-scale-considerations"></a>Leistungs- und Skalierungsaspekte
 
@@ -108,7 +108,7 @@ Unten sind die wichtigsten drei Empfehlungen für die Orchestrierung der Replika
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>Verwenden von Distcp für Datenverschiebungen zwischen zwei Standorten
 
-„Distcp“ ist die Abkürzung von „distributed copy“. Es handelt sich hierbei um ein Linux-Befehlszeilentool, das Teil von Hadoop ist und verteilte Datenverschiebungen zwischen zwei Standorten ermöglicht. Die beiden Standorte können Data Lake Storage Gen1, HDFS, WASB oder S3 sein. Bei diesem Tool werden MapReduce-Aufträge in einem Hadoop-Cluster (z.B. HDInsight) verwendet, um das horizontale Hochskalieren auf allen Knoten durchzuführen. Distcp ist die schnellste Möglichkeit zum Verschieben von Big Data-Datenmengen ohne spezielle Einrichtungen für die Netzwerkkomprimierung. Distcp verfügt auch über eine Option zum alleinigen Aktualisieren von Deltadaten zwischen zwei Standorten und ermöglicht die Durchführung von automatischen Wiederholungsversuchen und die dynamische Computeskalierung. Dieser Ansatz ist äußerst effizient, was das Replizieren von Elementen wie Hive/Spark-Tabellen betrifft, die über viele große Dateien in einem einzelnen Verzeichnis verfügen, wenn Sie lediglich die geänderten Daten kopieren möchten. Aus diesen Gründen ist Distcp das empfohlene Tool zum Kopieren von Daten zwischen Big Data-Speichern.
+„Distcp“ ist die Abkürzung von „distributed copy“. Es handelt sich hierbei um ein Linux-Befehlszeilentool, das Teil von Hadoop ist und verteilte Datenverschiebungen zwischen zwei Standorten ermöglicht. Die beiden Standorte können Data Lake Storage Gen1, HDFS, WASB oder S3 sein. Bei diesem Tool werden MapReduce-Aufträge in einem Hadoop-Cluster (z.B. HDInsight) verwendet, um das Aufskalieren auf allen Knoten durchzuführen. Distcp ist die schnellste Möglichkeit zum Verschieben von Big Data-Datenmengen ohne spezielle Einrichtungen für die Netzwerkkomprimierung. Distcp verfügt auch über eine Option zum alleinigen Aktualisieren von Deltadaten zwischen zwei Standorten und ermöglicht die Durchführung von automatischen Wiederholungsversuchen und die dynamische Computeskalierung. Dieser Ansatz ist äußerst effizient, was das Replizieren von Elementen wie Hive/Spark-Tabellen betrifft, die über viele große Dateien in einem einzelnen Verzeichnis verfügen, wenn Sie lediglich die geänderten Daten kopieren möchten. Aus diesen Gründen ist Distcp das empfohlene Tool zum Kopieren von Daten zwischen Big Data-Speichern.
 
 Kopieraufträge können von Apache Oozie-Workflows ausgelöst werden, indem Häufigkeits- oder Datentrigger verwendet werden, und über Linux-Cron-Aufträge. Für intensive Replikationsaufträge wird empfohlen, einen separaten HDInsight Hadoop-Cluster zu erstellen, der speziell für die Kopieraufträge optimiert und skaliert werden kann. So wird sichergestellt, dass es für Kopieraufträge nicht zu Konflikten mit kritischen Aufträgen kommt. Falls die Replikation mit einer ausreichend geringen Häufigkeit erfolgt, kann der Cluster zwischen den einzelnen Aufträgen ggf. sogar heruntergefahren werden. Stellen Sie beim Ausführen von Failovern in eine sekundäre Region sicher, dass in der sekundären Region ein weiterer Cluster erstellt wird, damit neue Daten wieder unter dem primären Data Lake Storage Gen1-Konto repliziert werden können, nachdem es wieder verfügbar ist. Beispiele für die Verwendung von Distcp finden Sie unter [Kopieren von Daten zwischen Azure Storage-Blobs und Data Lake Storage Gen1 mithilfe von DistCp](data-lake-store-copy-data-wasb-distcp.md).
 
@@ -126,7 +126,9 @@ Wie bei Distcp auch, muss AdlCopy mit einer Anwendung wie Azure Automation oder 
 
 Data Lake Storage Gen1 verfügt über ausführliche Diagnoseprotokolle und Überwachungsfunktionen. Für Data Lake Storage Gen1 werden im Azure-Portal unter dem Data Lake Storage Gen1-Konto und in Azure Monitor einige grundlegende Metriken bereitgestellt. Die Verfügbarkeit von Data Lake Storage Gen1 wird im Azure-Portal angezeigt. Diese Metrik wird aber alle sieben Minuten aktualisiert und kann nicht über eine öffentlich verfügbar gemachte API abgefragt werden. Sie müssen Ihre eigenen synthetischen Tests durchführen, um die Verfügbarkeit zu überprüfen, wenn Sie die aktuellste Verfügbarkeit eines Data Lake Storage Gen1-Kontos ermitteln möchten. Für andere Metriken, z.B. die gesamte Speicherauslastung, Lese-/Schreibanforderungen und Eingang/Ausgang, kann die Aktualisierung bis zu 24 Stunden dauern. Aktuellere Metriken über Hadoop-Befehlszeilentools oder die Aggregierung von Protokollinformationen müssen also manuell berechnet werden. Die schnellste Möglichkeit zur Erzielung der aktuellsten Speicherauslastung ist die Ausführung dieses HDFS-Befehls über einen Hadoop-Clusterknoten (z.B. Hauptknoten):
 
-    hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```console
+hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```
 
 ### <a name="export-data-lake-storage-gen1-diagnostics"></a>Exportieren der Data Lake Storage Gen1-Diagnose
 
@@ -138,9 +140,9 @@ Falls Sie mehr Echtzeitwarnungen nutzen und mehr Kontrolle darüber haben möcht
 
 Wenn das Senden von Data Lake Storage Gen1-Protokollen nicht aktiviert ist, ermöglicht Azure HDInsight auch das Aktivieren der [clientseitigen Protokollierung für Data Lake Storage Gen1](data-lake-store-performance-tuning-mapreduce.md) über log4j. Sie müssen unter **Ambari** > **YARN** > **Config** > **Advanced yarn-log4j configurations** die folgende Eigenschaft festlegen:
 
-    log4j.logger.com.microsoft.azure.datalake.store=DEBUG
+`log4j.logger.com.microsoft.azure.datalake.store=DEBUG`
 
-Nachdem die Eigenschaft festgelegt wurde und die Knoten neu gestartet wurden, wird die Data Lake Storage Gen1-Diagnose in die YARN-Protokolle auf den Knoten („/tmp/\<Benutzer\>/yarn.log“) geschrieben, und wichtige Details wie Fehler oder die Drosselung (Fehlercode HTTP 429) können überwacht werden. Diese Informationen können auch in Azure Monitor-Protokollen oder an jedem anderen Ziel überwacht werden, das im Data Lake Storage Gen1-Konto auf dem Blatt [Diagnose](data-lake-store-diagnostic-logs.md) für das Empfangen von Protokollen festgelegt ist. Es wird empfohlen, mindestens die clientseitige Protokollierung zu aktivieren oder die Protokollversandoption von Data Lake Storage Gen1 für die Sichtbarkeit von Vorgängen und das vereinfachte Debuggen zu nutzen.
+Nachdem die Eigenschaft festgelegt wurde und die Knoten neu gestartet wurden, wird die Data Lake Storage Gen1-Diagnose in die YARN-Protokolle auf den Knoten (/tmp/\<user\>/yarn.log) geschrieben, und wichtige Details wie Fehler oder die Drosselung (Fehlercode HTTP 429) können überwacht werden. Diese Informationen können auch in Azure Monitor-Protokollen oder an jedem anderen Ziel überwacht werden, das im Data Lake Storage Gen1-Konto auf dem Blatt [Diagnose](data-lake-store-diagnostic-logs.md) für das Empfangen von Protokollen festgelegt ist. Es wird empfohlen, mindestens die clientseitige Protokollierung zu aktivieren oder die Protokollversandoption von Data Lake Storage Gen1 für die Sichtbarkeit von Vorgängen und das vereinfachte Debuggen zu nutzen.
 
 ### <a name="run-synthetic-transactions"></a>Ausführen von synthetischen Transaktionen
 
@@ -154,11 +156,15 @@ Beim Einfügen von Daten in eine Data Lake-Struktur ist es wichtig, die Struktur
 
 Bei IoT-Workloads können große Datenmengen im Datenspeicher landen, der übergreifend für verschiedene Produkte, Geräte, Organisationen und Kunden verwendet wird. Es ist wichtig, das Verzeichnislayout für nachgeschaltete Consumer in Bezug auf die Organisation, Sicherheit und effiziente Verarbeitung vorauszuplanen. Das folgende Layout kann hierbei als allgemeine Vorlage dienen:
 
-    {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 Die Zieltelemetrie für ein Flugzeugtriebwerk im Vereinigten Königreich kann beispielsweise wie die folgende Struktur aussehen:
 
-    UK/Planes/BA1293/Engine1/2017/08/11/12/
+```console
+UK/Planes/BA1293/Engine1/2017/08/11/12/
+```
 
 Es gibt einen wichtigen Grund dafür, das Datum am Ende der Ordnerstruktur anzuordnen. Falls Sie bestimmte Regionen oder Themen für Benutzer oder Gruppen sperren möchten, ist dies mit POSIX-Berechtigungen leicht möglich. Falls die Anforderung besteht, eine bestimmte Sicherheitsgruppe auf die Anzeige der Daten für das Vereinigte Königreich oder bestimmte Ebenen zu beschränken, wäre bei einer höheren Anordnung der Datumsstruktur andernfalls eine separate Berechtigung für viele Ordner unter jedem Stundenordner erforderlich. Außerdem würde sich die Anzahl von Ordnern im Laufe der Zeit exponentiell erhöhen, wenn die Datumsstruktur höher angeordnet wäre.
 
@@ -168,14 +174,18 @@ Ein häufiger allgemeiner Ansatz bei der Batchverarbeitung ist die Anordnung der
 
 Es kann vorkommen, dass die Dateiverarbeitung nicht erfolgreich ist, weil Daten beschädigt sind oder ein unerwartetes Format haben. In diesen Fällen kann für die Verzeichnisstruktur die Nutzung des Ordners **/bad** vorteilhaft sein, in den die Dateien zur weiteren Untersuchung verschoben werden können. Über den Batchauftrag können ggf. auch die Berichterstellung oder die Benachrichtigungsvorgänge für diese fehlerhaften Dateien (*bad* files) abgewickelt werden, um einen manuellen Eingriff zu ermöglichen. Erwägen Sie die Verwendung der folgenden Vorlagenstruktur:
 
-    {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 Es kann beispielsweise sein, dass ein Marketingunternehmen tägliche Datenextrakte aus Kundenupdates von seinen Kunden in Nordamerika erhält. Vor und nach der Verarbeitung kann dies ggf. wie im folgenden Codeausschnitt aussehen:
 
-    NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
-    NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```console
+NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
+NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```
 
 Bei der normalen Verarbeitung von Batchdaten direkt in Datenbanken, z.B. Hive oder herkömmlichen SQL-Datenbanken, sind die Ordner **/in** und **/out** nicht erforderlich, da die Ausgabe bereits in einem separaten Ordner für die Hive-Tabelle oder externe Datenbank angeordnet wird. Die täglichen Extrakte von Kunden werden dann beispielsweise in die entsprechenden Ordner eingefügt, und die Orchestrierung per Azure Data Factory, Apache Oozie oder Apache Airflow würde einen täglichen Hive- oder Spark-Auftrag auslösen, mit dem die Daten verarbeitet und in eine Hive-Tabelle geschrieben werden.
 

@@ -1,24 +1,16 @@
 ---
-title: Diagnose beim Azure Service Fabric-Reverseproxy | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Anforderungsverarbeitung beim Reverseproxy überwachen und diagnostizieren.
-services: service-fabric
-documentationcenter: .net
+title: Diagnose beim Azure Service Fabric-Reverseproxy
+description: Erfahren Sie, wie Sie die Anforderungsverarbeitung beim Reverseproxy für eine Azure Service Fabric-Anwendung überwachen und diagnostizieren.
 author: kavyako
-manager: vipulm
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: c9c8c649208cff95f4ee515d39cc8cca3e2c64bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726841"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75645462"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Überwachen und Diagnostizieren der Anforderungsverarbeitung beim Reverseproxy
 
@@ -200,5 +192,5 @@ Hier sind einige Beispiele zum Interpretieren der allgemeinen Fehlerprotokolle, 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Aktivieren der Protokollsammlung in Azure-Clustern unter [Ereignisaggregation und Sammlung mit Microsoft Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md).
 * Anzeigen von Service Fabric-Ereignisse in Visual Studio unter [Lokale Überwachung und Diagnose](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
-* Beispiele für Azure Resource Manager-Vorlagen zum Konfigurieren eines sicheren Reverseproxys mit den unterschiedlichen Optionen für die Dienstzertifikatüberprüfung finden Sie unter [Configure reverse proxy to connect to secure services](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) (Konfigurieren des Reverseproxys für die Verbindung mit sicheren Diensten).
+* Beispiele für Azure Resource Manager-Vorlagen zum Konfigurieren eines sicheren Reverseproxys mit den unterschiedlichen Optionen für die Dienstzertifikatüberprüfung finden Sie unter [Configure reverse proxy to connect to secure services](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services) (Konfigurieren des Reverseproxys für die Verbindung mit sicheren Diensten).
 * Weitere Informationen erhalten Sie unter [Service Fabric-Reverseproxy](service-fabric-reverseproxy.md).

@@ -1,26 +1,28 @@
 ---
-title: Streamen von Videodateien mit Azure Media Services und der Azure CLI | Microsoft-Dokumentation
-description: Führen Sie die in diesem Tutorial beschriebenen Schritte aus, um ein neues Azure Media Services-Konto zu erstellen, eine Datei zu codieren und in Azure Media Player zu streamen.
+title: Streamen von Videodateien mit Azure Media Services und der Azure-Befehlszeilenschnittstelle
+description: Führen Sie die in diesem Tutorial beschriebenen Schritte aus, um mithilfe der Azure CLI ein neues Azure Media Services-Konto zu erstellen, eine Datei zu codieren und in Azure Media Player zu streamen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 keywords: azure media services, streamen
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: ''
-ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: 58193a94d09dee5df611acf5d98c8661dd18abbb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.custom: devx-track-azurecli
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: f4a71509c29555da2fdbc1e7eed2fd985237d6a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639969"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91268773"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos – CLI
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos – Azure CLI
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In diesem Tutorial wird veranschaulicht, wie Sie Videos auf einfache Weise mit vielen Browsern und Geräten codieren und streamen können, indem Sie Azure Media Services und die Azure CLI verwenden. Sie können eingegebenen Inhalt angeben, indem Sie HTTPS- oder SAS-URLs oder Pfade zu Dateien in Azure-Blobspeicher verwenden.
 
@@ -40,7 +42,7 @@ Ihr Media Services-Konto und alle zugeordneten Speicherkonten müssen unter dems
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-```azurecli
+```azurecli-interactive
 az group create -n amsResourceGroup -l westus2
 ```
 
@@ -48,15 +50,15 @@ az group create -n amsResourceGroup -l westus2
 
 In diesem Beispiel erstellen Sie ein universelles LRS-Standardkonto der Version 2.
 
-Falls Sie mit Speicherkonten experimentieren möchten, verwenden Sie `--sku Standard_LRS`. Wenn Sie eine SKU für die Produktion auswählen, sollten Sie die Verwendung von `--sku Standard_RAGRS` erwägen, da diese Option die geografische Replikation zum Gewährleisten der Geschäftskontinuität ermöglicht. Weitere Informationen finden Sie unter [Storage accounts](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest) (Speicherkonten).
- 
-```azurecli
+Falls Sie mit Speicherkonten experimentieren möchten, verwenden Sie `--sku Standard_LRS`. Wenn Sie eine SKU für die Produktion auswählen, sollten Sie die Verwendung von `--sku Standard_RAGRS` erwägen, da diese Option die geografische Replikation zum Gewährleisten der Geschäftskontinuität ermöglicht. Weitere Informationen finden Sie unter [Storage accounts](/cli/azure/storage/account) (Speicherkonten).
+
+```azurecli-interactive
 az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
 ```
 
 ### <a name="create-an-azure-media-services-account"></a>Erstellen eines Azure Media Services-Kontos
 
-```azurecli
+```azurecli-interactive
 az ams account create --n amsaccount -g amsResourceGroup --storage-account amsstorageaccount -l westus2
 ```
 
@@ -85,14 +87,13 @@ Sie erhalten in etwa folgende Antwort:
 
 Mit dem folgenden Azure CLI-Befehl wird der standardmäßige **Streamingendpunkt** gestartet.
 
-```azurecli
+```azurecli-interactive
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 ```
 
 Sie erhalten in etwa folgende Antwort:
 
 ```
-az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 {
   "accessControl": null,
   "availabilitySetName": null,
@@ -129,7 +130,7 @@ Wenn der Streamingendpunkt bereits ausgeführt wird, erhalten Sie diese Meldung:
 
 Erstellen Sie eine **Transformation**, um allgemeine Aufgaben für die Codierung oder Analyse von Videos zu konfigurieren. In diesem Beispiel führen wir eine Adaptive Bitrate-Codierung durch. Wir übermitteln dann einen Auftrag unter der von uns erstellten Transformation. Der Auftrag ist die Anforderung an Media Services, die Transformation auf das jeweilige Video oder auf eingegebene Audioinhalte anzuwenden.
 
-```azurecli
+```azurecli-interactive
 az ams transform create --name testEncodingTransform --preset AdaptiveStreaming --description 'a simple Transform for Adaptive Bitrate Encoding' -g amsResourceGroup -a amsaccount
 ```
 
@@ -161,7 +162,7 @@ Sie erhalten in etwa folgende Antwort:
 
 Erstellen Sie ein **Medienobjekt** vom Typ „Ausgabe“, das als Ausgabe des Codierauftrags verwendet wird.
 
-```azurecli
+```azurecli-interactive
 az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
 ```
 
@@ -195,8 +196,8 @@ Beim Ausführen von `az ams job start` können Sie eine Bezeichnung für die Aus
 
   Beachten Sie, dass wir `output-assets` den Zusatz „=“ hinzufügen.
 
-```azurecli
-az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup 
+```azurecli-interactive
+az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup
 ```
 
 Sie erhalten in etwa folgende Antwort:
@@ -238,7 +239,7 @@ Sie erhalten in etwa folgende Antwort:
 
 Überprüfen Sie nach fünf Minuten den Status des Auftrags. Er sollte „Beendet“ lauten. Warten Sie noch einige Minuten, falls der Vorgang noch nicht abgeschlossen ist. Fahren Sie mit dem nächsten Schritt fort, sobald der Status „Beendet“ angezeigt wird, und erstellen Sie einen **Streaminglocator**.
 
-```azurecli
+```azurecli-interactive
 az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n testJob001
 ```
 
@@ -248,7 +249,7 @@ Nachdem die Codierung abgeschlossen ist, besteht der nächste Schritt darin, das
 
 ### <a name="create-a-streaming-locator"></a>Erstellen Sie eines Streaminglocators
 
-```azurecli
+```azurecli-interactive
 az ams streaming-locator create -n testStreamingLocator --asset-name testOutputAssetName --streaming-policy-name Predefined_ClearStreamingOnly  -g amsResourceGroup -a amsaccount 
 ```
 
@@ -274,7 +275,7 @@ Sie erhalten in etwa folgende Antwort:
 
 ### <a name="get-streaming-locator-paths"></a>Abrufen der Streaminglocatorpfade
 
-```azurecli
+```azurecli-interactive
 az ams streaming-locator get-paths -a amsaccount -g amsResourceGroup -n testStreamingLocator
 ```
 
@@ -311,13 +312,14 @@ Sie erhalten in etwa folgende Antwort:
 
 Kopieren Sie den Pfad für das HTTP-Livestreaming (HLS). In diesem Fall ist dies `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`.
 
-## <a name="build-the-url"></a>Erstellen der URL 
+## <a name="build-the-url"></a>Erstellen der URL
 
 ### <a name="get-the-streaming-endpoint-host-name"></a>Abrufen des Hostnamens für den Streamingendpunkt
 
-```azurecli
+```azurecli-interactive
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
+
 Kopieren Sie den `hostName`-Wert. In diesem Fall ist dies `amsaccount-usw22.streaming.media.azure.net`.
 
 ### <a name="assemble-the-url"></a>Zusammensetzen der URL
@@ -344,13 +346,12 @@ Hier sehen Sie ein Beispiel:
 
 Wenn Sie die Ressourcen in der Ressourcengruppe einschließlich der in diesem Tutorial erstellten Media Services- und Speicherkonten nicht mehr benötigen, löschen Sie die Ressourcengruppe.
 
-Führen Sie diesen CLI-Befehl aus:
+Führen Sie dann den folgenden Azure CLI-Befehl aus:
 
-```azurecli
+```azurecli-interactive
 az group delete --name amsResourceGroup
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Media Services: Übersicht](media-services-overview.md)
-

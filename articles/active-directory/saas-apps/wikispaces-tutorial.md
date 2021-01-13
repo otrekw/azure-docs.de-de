@@ -1,26 +1,22 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Wikispaces | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Wikispaces | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Wikispaces konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 665b95aa-f7f5-4406-9e2a-6fc299a1599c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: d2c03143eca9f335c440dfcaee766e205b5c0730
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 877f589c19663503b9bb0b1627f1dffe0eba1a23
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087149"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302746"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Tutorial: Azure Active Directory-Integration mit Wikispaces
 
@@ -31,7 +27,7 @@ Die Integration von Wikispaces in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Wikispaces anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -110,7 +106,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Wikispa
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://session.wikispaces.net/<instancename>`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Wikispaces-Client](https://www.wikispaces.com/site/help), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Wikispaces-Client](https://wikispaces.psu.edu/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -128,7 +124,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Wikispa
 
 ### <a name="configure-wikispaces-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Wikispaces
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Wikispaces** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Wikispaces](https://www.wikispaces.com/site/help) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Wikispaces** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Wikispaces](https://wikispaces.psu.edu/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -152,7 +148,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -190,17 +186,17 @@ Damit sich Azure AD-Benutzer bei Wikispaces anmelden können, müssen sie in Wi
 
 2. Wechseln Sie zu **Mitglieder**.
    
-    ![Mitglieder](./media/wikispaces-tutorial/ic787193.png "Mitglieder")
+    ![Mitglieder](./media/wikispaces-tutorial/ic787193.png "Members")
 
 3. Klicken Sie auf **Personen einladen**.
    
-    ![Personen einladen](./media/wikispaces-tutorial/ic787194.png "Personen einladen")
+    ![Screenshot: Seite „Members“ (Mitglieder), auf der Sie „Invite People“ (Personen einladen) auswählen können](./media/wikispaces-tutorial/ic787194.png "Invite People")
 
 4. Führen Sie im Abschnitt **Personen einladen** die folgenden Schritte aus:
    
-    ![Personen einladen](./media/wikispaces-tutorial/ic787208.png "Personen einladen")
+    ![Screenshot: Abschnitt „Invite People“ (Personen einladen), in dem Sie Benutzerdaten eingeben können](./media/wikispaces-tutorial/ic787208.png "Invite People")
    
-    a. Geben Sie **Benutzernamen oder E-Mail-Adresse** eines gültigen AAD-Benutzerkontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
+    a. Geben Sie die **Benutzernamen oder E-Mail-Adresse** eines gültigen Azure AD-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
    
     b. Klicken Sie auf **Send**.  
       
@@ -208,19 +204,18 @@ Damit sich Azure AD-Benutzer bei Wikispaces anmelden können, müssen sie in Wi
     > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
     
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Wikispaces-Benutzerkonten oder mithilfe der von Wikispaces bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Wikispaces-Benutzerkonten oder mithilfe der von Wikispaces bereitgestellten APIs erstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Wikispaces“ klicken, sollten Sie automatisch bei der Wikispaces-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Wikispaces“ klicken, sollten Sie automatisch bei der Wikispaces-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

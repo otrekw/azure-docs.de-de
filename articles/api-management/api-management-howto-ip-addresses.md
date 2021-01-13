@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 7224c6a77df496624903830f0a2cbd8d193517cc
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 45501fee9ae6ff47643a1ed197a07c4ba598e981
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178191"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80047748"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP-Adressen von Azure API Management
 
@@ -57,17 +57,17 @@ Die öffentlichen IP-Adressen sind in der Antwort enthalten:
 
 Bei [Bereitstellungen in mehreren Regionen](api-management-howto-deploy-multi-region.md) verfügt jede regionale Bereitstellung über eine einzelne öffentliche IP-Adresse.
 
-## <a name="ip-addresses-of-api-management-service-in-vnet"></a>IP-Adressen des API Management-Diensts in einem VNET
+## <a name="ip-addresses-of-api-management-service-in-vnet"></a>IP-Adressen des API Management-Diensts in einem VNet
 
 Wenn sich Ihr API Management-Dienst innerhalb eines virtuellen Netzwerks befindet, besitzt er zwei Arten von IP-Adressen: öffentliche und private.
 
-Öffentliche IP-Adressen werden für die interne Kommunikation über den Port `3443` verwendet, um die Konfiguration zu verwalten (beispielsweise über Azure Resource Manager). In der externen VNET-Konfiguration werden sie auch für API-Laufzeitdatenverkehr verwendet. Wenn eine Anforderung von API Management an ein öffentliches Back-End (Back-End mit Internetzugriff) gesendet wird, wird als Ursprung der Anforderung eine öffentliche IP-Adresse angezeigt.
+Öffentliche IP-Adressen werden für die interne Kommunikation über den Port `3443` verwendet, um die Konfiguration zu verwalten (beispielsweise über Azure Resource Manager). In der externen VNet-Konfiguration werden sie auch für API-Laufzeitdatenverkehr verwendet. Wenn eine Anforderung von API Management an ein öffentliches Back-End (Back-End mit Internetzugriff) gesendet wird, wird als Ursprung der Anforderung eine öffentliche IP-Adresse angezeigt.
 
-Private virtuelle IP-Adressen (VIPs) werden verwendet, um innerhalb des Netzwerks eine Verbindung mit API Management-Endpunkten (Gateways, das Entwicklerportal und die Verwaltungsebene für direkten API-Zugriff) herzustellen. Sie können verwendet werden, um DNS-Einträge im Netzwerk einzurichten.
+Private virtuelle IP-Adressen (VIPs), die **nur** im [Modus „internes VNet“](api-management-using-with-internal-vnet.md) verfügbar sind, werden verwendet, um innerhalb des Netzwerks eine Verbindung mit API Management-Endpunkten (Gateways, das Entwicklerportal und die Verwaltungsebene für direkten API-Zugriff) herzustellen. Sie können verwendet werden, um DNS-Einträge im Netzwerk einzurichten.
 
 Im Azure-Portal und in der Antwort des API-Aufrufs werden Adressen beider Arten angezeigt:
 
-![IP-Adresse von API Management in einem VNET](media/api-management-howto-ip-addresses/vnet-ip.png)
+![IP-Adresse von API Management in einem VNet](media/api-management-howto-ip-addresses/vnet-ip.png)
 
 
 ```json
@@ -89,6 +89,8 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 }
 ```
 
+API Management verwendet eine öffentliche IP-Adresse für Verbindungen außerhalb des VNet und eine private IP-Adresse für Verbindungen innerhalb des VNet.
+
 ## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>IP-Adressen des API Management-Diensts im Consumption-Tarif
 
 Wenn es sich bei Ihrem API Management-Dienst um einen Dienst im Consumption-Tarif handelt, besitzt er keine dedizierte IP-Adresse. Dienste im Consumption-Tarif werden in einer gemeinsam genutzten Infrastruktur und ohne deterministische IP-Adresse ausgeführt. 
@@ -102,6 +104,6 @@ Im Developer-, Basic-, Standard- und Premium-Tarif von API Management sind die 
 * Der Dienst wird gelöscht und anschließend neu erstellt.
 * Das Dienstabonnement wird [gesperrt](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states), oder es wird eine diesbezügliche [Warnung](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) ausgegeben (z.B. aufgrund von nicht geleisteten Zahlungen), und anschließend wird es reaktiviert.
 * Azure Virtual Network wird dem Dienst hinzugefügt oder daraus entfernt.
-* Der API Management-Dienst wird zwischen dem externen und internen VNET-Bereitstellungsmodus umgeschaltet.
+* Der API Management-Dienst wird zwischen dem externen und internen VNet-Bereitstellungsmodus umgeschaltet.
 
 Bei [Bereitstellungen in mehreren Regionen](api-management-howto-deploy-multi-region.md) ändert sich die regionale IP-Adresse, wenn eine Region verlassen und anschließend reaktiviert wird.

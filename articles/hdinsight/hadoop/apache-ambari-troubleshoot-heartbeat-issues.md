@@ -1,28 +1,28 @@
 ---
 title: Apache Ambari-Heartbeatprobleme in Azure HDInsight
 description: Bewertung verschiedene Gründe für Apache Ambari-Heartbeatprobleme in Azure HDInsight
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 09/11/2019
-ms.openlocfilehash: 9f7d3fb5363a5eb2d79287bc9a9398bfdcbc4aec
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 02/06/2020
+ms.openlocfilehash: adc5dfcef8cce269b6b6d982178433b8ee163f92
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087818"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998266"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Apache Ambari-Heartbeatprobleme in Azure HDInsight
 
-In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Interaktion mit Azure HDInsight-Clustern beschrieben.
+In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Interaktion mit Azure HDInsight-Clustern beschrieben.
 
 ## <a name="scenario-high-cpu-utilization"></a>Szenario: Hohe CPU-Auslastung
 
 ### <a name="issue"></a>Problem
 
-Beim Ambari-Agent gibt es eine hohe CPU-Auslastung. Dies führt zu Warnungen von der Ambari-Benutzeroberfläche, dass einige Knoten keinen Heartbeat des Ambari-Agents mehr empfangen. Die Warnung zum Verlust des Heartbeats ist normalerweise vorübergehend. 
+Beim Ambari-Agent gibt es eine hohe CPU-Auslastung. Dies führt zu Warnungen von der Ambari-Benutzeroberfläche, dass einige Knoten keinen Heartbeat des Ambari-Agents mehr empfangen. Die Warnung zum Verlust des Heartbeats ist normalerweise vorübergehend.
 
 ### <a name="cause"></a>Ursache
 
@@ -61,7 +61,7 @@ In seltenen Fällen kann es aufgrund verschiedener Ambari-Agent-Fehler bei Ihrem
 
 ### <a name="issue"></a>Problem
 
-Ambari-Agent wurde nicht gestartet. Dies führt zu Warnungen von der Ambari-Benutzeroberfläche, dass einige Knoten keinen Heartbeat des Ambari-Agents mehr empfangen.
+Der Ambari-Agent wurde nicht gestartet. Dies führt zu Warnungen von der Ambari-Benutzeroberfläche, dass einige Knoten keinen Heartbeat des Ambari-Agents mehr empfangen.
 
 ### <a name="cause"></a>Ursache
 
@@ -83,14 +83,23 @@ Die Warnungen werden dadurch verursacht, dass der Ambari-Agent nicht ausgeführt
 
     Wenn die Failovercontrollerdienste nicht ausgeführt werden, liegt wahrscheinlich ein Problem vor, das den Start des Failovercontrollers durch den HDInsight-Agent verhindert. Überprüfen Sie das Protokoll des HDInsight-Agents aus der Datei `/var/log/hdinsight-agent/hdinsight-agent.out`.
 
+## <a name="scenario-heartbeat-lost-for-ambari"></a>Szenario: Verlust des Heartbeats bei Ambari
+
+### <a name="issue"></a>Problem
+
+Es wird kein Heartbeat des Ambari-Agents mehr empfangen.
+
+### <a name="cause"></a>Ursache
+
+Die OMS-Protokolle führen zu einer hohen CPU-Auslastung.
+
+### <a name="resolution"></a>Lösung
+
+* Deaktivieren Sie die Azure Monitor-Protokollierung über das PowerShell-Cmdlet [Disable-AzHDInsightMonitoring](/powershell/module/az.hdinsight/disable-azhdinsightmonitoring).
+* Löschen Sie die Protokolldatei `mdsd.warn`.
+
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
-
-* Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
-
-* Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
-
-* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -1,25 +1,14 @@
 ---
-title: Bereitstellen und Aktualisieren von Anwendungen und Diensten mit Azure Resource Manager | Microsoft-Dokumentation
+title: Bereitstellungen und Upgrades mit Azure Resource Manager
 description: Erfahren Sie, wie Sie Anwendungen und Dienste mithilfe einer Azure Resource Manager-Vorlage in einem Service Fabric-Cluster bereitstellen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 0bec430cbb98452f8c852c96053f3f699ce5098e
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: bb866eb24fb1b286f496bad9845d1ee557baa221
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71153584"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681668"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen
 
@@ -29,7 +18,7 @@ Diese Vorgehensweise empfiehlt sich für die Bereitstellung von Setup-, Governan
 
 Falls möglich, verwalten Sie Ihre Anwendungen als Ressourcen-Manager-Ressourcen, um Folgendes zu verbessern:
 * Überwachungsprotokoll: Der Ressourcen-Manager überprüft jeden einzelnen Vorgang und führt ein detailliertes *Aktivitätsprotokoll*, das Ihnen helfen kann, Änderungen an diesen Anwendungen und Ihrem Cluster nachzuvollziehen.
-* Rollenbasierte Zugriffssteuerung (RBAC): Die Verwaltung des Zugriffs auf Cluster sowie auf Anwendungen, die im Cluster bereitgestellt sind, kann über dieselbe Resource Manager-Vorlage erfolgen.
+* Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC): Die Verwaltung des Zugriffs auf Cluster sowie auf Anwendungen, die im Cluster bereitgestellt sind, kann über dieselbe Resource Manager-Vorlage erfolgen.
 * Azure Resource Manager (über Azure-Portal) fungiert als Zentrale für die Verwaltung Ihres Clusters und kritischer Anwendungsbereitstellungen.
 
 Der folgende Codeausschnitt zeigt die verschiedenen Arten von Ressourcen, die mittels einer Vorlage verwaltet werden können:
@@ -272,13 +261,12 @@ Wenn Sie lediglich „Microsoft.ServiceFabric/clusters/application“ aus Ihrer 
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>Verwalten einer vorhandenen Anwendung über Ressourcen-Manager
 
-Angenommen, Ihr Cluster ist bereits eingerichtet und einige Anwendungen, die Sie als Resource Manager-Ressourcen verwalten möchten, sind bereits im Cluster bereitgestellt. Sie können, statt die Anwendungen zu entfernen und neu bereitzustellen, einen PUT-Aufruf mit denselben APIs verwenden, um die Anwendungen als Resource Manager-Ressourcen zu bestätigen. Weitere Informationen finden Sie unter [Was ist das Service Fabric-Anwendungsressourcenmodell?](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)
+Angenommen, Ihr Cluster ist bereits eingerichtet und einige Anwendungen, die Sie als Resource Manager-Ressourcen verwalten möchten, sind bereits im Cluster bereitgestellt. Sie können, statt die Anwendungen zu entfernen und neu bereitzustellen, einen PUT-Aufruf mit denselben APIs verwenden, um die Anwendungen als Resource Manager-Ressourcen zu bestätigen. Weitere Informationen finden Sie unter [Was ist das Service Fabric-Anwendungsressourcenmodell?](./service-fabric-concept-resource-model.md)
 
 > [!NOTE]
-> Um zuzulassen, dass ein Clusterupgrade fehlerhafte Apps ignoriert, kann der Kunde „maxPercentUnhealthyApplications: 100“ im Abschnitt „upgradeDescription/healthPolicy” angeben; ausführliche Beschreibungen für alle Einstellungen sind in [ClusterUpgradePolicy](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy) enthalten.
+> Um zuzulassen, dass ein Clusterupgrade fehlerhafte Apps ignoriert, kann der Kunde „maxPercentUnhealthyApplications: 100“ im Abschnitt „upgradeDescription/healthPolicy” angeben; ausführliche Beschreibungen für alle Einstellungen sind in [ClusterUpgradePolicy](/rest/api/servicefabric/sfrp-model-clusterupgradepolicy) enthalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Verwenden der [Service Fabric CLI](service-fabric-cli.md) oder von [PowerShell](service-fabric-deploy-remove-applications.md) zum Bereitstellen anderer Anwendungen in Ihrem Cluster. 
 * [Upgrade von Service Fabric-Clustern](service-fabric-cluster-upgrade.md)
-

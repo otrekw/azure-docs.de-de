@@ -3,19 +3,19 @@ title: Verwenden von Inhaltsüberprüfungen über das Prüfungstool – Content 
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie menschliche Moderatoren mit dem Prüfungstool Bilder in einem Webportal überprüfen können.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: sajagtap
-ms.openlocfilehash: 065d3cd80f93753eb91571d4ada4fe7151258ec0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 77d7b8a0bf4d7fe9a94a61ea3f2f4279246ffb69
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882657"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903886"
 ---
 # <a name="create-human-reviews"></a>Erstellen von Überprüfungen durch Personen
 
@@ -56,4 +56,4 @@ Die Funktion für Textüberprüfungen ist der Funktion für Bildüberprüfungen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurde erläutert, wie Sie Überprüfungen über das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) von Content Moderator einrichten und verwenden. Sehen Sie sich als Nächstes die [Anleitung für die REST-API](../try-review-api-review.md) oder die [Anleitung zum .NET SDK](../moderation-reviews-quickstart-dotnet.md) an, um zu erfahren, wie Überprüfungen programmgesteuert erstellt werden.
+In diesem Artikel wurde erläutert, wie Sie Überprüfungen über das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) von Content Moderator einrichten und verwenden. Sehen Sie sich als Nächstes die [Anleitung für die API-Konsole](../try-review-api-review.md) oder den [.NET SDK-Schnellstart](../client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) an, um zu erfahren, wie Überprüfungen programmgesteuert erstellt werden können.

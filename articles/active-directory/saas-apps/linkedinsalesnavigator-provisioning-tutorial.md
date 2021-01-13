@@ -1,26 +1,21 @@
 ---
-title: 'Tutorial: Konfigurieren von LinkedIn Sales Navigator für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Benutzerbereitstellung – LinkedIn Sales Navigator, Azure AD'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in LinkedIn Sales Navigator konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8977e6bb8b665705af7183ff0cdcfae22a19c759
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 458b527194c1123e266bd6abedf25de18e0cee09
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965951"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359356"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von LinkedIn Sales Navigator für die automatische Benutzerbereitstellung
 
@@ -28,7 +23,7 @@ Dieses Tutorial zeigt Ihnen die Schritte, die Sie in LinkedIn Sales Navigator un
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Azure Active Directory-Mandant
 * Einen LinkedIn Sales Navigator-Mandanten 
@@ -60,7 +55,7 @@ Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD m
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>So konfigurieren Sie die automatische Bereitstellung von Benutzerkonten für LinkedIn Sales Navigator in Azure AD
 
-Der erste Schritt besteht aus dem Abrufen Ihres LinkedIn-Zugriffstokens. Wenn Sie ein Enterprise-Administrator sind, können Sie das Zugriffstoken selbst bereitstellen. Gehen Sie in Ihrem Kontocenter auf **Einstellungen &gt; Globale Einstellungen**, und öffnen Sie den Bereich **SCIM Setup**.
+Der erste Schritt besteht aus dem Abrufen Ihres LinkedIn-Zugriffstokens. Wenn Sie ein Enterprise-Administrator sind, können Sie das Zugriffstoken selbst bereitstellen. Gehen Sie in Ihrem Kontocenter auf **Einstellungen &gt; Globale Einstellungen** , und öffnen Sie den Bereich **SCIM Setup**.
 
 > [!NOTE]
 > Wenn Sie direkt auf das Kontocenter zugreifen und nicht über einen Link, können Sie es über die folgenden Schritte erreichen.
@@ -76,12 +71,12 @@ Der erste Schritt besteht aus dem Abrufen Ihres LinkedIn-Zugriffstokens. Wenn Si
     > [!NOTE]
     > Wenn die automatische Zuweisung von Lizenzen nicht aktiviert ist, bedeutet das, dass nur Benutzerdaten synchronisiert werden.
 
-    ![LinkedIn Sales Navigator-Bereitstellung](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
+    ![Screenshot der globalen Einstellungen im LinkedIn-Kontocenter.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
 
     > [!NOTE]
     > Wenn die automatische Zuweisung von Lizenzen aktiviert ist, müssen Sie die Anwendungsinstanz und den Lizenztyp notieren. Lizenzen werden nach dem Prinzip „Wer zuerst kommt, malt zuerst“ zugewiesen, bis alle Lizenzen ausgeführt sind.
 
-    ![LinkedIn Sales Navigator-Bereitstellung](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
+    ![Screenshot der Seite „SCIM Setup“ (SCIM-Einrichtung).](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
 5. Klicken Sie dann auf **Token generieren**. Ihr Zugriffstoken sollte unter dem Feld **Zugriffstoken** angezeigt werden.
 
@@ -95,11 +90,11 @@ Der erste Schritt besteht aus dem Abrufen Ihres LinkedIn-Zugriffstokens. Wenn Si
 
 10. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![LinkedIn Sales Navigator-Bereitstellung](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
+    ![Screenshot der Seite für die LinkedIn Elevate-Bereitstellung.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
 11. Füllen Sie die folgenden Felder unter **Administratoranmeldeinformationen** aus:
 
-    * Geben Sie im Feld **Mandanten-URL** die URL https://api.linkedin.com ein.
+    * Geben Sie im Feld **Mandanten-URL** die URL https://developer.linkedin.com ein.
 
     * Geben Sie im Feld **Geheimes Token** den im Schritt 1 generierten Zugriffstoken ein, und klicken Sie auf **Verbindung testen**.
 
@@ -111,7 +106,7 @@ Der erste Schritt besteht aus dem Abrufen Ihres LinkedIn-Zugriffstokens. Wenn Si
 
 14. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzer- und Gruppenattribute, die von Azure AD mit LinkedIn Sales Navigator synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten und Gruppen in LinkedIn Sales Navigator für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
 
-    ![LinkedIn Sales Navigator-Bereitstellung](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
+    ![Screenshot der Zuordnungen einschließlich der Attributzuordnungen.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
 
 15. Um den Azure AD-Bereitstellungsdienst für LinkedIn Sales Navigator zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
@@ -119,9 +114,9 @@ Der erste Schritt besteht aus dem Abrufen Ihres LinkedIn-Zugriffstokens. Wenn Si
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die LinkedIn Sales Navigator im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Beachten Sie, dass die Erstsynchronisierung länger dauert als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer LinkedIn Sales Navigator-App ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

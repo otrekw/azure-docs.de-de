@@ -1,21 +1,15 @@
 ---
-title: Smart Contract-Integrationsmuster in Azure Blockchain Workbench – Vorschau
+title: Smart Contract-Integrationsmuster – Azure Blockchain Workbench
 description: Übersicht über Smart Contract-Integrationsmuster in Azure Blockchain Workbench – Vorschau.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 09/05/2019
-ms.topic: article
-ms.service: azure-blockchain
+ms.date: 11/20/2019
+ms.topic: conceptual
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: 80c4f2683efacf575be853b6268ee958f1567440
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845175"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015501"
 ---
 # <a name="smart-contract-integration-patterns"></a>Smart Contract-Integrationsmuster
 
@@ -37,7 +31,7 @@ Funktionen innerhalb der von Azure Blockchain Workbench generierten Webanwendung
 
 Die REST-API wird in erster Linie für interaktive Clients wie Web-, Mobile- und Bot Anwendungen verwendet.
 
-Dieser Abschnitt befasst sich mit Mustern, die sich auf die Aspekte der REST-API konzentrieren und die Transaktionen an einen Distributed Ledger senden, und mit Mustern, die Daten zu Transaktionen aus der *nicht verketteten* SQL-Datenbank von Azure Blockchain Workbench abfragen.
+Dieser Abschnitt befasst sich mit Mustern, die sich auf die Aspekte der REST-API konzentrieren und die Transaktionen an einen Distributed Ledger senden, und mit Mustern, die Daten zu Transaktionen aus der *nicht verketteten* Datenbank von Azure Blockchain Workbench abfragen.
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Senden von Transaktionen an einen verteilten Ledger aus einem externen System
 
@@ -140,7 +134,7 @@ Dieses Muster wird normalerweise mit dem folgenden Ansatz implementiert:
 -   Die Zustandsänderung wird als Ereignis für einen nachgeschalteten Consumer angezeigt.
 -   Der nachgeschaltete Consumer empfängt das Ereignis und löst die externe Codeausführung aus.
 
-![Übergabe der Steuerung an den externen Prozess](./media/integration-patterns/transition-external-process.png)
+![Im Diagramm ist eine Zustandsänderung im Vertrag zu sehen, die bewirkt, dass ein Ereignis in den Distributed Ledger wechselt. Blockchain Workbench ruft dann das Ereignis ab und veröffentlicht es.](./media/integration-patterns/transition-external-process.png)
 
 #### <a name="return-of-control-from-the-smart-contract"></a>Rückgabe der Steuerung aus dem Smart Contract
 
@@ -148,7 +142,7 @@ Abhängig von der Möglichkeit, das externe System anzupassen, kann es Nachricht
 
 ##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Direkte Übermittlung einer Azure Blockchain Workbench im erwarteten Format
 
-![](./media/integration-patterns/direct-delivery.png)
+![Im Diagramm ist eine API-Nachricht aus dem externen System zu sehen, die von Blockchain Workbench über Service Bus abgerufen wird. Blockchain Workbench sendet dann im Auftrag des Agents eine Nachricht als Transaktion an den Distributed Ledger. Sie wird an den Vertrag weitergegeben und bewirkt dort eine Zustandsänderung.](./media/integration-patterns/direct-delivery.png)
 
 In diesem Modell erfolgt die Kommunikation mit dem Vertrag und die anschließende Zustandsänderung nach dem obigen Verfahren, wobei Folgendes gilt:
 
@@ -210,7 +204,7 @@ Die Datenintegration ist gut bekannt:
 
 -   Azure Blockchain Workbench speichert Metadaten zu Anwendungen, Workflows, Verträgen und Transaktionen als Teil des normalen Betriebsverhaltens.
 -   Externe Systeme oder Tools stellen mindestens ein Dialogfeld zur Verfügung, um die Erfassung von Informationen zur Datenbank zu erleichtern, z.B. Name des Datenbankservers, Datenbankname, Art der Authentifizierung, Anmeldeinformationen und welche Datenbanksichten verwendet werden sollen.
--   Abfragen werden für SQL-Datenbanksichten zur Erleichterung der nachgeschalteten Nutzung durch externe Systeme, Dienste, Berichterstellung, Entwicklertools und Produktivitätstools des Unternehmens geschrieben.
+-   Abfragen werden für Datenbanksichten zur Erleichterung der nachgeschalteten Nutzung durch externe Systeme, Dienste, Berichterstellung, Entwicklertools und Produktivitätstools des Unternehmens geschrieben.
 
 ## <a name="storage-integration"></a>Speicherintegration
 

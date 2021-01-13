@@ -1,19 +1,20 @@
 ---
-title: Tutorial zum Importieren von VHD-Daten auf verwaltete Datenträger mithilfe von Microsoft Azure Data Box | Microsoft-Dokumentation
+title: 'Tutorial: Kopieren von VHDs auf verwaltete Datenträger'
+titleSuffix: Azure Data Box
 description: Hier erfahren Sie, wie Sie Daten von VHDs aus lokalen VM-Workloads auf Ihre Azure Data Box kopieren.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 4b7182d1fa70a146da1c01273ffe1032f2982546
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 1394cf6511a65a0e406e51229953e8666d4d4d8d
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240461"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337677"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Tutorial: Verwenden von Data Box zum Importieren von Daten als verwaltete Datenträger in Azure
 
@@ -22,10 +23,10 @@ In diesem Tutorial erfahren Sie, wie Sie die Azure Data Box verwenden, um Ihre l
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Überprüfen der Voraussetzungen
 > * Herstellen einer Verbindung mit der Data Box
 > * Kopieren von Daten auf die Data Box
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +38,9 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 4. Sie haben sich mit Folgendem vertraut gemacht:
 
     - Unterstützte Größen für verwaltete Datenträger und [Größenbeschränkungen für das Azure-Objekt](data-box-limits.md#azure-object-size-limits)
-    - [Einführung in verwaltete Azure-Datenträger](/azure/virtual-machines/windows/managed-disks-overview) 
+    - [Einführung in verwaltete Azure-Datenträger](../virtual-machines/managed-disks-overview.md) 
+
+5. Sie haben eine Kopie der Quelldaten aufbewahrt, bis Sie bestätigt haben, dass Ihre Daten von Data Box in Azure Storage übertragen wurden.
 
 ## <a name="connect-to-data-box"></a>Herstellen einer Verbindung mit der Data Box
 
@@ -73,11 +76,11 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
     > [!NOTE]
     > Sie sind für alle Freigaben für verwaltete Datenträger identisch.
 
-    ![Abrufen der Anmeldeinformationen für Freigaben 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![Option „Verbindung herstellen und Daten kopieren“, Abrufen der Anmeldeinformationen für Freigaben](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. Kopieren Sie im Dialogfeld „Auf Freigabe zugreifen und Daten kopieren“ die Werte für **Benutzername** und **Kennwort** für die Freigabe. Klicken Sie auf **OK**.
+2. Kopieren Sie im Dialogfeld **Auf Freigabe zugreifen und Daten kopieren** die Werte für **Benutzername** und **Kennwort** für die Freigabe. Klicken Sie auf **OK**.
     
-    ![Abrufen der Anmeldeinformationen für Freigaben 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
+    ![Option „Verbindung herstellen und Daten kopieren“, Kopieren der Anmeldeinformationen für Freigaben](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
 3. Öffnen Sie ein Befehlsfenster, um über Ihren Hostcomputer auf die Freigaben zuzugreifen, die mit Ihrer Ressource (*mydbmdrg1* im folgenden Beispiel) verknüpft sind. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
@@ -92,31 +95,31 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
 
     ```
     C:\>net use \\169.254.250.200\mydbmdrgl_MDisk /u:mdisk
-    Enter the password for ‘mdisk’ to connect to '169.254.250.200':
+    Enter the password for 'mdisk' to connect to '169.254.250.200':
     The command completed successfully.
     C: \>
     ```
 
-4. Drücken Sie WINDOWS-TASTE+R. Geben Sie im Fenster **Ausführen** die `\\<device IP address>\<ShareName>` an. Klicken Sie auf **OK**, um den Datei-Explorer zu öffnen.
+5. Drücken Sie WINDOWS-TASTE+R. Geben Sie im Fenster **Ausführen** die `\\<device IP address>\<ShareName>` an. Klicken Sie auf **OK**, um den Datei-Explorer zu öffnen.
     
-    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     In jeder Freigabe sollten nun die folgenden vorab erstellten Ordner vorhanden sein.
     
-    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer2.png)
+    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer, Ordner für eine Freigabe](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer2.png)
 
 
 ### <a name="connect-to-data-box-via-nfs"></a>Herstellen einer Verbindung mit der Data Box über NFS
 
 Wenn Sie einen Linux-Hostcomputer verwenden, führen Sie die folgenden Schritte aus, um Data Box zum Zulassen des Zugriffs auf NFS-Clients zu konfigurieren.
 
-1. Geben Sie die IP-Adressen der zulässigen Clients an, die auf die Freigabe zugreifen können. Wechseln Sie in der lokalen Webbenutzeroberfläche zur Seite **Verbindung herstellen und Daten kopieren**. Klicken Sie unter **NFS-Einstellungen** auf **NFS-Clientzugriff**.
+1. Geben Sie die IP-Adressen der zulässigen Clients an, die auf die Freigabe zugreifen können. Wechseln Sie auf der lokalen Webbenutzeroberfläche zur Seite **Verbindung herstellen und Daten kopieren**. Klicken Sie unter **NFS-Einstellungen** auf **NFS-Clientzugriff**.
 
-    ![Konfigurieren des NFS-Clientzugriffs 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
+    ![Konfigurieren des NFS-Clientzugriffs](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
 2. Geben Sie die IP-Adresse des NFS-Clients an, und klicken Sie auf **Hinzufügen**. Sie können den Zugriff für mehrere NFS-Clients konfigurieren, indem Sie diesen Schritt wiederholen. Klicken Sie auf **OK**.
 
-    ![Konfigurieren des NFS-Clientzugriffs 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
+    ![Konfigurieren der IP-Adresse des NFS-Clients](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 
 2. Stellen Sie sicher, dass auf dem Linux-Hostcomputer eine [unterstützte Version](data-box-system-requirements.md) des NFS-Clients installiert ist. Verwenden Sie die jeweilige Version für Ihre Linux-Distribution.
 
@@ -137,7 +140,7 @@ Beachten Sie Folgendes, bevor Sie mit dem Kopieren der Daten beginnen:
 
 - Kopieren Sie die VHDs immer in einen der vorab erstellten Ordner. Wenn Sie die VHDs an einen Ort außerhalb dieser Ordner oder in einen selbst erstellten Ordner kopieren, werden sie nicht als verwaltete Datenträger, sondern als Seitenblobs in das Azure Storage-Konto hochgeladen.
 - Zur Erstellung von verwalteten Datenträgern können nur feste VHDs hochgeladen werden. VHDX-Dateien oder differenzierende VHDs werden nicht unterstützt.
-- Der Name eines verwalteten Datenträgers muss in einer Ressourcengruppe über alle vorab erstellten Ordner hinweg eindeutig sein. Die VHDs, die in die vorab erstellten Ordner hochgeladen werden, müssen also jeweils einen eindeutigen Namen besitzen. Achten Sie darauf, dass der Name nicht mit dem Namen eines bereits vorhandenen verwalteten Datenträgers in einer Ressourcengruppe identisch ist.
+- Der Name eines verwalteten Datenträgers muss in einer Ressourcengruppe über alle vorab erstellten Ordner hinweg eindeutig sein. Die VHDs, die in die vorab erstellten Ordner hochgeladen werden, müssen also jeweils einen eindeutigen Namen aufweisen. Achten Sie darauf, dass der Name nicht mit dem Namen eines bereits vorhandenen verwalteten Datenträgers in einer Ressourcengruppe identisch ist.
 - Informationen zu Grenzwerten für verwaltete Datenträger finden Sie unter [Größenbeschränkungen für das Azure-Objekt](data-box-limits.md#azure-object-size-limits).
 
 Sie können Folgendes verwenden (abhängig davon, ob Sie die Verbindung über SMB oder über NFS herstellen):
@@ -180,4 +183,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre Data Bo
 
 > [!div class="nextstepaction"]
 > [Zurücksenden der Azure Data Box an Microsoft](./data-box-deploy-picked-up.md)
-

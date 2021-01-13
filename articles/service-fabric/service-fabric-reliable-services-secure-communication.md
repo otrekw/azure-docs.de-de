@@ -1,25 +1,16 @@
 ---
-title: Schützen der Dienstremotingkommunikation mit C# in Azure Service Fabric | Microsoft-Dokumentation
+title: Schützen der Dienstremotingkommunikation mit C#
 description: Hier erfahren Sie, wie Sie die dienstremotingbasierte Kommunikation für in C# geschriebene Reliable Services schützen, die in einem Azure Service Fabric-Cluster ausgeführt werden.
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 04/20/2017
-ms.author: chackdan
-ms.openlocfilehash: 193df34a092d9feea3e0cf370fe38543395dad92
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: pepogors
+ms.openlocfilehash: ba68df53f1f21b9ff360772fe1a60c93c8df74d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871726"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86252214"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>Schützen der Dienstremotingkommunikation in einem C#-Dienst
 > [!div class="op_single_selector"]
@@ -209,4 +200,4 @@ Gehen Sie wie folgt vor, um zum Schutz eines Diensts beizutragen, wenn Sie Diens
     ```
 
 
-Lesen Sie als Nächstes den Artikel [Web-API mit OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md).
+Lesen Sie als Nächstes den Artikel [Web-API mit OWIN in Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md).

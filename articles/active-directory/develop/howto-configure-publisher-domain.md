@@ -1,30 +1,26 @@
 ---
-title: Konfigurieren der Herausgeberdomäne einer Anwendung | Azure
+title: Konfigurieren der Herausgeberdomäne einer App | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie die Herausgeberdomäne einer Anwendung konfigurieren, damit Benutzer wissen, wohin ihre Informationen gesendet werden.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: d62328534157a1e2d9e53830be9d6b87e08c9e40
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257935"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87129269"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Gewusst wie: Konfigurieren der Herausgeberdomäne einer Anwendung (Vorschau)
+# <a name="how-to-configure-an-applications-publisher-domain"></a>Gewusst wie: Konfigurieren der Herausgeberdomäne einer Anwendung
 
 Die Herausgeberdomäne einer Anwendung wird für Benutzer in der [Zustimmungsaufforderung der Anwendung](application-consent-experience.md) angezeigt, damit sie wissen, wohin ihre Informationen gesendet werden. Mehrinstanzenfähige Anwendungen, die nach dem 21. Mai 2019 registriert werden und über keine Herausgeberdomäne verfügen, werden als **nicht überprüft** angezeigt. Mehrinstanzenfähige Anwendungen sind Anwendungen, in denen Konten außerhalb eines einzelnen Organisationsverzeichnisses unterstützt werden, z. B. in denen alle Azure AD-Konten oder alle Azure AD-Konten und persönlichen Microsoft-Konten unterstützt werden.
 
@@ -38,7 +34,7 @@ In der folgenden Tabelle ist das Standardverhalten des Werts der Herausgeberdom�
 
 | Überprüfte Domänen im Mandanten | Standardwert der Herausgeberdomäne |
 |-------------------------|----------------------------|
-| null | null |
+| NULL | NULL |
 | *.onmicrosoft.com | *.onmicrosoft.com |
 | - *.onmicrosoft.com<br/>- domain1.com<br/>- domain2.com (primär) | domain2.com |
 
@@ -80,9 +76,12 @@ Wenn Ihre App nicht in einem Mandanten registriert ist, wird nur die Option zum 
    ```json
    {
       "associatedApplications": [
-        {
-           "applicationId": "{YOUR-APP-ID-HERE}"
-        }
+         {
+            "applicationId": "{YOUR-APP-ID-HERE}"
+         },
+         {
+            "applicationId": "{YOUR-OTHER-APP-ID-HERE}"
+         }
       ]
     }
    ```

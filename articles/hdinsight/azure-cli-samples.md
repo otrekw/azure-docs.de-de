@@ -7,12 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
-ms.openlocfilehash: 7ce2160fa94653a1155daaef166b7fdbb9386e7e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a289a0d963c8e20a3b861ff9964e8afd6665de22
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266470"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542351"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI-Beispiele
 
@@ -25,13 +26,13 @@ Dieser Artikel enthält Beispielskripts für allgemeine Aufgaben. Aktualisieren 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Befehlszeilenschnittstelle. Informationen zu den erforderlichen Schritten finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Azure-Befehlszeilenschnittstelle. Informationen zu den erforderlichen Schritten finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
-* Optional: Bash. In den Beispielen dieses Artikels wird die Bash-Shell unter Windows 10 verwendet. Die Installationsschritte finden Sie unter [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) (Windows-Subsystem für Linux: Installationshandbuch für Windows 10).  Die Beispiele können mit einigen geringfügigen Änderungen auch an einer Windows-Eingabeaufforderung verwendet werden.
+* Optional: Bash. In den Beispielen dieses Artikels wird die Bash-Shell unter Windows 10 verwendet. Die Installationsschritte finden Sie unter [Windows Subsystem for Linux Installation Guide for Windows 10](/windows/wsl/install-win10) (Windows-Subsystem für Linux: Installationshandbuch für Windows 10).  Die Beispiele können mit einigen geringfügigen Änderungen auch an einer Windows-Eingabeaufforderung verwendet werden.
 
 ## <a name="az-login"></a>az login
 
-[Anmelden bei Azure](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login)
+[Anmelden bei Azure](/cli/azure/reference-index#az-login)
 
 ```azurecli
 az login
@@ -42,7 +43,7 @@ az login
 
 ## <a name="az-hdinsight-create"></a>az hdinsight create
 
-[Erstellen eines neuen Clusters](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)
+[Erstellen eines neuen Clusters](/cli/azure/hdinsight#az-hdinsight-create)
 
 ### <a name="create-a-cluster-with-an-existing-storage-account"></a>Erstellen eines Clusters mit einem vorhandenen Speicherkonto
 
@@ -90,7 +91,7 @@ az hdinsight create \
     --cluster-users-group-dns $groupDNS
 ```
 
-### <a name="create-a-kafka-cluster-with-disk-encryptionkafkaapache-kafka-byokmd"></a>Erstellen eines Kafka-Clusters mit [Datenträgerverschlüsselung](kafka/apache-kafka-byok.md)
+### <a name="create-a-kafka-cluster-with-disk-encryption"></a>Erstellen eines Kafka-Clusters mit [Datenträgerverschlüsselung](./disk-encryption.md)
 
 ```azurecli
 export clusterName=CLUSTERNAME
@@ -175,7 +176,7 @@ az hdinsight create \
 
 ## <a name="az-hdinsight-application-create"></a>az hdinsight application create
 
-[Erstellen einer Anwendung für einen HDInsight-Cluster](https://docs.microsoft.com/cli/azure/hdinsight/application?view=azure-cli-latest#az-hdinsight-application-create)
+[Erstellen einer Anwendung für einen HDInsight-Cluster](/cli/azure/hdinsight/application#az-hdinsight-application-create)
 
 ### <a name="create-an-application-with-a-script-uri"></a>Erstellen einer Anwendung mit einem Skript-URI
 
@@ -242,7 +243,7 @@ az hdinsight application create \
 
 ## <a name="az-hdinsight-script-action-execute"></a>az hdinsight script-action execute
 
-[Ausführen von Skriptaktionen für den angegebenen HDInsight-Cluster](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)
+[Ausführen von Skriptaktionen für den angegebenen HDInsight-Cluster](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute)
 
 ### <a name="execute-a-script-action-and-persist-on-success"></a>Ausführen einer Skriptaktion und Beibehalten bei Erfolg
 

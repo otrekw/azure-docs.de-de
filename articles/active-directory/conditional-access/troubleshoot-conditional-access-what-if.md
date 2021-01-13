@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 07/03/2019
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d463bc889385f8f157ebb9892acc7a4a8b2a2e
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 0112ab53c501d639d3f8e0d09d82ef3a12cb93a8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278632"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837245"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Beheben von Problemen beim bedingten Zugriff mit dem Was-wäre-wenn-Tool
 
@@ -26,6 +26,9 @@ Das Was-wäre-wenn-Tool befindet sich in **Azure-Portal** > **Azure Active Direc
 
 ![Was-wäre-wenn-Tool für den bedingten Zugriff im Standardzustand](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
 
+> [!NOTE]
+> Derzeit ist es mit dem Was-wäre-wenn-Tool nicht möglich, Richtlinien im reinen Berichtsmodus auszuwerten.
+
 ## <a name="gathering-information"></a>Sammeln von Informationen
 
 Zum Starten des Was-wäre-wenn-Tools ist lediglich ein **Benutzer** erforderlich. 
@@ -34,7 +37,7 @@ Die folgenden zusätzlichen Informationen sind optional, sie helfen jedoch, den 
 
 * Cloud-Apps oder -aktionen
 * IP-Adresse 
-* Country
+* Land/Region
 * Geräteplattform
 * Client-Apps (Vorschau)
 * Gerätezustand (Vorschau) 
@@ -64,7 +67,7 @@ Viele Organisationen erstellen Richtlinien auf der Grundlage von Netzwerkadresse
 
 Um zu überprüfen, ob eine Konfiguration ordnungsgemäß vorgenommen wurde, kann ein Administrator mit dem Was-wäre-wenn-Tool den Zugriff von einem Standort, der zugelassen werden sollte, und von einem Standort, der blockiert werden sollte, imitieren.
 
-![Was-wäre-wenn-Tool mit den Ergebnissen von „Zugriff blockieren“](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)
+[ ![What If-Tool mit den Ergebnissen von „Zugriff blockieren“](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png#lightbox)
 
 In diesem Fall ist der Zugriff des Benutzers während seiner Reise nach Nordkorea auf jede Cloud-App gesperrt, da Contoso den Zugriff von diesem Standort gesperrt hat.
 
@@ -73,6 +76,6 @@ In diesen Test können weitere Datenpunkte aufgenommen werden, um den Bereich ei
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Was ist bedingter Zugriff?](overview.md)
-* [Was ist Azure Active Directory Identity Protection?](../identity-protection/overview-v2.md)
+* [Was ist Azure Active Directory Identity Protection?](../identity-protection/overview-identity-protection.md)
 * [Was ist eine Geräteidentität?](../devices/overview.md)
-* [So funktioniert's: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md).
+* [So funktioniert's: Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)

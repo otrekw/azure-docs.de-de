@@ -1,23 +1,22 @@
 ---
-title: 'Konfigurieren des Peerings für eine Verbindung – ExpressRoute: Azure – klassisch | Microsoft-Dokumentation'
+title: 'Azure ExpressRoute: Konfigurieren des Peerings: klassisch'
 description: In diesem Artikel werden Sie durch die Schritte zum Erstellen und Bereitstellen des privaten, öffentlichen und Microsoft-Peerings einer ExpressRoute-Verbindung geführt. Außerdem wird veranschaulicht, wie Sie den Status überprüfen, Updates durchführen oder Peerings für die Verbindung löschen.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 04/24/2019
-ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: a57681cc9f44593ceea6b2c1795274c1b16d3a94
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.topic: how-to
+ms.date: 12/06/2019
+ms.author: duau
+ms.openlocfilehash: a4a3bad1e868fa0e75611630ffb5db5ba13126b6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64726215"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89395552"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung (klassisch)
 > [!div class="op_single_selector"]
-> * [Azure-Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure-Befehlszeilenschnittstelle](howto-routing-cli.md)
 > * [Video – Privates Peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
@@ -36,9 +35,6 @@ Diese Anweisungen gelten nur für Verbindungen, die über Dienstanbieter erstell
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="configuration-prerequisites"></a>Konfigurationsvoraussetzungen
 
 * Stellen Sie sicher, dass Sie vor Beginn der Konfiguration die Seiten [Voraussetzungen](expressroute-prerequisites.md), [Routinganforderungen](expressroute-routing.md) und [Workflows](expressroute-workflows.md) gelesen haben.
@@ -46,40 +42,7 @@ Diese Anweisungen gelten nur für Verbindungen, die über Dienstanbieter erstell
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>Herunterladen der neuesten PowerShell-Cmdlets
 
-Installieren Sie die aktuellen Versionen der PowerShell-Module für die Azure-Dienstverwaltung und das ExpressRoute-Modul. Wenn Sie das folgende Beispiel verwenden, beachten Sie, dass die Versionsnummer (in diesem Beispiel 5.1.1) sich ändert, sobald neue Versionen der Cmdlets veröffentlicht werden.
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-Eine Schrittanleitung zum Konfigurieren des Computers für die Verwendung der Azure PowerShell-Module finden Sie unter [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/azure/overview).
-
-### <a name="sign-in"></a>Anmelden
-
-Verwenden Sie die folgenden Beispiele, um sich bei Ihrem Azure-Konto anzumelden:
-
-1. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her.
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. Überprüfen Sie die Abonnements für das Konto.
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. Verwenden Sie als nächstes das folgende Cmdlet, um PowerShell Ihr Azure-Abonnement für das klassische Bereitstellungsmodell hinzuzufügen.
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="azure-private-peering"></a>Privates Azure-Peering
 
@@ -125,7 +88,7 @@ Dieser Abschnitt enthält Anweisungen zum Erstellen, Abrufen, Aktualisieren und 
    * Ein /30-Subnetz für die sekundäre Verknüpfung. Dieses darf nicht Teil eines Adressraums sein, der für virtuelle Netzwerke reserviert ist.
    * Eine gültige VLAN-ID zum Einrichten dieses Peerings. Stellen Sie sicher, dass kein anderes Peering der Verbindung die gleiche VLAN-ID verwendet.
    * AS-Nummer für Peering. Sie können sowohl AS-Nummern mit 2 Byte als auch mit 4 Byte verwenden. Sie können eine private AS-Nummer für dieses Peering verwenden. Achten Sie darauf, dass Sie nicht 65515 verwenden.
-   * Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden. **Optional**.
+   * Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden. **Optional:**
      
    Sie können Sie das folgende Beispiel verwenden, um das private Azure-Peering für Ihre Verbindung zu konfigurieren:
 
@@ -232,7 +195,7 @@ Dieser Abschnitt enthält Anweisungen zum Erstellen, Abrufen, Aktualisieren und 
    * Ein /30-Subnetz für die sekundäre Verknüpfung. Dies muss ein gültiges öffentliches IPv4-Präfix sein.
    * Eine gültige VLAN-ID zum Einrichten dieses Peerings. Stellen Sie sicher, dass kein anderes Peering der Verbindung die gleiche VLAN-ID verwendet.
    * AS-Nummer für Peering. Sie können sowohl AS-Nummern mit 2 Byte als auch mit 4 Byte verwenden.
-   * Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden. **Optional**.
+   * Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden. **Optional:**
 
    > [!IMPORTANT]
    > Stellen Sie sicher, dass Sie Ihre AS-Nummer als Peering-ASN angeben, nicht als Kunden-ASN.
@@ -337,7 +300,7 @@ Dieser Abschnitt enthält Anweisungen zum Erstellen, Abrufen, Aktualisieren und 
    * Eine gültige VLAN-ID zum Einrichten dieses Peerings. Stellen Sie sicher, dass kein anderes Peering der Verbindung die gleiche VLAN-ID verwendet.
    * AS-Nummer für Peering. Sie können sowohl AS-Nummern mit 2 Byte als auch mit 4 Byte verwenden.
    * Angekündigte Präfixe: Sie müssen eine Liste mit allen Präfixen bereitstellen, die Sie über die BGP-Sitzung ankündigen möchten. Nur öffentliche IP-Adresspräfixe werden akzeptiert. Sie können eine durch Trennzeichen getrennte Liste senden, wenn Sie planen, einen Satz mit Präfixen zu senden. Diese Präfixe müssen über eine RIR/IRR-Registrierung für Sie verfügen.
-   * Kunden-ASN: Wenn Sie Präfixe ankündigen, die nicht für die Peering-AS-Nummer registriert sind, können Sie die AS-Nummer angeben, unter der sie registriert sind. **Optional**.
+   * Kunden-ASN: Wenn Sie Präfixe ankündigen, die nicht für die Peering-AS-Nummer registriert sind, können Sie die AS-Nummer angeben, unter der sie registriert sind. **Optional:**
    * Routing-Registrierungsname: Sie können den RIR/IRR-Wert angeben, unter dem die AS-Nummer und die Präfixe registriert sind.
    * Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden. **Optional.**
      

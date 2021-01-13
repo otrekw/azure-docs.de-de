@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60246320"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91313619"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung
 In diesem Thema wird das Konfigurationsmodell in Azure AD Connect beschrieben. Dieses Modell, die „deklarative Bereitstellung“, ermöglicht es Ihnen, Konfigurationsänderungen einfach vorzunehmen. In diesem Thema sind auch viele Punkte für fortgeschrittene Benutzer beschrieben, die für die meisten Benutzerszenarien nicht erforderlich sind.
@@ -29,11 +29,11 @@ In diesem Thema wird das Konfigurationsmodell in Azure AD Connect beschrieben. D
 ## <a name="overview"></a>Übersicht
 Deklarative Bereitstellung bedeutet, Objekte aus einem mit der Quelle verbundenen Verzeichnis zu verarbeiten und zu bestimmen, wie das Objekt und die Attribute von einer Quelle in ein Ziel transformiert werden. Ein Objekt wird in einer Synchronisierungspipeline verarbeitet. Die Pipeline ist für ein- und ausgehende Regeln identisch. Eine eingehende Regel wird von einem Connectorbereich an die Metaverse übergeben, und eine ausgehende Regel wird von der Metaverse an einen Connectorbereich übergeben.
 
-![Synchronisierungspipeline](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
+![Diagramm mit einem Beispiel für eine Synchronisierungspipeline.](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
 
 Die Pipeline enthält mehrere unterschiedliche Module. Jede ist für ein Konzept bei der Objektsynchronisierung verantwortlich.
 
-![Synchronisierungspipeline](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
+![Diagramm der Module in der Pipeline.](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
 
 * Quelle: das Quellobjekt
 * [Bereich](#scope): Sucht nach allen Synchronisierungsregeln innerhalb des Bereichs
@@ -44,7 +44,7 @@ Die Pipeline enthält mehrere unterschiedliche Module. Jede ist für ein Konzept
 
 ## <a name="scope"></a>`Scope`
 Das Bereichsmodul wertet ein Objekt aus und bestimmt die Regeln, die sich innerhalb des Bereichs befinden und verarbeitet werden sollen. Abhängig von den Attributwerten des Objekts werden verschiedene Synchronisierungsregeln für den Bereich ausgewertet. Beispielsweise verfügt ein deaktivierter Benutzer ohne Exchange-Postfach über andere Regeln als ein aktivierter Benutzer mit einem Postfach.  
-![`Scope`](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+![Diagramm des Bereichsmoduls für ein Objekt.](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 Der Bereich wird als Gruppen und Klauseln definiert. Die Klauseln liegen innerhalb einer Gruppe. Ein logisches AND wird zwischen allen Klauseln in einer Gruppe verwendet. Zum Beispiel (department =IT AND country = Denmark). Ein logisches OR wird zwischen Gruppen verwendet.
 
@@ -77,8 +77,8 @@ Verbindungen werden als eine oder mehrere Gruppen definiert. Innerhalb einer Gru
 ![Verbindungsdefinition](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
 Die Verbindungen in diesem Bild werden von oben nach unten verarbeitet. Zuerst prüft die Synchronisierungspipeline, ob eine Übereinstimmung für eine EmployeeID vorliegt. Andernfalls prüft die zweite Regel, ob die Objekte mithilfe des Kontonamens verbunden werden können. Liegt hier ebenfalls keine Übereinstimmung vor, prüft die dritte und letzte Regel eine etwas ungenauere Übereinstimmung unter Verwendung des Benutzernamens.
 
-Wenn alle Verbindungsregeln ausgewertet wurden und keine Übereinstimmung vorliegt, wird der **Verknüpfungstyp** auf der Seite **Beschreibung** verwendet. Wenn für diese Einstellung **Bereitstellen**festgelegt ist, wird im Ziel ein neues Objekt erstellt.  
-![Bereitstellen oder verbinden](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
+Wenn alle Verbindungsregeln ausgewertet wurden und keine Übereinstimmung vorliegt, wird der **Verknüpfungstyp** auf der Seite **Beschreibung** verwendet. Wenn für diese Einstellung **Bereitstellen** festgelegt ist, wird im Ziel ein neues Objekt erstellt.  
+![Screenshot des geöffneten Dropdownmenüs „Verknüpfungstyp“.](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
 Ein Objekt darf nur über eine einzelne Synchronisierungsregel mit Verbindungsregeln im Bereich verfügen. Wenn mehrere Synchroniserungsregeln vorhanden sind und „Join“ (Verbindung) definiert ist, tritt ein Fehler auf. Die Rangfolge wird nicht zum Lösen von Verbindungskonflikten verwenden. Ein Objekt benötigt eine Verbindungsregel im Bereich, damit der Datenfluss der Attribute in die gleiche ein-/ausgehende Richtung erfolgt. Wenn der Datenfluss der Attribute sowohl ein- als auch ausgehend zum gleichen Objekt erfolgen soll, benötigen Sie sowohl eine ein- als auch eine ausgehende Synchronisierungsregel mit der Verbindung.
 
@@ -92,16 +92,16 @@ Ein Metaverse-Objekt besteht, solange sich eine Synchronisierungsregel im Bereic
 Wenn ein Metaverse-Objekt gelöscht wird, werden alle Objekte, die einer ausgehenden, für **Bereitstellen** markierten Synchronisierungsregel zugeordnet sind, zum Löschen markiert.
 
 ## <a name="transformations"></a>Transformationen
-Transformationen werden verwendet, um festzulegen, wie der Datenfluss von Attributen von der Quelle zum Ziel erfolgen soll. Für die Datenflüsse sind folgende **Flowtypen** möglich: direkt, Konstante oder Ausdruck. Bei einem direkten Durchfluss wird der Attributwert im vorliegenden Zustand ohne weitere Änderungen übertragen. Ein konstanter Wert legt den angegebenen Wert fest. Ein Ausdruck verwendet die deklarative Bereitstellungsausdruckssprache, um auszudrücken, wie die Transformation aussehen soll. Weitere Informationen zur Ausdruckssprache finden Sie im Thema [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) .
+Transformationen werden verwendet, um festzulegen, wie der Datenfluss von Attributen von der Quelle zum Ziel erfolgen soll. Für die Datenflüsse gibt es die folgenden **FlowTypes**(Durchflusstypen): Direkt, Konstant oder Expression (Ausdruck). Bei einem direkten Durchfluss wird der Attributwert im vorliegenden Zustand ohne weitere Änderungen übertragen. Ein konstanter Wert legt den angegebenen Wert fest. Ein Ausdruck verwendet die deklarative Bereitstellungsausdruckssprache, um auszudrücken, wie die Transformation aussehen soll. Weitere Informationen zur Ausdruckssprache finden Sie im Thema [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) .
 
 ![Bereitstellen oder verbinden](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
 Das Kontrollkästchen **Apply once** (Einmal anwenden) definiert, dass das Attribut nur festgelegt wird wenn das Objekt erstmals erstellt wird. Diese Konfiguration kann beispielsweise verwendet werden, um ein anfängliches Kennwort für ein neues Benutzerobjekt festzulegen.
 
 ### <a name="merging-attribute-values"></a>Zusammenführen von Attributwerten
-In den Attributflüssen ist eine Einstellung verfügbar, mit der Sie ermitteln können, ob mehrwertige Attribute aus mehreren verschiedenen Connectors zusammengeführt werden sollten. Beim Standardwert **Update**wird die Synchronisierungsregel mit der höchsten Rangfolge angewendet.
+In den Attributflüssen ist eine Einstellung verfügbar, mit der Sie ermitteln können, ob mehrwertige Attribute aus mehreren verschiedenen Connectors zusammengeführt werden sollten. Beim Standardwert **Update** wird die Synchronisierungsregel mit der höchsten Rangfolge angewendet.
 
-![Zusammenführungstypen](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
+![Screenshot des Abschnitts „Transformationen hinzufügen“ mit dem geöffneten Dropdownmenü „Zusammenführungstypen“.](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
 
 Weitere Einstellungen sind **Merge** und **MergeCaseInsensitive**. Mit diesen Optionen können Sie Werte aus unterschiedlichen Quellen zusammenführen. Sie können beispielsweise das Attribut „member“ oder „proxyAddresses“ aus mehreren unterschiedlichen Gesamtstrukturen zusammenführen. Wenn Sie diese Option verwenden, müssen alle Synchronisierungsregeln im Bereich für ein Objekt denselben Zusammenführungstyp aufweisen. Es ist nicht möglich, den Zusammenführungstyp **Update** für einen Connector und **Merge** für einen anderen Connector festzulegen. Wenn Sie es versuchen, wird eine Fehlermeldung ausgegeben.
 
@@ -118,7 +118,7 @@ Bei eingehenden Synchronisierungsregeln kann das Literal **NULL** verwendet werd
 
 Das Literal **AuthoritativeNull** ähnelt **NULL**, jedoch mit dem Unterschied, dass keine Regeln mit niedrigerer Rangfolge einen Wert beitragen können.
 
-Ein Attributfluss kann auch **IgnoreThisFlow**verwenden. Dieses Literal ähnelt NULL, da es angibt, dass kein beizutragender Wert vorhanden ist. Der Unterschied besteht darin, dass ein bereits vorhandener Wert im Ziel nicht entfernt wird. Es ist, als hätte es den Attributfluss nie gegeben.
+Ein Attributfluss kann auch **IgnoreThisFlow** verwenden. Dieses Literal ähnelt NULL, da es angibt, dass kein beizutragender Wert vorhanden ist. Der Unterschied besteht darin, dass ein bereits vorhandener Wert im Ziel nicht entfernt wird. Es ist, als hätte es den Attributfluss nie gegeben.
 
 Beispiel:
 
@@ -146,7 +146,7 @@ Die Rangfolge kann zwischen Connectors definiert werden. Dadurch tragen Connecto
 
 ### <a name="multiple-objects-from-the-same-connector-space"></a>Mehrere Objekte vom gleichen Connectorbereich
 Wenn Sie über mehrere Objekte im gleichen Connectorbereich mit demselben Metaverse-Objekt verbunden haben, muss die Rangfolge angepasst werden. Wenn mehrere Objekte im Gültigkeitsbereich der gleichen Synchronisierungsregel liegen, kann das Synchronisierungsmodul die Rangfolge nicht bestimmen. Es ist nicht eindeutig, welches Quellobjekt den Wert zur Metaverse beitragen soll. Diese Konfiguration wird als mehrdeutig gemeldet, auch wenn die Attribute in der Quelle den gleichen Wert aufweisen.  
-![Mehrere Objekte mit demselben Metaverse-Objekt verbunden](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
+![Diagramm, in dem mehrere Objekte mit demselben Metaverse-Objekt verbunden sind, mit einer transparenten roten X-Überlagerung. ](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
 
 In diesem Szenario müssen Sie den Bereich der Synchronisierungsregeln ändern, sodass sich verschiedene Synchronisierungsregeln im Bereich der Quellobjekte befinden. Damit können Sie eine andere Rangfolge definieren.  
 ![Mehrere Objekte mit demselben Metaverse-Objekt verbunden](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple2.png)  
@@ -164,4 +164,4 @@ In diesem Szenario müssen Sie den Bereich der Synchronisierungsregeln ändern, 
 
 **Referenzthemen**
 
-* [Azure AD Connect-Synchronisierung: Funktionsreferenz](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect-Synchronisierung: Funktionsreferenz](reference-connect-sync-functions-reference.md)

@@ -1,34 +1,29 @@
 ---
-title: Erstellen und Verwalten eines Katalogs in der Azure AD-Berechtigungsverwaltung (Vorschauversion) – Azure Active Directory
-description: Erfahren Sie, wie Sie einen neuen Container für Ressourcen und Zugriffspakete in der Azure Active Directory-Berechtigungsverwaltung (Vorschauversion) erstellen.
+title: Erstellen und Verwalten eines Ressourcenkatalogs in der Berechtigungsverwaltung – Azure AD
+description: Erfahren Sie, wie Sie einen neuen Container für Ressourcen und Zugriffspakete in der Azure Active Directory-Berechtigungsverwaltung erstellen.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: HANKI
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 07/23/2019
-ms.author: ajburnle
+ms.date: 12/23/2020
+ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1654e0a8cd11ac1c7a2f4ef0667d0e99187c2374
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4b87fdd7c73d089c46d456491c02d49cb6f8883d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618311"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97745962"
 ---
-# <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Erstellen und Verwalten eines Katalogs in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
-
-> [!IMPORTANT]
-> Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erstellen und Verwalten eines Ressourcenkatalogs in der Azure AD-Berechtigungsverwaltung
 
 ## <a name="create-a-catalog"></a>Erstellen eines Katalogs
 
@@ -36,9 +31,7 @@ Ein Katalog ist ein Container für Ressourcen und Zugriffspakete. Sie erstellen 
 
 **Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogersteller
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-
-1. Klicken Sie auf **Azure Active Directory**, und klicken Sie dann auf **Identity Governance**.
+1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
 1. Klicken Sie im linken Menü auf **Kataloge**.
 
@@ -54,13 +47,17 @@ Ein Katalog ist ein Container für Ressourcen und Zugriffspakete. Sie erstellen 
 
 1. Wenn Sie zulassen möchten, dass Benutzer in ausgewählten externen Verzeichnissen Zugriffspakete in diesem Katalog anfordern können, legen Sie **Für externe Benutzer aktiviert** auf **Ja** fest.
 
-    ![Bereich „Neuer Katalog“](./media/entitlement-management-catalog-create/new-catalog.png)
+    ![Bereich „Neuer Katalog“](./media/entitlement-management-shared/new-catalog.png)
 
 1. Klicken Sie auf **Erstellen**, um den Katalog zu erstellen.
 
+### <a name="creating-a-catalog-programmatically"></a>Programmgesteuertes Erstellen eines Katalogs
+
+Sie können auch mithilfe von Microsoft Graph einen Katalog erstellen.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [einen accessPackageCatalog zu erstellen](/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
+
 ## <a name="add-resources-to-a-catalog"></a>Hinzufügen von Ressourcen zu einem Katalog
 
-Um Ressourcen in ein Zugriffspaket einschließen zu können, müssen die Ressourcen in einem Katalog vorhanden sein. Bei den Typen von Ressourcen, die Sie hinzufügen können, handelt es sich um Gruppen, Anwendungen und SharePoint Online-Websites. Die Gruppen können in der Cloud erstellte Office 365-Gruppen oder in der Cloud erstellte Azure AD-Sicherheitsgruppen sein. Die Anwendungen können Azure AD-Unternehmensanwendungen sein, einschließlich SaaS-Anwendungen und Ihrer eigenen Anwendungen, die mit Azure AD verbunden sind. Die Websites können SharePoint Online-Websites oder SharePoint Online-Websitesammlungen sein.
+Um Ressourcen in ein Zugriffspaket einschließen zu können, müssen die Ressourcen in einem Katalog vorhanden sein. Bei den Typen von Ressourcen, die Sie hinzufügen können, handelt es sich um Gruppen, Anwendungen und SharePoint Online-Websites. Die Gruppen können in der Cloud erstellte Microsoft 365-Gruppen oder in der Cloud erstellte Azure AD-Sicherheitsgruppen sein. Die Anwendungen können Azure AD-Unternehmensanwendungen sein, einschließlich SaaS-Anwendungen und Ihrer eigenen Anwendungen, die mit Azure AD verbunden sind. Die Websites können SharePoint Online-Websites oder SharePoint Online-Websitesammlungen sein.
 
 **Erforderliche Rolle:** Siehe [Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
@@ -72,15 +69,21 @@ Um Ressourcen in ein Zugriffspaket einschließen zu können, müssen die Ressour
 
 1. Klicken Sie auf **Ressourcen hinzufügen**.
 
-1. Klicken Sie auf einen Ressourcentyp: **Gruppen**, **Anwendungen** oder **SharePoint-Websites**.
+1. Klicken Sie auf einen Ressourcentyp: **Gruppen und Teams**, **Anwendungen** oder **SharePoint-Websites**.
 
     Wenn Sie eine Ressource, die Sie hinzufügen möchten, nicht sehen, oder wenn Sie eine Ressource nicht hinzufügen können, stellen Sie sicher, dass Sie die erforderliche Azure AD-Verzeichnisrolle und -Berechtigungsverwaltungsrolle haben. Möglicherweise müssen Sie jemanden mit den erforderlichen Rollen beauftragen, die Ressource Ihrem Katalog hinzuzufügen. Weitere Informationen finden Sie unter [Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
 1. Wählen Sie eine oder mehrere Ressourcen des Typs aus, die Sie dem Katalog hinzufügen möchten.
 
+    ![Hinzufügen von Ressourcen zu einem Katalog](./media/entitlement-management-catalog-create/catalog-add-resources.png)
+
 1. Klicken Sie abschließend auf **Hinzufügen**.
 
     Diese Ressourcen können jetzt in Zugriffspakete im Katalog aufgenommen werden.
+
+### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Programmgesteuertes Hinzufügen einer Ressource zu einem Katalog
+
+Sie können eine Ressource auch mithilfe von Microsoft Graph einem Katalog hinzufügen.  Ein Benutzer in einer passenden Rolle oder ein Katalog- und Ressourcenbesitzer mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [eine accessPackageResourceRequest zu erstellen](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta).
 
 ## <a name="remove-resources-from-a-catalog"></a>Entfernen von Ressourcen aus einem Katalog
 
@@ -98,6 +101,27 @@ Sie können Ressourcen aus einem Katalog entfernen. Eine Ressource kann nur aus 
 
 1. Klicken Sie auf **Entfernen**. Oder klicken Sie auf die Auslassungspunkte ( **...** ), und klicken Sie dann auf **Ressource entfernen**.
 
+
+## <a name="add-additional-catalog-owners"></a>Hinzufügen weiterer Katalogbesitzer
+
+Der Benutzer, der einen Katalog erstellt hat, ist der erste Katalogbesitzer. Wenn Sie die Verwaltung eines Katalogs delegieren möchten, fügen Sie der Rolle „Katalogbesitzer“ Benutzer hinzu. Dadurch können die Aufgaben der Katalogverwaltung gemeinsam wahrgenommen werden. 
+
+Führen Sie die folgenden Schritte aus, um einem Benutzer die Rolle „Katalogbesitzer“ zuzuweisen:
+
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogbesitzer
+
+1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
+
+1. Klicken Sie im linken Menü auf **Kataloge**, und öffnen Sie dann den Katalog, dem Sie Administratoren hinzufügen möchten.
+
+1. Klicken Sie im linken Menü auf **Rollen und Administratoren**.
+
+    ![Katalogrollen und -administratoren](./media/entitlement-management-shared/catalog-roles-administrators.png)
+
+1. Klicken Sie auf **Besitzer hinzufügen**, um die Mitglieder für diese Rollen auszuwählen.
+
+1. Klicken Sie auf **Auswählen**, um diese Mitglieder hinzuzufügen.
+
 ## <a name="edit-a-catalog"></a>Bearbeiten eines Katalogs
 
 Sie können den Namen und die Beschreibung eines Katalogs bearbeiten. Benutzern werden diese Informationen in den Details eines Zugriffspakets angezeigt.
@@ -110,7 +134,9 @@ Sie können den Namen und die Beschreibung eines Katalogs bearbeiten. Benutzern 
 
 1. Klicken Sie auf der Seite **Übersicht** des Katalogs auf **Bearbeiten**.
 
-1. Bearbeiten Sie den Namen oder die Beschreibung des Katalogs.
+1. Bearbeiten Sie den Namen, die Beschreibung oder die aktivierten Einstellungen des Katalogs.
+
+    ![Bearbeiten von Katalogeinstellungen](./media/entitlement-management-shared/catalog-edit.png)
 
 1. Klicken Sie auf **Speichern**.
 
@@ -128,7 +154,10 @@ Sie können einen Katalog nur löschen, wenn er keine Zugriffspakete enthält.
 
 1. Klicken Sie im angezeigten Meldungsfeld auf **Ja**.
 
+### <a name="deleting-a-catalog-programmatically"></a>Programmgesteuertes Löschen eines Katalogs
+
+Sie können auch mithilfe von Microsoft Graph einen Katalog löschen.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [einen accessPackageCatalog zu löschen](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Hinzufügen eines Katalogerstellers](entitlement-management-delegate.md#add-a-catalog-creator)
-- [Erstellen und Verwalten eines Zugriffspakets](entitlement-management-access-package-create.md)
+- [Delegieren der Zugriffssteuerung an Zugriffspaket-Manager](entitlement-management-delegate-managers.md)

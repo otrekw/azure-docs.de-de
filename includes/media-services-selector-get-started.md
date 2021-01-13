@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: ae56e02e89a6f7b5a9adaa587ee4a0521d21f349
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178179"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184397"
 ---
 > [!div class="op_single_selector"]
 > * [Portal](../articles/media-services/previous/media-services-portal-vod-get-started.md)

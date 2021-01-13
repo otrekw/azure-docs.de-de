@@ -1,25 +1,25 @@
 ---
-title: 'Upgrade auf Azure Search .NET SDK Version 9: Azure Search'
+title: Upgrade auf Version 9 des Azure Search .NET SDK
+titleSuffix: Azure Cognitive Search
 description: Migrieren Sie Code von älteren Versionen zu Azure Search .NET SDK Version 9. Hier finden Sie Informationen zu Neuheiten und erfahren, welche Änderungen am Code erforderlich sind.
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: 32908ab209cbe05a0acf9da896e1e1fb11e6f5dd
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7726877efcb72caf5bb4c92e2e1c65e5df68f270
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183245"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89002707"
 ---
-# <a name="upgrade-to-the-azure-search-net-sdk-version-9"></a>Upgrade auf Version 9 des Azure Search .NET SDK
+# <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Upgrade auf Version 9 des Azure Search .NET SDK
 
-Wenn Sie die Version 7.0-preview oder eine frühere Version des [Azure Search .NET SDK](https://aka.ms/search-sdk) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 9.
+Wenn Sie die Version 7.0-preview oder eine frühere Version des [Azure Search .NET SDK](/dotnet/api/overview/azure/search) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 9.
 
 > [!NOTE]
 > Wenn Sie die Version 8.0-preview verwenden möchten, um Funktionen zu testen, die noch nicht allgemein verfügbar sind, können Sie ebenfalls die Anweisungen in diesem Artikel nutzen, um von früheren Versionen auf 8.0-preview zu aktualisieren.
@@ -36,9 +36,9 @@ Version 9 des Azure Search .NET SDK enthält viele Änderungen zu früheren Ver
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-9"></a>Neuerungen in Version 9
-Version 9 des Azure Search .NET SDK ist für die neueste allgemein verfügbare Version der Azure Search-REST-API (2019-05-06) konzipiert. Dadurch können neue Features von Azure Search in einer .NET-Anwendung verwendet werden. Hierzu zählen etwa folgende:
+Version 9 des Azure Search .NET SDK zielt mit den folgenden Features auf Version 2019-05-06 der Azure Search REST API ab:
 
-* [Kognitive Suche](cognitive-search-concept-intro.md) ist eine KI-Funktion in Azure Search zum Extrahieren von Text aus Bildern, Blobs und anderen unstrukturierten Datenquellen, um den Inhalt anzureichern und in einem Azure Search-Index besser durchsuchbar zu machen.
+* [KI-Anreicherung](cognitive-search-concept-intro.md) ist die Möglichkeit, Text aus Bildern, Blobs und anderen unstrukturierten Datenquellen zu extrahieren, um den Inhalt anzureichern und in einem Azure Search-Index besser durchsuchbar zu machen.
 * Die Unterstützung für [komplexe Typen](search-howto-complex-data-types.md) ermöglicht Ihnen, nahezu jede geschachtelte JSON-Struktur in einem Azure Search-Index zu modellieren.
 * [AutoVervollständigen](search-autocomplete-tutorial.md) bietet eine Alternative zur **Vorschlags**-API für das Implementieren der Suche während der Eingabe. AutoVervollständigen vervollständigt die von einem Benutzer aktuell eingegebenen Wörter bzw. Ausdrücke.
 * Der [Analysemodus JsonLines](search-howto-index-json-blobs.md) ist Teil der Azure-Blobindizierung. Dabei wird ein Suchdokument pro JSON-Entität erstellt, die durch eine neue Zeile getrennt ist.
@@ -46,7 +46,7 @@ Version 9 des Azure Search .NET SDK ist für die neueste allgemein verfügbare 
 ### <a name="new-preview-features-in-version-80-preview"></a>Neue Previewfunktionen in Version 8.0-preview
 Version 8.0-preview des Azure Search .NET SDK zielt auf die API-Version 2017-11-11-Preview ab. Diese Version umfasst dieselben Funktionen wie Version 9 und darüber hinaus:
 
-* [Kundenverwaltete Verschlüsselungsschlüssel](search-security-manage-encryption-keys.md) für die dienstseitige Verschlüsselung ruhender Daten ist eine neue Previewfunktion. Zusätzlich zur integrierten Verschlüsselung ruhender Daten von Microsoft können Sie eine zusätzliche Ebene der Verschlüsselung anwenden, bei der nur Sie der alleinige Besitzer der Schlüssel sind.
+* [Kundenverwaltete Verschlüsselungsschlüssel](search-security-manage-encryption-keys.md) für die dienstseitige Verschlüsselung ruhender Daten ist eine neue Previewfunktion. Neben der integrierten von Microsoft verwalteten Verschlüsselung ruhender Daten können Sie eine zusätzliche Verschlüsselungsebene anwenden, bei der Sie alleiniger Besitzer der Schlüssel sind.
 
 <a name="UpgradeSteps"></a>
 

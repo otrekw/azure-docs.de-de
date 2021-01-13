@@ -1,6 +1,6 @@
 ---
 title: Einrichten der Azure Media Services-Entwicklungsumgebung | Microsoft-Dokumentation
-description: Einrichten der Umgebung für die Entwicklung mit Azure Media Services
+description: In diesem Artikel wird das Einrichten der Umgebung für die Entwicklung mit Azure Media Services beschrieben.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 546e8e50bc34307c46d33e217d5bc0887b548774
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 67cf46fbe86dfd8388c61f3a55b4068e57d0b538
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60410024"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89266509"
 ---
-# <a name="set-up-your-media-services-development-environment"></a>Einrichten der Media Services-Entwicklungsumgebung  
+# <a name="set-up-your-media-services-development-environment"></a>Einrichten der Media Services-Entwicklungsumgebung 
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Die folgenden Schritte beschreiben die erforderlichen Voraussetzungen für die Entwicklung mit Azure Media Services.
 
@@ -47,10 +49,9 @@ Informationen zum Herstellen einer Verbindung zur Azure Media Services-API finde
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im Katalog mit **Azure-Codebeispielen** stehen mehrere Codebeispiele zur Verfügung: [Azure Media Services-Codebeispiele](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
+Mehrere Codebeispiele finden Sie im Katalog mit **Azure-Codebeispielen**: [Azure Media Services-Codebeispiele](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

@@ -1,10 +1,10 @@
 ---
 title: Häufig gestellte Fragen zu Azure Active Directory-Berichten | Microsoft-Dokumentation
-description: Häufig gestellte Fragen zu Azure Active Directory-Berichten
+description: Hier finden Sie häufig gestellte Fragen zu Azure Active Directory-Berichten.
 services: active-directory
 documentationcenter: ''
 author: cawrites
-manager: daveba
+manager: MarkusVi
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: chadam
+ms.date: 05/12/2020
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8c3138b82c7dc4a7217e8cb67448a5d824398ba
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c274424641ee0173d68f0de9061415815b0df588
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127025"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107429"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
@@ -37,7 +37,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Ich verwende derzeit die Endpunkt-APIs unter „`https://graph.windows.net/<tenant-name>/reports/`“ zum programmgesteuerten Abrufen der Azure AD-Sicherheitsberichte (bestimmte Arten von Erkennungen, z.B. kompromittierte Anmeldeinformationen oder Anmeldungen über anonyme IP-Adressen) in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?**
 
-**A:** Sie können die [API für Identity Protection-Risikoerkennungen](../identity-protection/graph-get-started.md) für den Zugriff auf Sicherheitserkennungen über Microsoft Graph verwenden. Dieses neue Format ermöglicht höhere Flexibilität beim Abfragen von Daten mit erweiterter Filterung, Feldauswahl und vielem mehr, und standardisiert Risikoerkennungen in einem Typ zur einfacheren Integration in SIEMs und andere Tools zur Datensammlung. Da die Daten in einem anderen Format vorliegen, können Sie Ihre alten Abfragen nicht durch eine neue Abfrage ersetzen. Allerdings [verwendet die neue API Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), den Microsoft-Standard für diese APIs wie z.B. Office 365 oder Azure AD. So können Sie entweder Ihre aktuellen MS Graph-Investitionen erweitern oder die Umstellung auf diese neue Standardplattform beginnen.
+**A:** Sie können die [API für Identity Protection-Risikoerkennungen](../identity-protection/howto-identity-protection-graph-api.md) für den Zugriff auf Sicherheitserkennungen über Microsoft Graph verwenden. Dieses neue Format ermöglicht höhere Flexibilität beim Abfragen von Daten mit erweiterter Filterung, Feldauswahl und vielem mehr, und standardisiert Risikoerkennungen in einem Typ zur einfacheren Integration in SIEMs und andere Tools zur Datensammlung. Da die Daten in einem anderen Format vorliegen, können Sie Ihre alten Abfragen nicht durch eine neue Abfrage ersetzen. Allerdings [verwendet die neue API Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta), den Microsoft-Standard für diese APIs wie Microsoft 365 oder Azure AD. So können Sie entweder Ihre aktuellen Microsoft Graph-Investitionen erweitern oder die Umstellung auf diese neue Standardplattform beginnen.
 
 ---
 
@@ -49,7 +49,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Wie schnell werden nach Erwerb einer Premium-Lizenz Daten zu Aktivitäten angezeigt?**
 
-**A:** Wenn Ihnen bereits mit einer kostenlosen Lizenz Daten zu Aktivitäten angezeigt werden, können Sie diese sofort sehen. Wenn Sie noch keine Daten haben, dauert es ein bis zwei Tage, bis die Daten in den Berichten angezeigt werden.
+**A:** Wenn Ihnen bereits mit einer kostenlosen Lizenz Daten zu Aktivitäten angezeigt werden, können Sie diese sofort sehen. Wenn Sie noch keine Daten haben, kann es bis zu drei Tagen dauern, bis die Daten in den Berichten angezeigt werden.
 
 ---
 
@@ -71,13 +71,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Wie lange werden Aktivitätsprotokolldaten (Überwachungs- und Anmeldevorgänge) im Azure-Portal aufbewahrt?** 
 
-**A:** Die folgende Tabelle zeigt den Datenaufbewahrungszeitraum für Aktivitätsprotokolle. Weitere Informationen finden Sie unter [Aufbewahrungsrichtlinien für Azure AD-Berichte](reference-reports-data-retention.md).
-
-| Bericht                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--                    | :--           | :--                 | :--                 |
-| Überwachungsprotokolle             | 7 Tage        | 30 Tage             | 30 Tage             |
-| Anmeldungen               | –           | 30 Tage             | 30 Tage             |
-| Azure MFA-Nutzung        | 30 Tage       | 30 Tage             | 30 Tage             |
+**A:** Weitere Informationen finden Sie unter [Aufbewahrungsrichtlinien für Azure AD-Berichte](reference-reports-data-retention.md).
 
 ---
 
@@ -87,15 +81,15 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 ---
 
-**F: Kann ich Office 365-Aktivitätsprotokollinformationen über das Azure-Portal abrufen?**
+**F: Kann ich Microsoft 365-Aktivitätsprotokollinformationen über das Azure-Portal abrufen?**
 
-**A:** Obwohl Office 365- und Azure AD-Aktivitätsprotokolle einen Großteil der Verzeichnisressourcen gemeinsam nutzen, müssen Sie, wenn Sie eine vollständige Ansicht der Office 365-Aktivitätsprotokolle wünschen, das [Microsoft 365 Admin Center](https://admin.microsoft.com) besuchen, um Office 365-Aktivitätsprotokollinformationen abzurufen.
+**A:** Auch wenn Microsoft 365- und Azure AD-Aktivitätsprotokolle einen Großteil der Verzeichnisressourcen gemeinsam nutzen, müssen Sie, wenn Sie eine vollständige Ansicht der Microsoft 365-Aktivitätsprotokolle anzeigen möchten, das [Microsoft 365 Admin Center](https://admin.microsoft.com) besuchen, um Microsoft 365-Aktivitätsprotokollinformationen abzurufen.
 
 ---
 
-**F: Mit welchen APIs kann ich Informationen zu Office 365-Aktivitätsprotokollen abrufen?**
+**F: Mit welchen APIs kann ich Informationen zu Microsoft 365-Aktivitätsprotokollen abrufen?**
 
-**A:** Über die [Office 365-Verwaltungsaktivitäts-APIs](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) können Sie auf die Office 365-Aktivitätsprotokolle zugreifen.
+**A:** Verwenden Sie die [Microsoft 365-Verwaltungs-APIs](/office/office-365-management-api/office-365-management-apis-overview), um über eine API auf die Microsoft 365-Aktivitätsprotokolle zuzugreifen.
 
 ---
 
@@ -151,7 +145,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 * **Nicht angewendet**: Es ist keine Richtlinie für bedingten Zugriff für den Benutzer und die App vorhanden. 
 * **Erfolg**: Für den Benutzer und die App ist eine Richtlinie für bedingten Zugriff vorhanden, und diese wurde erfüllt. 
-* **Fehler**: Für den Benutzer und die App ist eine Richtlinie für bedingten Zugriff vorhanden, und diese wurde nicht erfüllt. 
+* **Fehler**: Die Anmeldung hat zwar die Benutzer- und Anwendungsbedingung mindestens einer Richtlinie für bedingten Zugriff erfüllt, die Gewährungssteuerelemente wurden jedoch nicht erfüllt oder sind auf Blockieren des Zugriffs eingestellt.
     
 **F: Welche Werte sind als Ergebnis einer Richtlinie für bedingten Zugriff möglich?**
 
@@ -168,4 +162,4 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Meine Anmeldung wurde aufgrund einer Richtlinie für bedingten Zugriff blockiert, der Anmeldeaktivitätsbericht gibt jedoch an, dass die Anmeldung erfolgreich war. Warum?**
 
-**A:** Der Anmeldebericht zeigt möglicherweise derzeit keine genauen Ergebnisse für Exchange ActiveSync-Szenarien an, wenn der bedingte Zugriff angewendet wird. In manchen Fällen wird zwar eventuell ein erfolgreiches Anmeldeergebnis im Bericht angezeigt, doch bei der Anmeldung ist aufgrund einer Richtlinie für bedingten Zugriff in Wirklichkeit ein Fehler aufgetreten. 
+**A:** Der Anmeldebericht zeigt möglicherweise derzeit keine genauen Ergebnisse für Exchange ActiveSync-Szenarien an, wenn der bedingte Zugriff angewendet wird. In manchen Fällen wird zwar eventuell ein erfolgreiches Anmeldeergebnis im Bericht angezeigt, doch bei der Anmeldung ist aufgrund einer Richtlinie für bedingten Zugriff in Wirklichkeit ein Fehler aufgetreten.

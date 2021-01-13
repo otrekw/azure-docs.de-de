@@ -1,5 +1,5 @@
 ---
-title: 'StorSimple: Failover und Notfallwiederherstellung für eine StorSimple Cloud Appliance | Microsoft-Dokumentation'
+title: Failover und Notfallwiederherstellung auf eine StorSimple-Cloudappliance
 description: Erfahren Sie, wie für Ihr physisches Gerät der StorSimple 8000-Serie ein Failover auf ein Cloudgerät erfolgt.
 services: storsimple
 documentationcenter: ''
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 45c521fd044fa258b8052a3f0de48784cf4160e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18b34ff466f3935cb5cd18d46e6d26e36e756a9b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60584394"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91774459"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>Failover auf Ihre StorSimple Cloud Appliance
 
@@ -46,15 +46,15 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einer StorSimple Cloud
     ![Gerät auswählen](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev1.png)
 3. Klicken Sie auf das gewünschte Quellgerät. Das Quellgerät weist die Volumecontainer auf, für die ein Failover erfolgen soll. Wechseln Sie zu **Einstellungen > Volumecontainer**.
 
-    ![Gerät auswählen](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
+    ![Auswählen von Gerät 2](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
     
 4. Wählen Sie einen Volumecontainer für das Failover auf einem anderen Gerät aus. Klicken Sie auf den Volumecontainer, um die Liste der Volumes innerhalb dieses Containers anzuzeigen. Wählen Sie ein Volume aus. Klicken Sie mit der rechten Maustaste, und klicken Sie auf **Offline schalten**, um das Volume offline zu schalten.
 
-    ![Gerät auswählen](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
+    ![Gerät auswählen (3)](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
 
 5. Wiederholen Sie diesen Vorgang für alle Volumes im Volumecontainer.
 
-     ![Gerät auswählen](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
+     ![Gerät auswählen (4)](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
 
 6. Wiederholen Sie den vorherigen Schritt für alle Volumecontainer, für die auf dem anderen Gerät ein Failover durchgeführt werden soll.
 
@@ -81,7 +81,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einer StorSimple Cloud
 
     1. Wählen Sie das Gerät aus, das Sie als Ziel für das Failover verwendet haben.
 
-       ![Gerät auswählen](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![Gerät auswählen (5)](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
     2. Klicken Sie auf **Volumecontainer**. Es sollten alle Volumecontainer und die Volumes des alten Geräts aufgeführt werden.
 

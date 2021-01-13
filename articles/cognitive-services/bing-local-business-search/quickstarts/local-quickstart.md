@@ -1,40 +1,46 @@
 ---
-title: 'Schnellstart: Senden einer Abfrage an die API für die Bing-Suche für ortsansässige Unternehmen in C#'
+title: 'Schnellstart: Senden einer Abfrage an die API in C# mit der Bing-Suche für ortsansässige Unternehmen'
 titleSuffix: Azure Cognitive Services
-description: Einführung in die Verwendung der API für die Bing-Suche nach ortsansässigen Unternehmen mit C#
+description: Verwenden Sie diese Schnellstartanleitung, um Anforderungen in C# an die API für die Bing-Suche für ortsansässige Unternehmen zu senden, die zum Leistungsumfang von Cognitive Services gehört.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 04/26/2019
-ms.author: rosh
-ms.openlocfilehash: 163a85a7fb7521054ebec58fb9ac86373963f2b9
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 10/22/2020
+ms.author: aahi
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 02fc67862a332ef51e164c17ef973bb610cf4fc7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906309"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499117"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Schnellstart: Senden einer Abfrage an die API für die Bing-Suche nach ortsansässigen Unternehmen mit C#
 
-Verwenden Sie diesen Schnellstart, um Anforderungen an die API für die Bing-Suche nach ortsansässigen Unternehmen zu senden, die zum Leistungsumfang von Cognitive Services gehört. Diese einfache Anwendung ist zwar in C# geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen stellen und JSON analysieren kann.
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Diese Beispielanwendung ruft lokale Antwortdaten aus der API für die Suchabfrage `hotel in Bellevue` ab.
+Verwenden Sie diesen Schnellstart, um zu lernen. wie Sie Anforderungen an die API für die Bing-Suche für ortsansässige Unternehmen senden, die zum Leistungsumfang von Azure Cognitive Services gehört. Diese einfache Anwendung ist zwar in C# geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen stellen und JSON analysieren kann.
+
+Diese Beispielanwendung ruft lokale Antwortdaten aus der API für eine Suchabfrage ab.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
 * Eine beliebige Edition von [Visual Studio 2019](https://www.visualstudio.com/downloads/).
-* Unter Linux/macOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden
-
-Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Bing-Suche-APIs verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend.  Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
+* Unter Linux/macOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden.
+* Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Erstellen einer Ressource für die Bing-Suche"  target="_blank"> im Azure-Portal eine Ressource für die Bing-Suche <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
 
 ## <a name="create-the-request"></a>Erstellen der Anforderung 
 
-Der folgende Code erstellt eine `WebRequest`, legt den Zugriffsschlüsselheader fest und fügt eine Abfragezeichenfolge für „Restaurant in Bellevue“ hinzu.  Dann übermittelt er die Anforderung und weist die Antwort einer Zeichenfolge zu, die den JSON-Text enthält.
+Der folgende Code erstellt eine `WebRequest`, legt den Zugriffsschlüsselheader fest und fügt eine Abfragezeichenfolge für *Restaurant in Bellevue* hinzu.  Dann übermittelt er die Anforderung und weist die Antwort einer Zeichenfolge zu, die den JSON-Text enthält.
 
-```
+```csharp
     // Replace the accessKey string value with your valid access key.
     const string accessKey = "enter key here";
 
@@ -54,13 +60,13 @@ Der folgende Code erstellt eine `WebRequest`, legt den Zugriffsschlüsselheader 
 
 ## <a name="run-the-complete-application"></a>Ausführen der vollständigen Anwendung
 
-Die API für die Bing-Suche nach ortsansässigen Unternehmen gibt lokalisierte Suchergebnisse der Bing-Suchmaschine zurück.
+Der folgende Code verwendet die API für die Bing-Suche für ortsansässige Unternehmen, um lokalisierte Suchergebnisse der Bing-Suchmaschine zurückzugeben. Sie können diesen Code verwenden, indem Sie diese Schritte ausführen:
 1. Erstellen Sie eine neue Konsolenprojektmappe in Visual Studio (die Community Edition ist hierfür ausreichend).
 2. Ersetzen Sie den Code in „Program.cs“ durch den unten stehenden Code.
-3. Ersetzen Sie den „accessKey“-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
+3. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -72,8 +78,8 @@ namespace localSearch
     class Program
     {
         // **********************************************
-        // *** Update or verify the following values. ***
-        // **********************************************
+        // **_ Update or verify the following values. _*_
+        // _*********************************************
 
         // Replace the accessKey string value with your valid access key.
         const string accessKey = "enter key here";
@@ -210,5 +216,5 @@ namespace localSearch
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Schnellstart: Suche nach ortsansässigen Unternehmen mit Java](local-search-java-quickstart.md)
-- [Schnellstart: Suche nach ortsansässigen Unternehmen mit Node](local-search-node-quickstart.md)
+- [Schnellstart: Suche nach ortsansässigen Unternehmen mit Node.js](local-search-node-quickstart.md)
 - [Schnellstart: Suche nach ortsansässigen Unternehmen mit Python](local-search-python-quickstart.md)

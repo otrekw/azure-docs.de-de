@@ -1,19 +1,16 @@
 ---
 title: Erste Schritte mit der Azure Service Fabric CLI
 description: Hier erfahren Sie, wie Sie die Azure Service Fabric CLI verwenden. Es wird beschrieben, wie Sie eine Verbindung mit einem Cluster herstellen und Anwendungen verwalten.
-services: service-fabric
-author: Christina-Kang
-manager: chackdan
-ms.service: service-fabric
+author: jeffj6123
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: d5b6f183a59e3f47aa5867b5e09e06541a6a67db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 5/19/2020
+ms.author: jejarry
+ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803246"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83681799"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -33,16 +30,19 @@ Die Service Fabric-Befehlszeilenschnittstelle ist zur Unterstützung der neueste
 
 | CLI-Version   | Unterstützte Laufzeitversion |
 |---------------|---------------------------|
-| Neueste (~= 7)  | Neueste (~= 6.4)            |
+| Neueste (~= 10) | Neueste (~= 7.1)            |
+| 9.0.0         | 7.1                       |
+| 8.0.0         | 6,5                       |
+| 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
 | 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |
-| 3.0.0         | 6,0                       |
+| 3.0.0         | 6.0                       |
 | 1.1.0         | 5.6, 5.7                  |
 
 Sie können optional eine zu installierende Zielversion der Befehlszeilenschnittstelle angeben, indem Sie den Befehl `pip install` mit dem Suffix `==<version>` versehen. Die Syntax für Version 1.1.0 lautet beispielsweise wie folgt:
 
-```
+```shell
 pip install -I sfctl==1.1.0
 ```
 
@@ -68,14 +68,14 @@ Verwenden Sie für Windows 10, Windows Server 2016 und Windows Server 2012 R2 di
 
 Sie können nun ein neues Befehlsfenster öffnen und die Version von Python und PIP abrufen.
 
-```bat
+```shell
 python --version
 pip --version
 ```
 
 Führen Sie dann den folgenden Befehl aus, um die Azure Service Fabric-CLI (sfctl) zu installieren und die CLI-Hilfeseite anzuzeigen:
 
-```bat
+```shell
 pip install sfctl
 sfctl -h
 ```
@@ -104,7 +104,7 @@ Vergewissern Sie sich in diesem Fall, dass über `$PATH` auf `~/.local/bin` zuge
 
 ```bash
 export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+echo "export PATH=$PATH:~/.local/bin" >> .shellrc
 ```
 
 Sollte die Installation im Windows-Subsystem für Linux aufgrund falscher Ordnerberechtigungen nicht erfolgreich sein, muss der Vorgang unter Umständen mit erhöhten Berechtigungen wiederholt werden:
@@ -127,7 +127,7 @@ sudo pip3 install sfctl
 Sie können die Schritte im Abschnitt **Ubuntu und Windows-Subsystem für Linux** durchführen, um die Installation zu testen.
 
 <a name = "cli-mac"></a>
-### <a name="macos"></a>macOS
+### <a name="macos"></a>MacOS
 
 Für MacOS empfehlen wir Ihnen die Nutzung des [HomeBrew-Paket-Managers](https://brew.sh). Wenn HomeBrew nicht bereits installiert ist, können Sie die Installation mit dem folgenden Befehl durchführen:
 
@@ -149,7 +149,7 @@ Die Befehle verfügen immer über das Präfix `sfctl`. Allgemeine Informationen 
 
 Befehle folgen einer wiederholbaren Struktur. Dabei steht das Ziel des Befehls vor dem Verb oder der Aktion.
 
-```azurecli
+```shell
 sfctl <object> <action>
 ```
 
@@ -162,7 +162,7 @@ Bevor Sie Vorgänge durchführen, müssen Sie einen Cluster auswählen, mit dem 
 > [!WARNING]
 > Vermeiden Sie die Verwendung von ungeschützten Service Fabric-Clustern in einer Produktionsumgebung.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint http://testcluster.com:19080
 ```
 
@@ -170,7 +170,7 @@ Der Clusterendpunkt muss das Präfix `http` oder `https` aufweisen. Er muss den 
 
 Für Cluster, die mit einem Zertifikat gesichert sind, können Sie ein PEM-codiertes Zertifikat angeben. Das Zertifikat kann als eine einzelne Datei oder als Zertifikat und Schlüsselpaar angegeben werden. Handelt es sich um ein selbstsigniertes Zertifikat, das nicht von einer Zertifizierungsstelle signiert wurde, können Sie die Option `--no-verify` übergeben, um die Überprüfung der Zertifizierungsstelle zu umgehen.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
@@ -182,7 +182,7 @@ Informationen zur Clusterverbindung werden über mehrere Service Fabric CLI-Sitz
 
 Verwenden Sie beispielsweise den folgenden Befehl, um den Integritätsstatus des Service Fabric-Clusters abzurufen:
 
-```azurecli
+```shell
 sfctl cluster health
 ```
 
@@ -219,13 +219,13 @@ Hier sind einige Vorschläge und Tipps zum Beheben von allgemeinen Problemen ang
 
 Die Service Fabric-Befehlszeilenschnittstelle unterstützt clientseitige Zertifikate als PEM-Dateien (Erweiterung „.pem“). Bei Verwendung von PFX-Dateien in Windows müssen Sie diese Zertifikate in das PEM-Format konvertieren. Mit dem folgenden Befehl konvertieren Sie eine PFX-Datei in eine PEM-Datei:
 
-```bash
+```shell
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
 Wenn Sie eine PFX-Datei in eine PEM-Datei konvertieren möchten, können Sie den folgenden Befehl verwenden. (Hier wird kein Kennwort angegeben.)
 
-```bash
+```shell
 openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certificates.pem -passout pass:'' 
 ```
 
@@ -247,13 +247,13 @@ Detaillierte Protokolle sind häufig hilfreich, wenn Sie das Debuggen durchführ
 
 Verwenden Sie das `-h`-Flag, um Hilfe zu einem bestimmten Befehl oder einer Gruppe von Befehlen zu erhalten.
 
-```azurecli
+```shell
 sfctl application -h
 ```
 
 Hier ist ein weiteres Beispiel angegeben:
 
-```azurecli
+```shell
 sfctl application create -h
 ```
 
@@ -261,7 +261,7 @@ sfctl application create -h
 
 Führen Sie zum Aktualisieren der Service Fabric-Befehlszeilenschnittstelle die folgenden Befehle aus, und ersetzen Sie dabei `pip` durch `pip3` (abhängig von der getroffenen Auswahl bei der ursprünglichen Installation):
 
-```bash
+```shell
 pip uninstall sfctl
 pip install sfctl
 ```

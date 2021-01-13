@@ -1,18 +1,18 @@
 ---
-title: Erstellen eines NFS-Ubuntu-Servers (Network File System) für die Verwendung durch Pods von Azure Kubernetes Service (AKS)
+title: Erstellen eines NFS-Ubuntu Linux-Server-Volumes
+titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie manuell ein Volume eines NFS-Ubuntu Linux-Servers für die Verwendung mit Pods in Azure Kubernetes Service (AKS) erstellen.
 services: container-service
 author: ozboms
-ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 55eb5b0b98a4097d2f300bacabbfef3b0a32b27b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e817d572a98ffb8135adf58d13f50ccacbc8746
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65468445"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86251993"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes eines Linux-NFS-Servers (Network File System) mit Azure Kubernetes Service (AKS)
 Die Datenfreigabe zwischen Containern ist häufig eine notwendige Komponente containerbasierter Dienste und Anwendungen. Sie haben in der Regel verschiedene Pods, die Zugriff auf die gleichen Informationen auf einem externen permanenten Datenträger benötigen.    
@@ -21,7 +21,7 @@ Während Azure Files infrage kommt, kann permanenter freigegebener Speicher auch
 Dieser Artikel zeigt Ihnen, wie Sie einen NFS-Server auf einem virtuellen Ubuntu-Computer erstellen. Sie erfahren außerdem, wie Sie Ihren AKS-Containern Zugriff auf dieses gemeinsam genutzte Dateisystem erteilen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Es wird vorausgesetzt, dass Sie über einen AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
+Es wird vorausgesetzt, dass Sie über einen AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
 Ihr AKS-Cluster muss sich in dem gleichen Netzwerk wie der NFS-Server oder in einem mittels Peering verknüpften befinden. Der Cluster muss in einem vorhandenen VNET erstellt werden; dies kann dasselbe sein, zu dem auch Ihre VM gehört.
 
@@ -93,8 +93,9 @@ chmod +x ~/nfs-server-setup.sh
 ```
 
 ## <a name="connecting-aks-cluster-to-nfs-server"></a>Herstellen einer Verbindung des AKS-Clusters mit dem NFS-Server
-Wir können durch Bereitstellung eines permanenten Volumes und des Anspruchs auf ein permanentes Volume, der angibt, wie auf das Volume zugegriffen wird, eine Verbindung des NFS-Servers mit unserem Cluster herstellen.  
-Das Verbinden der beiden Dienste im gleichen Netzwerk oder in mittels Peering verknüpften virtuellen Netzwerken ist erforderlich. Anweisungen zum Einrichten des Clusters im gleichen VNET finden Sie hier: [Erstellen eines AKS-Clusters im virtuellen Netzwerk][aks-virtual-network].
+Wir können durch Bereitstellung eines permanenten Volumes und des Anspruchs auf ein permanentes Volume, der angibt, wie auf das Volume zugegriffen wird, eine Verbindung des NFS-Servers mit unserem Cluster herstellen.
+
+Das Verbinden der beiden Dienste im gleichen Netzwerk oder in mittels Peering verknüpften virtuellen Netzwerken ist erforderlich. Anweisungen zum Einrichten des Clusters im gleichen VNET finden Sie hier: [Erstellen eines AKS-Clusters im virtuellen Netzwerk][aks-virtual-network]
 
 Sobald sie sich im gleichen virtuellen Netzwerk (oder in mittels Peering miteinander verknüpften virtuellen Netzwerken) befinden, müssen Sie ein permanentes Volume und einen Anspruch auf ein permanentes Volume in Ihrem AKS-Cluster bereitstellen. Die Container können dann das NFS-Laufwerk in ihr lokales Verzeichnis einbinden.
 
@@ -160,10 +161,10 @@ Entsprechenden bewährte Methoden finden Sie unter [Bewährte Methoden für die 
 
 <!-- LINKS - external -->
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/
-[linux-create]: https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm
+[linux-create]: ../virtual-machines/linux/tutorial-manage-vm.md
 [nfs-tutorial]: https://help.ubuntu.com/community/SettingUpNFSHowTo#Pre-Installation_Setup
-[aks-virtual-network]: https://docs.microsoft.com/azure/aks/configure-kubenet#create-an-aks-cluster-in-the-virtual-network
-[peer-virtual-networks]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal
+[aks-virtual-network]: ./configure-kubenet.md#create-an-aks-cluster-in-the-virtual-network
+[peer-virtual-networks]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

@@ -1,28 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Carlson Wagonlit Travel | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in Carlson Wagonlit Travel | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Carlson Wagonlit Travel konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2745e165-94ab-43b1-970a-4547b4e5b501
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fe4b85db33b60b3268e693bef96cff14fb3b38e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86c2d9585abd546acb3efb22256d3f3b70bfb972
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105814"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674394"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>Tutorial: Azure Active Directory-Integration mit Carlson Wagonlit Travel
+# <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>Tutorial: Azure Active Directory-Integration in Carlson Wagonlit Travel
 
 In diesem Tutorial erfahren Sie, wie Sie Carlson Wagonlit Travel in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Carlson Wagonlit Travel in Azure AD bietet die folgenden Vorteile:
@@ -31,7 +27,7 @@ Die Integration von Carlson Wagonlit Travel in Azure AD bietet die folgenden Vor
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Carlson Wagonlit Travel anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -67,7 +63,7 @@ Zum Konfigurieren der Integration von Carlson Wagonlit Travel in Azure AD müsse
 
 4. Geben Sie im Suchfeld **Carlson Wagonlit Travel** ein, wählen Sie **Carlson Wagonlit Travel** im Ergebnisbereich aus, und klicken Sie dann auf **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Carlson Wagonlit Travel in der Ergebnisliste](common/search-new-app.png)
+    ![Carlson Wagonlit Travel in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -123,7 +119,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Carlson
 
 ### <a name="configure-carlson-wagonlit-travel-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Carlson Wagonlit Travel
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Carlson Wagonlit Travel** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Carlson Wagonlit Travel](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Carlson Wagonlit Travel** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Carlson Wagonlit Travel](https://www.mycwt.com/traveler-help/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -142,13 +138,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -178,18 +174,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-carlson-wagonlit-travel-test-user"></a>Erstellen eines Carlson Wagonlit Travel-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Carlson Wagonlit Travel einen Benutzer namens Britta Simon. Wenden Sie sich an das  [Supportteam von Carlson Wagonlit Travel](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html), um die Benutzer auf der Carlson Wagonlit Travel-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Carlson Wagonlit Travel einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [Carlson Wagonlit Travel-Supportteam](https://www.mycwt.com/traveler-help/) zusammen, um die Benutzer in der Carlson Wagonlit Travel-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Carlson Wagonlit Travel“ klicken, sollten Sie automatisch bei der Carlson Wagonlit Travel-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Carlson Wagonlit Travel“ klicken, sollten Sie automatisch bei der Carlson Wagonlit Travel-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

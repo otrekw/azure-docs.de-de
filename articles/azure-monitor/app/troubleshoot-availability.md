@@ -1,58 +1,47 @@
 ---
-title: Behandeln von Problemen mit Azure Application Insights-Verfügbarkeitstests | Microsoft-Dokumentation
+title: Behandeln von Problemen mit Azure Application Insights-Verfügbarkeitstests
 description: Behandeln von Problemen mit Webtests in Azure Application Insights Erhalten Sie Benachrichtigungen, wenn eine Website nicht mehr zur Verfügung steht oder langsam reagiert.
-services: application-insights
-documentationcenter: ''
-author: lgayhardt
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/19/2019
-ms.reviewer: sdash
+author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.date: 11/19/2020
+ms.reviewer: sdash
+ms.openlocfilehash: 368c45433247c441631bdf79bfc9caa28a41f1b4
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146599"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546748"
 ---
 # <a name="troubleshooting"></a>Problembehandlung
 
 Dieser Artikel soll Ihnen beim Behandeln von häufig bei der Verfügbarkeitsüberwachung auftretenden Problemen helfen.
 
-## <a name="ssltls-errors"></a>SSL-/TLS-Fehler
+## <a name="troubleshooting-report-steps-for-ping-tests"></a>Schritte im Problembehandlungsbericht für Pingtests
 
-|Symptom/Fehlermeldung| Mögliche Ursachen|
-|--------|------|
-|Es konnte kein sicherer SSL-/TLS-Kanal erstellt werden.  | SSL-Version. Es werden nur die TLS-Versionen 1.0, 1.1 und 1.2 unterstützt **SSLv3 wird nicht unterstützt.**
-|TLSv1.2-Datensatzebene: Warnung (Stufe: Schwerwiegend, Beschreibung: Ungültiger MAC-Datensatz)| [Weitere Informationen](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake) finden Sie im StackExchange-Thread.
-|Fehlgeschlagene URL verweist auf ein CDN (Content Delivery Network) | Dieses Fehler kann durch einen Konfigurationsfehler auf Ihrem CDN hervorgerufen werden. |  
+Der Problembehandlungsbericht ermöglicht Ihnen eine einfache Diagnose häufig auftretender Probleme, die zu Fehlern bei **Pingtests** führen.
 
-### <a name="possible-workaround"></a>Mögliche Problemumgehung
+![Animation der Navigation von der Registerkarte „Verfügbarkeit“ über die Auswahl eines Fehlers zu den End-to-End-Transaktionsdetails zum Anzeigen des Problembehandlungsberichts](./media/troubleshoot-availability/availability-to-troubleshooter.gif)
 
-* Wenn die URLs, für die die Probleme bestehen, immer auf Ressourcen verweisen, wird empfohlen, die Option **Abhängige Anforderungen analysieren** für Webtests zu deaktivieren.
-
-## <a name="test-fails-only-from-certain-locations"></a>Der Test schlägt nur fehl, wenn er an bestimmten Orten ausgeführt wird
-
-|Symptom/Fehlermeldung| Mögliche Ursachen|
-|----|---------|
-|Ein Verbindungsversuch ist fehlgeschlagen, weil die Partei, mit der eine Verbindung hergestellt werden sollte, in einem bestimmten Zeitraum nicht reagiert hat.  | Test-Agents werden an bestimmten Orten von einer Firewall blockiert.|
-|    |Die Umleitung von bestimmten IP-Adressen erfolgt über (Lastenausgleichsmodule, Geo-Traffic-Manager, Azure ExpressRoute) 
-|    |Bei der Verwendung von Azure ExpressRoute können Pakete im Fall von [asymmetrischem Routing](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) gelöscht werden.|
-
-## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Ein zeitweiliger Testfehler aufgrund einer Protokollverletzung
-
-|Symptom/Fehlermeldung| Mögliche Ursachen| Mögliche Lösungen |
-|----|---------|-----|
-|Beim Server ist eine Protokollverletzung aufgetreten. Auf Section=ResponseHeader Detail=CR muss LF folgen. | Dieses Problem entsteht, wenn falsch formatierte Header gefunden werden. Genauer gesagt geben einige Header unter Umständen das Zeilenende nicht mit CRLF an, was gegen die HTTP-Spezifikation verstößt. Application Insights erzwingt diese HTTP-Spezifikation, und Antworten mit falsch formatierten Headern schlagen fehl.| a. Wenden Sie sich an den Website-Hostanbieter/CDN-Anbieter, um die fehlerhaften Server zu korrigieren. <br> b. Falls es sich bei den fehlgeschlagenen Anforderungen um Ressourcen (z.B. Formatdateien, Bilder, Skripts) handelt, empfiehlt es sich, das Analysieren abhängiger Anforderungen zu deaktivieren. Denken Sie daran, dass Sie in diesem Fall die Verfügbarkeit dieser Dateien nicht mehr überwachen können.
+1. Wählen Sie auf der Registerkarte „Verfügbarkeit“ der Application Insights-Ressource die gesamten oder einen bestimmten Verfügbarkeitstest aus.
+2. Wählen Sie entweder **Fehlerhaft** und dann einen Test unter „Drilldown“ auf der linken Seite aus, oder wählen Sie einen der Punkte im Punktdiagramm aus.
+3. Wählen Sie auf der Seite mit den End-to-End-Transaktionsdetails ein Ereignis aus, und wählen Sie dann unter der Übersicht über Problembehandlungsberichte die Option **[Gehe zu Schritt]** aus, um den Problembehandlungsbericht anzuzeigen.
 
 > [!NOTE]
-> Bei der URL tritt in Browsern mit einer nicht so strengen Validierung von HTTP-Headern unter Umständen kein Fehler auf. Eine ausführliche Erläuterung des Problems finden Sie in diesem Blogbeitrag: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/.  
+>  Wenn der Schritt zur Wiederverwendung von Verbindungen vorhanden ist, sind die Schritte für DNS-Auflösung, Verbindungsherstellung und TLS-Transport nicht vorhanden.
 
+|Schritt | Fehlermeldung | Mögliche Ursache |
+|-----|---------------|----------------|
+| Wiederverwendung von Verbindungen | – | Hängt in der Regel von einer zuvor hergestellten Verbindung ab. Das bedeutet, dass der Webtestschritt davon abhängig ist. Es ist also kein DNS-, Verbindungs- oder SSL-Schritt erforderlich. |
+| DNS-Auflösung | Der Remotename konnte nicht aufgelöst werden: „Ihre URL“ | Der DNS-Auflösungsprozess ist wahrscheinlich aufgrund von falsch konfigurierten DNS-Einträgen oder vorübergehenden DNS-Serverfehlern fehlgeschlagen. |
+| Verbindungsherstellung | Ein Verbindungsversuch ist fehlgeschlagen, weil die Partei, mit der eine Verbindung hergestellt werden sollte, in einem bestimmten Zeitraum nicht reagiert hat. | Im Allgemeinen bedeutet dies, dass Ihr Server nicht auf die HTTP-Anforderung reagiert. Eine häufige Ursache ist, dass unsere Test-Agents durch eine Firewall auf Ihrem Server blockiert werden. Wenn Sie Tests innerhalb eines virtuellen Azure-Netzwerks ausführen möchten, sollten Sie Ihrer Umgebung das Diensttag für Verfügbarkeit hinzufügen.|
+| TLS-Transport  | Client und Server können nicht kommunizieren, da sie keinen gemeinsamen Algorithmus besitzen.| Es werden nur die TLS-Versionen 1.0, 1.1 und 1.2 unterstützt SSL wird nicht unterstützt. In diesem Schritt werden SSL-Zertifikate nicht überprüft, und es wird nur eine sichere Verbindung hergestellt. Dieser Schritt wird nur angezeigt, wenn ein Fehler auftritt. |
+| Empfang des Antwortheaders | Es können keine Daten aus der Transportverbindung gelesen werden. Die Verbindung wurde geschlossen. | Beim Server ist ein Protokollfehler im Antwortheader aufgetreten. Beispielsweise wird die Verbindung vom Server geschlossen, wenn die Antwort nicht vollständig ist. |
+| Empfang des Antworttextes | Es können keine Daten aus der Transportverbindung gelesen werden: Die Verbindung wurde geschlossen. | Beim Server ist ein Protokollfehler im Antworttext aufgetreten. Beispielsweise wird die Verbindung vom Server geschlossen, wenn die Antwort nicht vollständig gelesen wird oder die Segmentgröße im segmentierten Antworttext falsch ist. |
+| Prüfung der Weiterleitungsbeschränkung | Diese Webseite weist zu viele Weiterleitungen auf. Diese Schleife wird hier beendet, da die Anforderung das Limit für automatische Weiterleitungen überschritten hat. | Pro Test können maximal 10 Weiterleitungen verwendet werden. |
+| Überprüfung des Statuscodes | `200 - OK` stimmt nicht mit dem erwarteten Status `400 - BadRequest` überein. | Der zurückgegebene Statuscode, der als Erfolg gezählt wird. 200 ist der Code, der angibt, dass eine normale Webseite zurückgegeben wurde. |
+| Validierung von Inhalten | Der erforderliche Text „hello“ war nicht in der Antwort enthalten. | Die Zeichenfolge stimmt unter Berücksichtigung der Groß- und Kleinschreibung in der Antwort nicht exakt überein, z. B. die Zeichenfolge „Welcome!“. Hierbei muss es sich um eine einfache Zeichenfolge ohne Platzhalterzeichen (z. B. ein Sternchen) handeln. Wenn sich der Seiteninhalt ändert, müssen Sie die Zeichenfolge möglicherweise aktualisieren. Inhaltsübereinstimmungen werden nur für englische Zeichen unterstützt. |
+  
 ## <a name="common-troubleshooting-questions"></a>Allgemeine Fragen zur Problembehandlung
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>Die Website sieht korrekt aus, aber ich sehe Testfehler. Warum warnt mich Application Insights?
@@ -61,7 +50,7 @@ Dieser Artikel soll Ihnen beim Behandeln von häufig bei der Verfügbarkeitsübe
 
    * Stellen Sie sicher, dass die Konfigurationsoption „Enable retries for test failures“ (Weitere Versuche bei Testfehlern zulassen) aktiviert ist, um Störungen infolge vorübergehender Netzwerkprobleme zu verringern. Sie können den Test auch an mehreren Standorten durchführen und den Schwellenwert der Warnungsregel entsprechen verwalten, um zu verhindern, dass standortspezifische Probleme übermäßige Warnungen auslösen.
 
-   * Klicken Sie auf einen der roten Punkte in der Verfügbarkeitserfahrung oder auf einen Verfügbarkeitsfehler im Such-Explorer, um die Details anzuzeigen, warum wir den Fehler gemeldet haben. Das Testergebnis sollte, zusammen mit der korrelierten serverseitigen Telemetrie (sofern aktiviert), Aufschluss darüber geben, warum der Test nicht erfolgreich war. Häufige Ursachen für vorübergehende Probleme sind Netzwerk- oder Verbindungsprobleme.
+   * Klicken Sie auf einen der roten Punkte im Punktdiagramm zur Verfügbarkeit oder auf einen Verfügbarkeitsfehler im Such-Explorer, um die Details anzuzeigen, warum wir den Fehler gemeldet haben. Das Testergebnis sollte, zusammen mit der korrelierten serverseitigen Telemetrie (sofern aktiviert), Aufschluss darüber geben, warum der Test nicht erfolgreich war. Häufige Ursachen für vorübergehende Probleme sind Netzwerk- oder Verbindungsprobleme.
 
    * Kam es beim Test zum Timeout? Wir brechen Tests nach 2 Minuten ab. Wenn Ihr Ping- oder mehrstufiger Test länger als zwei Minuten dauert, melden wir ihn als Fehler. Erwägen Sie, den Test in mehrere aufzuteilen, die sich schneller abschließen lassen.
 
@@ -73,7 +62,11 @@ Dieser Artikel soll Ihnen beim Behandeln von häufig bei der Verfügbarkeitsübe
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Ich habe die Webhookbenachrichtigung nicht empfangen.
 
-Überprüfen Sie, ob die Anwendung, die die Webhookbenachrichtigung empfängt, verfügbar ist und die Webhookanforderungen erfolgreich verarbeitet. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook).
+Überprüfen Sie, ob die Anwendung, die die Webhookbenachrichtigung empfängt, verfügbar ist und die Webhookanforderungen erfolgreich verarbeitet. Weitere Informationen finden Sie [hier](../platform/alerts-log-webhook.md).
+
+### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>Ich erhalte die Fehler „Unzulässig – 403“, was bedeutet das?
+
+Dieser Fehler zeigt an, dass Sie Firewallausnahmen hinzufügen müssen, damit die Verfügbarkeits-Agents Ihre Ziel-URL testen können. Eine vollständige Liste der zuzulassenden Agent-IP-Adressen finden Sie im Artikel zur [IP-Ausnahme](./ip-addresses.md#availability-tests).
 
 ### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Ein zeitweiliger Testfehler aufgrund einer Protokollverletzung ist aufgetreten.
 
@@ -84,7 +77,7 @@ Der Fehler („protocol violation..CR must be followed by LF“) weist auf ein P
 
 ### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>Ich sehe keine zugehörigen serverseitigen Telemetriedaten zum Diagnostizieren von Testfehlern.*
 
-Wenn Sie Application Insights für Ihre serverseitige Anwendung eingerichtet haben, liegt dies möglicherweise daran, dass [Sampling](../../azure-monitor/app/sampling.md) in Betrieb ist. Wählen Sie ein anderes Verfügbarkeitsergebnis aus.
+Wenn Sie Application Insights für Ihre serverseitige Anwendung eingerichtet haben, liegt dies möglicherweise daran, dass [Sampling](./sampling.md) in Betrieb ist. Wählen Sie ein anderes Verfügbarkeitsergebnis aus.
 
 ### <a name="can-i-call-code-from-my-web-test"></a>Kann ich Code aus meinem Webtest aufrufen?
 
@@ -99,8 +92,8 @@ Die beiden Begriffe sind austauschbar. „Verfügbarkeitstests“ ist ein allgem
 
    Es gibt zwei mögliche Lösungen:
 
-   * Konfigurieren Sie die Firewall so, dass eingehende Anforderungen von den [IP-Adressen der Webtest-Agents](../../azure-monitor/app/ip-addresses.md) zugelassen werden.
-   * Schreiben Sie eigenen Code zum regelmäßigen Testen Ihres internen Servers. Führen Sie den Code als Hintergrundprozess auf einem Testserver hinter Ihrer Firewall aus. Die Ergebnisse des Testvorgangs können an Application Insights gesendet werden, indem die [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)-API im Core SDK-Paket verwendet wird. Hierfür ist es erforderlich, dass Ihr Testserver Zugriff in ausgehender Richtung auf den Application Insights-Erfassungsendpunkt hat. Dies ist aber ein deutlich geringeres Sicherheitsrisiko als bei der Alternativlösung, bei der eingehende Anforderungen zugelassen werden. Die Ergebnisse werden auf den Blättern der Verfügbarkeitswebtests angezeigt. Die Funktionalität ist jedoch leicht vereinfacht gegenüber den Funktionen, die für über das Portal erstellte Tests zur Verfügung stehen. Benutzerdefinierte Verfügbarkeitstests werden auch als Verfügbarkeitsergebnisse in Analysen, Suchen und Metriken angezeigt.
+   * Konfigurieren Sie die Firewall so, dass eingehende Anforderungen von den [IP-Adressen der Webtest-Agents](./ip-addresses.md) zugelassen werden.
+   * Schreiben Sie eigenen Code zum regelmäßigen Testen Ihres internen Servers. Führen Sie den Code als Hintergrundprozess auf einem Testserver hinter Ihrer Firewall aus. Die Ergebnisse des Testvorgangs können an Application Insights gesendet werden, indem die [TrackAvailability()](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)-API im Core SDK-Paket verwendet wird. Hierfür ist es erforderlich, dass Ihr Testserver Zugriff in ausgehender Richtung auf den Application Insights-Erfassungsendpunkt hat. Dies ist aber ein deutlich geringeres Sicherheitsrisiko als bei der Alternativlösung, bei der eingehende Anforderungen zugelassen werden. Die Ergebnisse werden auf den Blättern der Verfügbarkeitswebtests angezeigt. Die Funktionalität ist jedoch leicht vereinfacht gegenüber den Funktionen, die für über das Portal erstellte Tests zur Verfügung stehen. Benutzerdefinierte Verfügbarkeitstests werden auch als Verfügbarkeitsergebnisse in Analysen, Suchen und Metriken angezeigt.
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>Fehler beim Hochladen eines mehrstufigen Webtests
 

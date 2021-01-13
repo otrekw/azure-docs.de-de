@@ -1,25 +1,14 @@
 ---
-title: 'Service Fabric-Clustersicherheit: Clientrollen | Microsoft-Dokumentation'
+title: 'Service Fabric-Clustersicherheit: Clientrollen'
 description: Dieser Artikel beschreibt die zwei Clientrollen und die für die Rollen bereitgestellten Berechtigungen.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: coreysa
-editor: ''
-ms.assetid: 7bc808d9-3609-46a1-ac12-b4f53bff98dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: ed000dc4be1ae45382d688d4a596ec745c69d0bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711157"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75451898"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>Rollenbasierte Zugriffssteuerung für Service Fabric-Clients
 Azure Service Fabric unterstützt zwei unterschiedliche Zugriffsberechtigungstypen für Clients, die mit einem Service Fabric-Cluster verbunden sind: Administrator und Benutzer. Zugriffssteuerung ermöglicht es dem Clusteradministrator, den Zugriff auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern einzuschränken, wodurch die Sicherheit des Clusters erhöht wird.  
@@ -52,9 +41,9 @@ Der Administrator-Zugriffssteuerungstyp hat vollen Zugriff auf die FabricClient-
 * **RecoverSystemPartitions**: Wiederherstellen von Systemdienstpartitionen                             
 
 ### <a name="cluster-operations"></a>Clustervorgänge
-* **ProvisionFabric**: MSI- und/oder Clustermanifestbereitstellung                             
+* **ProvisionFabric**: MSI- und/oder Clustermanifest-Bereitstellung                             
 * **UpgradeFabric**: Starten von Clusterupgrades                             
-* **UnprovisionFabric**: Aufhebung der MSI- und/oder Clustermanifestbereitstellung                         
+* **UnprovisionFabric**: Aufheben der MSI- und/oder Clustermanifest-Bereitstellung                         
 * **MoveNextFabricUpgradeDomain**: Fortsetzen von Clusterupgrades mit einer expliziten Updatedomäne                             
 * **ReportFabricUpgradeHealth**: Fortsetzen von Clusterupgrades beim aktuellen Aktualisierungsvorgang                             
 * **StartInfrastructureTask**: Starten von Infrastrukturaufgaben                             

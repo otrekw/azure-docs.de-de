@@ -1,30 +1,20 @@
 ---
 title: 'Übersicht über die Features: Azure Event Hubs | Microsoft-Dokumentation'
 description: Dieser Artikel enthält Details zu Features und Terminologie von Azure Event Hubs.
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: e0505960a413308283c4e67e33ec495eedd3b092
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.date: 06/23/2020
+ms.openlocfilehash: a38cf4ba6a06dc6e977f9ea168fcf67ce83ff5de
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827722"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339981"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Features und Terminologie in Azure Event Hubs
 
-Azure Event Hubs ist ein skalierbarer Ereignisverarbeitungsdienst, der große Mengen von Ereignissen und Daten mit kurzer Wartezeit und hoher Zuverlässigkeit erfasst und verarbeitet. Unter [Was ist Event Hubs?](event-hubs-what-is-event-hubs.md) finden Sie einen allgemeinen Überblick.
+Azure Event Hubs ist ein skalierbarer Ereignisverarbeitungsdienst, der große Mengen von Ereignissen und Daten mit kurzer Wartezeit und hoher Zuverlässigkeit erfasst und verarbeitet. Unter [Was ist Event Hubs?](./event-hubs-about.md) finden Sie einen allgemeinen Überblick.
 
-Dieser Artikel setzt auf den Informationen in der [Übersichtsartikel](event-hubs-what-is-event-hubs.md) auf und bietet technische und Implementierungsdetails zu Event Hubs-Komponenten und -Features.
+Dieser Artikel setzt auf den Informationen in der [Übersichtsartikel](./event-hubs-about.md) auf und bietet technische und Implementierungsdetails zu Event Hubs-Komponenten und -Features.
 
 ## <a name="namespace"></a>Namespace
 Ein Event Hubs-Namespace stellt einen eindeutigen Bereichscontainer bereit, auf den über den [vollqualifizierten Domänennamen](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) verwiesen wird, und in dem Sie mindestens einen Event Hub bzw. mindestens ein Kafka-Thema erstellen. 
@@ -43,11 +33,13 @@ Jede Entität, die Daten an einen Event Hub sendet, ist ein Ereigniserzeuger bzw
 
 ### <a name="publishing-an-event"></a>Veröffentlichen eines Ereignisses
 
-Sie können ein Ereignis über AMQP 1.0, Kafka 1.0 (und höher) oder HTTPS veröffentlichen. Event Hubs stellt [Clientbibliotheken und Klassen](event-hubs-dotnet-framework-api-overview.md) zum Veröffentlichen von Ereignissen für einen Event Hub von .NET-Clients bereit. Für andere Runtimes und Plattformen können beliebige AMQP 1.0-Clients verwendet werden, z.B. [Apache Qpid](https://qpid.apache.org/). Sie können Ereignisse einzeln oder als Batch veröffentlichen. Jede Veröffentlichung (Ereignisdateninstanz) ist auf 1 MB beschränkt, unabhängig davon, ob es sich um ein einzelnes Ereignis oder einen Batch handelt. Das Veröffentlichen von Ereignissen, die größer als dieser Schwellenwert sind, führt zu einem Fehler. Es ist eine bewährte Methode für Herausgeber, die Partitionen innerhalb des Event Hubs nicht zu beachten und nur einen *Partitionsschlüssel* (im nächsten Abschnitt beschrieben) oder die eigene Identität über das SAS-Token anzugeben.
+Sie können ein Ereignis über AMQP 1.0, Kafka 1.0 (und höher) oder HTTPS veröffentlichen. Der Event Hubs-Dienst stellt eine [REST-API](/rest/api/eventhub/) sowie [.NET](event-hubs-dotnet-standard-getstarted-send.md)-, [Java](event-hubs-java-get-started-send.md)-, [Python](event-hubs-python-get-started-send.md)-, [JavaScript](event-hubs-node-get-started-send.md)- und [Go](event-hubs-go-get-started-send.md)-Clientbibliotheken für die Veröffentlichung von Ereignissen in einem Event Hub bereit. Für andere Runtimes und Plattformen können beliebige AMQP 1.0-Clients verwendet werden, z.B. [Apache Qpid](https://qpid.apache.org/). 
 
-Die Wahl zwischen AMQP oder HTTPS ist auf das Verwendungsszenario bezogen. AMQP erfordert die Einrichtung eines persistenten bidirektionalen Sockets zusätzlich zu TLS (Transport Level Security) oder SSL/TLS. AMQP weist höhere Netzwerkkosten beim Initialisieren der Sitzung auf, HTTPS erfordert jedoch zusätzlichen SSL-Mehraufwand für jede Anfrage. AMQP verfügt über eine höhere Leistung für häufige Herausgeber.
+Sie können Ereignisse einzeln oder als Batch veröffentlichen. Jede Veröffentlichung (Ereignisdateninstanz) ist auf 1 MB beschränkt, unabhängig davon, ob es sich um ein einzelnes Ereignis oder einen Batch handelt. Das Veröffentlichen von Ereignissen, die größer als dieser Schwellenwert sind, führt zu einem Fehler. Es ist eine bewährte Methode für Herausgeber, die Partitionen innerhalb des Event Hubs nicht zu beachten und nur einen *Partitionsschlüssel* (im nächsten Abschnitt beschrieben) oder die eigene Identität über das SAS-Token anzugeben.
 
-![Event Hubs](./media/event-hubs-features/partition_keys.png)
+Die Wahl zwischen AMQP oder HTTPS ist auf das Verwendungsszenario bezogen. AMQP erfordert die Einrichtung eines persistenten bidirektionalen Sockets zusätzlich zu TLS (Transport Level Security) oder SSL/TLS. AMQP weist höhere Netzwerkkosten beim Initialisieren der Sitzung auf, HTTPS erfordert jedoch zusätzlichen TLS-Mehraufwand für jede Anforderung. AMQP verfügt über eine höhere Leistung für häufige Herausgeber.
+
+![Partitionsschlüssel](./media/event-hubs-features/partition_keys.png)
 
 Event Hubs stellt sicher, dass alle Ereignisse mit dem gleichen Partitionsschlüsselwert in der richtigen Reihenfolge und an die gleiche Partition übermittelt werden. Wenn Partitionsschlüssel mit Herausgeberrichtlinien verwendet werden, müssen die Identität des Herausgebers und der Wert des Partitionsschlüssels übereinstimmen. Andernfalls tritt ein Fehler auf.
 
@@ -56,12 +48,12 @@ Event Hubs stellt sicher, dass alle Ereignisse mit dem gleichen Partitionsschlü
 Event Hubs ermöglicht eine differenzierte Kontrolle über Ereignisherausgeber durch *Herausgeberrichtlinien*. Herausgeberrichtlinien sind Laufzeitfunktionen, mit denen große Mengen unabhängiger Herausgeber verwaltet werden können. Mit Herausgeberrichtlinien verwendet jeder Herausgeber einen eigenen eindeutigen Bezeichner für die Veröffentlichung von Ereignissen in einem Event Hub. Dabei kommt der folgende Mechanismus zum Einsatz:
 
 ```http
-//[my namespace].servicebus.windows.net/[event hub name]/publishers/[my publisher name]
+//<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
 ```
 
 Sie müssen Herausgebernamen nicht im Voraus erstellen, jedoch müssen diese mit dem SAS-Token übereinstimmen, das beim Veröffentlichen eines Ereignisses verwendet wird, um die Identitäten unabhängiger Herausgeber sicherzustellen. Bei Verwendung von Herausgeberrichtlinien wird der Wert **PartitionKey** auf den Herausgebernamen festgelegt. Diese Werte müssen übereinstimmen, damit alles ordnungsgemäß funktioniert.
 
-## <a name="capture"></a>Erfassen
+## <a name="capture"></a>Erfassung
 
 Mit [Event Hubs Capture](event-hubs-capture-overview.md) lassen sich die Streamingdaten automatisch in Event Hubs aufzeichnen und in einem Blob Storage-Konto oder einem Azure Data Lake-Dienstkonto speichern. Sie können Event Hubs Capture im Azure-Portal aktivieren und eine Mindestgröße sowie ein Mindestzeitfenster für die Aufzeichnung angeben. Mit Event Hubs Capture legen Sie ein eigenes Azure Blob Storage-Konto und einen Container bzw. ein Azure Data Lake-Dienstkonto fest, wovon eines zum Speichern der aufgezeichneten Daten verwendet wird. Die aufgezeichneten Daten werden im Apache Avro-Format geschrieben.
 
@@ -79,29 +71,30 @@ Eine Entität, die Ereignisdaten von einem Event Hub liest, ist ein *Ereigniscon
 
 ### <a name="consumer-groups"></a>Verbrauchergruppen
 
-Der Veröffentlichen-/Abonnieren-Mechanismus von Event Hubs erfolgt durch *Consumergruppen*. Eine Consumergruppe ist eine Ansicht (Status, Position oder Offset) des gesamten Event Hubs. Mithilfe von Consumergruppen können mehrere verarbeitende Anwendungen jeweils eine separate Ansicht des Ereignisstreams aufweisen und den Stream unabhängig voneinander in einem unabhängigen Tempo und mit eigenen Offsets lesen.
+Der Veröffentlichen-/Abonnieren-Mechanismus von Event Hubs erfolgt durch *Consumergruppen*. Eine Consumergruppe ist eine Ansicht (Status, Position oder Offset) des gesamten Event Hubs. Mithilfe von Consumergruppen können mehrere verarbeitende Anwendungen jeweils eine separate Ansicht des Ereignisdatenstroms aufweisen und den Datenstrom unabhängig voneinander in einem unabhängigen Tempo und mit eigenen Offsets lesen.
 
 In einer Streamverarbeitungsarchitektur entspricht jede Downstreamanwendung einer Consumergruppe. Wenn Sie Ereignisdaten in den langfristigen Speicher schreiben möchten, ist die entsprechende Speicherschreibanwendung eine Consumergruppe. Komplexe Ereignisverarbeitung kann von einer anderen separaten Consumergruppe ausgeführt werden. Sie können auf Partitionen nur über eine Consumergruppe zugreifen. In einem Event Hub gibt es immer eine Standardconsumergruppe, und Sie können bis zu 20 Consumergruppen für einen Event Hub auf Standardebene erstellen.
 
 Pro Consumergruppe sind maximal 5 gleichzeitige Leser in einer Partition zulässig. Jedoch **wird nur ein aktiver Empfänger in einer Partition pro Consumergruppe empfohlen**. Innerhalb einer einzelnen Partition erhält jeder Leser alle Nachrichten. Wenn Sie für die gleiche Partition über mehrere Leser verfügen, verarbeiten Sie doppelte Nachrichten. Sie müssen dies in Ihrem Code berücksichtigen, was möglicherweise nicht trivial ist. In einigen Szenarien ist dies jedoch ein gültiger Ansatz.
 
+Bei einigen Clients der Azure SDKs handelt es sich um intelligente Consumer-Agents, die im Detail sicherstellen, dass jede Partition über einen einzelnen Reader verfügt und dass alle Partitionen eines Event Hubs ausgelesen werden. Ihr Code muss daher nur noch die aus dem Event Hub gelesenen Ereignisse verarbeiten und kann viele Details der Partitionen ignorieren. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einer Partition](#connect-to-a-partition).
 
-Es folgen Beispiele für die URI-Konvention für Consumergruppen:
+Nachstehend finden Sie einige Beispiele für die URI-Konvention für Consumergruppen:
 
 ```http
-//[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #1]
-//[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #2]
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #1>
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #2>
 ```
 
-Die folgende Abbildung zeigt die Streamverarbeitungsarchitektur von Event Hubs:
+Die folgende Abbildung zeigt die Datenstromverarbeitungsarchitektur von Event Hubs:
 
-![Event Hubs](./media/event-hubs-features/event_hubs_architecture.png)
+![Event Hubs-Architektur](./media/event-hubs-features/event_hubs_architecture.png)
 
 ### <a name="stream-offsets"></a>Streamoffsets
 
 Ein *Offset* ist die Position eines Ereignisses innerhalb einer Partition. Sie können sich einen Offset als einen clientseitigen Zeiger vorstellen. Der Offset ist eine Nummerierung des Ereignisses in Byte. Dieser Offset ermöglicht es Ereignisconsumern (Lesern), einen Punkt im Ereignisstream anzugeben, ab dem Ereignisse gelesen werden sollen. Sie können den Offset als Zeitstempel oder als Offsetwert angeben. Es liegt in der Verantwortung jedes Consumers, seine eigenen Offsetwerte außerhalb des Event Hubs-Diensts zu speichern. Innerhalb einer Partition enthält jedes Ereignis einen Offset.
 
-![Event Hubs](./media/event-hubs-features/partition_offset.png)
+![Partitionsoffset](./media/event-hubs-features/partition_offset.png)
 
 ### <a name="checkpointing"></a>Setzen von Prüfpunkten
 
@@ -109,13 +102,25 @@ Ein *Offset* ist die Position eines Ereignisses innerhalb einer Partition. Sie k
 
 Wenn ein Leser die Verbindung zu eine Partition trennt, beginnt nach dem erneuten Herstellen der Verbindung das Lesen bei dem Prüfpunkt, der zuvor durch den letzten Leser dieser Partition in dieser Consumergruppe übermittelt wurde. Wenn der Leser verbunden ist, übergibt er diesen Offset an den Event Hub, um die Position für den nächsten Lesevorgang anzugeben. Auf diese Weise können mithilfe von Prüfpunkten Ereignisse von Downstreamanwendungen als abgeschlossen markiert werden. Darüber hinaus sorgen Prüfpunkte für Resilienz bei einem Failover zwischen Lesern, die auf unterschiedlichen Computern ausgeführt werden. Sie können ältere Daten zurückgeben, indem Sie einen niedrigeren Offset aus diesem Prüfpunktprozess angeben. Durch diesen Mechanismus ermöglicht das Setzen von Prüfpunkten Failoverstabilität und eine erneute Wiedergabe des Ereignisstreams.
 
+> [!NOTE]
+> Wenn Sie Azure Blob Storage als Prüfpunktspeicher in einer Umgebung verwenden, die eine andere Version des Storage Blob SDK unterstützt als diejenigen, die in der Regel in Azure verfügbar sind, müssen Sie Code verwenden, um die Version der Speicherdienst-API in die von dieser Umgebung unterstützte Version zu ändern. Wenn Sie z. B. [Event Hubs mit einer Azure Stack Hub-Version 2002](/azure-stack/user/event-hubs-overview) ausführen, ist die höchste verfügbare Version für den Speicherdienst Version 2017-11-09. In diesem Fall müssen Sie Code verwenden, um Version 2017-11-09 der Storage Service-API als Ziel zu nutzen. Ein Beispiel für die Verwendung einer bestimmten Storage-API-Version als Ziel finden Sie in den folgenden Beispielen auf GitHub: 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/). 
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) oder [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
+
 ### <a name="common-consumer-tasks"></a>Allgemeine Consumeraufgaben
 
 Alle Event Hubs-Consumer stellen eine Verbindung über eine AMQP 1.0-Sitzung (statusaktivierter bidirektionaler Kommunikationskanal) her. Jede Partition weist eine AMQP 1.0-Sitzung auf, die den Transport von Ereignissen nach Partition getrennt ermöglicht.
 
 #### <a name="connect-to-a-partition"></a>Herstellen einer Verbindung mit einer Partition
 
-Bei Verbindungen erfolgt die Koordination von Leserverbindungen und Partitionen oft mithilfe eines Leasingmechanismus. Auf diese Weise ist es möglich, dass jede Partition in einer Consumergruppe nur über einen aktive Leser verfügt. Das Setzen von Prüfpunkten, das Leasen und das Verwalten von Lesern werden durch Nutzung der [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)-Klasse für .NET-Clients vereinfacht. Der Ereignisprozessorhost ist ein intelligenter Consumer-Agent.
+Bei der Verbindungsherstellung zu Partitionen erfolgt die Koordination von Readerverbindungen zu bestimmten Partitionen oft mithilfe eines Leasingmechanismus. Auf diese Weise ist es möglich, dass jede Partition in einer Consumergruppe nur über einen aktiven Reader verfügt. Wenn Sie die Clients in den Event Hubs-SDKs verwenden, erleichtern Sie sich das Leasing und die Verwaltung von Readern sowie das Setzen von Prüfpunkten für diese, denn diese Clients verhalten sich wie intelligente Consumer-Agents. Dies sind:
+
+- [EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient) für .NET
+- [EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient) für Java
+- [EventHubConsumerClient](/python/api/azure-eventhub/azure.eventhub.aio.eventhubconsumerclient) für Python
+- [EventHubConsumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient) für JavaScript/TypeScript
 
 #### <a name="read-events"></a>Lesen von Ereignissen
 
@@ -134,11 +139,12 @@ Die Verwaltung des Offsets liegt in Ihrer Verantwortung.
 
 Weitere Informationen zu Event Hubs erhalten Sie unter den folgenden Links:
 
-* Erste Schritte mit einem [Event Hubs-Tutorial][Event Hubs tutorial]
+- Erste Schritte mit Event Hubs
+    - [.NET](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [Programmierleitfaden für Event Hubs](event-hubs-programming-guide.md)
 * [Verfügbarkeit und Konsistenz in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
-* [Event Hubs-Beispiele][]
-
-[Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
-[Event Hubs-Beispiele]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+* [Event Hubs-Beispiele](event-hubs-samples.md)

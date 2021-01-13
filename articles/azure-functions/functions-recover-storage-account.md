@@ -1,103 +1,96 @@
 ---
-title: Problembehandlung für „Die Azure Functions-Runtime ist nicht erreichbar“.
+title: 'Problembehandlung: Azure Functions-Runtime ist nicht erreichbar'
 description: Erfahren Sie, wie Sie Problembehandlung für ein ungültiges Speicherkonto durchführen.
-services: functions
-documentationcenter: ''
-author: alexkarcher-msft
-manager: cfowler
-editor: ''
-ms.service: azure-functions
-ms.workload: na
 ms.topic: article
 ms.date: 09/05/2018
-ms.author: alkarche
-ms.openlocfilehash: d5959acc7719e2b02d529bca8261bc09d5b93634
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0b6778a08bf04367f2a0ef10f7cd4fe29a52dd61
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085326"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579010"
 ---
-# <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Problembehandlung für „Die Functions-Runtime ist nicht erreichbar“.
+# <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Problembehandlung: „Azure Functions-Runtime ist nicht erreichbar“
 
+Dieser Artikel enthält Informationen zur Problembehandlung für die folgende Fehlerzeichenfolge, die im Azure-Portal angezeigt wird:
 
-## <a name="error-text"></a>Fehlertext
-Dieses Dokument ist für die Problembehandlung des folgenden Fehlers vorgesehen, wenn er im Functions-Portal angezeigt wird.
+> „Fehler: Die Azure Functions-Runtime ist nicht erreichbar. Klicken Sie hier, um Informationen zur Speicherkonfiguration zu erhalten.“
 
-`Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
+Dieses Problem tritt auf, wenn die Azure Functions-Runtime nicht gestartet werden kann. Der häufigste Grund für das Problem ist, dass für die Funktions-App kein Zugriff auf das Speicherkonto mehr besteht. Weitere Informationen finden Sie unter [Anforderungen an das Speicherkonto](./functions-create-function-app-portal.md#storage-account-requirements).
 
-### <a name="summary"></a>Zusammenfassung
-Dieses Problem tritt auf, wenn die Azure Functions Runtime nicht gestartet werden kann. Die häufigste Ursache für das Auftreten dieses Fehlers besteht darin, dass die Funktions-App den Zugriff auf ihr Speicherkonto verliert. [Lesen Sie hier mehr über die Anforderungen für Speicherkonten](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
+Der Rest dieses Artikels hilft Ihnen bei der Problembehandlung der folgenden Ursachen dieses Fehlers, einschließlich der Vorgehensweise zum Identifizieren und Auflösen jedes Falls.
 
-### <a name="troubleshooting"></a>Problembehandlung
-Wir gehen exemplarisch die vier häufigsten Fehlerfälle durch und zeigen, wie sie im Einzelnen bestimmt und behoben werden.
+## <a name="storage-account-was-deleted"></a>Speicherkonto wurde gelöscht
 
-1. Speicherkonto gelöscht
-1. Anwendungseinstellungen des Speicherkontos gelöscht
-1. Ungültige Anmeldeinformationen des Speicherkontos
-1. Kein Zugriff auf das Speicherkonto
-1. Tägliches Ausführungskontingent voll
+Jede Funktions-App benötigt für den Betrieb ein Speicherkonto. Wenn dieses Konto gelöscht wird, funktioniert Ihre Funktion nicht.
 
-## <a name="storage-account-deleted"></a>Speicherkonto gelöscht
+Schlagen Sie zunächst den Namen Ihres Speicherkontos in den Anwendungseinstellungen nach. Der Name Ihres Speicherkontos (eingeschlossen in eine Verbindungszeichenfolge) ist entweder in `AzureWebJobsStorage` oder in `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` enthalten. Weitere Informationen finden Sie unter [Referenz zu App-Einstellungen für Azure Functions](./functions-app-settings.md#azurewebjobsstorage).
 
-Jede Funktions-App benötigt für den Betrieb ein Speicherkonto. Wenn dieses Konto gelöscht wird, funktioniert Ihre Funktions-App nicht.
+Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, um zu ermitteln, ob es noch vorhanden ist. Wenn es gelöscht wurde, müssen Sie das Speicherkonto neu erstellen und Ihre Verbindungszeichenfolgen für den Speicher ersetzen. Ihr Funktionscode ist verloren gegangen, und Sie müssen ihn erneut bereitstellen.
 
-### <a name="how-to-find-your-storage-account"></a>Finden Ihres Speicherkontos
+## <a name="storage-account-application-settings-were-deleted"></a>Anwendungseinstellungen des Speicherkontos wurden gelöscht
 
-Schlagen Sie zunächst den Namen Ihres Speicherkontos in den Anwendungseinstellungen nach. Entweder `AzureWebJobsStorage` oder `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` enthält den Namen Ihres Speicherkontos, in eine Verbindungszeichenfolge eingeschlossen. Weitere spezifische Informationen finden Sie in der [Referenz zu Anwendungseinstellungen hier](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
-
-Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, um festzustellen, ob es noch vorhanden ist. Wenn es gelöscht wurde, müssen Sie ein neues Speicherkonto erstellen und Ihre Verbindungszeichenfolgen für den Speicher ersetzen. Ihr Funktionscode ist verloren gegangen, und Sie müssen ihn erneut bereitstellen.
-
-## <a name="storage-account-application-settings-deleted"></a>Anwendungseinstellungen des Speicherkontos gelöscht
-
-Wenn im vorhergegangenen Schritt keine Verbindungszeichenfolge für das Speicherkonto vorhanden war, ist sie wahrscheinlich gelöscht oder überschrieben worden. Das Löschen von App-Einstellungen erfolgt meistens bei der Verwendung von Bereitstellungsslots oder Azure Resource Manager-Skripts zum Festlegen von Anwendungseinstellungen.
+Wenn Sie im vorherigen Schritt keine Verbindungszeichenfolge für das Speicherkonto finden konnten, wurde sie wahrscheinlich gelöscht oder überschrieben. Das Löschen von Anwendungseinstellungen wird normalerweise durchgeführt, wenn Sie Bereitstellungsslots oder Azure Resource Manager-Skripts zum Festlegen von Anwendungseinstellungen verwenden.
 
 ### <a name="required-application-settings"></a>Erforderliche Anwendungseinstellungen
 
-* Erforderlich
-    * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
-* Für Verbrauchsplanfunktionen erforderlich
-    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
-    * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+* Erforderlich:
+    * [`AzureWebJobsStorage`](./functions-app-settings.md#azurewebjobsstorage)
+* Erforderlich für Funktionen des Verbrauchs- und Premium-Tarifs:
+    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](./functions-app-settings.md)
+    * [`WEBSITE_CONTENTSHARE`](./functions-app-settings.md)
 
-[Lesen Sie hier mehr über diese Anwendungseinstellungen](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+Weitere Informationen finden Sie unter [Referenz zu App-Einstellungen für Azure Functions](./functions-app-settings.md).
 
 ### <a name="guidance"></a>Anleitungen
 
-* Aktivieren Sie für keine dieser Einstellungen „Sloteinstellung“. Wenn Sie die Bereitstellungsslots tauschen, wird die Funktion beschädigt.
+* Aktivieren Sie für keine dieser Einstellungen „Sloteinstellung“. Wenn Sie die Bereitstellungsslots tauschen, wird die Funktions-App beschädigt.
 * Ändern Sie diese Einstellungen im Rahmen von automatisierten Bereitstellungen nicht.
-* Diese Einstellungen müssen zur Erstellungszeit angegeben werden und gültig sein. Eine automatisierte Bereitstellung, die diese Einstellungen nicht enthält, führt zu einer nicht funktionsfähigen App, selbst wenn die Einstellungen nach der Bereitstellung hinzugefügt werden.
+* Diese Einstellungen müssen zur Erstellungszeit angegeben werden und gültig sein. Eine automatisierte Bereitstellung, die diese Einstellungen nicht enthält, führt zu einer Funktions-App, die nicht läuft, selbst wenn die Einstellungen später hinzugefügt werden.
 
-## <a name="storage-account-credentials-invalid"></a>Ungültige Anmeldeinformationen des Speicherkontos
+## <a name="storage-account-credentials-are-invalid"></a>Anmeldeinformationen des Speicherkontos sind ungültig
 
-Die oben erwähnten Verbindungszeichenfolgen für Speicherkonten müssen aktualisiert werden, wenn Sie Speicherschlüssel neu erstellen. [Erfahren Sie hier mehr über die Verwaltung von Speicherschlüsseln](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
+Die oben erwähnten Verbindungszeichenfolgen für Speicherkonten müssen aktualisiert werden, wenn Sie Speicherschlüssel neu erstellen. Weitere Informationen zur Verwaltung von Speicherschlüsseln finden Sie unter [Erstellen eines Azure-Speicherkontos](../storage/common/storage-account-create.md).
 
-## <a name="storage-account-inaccessible"></a>Kein Zugriff auf das Speicherkonto
+## <a name="storage-account-is-inaccessible"></a>Kein Zugriff auf das Speicherkonto
 
-Ihre Funktions-App muss auf das Speicherkonto zugreifen können. Dies sind häufige Probleme, die den Zugriff einer Funktions-App auf ein Speicherkonto blockieren:
+Ihre Funktions-App muss auf das Speicherkonto zugreifen können. Häufige Probleme, die den Zugriff einer Funktions-App auf ein Speicherkonto blockieren, sind:
 
-* Funktions-Apps wurden in App Service-Umgebungen ohne ordnungsgemäße Netzwerkregeln bereitgestellt, die Datenverkehr zum und vom Speicherkonto zulassen
-* Die Firewall des Speicherkontos ist aktiviert und nicht für das Zulassen von Datenverkehr von und zu Funktions-Apps konfiguriert. [Lesen Sie hier mehr über die Firewallkonfiguration für Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* Die Funktions-App wurde in Ihrer App Service-Umgebung ohne die richtigen Netzwerkregeln bereitgestellt, die Datenverkehr zum und vom Speicherkonto zulassen.
 
-## <a name="daily-execution-quota-full"></a>Tägliches Ausführungskontingent voll
+* Die Firewall des Speicherkontos ist aktiviert und nicht für das Zulassen von Datenverkehr von und zu Functions konfiguriert. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-Wenn Sie ein tägliches Ausführungskontingent konfiguriert haben, wird Ihre Funktions-App vorübergehend deaktiviert, und viele der Portalsteuerelemente stehen nicht mehr zur Verfügung. 
+## <a name="daily-execution-quota-is-full"></a>Tägliches Ausführungskontingent erreicht
 
-* Um dies zu überprüfen, öffnen Sie „Plattformfeatures > Funktions-App-Einstellungen“ im Portal. Wenn Sie ein Kontingent überschritten haben, wird die folgende Meldung angezeigt
-    * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
-* Entfernen Sie das Kontingent, und starten Sie Ihre App neu, um das Problem zu beheben.
+Wenn Sie ein tägliches Ausführungskontingent konfiguriert haben, wird Ihre Funktions-App vorübergehend deaktiviert, was dazu führt, dass viele der Portalsteuerelemente nicht mehr zur Verfügung stehen. 
+
+Um das Kontingent im [Azure-Portal](https://portal.azure.com) zu überprüfen, wählen Sie in Ihrer Funktions-App die Option **Plattformfeatures** > **Funktions-App-Einstellungen** aus. Wenn Sie das von Ihnen festgelegte **tägliche Nutzungskontingent** überschreiten, wird die folgende Meldung angezeigt:
+
+  > „Für die Funktions-App wurde das Kontingent für die tägliche Nutzung erreicht, und die App wurde bis zum nächsten 24-Stunden-Zeitraum beendet.“
+
+Um dieses Problem zu beheben, entfernen oder erhöhen Sie das tägliche Kontingent, und starten Sie Ihre App anschließend neu. Andernfalls wird die Ausführung Ihrer App bis zum nächsten Tag blockiert.
+
+## <a name="app-is-behind-a-firewall"></a>App ist hinter einer Firewall
+
+Es kann einen der folgenden Gründe haben, warum Ihre Functions-Runtime ggf. nicht erreichbar ist:
+
+* Ihre Funktions-App wird in einer [App Service-Umgebung mit internem Lastenausgleich](../app-service/environment/create-ilb-ase.md) gehostet und ist für das Blockieren von eingehendem Datenverkehr aus dem Internet konfiguriert.
+
+* Ihre Funktions-App verfügt über [IP-Einschränkungen für eingehenden Datenverkehr](functions-networking-options.md#inbound-access-restrictions), für die der Internetzugriff blockiert ist. 
+
+Das Azure-Portal sendet Aufrufe direkt an die ausgeführte App, um die Liste mit den Funktionen abzurufen, und führt HTTP-Aufrufe des Kudu-Endpunkts durch. Die Einstellungen auf Plattformebene auf der Registerkarte **Plattformfeatures** sind weiterhin verfügbar.
+
+Überprüfen Sie Ihre Konfiguration der App Service-Umgebung wie folgt:
+1. Navigieren Sie zur Netzwerksicherheitsgruppe (NSG) des Subnetzes, in dem sich die App Service-Umgebung befindet.
+1. Überprüfen Sie die Eingangsregeln, um Datenverkehr über die öffentliche IP-Adresse des Computers zuzulassen, mit dem Sie auf die Anwendung zugreifen. 
+   
+Sie können das Portal auch auf einem Computer verwenden, der mit dem virtuellen Netzwerk verbunden ist, in dem Ihre App ausgeführt wird, oder auf einem virtuellen Computer, der in Ihrem virtuellen Netzwerk ausgeführt wird. 
+
+Weitere Informationen zur Konfiguration der Regeln für eingehenden Datenverkehr finden Sie unter [Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung](../app-service/environment/network-info.md#network-security-groups) im Abschnitt „Netzwerksicherheitsgruppen“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Jetzt, da Ihre Funktions-App wieder verfügbar und betriebsbereit ist, werfen Sie einen Blick in unsere Schnellstarts und Entwicklerreferenzen, um den Betrieb schnell wieder aufzunehmen!
+Weitere Informationen zur Überwachung Ihrer Funktions-Apps:
 
-* [Erstellen Sie Ihre erste Funktion in Azure Functions](functions-create-first-azure-function.md)  
-  Legen Sie direkt los, und erstellen Sie Ihre erste Funktion mithilfe der Azure Functions-Schnellstartanleitung. 
-* [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
-  Enthält weitere technische Informationen zur Azure Functions-Laufzeit sowie eine Referenz für das Programmieren von Funktionen sowie für das Festlegen von Triggern und Bindungen.
-* [Testen von Azure Functions](functions-test-a-function.md)  
-  Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
-* [How to scale Azure Functions (Skalieren von Azure Functions) (Skalieren von Azure Functions)](functions-scale.md)  
-  Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des Hostingplans „Verbrauchstarif“) und enthält Informationen zur Wahl des geeigneten Plans. 
-* [Was ist Azure App Service?](../app-service/overview.md)  
-  Azure Functions nutzt Azure App Service für Kernfunktionen wie Bereitstellungen, Umgebungsvariablen und Diagnosen. 
+> [!div class="nextstepaction"]
+> [Überwachen von Azure Functions](functions-monitoring.md)

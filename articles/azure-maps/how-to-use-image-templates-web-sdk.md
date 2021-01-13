@@ -1,30 +1,30 @@
 ---
-title: Bildvorlagen im Azure Maps Web SDK | Microsoft-Dokumentation
-description: Verwenden von Bildvorlagen im Azure Maps Web SDK
+title: Bildvorlagen im Azure Maps Web SDK | Microsoft Azure Maps
+description: Erfahren Sie, wie Sie Bildsymbole und mit Mustern gefüllte Polygone mit dem Azure Maps Web SDK zu Karten hinzufügen. Hier finden Sie die verfügbaren Vorlagen für Bilder und Füllmuster.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen
-ms.openlocfilehash: b9b1543ca37c636f4a82ff9ada3dfe212fa9b8d0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 5f455a1132a0f63e1ba3eb5d2a57a1f9bfa9a867
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976672"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895680"
 ---
 # <a name="how-to-use-image-templates"></a>Verwenden von Imagevorlagen
 
-Bilder können als HTML-Marker und verschiedene Ebenen innerhalb des Azure Maps Web SDK verwendet werden:
+Bilder können mit HTML-Markern und verschiedenen Ebenen innerhalb des Azure Maps Web SDK verwendet werden:
 
  - Symbolebenen können Punkte auf der Karte mit einem Bildsymbol rendern. Symbole können auch entlang eines Linienpfads dargestellt werden.
  - Polygon Ebenen können mit einem Füllmusterbild gerendert werden. 
  - HTML-Marker können Punkte mithilfe von Bildern und anderen HTML-Elementen rendern.
 
-Um eine gute Leistung bei Ebenen zu gewährleisten, müssen diese Bilder vor dem Rendern in die Sprite-Ressource des Kartenbilds geladen werden. Die [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions) der SymbolLayers laden standardmäßig ein paar Markerbilder in einigen wenigen Farben in das Kartenbild-Sprite vor. Diese und weitere Markerbilder sind als SVG-Vorlagen verfügbar und können verwendet werden, um Bilder mit benutzerdefinierten Skalen sowie einer kundenspezifischen Primär- und Sekundärfarbe zu erstellen. Insgesamt stehen 42 Bildvorlagen, 27 Symbole und 15 Polygonfüllmuster zur Verfügung.
+Um eine gute Leistung bei Ebenen zu gewährleisten, laden Sie die Bilder vor dem Rendern in die Sprite-Ressource des Kartenbilds. Die [IconOptions](/javascript/api/azure-maps-control/atlas.iconoptions) des SymbolLayers laden standardmäßig ein paar Markerbilder in einigen wenigen Farben in das Kartenbild-Sprite vor. Diese und weitere Markerbilder sind als SVG-Vorlagen verfügbar. Sie können zum Erstellen von Images mit benutzerdefinierten Skalen verwendet oder als primäre und sekundäre Farbe des Kunden verwendet werden. Insgesamt werden 42 Bildvorlagen bereitgestellt: 27 Zeichensymbole und 15 Füllmuster für Polygone.
 
 Mithilfe der `map.imageSprite.createFromTemplate` -Funktion können Bildvorlagen zu den Sprite-Ressourcen des Kartenbilds hinzugefügt werden. Diese Funktion ermöglicht die Übergabe von bis zu fünf Parametern.
 
@@ -32,11 +32,11 @@ Mithilfe der `map.imageSprite.createFromTemplate` -Funktion können Bildvorlagen
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-Dabei ist `id` ein von Ihnen erstellter eindeutiger Bezeichner, der dem Bild zugeordnet wird, wenn es dem Kartenbild-Sprite hinzugefügt wird. Verwenden Sie diesen Bezeichner in den Ebenen, um anzugeben, welche Bildressource gerendert werden soll. Der `templateName` gibt an, welche Bildvorlage verwendet werden soll. Die Option `color` legt die Primärfarbe des Bildes und die Optionen `secondaryColor` die Sekundärfarbe fest. Die Option `scale` skaliert die Bildvorlage, bevor sie auf den Bild-Sprite angewendet wird. Wenn das Bild auf den Bild-Sprite angewendet wird, wird es in ein PNG umgewandelt. Um ein gestochen scharfes Rendering zu gewährleisten, ist es besser, die Bildvorlage vor dem Hinzufügen zum Sprite zu vergrößern, als sie in einer Ebene zu vergrößern.
+Die `id` ist ein eindeutiger Bezeichner, den Sie erstellen. Die `id` wird dem Bild zugewiesen, wenn es dem Kartenbild-Sprite hinzugefügt wird. Verwenden Sie diesen Bezeichner in den Ebenen, um anzugeben, welche Bildressource gerendert werden soll. Der `templateName` gibt an, welche Bildvorlage verwendet werden soll. Die Option `color` legt die Primärfarbe des Bildes und die Optionen `secondaryColor` die Sekundärfarbe fest. Die Option `scale` skaliert die Bildvorlage, bevor sie auf den Bild-Sprite angewendet wird. Wenn das Bild auf den Bild-Sprite angewendet wird, wird es in ein PNG umgewandelt. Um ein gestochen scharfes Rendering zu gewährleisten, ist es besser, die Bildvorlage vor dem Hinzufügen zum Sprite zu vergrößern, als sie in einer Ebene zu vergrößern.
 
-Diese Funktion lädt das Bild asynchron in den Bild-Sprite und gibt damit eine Zusage zurück, dass Sie warten können, bis diese Funktion abgeschlossen ist.
+Diese Funktion lädt das Bild asynchron in den Bild-Sprite. Daher wird eine Zusage zurückgegeben, dass Sie auf den Abschluss dieser Funktion warten können.
 
-Der folgende Code zeigt, wie Sie ein Bild aus einer der integrierten Vorlagen erstellen und es mit einer Symbolebene verwenden können.
+Der folgende Code zeigt, wie Sie ein Bild aus einer der integrierten Vorlagen erstellen und mit einer Symbolebene verwenden können.
 
 ```javascript
 map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#fff').then(function () {
@@ -58,7 +58,7 @@ Das folgende Beispiel rendert eine Symbolebene mit der Bildvorlage `marker-flat`
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Symbolebene mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Symbolebene mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>Symbolebene mit integrierter Symbolvorlage</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -70,7 +70,7 @@ Das folgende Beispiel rendert eine rosafarbene Linie auf der Karte und verwendet
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Linienebene mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Linienebene mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>Linienebene mit integrierter Symbolvorlage</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -85,7 +85,7 @@ Das folgende Beispiel rendert eine Polygonebene mit der Bildvorlage `dot` mit ei
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Füllpolygon mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Füllpolygon mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>Füllpolygon mit integrierter Symbolvorlage</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -100,15 +100,26 @@ Das folgende Beispiel verwendet die `marker-arrow`-Vorlage mit einer roten Prim�
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="HTML-Marker mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="HTML-Marker mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-Marker mit integrierter Symbolvorlage</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+
+> [!TIP]
+> Bildvorlagen können auch außerhalb der Karte verwendet werden. Die getImageTemplate-Funktion gibt eine SVG-Zeichenfolge mit Platzhaltern zurück: `{color}`, `{secondaryColor}``{scale}`, `{text}`. Ersetzen Sie diese Platzhalterwerte, um eine gültige SVG-Zeichenfolge zu erstellen. Sie können dann entweder die SVG-Zeichenfolge direkt zum HTML-DOM hinzufügen oder sie in einen Daten-URI konvertieren und in ein Bildtag einfügen. Beispiel:
+> ```JavaScript
+> //Retrieve an SVG template and replace the placeholder values.
+> var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
+>
+> //Convert to data URI for use in image tags.
+> var dataUri = 'data:image/svg+xml;base64,' + btoa(svg);
+> ```
+
 ## <a name="create-custom-reusable-templates"></a>Erstellen benutzerdefinierter wiederverwendbarer Vorlagen
 
-Wenn Ihre Anwendung das gleiche Symbol mit unterschiedlichen Symbolen verwendet oder wenn Sie ein Modul erstellen, das zusätzliche Bildvorlagen hinzufügt, können Sie diese Symbole ganz einfach aus dem Azure Maps Web SDK hinzufügen und abrufen, indem Sie die folgenden statischen Funktionen im `atlas`-Namespace verwenden.
+Wenn Ihre Anwendung das gleiche Symbol mit unterschiedlichen Symbolen verwendet, oder wenn Sie ein Modul erstellen, das zusätzliche Bildvorlagen hinzufügt, können Sie diese Symbole ganz einfach aus dem Azure Maps Web SDK hinzufügen und abrufen. Verwenden Sie die folgenden statischen Funktionen für den `atlas`-Namespace.
 
-| NAME | Rückgabetyp | BESCHREIBUNG | 
+| Name | Rückgabetyp | BESCHREIBUNG | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Fügt dem Atlas-Namespace eine benutzerdefinierte SVG-Bildvorlage hinzu. |
 |  `getImageTemplate(templateName: string, scale?: number)`| Zeichenfolge | Ruft eine SVG-Vorlage anhand des Namens ab. |
@@ -123,58 +134,370 @@ SVG-Bildvorlagen unterstützen die folgenden Platzhalterwerte:
 | `{scale}` | Das SVG-Bild wird in ein PNG-Bild konvertiert, wenn es dem Kartenbild-Sprite hinzugefügt wird. Dieser Platzhalter kann verwendet werden, um eine Vorlage vor der Konvertierung zu skalieren, um sicherzustellen, dass sie deutlich gerendert wird. | 
 | `{text}` | Die Position, an der Text gerendert werden soll, wenn er mit einem HTML-Marker verwendet wird. |
 
-Das folgende Beispiel zeigt, wie Sie eine SVG-Vorlage als wiederverwendbare Symbolvorlage in das Azure Maps Web SDK hinzufügen können. 
+Das folgende Beispiel zeigt, wie Sie eine SVG-Vorlage als wiederverwendbare Symbolvorlage dem Azure Maps Web SDK hinzufügen können. 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Hinzufügen einer benutzerdefinierten Symbolvorlage zum Atlas-Namespace" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Hinzufügen einer benutzerdefinierten Symbolvorlage zum Atlas-Namespace" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>Hinzufügen einer Symbolvorlage zum Atlas-Namespace</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="list-of-image-templates"></a>Liste der Bildvorlagen
 
-Die folgende Tabelle listet alle derzeit im Azure Maps Web SDK verfügbaren Bildvorlagen mit dem Vorlagennamen über jedem Bild auf. Standardmäßig ist die Primärfarbe Blau und die Sekundärfarbe Weiß. Um die Sekundärfarbe auf weißem Hintergrund besser sichtbar zu machen, sind die folgenden Bilder mit der Sekundärfarbe Schwarz versehen.
+Die Tabelle listet alle derzeit im Azure Maps Web SDK verfügbaren Bildvorlagen auf. Der Vorlagenname steht oberhalb jedes Bilds. Standardmäßig ist die Primärfarbe Blau und die Sekundärfarbe Weiß. Um die Sekundärfarbe auf weißem Hintergrund besser sichtbar zu machen, sind die folgenden Bilder mit der Sekundärfarbe Schwarz versehen.
 
 **Symbolvorlagen**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| Marker | Marker-Dick | Marker-Kreismarker | Marker-Flach |
-|![Markersymbol](./media/image-templates/marker.png)|![Symbol „Marker-Dick“](./media/image-templates/marker-thick.png)|![Symbol „Marker-Kreis“](./media/image-templates/marker-circle.png)|![Symbol „Marker-Flach“](./media/image-templates/marker-flat.png)|
-||||
-| Marker-Quadrat | Marker-Quadrat-Cluster | Marker-Pfeil | Marker-Ball-Pin | 
-|![Symbol „Marker-Quadrat“](./media/image-templates/marker-square.png)|![Symbol „Marker-Quadrat-Cluster“](./media/image-templates/marker-square-cluster.png)|![Symbol „Marker-Pfeil“](./media/image-templates/marker-arrow.png)|![Symbol „Marker-Ball-Pin“](./media/image-templates/marker-ball-pin.png)|
-||||
-| Marker-quadratisch-gerundet | Marker-Quadrat-gerundet-Cluster | Flagge | Flagge-Dreieck |
-| ![Symbol „Marker-quadratisch-gerundet“](./media/image-templates/marker-square-rounded.png) | ![Symbol „Marker-Quadrat-gerundet-Cluster“](./media/image-templates/marker-square-rounded-cluster.png) | ![Symbol „Flagge“](./media/image-templates/flag.png) | ![Symbol „Flagge-Dreieck“](./media/image-templates/flag-triangle.png) |
-||||
-| Dreieck | Dreieck-dick | Dreieck-Pfeil-hoch | Dreieck-Pfeil-links |
-| ![Symbol „Dreieck“](./media/image-templates/triangle.png) | ![Symbol „Dreieck-dick“](./media/image-templates/triangle-thick.png) | ![Symbol „Dreieck-Pfeil-hoch“](./media/image-templates/triangle-arrow-up.png) | ![Symbol „Dreieck-Pfeil-links“](./media/image-templates/triangle-arrow-left.png) |
-||||
-| Hexagon | Hexagon-dick | Hexagon-gerundet | Hexagon-gerundet-dick |
-| ![Symbol „Hexagon“](./media/image-templates/hexagon.png) | ![Symbol „Hexagon-dick“](./media/image-templates/hexagon-thick.png) | ![Symbol „Hexagon-gerundet“](./media/image-templates/hexagon-rounded.png) | ![Symbol „Hexagon-gerundet-dick“](./media/image-templates/hexagon-rounded-thick.png) |
-||||
-| Pin | Pin-rund | Gerundetes Quadrat | Gerundetes Quadrat-dick |
-| ![Symbol „Pin“](./media/image-templates/pin.png) | ![Symbol „Pin-rund“](./media/image-templates/pin-round.png) | ![Symbol „Gerundetes Quadrat“](./media/image-templates/rounded-square.png) | ![Symbol „Gerundetes Quadrat-dick“](./media/image-templates/rounded-square-thick.png) |
-||||
-| Pfeil-hoch | Pfeil-hoch-dünn | Auto ||
-| ![Symbol „Pfeil-hoch“](./media/image-templates/arrow-up.png) | ![Symbol „Pfeil-hoch-dünn“](./media/image-templates/arrow-up-thin.png) | ![Auto-Symbol](./media/image-templates/car.png) | |
+:::row:::
+   :::column span="":::
+      Marker
+   :::column-end:::
+   :::column span="":::
+      Marker-Dick
+   :::column-end:::
+   :::column span="":::
+      Marker-Kreismarker
+   :::column-end:::
+   :::column span="":::
+      Marker-Flach
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Markersymbol](./media/image-templates/marker.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Marker-Dick“](./media/image-templates/marker-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Marker-Kreis“](./media/image-templates/marker-circle.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Marker-Flach“](./media/image-templates/marker-flat.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Marker-Quadrat
+   :::column-end:::
+   :::column span="":::
+      Marker-Quadrat-Cluster
+   :::column-end:::
+   :::column span="":::
+      Marker-Pfeil
+   :::column-end:::
+   :::column span="":::
+      Marker-Ball-Pin
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Marker-Quadrat“](./media/image-templates/marker-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Marker-Quadrat-Cluster“](./media/image-templates/marker-square-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Marker-Pfeil“](./media/image-templates/marker-arrow.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Marker-Ball-Pin“](./media/image-templates/marker-ball-pin.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Marker-quadratisch-gerundet
+   :::column-end:::
+   :::column span="":::
+      Marker-Quadrat-gerundet-Cluster
+   :::column-end:::
+   :::column span="":::
+      Flag
+   :::column-end:::
+   :::column span="":::
+      Flagge-Dreieck
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Marker-quadratisch-gerundet“](./media/image-templates/marker-square-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Marker-Quadrat-gerundet-Cluster“](./media/image-templates/marker-square-rounded-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Flagge“](./media/image-templates/flag.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Flagge-Dreieck“](./media/image-templates/flag-triangle.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Dreieck
+   :::column-end:::
+   :::column span="":::
+      Dreieck-dick
+   :::column-end:::
+   :::column span="":::
+      Dreieck-Pfeil-hoch
+   :::column-end:::
+   :::column span="":::
+      Dreieck-Pfeil-links
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Dreieck“](./media/image-templates/triangle.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Dreieck-dick“](./media/image-templates/triangle-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Dreieck-Pfeil-hoch“](./media/image-templates/triangle-arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Dreieck-Pfeil-links“](./media/image-templates/triangle-arrow-left.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Hexagon
+   :::column-end:::
+   :::column span="":::
+      Hexagon-dick
+   :::column-end:::
+   :::column span="":::
+      Hexagon-gerundet
+   :::column-end:::
+   :::column span="":::
+      Hexagon-gerundet-dick
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Hexagon“](./media/image-templates/hexagon.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Hexagon-dick“](./media/image-templates/hexagon-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Hexagon-gerundet“](./media/image-templates/hexagon-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Hexagon-gerundet-dick“](./media/image-templates/hexagon-rounded-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Pin
+   :::column-end:::
+   :::column span="":::
+      Pin-rund
+   :::column-end:::
+   :::column span="":::
+      Gerundetes Quadrat
+   :::column-end:::
+   :::column span="":::
+      Gerundetes Quadrat-dick
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Pin“](./media/image-templates/pin.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Pin-rund“](./media/image-templates/pin-round.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Gerundetes Quadrat“](./media/image-templates/rounded-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Gerundetes Quadrat-dick“](./media/image-templates/rounded-square-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Pfeil-hoch
+   :::column-end:::
+   :::column span="":::
+      Pfeil-hoch-dünn
+   :::column-end:::
+   :::column span="":::
+      Auto
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Pfeil-hoch“](./media/image-templates/arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Pfeil-hoch-dünn“](./media/image-templates/arrow-up-thin.png)
+   :::column-end:::
+   :::column span="":::
+      ![Auto-Symbol](./media/image-templates/car.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+
 
 **Vorlagen für Polygonfüllmuster**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| Schachbrettmuster | Schachbrettmuster-gedreht | Kreise | Kreise-Abstand |
-| ![Symbol „Schachbrettmuster“](./media/image-templates/checker.png) | ![Symbol „Schachbrettmuster-gedreht“](./media/image-templates/checker-rotated.png) | ![Symbol „Kreise“](./media/image-templates/circles.png) | ![Symbol „Kreise-Abstand“](./media/image-templates/circles-spaced.png) |
-|||||
-| Diagonal-Linien-hoch | Diagonal-Linien-runter | Diagonal-Streifen-hoch | Diagonal-Streifen-runter |
-| ![Symbol „Diagonal-Linien-hoch“](./media/image-templates/diagonal-lines-up.png) | ![Symbol „Diagonal-Linien-runter“](./media/image-templates/diagonal-lines-down.png) | ![Symbol „Diagonal-Streifen-hoch“](./media/image-templates/diagonal-stripes-up.png) | ![Symbol „Diagonal-Streifen-runter-runter“](./media/image-templates/diagonal-stripes-down.png) |
-|||||
-| Rasterlinien | Gedrehte Rasterlinien | Gedrehte Rasterstreifen | Füllung Kreuz |
-| ![Symbol „Rasterlinien“](./media/image-templates/grid-lines.png) | ![Symbol „Gedrehte Rasterlinien“](./media/image-templates/rotated-grid-lines.png) | ![Symbol „Gedrehte Rasterstreifen“](./media/image-templates/rotated-grid-stripes.png) | ![Symbol „Füllung Kreuz“](./media/image-templates/x-fill.png) |
-|||||
-| Zickzack | Zickzack-vertikal | Punkte |  |
-| ![Symbol „Zickzack“](./media/image-templates/zig-zag.png) | ![Symbol „Zickzack-vertikal“](./media/image-templates/zig-zag-vertical.png) | ![Symbol „Punkte“](./media/image-templates/dots.png) | |
+:::row:::
+   :::column span="":::
+      Schachbrettmuster
+   :::column-end:::
+   :::column span="":::
+      Schachbrettmuster-gedreht
+   :::column-end:::
+   :::column span="":::
+      Kreise
+   :::column-end:::
+   :::column span="":::
+      Kreise-Abstand
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Schachbrettmuster“](./media/image-templates/checker.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Schachbrettmuster-gedreht“](./media/image-templates/checker-rotated.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Kreise“](./media/image-templates/circles.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Kreise-Abstand“](./media/image-templates/circles-spaced.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Diagonal-Linien-hoch
+   :::column-end:::
+   :::column span="":::
+      Diagonal-Linien-runter
+   :::column-end:::
+   :::column span="":::
+      Diagonal-Streifen-hoch
+   :::column-end:::
+   :::column span="":::
+      Diagonal-Streifen-runter
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Diagonal-Linien-hoch“](./media/image-templates/diagonal-lines-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Diagonal-Linien-runter“](./media/image-templates/diagonal-lines-down.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Diagonal-Streifen-hoch“](./media/image-templates/diagonal-stripes-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Diagonal-Streifen-runter-runter“](./media/image-templates/diagonal-stripes-down.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Rasterlinien
+   :::column-end:::
+   :::column span="":::
+      Gedrehte Rasterlinien
+   :::column-end:::
+   :::column span="":::
+      Gedrehte Rasterstreifen
+   :::column-end:::
+   :::column span="":::
+      Füllung Kreuz
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Rasterlinien“](./media/image-templates/grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Gedrehte Rasterlinien“](./media/image-templates/rotated-grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Gedrehte Rasterstreifen“](./media/image-templates/rotated-grid-stripes.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Füllung Kreuz“](./media/image-templates/x-fill.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Zickzack
+   :::column-end:::
+   :::column span="":::
+      Zickzack-vertikal
+   :::column-end:::
+   :::column span="":::
+      Punkte
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Zickzack“](./media/image-templates/zig-zag.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Zickzack-vertikal“](./media/image-templates/zig-zag-vertical.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Punkte“](./media/image-templates/dots.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+<br>
+
+**Vorab geladene Bildsymbole**
+
+Die Karte lädt eine Reihe von Symbolen mithilfe der Vorlagen `marker`, `pin` und `pin-round` in das Kartenbild-Sprite. Diese Symbolnamen und ihre Farbwerte sind in der folgenden Tabelle aufgeführt.
+
+| Symbolname | color | secondaryColor |
+|-----------|-------|----------------|
+| `marker-black` | `#231f20` | `#ffffff` |
+| `marker-blue` | `#1a73aa` | `#ffffff` |
+| `marker-darkblue` | `#003963` | `#ffffff` |
+| `marker-red` | `#ef4c4c` | `#ffffff` |
+| `marker-yellow` | `#f2c851` | `#ffffff` |
+| `pin-blue` | `#2072b8` | `#ffffff` |
+| `pin-darkblue` | `#003963` | `#ffffff` |
+| `pin-red` | `#ef4c4c` | `#ffffff` |
+| `pin-round-blue` | `#2072b8` | `#ffffff` |
+| `pin-round-darkblue` | `#003963` | `#ffffff` |
+| `pin-round-red` | `#ef4c4c` | `#ffffff` |
+
 
 ## <a name="try-it-now-tool"></a>Tool „Jetzt testen“
 
@@ -182,7 +505,7 @@ Mit dem folgenden Tool können Sie die verschiedenen integrierten Bildvorlagen a
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Optionen für Symbolvorlagen" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Optionen für Symbolvorlagen" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>Symbolvorlagenoptionen</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -191,10 +514,10 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 
 > [!div class="nextstepaction"]
-> [ImageSpriteManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagespritemanager)
+> [ImageSpriteManager](/javascript/api/azure-maps-control/atlas.imagespritemanager)
 
 > [!div class="nextstepaction"]
-> [Atlas-Namespace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-maps-typescript-latest#functions
+> [Atlas-Namespace](/javascript/api/azure-maps-control/atlas#functions
 )
 
 In den folgenden Artikeln finden Sie weitere Codebeispiele, in denen Bildvorlagen verwendet werden können:

@@ -1,40 +1,38 @@
 ---
-title: Erneutes Generieren von HTTP-Headern in Azure Application Gateway
+title: Erstellen eines Azure Application Gateways und nochmaliges Generieren eines HTTP-Headers
 description: Dieser Artikel enthält Informationen zum Erstellen eines Azure Application Gateways und zum erneuten Generieren eines HTTP-Headers mithilfe von Azure PowerShell.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 4/30/2019
+ms.topic: how-to
+ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: ba74bb8970949a15425a66f7cd4475749fd183df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a1a122eb7b5b0abcc47cd321c74267a1a4aecda
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64947088"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396854"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Erstellen eines Application Gateways und erneutes Generieren eines HTTP-Headers
 
-Sie können Azure PowerShell verwenden, wenn Sie das neue [zonenredundante Anwendungs-SKU-Gateway mit automatischer Skalierung](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) erstellen, um [Regeln zum erneuten Generieren einer HTTP-Anforderung und eines Antwort-Headers](rewrite-http-headers.md) zu konfigurieren.
+Sie können Azure PowerShell verwenden, wenn Sie das neue [zonenredundante Anwendungs-SKU-Gateway mit automatischer Skalierung](./application-gateway-autoscaling-zone-redundant.md) erstellen, um [Regeln zum erneuten Generieren einer HTTP-Anforderung und eines Antwort-Headers](rewrite-http-headers.md) zu konfigurieren.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
->
-> * Erstellen eines virtuellen Netzwerks mit automatischer Skalierung
-> * Erstellen einer reservierten öffentlichen IP-Adresse
-> * Einrichten der Anwendungsgatewayinfrastruktur
-> * Festlegen Ihrer Regelkonfiguration für das erneute Generieren eines HTTP-Headers
-> * Konfigurieren der automatischen Skalierung
-> * Erstellen des Anwendungsgateways
-> * Testen des Anwendungsgateways
+* Erstellen eines virtuellen Netzwerks mit automatischer Skalierung
+* Erstellen einer reservierten öffentlichen IP-Adresse
+* Einrichten der Anwendungsgatewayinfrastruktur
+* Festlegen Ihrer Regelkonfiguration für das erneute Generieren eines HTTP-Headers
+* Konfigurieren der automatischen Skalierung
+* Erstellen des Anwendungsgateways
+* Testen des Anwendungsgateways
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für diesem Artikel müssen Sie Azure PowerShell lokal ausführen. Sie müssen Version 1.0.0 oder höher des Az-Moduls installiert haben. Führen Sie `Import-Module Az` und dann `Get-Module Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzAccount` aus, um eine Verbindung mit Azure zu erstellen.
+Für diesem Artikel müssen Sie Azure PowerShell lokal ausführen. Sie müssen Version 1.0.0 oder höher des Az-Moduls installiert haben. Führen Sie `Import-Module Az` und dann `Get-Module Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzAccount` aus, um eine Verbindung mit Azure zu erstellen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -112,7 +110,7 @@ Konfigurieren Sie die neuen Objekte, die benötigt werden, um die HTTP-Header ne
 - **RequestHeaderConfiguration:** Dieses Objekt wird dazu verwendet, die Anforderungsheaderfelder zu bestimmen, die Sie neu generieren möchten, sowie den neuen Wert, den die ursprünglichen Header benötigen, um neu generiert werden zu können.
 - **ResponseHeaderConfiguration:** Dieses Objekt wird dazu verwendet, die Antwortheaderfelder, die Sie neu generieren möchten, und den neuen Wert zu bestimmen, den die ursprünglichen Header benötigen, um neu generiert werden zu können.
 - **ActionSet:** Dieses Objekt beinhaltet die Konfigurationen der Anforderungs- und Antwortheader, die oben bestimmt wurden. 
-- **RewriteRule:** Dieses Objekt beinhaltet alle *actionSets*, die oben bestimmt wurden. 
+- **RewriteRule:** Dieses Objekt beinhaltet alle *actionSets* , die oben bestimmt wurden. 
 - **RewriteRuleSet:** Dieses Objekt beinhaltet alle *rewriteRules* und muss an die Anforderungsroutingregel angefügt werden (Standard oder pfadbasiert).
 
    ```azurepowershell
@@ -136,13 +134,13 @@ $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule1" -RuleType bas
 
 Jetzt können Sie die Konfiguration der automatischen Skalierung für das Anwendungsgateway angeben. Zwei Konfigurationstypen werden für die automatische Skalierung unterstützt:
 
-* **Modus mit fester Kapazität**: In diesem Modus kann die Application Gateway-Instanz keine automatische Skalierung vornehmen. Sie wird mit einer festen Kapazität für die Skalierungseinheit ausgeführt.
+* **Modus mit fester Kapazität** : In diesem Modus kann die Application Gateway-Instanz keine automatische Skalierung vornehmen. Sie wird mit einer festen Kapazität für die Skalierungseinheit ausgeführt.
 
    ```azurepowershell
    $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
    ```
 
-* **Modus mit automatischer Skalierung**: In diesem Modus nimmt das Anwendungsgateway basierend auf dem Muster des Anwendungsdatenverkehrs eine automatische Skalierung vor.
+* **Modus mit automatischer Skalierung** : In diesem Modus nimmt das Anwendungsgateway basierend auf dem Muster des Anwendungsdatenverkehrs eine automatische Skalierung vor.
 
    ```azurepowershell
    $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 2

@@ -1,21 +1,23 @@
 ---
 title: SQL-Konstanten in Azure Cosmos DB
-description: Erfahren Sie mehr über SQL-Konstanten in Azure Cosmos DB
+description: Erfahren Sie, wie die SQL-Abfragekonstanten in Azure Cosmos DB verwendet werden, um einen bestimmten Datenwert darzustellen.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: 41cafeb76b7b9481a78ffcff179676d0aa7bf6fd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002048"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339200"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>SQL-Abfragekonstanten in Azure Cosmos DB  
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
- Eine Konstante, auch bekannt als Literal oder skalarer Wert, ist ein Symbol, das einen bestimmten Datenwert darstellt. Das Format einer Konstante hängt vom Datentyp des Werts ab, den sie darstellt.  
+ Eine Konstante, gelegentlich auch als Literal- oder Skalarwert bezeichnet, ist ein Symbol, das einen bestimmten Datenwert repräsentiert. Das Format einer Konstante ist abhängig vom Datentyp des Werts, den sie repräsentiert.  
   
  **Unterstützte skalare Datentypen:**  
   
@@ -23,13 +25,13 @@ ms.locfileid: "71002048"
 |-|-|  
 |**Undefiniert**|Einzelner Wert: **undefiniert**|  
 |**NULL**|Einzelner Wert: **NULL**|  
-|**Boolescher Wert**|Werte: **false**, **true**.|  
+|**Boolescher Wert**|Werte: **false** , **true**.|  
 |**Number**|Eine Gleitkommazahl mit doppelter Genauigkeit, IEEE 754-Standard.|  
 |**String**|Eine Sequenz von null (0) oder mehr Unicode-Zeichen. Zeichenfolgen müssen in einfache oder doppelte Anführungszeichen eingeschlossen sein.|  
 |**Array**|Eine Sequenz von null (0) oder mehr Elementen. Jedes Element kann einen Wert eines beliebigen skalaren Datentyps mit Ausnahme von **Undefiniert** aufweisen.|  
 |**Object**|Ungeordneter Satz von null (0) oder mehr Name/Wert-Paaren. Der Name ist eine Unicode-Zeichenfolge, der Wert kann einen beliebigen skalaren Datentyp mit Ausnahme von **Undefiniert** aufweisen.|  
   
-## <a name="bk_syntax"></a>Syntax
+## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
   
 ```sql  
 <constant> ::=  
@@ -59,7 +61,7 @@ ms.locfileid: "71002048"
   
 ```  
   
-##  <a name="bk_arguments"></a>Argumente
+##  <a name="arguments"></a><a name="bk_arguments"></a>Argumente
   
 * `<undefined_constant>; Undefined`  
   
@@ -67,7 +69,7 @@ ms.locfileid: "71002048"
   
 * `<null_constant>; null`  
   
-  Stellt einen **NULL**-Wert des Typs **NULL** dar.  
+  Stellt einen **NULL** -Wert des Typs **NULL** dar.  
   
 * `<boolean_constant>`  
   
@@ -75,11 +77,11 @@ ms.locfileid: "71002048"
   
 * `false`  
   
-  Stellt einen **false**-Wert des Typs „Boolesch“ dar.  
+  Stellt einen **false** -Wert des Typs „Boolesch“ dar.  
   
 * `true`  
   
-  Stellt einen **true**-Wert des Typs „Boolesch“ dar.  
+  Stellt einen **true** -Wert des Typs „Boolesch“ dar.  
   
 * `<number_constant>`  
   

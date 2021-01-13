@@ -1,19 +1,19 @@
 ---
-title: Verwenden von Apache Spark zum Analysieren von Daten in Azure Data Lake Storage Gen1
+title: Analysieren von Azure Data Lake Storage Gen1 mit HDInsight Apache Spark
 description: Ausführen von Apache Spark-Aufträgen zum Analysieren von in Azure Data Lake Storage Gen1 gespeicherten Daten
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: b8e830cb187b375e17b3dc33c582126adfa32f3e
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 42b9958678c76c1d0eed67cc9d97361c84f1dea9
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002488"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821161"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Verwenden des HDInsight Spark-Clusters zum Analysieren von Daten in Data Lake Storage Gen1
 
@@ -23,34 +23,40 @@ In diesem Artikel verwenden Sie das mit HDInsight Spark-Clustern verfügbare [Ju
 
 * Ein Azure Data Lake Storage Gen1-Konto. Befolgen Sie die Anweisungen unter [Erste Schritte mit Azure Data Lake Storage Gen1 über das Azure-Portal](../../data-lake-store/data-lake-store-get-started-portal.md).
 
-* Azure HDInsight Spark-Cluster mit Data Lake Storage Gen1 als Speicher. Befolgen Sie die Anweisungen unter [Schnellstart: Einrichten von Clustern in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Azure HDInsight Spark-Cluster mit Data Lake Storage Gen1 als Speicher. Befolgen Sie die Anweisungen unter [Schnellstart: Einrichten von Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="prepare-the-data"></a>Vorbereiten der Daten
 
 > [!NOTE]  
 > Sie müssen diesen Schritt nicht ausführen, wenn Sie den HDInsight-Cluster mit Data Lake Storage als Standardspeicher erstellt haben. Beim Clustererstellungsvorgang werden im Data Lake Storage-Konto, das Sie beim Erstellen des Clusters angeben, einige Beispieldaten hinzugefügt. Fahren Sie mit dem Abschnitt „Verwenden eines HDInsight Spark-Clusters mit Data Lake Storage“ fort.
 
-Wenn Sie einen HDInsight-Cluster mit Data Lake Storage als zusätzlichen Speicher und Azure Storage Blob als Standardspeicher erstellt haben, sollten Sie zuerst einige Beispieldaten in das Data Lake Storage-Konto kopieren. Sie können die Beispieldaten aus dem Azure Storage Blob verwenden, die dem HDInsight-Cluster zugeordnet sind. Sie können hierfür das [AdlCopy-Tool](https://aka.ms/downloadadlcopy) verwenden. Laden Sie das Tool über den Link herunter, und installieren Sie es.
+Wenn Sie einen HDInsight-Cluster mit Data Lake Storage als zusätzlichen Speicher und Azure Storage Blob als Standardspeicher erstellt haben, sollten Sie zuerst einige Beispieldaten in das Data Lake Storage-Konto kopieren. Sie können die Beispieldaten aus dem Azure Storage Blob verwenden, die dem HDInsight-Cluster zugeordnet sind. Sie können hierfür das [AdlCopy-Tool](https://www.microsoft.com/download/details.aspx?id=50358) verwenden. Laden Sie das Tool über den Link herunter, und installieren Sie es.
 
 1. Öffnen Sie eine Eingabeaufforderung, und navigieren Sie zu dem Verzeichnis, in dem „AdlCopy“ installiert ist, in der Regel `%HOMEPATH%\Documents\adlcopy`.
 
 2. Führen Sie den folgenden Befehl zum Kopieren eines bestimmten Blobs aus dem Quellcontainer in Data Lake Storage aus:
 
-        AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
+    ```scala
+    AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
+    ```
 
     Kopieren Sie die Beispieldatendatei **HVAC.csv** aus dem Pfad **/HdiSamples/HdiSamples/SensorSampleData/hvac/** in das Azure Data Lake Storage-Konto. Der Codeausschnitt sollte folgendermaßen aussehen:
 
-        AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
+    ```scala
+    AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
+    ```
 
    > [!WARNING]  
    > Stellen Sie sicher, dass die Datei- und Pfadnamen die richtige Groß-/Kleinschreibung verwenden.
 
 3. Sie werden aufgefordert, die Anmeldeinformationen für das Azure-Abonnement einzugeben, dem Ihr Data Lake Storage-Konto zugeordnet ist. Es wird ungefähr folgender Codeausschnitt angezeigt:
 
-        Initializing Copy.
-        Copy Started.
-        100% data copied.
-        Copy Completed. 1 file copied.
+    ```output
+    Initializing Copy.
+    Copy Started.
+    100% data copied.
+    Copy Completed. 1 file copied.
+    ```
 
     Die Datendatei (**HVAC.csv**) wird in den Ordner **/hvac** im Data Lake Storage-Konto kopiert.
 
@@ -69,9 +75,11 @@ Wenn Sie einen HDInsight-Cluster mit Data Lake Storage als zusätzlichen Speiche
 
     ![Erstellen eines neuen Jupyter Notebooks](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "Erstellen eines neuen Jupyter Notebooks")
 
-4. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark-, und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können zunächst die Typen importieren, die für dieses Szenario erforderlich sind. Fügen Sie dazu den folgenden Codeausschnitt in eine Zelle ein, und drücken Sie **UMSCHALT+EINGABE**.
+4. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark- und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können zunächst die Typen importieren, die für dieses Szenario erforderlich sind. Fügen Sie dazu den folgenden Codeausschnitt in eine Zelle ein, und drücken Sie **UMSCHALT+EINGABE**.
 
-        from pyspark.sql.types import *
+    ```scala
+    from pyspark.sql.types import *
+    ```
 
     Bei jedem Ausführen eines Auftrags in Jupyter wird in der Titelleiste Ihres Webbrowserfensters neben dem Notebooktitel der Status **(Beschäftigt)** angezeigt. Außerdem sehen Sie in der rechten oberen Ecke einen ausgefüllten Kreis neben dem Text **PySpark** . Wenn der Auftrag abgeschlossen ist, wird ein Kreis ohne Füllung angezeigt.
 
@@ -81,38 +89,47 @@ Wenn Sie einen HDInsight-Cluster mit Data Lake Storage als zusätzlichen Speiche
 
    * Wenn Sie Data Lake Storage Gen1 als Standardspeicher verwenden, befindet sich „HVAC.csv“ in dem Pfad, der folgender URL entspricht:
 
-           adl://<data_lake_store_name>.azuredatalakestore.net/<cluster_root>/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
+        ```scala
+        adl://<data_lake_store_name>.azuredatalakestore.net/<cluster_root>/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
+        ```
 
        Alternativ können Sie auch ein verkürztes Format wie das folgende verwenden:
 
-           adl:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
+        ```scala
+        adl:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
+        ```
 
    * Wenn Sie Data Lake Storage als zusätzlichen Speicher verwenden, befindet sich „HVAC.csv“ dort, wohin Sie sie kopiert haben, z.B.:
 
-           adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
+        ```scala
+        adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
+        ```
 
-     Fügen Sie das folgende Codebeispiel in eine leere Zelle ein, ersetzen Sie **MYDATALAKESTORE** durch den Namen Ihres Data Lake Storage-Kontos, und drücken Sie **UMSCHALT+EINGABETASTE**. Mit diesem Beispielcode werden die Daten in einer temporären Tabelle mit dem Namen **hvac**registriert.
+     Fügen Sie das folgende Codebeispiel in eine leere Zelle ein, ersetzen Sie **MYDATALAKESTORE** durch den Namen Ihres Data Lake Storage-Kontos, und drücken Sie **UMSCHALT+EINGABETASTE**. Mit diesem Beispielcode werden die Daten in einer temporären Tabelle mit dem Namen **hvac** registriert.
 
-           # Load the data. The path below assumes Data Lake Storage is default storage for the Spark cluster
-           hvacText = sc.textFile("adl://MYDATALAKESTORE.azuredatalakestore.net/cluster/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+      ```scala
+      # Load the data. The path below assumes Data Lake Storage is   default storage for the Spark cluster
+      hvacText = sc.textFile("adl://MYDATALAKESTORazuredatalakestore.  net/cluster/mysparkclusteHdiSamples/HdiSamples/  SensorSampleData/hvac/HVAC.csv")
 
-           # Create the schema
-           hvacSchema = StructType([StructField("date", StringType(), False),StructField("time", StringType(), False),StructField("targettemp", IntegerType(), False),StructField("actualtemp", IntegerType(), False),StructField("buildingID", StringType(), False)])
+      # Create the schema
+      hvacSchema = StructType([StructField("date", StringTy(), False)  ,StructField("time", StringType(), FalseStructField  ("targettemp", IntegerType(), FalseStructField("actualtemp",   IntegerType(), FalseStructField("buildingID", StringType(),   False)])
 
-           # Parse the data in hvacText
-           hvac = hvacText.map(lambda s: s.split(",")).filter(lambda s: s[0] != "Date").map(lambda s:(str(s[0]), str(s[1]), int(s[2]), int(s[3]), str(s[6]) ))
+      # Parse the data in hvacText
+      hvac = hvacText.map(lambda s: s.split(",")).filt(lambda s: s  [0] != "Date").map(lambda s:(str(s[0]), s(s[1]), int(s[2]), int  (s[3]), str(s[6]) ))
 
-           # Create a data frame
-           hvacdf = sqlContext.createDataFrame(hvac,hvacSchema)
+      # Create a data frame
+      hvacdf = sqlContext.createDataFrame(hvac,hvacSchema)
 
-           # Register the data fram as a table to run queries against
-           hvacdf.registerTempTable("hvac")
+      # Register the data fram as a table to run queries against
+      hvacdf.registerTempTable("hvac")
+      ```
 
 6. Da Sie einen PySpark-Kernel verwenden, können Sie jetzt direkt eine SQL-Abfrage für die temporäre Tabelle **hvac** ausführen, die Sie gerade mit der Magic `%%sql` erstellt haben. Weitere Informationen zur `%%sql`-Magic und zu anderen für den PySpark-Kernel verfügbaren Magics finden Sie unter [Verfügbare Kernels für Jupyter Notebooks mit Apache Spark-Clustern in HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
-        %%sql
-        SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
-
+    ```sql
+    %%sql
+    SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
+    ```
 7. Nachdem der Auftrag erfolgreich abgeschlossen wurde, wird die folgende tabellarische Ausgabe standardmäßig angezeigt.
 
       ![Tabellenausgabe des Abfrageergebnisses](./media/apache-spark-use-with-data-lake-store/jupyter-tabular-output.png "Tabellenausgabe des Abfrageergebnisses")

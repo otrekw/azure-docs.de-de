@@ -1,6 +1,6 @@
 ---
 title: Entwurfsmuster für Azure-Tabellenspeicher | Microsoft-Dokumentation
-description: Verwenden Sie Muster für Azure-Tabellenspeicherdienstlösungen.
+description: Sehen Sie sich die Entwurfsmuster an, die für die Verwendung mit Tabellenspeicherdienst-Lösungen in Azure geeignet sind. Behandeln Sie die in anderen Artikeln erläuterten Probleme und Kompromisse.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,12 +8,13 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 82910bf5c42629c2d4f077ad6df2adbfc9dcf021
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 20e776e649d13e435a7bc9215802fcd89efe0867
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989989"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019224"
 ---
 # <a name="table-design-patterns"></a>Entwurfsmuster für die Tabelle
 Dieser Abschnitt beschreibt einige Muster, die zur Verwendung mit Tabellenspeicherdienstlösungen geeignet sind. Darüber hinaus wird gezeigt, wie Sie einige der in anderen Artikeln zum Tabellenspeicherentwurf angesprochenen Probleme und Kompromisse praktisch behandeln können. Das folgende Diagramm fasst die Beziehungen zwischen den verschiedenen Mustern zusammen:  
@@ -21,7 +22,7 @@ Dieser Abschnitt beschreibt einige Muster, die zur Verwendung mit Tabellenspeich
 ![Suchen nach verknüpften Daten](media/storage-table-design-guide/storage-table-design-IMAGE05.png)
 
 
-In der Muster-Karte oben werden einige Beziehungen zwischen Muster (Blau) und Antimuster (Orange) hervorgehoben, die in diesem Handbuch dokumentiert sind. Es gibt viele weitere Muster, die in Betracht gezogen werden können. Beispielsweise ist eines der Hauptszenarien für den Tabellenspeicherdienst die Verwendung des [Materialized View Pattern](https://msdn.microsoft.com/library/azure/dn589782.aspx) (Muster für materialisierte Sichten) aus dem [Command Query Responsibility Segregation (CQRS)](https://msdn.microsoft.com/library/azure/jj554200.aspx)-Muster.  
+In der Muster-Karte oben werden einige Beziehungen zwischen Muster (Blau) und Antimuster (Orange) hervorgehoben, die in diesem Handbuch dokumentiert sind. Es gibt viele weitere Muster, die in Betracht gezogen werden können. Beispielsweise ist eines der Hauptszenarien für den Tabellenspeicherdienst die Verwendung des [Materialized View Pattern](/previous-versions/msp-n-p/dn589782(v=pandp.10)) (Muster für materialisierte Sichten) aus dem [Command Query Responsibility Segregation (CQRS)](/previous-versions/msp-n-p/jj554200(v=pandp.10))-Muster.  
 
 ## <a name="intra-partition-secondary-index-pattern"></a>Sekundäres Indexmuster für Intra-Partition
 Speichern mehrerer Kopien jeder Entität mit unterschiedlichen **RowKey**-Werten (in der gleichen Partition) zur Ermöglichung schneller und effizienter Suchvorgänge und alternativer Sortierreihenfolgen mit unterschiedlichen **RowKey**-Werten. Updates zwischen Kopien können durch die Verwendung von EGT konsistent sein.  
@@ -48,7 +49,7 @@ Bei einer Abfrage nach einem Bereich von Mitarbeiterentitäten können Sie einen
 * Um alle Mitarbeiter in der Vertriebsabteilung mit einer Mitarbeiter-ID im Bereich von 000100 bis 000199 zu finden, verwenden Sie: $filter=(PartitionKey eq 'Vertrieb') und (RowKey ge 'empid_000100') und (RowKey le 'empid_000199')  
 * Um alle Mitarbeiter in der Vertriebsabteilung mit einer E-Mail-Adresse zu finden, die mit dem Buchstaben "a" beginnt, verwenden Sie: $filter=(PartitionKey eq 'Sales') und (RowKey ge 'email_a') und (RowKey lt 'email_b')  
   
-  Die in den obigen Beispielen verwendete Filtersyntax stammt aus der REST-API des Tabellenspeicherdiensts. Weitere Informationen finden Sie unter [Abfragen von Entitäten](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+  Die in den obigen Beispielen verwendete Filtersyntax stammt aus der REST-API des Tabellenspeicherdiensts. Weitere Informationen finden Sie unter [Abfragen von Entitäten](/rest/api/storageservices/Query-Entities).  
 
 ### <a name="issues-and-considerations"></a>Probleme und Überlegungen
 Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implementiert werden soll:  
@@ -104,7 +105,7 @@ Bei einer Abfrage nach einem Bereich von Mitarbeiterentitäten können Sie einen
 * Verwenden Sie Folgendes, um alle Mitarbeiter in der Vertriebsabteilung mit einer Mitarbeiter-ID im Bereich von **000100** bis **000199** zu suchen und nach Mitarbeiter-ID zu sortieren: $filter=(PartitionKey eq 'empid_Vertrieb') und (RowKey ge '000100') und (RowKey le '000199').  
 * Um alle Mitarbeiter in der Vertriebsabteilung mit einer E-Mail-Adresse zu finden, die mit dem Buchstaben "a" beginnt, und die in E-Mail-Adressen-Reihenfolge sortiert sind, verwenden Sie: $filter=(PartitionKey eq 'email_Sales') und (RowKey ge 'a') und (RowKey lt 'b')  
 
-Die in den obigen Beispielen verwendete Filtersyntax stammt aus der REST-API des Tabellenspeicherdiensts. Weitere Informationen finden Sie unter [Abfragen von Entitäten](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Die in den obigen Beispielen verwendete Filtersyntax stammt aus der REST-API des Tabellenspeicherdiensts. Weitere Informationen finden Sie unter [Abfragen von Entitäten](/rest/api/storageservices/Query-Entities).  
 
 ### <a name="issues-and-considerations"></a>Probleme und Überlegungen
 Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implementiert werden soll:  
@@ -140,7 +141,7 @@ EGTs ermöglichen atomische Transaktionen über mehrere Entitäten, die den glei
 * Entitäten, die in zwei verschiedenen Partitionen in derselben Tabelle, in verschiedenen Tabellen oder in verschiedenen Speicherkonten gespeichert sind.  
 * Eine Entität, die im Tabellenspeicherdienst gespeichert ist und einen Blob, der im Blob-Dienst gespeichert ist.  
 * Eine Entität, die im Tabellenspeicherdienst gespeichert ist und eine Datei in einem Dateisystem.  
-* Speicherung einer Entität im Tabellenspeicherdienst, der jedoch mithilfe des Azure-Suchdienstes indiziert ist.  
+* Speicherung einer Entität im Tabellenspeicherdienst, der jedoch mithilfe des Azure Cognitive Search-Dienstes indiziert ist.  
 
 ### <a name="solution"></a>Lösung
 Mithilfe von Azure-Warteschlangen können Sie eine Lösung implementieren, die Eventual Consistency über zwei oder mehr Partitionen oder Speichersysteme bietet.
@@ -155,7 +156,7 @@ In diesem Beispiel fügt Schritt 4 den Mitarbeiter in die Tabelle **Archiv** ein
 ### <a name="recovering-from-failures"></a>Wiederherstellung bei Fehlern
 Für den Fall, dass die Workerrolle den Archivierungsvorgang neu starten muss, müssen die Vorgänge in den Schritten **4** und **5** *idempotent* sein. Bei Verwendung des Tabellenspeicherdiensts müssen Sie für Schritt **4** einen Vorgang vom Typ „Einfügen oder Ersetzen“ und für Schritt **5** in der verwendeten Clientbibliothek einen Vorgang vom Typ „Löschen, falls vorhanden“ ausführen. Wenn Sie ein anderes Speichersystem verwenden, müssen Sie einen entsprechenden idempotenten Vorgang verwenden.  
 
-Wenn die Workerrolle Schritt **6**niemals abschließt, erscheint nach einem Timeout die Meldung wieder in der Warteschlange, damit die Workerrolle versuchen kann, sie erneut zu verarbeiten. Die Workerrolle kann überprüfen, wie oft eine Meldung in der Warteschlange gelesen wurde und bei Bedarf markieren, dass dies eine "unzustellbare" Meldung ist und sie zur Untersuchung an eine eigene Warteschlange senden. Weitere Informationen zum Lesen von Warteschlangenmeldungen und zur Überprüfung des Zählers für Entfernungsvorgänge aus der Warteschlange finden Sie unter [Get Messages](https://msdn.microsoft.com/library/azure/dd179474.aspx).  
+Wenn die Workerrolle Schritt **6** niemals abschließt, erscheint nach einem Timeout die Meldung wieder in der Warteschlange, damit die Workerrolle versuchen kann, sie erneut zu verarbeiten. Die Workerrolle kann überprüfen, wie oft eine Meldung in der Warteschlange gelesen wurde und bei Bedarf markieren, dass dies eine "unzustellbare" Meldung ist und sie zur Untersuchung an eine eigene Warteschlange senden. Weitere Informationen zum Lesen von Warteschlangenmeldungen und zur Überprüfung des Zählers für Entfernungsvorgänge aus der Warteschlange finden Sie unter [Get Messages](/rest/api/storageservices/Get-Messages).  
 
 Einige Fehler aus der Tabelle und den Warteschlangendiensten sind vorübergehende Fehler. Ihre Clientanwendung sollte diese über eine geeignete Wiederholungslogik bedienen können.  
 
@@ -293,7 +294,7 @@ In einer relationalen Datenbank ist es natürlich, Verknüpfungen in Abfragen zu
 
 Angenommen, Sie speichern Mitarbeiterentitäten im Tabellenspeicherdienst mithilfe der folgenden Struktur:  
 
-![Struktur für Mitarbeiterentitäten](media/storage-table-design-guide/storage-table-design-IMAGE18.png)
+![Screenshot, der zeigt, wie Sie Mitarbeiterentitäten im Tabellenspeicherdienst speichern können](media/storage-table-design-guide/storage-table-design-IMAGE18.png)
 
 Sie müssen auch Vergangenheitsdaten speichern, die im Zusammenhang mit Überprüfungen und Leistung für jedes Jahr, in dem der Mitarbeiter für Ihre Organisation gearbeitet hat, stehen und Sie müssen auf diese Informationen nach Jahr zugreifen können. Eine Möglichkeit ist, eine weitere Tabelle zu erstellen, in der Entitäten mit der folgenden Struktur gespeichert werden:  
 
@@ -310,7 +311,7 @@ Beachten Sie, dass **RowKey** jetzt ein Schlüssel ist, der sich aus der Mitarbe
 
 Im folgende Beispiel wird erläutert, wie Sie alle Review-Daten für einen bestimmten Mitarbeiter (z. B. Mitarbeiter 000123 in der Vertriebsabteilung) abrufen können:  
 
-$filter=(PartitionKey eq 'Sales') und (RowKey ge 'empid_000123') und (RowKey lt 'empid_000124')&$select=RowKey,Manager Rating,Peer Rating,Comments  
+$filter=(PartitionKey eq 'Sales') und (RowKey ge 'empid_000123') und (RowKey lt '000123_2012')&$select=RowKey,Manager Rating,Peer Rating,Comments  
 
 ### <a name="issues-and-considerations"></a>Probleme und Überlegungen
 Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implementiert werden soll:  
@@ -401,7 +402,7 @@ Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Mus
 Speichern Sie vollständige Datenreihen in einer einzelnen Entität, um die Anzahl der von Ihnen vorgenommenen Anforderungen zu minimieren.  
 
 ### <a name="context-and-problem"></a>Kontext und Problem
-Ein häufiges Szenario für eine Anwendung ist, eine Datenreihe zu speichern, die in der Regel auf einmal abgerufen werden muss. Beispiel: Ihre Anwendung erfasst, wie viele IM-Meldungen jeder Mitarbeiter pro Stunde sendet. Diese Informationen verwenden Sie dann, um zu zeichnen, wie viele Meldungen jeder Benutzer in den vergangenen 24 Stunden gesendet hat. Ein Entwurf könnte sein, für jeden Mitarbeiter 24 Entitäten zu speichern:  
+Ein häufiges Szenario für eine Anwendung ist, eine Datenreihe zu speichern, die in der Regel auf einmal abgerufen werden muss. Beispiel: Ihre Anwendung erfasst, wie viele Chatnachrichten jeder Mitarbeiter pro Stunde sendet. Diese Informationen verwenden Sie dann, um zu zeichnen, wie viele Meldungen jeder Benutzer in den vergangenen 24 Stunden gesendet hat. Ein Entwurf könnte sein, für jeden Mitarbeiter 24 Entitäten zu speichern:  
 
 ![Speichern von 24 Entitäten für jeden Mitarbeiter](media/storage-table-design-guide/storage-table-design-IMAGE22.png)
 
@@ -539,7 +540,7 @@ In diesem Abschnitt wird erläutert, wie Storage Analytics Protokolldaten im Blo
 
 Storage Analytics speichert Protokollmeldungen in einem Trennzeichen-getrennten Format in mehrere Blobs. Das Trennzeichen-getrennte Format erleichtert es einer Clientanwendung, die Daten in der Protokollmeldung zu analysieren.  
 
-Storage Analytics verwendet eine Namenskonvention für Blobs, die es Ihnen ermöglicht, einen Blob (oder Blobs) zu finden, der die Protokollmeldungen enthält, nach denen Sie suchen. Beispiel: Ein Blob mit dem Namen "queue/2014/07/31/1800/000001.log" enthält die Protokollmeldungen, die dem Warteschlangendienst für die Stunde zugeordnet sind, beginnend um 18:00 Uhr am 31. Juli 2014. Die "000001" zeigt an, dass dies die erste Protokolldatei für diesen Zeitraum ist. Storage Analytics zeichnet auch die Zeitstempel der Protokollmeldungen von Vor- und Nachname an, die in der Datei als Teil der Blob-Metadaten gespeichert sind. Die API für Blob-Speicher ermöglicht Ihnen, Blobs in einem Container zu finden, die auf einem Namenspräfix basieren. Um alle Blobs zu finden, die Protokolldaten für die Warteschlange für die Stunde beinhalten, die um 18:00 Uhr beginnt, können Sie das Präfix "queue/2014/07/31/1800" verwenden."  
+Storage Analytics verwendet eine Namenskonvention für Blobs, die es Ihnen ermöglicht, einen Blob (oder Blobs) zu finden, der die Protokollmeldungen enthält, nach denen Sie suchen. Beispiel: Ein Blob mit dem Namen "queue/2014/07/31/1800/000001.log" enthält die Protokollmeldungen, die dem Warteschlangendienst für die Stunde zugeordnet sind, beginnend um 18:00 Uhr am 31. Juli 2014. Die "000001" zeigt an, dass dies die erste Protokolldatei für diesen Zeitraum ist. Storage Analytics zeichnet auch die Zeitstempel der Protokollmeldungen von Vor- und Nachname an, die in der Datei als Teil der Blob-Metadaten gespeichert sind. Die API für Blobspeicher ermöglicht Ihnen, Blobs in einem Container zu finden, die auf einem Namenspräfix basieren. Um alle Blobs zu finden, die Protokolldaten für die Warteschlange für die Stunde beinhalten, die um 18:00 Uhr beginnt, können Sie das Präfix „queue/2014/07/31/1800“ verwenden.  
 
 Storage Analytics puffert Protokollmeldungen intern, und aktualisiert dann den geeigneten Blob oder erstellt einen neuen Blob mit dem neuesten Satz Protokolleinträge. Dies reduziert die Anzahl der Schreibvorgänge, die für den Blob-Dienst ausgeführt werden müssen.  
 
@@ -571,12 +572,12 @@ if (retrieveResult.Result != null)
 }  
 ```
 
-Beachten Sie, dass in diesem Beispiel erwartet wird, dass die abgerufene Entität den Typ **EmployeeEntity**hat.  
+Beachten Sie, dass in diesem Beispiel erwartet wird, dass die abgerufene Entität den Typ **EmployeeEntity** hat.  
 
 ### <a name="retrieving-multiple-entities-using-linq"></a>Abrufen von mehreren Entitäten mithilfe von LINQ
 Sie können LINQ zum Abrufen mehrerer Entitäten aus dem Tabellenspeicherdienst verwenden, wenn Sie die Standardbibliothek für Tabellen in Microsoft Azure Cosmos verwenden. 
 
-```cli
+```azurecli
 dotnet add package Microsoft.Azure.Cosmos.Table
 ```
 
@@ -588,7 +589,7 @@ using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Azure.Cosmos.Table.Queryable;
 ```
 
-Bei employeeTable handelt es sich um ein CloudTable-Objekt, das eine CreateQuery\<ITableEntity>()-Methode implementiert, die eine TableQuery\<ITableEntity> zurückgibt. Objekte dieses Typs implementieren eine „iQueryable“-Schnittstelle und ermöglichen die Verwendung von LINQ-Abfrageausdrücken und der Punktnotationssyntax.
+Bei „employeeTable“ handelt es sich um ein „CloudTable“-Objekt, das eine „CreateQuery\<ITableEntity>()“-Methode implementiert, die eine „TableQuery\<ITableEntity>“ zurückgibt. Objekte dieses Typs implementieren eine „iQueryable“-Schnittstelle und ermöglichen die Verwendung von LINQ-Abfrageausdrücken und der Punktnotationssyntax.
 
 Das Abrufen von mehreren Entitäten erfolgt durch das Angeben einer Abfrage mit einer **where**-Klausel. Um einen Tabellenscan zu vermeiden, sollten Sie immer den **PartitionKey**-Wert in die where-Klausel einschließen (und möglichst auch den **RowKey**-Wert, um Tabellen- und Partitionsscans zu vermeiden). Der Tabellenspeicherdienst unterstützt eine begrenzte Anzahl von Vergleichsoperatoren (größer als, größer als oder gleich, kleiner als, kleiner als oder gleich, gleich und ungleich) zur Verwendung in der WHERE-Klausel. 
 
@@ -633,7 +634,7 @@ Eine optimale Abfrage gibt auf der Grundlage eines **PartitionKey**- und eines *
 
 In solchen Szenarien sollten Sie die Leistung Ihrer Anwendung immer vollständig testen.  
 
-Eine Abfrage für den Tabellenspeicherdienst kann maximal 1000 Entitäten gleichzeitig zurückgeben und für maximal fünf Sekunden ausgeführt werden. Wenn der Ergebnissatz mehr als 1.000 Entitäten enthält, wenn die Abfrage nicht innerhalb von fünf Sekunden abgeschlossen wurde oder die Abfrage die Partitionsgrenzen überschreitet, gibt der Tabellenspeicherdienst ein Fortsetzungstoken zurück, das der Clientanwendung ermöglicht, den nächsten Satz Entitäten anzufordern. Weitere Informationen über die Funktionsweise von Fortsetzungstoken finden Sie unter [Abfragetimeout und Paginierung](https://msdn.microsoft.com/library/azure/dd135718.aspx).  
+Eine Abfrage für den Tabellenspeicherdienst kann maximal 1000 Entitäten gleichzeitig zurückgeben und für maximal fünf Sekunden ausgeführt werden. Wenn der Ergebnissatz mehr als 1.000 Entitäten enthält, wenn die Abfrage nicht innerhalb von fünf Sekunden abgeschlossen wurde oder die Abfrage die Partitionsgrenzen überschreitet, gibt der Tabellenspeicherdienst ein Fortsetzungstoken zurück, das der Clientanwendung ermöglicht, den nächsten Satz Entitäten anzufordern. Weitere Informationen über die Funktionsweise von Fortsetzungstoken finden Sie unter [Abfragetimeout und Paginierung](/rest/api/storageservices/Query-Timeout-and-Pagination).  
 
 Bei Verwendung der Storage Client Library kann diese automatisch Fortsetzungstoken für Sie handhaben, da es Entitäten aus dem Tabellenspeicherdienst zurückgibt. Das folgende C#-Codebeispiel verwendet die Storage Client Library und handhabt automatisch Fortsetzungstoken, wenn er vom Tabellenspeicherdienst in der Antwort zurückgegeben wird:  
 
@@ -741,7 +742,7 @@ Der Tabellenspeicherdienst ist ein *schemaloser* Tabellenspeicher. Das bedeutet,
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Alter</th>
+<th>Age</th>
 <th>Email</th>
 </tr>
 <tr>
@@ -761,7 +762,7 @@ Der Tabellenspeicherdienst ist ein *schemaloser* Tabellenspeicher. Das bedeutet,
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Alter</th>
+<th>Age</th>
 <th>Email</th>
 </tr>
 <tr>
@@ -779,7 +780,7 @@ Der Tabellenspeicherdienst ist ein *schemaloser* Tabellenspeicher. Das bedeutet,
 <td>
 <table>
 <tr>
-<th>Abteilungsname</th>
+<th>DepartmentName</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -798,7 +799,7 @@ Der Tabellenspeicherdienst ist ein *schemaloser* Tabellenspeicher. Das bedeutet,
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Alter</th>
+<th>Age</th>
 <th>Email</th>
 </tr>
 <tr>
@@ -834,11 +835,11 @@ Trotzdem muss jede Entität über **PartitionKey**-, **RowKey**- und **Timestamp
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Alter</th>
+<th>Age</th>
 <th>Email</th>
 </tr>
 <tr>
-<td>Mitarbeiter</td>
+<td>Employee</td>
 <td></td>
 <td></td>
 <td></td>
@@ -856,11 +857,11 @@ Trotzdem muss jede Entität über **PartitionKey**-, **RowKey**- und **Timestamp
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Alter</th>
+<th>Age</th>
 <th>Email</th>
 </tr>
 <tr>
-<td>Mitarbeiter</td>
+<td>Employee</td>
 <td></td>
 <td></td>
 <td></td>
@@ -876,7 +877,7 @@ Trotzdem muss jede Entität über **PartitionKey**-, **RowKey**- und **Timestamp
 <table>
 <tr>
 <th>EntityType</th>
-<th>Abteilungsname</th>
+<th>DepartmentName</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -897,11 +898,11 @@ Trotzdem muss jede Entität über **PartitionKey**-, **RowKey**- und **Timestamp
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Alter</th>
+<th>Age</th>
 <th>Email</th>
 </tr>
 <tr>
-<td>Mitarbeiter</td>
+<td>Employee</td>
 <td></td>
 <td></td>
 <td></td>
@@ -912,7 +913,7 @@ Trotzdem muss jede Entität über **PartitionKey**-, **RowKey**- und **Timestamp
 </tr>
 </table>
 
-Die erste Option mit dem vorangestellten Entitätstyp vor den **RowKey**ist sinnvoll, wenn eine Möglichkeit besteht, dass zwei Entitäten mit unterschiedlichen Typen über denselben Schlüsselwert verfügen können. Hier werden auch Entitäten des gleichen Typs in der Partition zusammen gruppiert.  
+Die erste Option mit dem vorangestellten Entitätstyp vor den **RowKey** ist sinnvoll, wenn eine Möglichkeit besteht, dass zwei Entitäten mit unterschiedlichen Typen über denselben Schlüsselwert verfügen können. Hier werden auch Entitäten des gleichen Typs in der Partition zusammen gruppiert.  
 
 Die in diesem Abschnitt beschriebenen Verfahren sind besonders wichtig für die Erörterung der [Vererbungsbeziehungen](table-storage-design-modeling.md#inheritance-relationships) weiter oben in diesem Handbuch (Artikel [Modellieren von Beziehungen](table-storage-design-modeling.md)).  
 

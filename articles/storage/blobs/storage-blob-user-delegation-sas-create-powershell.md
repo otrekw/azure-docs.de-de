@@ -1,32 +1,34 @@
 ---
-title: Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit PowerShell (Vorschau) – Azure Storage
-description: Erfahren Sie, wie Sie eine SAS (Shared Access Signature) mithilfe von Azure Active Directory-Anmeldeinformationen in Azure Storage mit PowerShell erstellen können.
+title: Verwenden von PowerShell zum Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob
+titleSuffix: Azure Storage
+description: Erfahren Sie, wie Sie mithilfe von PowerShell eine SAS für die Benutzerdelegierung mit Azure Active Directory-Anmeldeinformationen erstellen.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 08/29/2019
+ms.topic: how-to
+ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 0164c97adf720a618179908298223c54bf48824e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 875b2a9f35562dd8f0d5df3c631e5ade1e3fbf75
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673336"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714530"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit PowerShell (Vorschau)
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit PowerShell
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Azure Active Directory-Anmeldeinformationen (Azure AD) verwenden, um eine SAS für die Benutzerdelegierung für einen Container oder ein Blob mit PowerShell (Vorschau) zu erstellen.
+In diesem Artikel wird beschrieben, wie Sie Azure Active Directory-Anmeldeinformationen (Azure AD) verwenden, um eine SAS für die Benutzerdelegierung für einen Container oder ein Blob mit Azure PowerShell zu erstellen.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="install-the-preview-module"></a>Installieren des Vorschaumoduls
+## <a name="install-the-powershell-module"></a>Installieren des PowerShell-Moduls
 
-Wenn Sie PowerShell verwenden möchten, um eine SAS für die Benutzerdelegierung zu erstellen, müssen Sie zunächst das Az.Storage 1.3.1-preview installieren. Führen Sie dazu folgende Schritte aus:
+Zum Erstellen einer SAS für die Benutzerdelegierung mithilfe von PowerShell installieren Sie Version 1.10.0 oder höher des Az.Storage-Moduls. Führen Sie die folgenden Schritte aus, um die neueste Version des Moduls zu installieren:
 
 1. Deinstallieren Sie alle älteren Installationen von Azure PowerShell:
 
@@ -47,23 +49,18 @@ Wenn Sie PowerShell verwenden möchten, um eine SAS für die Benutzerdelegierung
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Installieren ein Azure Storage-Vorschaumodul, das die SAS für die Benutzerdelegierung unterstützt:
+1. Vergewissern Sie sich, dass mindestens Version 3.2.0 von Azure PowerShell installiert ist. Führen Sie den folgenden Befehl aus, um die neueste Version des Azure Storage-PowerShell-Moduls zu installieren:
 
     ```powershell
-    Install-Module Az.Storage `
-        –Repository PSGallery `
-        -RequiredVersion 1.3.1-preview `
-        –AllowPrerelease `
-        –AllowClobber `
-        –Force
+    Install-Module -Name Az.Storage -Repository PSGallery -Force
     ```
 
 1. Schließen Sie das PowerShell-Fenster, und öffnen Sie es dann erneut.
 
-Da PowerShell standardmäßig das neueste Az.Storage-Modul lädt, müssen Sie möglicherweise das 1.3.1-Vorschaumodul explizit laden, wenn Sie die Konsole starten. Führen Sie den Befehl [Import-Module](/powershell/module/microsoft.powershell.core/import-module) aus, um das Vorschaumodul explizit zu laden:
+Um zu überprüfen, welche Version des Az.Storage-Moduls installiert ist, führen Sie den folgenden Befehl aus:
 
 ```powershell
-Import-Module Az.Storage -RequiredVersion 1.3.1
+Get-Module -ListAvailable -Name Az.Storage -Refresh
 ```
 
 Weitere Informationen zum Installieren von Azure PowerShell finden Sie unter [Installieren von Azure PowerShell mit PowerShellGet](/powershell/azure/install-az-ps).
@@ -78,11 +75,11 @@ Connect-AzAccount
 
 Weitere Informationen zum Anmelden mit PowerShell finden Sie unter [Anmelden mit Azure PowerShell](/powershell/azure/authenticate-azureps).
 
-## <a name="assign-permissions-with-rbac"></a>Zuweisen von Berechtigungen mit RBAC
+## <a name="assign-permissions-with-azure-rbac"></a>Zuweisen von Berechtigungen mit Azure RBAC
 
-Um eine SAS für die Benutzerdelegierung aus Azure PowerShell zu erstellen, muss dem Azure AD-Konto, mit dem die Anmeldung bei PowerShell erfolgt, eine Rolle zugewiesen werden, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** beinhaltet. Diese Berechtigung ermöglicht es diesem Azure AD Konto, den *Benutzerdelegierungsschlüssel* anzufordern. Der Benutzerdelegierungsschlüssel wird zum Signieren der SAS für die Benutzerdelegierung verwendet. Die Rolle, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** bereitstellt, muss auf der Ebene des Speicherkontos, der Ressourcengruppe oder des Abonnements zugewiesen werden. Weitere Informationen zu RBAC-Berechtigungen zum Erstellen einer SAS für die Benutzerdelegierung finden Sie im Abschnitt **Zuweisen von Berechtigungen mit RBAC** unter [Erstellen einer SAS für die Benutzerdelegierung](/rest/api/storageservices/create-user-delegation-sas).
+Um eine SAS für die Benutzerdelegierung aus Azure PowerShell zu erstellen, muss dem Azure AD-Konto, mit dem die Anmeldung bei PowerShell erfolgt, eine Rolle zugewiesen werden, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** beinhaltet. Diese Berechtigung ermöglicht es diesem Azure AD Konto, den *Benutzerdelegierungsschlüssel* anzufordern. Der Benutzerdelegierungsschlüssel wird zum Signieren der SAS für die Benutzerdelegierung verwendet. Die Rolle, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** bereitstellt, muss auf der Ebene des Speicherkontos, der Ressourcengruppe oder des Abonnements zugewiesen werden. Weitere Informationen zu Azure RBAC-Berechtigungen zum Erstellen einer SAS für die Benutzerdelegierung finden Sie im Abschnitt **Zuweisen von Berechtigungen mit Azure RBAC** unter [Erstellen einer SAS für die Benutzerdelegierung](/rest/api/storageservices/create-user-delegation-sas).
 
-Wenn Sie nicht über ausreichende Berechtigungen zum Zuweisen von RBAC-Rollen zu einem Azure AD-Sicherheitsprinzipal verfügen, müssen Sie möglicherweise den Kontobesitzer oder den Administrator bitten, die erforderlichen Berechtigungen zuzuweisen.
+Wenn Sie nicht über ausreichende Berechtigungen zum Zuweisen von Azure-Rollen zu einem Azure AD-Sicherheitsprinzipal verfügen, müssen Sie möglicherweise den Kontobesitzer oder den Administrator bitten, die erforderlichen Berechtigungen zuzuweisen.
 
 Im folgenden Beispiel wird die Rolle **Storage Blob Data Contributor** (Speicherblob-Datenmitwirkender) zugewiesen, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** beinhaltet. Die Rolle wird auf der Ebene des Speicherkontos festgelegt.
 
@@ -94,7 +91,7 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-Weitere Informationen zu den integrierten Rollen, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** enthalten, finden Sie unter [Integrierte Rollen für Azure-Ressourcen](../../role-based-access-control/built-in-roles.md).
+Weitere Informationen zu den integrierten Rollen, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** enthalten, finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>Verwenden von Azure AD-Anmeldeinformationen zum Sichern einer SAS
 
@@ -125,7 +122,7 @@ New-AzStorageContainerSASToken -Context $ctx `
 
 Das zurückgegebene SAS-Token für die Benutzerdelegierung ähnelt dem folgenden Token:
 
-```
+```output
 ?sv=2018-11-09&sr=c&sig=<sig>&skoid=<skoid>&sktid=<sktid>&skt=2019-08-05T22%3A24%3A36Z&ske=2019-08-07T07%3A
 00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=rwdl
 ```
@@ -147,7 +144,7 @@ New-AzStorageBlobSASToken -Context $ctx `
 
 Der zurückgegebene SAS-URI für die Benutzerdelegierung ähnelt dem folgenden URI:
 
-```
+```output
 https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?sv=2018-11-09&sr=b&sig=<sig>&skoid=<skoid>&sktid=<sktid>&skt=2019-08-06T21%3A16%3A54Z&ske=2019-08-07T07%3A00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=racwd
 ```
 
@@ -166,7 +163,7 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
 ```
 
 > [!IMPORTANT]
-> Sowohl der Benutzerdelegierungsschlüssel als auch die RBAC-Rollenzuweisungen werden von Azure Storage zwischengespeichert. Daher kann es zu einer Verzögerung zwischen der Initiierung des Sperrprozesses und dem Zeitpunkt kommen, zu dem eine SAS für die Benutzerdelegierung ungültig wird.
+> Sowohl der Benutzerdelegierungsschlüssel als auch die Azure-Rollenzuweisungen werden von Azure Storage zwischengespeichert. Daher kann es zu einer Verzögerung zwischen der Initiierung des Sperrprozesses und dem Zeitpunkt kommen, zu dem eine SAS für die Benutzerdelegierung ungültig wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

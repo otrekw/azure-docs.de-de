@@ -12,51 +12,61 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 666868d723b5e040b69762cdb39f472f2f8822c9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0e79efc9de43fc0a3044e9ae1e3959f63bb6e69f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057920"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90090255"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Remotedesktopverbindung mit einer VM nicht möglich, weil die Netzwerkschnittstelle deaktiviert ist
 
 In diesem Artikel erfahren Sie, wie Sie ein Problem beim Herstellen einer Remotedesktopverbindung mit Azure Virtual Machines (VMs) unter Windows beheben, wenn die Netzwerkschnittstelle deaktiviert ist.
 
-> [!NOTE]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Resource Manager-Bereitstellungsmodells, das anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen empfohlen wird.
 
 ## <a name="symptoms"></a>Symptome
 
 Sie können keine RDP-Verbindung oder eine andere Art von Verbindung mit anderen Ports einer VM in Azure herstellen, weil die Netzwerkschnittstelle auf der VM deaktiviert ist.
 
+![Screenshot: VM mit getrennter Netzwerkschnittstelle](./media/troubleshoot-rdp-nic-disabled/disconnected.png)
+
+![Screenshot: VM mit deaktivierter Netzwerkschnittstelle](./media/troubleshoot-rdp-nic-disabled/disabled.png)
+
+
 ## <a name="solution"></a>Lösung
 
 Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung, bevor Sie die unten angegebenen Schritte ausführen. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
 
-Verwenden Sie zum Aktivieren der Schnittstelle für die VM die serielle Konsole, oder [setzen Sie die Netzwerkschnittstelle für die VM zurück](##reset-network-interface).
+Verwenden Sie zum Aktivieren der Schnittstelle für die VM die serielle Konsole, oder [setzen Sie die Netzwerkschnittstelle für die VM zurück](#reset-network-interface).
 
 ### <a name="use-serial-control"></a>Verwenden der seriellen Konsole
 
-1. Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine CMD-Instanz](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Wenn die serielle Konsole auf Ihrer VM nicht aktiviert ist, helfen Ihnen die Informationen unter [Zurücksetzen der Netzwerkschnittstelle](#reset-network-interface) weiter.
+1. Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine CMD-Instanz](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Wenn die serielle Konsole auf Ihrer VM nicht aktiviert ist, helfen Ihnen die Informationen unter [Zurücksetzen der Netzwerkschnittstelle](#reset-network-interface) weiter.
 2. Überprüfen Sie den Status der Netzwerkschnittstelle:
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     Notieren Sie sich den Namen der deaktivierten Netzwerkschnittstelle.
 
 3. Aktivieren Sie die Netzwerkschnittstelle:
 
-        netsh interface set interface name="interface Name" admin=enabled
+    ```console
+    netsh interface set interface name="interface Name" admin=enabled
+    ```
 
     Führen Sie beispielsweise den folgenden Befehl aus, wenn die Netzwerkschnittstelle den Namen „Ethernet 2“ hat:
 
-        netsh interface set interface name="Ethernet 2" admin=enabled
+    ```console
+    netsh interface set interface name="Ethernet 2" admin=enabled
+    ```
 
 4.  Überprüfen Sie den Status der Netzwerkschnittstelle erneut, um sicherzustellen, dass sie aktiviert ist.
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     Sie müssen die VM an diesem Punkt nicht neu starten. Die VM ist jetzt wieder erreichbar.
 

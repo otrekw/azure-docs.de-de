@@ -1,27 +1,22 @@
 ---
 title: IoT-Dienste von Azure Deutschland | Microsoft-Dokumentation
-description: Ihr Einstiegspunkt in die IoT Suite für Azure Deutschland
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
+description: Dieser Artikel bietet einen Einstiegspunkt in die Azure IoT Suite für Azure Deutschland.
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/01/2018
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 932f9457cc5d33063714ae9c9678174a8b64d156
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: 730256e315e04489892030e39fef0b6d27879f5a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684761"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018491"
 ---
 # <a name="azure-germany-iot-services"></a>IoT-Dienste von Azure Deutschland
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 ## <a name="iot-solution-accelerators"></a>IoT Solution Accelerators
 Alle Dienste der Azure IoT Suite sowie IoT Hub, Stream Analysis und Event Hub sind in Azure Deutschland verfügbar. 
@@ -45,13 +40,15 @@ Beide Lösungen können auf zwei Arten bereitgestellt werden: über die Website 
 
 ### <a name="deploy-via-website"></a>Bereitstellen über die Website
 
-Befolgen Sie die Anweisungen im [Tutorial für die vorkonfigurierten Lösungen](../iot-accelerators/iot-accelerators-remote-monitoring-explore.md), das über die zuvor erwähnte Homepage abgerufen werden kann.
+Befolgen Sie die Anweisungen im [Tutorial für die vorkonfigurierten Lösungen](../iot-accelerators/quickstart-remote-monitoring-deploy.md), das über die zuvor erwähnte Homepage abgerufen werden kann.
 
 ### <a name="deploy-via-powershell"></a>Bereitstellen über PowerShell
 
 Für die *Remoteüberwachungslösung* wird eine Vollversion (mit Azure Resource Manager-Vorlagen und Visual Studio) benötigt. Laden Sie sich das [Azure IoT-Remoteüberwachungs-Repository von GitHub](https://github.com/Azure/azure-iot-remote-monitoring) herunter. Die PowerShell-Bereitstellung ist für andere Umgebungen wie Azure Deutschland einsatzbereit. Geben Sie den *Umgebungsparameter* „AzureGermanCloud“ nach folgendem Muster ein:
 
-    build.cmd cloud debug AzureGermanCloud
+```powershell
+build.cmd cloud debug AzureGermanCloud
+```
 
 Bing Karten ist derzeit nicht in Azure Deutschland verfügbar und kann aus diesem Grund nicht automatisch abonniert werden. Sie können dieses Problem beheben, indem Sie den Dienst in der globalen Azure-Umgebung abonnieren und auch dort verwenden. 
 
@@ -64,7 +61,7 @@ Gehen Sie hierzu wie folgt vor:
 2. Rufen Sie Ihren Bing Karten-API für Unternehmen-Schlüssel aus dem globalen Azure-Portal ab: 
     1. Navigieren Sie zur Ressourcengruppe, in der sich Ihre Bing Karten-API für Unternehmen im globalen Azure-Portal befindet.
     2. Klicken Sie auf **Alle Einstellungen** > **Schlüsselverwaltung**. 
-    3. Es werden zwei Schlüssel angezeigt: „MasterKey“ und „QueryKey“. Kopieren Sie den Wert für „QueryKey“.
+    3. Sie sehen zwei Schlüssel: „MasterKey“ und „QueryKey“. Kopieren Sie den Wert für „QueryKey“.
 3. Besorgen Sie sich den aktuellen Code aus dem [Azure IoT-Remoteüberwachungs-Repository auf GitHub](https://github.com/Azure/azure-iot-remote-monitoring).
 4. Führen Sie eine Cloudbereitstellung in Ihrer Umgebung aus, indem Sie die Anleitung zur Befehlszeilenbereitstellung im Repositoryordner `/docs/` befolgen. 
 5. Wenn Sie die Bereitstellung ausgeführt haben, suchen Sie im Stammordner nach der Datei **.user.config**, die während der Bereitstellung erstellt wurde. Öffnen Sie diese Datei in einem Texteditor. 
@@ -74,4 +71,4 @@ Gehen Sie hierzu wie folgt vor:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
+Abonnieren Sie den [Azure Deutschland-Blog](/archive/blogs/azuregermany/), um weitere Informationen und Updates zu erhalten.

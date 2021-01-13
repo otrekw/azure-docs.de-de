@@ -1,23 +1,23 @@
 ---
-title: Verwenden von vorhandenen lokalen Proxyservern und Azure AD | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie vorhandene lokale Proxyserver verwenden.
+title: Verwenden von vorhandenen lokalen Proxyservern und Azure Active Directory
+description: Hier wird erläutert, wie vorhandene lokale Proxyserver bei Azure Active Directory verwendet werden können.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: mimart
+ms.topic: how-to
+ms.date: 04/07/2020
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e4b073a63b5b6bec565aed67bcaec7ed014261b
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 808357b95f4de904ead0741d848480d548a2e26a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807867"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030075"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Verwenden von vorhandenen lokalen Proxyservern
 
@@ -27,6 +27,7 @@ Zuerst sehen wir uns die folgenden wichtigsten Bereitstellungsszenarien an:
 
 * Konfigurieren von Connectors zum Umgehen von lokalen Proxys für ausgehenden Datenverkehr
 * Konfigurieren von Connectors zum Verwenden eines Proxys für ausgehenden Datenverkehr für den Zugriff auf den Azure AD-Anwendungsproxy
+* Konfigurieren der Nutzung eines Proxys zwischen dem Connector und der Back-End-Anwendung
 
 Weitere Informationen zur Funktionsweise von Connectors finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-connectors.md).
 
@@ -104,24 +105,25 @@ Auf dem Proxy für ausgehenden Datenverkehr sind vier Aspekte zu beachten:
 * Proxyregeln für ausgehenden Datenverkehr
 * Proxyauthentifizierung
 * Proxyports
-* SSL-Überprüfung
+* TLS-Überprüfung
 
 #### <a name="proxy-outbound-rules"></a>Proxyregeln für ausgehenden Datenverkehr
 
 Lassen Sie den Zugriff auf die folgenden URLs zu:
 
-| URL | Wie diese verwendet wird |
-| --- | --- |
-| \*.msappproxy.net<br>\*.servicebus.windows.net | Kommunikation zwischen dem Connector und dem Anwendungsproxy-Clouddienst |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure verwendet diese URLs, um Zertifikate zu überprüfen. |
-| login.windows.net<br>login.microsoftonline.com | Der Connector verwendet diese URLs während der Registrierung. |
+| URL | Port |  Wie diese verwendet wird |
+| --- | --- | --- |
+| &ast;.msappproxy.net<br>&ast;.servicebus.windows.net | 443/HTTPS | Kommunikation zwischen dem Connector und dem Anwendungsproxy-Clouddienst |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP | Der Connector verwendet diese URLs, um Zertifikate zu überprüfen. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com | 443/HTTPS | Der Connector verwendet diese URLs während der Registrierung. |
+| ctldl.windowsupdate.com | 80/HTTP | Der Connector verwendet diese URL während der Registrierung. |
 
-Wenn für Ihre Firewall oder Ihren Proxy die Konfiguration von DNS-Zulassungslisten möglich ist, können Sie Verbindungen mit „\*.msappproxy.net“ und „\*.servicebus.windows.net“ zulassen. Andernfalls müssen Sie den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653) zulassen. Die IP-Adressbereiche werden wöchentlich aktualisiert.
+Wenn für Ihre Firewall oder Ihren Proxy die Konfiguration von DNS-Zulassungslisten möglich ist, können Sie Verbindungen mit „\*.msappproxy.net“ und „\*.servicebus.windows.net“ zulassen.
 
 Wenn Sie die Konnektivität nicht über den FQDN zulassen können und stattdessen IP-Adressbereiche angeben müssen, verwenden Sie diese Optionen:
 
 * Lassen Sie für den Connector den ausgehenden Zugriff für alle Ziele zu.
-* Lassen Sie für den Connector den ausgehenden Zugriff auf alle [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com//download/details.aspx?id=41653) zu. Die Schwierigkeit besteht bei der Verwendung der Liste mit den IP-Bereichen für Azure-Datencenter darin, dass sie wöchentlich aktualisiert wird. Sie müssen einen Prozess implementieren, mit dem sichergestellt wird, dass Ihre Zugriffsregeln entsprechend aktualisiert werden. Wenn nur ein Teil der IP-Adressen verfügbar sind, funktioniert Ihre Konfiguration möglicherweise nicht.
+* Lassen Sie für den Connector den ausgehenden Zugriff auf alle IP-Bereiche des Azure-Rechenzentrums zu. Die Schwierigkeit besteht bei der Verwendung der Liste mit den IP-Bereichen für Azure-Datencenter darin, dass sie wöchentlich aktualisiert wird. Sie müssen einen Prozess implementieren, mit dem sichergestellt wird, dass Ihre Zugriffsregeln entsprechend aktualisiert werden. Wenn nur ein Teil der IP-Adressen verfügbar sind, funktioniert Ihre Konfiguration möglicherweise nicht. Zum Herunterladen der neuesten IP-Adressbereiche des Azure-Rechenzentrums navigieren Sie zu [https://download.microsoft.com](https://download.microsoft.com), und suchen Sie nach „Azure-IP-Adressbereiche und Diensttags“. Wählen Sie dann die relevante Cloud aus. So finden Sie beispielsweise die IP-Adressbereiche für die öffentliche Cloud mit „Azure IP-Adressbereiche und -Diensttags – Öffentliche Cloud“. Die US Government-Cloud finden Sie, indem Sie nach „Azure IP-Adressbereiche und -Diensttags – US Goverment Cloud“ suchen.
 
 #### <a name="proxy-authentication"></a>Proxyauthentifizierung
 
@@ -129,14 +131,34 @@ Die Proxyauthentifizierung wird derzeit nicht unterstützt. Unsere aktuelle Empf
 
 #### <a name="proxy-ports"></a>Proxyports
 
-Der Connector stellt ausgehende SSL-basierte Verbindungen mit der CONNECT-Methode her. Bei dieser Methode wird praktisch ein Tunnel durch den Proxy für ausgehenden Datenverkehr eingerichtet. Konfigurieren Sie den Proxyserver für die Verwendung von Tunneln zu den Ports 443 und 80.
+Der Connector stellt ausgehende TLS-basierte Verbindungen mit der CONNECT-Methode her. Bei dieser Methode wird praktisch ein Tunnel durch den Proxy für ausgehenden Datenverkehr eingerichtet. Konfigurieren Sie den Proxyserver für die Verwendung von Tunneln zu den Ports 443 und 80.
 
 > [!NOTE]
 > Wenn die Service Bus-Daten per HTTPS gesendet werden, wird Port 443 verwendet. Standardmäßig wird für Service Bus aber versucht, direkte TCP-Verbindungen herzustellen, und HTTPS wird nur verwendet, wenn für die direkte Verbindung ein Fehler auftritt.
 
-#### <a name="ssl-inspection"></a>SSL-Überprüfung
+#### <a name="tls-inspection"></a>TLS-Überprüfung
 
-Verwenden Sie die SSL-Überprüfung nicht für den Connectordatenverkehr, da dies zu Problemen für den Connectordatenverkehr führt. Der Connector verwendet ein Zertifikat zur Authentifizierung beim Anwendungsproxydienst, und dieses Zertifikat kann während der SSL-Überprüfung verloren gehen.
+Verwenden Sie die TLS-Überprüfung nicht für den Connectordatenverkehr, da dies zu Problemen beim Connectordatenverkehr führt. Der Connector verwendet ein Zertifikat zur Authentifizierung beim Anwendungsproxydienst, und dieses Zertifikat kann während der TLS-Überprüfung verloren gehen.
+
+## <a name="configure-using-a-proxy-between-the-connector-and-backend-application"></a>Konfigurieren der Nutzung eines Proxys zwischen dem Connector und der Back-End-Anwendung
+Die Nutzung eines Weiterleitungsproxys für die Kommunikation mit der Back-End-Anwendung kann in einigen Umgebungen eine besondere Anforderung sein.
+Führen Sie die folgenden Schritte aus, um dies zu aktivieren:
+
+### <a name="step-1-add-the-required-registry-value-to-the-server"></a>Schritt 1: Hinzufügen des erforderlichen Registrierungswerts zum Server
+1. Fügen Sie zum Aktivieren der Nutzung des Standardproxys dem Registrierungsschlüssel für die Connectorkonfiguration unter „HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector“ den Registrierungswert (DWORD) `UseDefaultProxyForBackendRequests = 1` hinzu.
+
+### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>Schritt 2: Manuelles Konfigurieren des Proxyservers mit dem Befehl „netsh“
+1.  Aktivieren Sie die Gruppenrichtlinie „Proxyeinstellungen pro Computer vornehmen“. Diese finden Sie unter: Computerkonfiguration\Richtlinien\Administrative Vorlagen\Windows-Komponenten\Internet Explorer. Dies muss wie hier angegeben festgelegt werden, anstatt die Richtlinie pro Benutzer festzulegen.
+2.  Führen Sie `gpupdate /force` auf dem Server aus, oder starten Sie den Server neu, um sicherzustellen, dass die aktualisierten Einstellungen für die Gruppenrichtlinie verwendet werden.
+3.  Starten Sie eine Eingabeaufforderung mit erhöhten Rechten (Administratorrechten), und geben Sie `control inetcpl.cpl` ein.
+4.  Konfigurieren Sie die erforderlichen Proxyeinstellungen. 
+
+Mit diesen Einstellungen kann der Connector für die Kommunikation mit Azure und mit der Back-End-Anwendung denselben Weiterleitungsproxy nutzen. Falls für die Kommunikation zwischen Connector und Azure kein oder ein anderer Weiterleitungsproxy benötigt wird, können Sie dies wie folgt einrichten: Ändern Sie die Datei „ApplicationProxyConnectorService.exe.config“, wie dies in den Abschnitten „Umgehen von Proxys für ausgehenden Datenverkehr“ bzw. „Verwenden des Proxyservers für ausgehenden Datenverkehr“ beschrieben ist.
+
+> [!NOTE]
+> Es gibt verschiedene Möglichkeiten, den Internetproxy im Betriebssystem zu konfigurieren. Proxyeinstellungen, die über NETSH WINHTTP (führen Sie zur Überprüfung `NETSH WINHTTP SHOW PROXY` aus) konfiguriert werden, setzen die Proxyeinstellungen außer Kraft, die Sie in Schritt 2 konfiguriert haben. 
+
+Der Proxy des Computers wird auch vom Connectorupdatedienst verwendet. Sie können dieses Verhalten ändern, indem Sie die Datei „ApplicationProxyConnectorUpdaterService.exe.config“ bearbeiten.
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Problembehandlung für Proxyprobleme des Connectors und Verbindungsprobleme von Diensten
 
@@ -144,7 +166,10 @@ Sie sollten jetzt verfolgen können, dass der gesamte Datenverkehr über den Pro
 
 Die beste Möglichkeit zur Identifizierung und Behebung von Problemen mit der Connectorkonnektivität ist die Erstellung einer Netzwerkerfassung beim Starten des Connectordiensts. Im Folgenden finden Sie einige Tipps zum Erfassen und Filtern von Netzwerkablaufverfolgungen.
 
-Sie können ein Überwachungstool Ihrer Wahl verwenden. Für diesen Artikel haben wir Microsoft Message Analyzer genutzt. Sie können es von der [Microsoft-Website](https://www.microsoft.com/download/details.aspx?id=44226) herunterladen.
+Sie können ein Überwachungstool Ihrer Wahl verwenden. Für diesen Artikel haben wir Microsoft Message Analyzer genutzt.
+
+> [!NOTE]
+> [Microsoft Message Analyzer (MMA) wurde eingestellt](https://docs.microsoft.com/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f), und die zugehörigen Downloadpakete wurden am 25. November 2019 aus den Microsoft.com-Sites entfernt.  Zurzeit entwickelt Microsoft keinen Ersatz für Microsoft Message Analyzer.  Wenn Sie eine ähnliche Funktionalität benötigen, verwenden Sie ein Drittanbieter-Tool wie Wireshark für die Netzwerkprotokollanalyse.
 
 Die folgenden Beispiele beziehen sich speziell auf Message Analyzer. Die Prinzipien können aber auf alle Analysetools angewendet werden.
 
@@ -186,4 +211,4 @@ Wenn andere Antwortcodes angezeigt werden, z.B. 407 oder 502, weist dies darauf 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-connectors.md)
-* Wenn Probleme mit der Connectorkonnektivität bestehen, stellen Sie Ihre Frage bitte im [Azure Active Directory-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD), oder erstellen Sie ein Ticket bei unserem Supportteam.
+* Wenn Probleme mit der Connectorkonnektivität bestehen, stellen Sie Ihre Frage auf der [Microsoft F&A-Seite für Azure Active Directory](/answers/topics/azure-active-directory.html), oder erstellen Sie ein Ticket für unser Supportteam.

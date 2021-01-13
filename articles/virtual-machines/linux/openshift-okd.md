@@ -1,25 +1,20 @@
 ---
-title: Bereitstellen von OKD in Azure | Microsoft-Dokumentation
+title: Bereitstellen von OKD in Azure
 description: Bereitstellen von OKD in Azure.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: haroldwongms
 manager: joraio
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
+ms.subservice: workloads
+ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: fccb77110eafa131733ecea70fb209b2a168436c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ed74d0829a8372ea8391fcd331eef2ef3af3dae0
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082514"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704910"
 ---
 # <a name="deploy-okd-in-azure"></a>Bereitstellen von OKD in Azure
 
@@ -124,12 +119,12 @@ Die Parameter können sich je nach Release unterschieden. Überprüfen Sie daher
 
 
 > [!NOTE] 
-> Der folgende Befehl erfordert Azure CLI 2.0.8 oder höher. Sie können die CLI-Version mit dem `az --version`-Befehl überprüfen. Informationen zum Aktualisieren der CLI-Version finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> Der folgende Befehl erfordert Azure CLI 2.0.8 oder höher. Sie können die CLI-Version mit dem `az --version`-Befehl überprüfen. Informationen zum Aktualisieren der CLI-Version finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 Das folgende Beispiel stellt den OKD-Cluster und alle zugehörigen Ressourcen in der Ressourcengruppe „openshiftrg“ mit dem Bereitstellungsnamen „myOpenShiftCluster“ bereit. Auf die Vorlage wird direkt aus dem GitHub-Repository verwiesen. Dazu wird eine lokale Parameterdatei namens „azuredeploy.parameters.json“ verwendet.
 
 ```azurecli 
-az group deployment create -g openshiftrg --name myOpenShiftCluster \
+az deployment group create -g openshiftrg --name myOpenShiftCluster \
       --template-uri https://raw.githubusercontent.com/Microsoft/openshift-origin/master/azuredeploy.json \
       --parameters @./azuredeploy.parameters.json
 ```
@@ -163,6 +158,6 @@ az group delete --name openshiftrg
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Aufgaben nach der Bereitstellung](./openshift-post-deployment.md)
-- [Beheben von Problemen bei der Bereitstellung von OpenShift](./openshift-troubleshooting.md)
+- [Aufgaben nach der Bereitstellung](./openshift-container-platform-3x-post-deployment.md)
+- [Beheben von Problemen bei der Bereitstellung von OpenShift](./openshift-container-platform-3x-troubleshooting.md)
 - [Erste Schritte mit OKD](https://docs.okd.io)

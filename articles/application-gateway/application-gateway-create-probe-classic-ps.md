@@ -1,38 +1,30 @@
 ---
-title: Erstellen eines benutzerdefinierten Tests – Azure Application Gateway (PowerShell – klassisch) | Microsoft-Dokumentation
+title: Erstellen eines benutzerdefinierten Tests mithilfe des klassischen Bereitstellungsmodells – Azure Application Gateway
 description: Erfahren Sie, wie Sie mithilfe von PowerShell einen benutzerdefinierten Test für ein Application Gateway im klassischen Bereitstellungsmodell erstellen.
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-service-management
-ms.assetid: 338a7be1-835c-48e9-a072-95662dc30f5e
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/26/2017
+ms.topic: how-to
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 01c1768f60da98206f0dfd041745428256f545fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13441899eeb5ca2b7c60977ab2858fe40a398d1a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "58861878"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397857"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Erstellen eines benutzerdefinierten Tests für ein Azure Application Gateway (klassisch) mithilfe von PowerShell
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-create-probe-portal.md)
+> * [Azure portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Klassische Azure PowerShell](application-gateway-create-probe-classic-ps.md)
 
 In diesem Artikel fügen Sie einen benutzerdefinierten Test zu einem vorhandenen Anwendungsgateway mit PowerShell hinzu. Benutzerdefinierte Tests sind für Anwendungen, die über eine bestimmte Seite für die Integritätsprüfung verfügen, oder für Anwendungen hilfreich, die keine erfolgreiche Antwort für die Standardwebanwendung bereitstellen.
 
 > [!IMPORTANT]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](application-gateway-create-probe-ps.md).
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](application-gateway-create-probe-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -144,7 +136,7 @@ Das folgende Beispiel zeigt, wie Sie mithilfe einer Konfigurationsdatei das Appl
 > [!IMPORTANT]
 > Für die Protokollelemente Http oder Https muss die Groß-/Kleinschreibung beachtet werden.
 
-Es wird ein neues Konfigurationselement vom Typ \<Test\> hinzugefügt, um benutzerdefinierte Tests zu konfigurieren.
+Es wird ein neues Konfigurationselement vom Typ \<Probe\> hinzugefügt, um benutzerdefinierte Tests zu konfigurieren.
 
 Die Konfigurationsparameter sind:
 
@@ -157,7 +149,7 @@ Die Konfigurationsparameter sind:
 | **Timeout** | Definiert das Timeout des Tests für eine HTTP-Antwortprüfung.|
 | **UnhealthyThreshold** | Die Anzahl von HTTP-Antworten mit Fehlern, ab der die Back-End-Instanz als *fehlerhaft* gekennzeichnet wird.|
 
-Auf den Namen der Überprüfung wird in der \<BackendHttpSettings\>-Konfiguration verwiesen, um festzulegen, welcher Back-End-Pool die Einstellungen für die benutzerdefinierte Überprüfung verwenden soll.
+Auf den Namen des Tests wird in der Konfiguration \<BackendHttpSettings\> verwiesen, um festzulegen, welcher Back-End-Pool die Einstellungen für den benutzerdefinierten Test verwenden soll.
 
 ## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Hinzufügen eines benutzerdefinierten Tests zu einem vorhandenen Anwendungsgateway
 
@@ -208,7 +200,6 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie die SSL-Auslagerung (Secure Sockets Layer) konfigurieren möchten, lesen Sie den Abschnitt [Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung](application-gateway-ssl.md).
+Wenn Sie Transport Layer Security (TLS) konfigurieren möchten, früher als SSL-Auslagerung (Secure Sockets Layer) bekannt, lesen Sie den Abschnitt [Konfigurieren eines Anwendungsgateways für die TLS-Auslagerung](./tutorial-ssl-powershell.md).
 
-Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Lastenausgleich konfigurieren möchten, lesen Sie den Abschnitt [Erstellen eines Anwendungsgateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md).
-
+Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Lastenausgleich konfigurieren möchten, lesen Sie den Abschnitt [Erstellen eines Anwendungsgateways mit einem internen Lastenausgleich (ILB)](./application-gateway-ilb-arm.md).

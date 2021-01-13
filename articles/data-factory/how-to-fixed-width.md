@@ -8,16 +8,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: 9964aaf060c43cc3e9992f515bf272011e795043
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 23b812da8c84ebf055ac4eabdc4649828c139a7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962131"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89051014"
 ---
-# <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Verarbeiten von Textdateien mit fester Länge unter Verwendung von Data Factory-Mappingdatenflüssen
+# <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Verarbeiten von Textdateien mit fester Länge mithilfe von Data Factory Mapping Data Flows
 
-Mithilfe von Mappingdatenflüssen in Microsoft Azure Data Factory können Sie Daten aus Textdateien mit fester Breite transformieren. In der folgenden Aufgabe definieren Sie ein Dataset für eine Textdatei ohne Trennzeichen und richten dann Unterteilungen in Teilzeichenfolgen basierend auf der Ordinalposition ein.
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Mithilfe von Mapping Data Flows in Microsoft Azure Data Factory können Sie Daten aus Textdateien mit fester Breite transformieren. In der folgenden Aufgabe definieren Sie ein Dataset für eine Textdatei ohne Trennzeichen und richten dann Unterteilungen in Teilzeichenfolgen basierend auf der Ordinalposition ein.
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
 
@@ -27,7 +29,7 @@ Mithilfe von Mappingdatenflüssen in Microsoft Azure Data Factory können Sie Da
 
     ![Pipeline mit fester Breite](media/data-flow/fwpipe.png)
 
-3. Wählen Sie in der Datenflussaktivität die Option **New Mapping Data Flow** (Neuer Mappingdatenfluss) aus.
+3. Wählen Sie in der Datenflussaktivität die Option für eine **neue Mapping Data Flow-Instanz** aus.
 
 4. Fügen Sie eine Transformation für Quelle, abgeleitete Spalte, Auswahl und Senke hinzu:
 
@@ -89,4 +91,4 @@ Mithilfe von Mappingdatenflüssen in Microsoft Azure Data Factory können Sie Da
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erstellen Sie Ihre restliche Datenflusslogik mithilfe von [Mappingdatenfluss-Transformationen](concepts-data-flow-overview.md).
+* Erstellen Sie die restliche Datenflusslogik mithilfe von Mapping Data Flow-[Transformationen](concepts-data-flow-overview.md).

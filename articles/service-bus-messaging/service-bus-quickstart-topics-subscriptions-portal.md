@@ -1,21 +1,18 @@
 ---
-title: 'Schnellstart: Erstellen von Service Bus-Themen und -Abonnements im Azure-Portal | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie im Azure-Portal ein Service Bus-Thema und Abonnements dieses Themas erstellen.
-services: service-bus-messaging
+title: Verwenden des Azure-Portals zum Erstellen von Service Bus-Themen und Abonnements
+description: 'Schnellstart: In dieser Schnellstartanleitung erfahren Sie, wie Sie im Azure-Portal ein Service Bus-Thema und Abonnements dieses Themas erstellen.'
 author: spelluru
-manager: timlt
-ms.service: service-bus-messaging
 ms.topic: quickstart
-ms.date: 04/15/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: a392f8b11a7ab1ad72f4da289c54e34b022f1ea6
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 749ba3d2947dfd7defdf2549305f2a61c16ba713
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990312"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95803287"
 ---
-# <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Schnellstart: Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements dieses Themas im Azure-Portal
+# <a name="use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements dieses Themas im Azure-Portal
 In diesem Schnellstart erstellen Sie im Azure-Portal ein Service Bus-Thema und anschließend Abonnements dieses Themas. 
 
 ## <a name="what-are-service-bus-topics-and-subscriptions"></a>Was sind Service Bus-Themen und -Abonnements?
@@ -35,7 +32,11 @@ Mit Service Bus-Themen und -Abonnements können Sie viele Nachrichten an eine gr
 > Sie können Service Bus-Ressourcen mit dem [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) verwalten. Mit dem Service Bus-Explorer können Benutzer eine Verbindung mit einem Service Bus-Namespace herstellen und Messagingentitäten auf einfache Weise verwalten. Das Tool stellt erweiterte Features wie Import-/Exportfunktionen oder Testmöglichkeiten für Themen, Warteschlangen, Abonnements, Relaydienste, Notification Hubs und Event Hubs zur Verfügung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Senden von Nachrichten an ein Thema und zum Empfangen dieser Nachrichten über ein Abonnement finden Sie im folgenden Artikel: Auswählen der Programmiersprache im Inhaltsverzeichnis. 
+In diesem Artikel haben Sie einen Service Bus-Namespace, ein Thema im Namespace und drei Abonnements für das Thema erstellt. Informationen zum Veröffentlichen von Nachrichten im Thema und zum Abonnieren von Nachrichten aus einem Abonnement finden Sie in den folgenden Schnellstartanleitungen im Abschnitt **Veröffentlichen und Abonnieren von Nachrichten**. 
 
-> [!div class="nextstepaction"]
-> [Veröffentlichen und Abonnieren von Nachrichten](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [.NET](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [Java](service-bus-java-how-to-use-topics-subscriptions.md)
+- [JavaScript](service-bus-nodejs-how-to-use-topics-subscriptions.md)
+- [Python](service-bus-python-how-to-use-topics-subscriptions.md)
+- [PHP](service-bus-php-how-to-use-topics-subscriptions.md)
+- [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md)

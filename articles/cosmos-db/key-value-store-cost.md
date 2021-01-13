@@ -3,20 +3,22 @@ title: Gebühren für Anforderungseinheiten für Azure Cosmos DB als Schlüsselw
 description: Informationen zu den Gebühren für Anforderungseinheiten von Azure Cosmos DB für einfache Schreib- und Lesevorgänge bei Verwendung als Schlüsselwertspeicher.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.subservice: cosmosdb-sql
+ms.topic: how-to
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3a79db11ff05bcc9d18619c7f508a9864c17c3b8
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 9354ae0a22ef2e8ab4ee6a57563d3f3c4c8e4547
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012795"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339300"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB als Schlüsselwertspeicher – Kostenübersicht
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB ist ein global verteilter Datenbankdienst mit mehreren Modellen für die mühelose Erstellung hochverfügbarer, umfangreicher Anwendungen. Standardmäßig indiziert Azure Cosmos DB automatisch und effizient alle erfassten Daten. Dies ermöglicht schnelle und konsistente [SQL](how-to-sql-query.md)-Abfragen (und [JavaScript](stored-procedures-triggers-udfs.md)-Abfragen) für die Daten. 
+Azure Cosmos DB ist ein global verteilter Datenbankdienst mit mehreren Modellen für die mühelose Erstellung hochverfügbarer, umfangreicher Anwendungen. Standardmäßig indiziert Azure Cosmos DB automatisch und effizient alle erfassten Daten. Dies ermöglicht schnelle und konsistente [SQL](./sql-query-getting-started.md)-Abfragen (und [JavaScript](stored-procedures-triggers-udfs.md)-Abfragen) für die Daten. 
 
 In diesem Artikel werden die Kosten von Azure Cosmos DB für einfache Schreib- und Lesevorgänge bei Verwendung als Schlüssel-/Wertspeicher beschrieben. Zu den Schreibvorgängen zählen Einfügungen, Ersetzungen, Löschungen und Upserts von Datenelementen. Neben der garantierten SLA mit 99,999 % Verfügbarkeit für alle Konten mit mehreren Regionen bietet Azure Cosmos DB garantiert unter 10 ms Latenz für Lesevorgänge und für die (indizierten) Schreibvorgänge im 99. Perzentil. 
 
@@ -26,7 +28,7 @@ Die Azure Cosmos DB-Leistung basiert auf der Menge des bereitgestellten Durchsa
 
 Als global verteiltes Datenbanksystem ist Cosmos DB der einzige Azure-Dienst, der umfassende SLAs zu Latenz, Durchsatz, Konsistenz und Hochverfügbarkeit bietet. Der Durchsatz, den Sie bereitstellen, wird auf jede der Regionen angewandt, die Ihrem Cosmos-Konto zugeordnet sind. Für Lesevorgänge bietet Cosmos DB mehrere klar definierte [Konsistenzebenen](consistency-levels.md), zwischen denen Sie wählen können. 
 
-In der folgenden Tabelle ist die Anzahl der erforderlichen RUs für Lese- und Schreibvorgänge basierend auf einem Datenelement mit einer Größe von 1 KB und 100 KB/s angegeben.
+In der folgenden Tabelle ist die Anzahl der erforderlichen RUs für Lese- und Schreibvorgänge basierend auf einem Datenelement mit einer Größe von 1 KB und 100 KB/s angegeben, während die standardmäßige automatische Indizierung deaktiviert ist. 
 
 |Elementgröße|1 Lesevorgang|1 Schreibvorgang|
 |-------------|------|-------|
@@ -48,4 +50,3 @@ Die meisten grundlegenden Blob- oder Objektspeicherdienste berechnen Gebühren v
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Verwenden Sie den [RU-Rechner](https://cosmos.azure.com/capacitycalculator/) für die Schätzung des Durchsatzes für Ihre Workloads.
-

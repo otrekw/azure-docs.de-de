@@ -1,24 +1,15 @@
 ---
 title: Warnung bei Problemen in Azure Cloud Services mit der Azure-Diagnoseintegration in Azure Application Insights | Microsoft-Dokumentation
 description: Überwachen Sie Probleme wie Startfehler, Abstürze und Schleifen bei der Wiederverwendung von Rollen in Azure Cloud Services mit Azure Application Insights.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
-ms.author: mbullwin
-ms.openlocfilehash: 219ba632d7688f1a428378309828b689698d2fe5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1cdfc6dc3ac74997743512ee07f9293699e3ad10
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409498"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87309289"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Warnung bei Problemen in Azure Cloud Services mit der Azure-Diagnoseintegration in Azure Application Insights
 
@@ -120,7 +111,7 @@ Nachdem Sie die Aktionsgruppe definiert haben, bestätigen Sie Ihre Änderungen,
 
 Weitere Informationen zur automatischen Erkennung finden Sie hier:
 
-[Fehleranomalien](../../azure-monitor/app/proactive-failure-diagnostics.md)
-[Arbeitsspeicherverluste](../../azure-monitor/app/proactive-potential-memory-leak.md)
-[Leistungsanomalien](../../azure-monitor/app/proactive-performance-diagnostics.md)
+[Fehleranomalien](./proactive-failure-diagnostics.md)
+[Arbeitsspeicherverluste](./proactive-potential-memory-leak.md)
+[Leistungsanomalien](./proactive-performance-diagnostics.md)
 

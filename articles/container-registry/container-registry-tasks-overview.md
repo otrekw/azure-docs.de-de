@@ -1,19 +1,14 @@
 ---
-title: Automatisieren des Erstellens und Patchens von Containerimages mit Azure Container Registry Tasks (ACR Tasks)
+title: Übersicht über ACR Tasks
 description: 'Einführung in ACR Tasks: eine Suite mit Features in Azure Container Registry für sichere, automatisierte Build- und Patchvorgänge für Containerimages und Verwaltung in der Cloud.'
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
-ms.date: 09/05/2019
-ms.author: danlep
-ms.openlocfilehash: c62987031a73aa4840c1d036689a3c52fb4dc4a0
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 08/12/2020
+ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914663"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562853"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisieren von Containerimage-Builds und Wartung mit ACR Tasks
 
@@ -57,7 +52,7 @@ Informationen zur Verwendung der Schnelltasks finden Sie im ersten ACR Tasks-Tut
 
 ## <a name="trigger-task-on-source-code-update"></a>Auslösen des Tasks beim Update des Quellcodes
 
-Lösen Sie einen Containerimage-Buildvorgang oder Task in mehreren Schritten aus, wenn Code in ein Git-Repository in GitHub oder Azure DevOps committet oder ein Pull Request erstellt oder aktualisiert wird. Konfigurieren Sie z. B. einen Buildtask mithilfe des Azure CLI-Befehls [az acr task create][az-acr-task-create], indem Sie ein Git-Repository und optional einen Branch und eine Dockerfile-Datei angeben. Wenn Ihr Team Code im Repository aktualisiert, löst ein von ACR Tasks erstellter Webhook einen Buildvorgang für das im Repository definierte Containerimage aus. 
+Lösen Sie einen Containerimage-Buildvorgang oder Task in mehreren Schritten aus, wenn Code in ein öffentliches oder privates Git-Repository in GitHub oder Azure DevOps committet oder ein Pull Request erstellt oder aktualisiert wird. Konfigurieren Sie z. B. einen Buildtask mithilfe des Azure CLI-Befehls [az acr task create][az-acr-task-create], indem Sie ein Git-Repository und optional einen Branch und eine Dockerfile-Datei angeben. Wenn Ihr Team Code im Repository aktualisiert, löst ein von ACR Tasks erstellter Webhook einen Buildvorgang für das im Repository definierte Containerimage aus. 
 
 ACR Tasks unterstützt die folgenden Trigger, wenn Sie ein Git-Repository als Taskkontext festlegen:
 
@@ -66,32 +61,21 @@ ACR Tasks unterstützt die folgenden Trigger, wenn Sie ein Git-Repository als T
 | Commit | Ja |
 | Pull Request | Nein |
 
-Um den Trigger zu konfigurieren, stellen Sie dem Task ein persönliches Zugriffstoken (Personal Access Token, PAT) zur Verfügung, um den Webhook im GitHub- oder Azure DevOps-Repository festzulegen.
+Um den Trigger für die Quellcodeaktualisierung zu konfigurieren, stellen Sie dem Task ein persönliches Zugriffstoken (Personal Access Token, PAT) zur Verfügung, um den Webhook im öffentlichen oder privaten GitHub- oder Azure DevOps-Repository festzulegen.
+
+> [!NOTE]
+> Derzeit unterstützt ACR Tasks keine Anforderungstrigger für Commit- oder Pullvorgänge in GitHub Enterprise-Repositorys.
 
 Informationen zum Auslösen von Buildvorgängen nach dem Committen von Quellcode finden Sie im zweiten ACR Tasks-Tutorial: [Automatisieren von Buildvorgängen für Containerimages mit Azure Container Registry Tasks](container-registry-tutorial-build-task.md).
 
 ## <a name="automate-os-and-framework-patching"></a>Automatisierung von Betriebssystem- und Frameworkpatching
 
-Durch die Möglichkeit zur Erkennung von Basisimageaktualisierungen bietet ACR Tasks einen echten Mehrwert für Ihren Containererstellungsworkflow. Wenn das aktualisierte Basisimage in Ihre Registrierung gepusht oder ein Basisimage in einem öffentlichen Repository. wie Docker Hub, aktualisiert wird, kann ACR Tasks automatisch alle darauf basierenden Anwendungsimages erstellen.
+Durch die Möglichkeit zur Erkennung von *Basisimage* aktualisierungen bietet ACR Tasks einen echten Mehrwert für Ihren Containererstellungsworkflow. Ein Basisimage, das ein Feature der meisten Containerimages ist, ist ein übergeordnetes Image, auf dem ein oder mehrere Anwendungsimages basieren. Basisimages enthalten in der Regel das Betriebssystem und manchmal auch Anwendungsframeworks. 
 
-Containerimages lassen sich grob in *Basisimages* und *Anwendungsimages* unterteilen. Basisimages enthalten neben anderen Anpassungen in der Regel das Betriebssystem und die Anwendungsframeworks, auf denen Ihre Anwendung basiert. Diese Basisimages basieren üblicherweise auf öffentlichen Upstreamimages, beispielsweise [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet] oder [Node.js][base-node]. Ein Basisimage kann mehreren Anwendungsimages zugrunde liegen.
+Sie können einen ACR Task einrichten, um eine Abhängigkeit von einem Basisimage zu verfolgen, wenn es ein Anwendungsimage erstellt. Wenn das aktualisierte Basisimage in Ihre Registrierung gepusht oder ein Basisimage in einem öffentlichen Repository. wie Docker Hub, aktualisiert wird, kann ACR Tasks automatisch alle darauf basierenden Anwendungsimages erstellen.
+Die automatische Erkennung und Neuerstellung von ACR Tasks spart Zeit, die ansonsten für die manuelle Nachverfolgung und Aktualisierung der einzelnen Anwendungsimages aufgewendet werden müsste, die auf Ihr aktualisiertes Basisimage verweisen.
 
-Wenn ein Betriebssystem- oder App-Framework-Image durch die zuständige Upstream-Instanz aktualisiert wird (etwa mit einem wichtigen Sicherheitspatch für das Betriebssystem), müssen Sie auch Ihre Basisimages aktualisieren, um die Korrektur zu integrieren. Daraufhin müssen auch alle Anwendungsimages neu erstellt werden, um die Upstreamkorrekturen aus Ihrem Basisimage zu integrieren.
-
-Da Basisimageabhängigkeiten bei der Erstellung eines Containerimages von ACR Tasks dynamisch erkannt werden, kann ACR Tasks auch erkennen, dass das Basisimage eines Anwendungsimages aktualisiert wurde. Mit einer einzelnen vorkonfigurierten [Buildaufgabe](container-registry-tutorial-base-image-update.md#create-a-task) kann ACR Tasks dann **automatisch alle Anwendungsimages neu erstellen**. Die automatische Erkennung und Neuerstellung von ACR Tasks spart Zeit, die ansonsten für die manuelle Nachverfolgung und Aktualisierung der einzelnen Anwendungsimages aufgewendet werden müsste, die auf Ihr aktualisiertes Basisimage verweisen.
-
-Für Imageerstellungen aus einer Dockerfile-Datei verfolgt ein ACR Task ein Basisimageupdate, wenn sich das Basisimage an einem der folgenden Speicherorte befindet:
-
-* Dieselbe Azure-Containerregistrierung, in der der Task ausgeführt wird
-* Eine andere Azure-Containerregistrierung in derselben Region 
-* Ein öffentliches Repository in Docker Hub
-* Ein öffentliches Repository in Microsoft Container Registry
-
-> [!NOTE]
-> * Der Basisimageupdate-Trigger ist standardmäßig in einer ACR Tasks-Instanz aktiviert. 
-> * Derzeit verfolgt ACR Tasks nur Basisimageupdates für Anwendungsimages (*Runtime*) nach. ACR Tasks verfolgt keine Basisimageupdates für Zwischenimages (*Buildzeit*) nach, die in mehrstufigen Dockerfile-Dateien verwendet werden. 
-
-Weitere Informationen zu Betriebssystem- und Frameworkpatches finden Sie im dritten ACR Tasks-Tutorial: [Automatisieren von Buildvorgängen für Images nach der Aktualisierung des Basisimages mit Azure Container Registry Tasks](container-registry-tutorial-base-image-update.md).
+Erfahren Sie mehr über die [Basisimageaktualisierungs-Trigger](container-registry-tasks-base-images.md) für ACR Tasks. Und erfahren Sie, wie Sie einen Imagebuild auslösen, wenn ein Basisimage per Pushvorgang in eine Containerregistrierung übertragen wird, im Tutorial [Automatisieren von Containerimagebuilds, wenn ein Basisimage in einer Azure Container Registry aktualisiert wird](container-registry-tutorial-base-image-update.md).
 
 ## <a name="schedule-a-task"></a>Planen eines Tasks
 
@@ -108,7 +92,7 @@ Beispielsweise können Sie eine mehrstufige Aufgaben erstellen, die die folgende
 1. Erstellen eines Webanwendungs-Testimages
 1. Ausführen des Webanwendungs-Testcontainers, der Tests für den aktuell ausgeführten Anwendungscontainer durchführt
 1. Wenn die Tests erfolgreich sind: Erstellen eines Helm-Chart-Archivpakets
-1. Ausführen eines `helm upgrade` mithilfe des neuen Helm-Diagramm-Archivpakets
+1. Ausführen von `helm upgrade` mithilfe des neuen Helm-Chart-Archivpakets
 
 Mit mehrstufigen Aufgaben können Sie das Erstellen, Ausführen und Testen eines Images in mehrere individuelle Schritte aufteilen, wobei Abhängigkeiten zwischen den Schritten unterstützt werden. Mit mehrstufigen Aufgaben in ACR Tasks erhalten Sie eine bessere Kontrolle über die Workflows zur Erstellung von Images, Tests, Betriebssystem- und Frameworkpatches.
 
@@ -116,34 +100,36 @@ Weitere Informationen zu mehrstufigen Aufgaben finden Sie unter [Ausführen von 
 
 ## <a name="context-locations"></a>Kontextspeicherorte
 
-Die folgende Tabelle zeigt einige Beispiele von unterstützten Kontextspeicherorten für ACR Tasks:
+Die folgende Tabelle zeigt Beispiele von unterstützten Kontextspeicherorten für ACR Tasks:
 
 | Kontextspeicherort | BESCHREIBUNG | Beispiel |
 | ---------------- | ----------- | ------- |
 | Lokales Dateisystem | Dateien in einem Verzeichnis auf dem lokalen Dateisystem. | `/home/user/projects/myapp` |
-| GitHub-Masterbranch | Dateien im Masterbranch (oder einem anderen Standardbranch) eines GitHub-Repositorys.  | `https://github.com/gituser/myapp-repo.git` |
-| GitHub-Branch | Bestimmter Branch eines GitHub-Repositorys.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub-Unterordner | Dateien in einem Unterordner in einem GitHub-Repository. Das Beispiel zeigt die Kombination der Branch- und Unterordnerspezifikation. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| GitHub-Mainbranch | Dateien im Mainbranch (oder einem anderen Standardbranch) eines öffentlichen oder privaten GitHub-Repositorys  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub-Branch | Bestimmter Branch eines öffentlichen oder privaten GitHub-Repositorys| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub-Unterordner | Dateien in einem Unterordner in einem öffentlichen oder privaten GitHub-Repository. Das Beispiel zeigt die Kombination der Branch- und Unterordnerspezifikation. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| GitHub-Commit | Spezifischer Commit in ein öffentliches oder privates GitHub-Repository. Das Beispiel zeigt die Kombination aus einem Commit-Hash (SHA) und einer Unterordnerspezifikation. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
+| Azure DevOps-Unterordner | Dateien in einem Unterordner in einem öffentlichen oder privaten Azure-Repository. Das Beispiel zeigt die Kombination der Branch- und Unterordnerspezifikation. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Remotetarball | Dateien in einem komprimierten Archiv auf einem Remotewebserver. | `http://remoteserver/myapp.tar.gz` |
+| Artefakt in Containerregistrierung | [OCI-Artefaktdateien](container-registry-oci-artifacts.md) in einem Repository einer Containerregistrierung. | `oci://myregistry.azurecr.io/myartifact:mytag` |
+
+> [!NOTE]
+> Wenn Sie ein privates Git-Repository als Kontext für eine Aufgabe verwenden, müssen Sie ein persönliches Zugriffstoken (PAT) bereitstellen.
 
 ## <a name="image-platforms"></a>Imageplattformen
 
 ACR Tasks erstellt standardmäßig Images für das Linux-Betriebssystem und die amd64-Architektur. Geben Sie das Tag `--platform` an, um Windows-Images oder Linux-Images für andere Architekturen zu erstellen. Geben Sie das Betriebssystem und optional eine unterstützte Architektur im Format „Betriebssystem/Architektur“ an (z. B. `--platform Linux/arm`). Geben Sie bei ARM-Architekturen optional eine Variante im Format „Betriebssystem/Architektur/Variante“ an (z. B. `--platform Linux/arm64/v8`):
 
-| OS | Architecture|
+| OS | Aufbau|
 | --- | ------- | 
 | Linux | amd64<br/>ARM<br/>arm64<br/>386 |
 | Windows | amd64 |
 
-## <a name="view-task-logs"></a>Anzeigen von Taskprotokollen
+## <a name="view-task-output"></a>Anzeigen der Aufgabenausgabe
 
-Bei jeder Aufgabenausführung wird eine Protokollausgabe erzeugt, die Sie überprüfen können, um festzustellen, ob die Aufgabenschritte erfolgreich ausgeführt wurden. Wenn Sie den Befehl [az acr build](/cli/azure/acr#az-acr-build), [az acr run](/cli/azure/acr#az-acr-run) oder [az acr task run](/cli/azure/acr/task#az-acr-task-run) verwenden, um die Aufgabe auszulösen, wird die Protokollausgabe für die Ausführung der Aufgabe an die Konsole gestreamt und auch für einen späteren Abruf gespeichert. Wenn ein Task automatisch ausgelöst wird, z. B. durch einen Quellcodecommit oder ein Basisimageupdate, werden die Aufgabenprotokolle nur gespeichert. Zeigen Sie die Protokolle für eine Aufgabenausführung im Azure-Portal an, oder verwenden Sie den Befehl [az acr task logs](/cli/azure/acr/task#az-acr-task-logs).
+Bei jeder Aufgabenausführung wird eine Protokollausgabe erzeugt, die Sie überprüfen können, um festzustellen, ob die Aufgabenschritte erfolgreich ausgeführt wurden. Wenn Sie eine Aufgabe manuell auslösen, wird die Protokollausgabe für die Ausführung der Aufgabe an die Konsole gestreamt und auch für einen späteren Abruf gespeichert. Wenn ein Task automatisch ausgelöst wird, z. B. durch einen Quellcodecommit oder ein Basisimageupdate, werden die Aufgabenprotokolle nur gespeichert. Zeigen Sie die Ausführungsprotokolle im Azure-Portal an, oder verwenden Sie den Befehl [az acr task logs](/cli/azure/acr/task#az-acr-task-logs).
 
-Standardmäßig werden Daten und Protokolle für Aufgabenausführungen 30 Tage in einer Registrierung aufbewahrt und danach automatisch endgültig gelöscht. Wenn Sie die Daten für eine Aufgabenausführung archivieren möchten, aktivieren Sie die Archivierung mit dem Befehl [az acr task update-run](/cli/azure/acr/task#az-acr-task-update-run). Das folgende Beispiel aktiviert die Archivierung der Aufgabenausführung *cf11* in der Registrierung *myregistry*.
-
-```azurecli
-az acr task update-run --registry myregistry --run-id cf11 --no-archive false
-```
+Weitere Informationen finden Sie unter [Anzeigen und Verwalten von Aufgabenprotokollen](container-registry-tasks-logs.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -152,10 +138,6 @@ Wenn Sie bereit sind, die Erstellung und Wartung von Containerimages in der Clou
 Installieren Sie optional die [Docker-Erweiterung für Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) und die [Azure-Kontoerweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) für die Verwendung mit Ihren Azure-Containerregistrierungen. In Visual Studio Code können Sie Pull- und Pushvorgänge für Images in einer Azure-Containerregistrierung oder auch ACR Tasks ausführen.
 
 <!-- LINKS - External -->
-[base-alpine]: https://hub.docker.com/_/alpine/
-[base-dotnet]: https://hub.docker.com/r/microsoft/dotnet/
-[base-node]: https://hub.docker.com/_/node/
-[base-windows]: https://hub.docker.com/r/microsoft/nanoserver/
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 

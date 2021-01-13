@@ -1,6 +1,6 @@
 ---
 title: 'Konfigurieren der Connected Factory-Topologie: Azure | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie die Topologie eines Soluction Accelerators für Connected Factory konfigurieren.
+description: In diesem Artikel wird die Konfiguration des Solution Accelerators für Connected Factory einschließlich der Topologie beschrieben.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3ddbf5832424cdafad2c29254f51754203c7f079
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428318"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002237"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurieren des Solution Accelerators für Connected Factory
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den Inhalt auf dem neuesten Stand lesen.
 
 Der Solution Accelerator für Connected Factory zeigt ein simuliertes Dashboard für das fiktive Unternehmen Contoso. Dieses Unternehmen verfügt weltweit über zahlreiche Fabrikanlagen.
 
@@ -29,7 +32,7 @@ Jede der Fabrikanlagen von Contoso verfügt über Produktionslinien mit jeweils 
 * Teststation
 * Verpackungsstation
 
-Diese OPC UA-Server umfassen OPC UA-Knoten, und der [OPC-Herausgeber](overview-opc-publisher.md) sendet die Werte dieser Knoten an die Connected Factory-Lösung. Dies umfasst:
+Diese OPC UA-Server umfassen OPC UA-Knoten, und der [OPC-Herausgeber](overview-opc-publisher.md) sendet die Werte dieser Knoten an die Connected Factory-Lösung. Dies umfasst Folgendes:
 
 * Aktueller Betriebsstatus, beispielsweise der aktuelle Energieverbrauch.
 * Produktionsinformationen wie z.B. die Anzahl der produzierten Produkte.
@@ -85,7 +88,7 @@ Der folgende Ausschnitt zeigt die Gliederung der Konfigurationsdatei `ContosoTop
 }
 ```
 
-Die gemeinsamen Eigenschaften von  `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>` und `<station_configuration>` lauten:
+Die gemeinsamen Eigenschaften von `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>` und `<station_configuration>` lauten:
 
 * **Name** (Zeichenfolgentyp)
 
@@ -264,12 +267,12 @@ Alle in der Konfigurationsdatei verwendeten Eigenschaften können je nach ihrer 
 
 Eigenschaften in dieser Kategorie definieren die visuelle Darstellung des Connected Factory-Dashboards. Beispiele:
 
-* NAME
-* BESCHREIBUNG
+* Name
+* Beschreibung
 * Image
-* Location
-* Units
-* Visible
+* Standort
+* Einheiten
+* Sichtbar
 
 ### <a name="internal-topology-tree-addressing"></a>Adressierung der internen Topologiestruktur
 
@@ -334,7 +337,7 @@ Diese Konfiguration ermöglicht eine Abfrage der Telemetriewerte für diesen Kno
 * Durchschnitt aller Werte
 * Summe aller Werte für alle eindeutigen **OpcUri**- (**ApplicationUri**) und **NodeId**-Paare in einem vorgegebenen Zeitraum
 
-Ein Merkmal des **NumberOfManufactureredProducts**-Knotens ist, dass der zugehörige Wert ausschließlich ansteigt. Um die Anzahl von Produkten zu berechnen, die innerhalb des vorgegebenen Zeitraums hergestellt wurden, verwendet die Connected Factory-Simulation für **OpCode** den Wert **SubMaxMin**. Bei der Berechnung werden der Mindestwert zu Beginn des angegebenen Zeitraums und der Höchstwert am Ende des Zeitraums abgerufen.
+Ein Merkmal des **NumberOfManufactureredProducts**-Knotens ist, dass der zugehörige Wert ausschließlich ansteigt. Um die Anzahl von Produkten zu berechnen, die innerhalb des vorgegebenen Zeitraums hergestellt wurden, verwendet die Connected Factory-Simulation für **OpCode den Wert** **SubMaxMin**. Bei der Berechnung werden der Mindestwert zu Beginn des angegebenen Zeitraums und der Höchstwert am Ende des Zeitraums abgerufen.
 
 **OpCode** konfiguriert die Berechnungslogik so, dass die Differenz zwischen Höchst- und Mindestwert als Ergebnis ausgegeben wird. Diese Ergebnisse werden anschließend von der niedrigsten bis zur (globalen) Stammebene akkumuliert und im Dashboard angezeigt.
 

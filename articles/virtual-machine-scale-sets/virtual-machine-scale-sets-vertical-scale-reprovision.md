@@ -1,32 +1,26 @@
 ---
-title: Vertikales Skalieren von Azure-VM-Skalierungsgruppen | Microsoft Docs
+title: Vertikales Skalieren von Azure-VM-Skalierungsgruppen
 description: Erfahren Sie, wie Sie einen virtuellen Computer als Reaktion auf die Überwachung von Warnungen mit Azure Automation vertikal skalieren.
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
-ms.topic: article
+ms.subservice: autoscale
 ms.date: 04/18/2019
-ms.author: manayar
-ms.openlocfilehash: d12fde33ec9d55c891c801f1b89143b4db6f8ae7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035751"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87029279"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikale automatische Skalierung mit VM-Skalierungsgruppen
 
-In diesem Artikel wird beschrieben, wie Sie Azure [VM-Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/) mit oder ohne erneute Bereitstellung vertikal skalieren können. Informationen zur vertikalen Skalierung von VMs, die sich nicht in Skalierungsgruppen befinden, finden Sie unter [Vertikales Skalieren von virtuellen Azure-Computern mit Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+In diesem Artikel wird beschrieben, wie Sie Azure [VM-Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/) mit oder ohne erneute Bereitstellung vertikal skalieren können. 
 
-Beim vertikalen Skalieren, auch *zentrales Hochskalieren* und *zentrales Herunterskalieren* genannt, wird die Größe eines virtuellen Computers (VM) als Reaktion auf eine Workload vergrößert oder verringert. Vergleichen Sie dies mit dem [horizontalen Skalieren](virtual-machine-scale-sets-autoscale-overview.md), das auch als *horizontales Hochskalieren* und *horizontales Herunterskalieren* bezeichnet wird, bei dem die Anzahl der VMs je nach Workload geändert wird.
+Beim vertikalen Skalieren, auch  *Hochskalieren* und *Herunterskalieren* genannt, wird die Größe eines virtuellen Computers (VM) als Reaktion auf eine Workload vergrößert oder verringert. Vergleichen Sie dies mit dem [horizontalen Skalieren](virtual-machine-scale-sets-autoscale-overview.md), das auch als *Aufskalieren* und *Abskalieren* bezeichnet wird, bei dem die Anzahl der VMs je nach Workload geändert wird.
 
 Bei der erneuten Bereitstellung wird ein vorhandener virtueller Computer entfernt und durch einen neuen ersetzt. Wenn Sie die Größe der VMs in einer VM-Skalierungsgruppe erhöhen oder verringern, ist es in einigen Fällen angebracht, die Größe von vorhandenen VMs zu ändern und Ihre Daten beizubehalten. In anderen Fällen müssen Sie neue VMs der neuen Größe bereitstellen. In diesem Dokument werden beide Fälle behandelt.
 
@@ -45,7 +39,7 @@ Sie können die vertikale Skalierung so einrichten, dass sie auf Grundlage von m
 > [!NOTE]
 > Die Größen, auf die der virtuelle Computer skaliert werden kann, hängen einerseits von der Größe des ersten virtuellen Computers sowie von der Verfügbarkeit anderer Größen im Cluster ab, in dem der virtuelle Computer bereitgestellt wurde. In den veröffentlichten Automation-Runbooks, die in diesem Artikel verwendet werden, wird dies berücksichtigt und lediglich eine Skalierung innerhalb der nachstehenden VM-Größenpaare durchgeführt. Dies bedeutet, dass ein virtueller Standard_D1v2-Computer nicht plötzlich auf Standard_G5 hochskaliert oder auf Basic_A0 herunterskaliert werden kann. Ferner wird das Hoch- bzw. Herunterskalieren der Größe von eingeschränkten VMs nicht unterstützt. Sie können zwischen den folgenden Größenpaaren skalieren:
 > 
-> | VM-Größenpaare für die Skalierung |  |
+> | Mitglieder von VM-Größenpaaren für die Skalierung | Mitglied |
 > | --- | --- |
 > | Basic_A0 |Basic_A4 |
 > | Standard_A0 |Standard_A4 |
@@ -95,7 +89,7 @@ Sie können die vertikale Skalierung so einrichten, dass sie auf Grundlage von m
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Erstellen eines Azure Automation-Kontos mit der Funktion „Ausführen als“
 Als Erstes müssen Sie lediglich ein Azure Automation-Konto erstellen, in dem die Runbooks gehostet werden. So können die Instanzen der VM-Skalierungsgruppen skaliert werden. Vor kurzem wurde in [Azure Automation](https://azure.microsoft.com/services/automation/) das Feature „Als Konto ausführen“ eingeführt, wodurch der Dienstprinzipal für die automatische Ausführung der Runbooks im Auftrag des Benutzers eingerichtet wird. Weitere Informationen finden Sie unter
 
-* [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/automation-sec-configure-azure-runas-account.md)
+* [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/manage-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Importieren der Azure Automation-Runbooks für die vertikale Skalierung in Ihr Abonnement
 
@@ -159,8 +153,8 @@ Add-AzMetricAlertRule  -Name  $alertName `
 
 Weitere Informationen zum Erstellen von Warnungen finden Sie in den folgenden Artikeln:
 
-* [Azure Monitor – PowerShell-Schnellstartbeispiele](../azure-monitor/platform/powershell-quickstart-samples.md)
-* [Azure Monitor – Schnellstartbeispiele für die plattformübergreifende CLI](../azure-monitor/platform/cli-samples.md)
+* [Beispiele zu PowerShell in Azure Monitor](../azure-monitor/samples/powershell-samples.md)
+* [CLI-Beispiele für Azure Monitor](../azure-monitor/samples/cli-samples.md)
 
 ## <a name="summary"></a>Zusammenfassung
 

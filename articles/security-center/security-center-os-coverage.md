@@ -8,23 +8,25 @@ manager: rkarlin
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2019
+ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: 1d13db922ae84e4032304a8865ba6fcdafa65748
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 31ff3620bcab6b10b59582daa255ff1f259ab0d3
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201636"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852641"
 ---
 # <a name="supported-platforms"></a>Unterstützte Plattformen 
 
-## Virtuelle Computer/Server <a name="vm-server"></a>
+Auf dieser Seite werden die von Azure Security Center unterstützten Plattformen und Umgebungen gezeigt.
 
-Security Center unterstützt virtuelle Computer/Server in unterschiedlichen Hybridumgebungen:
+## <a name="combinations-of-environments"></a>Kombinationen von Umgebungen <a name="vm-server"></a>
+
+Security Center unterstützt virtuelle Computer und Server in unterschiedlichen Hybridumgebungen:
 
 * Nur Azure
 * Azure und lokal
@@ -33,96 +35,32 @@ Security Center unterstützt virtuelle Computer/Server in unterschiedlichen Hybr
 
 Für eine unter einem Azure-Abonnement aktivierte Azure-Umgebung werden von Azure Security Center automatisch IaaS-Ressourcen ermittelt, die unter dem Abonnement bereitgestellt werden.
 
-> [!NOTE]
-> Um die vollständigen Sicherheitsfeatures nutzen zu können, muss der von Azure Security Center verwendete [Log Analytics-Agent](../azure-monitor/platform/agents-overview.md#log-analytics-agent) installiert und [ordnungsgemäß konfiguriert sein, damit Daten an Azure Security Center gesendet werden](security-center-enable-data-collection.md#manual-agent).
+## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
+Security Center hängt vom [Log Analytics-Agent](../azure-monitor/platform/agents-overview.md#log-analytics-agent) ab. Stellen Sie sicher, dass auf ihren Computern eines der unterstützten Betriebssysteme für diesen Agent ausgeführt wird, wie auf den folgenden Seiten beschrieben:
 
-In den folgenden Abschnitten werden die unterstützten Serverbetriebssysteme aufgelistet, unter denen der von Azure Security Center verwendete [Log Analytics-Agent](../azure-monitor/platform/agents-overview.md#log-analytics-agent) ausgeführt werden kann.
+* [Log Analytics-Agent für von Windows unterstützte Betriebssysteme](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Log Analytics-Agent für von Linux unterstützte Betriebssysteme](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
-### Windows Server-Betriebssysteme <a name="os-windows"></a>
+Stellen Sie außerdem sicher, dass der Log Analytics-Agent [ordnungsgemäß für das Senden von Daten an Security Center](security-center-enable-data-collection.md#manual-agent) konfiguriert ist.
 
-* Windows Server 2019
-* Windows Server 2016
-* Windows Server 2012 R2
-* Windows Server 2012
-* Windows Server 2008 R2
-* Windows Server 2008
+Weitere Informationen zu den spezifischen Security Center-Features, die unter Windows und Linux verfügbar sind, finden Sie unter [Featureabdeckung für Computer](security-center-services.md).
 
 > [!NOTE]
-> Die Integration von Microsoft Defender ATP unterstützt nur Windows Server 2012 R2 und Windows Server 2016.
+> Azure Defender ist zwar für den Schutz von Servern konzipiert, die meisten Funktionen von **Azure Defender für Server** werden jedoch auch für Windows 10-Computer unterstützt. Ein Feature, das aktuell nicht unterstützt wird, ist die [in Security Center integrierte EDR-Lösung: Microsoft Defender für Endpunkt](security-center-wdatp.md).
 
-Weitere Informationen zu den unterstützten Features für die oben aufgeführten Windows-Betriebssysteme finden Sie unter [Virtuelle Computer/Server – unterstützte Features](security-center-services.md##vm-server-features).
+## <a name="managed-virtual-machine-services"></a>Verwaltete Dienste für virtuelle Computer <a name="virtual-machine"></a>
 
-### Linux-Betriebssysteme <a name="os-linux"></a>
+Unter einem Kundenabonnement werden virtuelle Computer auch im Rahmen einiger verwalteter Azure-Dienste erstellt, z. B. Azure Kubernetes (AKS), Azure Databricks usw. Security Center ermittelt auch diese virtuellen Computer, und der Log Analytics-Agent kann installiert und konfiguriert werden, wenn ein unterstütztes Betriebssystem verfügbar ist.
 
-64 Bit
-
-* CentOS 6 und 7
-* Amazon Linux 2017.09
-* Oracle Linux 6 und 7
-* Red Hat Enterprise Linux Server 6 und 7
-* Debian GNU/Linux 8 und 9
-* Ubuntu Linux 14.04 LTS, 16.04 LTS und 18.04 LTS
-* SUSE Linux Enterprise Server 12
-
-32 Bit
-* CentOS 6
-* Oracle Linux 6
-* Red Hat Enterprise Linux Server 6
-* Debian GNU/Linux 8 und 9
-* Ubuntu Linux 14.04 LTS und 16.04 LTS
-
-> [!NOTE]
-> Die Liste der unterstützten Linux-Betriebssysteme ändert sich ständig. Bei Bedarf können Sie [hier](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) klicken, um die aktuelle Liste der unterstützten Versionen anzuzeigen, falls seit der letzten Veröffentlichung in diesem Thema Änderungen vorgenommen wurden.
-
-Weitere Informationen zu den unterstützten Features für die oben aufgeführten Linux-Betriebssysteme finden Sie unter [Virtuelle Computer/Server – unterstützte Features](security-center-services.md##vm-server-features).
-
-### Verwaltete Dienste für virtuelle Computer <a name="virtual-machine"></a>
-
-Unter einem Kundenabonnement werden virtuelle Computer auch im Rahmen einiger verwalteter Azure-Dienste erstellt, z. B. Azure Kubernetes (AKS), Azure Databricks usw. Diese virtuellen Computer werden ebenfalls von Azure Security Center ermittelt. Der Log Analytics-Agent kann unter den oben aufgeführten unterstützten [Windows-/Linux-Betriebssystemen](#os-windows) installiert und konfiguriert werden.
-
-### Cloud Services <a name="cloud-services"></a>
+## <a name="cloud-services"></a>Cloud Services <a name="cloud-services"></a>
 
 Virtuelle Computer, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden. Weitere Informationen zu Clouddiensten finden Sie unter [Übersicht zu Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
 
-## PaaS-Dienste <a name="paas-services"></a>
-
-Die folgenden Azure-PaaS-Ressourcen werden von Azure Security Center unterstützt:
-
-* SQL
-* PostGreSQL
-* MySQL
-* CosmosDB
-* Speicherkonto
-* App Service
-* Funktion
-* Clouddienst
-* VNet
-* Subnet
-* NIC
-* NSG
-* Batch-Konto
-* Service Fabric-Konto
-* Automation-Konto
-* Load Balancer
-* Suchen,
-* Service Bus-Namespace
-* Stream Analytics
-* Event Hub-Namespace
-* Logik-Apps
-* Redis
-* Data Lake Analytics
-* Data Lake Store
-* Schlüsseltresor
-
-Weitere Informationen zu den unterstützten Features für die oben aufgeführte Liste mit PaaS-Ressourcen finden Sie unter [PaaS-Dienste – unterstützte Features](security-center-services.md#paas-services).
+Der Schutz für VMs, die sich in Azure Stack befinden, wird ebenfalls unterstützt. Weitere Informationen zur Integration von Security Center in Azure Stack finden Sie unter [Integrieren Ihrer Azure Stack-VMs in Security Center](quickstart-onboard-machines.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Datenerfassung in Security Center und den Log Analytics-Agent](security-center-enable-data-collection.md).
+- Erfahren Sie mehr über die [Datenerfassung in Security Center mit dem Log Analytics-Agent](security-center-enable-data-collection.md).
 - Erfahren Sie, wie [Daten von Security Center verwaltet und geschützt werden](security-center-data-security.md).
 - Hier erfahren Sie, wie Sie [die Entwurfsaspekte in Bezug auf die Einführung von Azure Security Center planen und verstehen](security-center-planning-and-operations-guide.md).
-- Erfahren Sie mehr über die [für die verschiedenen Cloudumgebungen verfügbaren Features](security-center-services.md).
-- Erfahren Sie mehr über die [Bedrohungserkennung für virtuelle Computer und Server in Azure Security Center](security-center-alerts-iaas.md).
-- Lesen Sie [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md).
-- Lesen Sie [Blogbeiträge zur Sicherheit und Compliance von Azure](https://blogs.msdn.com/b/azuresecurity/).

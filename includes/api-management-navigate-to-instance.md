@@ -2,31 +2,22 @@
 author: vladvino
 ms.service: api-management
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 09/08/2020
 ms.author: vlvinogr
-ms.openlocfilehash: 3a46462f761e7608ae7554604577a1e9d7f88b15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f430e38fa25f2a8fab972f106333973a41dac4e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66238115"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183821"
 ---
 ## <a name="go-to-your-api-management-instance"></a>Navigieren zur API Management-Instanz
 
-![Navigieren zur API Management-Instanz](./media/api-management-navigate-to-instance/00-FindResource-01.png)
+1. Suchen Sie im Azure-Portal nach **API Management-Dienste**, und wählen Sie die entsprechende Option aus.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
+   ![Auswählen von API Management-Dienste](media/api-management-navigate-to-instance/view-apim1.png)
 
-2. Wählen Sie **Alle Dienste** aus.  
+1. Wählen Sie auf der Seite **API Management-Dienste** Ihre API Management-Instanz aus.
 
-3. Geben Sie im Suchfeld `api management`ein.
-
-4. Klicken Sie in den Suchergebnissen auf **API Management-Dienste**.
-
-5. Wählen Sie Ihre API Management-Dienstinstanz aus.
-
-> [!TIP]
-> Klicken Sie auf den Stern, um API Management zu Ihren Favoriten im Azure-Portal hinzuzufügen.
->
-> Das API Management-Symbol (![API Management-Symbol](./media/api-management-navigate-to-instance/apim-icon.png)) wird nun im linken Menü im Portal angezeigt.
+   ![Auswählen Ihrer API Management-Instanz](media/api-management-navigate-to-instance/view-apim2.png)
 

@@ -1,25 +1,18 @@
 ---
-title: Einführung in die App Service-Umgebung v1 – Azure
-description: Hier finden Sie Informationen zur App Service-Umgebung v1. Diese Umgebung bietet sichere, in ein VNET eingebundene, dedizierte Skalierungseinheiten für die App-Ausführung.
-services: app-service
-documentationcenter: ''
+title: Einführung in die ASE v1
+description: Erfahren Sie etwas über die Features der App Service-Umgebung v1. Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 32450d0c5fbb5599b286921b9653ae68faf40ecf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 878cef39ade0487c03dba83c9e3631fe3c72088f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070155"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008622"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Einführung in die App Service-Umgebung v1
 
@@ -55,7 +48,7 @@ Alle Serverressourcen in einer App Service-Umgebung sind ausschließlich für ei
 
 Eine App Service-Umgebung besteht aus einem Front-End-Serverressourcenpool sowie ein bis drei Worker-Serverressourcenpools.
 
-Der Front-End-Pool enthält Serverressourcen, die für die SSL-Terminierung sowie für den automatischen Lastenausgleich von App-Anforderungen in einer App Service-Umgebung zuständig sind.
+Der Front-End-Pool enthält Serverressourcen, die für die TLS-Terminierung sowie für den automatischen Lastenausgleich von App-Anforderungen in einer App Service-Umgebung zuständig sind.
 
 Jeder Workerpool enthält Computeressourcen, die [App Service-Plänen][AppServicePlan] zugeordnet sind, die wiederum eine oder mehrere Azure App Service-Apps enthalten.  Da in einer App Service-Umgebung bis zu drei verschiedenen Workerpools vorhanden sein können, können Sie flexibel verschiedene Serverressourcen für jeden Workerpool auswählen.  
 
@@ -89,14 +82,14 @@ Informationen zur Verwendung einer App Service-Umgebung mit ExpressRoute finden 
 
 <!-- LINKS -->
 [PremiumTier]: https://azure.microsoft.com/pricing/details/app-service/
-[MoreInfoOnVirtualNetworks]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[MoreInfoOnVirtualNetworks]: ../../virtual-network/virtual-networks-faq.md
 [AppServicePlan]: ../overview-hosting-plans.md
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
-[LogicApps]: https://azure.microsoft.com/documentation/articles/app-service-logic-what-are-logic-apps/
+[LogicApps]: ../../logic-apps/logic-apps-overview.md
 [AzureConDeepDive]:  https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/
 [GeodistributedAppFootprint]:  app-service-app-service-environment-geo-distributed-scale.md
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
-[SiteToSite]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
+[SiteToSite]: ../../vpn-gateway/vpn-gateway-multi-site.md
 [ExpressRoute]: https://azure.microsoft.com/services/expressroute/
 [HowToConfigureanAppServiceEnvironment]:  app-service-web-configure-an-app-service-environment.md
 [ControllingInboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md

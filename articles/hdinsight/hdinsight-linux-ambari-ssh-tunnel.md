@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: d976826fe90946697a32c5b1edb9dd323b01cc1c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 04/14/2020
+ms.openlocfilehash: 09fef350a0ff8cc8c2481acd7b8f74cee15d1b9d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105467"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86075551"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Verwenden von SSH-Tunneling zum Zugriff auf die Apache Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Apache Oozie und andere Benutzeroberflächen
 
-HDInsight-Cluster bieten über das Internet Zugriff auf die Apache Ambari-Webbenutzeroberfläche, allerdings benötigen einige Features einen SSH-Tunnel. Beispielsweise kann ohne SSH-Tunnel nicht über das Internet auf die Webbenutzeroberfläche für den Apache Oozie-Dienst zugegriffen werden.
+HDInsight-Cluster bieten über das Internet Zugriff auf die Apache Ambari-Webbenutzeroberfläche. Für einige Features ist ein SSH-Tunnel erforderlich. Beispielsweise kann ohne SSH-Tunnel nicht über das Internet auf die Webbenutzeroberfläche für Apache Oozie zugegriffen werden.
 
 ## <a name="why-use-an-ssh-tunnel"></a>Weshalb ist die Verwendung eines SSH-Tunnels empfehlenswert?
 
@@ -31,7 +31,7 @@ Die folgenden Webbenutzeroberflächen erfordern einen SSH-Tunnel:
 * Oozie-Webbenutzeroberfläche
 * Benutzeroberfläche für HBase-Master und -Protokolle
 
-Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für alle Dienste und Dienstprogramme, die Sie installieren und die einen Webdienst verfügbar machen, einen SSH-Tunnel. Bei der Installation von Hue mit einer Skriptaktion müssen Sie z. B. einen SSH-Tunnel verwenden, um auf die Hue-Webbenutzeroberfläche zuzugreifen.
+Dienste, die mit Skriptaktionen installiert wurden und einen Webdienst verfügbar machen, benötigen einen SSH-Tunnel. Mit einer Skriptaktion installiertes Hue erfordert einen SSH-Tunnel für den Zugriff auf die Webbenutzeroberfläche.
 
 > [!IMPORTANT]  
 > Wenn Sie über ein virtuelles Netzwerk Direktzugriff auf HDInsight haben, müssen Sie keine SSH-Tunnel verwenden. Ein Beispiel für Direktzugriff auf HDInsight über ein virtuelles Netzwerk finden Sie im Dokument [Connect HDInsight to your on-premise network](connect-on-premises-network.md) (Verbinden von HDInsight mit Ihrem lokalen Netzwerk, in englischer Sprache).
@@ -54,39 +54,44 @@ Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für
     >
     > Google Chrome basiert auch auf den Windows-Proxyeinstellungen. Allerdings können Sie Erweiterungen installieren, die SOCKS5 unterstützen. Wir empfehlen [FoxyProxy Standard](https://chrome.google.com/webstore/detail/foxyproxy-standard/gcknhkkoolaabfmlnjonogaaifnjlfnp).
 
-## <a name="usessh"></a>Erstellen von Tunneln mit dem Befehl "ssh"
+## <a name="create-a-tunnel-using-the-ssh-command"></a><a name="usessh"></a>Erstellen von Tunneln mit dem Befehl "ssh"
 
-Verwenden Sie den folgenden Befehl zum Erstellen eines SSH-Tunnels mithilfe des Befehls `ssh` . Ersetzen Sie `sshuser` durch einen SSH-Benutzer für Ihren HDInsight-Cluster und `clustername` durch den Namen des HDInsight-Clusters:
+Verwenden Sie den folgenden Befehl zum Erstellen eines SSH-Tunnels mithilfe des Befehls `ssh` . Ersetzen Sie `sshuser` durch einen SSH-Benutzer für Ihren HDInsight-Cluster und `CLUSTERNAME` durch den Namen des HDInsight-Clusters:
 
 ```cmd
-ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
+ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 ```
 
 Durch diesen Befehl wird eine Verbindung erstellt, über die der Datenverkehr über SSH an den lokalen Port 9876 des Clusters weitergeleitet wird. Die Optionen sind:
 
-* **D 9876**: Der lokale Port, der den Datenverkehr durch den Tunnel weiterleitet.
-* **C** : Alle Daten werden komprimiert, da der Webdatenverkehr hauptsächlich aus Text besteht.
-* **2** : SSH zwingen, nur Protokollversion 2 zu verwenden.
-* **q** : Stiller Modus.
-* **T**: Pseudo-TTY-Zuordnung deaktivieren, da lediglich ein Port weitergeleitet wird.
-* **n**: Verhindert den Lesevorgang für STDIN, da lediglich ein Port weitergeleitet wird.
-* **N**: Keine Remotebefehle ausführen, da lediglich ein Port weitergeleitet wird.
-* **f** : Im Hintergrund ausführen.
+|Option |BESCHREIBUNG |
+|---|---|
+|D 9876|Der lokale Port, der den Datenverkehr durch den Tunnel weiterleitet.|
+|C|Komprimiert alle Daten, da der Webdatenverkehr hauptsächlich aus Text besteht.|
+|2|Erzwingt für SSH, dass nur Protokollversion 2 verwendet wird.|
+|q|Stiller Modus.|
+|T|Deaktiviert die Pseudo-TTY-Zuordnung, da lediglich ein Port weitergeleitet wird.|
+|n|Verhindert das Lesen von STDIN, da lediglich ein Port weitergeleitet wird.|
+|N|Verhindert das Ausführen von Remotebefehlen, da lediglich ein Port weitergeleitet wird.|
+|f|Erzwingt die Ausführung im Hintergrund.|
 
 Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesendete Datenverkehr an den Hauptknoten des Clusters weitergeleitet.
 
-## <a name="useputty"></a>Erstellen von Tunneln mit PuTTY
+## <a name="create-a-tunnel-using-putty"></a><a name="useputty"></a>Erstellen von Tunneln mit PuTTY
 
 [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty) ist ein SSH-Client für Windows mit grafischer Benutzeroberfläche. Wenn Sie mit PuTTY nicht vertraut sind, konsultieren Sie die [PuTTY-Dokumentation](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html). Führen Sie die folgenden Schritte aus, um mithilfe von PuTTY einen SSH-Tunnel zu erstellen:
 
 ### <a name="create-or-load-a-session"></a>Erstellen oder Laden einer Sitzung
 
-1. Öffnen Sie PuTTY, und stellen Sie sicher, dass **Sitzung** im linken Menü ausgewählt ist. Wenn Sie bereits eine Sitzung gespeichert haben, wählen Sie den Sitzungsnamen aus der Liste **Saved Sessions** (Gespeicherte Sitzungen) aus, und klicken Sie auf **Load** (Laden).
+1. Öffnen Sie PuTTY, und stellen Sie sicher, dass **Sitzung** im linken Menü ausgewählt ist. Wenn Sie bereits eine Sitzung gespeichert haben, wählen Sie den Sitzungsnamen in der Liste **Saved Sessions** (Gespeicherte Sitzungen) und dann **Load** (Laden) aus.
 
 1. Wenn Sie noch keine gespeicherte Sitzung haben, geben Sie Ihre Verbindungsdaten ein:
-    * **Hostname (oder IP-Adresse)** : Die SSH-Adresse für den HDInsight-Cluster. Beispiel: **mycluster-ssh.azurehdinsight.net**.
-    * **Port**: 22.
-    * **Verbindungstyp**: SSH
+
+    |Eigenschaft |Wert |
+    |---|---|
+    |Hostname (oder IP-Adresse)|Die SSH-Adresse des HDInsight-Clusters. Beispiel: **mycluster-ssh.azurehdinsight.net**.|
+    |Port|22|
+    |Verbindungstyp.|SSH|
 
 1. Wählen Sie **Speichern** aus.
 
@@ -96,15 +101,15 @@ Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesen
 
 1. Geben Sie die folgenden Informationen in das Formular **Options controlling SSH port forwarding** ein:
 
-   * **Source port** : Der Port auf dem Client, den Sie weiterleiten möchten. Beispiel: **9876**.
+    |Eigenschaft |Wert |
+    |---|---|
+    |Quellport|Der Port auf dem Client, den Sie weiterleiten möchten. Beispiel: **9876**.|
+    |Destination|Die SSH-Adresse des HDInsight-Clusters. Beispiel: **mycluster-ssh.azurehdinsight.net**.|
+    |Dynamisch|Ermöglicht das dynamische SOCKS-Proxyrouting.|
 
-   * **Destination**: Die SSH-Adresse des HDInsight-Clusters. Beispiel: **mycluster-ssh.azurehdinsight.net**.
+    ![Tunneloptionen für die PuTTY-Konfiguration](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
 
-   * **Dynamic** : Ermöglicht das dynamische SOCKS-Proxyrouting.
-
-     ![Tunneloptionen für die PuTTY-Konfiguration](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
-
-1. Klicken Sie auf **Add** (Hinzufügen), um die Einstellungen hinzuzufügen. Klicken Sie dann auf **Open** (Öffnen), um eine SSH-Verbindung zu öffnen.
+1. Wählen Sie **Add** (Hinzufügen) aus, um die Einstellungen hinzuzufügen. Wählen Sie dann **Open** (Öffnen) aus, um eine SSH-Verbindung zu öffnen.
 
 1. Melden Sie sich bei entsprechender Aufforderung beim Server an.
 

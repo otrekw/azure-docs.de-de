@@ -1,10 +1,10 @@
 ---
-title: Überwachen und Verwalten von Datenpipelines – Azure | Microsoft-Dokumentation
+title: Überwachen und Verwalten von Datenpipelines – Azure
 description: Informationen zum Verwenden der App „Überwachung und Verwaltung“ für Azure Data Factorys und Pipelines.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 052ea99f0489458269adf4dca2c6713535933638
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: afab2b03d31045b9f49f357b49d15368cde898da
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139586"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495700"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit der App „Überwachung und Verwaltung“
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ Die App „Überwachung und Verwaltung“ sollte in einem separaten Fenster geö
 
 In der Aktivitätsfensterliste im mittleren Bereich sehen Sie ein Aktivitätsfenster pro Aktivitätsausführung. Wenn die Aktivität z.B. so geplant ist, dass sie fünf Stunden lang stündlich ausgeführt wird, sehen Sie fünf Aktivitätsfenster, denen fünf Datenslices zugeordnet sind. Wenn die Aktivitätsfenster nicht in der Liste im unteren Bereich angezeigt werden, führen Sie die folgenden Schritte aus:
  
-- Aktualisieren Sie im oberen Bereich die Filter für die**Startzeit** und die **Endzeit**, damit sie den Start- und Endzeiten in Ihrer Pipeline entsprechen, und klicken Sie dann auf die Schaltfläche **Übernehmen**.  
+- Aktualisieren Sie im oberen Bereich die Filter für die **Startzeit** und die **Endzeit**, damit sie den Start- und Endzeiten in Ihrer Pipeline entsprechen, und klicken Sie dann auf die Schaltfläche **Übernehmen**.  
 - Die Liste der Aktivitätsfenster wird nicht automatisch aktualisiert. Klicken Sie auf die Schaltfläche **Aktualisieren** auf der Symbolleiste in der Liste der **Aktivitätsfenster**.  
 
 Wenn Sie keine Data Factory-Anwendung haben, mit der Sie diese Schritte testen können, folgen Sie dem Tutorial: [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
@@ -108,7 +108,7 @@ Klicken Sie auf die Option **Pipeline öffnen**, um alle Aktivitäten anzuzeigen
 
 ![Menü "Pipeline öffnen"](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-In der geöffneten Pipelineansicht sehen Sie alle Aktivitäten in der Pipeline. In diesem Beispiel gibt es nur eine Aktivität: die Kopieraktivität. 
+In der geöffneten Pipelineansicht sehen Sie alle Aktivitäten in der Pipeline. In diesem Beispiel gibt es mit der Kopieraktivität nur eine Aktivität. 
 
 ![Geöffnete Pipeline](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
@@ -124,7 +124,7 @@ Klicken Sie auf ein Aktivitätsfenster, um im rechten Bereich im Fenster **Eigen
 
 Wechseln Sie im rechten Bereich zur Registerkarte **Aktivitätsfenster-Explorer** , um weitere Details anzuzeigen.
 
-![Aktivitätsfenster-Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
+![Der Screenshot zeigt, wie Sie auf die Registerkarte „Aktivitätsfenster-Explorer“ zugreifen können.](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
 Im Bereich **Versuche** sehen Sie auch **aufgelöste Variablen** für jeden Aktivitätsausführungsversuch.
 
@@ -144,7 +144,7 @@ Im Popupfenster „Aktivitätsfenster“ und im Aktivitätsfenster-Explorer kön
 
 ![Aktivitätsfenster-Explorer, Pfeile nach links/rechts](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-Unten in der Diagrammansicht werden die folgenden Schaltflächen angezeigt: Vergrößern, Verkleinern, Mit Zoom anpassen, Zoom: 100, Layout sperren. Mit der Schaltfläche **Layout sperren** können Sie verhindern, dass Sie versehentlich Tabellen und Pipelines in der Diagrammansicht verschieben. Diese Funktion ist standardmäßig aktiviert. Sie können sie deaktivieren und Entitäten im Diagramm verschieben. Wenn Sie sie deaktivieren, können Sie die letzte Schaltfläche verwenden, um Tabellen und Pipelines automatisch zu positionieren. Sie können mithilfe des Mausrads auch vergrößern oder verkleinern.
+Am unteren Rand der Diagrammansicht sehen Sie die Schaltflächen „Vergrößern“, „Verkleinern“, „Mit Zoom anpassen“, „Auf 100 % vergrößern“ und „Layout sperren“. Mit der Schaltfläche **Layout sperren** können Sie verhindern, dass Sie versehentlich Tabellen und Pipelines in der Diagrammansicht verschieben. Diese Funktion ist standardmäßig aktiviert. Sie können sie deaktivieren und Entitäten im Diagramm verschieben. Wenn Sie sie deaktivieren, können Sie die letzte Schaltfläche verwenden, um Tabellen und Pipelines automatisch zu positionieren. Sie können mithilfe des Mausrads auch vergrößern oder verkleinern.
 
 ![Diagrammansicht, Zoombefehle](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
@@ -187,7 +187,7 @@ Das Aktivitätsfenster kann einen der folgenden Status haben:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">In Bearbeitung</td><td>Die Überprüfen erfolgt.</td><td>Die Überprüfung wird ausgeführt.</td>
+<td rowspan="2">InProgress</td><td>Die Überprüfen erfolgt.</td><td>Die Überprüfung wird ausgeführt.</td>
 </tr>
 <td>-</td>
 <td>Das Aktivitätsfenster wird verarbeitet.</td>
@@ -207,7 +207,7 @@ Das Aktivitätsfenster kann einen der folgenden Status haben:
 <td>Bereit</td><td>-</td><td>Das Aktivitätsfenster ist für die Verwendung bereit.</td>
 </tr>
 <tr>
-<td>Übersprungen</td><td>-</td><td>Das Aktivitätsfenster wurde nicht verarbeitet.</td>
+<td>Ausgelassen</td><td>-</td><td>Das Aktivitätsfenster wurde nicht verarbeitet.</td>
 </tr>
 <tr>
 <td>Keine</td><td>-</td><td>Ein Aktivitätsfenster, das zuvor einen anderen Status hatte, aber zurückgesetzt wurde.</td>
@@ -217,7 +217,7 @@ Das Aktivitätsfenster kann einen der folgenden Status haben:
 
 Wenn Sie in der Liste auf ein Aktivitätsfenster klicken, sehen Sie im **Aktivitätsfenster-Explorer** oder im Fenster **Eigenschaften** auf der rechten Seite die dazugehörigen Details.
 
-![Aktivitätsfenster-Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
+![Der Screenshot zeigt, wie Details zu einem Aktivitätsfenster angezeigt werden können.](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
 ### <a name="refresh-activity-windows"></a>Aktualisieren von Aktivitätsfenstern
 Die Details werden nicht automatisch aktualisiert. Klicken Sie daher auf der Befehlsleiste auf „Aktualisieren“ (die zweite Schaltfläche), um die Liste der Aktivitätsfenster manuell zu aktualisieren.  
@@ -270,7 +270,7 @@ Klicken Sie in der Liste **Aktivitätsfenster** auf den Namen einer Spalte (z.B.
 
 ![Liste „Aktivitätsfenster“, Spaltenmenü](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
-Sie können Folgendes durchführen:
+Sie können folgendermaßen vorgehen:
 
 * Sortieren in aufsteigender Reihenfolge
 * Sortieren in absteigender Reihenfolge
@@ -289,7 +289,7 @@ In demselben Fenster können Sie Filter auch aufheben. Um alle Filter für die L
 Wählen Sie ein Aktivitätsfenster aus, klicken Sie für die erste Befehlsleisten-Schaltfläche auf den Pfeil nach unten, und wählen Sie **Erneut ausführen** / **Rerun with upstream in pipeline** (Mit Upstream in der Pipeline erneut ausführen) aus. Wenn Sie die Option **Rerun with upstream in pipeline** (Mit Upstream in der Pipeline erneut ausführen) auswählen, werden alle Upstream-Aktivitätsfenster ebenfalls erneut ausgeführt.
     ![Erneutes Ausführen eines Aktivitätsfensters](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
-Sie können auch mehrere Aktivitätsfenster in der Liste auswählen und diese gleichzeitig wiederholen. Es kann auch sein, dass Sie Aktivitätsfenster nach dem Status filtern (z.B. **Fehler**) und anschließend die Aktivitätsfenster mit den Fehlern erneut ausführen möchten, nachdem Sie das Problem behoben haben, das den Fehler für die Aktivitätsfenster verursacht hat. Im folgenden Abschnitt finden Sie Details zum Filtern von Aktivitätsfenstern in der Liste.  
+Sie können auch mehrere Aktivitätsfenster in der Liste auswählen und diese gleichzeitig wiederholen. Sie können Aktivitätsfenster basierend auf dem Status (z.B. **Fehlerhaft**) filtern und das fehlerhafte Aktivitätsfenster erneut ausführen, nachdem Sie das Problem behoben haben, das den Fehler des Aktivitätsfensters verursacht hat. Im folgenden Abschnitt finden Sie Details zum Filtern von Aktivitätsfenstern in der Liste.  
 
 ### <a name="pauseresume-multiple-pipelines"></a>Anhalten/Fortsetzen mehrerer Pipelines
 Mithilfe der STRG-TASTE können Sie mehrere Pipelines auswählen. Sie können die Schaltflächen auf der Befehlsleiste (in der folgenden Abbildung durch ein rotes Rechteck gekennzeichnet) verwenden, um sie anzuhalten bzw. fortzusetzen.

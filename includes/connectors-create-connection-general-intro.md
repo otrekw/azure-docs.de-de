@@ -1,18 +1,20 @@
 ---
-title: include file
-description: include file
-services: logic-apps
 ms.service: logic-apps
+ms.topic: include
 author: ecfan
 ms.author: estfan
-ms.topic: include
-ms.date: 09/18/2019
-ms.custom: include file
-ms.openlocfilehash: 1fbf8a8d83871fa4cbed3fa79d3c19d66406329d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.date: 06/06/2020
+ms.openlocfilehash: 1113201941ce0757b58e361c08c9d79d7dd374cc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120902"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999574"
 ---
-Wenn Sie einen Trigger oder eine Aktion verwenden, der oder die erstmals auf einen Dienst zugreift, werden Sie vom Designer für Logik-Apps aufgefordert, eine *Verbindung* mit diesem Dienst herzustellen. Sie können die erforderlichen Verbindungsinformationen dann direkt aus Ihrer Logik-App im Designer bereitstellen.
+Wenn Sie einen Trigger oder eine Aktion hinzufügen, der/die zum ersten Mal eine Verbindung mit einem Dienst oder System herstellt, werden Sie vom Logik-App-Designer aufgefordert, eine *Verbindung* herzustellen, indem Sie die erforderlichen Informationen bereitstellen, die je nach Verbindung variieren, z. B.:
+
+* Ein Name für die neue Verbindung.
+* Der Server- oder Systemnamen.
+* Die Anmeldeinformationen Ihres Benutzers oder Kontos.
+* Der zu verwendende Authentifizierungstyp
+* Das Azure-Abonnement und den Namen für das Datengateway, das Sie zuvor beim Herstellen einer Verbindung mit lokalen Datenquellen erstellt haben.

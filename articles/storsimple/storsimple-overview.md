@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
-ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f9c7a2df83e9d630ce2b4635a830fb941180c758
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965112"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021832"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung
 
@@ -39,7 +39,7 @@ Zusätzlich zur Speicherverwaltung können Sie mithilfe der StorSimple-Funktione
 ## <a name="why-use-storsimple"></a>Gründe für die Verwendung von StorSimple
 In der folgenden Tabelle werden einige der wichtigsten Vorteile von Microsoft Azure StorSimple beschrieben.
 
-| Feature | Vorteil |
+| Funktion | Vorteil |
 | --- | --- |
 | Transparente Integration |Verwendet das iSCSI-Protokoll, um Datenspeicher unsichtbar miteinander zu verknüpfen. Dies sorgt dafür, dass Daten, die in der Cloud, im Datencenter oder auf Remoteservern gespeichert sind, dem Anschein nach an einem zentralen Speicherort gespeichert werden. |
 | Reduzierte Speicherkosten |Reserviert ausreichend lokalen oder Cloudspeicher, um aktuelle Anforderungen zu erfüllen, und erweitert Cloudspeicher nur bei Bedarf. Außerdem werden Speicheranforderungen und -kosten durch die Beseitigung redundanter Versionen der gleichen Daten (Deduplizierung) und eine Komprimierung noch weiter verringert. |
@@ -48,7 +48,7 @@ In der folgenden Tabelle werden einige der wichtigsten Vorteile von Microsoft Az
 | Datenmobilität |Auf in Microsoft Azure Cloud Services hochgeladene Daten kann für Wiederherstellungs- und Migrationszwecke von anderen Standorten aus zugegriffen werden. Darüber hinaus können Sie mithilfe von StorSimple auch StorSimple Cloud Appliances auf virtuellen Computern (VMs) konfigurieren, die in Microsoft Azure ausgeführt werden. Die virtuellen Computer nutzen dann für Test-oder Wiederherstellungszwecke virtuelle Geräte für den Zugriff auf gespeicherte Daten. |
 | Geschäftskontinuität |Erlaubt Benutzern der StorSimple-Serien 5000–7000, ihre Daten zu einem Gerät der StorSimple 8000-Serie zu migrieren. |
 | Verfügbarkeit im Azure-Portal für Behörden |StorSimple ist im Azure Government-Portal verfügbar. Weitere Informationen finden Sie unter [Bereitstellen lokaler StorSimple-Geräte im Government-Portal](storsimple-8000-deployment-walkthrough-gov-u2.md). |
-| Datensicherheit und -verfügbarkeit |Die StorSimple 8000-Serie unterstützt neben lokal redundantem Speicher (LRS) und georedundantem Speicher (GRS) auch zonenredundanten Speicher (ZRS). Ausführliche Informationen über zonenredundanten Speicher (ZRS) finden Sie in [diesem Artikel über Redundanzoptionen von Azure Storage](https://azure.microsoft.com/documentation/articles/storage-redundancy/) . |
+| Datensicherheit und -verfügbarkeit |Die StorSimple 8000-Serie unterstützt neben lokal redundantem Speicher (LRS) und georedundantem Speicher (GRS) auch zonenredundanten Speicher (ZRS). Ausführliche Informationen über zonenredundanten Speicher (ZRS) finden Sie in [diesem Artikel über Redundanzoptionen von Azure Storage](../storage/common/storage-redundancy.md) . |
 | Unterstützung für kritische Anwendungen |Mit StorSimple können Sie die entsprechenden Volumes als lokal identifizieren, womit wiederum sichergestellt wird, dass die für wichtige Anwendungen erforderlichen Daten nicht in die Cloud verschoben werden. Lokale Volumes werden nicht durch Cloudlatenzen oder Konnektivitätsprobleme beeinträchtigt. Weitere Informationen zu lokalen Volumes finden Sie unter [Verwalten von Volumes mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manage-volumes-u2.md). |
 | Geringe Latenz und hohe Leistung |Sie können Cloud Appliances erstellen, die die Features von Azure Storage Premium für hohe Leistung und niedrige Latenzen nutzen. Weitere Informationen zu Premium-StorSimple Cloud Appliances finden Sie unter [Bereitstellen und Verwalten einer StorSimple Cloud Appliance in Azure](storsimple-8000-cloud-appliance-u2.md). |
 
@@ -60,7 +60,7 @@ Die Microsoft Azure StorSimple-Lösung umfasst die folgenden Komponenten:
 * **StorSimple Cloud Appliance:** Dies ist eine auch als virtuelles StorSimple-Gerät bezeichnete Softwareversion des StorSimple-Geräts, die die Architektur und die meisten Funktionen des physischen Hybridspeichergeräts repliziert. Die StorSimple Cloud Appliance wird auf einem einzelnen Knoten auf einem virtuellen Azure-Computer ausgeführt. Virtuelle Premium-Geräte, die Azure-Premium-Speicher nutzen, stehen in Update 2 und höher zur Verfügung.
 * **StorSimple-Geräte-Manager-Dienst:** eine Erweiterung des Azure-Portals, mit der Sie ein StorSimple-Gerät oder eine StorSimple Cloud Appliance über eine gemeinsame Weboberfläche verwalten können. Sie können den StorSimple-Geräte-Manager-Dienst nutzen, um Dienste zu erstellen und zu verwalten, Geräte anzuzeigen und zu verwalten, Warnungen anzuzeigen, Volumes zu verwalten und Sicherungsrichtlinien und den Sicherungskatalog anzuzeigen und zu verwalten.
 * **Windows PowerShell für StorSimple** – Eine Befehlszeilenschnittstelle, mit der Sie das StorSimple-Gerät verwalten können. Windows PowerShell für StorSimple bietet Features, mit denen Sie Ihr StorSimple-Gerät registrieren, die Netzwerkschnittstelle Ihres Geräts konfigurieren, bestimmte Arten von Updates installieren, Probleme Ihres Geräts durch Zugriff auf eine Supportsitzung beheben und den Gerätestatus ändern können. Sie können auf Windows PowerShell für StorSimple zugreifen, indem Sie eine Verbindung mit der seriellen Konsole herstellen oder Windows PowerShell-Remoting verwenden.
-* **Azure PowerShell-Cmdlets für StorSimple** – eine Auflistung von Windows PowerShell-Cmdlets, die es Ihnen ermöglichen, Servicelevel- und Migrationsaufgaben über die Befehlszeile zu automatisieren. Weitere Informationen zu den Azure PowerShell-Cmdlets für StorSimple finden Sie unter [Cmdlet-Referenz](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0#azure).
+* **Azure PowerShell-Cmdlets für StorSimple** – eine Auflistung von Windows PowerShell-Cmdlets, die es Ihnen ermöglichen, Servicelevel- und Migrationsaufgaben über die Befehlszeile zu automatisieren. Weitere Informationen zu den Azure PowerShell-Cmdlets für StorSimple finden Sie unter [Cmdlet-Referenz](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0#azure).
 * **StorSimple Snapshot Manager** – Ein MMC-Snap-In, das Volumegruppen und den Volumeschattenkopie-Dienst von Windows verwendet, um anwendungskonsistente Backups zu generieren. Darüber hinaus können Sie den StorSimple-Momentaufnahmen-Manager zum Erstellen von Sicherungszeitplänen und Klonen oder Wiederherstellen von Volumes einsetzen.
 * **StorSimple-Adapter für SharePoint** – Ein Tool, das den Microsoft Azure StorSimple-Speicher und den Datenschutz auf SharePoint Server-Farmen transparent erweitert, während der StorSimple-Speicher über das Portal der SharePoint-Zentraladministration angezeigt und verwaltet werden kann.
 
@@ -129,7 +129,7 @@ Sie können auf Windows PowerShell für StorSimple über eine serielle Konsole (
 Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell für StorSimple zum Verwalten eines StorSimple-Geräts](storsimple-8000-windows-powershell-administration.md).
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Azure PowerShell-Cmdlets für StorSimple
-Die Azure PowerShell-Cmdlets für StorSimple sind eine Sammlung von Windows PowerShell-Cmdlets, mit denen Sie Servicelevel- und Migrationsaufgaben über die Befehlszeile automatisieren können. Weitere Informationen zu den Azure PowerShell-Cmdlets für StorSimple finden Sie unter [Cmdlet-Referenz](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0).
+Die Azure PowerShell-Cmdlets für StorSimple sind eine Sammlung von Windows PowerShell-Cmdlets, mit denen Sie Servicelevel- und Migrationsaufgaben über die Befehlszeile automatisieren können. Weitere Informationen zu den Azure PowerShell-Cmdlets für StorSimple finden Sie unter [Cmdlet-Referenz](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0).
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
 StorSimple Snapshot Manager ist ein MMC-Snap-In (Microsoft Management Console), das Sie zum Erstellen konsistenter zeitpunktbezogener Sicherungskopien von lokalen und Clouddaten verwenden können. Das Snap-In wird auf einem auf Windows Server basierenden Host ausgeführt. Sie können StorSimple Snapshot Manager für die folgenden Aufgaben verwenden:
@@ -208,7 +208,7 @@ Durch Deduplizierung wird die Datenmenge verringert, indem Redundanz im gespeich
 ## <a name="storsimple-workload-summary"></a>StorSimple-Workload – Übersicht
 In der folgenden Tabelle finden Sie eine Übersicht über die unterstützten StorSimple-Workloads.
 
-| Szenario | Workload | Unterstützt | Einschränkungen | Version |
+| Szenario | Workload | Unterstützt | Beschränkungen | Version |
 | --- | --- | --- | --- | --- |
 | Zusammenarbeit |Dateifreigabe |Ja | |Alle Versionen |
 | Zusammenarbeit |Verteilte Dateifreigabe |Ja | |Alle Versionen |
@@ -229,13 +229,13 @@ Die folgenden Workloads werden von Geräten der StorSimple 8000-Serie nicht unte
 * VDI
 * Oracle
 * SAP
-* Große Datenmengen
+* Big Data
 * Inhaltsverteilung
 * Starten von SCSI
 
 Nachfolgend finden Sie eine Liste der von StorSimple unterstützten Infrastrukturkomponenten.
 
-| Szenario | Workload | Unterstützt | Einschränkungen | Version |
+| Szenario | Workload | Unterstützt | Beschränkungen | Version |
 | --- | --- | --- | --- | --- |
 | Allgemein |ExpressRoute |Ja | |Alle Versionen |
 | Allgemein |DataCore FC |Ja* |Unterstützt mit DataCore SANsymphony |Alle Versionen |
@@ -315,4 +315,3 @@ Vor dem Bereitstellen Ihrer Microsoft Azure StorSimple-Projektmappe, empfehlen w
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur [StorSimple-Sicherheit](storsimple-8000-security.md).
-

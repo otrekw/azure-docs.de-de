@@ -3,23 +3,21 @@ title: Verwalten registrierter Server mit der Azure-Dateisynchronisierung | Micr
 description: Hier erfahren Sie, wie Sie einen Windows Server bei einem Azure-Dateisynchronisierungsdienst oder Speichersynchronisierungsdienst registrieren bzw. die Registrierung aufheben.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9bbeda33f25aec15124bacb605513a3c52c3f07e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 194b0f2ff94197fe11c189e97dbc65c9d0367932
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699270"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013920"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Verwalten registrierter Server mit der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
 
 Im folgenden Artikel wird beschrieben, wie Sie einen Server bei einem Speichersynchronisierungsdienst registrieren und verwalten. Informationen zur End-to-End-Bereitstellung der Azure-Dateisynchronisierung finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>Registrieren eines Servers beim Speichersynchronisierungsdienst und Aufheben der Registrierung
 Beim Registrieren eines Servers bei der Azure-Dateisynchronisierung wird eine Vertrauensstellung zwischen Windows Server und Azure eingerichtet. Mithilfe dieser Beziehung können dann *Serverendpunkte* auf dem Server erstellt werden, die bestimmte Ordner darstellen, die mit einer Azure-Dateifreigabe (auch als *Cloudendpunkt* bezeichnet) synchronisiert werden sollen. 
@@ -27,14 +25,14 @@ Beim Registrieren eines Servers bei der Azure-Dateisynchronisierung wird eine Ve
 ### <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie einen Server bei einem Speichersynchronisationsdienst registrieren können, müssen die erforderlichen Voraussetzungen auf dem Server erfüllt sein:
 
-* Ihr Server muss unter einer unterstützten Version von Windows Server ausgeführt werden. Weitere Informationen finden Sie unter [Systemanforderungen und Interoperabilität der Azure-Dateisynchronisierung](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability).
+* Ihr Server muss unter einer unterstützten Version von Windows Server ausgeführt werden. Weitere Informationen finden Sie unter [Systemanforderungen und Interoperabilität der Azure-Dateisynchronisierung](storage-sync-files-planning.md#windows-file-server-considerations).
 * Stellen Sie sicher, dass der Speichersynchronisierungsdienst bereitgestellt wurde. Weitere Informationen zum Bereitstellen eines Speichersynchronisierungsdiensts finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md).
 * Stellen Sie sicher, dass der Server mit dem Internet verbunden ist und dass der Zugriff auf Azure möglich ist.
 * Deaktivieren Sie die verstärkte Sicherheitskonfiguration für IE über die Server-Manager-Benutzeroberfläche.
     
     ![Server-Manager-Benutzeroberfläche, auf der die Option „Verstärkte Sicherheitskonfiguration für IE“ hervorgehoben ist](media/storage-sync-files-server-registration/server-manager-ie-config.png)
 
-* Stellen Sie sicher, dass das Azure PowerShell-Modul auf dem Server installiert ist. Wenn der Server Mitglied eines Failoverclusters ist, ist das Az-Modul für jeden Knoten im Cluster erforderlich. Weitere Informationen zur Installation des Az-Moduls finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Stellen Sie sicher, dass das Azure PowerShell-Modul auf dem Server installiert ist. Wenn der Server Mitglied eines Failoverclusters ist, ist das Az-Modul für jeden Knoten im Cluster erforderlich. Weitere Informationen zur Installation des Az-Moduls finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-Az-ps).
 
     > [!Note]  
     > Es wird empfohlen, die neueste Version des Az-PowerShell-Moduls zu verwenden, um einen Server zu registrieren bzw. die Registrierung aufzuheben. Wenn das Az-Paket zuvor auf diesem Server installiert wurde (und die PowerShell-Version auf diesem Server 5.* oder höher ist), können Sie das Paket mit dem Cmdlet `Update-Module` aktualisieren. 
@@ -78,9 +76,6 @@ Damit ein Server als *Serverendpunkt* in einer *Synchronisierungsgruppe* von der
 > Wenn der Server Mitglied eines Failoverclusters ist, muss der Azure-Dateisynchronisierungs-Agent auf jedem Knoten im Cluster installiert werden.
 
 #### <a name="register-the-server-using-the-server-registration-ui"></a>Registrieren des Servers mit der Benutzeroberfläche für die Serverregistrierung
-> [!Important]  
-> Cloud Solution Provider-Abonnements können die Benutzeroberfläche für die Serverregistrierung nicht verwenden. Verwenden Sie stattdessen PowerShell (unten diesem Abschnitt).
-
 1. Wenn die Benutzeroberfläche für die Serverregistrierung nicht unmittelbar nach Abschluss der Installation des Azure-Dateisynchronisierungs-Agents gestartet wird, können Sie sie manuell starten, indem Sie `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` ausführen.
 2. Klicken Sie auf *Anmelden*, um auf Ihr Azure-Abonnement zuzugreifen. 
 
@@ -98,7 +93,7 @@ Damit ein Server als *Serverendpunkt* in einer *Synchronisierungsgruppe* von der
 > Wenn der Server Mitglied eines Failoverclusters ist, muss die Serverregistrierung für jeden einzelnen Server ausgeführt werden. Wenn Sie die registrierten Server im Azure-Portal anzeigen, werden alle Knoten von der Azure-Dateisynchronisierung automatisch als Mitglied des gleichen Failoverclusters erkannt und entsprechend gruppiert.
 
 #### <a name="register-the-server-with-powershell"></a>Registrieren des Servers mit PowerShell
-Sie können auch Serverregistrierung auch über PowerShell ausführen. Dies ist die einzige unterstützte Methode zur Serverregistrierung für Cloud Solution Provider-Abonnements:
+Sie können auch Serverregistrierung auch über PowerShell ausführen. 
 
 ```powershell
 Register-AzStorageSyncServer -ResourceGroupName "<your-resource-group-name>" -StorageSyncServiceName "<your-storage-sync-service-name>"
@@ -163,7 +158,7 @@ Da die Azure-Dateisynchronisierung selten der einzige Dienst ist, der in Ihrem R
 Sie können die Netzwerknutzung der Azure-Dateisynchronisierung mithilfe der `StorageSyncNetworkLimit`-Cmdlets drosseln.
 
 > [!Note]  
-> Netzwerklimits gelten nicht, wenn auf eine mehrstufige Datei zugegriffen oder das Cmdlet „Invoke-StorageSyncFileRecall“ verwendet wird.
+> Netzwerkgrenzwerte gelten nicht, wenn auf eine mehrstufige Datei zugegriffen wird.
 
 Sie können beispielsweise ein neues Drossellimit erstellen, um sicherzustellen, dass die Azure-Dateisynchronisierung an Werktagen zwischen 9:00 und 17:00 Uhr nicht mehr als 10 MBit/s verbraucht: 
 
@@ -185,7 +180,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ```
 
 ### <a name="use-windows-server-storage-qos"></a>Verwenden von QoS für Speicher für Windows Server 
-Wenn die Azure-Dateisynchronisierung auf einem virtuellen Computer auf einem Windows Server-Virtualisierungshost ausgeführt wird, können Sie Quality of Service für Speicher verwenden, um die Speicher-E/A-Nutzung zu steuern. Die Richtlinie für QoS für Speicher kann entweder als Maximum (oder Grenzwert, wie das StorageSyncNetwork-Limit oben erzwungen wird) oder als Minimum (bzw. Reservierung) festgelegt werden. Das Festlegen eines Minimums anstelle eines Maximums ermöglicht der Azure-Dateisynchronisierung die Nutzung der verfügbaren Speicherbandbreite, wenn diese nicht von anderen Workloads genutzt wird. Weitere Informationen finden Sie unter [Quality of Service für Speicher](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview).
+Wenn die Azure-Dateisynchronisierung auf einem virtuellen Computer auf einem Windows Server-Virtualisierungshost ausgeführt wird, können Sie Quality of Service für Speicher verwenden, um die Speicher-E/A-Nutzung zu steuern. Die Richtlinie für QoS für Speicher kann entweder als Maximum (oder Grenzwert, wie das StorageSyncNetwork-Limit oben erzwungen wird) oder als Minimum (bzw. Reservierung) festgelegt werden. Das Festlegen eines Minimums anstelle eines Maximums ermöglicht der Azure-Dateisynchronisierung die Nutzung der verfügbaren Speicherbandbreite, wenn diese nicht von anderen Workloads genutzt wird. Weitere Informationen finden Sie unter [Quality of Service für Speicher](/windows-server/storage/storage-qos/storage-qos-overview).
 
 ## <a name="see-also"></a>Weitere Informationen
 - [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)

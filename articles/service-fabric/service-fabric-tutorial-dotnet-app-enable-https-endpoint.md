@@ -1,26 +1,15 @@
 ---
-title: Hinzufügen eines HTTPS-Endpunkts zu einer Service Fabric-App in Azure mithilfe von Kestrel | Microsoft-Dokumentation
+title: Hinzufügen eines HTTPS-Endpunkts mit Kestrel
 description: In diesem Tutorial erfahren Sie, wie Sie einem ASP.NET Core-Front-End-Webdienst mit Kestrel einen HTTPS-Endpunkt hinzufügen und die Anwendung in einem Cluster bereitstellen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
-ms.custom: mvc
-ms.openlocfilehash: 69aa140fcecae13aae0d7a165c9f7bea0ab87ca1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: c675f8ece8369bcfc0055343221ac82aea59dec1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71301017"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91326234"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Tutorial: Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst mit Web-API mithilfe von Kestrel
 
@@ -31,7 +20,7 @@ Im dritten Teil der Serie lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Definieren eines HTTPS-Endpunkts im Dienst
 > * Konfigurieren von Kestrel für die Verwendung von HTTPS
-> * Installieren des SSL-Zertifikats auf den Remoteclusterknoten
+> * Installieren des TLS-/SSL-Zertifikats auf den Remoteclusterknoten
 > * Gewähren von Zugriff auf den privaten Schlüssel des Zertifikats für „NETWORK SERVICE“
 > * Öffnen von Port 443 im Azure-Lastenausgleich
 > * Bereitstellen der Anwendung in einem Remotecluster
@@ -52,7 +41,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Installieren Sie Visual Studio 2019](https://www.visualstudio.com/) (Version 15.5 oder höher) mit den Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
+* Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/) (Version 16.5 oder höher) mit den Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
 * [Installieren Sie das Service Fabric SDK](service-fabric-get-started.md).
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Beziehen eines Zertifikats oder Erstellen eines selbstsignierten Entwicklungszertifikats
@@ -139,7 +128,7 @@ serviceContext =>
                     int port = serviceContext.CodePackageActivationContext.GetEndpoint("EndpointHttps").Port;
                     opt.Listen(IPAddress.IPv6Any, port, listenOptions =>
                     {
-                        listenOptions.UseHttps(GetHttpsCertificateFromStore());
+                        listenOptions.UseHttps(FindMatchingCertificateBySubject());
                         listenOptions.NoDelay = true;
                     });
                 })
@@ -167,27 +156,42 @@ Ersetzen Sie „&lt;your_CN_value&gt;“ durch „mytestcert“, falls Sie mithi
 Beachten Sie, dass bei einer lokalen Bereitstellung in `localhost` die Verwendung von „CN=localhost“ empfohlen wird, um Authentifizierungsausnahmen zu vermeiden.
 
 ```csharp
-private X509Certificate2 GetHttpsCertificateFromStore()
+private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonName)
 {
     using (var store = new X509Store(StoreName.My, StoreLocation.LocalMachine))
     {
-        store.Open(OpenFlags.ReadOnly);
+        store.Open(OpenFlags.OpenExistingOnly | OpenFlags.ReadOnly);
         var certCollection = store.Certificates;
-        var currentCerts = certCollection.Find(X509FindType.FindBySubjectDistinguishedName, "CN=<your_CN_value>", false);
+        var matchingCerts = new X509Certificate2Collection();
+    
+    foreach (var enumeratedCert in certCollection)
+    {
+      if (StringComparer.OrdinalIgnoreCase.Equals(subjectCommonName, enumeratedCert.GetNameInfo(X509NameType.SimpleName, forIssuer: false))
+        && DateTime.Now < enumeratedCert.NotAfter
+        && DateTime.Now >= enumeratedCert.NotBefore)
+        {
+          matchingCerts.Add(enumeratedCert);
+        }
+    }
+
+        if (matchingCerts.Count == 0)
+    {
+        throw new Exception($"Could not find a match for a certificate with subject 'CN={subjectCommonName}'.");
+    }
         
-        if (currentCerts.Count == 0)
-                {
-                    throw new Exception("Https certificate is not found.");
-                }
-        
-        return currentCerts[0];
+        return matchingCerts[0];
     }
 }
+
+
 ```
 
-## <a name="give-network-service-access-to-the-certificates-private-key"></a>Gewähren von Zugriff auf den privaten Schlüssel des Zertifikats für „NETWORK SERVICE“
+## <a name="grant-network-service-access-to-the-certificates-private-key"></a>Gewähren von Zugriff auf den privaten Schlüssel des Zertifikats für „NETWORK SERVICE“
 
 In einem vorherigen Schritt haben Sie das Zertifikat in den Speicher `Cert:\LocalMachine\My` auf dem Entwicklungscomputer importiert.  Gewähren Sie nun dem Konto, das den Dienst ausführt (standardmäßig „NETWORK SERVICE“), explizit Zugriff auf den privaten Schlüssel des Zertifikats. Dieser Schritt kann manuell über das Tool „certlm.msc“ ausgeführt werden. Es empfiehlt sich jedoch, automatisch ein PowerShell-Skript auszuführen. Hierzu können Sie unter **SetupEntryPoint** im Dienstmanifest [ein Startskript konfigurieren](service-fabric-run-script-at-service-startup.md).
+
+>[!NOTE]
+> Service Fabric unterstützt das Deklarieren von Endpunktzertifikaten nach Fingerabdruck oder allgemeinem Antragstellernamen. In diesem Fall richtet die Runtime die Bindung und eine Zugriffssteuerungsliste für den privaten Schlüssel des Zertifikats für die Identität ein, als die der Dienst ausgeführt wird. Die Laufzeit überwacht außerdem das Zertifikat auf Änderungen/Verlängerungen und richtet eine neue Zugriffssteuerungsliste für den entsprechenden privaten Schlüssel ein.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Konfigurieren des Setupeinstiegspunkts für Dienste
 
@@ -234,7 +238,7 @@ In einem vorherigen Schritt haben Sie das Zertifikat in den Speicher `Cert:\Loca
 
 Um PowerShell über den Punkt **SetupEntryPoint** auszuführen, können Sie „PowerShell.exe“ in einer Batchdatei ausführen, die auf eine PowerShell-Datei verweist. Fügen Sie zunächst die Batchdatei dem Dienstprojekt hinzu.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **VotingWeb**, klicken Sie auf **Hinzufügen**->**Neues Element**, und fügen Sie eine neue Datei namens „Setup.bat“ hinzu.  Bearbeiten Sie die Datei *Setup.bat*, und fügen Sie den folgenden Befehl hinzu:
 
-```bat
+```cmd
 powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 ```
 
@@ -350,7 +354,7 @@ Wählen Sie im Projektmappen-Explorer die Anwendung **Voting** aus, und legen Si
 
 Speichern Sie alle Dateien, und drücken Sie F5, um die Anwendung lokal auszuführen.  Nach der Bereitstellung der Anwendung wird https:\//localhost:443 in einem Webbrowser geöffnet. Bei Verwendung eines selbstsignierten Zertifikats wird eine Warnung mit dem Hinweis angezeigt, dass Ihr PC der Sicherheit dieser Website nicht vertraut.  Navigieren Sie weiter zur Webseite.
 
-![Voting-Anwendung][image2]
+![Screenshot der Service Fabric Voting-Beispiel-App, die in einem Browserfenster mit der URL https://localhost/ ausgeführt wird.][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Installieren des Zertifikats auf Clusterknoten
 
@@ -362,49 +366,12 @@ Exportieren Sie zunächst das Zertifikat in eine PFX-Datei. Öffnen Sie die Anwe
 
 Klicken Sie im Export-Assistenten auf **Ja, privaten Schlüssel exportieren**, und wählen Sie die Option für das PFX-Format aus.  Exportieren Sie die Datei nach *C:\Benutzer\sfuser\votingappcert.pfx*.
 
-Installieren Sie als Nächstes das Zertifikat mithilfe des Cmdlets [Add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) auf dem Remotecluster.
+Installieren Sie als Nächstes das Zertifikat im Remotecluster, indem Sie [diese bereitgestellten PowerShell-Skripts](./scripts/service-fabric-powershell-add-application-certificate.md) verwenden.
 
 > [!Warning]
 > Für Entwicklungs- und Testanwendungen reicht ein selbstsigniertes Zertifikat. Für Produktionsanwendungen muss dagegen ein Zertifikat von einer [Zertifizierungsstelle](https://wikipedia.org/wiki/Certificate_authority) verwendet werden.
 
-```powershell
-Connect-AzAccount
-
-$vaultname="sftestvault"
-$certname="VotingAppPFX"
-$certpw="!Password321#"
-$groupname="voting_RG"
-$clustername = "votinghttps"
-$ExistingPfxFilePath="C:\Users\sfuser\votingappcert.pfx"
-
-$appcertpwd = ConvertTo-SecureString -String $certpw -AsPlainText -Force
-
-Write-Host "Reading pfx file from $ExistingPfxFilePath"
-$cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2 $ExistingPfxFilePath, $certpw
-
-$bytes = [System.IO.File]::ReadAllBytes($ExistingPfxFilePath)
-$base64 = [System.Convert]::ToBase64String($bytes)
-
-$jsonBlob = @{
-   data = $base64
-   dataType = 'pfx'
-   password = $certpw
-   } | ConvertTo-Json
-
-$contentbytes = [System.Text.Encoding]::UTF8.GetBytes($jsonBlob)
-$content = [System.Convert]::ToBase64String($contentbytes)
-
-$secretValue = ConvertTo-SecureString -String $content -AsPlainText -Force
-
-# Upload the certificate to the key vault as a secret
-Write-Host "Writing secret to $certname in vault $vaultname"
-$secret = Set-AzureKeyVaultSecret -VaultName $vaultname -Name $certname -SecretValue $secretValue
-
-# Add a certificate to all the VMs in the cluster.
-Add-AzServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $secret.Id -Verbose
-```
-
-## <a name="open-port-443-in-the-azure-load-balancer"></a>Öffnen von Port 443 im Azure-Lastenausgleich
+## <a name="open-port-443-in-the-azure-load-balancer-and-virtual-network"></a>Öffnen von Port 443 in Azure Load Balancer und im virtuellen Netzwerk
 
 Öffnen Sie im Lastenausgleich den Port 443, sofern er noch nicht geöffnet ist.
 
@@ -429,13 +396,33 @@ $slb | Add-AzLoadBalancerRuleConfig -Name $rulename -BackendAddressPool $slb.Bac
 $slb | Set-AzLoadBalancer
 ```
 
+Führen Sie den gleichen Schritt für das zugehörige virtuelle Netzwerk aus.
+
+```powershell
+$rulename="allowAppPort$port"
+$nsgname="voting-vnet-security"
+$RGname="voting_RG"
+$port=443
+
+# Get the NSG resource
+$nsg = Get-AzNetworkSecurityGroup -Name $nsgname -ResourceGroupName $RGname
+
+# Add the inbound security rule.
+$nsg | Add-AzNetworkSecurityRuleConfig -Name $rulename -Description "Allow app port" -Access Allow `
+    -Protocol * -Direction Inbound -Priority 3891 -SourceAddressPrefix "*" -SourcePortRange * `
+    -DestinationAddressPrefix * -DestinationPortRange $port
+
+# Update the NSG.
+$nsg | Set-AzNetworkSecurityGroup
+```
+
 ## <a name="deploy-the-application-to-azure"></a>Bereitstellen der Anwendung für Azure
 
 Speichern Sie alle Dateien, wechseln Sie vom Debug- in den Releasemodus, und drücken Sie F6, um das Projekt neu zu erstellen.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Voting**, und klicken Sie auf **Veröffentlichen**. Wählen Sie den Verbindungsendpunkt des Clusters aus, den Sie im Tutorial [Bereitstellen einer Anwendung in einem Service Fabric-Cluster in Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md) erstellt haben, oder wählen Sie einen anderen Cluster aus.  Klicken Sie auf **Veröffentlichen**, und veröffentlichen Sie die Anwendung für den Remotecluster.
 
-Wenn die Anwendung bereitgestellt wurde, navigieren Sie in einem Webbrowser zu [https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443). (Aktualisieren Sie die URL mit dem Verbindungsendpunkt für Ihren Cluster.) Bei Verwendung eines selbstsignierten Zertifikats wird eine Warnung mit dem Hinweis angezeigt, dass Ihr PC der Sicherheit dieser Website nicht vertraut.  Navigieren Sie weiter zur Webseite.
+Wenn die Anwendung bereitgestellt wurde, navigieren Sie in einem Webbrowser zu `https://mycluster.region.cloudapp.azure.com:443`. (Aktualisieren Sie die URL mit dem Verbindungsendpunkt für Ihren Cluster.) Bei Verwendung eines selbstsignierten Zertifikats wird eine Warnung mit dem Hinweis angezeigt, dass Ihr PC der Sicherheit dieser Website nicht vertraut.  Navigieren Sie weiter zur Webseite.
 
-![Voting-Anwendung][image3]
+![Screenshot der Service Fabric Voting-Beispiel-App, die in einem Browserfenster mit der URL https://mycluster.region.cloudapp.azure.com:443 ausgeführt wird.][image3]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -444,7 +431,7 @@ In diesem Teil des Tutorials haben Sie Folgendes gelernt:
 > [!div class="checklist"]
 > * Definieren eines HTTPS-Endpunkts im Dienst
 > * Konfigurieren von Kestrel für die Verwendung von HTTPS
-> * Installieren des SSL-Zertifikats auf den Remoteclusterknoten
+> * Installieren des TLS-/SSL-Zertifikats auf den Remoteclusterknoten
 > * Gewähren von Zugriff auf den privaten Schlüssel des Zertifikats für „NETWORK SERVICE“
 > * Öffnen von Port 443 im Azure-Lastenausgleich
 > * Bereitstellen der Anwendung in einem Remotecluster

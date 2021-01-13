@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: e154bb4f-faab-4d92-a593-900c3ddc9595
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1dfc1b0e0576402624bfe62de0e206d9bd7cd1b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bad0d7adfd77dff53b1582e63a91f2cd87a9233d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724418"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85507618"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten von Access Control-Datensätzen für StorSimple Virtual Array
 

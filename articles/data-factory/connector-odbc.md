@@ -1,28 +1,28 @@
 ---
-title: Kopieren von Daten aus ODBC-Quellen mithilfe von Azure Data Factory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Daten aus OData-Quellen mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
+title: Kopieren von Daten aus ODBC-Datenspeichern bzw. in ODBC-Datenspeicher mithilfe von Azure Data Factory
+description: Hier erfahren Sie, wie Daten mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline aus und in ODBC-Datenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 04/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 1096505a8789d722594cff13841e97930846ee53
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: c92428666f0766f78475be16416027cdc6e71f20
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010636"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85506530"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopieren von Daten aus ODBC-Datenspeichern bzw. in ODBC-Datenspeicher mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-odbc-connector.md)
 > * [Aktuelle Version](connector-odbc.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einem bzw. in einen ODBC-Datenspeicher zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -35,14 +35,14 @@ Der ODBC-Connector wird für die folgenden Aktivitäten unterstützt:
 
 Sie können Daten aus einer ODBC-Quelle in jeden unterstützten Senkendatenspeicher oder Daten aus jedem unterstützten Quelldatenspeicher in eine ODBC-Senke kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Dieser ODBC-Connector unterstützt insbesondere das Kopieren von Daten aus **ODBC-kompatiblen Datenspeichern** bzw. in diese mithilfe der **Standard**- oder **anonymen** Authentifizierung.
+Dieser ODBC-Connector unterstützt insbesondere das Kopieren von Daten aus **ODBC-kompatiblen Datenspeichern** bzw. in diese mithilfe der **Standard**- oder **anonymen** Authentifizierung. Ein **64-Bit-ODBC-Treiber** ist erforderlich. Bei der ODBC-Senke unterstützt ADF die ODBC-Version 2.0 (Standard).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Führen Sie zum Verwenden dieses ODBC-Connectors diese Schritte aus:
 
 - Richten Sie eine selbstgehostete Integration Runtime ein. Im Artikel [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md) finden Sie Details.
-- Installieren des ODBC-Treibers für den Datenspeicher auf dem Computer mit der Integrationslaufzeit.
+- Installieren Sie den 64-Bit-ODBC-Treiber für den Datenspeicher auf dem Integration Runtime-Computer.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -57,11 +57,11 @@ Folgende Eigenschaften werden für den mit ODBC verknüpften Dienst unterstützt
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Odbc** | Ja |
-| connectionString | Die Verbindungszeichenfolge, ausgenommen des Teils mit den Anmeldeinformationen. Sie können die Verbindungszeichenfolge mit einem Muster wie `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` angeben oder den System-DSN (Data Source Name) verwenden, den Sie mit `"DSN=<name of the DSN on IR machine>;"` auf dem Computer mit der Integrationslaufzeit eingerichtet haben. (Sie müssen nach wie vor den Teil mit den Anmeldeinformationen im verknüpften Dienst entsprechend angeben.)<br>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md).| Ja |
+| connectionString | Die Verbindungszeichenfolge, ausgenommen des Teils mit den Anmeldeinformationen. Sie können die Verbindungszeichenfolge mit einem Muster wie `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` angeben oder den System-DSN (Data Source Name) verwenden, den Sie mit `"DSN=<name of the DSN on IR machine>;"` auf dem Computer mit der Integrationslaufzeit eingerichtet haben. (Sie müssen nach wie vor den Teil mit den Anmeldeinformationen im verknüpften Dienst entsprechend angeben.)<br>Sie können auch ein Kennwort in Azure Key Vault speichern und die  `password` Konfiguration aus der Verbindungszeichenfolge ziehen. Ausführlichere Informationen finden Sie unter  [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md) .| Ja |
 | authenticationType | Typ der Authentifizierung für die Verbindung mit dem ODBC-Datenspeicher.<br/>Zulässige Werte sind: **Standard** und **Anonym**. | Ja |
 | userName | Geben Sie den Benutzernamen an, wenn Sie die Standardauthentifizierung (Basic) verwenden. | Nein |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „userName“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
-| credential | Der zum Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge. Er wird in einem treiberspezifischen Format in Eigenschaft und Wert angegeben. Beispiel: `"RefreshToken=<secret refresh token>;"`. Legen Sie für dieses Feld „SecureString“ fest. | Nein |
+| Anmeldeinformationen (credential) | Der zum Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge. Er wird in einem treiberspezifischen Format in Eigenschaft und Wert angegeben. Beispiel: `"RefreshToken=<secret refresh token>;"`. Legen Sie für dieses Feld „SecureString“ fest. | Nein |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
 
 **Beispiel 1: Verwenden der Standardauthentifizierung**
@@ -72,10 +72,7 @@ Folgende Eigenschaften werden für den mit ODBC verknüpften Dienst unterstützt
     "properties": {
         "type": "Odbc",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<connection string>"
-            },
+            "connectionString": "<connection string>",
             "authenticationType": "Basic",
             "userName": "<username>",
             "password": {
@@ -99,10 +96,7 @@ Folgende Eigenschaften werden für den mit ODBC verknüpften Dienst unterstützt
     "properties": {
         "type": "Odbc",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<connection string>"
-            },
+            "connectionString": "<connection string>",
             "authenticationType": "Anonymous",
             "credential": {
                 "type": "SecureString",
@@ -160,7 +154,7 @@ Zum Kopieren von Daten aus einem ODBC-kompatiblen Datenspeicher werden die folge
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **OdbcSource** | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 
@@ -242,51 +236,9 @@ Legen Sie zum Kopieren von Daten in ODBC-kompatible Datenspeicher den Senkentyp 
 ]
 ```
 
-## <a name="sap-hana-sink"></a>SAP HANA-Senke
-
->[!NOTE]
->Informationen zum Kopieren von Daten aus SAP HANA-Datenspeichern finden Sie im Artikel zum nativen [SAP HANA-Connector](connector-sap-hana.md). Um Daten in SAP HANA zu kopieren, befolgen Sie diese Anweisung zur Verwendung des ODBC-Connectors. Beachten Sie, dass die verknüpften Dienste für SAP HANA-Connectors und ODBC-Connectors unterschiedlichen Typs sind und daher nicht wiederverwendet werden können.
->
-
-Mit dem generischen ODBC-Connector können Sie Daten von SAP HANA-Datenbanken kopieren.
-
-Richten Sie eine selbstgehostete Integrationslaufzeit auf einem Computer mit Zugriff auf Ihren Datenspeicher ein. Die Integrationslaufzeit verwendet den ODBC-Treiber für SAP HANA, um eine Verbindung mit dem Datenspeicher herzustellen. Installieren Sie also den Treiber, falls dieser noch nicht auf demselben Computer installiert ist. Details finden Sie im Abschnitt [Voraussetzungen](#prerequisites).
-
-Bevor Sie die SAP HANA-Senke in einer Data Factory-Lösung verwenden können, überprüfen Sie anhand der Anweisungen im Abschnitt [Behandeln von Konnektivitätsproblemen](#troubleshoot-connectivity-issues), ob die Integrationslaufzeit eine Verbindung mit dem Datenspeicher herstellen kann.
-
-Erstellen Sie einen über die ODBC verknüpften Dienst, um einen SAP HANA-Datenspeicher mit Azure Data Factory zu verknüpfen, wie im folgenden Beispiel zu sehen ist:
-
-```json
-{
-    "name": "SAPHANAViaODBCLinkedService",
-    "properties": {
-        "type": "Odbc",
-        "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015"
-            },
-            "authenticationType": "Basic",
-            "userName": "<username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-Lesen Sie den Artikel vom Anfang, um einen detaillierten Überblick über die Verwendung von ODBC-Datenspeichern als Quell-/Senkendatenspeicher in einem Kopiervorgang zu erhalten.
-
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 
 Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
-
 
 ## <a name="troubleshoot-connectivity-issues"></a>Behandeln von Konnektivitätsproblemen
 
@@ -299,4 +251,4 @@ Um Verbindungsprobleme zu behandeln, verwenden Sie die Registerkarte **Diagnose*
 5. Klicken Sie auf **Verbindung testen** , um die Verbindung mit dem Datenspeicher zu testen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

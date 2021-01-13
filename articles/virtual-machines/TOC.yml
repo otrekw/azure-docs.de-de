@@ -1,19 +1,29 @@
 - name: Dokumentation zu virtuellen Computern
   href: index.yml
 - name: Virtuelle Linux-Computer in Azure
-  href: linux/overview.md
+  href: ./linux/index.yml
 - name: Virtuelle Windows-Computer in Azure
-  href: windows/overview.md
+  href: ./windows/index.yml
 - name: Dokumentation zu VM-Erweiterungen
-  href: extensions/overview.md
-- name: Workloads
-  href: ./workloads/workloads.md
+  href: ./extensions/overview.md
+- name: Arbeitsauslastungen
+  items:
+    - name: Red Hat
+      href: ./workloads/redhat/overview.md
+    - name: High Performance Computing
+      href: ./workloads/hpc/overview.md
+    - name: SAP
+      href: ./workloads/sap/get-started.md
+    - name: Oracle
+      href: ./workloads/oracle/oracle-overview.md
+    - name: Erneutes Hosten von Mainframes
+      href: ./workloads/mainframe-rehosting/overview.md
 - name: Klassische Bereitstellungen
   items:
     - name: Linux-VMs mit klassischer Bereitstellung
-      href: linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json
+      href: /previous-versions/azure/virtual-machines/linux/classic/
     - name: Windows-VMs mit klassischer Bereitstellung
-      href: windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json
+      href: /previous-versions/azure/virtual-machines/windows/classic/
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

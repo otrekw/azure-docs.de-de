@@ -3,20 +3,20 @@ title: 'Azure PowerShell-Skriptbeispiel: Konfigurieren einer Point-to-Site-VPN-V
 description: Konfigurieren Sie eine Point-to-Site-VPN-Verbindung (P2S) mit nativer Azure-Zertifikatauthentifizierung unter Verwendung selbstsignierter Zertifikate. In diesem Artikel wird PowerShell verwendet.
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 04/17/2018
+ms.date: 01/10/2020
 ms.author: alzam
-ms.openlocfilehash: 6dae21b5f1360a2507eeb70cb64cea44720b92b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b691e4621d50f8578ebe095ed184cbdb4397ce10
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66113715"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646422"
 ---
-# <a name="create-a-vpn-gateway-and-add-point-to-site-configuration-using-powershell"></a>Erstellen eines VPN-Gateways und Hinzufügen einer P2S-Konfiguration mithilfe von PowerShell
+# <a name="configure-a-point-to-site-vpn-using-native-azure-certificate-authentication"></a>Konfigurieren eines Point-to-Site-VPNs unter Verwendung der nativen Azure-Zertifikatauthentifizierung
 
 Mit diesem Skript wird ein routenbasiertes VPN-Gateway erstellt und eine P2S-Konfiguration mit nativer Azure-Zertifikatauthentifizierung hinzugefügt.
 
@@ -114,11 +114,11 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Erstellen Sie ein virtuelles Netzwerk. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Erstellt eine öffentliche IP-Adresse. |
 | [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Erstellt eine neue Gateway-IP-Konfiguration. |
-| [New-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein VPN-Gateway. |
-| [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate?view=win10-ps) | Erstellt ein neues selbstsigniertes Stammzertifikat. |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein VPN-Gateway. |
+| [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate?view=win10-ps) | Erstellt ein neues selbstsigniertes Stammzertifikat. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe und alle darin enthaltenen Ressourcen. |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Legt die Subnetzkonfiguration für das virtuelle Netzwerk fest. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).

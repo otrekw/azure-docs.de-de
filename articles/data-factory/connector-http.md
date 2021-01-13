@@ -1,29 +1,30 @@
 ---
-title: Kopieren von Daten aus einer HTTP-Quelle mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus einer HTTP-Quelle mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus einer Cloud- oder lokalen HTTP-Quelle mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 6dd40527cdb073c76872c5768a7bea44b74155b7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 730efb552ef218cc5a5ce6a984d20b4e23b364ac
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092059"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81416936"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von einem HTTP-Endpunkt mithilfe von Azure Data Factory
 
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-http-connector.md)
 > * [Aktuelle Version](connector-http.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten von einem HTTP-Endpunkt zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -69,7 +70,7 @@ Folgende Eigenschaften werden für den mit HTTP verknüpften Dienst unterstützt
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **HttpServer** festgelegt werden. | Ja |
 | url | Die Basis-URL zum Webserver. | Ja |
-| enableServerCertificateValidation | Geben Sie an, ob die Überprüfung des SSL-Zertifikats des Servers aktiviert werden soll, wenn eine Verbindung mit einem HTTP-Endpunkt hergestellt wird. Wenn der HTTPS-Server ein selbstsigniertes Zertifikat verwendet, legen Sie diese Eigenschaft auf **FALSE** fest. | Nein<br /> (der Standardwert ist **TRUE**) |
+| enableServerCertificateValidation | Geben Sie an, ob die Überprüfung des TLS-/SSL-Zertifikats des Servers aktiviert werden soll, wenn eine Verbindung mit einem HTTP-Endpunkt hergestellt wird. Wenn der HTTPS-Server ein selbstsigniertes Zertifikat verwendet, legen Sie diese Eigenschaft auf **FALSE** fest. | Nein<br /> (der Standardwert ist **TRUE**) |
 | authenticationType | Gibt den Authentifizierungstyp an. Zulässige Werte: **Anonymous**, **Basic**, **Digest**, **Windows** und **ClientCertificate**. <br><br> Weitere Eigenschaften und JSON-Beispiele für diese Authentifizierungstypen, finden Sie in den Abschnitten, die auf diese Tabelle folgen. | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
@@ -171,23 +172,17 @@ Wenn Sie **certThumbprint** für die Authentifizierung verwenden und das Zertifi
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). 
 
-- Informationen zum **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie im Abschnitt [Dataset für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat](#format-based-dataset).
-- Informationen zu anderen Formaten wie **ORC** finden Sie im Abschnitt [Dataset in anderen Formaten](#other-format-dataset).
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a> Dataset für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat
-
-Informationen zum Kopieren von Daten in das und aus dem **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Datasets und unterstützten Einstellungen. Folgende Eigenschaften werden für HTTP unter den `location`-Einstellungen in formatbasierten Datasets unterstützt:
+Folgende Eigenschaften werden für HTTP unter den `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
 | Eigenschaft    | BESCHREIBUNG                                                  | Erforderlich |
 | ----------- | ------------------------------------------------------------ | -------- |
 | type        | Die „type“-Eigenschaft unter `location` im Dataset muss auf **HttpServerLocation** festgelegt werden. | Ja      |
-| relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält.       | Nein       |
+| relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Der HTTP-Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service][relative URL specified in dataset]`.   | Nein       |
 
 > [!NOTE]
 > Die unterstützte Nutzlastgröße für HTTP-Anforderungen beträgt etwa 500 KB. Wenn die Nutzlast, die Sie an Ihre Webendpunkt übergeben möchten, größer als 500 KB ist, sollten Sie eine Aufteilung der Nutzlast in kleinere Blöcke erwägen.
-
-> [!NOTE]
-> Das Dataset vom Typ **HttpFile** mit dem im nächsten Abschnitt beschriebenen Parquet-Format/Textformat wird aus Gründen der Abwärtskompatibilität weiterhin unverändert für Kopieren-/Suchenaktivitäten unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden, da diese neuen Typen nun von der Benutzeroberfläche für die ADF-Dokumentenerstellung generiert werden.
 
 **Beispiel:**
 
@@ -215,9 +210,78 @@ Informationen zum Kopieren von Daten in das und aus dem **Parquet-Format, Textfo
 }
 ```
 
-### <a name="other-format-dataset"></a>Dataset in anderen Formaten
+## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 
-Für das Kopieren von Daten aus HTTP im **ORC-Format** werden folgende Eigenschaften unterstützt:
+Dieser Abschnitt enthält eine Liste der Eigenschaften, die die HTTP-Quelle unterstützt.
+
+Eine vollständige Liste mit den verfügbaren Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie unter [Pipelines](concepts-pipelines-activities.md). 
+
+### <a name="http-as-source"></a>HTTP als Quelle
+
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+
+Folgende Eigenschaften werden für HTTP unter den `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
+
+| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich |
+| ------------------------ | ------------------------------------------------------------ | -------- |
+| type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **HttpReadSettings** festgelegt werden. | Ja      |
+| requestMethod            | Die HTTP-Methode. <br>Zulässige Werte sind **Get** (Standardwert) und **Post**. | Nein       |
+| addtionalHeaders         | Zusätzliche HTTP-Anforderungsheader                             | Nein       |
+| requestBody              | Der Text der HTTP-Anforderung.                               | Nein       |
+| httpRequestTimeout           | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout zum Empfangen einer Antwort, nicht um das Timeout zum Lesen von Antwortdaten. Der Standardwert ist **00:01:40**. | Nein       |
+| maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig mit einem Speicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein       |
+
+**Beispiel:**
+
+```json
+"activities":[
+    {
+        "name": "CopyFromHTTP",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<Delimited text input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "DelimitedTextSource",
+                "formatSettings":{
+                    "type": "DelimitedTextReadSettings",
+                    "skipLineCount": 10
+                },
+                "storeSettings":{
+                    "type": "HttpReadSettings",
+                    "requestMethod": "Post",
+                    "additionalHeaders": "<header key: header value>\n<header key: header value>\n",
+                    "requestBody": "<body for POST HTTP request>"
+                }
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
+
+Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
+
+## <a name="legacy-models"></a>Legacy-Modelle
+
+>[!NOTE]
+>Die folgenden Modelle werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das in den obigen Abschnitten erwähnte neue Modell zu verwenden, da das neue Modell nun von der ADF-Benutzeroberfläche für die Erstellung generiert wird.
+
+### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
@@ -226,8 +290,8 @@ Für das Kopieren von Daten aus HTTP im **ORC-Format** werden folgende Eigenscha
 | requestMethod | Die HTTP-Methode. Zulässige Werte sind **Get** (Standardwert) und **Post**. | Nein |
 | additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein |
 | requestBody | Der Text der HTTP-Anforderung. | Nein |
-| format | Wenn Sie Daten vom HTTP-Endpunkt im vorliegenden Zustand abrufen möchten, ohne diese analysieren und in einen dateibasierten Speicher kopieren zu müssen, überspringen Sie den Abschnitt **format** in den Definitionen des Eingabe- und Ausgabedatasets.<br/><br/>Wenn der HTTP-Antwortinhalt während des Kopierens analysiert werden soll, werden die folgenden Dateiformattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Legen Sie die **type**-Eigenschaft unter **format** auf einen dieser Werte fest. Weitere Informationen finden Sie unter [JSON-Format](supported-file-formats-and-compression-codecs.md#json-format), [Textformat](supported-file-formats-and-compression-codecs.md#text-format), [Avro-Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc-Format](supported-file-formats-and-compression-codecs.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs.md#parquet-format). |Nein |
-| compression | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Unterstützte Typen: **GZip**, **Deflate**, **BZip2** und **ZipDeflate**.<br/>Folgende Ebenen werden unterstützt:  **Optimal** und **Fastest**. |Nein |
+| format | Wenn Sie Daten vom HTTP-Endpunkt im vorliegenden Zustand abrufen möchten, ohne diese analysieren und in einen dateibasierten Speicher kopieren zu müssen, überspringen Sie den Abschnitt **format** in den Definitionen des Eingabe- und Ausgabedatasets.<br/><br/>Wenn der HTTP-Antwortinhalt während des Kopierens analysiert werden soll, werden die folgenden Dateiformattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Legen Sie die **type**-Eigenschaft unter **format** auf einen dieser Werte fest. Weitere Informationen finden Sie unter [JSON-Format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Textformat](supported-file-formats-and-compression-codecs-legacy.md#text-format), [Avro-Format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [Orc-Format](supported-file-formats-and-compression-codecs-legacy.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Nein |
+| compression | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Unterstützte Typen: **GZip**, **Deflate**, **BZip2** und **ZipDeflate**.<br/>Folgende Ebenen werden unterstützt:  **Optimal** und **Fastest**. |Nein |
 
 > [!NOTE]
 > Die unterstützte Nutzlastgröße für HTTP-Anforderungen beträgt etwa 500 KB. Wenn die Nutzlast, die Sie an Ihre Webendpunkt übergeben möchten, größer als 500 KB ist, sollten Sie eine Aufteilung der Nutzlast in kleinere Blöcke erwägen.
@@ -271,77 +335,7 @@ Für das Kopieren von Daten aus HTTP im **ORC-Format** werden folgende Eigenscha
 }
 ```
 
-## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
-
-Dieser Abschnitt enthält eine Liste der Eigenschaften, die die HTTP-Quelle unterstützt.
-
-Eine vollständige Liste mit den verfügbaren Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie unter [Pipelines](concepts-pipelines-activities.md). 
-
-### <a name="http-as-source"></a>HTTP als Quelle
-
-- Informationen zum Kopieren aus dem **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie im Abschnitt [Quelle im Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat](#format-based-source).
-- Informationen zum Kopieren aus anderen Formaten wie **ORC** finden Sie im Abschnitt [Quelle in anderen Formaten](#other-format-source).
-
-#### <a name="format-based-source"></a> Quelle für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat
-
-Informationen zum Kopieren von Daten aus dem **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Quellen für Kopieraktivitäten und unterstützten Einstellungen. Folgende Eigenschaften werden für HTTP unter den `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
-
-| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich |
-| ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **HttpReadSetting** festgelegt werden. | Ja      |
-| requestMethod            | Die HTTP-Methode. <br>Zulässige Werte sind **Get** (Standardwert) und **Post**. | Nein       |
-| addtionalHeaders         | Zusätzliche HTTP-Anforderungsheader                             | Nein       |
-| requestBody              | Der Text der HTTP-Anforderung.                               | Nein       |
-| requestTimeout           | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout zum Empfangen einer Antwort, nicht um das Timeout zum Lesen von Antwortdaten. Der Standardwert ist **00:01:40**. | Nein       |
-| maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig mit einem Speicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein       |
-
-> [!NOTE]
-> Beim Parquet-Format/Textformat mit Trennzeichen wird die im nächsten Abschnitt beschriebene Quelle der Kopieraktivität vom Typ **HttpSource** aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden, da diese neuen Typen nun von der Benutzeroberfläche für die ADF-Dokumentenerstellung generiert werden.
-
-**Beispiel:**
-
-```json
-"activities":[
-    {
-        "name": "CopyFromHTTP",
-        "type": "Copy",
-        "inputs": [
-            {
-                "referenceName": "<Delimited text input dataset name>",
-                "type": "DatasetReference"
-            }
-        ],
-        "outputs": [
-            {
-                "referenceName": "<output dataset name>",
-                "type": "DatasetReference"
-            }
-        ],
-        "typeProperties": {
-            "source": {
-                "type": "DelimitedTextSource",
-                "formatSettings":{
-                    "type": "DelimitedTextReadSetting",
-                    "skipLineCount": 10
-                },
-                "storeSettings":{
-                    "type": "HttpReadSetting",
-                    "requestMethod": "Post",
-                    "additionalHeaders": "<header key: header value>\n<header key: header value>\n",
-                    "requestBody": "<body for POST HTTP request>"
-                }
-            },
-            "sink": {
-                "type": "<sink type>"
-            }
-        }
-    }
-]
-```
-
-#### <a name="other-format-source"></a>Quelle in anderen Formaten
-
-Für das Kopieren von Daten aus HTTP im Format **ORC** werden folgende Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
+### <a name="legacy-copy-activity-source-model"></a>Legacy-Kopieraktivität: Quellenmodell
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
@@ -379,11 +373,6 @@ Für das Kopieren von Daten aus HTTP im Format **ORC** werden folgende Eigenscha
     }
 ]
 ```
-
-## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
-
-Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,22 +1,15 @@
 ---
-title: Vorbereitung auf eine Änderung der eingehenden IP-Adresse – Azure App Service
+title: Vorbereiten einer Änderung der IP-Adresse für eingehenden Datenverkehr
 description: Erfahren Sie, wie Sie vorgehen, wenn Ihre eingehende IP-Adresse geändert werden soll, damit Ihre App nach der Änderung weiterhin funktioniert.
-services: app-service\web
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: aaa89b5a3bb1af6878ed21e0160a534a1c989228
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 999511c4759ee761f028a61fbfaa0310ac93d9b4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61270063"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74672412"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Vorbereitung auf eine Änderung der eingehenden IP-Adresse
 

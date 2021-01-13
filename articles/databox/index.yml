@@ -3,7 +3,7 @@ title: 'Dokumentation zu Azure Data Box: Offlineübertragung'
 summary: Verwenden Sie die Azure Data Box-Geräte zur Offlinedatenübertragung bei Einschränkungen hinsichtlich Zeit, Netzwerk oder Kosten. Wählen Sie abhängig von Ihrem Datenvolumen zwischen Data Box Disk, Data Box oder Data Box Heavy.
 metadata:
   title: 'Dokumentation zu Azure Data Box: Offlineübertragung'
-  description: Verwenden Sie Data Box-Geräte zur Offlinedatenübertragung an Azure bei Einschränkungen hinsichtlich Zeit, Netzwerk oder Kosten.
+  description: Machen Sie sich mit Azure Data Box vertraut, einem Speichergerät für die Offlinedatenmigration zur Cloud. Sie erfahren mehr über Datenübertragungsdienste, die ein sicheres proprietäres Speichergerät nutzen.
   services: databox
   ms.service: databox
   ms.subservice: pod
@@ -12,12 +12,14 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.date: 08/16/2019
-  ms.openlocfilehash: 2c42ee93804eb1e0e24b0b67925a092cc8517ceb
-  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+  ms.custom: seo-azure-migrate
+  keywords: cloud data transfer, data migration to cloud, azure data box, data transfer service, data transfer services, azure data transfer
+  ms.openlocfilehash: 6b3ef7ace8bfb481b294ca4d823ccc1c6c2f7367
+  ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/20/2019
-  ms.locfileid: "69650372"
+  ms.lasthandoff: 10/16/2020
+  ms.locfileid: "92125233"
 landingContent:
 - title: Informationen zur Data Box-Produktfamilie
   linkLists:
@@ -32,7 +34,7 @@ landingContent:
   - linkListType: architecture
     links:
     - text: Auswählen der Optionen für die Azure-Datenübertragung
-      url: /azure/storage/common/storage-choose-data-transfer-solution
+      url: ../storage/common/storage-choose-data-transfer-solution.md
 - title: Erste Schritte
   linkLists:
   - linkListType: quickstart
@@ -46,7 +48,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: Offlineimport von Daten mit Data Box
-      url: https://docs.microsoft.com/learn/modules/move-data-with-azure-data-box/
+      url: /learn/modules/move-data-with-azure-data-box/
 - title: Anzeigen der Anforderungen
   linkLists:
   - linkListType: concept

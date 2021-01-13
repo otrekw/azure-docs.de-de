@@ -1,109 +1,84 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Coralogix | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Coralogix'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Coralogix konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: ba79bfc1-992e-4924-b76a-8eb0dfb97724
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/2/2019
+ms.date: 10/24/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 721e0c40ec2e02dabee0681e01fea4182b906183
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e676268abb9e1a4a597ef431ea6ba6593411711e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104640"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455220"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>Tutorial: Azure Active Directory-Integration mit Coralogix
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coralogix"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Coralogix
 
-In diesem Tutorial erfahren Sie, wie Sie Coralogix in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Coralogix in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Coralogix in Azure Active Directory (Azure AD) integrieren. Die Integration von Coralogix in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Coralogix hat.
-* Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Coralogix anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten an einem zentralen Ort verwalten: im Azure-Portal.
+* Steuern Sie in Azure AD, wer Zugriff auf Coralogix hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Coralogix anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Coralogix konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement Falls Sie über keine Azure AD-Umgebung verfügen, können Sie [eine einmonatige Testversion](https://azure.microsoft.com/pricing/free-trial/) erhalten.
-- Ein Coralogix-Abonnement, für das einmaliges Anmelden aktiviert ist. 
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Coralogix-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Coralogix unterstützt SP-initiiertes einmaliges Anmelden.
+* Coralogix unterstützt **SP-initiiertes** einmaliges Anmelden.
 
-## <a name="add-coralogix-from-the-gallery"></a>Hinzufügen von Coralogix aus dem Katalog
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
-Zum Konfigurieren der Integration von Coralogix in Azure AD müssen Sie zuerst Coralogix über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+## <a name="adding-coralogix-from-the-gallery"></a>Hinzufügen von Coralogix aus dem Katalog
 
-Um Coralogix aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:
+Zum Konfigurieren der Integration von Coralogix in Azure AD müssen Sie Coralogix über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf das Symbol **Azure Active Directory**.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Coralogix** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Coralogix** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-coralogix"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Coralogix
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Coralogix mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Coralogix eingerichtet werden.
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+Führen Sie die folgenden Aufgaben aus, um das einmalige Anmelden von Azure AD mit Coralogix zu konfigurieren und zu testen:
 
-3. Wählen Sie oben im Dialogfeld die Schaltfläche **Neue Anwendung** aus, um eine neue Anwendung hinzuzufügen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Coralogix](#configure-coralogix-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Coralogix-Testbenutzers](#create-coralogix-test-user)** , um ein Pendant von B. Simon in Coralogix zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-4. Geben Sie in das Suchfeld **Coralogix** ein. Wählen Sie im Ergebnisbereich **Coralogix** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-     ![Coralogix in der Ergebnisliste](common/search-new-app.png)
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Coralogix** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration** , um die Einstellungen zu bearbeiten.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Coralogix basierend auf einer Testbenutzerin namens Britta Simon.
-Damit einmaliges Anmelden funktioniert, muss eine Verknüpfung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Coralogix eingerichtet werden.
-
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Coralogix müssen die folgenden Schritte ausgeführt werden:
-
-1. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on), um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. [Konfigurieren des einmaligen Anmeldens für Coralogix](#configure-coralogix-single-sign-on), um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user), um das einmalige Anmelden mit Azure AD mit der Testbenutzerin Britta Simon zu testen.
-4. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. [Erstellen eines Coralogix-Testbenutzers](#create-a-coralogix-test-user), um ein Pendant von Britta Simon in Coralogix zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-6. [Testen des einmaligen Anmeldens](#test-single-sign-on), um sicherzustellen, dass die Konfiguration funktioniert.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
-
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Coralogix die folgenden Schritte aus:
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Coralogix** die Option **Einmaliges Anmelden**.
-
-    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
-
-2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML** aus, um einmaliges Anmelden zu aktivieren.
-
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
-
-3. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Symbol **Bearbeiten** aus, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
-
-    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
-
-4. Führen Sie im Dialogfeld **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
-
-    ![SSO-Informationen zur Domäne und zu den URLs für Coralogix](common/sp-identifier.png)
+1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
     a. Geben Sie in das Feld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.coralogix.com`
 
@@ -118,15 +93,16 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Coralogi
     > [!NOTE]
     > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von Coralogix](mailto:info@coralogix.com), um den Wert zu erhalten. Sie können sich auch im Azure-Portal die Muster im Abschnitt **Grundlegende SAML-Konfiguration** ansehen.
 
-5. Die Coralogix-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+ 1. Die Coralogix-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten** , um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot des Dialogfelds „Benutzerattribute“, in dem die Schaltfläche „Bearbeiten“ hervorgehoben ist](common/edit-attribute.png)
 
-6. Bearbeiten Sie die Ansprüche im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** durch Klicken auf das Symbol **Bearbeiten**. Sie können die Ansprüche auch hinzufügen, indem Sie auf **Neuen Anspruch hinzufügen** klicken, um das SAML-Tokenattribut wie in der vorherigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus:
+1. Bearbeiten Sie die Ansprüche im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** durch Klicken auf das Symbol **Bearbeiten**. Sie können die Ansprüche auch hinzufügen, indem Sie auf **Neuen Anspruch hinzufügen** klicken, um das SAML-Tokenattribut wie in der vorherigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus:
     
-    a. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
+    a. Klicken Sie auf das Symbol **Bearbeiten** , um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    ![Abbildung](./media/coralogix-tutorial/tutorial_usermail.png) ![Abbildung](./media/coralogix-tutorial/tutorial_usermailedit.png)
+    ![Screenshot des Dialogfelds „Benutzerattribute und Ansprüche“, in dem die Schaltfläche „Bearbeiten“ hervorgehoben ist](./media/coralogix-tutorial/tutorial_usermail.png)
+    ![image](./media/coralogix-tutorial/tutorial_usermailedit.png)
 
     b. Wählen Sie in der Liste **Namensbezeichnerformat auswählen** die Option **E-Mail-Adresse** aus.
 
@@ -134,89 +110,64 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Coralogi
 
     d. Wählen Sie **Speichern** aus.
 
-7. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um die Ihren Anforderungen entsprechenden **Verbundmetadaten-XML** aus den verfügbaren Optionen herunterzuladen. Speichern Sie das Zertifikat anschließend auf Ihrem Computer.
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML** , und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-8. Kopieren Sie im Abschnitt **Coralogix einrichten** die entsprechenden URLs.
+1. Kopieren Sie im Abschnitt **Coralogix einrichten** die entsprechenden URLs basierend auf Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-    a. Anmelde-URL
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-    b. Azure AD-Bezeichner
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-    c. Abmelde-URL
-
-### <a name="configure-coralogix-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Coralogix
-
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Coralogix** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die aus dem Azure-Portal kopierten URLs an das [Supportteam von Coralogix](mailto:info@coralogix.com) senden. Es sorgt dafür, dass die SAML-Verbindung für einmaliges Anmelden auf beiden Seiten ordnungsgemäß eingerichtet wird.
-
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
-
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
-
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
-
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
-
-2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-
-    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
-
-3. Führen Sie im Dialogfeld **Benutzer** die folgenden Schritte aus.
-
-    ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
-    b. Geben Sie im Feld **Benutzername** die Zeichenfolge „brittasimon@yourcompanydomain.extension“ ein. In diesem Fall können Sie beispielsweise „brittasimon@contoso.com“ eingeben.
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie den Wert im Feld **Kennwort**.
-
-    d. Klicken Sie auf **Erstellen**.
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Coralogix gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Coralogix gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**, danach **Alle Anwendungen** und dann **Coralogix** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **Coralogix** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-2. Wählen Sie in der Anwendungsliste **Coralogix**aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Coralogix-Link in der Anwendungsliste](common/all-applications.png)
+    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+## <a name="configure-coralogix-sso"></a>Konfigurieren des einmaligen Anmeldens für Coralogix
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Coralogix** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Coralogix](mailto:info@coralogix.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
-    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
+### <a name="create-coralogix-test-user"></a>Erstellen eines Coralogix-Testbenutzers
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus. Klicken Sie unten auf der Seite auf die Schaltfläche **Auswählen**.
+In diesem Abschnitt erstellen Sie in Coralogix einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Coralogix-Plattform ggf. vom [Coralogix-Supportteam](mailto:info@coralogix.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
-6. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Klicken Sie unten auf der Seite auf die Schaltfläche **Auswählen**.
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-7. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen**.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-### <a name="create-a-coralogix-test-user"></a>Erstellen eines Coralogix-Testbenutzers
-
-In diesem Abschnitt erstellen Sie in Coralogix einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Coralogix-Plattform vom  [Coralogix-Supportteam](mailto:info@coralogix.com) unterstützen. Sie müssen Benutzer erstellen und aktivieren, bevor Sie einmaliges Anmelden verwenden.
-
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
-
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Portals „Meine Apps“.
-
-Wenn Sie im Portal „Meine Apps“ auf die Kachel „Coralogix“ klicken, sollten Sie automatisch bei Coralogix angemeldet werden. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Was ist das Portal „Meine Apps“?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Coralogix“ klicken, sollten Sie automatisch bei der Coralogix-Anwendung angemeldet werden, für die Sie SSO eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
 
+- [Coralogix mit Azure AD ausprobieren](https://aad.portal.azure.com/)

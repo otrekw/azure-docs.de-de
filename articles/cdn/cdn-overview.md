@@ -3,7 +3,7 @@ title: Was ist ein Content Delivery Network (CDN)? – Azure | Microsoft-Dokumen
 description: Hier erfahren Sie, was Azure Content Delivery Network (CDN) ist und wie es für die Übermittlung von Inhalten mit hoher Bandbreite verwendet wird.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 05/09/2018
-ms.author: magattus
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 6aaa98bea5e6cf1bdffc3dbe28e42e9545a626ea
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: b0c8170947b59b3d40a388642dac3df772238197
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593609"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778330"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Was ist ein Content Delivery Network in Azure?
-Ein Content Delivery Network (CDN) ist ein verteiltes Netzwerk mit Servern, über die Webinhalte auf effiziente Weise für Benutzer bereitgestellt werden können. In CDNs werden zwischengespeicherte Inhalte auf Edgeservern an POP-Standorten (Point of Presence) gespeichert, die sich in der Nähe der Endbenutzer befinden, um die Wartezeit zu verringern. 
+Ein Content Delivery Network (CDN) ist ein verteiltes Netzwerk mit Servern, über die Webinhalte auf effiziente Weise für Benutzer bereitgestellt werden können. In CDN-Instanzen werden zwischengespeicherte Inhalte auf Edgeservern an POP-Standorten (Point of Presence) gespeichert, die sich in der Nähe der Endbenutzer befinden, um die Wartezeit zu verringern. 
 
 Azure Content Delivery Network (CDN) bietet Entwicklern eine globale Lösung zur schnellen Übermittlung von Inhalten mit hoher Bandbreite an Benutzer. Hierzu werden Inhalte auf physischen Knoten zwischengespeichert, die strategisch auf der ganzen Welt verteilt sind. Durch die Nutzung verschiedener Netzwerkoptimierungen unter Verwendung von CDN-POPs kann Azure CDN außerdem dynamische Inhalte beschleunigen, die nicht zwischengespeichert werden können. Ein Beispiel wäre etwa die Routenoptimierung zur BGP-Umgehung (Border Gateway Protocol).
 
@@ -35,7 +35,7 @@ Die Bereitstellung von Websiteressourcen über Azure CDN bietet folgende Vorteil
 
 Eine Liste mit aktuellen CDN-Knotenstandorten finden Sie unter [Azure CDN-POP-Standorte nach Region](cdn-pop-locations.md).
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 ![Übersicht über CDN](./media/cdn-overview/cdn-overview.png)
 
 1. Ein Benutzer (Alice) fordert eine Datei (auch Ressource genannt) über eine URL mit einem speziellen Domänennamen an. Beispiel: _&lt;Endpunktname&gt;_ .azureedge.net. Dieser Name kann ein Endpunkt-Hostname oder eine benutzerdefinierte Domäne sein. Das DNS leitet die Anforderung an den POP-Standort mit der besten Leistung weiter. Dabei handelt es sich in der Regel um den POP, der dem Benutzer geografisch am nächsten ist.
@@ -59,7 +59,7 @@ Bei jedem Azure-Abonnement gelten Standardgrenzwerte für folgende Ressourcen:
  - Anzahl von Endpunkten, die in einem CDN-Profil erstellt werden können 
  - Anzahl von benutzerdefinierten Domänen, die einem Endpunkt zugeordnet werden können
 
-Weitere Informationen zu Grenzwerten für CDN-Abonnements finden Sie unter [CDN-Grenzwerte](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Weitere Informationen zu Grenzwerten für CDN-Abonnements finden Sie unter [CDN-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md).
     
 ## <a name="azure-cdn-features"></a>Azure CDN-Features
 Azure CDN bietet folgende Schlüsselfeatures:

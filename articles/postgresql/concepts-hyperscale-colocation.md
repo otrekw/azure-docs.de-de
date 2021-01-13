@@ -1,18 +1,18 @@
 ---
-title: Serverkonzepte in Azure Database for PostgreSQL
-description: Dieser Artikel enthält Aspekte und Richtlinien für das Konfigurieren und Verwalten von Azure Database for PostgreSQL-Servern.
+title: Tabellenzusammenstellung – Hyperscale (Citus) – Azure Database for PostgreSQL
+description: Erfahren Sie, wie Sie verwandte Informationen für schnellere Abfragen gemeinsam speichern.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 533958221898b620500b7363f3710f75f155934a
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 842563319e09a001fd6e85403d8aee6fb14690ee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998059"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90884419"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Tabellenzusammenstellung in Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -20,9 +20,9 @@ Zusammenstellen bedeutet, verwandte Informationen zusammen auf denselben Knoten 
 
 ## <a name="data-colocation-for-hash-distributed-tables"></a>Datenzusammenstellung für Tabellen mit Hashverteilung
 
-In Azure Database for PostgreSQL – Hyperscale (Citus) Vorschau wird eine Zeile in einem Shard gespeichert, wenn der Hashwert des Werts in der Verteilungsspalte innerhalb des Hashbereichs des Shards liegt. Shards mit gleichem Hash-Bereich werden immer auf demselben Knoten platziert. Zeilen mit identischen Werten in der Verteilungsspalte werden tabellenübergreifend immer auf demselben Knoten platziert.
+In Azure Database for PostgreSQL – Hyperscale (Citus) wird eine Zeile in einem Shard gespeichert, wenn der Hashwert des Werts in der Verteilungsspalte innerhalb des Hashbereichs des Shards liegt. Shards mit gleichem Hash-Bereich werden immer auf demselben Knoten platziert. Zeilen mit identischen Werten in der Verteilungsspalte werden tabellenübergreifend immer auf demselben Knoten platziert.
 
-![Shards](media/concepts-hyperscale-colocation/colocation-shards.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-shards.png" alt-text="Shards":::
 
 ## <a name="a-practical-example-of-colocation"></a>Ein praktisches Beispiel für die Zusammenstellung
 
@@ -96,7 +96,7 @@ Anschließend müssen die Ergebnisse aus den beiden Schritten von der Anwendung 
 
 Beim Ausführen der Abfragen müssen die Daten in den über die Knoten verteilten Shards einbezogen werden.
 
-![Ineffiziente Abfragen](media/concepts-hyperscale-colocation/colocation-inefficient-queries.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="Shards":::
 
 In diesem Fall führt die Verteilung der Daten zu erheblichen Nachteilen:
 
@@ -134,7 +134,7 @@ GROUP BY page_id;
 
 Aufgrund des Filters und der Verknüpfung durch „tenant_id“ weiß Hyperscale (Citus), dass die gesamte Abfrage mithilfe der Gruppe zusammengestellter Shards beantwortet werden kann, welche die Daten für diesen speziellen Mandanten enthalten. Ein einzelner PostgreSQL-Knoten kann die Abfrage in einem Schritt beantworten.
 
-![Bessere Abfrage](media/concepts-hyperscale-colocation/colocation-better-query.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="Shards":::
 
 In einigen Fällen müssen Abfragen und Tabellenschemas geändert werden, um die Mandanten-ID in eindeutige Einschränkungen und Verknüpfungsbedingungen einzubeziehen. Diese Änderung ist in der Regel unkompliziert.
 

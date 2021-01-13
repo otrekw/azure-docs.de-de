@@ -1,25 +1,18 @@
 ---
-title: Systemanforderungen für Microsoft Azure StorSimple Virtual Arrays | Microsoft Docs
+title: Systemanforderungen für Microsoft Azure StorSimple Virtual Arrays
 description: Erfahren Sie mehr über die Software- und Netzwerkanforderungen für StorSimple Virtual Array.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 65d2a21a9f40470cee1dd9d713f9f9cb5431a245
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5970e82619667a47ba160c84df2cdeb145b0dab8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516687"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966172"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Systemanforderungen für StorSimple Virtual Array
 
@@ -36,7 +29,7 @@ Systemanforderungen:
 
 Die in diesem Artikel veröffentlichten Informationen zu den StorSimple-Systemanforderungen gelten nur für StorSimple Virtual Arrays.
 
-* Informationen zu Geräten der 8000-Serie finden Sie unter [Systemanforderungen für StorSimple-Geräte der 8000-Serie](storsimple-system-requirements.md).
+* Informationen zu Geräten der 8000-Serie finden Sie unter [Systemanforderungen für StorSimple-Geräte der 8000-Serie](./storsimple-8000-system-requirements.md).
 * Informationen zu Geräten der 7000-Serie finden Sie unter [Systemanforderungen für StorSimple-Geräte der 5000-7000-Serie](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements).
 
 ## <a name="software-requirements"></a>Softwareanforderungen
@@ -55,7 +48,7 @@ Die Softwareanforderungen umfassen Informationen zu den unterstützten Webbrowse
 | **Komponente** | **Anforderung** |
 | --- | --- |
 | Mindestanzahl virtueller Prozessoren (Kerne) |4 |
-| Minimaler Arbeitsspeicher (RAM) |8 GB <br> Dateiserver: 8 GB für weniger als 2 Millionen Dateien und 16 GB für 2 bis 4 Millionen Dateien|
+| Minimaler Arbeitsspeicher (RAM) |8 GB <br> Dateiserver: 8 GB für weniger als 2 Millionen Dateien und 16 GB für 2 bis 4 Millionen Dateien|
 | Festplattenspeicher<sup>1</sup> |Betriebssystemdatenträger: 80 GB <br></br>Datendatenträger: 500 GB bis 8 TB |
 | Mindestanzahl von Netzwerkschnittstellen |1 |
 | Internetbandbreite<sup>2</sup> |Erforderliche minimale Bandbreite: 5 MBit/s <br> Empfohlene Bandbreite: 100 MBit/s <br> Die Geschwindigkeit der Datenübertragung wird entsprechend der Internetbandbreite skaliert. Beispiel: Bei einer Geschwindigkeit von 5 Mbit/s dauert die Übertragung von 100 GB an Daten zwei Tage. Dies kann zu Sicherungsfehlern führen, da tägliche Sicherungen nicht an einem Tag abgeschlossen werden. Mit einer Bandbreite von 100 Mbit/s können 100 GB an Daten in 2,5 Stunden übertragen werden.   |
@@ -76,7 +69,7 @@ Die folgenden Softwareanforderungen gelten für die iSCSI-Initiatoren, die auf S
 
 | **Unterstützte Betriebssysteme** | **Erforderliche Version** | **Weitere Anforderungen/Hinweise** |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1, 2012, 2012 R2 |Mit StorSimple können Sie Volumes mit schlanker Speicherzuweisung und vollständig bereitgestellte Volumes erstellen. Sie können keine teilweise bereitgestellten Volumes erstellen. StorSimple iSCSI-Volumes werden nur unterstützt für: <ul><li>Einfache Volumes auf Windows-Basisdatenträgern</li><li>Windows NTFS zum Formatieren eines Volumes</li> |
+| Windows Server |2008 R2 SP1, 2012, 2012 R2 |Mit StorSimple können Sie Volumes mit schlanker Speicherzuweisung und vollständig bereitgestellte Volumes erstellen. Es können damit keine teilweise bereitgestellten Volumes erstellt werden. StorSimple iSCSI-Volumes werden nur unterstützt für: <ul><li>Einfache Volumes auf Windows-Basisdatenträgern</li><li>Windows NTFS zum Formatieren eines Volumes</li> |
 
 Die folgenden Softwareanforderungen gelten für die SMB-Clients, die auf StorSimple Virtual Array zugreifen (konfiguriert als Dateiserver).
 
@@ -91,7 +84,7 @@ Die folgenden Softwareanforderungen gelten für die SMB-Clients, die auf StorSim
 
 
 ### <a name="supported-storage-format"></a>Unterstützte Speicherformate
-Es wird nur der Azure-Blockblobspeicher unterstützt. Seitenblobs werden nicht unterstützt. Weitere Informationen zu [Blockblobs und Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+Es wird nur der Azure-Blockblobspeicher unterstützt. Seitenblobs werden nicht unterstützt. Weitere Informationen zu [Blockblobs und Seitenblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
 ## <a name="networking-requirements"></a>Netzwerkanforderungen
 In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für iSCSI-, SMB-, Cloud- oder Verwaltungsdatenverkehr geöffnet werden müssen. In dieser Tabelle bezieht sich *ein* oder *eingehend* auf die Richtung, aus der eingehende Clientanforderungen auf das Gerät zugreifen. Entsprechend bezieht sich *aus* oder *ausgehend* auf die Richtung, in der das StorSimple-Gerät Daten über die Bereitstellung hinaus an externe Ziele sendet: z.B. ausgehende Verbindungen mit dem Internet.
@@ -109,7 +102,7 @@ In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für iS
 <sup>1</sup> Es müssen keine eingehenden Ports für das öffentliche Internet geöffnet werden.
 
 > [!IMPORTANT]
-> Achten Sie darauf, dass SSL-Datenverkehr zwischen dem StorSimple-Gerät und Azure nicht durch die Firewall geändert oder entschlüsselt wird.
+> Achten Sie darauf, dass TLS-Datenverkehr zwischen dem StorSimple-Gerät und Azure nicht durch die Firewall geändert oder entschlüsselt wird.
 > 
 > 
 

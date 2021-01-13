@@ -3,19 +3,19 @@ title: Moderieren von Text mit der Textmoderations-API – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Testen Sie die Textmoderation mit der Textmoderations-API in der Onlinekonsole.
 services: cognitive-services
-author: sanjeev3
-ms.author: sajagtap
+author: PatrickFarley
+ms.author: pafarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 49047c21f86530aac6ed3e0138a643fd08c35af8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 664c4289cbfa1f6ce2fce9f9f83b0240bd2d592c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561186"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001999"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Moderieren von Text über die API-Konsole
 
@@ -33,7 +33,7 @@ Greifen Sie auf die [Referenz zur Textmoderations-API](https://westus.dev.cognit
 
 ## <a name="open-the-api-console"></a>Öffnen der API-Konsole
 
-Wählen Sie für **Open API testing console** (API-Testkonsole öffnen) die Region aus, die Ihrem Standort am ehesten nahekommt. 
+Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
 
   ![Seite „Text – Screen“ (Text – Überprüfen) – Auswahl der Region](images/test-drive-region.png)
 
@@ -54,7 +54,7 @@ Wählen Sie für **autocorrect**, **PII** und **classify (preview)** die Option 
 
   ![Konsole „Text – Screen“ (Text – Überprüfen) – Abfrageparameter](images/text-api-console-inputs.PNG)
 
-### <a name="content-type"></a>Content-Typ
+### <a name="content-type"></a>Inhaltstyp
 
 Wählen Sie für **Content-Type** den Inhaltstyp aus, den Sie überprüfen möchten. Verwenden Sie für dieses Beispiel den Standardinhaltstyp **text/plain**. Geben Sie in das Feld **Ocp-Apim-Subscription-Key** Ihren Abonnementschlüssel ein.
 
@@ -62,13 +62,9 @@ Wählen Sie für **Content-Type** den Inhaltstyp aus, den Sie überprüfen möch
 
 Geben Sie im Feld **Anforderungstext** Text ein. Das folgende Beispiel enthält im Text einen absichtlichen Rechtschreibfehler.
 
-> [!NOTE]
-> Die ungültige US-Sozialversicherungsnummer im folgenden Beispieltext ist beabsichtigt. Hier soll das Format der Beispieleingabe und -ausgabe vermittelt werden.
-
 ```
-Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
-These are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300.
-Also, 999-99-9999 looks like a social security number (SSN).
+Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP: 
+255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
 ```
 
 ## <a name="analyze-the-response"></a>Analysieren der Antwort
@@ -79,96 +75,61 @@ In der folgenden Antwort sind die verschiedenen Erkenntnisse dargestellt, die ü
 > Das computergestützte Feature „Klassifizierung“ befindet sich in der Vorschauphase und unterstützt nur Englisch.
 
 ```json
-{"OriginalText":"Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.\r\nThese are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300.\r\nAlso, 544-56-7788 looks like a social security number (SSN).",
-"NormalizedText":"Is this a grabage or crap email abcdef@ abcd. com, phone: 6657789887, IP: 255. 255. 255. 255, 1 Microsoft Way, Redmond, WA 98052. \r\nThese are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300. \r\nAlso, 544- 56- 7788 looks like a social security number ( SSN) .",
-"Misrepresentation":null,
-"PII":{  
-  "Email":[  
-    {  
-      "Detected":"abcdef@abcd.com",
-      "SubType":"Regular",
-      "Text":"abcdef@abcd.com",
-      "Index":32
-    }
-  ],
-  "IPA":[  
-    {  
-      "SubType":"IPV4",
-      "Text":"255.255.255.255",
-      "Index":72
-    }
-  ],
-  "Phone":[  
-    {  
-      "CountryCode":"US",
-      "Text":"6657789887",
-      "Index":56
-    },
-    {  
-      "CountryCode":"US",
-      "Text":"870 608 4000",
-      "Index":211
-    },
-    {  
-      "CountryCode":"UK",
-      "Text":"+44 870 608 4000",
-      "Index":207
-    },
-    {  
-      "CountryCode":"UK",
-      "Text":"0344 800 2400",
-      "Index":227
-    },
-    {  
-      "CountryCode":"UK",
-      "Text":"0800 820 3300",
-      "Index":244
-    }
-  ],
-  "Address":[  
-    {  
-      "Text":"1 Microsoft Way, Redmond, WA 98052",
-      "Index":89
-    }
-  ],
-  "SSN":[  
-    {  
-      "Text":"999999999",
-      "Index":56
-    },
-    {  
-      "Text":"999-99-9999",
-      "Index":266
-    }
-  ]
-},
-"Classification":{  
-  "ReviewRecommended":true,
-  "Category1":{  
-    "Score":1.5113095059859916E-06
-  },
-  "Category2":{  
-    "Score":0.12747249007225037
-  },
-  "Category3":{  
-    "Score":0.98799997568130493
-  }
-},
-"Language":"eng",
-"Terms":[  
-  {  
-    "Index":21,
-    "OriginalIndex":21,
-    "ListId":0,
-    "Term":"crap"
-  }
-],
-"Status":{  
-  "Code":3000,
-  "Description":"OK",
-  "Exception":null
-},
-"TrackingId":"2eaa012f-1604-4e36-a8d7-cc34b14ebcb4"
+{
+   "original_text":"Is this a grabage or crap email abcdef@abcd.com, phone: 
+   6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.",
+   "normalized_text":"   grabage  crap email abcdef@abcd.com, phone: 
+   6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.",
+   "auto_corrected_text":"Is this a garbage or crap email abcdef@abcd.com, phone: 
+   6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.",
+   "status":{
+      "code":3000,
+      "description":"OK"
+   },
+   "pii":{
+      "email":[
+         {
+            "detected":"abcdef@abcd.com",
+            "sub_type":"Regular",
+            "text":"abcdef@abcd.com",
+            "index":32
+         }
+      ],
+      "ssn":[
+
+      ],
+      "ipa":[
+         {
+            "sub_type":"IPV4",
+            "text":"255.255.255.255",
+            "index":72
+         }
+      ],
+      "phone":[
+         {
+            "country_code":"US",
+            "text":"6657789887",
+            "index":56
+         }
+      ],
+      "address":[
+         {
+            "text":"1 Microsoft Way, Redmond, WA 98052",
+            "index":89
+         }
+      ]
+   },
+   "language":"eng",
+   "terms":[
+      {
+         "index":12,
+         "original_index":21,
+         "list_id":0,
+         "term":"crap"
+      }
+   ],
+   "tracking_id":"WU_ibiza_65a1016d-0f67-45d2-b838-b8f373d6d52e_ContentModerator.
+   F0_fe000d38-8ecd-47b5-a8b0-4764df00e3b5"
 }
 ```
 
@@ -176,4 +137,4 @@ Eine ausführliche Erläuterung aller Abschnitte in der JSON-Antwort finden Sie 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie die REST-API in Ihrem Code, oder beginnen Sie damit, den [Schnellstart: Analysieren von Text auf anstößige Inhalte in C#](text-moderation-quickstart-dotnet.md) in Ihre Anwendung zu integrieren.
+Verwenden Sie die REST-API im Code, oder befolgen Sie die Anweisungen im [.NET SDK-Schnellstart](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) für die Integration mit Ihrer Anwendung.

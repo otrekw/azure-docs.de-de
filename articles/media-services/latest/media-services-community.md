@@ -1,9 +1,9 @@
 ---
-title: 'Azure Media Services-Community: Übersicht | Microsoft-Dokumentation'
+title: Azure Media Services v3-Community – Übersicht
 description: Auf dieser Seite der Azure Media Services-Community werden verschiedene Möglichkeiten beschrieben, Fragen zu stellen, Feedback zu geben und Neuigkeiten zu Media Services zu erhalten.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2019
-ms.author: juliako
-ms.openlocfilehash: b8d3a26d015c129a04e54ba9633aa5d1ccfcacf8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 445155ed48334c9680dfa0be7b5402d057c98cef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "69016109"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329719"
 ---
-# <a name="azure-media-services-community"></a>Azure Media Services-Community  
+# <a name="azure-media-services-v3-community"></a>Azure Media Services v3-Community
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]  
 
 Auf dieser Seite der Azure Media Services-Community werden verschiedene Möglichkeiten beschrieben, Fragen zu stellen, Feedback zu geben und Neuigkeiten zu Media Services zu erhalten.
 
@@ -40,15 +42,11 @@ Die folgenden Foren können zum Stellen von Fragen zu aktuellen Produkten und Fe
 
 Derzeit ist MSDN das primäre Communityforum des Media Services-Teams.
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![Der Screenshot zeigt das Logo für MSDN, das primäre Communityforum des Media Services-Teams.](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
 
 Das Team überwacht auch Fragen, die in Stack Overflow mit „azure-media-services“ gekennzeichnet werden.
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
-
-## <a name="contact-the-team"></a>Kontaktaufnahme mit dem Team
-
-Die primäre E-Mail-Adresse für den Azure Media Services-Support lautet: **amshelp\@microsoft.com**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

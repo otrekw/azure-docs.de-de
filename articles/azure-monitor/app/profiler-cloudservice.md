@@ -1,23 +1,18 @@
 ---
 title: Erstellen von Profilen für Azure Cloud Services-Liveinstanzen mit Application Insights | Microsoft-Dokumentation
 description: Aktivieren von Application Insights Profiler für Azure Cloud Services.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+ms.custom: devx-track-dotnet
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 93392e379cbb03508fefc1877d5d50e04436b79c
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: 69a9ba316a1fda14a2e85d4d981321d4b2f9f289
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737228"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88930314"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Erstellen von Profilen für Azure Cloud Services-Liveinstanzen mit Application Insights
 
@@ -29,9 +24,9 @@ Application Insights Profiler kann auch für diese Dienste bereitgestellt werden
 Application Insights Profiler wird mit der Azure-Diagnoseerweiterung installiert. Sie müssen Azure-Diagnose nur so konfigurieren, dass Profiler installiert wird und Profile an Ihre Application Insights-Ressource sendet.
 
 ## <a name="enable-profiler-for-azure-cloud-services"></a>Aktivieren von Profiler für Azure Cloud Services
-1. Stellen Sie sicher, dass Sie [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) oder höher verwenden. Wenn Sie Betriebssystemfamilie 4 verwenden, müssen Sie .NET Framework 4.6.1 oder höher mit einer [Starttask](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-dotnet-install-dotnet) installieren. Betriebssystemfamilie 5 enthält standardmäßig eine kompatible Version von .NET Framework. 
+1. Stellen Sie sicher, dass Sie [.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) oder höher verwenden. Wenn Sie Betriebssystemfamilie 4 verwenden, müssen Sie .NET Framework 4.6.1 oder höher mit einer [Starttask](../../cloud-services/cloud-services-dotnet-install-dotnet.md) installieren. Betriebssystemfamilie 5 enthält standardmäßig eine kompatible Version von .NET Framework. 
 
-1. Fügen Sie das [Application Insights SDK für Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json) hinzu.
+1. Fügen Sie das [Application Insights SDK für Azure Cloud Services](./cloudservices.md?toc=%2fazure%2fazure-monitor%2ftoc.json) hinzu.
 
     **Der Fehler im Profiler, der in WAD für Cloud Services enthalten ist, wurde behoben.** Die neueste Version von WAD (1.12.2.0) für Cloud Services funktioniert mit allen neueren Versionen des App Insights-SDK. Cloud Service-Hosts führen ein automatisches Upgrade für WAD durch, doch erfolgt dies nicht unmittelbar. Soll ein Upgrade erzwungen werden, können Sie den Dienst erneut bereitstellen oder den Knoten neu starten.
 
@@ -43,11 +38,11 @@ Application Insights Profiler wird mit der Azure-Diagnoseerweiterung installiert
 
 1. Konfigurieren Sie die Erweiterung „Azure-Diagnose“ zum Aktivieren von Profiler:
 
-    a. Suchen Sie wie hier gezeigt die [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)-Datei *diagnostics.wadcfgx* für Ihre Anwendungsrolle:  
+    a. Suchen Sie wie hier gezeigt die [Azure-Diagnose](../platform/diagnostics-extension-overview.md)-Datei *diagnostics.wadcfgx* für Ihre Anwendungsrolle:  
 
       ![Speicherort der Konfigurationsdatei für die Diagnose](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
-      Wenn Sie die Datei nicht finden können, lesen Sie [Einrichten der Diagnose für Azure Cloud Services und virtuelle Azure-Computer](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
+      Wenn Sie die Datei nicht finden können, lesen Sie [Einrichten der Diagnose für Azure Cloud Services und virtuelle Azure-Computer](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?view=vs-2019).
 
     b. Fügen Sie den folgenden `SinksConfig`-Abschnitt als untergeordnetes Element von `WadCfg` hinzu:  
 
@@ -79,3 +74,4 @@ Application Insights Profiler wird mit der Azure-Diagnoseerweiterung installiert
 * Generieren Sie Datenverkehr zu Ihrer Anwendung (starten Sie z.B. einen [Verfügbarkeitstest](monitor-web-app-availability.md)). Warten Sie dann 10 bis 15 Minuten, bis das Senden der Ablaufverfolgungen an die Application Insights-Instanz beginnt.
 * Weitere Informationen finden Sie unter [Profiler-Ablaufverfolgungen](profiler-overview.md?toc=/azure/azure-monitor/toc.json) im Azure-Portal.
 * Informationen zur Behandlung von Profiler-Problemen finden Sie unter [Problembehandlung für den Profiler](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
+

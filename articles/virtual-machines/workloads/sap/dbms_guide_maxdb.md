@@ -9,29 +9,30 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6824eae4d5fed2eceaf85b9a674f980815afb260
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f4257fcca1172502560c182651d649745e494cc1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101375"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958964"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Bereitstellung von SAP MaxDB, SAP liveCache und SAP Content Server auf Azure-VMs
 
-[767598]: https://launchpad.support.sap.com/#/notes/767598
+[767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
-[826037]: https://launchpad.support.sap.com/#/notes/826037
+[826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
-[1139904]: https://launchpad.support.sap.com/#/notes/1139904
-[1173395]: https://launchpad.support.sap.com/#/notes/1173395
+[1139904]:https://launchpad.support.sap.com/#/notes/1139904
+[1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
 [1409604]:https://launchpad.support.sap.com/#/notes/1409604
 [1558958]:https://launchpad.support.sap.com/#/notes/1558958
@@ -41,7 +42,7 @@ ms.locfileid: "70101375"
 [1597355]:https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
-[1619726]: https://launchpad.support.sap.com/#/notes/1619726
+[1619726]:https://launchpad.support.sap.com/#/notes/1619726
 [1619967]:https://launchpad.support.sap.com/#/notes/1619967
 [1750510]:https://launchpad.support.sap.com/#/notes/1750510
 [1752266]:https://launchpad.support.sap.com/#/notes/1752266
@@ -54,7 +55,7 @@ ms.locfileid: "70101375"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
@@ -74,11 +75,11 @@ ms.locfileid: "70101375"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -235,7 +236,7 @@ ms.locfileid: "70101375"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -247,9 +248,9 @@ ms.locfileid: "70101375"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -281,9 +282,9 @@ ms.locfileid: "70101375"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
@@ -309,7 +310,7 @@ ms.locfileid: "70101375"
 
 
 
-Dieses Dokument behandelt verschiedene wichtige Themen für die Bereitstellung von MaxDB, liveCache und Content Server in Azure IaaS. Es ist sinnvoll, im Vorfeld das Dokument [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) und andere Artikel der [Azure-Dokumentation für SAP-Workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) zu lesen. 
+Dieses Dokument behandelt verschiedene wichtige Themen für die Bereitstellung von MaxDB, liveCache und Content Server in Azure IaaS. Es ist sinnvoll, im Vorfeld das Dokument [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) und andere Artikel der [Azure-Dokumentation für SAP-Workload](./get-started.md) zu lesen. 
 
 ## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Besonderheiten von SAP MaxDB-Bereitstellungen unter Windows
 ### <a name="sap-maxdb-version-support-on-azure"></a>Versionsunterstützung für SAP MaxDB in Azure
@@ -328,8 +329,8 @@ Es wird ausdrücklich empfohlen, stets die neueste Version des Betriebssystems M
 Die aktualisierte Liste zur SAP MaxDB-Dokumentation finden Sie in SAP-Hinweis [767598]
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP MaxDB-Konfigurationsrichtlinien für SAP-Installationen in Azure-VMs
-#### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Speicherkonfiguration
-Die Best Practices für Azure Storage mit SAP MaxDB orientieren sich an den allgemeinen Empfehlungen, die im Kapitel [Speicherstruktur einer VM für RDBMS-Bereitstellungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64) beschrieben werden.
+#### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Speicherkonfiguration
+Die Best Practices für Azure Storage mit SAP MaxDB orientieren sich an den allgemeinen Empfehlungen, die im Kapitel [Speicherstruktur einer VM für RDBMS-Bereitstellungen](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64) beschrieben werden.
 
 > [!IMPORTANT]
 > Wie andere Datenbanken verfügt auch SAP MaxDB über Daten- und Protokolldateien. Die korrekte Terminologie bei SAP MaxDB lautet allerdings „Volume“ (nicht „Datei“). Bei SAP MaxDB sprechen wir also z.B. von Datenvolumes und Protokollvolumes. Diese sind nicht zu verwechseln mit den Datenträgervolumes des Betriebssystems. 
@@ -348,12 +349,12 @@ Folgende Schritte müssen ausgeführt werden:
 ![Referenzkonfiguration der Azure-IaaS-VM für SAP MaxDB-DBMS](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
 
 
-#### <a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Sichern und Wiederherstellen
+#### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Sichern und Wiederherstellen
 Bei der Bereitstellung von SAP MaxDB in Azure ist es erforderlich, die Sicherungsmethode zu überprüfen. Auch wenn es sich bei dem System nicht um ein Produktionssystem handelt, muss die durch SAP MaxDB gehostete SAP-Datenbank regelmäßig gesichert werden. Da Azure Storage drei Images vorhält, ist die Sicherung, um einen etwaigen Speicherabsturz und vor allem Betriebsausfälle und Verwaltungsfehler kompensieren zu können, weniger dringlich. Der wichtigste Grund, einen ordnungsgemäßen Sicherungs- und Wiederherstellungsplan zu verfolgen, besteht darin, dass Sie mithilfe der Point-in-Time-Wiederherstellung logische und manuelle Fehler beheben können. Das Ziel ist also entweder, Sicherungen für die Wiederherstellung des Zustands der Datenbank zu einem bestimmten Zeitpunkt zu erstellen, oder, mithilfe einer Sicherung in Azure durch Seeding ein anderes System aufzusetzen, indem die bestehende Datenbank kopiert wird. 
 
 Sicherung und Wiederherstellung einer Datenbank in Azure funktionieren wie bei lokalen Umgebungen. Sie können also die standardmäßigen Tools in SAP MaxDB zum Sichern und Wiederherstellen verwenden. Diese werden in einer SAP MaxDB-Dokumentation beschrieben, die im SAP-Hinweis [767598] aufgeführt wird. 
 
-#### <a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>Leistungsüberlegungen hinsichtlich Sicherung und Wiederherstellung
+#### <a name="performance-considerations-for-backup-and-restore"></a><a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>Leistungsüberlegungen hinsichtlich Sicherung und Wiederherstellung
 Wie bei Bare-Metal-Bereitstellungen hängt die Leistung bei der Sicherung und Wiederherstellung davon ab, wie viele Volumes parallel gelesen werden können und wie hoch deren Durchsatz ist. Es gilt also Folgendes:
 
 * Je geringer die Anzahl an Datenträgern, auf denen Datenbankgeräte gespeichert sind, desto geringer der Durchsatz beim Auslesen insgesamt.
@@ -370,7 +371,7 @@ Wenn Sie die Anzahl der Ziele erhöhen möchten, stehen Ihnen je nach Anforderun
 
 Weitere Informationen zum Striping von Volumes über mehrere bereitgestellte Datenträger finden Sie in [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md). 
 
-#### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Weitere Überlegungen
+#### <a name="other-considerations"></a><a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Weitere Überlegungen
 Alle anderen allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung (siehe [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md))  gelten ebenfalls für die Bereitstellung von VMs mit der SAP MaxDB-Datenbank.
 Andere SAP MaxDB-spezifische Einstellungen sind für Azure-VMs transparent. Diese sind in verschiedenen Dokumenten beschrieben, die in SAP-Hinweis [767598] und den folgenden SAP-Hinweisen aufgelistet sind:
 
@@ -462,7 +463,7 @@ Hier haben Sie zwei Möglichkeiten:
 ![Option zur lokalen Installation des SAP Cache Servers](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)
 <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
-#### <a name="backup--restore"></a>Sichern und Wiederherstellen
+#### <a name="backup--restore"></a>Sicherung/Wiederherstellung
 Wenn Sie den SAP Content Server für das Speichern von Dateien in der SAP MaxDB-Datenbank konfigurieren, gelten die Angaben zum Sichern und Wiederherstellen sowie die Leistungsüberlegungen, die in den SAP MaxDB-Abschnitten dieses Dokuments beschrieben wurden. 
 
 Konfigurieren Sie den SAP Content Server so, dass Dateien im Dateisystem gespeichert werden, haben Sie die Option, das Sichern und Wiederherstellen der gesamten Dateistruktur am Speicherort der Dokumente auszuführen. Ähnlich dem Sichern und Wiederherstellen bei SAP MaxDB wird empfohlen, für Sicherungszwecke ein dediziertes Datenträgervolume zur Verfügung zu halten. 

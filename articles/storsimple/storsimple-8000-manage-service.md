@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen des StorSimple-Geräte-Manager-Diensts in Azure | Microsoft-Dokumentation
-description: Erläutert das Erstellen und Löschen des StorSimple-Geräte-Manager-Diensts im Azure-Portal und beschreibt die Verwaltung des Dienstregistrierungsschlüssels.
+description: Hier werden die erforderlichen Schritte zum Erstellen, Löschen und Migrieren des Diensts und die Verwaltung des Dienstsregistrierungsschlüssels beschrieben.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 66244bd8e24ff62be41df72f7a39c0ce0ed13135
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965458"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360698"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Bereitstellen des StorSimple-Geräte-Manager-Diensts für Geräte der StorSimple 8000-Serie
 
@@ -105,7 +105,7 @@ Führen Sie die folgenden Schritte durch, um den Dienstregistrierungsschlüssel 
 ### <a name="to-regenerate-the-service-registration-key"></a>So generieren Sie den Dienstregistrierungsschlüssel neu
 1. Wechseln Sie auf dem Blatt **StorSimple-Geräte-Manager** zu **Management &gt;** **Schlüssel**.
     
-    ![Blatt „Schlüssel“](./media/storsimple-8000-manage-service/regenregkey2.png)
+    ![Navigieren zum Blatt „Schlüssel“](./media/storsimple-8000-manage-service/regenregkey2.png)
 
 2. Klicken Sie auf dem Blatt **Schlüssel** auf **Neu generieren**.
 
@@ -200,7 +200,7 @@ Im Azure-Portal werden nur die StorSimple-Geräte mit ausgeführtem Update 5.0 u
 | Erstellen, Ändern und Löschen eines Volumes                                                                                             | Nein             |
 | Erstellen, Ändern und Löschen einer Sicherungsrichtlinie                                                                                      | Nein             |
 | Erstellen einer manuellen Sicherung                                                                                                            | Nein             |
-| Erstellen einer geplanten Sicherung                                                                                                         | Nicht zutreffend |
+| Erstellen einer geplanten Sicherung                                                                                                         | Nicht verfügbar |
 | Wiederherstellen eines Sicherungssatzes                                                                                                        | Nein             |
 | Klonen eines Gerät mit ausgeführtem Update 3.0 und höher <br> Auf dem Quellgerät wird eine Version vor Update 3.0 ausgeführt.                                | Ja            |
 | Klonen eines Gerät mit ausgeführter Version vor Update 3.0                                                                          | Nein             |

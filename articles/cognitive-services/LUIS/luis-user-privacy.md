@@ -1,26 +1,24 @@
 ---
 title: Exportieren und Löschen von Daten – LUIS
 titleSuffix: Azure Cognitive Services
-description: Löschen Sie Kundendaten, um Datenschutz und Compliance zu gewährleisten.
+description: Sie haben die volle Kontrolle über das Anzeigen, Exportieren und Löschen ihrer Daten. Löschen Sie Kundendaten, um Datenschutz und Compliance zu gewährleisten.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: e234f88d6e735f33be253cacb373baef63c605c0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.topic: reference
+ms.date: 12/08/2020
+ms.openlocfilehash: cd9b353300b88c69efb0c458245a86963c579064
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559985"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007737"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportieren und Löschen Ihrer Kundendaten aus LUIS in Cognitive Services
 
-Löschen Sie Kundendaten, um Datenschutz und Compliance zu gewährleisten. 
+Löschen Sie Kundendaten, um Datenschutz und Compliance zu gewährleisten.
 
 ## <a name="summary-of-customer-data-request-features"></a>Zusammenfassung der Features für Kundendatenanforderungen
 Language Understanding Intelligent Service (LUIS) speichert zwar Kundeninhalte, damit der Dienst ausgeführt werden kann, aber der LUIS-Benutzer hat die vollständige Kontrolle darüber, welche Daten er abrufen, exportieren oder löschen will. Dies kann über das LUIS-[Webportal](luis-reference-regions.md) oder die [LUIS-Erstellungs-APIs (auch als LUIS-Programmierungs-APIs bezeichnet)](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) erfolgen.
@@ -52,13 +50,13 @@ LUIS-Benutzer haben zwar die vollständige Kontrolle und können die Daten im Po
 
 ## <a name="location-of-active-learning"></a>Standorte für das aktive Lernen
 
-Zur Aktivierung des [aktiven Lernens](luis-how-to-review-endpoint-utterances.md#enable-active-learning) werden die an den veröffentlichten LUIS-Endpunkten empfangenen protokollierten Äußerungen von Benutzern in den folgenden Azure-Regionen gespeichert:
+Zur Aktivierung des [aktiven Lernens](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning) werden die an den veröffentlichten LUIS-Endpunkten empfangenen protokollierten Äußerungen von Benutzern in den folgenden Azure-Regionen gespeichert:
 
 * [Europa](#europe)
 * [Australien](#australia)
 * [USA](#united-states)
 
-Mit Ausnahme der Daten für das aktive Lernen (siehe unten) werden für LUIS die [Methoden zur Datenspeicherung für regionale Dienste](https://azuredatacentermap.azurewebsites.net/) angewandt. 
+Mit Ausnahme der Daten für das aktive Lernen (siehe unten) werden für LUIS die [Methoden zur Datenspeicherung für regionale Dienste](https://azuredatacentermap.azurewebsites.net/) angewandt.
 
 ### <a name="europe"></a>Europa
 
@@ -66,9 +64,9 @@ Das Portal [eu.luis.ai](https://eu.luis.ai) und die Erstellungs-APIs (auch als P
 
 * Europa
 * Frankreich
-* Vereinigtes Königreich
+* United Kingdom
 
-Bei der Bereitstellung in diesen Azure-Regionen werden die am Endpunkt von Endbenutzern Ihrer App eingegangenen Äußerungen für das aktive Lernen in der Azure-Region „Europa“ gespeichert. Sie können das aktive Lernen deaktivieren. Siehe dazu [Deaktivieren des aktiven Lernens](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Informationen zum Verwalten von gespeicherten Äußerungen finden Sie unter [Löschen einer Äußerung](luis-how-to-review-endpoint-utterances.md#delete-utterance). 
+Bei der Bereitstellung in diesen Azure-Regionen werden die am Endpunkt von Endbenutzern Ihrer App eingegangenen Äußerungen für das aktive Lernen in der Azure-Region „Europa“ gespeichert. Sie können das aktive Lernen deaktivieren. Siehe dazu [Deaktivieren des aktiven Lernens](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Informationen zum Verwalten von gespeicherten Äußerungen finden Sie unter [Löschen einer Äußerung](luis-how-to-review-endpoint-utterances.md#delete-utterance).
 
 ### <a name="australia"></a>Australien
 
@@ -76,7 +74,7 @@ Das Portal [au.luis.ai](https://au.luis.ai) und die Erstellungs-APIs (auch als P
 
 * Australien
 
-Bei der Bereitstellung in diesen Azure-Regionen werden die am Endpunkt von Endbenutzern Ihrer App eingegangenen Äußerungen für das aktive Lernen in der Azure-Region „Australien“ gespeichert. Sie können das aktive Lernen deaktivieren. Siehe dazu [Deaktivieren des aktiven Lernens](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Informationen zum Verwalten von gespeicherten Äußerungen finden Sie unter [Löschen einer Äußerung](luis-how-to-review-endpoint-utterances.md#delete-utterance). 
+Bei der Bereitstellung in diesen Azure-Regionen werden die am Endpunkt von Endbenutzern Ihrer App eingegangenen Äußerungen für das aktive Lernen in der Azure-Region „Australien“ gespeichert. Sie können das aktive Lernen deaktivieren. Siehe dazu [Deaktivieren des aktiven Lernens](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Informationen zum Verwalten von gespeicherten Äußerungen finden Sie unter [Löschen einer Äußerung](luis-how-to-review-endpoint-utterances.md#delete-utterance).
 
 ### <a name="united-states"></a>USA
 
@@ -84,7 +82,7 @@ Das Portal [luis.ai](https://www.luis.ai) und die Erstellungs-APIs (auch als Pro
 
 * Azure-Regionen, die in den Erstellungsregionen Europa und Australien nicht unterstützt werden
 
-Bei der Bereitstellung in diesen Azure-Regionen werden die am Endpunkt von Endbenutzern Ihrer App eingegangenen Äußerungen für das aktive Lernen in der Azure-Region „USA“ gespeichert. Sie können das aktive Lernen deaktivieren. Siehe dazu [Deaktivieren des aktiven Lernens](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Informationen zum Verwalten von gespeicherten Äußerungen finden Sie unter [Löschen einer Äußerung](luis-how-to-review-endpoint-utterances.md#delete-utterance). 
+Bei der Bereitstellung in diesen Azure-Regionen werden die am Endpunkt von Endbenutzern Ihrer App eingegangenen Äußerungen für das aktive Lernen in der Azure-Region „USA“ gespeichert. Sie können das aktive Lernen deaktivieren. Siehe dazu [Deaktivieren des aktiven Lernens](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Informationen zum Verwalten von gespeicherten Äußerungen finden Sie unter [Löschen einer Äußerung](luis-how-to-review-endpoint-utterances.md#delete-utterance).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

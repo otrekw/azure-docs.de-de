@@ -1,0 +1,76 @@
+### YamlMime:Landing
+title: Dokumentation zum Internetpeering
+summary: Hier erfahren Sie mehr über das Internetpeering mit Microsoft.
+metadata:
+  title: Dokumentation zum Internetpeering
+  titleSuffix: Azure
+  description: Hier erfahren Sie mehr über das Peering mit Microsoft.
+  services: internet-peering
+  ms.service: internet-peering
+  ms.topic: landing-page
+  author: prmitiki
+  ms.author: prmitiki
+  ms.date: 11/27/2019
+  ms.openlocfilehash: df16eb3da78608660ce9fb279f3258dc0879cdb4
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "84247086"
+landingContent:
+- title: Informationen zum Internetpeering
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Informationen zum Internetpeering
+      url: overview.md
+    - text: Internetpeering und Peering Service
+      url: overview-peering-service.md
+  - linkListType: concept
+    links:
+    - text: Peeringrichtlinie
+      url: policy.md
+    - text: Voraussetzungen für das Einrichten von Peering mit Microsoft
+      url: prerequisites.md
+    - text: Häufig gestellte Fragen zum Internetpeering
+      url: faqs.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Zuordnen der Peer-ASN zum Azure-Abonnement über das Portal
+      url: howto-subscription-association-portal.md
+- title: Austauschpeering
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Exemplarische Vorgehensweise für Austauschpeering
+      url: walkthrough-exchange-all.md
+    - text: Erstellen oder Ändern einer Instanz für Austauschpeering über das Portal
+      url: howto-exchange-portal.md
+    - text: Konvertieren einer älteren Instanz für Austauschpeering in eine Azure-Ressource über das Portal
+      url: howto-legacy-exchange-portal.md
+    - text: Erstellen oder Ändern eines Austauschpeerings mit Routenserver über das Portal
+      url: how-to-exchange-route-server-portal.md
+- title: Direktes Peering
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Exemplarische Vorgehensweise für direktes Peering
+      url: walkthrough-direct-all.md
+    - text: Erstellen oder Ändern einer Instanz für direktes Peering über das Portal
+      url: howto-direct-portal.md
+    - text: Konvertieren einer älteren Instanz für direktes Peering in eine Azure-Ressource über das Portal
+      url: howto-legacy-direct-portal.md
+- title: Peering Service
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Häufig gestellte Fragen zu Peering Service
+      url: service-faqs.md
+  - linkListType: how-to-guide
+    links:
+    - text: Exemplarische Vorgehensweise für Peering Service-Partner
+      url: walkthrough-peering-service-all.md
+    - text: Aktivieren von Peering Service für direktes Peering über das Portal
+      url: howto-peering-service-portal.md

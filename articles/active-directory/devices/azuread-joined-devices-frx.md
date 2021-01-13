@@ -4,19 +4,19 @@ description: Es wird beschrieben, wie Benutzer Azure AD Join während des OOBE-V
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 384157828e9c816b150e40bf3f09b74578c4a98e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: da37316724bf6ef166f08faa7208ad196000bb00
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482095"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85253102"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Tutorial: Einbinden eines neuen Windows 10-Geräts in Azure AD auf der Windows-Willkommensseite
 

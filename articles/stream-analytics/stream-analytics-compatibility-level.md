@@ -1,17 +1,17 @@
 ---
-title: Verstehen des Kompatibilitätsgrads für Azure Stream Analytics-Aufträge
+title: Kompatibilitätsgrade von Azure Stream Analytics
 description: Erfahren Sie, wie Sie einen Kompatibilitätsgrad für einen Azure Stream Analytics-Auftrag festlegen und welche größeren Änderungen am neuesten Kompatibilitätsgrad vorgenommen wurden.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: d6d31506a13656a954c48dfee00f14d8ab381fd5
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.date: 03/10/2020
+ms.openlocfilehash: 11014c5a5c5cd0cabae1b62083bd5e662be2c6b7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173239"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348932"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Kompatibilitätsgrad für Azure Stream Analytics-Aufträge
 
@@ -25,17 +25,15 @@ Der Kompatibilitätsgrad steuert das Laufzeitverhalten eines Stream Analytics-Au
 
 Azure Stream Analytics unterstützt zurzeit drei Kompatibilitätsgrade:
 
-* 1.0 – Vorheriges Verhalten
-* 1.1 – Standardverhalten
-* 1.2 (Vorschau): neuestes Verhalten mit den neuesten Verbesserungen zum Testen
-
-Der ursprüngliche Kompatibilitätsgrad „1.0“ wurde mit der allgemeinen Verfügbarkeit von Azure Stream Analytics vor einigen Jahren eingeführt.
+* 1.0 – Ursprünglicher Kompatibilitätsgrad, der mit der allgemeinen Verfügbarkeit von Azure Stream Analytics vor einigen Jahren eingeführt wurde
+* 1.1 – Vorheriges Verhalten
+* 1.2 – neuestes Verhalten mit den neuesten Verbesserungen
 
 Wenn Sie einen neuen Stream Analytics-Auftrag erstellen, gilt es als bewährte Methode, diesen mit dem neuesten Kompatibilitätsgrad zu erstellen. Starten Sie Ihren Auftragsentwurf mit dem aktuellsten Verhalten, damit Sie später keine Änderungen vornehmen müssen und so die Komplexität erhöhen.
 
 ## <a name="set-the-compatibility-level"></a>Festlegen des Kompatibilitätsgrads
 
-Sie können den Kompatibilitätsgrad für einen Stream Analytics-Auftrag über das Azure-Portal oder mithilfe des [REST-API-Aufrufs „create job“](/rest/api/streamanalytics/stream-analytics-job) festlegen.
+Sie können den Kompatibilitätsgrad für einen Stream Analytics-Auftrag über das Azure-Portal oder mithilfe des [REST-API-Aufrufs „create job“](/rest/api/streamanalytics/2016-03-01/streamingjobs/createorreplace#compatibilitylevel) festlegen.
 
 So aktualisieren Sie den Kompatibilitätsgrad des Auftrags im Azure-Portal
 
@@ -47,11 +45,15 @@ So aktualisieren Sie den Kompatibilitätsgrad des Auftrags im Azure-Portal
 
 ![Kompatibilitätsgrad von Stream Analytics im Azure-Portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
-Wenn Sie den Kompatibilitätsgrad aktualisieren, überprüft der T-SQL-Compiler den Auftrag mit der Syntax, die dem ausgewählten Kompatibilitätsgrad entspricht.
+Wenn Sie den Kompatibilitätsgrad aktualisieren, überprüft der T-Compiler den Auftrag mit der Syntax, die dem ausgewählten Kompatibilitätsgrad entspricht.
 
-## <a name="compatibility-level-12-preview"></a>Kompatibilitätsgrad 1.2 (Vorschau)
+## <a name="compatibility-level-12"></a>Kompatibilitätsgrad 1.2
 
 Beim Kompatibilitätsgrad 1.2 wurden die folgenden grundlegenden Änderungen eingeführt:
+
+###  <a name="amqp-messaging-protocol"></a>AMQP-Messagingprotokoll
+
+**Ebene 1.2** : Azure Stream Analytics verwendet das Nachrichtenprotokoll [Advanced Message Queueing Protocol (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md), um in Service Bus-Warteschlangen und -Themen zu schreiben. AMQP gibt Ihnen die Möglichkeit, plattformübergreifende Hybridanwendungen mit einem offenen Standard zu erstellen.
 
 ### <a name="geospatial-functions"></a>Geofunktionen
 
@@ -75,13 +77,13 @@ Weitere Informationen finden Sie unter [Updates to geospatial features in Azure 
 
 **Vorherige Ebenen:** Das Upsertverhalten war durch *Einfügen oder Zusammenführen*  definiert.
 
-**Ebene 1.2:** Durch die native Integration der Bulk-API in die Cosmos DB-Ausgabe werden der Durchsatz maximiert und Drosselungsanforderungen effizient verarbeitet. Weitere Informationen finden Sie auf der Seite zur [Azure Stream Analytics-Ausgabe an Azure Cosmos DB](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12).
+**Ebene 1.2:** Durch die native Integration der Bulk-API in die Cosmos DB-Ausgabe werden der Durchsatz maximiert und Drosselungsanforderungen effizient verarbeitet. Weitere Informationen finden Sie auf der Seite zur [Azure Stream Analytics-Ausgabe an Azure Cosmos DB](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12).
 
 Das Upsertverhalten ist durch *Einfügen oder Ersetzen*  definiert.
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>DateTimeOffset beim Schreiben in SQL-Ausgabe
 
-**Vorherige Ebenen:** [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017)-Typen wurden an UTC angepasst.
+**Vorherige Ebenen:** [DateTimeOffset](/sql/t-sql/data-types/datetimeoffset-transact-sql)-Typen wurden an UTC angepasst.
 
 **Ebene 1.2:** DateTimeOffset wird nicht mehr angepasst.
 
@@ -140,13 +142,13 @@ Beim Kompatibilitätsgrad 1.1 wurden die folgenden grundlegenden Änderungen ein
 
 **Ebene 1.1:** CREATE TABLE erlaubt die Angabe eines festen Schemas. Das Stream Analytics-Modul überprüft, ob die Daten diesem Schema entsprechen. Mit diesem Modell kann der Befehl Ereignisse mit NaN-Werten filtern.
 
-### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Deaktivieren der automatischen Typumwandlung nach oben für datetime-Zeichenfolgen im JSON-Format
+### <a name="disable-automatic-conversion-of-datetime-strings-to-datetime-type-at-ingress-for-json"></a>Deaktivieren der automatischen Konvertierung von Datetimezeichenfolgen beim Eingang in den DateTime-Typ für JSON
 
-**Ebene 1.0:** Der JSON-Parser führte automatisch eine Typumwandlung nach oben für Zeichenfolgen mit Informationen zu Datum/Uhrzeit/Zeitzone in den Typ DateTime durch und konvertierte diese dann in UTC. Dieses Verhalten führte zum Verlust von Zeitzoneninformationen.
+**Ebene 1.0:** Der JSON-Parser würde automatisch Zeichenfolgenwerte mit Datums-/Uhrzeit-/Zoneninformationen beim Eingang in den DATETIME-Typ konvertieren, sodass der Wert sofort seine ursprünglichen Formatierungs- und Zeitzoneninformationen verliert. Da dies beim Eingang erfolgt, selbst wenn dieses Feld nicht in der Abfrage verwendet wurde, wird der Wert in UTC-DateTime konvertiert.
 
-**Ebene 1.1:** Es erfolgt keine automatische Typumwandlung nach oben mehr für Zeichenfolgenwerte mit Informationen zu Datum/Uhrzeit/Zeitzone in den Typ DateTime. Daher werden die Zeitzoneninformationen beibehalten.
+**Ebene 1.1:** Es erfolgt keine automatische Umwandlung von Zeichenfolgenwerten mit Datums-/Uhrzeit-/Zoneninformationen in den Typ DATETIME. Folglich werden Zeitzoneninformationen und die ursprüngliche Formatierung beibehalten. Wenn jedoch das Feld NVARCHAR(MAX) in der Abfrage als Teil eines DATETIME-Ausdrucks (z. B. DATEADD-Funktion) verwendet wird, wird es in den DATETIME-Typ konvertiert, um die Berechnung auszuführen, und verliert sein ursprüngliches Format.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Problembehandlung von Azure Stream Analytics-Eingaben](stream-analytics-troubleshoot-input.md)
-* [Stream Analytics-Ressourcenintegrität](stream-analytics-resource-health.md)
+* [Stream Analytics-Ressourcenintegrität](./stream-analytics-troubleshoot-query.md)

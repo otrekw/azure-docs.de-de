@@ -1,21 +1,15 @@
 ---
 title: Sicherheit in Azure Blockchain
 description: Datenzugriff und Sicherheitskonzepte des Azure Blockchain-Diensts
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
-ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: 00d4911c0f2541ea5c64eccca3ab1b1505e06390
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 11/22/2019
+ms.topic: conceptual
+ms.reviewer: janders
+ms.openlocfilehash: 989d9f2afad30517a85185878d694c0b6640e987
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608528"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80879597"
 ---
 # <a name="azure-blockchain-service-security"></a>Sicherheit in Azure Blockchain
 
@@ -29,11 +23,11 @@ Azure Blockchain-Ressourcen werden in einem privaten virtuellen Netzwerk isolier
 
 ## <a name="encryption"></a>Verschlüsselung
 
-Benutzerdaten werden in Azure Storage gespeichert. Benutzerdaten werden im Sinne der Sicherheit und Vertraulichkeit während der Übertragung und im Ruhezustand verschlüsselt. Weitere Informationen finden Sie unter [Azure Storage-Sicherheitsleitfaden](../../storage/common/storage-security-guide.md).
+Benutzerdaten werden in Azure Storage gespeichert. Benutzerdaten werden im Sinne der Sicherheit und Vertraulichkeit während der Übertragung und im Ruhezustand verschlüsselt. Weitere Informationen finden Sie unter [Azure Storage-Sicherheitsleitfaden](../../storage/blobs/security-recommendations.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
-Transaktionen können über einen RPC-Endpunkt an Blockchainknoten gesendet werden. Clients kommunizieren mit einem Transaktionsknoten mithilfe eines Reverseproxyservers, der die Benutzerauthentifizierung durchführt und Daten über SSL verschlüsselt.
+Transaktionen können über einen RPC-Endpunkt an Blockchainknoten gesendet werden. Clients kommunizieren mit einem Transaktionsknoten mithilfe eines Reverseproxyservers, der die Benutzerauthentifizierung durchführt und Daten über TLS verschlüsselt.
 
 ![Authentifizierungsdiagramm](./media/data-security/authentication.png)
 
@@ -65,4 +59,4 @@ Konstellationsschlüssel werden zum eindeutigen Identifizieren von Quorum-Knoten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Konfigurieren von Azure Blockchain-Transaktionsknoten](configure-transaction-nodes.md)
+Siehe [Konfigurieren des Azure Active Directory-Zugriff für Azure Blockchain Service](configure-aad.md)

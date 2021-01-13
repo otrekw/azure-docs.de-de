@@ -1,10 +1,10 @@
 ---
-title: Erstellen einer Azure Data Factory mithilfe von Python | Microsoft-Dokumentation
-description: Erstellen Sie eine Azure Data Factory-Instanz, um Daten von einem Speicherort in einem Azure Blob-Speicher an einen anderen Speicherort zu kopieren.
+title: 'Schnellstart: Erstellen einer Azure Data Factory mithilfe von Python'
+description: Mithilfe einer Data Factory-Instanz können Sie Daten von einem Speicherort in einem Azure Blob-Speicher an einen anderen Speicherort kopieren.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
-ms.openlocfilehash: 4d3b7ce56863d82ed8322b937a290c52774677d2
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.custom: seo-python-october2019, devx-track-python
+ms.openlocfilehash: cc25ce4aa51535bbfd03d99ed413afa66a184fdb
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272280"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508780"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Schnellstart: Erstellen einer Data Factory und Pipeline mithilfe von Python
 
@@ -25,18 +26,27 @@ ms.locfileid: "71272280"
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuelle Version](quickstart-create-data-factory-python.md)
 
-Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können.
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Diese Schnellstartanleitung beschreibt, wie Sie Python verwenden, um eine Azure Data Factory zu erstellen. Die Pipeline in dieser Data Factory kopiert Daten aus einem Ordner in einen anderen Ordner in ein und demselben Azure Blob Storage.
+In diesem Schnellstart erstellen Sie eine Data Factory mit Python. Die Pipeline in dieser Data Factory kopiert Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows erstellen können, um die Datenverschiebung und Datentransformation zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows – sogenannte Pipelines – erstellen und planen.
+
+Pipelines können Daten aus unterschiedlichen Datenspeichern erfassen. Pipelines verarbeiten oder transformieren Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning. Pipelines dienen zum Veröffentlichen von Ausgabedaten für Datenspeicher wie Azure Synapse Analytics für BI-Anwendungen (Business Intelligence).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Azure Storage-Konto**. Sie verwenden den Blob Storage als **Quelldatenspeicher** und als **Senkendatenspeicher**. Wenn Sie kein Azure Storage-Konto besitzen, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md) Schritte zum Erstellen eines solchen Kontos.
-* **Erstellen Sie eine Anwendung in Azure Active Directory**, indem Sie [diese Anweisungen](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) befolgen. Notieren Sie sich die folgenden Werte, die Sie in späteren Schritten benötigen: **Anwendungs-ID**, **Authentifizierungsschlüssel** und **Mandanten-ID**. Weisen Sie die Anwendung der Rolle **Mitwirkender** zu, indem Sie die Anweisungen im gleichen Artikel befolgen.
+* Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-### <a name="create-and-upload-an-input-file"></a>Erstellen und Hochladen einer Eingabedatei
+* [Python 3.4 oder höher](https://www.python.org/downloads/)
+
+* [Azure Storage-Konto](../storage/common/storage-account-create.md)
+
+* [Azure Storage Explorer](https://storageexplorer.com/) (optional)
+
+* [Eine Anwendung in Azure Active Directory.](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) Notieren Sie sich die folgenden Werte, die Sie in späteren Schritten benötigen: **Anwendungs-ID**, **Authentifizierungsschlüssel** und **Mandanten-ID**. Weisen Sie die Anwendung der Rolle **Mitwirkender** zu, indem Sie die Anweisungen im gleichen Artikel befolgen.
+
+## <a name="create-and-upload-an-input-file"></a>Erstellen und Hochladen einer Eingabedatei
 
 1. Starten Sie den Editor. Kopieren Sie den folgenden Text, und speichern Sie ihn als **input.txt**-Datei auf Ihrem Datenträger.
 
@@ -48,7 +58,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="install-the-python-package"></a>Installieren des Python-Pakets
 
-1. Öffnen Sie ein Terminal oder eine Eingabeaufforderung mit Administratorberechtigungen. 
+1. Öffnen Sie ein Terminal oder eine Eingabeaufforderung mit Administratorberechtigungen. 
 2. Installieren Sie zunächst das Python-Paket für Azure-Verwaltungsressourcen:
 
     ```python
@@ -185,7 +195,7 @@ Sie definieren ein Dataset, das die Quelldaten im Azure-Blob darstellt. Dieses B
     print_item(ds)
 ```
 
-### <a name="create-a-dataset-for-sink-azure-blob"></a>Erstellen eines Datasets für das Azure-Senkenblob
+### <a name="create-a-dataset-for-sink-azure-blob"></a>Erstellen eines Datasets für eine Azure Blobsenke
 
 Fügen Sie der Main-Methode den folgenden Code hinzu, der ein Azure-Blobdataset erstellt. Weitere Informationen zu den Eigenschaften eines Azure-Blobdatasets finden Sie im Artikel [Azure-Blobconnector](connector-azure-blob-storage.md#dataset-properties).
 
@@ -350,7 +360,7 @@ def main():
 
     # Create an Azure blob dataset (input)
     ds_name = 'ds_in'
-    ds_ls = LinkedServiceReference(ls_name)
+    ds_ls = LinkedServiceReference(reference_name=ls_name)
     blob_path = 'adfv2tutorial/input'
     blob_filename = 'input.txt'
     ds_azure_blob = AzureBlobDataset(
@@ -371,9 +381,9 @@ def main():
     act_name = 'copyBlobtoBlob'
     blob_source = BlobSource()
     blob_sink = BlobSink()
-    dsin_ref = DatasetReference(ds_name)
-    dsOut_ref = DatasetReference(dsOut_name)
-    copy_activity = CopyActivity(act_name, inputs=[dsin_ref], outputs=[
+    dsin_ref = DatasetReference(reference_name=ds_name)
+    dsOut_ref = DatasetReference(reference_name=dsOut_name)
+    copy_activity = CopyActivity(name=act_name, inputs=[dsin_ref], outputs=[
                                  dsOut_ref], source=blob_source, sink=blob_sink)
 
     # Create a pipeline with the copy activity
@@ -407,11 +417,11 @@ main()
 
 Erstellen und starten Sie die Anwendung, und überprüfen Sie dann die Pipelineausführung.
 
-Die Konsole gibt den Status der Erstellung der Data Factory, des verknüpften Diensts, der Datasets, der Pipeline und der Pipelineausführung aus. Warten Sie, bis Sie die Ausführungsdetails der Kopieraktivität mit der Größe der gelesenen/geschriebenen Daten sehen. Verwenden Sie dann Tools wie z.B. [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), um zu überprüfen, ob die Blobs wie von Ihnen in den Variablen angegeben von „inputBlobPath“ nach „outputBlobPath“ kopiert werden.
+Die Konsole druckt den Status der Erstellung der Data Factory, des verknüpften Diensts, der Datasets, der Pipeline und der Pipelineausführung aus. Warten Sie, bis Sie die Ausführungsdetails der Kopieraktivität mit der Größe der gelesenen/geschriebenen Daten sehen. Verwenden Sie dann Tools wie z.B. [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), um zu überprüfen, ob die Blobs wie von Ihnen in den Variablen angegeben von „inputBlobPath“ nach „outputBlobPath“ kopiert werden.
 
 Hier ist die Beispielausgabe:
 
-```json
+```console
 Name: <data factory name>
 Id: /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.DataFactory/factories/<data factory name>
 Location: eastus

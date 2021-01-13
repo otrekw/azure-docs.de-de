@@ -1,29 +1,27 @@
 ---
-title: Optimieren der Leistung virtueller Azure-Computer der Lsv2-Serie – Speicher | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Leistung für Ihre Lösung auf virtuellen Computern der Lsv2-Serie optimieren.
-services: virtual-machines-windows
-author: laurenhughes
-manager: gwallace
+title: Optimieren der Leistung virtueller Azure-Computer der Lsv2-Serie – Speicher
+description: Erfahren Sie anhand eines Beispiels für Windows, wie Sie die Leistung für Ihre Lösung auf virtuellen Computern der Lsv2-Serie optimieren.
+author: sasha-melamed
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.subservice: sizes
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 5728afe8195a8f25e5aafcb815b0c61558b32547
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9d20379f60307fb8b8181ec50b87d3713a02ec6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101786"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306853"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimieren der Leistung virtueller Computer der Lsv2-Serie
+# <a name="optimize-performance-on-the-lsv2-series-windows-virtual-machines"></a>Optimieren der Leistung virtueller Windows-Computer der Lsv2-Serie
 
-Virtuelle Computer der Lsv2-Serie unterstützen verschiedenste Workloads, die hohe Anforderungen an E/A- und Durchsatz des lokalen Speichers stellen und in einem breiten Spektrum von Anwendungen und Branchen zur Anwendung kommen.  Die Lsv2-Serie ist ideal für Big Data, SQL, NoSQL-Datenbanken, Data Warehousing und große Transaktionsdatenbanken wie Cassandra, MongoDB, Cloudera und Redis geeignet.
+Virtuelle Computer der Lsv2-Serie unterstützen verschiedenste Workloads, die hohe Anforderungen an E/A-Leistung und Durchsatz des lokalen Speichers stellen und in einem breiten Spektrum von Anwendungen und Branchen eingesetzt werden.  Die Lsv2-Serie ist ideal für Big Data, SQL, NoSQL-Datenbanken, Data Warehousing und große Transaktionsdatenbanken wie Cassandra, MongoDB, Cloudera und Redis geeignet.
 
 Virtuelle Computer der Lsv2-Serie nutzen den AMD EPYC™ 7551-Prozessor optimal aus, um die bestmögliche Leistung zwischen Prozessor, Arbeitsspeicher, NVMe-Geräten und den virtuellen Computern zu erzielen. Neben der Maximierung der Hardwareleistung erfüllen virtuelle Computer der Lsv2-Serie auch die Anforderungen von Windows- und Linux-Betriebssystemen, um mit der Hardware und Software eine bessere Leistung zu erreichen.
 
-Bei der Optimierung der Software und Hardware entstand die optimierte Version von [Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), die Anfang Dezember 2018 im Azure Marketplace veröffentlicht wurde und maximale Leistung auf den NVMe-Geräten in virtuellen Computern der Lsv2-Serie unterstützt.
+Bei der Optimierung der Software und Hardware entstand die optimierte Version von [Windows Server 2019 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing), die Anfang Dezember 2018 im Azure Marketplace veröffentlicht wurde und maximale Leistung auf den NVMe-Geräten in virtuellen Computern der Lsv2-Serie unterstützt.
 
 Mit den Tipps und Vorschlägen in diesem Artikel können Sie sicherstellen, dass Ihre Workloads und Anwendungen die maximale Leistung erreichen, für die die virtuellen Computer konzipiert wurden. Die Informationen auf dieser Seite werden immer wieder aktualisiert, wenn dem Azure Marketplace weitere Lsv2-optimierte Images hinzugefügt werden.
 
@@ -77,7 +75,7 @@ Zu den Szenarien, in denen die Daten zum Schutz des Kunden sicher gelöscht werd
 - Der virtuelle Computer wird fehlerhaft und muss aufgrund eines Hardwareproblems zur Dienstreparatur zu einem anderen Knoten migriert werden.
 - Ein geringer Anteil der geplanten Wartungsvorgänge, bei denen der virtuelle Computer für die Wartung zu einem anderen Host migriert werden muss.
 
-Weitere Informationen zu Optionen für die Sicherung von Daten im lokalen Speicher finden Sie unter [Sicherung und Notfallwiederherstellung für Azure-IaaS-Datenträger](backup-and-disaster-recovery-for-azure-iaas-disks.md).
+Weitere Informationen zu Optionen für die Sicherung von Daten im lokalen Speicher finden Sie unter [Sicherung und Notfallwiederherstellung für Azure-IaaS-Datenträger](../backup-and-disaster-recovery-for-azure-iaas-disks.md).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -98,4 +96,4 @@ Weitere Informationen zu Optionen für die Sicherung von Daten im lokalen Speich
    
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sehen Sie sich die Spezifikationen für alle [speicheroptimierten virtuellen Computer](sizes-storage.md) in Azure an.
+* Sehen Sie sich die Spezifikationen für alle [speicheroptimierten virtuellen Computer](../sizes-storage.md) in Azure an.

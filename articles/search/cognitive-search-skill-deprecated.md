@@ -1,27 +1,26 @@
 ---
-title: Veraltete kognitive Qualifikationen – Azure Search
-description: Diese Seite enthält eine Liste der Qualifikationen für die kognitive Suche, die als veraltet betrachtet und in naher Zukunft nicht mehr unterstützt werden.
-services: search
+title: Veraltete kognitive Skills
+titleSuffix: Azure Cognitive Search
+description: Diese Seite enthält eine Liste der kognitiven Skills, die als veraltet gelten und in naher Zukunft in den Skillsets der kognitiven Azure-Suche nicht mehr unterstützt werden.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 1e78852ec8b92f1a9e37a4dbcbbcb371c0ac0f97
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 85f3b9862bd8155c1a4b11860dc82d92a2f9e810
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265434"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88936094"
 ---
-# <a name="deprecated-cognitive-search-skills"></a>Veraltete Qualifikationen für die kognitive Suche
+# <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Veraltete kognitive Skills in der kognitiven Azure-Suche
 
 In diesem Dokument werden die kognitiven Qualifikationen beschrieben, die als veraltet betrachtet werden. Verwenden Sie für den Inhalt die folgende Anleitung:
 
 * Qualifikationsname: Name der Qualifikation, die als veraltet markiert wird und dem Attribut @odata.type zugeordnet ist.
-* Letzte verfügbare API-Version: Die letzte Version der öffentlichen Azure Search-API, über die Qualifikationsgruppen mit der entsprechenden veralteten Qualifikation erstellt/aktualisiert werden können.
+* Letzte verfügbare API-Version: Die letzte Version der öffentlichen API der kognitiven Azure-Suche, über die Skillsets mit dem entsprechenden veralteten Skill erstellt oder aktualisiert werden können.
 * Ende des Supports: Der letzte Tag, an dem die entsprechende Qualifikation unterstützt wird. Danach gilt sie als nicht mehr unterstützt. Vorher erstellte Qualifikationsgruppen sollten funktionsfähig bleiben. Benutzern wird jedoch empfohlen, von der als veraltet markierten Qualifikation zu einer anderen zu migrieren.
 * Empfehlungen: Migrationspfad zum Verwenden einer unterstützten Qualifikation. Benutzern wird empfohlen, den Empfehlungen zu folgen, um weiterhin Support zu erhalten.
 
@@ -39,7 +38,7 @@ Vorschauversion vom 11.11.2017
 
 Verwenden Sie stattdessen [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md). Diese Qualifikation enthält die meisten Funktionen von „NamedEntityRecognitionSkill“, jedoch mit höherer Qualität. Die komplexen Ausgabefelder enthalten zudem umfangreichere Informationen.
 
-Um zur [Qualifikation „Entitätserkennung“ (EntityRecognitionSkill)](cognitive-search-skill-entity-recognition.md) zu migrieren, müssen Sie eine oder mehrere der folgenden Änderungen an Ihrer Qualifikationsdefinition vornehmen. Ein Update der Qualifikationsdefinition können Sie mit der [API zum Aktualisieren von Qualifikationsgruppen](https://docs.microsoft.com/rest/api/searchservice/update-skillset) vornehmen.
+Um zur [Qualifikation „Entitätserkennung“ (EntityRecognitionSkill)](cognitive-search-skill-entity-recognition.md) zu migrieren, müssen Sie eine oder mehrere der folgenden Änderungen an Ihrer Qualifikationsdefinition vornehmen. Ein Update der Qualifikationsdefinition können Sie mit der [API zum Aktualisieren von Qualifikationsgruppen](/rest/api/searchservice/update-skillset) vornehmen.
 
 > [!NOTE]
 > Derzeit wird die Zuverlässigkeitsbewertung als Konzept nicht unterstützt. Der Parameter `minimumPrecision` ist zur zukünftigen Verwendung und zur Bereitstellung der Abwärtskompatibilität in `EntityRecognitionSkill` enthalten.
@@ -148,6 +147,6 @@ Um zur [Qualifikation „Entitätserkennung“ (EntityRecognitionSkill)](cogniti
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Vordefinierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Die kognitive Qualifikation „Entitätserkennung“](cognitive-search-skill-entity-recognition.md)

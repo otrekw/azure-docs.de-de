@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-Lösung von CloudSimple – VPN-Gateways
-description: Erfahren Sie mehr über die CloudSimple-Konzepte für Site-to-Site- und Point-to-Site-VPNs.
+title: Azure VMware Solution by CloudSimple – VPN-Gateways
+description: Erfahren Sie mehr über Site-to-Site- und Point-to-Site-VPN-Gateways von CloudSimple, die zum Senden von verschlüsseltem Datenverkehr zwischen einer CloudSimple-Region und anderen Ressourcen verwendet werden.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8b7b02c164021ac084dccf5663122620b2af1b15
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 6e013bb96990a8f3a0ef7d3a58529b200919e276
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972889"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88140631"
 ---
 # <a name="vpn-gateways-overview"></a>Übersicht über VPN-Gateways
 
@@ -63,6 +63,10 @@ Für eine Site-to-Site-VPN-Verbindung werden die folgenden kryptografischen Stan
 | Perfect Forward Secrecy-Gruppe (PFS-Gruppe) | Keine | Keine | Keine |
 | Lebensdauer | 1\.800 Sekunden | 1\.800 Sekunden | 1\.800 Sekunden |
 | Datengröße | 4 GB | 4 GB | 4 GB |
+
+
+> [!IMPORTANT]
+> Legen Sie TCP MSS-Clamping für das VPN-Gerät auf 1200 fest. Wenn Ihre VPN-Geräte MSS-Clamping nicht unterstützen, können Sie stattdessen auch den MTU-Wert der Tunnelschnittstelle auf 1240 Bytes festlegen.
 
 ## <a name="point-to-site-vpn-gateway"></a>Point-to-Site-VPN Gateway
 

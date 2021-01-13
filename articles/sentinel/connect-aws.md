@@ -1,36 +1,39 @@
 ---
-title: Verknüpfen von Symantec AWS-Daten mit Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Symantec AWS-Daten mit Azure Sentinel verknüpfen.
+title: Verbinden von AWS CloudTrail mit Azure Sentinel | Microsoft-Dokumentation
+description: Verwenden Sie den AWS-Connector, um den Zugriff von Azure Sentinel auf AWS-Ressourcenprotokolle zu delegieren, und eine Vertrauensstellung zwischen AWS CloudTrail und Sentinel herzustellen.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 46ad8f6478e632cd57c009700de182993ce01be1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.date: 05/27/2020
+ms.author: yelevin
+ms.openlocfilehash: a7405824d2477d2d39c45a56ae545e58a090c321
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240860"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436605"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Herstellen einer Verbindung zwischen Azure Sentinel und AWS CloudTrail
 
-Verwenden Sie den AWS-Connector, um alle Ihre AWS CloudTrail-Ereignisse in Azure Sentinel zu streamen. Dieser Verbindungsprozess delegiert den Zugriff für Azure Sentinel auf Ihre AWS-Ressourcenprotokolle und schafft so eine Vertrauensbeziehung zwischen AWS CloudTrail und Azure Sentinel. Dies erfolgt in AWS durch Erstellen einer Rolle, die Azure Sentinel die Berechtigung erteilt, auf Ihre AWS-Protokolle zuzugreifen.
+Verwenden Sie den AWS-Connector, um Ihre AWS CloudTrail-Verwaltungsereignisse in Azure Sentinel zu streamen. Dieser Verbindungsprozess delegiert den Zugriff für Azure Sentinel auf Ihre AWS-Ressourcenprotokolle und schafft so eine Vertrauensbeziehung zwischen AWS CloudTrail und Azure Sentinel. Dies erfolgt in AWS durch Erstellen einer Rolle, die Azure Sentinel die Berechtigung erteilt, auf Ihre AWS-Protokolle zuzugreifen.
+
+> [!NOTE]
+> AWS CloudTrail weist [integrierte Beschränkungen](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) in seiner LookupEvents-API auf. Es sind nicht mehr als zwei Transaktionen pro Sekunde (TPS) pro Konto zulässig, und jede Abfrage kann maximal 50 Datensätze zurückgeben. Wenn also ein einziger Mandant ständig mehr als 100 Datensätze pro Sekunde in einer Region generiert, kommen es zu Backlogs und Verzögerungen bei der Datenerfassung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Sie benötigen Schreibzugriff auf den Azure Sentinel-Arbeitsbereich.
 
 > [!NOTE]
-> Azure Sentinel sammelt CloudTrail-Ereignisse aus allen Regionen. Es wird davon abgeraten, Ereignisse aus einer Region in eine andere zu streamen.
+> Azure Sentinel sammelt CloudTrail-Verwaltungsereignisse aus allen Regionen. Es wird davon abgeraten, Ereignisse aus einer Region in eine andere zu streamen.
 
 ## <a name="connect-aws"></a>Herstellen einer Verbindung mit AWS 
 
@@ -77,10 +80,11 @@ Sie benötigen Schreibzugriff auf den Azure Sentinel-Arbeitsbereich.
 
 1. Um das relevante Schema in Log Analytics für die AWS-Ereignisse zu verwenden, suchen Sie nach **AWSCloudTrail**.
 
-
+    > [!IMPORTANT]
+    > Mit Stand vom 1. Dezember 2020 wurde das Feld **AwsRequestId** durch das Feld **AwsRequestId_** ersetzt (beachten Sie den hinzugefügten Unterstrich). Die Daten im alten Feld **AwsRequestId** werden bis zum Ende des vom Kunden angegebenen Aufbewahrungszeitraums beibehalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument wurde beschrieben, wie Sie AWS CloudTrail mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
-
+- [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.

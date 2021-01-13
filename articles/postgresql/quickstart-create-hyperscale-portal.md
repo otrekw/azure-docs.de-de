@@ -1,23 +1,23 @@
 ---
-title: 'Schnellstart: Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschauversion)'
-description: Schnellstart zum Erstellen und Abfragen verteilter Tabellen in Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschauversion).
+title: 'Schnellstart: Erstellen einer Servergruppe – Hyperscale (Citus) – Azure Database for PostgreSQL'
+description: Schnellstartanleitung zum Erstellen und Abfragen verteilter Tabellen in Azure Database for PostgreSQL – Hyperscale (Citus)
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/14/2019
-ms.openlocfilehash: fe981167249e24a43a8cb14c51c9b7c1eb081225
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.date: 08/17/2020
+ms.openlocfilehash: 03a6e927a074067e85f1a3adca38cae386d1af38
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164016"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026215"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Schnellstart: Erstellen einer Azure Database for PostgreSQL – Hyperscale-Servergruppe (Citus) (Vorschauversion) im Azure-Portal
+# <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>Schnellstart: Erstellen einer Hyperscale (Citus)-Servergruppe im Azure-Portal
 
-Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare PostgreSQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal eine Azure Database for PostgreSQL – Hyperscale-Servergruppe (Citus) (Vorschauversion) erstellen. Dabei erkunden Sie verteilte Daten: knotenübergreifendes Sharding von Tabellen, Erfassen von Beispieldaten und Ausführen von Abfragen, die auf mehreren Knoten ausgeführt werden.
+Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare PostgreSQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal eine Servergruppe vom Typ „Azure Database for PostgreSQL – Hyperscale (Citus)“ erstellen. Dabei erkunden Sie verteilte Daten: knotenübergreifendes Sharding von Tabellen, Erfassen von Beispieldaten und Ausführen von Abfragen, die auf mehreren Knoten ausgeführt werden.
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -25,7 +25,7 @@ Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hochverf
 
 Nachdem Sie mithilfe von psql eine Verbindung mit dem Hyperscale-Koordinatorknoten hergestellt haben, können Sie einige grundlegende Aufgaben ausführen.
 
-Innerhalb der Hyperscale-Server gibt es drei Arten von Tabellen:
+Innerhalb der Hyperscale (Citus)-Server gibt es drei Arten von Tabellen:
 
 - Verteilte oder Shardtabellen (zur besseren Leistungsskalierung und Parallelisierung aufgeteilt)
 - Verweistabellen (mehrere Kopien beibehalten)
@@ -71,12 +71,14 @@ CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-Als Nächstes verwenden Sie diese Postgres-Tabellen auf dem Koordinatorknoten und weisen Hyperscale an, diese per Sharding auf die Worker zu verteilen. Zu diesem Zweck führen Sie eine Abfrage für jede Tabelle aus und geben dabei den Schlüssel für das Sharding an. Im aktuellen Beispiel wird ein Sharding sowohl für die Ereignis- als auch die Benutzertabelle nach `user_id` durchgeführt:
+Als Nächstes verwenden Sie diese Postgres-Tabellen im Koordinatorknoten und weisen Hyperscale (Citus) an, diese per Sharding auf die Worker zu verteilen. Zu diesem Zweck führen Sie eine Abfrage für jede Tabelle aus und geben dabei den Schlüssel für das Sharding an. Im aktuellen Beispiel wird ein Sharding sowohl für die Ereignis- als auch die Benutzertabelle nach `user_id` durchgeführt:
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
 SELECT create_distributed_table('github_users', 'user_id');
 ```
+
+[!INCLUDE [azure-postgresql-hyperscale-dist-alert](../../includes/azure-postgresql-hyperscale-dist-alert.md)]
 
 Jetzt können Daten geladen werden. Stellen Sie in psql an der Shell eine Verbindung her, um die Dateien herunterzuladen:
 
@@ -113,9 +115,9 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Bisher waren bei den Abfragen ausschließlich „github\_events“ einbezogen, doch können diese Informationen auch mit „github\_users“ kombiniert werden. Da ein Sharding sowohl für Benutzer als auch Ereignisse mit demselben Bezeichner (`user_id`) durchgeführt wurde, werden die Zeilen beider Tabellen mit übereinstimmenden Benutzer-IDs auf denselben Datenbankknoten [zusammengestellt](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) und können auf einfache Weise verknüpft werden.
+Bisher waren bei den Abfragen ausschließlich „github\_events“ einbezogen, doch können diese Informationen auch mit „github\_users“ kombiniert werden. Da ein Sharding sowohl für Benutzer als auch Ereignisse mit demselben Bezeichner (`user_id`) durchgeführt wurde, werden die Zeilen beider Tabellen mit übereinstimmenden Benutzer-IDs auf denselben Datenbankknoten [zusammengestellt](concepts-hyperscale-colocation.md) und können auf einfache Weise verknüpft werden.
 
-Bei einer Verknüpfung basierend auf `user_id` kann Hyperscale deren Ausführung per Pushvorgang in Shards für die parallele Ausführung auf Workerknoten übertragen. Suchen Sie beispielsweise nach den Benutzern, die die größte Anzahl von Repositorys erstellt haben:
+Bei einer Verknüpfung basierend auf `user_id` kann Hyperscale (Citus) deren Ausführung per Pushvorgang in Shards für die parallele Ausführung auf Workerknoten übertragen. Suchen Sie beispielsweise nach den Benutzern, die die größte Anzahl von Repositorys erstellt haben:
 
 ```sql
 SELECT gu.login, count(*)
@@ -136,6 +138,5 @@ In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Servergruppe ers
 
 In diesem Schnellstart haben Sie erfahren, wie Sie eine Hyperscale-Servergruppe (Citus) bereitstellen. Sie haben mithilfe von psql eine Verbindung mit ihr hergestellt, haben ein Schema erstellt und Daten verteilt.
 
-Als Nächstes arbeiten Sie ein Tutorial zum Erstellen skalierbarer mehrinstanzenfähiger Anwendungen durch.
-> [!div class="nextstepaction"]
-> [Entwerfen einer mehrinstanzenfähigen Datenbank](https://aka.ms/hyperscale-tutorial-multi-tenant)
+- Tutorial zum [Erstellen skalierbarer mehrinstanzenfähiger Anwendungen](./tutorial-design-database-hyperscale-multi-tenant.md)
+- Bestimmen der besten [Anfangsgröße](howto-hyperscale-scale-initial.md) für Ihre Servergruppe

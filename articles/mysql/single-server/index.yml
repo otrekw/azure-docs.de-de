@@ -1,0 +1,143 @@
+### YamlMime:Landing
+title: Dokumentation zu Single Server
+summary: Azure Database for MySQL Single Server ist ein relationaler Datenbankdienst, der von der MySQL Community-Edition unterstützt wird.  Das vollständig verwaltete Database-as-a-Service-Angebot kann geschäftskritische Workloads mit vorhersagbarer Leistung und dynamischer Skalierung verarbeiten. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Single Server verwenden.
+metadata:
+  description: Azure Database for MySQL Single Server ist ein relationaler Datenbankdienst in Microsoft Cloud für Entwickler, der von der MySQL Community-Edition unterstützt wird.
+  author: mksuni
+  ms.author: sumuth
+  ms.date: 09/20/2020
+  ms.service: mysql
+  ms.topic: landing-page
+  ms.openlocfilehash: a2ae6e91481da51c77f3c73f4fd9b5d31169952d
+  ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 12/07/2020
+  ms.locfileid: "96749129"
+landingContent:
+- title: Informationen zu Single Server
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Single Server?
+      url: ../single-server-overview.md
+  - linkListType: whats-new
+    links:
+    - text: Zu unserem Blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen eines Servers über das Azure-Portal
+      url: ../quickstart-create-mysql-server-database-using-azure-portal.md
+    - text: Erstellen eines Servers über die Azure-Befehlszeilenschnittstelle
+      url: ../quickstart-create-mysql-server-database-using-azure-cli.md
+  - linkListType: concept
+    links:
+    - text: Grundlegendes zu Tarifen
+      url: ../concepts-pricing-tiers.md
+    - text: Grundlegendes zu den Beschränkungen
+      url: ../concepts-limits.md
+    - text: Grundlegendes zu unterstützten MySQL-Versionen
+      url: ../concepts-supported-versions.md
+    - text: Planen für Hochverfügbarkeit
+      url: ../concepts-high-availability.md
+  - linkListType: tutorial
+    links:
+    - text: Entwerfen einer Datenbank für Single Server
+      url: ../tutorial-design-database-using-portal.md
+    - text: Bereitstellen von WordPress für Web-App für Container mit MySQL
+      url: ../../app-service/tutorial-multi-container-app.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
+    - text: Erstellen einer PHP-Web-App (Laravel) mit MySQL
+      url: ../../app-service/tutorial-php-mysql-app.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
+- title: Herstellen einer Verbindung und Ausführen von Abfragen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Grundlegendes zur Firewall
+      url: ../concepts-firewall-rules.md
+    - text: Grundlegendes zu SSL
+      url: ../concepts-ssl-connection-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen von Firewallregeln
+      url: ../howto-manage-firewall-using-portal.md
+    - text: Konfigurieren der SSL-Konnektivität
+      url: ../howto-configure-ssl.md
+    - text: Beheben von Verbindungsproblemen
+      url: ../howto-troubleshoot-common-connection-issues.md
+  - linkListType: get-started
+    links:
+    - text: Herstellen einer Verbindung über MySQL Workbench
+      url: ../connect-workbench.md
+    - text: Herstellen einer Verbindung unter Verwendung von PHP
+      url: ../connect-php.md
+    - text: Herstellen einer Verbindung unter Verwendung von Java
+      url: ../connect-java.md
+    - text: Herstellen einer Verbindung unter Verwendung von .NET
+      url: ../connect-csharp.md
+    - text: Herstellen einer Verbindung unter Verwendung von Python
+      url: ../connect-python.md
+    - text: Herstellen einer Verbindung unter Verwendung von Node.js
+      url: ../connect-nodejs.md
+- title: Verwalten und Migrieren von Daten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Grundlegendes zu Serverparametern
+      url: ../concepts-server-parameters.md
+    - text: Grundlegendes zu virtuellen Netzwerken
+      url: ../concepts-data-access-and-security-vnet.md
+    - text: Aktivieren der Überwachung
+      url: ../concepts-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren von Serverparametern
+      url: ../howto-server-parameters.md
+    - text: Migrieren mit dem Data Migration Service
+      url: ../howto-migrate-online.md
+    - text: Migrieren durch Sicherungen und Wiederherstellungen
+      url: ../concepts-migrate-dump-restore.md
+    - text: Migrieren durch Import und Export
+      url: ../concepts-migrate-import-export.md
+- title: Geschäftskontinuität
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Geschäftskontinuität
+      url: ../concepts-business-continuity.md
+    - text: Sichern und Wiederherstellen
+      url: ../concepts-backup.md
+    - text: Replikation eingehender Daten
+      url: ../concepts-data-in-replication.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren der Replikation eingehender Daten
+      url: ../howto-data-in-replication.md
+    - text: Wiederherstellen eines Servers über das Azure-Portal
+      url: ../howto-restore-server-portal.md
+    - text: Wiederherstellen eines Servers über die Azure-Befehlszeilenschnittstelle
+      url: ../howto-restore-server-cli.md
+- title: Verweis
+  linkLists:
+  - linkListType: download
+    links:
+    - text: MySQL Workbench
+      url: https://www.mysql.com/products/workbench
+    - text: MySQL .NET-Connector
+      url: https://dev.mysql.com/doc/connector-net/en/
+  - linkListType: deploy
+    links:
+    - text: Azure CLI-Skripts für allgemeine Aufgaben
+      url: ../sample-scripts-azure-cli.md
+    - text: Azure-Ressourcen-Manager-Vorlagen
+      url: /azure/templates/microsoft.dbformysql/allversions
+  - linkListType: reference
+    links:
+    - text: Azure CLI-Entwicklerreferenz
+      url: /cli/azure/mysql
+    - text: REST-API-Entwicklerreferenz
+      url: /rest/api/mysql/
+    - text: PowerShell
+      url: /powershell/module/az.mysql

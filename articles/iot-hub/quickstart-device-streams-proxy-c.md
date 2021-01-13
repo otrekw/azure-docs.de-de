@@ -1,20 +1,20 @@
 ---
-title: 'Azure IoT Hub-Gerätestreams: C-Schnellstartanleitung für SSH und RDP (Vorschauversion) | Microsoft-Dokumentation'
+title: 'Azure IoT Hub-Gerätestreams: C#-Schnellstartanleitung für SSH und RDP'
 description: In dieser Schnellstartanleitung führen Sie eine C-Beispielanwendung aus, die als Proxy SSH- und RDP-Szenarien über IoT Hub-Gerätestreams ermöglicht.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 23a005ebb16f4786c7dde9ec5b2a7ae7c5685cb8
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 037ff64f4811515e7ce64d66a36e08e71de54058
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377236"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831989"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Schnellstart: Ermöglichen von SSH und RDP über einen IoT Hub-Gerätestream unter Verwendung einer C-Proxyanwendung (Vorschauversion)
 
@@ -26,14 +26,14 @@ Azure IoT Hub unterstützt derzeit Gerätestreams als [Previewfunktion](https://
 
 In dieser Schnellstartanleitung wird das Setup zum Tunneln von SSH-Datenverkehr (Secure Shell) unter Verwendung von Port 22 über Gerätestreams beschrieben. Das Setup für RDP-Datenverkehr (Remotedesktopprotokoll) ist ähnlich und bedarf lediglich einer einfachen Konfigurationsänderung. Gerätestreams sind anwendungs- und protokollunabhängig. Dieser Schnellstart kann daher für andere Arten von Anwendungsdatenverkehr angepasst werden.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
-Die folgende Abbildung zeigt, wie die lokalen Geräte- und Dienstproxyprogramme eine End-to-End-Konnektivität zwischen den SSH-Clientprozessen und SSH-Daemonprozessen ermöglichen. Während der Public Preview-Phase unterstützt das C SDK nur geräteseitige Gerätestreams. Aus diesem Grund wird in dieser Schnellstartanleitung nur das Ausführen der lokalen Geräteproxyanwendung erläutert. Sie sollten einen der folgenden dienstseitigen Schnellstarts ausführen:
+Die folgende Abbildung zeigt, wie die lokalen Geräte- und Dienstproxyprogramme eine End-to-End-Konnektivität zwischen den SSH-Clientprozessen und SSH-Daemonprozessen ermöglichen. Während der Public Preview-Phase unterstützt das C SDK nur geräteseitige Gerätestreams. Aus diesem Grund wird in dieser Schnellstartanleitung nur das Ausführen der lokalen Geräteproxyanwendung erläutert. Wenn Sie die zugehörige dienstseitige Anwendung erstellen und ausführen möchten, befolgen Sie die Anweisungen in den folgenden Schnellstartanleitungen:
 
 * [SSH/RDP über IoT Hub-Gerätestreams unter Verwendung einer C#-Proxyanwendung](./quickstart-device-streams-proxy-csharp.md)
 * [SSH/RDP über IoT Hub-Gerätestreams unter Verwendung einer Node.js-Proxyanwendung](./quickstart-device-streams-proxy-nodejs.md)
 
-![Setup des lokalen Proxys](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
+![Setup des lokalen Proxys](./media/quickstart-device-streams-proxy-c/device-stream-proxy-diagram.png)
 
 1. Der lokale Dienstproxy stellt eine Verbindung mit dem IoT-Hub her und initiiert einen Gerätestream an das Zielgerät.
 
@@ -46,9 +46,7 @@ Die folgende Abbildung zeigt, wie die lokalen Geräte- und Dienstproxyprogramme 
 > [!NOTE]
 > Über einen Gerätestream gesendeter SSH-Datenverkehr wird nicht direkt zwischen Dienst und Gerät gesendet, sondern über den Streamingendpunkt des IoT-Hubs getunnelt. Weitere Informationen finden Sie in der Beschreibung der [Vorteile der Verwendung von IoT Hub-Gerätestreams](iot-hub-device-streams-overview.md#benefits). Die Abbildung zeigt außerdem, dass der SSH-Daemon auf dem gleichen Gerät (oder Computer) ausgeführt wird wie der lokale Geräteproxy. Wenn Sie in dieser Schnellstartanleitung die IP-Adresse des SSH-Daemons angeben, können der lokale Geräteproxy und der Daemon auch auf unterschiedlichen Geräten ausgeführt werden.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -56,15 +54,15 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
   * USA (Mitte)
   * USA, Mitte (EUAP)
+  * Nordeuropa
+  * Asien, Südosten
 
 * Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/vs/) mit der aktivierten Workload [Desktopentwicklung mit C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
 * Installieren Sie die aktuelle Version von [Git](https://git-scm.com/download/).
 
-* Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-   ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
-   ```
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prepare-the-development-environment"></a>Vorbereiten der Entwicklungsumgebung
 
@@ -72,20 +70,21 @@ Für diesen Schnellstart verwenden Sie das [Azure IoT-Geräte-SDK für C](iot-hu
 
 1. Laden Sie das [CMake-Buildsystem](https://cmake.org/download/) herunter.
 
-    Wichtig: Die erforderlichen Visual Studio-Komponenten (Visual Studio und die Workload *Desktopentwicklung mit C++* ) müssen *vor* Beginn der Installation von CMake auf dem Computer installiert sein. Wenn die Voraussetzungen erfüllt sind und der Download überprüft wurde, können Sie das CMake-Buildsystem installieren.
+    Wichtig: Die erforderlichen Visual Studio-Komponenten (Visual Studio und die Workload *Desktopentwicklung mit C++*) müssen *vor* Beginn der Installation von CMake auf dem Computer installiert sein. Wenn die Voraussetzungen erfüllt sind und der Download überprüft wurde, können Sie das CMake-Buildsystem installieren.
 
-1. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie den folgenden Befehl zum Klonen des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus:
+1. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie die folgenden Befehle zum Klonen des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus:
 
-    ```
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
+    ```cmd/sh
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Dieser Vorgang dauert einige Minuten.
 
-1. Erstellen Sie wie im folgenden Befehl gezeigt ein *cmake*-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner:
+1. Erstellen Sie ein *cmake*-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. Führen Sie die folgenden Befehle aus dem Verzeichnis *azure-iot-sdk-c* aus:
 
-    ```
-    cd azure-iot-sdk-c
+    ```cmd/sh
     mkdir cmake
     cd cmake
     ```
@@ -108,38 +107,41 @@ Für diesen Schnellstart verwenden Sie das [Azure IoT-Geräte-SDK für C](iot-hu
       rem Or for VS2017
       cmake .. -G "Visual Studio 15 2017"
 
+      rem Or for VS2019
+      cmake .. -G "Visual Studio 16 2019"
+
       rem Then build the project
       cmake --build . -- /m /p:Configuration=Release
       ```
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Registrieren eines Geräts
 
-Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung herstellen zu können. In diesem Abschnitt verwenden Sie Azure Cloud Shell mit der [IoT-Erweiterung](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest), um ein simuliertes Gerät zu registrieren.
+Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung herstellen zu können. In diesem Abschnitt verwenden Sie Azure Cloud Shell mit der [IoT-Erweiterung](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest), um ein simuliertes Gerät zu registrieren.
 
 1. Führen Sie in Cloud Shell den folgenden Befehl aus, um die Geräteidentität zu erstellen:
 
    > [!NOTE]
-   > * Ersetzen Sie den Platzhalter *YourIoTHubName* durch den Namen, den Sie für Ihren IoT-Hub wählen.
-   > * Verwenden Sie *MyDevice* wie gezeigt. Der für das registrierte Gerät angegebene Name. Wenn Sie für Ihr Gerät einen anderen Namen auswählen, verwenden Sie diesen im gesamten Artikel, und aktualisieren Sie den Gerätenamen in den Beispielanwendungen, bevor Sie sie ausführen.
+   > * Ersetzen Sie den Platzhalter *YourIoTHubName* durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
+   > * Verwenden Sie für den Namen des Geräts, das Sie registrieren, am besten *MyDevice*, wie bereits gezeigt. Wenn Sie für Ihr Gerät einen anderen Namen auswählen, verwenden Sie diesen im gesamten Artikel, und aktualisieren Sie den Gerätenamen in den Beispielanwendungen, bevor Sie sie ausführen.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. Führen Sie die folgenden Befehle in Cloud Shell aus, um die *Geräteverbindungszeichenfolge* für das soeben registrierte Gerät abzurufen:
 
    > [!NOTE]
-   > Ersetzen Sie den Platzhalter *YourIoTHubName* durch den Namen, den Sie für Ihren IoT-Hub wählen.
+   > Ersetzen Sie den Platzhalter *YourIoTHubName* durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    Notieren Sie sich die Geräteverbindungszeichenfolge zur späteren Verwendung in dieser Schnellstartanleitung. Dies sieht in etwa wie im folgenden Beispiel aus:
+    Notieren Sie sich die zurückgegebene Verbindungszeichenfolge des Geräts zur späteren Verwendung in dieser Schnellstartanleitung. Dies sieht in etwa wie im folgenden Beispiel aus:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -149,12 +151,12 @@ In diesem Abschnitt richten Sie einen End-to-End-Stream ein, um SSH-Datenverkehr
 
 ### <a name="run-the-device-local-proxy-application"></a>Ausführen der lokalen Geräteproxyanwendung
 
-1. Bearbeiten Sie die Quelldatei *iothub_client_c2d_streaming_proxy_sample.c* im Ordner *iothub_client/samples/iothub_client_c2d_streaming_proxy_sample*, und geben Sie Ihre Geräteverbindungszeichenfolge, IP bzw. Hostname des Zielgeräts und den SSH-Port 22 an:
+1. Bearbeiten Sie die Quelldatei **iothub_client_c2d_streaming_proxy_sample.c** im Ordner `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample`, und geben Sie die Geräteverbindungszeichenfolge, die IP-Adresse oder den Hostnamen des Zielgeräts sowie den SSH-Port 22 an:
 
    ```C
-   /* Paste in your iothub connection string  */
-   static const char* connectionString = "[Connection string of IoT Hub]";
-   static const char* localHost = "[IP/Host of your target machine]"; // Address of the local server to connect to.
+   /* Paste in your device connection string  */
+   static const char* connectionString = "{DeviceConnectionString}";
+   static const char* localHost = "{IP/Host of your target machine}"; // Address of the local server to connect to.
    static const size_t localPort = 22; // Port of the local server to connect to.
    ```
 
@@ -198,7 +200,7 @@ Wie im Abschnitt „Funktionsweise“ beschrieben, wird zur Einrichtung eines En
 Nachdem sowohl der lokale Geräteproxy als auch der lokale Dienstproxy ausgeführt wird, können Sie über Ihr SSH-Clientprogramm eine Verbindung mit dem lokalen Dienstproxy am Port 2222 herstellen (anstatt eine Direktverbindung mit dem SSH-Daemon herzustellen).
 
 ```cmd/sh
-ssh <username>@localhost -p 2222
+ssh {username}@localhost -p 2222
 ```
 
 Nun werden Sie im SSH-Anmeldefenster zur Eingabe Ihrer Anmeldeinformationen aufgefordert.
@@ -222,4 +224,4 @@ In dieser Schnellstartanleitung haben Sie einen IoT-Hub eingerichtet, ein Gerät
 Weitere Informationen zu Gerätestreams finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [IoT Hub-Gerätestreams (Vorschau)](./iot-hub-device-streams-overview.md)
+> [Übersicht über Gerätestreams](./iot-hub-device-streams-overview.md)

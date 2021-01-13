@@ -1,19 +1,18 @@
 ---
-title: Einrichten der Notfallwiederherstellung für Hyper-V-VMs zwischen lokalen Standorten mit Azure Site Recovery
+title: Einrichten der Hyper-V-Notfallwiederherstellung an einem sekundären Standort mit Azure Site Recovery
 description: Informationen zum Einrichten der Notfallwiederherstellung für Hyper-V-VMs zwischen Ihren lokalen Standorten mit Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: tutorial
-ms.date: 09/09/2019
+ms.topic: how-to
+ms.date: 11/14/2019
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: a2eb8bf10454ee01953ddd37025f0c0048d00a0a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b2164f8927e5c3224f8b07c30d057f48fb7bbc32
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813757"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87495969"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Einrichten der Notfallwiederherstellung für Hyper-V-VMs an einem sekundären lokalen Standort
 
@@ -28,6 +27,7 @@ Dieser Artikel veranschaulicht das Einrichten der Notfallwiederherstellung an ei
 > * Einrichten der Netzwerkzuordnung 
 > * Erstellen einer Replikationsrichtlinie
 > * Aktivieren der Replikation für eine VM
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,14 +44,14 @@ Die [Netzwerkzuordnung](hyper-v-vmm-network-mapping.md) ist die Zuordnung zwisch
 
 - Nach dem Failover werden Verbindungen von VMs mit geeigneten Ziel-VM-Netzwerken hergestellt. 
 - Replikat-VMs werden optimal auf Ziel-Hyper-V-Hostservern platziert. 
-- Wenn Sie die Netzwerkzuordnung nicht konfigurieren, werden nach einem Failover keine Verbindungen von Replikat-VMs mit einem VM-Netzwerk hergestellt.
+- Wenn Sie die Netzwerkzuordnung nicht konfigurieren, werden Replikat-VMs nach einem Failover nicht mit einem VM-Netzwerk verbunden.
 
 Bereiten Sie VMM wie folgt vor:
 
-1. Stellen Sie sicher, dass [logische VMM-Netzwerke](https://docs.microsoft.com/system-center/vmm/network-logical) auf den Quell- und Ziel-VMM-Servern vorhanden sind.
+1. Stellen Sie sicher, dass [logische VMM-Netzwerke](/system-center/vmm/network-logical) auf den Quell- und Ziel-VMM-Servern vorhanden sind.
     - Das logische Netzwerk auf dem Quellserver sollte der Quellcloud zugeordnet sein, in der sich Hyper-V-Hosts befinden.
     - Das logische Netzwerk auf dem Zielserver sollte der Zielcloud zugeordnet werden.
-1. Stellen Sie sicher, dass [VM-Netzwerke](https://docs.microsoft.com/system-center/vmm/network-virtual) auf den Quell- und Ziel-VMM-Servern vorhanden sind. VM-Netzwerke sollten an jedem Standort mit dem logischen Netzwerk verknüpft werden.
+1. Stellen Sie sicher, dass [VM-Netzwerke](/system-center/vmm/network-virtual) auf den Quell- und Ziel-VMM-Servern vorhanden sind. VM-Netzwerke sollten an jedem Standort mit dem logischen Netzwerk verknüpft werden.
 2. Stellen Sie die Verbindung der virtuellen Computer auf den Hyper-V-Quellhosts mit dem VM-Quellnetzwerk her. 
 
 
@@ -80,7 +80,7 @@ Installieren Sie den Azure Site Recovery-Anbieter auf den VMM-Servern, und ermit
 4. Laden Sie die Installationsdatei für den Azure Site Recovery-Anbieter herunter.
 5. Laden Sie den Registrierungsschlüssel herunter. Sie benötigen ihn, wenn Sie den Anbieter installieren. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
-    ![Quelle einrichten](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
+    ![Screenshot der Optionen zum Herunterladen von Anbieter und Registrierungsschlüssel](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
 
 6. Installieren Sie den Anbieter auf jedem VMM-Server. Sie müssen nicht explizit etwas auf Hyper-V-Hosts installieren.
 
@@ -94,7 +94,7 @@ Installieren Sie den Azure Site Recovery-Anbieter auf den VMM-Servern, und ermit
 4. Ändern Sie unter **Installation** den Speicherort für die Installation, oder akzeptieren Sie den Standardspeicherort, und klicken Sie auf **Installieren**.
 5. Klicken Sie nach Abschluss der Installation auf **Registrieren**, um den Server im Tresor zu registrieren.
 
-    ![Installationsspeicherort](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
+    ![Screenshot des Installationsbildschirms für den Anbieter einschließlich des Installationsspeicherorts](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
 6. Prüfen Sie unter **Tresorname**den Namen des Tresors, in dem der Server registriert wird. Klicken Sie auf **Weiter**.
 7. Geben Sie unter **Proxyverbindung** an, wie der auf dem VMM-Server ausgeführte Anbieter eine Verbindung mit Azure herstellen soll.
    - Der Anbieter kann entweder eine direkte oder eine proxybasierte Internetverbindung herstellen. Geben Sie ggf. Proxyeinstellungen an.
@@ -115,7 +115,7 @@ Wählen Sie VMM-Zielserver und Cloud aus:
 1. Klicken Sie auf **Infrastruktur vorbereiten** > **Ziel**, und wählen Sie den VMM-Zielserver aus.
 2. VMM-Clouds, die mit Site Recovery synchronisiert werden, werden angezeigt. Wählen Sie die Zielcloud aus.
 
-   ![Ziel](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Screenshot der Auswahl des VMM-Zielservers und der Cloud](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Einrichten einer Replikationsrichtlinie
@@ -138,7 +138,7 @@ Bevor Sie beginnen, stellen Sie sicher, dass alle Hosts, die die Richtlinie verw
 5. Wählen Sie **Replikat-VM löschen** aus, um anzugeben, dass die Replikat-VM gelöscht werden sollte, wenn Sie den Schutz für die Quell-VM deaktivieren. Wenn Sie diese Einstellung aktivieren, und Sie deaktivieren den Schutz für die Quell-VMs, wird der virtuelle Computer aus der Site Recovery-Konsole entfernt, die Site Recovery-Einstellungen für die VMM werden aus der VMM-Konsole entfernt, und das Replikat wird gelöscht.
 6. Wenn Sie über das Netzwerk replizieren, geben Sie unter **Methode für anfängliche Replikation** an, ob die erste Replikation sofort gestartet werden soll oder ob Sie sie planen möchten. Um Netzwerkbandbreite zu sparen, sollte der Zeitraum außerhalb Ihrer Spitzenzeiten liegen. Klicken Sie dann auf **OK**.
 
-     ![Replikationsrichtlinie](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
+     ![Screenshot der Replikationsrichtlinienoptionen](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
      
 7. Die neue Richtlinie wird automatisch der VMM-Cloud zugeordnet. Klicken Sie unter **Replikationsrichtlinie** auf **OK**. 
 

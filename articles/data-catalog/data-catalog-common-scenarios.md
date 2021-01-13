@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: aeae505b510f563a6640726c384ea358983eb24f
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68736456"
 ---
 # <a name="azure-data-catalog-common-scenarios"></a>Häufige Szenarien mit Azure Data Catalog

@@ -1,37 +1,33 @@
 ---
-title: Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Resource Manager-Vorlage für einen virtuellen Windows-Computer
-description: Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Resource Manager-Vorlage für einen virtuellen Windows-Computer
+title: Erfassen von Windows-VM-Metriken in Azure Monitor mit einer Vorlage
+description: Senden von Gastbetriebssystemmetriken an den Metrikdatenbankspeicher von Azure Monitor unter Verwendung einer Resource Manager-Vorlage für einen virtuellen Windows-Computer
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: ancav
+ms.date: 05/04/2020
+ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: ac8d059c2bcad7aaa005b4afe1fb7814d49f9339
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 208515b7541948ca6913e6fda092c6a424de85f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844961"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86515783"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Resource Manager-Vorlage für einen virtuellen Windows-Computer
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Azure Resource Manager-Vorlage für einen virtuellen Windows-Computer
+Leistungsdaten vom Gastbetriebssystem auf virtuellen Azure-Computern werden nicht wie andere [Platformmetriken](../insights/monitor-azure-resource.md#monitoring-data) automatisch erfasst. Installieren Sie die Azure Monitor-[Diagnoseerweiterung](diagnostics-extension-overview.md), um Gastbetriebssystemmetriken in der Metrikdatenbank zu erfassen, damit sie für alle Features von Azure Monitor-Metriken verwendet werden können, einschließlich zeitnaher Benachrichtigung, Diagrammerstellung, Routing und Zugriff über eine REST-API. In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für einen virtuellen Windows-Computer mithilfe einer Resource Manager-Vorlage an die Metrikendatenbank senden. 
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+> [!NOTE]
+> Ausführliche Informationen zum Konfigurieren der Diagnoseerweiterung für das Erfassen von Gastbetriebssystemmetriken über das Azure-Portal finden Sie unter [Installieren und Konfigurieren der Microsoft Azure-Diagnoseerweiterung (WAD)](diagnostics-extension-windows-install.md).
 
-Die [Diagnoseerweiterung](diagnostics-extension-overview.md) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle von einem Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Standorte](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) senden.
 
-In diesem Artikel wird der Prozess zum Senden von Leistungsmetriken des Gastbetriebssystems für einen virtuellen Windows-Computer an den Azure Monitor-Datenspeicher beschrieben. Ab Version 1.11 der Diagnoseerweiterung können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden.
-
-Wenn Sie diesen Speicherort verwenden möchten, können Sie die gleichen Aktionen wie für Plattformmetriken nutzen. Zu den Aktionen gehören Benachrichtigung nahezu in Echtzeit, Diagrammerstellung, Routing, Zugriff über eine REST-API und vieles mehr. In der Vergangenheit hat die Diagnoseerweiterung in Azure Storage geschrieben, aber nicht in den Azure Monitor-Datenspeicher.
-
-Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie sich über [Vorlagenbereitstellungen](../../azure-resource-manager/resource-group-overview.md) sowie deren Struktur und Syntax.
+Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie sich über [Vorlagenbereitstellungen](../../azure-resource-manager/management/overview.md) sowie deren Struktur und Syntax.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ihr Abonnement muss mit [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert werden.
+- Ihr Abonnement muss mit [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md) registriert werden.
 
-- [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) muss installiert sein.
+- [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](../../cloud-shell/overview.md) muss installiert sein.
 
 - Die VM-Ressource muss sich in einer [Region befinden, die benutzerdefinierte Metriken unterstützt](metrics-custom-overview.md#supported-regions). 
 
@@ -290,4 +286,3 @@ Für die Bereitstellung der Resource Manager-Vorlage wird Azure PowerShell verwe
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [benutzerdefinierte Metriken](metrics-custom-overview.md).
-

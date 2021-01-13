@@ -1,26 +1,26 @@
 ---
-title: Zuweisen des Zugriffs einer verwalteten Identität auf eine Azure-Ressource im Azure-Portal
+title: Zuweisen des Zugriffs einer verwalteten Identität auf eine Ressource über das Azure-Portal – Azure AD
 description: Hier finden Sie Schritt-für-Schritt-Anleitungen für das Zuweisen einer verwalteten Identität für eine Ressource und für das Zuweisen des Zugriffs auf eine andere Ressource über das Azure-Portal.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
-ms.author: markvi
+ms.date: 11/03/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 958b3d72a3a8df4a3b67f62e7db788d7142ca667
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6584754edf3ff7ae31c3b9ace72baf16459dbc44
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112920"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359991"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Zuweisen des Zugriffs einer verwalteten Identität auf eine Ressource über das Azure-Portal
 
@@ -30,18 +30,18 @@ Nachdem Sie eine Azure-Ressource mit einer verwalteten Identität konfiguriert h
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#how-does-it-work)** bewusst.
+- Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#managed-identity-types)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
 
-## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Verwenden von RBAC zum Zuweisen des Zugriffs einer verwalteten Identität auf eine andere Ressource
+## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Verwenden von Azure RBAC zum Zuweisen des Zugriffs einer verwalteten Identität auf eine andere Ressource
 
-Nachdem Sie die verwaltete Identität für eine Azure-Ressource aktiviert haben, zum Beispiel für einen [virtuellen Azure-Computer](qs-configure-portal-windows-vm.md) oder [Azure-VMSS](qs-configure-portal-windows-vmss.md), gehen Sie wie folgt vor:
+Gehen Sie wie folgt vor, wenn Sie die verwaltete Identität auf einer Azure-Ressource (z. B. einem [virtuellen Azure-Computer](qs-configure-portal-windows-vm.md) oder einer [Azure-VM-Skalierungsgruppe](qs-configure-portal-windows-vmss.md)) aktiviert haben:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, unter dem Sie die verwaltete Identität konfiguriert haben.
 
 2. Navigieren Sie zu der gewünschten Ressource, für die Sie die Zugriffssteuerung ändern möchten. In diesem Beispiel wird einem virtuellen Azure-Computer Zugriff auf ein Speicherkonto gewährt. Aus diesem Grund navigieren wir zu dem Speicherkonto.
 
-3. Wählen Sie die Seite **Zugriffssteuerung (IAM)** der Ressource aus, und wählen Sie dann **+ Rollenzuweisung hinzufügen** aus. Geben Sie dann die **Rolle**, **Zugriff zuweisen zu** und das entsprechende **Abonnement** an. Unter dem Bereich mit den Suchkriterien sollte die Ressource nun angezeigt werden. Wählen Sie die Ressource und anschließend **Speichern** aus. 
+3. Wählen Sie die Seite **Zugriffssteuerung (IAM)** der Ressource aus, und wählen Sie dann **+ Rollenzuweisung hinzufügen** aus. Geben Sie dann die **Rolle** , **Zugriff zuweisen zu** und das entsprechende **Abonnement** an. Unter dem Bereich mit den Suchkriterien sollte die Ressource nun angezeigt werden. Wählen Sie die Ressource und anschließend **Speichern** aus. 
 
    ![Screenshot von „Zugriffssteuerung (IAM)“](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      

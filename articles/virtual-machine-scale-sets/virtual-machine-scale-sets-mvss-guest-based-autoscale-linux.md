@@ -1,38 +1,32 @@
 ---
-title: Verwenden der Azure-Autoskalierung mit Gastmetriken in einer Linux-Skalierungsgruppenvorlage | Microsoft-Dokumentationen
+title: Verwenden der Azure-Autoskalierung mit Gastmetriken in einer Linux-Skalierungsgruppenvorlage
 description: Erfahren Sie, wie Sie die Autoskalierung mit Gastmetriken in einer Linux-Vorlage für virtuelle Computer in einer VM-Skalierungsgruppe verwenden können
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: drewm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: na
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: autoscale
 ms.date: 04/26/2019
-ms.author: manayar
-ms.openlocfilehash: 8cd665ffd82547c4f554eb4a515a8da7dc5b3f5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 549f8fbc1e3acf435011f223faeb5b8240f0c55d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868991"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87080419"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Autoskalierung mit Gastmetriken in einer Linux-Skalierungsgruppenvorlage
 
 Es gibt zwei allgemeine Arten von Metriken in Azure, die aus VMs und Skalierungsgruppen erfasst werden: Hostmetriken und Gastmetriken. Grundsätzlich gilt: Wenn Sie standardmäßige CPU-, Datenträger- und Netzwerkmetriken verwenden möchten, sind Hostmetriken eine gute Wahl. Wenn Sie jedoch eine größere Auswahl von Metriken benötigen, sind Gastmetriken wahrscheinlich besser geeignet.
 
-Hostmetriken setzen keine zusätzlichen Einstellungen voraus, weil sie vom virtuellen Hostcomputer gesammelt werden, während für Gastmetriken die [Windows Azure Diagnostics-Erweiterung](../virtual-machines/windows/extensions-diagnostics-template.md) oder die [Linux Azure Diagnostics-Erweiterung](../virtual-machines/linux/diagnostic-extension.md) auf dem virtuellen Gastcomputer installiert werden muss. Ein häufiger Grund für die Verwendung von Gastmetriken anstatt von Hostmetriken ist, dass Gastmetriken eine größere Auswahl an Metriken bieten als Hostmetriken. Ein Beispiel dafür sind Speicherverbrauchsmetriken, die nur über Gastmetriken zur Verfügung stehen. Die unterstützten Hostmetriken finden Sie [hier](../azure-monitor/platform/metrics-supported.md), und häufig verwendete Gastmetriken finden Sie [hier](../azure-monitor/platform/autoscale-common-metrics.md). In diesem Artikel wird gezeigt, wie Sie die [Vorlage für die grundlegende Skalierungsgruppe](virtual-machine-scale-sets-mvss-start.md) verändern müssen, um bei Linux-Skalierungsgruppen auf Gastmetriken basierende Autoskalierungsregeln verwenden zu können.
+Hostmetriken setzen keine zusätzlichen Einstellungen voraus, weil sie vom virtuellen Hostcomputer gesammelt werden, während für Gastmetriken die [Windows Azure Diagnostics-Erweiterung](../virtual-machines/extensions/diagnostics-template.md) oder die [Linux Azure Diagnostics-Erweiterung](../virtual-machines/extensions/diagnostics-linux.md) auf dem virtuellen Gastcomputer installiert werden muss. Ein häufiger Grund für die Verwendung von Gastmetriken anstatt von Hostmetriken ist, dass Gastmetriken eine größere Auswahl an Metriken bieten als Hostmetriken. Ein Beispiel dafür sind Speicherverbrauchsmetriken, die nur über Gastmetriken zur Verfügung stehen. Die unterstützten Hostmetriken finden Sie [hier](../azure-monitor/platform/metrics-supported.md), und häufig verwendete Gastmetriken finden Sie [hier](../azure-monitor/platform/autoscale-common-metrics.md). In diesem Artikel wird gezeigt, wie Sie die [Vorlage für die grundlegende Skalierungsgruppe](virtual-machine-scale-sets-mvss-start.md) verändern müssen, um bei Linux-Skalierungsgruppen auf Gastmetriken basierende Autoskalierungsregeln verwenden zu können.
 
 ## <a name="change-the-template-definition"></a>Ändern der Vorlagendefinition
 
 In einem [vorherigen Artikel](virtual-machine-scale-sets-mvss-start.md) haben wir eine grundlegende Vorlage für eine Skalierungsgruppe erstellt. Wir verwenden nun diese frühere Vorlage und ändern sie, um eine Vorlage zu erstellen, die eine Linux-Skalierungsgruppe mit auf Gastmetriken basierender Autoskalierung bereitstellt.
 
-Fügen Sie zunächst Parameter für `storageAccountName` und `storageAccountSasToken` hinzu. Der Diagnose-Agent speichert Metrikdaten in einer [Tabelle](../cosmos-db/table-storage-how-to-use-dotnet.md) in diesem Speicherkonto. Ab Version 3.0 des Linux-Diagnose-Agents wird der Speicherzugriffsschlüssel nicht mehr unterstützt. Verwenden Sie daher stattdessen ein [SAS-Token](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Fügen Sie zunächst Parameter für `storageAccountName` und `storageAccountSasToken` hinzu. Der Diagnose-Agent speichert Metrikdaten in einer [Tabelle](../cosmos-db/tutorial-develop-table-dotnet.md) in diesem Speicherkonto. Ab Version 3.0 des Linux-Diagnose-Agents wird der Speicherzugriffsschlüssel nicht mehr unterstützt. Verwenden Sie daher stattdessen ein [SAS-Token](../storage/common/storage-sas-overview.md).
 
 ```diff
      },
@@ -48,7 +42,7 @@ Fügen Sie zunächst Parameter für `storageAccountName` und `storageAccountSasT
    },
 ```
 
-Fügen Sie im nächsten Schritt der Skalierungsgruppe `extensionProfile` die Diagnoseerweiterung hinzu. Geben Sie bei dieser Konfiguration die Ressourcen-ID der Skalierungsgruppe an, von der Metriken gesammelt werden sollen. Geben Sie weiterhin das Speicherkonto und das SAS-Token an, die zum Speichern der Metriken verwendet werden sollen. Geben Sie ferner an, wie häufig die Metriken aggregiert werden (hier minütlich) und welche Metriken verfolgt werden sollen (hier Prozent des belegten Speichers). Weitere Informationen über diese Konfiguration und andere Metriken als den Prozentsatz des verbrauchten Speichers finden Sie in [dieser Dokumentation](../virtual-machines/linux/diagnostic-extension.md).
+Fügen Sie im nächsten Schritt der Skalierungsgruppe `extensionProfile` die Diagnoseerweiterung hinzu. Geben Sie bei dieser Konfiguration die Ressourcen-ID der Skalierungsgruppe an, von der Metriken gesammelt werden sollen. Geben Sie weiterhin das Speicherkonto und das SAS-Token an, die zum Speichern der Metriken verwendet werden sollen. Geben Sie ferner an, wie häufig die Metriken aggregiert werden (hier minütlich) und welche Metriken verfolgt werden sollen (hier Prozent des belegten Speichers). Weitere Informationen über diese Konfiguration und andere Metriken als den Prozentsatz des verbrauchten Speichers finden Sie in [dieser Dokumentation](../virtual-machines/extensions/diagnostics-linux.md).
 
 ```diff
                  }

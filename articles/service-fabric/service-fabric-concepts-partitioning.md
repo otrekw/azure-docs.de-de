@@ -1,25 +1,15 @@
 ---
-title: Partitionieren von Service Fabric-Diensten | Microsoft Docs
+title: Partitionieren von Service Fabric-Diensten
 description: Beschreibt, wie Sie zustandsbehaftete Service Fabric-Dienste partitionieren. Partitionen ermöglichen die Datenspeicherung auf dem lokalen Computer, damit Daten und Computeleistung zusammen skaliert werden können.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 3b7248c8-ea92-4964-85e7-6f1291b5cc7b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/30/2017
-ms.author: atsenthi
-ms.openlocfilehash: 833d87dab59890b9903ea8eecf2334d7dd1c7436
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d33e7b5ee293cf9dfb49e509bec2e1950033a956
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711893"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89005427"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partitionieren von Service Fabric Reliable Services
 Dieser Artikel enthält eine Einführung in die grundlegenden Konzepte der Partitionierung von Azure Service Fabric Reliable Services. Der in diesem Artikel verwendete Quellcode ist auch unter [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)verfügbar.
@@ -32,11 +22,11 @@ Bei zustandslosen Diensten können Sie sich eine Partition als eine logische Ein
 
 ![Zustandsloser Dienst](./media/service-fabric-concepts-partitioning/statelessinstances.png)
 
-Es gibt im Grunde zwei Arten von Lösungen für zustandslose Dienste. Die erste ist ein Dienst, für den der Zustand extern beibehalten wird, z. B. in einer Azure SQL-Datenbank (etwa eine Website, auf der die Sitzungsinformationen und Daten gespeichert sind). Die zweite umfasst Dienste, die ausschließlich für die Berechnung bestimmt sind (etwa ein Rechner oder Bildminiaturansichten) und keinen beständigen Zustand verwalten.
+Es gibt im Grunde zwei Arten von Lösungen für zustandslose Dienste. Die erste ist ein Dienst, für den der Zustand extern beibehalten wird, z. B. in einer Datenbank in Azure SQL-Datenbank (etwa eine Website, auf der die Sitzungsinformationen und Daten gespeichert sind). Die zweite umfasst Dienste, die ausschließlich für die Berechnung bestimmt sind (etwa ein Rechner oder Bildminiaturansichten) und keinen beständigen Zustand verwalten.
 
 In beiden Fällen ist das Partitionieren eines zustandslosen Diensts ein sehr seltenes Szenario, und die Skalierbarkeit und Verfügbarkeit werden normalerweise erreicht, indem weitere Instanzen hinzugefügt werden. Sie sollten die Verwendung mehrerer Partitionen für zustandslose Dienstinstanzen nur erwägen, wenn Sie spezielle Routinganforderungen erfüllen müssen.
 
-Stellen Sie sich beispielsweise einen Fall vor, in dem für Benutzer mit IDs in einem bestimmten Bereich nur eine bestimmte Dienstinstanz verwendet werden sollen. Ein weiteres Beispiel für die mögliche Partitionierung eines zustandslosen Diensts ist, wenn Sie ein Back-End mit echter Partitionierung verwenden, z. B. eine SQL-Datenbank mit Sharding. Sie möchten steuern, welche Dienstinstanz in den Datenbankshard schreiben soll, oder andere Vorbereitungsschritte im zustandslosen Dienst ausführen, für die die gleichen Partitionierungsinformationen wie im Back-End benötigt werden. Diese Arten von Szenarios können auch auf unterschiedliche Arten gelöst werden, und eine Dienstpartitionierung ist nicht unbedingt erforderlich.
+Stellen Sie sich beispielsweise einen Fall vor, in dem für Benutzer mit IDs in einem bestimmten Bereich nur eine bestimmte Dienstinstanz verwendet werden sollen. Ein weiteres Beispiel für die mögliche Partitionierung eines zustandslosen Diensts ist, wenn Sie ein Back-End mit echter Partitionierung verwenden, z. B. eine Datenbank in SQL-Datenbank mit Sharding. Sie möchten steuern, welche Dienstinstanz in den Datenbankshard schreiben soll, oder andere Vorbereitungsschritte im zustandslosen Dienst ausführen, für die die gleichen Partitionierungsinformationen wie im Back-End benötigt werden. Diese Arten von Szenarios können auch auf unterschiedliche Arten gelöst werden, und eine Dienstpartitionierung ist nicht unbedingt erforderlich.
 
 Im restlichen Teil dieser Vorgehensweise geht es um zustandsbehaftete Dienste.
 
@@ -46,7 +36,7 @@ Mit Service Fabric ist es einfach, skalierbare zustandsbehaftete Dienste zu entw
 Die Partitionierung im Kontext von zustandsbehafteten Service Fabric-Diensten bezieht sich auf den Prozess der Ermittlung, ob eine bestimmte Dienstpartition für einen Teil des vollständigen Zustands des Diensts zuständig ist. (Wie bereits erwähnt, ist eine Partition ein Satz von [Replikaten](service-fabric-availability-services.md)). Der Vorteil von Service Fabric ist, dass die Partitionen auf unterschiedlichen Knoten angeordnet werden. Dadurch können sie bis zum Ressourcenlimit eines Knotens anwachsen. Wenn die Daten zunehmen müssen, werden die Partitionen vergrößert, und Service Fabric verteilt die Partitionen neu über die Knoten. Dadurch wird die fortgesetzte effiziente Nutzung von Hardwareressourcen sichergestellt.
 
 Beispiel: Sie beginnen mit einem Cluster mit fünf Knoten und einem Dienst, der für zehn Partitionen und einem Ziel von drei Replikaten konfiguriert ist. In diesem Fall verteilt Service Fabric die Replikate gleichmäßig im Cluster, und es werden zwei primäre [Replikate](service-fabric-availability-services.md) pro Knoten verwendet.
-Wenn Sie den Cluster nun auf zehn Knoten horizontal hochskalieren müssen, verteilt Service Fabric die primären [Replikate](service-fabric-availability-services.md) neu auf alle zehn Knoten. Falls Sie wieder auf fünf Knoten herunterskalieren, verteilt Service Fabric alle Replikate neu auf die fünf Knoten.  
+Wenn Sie den Cluster nun auf zehn Knoten aufskalieren müssen, verteilt Service Fabric die primären [Replikate](service-fabric-availability-services.md) neu auf alle zehn Knoten. Falls Sie wieder auf fünf Knoten herunterskalieren, verteilt Service Fabric alle Replikate neu auf die fünf Knoten.  
 
 Abbildung 2 zeigt die Verteilung von zehn Partitionen vor und nach dem Skalieren des Clusters.
 
@@ -55,7 +45,7 @@ Abbildung 2 zeigt die Verteilung von zehn Partitionen vor und nach dem Skaliere
 Das horizontale Hochskalieren wird erreicht, da Anforderungen von Clients über die Computer hinweg verteilt werden, die Gesamtleistung der Anwendung verbessert wird und Konflikte beim Zugreifen auf Datenblöcke verringert werden.
 
 ## <a name="plan-for-partitioning"></a>Planen der Partitionierung
-Vor der Implementierung eines Diensts sollten Sie immer die Partitionierungsstrategie bedenken, die für das horizontale Hochskalieren erforderlich ist. Es gibt unterschiedliche Ansätze, bei denen aber immer die Frage im Mittelpunkt steht, was mit der Anwendung erreicht werden soll. Im Rahmen dieses Artikels betrachten wir einige der wichtigeren Aspekte.
+Vor der Implementierung eines Diensts sollten Sie immer die Partitionierungsstrategie bedenken, die für das Aufskalieren erforderlich ist. Es gibt unterschiedliche Ansätze, bei denen aber immer die Frage im Mittelpunkt steht, was mit der Anwendung erreicht werden soll. Im Rahmen dieses Artikels betrachten wir einige der wichtigeren Aspekte.
 
 Ein guter Ansatz besteht darin, sich als ersten Schritt die Struktur des Zustands anzusehen, der partitioniert werden soll.
 
@@ -86,7 +76,7 @@ Auch die verfügbaren Computerressourcen müssen bei der Partitionierungsplanung
 * Einschränkungen des Systemarbeitsspeichers
 * Einschränkungen des Speicherplatzes
 
-Was passiert, wenn es auf einem ausgeführten Cluster zu Ressourceneinschränkungen kommt? Die Antwort lautet, dass Sie den Cluster einfach horizontal hochskalieren können, um die neuen Anforderungen abzudecken.
+Was passiert, wenn es auf einem ausgeführten Cluster zu Ressourceneinschränkungen kommt? Die Antwort lautet, dass Sie den Cluster einfach aufskalieren können, um die neuen Anforderungen abzudecken.
 
 [Leitfaden zur Kapazitätsplanung](service-fabric-capacity-planning.md) enthält eine Anleitung, wie Sie ermitteln, wie viele Knoten für Ihren Cluster benötigt werden.
 
@@ -165,7 +155,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
    
     Die zusätzliche GUID ist für einen erweiterten Fall vorhanden, in dem sekundäre Replikate auch auf schreibgeschützte Anforderungen lauschen. In diesem Fall sollten Sie sicherstellen, dass beim Übergang von primären zu sekundären Replikaten eine neue eindeutige Adresse verwendet wird, um Clients zum Auflösen der Adresse zu zwingen. Hier wird „+“ als Adresse verwendet, damit das Replikat auf allen verfügbaren Hosts lauscht (IP, FQDN, localhost usw.). Mit dem folgenden Code wird ein Beispiel veranschaulicht.
    
-    ```CSharp
+    ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
     {
          return new[] { new ServiceReplicaListener(context => this.CreateInternalListener(context))};
@@ -193,7 +183,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     Die Überwachungs-URL wird für HttpListener vergeben. Die veröffentlichte URL ist die URL, die für den Service Fabric Naming Service veröffentlicht wird. Dieser Dienst wird für die Diensterkennung verwendet. Clients fragen diese Adresse über den Ermittlungsdienst ab. Die Adresse, die Clients erhalten, muss über die tatsächliche IP oder den FQDN des Knotens verfügen, damit eine Verbindung hergestellt werden kann. Sie müssen also wie oben gezeigt „+“ durch die IP oder den FQDN des Knotens ersetzen.
 9. Der letzte Schritt ist das Hinzufügen der Verarbeitungslogik zum Dienst. Dies ist unten dargestellt.
    
-    ```CSharp
+    ```csharp
     private async Task ProcessInternalRequest(HttpListenerContext context, CancellationToken cancelRequest)
     {
         string output = null;
@@ -241,7 +231,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     Dieser Dienst dient als einfache Webschnittstelle, die den Nachnamen als Abfragezeichenfolgenparameter akzeptiert, den Partitionsschlüssel bestimmt und diesen zur Verarbeitung an den Alphabet.Processing-Dienst sendet.
 11. Wählen Sie im Dialogfeld **Dienst erstellen** für den Dienst **Zustandslos** aus, und vergeben Sie, wie unten gezeigt, den Namen „Alphabet.Web“.
     
-    ![Screenshot des zustandslosen Diensts](./media/service-fabric-concepts-partitioning/createnewstateless.png).
+    ![Screenshot des zustandslosen Diensts](./media/service-fabric-concepts-partitioning/createnewstateless.png)erforderlich.
 12. Aktualisieren Sie die Endpunktinformationen in der Datei „ServiceManifest.xml“ des Alphabet.WebApi-Diensts, um wie unten gezeigt einen Port zu öffnen.
     
     ```xml
@@ -249,7 +239,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     ```
 13. Sie müssen in der Klasse „Web“ eine Sammlung mit „ServiceInstanceListener“-Elementen zurückgeben. Auch hier können Sie wieder einen einfachen HttpCommunicationListener implementieren.
     
-    ```CSharp
+    ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return new[] {new ServiceInstanceListener(context => this.CreateInputListener(context))};
@@ -265,7 +255,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     ```
 14. Als Nächstes müssen Sie die Verarbeitungslogik implementieren. Der HttpCommunicationListener ruft `ProcessInputRequest` auf, wenn eine Anforderung eingeht. Wir fügen jetzt also den folgenden Code hinzu.
     
-    ```CSharp
+    ```csharp
     private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
     {
         String output = null;
@@ -311,7 +301,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     
     Wir führen Sie schrittweise durch dieses Verfahren. Der Code liest den ersten Buchstaben des Zeichenabfolgeparameters `lastname` in ein char-Objekt ein. Anschließend bestimmt er den Partitionsschlüssel für diesen Buchstaben durch Abziehen des Hexwerts von `A` vom Hexwert des Anfangsbuchstabens des Nachnamens.
     
-    ```CSharp
+    ```csharp
     string lastname = context.Request.QueryString["lastname"];
     char firstLetterOfLastName = lastname.First();
     ServicePartitionKey partitionKey = new ServicePartitionKey(Char.ToUpper(firstLetterOfLastName) - 'A');
@@ -320,19 +310,19 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     Bedenken Sie, dass wir für dieses Beispiel 26 Partitionen mit einem Partitionsschlüssel pro Partition verwenden.
     Als Nächstes rufen wir die Dienstpartition `partition` für diesen Schlüssel ab, indem wir die `ResolveAsync`-Methode für das `servicePartitionResolver`-Objekt verwenden. `servicePartitionResolver` ist wie folgt definiert:
     
-    ```CSharp
+    ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
     
     Für die `ResolveAsync` -Methode werden der Dienst-URI, der Partitionsschlüssel und ein Abbruchtoken als Parameter verwendet. Der Dienst-URI für den Verarbeitungsdienst ist `fabric:/AlphabetPartitions/Processing`. Als Nächstes rufen wir den Endpunkt der Partition ab.
     
-    ```CSharp
+    ```csharp
     ResolvedServiceEndpoint ep = partition.GetEndpoint()
     ```
     
     Als Letztes erstellen wir die Endpunkt-URL sowie die Abfragezeichenfolge und rufen den Verarbeitungsdienst auf.
     
-    ```CSharp
+    ```csharp
     JObject addresses = JObject.Parse(ep.Address);
     string primaryReplicaAddress = (string)addresses["Endpoints"].First();
     
@@ -359,9 +349,6 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     ![Screenshot des Browsers](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
 Den gesamten Quellcode des Beispiels finden Sie unter [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
-
-## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services und akteurforkende Unterprozesse
-Service Fabric unterstützt keine Reliable Services und daher auch keine Reliable akteurforkende Unterprozesse. Ein Beispiel für den Grund der fehlenden Unterstützung ist [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet), der nicht verwendet werden kann, um einen nicht unterstützten Unterprozess zu registrieren, und Abbruchtoken werden nur an registrierte Prozesse gesendet. Dies führt zu allen möglichen Problemen, z.B. zu Upgradefehlern, wenn Unterprozesse nicht geschlossen werden, nachdem der übergeordnete Prozess ein Abbruchtoken empfangen hat. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zu den Service Fabric-Konzepten finden Sie hier:

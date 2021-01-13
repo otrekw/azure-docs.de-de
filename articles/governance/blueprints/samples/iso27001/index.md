@@ -1,18 +1,14 @@
 ---
-title: 'Beispiele: ISO 27001-Blaupause – Übersicht'
-description: Übersicht über das ISO 27001-Blaupausenbeispiel
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 07/22/2019
+title: 'ISO 27001-Blaupausenbeispiel: Übersicht'
+description: Übersicht über das ISO 27001-Blaupausenbeispiel Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer ISO 27001-Kontrollen.
+ms.date: 11/02/2020
 ms.topic: sample
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 59db15439f2391796f54cc8edd5dbf8e554e6379
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 008cb9021439b5257d0d83fa3e733b266344ecb8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232741"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420227"
 ---
 # <a name="overview-of-the-iso-27001-blueprint-sample"></a>Übersicht über das ISO 27001-Blaupausenbeispiel
 

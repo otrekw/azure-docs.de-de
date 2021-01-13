@@ -1,18 +1,18 @@
 ---
-title: Delegieren einer Azure DNS-Unterdomäne
-description: Erfahren Sie, wie eine Azure DNS-Unterdomäne delegiert wird.
+title: Delegieren einer Unterdomäne – Azure DNS
+description: Mit diesem Lernpfad können Sie mit dem Delegieren einer Azure DNS-Unterdomäne beginnen.
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 2/7/2019
-ms.author: victorh
-ms.openlocfilehash: 31543db8e177701ddfe6beaaa3091d6465b0e9cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rohink
+ms.openlocfilehash: add7674771fd19f6029a94c46624006f0cf30f1a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790809"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011539"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Delegieren einer Azure DNS-Unterdomäne
 
@@ -36,7 +36,7 @@ Erstellen Sie zuerst die Zone für die Unterdomäne **engineering**.
 3. Klicken Sie auf **Erstellen**.
 4. Geben Sie im Bereich **DNS-Zone erstellen** die Domäne **engineering.contoso.com** in das Textfeld **Name** ein.
 5. Wählen Sie die Ressourcengruppe für Ihre Zone aus. Es wird empfohlen, dieselbe Ressourcengruppe wie die übergeordnete Zone zu verwenden, um ähnliche Ressourcen zusammenzuhalten.
-6. Klicken Sie auf **Create**.
+6. Klicken Sie auf **Erstellen**.
 7. Wechseln Sie nach erfolgreicher Bereitstellung zur neuen Zone.
 
 ## <a name="note-the-name-servers"></a>Notieren der Namenserver

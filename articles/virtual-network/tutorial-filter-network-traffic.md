@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 2d0519abdf25a6fc8373f9d1a3a7232a9783d316
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984904"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75350136"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Tutorial: Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal
 
@@ -41,17 +41,17 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
+1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus. 
 2. Wählen Sie **Netzwerk** und anschließend **Virtuelles Netzwerk** aus.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | NAME                    | myVirtualNetwork                                   |
+    | Name                    | myVirtualNetwork                                   |
     | Adressraum           | 10.0.0.0/16                                        |
     | Subscription            | Wählen Sie Ihr Abonnement aus.                          |
     | Resource group          | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein. |
-    | Location                | Wählen Sie **USA, Osten** aus.                                |
+    | Position                | Wählen Sie **USA, Osten** aus.                                |
     | Subnetzname            | mySubnet                                           |
     | Subnetzadressbereich  | 10.0.0.0/24                                        |
 
@@ -59,38 +59,38 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Funktionen gruppieren, wie etwa Webserver.
 
-1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
+1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus. 
 2. Geben Sie in das Feld **Marketplace durchsuchen** den Suchbegriff *Anwendungssicherheitsgruppe* ein. Wenn in den Suchergebnissen **Anwendungssicherheitsgruppe** angezeigt wird, wählen Sie dieses Ergebnis aus. Wählen Sie unter **Alles** erneut **Anwendungssicherheitsgruppe** aus, und wählen Sie anschließend **Erstellen**.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie dann **Erstellen** aus:
 
     | Einstellung        | Wert                                                         |
     | ---            | ---                                                           |
-    | NAME           | myAsgWebServers                                               |
+    | Name           | myAsgWebServers                                               |
     | Subscription   | Wählen Sie Ihr Abonnement aus.                                     |
     | Resource group | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
-    | Location       | East US                                                       |
+    | Position       | East US                                                       |
 
 4. Führen Sie Schritt 3 erneut aus, und geben Sie dabei die folgenden Werte an:
 
     | Einstellung        | Wert                                                         |
     | ---            | ---                                                           |
-    | NAME           | myAsgMgmtServers                                              |
+    | Name           | myAsgMgmtServers                                              |
     | Subscription   | Wählen Sie Ihr Abonnement aus.                                     |
     | Resource group | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
-    | Location       | East US                                                       |
+    | Position       | East US                                                       |
 
 ## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
-1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
+1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus. 
 2. Wählen Sie die Option **Netzwerk** und dann **Netzwerksicherheitsgruppe** aus.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie dann **Erstellen** aus:
 
     |Einstellung|Wert|
     |---|---|
-    |NAME|myNsg|
+    |Name|myNsg|
     |Subscription| Wählen Sie Ihr Abonnement aus.|
     |Resource group | Wählen Sie **Vorhandene verwenden** und dann *myResourceGroup*.|
-    |Location|East US|
+    |Position|East US|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Zuordnen einer Netzwerksicherheitsgruppe zu einem Subnetz
 
@@ -114,7 +114,7 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
     | Destination             | Wählen Sie zunächst **Anwendungssicherheitsgruppe** und anschließend für **Anwendungssicherheitsgruppe** den Namen **myAsgWebServers** aus.  |
     | Zielportbereiche | Geben Sie 80,443 ein.                                                                                                    |
     | Protocol                | Wählen Sie TCP aus.                                                                                                      |
-    | NAME                    | Allow-Web-All                                                                                                   |
+    | Name                    | Allow-Web-All                                                                                                   |
 
 3. Führen Sie Schritt 2 erneut aus, und verwenden Sie dabei die folgenden Werte:
 
@@ -124,7 +124,7 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
     | Zielportbereiche | Geben Sie 3389 ein.                                                                                                      |
     | Protocol                | Wählen Sie TCP aus.                                                                                                      |
     | Priority                | Geben Sie 110 ein.                                                                                                       |
-    | NAME                    | Allow-RDP-All                                                                                                   |
+    | Name                    | Allow-RDP-All                                                                                                   |
 
     In diesem Tutorial wird RDP (Port 3389) für den virtuellen Computer, der der Anwendungssicherheitsgruppe *myAsgMgmtServers* zugewiesen ist, im Internet verfügbar gemacht. In Produktionsumgebungen empfiehlt es sich, eine VPN-basierte oder private Netzwerkverbindung mit den Azure-Ressourcen herzustellen, die Sie verwalten möchten, anstatt den Port 3389 für das Internet verfügbar zu machen.
 
@@ -138,7 +138,7 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk.
 
 ### <a name="create-the-first-vm"></a>Erstellen des ersten virtuellen Computers
 
-1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
+1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus. 
 2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und übernehmen Sie die Standardwerte für die übrigen Einstellungen:
 
@@ -146,8 +146,8 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk.
     |---|---|
     |Subscription| Wählen Sie Ihr Abonnement aus.|
     |Resource group| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.|
-    |NAME|myVmWeb|
-    |Location| Wählen Sie **USA, Osten** aus.|
+    |Name|myVmWeb|
+    |Position| Wählen Sie **USA, Osten** aus.|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
 
@@ -159,8 +159,8 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk.
     |Einstellung|Wert|
     |---|---|
     |Virtuelles Netzwerk |Wählen Sie **myVirtualNetwork** aus.|
-    |NIC-Netzwerksicherheitsgruppe |Wählen Sie **Advanced** (Erweitert).|
-    |Öffentliche Eingangsports|Wählen Sie **Keine**. |
+    |NIC-Netzwerksicherheitsgruppe |Wählen Sie **Keine**.|
+  
 
 6. Klicken Sie unten links auf **Überprüfen und erstellen**, und wählen Sie **Erstellen** aus, um die Bereitstellung des virtuellen Computers zu starten.
 

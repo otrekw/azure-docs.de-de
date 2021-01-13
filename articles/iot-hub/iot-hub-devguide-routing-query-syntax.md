@@ -1,19 +1,21 @@
 ---
 title: Abfragen des Azure IoT Hub-Nachrichtenroutings | Microsoft-Dokumentation
-description: Entwicklerhandbuch – Abfragesyntax für das Nachrichtenrouting für Azure IoT Hub
+description: Hier erfahren Sie etwas zur Abfragesprache für das IoT Hub-Nachrichtenrouting, mit der Sie umfassende Abfragen für Nachrichten ausführen können, um die für Sie wichtigen Daten zu empfangen.
 author: ash2017
-manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 7f6439d79e5d46621b92b1c24ba5caf87889f443
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Data Analytics'
+ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877075"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547706"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Abfragesyntax für das IoT Hub-Nachrichtenrouting
 
@@ -21,7 +23,7 @@ Das Nachrichtenrouting ermöglicht Benutzern, verschiedene Datentypen wie Gerät
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Mithilfe des Nachrichtenroutings können Sie Abfragen für Nachrichteneigenschaften und Nachrichtentext sowie für Gerätezwillingstags und Gerätezwillingseigenschaften durchführen. Wenn der Text nicht das JSON-Format aufweist, kann die Nachricht dennoch durch das Nachrichtenrouting weitergeleitet werden, jedoch können keine Abfragen des Nachrichtentexts ausgeführt werden.  Abfragen werden mit booleschen Ausdrücken beschrieben. Hierbei gibt der boolesche Wert TRUE an, dass die Abfrage erfolgreich ist, wodurch alle eingehenden Daten weitergeleitet werden, und der boolesche Wert FALSE gibt an, dass die Abfrage fehlgeschlagen ist und Daten nicht weitergeleitet werden. Wenn die Auswertung des Ausdrucks NULL oder „nicht definiert“ ergibt, wird er als FALSE angesehen. Außerdem wird im Fall eines Fehlers eine Fehlermeldung in Diagnoseprotokollen generiert. Damit die Weiterleitung gespeichert und ausgewertet wird, muss die Abfragesyntax richtig sein.  
+Mithilfe des Nachrichtenroutings können Sie Abfragen für Nachrichteneigenschaften und Nachrichtentext sowie für Gerätezwillingstags und Gerätezwillingseigenschaften durchführen. Wenn der Text nicht das JSON-Format aufweist, kann die Nachricht dennoch durch das Nachrichtenrouting weitergeleitet werden, jedoch können keine Abfragen des Nachrichtentexts ausgeführt werden.  Abfragen werden mit booleschen Ausdrücken beschrieben. Hierbei gibt der boolesche Wert TRUE an, dass die Abfrage erfolgreich ist, wodurch alle eingehenden Daten weitergeleitet werden, und der boolesche Wert FALSE gibt an, dass die Abfrage fehlgeschlagen ist und Daten nicht weitergeleitet werden. Wenn die Auswertung des Ausdrucks NULL oder „nicht definiert“ ergibt, wird er als FALSE angesehen. Außerdem wird im Fall eines Fehlers eine Fehlermeldung in den [Protokollen zu Routenressourcen](monitor-iot-hub-reference.md#routes) von IoT Hub generiert. Damit die Weiterleitung gespeichert und ausgewertet wird, muss die Abfragesyntax richtig sein.  
 
 ## <a name="message-routing-query-based-on-message-properties"></a>Abfrage des Nachrichtenroutings basierend auf Nachrichteneigenschaften 
 
@@ -51,15 +53,16 @@ Der IoT Hub definiert ein [gemeinsames Format](iot-hub-devguide-messages-constru
 
 Mithilfe von Systemeigenschaften werden Inhalt und Quelle von Nachrichten identifiziert. 
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | contentType | string | Der Benutzer gibt den Inhaltstyp der Nachricht an. Dieser Wert sollte auf „application/JSON“ festgelegt werden, damit Abfragen für den Nachrichtentext ausgeführt werden können. |
 | contentEncoding | string | Der Benutzer gibt den Codierungstyp der Nachricht an. Wenn contentType auf „application/JSON“ festgelegt ist, sind die folgenden Werte gültig: UTF-8, UTF-16 und UTF-32. |
 | iothub-connection-device-id | string | Dieser Wert wird von IoT Hub festgelegt, und er identifiziert die ID des Geräts. Verwenden Sie `$connectionDeviceId` für die Abfrage. |
 | iothub-enqueuedtime | string | Dieser Wert wird von IoT Hub festgelegt und stellt den tatsächlichen Zeitpunkt dar, zu dem die Nachricht in UTC eingereiht wird. Verwenden Sie `enqueuedTime` für die Abfrage. |
-| iothub-interface-name | string | Dieser Wert wird vom Benutzer festgelegt und stellt den Namen der Schnittstelle für den digitalen Zwilling dar, die die Telemetrienachricht implementiert. Verwenden Sie `$interfaceName` für die Abfrage. Dieses Feature steht als Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) zur Verfügung. |
+| dt-dataschema | string |  Dieser Wert wird von IoT Hub für Gerät-zu-Cloud-Nachrichten festgelegt. Er enthält die in der Geräteverbindung festgelegte Gerätemodell-ID. Verwenden Sie `$dt-dataschema` für die Abfrage. |
+| dt-subject | Zeichenfolge | Der Name der Komponente, die die Gerät-zu-Cloud-Nachrichten sendet. Verwenden Sie `$dt-subject` für die Abfrage. |
 
-Wie im Artikel zu [IoT Hub-Nachrichten](iot-hub-devguide-messages-construct.md) beschrieben wird, gibt es mehrere zusätzliche Systemeigenschaften in einer Nachricht. Neben den Eigenschaften **contentType**, **contentEncoding** und **enqueuedTime** können auch die Eigenschaften **connectionDeviceId** und **connectionModuleId** abgefragt werden.
+Wie im Artikel zu [IoT Hub-Nachrichten](iot-hub-devguide-messages-construct.md) beschrieben wird, gibt es mehrere zusätzliche Systemeigenschaften in einer Nachricht. Zusätzlich zu den Eigenschaften in der obigen Tabelle können Sie auch **connectionDeviceId** und **connectionModuleId** abfragen.
 
 ### <a name="application-properties"></a>Anwendungseigenschaften
 
@@ -89,7 +92,7 @@ $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 
 Eine vollständige Liste der unterstützten Operatoren und Funktionen finden Sie unter [Ausdrücke und Bedingungen](iot-hub-devguide-query-language.md#expressions-and-conditions).
 
-## <a name="message-routing-query-based-on-message-body"></a>Abfrage des Nachrichtenroutings basierend auf dem Nachrichtentext 
+## <a name="message-routing-query-based-on-message-body"></a>Abfrage des Nachrichtenroutings basierend auf dem Nachrichtentext
 
 Die Nachricht sollte ein mit UTF-8, UTF-16 oder UTF-32 codiertes JSON-Format aufweisen, um das Abfragen des Nachrichtentexts zu ermöglichen. `contentType` muss auf `application/JSON` und `contentEncoding` muss in der Systemeigenschaft auf eine der unterstützten UTF-Codierungen festgelegt sein. Wenn diese Eigenschaften nicht festgelegt sind, wird der Abfrageausdruck für den Nachrichtentext nicht von IoT Hub ausgewertet. 
 
@@ -142,6 +145,10 @@ deviceClient.sendEvent(message, (err, res) => {
 });
 ```
 
+> [!NOTE] 
+> Hier sehen Sie, wie die Codierung des Texts in JavaScript behandelt werden muss. Wenn Sie sich ein Beispiel in C# ansehen möchten, laden Sie die [Azure IoT-Beispiele für C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) herunter. Entzippen Sie die Datei „master.zip“. In der Datei „Program.cs“ aus der Visual Studio-Projektmappe *SimulatedDevice* werden die Codierung und Übermittlung von Nachrichten an eine IoT Hub-Instanz gezeigt. Dieses Beispiel wird auch im [Nachrichtenrouting-Tutorial](tutorial-routing.md) zum Testen des Nachrichtenroutings verwendet. Am Ende von „Program.cs“ befindet sich auch eine Methode, die dazu dient, in einer der codierten Dateien zu lesen, die Datei zu decodieren und den Inhalt als lesbaren ASCII-Code auszugeben. 
+
+
 ### <a name="query-expressions"></a>Abfrageausdrücke
 
 Einer Abfrage des Nachrichtentexts muss das Präfix `$body` vorangestellt werden. Sie können einen Textverweis, Textarrayverweis oder mehrere Textverweise im Abfrageausdruck verwenden. Der Abfrageausdruck kann auch einen Textverweis mit Nachrichtensystemeigenschaften und einem Verweis auf Nachrichtenanwendungseigenschaften kombinieren. Die folgenden Abfrageausdrücke sind beispielsweise sämtlich gültig: 
@@ -164,7 +171,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ## <a name="message-routing-query-based-on-device-twin"></a>Abfrage des Nachrichtenroutings basierend auf dem Gerätezwilling 
 
-Das Nachrichtenrouting ermöglicht Ihnen das Abfragen von Tags und Eigenschaften des [Gerätezwillings](iot-hub-devguide-device-twins.md), die JSON-Objekte sind. Das Abfragen des Modulzwillings wird nicht unterstützt. Im Folgenden wird ein Beispiel für Gerätezwillingstags gezeigt.
+Das Nachrichtenrouting ermöglicht Ihnen das Abfragen von Tags und Eigenschaften des [Gerätezwillings](iot-hub-devguide-device-twins.md), die JSON-Objekte sind. Das Abfragen des Modulzwillings wird ebenfalls unterstützt. Im Folgenden wird ein Beispiel für Gerätezwillingstags gezeigt.
 
 ```JSON
 {
@@ -197,7 +204,7 @@ Das Nachrichtenrouting ermöglicht Ihnen das Abfragen von Tags und Eigenschaften
 
 ### <a name="query-expressions"></a>Abfrageausdrücke
 
-Einer Abfrage des Nachrichtentexts muss das Präfix `$twin` vorangestellt werden. Der Abfrageausdruck kann auch ein Zwillingstag oder Eigenschaftenverweis mit einem Textverweis und mit Nachrichtensystemeigenschaften sowie einem Verweis auf Nachrichtenanwendungseigenschaften kombinieren. Die Verwendung eindeutiger Namen wird für Tags und Eigenschaften empfohlen, da die Abfrage die Groß- und Kleinschreibung nicht beachtet. Außerdem sollten Sie `twin`, `$twin`, `body` oder `$body` nicht als Eigenschaftennamen verwenden. Die folgenden Abfrageausdrücke sind beispielsweise sämtlich gültig: 
+Einer Abfrage des Nachrichtenzwillings muss das Präfix `$twin` vorangestellt werden. Der Abfrageausdruck kann auch ein Zwillingstag oder Eigenschaftenverweis mit einem Textverweis und mit Nachrichtensystemeigenschaften sowie einem Verweis auf Nachrichtenanwendungseigenschaften kombinieren. Die Verwendung eindeutiger Namen wird für Tags und Eigenschaften empfohlen, da die Abfrage die Groß- und Kleinschreibung nicht beachtet. Dies gilt für Gerätezwillinge und Modulzwillinge. Außerdem sollten Sie `twin`, `$twin`, `body` oder `$body` nicht als Eigenschaftennamen verwenden. Die folgenden Abfrageausdrücke sind beispielsweise sämtlich gültig: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
@@ -210,6 +217,8 @@ $body.Weather.Temperature = 50 AND $twin.properties.desired.telemetryConfig.send
 ```sql
 $twin.tags.deploymentLocation.floor = 1 
 ```
+
+Routingabfragen für Text oder Gerätezwilling mit einem Punkt in der Nutzlast oder im Eigenschaftsnamen werden nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

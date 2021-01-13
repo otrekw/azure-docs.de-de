@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-Skriptbeispiel – Sichern und Wiederherstellen eines Diensts | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Sichern und Wiederherstellen eines Diensts
+description: Hier erfahren Sie, wie Sie die API Management-Dienstinstanz sichern und wiederherstellen. Sehen Sie sich ein Beispielskript an, und zeigen Sie zusätzliche verfügbare Ressourcen an.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,16 +12,16 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 236384b0f269018e3689888ab9ad5f1a3d9593ed
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d80a63b1a52d1ed7750d1a025eb8f4cd9f254a94
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074257"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87851068"
 ---
 # <a name="backup-and-restore-service"></a>Sichern und Wiederherstellen eines Diensts
 
-Das Beispiel in diesem Artikel veranschaulicht, wie die API Management-Dienstinstanz gesichert und wiederhergestellt wird. 
+Das Beispielskript in diesem Artikel veranschaulicht, wie die API Management-Dienstinstanz gesichert und wiederhergestellt wird. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -43,6 +43,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Weitere Azure PowerShell-Beispiele für Azure API Management finden Sie in den [PowerShell-Beispielen](../powershell-samples.md).

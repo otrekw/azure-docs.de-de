@@ -1,26 +1,27 @@
 ---
-title: Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer für die Anmeldung
-description: Ausführliche Anweisungen und Beispiele für die Verwendung von verwalteten Identitäten eines virtuellen Azure-Computers für die Anmeldung und den Zugriff auf Ressourcen eines Skriptclients
+title: Verwenden von verwalteten Identitäten auf einem virtuellen Azure-Computer für die Anmeldung – Azure AD
+description: Schrittweise Anleitungen und Beispiele für die Skriptclient-Anmeldung und den Ressourcenzugriff mit verwalteten Identitäten auf einem virtuellen Azure-Computer für Azure-Ressourcen (Dienstprinzipal).
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43aa0859fa67cc6b2f5c5974f072e7b6d4b29527
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 08fe856fd43baad4189d81f7743396a71cd5de48
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112963"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89266322"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer für die Anmeldung 
 
@@ -33,7 +34,7 @@ Dieser Artikel enthält PowerShell- und CLI-Skriptbeispiele für die Anmeldung m
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Wenn Sie die Azure PowerShell- oder Azure CLI-Beispiele in diesem Artikel verwenden möchten, müssen Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-az-ps) bzw. der [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) installieren. 
+Wenn Sie die Azure PowerShell- oder Azure CLI-Beispiele in diesem Artikel verwenden möchten, müssen Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-az-ps) bzw. der [Azure CLI](/cli/azure/install-azure-cli) installieren. 
 
 > [!IMPORTANT]
 > - Bei allen Beispielskripts in diesem Artikel wird vorausgesetzt, dass der Befehlszeilenclient auf einem virtuellen Computer mit verwalteten Identitäten für Azure-Ressourcen ausgeführt wird. Verwenden Sie die Funktion „Verbinden“ im Azure-Portal zum Herstellen einer Remoteverbindung mit Ihrem virtuellen Computer. Weitere Informationen zur Aktivierung von verwalteten Identitäten für Azure-Ressourcen auf einer VM finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einer VM über das Azure-Portal](qs-configure-portal-windows-vm.md) oder in einem der verwandten Artikel (PowerShell, CLI, Vorlage oder Azure SDK). 
@@ -41,14 +42,14 @@ Wenn Sie die Azure PowerShell- oder Azure CLI-Beispiele in diesem Artikel verwen
 
 ## <a name="overview"></a>Übersicht
 
-Verwaltete Identitäten für Azure-Ressourcen bieten ein [Dienstprinzipalobjekt](../develop/developer-glossary.md#service-principal-object), das [bei der Aktivierung von verwalteten Identitäten für Azure-Ressourcen](overview.md#how-does-it-work) auf dem virtuellen Computer erstellt wird. Der Dienstprinzipal kann Zugriff auf Azure-Ressourcen erhalten und von Skript- oder Befehlszeilenclients als Identität für die Anmeldung und den Zugriff auf Ressourcen verwendet werden. Bislang war für einen Skriptclient für den Zugriff auf geschützte Ressourcen unter seiner eigenen Identität Folgendes erforderlich:  
+Verwaltete Identitäten für Azure-Ressourcen stellen ein [Dienstprinzipalobjekt](../develop/developer-glossary.md#service-principal-object) bereit, das [bei der Aktivierung von verwalteten Identitäten für Azure-Ressourcen](overview.md) auf dem virtuellen Computer erstellt wird. Der Dienstprinzipal kann Zugriff auf Azure-Ressourcen erhalten und von Skript- oder Befehlszeilenclients als Identität für die Anmeldung und den Zugriff auf Ressourcen verwendet werden. Bislang war für einen Skriptclient für den Zugriff auf geschützte Ressourcen unter seiner eigenen Identität Folgendes erforderlich:  
 
    - Registrierung und Zustimmung als vertrauliche und Webclientanwendung in Azure AD
    - Anmeldung unter dem zugehörigen Dienstprinzipal mit den Anmeldeinformationen der Anwendung (wahrscheinlich im Skript eingebettet)
 
 Mithilfe verwalteter Identitäten für Azure-Ressourcen muss Ihr Skriptclient beides nicht mehr ausführen, da er sich unter dem Dienstprinzipal der verwalteten Identitäten für Azure-Ressourcen anmelden kann. 
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli"></a>Azure CLI
 
 Mit diesem Skript wird Folgendes veranschaulicht:
 
@@ -86,8 +87,8 @@ Eine Liste mit Ressourcen, die Azure AD unterstützen und mit verwalteten Identi
 
 Antworten wie beispielsweise die folgenden können angeben, dass die verwaltete Identität des virtuellen Computers für Azure-Ressourcen nicht ordnungsgemäß konfiguriert wurde:
 
-- PowerShell: *Invoke-WebRequest: Es konnte keine Verbindung mit dem Remoteserver hergestellt werden.*
-- CLI: *MSI: Failed to retrieve a token from `http://localhost:50342/oauth2/token` with an error of 'HTTPConnectionPool(host='localhost', port=50342)* (MSI: Fehler beim Abrufen eines Tokens aus 'http://localhost:50342/oauth2/token' mit dem Fehler 'HTTPConnectionPool[host='localhost', port=50342]) 
+- Mit PowerShell: *Invoke-WebRequest: Es konnte keine Verbindung mit dem Remoteserver hergestellt werden.*
+- Über die CLI: *MSI: Failed to retrieve a token from `http://localhost:50342/oauth2/token` with an error of 'HTTPConnectionPool(host='localhost', port=50342)* (MSI: Fehler beim Abrufen eines Tokens aus 'http://localhost:50342/oauth2/token' mit dem Fehler 'HTTPConnectionPool[host='localhost', port=50342]) 
 
 Wenn einer dieser Fehler angezeigt wird, wechseln Sie zu dem virtuellen Azure-Computer im [Azure-Portal](https://portal.azure.com) und:
 
@@ -99,9 +100,3 @@ Wenn einer dieser Punkte nicht zutrifft, müssen Sie die verwalteten Identitäte
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Aktivieren verwalteter Identitäten für Azure-Ressourcen auf einer Azure-VM finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mit PowerShell](qs-configure-powershell-windows-vm.md) und [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe der Azure-Befehlszeilenschnittstelle](qs-configure-cli-windows-vm.md)
-
-
-
-
-
-

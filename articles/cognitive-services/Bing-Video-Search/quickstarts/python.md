@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Suchen nach Videos mithilfe der Bing-Videosuche-REST-API und Python'
+title: 'Schnellstart: Suchen nach Videos mithilfe der REST-API und Python – Bing-Videosuche'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung zum Senden von Videosuchanforderungen an die Bing-Videosuche-REST-API mit Python.
 services: cognitive-services
@@ -8,20 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 36d4035913b8e9b7c3e4a12fa208608ffa55151e
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.custom: devx-track-python
+ms.openlocfilehash: c5112cab286d4a72f2b4063c78e7ceeae16ed588
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500685"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353832"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Schnellstart: Suchen nach Videos mithilfe der Bing-Videosuche-REST-API und Python
 
-Mit diesem Schnellstart können Sie die Bing-Videosuche-API zum ersten Mal aufrufen und ein Suchergebnis in der JSON-Antwort anzeigen. Diese einfache Python-Anwendung sendet eine HTTP-Videosuchabfrage an die API und zeigt die Antwort an. Diese Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Der Quellcode dieses Beispiels ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) mit zusätzlichen Fehlerbehandlungen und Codehinweisen verfügbar.
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Sie können dieses Beispiel als Jupyter Notebook in [MyBinder](https://mybinder.org) ausführen, indem Sie auf das Binder-Badge klicken: 
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Videosuche-API zum ersten Mal aufzurufen. Diese einfache Python-Anwendung sendet eine HTTP-Videosuchabfrage an die API und zeigt die JSON-Antwort an. Die Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel. 
+
+Der Quellcode dieses Beispiels ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) mit zusätzlichen Fehlerbehandlungen und Codehinweisen verfügbar.
+
+Sie können dieses Beispiel als Jupyter Notebook in [MyBinder](https://mybinder.org) ausführen, indem Sie das Badge zum **Starten von Binder** auswählen: 
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
@@ -40,7 +48,7 @@ Sie können dieses Beispiel als Jupyter Notebook in [MyBinder](https://mybinder.
     import requests
     from IPython.display import HTML
     ```
-2.  Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Suchendpunkt und einen Suchbegriff.
+2.  Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Suchendpunkt und den Suchbegriff. Für den `search_url`-Wert können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
     
     ```python
     subscription_key = None
@@ -57,7 +65,7 @@ Sie können dieses Beispiel als Jupyter Notebook in [MyBinder](https://mybinder.
 
 ## <a name="send-your-request"></a>Senden Ihrer Anforderung
 
-1. Erstellen Sie ein Wörterbuch namens `params`, um die Parameter Ihrer Anforderung hinzuzufügen. Fügen Sie dem Parameter `q` Ihren Suchbegriff, 5 für die Videoanzahl, `free` für den Preis der zurückgegebenen Videos und `short` für die Videolänge hinzu.
+1. Erstellen Sie ein Wörterbuch namens `params`, um die Parameter Ihrer Anforderung hinzuzufügen. Fügen Sie dem Parameter `q` Ihre Suchbegriffe hinzu: 5 für die Videoanzahl, `free` für den Preis der zurückgegebenen Videos und `short` für die Videolänge.
 
     ```python
     params  = {"q": search_term, "count":5, "pricing": "free", "videoLength":"short"}

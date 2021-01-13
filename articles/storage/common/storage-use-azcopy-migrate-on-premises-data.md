@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Migrieren von lokalen Daten nach Azure Storage mithilfe von AzCopy | Microsoft-Dokumentation'
+title: 'Tutorial: Migrieren von lokalen Daten nach Azure Storage mit AzCopy | Microsoft-Dokumentation'
 description: In diesem Tutorial verwenden Sie AzCopy, um Daten zu bzw. aus Blob-, Tabellen- und Dateiinhalten zu migrieren oder in diese Inhalte bzw. aus diesen Inhalten zu kopieren. Migrieren Sie mühelos Daten aus Ihrem lokalen Speicher nach Azure Storage.
 author: normesta
 ms.service: storage
@@ -8,14 +8,14 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 5f09ae7dc625ad579e31fd49d70331f30e6a708a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: eddee58d70cf621bd6c82d54fe75434f4e596d9e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844908"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498165"
 ---
-#  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Tutorial: Migrieren von lokalen Daten zum Cloudspeicher mithilfe von AzCopy
+#  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Tutorial: Migrieren von lokalen Daten zu Cloudspeicher mit AzCopy
 
 AzCopy ist ein Befehlszeilentool zum Kopieren von Daten in oder aus Azure Blob Storage, Azure Files und Azure Table Storage mittels einfacher Befehle. Die Befehle sind für optimale Leistung konzipiert. Mit AzCopy können Sie Daten entweder zwischen einem Dateisystem und einem Speicherkonto oder zwischen Speicherkonten kopieren. AzCopy kann zum Kopieren von Daten aus lokalen Daten in ein Speicherkonto verwendet werden.
 
@@ -33,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Laden Sie für dieses Tutorial die neueste Version von AzCopy herunter. Informationen finden Sie unter [Übertragen von Daten mit AzCopy v10](storage-use-azcopy-v10.md).
 
-Unter Windows ist [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) erforderlich, da das Tool in diesem Tutorial zum Planen einer Aufgabe verwendet wird. Linux-Benutzer verwenden stattdessen den Befehl „crontab“.
+Unter Windows ist [Schtasks](/windows/win32/taskschd/schtasks) erforderlich, da das Tool in diesem Tutorial zum Planen einer Aufgabe verwendet wird. Linux-Benutzer verwenden stattdessen den Befehl „crontab“.
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -46,7 +46,7 @@ Führen Sie folgende Schritte durch, um einen Container zu erstellen:
 1. Wählen Sie auf der Hauptseite die Schaltfläche **Speicherkonten** und dann das von Ihnen erstellte Speicherkonto aus.
 2. Klicken Sie unter **Dienste** auf **Blobs** und dann auf **Container**.
 
-   ![Erstellen eines Containers](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
+   ![Der Screenshot zeigt die Containererstellung](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
  
 Containernamen müssen mit einem Buchstaben oder einer Zahl beginnen. Sie dürfen nur Buchstaben, Zahlen und den Bindestrich (-) enthalten. Weitere Benennungsregeln für Blobs und Container finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).
 
@@ -62,7 +62,7 @@ Speichern Sie die AzCopy-Datei auf Ihrem Computer. Fügen Sie den Speicherort de
 
 ## <a name="authenticate-with-azure-ad"></a>Authentifizierung über Azure AD
 
-Weisen Sie Ihrer Identität zunächst die Rolle [Mitwirkender an Storage-Blobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) zu. Informationen finden Sie unter [Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über das Azure-Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal).
+Weisen Sie Ihrer Identität zunächst die Rolle [Mitwirkender an Storage-Blobdaten](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) zu. Weitere Informationen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](./storage-auth-aad-rbac-portal.md).
 
 Öffnen Sie anschließend eine Eingabeaufforderung, geben Sie den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
 
@@ -72,13 +72,13 @@ azcopy login
 
 Dieser Befehl gibt einen Authentifizierungscode und die URL einer Website zurück. Öffnen Sie die Website, geben Sie den Code ein, und wählen Sie dann die Schaltfläche **Weiter** aus.
 
-![Erstellen eines Containers](media/storage-use-azcopy-v10/azcopy-login.png)
+![Der Screenshot zeigt die Aufforderung zur Anmeldung.](media/storage-use-azcopy-v10/azcopy-login.png)
 
 Daraufhin wird ein Anmeldefenster geöffnet. Melden Sie sich in diesem Fenster mit Ihren Azure-Kontoanmeldeinformationen bei Ihrem Azure-Konto an. Wenn Sie sich erfolgreich angemeldet haben, können Sie das Browserfenster schließen und mit der Verwendung von AzCopy beginnen.
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>Hochladen des Inhalts eines Ordners in Blobspeicher
 
-Mit AzCopy können Sie unter [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) oder [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) alle Dateien in einem Ordner in Blob Storage hochladen. Um alle Blobs in einem Ordner hochzuladen, geben Sie den folgenden AzCopy-Befehl aus:
+Mit AzCopy können Sie unter [Windows](./storage-use-azcopy-v10.md) oder [Linux](./storage-use-azcopy-v10.md) alle Dateien in einem Ordner in Blob Storage hochladen. Um alle Blobs in einem Ordner hochzuladen, geben Sie den folgenden AzCopy-Befehl aus:
 
 ```AzCopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
@@ -121,21 +121,25 @@ In diesem Beispielen wird davon ausgegangen, dass der Ordnername `myFolder`, der
 > [!NOTE]
 > Im Linux-Beispiel wird ein SAS-Token angefügt. Sie müssen in Ihrem Befehl ein Token angeben. Die aktuelle Version von AzCopy V10 unterstützt die Azure AD-Autorisierung in Cron-Aufträgen nicht.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
-    azcopy sync "/mnt/myfiles" "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-05-30T06:57:40Z&st=2019-05-29T22:57:40Z&spr=https&sig=BXHippZxxx54hQn%2F4tBY%2BE2JHGCTRv52445rtoyqgFBUo%3D" --recursive=true
+```bash
+azcopy sync "/mnt/myfiles" "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-05-30T06:57:40Z&st=2019-05-29T22:57:40Z&spr=https&sig=BXHippZxxx54hQn%2F4tBY%2BE2JHGCTRv52445rtoyqgFBUo%3D" --recursive=true
+```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
-    azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true
+```bash
+azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true
+```
 
 ---
 
-In diesem Tutorial wird [SCHTASKS](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) verwendet, um einen geplanten Task unter Windows zu erstellen. Der [Crontab](http://crontab.org/)-Befehl wird verwendet, um einen Cron-Auftrag unter Linux zu erstellen.
+In diesem Tutorial wird [SCHTASKS](/windows/win32/taskschd/schtasks) verwendet, um einen geplanten Task unter Windows zu erstellen. Der [Crontab](http://crontab.org/)-Befehl wird verwendet, um einen Cron-Auftrag unter Linux zu erstellen.
 
  **SCHTASKS** ermöglicht Administratoren das Erstellen, Löschen, Abfragen, Ändern, Ausführen und Beenden von geplanten Tasks auf einem lokalen oder Remotecomputer. Mithilfe von **Cron** können Linux- und UNIX-Benutzer Befehle oder Skripts zu einem bestimmten Datum und einer bestimmten Uhrzeit mithilfe von [Cron-Ausdrücken](https://en.wikipedia.org/wiki/Cron#CRON_expression) ausführen.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Um einem Cron-Auftrag unter Linux zu erstellen, geben Sie den folgenden Befehl auf einem Terminalserver ein:
 
@@ -146,7 +150,7 @@ crontab -e
 
 Durch Angabe des Cron-Ausdrucks `*/5 * * * *` im Befehl wird angegeben, dass das Shell-Skript `script.sh` alle fünf Minuten ausgeführt werden soll. Sie können das Skript für die Ausführung zu einem bestimmten Zeitpunkt planen, d.h. täglich, monatlich oder jährlich. Weitere Informationen zum Festlegen von Datum und Uhrzeit für die Ausführung eines Auftrags finden Sie unter [Cron-Ausdrücke](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Um einen geplanten Task unter Windows zu erstellen, geben Sie den folgenden Befehl an einer Eingabeaufforderung oder in PowerShell ein:
 
@@ -162,7 +166,7 @@ Im Befehl wird Folgendes verwendet:
 - Der Parameter `/TN` zum Festlegen des Tasknamens
 - Der Parameter `/TR` zum Festlegen des Pfads zur Datei `script.bat`
 
-Weitere Informationen zum Erstellen eines geplanten Tasks unter Windows finden Sie unter [SCHTASKS](https://technet.microsoft.com/library/cc772785(v=ws.10).aspx#BKMK_minutes).
+Weitere Informationen zum Erstellen eines geplanten Tasks unter Windows finden Sie unter [SCHTASKS](/previous-versions/orphan-topics/ws.10/cc772785(v=ws.10)#BKMK_minutes).
 
 ---
 
@@ -172,16 +176,16 @@ Um zu überprüfen, ob der geplante Task bzw. Cron-Auftrag ordnungsgemäß ausge
 
 Weitere Informationen zu Möglichkeiten zum Verschieben von lokalen Daten in Azure Storage und umgekehrt finden Sie unter folgendem Link:
 
-* [Verschieben von Daten in und aus Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)  
+* [Verschieben von Daten in und aus Azure Storage](./storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)  
 
 Weitere Informationen zu AzCopy finden Sie in den folgenden Artikeln:
 
-* [Übertragen von Daten mit AzCopy v10](storage-use-azcopy-v10.md)
+* [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
 
 * [Übertragen von Daten mit AzCopy und Blob Storage](storage-use-azcopy-blobs.md)
 
 * [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
 
-* [Kopieren von Daten aus Amazon S3-Buckets mit AzCopy](storage-use-azcopy-s3.md)
+* [Übertragen von Daten mit AzCopy und Amazon S3-Buckets](storage-use-azcopy-s3.md)
  
 * [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)

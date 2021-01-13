@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Verwalten von Azure-Dateifreigaben mit dem Azure Storage-Explorer'
+title: Verwalten von Azure-Dateifreigaben mit Azure Storage-Explorer
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Azure Files mithilfe des Azure Storage-Explorers verwalten.
 author: roygara
 ms.service: storage
@@ -7,19 +7,19 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b034b3e7aa5fcb61cf83565f3e4c3b1c83f3610c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: dea88bf93000422ce1d832be4a0f60474ff27938
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699459"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629783"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit dem Azure Storage-Explorer
 In dieser Anleitung werden Schritt für Schritt die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit dem Azure Storage-Explorer beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
 
 Der Azure Storage-Explorer ist ein beliebtes Clienttool, das für Windows, macOS und Linux verfügbar ist. Sie können Storage-Explorer zum Verwalten von Azure-Dateifreigaben und anderen Speicherressourcen verwenden.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für diese Schnellstartanleitung muss Storage-Explorer installiert sein. Sie können die Anwendung unter [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) herunterladen und dann installieren.
@@ -32,9 +32,9 @@ Sie können Storage-Explorer nicht verwenden, um neue Ressourcen zu erstellen. E
 ## <a name="connect-storage-explorer-to-azure-resources"></a>Herstellen einer Verbindung von Storage-Explorer mit Azure-Ressourcen
 Nach dem erstmaligen Starten von Storage-Explorer wird das Fenster **Microsoft Azure Storage-Explorer – Verbinden** angezeigt. Es gibt verschiedene Möglichkeiten, wie Sie den Storage-Explorer mit Speicherkonten verbinden können: 
 
-- **Anmelden mit Ihrem Azure-Konto:** Sie können sich anmelden, indem Sie die Benutzeranmeldeinformationen für Ihre Organisation oder Ihr Microsoft-Konto verwenden. 
-- **Herstellen einer Verbindung mit einem bestimmten Speicherkonto unter Verwendung einer Verbindungszeichenfolge oder eines SAS-Tokens:** Eine Verbindungszeichenfolge ist eine spezielle Zeichenfolge, die einen Speicherkontonamen und einen Speicherkontoschlüssel/ein SAS-Token enthält. Mit dem Token greift Storage-Explorer direkt auf das Speicherkonto zu (anstelle der Anzeige aller Speicherkonten eines Azure-Kontos). Weitere Informationen zu Verbindungszeichenfolgen finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-- **Herstellen einer Verbindung mit einem bestimmten Speicherkonto unter Verwendung eines Speicherkontonamens und -schlüssels:** Verwenden Sie den Speicherkontonamen und -schlüssel für Ihr Speicherkonto, um eine Verbindung mit Azure Storage herzustellen.
+- **Anmelden mit Ihrem Azure-Konto**: Sie können sich anmelden, indem Sie die Benutzeranmeldeinformationen für Ihre Organisation oder Ihr Microsoft-Konto verwenden. 
+- **Herstellen einer Verbindung mit einem bestimmten Speicherkonto per Verbindungszeichenfolge oder SAS-Token**: Eine Verbindungszeichenfolge ist eine spezielle Zeichenfolge, die einen Speicherkontonamen und -schlüssel bzw. ein SAS-Token enthält. Mit dem Token greift Storage-Explorer direkt auf das Speicherkonto zu (anstelle der Anzeige aller Speicherkonten eines Azure-Kontos). Weitere Informationen zu Verbindungszeichenfolgen finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+- **Herstellen einer Verbindung mit einem bestimmten Speicherkonto über einen Speicherkontonamen und -schlüssel**: Verwenden Sie den Speicherkontonamen und -schlüssel, um für Ihr Speicherkonto eine Verbindung mit Azure-Speicher herzustellen.
 
 Melden Sie sich für diese Schnellstartanleitung mit Ihrem Azure-Konto an. Wählen Sie **Azure-Konto hinzufügen** und dann **Anmelden**. Folgen Sie den Aufforderungen auf dem Bildschirm, um sich an Ihrem Azure-Konto anzumelden.
 
@@ -49,7 +49,7 @@ Gehen Sie wie folgt vor, um Ihre erste Azure-Dateifreigabe unter dem Speicherkon
 
 3. Geben Sie für die Dateifreigabe *myshare* ein, und drücken Sie die EINGABETASTE.
 
-Freigabenamen dürfen nur Kleinbuchstaben, Zahlen und einzelne Bindestriche enthalten (ein Bindestrich am Anfang ist nicht zulässig). Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Freigabenamen dürfen nur Kleinbuchstaben, Zahlen und einzelne Bindestriche enthalten (ein Bindestrich am Anfang ist nicht zulässig). Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
 Nachdem die Dateifreigabe erstellt wurde, wird im rechten Bereich eine Registerkarte für Ihre Dateifreigabe geöffnet. 
 

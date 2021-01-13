@@ -1,28 +1,20 @@
 ---
-title: Verwenden von cloud-init zum Aktualisieren und Installieren von Paketen auf einer Linux-VM in Azure | Microsoft-Dokumentation
+title: Verwenden von „cloud-init“ auf einer Linux-VM in Azure
 description: Verwenden von cloud-init zum Aktualisieren und Installieren von Paketen auf einer Linux-VM während der Erstellung mit der Azure CLI
-services: virtual-machines-linux
-documentationcenter: ''
-author: rickstercdn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
+author: cynthn
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/20/2018
-ms.author: rclaus
-ms.openlocfilehash: cff3ce47d7421b70a49161dddadd05b3f3878a04
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.author: cynthn
+ms.openlocfilehash: 98198a2eb2476138f7794b26c30397798ede32b1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668160"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87373435"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Verwenden von cloud-init zum Aktualisieren und Installieren von Paketen auf einer Linux-VM in Azure
-In diesem Artikel wird gezeigt, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum Aktualisieren von Paketen auf einem virtuellen Linux-Computer (VM) oder in VM-Skalierungsgruppen (VMSS) während der Bereitstellung in Azure verwenden. Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden. Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).
+In diesem Artikel wird gezeigt, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum Aktualisieren von Paketen auf einem virtuellen Linux-Computer (VM) oder in VM-Skalierungsgruppen während der Bereitstellung in Azure verwenden. Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden. Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).
 
 ## <a name="update-a-vm-with-cloud-init"></a>Aktualisieren einer VM mit cloud-init
 Aus Sicherheitsgründen sollten Sie eine VM so konfigurieren, dass die neuesten Updates beim ersten Systemstart angewendet werden. Da cloud-init in verschiedenen Linux-Distributionen funktioniert, müssen weder `apt` oder `yum` für den Paket-Manager angegeben werden. Stattdessen definieren Sie `package_upgrade` und lassen die geeignete Methode für die verwendete Distribution vom cloud-init-Vorgang auswählen. Bei diesem Workflow können Sie dieselben cloud-init-Skripts für verschiedene Distributionen verwenden.

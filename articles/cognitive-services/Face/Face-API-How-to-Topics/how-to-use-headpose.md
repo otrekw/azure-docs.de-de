@@ -9,12 +9,13 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/29/2019
 ms.author: pafarley
-ms.openlocfilehash: 168b4fce873206e39a32a83da3dc5509b431d6a1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fe9cc44542e97880b076d871dde82f5a02a58957
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058581"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88928971"
 ---
 # <a name="use-the-headpose-attribute"></a>Verwenden des HeadPose-Attributs
 
@@ -129,8 +130,8 @@ Bei einer Liveerkennung wird ermittelt, ob ein Subjekt eine reale Person oder le
 > [!CAUTION]
 > Damit Sie Kopfbewegungen in Echtzeit erkennen können, müssen Sie die Gesichtserkennungs-API in einer sehr hohen Frequenz (mehrmals pro Sekunde) aufrufen. Dies ist mit einem Abonnement im Free-Tarif (f0) nicht möglich. Wenn Sie über ein Abonnement in einem kostenpflichtigen Tarif verfügen, sollten Sie unbedingt vorab die Kosten für schnelle API-Aufrufe berechnen, die für die Erkennung von Kopfbewegungen erforderlich sind.
 
-Das [HeadPose-Beispiel der Gesichtserkennungs-API](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceAPIHeadPoseSample) auf GitHub ist ein funktionsfähiges Beispiel für die Erkennung von Kopfbewegungen.
+Das [HeadPose-Beispiel der Gesichtserkennung](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceAPIHeadPoseSample) auf GitHub ist ein funktionsfähiges Beispiel für die Erkennung von Kopfbewegungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ein funktionierendes Beispiel für gedrehte Gesichtsrechtecke finden Sie in der App [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) auf GitHub. Sie können sich auch die App [Face API HeadPose Sample](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples) (HeadPose-Beispiel für die Gesichtserkennungs-API) ansehen, die das HeadPose-Attribut in Echtzeit verfolgt, um Kopfbewegungen zu erkennen.
+Ein funktionierendes Beispiel für gedrehte Gesichtsrechtecke finden Sie in der App [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) auf GitHub. Sie können sich auch die App für das [HeadPose-Beispiel der Gesichtserkennung](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples) ansehen, die das HeadPose-Attribut in Echtzeit verfolgt, um Kopfbewegungen zu erkennen.

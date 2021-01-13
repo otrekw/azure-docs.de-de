@@ -1,24 +1,14 @@
 ---
 title: Erkennung doppelter Nachrichten von Azure Service Bus | Microsoft-Dokumentation
-description: Erkennen doppelter Nachrichten von Service Bus
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+description: In diesem Artikel wird erläutert, wie Sie Duplikate in Azure Service Bus-Nachrichten erkennen können. Die doppelte Nachricht kann ignoriert und gelöscht werden.
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: bee8c1d2a1cd313c7fe59d8e53379dc57554e98c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.date: 06/23/2020
+ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618572"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87083887"
 ---
 # <a name="duplicate-detection"></a>Duplikaterkennung
 
@@ -43,7 +33,7 @@ Die *MessageId* kann immer auch eine GUID sein, aber das Verankern des Bezeichne
 
 Im Portal wird das Feature während der Erstellung der Entität mit dem Kontrollkästchen **Duplikaterkennung aktivieren** aktiviert, das standardmäßig deaktiviert ist. Die Einstellung für das Erstellen neuer Themen funktioniert genauso.
 
-![][1]
+![Screenshot des Dialogfelds „Warteschlange erstellen“ mit aktivierter und rot umrandeter Option „Duplikaterkennung aktivieren“][1]
 
 > [!IMPORTANT]
 > Sie können die Duplikaterkennung nach der Erstellung der Warteschlange nicht aktivieren/deaktivieren. Dies ist nur zum Zeitpunkt der Erstellung der Warteschlange möglich. 
@@ -52,7 +42,7 @@ Programmgesteuert legen Sie das Flag mit der [QueueDescription.requiresDuplicate
 
 Die Zeit für den Verlauf der Duplikaterkennung beträgt für Warteschlangen und Themen standardmäßig 30 Sekunden. Der Höchstwert beträgt 7 Tage. Sie können diese Einstellung im Eigenschaftenfenster für Warteschlangen und Themen im Azure-Portal ändern.
 
-![][2]
+![Screenshot des Service Bus-Features mit hervorgehobener Einstellung „Eigenschaften“ und rot umrandeter Option „Verlauf der Duplikaterkennung“][2]
 
 Programmgesteuert können Sie die Dauer der Duplikaterkennung, während der Nachrichten-IDs beibehalten werden, mithilfe der [QueueDescription.DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow)-Eigenschaft im vollständigen Framework der .NET-API konfigurieren. Mit der Azure Resource Manager-API wird der Wert mit der [queueProperties.duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values)-Eigenschaft festgelegt.
 
@@ -67,6 +57,8 @@ Weitere Informationen zum Service Bus-Messaging finden Sie in folgenden Themen:
 * [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md)
 * [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 * [Verwenden von Service Bus-Themen und -Abonnements](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+
+In Szenarien, in denen der Clientcode eine Nachricht mit der gleichen *MessageId* wie zuvor nicht erneut übermitteln kann, ist es wichtig, Nachrichten zu entwerfen, die sicher erneut verarbeitet werden können. In diesem [Blogbeitrag zu Idempotenz](https://particular.net/blog/what-does-idempotent-mean) werden verschiedene Verfahren für diese Vorgehensweise beschrieben.
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

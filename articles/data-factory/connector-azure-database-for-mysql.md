@@ -1,25 +1,26 @@
 ---
-title: Kopieren von Daten für Azure Database for MySQL mit Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten in und aus Azure Database for MySQL
 description: Es wird beschrieben, wie Sie Daten mit einer Kopieraktivität in einer Azure Data Factory-Pipeline für Azure Database for MySQL kopieren.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 08/25/2019
-ms.author: jingwang
-ms.openlocfilehash: c15a60b7329359ee8d3e429159eb178c0c9b4782
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: bbb4aed8ca10fcf7c15e7442ee7067b2e3f8087d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018765"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81410705"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Kopieren von Daten für Azure Database for MySQL mit Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Azure Database for MySQL zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -49,14 +50,14 @@ Folgende Eigenschaften werden für den verknüpften Azure Database for MySQL-Die
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureMySql** | Ja |
-| connectionString | Geben Sie Informationen an, die zum Herstellen einer Verbindung mit der Azure Database for MySQL-Instanz erforderlich sind. <br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch das Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| connectionString | Geben Sie Informationen an, die zum Herstellen einer Verbindung mit der Azure Database for MySQL-Instanz erforderlich sind. <br/> Sie können auch das Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 Eine typische Verbindungszeichenfolge ist `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Weitere Eigenschaften, die Sie für Ihren Fall festlegen können:
 
-| Eigenschaft | BESCHREIBUNG | Optionen | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Tastatur | Erforderlich |
 |:--- |:--- |:--- |:--- |
-| SSLMode | Diese Option gibt an, ob der Treiber beim Herstellen der Verbindung mit MySQL SSL-Verschlüsselung und Überprüfung verwendet. Beispiel: `SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(Standard)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nein |
+| SSLMode | Diese Option gibt an, ob der Treiber beim Herstellen der Verbindung mit MySQL die TLS-Verschlüsselung und -Überprüfung verwendet. Beispiel: `SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(Standard)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nein |
 | UseSystemTrustStore | Diese Option gibt an, ob ein Zertifizierungsstellenzertifikat aus dem Vertrauensspeicher des Systems oder aus einer angegebenen PEM-Datei verwendet werden soll. Beispiel: `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(Standard)** | Nein |
 
 **Beispiel:**
@@ -67,10 +68,7 @@ Eine typische Verbindungszeichenfolge ist `Server=<server>.mysql.database.azure.
     "properties": {
         "type": "AzureMySql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
-            }
+            "connectionString": "Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -88,10 +86,7 @@ Eine typische Verbindungszeichenfolge ist `Server=<server>.mysql.database.azure.
     "properties": {
         "type": "AzureMySql",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;"
-            },
+            "connectionString": "Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -149,7 +144,7 @@ Beim Kopieren von Daten aus Azure Database for MySQL werden die folgenden Eigens
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureMySqlSource** | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 | queryCommandTimeout | Die Wartezeit vor dem Timeout der Abfrageanforderung. Die Standardeinstellung ist 120 Minuten (02:00:00). | Nein |
 
 **Beispiel:**

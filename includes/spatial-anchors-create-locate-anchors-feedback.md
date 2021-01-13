@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: 685d982835042aa4a697d19a650e8dcb1476b400
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7b9954930c668e338cc289e948a5591c09ec2654
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177789"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "76694493"
 ---
 ## <a name="provide-feedback-to-the-user"></a>Bereitstellen von Feedback für Benutzer
 
 Sie können Code schreiben, um das aktualisierte Sitzungsereignis zu verarbeiten. Dieses Ereignis wird jedes Mal ausgelöst, wenn die Sitzung ihr Verständnis für Ihre Umgebung verbessert. Auf diese Weise können Sie Folgendes erreichen:
 
-- Die Benutzer erhalten Feedback, wenn sie ihre Geräte bewegen, und die Sitzung aktualisiert ihre Informationen zur Umgebung.
-- Legen Sie fest, an welchem Punkt genügend räumliche Daten erfasst wurden, um Raumanker zu erstellen oder zu lokalisieren. In einem späteren Schritt erfahren Sie mehr zu diesem Thema.
+- Verwenden Sie die Klasse `UserFeedback`, um Feedback für Benutzer bereitzustellen, wenn sich das Gerät bewegt und die Sitzung die Informationen zur Umgebung aktualisiert. Gehen Sie dazu folgendermaßen vor:
+- Bestimmen Sie, an welchem Punkt genügend räumliche Daten erfasst wurden, um Raumanker zu erstellen. Verwenden Sie hierzu `ReadyForCreateProgress` oder `RecommendedForCreateProgress`. Sobald `ReadyForCreateProgress` größer 1 ist, liegen genügend Daten zum Speichern eines cloudbasierten Raumankers vor. Es empfiehlt sich jedoch, damit zu warten, bis `RecommendedForCreateProgress` größer 1 ist.

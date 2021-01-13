@@ -1,32 +1,34 @@
 ---
-title: Kopieren von Daten in Blob Storage mithilfe von Azure Data Factory | Microsoft-Dokumentation
-description: Erstellen Sie eine Azure Data Factory-Instanz, um Daten von einem Speicherort in einem Azure Blob-Speicher an einen anderen Speicherort zu kopieren.
+title: Kopieren von Daten in Blob Storage mithilfe von Azure Data Factory
+description: Erstellen Sie eine Azure Data Factory-Instanz mithilfe von PowerShell, um Daten von einem Speicherort in Azure Blob Storage an einen anderen Speicherort zu kopieren.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: d4376632b8f912cd76f3af5e9a8819b75f8144b6
-ms.sourcegitcommit: dcea3c1ab715a79ebecd913885fbf9bbee61606a
+ms.openlocfilehash: a7fcb4be47e0e1e62c190a9b089243a178df8e7a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70209487"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013354"
 ---
-# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Schnellstart: Erstellen einer Azure Data Factory mithilfe von PowerShell
+# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Schnellstart: Erstellen einer Azure Data Factory-Instanz mithilfe von PowerShell
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuelle Version](quickstart-create-data-factory-powershell.md)
 
-Diese Schnellstartanleitung beschreibt, wie Sie PowerShell verwenden, um eine Azure Data Factory zu erstellen. Die in dieser Data Factory erstellte Pipeline **kopiert** Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Ein Tutorial zum **Transformieren** von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Daten mit Spark transformieren](transform-data-using-spark.md).
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+Diese Schnellstartanleitung beschreibt, wie Sie mithilfe von PowerShell eine Azure Data Factory-Instanz erstellen. Die in dieser Data Factory erstellte Pipeline **kopiert** Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Ein Tutorial zum **Transformieren** von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Daten mit Spark transformieren](transform-data-using-spark.md).
 
 > [!NOTE]
 > Dieser Artikel enthält keine ausführliche Einführung in den Data Factory-Dienst. Eine Einführung in den Azure Data Factory-Dienst finden Sie unter [Einführung in Azure Data Factory](introduction.md).
@@ -63,7 +65,7 @@ Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisunge
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
-1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehlstext nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) in doppelten Anführungszeichen an, und führen Sie dann den Befehl aus. Beispiel: `"ADFQuickStartRG"`.
+1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehlstext nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) in doppelten Anführungszeichen an, und führen Sie dann den Befehl aus. Beispiel: `"ADFQuickStartRG"`.
 
      ```powershell
     $resourceGroupName = "ADFQuickStartRG";
@@ -111,6 +113,10 @@ Beachten Sie folgende Punkte:
 ## <a name="create-a-linked-service"></a>Erstellen eines verknüpften Diensts
 
 Erstellen Sie verknüpfte Dienste in einer Data Factory, um Ihre Datenspeicher und Computedienste mit der Data Factory zu verknüpfen. In dieser Schnellstartanleitung erstellen Sie einen mit Azure Storage verknüpften Dienst, der sowohl als Quellspeicher als auch als Senkenspeicher verwendet wird. Der verknüpfte Dienste enthält die Verbindungsinformationen, die der Data Factory-Dienst zur Laufzeit zur Verbindungsherstellung verwendet.
+
+>[!TIP]
+>In dieser Schnellstartanleitung verwenden Sie *Kontoschlüssel* als Authentifizierungstyp für Ihren Datenspeicher, können bei Bedarf aber auch andere unterstützte Authentifizierungsmethoden (*SAS-URI*, *Dienstprinzipal* und *Verwaltete Identität*) auswählen. Ausführlichere Informationen finden Sie in den entsprechenden Abschnitten [dieses Artikels](./connector-azure-blob-storage.md#linked-service-properties).
+>Zum sicheren Speichern von Geheimnissen für Datenspeicher empfiehlt sich darüber hinaus die Verwendung einer Azure Key Vault-Instanz. Eine ausführliche Erläuterung finden Sie in [diesem Artikel](./store-credentials-in-key-vault.md).
 
 1. Erstellen Sie im Ordner **C:\ADFv2QuickStartPSH** eine JSON-Datei mit dem Namen **AzureStorageLinkedService.jso** und dem unten angegebenen Inhalt: (Erstellen Sie den Ordner „ADFv2QuickStartPSH“, falls er nicht bereits vorhanden ist.)
 
@@ -316,12 +322,12 @@ In diesem Schritt erstellen Sie eine Pipelineausführung.
 
 Führen Sie das Cmdlet **Invoke-AzDataFactoryV2Pipeline** aus, um eine Pipelineausführung zu erstellen. Das Cmdlet gibt die ID der Pipelineausführung für die zukünftige Überwachung zurück.
 
-    ```powershell
-    $RunId = Invoke-AzDataFactoryV2Pipeline `
-        -DataFactoryName $DataFactory.DataFactoryName `
-        -ResourceGroupName $ResGrp.ResourceGroupName `
-        -PipelineName $DFPipeLine.Name 
-    ```
+  ```powershell
+$RunId = Invoke-AzDataFactoryV2Pipeline `
+    -DataFactoryName $DataFactory.DataFactoryName `
+    -ResourceGroupName $ResGrp.ResourceGroupName `
+    -PipelineName $DFPipeLine.Name 
+```
 
 ## <a name="monitor-the-pipeline-run"></a>Überwachen der Pipelineausführung
 

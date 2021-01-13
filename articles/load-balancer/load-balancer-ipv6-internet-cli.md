@@ -1,28 +1,30 @@
 ---
 title: Erstellen eines öffentlichen Lastenausgleichs mit IPv6 – Azure-Befehlszeilenschnittstelle
-titlesuffix: Azure Load Balancer
-description: Erfahren Sie, wie Sie einen öffentlichen Lastenausgleich mit IPv6 mithilfe der Azure-Befehlszeilenschnittstelle erstellen.
+titleSuffix: Azure Load Balancer
+description: Mit diesem Lernpfad beginnen Sie mit dem Erstellen eines öffentlichen Lastenausgleichs mit IPv6 mithilfe der Azure CLI.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 keywords: IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv6, mobil, IoT
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
-ms.custom: seodec18
+ms.topic: how-to
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 0ee85a92753845e0e67fff22da894a048acb1b14
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 75226f92995794221635ced7ee0e285ac824b6e2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274954"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696862"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Erstellen eines öffentlichen Lastenausgleichs mit IPv6 mithilfe der Azure-Befehlszeilenschnittstelle
 
+>[!NOTE] 
+>In diesem Artikel wird eine Einführungsfunktion von IPv6 beschrieben, mit der Lastenausgleichsmodule im Basic-Tarif sowohl IPv4- als auch IPv6-Konnektivität bereitstellen können. Umfassende IPv6-Konnektivität ist jetzt mit [IPv6 für Azure VNETs](../virtual-network/ipv6-overview.md) verfügbar, das IPv6-Konnektivität in Ihre virtuellen Netzwerke integriert und wichtige Funktionen wie Regeln für IPv6-Netzwerksicherheitsgruppen, benutzerdefiniertes IPv6-Routing, IPv6-Lastenausgleich in den Tarifen Standard und Basic und mehr umfasst.  IPv6 für Azure VNETs ist der empfohlene Standard für IPv6-Anwendungen in Azure. Weitere Informationen finden Sie unter [IPv6 für Azure VNET-PowerShell-Bereitstellung](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md). 
 
 Ein Azure Load Balancer ist ein Layer-4-Load Balancer (TCP, UDP). Lastenausgleichsmodule sorgen für Hochverfügbarkeit, indem sie eingehenden Datenverkehr zwischen funktionierenden Dienstinstanzen in Clouddiensten oder auf virtuelle Computer in einer Lastenausgleichsgruppe verteilen. Lastenausgleichsmodule können diese Dienste auch auf mehreren Ports, mehreren IP-Adressen oder beidem leisten.
 
@@ -46,17 +48,17 @@ Die folgenden Schritte zeigen, wie Sie einen öffentlichen Lastenausgleich mithi
 
 Erstellen und konfigurieren Sie die folgenden Objekte, um einen Lastenausgleich bereitzustellen:
 
-* **Front-End-IP-Konfiguration:** Enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr.
-* **Back-End-Adresspool:** Enthält Netzwerkschnittstellen (NICs), die virtuellen Computern den Empfang von Netzwerkdatenverkehr des Lastenausgleichs ermöglichen.
-* **Lastenausgleichsregeln:** Enthält Regeln, mit denen ein öffentlicher Port auf dem Load Balancer einem Port im Back-End-Adresspool zugeordnet wird.
-* **NAT-Eingangsregeln:** Enthält Netzwerkadressenübersetzungs-Regeln (Network Address Translation, NAT), die einen öffentlichen Port des Lastenausgleichs einem Port für einen bestimmten virtuellen Computer im Back-End-Adresspool zuordnen.
-* **Tests:** Enthält Integritätstests zum Prüfen der Verfügbarkeit von VM-Instanzen im Back-End-Adresspool.
+* **Front-End-IP-Konfiguration**: Enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr.
+* **Back-End-Adresspool**: Enthält Netzwerkschnittstellen (NICs), die virtuellen Computern den Empfang von Netzwerkdatenverkehr des Lastenausgleichs ermöglichen.
+* **Lastenausgleichsregeln**: Enthält Regeln, die einen öffentlichen Port des Lastenausgleichs einem Port im Back-End-Adresspool zuordnen.
+* **NAT-Eingangsregeln**: Enthält Netzwerkadressübersetzungs-Regeln (Network Address Translation, NAT), die einen öffentlichen Port des Lastenausgleichs einem Port für einen bestimmten virtuellen Computer im Back-End-Adresspool zuordnen.
+* **Tests**: Enthält Integritätstests zum Prüfen der Verfügbarkeit von VM-Instanzen im Back-End-Adresspool.
 
 ## <a name="set-up-azure-cli"></a>Einrichten der Azure-Befehlszeilenschnittstelle
 
 In diesem Beispiel führen Sie die Azure CLI-Tools in einem PowerShell-Befehlsfenster aus. Sie verwenden nicht die Azure PowerShell-Cmdlets, sondern die PowerShell-Skriptfunktionen, um Lesbarkeit und Wiederverwendung zu verbessern.
 
-1. [Installieren und konfigurieren Sie die Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) anhand der Schritte im verlinkten Artikel, und melden Sie sich dann bei Ihrem Azure-Konto an.
+1. [Installieren und konfigurieren Sie die Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) anhand der Schritte im verlinkten Artikel, und melden Sie sich dann bei Ihrem Azure-Konto an.
 
 2. Richten Sie PowerShell-Variablen für die Verwendung mit den Azure CLI-Befehlen ein:
 
@@ -197,43 +199,45 @@ In diesem Beispiel werden die folgenden Elemente erstellt:
 
     Erwartete Ausgabe:
 
-        info:    Executing command network lb show
-        info:    Looking up the load balancer "myIPv4IPv6Lb"
-        data:    Id                              : /subscriptions/########-####-####-####-############/resourceGroups/pscontosorg1southctrlus09152016/providers/Microsoft.Network/loadBalancers/myIPv4IPv6Lb
-        data:    Name                            : myIPv4IPv6Lb
-        data:    Type                            : Microsoft.Network/loadBalancers
-        data:    Location                        : southcentralus
-        data:    Provisioning state              : Succeeded
-        data:
-        data:    Frontend IP configurations:
-        data:    Name             Provisioning state  Private IP allocation  Private IP   Subnet  Public IP
-        data:    ---------------  ------------------  ---------------------  -----------  ------  ---------
-        data:    FrontendVipIPv4  Succeeded           Dynamic                                     myIPv4Vip
-        data:    FrontendVipIPv6  Succeeded           Dynamic                                     myIPv6Vip
-        data:
-        data:    Probes:
-        data:    Name                 Provisioning state  Protocol  Port  Path  Interval  Count
-        data:    -------------------  ------------------  --------  ----  ----  --------  -----
-        data:    ProbeForIPv4AndIPv6  Succeeded           Tcp       80          15        2
-        data:
-        data:    Backend Address Pools:
-        data:    Name             Provisioning state
-        data:    ---------------  ------------------
-        data:    BackendPoolIPv4  Succeeded
-        data:    BackendPoolIPv6  Succeeded
-        data:
-        data:    Load Balancing Rules:
-        data:    Name                  Provisioning state  Load distribution  Protocol  Frontend port  Backend port  Enable floating IP  Idle timeout in minutes
-        data:    --------------------  ------------------  -----------------  --------  -------------  ------------  ------------------  -----------------------
-        data:    LBRuleForIPv4-Port80  Succeeded           Default            Tcp       80             80            false               4
-        data:    LBRuleForIPv6-Port80  Succeeded           Default            Tcp       80             8080          false               4
-        data:
-        data:    Inbound NAT Rules:
-        data:    Name                 Provisioning state  Protocol  Frontend port  Backend port  Enable floating IP  Idle timeout in minutes
-        data:    -------------------  ------------------  --------  -------------  ------------  ------------------  -----------------------
-        data:    NatRule-For-Rdp-VM1  Succeeded           Tcp       3389           3389          false               4
-        data:    NatRule-For-Rdp-VM2  Succeeded           Tcp       3391           3389          false               4
-        info:    network lb show
+    ```output
+    info:    Executing command network lb show
+    info:    Looking up the load balancer "myIPv4IPv6Lb"
+    data:    Id                              : /subscriptions/########-####-####-####-############/resourceGroups/pscontosorg1southctrlus09152016/providers/Microsoft.Network/loadBalancers/myIPv4IPv6Lb
+    data:    Name                            : myIPv4IPv6Lb
+    data:    Type                            : Microsoft.Network/loadBalancers
+    data:    Location                        : southcentralus
+    data:    Provisioning state              : Succeeded
+    data:
+    data:    Frontend IP configurations:
+    data:    Name             Provisioning state  Private IP allocation  Private IP   Subnet  Public IP
+    data:    ---------------  ------------------  ---------------------  -----------  ------  ---------
+    data:    FrontendVipIPv4  Succeeded           Dynamic                                     myIPv4Vip
+    data:    FrontendVipIPv6  Succeeded           Dynamic                                     myIPv6Vip
+    data:
+    data:    Probes:
+    data:    Name                 Provisioning state  Protocol  Port  Path  Interval  Count
+    data:    -------------------  ------------------  --------  ----  ----  --------  -----
+    data:    ProbeForIPv4AndIPv6  Succeeded           Tcp       80          15        2
+    data:
+    data:    Backend Address Pools:
+    data:    Name             Provisioning state
+    data:    ---------------  ------------------
+    data:    BackendPoolIPv4  Succeeded
+    data:    BackendPoolIPv6  Succeeded
+    data:
+    data:    Load Balancing Rules:
+    data:    Name                  Provisioning state  Load distribution  Protocol  Frontend port  Backend port  Enable floating IP  Idle timeout in minutes
+    data:    --------------------  ------------------  -----------------  --------  -------------  ------------  ------------------  -----------------------
+    data:    LBRuleForIPv4-Port80  Succeeded           Default            Tcp       80             80            false               4
+    data:    LBRuleForIPv6-Port80  Succeeded           Default            Tcp       80             8080          false               4
+    data:
+    data:    Inbound NAT Rules:
+    data:    Name                 Provisioning state  Protocol  Frontend port  Backend port  Enable floating IP  Idle timeout in minutes
+    data:    -------------------  ------------------  --------  -------------  ------------  ------------------  -----------------------
+    data:    NatRule-For-Rdp-VM1  Succeeded           Tcp       3389           3389          false               4
+    data:    NatRule-For-Rdp-VM2  Succeeded           Tcp       3391           3389          false               4
+    info:    network lb show
+    ```
 
 ## <a name="create-nics"></a>Erstellen von NICs
 
@@ -264,7 +268,7 @@ Erstellen Sie NICs, und ordnen Sie diese NAT-Regeln, Lastenausgleichsregeln und 
 
 ## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>Erstellen der Back-End-VM-Ressourcen und Anfügen der NICs
 
-Um VMs zu erstellen, benötigen Sie ein Speicherkonto. Für den Lastenausgleich müssen die VMs zu einer Verfügbarkeitsgruppe gehören. Weitere Informationen zum Erstellen von VMs finden Sie unter [Erstellen eines virtuellen Windows-Computers mit PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+Um VMs zu erstellen, benötigen Sie ein Speicherkonto. Für den Lastenausgleich müssen die VMs zu einer Verfügbarkeitsgruppe gehören. Weitere Informationen zum Erstellen von VMs finden Sie unter [Erstellen eines virtuellen Windows-Computers mit PowerShell](../virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fload-balancer%2ftoc.json).
 
 1. Richten Sie die PowerShell-Variablen ein:
 
@@ -280,7 +284,7 @@ Um VMs zu erstellen, benötigen Sie ein Speicherkonto. Für den Lastenausgleich 
     ```
 
     > [!WARNING]
-    > Dieses Beispiel verwendet den Benutzernamen und das Kennwort für die virtuellen Computer in Klartext. Bei Anmeldeinformationen in Klartext müssen Sie entsprechend vorsichtig vorgehen. Eine sicherere Methode zur Handhabung der Anmeldeinformationen in PowerShell finden Sie in den Informationen zum Cmdlet [`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx).
+    > Dieses Beispiel verwendet den Benutzernamen und das Kennwort für die virtuellen Computer in Klartext. Bei Anmeldeinformationen in Klartext müssen Sie entsprechend vorsichtig vorgehen. Eine sicherere Methode zur Handhabung der Anmeldeinformationen in PowerShell finden Sie in den Informationen zum Cmdlet [`Get-Credential`](/powershell/module/microsoft.powershell.security/get-credential).
 
 2. Erstellen Sie die Verfügbarkeitsgruppe:
 
@@ -295,9 +299,3 @@ Um VMs zu erstellen, benötigen Sie ein Speicherkonto. Für den Lastenausgleich 
 
     az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
-
-## <a name="next-steps"></a>Nächste Schritte
-
-[Erste Schritte zum Konfigurieren des internen Lastenausgleichs](load-balancer-get-started-ilb-arm-cli.md)  
-[Konfigurieren eines Lastenausgleichs-Verteilungsmodus](load-balancer-distribution-mode.md)  
-[Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)

@@ -1,6 +1,6 @@
 ---
-title: Lizenzierung des Microsoft® Smooth Streaming Client Porting Kit
-description: Weitere Informationen zur Lizenzierung des Microsoft® Smooth Streaming Client Porting Kit
+title: Lizenzieren des Portierungskits für den Microsoft&reg; Smooth Streaming-Client
+description: Weitere Informationen zur Lizenzierung des Microsoft&reg; Smooth Streaming Client Porting Kit
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 505def9cde7cddf2ddcc23408fa3159de886167a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c82fb9764b29119092bf313b2c10f00c983e8c03
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472691"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710769"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Lizenzierung des Microsoft® Smooth Streaming Client Porting Kit 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Lizenzieren des Portierungskits für den Microsoft&reg; Smooth Streaming-Client
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+ 
 ## <a name="overview"></a>Übersicht
 Microsoft Smooth Streaming Client Porting Kit (**SSPK**) ist eine Smooth Streaming Client-Implementierung, die Herstellern eingebetteter Geräte, Kabel- und Mobilnetzbetreibern, Inhaltsdienstanbietern, Mobilgeräteherstellern, unabhängigen Softwareanbietern (ISV) und Lösungsanbietern beim Anbieten von Produkten und Dienstleistungen zum Streamen adaptiver Inhalte im Smooth Streaming-Format helfen soll. SSPK ist eine geräte- und plattformunabhängige Implementierung von Smooth Streaming Client, die vom Lizenznehmer auf jedes Gerät und jede Plattform portiert werden kann. 
 
@@ -73,11 +76,12 @@ Finale Smooth Streaming Client-Produkte werden mit dem folgenden Lizenzmodell an
 ## <a name="licensing-procedure-and-sspk-access"></a>Lizenzierungsverfahren und SSPK-Zugriff
 Wenden Sie sich bei Fragen zur Lizenzierung per E-Mail an [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com).
 
-Registrierte Interimslizenznehmer können auf das [SSPK-Verteilungsportal](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) zugreifen.
+Registrierte Interimslizenznehmer können auf das SSPK-Verteilungsportal zugreifen.
 
 Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen Fragen an [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com).
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Lizenznehmer der Microsoft Smooth Streaming Client Interim Product Agreement
+
 * Adroit Business Solutions, Inc.
 * Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
@@ -90,10 +94,10 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 * EchoStar Purchasing Corporation
 * Enseo, Inc.
 * Fluendo S.A.
+* Guangzhou Shikun Electronics., Ltd.
 * HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
-* iWEDIA S.A. 
 * Liberty Global Services BV
 * MediaTek Inc.
 * MStar Co, Ltd
@@ -104,7 +108,6 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 * SoftAtHome
 * Sony Corporation
 * Tatung Technology Inc.
-* TCL Technology Electronics (Huizhou) Co., Ltd.
 * Top Victory Investments, Ltd.
 * Vestel Elektronik Sanayi ve Ticaret A.S.
 * VisualOn, Inc.
@@ -113,51 +116,43 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Lizenznehmer der Microsoft Smooth Streaming Client Final Product Agreement
 * Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
-* Albis Technologies Ltd.
-* Amazon Digital Services, Inc.
-* AmTRAN Technology Co., Ltd.
+* AmTRAN Technology Co., Ltd 
 * Arcadyan Technology Corporation
-* Arion Technology, Inc.
-* ATMACA ELEKTRONİK SAN. VE TİC. A.Ş
-* British Sky Broadcasting Limited
-* CastPal Technology Inc., Shenzhen
+* Arcelik A.S
 * Compal Electronics, Inc.
-* Dongguan Digital AV Technology Corp., Ltd.
-* EchoStar Purchasing Corporation
-* Enseo, Inc.
-* FilmFlex Movies Limited
+* EXPRESS LUCK TECHNOLOGY LIMITED
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
-* Gibson Innovations Limited
-* Haier Information Application S.R.L
-* HANDAN BroadInfoCom Co., Ltd.
 * Hisense International Co., Ltd. 
-* Homecast Co., Ltd
-* Hon Hai Precision Industry Co., Ltd.
-* Infomir GMBH
+* HKC Corporation Limited
+* Hong Kong Konka Ltd
+* Innolux Corporation
+* Innopia Technologies, Inc
+* K-Tronics (Suzhou) Technology Co., Ltd. 
 * Kaonmedia Co., Ltd.
 * KDDI Corporation
+* Mega Fame Electronics Co. Limited
+* MIRC Electronics Limited
 * Nintendo Co., Ltd.
-* Orange SA
-* Saffron Digital Limited
-* Sagemcom Broadband SAS
-* Shenzhen Coship Electronics CO., LTD
+* ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
+* Panasonic Corporation
+* Qingdao Haier Optronics Co., Ltd.
+* Shenzhen ATEKO PHOTO Electricity Co.,Ltd.
+* Shenzhen Chuangwei-RGB Electronics Co.,Ltd.
 * Shenzhen Jiuzhou Electric Co., Ltd
+* Shenzhen KTC Technology Co., Ltd. 
+* Shenzhen Maxmade Technology Co., Ltd
+* Shenzhen MTC Co., Ltd
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Sichuan Changhong Electric Co., Ltd.
 * Skardin Industrial Corp.
 * Sky Deutschland Fernsehen GmbH & Co. KG
-* SmarDTV S.A.
+* SMARDTV GLOBAL SAS
 * SoftAtHome
 * Sony Corporation
-* TCL Overseas Marketing (Macao Commercial Offshore) Limited
 * Technicolor Delivery Technologies, SAS
-* Tongfang Global Ltd.
 * Top Victory Investments, Ltd.
-* Toshiba Lifestyle Products & Services Corporation
-* Universal Media Corporation /Slowakische Republik/ s.r.o.
-* VIZIO, Inc.
-* Wistron Corporation
+* UMC Poland sp. z.o.o.
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade

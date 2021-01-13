@@ -1,25 +1,25 @@
 ---
-title: 'Verwenden der Video Indexer-APIs zum Anpassen eines Sprachmodells: Azure'
+title: Anpassen eines Sprachmodells mit der Video Indexer-API
 titlesuffix: Azure Media Services
-description: In diesem Artikel wird gezeigt, wie ein Sprachmodell mit den Video Indexer-APIs angepasst werden kann.
+description: Erfahren Sie, wie Sie ein Sprachmodell mit der Video Indexer-API anpassen können.
 services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
-ms.author: anzaman
-ms.openlocfilehash: 4ef5354a94ae707df8dd1f2767efe04dfbacd7ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/04/2020
+ms.author: kumud
+ms.openlocfilehash: f373afae03357ffb65eb459f806fe441e29b21b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799589"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87047088"
 ---
-# <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Anpassen eines Sprachmodells mit den Video Indexer-APIs
+# <a name="customize-a-language-model-with-the-video-indexer-api"></a>Anpassen eines Sprachmodells mit der Video Indexer-API
 
-Mit Video Indexer können Sie benutzerdefinierte Sprachmodelle erstellen, um die Spracherkennung durch Hochladen von Anpassungstexten anzupassen, insbesondere von Texten aus dem Bereich, an dessen Vokabular sich die Engine anpassen soll. Sobald Sie Ihr Modell trainiert haben, werden neue Wörter, die im Anpassungstext vorkommen, erkannt. 
+Mit Video Indexer können Sie benutzerdefinierte Sprachmodelle erstellen, um die Spracherkennung durch Hochladen von Anpassungstexten anzupassen, insbesondere von Texten aus dem Bereich, an dessen Vokabular sich die Engine anpassen soll. Sobald Sie Ihr Modell trainiert haben, werden neue Wörter, die im Anpassungstext vorkommen, erkannt.
 
 Eine detaillierte Übersicht und bewährte Methoden für benutzerdefinierte Sprachmodelle finden Sie unter [Anpassen eines Sprachmodells mit Video Indexer](customize-language-model-overview.md).
 
@@ -27,49 +27,19 @@ Sie können die Video Indexer-APIs verwenden, um benutzerdefinierte Sprachmodell
 
 ## <a name="create-a-language-model"></a>Erstellen eines Sprachmodells
 
-Der folgende Befehl erstellt ein neues benutzerdefiniertes Sprachmodell im angegebenen Konto. Sie können Dateien für das Sprachmodell in diesem Aufruf hochladen. Alternativ können Sie das Sprachmodell hier erstellen und Dateien für das Modell später durch Aktualisieren des Sprachmodells hochladen.
+Die API zum [Erstellen eines Sprachmodells](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?) erstellt ein neues benutzerdefiniertes Sprachmodell im angegebenen Konto. Sie können Dateien für das Sprachmodell in diesem Aufruf hochladen. Alternativ können Sie das Sprachmodell hier erstellen und Dateien für das Modell später durch Aktualisieren des Sprachmodells hochladen.
 
 > [!NOTE]
 > Sie müssen das Modell mit seinen aktivierten Dateien weiterhin trainieren, damit das Modell den Inhalt seiner Dateien erlernen kann. Anleitungen zum Trainieren einer Sprache finden Sie im nächsten Abschnitt.
 
-### <a name="request-url"></a>Anfrage-URL
+Um Dateien hochzuladen, die dem Sprachmodell hinzugefügt werden sollen, müssen Sie Dateien im Textkörper mithilfe von FormData hochladen und zusätzlich Werte für die oben genannten erforderlichen Parameter angeben. Hierfür gibt es zwei Möglichkeiten:
 
-Dies ist eine POST-Anforderung.
+* Der Schlüssel ist der Dateiname und der Wert die TXT-Datei.
+* Der Schlüssel ist der Dateiname und der Wert eine URL zur TXT-Datei.
 
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}
-```
+### <a name="response"></a>Antwort
 
-Unten sehen Sie die Anforderung in Curl.
-
-```curl
-curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}&modelName={modelName}&language={language}"
-
---data-ascii "{body}" 
-```
-
-[Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?).
-
-### <a name="request-parameters"></a>Anforderungsparameter
-
-|**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
-|---|---|---|---|
-|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
-|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
-|modelName|Zeichenfolge|Ja|Der Name für das Sprachmodell.|
-|language|Zeichenfolge|Ja|Die Sprache des Sprachmodells. <br/>Der Parameter **language** muss mit der Sprache im BCP-47-Format als „language tag-region“ (z.B. „en-US“) angegeben werden. Unterstützte Sprachen sind Englisch (en-US), Deutsch (de-DE), Spanisch (es-SP), Arabisch (ar-EG), Französisch (fr-FR), Hindi (hi-HI), Italienisch (it-IT), Japanisch (ja-JP), Portugiesisch (pt-BR), Russisch (ru-RU) und Chinesisch (zh-CN).  |
-
-### <a name="request-body"></a>Anforderungstext
-
-Um Dateien hochzuladen, die dem Sprachmodell hinzugefügt werden sollen, müssen Sie Dateien im Textkörper mithilfe von Formulardaten hochladen und zusätzlich Werte für die oben genannten erforderlichen Parameter angeben. Dies kann auf zwei Arten erreicht werden: 
-
-1. Der Schlüssel ist der Dateiname und der Wert die TXT-Datei.
-2. Der Schlüssel ist der Dateiname und der Wert eine URL zur TXT-Datei.
-
-### <a name="response"></a>response
-
-Die Antwort stellt Metadaten zum neu erstellten Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der JSON-Beispielausgabe bereit.
+Die Antwort stellt Metadaten zum neu erstellten Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der JSON-Beispielausgabe bereit:
 
 ```json
 {
@@ -100,43 +70,14 @@ Die Antwort stellt Metadaten zum neu erstellten Sprachmodell zusammen mit Metada
 
 ## <a name="train-a-language-model"></a>Trainieren eines Sprachmodells
 
-Der folgende Befehl trainiert ein benutzerdefiniertes Sprachmodell im angegebenen Konto mit dem Inhalt der Dateien, die in das Sprachmodell hochgeladen und in ihm aktiviert wurden. 
+Die API zum [Trainieren eines Sprachmodells](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) trainiert ein benutzerdefiniertes Sprachmodell im angegebenen Konto mit dem Inhalt der Dateien, die in das Sprachmodell hochgeladen und in ihm aktiviert wurden.
 
 > [!NOTE]
-> Zunächst müssen Sie das Sprachmodell erstellen und seine Dateien hochladen. Sie können Dateien entweder beim Erstellen des Sprachmodells oder durch Aktualisieren des Sprachmodells hochladen. 
+> Zunächst müssen Sie das Sprachmodell erstellen und seine Dateien hochladen. Sie können Dateien beim Erstellen des Sprachmodells oder durch Aktualisieren des Sprachmodells hochladen.
 
-### <a name="request-url"></a>Anfrage-URL
+### <a name="response"></a>Antwort
 
-Dies ist eine PUT-Anforderung.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Train?accessToken={accessToken}
-```
-
-Unten sehen Sie die Anforderung in Curl.
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Train?accessToken={accessToken}"
-```
- 
-[Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train).
-
-### <a name="request-parameters"></a>Anforderungsparameter
-
-|**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
-|---|---|---|---|
-|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|Ja|Die Sprachmodell-ID (wird beim Erstellen des Sprachmodells generiert).|
-|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
-
-### <a name="request-body"></a>Anforderungstext
-
-Es ist kein weiterer Anforderungstext für diesen Aufruf erforderlich.
-
-### <a name="response"></a>response
-
-Die Antwort stellt Metadaten zum neu trainierten Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der JSON-Beispielausgabe bereit.
+Die Antwort stellt Metadaten zum neu trainierten Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der JSON-Beispielausgabe bereit:
 
 ```json
 {
@@ -164,91 +105,31 @@ Die Antwort stellt Metadaten zum neu trainierten Sprachmodell zusammen mit Metad
 }
 ```
 
-Sie sollten dann den Wert **id** des Sprachmodells für den Parameter **linguisticModelId** verwenden, wenn [Sie ein zu indizierendes Video hochladen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?), und für den Parameter **languageModelId**, wenn Sie [ein Video erneut indizieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+Die zurückgegebene `id` ist eine eindeutige ID, die zur Unterscheidung von Sprachmodellen genutzt wird. `languageModelId` wird dagegen sowohl für APIs zum [Hochladen eines Videos in den Index](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) als auch [zum erneuten Indizieren eines Videos](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (in Video Indexer-APIs für Upload bzw. Neuindizierung auch als `linguisticModelId` bezeichnet) verwendet.
 
 ## <a name="delete-a-language-model"></a>Löschen eines Sprachmodells
 
-Der folgende Befehl löscht ein benutzerdefiniertes Sprachmodell aus dem angegebenen Konto. Jedes Video, das das gelöschte Sprachmodell verwendet hat, behält den gleichen Index bei, bis Sie das Video erneut indizieren. Wenn Sie das Video erneut indizieren, können Sie dem Video ein neues Sprachmodell zuweisen. Andernfalls verwendet Video Indexer das Standardmodell, um das Video erneut zu indizieren.
+Die API zum [Löschen eines Sprachmodells](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) löscht ein benutzerdefiniertes Sprachmodell aus dem angegebenen Konto. Jedes Video, das das gelöschte Sprachmodell verwendet hat, behält den gleichen Index bei, bis Sie das Video erneut indizieren. Wenn Sie das Video erneut indizieren, können Sie dem Video ein neues Sprachmodell zuweisen. Andernfalls verwendet Video Indexer das Standardmodell, um das Video erneut zu indizieren.
 
-### <a name="request-url"></a>Anfrage-URL
-
-Dies ist eine DELETE-Anforderung.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}
-```
-
-Unten sehen Sie die Anforderung in Curl.
-
-```curl
-curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}"
-```
- 
-[Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete).
-
-### <a name="request-parameters"></a>Anforderungsparameter 
-
-|**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
-|---|---|---|---|
-|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|Ja|Die Sprachmodell-ID (wird beim Erstellen des Sprachmodells generiert).|
-|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
-
-### <a name="request-body"></a>Anforderungstext
-
-Es ist kein weiterer Anforderungstext für diesen Aufruf erforderlich.
-
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Es wird kein Inhalt zurückgegeben, wenn das Sprachmodell erfolgreich gelöscht wurde.
 
 ## <a name="update-a-language-model"></a>Aktualisieren eines Sprachmodells
 
-Der folgende Befehl aktualisiert ein benutzerdefiniertes Sprachmodell im angegebenen Konto.
+Die API zum [Aktualisieren eines Sprachmodells](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update) aktualisiert ein benutzerdefiniertes Sprachmodell im angegebenen Konto.
 
 > [!NOTE]
 > Sie müssen das Sprachmodell bereits erstellt haben. Mit diesem Aufruf können Sie alle Dateien im Modell aktivieren oder deaktivieren, den Namen des Sprachmodells aktualisieren und Dateien hochladen, die dem Sprachmodell hinzugefügt werden sollen.
 
-### <a name="request-url"></a>Anfrage-URL
+Um Dateien hochzuladen, die dem Sprachmodell hinzugefügt werden sollen, müssen Sie Dateien im Textkörper mithilfe von FormData hochladen und zusätzlich Werte für die oben genannten erforderlichen Parameter angeben. Hierfür gibt es zwei Möglichkeiten:
 
-Dies ist eine PUT-Anforderung.
+* Der Schlüssel ist der Dateiname und der Wert die TXT-Datei.
+* Der Schlüssel ist der Dateiname und der Wert eine URL zur TXT-Datei.
 
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}[&modelName][&enable]
-```
+### <a name="response"></a>Antwort
 
-Unten sehen Sie die Anforderung in Curl.
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}?modelName={string}&enable={string}"
-
---data-ascii "{body}" 
-```
- 
-[Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update).
-
-### <a name="request-parameters"></a>Anforderungsparameter 
-
-|**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
-|---|---|---|---|
-|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|Ja|Die Sprachmodell-ID (wird beim Erstellen des Sprachmodells generiert).|
-|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
-|modelName|Zeichenfolge|Nein|Der neue Name, den Sie dem Modell geben können.|
-|enable|boolean|Nein|Wählen Sie aus, ob alle Dateien in diesem Modell aktiviert (TRUE) oder deaktiviert (FALSE) sind.|
-
-### <a name="request-body"></a>Anforderungstext
-
-Um Dateien hochzuladen, die dem Sprachmodell hinzugefügt werden sollen, müssen Sie Dateien im Textkörper mithilfe von Formulardaten hochladen und zusätzlich Werte für die oben genannten erforderlichen Parameter angeben. Dies kann auf zwei Arten erreicht werden: 
-
-1. Der Schlüssel ist der Dateiname und der Wert die TXT-Datei.
-2. Der Schlüssel ist der Dateiname und der Wert eine URL zur TXT-Datei.
-
-### <a name="response"></a>response
-
-Die Antwort stellt Metadaten zum neu trainierten Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der JSON-Beispielausgabe bereit.
+Die Antwort stellt Metadaten zum neu trainierten Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der JSON-Beispielausgabe bereit:
 
 ```json
 {
@@ -275,45 +156,14 @@ Die Antwort stellt Metadaten zum neu trainierten Sprachmodell zusammen mit Metad
     ]
 }
 ```
-Sie können die **id** der Dateien verwenden, die hier zurückgegeben wird, um den Inhalt der Datei herunterzuladen.
+
+Verwenden Sie die `id` der in der Antwort zurückgegebenen Dateien, um den Inhalt der Datei herunterzuladen.
 
 ## <a name="update-a-file-from-a-language-model"></a>Aktualisieren einer Datei aus einem Sprachmodell
 
-Der folgende Befehl ermöglicht es Ihnen, den Namen und den Zustand **enable** einer Datei in einem benutzerdefinierten Sprachmodell im angegebenen Konto zu aktualisieren.
+Die API zum [Aktualisieren einer Datei](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) ermöglicht Ihnen, den Namen und den `enable`-Zustand einer Datei in einem benutzerdefinierten Sprachmodell im angegebenen Konto zu aktualisieren.
 
-### <a name="request-url"></a>Anfrage-URL
-
-Dies ist eine PUT-Anforderung.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}[&fileName][&enable]
-```
-
-Unten sehen Sie die Anforderung in Curl.
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}?fileName={string}&enable={string}"
-```
- 
-[Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update).
-
-### <a name="request-parameters"></a>Anforderungsparameter 
-
-|**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
-|---|---|---|---|
-|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|Ja|ID des Sprachmodells, das die Datei enthält (wird generiert, wenn das Sprachmodell erstellt wird).|
-|fileId|Zeichenfolge|Ja|ID der Datei, die aktualisiert wird (wird generiert, wenn die Datei bei der Erstellung oder Aktualisierung des Sprachmodells hochgeladen wird).|
-|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
-|fileName|Zeichenfolge|Nein|Der Name, in den der Dateiname aktualisiert werden soll.|
-|enable|boolean|Nein|Aktualisieren Sie, ob diese Datei im Sprachmodell aktiviert (TRUE) oder deaktiviert (FALSE) ist.|
-
-### <a name="request-body"></a>Anforderungstext
-
-Es ist kein weiterer Anforderungstext für diesen Aufruf erforderlich.
-
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Die Antwort stellt Metadaten im Format der unten gezeigten JSON-Beispielausgabe für die Datei bereit, die Sie aktualisiert haben.
 
@@ -326,43 +176,16 @@ Die Antwort stellt Metadaten im Format der unten gezeigten JSON-Beispielausgabe 
   "creationTime": "2018-04-27T20:10:10.5233333"
 }
 ```
-Sie können die **id** der Datei verwenden, die hier zurückgegeben wird, um den Inhalt der Datei herunterzuladen.
+
+Verwenden Sie die `id` der in der Antwort zurückgegebenen Datei, um den Inhalt der Datei herunterzuladen.
 
 ## <a name="get-a-specific-language-model"></a>Abrufen eines bestimmten Sprachmodells
 
-Der folgende Befehl gibt Informationen zum angegebenen Sprachmodell im angegebenen Konto zurück, z.B. die Sprache und die Dateien, die sich im Sprachmodell befinden. 
+Die API [get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) gibt Informationen zum angegebenen Sprachmodell im angegebenen Konto zurück, z. B. die Sprache und die Dateien, die sich im Sprachmodell befinden.
 
-### <a name="request-url"></a>Anfrage-URL
+### <a name="response"></a>Antwort
 
-Dies ist eine GET-Anforderung.
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}
-```
-
-Unten sehen Sie die Anforderung in Curl.
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}"
-```
- 
-[Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get).
-
-### <a name="request-parameters-and-request-body"></a>Anforderungsparameter und Anforderungstext
-
-|**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
-|---|---|---|---|
-|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|Ja|Die Sprachmodell-ID (wird beim Erstellen des Sprachmodells generiert).|
-|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
-
-### <a name="request-body"></a>Anforderungstext
-
-Es ist kein weiterer Anforderungstext für diesen Aufruf erforderlich.
-
-### <a name="response"></a>response
-
-Die Antwort stellt Metadaten zum angegebenen Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der unten gezeigten JSON-Beispielausgabe bereit.
+Die Antwort stellt Metadaten zum angegebenen Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der gezeigten JSON-Beispielausgabe bereit:
 
 ```json
 {
@@ -390,43 +213,15 @@ Die Antwort stellt Metadaten zum angegebenen Sprachmodell zusammen mit Metadaten
 }
 ```
 
-Sie können die **id** der Datei verwenden, die hier zurückgegeben wird, um den Inhalt der Datei herunterzuladen.
+Verwenden Sie die `id` der in der Antwort zurückgegebenen Datei, um den Inhalt der Datei herunterzuladen.
 
 ## <a name="get-all-the-language-models"></a>Abrufen aller Sprachmodelle
 
-Der folgende Befehl gibt alle benutzerdefinierten Sprachmodelle im angegebenen Konto in einer Liste zurück.
+Die API [get all](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) gibt alle benutzerdefinierten Sprachmodelle im angegebenen Konto in einer Liste zurück.
 
-### <a name="request-url"></a>Anfrage-URL
+### <a name="response"></a>Antwort
 
-Dies ist eine GET-Anforderung.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}
-```
-
-Unten sehen Sie die Anforderung in Curl.
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}"
-```
- 
-[Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get).
-
-### <a name="request-parameters"></a>Anforderungsparameter
-
-|**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
-|---|---|---|---|
-|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
-|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
-
-### <a name="request-body"></a>Anforderungstext
-
-Es ist kein weiterer Anforderungstext für diesen Aufruf erforderlich.
-
-### <a name="response"></a>response
-
-Die Antwort enthält eine Liste mit allen Sprachmodellen in Ihrem Konto und deren Metadaten und Dateien im Format der unten gezeigten JSON-Beispielausgabe.
+Die Antwort enthält eine Liste mit allen Sprachmodellen in Ihrem Konto und deren Metadaten und Dateien im Format der gezeigten JSON-Beispielausgabe:
 
 ```json
 [
@@ -466,75 +261,17 @@ Die Antwort enthält eine Liste mit allen Sprachmodellen in Ihrem Konto und dere
 
 ## <a name="delete-a-file-from-a-language-model"></a>Löschen einer Datei aus einem Sprachmodell
 
-Der folgende Befehl löscht die angegebene Datei aus dem angegebenen Sprachmodell im angegebenen Konto. 
+Die API [delete](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) löscht die angegebene Datei aus dem angegebenen Sprachmodell im angegebenen Konto.
 
-### <a name="request-url"></a>Anfrage-URL
-
-Dies ist eine DELETE-Anforderung.
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}
-```
-
-Unten sehen Sie die Anforderung in Curl.
-
-```curl
-curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}"
-```
- 
-[Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete).
-
-### <a name="request-parameters"></a>Anforderungsparameter 
-
-|**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
-|---|---|---|---|
-|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|Ja|ID des Sprachmodells, das die Datei enthält (wird generiert, wenn das Sprachmodell erstellt wird).|
-|fileId|Zeichenfolge|Ja|ID der Datei, die aktualisiert wird (wird generiert, wenn die Datei bei der Erstellung oder Aktualisierung des Sprachmodells hochgeladen wird).|
-|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
-
-### <a name="request-body"></a>Anforderungstext
-
-Es ist kein weiterer Anforderungstext für diesen Aufruf erforderlich.
-
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Es wird kein Inhalt zurückgegeben, wenn die Datei erfolgreich aus dem Sprachmodell gelöscht wurde.
 
 ## <a name="get-metadata-on-a-file-from-a-language-model"></a>Abrufen von Metadaten für eine Datei aus einem Sprachmodell
 
-Gibt die Inhalte und Metadaten für die angegebene Datei aus dem ausgewählten Sprachmodell in Ihrem Konto zurück.
+Die API zum [Abrufen der Metadaten einer Datei](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) gibt die Inhalte und Metadaten für die angegebene Datei aus dem ausgewählten Sprachmodell in Ihrem Konto zurück.
 
-### <a name="request-url"></a>Anfrage-URL
-
-Dies ist eine GET-Anforderung.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}
-```
-
-Unten sehen Sie die Anforderung in Curl.
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}"
-```
- 
-[Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model).
-
-### <a name="request-parameters"></a>Anforderungsparameter 
-
-|**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
-|---|---|---|---|
-|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|Ja|Die ID des Sprachmodells, das die Datei enthält (wird generiert, wenn das Sprachmodell erstellt wird).|
-|fileId|Zeichenfolge|Ja|Die ID der Datei, die aktualisiert wird (wird generiert, wenn die Datei bei der Erstellung oder Aktualisierung des Sprachmodells hochgeladen wird).|
-|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
-
-### <a name="request-body"></a>Anforderungstext
-
-Es ist kein weiterer Anforderungstext für diesen Aufruf erforderlich.
-
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Die Antwort enthält die Inhalte und Metadaten der Datei im JSON-Format, ähnlich wie in diesem Beispiel:
 
@@ -554,38 +291,11 @@ Die Antwort enthält die Inhalte und Metadaten der Datei im JSON-Format, ähnlic
 
 ## <a name="download-a-file-from-a-language-model"></a>Herunterladen einer Datei aus einem Sprachmodell
 
-Der folgende Befehl lädt eine Textdatei mit dem Inhalt der angegebenen Datei aus dem angegebenen Sprachmodell im angegebenen Konto herunter. Diese Textdatei sollte mit dem Inhalt der Textdatei übereinstimmen, die ursprünglich hochgeladen wurde.
+Die API zum [Herunterladen einer Datei](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) lädt eine Textdatei mit dem Inhalt der angegebenen Datei aus dem angegebenen Sprachmodell im angegebenen Konto herunter. Diese Textdatei sollte mit dem Inhalt der Textdatei übereinstimmen, die ursprünglich hochgeladen wurde.
 
-### <a name="request-url"></a>Anfrage-URL
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}/download?accessToken={accessToken}
-```
+### <a name="response"></a>Antwort
 
-Unten sehen Sie die Anforderung in Curl.
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}/download?accessToken={accessToken}"
-```
- 
-[Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?).
-
-### <a name="request-parameters"></a>Anforderungsparameter 
-
-|**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
-|---|---|---|---|
-|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|Ja|ID des Sprachmodells, das die Datei enthält (wird generiert, wenn das Sprachmodell erstellt wird).|
-|fileId|Zeichenfolge|Ja|ID der Datei, die aktualisiert wird (wird generiert, wenn die Datei bei der Erstellung oder Aktualisierung des Sprachmodells hochgeladen wird).|
-|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
-
-### <a name="request-body"></a>Anforderungstext 
-
-Es ist kein weiterer Anforderungstext für diesen Aufruf erforderlich.
-
-### <a name="response"></a>response
-
-Die Antwort ist der Download einer Textdatei mit dem Inhalt der Datei im JSON-Format. 
+Die Antwort ist der Download einer Textdatei mit dem Inhalt der Datei im JSON-Format.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

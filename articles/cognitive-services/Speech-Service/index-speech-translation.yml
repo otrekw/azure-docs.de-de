@@ -1,0 +1,60 @@
+### YamlMime:Landing
+title: Dokumentation zur Sprachübersetzung
+summary: Die Sprachübersetzung in Speech-Dienst ermöglicht eine mehrsprachige Sprache-zu-Sprache- und eine Sprache-zu-Text-Übersetzung von Audiostreams in Echtzeit.
+metadata:
+  title: 'Dokumentation zur Sprachübersetzung: Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: trevorbye
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 04/13/2020
+  ms.author: trbye
+  ms.openlocfilehash: a54153dc8fc7f3b5ea2f86b3bf03f469aa56cdb3
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95015424"
+landingContent:
+- title: Informationen zur Sprachübersetzung
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Sprachübersetzung?
+      url: speech-translation.md
+    - text: Grundlagen der Sprachübersetzung
+      url: ./get-started-speech-translation.md
+    - text: Was ist die Speech-Befehlszeilenschnittstelle?
+      url: spx-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Erste Schritte mit der Sprachübersetzung
+      url: get-started-speech-translation.md
+- title: Entwickeln mit der Sprachübersetzung
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Übersetzen von Sprache in Echtzeit
+      url: /learn/modules/convert-speech-to-text
+  - linkListType: tutorial
+    links:
+    - text: Übersetzen und Synthetisieren von Text mit REST-APIs
+      url: ../translator/tutorial-build-flask-app-translation-synthesis.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sprachunterstützung
+      url: language-support.md#speech-translation
+    - text: Häufig gestellte Fragen zur Sprachübersetzung
+      url: https://www.microsoft.com/translator/business/faq/
+    - text: Preise der Sprachübersetzung
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

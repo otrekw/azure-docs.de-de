@@ -1,17 +1,17 @@
 ---
-title: Serverkonzepte in Azure Database for PostgreSQL (Einzelserver)
+title: Server – Azure Database for PostgreSQL (Einzelserver)
 description: Dieser Artikel enthält Überlegungen und Richtlinien zum Konfigurieren und Verwalten von Azure Database for PostgreSQL (Einzelserver).
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bc135e58d0fbabc809f3718915e9f4e35b8ed875
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8ae129cbad56e3bb63e055f9d843cac1da22fb1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067155"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710463"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (Einzelserver)
 Dieser Artikel enthält Überlegungen und Richtlinien für die Arbeit mit Azure Database for PostgreSQL (Einzelserver).
@@ -64,6 +64,6 @@ Da es sich um einen verwalteten Dienst für Postgres handelt, stellen die konfig
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Eine Übersicht über den Dienst finden Sie unter  [Azure Database for PostgreSQL – Übersicht](overview.md).
-- Informationen zu bestimmten Ressourcenkontingenten und -beschränkungen basierend auf Ihrer  **Dienstebene** finden Sie unter  [Dienstebenen](concepts-pricing-tiers.md).
+- Informationen zu bestimmten Ressourcenkontingenten und -einschränkungen basierend auf Ihrer **Dienstebene** finden Sie unter  [Dienstebenen](concepts-pricing-tiers.md).
 - Informationen zum Herstellen einer Verbindung mit dem Dienst finden Sie unter  [Datenverbindungsbibliotheken für Azure Database for PostgreSQL](concepts-connection-libraries.md).
 - Sie können Serverparameter über das [Azure-Portal](howto-configure-server-parameters-using-portal.md) oder die [Azure CLI](howto-configure-server-parameters-using-cli.md) anzeigen und bearbeiten.

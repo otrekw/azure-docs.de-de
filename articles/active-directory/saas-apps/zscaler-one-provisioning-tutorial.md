@@ -2,32 +2,28 @@
 title: 'Tutorial: Konfigurieren von Zscaler One für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Azure Active Directory zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Zscaler One konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 72f6ba2b-73ed-420a-863a-aff672f26fa3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: de9dce04b6f27b6ae6f5c5caeed5728370359558
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: f6725045064b74079e00ca5bbe1d560f3b19f3ff
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515387"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937126"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler One für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die Sie in Zscaler One und Azure Active Directory (Azure AD) ausführen müssen, um Azure AD zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern und Gruppen in Zscaler One zu konfigurieren.
 
 > [!NOTE]
-> Das Tutorial enthält die Beschreibung eines Connectors, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Informationen zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen (Software as a Service) mit Azure Active Directory](../active-directory-saas-app-provisioning.md).
+> Das Tutorial enthält die Beschreibung eines Connectors, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Informationen zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen (Software as a Service) mit Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -67,7 +63,7 @@ Führen Sie zum Hinzufügen von Zscaler One aus dem Azure Marketplace die folgen
 
 Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Zusammenhang mit der automatischen Benutzerbereitstellung werden nur die Benutzer oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
-Entscheiden Sie vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung, welche Benutzer oder Gruppen in Azure AD Zugriff auf Zscaler One benötigen. Zum Zuweisen dieser Benutzer oder Gruppen zu Zscaler One befolgen Sie die Anleitung unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
+Entscheiden Sie vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung, welche Benutzer oder Gruppen in Azure AD Zugriff auf Zscaler One benötigen. Zum Zuweisen dieser Benutzer oder Gruppen zu Zscaler One befolgen Sie die Anleitung unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md).
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-one"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Zscaler One
 
@@ -81,6 +77,9 @@ Dieser Abschnitt führt Sie durch die Schritte zum Konfigurieren des Azure AD-Be
 
 > [!TIP]
 > Sie können auch SAML-basiertes einmaliges Anmelden für Zscaler One aktivieren. Befolgen Sie hierfür die Anleitung im [Tutorial für einmaliges Anmelden mit Zscaler One](zscaler-One-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
+
+> [!NOTE]
+> Beim Bereitstellen oder Aufheben der Bereitstellung von Benutzern und Gruppen wird empfohlen, die Bereitstellung in regelmäßigen Abständen neu zu starten, um sicherzustellen, dass die Gruppenmitgliedschaften ordnungsgemäß aktualisiert werden. Durch einen Neustart wird der Dienst gezwungen, alle Gruppen neu auszuwerten und die Mitgliedschaften zu aktualisieren.  
 
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Konfigurieren der automatischen Benutzerbereitstellung für Zscaler One in Azure AD
 
@@ -106,7 +105,7 @@ Dieser Abschnitt führt Sie durch die Schritte zum Konfigurieren des Azure AD-Be
 
     ![Zscaler One-Authentifizierungseinstellungen](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
-    a. Wählen Sie **SAML konfigurieren** aus, um die Optionen unter **SAML konfigurieren** zu öffnen.
+    ein. Wählen Sie **SAML konfigurieren** aus, um die Optionen unter **SAML konfigurieren** zu öffnen.
 
     ![SAML konfigurieren in Zscaler One](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
@@ -138,7 +137,7 @@ Dieser Abschnitt führt Sie durch die Schritte zum Konfigurieren des Azure AD-Be
 
     ![Übereinstimmende Gruppenattribute in Zscaler One](./media/zscaler-one-provisioning-tutorial/group-attribute-mappings.png)
 
-14. Wenn Sie Bereichsfilter konfigurieren möchten, befolgen Sie die Anleitung unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](./../active-directory-saas-scoping-filters.md).
+14. Wenn Sie Bereichsfilter konfigurieren möchten, befolgen Sie die Anleitung unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 15. Um den Azure AD-Bereitstellungsdienst für Zscaler One zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
@@ -156,16 +155,16 @@ Dadurch wird die Erstsynchronisierung aller Benutzer oder Gruppen gestartet, die
 
 Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und über Links zum Bereitstellungsaktivitätsbericht navigieren. Der Bericht beschreibt alle vom Azure AD-Bereitstellungsdienst in Zscaler One ausgeführten Aktionen.
 
-Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../active-directory-saas-provisioning-reporting.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-one-provisioning-tutorial/tutorial-general-01.png

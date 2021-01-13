@@ -5,17 +5,17 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 07/12/2019
+ms.date: 07/06/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 5cca18b881250ce99df35d681bec6091ea4a27b9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 1b7c8487eb42204f2741679c9ef6eb2717c272cd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641531"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86057352"
 ---
-In der Befehlsausgabe zeigt der Abschnitt `identity` an, dass eine Identität vom Typ `SystemAssigned` in der Aufgabe festgelegt ist. Die `principalId` sollte die Dienstprinzipal-ID der Identität sein:
+In der Befehlsausgabe zeigt der Abschnitt `identity` an, dass eine Identität vom Typ `SystemAssigned` in der Aufgabe festgelegt ist. Die `principalId` ist die Prinzipal-ID der Aufgabenidentität:
 
 ```console
 [...]
@@ -28,10 +28,12 @@ In der Befehlsausgabe zeigt der Abschnitt `identity` an, dass eine Identität vo
   "location": "eastus",
 [...]
 ``` 
-Verwenden Sie den Befehl [az acr task show][az-acr-task-show], um die PrinzipalId in einer Variablen zu speichern und in späteren Befehlen zu verwenden:
+Verwenden Sie den Befehl [az acr task show][az-acr-task-show], um die PrinzipalId in einer Variablen zu speichern und in späteren Befehlen zu verwenden. Ersetzen Sie im folgenden Befehl den Namen Ihres Tasks und Ihrer Registrierung:
 
 ```azurecli
-principalID=$(az acr task show --name dockerhubtask --registry myregistry --query identity.principalId --output tsv)
+principalID=$(az acr task show \
+  --name <task_name> --registry <registry_name> \
+  --query identity.principalId --output tsv)
 ```
 
 <!-- LINKS - Internal -->

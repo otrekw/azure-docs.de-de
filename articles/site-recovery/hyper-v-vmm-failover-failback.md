@@ -1,19 +1,19 @@
 ---
-title: Failover und Failback von Hyper-V-VMs, die während der Notfallwiederherstellung mit Azure Site Recovery in ein sekundäres Rechenzentrum repliziert werden | Microsoft-Dokumentation
+title: Einrichten von Failover/Failback an einem sekundären Hyper-V-Standort mit Azure Site Recovery
 description: Erfahren Sie, wie Sie während der Notfallwiederherstellung mit Azure Site Recovery ein Failover von Hyper-V-VMs zu Ihrem sekundären lokalen Standort und ein Failback zum primären Standort ausführen.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f93c9bd679272f76665a6c8e4a0c611327699839
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813703"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74082601"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Failover und Failback von Hyper-V-VMs, die nach Ihrem sekundären lokalen Standort repliziert werden
 
@@ -58,7 +58,7 @@ Sie können ein reguläres oder geplantes Failover für virtuelle Hyper-V-Comput
 3. Nachdem Sie die VM überprüft haben, **committen** Sie das Failover. Dadurch werden alle verfügbaren Wiederherstellungspunkte gelöscht.
 
 > [!WARNING]
-> **Brechen Sie ein Failover in Bearbeitung nicht ab:** Bevor das Failover gestartet wird, wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.  
+> **Brechen Sie ein aktuell ausgeführtes Failover nicht ab**: Bevor das Failover gestartet wird, wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.  
 
 
 ## <a name="reverse-replicate-and-failover"></a>„Umgekehrt replizieren“ und „Failover“

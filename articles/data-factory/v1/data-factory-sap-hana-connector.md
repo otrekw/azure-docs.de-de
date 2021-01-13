@@ -1,32 +1,31 @@
 ---
-title: Verschieben von Daten aus SAP HANA mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Verschieben von Daten aus SAP HANA mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie Daten mithilfe von Azure Data Factory aus SAP HANA verschieben.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 159e10354726e86ff04cb12bff33b6a83bd1fa70
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: c08aeca8e7aaa71e5a2a80cbdece762b989e28c2
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836105"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510140"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Verschieben von Daten aus SAP HANA mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-sap-hana-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-sap-hana.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [SAP HANA-Connector in V2](../connector-sap-business-warehouse.md).
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [SAP HANA-Connector in V2](../connector-sap-business-warehouse.md).
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer lokalen SAP HANA-Instanz zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
@@ -42,7 +41,7 @@ Um Konnektivität zur SAP HANA-Instanz zu aktivieren, installieren Sie die folge
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen SAP HANA-Datenspeicher verschiebt. 
 
-- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
+- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
 - Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
@@ -62,7 +61,7 @@ Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
 server | Der Name des Servers, auf dem sich die SAP HANA-Instanz befindet. Wenn Ihr Server einen benutzerdefinierten Port verwendet, geben Sie `server:port` an. | Zeichenfolge | Ja
 authenticationType | Die Art der Authentifizierung. | string. „Basic“ oder „Windows“ | Ja 
-userName | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | Zeichenfolge | Ja
+username | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | Zeichenfolge | Ja
 password | Kennwort für den Benutzer | Zeichenfolge | Ja
 gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SAP HANA-Instanz verwenden soll | Zeichenfolge | Ja
 encryptedCredential | Die verschlüsselte Zeichenfolge mit Anmeldeinformationen | Zeichenfolge | Nein
@@ -82,7 +81,7 @@ Wenn die Quelle bei der Kopieraktivität den Typ **RelationalSource** hat (zu de
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| query | Gibt die SQL-Abfrage an, mit der Daten aus der SAP HANA-Instanz gelesen werden. | SQL-Abfrage | Ja |
+| Abfrage | Gibt die SQL-Abfrage an, mit der Daten aus der SAP HANA-Instanz gelesen werden. | SQL-Abfrage | Ja |
 
 ## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus SAP HANA in ein Azure-Blob
 Das folgende Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. In diesem Beispiel wird gezeigt, wie Sie Daten aus einem lokalen SAP HANA-System in Azure Blob Storage kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** in die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.  
@@ -287,20 +286,20 @@ SAP HANA-Typ | .NET-basierter Typ
 TINYINT | Byte
 SMALLINT | Int16
 INT | Int32
-BIGINT | Int64
-REAL | Single
-DOUBLE | Single
-Decimal | Decimal
-Boolean | Byte
-VARCHAR | string
-NVARCHAR | string
+bigint | Int64
+real | Single
+Double | Single
+DECIMAL | Decimal
+BOOLEAN | Byte
+VARCHAR | String
+NVARCHAR | String
 CLOB | Byte[]
-ALPHANUM | string
+ALPHANUM | String
 BLOB | Byte[]
-DATE | DateTime
+DATE | Datetime
 TIME | TimeSpan
-TIMESTAMP | DateTime
-SECONDDATE | DateTime
+timestamp | Datetime
+SECONDDATE | Datetime
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 Es gibt einige bekannte Einschränkungen, wenn Daten aus SAP HANA kopiert werden:

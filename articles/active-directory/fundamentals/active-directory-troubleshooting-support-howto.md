@@ -3,11 +3,11 @@ title: Anfordern von Unterstützung und Öffnen eines Supporttickets – Azure A
 description: Anleitung zum Anfordern von Hilfe und zum Öffnen eines Supporttickets für Azure Active Directory.
 services: active-directory
 documentationcenter: na
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.subservice: fundamentals
 ms.workload: identity
 ms.date: 08/28/2017
@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dce9b93dfe4ddfca370d1d3131d1d12cb6f121d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9be6efeba101dc922a1045042b64ac64bc6cd093
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561753"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89322533"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Anfordern von Unterstützung und Öffnen eines Supporttickets für Azure Active Directory
 Microsoft bietet für Azure Active Directory (Azure AD) weltweiten, vertriebsvorbereitenden, Abrechnungs- und Abonnementsupport. Für gebührenpflichtige und Testabonnements von Microsoft Azure steht Support online und telefonisch zur Verfügung. Abrechnungssupport ist online und telefonisch in weiteren Sprachen verfügbar. 
@@ -29,7 +29,7 @@ Microsoft bietet für Azure Active Directory (Azure AD) weltweiten, vertriebsvor
 
 Prüfen Sie vor dem Erstellen eines Supporttickets die folgenden Ressourcen auf Antworten und Informationen. 
 
-* Inhalte wie Anweisungsinformationen oder Codebeispiele für IT-Experten und Entwickler sind in der [technischen Dokumentation auf docs.microsoft.com](https://docs.microsoft.com/azure/active-directory/) zu finden.
+* Inhalte wie Anweisungsinformationen oder Codebeispiele für IT-Experten und Entwickler sind in der [technischen Dokumentation auf docs.microsoft.com](../index.yml) zu finden.
 
 * In der [Microsoft Technical Community](https://techcommunity.microsoft.com/) können unsere IT Pro-Partner und Kunden zusammenarbeiten, sich austauschen und dazulernen. Das [Microsoft Technical Community Info Center](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) wird u.a. für Ankündigungen, Blogbeiträge und die Interaktion mit Experten genutzt. Sie können auch [Mitglied der Community werden, um Ihre Ideen einzubringen](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities).
 
@@ -46,19 +46,29 @@ Wenn Sie mithilfe dieser Selbsthilferessourcen keine Antworten finden, können S
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie **Azure Active Directory**.
    
-2. Scrollen Sie nach unten zu **Problembehandlung und Support**, und wählen Sie **Neue Supportanfrage** aus.
+1. Scrollen Sie nach unten zu **Problembehandlung und Support**, und wählen Sie **Neue Supportanfrage** aus.
    
-3. Wählen Sie auf dem Blatt **Grundeinstellungen** für **Problemtyp** die Option **Technisch** aus.
-   
-4. Wählen Sie **Azure Active Directory** für **Dienst** aus, und klicken Sie anschließend auf **Weiter**.
+1. Wählen Sie auf dem Blatt **Grundeinstellungen** für **Problemtyp** die Option **Technisch** aus.
 
-5. Wählen Sie auf dem Blatt **Problem** einen [Schweregrad](https://azure.microsoft.com/support/plans/response/) aus.
+1. Wählen Sie Ihr **Abonnement** aus.
+
+1. Wählen Sie unter **Dienst** die Option **Azure Active Directory** aus.
+
+1. Erstellen Sie eine **Zusammenfassung** für die Anfrage. Die Zusammenfassung muss weniger als 140 Zeichen umfassen.
   
-6. Wählen Sie einen **Problemtyp** und dann eine **Kategorie** für diesen Typ aus. An diesem Punkt werden Ihnen für Ihre Problemkategorie auch Informationen zur Selbsthilfe angeboten.
+1. Wählen Sie einen **Problemtyp** und anschließend eine Kategorie für diesen Typ aus. An diesem Punkt werden Ihnen für Ihre Problemkategorie auch Informationen zur Selbsthilfe angeboten.
   
-7. Fügen Sie die restlichen Informationen zu Ihrem Problem hinzu, und klicken Sie auf **Weiter**.
-  
-8. Geben Sie Ihre Kontaktinformationen ein, und klicken Sie auf **Erstellen**.
+1. Fügen Sie die restlichen Informationen zu Ihrem Problem hinzu, und klicken Sie auf **Weiter**. 
+
+1. Daraufhin werden auf dem Blatt **Lösungen** Selbsthilfelösungen und Dokumentationen angeboten. Sollte sich das vorliegende Problem durch keine der Lösungen beheben lassen, klicken Sie auf **Weiter**. 
+
+1. Geben Sie auf dem Blatt **Details** die erforderlichen Details an, und wählen Sie einen [Schweregrad](https://azure.microsoft.com/support/plans/response/) aus. 
+ 
+    ![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
+ 
+1. Geben Sie Ihre Kontaktinformationen ein, und wählen Sie **Weiter** aus. 
+
+1. Geben Sie Ihre Kontaktinformationen ein, und klicken Sie auf **Erstellen**.
   ![Screenshot der Problemkategorie „Selbsthilfe“](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>So öffnen Sie ein Supportticket für Azure AD im Microsoft 365 Admin Center
@@ -68,19 +78,19 @@ Wenn Sie mithilfe dieser Selbsthilferessourcen keine Antworten finden, können S
 
 1. Melden Sie sich beim [Microsoft 365 Admin Center](https://admin.microsoft.com) mit einem Konto mit einer EMS-Lizenz (Enterprise Mobility + Security) an.
 
-2. Wählen Sie auf der Kachel **Support** den Eintrag **Neue Serviceanfrage** aus:
+1. Wählen Sie auf der Kachel **Support** den Eintrag **Neue Serviceanfrage** aus:
 
-3. Wählen Sie auf der Seite **Supportübersicht** entweder **Identitätsverwaltung** oder **Benutzer- und Domänenverwaltung aus**:
+1. Wählen Sie auf der Seite **Supportübersicht** entweder **Identitätsverwaltung** oder **Benutzer- und Domänenverwaltung aus**:
 
-4. Wählen Sie für **Feature** das Azure AD-Feature aus, für das Sie Unterstützung wünschen.
+1. Wählen Sie für **Feature** das Azure AD-Feature aus, für das Sie Unterstützung wünschen.
 
-5. Wählen Sie für **Symptom** ein entsprechendes Symptom aus. Fassen Sie Ihr Problem zusammen, geben Sie relevante Details ein, und klicken Sie dann auf **Weiter**.
+1. Wählen Sie für **Symptom** ein entsprechendes Symptom aus. Fassen Sie Ihr Problem zusammen, geben Sie relevante Details ein, und klicken Sie dann auf **Weiter**.
 
-6. Wählen Sie eine der angebotenen Selbsthilferessourcen, oder klicken Sie auf **Ja, weiter** oder **Nein, Anfrage abbrechen**.
+1. Wählen Sie eine der angebotenen Selbsthilferessourcen, oder klicken Sie auf **Ja, weiter** oder **Nein, Anfrage abbrechen**.
 
-7. Wenn Sie fortfahren, werden Sie nach weiteren Details befragt. Sie können alle Dateien anfügen, die das Problem wiedergeben. Klicken Sie dann auf **Weiter**.
+1. Wenn Sie fortfahren, werden Sie nach weiteren Details befragt. Sie können alle Dateien anfügen, die das Problem wiedergeben. Klicken Sie dann auf **Weiter**.
 
-8. Geben Sie Ihre Kontaktinformationen ein, und klicken Sie auf **Anfrage senden**.
+1. Geben Sie Ihre Kontaktinformationen ein, und klicken Sie auf **Anfrage senden**.
 
 ## <a name="get-phone-support"></a>Telefonischer Support
 
@@ -90,4 +100,4 @@ Auf der Seite mit den [Kontaktinformationen des Microsoft-Supports](https://port
 
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/)
 
-* [Technische Dokumentation auf docs.microsoft.com](https://docs.microsoft.com/azure/active-directory/)
+* [Technische Dokumentation auf docs.microsoft.com](../index.yml)

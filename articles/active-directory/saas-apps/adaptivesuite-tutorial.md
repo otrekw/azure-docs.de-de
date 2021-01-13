@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Adaptive Insights | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Adaptive Insights konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 13af9d00-116a-41b8-8ca0-4870b31e224c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad059e6047dd883c0a5aab0d714d999840050584
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
+ms.openlocfilehash: 70c59e4352d41070c22b0e268ef1cf5cfa1c7211
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70213615"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313339"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Tutorial: Integrieren von Adaptive Insights in Azure Active Directory
 
@@ -31,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie Adaptive Insights in Azure Active Dire
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Adaptive Insights anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -104,15 +99,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 2. Wechseln Sie zu **Administration**.
 
-    ![Admin](./media/adaptivesuite-tutorial/ic805644.png "Admin")
+    ![Screenshot: Administration im Navigationsbereich hervorgehoben](./media/adaptivesuite-tutorial/ic805644.png "Admin")
 
 3. Klicken Sie im Abschnitt **Benutzer und Rollen** auf **SAML SSO Settings** (SAML-SSO-Einstellungen).
 
-    ![SAML-SSO-Einstellungen verwalten](./media/adaptivesuite-tutorial/ic805645.png "SAML-SSO-Einstellungen verwalten")
+    ![Verwalten der SAML-SSO-Einstellungen](./media/adaptivesuite-tutorial/ic805645.png "Manage SAML SSO Settings")
 
 4. Führen Sie auf der Seite **SAML SSO Settings** die folgenden Schritte aus:
 
-    ![SAML-SSO-Einstellungen](./media/adaptivesuite-tutorial/ic805646.png "SAML-SSO-Einstellungen")
+    ![SAML-SSO-Einstellungen](./media/adaptivesuite-tutorial/ic805646.png "SAML SSO Settings")
 
     a. Geben Sie im Textfeld **Identity provider name** einen Namen für die Konfiguration ein.
 
@@ -148,7 +143,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -178,7 +173,7 @@ Damit sich Azure AD-Benutzer bei Adaptive Insights anmelden können, müssen sie
 
 2. Wechseln Sie zu **Administration**.
 
-   ![Admin](./media/adaptivesuite-tutorial/IC805644.png "Admin")
+   ![Administrator](./media/adaptivesuite-tutorial/IC805644.png "Admin")
 
 3. Klicken Sie im Abschnitt **Users and Roles** (Benutzer und Rollen) auf **Users** (Benutzer).
 
@@ -186,28 +181,27 @@ Damit sich Azure AD-Benutzer bei Adaptive Insights anmelden können, müssen sie
 
 4. Führen Sie im Abschnitt **Neuer Benutzer** die folgenden Schritte aus:
 
-   ![Senden](./media/adaptivesuite-tutorial/IC805649.png "Senden")
+   ![Absenden](./media/adaptivesuite-tutorial/IC805649.png "Submit (Senden)")
 
    a. Geben Sie in die Textfelder **Name**, **Username** (Benutzername), **Email** (E-Mail) und **Password** (Kennwort) die entsprechenden Informationen eines gültigen Azure Active Directory-Benutzerkontos ein, das Sie bereitstellen möchten.
 
    b. Wählen Sie eine **Role**aus.
 
-   c. Klicken Sie auf **Submit**.
+   c. Klicken Sie auf **Submit**(Senden).
 
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mit anderen Tools zum Erstellen von Adaptive Insights-Benutzerkonten oder mit den von Adaptive Insights bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von Adaptive Insights-Benutzerkonten oder mit den APIs von Adaptive Insights bereitstellen.
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Adaptive Insights“ klicken, sollten Sie automatisch bei der Adaptive Insights-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Adaptive Insights“ klicken, sollten Sie automatisch bei der Adaptive Insights-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)

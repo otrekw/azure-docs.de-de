@@ -3,7 +3,7 @@ title: Dokumentation zur Personalisierung
 summary: Hier erfahren Sie, wie Ihre Anwendung mithilfe der Personalisierung die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen kann.
 metadata:
   ms.topic: landing-page
-  ms.date: 09/10/2019
+  ms.date: 06/11/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: Dokumentation zur Personalisierung
   titleSuffix: Azure Cognitive Services
   description: Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dem Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen können.
-  ms.openlocfilehash: fd1b4a7c093beeb8d33579accee9178744b6fe50
-  ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+  ms.openlocfilehash: f4d263e551360b326fbe849e4cb62347e8125849
+  ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/11/2019
-  ms.locfileid: "70882901"
+  ms.lasthandoff: 11/08/2020
+  ms.locfileid: "94368133"
 landingContent:
 - title: Informationen zur Personalisierung
   linkLists:
@@ -25,6 +25,10 @@ landingContent:
     links:
     - text: Was ist die Personalisierung?
       url: what-is-personalizer.md
+  - linkListType: whats-new
+    links:
+    - text: Neues
+      url: whats-new.md
   - linkListType: concept
     links:
     - text: Funktionsweise der Personalisierung
@@ -41,38 +45,40 @@ landingContent:
       url: concepts-features.md
     - text: Berechnen einer Relevanz
       url: concept-rewards.md
+  - linkListType: tutorial
+    links:
+    - text: Verwenden der Personalisierung in einer .NET-Web-App
+      url: tutorial-use-personalizer-web-app.md
+    - text: Verwenden der Personalisierung mit einer Azure Notebooks-Datei
+      url: tutorial-use-azure-notebook-generate-loop-data.md
   - linkListType: how-to-guide
     links:
     - text: Erstellen und Konfigurieren des Diensts „Personalisierung“
       url: how-to-settings.md
   - linkListType: quickstart
     links:
-    - text: Verwenden von .NET
-      url: csharp-quickstart-commandline-feedback-loop.md
-    - text: Verwenden von Python
-      url: python-quickstart-commandline-feedback-loop.md
-    - text: Node.js
-      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+    - text: Verwenden des SDK
+      url: ./quickstart-personalizer-sdk.md
 - title: Entwickeln mit der Personalisierung
   linkLists:
   - linkListType: get-started
     links:
     - text: Entwickeln einer Personalisierungsschleife mit .NET
-      url: csharp-quickstart-commandline-feedback-loop.md
+      url: ./quickstart-personalizer-sdk.md?pivots=programming-language-csharp
     - text: NuGet-Paket
       url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
     - text: NuGet-Referenzdokumentation
-      url: https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
+      url: /dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
   - linkListType: get-started
     links:
     - text: Entwickeln einer Personalisierungsschleife mit Node.js
-      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+      url: ./quickstart-personalizer-sdk.md?pivots=programming-language-javascript
     - text: NPM-Paket
       url: https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0
   - linkListType: get-started
     links:
     - text: Entwickeln einer Personalisierungsschleife mit Python
-      url: python-quickstart-commandline-feedback-loop.md
+      url: ./quickstart-personalizer-sdk.md?pivots=programming-language-python
     - text: Pypi-Paket
       url: https://pypi.org/project/azure-cognitiveservices-personalizer/
   - linkListType: get-started
@@ -93,7 +99,7 @@ landingContent:
       url: concepts-exploration.md
     - text: Merkmale, Aktion und Kontext
       url: concepts-features.md
-    - text: Aktives Lernen
+    - text: Aktive und inaktive Ereignisse
       url: concept-active-learning.md
     - text: Belohnungen
       url: concept-rewards.md
@@ -101,9 +107,11 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
+    - text: Verwenden des Ausbildungsmodus
+      url: how-to-learning-behavior.md
     - text: Verbessern einer Schleife mit Offlineauswertungen
       url: concepts-offline-evaluation.md
-    - text: Aktives Lernen
+    - text: Aktive und inaktive Ereignisse
       url: concept-active-learning.md
     - text: Skalierbarkeit und Leistung
       url: concepts-scalability-performance.md
@@ -115,9 +123,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/personalizer/context/context
     - text: Problembehandlung
       url: troubleshooting.md
-    - text: Stellen von Fragen zu Stack Overflow
-      url: https://stackoverflow.com/questions/tagged/personalizer
-    - text: Einflussnahme auf den Dienst mit UserVoice
-      url: https://cognitive.uservoice.com/forums/921562-personalizer

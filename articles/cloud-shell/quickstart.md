@@ -1,25 +1,21 @@
 ---
-title: Schnellstart für Azure Cloud Shell | Microsoft-Dokumentation
-description: Schnellstart für Azure Cloud Shell
-services: ''
-documentationcenter: ''
+title: Schnellstart für Azure Cloud Shell – Bash
+description: Erfahren Sie, wie Sie Bash-Befehlszeile in Ihrem Browser mit Azure Cloud Shell verwenden.
 author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 8151013f263c6cf2f90e89fa1c3b0b3025f2ea38
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 91b7c58890518559c046023bd78c9248e9840f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741986"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89468748"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Schnellstart für Bash in Azure Cloud Shell
 
@@ -30,7 +26,7 @@ Dieses Dokument erläutert die Verwendung von Bash in Azure Cloud Shell im [Azur
 
 ## <a name="start-cloud-shell"></a>Starten von Cloud Shell
 1. Starten Sie **Cloud Shell** über den oberen Navigationsbereich im Azure-Portal. <br>
-![](media/quickstart/shell-icon.png)
+![Screenshot: Starten von Azure Cloud Shell im Azure-Portal.](media/quickstart/shell-icon.png)
 
 2. Wählen Sie ein Abonnement aus, in dem ein Speicherkonto und eine Microsoft Azure Files-Freigabe erstellt werden sollen.
 3. Wählen Sie „Speicher erstellen“ aus.
@@ -40,7 +36,7 @@ Dieses Dokument erläutert die Verwendung von Bash in Azure Cloud Shell im [Azur
 
 ### <a name="select-the-bash-environment"></a>Auswählen der Bash-Umgebung
 Stellen Sie sicher, dass auf der linken Seite des Shellfensters im Dropdownmenü für Umgebungen die Option `Bash` ausgewählt ist. <br>
-![](media/quickstart/env-selector.png)
+![Screenshot: Auswählen der Bash-Umgebung für die Azure Cloud Shell.](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>Festlegen des Abonnements
 1. Führen Sie die Abonnements auf, auf die Sie Zugriff haben.
@@ -48,10 +44,11 @@ Stellen Sie sicher, dass auf der linken Seite des Shellfensters im Dropdownmenü
    az account list
    ```
 
-2. Legen Sie Ihr bevorzugtes Abonnement fest: <br>
-```azurecli-interactive
-az account set --subscription 'my-subscription-name'
-```
+2. Legen Sie Ihr bevorzugtes Abonnement fest:
+
+   ```azurecli-interactive
+   az account set --subscription 'my-subscription-name'
+   ```
 
 > [!TIP]
 > Ihr Abonnement wird mithilfe von `/home/<user>/.azure/azureProfile.json` für künftige Sitzungen gespeichert.
@@ -77,7 +74,7 @@ Ihr Benutzername auf diesem virtuellen Computer ist der Benutzername, der in Clo
 ### <a name="ssh-into-your-linux-vm"></a>Herstellen einer SSH-Verbindung mit Ihrem virtuellen Linux-Computer
 1. Suchen Sie über die Suchleiste des Azure-Portals nach dem Namen Ihres virtuellen Computers.
 2. Klicken Sie auf „Verbinden“, um Ihren VM-Namen und die öffentliche IP-Adresse abzurufen. <br>
-   ![](media/quickstart/sshcmd-copy.png)
+   ![Screenshot: Herstellen einer Verbindung mit einer Linux-VM über SSH.](media/quickstart/sshcmd-copy.png)
 
 3. Stellen Sie mit dem Befehl `ssh` eine SSH-Verbindung mit Ihrer VM her.
    ```
@@ -85,11 +82,11 @@ Ihr Benutzername auf diesem virtuellen Computer ist der Benutzername, der in Clo
    ```
 
 Nach dem Herstellen der SSH-Verbindung sollte der Willkommensbildschirm von Ubuntu angezeigt werden. <br>
-![](media/quickstart/ubuntu-welcome.png)
+![Screenshot: Ubuntu-Initialisierung und -Willkommensbildschirm nach dem Herstellen einer SSH-Verbindung.](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>Bereinigen 
 1. Beenden Sie Ihre SSH-Sitzung.
-   ```azurecli-interactive
+   ```
    exit
    ```
 
@@ -100,5 +97,5 @@ Nach dem Herstellen der SSH-Verbindung sollte der Willkommensbildschirm von Ubun
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erfahren Sie mehr über das Beibehalten von Dateien für Bash in Cloud Shell](persisting-shell-storage.md) <br>
-[Erfahren Sie mehr über die Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
+[Erfahren Sie mehr über die Azure CLI](/cli/azure/) <br>
 [Erfahren Sie mehr über Azure Files-Speicher.](../storage/files/storage-files-introduction.md) <br>

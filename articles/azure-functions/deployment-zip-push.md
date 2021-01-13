@@ -1,20 +1,14 @@
 ---
-title: ZIP-Push-Bereitstellung für Azure Functions | Microsoft-Dokumentation
+title: ZIP-Push-Bereitstellung für Azure Functions
 description: Verwenden Sie die Funktionen zur Bereitstellung von ZIP-Dateien des Kudu-Bereitstellungdiensts zum Veröffentlichen Ihrer Azure Functions.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.author: glenga
-ms.openlocfilehash: c411ff6b3a7152adaaf29045f4c3b3a3deb22d09
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087587"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018429"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>ZIP-Bereitstellung für Azure Functions
 
@@ -62,20 +56,22 @@ Allerdings haben Sie Ihre Funktionen möglicherweise mithilfe des Editors im Azu
 
     Verwenden Sie die folgende GET-Bereitstellungs-API, um Dateien aus Ihrem `<function_app>`-Projekt herunterzuladen: 
 
-        https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```http
+    https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```
 
     Das Hinzufügen von `/site/wwwroot/` stellt sicher, dass die ZIP-Datei nur die Dateien des Funktionen-App-Projekts und nicht die gesamte Website enthält. Wenn Sie nicht bereits in Azure angemeldet sind, werden Sie aufgefordert, sich anzumelden.  
 
 Sie können aber auch eine ZIP-Datei aus einem GitHub-Repository herunterladen. Wenn Sie ein GitHub-Repositorys als ZIP-Datei herunterladen, fügt GitHub eine zusätzliche Ordnerebene für den Branch hinzu. Diese zusätzliche Ordnerebene bedeutet, dass Sie die ZIP-Datei nicht direkt so, wie Sie sie von GitHub heruntergeladen haben, bereitstellen können. Wenn Sie ein GitHub-Repository zum Verwalten Ihrer Funktions-App verwenden, sollten Sie die App mithilfe von [Continuous Integration](functions-continuous-deployment.md) bereitstellen.  
 
-## <a name="cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
+## <a name="deploy-by-using-azure-cli"></a><a name="cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
 
 Sie können eine Push-Bereitstellung auch mithilfe der Azure-Befehlszeilenschnittstelle auslösen. Führen Sie eine Push-Bereitstellung einer ZIP-Datei in Ihrer Funktions-App mithilfe des Befehls [az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) aus. Zum Ausführen dieses Befehls müssen Sie Azure CLI, Version 2.0.21 oder höher, verwenden. Sie können mithilfe des `az --version`-Befehls anzeigen, welche Azure CLI-Version Sie verwenden.
 
-Ersetzen Sie im folgenden Befehl den `<zip_file_path>`-Platzhalter durch den Pfad zum Speicherort der ZIP-Datei. Ersetzen Sie außerdem `<app_name>` durch den eindeutigen Namen Ihrer Funktions-App. 
+Ersetzen Sie im folgenden Befehl den `<zip_file_path>`-Platzhalter durch den Pfad zum Speicherort der ZIP-Datei. Ersetzen Sie außerdem `<app_name>` durch den eindeutigen Namen Ihrer Funktions-App, und ersetzen Sie `<resource_group>` durch den Namen Ihrer Ressourcengruppe.
 
 ```azurecli-interactive
-az functionapp deployment source config-zip  -g myResourceGroup -n \
+az functionapp deployment source config-zip -g <resource_group> -n \
 <app_name> --src <zip_file_path>
 ```
 

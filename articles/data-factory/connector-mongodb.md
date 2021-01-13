@@ -1,25 +1,27 @@
 ---
-title: Kopieren von Daten aus MongoDB mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus MongoDB
 description: Erfahren Sie, wie Daten aus MongoDB mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: jingwang
-ms.openlocfilehash: 86029c5617d2a3c2723e388fb5812a3947166623
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.custom: seo-lt-2019; seo-dt-2019
+ms.date: 09/28/2020
+ms.openlocfilehash: bb9768c2a4d3be9ac0e06844c5ac0835707cf455
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966932"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945854"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopieren von Daten aus MongoDB mithilfe von Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer MongoDB-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -49,7 +51,7 @@ Folgende Eigenschaften werden für den mit MongoDB verknüpften Dienst unterstü
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **MongoDbV2** |Ja |
-| connectionString |Geben Sie die MongoDB-Verbindungszeichenfolge an, z.B. `mongodb://[username:password@]host[:port][/[database][?options]]`. Weitere Informationen finden Sie im [MongoDB-Handbuch zur Verbindungszeichenfolge](https://docs.mongodb.com/manual/reference/connection-string/). <br/><br />Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. |Ja |
+| connectionString |Geben Sie die MongoDB-Verbindungszeichenfolge an, z.B. `mongodb://[username:password@]host[:port][/[database][?options]]`. Weitere Informationen finden Sie im [MongoDB-Handbuch zur Verbindungszeichenfolge](https://docs.mongodb.com/manual/reference/connection-string/). <br/><br /> Sie können eine Verbindungszeichenfolge auch in Azure Key Vault speichern. Ausführlichere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
 | database | Der Name der Datenbank, auf die Sie zugreifen möchten. | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
@@ -61,10 +63,7 @@ Folgende Eigenschaften werden für den mit MongoDB verknüpften Dienst unterstü
     "properties": {
         "type": "MongoDbV2",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "mongodb://[username:password@]host[:port][/[database][?options]]"
-            },
+            "connectionString": "mongodb://[username:password@]host[:port][/[database][?options]]",
             "database": "myDatabase"
         },
         "connectVia": {
@@ -171,4 +170,4 @@ Mit diesem MongoDB-Connector können Sie JSON-Dokumente in unveränderter Form a
 Informationen zum Kopieren von Daten aus MongoDB in eine tabellarische Senke finden Sie unter [Schemazuordnung](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

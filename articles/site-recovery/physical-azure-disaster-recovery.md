@@ -1,19 +1,18 @@
 ---
-title: Einrichten der Notfallwiederherstellung in Azure für physische lokale Server mit Azure Site Recovery
+title: Einrichten der Notfallwiederherstellung von physischen lokalen Servern mit Azure Site Recovery
 description: Erfahren Sie, wie Sie die Notfallwiederherstellung in Azure für lokale Windows- und Linux-Server mit dem Azure Site Recovery-Dienst einrichten.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 55b375c1e98518a6c3bc2926030cfe072963216c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814555"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87927282"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Einrichten der Notfallwiederherstellung in Azure für physische lokale Server
 
@@ -60,7 +59,7 @@ Erstellen Sie ein [Microsoft Azure-Konto](https://azure.microsoft.com/).
 Vergewissern Sie sich, dass Ihr Azure-Konto über die Berechtigungen für die Replikation von virtuellen Computern in Azure verfügt.
 
 - Überprüfen Sie die [Berechtigungen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines), die Sie für das Replizieren von Computern in Azure benötigen.
-- Überprüfen Sie die Berechtigungen für den [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md), und passen Sie sie ggf. an. 
+- Überprüfen und ändern Sie Berechtigungen der [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). 
 
 
 
@@ -74,7 +73,7 @@ Richten Sie ein [Azure-Netzwerk](../virtual-network/quick-create-portal.md) ein.
 
 ## <a name="set-up-an-azure-storage-account"></a>Richten Sie ein Azure-Speicherkonto ein
 
-Richten Sie ein [Azure Storage-Konto](../storage/common/storage-quickstart-create-account.md) ein.
+Richten Sie ein [Azure Storage-Konto](../storage/common/storage-account-create.md) ein.
 
 - Site Recovery repliziert lokale Computer in den Azure-Speicher. Virtuelle Azure-Computer werden nach dem Failover aus dem Speicher erstellt.
 - Das Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
@@ -112,7 +111,7 @@ Richten Sie den Konfigurationsserver ein, registrieren Sie ihn im Tresor, und er
 4. Laden Sie die Installationsdatei für das einheitliche Setup von Site Recovery herunter.
 5. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen beim Ausführen des einheitlichen Setups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
-   ![Quelle einrichten](./media/physical-azure-disaster-recovery/source-environment.png)
+   ![Screenshot mit Anzeige der Optionen zum Download von Installationsdatei und Registrierungsschlüssel](./media/physical-azure-disaster-recovery/source-environment.png)
 
 
 ### <a name="register-the-configuration-server-in-the-vault"></a>Registrieren des Konfigurationsservers im Tresor
@@ -120,7 +119,7 @@ Richten Sie den Konfigurationsserver ein, registrieren Sie ihn im Tresor, und er
 Führen Sie zunächst folgende Schritte aus: 
 
 #### <a name="verify-time-accuracy"></a>Überprüfen der Zeitgenauigkeit
-Stellen Sie auf dem Konfigurationsservercomputer sicher, dass die Systemuhr mit einem [Zeitserver](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) synchronisiert ist. Die Zeiten sollten übereinstimmen. Falls der Unterschied 15 Minuten beträgt, ist das Setup unter Umständen nicht erfolgreich.
+Stellen Sie auf dem Konfigurationsservercomputer sicher, dass die Systemuhr mit einem [Zeitserver](/windows-server/networking/windows-time-service/windows-time-service-top) synchronisiert ist. Die Zeiten sollten übereinstimmen. Falls der Unterschied 15 Minuten beträgt, ist das Setup unter Umständen nicht erfolgreich.
 
 #### <a name="verify-connectivity"></a>Überprüfen der Konnektivität
 Stellen Sie sicher, dass der Computer ausgehend von Ihrer Umgebung auf die folgenden URLs zugreifen kann: 
@@ -137,7 +136,6 @@ Führen Sie das einheitliche Setup als lokaler Administrator auf dem Konfigurati
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-Nach Abschluss der Registrierung wird der Konfigurationsserver auf der Seite **Einstellungen** > **Server** im Tresor angezeigt.
 
 ## <a name="set-up-the-target-environment"></a>Einrichten der Zielumgebung
 
@@ -147,7 +145,7 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 2. Geben Sie das Ziel-Bereitstellungsmodell an.
 3. Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkonten und -Netzwerke verfügen.
 
-   ![Ziel](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Screenshot der Optionen zum Einrichten der Zielumgebung](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>Erstellen einer Replikationsrichtlinie
@@ -158,7 +156,7 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 4. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** die Größe des Aufbewahrungszeitfensters für die einzelnen Wiederherstellungspunkte in Stunden an. Replizierte VMs können für jeden Punkt eines Zeitfensters wiederhergestellt werden. Für nach Storage Premium replizierte Computer wird eine Aufbewahrungsdauer von bis zu 24 Stunden unterstützt (72 Stunden für Standardspeicher).
 5. Geben Sie unter **App-konsistente Momentaufnahmehäufigkeit**an, wie häufig (in Minuten) Wiederherstellungspunkte erstellt werden sollen, die anwendungskonsistente Momentaufnahmen enthalten. Klicken Sie auf **OK**, um die Richtlinie zu erstellen.
 
-    ![Replikationsrichtlinie](./media/physical-azure-disaster-recovery/replication-policy.png)
+    ![Screenshot der Optionen zum Erstellen einer Replikationsrichtlinie](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
 Die Richtlinie wird dem Konfigurationsserver automatisch zugeordnet. Standardmäßig wird für das Failback automatisch eine passende Richtlinie erstellt. Bei Verwendung der Replikationsrichtlinie **rep-policy** wird z.B. die Failbackrichtlinie **rep-policy-failback** erstellt. Diese Richtlinie wird erst verwendet, wenn Sie ein Failback über Azure initiieren.
@@ -179,7 +177,7 @@ Aktivieren Sie die Replikation für jeden Server.
 7. Wählen Sie das Azure-Netzwerk und das Subnetz aus, mit dem virtuelle Azure-Computer, die nach einem Failover erstellt werden, eine Verbindung herstellen.
 8. Wählen Sie die Option **Jetzt für die ausgewählten Computer konfigurieren** aus, um die Netzwerkeinstellung auf alle Computer anzuwenden, die geschützt werden sollen. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk pro Computer auszuwählen. 
 9. Klicken Sie unter **Physische Computer** auf **+ Physischer Computer**. Geben Sie den Namen und die IP-Adresse an. Wählen Sie das Betriebssystem des Computers, den Sie replizieren möchten, aus. Es dauert einige Minuten, bis die Server ermittelt und aufgelistet werden. 
-10. Geben Sie unter **Eigenschaften** > **Eigenschaften konfigurieren**das Konto aus, das der Prozessserver zum automatischen Installieren des Mobilitätsdiensts auf dem Computer verwenden soll.
+10. Wählen Sie unter **Eigenschaften** > **Eigenschaften konfigurieren** das Konto aus, das der Prozessserver zum automatischen Installieren des Mobility Service auf dem Computer verwenden soll.
 11. Überprüfen Sie unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren**, ob die richtige Replikationsrichtlinie ausgewählt ist. 
 12. Klicken Sie auf **Replikation aktivieren**. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 

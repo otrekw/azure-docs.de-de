@@ -1,25 +1,22 @@
 ---
-title: Referenz zu Trigger- und Aktionstypen in der Workflowdefinitionssprache – Azure Logic Apps
-description: Referenzhandbuch zu Trigger- und Aktionstypen in der Workflowdefinitionssprache für Azure Logic Apps.
+title: Schemareferenz zu Trigger- und Aktionstypen
+description: Schemareferenzhandbuch zu Trigger- und Aktionstypen in der Workflowdefinitionssprache für Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.topic: reference
-ms.date: 06/19/2019
-ms.openlocfilehash: df1b03d5fbb5b8ef8cda9407e4a595bc2de8ce54
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
+ms.date: 09/22/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: 7423f8d8f2a566801048457ad5f5c44f3c1097ec
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918956"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920048"
 ---
-# <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Referenz zu Trigger- und Aktionstypen in der Workflowdefinitionssprache für Azure Logic Apps.
+# <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Schemareferenzhandbuch zu Trigger- und Aktionstypen für Azure Logic Apps
 
-In dieser Referenz werden die allgemeinen Typen beschrieben, die zum Identifizieren von Triggern und Aktionen in der Ihrer Logik-App zugrunde liegenden Workflowdefinition verwendet werden, die durch die [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) beschrieben und validiert werden.
-Um bestimmte Connector-Trigger und -Aktionen aufzufinden, die Sie in Ihren Logik-Apps verwenden können, sehen Sie in der Liste unter der [Connectorübersicht](https://docs.microsoft.com/connectors/) nach.
+In dieser Referenz werden die allgemeinen Typen beschrieben, die zum Identifizieren von Triggern und Aktionen in der Ihrer Logik-App zugrunde liegenden Workflowdefinition verwendet werden, die durch die [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) beschrieben und validiert werden. Um bestimmte Connector-Trigger und -Aktionen aufzufinden, die Sie in Ihren Logik-Apps verwenden können, sehen Sie in der Liste unter der [Connectorübersicht](/connectors/) nach.
 
 <a name="triggers-overview"></a>
 
@@ -29,7 +26,7 @@ Jeder Workflow enthält einen Trigger, mit dem die Aufrufe definiert werden, die
 
 * Ein *Abruftrigger*, der den Endpunkt eines Diensts in regelmäßigen Abständen überprüft.
 
-* Ein *Pushtrigger*, mit dem ein Abonnement für einen Endpunkt erstellt und eine *Rückruf-URL* bereitgestellt wird, damit der Endpunkt den Trigger benachrichtigen kann, wenn das angegebene Ereignis eintritt oder Daten verfügbar sind. Der Trigger wartet dann auf die Antwort des Endpunkts, bevor er ausgelöst wird. 
+* Ein *Pushtrigger*, mit dem ein Abonnement für einen Endpunkt erstellt und eine *Rückruf-URL* bereitgestellt wird, damit der Endpunkt den Trigger benachrichtigen kann, wenn das angegebene Ereignis eintritt oder Daten verfügbar sind. Der Trigger wartet dann auf die Antwort des Endpunkts, bevor er ausgelöst wird.
 
 Trigger besitzen auf oberster Ebene die folgenden Elemente (einige davon sind optional):  
   
@@ -77,7 +74,7 @@ Jeder Triggertyp verfügt über eine andere Schnittstelle sowie über Eingaben, 
 
 | Triggertyp | BESCHREIBUNG | 
 |--------------|-------------| 
-| [**HTTP**](#http-trigger) | Überprüft alle Endpunkte bzw. *fragt diese ab*. Der Endpunkt muss einem bestimmten Triggervertrag entsprechen, und zwar durch Verwendung eines asynchronen Musters (202) oder durch Rückgabe eines Arrays. | 
+| [**HTTP**](#http-trigger) | Überprüft alle Endpunkte bzw. *fragt diese ab*. Der Endpunkt muss einem bestimmten Triggervertrag entsprechen, und zwar durch Verwendung eines asynchronen Musters (`202`) oder durch Rückgabe eines Arrays. | 
 | [**HTTPWebhook**](#http-webhook-trigger) | Erstellt einen aufrufbaren Endpunkt für Ihre Logik-App, aber ruft die angegebene URL auf, um die Registrierung bzw. die Aufhebung der Registrierung durchzuführen. |
 | [**Recurrence**](#recurrence-trigger) | Wird auf der Grundlage eines definierten Zeitplans ausgelöst. Sie können ein Datum und eine Uhrzeit in der Zukunft festlegen, um diesen Trigger auszulösen. Je nach Häufigkeit können Sie auch Zeiten und Tage für die Ausführung Ihres Workflows angeben. | 
 | [**Request**](#request-trigger)  | Erstellt einen aufrufbaren Endpunkt für Ihre Logik-App und wird auch als „manueller“ Trigger bezeichnet. Weitere Informationen finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten](../logic-apps/logic-apps-http-endpoint.md). | 
@@ -130,15 +127,15 @@ Mit diesem Trigger wird ein Endpunkt überprüft bzw.*abgefragt*, indem [von Mic
 
 *Erforderlich*
 
-| Wert | type | BESCHREIBUNG | 
-|-------|------|-------------| 
-| <*APIConnection_trigger_name*> | String | Name des Triggers | 
-| <*connection-name*> | String | Name für die Verbindung mit der verwalteten API, die vom Workflow verwendet wird | 
-| <*method-type*> | String | HTTP-Methode für die Kommunikation mit der verwalteten API: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
-| <*api-operation*> | String | Aufzurufender API-Vorgang | 
-| <*time-unit*> | String | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
-| <*number-of-time-units*> | Integer | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate </br>– Tag: 1–500 Tage </br>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
-|||| 
+| Wert | type | BESCHREIBUNG |
+|-------|------|-------------|
+| <*APIConnection_trigger_name*> | String | Name des Triggers |
+| <*connection-name*> | String | Name für die Verbindung mit der verwalteten API, die vom Workflow verwendet wird |
+| <*method-type*> | String | HTTP-Methode für die Kommunikation mit der verwalteten API: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ |
+| <*api-operation*> | String | Aufzurufender API-Vorgang |
+| <*time-unit*> | String | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ |
+| <*number-of-time-units*> | Integer | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate </br>– Tag: 1–500 Tage </br>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. |
+||||
 
 *Optional*
 
@@ -146,7 +143,7 @@ Mit diesem Trigger wird ein Endpunkt überprüft bzw.*abgefragt*, indem [von Mic
 |-------|------|-------------| 
 | <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in den API-Aufruf einbezogen werden sollen. Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird dem Aufruf beispielsweise `?api-version=2018-01-01` hinzugefügt. | 
-| <*max-runs*> | Integer | Standardmäßig werden Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
+| <*max-runs*> | Integer | Standardmäßig werden Workflowinstanzen gleichzeitig (oder parallel) bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Integer | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
 | <*splitOn-expression*> | String | Für Trigger, die Arrays zurückgeben, verweist dieser Ausdruck auf das zu verwendende Array, damit Sie für jedes Arrayelement eine Workflowinstanz erstellen und ausführen können, anstatt eine „for each“-Schleife zu verwenden. <p>Dieser Ausdruck stellt beispielsweise ein Element im Array dar, das mit dem Inhalt des Triggers zurückgegeben wird: `@triggerbody()?['value']` |
 | <*operation-option*> | String | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). |
@@ -163,7 +160,7 @@ Mit diesem Trigger wird ein Endpunkt überprüft bzw.*abgefragt*, indem [von Mic
 
 *Beispiel*
 
-Diese Triggerdefinition prüft den Posteingang eines Office 365-Outlook-Kontos jeden Tag auf E-Mails: 
+Diese Triggerdefinition prüft den Posteingang eines Geschäfts-, Schul- oder Unikontos jeden Tag auf E-Mails:
 
 ```json
 "When_a_new_email_arrives": {
@@ -228,15 +225,15 @@ Dieser Trigger sendet eine Abonnementanforderung an einen Endpunkt, indem eine [
 |-------|------|-------------| 
 | <*connection-name*> | String | Name für die Verbindung mit der verwalteten API, die vom Workflow verwendet wird | 
 | <*body-content*> | JSON-Objekt | Nachrichteninhalt, der als Nutzlast an die verwaltete API gesendet wird | 
-|||| 
+||||
 
 *Optional*
 
-| Wert | type | BESCHREIBUNG | 
-|-------|------|-------------| 
-| <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in den API-Aufruf einbezogen werden sollen. <p>Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird dem Aufruf beispielsweise `?api-version=2018-01-01` hinzugefügt. | 
-| <*max-runs*> | Integer | Standardmäßig werden Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
+| Wert | type | BESCHREIBUNG |
+|-------|------|-------------|
+| <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
+| <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in den API-Aufruf einbezogen werden sollen. <p>Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird dem Aufruf beispielsweise `?api-version=2018-01-01` hinzugefügt. |
+| <*max-runs*> | Integer | Standardmäßig werden Workflowinstanzen gleichzeitig (oder parallel) bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). |
 | <*max-runs-queue*> | Integer | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
 | <*splitOn-expression*> | String | Für Trigger, die Arrays zurückgeben, verweist dieser Ausdruck auf das zu verwendende Array, damit Sie für jedes Arrayelement eine Workflowinstanz erstellen und ausführen können, anstatt eine „for each“-Schleife zu verwenden. <p>Dieser Ausdruck stellt beispielsweise ein Element im Array dar, das mit dem Inhalt des Triggers zurückgegeben wird: `@triggerbody()?['value']` |
 | <*operation-option*> | String | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). | 
@@ -273,19 +270,21 @@ Diese Triggerdefinition abonniert die Office 365-Outlook-API, gibt eine Rückruf
 
 ### <a name="http-trigger"></a>HTTP-Trigger
 
-Dieser Trigger überprüft den angegebenen Endpunkt basierend auf dem angegebenen Wiederholungszeitplan bzw. fragt ihn ab. Die Antwort des Endpunkts bestimmt, ob der Workflow ausgeführt wird.
+Dieser Trigger sendet eine Anforderung an den angegebenen HTTP- oder HTTPS-Endpunkt, basierend auf dem angegebenen Wiederholungszeitplan. Dieser Trigger überprüft dann die Antwort, um zu bestimmen, ob der Workflow ausgeführt wird. Weitere Informationen finden Sie unter [Aufrufen von Dienstendpunkten per HTTP oder HTTPS aus Azure Logic Apps](../connectors/connectors-native-http.md).
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<endpoint-URL>",
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
       "headers": { "<header-content>" },
+      "queries": "<query-parameters>",
       "body": "<body-content>",
-      "authentication": { "<authentication-method>" },
-      "retryPolicy": { "<retry-behavior>" },
-      "queries": "<query-parameters>"
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      }
    },
    "recurrence": {
       "frequency": "<time-unit>",
@@ -303,46 +302,46 @@ Dieser Trigger überprüft den angegebenen Endpunkt basierend auf dem angegebene
 
 *Erforderlich*
 
-| Wert | type | BESCHREIBUNG | 
-|-------|------|-------------| 
-| <*method-type*> | String | HTTP-Methode zum Abrufen des angegebenen Endpunkts: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
-| <*endpoint-URL*> | String | HTTP- oder HTTPS-URL für den abzurufenden Endpunkt <p>Maximal zulässige Zeichenfolgengröße: 2 KB | 
-| <*time-unit*> | String | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
-| <*number-of-time-units*> | Integer | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate </br>– Tag: 1–500 Tage </br>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
-|||| 
+| Eigenschaft | Wert | type | BESCHREIBUNG |
+|----------|-------|------|-------------|
+| `method` | <*method-type*> | String | Die zum Senden der ausgehenden Anforderung zu verwendende Methode: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ |
+| `uri` | <*HTTP-or-HTTPS-endpoint-URL*> | String | Die HTTP- oder HTTPS-Endpunkt-URL, an die die ausgehende Anforderung gesendet werden soll. Maximal zulässige Zeichenfolgengröße: 2 KB <p>Für einen Azure-Dienst oder eine Azure-Ressource enthält diese URI-Syntax die Ressourcen-ID und den Pfad zu der Ressource, auf die Sie zugreifen möchten. |
+| `frequency` | <*time-unit*> | String | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ |
+| `interval` | <*number-of-time-units*> | Integer | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate </br>– Tag: 1–500 Tage </br>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. |
+|||||
 
 *Optional*
 
-| Wert | type | BESCHREIBUNG | 
-|-------|------|-------------| 
-| <*header-content*> | JSON-Objekt | Header, die mit der Anforderung gesendet werden sollen <p>Verwenden Sie beispielsweise Folgendes, um die Sprache und den Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*body-content*> | String | Nachrichteninhalt, der als Nutzlast mit der Anforderung gesendet wird | 
-| <*authentication-method*> | JSON-Objekt | Die Methode, die von der Anforderung für die Authentifizierung verwendet wird. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). Über den Scheduler hinaus wird die `authority`-Eigenschaft unterstützt. Ohne Angabe wird standardmäßig der Wert `https://login.windows.net` verwendet. Sie können aber einen anderen Wert verwenden, beispielsweise `https://login.windows\-ppe.net`. |
-| <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). |  
- <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in die Anforderung einbezogen werden sollen. <p>Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird der Anforderung beispielsweise `?api-version=2018-01-01` hinzugefügt. | 
-| <*max-runs*> | Integer | Standardmäßig werden Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Integer | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
-| <*operation-option*> | String | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). | 
-|||| 
+| Eigenschaft | Wert | type | BESCHREIBUNG |
+|----------|-------|------|-------------|
+| `headers` | <*header-content*> | JSON-Objekt | Alle Kopfzeilen, die in die Anforderung einbezogen werden müssen. <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in der Anforderung verwendet werden müssen. <p>Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird der Anforderung beispielsweise `?api-version=2018-01-01` hinzugefügt. |
+| `body` | <*body-content*> | JSON-Objekt | Nachrichteninhalt, der als Nutzlast mit der Anforderung gesendet wird |
+| `authentication` | <*authentication-type-and-property-values*> | JSON-Objekt | Das Authentifizierungsmodell, das von der Anforderung zum Authentifizieren ausgehender Anforderungen verwendet wird. Weitere Informationen finden Sie unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). Über den Scheduler hinaus wird die `authority`-Eigenschaft unterstützt. Ohne Angabe wird standardmäßig der Wert `https://management.azure.com/` verwendet. Sie können aber einen anderen Wert verwenden. |
+| `retryPolicy` > `type` | <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
+| `runs` | <*max-runs*> | Integer | Standardmäßig werden Workflowinstanzen gleichzeitig (oder parallel) bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). |
+| `maximumWaitingRuns` | <*max-runs-queue*> | Integer | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). |
+| `operationOptions` | <*operation-option*> | String | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). |
+|||||
 
 *Ausgaben*
 
 | Element | type | BESCHREIBUNG |
-|---------|------|-------------| 
-| headers | JSON-Objekt | Header aus der Antwort | 
-| body | JSON-Objekt | Text aus der Antwort | 
-| status code | Integer | Der Statuscode aus der Antwort | 
-|||| 
+|---------|------|-------------|
+| `headers` | JSON-Objekt | Header aus der Antwort |
+| `body` | JSON-Objekt | Text aus der Antwort |
+| `status code` | Integer | Der Statuscode aus der Antwort |
+||||
 
 *Erforderliche Voraussetzungen für eingehende Anforderungen*
 
-Damit der Endpunkt gut mit Ihrer Logik-App funktioniert, muss er einem bestimmten Triggermuster oder -vertrag entsprechen und diese Eigenschaften erkennen:  
-  
-| response | Erforderlich | BESCHREIBUNG | 
-|----------|----------|-------------| 
-| Statuscode | Ja | Der Statuscode „200 OK“ startet eine Ausführung. Alle anderen Statuscodes starten keine Ausführung. | 
-| Retry-After-Header | Nein | Die Anzahl von Sekunden bis zur erneuten Abfrage des Endpunkts durch Ihre Logik-App. | 
-| Adressheader | Nein | Die URL, die im nächsten Abfrageintervall aufgerufen werden soll. Ohne Angabe wird die ursprüngliche URL verwendet. | 
+Damit der Endpunkt gut mit Ihrer Logik-App funktioniert, muss er einem bestimmten Triggermuster oder -vertrag entsprechen und diese Antworteigenschaften erkennen:
+
+| Eigenschaft | Erforderlich | BESCHREIBUNG |
+|----------|----------|-------------|
+| Statuscode | Ja | Der Statuscode „200 OK“ startet eine Ausführung. Alle anderen Statuscodes starten keine Ausführung. |
+| Retry-After-Header | Nein | Die Anzahl von Sekunden bis zur erneuten Abfrage des Endpunkts durch Ihre Logik-App. |
+| Adressheader | Nein | Die URL, die im nächsten Abfrageintervall aufgerufen werden soll. Ohne Angabe wird die ursprüngliche URL verwendet. |
 |||| 
 
 *Beispielverhalten für unterschiedliche Anforderungen*
@@ -362,8 +361,7 @@ Damit der Endpunkt gut mit Ihrer Logik-App funktioniert, muss er einem bestimmte
 
 Mit diesem Trigger wird Ihre Logik-App aufrufbar, indem ein Endpunkt erstellt wird, der durch das Aufrufen der angegebenen Endpunkt-URL ein Abonnement registrieren kann. Wenn Sie diesen Trigger in Ihrem Workflow erstellen, wird bei einer ausgehenden Anforderung der Aufruf für die Registrierung des Abonnements durchgeführt. Auf diese Weise kann der Trigger mit dem Lauschen auf Ereignisse beginnen. Wenn ein Vorgang diesen Trigger ungültig macht, führt eine ausgehende Anforderung automatisch den Aufruf zum Kündigen des Abonnements durch. Weitere Informationen finden Sie unter [Endpunktabonnements](#subscribe-unsubscribe).
 
-Sie können auch [asynchrone Limits](#asynchronous-limits) für einen **HTTPWebhook**-Trigger angeben.
-Das Verhalten des Triggers hängt davon ab, welche Abschnitte Sie verwenden bzw. entfernen. 
+Sie können auch [asynchrone Limits](#asynchronous-limits) für einen **HTTPWebhook**-Trigger angeben. Das Verhalten des Triggers hängt davon ab, welche Abschnitte Sie verwenden bzw. entfernen.
 
 ```json
 "HTTP_Webhook": {
@@ -374,7 +372,7 @@ Das Verhalten des Triggers hängt davon ab, welche Abschnitte Sie verwenden bzw.
          "uri": "<endpoint-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": { "<retry-behavior>" }
          },
       },
@@ -383,7 +381,7 @@ Das Verhalten des Triggers hängt davon ab, welche Abschnitte Sie verwenden bzw.
          "url": "<endpoint-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" }
+         "authentication": { "<authentication-type>" }
       }
    },
    "runTimeConfiguration": {
@@ -413,9 +411,9 @@ Einige Werte, z.B. <*method-type*>, sind sowohl für das Objekt `"subscribe"` al
 | <*method-type*> | String | HTTP-Methode für die Kündigungsanforderung: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*endpoint-unsubscribe-URL*> | String | Endpunkt-URL, an die die Kündigungsanforderung gesendet werden soll | 
 | <*body-content*> | String | Beliebiger Nachrichteninhalt, der in der Abonnement- oder Kündigungsanforderung gesendet werden soll | 
-| <*authentication-method*> | JSON-Objekt | Die Methode, die von der Anforderung für die Authentifizierung verwendet wird. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). |
+| <*authentication-type*> | JSON-Objekt | Das Authentifizierungsmodell, das von der Anforderung zum Authentifizieren ausgehender Anforderungen verwendet wird. Weitere Informationen finden Sie unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). |
 | <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*max-runs*> | Integer | Standardmäßig werden alle Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
+| <*max-runs*> | Integer | Standardmäßig werden alle Workflowinstanzen gleichzeitig (oder parallel) bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Integer | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
 | <*operation-option*> | String | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). | 
 |||| 
@@ -463,7 +461,7 @@ Dieser Trigger erstellt ein Abonnement mit dem angegebenen Endpunkt, stellt eine
 
 ### <a name="recurrence-trigger"></a>Recurrence-Trigger  
 
-Dieser Trigger wird basierend auf dem angegebenen Wiederholungszeitplan ausgeführt und ist eine einfache Möglichkeit zum Erstellen eines Workflows, der regelmäßig ausgeführt wird. 
+Dieser Trigger wird basierend auf dem angegebenen Wiederholungszeitplan ausgeführt und ist eine einfache Möglichkeit zum Erstellen eines Workflows, der regelmäßig ausgeführt wird.
 
 ```json
 "Recurrence": {
@@ -509,7 +507,7 @@ Dieser Trigger wird basierend auf dem angegebenen Wiederholungszeitplan ausgefü
 | <*one-or-more-hour-marks*> | Ganze Zahl oder Ganzzahlarray | Wenn Sie für `frequency` die Option „Day“ oder „Week“ angeben, können Sie eine ganze Zahl oder eine kommagetrennte Liste mit ganzen Zahlen von 0 bis 23 als die Stunden des Tages angeben, zu denen der Workflow ausgeführt werden soll. <p>Wenn Sie also etwa „10“, „12“ und „14“ angeben, erhalten Sie die vollen Stunden „10 Uhr“, „12 Uhr“ und „14 Uhr“. | 
 | <*one-or-more-minute-marks*> | Ganze Zahl oder Ganzzahlarray | Wenn Sie für `frequency` die Option „Day“ oder „Week“ angeben, können Sie eine ganze Zahl oder eine kommagetrennte Liste mit ganzen Zahlen von 0 bis 59 als die Minuten der Stunde angeben, zu denen der Workflow ausgeführt werden soll. <p>Wenn Sie also beispielsweise „30“ als Minutenwert angeben und das vorherige Beispiel für Stunden des Tages verwenden, erhalten Sie „10:30 Uhr“, „12:30 Uhr“ und „14:30 Uhr“. | 
 | weekDays | Zeichenfolge oder Zeichenfolgenarray | Wenn Sie für `frequency` die Option „Week“ angeben, können Sie einen Tag oder eine durch Trennzeichen getrennte Liste mit Tagen für die Workflowausführung angeben: „Monday“, „Tuesday“, „Wednesday“, „Thursday“, „Friday“, „Saturday“, „Sunday“ | 
-| <*max-runs*> | Integer | Standardmäßig werden alle Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
+| <*max-runs*> | Integer | Standardmäßig werden alle Workflowinstanzen gleichzeitig (oder parallel) bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Integer | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
 | <*operation-option*> | String | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). | 
 |||| 
@@ -570,9 +568,9 @@ Weitere Informationen zu diesem Trigger sowie Beispiele finden Sie unter [Erstel
 
 ### <a name="request-trigger"></a>Anforderungstrigger
 
-Durch diesen Trigger wird Ihre Logik-App aufrufbar, indem ein Endpunkt erstellt wird, der eingehende Anforderungen annehmen kann. Geben Sie für diesen Trigger ein JSON-Schema an, das die Nutzlast oder die Eingaben, die der Trigger aus der eingehenden Anforderung empfängt, beschreibt und überprüft. Mit dem Schema kann für spätere Aktionen des Workflows außerdem leichter auf Triggereigenschaften verwiesen werden. 
+Durch diesen Trigger wird Ihre Logik-App aufrufbar, indem ein Endpunkt erstellt wird, der eingehende Anforderungen annehmen kann. Geben Sie für diesen Trigger ein JSON-Schema an, das die Nutzlast oder die Eingaben, die der Trigger aus der eingehenden Anforderung empfängt, beschreibt und überprüft. Mit dem Schema kann für spätere Aktionen des Workflows außerdem leichter auf Triggereigenschaften verwiesen werden.
 
-Um diesen Trigger aufrufen zu können, müssen Sie die `listCallbackUrl`-API verwenden, die in der [Workflow Service-REST-API](https://docs.microsoft.com/rest/api/logic/workflows) beschrieben ist. Informationen zum Verwenden dieses Triggers als HTTP-Endpunkt finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps](../logic-apps/logic-apps-http-endpoint.md).
+Um diesen Trigger aufrufen zu können, müssen Sie die `listCallbackUrl`-API verwenden, die in der [Workflow Service-REST-API](/rest/api/logic/workflows) beschrieben ist. Informationen zum Verwenden dieses Triggers als HTTP-Endpunkt finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps](../logic-apps/logic-apps-http-endpoint.md).
 
 ```json
 "manual": {
@@ -616,14 +614,14 @@ Um diesen Trigger aufrufen zu können, müssen Sie die `listCallbackUrl`-API ver
 | <*method-type*> | String | Methode, die eingehende Anforderungen verwenden müssen, um Ihre Logik-App aufzurufen: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ |
 | <*relative-path-for-accepted-parameter*> | String | Relativer Pfad für den Parameter, der von der URL Ihres Endpunkts akzeptiert werden kann | 
 | <*required-properties*> | Array | Mindestens eine Eigenschaft, die Werte erfordert. | 
-| <*max-runs*> | Integer | Standardmäßig werden alle Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
+| <*max-runs*> | Integer | Standardmäßig werden alle Workflowinstanzen gleichzeitig (oder parallel) bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Integer | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
 | <*operation-option*> | String | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). | 
 |||| 
 
 *Beispiel*
 
-Dieser Trigger gibt an, dass eine eingehende Anforderung die HTTP POST-Methode verwenden muss, um den Trigger aufzurufen. Außerdem enthält er ein Schema, mit dem die Eingabe aus der eingehenden Anforderung überprüft wird: 
+Dieser Trigger gibt an, dass eine eingehende Anforderung die HTTP POST-Methode verwenden muss, um den Trigger aufzurufen. Außerdem enthält er ein Schema, mit dem die Eingabe aus der eingehenden Anforderung überprüft wird:
 
 ```json
 "manual": {
@@ -675,7 +673,7 @@ Sie können beispielsweise angeben, dass ein Trigger nur dann ausgeführt wird, 
 }
 ```
 
-Standardmäßig wird ein Trigger nur ausgelöst, wenn die Antwort „200 OK“ empfangen wird. Wenn ein Ausdruck auf den Statuscode eines Triggers verweist, wird das Standardverhalten des Triggers ersetzt. Falls der Trigger bei mehr als einem Statuscode ausgelöst werden soll, z.B. „200“ und „201“, müssen Sie diesen Ausdruck als Ihre Bedingung einfügen: 
+Standardmäßig wird ein Trigger nur ausgelöst, wenn die Antwort „200 OK“ empfangen wird. Wenn ein Ausdruck auf den Statuscode eines Triggers verweist, wird das Standardverhalten des Triggers ersetzt. Falls der Trigger bei mehr als einem Statuscode ausgelöst werden soll, z.B. „200“ und „201“, müssen Sie diesen Ausdruck als Ihre Bedingung einfügen:
 
 `@or(equals(triggers().code, 200),equals(triggers().code, 201))` 
 
@@ -683,13 +681,14 @@ Standardmäßig wird ein Trigger nur ausgelöst, wenn die Antwort „200 OK“ e
 
 ## <a name="trigger-multiple-runs"></a>Mehrere Ausführungen des Triggers
 
-Wenn der Trigger ein Array zum Verarbeiten durch die Logik-App zurückgibt, könnte eine „for each“-Schleife in einigen Fällen für die Verarbeitung der einzelnen Arrayelemente zu lange dauern. Stattdessen können Sie die **SplitOn**-Eigenschaft in Ihrem Trigger zur *debatch*-Ausführung für das Array verwenden. Bei der Batchauflösung werden das Array in seine Elemente aufgeteilt und eine neue Logik-App-Instanz gestartet, die für jedes Arrayelement ausgeführt wird. Dieser Ansatz ist beispielsweise hilfreich, wenn Sie einen Endpunkt abfragen möchten, der zwischen Abfrageintervallen mehrere neue Elemente zurückgeben könnte.
-Informationen über die maximale Anzahl der Arrayelemente, die **SplitOn** in einer einzelnen Logik-App-Ausführung verarbeiten kann, finden Sie unter [Logic Apps-Grenzwerte und -Konfiguration](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). 
+Wenn der Trigger ein Array zum Verarbeiten durch die Logik-App zurückgibt, könnte eine „for each“-Schleife in einigen Fällen für die Verarbeitung der einzelnen Arrayelemente zu lange dauern. Stattdessen können Sie die **SplitOn**-Eigenschaft in Ihrem Trigger zur *debatch*-Ausführung für das Array verwenden. Bei der Batchauflösung werden das Array in seine Elemente aufgeteilt und eine neue Logik-App-Instanz gestartet, die für jedes Arrayelement ausgeführt wird. Dieser Ansatz ist beispielsweise hilfreich, wenn Sie einen Endpunkt abfragen möchten, der zwischen Abfrageintervallen mehrere neue Elemente zurückgeben könnte. Informationen über die maximale Anzahl der Arrayelemente, die **SplitOn** in einer einzelnen Logik-App-Ausführung verarbeiten kann, finden Sie unter [Logic Apps-Grenzwerte und -Konfiguration](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). 
 
 > [!NOTE]
 > Es ist nicht möglich, **SplitOn** mit einem synchronen Antwortmuster zu verwenden. Jeder Workflow, der **SplitOn** verwendet und eine Antwortaktion enthält, wird asynchron ausgeführt und sendet sofort eine `202 ACCEPTED`-Antwort.
-
-Wenn die Swagger-Datei des Triggers eine Nutzlast beschreibt, die ein Array ist, wird die **SplitOn**-Eigenschaft automatisch dem Trigger hinzugefügt. Fügen Sie diese Eigenschaft andernfalls in der Antwortnutzlast hinzu, die das Array enthält, für das Sie die Batchauflösung ausführen möchten. 
+>
+> Wenn Trigger-Parallelität aktiviert ist, wird das [SplitOn-Limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) erheblich reduziert. Wenn die Anzahl der Elemente dieses Limit überschreitet, wird die SplitOn-Funktion deaktiviert.
+ 
+Wenn die Swagger-Datei des Triggers eine Nutzlast beschreibt, die ein Array ist, wird die **SplitOn**-Eigenschaft automatisch dem Trigger hinzugefügt. Fügen Sie diese Eigenschaft andernfalls in der Antwortnutzlast hinzu, die das Array enthält, für das Sie die Batchauflösung ausführen möchten.
 
 *Beispiel*
 
@@ -710,7 +709,7 @@ Angenommen, Sie verfügen über eine API, die folgende Antwort zurückgibt:
    ]
 }
 ```
- 
+
 Ihre Logik-App benötigt lediglich den Inhalt des Arrays von `Rows`, damit Sie einen Trigger wie im folgenden Beispiel erstellen können:
 
 ``` json
@@ -757,9 +756,7 @@ Ihre Workflowdefinition kann nun `@triggerBody().name` verwenden, um die `name`-
 
 ## <a name="actions-overview"></a>Übersicht über Aktionen
 
-Für Azure Logic Apps werden verschiedene Aktionstypen bereitgestellt. Diese verfügen jeweils über unterschiedliche Eingaben, mit denen das eindeutige Verhalten einer Aktion definiert wird. 
-
-Aktionen verfügen über diese allgemeinen Elemente, von denen einige aber optional sind:
+Für Azure Logic Apps werden verschiedene Aktionstypen bereitgestellt. Diese verfügen jeweils über unterschiedliche Eingaben, mit denen das eindeutige Verhalten einer Aktion definiert wird. Aktionen verfügen über diese allgemeinen Elemente, von denen einige aber optional sind:
 
 ```json
 "<action-name>": {
@@ -804,7 +801,7 @@ Hier sind einige häufig verwendete Aktionstypen angegeben:
 
   * [**Antwort**](#response-action) zum Beantworten von Anforderungen
 
-  * [**Ausführen von JavaScript-Code** ](#run-javascript-code) für die Ausführung von JavaScript-Codeausschnitten
+  * [**Ausführen von JavaScript-Code**](#run-javascript-code) für die Ausführung von JavaScript-Codeausschnitten
 
   * [**Funktion**](#function-action) zum Aufrufen von Azure Functions
 
@@ -950,7 +947,7 @@ Diese Aktion sendet eine Abonnementanforderung per HTTP an einen Endpunkt, indem
          "uri": "<api-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": "<retry-behavior>",
          "queries": { "<query-parameters>" },
          "<other-action-specific-input-properties>"
@@ -960,7 +957,7 @@ Diese Aktion sendet eine Abonnementanforderung per HTTP an einen Endpunkt, indem
          "uri": "<api-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "<other-action-specific-properties>"
       },
    },
@@ -986,7 +983,7 @@ Einige Werte, z.B. <*method-type*>, sind sowohl für das Objekt `"subscribe"` al
 | <*api-unsubscribe-URL*> | String | URI, der zum Kündigen des API-Abonnements verwendet wird | 
 | <*header-content*> | JSON-Objekt | Alle Header, die in der Anforderung gesendet werden sollen <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | JSON-Objekt | Beliebiger Nachrichteninhalt, der in der Anforderung gesendet wird | 
-| <*authentication-method*> | JSON-Objekt | Die Methode, die von der Anforderung für die Authentifizierung verwendet wird. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). |
+| <*authentication-type*> | JSON-Objekt | Das Authentifizierungsmodell, das von der Anforderung zum Authentifizieren ausgehender Anforderungen verwendet wird. Weitere Informationen finden Sie unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). |
 | <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in den API-Aufruf einbezogen werden sollen. <p>Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird dem Aufruf beispielsweise `?api-version=2018-01-01` hinzugefügt. | 
 | <*other-action-specific-input-properties*> | JSON-Objekt | Alle anderen Eingabeeigenschaften, die für die spezifische Aktion gelten | 
@@ -999,8 +996,7 @@ Sie können auch Grenzwerte für eine **ApiConnectionWebhook**-Aktion angeben, w
 
 ### <a name="compose-action"></a>Compose-Aktion
 
-Diese Aktion erstellt eine einzelne Ausgabe aus mehreren Eingaben, z.B. Ausdrücken. Sowohl die Ausgabe als auch die Eingaben können einen beliebigen Typ aufweisen, der von Azure Logic Apps nativ unterstützt wird, z.B. Arrays, JSON-Objekte, XML und Binärdateien.
-Sie können die Ausgabe der Aktion dann in anderen Aktionen verwenden. 
+Diese Aktion erstellt eine einzelne Ausgabe aus mehreren Eingaben, z.B. Ausdrücken. Sowohl die Ausgabe als auch die Eingaben können einen beliebigen Typ aufweisen, der von Azure Logic Apps nativ unterstützt wird, z.B. Arrays, JSON-Objekte, XML und Binärdateien. Sie können die Ausgabe der Aktion dann in anderen Aktionen verwenden. 
 
 ```json
 "Compose": {
@@ -1091,7 +1087,7 @@ Für das `includeTrigger`-Attribut können Sie `true`- oder `false`-Werte angebe
 
 *Beispiel 1*
 
-Diese Aktion führt Code aus, der den Namen Ihrer Logik-App abruft und den Text „Hello World from \<Name der Logik-App>“ als Ergebnis zurückgibt. In diesem Beispiel verweist der Code auf den Namen des Workflows, indem mithilfe des schreibgeschützten `workflowContext`-Objekts auf die Eigenschaft `workflowContext.workflow.name` zugegriffen wird. Weitere Informationen zur Verwendung des `workflowContext`-Objekts finden Sie unter [Reference trigger and action results in your code (Verweisen auf die Ergebnisse von Triggern und Aktionen in Ihrem Code)](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext).
+Diese Aktion führt Code aus, der den Namen Ihrer Logik-App abruft und den Text „Hello World from \<logic-app-name>“ als Ergebnis zurückgibt. In diesem Beispiel verweist der Code auf den Namen des Workflows, indem mithilfe des schreibgeschützten `workflowContext`-Objekts auf die Eigenschaft `workflowContext.workflow.name` zugegriffen wird. Weitere Informationen zur Verwendung des `workflowContext`-Objekts finden Sie unter [Reference trigger and action results in your code (Verweisen auf die Ergebnisse von Triggern und Aktionen in Ihrem Code)](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext).
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1105,9 +1101,9 @@ Diese Aktion führt Code aus, der den Namen Ihrer Logik-App abruft und den Text 
 
 *Beispiel 2*
 
-Diese Aktion führt Code in einer Logik-App aus, die ausgelöst wird, wenn eine neue E-Mail in einem Office 365 Outlook-Konto eingeht. Die Logik-App verwendet auch eine Aktion für das Senden einer Genehmigungs-E-Mail, die den Inhalt der empfangenen E-Mail zusammen mit einer Genehmigungsanforderung weiterleitet. 
+Diese Aktion führt Code in einer Logik-App aus, die ausgelöst wird, wenn eine neue E-Mail in einem Geschäfts-, Schul- oder Unikonto eingeht. Die Logik-App verwendet auch eine Aktion für das Senden einer Genehmigungs-E-Mail, die den Inhalt der empfangenen E-Mail zusammen mit einer Genehmigungsanforderung weiterleitet.
 
-Der Code extrahiert E-Mail-Adressen aus der `Body`-Eigenschaft des Triggers und gibt diese E-Mail-Adressen zusammen mit dem `SelectedOption`-Eigenschaftswert aus der Genehmigungsaktion zurück. Die Aktion schließt explizit die Aktion zum Senden der Genehmigungs-E-Mail als Abhängigkeit im Attribut `explicitDependencies`  >  `actions` mit ein.
+Der Code extrahiert die E-Mail-Adressen aus der `Body`-Eigenschaft des Triggers und gibt die Adressen zusammen mit dem `SelectedOption`-Eigenschaftswert aus der Genehmigungsaktion zurück. Die Aktion schließt explizit die Aktion zum Senden der Genehmigungs-E-Mail als Abhängigkeit im Attribut `explicitDependencies` > `actions` mit ein.
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1206,14 +1202,21 @@ Mit dieser Aktionsdefinition wird die zuvor erstellte Funktion „GetProductID�
 
 ### <a name="http-action"></a>HTTP-Aktion
 
-Diese Aktion sendet eine Anforderung an den angegebenen Endpunkt und überprüft anhand der Antwort, ob der Workflow ausgeführt werden soll. 
+Diese Aktion sendet eine Anforderung an den angegebenen HTTP- oder HTTPS-Endpunkt und überprüft anhand der Antwort, ob der Workflow ausgeführt wird. Weitere Informationen finden Sie unter [Aufrufen von Dienstendpunkten per HTTP oder HTTPS aus Azure Logic Apps](../connectors/connectors-native-http.md).
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<HTTP-or-HTTPS-endpoint-URL>"
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
+      "headers": { "<header-content>" },
+      "queries": { "<query-parameters>" },
+      "body": "<body-content>",
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      },
    },
    "runAfter": {}
 }
@@ -1221,23 +1224,24 @@ Diese Aktion sendet eine Anforderung an den angegebenen Endpunkt und überprüft
 
 *Erforderlich*
 
-| Wert | type | BESCHREIBUNG | 
-|-------|------|-------------| 
-| <*method-type*> | String | Methode zum Senden der Anforderung: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
-| <*HTTP-or-HTTPS-endpoint-URL*> | String | Der aufzurufende HTTP- oder HTTPS-Endpunkt. Maximal zulässige Zeichenfolgengröße: 2 KB | 
-|||| 
+| Eigenschaft | Wert | type | BESCHREIBUNG |
+|----------|-------|------|-------------|
+| `method` | <*method-type*> | String | Die zum Senden der ausgehenden Anforderung zu verwendende Methode: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ |
+| `uri` | <*HTTP-or-HTTPS-endpoint-URL*> | String | Die HTTP- oder HTTPS-Endpunkt-URL, an die die ausgehende Anforderung gesendet werden soll. Maximal zulässige Zeichenfolgengröße: 2 KB <p>Für einen Azure-Dienst oder eine Azure-Ressource enthält diese URI-Syntax die Ressourcen-ID und den Pfad zu der Ressource, auf die Sie zugreifen möchten. |
+|||||
 
 *Optional*
 
-| Wert | type | BESCHREIBUNG | 
-|-------|------|-------------| 
-| <*header-content*> | JSON-Objekt | Beliebige Header, die mit der Anforderung gesendet werden sollen <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*body-content*> | JSON-Objekt | Beliebiger Nachrichteninhalt, der in der Anforderung gesendet wird | 
-| <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in die Anforderung einbezogen werden sollen. <p>Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird dem Aufruf beispielsweise `?api-version=2018-01-01` hinzugefügt. | 
-| <*other-action-specific-input-properties*> | JSON-Objekt | Alle anderen Eingabeeigenschaften, die für die spezifische Aktion gelten | 
-| <*other-action-specific-properties*> | JSON-Objekt | Alle anderen Eigenschaften, die für die spezifische Aktion gelten | 
-|||| 
+| Eigenschaft | Wert | type | BESCHREIBUNG |
+|----------|-------|------|-------------|
+| `headers` | <*header-content*> | JSON-Objekt | Alle Kopfzeilen, die in die Anforderung einbezogen werden müssen. <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in der Anforderung verwendet werden müssen. <p>Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird dem Aufruf beispielsweise `?api-version=2018-01-01` hinzugefügt. |
+| `body` | <*body-content*> | JSON-Objekt | Nachrichteninhalt, der als Nutzlast mit der Anforderung gesendet wird |
+| `authentication` | <*authentication-type-and-property-values*> | JSON-Objekt | Das Authentifizierungsmodell, das von der Anforderung zum Authentifizieren ausgehender Anforderungen verwendet wird. Weitere Informationen finden Sie unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). Über den Scheduler hinaus wird die `authority`-Eigenschaft unterstützt. Ohne Angabe wird standardmäßig der Wert `https://management.azure.com/` verwendet. Sie können aber einen anderen Wert verwenden. |
+| `retryPolicy` > `type` | <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
+| <*other-action-specific-input-properties*> | <*input-property*> | JSON-Objekt | Alle anderen Eingabeeigenschaften, die für die spezifische Aktion gelten |
+| <*other-action-specific-properties*> | <*property-value*> | JSON-Objekt | Alle anderen Eigenschaften, die für die spezifische Aktion gelten |
+|||||
 
 *Beispiel*
 
@@ -1301,7 +1305,7 @@ Mit dieser Aktionsdefinition werden die Werte aus der Variablen abgerufen, indem
 
 ### <a name="parse-json-action"></a>Aktion „Parse JSON“
 
-Mit dieser Aktion werden benutzerfreundliche Felder oder *Token* aus den Eigenschaften im JSON-Inhalt erstellt. Sie können dann in Ihrer Logik-App auf diese Eigenschaften zugreifen, indem Sie stattdessen die Token verwenden. Wenn Sie beispielsweise die JSON-Ausgabe von Diensten verwenden möchten, z.B. Azure Service Bus und Azure Cosmos DB, können Sie diese Aktion in Ihre Logik-App einfügen, damit Sie einfacher auf die Daten in dieser Ausgabe verweisen können. 
+Mit dieser Aktion werden benutzerfreundliche Felder oder *Token* aus den Eigenschaften im JSON-Inhalt erstellt. Sie können dann in Ihrer Logik-App auf diese Eigenschaften zugreifen, indem Sie stattdessen die Token verwenden. Wenn Sie beispielsweise die JSON-Ausgabe von Diensten verwenden möchten, z.B. Azure Service Bus und Azure Cosmos DB, können Sie diese Aktion in Ihre Logik-App einfügen, damit Sie einfacher auf die Daten in dieser Ausgabe verweisen können.
 
 ```json
 "Parse_JSON": {
@@ -1324,7 +1328,7 @@ Mit dieser Aktion werden benutzerfreundliche Felder oder *Token* aus den Eigensc
 
 *Beispiel*
 
-Mit dieser Aktionsdefinition werden diese Token erstellt, die Sie in Ihrem Workflow verwenden können. Dies gilt aber nur für Aktionen, die nach der Aktion **Parse JSON** ausgeführt werden: 
+Mit dieser Aktionsdefinition werden diese Token erstellt, die Sie in Ihrem Workflow verwenden können. Dies gilt aber nur für Aktionen, die nach der Aktion **Parse JSON** ausgeführt werden:
 
 `FirstName`, `LastName` und `Email`
 
@@ -1502,7 +1506,7 @@ Im Gegensatz zu anderen Aktionen verfügt die Aktion **Response** über speziell
 
 * Ihr Workflow kann die Aktion **Response** überall verwenden, *mit Ausnahme* innerhalb von **Foreach**-Schleifen, **Until**-Schleifen, z.B. sequenziellen Schleifen, und parallelen Branches. 
 
-* Die ursprüngliche HTTP-Anforderung ruft die Antwort Ihres Workflows nur ab, wenn alle für die Aktion **Response** erforderlichen Aktionen innerhalb des [Timeoutlimits für HTTP-Anforderungen](../logic-apps/logic-apps-limits-and-config.md#request-limits) beendet wurden.
+* Die ursprüngliche Anforderung ruft die Antwort Ihres Workflows nur ab, wenn alle für die Aktion **Response** erforderlichen Aktionen innerhalb des [HTTP-Timeoutlimits](../logic-apps/logic-apps-limits-and-config.md#http-limits) beendet wurden.
 
   Wenn Ihr Workflow aber eine andere Logik-App als geschachtelten Workflow aufruft, wartet der übergeordnete Workflow, bis der geschachtelte Workflow abgeschlossen ist. Hierbei spielt es keine Rolle, wie viel Zeit vergeht, bis der geschachtelte Workflow abgeschlossen ist.
 
@@ -1516,7 +1520,7 @@ Im Gegensatz zu anderen Aktionen verfügt die Aktion **Response** über speziell
 
 ### <a name="select-action"></a>Aktion select
 
-Diese Aktion erstellt ein Array mit JSON-Objekten, indem Elemente aus einem anderen Array basierend auf der angegebenen Zuordnung transformiert werden. Das Ausgabearray und das Quellarray verfügen immer über die gleiche Anzahl von Elementen. Sie können zwar nicht die Anzahl von Objekten im Ausgabearray ändern, aber Sie können Eigenschaften und die zugehörigen Werte für diese Objekte hinzufügen oder entfernen. Mit der `select`-Eigenschaft wird mindestens ein Schlüssel-Wert-Paar angegeben, mit dem die Zuordnung zum Transformieren von Elementen im Quellarray definiert wird. Ein Schlüssel-Wert-Paar steht für eine Eigenschaft und den zugehörigen Wert für alle Objekte im Ausgabearray. 
+Diese Aktion erstellt ein Array mit JSON-Objekten, indem Elemente aus einem anderen Array basierend auf der angegebenen Zuordnung transformiert werden. Das Ausgabearray und das Quellarray verfügen immer über die gleiche Anzahl von Elementen. Sie können zwar nicht die Anzahl von Objekten im Ausgabearray ändern, aber Sie können Eigenschaften und die zugehörigen Werte für diese Objekte hinzufügen oder entfernen. Mit der `select`-Eigenschaft wird mindestens ein Schlüssel-Wert-Paar angegeben, mit dem die Zuordnung zum Transformieren von Elementen im Quellarray definiert wird. Ein Schlüssel-Wert-Paar steht für eine Eigenschaft und den zugehörigen Wert für alle Objekte im Ausgabearray.
 
 ```json
 "Select": {
@@ -1545,7 +1549,7 @@ Mit der Aktion **Select** wird ein Array als Ausgabe erstellt. Alle Aktionen, f�
 
 *Beispiel*
 
-Mit dieser Aktionsdefinition wird ein JSON-Objektarray aus einem Integer-Array erstellt. Die Aktion durchläuft das Quellarray, ruft die einzelnen ganzzahligen Werte ab, indem der Ausdruck `@item()` verwendet wird, und weist jeden Wert der Eigenschaft „`number`“ in den einzelnen JSON-Objekten zu: 
+Mit dieser Aktionsdefinition wird ein JSON-Objektarray aus einem Integer-Array erstellt. Die Aktion durchläuft das Quellarray, ruft die einzelnen ganzzahligen Werte ab, indem der Ausdruck `@item()` verwendet wird, und weist jeden Wert der Eigenschaft „`number`“ in den einzelnen JSON-Objekten zu:
 
 ```json
 "Select": {
@@ -1634,7 +1638,7 @@ Mit dieser Aktion wird aus einer CSV- oder HTML-Tabelle ein Array erstellt. Für
 
 | Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
-| \<CSV *oder* HTML>| String | Format für die Tabelle, die Sie erstellen möchten | 
+| \<CSV *or* HTML>| String | Format für die Tabelle, die Sie erstellen möchten | 
 | <*array*> | Array | Array oder Ausdruck, mit dem die Quellelemente für die Tabelle bereitgestellt werden <p>**Hinweis**: Wenn das Quellarray leer ist, wird mit der Aktion eine leere Tabelle erstellt. | 
 |||| 
 
@@ -1650,11 +1654,11 @@ Verwenden Sie das Array `columns`, um Spaltenüberschriften und -werte anzugeben
 
 *Beispiel 1*
 
-Angenommen, Sie verfügen über die zuvor erstellte Variable „myItemArray“, die derzeit dieses Array enthält: 
+Angenommen, Sie verfügen über die zuvor erstellte Variable „myItemArray“, die derzeit dieses Array enthält:
 
 `[ {"ID": 0, "Product_Name": "Apples"}, {"ID": 1, "Product_Name": "Oranges"} ]`
 
-Mit dieser Aktionsdefinition wird eine CSV-Tabelle aus der Variablen „myItemArray“ erstellt. Der von der `from`-Eigenschaft verwendete Ausdruck ruft das Array aus „myItemArray“ ab, indem die Funktion `variables()` verwendet wird: 
+Mit dieser Aktionsdefinition wird eine CSV-Tabelle aus der Variablen „myItemArray“ erstellt. Der von der `from`-Eigenschaft verwendete Ausdruck ruft das Array aus „myItemArray“ ab, indem die Funktion `variables()` verwendet wird:
 
 ```json
 "Create_CSV_table": {
@@ -1677,7 +1681,7 @@ ID,Product_Name
 
 *Beispiel 2*
 
-Mit dieser Aktionsdefinition wird eine HTML-Tabelle aus der Variablen „myItemArray“ erstellt. Der von der `from`-Eigenschaft verwendete Ausdruck ruft das Array aus „myItemArray“ ab, indem die Funktion `variables()` verwendet wird: 
+Mit dieser Aktionsdefinition wird eine HTML-Tabelle aus der Variablen „myItemArray“ erstellt. Der von der `from`-Eigenschaft verwendete Ausdruck ruft das Array aus „myItemArray“ ab, indem die Funktion `variables()` verwendet wird:
 
 ```json
 "Create_HTML_table": {
@@ -1727,7 +1731,7 @@ Hier ist die HTML-Tabelle angegeben, die mit dieser Aktion erstellt wird:
 
 ### <a name="terminate-action"></a>Terminate-Aktion
 
-Mit dieser Aktion wird die Ausführung für eine Workflowinstanz beendet, alle aktiven Aktionen werden abgebrochen, alle verbleibenden Aktionen werden übersprungen und der angegebene Status wird zurückgegeben. Sie können die **Terminate**-Aktion beispielsweise verwenden, wenn Ihre Logik-App nach einem Fehlerzustand vollständig beendet werden muss. Diese Aktion wirkt sich nicht auf bereits abgeschlossene Aktionen aus und kann nicht in **Foreach**- und **Until**-Schleifen, einschließlich sequenziellen Schleifen, enthalten sein. 
+Mit dieser Aktion wird die Ausführung für eine Workflowinstanz beendet, alle aktiven Aktionen werden abgebrochen, alle verbleibenden Aktionen werden übersprungen und der angegebene Status wird zurückgegeben. Sie können die **Terminate**-Aktion beispielsweise verwenden, wenn Ihre Logik-App nach einem Fehlerzustand vollständig beendet werden muss. Diese Aktion wirkt sich nicht auf bereits abgeschlossene Aktionen aus und kann nicht in **Foreach**- und **Until**-Schleifen, einschließlich sequenziellen Schleifen, enthalten sein.
 
 ```json
 "Terminate": {
@@ -1780,9 +1784,9 @@ Mit dieser Aktion wird eine Workflowausführung beendet und der Status der Ausf�
 
 <a name="wait-action"></a>
 
-### <a name="wait-action"></a>Wait-Aktion  
+### <a name="wait-action"></a>Wait-Aktion
 
-Mit dieser Aktion wird die Workflowausführung für den angegebenen Zeitraum oder bis zum angegebenen Zeitpunkt (aber nicht beides) unterbrochen. 
+Mit dieser Aktion wird die Workflowausführung für den angegebenen Zeitraum oder bis zum angegebenen Zeitpunkt (aber nicht beides) unterbrochen.
 
 *Angegebener Zeitraum*
 
@@ -1867,7 +1871,7 @@ Die Logic Apps-Engine überprüft den Zugriff auf den Trigger, den Sie aufrufen 
 
 * Es wird dasselbe Azure-Abonnement wie für Ihre übergeordnete Logik-App verwendet.
 
-* Die geschachtelte Logik-App muss über eine [Response](#response-action)-Aktion verfügen, damit die Ausgaben der geschachtelten Logik-App in Ihrer übergeordneten Logik-App verwendet werden können. 
+* Die geschachtelte Logik-App muss über eine [Response](#response-action)-Aktion verfügen, damit die Ausgaben der geschachtelten Logik-App in Ihrer übergeordneten Logik-App verwendet werden können.
 
 ```json
 "<nested-logic-app-name>": {
@@ -1911,7 +1915,7 @@ Die Ausgaben dieser Aktion variieren je nach der Aktion „Response“ der gesch
 
 *Beispiel*
 
-Nachdem die Aktion „Start_search“ erfolgreich abgeschlossen wurde, wird mit dieser Workflow-Aktionsdefinition eine andere Logik-App mit dem Namen „Get_product_information“ aufgerufen, mit der die angegebenen Eingaben übergeben werden: 
+Nachdem die Aktion „Start_search“ erfolgreich abgeschlossen wurde, wird mit dieser Workflow-Aktionsdefinition eine andere Logik-App mit dem Namen „Get_product_information“ aufgerufen, mit der die angegebenen Eingaben übergeben werden:
 
 ```json
 "actions": {
@@ -1976,7 +1980,7 @@ Diese Schleifenaktion durchläuft ein Array und führt Aktionen für die einzeln
 
 | Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*count*> | Integer | Standardmäßig werden die Iterationen für „for each“-Schleifen gleichzeitig bzw. parallel ausgeführt, bis das [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) erreicht ist. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Parallelität von „for each“-Schleifen](#change-for-each-concurrency). | 
+| <*count*> | Integer | Standardmäßig werden die Iterationen für „for each“-Schleifen gleichzeitig (oder parallel) ausgeführt, bis das [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) erreicht ist. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Parallelität von „for each“-Schleifen](#change-for-each-concurrency). | 
 | <*operation-option*> | String | Wenn Sie eine „for each“-Schleife nicht parallel, sondern sequenziell durchführen möchten, legen Sie entweder <*operation-option*> auf `Sequential` oder <*count*> auf `1` fest (aber nicht beides). Weitere Informationen finden Sie unter [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each). | 
 |||| 
 
@@ -2301,13 +2305,16 @@ Diese Schleifenaktion enthält Aktionen, die so lange ausgeführt werden, bis di
 | <*action-type*> | String | Aktionstyp, den Sie ausführen möchten | 
 | <*action-inputs*> | Verschiedene | Eingaben für die auszuführende Aktion | 
 | <*condition*> | String | Die Bedingung oder der Wert, die bzw. der ausgewertet wird, nachdem die Ausführung aller Aktionen der Schleife beendet ist | 
-| <*loop-count*> | Integer | Der Grenzwert für die maximale Anzahl von Schleifen, die von der Aktion ausgeführt werden können. Der Standardwert für `count` beträgt 60. | 
+| <*loop-count*> | Integer | Der Grenzwert für die maximale Anzahl von Schleifen, die von der Aktion ausgeführt werden können. Weitere Informationen zum Standardgrenzwert und Maximalgrenzwert finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). | 
 | <*loop-timeout*> | String | Der Grenzwert für längste Ausführungsdauer, die für die Schleife möglich ist. Der Standardwert für `timeout` lautet `PT1H`. Dies ist das erforderliche [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601). |
 |||| 
 
+> [!NOTE]
+> Wenn der Ausdruck von der Ausgabe einer Aktion innerhalb der Until-Schleife abhängig ist, stellen Sie sicher, dass Sie alle Fehler berücksichtigen, die aus dieser Aktion resultieren.
+
 *Beispiel*
 
-Mit dieser Schleifenaktionsdefinition wird eine HTTP-Anforderung an die angegebene URL gesendet, bis eine dieser Bedingungen erfüllt ist: 
+Mit dieser Schleifenaktionsdefinition wird eine HTTP-Anforderung an die angegebene URL gesendet, bis eine dieser Bedingungen erfüllt ist:
 
 * Die Anforderung erhält eine Antwort mit dem Statuscode „200 OK“.
 * Die Schleife wurde sechzig Mal ausgeführt.
@@ -2355,7 +2362,7 @@ Zur Unterstützung dieser Aufrufe gibt der `@listCallbackUrl()`-Ausdruck eine ei
 
 ## <a name="change-asynchronous-duration"></a>Ändern der asynchronen Dauer
 
-Sowohl für Trigger als auch für Aktionen können Sie die Dauer für das asynchrone Muster auf ein bestimmtes Zeitintervall begrenzen, indem Sie die `limit.timeout`-Eigenschaft hinzufügen. Auf diese Weise wird der Status der Aktion als `Cancelled` mit dem Code `ActionTimedOut` gekennzeichnet, falls die Aktion nach Ablauf des Intervalls noch nicht beendet war. Für die `timeout`-Eigenschaft wird das [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) verwendet. 
+Sowohl für Trigger als auch für Aktionen können Sie die Dauer für das asynchrone Muster auf ein bestimmtes Zeitintervall begrenzen, indem Sie die `limit.timeout`-Eigenschaft hinzufügen. Auf diese Weise wird der Status der Aktion als `Cancelled` mit dem Code `ActionTimedOut` gekennzeichnet, falls die Aktion nach Ablauf des Intervalls noch nicht beendet war. Für die `timeout`-Eigenschaft wird das [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) verwendet.
 
 ``` json
 "<trigger-or-action-name>": {
@@ -2372,15 +2379,15 @@ Sowohl für Trigger als auch für Aktionen können Sie die Dauer für das asynch
 
 ## <a name="runtime-configuration-settings"></a>Einstellungen für Laufzeitkonfiguration
 
-Sie können das Standardlaufzeitverhalten für Trigger und Aktionen mit diesen `runtimeConfiguration`-Eigenschaften in der Trigger- oder Aktionsdefinition ändern.
+Sie können das Standardlaufzeitverhalten für Trigger und Aktionen ändern, indem Sie diese `runtimeConfiguration`-Eigenschaften in der Trigger- oder Aktionsdefinition hinzufügen.
 
-| Eigenschaft | Typ | BESCHREIBUNG | Trigger oder Aktion | 
+| Eigenschaft | type | BESCHREIBUNG | Trigger oder Aktion | 
 |----------|------|-------------|-------------------| 
-| `runtimeConfiguration.concurrency.runs` | Integer | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Workflowinstanzen, die gleichzeitig bzw. parallel ausgeführt werden können. Mit diesem Wert kann die Anzahl von Anforderungen reduziert werden, die auf Back-End-Systemen eingehen. <p>Das Festlegen der `runs`-Eigenschaft auf `1` funktioniert genauso wie das Festlegen der `operationOptions`-Eigenschaft auf `SingleInstance`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency) oder [Sequenzielles Auslösen von Instanzen](#sequential-trigger). | Alle Trigger | 
-| `runtimeConfiguration.concurrency.maximumWaitingRuns` | Integer | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Workflowinstanzen, die auf die Ausführung warten können, wenn für Ihren Workflow bereits die maximale Anzahl von gleichzeitigen Instanzen ausgeführt wird. Sie können das Parallelitätslimit in der `concurrency.runs`-Eigenschaft ändern. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | Alle Trigger | 
-| `runtimeConfiguration.concurrency.repetitions` | Integer | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Iterationen der „for each“-Schleife, die gleichzeitig bzw. parallel ausgeführt werden können. <p>Das Festlegen der `repetitions`-Eigenschaft auf `1` funktioniert genauso wie das Festlegen der `operationOptions`-Eigenschaft auf `SingleInstance`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern der „for each“-Parallelität](#change-for-each-concurrency) oder [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each). | Aktion: <p>[Foreach](#foreach-action) | 
+| `runtimeConfiguration.concurrency.runs` | Integer | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Workflowinstanzen, die gleichzeitig (oder parallel) ausgeführt werden können. Das Anpassen dieses Werts kann die Anzahl von Anforderungen reduzieren, die auf Back-End-Systemen eingehen. <p>Das Festlegen der `runs`-Eigenschaft auf `1` funktioniert genauso wie das Festlegen der `operationOptions`-Eigenschaft auf `SingleInstance`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency) oder [Sequenzielles Auslösen von Instanzen](#sequential-trigger). | Alle Trigger | 
+| `runtimeConfiguration.concurrency.maximumWaitingRuns` | Integer | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Workflowinstanzen, die auf die Ausführung warten müssen, wenn für Ihre Logik-App bereits die maximale Anzahl von gleichzeitigen Instanzen ausgeführt wird. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | Alle Trigger | 
+| `runtimeConfiguration.concurrency.repetitions` | Integer | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Iterationen der „for each“-Schleife, die gleichzeitig (oder parallel) ausgeführt werden können. <p>Das Festlegen der `repetitions`-Eigenschaft auf `1` funktioniert genauso wie das Festlegen der `operationOptions`-Eigenschaft auf `SingleInstance`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern der „for each“-Parallelität](#change-for-each-concurrency) oder [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each). | Aktion: <p>[Foreach](#foreach-action) | 
 | `runtimeConfiguration.paginationPolicy.minimumItemCount` | Integer | Für bestimmte Aktionen, die die Paginierung unterstützen und diese aktiviert haben, gibt dieser Wert die *minimale* Anzahl der abzurufenden Ergebnisse an. <p>Informationen für das Aktivieren der Paginierung finden Sie unter [Get bulk data, items, or results by using pagination (Abrufen von Massendaten, Elementen oder Ergebnissen mithilfe der Paginierung)](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). | Aktion: Verschiedene |
-| `runtimeConfiguration.secureData.properties` | Array | Bei vielen Triggern und Aktionen blenden diese Einstellungen Eingaben, Ausgaben oder beides im Ausführungsverlauf der Logik-App aus. <p>Informationen zum Schützen dieser Daten finden Sie unter [Schützen von Ein- und Ausgaben in der Codeansicht](../logic-apps/logic-apps-securing-a-logic-app.md#secure-data-code-view). | Gilt für die meisten Trigger und Aktionen |
+| `runtimeConfiguration.secureData.properties` | Array | Bei vielen Triggern und Aktionen blenden diese Einstellungen Eingaben, Ausgaben oder beides im Ausführungsverlauf der Logik-App aus. <p>Informationen zum Schützen dieser Daten finden Sie unter [Ausblenden von Ein- und Ausgaben im Ausführungsverlauf](../logic-apps/logic-apps-securing-a-logic-app.md#secure-data-code-view). | Gilt für die meisten Trigger und Aktionen |
 | `runtimeConfiguration.staticResult` | JSON-Objekt | Für Aktionen, die die Einstellung [statisches Ergebnis](../logic-apps/test-logic-apps-mock-data-static-results.md) unterstützen und für die diese aktiviert ist, hat das `staticResult`-Objekt diese Attribute: <p>- `name`, das auf den Definitionsnamen des statischen Ergebnisses der aktuelle Aktion verweist, der innerhalb des `staticResults`-Attributs im `definition`-Attribut des Workflows Ihrer Logik-App vorkommt. Weitere Informationen finden Sie unter [Statische Ergebnisse – Schemareferenz zur Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md#static-results). <p> - `staticResultOptions`, das angibt, ob statische Ergebnisse `Enabled` sind oder nicht für die aktuelle Aktion. <p>Informationen zum Aktivieren statischer Ergebnisse finden Sie unter [Testen von Logik-Apps mit Simulationsdaten durch die Einrichtung von statischen Ergebnissen](../logic-apps/test-logic-apps-mock-data-static-results.md). | Aktion: Verschiedene |
 ||||| 
 
@@ -2392,8 +2399,8 @@ Sie können das Standardverhalten für Trigger und Aktionen mit der `operationOp
 
 | Vorgangsoption | type | BESCHREIBUNG | Trigger oder Aktion | 
 |------------------|------|-------------|-------------------| 
-| `DisableAsyncPattern` | String | Dient zum synchronen Ausführen von HTTP-basierten Aktionen (anstatt asynchron). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Synchrones Ausführen von Aktionen](#asynchronous-patterns). | Aktionen: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[Antwort](#response-action) | 
-| `OptimizedForHighThroughput` | String | Dient zum Ändern des [Standardlimits](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) für die Anzahl von Aktionsausführungen in einem Zeitraum von fünf Minuten in das [maximale Limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Ausführen im Modus mit hohem Durchsatz](#run-high-throughput-mode). | Alle Aktionen | 
+| `DisableAsyncPattern` | String | Dient zum synchronen Ausführen von HTTP-basierten Aktionen (anstatt asynchron). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Synchrones Ausführen von Aktionen](#disable-asynchronous-pattern). | Aktionen: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[Antwort](#response-action) | 
+| `IncludeAuthorizationHeadersInOutputs` | String | Schließen Sie für Logik-Apps, die [Azure Active Directory Open Authentication (Azure AD OAuth) aktivieren](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth), um den Zugriff für eingehende Aufrufe an einen anforderungsbasierten Triggerendpunkt zu autorisieren, den `Authorization`-Header aus dem OAuth-Zugriffstoken in die Triggerausgaben ein. Weitere Informationen finden Sie unter [Einschließen des „Authorization“-Headers in Anforderungstriggerausgaben](../logic-apps/logic-apps-securing-a-logic-app.md#include-auth-header). | Trigger: <p>[Anforderung](#request-trigger), <br>[HTTP Webhook](#http-webhook-trigger) | 
 | `Sequential` | String | Dient zum einzelnen Ausführen der Iterationen von „for each“-Schleifen, anstatt alle auf einmal parallel. <p>Diese Option funktioniert genauso wie das Festlegen der `runtimeConfiguration.concurrency.repetitions`-Eigenschaft auf `1`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each).| Aktion: <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | String | Dient zum sequenziellen Ausführen des Triggers für jede Logik-App-Instanz. Es wird gewartet, bis die zuvor aktive Ausführung beendet ist, bevor die nächste Logik-App-Instanz ausgelöst wird. <p><p>Diese Option funktioniert genauso wie das Festlegen der `runtimeConfiguration.concurrency.runs`-Eigenschaft auf `1`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Festlegen dieser Option finden Sie unter [Sequenzielles Auslösen von Instanzen](#sequential-trigger). | Alle Trigger | 
 ||||
@@ -2402,16 +2409,48 @@ Sie können das Standardverhalten für Trigger und Aktionen mit der `operationOp
 
 ### <a name="change-trigger-concurrency"></a>Ändern der Triggerparallelität
 
-Standardmäßig werden Logik-App-Instanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Jede Triggerinstanz wird also ausgelöst, bevor die Ausführung der vorherigen Workflowinstanz beendet ist. Mit diesem Limit wird die Anzahl von Anforderungen gesteuert, die auf Back-End-Systemen eingehen. 
+Standardmäßig werden alle Logik-App-Workflowinstanzen gleichzeitig (oder parallel) ausgeführt. Dieses Verhalten bedeutet, dass jede Triggerinstanz ausgelöst wird, bevor die Ausführung der zuvor aktiven Workflowinstanz beendet ist. Die Anzahl der gleichzeitig ausgeführten Instanzen hat jedoch ein [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Wenn die Anzahl von gleichzeitig ausgeführten Workflowinstanzen dieses Limit erreicht, müssen alle anderen neuen Instanzen auf ihre Ausführung warten. Mit diesem Limit wird die Anzahl von Anforderungen gesteuert, die auf Back-End-Systemen eingehen.
 
-Zum Ändern des Standardlimits können Sie entweder den Codeansicht-Editor oder den Logik-App-Designer nutzen, da durch das Ändern der Parallelitätseinstellung über den Designer die `runtimeConfiguration.concurrency.runs`-Eigenschaft in der zugrunde liegenden Triggerdefinition hinzugefügt bzw. aktualisiert wird (und umgekehrt). Diese Eigenschaft steuert die maximale Anzahl von Workflowinstanzen, die parallel ausgeführt werden können. 
+Wenn Sie die Parallelitätssteuerung des Auslösers aktivieren, werden Auslöserinstanzen parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Zum Ändern des Standardparallelitätslimits können Sie entweder den Codeansicht-Editor oder den Logik-App-Designer nutzen, da durch das Ändern der Parallelitätseinstellung über den Designer die `runtimeConfiguration.concurrency.runs`-Eigenschaft in der zugrunde liegenden Triggerdefinition hinzugefügt bzw. aktualisiert wird (und umgekehrt). Diese Eigenschaft steuert die maximale Anzahl von neuen Workflowinstanzen, die parallel ausgeführt werden können.
 
-> [!NOTE] 
-> Wenn Sie für den Trigger die sequenzielle Ausführung festlegen, indem Sie entweder den Designer oder den Codeansicht-Editor verwenden, sollten Sie die `operationOptions`-Eigenschaft des Triggers im Codeansicht-Editor nicht auf `SingleInstance` festlegen. Andernfalls erhalten Sie einen Validierungsfehler. Weitere Informationen finden Sie unter [Sequenzielles Auslösen von Instanzen](#sequential-trigger).
+Hier finden Sie einige Erwägungen für den Fall, dass Sie die Parallelität auf einem Auslöser aktivieren möchten:
+
+* Wenn Parallelität aktiviert ist, wird das [SplitOn](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)-Limit für das [Auflösen von Arraybatches](#split-on-debatch) wesentlich reduziert. Wenn die Anzahl der Elemente dieses Limit überschreitet, wird die SplitOn-Funktion deaktiviert.
+
+* Die Parallelität kann nicht deaktiviert werden, nachdem Sie die Parallelitätssteuerung aktiviert haben.
+
+* Wenn Parallelität aktiviert ist, könnte eine Logik-App-Instanz mit langer Ausführungszeit dazu führen, dass neue Logik-App-Instanzen in den Wartezustand wechseln. Dieser Zustand verhindert, dass Azure Logic Apps neue Instanzen erstellt, und er tritt auch dann ein, wenn die Anzahl gleichzeitiger Ausführungen kleiner als die angegebene maximale Anzahl gleichzeitiger Ausführungen ist.
+
+  * Um diesen Zustand zu unterbrechen, brechen Sie die frühesten Instanzen ab, die *noch ausgeführt werden*.
+
+    1. Wählen Sie im Menü Ihrer Logik-App die Option **Übersicht** aus.
+
+    1. Wählen Sie im Abschnitt **Ausführungsverlauf** die früheste Instanz aus, die noch ausgeführt wird, z. B.:
+
+       ![Auswählen der frühesten ausgeführten Instanz](./media/logic-apps-workflow-actions-triggers/waiting-runs.png)
+
+       > [!TIP]
+       > Um nur Instanzen anzuzeigen, die noch ausgeführt werden, öffnen Sie die Liste **Alle**, und wählen Sie **Wird ausgeführt** aus.
+
+    1. Wählen Sie unter **Logik-App-Ausführung** die Option **Ausführung abbrechen** aus.
+
+       ![Auffinden der frühesten ausgeführten Instanz](./media/logic-apps-workflow-actions-triggers/cancel-run.png)
+
+  * Um diese Möglichkeit zu umgehen, fügen Sie jeder Aktion einen Timeout hinzu, der diese Ausführungen aufhalten könnte. Wenn Sie im Code-Editor arbeiten, finden Sie weitere Informationen unter [Ändern der asynchronen Dauer](#asynchronous-limits). Andernfalls, wenn Sie den Designer verwenden, führen Sie diese Schritte aus:
+
+    1. Wählen Sie in Ihrer Logik-App bei der Aktion, der Sie einen Timeout hinzufügen möchten, in der oberen rechten Ecke die Auslassungspunkte ( **...** ) aus, und wählen Sie dann **Einstellungen** aus.
+
+       ![Öffnen der Aktionseinstellungen](./media/logic-apps-workflow-actions-triggers/action-settings.png)
+
+    1. Geben Sie unter **Timeout** die Timeoutdauer im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) an.
+
+       ![Angeben der Timeoutdauer](./media/logic-apps-workflow-actions-triggers/timeout.png)
+
+* Um Ihre Logik-App sequenziell auszuführen, legen Sie die Parallelität des Triggers entweder mithilfe des Codeansicht-Editors oder des Designers auf `1` fest. Stellen Sie sicher, dass Sie nicht auch die `operationOptions`-Eigenschaft des Triggers im Codeansicht-Editor auf `SingleInstance` festlegen. Andernfalls erhalten Sie einen Validierungsfehler. Weitere Informationen finden Sie unter [Sequenzielles Auslösen von Instanzen](#sequential-trigger).
 
 #### <a name="edit-in-code-view"></a>Bearbeiten in der Codeansicht 
 
-In der zugrunde liegenden Triggerdefinition können Sie die `runtimeConfiguration.concurrency.runs`-Eigenschaft hinzufügen bzw. auf einen Wert zwischen `1` und `50` (einschließlich) aktualisieren.
+In der zugrunde liegenden Triggerdefinition fügen Sie die Eigenschaft `runtimeConfiguration.concurrency.runs` hinzu, die einen Wert zwischen `1` und `50` besitzen kann.
 
 Hier ist ein Beispiel angegeben, in dem gleichzeitige Ausführungen auf zehn Instanzen begrenzt werden:
 
@@ -2430,26 +2469,30 @@ Hier ist ein Beispiel angegeben, in dem gleichzeitige Ausführungen auf zehn Ins
 }
 ```
 
+Weitere Informationen finden Sie unter den [Einstellungen für die Laufzeitkonfiguration](#runtime-config-options).
+
 #### <a name="edit-in-logic-apps-designer"></a>Bearbeiten im Logik-App-Designer
 
-1. Wählen Sie im Trigger oben rechts die Ellipsenschaltfläche (...) und dann **Einstellungen**.
+1. Wählen Sie in der oberen rechten Ecke des Triggers die Ellipsenschaltfläche ( **...** ) und dann **Einstellungen** aus.
 
-2. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Grenzwert** auf **Ein** fest. 
+1. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Grenzwert** auf **Ein** fest. 
 
-3. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den gewünschten Wert. Um Ihre Logik-App sequenziell auszuführen, ziehen Sie den Schieberegler auf **1**.
+1. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den gewünschten Wert. Um Ihre Logik-App sequenziell auszuführen, ziehen Sie den Schieberegler auf **1**.
 
 <a name="change-for-each-concurrency"></a>
 
 ### <a name="change-for-each-concurrency"></a>Ändern der „for each“-Parallelität
 
-Standardmäßig werden Iterationen für „for each“-Schleifen gleichzeitig bzw. parallel ausgeführt, bis das [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) erreicht ist. Zum Ändern des Standardlimits können Sie entweder den Codeansicht-Editor oder den Logik-App-Designer nutzen, da durch das Ändern der Parallelitätseinstellung über den Designer die `runtimeConfiguration.concurrency.repetitions`-Eigenschaft in der zugrunde liegenden „for each“-Aktionsdefinition hinzugefügt bzw. aktualisiert wird (und umgekehrt). Diese Eigenschaft steuert die maximale Anzahl von Iterationen, die parallel ausgeführt werden können.
+Standardmäßig werden alle Iterationen für „for each“-Schleifen gleichzeitig (oder parallel) ausgeführt. Dieses Verhalten bedeutet, dass die Ausführung jeder Iteration gestartet wird, bevor die Ausführung der vorherigen Iteration abgeschlossen ist. Die Anzahl der gleichzeitig ausgeführten Iterationen hat jedoch ein [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Wenn die Anzahl von gleichzeitig ausgeführten Iterationen dieses Limit erreicht, müssen alle anderen Iterationen auf ihre Ausführung warten.
+
+Zum Ändern des Standardlimits können Sie entweder den Codeansicht-Editor oder den Logik-App-Designer nutzen, da durch das Ändern der Parallelitätseinstellung über den Designer die `runtimeConfiguration.concurrency.repetitions`-Eigenschaft in der zugrunde liegenden „for each“-Aktionsdefinition hinzugefügt bzw. aktualisiert wird (und umgekehrt). Diese Eigenschaft steuert die maximale Anzahl von Iterationen, die parallel ausgeführt werden können.
 
 > [!NOTE] 
 > Wenn Sie für die „for each“-Aktion die sequenzielle Ausführung festlegen, indem Sie entweder den Designer oder den Codeansicht-Editor verwenden, sollten Sie die `operationOptions`-Eigenschaft der Aktion im Codeansicht-Editor nicht auf `Sequential` festlegen. Andernfalls erhalten Sie einen Validierungsfehler. Weitere Informationen finden Sie unter [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each).
 
 #### <a name="edit-in-code-view"></a>Bearbeiten in der Codeansicht 
 
-In der zugrunde liegenden „for each“-Definition können Sie die `runtimeConfiguration.concurrency.repetitions`-Eigenschaft hinzufügen bzw. auf einen Wert zwischen `1` und `50` (einschließlich) aktualisieren. 
+In der zugrunde liegenden „for each“-Definition fügen Sie die Eigenschaft `runtimeConfiguration.concurrency.repetitions` hinzu, die einen Wert zwischen `1` und `50` besitzen kann, oder aktualisieren sie.
 
 Hier ist ein Beispiel angegeben, in dem gleichzeitige Ausführungen auf zehn Iterationen begrenzt werden:
 
@@ -2467,23 +2510,25 @@ Hier ist ein Beispiel angegeben, in dem gleichzeitige Ausführungen auf zehn Ite
 }
 ```
 
+Weitere Informationen finden Sie unter den [Einstellungen für die Laufzeitkonfiguration](#runtime-config-options).
+
 #### <a name="edit-in-logic-apps-designer"></a>Bearbeiten im Logik-App-Designer
 
-1. Wählen Sie in der Aktion **For each** oben rechts die Schaltfläche mit den Auslassungspunkten (...) und dann **Einstellungen** aus.
+1. Wählen Sie in der Aktion **For each** oben rechts die Schaltfläche mit den Auslassungspunkten ( **...** ) und dann **Einstellungen** aus.
 
-2. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Gleichzeitigkeitssteuerung** auf **Ein** fest. 
+1. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Gleichzeitigkeitssteuerung** auf **Ein** fest.
 
-3. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den gewünschten Wert. Um Ihre Logik-App sequenziell auszuführen, ziehen Sie den Schieberegler auf **1**.
+1. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den gewünschten Wert. Um Ihre Logik-App sequenziell auszuführen, ziehen Sie den Schieberegler auf **1**.
 
 <a name="change-waiting-runs"></a>
 
 ### <a name="change-waiting-runs-limit"></a>Ändern des Limits für wartende Ausführungen
 
-Standardmäßig werden alle Logik-App-Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Jede Triggerinstanz wird ausgelöst, bevor die Ausführung der zuvor aktiven Workflowinstanz beendet ist. Sie können [dieses Standardlimit zwar ändern](#change-trigger-concurrency), wenn die Anzahl von Workflowinstanzen das neue Parallelitätslimit erreicht, aber alle anderen neuen Instanzen müssen auf ihre Ausführung warten. 
+Standardmäßig werden alle Logik-App-Workflowinstanzen gleichzeitig (oder parallel) ausgeführt. Dieses Verhalten bedeutet, dass jede Triggerinstanz ausgelöst wird, bevor die Ausführung der zuvor aktiven Workflowinstanz beendet ist. Die Anzahl der gleichzeitig ausgeführten Instanzen hat jedoch ein [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Wenn die Anzahl von gleichzeitig ausgeführten Workflowinstanzen dieses Limit erreicht, müssen alle anderen neuen Instanzen auf ihre Ausführung warten.
 
-Auch für die Anzahl von Ausführungen, die sich im Wartezustand befinden können, gilt ein [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits), das Sie ändern können. Aber nachdem Ihre Logik-App das Limit für wartende Ausführungen erreicht hat, kann die Logic Apps-Engine keine neuen Ausführungen mehr akzeptieren. Anforderungs- und Webhook-Trigger geben Fehler vom Typ 429 zurück, und sich wiederholende Trigger beginnen damit, Abfrageversuche zu überspringen.
+Die Anzahl der wartenden Ausführungen besitzt ebenfalls ein [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Wenn die Anzahl der wartenden Ausführungen dieses Limit erreicht, akzeptiert die Logic Apps-Engine keine neuen Ausführungen mehr. Anforderungs- und Webhook-Trigger geben Fehler vom Typ 429 zurück, und sich wiederholende Trigger beginnen damit, Abfrageversuche zu überspringen.
 
-Gehen Sie wie folgt vor, um das Standardlimit für wartende Ausführungen zu ändern: Fügen Sie in der zugrunde liegenden Triggerdefinition die `runtimeConfiguration.concurency.maximumWaitingRuns`-Eigenschaft mit einem Wert zwischen `0` und `100` hinzu. 
+Sie können nicht nur das [Standardlimit für die Triggerparallelität ändern](#change-trigger-concurrency), sondern auch das Standardlimit für wartende Ausführungen. In der zugrunde liegenden Triggerdefinition fügen Sie die Eigenschaft `runtimeConfiguration.concurrency.maximumWaitingRuns` hinzu, die einen Wert zwischen `1` und `100` besitzen kann.
 
 ```json
 "<trigger-name>": {
@@ -2500,11 +2545,13 @@ Gehen Sie wie folgt vor, um das Standardlimit für wartende Ausführungen zu än
 }
 ```
 
+Weitere Informationen finden Sie unter den [Einstellungen für die Laufzeitkonfiguration](#runtime-config-options).
+
 <a name="sequential-trigger"></a>
 
 ### <a name="trigger-instances-sequentially"></a>Sequenzielles Auslösen von Instanzen
 
-Legen Sie für den Trigger die sequenzielle Ausführung fest, damit jede Logik-App-Workflowinstanz erst nach Beendigung der vorherigen Instanz ausgeführt wird. Sie können entweder den Codeansicht-Editor oder den Logik-App-Designer nutzen, da durch das Ändern der Parallelitätseinstellung über den Designer auch die `runtimeConfiguration.concurrency.runs`-Eigenschaft in der zugrunde liegenden Triggerdefinition hinzugefügt bzw. aktualisiert wird (und umgekehrt). 
+Legen Sie für den Trigger die sequenzielle Ausführung fest, damit jede Logik-App-Workflowinstanz erst nach Beendigung der vorherigen Instanz ausgeführt wird. Sie können entweder den Codeansicht-Editor oder den Logik-App-Designer nutzen, da durch das Ändern der Parallelitätseinstellung über den Designer auch die `runtimeConfiguration.concurrency.runs`-Eigenschaft in der zugrunde liegenden Triggerdefinition hinzugefügt bzw. aktualisiert wird (und umgekehrt).
 
 > [!NOTE] 
 > Wenn Sie für den Trigger die sequenzielle Ausführung festlegen, indem Sie entweder den Designer oder den Codeansicht-Editor verwenden, sollten Sie die `operationOptions`-Eigenschaft des Triggers im Codeansicht-Editor nicht auf `Sequential` festlegen. Andernfalls erhalten Sie einen Validierungsfehler. 
@@ -2545,19 +2592,21 @@ Legen Sie die `operationOptions`-Eigenschaft auf `SingleInstance` fest:
 }
 ```
 
+Weitere Informationen finden Sie unter [Einstellungen für die Laufzeitkonfiguration](#runtime-config-options) und [Vorgangsoptionen](#operation-options).
+
 #### <a name="edit-in-logic-apps-designer"></a>Bearbeiten im Logik-App-Designer
 
-1. Wählen Sie im Trigger oben rechts die Ellipsenschaltfläche (...) und dann **Einstellungen**.
+1. Wählen Sie in der oberen rechten Ecke des Triggers die Ellipsenschaltfläche ( **...** ) und dann **Einstellungen** aus.
 
-2. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Grenzwert** auf **Ein** fest. 
+1. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Grenzwert** auf **Ein** fest. 
 
-3. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den Wert `1`. 
+1. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den Wert `1`. 
 
 <a name="sequential-for-each"></a>
 
 ### <a name="run-for-each-loops-sequentially"></a>Sequenzielles Ausführen von „for each“-Schleifen
 
-Legen Sie für die Aktion „for each“ die sequenzielle Ausführung fest, damit die Iteration einer „for each“-Schleife erst nach Abschluss der vorherigen Iteration ausgeführt wird. Sie können entweder den Codeansicht-Editor oder den Logik-App-Designer nutzen, da durch das Ändern der Parallelität der Aktion über den Designer auch die `runtimeConfiguration.concurrency.repetitions`-Eigenschaft in der zugrunde liegenden Aktionsdefinition hinzugefügt bzw. aktualisiert wird (und umgekehrt). 
+Legen Sie für die Aktion „for each“ die sequenzielle Ausführung fest, damit die Iteration einer „for each“-Schleife erst nach Abschluss der vorherigen Iteration ausgeführt wird. Sie können entweder den Codeansicht-Editor oder den Logik-App-Designer nutzen, da durch das Ändern der Parallelität der Aktion über den Designer auch die `runtimeConfiguration.concurrency.repetitions`-Eigenschaft in der zugrunde liegenden Aktionsdefinition hinzugefügt bzw. aktualisiert wird (und umgekehrt).
 
 > [!NOTE] 
 > Wenn Sie für eine „for each“-Aktion die sequenzielle Ausführung festlegen, indem Sie entweder den Designer oder den Codeansicht-Editor verwenden, sollten Sie die `operationOptions`-Eigenschaft der Aktion im Codeansicht-Editor nicht auf `Sequential` festlegen. Andernfalls erhalten Sie einen Validierungsfehler. 
@@ -2596,22 +2645,63 @@ Legen Sie die `operationOptions`-Eigenschaft auf `Sequential` fest:
 }
 ```
 
+Weitere Informationen finden Sie unter [Einstellungen für die Laufzeitkonfiguration](#runtime-config-options) und [Vorgangsoptionen](#operation-options).
+
 #### <a name="edit-in-logic-apps-designer"></a>Bearbeiten im Logik-App-Designer
 
-1. Wählen Sie in der Aktion **For each** oben rechts die Ellipsenschaltfläche (...) und dann **Einstellungen**.
+1. Wählen Sie in der Aktion **For each** oben rechts die Schaltfläche mit den Auslassungspunkten ( **...** ) und dann **Einstellungen** aus.
 
-2. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Gleichzeitigkeitssteuerung** auf **Ein** fest. 
+1. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Gleichzeitigkeitssteuerung** auf **Ein** fest.
 
-3. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den Wert `1`. 
+1. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den Wert `1`.
 
-<a name="asynchronous-patterns"></a>
+<a name="disable-asynchronous-pattern"></a>
 
-### <a name="run-actions-synchronously"></a>Synchrones Ausführen von Aktionen
+### <a name="run-actions-in-a-synchronous-operation-pattern"></a>Ausführen von Aktionen in einem synchronen Vorgangsmuster
 
-Standardmäßig befolgen alle HTTP-basierten Aktionen das Standardmuster für asynchrone Vorgänge. Mit diesem Muster wird angegeben, dass der Remoteserver die Antwort „202 AKZEPTIERT“ zurücksendet, wenn eine HTTP-basierte Aktion eine Anforderung an den angegebenen Endpunkt sendet. Diese Antwort bedeutet, dass der Server die Anforderung zur Verarbeitung akzeptiert hat. Die Logic Apps-Engine fährt mit dem Überprüfen der URL fort, die im Adressheader der Antwort angegeben ist, bis die Verarbeitung beendet wird (alle anderen Antworten als 202).
+Standardmäßig folgen die HTTP-Aktion und die APIConnection-Aktionen in Azure Logic Apps dem standardmäßigen [*asynchronen Vorgangsmuster*](/azure/architecture/patterns/async-request-reply), während die Response-Aktion (Antwort) dem *synchronen Vorgangsmuster* folgt. Das asynchrone Muster gibt an, dass der Empfänger, nachdem eine Aktion eine Anforderung aufgerufen oder an den Endpunkt, Dienst, das System oder die API gesendet hat, sofort eine [„202 ACCEPTED“](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)-Antwort zurückgibt. Dieser Code bestätigt, dass der Empfänger die Anforderung akzeptiert, aber die Verarbeitung noch nicht abgeschlossen hat. Die Antwort kann einen `location`-Header enthalten, in dem die URL und eine Aktualisierungs-ID angegeben sind, die der Aufrufer zum fortlaufenden Abrufen oder Überprüfen des Status der asynchronen Anforderung verwenden kann, bis der Empfänger die Verarbeitung beendet und eine [„200 OK“](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)-Erfolgsantwort oder eine andere Nicht-202-Antwort zurückgibt. Weitere Informationen finden Sie unter [Asynchrone Microservice-Integration erzwingt Microservice-Autonomie](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
 
-Anforderungen verfügen aber über ein Timeoutlimit. Für Aktionen mit langer Ausführungsdauer können Sie das asynchrone Verhalten also deaktivieren, indem Sie die `operationOptions`-Eigenschaft hinzufügen und unter den Eingaben der Aktion auf `DisableAsyncPattern` festlegen.
-  
+* Im Logik-App-Designer verfügen die HTTP-Aktion, die APIConnection-Aktionen und die Response-Aktion über die Einstellung **Asynchrones Muster**. Wenn diese Einstellung aktiviert ist, gibt sie an, dass der Aufrufer nicht auf den Abschluss der Verarbeitung wartet, sondern mit der nächsten Aktion fortfahren kann, dass er aber weiterhin den Status überprüft, bis die Verarbeitung beendet wird. Wenn diese Einstellung deaktiviert ist, gibt sie an, dass der Aufrufer auf den Abschluss der Verarbeitung wartet, bevor mit der nächsten Aktion fortfährt. Führen Sie die folgenden Schritte aus, um diese Einstellung zu suchen:
+
+  1. Wählen Sie auf der Titelleiste der HTTP-Aktion die Schaltfläche mit den Auslassungspunkten ( **...** ) aus, woraufhin die Einstellungen der Aktion geöffnet werden.
+
+  1. Suchen Sie die Einstellung **Asynchrones Muster**.
+
+     ![Einstellung „Asynchrones Muster“](./media/logic-apps-workflow-actions-triggers/asynchronous-pattern-setting.png)
+
+* In der JSON-Definition (JavaScript Object Notation), die der Aktion zugrunde liegt, folgen die HTTP-Aktion und die APIConnection-Aktionen implizit dem asynchronen Vorgangsmuster.
+
+In einigen Szenarien möchten Sie eventuell, dass eine Aktion stattdessen dem synchronen Muster folgt. Beispielsweise, wenn Sie die HTTP-Aktion verwenden, möchten Sie möglicherweise Folgendes:
+
+* [Vermeiden von HTTP-Timeouts bei Aufgaben mit langer Ausführungszeit](../connectors/connectors-native-http.md#avoid-http-timeouts)
+* [Deaktivieren der Überprüfung von Location-Headern](../connectors/connectors-native-http.md#disable-location-header-check)
+
+In diesen Fällen können Sie veranlassen, dass eine Aktion synchron ausgeführt wird, indem Sie diese Optionen verwenden:
+
+* Ersetzen Sie die Abrufversion dieser Aktion durch eine Webhookversion, falls verfügbar.
+
+* Deaktivieren Sie das asynchrone Verhalten der Aktion, indem Sie eine der folgenden Optionen ausführen:
+
+  * [Deaktivieren Sie im Logik-App-Designer die Einstellung **Asynchrone Muster**](#turn-off-asynchronous-pattern-setting).
+
+  * [Fügen Sie in der JSON-Definition, die der Aktion zugrunde liegt, die Vorgangsoption `"DisableAsyncPattern"`](#add-disable-async-pattern-option) hinzu.
+
+<a name="turn-off-asynchronous-pattern-setting"></a>
+
+#### <a name="turn-off-asynchronous-pattern-setting"></a>Deaktivieren der Einstellung **Asynchrones Muster**
+
+1. Wählen Sie im Logik-App-Designer auf der Titelleiste der Aktion die Schaltfläche mit den Auslassungspunkten ( **...** ) aus, woraufhin die Einstellungen der Aktion geöffnet werden.
+
+1. Suchen Sie die Einstellung **Asynchrones Muster**, deaktivieren Sie die Einstellung, indem Sie sie auf **Aus** festlegen (falls sie aktiviert ist), und wählen Sie **Fertig** aus.
+
+   ![Deaktivieren der Einstellung „Asynchrones Muster“](./media/logic-apps-workflow-actions-triggers/disable-asynchronous-pattern-setting.png)
+
+<a name="add-disable-async-pattern-option"></a>
+
+#### <a name="disable-asynchronous-pattern-in-actions-json-definition"></a>Deaktivieren des asynchronen Musters in der JSON-Definition einer Aktion
+
+Fügen Sie in der JSON-Definition, die der Aktion zugrunde liegt, die Eigenschaft [„operationOptions“](#operation-options) hinzu, und legen Sie sie auf `"DisableAsyncPattern"` im Abschnitt `"inputs"` der Aktion fest, z. B.:
+
 ```json
 "<some-long-running-action>": {
    "type": "Http",
@@ -2621,152 +2711,11 @@ Anforderungen verfügen aber über ein Timeoutlimit. Für Aktionen mit langer Au
 }
 ```
 
-<a name="run-high-throughput-mode"></a>
+<a name="authenticate-triggers-actions"></a>
 
-### <a name="run-in-high-throughput-mode"></a>Ausführen im Modus mit hohem Durchsatz
+## <a name="authenticate-triggers-and-actions"></a>Authentifizieren von Triggern und Aktionen
 
-Für eine einzelne Logik-App-Definition gilt für die Anzahl von Aktionen, die alle fünf Minuten ausgeführt werden, ein [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Legen Sie die `operationOptions`-Eigenschaft auf `OptimizedForHighThroughput` fest, um dieses Limit auf den [Maximalwert](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) zu erhöhen. Mit dieser Einstellung wird Ihre Logik-App in den Modus für „hohen Durchsatz“ versetzt. 
-
-> [!NOTE]
-> Dieser Modus für hohen Durchsatz befindet sich in der Vorschauphase. Sie können eine Workload bei Bedarf auch auf mehr als eine Logik-App verteilen.
-
-```json
-"<action-name>": {
-   "type": "<action-type>",
-   "inputs": { "<action-inputs>" },
-   "operationOptions": "OptimizedForHighThroughput",
-   "runAfter": {}
-}
-```
-
-<a name="connector-authentication"></a>
-
-## <a name="authenticate-http-triggers-and-actions"></a>Authentifizieren von HTTP-Triggern und -Aktionen
-
-HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung. Sie können die Authentifizierung für diese HTTP-Trigger und -Aktionen einrichten:
-
-* [HTTP](../connectors/connectors-native-http.md)
-* [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
-* [HTTP Webhook](../connectors/connectors-native-webhook.md)
-
-Folgende Arten der Authentifizierung können Sie einrichten:
-
-* [Standardauthentifizierung](#basic-authentication)
-* [Clientzertifikatsauthentifizierung](#client-certificate-authentication)
-* [Azure Active Directory (Azure AD) OAuth-Authentifizierung](#azure-active-directory-oauth-authentication)
-
-> [!IMPORTANT]
-> Achten Sie darauf, vertrauliche Informationen zu schützen, die von der Workflowdefinition der Logik-App verarbeitet werden. Sie sollten ggf. gesicherte Parameter verwenden und Daten codieren. Weitere Informationen zum Verwenden und Sichern von Parametern finden Sie unter [Sichern Ihrer Logik-App](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-<a name="basic-authentication"></a>
-
-### <a name="basic-authentication"></a>Standardauthentifizierung
-
-Wenn Sie die [Standardauthentifizierung](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) mit Azure Active Directory verwenden, kann die Trigger- oder Aktionsdefinition ein JSON-Objekt `authentication` enthalten, das über die in der folgenden Tabelle angegebenen Eigenschaften verfügt. Um zur Laufzeit auf Parameterwerte zuzugreifen, können Sie den Ausdruck `@parameters('parameterName')` verwenden, der durch die [Definitionssprache für Workflows](https://aka.ms/logicappsdocs) bereitgestellt wird. 
-
-| Eigenschaft | Erforderlich | Value | BESCHREIBUNG | 
-|----------|----------|-------|-------------| 
-| **type** | Ja | „Basic“ | Der zu verwendende Authentifizierungstyp, hier „Basic“ | 
-| **username** | Ja | "@parameters('userNameParam')" | Der Benutzername, der verwendet wird, um den Zugriff auf den Ziel-Dienstendpunkt zu authentifizieren |
-| **password** | Ja | "@parameters('passwordParam')" | Das Kennwort, das verwendet wird, um den Zugriff auf den Ziel-Dienstendpunkt zu authentifizieren |
-||||| 
-
-In dieser Beispieldefinition einer HTTP-Aktion wird im Abschnitt `authentication` die `Basic`-Authentifizierung angegeben. Weitere Informationen zum Verwenden und Sichern von Parametern finden Sie unter [Sichern Ihrer Logik-App](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "Basic",
-         "username": "@parameters('userNameParam')",
-         "password": "@parameters('passwordParam')"
-      }
-  },
-  "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Achten Sie darauf, vertrauliche Informationen zu schützen, die von der Workflowdefinition der Logik-App verarbeitet werden. Sie sollten ggf. gesicherte Parameter verwenden und Daten codieren. Weitere Informationen zum Sichern von Parametern finden Sie unter [Sichern Ihrer Logik-App](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-<a name="client-certificate-authentication"></a>
-
-### <a name="client-certificate-authentication"></a>Authentifizierung mit Clientzertifikat
-
-Wenn Sie die [zertifikatbasierte Authentifizierung](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) mit Azure Active Directory verwenden, kann die Trigger- oder Aktionsdefinition ein JSON-Objekt `authentication` enthalten, das über die in der folgenden Tabelle angegebenen Eigenschaften verfügt. Um zur Laufzeit auf Parameterwerte zuzugreifen, können Sie den Ausdruck `@parameters('parameterName')` verwenden, der durch die [Definitionssprache für Workflows](https://aka.ms/logicappsdocs) bereitgestellt wird. Informationen dazu, wie viele Clientzertifikate maximal verwendet werden können, finden Sie im Thema zu [Begrenzungen und Konfigurationsinformationen für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md).
-
-| Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
-|----------|----------|-------|-------------|
-| **type** | Ja | „ClientCertificate“ | Der für Secure Sockets Layer (SSL)-Clientzertifikate zu verwendende Authentifizierungstyp. Obwohl selbstsignierte Zertifikate unterstützt werden, gilt dies nicht für selbstsignierte Zertifikate für SSL. |
-| **pfx** | Ja | "@parameters('pfxParam') | Der base64-codierte Inhalt aus einer Personal Information Exchange-Datei (PFX) |
-| **password** | Ja | "@parameters('passwordParam')" | Der Parameter für den Zugriff auf die PFX-Datei |
-||||| 
-
-In dieser Beispieldefinition einer HTTP-Aktion wird im Abschnitt `authentication` die `ClientCertificate`-Authentifizierung angegeben. Weitere Informationen zum Verwenden und Sichern von Parametern finden Sie unter [Sichern Ihrer Logik-App](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ClientCertificate",
-         "pfx": "@parameters('pfxParam')",
-         "password": "@parameters('passwordParam')"
-      }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Achten Sie darauf, vertrauliche Informationen zu schützen, die von der Workflowdefinition der Logik-App verarbeitet werden. Sie sollten ggf. gesicherte Parameter verwenden und Daten codieren. Weitere Informationen zum Sichern von Parametern finden Sie unter [Sichern Ihrer Logik-App](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-<a name="azure-active-directory-oauth-authentication"></a>
-
-### <a name="azure-active-directory-ad-oauth-authentication"></a>Azure Active Directory (AD) OAuth-Authentifizierung
-
-Wenn Sie die [Azure AD-OAuth-Authentifizierung](../active-directory/develop/authentication-scenarios.md) verwenden, kann die Trigger- oder Aktionsdefinition ein JSON-Objekt `authentication` enthalten, das über die in der folgenden Tabelle angegebenen Eigenschaften verfügt. Um zur Laufzeit auf Parameterwerte zuzugreifen, können Sie den Ausdruck `@parameters('parameterName')` verwenden, der durch die [Definitionssprache für Workflows](https://aka.ms/logicappsdocs) bereitgestellt wird.
-
-| Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
-|----------|----------|-------|-------------|
-| **type** | Ja | `ActiveDirectoryOAuth` | Der zu verwendende Authentifizierungstyp, „ActiveDirectoryOAuth“ für Azure AD OAuth |
-| **authority** | Nein | <*URL-for-authority-token-issuer*> | Die URL für die Zertifizierungsstelle, die das Authentifizierungstoken bereitstellt |
-| **tenant** | Ja | <*tenant-ID*> | Die Mandanten-ID für den Azure AD-Mandanten |
-| **audience** | Ja | <*resource-to-authorize*> | Die Ressource, die Sie für die Autorisierung verwenden möchten, z. B. `https://management.core.windows.net/` |
-| **clientId** | Ja | <*client-ID*> | Die Client-ID für die App, die eine Autorisierung anfordert |
-| **credentialType** | Ja | „Certificate“ oder „Secret“ | Der Anmeldeinformationstyp, den der Client zum Anfordern der Autorisierung verwendet. Diese Eigenschaft und der Wert werden nicht in Ihrer zugrunde liegenden Definition angezeigt, bestimmen jedoch den erforderlichen Parameter für den Anmeldeinformationstyp. |
-| **pfx** | Ja, nur für den Anmeldeinformationstyp „Certificate“ | "@parameters('pfxParam') | Der base64-codierte Inhalt aus einer Personal Information Exchange-Datei (PFX) |
-| **password** | Ja, nur für den Anmeldeinformationstyp „Certificate“ | "@parameters('passwordParam')" | Der Parameter für den Zugriff auf die PFX-Datei |
-| **secret** | Ja, nur für den Anmeldeinformationstyp „Secret“ | "@parameters('secretParam')" | Der geheime Clientschlüssel zum Anfordern der Autorisierung |
-|||||
-
-In dieser Beispieldefinition einer HTTP-Aktion werden im Abschnitt `authentication` die `ActiveDirectoryOAuth`-Authentifizierung und der Anmeldeinformationstyp „Secret“ angegeben. Weitere Informationen zum Verwenden und Sichern von Parametern finden Sie unter [Sichern Ihrer Logik-App](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ActiveDirectoryOAuth",
-         "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-         "audience": "https://management.core.windows.net/",
-         "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
-         "secret": "@parameters('secretParam')"
-     }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Achten Sie darauf, vertrauliche Informationen zu schützen, die von der Workflowdefinition der Logik-App verarbeitet werden. Sie sollten ggf. gesicherte Parameter verwenden und Daten codieren. Weitere Informationen zum Sichern von Parametern finden Sie unter [Sichern Ihrer Logik-App](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
+HTTP- und HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung. Basierend auf dem Trigger oder der Aktion, mit dem/der Sie ausgehende Aufrufe oder Anforderungen ausführen, um auf diese Endpunkte zuzugreifen, können Sie aus verschiedenen Bereichen von Authentifizierungstypen auswählen. Weitere Informationen finden Sie unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

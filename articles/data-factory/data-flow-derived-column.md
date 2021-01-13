@@ -1,33 +1,105 @@
 ---
-title: 'Transformieren von abgeleiteten Spalten in Mapping Data Flow: Azure Data Factory | Microsoft-Dokumentation'
-description: Informationen zum bedarfsorientierten Transformieren von Daten in Azure Data Factory mithilfe von Mapping Data Flow-Transformationen von abgeleiteten Spalten
+title: Transformation für abgeleitete Spalten in Mapping Data Flow
+description: Informationen zum bedarfsorientierten Transformieren von Daten in Azure Data Factory mithilfe der Mapping Data Flow-Transformation für abgeleitete Spalten.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/08/2018
-ms.openlocfilehash: 941c629fd8359edc7fc1cf364a6735314044d95e
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.custom: seo-lt-2019
+ms.date: 09/14/2020
+ms.openlocfilehash: 2e90a8779322cf8967ca9a194c6cc760f7c8b8f5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312190"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90532031"
 ---
-# <a name="derived-column-transformation-in-mapping-data-flow"></a>Transformieren von abgeleiteten Spalten in Mapping Data Flow
+# <a name="derived-column-transformation-in-mapping-data-flow"></a>Transformation für abgeleitete Spalten in Mapping Data Flow
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Verwenden Sie die Transformation für abgeleitete Spalten, um in Ihrem Datenfluss neue Spalten zu generieren oder vorhandene Felder zu ändern.
 
-## <a name="derived-column-settings"></a>Einstellungen für abgeleitete Spalten
+## <a name="create-and-update-columns"></a>Erstellen und Aktualisieren von Spalten
 
-Sie können eine bereits vorhandene Spalte löschen, indem Sie diese über die Dropdownliste mit den Spalten auswählen. Alternativ können Sie auch das Feld „Spaltenauswahl“ als Textfeld verwenden und den Namen der neuen Spalte eingeben. Den Ausdruck der abgeleiteten Spalte können Sie erstellen, indem Sie auf das Feld „Ausdruck eingeben“ klicken, um den [Data Flow-Ausdrucks-Generator](concepts-data-flow-expression-builder.md) zu öffnen.
+Beim Erstellen einer abgeleiteten Spalte können Sie entweder eine neue Spalte generieren oder eine vorhandene Spalte aktualisieren. Geben Sie im Textfeld **Spalte** die Spalte ein, die Sie erstellen. Wenn Sie eine vorhandene Spalte in Ihrem Schema überschreiben möchten, können Sie die Dropdownliste für Spalten verwenden. Um den Ausdruck der abgeleiteten Spalte zu erstellen, klicken Sie auf das Textfeld **Ausdruck eingeben**. Sie können entweder mit dem Eingeben des Ausdrucks beginnen oder den Ausdrucks-Generator öffnen, um die Logik zu erstellen.
 
-![Einstellungen für abgeleitete Spalten](media/data-flow/dc1.png "Einstellungen für abgeleitete Spalten")
+![Einstellungen für abgeleitete Spalten](media/data-flow/create-derive-column.png "Einstellungen für abgeleitete Spalten")
 
-Sie können weitere abgeleitete Spalten hinzufügen, indem Sie mit der Maus auf eine Spalte zeigen und auf das Symbol „+“ klicken. Klicken Sie anschließend entweder auf „Spalte hinzufügen“ oder auf „Add column pattern“ (Spaltenmuster hinzufügen). Spaltenmuster können nützlich sein, wenn sich Ihre Spaltennamen von den Quellen unterscheiden. Weitere Informationen finden Sie unter [Column Patterns (Spaltenmuster)](concepts-data-flow-column-pattern.md).
+Wenn Sie weitere abgeleitete Spalten hinzufügen möchten, klicken Sie oberhalb der Spaltenliste auf **Hinzufügen**, oder klicken Sie auf das Pluszeichen („+“) neben einer vorhandenen abgeleiteten Spalte. Klicken Sie entweder auf **Spalte hinzufügen** oder auf **Spaltenmuster hinzufügen**.
 
-![Auswahl neuer abgeleiteter Spalten](media/data-flow/columnpattern.png "New derived column selection")
+![Auswahl für neue abgeleitete Spalte](media/data-flow/add-derived-column.png "Auswahl für neue abgeleitete Spalte")
+
+### <a name="column-patterns"></a>Spaltenmuster
+
+In Fällen, in denen Ihr Schema nicht explizit definiert ist, oder wenn Sie eine Reihe von Spalten in einem Massenvorgang aktualisieren möchten, sollten Sie Spaltenmuster erstellen. Mithilfe von Spaltenmustern können Sie Spalten anhand von Regeln abgleichen, die auf den Spaltenmetadaten basieren, und abgeleitete Spalten für jede übereinstimmende Spalte erstellen. Weitere Informationen finden Sie unter [Erstellen von Spaltenmustern in der Transformation für abgeleitete Spalten](concepts-data-flow-column-pattern.md#column-patterns-in-derived-column-and-aggregate).
+
+![Spaltenmuster](media/data-flow/column-pattern-derive.png "Spaltenmuster")
+
+## <a name="building-schemas-using-the-expression-builder"></a>Erstellen von Schemas mit dem Ausdrucks-Generator
+
+Wenn Sie den [Ausdrucks-Generator](concepts-data-flow-expression-builder.md) für Zuordnungsdatenflüsse verwenden, können Sie Ihre abgeleiteten Spalten im Abschnitt **Abgeleitete Spalten** erstellen, bearbeiten und verwalten. Es werden alle in der Transformation erstellten oder geänderten Spalten aufgelistet. Sie können interaktiv auswählen, welche Spalte oder welches Muster Sie bearbeiten möchten, indem Sie auf den Spaltennamen klicken. Wenn Sie eine zusätzliche Spalte hinzufügen möchten, wählen Sie **Neu erstellen** aus, und wählen Sie dann aus, ob Sie eine einzelne Spalte oder ein Muster hinzufügen möchten.
+
+![Neue Spalte erstellen](media/data-flow/derive-add-column.png "Neue Spalte erstellen")
+
+Wenn Sie mit komplexen Spalten arbeiten, können Sie Unterspalten erstellen. Klicken Sie hierzu auf das Pluszeichen („+“) neben einer beliebigen Spalte, und wählen Sie **Unterspalte hinzufügen** aus. Weitere Informationen zum Umgang mit komplexen Typen im Datenfluss finden Sie unter [JSON-Verarbeitung mit Mapping Data Flow](format-json.md#mapping-data-flow-properties).
+
+![Hinzufügen einer Unterspalte](media/data-flow/derive-add-subcolumn.png "Hinzufügen einer Unterspalte")
+
+Weitere Informationen zum Umgang mit komplexen Typen im Datenfluss finden Sie unter [JSON-Verarbeitung mit Mapping Data Flow](format-json.md#mapping-data-flow-properties).
+
+![Hinzufügen einer komplexen Spalte](media/data-flow/derive-complex-column.png "Hinzufügen von Spalten")
+
+### <a name="locals"></a>Locals
+
+Wenn Sie Logik für mehrere Spalten gemeinsam nutzen oder Ihre Logik aufteilen möchten, können Sie eine lokale Variable in einer Transformation für abgeleitete Spalten erstellen. Dabei handelt es sich um einen Satz von Logik, der nicht in die folgende Transformation weitergeleitet wird. Lokale Variablen können im Ausdrucks-Generator erstellt werden, indem Sie zu **Ausdruckselemente** wechseln und **Lokale** auswählen. Erstellen Sie eine neue Lokale, indem Sie **Neu erstellen** auswählen.
+
+![Lokale erstellen](media/data-flow/create-local.png "Lokale erstellen")
+
+Lokale Variablen können auf ein beliebiges Ausdruckselement einer abgeleiteten Spalte verweisen. Dies schließt Funktionen, Eingabeschemas, Parameter und andere lokale Variablen ein. Wenn auf andere lokale Variablen verwiesen wird, ist die Reihenfolge wichtig, weil sich die referenzierte lokale Variable „über“ der aktuellen befinden muss.
+
+![Lokale 2 erstellen](media/data-flow/create-local-2.png "Lokale 2 erstellen")
+
+Wenn Sie auf eine lokale Variable in einer abgeleiteten Spalte verweisen möchten, klicken Sie entweder in der Ansicht **Ausdruckselemente** auf die lokale Variable, oder verweisen Sie mit einem Doppelpunkt vor ihrem Namen darauf. Beispielsweise wird auf eine lokale Variable mit dem Namen „local1“ durch `:local1` verwiesen. Um eine lokale Definition zu bearbeiten, zeigen Sie in der Ansicht „Ausdruckselemente“ mit der Maus darauf, und klicken Sie auf das Stiftsymbol.
+
+![Verwenden lokaler Variablen](media/data-flow/using-locals.png "Verwenden lokaler Variablen")
+
+## <a name="data-flow-script"></a>Datenflussskript
+
+### <a name="syntax"></a>Syntax
+
+```
+<incomingStream>
+    derive(
+           <columnName1> = <expression1>,
+           <columnName2> = <expression2>,
+           each(
+                match(matchExpression),
+                <metadataColumn1> = <metadataExpression1>,
+                <metadataColumn2> = <metadataExpression2>
+               )
+          ) ~> <deriveTransformationName>
+```
+
+### <a name="example"></a>Beispiel
+
+Das folgende Beispiel ist eine abgeleitete Spalte mit dem Namen `CleanData`, die aus einem eingehenden Datenstrom `MoviesYear` zwei abgeleitete Spalten erstellt. Die erste abgeleitete Spalte ersetzt die Spalte `Rating` durch den Wert für „Rating“ als ganzzahliger Typ. Die zweite abgeleitete Spalte ist ein Muster, das jede Spalte abgleicht, deren Name mit „movies“ beginnt. Für jede übereinstimmende Spalte wird eine Spalte `movie` erstellt, die dem Wert der übereinstimmenden Spalte entspricht und das Präfix „movie_“ erhält. 
+
+Auf der Data Factory-Benutzeroberfläche sieht diese Transformation wie folgt aus:
+
+![Ableitungsbeispiel](media/data-flow/derive-script.png "Ableitungsbeispiel")
+
+Das Datenflussskript für diese Transformation befindet sich im folgenden Codeausschnitt:
+
+```
+MoviesYear derive(
+                Rating = toInteger(Rating),
+                each(
+                    match(startsWith(name,'movies')),
+                    'movie' = 'movie_' + toString($$)
+                )
+            ) ~> CleanData
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

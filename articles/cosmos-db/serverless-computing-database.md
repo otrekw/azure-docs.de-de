@@ -1,19 +1,21 @@
 ---
-title: Serverloses Datenbankcomputing – Azure Functions und Azure Cosmos DB
+title: Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Cosmos DB und Azure Functions ereignisgesteuerte, serverlose Computing-Apps erstellen.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.subservice: cosmosdb-sql
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: e1014c710d892e45f09999db22b1f59c0bb36300
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 73a34cc27eaba33d04f4d31585c7f494f58e7274
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614585"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334071"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Das serverlose Computing beruht im Wesentlichen auf der Fähigkeit, sich auf einzelne Logikelemente zu konzentrieren, die wiederholbar und zustandslos sind. Diese Elemente erfordern keine Infrastrukturverwaltung, und Ressourcen werden von ihnen lediglich für die Sekunden oder sogar Millisekunden ihrer Ausführung verbraucht. Den Kern der serverlosen Computing-Aktivitäten stellen Funktionen dar, die von [Azure Functions](https://azure.microsoft.com/services/functions) im Azure-Ökosystem verfügbar gemacht werden. Weitere Informationen zu anderen serverlosen Ausführungsumgebungen in Azure finden Sie auf der Seite [Serverlos in Azure](https://azure.microsoft.com/solutions/serverless/). 
 
@@ -33,7 +35,7 @@ Mit Azure Cosmos DB und Azure Functions können Sie Ihre Datenbanken und serverl
 
 In der folgenden Abbildung wird jede einzelne dieser drei Integrationen veranschaulicht: 
 
-![Integration von Azure Cosmos DB und Azure Functions](./media/serverless-computing-database/cosmos-db-azure-functions-integration.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-azure-functions-integration.png" alt-text="Integration von Azure Cosmos DB und Azure Functions" border="false":::
 
 Der Azure Functions-Trigger, die Eingabebindung und die Ausgabebindung für Azure Cosmos DB können in den folgenden Kombinationen verwendet werden:
 
@@ -61,7 +63,7 @@ In IoT-Implementierungen können Sie eine Funktion aufrufen, wenn die Motorkontr
 
 Die folgende Abbildung zeigt den Code, der für diesen Trigger in das Azure-Portal geschrieben wird.
 
-![Erstellen eines Azure Functions-Triggers für Cosmos DB im Azure-Portal](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Erstellen einer durch Azure Cosmos DB ausgelösten Funktion":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>Finanzieller Anwendungsfall – Trigger mit Timer und Eingabebindung
 
@@ -75,13 +77,13 @@ Bei finanziellen Implementierungen können Sie beispielsweise eine Funktion aufr
 
 In den folgenden Abbildungen wird der Code im Azure-Portal für dieses Szenario gezeigt.
 
-![Datei „Index.js“ für einen Trigger mit Timer für ein finanzielles Szenario](./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Datei „index.js“ für einen Trigger mit Timer für ein Finanzszenario":::
 
-![Datei „Run.csx“ für einen Trigger mit Timer für ein finanzielles Szenario](./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png)
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Datei „run.csx“ für einen Trigger mit Timer für ein Finanzszenario":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Gaming-Anwendungsfall: Azure Functions-Trigger und -Ausgabebindung für Cosmos DB 
 
-Wenn in einer Gaming-Anwendung ein neuer Benutzer erstellt wird, können Sie mithilfe der [Azure Cosmos DB-Gremlin-API](graph-introduction.md) nach anderen Benutzern suchen, die diesen möglicherweise kennen. Anschließend können Sie die Ergebnisse in eine [Azure Cosmos DB-SQL-Datenbank] schreiben, aus der sie leicht abgerufen werden können.
+Wenn in einer Gaming-Anwendung ein neuer Benutzer erstellt wird, können Sie mithilfe der [Azure Cosmos DB-Gremlin-API](graph-introduction.md) nach anderen Benutzern suchen, die diesen möglicherweise kennen. Anschließend können Sie die Ergebnisse in eine Azure Cosmos DB- oder SQL-Datenbank schreiben, aus der sie leicht abgerufen werden können.
 
 **Implementierung:** Verwenden eines Azure Functions-Triggers und der Ausgabebindung für Cosmos DB
 
@@ -110,7 +112,7 @@ Da die Funktion in allen diesen Anwendungsfällen die App selbst entkoppelt hat,
 
 Die native Integration zwischen Azure Cosmos DB und Azure Functions ist im Azure-Portal und in Visual Studio 2019 verfügbar.
 
-* Im Azure Functions-Portal können Sie einen Trigger erstellen. Eine Schnellstartanleitung finden Sie unter [Erstellen einer durch Azure Cosmos DB ausgelösten Funktion](https://aka.ms/cosmosdbtriggerportalfunc).
+* Im Azure Functions-Portal können Sie einen Trigger erstellen. Eine Schnellstartanleitung finden Sie unter [Erstellen einer durch Azure Cosmos DB ausgelösten Funktion](../azure-functions/functions-create-cosmos-db-triggered-function.md).
 * Im Azure Cosmos DB-Portal können Sie einer vorhandenen Azure-Funktionen-App in derselben Ressourcengruppe einen Azure Functions-Trigger für Cosmos DB hinzufügen.
 * In Visual Studio 2019 können Sie den Trigger mit den [Azure Functions-Tools](../azure-functions/functions-develop-vs.md) erstellen:
 
@@ -122,11 +124,11 @@ Azure Functions bietet die Möglichkeit, skalierbare Arbeitseinheiten bzw. präz
 
 Azure Cosmos DB empfiehlt sich als folgenden Gründen als Datenbank für Ihre Architektur für serverloses Computing:
 
-* **Sofortiger Zugriff auf alle Ihre Daten**: Sie verfügen über präzisen Zugriff auf jeden gespeicherten Wert, da Azure Cosmos DB sämtliche Daten standardmäßig [automatisch indiziert](index-policy.md) und die Indizes sofort verfügbar macht. Das heißt, dass Sie laufend in der Lage sind, Ihre Datenbank abzufragen, zu aktualisieren und der Datenbank neue Elemente hinzuzufügen, und der sofortige Zugriff über Azure Functions ist möglich.
+* **Sofortiger Zugriff auf alle Ihre Daten** : Sie verfügen über präzisen Zugriff auf jeden gespeicherten Wert, da Azure Cosmos DB sämtliche Daten standardmäßig [automatisch indiziert](index-policy.md) und die Indizes sofort verfügbar macht. Das heißt, dass Sie laufend in der Lage sind, Ihre Datenbank abzufragen, zu aktualisieren und der Datenbank neue Elemente hinzuzufügen, und der sofortige Zugriff über Azure Functions ist möglich.
 
 * **Ohne Schema**. Azure Cosmos DB verfügt über kein Schema, daher kann jede Datenausgabe von einer Azure-Funktion verarbeitet werden. Durch diesen Ansatz der „uneingeschränkten Verarbeitung“ kann eine Vielzahl von Funktionen erstellt werden, die Daten in Azure Cosmos DB ausgeben.
 
-* **Skalierbarer Durchsatz**. Durchsatz kann in Azure Cosmos DB sofort zentral hoch- und herunterskaliert werden. Wenn Sie über Hunderte oder sogar Tausende von Funktionen verfügen, die alle denselben Container abfragen und in diesen Container schreiben, können Sie Ihre [RU/s](request-units.md) zentral hochskalieren, sodass die Last bewältigt werden kann. Alle Funktionen arbeiten parallel mit den zugeordneten RU/s, und Ihre Daten sind garantiert [konsistent](consistency-levels.md).
+* **Skalierbarer Durchsatz**. Durchsatz kann in Azure Cosmos DB sofort zentral hoch- und herunterskaliert werden. Wenn Sie über Hunderte oder sogar Tausende von Funktionen verfügen, die alle denselben Container abfragen und in diesen Container schreiben, können Sie Ihre [RU/s](request-units.md) hochskalieren, sodass die Last bewältigt werden kann. Alle Funktionen arbeiten parallel mit den zugeordneten RU/s, und Ihre Daten sind garantiert [konsistent](consistency-levels.md).
 
 * **Globale Replikation**. Sie können Azure Cosmos DB-Daten [weltweit](distribute-data-globally.md) replizieren, um die Latenz zu verringern, wobei eine Geolokalisierung Ihrer Daten in größtmöglicher Nähe zu Ihren Benutzern erfolgt. Wie bei allen Azure Cosmos DB-Abfragen sind Daten aus ereignisgesteuerten Triggern Daten, die aus der Azure Cosmos DB in größter Nähe zum Benutzer gelesen werden.
 
@@ -146,12 +148,6 @@ Wenn Sie nicht sicher sind, ob Flow, Logic Apps, Azure Functions oder WebJobs am
 
 Stellen wir nun eine echte Verbindung zwischen Azure Cosmos DB und Azure Functions her: 
 
-* [Erstellen einer durch Azure Cosmos DB ausgelösten Funktion](https://aka.ms/cosmosdbtriggerportalfunc)
-* [Erstellen eines Azure Functions-HTTP-Triggers mit einer Azure Cosmos DB-Eingabebindung](https://aka.ms/cosmosdbinputbind)
-* [Azure Cosmos DB-Bindungen und -Trigger](../azure-functions/functions-bindings-cosmosdb.md)
-
-
- 
-
-
-
+* [Erstellen einer durch Azure Cosmos DB ausgelösten Funktion](../azure-functions/functions-create-cosmos-db-triggered-function.md)
+* [Erstellen eines Azure Functions-HTTP-Triggers mit einer Azure Cosmos DB-Eingabebindung](../azure-functions/functions-bindings-cosmosdb.md?tabs=csharp)
+* [Azure Cosmos DB-Bindungen und -Trigger](../azure-functions/functions-bindings-cosmosdb-v2.md)

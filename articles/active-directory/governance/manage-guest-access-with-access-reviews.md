@@ -1,9 +1,9 @@
 ---
-title: Verwalten des Gastzugriffs mit Zugriffsüberprüfungen – Azure Active Directory | Microsoft-Dokumentation
+title: Verwalten des Gastzugriffs mit Zugriffsüberprüfungen – Azure AD
 description: Verwalten von Gastbenutzern als Mitglieder einer Gruppe oder einer Anwendung zugewiesene Benutzer mit Azure Active Directory-Zugriffsüberprüfungen
 services: active-directory
 documentationcenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 12/13/2018
-ms.author: ajburnle
+ms.date: 12/23/2020
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a982b97bcef6a24f026bf6ad2943661db18d6af0
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 76aeb63feb006e6962efeb3687363f18acb59904
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499463"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746693"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen
 
 
-Mit Azure Active Directory (Azure AD) können Sie problemlos die Zusammenarbeit über Organisationsgrenzen hinweg ermöglichen, indem Sie das Feature [Azure AD B2B](../b2b/what-is-b2b.md) verwenden. Gastbenutzer von anderen Mandanten können von [Administratoren](../b2b/add-users-administrator.md) oder [anderen Benutzern eingeladen](../b2b/what-is-b2b.md) werden. Dies gilt auch für soziale Identitäten wie z.B. Microsoft-Konten.
+Mit Azure Active Directory (Azure AD) können Sie problemlos die Zusammenarbeit über Organisationsgrenzen hinweg ermöglichen, indem Sie das Feature [Azure AD B2B](../external-identities/what-is-b2b.md) verwenden. Gastbenutzer von anderen Mandanten können von [Administratoren](../external-identities/add-users-administrator.md) oder [anderen Benutzern eingeladen](../external-identities/what-is-b2b.md) werden. Dies gilt auch für soziale Identitäten wie z.B. Microsoft-Konten.
 
 Sie können auch auf einfache Weise sicherstellen, dass Gastbenutzer über entsprechenden Zugriff verfügen. Hierzu können Sie die Gäste selbst oder einen Entscheidungsträger bitten, an einer Zugriffsüberprüfung teilzunehmen und den Zugriff des Gasts erneut zu zertifizieren (oder zu „bescheinigen“). Basierend auf Vorschlägen von Azure AD können die Prüfer die Notwendigkeit des weiteren Zugriffs der einzelnen Benutzer abwägen. Nach Abschluss einer Zugriffsüberprüfung können Sie dann Änderungen vornehmen und Zugriffsrechte für Gäste entfernen, die diese nicht mehr benötigen.
 
@@ -37,11 +37,16 @@ Sie können auch auf einfache Weise sicherstellen, dass Gastbenutzer über entsp
 
 - Azure AD Premium P2
 
-Weitere Informationen finden Sie unter [Welche Benutzer benötigen Lizenzen?](access-reviews-overview.md#which-users-must-have-licenses)
+Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-overview.md#license-requirements).
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Erstellen und Durchführen einer Zugriffsüberprüfung für Gäste
 
-Navigieren Sie zuerst als globaler Administrator oder Benutzeradministrator zur [Seite „Identity Governance“](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), um sicherzustellen, dass Ihre Organisation Zugriffsüberprüfungen verwenden kann.
+Ihnen muss eine der folgenden Rollen zugewiesen sein:
+- Globaler Administrator
+- Benutzeradministrator
+- (Vorschau) M365- oder AAD-Sicherheitsgruppenbesitzer der zu überprüfenden Gruppe
+
+Navigieren Sie zur [Seite „Identity Governance“](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), und vergewissern Sie sich, dass Ihre Organisation Zugriffsüberprüfungen verwenden kann.
 
 Azure AD ermöglicht mehrere Szenarien für die Überprüfung von Gastbenutzern.
 
@@ -120,10 +125,3 @@ In einigen Organisationen sind Gästen ihre Gruppenmitgliedschaften möglicherwe
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md)
-
-
-
-
-
-
-

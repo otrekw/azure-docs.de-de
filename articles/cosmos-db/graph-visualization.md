@@ -1,36 +1,37 @@
 ---
-title: Visualisieren Sie Ihre Diagrammdaten in der Azure Cosmos DB Gremlin API
+title: Visualisieren von Diagrammdaten in der Azure Cosmos DB-Gremlin-API
 description: Erfahren Sie, wie Sie Azure Cosmos DB-Diagrammdaten in Visualisierungslösungen (Linkurious Enterprise, Cambridge Intelligence) integrieren.
-author: luisbosquez
-ms.author: lbosq
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/02/2019
-ms.openlocfilehash: efe47cc5453a7259da37dcb3c33edcdfbea6d8c8
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 569c87a7753fdb0d7b880d6856d7819ff8000ccb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672644"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129608"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Visualisieren der in der Gremlin-API von Azure Cosmos DB gespeicherten Diagrammdaten mit Datenvisualisierungslösungen
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
-Sie können die in der Gremlin-API von Azure Cosmos DB gespeicherten Daten mit verschiedenen Datenvisualisierungslösungen visualisieren. Die folgenden Lösungen werden von der [Apache Tinkerpop Community](http://tinkerpop.apache.org/#poweredby) für die Visualisierung von Diagrammdaten empfohlen.
+Sie können die in der Gremlin-API von Azure Cosmos DB gespeicherten Daten mit verschiedenen Datenvisualisierungslösungen visualisieren. Die folgenden Lösungen werden von der [Apache Tinkerpop Community](https://tinkerpop.apache.org/#poweredby) für die Visualisierung von Diagrammdaten empfohlen.
 
 ## <a name="linkurious-enterprise"></a>Linkurious Enterprise
 
-![Linkurious-Logo](./media/graph-visualization/linkurious-logo.jpg)
+:::image type="content" source="./media/graph-visualization/linkurious-logo.jpg" alt-text="Linkurious-Logo" border="false":::
 
-[Linkurious Enterprise](https://linkurio.us/product/) nutzt Grafiktechnologie und Datenvisualisierung, um komplexe Datensätze in interaktive visuelle Netzwerke zu verwandeln. Die Plattform verbindet sich mit Ihren Datenquellen und ermöglicht es den Ermittlern, nahtlos über Milliarden von Einheiten und Beziehungen zu navigieren. Das Ergebnis ist eine neue Fähigkeit, verdächtige Beziehungen zu erkennen, ohne mit Abfragen oder Tabellen zu jonglieren.
+[Linkurious Enterprise](https://linkurio.us/product/) nutzt Grafiktechnologie und Datenvisualisierung, um komplexe Datensätze in interaktive visuelle Netzwerke zu verwandeln. Die Plattform stellt eine Verbindung mit Ihren Datenquellen her und ermöglicht es Ermittlern, nahtlos durch Milliarden von Entitäten und Beziehungen zu navigieren. So lassen sich verdächtige Beziehungen erkennen, ohne mit Abfragen oder Tabellen herumjonglieren zu müssen.
 
-Die interaktive Benutzeroberfläche von Linkurious Enterprise bietet eine einfache Möglichkeit, komplexe Daten zu untersuchen. Sie können nach bestimmten Entitäten suchen, Verbindungen erweitern, um versteckte Beziehungen aufzudecken, und Layouts Ihrer Wahl anwenden, um komplexe Netzwerke zu entwirren. Linkurious Enterprise ist jetzt mit der Gremlin-API von Azure Cosmos DB kompatibel. Es eignet sich für End-to-End-Grafikvisualisierungsszenarien und unterstützt Lese- und Schreibfunktionen über die Benutzeroberfläche. Sie können eine [Demo von Linkurious mit Azure Cosmos DB](https://linkurio.us/contact/) anfordern.
+Die interaktive Benutzeroberfläche von Linkurious Enterprise bietet eine einfache Möglichkeit, komplexe Daten zu untersuchen. Sie können nach bestimmten Entitäten suchen, Verbindungen erweitern, um versteckte Beziehungen aufzudecken, und Layouts Ihrer Wahl anwenden, um komplexe Netzwerke zu entwirren. Linkurious Enterprise ist jetzt mit der Gremlin-API von Azure Cosmos DB kompatibel. Die Plattform eignet sich für umfassende Szenarien zur Visualisierung von Diagrammen und unterstützt Lese- und Schreibfunktionen auf der Benutzeroberfläche. Sie können eine [Demo von Linkurious mit Azure Cosmos DB](https://linkurio.us/contact/) anfordern.
 
-![Linkurious-Demo](./media/graph-visualization/linkurious-demo.gif)
+:::image type="content" source="./media/graph-visualization/linkurious-demo.gif" alt-text="Linkurious-Demo" border="false":::
 
 ## <a name="cambridge-intelligence"></a>Cambridge Intelligence
 
-![Cambridge Intelligence Logo](./media/graph-visualization/ci-logo.png)
+:::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="Cambridge Intelligence-Logo" border="false":::
 
 Die Diagrammvisualisierungs-Toolkits von [Cambridge Intelligence](https://cambridge-intelligence.com/products/) unterstützen nun Azure Cosmos DB. Die folgenden zwei Visualisierungstoolkits werden von Azure Cosmos DB unterstützt:
 
@@ -38,16 +39,16 @@ Die Diagrammvisualisierungs-Toolkits von [Cambridge Intelligence](https://cambri
 
 - [Re-Graph für React-Entwickler](https://cambridge-intelligence.com/regraph/)
 
-![Cambridge Intelligence-Demo](./media/graph-visualization/ci-demo-2.gif)
+:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="Animation: KeyLines-Visualisierungsbeispiel mit verschiedenen Detailgraden" border="false":::
 
 Mit diesen Toolkits können Sie leistungsstarke Anwendungen zur Visualisierung und Analyse von Diagrammen für Ihren Anwendungsfall entwickeln. Sie nutzen leistungsstarkes WebGL-Rendering (Web Graphics Library) und sorgfältig erstellten Code, um den Benutzern eine schnelle und aufschlussreiche Visualisierung zu bieten. Diese Tools sind mit jedem Browser, Gerät, Server und jeder Datenbank kompatibel und werden mit Schritt-für-Schritt-Anleitungen, vollständig dokumentierten APIs und interaktiven Demos geliefert.
 
-![Cambridge Intelligence-Demo](./media/graph-visualization/ci-demo-1.gif)
+:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="Animation: Re-Graph-Visualisierungsbeispiel mit verschiedenen Detailgraden" border="false":::
 
 
 ## <a name="next-steps"></a>Nächste Schritte
- 
-- [Testen Sie die Toolkits](https://cambridge-intelligence.com/try/)
-- [KeyLines Technologieübersicht](https://cambridge-intelligence.com/keylines/technology/)
-- [Re-Graph Technologieübersicht](https://cambridge-intelligence.com/regraph/technology/)
-- [Anwendungsfälle für Graph-Visualisierung](https://cambridge-intelligence.com/use-cases/)
+
+- [Toolkits testen](https://cambridge-intelligence.com/try/)
+- [Übersicht über die KeyLines-Technologie](https://cambridge-intelligence.com/keylines/technology/)
+- [Übersicht über die Re-Graph-Technologie](https://cambridge-intelligence.com/regraph/technology/)
+- [Anwendungsfälle für die Visualisierung von Diagrammen](https://cambridge-intelligence.com/use-cases/)

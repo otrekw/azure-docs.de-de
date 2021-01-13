@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-Skriptbeispiel – Sichern eines Back-Ends | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Sichern eines Back-Ends
+description: Hier erfahren Sie, wie Sie ein Azure PowerShell-Skriptbeispiel zum Schützen eines Back-Ends mit gegenseitiger Zertifikatauthentifizierung verwenden.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: b9501cc88e5d83b5c5724b0fbb2f988a8ca1509e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: cb6b1cfcb6a8f482bdcbc9d6befc99197f024f4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067544"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87905634"
 ---
 # <a name="secure-back-end"></a>Sichern eines Back-Ends
 
@@ -43,6 +43,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Weitere Azure PowerShell-Beispiele für Azure API Management finden Sie in den [PowerShell-Beispielen](../powershell-samples.md).

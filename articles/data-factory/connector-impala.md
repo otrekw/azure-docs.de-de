@@ -1,30 +1,28 @@
 ---
-title: Kopieren von Daten aus Impala mithilfe von Azure Data Factory (Vorschau) | Microsoft Docs
+title: Kopieren von Daten aus Impala mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus Impala mithilfe einer Kopieraktivität in eine Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 4bebdbda8fbba10b3e8817d3958e75d39522538a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: b70db03e03ce914ea1d81d94cd2803a36eccfc88
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092033"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81418217"
 ---
-# <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Kopieren von Daten aus Impala mithilfe von Azure Data Factory (Vorschau)
+# <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Kopieren von Daten aus Impala mithilfe von Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Impala zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
-
-> [!IMPORTANT]
-> Dieser Connector befindet sich derzeit in der Vorschauversion. Sie können ihn ausprobieren und Feedback geben. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/), wenn Sie in Ihrer Lösung eine Abhängigkeit von Connectors verwenden möchten, die sich in der Vorschauphase befinden.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -59,10 +57,10 @@ Folgende Eigenschaften werden für den mit Impala verknüpften Dienst unterstüt
 | authenticationType | Der zu verwendende Authentifizierungstyp. <br/>Zulässige Werte: **Anonymous**, **SASLUsername** und **UsernameAndPassword**. | Ja |
 | username | Der Benutzername für den Zugriff auf den Impala-Server. Der Standardwert ist „Anonymous“, wenn „SASLUsername“ verwendet wird.  | Nein |
 | password | Das Kennwort, das dem Benutzernamen entspricht, wenn Sie „UsernameAndPassword“ verwenden. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
-| enableSsl | Gibt an, ob die Verbindungen mit dem Server mit dem Server mittels SSL verschlüsselt werden soll. Der Standardwert ist **false**.  | Nein |
-| trustedCertPath | Der vollständige Pfad der PEM-Datei mit vertrauenswürdigen Zertifizierungsstellenzertifikaten zur Überprüfung des Servers beim Verbindungsaufbau über SSL. Diese Eigenschaft kann nur festgelegt werden, wenn Sie SSL für die selbstgehostete Integration Runtime verwenden. Der Standardwert ist die Datei „cacerts.pem“, die mit der Integration Runtime installiert wird.  | Nein |
+| enableSsl | Gibt an, ob die Verbindungen mit dem Server mit dem Server mittels TLS verschlüsselt werden. Der Standardwert ist **false**.  | Nein |
+| trustedCertPath | Der vollständige Pfad der PEM-Datei mit vertrauenswürdigen Zertifizierungsstellenzertifikaten, die beim Verbindungsaufbau über TLS zur Überprüfung des Servers verwendet werden. Diese Eigenschaft kann nur festgelegt werden, wenn Sie TLS für die selbstgehostete Integration Runtime verwenden. Der Standardwert ist die Datei „cacerts.pem“, die mit der Integration Runtime installiert wird.  | Nein |
 | useSystemTrustStore | Gibt an, ob ein Zertifizierungsstellenzertifikat aus dem Vertrauensspeicher des Systems oder aus einer angegebenen PEM-Datei verwendet werden soll. Der Standardwert ist **false**.  | Nein |
-| allowHostNameCNMismatch | Gibt an, ob ein Name für das von der Zertifizierungsstelle ausgestellte SSL-Zertifikat erforderlich ist, der mit dem Hostnamen des Servers übereinstimmt, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert ist **false**.  | Nein |
+| allowHostNameCNMismatch | Gibt an, ob der Name eines von der Zertifizierungsstelle ausgestellten TLS/SSL-Zertifikats mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert ist **false**.  | Nein |
 | allowSelfSignedServerCert | Gibt an, ob vom Server selbstsignierte Zertifikate zugelassen werden. Der Standardwert ist **false**.  | Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
@@ -101,7 +99,7 @@ Legen Sie zum Kopieren von Daten aus Impala die „type“-Eigenschaft des Datas
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **ImpalaObject** | Ja |
 | schema | Name des Schemas. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
-| table | Name der Tabelle. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
+| table | Der Name der Tabelle. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
 | tableName | Name der Tabelle mit Schema. Diese Eigenschaft wird aus Gründen der Abwärtskompatibilität weiterhin unterstützt. Verwenden Sie `schema` und `table` für eine neue Workload. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
@@ -132,7 +130,7 @@ Legen Sie zum Kopieren von Daten aus der Impala den Quelltyp in der Kopieraktivi
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **ImpalaSource** festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. z. B. `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

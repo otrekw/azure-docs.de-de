@@ -1,28 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Peakon | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von Peakon | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Peakon konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a944c397-ed3f-4d45-b9b2-6d4bcb6b0a09
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: b093a26848701254ad674081037c266f1fb012b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a84d4d71e5190c455441d1e627381be86ef5e129
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67094718"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608526"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Tutorial: Azure Active Directory-Integration mit Peakon
+# <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Tutorial: Azure Active Directory-Integration von Peakon
 
 In diesem Tutorial erfahren Sie, wie Sie Peakon in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Peakon in Azure AD bietet die folgenden Vorteile:
@@ -31,7 +27,7 @@ Die Integration von Peakon in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Peakon anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -40,6 +36,9 @@ Um die Azure AD-Integration von Peakon konfigurieren zu können, benötigen Sie 
 
 * Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 * Ein Peakon-Abonnement, für das einmaliges Anmelden aktiviert ist
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -111,7 +110,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Peakon d
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Peakon](common/metadata-upload-additional-signon.png)
+    ![Screenshot, auf dem „Zusätzliche URLs festlegen“ ausgewählt und das Textfeld „Anmelde-URL“ hervorgehoben ist](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://app.peakon.com/login`.
 
@@ -136,7 +135,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Peakon d
 
 1. Melden Sie sich in einem anderen Webbrowserfenster als Administrator bei Peakon an.
 
-2. Klicken Sie auf der Menüleiste auf der linken Seite auf**Configuration** (Konfiguration), und navigieren Sie dann zu**Integrations** (Integrationen).
+2. Klicken Sie auf der Menüleiste auf der linken Seite auf **Configuration** (Konfiguration), und navigieren Sie dann zu **Integrations** (Integrationen).
 
     ![Die Konfiguration](./media/peakon-tutorial/tutorial_peakon_config.png)
 
@@ -187,7 +186,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -224,35 +223,34 @@ Im Fall von Peakon ist die Bereitstellung eine manuelle Aufgabe.
 
 1. Melden Sie sich bei der Peakon-Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie auf der Menüleiste auf der linken Seite auf**Configuration** (Konfiguration), und navigieren Sie dann zu**Employees** (Mitarbeiter).
+2. Klicken Sie auf der Menüleiste auf der linken Seite auf **Configuration** (Konfiguration), und navigieren Sie dann zu **Employees** (Mitarbeiter).
 
     ![Mitarbeiter](./media/peakon-tutorial/tutorial_peakon_employee.png)
 
-3. Klicken Sie oben rechts auf der Seite auf**Add employee** (Mitarbeiter hinzufügen).
+3. Klicken Sie oben rechts auf der Seite auf **Add employee** (Mitarbeiter hinzufügen).
 
-      ![Mitarbeiter hinzufügen](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
+    ![Mitarbeiter hinzufügen](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
 
 3. Führen Sie auf der Dialogfeldseite **Neuer Mitarbeiter** die folgenden Schritte aus:
 
-     ![Neuer Mitarbeiter](./media/peakon-tutorial/tutorial_peakon_create.png)
+    ![Neuer Mitarbeiter](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. Geben Sie im Textfeld **Name** den Vornamen **Britta** und den Nachnamen **simon** ein.
+    1. Geben Sie im Textfeld **Name** den Vornamen **Britta** und den Nachnamen **simon** ein.
 
-    b. Geben Sie im Textfeld **Email** die E-Mail-Adresse ein, z. B. **Brittasimon\@contoso.com**.
+    1. Geben Sie im Textfeld **Email** die E-Mail-Adresse ein, z. B. **Brittasimon\@contoso.com**.
 
-    c. Klicken Sie auf **Mitarbeiter erstellen**.
+    1. Klicken Sie auf **Mitarbeiter erstellen**.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Peakon“ klicken, sollten Sie automatisch bei der Peakon-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Peakon“ klicken, sollten Sie automatisch bei der Peakon-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9311c1060b953e87f163cb482db14cdd43f50d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2aa1a30c548ef60cd9b596031f4115297dd20844
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60242106"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89278597"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Datenschutz und nahtloses einmaliges Anmelden von Azure AD
 
@@ -64,7 +64,7 @@ Weitere Informationen zu verwandten DSGVO-Anforderungen für Azure AD Connect fi
 
 ### <a name="note-about-domain-controller-logs"></a>Hinweis zu Domänencontrollerprotokollen
 
-Wenn die Überwachungsprotokollierung aktiviert ist, kann dieses Produkt Sicherheitsprotokolle für Ihre Domänencontroller generieren. Weitere Informationen zum Konfigurieren von Überwachungsrichtlinien finden Sie in [diesem Artikel](https://technet.microsoft.com/library/dd277403.aspx).
+Wenn die Überwachungsprotokollierung aktiviert ist, kann dieses Produkt Sicherheitsprotokolle für Ihre Domänencontroller generieren. Weitere Informationen zum Konfigurieren von Überwachungsrichtlinien finden Sie in [diesem Artikel](/previous-versions/tn-archive/dd277403(v=technet.10)).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

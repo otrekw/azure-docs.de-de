@@ -1,5 +1,6 @@
 ---
-title: Probleme mit der Anwendung und Dienstverfügbarkeit von Microsoft Azure Cloud Services – Häufig gestellte Fragen | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zur Problemen bei der Anwendungs- und Dienstverfügbarkeit
+titleSuffix: Azure Cloud Services
 description: Dieser Artikel behandelt häufig gestellte Fragen zur Anwendung und Dienstverfügbarkeit von Microsoft Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: d229291793334964569f6c35eaec68a94ca6b69f
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 2707c5a6cb110d30b85b765f6c8b144e8cca7abe
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154893"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074718"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Anwendung und Dienstverfügbarkeit von Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -32,7 +33,7 @@ Ungefähr einmal im Monat gibt Microsoft eine neue Version des Gastbetriebssyste
 
 Ausführliche Informationen zu den neuesten Updates für Gastbetriebssysteme finden Sie unter [Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md).
 
-Hilfreiche Informationen zu Neustarts und Verweise auf technische Details zu Gast- und Hostbetriebssystemupdates finden Sie im MSDN-Blogbeitrag [Role Instance Restarts Due to OS Upgrades](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx) (Neustarts von Rolleninstanzen aufgrund von Betriebssystemupgrades).
+Hilfreiche Informationen zu Neustarts und Verweise auf technische Details zu Gast- und Hostbetriebssystemupdates finden Sie im MSDN-Blogbeitrag [Role Instance Restarts Due to OS Upgrades](/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades) (Neustarts von Rolleninstanzen aufgrund von Betriebssystemupgrades).
 
 ## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>Warum dauert die erste Anforderung an meinen Clouddienst länger als üblich, nachdem der Dienst für einige Zeit im Leerlauf war?
 Wenn der Webserver die erste Anforderung erhält, kompiliert er zuerst den Code neu und verarbeitet anschließend die Anforderung. Deshalb dauert die erste Anforderung länger als die anderen. Standardmäßig wird der Anwendungspool bei Benutzerinaktivität heruntergefahren. Zudem wird der Anwendungspool standardmäßig nach 1740 Minuten (29 Stunden) wiederverwendet.

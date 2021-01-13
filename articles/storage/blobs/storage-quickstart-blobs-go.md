@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bf0e868e9ee746da1dfe1b03403d21f7edb3bd5e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726455"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544648"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Go
 
@@ -50,14 +50,14 @@ Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Zum �
 ## <a name="configure-your-storage-connection-string"></a>Konfigurieren der Speicherverbindungszeichenfolge
 Für diese Lösung müssen der Name und der Schlüssel Ihres Speicherkontos sicher in Umgebungsvariablen gespeichert sein, die sich auf dem Computer befinden, auf dem das Beispiel ausgeführt wird. Befolgen Sie je nach Betriebssystem die Schritte für eines der unten angegebenen Beispiele, um die Umgebungsvariablen zu erstellen.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
@@ -108,9 +108,9 @@ Zunächst müssen die Verweise auf die Objekte „ContainerURL“ und „Contain
 Sobald das ContainerURL-Objekt vorhanden ist, können Sie das **BlobURL**-Objekt instanziieren, das auf einen Blob verweist, und Vorgänge wie Hochladen, Herunterladen und Kopieren ausführen.
 
 > [!IMPORTANT]
-> Die Containernamen müssen klein geschrieben werden. Weitere Informationen zu Container- und Blobnamen finden Sie unter [Benennen von Containern, Blobs und Metadaten und Verweisen auf diese](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Die Containernamen müssen klein geschrieben werden. Weitere Informationen zu Container- und Blobnamen finden Sie unter [Benennen von Containern, Blobs und Metadaten und Verweisen auf diese](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-In diesem Abschnitt erstellen Sie einen neuen Container. Der Name des Containers lautet**quickstartblobs-[zufällige Zeichenfolge]** . 
+In diesem Abschnitt erstellen Sie einen neuen Container. Der Name des Containers lautet **quickstartblobs-[zufällige Zeichenfolge]** . 
 
 ```go 
 // From the Azure portal, get your storage account name and key and set environment variables.
@@ -147,11 +147,11 @@ handleErrors(err)
 
 Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. Blockblobs werden am häufigsten und auch in diesem Schnellstart verwendet.  
 
-Zum Hochladen einer Datei in ein Blob öffnen Sie die Datei mit **os.Open**. Anschließend können Sie die Datei mit einer der REST-APIs in den angegebenen Pfad hochladen: Upload (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
+Zum Hochladen einer Datei in ein Blob öffnen Sie die Datei mit **os.Open**. Anschließend können Sie die Datei mithilfe einer der folgenden REST-APIs an den angegebenen Pfad hochladen: Upload (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
 
-Als Alternative bietet das SDK [High-Level-APIs](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go), die auf den Low-Level-REST-APIs aufbauen. So verwendet beispielsweise die Funktion ***UploadFileToBlockBlob*** Vorgänge vom Typ „StageBlock“ (PutBlock), um eine Datei parallel in Blöcken hochzuladen und so den Durchsatz zu optimieren. Ist die Datei kleiner als 256 MB, wird stattdessen „Upload“ (PutBlob) verwendet, um die Übertragung mit einer einzelnen Transaktion durchzuführen.
+Als Alternative bietet das SDK [High-Level-APIs](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go), die auf den Low-Level-REST-APIs aufbauen. So verwendet beispielsweise die Funktion **_UploadFileToBlockBlob_* _ Vorgänge vom Typ „StageBlock“ (PutBlock), um eine Datei parallel in Blöcken hochzuladen und so den Durchsatz zu optimieren. Ist die Datei kleiner als 256 MB, wird stattdessen „Upload“ (PutBlob) verwendet, um die Übertragung mit einer einzelnen Transaktion durchzuführen.
 
-Im folgenden Beispiel wird die Datei in einen Container mit dem Namen **quickstartblobs-[zufällige Zeichenfolge]** hochgeladen.
+Im folgenden Beispiel wird die Datei in einen Container mit dem Namen „_*quickstartblobs-[zufällige Zeichenfolge]“ hochgeladen.
 
 ```go
 // Create a file to test the upload and download.

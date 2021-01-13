@@ -1,18 +1,14 @@
 ---
 title: Verstehen der Bereitstellungsreihenfolge
-description: Erfahren Sie mehr über den Lebenszyklus einer Blaupausendefinition und die einzelnen Phasen.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 08/22/2019
+description: Erfahren Sie mehr über die Standardreihenfolge, in der Blaupausenartefakte während einer Blaupausenzuweisung bereitgestellt werden, und wie Sie die Bereitstellungsreihenfolge anpassen können.
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 05cc12f5416cbbbff470b40c870f41647ef37cd5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 8305e5d44caef0f35e5b4beb4b70be9736272fa7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231924"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996048"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Verstehen der Bereitstellungsreihenfolge in Azure Blueprint
 
@@ -32,27 +28,26 @@ Wenn die Blaupausendefinition keine Anweisung zum Bereitstellen von Artefakten e
 
 - **Rollenzuweisungsartefakte** auf Abonnementebene werden nach Artefaktnamen sortiert
 - **Richtlinienzuweisungsartefakte** auf Abonnementebene werden nach Artefaktnamen sortiert
-- **Azure Resource Manager-Vorlagenartefakte** auf Abonnementebene werden nach Artefaktnamen sortiert
+- Artefakte von **Azure Resource Manager-Vorlagen** (ARM-Vorlagen) auf Abonnementebene werden nach Artefaktnamen sortiert
 - **Ressourcengruppenartefakte** (und untergeordnete Artefakte) werden nach Platzhalternamen sortiert
 
 In jedem Artefakt vom Typ **Ressourcengruppe** wird für Artefakte, die innerhalb dieser Ressourcengruppe erstellt werden, die folgende Reihenfolge verwendet:
 
 - Einer Ressourcengruppe untergeordnete **Rollenzuweisungsartefakte** werden nach Artefaktnamen sortiert
 - Einer Ressourcengruppe untergeordnete **Richtlinienzuweisungsartefakte** werden nach Artefaktnamen sortiert
-- Einer Ressourcengruppe untergeordnete **Azure Resource Manager-Vorlagenartefakte** werden nach Artefaktnamen sortiert
+- Einer Ressourcengruppe untergeordnete Artefakte von **Azure Resource Manager-Vorlagen** (ARM-Vorlagen) werden nach Artefaktnamen sortiert
 
 > [!NOTE]
 > Die Verwendung von [artifacts()](../reference/blueprint-functions.md#artifacts) erzeugt eine implizite Abhängigkeit von dem betreffenden Artefakt.
 
 ## <a name="customizing-the-sequencing-order"></a>Anpassen der Reihenfolge
 
-Beim Erstellen großer Blaupausendefinitionen müssen Ressourcen ggf. in einer bestimmten Reihenfolge erstellt werden. Im gängigsten Muster dieses Szenarios enthält eine Blaupausendefinition mehrere Azure Resource Manager-Vorlagen. Für diesen Fall ermöglicht Blueprints das Definieren der Reihenfolge.
+Beim Erstellen großer Blaupausendefinitionen müssen Ressourcen ggf. in einer bestimmten Reihenfolge erstellt werden. Im gängigsten Anwendungsmuster dieses Szenarios enthält eine Blaupausendefinition mehrere ARM-Vorlagen. Für diesen Fall ermöglicht Azure Blueprints das Definieren der Reihenfolge.
 
 Zum Angeben der Reihenfolge wird im JSON-Code eine Eigenschaft vom Typ `dependsOn` definiert. Die Blaupausendefinition für Ressourcengruppen und Artefaktobjekte unterstützen diese Eigenschaft. `dependsOn` ist ein Zeichenfolgenarray von Artefaktnamen, das das jeweilige Artefakt im Vorfeld für seine Erstellung benötigt.
 
 > [!NOTE]
-> Beim Erstellen von Blaupausenobjekten erhält jede Artefaktressource ihren Namen vom Dateinamen (bei Verwendung von [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact)) oder dem URL-Endpunkt (bei Verwendung der [REST-API](/rest/api/blueprints/artifacts/createorupdate)).
-> _resourceGroup_-Verweise in Artefakten müssen mit denen in der Blaupausendefinition übereinstimmen.
+> Beim Erstellen von Blaupausenobjekten erhält jede Artefaktressource ihren Namen vom Dateinamen (bei Verwendung von [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact)) oder dem URL-Endpunkt (bei Verwendung der [REST-API](/rest/api/blueprints/artifacts/createorupdate)). _resourceGroup_-Verweise in Artefakten müssen mit denen in der Blaupausendefinition übereinstimmen.
 
 ### <a name="example---ordered-resource-group"></a>Beispiel: Sortierte Ressourcengruppe
 
@@ -86,7 +81,7 @@ Diese exemplarische Blaupausendefinition verfügt über eine Ressourcengruppe mi
 
 ### <a name="example---artifact-with-custom-order"></a>Beispiel: Artefakt mit benutzerdefinierter Reihenfolge
 
-Bei diesem Beispiel handelt es sich um ein Richtlinienartefakt, das von einer Azure Resource Manager-Vorlage abhängt. Standardmäßig wird ein Richtlinienartefakt vor der Azure Resource Manager-Vorlage erstellt. Bei Verwendung dieser Reihenfolge kann das Richtlinienartefakt warten, bis die Azure Resource Manager-Vorlage erstellt wurde.
+Bei diesem Beispiel handelt es sich um ein Richtlinienartefakt, das von einer ARM-Vorlage abhängt. In der Standardreihenfolge wird ein Richtlinienartefakt vor der ARM-Vorlage erstellt. Bei Verwendung dieser Reihenfolge kann das Richtlinienartefakt warten, bis die ARM-Vorlage erstellt wurde.
 
 ```json
 {
@@ -105,7 +100,7 @@ Bei diesem Beispiel handelt es sich um ein Richtlinienartefakt, das von einer Az
 
 ### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>Beispiel: Von einer Ressourcengruppe abhängiges Vorlagenartefakt auf Abonnementebene
 
-In diesem Beispiel wird eine Resource Manager-Vorlage, die auf Abonnementebene bereitgestellt wird, von einer Ressourcengruppe abhängig gemacht. Bei der Standardreihenfolge werden die Artefakte auf Abonnementebene vor allen Ressourcengruppen und untergeordneten Artefakten in diesen Ressourcengruppen erstellt. Die Ressourcengruppe wird in der Blaupausendefinition wie folgt definiert:
+In diesem Beispiel wird eine Abhängigkeit einer auf Abonnementebene bereitgestellten ARM-Vorlage von einer Ressourcengruppe erstellt. Bei der Standardreihenfolge werden die Artefakte auf Abonnementebene vor allen Ressourcengruppen und untergeordneten Artefakten in diesen Ressourcengruppen erstellt. Die Ressourcengruppe wird in der Blaupausendefinition wie folgt definiert:
 
 ```json
 "resourceGroups": {
@@ -141,12 +136,13 @@ Das Vorlagenartefakt auf Abonnementebene, das von der Ressourcengruppe **wait-fo
 
 Beim Erstellen wird eine topologische Sortierung verwendet, um das Abhängigkeitsdiagramm der Blaupausenartefakte zu erstellen. Die Überprüfung stellt sicher, dass alle Abhängigkeitsebenen zwischen Ressourcengruppen und Artefakten unterstützt werden.
 
-Wird eine Artefaktabhängigkeit deklariert, die keine Änderung der Standardreihenfolge zur Folge hat, wird keine Änderung vorgenommen. Ein Beispiel wäre etwa eine Ressourcengruppe, die von einer Richtlinie auf Abonnementebene abhängt. Ein weiteres Beispiel wäre eine untergeordnete Richtlinienzuweisung der Ressourcengruppe „standard-rg“, die von der untergeordneten Rollenzuweisung der Ressourcengruppe „standard-rg“ abhängt. In beiden Fällen würde `dependsOn` die Standardreihenfolge nicht ändern, sodass keine Änderungen anfallen würden.
+Wird eine Artefaktabhängigkeit deklariert, die keine Änderung der Standardreihenfolge zur Folge hat, wird keine Änderung vorgenommen.
+Ein Beispiel wäre etwa eine Ressourcengruppe, die von einer Richtlinie auf Abonnementebene abhängt. Ein weiteres Beispiel wäre eine untergeordnete Richtlinienzuweisung der Ressourcengruppe „standard-rg“, die von der untergeordneten Rollenzuweisung der Ressourcengruppe „standard-rg“ abhängt. In beiden Fällen würde `dependsOn` die Standardreihenfolge nicht ändern, sodass keine Änderungen anfallen würden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](lifecycle.md).
-- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](parameters.md) vertraut.
-- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](resource-locking.md) können.
+- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](./lifecycle.md).
+- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](./parameters.md) vertraut.
+- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](./resource-locking.md) können.
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
 - Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).

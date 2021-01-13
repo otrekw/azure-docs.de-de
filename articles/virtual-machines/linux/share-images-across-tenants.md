@@ -1,23 +1,25 @@
 ---
-title: Mandantenübergreifendes Freigeben von Katalogimages in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie VM-Images mithilfe von Katalogen mit freigegebenen Images über Azure-Mandanten hinweg freigeben.
-services: virtual-machines-linux
-author: cynthn
-manager: gwallace
-ms.service: virtual-machines-linux
+title: Mandantenübergreifendes Freigeben von Katalogimages
+description: Erfahren Sie, wie Sie VM-Images mithilfe von Katalogen mit freigegebenen Images und der Azure-Befehlszeilenschnittstelle über Azure-Mandanten hinweg freigeben.
+author: axayjo
+ms.service: virtual-machines
+ms.subservice: imaging
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
-ms.date: 04/05/2019
-ms.author: cynthn
-ms.openlocfilehash: cbf42de406ecb0caed67b77743f376284ab64608
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.topic: how-to
+ms.date: 05/04/2019
+ms.author: akjosh
+ms.reviewer: cynthn
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: f0192a6eb60c72c9f7ac605db492f4e5f97b76ed
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706557"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779259"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Freigeben von Katalog-VM-Images über Azure-Mandanten hinweg
+# <a name="share-gallery-vm-images-across-azure-tenants-using-the-azure-cli"></a>Freigeben von Katalog-VM-Images über Azure-Mandanten hinweg mithilfe der Azure-Befehlszeilenschnittstelle
+
+Mithilfe von Katalogen mit freigegebenen Images können Sie Images über Azure RBAC freigeben. Sie können Azure RBAC verwenden, um Images innerhalb Ihres Mandanten und sogar für Personen außerhalb Ihres Mandanten freizugeben. Weitere Informationen zu dieser einfachen Freigabeoption finden Sie unter [Freigeben des Katalogs](./shared-images-portal.md#share-the-gallery).
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -54,4 +56,4 @@ az vm create \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sollten Probleme auftreten, finden Sie unter [Problembehandlung für Kataloge mit freigegebenen Images](troubleshooting-shared-images.md) mögliche Problembehandlungen.
+Sollten Probleme auftreten, finden Sie unter [Problembehandlung für Kataloge mit freigegebenen Images](../troubleshooting-shared-images.md) mögliche Problembehandlungen.

@@ -1,29 +1,31 @@
 ---
-title: 'Erstellen, Verwalten und Sichern von Administrator- und Abfrage-API-Schlüsseln: Azure Search'
-description: Zugriffssteuerung über API-Schlüssel für den Dienstendpunkt. Administratorschlüssel gewähren Schreibzugriff. Abfrageschlüssel können nur für Lesezugriff erstellt werden.
-author: HeidiSteen
+title: Erstellen, Verwalten und Sichern von Administrator- und Abfrage-API-Schlüsseln
+titleSuffix: Azure Cognitive Search
+description: Ein API-Schlüssel steuert den Zugriff auf den Dienstendpunkt. Administratorschlüssel gewähren Schreibzugriff. Abfrageschlüssel können nur für Lesezugriff erstellt werden.
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: a148ccccd156b0bf637a134758b3a1c8b9db70a7
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 10/22/2020
+ms.openlocfilehash: 29a314553584843ed6241b9311e9d72b42ec8705
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647889"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516405"
 ---
-# <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Erstellen und Verwalten von API-Schlüsseln für einen Azure Search-Dienst
+# <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Erstellen und Verwalten von API-Schlüsseln für einen Dienst für die kognitive Azure-Suche
 
-Für alle Anforderungen an einen Suchdienst wird ein schreibgeschützter API-Schlüssel benötigt, der speziell für Ihren Dienst generiert wurde. Dieser API-Schlüssel ist der einzige Authentifizierungsmechanismus für den Zugriff auf Ihren Suchdienstendpunkt und muss in jede Anforderung einbezogen werden. In [REST-Lösungen](search-get-started-postman.md) wird der API-Schlüssel in der Regel im Anforderungsheader angegeben. In [.NET-Lösungen](search-howto-dotnet-sdk.md#core-scenarios) wird ein Schlüssel häufig als Konfigurationseinstellung angegeben und dann in Form von [Credentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (Administratorschlüssel) oder [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (Abfrageschlüssel) auf dem [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) übergeben.
+Für alle Anforderungen an einen Suchdienst wird ein schreibgeschütztes `api-key`-Objekt benötigt, das speziell für Ihren Dienst generiert wurde. Dieses `api-key`-Objekt ist der einzige Authentifizierungsmechanismus für den Zugriff auf Ihren Suchdienstendpunkt und muss in jede Anforderung einbezogen werden. 
+
++ In [REST-Lösungen](search-get-started-rest.md) wird der API-Schlüssel in der Regel im Anforderungsheader angegeben.
+
++ In [.NET-Lösungen](search-howto-dotnet-sdk.md) wird ein Schlüssel oft als Konfigurationseinstellung angegeben und dann als [AzureKeyCredential](/dotnet/api/azure.azurekeycredential)-Objekt übergeben.
 
 Schlüssel werden während der Dienstbereitstellung mit dem Suchdienst erstellt. Sie können Schlüsselwerte im [Azure-Portal](https://portal.azure.com) anzeigen und abrufen.
 
-![Portalseite > „Einstellungen“ > Abschnitt „Schlüssel“](media/search-manage/azure-search-view-keys.png)
+:::image type="content" source="media/search-manage/azure-search-view-keys.png" alt-text="Portalseite &gt; Einstellungen abrufen &gt; Abschnitt „Schlüssel“" border="false":::
 
 ## <a name="what-is-an-api-key"></a>Was ist ein API-Schlüssel?
 
@@ -31,25 +33,25 @@ Ein API-Schlüssel ist eine Zeichenfolge, die aus zufällig generierten Zahlen u
 
 Zwei Arten von Schlüsseln werden für den Zugriff auf Ihren Suchdienst verwendet: Administrator (Lesen/Schreiben) und Abfrage (schreibgeschützt).
 
-|Schlüssel|BESCHREIBUNG|Einschränkungen|  
+|Key|BESCHREIBUNG|Einschränkungen|  
 |---------|-----------------|------------|  
-|Administrator|Gewährt Vollzugriff auf alle Vorgänge. Dazu zählen die Dienstverwaltung sowie das Erstellen und Löschen von Indizes, Indexern und Datenquellen.<br /><br /> Für Administratoren werden zwei Schlüssel generiert, wenn der Dienst erstellt wird. Diese werden im Portal als *primärer* bzw. *sekundärer* Schlüssel bezeichnet und können bei Bedarf einzeln neu generiert werden. Durch die Verwendung von zwei Schlüsseln kann weiterhin auf den Dienst zugegriffen werden, während für einen der Schlüssel ein Rollover durchgeführt wird.<br /><br /> Administratorschlüssel werden nur in HTTP-Anforderungsheadern angegeben. Ein API-Schlüssel für Administratoren kann nicht in einer URL platziert werden.|Maximal zwei pro Dienst|  
-|Abfragen|Gewährt Lesezugriff auf Indizes und Dokumente. Diese werden in der Regel auf Clientanwendungen verteilt, die Suchanfragen ausgeben.<br /><br /> Abfrageschlüssel werden bei Bedarf erstellt. Sie können manuell über das Portal oder programmgesteuert über die [Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/) erstellt werden.<br /><br /> Abfrageschlüssel können in einem HTTP-Anforderungsheader für Such-, Vorschlags- oder Recherchevorgänge angegeben werden. Sie können einen Abfrageschlüssel aber auch als Parameter in einer URL übergeben. Je nachdem, wie Ihre Clientanwendung die Anforderung formuliert, ist es unter Umständen einfacher, den Schlüssel als Abfrageparameter zu übergeben:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2019-05-06&api-key=[query key]`|50 pro Dienst|  
+|Admin|Gewährt Vollzugriff auf alle Vorgänge. Dazu zählen die Dienstverwaltung sowie das Erstellen und Löschen von Indizes, Indexern und Datenquellen.<br /><br /> Für Administratoren werden zwei Schlüssel generiert, wenn der Dienst erstellt wird. Diese werden im Portal als *primärer* bzw. *sekundärer* Schlüssel bezeichnet und können bei Bedarf einzeln neu generiert werden. Durch die Verwendung von zwei Schlüsseln kann weiterhin auf den Dienst zugegriffen werden, während für einen der Schlüssel ein Rollover durchgeführt wird.<br /><br /> Administratorschlüssel werden nur in HTTP-Anforderungsheadern angegeben. Ein API-Schlüssel für Administratoren kann nicht in einer URL platziert werden.|Maximal zwei pro Dienst|  
+|Abfrage|Gewährt Lesezugriff auf Indizes und Dokumente. Diese werden in der Regel auf Clientanwendungen verteilt, die Suchanfragen ausgeben.<br /><br /> Abfrageschlüssel werden bei Bedarf erstellt. Sie können manuell über das Portal oder programmgesteuert über die [Verwaltungs-REST-API](/rest/api/searchmanagement/) erstellt werden.<br /><br /> Abfrageschlüssel können in einem HTTP-Anforderungsheader für Such-, Vorschlags- oder Recherchevorgänge angegeben werden. Sie können einen Abfrageschlüssel aber auch als Parameter in einer URL übergeben. Je nachdem, wie Ihre Clientanwendung die Anforderung formuliert, ist es unter Umständen einfacher, den Schlüssel als Abfrageparameter zu übergeben:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2020-06-30&api-key=[query key]`|50 pro Dienst|  
 
- Administrator- und Abfrageschlüssel sind rein optisch nicht zu unterscheiden. Bei beiden Schlüsseln handelt es sich um eine Zeichenfolge mit 32 nach dem Zufallsprinzip generierten alphanumerischen Zeichen. Sollten Sie nicht mehr wissen, welche Art von Schlüssel in Ihrer Anwendung angegeben ist, können Sie [die Schlüsselwerte im Portal überprüfen](https://portal.azure.com) oder über die [REST-API](https://docs.microsoft.com/rest/api/searchmanagement/) den Wert und die Art des Schlüssels zurückgeben.  
+ Administrator- und Abfrageschlüssel sind rein optisch nicht zu unterscheiden. Bei beiden Schlüsseln handelt es sich um eine Zeichenfolge mit 32 nach dem Zufallsprinzip generierten alphanumerischen Zeichen. Sollten Sie nicht mehr wissen, welche Art von Schlüssel in Ihrer Anwendung angegeben ist, können Sie [die Schlüsselwerte im Portal überprüfen](https://portal.azure.com) oder über die [REST-API](/rest/api/searchmanagement/) den Wert und die Art des Schlüssels zurückgeben.  
 
 > [!NOTE]  
->  Aus Sicherheitsgründen sollten im Anforderungs-URI keine vertraulichen Daten wie etwa ein API-Schlüssel (`api-key`) übergeben werden. Aus diesem Grund akzeptiert Azure Search als `api-key` in der Abfragezeichenfolge nur einen Abfrageschlüssel. Es empfiehlt sich, diese Richtlinie einzuhalten – es sei denn, der Inhalt Ihres Index soll öffentlich verfügbar sein. Wir empfehlen generell, `api-key` als Anforderungsheader zu übergeben.  
+>  Aus Sicherheitsgründen sollten im Anforderungs-URI keine vertraulichen Daten wie etwa ein API-Schlüssel (`api-key`) übergeben werden. Aus diesem Grund akzeptiert die kognitive Azure-Suche als `api-key` in der Abfragezeichenfolge nur einen Abfrageschlüssel. Es empfiehlt sich, diese Richtlinie einzuhalten – es sei denn, der Inhalt Ihres Index soll öffentlich verfügbar sein. Wir empfehlen generell, `api-key` als Anforderungsheader zu übergeben.  
 
 ## <a name="find-existing-keys"></a>Suchen vorhandener Schlüssel
 
-Zugriffsschlüssel stehen über das Portal oder über die [Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/) zur Verfügung. Weitere Informationen finden Sie unter [Verwalten der Administrator- und Abfrage-API-Schlüssel](search-security-api-keys.md).
+Zugriffsschlüssel stehen über das Portal oder über die [Verwaltungs-REST-API](/rest/api/searchmanagement/) zur Verfügung. Weitere Informationen finden Sie unter [Verwalten der Administrator- und Abfrage-API-Schlüssel](search-security-api-keys.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Listen Sie die [Suchdienste](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) für Ihr Abonnement auf.
 3. Wählen Sie den Dienst aus, und klicken Sie auf der Seite „Übersicht“ auf **Einstellungen** >**Schlüssel**, um Administrator- und Abfrageschlüssel anzuzeigen.
 
-   ![Portalseite > „Einstellungen“ > Abschnitt „Schlüssel“](media/search-security-overview/settings-keys.png)
+   :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="Portalseite &gt; Einstellungen anzeigen &gt; Abschnitt „Schlüssel“" border="false":::
 
 ## <a name="create-query-keys"></a>Erstellen von Abfrageschlüsseln
 
@@ -63,10 +65,10 @@ Das Einschränken des Zugriffs und der Vorgänge in Client-Apps ist besonders wi
 4. Klicken Sie auf **Abfrageschlüssel verwalten**.
 5. Verwenden Sie einen bereits für Ihren Dienst generierten Abfrageschlüssel, oder erstellen Sie bis zu 50 neue Abfrageschlüssel. Der Standardabfrageschlüssel ist nicht benannt. Sie können zusätzliche Abfrageschlüssel jedoch für eine einfachere Verwaltbarkeit benennen.
 
-   ![Erstellen oder Verwenden von Abfrageschlüsseln](media/search-security-overview/create-query-key.png) 
+   :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="Erstellen oder Verwenden von Abfrageschlüsseln" border="false":::
 
 > [!Note]
-> Ein Codebeispiel für die Verwendung von Abfrageschlüsseln finden Sie in [Abfragen eines Azure Search-Index in C#](search-query-dotnet.md).
+> Ein Codebeispiel für die Verwendung von Abfrageschlüsseln finden Sie in [Abfragen eines Index für die kognitive Azure-Suche in C#](./search-get-started-dotnet.md).
 
 <a name="regenerate-admin-keys"></a>
 
@@ -81,22 +83,23 @@ Für jeden Dienst werden zwei Administratorschlüssel erstellt, sodass Sie einen
 
 Wenn Sie versehentlich beide Schlüssel gleichzeitig neu generieren, wird für alle Clientanforderungen, die diese Schlüssel verwenden, der Fehler „HTTP 403 – Verboten“ zurückgegeben. Allerdings werden die Inhalte nicht gelöscht, und Sie sind nicht dauerhaft gesperrt. 
 
-Sie können weiterhin über das Portal oder die Verwaltungsebene ([REST-API](https://docs.microsoft.com/rest/api/searchmanagement/), [PowerShell](https://docs.microsoft.com/azure/search/search-manage-powershell) oder Azure Resource Manager) auf den Dienst zugreifen. Verwaltungsfunktionen werden über eine Abonnement-ID und nicht einen Dienst-API-Schlüssel verwendet und sind daher auch dann verfügbar, wenn Ihre API-Schlüssel nicht verfügbar sind. 
+Sie können weiterhin über das Portal oder die Verwaltungsebene ([REST-API](/rest/api/searchmanagement/), [PowerShell](./search-manage-powershell.md) oder Azure Resource Manager) auf den Dienst zugreifen. Verwaltungsfunktionen werden über eine Abonnement-ID und nicht einen Dienst-API-Schlüssel verwendet und sind daher auch dann verfügbar, wenn Ihre API-Schlüssel nicht verfügbar sind. 
 
 Nach der Erstellung neuer Schlüssel über das Portal oder die Verwaltungsebene wird der Zugriff auf Ihre Inhalte (Indizes, Indexer, Datenquellen, Synonymzuordnungen) wiederhergestellt, sobald Sie die neuen Schlüssel haben und nach Aufforderung angeben.
 
 ## <a name="secure-api-keys"></a>Sichern von API-Schlüsseln
+
 Die Sicherheit der Schlüssel wird erreicht, indem der Zugriff über das Portal oder Resource Manager-Oberflächen (PowerShell oder Befehlszeilenschnittstelle) eingeschränkt wird. Wie bereits erwähnt, können Abonnementadministratoren alle API-Schlüssel anzeigen und neu generieren. Informieren Sie sich über Rollenzuweisungen, damit Sie wissen, wer Zugriff auf die Admin-Schlüssel hat.
 
 + Klicken Sie im Dashboard für den Dienst auf **Zugriffssteuerung (IAM)** und anschließend auf die Registerkarte **Rollenzuweisungen**, um die Rollenzuweisungen für Ihren Dienst anzuzeigen.
 
-Mitglieder der folgenden Rollen können Schlüssel anzeigen und erneut generieren: Besitzer, Mitwirkender und [Suchdienstmitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
+Mitglieder der folgenden Rollen können Schlüssel anzeigen und neu generieren: Besitzer, Mitwirkender, [Suchdienstmitwirkender](../role-based-access-control/built-in-roles.md#search-service-contributor)
 
 > [!Note]
 > Für den identitätsbasierten Zugriff über Suchergebnisse können Sie Sicherheitsfilter erstellen, um die Ergebnisse anhand der Identität einzugrenzen. Auf diese Weise werden Dokumente entfernt, auf die der Anforderer keinen Zugriff haben sollte. Weitere Informationen finden Sie unter [Sicherheitsfilter](search-security-trimming-for-azure-search.md) und [Sichern mit Active Directory](search-security-trimming-for-azure-search-with-aad.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Rollenbasierte Zugriffssteuerung in Azure Search](search-security-rbac.md)
++ [Rollenbasierte Azure-Zugriffssteuerung in Azure Cognitive Search](search-security-rbac.md)
 + [Verwalten mit PowerShell](search-manage-powershell.md) 
 + [Artikel zu Leistung und Optimierung](search-performance-optimization.md)

@@ -11,24 +11,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8ec4a6100cfbb4419d7e30f4b97589113b88939
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 01e53b30a4c27296e30e031ffb771697afa8e1e9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347572"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87019674"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect-Synchronisierung: Technische Konzepte
 Dieser Artikel ist eine Zusammenfassung des Themas [Grundlegendes zur Architektur](how-to-connect-sync-technical-concepts.md).
 
 Azure AD Connect-Synchronisierung basiert auf einer zuverlässigen Plattform für die Metaverzeichnissynchronisierung.
 In den folgenden Abschnitte werden die Konzepte für die Metaverzeichnissynchronisierung erläutert.
-Die auf MIIS, ILM und FIM basierenden Azure Active Directory-Synchronisierungsdienste bieten die nächste Plattform für die Verbindung mit Datenquellen, die Synchronisierung von Daten zwischen Datenquellen und die Bereitstellung von Identitäten sowie deren Aufhebung.
+Die auf Microsoft Identity Integration Server (MIIS), Identity Lifecycle Manager (ILM) und Forefront Identity Manager (FIM) basierenden Azure Active Directory-Synchronisierungsdienste bieten die nächste Plattform für die Verbindung mit Datenquellen, die Synchronisierung von Daten zwischen Datenquellen und die Bereitstellung von Identitäten sowie deren Aufhebung.
 
 ![Technische Konzepte](./media/how-to-connect-sync-technical-concepts/scenario.png)
 

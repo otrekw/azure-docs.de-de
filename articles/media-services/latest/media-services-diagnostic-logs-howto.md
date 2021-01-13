@@ -3,40 +3,43 @@ title: Überwachen von Media Services-Diagnoseprotokollen über Azure Monitor | 
 description: In diesem Artikel wird das Weiterleiten und Anzeigen von Diagnoseprotokollen über Azure Monitor veranschaulicht.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/08/2019
-ms.author: juliako
-ms.openlocfilehash: 42724ae3619312c2cc172be0e143291cd7fa2a70
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e756ff0133e3d3f0f86ea2f592005f2f2986488e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261103"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707760"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Überwachen von Media Services-Diagnoseprotokollen
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 [Azure Monitor](../../azure-monitor/overview.md) ermöglicht Ihnen die Überwachung von Metriken und Diagnoseprotokollen, die Ihnen zu verstehen helfen, wie sich Ihre Anwendungen verhalten. Eine ausführliche Beschreibung dieser Funktion und Argumente für die Verwendung der Azure Media Services-Metriken und -Diagnoseprotokolle finden Sie unter [Überwachen von Media Services-Metriken und -Diagnoseprotokollen](media-services-metrics-diagnostic-logs.md).
 
-Dieser Artikel zeigt Ihnen, wie Sie Daten an das Speicherkonto weiterleiten und dann die Daten anzeigen können. 
+Dieser Artikel zeigt Ihnen, wie Sie Daten an das Speicherkonto weiterleiten und dann die Daten anzeigen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)
 - Siehe [Überwachen von Media Services-Metriken und -Diagnoseprotokollen](media-services-metrics-diagnostic-logs.md).
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Weiterleiten von Daten an das Speicherkonto über das Portal
 
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
-1. Navigieren Sie zu Ihrem Media Services-Konto, und klicken Sie auf **Diagnoseeinstellungen** unter **Überwachen**. Es wird eine Liste aller Ressourcen in Ihrem Abonnement eingeblendet, die mithilfe von Azure Monitor Überwachungsdaten generieren. 
+1. Navigieren Sie zu Ihrem Media Services-Konto, und klicken Sie auf **Diagnoseeinstellungen** unter **Überwachen**. Es wird eine Liste aller Ressourcen in Ihrem Abonnement eingeblendet, die mithilfe von Azure Monitor Überwachungsdaten generieren.
 
-    ![Abschnitt „Diagnoseeinstellungen“](media/media-services-diagnostic-logs/logs01.png)
+    ![Screenshot des Abschnitts „Überwachung“ mit Hervorhebung der Option „Diagnoseeinstellungen“](media/media-services-diagnostic-logs/logs01.png)
 
 1. Klicken Sie auf **Diagnoseeinstellung hinzufügen**.
 
@@ -53,11 +56,11 @@ Dieser Artikel zeigt Ihnen, wie Sie Daten an das Speicherkonto weiterleiten und 
 
 Zu Ihrer Ressource gehörige Überwachungsdaten werden nun in das Speicherkonto übertragen.
 
-## <a name="route-data-to-the-storage-account-using-the-cli"></a>Weiterleiten von Daten an das Speicherkonto über die CLI
+## <a name="route-data-to-the-storage-account-using-the-azure-cli"></a>Weiterleiten von Daten an das Speicherkonto mithilfe der Azure CLI
 
-Sie würden den folgenden `az monitor diagnostic-settings` CLI-Befehl ausführen, um das Speichern von Diagnoseprotokollen in einem Speicherkonto zu aktivieren: 
+Um das Speichern von Diagnoseprotokollen in einem Speicherkonto zu aktivieren, führen Sie den Azure CLI-Befehl `az monitor diagnostic-settings` wie folgt aus:
 
-```cli
+```azurecli-interactive
 az monitor diagnostic-settings create --name <diagnostic name> \
     --storage-account <name or ID of storage account> \
     --resource <target resource object ID> \
@@ -75,7 +78,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 Beispiel:
 
-```cli
+```azurecli-interactive
 az monitor diagnostic-settings create --name amsv3diagnostic \
     --storage-account storageaccountforams  \
     --resource "/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount" \
@@ -174,11 +177,15 @@ Unter Umständen müssen Sie bis zu fünf Minuten warten, bis das Ereignis im Sp
 }
 ```
 
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
+
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Azure Monitor-Metriken](../../azure-monitor/platform/data-platform.md)
-* [Azure Monitor-Diagnoseprotokolle](../../azure-monitor/platform/resource-logs-overview.md)
-* [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../../azure-monitor/platform/resource-logs-overview.md)
+* [Azure Monitor-Diagnoseprotokolle](../../azure-monitor/platform/platform-logs-overview.md)
+* [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../../azure-monitor/platform/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

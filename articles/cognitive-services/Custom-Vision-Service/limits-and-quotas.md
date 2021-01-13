@@ -1,21 +1,21 @@
 ---
 title: Grenzwerte und Kontingente – Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie über Grenzwerte und Kontingente für Custom Vision Service.
+description: In diesem Artikel werden die unterschiedlichen Typen von Lizenzschlüsseln sowie die Grenzwerte und Kontingente für den Custom Vision-Dienst erläutert.
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: anroth
-ms.openlocfilehash: 878e2b03e21c18ef4ee845251e91642037c6c5ff
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.author: pafarley
+ms.openlocfilehash: 8a8ea8d5f13f72b0da1e11a27b69da2570eda543
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114642"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913480"
 ---
 # <a name="limits-and-quotas"></a>Grenzen und Kontingente
 
@@ -23,7 +23,7 @@ Es gibt zwei Schlüsselebenen für Custom Vision Service. Sie können sich über
 
 Es wird erwartet, dass die Anzahl der Bilder pro Projekt und die Anzahl der Tags pro Projekt für S0-Projekte mit der Zeit ansteigen.
 
-||**F0**|**S0**|
+|Faktor|**F0**|**S0**|
 |-----|-----|-----|
 |Projekte|2|100|
 |Trainingsbilder pro Projekt |5\.000|100.000|
@@ -39,11 +39,9 @@ Es wird erwartet, dass die Anzahl der Bilder pro Projekt und die Anzahl der Tags
 |[Sonstige API-Aufrufe](https://go.microsoft.com/fwlink/?linkid=865446) (Transaktionen pro Sekunde)|10|10|
 |Akzeptierte Bildtypen|JPG, PNG, BMP, GIF|JPG, PNG, BMP, GIF|
 |Min. Bildhöhe/-breite in Pixel|256 (siehe Hinweis)|256 (siehe Hinweis)|
-|Max. Bildhöhe/-breite in Pixel|Unbegrenzt|Unbegrenzt|
+|Max. Bildhöhe/-breite in Pixel|10.240|10.240|
 |Maximale Bildgröße (Upload des Trainingsbilds) |6 MB|6 MB|
 |Maximale Bildgröße (Vorhersage)|4 MB|4 MB|
-|Maximale Anzahl von Regionen pro Objekterkennungs-Trainingsimage|200|200|
-|Maximale Anzahl von Tags pro Klassifizierungsimage|30|30|
+|Maximale Anzahl von Regionen pro Objekterkennungs-Trainingsimage|300|300|
+|Maximale Anzahl von Tags pro Klassifizierungsimage|100|100|
 
-> [!NOTE]
-> Bilder unter 256 Pixel werden akzeptiert, jedoch hochskaliert.

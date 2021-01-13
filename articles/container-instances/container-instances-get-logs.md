@@ -1,33 +1,31 @@
 ---
-title: Abrufen von Containerprotokollen und -ereignissen mit Azure Container Instances
-description: Hier erfahren Sie, wie Sie beim Debuggen Containerprotokolle und -ereignisse mit Azure Container Instances verwenden.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Abrufen von Containerinstanzprotokollen und -ereignissen
+description: Erfahren Sie, wie Sie Containerprotokolle und -ereignisse in Azure Container Instances abrufen, um die Behandlung von Containerproblemen zu unterstützen.
 ms.topic: article
-ms.date: 03/21/2019
-ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 8ae7ab3f53f480f46165800504fbb1eb6649c3e2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 12/30/2019
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 20b6e1cfe6bb8f6ac721a401c3d0831d4f447edb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68325973"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746965"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Abrufen von Containerprotokollen und -ereignissen in Azure Container Instances
 
-Wenn Sie einen fehlerhaften Container haben, können Sie zunächst mit [az container logs][az-container-logs] die Protokolle anzeigen sowie die Standardausgabe und Standardfehler mit [az container attach][az-container-attach] streamen.
+Wenn Sie einen fehlerhaften Container in Azure Container Instances haben, können Sie zunächst mit [az container logs][az-container-logs] die Protokolle anzeigen sowie die Standardausgabe und Standardfehler mit [az container attach][az-container-attach] streamen. Sie können auch Protokolle und Ereignisse für Containerinstanzen im Azure-Portal anzeigen oder Protokoll- und Ereignisdaten für Containergruppen an [Azure Monitor-Protokolle](container-instances-log-analytics.md) senden.
 
 ## <a name="view-logs"></a>Anzeigen von Protokollen
 
 Sie können den Befehl [az container logs][az-container-logs] verwenden, um Protokolle aus Ihrem Anwendungscode in einem Container anzuzeigen.
 
-Hier ist die Protokollausgabe des aufgabenbasierten Beispielcontainers aus [Ausführen von Aufgaben in Containern in Azure Container Instances](container-instances-restart-policy.md) angegeben, die sich ergibt, nachdem eine ungültige URL zur Verarbeitung bereitgestellt wurde:
+Im Folgenden finden Sie die Protokollausgabe des aufgabenbasierten Beispielcontainers aus [Festlegen der Befehlszeile in einer Containerinstanz](container-instances-start-command.md#azure-cli-example), nachdem eine ungültige URL mithilfe der Außerkraftsetzung einer Befehlszeilen bereitgestellt wurde:
 
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
+```azurecli
+az container logs --resource-group myResourceGroup --name mycontainer
+```
+
+```output
 Traceback (most recent call last):
   File "wordcount.py", line 11, in <module>
     urllib.request.urlretrieve (sys.argv[1], "foo.txt")
@@ -52,10 +50,13 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 Der Befehl [az container attach][az-container-attach] liefert Diagnoseinformationen während des Containerstarts. Nachdem der Container gestartet wurde, werden STDOUT und STDERR auf Ihre lokale Konsole gestreamt.
 
-Hier ist beispielsweise die Ausgabe aus dem aufgabenbasierten Container unter [Ausführen von Aufgaben in Containern in Azure Container Instances](container-instances-restart-policy.md) angegeben, die angezeigt wird, nachdem eine gültige URL einer großen zu verarbeitenden Textdatei bereitgestellt wurde:
+Hier ist beispielsweise die Ausgabe aus dem aufgabenbasierten Container aus [Festlegen der Befehlszeile in einer Containerinstanz](container-instances-start-command.md#azure-cli-example), nachdem eine gültige URL einer großen zu verarbeitenden Textdatei bereitgestellt wurde:
 
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
+```azurecli
+az container attach --resource-group myResourceGroup --name mycontainer
+```
+
+```output
 Container 'mycontainer' is in state 'Unknown'...
 Container 'mycontainer' is in state 'Waiting'...
 Container 'mycontainer' is in state 'Running'...
@@ -81,7 +82,7 @@ Start streaming logs:
 
 ## <a name="get-diagnostic-events"></a>Abrufen von Diagnoseereignissen
 
-Wenn die Bereitstellung Ihres Containers nicht erfolgreich ist, sollten Sie die Diagnoseinformationen des Azure Container Instances-Ressourcenanbieters prüfen. Führen Sie zum Anzeigen der Ereignisse für Ihren Container den Befehl [az container show][az-container-show] aus:
+Wenn die Bereitstellung Ihres Containers nicht erfolgreich ist, überprüfen Sie die Diagnoseinformationen des Azure Container Instances-Ressourcenanbieters. Führen Sie zum Anzeigen der Ereignisse für Ihren Container den Befehl [az container show][az-container-show] aus:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer
@@ -150,6 +151,9 @@ Die Ausgabe enthält die wichtigsten Eigenschaften Ihres Containers und die Bere
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich über das [Beheben von Container- und Bereitstellungsproblemen](container-instances-troubleshooting.md) für Azure Container Instances.
 
+Erfahren Sie, wie Sie Protokoll- und Ereignisdaten für Containergruppen an [Azure Monitor-Protokolle](container-instances-log-analytics.md) senden.
+
 <!-- LINKS - Internal -->
 [az-container-attach]: /cli/azure/container#az-container-attach
 [az-container-logs]: /cli/azure/container#az-container-logs
+[az-container-show]: /cli/azure/container#az-container-show

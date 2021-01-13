@@ -1,31 +1,27 @@
 ---
-title: AD FS-Unterstützung in der Microsoft Authentication Library für .NET | Azure
+title: ADFS-Unterstützung in MSAL.NET | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die Unterstützung der Active Directory-Verbunddienste (AD FS) in der Microsoft Authentication Library für .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: beb1bcc4599a891b8748b63c5e7c5c09f5acdac7
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 4107b0785ef4635e0e5e745a35b605d2634a220d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532675"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88166228"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>Unterstützung der Active Directory-Verbunddienste in MSAL.NET
-Mithilfe der Active Directory-Verbunddienste (AD FS) in Windows Server können Sie den von Ihnen entwickelten Anwendungen die OpenID Connect- und OAuth 2.0-basierte Authentifizierung und Autorisierung hinzufügen. So können Benutzer von diesen Anwendungen direkt gegenüber AD FS authentifiziert werden. Weitere Informationen finden Sie in den [AD FS-Szenarien für Entwickler](/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
+Mithilfe der Active Directory-Verbunddienste (AD FS) in Windows Server können Sie den von Ihnen entwickelten Anwendungen die OpenID Connect- und OAuth 2.0-basierte Authentifizierung und Autorisierung hinzufügen. So können Benutzer von diesen Anwendungen direkt gegenüber AD FS authentifiziert werden. Weitere Informationen finden Sie in den [AD FS-Szenarien für Entwickler](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios).
 
 Die Microsoft Authentication Library für .NET (MSAL.NET) unterstützt zwei Szenarien für die Authentifizierung gegenüber AD FS:
 
@@ -58,8 +54,8 @@ Derzeit gibt es keine Pläne, das Herstellen einer direkte Verbindung mit den Fo
 - AD FS 16, da PKCE nicht unterstützt wird und weiterhin Ressourcen verwendet werden, kein Bereich
 - AD FS v2, weil keine OIDC-Kompatibilität vorhanden ist.
 
- Falls Sie Unterstützung für Szenarien benötigen, die eine direkte Verbindung mit AD FS 2016 erfordern, verwenden Sie die neueste Version der [Azure Active Directory-Authentifizierungsbibliothek](active-directory-authentication-libraries.md#microsoft-supported-client-libraries). Wenn Sie Ihr lokales System auf AD FS 2019 aktualisiert haben, können Sie MSAL.NET verwenden.
+ Falls Sie Unterstützung für Szenarien benötigen, die eine direkte Verbindung mit AD FS 2016 erfordern, verwenden Sie die neueste Version der [Azure Active Directory-Authentifizierungsbibliothek](../azuread-dev/active-directory-authentication-libraries.md#microsoft-supported-client-libraries). Wenn Sie Ihr lokales System auf AD FS 2019 aktualisiert haben, können Sie MSAL.NET verwenden.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Verbundfall finden Sie unter [Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal).
+Informationen zum Verbundfall finden Sie unter [Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)](../manage-apps/configure-authentication-for-federated-users-portal.md).

@@ -1,26 +1,21 @@
 ---
 title: Überwachen einer SharePoint-Website mit Application Insights
 description: Beginnen Sie mit der Überwachung einer neuen Anwendung mit einem neuen Instrumentationsschlüssel.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2bfe5910-d673-4cf6-a5c1-4c115eae1be0
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/11/2018
-ms.author: mbullwin
-ms.openlocfilehash: 027d5485b29deb434953470023d8a290cc0af58a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/08/2020
+ms.openlocfilehash: f07c317a61c91daf7a469c1f9eaf1fb80d4ecc49
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60784597"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91825282"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Überwachen einer SharePoint-Website mit Application Insights
+
 Azure Application Insights überwacht die Verfügbarkeit, Leistung und Nutzung Ihrer Apps. Hier erfahren Sie, wie Sie dieses Tool für eine SharePoint-Website einrichten.
+
+> [!NOTE]
+> Aufgrund von Sicherheitsbedenken können Sie das in diesem Artikel beschriebene Skript auf der modernen SharePoint-Benutzeroberfläche nicht direkt zu Ihren Webseiten hinzufügen. Als Alternative können Sie das [SharePoint Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) verwenden, um eine benutzerdefinierte Erweiterung zu erstellen, über die Sie Application Insights in Ihren SharePoint-Websites installieren können.
 
 ## <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 Erstellen Sie im [Azure-Portal](https://portal.azure.com)eine neue Application Insights-Ressource. Wählen Sie als Anwendungstyp "ASP.NET" aus.
@@ -40,13 +35,11 @@ and before any other scripts. Your first data will appear
 automatically in just a few seconds.
 -->
 <script type="text/javascript">
-var appInsights=window.appInsights||function(a){
-  function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
-  }({
-      instrumentationKey:"<your instrumentation key>"
-  });
-  
-window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(n){var o={config:n,initialize:!0},t=document,e=window,i="script";setTimeout(function(){var e=t.createElement(i);e.src=n.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",t.getElementsByTagName(i)[0].parentNode.appendChild(e)});try{o.cookie=t.cookie}catch(e){}function a(n){o[n]=function(){var e=arguments;o.queue.push(function(){o[n].apply(o,e)})}}o.queue=[],o.version=2;for(var s=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];s.length;)a("track"+s.pop());var r="Track",c=r+"Page";a("start"+c),a("stop"+c);var u=r+"Event";if(a("start"+u),a("stop"+u),a("addTelemetryInitializer"),a("setAuthenticatedUserContext"),a("clearAuthenticatedUserContext"),a("flush"),o.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===n.disableExceptionTracking||n.extensionConfig&&n.extensionConfig.ApplicationInsightsAnalytics&&!0===n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){a("_"+(s="onerror"));var p=e[s];e[s]=function(e,n,t,i,a){var r=p&&p(e,n,t,i,a);return!0!==r&&o["_"+s]({message:e,url:n,lineNumber:t,columnNumber:i,error:a}),r},n.autoExceptionInstrumented=!0}return o}(
+{
+  instrumentationKey:"INSTRUMENTATION_KEY"
+}
+);(window[aiName]=aisdk).queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
 </script>
 ```
 
@@ -60,18 +53,18 @@ Wenn Sie die Masterseite der Website bearbeiten können, kann dadurch die Überw
 
 Checken Sie die Masterseite aus, und bearbeiten Sie sie mit SharePoint Designer oder einem anderen Editor.
 
-![](./media/sharepoint/03-master.png)
+![Screenshot, der zeigt, wie die Masterseite mithilfe von SharePoint Designer oder einem anderen Editor bearbeitet wird](./media/sharepoint/03-master.png)
 
 Fügen Sie den Code direkt vor dem Tag </head> ein. 
 
-![](./media/sharepoint/04-code.png)
+![Screenshot, der zeigt, wo Sie den Code zur Seite Ihrer Website hinzufügen können](./media/sharepoint/04-code.png)
 
 #### <a name="or-on-individual-pages"></a>Auf einzelnen Seiten
 Um eine begrenzte Anzahl von Seiten zu überwachen, fügen Sie das Skript separat auf jeder Seite hinzu. 
 
 Fügen Sie ein Webpart ein, und betten Sie den Codeausschnitt darin ein.
 
-![](./media/sharepoint/05-page.png)
+![Screenshot, der das Hinzufügen des Skripts zum Überwachen einer begrenzten Gruppe von Seiten zeigt](./media/sharepoint/05-page.png)
 
 ## <a name="view-data-about-your-app"></a>Anzeigen von Daten über Ihre App
 Stellen Sie Ihre App erneut bereit.
@@ -80,7 +73,7 @@ Kehren Sie zum Blatt Ihrer Anwendung im [Azure-Portal](https://portal.azure.com)
 
 Die ersten Ereignisse werden in der Suche angezeigt. 
 
-![](./media/sharepoint/09-search.png)
+![Screenshot, der die neuen Daten zeigt, die Sie in der App anzeigen können](./media/sharepoint/09-search.png)
 
 Klicken Sie nach einigen Sekunden auf "Aktualisieren", wenn Sie mehr Daten erwarten.
 
@@ -89,7 +82,7 @@ Der Codeausschnitt der Standardwebseite erfasst nicht die Benutzer-ID aus ShareP
 
 1. Kopieren Sie den Instrumentationsschlüssel Ihrer App aus der Essentials-Dropdownliste in Application Insights. 
 
-    ![](./media/sharepoint/02-props.png)
+    ![Screenshot, der das Kopieren der App-Instrumentierung vom Dropdownmenü „Grundlagen“ in Application Insights zeigt](./media/sharepoint/02-props.png)
 
 1. Ersetzen Sie „XXXX“ durch den Instrumentationsschlüssel im Codeausschnitt unten. 
 2. Betten Sie anstelle des Ausschnitts, den Sie aus dem Portal erhalten, das Skript in die SharePoint-App ein.
@@ -144,9 +137,7 @@ function onRequestFail(sender, args) {
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Webtests](../../azure-monitor/app/monitor-web-app-availability.md) zur Überwachung der Verfügbarkeit Ihrer Website.
-* [Application Insights](../../azure-monitor/app/app-insights-overview.md) für andere App-Typen.
+* [Webtests](./monitor-web-app-availability.md) zur Überwachung der Verfügbarkeit Ihrer Website.
+* [Application Insights](./app-insights-overview.md) für andere App-Typen.
 
 <!--Link references-->
-
-

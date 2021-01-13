@@ -1,25 +1,14 @@
 ---
-title: Visualisieren des Clusters mit Azure Service Fabric Explorer | Microsoft-Dokumentation
+title: Visualisieren des Clusters mit Azure Service Fabric-Explorer
 description: Service Fabric Explorer ist eine Anwendung zum Untersuchen und Verwalten von Cloudanwendungen und Knoten in einem Microsoft Azure Service Fabric-Cluster.
-services: service-fabric
-documentationcenter: .net
-author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: c875b993-b4eb-494b-94b5-e02f5eddbd6a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2019
-ms.author: mikhegn
-ms.openlocfilehash: 88fe73988f6a90fd5041445a561c0f77f25eddc1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a45aff305f97610cb2660c2e3f4b4427b905d7d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060491"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574054"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualisieren Ihres Clusters mit Service Fabric Explorer
 
@@ -115,7 +104,7 @@ Sie können Service Fabric Explorer auch verwenden, um Anwendungsinstanzen für 
 ## <a name="event-store"></a>EventStore
 EventStore ist eine Funktion der Plattform, mit der Ereignisse der Service Fabric-Plattform bereitgestellt werden, die in Service Fabric Explorer und über die REST-API verfügbar sind. Sie können eine Momentaufnahmeansicht der Vorgänge in Ihrem Cluster für jede Entität (z.B. Knoten, Dienst, Anwendung und Abfrage) basierend auf dem Zeitpunkt des Ereignisses anzeigen. Weitere Informationen zu EventStore finden Sie auch unter [Übersicht über EventStore](service-fabric-diagnostics-eventstore.md).   
 
-![EventStore][sfx-eventstore]
+![Screenshot: Der Bereich „Knoten“ mit ausgewählten Ereignissen][sfx-eventstore]
 
 >[!NOTE]
 >Ab Service Fabric-Version 6.4 ist EventStore nicht mehr standardmäßig aktiviert und muss in der Resource Manager-Vorlage aktiviert werden.
@@ -126,9 +115,22 @@ EventStore ist eine Funktion der Plattform, mit der Ereignisse der Service Fabri
 ## <a name="image-store-viewer"></a>Image Store Viewer
 Image Store Viewer ist eine Funktion, die bei Verwendung von Native Image Store angeboten wird und ermöglicht, den aktuellen Inhalt des Bildspeichers anzuzeigen und Datei- und Ordnerinformationen abzurufen sowie Dateien/Ordner zu entfernen.
 
-![Service Fabric Explorer-Clusterzuweisung][sfx-imagestore]
+![Screenshot: Image Store Viewer][sfx-imagestore]
 
+## <a name="backup-and-restore"></a>Sichern und Wiederherstellen
+Service Fabric Explorer bietet die Möglichkeit einer Schnittstelle zu [Sicherung und Wiederherstellung](./service-fabric-reliable-services-backup-restore.md). Um Funktionen für Sicherung und Wiederherstellung in SFX anzuzeigen, muss der erweiterte Modus aktiviert sein.
 
+![Aktivieren des erweiterten Modus][0]
+ 
+Die folgenden Vorgänge sind möglich:
+
+* Erstellen, Bearbeiten und Löschen einer Sicherungsrichtlinie.
+* Aktivieren und Deaktivieren der Sicherung für eine Anwendung, einen Dienst oder eine Partition.
+* Anhalten und Fortsetzen der Sicherung für eine Anwendung, einen Dienst oder eine Partition.
+* Auslösen und Nachverfolgen der Sicherung einer Partition.
+* Auslösen und Nachverfolgen der Wiederherstellung einer Partition.
+
+Weitere Informationen zum Sicherungs- und Wiederherstellungsdienst finden Sie in der [REST-API-Referenz](/rest/api/servicefabric/sfclient-index-backuprestore).
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwalten von Service Fabric-Anwendungen in Visual Studio](service-fabric-manage-application-in-visual-studio.md)
 * [Service Fabric-Anwendungsbereitstellung per PowerShell](service-fabric-deploy-remove-applications.md)
@@ -142,3 +144,4 @@ Image Store Viewer ist eine Funktion, die bei Verwendung von Native Image Store 
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/sfx-create-app-instance.png
 [sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png
 [sfx-imagestore]: ./media/service-fabric-visualizing-your-cluster/sfx-image-store.png
+[0]: ./media/service-fabric-backuprestoreservice/advanced-mode.png

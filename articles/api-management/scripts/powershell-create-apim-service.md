@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-Skriptbeispiel – Erstellen eines APIM-Diensts | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Erstellen eines APIM-Diensts
+description: Hier erfahren Sie, wie Sie einen APIM-Dienst (API Management) erstellen. Sehen Sie sich ein Beispielskript an, und zeigen Sie zusätzliche verfügbare Ressourcen an.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: a66957a9032062c8f99bdbbb85c61d93425bd31c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6cfa643d8949f80e8dcf99c2c8e64cf20588b928
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071959"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87851000"
 ---
 # <a name="create-an-api-management-service"></a>Erstellen eines API Management-Diensts
 
@@ -43,6 +43,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Weitere Azure PowerShell-Beispiele für Azure API Management finden Sie in den [PowerShell-Beispielen](../powershell-samples.md).

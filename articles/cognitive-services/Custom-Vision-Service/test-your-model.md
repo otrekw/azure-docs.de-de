@@ -1,21 +1,21 @@
 ---
 title: Testen und erneutes Trainieren eines Modells – Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie ein Bild testen und es dann zum erneuten Trainieren des Modells verwenden.
+description: In diesem Artikel erfahren Sie, wie Sie ein Bild testen und dann zum erneuten Trainieren des Modells im Maschinelles Sehen-Dienst verwenden.
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.author: anroth
-ms.openlocfilehash: 3f78f0b992581a44b030387f1bd0e37664df4cfd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 5a3aacd1d07ff068fe50312b2c1d47ac080e5c2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560912"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85391722"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Testen und erneutes Trainieren eines Modells mit Custom Vision Service
 
@@ -39,7 +39,7 @@ Sie können dieses Testbild jetzt Ihrem Modell hinzufügen und das Modell dann e
 
 Führen Sie die folgenden Schritte aus, um das zuvor für das Training gesendete Bild zu verwenden:
 
-1. Um die an die Klassifizierung gesendeten Bilder anzuzeigen, öffnen Sie die [Custom Vision-Webseite](https://customvision.ai), und wählen Sie die Registerkarte __Predictions__ (Vorhersagen) aus.
+1. Um die an die Klassifizierung gesendeten Bilder anzuzeigen, öffnen Sie die [Custom Vision-Webseite](https://customvision.ai) und wählen die Registerkarte __Predictions__ (Vorhersagen) aus.
 
     ![Abbildung der Registerkarte „Predictions“ (Vorhersagen)](./media/test-your-model/predictions-tab.png)
 

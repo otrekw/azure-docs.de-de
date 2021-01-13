@@ -1,25 +1,19 @@
 ---
-title: Suchen und Löschen nicht angefügter Azure-NICs | Microsoft-Dokumentation
+title: Suchen und Löschen nicht angefügter Azure-Netzwerkadapter
 description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI Azure-NICs suchen und löschen, die nicht an virtuelle Computer angefügt sind.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: networking
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 1665b5fa8d2bfd63982bcffd1d5251214ff3586b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5b28226cfe6bc51a2619c4dd63e666ddd51dad2a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083327"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016198"
 ---
 # <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Suchen und Löschen nicht angefügter NICs (Network Interface Cards, Netzwerkschnittstellenkarten) für virtuelle Azure-Computer
 Wenn Sie einen virtuellen Computer (Virtual Machine, VM) in Azure löschen, werden die NICs (Network Interface Cards, Netzwerkschnittstellenkarten) standardmäßig nicht gelöscht. Wenn Sie mehrere virtuelle Computer erstellen und wieder löschen, nutzen die nicht verwendeten NICs weiterhin die internen IP-Adressleases. Wenn Sie dann weitere VM-NICs erstellen, können diese möglicherweise keine IP-Adressleases im Adressraum des Subnetzes beziehen. In diesem Artikel erfahren Sie, wie Sie nicht angefügte NICs suchen und löschen.

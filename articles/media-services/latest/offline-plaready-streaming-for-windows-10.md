@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren Ihres Kontos für das Offlinestreaming von durch PlayReady geschützten Inhalten – Azure
-description: In diesem Thema erfahren Sie, wie Sie Ihr Azure Media Services-Konto für das Offlinestreaming von mit PlayReady für Windows 10 geschützten Inhalten konfigurieren.
+title: Konfigurieren des Offlinestreamings von PlayReady mit Azure Media Services v3
+description: In diesem Thema erfahren Sie, wie Sie Ihr Azure Media Services v3-Konto für das Offlinestreaming von mit PlayReady für Windows 10 geschützten Inhalten konfigurieren.
 services: media-services
 keywords: DASH, DRM, Widevine-Offlinemodus, ExoPlayer, Android
 documentationcenter: ''
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/01/2019
+ms.date: 08/31/2020
 ms.author: willzhan
-ms.openlocfilehash: 25559c7a6f66a1092007054c72f601b428fa4e7b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 19c930915de20d7f3a8938570e074458b32a8efb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845516"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90975679"
 ---
-# <a name="offline-playready-streaming-for-windows-10"></a>Offlinestreaming mit PlayReady für Windows 10
+# <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Offlinestreaming mit PlayReady für Windows 10 mit Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services unterstützt Download und Offlinewiedergabe mit DRM-Schutz. In diesem Artikel wird die Offline-Unterstützung von Azure Media Services für PlayReady-Clients unter Windows 10 behandelt. In den folgenden Artikeln erfahren Sie mehr über die Unterstützung des Offlinemodus für Geräte mit iOS/FairPlay und Android/Widevine:
 
@@ -44,7 +47,7 @@ Die Herausforderung bei der Implementierung des Offlinemodus ist folgende:
 * MP4 wird von vielen Playern und Encodertools unterstützt, bietet aber keine Verbindung zwischen MP4-Container und DRM.
 * Auf lange Sicht ist CFF mit CENC die beste Wahl. Allerdings ist das Ökosystem zur Unterstützung von Tools und Playern derzeit noch nicht vorhanden. Wir brauchen aber heute eine Lösung.
  
-Unser Vorschlag: Das Smooth Streaming-Dateiformat ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) mit H264/AAC bietet eine Bindung mit PlayReady (AES-128-CTR). Die jeweilige Smooth Streaming-Datei im ISMV-Format (vorausgesetzt, das Audio wird im Video gemuxt) ist selbst eine fMP4-Datei und kann für die Wiedergabe verwendet werden. Wenn ein Smooth Streaming-Inhalt mittels PlayReady-verschlüsselt wird, wird jede ISMV-Datei zu einer mit PlayReady-geschützten, fragmentierten MP4-Datei. Wir können eine ISMV-Datei mit der gewünschten Bitrate auswählen und sie zum Download in MP4 umbenennen.
+Unser Vorschlag: Das Smooth Streaming-Dateiformat ([PIFF](/iis/media/smooth-streaming/protected-interoperable-file-format)) mit H264/AAC bietet eine Bindung mit PlayReady (AES-128-CTR). Die jeweilige Smooth Streaming-Datei im ISMV-Format (vorausgesetzt, das Audio wird im Video gemuxt) ist selbst eine fMP4-Datei und kann für die Wiedergabe verwendet werden. Wenn ein Smooth Streaming-Inhalt mittels PlayReady-verschlüsselt wird, wird jede ISMV-Datei zu einer mit PlayReady-geschützten, fragmentierten MP4-Datei. Wir können eine ISMV-Datei mit der gewünschten Bitrate auswählen und sie zum Download in MP4 umbenennen.
 
 Es gibt zwei Möglichkeiten, die mit PlayReady geschützte MP4-Datei für den progressiven Download bereitzustellen:
 
@@ -60,13 +63,13 @@ Nachstehend finden Sie zwei Sätze von Testmedienobjekten, von denen das erste d
 
 Medienobjekt 1:
 
-* URL für progressiven Download: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
-* PlayReady LA-URL (AMS): [https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
+* URL für progressiven Download: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA-URL (AMS): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
 
 Medienobjekt 2:
 
 * URL für progressiven Download: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA-URL (lokal): [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
+* PlayReady LA-URL (lokal): `https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
 
 Zum Testen der Wiedergabe haben wir eine universelle Windows-Anwendung unter Windows 10 verwendet. Unter [Windows 10 Universal Sample](https://github.com/Microsoft/Windows-universal-samples) auf GitHub finden Sie ein einfaches Beispiel für einen Player namens [Adaptive Streaming Sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). Alles, was wir tun müssen, ist, den Code hinzuzufügen, damit wir das heruntergeladene Video auswählen und es anstelle der adaptiven Streamingquelle als Quelle verwenden können. Die Änderungen befinden sich im Ereignishandler für das Schaltflächenklickereignis.
 
@@ -112,7 +115,6 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 ```
 
 ![Wiedergabe im Offlinemodus der mit PlayReady geschützten fMP4-Datei](./media/offline-playready-for-windows/offline-playready1.jpg)
-
 
 Da das Video von PlayReady geschützt wird, kann der Screenshot das Video nicht enthalten.
 

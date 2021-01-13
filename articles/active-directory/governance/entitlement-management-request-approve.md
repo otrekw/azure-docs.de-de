@@ -1,34 +1,29 @@
 ---
-title: Genehmigen oder Ablehnen von Zugriffsanforderungen in der Azure AD-Berechtigungsverwaltung (Vorschauversion) – Azure Active Directory
-description: Erfahren Sie, wie Sie das Portal „Mein Zugriff“ verwenden, um Anforderungen für ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung (Vorschauversion) zu genehmigen oder abzulehnen.
+title: Genehmigen oder Ablehnen von Zugriffsanforderungen – Azure AD-Berechtigungsverwaltung
+description: Erfahren Sie, wie Sie das Portal „Mein Zugriff“ verwenden, um Anforderungen für ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung zu genehmigen oder abzulehnen.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: mamtakumar
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/18/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78243f02cbbe3d06b94ee52d6193865dbfa27121
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: fddb3b171e5a26273cb2e0045f11e3a4dbb48c5f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488998"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655100"
 ---
-# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Genehmigen oder Ablehnen von Zugriffsanforderungen in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
-
-> [!IMPORTANT]
-> Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Genehmigen oder Ablehnen von Zugriffsanforderungen in der Azure AD-Berechtigungsverwaltung
 
 Mit der Azure AD-Berechtigungsverwaltung können Sie Richtlinien konfigurieren, die eine Genehmigung für Zugriffspakete erfordern, und einen oder mehrere genehmigende Personen auswählen. In diesem Artikel wird beschrieben, wie ausgewählte genehmigende Personen Anforderungen für Zugriffspakete genehmigen oder ablehnen können.
 
@@ -40,7 +35,7 @@ Der erste Schritt beim Genehmigen oder Ablehnen von Zugriffsanforderungen besteh
 
 1. Suchen Sie nach einer E-Mail von Microsoft Azure, in der Sie zum Genehmigen oder Ablehnen einer Anforderung aufgefordert werden. Hier finden Sie eine Beispiel-E-Mail:
 
-    ![E-Mail für die Genehmigung der Anforderung zum Zugreifen auf ein Paket](./media/entitlement-management-shared/email-approve-request.png)
+    ![E-Mail für die Genehmigung der Anforderung zum Zugreifen auf ein Paket](./media/entitlement-management-shared/approver-request-email.png)
 
 1. Klicken Sie auf den Link **Anforderung genehmigen oder ablehnen**, um die Zugriffsanforderung zu öffnen.
 
@@ -48,11 +43,27 @@ Der erste Schritt beim Genehmigen oder Ablehnen von Zugriffsanforderungen besteh
 
 Wenn Sie nicht über die E-Mail verfügen, können Sie die Zugriffsanforderungen, die Sie noch genehmigen müssen, durch Ausführen der folgenden Schritte ermitteln.
 
-1. Melden Sie sich unter [https://myaccess.microsoft.com](https://myaccess.microsoft.com) beim Portal „Mein Zugriff“ an.
+1. Melden Sie sich unter [https://myaccess.microsoft.com](https://myaccess.microsoft.com) beim Portal „Mein Zugriff“ an.  (Für die US-Regierung lautet die Domäne im Link für das Portal „Mein Zugriff“ `myaccess.microsoft.us`.)
 
 1. Klicken Sie im linken Menü auf **Genehmigungen**, um eine Liste der Zugriffsanforderungen anzuzeigen, deren Genehmigung aussteht.
 
 1. Auf der Registerkarte **Ausstehend** können Sie die Anforderung finden.
+
+## <a name="view-requestors-answers-to-questions-preview"></a>Anzeigen der Antworten von Anforderern auf Fragen (Vorschau)
+
+1. Navigieren Sie in „Mein Zugriff“ zur Registerkarte **Genehmigungen**.
+
+1. Wechseln Sie zur Anforderung, die Sie genehmigen möchten, und klicken Sie auf **Details**. Sie können auch auf **Genehmigen** oder **Ablehnen** klicken, wenn Sie bereit sind, eine Entscheidung zu treffen.
+
+1. Klicken Sie auf **Anforderungsdetails**.
+
+    ![Portal „Mein Zugriff“ –Zugriffsanforderung – Auf „Anforderungsdetails“ klicken](./media/entitlement-management-request-approve/requestor-information-request-details.png)
+
+1. Die vom Anforderer bereitgestellten Informationen befinden sich am unteren Rand des Panels.
+
+    ![Screenshot mit den Details für die Anforderung](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+
+1. Basierend auf den Informationen, die der Anforderer bereitgestellt hat, können Sie die Anforderung genehmigen oder ablehnen. Anleitungen hierzu finden Sie in den Schritten unter „Genehmigen oder Ablehnen einer Anforderung“.
 
 ## <a name="approve-or-deny-request"></a>Genehmigen oder Ablehnen einer Anforderung
 
@@ -70,7 +81,7 @@ Nachdem Sie eine Zugriffsanforderung geöffnet haben, deren Genehmigung aussteht
 
 1. Geben Sie bei Bedarf einen Grund ein.
 
-    ![Portal „Mein Zugriff“ – Zugriffsanforderung](./media/entitlement-management-shared/my-access-approve-request.png)
+    ![Screenshot: Seite zum Akzeptieren oder Ablehnen der Anforderung](./media/entitlement-management-request-approve/my-access-approve-request.png)
 
 1. Klicken Sie auf **Senden**, um Ihre Entscheidung zu übermitteln.
 

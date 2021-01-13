@@ -1,25 +1,23 @@
 ---
 title: Problembehandlung bei Application Insights in einem Java-Webprojekt
 description: Handbuch zur Problembehandlung – Überwachen von Live-Java-Apps mit Application Insights
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ef602767-18f2-44d2-b7ef-42b404edd0e9
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: mbullwin
-ms.openlocfilehash: a26302b0c0b4361fe3e7aae6aba798f433c72ade
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742197"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607897"
 ---
-# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Anleitung zur Problembehandlung sowie Fragen und Antworten zu Application Insights für Java
+# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Anleitung zur Problembehandlung sowie Fragen und Antworten zu Application Insights für das Java SDK
+
+> [!IMPORTANT]
+> Der empfohlene Ansatz zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Befolgen Sie die Leitlinien für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md).
+
 Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights in Java][java]? Hier sind einige Tipps.
 
 ## <a name="build-errors"></a>Buildfehler
@@ -33,7 +31,7 @@ Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights i
 * Warten Sie eine Minute, und klicken Sie auf "Aktualisieren". Die Diagramme aktualisieren sich in regelmäßigen Abständen selbst, können aber auch manuell aktualisiert werden. Das Aktualisierungsintervall hängt vom Zeitbereich des Diagramms ab.
 * Prüfen Sie, ob Sie in der Datei „ApplicationInsights.xml“ (im Ressourcenordner Ihres Projekts) einen Instrumentierungsschlüssel definiert oder als Umgebungsvariable konfiguriert haben.
 * Stellen Sie sicher, dass es in der XML-Datei keinen Knoten `<DisableTelemetry>true</DisableTelemetry>` gibt.
-* In Ihrer Firewall müssen Sie möglicherweise die TCP-Ports 80 und 443 für ausgehenden Datenverkehr zu „dc.services.visualstudio.com“ öffnen. Weitere Informationen finden Sie in den [hier](../../azure-monitor/app/ip-addresses.md)
+* In Ihrer Firewall müssen Sie möglicherweise die TCP-Ports 80 und 443 für ausgehenden Datenverkehr zu „dc.services.visualstudio.com“ öffnen. Weitere Informationen finden Sie in den [hier](./ip-addresses.md)
 * Schauen Sie sich auf der Startseite von Microsoft Azure die Dienststatusübersicht an. Falls es eine Warnungsanzeige gibt, warten Sie, bis sie wieder "OK" anzeigt, und schließen Sie das Application Insights-Anwendungsfenster, bevor Sie es erneut öffnen.
 * [Aktivieren Sie die Protokollierung](#debug-data-from-the-sdk) durch Hinzufügen eines `<SDKLogger />`-Elements unter dem Stammknoten in der Datei „ApplicationInsights.xml“ (im Ressourcenordner Ihres Projekts), und suchen Sie nach Einträgen, denen „AI: INFO/WARN/ERROR“ für verdächtige Protokolleinträge vorangestellt ist. 
 * Stellen Sie sicher, dass die richtige Datei "ApplicationInsights.xml" vom Java-SDK geladen wurde, indem Sie die von der Konsole ausgegebenen Meldungen auf den Hinweis untersuchen, dass die Konfigurationsdatei gefunden wurde.
@@ -42,13 +40,12 @@ Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights i
 * Stellen Sie sicher, dass Sie dieselbe Version von Application Insights-Kern, Web-, Agent- und Protokollierungsappender verwenden, um Versionskonflikte zu vermeiden.
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>Zuvor wurden Daten angezeigt, jetzt jedoch nicht mehr.
-* Überprüfen Sie den [Statusblog](https://blogs.msdn.com/b/applicationinsights-status/).
 * Ist Ihr monatliches Kontingent an Datenpunkten erreicht? Öffnen Sie "Einstellungen – Kontingente und Preisübersicht", um es herauszufinden. Sie können in diesem Fall Ihren Plan aktualisieren oder zusätzliche Kapazität erwerben. Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/application-insights/).
 * Haben Sie Ihr SDK vor Kurzem aktualisiert? Stellen Sie sicher, dass nur eindeutige SDK-JARs im Projektverzeichnis vorhanden sind. Es dürfen keine zwei unterschiedlichen SDK-Versionen vorhanden sein.
 * Sehen Sie die richtige AI-Ressource? Stimmen Sie den iKey Ihrer Anwendung mit der Ressource ab, wo Sie Telemetriedaten erwarten. Sie sollten identisch sein.
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>Nicht alle Daten werden erwartungsgemäß angezeigt.
-* Öffnen Sie die Seite „Nutzung und geschätzte Kosten“, und überprüfen Sie, ob die [Stichprobenerstellung](../../azure-monitor/app/sampling.md) in Betrieb ist. (Eine Übertragung von 100 % bedeutet, dass kein Sampling durchgeführt wird.) Der Application Insights-Dienst kann für die Übernahmen nur eines Bruchteils der Telemetriedaten, die von Ihrer App empfangen werden, konfiguriert werden. So können Sie sicherstellen, dass Sie Ihr monatliches Kontingent an Telemetriedaten nicht überschreiten.
+* Öffnen Sie die Seite „Nutzung und geschätzte Kosten“, und überprüfen Sie, ob die [Stichprobenerstellung](./sampling.md) in Betrieb ist. (Eine Übertragung von 100 % bedeutet, dass kein Sampling durchgeführt wird.) Der Application Insights-Dienst kann für die Übernahmen nur eines Bruchteils der Telemetriedaten, die von Ihrer App empfangen werden, konfiguriert werden. So können Sie sicherstellen, dass Sie Ihr monatliches Kontingent an Telemetriedaten nicht überschreiten.
 * Haben Sie die SDK-Stichprobenerstellung aktiviert? Wenn Ja, werden Stichproben der Daten mit der Rate erstellt, die für alle entsprechenden Typen angegeben ist.
 * Führen Sie eine ältere Version des Java-SDKs aus? Mit Version 2.0.1 haben wir einen Fehlertoleranzmechanismus zum Behandeln zeitweilig auftretender Netzwerk- und Back-End-Fehler sowie die Datenpersistenz auf lokalen Laufwerken eingeführt.
 * Tritt eine Drosselung aufgrund übermäßiger Telemetriedaten auf? Wenn Sie die INFO-Protokollierung aktivieren, wird eine Protokollmeldung „App wird gedrosselt“ angezeigt. Unser aktueller Grenzwert beträgt 32.000 Telemetrieelemente/Sekunde.
@@ -57,7 +54,6 @@ Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights i
 * Haben Sie den Java-Agent gemäß [Überwachen von Abhängigkeiten, Ausnahmen und Ausführungszeiten in Java-Web-Apps](java-agent.md) konfiguriert?
 * Stellen Sie sicher, dass sich Java-Agent-JAR-Datei und AI-Agent.xml-Datei im gleichen Ordner befinden.
 * Stellen Sie sicher, dass die Abhängigkeit, die Sie automatisch erfassen möchten, für die automatische Sammlung unterstützt wird. Wir unterstützen derzeit nur MySQL-, MsSQL-, Oracle DB- und Azure Cache for Redis-Abhängigkeitssammlung.
-* Verwenden Sie JDK 1.7 oder 1.8? Derzeit unterstützen wir keine Abhängigkeitssammlung in JDK 9.
 
 ## <a name="no-usage-data"></a>Keine Nutzungsdaten
 **Ich sehe Daten zu Anforderungen und Antwortzeiten, aber keine Seitenzugriffs-, Browser- oder Benutzerdaten.**
@@ -67,7 +63,6 @@ Sie haben Ihre App erfolgreich so eingerichtet, dass Telemetriedaten vom Server 
 Wenn der Client eine App auf einem [Smartphone oder anderen Gerät][platforms] ist, können Sie Telemetriedaten von dort aus senden.
 
 Verwenden Sie den gleichen Instrumentationsschlüssel zum Einrichten der Telemetrie auf Client und Server. Die Daten werden in der gleichen Application Insights-Ressource angezeigt und können Ereignisse von Client und Server korrelieren.
-
 
 ## <a name="disabling-telemetry"></a>Deaktivieren der Telemetrie
 **Wie kann ich die Telemetrieerfassung deaktivieren?**
@@ -188,7 +183,6 @@ Application Insights verwendet `org.apache.http`. Dies wird innerhalb der Kern-J
 >[!NOTE]
 >Wenn Sie die Protokollierung auf DEBUG-Ebene für alle Namespaces in der App aktivieren, wird sie von allen ausführenden Modulen einschließlich `org.apache.http`, umbenannt als `com.microsoft.applicationinsights.core.dependencies.http`, akzeptiert. Application Insights kann diese Aufrufe nicht filtern, weil der Protokollaufruf durch die Apache-Bibliothek erfolgt. Protokollierung auf DEBUG-Ebene erzeugt eine beträchtliche Menge an Protokolldaten und wird nicht für Liveproduktionsinstanzen empfohlen.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 **Ich habe Application Insights für meine Java-Server-App eingerichtet. Was kann ich sonst noch tun?**
 
@@ -204,11 +198,11 @@ Application Insights verwendet `org.apache.http`. Dies wird innerhalb der Kern-J
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[data]: ../../azure-monitor/app/data-retention-privacy.md
+[availability]: ./monitor-web-app-availability.md
+[data]: ./data-retention-privacy.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[platforms]: ../../azure-monitor/app/platforms.md
-[track]: ../../azure-monitor/app/api-custom-events-metrics.md
+[platforms]: ./platforms.md
+[track]: ./api-custom-events-metrics.md
 [usage]: javascript.md
 

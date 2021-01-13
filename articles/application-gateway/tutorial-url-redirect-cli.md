@@ -1,23 +1,24 @@
 ---
-title: 'Tutorial: Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis: Azure-Befehlszeilenschnittstelle'
+title: 'Tutorial: Umleitung auf URL-Pfadbasis per CLI'
+titleSuffix: Azure Application Gateway
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway mit Umleitung des Datenverkehrs auf URL-Pfadbasis erstellen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 7/30/2019
+ms.date: 08/27/2020
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: b2a06e47eec52d860aecdd2d9b57310cce5aeb27
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 36ba593a1d8cd2e50293eaf77dc9ec864245df4c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315949"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566587"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Tutorial: Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis mithilfe der Azure-Befehlszeilenschnittstelle
 
-Sie können mit der Azure-Befehlszeilenschnittstelle [Routingregeln auf URL-Pfadbasis](tutorial-url-route-cli.md) konfigurieren, wenn Sie ein [Anwendungsgateway](application-gateway-introduction.md) erstellen. In diesem Tutorial erstellen Sie Back-End-Pools mithilfe von [VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Danach erstellen Sie URL-Routingregeln, die sicherstellen, dass Webdatenverkehr an den richtigen Back-End-Pool umgeleitet wird.
+Sie können mit der Azure-Befehlszeilenschnittstelle [Routingregeln auf URL-Pfadbasis](tutorial-url-route-cli.md) konfigurieren, wenn Sie ein [Anwendungsgateway](./overview.md) erstellen. In diesem Tutorial erstellen Sie Back-End-Pools mithilfe von [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md). Danach erstellen Sie URL-Routingregeln, die sicherstellen, dass Webdatenverkehr an den richtigen Back-End-Pool umgeleitet wird.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -33,11 +34,11 @@ Das folgende Beispiel zeigt Websitedatenverkehr, der von den Ports 8080 und 8081
 
 Sie können dieses Tutorial auch mit [Azure PowerShell](tutorial-url-redirect-powershell.md) durcharbeiten.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+ - Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -75,7 +76,7 @@ az network public-ip create \
   --sku Standard
 ```
 
-## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
+## <a name="create-an-application-gateway"></a>Erstellen einer Application Gateway-Instanz
 
 Erstellen Sie mit [az network application-gateway create](/cli/azure/network/application-gateway) das Anwendungsgateway namens „myAppGateway“. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Das Anwendungsgateway wird dem Subnetz *myAGSubnet* und der IP-Adresse *myPublicIPAddress* zugewiesen, das bzw. die Sie zuvor erstellt haben.
 
@@ -285,7 +286,7 @@ done
 
 Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, verwenden Sie [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Beispiel: `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`, `http://40.121.222.19:8080/video/test.htm` oder `http://40.121.222.19:8081/images/test.htm`.
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
@@ -315,4 +316,4 @@ az group delete --name myResourceGroupAG
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erfahren Sie mehr darüber, was Sie mit dem Anwendungsgateway tun können.](application-gateway-introduction.md)
+> [Erfahren Sie mehr darüber, welche Möglichkeiten das Anwendungsgateway bietet.](./overview.md)

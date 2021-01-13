@@ -1,22 +1,23 @@
 ---
-title: Status von Datenbankmigrationsszenarios | Microsoft-Dokumentation
+title: Status des Datenbankmigrationsszenarios
+titleSuffix: Azure Database Migration Service
 description: Informationen zum Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: article
-ms.date: 09/05/2019
-ms.openlocfilehash: 9ea070ea86a4d0d5e7101e82450235a59c936d2d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.topic: troubleshooting
+ms.date: 07/08/2020
+ms.openlocfilehash: cc3323a3ae2d604557d7e09b38252d63f17c5470
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376406"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319909"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden
 
@@ -28,7 +29,7 @@ Mit Azure Database Migration Service können Sie eine Offline- oder eine Onlinem
 
 ## <a name="migration-scenario-status"></a>Status von Migrationsszenarios
 
-Der Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden, kann sich im Lauf der Zeit ändern. Szenarien werden im Allgemeinen zuerst als **private Vorschau** veröffentlicht. Für die Teilnahme an der privaten Vorschau müssen Kunden über die [DMS Preview-Website](https://aka.ms/dms-preview) eine Nominierung einreichen. Nach der privaten Vorschau ändert sich der Szenariostatus in **Öffentliche Vorschau**. Benutzer von Azure Database Migration Service können die in der öffentlichen Vorschau verfügbaren Migrationsszenarien direkt über die Benutzeroberfläche testen. Eine Registrierung ist nicht erforderlich.  Allerdings sind Migrationsszenarien in der öffentlichen Vorschau möglicherweise nicht in allen Regionen verfügbar, und vor der endgültigen Veröffentlichung werden gegebenenfalls weitere Änderungen vorgenommen. Nach der öffentlichen Vorschau ändert sich der Szenariostatus in **Allgemeine Verfügbarkeit**. Die allgemeine Verfügbarkeit (General Availability, GA) ist der endgültige Veröffentlichungsstatus. Der Funktionsumfang ist vollständig und für alle Benutzer zugänglich.
+Der Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden, kann sich im Lauf der Zeit ändern. Szenarien werden im Allgemeinen zuerst als **private Vorschau** veröffentlicht. Für die Teilnahme an der privaten Vorschau müssen Kunden über die [DMS Preview-Website](https://aka.ms/dms-preview) eine Nominierung einreichen. Nach der privaten Vorschau ändert sich der Szenariostatus in **Öffentliche Vorschau** . Benutzer von Azure Database Migration Service können die in der öffentlichen Vorschau verfügbaren Migrationsszenarien direkt über die Benutzeroberfläche testen. Eine Registrierung ist nicht erforderlich.  Allerdings sind Migrationsszenarien in der öffentlichen Vorschau möglicherweise nicht in allen Regionen verfügbar, und vor der endgültigen Veröffentlichung werden gegebenenfalls weitere Änderungen vorgenommen. Nach der öffentlichen Vorschau ändert sich der Szenariostatus in **Allgemeine Verfügbarkeit** . Die allgemeine Verfügbarkeit (General Availability, GA) ist der endgültige Veröffentlichungsstatus. Der Funktionsumfang ist vollständig und für alle Benutzer zugänglich.
 
 ## <a name="migration-scenario-support"></a>Unterstützung von Migrationsszenarios
 
@@ -47,18 +48,20 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 | Ziel  | `Source` | Support | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL-Datenbank** | SQL Server | ✔ | Allgemein verfügbar |
-|   | RDS SQL |  |  |
-|   | Oracle |  |  |
+|   | RDS SQL | X |  |
+|   | Oracle | X |  |
 | **Azure SQL-Datenbank MI** | SQL Server | ✔ | Allgemein verfügbar |
-|   | RDS SQL |  |  |
-|   | Oracle |  |   |
+|   | RDS SQL | X |  |
+|   | Oracle | X |   |
 | **Virtueller Azure SQL-Computer** | SQL Server | ✔ | Allgemein verfügbar |
-|   | Oracle |   |   |
+|   | Oracle | X |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | Allgemein verfügbar |
-| **Azure-Datenbank für MySQL** | MySQL |   |   |
-|   | RDS MySQL |   |   |
-| **Azure-Datenbank für PostgreSQL** | PostgreSQL |  |
-|  | RDS PostgreSQL |   |   |
+| **Azure-Datenbank für MySQL** | MySQL | X |   |
+|   | RDS MySQL | X |   |
+| **Azure DB for PostgreSQL – Einzelserver** | PostgreSQL | X |
+|  | RDS PostgreSQL | X |   |
+| **Azure DB for PostgreSQL – Hyperscale (Citus)** | PostgreSQL | X |
+|  | RDS PostgreSQL | X |   |
 
 ### <a name="online-continuous-sync-migration-support"></a>Unterstützung der Onlinemigration (fortlaufende Synchronisierung)
 
@@ -68,18 +71,22 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL-Datenbank** | SQL Server | ✔ | Allgemein verfügbar |
 |   | RDS SQL | ✔ | Allgemein verfügbar |
-|   | Oracle |  |  |
+|   | Oracle | X |  |
 | **Azure SQL-Datenbank MI** | SQL Server | ✔ | Allgemein verfügbar |
 |   | RDS SQL | ✔ | Allgemein verfügbar |
-|   | Oracle | ✔ | Private Vorschau |
-| **Virtueller Azure SQL-Computer** | SQL Server |   |   |
-|   | Oracle  |  |  |
+|   | Oracle | X |  |
+| **Virtueller Azure SQL-Computer** | SQL Server | X |   |
+|   | Oracle  | X |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | Allgemein verfügbar |
 | **Azure-Datenbank für MySQL** | MySQL | ✔ | Allgemein verfügbar |
 |   | RDS MySQL | ✔ | Allgemein verfügbar |
-| **Azure-Datenbank für PostgreSQL** | PostgreSQL | ✔ | Allgemein verfügbar |
+| **Azure DB for PostgreSQL – Einzelserver** | PostgreSQL | ✔ | Allgemein verfügbar |
+|   | Azure DB for PostgreSQL – Einzelserver | ✔ | Allgemein verfügbar |
 |   | RDS PostgreSQL | ✔ | Allgemein verfügbar |
-|   | Oracle | ✔ | Öffentliche Vorschau |
+|   | Oracle | ✔ | Public Preview |
+| **Azure DB for PostgreSQL – Hyperscale (Citus)** | PostgreSQL | ✔ | Allgemein verfügbar |
+|   | RDS PostgreSQL | ✔ | Allgemein verfügbar |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

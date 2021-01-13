@@ -1,5 +1,5 @@
 ---
-title: 'Fehler „watchdog: BUG: soft lockup - CPU“ in einem Azure HDInsight-Cluster'
+title: Fehler „Watchdog BUG soft lockup - CPU“ in einem Azure HDInsight-Cluster
 description: Der Fehler „Watchdog BUG soft lockup CPU“ wird in Kernel-Syslog-Protokollen des Azure HDInsight-Clusters angezeigt
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,16 +7,16 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: 8f9b60c6e181c9f47635e7d46ce103032d395028
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 33990e40507f088962fd8d8efd241de5d2fcc63b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087355"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289068"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Szenario: Fehler „watchdog: BUG: soft lockup - CPU“ in einem Azure HDInsight-Cluster
 
-In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Interaktion mit Azure HDInsight-Clustern beschrieben.
+In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Interaktion mit Azure HDInsight-Clustern beschrieben.
 
 ## <a name="issue"></a>Problem
 
@@ -39,7 +39,7 @@ Wenden Sie einen Kernelpatch an. Das folgende Skript aktualisiert den Linux-Kern
     | Eigenschaft | Wert |
     | --- | --- |
     | Skripttyp | -Custom |
-    | NAME |Fix for kernel soft lock issue |
+    | Name |Fix for kernel soft lock issue |
     | Bash-Skript-URI |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
     | Knotentyp(en) |Worker, Zookeeper |
     | Parameter |– |
@@ -56,10 +56,4 @@ Wenden Sie einen Kernelpatch an. Das folgende Skript aktualisiert den Linux-Kern
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
-
-* Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
-
-* Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
-
-* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

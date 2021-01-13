@@ -13,28 +13,28 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: a106984bc60d0ccfe29a1956213aec6f87ad30dd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ef533b3566ac557b57f1435a2a9b2dbe26896993
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090167"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306887"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows-Befehle – CMD und PowerShell
 
 Dieser Abschnitt enthält Beispielbefehle für allgemeine Aufgaben in Szenarios, in denen Sie ggf. über die spezielle Verwaltungskonsole (Special Administration Console, SAC) auf den virtuellen Windows-Computer zugreifen müssen, um beispielsweise Probleme mit RDP-Verbindungsfehlern zu behandeln.
 
-SAC ist seit Windows Server 2003 in allen Windows-Versionen enthalten, standardmäßig aber deaktiviert. SAC basiert auf dem Kernel-Treiber `sacdrv.sys`, dem Dienst `Special Administration Console Helper` (`sacsvr`) und dem Prozess `sacsess.exe`. Weitere Informationen finden Sie unter [Emergency Management Services Tools and Settings](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)) (Tools und Einstellungen für die Notverwaltungsdienste).
+SAC ist seit Windows Server 2003 in allen Windows-Versionen enthalten, standardmäßig aber deaktiviert. SAC basiert auf dem Kernel-Treiber `sacdrv.sys`, dem Dienst `Special Administration Console Helper` (`sacsvr`) und dem Prozess `sacsess.exe`. Weitere Informationen finden Sie unter [Emergency Management Services Tools and Settings](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)) (Tools und Einstellungen für die Notverwaltungsdienste).
 
 Mit SAC können Sie über den seriellen Port eine Verbindung mit dem aktiven Betriebssystem herstellen. Wenn Sie CMD über SAC starten, wird `cmd.exe` von `sacsess.exe` innerhalb Ihres aktiven Betriebssystems gestartet. Dies ist im Task-Manager zu sehen, wenn Sie eine RDP-Verbindung mit Ihrem virtuellen Computer herstellen, während über die serielle Konsole eine Verbindung mit SAC besteht. Bei der CMD-Instanz, auf die Sie über SAC zugreifen, handelt es sich um die Instanz von `cmd.exe`, die Sie auch verwenden, wenn Sie über RDP eine Verbindung herstellen. Ihnen stehen die gleichen Befehle und Tools zur Verfügung – einschließlich der Möglichkeit, PowerShell über diese CMD-Instanz zu starten. Dies ist ein entscheidender Unterschied zwischen SAC und der Windows-Wiederherstellungsumgebung (Windows Recovery Environment, WinRE), da Sie mit SAC Ihr aktives Betriebssystem verwalten können. Im Gegensatz dazu startet WinRE mit einem anderen, minimalen Betriebssystem. Virtuelle Azure-Computer unterstützen zwar den Zugriff auf WinRE nicht, können mit der seriellen Konsole aber über SAC verwaltet werden.
 
-Da SAC auf einen 80x24-Bildschirmpuffer ohne Scrollback beschränkt ist, sollten Sie Befehle mit `| more` versehen, damit die Ausgabe seitenweise erfolgt. Verwenden Sie `<spacebar>`, um die nächste Seite anzuzeigen, oder `<enter>`, um die nächste Zeile anzuzeigen.  
+Da SAC auf einen 80x24-Bildschirmpuffer ohne Scrollback beschränkt ist, sollten Sie Befehle mit `| more` versehen, damit die Ausgabe seitenweise erfolgt. Verwenden Sie `<spacebar>`, um die nächste Seite anzuzeigen, oder `<enter>`, um die nächste Zeile anzuzeigen.
 
 `SHIFT+INSERT` ist im Fenster der seriellen Konsole die Tastenkombination für „Einfügen“.
 
 Aufgrund des eingeschränkten Bildschirmpuffers von SAC empfiehlt es sich bei der Eingabe längerer Befehle, diese in einen lokalen Text-Editor einzugeben und sie anschließend in SAC einzufügen.
 
-## <a name="view-and-edit-windows-registry-settings"></a>Anzeigen und Bearbeiten von Windows-Registrierungseinstellungen
+## <a name="view-and-edit-windows-registry-settings-using-cmd"></a>Anzeigen und Bearbeiten von Windows-Registrierungseinstellungen mit CMD
 ### <a name="verify-rdp-is-enabled"></a>Überprüfen, ob RDP aktiviert ist
 `reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections`
 
@@ -45,22 +45,22 @@ Der zweite Schlüssel (unter „\Policies“) ist nur vorhanden, wenn die releva
 ### <a name="enable-rdp"></a>Aktivieren von RDP
 `reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0`
 
-`reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0` 
+`reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0`
 
 Der zweite Schlüssel (unter „\Policies“) ist nur erforderlich, wenn die relevante Gruppenrichtlinieneinstellung konfiguriert wurde. Der Wert wird bei der nächsten Gruppenrichtlinienaktualisierung umgeschrieben, sofern dies in der Gruppenrichtlinie konfiguriert ist.
 
-## <a name="manage-windows-services"></a>Verwalten von Windows-Diensten
+## <a name="manage-windows-services-using-cmd"></a>Verwalten von Windows-Diensten mit CMD
 
 ### <a name="view-service-state"></a>Anzeigen des Dienststatus
 `sc query termservice`
 ###  <a name="view-service-logon-account"></a>Anzeigen des Anmeldekontos für den Dienst
 `sc qc termservice`
-### <a name="set-service-logon-account"></a>Festlegen des Anmeldekontos für den Dienst 
+### <a name="set-service-logon-account"></a>Festlegen des Anmeldekontos für den Dienst
 `sc config termservice obj= "NT Authority\NetworkService"`
 
 Nach dem Gleichheitszeichen muss sich ein Leerzeichen befinden.
 ### <a name="set-service-start-type"></a>Festlegen des Starttyps für den Dienst
-`sc config termservice start= demand` 
+`sc config termservice start= demand`
 
 Nach dem Gleichheitszeichen muss sich ein Leerzeichen befinden. Mögliche Startwerte: `boot`, `system`, `auto`, `demand`, `disabled`, `delayed-auto`
 ### <a name="set-service-dependencies"></a>Festlegen von Dienstabhängigkeiten
@@ -79,24 +79,24 @@ oder
 oder
 
 `sc stop termservice`
-## <a name="manage-networking-features"></a>Verwalten von Netzwerkfeatures
+## <a name="manage-networking-features-using-cmd"></a>Verwalten von Netzwerkfeatures mit CMD
 ### <a name="show-nic-properties"></a>Anzeigen der NIC-Eigenschaften
-`netsh interface show interface` 
+`netsh interface show interface`
 ### <a name="show-ip-properties"></a>Anzeigen der IP-Eigenschaften
 `netsh interface ip show config`
 ### <a name="show-ipsec-configuration"></a>Anzeigen der IPsec-Konfiguration
-`netsh nap client show configuration`  
+`netsh nap client show configuration`
 ### <a name="enable-nic"></a>Aktivieren der NIC
 `netsh interface set interface name="<interface name>" admin=enabled`
 ### <a name="set-nic-to-use-dhcp"></a>Konfigurieren der NIC für die DHCP-Verwendung
 `netsh interface ip set address name="<interface name>" source=dhcp`
 
-Für weitere Informationen `netsh`[klicken Sie hier](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts).
+Für weitere Informationen `netsh`[klicken Sie hier](/windows-server/networking/technologies/netsh/netsh-contexts).
 
 Virtuelle Azure-Computer müssen im Gastbetriebssystem immer so konfiguriert werden, dass sie eine IP-Adresse über DHCP beziehen. DHCP wird auch bei Verwendung der Azure-Einstellung für statische IP-Adressen verwendet, um die statische IP-Adresse für den virtuellen Computer zu vergeben.
 ### <a name="ping"></a>Pingen
-`ping 8.8.8.8` 
-### <a name="port-ping"></a>Pingen eines Ports  
+`ping 8.8.8.8`
+### <a name="port-ping"></a>Pingen eines Ports
 Installieren des Telnet-Clients
 
 `dism /online /Enable-Feature /FeatureName:TelnetClient`
@@ -120,7 +120,7 @@ Wenn Sie auf die standardmäßig in Windows verfügbaren Methoden beschränkt si
 Mit diesem Befehl können Sie die Windows-Firewall bei der Problembehandlung vorübergehend deaktivieren. Sie wird beim nächsten Neustart wieder aktiviert (oder nach Verwendung des im Anschluss angegebenen Befehls). Beenden Sie nicht den Windows-Firewalldienst (MPSSVC) oder den BFE-Dienst (Base Filtering Engine, Basisfiltermodul), um die Windows-Firewall zu deaktivieren. Wenn Sie MPSSVC oder BFE beenden, werden sämtliche Verbindungen blockiert.
 ### <a name="enable-windows-firewall"></a>Aktivieren der Windows-Firewall
 `netsh advfirewall set allprofiles state on`
-## <a name="manage-users-and-groups"></a>Verwalten von Benutzern und Gruppen
+## <a name="manage-users-and-groups-using-cmd"></a>Verwalten von Benutzern und Gruppen mit CMD
 ### <a name="create-local-user-account"></a>Erstellen eines lokalen Benutzerkontos
 `net user /add <username> <password>`
 ### <a name="add-local-user-to-local-group"></a>Hinzufügen eines lokalen Benutzers zu einer lokalen Gruppe
@@ -130,7 +130,7 @@ Mit diesem Befehl können Sie die Windows-Firewall bei der Problembehandlung vor
 
 Bei virtuellen Azure-Computern, die auf der Grundlage eines generalisierten Images erstellt wurden, wird der Name des lokalen Administratorkontos auf den Namen festgelegt, der im Rahmen der VM-Bereitstellung angegeben wurde. Er lautet also in der Regel nicht `Administrator`.
 ### <a name="enable-user-account"></a>Aktivieren eines Benutzerkontos
-`net user <username> /active:yes`  
+`net user <username> /active:yes`
 ### <a name="view-user-account-properties"></a>Anzeigen der Eigenschaften des Benutzerkontos
 `net user <username>`
 
@@ -150,7 +150,7 @@ Beispiele für interessante Zeilen aus einem lokalen Administratorkonto:
 
 ### <a name="view-local-groups"></a>Anzeigen lokaler Gruppen
 `net localgroup`
-## <a name="manage-the-windows-event-log"></a>Verwalten des Windows-Ereignisprotokolls
+## <a name="manage-the-windows-event-log-using-cmd"></a>Verwalten des Windows-Ereignisprotokolls mit CMD
 ### <a name="query-event-log-errors"></a>Abfragen von Ereignisprotokollfehlern
 `wevtutil qe system /c:10 /f:text /q:"Event[System[Level=2]]" | more`
 
@@ -165,7 +165,7 @@ Geben Sie für `/c:10` die Anzahl zurückzugebender Ereignisse an, oder entferne
 Verwenden Sie `604800000`, um den Zeitraum von 24 Stunden auf sieben Tage zu verlängern.
 ### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>Abfragen des Ereignisprotokolls nach Ereignis-ID, Anbieter und Ereignisdaten in den letzten sieben Tagen
 `wevtutil qe security /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
-## <a name="view-or-remove-installed-applications"></a>Anzeigen oder Entfernen installierter Anwendungen
+## <a name="view-or-remove-installed-applications-using-cmd"></a>Anzeigen oder Entfernen installierter Anwendungen mit CMD
 ### <a name="list-installed-applications"></a>Auflisten der installierten Anwendungen
 `wmic product get Name,InstallDate | sort /r | more`
 
@@ -175,7 +175,7 @@ Durch `sort /r` werden die Elemente absteigend nach Installationsdatum sortiert.
 
 Ersetzen Sie `<name>` durch den Namen, der im obigen Befehl für die Anwendung zurückgegeben wurde, die Sie entfernen möchten.
 
-## <a name="file-system-management"></a>Dateisystemverwaltung
+## <a name="file-system-management-using-cmd"></a>Dateisystemverwaltung mit CMD
 ### <a name="get-file-version"></a>Abrufen der Dateiversion
 `wmic datafile where "drive='C:' and path='\\windows\\system32\\drivers\\' and filename like 'netvsc%'" get version /format:list`
 
@@ -183,38 +183,38 @@ Dieses Beispiel gibt die Dateiversion des virtuellen NIC-Treibers zurück (je na
 ### <a name="scan-for-system-file-corruption"></a>Überprüfen des Dateisystems auf Beschädigungen
 `sfc /scannow`
 
-Siehe auch: [Repair a Windows Image](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image) (Reparieren eines Windows-Images)
+Siehe auch: [Repair a Windows Image](/windows-hardware/manufacture/desktop/repair-a-windows-image) (Reparieren eines Windows-Images)
 ### <a name="scan-for-system-file-corruption"></a>Überprüfen des Dateisystems auf Beschädigungen
 `dism /online /cleanup-image /scanhealth`
 
-Siehe auch: [Repair a Windows Image](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image) (Reparieren eines Windows-Images)
+Siehe auch: [Repair a Windows Image](/windows-hardware/manufacture/desktop/repair-a-windows-image) (Reparieren eines Windows-Images)
 ### <a name="export-file-permissions-to-text-file"></a>Exportieren von Dateiberechtigungen in eine Textdatei
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 ### <a name="save-file-permissions-to-acl-file"></a>Speichern von Dateiberechtigungen in einer ACL-Datei
-`icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /save %temp%\MachineKeys_permissions_before.aclfile /t`  
+`icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /save %temp%\MachineKeys_permissions_before.aclfile /t`
 ### <a name="restore-file-permissions-from-acl-file"></a>Wiederherstellen von Dateiberechtigungen aus einer ACL-Datei
 `icacls %programdata%\Microsoft\Crypto\RSA /save %temp%\MachineKeys_permissions_before.aclfile /t`
 
 Bei Verwendung von `/restore` muss als Pfad der übergeordnete Ordner des Ordners angegeben werden, den Sie bei Verwendung von `/save` angegeben haben. In diesem Beispiel ist `\RSA` der übergeordnete Ordner des Ordners `\MachineKeys` aus dem obigen Beispiel für `/save`.
 ### <a name="take-ntfs-ownership-of-a-folder"></a>Übernehmen des NTFS-Besitzes eines Ordners
-`takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`  
+`takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`
 ### <a name="grant-ntfs-permissions-to-a-folder-recursively"></a>Rekursives Gewähren von NTFS-Berechtigungen für einen Ordner
-`icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"`  
+`icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"`
 ## <a name="manage-devices"></a>Verwalten von Geräten
 ### <a name="remove-non-present-pnp-devices"></a>Entfernen nicht vorhandener Plug & Play-Geräte
 `%windir%\System32\RUNDLL32.exe %windir%\System32\pnpclean.dll,RunDLL_PnpClean /Devices /Maxclean`
 ## <a name="manage-group-policy"></a>Verwalten von Gruppenrichtlinien
 ### <a name="force-group-policy-update"></a>Erzwingen einer Gruppenrichtlinienaktualisierung
 `gpupdate /force /wait:-1`
-## <a name="miscellaneous-tasks"></a>Sonstige Aufgaben
+## <a name="miscellaneous-tasks-using-cmd"></a>Sonstige Aufgaben mit CMD
 ### <a name="show-os-version"></a>Anzeigen der Betriebssystemversion
 `ver`
 
-oder 
+oder
 
 `wmic os get caption,version,buildnumber /format:list`
 
-oder 
+oder
 
 `systeminfo  find /i "os name"`
 
@@ -222,7 +222,7 @@ oder
 ### <a name="view-os-install-date"></a>Anzeigen des Installationsdatums des Betriebssystems
 `systeminfo | find /i "original"`
 
-oder 
+oder
 
 `wmic os get installdate`
 ### <a name="view-last-boot-time"></a>Anzeigen des letzten Systemstarts
@@ -238,7 +238,7 @@ oder
 
 Durch Hinzufügen von `/f` werden aktive Anwendungen ohne Vorwarnung geschlossen.
 ### <a name="detect-safe-mode-boot"></a>Erkennen des Starts im abgesicherten Modus
-`bcdedit /enum | find /i "safeboot"` 
+`bcdedit /enum | find /i "safeboot"`
 
 ## <a name="windows-commands---powershell"></a>Windows-Befehle – PowerShell
 
@@ -249,7 +249,7 @@ Wenn Sie PowerShell in SAC ausführen möchten, geben Sie an einer CMD-Eingabeau
 > [!CAUTION]
 > Entfernen Sie zunächst das PSReadLine-Modul aus der PowerShell-Sitzung, bevor Sie andere PowerShell-Befehle ausführen. Es gibt ein bekanntes Problem, durch das beim Einfügen von Text aus der Zwischenablage unter Umständen zusätzliche Zeichen eingefügt werden, wenn „PSReadLine“ in einer PowerShell-Sitzung in SAC ausgeführt wird.
 
-Überprüfen Sie zunächst, ob „PSReadLine“ geladen ist. Dies ist unter Windows Server 2016 sowie unter Windows 10 und höheren Versionen von Windows standardmäßig der Fall. Bei älteren Windows-Versionen ist das Modul nur vorhanden, wenn es manuell installiert wurde. 
+Überprüfen Sie zunächst, ob „PSReadLine“ geladen ist. Dies ist unter Windows Server 2016 sowie unter Windows 10 und höheren Versionen von Windows standardmäßig der Fall. Bei älteren Windows-Versionen ist das Modul nur vorhanden, wenn es manuell installiert wurde.
 
 Wenn dieser Befehl nichts zurückgibt, war das Modul nicht geladen, und Sie können die PowerShell-Sitzung in SAC wie gewohnt verwenden.
 
@@ -259,7 +259,7 @@ Falls der obige Befehl die Version des PSReadLine-Moduls zurückgibt, führen Si
 
 `remove-module psreadline`
 
-## <a name="view-and-edit-windows-registry-settings"></a>Anzeigen und Bearbeiten von Windows-Registrierungseinstellungen
+## <a name="view-and-edit-windows-registry-settings-using-powershell"></a>Anzeigen und Bearbeiten von Windows-Registrierungseinstellungen mit PowerShell
 ### <a name="verify-rdp-is-enabled"></a>Überprüfen, ob RDP aktiviert ist
 `get-itemproperty -path 'hklm:\system\curRentcontrolset\control\terminal server' -name 'fdenytsconNections'`
 
@@ -272,7 +272,7 @@ Der zweite Schlüssel (unter „\Policies“) ist nur vorhanden, wenn die releva
 `set-itemproperty -path 'hklm:\software\policies\microsoft\windows nt\terminal services' -name 'fdenytsconNections' 0 -type dword`
 
 Der zweite Schlüssel (unter „\Policies“) ist nur erforderlich, wenn die relevante Gruppenrichtlinieneinstellung konfiguriert wurde. Der Wert wird bei der nächsten Gruppenrichtlinienaktualisierung umgeschrieben, sofern dies in der Gruppenrichtlinie konfiguriert ist.
-## <a name="manage-windows-services"></a>Verwalten von Windows-Diensten
+## <a name="manage-windows-services-using-powershell"></a>Verwalten von Windows-Diensten mit PowerShell
 ### <a name="view-service-details"></a>Anzeigen von Dienstdetails
 `get-wmiobject win32_service -filter "name='termservice'" |  format-list Name,DisplayName,State,StartMode,StartName,PathName,ServiceType,Status,ExitCode,ServiceSpecificExitCode,ProcessId`
 
@@ -291,11 +291,11 @@ Geben Sie bei Verwendung eines Dienstkontos, bei dem es sich nicht um `NT AUTHOR
 `start-service termservice`
 ### <a name="stop-service"></a>Beenden des Diensts
 `stop-service termservice`
-## <a name="manage-networking-features"></a>Verwalten von Netzwerkfeatures
+## <a name="manage-networking-features-using-powershell"></a>Verwalten von Netzwerkfeatures mit PowerShell
 ### <a name="show-nic-properties"></a>Anzeigen der NIC-Eigenschaften
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} |  format-list status,name,ifdesc,macadDresS,driverversion,MediaConNectState,MediaDuplexState`
 
-oder 
+oder
 
 `get-wmiobject win32_networkadapter -filter "servicename='netvsc'" |  format-list netenabled,name,macaddress`
 
@@ -319,6 +319,9 @@ oder
 ### <a name="ping"></a>Pingen
 `test-netconnection`
 
+> [!NOTE]
+> Das Write-Progress-Cmdlet funktioniert möglicherweise nicht mit diesem Befehl. Als Abhilfemaßnahme können Sie `$ProgressPreference = "SilentlyContinue"` in PowerShell ausführen, um die Statusanzeige zu deaktivieren.
+
 oder
 
 `get-wmiobject Win32_PingStatus -Filter 'Address="8.8.8.8"' | format-table -autosize IPV4Address,ReplySize,ResponseTime`
@@ -333,15 +336,15 @@ oder
 
 `Test-NetConnection` ist ab 2012 verfügbar. Für 2008R2 muss `Net.Sockets.TcpClient` verwendet werden.
 ### <a name="test-dns-name-resolution"></a>Testen der DNS-Namensauflösung
-`resolve-dnsname bing.com` 
+`resolve-dnsname bing.com`
 
-oder 
+oder
 
 `[System.Net.Dns]::GetHostAddresses('bing.com')`
 
 `Resolve-DnsName` ist ab 2012 verfügbar. Für 2008R2 muss `System.Net.DNS` verwendet werden.
 ### <a name="show-windows-firewall-rule-by-name"></a>Anzeigen einer Windows-Firewallregel nach Name
-`get-netfirewallrule -name RemoteDesktop-UserMode-In-TCP` 
+`get-netfirewallrule -name RemoteDesktop-UserMode-In-TCP`
 ### <a name="show-windows-firewall-rule-by-port"></a>Anzeigen einer Windows-Firewallregel nach Port
 `get-netfirewallportfilter | where {$_.localport -eq 3389} | foreach {Get-NetFirewallRule -Name $_.InstanceId} | format-list Name,Enabled,Profile,Direction,Action`
 
@@ -349,18 +352,18 @@ oder
 
 `(new-object -ComObject hnetcfg.fwpolicy2).rules | where {$_.localports -eq 3389 -and $_.direction -eq 1} | format-table Name,Enabled`
 
-`Get-NetFirewallPortFilter` ist ab 2012 verfügbar. Für 2008R2 muss das COM-Objekt `hnetcfg.fwpolicy2` verwendet werden. 
+`Get-NetFirewallPortFilter` ist ab 2012 verfügbar. Für 2008R2 muss das COM-Objekt `hnetcfg.fwpolicy2` verwendet werden.
 ### <a name="disable-windows-firewall"></a>Deaktivieren der Windows-Firewall
 `Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False`
 
 `Set-NetFirewallProfile` ist ab 2012 verfügbar. Für 2008R2 muss `netsh advfirewall` wie im obigen CMD-Abschnitt angegeben verwendet werden.
-## <a name="manage-users-and-groups"></a>Verwalten von Benutzern und Gruppen
+## <a name="manage-users-and-groups-using-powershell"></a>Verwalten von Benutzern und Gruppen mit PowerShell
 ### <a name="create-local-user-account"></a>Erstellen eines lokalen Benutzerkontos
 `new-localuser <name>`
 ### <a name="verify-user-account-is-enabled"></a>Überprüfen, ob ein Benutzerkonto aktiviert ist
 `(get-localuser | where {$_.SID -like "S-1-5-21-*-500"}).Enabled`
 
-oder 
+oder
 
 `(get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'").Disabled`
 
@@ -368,22 +371,22 @@ oder
 ### <a name="add-local-user-to-local-group"></a>Hinzufügen eines lokalen Benutzers zu einer lokalen Gruppe
 `add-localgroupmember -group Administrators -member <username>`
 ### <a name="enable-local-user-account"></a>Aktivieren eines lokalen Benutzerkontos
-`get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | enable-localuser` 
+`get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | enable-localuser`
 
 Dieses Beispiel aktiviert das integrierte lokale Administratorkonto, welches immer die SID `S-1-5-21-*-500` besitzt. Bei virtuellen Azure-Computern, die auf der Grundlage eines generalisierten Images erstellt wurden, wird der Name des lokalen Administratorkontos auf den Namen festgelegt, der im Rahmen der VM-Bereitstellung angegeben wurde. Er lautet also in der Regel nicht `Administrator`.
 ### <a name="view-user-account-properties"></a>Anzeigen der Eigenschaften des Benutzerkontos
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | format-list *`
 
-oder 
+oder
 
 `get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'" |  format-list Name,Disabled,Status,Lockout,Description,SID`
 
 `Get-LocalUser` ist ab 2012 verfügbar. Für 2008R2 muss `Get-WmiObject` verwendet werden. Dieses Beispiel zeigt das integrierte lokale Administratorkonto, welches immer die SID `S-1-5-21-*-500` besitzt.
 ### <a name="view-local-groups"></a>Anzeigen lokaler Gruppen
-`(get-localgroup).name | sort``(get-wmiobject win32_group).Name | sort`
+`(get-localgroup).name | sort` `(get-wmiobject win32_group).Name | sort`
 
 `Get-LocalUser` ist ab 2012 verfügbar. Für 2008R2 muss `Get-WmiObject` verwendet werden.
-## <a name="manage-the-windows-event-log"></a>Verwalten des Windows-Ereignisprotokolls
+## <a name="manage-the-windows-event-log-using-powershell"></a>Verwalten des Windows-Ereignisprotokolls mit PowerShell
 ### <a name="query-event-log-errors"></a>Abfragen von Ereignisprotokollfehlern
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Level=2]]" | more`
 
@@ -398,12 +401,12 @@ Geben Sie für `/c:10` die Anzahl zurückzugebender Ereignisse an, oder entferne
 Verwenden Sie `604800000`, um den Zeitraum von 24 Stunden auf sieben Tage zu verlängern. |
 ### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>Abfragen des Ereignisprotokolls nach Ereignis-ID, Anbieter und Ereignisdaten in den letzten sieben Tagen
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
-## <a name="view-or-remove-installed-applications"></a>Anzeigen oder Entfernen installierter Anwendungen
+## <a name="view-or-remove-installed-applications-using-powershell"></a>Anzeigen oder Entfernen installierter Anwendungen mit PowerShell
 ### <a name="list-installed-software"></a>Auflisten der installierten Software
 `get-wmiobject win32_product | select installdate,name | sort installdate -descending | more`
 ### <a name="uninstall-software"></a>Deinstallieren von Software
 `(get-wmiobject win32_product -filter "Name='<name>'").Uninstall()`
-## <a name="file-system-management"></a>Dateisystemverwaltung
+## <a name="file-system-management-using-powershell"></a>Dateisystemverwaltung mit PowerShell
 ### <a name="get-file-version"></a>Abrufen der Dateiversion
 `(get-childitem $env:windir\system32\drivers\netvsc*.sys).VersionInfo.FileVersion`
 
@@ -412,9 +415,9 @@ Dieses Beispiel gibt die Dateiversion des virtuellen NIC-Treibers zurück, der j
 `$path='c:\bin';md $path;cd $path;(new-object net.webclient).downloadfile( ('htTp:/'+'/download.sysinternals.com/files/SysinternalsSuite.zip'),"$path\SysinternalsSuite.zip");(new-object -com shelL.apPlication).namespace($path).CopyHere( (new-object -com shelL.apPlication).namespace("$path\SysinternalsSuite.zip").Items(),16)`
 
 Dieses Beispiel erstellt den Ordner `c:\bin`, lädt die Sysinternals-Tools herunter, und extrahiert sie in `c:\bin`.
-## <a name="miscellaneous-tasks"></a>Sonstige Aufgaben
+## <a name="miscellaneous-tasks-using-powershell"></a>Sonstige Aufgaben mit PowerShell
 ### <a name="show-os-version"></a>Anzeigen der Betriebssystemversion
-`get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber` 
+`get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber`
 ### <a name="view-os-install-date"></a>Anzeigen des Installationsdatums des Betriebssystems
 `(get-wmiobject win32_operatingsystem).converttodatetime((get-wmiobject win32_operatingsystem).installdate)`
 ### <a name="view-last-boot-time"></a>Anzeigen des letzten Systemstarts
@@ -422,7 +425,7 @@ Dieses Beispiel erstellt den Ordner `c:\bin`, lädt die Sysinternals-Tools herun
 ### <a name="view-windows-uptime"></a>Anzeigen der Betriebszeit von Windows
 `"{0:dd}:{0:hh}:{0:mm}:{0:ss}.{0:ff}" -f ((get-date)-(get-wmiobject win32_operatingsystem).converttodatetime((get-wmiobject win32_operatingsystem).lastbootuptime))`
 
-Gibt die Betriebszeit als `<days>:<hours>:<minutes>:<seconds>:<milliseconds>` zurück (beispielsweise `49:16:48:00.00`). 
+Gibt die Betriebszeit als `<days>:<hours>:<minutes>:<seconds>:<milliseconds>` zurück (beispielsweise `49:16:48:00.00`).
 ### <a name="restart-windows"></a>Neustarten von Windows
 `restart-computer`
 
@@ -433,7 +436,7 @@ Sie können Azure-Instanzmetadaten aus Ihrem virtuellen Azure-Computer abfragen,
 
 Voraussetzung für das Abfragen von Instanzmetadaten ist eine ordnungsgemäß funktionierende Gastnetzwerkverbindung, da hierzu ein REST-Aufruf über den Azure-Host an den Instanzmetadatendienst gerichtet werden muss. Wenn Sie also Instanzmetadaten abfragen können, kann der Gast über das Netzwerk mit einem von Azure gehosteten Dienst kommunizieren.
 
-Weitere Informationen finden Sie unter [Azure-Instanzmetadatendienst](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service).
+Weitere Informationen finden Sie unter [Azure-Instanzmetadatendienst](../windows/instance-metadata-service.md).
 
 ### <a name="instance-metadata"></a>Instanzmetadaten
 `$im = invoke-restmethod -headers @{"metadata"="true"} -uri http://169.254.169.254/metadata/instance?api-version=2017-08-01 -method get`

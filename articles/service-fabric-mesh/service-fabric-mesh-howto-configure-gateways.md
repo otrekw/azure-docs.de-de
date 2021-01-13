@@ -1,25 +1,17 @@
 ---
-title: Konfigurieren eines Gateways zum Weiterleiten von Anforderungen | Microsoft-Dokumentation
+title: Konfigurieren eines Gateways zum Weiterleiten von Anforderungen
 description: Erhalten Sie Informationen zum Konfigurieren des Gateways, das den eingehenden Datenverkehr für Ihre Anwendung(en) unter Service Fabric Mesh verarbeitet.
-services: service-fabric-mesh
-documentationcenter: .net
-author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
+author: georgewallace
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/28/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b4fc6f91ee2429205974b9cb7ceb05b7cff53f15
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: aa3ac9d8835cd17387346bb29b3e7c30f286cd1f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034209"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839723"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurieren einer Gatewayressource zum Weiterleiten von Anforderungen
 
@@ -227,8 +219,8 @@ Die vollständige Konfiguration einer Gatewayressource sieht folgendermaßen aus
 ```
 
 Dieses Gateway wird für eine Linux-Anwendung „MeshAppLinux“ konfiguriert, die aus mindestens zwei Diensten besteht („helloWorldService“ und „counterService“) und an Port 80 lauscht. Abhängig von der URL-Struktur der eingehenden Anforderung wird die Anforderung an einen dieser Dienste weitergeleitet. 
-* Bei „\<IPAddress>:80/helloWorld/\<Anforderung\>“ wird eine Anforderung an den helloWorldListener im helloWorldService weitergeleitet. 
-* Bei „\<IPAddress>:80/counter/\<Anforderung\>“ wird eine Anforderung an den counterListener im counterService weitergeleitet. 
+* Bei „\<IPAddress>:80/helloWorld/\<request\>“ wird eine Anforderung an helloWorldListener in helloWorldService weitergeleitet. 
+* Bei „\<IPAddress>:80/counter/\<request\>“ wird eine Anforderung an counterListener in counterService weitergeleitet. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Bereitstellen des [Eingangsbeispiels](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress), um Gateways in Aktion zu erleben

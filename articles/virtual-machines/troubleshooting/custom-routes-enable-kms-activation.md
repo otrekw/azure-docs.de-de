@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: d554629c4a03b81ee3c04d27f6365c1a8734c952
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 1c2050969e95b521554bba100b688add3a987a80
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058196"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86526740"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Fehler bei der Windows-Aktivierung in einem Szenario mit Tunnelerzwingung
 
@@ -50,12 +50,12 @@ Befolgen Sie diese Schritte, um die benutzerdefinierte hinzuzufügen:
 
 ### <a name="for-resource-manager-vms"></a>Für Resource Manager-VMs
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 > [!NOTE] 
-> Die Aktivierung verwendet öffentliche IP-Adressen und wird von einer Standard-SKU-Load Balancer-Konfiguration beeinflusst. Lesen Sie [Ausgehende Verbindungen in Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections), um mehr über die Anforderungen zu erfahren.
+> Die Aktivierung verwendet öffentliche IP-Adressen und wird von einer Standard-SKU-Load Balancer-Konfiguration beeinflusst. Lesen Sie [Ausgehende Verbindungen in Azure](../../load-balancer/load-balancer-outbound-connections.md), um mehr über die Anforderungen zu erfahren.
 
-1. Öffnen Sie Azure PowerShell, und [melden Sie sich dann bei Ihrem Azure-Abonnement an](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Öffnen Sie Azure PowerShell, und [melden Sie sich dann bei Ihrem Azure-Abonnement an](/powershell/azure/authenticate-azureps).
 2. Führen Sie die folgenden Befehle aus:
 
     ```powershell
@@ -77,15 +77,19 @@ Befolgen Sie diese Schritte, um die benutzerdefinierte hinzuzufügen:
 
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
-3. Wechseln Sie zu der VM mit den Aktivierungsproblemen. Verwenden Sie [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping), um zu testen, ob sie den KMS-Server erreichen kann:
+3. Wechseln Sie zu der VM mit den Aktivierungsproblemen. Verwenden Sie [PsPing](/sysinternals/downloads/psping), um zu testen, ob sie den KMS-Server erreichen kann:
 
-        psping kms.core.windows.net:1688
+    ```console
+    psping kms.core.windows.net:1688
+    ```
 
 4. Versuchen Sie, Windows zu aktivieren, und überprüfen Sie, ob das Problem behoben ist.
 
 ### <a name="for-classic-vms"></a>Für klassische virtuelle Computer
 
-1. Öffnen Sie Azure PowerShell, und [melden Sie sich dann bei Ihrem Azure-Abonnement an](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+1. Öffnen Sie Azure PowerShell, und [melden Sie sich dann bei Ihrem Azure-Abonnement an](/powershell/azure/authenticate-azureps).
 2. Führen Sie die folgenden Befehle aus:
 
     ```powershell
@@ -103,15 +107,15 @@ Befolgen Sie diese Schritte, um die benutzerdefinierte hinzuzufügen:
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. Wechseln Sie zu der VM mit den Aktivierungsproblemen. Verwenden Sie [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping), um zu testen, ob sie den KMS-Server erreichen kann:
+3. Wechseln Sie zu der VM mit den Aktivierungsproblemen. Verwenden Sie [PsPing](/sysinternals/downloads/psping), um zu testen, ob sie den KMS-Server erreichen kann:
 
-        psping kms.core.windows.net:1688
+    ```console
+    psping kms.core.windows.net:1688
+    ```
 
 4. Versuchen Sie, Windows zu aktivieren, und überprüfen Sie, ob das Problem behoben ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [KMS-Clientsetupschlüssel](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
-)
-- [Überprüfen und Auswählen von Aktivierungsmethoden](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
-)
+- [KMS-Clientsetupschlüssel](/windows-server/get-started/kmsclientkeys)
+- [Überprüfen und Auswählen von Aktivierungsmethoden](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj134256(v=ws.11))

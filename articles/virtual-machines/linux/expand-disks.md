@@ -1,18 +1,18 @@
 ---
-title: Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie virtuelle Festplatten auf einer Linux-VM mit Azure CLI erweitern.
+title: Erweitern von virtuellen Festplatten auf Linux-VMs
+description: Erfahren Sie, wie Sie virtuelle Festplatten auf einer Linux-VM mit der Azure CLI erweitern.
 author: roygara
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f892857d74150ee42cc2ea4b5c996feac3d1cfa2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: bbb959b6b1d71c81f7b920b3962f693716041e16
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695612"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016232"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern mit der Azure-CLI
 
@@ -56,7 +56,7 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen wie *myResou
     ```
 
     > [!NOTE]
-    > Wenn Sie einen verwalteten Datenträger erweitern, wird die aktualisierte Größe auf die nächste Größe für verwaltete Datenträger aufgerundet. Eine Tabelle der verfügbaren verwalteten Datenträgergrößen und -ebenen finden Sie unter [Übersicht über Azure Managed Disks – Preise und Abrechnung](../windows/managed-disks-overview.md).
+    > Wenn Sie einen verwalteten Datenträger erweitern, wird die aktualisierte Größe auf die nächste Größe für verwaltete Datenträger aufgerundet. Eine Tabelle der verfügbaren verwalteten Datenträgergrößen und -ebenen finden Sie unter [Übersicht über Azure Managed Disks – Preise und Abrechnung](../managed-disks-overview.md).
 
 1. Starten Sie den virtuellen Computer mit [az vm start](/cli/azure/vm#az-vm-start). Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* gestartet:
 
@@ -71,7 +71,7 @@ Um einen erweiterten Datenträger zu verwenden, erweitern Sie die zugrunde liege
 1. SSH mit Ihrer VM mit den entsprechenden Anmeldeinformationen. Sie können die öffentliche IP-Adresse Ihres virtuellen Computers mit dem Befehl [az vm show](/cli/azure/vm#az-vm-show) anzeigen:
 
     ```azurecli
-    az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
+    az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --output tsv
     ```
 
 1. Erweitern Sie die zugrunde liegende Partition und das Dateisystem.
@@ -142,4 +142,4 @@ Um einen erweiterten Datenträger zu verwenden, erweitern Sie die zugrunde liege
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Wenn Sie zusätzlichen Speicher benötigen, können Sie auch [Datenträger zu einer Linux-VM hinzufügen](add-disk.md). 
-* Weitere Informationen zur Datenträgerverschlüsselung finden Sie unter [Encrypt disks on a Linux VM using the Azure CLI (Verschlüsseln von Datenträgern auf einer Linux-VM mithilfe der Azure-Befehlszeilenschnittstelle)](encrypt-disks.md).
+* Weitere Informationen zur Datenträgerverschlüsselung finden Sie unter [Azure Disk Encryption für Linux-VMs](disk-encryption-overview.md).

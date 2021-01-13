@@ -1,6 +1,7 @@
 ---
-title: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers – Schnellstart – Azure CLI | Microsoft-Dokumentation
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der IP-Flussüberprüfungsfunktion von Azure Network Watcher Probleme mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers diagnostizieren.
+title: 'Schnellstart: Diagnostizieren von Problemen mit dem Filter für VM-Netzwerkdatenverkehr – Azure-Befehlszeilenschnittstelle'
+titleSuffix: Azure Network Watcher
+description: Hier erfahren Sie, wie Sie die Azure CLI verwenden, um mithilfe der IP-Flussüberprüfungsfunktion von Azure Network Watcher Probleme mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers diagnostizieren.
 services: network-watcher
 documentationcenter: network-watcher
 author: KumudD
@@ -16,23 +17,25 @@ ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 460513e4818cbef8fca0cd1b84d69b3021afaab7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: bd99fe0ea8a92ad05ad258dcf4d8da6e4685f263
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690432"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492521"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Schnellstart: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers – Azure CLI
 
 In dieser Schnellstartanleitung stellen Sie einen virtuellen Computer (Virtual Machine, VM) bereit und überprüfen dann die ausgehende Kommunikation für eine IP-Adresse und URL sowie die eingehende Kommunikation von einer IP-Adresse. Sie ermitteln die Ursache eines Kommunikationsfehlers und wie Sie ihn beheben können.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart mindestens Azure CLI-Version 2.0.28 ausführen. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). Führen Sie nach der Überprüfung der CLI-Version den Befehl `az login` aus, um eine Verbindung mit Azure zu erstellen. Die CLI-Befehle in dieser Schnellstartanleitung sind für die Ausführung in einer Bash-Shell formatiert.
+- Für diesen Schnellstart ist mindestens Version 2.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert. 
+
+- Die Azure CLI-Befehle in dieser Schnellstartanleitung sind für die Ausführung in einer Bash-Shell formatiert.
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
@@ -52,7 +55,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst mit den übrigen Schritten fort, wenn der virtuelle Computer erstellt und von der CLI eine Ausgabe zurückgegeben wurde.
+Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst mit den übrigen Schritten fort, wenn der virtuelle Computer erstellt und von Azure CLI eine Ausgabe zurückgegeben wurde.
 
 ## <a name="test-network-communication"></a>Testen der Netzwerkkommunikation
 
@@ -89,7 +92,7 @@ az network watcher test-ip-flow \
 
 Nach einigen Sekunden werden Sie im zurückgegebenen Ergebnis darüber informiert, dass der Zugriff durch eine Sicherheitsregel mit dem Namen **AllowInternetOutbound** zugelassen wird.
 
-Testen Sie die ausgehende Kommunikation des virtuellen Computers für 172.31.0.100:
+Testen Sie die ausgehende Kommunikation des virtuellen Computers mit 172.31.0.100:
 
 ```azurecli-interactive
 az network watcher test-ip-flow \
@@ -133,7 +136,7 @@ az network nic list-effective-nsg \
 
 Die zurückgegebene Ausgabe enthält den folgenden Text für die Regel **AllowInternetOutbound**, die in einem vorherigen Schritt unter [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) den ausgehenden Zugriff auf www.bing.com zugelassen hat:
 
-```azurecli
+```console
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -174,7 +177,7 @@ In der obigen Ausgabe sehen Sie, dass **Internet** als **destinationAddressPrefi
 
 Beim Ausführen des Befehls `az network watcher test-ip-flow` zum Testen der ausgehenden Kommunikation mit 172.131.0.100 (im Abschnitt [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify)) wurden Sie in der Ausgabe darüber informiert, dass die Kommunikation durch die Regel **DefaultOutboundDenyAll** verweigert wurde. Die Regel **DefaultOutboundDenyAll** entspricht der Regel **DenyAllOutBound**, die in der folgenden Ausgabe des Befehls `az network nic list-effective-nsg` aufgeführt ist:
 
-```azurecli
+```console
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -207,7 +210,7 @@ Die Regel listet **0.0.0.0/0** als **destinationAddressPrefix** auf. Die Regel v
 
 Beim Ausführen des Befehls `az network watcher test-ip-flow` zum Testen der eingehenden Kommunikation von 172.131.0.100 (im Abschnitt [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify)) wurden Sie in der Ausgabe darüber informiert, dass die Kommunikation durch die Regel **DefaultInboundDenyAll** verweigert wurde. Die Regel **DefaultInboundDenyAll** entspricht der Regel **DenyAllInBound**, die in der folgenden Ausgabe des Befehls `az network nic list-effective-nsg` aufgeführt ist:
 
-```azurecli
+```console
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -250,6 +253,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen virtuellen Computer erstellt sowie Filter für ein- und ausgehenden Netzwerkdatenverkehr diagnostiziert. Sie haben gelernt, dass Netzwerksicherheitsgruppen-Regeln den ein- und ausgehenden Datenverkehr eines virtuellen Computers zulassen oder verweigern. Erfahren Sie mehr über [Sicherheitsregeln](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und das [Erstellen von Sicherheitsregeln](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule).
+In dieser Schnellstartanleitung haben Sie einen virtuellen Computer erstellt sowie Filter für ein- und ausgehenden Netzwerkdatenverkehr diagnostiziert. Sie haben gelernt, dass Netzwerksicherheitsgruppen-Regeln den ein- und ausgehenden Datenverkehr eines virtuellen Computers zulassen oder verweigern. Erfahren Sie mehr über [Sicherheitsregeln](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und das [Erstellen von Sicherheitsregeln](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule).
 
 Auch wenn für den Netzwerkdatenverkehr die richtigen Filter vorhanden sind, kann die Kommunikation mit einem virtuellen Computer aufgrund der Routingkonfiguration fehlschlagen. Informationen zum Diagnostizieren von Routingproblemen in VM-Netzwerken finden Sie unter [Diagnostizieren von VM-Routingproblemen](diagnose-vm-network-routing-problem-cli.md). Unter [Problembehandlung für Verbindungen](network-watcher-connectivity-cli.md) erfahren Sie außerdem, wie Sie mit nur einem Tool Probleme mit Ausgangsrouting und Wartezeiten sowie Probleme mit dem Filtern des Datenverkehrs diagnostizieren.

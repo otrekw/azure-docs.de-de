@@ -9,12 +9,16 @@ services: iot-hub
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
-ms.openlocfilehash: ba14a6bb9e234a5eae34232fc617f8b04284cd4f
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.custom:
+- amqp
+- mqtt
+- devx-track-js
+ms.openlocfilehash: e398138f12c38e5235a0004679d9574dbde607db
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147463"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91446876"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>Senden von C2D-Nachrichten mit IoT Hub (Node.js)
 
@@ -34,7 +38,7 @@ Weitere Informationen zu Cloud-zu-Gerät-Nachrichten finden Sie im [Entwicklungs
 
 Am Ende dieses Tutorials führen Sie zwei Node.js-Konsolen-Apps aus:
 
-* **SimulatedDevice** ist eine modifizierte Version der App, die in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-node.md) erstellt wurde. Sie stellt eine Verbindung mit Ihrem IoT-Hub her und empfängt C2D-Nachrichten.
+* **SimulatedDevice** ist eine modifizierte Version der App, die in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)](quickstart-send-telemetry-node.md) erstellt wurde. Sie stellt eine Verbindung mit Ihrem IoT-Hub her und empfängt C2D-Nachrichten.
 
 * **SendCloudToDeviceMessage** sendet über IoT Hub eine C2D-Nachricht an die simulierte Geräte-App und empfängt die zugehörige Übermittlungsbestätigung.
 
@@ -47,6 +51,8 @@ Am Ende dieses Tutorials führen Sie zwei Node.js-Konsolen-Apps aus:
 * Node.js, Version 10.0.x oder höher. Unter [Prepare your development environment](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
 
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial) erstellen.)
+
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Empfangen von Nachrichten in der simulierten Geräte-App
 
@@ -71,11 +77,20 @@ In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie in [Schnells
     });
     ```
 
-    In diesem Beispiel ruft das Gerät die **complete**-Funktion auf, um IoT Hub mitzuteilen, dass es die Nachricht verarbeitet hat. Der Aufruf von **complete** ist nicht erforderlich, wenn Sie den MQTT-Transport verwenden. Er kann ausgelassen werden. Erforderlich ist er für HTTPS und AMQP.
+In diesem Beispiel ruft das Gerät die Funktion **complete** zur Benachrichtigung von IoT Hub auf, dass die Nachricht verarbeitet wurde und aus der Gerätewarteschlange sicher entfernt werden kann. Der Aufruf von **complete** ist nicht erforderlich, wenn Sie den MQTT-Transport verwenden. Er kann ausgelassen werden. Für AMQP und HTTPS ist er erforderlich.
+
+Mit AMQP und HTTPS, aber nicht MQTT, kann das Gerät auch folgende Aktionen ausführen:
+
+* Eine Nachricht vorübergehend verwerfen, sodass IoT Hub sie für zukünftige Nutzung in der Gerätewarteschlange beibehält.
+* Eine Nachricht ablehnen, wodurch sie aus der Warteschlange dauerhaft entfernt wird.
+
+Wenn etwas passiert, wodurch verhindert wird, dass das Gerät die Nachricht abschließt, vorübergehend verwirft oder ablehnt, stellt IoT Hub sie nach einem festgelegten Zeitlimit zur erneuten Übermittlung in die Warteschlange. Aus diesem Grund muss die Nachrichtenverarbeitungslogik in der Geräte-App *idempotent* sein, sodass der mehrmalige Empfang derselben Nachricht dasselbe Ergebnis erzeugt.
+
+Ausführlichere Informationen dazu, wie IoT Hub C2D-Nachrichten verarbeitet, einschließlich Details zum Lebenszyklus von C2D-Nachrichten, finden Sie unter [Senden von C2D-Nachrichten von einem IoT-Hub](iot-hub-devguide-messages-c2d.md).
   
-   > [!NOTE]
-   > Wenn Sie anstelle von MQTT oder AMQP den HTTPS-Transport verwenden, prüft die **DeviceClient**-Instanz nur selten (seltener als alle 25 Minuten), ob Nachrichten von IoT Hub vorliegen. Weitere Informationen zu den Unterschieden zwischen der MQTT-, AMQP- und HTTPS-Unterstützung sowie zur IoT Hub-Drosselung finden Sie im [Entwicklungshandbuch für IoT Hub](iot-hub-devguide-messaging.md).
-   >
+> [!NOTE]
+> Wenn Sie statt MQTT oder AMQP den HTTPS-Transport verwenden, prüft die **DeviceClient**-Instanz nur selten (mindestens alle 25 Minuten), ob Nachrichten von IoT Hub vorliegen. Weitere Informationen zu den Unterschieden zwischen der Unterstützung für MQTT, AMQP und HTTPS finden Sie unter [Leitfaden zur C2D-Kommunikation](iot-hub-devguide-c2d-guidance.md) und [Auswählen eines Kommunikationsprotokolls](iot-hub-devguide-protocols.md).
+>
 
 ## <a name="get-the-iot-hub-connection-string"></a>Abrufen der IoT-Hub-Verbindungszeichenfolge
 

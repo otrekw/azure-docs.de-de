@@ -2,17 +2,17 @@
 title: Häufig gestellte Fragen (FAQ) zu Azure Private Link
 description: Erfahren Sie mehr über Azure Private Link.
 services: private-link
-author: KumudD
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 32e570e098c9a3f95dfc5393348cccb1ebe1fb60
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 10/05/2019
+ms.author: allensu
+ms.openlocfilehash: 2e5edb0ccf20ab0dba14864487f2b2ddef7d57e7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104585"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544206"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Private Link
 
@@ -24,13 +24,16 @@ ms.locfileid: "71104585"
 - **[Azure Private Link-Dienst](private-link-service-overview.md)** : Der Azure Private Link-Dienst ist ein von einem Dienstanbieter erstellter Dienst. Derzeit kann ein Private Link-Dienst an die Front-End-IP-Konfiguration eines Load Balancer Standard angefügt werden. 
 
 ### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Wie wird der Datenverkehr bei der Verwendung von Private Link gesendet?
-Der Datenverkehr wird privat über den Microsoft-Backbone übertragen. Er gelangt nicht ins Internet.  
+Der Datenverkehr wird privat über den Microsoft-Backbone übertragen. Er gelangt nicht ins Internet. Azure Private Link speichert keine Kundendaten.
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Worin besteht der Unterschied zwischen einem Dienstendpunkt und einem privaten Endpunkt?
-- Bei der Verwendung von privaten Endpunkten wird der Netzwerkzugriff auf bestimmte Ressourcen hinter einem bestimmten Dienst gewährt, der eine differenzierte Segmentierung ermöglicht. Außerdem kann der Datenverkehr lokal auf die Dienstressource zugreifen, ohne öffentliche Endpunkte zu verwenden.
+- Private Endpunkte gewähren Netzwerkzugriff auf bestimmte Ressourcen hinter einem bestimmten Dienst, der eine differenzierte Segmentierung bietet. Der Datenverkehr kann die Dienstressource von einem lokalen Standort ohne öffentliche Endpunkte erreichen.
+- Ein Dienstendpunkt ist weiterhin ein IP-Adresse, die öffentlich geroutet werden kann.  Ein privater Endpunkt ist eine private IP-Adresse im Adressraum des virtuellen Netzwerks, in dem der private Endpunkt konfiguriert wurde.
 
 ### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>Welche Beziehung besteht zwischen dem Private Link-Dienst und dem privaten Endpunkt?
-Der private Endpunkt bietet Zugriff auf mehrere Ressourcentypen für private Links, einschließlich Azure PaaS-Dienste und Ihren eigenen Private Link-Dienst. Es handelt sich um eine 1:n-Beziehung. Ein Private Link-Dienst kann Verbindungen von mehreren privaten Endpunkten empfangen. Andererseits kann ein privater Endpunkt nur eine Verbindung mit einem Private Link-Dienst herstellen.    
+Mehrere Ressourcentypen für private Links unterstützen den Zugriff über einen privaten Endpunkt. Zu den Ressourcen gehören Azure PaaS-Dienste und Ihr eigener Private Link-Dienst. Es handelt sich um eine 1:n-Beziehung. 
+
+Ein Private Link-Dienst empfängt Verbindungen von mehreren privaten Endpunkten. Ein privater Endpunkt stellt eine Verbindung mit einem privaten Private Link-Dienst her.    
 
 ## <a name="private-endpoint"></a>Privater Endpunkt 
  
@@ -45,6 +48,9 @@ Ja. Private Endpunkte können über AD-Mandanten eine Verbindung mit Private Lin
  
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>Können private Endpunkte eine Verbindung mit Azure PaaS-Ressourcen zwischen Azure-Regionen herstellen?
 Ja. Private Endpunkte können eine Verbindung mit Azure PaaS-Ressourcen zwischen Azure-Regionen herstellen.
+
+### <a name="can-i-modify-my-private-endpoint-network-interface-nic-"></a>Kann ich die Netzwerkschnittstelle (NIC) meines privaten Endpunkts ändern?
+Wenn ein privater Endpunkt erstellt wird, wird eine schreibgeschützte NIC zugewiesen. Dies kann nicht geändert werden und bleibt für den Lebenszyklus des privaten Endpunkts beibehalten.
 
 ## <a name="private-link-service"></a>Private Link-Dienst
  
@@ -63,8 +69,8 @@ Ja. Ein Private Link-Dienst kann Verbindungen von mehreren privaten Endpunkten e
 ### <a name="how-should-i-control-the-exposure-of-my-private-link-service"></a>Wie sollte ich die Offenlegung meines Private Link-Dienstes kontrollieren?
 Sie können die Offenlegung über die Sichtbarkeitskonfiguration des Private Link-Dienstes kontrollieren. Die Sichtbarkeit unterstützt drei Einstellungen:
 
-- **Keine**: Nur Abonnements mit RBAC-Zugriff können den Dienst finden. 
-- **Restriktiv**: Nur in der Whitelist aufgeführte Abonnements, die über RBAC-Zugriff verfügen, können den Dienst finden. 
+- **Keine:** Nur Abonnements mit Azure RBAC-Zugriff können den Dienst finden. 
+- **Restriktiv:** Nur genehmigte aufgeführte Abonnements, die über Azure RBAC-Zugriff verfügen, können den Dienst finden. 
 - **Alle**: Jeder kann den Dienst finden. 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Kann ich mit einem Load Balancer im Tarif „Basic“ einen Private Link-Dienst erstellen? 
@@ -73,8 +79,8 @@ Nein. Der Private Link-Dienst über einen Load Balancer im Tarif „Basic“ wir
 ### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>Ist ein dediziertes Subnetz für den Private Link-Dienst erforderlich? 
 Nein. Der Private Link-Dienst erfordert kein dediziertes Subnetz. Sie können ein beliebiges Subnetz in Ihrem VNet auswählen, in dem Ihr Dienst bereitgestellt wird.   
 
-### <a name="i-am-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>Ich bin ein Dienstanbieter, der Azure Private Link verwendet. Muss ich sicherstellen, dass alle meine Kunden über einen eindeutigen IP-Bereich verfügen und sich nicht mit meinem IP-Bereich überschneiden? 
-Nein. Azure Private Link stellt Ihnen diese Funktionen zur Verfügung. Daher ist es nicht erforderlich, dass Sie über einen Adressraum verfügen, der nicht mit dem Adressraum Ihrer Kunden überlappt. 
+### <a name="im-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>Ich bin ein Dienstanbieter, der Azure Private Link verwendet. Muss ich sicherstellen, dass alle meine Kunden über einen eindeutigen IP-Bereich verfügen und sich nicht mit meinem IP-Bereich überschneiden? 
+Nein. Azure Private Link stellt Ihnen diese Funktionen zur Verfügung. Es ist nicht erforderlich, dass Sie über einen Adressraum verfügen, der nicht mit dem Adressraum Ihrer Kunden überlappt. 
 
 ##  <a name="next-steps"></a>Nächste Schritte
 

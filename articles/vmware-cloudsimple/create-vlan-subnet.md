@@ -1,19 +1,19 @@
 ---
-title: Erstellen von VLANs/Subnetzen
-description: 'Azure VMware-Lösung von CloudSimple: Beschreibt das Erstellen und Verwalten von VLANs/Subnetzen für Ihre privaten Clouds und das anschließende Anwenden von Firewallregeln.'
-author: sharaths-cs
-ms.author: b-shsury
+title: Erstellen von VLANs/Subnetzen – Azure VMware Solution by CloudSimple
+description: 'Azure VMware Solution by CloudSimple: Beschreibt das Erstellen und Verwalten von VLANs/Subnetzen für Ihre privaten Clouds und das anschließende Anwenden von Firewallregeln.'
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0f8e605db3d647b5907c8c6741e4e2200bf14c4f
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 06bebcb7369f6604fc79c1d3d0a4a6afa8b0a1da
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772365"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896310"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>Erstellen und Verwalten von VLANs/Subnetzen für private Clouds
 
@@ -31,9 +31,13 @@ ms.locfileid: "70772365"
 5. Geben Sie eine VLAN-ID ein.
 6. Geben Sie den Namen des Subnetzes ein.
 7. Um das Routing im VLAN (Subnetz) zu aktivieren, geben Sie den CIDR-Bereich des Subnetzes an. Stellen Sie sicher, dass sich der CIDR-Bereich nicht mit einem Ihrer lokalen Subnetze, Azure-Subnetzen oder dem Gatewaysubnetz überschneidet.
-8. Klicken Sie auf **Submit**.
+8. Klicken Sie auf **Submit**(Senden).
 
     ![Erstellen des VLAN/Subnetzes](media/create-new-vlan-subnet-details.png)
+
+
+> [!IMPORTANT]
+> Es gibt ein Kontingent von 30 VLANs für jede private Cloud. Diese Grenzwerte können durch [Kontaktaufnahme mit dem Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) erhöht werden.
 
 ## <a name="use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere"></a>Verwenden von VLAN-Informationen zum Einrichten einer verteilten Portgruppe in vSphere
 

@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Benutzerdaten, die in einer Untersuchung des Azure Security Center gefunden wurden | Microsoft-Dokumentation
+title: Verwalten von Benutzerdaten, die in einer Untersuchung des Azure Security Center gefunden wurden
 description: " Informationen zum Verwalten von Benutzerdaten, die mit dem Untersuchungsfeature in Azure Security Center gefunden wurden. "
 services: operations-management-suite
 documentationcenter: na
@@ -8,32 +8,32 @@ manager: rkarlin
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 8b6bde69f233fee9fe20b260e392966298f13a9a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 88fd707d769c7aed53160a9f22fefd15cce19a4b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202033"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340732"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Verwalten von Benutzerdaten, die in einer Untersuchung des Azure Security Center gefunden wurden
-Dieser Artikel enthält Informationen zum Verwalten von Benutzerdaten, die mit dem Untersuchungsfeature in Azure Security Center gefunden wurden. Die Untersuchungsdaten werden in [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md) gespeichert und im Security Center verfügbar gemacht. Bei der Verwaltung der Benutzerdaten haben Sie auch die Möglichkeit, Daten zu löschen oder zu exportieren.
+Dieser Artikel enthält Informationen zum Verwalten von Benutzerdaten, die mit dem Untersuchungsfeature in Azure Security Center gefunden wurden. Die Untersuchungsdaten werden in [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md) gespeichert und im Security Center verfügbar gemacht. Bei der Verwaltung der Benutzerdaten haben Sie auch die Möglichkeit, Daten zu löschen oder zu exportieren.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Suchen nach und Identifizieren von personenbezogenen Daten
-Im Azure-Portal können Sie das [Untersuchungsfeature](../security-center/security-center-investigation.md) des Security Center nutzen, um nach personenbezogenen Daten zu suchen. Das Untersuchungsfeature ist unter **Sicherheitswarnungen** verfügbar.
+Im Azure-Portal können Sie das Untersuchungsfeature von Security Center nutzen, um nach personenbezogenen Daten zu suchen. Das Untersuchungsfeature ist unter **Sicherheitswarnungen** verfügbar.
 
 Das Untersuchungsfeature zeigt alle Entitäten, Benutzerinformationen und Daten unter der Registerkarte **Entitäten** an.
 
 ## <a name="securing-and-controlling-access-to-personal-information"></a>Sichern und Steuern des Zugriffs auf personenbezogene Informationen
 Ein Security Center-Benutzer, dem die Rolle „Leser“, „Besitzer“, „Mitwirkender“ oder „Kontoadministrator“ zugewiesen wird, kann mit dem Tool auf die Kundendaten zugreifen.
 
-Weitere Informationen zu den Rollen „Leser“, „Besitzer“ und „Mitwirkender“ finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md). Weitere Informationen zur Rolle „Kontoadministrator“ finden Sie unter [Azure-Abonnementadministratoren](../billing/billing-add-change-azure-subscription-administrator.md).
+Weitere Informationen zu den Rollen „Leser“, „Besitzer“ und „Mitwirkender“ finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md). Weitere Informationen zur Rolle „Kontoadministrator“ finden Sie unter [Azure-Abonnementadministratoren](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
 ## <a name="deleting-personal-data"></a>Löschen von personenbezogenen Daten
 Ein Security Center-Benutzer, der die Rolle des Besitzers, Mitwirkenden oder Kontoadministrators zugewiesen bekommt, kann die Untersuchungsinformationen löschen.

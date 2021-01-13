@@ -1,39 +1,28 @@
 ---
 title: AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden | Microsoft Docs
 description: Enthält einen Protokollleitfaden für Ausdrücke und eine Beschreibung von AMQP 1.0 in Azure Service Bus und Event Hubs.
-services: service-bus-messaging,event-hubs
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/23/2020
+ms.openlocfilehash: e001327c2c7da08cb9a3552f97fc9a7d8b7921a2
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749386"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736713"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
-Das Advanced Message Queueing Protocol 1.0 ist ein standardisiertes Framing- und Übertragungsprotokoll für das asynchrone, sichere und zuverlässige Übertragen von Nachrichten zwischen zwei Parteien. Es ist das primäre Protokoll von Azure Service Bus Messaging und Azure Event Hubs. Beide Dienste unterstützen auch HTTPS. Das proprietäre SBMP-Protokoll, das ebenfalls unterstützt wird, wird zugunsten von AMQP nach und nach abgeschafft.
+Das Advanced Message Queueing Protocol 1.0 ist ein standardisiertes Framing- und Übertragungsprotokoll für das asynchrone, sichere und zuverlässige Übertragen von Nachrichten zwischen zwei Parteien. Es ist das primäre Protokoll von Azure Service Bus Messaging und Azure Event Hubs.  
 
-AMQP 1.0 ist das Ergebnis einer breiten Zusammenarbeit, bei der Anbieter von Middleware, z.B. Microsoft und Red Hat, mit vielen Nutzern von Messaging-Middleware, z.B. JP Morgan Chase als Vertreter der Finanzdienstleistungsbranche, kooperiert haben. Das Forum für die technische Standardisierung für das AMQP-Protokoll und Erweiterungsspezifikationen ist OASIS, das als internationaler Standard formell anerkannt ist (ISO/IEC 19494).
+AMQP 1.0 ist das Ergebnis einer breiten Zusammenarbeit, bei der Anbieter von Middleware, z.B. Microsoft und Red Hat, mit vielen Nutzern von Messaging-Middleware, z.B. JP Morgan Chase als Vertreter der Finanzdienstleistungsbranche, kooperiert haben. Das Forum für die technische Standardisierung für das AMQP-Protokoll und Erweiterungsspezifikationen ist OASIS, das als internationaler Standard formell anerkannt ist (ISO/IEC 19494:2014). 
 
 ## <a name="goals"></a>Ziele
 
-In diesem Artikel sind die Kernkonzepte der AMQP 1.0-Messagingspezifikation und einige im Entwurfsstadium befindliche Erweiterungsspezifikationen zusammengefasst, die derzeit vom technischen Komitee für OASIS AMQP abschließend festgelegt werden. Außerdem wird beschrieben, wie diese Spezifikationen von Azure Service Bus implementiert und genutzt werden.
+In diesem Artikel sind die Kernkonzepte der AMQP 1.0-Messagingspezifikation und einige Erweiterungsspezifikationen zusammengefasst, die vom [technischen Komitee für OASIS AMQP](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) entwickelt wurden. Außerdem wird beschrieben, wie diese Spezifikationen von Azure Service Bus implementiert und genutzt werden.
 
 Das Ziel besteht darin, dass alle Entwickler, die einen vorhandenen AMQP 1.0-Clientstapel auf einer beliebigen Plattform verwenden, mit Azure Service Bus über AMQP 1.0 interagieren können.
 
-In gängige allgemeine AMQP 1.0-Stapel, z.B. Apache Proton oder AMQP.NET Lite, sind alle wichtigen AMQP 1.0-Protokolle bereits implementiert. Diese grundlegenden Gesten werden manchmal von einer übergeordneten API umschlossen. Bei Apache Proton sind dies sogar zwei, nämlich die imperative Messenger-API und die reaktive Reactor-API.
+Allgemeine universelle AMQP 1.0-Stapel, z. B. [Apache Qpid Proton](https://qpid.apache.org/proton/index.html) oder [AMQP.NET Lite](https://github.com/Azure/amqpnetlite), implementieren alle wichtigen AMQP 1.0-Protokollelemente wie Sitzungen oder Links. Diese grundlegenden Elemente werden manchmal von einer übergeordneten API umschlossen. Bei Apache Proton sind dies sogar zwei, nämlich die imperative Messenger-API und die reaktive Reactor-API.
 
 In der folgenden Beschreibung wird davon ausgegangen, dass die Verwaltung von AMQP-Verbindungen, -Sitzungen und -Links und die Behandlung von Frameübertragungen und der Flusssteuerung vom jeweiligen Stapel übernommen wird (z.B. Apache Proton-C) und sich Anwendungsentwickler nur sehr wenig oder gar nicht darum kümmern müssen. Wir setzen auf abstrakte Weise das Vorhandensein einiger API-Grundlagen voraus – etwa die Verbindungsherstellung und die Erstellung von *sender*- und *receiver*-Abstraktionsobjekten, die dann jeweils über `send()`- bzw. `receive()`-Vorgänge verfügen.
 
@@ -53,13 +42,13 @@ Das AMQP 1.0-Protokoll ist auf Erweiterbarkeit ausgelegt, damit die Funktionen d
 
 In diesem Abschnitt wird die grundlegende Nutzung von AMQP 1.0 mit Azure Service Bus beschrieben. Dies umfasst das Erstellen von Verbindungen, Sitzungen und Links und das Übertragen von Nachrichten an und von Service Bus-Entitäten wie Warteschlangen, Themen und Abonnements.
 
-Die beste Quelle für Informationen zur Funktionsweise von AMQP ist die AMQP 1.0-Spezifikation. Sie wurde aber als genaue Anleitung für die Implementierung und nicht als Leitfaden zum Protokoll geschrieben. In diesem Abschnitt geht es um die Einführung in die Terminologie, die benötigt wird, um die Nutzung von AMQP 1.0 durch Service Bus zu beschreiben. Eine umfassendere Einführung in AMQP und eine ausführlichere Beschreibung von AMQP 1.0 erhalten Sie in [diesem Videokurs][this video course].
+Die beste Quelle für Informationen zur Funktionsweise von AMQP ist die [AMQP 1.0-Spezifikation](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html). Sie wurde aber als genaue Anleitung für die Implementierung und nicht als Leitfaden zum Protokoll geschrieben. In diesem Abschnitt geht es um die Einführung in die Terminologie, die benötigt wird, um die Nutzung von AMQP 1.0 durch Service Bus zu beschreiben. Eine umfassendere Einführung in AMQP und eine ausführlichere Beschreibung von AMQP 1.0 erhalten Sie in [diesem Videokurs][this video course].
 
 ### <a name="connections-and-sessions"></a>Verbindungen und Sitzungen
 
 In AMQP werden die kommunizierenden Programme als *Container* bezeichnet. Die Container enthalten *Knoten*, bei denen es sich um die kommunizierenden Entitäten in den Containern handelt. Eine Warteschlange kann ein Knoten dieser Art sein. AMQP ermöglicht Multiplexing, sodass eine Verbindung für viele Kommunikationspfade zwischen Knoten verwendet werden kann. Beispielsweise kann ein Anwendungsclient über eine Netzwerkverbindung gleichzeitig Daten von einer Warteschlange erhalten und Daten an eine andere Warteschlange senden.
 
-![][1]
+![Abbildung zu Sitzungen und Verbindungen zwischen Containern.][1]
 
 Die Netzwerkverbindung ist also im Container verankert. Sie wird vom Container in der Clientrolle initiiert. Es wird eine ausgehende TCP-Socketverbindung mit einem Container in der Empfängerrolle hergestellt, über die das Abhören und Akzeptieren von eingehenden TCP-Verbindungen durchgeführt wird. Der Verbindungshandshake umfasst die Aushandlung der Protokollversion, die Deklaration oder Aushandlung der Nutzung von Transport Level Security (TLS/SSL) und einen Handshake für die Authentifizierung/Autorisierung für den Verbindungsbereich, der auf SASL basiert.
 
@@ -78,15 +67,24 @@ Sitzungen verfügen über ein fensterbasiertes Flusssteuerungsmodell. Wenn eine 
 
 Dieses fensterbasierte Modell entspricht im Wesentlichen dem TCP-Konzept der fensterbasierten Flusssteuerung, aber auf Sitzungsebene innerhalb des Sockets. Das Konzept des Protokolls, mehrere gleichzeitige Sitzungen zuzulassen, hat den Zweck, dass Datenverkehr mit hoher Priorität gedrosselten normalen Verkehr überholen kann – wie auf der linken Spur auf der Autobahn.
 
-In Azure Service Bus wird für jede Verbindung derzeit genau eine Sitzung verwendet. Die maximale Service Bus-Framegröße beträgt 262.144 Byte (256 KB) für Service Bus Standard und Event Hubs. Für Service Bus Premium sind es 1.048.576 Byte (1 MB). Service Bus gibt keine bestimmten Fenster für die Drosselung auf Sitzungsebene vor, sondern setzt das Fenster im Rahmen der Flusssteuerung auf Verknüpfungsebene regelmäßig zurück (siehe [nächster Abschnitt](#links)).
+In Azure Service Bus wird für jede Verbindung derzeit genau eine Sitzung verwendet. Die maximale Service Bus-Framegröße beträgt 262.144 Byte (256 KB) für Service Bus Standard. Für Service Bus Premium und Event Hubs sind es 1.048.576 Byte (1 MB). Service Bus gibt keine bestimmten Fenster für die Drosselung auf Sitzungsebene vor, sondern setzt das Fenster im Rahmen der Flusssteuerung auf Verknüpfungsebene regelmäßig zurück (siehe [nächster Abschnitt](#links)).
 
 Verbindungen, Kanäle und Sitzungen sind flüchtig. Wenn die zugrunde liegende Verbindung getrennt wird, müssen Verbindungen, TLS-Tunnel, SASL-Autorisierungskontext und Sitzungen wiederhergestellt werden.
+
+### <a name="amqp-outbound-port-requirements"></a>Anforderungen für ausgehende Ports für AMQP-Verbindungen
+
+Bei Clients, auf denen AMQP-Verbindungen über TCP verwendet werden, müssen die Ports 5671 und 5672 in der lokalen Firewall geöffnet werden. Zusammen mit diesen Ports ist es möglicherweise notwendig, zusätzliche Ports zu öffnen, wenn die Funktion [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) aktiviert ist. `EnableLinkRedirect` ist eine neue Messagingfunktion, mit der beim Empfangen von Nachrichten ein Hop übersprungen und so der Durchsatz gesteigert werden kann. Der Client kommuniziert wie in der folgenden Abbildung gezeigt direkt mit dem Back-End-Dienst über den Portbereich 104XX. 
+
+![Liste der Zielports][4]
+
+Bei einem .NET-Client tritt ein SocketException-Fehler auf („Der Zugriff auf einen Socket war aufgrund der Zugriffsrechte des Sockets unzulässig“), wenn diese Ports durch die Firewall blockiert werden. Dieses Feature kann deaktiviert werden, indem `EnableAmqpLinkRedirect=false` in der Verbindungszeichenfolge festgelegt wird. Dadurch wird die Kommunikation zwischen den Clients und dem Remotedienst über Port 5671 erzwungen.
+
 
 ### <a name="links"></a>Links
 
 Für AMQP werden Nachrichten über Verknüpfungen (Links) übertragen. Eine Verknüpfung ist ein Kommunikationspfad, der für eine Sitzung erstellt wird und mit dem Nachrichten in einer Richtung übertragen werden können. Die Aushandlung des Übertragungsstatus wird über die Verknüpfung und in bidirektionaler Form zwischen den verbundenen Parteien durchgeführt.
 
-![][2]
+![Screenshot einer Sitzung mit einer Linkverbindung zwischen zwei Containern][2]
 
 Verknüpfungen können jederzeit von jedem Container und über eine vorhandene Sitzung erstellt werden. Dies unterscheidet AMQP von vielen anderen Protokollen, z.B. HTTP und MQTT, bei denen die Initiierung von Übertragungen und der Übertragungspfad alleiniges Privileg der Partei sind, die die Socketverbindung erstellt.
 
@@ -102,7 +100,7 @@ Der verbindende Client ist auch zum Verwenden eines lokalen Knotennamens zum Ers
 
 Nachdem eine Verknüpfung eingerichtet wurde, können Nachrichten über die Verknüpfung übertragen werden. In AMQP wird eine Übertragung mit einer expliziten Protokollgeste (der *transfer*-Performative) ausgeführt, durch die eine Nachricht über eine Verknüpfung vom Absender zum Empfänger befördert wird. Eine Übertragung ist abgeschlossen, wenn eine „Übereinkunft“ (settled) erzielt wurde. Dies bedeutet, dass sich beide Parteien auf das Ergebnis der Übertragung geeinigt haben.
 
-![][3]
+![Abbildung zur Übertragung einer Nachricht zwischen dem Absender und Empfänger und zur sich daraus ergebenden „Disposition“.][3]
 
 Im einfachsten Fall kann sich der Absender Nachrichten im Zustand „vor der Übereinkunft“ (pre-settled) senden. Das bedeutet, dass der Client am Ergebnis nicht interessiert ist und der Empfänger kein Feedback zum Ergebnis des Vorgangs liefert. Dieser Modus wird von Service Bus auf AMQP-Protokollebene unterstützt, aber nicht in den Client-APIs verfügbar gemacht.
 
@@ -122,7 +120,7 @@ Um das mögliche doppelte Senden zu kompensieren, unterstützt Service Bus die D
 
 Zusätzlich zum Modell der Flusssteuerung auf Sitzungsebene, das bereits erwähnt wurde, verfügt jede Verknüpfung über ein eigenes Modell für die Flusssteuerung. Die Flusssteuerung auf Sitzungsebene schützt den Container davor, zu viele Frames auf einmal verarbeiten zu müssen. Bei der Flusssteuerung auf Verknüpfungsebene kann die Anwendung entscheiden, wie viele Nachrichten einer Verknüpfung und zu welchem Zeitpunkt diese Nachrichten verarbeitet werden sollen.
 
-![][4]
+![Screenshot eines Protokolls mit Quelle, Ziel, Quellport, Zielport und Protokollname. In der ersten Zeile ist der Zielport 10401 (0x28 A 1) schwarz umrandet.][4]
 
 Für eine Verknüpfung können Übertragungen nur durchgeführt werden, wenn der Absender über genügend *Link Credit* (Verknüpfungsguthaben) verfügt. Das Verknüpfungsguthaben ist ein Indikator, der vom Empfänger mit der *flow*-Performative für den Bereich einer Verknüpfung festgelegt wird. Wenn dem Absender ein Verknüpfungsguthaben zugewiesen wird, versucht er, dieses Guthaben durch das Zustellen von Nachrichten aufzubrauchen. Mit jeder Nachrichtenzustellung wird das verbleibende Verknüpfungsguthaben um den Wert 1 verringert. Wenn das Verknüpfungsguthaben aufgebraucht ist, werden die Zustellungen beendet.
 
@@ -224,7 +222,7 @@ Jede Eigenschaft, die die Anwendung definieren muss, sollte der `application-pro
 | --- | --- | --- |
 | message-id |Anwendungsdefinierte Freiform-ID für diese Nachricht. Wird für die Duplikaterkennung verwendet. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Anwendungsdefinierte Benutzer-ID, von Service Bus nicht interpretiert. |Nicht über die Service Bus-API zugänglich. |
-| to |Anwendungsdefinierte Ziel-ID, von Service Bus nicht interpretiert. |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| zu |Anwendungsdefinierte Ziel-ID, von Service Bus nicht interpretiert. |[An](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | subject |Anwendungsdefinierte Nachrichtenzweck-ID, von Service Bus nicht interpretiert. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | reply-to |Anwendungsdefinierter Antwortpfadindikator, von Service Bus nicht interpretiert. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |Anwendungsdefinierte Korrelations-ID, von Service Bus nicht interpretiert. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -266,12 +264,12 @@ Jede Verbindung muss einen eigenen Steuerlink initiieren, um Transaktionen start
 
 Um mit Transaktionsaufgaben zu beginnen, benötigt der Controller eine `txn-id` vom Koordinator. Dies geschieht durch Senden einer `declare`-Typmeldung. Wenn die Deklaration erfolgreich ist, antwortet der Koordinator mit dem Dispositionsergebnis, das die zugewiesene `txn-id` enthält.
 
-| Client (Controller) | | Servicebus (Coordinator) |
-| --- | --- | --- |
+| Client (Controller) | Direction | Servicebus (Coordinator) |
+| :--- | :---: | :--- |
 | attach(<br/>name={Name der Verknüpfung},<br/>... ,<br/>role=**sender**,<br/>target=**Coordinator**<br/>) | ------> |  |
 |  | <------ | attach(<br/>name={Name der Verknüpfung},<br/>... ,<br/>target=Coordinator()<br/>) |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (**Declare()** )}| ------> |  |
-|  | <------ | disposition( <br/> first=0, last=0, <br/>state=**Declared**(<br/>**txn-id**={Transaktions-ID}<br/>)|
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=**Declared**(<br/>**txn-id**={Transaktions-ID}<br/>))|
 
 #### <a name="discharging-a-transaction"></a>Entladen einer Transaktion
 
@@ -279,11 +277,11 @@ Der Controller schließt die Transaktionsaufgabe durch Senden einer `discharge`-
 
 > Hinweis: „fail=true“ bezieht sich auf das Rollback einer Transaktion und „fail=false“ auf das Commit.
 
-| Client (Controller) | | Servicebus (Coordinator) |
-| --- | --- | --- |
+| Client (Controller) | Direction | Servicebus (Coordinator) |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>)|
-| | . . . <br/>Transaktionsaufgabe<br/>auf anderen Links<br/> . . . |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>))|
+| | . . erforderlich. <br/>Transaktionsaufgabe<br/>auf anderen Links<br/> . . . |
 | transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)** )}| ------> |  |
 | | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()** )|
 
@@ -291,10 +289,10 @@ Der Controller schließt die Transaktionsaufgabe durch Senden einer `discharge`-
 
 Alle Transaktionsaufgaben erfolgen mit dem Transaktionsübermittlungsstatus `transactional-state`, der die „txn-id“ enthält. Beim Senden von Nachrichten ist der Transaktionsstatus im Übertragungsrahmen der Nachricht enthalten. 
 
-| Client (Controller) | | Servicebus (Coordinator) |
-| --- | --- | --- |
+| Client (Controller) | Direction | Servicebus (Coordinator) |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>)|
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>))|
 | transfer(<br/>handle=1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)** )<br/>{ Nutzlast }| ------> |  |
 | | <------ | disposition( <br/> first=1, last=1, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()** ))|
 
@@ -302,10 +300,10 @@ Alle Transaktionsaufgaben erfolgen mit dem Transaktionsübermittlungsstatus `tra
 
 Die Nachrichtenlöschung umfasst Vorgänge wie `Complete` / `Abandon` / `DeadLetter` / `Defer`. Um diese Vorgänge innerhalb einer Transaktion durchzuführen, übergeben Sie den `transactional-state` mit der Löschung.
 
-| Client (Controller) | | Servicebus (Coordinator) |
-| --- | --- | --- |
+| Client (Controller) | Direction | Servicebus (Coordinator) |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>)|
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>))|
 | | <------ |transfer(<br/>handle=2,<br/>delivery-id=11, <br/>state=null)<br/>{ Nutzlast }|  
 | disposition( <br/> first=11, last=11, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()** ))| ------> |
 
@@ -380,7 +378,7 @@ Die Antwortnachricht verfügt über die folgenden *application-properties*-Werte
 
 | Schlüssel | Optional | Werttyp | Wertinhalt |
 | --- | --- | --- | --- |
-| status-code |Nein |int |HTTP-Antwortcode **[RFC2616]** |
+| status-code |Nein |INT |HTTP-Antwortcode **[RFC2616]** |
 | status-description |Ja |Zeichenfolge |Beschreibung des Status |
 
 Der Client kann *put-token* wiederholt und für jede Entität in der Messaginginfrastruktur aufrufen. Die Token gelten für den aktuellen Client und sind in der aktuellen Verbindung verankert. Das bedeutet, dass der Server alle beibehaltenen Token verwirft, wenn die Verbindung getrennt wird.
@@ -401,8 +399,8 @@ Mit dieser Funktionalität erstellen Sie einen Sender und richten den Link zur `
 
 > Hinweis: Die Authentifizierung muss sowohl für die *via-entity* als auch *destination-entity* vor dem Einrichten dieses Links erfolgen.
 
-| Client | | Service Bus |
-| --- | --- | --- |
+| Client | Direction | Service Bus |
+| :--- | :---: | :--- |
 | attach(<br/>name={Name der Verknüpfung},<br/>role=sender,<br/>source={Clientverknüpfungs-ID},<br/>target= **{via-entity}** ,<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
 | | <------ | attach(<br/>name={Name der Verknüpfung},<br/>role=receiver,<br/>source={Clientverknüpfungs-ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 
@@ -421,5 +419,5 @@ Weitere Informationen zu AMQP finden Sie unter den folgenden Links:
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
 [Übersicht über Service Bus AMQP]: service-bus-amqp-overview.md
-[AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: service-bus-partitioned-queues-and-topics-amqp-overview.md
-[AMQP in Service Bus für Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
+[AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: 
+[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

@@ -1,30 +1,30 @@
 ---
-title: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen2 für MapReduce | Microsoft-Dokumentation
-description: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen2 für MapReduce
+title: 'Optimieren der Leistung: MapReduce, HDInsight und Azure Data Lake Storage Gen2 | Microsoft-Dokumentation'
+description: Informieren Sie sich über die Richtlinien zur Optimierung der Leistung von MapReduce-Aufträgen in Azure Data Lake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3bd73b62b8859ffc5a71f610ebbdb55705284a76
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b95d37e1725940799750dbd3c29174d9855390d6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855510"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912925"
 ---
-# <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Anleitung für die Leistungsoptimierung für MapReduce in HDInsight und Azure Data Lake Storage Gen2
+# <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Optimieren der Leistung: MapReduce, HDInsight und Azure Data Lake Storage Gen2
 
 Es werden die Faktoren beschrieben, die Sie berücksichtigen sollten, wenn Sie die Leistung von MapReduce-Aufträgen optimieren. Dieser Artikel enthält einen Bereich mit Richtlinien für die Leistungsoptimierung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Ein Azure Data Lake Storage Gen2-Konto**. Anweisungen zum Erstellen eines solchen Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](data-lake-storage-quickstart-create-account.md).
-* Einen **Azure HDInsight-Cluster** mit Zugriff auf ein Data Lake Storage Gen2-Konto. Siehe [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2).
-* **Verwendung von MapReduce in HDInsight**.  Weitere Informationen finden Sie unter [Verwenden von MapReduce mit Hadoop in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce).
+* **Ein Azure Data Lake Storage Gen2-Konto**. Anweisungen zum Erstellen eines solchen Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](../common/storage-account-create.md).
+* Einen **Azure HDInsight-Cluster** mit Zugriff auf ein Data Lake Storage Gen2-Konto. Siehe [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md).
+* **Verwendung von MapReduce in HDInsight**.  Weitere Informationen finden Sie unter [Verwenden von MapReduce mit Hadoop in HDInsight](../../hdinsight/hadoop/hdinsight-use-mapreduce.md).
 * **Leitlinien für die Leistungsoptimierung von Data Lake Storage Gen2**.  Allgemeine Leistungskonzepte finden Sie unter [Leitfaden für die Leistungsoptimierung von Data Lake Storage Gen2](data-lake-storage-performance-tuning-guidance.md).
 
 ## <a name="parameters"></a>Parameter
@@ -57,7 +57,7 @@ Die Größe des Arbeitsspeichers für Mapper/Reducer-Aufgaben richtet sich nach 
 
 Beim Optimieren von „mapreduce.job.maps/mapreduce.job.reduces“ müssen Sie die Menge an YARN-Arbeitsspeicher berücksichtigen, die zur Verwendung verfügbar ist.  Diese Informationen sind in Ambari verfügbar.  Navigieren Sie zu YARN, und zeigen Sie die Registerkarte für die Konfiguration an.  Die Größe des YARN-Arbeitsspeichers wird in diesem Fenster angezeigt.  Um den YARN-Gesamtarbeitsspeicher zu erhalten, müssen Sie den YARN-Arbeitsspeicher pro Knoten mit der Anzahl von Knoten in Ihrem Cluster multiplizieren.
 
-    Total YARN memory = nodes * YARN memory per node
+YARN-Arbeitsspeicher gesamt = Knoten × YARN-Arbeitsspeicher pro Knoten
 
 Wenn Sie einen leeren Cluster verwenden, kann der Arbeitsspeicher der gesamte YARN-Arbeitsspeicher für den Cluster sein.  Wenn andere Anwendungen auch Arbeitsspeicher belegen, können Sie nur einen Teil des Clusterarbeitsspeichers nutzen, indem Sie die Anzahl von Mappern oder Reducern auf die Anzahl von Containern verringern, die Sie verwenden möchten.  
 
@@ -65,7 +65,7 @@ Wenn Sie einen leeren Cluster verwenden, kann der Arbeitsspeicher der gesamte YA
 
 YARN-Container geben vor, wie viel Parallelität für den Auftrag verfügbar ist.  Teilen Sie den YARN-Gesamtarbeitsspeicher durch „mapreduce.map.memory“.  
 
-    # of YARN containers = total YARN memory / mapreduce.map.memory
+Anzahl der YARN-Container = YARN-Arbeitsspeicher gesamt / mapreduce.map.memory
 
 **Schritt 5: Festlegen von „mapreduce.job.maps/mapreduce.job.reduces“**
 
@@ -85,18 +85,19 @@ In diesem Beispiel nehmen wir an, dass unser Auftrag der einzige ausgeführte Au
 
 In diesem Beispiel führen wir einen E/A-intensiven Auftrag aus und treffen die Entscheidung, dass 3 GB Arbeitsspeicher für die Mapper-Aufgaben ausreichend sind.
 
-    mapreduce.map.memory = 3GB
+mapreduce.map.memory = 3 GB
 
 **Schritt 3: Ermitteln des gesamten YARN-Arbeitsspeichers**
 
-    Total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
+Der Gesamtarbeitsspeicher aus dem Cluster beträgt 8 Knoten × 96 GB YARN-Arbeitsspeicher für einen D14 = 768 GB
+
 **Schritt 4: Berechnen der Anzahl von YARN-Containern**
 
-    # of YARN containers = 768GB of available memory / 3 GB of memory =   256
+Anzahl der YARN-Container = 768 GB verfügbarer Arbeitsspeicher / 3 GB Arbeitsspeicher = 256
 
 **Schritt 5: Festlegen von „mapreduce.job.maps/mapreduce.job.reduces“**
 
-    mapreduce.map.jobs = 256
+mapreduce.map.jobs = 256
 
 ## <a name="examples-to-run"></a>Beispiele für die Ausführung
 
@@ -109,12 +110,18 @@ Im Folgenden finden Sie einige Beispielbefehle zum Ausführen von MapReduce Tera
 
 **Teragen**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 abfs://example/data/1TB-sort-input
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 abfs://example/data/1TB-sort-input
+```
 
 **Terasort**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 abfs://example/data/1TB-sort-input abfs://example/data/1TB-sort-output
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 abfs://example/data/1TB-sort-input abfs://example/data/1TB-sort-output
+```
 
 **Teravalidate**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 abfs://example/data/1TB-sort-output abfs://example/data/1TB-sort-validate
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 abfs://example/data/1TB-sort-output abfs://example/data/1TB-sort-validate
+```

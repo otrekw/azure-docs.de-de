@@ -1,40 +1,39 @@
 ---
 title: Ressourcenübergreifende Abfragen mit Azure Monitor | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Abfragen für Ressourcen aus mehreren Arbeitsbereichen und für Daten aus einer Application Insights-App in Ihrem Abonnement ausführen können.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.author: magoedte
-ms.openlocfilehash: a1ea4012b7cda5b5deab82027e5547a9c9ef786f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+author: bwren
+ms.author: bwren
+ms.date: 05/01/2020
+ms.openlocfilehash: 1a6b328bc076ffa619921a8698549e95e6f15c60
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650153"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400759"
 ---
-# <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Ausführen ressourcenübergreifender Protokollabfragen in Azure Monitor  
+# <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Ausführen arbeitsbereichs- und anwendungsübergreifender Protokollabfragen in Azure Monitor
 
-Mit Azure Monitor konnten Sie bislang nur Daten innerhalb des aktuellen Arbeitsbereichs analysieren. Abfragen für mehrere in Ihrem Abonnement definierte Arbeitsbereiche waren nicht möglich.  Darüber hinaus konnten Sie Telemetrieelemente, die von Ihrer webbasierten Anwendung mit Application Insights gesammelt wurden, nur direkt in Application Insights oder über Visual Studio suchen. Dadurch wurde auch die gemeinsame native Analyse von Betriebs- und Anwendungsdaten zu einer Herausforderung.
+Azure Monitor-Protokolle unterstützen Abfragen über mehrere Log Analytics-Arbeitsbereiche und Application Insights-Apps in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement. Dies bietet Ihnen eine systemweite Ansicht Ihrer Daten.
 
-Sie können jetzt nicht nur Abfragen über mehrere Log Analytics-Arbeitsbereiche ausführen, sondern auch Daten aus einer bestimmten Application Insights-App in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement in Abfragen einbeziehen. Dies bietet Ihnen eine systemweite Ansicht Ihrer Daten. Sie können diese Arten von Abfragen nur in [Log Analytics](portals.md) ausführen.
+Es gibt zwei Methoden zum Abfragen von Daten, die in mehreren Arbeitsbereichen und Apps gespeichert sind:
+1. Explizit durch Angabe der Arbeitsbereichs- und App-Details. Dieses Verfahren wird in diesem Artikel ausführlich erläutert.
+2. Implizit durch Verwendung von [Abfragen im Ressourcenkontext](../platform/design-logs-deployment.md#access-mode). Wenn Sie Abfragen im Kontext einer bestimmten Ressource, Ressourcengruppe oder eines Abonnements ausführen, werden die relevanten Daten aus allen Arbeitsbereichen abgerufen, die Daten für diese Ressourcen enthalten. Application Insights-Daten, die in Apps gespeichert werden, werden nicht abgerufen.
+
+> [!IMPORTANT]
+> Wenn Sie eine [arbeitsbereichsbasierte Application Insights-Ressource](../app/create-workspace-resource.md) verwenden, werden Telemetriedaten in einem Log Analytics-Arbeitsbereich mit allen anderen Protokolldaten gespeichert. Verwenden Sie den workspace()-Ausdruck, um eine Abfrage zu schreiben, die Anwendungen in mehreren Arbeitsbereichen umfasst. Für mehrere Anwendungen im gleichen Arbeitsbereich benötigen Sie keine arbeitsbereichübergreifende Abfrage.
+
 
 ## <a name="cross-resource-query-limits"></a>Ressourcenübergreifende Abfragelimits 
 
 * Die Anzahl von Application Insights-Ressourcen und Log Analytics-Arbeitsbereichen, die Sie in eine einzelne Abfrage einschließen können, ist auf 100 beschränkt.
 * Ressourcenübergreifende Abfrage wird im View Designer nicht unterstützt. Sie können eine Abfrage in Log Analytics erstellen und dem Azure-Dashboard anheften, um [eine Protokollabfrage zu visualisieren](../learn/tutorial-logs-dashboards.md). 
-* Eine ressourcenübergreifende Abfrage in Protokollwarnungen wird in der neuen [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) unterstützt. Standardmäßig verwendet Azure Monitor die [Legacywarnungs-API von Log Analytics](../platform/api-alerts.md) zum Erstellen neuer Protokollwarnungsregeln über das Azure-Portal, es sei denn, Sie nehmen einen Umstieg von der [Legacyprotokollwarnungen-API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) vor. Nach dem Umstieg wird die neue API standardmäßig für neue Warnungsregeln im Azure-Portal verwendet, und Sie können Protokollwarnungsregeln für ressourcenübergreifende Abfragen erstellen. Sie können Protokollwarnungsregeln für ressourcenübergreifende Abfragen erstellen, ohne den Umstieg vorzunehmen, indem Sie die [Azure Resource Manager-Vorlage für die scheduledQueryRules-API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) verwenden. Diese Warnungsregel wird jedoch über die [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) und nicht über das Azure-Portal verwaltet.
+* Ressourcenübergreifende Abfragen in Protokollwarnungen werden nur in der aktuellen [scheduledQueryRules](/rest/api/monitor/scheduledqueryrules)-API unterstützt. Wenn Sie die Legacy-API für Log Analytics-Warnungen verwenden, müssen Sie [zur aktuellen API wechseln](../platform/alerts-log-api-switch.md).
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Abfragen über mehrere Log Analytics-Arbeitsbereiche und mit Application Insights
-Um einen anderen Arbeitsbereich in der Abfrage anzugeben, verwenden Sie die [*Arbeitsbereichs*](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression)-ID, und verwenden Sie für eine App in Application Insights die [*App*](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression)-ID.  
+Um einen anderen Arbeitsbereich in der Abfrage anzugeben, verwenden Sie die [*Arbeitsbereichs*](./workspace-expression.md)-ID, und verwenden Sie für eine App in Application Insights die [*App*](./app-expression.md)-ID.  
 
 ### <a name="identifying-workspace-resources"></a>Identifizieren von Arbeitsbereichsressourcen
 In den folgenden Beispielen werden Abfragen für Log Analytics-Arbeitsbereiche gezeigt, mit denen die zusammengefasste Anzahl von Protokollen aus der Tabelle „Update“ für einen Arbeitsbereich namens *contosoretail-it* zurückgegeben wird. 
@@ -124,7 +123,7 @@ app('Contoso-app5').requests
 
 
 
-[Diese Funktion](../../azure-monitor/log-query/functions.md#use-a-function) können Sie nun wie folgt in einer ressourcenübergreifenden Abfrage verwenden. Der Funktionsalias _applicationsScoping_ gibt die Vereinigungsmenge der Anforderungstabelle aller definierten Anwendungen zurück. Die Abfrage filtert dann fehlgeschlagene Anforderungen heraus und visualisiert die Trends nach Anwendung sortiert. Der _parse_-Operator ist in diesem Beispiel optional. Er extrahiert den Namen der Anwendung aus der _SourceApp_-Eigenschaft.
+[Diese Funktion](./functions.md#use-a-function) können Sie nun wie folgt in einer ressourcenübergreifenden Abfrage verwenden. Der Funktionsalias _applicationsScoping_ gibt die Vereinigungsmenge der Anforderungstabelle aller definierten Anwendungen zurück. Die Abfrage filtert dann fehlgeschlagene Anforderungen heraus und visualisiert die Trends nach Anwendung sortiert. Der _parse_-Operator ist in diesem Beispiel optional. Er extrahiert den Namen der Anwendung aus der _SourceApp_-Eigenschaft.
 
 ```Kusto
 applicationsScoping 
@@ -136,7 +135,7 @@ applicationsScoping
 ```
 
 >[!NOTE]
->Diese Methode kann bei Protokollwarnungen nicht verwendet werden, weil die Zugriffsüberprüfung der Warnungsregelressourcen, einschließlich Arbeitsbereichen und Anwendungen, zum Zeitpunkt der Erstellung der Warnung ausgeführt wird. Das Hinzufügen neuer Ressourcen zur Funktion nach dem Erstellen der Warnung wird nicht unterstützt. Wenn Sie eine Funktion zur Ressourcenbereichsdefinition in Protokollwarnungen verwenden möchten, müssen Sie die Warnungsregel im Portal bearbeiten oder eine Resource Manager-Vorlage verwenden, um die bereichsbezogenen Ressourcen zu aktualisieren. Alternativ dazu können Sie die Liste der Ressourcen in die Abfrage der Protokollwarnung einbeziehen.
+> Diese Methode kann bei Protokollwarnungen nicht verwendet werden, weil die Zugriffsüberprüfung der Warnungsregelressourcen, einschließlich Arbeitsbereichen und Anwendungen, zum Zeitpunkt der Warnungserstellung ausgeführt wird. Das Hinzufügen neuer Ressourcen zur Funktion nach dem Erstellen der Warnung wird nicht unterstützt. Wenn Sie eine Funktion zur Ressourcenbereichsdefinition in Protokollwarnungen verwenden möchten, müssen Sie die Warnungsregel im Portal bearbeiten oder eine Resource Manager-Vorlage verwenden, um die bereichsbezogenen Ressourcen zu aktualisieren. Alternativ dazu können Sie die Liste der Ressourcen in die Abfrage der Protokollwarnung einbeziehen.
 
 
 ![Zeitdiagramm](media/cross-workspace-query/chart.png)
@@ -144,4 +143,4 @@ applicationsScoping
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Eine Übersicht über Protokollabfragen und die Strukturierung von Azure Monitor-Protokolldaten erhalten Sie unter [Analysieren von Protokolldaten in Azure Monitor](log-query-overview.md).
-- Informationen zum Anzeigen aller Ressourcen für Azure Monitor-Protokollabfragen finden Sie unter [Azure Monitor-Protokollabfragen](query-language.md).
+

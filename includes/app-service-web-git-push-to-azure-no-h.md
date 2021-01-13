@@ -1,6 +1,6 @@
 ---
 title: include file
-description: Includedatei
+description: include file
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: aa6f18d4f667862687083c5db3679ce9d8e188cd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8539696f4521a1b4a2f56fe7d2936b45dec26ec9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178573"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998018"
 ---
-Kehren Sie zum _lokalen Terminalfenster_ zurück, und fügen Sie Ihrem lokalen Git-Repository einen Azure-Remotespeicherort hinzu. Ersetzen Sie _&lt;deploymentLocalGitUrl-from-create-step>_ durch die URL des Git-Remotespeicherorts, den Sie in [Erstellen einer Web-App](#create-a-web-app) gespeichert haben.
+Kehren Sie zum lokalen Terminalfenster zurück, und fügen Sie Ihrem lokalen Git-Repository einen Azure-Remotespeicherort hinzu. Ersetzen Sie *\<deploymentLocalGitUrl-from-create-step>* durch die URL des Git-Remotespeicherorts, die Sie unter [Erstellen einer Web-App](#create-a-web-app) gespeichert haben.
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-Führen Sie einen Pushvorgang zum Azure-Remotespeicherort durch, um Ihre App mit dem folgenden Befehl bereitzustellen. Wenn Sie von der Git-Anmeldeinformationsverwaltung zur Eingabe von Anmeldeinformationen aufgefordert werden, müssen Sie die Anmeldeinformationen eingeben, die Sie in „Konfigurieren eines Bereitstellungsbenutzers“ erstellt haben (nicht die Anmeldeinformationen, die Sie zur Anmeldung beim Azure-Portal verwenden).
+Führen Sie einen Pushvorgang zum Azure-Remotespeicherort durch, um Ihre App mit dem folgenden Befehl bereitzustellen. Wenn Sie von der Git-Anmeldeinformationsverwaltung zur Eingabe von Anmeldeinformationen aufgefordert werden, müssen Sie die Anmeldeinformationen eingeben, die Sie in **Konfigurieren eines Bereitstellungsbenutzers** erstellt haben (nicht die Anmeldeinformationen, die Sie zur Anmeldung beim Azure-Portal verwenden).
 
 ```bash
 git push azure master

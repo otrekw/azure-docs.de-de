@@ -1,6 +1,7 @@
 ---
-title: 'Azure-VMware-Lösung von CloudSimple: VMware-Komponenten in der privaten Cloud'
-description: Beschreibt, wie VMware-Komponenten in einer privaten Cloud installiert werden
+title: VMware-Komponenten in der privaten Cloud
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Erfahren Sie, wie der CloudSimple-Dienst Ihnen ermöglicht, VMware an Azure-Standorten nativ bereitzustellen. Private Clouds sind in den Rest der Azure-Cloud integriert.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ff9aec1904be754990958869666e9d67038e4fb3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814565"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88142501"
 ---
 # <a name="private-cloud-vmware-components"></a>VMware-Komponenten in der privaten Cloud
 
@@ -43,7 +44,7 @@ Weitere Informationen zu VMware ESXi
 
 ## <a name="vcenter-server-appliance"></a>vCenter-Serverappliance
 
-Die vCenter-Serverappliance (VCSA) stellt die Funktionen für Authentifizierung, Verwaltung und Orchestrierung für die VMware-Lösung von CloudSimple bereit. Eine VCSA mit eingebettetem Platform Services Controller (PSC) wird bereitgestellt, wenn Sie Ihre private Cloud erstellen.  Die VCSA wird im vSphere-Cluster bereitgestellt, der beim Bereitstellen der privaten Cloud erstellt wird.  Jede private Cloud weist eine eigene VCSA auf.  Die Erweiterung einer privaten Cloud fügt der VCSA in der privaten Cloud die Knoten hinzu.
+Die vCenter-Serverappliance (VCSA) stellt die Funktionen für Authentifizierung, Verwaltung und Orchestrierung für VMware Solution by CloudSimple bereit. Eine VCSA mit eingebettetem Platform Services Controller (PSC) wird bereitgestellt, wenn Sie Ihre private Cloud erstellen.  Die VCSA wird im vSphere-Cluster bereitgestellt, der beim Bereitstellen der privaten Cloud erstellt wird.  Jede private Cloud weist eine eigene VCSA auf.  Die Erweiterung einer privaten Cloud fügt der VCSA in der privaten Cloud die Knoten hinzu.
 
 ### <a name="vcenter-single-sign-on"></a>Einmaliges Anmelden für vCenter
 

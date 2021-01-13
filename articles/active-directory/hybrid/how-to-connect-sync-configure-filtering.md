@@ -11,25 +11,25 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb2af6283e5c9d8a41e74152a94b85efdae1866
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 595cf2c1dbc105634d33b426c67e5123b9751e6e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60243504"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996541"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-Synchronisierung: Konfigurieren der Filterung
-Per Filterung können Sie für Ihr lokales Verzeichnis steuern, welche Objekte in Azure Active Directory (Azure AD) angezeigt werden. Die Standardkonfiguration deckt alle Objekte in allen Domänen der konfigurierten Gesamtstrukturen ab. Dies ist die für den Normalfall empfohlene Konfiguration. Benutzer, die Office 365-Workloads wie etwa Exchange Online und Skype for Business verwenden, profitieren von einer vollständigen globalen Adressliste, die zum Senden von E-Mails und Anrufen anderer Personen genutzt werden kann. In der Standardkonfiguration erhalten diese Benutzer die gleiche Funktionalität wie bei einer lokalen Implementierung von Exchange oder Lync.
+Per Filterung können Sie für Ihr lokales Verzeichnis steuern, welche Objekte in Azure Active Directory (Azure AD) angezeigt werden. Die Standardkonfiguration deckt alle Objekte in allen Domänen der konfigurierten Gesamtstrukturen ab. Dies ist die für den Normalfall empfohlene Konfiguration. Benutzer, die Microsoft 365-Workloads wie etwa Exchange Online und Skype for Business verwenden, profitieren von einer vollständigen globalen Adressliste, mit der sie E-Mails an andere Personen senden und diese anrufen können. In der Standardkonfiguration erhalten diese Benutzer die gleiche Funktionalität wie bei einer lokalen Implementierung von Exchange oder Lync.
 
-In einigen Fällen ist es jedoch erforderlich, Änderungen an der Standardkonfiguration vorzunehmen. Hier einige Beispiele:
+In einigen Fällen ist es jedoch erforderlich, Änderungen an der Standardkonfiguration vorzunehmen. Im Folgenden finden Sie einige Beispiele:
 
 * Sie planen, die [Azure AD-Multiverzeichnistopologie](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant) zu verwenden. Sie müssen einen Filter anwenden, um zu steuern, welche Objekte mit einem bestimmten Azure AD-Verzeichnis synchronisiert werden sollen.
-* Sie führen ein Pilotprojekt für Azure oder Office 365 aus und benötigen nur eine Teilmenge der Benutzer in Azure AD. In dem kleinen Pilotprojekt müssen Sie nicht unbedingt über eine vollständige globale Adressliste verfügen, um die Funktionsweise zu demonstrieren.
+* Sie führen einen Pilotversuch für Azure oder Microsoft 365 durch und möchten nur eine Teilmenge der Benutzer in Azure AD verwenden. In dem kleinen Pilotprojekt müssen Sie nicht unbedingt über eine vollständige globale Adressliste verfügen, um die Funktionsweise zu demonstrieren.
 * Sie haben viele Dienstkonten und andere nicht persönliche Konten, die nicht in Azure AD enthalten sein sollen.
 * Aus Compliancegründen löschen Sie lokal keine Benutzerkonten. Sie deaktivieren sie nur. In Azure AD sollen aber nur aktive Konten vorhanden sein.
 
@@ -47,7 +47,7 @@ Da bei der Filterung viele Objekte gleichzeitig entfernt werden können, sollten
 
 Um das versehentliche Löschen von vielen Objekten zu verhindern, ist das Feature zum [Verhindern versehentlicher Löschungen](how-to-connect-sync-feature-prevent-accidental-deletes.md) standardmäßig aktiviert. Wenn Sie aufgrund einer Filterung viele Objekte löschen (standardmäßig 500), müssen Sie die Schritte in diesem Artikel ausführen, damit die Löschvorgänge auch für Azure AD gelten.
 
-Wenn Sie einen älteren Build als November 2015 nutzen ([1.0.9125](reference-connect-version-history.md#1091250)), eine Änderung an der Filterkonfiguration vornehmen und die Kennworthashsynchronisierung verwenden, müssen Sie eine vollständige Synchronisierung aller Kennwörter auslösen, nachdem Sie die Konfiguration abgeschlossen haben. Informationen zu Schritten zum Auslösen einer vollständigen Kennwortsynchronisierung finden Sie unter [Auslösen einer vollständigen Synchronisierung aller Kennwörter](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Falls Sie Version 1.0.9125 oder höher verwenden, wird mit der normalen Aktion **Vollständige Synchronisierung** auch berechnet, ob Kennwörter synchronisiert werden sollen. Dieser zusätzliche Schritt ist nicht mehr erforderlich.
+Wenn Sie einen älteren Build als November 2015 nutzen ([1.0.9125](reference-connect-version-history.md)), eine Änderung an der Filterkonfiguration vornehmen und die Kennworthashsynchronisierung verwenden, müssen Sie eine vollständige Synchronisierung aller Kennwörter auslösen, nachdem Sie die Konfiguration abgeschlossen haben. Informationen zu Schritten zum Auslösen einer vollständigen Kennwortsynchronisierung finden Sie unter [Auslösen einer vollständigen Synchronisierung aller Kennwörter](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Falls Sie Version 1.0.9125 oder höher verwenden, wird mit der normalen Aktion **Vollständige Synchronisierung** auch berechnet, ob Kennwörter synchronisiert werden sollen. Dieser zusätzliche Schritt ist nicht mehr erforderlich.
 
 Wenn **Benutzerobjekte** in Azure AD aufgrund eines Filterungsfehlers versehentlich gelöscht wurden, können Sie die Benutzerobjekte in Azure AD neu erstellen, indem Sie Ihre Filterkonfigurationen entfernen. Anschließend können Sie Ihre Verzeichnisse erneut synchronisieren. Mit dieser Aktion werden die Benutzer aus dem Papierkorb in Azure AD wiederhergestellt. Das Löschen anderer Objekttypen kann jedoch nicht rückgängig gemacht werden. Wenn Sie beispielsweise eine Sicherheitsgruppe versehentlich löschen, die als Zugriffssteuerungsliste (ACL) für eine Ressource verwendet wurde, können die Gruppe und die zugehörigen ACLs nicht wiederhergestellt werden.
 
@@ -113,7 +113,7 @@ Um den Filter für die Domäne festzulegen, führen Sie die folgenden Schritte a
    ![Connectoreigenschaften](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
 4. Klicken Sie auf **Verzeichnispartitionen konfigurieren**.
 5. Aktivieren bzw. deaktivieren Sie je nach Bedarf die Domänen in der Liste **Select directory partitions** (Verzeichnispartitionen auswählen). Achten Sie darauf, dass nur die Partitionen ausgewählt sind, die Sie synchronisieren möchten.  
-   ![Partitionen](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
+   ![Screenshot: Verzeichnispartitionen im Fenster „Eigenschaften“](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
    Wenn Sie Ihre lokale Active Directory-Infrastruktur geändert und der Gesamtstruktur Domänen hinzugefügt oder daraus entfernt haben, können Sie auf die Schaltfläche **Aktualisieren** klicken, um eine aktualisierte Liste zu erhalten. Beim Aktualisieren werden Sie zur Eingabe von Anmeldeinformationen aufgefordert. Geben Sie Anmeldeinformationen an, die Ihnen den Lesezugriff auf Windows Server Active Directory ermöglichen. Es muss sich nicht um den Benutzer handeln, der im Dialogfeld bereits angegeben ist.  
    ![Aktualisierung erforderlich](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. Schließen Sie nach Abschluss des Vorgangs das Dialogfeld **Eigenschaften**, indem Sie auf **OK** klicken. Wenn Sie Domänen aus der Gesamtstruktur entfernt haben, werden Sie in einer Popupmeldung darauf hingewiesen, dass eine Domäne entfernt wurde und diese Konfiguration bereinigt wird.
@@ -127,7 +127,7 @@ Um den Filter für die Domäne festzulegen, führen Sie die folgenden Schritte a
 3.  Wählen Sie **Synchronisierungsoptionen anpassen**, und klicken Sie auf **Weiter**.
 4.  Geben Sie Ihre Azure AD-Anmeldeinformationen ein.
 5.  Klicken Sie auf dem Bildschirm **Verbundene Verzeichnisse**  auf **Weiter**.
-6.  Klicken Sie auf der Seite **Filtern von Domänen und Organisationseinheiten** auf **Aktualisieren**.  Neue Domänen werden nun angezeigt und gelöschte Domänen werden ausgeblendet.
+6.  Klicken Sie auf der Seite **Filtern von Domänen und Organisationseinheiten** auf **Aktualisieren**.  Neue Domänen werden nun angezeigt, und gelöschte Domänen werden ausgeblendet.
    ![Partitionen](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>Aktualisieren von Ausführungsprofilen
@@ -140,11 +140,11 @@ Wenn Sie den Domänenfilter aktualisiert haben, müssen Sie auch die Ausführung
     * Vollständige Synchronisierung
     * Deltaimport
     * Deltasynchronisierung
-    * Export
+    * Exportieren
 3. Passen Sie für jedes Profil die **hinzugefügten** und **entfernten** Domänen an.
     1. Führen Sie für jedes der fünf Profile für alle **hinzugefügten** Domänen jeweils die folgenden Schritte aus:
         1. Wählen Sie das Ausführungsprofil aus, und klicken Sie auf **Neuer Schritt**.
-        2. Wählen Sie auf der Seite **Configure Step** (Schritt konfigurieren) im Dropdownmenü **Type** (Typ) den Schritttyp mit dem gleichen Namen wie das Profil aus, das Sie konfigurieren. Klicken Sie auf **Weiter**.  
+        2. Wählen Sie auf der Seite **Configure Step** (Schritt konfigurieren) im Dropdownmenü **Type** (Typ) den Schritttyp mit dem gleichen Namen wie das Profil aus, das Sie konfigurieren. Klicken Sie dann auf **Weiter**.  
         ![Connector-Ausführungsprofile 2](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep1.png)  
         3. Wählen Sie auf der Seite **Connector Configuration** (Connectorkonfiguration) im Dropdownmenü **Partition** den Namen der Domäne aus, die Sie dem Domänenfilter hinzugefügt haben.  
         ![Connector-Ausführungsprofile 3](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep2.png)  
@@ -202,7 +202,7 @@ Sie können konfigurieren, dass das Synchronisierungsmodul neue Organisationsein
 Bei dieser Konfiguration wird eine neue Organisationseinheit, die unter ManagedObjects erstellt wurde, nicht synchronisiert.
 
 ## <a name="attribute-based-filtering"></a>Attributbasierte Filterung
-Stellen Sie sicher, dass Sie den Build vom November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) oder höher verwenden, damit diese Schritte funktionieren.
+Stellen Sie sicher, dass Sie den Build vom November 2015 ([1.0.9125](reference-connect-version-history.md)) oder höher verwenden, damit diese Schritte funktionieren.
 
 > [!IMPORTANT]
 >Microsoft empfiehlt, die von **Azure AD Connect** erstellten Standardregeln nicht zu ändern. Falls Sie die Regel ändern möchten, können Sie sie klonen und dann die ursprüngliche Regel deaktivieren. Nehmen Sie die gewünschten Änderungen an der geklonten Regel vor. Beachten Sie, dass Sie dadurch (das Deaktivieren der ursprünglichen Regel) keine der Fehlerbehebungen oder Features erhalten, die durch diese Regel aktiviert werden.
@@ -212,12 +212,12 @@ Die attributbasierte Filterung ist die flexibelste Möglichkeit zum Filtern von 
 Die Filterung kann sowohl in [eingehender](#inbound-filtering) Richtung von Active Directory zur Metaverse als auch in [ausgehender](#outbound-filtering) Richtung von der Metaverse zu Azure AD angewendet werden. Es wird empfohlen, die eingehende Filterung anzuwenden, da dies am einfachsten zu verwalten ist. Die ausgehende Filterung sollte nur verwendet werden, wenn Objekte aus mehreren Gesamtstrukturen verknüpft werden müssen, bevor die Auswertung stattfinden kann.
 
 ### <a name="inbound-filtering"></a>Eingehende Filterung
-Bei der eingehenden Filterung wird die Standardkonfiguration genutzt, bei der für an Azure AD gesendete Objekte das Metaverse-Attribut „cloudFiltered“ nicht auf einen Wert festgelegt sein darf, damit die Synchronisierung erfolgen kann. Wenn der Wert dieses Attributs auf **TRUE**festgelegt ist, wird das Objekt nicht synchronisiert. Es sollte nicht standardmäßig auf **FALSE** festgelegt sein. Um sicherzustellen, dass über andere Regeln ein Wert beigetragen werden kann, sollte dieses Attribut nur über die Werte **TRUE** oder **NULL** (nicht vorhanden) verfügen.
+Bei der eingehenden Filterung wird die Standardkonfiguration genutzt, bei der für an Azure AD gesendete Objekte das Metaverse-Attribut „cloudFiltered“ nicht auf einen Wert festgelegt sein darf, damit die Synchronisierung erfolgen kann. Wenn der Wert dieses Attributs auf **TRUE** festgelegt ist, wird das Objekt nicht synchronisiert. Es sollte nicht standardmäßig auf **FALSE** festgelegt sein. Um sicherzustellen, dass über andere Regeln ein Wert beigetragen werden kann, sollte dieses Attribut nur über die Werte **TRUE** oder **NULL** (nicht vorhanden) verfügen.
 
 Bei der eingehenden Filterung nutzen Sie die Leistungsfähigkeit des **Bereichs**, um zu ermitteln, welche Objekte synchronisiert werden sollen. Hierbei nehmen Sie die Anpassungen vor, um die Anforderungen Ihres Unternehmens zu erfüllen. Das Bereichsmodul verfügt über die Elemente **group** (Gruppe) und **clause** (Klausel), um zu bestimmen, wann eine Synchronisierungsregel zum Bereich gehören soll. Eine Gruppe enthält eine oder mehrere Klauseln. Ein logisches „Und“ wird zwischen mehreren Klauseln und ein logisches „Oder“ zwischen mehreren Gruppen verwendet.
 
 Beispiel:  
-![Umfang](./media/how-to-connect-sync-configure-filtering/scope.png)  
+![Screenshot: Beispiel für das Hinzufügen von Bereichsfiltern](./media/how-to-connect-sync-configure-filtering/scope.png)  
 Lesen Sie dieses Beispiel wie folgt: **(department = IT) OR (department = Sales AND c = US)** .
 
 In den folgenden Beispielen und Schritten verwenden Sie das Benutzerobjekt als Beispiel, aber Sie können es für alle Objekttypen nutzen.
@@ -244,7 +244,7 @@ Das Ausdrücken der positiven Filterung kann mit mehr Aufwand verbunden sein. Si
 
 Die positive Filterung erfordert zwei Synchronisierungsregeln. Sie benötigen eine Regel (oder mehrere) mit dem richtigen Bereich der zu synchronisierenden Objekte. Darüber hinaus benötigen Sie eine zweite Catchall-Synchronisierungsregel, die alle Objekte herausfiltert, die noch nicht als ein zu synchronisierendes Objekt identifiziert wurden.
 
-Im folgenden Beispiel werden nur Benutzerobjekte synchronisiert, bei denen das department-Attribut den Wert **Sales**hat.
+Im folgenden Beispiel werden nur Benutzerobjekte synchronisiert, bei denen das department-Attribut den Wert **Sales** hat.
 
 1. Melden Sie sich bei dem Server, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird, mit einem Konto an, das Mitglied der Sicherheitsgruppe **ADSyncAdmins** ist.
 2. Starten Sie den **Synchronisierungsregel-Editor** über das **Startmenü**.
@@ -275,7 +275,7 @@ In diesem Beispiel wird die Filterung so geändert, dass nur Benutzer synchronis
 1. Melden Sie sich bei dem Server, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird, mit einem Konto an, das Mitglied der Sicherheitsgruppe **ADSyncAdmins** ist.
 2. Starten Sie den **Synchronisierungsregel-Editor** über das **Startmenü**.
 3. Klicken Sie unter **Rules Type** (Regeltyp) auf **Outbound** (Ausgehend).
-4. Suchen Sie abhängig von der verwendeten Connect-Version entweder die Regel mit dem Namen **Out to AAD – User Join** oder die Regel mit dem Namen **Out to AAD - User Join SOAInAD**, und klicken Sie auf **Bearbeiten**.
+4. Suchen Sie abhängig von der verwendeten Connect-Version entweder die Regel **Out to Azure AD – User Join** (Ausgehend zu Azure AD – Beitritt Benutzer) oder die Regel **Out to Azure AD – User Join SOAInAD** (Ausgehend zu Azure AD – Beitritt Benutzer SOAInAD), und klicken Sie auf **Bearbeiten**.
 5. Wählen Sie im Popupfenster die Antwort **Ja** , um eine Kopie der Regel zu erstellen.
 6. Ändern Sie auf der Seite **Beschreibung** die **Rangfolge** in einen nicht verwendeten Wert, z.B. 50.
 7. Klicken Sie im linken Navigationsbereich auf **Scoping filter** (Bereichsfilter) und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** den Wert **mail** aus. Wählen Sie in **Operator** die Option **ENDSWITH** aus. Geben Sie in **Wert** die Zeichenfolge **\@contoso.com** ein, und klicken Sie dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** die Option **userPrincipalName** aus. Wählen Sie in **Operator** die Option **ENDSWITH** aus. Geben Sie in **Wert** die Zeichenfolge **\@contoso.com** ein.
@@ -289,7 +289,7 @@ Wenn Sie die Konfiguration per Filterung nach **Domäne** oder **Organisationsei
 
 Falls Sie die Konfiguration per Filterung nach dem **Attribut** geändert haben, müssen Sie die **vollständige Synchronisierung** durchführen.
 
-Führen Sie folgende Schritte aus:
+Führen Sie die folgenden Schritte aus:
 
 1. Starten Sie den **Synchronisierungsdienst** über das **Startmenü**.
 2. Wählen Sie **Connectors** aus. Wählen Sie in der Liste **Connectors** den Connector aus, für den Sie vorher eine Konfigurationsänderung vorgenommen haben. Wählen Sie unter **Aktionen** die Option **Ausführen** aus.  
@@ -298,10 +298,10 @@ Führen Sie folgende Schritte aus:
 
 Nach der Synchronisierung werden alle Änderungen für den Export bereitgestellt. Bevor Sie die Änderungen in Azure AD tatsächlich vornehmen, sollten Sie sicherstellen, dass alle Änderungen richtig sind.
 
-1. Starten Sie eine Eingabeaufforderung, und wechseln Sie zu `%Program Files%\Microsoft Azure AD Sync\bin`.
-2. Führen Sie `csexport "Name of Connector" %temp%\export.xml /f:x`aus.  
-   Den Namen des Connectors finden Sie im Synchronisierungsdienst. Für Azure AD sieht der Name in etwa wie folgt aus: contoso.com – AAD.
-3. Führen Sie `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`aus.
+1. Starten Sie eine Eingabeaufforderung, und wechseln Sie zu `%ProgramFiles%\Microsoft Azure AD Sync\bin`.
+2. Führen Sie `csexport "Name of Connector" %temp%\export.xml /f:x` aus.  
+   Den Namen des Connectors finden Sie im Synchronisierungsdienst. Für Azure AD sieht der Name in etwa wie folgt aus: contoso.com – Azure AD.
+3. Führen Sie `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` aus.
 4. Sie verfügen jetzt im Ordner „%temp%“ über eine Datei namens „export.csv“, die in Microsoft Excel untersucht werden kann. Diese Datei enthält alle Änderungen, die exportiert werden sollen.
 5. Nehmen Sie erforderliche Änderungen an den Daten oder der Konfiguration vor, und führen Sie die oben genannten Schritte (Importieren, Synchronisieren und Überprüfen) erneut aus, bis Sie die Änderungen erhalten, die Sie exportieren möchten.
 

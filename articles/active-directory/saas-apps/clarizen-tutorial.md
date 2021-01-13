@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Clarizen | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Clarizen konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88f42a849d5c483feb9325072fd65769839672e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38b2ff6909dae15ff0f836316d5d12140ecc331a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105379"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672938"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Tutorial: Azure Active Directory-Integration mit Clarizen
 
@@ -31,7 +27,7 @@ Die Integration von Clarizen in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Clarizen anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -67,7 +63,7 @@ Zum Konfigurieren der Integration von Clarizen in Azure AD müssen Sie Clarizen 
 
 4. Geben Sie im Suchfeld **Clarizen** ein, wählen Sie im Ergebnisbereich **Clarizen** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Clarizen in der Ergebnisliste](common/search-new-app.png)
+    ![Clarizen in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -132,15 +128,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Clarizen
 
 1. Klicken Sie auf Ihren Benutzernamen und dann auf **Settings**.
 
-    ![Klicken auf „Settings“ unter Ihrem Benutzernamen](./media/clarizen-tutorial/tutorial_clarizen_001.png "Settings")
+    ![Klicken auf „Settings“ (Einstellungen) unter Ihrem Benutzernamen](./media/clarizen-tutorial/tutorial_clarizen_001.png "Einstellungen")
 
 1. Klicken Sie auf die Registerkarte **Global Settings**. Klicken Sie anschließend neben **Federated Authentication** auf **edit**.
 
-    ![Registerkarte „Global Settings“](./media/clarizen-tutorial/tutorial_clarizen_002.png "Global Settings")
+    ![Registerkarte „Global Settings“ (Globale Einstellungen)](./media/clarizen-tutorial/tutorial_clarizen_002.png "Globale Einstellungen")
 
 1. Führen Sie im Dialogfeld **Federated Authentication** die folgenden Schritte aus:
 
-    ![Dialogfeld „Federated Authentication“](./media/clarizen-tutorial/tutorial_clarizen_003.png "Federated Authentication")
+    ![Dialogfeld „Federated Authentication“ (Verbundauthentifizierung)](./media/clarizen-tutorial/tutorial_clarizen_003.png "Federated Authentication")
 
     a. Wählen Sie **Enable Federated Authentication** (Verbundauthentifizierung aktivieren).
 
@@ -171,13 +167,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -217,15 +213,15 @@ Um für Azure AD-Benutzer das Anmelden bei Clarizen zu aktivieren, müssen Sie B
 
 2. Klicken Sie auf **People**.
 
-    ![Klicken Sie auf „People“](./media/clarizen-tutorial/create_aaduser_001.png "Personen")
+    ![Klicken auf „People“ (Personen)](./media/clarizen-tutorial/create_aaduser_001.png "Personen")
 
-3. Klicken Sie auf **Invite User**.
+3. Klicken Sie auf **Benutzer einladen**.
 
-    ![Schaltfläche „Invite User“](./media/clarizen-tutorial/create_aaduser_002.png "Benutzer einladen")
+    ![Schaltfläche „Invite User“ (Benutzer einladen)](./media/clarizen-tutorial/create_aaduser_002.png "Invite Users")
 
 1. Führen Sie auf der Dialogfeldseite **Invite People** die folgenden Schritte aus:
 
-    ![Dialogfeld „Invite People“](./media/clarizen-tutorial/create_aaduser_003.png "Personen einladen")
+    ![Dialogfeld „Invite People“ (Personen einladen)](./media/clarizen-tutorial/create_aaduser_003.png "Invite People")
 
     a. Geben Sie im Feld **E-Mail** die E-Mail-Adresse des Kontos von Britta Simon ein.
 
@@ -239,12 +235,12 @@ Um für Azure AD-Benutzer das Anmelden bei Clarizen zu aktivieren, müssen Sie B
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Clarizen“ klicken, sollten Sie automatisch bei der Clarizen-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Clarizen“ klicken, sollten Sie automatisch bei der Clarizen-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

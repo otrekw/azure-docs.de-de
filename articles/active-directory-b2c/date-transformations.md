@@ -1,21 +1,21 @@
 ---
-title: Beispiele für die Transformation von Datumsansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C | Microsoft-Dokumentation
-description: Beispiele für die Transformation von Datumsansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C.
+title: Beispiele für die Transformation von Datumsansprüchen für benutzerdefinierte Richtlinien
+description: Beispiele für die Transformation von Datumsansprüchen für das Schema des Frameworks für die Identitätsfunktion (Identity Experience Framework, IEF) von Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
-ms.author: marsma
+ms.date: 02/16/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 077915705c242805d3709b5d52d445288fa5336a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064355"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85202550"
 ---
 # <a name="date-claims-transformations"></a>Transformationen von Datumsansprüchen
 
@@ -27,21 +27,21 @@ Dieser Artikel enthält Beispiele für die Verwendung von Transformationen von D
 
 Überprüft, ob ein Datums- und Uhrzeitanspruch (Zeichenfolgen-Datentyp) nach einem zweiten Datums- und Uhrzeitanspruch (Zeichenfolgen-Datentyp) liegt, und löst eine Ausnahme aus.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | leftOperand | Zeichenfolge | Typ des ersten Anspruchs, der nach dem zweiten Anspruch liegen sollte. |
-| inputClaim | rightOperand | Zeichenfolge | Typ des zweiten Anspruchs, der vor dem ersten Anspruch liegen sollte. |
+| InputClaim | leftOperand | Zeichenfolge | Typ des ersten Anspruchs, der nach dem zweiten Anspruch liegen sollte. |
+| InputClaim | rightOperand | Zeichenfolge | Typ des zweiten Anspruchs, der vor dem ersten Anspruch liegen sollte. |
 | InputParameter | AssertIfEqualTo | boolean | Gibt an, ob diese Assertion positiv ausfallen soll, wenn der linke Operand gleich dem rechten Operanden ist. |
 | InputParameter | AssertIfRightOperandIsNotPresent | boolean | Gibt an, ob diese Assertion positiv ausfallen soll, wenn der rechte Operanden fehlt. |
-| InputParameter | TreatAsEqualIfWithinMillseconds | int | Gibt die Anzahl der Millisekunden an, die zwischen den beiden Datum/Uhrzeit-Werten liegen darf, damit die Zeiten als gleich angesehen werden (z. B. Abweichungen durch Gangungenauigkeiten bei Uhren). |
+| InputParameter | TreatAsEqualIfWithinMillseconds | INT | Gibt die Anzahl der Millisekunden an, die zwischen den beiden Datum/Uhrzeit-Werten liegen darf, damit die Zeiten als gleich angesehen werden (z. B. Abweichungen durch Gangungenauigkeiten bei Uhren). |
 
-Die Anspruchstransformation **AssertDateTimeIsGreaterThan** wird immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) aufgerufen wird. Die Metadaten des selbstbestätigten technischen Profils **DateTimeGreaterThan** steuern die Fehlermeldung, die das technische Profil dem Benutzer anzeigt.
+Die Anspruchstransformation **AssertDateTimeIsGreaterThan** wird immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) aufgerufen wird. Die Metadaten des selbstbestätigten technischen Profils **DateTimeGreaterThan** steuern die Fehlermeldung, die das technische Profil dem Benutzer anzeigt. Die Fehlermeldungen können [lokalisiert](localization-string-ids.md#claims-transformations-error-messages) werden.
 
 ![Ausführung von AssertStringClaimsAreEqual](./media/date-transformations/assert-execution.png)
 
 Im folgenden Beispiel wird der `currentDateTime`-Anspruch mit dem `approvedDateTime`-Anspruch verglichen. Ein Fehler wird ausgelöst, wenn `currentDateTime` nach `approvedDateTime` liegt. Die Transformation behandelt Werte als gleich, wenn sie innerhalb eines Abstands von 5 Minuten (30.000 Millisekunden) liegen.
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="approvedDateTime" TransformationClaimType="leftOperand" />
@@ -56,7 +56,7 @@ Im folgenden Beispiel wird der `currentDateTime`-Anspruch mit dem `approvedDateT
 ```
 
 Das `login-NonInteractive`technische Validierungsprofil ruft die `AssertApprovedDateTimeLaterThanCurrentDateTime`-Anspruchstransformation auf.
-```XML
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -67,7 +67,7 @@ Das `login-NonInteractive`technische Validierungsprofil ruft die `AssertApproved
 
 Das selbstbestätigte technische Profil ruft das technische Validierungsprofil **login-NonInteractive** auf.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="DateTimeGreaterThan">Custom error message if the provided left operand is greater than the right operand.</Item>
@@ -81,22 +81,22 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **leftOperand**: 2018-10-01T15:00:00.0000000Z
-    - **rightOperand**: 2018-10-01T14:00:00.0000000Z
+    - **leftOperand**: 2020-03-01T15:00:00.0000000Z
+    - **rightOperand**: 2020-03-01T14:00:00.0000000Z
 - Ergebnis: Fehler wird ausgelöst.
 
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
 
 Konvertiert einen Anspruchstyp **Date** in einen Anspruchstyp **DateTime**. Die Anspruchstransformation konvertiert das Uhrzeitformat und fügt dem Datum 12:00:00 AM hinzu.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | date | Der Anspruchstyp, der konvertiert werden soll. |
 | OutputClaim | outputClaim | dateTime | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
 Das folgende Beispiel veranschaulicht die Konvertierung des Anspruchs `dateOfBirth` (Datentyp „date“) in einen anderen Anspruch `dateOfBirthWithTime` (Datentyp „dateTime“).
 
-```XML
+```xml
   <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
     <InputClaims>
       <InputClaim ClaimTypeReferenceId="dateOfBirth" TransformationClaimType="inputClaim" />
@@ -110,19 +110,48 @@ Das folgende Beispiel veranschaulicht die Konvertierung des Anspruchs `dateOfBir
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **inputClaim:** 2019-06-01
+    - **inputClaim:** 2020-15-03
 - Ausgabeansprüche:
-    - **outputClaim:** 1559347200 (June 1, 2019 12:00:00 AM)
+    - **outputClaim:** 2020-15-03T00:00:00.0000000Z
+
+## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
+
+Wandelt den Anspruchstyp **DateTime** in den Anspruchstyp **Date** um. Die Anspruchstransformation entfernt das Uhrzeitformat aus dem Datum.
+
+| Element | TransformationClaimType | Datentyp | Notizen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | dateTime | Der Anspruchstyp, der konvertiert werden soll. |
+| OutputClaim | outputClaim | date | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
+
+Das folgende Beispiel veranschaulicht die Konvertierung des Anspruchs `systemDateTime` (Datentyp „dateTime“) in einen anderen Anspruch `systemDate` (Datentyp „date“).
+
+```xml
+<ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="systemDate" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Beispiel
+
+- Eingabeansprüche:
+  - **inputClaim:** 2020-15-03T11:34:22.0000000Z
+- Ausgabeansprüche:
+  - **outputClaim:** 2020-15-03
 
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
 Ruft den aktuellen UTC-Datum/Uhrzeit-Wert ab und addiert den Wert zu einem Anspruchstyp.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | currentDateTime | dateTime | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
-```XML
+```xml
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="currentDateTime" />
@@ -133,24 +162,24 @@ Ruft den aktuellen UTC-Datum/Uhrzeit-Wert ab und addiert den Wert zu einem Anspr
 ### <a name="example"></a>Beispiel
 
 * Ausgabeansprüche:
-    * **currentDateTime**: 1534418820 (August 16, 2018 11:27:00 AM)
+    * **currentDateTime**: 2020-15-03T11:40:35.0000000Z
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
 Bestimmt, ob ein dateTime-Wert größer, kleiner oder gleich einem anderen ist. Das Ergebnis ist ein neuer boolescher Anspruchstyp mit einem Wert von `true` oder `false`.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | firstDateTime | dateTime | Der erste dateTime-Wert, für den überprüft werden soll, ob er vor oder nach einem zweiten dateTime-Wert liegt. Ein Null-Wert löst eine Ausnahme aus. |
 | InputClaim | secondDateTime | dateTime | Der zweite dateTime-Wert, für den überprüft werden soll, ob er vor oder nach dem ersten dateTime-Wert liegt. Ein NULL-Wert wird als dateTime-Wert der aktuellen Uhrzeit behandelt. |
-| InputParameter | operator | Zeichenfolge | Einer der folgenden Werte: identisch (same), später als (later than) oder früher als (earlier than). |
-| InputParameter | timeSpanInSeconds | int | Addiert den Zeitraum zum ersten Datum/Uhrzeit-Wert. |
+| InputParameter | Operator | Zeichenfolge | Einer der folgenden Werte: identisch (same), später als (later than) oder früher als (earlier than). |
+| InputParameter | timeSpanInSeconds | INT | Addiert den Zeitraum zum ersten Datum/Uhrzeit-Wert. |
 | OutputClaim | result | boolean | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
 Mit dieser Anspruchstransformation können Sie bestimmen, ob zwei Anspruchstypen gleich sind oder der eine vor oder nach dem anderen liegt. Sie können z. B. den letzten Zeitpunkt speichern, zu dem ein Benutzer Ihre Nutzungsbedingungen akzeptiert hat. Nach 3 Monaten können Sie den Benutzer auffordern, die Nutzungsbedingungen erneut zu akzeptieren.
 Um die Anspruchstransformation auszuführen, müssen Sie zuerst den aktuellen Datum/Uhrzeit-Wert abrufen sowie den letzte Zeitpunkt, zu dem der Benutzer die Nutzungsbedingungen akzeptiert hat.
 
-```XML
+```xml
 <ClaimsTransformation Id="CompareLastTOSAcceptedWithCurrentDateTime" TransformationMethod="DateTimeComparison">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="currentDateTime" TransformationClaimType="firstDateTime" />
@@ -169,8 +198,8 @@ Um die Anspruchstransformation auszuführen, müssen Sie zuerst den aktuellen Da
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **firstDateTime**: 2018-01-01T00:00:00.100000Z
-    - **secondDateTime**: 2018-04-01T00:00:00.100000Z
+    - **firstDateTime**: 2020-01-01T00:00:00.100000Z
+    - **secondDateTime**: 2020-04-01T00:00:00.100000Z
 - Eingabeparameter:
     - **operator:** später als
     - **timeSpanInSeconds**: 7776000 (90 Tage)

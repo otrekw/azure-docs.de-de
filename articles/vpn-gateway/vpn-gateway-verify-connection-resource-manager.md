@@ -1,26 +1,19 @@
 ---
-title: Überprüfen einer VPN Gateway-Verbindung | Microsoft-Dokumentation
+title: 'Azure-VPN Gateway: Überprüfen einer Gatewayverbindung'
 description: Dieser Artikel zeigt, wie Sie eine Verbindung eines virtuellen Netzwerks mit einem VPN Gateway überprüfen.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: 7e3d1043-caa9-4472-96d3-832f4e2c91ee
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/16/2017
+ms.topic: how-to
+ms.date: 10/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: bcece64a85a69c705b0f7f915dafe29123a2cd4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: b59294d07ef64875cb6fbd3e3a49dec61d8b8135
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128363"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659402"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>Überprüfen einer VPN Gateway-Verbindung
 
@@ -32,16 +25,15 @@ In diesem Artikel erfahren Sie, wie Sie eine VPN Gateway-Verbindung für das kla
 
 ## <a name="powershell"></a>PowerShell
 
-Installieren Sie die aktuelle Version der [Azure Resource Manager-PowerShell-Cmdlets](/powershell/azure/overview), um eine VPN Gateway-Verbindung für das Resource Manager-Bereitstellungsmodell mit PowerShell zu überprüfen.
+Installieren Sie die aktuelle Version der [Azure Resource Manager-PowerShell-Cmdlets](/powershell/azure/), um eine VPN Gateway-Verbindung für das Resource Manager-Bereitstellungsmodell mit PowerShell zu überprüfen.
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Installieren Sie die aktuelle Version der [CLI-Befehle](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0 oder höher), um eine VPN Gateway-Verbindung für das Resource Manager-Bereitstellungsmodell über die Azure-Befehlszeilenschnittstelle zu überprüfen.
+Installieren Sie die aktuelle Version der [CLI-Befehle](/cli/azure/install-azure-cli) (2.0 oder höher), um eine VPN Gateway-Verbindung für das Resource Manager-Bereitstellungsmodell über die Azure-Befehlszeilenschnittstelle zu überprüfen.
 
 [!INCLUDE [CLI](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
-
 
 ## <a name="azure-portal-classic"></a>Azure-Portal (klassisch)
 
@@ -49,10 +41,10 @@ Installieren Sie die aktuelle Version der [CLI-Befehle](https://docs.microsoft.c
 
 ## <a name="powershell-classic"></a>PowerShell (klassisch)
 
-Installieren Sie die aktuelle Version der Azure PowerShell-Cmdlets, um Ihre VPN Gateway-Verbindung für das klassische Bereitstellungsmodell mit PowerShell zu überprüfen. Laden Sie das Modul [Dienstverwaltung](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets) herunter, und installieren Sie es. Melden Sie sich mit „Add-AzureAccount“ beim klassischen Bereitstellungsmodell an.
+Installieren Sie die aktuelle Version der Azure PowerShell-Cmdlets, um Ihre VPN Gateway-Verbindung für das klassische Bereitstellungsmodell mit PowerShell zu überprüfen. Laden Sie das Modul [Dienstverwaltung](/powershell/azure/servicemanagement/install-azure-ps?#azure-service-management-cmdlets) herunter, und installieren Sie es. Melden Sie sich mit „Add-AzureAccount“ beim klassischen Bereitstellungsmodell an.
 
 [!INCLUDE [Classic PowerShell](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sie können Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .
+* Sie können Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/windows/quick-create-portal.md) .

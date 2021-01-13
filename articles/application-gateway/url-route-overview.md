@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 2234ae4ce8257559f78d6aa50ecae59ae742ba33
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: a9b2e8148586ec58ea6a7a033099e726920857b6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910004"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84987937"
 ---
 # <a name="url-path-based-routing-overview"></a>Routing auf URL-Pfadbasis – Übersicht
 
@@ -20,14 +20,14 @@ Mit dem Routing auf URL-Pfadbasis kann Datenverkehr basierend auf URL-Pfaden von
 
 Ein mögliches Szenario ist die Weiterleitung von Anforderungen für unterschiedliche Inhaltstypen an verschiedene Back-End-Serverpools.
 
-Im folgenden Beispiel verarbeitet Application Gateway Datenverkehr für contoso.com aus drei Back-End-Serverpools: VideoServerPool, ImageServerPool und DefaultServerPool.
+Im folgenden Beispiel verarbeitet Application Gateway Datenverkehr für „contoso.com“ aus drei Back-End-Serverpools: VideoServerPool, ImageServerPool und DefaultServerPool.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
 Anforderungen für http\://contoso.com/video/* werden an VideoServerPool und Anforderungen für http\://contoso.com/images/* an ImageServerPool weitergeleitet. DefaultServerPool wird ausgewählt, wenn keines der Pfadmuster zutrifft.
 
 > [!IMPORTANT]
-> Regeln werden in der Reihenfolge verarbeitet, in der sie im Portal aufgeführt sind. Es wird dringend empfohlen, vor dem Konfigurieren eines einfachen Listeners zuerst Listener für mehrere Standorte zu konfigurieren.  So wird sichergestellt, dass der Datenverkehr an das richtige Back-End geleitet wird. Wenn ein einfacher Listener zuerst aufgeführt wird und sich dafür eine Übereinstimmung mit einer eingehenden Anforderung ergibt, wird die Verarbeitung von diesem Listener durchgeführt.
+> Regeln werden bei der v1-SKU in der Reihenfolge verarbeitet, in der sie im Portal aufgeführt sind. Wenn ein einfacher Listener zuerst aufgeführt wird und sich dafür eine Übereinstimmung mit einer eingehenden Anforderung ergibt, wird die Verarbeitung von diesem Listener durchgeführt. Bei der v2-SKU haben genaue Übereinstimmungen eine höhere Rangfolge. Es wird jedoch dringend empfohlen, vor dem Konfigurieren eines einfachen Listeners zunächst Listener für mehrere Standorte zu konfigurieren. So wird sichergestellt, dass der Datenverkehr an das richtige Back-End geleitet wird.
 
 ## <a name="urlpathmap-configuration-element"></a>urlPathMap-Konfigurationselement
 
@@ -74,12 +74,12 @@ Bei den Pfadregeln wird die Groß-/Kleinschreibung nicht beachtet.
 
 |v1-Pfadmuster  |Unterstützt?  |
 |---------|---------|
-|`/images/*`     |Ja|
-|`/images*`     |no|
-|`/images/*.jpg`     |no|
-|`/*.jpg`     |no|
-|`/Repos/*/Comments/*`     |no|
-|`/CurrentUser/Comments/*`     |Ja|
+|`/images/*`     |ja|
+|`/images*`     |ja|
+|`/images/*.jpg`     |nein|
+|`/*.jpg`     |nein|
+|`/Repos/*/Comments/*`     |nein|
+|`/CurrentUser/Comments/*`     |ja|
 
 #### <a name="v2"></a>V2
 
@@ -87,12 +87,12 @@ Bei den Pfadregeln wird die Groß-/Kleinschreibung nicht beachtet.
 
 |v2-Pfadmuster  |Unterstützt?  |
 |---------|---------|
-|`/images/*`     |Ja|
-|`/images*`     |Ja|
-|`/images/*.jpg`     |no|
-|`/*.jpg`     |no|
-|`/Repos/*/Comments/*`     |no|
-|`/CurrentUser/Comments/*`     |Ja|
+|`/images/*`     |ja|
+|`/images*`     |ja|
+|`/images/*.jpg`     |nein|
+|`/*.jpg`     |nein|
+|`/Repos/*/Comments/*`     |nein|
+|`/CurrentUser/Comments/*`     |ja|
 
 Weitere Informationen erhalten Sie in einer [Resource Manager-Vorlage mit URL-basiertem Routing](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing) .
 
@@ -113,8 +113,8 @@ Codeausschnitt einer PathBasedRouting-Regel:
         "id": "/subscriptions/{subscriptionId}/../microsoft.network/applicationGateways/{gatewayName}/httpListeners/<listenerName>"
     },
     "urlPathMap": {
-        "id": "/subscriptions/{subscriptionId}/../microsoft.network/applicationGateways/{gatewayName}/ urlPathMaps/{urlpathMapName}"
-    },
+        "id": "/subscriptions/{subscriptionId}/../microsoft.network/applicationGateways/{gatewayName}/urlPathMaps/{urlpathMapName}"
+    }
 
 }
     }

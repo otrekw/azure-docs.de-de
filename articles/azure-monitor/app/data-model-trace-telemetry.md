@@ -1,33 +1,25 @@
 ---
-title: 'Azure Application Insights-Telemetriedatenmodell: Ablaufverfolgungstelemetrie | Microsoft-Dokumentation'
+title: Azure Application Insights-Datenmodell – Ablaufverfolgungstelemetrie
 description: Application Insights-Datenmodell für Ablaufverfolgungstelemetrie
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: df85aafc81b199610c02f0faecb06e804fda24bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8fea4bbf590816b2ef168a2ed16f197389ee282e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60899284"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87320543"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Ablaufverfolgungstelemetrie: Application Insights-Datenmodell
 
-Ablaufverfolgungstelemetrie stellt (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) Ablaufverfolgungsanweisungen im Format `printf` dar, die sich für eine Textsuche eignen. `Log4Net`, `NLog` und andere textbasierte Protokolldateieinträge werden in Instanzen dieses Typs übersetzt. Die Ablaufverfolgung weist für die Erweiterbarkeit keine Messungen auf.
+Ablaufverfolgungstelemetrie stellt (in [Application Insights](./app-insights-overview.md)) Ablaufverfolgungsanweisungen im Format `printf` dar, die sich für eine Textsuche eignen. `Log4Net`, `NLog` und andere textbasierte Protokolldateieinträge werden in Instanzen dieses Typs übersetzt. Die Ablaufverfolgung weist für die Erweiterbarkeit keine Messungen auf.
 
 ## <a name="message"></a>`Message`
 
 Ablaufverfolgungsmeldung.
 
-Max. Länge: 32768 Zeichen
+Maximale Länge: 32.768 Zeichen
 
 ## <a name="severity-level"></a>Schweregrad
 
@@ -39,8 +31,9 @@ Schweregrad der Ablaufverfolgung. Möglicher Wert: `Verbose`, `Information`, `Wa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Untersuchen von .NET-Ablaufverfolgungsprotokollen in Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
-- [Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights](../../azure-monitor/app/java-trace-logs.md).
+- [Untersuchen von .NET-Ablaufverfolgungsprotokollen in Application Insights](./asp-net-trace-logs.md).
+- [Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights](./java-trace-logs.md).
 - Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](data-model.md).
-- [Schreiben benutzerdefinierter Telemetriedaten für die Ablaufverfolgung](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
-- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](../../azure-monitor/app/platforms.md).
+- [Schreiben benutzerdefinierter Telemetriedaten für die Ablaufverfolgung](./api-custom-events-metrics.md#tracktrace)
+- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](./platforms.md).
+

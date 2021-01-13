@@ -1,6 +1,6 @@
 ---
 title: Bearbeiten von APIs im Azure-Portal | Microsoft-Dokumentation
-description: Dieses Tutorial veranschaulicht, wie Sie API Management (APIM) verwenden, um eine API zu bearbeiten.
+description: Hier erfahren Sie, wie Sie API Management (APIM) zum Bearbeiten einer API verwenden. Sie können Vorgänge in der APIM-Instanz hinzufügen, löschen oder umbenennen oder den API-Swagger bearbeiten.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1c4e64251390936e8a63ee904ec69f173cac6114
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072158"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146704"
 ---
 # <a name="edit-an-api"></a>Bearbeiten von APIs
 
@@ -35,11 +35,11 @@ Die Schritte in diesem Tutorial veranschaulichen, wie Sie API Management (APIM) 
 
 ## <a name="edit-an-api-in-apim"></a>Bearbeiten von APIs in APIM
 
-![Bearbeiten von APIs](./media/edit-api/edit-api001.png)
+![Screenshot, der den Vorgang des Bearbeitens einer API in APIM veranschaulicht.](./media/edit-api/edit-api001.png)
 
 1. Klicken Sie auf die Registerkarte **APIs**.
 2. Wählen Sie eine der APIs aus, die Sie zuvor importiert haben.
-3. Wählen Sie die Registerkarte **Entwurf** aus.
+3. Klicken Sie auf die Registerkarte **Entwurf**.
 4. Wählen Sie einen Vorgang aus, den Sie bearbeiten möchten.
 5. Wählen Sie zum Umbenennen des Vorgangs einen **Stift** im Fenster **Front-End** aus.
 
@@ -50,7 +50,7 @@ Sie können Ihre Back-End-API im Azure-Portal aktualisieren, indem Sie folgende 
 1. Auswählen von **Alle Vorgänge**
 2. Klicken Sie auf den Stift im Fenster **Front-End**.
 
-    ![Bearbeiten von APIs](./media/edit-api/edit-api002.png)
+    ![Screenshot, der das Stiftsymbol im Bildschirm „Front-End“ hervorhebt.](./media/edit-api/edit-api002.png)
 
     Ihr API-Swagger wird angezeigt.
 
@@ -64,5 +64,5 @@ Sie können Ihre Back-End-API im Azure-Portal aktualisieren, indem Sie folgende 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Beispiele für APIM-Richtlinien](policy-samples.md)
+> [Beispiele für APIM-Richtlinien](./policy-reference.md)
 > [Transformieren und Schützen veröffentlichter APIs](transform-api.md)

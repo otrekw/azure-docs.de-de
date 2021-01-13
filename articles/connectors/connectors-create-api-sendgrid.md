@@ -1,22 +1,18 @@
 ---
-title: Herstellen einer Verbindung mit SendGrid über Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit SendGrid über Azure Logic Apps
 description: Automatisieren von Aufgaben und Workflows, die E-Mails senden und Adressenlisten in SendGrid mithilfe von Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: bc4f1fc2-824c-4ed7-8de8-e82baff3b746
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 4f5efd73ef2a08069e3b9f2c7d60be99c209ddca
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: a140ae0f27c61959d8ebc6854c5bcb2a916a0fc6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050809"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87290434"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>Senden von E-Mails und Verwalten von Adressenlisten in SendGrid mithilfe von Azure Logic Apps
 
@@ -72,7 +68,7 @@ Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Bes
 
 ## <a name="get-support"></a>Support
 
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte

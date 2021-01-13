@@ -3,19 +3,19 @@ title: Installieren von Speech-Containern
 titleSuffix: Azure Cognitive Services
 description: Beschreibt die Konfigurationsoptionen für ein übergeordnetes Helm-Diagramm zu Sprache.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 06/26/2019
-ms.author: dapine
-ms.openlocfilehash: ed64412ccf9d192506fafe546b1ccee7941aa43a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 0257f3af44cc85d0a3656472db224ae5a7e19161
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67717206"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002275"
 ---
 ### <a name="speech-umbrella-chart"></a>Sprache (übergeordnetes Diagramm)
 

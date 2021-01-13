@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: f5939251729905d349b79a94411cf87e3873b279
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.custom: devx-track-terraform, devx-track-azurecli
+ms.openlocfilehash: dbbd1511a6063223a2b76786b3c7c4394e2fa407
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742064"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745430"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Bereitstellen mit Terraform aus Bash in Azure Cloud Shell
-In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Ressourcengruppe mit dem [AzureRM-Anbieter von Terraform](https://www.terraform.io/docs/providers/azurerm/index.html) erstellen. 
+In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Ressourcengruppe mit dem [AzureRM-Anbieter von Terraform](https://www.terraform.io/docs/providers/azurerm/index.html) erstellen.
 
-[Hashicorp Terraform](https://www.terraform.io/) ist ein Open Source-Tool, das APIs in deklarative Konfigurationsdateien umwandelt, die an Teammitglieder weitergegeben und von diesen bearbeitet, überprüft und versioniert werden können. Der Microsoft AzureRM-Anbieter wird verwendet, um mit Ressourcen zu interagieren, die vom Azure Resource Manager über die AzureRM-APIs unterstützt werden. 
+[Hashicorp Terraform](https://www.terraform.io/) ist ein Open Source-Tool, das APIs in deklarative Konfigurationsdateien umwandelt, die an Teammitglieder weitergegeben und von diesen bearbeitet, überprüft und versioniert werden können. Der Microsoft AzureRM-Anbieter wird verwendet, um mit Ressourcen zu interagieren, die vom Azure Resource Manager über die AzureRM-APIs unterstützt werden.
 
 ## <a name="automatic-authentication"></a>Automatische Authentifizierung
 Terraform wird in Bash in Cloud Shell standardmäßig installiert. Darüber hinaus authentifiziert Cloud Shell automatisch Ihr Azure CLI-Standardabonnement für die Bereitstellung von Ressourcen über die Terraform-Azure-Module.
@@ -128,7 +129,7 @@ can't guarantee that exactly these actions will be performed if
 
 Der Befehl [terraform plan](https://www.terraform.io/docs/commands/plan.html) dient zum Erstellen eines Ausführungsplans. Terraform führt eine Aktualisierung aus, sofern dies nicht explizit deaktiviert wurde, und ermittelt dann, welche Aktionen erforderlich sind, um den in den Konfigurationsdateien angegebenen gewünschten Zustand zu erreichen. Der Plan kann mithilfe von „-out“ gespeichert und anschließend an „terraform apply“ übergeben werden, um sicherzustellen, dass nur die vorab geplanten Aktionen ausgeführt werden.
 
-### <a name="terraform-apply"></a>terraform apply
+### <a name="terraform-apply"></a>Terraform-Befehl „apply“
 Verwenden Sie `terraform apply`, um die Azure-Ressourcen bereitzustellen.
 
 ```
@@ -147,7 +148,7 @@ Der Befehl [terraform apply](https://www.terraform.io/docs/commands/apply.html) 
 ### <a name="verify-deployment-with-azure-cli"></a>Überprüfen der Bereitstellung mit der Azure-Befehlszeilenschnittstelle
 Führen Sie `az group show -n myRgName` aus, um zu überprüfen, ob die Ressource erfolgreich bereitgestellt wurde.
 
-```azcliinteractive
+```azurecli-interactive
 az group show -n myRgName
 ```
 

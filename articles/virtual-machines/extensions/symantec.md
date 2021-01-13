@@ -1,29 +1,25 @@
 ---
-title: Installieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer in Azure | Microsoft Docs
+title: Installieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer in Azure
 description: Hier erfahren Sie, wie Sie die Sicherheitserweiterung Symantec Endpoint Protection auf einem neuen oder vorhandenen virtuellen Azure-Computer, der mit dem klassischen Bereitstellungsmodell erstellt wurde, installieren und konfigurieren.
-services: virtual-machines-windows
-documentationcenter: ''
 author: roiyz
-manager: gwallace
-editor: ''
 tags: azure-service-management
-ms.assetid: 19dcebc7-da6b-4510-907b-d64088e81fa2
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
-ms.openlocfilehash: 315cb5f22a3667db93c2421b924ac0d988e56164
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: e001c85dd960e9d60ff321cfecc8bf8b80de087c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168846"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967940"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer
-> [!IMPORTANT] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
 In diesem Artikel wird beschrieben, wie der Symantec Endpoint Protection-Client auf einem vorhandenen virtuellen Windows Server-Computer installiert und konfiguriert wird. Dieser vollständige Client enthält Dienste wie Viren- und Spywareschutz, Firewall und Eindringschutz. Der Client wird als Sicherheitserweiterung durch die Verwendung des VM Agent installiert.
 
@@ -74,10 +70,10 @@ So überprüfen Sie, ob die Symantec-Sicherheitserweiterung installiert wurde un
 
 [Create]:../windows/classic/tutorial.md
 
-[PS]: /powershell/azureps-cmdlets-docs
+[PS]: /powershell/azure/
 
 [Agent]: https://go.microsoft.com/fwlink/p/?LinkId=403947
 
 [Logon]:../windows/classic/connect-logon.md
 
-[Ext]: https://go.microsoft.com/fwlink/p/?linkid=390493
+[Ext]: features-windows.md

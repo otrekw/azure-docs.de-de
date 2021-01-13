@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 52d7eb035ed06c368214b8b5cb7ef583cd99b51b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.custom: mqtt, devx-track-java
+ms.openlocfilehash: 28b82c87442257124f286a5e7c949afe7f001019
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162001"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146938"
 ---
 # <a name="get-started-with-device-management-java"></a>Erste Schritte mit der Geräteverwaltung (Java)
 
@@ -53,13 +54,15 @@ Am Ende dieses Tutorials verfügen Sie über zwei Java-Konsolen-Apps:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) Wählen Sie unter **Langfristiger Support** unbedingt **Java 8** aus, um zu den Downloads für JDK 8 zu gelangen.
+* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable) Wählen Sie unter **Langfristiger Support** unbedingt **Java 8** aus, um zu den Downloads für JDK 8 zu gelangen.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 

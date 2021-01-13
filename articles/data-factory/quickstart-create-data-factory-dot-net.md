@@ -1,24 +1,24 @@
 ---
-title: Erstellen einer Azure Data Factory mit dem .NET SDK
-description: Erstellen Sie eine Azure Data Factory-Instanz, um Daten von einem Speicherort in einem Azure Blob-Speicher an einen anderen Speicherort zu kopieren.
+title: Erstellen einer Azure Data Factory-Instanz mithilfe des .NET SDK
+description: Erstellen Sie eine Azure Data Factory-Instanz und Pipeline mithilfe des .NET SDK, um Daten von einem Speicherort in Azure Blob Storage an einen anderen Speicherort zu kopieren.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/24/2019
+ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: 24cba4b02bb046a16db04635a1bf5ef4f6b619a6
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: c5e35fb8ab6a782ec79f10b1099f6781062c1d7c
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234489"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678867"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Schnellstart: Erstellen einer Data Factory und Pipeline mit dem .NET SDK
 
@@ -26,7 +26,9 @@ ms.locfileid: "68234489"
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuelle Version](quickstart-create-data-factory-dot-net.md)
 
-Diese Schnellstartanleitung beschreibt, wie Sie das .NET SDK verwenden, um eine Azure Data Factory zu erstellen. Die in dieser Data Factory erstellte Pipeline **kopiert** Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Ein Tutorial zum **Transformieren** von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Daten mit Spark transformieren](tutorial-transform-data-spark-portal.md).
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+Diese Schnellstartanleitung beschreibt, wie Sie mithilfe des .NET SDK eine Azure Data Factory-Instanz erstellen. Die in dieser Data Factory erstellte Pipeline **kopiert** Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Ein Tutorial zum **Transformieren** von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Daten mit Spark transformieren](tutorial-transform-data-spark-portal.md).
 
 > [!NOTE]
 > Dieser Artikel enthält keine ausführliche Einführung in den Data Factory-Dienst. Eine Einführung in den Azure Data Factory-Dienst finden Sie unter [Einführung in Azure Data Factory](introduction.md).
@@ -45,10 +47,10 @@ Laden Sie das [Azure .NET SDK](https://azure.microsoft.com/downloads/) auf Ihren
 
 Befolgen Sie aus den Abschnitten in *Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal* die Anweisungen zum Ausführen dieser Aufgaben:
 
-1. Erstellen Sie unter [Erstellen einer Azure Active Directory-Anwendung](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) eine Anwendung, die die .NET-Anwendung darstellt, die Sie in diesem Tutorial erstellen. Als Anmelde-URL können Sie wie in diesem Artikel gezeigt eine Platzhalter-URL (`https://contoso.org/exampleapp`) angeben.
-2. Rufen Sie unter [Abrufen von Werten für die Anmeldung](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) die **Anwendungs-ID** und die **Mandanten-ID** ab, und notieren Sie sich diese Werte zur späteren Verwendung in diesem Tutorial. 
-3. Rufen Sie unter [Zertifikate und Geheimnisse](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) den **Authentifizierungsschlüssel** ab, und notieren Sie sich diesen Wert zur späteren Verwendung in diesem Tutorial.
-4. Weisen Sie unter [Zuweisen der Anwendung zu einer Rolle](../active-directory/develop/howto-create-service-principal-portal.md#assign-the-application-to-a-role) die Anwendung der Rolle **Mitwirkender** auf Abonnementebene zu, damit die Anwendung Data Factorys im Abonnement erstellen kann.
+1. Erstellen Sie unter [Erstellen einer Azure Active Directory-Anwendung](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) eine Anwendung, die die .NET-Anwendung darstellt, die Sie in diesem Tutorial erstellen. Als Anmelde-URL können Sie wie in diesem Artikel gezeigt eine Platzhalter-URL (`https://contoso.org/exampleapp`) angeben.
+2. Rufen Sie unter [Abrufen von Werten für die Anmeldung](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) die **Anwendungs-ID** und die **Mandanten-ID** ab, und notieren Sie sich diese Werte zur späteren Verwendung in diesem Tutorial. 
+3. Rufen Sie unter [Zertifikate und Geheimnisse](../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) den **Authentifizierungsschlüssel** ab, und notieren Sie sich diesen Wert zur späteren Verwendung in diesem Tutorial.
+4. Weisen Sie unter [Zuweisen der Anwendung zu einer Rolle](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) die Anwendung der Rolle **Mitwirkender** auf Abonnementebene zu, damit die Anwendung Data Factorys im Abonnement erstellen kann.
 
 ## <a name="create-a-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts
 
@@ -79,6 +81,7 @@ Erstellen Sie im nächsten Schritt in Visual Studio eine C# .NET-Konsolenanwendu
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.DataFactory;
     using Microsoft.Azure.Management.DataFactory.Models;
@@ -175,7 +178,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(
 
 ## <a name="create-a-dataset"></a>Erstellen eines Datasets
 
-Fügen Sie der **Main**-Methode den folgenden Code hinzu, der ein **Azure-Blobdataset** erstellt.
+Fügen Sie der **Main**-Methode den folgenden Code hinzu, der ein **Azure blob dataset (Azure-Blobdataset)** erstellt.
 
 Sie definieren ein Dataset, das die Daten repräsentiert, die aus einer Quelle in eine Senke kopiert werden sollen. In diesem Beispiel verweist dieses Blobdataset auf den verknüpften Azure Storage-Dienst, den Sie im vorherigen Schritt erstellt haben. Das Dataset akzeptiert einen Parameter, dessen Wert in einer Aktivität festgelegt ist, die das Dataset verwendet. Der Parameter wird verwendet, um den „folderPath“ zu erstellen, der auf den Speicherort der Dateien zeigt.
 
@@ -287,7 +290,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
        pipelineRun = client.PipelineRuns.Get(
            resourceGroup, dataFactoryName, runResponse.RunId);
        Console.WriteLine("Status: " + pipelineRun.Status);
-       if (pipelineRun.Status == "InProgress")
+       if (pipelineRun.Status == "InProgress" || pipelineRun.Status == "Queued")
            System.Threading.Thread.Sleep(15000);
        else
            break;
@@ -316,7 +319,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 Erstellen und starten Sie die Anwendung, und überprüfen Sie dann die Pipelineausführung.
 
-Die Konsole druckt den Status der Erstellung der Data Factory, des verknüpften Diensts, der Datasets, der Pipeline und der Pipelineausführung aus. Danach wird der Status der Pipelineausführung überprüft. Warten Sie, bis Sie die Ausführungsdetails der Kopieraktivität mit der Größe der gelesen/geschriebenen Daten sehen. Verwenden Sie anschließend Tools wie z.B. [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), um zu überprüfen, ob die Blobs wie von Ihnen in den Variablen angegeben aus „inputBlobPath“ in „outputBlobPath“ kopiert werden.
+Die Konsole druckt den Status der Erstellung der Data Factory, des verknüpften Diensts, der Datasets, der Pipeline und der Pipelineausführung aus. Danach wird der Status der Pipelineausführung überprüft. Warten Sie, bis Sie die Ausführungsdetails der Kopieraktivität mit der Größe der gelesen/geschriebenen Daten sehen. Überprüfen Sie anschließend mit Tools wie z. B. [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), ob die Blobs – wie von Ihnen in den Variablen angegeben – aus „inputBlobPath“ in „outputBlobPath“ kopiert werden.
 
 ### <a name="sample-output"></a>Beispielausgabe
 

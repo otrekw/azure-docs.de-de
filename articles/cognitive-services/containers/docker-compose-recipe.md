@@ -3,19 +3,19 @@ title: Verwenden von Docker Compose zum Bereitstellen mehrerer Container
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie mehrere Cognitive Services-Container bereitstellen. In diesem Artikel wird beschrieben, wie Sie mehrere Docker-Containerimages mit Docker Compose orchestrieren.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
-ms.author: dapine
-ms.openlocfilehash: 95ec80af88e0b89f61bebed08f4b96a09947f401
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.date: 10/29/2020
+ms.author: aahi
+ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311552"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996123"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Verwenden von Docker Compose zum Bereitstellen mehrerer Container
 
@@ -23,26 +23,19 @@ In diesem Artikel wird beschrieben, wie Sie mehrere Azure Cognitive Services-Con
 
 > [Docker Compose](https://docs.docker.com/compose/) ist ein Tool zum Definieren und Ausführen von Docker-Anwendungen mit mehreren Containern. In Compose verwenden Sie eine YAML-Datei, um die Dienste Ihrer Anwendung zu konfigurieren. Anschließend erstellen und starten Sie alle Dienste Ihrer Konfiguration mit nur einem Befehl.
 
-Es kann hilfreich sein, mehrere Containerimages auf nur einem Hostcomputer zu orchestrieren. In diesem Artikel werden die Container „Texterkennung“ und „Formularerkennung“ zusammengeführt.
+Es kann hilfreich sein, mehrere Containerimages auf nur einem Hostcomputer zu orchestrieren. In diesem Artikel werden die Container „Lesen“ und „Formularerkennung“ zusammengeführt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Verfahren müssen mehrere Tools lokal installiert und ausgeführt werden:
 
-* Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services) erstellen, bevor Sie beginnen.
 * [Docker-Engine](https://www.docker.com/products/docker-engine). Vergewissern Sie sich, dass die Docker-CLI in einem Konsolenfenster funktioniert.
 * Eine Azure-Ressource mit dem korrekten Tarif. Für diesen Container können nur die folgenden Tarife genutzt werden:
   * Ressource **Maschinelles Sehen** nur mit F0- oder Standard-Tarif.
   * Ressource **Formularerkennung** nur mit F0- oder Standard-Tarif.
   * Ressource **Cognitive Services** mit dem S0-Tarif.
-
-## <a name="request-access-to-the-container-registry"></a>Anfordern des Zugriffs auf die Containerregistrierung
-
-Füllen Sie das [Formular zum Anfordern von Cognitive Services-Speech-Containern](https://aka.ms/speechcontainerspreview/) aus, und senden Sie es ab. 
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
+* Wenn Sie einen Container für die verwaltete Vorschau verwenden, müssen Sie das [Onlineanforderungsformular](https://aka.ms/csgate/) ausfüllen, um ihn zu verwenden.
 
 ## <a name="docker-compose-file"></a>Docker Compose-Datei
 
@@ -52,7 +45,7 @@ Die YAML-Datei definiert alle bereitzustellenden Dienste. Diese Dienste basieren
 version: '3.7'
 services:
   forms:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer"
+    image: "mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout"
     environment:
        eula: accept
        billing: # < Your form recognizer billing URL >
@@ -70,11 +63,11 @@ services:
       - "5010:5000"
 
   ocr:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text"
+    image: "mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview"
     environment:
       eula: accept
-      apikey: # < Your recognize text API key >
-      billing: # < Your recognize text billing URL >
+      apikey: # < Your computer vision API key >
+      billing: # < Your computer vision billing URL >
     ports:
       - "5021:5000"
 ```
@@ -87,9 +80,9 @@ services:
 Eine Docker Compose-Datei ermöglicht die Verwaltung aller Stufen des Lebenszyklus eines definierten Diensts: Starten, Beenden und Neuerstellen der Dienste, Anzeigen des Dienststatus und Durchführen des Protokollstreamings. Öffnen Sie über das Projektverzeichnis (in dem sich die Datei „docker-compose.yaml“ befindet) eine Befehlszeilenschnittstelle.
 
 > [!NOTE]
-> Stellen Sie zur Vermeidung von Fehlern sicher, dass der Hostcomputer die Laufwerke korrekt für die Docker-Engine freigibt. Wenn beispielsweise „E:\publicpreview“ als Verzeichnis in der Datei „docker-compose.yaml“ verwendet wird, geben Sie das Laufwerk „E“ für Docker frei.
+> Stellen Sie zur Vermeidung von Fehlern sicher, dass der Hostcomputer die Laufwerke korrekt für die Docker-Engine freigibt. Wenn beispielsweise *E:\publicpreview* als Verzeichnis in der Datei *docker-compose.yaml* verwendet wird, geben Sie das Laufwerk **E** für Docker frei.
 
-Führen Sie über die Befehlszeilenschnittstelle den folgenden Befehl aus, um alle in der Datei „docker-compose.yaml“ definierten Dienste zu starten (oder neu zu starten):
+Führen Sie über die Befehlszeilenschnittstelle den folgenden Befehl aus, um alle in der Datei *docker-compose.yaml* definierten Dienste zu starten (oder neu zu starten):
 
 ```console
 docker-compose up
@@ -98,8 +91,8 @@ docker-compose up
 Wenn der Befehl **docker-compose up** von Docker mit dieser Konfiguration zum ersten Mal ausgeführt wird, werden die unter dem Knoten **services** konfigurierten Images per Pullvorgang abgerufen und dann heruntergeladen und bereitgestellt:
 
 ```console
-Pulling forms (containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:)...
-latest: Pulling from microsoft/cognitive-services-form-recognizer
+Pulling forms (mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout:)...
+latest: Pulling from azure-cognitive-services/form-recognizer/layout
 743f2d6c1f65: Pull complete
 72befba99561: Pull complete
 2a40b9192d02: Pull complete
@@ -113,8 +106,8 @@ fd93b5f95865: Pull complete
 ef41dcbc5857: Pull complete
 4d05c86a4178: Pull complete
 34e811d37201: Pull complete
-Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:)...
-latest: Pulling from microsoft/cognitive-services-recognize-text
+Pulling ocr (mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview:)...
+latest: Pulling from /azure-cognitive-services/vision/read:3.1-preview
 f476d66f5408: Already exists
 8882c27f669e: Already exists
 d9af21273955: Already exists
@@ -166,19 +159,13 @@ Hier ist eine Beispielausgabe angegeben:
 
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
-2ce533f88e80        containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer   latest
-4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text    latest
+2ce533f88e80        mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout          latest
+4be104c126c5        mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview         latest
 ```
 
-### <a name="test-the-recognize-text-container"></a>Testen des Containers „Texterkennung“
+### <a name="test-containers"></a>Testcontainer
 
-Öffnen Sie einen Browser auf dem Hostcomputer, und navigieren Sie zu **localhost**, indem Sie den angegebenen Port aus der Datei „docker-compose.yaml“ verwenden, z. B. http://localhost:5021/swagger/index.html. Sie können die Funktion „Testen“ der API verwenden, um den Endpunkt von „Texterkennung“ zu testen.
-
-![Container „Texterkennung“](media/recognize-text-swagger-page.png)
-
-### <a name="test-the-form-recognizer-container"></a>Testen des Containers „Formularerkennung“
-
-Öffnen Sie einen Browser auf dem Hostcomputer, und navigieren Sie zu **localhost**, indem Sie den angegebenen Port aus der Datei „docker-compose.yaml“ verwenden, z. B. http://localhost:5010/swagger/index.html. Sie können die Funktion „Testen“ der API verwenden, um den Endpunkt von „Formularerkennung“ zu testen.
+Öffnen Sie einen Browser auf dem Hostcomputer, und navigieren Sie zu **localhost**, indem Sie den angegebenen Port aus der Datei *docker-compose.yaml* verwenden, z. B. http://localhost:5021/swagger/index.html. Sie können z. B. das Feature **Testen** in der API verwenden, um den Endpunkt der Formularerkennung zu testen. Beide Container sollten verfügbar und testbar sein.
 
 ![Container „Formularerkennung“](media/form-recognizer-swagger-page.png)
 

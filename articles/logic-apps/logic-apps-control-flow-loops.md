@@ -1,34 +1,30 @@
 ---
-title: Hinzufügen von Schleifen zum Wiederholen von Aktionen oder Verarbeiten von Arrays – Azure Logic Apps | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie in Azure Logic Apps Schleifen erstellen, die Workflowaktionen wiederholen oder Arrays verarbeiten.
+title: Hinzufügen von Schleifen zum Wiederholen von Aktionen
+description: Erstellen von Schleifen in Azure Logic Apps, die Workflowaktionen wiederholen oder Arrays verarbeiten
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-manager: jeconnoc
-ms.date: 01/05/2019
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/05/2019
+ms.openlocfilehash: aa4be5852b4f8af00346a3ea9a86b13a85f99824
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60683960"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358455"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Erstellen von Schleifen in Azure Logic Apps, die Workflowaktionen wiederholen oder Arrays verarbeiten
 
-Um ein Array in Ihrer Logik-App zu verarbeiten, können Sie eine [„ForEach“-Schleife](#foreach-loop) erstellen. Diese Schleife wiederholt eine oder mehrere Aktionen für jedes Element im Array. Informationen über die maximale Anzahl der Arrayelemente, die „ForEach“-Schleifen verarbeiten können, finden Sie unter [Grenzwerte und -Konfiguration](../logic-apps/logic-apps-limits-and-config.md). 
+Um ein Array in Ihrer Logik-App zu verarbeiten, können Sie eine [„ForEach“-Schleife](#foreach-loop) erstellen. Diese Schleife wiederholt eine oder mehrere Aktionen für jedes Element im Array. Informationen zum Grenzwert für die Anzahl von Arrayelementen, die von einer ForEach-Schleife verarbeitet werden kann, finden Sie unter [Grenzwerte für Parallelität, Schleifen und Auflösen von Batches](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
-Um Aktionen zu wiederholen, bis eine Bedingung erfüllt ist oder sich ein Zustand ändert, können Sie eine [„Until“-Schleife](#until-loop) erstellen. Ihre Logik-App führt zuerst alle Aktionen innerhalb der Schleife aus und überprüft anschließend die Bedingung oder den Status. Wenn die Bedingung erfüllt ist, wird die Schleife beendet. Andernfalls wird die Schleife wiederholt. Informationen über die maximale Anzahl der „Until“-Schleifen in einer Logik-App-Ausführung finden Sie unter [Grenzwerte und -Konfiguration](../logic-apps/logic-apps-limits-and-config.md). 
+Um Aktionen zu wiederholen, bis eine Bedingung erfüllt ist oder sich ein Zustand ändert, können Sie eine [„Until“-Schleife](#until-loop) erstellen. Ihre Logik-App führt zuerst alle Aktionen innerhalb der Schleife aus und überprüft anschließend die Bedingung oder den Status. Wenn die Bedingung erfüllt ist, wird die Schleife beendet. Andernfalls wird die Schleife wiederholt. Informationen zu den Standard- und Höchstwerten für die Anzahl von Until-Schleifen in einer Logik-App-Ausführung finden Sie unter [Grenzwerte für Parallelität, Schleifen und Auflösen von Batches](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
 > [!TIP]
-> Wenn Sie einen Auslöser verwenden, der ein Array empfängt, und für jedes Arrayelement einen Workflow ausführen möchten, können Sie dieses Array mit der [**Auslösereigenschaft** SplitOn](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) *aus dem Batch lösen*. 
+> Wenn Sie einen Auslöser verwenden, der ein Array empfängt, und für jedes Arrayelement einen Workflow ausführen möchten, können Sie dieses Array mit der [**Auslösereigenschaft** SplitOn](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)*aus dem Batch lösen*.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
+* Ein Azure-Konto und ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -36,11 +32,13 @@ Um Aktionen zu wiederholen, bis eine Bedingung erfüllt ist oder sich ein Zustan
 
 ## <a name="foreach-loop"></a>„ForEach“-Schleife
 
-Eine „Foreach-Schleife“ wiederholt eine oder mehrere Aktionen für jedes Arrayelement und funktioniert nur für Arrays. Iterationen in einer „ForEach“-Schleife werden parallel ausgeführt. Sie können jedoch Iterationen nacheinander ausführen, indem Sie eine [sequentielle „ForEach“-Schleife](#sequential-foreach-loop) einrichten. 
+Eine ForEach-Schleife wiederholt eine oder mehrere Aktionen für jedes Arrayelement und funktioniert nur für Arrays. Hier sind einige Aspekte angegeben, die beim Verwenden von „ForEach“-Schleifen berücksichtigt werden sollten:
 
-Hier sind einige Aspekte angegeben, die beim Verwenden von „ForEach“-Schleifen berücksichtigt werden sollten:
+* Die ForEach-Schleife kann eine begrenzte Anzahl von Arrayelementen verarbeiten. Informationen zu diesem Grenzwert finden Sie unter [Grenzwerte für Parallelität, Schleifen und Auflösen von Batches](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
-* In geschachtelten Schleifen werden Iterationen immer nacheinander, nicht parallel ausgeführt. Um Vorgänge für Elemente in einer geschachtelten Schleife parallel auszuführen, erstellen Sie [eine untergeordnete Logik-App und rufen Sie sie auf](../logic-apps/logic-apps-http-endpoint.md).
+* Standardmäßig werden Iterationen in einer „Foreach“-Schleife gleichzeitig bzw. parallel ausgeführt. Dieses Verhalten unterscheidet sich von der [**Apply to each**-Schleife von Power Automate](/power-automate/apply-to-each), bei der Iterationen einzeln bzw. nacheinander ausgeführt werden. Sie können jedoch [sequenzielle Iterationen für „Foreach“-Schleifen](#sequential-foreach-loop) einrichten. Wenn Sie beispielsweise die nächste Iteration in einer „Foreach“-Schleife mithilfe der Verzögerungsaktion ([Delay](../connectors/connectors-native-delay.md)) anhalten möchten, müssen Sie die Schleife so einrichten, dass sie sequenziell ausgeführt wird.
+
+  Die Ausnahme beim Standardverhalten sind geschachtelte Schleifen, deren Iterationen immer nacheinander, nicht parallel ausgeführt werden. Um Vorgänge für Elemente in einer geschachtelten Schleife parallel auszuführen, erstellen Sie [eine untergeordnete Logik-App und rufen Sie sie auf](../logic-apps/logic-apps-http-endpoint.md).
 
 * Um vorhersehbare Ergebnisse von Um vorhersagbare Ergebnisse von Vorgängen mit Variablen während jeder Schleifeniteration zu erhalten, führen Sie diese Schleifen nacheinander aus. Wenn beispielsweise eine gleichzeitig laufende Schleife endet, liefern die Inkrementierung, Dekrementierung und Anhänge an variable Vorgänge vorhersehbare Ergebnisse. Bei jeder Iteration in der gleichzeitig laufenden Schleife können diese Vorgänge jedoch zu unvorhersehbaren Ergebnissen führen. 
 
@@ -49,7 +47,7 @@ zum Verweisen auf und zum Verarbeiten der einzelnen Elemente im Array. Wenn Sie 
 
 Diese Beispiel-Logik-App sendet eine tägliche Zusammenfassung für einen RSS-Feed einer Website. Die App verwendet eine „ForEach“-Schleife, die für jedes neue Element eine E-Mail sendet.
 
-1. [Erstellen Sie diese Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) mit einem Outlook.com- oder Office 365 Outlook-Konto.
+1. [Erstellen Sie diese Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) mit einem Outlook.com- bzw. einem Geschäfts-, Schul- oder Unikonto.
 
 2. Fügen Sie zwischen dem RSS-Trigger und der E-Mail-Sendeaktion eine „ForEach“-Schleife hinzu. 
 
@@ -154,7 +152,7 @@ Wenn Sie mit der JSON-Definition Ihrer Logik-App arbeiten, können Sie die Optio
 
 ## <a name="until-loop"></a>„Until“-Schleife
   
-Wenn Sie Aktionen ausführen und wiederholen möchten, bis eine Bedingung erfüllt ist oder sich ein Status ändert, können Sie diese Aktionen in eine „Until“-Schleife verlegen. Ihre Logik-App führt zuerst alle Aktionen innerhalb der Schleife aus und überprüft anschließend die Bedingung oder den Status. Wenn die Bedingung erfüllt ist, wird die Schleife beendet. Andernfalls wird die Schleife wiederholt.
+Wenn Sie Aktionen ausführen und wiederholen möchten, bis eine Bedingung erfüllt ist oder sich ein Status ändert, können Sie diese Aktionen in eine „Until“-Schleife verlegen. Ihre Logik-App führt zuerst alle Aktionen innerhalb der Schleife aus und überprüft anschließend die Bedingung oder den Status. Wenn die Bedingung erfüllt ist, wird die Schleife beendet. Andernfalls wird die Schleife wiederholt. Informationen zu den Standard- und Höchstwerten für die Anzahl von Until-Schleifen in einer Logik-App-Ausführung finden Sie unter [Grenzwerte für Parallelität, Schleifen und Auflösen von Batches](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
 Hier sind einige gängige Szenarios für eine „Until“-Schleife:
 
@@ -166,7 +164,7 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
 
 > [!NOTE]
 > Diese Schritte verwenden Office 365 Outlook, aber Sie können jeden E-Mail-Anbieter verwenden, der Logik-Apps unterstützt. 
-> [Eine Liste der Connectors finden Sie hier](https://docs.microsoft.com/connectors/). Bei Verwendung eines anderen E-Mail-Kontos bleiben die allgemeinen Schritte zwar gleich, die Benutzeroberfläche sieht aber unter Umständen etwas anders aus. 
+> [Eine Liste der Connectors finden Sie hier](/connectors/). Bei Verwendung eines anderen E-Mail-Kontos bleiben die allgemeinen Schritte zwar gleich, die Benutzeroberfläche sieht aber unter Umständen etwas anders aus. 
 
 1. Erstellen einer leeren Logik-App Wählen Sie im Logik-App-Designer im Suchfeld **Alle** aus. Suchen Sie nach „Wiederholung“. 
    Wählen Sie in der Triggerliste den folgenden Trigger aus: **Wiederholung – Zeitplan**
@@ -193,7 +191,7 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
 
    ![Variableneigenschaften festlegen](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | Wert | Beschreibung |
    | -------- | ----- | ----------- |
    | **Name** | Begrenzung | Name Ihrer Variablen | 
    | **Typ** | Integer | Datentyp Ihrer Variablen | 
@@ -237,7 +235,7 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
       | Eigenschaft | Wert | BESCHREIBUNG |
       | -------- | ----- | ----------- | 
       | **An** | *\<email-address\@domain>* | Die E-Mail-Adresse des Empfängers. Geben Sie zum Testen Ihre eigene E-Mail-Adresse an. | 
-      | **Betreff** | Aktueller Wert für „Limit“ ist **Limit** | Legen Sie den E-Mail-Betreff fest. Stellen Sie in diesem Beispiel sicher, dass Sie die **Limit**-Variable einbeziehen. | 
+      | **Subject** | Aktueller Wert für „Limit“ ist **Limit** | Legen Sie den E-Mail-Betreff fest. Stellen Sie in diesem Beispiel sicher, dass Sie die **Limit**-Variable einbeziehen. | 
       | **Text** | <*E-Mail-Inhalt*> | Geben Sie den Inhalt der E-Mail-Nachricht an, die Sie senden möchten. In diesem Beispiel können Sie beliebigen Text eingeben. | 
       |||| 
 
@@ -247,17 +245,19 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
 
       ![Empfangene E-Mail](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
+<a name="prevent-endless-loops"></a>
+
 ## <a name="prevent-endless-loops"></a>Verhindern von Endlosschleifen
 
-Standardeinschränkungen beenden die Ausführung einer „Until“-Schleife, wenn eine dieser Bedingungen vorliegt:
+Die Ausführung der Until-Schleife wird basierend auf diesen Eigenschaften beendet. Gehen Sie daher beim Festlegen dieser Werte entsprechend sorgfältig vor:
 
-| Eigenschaft | Standardwert | BESCHREIBUNG | 
-| -------- | ------------- | ----------- | 
-| **Count** | 60 | Die höchste Anzahl von Schleifen, die ausgeführt werden, bevor die Schleife beendet wird. Der Standardwert sind 60 Zyklen. | 
-| **Timeout** | PT1H | Der maximale Zeitraum, für den eine Schleife ausgeführt wird, bevor sie beendet wird. Der Standardwert beträgt eine Stunde und wird im ISO 8601-Format angegeben. <p>Der Timeoutwert wird für jeden Schleifendurchlauf ausgewertet. Wenn eine Aktion in der Schleife länger als die Zeitüberschreitung dauert, wird der aktuelle Zyklus nicht beendet. Der nächste Zyklus beginnt jedoch nicht, weil die Grenzwertbedingung nicht erfüllt ist. | 
-|||| 
+* **Count**: Dieser Wert ist die höchste Anzahl von Schleifen, die ausgeführt werden, bevor die Schleife beendet wird. Informationen zu den Standard- und Höchstwerten für die Anzahl von Until-Schleifen in einer Logik-App-Ausführung finden Sie unter [Grenzwerte für Parallelität, Schleifen und Auflösen von Batches](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
-Um diese Standardlimits zu ändern, wählen Sie **Erweiterte Optionen anzeigen** in der Schleifenaktionsform.
+* **Timeout**: Dieser Wert ist die maximale Zeitspanne, die die Schleife ausgeführt wird, bevor sie beendet wird. Die Angabe erfolgt im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601). Informationen zu den Standard- und Höchstwerten für den **Timeout**-Wert finden Sie unter [Grenzwerte für Parallelität, Schleifen und Auflösen von Batches](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+
+  Der Timeoutwert wird für jeden Schleifendurchlauf ausgewertet. Wenn eine Aktion in der Schleife länger als die Zeitüberschreitung dauert, wird der aktuelle Zyklus nicht beendet. Der nächste Zyklus beginnt jedoch nicht, weil die Grenzwertbedingung nicht erfüllt ist.
+
+Um diese Grenzwerte zu ändern, wählen Sie in der Schleifenaktion die Option **Grenzwerte ändern** aus.
 
 <a name="until-json"></a>
 
@@ -339,7 +339,7 @@ Diese beispielhafte „Until“-Schleife ruft einen HTTP-Endpunkt auf, der eine 
 
 ## <a name="get-support"></a>Support
 
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A für Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Wenn Sie Featurevorschläge übermitteln oder darüber abstimmen möchten, besuchen Sie die [Website für Azure Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte

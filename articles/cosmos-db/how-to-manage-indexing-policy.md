@@ -1,25 +1,31 @@
 ---
 title: Verwalten von Indizierungsrichtlinien in Azure Cosmos DB
-description: Informationen zur Verwaltung von Indizierungsrichtlinien in Azure Cosmos DB
-author: ThomasWeiss
+description: Hier erfahren Sie, wie Sie Indizierungsrichtlinien verwalten, eine Eigenschaft in die Indizierung aufnehmen oder davon ausschließen und die Indizierung mithilfe verschiedener Azure Cosmos DB SDKs definieren.
+author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 09/17/2019
-ms.author: thweiss
-ms.openlocfilehash: b80a4b8697544a0f7fe7cee99b666a513f53a0d6
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.subservice: cosmosdb-sql
+ms.topic: how-to
+ms.date: 11/02/2020
+ms.author: tisande
+ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: cd51210a64223fab5d2d48a91bd3d0a6521a9627
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104851"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341313"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Verwalten von Indizierungsrichtlinien in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In Azure Cosmos DB werden Daten gemäß [Indizierungsrichtlinien](index-policy.md) indiziert, die für jeden Container definiert sind. Die standardmäßige Indizierungsrichtlinie für neu erstellte Container erzwingt Bereichsindizes für jede Zeichenfolge oder Zahl. Diese Richtlinie kann mit ihrer eigenen benutzerdefinierten Indizierungsrichtlinie überschrieben werden.
 
+> [!NOTE]
+> Die in diesem Artikel beschriebene Methode zur Aktualisierung von Indizierungsrichtlinien gilt nur für die SQL (Core)-API von Azure Cosmos DB. Unter [Azure Cosmos DB-API für MongoDB](mongodb-indexing.md) und [Sekundäre Indizierung in der Cassandra-API für Azure Cosmos DB](cassandra-secondary-index.md) erfahren Sie mehr über die Indizierung.
+
 ## <a name="indexing-policy-examples"></a>Beispiele für Indizierungsrichtlinien
 
-Hier sehen Sie einige Beispiele für Indizierungsrichtlinien im JSON-Format. So werden sie für das Azure-Portal verfügbar gemacht. Die gleichen Parameter können über die Azure CLI oder ein beliebiges SDK festgelegt werden.
+Hier sehen Sie einige Beispiele für Indizierungsrichtlinien im [JSON-Format](index-policy.md#include-exclude-paths). So werden sie für das Azure-Portal verfügbar gemacht. Die gleichen Parameter können über die Azure CLI oder ein beliebiges SDK festgelegt werden.
 
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Deaktivierungsrichtlinie zum selektiven Ausschließen einiger Eigenschaftspfade
 
@@ -42,7 +48,7 @@ Hier sehen Sie einige Beispiele für Indizierungsrichtlinien im JSON-Format. So 
     }
 ```
 
-Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlinie, mit der ```kind```, ```dataType``` und ```precision``` manuell auf die jeweiligen Standardwerte festgelegt werden. Diese Eigenschaften müssen nicht mehr explizit festgelegt werden, und Sie können Sie vollständig in der Indizierungsrichtlinie auslassen (wie im Beispiel oben gezeigt).
+Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlinie, mit der ```kind```, ```dataType``` und ```precision``` manuell auf die jeweiligen Standardwerte festgelegt werden. Diese Eigenschaften müssen nicht mehr explizit festgelegt werden, und Sie sollten sie in der Indizierungsrichtlinie vollständig auslassen (wie im Beispiel oben gezeigt).
 
 ```json
     {
@@ -96,7 +102,7 @@ Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlin
     }
 ```
 
-Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlinie, mit der ```kind```, ```dataType``` und ```precision``` manuell auf die jeweiligen Standardwerte festgelegt werden. Diese Eigenschaften müssen nicht mehr explizit festgelegt werden, und Sie können Sie vollständig in der Indizierungsrichtlinie auslassen (wie im Beispiel oben gezeigt).
+Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlinie, mit der ```kind```, ```dataType``` und ```precision``` manuell auf die jeweiligen Standardwerte festgelegt werden. Diese Eigenschaften müssen nicht mehr explizit festgelegt werden, und Sie sollten sie in der Indizierungsrichtlinie vollständig auslassen (wie im Beispiel oben gezeigt).
 
 ```json
     {
@@ -137,8 +143,8 @@ Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlin
     }
 ```
 
-> [!NOTE] 
-> Allgemein wird die Verwendung einer Indizierungsrichtlinie zur **Deaktivierung** zu verwenden, damit Azure Cosmos DB neue Eigenschaften, die Ihrem Modell hinzugefügt werden, proaktiv indizieren kann.
+> [!NOTE]
+> Allgemein wird die Verwendung einer Indizierungsrichtlinie zur **Deaktivierung** empfohlen, damit Azure Cosmos DB neue Eigenschaften, die Ihrem Datenmodell hinzugefügt werden, proaktiv indizieren kann.
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Verwenden eines räumlichen Index nur für einen bestimmten Eigenschaftspfad
 
@@ -153,7 +159,7 @@ Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlin
     ],
     "excludedPaths": [
         {
-            "path": "/\"_etag\"/?"
+            "path": "/_etag/?"
         }
     ],
     "spatialIndexes": [
@@ -172,7 +178,10 @@ Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlin
 
 ## <a name="composite-indexing-policy-examples"></a>Zusammengesetzte Indizierung – Richtlinienbeispiele
 
-Über das Einschließen oder Ausschließen von Pfaden für einzelne Eigenschaften hinaus können Sie auch einen zusammengesetzten Index angeben. Wenn Sie eine Abfrage für ausführen möchten, die eine `ORDER BY`-Klausel für mehrere Eigenschaften aufweist, ist ein [zusammengesetzter Index](index-policy.md#composite-indexes) für diese Eigenschaften erforderlich. Außerdem bedeuten zusammengesetzte Indizes einen Leistungsvorteil für Abfragen, die über einen Filter und über eine ORDER BY-Klausel für verschiedene Eigenschaften verfügen.
+Über das Einschließen oder Ausschließen von Pfaden für einzelne Eigenschaften hinaus können Sie auch einen zusammengesetzten Index angeben. Wenn Sie eine Abfrage für ausführen möchten, die eine `ORDER BY`-Klausel für mehrere Eigenschaften aufweist, ist ein [zusammengesetzter Index](index-policy.md#composite-indexes) für diese Eigenschaften erforderlich. Außerdem bedeuten zusammengesetzte Indizes einen Leistungsvorteil für Abfragen, die über mehrere Filter oder sowohl über einen Filter als auch eine ORDER BY-Klausel verfügen.
+
+> [!NOTE]
+> Zusammengesetzte Pfade weisen die implizite Angabe `/?` auf, weil nur der Skalarwert unter diesem Pfad indiziert wird. Der Platzhalter `/*` wird in zusammengesetzten Pfaden nicht unterstützt. Sie sollten in einem zusammengesetzten Pfad weder `/?` noch `/*` angeben.
 
 ### <a name="composite-index-defined-for-name-asc-age-desc"></a>Zusammengesetzter Index, definiert für (name asc, age desc):
 
@@ -306,7 +315,7 @@ Die Angabe der Reihenfolge ist optional. Ohne Angabe ist die Reihenfolge aufstei
 
 ### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Ausschließen aller Eigenschaftspfade aber Aktivhalten der Indizierung
 
-Diese Richtlinie kann in Situationen verwendet werden, in denen das [Feature „Gültigkeitsdauer“ (Time-to-Live, TTL)](time-to-live.md) aktiv ist, aber kein Sekundärindex erforderlich ist (um Azure Cosmos DB als reinen Schlüsselwertspeicher zu verwenden).
+Diese Richtlinie kann in Situationen verwendet werden, in denen das [Feature „Gültigkeitsdauer“ (Time-to-Live, TTL)](time-to-live.md) aktiv ist, aber keine zusätzlichen Indizes erforderlich sind (um Azure Cosmos DB als reinen Schlüsselwertspeicher zu verwenden).
 
 ```json
     {
@@ -334,12 +343,13 @@ In Azure Cosmos DB kann die Indizierungsrichtlinie mit den folgenden Methoden ak
 
 - über das Azure-Portal
 - mit der Azure CLI
+- mithilfe von PowerShell
 - mit einem der SDKs
 
 Eine [Aktualisierung der Indizierungsrichtlinie](index-policy.md#modifying-the-indexing-policy) löst eine Indextransformation aus. Der Status dieser Transformation kann auch über die SDKs nachverfolgt werden.
 
 > [!NOTE]
-> Beim Aktualisieren der Indizierungsrichtlinie werden Schreibvorgänge in Azure Cosmos DB ohne Unterbrechung durchführt. Während der erneuten Indizierung können Abfragen Teilergebnisse zurückgeben, weil der Index aktualisiert wird.
+> Beim Aktualisieren der Indizierungsrichtlinie werden Schreibvorgänge in Azure Cosmos DB ohne Unterbrechung durchführt. Weitere Informationen zu [Indizierungstransformationen](index-policy.md#modifying-the-indexing-policy)
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
@@ -349,7 +359,7 @@ Azure Cosmos-Container speichern ihre Indizierungsrichtlinie als ein JSON-Dokume
 
 1. Erstellen Sie ein neues Azure Cosmos-Konto, oder wählen Sie ein bereits vorhandenes Konto aus.
 
-1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie den gewünschten Container aus.
+1. Öffnen Sie den Bereich **Daten-Explorer** , und wählen Sie den gewünschten Container aus.
 
 1. Klicken Sie auf **Skalierung und Einstellungen**.
 
@@ -357,25 +367,21 @@ Azure Cosmos-Container speichern ihre Indizierungsrichtlinie als ein JSON-Dokume
 
 1. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
-![Verwalten der Indizierung über das Azure-Portal](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
+:::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="Verwalten der Indizierung über das Azure-Portal":::
 
 ## <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 
-Mit dem Befehl [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) über die Azure CLI können Sie die JSON-Definition der Indizierungsrichtlinie eines Containers ersetzen:
+Informationen zum Erstellen eines Containers mit einer benutzerdefinierten Indexrichtlinie finden Sie im Thema zum [Erstellen eines Containers mit einer benutzerdefinierten Indexrichtlinie mithilfe der CLI](manage-with-cli.md#create-a-container-with-a-custom-index-policy).
 
-```azurecli-interactive
-az cosmosdb collection update \
-    --resource-group-name $resourceGroupName \
-    --name $accountName \
-    --db-name $databaseName \
-    --collection-name $containerName \
-    --indexing-policy "{\"indexingMode\": \"consistent\", \"includedPaths\": [{ \"path\": \"/*\", \"indexes\": [{ \"dataType\": \"String\", \"kind\": \"Range\" }] }], \"excludedPaths\": [{ \"path\": \"/headquarters/employees/?\" } ]}"
-```
+## <a name="use-powershell"></a>Verwenden von PowerShell
 
-## <a name="use-the-net-sdk-v2"></a>Verwenden des .NET SDK v2
+Informationen zum Erstellen eines Containers mit einer benutzerdefinierten Indexrichtlinie finden Sie im Thema zum [Erstellen eines Containers mit einer benutzerdefinierten Indexrichtlinie mithilfe von PowerShell](manage-with-powershell.md#create-container-custom-index).
+
+## <a name="use-the-net-sdk"></a><a id="dotnet-sdk"></a> Verwenden des .NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 Das `DocumentCollection`-Objekt aus dem [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) macht eine `IndexingPolicy`-Eigenschaft verfügbar, mit der Sie `IndexingMode` ändern sowie `IncludedPaths` und `ExcludedPaths` hinzufügen oder entfernen können.
-
 
 ```csharp
 // Retrieve the container's details
@@ -403,10 +409,9 @@ ResourceResponse<DocumentCollection> container = await client.ReadDocumentCollec
 long indexTransformationProgress = container.IndexTransformationProgress;
 ```
 
-## <a name="use-the-net-sdk-v3"></a>Verwenden des .NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 Das `ContainerProperties`-Objekt aus dem [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) (Informationen zur Verwendung in [diesem Schnellstart](create-sql-api-dotnet.md)) macht eine `IndexingPolicy`-Eigenschaft verfügbar, mit der Sie `IndexingMode` ändern sowie `IncludedPaths` und `ExcludedPaths` hinzufügen oder entfernen können.
-
 
 ```csharp
 // Retrieve the container's details
@@ -460,74 +465,62 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .Attach()
     .CreateIfNotExistsAsync();
 ```
+---
 
 ## <a name="use-the-java-sdk"></a>Verwenden des Java SDK
 
 Das `DocumentCollection`-Objekt aus dem [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) (Informationen zur Verwendung in [diesem Schnellstart](create-sql-api-java.md)) macht die Methoden `getIndexingPolicy()` und `setIndexingPolicy()` verfügbar. Mit dem bearbeiteten `IndexingPolicy`-Objekt können Sie den Indizierungsmodus ändern sowie ein- und ausgeschlossene Pfade hinzufügen und entfernen.
 
-Abrufen der Details des Containers
-
 ```java
+// Retrieve the container's details
 Observable<ResourceResponse<DocumentCollection>> containerResponse = client.readCollection(String.format("/dbs/%s/colls/%s", "database", "container"), null);
 containerResponse.subscribe(result -> {
 DocumentCollection container = result.getResource();
 IndexingPolicy indexingPolicy = container.getIndexingPolicy();
-```
 
-Festlegen des Indizierungsmodus auf „Konsistent“
-
-```java
+// Set the indexing mode to consistent
 indexingPolicy.setIndexingMode(IndexingMode.Consistent);
-```
 
-Hinzufügen eines eingeschlossenen Pfads
+// Add an included path
 
-```java
 Collection<IncludedPath> includedPaths = new ArrayList<>();
-ExcludedPath includedPath = new IncludedPath();
-includedPath.setPath("/age/*");
+IncludedPath includedPath = new IncludedPath();
+includedPath.setPath("/*");
 includedPaths.add(includedPath);
 indexingPolicy.setIncludedPaths(includedPaths);
-```
 
-Hinzufügen eines ausgeschlossenen Pfads
+// Add an excluded path
 
-```java
 Collection<ExcludedPath> excludedPaths = new ArrayList<>();
 ExcludedPath excludedPath = new ExcludedPath();
 excludedPath.setPath("/name/*");
 excludedPaths.add(excludedPath);
 indexingPolicy.setExcludedPaths(excludedPaths);
-```
 
-Hinzufügen eines räumlichen Index
+// Add a spatial index
 
-```java
 Collection<SpatialSpec> spatialIndexes = new ArrayList<SpatialSpec>();
 Collection<SpatialType> collectionOfSpatialTypes = new ArrayList<SpatialType>();
 
 SpatialSpec spec = new SpatialSpec();
 spec.setPath("/locations/*");
-collectionOfSpatialTypes.add(SpatialType.Point);          
+collectionOfSpatialTypes.add(SpatialType.Point);
 spec.setSpatialTypes(collectionOfSpatialTypes);
 spatialIndexes.add(spec);
 
 indexingPolicy.setSpatialIndexes(spatialIndexes);
 
-```
+// Add a composite index
 
-Hinzufügen eines zusammengesetzten Index
-
-```java
 Collection<ArrayList<CompositePath>> compositeIndexes = new ArrayList<>();
 ArrayList<CompositePath> compositePaths = new ArrayList<>();
 
 CompositePath nameCompositePath = new CompositePath();
-nameCompositePath.setPath("/name/*");
+nameCompositePath.setPath("/name");
 nameCompositePath.setOrder(CompositePathSortOrder.Ascending);
 
 CompositePath ageCompositePath = new CompositePath();
-ageCompositePath.setPath("/age/*");
+ageCompositePath.setPath("/age");
 ageCompositePath.setOrder(CompositePathSortOrder.Descending);
 
 compositePaths.add(ageCompositePath);
@@ -535,12 +528,11 @@ compositePaths.add(nameCompositePath);
 
 compositeIndexes.add(compositePaths);
 indexingPolicy.setCompositeIndexes(compositeIndexes);
-```
 
-Aktualisieren des Containers mit Änderungen
+// Update the container with changes
 
-```java
  client.replaceCollection(container, null);
+});
 ```
 
 Zum Nachverfolgen der Fortschritts der Indextransformation für einen Container übergeben Sie ein `RequestOptions`-Objekt, das anfordert, dass die Kontingentinformationen ausgefüllt werden. Anschließend rufen Sie den Wert aus dem `x-ms-documentdb-collection-index-transformation-progress`-Antwortheader ab.
@@ -629,7 +621,9 @@ const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-col
 
 ## <a name="use-the-python-sdk"></a>Verwenden des Python SDK
 
-Bei Verwendung des [Python SDK](https://pypi.org/project/azure-cosmos/) (Informationen zur Verwendung in[diesem Schnellstart](create-sql-api-python.md)) wird die Konfiguration des Containers als Wörterbuch verwaltet. Über dieses Wörterbuch ist der Zugriff auf die Indizierungsrichtlinie und alle ihre Attribute möglich.
+# <a name="python-sdk-v3"></a>[Python SDK V3](#tab/pythonv3)
+
+Bei Verwendung des [Python SDK V3](https://pypi.org/project/azure-cosmos/) (Informationen zur Verwendung in [diesem Schnellstart](create-sql-api-python.md)) wird die Containerkonfiguration als Wörterbuch verwaltet. Über dieses Wörterbuch ist der Zugriff auf die Indizierungsrichtlinie und alle ihre Attribute möglich.
 
 Abrufen der Details des Containers
 
@@ -690,6 +684,80 @@ Aktualisieren des Containers mit Änderungen
 ```python
 response = client.ReplaceContainer(containerPath, container)
 ```
+
+# <a name="python-sdk-v4"></a>[Python SDK V4](#tab/pythonv4)
+
+Bei Verwendung des [Python SDK V4](https://pypi.org/project/azure-cosmos/) wird die Containerkonfiguration als Wörterbuch verwaltet. Über dieses Wörterbuch ist der Zugriff auf die Indizierungsrichtlinie und alle ihre Attribute möglich.
+
+Abrufen der Details des Containers
+
+```python
+database_client = cosmos_client.get_database_client('database')
+container_client = database_client.get_container_client('container')
+container = container_client.read()
+```
+
+Festlegen des Indizierungsmodus auf „Konsistent“
+
+```python
+indexingPolicy = {
+    'indexingMode': 'consistent'
+}
+```
+
+Definieren einer Indizierungsrichtlinie mit einem eingeschlossenen Pfad und einem räumlichen Index
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "spatialIndexes":[
+        {"path":"/location/*","types":["Point"]}
+    ],
+    "includedPaths":[{"path":"/age/*","indexes":[]}],
+    "excludedPaths":[{"path":"/*"}]
+}
+```
+
+Definieren einer Indizierungsrichtlinie mit einem ausgeschlossenen Pfad
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "includedPaths":[{"path":"/*","indexes":[]}],
+    "excludedPaths":[{"path":"/name/*"}]
+}
+```
+
+Hinzufügen eines zusammengesetzten Index
+
+```python
+indexingPolicy['compositeIndexes'] = [
+    [
+        {
+            "path": "/name",
+            "order": "ascending"
+        },
+        {
+            "path": "/age",
+            "order": "descending"
+        }
+    ]
+]
+```
+
+Aktualisieren des Containers mit Änderungen
+
+```python
+response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
+```
+
+Abrufen des Fortschritts der Indextransformation aus den Antwortheadern
+```python
+container_client.read(populate_quota_info = True,
+                      response_hook = lambda h,p: print(h['x-ms-documentdb-collection-index-transformation-progress']))
+```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

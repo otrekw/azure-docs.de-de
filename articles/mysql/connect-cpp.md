@@ -1,24 +1,26 @@
 ---
-title: Herstellen einer Verbindung mit Azure Database for MySQL per C++
+title: 'Schnellstart: Herstellen einer Verbindung unter Verwendung von C++: Azure Database for MySQL'
 description: Diese Schnellstartanleitung enthält ein C++-Codebeispiel, mit dem Sie eine Verbindung mit den Daten aus Azure-Datenbank für MySQL herstellen und Daten abfragen können.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
-ms.date: 04/12/2018
-ms.openlocfilehash: ff5232c4569e94322d76928f19f202c8bad1a39a
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.date: 5/26/2020
+ms.openlocfilehash: e8b2842300e43a9de88cc0b9b3ae9ce6cd754612
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428506"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535842"
 ---
-# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Verwenden eines Connectors/von C++ zum Herstellen einer Verbindung und Abfragen von Daten
+# <a name="quickstart-use-connectorc-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von Connector/C++ zum Herstellen einer Verbindung und zum Abfragen von Daten in Azure Database for MySQL
+
 Dieser Schnellstart zeigt, wie Sie mit einer C#-Anwendung eine Verbindung mit einer Azure Database for MySQL-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Thema wird davon ausgegangen, dass Sie mit der C++-Entwicklung vertraut sind, aber noch keine Erfahrung mit Azure Database for MySQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Ausgangspunkt verwendet:
 - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe des Azure-Portals](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe der Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
@@ -28,6 +30,9 @@ Außerdem benötigen Sie Folgendes:
 - Installieren von [Visual Studio](https://www.visualstudio.com/downloads/)
 - Installieren von [MySQL-Connector/C++](https://dev.mysql.com/downloads/connector/cpp/) 
 - Installieren von [Boost](https://www.boost.org/)
+
+> [!IMPORTANT] 
+> Sicherstellen, dass der IP-Adresse, über die Sie eine Verbindung herstellen, die Firewallregeln des Servers über das [Azure-Portal](./howto-manage-firewall-using-portal.md) oder die [Azure CLI](./howto-manage-firewall-using-cli.md) hinzugefügt wurden
 
 ## <a name="install-visual-studio-and-net"></a>Installieren von Visual Studio Code und .NET
 Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der .NET-Entwicklung vertraut sind.
@@ -52,7 +57,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 2. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und suchen Sie dann nach dem soeben erstellten Server, z.B. **mydemoserver**.
 3. Klicken Sie auf den Servernamen.
 4. Notieren Sie sich im Bereich **Übersicht** des Servers den **Servernamen** und den **Anmeldenamen des Serveradministrators**. Wenn Sie Ihr Kennwort vergessen haben, können Sie es in diesem Bereich auch zurücksetzen.
- ![Servername für Azure-Datenbank für MySQL](./media/connect-cpp/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-cpp/1_server-overview-name-login.png" alt-text="Servername für Azure-Datenbank für MySQL":::
 
 ## <a name="connect-create-table-and-insert-data"></a>Herstellen der Verbindung, Erstellen der Tabelle und Einfügen von Daten
 Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und die Daten zu laden, indem Sie die SQL-Anweisungen **CREATE TABLE** und **INSERT INTO** verwenden. Im Code wird die sql::Driver-Klasse mit der connect()-Methode verwendet, um eine Verbindung mit MySQL herzustellen. Anschließend werden im Code die Methoden „createStatement()“ und „execute()“ verwendet, um die Datenbankbefehle auszuführen. 
@@ -301,6 +306,16 @@ int main()
     system("pause");
     return 0;
 }
+```
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Ressourcengruppe mit dem folgenden Befehl, um alle in dieser Schnellstartanleitung verwendeten Ressourcen zu bereinigen:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

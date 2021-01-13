@@ -1,17 +1,17 @@
 ---
 title: Leitfaden zur Leistung für Azure SignalR Service
-description: Enthält eine Übersicht über die Leistung von Azure SignalR Service.
+description: Eine Übersicht über die Leistung und das Benchmark von Azure SignalR Service Schlüsselmetriken, die bei der Planung der Kapazität zu beachten sind
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 027f9f99161a0e4f76a39a15780bc840380a61ba
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232537"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74157671"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Leitfaden zur Leistung für Azure SignalR Service
 

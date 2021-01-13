@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: f3e05f213821b053f8cf6abbbc50a14e9ea62295
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 28609ad27330ae4ea5ea7c0d02d5a61181fbe0df
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178749"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559336"
 ---
-# <a name="internet-of-things-iot-security-architecture"></a>Internet der Dinge (IoT) – Sicherheitsarchitektur
-
 Beim Entwerfen eines Systems ist es wichtig zu verstehen, welche potenziellen Bedrohungen es für das System gibt. Anschließend müssen beim Entwerfen und Zusammenstellen des Systems die richtigen Abwehrmaßnahmen ergriffen werden. Es ist besonders wichtig, schon zu Beginn des Entwurfsprozesses für das Produkt an die Sicherheit zu denken. Indem ein Verständnis entwickelt wird, wie Angreifer ein System unter Umständen kompromittieren können, wird sichergestellt, dass von Anfang an für geeignete Lösungen gesorgt ist.
 
 ## <a name="security-starts-with-a-threat-model"></a>Sicherheit beginnt mit einem Bedrohungsmodell
@@ -74,7 +72,7 @@ Die vier Kernelemente eines Bedrohungsmodells sind:
 
 * Externe Entitäten (alle Elemente, die mit dem System interagieren, aber nicht von der Anwendung kontrolliert werden, z.B. Benutzer und Satelliten-Feeds)
 
-Alle Elemente im Architekturdiagramm unterliegen verschiedenen Bedrohungen. In diesem Artikel wird der mnemonische STRIDE-Code verwendet. Weitere Informationen zu den STRIDE-Elementen finden Sie unter [Threat Modeling Again, STRIDE](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) (Noch einmal Bedrohungsmodellierung: STRIDE).
+Alle Elemente im Architekturdiagramm unterliegen verschiedenen Bedrohungen. In diesem Artikel wird der mnemonische STRIDE-Code verwendet. Weitere Informationen zu den STRIDE-Elementen finden Sie unter [Threat Modeling Again, STRIDE](/archive/blogs/larryosterman/threat-modeling-again-stride) (Noch einmal Bedrohungsmodellierung: STRIDE).
 
 Verschiedene Elemente des Anwendungsdiagramms unterliegen bestimmten STRIDE-Bedrohungen:
 
@@ -118,7 +116,7 @@ Ein Bereichsgateway unterscheidet sich von einem reinen Datenverkehrsrouter dari
 
 ### <a name="the-cloud-gateway-zone"></a>Cloudgateway-Zone
 
-Das Cloudgateway ist ein System, das die Remotekommunikation von und zu Geräten oder Bereichsgateways von mehreren unterschiedlichen Standorten über das öffentliche Netzwerk ermöglicht. Dies erfolgt normalerweise auf Grundlage eines cloudbasierten Systems für die Steuerung und Datenanalyse bzw. eines Partnerverbunds dieser Systeme. In einigen Fällen ist mit einem Cloudgateway der unmittelbare Zugriff von Terminals wie Tablets oder Smartphones auf Geräte für spezielle Zwecke möglich. Im hier beschriebenen Kontext ist mit „Cloud“ ein dediziertes Datenverarbeitungssystem gemeint, das nicht an denselben Standort wie die verbundenen Geräte oder Bereichsgateways gebunden ist. In einer Cloudzone verhindern betriebliche Maßnahmen außerdem den zielgerichteten physischen Zugriff, und sie ist nicht unbedingt für eine Public Cloud-Infrastruktur verfügbar.  
+Ein Cloudgateway ist ein System, das die Remotekommunikation von und zu Geräten oder Bereichsgateways von mehreren unterschiedlichen Standorten über das öffentliche Netzwerk ermöglicht. Dies erfolgt normalerweise auf Grundlage eines cloudbasierten Systems für die Steuerung und Datenanalyse bzw. eines Partnerverbunds dieser Systeme. In einigen Fällen ist mit einem Cloudgateway der unmittelbare Zugriff von Terminals wie Tablets oder Smartphones auf Geräte für spezielle Zwecke möglich. Im hier beschriebenen Kontext ist mit „Cloud“ ein dediziertes Datenverarbeitungssystem gemeint, das nicht an denselben Standort wie die verbundenen Geräte oder Bereichsgateways gebunden ist. In einer Cloudzone verhindern betriebliche Maßnahmen außerdem den zielgerichteten physischen Zugriff, und sie ist nicht unbedingt für eine Public Cloud-Infrastruktur verfügbar.  
 
 Ein Cloudgateway kann auch einem Overlay für die Netzwerkvirtualisierung zugeordnet werden, um das Cloudgateway und alle verbundenen Geräte oder Bereichsgateways gegenüber anderem Netzwerk-Datenverkehr zu isolieren. Das Cloudgateway selbst ist weder ein Gerätesteuerungssystem noch eine Verarbeitungs- oder Speichereinrichtung für Gerätedaten. Diese Einrichtungen sind über Schnittstellen mit dem Cloudgateway verbunden. Die Cloudgateway-Zone enthält das Cloudgateway selbst sowie alle Bereichsgateways und Geräte, die direkt oder indirekt damit verbunden sind. Der Edgebereich der Zone ist ein separater Oberflächenbereich, über den alle externen Parteien kommunizieren.
 
@@ -179,12 +177,12 @@ In jeder Kategorie der Azure IoT-Architektur wird in diesem Beispiel versucht, d
 
 **Rechteerweiterungen (R)** : Ein Gerät, das eine bestimmte Funktion erfüllt, kann dazu gebracht werden, eine andere Funktion auszuführen. Für ein Ventil, das für das halbe Öffnen programmiert ist, kann beispielsweise erreicht werden, dass es ganz geöffnet wird.
 
-| **Komponente** | **Bedrohung** | **Lösung** | **Risiko** | **Implementierung** |
+| **Komponente** | **Bedrohung** | **Abhilfe** | **Risiko** | **Implementierung** |
 | --- | --- | --- | --- | --- |
-| Gerät |S |Zuweisen der Identität zum Gerät und Authentifizieren des Geräts |Ersetzen des Geräts oder eines Teils der Geräts durch ein anderes Gerät. Woher wissen Sie, dass Sie mit dem richtigen Gerät kommunizieren? |Authentifizieren des Geräts per Transport Layer Security (TLS) oder IPSec. Die Infrastruktur sollte die Verwendung eines vorinstallierten Schlüssels (Pre-Shared Key, PSK) auf den Geräten unterstützen, bei denen keine vollständige asymmetrische Verschlüsselung möglich ist. Nutzung von Azure AD, [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
+| Sicherungsmedium |E |Zuweisen der Identität zum Gerät und Authentifizieren des Geräts |Ersetzen des Geräts oder eines Teils der Geräts durch ein anderes Gerät. Woher wissen Sie, dass Sie mit dem richtigen Gerät kommunizieren? |Authentifizieren des Geräts per Transport Layer Security (TLS) oder IPSec. Die Infrastruktur sollte die Verwendung eines vorinstallierten Schlüssels (Pre-Shared Key, PSK) auf den Geräten unterstützen, bei denen keine vollständige asymmetrische Verschlüsselung möglich ist. Nutzung von Azure AD, [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
 || TRID |Wenden Sie manipulationssichere Mechanismen auf das Gerät an, z.B. indem es erschwert oder unmöglich gemacht wird, Schlüssel und andere Verschlüsselungsdaten vom Gerät zu entwenden. |Das Risiko besteht darin, dass das Gerät manipuliert wird (physischer Eingriff). Woher wissen Sie, dass das Gerät nicht manipuliert wurde? |Die effektivste Lösung ist ein Trusted Platform Module (TPM) mit der Möglichkeit, Schlüssel in einem speziellen On-Chip-Verfahren zu speichern. Hierbei können die Schlüssel nicht gelesen, sondern nur für kryptografische Vorgänge verwendet werden, für die der Schlüssel erforderlich ist. Der Schlüssel wird aber niemals offengelegt. Speicherverschlüsselung für das Gerät. Schlüsselverwaltung für das Gerät. Signieren des Codes. |
 || E |Verwenden der Zugriffssteuerung für das Gerät, Autorisierungsschema |Wenn es für das Gerät zulässig ist, dass einzelne Aktionen basierend auf den Befehlen einer externen Quelle oder sogar über kompromittierte Sensoren durchgeführt werden, sind bei einem Angriff Vorgänge möglich, die sonst nicht zugänglich sind. |Verwenden Sie ein Autorisierungsschema für das Gerät. |
-| Bereichsgateway |S |Authentifizieren des Bereichsgateways gegenüber dem Cloudgateway (z.B. zertifikat-, PSK- oder anspruchsbasiert) |Wenn das Bereichsgateway per Spoofing übernommen wird, kann sich der Angreifer als jedes Gerät ausgeben. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Alle üblichen Schlüsselspeicherungs- und Nachweisaspekte von Geräten. Am besten ist TPM geeignet. 6LowPAN-Erweiterung für IPSec zur Unterstützung von Wireless Sensor Networks (WSN). |
+| Bereichsgateway |E |Authentifizieren des Bereichsgateways gegenüber dem Cloudgateway (z.B. zertifikat-, PSK- oder anspruchsbasiert) |Wenn das Bereichsgateway per Spoofing übernommen wird, kann sich der Angreifer als jedes Gerät ausgeben. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Alle üblichen Schlüsselspeicherungs- und Nachweisaspekte von Geräten. Am besten ist TPM geeignet. 6LowPAN-Erweiterung für IPSec zur Unterstützung von Wireless Sensor Networks (WSN). |
 || TRID |Schützen des Bereichsgateways vor Manipulationen (TPM?) |Spoofing-Angriffe, bei denen für das Cloudgateway der Eindruck erweckt wird, dass es mit dem Bereichsgateway kommuniziert, können zur Offenlegung und Manipulation von Daten führen. |Speicherverschlüsselung, TPMs, Authentifizierung. |
 || E |Zugriffssteuerungsmechanismus für Bereichsgateway | | |
 
@@ -222,7 +220,7 @@ Hier sind einige Beispiele für Bedrohungen in dieser Kategorie aufgeführt:
 
 Hier geht es um Bedrohungen in Bezug auf den Kommunikationspfad zwischen Geräten und Bereichsgateways sowie Geräten und Cloudgateways. Die nachstehende Tabelle enthält einige Hinweise zu geöffneten Sockets des Geräts bzw. zur VPN-Verbindung:
 
-| **Komponente** | **Bedrohung** | **Lösung** | **Risiko** | **Implementierung** |
+| **Komponente** | **Bedrohung** | **Abhilfe** | **Risiko** | **Implementierung** |
 | --- | --- | --- | --- | --- |
 | Vom Gerät zum IoT Hub |TID |(D)TLS (PSK/RSA) zum Verschlüsseln des Datenverkehrs |Abhören oder Beeinträchtigen der Kommunikation zwischen dem Gerät und dem Gateway |Sicherheit auf der Protokollebene. Bei benutzerdefinierten Protokollen müssen Sie ermitteln, wie der Schutz ermöglicht werden kann. In den meisten Fällen erfolgt die Kommunikation vom Gerät zum IoT Hub (Gerät initiiert die Verbindung). |
 | Gerät zu Gerät |TID |(D)TLS (PSK/RSA) zum Verschlüsseln des Datenverkehrs |Lesen von Daten bei der Übermittlung zwischen Geräten. Manipulation der Daten. Überladen des Geräts mit neuen Verbindungen. |Sicherheit auf der Protokollebene (MQTT/AMQP/HTTP/CoAP). Bei benutzerdefinierten Protokollen müssen Sie ermitteln, wie der Schutz ermöglicht werden kann. Die Lösung für die DoS-Bedrohung ist das Peering von Geräten über ein Cloud- oder Bereichsgateway und die ausschließliche Nutzung als Clients gegenüber dem Netzwerk. Das Peering kann zu einer direkten Verbindung zwischen den Peers führen, nachdem die Vermittlung über das Gateway erfolgt ist. |
@@ -246,7 +244,7 @@ Hier sind einige Beispiele für Bedrohungen in dieser Kategorie aufgeführt:
 
 Jedes Gerät und Bereichsgateway verfügt über eine Art von Speicher (temporär für das Einreihen von Daten in die Warteschlange, Betriebssystemimage-Speicher).
 
-| **Komponente** | **Bedrohung** | **Lösung** | **Risiko** | **Implementierung** |
+| **Komponente** | **Bedrohung** | **Abhilfe** | **Risiko** | **Implementierung** |
 | --- | --- | --- | --- | --- |
 | Speicher des Geräts |TRID |Speicherverschlüsselung, Signieren der Protokolle |Lesen von Daten aus dem Speicher (personenbezogene Daten), Manipulieren von Telemetriedaten. Manipulieren von Befehlssteuerungsdaten in der Warteschlange oder im Cache. Die Manipulation von Konfigurations- oder Firmwareupdate-Paketen im lokalen Cache bzw. in der Warteschlange kann dazu führen, dass Komponenten des Betriebssystems oder des Systems kompromittiert werden. |Verschlüsselung, Nachrichtenauthentifizierungscode (Message Authentication Code, MAC) oder digitale Signatur. Falls möglich, strenge Zugriffssteuerung mit Zugriffssteuerungslisten oder Berechtigungen für Ressourcen. |
 | Betriebssystemimage des Geräts |TRID | |Manipulation des Betriebssystems/Austausch von Betriebssystemkomponenten |Schreibgeschützte Betriebssystempartition, signiertes Betriebssystemimage, Verschlüsselung |

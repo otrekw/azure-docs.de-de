@@ -1,25 +1,56 @@
 ---
 title: Ereignisschema des Azure-Aktivitätsprotokolls
-description: Informieren Sie sich über das Ereignisschema für Daten, die in das Aktivitätsprotokoll ausgegeben werden
-author: johnkemnetz
+description: Beschreibt das Ereignisschema für jede Kategorie im Azure-Aktivitätsprotokoll.
+author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
-ms.date: 1/16/2019
-ms.author: dukek
+ms.date: 09/30/2020
+ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: abe2ed0d50ce26ddebeeeccb87c49fc20db43b2a
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9bda92667cfc3afb44a55adf3f3c12798a734ddc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515383"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522718"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
-Das **Azure-Aktivitätsprotokoll** ist ein Protokoll, das einen Einblick in alle Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieser Artikel beschreibt das Ereignisschema pro Datenkategorie. Das Schema der Daten unterscheidet sich, je nachdem, ob Sie die Daten im Portal, in PowerShell, auf der Befehlszeilenschnittstelle oder direkt über die REST-API lesen, im Gegensatz zum [Streamen der Daten in den Speicher oder zu Event Hubs mithilfe eines Protokollprofils](activity-log-export.md). Im Beispiel unten ist zu sehen, in welcher Weise das Schema über das Portal, PowerShell, die Befehlszeilenschnittstelle und REST-API zur Verfügung gestellt wird. Eine Zuordnung dieser Eigenschaften zum [Azure-Diagnoseprotokollschema](diagnostic-logs-schema.md) findet sich am Ende dieses Artikels.
+Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) gewährt Einblick in alle Ereignisse auf Abonnementebene, die in Azure aufgetreten sind. Dieser Artikel beschreibt die Kategorien des Aktivitätsprotokolls und das jeweils zugehörige Schema. 
 
-## <a name="administrative"></a>Administrative
-Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, Lösch- und Aktionsvorgänge, die über Resource Manager ausgeführt wurden. Zu den Ereignissen in dieser Kategorie gehört das Erstellen eines virtuellen Computers und das Löschen einer Netzwerksicherheitsgruppe. Jede Aktion, die von einem Benutzer oder einer Anwendung mithilfe von Resource Manager ausgeführt wird, wird als Vorgang für einen bestimmten Ressourcentyp modelliert. Wenn der Vorgangstyp „Schreiben“, „Löschen“ oder „Aktion“ ist, werden die Datensätze zum Start und zum Erfolg oder Fehler dieses Vorgangs in der Kategorie „Administration“ aufgezeichnet. Die Kategorie „Administration“ enthält außerdem alle Änderungen an der rollenbasierten Zugriffssteuerung in einem Abonnement.
+Das Schema variiert je nachdem, wie Sie auf das Protokoll zugreifen:
+ 
+- Die in diesem Artikel beschriebenen Schemas gelten für den Zugriff auf das Aktivitätsprotokoll über die [REST-API](/rest/api/monitor/activitylogs). Diese Schemas werden auch verwendet, wenn Sie beim Anzeigen eines Ereignisses im Azure-Portal die Option **JSON** auswählen.
+- Im letzten Abschnitt, [Schema aus Speicherkonto und Event Hubs](#schema-from-storage-account-and-event-hubs) finden Sie Informationen zum Schema für eine [Diagnoseeinstellung](diagnostic-settings.md) zum Senden des Aktivitätsprotokolls an Azure Storage oder Azure Event Hubs.
+- Unter [Azure Monitor-Datenreferenz](/azure/azure-monitor/reference/) finden Sie das Schema, das zur Anwendung kommt, wenn Sie das Aktivitätsprotokoll über eine [Diagnoseeinstellung](diagnostic-settings.md) an einen Log Analytics-Arbeitsbereich senden.
+
+## <a name="severity-level"></a>Schweregrad
+Jeder Eintrag im Aktivitätsprotokoll weist einen Schweregrad auf. Der Schweregrad kann einen der folgenden Werte haben:  
+
+| Schweregrad | Beschreibung |
+|:---|:---|
+| Kritisch | Ereignisse, die die sofortige Aufmerksamkeit eines Systemadministrators erfordern. Kann darauf hinweisen, dass eine Anwendung oder ein System einen Fehler aufweist oder nicht mehr reagiert.
+| Fehler | Ereignisse, die auf ein Problem hinweisen, aber keine sofortige Aufmerksamkeit erfordern.
+| Warnung | Ereignisse, die eine Vorwarnung für potenzielle Probleme sind, obwohl es sich nicht um einen tatsächlichen Fehler handelt. Weist darauf hin, dass sich eine Ressource nicht in einem idealen Zustand befindet und sich dadurch später Fehler oder kritische Ereignisse ergeben könnten.  
+| Informational | Ereignisse, die nicht kritische Informationen an den Administrator weitergeben. Ähnelt einer Anmerkung vom Typ „Zu Ihrer Information“. 
+
+Die Entwickler der einzelnen Ressourcenanbieter wählen den Schweregrad ihrer Ressourceneinträge aus. Je nachdem, wie Ihre Anwendung aufgebaut ist, kann der tatsächliche Schweregrad für Sie variieren. Beispielsweise können Elemente, die für eine bestimmte Ressource isoliert „kritisch“ sind, nicht so wichtig sein wie „Fehler“ bei einem Ressourcentyp, der für Ihre Azure-Anwendung von zentraler Bedeutung ist. Berücksichtigen Sie dies bei der Entscheidung, für welche Ereignisse eine Warnung ausgegeben werden soll.  
+
+## <a name="categories"></a>Kategorien
+Jedes Ereignis im Aktivitätsprotokoll verfügt über eine bestimmte Kategorie. Die Kategorien sind in der folgenden Tabelle beschrieben. In den folgenden Abschnitten finden Sie detaillierte Informationen zu jeder Kategorie und dem zugehörigen Schema, wenn Sie über PowerShell, die CLI, das Portal oder die REST-API auf das Aktivitätsprotokoll zugreifen. Das Schema ist unterschiedlich, wenn Sie das [Aktivitätsprotokoll in den Speicher oder an Event Hubs streamen](./resource-logs.md#send-to-azure-event-hubs). Eine Zuordnung der Eigenschaften zum [Ressourcenprotokollschema](./resource-logs-schema.md) befindet sich im letzten Abschnitt dieses Artikels.
+
+| Category | BESCHREIBUNG |
+|:---|:---|
+| [Verwaltung](#administrative-category) | Enthält die Datensätze aller Erstellungs-, Aktualisierungs-, Lösch- und Aktionsvorgänge, die über Resource Manager ausgeführt wurden. Beispiele für Verwaltungsereignisse sind das _Erstellen des virtuellen Computers_ und das _Löschen der Netzwerksicherheitsgruppe_.<br><br>Jede Aktion, die von einem Benutzer oder einer Anwendung mit Resource Manager durchgeführt wird, wird als Vorgang basierend auf einem bestimmten Ressourcentyp modelliert. Wenn der Vorgangstyp _Schreiben_, _Löschen_ oder _Aktion_ lautet, werden die Datensätze zum Start und zum Erfolg oder Fehler dieses Vorgangs in der Kategorie „Verwaltung“ aufgezeichnet. Verwaltungsereignisse umfassen außerdem alle Änderungen an der rollenbasierten Zugriffssteuerung in Azure in einem Abonnement. |
+| [Dienstintegrität](#service-health-category) | Enthält Datensätze zu allen Incidents im Zusammenhang mit der Dienstintegrität, die in Azure aufgetreten sind. Beispiel für ein Service Health-Ereignis: _Ausfallzeiten bei SQL Azure in der Region „USA, Osten“_ . <br><br>Es gibt sechs Typen von Service Health-Ereignissen: _Aktion erforderlich_, _Unterstützte Wiederherstellung_, _Incident_, _Wartung_, _Informationen_ und _Sicherheit_. Diese Ereignisse werden nur erstellt, wenn Sie über eine Ressource im Abonnement verfügen, die vom Ereignis betroffen wäre.
+| [Resource Health](#resource-health-category) | Enthält Datensätze zu allen Ereignissen im Zusammenhang mit der Ressourcenintegrität, die für Ihre Azure-Ressourcen aufgetreten sind. Ein Beispiel für ein Resource Health-Ereignis ist _Integritätsstatus des virtuellen Computers ist zu „Nicht verfügbar“ gewechselt_.<br><br>Resource Health-Ereignisse können über einen von vier Integritätsstatus verfügen: _Verfügbar_, _Nicht verfügbar_, _Heruntergestuft_ und _Unbekannt_. Darüber hinaus können Resource Health-Ereignisse kategorisiert werden. Hierbei sind die Kategorien _Von der Plattform initiiert_ und _Vom Benutzer initiiert_ verfügbar. |
+| [Warnung](#alert-category) | Enthält den Datensatz mit den Aktivierungen für Azure-Warnungen. Ein Beispiel für ein Warnungsereignis ist _CPU-Auslastung auf ‚myVM‘ liegt in den letzten 5 Minuten über 80_.|
+| [Automatische Skalierung](#autoscale-category) | Enthält Datensätze zu Ereignissen im Zusammenhang mit der Engine für die Autoskalierung – basierend auf den Einstellungen für die Autoskalierung, die Sie in Ihrem Abonnement definiert haben. Ein Beispiel für ein Ereignis der Autoskalierung ist _Fehler beim automatischen Hochskalieren_. |
+| [Empfehlung](#recommendation-category) | Enthält Empfehlungsereignisse von Azure Advisor. |
+| [Security](#security-category) | Enthält den Datensatz, der von allen Warnungen in Azure Security Center generiert wurde. Ein Beispiel für ein Sicherheitsereignis ist _Verdächtige Datei mit doppelter Erweiterung ausgeführt_. |
+| [Richtlinie](#policy-category) | Enthält Datensätze aller Aktionsvorgänge für Auswirkungen, die von Azure Policy ausgeführt werden. Beispiele für Policy-Ereignisse sind _Überwachen_ und _Ablehnen_. Jede Aktion, die von Policy ausgeführt wird, ist als ein Vorgang für eine Ressource modelliert. |
+
+## <a name="administrative-category"></a>Kategorie „Verwaltung“
+Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, Lösch- und Aktionsvorgänge, die über Resource Manager ausgeführt wurden. Zu den Ereignissen in dieser Kategorie gehören das Erstellen eines virtuellen Computers und das Löschen einer Netzwerksicherheitsgruppe. Jede Aktion, die von einem Benutzer oder einer Anwendung mithilfe von Resource Manager ausgeführt wird, wird als Vorgang für einen bestimmten Ressourcentyp modelliert. Wenn der Vorgangstyp „Schreiben“, „Löschen“ oder „Aktion“ ist, werden die Datensätze zum Start und zum Erfolg oder Fehler dieses Vorgangs in der Kategorie „Administration“ aufgezeichnet. Die Kategorie „Administration“ enthält außerdem alle Änderungen an der rollenbasierten Zugriffssteuerung in Azure in einem Abonnement.
 
 ### <a name="sample-event"></a>Beispielereignis
 ```json
@@ -37,7 +68,7 @@ Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, L
         "nbf": "1234567890",
         "exp": "1234567890",
         "_claim_names": "{\"groups\":\"src1\"}",
-        "_claim_sources": "{\"src1\":{\"endpoint\":\"https://graph.windows.net/1114444b-7467-4144-a616-e3a5d63e147b/users/f409edeb-4d29-44b5-9763-ee9348ad91bb/getMemberObjects\"}}",
+        "_claim_sources": "{\"src1\":{\"endpoint\":\"https://graph.microsoft.com/1114444b-7467-4144-a616-e3a5d63e147b/users/f409edeb-4d29-44b5-9763-ee9348ad91bb/getMemberObjects\"}}",
         "http://schemas.microsoft.com/claims/authnclassreference": "1",
         "aio": "A3GgTJdwK4vy7Fa7l6DgJC2mI0GX44tML385OpU1Q+z+jaPnFMwB",
         "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
@@ -112,7 +143,7 @@ Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, L
 ### <a name="property-descriptions"></a>Beschreibungen der Eigenschaften
 | Elementname | BESCHREIBUNG |
 | --- | --- |
-| authorization |Blob mit RBAC-Eigenschaften des Ereignisses. Enthält normalerweise die Eigenschaften „action“, „role“ und „scope“. |
+| authorization |Blob mit Azure RBAC-Eigenschaften des Ereignisses. Enthält normalerweise die Eigenschaften „action“, „role“ und „scope“. |
 | caller |E-Mail-Adresse des Benutzers, der den Vorgang, UPN-Anspruch oder SPN-Anspruch auf Grundlage der Verfügbarkeit ausgeführt hat. |
 | channels |Einer der folgenden Werte: „Admin“, „Operation“ |
 | claims |Das JWT-Token, das von Active Directory zum Authentifizieren des Benutzers oder der Anwendung zur Ausführung dieses Vorgangs in Resource Manager verwendet wird. |
@@ -131,12 +162,12 @@ Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, L
 | operationName |Name des Vorgangs. |
 | properties |Satz mit `<Key, Value>`-Paaren (Wörterbuch), die Details des Ereignisses beschreiben. |
 | status |Zeichenfolge, die den Status des Vorgangs beschreibt. Gängige Werte: „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“, „Resolved“. |
-| subStatus |Üblicherweise der HTTP-Statuscode des entsprechenden REST-Aufrufs, kann aber auch weitere Zeichenfolgen zur Beschreibung eines untergeordneten Status enthalten, z. B. die folgenden gängigen Werte: OK (HTTP-Statuscode: 200), Erstellt (HTTP-Statuscode: 201), Akzeptiert (HTTP-Statuscode: 202), Kein Inhalt (HTTP-Statuscode: 204), Ungültige Anforderung (HTTP-Statuscode: 400), Nicht gefunden (HTTP-Statuscode: 404), Konflikt (HTTP-Statuscode: 409), Interner Serverfehler (HTTP-Statuscode: 500), Dienst nicht verfügbar (HTTP-Statuscode: 503), Gatewaytimeout (HTTP-Statuscode: 504) |
+| subStatus |Üblicherweise der HTTP-Statuscode des entsprechenden REST-Aufrufs, kann aber auch weitere Zeichenfolgen zur Beschreibung eines untergeordneten Status enthalten, z. B. die folgenden gängigen Werte: OK (HTTP-Statuscode: 200), Erstellt (HTTP-Statuscode: 201), Akzeptiert (HTTP-Statuscode: 202), Kein Inhalt (HTTP-Statuscode: 204), Ungültige Anforderung (HTTP-Statuscode: 400), Nicht gefunden (HTTP-Statuscode: 404), Konflikt (HTTP-Statuscode: 409), Interner Serverfehler (HTTP-Statuscode: 500), Dienst nicht verfügbar (HTTP-Statuscode: 503), Gatewaytimeout (HTTP-Statuscode: 504). |
 | eventTimestamp |Zeitstempel der Ereignisgenerierung durch den Azure-Dienst, der die zum Ereignis gehörende Anforderung verarbeitet hat. |
 | submissionTimestamp |Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
 | subscriptionId |Die Azure-Abonnement-ID. |
 
-## <a name="service-health"></a>Dienstintegrität
+## <a name="service-health-category"></a>Kategorie „Dienstintegrität“
 Diese Kategorie enthält Datensätze zu allen Incidents im Zusammenhang mit der Dienstintegrität, die in Azure aufgetreten sind. Ein Beispiel für ein Ereignis in dieser Kategorie ist „Ausfallzeiten bei SQL Azure in der Region ‚USA, Osten‘“. Es gibt fünf Typen von Ereignissen zur Dienstintegrität: „Action Required“, „Assisted Recovery“, „Incident“, „Maintenance“, „Information“ oder „Security“. Sie werden nur angezeigt, wenn eine Ressource in Ihrem Abonnement von dem Ereignis betroffen wäre.
 
 ### <a name="sample-event"></a>Beispielereignis
@@ -181,22 +212,22 @@ Diese Kategorie enthält Datensätze zu allen Incidents im Zusammenhang mit der 
     "title": "Network Infrastructure - UK South",
     "service": "Service Fabric",
     "region": "UK South",
-    "communication": "Starting at approximately 21:41 UTC on 20 Jul 2017, a subset of customers in UK South may experience degraded performance, connectivity drops or timeouts when accessing their Azure resources hosted in this region. Engineers are investigating underlying Network Infrastructure issues in this region. Impacted services may include, but are not limited to App Services, Automation, Service Bus, Log Analytics, Key Vault, SQL Database, Service Fabric, Event Hubs, Stream Analytics, Azure Data Movement, API Management, and Azure Search. Multiple engineering teams are engaged in multiple workflows to mitigate the impact. The next update will be provided in 60 minutes, or as events warrant.",
+    "communication": "Starting at approximately 21:41 UTC on 20 Jul 2017, a subset of customers in UK South may experience degraded performance, connectivity drops or timeouts when accessing their Azure resources hosted in this region. Engineers are investigating underlying Network Infrastructure issues in this region. Impacted services may include, but are not limited to App Services, Automation, Service Bus, Log Analytics, Key Vault, SQL Database, Service Fabric, Event Hubs, Stream Analytics, Azure Data Movement, API Management, and Azure Cognitive Search. Multiple engineering teams are engaged in multiple workflows to mitigate the impact. The next update will be provided in 60 minutes, or as events warrant.",
     "incidentType": "Incident",
     "trackingId": "NA0F-BJG",
     "impactStartTime": "2017-07-20T21:41:00.0000000Z",
     "impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"UK South\"}],\"ServiceName\":\"Service Fabric\"}]",
     "defaultLanguageTitle": "Network Infrastructure - UK South",
-    "defaultLanguageContent": "Starting at approximately 21:41 UTC on 20 Jul 2017, a subset of customers in UK South may experience degraded performance, connectivity drops or timeouts when accessing their Azure resources hosted in this region. Engineers are investigating underlying Network Infrastructure issues in this region. Impacted services may include, but are not limited to App Services, Automation, Service Bus, Log Analytics, Key Vault, SQL Database, Service Fabric, Event Hubs, Stream Analytics, Azure Data Movement, API Management, and Azure Search. Multiple engineering teams are engaged in multiple workflows to mitigate the impact. The next update will be provided in 60 minutes, or as events warrant.",
+    "defaultLanguageContent": "Starting at approximately 21:41 UTC on 20 Jul 2017, a subset of customers in UK South may experience degraded performance, connectivity drops or timeouts when accessing their Azure resources hosted in this region. Engineers are investigating underlying Network Infrastructure issues in this region. Impacted services may include, but are not limited to App Services, Automation, Service Bus, Log Analytics, Key Vault, SQL Database, Service Fabric, Event Hubs, Stream Analytics, Azure Data Movement, API Management, and Azure Cognitive Search. Multiple engineering teams are engaged in multiple workflows to mitigate the impact. The next update will be provided in 60 minutes, or as events warrant.",
     "stage": "Active",
     "communicationId": "636361902146035247",
     "version": "0.1.1"
   }
 }
 ```
-Informationen zu den Werten in den Eigenschaften finden Sie im Artikel [Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal](./../../azure-monitor/platform/service-notifications.md).
+Informationen zu den Werten in den Eigenschaften finden Sie im Artikel [Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal](../../service-health/service-notifications.md).
 
-## <a name="resource-health"></a>Ressourcenintegrität
+## <a name="resource-health-category"></a>Kategorie „Ressourcenintegrität“
 Diese Kategorie enthält Datensätze zu allen Ereignissen im Zusammenhang mit der Ressourcenintegrität, die für Ihre Azure-Ressourcen aufgetreten sind. Ein Beispiel für die Art der Ereignisse, die in dieser Kategorie angezeigt werden, ist „Integritätsstatus des virtuellen Computers ist zu Nicht verfügbar gewechselt“. Ereignisse zur Ressourcenintegrität können über einen von vier Integritätsstatus verfügen: „Available“, „Unavailable“, „Degraded“ und „Unknown“. Darüber hinaus können Ereignisse zur Ressourcenintegrität kategorisiert werden. Dabei sind die Kategorien „Von der Plattform initiiert“ oder „Vom Benutzer initiiert“ verfügbar.
 
 ### <a name="sample-event"></a>Beispielereignis
@@ -285,8 +316,8 @@ Diese Kategorie enthält Datensätze zu allen Ereignissen im Zusammenhang mit de
 | properties.cause | Eine Beschreibung der Ursache des Resource Health-Ereignisses. Entweder „UserInitiated“ oder „PlatformInitiated“. |
 
 
-## <a name="alert"></a>Warnung
-Diese Kategorie enthält die Datensätze zu allen Aktivierungen von Azure-Warnungen. Ein Beispiel für ein Ereignis in dieser Kategorie ist „CPU-Auslastung auf „myVM“ lag in den letzten 5 Minuten über 80“. Eine Vielzahl von Azure-Systemen weist ein Konzept für Warnungen auf: Sie können eine Regel definieren und erhalten eine Benachrichtigung, wenn die Bedingungen mit der Regel übereinstimmen. Jedes Mal, wenn ein unterstützter Azure-Warnungstyp „aktiviert“ wird oder die Bedingungen erfüllt sind, sodass eine Benachrichtigung generiert wird, wird ein Datensatz der Aktivierung auch in dieser Kategorie des Aktivitätsprotokolls abgelegt.
+## <a name="alert-category"></a>Kategorie „Warnung“
+Diese Kategorie enthält die Datensätze zu allen Aktivierungen von klassischen Azure-Warnungen. Ein Beispiel für ein Ereignis in dieser Kategorie ist „CPU-Auslastung auf ‚myVM‘ liegt in den letzten 5 Minuten über 80“. Eine Vielzahl von Azure-Systemen weist ein Konzept für Warnungen auf: Sie können eine Regel definieren und erhalten eine Benachrichtigung, wenn die Bedingungen mit der Regel übereinstimmen. Jedes Mal, wenn ein unterstützter Azure-Warnungstyp „aktiviert“ wird oder die Bedingungen erfüllt sind, sodass eine Benachrichtigung generiert wird, wird ein Datensatz der Aktivierung auch in dieser Kategorie des Aktivitätsprotokolls abgelegt.
 
 ### <a name="sample-event"></a>Beispielereignis
 
@@ -399,8 +430,8 @@ Das Feld „properties“ enthält abhängig von der Quelle des Warnungsereignis
 | properties.MetricName | Der Metrikname der Metrik, die bei der Auswertung der Metrikwarnungsregel verwendet wird. |
 | properties.MetricUnit | Die Metrikeinheit für die Metrik, die bei der Auswertung der Metrikwarnungsregel verwendet wird. |
 
-## <a name="autoscale"></a>Autoscale
-Diese Kategorie enthält Datensätze zu Ereignissen im Zusammenhang mit der Engine für die automatische Skalierung – basierend auf den Einstellungen für die automatische Skalierung, die Sie in Ihrem Abonnement definiert haben. Ein Beispiel für Ereignisse in dieser Kategorie ist „Fehler beim automatischen zentralen Hochskalieren“. Mit der automatischen Skalierung können Sie die Anzahl der Instanzen eines unterstützten Ressourcentyps basierend auf der Tageszeit und/oder Lastdaten (Metrik) mithilfe einer Einstellung für die automatische Skalierung automatisch horizontal hoch- oder herunterskalieren. Wenn die Bedingungen zum zentralen Hoch- oder Herunterskalieren erfüllt sind, werden Ereignisse zum Start und zum Erfolg oder Fehler in dieser Kategorie aufgezeichnet.
+## <a name="autoscale-category"></a>Kategorie „Autoskalierung“
+Diese Kategorie enthält Datensätze zu Ereignissen im Zusammenhang mit der Engine für die automatische Skalierung – basierend auf den Einstellungen für die automatische Skalierung, die Sie in Ihrem Abonnement definiert haben. Ein Beispiel für Ereignisse in dieser Kategorie ist „Fehler beim automatischen Hochskalieren“. Mit der automatischen Skalierung können Sie die Anzahl der Instanzen eines unterstützten Ressourcentyps basierend auf der Tageszeit und/oder Lastdaten (Metrik) mithilfe einer Einstellung für die automatische Skalierung automatisch auf- oder abskalieren. Wenn die Bedingungen zum Hoch- oder Herunterskalieren erfüllt sind, werden Ereignisse zum Start und zum Erfolg oder Fehler in dieser Kategorie aufgezeichnet.
 
 ### <a name="sample-event"></a>Beispielereignis
 ```json
@@ -486,7 +517,7 @@ Diese Kategorie enthält Datensätze zu Ereignissen im Zusammenhang mit der Engi
 | submissionTimestamp |Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
 | subscriptionId |Die Azure-Abonnement-ID. |
 
-## <a name="security"></a>Sicherheit
+## <a name="security-category"></a>Kategorie „Sicherheit“
 Diese Kategorie enthält den Datensatz, der von Warnungen in Azure Security Center generiert wurde. Ein Beispiel für den Typ der Ereignisse, die in dieser Kategorie angezeigt werden, ist „Verdächtige Datei mit doppelter Erweiterung ausgeführt“.
 
 ### <a name="sample-event"></a>Beispielereignis
@@ -574,7 +605,7 @@ Diese Kategorie enthält den Datensatz, der von Warnungen in Azure Security Cent
 | submissionTimestamp |Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
 | subscriptionId |Die Azure-Abonnement-ID. |
 
-## <a name="recommendation"></a>Empfehlung
+## <a name="recommendation-category"></a>Kategorie „Empfehlung“
 Diese Kategorie enthält den Datensatz mit den neuen Empfehlungen, die für Ihre Dienste generiert werden. Ein Beispiel für eine Empfehlung wäre „Verwenden Sie für eine verbesserte Fehlertoleranz Verfügbarkeitsgruppen“. Vier Typen von Empfehlungsereignissen können generiert werden: „High Availability“, „Performance“, „Security“ und „Cost Optimization“. 
 
 ### <a name="sample-event"></a>Beispielereignis
@@ -654,7 +685,7 @@ Diese Kategorie enthält den Datensatz mit den neuen Empfehlungen, die für Ihre
 | properties.recommendationImpact| Auswirkung der Empfehlung. Mögliche Werte sind „Hoch“, „Mittel“ oder „Niedrig“. |
 | properties.recommendationRisk| Risiko der Empfehlung. Mögliche Werte sind „Fehler“, „Warnung“, „Kein“. |
 
-## <a name="policy"></a>Richtlinie
+## <a name="policy-category"></a>Kategorie „Richtlinie“
 
 Diese Kategorie enthält Datensätze aller Aktionsvorgänge für Auswirkungen, die von [Azure Policy](../../governance/policy/overview.md) ausgeführt werden. Beispiele für Ereignistypen, die in dieser Kategorie angezeigt werden, sind _Audit_ und _Deny_. Jede Aktion, die von Policy ausgeführt wird, ist als ein Vorgang für eine Ressource modelliert.
 
@@ -743,7 +774,7 @@ Diese Kategorie enthält Datensätze aller Aktionsvorgänge für Auswirkungen, d
 
 | Elementname | BESCHREIBUNG |
 | --- | --- |
-| authorization | Array von RBAC-Eigenschaften des Ereignisses. Bei neuen Ressourcen ist dies die Aktion und der Bereich der Anforderung, die eine Auswertung ausgelöst hat. Bei vorhandenen Ressourcen lautet die Aktion „Microsoft.Resources/checkPolicyCompliance/read“. |
+| authorization | Array von Azure RBAC-Eigenschaften des Ereignisses. Bei neuen Ressourcen ist dies die Aktion und der Bereich der Anforderung, die eine Auswertung ausgelöst hat. Bei vorhandenen Ressourcen lautet die Aktion „Microsoft.Resources/checkPolicyCompliance/read“. |
 | caller | Bei neuen Ressourcen ist dies die Identität, die eine Bereitstellung initiiert hat. Bei vorhandenen Ressourcen ist dies die GUID des Microsoft Azure Policy Insights-Ressourcenanbieters. |
 | channels | Richtlinienereignisse verwenden nur den Kanal „Operation“. |
 | claims | Das JWT-Token, das von Active Directory zum Authentifizieren des Benutzers oder der Anwendung zur Ausführung dieses Vorgangs in Resource Manager verwendet wird. |
@@ -771,11 +802,15 @@ Diese Kategorie enthält Datensätze aller Aktionsvorgänge für Auswirkungen, d
 | properties.policies | Enthält Details zur Richtliniendefinition, Zuweisung, Auswirkung und Parametern, deren Ergebnis diese Richtlinienauswertung ist. |
 | relatedEvents | Dieses Feld ist bei Richtlinienereignissen leer. |
 
-## <a name="mapping-to-diagnostic-logs-schema"></a>Zuordnung zum Diagnoseprotokollschema
 
-Beim Streamen des Azure-Aktivitätsprotokolls an ein Speicherkonto oder den Event Hubs-Namespace entsprechen die Daten dem [Azure-Diagnoseprotokollschema](./diagnostic-logs-schema.md). Hier finden Sie die Zuordnung der Eigenschaften aus dem oben genannten Schema zum Diagnoseprotokollschema:
+## <a name="schema-from-storage-account-and-event-hubs"></a>Schema aus Speicherkonto und Event Hubs
+Beim Streamen des Azure-Aktivitätsprotokolls an ein Speicherkonto oder Event Hub entsprechen die Daten dem [Ressourcenprotokollschema](./resource-logs-schema.md). Die folgende Tabelle zeigt die Zuordnung der Eigenschaften aus den oben genannten Schemas zum Ressourcenprotokollschema.
 
-| Eigenschaft im Diagnoseprotokollschema | Eigenschaft im REST-API-Schema des Aktivitätsprotokolls | Notizen |
+> [!IMPORTANT]
+> Das Format der Aktivitätsprotokolldaten, die in das Speicherkonto geschrieben werden, wurde am 1. November 2018 in JSON Lines geändert. Einzelheiten zu dieser Formatumstellung finden Sie unter [Vorbereiten der Formatumstellung auf Azure Monitor-Ressourcenprotokolle, die in einem Speicherkonto archiviert werden](./resource-logs-blob-format.md).
+
+
+| Eigenschaft im Ressourcenprotokollschema | Eigenschaft im REST-API-Schema des Aktivitätsprotokolls | Notizen |
 | --- | --- | --- |
 | time | eventTimestamp |  |
 | resourceId | resourceId | „subscriptionId“, „resourceType“ und „resourceGroupName“ werden alle aus der „resourceId“ abgeleitet. |
@@ -788,16 +823,76 @@ Beim Streamen des Azure-Aktivitätsprotokolls an ein Speicherkonto oder den Even
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |
 | identity | Ansprüche und Autorisierungseigenschaften |  |
-| Level | Level |  |
+| Ebene | Ebene |  |
 | location | – | Ort, an dem das Ereignis verarbeitet wurde. *Dies ist nicht der Speicherort der Ressource, sondern der Ort, an dem das Ereignis verarbeitet wurde. Diese Eigenschaft wird in einem kommenden Update entfernt.* |
-| Properties | properties.eventProperties |  |
+| Eigenschaften | properties.eventProperties |  |
 | properties.eventCategory | category | Wenn „properties.eventCategory“ nicht vorhanden ist, ist die Kategorie „Administrative“ |
 | properties.eventName | eventName |  |
 | properties.operationId | operationId |  |
 | properties.eventProperties | properties |  |
 
+Es folgt ein Beispiel für ein Ereignis mit diesem Schema.
+
+``` JSON
+{
+    "records": [
+        {
+            "time": "2019-01-21T22:14:26.9792776Z",
+            "resourceId": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
+            "operationName": "microsoft.support/supporttickets/write",
+            "category": "Write",
+            "resultType": "Success",
+            "resultSignature": "Succeeded.Created",
+            "durationMs": 2826,
+            "callerIpAddress": "111.111.111.11",
+            "correlationId": "c776f9f4-36e5-4e0e-809b-c9b3c3fb62a8",
+            "identity": {
+                "authorization": {
+                    "scope": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
+                    "action": "microsoft.support/supporttickets/write",
+                    "evidence": {
+                        "role": "Subscription Admin"
+                    }
+                },
+                "claims": {
+                    "aud": "https://management.core.windows.net/",
+                    "iss": "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+                    "iat": "1421876371",
+                    "nbf": "1421876371",
+                    "exp": "1421880271",
+                    "ver": "1.0",
+                    "http://schemas.microsoft.com/identity/claims/tenantid": "00000000-0000-0000-0000-000000000000",
+                    "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
+                    "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
+                    "puid": "20030000801A118C",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "9vckmEGF7zDKk1YzIY8k0t1_EAPaXoeHyPRn6f413zM",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "John",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Smith",
+                    "name": "John Smith",
+                    "groups": "cacfe77c-e058-4712-83qw-f9b08849fd60,7f71d11d-4c41-4b23-99d2-d32ce7aa621c,31522864-0578-4ea0-9gdc-e66cc564d18c",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": " admin@contoso.com",
+                    "appid": "c44b4083-3bq0-49c1-b47d-974e53cbdf3c",
+                    "appidacr": "2",
+                    "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+                    "http://schemas.microsoft.com/claims/authnclassreference": "1"
+                }
+            },
+            "level": "Information",
+            "location": "global",
+            "properties": {
+                "statusCode": "Created",
+                "serviceRequestId": "50d5cddb-8ca0-47ad-9b80-6cde2207f97c"
+            }
+        }
+    ]
+}
+```
+
+
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Weitere Informationen zum Aktivitätsprotokoll](activity-logs-overview.md)
-* [Exportieren des Aktivitätsprotokolls in Azure Storage oder Event Hubs](activity-log-export.md)
-
+* [Weitere Informationen zum Aktivitätsprotokoll](platform-logs-overview.md)
+* [Erstellen einer Diagnoseeinstellung zum Senden des Aktivitätsprotokolls an einen Log Analytics-Arbeitsbereich, Azure Storage oder Event Hubs](diagnostic-settings.md)

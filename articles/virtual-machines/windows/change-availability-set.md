@@ -1,32 +1,27 @@
 ---
-title: Ändern der Verfügbarkeitsgruppe eines virtuellen Computers | Microsoft Docs
-description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell und des Resource Manager-Bereitstellungsmodells die Verfügbarkeitsgruppe für Ihre virtuellen Computer ändern.
-keywords: ''
-services: virtual-machines-windows
-documentationcenter: ''
+title: Ändern einer Verfügbarkeitsgruppe für virtuelle Computer
+description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell die Verfügbarkeitsgruppe für Ihren virtuellen Computer ändern.
+ms.service: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
-ms.date: 02/12/2019
+ms.topic: how-to
+ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 0a91a80c18b04e257daa9a42fd7933351fe3a35c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8c0694bd1dc2fefed644dc91a0d649dd1a480428
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080148"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654539"
 ---
-# <a name="change-the-availability-set-for-a-windows-vm"></a>Ändern der Verfügbarkeitsgruppe für einen virtuellen Windows-Computer
+# <a name="change-the-availability-set-for-a-vm"></a>Ändern der Verfügbarkeitsgruppe für einen virtuellen Computer
 Die folgenden Schritte beschreiben, wie Sie die Verfügbarkeitsgruppe eines virtuellen Computers über Azure PowerShell ändern. Ein virtueller Computer kann nur zum Zeitpunkt der Erstellung zu einer Verfügbarkeitsgruppe hinzugefügt werden. Um die Verfügbarkeitsgruppe zu ändern, müssen Sie den virtuellen Computer löschen und neu erstellen. 
 
-Dieser Artikel wurde zuletzt am 12.02.2019 unter Verwendung von [Azure Cloud Shell](https://shell.azure.com/powershell) und Version 1.2.0 des [Az-PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) geprüft.
+Dieser Artikel gilt sowohl für virtuelle Linux- als auch für virtuelle Windows-Computer.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+Dieser Artikel wurde zuletzt am 12.02.2019 unter Verwendung von [Azure Cloud Shell](https://shell.azure.com/powershell) und Version 1.2.0 des [Az-PowerShell-Moduls](/powershell/azure/install-az-ps) geprüft.
+
+In diesem Beispiel wird nicht überprüft, ob der virtuelle Computer mit einem Lastenausgleich verknüpft ist. Ist Ihr virtueller Computer mit einem Lastenausgleich verknüpft, muss das Skript entsprechend aktualisiert werden. 
+
 
 ## <a name="change-the-availability-set"></a>Ändern der Verfügbarkeitsgruppe 
 
@@ -61,12 +56,13 @@ Das folgende Skript zeigt ein Beispiel für das Erfassen der erforderlichen Info
 # Remove the original VM
     Remove-AzVM -ResourceGroupName $resourceGroup -Name $vmName    
 
-# Create the basic configuration for the replacement VM
+# Create the basic configuration for the replacement VM. 
     $newVM = New-AzVMConfig `
        -VMName $originalVM.Name `
        -VMSize $originalVM.HardwareProfile.VmSize `
        -AvailabilitySetId $availSet.Id
-  
+ 
+# For a Linux VM, change the last parameter from -Windows to -Linux 
     Set-AzVMOSDisk `
        -VM $newVM -CreateOption Attach `
        -ManagedDiskId $originalVM.StorageProfile.OsDisk.ManagedDisk.Id `
@@ -87,18 +83,18 @@ Das folgende Skript zeigt ein Beispiel für das Erfassen der erforderlichen Info
 # Add NIC(s) and keep the same NIC as primary
     foreach ($nic in $originalVM.NetworkProfile.NetworkInterfaces) {    
     if ($nic.Primary -eq "True")
-        {
+    {
             Add-AzVMNetworkInterface `
-            -VM $newVM `
-            -Id $nic.Id -Primary
-            }
-        else
-            {
-              Add-AzVMNetworkInterface `
-              -VM $newVM `
-              -Id $nic.Id 
+               -VM $newVM `
+               -Id $nic.Id -Primary
+               }
+           else
+               {
+                 Add-AzVMNetworkInterface `
+                -VM $newVM `
+                 -Id $nic.Id 
                 }
-    }
+      }
 
 # Recreate the VM
     New-AzVM `
@@ -111,4 +107,3 @@ Das folgende Skript zeigt ein Beispiel für das Erfassen der erforderlichen Info
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erweitern Sie den Speicher für Ihren virtuellen Computer, indem Sie einen zusätzlichen [Datenträger](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)hinzufügen.
-

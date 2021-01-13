@@ -1,24 +1,24 @@
 ---
-title: Überwachung von Migrationsaktivität mithilfe von Azure Database Migration Service | Microsoft-Dokumentation
+title: Überwachen der Migrationsaktivität – Azure Database Migration Service
 description: Hier erfahren Sie, wie Migrationsaktivität mithilfe von Azure Database Migration Service überwacht wird.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
-ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 325bbee3f3d5ad5097f710cb56fe03baff97388a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: seo-lt-2019
+ms.topic: how-to
+ms.date: 02/20/2020
+ms.openlocfilehash: dc9123735ef65bec89e99a14d25cba881be306fe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60532819"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91297469"
 ---
-# <a name="monitor-migration-activity"></a>Überwachen der Migrationsaktivität
+# <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Überwachen der Migrationsaktivität mithilfe von Azure Database Migration Service
 In diesem Artikel erfahren Sie, wie der Fortschritt einer Migration auf Datenbankebene und Tabellenebene überwacht wird.
 
 ## <a name="monitor-at-the-database-level"></a>Überwachung auf Datenbankebene
@@ -46,7 +46,7 @@ In der folgenden Tabelle sind die Felder des Blatts auf Datenbankebene aufgelist
       <td>Migrationsaktivität wird ausgeführt.</td>
     </tr>
     <tr>
-      <td>Succeeded</td>
+      <td>Erfolgreich</td>
       <td>Migrationsaktivität erfolgreich ohne Probleme.</td>
     </tr>
     <tr>
@@ -136,7 +136,7 @@ In der folgenden Tabelle sind die im Migrationsfortschritt auf Tabellenebene ang
 | **Aktualisieren** | Anzahl von auf das Ziel angewendete CDC-Updates in Zeilen.      |
 | **Löschen**      | Anzahl von auf das Ziel angewendete CDC-Löschungen in Zeilen. |
 | **Angewendet gesamt**      | Gesamtanzahl von auf das Ziel angewendeten CDC-Updates, -Einfügungen und -Löschungen in Zeilen. |
-| **Datenfehler** | Anzahl der in dieser Tabelle aufgetretenen Datenfehler. Einige Beispiele für Fehler sind *511: Eine Zeile der Größe %d kann nicht erstellt werden, da sie länger als die zulässige maximale Zeilengröße von %d wäre, 8114: Fehler beim Konvertieren des %ls-Datentyps in %ls.*  Kunden sollten eine Abfrage von Tabelle „dms_apply_exceptions“ im Azure-Ziel durchführen, um die Fehlerdetails anzuzeigen.    |
+| **Datenfehler** | Anzahl der in dieser Tabelle aufgetretenen Datenfehler. Einige Beispiele für Fehler sind *511: Eine Zeile der Größe %d kann nicht erstellt werden, da sie länger als die zulässige maximale Zeilengröße von %d wäre, 8114: Fehler beim Konvertieren des %ls-Datentyps in %ls*.  Kunden sollten eine Abfrage von Tabelle „dms_apply_exceptions“ im Azure-Ziel durchführen, um die Fehlerdetails anzuzeigen.    |
 
 > [!NOTE]
 > Die CDC-Werte „Einfügen“, „Aktualisieren“, „Löschen“ und „Angewendet gesamt“ verringern sich möglicherweise, wenn die Datenbank umgestellt oder die Migration neu gestartet wird.

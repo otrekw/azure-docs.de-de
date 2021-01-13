@@ -1,25 +1,17 @@
 ---
-title: Konfigurieren von Azure Service Fabric Reliable Services | Microsoft-Dokumentation
-description: Erfahren Sie mehr über das Konfigurieren zustandsbehafteter Reliable Services in Azure Service Fabric.
-services: Service-Fabric
-documentationcenter: .net
+title: Konfigurieren von Azure Service Fabric Reliable Services
+description: Erfahren Sie, wie Sie zustandsbehaftete Reliable Services in einer Azure Service Fabric-Anwendung global und für einen einzelnen Dienst konfigurieren.
 author: sumukhs
-manager: chackdan
-editor: vturecek
-ms.assetid: 9f72373d-31dd-41e3-8504-6e0320a11f0e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 8ddb5d0566c57dd1d507d543ac53c0975a83dd43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cda0a9f988afae58a60bff051885a5eec8afe434
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723551"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023583"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurieren zustandsbehafteter Reliable Services
 Es gibt zwei Sets von Konfigurationseinstellungen für Reliable Services. Ein Set gilt global für alle Reliable Services im Cluster, während das andere für den jeweiligen Reliable Service spezifisch ist.
@@ -28,7 +20,7 @@ Es gibt zwei Sets von Konfigurationseinstellungen für Reliable Services. Ein Se
 Die globale Konfiguration für Reliable Services wird im Clustermanifest für den Cluster im Abschnitt „KtlLogger“ angegeben. Sie können daher jetzt für das freigegebene Protokoll Folgendes konfigurieren: den Speicherort und die Größe, sowie die vom Protokollierungstool verwendeten globalen Speicherlimits. Das Clustermanifest ist eine einzelne XML-Datei, die Einstellungen und Konfigurationen für alle Knoten und Dienste im Cluster enthält. Die Datei heißt normalerweise „ClusterManifest.xml“. Mit dem PowerShell-Befehl Get-ServiceFabricClusterManifest können Sie das Clustermanifest für Ihren Cluster sehen.
 
 ### <a name="configuration-names"></a>Konfigurationsnamen
-| NAME | Unit | Standardwert | Anmerkungen |
+| Name | Einheit | Standardwert | Bemerkungen |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |Kilobytes |8388608 |KB-Mindestwert, der im Kernelmodus dem Schreibpuffer-Speicherpool des Protokollierungstools zugeordnet wird. Dieser Speicherpool wird zum Zwischenspeichern von Zustandsinformationen verwendet, bevor auf den Datenträger geschrieben wird. |
 | WriteBufferMemoryPoolMaximumInKB |Kilobytes |Keine Begrenzung |Maximale Größe, auf die der Schreibpuffer-Speicherpool des Protokollierungstools anwachsen kann. |
@@ -38,13 +30,15 @@ Die globale Konfiguration für Reliable Services wird im Clustermanifest für de
 
 Im folgenden Beispiel wird in einer Azure ARM- bzw. einer lokalen JSON-Vorlage gezeigt, wie Sie das freigegebene Transaktionsprotokoll ändern, das als Unterstützung zuverlässiger Sammlungen für zustandsbehaftete Dienste erstellt wird.
 
-    "fabricSettings": [{
-        "name": "KtlLogger",
-        "parameters": [{
-            "name": "SharedLogSizeInMB",
-            "value": "4096"
-        }]
+```json
+"fabricSettings": [{
+    "name": "KtlLogger",
+    "parameters": [{
+        "name": "SharedLogSizeInMB",
+        "value": "4096"
     }]
+}]
+```
 
 ### <a name="sample-local-developer-cluster-manifest-section"></a>Beispiel für den Abschnitt „clustermanifest“ bei lokaler Entwicklung
 Wenn Sie dies in der lokalen Entwicklungsumgebung ändern möchten, müssen Sie die lokale Datei „clustermanifest.xml“ bearbeiten.
@@ -59,7 +53,7 @@ Wenn Sie dies in der lokalen Entwicklungsumgebung ändern möchten, müssen Sie 
    </Section>
 ```
 
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
 Das Protokollierungstool verfügt über einen globalen Pool mit Speicher, der aus einem nicht ausgelagerten Kernelspeicher zugeordnet wird. Dieser ist für alle Reliable Services auf einem Knoten zum Zwischenspeichern von Zustandsdaten verfügbar, bevor diese in das dedizierte, dem Reliable Service-Replikat zugeordnete Protokoll geschrieben werden. Die Poolgröße wird mit WriteBufferMemoryPoolMinimumInKB und den Einstellungen von WriteBufferMemoryPoolMaximumInKB gesteuert. Mit WriteBufferMemoryPoolMinimumInKB wird sowohl die Anfangsgröße des Speicherpools als auch die kleinste Größe angegeben, auf die der Speicherpool verkleinert werden kann. WriteBufferMemoryPoolMaximumInKB ist die maximale Größe, auf die der Speicherpool anwachsen kann. Jedes geöffnete Reliable Services-Replikat kann die Größe des Speicherpools um einen vom System bestimmten Betrag maximal auf die in WriteBufferMemoryPoolMaximumInKB angegebene Größe erhöhen. Falls der Bedarf an Speicher aus dem Speicherpool die Verfügbarkeit übersteigt, werden Speicheranforderungen zurückgestellt, bis wieder Speicher verfügbar ist. Falls der Schreibpuffer-Speicherpool zu klein für eine bestimmte Konfiguration ist, kann dies die Leistung negativ beeinträchtigen.
 
 Die Einstellungen von SharedLogId und SharedLogPath werden immer zusammen verwendet, um die GUID und den Speicherort für das standardmäßige freigegebene Protokoll für alle Knoten im Cluster zu definieren. Das standardmäßige freigegebene Protokoll wird für alle Reliable Services verwendet, bei denen die Einstellungen nicht in der Datei „Settings.xml“ für den jeweiligen Dienst angegeben werden. Um die beste Leistung zu erzielen, sollten freigegebene Protokolldateien auf Datenträgern gespeichert werden, die ausschließlich für die freigegebene Protokolldatei verwendet werden. So werden Konflikte reduziert.
@@ -109,7 +103,7 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>Konfigurationsnamen
-| NAME | Unit | Standardwert | Anmerkungen |
+| Name | Einheit | Standardwert | Bemerkungen |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekunden |0,015 |So lange wartet der Replicator auf dem sekundären Replicator nach dem Empfang eines Vorgangs, bevor er eine Bestätigung an den primären Replicator sendet. Alle anderen Bestätigungen, die für innerhalb dieses Intervalls verarbeitete Vorgänge gesendet werden, werden als eine einzelne Antwort gesendet. |
 | ReplicatorEndpoint |– |Kein Standardwert – Erforderlicher Parameter |Die IP-Adresse und der Port, die der primäre/sekundäre Replicator für die Kommunikation mit anderen Replicatoren in der Replikatgruppe verwendet. Dabei sollte im Dienstmanifest auf einen TCP-Ressourcenendpunkt verwiesen werden. Weitere Informationen zum Definieren von Endpunktressourcen in einem Dienstmanifest finden Sie unter [Angeben von Ressourcen in einem Dienstmanifest](service-fabric-service-manifest-resources.md) . |
@@ -125,6 +119,7 @@ ReplicatorConfig
 | SharedLogPath |Vollständig qualifizierter Pfadname |"" |Gibt den vollständig qualifizierten Pfad an, in dem die freigegebene Protokolldatei für dieses Replikat erstellt wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden. |
 | SlowApiMonitoringDuration |Sekunden |300 |Legt das Überwachungsintervall für verwaltete API-Aufrufe fest. Beispiel: Vom Benutzer bereitgestellte Sicherungsrückruffunktion. Nach Ablauf des Intervalls wird ein Warnbericht zur Integrität an den Health Manager gesendet. |
 | LogTruncationIntervalSeconds |Sekunden |0 |Konfigurierbares Intervall, in dem bei jedem Replikat eine Protokollkürzung initiiert wird. Mit seiner Hilfe wird sichergestellt, dass das Protokoll auch nach Zeit und nicht nur nach Größe des Protokolls abgeschnitten wird. Diese Einstellung erzwingt auch das endgültige Löschen der gelöschten Einträge im zuverlässigen Wörterbuch. Daher kann es verwendet werden, um sicherzustellen, dass gelöschte Elemente rechtzeitig endgültig gelöscht werden. |
+| EnableStableReads |Boolean |False |Durch Aktivieren stabiler Lesevorgänge werden die Rückgaben sekundärer Replikate auf Werte beschränkt, die durch ein Quorum bestätigt wurden. |
 
 ### <a name="sample-configuration-via-code"></a>Beispielkonfiguration per Code
 ```csharp
@@ -180,7 +175,7 @@ class MyStatefulService : StatefulService
 ```
 
 
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
 "BatchAcknowledgementInterval" steuert die Replikationslatenz. Der Wert "0" ergibt die geringstmögliche Latenz, allerdings auf Kosten des Durchsatzes (da eine größer Anzahl von Bestätigungsnachrichten gesendet und verarbeitet werden muss, von denen jede weniger Bestätigungen enthält).
 Je größer der Wert für "BatchAcknowledgementInterval" ist, um so höher ist der Gesamtdurchsatz der Replikation, zu Lasten einer höheren Vorgangslatenz. Daraus ergibt sich direkt die Latenz von Transaktions-Commits.
 
@@ -192,5 +187,4 @@ Die Einstellungen SharedLogId und SharedLogPath werden immer zusammen verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Debuggen einer Service Fabric-Anwendung in Visual Studio](service-fabric-debugging-your-application.md)
-* [Entwicklerreferenz für zuverlässige Dienste](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+* [Entwicklerreferenz für zuverlässige Dienste](/previous-versions/azure/dn706529(v=azure.100))

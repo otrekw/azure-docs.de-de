@@ -1,27 +1,26 @@
 ---
-title: Verschieben von Daten mit der Kopieraktivität | Microsoft Docs
+title: Verschieben von Daten mit der Kopieraktivität
 description: 'Informieren Sie sich über das Verschieben von Daten in Data Factory-Pipelines: Datenmigration zwischen Cloudspeichern sowie zwischen lokalen Speichern und Cloudspeichern. Verwenden der Kopieraktivität'
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bfb15e717e3cb726aba782d9a9506330d7ea39fe
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839318"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84195965"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Verschieben von Daten mit der Kopieraktivität
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-data-movement-activities.md)
 > * [Version 2 (aktuelle Version)](../copy-activity-overview.md)
 
@@ -82,13 +81,13 @@ Die Kopieraktivität liest auch aus Dateien der angegebenen Formate bzw. schreib
 
 Sie können z.B. folgende Kopieraktivitäten ausführen:
 
-* Kopieren von Daten in einer lokalen SQL Server-Instanz und Schreiben in Azure Data Lake Store im ORC-Format
+* Kopieren von Daten in einer SQL Server-Datenbank und Schreiben in Azure Data Lake Store im ORC-Format
 * Kopieren von Dateien im Textformat (CSV) aus dem lokalen Dateisystem und Schreiben in einen Azure-Blob im Avro-Format
 * Kopieren von ZIP-Dateien aus dem lokalen Dateisystem und Dekomprimieren in Azure Data Lake Store
 * Kopieren von Daten im GZip-komprimierten Textformat (CSV) aus einem Azure-Blob und Schreiben in Azure SQL-Datenbank
 
-## <a name="global"></a>Global verfügbare Datenverschiebung
-Azure Data Factory ist nur in den USA (Westen), USA (Osten) und Nordeuropa verfügbar. Jedoch ist der Dienst, der die Kopieraktivität unterstützt, in den folgenden Regionen und Ländern global verfügbar. Die global verfügbare Topologie gewährleistet effiziente Datenverschiebungen, die regionsübergreifende Hops in der Regel vermeiden. Unter [Dienste nach Region](https://azure.microsoft.com/regions/#services) erfahren Sie, in welchen Regionen Data Factory und die Datenverschiebung verfügbar sind.
+## <a name="globally-available-data-movement"></a><a name="global"></a>Global verfügbare Datenverschiebung
+Azure Data Factory ist nur in den USA, Westen; USA, Osten und Europa, Norden verfügbar. Jedoch ist der Dienst, der die Kopieraktivität unterstützt, in den folgenden Regionen und Ländern global verfügbar. Die global verfügbare Topologie gewährleistet effiziente Datenverschiebungen, die regionsübergreifende Hops in der Regel vermeiden. Unter [Dienste nach Region](https://azure.microsoft.com/regions/#services) erfahren Sie, in welchen Regionen Data Factory und die Datenverschiebung verfügbar sind.
 
 ### <a name="copy-data-between-cloud-data-stores"></a>Kopieren von Daten zwischen Clouddatenspeichern
 Wenn sich Quell- und Senkendatenspeicher in der Cloud befinden, verwendet Data Factory zum Verschieben der Daten eine Dienstbereitstellung in der Region, die dem Gebiet der Senke am nächsten liegt. Informationen zur Zuordnung erhalten Sie in der folgenden Tabelle:
@@ -96,21 +95,21 @@ Wenn sich Quell- und Senkendatenspeicher in der Cloud befinden, verwendet Data F
 | Gebiet des Zieldatenspeichers | Region des Zieldatenspeichers | Verwendete Region für die Datenverschiebung |
 |:--- |:--- |:--- |
 | USA | East US | East US |
-| &nbsp; | USA, Osten 2 | USA (Ost) 2 |
+| &nbsp; | USA (Ost) 2 | USA (Ost) 2 |
 | &nbsp; | USA (Mitte) | USA (Mitte) |
 | &nbsp; | USA Nord Mitte | USA Nord Mitte |
 | &nbsp; | USA Süd Mitte | USA Süd Mitte |
 | &nbsp; | USA, Westen-Mitte | USA, Westen-Mitte |
 | &nbsp; | USA (Westen) | USA (Westen) |
 | &nbsp; | USA, Westen 2 | USA, Westen 2 |
-| Kanada | Kanada, Osten | Kanada, Mitte |
+| Canada | Kanada, Osten | Kanada, Mitte |
 | &nbsp; | Kanada, Mitte | Kanada, Mitte |
 | Brasilien | Brasilien Süd | Brasilien Süd |
 | Europa | Nordeuropa | Nordeuropa |
 | &nbsp; | Europa, Westen | Europa, Westen |
-| Vereinigtes Königreich | UK, Westen | UK, Süden |
+| United Kingdom | UK, Westen | UK, Süden |
 | &nbsp; | UK, Süden | UK, Süden |
-| Asien-Pazifik | Südostasien | Asien, Südosten |
+| Asien-Pazifik | Asien, Südosten | Asien, Südosten |
 | &nbsp; | Asien, Osten | Asien, Südosten |
 | Australien | Australien (Osten) | Australien (Osten) |
 | &nbsp; | Australien, Südosten | Australien, Südosten |
@@ -138,7 +137,7 @@ Sie können eine Pipeline mit einer Kopieraktivität auf verschiedene Arten erst
 Der Data Factory-Kopier-Assistent unterstützt Sie beim Erstellen einer Pipeline mit einer Kopieraktivität. Diese Pipeline ermöglicht das Kopieren von Daten aus unterstützten Quellen an Ziele *ohne das Schreiben von JSON-Definitionen* für verknüpfte Dienste, Datasets und Pipelines. Unter [Assistent zum Kopieren in Data Factory](data-factory-copy-wizard.md) finden Sie Einzelheiten zum Assistenten.  
 
 ### <a name="by-using-json-scripts"></a>Mithilfe von JSON-Skripts
-Sie können den Data Factory-Editor in Visual Studio oder Azure PowerShell verwenden, um eine JSON-Definition für eine Pipeline (mit Kopieraktivität) zu erstellen. Anschließend können Sie diese bereitstellen, um die Pipeline in Data Factory zu erstellen. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Verwenden der Kopieraktivität in einer Azure Data Factory-Pipeline](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie ein Tutorial mit Schritt-für-Schritt-Anleitungen.    
+Sie können den Data Factory-Editor in Visual Studio oder Azure PowerShell verwenden, um eine JSON-Definition für eine Pipeline (mit Kopieraktivität) zu erstellen. Anschließend können Sie diese bereitstellen, um die Pipeline in Data Factory zu erstellen. Siehe [Tutorial: Verwenden der Kopieraktivität in einer Azure Data Factory-Pipeline](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie ein Tutorial mit Schritt-für-Schritt-Anleitungen.    
 
 JSON-Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinien sind für alle Arten von Aktivitäten verfügbar. Die Eigenschaften, die im Abschnitt `typeProperties` der Aktivität verfügbar sind, variieren je nach Aktivitätstyp.
 

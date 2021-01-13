@@ -1,31 +1,27 @@
 ---
-title: Hinzufügen von Bereichen für die Ausführung von Aktionen auf der Grundlage des Gruppenstatus – Azure Logic Apps | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie in Azure Logic Apps Bereiche erstellen, die Workflowaktionen auf der Grundlage des Gruppenstatus ausführen.
+title: Gruppieren und Ausführen von Aktionen nach Bereich
+description: Erstellen von auf Bereiche begrenzten Aktionen in Azure Logic Apps, die auf Grundlage des Gruppenstatus ausgeführt werden
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: jeconnoc
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685406"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314843"
 ---
-# <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Ausführen von Aktionen basierend auf dem Gruppenstatus mit Bereichen in Azure Logic Apps
+# <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Ausführen von Aktionen basierend auf dem Gruppenstatus unter Verwendung von Bereichen in Azure Logic Apps
 
 Wenn Aktionen nur ausgeführt werden sollen, nachdem eine andere Gruppe von Aktionen erfolgreich oder nicht erfolgreich war, gruppieren Sie diese Aktionen in einem *Bereich*. Diese Struktur ist hilfreich, wenn Sie Aktionen als logische Gruppe organisieren, den Status dieser Gruppe auswerten und Aktionen durchführen möchten, die auf dem Status des Bereichs basieren. Nachdem die Ausführung aller Aktionen in einem Bereich beendet ist, erhält der Bereich auch einen eigenen Status. Beispielsweise können Sie Bereiche verwenden, wenn Sie die [Ausnahme- und Fehlerbehandlung](../logic-apps/logic-apps-exception-handling.md#scopes) implementieren möchten. 
 
-Zum Überprüfen des Status eines Bereichs können Sie die gleichen Kriterien wie zum Bestimmen des Ausführungsstatus einer Logik-App verwenden, z.B. „Erfolgreich“, „Fehlerhaft“, „Abgebrochen“ usw. Bei erfolgreicher Ausführung aller Aktionen des Bereichs wird der Status des Bereichs als „Erfolgreich“ festgelegt. Wenn jedoch eine Aktion im Bereich fehlschlägt oder abgebrochen wird, erhält der Bereich den Status „Fehlerhaft“. Grenzwerte für Bereiche finden Sie unter [Grenzwerte und Konfiguration](../logic-apps/logic-apps-limits-and-config.md). 
+Zum Überprüfen des Status eines Bereichs können Sie die gleichen Kriterien wie zum Bestimmen des Ausführungsstatus einer Logik-App verwenden, z.B. **Erfolgreich**, **Fehlerhaft**, **Abgebrochen** usw. Bei erfolgreicher Ausführung aller Aktionen des Bereichs wird der Status des Bereichs standardmäßig als **Erfolgreich** gekennzeichnet. Wenn jedoch eine Aktion im Bereich nicht ausgeführt werden kann oder abgebrochen wird, erhält der Bereich den Status **Fehlerhaft**. Grenzwerte für Bereiche finden Sie unter [Grenzwerte und Konfiguration](../logic-apps/logic-apps-limits-and-config.md). 
 
-Hier sehen Sie beispielsweise eine allgemeine Logik-App, die einen Bereich zum Ausführen bestimmter Aktionen und eine Bedingung zum Überprüfen des Bereichsstatus verwendet. Wenn Aktionen im Bereich fehlschlagen oder unerwartet beendet werden, wird der Bereich mit „Fehlerhaft“ bzw. „Abgebrochen“ gekennzeichnet, und die Logik-App sendet eine Nachricht, dass der Bereich fehlerhaft ist. Wenn alle Aktionen im Bereich erfolgreich sind, sendet die Logik-App ebenfalls eine entsprechende Nachricht.
+Hier sehen Sie beispielsweise eine allgemeine Logik-App, die einen Bereich zum Ausführen bestimmter Aktionen und eine Bedingung zum Überprüfen des Bereichsstatus verwendet. Wenn Aktionen im Bereich nicht ausgeführt werden können oder unerwartet beendet werden, wird der Bereich als **Fehlerhaft** bzw. **Abgebrochen** gekennzeichnet, und die Logik-App sendet eine Nachricht, dass der Bereich fehlerhaft ist. Wenn alle Aktionen im Bereich erfolgreich sind, sendet die Logik-App ebenfalls eine entsprechende Nachricht.
 
-![Einrichten des Auslösers „Zeitplan: Wiederholung“](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
+![Das Diagramm zeigt den Bereichsflow der Logik-App mit Beispielen für erfolgreiche und fehlerhafte Bereiche.](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,7 +31,7 @@ Um dem Beispiel in diesem Artikel zu folgen, benötigen Sie diese Elemente:
 
 * Ein E-Mail-Konto bei einem von Logic Apps unterstützten E-Mail-Anbieter. In diesem Beispiel wird Outlook.com verwendet. Wenn Sie einen anderen Anbieter verwenden, bleibt der allgemeine Ablauf gleich, das Erscheinungsbild der Benutzeroberfläche weicht jedoch ab.
 
-* Ein Bing Karten-Schlüssel. Informationen zum Abrufen eines Bing Karten-Schlüssels finden Sie <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">hier</a>.
+* Ein Bing Karten-Schlüssel. Informationen zum Abrufen eines Bing Karten-Schlüssels finden Sie <a href="/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key" target="_blank">hier</a>.
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -75,15 +71,15 @@ Sie können Ihre Logik-App jederzeit speichern, machen Sie also häufig Gebrauch
 
       ![Einrichten der Aktion „Bing Karten – Route ermitteln“](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
-      Weitere Informationen zu diesen Parametern finden Sie unter [Calculate a route](https://msdn.microsoft.com/library/ff701717.aspx) (Berechnen einer Route).
+      Weitere Informationen zu diesen Parametern finden Sie unter [Calculate a route](/bingmaps/rest-services/routes/calculate-a-route) (Berechnen einer Route).
 
       | Einstellung | Wert | BESCHREIBUNG |
       | ------- | ----- | ----------- |
       | **Wegpunkt 1** | <*Start*> | Geben Sie den Ausgangspunkt Ihrer Route ein. | 
       | **Wegpunkt 2** | <*Ende*> | Geben Sie das Ziel Ihrer Route ein. | 
-      | **Vermeiden** | Keine | Geben Sie Elemente ein, die auf der Route vermieden werden sollen, etwa Autobahnen, Mautgebühren usw. Mögliche Werte finden Sie im Artikel zum [Berechnen einer Route](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Vermeiden** | Keine | Geben Sie Elemente ein, die auf der Route vermieden werden sollen, etwa Autobahnen, Mautgebühren usw. Mögliche Werte finden Sie im Artikel zum [Berechnen einer Route](/bingmaps/rest-services/routes/calculate-a-route). | 
       | **Optimieren** | timeWithTraffic | Wählen Sie einen Parameter zur Optimierung der Route aus, z.B. Entfernung, Reisezeit basierend auf der aktuellen Verkehrslage, usw. In diesem Beispiel wird der „timeWithTraffic“ verwendet. | 
-      | **Distance unit** (Einheit für Entfernung) | <*Ihre Präferenz*> | Geben Sie die Einheit der Entfernung ein, um die Route zu berechnen. In diesem Beispiel wird folgender Wert verwendet: "Mile" | 
+      | **Distance unit** (Einheit für Entfernung) | <*Ihre Präferenz*> | Geben Sie die Einheit der Entfernung ein, um die Route zu berechnen. In diesem Beispiel wird folgender Wert verwendet: „Meile“ | 
       | **Travel mode** (Reisemodus) | Driving (Auto) | Geben Sie das Fortbewegungsmittel für die Route ein. In diesem Beispiel wird „Driving“ (Auto) verwendet. | 
       | **Transit Date-Time** (Datum und Uhrzeit für Transit) | Keine | Gilt für nur für den Transitmodus. | 
       | **Transit Date-Time Type** (Typ für Datum und Uhrzeit für Transit) | Keine | Gilt für nur für den Transitmodus. | 
@@ -92,7 +88,7 @@ Sie können Ihre Logik-App jederzeit speichern, machen Sie also häufig Gebrauch
 1. [Fügen Sie eine Bedingung hinzu](../logic-apps/logic-apps-control-flow-conditional-statement.md), die überprüft, ob die aktuelle Reisezeit mit Verkehr eine angegebene Zeit überschreitet. 
    Führen Sie für dieses Beispiel die folgenden Schritte aus:
 
-   1. Benennen Sie die Bedingung mit dieser Beschreibung um: **Wenn die Verkehrszeit die angegebene Zeit überschreitet**
+   1. Benennen Sie die Bedingung wie folgt um: **Wenn die Verkehrszeit die angegebene Zeit überschreitet**
 
    1. Klicken Sie in der linken Spalte in das Feld **Wert auswählen**, damit die dynamische Inhaltsliste angezeigt wird. Wählen Sie in der Liste das Feld **Travel Duration Traffic** (Reisedauer (Verkehr)) aus, das in Sekunden angegeben wird. 
 
@@ -183,7 +179,7 @@ Fügen Sie als nächstes einen Bereich hinzu, damit Sie bestimmte Aktionen grupp
 
    ![Bereich hinzugefügt](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-1. Fügen Sie unter dem Bereich eine Bedingung hinzu, die den Status des Bereichs prüft. Benennen Sie die Bedingung mit dieser Beschreibung um: **Wenn im Bereich ein Fehler auftritt**
+1. Fügen Sie unter dem Bereich eine Bedingung hinzu, die den Status des Bereichs prüft. Benennen Sie die Bedingung wie folgt um: **Wenn im Bereich ein Fehler auftritt**
 
    ![Hinzufügen einer Bedingung zum Überprüfen des Bereichsstatus](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   
@@ -196,7 +192,7 @@ Fügen Sie als nächstes einen Bereich hinzu, damit Sie bestimmte Aktionen grupp
    
       `result('Scope')[0]['status']`
 
-      ![Hinzufügen eines Ausdrucks, der den Bereichsstatus prüft](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![Screenshot des Felds „Ausdruck“ mit hervorgehobenem Ergebnisausdruck.](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. Wählen Sie für beide Zeilen **ist gleich** als Operator aus. 
    
@@ -392,7 +388,7 @@ Wenn Sie in der Codeansicht arbeiten, können Sie stattdessen in der JSON-Defini
 
 ## <a name="get-support"></a>Support
 
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A für Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Wenn Sie Featurevorschläge übermitteln oder darüber abstimmen möchten, besuchen Sie die [Website für Azure Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte

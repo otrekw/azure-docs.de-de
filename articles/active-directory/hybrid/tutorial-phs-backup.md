@@ -12,12 +12,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5ad7badfa44a006fd7e71d3b0e42ee95ac698d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3d9f59906c566d80344891c0796a85b0a4972e68
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919007"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91313092"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Tutorial:  Einrichten der Kennworthashsynchronisierung als Sicherung für AD FS in Azure AD Connect
 
@@ -33,12 +33,12 @@ Im folgenden Tutorial werden Sie durch die Einrichtung der Kennworthashsynchroni
 Dieses Tutorial baut auf dem [Tutorial: Erstellen eines Verbunds einer Umgebung mit einer AD-Gesamtstruktur mit der Cloud](tutorial-federation.md) auf und ist Voraussetzung für die Bearbeitung des vorliegenden Tutorials.  Sofern noch nicht geschehen, bearbeiten Sie zunächst das genannte Tutorial, bevor Sie das vorliegende Dokument bearbeiten.
 
 >[!IMPORTANT]
->Vor einem Wechsel zu PHS (Password Hash Sync, Kennworthashsynchronisierung) sollten Sie eine Sicherung Ihrer AD FS-Umgebung erstellen.  Dazu können Sie das [AD FS Rapid Restore-Tool](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool) verwenden.
+>Vor einem Wechsel zu PHS (Password Hash Sync, Kennworthashsynchronisierung) sollten Sie eine Sicherung Ihrer AD FS-Umgebung erstellen.  Dazu können Sie das [AD FS Rapid Restore-Tool](/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool) verwenden.
 
 ## <a name="enable-phs-in-azure-ad-connect"></a>Aktivieren der Kennworthashsynchronisierung in Azure AD Connect
 Nachdem eine Azure AD Connect-Umgebung mit Verbund eingerichtet wurde, besteht der erste Schritt darin, die Kennworthashsynchronisierung zu aktivieren und Azure AD Connect das Synchronisieren der Hashes zu gestatten.
 
-Gehen Sie wie folgt vor:
+Gehen Sie folgendermaßen vor:
 
 1.  Doppelklicken Sie auf das Azure AD Connect-Symbol, das auf dem Desktop erstellt wurde.
 2.  Klicken Sie auf **Konfigurieren**.
@@ -74,7 +74,7 @@ Nachfolgend wird veranschaulicht, wie Sie auf die Kennworthashsynchronisierung u
 
 1. Rufen Sie [https://myapps.microsoft.com](https://myapps.microsoft.com) auf.
 2. Melden Sie sich mit einem Benutzerkonto an, das in unserem neuen Mandanten erstellt wurde.  Sie müssen sich mit folgendem Format anmelden: (user@domain.onmicrosoft.com). Verwenden Sie dasselbe Kennwort, mit dem sich der Benutzer lokal anmeldet.</br>
-   ![Überprüfen](media/tutorial-password-hash-sync/verify1.png)</br>
+   ![Screenshot: Erfolgsmeldung beim Testen der Anmeldung ](media/tutorial-password-hash-sync/verify1.png)</br>
 
 ## <a name="switch-back-to-federation"></a>Rückkehr zum Verbund
 Es wird nun gezeigt, wie eine Rückkehr zum Verbund erfolgt.  Führen Sie dazu folgende Schritte aus:
@@ -91,7 +91,7 @@ Es wird nun gezeigt, wie eine Rückkehr zum Verbund erfolgt.  Führen Sie dazu f
 10. Klicken Sie nach Abschluss der Konfiguration auf **Weiter**.
 ![Konfigurieren](media/tutorial-phs-backup/backup4.png)</br>
 11. Klicken Sie im Fenster **Verbundkonnektivität überprüfen** auf **Überprüfen**.  Sie müssen möglicherweise DNS-Einträge konfigurieren (A- und AAAA-Einträge hinzufügen), damit dieser Schritt erfolgreich ausgeführt werden kann.
-![Überprüfen](media/tutorial-phs-backup/backup5.png)</br>
+![Screenshot: Bildschirm „Verbundkonnektivität überprüfen“ und Schaltfläche „Überprüfen“](media/tutorial-phs-backup/backup5.png)</br>
 12. Klicken Sie auf **Beenden**.
 
 ## <a name="reset-the-ad-fs-and-azure-trust"></a>Zurücksetzen der Vertrauensstellung zwischen AD FS und Azure
@@ -106,7 +106,7 @@ Nun muss die Vertrauensstellung zwischen AD FS und Azure zurückgesetzt werden.
 6.  Geben Sie im Fenster **Mit Azure AD verbinden** den Benutzernamen und das Kennwort für „contoso\Administrator“ ein, und klicken Sie auf **Weiter**.
 7.  Klicken Sie im Fenster **Zertifikate** auf **Weiter**.
 
-## <a name="test-signing-in-with-one-of-our-users"></a>Testanmeldung mit einem unserer Benutzer
+## <a name="test-signing-in-with-a-user"></a>Testen der Anmeldung mit einem Benutzer
 
 1.  Rufen Sie [https://myapps.microsoft.com](https://myapps.microsoft.com) auf.
 2. Melden Sie sich mit einem Benutzerkonto an, das in unserem neuen Mandanten erstellt wurde.  Sie müssen sich mit folgendem Format anmelden: (user@domain.onmicrosoft.com). Verwenden Sie dasselbe Kennwort, mit dem sich der Benutzer lokal anmeldet.

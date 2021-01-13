@@ -1,25 +1,17 @@
 ---
-title: Bereitstellen eines virtuellen Linux-Computers mit der Azure-REST-API | Microsoft-Dokumentation
+title: Erstellen einer Linux-VM mit der REST-API
 description: Erfahren Sie, wie Sie einen virtuellen Linux-Computer in Azure erstellen, der verwaltete Datenträger und SSH-Authentifizierung mit der Azure-REST-API verwendet.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
+ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 9851305bdaa2f214e0d00eda3235068cac2ea980
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083478"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87373401"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Erstellen eines virtuellen Linux-Computers zur Verwendung der SSH-Authentifizierung mit der REST-API
 
@@ -54,7 +46,7 @@ Die folgenden Header sind erforderlich:
 | Anforderungsheader   | BESCHREIBUNG |
 |------------------|-----------------|
 | *Content-Type:*  | Erforderlich. Legen Sie diese Option auf `application/json` fest. |
-| *Authorization:* | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer` [Zugriffstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |
+| *Authorization:* | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-[Zugriffstoken](/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |
 
 Allgemeine Informationen zum Arbeiten mit REST-API-Anforderung finden Sie unter [Komponenten einer REST-API-Anforderung/Antwort](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -62,10 +54,10 @@ Allgemeine Informationen zum Arbeiten mit REST-API-Anforderung finden Sie unter 
 
 Die folgenden allgemeinen Definitionen werden verwendet, um einen Anforderungstext zu erstellen:
 
-| NAME                       | Erforderlich | Typ                                                                                | BESCHREIBUNG  |
+| Name                       | Erforderlich | type                                                                                | BESCHREIBUNG  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | True     | Zeichenfolge                                                                              | Ressourcenspeicherort |
-| name                       |          | Zeichenfolge                                                                              | Name des virtuellen Computers |
+| location                   | True     | string                                                                              | Ressourcenspeicherort |
+| name                       |          | string                                                                              | Name des virtuellen Computers |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Legt die Hardwareeinstellungen für den virtuellen Computer fest. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Legt die Speichereinstellungen für die Datenträger des virtuellen Computers fest. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Legt die Einstellungen des Betriebssystems für den virtuellen Computer fest. |
@@ -130,13 +122,13 @@ Eine vollständige Liste der verfügbaren Definitionen im Anforderungstext finde
 
 ## <a name="sending-the-request"></a>Absenden der Anforderung
 
-Sie können den von Ihnen bevorzugten Client zum Senden dieser HTTP-Anforderung verwenden. Sie können außerdem ein [In-Browser-Tool](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) verwenden, indem Sie auf die Schaltfläche **Testen** klicken.
+Sie können den von Ihnen bevorzugten Client zum Senden dieser HTTP-Anforderung verwenden. Sie können außerdem ein [In-Browser-Tool](/rest/api/compute/virtualmachines/createorupdate) verwenden, indem Sie auf die Schaltfläche **Testen** klicken.
 
 ### <a name="responses"></a>Antworten
 
 Es gibt zwei erfolgreiche Antworten für den Vorgang, um einen virtuellen Computer zu erstellen oder zu aktualisieren:
 
-| NAME        | type                                                                              | BESCHREIBUNG |
+| Name        | type                                                                              | BESCHREIBUNG |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 – OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 – Erstellt | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Erstellt     |
@@ -159,4 +151,4 @@ Weitere Informationen zu den Azure-REST-APIs oder anderen Verwaltungstools, z.B.
 - [Azure Compute-Anbieter-REST-API](/rest/api/compute/)
 - [Erste Schritte mit der Azure-REST-API](/rest/api/azure/)
 - [Azure-Befehlszeilenschnittstelle](/cli/azure/)
-- [Azure PowerShell-Modul](/powershell/azure/overview)
+- [Azure PowerShell-Modul](/powershell/azure/)

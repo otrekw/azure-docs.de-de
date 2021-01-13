@@ -1,45 +1,49 @@
 ---
 title: Azure-Schnellstart – Erstellen eines Azure Automation-Kontos | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie ein Azure Automation-Konto erstellen und ein Runbook ausführen.
+description: Dieser Artikel hilft Ihnen bei der Erstellung eines Azure Automation-Kontos und der Ausführung eines Runbooks.
 services: automation
-author: csand-msft
-ms.author: csand
 ms.date: 04/04/2019
 ms.topic: quickstart
-ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 89f32499d02978294398aae7be21f63b5d6aa028
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a07c6ac524aa213519ace1ae204ac2d76db802aa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919811"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "83836701"
 ---
 # <a name="create-an-azure-automation-account"></a>Erstellen eines Azure Automation-Kontos
 
-Azure Automation-Konten können über Azure erstellt werden. Diese Methode bietet eine browserbasierte Benutzeroberfläche zum Erstellen und Konfigurieren von Automation-Konten und den dazugehörigen Ressourcen. In dieser Schnellstartanleitung werden die Erstellung eines Automation-Kontos und die Ausführung eines Runbooks im Konto Schritt für Schritt beschrieben.
+Ein Azure Automation-Konto kann über Azure mithilfe des Azure-Portals erstellt werden. Hierbei handelt es sich um eine browserbasierten Benutzeroberfläche für den Zugriff auf eine Reihe von Ressourcen. Von einem Automation-Konto können Ressourcen in allen Regionen und Abonnements für einen bestimmten Mandanten verwaltet werden. 
 
-Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Automation-Konto erstellen und ein Runbook in dem Konto ausführen. Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter https://portal.azure.com bei Azure an.
+[Melden Sie sich bei Azure an.](https://portal.azure.com)
 
 ## <a name="create-automation-account"></a>Erstellen eines Automation-Kontos
 
-1. Klicken Sie in der linken oberen Ecke von Azure auf die Schaltfläche **Ressource erstellen**.
+1. Wählen Sie einen Namen für Ihr Azure-Konto. Automation-Kontonamen sind für jede Region und Ressourcengruppe eindeutig. Namen von gelöschten Automation-Konten sind möglicherweise nicht sofort verfügbar.
 
-1. Wählen Sie **Verwaltungsprogramme** und dann **Automation**.
+    > [!NOTE]
+    > Nach der Eingabe auf der Benutzeroberfläche kann der Kontoname nicht mehr geändert werden. 
 
-1. Geben Sie die Kontoinformationen ein. Wählen Sie für **Ausführendes Azure-Konto erstellen** die Option **Ja**, damit die Artefakte zum Vereinfachen der Authentifizierung für Azure automatisch aktiviert werden. Beachten Sie beim Erstellen eines Automation-Kontos unbedingt, dass der Name nach dem Auswählen nicht geändert werden kann. *Automation-Kontonamen sind für jede Region und Ressourcengruppe eindeutig. Namen für Automation-Konten, die gelöscht wurden, sind möglicherweise nicht sofort verfügbar.* Ein Automation-Konto kann Ressourcen in allen Regionen und Abonnements für einen bestimmten Mandanten verwalten. Klicken Sie nach Abschluss des Vorgangs auf **Erstellen**, um die Bereitstellung des Automation-Kontos zu starten.
+2. Klicken Sie links oben im Azure-Portal auf die Schaltfläche **Ressource erstellen**.
+
+3. Wählen Sie **IT- und Verwaltungstools** und dann **Automation** aus.
+
+4. Geben Sie die Kontoinformationen einschließlich des gewählten Kontonamens ein. Wählen Sie für **Ausführendes Azure-Konto erstellen** die Option **Ja**, damit die Artefakte zum Vereinfachen der Authentifizierung für Azure automatisch aktiviert werden. Klicken Sie nach Angabe aller Informationen auf **Erstellen**, um die Bereitstellung des Automation-Kontos zu starten.
 
     ![Eingeben von Informationen zu Ihrem Automation-Konto auf der Seite](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
     > [!NOTE]
     > Eine aktualisierte Liste mit Standorten, an denen Sie ein Automation-Konto bereitstellen können, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all).
 
-1. Klicken Sie nach Abschluss der Bereitstellung auf **Alle Dienste**, und wählen Sie **Automation-Konten** und anschließend das von Ihnen erstellte Automation-Konto aus.
+5. Klicken Sie nach Abschluss der Bereitstellung auf **Alle Dienste**.
+
+6. Wählen Sie **Automation-Konten** und anschließend das von Ihnen erstellte Automation-Konto aus.
 
     ![Automation-Konto – Übersicht](./media/automation-quickstart-create-account/automation-account-overview.png)
 
@@ -47,7 +51,7 @@ Melden Sie sich unter https://portal.azure.com bei Azure an.
 
 Führen Sie ein Runbook des Tutorials aus.
 
-1. Klicken Sie unter **PROZESSAUTOMATISIERUNG** auf **Runbooks**. Die Liste mit den Runbooks wird angezeigt. Standardmäßig sind mehrere Tutorial-Runbooks im Konto aktiviert.
+1. Klicken Sie unter **Prozessautomatisierung** auf **Runbooks**. Die Liste mit den Runbooks wird angezeigt. Standardmäßig sind im Konto mehrere Tutorial-Runbooks aktiviert.
 
     ![Liste mit Runbooks des Automation-Kontos](./media/automation-quickstart-create-account/automation-runbooks-overview.png)
 
@@ -55,16 +59,16 @@ Führen Sie ein Runbook des Tutorials aus.
 
     ![Runbookübersicht](./media/automation-quickstart-create-account/automation-tutorial-script-runbook-overview.png)
 
-1. Klicken Sie auf **Starten** und auf der Seite **Runbook starten** dann auf **OK**, um das Runbook zu starten.
+1. Klicken Sie auf **Starten** und anschließend auf der Seite „Runbook starten“ auf **OK**, um das Runbook zu starten.
 
     ![Seite für Runbookauftrag](./media/automation-quickstart-create-account/automation-tutorial-script-job.png)
 
-1. Nachdem sich der **Auftragsstatus** in **Wird ausgeführt** geändert hat, können Sie auf **Ausgabe** oder **Alle Protokolle** klicken, um die Ausgabe des Runbookauftrags anzuzeigen. Für dieses Tutorial-Runbook ist die Ausgabe eine Liste mit Ihren Azure-Ressourcen.
+1. Sobald der Auftragsstatus `Running` lautet, können Sie auf **Ausgabe** oder **Alle Protokolle** klicken, um die Ausgabe des Runbookauftrags anzuzeigen. Für dieses Tutorial-Runbook ist die Ausgabe eine Liste mit Ihren Azure-Ressourcen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In dieser Schnellstartanleitung haben Sie ein Automation-Konto bereitgestellt, einen Runbookauftrag gestartet und die Auftragsergebnisse angezeigt. Weitere Informationen zu Azure Automation finden Sie in der Schnellstartanleitung zum Erstellen Ihres ersten Runbooks.
 
 > [!div class="nextstepaction"]
-> [Automation-Schnellstart – Erstellen eines Runbooks](./automation-quickstart-create-runbook.md)
+> [Automation-Schnellstart: Erstellen eines Azure Automation-Runbooks](./automation-quickstart-create-runbook.md)
 

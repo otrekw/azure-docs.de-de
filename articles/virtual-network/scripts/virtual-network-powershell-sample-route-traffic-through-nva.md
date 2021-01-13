@@ -1,13 +1,10 @@
 ---
-title: Azure PowerShell-Beispielskript – Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät | Microsoft-Dokumentation
-description: Azure PowerShell-Beispielskript – Weiterleiten von Datenverkehr über ein virtuelles Firewall-Netzwerkgerät.
+title: 'Weiterleiten von Datenverkehr per NVA: Beispiel für Azure PowerShell-Skript'
+description: 'Azure PowerShell-Skriptbeispiel: Weiterleiten von Datenverkehr über eine virtuelle Firewallnetzwerkappliance'
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: sample
@@ -15,12 +12,13 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 21ee52f0a9c3b5a6cc64bdaf92c05db4a18903ca
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 19bebb5c1817882dcb641a284332926e51a8dd2f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717535"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91313993"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>Skriptbeispiel zum Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 
@@ -65,6 +63,6 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/overview).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/).
 
 Weitere PowerShell-Skriptbeispiele für virtuelle Netzwerke finden Sie unter [PowerShell-Beispiele für virtuelle Netzwerke](../powershell-samples.md).

@@ -2,41 +2,34 @@
 title: 'Schnellstart: Erstellen einer privaten Azure DNS-Zone mit der Azure-Befehlszeilenschnittstelle'
 description: In diesem Schnellstart erstellen und testen Sie eine private DNS-Zone und einen Eintrag in Azure DNS. Dies ist eine Schritt-für-Schritt-Anleitung zum Erstellen und Verwalten Ihrer ersten privaten DNS-Zone und Ihres ersten DNS-Eintrags mithilfe der Azure CLI.
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 09/20/2019
-ms.author: victorh
-ms.openlocfilehash: 8aee640d8648abb623fe5ead0b21e3ae3084424a
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/20/2020
+ms.author: rohink
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 820641af00caea4ffca450be8aa81b5357ba1261
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162135"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652959"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Schnellstart: Erstellen einer privaten Azure DNS-Zone mit der Azure-Befehlszeilenschnittstelle
-
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
 In diesem Schnellstart wird Schritt für Schritt gezeigt, wie Sie mit der Azure-Befehlszeilenschnittstelle (Azure CLI) Ihre erste private DNS-Zone und Ihren ersten DNS-Eintrag erstellen.
 
 Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt. Um eine private DNS-Zone in Ihrem virtuellen Netzwerk zu veröffentlichen, geben Sie die Liste mit den virtuellen Netzwerken an, für die das Auflösen von Einträgen in der Zone zulässig ist.  Diese werden als *verknüpfte* virtuelle Netzwerke bezeichnet. Wenn die automatische Registrierung aktiviert ist, aktualisiert Azure DNS auch die Zoneneinträge, sobald ein virtueller Computer erstellt, seine IP-Adresse geändert oder der virtuelle Computer gelöscht wird.
 
-In dieser Schnellstartanleitung wird Folgendes vermittelt:
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-> [!div class="checklist"]
-> * Erstellen einer privaten DNS-Zone
-> * Erstellen von virtuellen Testcomputern
-> * Erstellen eines zusätzlichen DNS-Eintrags
-> * Testen der privaten Zone
+## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Sie können für diesen Schnellstart auch [Azure PowerShell](private-dns-getstarted-powershell.md) verwenden.
+- Sie können diese Schnellstartanleitung auch mit [Azure PowerShell](private-dns-getstarted-powershell.md) durcharbeiten.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="create-the-resource-group"></a>Ressourcengruppe erstellen
+## <a name="create-the-resource-group"></a>Erstellen der Ressourcengruppe
 
 Erstellen Sie zunächst eine Ressourcengruppe für die DNS-Zone: 
 
@@ -149,7 +142,7 @@ Sie können den Ping-Befehl zum Testen der Namensauflösung verwenden. Konfiguri
 2. Führen Sie den folgenden Befehl aus:
 
    ```powershell
-   New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+   New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
    ```
 
 Wiederholen Sie den Schritt für „myVM02“.
@@ -158,13 +151,13 @@ Wiederholen Sie den Schritt für „myVM02“.
 
 1. Führen Sie an der Windows PowerShell-Eingabeaufforderung von „myVM02“ einen Ping-Befehl für „myVM01“ aus. Verwenden Sie dazu den automatisch registrierten Hostnamen:
 
-   ```
+   ```powershell
    ping myVM01.private.contoso.com
    ```
 
-   Eine ähnliche Ausgabe wie die folgende sollte angezeigt werden:
+   Die angezeigte Ausgabe sollte so ähnlich aussehen wie die folgende:
 
-   ```
+   ```output
    PS C:\> ping myvm01.private.contoso.com
 
    Pinging myvm01.private.contoso.com [10.2.0.4] with 32 bytes of data:
@@ -182,13 +175,13 @@ Wiederholen Sie den Schritt für „myVM02“.
 
 2. Pingen Sie jetzt den Namen **db**, den Sie zuvor erstellt haben:
 
-   ```
+   ```powershell
    ping db.private.contoso.com
    ```
 
-   Eine ähnliche Ausgabe wie die folgende sollte angezeigt werden:
+   Die angezeigte Ausgabe sollte so ähnlich aussehen wie die folgende:
 
-   ```
+   ```output
    PS C:\> ping db.private.contoso.com
 
    Pinging db.private.contoso.com [10.2.0.4] with 32 bytes of data:
@@ -204,7 +197,7 @@ Wiederholen Sie den Schritt für „myVM02“.
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>Löschen aller Ressourcen
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Löschen Sie die Ressourcengruppe **MyAzureResourceGroup**, um die in diesem Schnellstart erstellten Ressourcen zu löschen, wenn Sie sie nicht mehr benötigen.
 

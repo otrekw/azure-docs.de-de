@@ -1,18 +1,16 @@
 ---
-title: Azure Site Recovery – Ausschließen von Datenträgern während der Replikation virtueller Azure-Computer mit Azure PowerShell | Microsoft-Dokumentation
+title: Ausschließen von Azure-VM-Datenträgern aus der Replikation mit Azure Site Recovery und Azure PowerShell
 description: Erfahren Sie, wie Sie Datenträger für virtuelle Azure-Computer mit Azure Site Recovery über Azure PowerShell ausschließen.
-author: asgang
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/18/2019
-ms.author: asgang
-ms.openlocfilehash: 81d22250262351e3c1bbb2fe28960b3d158bbf57
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: a21460279420c46b11c43615ae5ecc7bfa81de4d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147064"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86135807"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Ausschließen von Datenträgern von der PowerShell-Replikation von Azure-VMs
 
@@ -23,17 +21,18 @@ In diesem Artikel wird beschrieben, wie Datenträger von der Replikation virtuel
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Vorbereitung:
+Vorbereitungen:
 
 - Stellen Sie sicher, dass Sie die [Architektur und die Komponenten zur Notfallwiederherstellung](azure-to-azure-architecture.md) verstehen.
 - Überprüfen Sie die [Supportanforderungen](azure-to-azure-support-matrix.md) für alle Komponenten.
-- Stellen Sie sicher, dass Sie über das PowerShell-Az-Modul AzureRm verfügen. Informationen zum Installieren oder Aktualisieren von PowerShell finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Stellen Sie sicher, dass Sie über das PowerShell-Az-Modul AzureRm verfügen. Informationen zum Installieren oder Aktualisieren von PowerShell finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
 - Stellen Sie sicher, dass Sie mindestens einmal einen Recovery Services-Tresor erstellt und virtuelle Computer geschützt haben. Wenn Sie diese Schritte noch nicht ausgeführt haben, führen Sie das Verfahren unter [Einrichten der Notfallwiederherstellung für virtuelle Azure-Computer über Azure PowerShell](azure-to-azure-powershell.md) aus.
+- Wenn Sie Informationen zum Hinzufügen von Datenträgern zu einer für die Replikation aktivierten Azure-VM suchen, [lesen Sie diesen Artikel](azure-to-azure-enable-replication-added-disk.md).
 
 ## <a name="why-exclude-disks-from-replication"></a>Gründe für das Ausschließen von Datenträgern von der Replikation
 Es kann folgende Gründe für das Ausschließen von Datenträgern von der Replikation geben:
 
-- Ihr virtueller Computer hat die [Azure Site Recovery-Grenzwerte zur Replikation von Datenänderungsraten](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix) erreicht.
+- Ihr virtueller Computer hat die [Azure Site Recovery-Grenzwerte zur Replikation von Datenänderungsraten](./azure-to-azure-support-matrix.md) erreicht.
 
 - Die auf dem ausgeschlossenen Datenträger verarbeiteten Daten sind nicht wichtig oder müssen nicht repliziert werden.
 
@@ -97,7 +96,7 @@ $OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationC
          -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
-# Data Disk 1 i.e StorageProfile.DataDisks[0] is excluded, so we will provide it during the time of replication. 
+# Data Disk 1 i.e StorageProfile.DataDisks[0] is excluded, so we will provide it during the time of replication.
 
 # Data disk 2
 $datadiskId2  = $vm.StorageProfile.DataDisks[1].ManagedDisk.id

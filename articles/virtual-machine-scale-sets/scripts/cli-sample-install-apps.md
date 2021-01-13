@@ -1,27 +1,20 @@
 ---
-title: 'Beispiele für die Azure CLI: Installieren von Apps | Microsoft-Dokumentation'
-description: Azure CLI-Beispiele
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.devlang: azurecli
+title: 'Azure CLI-Beispiele: Installieren von Apps'
+description: Dieses Skript erstellt eine VM-Skalierungsgruppe unter Ubuntu und installiert eine einfache Webanwendung unter Verwendung der benutzerdefinierten Skripterweiterung.
+author: mimckitt
+ms.author: mimckitt
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: virtual-machine-scale-sets
+ms.subservice: cli
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 00e1823ab87048857267456f8e7d295d725a194d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.reviewer: jushiman
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 78569459de9d6a632f256d25ffb0870e36ce4a79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890500"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87499686"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-the-azure-cli"></a>Installieren von Anwendungen in einer VM-Skalierungsgruppe mit der Azure CLI
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Ubuntu und installiert eine einfache Webanwendung unter Verwendung der benutzerdefinierten Skripterweiterung. Nach dem Ausführen des Skripts können Sie über einen Webbrowser auf die Web-App zugreifen.
@@ -53,6 +46,4 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 | [az group delete](/cli/azure/ad/group) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
-
-Weitere Azure CLI-Skriptbeispiele für VM-Skalierungsgruppen finden Sie in der [Dokumentation zu Azure-VM-Skalierungsgruppen](../cli-samples.md).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure/overview).

@@ -1,0 +1,58 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure IoT Solution Accelerators
+summary: Bei Azure IoT Solution Accelerators handelt es sich um vollständige, sofort bereitstellbare IoT-Lösungen zur Implementierung gängiger IoT-Szenarien wie etwa verbundene Factorys.
+metadata:
+  title: Dokumentation zu Azure IoT Solution Accelerators
+  description: Die IoT Solution Accelerators sind vollständige, sofort bereitstellbare IoT-Lösungen, die allgemeine IoT-Szenarien implementieren. Zu den Szenarien zählen verbundene Factory und Gerätesimulation. Wenn Sie einen Solution Accelerator bereitstellen, enthält die Bereitstellung alle erforderlichen cloudbasierten Dienste sowie den gesamten erforderlichen Anwendungscode.
+  services: iot-accelerators
+  ms.service: iot-accelerators
+  ms.topic: landing-page
+  author: dominicbetts
+  ms.author: dobett
+  manager: philmea
+  ms.date: 09/16/2019
+  ms.openlocfilehash: 8f1b539e7201ffc31956ef48b4a155674385b97f
+  ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 12/08/2020
+  ms.locfileid: "96854545"
+landingContent:
+- title: Informationen zu Azure IoT Solution Accelerators
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was sind Azure IoT Solution Accelerators?
+      url: about-iot-accelerators.md
+    - text: Die Website AzureIoTSolutions.com
+      url: iot-accelerators-permissions.md
+- title: Erste Schritte mit Industrial IoT
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Übersicht über Industrial IoT
+      url: overview-iot-industrial.md
+    - text: Übersicht über OPC-Zwillinge
+      url: overview-opc-twin.md
+    - text: Übersicht über OPC-Tresore
+      url: overview-opc-vault.md
+    - text: Übersicht über OPC Publisher
+      url: overview-opc-publisher.md
+    - text: Was ist Industrial IoT?
+      url: iot-accelerators-connected-factory-features.md
+  - linkListType: quickstart
+    links:
+    - text: Testen einer cloudbasierten Lösung für verbundene Factorys
+      url: quickstart-connected-factory-deploy.md
+- title: Erste Schritte mit der Gerätesimulation
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Übersicht über den Solution Accelerator für die Gerätesimulation
+      url: iot-accelerators-device-simulation-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Erstellen und Ausführen einer IoT-Gerätesimulation
+      url: iot-accelerators-device-simulation-create-simulation.md
+    - text: Erstellen eines benutzerdefinierten simulierten Geräts
+      url: iot-accelerators-device-simulation-create-custom-device.md

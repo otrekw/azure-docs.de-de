@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 07/06/2020
 ms.author: genli
-ms.openlocfilehash: 438143d3253f1cab1afb958a90f427dcba59a98e
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 456aa225fa8eed47ca794c54e61b77a30c93fa9a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059249"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002611"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Installieren des Azure-VM-Agents im Offlinemodus 
 
@@ -63,14 +63,12 @@ Mit den folgenden Schritten installieren Sie den VM-Agent im Offlinemodus:
 
     2. Exportieren Sie die folgenden Registrierungen:
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE\BROKENSYSTEM\\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\RdAgent
 
 8.  Verwenden Sie die vorhandenen Dateien auf den Problembehebungs-VM als Repository für die VM-Agent-Installation. Führen Sie die folgenden Schritte aus:
 
     1. Exportieren Sie über die Problembehebungs-VM die folgenden Unterschlüssel im Registrierungsformat (.reg): 
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\RdAgent
 
           ![Exportieren der Unterschlüssel der Registrierung](./media/install-vm-agent-offline/backup-reg.png)
@@ -81,9 +79,8 @@ Mit den folgenden Schritten installieren Sie den VM-Agent im Offlinemodus:
 
     3. Importieren Sie durch Doppelklicken auf jede Registrierungsdatei die Registrierungsdateien in das Repository.
 
-    4. Vergewissern Sie sich, dass die folgenden drei Unterschlüssel in die Struktur **BROKENSYSTEM** importiert sind:
+    4. Vergewissern Sie sich, dass die folgenden beiden Unterschlüssel in die Struktur **BROKENSYSTEM** importiert wurden:
         - WindowsAzureGuestAgent
-        - WindowsAzureTelemetryService
         - RdAgent
 
     5. Kopieren Sie den Installationsordner des aktuellen VM-Agents auf den angefügten Betriebssystemdatenträger: 
@@ -105,6 +102,8 @@ Mit den folgenden Schritten installieren Sie den VM-Agent im Offlinemodus:
 Wenn Sie den virtuellen Computer mit dem Resource Manager-Bereitstellungsmodell erstellt haben, ist der Vorgang abgeschlossen.
 
 ### <a name="use-the-provisionguestagent-property-for-classic-vms"></a>Verwenden der ProvisionGuestAgent-Eigenschaft für klassische virtuelle Computer
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 Wenn Sie den virtuellen Computer mit dem klassischen Bereitstellungsmodell erstellt haben, verwenden Sie das Azure PowerShell-Modul, um die **ProvisionGuestAgent**-Eigenschaft zu aktualisieren. Die Eigenschaft informiert Azure, dass der VM-Agent auf dem virtuellen Computer installiert ist.
 

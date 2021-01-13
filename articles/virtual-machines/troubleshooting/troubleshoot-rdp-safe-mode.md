@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 38b0266565969d06f3f1128ce5a92c5268c7c7d2
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: d424cccc0a50198f3ca8c6c040afb87f44282d47
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088579"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86508898"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>RDP-Verbindung mit einem virtuellen Computer kann nicht hergestellt werden, weil die VM im abgesicherten Modus gestartet wird
 
 In diesem Artikel wird veranschaulicht, wie Sie ein Problem lösen, bei dem Sie keine Verbindung mit virtuellen Azure-Computern (VMs) herstellen können, weil für die VM das Starten im abgesicherten Modus konfiguriert ist.
 
-> [!NOTE]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Resource Manager-Bereitstellungsmodells, das anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen empfohlen wird.
 
 ## <a name="symptoms"></a>Symptome
 
@@ -49,7 +47,9 @@ Verwenden Sie zum Beheben dieses Problems die serielle Konsole, um die VM so zu 
    ). Wenn die serielle Konsole auf Ihrem virtuellen Computer nicht aktiviert ist, helfen Ihnen die Informationen unter [Reparieren des virtuellen Computers im Offlinestatus](#repair-the-vm-offline) weiter.
 2. Überprüfen Sie die Startkonfigurationsdaten:
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
     Wenn für die VM das Starten im abgesicherten Modus konfiguriert ist, wird im Abschnitt **Windows Boot Loader** ein zusätzliches Flag mit dem Namen **safeboot** angezeigt. Wenn das Flag **safeboot** nicht zu sehen ist, befindet sich die VM nicht im abgesicherten Modus. Dieser Artikel gilt nicht für Ihr Szenario.
 
@@ -63,11 +63,15 @@ Verwenden Sie zum Beheben dieses Problems die serielle Konsole, um die VM so zu 
 
 3. Löschen Sie das Flag **safeboot**, damit die VM wieder im normalen Modus gestartet wird:
 
-        bcdedit /deletevalue {current} safeboot
+    ```console
+    bcdedit /deletevalue {current} safeboot
+    ```
 
 4. Überprüfen Sie die Daten der Startkonfiguration, um sicherzustellen, dass das Flag **safeboot** entfernt wurde:
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
 5. Starten Sie die VM neu, und vergewissern Sie sich, dass das Problem behoben wurde.
 
@@ -75,7 +79,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Konsole, um die VM so zu 
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Anfügen des Betriebssystemdatenträgers an eine VM für die Wiederherstellung
 
-1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](./troubleshoot-recovery-disks-portal-windows.md).
 2. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
 3. Stellen Sie sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Beachten Sie den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
 
@@ -86,7 +90,7 @@ Mit dem Abbildprotokoll und der seriellen Konsole können wir weitere Problembeh
 Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie das folgende Skript aus.
 
 1. Öffnen Sie eine Eingabeaufforderungssitzung mit erhöhten Rechten (**Als Administrator ausführen**).
-2. Führen Sie das folgende Skript aus:
+2. Führen Sie folgendes Skript aus:
 
     In diesem Skript wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie diesen durch den entsprechenden Wert für Ihren virtuellen Computer.
 
@@ -117,7 +121,10 @@ Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie d
 1. Öffnen Sie eine Eingabeaufforderungssitzung mit erhöhten Rechten (**Als Administrator ausführen**).
 2. Überprüfen Sie die Startkonfigurationsdaten. Bei den folgenden Befehlen wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie diesen durch den entsprechenden Wert für Ihren virtuellen Computer.
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
     Notieren Sie sich den Bezeichnernamen der Partition, auf der sich der Ordner **\windows** befindet. Standardmäßig ist der Bezeichnername „Default“ (Standard).
 
     Wenn für die VM das Starten im abgesicherten Modus konfiguriert ist, wird im Abschnitt **Windows Boot Loader** ein zusätzliches Flag mit dem Namen **safeboot** angezeigt. Wenn das Flag **safeboot** nicht angezeigt wird, gilt dieser Artikel nicht für Ihr Szenario.
@@ -126,8 +133,14 @@ Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie d
 
 3. Entfernen Sie das Flag **safeboot**, damit die VM wieder im normalen Modus gestartet wird:
 
-        bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```console
+    bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```
+
 4. Überprüfen Sie die Daten der Startkonfiguration, um sicherzustellen, dass das Flag **safeboot** entfernt wurde:
 
-        bcdedit /store F:\boot\bcd /enum
-5. [Trennen Sie den Betriebssystemdatenträger, und erstellen die VM neu.](../windows/troubleshoot-recovery-disks-portal.md) Überprüfen Sie dann, ob das Problem behoben ist.
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
+5. [Trennen Sie den Betriebssystemdatenträger, und erstellen die VM neu.](./troubleshoot-recovery-disks-portal-windows.md) Überprüfen Sie dann, ob das Problem behoben ist.

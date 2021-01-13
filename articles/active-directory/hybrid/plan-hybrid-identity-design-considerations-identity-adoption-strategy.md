@@ -1,6 +1,6 @@
 ---
 title: Entwerfen von Hybrididentitäten – Strategie für die Einführung in Azure | Microsoft-Dokumentation
-description: Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung auswählen. Nachdem diese Bedingungen erfüllt sind, wird der Benutzer authentifiziert und erhält Zugriff auf die Anwendung.
+description: Mit der bedingten Zugriffssteuerung überprüft Azure AD die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung auswählen.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f52e46ff9cab7d3d150af9fd7b4f1c432bec74b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109329"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836188"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definieren einer Strategie zur Hybrididentitätsübernahme
 In dieser Aufgabe definieren Sie die Strategie zur Hybrididentitätsübernahme für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die hier erörtert wurden:
@@ -32,7 +32,7 @@ In dieser Aufgabe definieren Sie die Strategie zur Hybrididentitätsübernahme f
 * [Ermitteln der Anforderungen für die Multi-Factor Authentication](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="define-business-needs-strategy"></a>Definieren der Strategie für Geschäftsanforderungen
-Die erste Aufgabe ist, die Geschäftsanforderungen der Organisation zu ermitteln.  Dies kann sehr umfangreich sein, und Sie müssen darauf achten, sich auf das Wesentliche zu konzentrieren.  Halten Sie den Entwurf zu Anfang einfach, planen Sie jedoch stets mit ein, dass er in Zukunft einfach geändert werden kann.  Azure Active Directory ist sowohl für einfache als auch äußerst komplexe Entwürfe die Microsoft Identity Platform, die Office 365, Microsoft Online Services und cloudfähige Anwendungen unterstützt.
+Die erste Aufgabe ist, die Geschäftsanforderungen der Organisation zu ermitteln.  Dies kann sehr umfangreich sein, und Sie müssen darauf achten, sich auf das Wesentliche zu konzentrieren.  Halten Sie den Entwurf zu Anfang einfach, planen Sie jedoch stets mit ein, dass er in Zukunft einfach geändert werden kann.  Azure Active Directory ist sowohl für einfache als auch äußerst komplexe Entwürfe die Microsoft Identity Platform, die Microsoft 365, Microsoft Online Services und cloudfähige Anwendungen unterstützt.
 
 ## <a name="define-an-integration-strategy"></a>Definieren einer Integrationsstrategie
 Die drei wichtigsten Integrationsszenarien von Microsoft sind Cloudidentitäten, synchronisierte Identitäten und verbundene Identitäten.  Sie sollten eine dieser Integrationsstrategien anwenden.  Die Entscheidung für die zu verwendende Strategie kann unter anderem davon abhängen, welche Art von Benutzeroberfläche Sie bereitstellen möchten, ob bereits eine Infrastruktur vorhanden ist und welche Lösung die kostengünstigste ist.  
@@ -55,7 +55,7 @@ Die folgende Tabelle hilft Ihnen bei der Bestimmung der Vor- und Nachteile der f
 | Strategie | Vorteile | Nachteile |
 | --- | --- | --- |
 | **Cloudidentitäten** |Für kleine Organisationen einfacher zu verwalten. <br> Keine lokale Installation erforderlich. Keine zusätzliche Hardware erforderlich.<br>Problemlos deaktivierbar, wenn der Benutzer das Unternehmen verlässt |Benutzer müssen sich für den Zugriff auf Workloads in der Cloud anmelden <br> Kennwörter können, müssen aber nicht für Cloud- und lokale Identitäten identisch sein |
-| **Synchronisiert** |Lokales Kennwort dient zur Authentifizierung sowohl bei lokalen als auch bei Cloudverzeichnissen <br>Einfacher zu verwalten für kleine, mittlere und große Organisationen <br>Benutzer können für einige Ressourcen einmaliges Anmelden (Single Sign-On, SSO) verwenden. <br> Von Microsoft bevorzugte Synchronisierungsmethode <br> Einfacher zu verwalten |Einige Kunden sind aufgrund spezifischer Unternehmensrichtlinien möglicherweise zurückhaltend bezüglich der Synchronisierung ihrer Verzeichnisse mit der Cloud |
+| **Synchronisiert** |Lokales Kennwort dient zur Authentifizierung sowohl bei lokalen als auch bei Cloudverzeichnissen <br>Einfacher zu verwalten für kleine, mittlere und große Organisationen <br>Benutzer können für einige Ressourcen einmaliges Anmelden (Single Sign-On, SSO) verwenden. <br> Von Microsoft bevorzugte Synchronisierungsmethode <br> Einfacher zu verwalten |Einige Kunden sind aufgrund spezifischer Unternehmensrichtlinien möglicherweise zurückhaltend bezüglich der Synchronisierung ihrer Verzeichnisse mit der Cloud. |
 | **Im Verbund** |Benutzer können einmaliges Anmelden (Single Sign-On, SSO) nutzen <br>Wenn ein Benutzer aufhört oder das Unternehmen verlässt, kann das Konto sofort deaktiviert und der Zugriff widerrufen werden.<br> Unterstützt erweiterte Szenarien, die mit Synchronisierung nicht möglich sind |Mehr Schritte für Einrichtung und Konfiguration <br> Höherer Wartungsaufwand <br> Erfordert ggf. zusätzliche Hardware für die STS-Infrastruktur <br> Möglicherweise muss zusätzliche Hardware auf dem Verbundserver installiert werden. Bei Verwendung von AD FS ist zusätzliche Software erforderlich <br> Erfordert umfangreiches Einrichtung für SSO <br> Kritischer Point of Failure: Wenn der Verbundserver ausfällt, können sich die Benutzer nicht authentifizieren. |
 
 ### <a name="client-experience"></a>Clienterfahrung
@@ -63,7 +63,7 @@ Von der Strategie, die Sie verwenden, hängt die Benutzeranmeldung ab.  Die folg
 
 **Einer Domäne angehörende und private Netzwerkanwendungen**:
 
-|  | Synchronisierte Identität | Verbundidentität |
+| Application | Synchronisierte Identität | Verbundidentität |
 | --- | --- | --- |
 | Webbrowser |Formularbasierte Authentifizierung |Einmaliges Anmelden, manchmal muss die Organisations-ID angegeben werden |
 | Outlook |Aufforderung zur Eingabe von Anmeldeinformationen |Aufforderung zur Eingabe von Anmeldeinformationen |
@@ -73,7 +73,7 @@ Von der Strategie, die Sie verwenden, hängt die Benutzeranmeldung ab.  Die folg
 
 **Externe oder nicht vertrauenswürdige Quellen**:
 
-|  | Synchronisierte Identität | Verbundidentität |
+| Application | Synchronisierte Identität | Verbundidentität |
 | --- | --- | --- |
 | Webbrowser |Formularbasierte Authentifizierung |Formularbasierte Authentifizierung |
 | Outlook, Skype for Business (Lync), OneDrive for Business, Office-Abonnement |Aufforderung zur Eingabe von Anmeldeinformationen |Aufforderung zur Eingabe von Anmeldeinformationen |
@@ -158,7 +158,7 @@ Hierfür müssen folgende Voraussetzungen erfüllt sein:
 * Eine DNS-Domäne kann nur in einem einzelnen Azure AD-Verzeichnis registriert werden, sodass die UPNs der Benutzer im lokalen AD separate Namespaces verwenden müssen.
 * Benutzer in einer Instanz von Azure AD können nur Benutzer aus ihrer Instanz sehen.  Sie können keine Benutzer in anderen Instanzen sehen.
 * Nur eines der Azure AD-Verzeichnisse kann den Exchange-Hybrid mit dem lokalen AD aktivieren.
-* Gegenseitige Ausschließlichkeit gilt auch für das Zurückschreiben.  Folglich werden einige Zurückschreibfeatures mit dieser Topologie nicht unterstützt, da sie eine lokale Einzelkonfiguration voraussetzen.  Dies umfasst:
+* Gegenseitige Ausschließlichkeit gilt auch für das Zurückschreiben.  Folglich werden einige Zurückschreibfeatures mit dieser Topologie nicht unterstützt, da sie eine lokale Einzelkonfiguration voraussetzen.  Dies schließt Folgendes ein:
   * Gruppenzurückschreibung mit Standardkonfiguration
   * Gerätezurückschreibung
 
@@ -171,31 +171,31 @@ Folgendes wird nicht unterstützt und sollte nicht als Implementierung ausgewäh
 * Azure AD-Verzeichnisse sind als isoliert konzipiert. Es wird nicht unterstützt, die Konfiguration der Azure AD Connect-Synchronisierung so zu ändern, dass in einem Versuch, eine gemeinsame und einheitliche GAL zwischen den Verzeichnissen zu erstellen, Daten aus einem anderen Azure AD-Verzeichnis gelesen werden. Es wird auch nicht unterstützt, mithilfe der Azure AD Connect-Synchronisierung Benutzer als Kontakte nach einem anderen lokalen AD zu exportieren.
 
 > [!NOTE]
-> Für den Fall, dass Ihre Organisation die Verbindung von Computern Ihres Netzwerks mit dem Internet einschränkt, werden in diesem Artikel die Endpunkte aufgeführt (FQDNs, IPv4- und IPv6-Adressbereiche), die Sie in Ihre Ausgangszulassungslisten und Zone vertrauenswürdiger Sites von Clientcomputern im Internet Explorer einbeziehen sollten, um sicherzustellen, dass Ihre Computer Office 365 erfolgreich verwenden können. Weitere Informationen finden Sie unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US).
+> Für den Fall, dass Ihre Organisation die Verbindung von Computern Ihres Netzwerks mit dem Internet einschränkt, werden in diesem Artikel die Endpunkte aufgeführt (FQDNs, IPv4- und IPv6-Adressbereiche), die Sie in Ihre Ausgangszulassungslisten und Zone vertrauenswürdiger Sites von Clientcomputern im Internet Explorer einbeziehen sollten, um sicherzustellen, dass Ihre Computer Microsoft 365 erfolgreich verwenden können. Weitere Informationen finden Sie unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US).
 > 
 > 
 
 ## <a name="define-multi-factor-authentication-strategy"></a>Definieren der Multi-Factor Authentication-Strategie
-In dieser Aufgabe definieren Sie die Strategie der zu verwendenden mehrstufigen Authentifizierung.  Azure Multi-Factor Authentication ist in zwei verschiedenen Versionen verfügbar.  Eine ist cloudbasiert und die andere lokal basiert mit Einsatz des Azure MFA-Servers.  Basierend auf der Auswertung, die Sie oben ausgeführt haben, können Sie die richtige Lösung für Ihre Strategie ermitteln.  Bestimmen Sie mithilfe der folgenden Tabelle, welche Entwurfsoption für die Sicherheitsanforderungen Ihres Unternehmens am besten geeignet ist:
+In dieser Aufgabe definieren Sie die Strategie der zu verwendenden mehrstufigen Authentifizierung.  Azure AD Multi-Factor Authentication ist in zwei verschiedenen Versionen verfügbar.  Eine ist cloudbasiert und die andere lokal basiert mit Einsatz des Azure MFA-Servers.  Basierend auf der Auswertung, die Sie oben ausgeführt haben, können Sie die richtige Lösung für Ihre Strategie ermitteln.  Bestimmen Sie mithilfe der folgenden Tabelle, welche Entwurfsoption für die Sicherheitsanforderungen Ihres Unternehmens am besten geeignet ist:
 
 Mehrstufige Entwurfsoptionen:
 
 | Zu sichernde Ressourcen | MFA in der Cloud | Lokale MFA |
 | --- | --- | --- |
-| Microsoft-Apps |Ja |Ja |
-| SaaS-Apps im Appkatalog |Ja |Ja |
-| Über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen |Ja |Ja |
-| Nicht über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen |no |Ja |
-| Remotezugriff wie VPN, RDG |no |Ja |
+| Microsoft-Apps |ja |ja |
+| SaaS-Apps im Appkatalog |ja |ja |
+| Über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen |ja |ja |
+| Nicht über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen |nein |ja |
+| Remotezugriff wie VPN, RDG |nein |ja |
 
 Selbst wenn Sie sich für eine Lösung für Ihre Strategie entschieden haben, müssen Sie noch mit der obigen Auswertung feststellen, wo sich die Benutzer befinden.  Dies kann zu einer Änderung der Lösung führen.  Verwenden Sie für diese Feststellung die folgende Tabelle:
 
 | Benutzerstandort | Bevorzugte Entwurfsoption |
 | --- | --- |
 | Azure Active Directory |Multi-Factor Authentication in der Cloud |
-| Azure AD und lokales AD über einen Verbund mit AD FS |Beides |
-| Azure AD und lokales AD mit Azure AD Connect ohne Kennwortsynchronisierung |Beides |
-| Azure AD und lokales AD mit Azure AD Connect mit Kennwortsynchronisierung |Beides |
+| Azure AD und lokales AD über einen Verbund mit AD FS |Beide |
+| Azure AD und lokales AD mit Azure AD Connect ohne Kennwortsynchronisierung |Beide |
+| Azure AD und lokales AD mit Azure AD Connect mit Kennwortsynchronisierung |Beide |
 | Lokales AD |Multi-Factor Authentication-Server |
 
 > [!NOTE]

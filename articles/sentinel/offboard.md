@@ -1,9 +1,9 @@
 ---
-title: Ausführen des Offboardings für Azure Sentinel | Microsoft-Dokumentation
+title: Entfernen von Azure Sentinel | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Ihre Azure Sentinel-Instanz löschen.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -12,68 +12,63 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: f636fc9bab5ea77d11ac7944e7aa18cb0e402b8c
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.date: 09/16/2020
+ms.author: yelevin
+ms.openlocfilehash: f9c400b55b0da47495db4f1ff4ceb86aa39fe2cc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241202"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90885843"
 ---
-# <a name="remove-azure-sentinel-from-your-tenant"></a>Entfernen von Azure Sentinel von Ihrem Mandanten
+# <a name="remove-azure-sentinel-from-your-workspace"></a>Entfernen von Azure Sentinel aus Ihrem Arbeitsbereich
 
-Wenn Sie Azure Sentinel nicht mehr verwenden möchten, können Sie die Lösung gemäß der Anleitung in diesem Artikel von Ihrem Mandanten entfernen.
+Wenn Sie Azure Sentinel nicht mehr verwenden möchten, können Sie die Lösung mithilfe der Anleitung in diesem Artikel aus Ihrem Arbeitsbereich entfernen.
 
-## <a name="how-to-delete-azure-sentinel"></a>Gewusst wie: Löschen von Azure Sentinel
+## <a name="how-to-remove-azure-sentinel"></a>Entfernen von Azure Sentinel
 
-Beim Installieren von Azure Sentinel wird im Hintergrund die Lösung **SecurityInsights** in Ihrem ausgewählten Arbeitsbereich installiert. Als Erstes müssen Sie also die Lösung **SecurityInsights** entfernen.
+Gehen Sie folgendermaßen vor, um Azure Sentinel aus Ihrem Arbeitsbereich zu entfernen:
 
-1.  Navigieren Sie zu **Azure Sentinel** > **Konfiguration** > **Arbeitsbereichseinstellungen** > **Lösungen**.
+1. Wechseln Sie zu **Azure Sentinel** und dann zu **Einstellungen**, und wählen Sie die Registerkarte **Remove Azure Sentinel** (Azure Sentinel entfernen) aus.
 
-2.  Wählen Sie `SecurityInsights` aus, und klicken Sie darauf.
+1. Bevor Sie Azure Sentinel entfernen, teilen Sie uns bitte mithilfe der Kontrollkästchen mit, warum Sie es entfernen.
 
-    ![Suchen nach der Lösung „SecurityInsights“](media/offboard/find-solution.png)
-
-3.  Wählen Sie am oberen Rand der Seite die Option **Löschen** aus.
-
-    > [!IMPORTANT]
-    > Wenn Sie den Arbeitsbereich löschen, werden der Arbeitsbereich und Azure Sentinel von Ihrem Mandanten in Azure Monitor entfernt.
-
+1. Wählen Sie **Remove Azure Sentinel from your workspace** (Azure Sentinel aus Ihrem Arbeitsbereich entfernen) aus.
+    
     ![Löschen der Lösung „SecurityInsights“](media/offboard/delete-solution.png)
 
 ## <a name="what-happens-behind-the-scenes"></a>Was passiert im Hintergrund?
 
-Wenn Sie die Lösung löschen, dauert es für Azure Sentinel bis zu 48 Stunden, bis die erste Phase des Löschvorgangs abgeschlossen ist.
+Wenn Sie die Lösung entfernen, dauert es bis zu 48 Stunden, bis die erste Phase des Löschvorgangs von Azure Sentinel abgeschlossen ist.
 
 Nach Abschluss der Verbindungstrennung beginnt der Offboardingprozess.
 
-**Die Konfiguration der folgenden Connectors wird gelöscht:**
+**Die Konfiguration der folgenden Connectors wird entfernt:**
 -   Office 365
 
 -   AWS
 
--   Sicherheitswarnungen für Microsoft-Dienste (Azure ATP, Microsoft Cloud App Security mit Cloud Discovery-Schatten-IT-Berichterstellung, Azure AD Identity Protection, Microsoft Defender ATP, Azure Security Center)
+-   Sicherheitsbenachrichtigungen von Microsoft-Diensten: Microsoft Defender for Identity (*ehemals Azure ATP*), Microsoft Cloud App Security mit Cloud Discovery-Schatten-IT-Berichterstellung, Azure AD Identity Protection, Microsoft Defender für Endpunkt (*ehemals Microsoft Defender ATP*), Azure Defender-Benachrichtigungen aus dem Azure Security Center
 
 -   Threat Intelligence
 
--   Häufig verwendete Sicherheitsprotokolle (z. B. CEF-basierte Protokolle, Barracuda und Syslog) (Wenn Sie über Azure Security Center verfügen, werden diese Protokolle weiterhin erfasst.)
+-   Häufig verwendete Sicherheitsprotokolle (z. B. CEF-basierte Protokolle, Barracuda und Syslog) (Wenn Sie Azure Defender-Benachrichtigungen aus dem Azure Security Center erhalten, werden diese Protokolle weiterhin erfasst.)
 
--   Windows-Sicherheitsereignisse (Wenn Sie über Azure Security Center verfügen, werden diese Protokolle weiterhin erfasst.)
+-   Windows-Sicherheitsereignisse (Wenn Sie Azure Defender-Benachrichtigungen aus dem Azure Security Center erhalten, werden diese Protokolle weiterhin erfasst.)
 
-Innerhalb der ersten 48 Stunden kann auf die Daten und Warnungsregeln (einschließlich Automatisierungskonfiguration in Echtzeit) in Azure Sentinel nicht mehr zugegriffen werden, und sie können auch nicht mehr abgefragt werden.
+Innerhalb der ersten 48 Stunden kann auf die Daten und Analyseregeln (einschließlich Automatisierungskonfiguration in Echtzeit) in Azure Sentinel nicht mehr zugegriffen werden, und sie können auch nicht mehr abgefragt werden.
 
-**Nach 30 Tagen werden die folgenden Ressourcen gelöscht:**
+**Nach 30 Tagen werden die folgenden Ressourcen entfernt:**
 
 -   Incidents (einschließlich Untersuchungsmetadaten)
 
--   Warnregeln
+-   Analyseregeln
 
 -   Lesezeichen
 
-Ihre Playbooks, gespeicherten Arbeitsmappen, gespeicherten Hunting-Abfragen und Notebooks werden nicht gelöscht. **Aufgrund der entfernten Daten kann es in einigen Fällen zu Fehlern kommen. Diese können Sie manuell entfernen.**
+Ihre Playbooks, gespeicherten Arbeitsmappen, gespeicherten Suchabfragen und Notebooks werden nicht entfernt. **Aufgrund der entfernten Daten kann es in einigen Fällen zu Fehlern kommen. Diese können Sie manuell entfernen.**
 
-Nach der Entfernung des Diensts gilt eine Toleranzperiode von 30 Tagen, während der Sie die Lösung wieder aktivieren können. Ihre Daten und Warnungsregeln werden dann automatisch wiederhergestellt, aber die Verbindungen für die konfigurierten Connectors, die getrennt wurden, müssen von Ihnen wiederhergestellt werden.
+Nach dem Entfernen des Diensts gilt eine Toleranzperiode von 30 Tagen, während der Sie die Lösung wieder aktivieren können. Ihre Daten und Analyseregeln werden dann automatisch wiederhergestellt, aber die Verbindungen für die konfigurierten Connectors, die getrennt wurden, müssen wiederhergestellt werden.
 
 > [!NOTE]
 > Wenn Sie die Lösung entfernen, ist Ihr Abonnement weiterhin beim Azure Sentinel-Ressourcenanbieter registriert. **Sie können dies manuell entfernen.**
@@ -84,4 +79,3 @@ Nach der Entfernung des Diensts gilt eine Toleranzperiode von 30 Tagen, währen
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument wurde beschrieben, wie Sie den Azure Sentinel-Dienst entfernen. Gehen Sie wie folgt vor, falls Sie Ihre Meinung ändern und den Dienst wieder installieren möchten:
 - Führen Sie das [Onboarding für Azure Sentinel](quickstart-onboard.md) durch.
-

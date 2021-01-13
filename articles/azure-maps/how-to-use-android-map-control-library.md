@@ -1,20 +1,20 @@
 ---
-title: Erste Schritte mit dem Android-Kartensteuerelement in Azure Maps | Microsoft-Dokumentation
-description: Das Kartensteuerelement für Android in Azure Maps.
-author: walsehgal
-ms.author: v-musehg
-ms.date: 04/26/2019
-ms.topic: conceptual
+title: Erste Schritte mit dem Android SDK für Azure Maps
+description: Machen Sie sich mit dem Microsoft Azure Maps Android SDK vertraut. Erfahren Sie, wie Sie ein Projekt in Android Studio erstellen, das SDK installieren und eine interaktive Karte erstellen.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 11/18/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 934fe2219ccca917999cf49cb9c9826276545e73
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 1da003bb8d285dbedde87cbc6cd4708fda2dc38b
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915661"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531258"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Erste Schritte mit dem Android SDK für Azure Maps
 
@@ -24,38 +24,39 @@ Das Android SDK in Azure Maps ist eine Vektorenzuordnungsbibliothek für Android
 
 ### <a name="create-an-azure-maps-account"></a>Erstellen eines Azure Maps-Kontos
 
-Zunächst müssen Sie im S1-Tarif [ein Azure Maps-Konto erstellen](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account), damit Sie die in diesem Artikel beschriebenen Schritte ausführen können.
-
-### <a name="download-android-studio"></a>Herunterladen von Android Studio
-
-Laden Sie Android Studio herunter, und erstellen Sie ein Projekt mit einer leeren Aktivität, bevor Sie das Android SDK für Azure Maps installieren. Das [Herunterladen von Android Studio](https://developer.android.com/studio/) ist kostenlos über Google möglich. 
+1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
+Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
+3. [Herunterladen und Installieren von Android Studio von Google](https://developer.android.com/studio/)
 
 ## <a name="create-a-project-in-android-studio"></a>Erstellen eines Projekts in Android Studio
 
-Erstellen Sie zuerst ein neues Projekt mit einer leeren Aktivität. Gehen Sie wie folgt vor, um ein Android Studio-Projekt zu erstellen:
+Gehen Sie wie folgt vor, um ein Android Studio-Projekt zu erstellen:
 
-1. Klicken Sie unter **Ihr Projekt auswählen** auf **Telefon und Tablet**. Ihre Anwendung wird auf diesem Formfaktor ausgeführt.
-2. Wählen Sie auf der Registerkarte **Telefon und Tablet** die Option **Leere Aktivität** aus und klicken Sie dann auf **Weiter**.
-3. Wählen Sie unter **Ihr Projekt konfigurieren** die Option `API 21: Android 5.0.0 (Lollipop)` als das minimale SDK aus. Dies ist die niedrigste Version, die vom Android SDK in Azure Maps unterstützt wird.
-4. Übernehmen Sie die Standardwerte `Activity Name` und `Layout Name`, und klicken Sie auf **Fertig stellen**.
+1. Starten Sie Android Studio.
+2. Klicken Sie auf **+ Neues Projekt erstellen**.
+3. Klicken Sie auf der Registerkarte **Telefon und Tablet** auf **Empty Activity** (Leere Aktivität). Klicken Sie auf **Weiter**.
+4. Wählen Sie unter **Ihr Projekt konfigurieren** die Option `API 21: Android 5.0.0 (Lollipop)` als das minimale SDK aus.
+5. Wählen Sie `Java` als Sprache aus.
+6. Übernehmen Sie den standardmäßigen `Name` für das Projekt. Klicken Sie auf **Fertig stellen**.
 
 Weitere Informationen zur Installation von Android Studio und zur Erstellung eines neuen Projekts finden Sie in der [Dokumentation zu Android Studio](https://developer.android.com/studio/intro/).
 
-![Erstellen eines Projekts](./media/how-to-use-android-map-control-library/form-factor-android.png)
+![Erstellen eines Projekts in Android Studio ](./media/how-to-use-android-map-control-library/form-factor-android.png)
 
-## <a name="set-up-a-virtual-device"></a>Einrichten eines virtuellen Geräts
+## <a name="set-up-a-device"></a>Gerät einrichten
 
-Mit Android Studio können Sie ein virtuelles Android-Gerät auf Ihrem Computer einrichten. Auf diese Weise können Sie Ihre Anwendung während der Entwicklung testen. Klicken Sie auf das Symbol für den Manager für virtuelle Android-Geräte (AVD) rechts oben auf Ihrem Projektbildschirm und anschließend auf **Virtuelles Gerät erstellen**, um ein virtuelles Gerät einzurichten. Sie können den AVD-Manager auch über die Symbolleiste aufrufen, indem Sie **Tools** > **Android** > **AVD-Manager** auswählen. Wählen Sie in der Kategorie **Telefone** die Option **Nexus 5X** aus, und klicken Sie auf **Weiter**.
+Wenn Sie Ihre Anwendung während der Entwicklung testen möchten, können Sie entweder ein Android-Telefon oder einen Android-Emulator verwenden.
 
-Weitere Informationen zum Einrichten eines AVD finden Sie in der [Dokumentation zu Android Studio](https://developer.android.com/studio/run/managing-avds).
-
-![Android-Emulator](./media/how-to-use-android-map-control-library/android-emulator.png)
+Weitere Informationen zum Einrichten eines virtuellen Android-Geräts (Android Virtual Device, AVD) finden Sie in der [Dokumentation zu Android Studio](https://developer.android.com/studio/run/managing-avds).
 
 ## <a name="install-the-azure-maps-android-sdk"></a>Installieren des Android SDK für Azure Maps
 
-Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Azure Maps installieren. Führen Sie die folgenden Schritte aus, um das SDK zu installieren:
+Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Azure Maps installieren.
 
-1. Öffnen Sie die Datei **build.gradle** auf der obersten Ebene, und fügen Sie dem Blockabschnitt **all projects**, **repositories** den folgenden Code hinzu:
+Führen Sie die folgenden Schritte aus, um das SDK zu installieren:
+
+1. Erweitern Sie auf der Registerkarte „Projekt“ die Option **Gradle Scripts** (Gradle-Skripts). Öffnen Sie **build.gradle (Project: My_Application)** , und fügen Sie den folgenden Code zum Abschnitt **Alle Projekte** (`repositories`) hinzu:
 
     ```
     maven {
@@ -63,31 +64,30 @@ Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Az
     }
     ```
 
-2. Aktualisieren Sie **app/build.gradle**, und fügen Sie den folgenden Code hinzu:
-    
-    1. Stellen Sie sicher, dass **minSdkVersion** Ihres Projekts mindestens auf API 21 festgelegt ist.
+2. Öffnen Sie **build.gradle (Module: My_Application)** .
 
-    2. Fügen Sie den folgenden Code dem Abschnitt „Android“ hinzu:
+3. Stellen Sie sicher, dass **minSdkVersion** im Abschnitt `defaultConfig` mindestens auf API 21 festgelegt ist.
 
-        ```
-        compileOptions {
-            sourceCompatibility JavaVersion.VERSION_1_8
-            targetCompatibility JavaVersion.VERSION_1_8
-        }
-        ```
-    3. Aktualisieren Sie Ihren Block „dependencies“, und fügen Sie eine neue Implementierungsabhängigkeitszeile für das neueste Android SDK von Azure Maps hinzu:
+4. Fügen Sie den folgenden Code dem Abschnitt „Android“ hinzu:
 
-        ```
-        implementation "com.microsoft.azure.maps:mapcontrol:0.2"
-        ```
+    ```
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    ```
 
-    > [!Note]
-    > Das Android SDK für Azure Maps wird regelmäßig aktualisiert und verbessert. In der Dokumentation [Erste Schritte mit dem Android-Kartensteuerelement](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) finden Sie die neueste Implementierungsversionsnummer von Azure Maps. Außerdem können Sie die Versionsnummer von „0.2“ auf „0+“" festlegen, damit sie immer auf die neueste Version zeigt.
+5. Fügen Sie den folgenden Code dem Abschnitt `dependencies` hinzu:
 
-3. Bearbeiten Sie die Datei **res** > **layout** > **activity_main.xml**, und ersetzen Sie sie durch folgenden Code:
+    ```
+    implementation "com.microsoft.azure.maps:mapcontrol:0.6"
+    ```
+
+6. Klicken Sie in der Hauptsymbolleiste auf **Datei**, und wählen Sie dann **Sync Project with Gradle Files** (Projekt mit Gradle-Dateien synchronisieren) aus.
+
+7. Öffnen Sie `res > layout > activity_main.xml`. Klicken Sie in der oberen rechten Ecke auf die Ansicht `Code`. Fügen Sie im `<androidx.constraintlayout.widget.ConstraintLayout>`-Element den folgenden XML-Code hinzu.
     
     ```XML
-    <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -103,32 +103,32 @@ Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Az
     </FrameLayout>
     ```
 
-4. In der Datei **MainActivity.java** müssen Sie Folgendes ausführen:
-    
+8. In der Datei `java > com.example.myapplication > MainActivity.java` müssen Sie folgende Schritte ausführen:
+
     * Hinzufügen von Importen für das Azure Maps SDK
-    * Festlegen Ihrer Azure Maps-Authentifizierungsinformationen
-    * Abrufen der Kartensteuerelementinstanz in der **onCreate**-Methode
+    * Festlegen Ihrer Azure Maps-Authentifizierungsinformationen
+    * Abrufen der Kartensteuerelementinstanz in der Methode **onCreate**
 
-    Indem Sie die Authentifizierungsinformationen für die `AzureMaps`-Klasse global mit der Methode `setSubscriptionKey` oder `setAadProperties` festlegen, wird es möglich, dass Sie nicht in jeder Ansicht Ihre Authentifizierungsinformationen hinzufügen müssen. 
+    Um zu vermeiden, dass für jede Anwendungsansicht Authentifizierungsinformationen hinzugefügt werden müssen, legen wir die Authentifizierungsinformationen global fest, indem wir `AzureMaps.setSubscriptionKey` aufrufen. Sie können auch `AzureMaps.setAadProperties` aufrufen, wenn Sie sich mit Azure Active Directory authentifizieren möchten.
 
-    Das Kartensteuerelement enthält eigene Lebenszyklusmethoden zur Verwaltung des OpenGL-Lebenszyklus von Android, die direkt aus der enthaltenen Activity aufgerufen werden müssen. Damit Ihre App ordnungsgemäß funktioniert, rufen Sie die Lebenszyklusmethoden des Kartensteuerelements auf. Sie müssen die folgenden Lebenszyklusmethoden in der Aktivität, die das Kartensteuerelement enthält, überschreiben und die entsprechende Kartensteuerelementmethode aufrufen. 
+    Die folgenden Lebenszyklusmethoden der MainActivity-Klasse werden vom Kartensteuerelement außer Kraft gesetzt. Diese Methoden sind für die Verwaltung des OpenGL-Lebenszyklus von Android zuständig.
 
-    * onCreate(Bundle) 
-    * onStart() 
-    * onResume() 
-    * onPause() 
-    * onStop() 
-    * onDestroy() 
-    * onSaveInstanceState(Bundle) 
-    * onLowMemory() 
+    * onCreate(Bundle)
+    * onStart()
+    * onResume()
+    * onPause()
+    * onStop()
+    * onDestroy()
+    * onSaveInstanceState(Bundle)
+    * onLowMemory()
 
-    Bearbeiten Sie die Datei **MainActivity.java** wie folgt:
-    
+    Bearbeiten Sie die Datei `MainActivity.java` wie folgt:
+
     ```java
     package com.example.myapplication;
 
-    import android.support.v7.app.AppCompatActivity;
-    import android.os.Bundle;
+    //For older versions use: import android.support.v7.app.AppCompatActivity; 
+    import androidx.appcompat.app.AppCompatActivity;
     import com.microsoft.azure.maps.mapcontrol.AzureMaps;
     import com.microsoft.azure.maps.mapcontrol.MapControl;
     import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
@@ -136,7 +136,7 @@ Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Az
     import com.microsoft.azure.maps.mapcontrol.source.DataSource;
 
     public class MainActivity extends AppCompatActivity {
-        
+
         static {
             AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
         }
@@ -151,11 +151,11 @@ Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Az
             mapControl = findViewById(R.id.mapcontrol);
 
             mapControl.onCreate(savedInstanceState);
-    
+
             //Wait until the map resources are ready.
             mapControl.onReady(map -> {
                 //Add your post map load code here.
-    
+
             });
         }
 
@@ -201,83 +201,95 @@ Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Az
             mapControl.onSaveInstanceState(outState);
         }
     }
-
     ```
 
-## <a name="import-classes"></a>Importieren von Klassen
-
-Nachdem Sie die vorherigen Schritte abgeschlossen haben, werden Ihnen wahrscheinlich zu einem Teil des Codes Warnungen von Android Studio angezeigt. Importieren Sie die Klassen, auf die in `MainActivity.java` verwiesen wird, um diese Warnungen aufzulösen.
-
-Durch Drücken von Alt+Enter (Option+Return auf einem Mac) können Sie diese Klassen automatisch importieren.
-
-Klicken Sie wie in der folgenden Grafik dargestellt auf die Schaltfläche „Ausführen“ (oder drücken Sie Strg+R auf einem Mac), um Ihre Anwendung zu erstellen.
-
-![Klicken Sie auf „Run“ (Ausführen).](./media/how-to-use-android-map-control-library/run-app.png)
+>[!WARNING]
+>Die erforderlichen Klassen wurden von Android Studio möglicherweise nicht importiert.  Folglich verfügt der Code über einige nicht auflösbare Verweise. Um die erforderlichen Klassen zu importieren, zeigen Sie einfach auf die einzelnen nicht aufgelösten Verweise und drücken `Alt + Enter` (WAHLTASTE+EINGABE auf einem Mac).
 
 Es dauert ein paar Sekunden, bis Android Studio die Anwendung erstellt hat. Nach Abschluss des Builds können Sie Ihre Anwendung auf dem emulierten Android-Gerät testen. Es sollte eine Zuordnung wie diese angezeigt werden:
 
-<center>
-
-![Android-Karte](./media/how-to-use-android-map-control-library/android-map.png)</center>
+:::image type="content" source="./media/how-to-use-android-map-control-library/android-map.png" border="true" alt-text="Azure Maps in Android-Anwendung":::
 
 ## <a name="localizing-the-map"></a>Lokalisieren der Karte
 
-Das Android SDK für Azure Maps bietet drei verschiedene Möglichkeiten zum Festlegen der Sprache und der regionalen Ansicht für die Karte. Der folgende Code zeigt, wie die Sprache auf Französisch („fr-FR“) und die regionale Ansicht auf „Auto“ festgelegt wird. 
+Das Android SDK für Azure Maps bietet drei verschiedene Möglichkeiten zum Festlegen der Sprache und der regionalen Einstellungen für die Karte.
 
-Die erste Option besteht darin, die Informationen zur Sprache und regionalen Ansicht mithilfe der statischen Methoden `setLanguage` und `setView` global an die Klasse `AzureMaps` zu übergeben. Dadurch werden die Standardsprache und die regionale Ansicht für alle Azure Maps-Steuerelemente in Ihre App geladen.
+1. Legen Sie die Sprache und regionalen Einstellungen fest, indem Sie statische Methoden für die AzureMaps-Klasse aufrufen.
 
-```Java
-static {
-    //Set your Azure Maps Key.
-    AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+    ```Java
+    static {
+        //Set your Azure Maps Key.
+        AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
 
-    //Set the language to be used by Azure Maps.
-    AzureMaps.setLanguage("fr-FR");
+        //Set the language to be used by Azure Maps.
+        AzureMaps.setLanguage("fr-FR");
 
-    //Set the regional view to be used by Azure Maps.
-    AzureMaps.setView("auto");
-}
-```
+        //Set the regional view.
+        AzureMaps.setLanguage("Auto");
+    
+    }
+    ```
 
-Die zweite Option besteht darin, die Informationen zur Sprache und Ansicht an die Kartensteuerelement-XML zu übergeben.
+2. Definieren Sie die Sprach- und regionalen Einstellungen im XML-Code des Kartensteuerelements.
 
-```XML
-<com.microsoft.azure.maps.mapcontrol.MapControl
-    android:id="@+id/myMap"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:mapcontrol_language="fr-FR"
-    app:mapcontrol_view="auto"
-    />
-```
+    ```XML
+    <com.microsoft.azure.maps.mapcontrol.MapControl
+        android:id="@+id/myMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:mapcontrol_language="fr-FR"
+        app:mapcontrol_view="Auto"
+        />
+    ```
 
-Die dritte Option besteht darin, die Sprache und regionale Ansicht der Karte mithilfe der Kartenmethode `setStyle` programmgesteuert festzulegen. Dies kann jederzeit geschehen, um die Sprache und regionale Ansicht der Karte zu ändern.
+3. Legen Sie die Sprache und regionalen Einstellungen fest, indem Sie Methoden für das Kartensteuerelement aufrufen. Diese Option ermöglicht es Ihnen, die Einstellungen während der Laufzeit zu ändern.
 
-```Java
-mapControl.onReady(map -> {
-    map.setStyle(StyleOptions.language("fr-FR"));
-    map.setStyle(StyleOptions.view("auto"));
-});
-```
+    ```Java
+    mapControl.onReady(map -> {
+        map.setStyle(StyleOptions.language("fr-FR"));
+        map.setStyle(StyleOptions.view("Auto"));
+    
+    });
+    ```
 
-Hier ist ein Beispiel für Azure Maps, bei dem die Sprache auf „fr-FR“ und die regionale Ansicht auf „Auto“ festgelegt wurde.
+Hier ein Beispiel für Azure Maps mit der Spracheinstellung `fr-FR`.
 
-<center>
-
-![Kartenbild mit Beschriftungen in Französisch](./media/how-to-use-android-map-control-library/android-localization.png)
-</center>
+:::image type="content" source="./media/how-to-use-android-map-control-library/android-localization.png" border="true" alt-text="Azure Maps, Kartenbild mit Beschriftungen in Französisch":::
 
 Eine vollständige Liste der unterstützten Sprachen und regionalen Ansichten ist [hier](supported-languages.md) dokumentiert.
+
+## <a name="navigating-the-map"></a>Navigieren auf einer Karte
+
+Es gibt verschiedene Möglichkeiten für das Zoomen, Schwenken, Drehen und Neigen der Karte. Im Folgenden werden die verschiedenen Möglichkeiten zum Navigieren auf der Karte erläutert.
+
+**Zoomen der Karte**
+
+- Berühren Sie die Karte mit zwei Fingern, und führen Sie diese zusammen, um zu verkleinern, oder führen Sie die Finger auseinander, um zu vergrößern.
+- Doppeltippen Sie auf die Karte, um um eine Ebene zu vergrößern.
+- Doppeltippen Sie mit zwei Fingern, um die Karte um eine Ebene zu verkleinern.
+- Tippen Sie zweimal, halten Sie beim zweiten Tippen den Finger auf der Karte, und ziehen Sie nach oben, um zu vergrößern, oder nach unten, um zu verkleinern.
+
+**Schwenken der Karte**
+
+- Berühren Sie die Karte, und ziehen Sie sie in eine beliebige Richtung.
+
+**Drehen der Karte**
+
+- Berühren Sie die Karte mit zwei Fingern, und drehen Sie sie.
+
+**Neigen der Karte**
+
+- Berühren Sie die Karte mit zwei Fingern, und ziehen Sie diese zusammen nach oben oder unten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie der Karte Overlaydaten hinzugefügt werden:
 
 > [!div class="nextstepaction"]
-> [Hinzufügen einer Symbolebene zu einer Android-Karte](https://review.docs.microsoft.com/azure/azure-maps/how-to-add-symbol-to-android-map)
+> [Hinzufügen einer Symbolebene zu einer Android-Karte](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Hinzufügen von Formen zu einer Android-Karte](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Hinzufügen von Formen zu einer Android-Karte](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Ändern von Kartenstilen auf Android-Karten](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Ändern von Kartenstilen auf Android-Karten](./set-android-map-styles.md)

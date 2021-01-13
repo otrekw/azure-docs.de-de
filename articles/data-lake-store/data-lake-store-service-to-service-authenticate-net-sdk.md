@@ -1,22 +1,17 @@
 ---
-title: 'Dienst-zu-Dienst-Authentifizierung: .NET SDK mit Azure Data Lake Storage Gen1 und Azure Active Directory | Microsoft-Dokumentation'
+title: .NET – Dienst-zu-Dienst-Authentifizierung – Data Lake Storage Gen1
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Active Directory und .NET SDK die Dienst-zu-Dienst-Authentifizierung mit Azure Data Lake Storage Gen1 implementieren.
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: cgronlun
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 96c496ef67e26a3079577bf52e9d019d963467b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19b4ac619ec3e72c787efc8e9f043f42dbd8b09b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65915857"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010298"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Dienst-zu-Dienst-Authentifizierung mit Azure Data Lake Storage Gen1 unter Verwendung des .NET SDK
 > [!div class="op_single_selector"]
@@ -39,7 +34,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des .NET SDK die Dienst-zu-Dien
 ## <a name="create-a-net-application"></a>Erstellen einer .NET-Anwendung
 1. Wählen Sie in Visual Studio das Menü **Datei**, dann die Option **Neu** und anschließend **Projekt** aus.
 2. Wählen Sie **Konsolen-App (.NET Framework)** und dann **Weiter** aus.
-3. Geben Sie unter **Projektname** `CreateADLApplication` ein, und wählen Sie dann **Erstellen** aus.
+3. Geben Sie unter **Projektname**`CreateADLApplication` ein, und wählen Sie dann **Erstellen** aus.
 
 4. Fügen Sie Ihrem Projekt die NuGet-Pakete hinzu.
 

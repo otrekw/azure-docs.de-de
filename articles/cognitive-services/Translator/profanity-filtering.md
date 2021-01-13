@@ -1,23 +1,23 @@
 ---
-title: Filtern von Obszönitäten – Textübersetzungs-API
+title: 'Filtern von Obszönitäten: Translator'
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Filterung von Obszönitäten in der Textübersetzungs-API.
+description: Verwenden Sie die Filterung von Obszönitäten, um in Azure Cognitive Services Translator den Grad der Obszönität für Ihren übersetzten Text zu bestimmen.
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 114dea098db5c824a1235ba1635f547383bf6743
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7ebfe766e6362a3f62e70db8bf2dcae370aceee3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595196"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83996158"
 ---
-# <a name="add-profanity-filtering-with-the-translator-text-api"></a>Hinzufügen der Filterung von Obszönitäten mit der Textübersetzungs-API
+# <a name="add-profanity-filtering-with-the-translator"></a>Hinzufügen der Filterung von Obszönitäten mit Translator
 
 In der Regel behält der Übersetzungsdienst Obszönitäten, die im Quelltext vorhanden sind, in der Übersetzung bei. Der Grad an Obszönitäten und der Kontext, bei dem Wörter als obszön angesehen werden, unterscheiden sich je nach Kultur. Daher kann der Obszönitätsgrad in der Zielsprache unter Umständen verstärkt oder reduziert werden.
 
@@ -29,9 +29,9 @@ Für die Translate()-Methode wird der Parameter „options“ verwendet, der das
 |ProfanityAction-Wert | Aktion | Beispiel: Ausgangssprache – Japanisch | Beispiel: Zielsprache – Englisch|
 | :---|:---|:---|:---|
 | NoAction | Standard. Entspricht dem Fall, in dem die Option nicht festgelegt wird. Die Obszönität wird aus der Ausgangs- in die Zielsprache übernommen. | 彼は変態です。 | He is a jerk. (Er ist ein Vollidiot.) |
-| Marked | Obszöne Wörter werden in die XML-Tags \<profanity> ... \</profanity> eingeschlossen. | 彼は変態です。 | He is a \<profanity>jerk\</profanity>. |
+| Marked | Obszöne Wörter werden von den XML-Tags \<profanity> und \</profanity> umschlossen. | 彼は変態です。 | He is a \<profanity>jerk\</profanity>. (Er ist ein <profanity>Vollidiot</profanity>.) |
 | Deleted | Obszöne Begriffe werden aus der Ausgabe entfernt, und es wird kein Ersatzbegriff bereitgestellt. | 彼は。 | He is a. (Er ist ein.) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
-> [Anwenden der Filterung von Obszönitäten in Ihrem Aufruf der Translator-API](reference/v3-0-translate.md)
+> [Anwenden der Filterung von Obszönitäten in Ihrem Translator-Aufruf](reference/v3-0-translate.md)

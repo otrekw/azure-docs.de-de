@@ -1,19 +1,14 @@
 ---
-title: 'Tutorial: Bereitstellen einer Gruppe mit mehreren Containern in Azure Container Instances – YAML'
+title: 'Tutorial: Bereitstellen einer Gruppe mit mehreren Containern – YAML'
 description: In diesem Tutorial erfahren Sie, wie Sie eine Containergruppe mit mehreren Containern über die Azure-Befehlszeilenschnittstelle mit einer YAML-Datei in Azure Container Instances bereitstellen.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
-ms.date: 04/03/2019
-ms.author: danlep
-ms.openlocfilehash: a38b0cfe7072975e4bcaf61b65ab7733694f714c
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.date: 07/01/2020
+ms.openlocfilehash: 6f9dda7735587dfee1dde86c85375efcf057daa7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178568"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605160"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Tutorial: Bereitstellen einer Gruppe mit mehreren Containern mithilfe einer YAML-Datei
 
@@ -34,9 +29,9 @@ In diesem Tutorial befolgen Sie Schritte zum Ausführen einer einfachen Sidecark
 > [!NOTE]
 > Gruppen mit mehreren Containern sind aktuell auf Linux-Container beschränkt.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="configure-a-yaml-file"></a>Konfigurieren einer YAML-Datei
 
@@ -51,7 +46,7 @@ code deploy-aci.yaml
 Diese YAML-Datei definiert eine Containergruppe namens „myContainerGroup“ mit zwei Containern, einer öffentlichen IP-Adresse und zwei verfügbar gemachten Ports. Die Container werden aus öffentlichen Microsoft-Images bereitgestellt. Der erste Container in der Gruppe führt eine Webanwendung mit Internetverbindung aus. Vom zweiten Container, dem Sidecar, erfolgen in regelmäßigen Abständen HTTP-Anforderungen an die Webanwendung, die im ersten Container über das lokale Netzwerk der Containergruppe ausgeführt wird.
 
 ```YAML
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: myContainerGroup
 properties:
@@ -78,10 +73,10 @@ properties:
     type: Public
     ports:
     - protocol: tcp
-      port: '80'
+      port: 80
     - protocol: tcp
-      port: '8080'
-tags: null
+      port: 8080
+tags: {exampleTag: tutorial}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
@@ -120,7 +115,7 @@ az container show --resource-group myResourceGroup --name myContainerGroup --out
 
 Wenn Sie die laufende Anwendung anzeigen möchten, navigieren Sie zu ihrer IP-Adresse in Ihrem Browser. In dieser Beispielausgabe lautet die IP `52.168.26.124`:
 
-```bash
+```console
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
 ----------------  ---------------  --------  --------------------------------------------------------------------------------------------------  --------------------  ---------  ---------------  --------  ----------
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
@@ -138,9 +133,9 @@ Ausgabe:
 
 ```console
 listening on port 80
-::1 - - [21/Mar/2019:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [21/Mar/2019:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [02/Jul/2020:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [02/Jul/2020:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [02/Jul/2020:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
 Führen Sie einen ähnlichen Befehl aus, in dem Sie den Container `aci-tutorial-sidecar` angeben, um die Protokolle für den Sidecarcontainer anzuzeigen.
@@ -152,7 +147,7 @@ az container logs --resource-group myResourceGroup --name myContainerGroup --con
 Ausgabe:
 
 ```console
-Every 3s: curl -I http://localhost                          2019-03-21 20:36:41
+Every 3s: curl -I http://localhost                          2020-07-02 20:36:41
 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -165,7 +160,7 @@ Last-Modified: Wed, 29 Nov 2017 06:40:40 GMT
 ETag: W/"67f-16006818640"
 Content-Type: text/html; charset=UTF-8
 Content-Length: 1663
-Date: Thu, 21 Mar 2019 20:36:41 GMT
+Date: Thu, 02 Jul 2020 20:36:41 GMT
 Connection: keep-alive
 ```
 
@@ -173,7 +168,7 @@ Wie Sie sehen können, erfolgt vom Sidecar in regelmäßigen Abständen eine HTT
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Gruppe mit mehreren Containern mit einer YAML-Datei in Azure Container Instances bereitgestellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie eine Gruppe mit mehreren Containern mit einer YAML-Datei in Azure Container Instances bereitgestellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Konfigurieren einer YAML-Datei für eine Gruppe mit mehreren Containern
@@ -184,12 +179,11 @@ Sie können eine Gruppe mit mehreren Containern auch mithilfe einer [Resource Ma
 
 <!-- LINKS - External -->
 
-
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md
 [az-container-create]: /cli/azure/container#az-container-create
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
-[template-reference]: https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
+[template-reference]: /azure/templates/microsoft.containerinstance/containergroups

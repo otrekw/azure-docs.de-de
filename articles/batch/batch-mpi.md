@@ -1,24 +1,15 @@
 ---
-title: Ausführen von MPI-Anwendungen mithilfe von Tasks mit mehreren Instanzen – Azure Batch | Microsoft-Dokumentation
+title: Verwenden von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen
 description: Erfahren Sie, wie MPI-Anwendungen (Message Passing Interface) mithilfe des Tasktyps mit mehreren Instanzen in Azure Batch ausgeführt werden.
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: gwallace
-editor: ''
-ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
-ms.service: batch
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.date: 03/13/2019
-ms.author: lahugh
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f54f5d5265508bb3716ff4ffd4d1d741d3bfa2e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.topic: how-to
+ms.date: 10/08/2020
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: 6aa6a910dd57a255d9ec9292119bc692edf4946f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094968"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351519"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Verwenden von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Batch
 
@@ -39,7 +30,7 @@ Wenn Sie einen Task mit Einstellungen für mehrere Instanzen an einen Auftrag ü
 1. Der Batch-Dienst erstellt basierend auf den Einstellungen für mehrere Instanzen einen **primären** Task und mehrere **Subtasks**. Die Gesamtzahl der Tasks (primärer Task und alle Subtasks) entspricht der Anzahl der **Instanzen** (Computeknoten), die Sie in den Einstellungen für mehrere Instanzen festlegen.
 2. Batch legt einen Computeknoten als **Master** fest und plant die Ausführung der primären Task auf dem Master. Es plant die Ausführung der Subtasks auf den restlichen Computeknoten, die dem Task mit mehreren Instanzen zugeordnet sind (eine Unteraufgabe pro Knoten).
 3. Der Primärtask und alle Subtasks laden alle **gemeinsamen Ressourcendateien** herunter, die Sie in den Einstellungen für mehreren Instanzen angeben.
-4. Nachdem die gemeinsamen Ressourcendateien heruntergeladen wurden, wird der in den Einstellungen für mehrere Instanzen angegebene **Koordinationsbefehl** vom Primärtask und von den Subtasks ausgeführt. Der Koordinationsbefehl wird in der Regel für die Vorbereitung von Knoten zum Ausführen des Tasks verwendet. Dies kann das Starten von Diensten im Hintergrund (z.B. von [Microsoft MPI][msmpi_msdn] `smpd.exe`) und das Sicherstellen umfassen, dass die Knoten zum Verarbeiten von Nachrichten zwischen den Knoten bereit sind.
+4. Nachdem die gemeinsamen Ressourcendateien heruntergeladen wurden, wird der in den Einstellungen für mehrere Instanzen angegebene **Koordinationsbefehl** vom Primärtask und von den Subtasks ausgeführt. Der Koordinationsbefehl wird in der Regel für die Vorbereitung von Knoten zum Ausführen des Tasks verwendet. Dies kann das Starten von Diensten im Hintergrund (z.B. von [Microsoft MPI][msmpi_msdn]`smpd.exe`) und das Sicherstellen umfassen, dass die Knoten zum Verarbeiten von Nachrichten zwischen den Knoten bereit sind.
 5. Der Primärtask führt den **Anwendungsbefehl** auf dem Masterknoten aus, *nachdem* der Koordinationsbefehl vom Primärtask und von allen Subtasks erfolgreich abgeschlossen wurde. Der Anwendungsbefehl ist die Befehlszeile des Tasks mit mehreren Instanzen und wird nur vom Primärtask ausgeführt. In einer [MS-MPI][msmpi_msdn]-basierten Lösung führen Sie hier Ihre MPI-fähige Anwendung mit `mpiexec.exe` aus.
 
 > [!NOTE]
@@ -48,7 +39,7 @@ Wenn Sie einen Task mit Einstellungen für mehrere Instanzen an einen Auftrag ü
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>Anforderungen für Tasks mit mehreren Instanzen
-Tasks mit mehreren Instanzen erfordern einen Pool, in dem die **Kommunikation zwischen Knoten** aktiviert und die **gleichzeitige Ausführung von Tasks deaktiviert** ist. Legen Sie die Eigenschaft [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool) auf 1 fest, um das gleichzeitige Ausführen von Tasks zu deaktivieren.
+Tasks mit mehreren Instanzen erfordern einen Pool, in dem die **Kommunikation zwischen Knoten** aktiviert und die **gleichzeitige Ausführung von Tasks deaktiviert** ist. Um die gleichzeitige Ausführung von Tasks zu deaktivieren, legen Sie die Eigenschaft [CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) auf 1 fest.
 
 > [!NOTE]
 > Batch [begrenzt](batch-quota-limit.md#pool-size-limits) die Größe eines Pools, für den Kommunikation zwischen den Knoten aktiviert wurde.
@@ -67,11 +58,11 @@ CloudPool myCloudPool =
 // Multi-instance tasks require inter-node communication, and those nodes
 // must run only one task at a time.
 myCloudPool.InterComputeNodeCommunicationEnabled = true;
-myCloudPool.MaxTasksPerComputeNode = 1;
+myCloudPool.TaskSlotsPerNode = 1;
 ```
 
 > [!NOTE]
-> Wenn Sie versuchen, einen Task mit mehreren Instanzen in einem Pool auszuführen, in dem die knotenübergreifende Kommunikation deaktiviert ist oder der einen höheren *maxTasksPerNode* -Wert als 1 aufweist, wird der Task nie geplant – er bleibt auf unbestimmte Zeit im aktiven Zustand. 
+> Wenn Sie versuchen, einen Task mit mehreren Instanzen in einem Pool auszuführen, in dem die Kommunikation zwischen den Knoten deaktiviert ist oder der einen höheren *taskSlotsPerNode*-Wert als 1 aufweist, wird der Task nie geplant – er bleibt auf unbestimmte Zeit im aktiven Zustand.
 
 
 ### <a name="use-a-starttask-to-install-mpi"></a>Verwenden eines StartTask-Elements für die MPI-Installation
@@ -95,7 +86,7 @@ await myCloudPool.CommitAsync();
 ```
 
 ### <a name="remote-direct-memory-access-rdma"></a>Remotezugriff auf den direkten Speicher (Remote Direct Memory Access, RDMA)
-Wenn Sie für die Computeknoten in Ihrem Batch-Pool eine [für RDMA geeignete Größe](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) wie z.B. A9 auswählen, kann die MPI-Anwendung das hochleistungsfähige RDMA-Netzwerk (Remote Direct Memory Access) mit geringer Latenz von Azure nutzen.
+Wenn Sie für die Computeknoten in Ihrem Batch-Pool eine [für RDMA geeignete Größe](../virtual-machines/sizes-hpc.md?toc=/azure/virtual-machines/windows/toc.json) wie z.B. A9 auswählen, kann die MPI-Anwendung das hochleistungsfähige RDMA-Netzwerk (Remote Direct Memory Access) mit geringer Latenz von Azure nutzen.
 
 Suchen Sie in den folgenden Artikeln nach den Größen, für die „RDMA-fähig“ angegeben ist:
 
@@ -104,11 +95,11 @@ Suchen Sie in den folgenden Artikeln nach den Größen, für die „RDMA-fähig�
   * [Größen für Clouddienste](../cloud-services/cloud-services-sizes-specs.md) (nur Windows)
 * **VirtualMachineConfiguration**-Pools
 
-  * [Größen für virtuelle Computer in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
-  * [Größen für virtuelle Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
+  * [Größen für virtuelle Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
+  * [Größen für virtuelle Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
-> Zum Nutzen von RDMA auf [Linux-Computeknoten](batch-linux-nodes.md) müssen Sie **Intel MPI** auf den Knoten verwenden. 
+> Zum Nutzen von RDMA auf [Linux-Computeknoten](batch-linux-nodes.md) müssen Sie **Intel MPI** auf den Knoten verwenden.
 >
 
 ## <a name="create-a-multi-instance-task-with-batch-net"></a>Erstellen eines Tasks mit mehreren Instanzen mithilfe von Batch .NET
@@ -162,7 +153,7 @@ cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
 Beachten Sie die Verwendung von `start` in diesem Koordinationsbefehl. Dies ist erforderlich, da die `smpd.exe` -Anwendung nicht sofort nach der Ausführung zurückgegeben wird. Ohne die Verwendung des [start][cmd_start]-Befehls würde dieser Koordinationsbefehl nicht zurückgegeben und daher die Ausführung des Anwendungsbefehls blockieren.
 
 ## <a name="application-command"></a>Anwendungsbefehl
-Nachdem der Primärtask und die Subtasks die Ausführung des Koordinationsbefehls abgeschlossen haben, wird die Befehlszeile des Tasks mit mehreren Instanzen *nur*vom Primärtask ausgeführt. Wir bezeichnen dies zur Unterscheidung vom Koordinationsbefehl als **Anwendungsbefehl** .
+Nachdem der Primärtask und die Subtasks die Ausführung des Koordinationsbefehls abgeschlossen haben, wird die Befehlszeile des Tasks mit mehreren Instanzen *nur* vom Primärtask ausgeführt. Wir bezeichnen dies zur Unterscheidung vom Koordinationsbefehl als **Anwendungsbefehl** .
 
 Verwenden Sie bei MS-MPI-Anwendungen den Anwendungsbefehl, um Ihre MPI-fähige Anwendung mit `mpiexec.exe` auszuführen. Hier sehen Sie ist z. B. einen Anwendungsbefehl für eine Lösung mit MS-MPI Version 7:
 
@@ -190,9 +181,7 @@ Die folgenden Umgebungsvariablen werden vom Batch-Dienst für die Verwendung von
 Weitere Informationen zu diesen und anderen Umgebungsvariablen der Batch-Computeknoten, ihren Inhalten und ihrer Sichtbarkeit finden Sie unter [Compute node environment variables][msdn_env_var] (Computeknoten-Umgebungsvariablen).
 
 > [!TIP]
-> Das Batch-Linux-MPI-Codebeispiel enthält ein Beispiel, wie einige dieser Umgebungsvariablen verwendet werden können. Das Bash-Script [coordination-cmd][coord_cmd_example] lädt gemeinsame Anwendungs- und Eingabedateien aus Azure Storage herunter, aktiviert eine NFS-Freigabe (Network File System) auf dem Masterknoten und konfiguriert die anderen Knoten, die dem Task mit mehreren Instanzen als NFS-Clients zugeordnet sind.
->
->
+> Das Batch-Linux-MPI-Codebeispiel enthält ein Beispiel, wie einige dieser Umgebungsvariablen verwendet werden können.
 
 ## <a name="resource-files"></a>Ressourcendateien
 Es gibt zwei Sätze von Ressourcendateien, die bei Tasks mit mehreren Instanzen berücksichtigt werden müssen: **gemeinsame Ressourcendateien**, die von *allen* Tasks (Primärtask und Subtasks) heruntergeladen werden, und die **Ressourcendateien** für den Task mit mehreren Instanzen selbst, die *nur vom Primärtask* heruntergeladen werden.
@@ -269,12 +258,12 @@ Im Codebeispiel [MultiInstanceTasks][github_mpi] auf GitHub wird veranschaulicht
 
 ### <a name="preparation"></a>Vorbereitung
 1. Führen Sie die ersten beiden Schritte in [How to compile and run a simple MS-MPI program][msmpi_howto] (Kompilieren und Ausführen eines einfachen MS-MPI-Programms) aus. Hiermit sind die Voraussetzungen für den folgenden Schritt erfüllt.
-2. Erstellen Sie eine *Freigabe*version des MPI-Beispielprogramms [MPIHelloWorld][helloworld_proj]. Dies ist das Programm, das vom Task mit mehreren Instanzen auf Computeknoten ausgeführt wird.
+2. Erstellen Sie eine *Freigabe* version des MPI-Beispielprogramms [MPIHelloWorld][helloworld_proj]. Dies ist das Programm, das vom Task mit mehreren Instanzen auf Computeknoten ausgeführt wird.
 3. Erstellen Sie eine ZIP-Datei, die `MPIHelloWorld.exe` (in Schritt 2 erstellt) und `MSMpiSetup.exe` (in Schritt 1 heruntergeladen) enthält. Im nächsten Schritt laden Sie diese ZIP-Datei als Anwendungspaket hoch.
 4. Verwenden Sie das [Azure-Portal][portal] zum Erstellen einer Batch-[Anwendung](batch-application-packages.md) mit dem Namen „MPIHelloWorld“, und geben Sie die im vorherigen Schritt als Version „1.0“ des Anwendungspakets erstellte ZIP-Datei an. Weitere Informationen finden Sie unter [Hochladen und Verwalten von Anwendungen](batch-application-packages.md#upload-and-manage-applications).
 
 > [!TIP]
-> Erstellen Sie eine *Freigabe*version von `MPIHelloWorld.exe`, damit Sie keine weiteren Abhängigkeiten (z.B. `msvcp140d.dll` oder `vcruntime140d.dll`) in Ihr Anwendungspaket einbinden müssen.
+> Erstellen Sie eine *Freigabe* version von `MPIHelloWorld.exe`, damit Sie keine weiteren Abhängigkeiten (z.B. `msvcp140d.dll` oder `vcruntime140d.dll`) in Ihr Anwendungspaket einbinden müssen.
 >
 >
 
@@ -285,7 +274,7 @@ Im Codebeispiel [MultiInstanceTasks][github_mpi] auf GitHub wird veranschaulicht
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. Geben Sie die Anmeldeinformationen für Ihr Batch- und Storage-Konto in `AccountSettings.settings` im Projekt **Microsoft.Azure.Batch.Samples.Common** ein.
 4. **Erstellen Sie die Lösung MultiInstanceTasks, und führen Sie sie aus**, damit die MPI-Beispielanwendung auf den Computeknoten in einem Batch-Pool ausgeführt wird.
-5. *Optional:* Verwenden Sie das [Azure-Portal][portal] oder den [Batch Explorer][batch_labs], um Beispielpool, -auftrag und -task („MultiInstanceSamplePool“, „MultiInstanceSampleJob“, „MultiInstanceSampleTask“) vor dem Löschen der Ressourcen zu untersuchen.
+5. *Optional*: Verwenden Sie das [Azure-Portal][portal] oder den [Batch Explorer][batch_labs], um Beispielpool, -auftrag und -task („MultiInstanceSamplePool“, „MultiInstanceSampleJob“, „MultiInstanceSampleTask“) vor dem Löschen der Ressourcen zu untersuchen.
 
 > [!TIP]
 > Sie können [Visual Studio Community][visual_studio] kostenlos herunterladen, falls Sie Visual Studio noch nicht erworben haben.
@@ -333,44 +322,44 @@ Sample complete, hit ENTER to exit...
 
 [helloworld_proj]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/MultiInstanceTasks/MPIHelloWorld
 
-[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[api_rest]: https://msdn.microsoft.com/library/azure/dn820158.aspx
+[api_net]: /dotnet/api/microsoft.azure.batch
+[api_rest]: /rest/api/batchservice/
 [batch_labs]: https://azure.github.io/BatchExplorer/
-[blog_mpi_linux]: https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/
-[cmd_start]: https://technet.microsoft.com/library/cc770297.aspx
-[coord_cmd_example]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/mpi/data/linux/openfoam/coordination-cmd
+[blog_mpi_linux]: /archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch
+[cmd_start]: /previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc770297(v=ws.11)
+[coord_cmd_example]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/mpi/data/coordination-cmd
 [github_mpi]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/MultiInstanceTasks
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_zip]: https://github.com/Azure/azure-batch-samples/archive/master.zip
-[msdn_env_var]: https://msdn.microsoft.com/library/azure/mt743623.aspx
-[msmpi_msdn]: https://msdn.microsoft.com/library/bb524831.aspx
+[msdn_env_var]: ./batch-compute-node-environment-variables.md
+[msmpi_msdn]: /message-passing-interface/microsoft-mpi
 [msmpi_sdk]: https://go.microsoft.com/FWLink/p/?LinkID=389556
-[msmpi_howto]: https://blogs.technet.com/b/windowshpc/archive/2015/02/02/how-to-compile-and-run-a-simple-ms-mpi-program.aspx
+[msmpi_howto]: /archive/blogs/windowshpc/how-to-compile-and-run-a-simple-ms-mpi-program
 [openfoam]: http://www.openfoam.com/
 [visual_studio]: https://www.visualstudio.com/vs/community/
 
-[net_jobprep]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobpreparationtask.aspx
-[net_multiinstance_class]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.multiinstancesettings.aspx
-[net_multiinstance_prop]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.multiinstancesettings.aspx
-[net_multiinsance_commonresfiles]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.multiinstancesettings.commonresourcefiles.aspx
-[net_multiinstance_coordcmdline]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.multiinstancesettings.coordinationcommandline.aspx
-[net_multiinstance_numinstances]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.multiinstancesettings.numberofinstances.aspx
-[net_pool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
-[net_pool_create]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx
-[net_pool_starttask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.starttask.aspx
-[net_resourcefile]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.resourcefile.aspx
-[net_starttask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.starttask.aspx
-[net_starttask_cmdline]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.starttask.commandline.aspx
-[net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
-[net_taskconstraints]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskconstraints.aspx
-[net_taskconstraint_maxretry]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskconstraints.maxtaskretrycount.aspx
-[net_taskconstraint_maxwallclock]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskconstraints.maxwallclocktime.aspx
-[net_taskconstraint_retention]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskconstraints.retentiontime.aspx
-[net_task_listsubtasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.listsubtasks.aspx
-[net_task_listnodefiles]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.listnodefiles.aspx
-[poolops_getnodefile]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getnodefile.aspx
+[net_jobprep]: /dotnet/api/microsoft.azure.batch.jobpreparationtask
+[net_multiinstance_class]: /dotnet/api/microsoft.azure.batch.multiinstancesettings
+[net_multiinstance_prop]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_multiinsance_commonresfiles]: /dotnet/api/microsoft.azure.batch.multiinstancesettings
+[net_multiinstance_coordcmdline]: /dotnet/api/microsoft.azure.batch.multiinstancesettings
+[net_multiinstance_numinstances]: /dotnet/api/microsoft.azure.batch.multiinstancesettings
+[net_pool]: /dotnet/api/microsoft.azure.batch.cloudpool
+[net_pool_create]: /dotnet/api/microsoft.azure.batch.pooloperations
+[net_pool_starttask]: /dotnet/api/microsoft.azure.batch.cloudpool
+[net_resourcefile]: /dotnet/api/microsoft.azure.batch.resourcefile
+[net_starttask]: /dotnet/api/microsoft.azure.batch.starttask
+[net_starttask_cmdline]: /dotnet/api/microsoft.azure.batch.starttask
+[net_task]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_taskconstraints]: /dotnet/api/microsoft.azure.batch.taskconstraints
+[net_taskconstraint_maxretry]: /dotnet/api/microsoft.azure.batch.taskconstraints
+[net_taskconstraint_maxwallclock]: /dotnet/api/microsoft.azure.batch.taskconstraints
+[net_taskconstraint_retention]: /dotnet/api/microsoft.azure.batch.taskconstraints
+[net_task_listsubtasks]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_task_listnodefiles]: /dotnet/api/microsoft.azure.batch.cloudtask
+[poolops_getnodefile]: /dotnet/api/microsoft.azure.batch.pooloperations
 
 [portal]: https://portal.azure.com
-[rest_multiinstance]: https://msdn.microsoft.com/library/azure/mt637905.aspx
+[rest_multiinstance]: /previous-versions/azure/mt637905(v=azure.100)
 
 [1]: ./media/batch-mpi/batch_mpi_01.png "Mehrere Instanzen – Übersicht"

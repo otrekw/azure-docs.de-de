@@ -1,24 +1,27 @@
 ---
-title: Inkrementelles Kopieren von Daten mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Inkrementelles Kopieren von Daten
 description: In diesen Tutorials wird veranschaulicht, wie Sie Daten inkrementell aus einem Quelldatenspeicher in einen Zieldatenspeicher kopieren. Im ersten Tutorial werden Daten aus einer Tabelle kopiert.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
-manager: craigg
+ms.author: yexu
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.author: yexu
-ms.openlocfilehash: 15ff84bf8a194c6172864601e3aefe78f9cc13a3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f1fb209f44ae7922de87277100fbf55add184766
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140582"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84194490"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Inkrementelles Laden von Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In einer Datenintegrationslösung ist das inkrementelle Laden (oder Deltaladen) von Daten nach einem anfänglichen vollständigen Ladevorgang ein häufig verwendetes Szenario. In den Tutorials dieses Abschnitts werden verschiedene Möglichkeiten zum inkrementellen Laden von Daten mit Azure Data Factory gezeigt.
 
@@ -29,7 +32,7 @@ In diesem Fall definieren Sie einen Grenzwert (Englisch: Watermark) in Ihrer Que
 
 Die folgenden Tutorials enthalten Schritt-für-Schritt-Anleitungen: 
 - [Inkrementelles Kopieren von Daten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage](tutorial-incremental-copy-powershell.md)
-- [Inkrementelles Laden von mehreren SQL Server-Tabellen in Azure SQL-Datenbank](tutorial-incremental-copy-multiple-tables-powershell.md)
+- [Inkrementelles Kopieren von Daten aus mehreren Tabellen einer SQL Server-Instanz in Azure SQL-Datenbank](tutorial-incremental-copy-multiple-tables-powershell.md)
 
 Informationen zu Vorlagen finden Sie im folgenden Artikel:
 - [Deltakopiervorgänge aus einer Datenbank mit einer Steuertabelle](solution-template-delta-copy-with-control-table.md)

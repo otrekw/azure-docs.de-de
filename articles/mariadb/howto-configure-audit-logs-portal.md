@@ -1,24 +1,21 @@
 ---
-title: Konfigurieren von und Zugreifen auf Überwachungsprotokolle für Azure Database for MariaDB im Azure-Portal
+title: Zugreifen auf Überwachungsprotokolle – Azure-Portal – Azure Database for MariaDB
 description: In diesem Artikel wird beschrieben, wie Sie im Azure-Portal die Überwachungsprotokolle in Azure Database for MariaDB konfigurieren und auf diese zugreifen.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 06/24/2019
-ms.openlocfilehash: 8fadcc8cb418063662df45d4134bef0578ffccda
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.topic: how-to
+ms.date: 6/24/2020
+ms.openlocfilehash: f1f3cda4ed9cdac6f6e03e88601b0a35d5c53faf
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444816"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021162"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Konfigurieren von und Zugreifen auf Überwachungsprotokolle im Azure-Portal
 
 Sie können im Azure-Portal die [Azure Database for MariaDB-Überwachungsprotokolle](concepts-audit-logs.md) und -Diagnoseeinstellungen konfigurieren.
-
-> [!IMPORTANT]
-> Diese Überwachungsprotokollfunktion ist derzeit in der Vorschauphase.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,6 +24,9 @@ Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 - [Azure Database for MariaDB-Server](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
 ## <a name="configure-audit-logging"></a>Konfigurieren der Überwachungsprotokollierung
+
+>[!IMPORTANT]
+> Es wird empfohlen, nur die Ereignistypen und Benutzer zu protokollieren, die für Ihre Überwachungszwecke erforderlich sind, um sicherzustellen, dass die Leistung Ihres Servers nicht stark beeinträchtigt wird.
 
 Aktivieren und konfigurieren Sie die Überwachungsprotokollierung.
 
@@ -70,3 +70,4 @@ Aktivieren und konfigurieren Sie die Überwachungsprotokollierung.
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr zu [Überwachungsprotokollen](concepts-audit-logs.md) in Azure Database for MariaDB.
+- Erfahren Sie mehr zum Konfigurieren von Überwachungsprotokollen über die [Azure-Befehlszeilenschnittstelle](howto-configure-audit-logs-cli.md).

@@ -1,23 +1,23 @@
 ---
-title: Upgrade auf Azure Search .NET SDK Version 3 – Azure Search
+title: Upgrade auf Version 3 des Azure Search .NET SDK
+titleSuffix: Azure Cognitive Search
 description: Migrieren von Code zu Azure Search .NET SDK Version 3 von älteren Versionen. Hier finden Sie Informationen zu Neuheiten und erfahren, welche Änderungen am Code erforderlich sind.
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: cab0da93bbea117c216969faf2f1e194e16d675f
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0e9f4602582a8c24f74d6603b732e7b91d97fa8d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183223"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89002690"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Upgrade auf Version 3 des Azure Search .NET SDK
+# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Upgrade auf Version 3 des Azure Search .NET SDK
 
 <!--- DETAILS in the word doc
 cosmosdb
@@ -26,7 +26,7 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-Wenn Sie die Version „2.0-preview“ oder eine frühere Version des [Azure Search .NET SDK](https://aka.ms/search-sdk) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 3.0.
+Wenn Sie die Version „2.0-preview“ oder eine frühere Version des [Azure Search .NET SDK](/dotnet/api/overview/azure/search) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 3.0.
 
 Eine allgemeinere exemplarische Vorgehensweise für das SDK sowie Beispiele finden Sie unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
 
@@ -42,7 +42,7 @@ Version 3 des Azure Search .NET SDK enthält einige Änderungen zu früheren Ver
 ## <a name="whats-new-in-version-3"></a>Neuerungen in Version 3
 Version 3 des Azure Search .NET SDK ist für die neueste allgemein verfügbare Version der Azure Search-REST-API (2016-09-01) konzipiert. Dadurch können viele neue Features von Azure Search in einer .NET-Anwendung verwendet werden. Hierzu zählen etwa folgende:
 
-* [Benutzerdefinierte Analysen](https://aka.ms/customanalyzers)
+* [Benutzerdefinierte Analysen](index-add-custom-analyzers.md)
 * Unterstützung von Indexern für [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) und [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * Anpassen von Indexern über [Feldzuordnungen](search-indexer-field-mappings.md)
 * ETags-Unterstützung für sichere gleichzeitige Aktualisierung von Indexdefinitionen, Indexern und Datenquellen
@@ -58,7 +58,9 @@ Nachdem NuGet die neuen Pakete und deren Abhängigkeiten heruntergeladen hat, er
 
 Wenn beim Erstellen ein Fehler auftritt, wird etwa folgende Buildfehlermeldung angezeigt:
 
-    Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
+```output
+Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
+```
 
 Der nächste Schritt besteht darin, diesen Buildfehler zu beheben. Unter [Wichtige Änderungen in Version 3](#ListOfChanges) finden Sie Informationen zur Fehlerursache und -behebung.
 

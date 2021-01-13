@@ -4,17 +4,17 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 072864d565e2edbddd4b7df851ad0e30daf7e5fa
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8a442b5de7a256dd8bcf47da741bd41894709c3a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178115"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561253"
 ---
 Für die Diagnose von Problemen mit einem Microsoft Azure-Clouddienst müssen die Protokolldateien des Diensts auf virtuellen Computern gesammelt werden, wenn die Probleme auftreten. Sie können die AzureLogCollector-Erweiterung bedarfsgesteuert verwenden, um eine einmalige Sammlung von Protokollen von einer oder mehreren Clouddienst-VMs (von Web- und Workerrollen aus) durchzuführen und die gesammelten Dateien an ein Azure-Speicherkonto zu übertragen – alles ohne Remoteanmeldung bei den virtuellen Computern.
 
 > [!NOTE]
-> Beschreibungen für die meisten der protokollierten Informationen finden Sie unter http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.
+> Beschreibungen für die meisten der protokollierten Informationen finden Sie unter https://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/.
 > 
 > 
 
@@ -32,8 +32,8 @@ Es gibt zwei Modi für die Sammlung, die von den Typen der zu sammelnden Dateien
 In beiden Sammlungsmodi können zusätzliche Ordner für die Datensammlung angegeben werden, indem eine Sammlung mit der folgenden Struktur verwendet wird:
 
 * **Name**: Der Name der Sammlung, der als Name des Unterordners in der ZIP-Datei mit den gesammelten Dateien verwendet wird.
-* **Standort**: Der Pfad des Ordners auf dem virtuellen Computer, in dem sich die zu sammelnden Datei befinden.
-* **SearchPattern**: Das Muster der Namen der zu sammelnden Dateien. Standardwert: \*.
+* **Speicherort**: Der Pfad des Ordners auf dem virtuellen Computer, in dem sich die zu sammelnden Datei befinden.
+* **Suchmuster**: Das Muster der Namen der zu sammelnden Dateien. Standardwert: \*.
 * **Rekursiv**: Falls sich die zu sammelnden Dateien rekursiv unter dem angegebenen Speicherort befinden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -44,11 +44,11 @@ In beiden Sammlungsmodi können zusätzliche Ordner für die Datensammlung angeg
 * Azure PowerShell. Anweisungen zur Installation finden Sie unter [Installieren von Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="add-the-extension"></a>Hinzufügen der Erweiterung
-Sie können [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx)-Cmdlets oder [REST-APIs für die Dienstverwaltung](https://msdn.microsoft.com/library/ee460799.aspx) verwenden, um die AzureLogCollector-Erweiterung hinzuzufügen.
+Sie können [Microsoft Azure PowerShell](/previous-versions/azure/dn495240(v=azure.100))-Cmdlets oder [REST-APIs für die Dienstverwaltung](/previous-versions/azure/ee460799(v=azure.100)) verwenden, um die AzureLogCollector-Erweiterung hinzuzufügen.
 
-Für Cloud Services kann das vorhandene Azure PowerShell-Cmdlet **Set AzureServiceExtension**verwendet werden, um die Erweiterung für Clouddienst-Rolleninstanzen zu aktivieren. Jedes Mal, wenn diese Erweiterung durch dieses Cmdlet aktiviert wird, wird für die ausgewählten Rolleninstanzen der ausgewählten Rollen die Protokollsammlung ausgelöst.
+Für Cloud Services kann das vorhandene Azure PowerShell-Cmdlet **Set AzureServiceExtension** verwendet werden, um die Erweiterung für Clouddienst-Rolleninstanzen zu aktivieren. Jedes Mal, wenn diese Erweiterung durch dieses Cmdlet aktiviert wird, wird für die ausgewählten Rolleninstanzen der ausgewählten Rollen die Protokollsammlung ausgelöst.
 
-Für virtuelle Computer kann das vorhandene Azure PowerShell-Cmdlet **Set-AzureVMExtension**verwendet werden, um die Erweiterung auf virtuellen Computern zu aktivieren. Jedes Mal, wenn diese Erweiterung durch die Cmdlets aktiviert wird, wird für jede Instanz die Protokollsammlung ausgelöst.
+Für virtuelle Computer kann das vorhandene Azure PowerShell-Cmdlet **Set-AzureVMExtension** verwendet werden, um die Erweiterung auf virtuellen Computern zu aktivieren. Jedes Mal, wenn diese Erweiterung durch die Cmdlets aktiviert wird, wird für jede Instanz die Protokollsammlung ausgelöst.
 
 Intern verwendet diese Erweiterung die JSON-basierten Argumente „PublicConfiguration“ und „PrivateConfiguration“. Im Folgenden finden Sie das Layout eines JSON-Beispiels für die öffentliche und die private Konfiguration.
 
@@ -86,7 +86,7 @@ Intern verwendet diese Erweiterung die JSON-basierten Argumente „PublicConfigu
 ```
 
 > [!NOTE]
-> Für diese Erweiterung ist **PrivateConfiguration**nicht erforderlich. Sie können einfach eine leere Struktur für das Argument **–PrivateConfiguration** angeben.
+> Für diese Erweiterung ist **PrivateConfiguration** nicht erforderlich. Sie können einfach eine leere Struktur für das Argument **–PrivateConfiguration** angeben.
 > 
 > 
 
@@ -177,13 +177,13 @@ param (
 )
 ```
 
-* **ServiceName**: Der Name Ihres Clouddiensts.
+* **ServiceName**: Der Name des Clouddiensts.
 * **Roles**: Eine Liste der Rollen, z.B. „WebRole1“ oder „WorkerRole1“.
 * **Instances**: Eine Liste der Namen von Rolleninstanzen, durch Komma getrennt. Verwenden Sie das Platzhalterzeichen („*“) für alle Rolleninstanzen.
 * **Slot**: Slotname. „Production“ oder „Staging“.
-* **Modus**: Sammlungsmodus. „Full“ oder „GA“.
+* **Mode**: Sammlungsmodus. „Full“ oder „GA“.
 * **StorageAccountName**: Name des Azure-Speicherkontos zum Speichern der gesammelten Daten.
-* **StorageAccountKey**: Name des Azure-Speicherkontoschlüssels.
+* **StorageAccountKey**: Name des Azure-Speicherkontenschlüssels.
 * **AdditionalDataLocationList**: Eine Liste mit der folgenden Struktur:
 
   ```powershell
@@ -259,11 +259,11 @@ param (
 )
 ```
 
-* **ServiceName**: Der Name Ihres Clouddiensts.
-* **VMName**: Der Name der VM.
-* **Modus**: Sammlungsmodus. „Full“ oder „GA“.
+* **ServiceName**: Der Name des Clouddiensts.
+* **VMName**: Der Name des virtuellen Computers.
+* **Mode**: Sammlungsmodus. „Full“ oder „GA“.
 * **StorageAccountName**: Name des Azure-Speicherkontos zum Speichern der gesammelten Daten.
-* **StorageAccountKey**: Name des Azure-Speicherkontoschlüssels.
+* **StorageAccountKey**: Name des Azure-Speicherkontenschlüssels.
 * **AdditionalDataLocationList**: Eine Liste mit der folgenden Struktur:
 
   ```
@@ -528,4 +528,3 @@ else
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nun können Sie Ihre Protokolle an einem einfachen Ort untersuchen oder kopieren.
-

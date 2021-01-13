@@ -1,38 +1,25 @@
 ---
 title: Versionsanmerkungen für Application Insights | Microsoft Docs
 description: Fügen Sie den Diagrammen im Metrik-Explorer in Application Insights Bereitstellungs- oder Buildmarker hinzu.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 23173e33-d4f2-4528-a730-913a8fd5f02e
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.author: mbullwin
-ms.openlocfilehash: e3ec202ba6126b150fb78c76591682f163018661
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.date: 08/14/2020
+ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604539"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993719"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Anmerkungen zu Metrik-Diagrammen in Application Insights
 
-Anmerkungen in Diagrammen des [Metrik-Explorers](../../azure-monitor/app/metrics-explorer.md) zeigen, wo Sie einen neuen Build bereitgestellt haben, oder andere wichtige Ereignisse. Dank der Anmerkungen sehen Sie auf einen Blick, ob Ihre Änderungen Auswirkungen auf die Leistung Ihrer Anwendung hatten. Sie können automatisch durch das Buildsystem von [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) erstellt werden. Es können auch Anmerkungen erstellt werden, die alle gewünschten Ereignisse markieren, indem diese aus PowerShell erstellt werden.
-
-> [!NOTE]
-> In diesem Artikel wird die veraltete **Umgebung für klassische Metriken** verwendet. Anmerkungen sind derzeit nur in der klassischen Umgebung und in **[Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)** verfügbar. Weitere Informationen zur aktuellen Metrikoberfläche finden Sie unter [Erweiterte Funktionen von Azure Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md).
-
-![Beispiel für Anmerkungen](./media/annotations/0-example.png)
+Mit Anmerkungen wird angegeben, wo Sie einen neuen Build bereitgestellt haben, oder es wird auf andere wichtige Ereignisse hingewiesen. Dank der Anmerkungen sehen Sie auf einen Blick, ob Ihre Änderungen Auswirkungen auf die Leistung Ihrer Anwendung hatten. Sie können automatisch durch das Buildsystem von [Azure Pipelines](/azure/devops/pipelines/tasks/) erstellt werden. Es können auch Anmerkungen erstellt werden, die alle gewünschten Ereignisse markieren, indem diese aus PowerShell erstellt werden.
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Releaseanmerkungen mit Azure Pipelines-Build
 
 Releaseanmerkungen sind ein Feature des cloudbasierten Azure Pipelines-Diensts von Azure DevOps.
 
 ### <a name="install-the-annotations-extension-one-time"></a>Installieren der Erweiterung für Anmerkungen (einmalig)
+
 Um Releaseanmerkungen erstellen zu können, müssen Sie eine der zahlreichen Azure DevOps-Erweiterungen installieren, die im Visual Studio Marketplace zur Verfügung stehen.
 
 1. Melden Sie sich bei Ihrem [Azure DevOps](https://azure.microsoft.com/services/devops/)-Projekt an.
@@ -47,7 +34,7 @@ Die Erweiterung muss nur einmal für Ihre Azure DevOps-Organisation installiert
 
 Erstellen Sie für Ihre Azure Pipelines-Versionsvorlagen jeweils einen separaten API-Schlüssel.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Application Insights-Ressource, die Ihre Anwendung überwacht. Sollten Sie über keine solche Ressource verfügen, [erstellen Sie eine neue Application Insights-Ressource](../../azure-monitor/app/app-insights-overview.md).
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Application Insights-Ressource, die Ihre Anwendung überwacht. Sollten Sie über keine solche Ressource verfügen, [erstellen Sie eine neue Application Insights-Ressource](./app-insights-overview.md).
    
 1. Öffnen Sie die Registerkarte **API-Zugriff**, und kopieren Sie die **Application Insights-ID**.
    
@@ -58,6 +45,9 @@ Erstellen Sie für Ihre Azure Pipelines-Versionsvorlagen jeweils einen separate
 1. Wählen Sie **Aufgabe hinzufügen** und anschließend im Menü die Aufgabe **Application Insights Release Annotation** (Application Insights-Releaseanmerkung) aus.
    
    ![Wählen Sie „Aufgabe hinzufügen“ und anschließend „Application Insights Release Annotation“ (Application Insights-Releaseanmerkung) aus.](./media/annotations/3-add-task.png)
+
+   > [!NOTE]
+   > Die Aufgabe „Releaseanmerkung“ unterstützt zurzeit nur Windows-basierte Agents. Sie kann nicht unter Linux, macOS oder anderen Agent-Typen ausgeführt werden.
    
 1. Fügen Sie unter **Anwendungs-ID** die Application Insights-ID ein, die Sie auf der Registerkarte **API-Zugriff** kopiert haben.
    
@@ -79,17 +69,36 @@ Erstellen Sie für Ihre Azure Pipelines-Versionsvorlagen jeweils einen separate
    
 1. Wählen Sie im Hauptfenster der Versionsvorlage die Option **Speichern** aus, um die Vorlage zu speichern.
 
+
+   > [!NOTE]
+   > Einschränkungen für API-Schlüssel werden in der [Dokumentation zur REST-API-Ratenbegrenzungen](https://dev.applicationinsights.io/documentation/Authorization/Rate-limits) beschrieben.
+
 ## <a name="view-annotations"></a>Anmerkungen anzeigen
-Wenn Sie nun diese Versionsvorlage zum Bereitstellen einer neuen Version verwenden, wird jedes Mal eine Anmerkung an Application Insights gesendet. Die Anmerkungen werden in Diagrammen des **Metrik-Explorers** angezeigt.
 
-Wählen Sie einen Anmerkungsmarker (hellgrauer Pfeil) aus, um Details zum Release wie Anforderer, Quellcodeverwaltungsbranch, Releasepipeline und Umgebung anzuzeigen.
 
-![Wählen Sie einen Releaseanmerkungsmarker aus.](./media/annotations/8-release.png)
+   > [!NOTE]
+   > Versionsanmerkungen sind im Bereich „Metriken“ von Application Insights derzeit nicht verfügbar.
+
+Wenn Sie nun diese Versionsvorlage zum Bereitstellen einer neuen Version verwenden, wird jedes Mal eine Anmerkung an Application Insights gesendet. Die Anmerkungen können an den folgenden Orten angezeigt werden:
+
+Bereich „Nutzung“, in dem Sie auch manuell Versionsanmerkungen erstellen können:
+
+![Screenshot: Balkendiagramm mit der Anzahl von Benutzerbesuchen für eine bestimmte Anzahl von Stunden Versionsanmerkungen werden als grüne Häkchen oberhalb des Diagramms angezeigt und geben den Zeitpunkt einer Versionsveröffentlichung an.](./media/annotations/usage-pane.png)
+
+Alle protokollbasierten Arbeitsmappenabfragen, bei denen bei der Visualisierung die Uhrzeit auf der X-Achse angezeigt wird.
+
+![Screenshot: Arbeitsmappenbereich mit protokollbasierter Zeitreihenabfrage mit Anzeige von Anmerkungen](./media/annotations/workbooks-annotations.png)
+
+Navigieren Sie zum Aktivieren der Anmerkungen in Ihrer Arbeitsmappe zu **Erweiterte Einstellungen**, und wählen Sie **Anmerkungen anzeigen** aus.
+
+![Screenshot: Menü „Erweiterte Einstellungen“ mit Hervorhebung von „Anmerkungen anzeigen“ und einem Häkchen zum Aktivieren neben der Einstellung](./media/annotations/workbook-show-annotations.png)
+
+Wählen Sie einen Anmerkungsmarker aus, um Details zur Version anzuzeigen, z. B. Anforderer, Quellcodeverwaltungsbranch, Releasepipeline und Umgebung.
 
 ## <a name="create-custom-annotations-from-powershell"></a>Erstellen von benutzerdefinierten Anmerkungen in PowerShell
-Mit dem PowerShell-Skript [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) von GitHub können Sie Anmerkungen auf der Grundlage eines beliebigen Prozesses erstellen, ohne Azure DevOps zu verwenden. 
+Mit dem PowerShell-Skript [CreateReleaseAnnotation](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) von GitHub können Sie Anmerkungen auf der Grundlage eines beliebigen Prozesses erstellen, ohne Azure DevOps zu verwenden. 
 
-1. Erstellen Sie eine lokale Kopie von [CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+1. Erstellen Sie eine lokale Kopie von [CreateReleaseAnnotation.ps1](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
    
 1. Gehen Sie wie oben beschrieben vor, um Ihre Application Insights-ID abzurufen und einen API-Schlüssel über die Application Insights-Registerkarte **API-Zugriff** zu erstellen.
    
@@ -110,5 +119,6 @@ Sie können das Skript auch anpassen, um beispielsweise Anmerkungen für die Ver
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen eines Arbeitselements](../../azure-monitor/app/diagnostic-search.md#create-work-item)
-* [Automation mit PowerShell](../../azure-monitor/app/powershell.md)
+* [Erstellen eines Arbeitselements](./diagnostic-search.md#create-work-item)
+* [Automation mit PowerShell](./powershell.md)
+

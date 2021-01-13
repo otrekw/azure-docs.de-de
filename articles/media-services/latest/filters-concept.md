@@ -3,24 +3,26 @@ title: Definieren von Filtern in Azure Media Services
 description: In diesem Thema wird erläutert, wie Sie Filter erstellen, mit denen Ihre Kunden bestimmte Abschnitte eines Streams streamen können. Media Services erstellt dynamische Manifeste, um dieses selektive Streaming zu erreichen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 05/23/2019
-ms.author: juliako
-ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66225412"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89291550"
 ---
 # <a name="filters"></a>Filter
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bei der Inhaltsbereitstellung für Ihre Kunden (Livestreaming von Ereignissen oder Video on Demand) benötigen Ihre Kunden möglicherweise mehr Flexibilität als in der Manifestdatei für das Standardmedienobjekt beschrieben. Azure Media Services bietet [dynamische Manifeste](filters-dynamic-manifest-overview.md), die auf vordefinierten Filtern basieren. 
 
@@ -38,8 +40,8 @@ Media Services ermöglicht es Ihnen, **Kontofilter** und **Medienobjektfilter** 
 
 Es gibt zwei Arten von Filtern: 
 
-* [Kontofilter](https://docs.microsoft.com/rest/api/media/accountfilters) (global): Diese Filter können auf jedes Medienobjekt im Azure Media Services-Konto angewendet werden und haben die Lebensdauer des Kontos.
-* [Medienobjektfilter](https://docs.microsoft.com/rest/api/media/assetfilters) (lokal): Sie können nur auf ein Medienobjekt angewendet werden, dem der Filter bei der Erstellung zugeordnet wurde, und haben die Lebensdauer des Medienobjekts. 
+* [Kontofilter](/rest/api/media/accountfilters) (global): Diese Filter können auf jedes Medienobjekt im Azure Media Services-Konto angewendet werden und haben die Lebensdauer des Kontos.
+* [Medienobjektfilter](/rest/api/media/assetfilters) (lokal): Sie können nur auf ein Medienobjekt angewendet werden, dem der Filter bei der Erstellung zugeordnet wurde, und haben die Lebensdauer des Medienobjekts. 
 
 Die Typen **Kontofilter** und **Medienobjektfilter** besitzen exakt dieselben Eigenschaften zum Definieren/Beschreiben des jeweiligen Filters. Außer beim Erstellen des **Medienobjektfilters** müssen Sie den Namen des Medienobjekts angeben, dem Sie den Filter zuordnen möchten.
 
@@ -47,7 +49,7 @@ Abhängig vom Szenario entscheiden Sie, welcher Filtertyp (Medienobjektfilter od
 
 Sie verwenden die folgenden Eigenschaften zum Beschreiben der Filter. 
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |firstQuality|Die erste Qualitätsstufe der Bitrate für den Filter.|
 |presentationTimeRange|Der Bereich der Präsentationszeit. Diese Eigenschaft wird zum Filtern der Start-/Endpunkte des Manifests, der Länge des Präsentationsfensters und der Livestartposition verwendet. <br/>Weitere Informationen finden Sie unter [PresentationTimeRange](#presentationtimerange).|
@@ -57,7 +59,7 @@ Sie verwenden die folgenden Eigenschaften zum Beschreiben der Filter.
 
 Verwenden Sie diese Eigenschaft mit **Medienobjektfiltern**. Es wird nicht empfohlen, die Eigenschaft mit **Kontofiltern** festzulegen.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |**endTimestamp**|Gilt für Video on Demand (VoD).<br/>Bei einer Livestreamingpräsentation wird diese Eigenschaft stillschweigend ignoriert und angewendet, wenn die Präsentation endet und der Stream zu VoD wird.<br/>Dies ist ein Long-Wert, der einen absoluten Endpunkt der Präsentation darstellt und auf den nächsten GOP-Start gerundet wird. Die Einheit ist die Zeitskala, daher würde ein „endTimestamp“ von 1800000000 einer Zeit von drei Minuten entsprechen.<br/>Verwenden Sie „startTimestamp“ und „endTimestamp“, um die Fragmente in der Wiedergabeliste (das Manifest) zu kürzen.<br/>Wenn Sie z. B. „startTimestamp=40000000“ und „endTimestamp=100000000“ mit der voreingestellten Zeitskala verwenden, wird eine Wiedergabeliste generiert, die Fragmente aus einer Zeitspanne von vier bis zehn Sekunden der VoD-Präsentation enthält. Wenn ein Fragment die Grenze überschreitet, wird das gesamte Fragment in das Manifest aufgenommen.|
 |**forceEndTimestamp**|Gilt nur für Livestreaming.<br/>Gibt an, ob die Eigenschaft „endTimestamp“ vorhanden sein muss. Bei „true“ muss „endTimestamp“ muss angegeben werden, da ansonsten ein ungültiger Anforderungscode zurückgegeben wird.<br/>Zulässige Werte: false, true.|
@@ -72,7 +74,7 @@ Sie geben eine Liste von Eigenschaftsbedingungen für die Filterung nach Spuren 
 
 Spureigenschaftsbedingungen für die Filterung beschreiben Spurtypen, Werte (siehe nachstehende Tabelle) und Vorgänge („Equal“, „NotEqual“). 
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |**Bitrate**|Verwenden Sie die Bitrate der Spur zur Filterung.<br/><br/>Der empfohlene Wert ist ein Bereich aus Bitraten in Bits pro Sekunde. Beispiel: 0-2427000.<br/><br/>Hinweis: Sie können einen bestimmten Wert für die Bitrate angeben, z.B. 250000 (Bits pro Sekunde), dieser Ansatz wird jedoch nicht empfohlen, weil die exakten Bitraten je nach Medienobjekt unterschiedlich sein können.|
 |**FourCC**|Verwenden Sie den FourCC-Wert der Spur für die Filterung.<br/><br/>Der Wert ist das erste Element des Codecs-Formats, wie angegeben in [RFC 6381](https://tools.ietf.org/html/rfc6381). Aktuell werden die folgenden Codecs unterstützt: <br/>Für Video: avc1, hev1, hvc1<br/>Für Audio: mp4a, ec-3<br/><br/>Um die FourCC-Werte für die Spuren in einem Medienobjekt zu bestimmen, müssen Sie die Manifestdatei abrufen und untersuchen.|
@@ -139,7 +141,7 @@ Das folgende Beispiel definiert einen Livestreamingfilter:
 
 ## <a name="associating-filters-with-streaming-locator"></a>Zuordnen von Filtern mit Streaminglocator
 
-Sie können eine Liste von [Medienobjekt- oder Kontofiltern](filters-concept.md) für Ihren [Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body) angeben. Der [dynamische Paketerstellungs-Manager](dynamic-packaging-overview.md) wendet diese Liste der Filter zusammen mit den Filtern an, die Ihr Client in der URL angibt. Diese Kombination generiert ein [dynamisches Manifest](filters-dynamic-manifest-overview.md), das auf Filtern in den URL und Filtern basiert, die Sie im Streaminglocator angeben. 
+Sie können eine Liste von [Medienobjekt- oder Kontofiltern](filters-concept.md) für Ihren [Streaminglocator](/rest/api/media/streaminglocators/create#request-body) angeben. Der [dynamische Paketerstellungs-Manager](dynamic-packaging-overview.md) wendet diese Liste der Filter zusammen mit den Filtern an, die Ihr Client in der URL angibt. Diese Kombination generiert ein [dynamisches Manifest](filters-dynamic-manifest-overview.md), das auf Filtern in den URL und Filtern basiert, die Sie im Streaminglocator angeben. 
 
 Hierzu folgende Beispiele:
 
@@ -161,4 +163,3 @@ Die folgenden Artikel enthalten Informationen zum programmgesteuerten Erstellen 
 - [Erstellen von Filtern mit REST-APIs](filters-dynamic-manifest-rest-howto.md)
 - [Erstellen von Filtern mit .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [Erstellen von Filtern mit der CLI](filters-dynamic-manifest-cli-howto.md)
-

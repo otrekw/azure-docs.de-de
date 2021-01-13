@@ -1,29 +1,31 @@
 ---
 title: 'Media Encoder Standard-Formate und -Codecs: Azure'
-description: Dieses Thema bietet eine Übersicht über Media Encoder Standard-Formate und -Codecs.
+description: Dieser Artikel enthält eine Liste der gängigsten Import- und Exportdateiformate, die Sie mit „StandardEncoderPreset“ verwenden können.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/10/2019
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: 195bbb70ac5062c6bbf6034e6a6e9abac018c62f
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: f6e9c0a3d9100bc447314f5874107363c6bf5d8a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677969"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89289442"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Media Encoder Standard-Formate und -Codecs
 
-Dieser Artikel enthält eine Liste der gängigsten Import- und Exportdateiformate, die Sie mit [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) verwenden können. Informationen zum Erstellen benutzerdefinierter Voreinstellungen mit **StandardEncoderPreset** finden Sie unter [Erstellen einer Transformation mit einer benutzerdefinierten Voreinstellung](customize-encoder-presets-how-to.md).
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+Dieser Artikel enthält eine Liste der gängigsten Import- und Exportdateiformate, die Sie mit [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) verwenden können. Informationen zum Erstellen benutzerdefinierter Voreinstellungen mit **StandardEncoderPreset** finden Sie unter [Erstellen einer Transformation mit einer benutzerdefinierten Voreinstellung](customize-encoder-presets-how-to.md).
 
 ## <a name="input-containerfile-formats"></a>Eingabecontainer/Dateiformate
 
@@ -36,7 +38,7 @@ Dieser Artikel enthält eine Liste der gängigsten Import- und Exportdateiformat
 | Windows Media Video (WMV)/ASF (.wmv, .asf) |Ja |
 | AVI (unkomprimiert, 8-Bit/10-Bit) (.avi) |Ja |
 | MP4 (.mp4, .m4a, .m4v)/ISMV (.isma, .ismv) |Ja |
-| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |Ja |
+| [Microsoft Digital Video Recording(DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) (.dvr-ms) |Ja |
 | Matroska/WebM (.mkv) |Ja |
 | WAVE/WAV (.wav) |Ja |
 | QuickTime (.mov) |Ja |

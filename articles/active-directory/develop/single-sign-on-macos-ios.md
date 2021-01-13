@@ -1,28 +1,24 @@
 ---
-title: Konfigurieren von SSO unter macOS und iOS | Microsoft Identity Platform
+title: Konfigurieren von SSO unter macOS und iOS
+titleSuffix: Microsoft identity platform
 description: Es wird beschrieben, wie Sie einmaliges Anmelden (Single Sign-On, SSO) unter macOS und iOS konfigurieren.
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2019
-ms.author: twhitney
+ms.date: 02/03/2020
+ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a407b57a380d059703383b02e37decb8761786f4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269348"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80881247"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Gewusst wie: Konfigurieren von SSO unter macOS und iOS
 
@@ -71,7 +67,9 @@ Damit die Microsoft Identity Platform darüber informiert ist, welche Anwendunge
 
 Von der Microsoft Identity Platform können Apps, für die die gleiche Anwendungs-ID verwendet wird, anhand ihrer **Umleitungs-URIs** unterschieden werden. Jede Anwendung kann mehrere Umleitungs-URIs im Integrationsportal registrieren. Jede App innerhalb Ihrer Suite kann einen anderen Umleitungs-URI verwenden. Beispiel:
 
-Umleitungs-URI von App1: `msauth.com.contoso.mytestapp1://auth` Umleitungs-URI von App2: `msauth.com.contoso.mytestapp2://auth` Umleitungs-URI von App3: `msauth.com.contoso.mytestapp3://auth`
+Umleitungs-URI für App1: `msauth.com.contoso.mytestapp1://auth`  
+Umleitungs-URI für App2: `msauth.com.contoso.mytestapp2://auth`  
+Umleitungs-URI für App3: `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
 > Das Format von Umleitungs-URIs muss mit dem von der MSAL unterstützten Format kompatibel sein. Dies ist unter [MSAL-Formatanforderungen für Umleitungs-URIs](redirect-uris-ios.md#msal-redirect-uri-format-requirements) dokumentiert.
@@ -96,6 +94,18 @@ Wenn Sie die Berechtigungen richtig eingerichtet haben, wird in Ihrem Projektver
 </plist>
 ```
 
+#### <a name="add-a-new-keychain-group"></a>Hinzufügen einer neuen Keychaingruppe
+
+Fügen Sie Ihrem Projekt **Funktionen** eine neue Keychaingruppe hinzu. Die Keychaingruppe sollte wie folgt lauten:
+* `com.microsoft.adalcache` unter iOS 
+* `com.microsoft.identity.universalstorage` unter macOS
+
+![Beispiel für eine Keychain](media/single-sign-on-macos-ios/keychain-example.png)
+
+Weitere Informationen finden Sie unter [Keychaingruppen](howto-v2-keychain-objc.md).
+
+## <a name="configure-the-application-object"></a>Konfigurieren des Anwendungsobjekts
+
 Nachdem Sie die Keychainberechtigung in allen Anwendungen aktiviert haben und zur Verwendung von SSO bereit sind, können Sie `MSALPublicClientApplication` mit Ihrer Keychainzugriffsgruppe wie im folgenden Beispiel konfigurieren:
 
 Objective-C:
@@ -113,16 +123,14 @@ Swift:
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
 config.cacheConfig.keychainSharingGroup = "my.keychain.group"
-        
+
 do {
-    let application = try MSALPublicClientApplication(configuration: config)
-  // continue on with application          
+   let application = try MSALPublicClientApplication(configuration: config)
+  // continue on with application
 } catch let error as NSError {
   // handle error here
-}       
+}
 ```
-
-
 
 > [!WARNING]
 > Bei anwendungsübergreifender Nutzung einer Keychain kann jede Anwendung Benutzer und sogar anwendungsübergreifend alle Token löschen.
@@ -206,7 +214,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
         MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
     }
 ```
-    
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über [Authentifizierungsflows und Anwendungsszenarien](authentication-flows-app-scenarios.md).
+Hier erfahren Sie mehr zu [Authentifizierungsfluss und Anwendungsszenarios](authentication-flows-app-scenarios.md)

@@ -3,7 +3,7 @@ title: Interpretieren des Azure Active Directory-Überwachungsprotokollschemas i
 description: Informationen zum Azure AD-Überwachungsprotokollschema für die Verwendung in Azure Monitor
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f75af14e388626a9ebbb54d43079f30dcfdd98a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: cc7a5e2e45cd3d76c0d8af612291ecaf9893b5b5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987955"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89231094"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Interpretieren des Azure AD-Überwachungsprotokollschemas in Azure Monitor (Vorschauversion)
 
@@ -179,5 +179,5 @@ Dieser Artikel beschreibt das Azure Active Directory-Überwachungsprotokollschem
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Interpret sign-in logs schema in Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md) (Interpretieren des Anmeldeprotokollschemas in Azure Monitor)
-* [Azure-Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Azure-Diagnoseprotokolle](../../azure-monitor/platform/platform-logs-overview.md)
 * [Häufig gestellte Fragen und bekannte Probleme](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

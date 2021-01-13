@@ -1,23 +1,22 @@
 ### YamlMime:Landing
-title: Dokumentation zu Azure Data Share (Vorschauversion)
-summary: Die Vorschauversion von Azure Data Share ist ein sicherer Dienst für die Freigabe von Daten für Drittanbieter-Organisationen.
+title: Dokumentation für Azure Data Share
+summary: Azure Data Share ist ein sicherer Dienst zur Freigabe von Daten für Drittanbieterorganisationen.
 metadata:
-  title: Azure Data Share (Vorschauversion)
-  description: Azure Data Share (Vorschauversion) ist ein sicherer Dienst für die Freigabe von Daten für Drittanbieterorganisationen.
+  title: Azure Data Share
+  description: Azure Data Share ist ein sicherer Dienst zur Freigabe von Daten für Drittanbieterorganisationen.
   services: data-share
   ms.service: data-share
-  ms.subservice: subservice
   ms.topic: landing-page
   ms.collection: collection
   author: hrasheed-msft
   ms.author: hrasheed
-  ms.date: 09/13/2019
-  ms.openlocfilehash: d75af1eea77bea89f3facf782b836a26fcdabdde
-  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.date: 10/20/2020
+  ms.openlocfilehash: 9fd78623be3802ae0e59f00e9621d16765311607
+  ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71218010"
+  ms.lasthandoff: 12/01/2020
+  ms.locfileid: "96454990"
 landingContent:
 - title: Informationen zu Azure Data Share
   linkLists:
@@ -25,13 +24,17 @@ landingContent:
     links:
     - text: Was ist Azure Data Share?
       url: overview.md
+    - text: Unterstützte Datenspeicher
+      url: supported-data-stores.md
   - linkListType: concept
     links:
-    - text: Azure Data Share-Konzepte
+    - text: Azure Data Share-Terminologie
       url: terminology.md
     - text: Rollen und Anforderungen für Azure Data Share
       url: concepts-roles-permissions.md
-- title: Freigeben von Daten
+    - text: Grundlegendes zu Preisen
+      url: concepts-pricing.md
+- title: Freigeben und Empfangen von Daten
   linkLists:
   - linkListType: tutorial
     links:
@@ -41,21 +44,31 @@ landingContent:
       url: subscribe-to-data-share.md
   - linkListType: how-to-guide
     links:
-    - text: Konfigurieren von Dataset-Mappings
-      url: how-to-configure-mapping.md
-    - text: Hinzufügen von Datasets
-      url: how-to-add-datasets.md
+    - text: Freigeben aus Azure Storage
+      url: how-to-share-from-storage.md
+    - text: Freigeben aus Azure SQL-Datenbank oder Azure Synapse Analytics
+      url: how-to-share-from-sql.md
+    - text: Freigeben über Azure Data Explorer
+      url: /azure/data-explorer/data-share
 - title: Überwachen und Verwalten
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Überwachen von Azure Data Share
-      url: how-to-monitor.md
-    - text: Häufig auftretende Probleme und Problembehandlung
-      url: data-share-troubleshoot.md
     - text: Hinzufügen von Datasets
       url: how-to-add-datasets.md
+    - text: Hinzufügen von Empfängern
+      url: how-to-add-recipients.md
+    - text: Konfigurieren von Dataset-Mappings
+      url: how-to-configure-mapping.md
     - text: Löschen einer Einladung
       url: how-to-delete-invitation.md
     - text: Aufheben einer Abonnementfreigabe
       url: how-to-revoke-share-subscription.md
+    - text: Überwachen Ihrer Freigabe
+      url: how-to-monitor.md
+    - text: Sicherheitsübersicht für Azure Data Share
+      url: security.md
+    - text: Notfallwiederherstellung
+      url: disaster-recovery.md
+    - text: Häufig auftretende Probleme und Problembehandlung
+      url: data-share-troubleshoot.md

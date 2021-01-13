@@ -5,21 +5,22 @@ services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 88f4a3e9-6dbd-4943-8543-f0649d423061
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 293cd956f8270a4863fcc657f58c970096cec1e3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 610232dab776648bb3dcc7c301ec292e9acad9fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300924"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "78898526"
 ---
 # <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Grenzwerte, Kontingente und Drosselungsschwellenwerte in Azure Scheduler
 
 > [!IMPORTANT]
-> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt den Microsoft Azure Scheduler, der [ eingestellt wird](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+>
+> Scheduler ist nicht mehr in der Azure-Portal verfügbar, aber die [REST-API](/rest/api/scheduler) und [Azure Scheduler-PowerShell-Cmdlets](scheduler-powershell-reference.md) sind weiterhin verfügbar, damit Sie Ihre Aufträge und Auftragssammlungen verwalten können.
 
 ## <a name="limits-quotas-and-thresholds"></a>Grenzwerte, Kontingente und Schwellenwerte
 
@@ -34,7 +35,9 @@ Jede Anforderung für den Scheduler-Dienst gibt einen Antwortheader namens **x-m
 * Die Bezeichner für das Azure-Abonnement, die Auftragssammlung und den Auftrag 
 * Die Art des Vorgangs, den die Anforderung versucht hat
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-* [Was ist der Azure Scheduler?](scheduler-intro.md)
 * [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)
+* [Pläne und Abrechnung für Microsoft Azure Scheduler](scheduler-plans-billing.md)
+* [Azure Scheduler-REST-API – Referenz](/rest/api/scheduler)
+* [Azure Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)

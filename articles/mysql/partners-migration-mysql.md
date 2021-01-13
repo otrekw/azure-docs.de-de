@@ -6,12 +6,12 @@ ms.author: jtoland
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: eea8a919665a773c48ac3e138c19a54160f41b2e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f325280cb4b18def603410464a06fddaed09c78a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160370"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87285406"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>Azure Database for MySQL – Migrationspartner
 Wählen Sie zur umfassenden Unterstützung Ihrer Azure Database for MySQL-Lösung aus einer breiten Vielfalt branchenführender Partner und Tools. In diesem Artikel sind Partner von Microsoft aufgeführt, die Lösungen für die Migration anbieten, die Azure Database for MySQL unterstützen.
@@ -27,7 +27,7 @@ Wählen Sie zur umfassenden Unterstützung Ihrer Azure Database for MySQL-Lösun
 | ![Pactera][6] |**Pactera**<br>Pactera ist ein international agierendes Unternehmen, das weltweit führenden Unternehmen Beratungs-, Digitalisierungs- und Technologiedienste sowie Dienste für den Betrieb bietet. Es verschafft Kunden einen Wettbewerbsvorteil in verschiedensten Gebieten – von der Entwicklung, seinem ursprünglichen Wirkungsbereich, bis hin zu neuesten Technologien für die digitale Transformation. Die bewährten Methoden und Tools stellen sicher, dass Ihre Daten sicher, authentisch und präzise sind.|[Website][pactera_website]<br>[Twitter][pactera_twitter]<br>[Kontakt][pactera_contact] | |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu weiteren Partnern von Microsoft finden Sie auf der [Microsoft Partner-Website](https://partner.microsoft.com/en-US/).
+Weitere Informationen zu weiteren Partnern von Microsoft finden Sie auf der [Microsoft Partner-Website](https://partner.microsoft.com/).
 
 <!--Image references-->
 [1]: ./media/partner-migration-mysql/SNP_Logo.png
@@ -43,7 +43,7 @@ Weitere Informationen zu weiteren Partnern von Microsoft finden Sie auf der [Mic
 [pragmatic-works_website]:https://pragmaticworks.com//
 [infosys_website]:https://www.infosys.com/
 [credativ_website]:https://www.credativ.com/postgresql-competence-center/microsoft-azure
-[pactera_website]:https://en.pactera.com/service/azure-data-platform-services/
+[pactera_website]:https://en.pactera.com/
 
 <!--Get Started Links-->
 <!--Datasheet Links-->

@@ -1,24 +1,20 @@
 ---
-title: Debuggen von benutzerdefiniertem C#-Code für fehlerhafte Azure Data Lake-U-SQL-Aufträge
+title: Debuggen von C#-Code für Azure Data Lake U-SQL-Aufträge
 description: In diesem Artikel erfahren Sie, wie Sie U-SQL-Vertexfehler mit Azure Data Lake Tools für Visual Studio debuggen.
-services: data-lake-analytics
 ms.service: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
-ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
-ms.topic: conceptual
+ms.reviewer: jasonh
+ms.topic: how-to
 ms.date: 11/30/2017
-ms.openlocfilehash: 5417f66696191cebadc2af9c6d634419a0eb8e5b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: db1d57e3904087bc5cb3711b23cfe6bcf18c3455
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615385"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218016"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Debuggen von benutzerdefiniertem C#-Code für fehlerhafte U-SQL-Aufträge
 
-Für U-SQL wird ein Erweiterbarkeitsmodell mit C# bereitgestellt. In U-SQL-Skripts ist es einfach, C#-Funktionen aufzurufen und Analysefunktionen durchzuführen, die von einer SQL-ähnlichen deklarativen Sprache nicht unterstützt werden. Weitere Informationen zur U-SQL-Erweiterbarkeit finden Sie im [U-SQL-Programmierbarkeitshandbuch](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
+Für U-SQL wird ein Erweiterbarkeitsmodell mit C# bereitgestellt. In U-SQL-Skripts ist es einfach, C#-Funktionen aufzurufen und Analysefunktionen durchzuführen, die von einer SQL-ähnlichen deklarativen Sprache nicht unterstützt werden. Weitere Informationen zur U-SQL-Erweiterbarkeit finden Sie im [U-SQL-Programmierbarkeitshandbuch](./data-lake-analytics-u-sql-programmability-guide.md#use-user-defined-functions-udf). 
 
 In der Praxis muss das Debuggen ggf. für jeden Code durchgeführt werden. Aber es ist schwierig, einen verteilten Auftrag mit benutzerdefiniertem Code in der Cloud zu debuggen, wenn nur eingeschränkte Protokolldateien vorhanden sind. [Azure Data Lake Tools für Visual Studio](https://aka.ms/adltoolsvs) enthalten ein Feature zum **Debuggen von Vertexfehlern**, mit dem das Debuggen von Fehlern in Ihrem benutzerdefinierten Code vereinfacht wird. Wenn für den U-SQL-Auftrag ein Fehler auftritt, behält der Dienst den Fehlerstatus bei, und das Tool unterstützt Sie beim Herunterladen der Cloudfehlerumgebung auf den lokalen Computer für das Debuggen. Der lokale Download umfasst die gesamte Cloudumgebung, einschließlich Eingabedaten und Benutzercode.
 
@@ -28,7 +24,7 @@ Das folgende Video zeigt die Verwendung des Features „Debuggen von Vertexfehle
 >
 
 > [!IMPORTANT]
-> Für Visual Studio müssen zur Nutzung dieses Features die beiden folgenden Updates installiert sein: [Microsoft Visual C++ 2015 Redistributable Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) und [Universelle C-Runtime für Windows](https://www.microsoft.com/download/details.aspx?id=50410).
+> Für Visual Studio müssen zur Nutzung dieses Features die beiden folgenden Updates installiert sein: [Microsoft Visual C++ 2015 Redistributable Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) und die [universelle Windows 10-C-Runtime](https://www.microsoft.com/download/details.aspx?id=50410).
 >
 
 ## <a name="download-failed-vertex-to-local-machine"></a>Herunterladen eines fehlerhaften Vertex auf den lokalen Computer
@@ -93,7 +89,7 @@ Nachdem Sie diese Einstellungen vorgenommen haben, können Sie das Debuggen mit 
 
 Wenn das Projekt nach dem Debuggen erfolgreich abgeschlossen wird, erscheint im Ausgabefenster die folgende Meldung:
 
-    The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
+`The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).`
 
 ![Azure Data Lake Analytics-U-SQL-Debugging erfolgreich](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-succeed.png)
 

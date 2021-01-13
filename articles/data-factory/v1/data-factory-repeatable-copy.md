@@ -1,24 +1,23 @@
 ---
-title: Wiederholbare Kopiervorgänge in Azure Data Factory| Microsoft-Dokumentation
+title: Wiederholbare Kopiervorgänge in Azure Data Factory
 description: Erfahren Sie, wie Duplikate vermieden werden, obwohl ein Slice, der Daten kopiert, mehrfach ausgeführt wird.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 20c916275acd6bb79675c592711b17b277c9fc78
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cd0f389615c95ef9b9bc8280b6486740ddba4fb4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60605187"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456828"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Wiederholbare Kopiervorgänge in Azure Data Factory
 
@@ -105,7 +104,7 @@ Die Kopieraktivität hat das Bereinigungsskript ausgeführt, um die dem Slice en
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>Verfahren 2: mithilfe von sliceIdentifierColumnName
 > [!IMPORTANT]
-> Aktuell wird sliceIdentifierColumnName für Azure SQL Data Warehouse nicht unterstützt. 
+> sliceIdentifierColumnName wird für Azure Synapse Analytics derzeit nicht unterstützt. 
 
 Das zweite Verfahren zum Erreichen von Wiederholbarkeit besteht in der Verwendung einer dedizierten Spalte (sliceIdentifierColumnName) in der Zieltabelle. Diese Spalte wird von Azure Data Factory verwendet, um sicherzustellen, dass Quell- und Zielserver synchron bleiben. Dieser Ansatz funktioniert, wenn das Schema der SQL-Zieltabelle flexibel geändert oder definiert werden kann. 
 
@@ -152,5 +151,5 @@ Azure Data Factory füllt diese Spalte den Anforderungen entsprechend auf, um si
 Gehen Sie die folgenden Connector-Artikel durch, um vollständige JSON-Beispiele zu finden: 
 
 - [Azure SQL-Datenbank](data-factory-azure-sql-connector.md)
-- [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

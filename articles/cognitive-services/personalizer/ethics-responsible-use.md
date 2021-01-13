@@ -3,19 +3,17 @@ title: Ethik und verantwortungsvolle Verwendung – Personalisierung
 titleSuffix: Azure Cognitive Services
 description: Diese Richtlinien sollen Ihnen dabei helfen, die Personalisierung auf eine Weise zu implementieren, die Ihnen dabei hilft, Vertrauen in Ihr Unternehmen und Ihren Dienst aufzubauen. Achten Sie darauf, dass Sie sich Zeit nehmen, zu forschen, zu lernen und sich mit den Auswirkungen der Personalisierung auf das Leben der Benutzer auseinanderzusetzen. Lassen Sie sich im Zweifelsfall beraten.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: diberry
-ms.openlocfilehash: f565d95f8270612a8d83dd44a1e1bb895d1a4373
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662785"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005978"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Richtlinien für die verantwortungsvolle Implementierung der Personalisierung
 
@@ -25,7 +23,7 @@ Diese Richtlinien stellen keine Rechtsberatung dar, und Sie sollten gesondert si
 
 Ferner sollten Sie beim Entwurf Ihrer Anwendung mithilfe von Personalisierung eine breite Palette von Verantwortungen berücksichtigen, die Sie bei der Entwicklung eines datenzentrierten KI-Systems übernehmen, einschließlich Ethik, Datenschutz, Schutz, Sicherheit, Inklusion, Transparenz und Verantwortlichkeit. Weitere Informationen hierzu finden Sie im Abschnitt [Empfohlene Literatur](#recommended-reading).
 
-Sie können den folgenden Inhalt als eine anfängliche Checkliste verwenden und diese auf Ihr Szenario anpassen und dafür optimieren. Dieses Dokument besteht aus zwei Hauptabschnitten: Der erste widmet sich der Hervorhebung der Aspekte verantwortungsvoller Verwendung bei der Auswahl der Szenarien, Merkmale und Relevanzen für die Personalisierung. Der zweite behandelt einen Satz von Werten, von denen Microsoft überzeugt ist, dass sie bei der Erstellung von KI-Systemen berücksichtigt werden sollten, stellt umsetzbare Vorschläge bereit und zeigt Risiken auf, wie Ihre Verwendung von Personalisierung diese beeinflusst. 
+Sie können den folgenden Inhalt als eine anfängliche Checkliste verwenden und diese auf Ihr Szenario anpassen und dafür optimieren. Dieses Dokument besteht aus zwei Hauptabschnitten: Der erste widmet sich der Hervorhebung der Aspekte verantwortungsvoller Verwendung bei der Auswahl der Szenarien, Merkmale und Relevanzen für die Personalisierung. Der zweite behandelt einen Satz von Werten, von denen Microsoft überzeugt ist, dass sie bei der Erstellung von KI-Systemen berücksichtigt werden sollten, stellt umsetzbare Vorschläge bereit und zeigt Risiken auf, wie Ihre Verwendung von Personalisierung diese beeinflusst.
 
 
 ## <a name="your-responsibility"></a>Ihre Verantwortung
@@ -42,18 +40,18 @@ Microsoft ist ständig bestrebt, seine Tools und Dokumente zu entwickeln, um Ihn
 Die Implementierung der Personalisierung kann für Ihre Benutzer und Ihr Unternehmen von großem Wert sein. Beginnen Sie mit der verantwortungsvollen Implementierung der Personalisierung, indem Sie die folgenden Richtlinien beachten bei:
 
 * Der Auswahl von Anwendungsfällen zur Anwendung auf die Personalisierung.
-* Der Erstellung von [Relevanzfunktionen](https://github.com/Azure/personalization-rl/blob/master/docs/concepts-rewards.md).
-* Der Auswahl, welche [Merkmale](https://github.com/Azure/personalization-rl/blob/master/docs/concepts-features.md) des Kontexts und mögliche Aktionen Sie für die Personalisierung verwenden möchten.
+* Der Erstellung von [Relevanzfunktionen](concept-rewards.md).
+* Der Auswahl, welche [Merkmale](concepts-features.md) des Kontexts und mögliche Aktionen Sie für die Personalisierung verwenden möchten.
 
 
 ## <a name="choosing-use-cases-for-personalizer"></a>Auswählen von Anwendungsfällen für die Personalisierung
 
-Die Verwendung eines Diensts, der lernt, Inhalte und Benutzeroberflächen zu personalisieren, ist hilfreich. Er kann aber auch falsch angewendet werden, wenn die Personalisierung negative Nebeneffekte in der realen Welt verursacht, wozu auch gehört, dass Benutzer sich nicht bewusst sind, dass Inhalte personalisiert werden. 
+Die Verwendung eines Diensts, der lernt, Inhalte und Benutzeroberflächen zu personalisieren, ist hilfreich. Er kann aber auch falsch angewendet werden, wenn die Personalisierung negative Nebeneffekte in der realen Welt verursacht, wozu auch gehört, dass Benutzer sich nicht bewusst sind, dass Inhalte personalisiert werden.
 
-Beispiele für die Verwendungen von Personalisierung mit erhöhtem Potenzial für negative Nebeneffekte oder fehlende Transparenz sind unter anderem Szenarien, in denen der „Nutzen“ (Relevanz) "von vielen langfristigen und komplexen Faktoren abhängig ist, die, wenn Sie zu stark vereinfacht in einen sofortigen Nutzen umgewandelt werden, zu nachteiligen Ergebnissen für Einzelpersonen führen können. Diese werden in der Regel als „Folge“entscheidungen bzw. Entscheidungen, die das Risiko eines Schadens mit sich bringen, angesehen. Beispiel: 
+Beispiele für die Verwendungen von Personalisierung mit erhöhtem Potenzial für negative Nebeneffekte oder fehlende Transparenz sind unter anderem Szenarien, in denen der „Nutzen“ (Relevanz) "von vielen langfristigen und komplexen Faktoren abhängig ist, die, wenn Sie zu stark vereinfacht in einen sofortigen Nutzen umgewandelt werden, zu nachteiligen Ergebnissen für Einzelpersonen führen können. Diese werden in der Regel als „Folgeentscheidungen“ bzw. Entscheidungen, die das Risiko eines Schadens mit sich bringen, angesehen. Beispiel:
 
 
-* **Finanzen**: Personalisierungsangebote für Kredit-, Finanz-und Versicherungsprodukte, bei denen Risikofaktoren auf Daten basieren, die Einzelpersonen nicht kennen, nicht abrufen oder anfechten können. 
+* **Finanzen**: Personalisierungsangebote für Kredit-, Finanz-und Versicherungsprodukte, bei denen Risikofaktoren auf Daten basieren, die Einzelpersonen nicht kennen, nicht abrufen oder anfechten können.
 * **Bildung**: Personalisierung von Rangfolgebewertungen für Schulkurse und Bildungseinrichtungen, bei denen Empfehlungen Voreingenommenheit propagieren und das Bewusstsein der Benutzer für andere Optionen verringern können.
 * **Demokratie und Bürgerbeteiligung**: Personalisierung von Inhalten für Benutzer mit dem Ziel der Einflussnahme auf Meinungen hat Folgen und ist manipulativ.
 * **Relevanzauswertung durch Drittanbieter**: Personalisierung von Elementen, bei denen die Relevanz auf einer späteren Auswertung des Benutzers durch Drittanbieter beruht, anstatt eine Relevanz durch das eigene Verhalten des Benutzers generieren zu lassen.
@@ -63,7 +61,8 @@ Bei der Auswahl von Anwendungsfällen für die Personalisierung:
 
 * Starten Sie den Entwurfsprozess unter Berücksichtigung der Aspekte, wie die Personalisierung Ihren Benutzern hilft.
 * Berücksichtigen Sie die negativen Konsequenzen in der realen Welt, wenn wegen Mustern oder Erkundung einigen Elementen für Benutzer keine Relevanz zugewiesen wird.
-* Berücksichtigen Sie Schleifen sich selbst erfüllender Prophezeiungen. Hierzu kann es kommen, wenn eine Personalisierungsrelevanz ein Modell so trainiert, dass es später eine demografische Gruppe weiter vom Zugriff auf relevante Inhalte ausschließt. Beispielsweise erhalten die meisten Menschen in einer einkommensschwachen Nachbarschaft keine Premium-Versicherungsangebote, woraufhin sich langsam die Tendenz entwickelt, dass ein solches Angebot niemandem mehr in der Nachbarschaft angezeigt wird.
+* Berücksichtigen Sie, ob Ihr Anwendungsfall eine automatisierte Verarbeitung darstellt, die die betroffenen Personen erheblich betrifft, die unter der [DSGVO](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679) Artikel 22 oder anderen Gesetzen geregelt ist.
+* Berücksichtigen Sie Schleifen sich selbst erfüllender Prophezeiungen. Hierzu kann es kommen, wenn eine Personalisierungsrelevanz ein Modell so trainiert, dass es später eine demografische Gruppe weiter vom Zugriff auf relevante Inhalte ausschließt. Beispielsweise erhalten die meisten Menschen in einer einkommensschwachen Nachbarschaft keine Premium-Versicherungsangebote, woraufhin sich langsam die Tendenz entwickelt, dass ein solches Angebot niemandem mehr in der Nachbarschaft angezeigt wird, wenn keine ausreichende Untersuchung erfolgt.
 * Speichern Sie Kopien von Modellen und Lernrichtlinien für den Fall, dass es erforderlich wird, die Personalisierung in Zukunft zu reproduzieren. Dies können Sie in regelmäßigen Abständen oder bei jeder Modellaktualisierung durchführen.
 * Berücksichtigen Sie die Ebene der Erkundung, die für den Raum angemessen ist, und wie Sie diese als Tool zur Abmilderung von „Echokammer“-Effekten verwenden.
 
@@ -77,7 +76,7 @@ Berücksichtigen Sie die Effekte dieser Merkmale:
 * **Demografie der Benutzer**: Merkmale hinsichtlich Geschlecht, Alter, Ethnie, Religion: Diese Merkmale können aus rechtlichen Gründen in bestimmten Anwendungen nicht zulässig sein. Außerdem kann es unethisch sein, unter diesen Aspekten zu personalisieren, weil die Personalisierung Verallgemeinerungen und Vorurteile propagieren würde. Ein Beispiel für diese Vorurteilspropagierung ist eine Stellenausschreibung für einen technischen Beruf, die älteren oder geschlechtsspezifischen Benutzergruppen nicht angezeigt wird.
 * **Gebietsinformationen**: An vielen Orten der Welt können Standortinformationen (z. B. eine Postleitzahl oder Nachbarschaftsnamen) in hohem Maße mit Einkommen, Ethnie und Religion korrelieren.
 * **Benutzerwahrnehmung von Fairness**: Selbst in Fällen, in denen Ihre Anwendung vernünftige Entscheidungen trifft, sollten Sie den Effekt berücksichtigen, dass Benutzer wahrnehmen, dass sich die in Ihrer Anwendung angezeigten Inhalte in einer Weise ändern, die mit Merkmalen korreliert zu sein scheint, die diskriminierend wären.
-* **Unbeabsichtigte Vorurteile in Merkmalen**:  Es gibt Arten von Vorurteilen, die durch die Verwendung von Merkmalen eingeführt werden können, die sich nur auf eine Teilmenge der Population auswirken. Dies erfordert besondere Aufmerksamkeit, wenn Merkmale algorithmisch generiert werden, z. B. wenn mithilfe von Bildanalyse Elemente aus einem Bild extrahiert werden, oder mithilfe von Textanalyse Entitäten im Text ermittelt werden sollen. Machen Sie sich bewusst, welche Eigenschaften die Dienste haben, die Sie zum Erstellen dieser Merkmale verwenden.
+* **Unbeabsichtigte Vorurteile in Merkmalen**:       Es gibt Arten von Vorurteilen, die durch die Verwendung von Merkmalen eingeführt werden können, die sich nur auf eine Teilmenge der Population auswirken. Dies erfordert besondere Aufmerksamkeit, wenn Merkmale algorithmisch generiert werden, z. B. wenn mithilfe von Bildanalyse Elemente aus einem Bild extrahiert werden, oder mithilfe von Textanalyse Entitäten im Text ermittelt werden sollen. Machen Sie sich bewusst, welche Eigenschaften die Dienste haben, die Sie zum Erstellen dieser Merkmale verwenden.
 
 Wenden Sie die folgenden Vorgehensweisen bei der Auswahl von Merkmalen an, um Kontexte und Aktionen an die Personalisierung zu senden:
 
@@ -85,7 +84,7 @@ Wenden Sie die folgenden Vorgehensweisen bei der Auswahl von Merkmalen an, um Ko
 * Seien Sie gegenüber Benutzern transparent, dass Algorithmen und Datenanalyse verwendet werden, um die ihnen angezeigten Optionen zu personalisieren.
 * Stellen Sie sich folgende Fragen: Würden es meine Benutzer interessieren bzw. würden diese es begrüßen, wenn ich diese Informationen zur Personalisierung der Inhalte für sie nutze? Hätte ich ein gutes Gewissen dabei ihnen zu zeigen, wie die Entscheidung getroffen wurde, durch die bestimmte Punkte hervorgehoben oder ausgeblendet wurden?
 * Verwenden Sie eher verhaltensbasierte als Klassifizierungs- oder Segmentierungsdaten, die auf anderen Merkmalen basieren. Demografische Informationen wurden traditionell von Einzelhändlern aus historischen Gründen verwendet – demografische Attribute schienen in einer vordigitalen Zeit einfach zu sammeln und umzusetzen zu sein, doch fragen Sie sich, wie relevant demografische Informationen sind, wenn Sie tatsächliche Interaktions-, Kontext- und historische Daten haben, die einen stärkeren Bezug zu den Vorlieben und der Identität der Benutzer haben.
-* Berücksichtigen Sie, wie Sie verhindern können, dass Merkmale von bösartigen Benutzern gefälscht werden, was, wenn es in großem Umfang ausgenutzt würde, zu einem fehlgeleiteten Training der Personalisierung führen könnte, um bestimmte Klassen von Benutzern vorsätzlich zu stören, in Verlegenheit zu bringen und zu belästigen. 
+* Berücksichtigen Sie, wie Sie verhindern können, dass Merkmale von bösartigen Benutzern gefälscht werden, was, wenn es in großem Umfang ausgenutzt würde, zu einem fehlgeleiteten Training der Personalisierung führen könnte, um bestimmte Klassen von Benutzern vorsätzlich zu stören, in Verlegenheit zu bringen und zu belästigen.
 * Wenn geeignet und praktikabel, entwerfen Sie Ihre Anwendung so, dass sie es Ihren Benutzern gestattet, der Verwendung bestimmter persönlicher Merkmale zuzustimmen bzw. diese abzulehnen. Diese könnten unter Aspekten wie „Standortinformationen“, „Geräteinformationen“, „Frühere Einkäufe“ usw. gruppiert werden.
 
 
@@ -100,7 +99,7 @@ Beispielsweise veranlasst das Belohnen von Klicks dazu, dass der Personalisierun
 Als gegensätzlichen Beispiel könnte eine Nachrichtensite Belohnungen an etwas sinnvolleres als Klicks binden wollen, z. B. „Hat der Benutzer ausreichend Zeit mit dem Lesen des Inhalts verbracht?“ oder „Hat der Benutzer auf relevante Artikel oder Verweise geklickt?“. Mit Personalisierung ist es einfach, Metriken eng an Belohnungen (Relevanzen) zu binden. Aber achten Sie darauf, kurzfristiges Benutzerengagement nicht mit guten Ergebnissen zu verwechseln.
 
 ### <a name="unintended-consequences-from-reward-scores"></a>Unbeabsichtigte Folgen von Relevanzbewertungen
-Relevanzbewertungen können mit den besten Absichten erstellt werden, können aber dennoch unerwartete Folgen oder unbeabsichtigte Ergebnisse dabei haben, wie die Personalisierung Inhalten einen Rang zuweist. 
+Relevanzbewertungen können mit den besten Absichten erstellt werden, können aber dennoch unerwartete Folgen oder unbeabsichtigte Ergebnisse dabei haben, wie die Personalisierung Inhalten einen Rang zuweist.
 
 Betrachten Sie die folgenden Beispiele:
 
@@ -121,7 +120,7 @@ Im Folgenden finden Sie Designbereiche für verantwortungsvolle Implementierunge
 ![KI-Werte aus „Future Computed“](media/ethics-and-responsible-use/ai-values-future-computed.png)
 
 ### <a name="accountability"></a>Verantwortlichkeit
-*Personen, die KI-Systeme entwerfen und bereitstellen müssen dafür verantwortlich sein, wie ihre Systeme funktionieren*. 
+*Personen, die KI-Systeme entwerfen und bereitstellen müssen dafür verantwortlich sein, wie ihre Systeme funktionieren*.
 
 * Erstellen Sie interne Richtlinien für die Art der Implementierung von Personalisierung, dokumentieren und kommunizieren Sie diese an Ihr Team, die Führungskräfte und Lieferanten.
 * Führen Sie regelmäßige Überprüfungen der Verfahren durch, wie Relevanzbewertungen berechnet werden, führen Sie Offlineauswertungen durch, um zu sehen, welche Merkmale die Personalisierung beeinflussen, und verwenden Sie die Ergebnisse, um nicht benötigte und unnötige Merkmale zu eliminieren.
@@ -154,9 +153,9 @@ Im Folgenden finden Sie Designbereiche für verantwortungsvolle Implementierunge
 *KI-Systeme sollten sicher sein und den Datenschutz respektieren*. Bei Verwendung der Personalisierung:
 
 * *Informieren Sie Benutzer im Voraus darüber, welche Daten gesammelt und wie diese verwendet werden, und besorgen Sie sich deren Zustimmung im Voraus* unter Einhaltung Ihrer lokalen und branchenspezifischen Vorschriften.
-* *Stellen Sie Benutzersteuerelemente zum Schutz der Privatsphäre bereit.* Ziehen Sie für Anwendungen, die persönliche Informationen speichern, in Betracht, eine einfach aufzufindenden Schaltfläche für Funktionen bereitzustellen wie: 
-   * `Show me all you know about me`    
-   * `Forget my last interaction` 
+* *Stellen Sie Benutzersteuerelemente zum Schutz der Privatsphäre bereit.* Ziehen Sie für Anwendungen, die persönliche Informationen speichern, in Betracht, eine einfach aufzufindenden Schaltfläche für Funktionen bereitzustellen wie:
+   * `Show me all you know about me`
+   * `Forget my last interaction`
    * `Delete all you know about me`
 
 In einigen Fällen können diese gesetzlich vorgeschrieben sein. Berücksichtigen Sie die Abwägungen beim regelmäßigen Neutraining von Modellen, damit diese keine Spuren von gelöschten Daten enthalten.
@@ -164,7 +163,7 @@ In einigen Fällen können diese gesetzlich vorgeschrieben sein. Berücksichtige
 ### <a name="inclusiveness"></a>Inklusion
 *Gehen Sie auf eine breite Palette menschlicher Bedürfnisse und Erfahrungen ein*.
 * *Stellen Sie personalisierte Erfahrungen für barrierefreie Benutzeroberflächen bereit.* Die Effizienz, die sich aus einer guten Personalisierung ergibt – angewendet, um den Aufwand, die Menge an Bewegungen und unnötigen Wiederholungen bei Interaktionen zu reduzieren – kann besonders für Menschen mit Behinderungen von Vorteil sein.
-* *Passen Sie das Anwendungsverhalten an den Kontext an*. Sie können die Personalisierung verwenden, um zwischen den Absichten in einem Chatbot zu unterscheiden, z. B. weil die richtige Interpretation kontextabhängig sein kann, und es nicht für alles eine einheitliche Lösung gibt. 
+* *Passen Sie das Anwendungsverhalten an den Kontext an*. Sie können die Personalisierung verwenden, um zwischen den Absichten in einem Chatbot zu unterscheiden, z. B. weil die richtige Interpretation kontextabhängig sein kann, und es nicht für alles eine einheitliche Lösung gibt.
 
 
 ## <a name="proactive-readiness-for-increased-data-protection-and-governance"></a>Proaktive Bereitschaft für erhöhten Datenschutz und Data Governance
@@ -184,7 +183,7 @@ Erwägen Sie, Methoden für Teammitglieder, Benutzer und Geschäftsinhaber zu er
 Jede Person, die sich Gedanken zu Nebeneffekten der Verwendung jeglicher Technologie macht, ist durch die eigene Perspektive und Lebenserfahrung eingeschränkt. Erweitern Sie den Bereich der verfügbaren Meinungen, indem Sie vielfältigere Stimmen in Ihre Teams und bei den Benutzern oder Beratungsgremien einbringen, damit diese frei sprechen können und dazu ermutigt werden. Berücksichtigen Sie Schulungs- und Lernmaterialien, um das Teamwissen in dieser Domäne noch zu erweitern und Fähigkeiten zur Diskussion komplexer und sensibler Themen auszubauen.
 
 Erwägen Sie, Aufgaben zur verantwortungsvollen Verwendung wie alle anderen bereichsübergreifenden Aufgaben im Anwendungslebenszyklus zu behandeln, etwa Aufgaben im Zusammenhang mit der Benutzererfahrung, Sicherheit oder DevOps. Diese Aufgaben und ihre Anforderungen dürfen nicht nur als Nebensache betrachtet werden. Die verantwortungsvolle Verwendung sollte während des gesamten Lebenszyklus der Anwendung diskutiert und überprüft werden.
- 
+
 ## <a name="questions-and-feedback"></a>Fragen und Feedback
 
 Microsoft ist ständig bestrebt, Tools und Dokumente zu entwickeln, um Ihnen zu helfen, diesen Verpflichtungen nachzukommen. Unser Team lädt Sie dazu ein, [Microsoft Feedback bereitzustellen](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D), wenn Sie glauben, dass zusätzliche Tools, Produktfunktionen und Dokumente Ihnen bei der Implementierung dieser Richtlinien für die Verwendung der Personalisierung helfen würden.

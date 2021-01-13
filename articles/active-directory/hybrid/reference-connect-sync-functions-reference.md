@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c3102480e316c634930c356ae02f769767b7d08
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: c6c8be064ade8182355c320e948b3b60b846033d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900046"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348057"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect-Synchronisierung: Funktionsreferenz
 In der Azure AD Connect-Synchronisierung werden Funktionen verwendet, um Attributwerte während der Synchronisierung zu ändern.  
@@ -52,42 +52,100 @@ Funktionen mit den Typen **mvbin**, **mvstr** und **mvref** können nur für meh
 
 ## <a name="functions-reference"></a>Funktionsreferenz
 
-| Liste der Funktionen |  |  |  |  |
-| --- | --- | --- | --- | --- |
-| **Certificate** | | | | |
-| [CertExtensionOids](#certextensionoids) |[CertFormat](#certformat) |[CertFriendlyName](#certfriendlyname) |[CertHashString](#certhashstring) | |
-| [CertIssuer](#certissuer) |[CertIssuerDN](#certissuerdn) |[CertIssuerOid](#certissueroid) |[CertKeyAlgorithm](#certkeyalgorithm) | |
-| [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
-| [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
-| [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
-[CertVersion](#certversion) |[IsCert](#iscert) | | | |
-| **Konvertierung** | | | | |
-| [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
-| [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
-| [CRef](#cref) |[CStr](#cstr) |[StringFromGuid](#stringfromguid) |[StringFromSid](#stringfromsid) | |
-| **Datum/Uhrzeit** | | | | |
-| [DateAdd](#dateadd) |[DateFromNum](#datefromnum) |[FormatDateTime](#formatdatetime) |[Now](#now) | |
-| [NumFromDate](#numfromdate) | | | | |
-| **Verzeichnis** | | | | |
-| [DNComponent](#dncomponent) |[DNComponentRev](#dncomponentrev) |[EscapeDNComponent](#escapedncomponent) | | |
-| **Auswertung** | | | | |
-| [IsBitSet](#isbitset) |[IsDate](#isdate) |[IsEmpty](#isempty) |[IsGuid](#isguid) | |
-| [IsNull](#isnull) |[IsNullOrEmpty](#isnullorempty) |[IsNumeric](#isnumeric) |[IsPresent](#ispresent) | |
-| [IsString](#isstring) | | | | |
-| **Mathematisch** | | | | |
-| [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
-| **Mehrwertig** | | | | |
-| [Contains](#contains) |[Count](#count) |[Element](#item) |[ItemOrNull](#itemornull) | |
-| [Join](#join) |[RemoveDuplicates](#removeduplicates) |[Split](#split) | | |
-| **Programmablauf** | | | | |
-| [Fehler](#error) |[IIF](#iif) |[Auswahl](#select) |[Switch](#switch) | |
-| [Where](#where) |[With](#with) | | | |
-| **Text** | | | | |
-| [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
-| [Left](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
-| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Replace](#replace) | |
-| [ReplaceChars](#replacechars) |[Right](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
-| [UCase](#ucase) |[Word](#word) | | | |
+* **Certificate**
+  * [CertExtensionOids](#certextensionoids)
+  * [CertFormat](#certformat)
+  * [CertFriendlyName](#certfriendlyname)
+  * [CertHashString](#certhashstring)
+  * [CertIssuer](#certissuer)
+  * [CertIssuerDN](#certissuerdn)
+  * [CertIssuerOid](#certissueroid)
+  * [CertKeyAlgorithm](#certkeyalgorithm)
+  * [CertKeyAlgorithmParams](#certkeyalgorithmparams)
+  * [CertNameInfo](#certnameinfo)
+  * [CertNotAfter](#certnotafter)
+  * [CertNotBefore](#certnotbefore)
+  * [CertPublicKeyOid](#certpublickeyoid)
+  * [CertPublicKeyParametersOid](#certpublickeyparametersoid)
+  * [CertSerialNumber](#certserialnumber)
+  * [CertSignatureAlgorithmOid](#certsignaturealgorithmoid)
+  * [CertSubject](#certsubject)
+  * [CertSubjectNameDN](#certsubjectnamedn)
+  * [CertSubjectNameOid](#certsubjectnameoid)
+  * [CertThumbprint](#certthumbprint)
+  * [CertVersion](#certversion)
+  * [IsCert](#iscert)
+* **Konvertierung**
+  * [CBool](#cbool)
+  * [CDate](#cdate)
+  * [CGuid](#cguid)
+  * [ConvertFromBase64](#convertfrombase64)
+  * [ConvertToBase64](#converttobase64)
+  * [ConvertFromUTF8Hex](#convertfromutf8hex)
+  * [ConvertToUTF8Hex](#converttoutf8hex)
+  * [CNum](#cnum)
+  * [CRef](#cref)
+  * [CStr](#cstr)
+  * [StringFromGuid](#stringfromguid)
+  * [StringFromSid](#stringfromsid)
+* **Datum/Uhrzeit**
+  * [DateAdd](#dateadd)
+  * [DateFromNum](#datefromnum)
+  * [FormatDateTime](#formatdatetime)
+  * [Now](#now)
+  * [NumFromDate](#numfromdate)
+* **Verzeichnis**
+  * [DNComponent](#dncomponent)
+  * [DNComponentRev](#dncomponentrev)
+  * [EscapeDNComponent](#escapedncomponent)
+* **Auswertung**
+  * [IsBitSet](#isbitset)
+  * [IsDate](#isdate)
+  * [IsEmpty](#isempty)
+  * [IsGuid](#isguid)
+  * [IsNull](#isnull)
+  * [IsNullOrEmpty](#isnullorempty)
+  * [IsNumeric](#isnumeric)
+  * [IsPresent](#ispresent)
+  * [IsString](#isstring)
+* **Mathematisch**
+  * [BitAnd](#bitand)
+  * [BitOr](#bitor)
+  * [RandomNum](#randomnum)
+* **Multi*valued**
+  * [Contains](#contains)
+  * [Count](#count)
+  * [Element](#item)
+  * [ItemOrNull](#itemornull)
+  * [Join](#join)
+  * [RemoveDuplicates](#removeduplicates)
+  * [Split](#split)
+* **Programmablauf**
+  * [Fehler](#error)
+  * [IIF](#iif)
+  * [Auswählen](#select)
+  * [Switch](#switch)
+  * [Where](#where)
+  * [With](#with)
+* **Text**
+  * [GUID](#guid)
+  * [InStr](#instr)
+  * [InStrRev](#instrrev)
+  * [LCase](#lcase)
+  * [Left](#left)
+  * [Len](#len)
+  * [LTrim](#ltrim)
+  * [Mid](#mid)
+  * [PadLeft](#padleft)
+  * [PadRight](#padright)
+  * [PCase](#pcase)
+  * [Replace](#replace)
+  * [ReplaceChars](#replacechars)
+  * [Right](#right)
+  * [RTrim](#rtrim)
+  * [Trim](#trim)
+  * [UCase](#ucase)
+  * [Word](#word)
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -125,7 +183,7 @@ Die BitOr-Funktion legt angegebene Bits auf einen Wert fest.
 Diese Funktion konvertiert beide Parameter in die binäre Darstellung und legt ein Bit auf 1 fest, wenn mindestens eins der entsprechenden Bits in „mask“ und „flag“ 1 ist, und auf 0, wenn beide entsprechenden Bits 0 sind. Anders gesagt gibt sie in allen Fällen 1 zurück, außer wenn die entsprechenden Bits der beiden Parameter 0 sind.
 
 ---
-### <a name="cbool"></a>CBool
+### <a name="cbool"></a>ZBool
 **Beschreibung:**  
 Die CBool-Funktion gibt einen booleschen Wert zurück, der auf dem ausgewerteten Ausdruck basiert.
 
@@ -141,7 +199,7 @@ Wenn die Auswertung des Ausdrucks einen Wert ungleich null ergibt, gibt CBool TR
 Gibt True zurück, wenn beide Attribute den gleichen Wert haben.
 
 ---
-### <a name="cdate"></a>CDate
+### <a name="cdate"></a>ZDate
 **Beschreibung:**  
 Die CDate-Funktion gibt einen UTC-DateTime-Wert aus einer Zeichenfolge zurück. "DateTime" ist kein synchronisierungsspezifischer Attributtyp, wird jedoch von einigen Funktionen verwendet.
 
@@ -363,7 +421,7 @@ Die CGuid-Funktion konvertiert die Zeichenfolgendarstellung einer GUID in ihre b
 * Eine in diesem Muster formatierte Zeichenfolge: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx oder {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
 ---
-### <a name="contains"></a>Contains
+### <a name="contains"></a>Enthält
 **Beschreibung:**  
 Die Contains-Funktion sucht in einem mehrwertigen Attribut nach einer Zeichenfolge.
 
@@ -420,7 +478,7 @@ Dieses Format wird von Azure Active Directory als DN verwendet.
 
 **Beispiel:**  
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
-Gibt*Hello world!* zurück.
+Gibt *Hello world!* zurück.
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
@@ -451,7 +509,7 @@ Das Ausgabeformat dieser Funktion wird von Azure Active Directory als DN-Attribu
 Gibt „48656C6C6F20776F726C6421“ zurück.
 
 ---
-### <a name="count"></a>Count
+### <a name="count"></a>Anzahl
 **Beschreibung:**  
 Die Count-Funktion gibt die Anzahl von Elementen in einem mehrwertigen Attribut zurück.
 
@@ -567,7 +625,7 @@ Falls der DN „cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com“ lautet, gebe
 „US“ zurück.
 
 ---
-### <a name="error"></a>Error
+### <a name="error"></a>Fehler
 **Beschreibung:**  
 Die Error-Funktion wird verwendet, um einen benutzerdefinierten Fehler zurückzugeben.
 
@@ -591,7 +649,7 @@ Die EscapeDNComponent-Funktion versieht eine Komponente eines DN mit Escapezeich
 Stellt sicher, dass das Objekt in einem LDAP-Verzeichnis erstellt werden kann, auch wenn das displayName-Attribut Zeichen enthält, die in LDAP mit Escapezeichen versehen werden müssen.
 
 ---
-### <a name="formatdatetime"></a>FormatDateTime
+### <a name="formatdatetime"></a>FormatDatumZeit
 **Beschreibung:**  
 Die FormatDateTime-Funktion wird verwendet, um einen DateTime-Wert in eine Zeichenfolge in einem angegebenen Format zu formatieren.
 
@@ -602,7 +660,7 @@ Die FormatDateTime-Funktion wird verwendet, um einen DateTime-Wert in eine Zeich
 * format: Eine Zeichenfolge, die das Format darstellt, in das konvertiert werden soll.
 
 **Hinweise:**  
-Die möglichen Werte für das Format finden Sie hier: [Benutzerdefinierte Datums- und Uhrzeitformate für die FORMAT-Funktion](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
+Die möglichen Werte für das Format finden Sie hier: [Benutzerdefinierte Datums- und Uhrzeitformate für die FORMAT-Funktion](/dax/custom-date-and-time-formats-for-the-format-function).
 
 **Beispiel:**  
 
@@ -645,7 +703,7 @@ Die InStr-Funktion sucht nach dem ersten Vorkommen einer Teilzeichenfolge in ein
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
-`num InStr(str stringcheck, str stringmatch, num start , enum compare)`
+`num InStr(str stringcheck, str stringmatch, num start, enum compare)`
 
 * stringcheck: Zu durchsuchende Zeichenfolge
 * stringmatch: Zu findende Zeichenfolge
@@ -810,7 +868,7 @@ Die umgekehrte Funktion heißt „IsNullOrEmpty“.
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
-### <a name="item"></a>Item
+### <a name="item"></a>Element
 **Beschreibung:**  
 Die Item-Funktion gibt ein Element aus einer mehrwertigen Zeichenfolge oder einem mehrwertigen Attribut zurück.
 
@@ -857,7 +915,7 @@ Die Join-Funktion akzeptiert eine Zeichenfolge mit mehreren Werten und gibt eine
 * Attribut: Mehrwertiges Attribut mit Zeichenfolgen, die verknüpft werden sollen.
 * delimiter: Eine beliebige Zeichenfolge, die die Teilzeichenfolgen in der zurückgegebenen Zeichenfolge trennt. Wenn nicht angegeben, wird das Leerzeichen (" ") verwendet. Wenn "delimiter" eine Zeichenfolge der Länge 0 ("") oder "Nothing" ist, werden alle Elemente in der Liste ohne Trennzeichen verkettet.
 
-**Hinweise:**  
+**Anmerkungen**  
 Zwischen den Funktionen „Join“ und „Split“ besteht Parität. Die Funktion "Join" nimmt ein Array von Zeichenfolgen entgegen, verknüpft sie mit einer Trennzeichenfolge und gibt eine einzige Zeichenfolge zurück. Die Funktion "Split" nimmt eine Zeichenfolge entgegen, trennt sie mit dem Trennzeichen und gibt ein Array von Zeichenfolgen zurück. Ein wichtiger Unterschied ist jedoch, dass "Join" Zeichenfolgen mit einer beliebigen Trennzeichenfolge verketten kann, "Split" aber nur Zeichenfolgen mit einem einzigen Trennzeichen trennen kann.
 
 **Beispiel:**  
@@ -865,7 +923,7 @@ Zwischen den Funktionen „Join“ und „Split“ besteht Parität. Die Funktio
 Kann Folgendes zurückgeben: SMTP:john.doe@contoso.com, smtp:jd@contoso.com
 
 ---
-### <a name="lcase"></a>LCase
+### <a name="lcase"></a>Kleinbst
 **Beschreibung:**  
 Die LCase-Funktion konvertiert alle Zeichen in einer Zeichenfolge in Kleinbuchstaben.
 
@@ -913,7 +971,7 @@ Die Len-Funktion gibt die Anzahl von Zeichen in einer Zeichenfolge zurück.
 Gibt „8“ zurück.
 
 ---
-### <a name="ltrim"></a>LTrim
+### <a name="ltrim"></a>LGlätten
 **Beschreibung:**  
 Die LTrim-Funktion entfernt führende Leerzeichen aus einer Zeichenfolge.
 
@@ -956,7 +1014,7 @@ Gibt „hn Do“ zurück.
 Gibt „Doe“ zurück.
 
 ---
-### <a name="now"></a>Now
+### <a name="now"></a>jetzt
 **Beschreibung:**  
 Die Now-Funktion gibt einen DateTime-Wert zurück, der das aktuelle Datum und die aktuelle Uhrzeit gemäß Systemdatum und -uhrzeit Ihres Computers angibt.
 
@@ -1154,7 +1212,7 @@ Wenn die Zeichenfolge weniger Zeichen enthält als in "numChars" angegeben, wird
 Gibt „Doe“ zurück.
 
 ---
-### <a name="rtrim"></a>RTrim
+### <a name="rtrim"></a>RGlätten
 **Beschreibung:**  
 Die RTrim-Funktion entfernt nachfolgende Leerzeichen aus einer Zeichenfolge.
 
@@ -1217,7 +1275,7 @@ Die StringFromSid-Funktion konvertiert ein Bytearray mit einer enthaltenen Siche
 `str StringFromSid(bin ObjectSID)`  
 
 ---
-### <a name="switch"></a>Switch
+### <a name="switch"></a>Schalter
 **Beschreibung:**  
 Mit der Switch-Funktion wird ein einzelner Wert auf der Grundlage ausgewerteter Bedingungen zurückgegeben.
 
@@ -1246,7 +1304,7 @@ Switch gibt nichts zurück, wenn:
 Gibt die Sprache zurück, die in einigen Großstädten gesprochen wird. Andernfalls wird ein Fehler zurückgegeben.
 
 ---
-### <a name="trim"></a>Trim
+### <a name="trim"></a>Glätten
 **Beschreibung:**  
 Die Trim-Funktion entfernt führende und nachfolgende Leerzeichen aus einer Zeichenfolge.
 
@@ -1261,7 +1319,7 @@ Gibt „test“ zurück.
 Entfernt führende und nachfolgende Leerzeichen für jeden Wert im proxyAddress-Attribut.
 
 ---
-### <a name="ucase"></a>UCase
+### <a name="ucase"></a>Großbst
 **Beschreibung:**  
 Die UCase-Funktion konvertiert alle Zeichen in einer Zeichenfolge in Großbuchstaben.
 
@@ -1309,7 +1367,7 @@ Hiermit werden nur nicht abgelaufene Zertifikatwerte aus dem Attribut „userCer
 
 
 ---
-### <a name="word"></a>Word
+### <a name="word"></a>Wort
 **Beschreibung:**  
 Die Word-Funktion gibt ein in einer Zeichenfolge enthaltenes Wort auf der Grundlage von Parametern zurück, die die zu verwendenden Trennzeichen und die Nummer des zurückzugebenden Worts beschreiben.
 

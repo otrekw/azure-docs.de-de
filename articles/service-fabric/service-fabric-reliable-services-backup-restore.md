@@ -1,25 +1,17 @@
 ---
-title: Sichern und Wiederherstellen mit Service Fabric | Microsoft Docs
-description: Dokumentation zum Sichern und Wiederherstellen mit Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Sichern und Wiederherstellen von Service Fabric
+description: Konzeptionelle Dokumentation zur Sicherung und Wiederherstellung von Service Fabric, einem Dienst zum Konfigurieren der Sicherung von zustandsbehafteten Reliable Services und Reliable Actors.
 author: mcoskun
-manager: chackdan
-editor: subramar,zhol
-ms.assetid: 91ea6ca4-cc2a-4155-9823-dcbd0b996349
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: cd40f59cfa7846911c68206c3bc1e85a770b0fcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a60ebff06562c12415b2a106a9a11127feb94dab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723847"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89021985"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Sichern und Wiederherstellen von Reliable Services und Reliable Actors
 Azure Service Fabric ist eine Plattform mit Hochverfügbarkeit, bei der der Status über mehrere Knoten repliziert wird, um diese Hochverfügbarkeit zu gewährleisten.  Auch wenn ein Knoten im Cluster ausfällt, bleiben die Dienste somit verfügbar. Diese von der Plattform bereitgestellte integrierte Redundanz reicht in manchen Fällen aus. In bestimmten Fällen wäre es jedoch wünschenswert, dass der Dienst Daten (auf einem externen Speicher) sichert.
@@ -44,7 +36,7 @@ Ein Dienst möchte Daten beispielsweise zum Schutz vor folgenden Szenarien siche
 Das Feature für die Sicherung/Wiederherstellung ermöglicht mit Reliable Services-API entwickelten Diensten die Erstellung und Wiederherstellung von Sicherungen. Die von der Plattform bereitgestellten Sicherungs-APIs ermöglichen Sicherungen des Status einer Dienstpartition, ohne Lese- oder Schreibvorgänge zu blockieren. Die Wiederherstellungs-APIs ermöglichen die Wiederherstellung des Status einer Dienstpartition aus einer Sicherung.
 
 ## <a name="types-of-backup"></a>Sicherungstypen
-Es gibt zwei Sicherungsoptionen: „Vollständig“ und „Inkrementell“.
+Es stehen zwei Optionen zur Sicherung zur Verfügung: vollständige Sicherung und inkrementelle Sicherung.
 Eine vollständige Sicherung ist eine Sicherung, die alle Daten umfasst, die zum Neuerstellen des Status des Replikats erforderlich sind, d.h. Prüfpunkte und alle Protokolleinträge.
 Da eine vollständige Sicherung die Prüfpunkte und das Protokoll umfasst, kann sie eigenständig wiederhergestellt werden.
 
@@ -73,7 +65,7 @@ Wie Sie unten sehen, nimmt `BackupAsync` ein `BackupDescription`-Objekt an, in d
 
 ```csharp
 
-BackupDescription myBackupDescription = new BackupDescription(backupOption.Incremental,this.BackupCallbackAsync);
+BackupDescription myBackupDescription = new BackupDescription(BackupOption.Incremental,this.BackupCallbackAsync);
 
 await this.BackupAsync(myBackupDescription);
 
@@ -106,7 +98,7 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 
 Im Beispiel oben ist `ExternalBackupStore` die Beispielklasse, die als Schnittstelle mit Azure Blob Storage verwendet wird. `UploadBackupFolderAsync` ist die Methode, die den Ordner komprimiert und im Azure-Blobspeicher platziert.
 
-Beachten Sie Folgendes:
+Beachten Sie dabei Folgendes:
 
   - Pro Replikat kann jeweils nur ein Sicherungsvorgang ausgeführt werden. Mehrere gleichzeitig ausgeführte `BackupAsync`-Aufrufe lösen `FabricBackupInProgressException` aus, um nur eine einzelne Inflight-Sicherung zuzulassen.
   - Wenn ein Replikat während einer Sicherung ausfällt, wird die Sicherung möglicherweise nicht abgeschlossen. Folglich muss der Dienst die Sicherung nach Abschluss des Failovers neu starten, indem bei Bedarf `BackupAsync` aufgerufen wird.
@@ -158,7 +150,7 @@ beispielsweise die vollständige Sicherung, die erste inkrementelle und die drit
 > 
 
 ## <a name="deleted-or-lost-service"></a>Gelöschter oder verlorener Dienst
-Wenn ein Dienst entfernt wird, muss der Dienst erst neu erstellt werden, bevor die Daten wiederhergestellt werden können.  Der Dienst muss unbedingt mit der gleichen Konfiguration erstellt werden, z.B. dem Partitionierungsschema, damit die Daten problemlos wiederhergestellt werden können.  Sobald der Dienst wieder aktiv ist, muss die API zum Wiederherstellen von Daten (`OnDataLossAsync` oben) für jede Partition dieses Diensts aufgerufen werden. Hierzu kann beispielsweise [FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) für jede Partition verwendet werden.  
+Wenn ein Dienst entfernt wird, muss der Dienst erst neu erstellt werden, bevor die Daten wiederhergestellt werden können.  Der Dienst muss unbedingt mit der gleichen Konfiguration erstellt werden, z.B. dem Partitionierungsschema, damit die Daten problemlos wiederhergestellt werden können.  Sobald der Dienst wieder aktiv ist, muss die API zum Wiederherstellen von Daten (`OnDataLossAsync` oben) für jede Partition dieses Diensts aufgerufen werden. Hierzu kann beispielsweise [FabricClient.TestManagementClient.StartPartitionDataLossAsync](/dotnet/api/system.fabric.fabricclient.testmanagementclient?view=azure-dotnet#System_Fabric_FabricClient_TestManagementClient_StartPartitionDataLossAsync_System_Guid_System_Fabric_PartitionSelector_System_Fabric_DataLossMode_) für jede Partition verwendet werden.  
 
 Ab diesem Zeitpunkt erfolgt die Implementierung wie im oben aufgeführten Szenario. Jede Partition muss die letzte relevante Sicherung aus dem externen Speicher wiederherstellen. Ein Nachteil ist, dass die Partitions-ID sich geändert haben kann, da die Runtime Partitions-IDs dynamisch erstellt. Daher muss der Dienst die entsprechenden Partitionsinformationen und den Dienstnamen speichern, um die aktuelle Sicherung zum Speichern für jede Partition zu finden.
 
@@ -175,7 +167,7 @@ Wenn Sie nicht sicher sind, welche Sicherungen fehlerhaft sind, können Sie eine
 
 Mit den Schritten im Abschnitt „Gelöschter oder verlorener Dienst“ kann der Status des Diensts wieder auf den Status vor der Beschädigung der Datei gesetzt werden.
 
-Beachten Sie Folgendes:
+Beachten Sie dabei Folgendes:
 
   - Bei einer Wiederherstellung besteht die Möglichkeit, dass die wiederherzustellende Sicherung älter als der Status der Partition vor dem Verlust der Daten ist. Deshalb sollte die Wiederherstellung nur als letzter Ausweg verwendet werden, um so viele Daten wie möglich wiederherzustellen.
   - Die Zeichenfolge, die den Sicherungsorderpfad und die Dateipfade im Sicherungsordner repräsentiert, kann je nach FabricDataRoot-Pfad und Namenslänge des Anwendungstyps länger als 255 Zeichen sein. Einige .NET-Methoden, z.B. `Directory.Move`, lösen daraufhin unter Umständen die Ausnahme `PathTooLongException` aus. Als Problemumgehung können beispielsweise kernel32-APIs wie `CopyFile` direkt aufgerufen werden.
@@ -267,6 +259,5 @@ Bis ein Dienst diese API erfolgreich (durch Rückgabe von true oder false) absch
   - [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
   - [Reliable Services – Benachrichtigungen](service-fabric-reliable-services-notifications.md)
   - [Konfigurieren von Reliable Services](service-fabric-reliable-services-configuration.md)
-  - [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  - [Entwicklerreferenz für zuverlässige Auflistungen](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
   - [Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
-

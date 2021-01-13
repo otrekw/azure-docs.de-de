@@ -1,6 +1,6 @@
 ---
 title: Übersicht über Azure IoT Hub-Nachrichtenanreicherungen
-description: Übersicht über Nachrichtenanreicherungen bei Azure IoT Hub-Nachrichten
+description: In diesem Artikel werden Nachrichtenanreicherungen erläutert. Sie verleihen dem IoT-Hub die Fähigkeit, Nachrichten mit zusätzlichen Informationen zu stempeln, bevor sie an den angegebenen Endpunkt gesendet werden.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 3975a57c095a8593e392e932bd125308853d3756
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873196"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541518"
 ---
-# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Nachrichtenanreicherungen bei Gerät-zu-Cloud-IoT Hub-Nachrichten (Vorschauversion)
+# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Nachrichtenanreicherungen bei Gerät-zu-Cloud-IoT Hub-Nachrichten
 
-Bei *Nachrichtenanreicherungen* handelt es sich um die Fähigkeit des IoT-Hubs, Nachrichten mit zusätzlichen Informationen zu *stempeln*, bevor sie an den angegebenen Endpunkt gesendet werden. Ein Grund für die Verwendung von Nachrichtenanreicherungen: Auf diese Weise lassen sich Daten einbeziehen, die zur Vereinfachung der Downstreamverarbeitung verwendet werden können. So kann beispielsweise durch die Anreicherung von Gerätetelemetrienachrichten mit einem Gerätezwillingstag die Last bei Kunden reduziert werden, um Gerätezwillings-API-Aufrufe für diese Informationen durchzuführen.
+*Nachrichtenanreicherungen* ist die Fähigkeit des IoT-Hubs, Nachrichten mit zusätzlichen Informationen zu *stempeln* , bevor sie an den angegebenen Endpunkt gesendet werden. Ein Grund für die Verwendung von Nachrichtenanreicherungen: Auf diese Weise lassen sich Daten einbeziehen, die zur Vereinfachung der Downstreamverarbeitung verwendet werden können. So kann beispielsweise durch die Anreicherung von Gerätetelemetrienachrichten mit einem Gerätezwillingstag die Last bei Kunden reduziert werden, um Gerätezwillings-API-Aufrufe für diese Informationen durchzuführen.
 
 ![Fluss von Nachrichtenanreicherungen](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
 
@@ -54,11 +54,21 @@ Die Nachrichten können aus einer beliebigen Datenquelle stammen, die vom [IoT H
 
 Sie können Anreicherungen zu Nachrichten, die an den integrierten Endpunkt eines IoT-Hubs gesendet werden, oder zu Nachrichten hinzufügen, die an benutzerdefinierte Endpunkte wie Azure Blob Storage, eine Service Bus-Warteschlange oder ein Service Bus-Thema weitergeleitet werden.
 
-Sie können auch Anreicherungen zu Nachrichten hinzufügen, die bei Event Grid veröffentlicht werden, indem Sie den Endpunkt als Event Grid auswählen. Weitere Informationen finden Sie unter [Iot Hub und Event Grid](iot-hub-event-grid.md).
+Sie können Anreicherungen zu Nachrichten hinzufügen, die bei Event Grid veröffentlicht werden. Dazu wählen Sie den Endpunkt als Event Grid aus. Wir erstellen in IoT Hub eine Standardroute zur Gerätetelemetrie, die auf Ihrem Event Grid-Abonnement basiert. Diese einzelne Route kann alle Ihre Event Grid-Abonnements verarbeiten. Nachdem Sie das Event Grid-Abonnement zu Gerätetelemetrie erstellt haben, können Sie Anreicherungen für den Event Grid-Endpunkt konfigurieren. Weitere Informationen finden Sie unter [Iot Hub und Event Grid](iot-hub-event-grid.md).
 
 Anreicherungen werden pro Endpunkt angewendet. Wenn Sie fünf Anreicherungen angeben, die für einen bestimmten Endpunkt gestempelt werden sollen, werden alle an diesen Endpunkt gesendeten Nachrichten mit denselben fünf Anreicherungen gestempelt.
 
-Wenn Sie erfahren möchten, wie Nachrichtenanreicherungen ausprobiert werden können, lesen Sie das [Tutorial zu Nachrichtenanreicherungen](tutorial-message-enrichments.md).
+Anreicherungen können mit den folgenden Methoden konfiguriert werden:
+
+| **Methode** | **Befehl** |
+| ----- | -----| 
+| Portal | [Azure portal](https://portal.azure.com) | Entsprechende Informationen finden Sie im [Tutorial zu Nachrichtenanreicherungen](tutorial-message-enrichments.md). | 
+| Azure-Befehlszeilenschnittstelle   | [az iot hub message-enrichment](/cli/azure/iot/hub/message-enrichment) |
+| Azure PowerShell | [Add-AzIotHubMessageEnrichment](/powershell/module/az.iothub/add-aziothubmessageenrichment) |
+
+Das Hinzufügen von Nachrichtenanreicherungen führt zu keiner Latenz beim Nachrichtenrouting.
+
+Wenn Sie Nachrichtenanreicherungen ausprobieren möchten, lesen Sie das [Tutorial zu Nachrichtenanreicherungen](tutorial-message-enrichments.md).
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -74,23 +84,19 @@ Wenn Sie erfahren möchten, wie Nachrichtenanreicherungen ausprobiert werden kö
 
 * Bei Updates an einem Gerätezwilling kann es bis zu fünf Minuten dauern, bis sie im entsprechenden Anreicherungswert angezeigt werden.
 
-* Die Gesamtgröße der Nachricht, einschließlich der Anreicherungen, darf 256 KB nicht überschreiten. Wenn eine Nachricht größer als 256 KB ist, wird sie vom IoT-Hub gelöscht. Sie können Fehler mithilfe von [IoT Hub-Metriken](iot-hub-metrics.md) identifizieren und debuggen, wenn Nachrichten gelöscht werden. So können Sie beispielsweise „d2c.telemetry.egress.invalid“ überwachen.
+* Die Gesamtgröße der Nachricht, einschließlich der Anreicherungen, darf 256 KB nicht überschreiten. Wenn eine Nachricht größer als 256 KB ist, wird sie vom IoT-Hub gelöscht. Sie können Fehler mithilfe von [IoT Hub-Metriken](monitor-iot-hub-reference.md#metrics) identifizieren und debuggen, wenn Nachrichten gelöscht werden. So können Sie beispielsweise die Metrik *Nicht kompatible Telemetrienachrichten* ( *d2c.telemetry.egress.invalid* ) in den [Routingmetriken](monitor-iot-hub-reference.md#routing-metrics) überwachen. Weitere Informationen finden Sie unter [Überwachen von IoT Hub](monitor-iot-hub.md).
 
-* Nachrichtenergänzungen gelten nicht für Änderungsereignisse beim digitalen Zwilling (Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md)).
+* Nachrichtenanreicherungen gelten nicht für Änderungsereignisse bei digitalen Zwillingen.
 
 ## <a name="pricing"></a>Preise
 
 Nachrichtenanreicherungen stehen ohne zusätzliche Gebühren zur Verfügung. Derzeit fallen für Sie Kosten an, wenn Sie eine Nachricht an einen IoT-Hub senden. Diese Nachricht wird Ihnen nur einmal in Rechnung gestellt – sogar dann, wenn sie an mehrere Endpunkte gesendet wird.
 
-## <a name="availability"></a>Verfügbarkeit
-
-Diese Funktion steht in der Vorschauversion zur Verfügung und zwar in allen Regionen mit Ausnahme von „USA, Osten“, „USA, Westen“, „Europa, Westen“, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china) und [Azure Deutschland](https://azure.microsoft.com/global-infrastructure/germany/).
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Weiterleiten von Nachrichten an einen IoT-Hub finden Sie in diesen Artikeln:
 
-* [Tutorial zu Nachrichtenerweiterungen](tutorial-message-enrichments.md)
+* [Tutorial zu Nachrichtenanreicherungen](tutorial-message-enrichments.md)
 
 * [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von Gerät-zu-Cloud-Nachrichten an verschiedene Endpunkte](iot-hub-devguide-messages-d2c.md)
 

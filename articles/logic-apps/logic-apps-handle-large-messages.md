@@ -1,25 +1,16 @@
 ---
-title: Verarbeiten von großen Nachrichten in Azure Logic Apps | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie große Nachrichten durch Blockerstellung (Segmentierung) in Azure Logic Apps verarbeiten können
+title: Verarbeiten großer Nachrichten mittels Blockerstellung („Chunking“)
+description: Erfahren Sie, wie Sie große Nachrichten verarbeiten, indem Sie Blockerstellung in automatisierten Aufgaben und Workflows verwenden, die Sie mit Azure Logic Apps erstellen.
 services: logic-apps
-documentationcenter: ''
-author: shae-hurst
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: logic-apps
-ms.workload: logic-apps
-ms.devlang: ''
-ms.tgt_pltfrm: ''
+ms.suite: integration
 ms.topic: article
-ms.date: 4/27/2018
-ms.author: shhurst
-ms.openlocfilehash: ed086c4c36711f92ba654a64856b43a5fdaadf5f
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 12/18/2020
+ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69989921"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695867"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Verarbeiten von großen Nachrichten durch Blockerstellung in Azure Logic Apps
 
@@ -46,6 +37,58 @@ Andernfalls erhalten Sie einen Laufzeitfehler, wenn Sie versuchen, auf große In
 Dienste, die mit Logic Apps kommunizieren, haben möglicherweise eigene Nachrichtengrößenbeschränkungen. Diese Beschränkungen sind häufig kleiner als die Logic Apps-Beschränkung. Nehmen Sie beispielsweise an, dass ein Connector, der Blockerstellung unterstützt, eine 30-MB-Nachricht als groß einstuft, während Logic Apps dies nicht tut. Um dieser Beschränkung des Connectors zu genügen, teilt Logic Apps jede Nachricht, die größer als 30 MB ist, in kleinere Blöcke auf.
 
 Für Connectors, die Blockerstellung unterstützen, ist das zugrunde liegende Blockerstellungsprotokolls für Endbenutzer nicht sichtbar. Allerdings unterstützen nicht alle Connectors Blockerstellung, sodass diese Connectors Laufzeitfehler generieren, wenn eingehende Nachrichten die Größenbeschränkungen des jeweiligen Connectors überschreiten.
+
+
+Für Aktionen, die Segmentierung unterstützen und dafür aktiviert sind, können Sie keine Trigger-Bodys, Variablen oder Ausdrücke wie z. B. `@triggerBody()?['Content']` verwenden, da durch die Verwendung einer dieser Eingaben verhindert wird, dass der Segmentierungsvorgang stattfindet. Verwenden Sie stattdessen die Aktion [**Compose**](../logic-apps/logic-apps-perform-data-operations.md#compose-action). Insbesondere müssen Sie ein `body`-Feld erstellen, indem Sie die Aktion **Compose** verwenden, um die Datenausgabe des Trigger-Bodys, der Variablen, des Ausdrucks usw. zu speichern, z. B.:
+
+```json
+"Compose": {
+    "inputs": {
+        "body": "@variables('myVar1')"
+    },
+    "runAfter": {
+        "Until": [
+            "Succeeded"
+        ]
+    },
+    "type": "Compose"
+},
+```
+Verwenden Sie dann in der Segmentierungsaktion `@body('Compose')`, um auf die Daten zu verweisen.
+
+```json
+"Create_file": {
+    "inputs": {
+        "body": "@body('Compose')",
+        "headers": {
+            "ReadFileMetadataFromServer": true
+        },
+        "host": {
+            "connection": {
+                "name": "@parameters('$connections')['sftpwithssh_1']['connectionId']"
+            }
+        },
+        "method": "post",
+        "path": "/datasets/default/files",
+        "queries": {
+            "folderPath": "/c:/test1/test1sub",
+            "name": "tt.txt",
+            "queryParametersSingleEncoded": true
+        }
+    },
+    "runAfter": {
+        "Compose": [
+            "Succeeded"
+        ]
+    },
+    "runtimeConfiguration": {
+        "contentTransfer": {
+            "transferMode": "Chunked"
+        }
+    },
+    "type": "ApiConnection"
+},
+```
 
 <a name="set-up-chunking"></a>
 
@@ -148,7 +191,7 @@ In den folgenden Schritten ist die Vorgehensweise ausführlich beschrieben, in d
 
    | Endpunktfeld für Antwortheader | type | Erforderlich | BESCHREIBUNG |
    |--------------------------------|------|----------|-------------|
-   | **Bereich** | Zeichenfolge | Ja | Der Bytebereich für Inhalt, der vom Endpunkt empfangen wurde, z. B.: „bytes=0-1023“ |   
+   | **Bereich** | String | Ja | Der Bytebereich für Inhalt, der vom Endpunkt empfangen wurde, z. B.: „bytes=0-1023“ |   
    | **x-ms-chunk-size** | Integer | Nein | Der vorgeschlagene Blockgröße in Bytes |
    ||||
 

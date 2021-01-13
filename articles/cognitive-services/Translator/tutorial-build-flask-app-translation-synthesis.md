@@ -1,21 +1,22 @@
 ---
-title: 'Tutorial: Erstellen einer Flask-App zum Übersetzen, Synthetisieren und Analysieren von Text: Textübersetzungs-API'
+title: 'Tutorial: Erstellen einer Flask-App zum Übersetzen, Synthetisieren und Analysieren von Text: Translator'
 titleSuffix: Azure Cognitive Services
-description: In diesem Tutorial erstellen Sie eine Flask-basierte Web-App, für die Azure Cognitive Services genutzt wird, um Text zu übersetzen, Stimmungen zu analysieren und die Synthese von übersetztem Text in Sprache durchzuführen. Der Schwerpunkt liegt hierbei auf dem Python-Code und den Flask-Routen als Grundlage unserer Anwendung. Wir wenden nicht viel Zeit für den JavaScript-Code auf, mit dem die App gesteuert wird. Es werden aber alle Dateien angegeben, damit Sie sie untersuchen können.
+description: In diesem Tutorial erstellen Sie eine Flask-basierte Web-App, um Text zu übersetzen, Stimmungen zu analysieren und die Synthese von übersetztem Text in Sprache durchzuführen.
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 8d85db0e9aa9da48713ca0c119a12160cc99dbff
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.custom: devx-track-python, devx-track-js
+ms.openlocfilehash: 1cbe4d44f5e1c8b34a3d7bb9d05b9546f320b81c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671839"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023467"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Tutorial: Erstellen einer Flask-App mit Azure Cognitive Services
 
@@ -27,7 +28,7 @@ Hier ist angegeben, was in diesem Tutorial vermittelt wird:
 > * Abrufen von Azure-Abonnementschlüsseln
 > * Einrichten Ihrer Entwicklungsumgebung und Installieren von Abhängigkeiten
 > * Erstellen einer Flask-App
-> * Verwenden der Textübersetzungs-API zum Übersetzen von Text
+> * Verwenden von Translator zum Übersetzen von Text
 > * Verwenden der Textanalyse zum Analysieren von positiven/negativen Stimmungen für Eingabetext und Übersetzungen
 > * Verwenden der Spracherkennungsdienste zum Konvertieren von übersetztem Text in synthetisierte Sprache
 > * Lokales Ausführen Ihrer Flask-App
@@ -52,18 +53,18 @@ Hier sind die Software und Abonnementschlüssel angegeben, die Sie für dieses T
 * [Git-Tools](https://git-scm.com/downloads)
 * Eine IDE oder ein Text-Editor, z. B. [Visual Studio Code](https://code.visualstudio.com/) oder [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) oder [Firefox](https://www.mozilla.org/firefox)
-* Ein Abonnementschlüssel für die **Textübersetzung** (Hinweis: Sie müssen keine Region auswählen.)
+* Ein Abonnementschlüssel für **Translator**  (Hinweis: Sie müssen keine Region auswählen.)
 * Ein Abonnementschlüssel für die **Textanalyse** in der Region **USA, Westen**.
 * Ein Abonnementschlüssel für **Spracherkennungsdienste** in der Region **USA, Westen**.
 
 ## <a name="create-an-account-and-subscribe-to-resources"></a>Erstellen eines Kontos und Abonnieren der Ressourcen
 
 Wie bereits erwähnt, benötigen Sie für dieses Tutorial drei Abonnementschlüssel. Dies bedeutet, dass Sie unter Ihrem Azure-Konto Ressourcen für folgende Komponenten erstellen müssen:
-* Textübersetzung
+* Übersetzer
 * Textanalyse
 * Spracherkennungsdienste
 
-Unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) finden Sie eine Schritt-für-Schritt-Anleitung zur Erstellung von Ressourcen.
+Unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](../cognitive-services-apis-create-account.md) finden Sie eine Schritt-für-Schritt-Anleitung zur Erstellung von Ressourcen.
 
 > [!IMPORTANT]
 > In diesem Tutorial erstellen Sie Ihre Ressourcen in der Region „USA, Westen“. Bei Verwendung einer anderen Region müssen Sie die Basis-URL in Ihren gesamten Python-Dateien anpassen.
@@ -128,7 +129,7 @@ Wir erstellen mit `virtualenv` eine virtuelle Umgebung für unsere Flask-App. Du
    ```
 
 > [!NOTE]
-> Weitere Informationen zu „Requests“ finden Sie unter [Requests: HTTP for Humans](http://docs.python-requests.org/en/master/) (Requests: HTTP für Menschen).
+> Weitere Informationen zu „Requests“ finden Sie unter [Requests: HTTP for Humans](https://2.python-requests.org/en/master/) (Requests: HTTP für Menschen).
 
 ### <a name="install-and-configure-flask"></a>Installieren und Konfigurieren von Flask
 
@@ -144,14 +145,14 @@ Als Nächstes müssen wir Flask installieren. Flask führt die Verarbeitung des 
    ```
    Die Version sollte im Terminal ausgegeben werden. Alle anderen Ergebnisse bedeuten, dass ein Fehler vorliegt.
 
-2. Zum Ausführen der Flask-App können Sie entweder den Befehl „flask“ oder den Python-Switch „-m“ mit Flask verwenden. Zuvor müssen Sie Ihrem Terminal mitteilen, mit welcher App gearbeitet werden soll, indem Sie die Umgebungsvariable `FLASK_APP` exportieren:
+2. Zum Ausführen der Flask-App können Sie entweder den Befehl „flask“ oder die Python-Option „-m“ mit Flask verwenden. Zuvor müssen Sie Ihrem Terminal mitteilen, mit welcher App gearbeitet werden soll, indem Sie die Umgebungsvariable `FLASK_APP` exportieren:
 
    **macOS/Linux:**
    ```
    export FLASK_APP=app.py
    ```
 
-   **Windows:**
+   **Windows**:
    ```
    set FLASK_APP=app.py
    ```
@@ -245,14 +246,14 @@ In diesen Beispielen wird veranschaulicht, wie Sie HTML-Seiten für einen Benutz
 
 Gehen Sie nun, nachdem Sie sich mit der Funktionsweise einer einfachen Flask-App vertraut gemacht haben, wie folgt vor:
 
-* Schreiben von Python-Code zum Aufrufen der Textübersetzungs-API und Zurückgeben einer Antwort
+* Schreiben von Python-Code zum Aufrufen von Translator und Zurückgeben einer Antwort
 * Erstellen einer Flask-Route zum Aufrufen Ihres Python-Codes
 * Aktualisieren des HTML-Codes mit einem Bereich für die Texteingabe und -übersetzung, einer Sprachauswahl und der Schaltfläche „Translate“ (Übersetzen)
 * Schreiben von JavaScript, um Benutzern die Interaktion mit Ihrer Flask-App über den HTML-Code zu ermöglichen
 
-### <a name="call-the-translator-text-api"></a>Aufrufen der Textübersetzungs-API
+### <a name="call-the-translator"></a>Aufrufen von Translator
 
-Zunächst müssen Sie eine Funktion zum Aufrufen der Textübersetzungs-API schreiben. Für diese Funktion werden zwei Argumente verwendet: `text_input` und `language_output`. Diese Funktion wird jeweils aufgerufen, wenn ein Benutzer in Ihrer App die Schaltfläche „Übersetzen“ betätigt. Der Textbereich im HTML-Code wird als `text_input` und der Wert für die Sprachauswahl im HTML-Code als `language_output` gesendet.
+Zunächst müssen Sie eine Funktion zum Aufrufen von Translator schreiben. Für diese Funktion werden zwei Argumente verwendet: `text_input` und `language_output`. Diese Funktion wird jeweils aufgerufen, wenn ein Benutzer in Ihrer App die Schaltfläche „Übersetzen“ betätigt. Der Textbereich im HTML-Code wird als `text_input` und der Wert für die Sprachauswahl im HTML-Code als `language_output` gesendet.
 
 1. Zunächst erstellen wir im Stammverzeichnis Ihres Arbeitsverzeichnisses eine Datei mit dem Namen `translate.py`.
 2. Fügen Sie als Nächstes der Datei `translate.py` diesen Code hinzu. Für diese Funktion werden zwei Argumente verwendet: `text_input` und `language_output`.
@@ -288,7 +289,7 @@ Zunächst müssen Sie eine Funktion zum Aufrufen der Textübersetzungs-API schre
        response = requests.post(constructed_url, headers=headers, json=body)
        return response.json()
    ```
-3. Fügen Sie Ihren Abonnementschlüssel für die Textübersetzung hinzu, und speichern Sie.
+3. Fügen Sie Ihren Abonnementschlüssel für Translator hinzu, und speichern Sie ihn.
 
 ### <a name="add-a-route-to-apppy"></a>Hinzufügen einer Route zu `app.py`
 
@@ -474,7 +475,7 @@ Drücken Sie **STRG+C**, um die App zu beenden, und fahren Sie dann mit dem näc
 
 ## <a name="analyze-sentiment"></a>Analysieren von Stimmungen
 
-Die [Textanalyse-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) kann genutzt werden, um die Standpunktanalyse durchzuführen, Schlüsselbegriffe aus Text zu extrahieren oder die Quellsprache zu erkennen. In dieser App nutzen wir die Standpunktanalyse, um zu ermitteln, ob der angegebene Text positiv, neutral oder negativ ist. Die API gibt eine numerische Bewertung zwischen 0 und 1 zurück. Dabei weisen Werte nahe 1 auf eine positive Stimmung und Werte nahe 0 auf eine negative Stimmung hin.
+Die [Textanalyse-API](../text-analytics/overview.md) kann genutzt werden, um die Standpunktanalyse durchzuführen, Schlüsselbegriffe aus Text zu extrahieren oder die Quellsprache zu erkennen. In dieser App nutzen wir die Standpunktanalyse, um zu ermitteln, ob der angegebene Text positiv, neutral oder negativ ist. Die API gibt eine numerische Bewertung zwischen 0 und 1 zurück. Dabei weisen Werte nahe 1 auf eine positive Stimmung und Werte nahe 0 auf eine negative Stimmung hin.
 
 In diesem Abschnitt führen Sie einige Schritte aus:
 
@@ -658,7 +659,7 @@ Drücken Sie **STRG+C**, um die App zu beenden, und fahren Sie dann mit dem näc
 
 ## <a name="convert-text-to-speech"></a>Konvertieren von Text in Sprache
 
-Mit der [Text-to-Speech-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) kann Ihre App Text in synthetisierte Sprache konvertieren, die natürlich und menschenähnlich ist. Der Dienst unterstützt standardmäßige, neuronale und benutzerdefinierte Stimmen. In unserer Beispiel-App werden einige der verfügbaren Stimmen genutzt. Eine vollständige Liste finden Sie unter [Unterstützte Sprachen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech).
+Mit der [Text-to-Speech-API](../speech-service/text-to-speech.md) kann Ihre App Text in synthetisierte Sprache konvertieren, die natürlich und menschenähnlich ist. Der Dienst unterstützt standardmäßige, neuronale und benutzerdefinierte Stimmen. In unserer Beispiel-App werden einige der verfügbaren Stimmen genutzt. Eine vollständige Liste finden Sie unter [Unterstützte Sprachen](../speech-service/language-support.md#text-to-speech).
 
 In diesem Abschnitt führen Sie einige Schritte aus:
 
@@ -777,10 +778,10 @@ Nachdem Sie nun über eine Funktion zum Konvertieren von Text in Sprache und in 
        <option value="(zh-CN, Kangkang, Apollo)">Chinese (Mainland) | Male | Kangkang, Apollo</option>
        <option value="(zh-HK, Tracy, Apollo)">Chinese (Hong Kong)| Female | Tracy, Apollo</option>
        <option value="(zh-HK, Danny, Apollo)">Chinese (Hong Kong) | Male | Danny, Apollo</option>
-       <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yaiting, Apollo</option>
+       <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yating, Apollo</option>
        <option value="(zh-TW, Zhiwei, Apollo)">Chinese (Taiwan) | Male | Zhiwei, Apollo</option>
        <option value="(hr-HR, Matej)">Croatian | Male | Matej</option>
-       <option value="(en-US, Jessa24kRUS)">English (US) | Female | Jessa24kRUS</option>
+       <option value="(en-US, AriaRUS)">English (US) | Female | AriaRUS</option>
        <option value="(en-US, Guy24kRUS)">English (US) | Male | Guy24kRUS</option>
        <option value="(en-IE, Sean)">English (IE) | Male | Sean</option>
        <option value="(fr-FR, Julie, Apollo)">French | Female | Julie, Apollo</option>
@@ -797,7 +798,7 @@ Nachdem Sie nun über eine Funktion zum Konvertieren von Text in Sprache und in 
        <option value="(it-IT, Cosimo, Apollo)">Italian | Male | Cosimo, Apollo</option>
        <option value="(ja-JP, Ichiro, Apollo)">Japanese | Male | Ichiro</option>
        <option value="(ja-JP, HarukaRUS)">Japanese | Female | HarukaRUS</option>
-       <option value="(ko-KR, HeamiRUS)">Korean | Female | Haemi</option>
+       <option value="(ko-KR, HeamiRUS)">Korean | Female | Heami</option>
        <option value="(pt-BR, HeloisaRUS)">Portuguese (Brazil) | Female | HeloisaRUS</option>
        <option value="(pt-BR, Daniel, Apollo)">Portuguese (Brazil) | Male | Daniel, Apollo</option>
        <option value="(pt-PT, HeliaRUS)">Portuguese (Portugal) | Female | HeliaRUS</option>
@@ -953,7 +954,7 @@ Navigieren Sie zur angegebenen Serveradresse. Geben Sie Text in den Eingabeberei
 > [!TIP]
 > Wenn die vorgenommenen Änderungen nicht angezeigt werden oder die App nicht wie erwartet funktioniert, sollten Sie versuchen, Ihren Cache zu löschen oder ein InPrivate- bzw. Inkognito-Fenster zu öffnen.
 
-Das ist alles! Sie verfügen über eine funktionierende App, mit der Übersetzungen durchgeführt, Stimmungen analysiert und Sprache synthetisiert werden kann. Drücken Sie **STRG+C**, um die App zu beenden. Sehen Sie sich auch die anderen Komponenten von [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) an.
+Das ist alles! Sie verfügen über eine funktionierende App, mit der Übersetzungen durchgeführt, Stimmungen analysiert und Sprache synthetisiert werden kann. Drücken Sie **STRG+C**, um die App zu beenden. Sehen Sie sich auch die anderen Komponenten von [Azure Cognitive Services](../index.yml) an.
 
 ## <a name="get-the-source-code"></a>Herunterladen des Quellcodes
 
@@ -961,6 +962,6 @@ Der Quellcode für dieses Projekt ist auf [GitHub](https://github.com/MicrosoftT
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Referenz für die Textübersetzungs-API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+* [Referenz zu Translator](./reference/v3-0-reference.md)
 * [Referenz zur Textanalyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
-* [Referenz zur Text-to-Speech-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)
+* [Referenz zur Text-to-Speech-API](../speech-service/rest-text-to-speech.md)

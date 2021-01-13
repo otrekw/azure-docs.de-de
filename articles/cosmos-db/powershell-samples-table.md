@@ -1,30 +1,42 @@
 ---
-title: 'Azure PowerShell-Beispiele für Azure Cosmos DB: Tabellen-API'
-description: 'Azure PowerShell-Beispiele für Azure Cosmos DB: Tabellen-API'
+title: 'Azure PowerShell-Beispiele für Azure Cosmos DB: Tabellen-API'
+description: Hier erfahren Sie, wie Sie Azure PowerShell-Beispiele zum Ausführen gängiger Aufgaben in der Tabellen-API für Azure Cosmos DB abrufen.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 95cd55bd3f87ddb4d37bfc527c8dcd28bdfa42da
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: be0fd7db7b28ea9801e065f1327596021b3e31b1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155196"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332898"
 ---
-# <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>Azure PowerShell-Beispiele für Azure Cosmos DB: Tabellen-API
+# <a name="azure-powershell-samples-for-azure-cosmos-db-table-api"></a>Azure PowerShell-Beispiele für Azure Cosmos DB: Tabellen-API
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
-Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für Azure Cosmos DB für die Tabellen-API.
+Die unten stehende Tabelle enthält Links zu häufig verwendeten Azure PowerShell-Skripts für Azure Cosmos DB. Navigieren Sie über die Links auf der rechten Seite zu API-spezifischen Beispielen. Allgemeine Beispiele sind in allen APIs identisch. Referenzseiten für alle Azure Cosmos DB-PowerShell-Cmdlets finden Sie in der [Referenz zu Azure PowerShell](/powershell/module/az.cosmosdb). Prüfen Sie regelmäßig auf Updates für `Az.CosmosDB`. Sie können diese PowerShell-Beispiele für Cosmos DB auch aus unserem GitHub-Repository forken. Informationen dazu finden Sie in den [Cosmos DB-PowerShell-Beispielen auf GitHub](https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb).
 
-| | |
+## <a name="common-samples"></a>Allgemeine Beispiele
+
+|Aufgabe | BESCHREIBUNG |
 |---|---|
-|[Konto und Tabelle erstellen](scripts/powershell/table/ps-table-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos und einer Tabelle in Azure Cosmos |
-|[Auflisten oder Abrufen von Tabellen](scripts/powershell/table/ps-table-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Auflisten oder Abrufen von Tabellen |
-|[RU/s abrufen](scripts/powershell/table/ps-table-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen von RU/s für eine Tabelle |
-|[RU/s aktualisieren](scripts/powershell/table/ps-table-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualisieren von RU/s für eine Tabelle |
-|[Ein Konto aktualisieren oder eine Region hinzufügen](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hinzufügen einer Region zu einem Cosmos-Konto. Kann auch zum Ändern anderer Kontoeigenschaften verwendet werden, dafür muss jedoch ein separater Vorgang ausgeführt werden. |
-|[Failoverpriorität ändern oder Failover auslösen](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ändern der Priorität eines regionalen Failovers eines Azure Cosmos-Kontos oder Auslösen eines manuellen Failovers |
-|[Kontoschlüssel oder Verbindungszeichenfolgen](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen von Primär- und Sekundärschlüsseln und Verbindungszeichenfolgen oder erneutes Generieren eines Kontoschlüssels eines Azure Cosmos-Kontos |
-|[Cosmos-Konto mit IP-Firewall erstellen](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Azure Cosmos-Kontos mit aktivierter IP-Firewall |
+|[Konto aktualisieren](scripts/powershell/common/account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualisieren der Standardkonsistenzebene eines Cosmos DB-Kontos |
+|[Regionen eines Kontos aktualisieren](scripts/powershell/common/update-region.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualisieren der Regionen eines Cosmos DB-Kontos |
+|[Failoverpriorität ändern oder Failover auslösen](scripts/powershell/common/failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ändern der Priorität eines regionalen Failovers eines Azure Cosmos-Kontos oder Auslösen eines manuellen Failovers |
+|[Kontoschlüssel oder Verbindungszeichenfolgen](scripts/powershell/common/keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen von Primär- und Sekundärschlüsseln und Verbindungszeichenfolgen oder erneutes Generieren eines Kontoschlüssels eines Azure Cosmos DB-Kontos |
+|[Cosmos-Konto mit IP-Firewall erstellen](scripts/powershell/common/firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Azure Cosmos DB-Kontos mit aktivierter IP-Firewall |
+|||
+
+## <a name="table-api-samples"></a>Tabellen-API-Beispiele
+
+|Aufgabe | BESCHREIBUNG |
+|---|---|
+|[Konto und Tabelle erstellen](scripts/powershell/table/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos und einer Tabelle in Azure Cosmos |
+|[Konto und Tabelle mit Autoskalierung erstellen](scripts/powershell/table/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos und einer Tabelle mit Autoskalierung in Azure Cosmos |
+|[Auflisten oder Abrufen von Tabellen](scripts/powershell/table/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Auflisten oder Abrufen von Tabellen |
+|[Durchsatzvorgänge](scripts/powershell/table/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Durchsatzvorgänge für eine Tabelle, z. B. Abrufen, Aktualisieren und Migrieren zwischen automatisch skaliertem und standardmäßigem Durchsatz. |
+|[Sperren von Ressourcen für die Löschung](scripts/powershell/table/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Verhindern des Löschens von Ressourcen mit Ressourcensperren. |
 |||

@@ -1,35 +1,36 @@
 ---
-title: 'Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Azure Storage per Azure Key Vault | Microsoft-Dokumentation'
-description: Hier wird erläutert, wie Sie ein Blob mithilfe der clientseitigen Verschlüsselung für Microsoft Azure Storage mit Azure Key Vault verschlüsseln und entschlüsseln.
+title: 'Tutorial: Verschlüsseln und Entschlüsseln von Blobs mit Azure Key Vault'
+titleSuffix: Azure Storage
+description: Hier wird erläutert, wie Sie ein Blob mithilfe der clientseitigen Verschlüsselung mit Azure Key Vault verschlüsseln und entschlüsseln.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 05/14/2019
+ms.topic: tutorial
+ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: 34dbcaeedb544a8a8808aab3e8e3315f1790dd9a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ddc9dbf77c04ea95e5b873c45de4c0df109514c7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003436"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544444"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Azure Storage per Azure Key Vault
+# <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Tutorial: Verschlüsseln und Entschlüsseln von Blobs mit Azure Key Vault
 
-## <a name="introduction"></a>Einführung
 In diesem Lernprogramm erfahren Sie, wie Sie die clientseitige Speicherverschlüsselung mit Azure Key Vault verwenden. Sie werden durch die Schritte zum Verschlüsseln und Entschlüsseln eines Blobs in einer Konsolenanwendung mit dieser Technologie geführt.
 
 **Geschätzter Zeitaufwand**: 20 Minuten
 
-Eine Übersicht über Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](../../key-vault/key-vault-overview.md).
+Eine Übersicht über Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](../../key-vault/general/overview.md).
 
 Übersichtsinformationen zur clientseitigen Verschlüsselung für Azure Storage finden Sie unter [Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Lernprogramm benötigen Sie Folgendes:
+Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ein Azure-Speicherkonto
 * Visual Studio 2013 oder höher
@@ -48,11 +49,11 @@ Hier eine kurze Beschreibung zur Funktionsweise der clientseitigen Verschlüssel
 
 ## <a name="set-up-your-azure-key-vault"></a>Einrichten des Azure-Schlüsseltresors
 
-Zum Fortsetzen dieses Tutorials müssen Sie die folgenden Schritte ausführen, die beschrieben sind im Tutorial [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer .NET-Web-App](../../key-vault/quick-create-net.md).
+Zum Fortsetzen dieses Tutorials müssen Sie die folgenden Schritte ausführen, die beschrieben sind im Tutorial [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer .NET-Web-App](../../key-vault/secrets/quick-create-net.md).
 
 * Erstellen eines Schlüsseltresors
 * Hinzufügen eines Schlüssels oder geheimen Schlüssels zum Schlüsseltresor
-* Registrieren einer Anwendung mit Azure Active Directory
+* Registrieren Sie eine Anwendung bei Azure Active Directory.
 * Autorisieren der Anwendung zum Verwenden des Schlüssels oder geheimen Schlüssels
 
 Notieren Sie ClientID und ClientSecret. Diese Angaben werden generiert, wenn Sie eine Anwendung mit Azure Active Directory registrieren.
@@ -121,7 +122,7 @@ private async static Task<string> GetToken(string authority, string resource, st
 }
 ```
 
-## <a name="access-storage-and-key-vault-in-your-program"></a>Zugreifen auf den Speicher und den Schlüsseltresor in Ihrem Programm
+## <a name="access-azure-storage-and-key-vault-in-your-program"></a>Zugreifen auf Azure Storage und Key Vault in Ihrem Programm
 
 Fügen Sie in der „Main()“-Methode den folgenden Code hinzu:
 
@@ -129,7 +130,8 @@ Fügen Sie in der „Main()“-Methode den folgenden Code hinzu:
 // This is standard code to interact with Blob storage.
 StorageCredentials creds = new StorageCredentials(
     CloudConfigurationManager.GetSetting("accountName"),
-    CloudConfigurationManager.GetSetting("accountKey");
+    CloudConfigurationManager.GetSetting("accountKey")
+);
 CloudStorageAccount account = new CloudStorageAccount(creds, useHttps: true);
 CloudBlobClient client = account.CreateCloudBlobClient();
 CloudBlobContainer contain = client.GetContainerReference(CloudConfigurationManager.GetSetting("container"));
@@ -209,7 +211,7 @@ Für die Verwendung eines geheimen Schlüssels mit clientseitiger Verschlüsselu
 Hier ist ein Beispiel in PowerShell angegeben, bei dem im Schlüsseltresor ein geheimer Schlüssel erstellt wird, der als "SymmetricKey" verwendet werden kann.
 Bitte beachten Sie, dass der hartcodierte Wert „$key“ nur der Veranschaulichung dient. In Ihrem eigenen Code sollten Sie diesen Schlüssel generieren.
 
-```csharp
+```powershell
 // Here we are making a 128-bit key so we have 16 characters.
 //     The characters are in the ASCII range of UTF8 so they are
 //    each 1 byte. 16 x 8 = 128.
@@ -229,12 +231,13 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
     CancellationToken.None).GetAwaiter().GetResult();
 ```
+
 Das ist alles. Viel Spaß!
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Verwendung von Microsoft Azure Storage mit C# finden Sie unter [Microsoft Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx) (Microsoft Azure Storage-Clientbibliothek für .NET).
+Weitere Informationen zur Verwendung von Microsoft Azure Storage mit C# finden Sie unter [Microsoft Azure Storage Client Library for .NET](/previous-versions/azure/dn261237(v=azure.100)) (Microsoft Azure Storage-Clientbibliothek für .NET).
 
-Weitere Informationen zur Blob-REST-API finden Sie unter [REST-API des Blob-Diensts](https://msdn.microsoft.com/library/azure/dd135733.aspx).
+Weitere Informationen zur Blob-REST-API finden Sie unter [REST-API des Blob-Diensts](/rest/api/storageservices/Blob-Service-REST-API).
 
-Aktuelle Informationen zu Microsoft Azure Storage finden Sie im [Microsoft Azure Storage Team Blog](https://blogs.msdn.com/b/windowsazurestorage/) (in englischer Sprache).
+Aktuelle Informationen zu Microsoft Azure Storage finden Sie im [Microsoft Azure Storage Team Blog](/archive/blogs/windowsazurestorage/) (in englischer Sprache).

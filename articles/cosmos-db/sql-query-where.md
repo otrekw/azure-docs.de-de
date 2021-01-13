@@ -1,19 +1,21 @@
 ---
 title: WHERE-Klausel in Azure Cosmos DB
 description: Erfahren Sie mehr über die WHERE-Klausel von SQL für Azure Cosmos DB.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: mjbrown
-ms.openlocfilehash: 362024868de269ed64a440a25e8c19c5b68bef80
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.date: 03/06/2020
+ms.author: tisande
+ms.openlocfilehash: 5620a9fb95fb52a487095afd75d5f30c82a8bce1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003471"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341466"
 ---
-# <a name="where-clause"></a>WHERE-Klausel
+# <a name="where-clause-in-azure-cosmos-db"></a>WHERE-Klausel in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Die optionale WHERE-Klausel (`WHERE <filter_condition>`) gibt Bedingungen an, die die JSON-Elemente in der Quelle erfüllen müssen, damit sie von der Abfrage in die Ergebnisse eingeschlossen werden. Ein JSON-Element muss die angegebenen Bedingungen erfüllen (`true`), um für das Ergebnis berücksichtigt zu werden. Die Indexebene verwendet die WHERE-Klausel, um die kleinste Teilmenge von Quellelementen zu bestimmen, die Teil des Ergebnisses sein können.
   
@@ -35,10 +37,11 @@ WHERE <filter_condition>
   
    Ausdruck, der den zu berechnenden Wert darstellt. Weitere Informationen finden Sie unter [Scalar expressions in Azure Cosmos DB SQL queries](sql-query-scalar-expressions.md) (Skalarausdrücke in SQL-Abfragen in Azure Cosmos DB).  
   
-
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
   
-  Damit das Dokument zurückgegeben wird, muss ein als Filterbedingung angegebener Ausdruck mit „true“ ausgewertet werden. Nur der boolesche Wert TRUE erfüllt die Bedingung, jeder andere Wert – „undefined“, „NULL“, „FALSE“, „Number“, „Array“ oder „Object“ – erfüllt die Bedingung nicht. 
+  Damit das Dokument zurückgegeben wird, muss ein als Filterbedingung angegebener Ausdruck mit „true“ ausgewertet werden. Nur der boolesche Wert `true` erfüllt die Bedingung, jeder andere Wert – „undefined“, „NULL“, „FALSE“, „Number“, „Array“ oder „Object“ – erfüllt die Bedingung nicht.
+
+  Wenn Sie Ihren Partitionsschlüssel in die `WHERE`-Klausel als Teil eines Gleichheitsfilters einbeziehen, filtert Ihre Abfrage automatisch nur nach den relevanten Partitionen.
 
 ## <a name="examples"></a>Beispiele
 
@@ -50,7 +53,7 @@ Die folgende Abfrage fordert Elemente an, die eine `id`-Eigenschaft mit dem Wert
     WHERE f.id = "AndersenFamily"
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [{
@@ -74,7 +77,7 @@ Sie können die folgenden unterstützten binären Operatoren verwenden:
 |Bitweise    | \|, &, ^, <<, >>, >>> (Nullauffüllung, Verschiebung nach rechts) |
 |Logisch    | AND, OR, NOT      |
 |Vergleich | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
-|Zeichenfolge     |  \|\| (Verkettung) |
+|String     |  \|\| (Verkettung) |
 
 Die folgenden Abfragen verwenden binäre Operatoren:
 
@@ -104,10 +107,10 @@ Sie können auch die unären Operatoren +, -, ~ und NOT in Abfragen verwenden, w
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Sie können auch Eigenschaftsverweise in Abfragen verwenden. Beispielsweise gibt `SELECT * FROM Families f WHERE f.isRegistered` das JSON-Element zurück, das die Eigenschaft `isRegistered` mit dem Wert `true` enthält. Jeder andere Wert (z.B. `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>` oder `<array>`) führt dazu, dass das Element aus dem Ergebnis ausgeschlossen wird. 
+Sie können auch Eigenschaftsverweise in Abfragen verwenden. Beispielsweise gibt `SELECT * FROM Families f WHERE f.isRegistered` das JSON-Element zurück, das die Eigenschaft `isRegistered` mit dem Wert `true` enthält. Jeder andere Wert (z.B. `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>` oder `<array>`) führt dazu, dass das Element aus dem Ergebnis ausgeschlossen wird. Darüber hinaus können Sie die `IS_DEFINED`-Typüberprüfungsfunktion verwenden, um Abfragen basierend auf dem Vorhandensein oder Nichtvorhandensein einer bestimmten JSON-Eigenschaft auszuführen. `SELECT * FROM Families f WHERE NOT IS_DEFINED(f.isRegistered)` gibt beispielsweise ein beliebiges JSON-Element zurück, das keinen Wert für `isRegistered` besitzt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erste Schritte](sql-query-getting-started.md)
-- [Azure Cosmos DB-.NET-Beispiele](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [IN-Schlüsselwort](sql-query-keywords.md#in)
 - [FROM-Klausel](sql-query-from.md)

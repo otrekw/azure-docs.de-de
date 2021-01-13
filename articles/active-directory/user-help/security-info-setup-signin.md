@@ -1,31 +1,43 @@
 ---
-title: 'Einrichten der Sicherheitsinformationen (Vorschauversion) über die Anmeldeaufforderung: Azure Active Directory | Microsoft-Dokumentation'
-description: So richten Sie Sicherheitsinformationen für Ihr Geschäfts-, Schul- oder Unikonto ein, wenn Sie auf der Anmeldeseite Ihres Unternehmens dazu aufgefordert werden
+title: 'Einrichten Ihrer Sicherheitsinformation über eine Anmeldeaufforderung: Azure AD'
+description: Hier erfahren Sie, wie Sie die Sicherheitsinformation für Ihr Geschäfts-, Schul- oder Unikonto einrichten, wenn Sie auf der Anmeldeseite Ihrer Organisation dazu aufgefordert werden.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: overview
-ms.date: 08/05/2019
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 705e3818aef0338d9b34da7b0320b99594573fca
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.topic: end-user-help
+ms.date: 04/07/2020
+ms.author: curtand
+ms.openlocfilehash: 016e0de26bf3a9513940be161cfecf6d1c2b9d02
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985984"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88798498"
 ---
-# <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Einrichten Ihrer Sicherheitsinformationen (Vorschauversion) über die Aufforderung auf der Anmeldeseite
+# <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Einrichten Ihrer Sicherheitsinformation über eine Anmeldeaufforderung
 
 Wenn Sie direkt nach der Anmeldung bei Ihrem Geschäfts-, Schul- oder Unikonto zum Einrichten Ihrer Sicherheitsinformationen aufgefordert werden, können Sie diese Schritte ausführen.
 
-Diese Aufforderung wird nur angezeigt, wenn Sie die von Ihrer Organisation geforderten Sicherheitsinformationen noch nicht eingerichtet haben. Wenn Sie Ihre Sicherheitsinformationen bereits eingerichtet haben und Änderungen vornehmen möchten, können Sie die Schritte in den verschiedenen methodenbasierten Anleitungen ausführen. Weitere Informationen finden Sie im Artikel zum [Hinzufügen oder Aktualisieren Ihrer Sicherheitsinformationen](security-info-add-update-methods-overview.md).
+Diese Aufforderung wird nur angezeigt, wenn Sie die von Ihrer Organisation geforderte Sicherheitsinformation noch nicht eingerichtet haben. Wenn Sie Ihre Sicherheitsinformationen bereits eingerichtet haben und Änderungen vornehmen möchten, können Sie die Schritte in den verschiedenen methodenbasierten Anleitungen ausführen. Weitere Informationen finden Sie im Artikel zum [Hinzufügen oder Aktualisieren Ihrer Sicherheitsinformationen](./security-info-setup-auth-app.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Authentifizierung mit Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
+
+Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
+
+| Methode | Syntaxelemente |
+| ------ | -------- |
+| Authenticator-App | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Textnachrichten | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Telefonanrufe | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Sicherheitsschlüssel | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| E-Mail-Konto | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
+| Sicherheitsfragen | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
 
 ## <a name="sign-in-to-your-work-or-school-account"></a>Anmelden bei Ihrem Geschäfts-, Schul- oder Unikonto
 
@@ -45,7 +57,7 @@ Führen Sie diese Schritte aus, um die Sicherheitsinformationen für Ihr Geschä
    > [!Note]
    > Wenn Sie eine andere App als die Microsoft Authenticator-App verwenden möchten, wählen Sie den Link **Ich möchte eine andere Authentifikator-App verwenden** aus.
    >
-   > Wenn Ihre Organisation das Auswählen einer anderen Methode als die Authenticator-App zulässt, können Sie den Link **Ich möchte eine andere Methode einrichten** auswählen.
+   > Wenn Ihre Organisation neben einer Authentifikator-App auch die Auswahl einer anderen Methode zulässt, können Sie den Link **Ich möchte eine andere Methode einrichten** auswählen.
 
     ![Assistent zum Schützen des Kontos mit der Downloadseite für die Authenticator-App](media/security-info/securityinfo-prompt-get-auth-app.png)
 
@@ -53,12 +65,12 @@ Führen Sie diese Schritte aus, um die Sicherheitsinformationen für Ihr Geschä
 
     ![Assistent zum Schützen des Kontos mit der Seite „Einrichten Ihres Kontos“ des Authentifikators](media/security-info/securityinfo-prompt-auth-app-setup-acct.png)
 
-3. Bleiben Sie auf der Seite **Einrichten Ihres Kontos** Seite, während Sie die Microsoft Authenticator-App auf Ihrem Mobilgerät einrichten.
+3. Bleiben Sie auf der Seite **Konto einrichten**, während Sie die Microsoft Authenticator-App auf Ihrem Mobilgerät einrichten.
 
 4. Öffnen Sie die Microsoft Authenticator-App, lassen Sie Benachrichtigungen zu (bei entsprechender Aufforderung), wählen Sie oben rechts das Symbol zum **Anpassen und Steuern** aus, und wählen Sie dann nacheinander **Konto hinzufügen** und **Geschäfts-, Schul- oder Unikonto** aus.
 
     >[!Note]
-    >Wenn Sie die Microsoft Authenticator-App zum ersten Mal einrichten, werden Sie möglicherweise in einer Meldung gefragt, ob Sie der App den Zugriff auf Ihre Kamera (iOS) oder die Aufnahme von Foto- und Videodateien (Android) erlauben möchten. Sie müssen **Zulassen** auswählen, damit die Authenticator-App im nächsten Schritt auf Ihre Kamera zugreifen und den QR-Code aufnehmen kann. Wenn Sie den Zugriff auf die Kamera nicht zulassen, können Sie die App auch einrichten, müssen die Codeinformationen aber manuell hinzufügen. Informationen zum manuellen Hinzufügen des Codes finden Sie unter [Manuelles Hinzufügen eines Kontos zur App](user-help-auth-app-add-account-manual.md).
+    >Wenn Sie die Microsoft Authenticator-App zum ersten Mal einrichten, werden Sie möglicherweise in einer Meldung gefragt, ob Sie der App den Zugriff auf Ihre Kamera (iOS) oder die Aufnahme von Foto- und Videodateien (Android) erlauben möchten. Sie müssen **Zulassen** auswählen, damit die Authentifikator-App im nächsten Schritt auf Ihre Kamera zugreifen und den QR-Code aufnehmen kann. Wenn Sie den Zugriff auf die Kamera nicht zulassen, können Sie die Authentifikator-App auch einrichten, müssen die Codeinformationen aber manuell hinzufügen. Informationen zum manuellen Hinzufügen des Codes finden Sie unter [Manuelles Hinzufügen eines Kontos zur App](user-help-auth-app-add-account-manual.md).
 
 5. Wechseln Sie zurück zur Seite **Einrichten Ihres Kontos** auf Ihrem Computer, und wählen Sie dann **Weiter**.
 
@@ -110,7 +122,7 @@ Führen Sie diese Schritte aus, um die Sicherheitsinformationen für Ihr Geschä
 Bestimmte Apps wie z.B. Outlook 2010 unterstützen keine zweistufige Überprüfung. Das bedeutet, dass die App nicht funktioniert, wenn in Ihrer Organisation die zweistufige Überprüfung verwendet wird. Um dieses Problem zu umgehen, können Sie ein automatisch generiertes Kennwort für die Verwendung mit jeder Nicht-Browser-App separat von Ihrem normalen Kennwort erstellen.
 
 >[!Note]
->Wird diese Option im Assistenten nicht angezeigt, bedeutet das, dass sie vom Administrator nicht eingerichtet wurde. Wenn diese Option nicht eingerichtet wurde, Sie aber wissen, dass Sie App-Kennwörter verwenden müssen, können Sie die Schritte unter [Verwalten von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)](security-info-app-passwords.md) ausführen.
+>Wird diese Option im Assistenten nicht angezeigt, bedeutet das, dass sie vom Administrator nicht eingerichtet wurde. Wenn diese Option nicht eingerichtet wurde, Sie aber wissen, dass Sie App-Kennwörter verwenden müssen, können Sie die Schritte unter [Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)](security-info-app-passwords.md) ausführen.
 
 Wenn Sie App-Kennwörter verwenden, müssen Sie unbedingt Folgendes beachten:
 
@@ -152,6 +164,6 @@ Wenn Sie App-Kennwörter verwenden, müssen Sie unbedingt Folgendes beachten:
 
 - Informationen zur Anmeldung mit der festgelegten Methode finden Sie unter [Anmeldung](user-help-sign-in.md).
 
-- Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](user-help-reset-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
+- Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](active-directory-passwords-update-your-own-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
 
 - Der Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) enthält Tipps zur Problembehandlung bei Anmeldeproblemen.

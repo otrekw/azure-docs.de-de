@@ -1,5 +1,5 @@
 ---
-title: Vergleichen der Baselines mit der Überwachung der Dateiintegrität in Azure Security Center | Microsoft-Dokumentation
+title: Überwachung der Dateiintegrität in Azure Security Center
 description: Erfahren Sie, wie Sie Baselines mit der Überwachung der Dateiintegrität in Azure Security Center vergleichen.
 services: security-center
 documentationcenter: na
@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: c8a2a589-b737-46c1-b508-7ea52e301e8f
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/29/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 116f295365084e7570ed9afc493d9179ea2dfb5a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 89230b6aca9e225c28a1efd0b99476b35f4d8db0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202140"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91439549"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Vergleichen der Baselines mithilfe der Überwachung der Dateiintegrität (FIM)
 
@@ -41,7 +41,7 @@ Die Standardeinstellungen der FIM-Registrierungsstruktur bieten eine bequeme Mö
 >[!NOTE]
 > Rekursive Überprüfungen gelten nur für die empfohlenen Sicherheitsstrukturen und nicht für benutzerdefinierte Registrierungspfade.  
 
-## <a name="adding-a-custom-registry-check"></a>Hinzufügen einer benutzerdefinierten Registrierungsüberprüfung
+## <a name="add-a-custom-registry-check"></a>Hinzufügen einer benutzerdefinierten Registrierungsüberprüfung
 
 FIM-Baselines beginnen damit, die Merkmale eines als funktionierend bekannten Zustands für das Betriebssystem und die unterstützende Anwendung zu identifizieren.  In diesem Beispiel liegt der Schwerpunkt auf der Kennwortrichtlinienkonfigurationen für Windows Server 2008 und höher.
 
@@ -60,7 +60,7 @@ FIM-Baselines beginnen damit, die Merkmale eines als funktionierend bekannten Zu
 |Netzwerksicherheit: NTLM einschränken: NTLM-Authentifizierung in dieser Domäne überwachen|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\AuditNTLMInDomain|
 
 > [!NOTE]
-> Weitere Informationen zu Registrierungseinstellungen, die von verschiedenen Betriebssystemversionen unterstützt werden, finden Sie in der [Referenztabelle der Gruppenrichtlinieneinstellungen](https://www.microsoft.com/en-us/download/confirmation.aspx?id=25250).
+> Weitere Informationen zu Registrierungseinstellungen, die von verschiedenen Betriebssystemversionen unterstützt werden, finden Sie in der [Referenztabelle der Gruppenrichtlinieneinstellungen](https://www.microsoft.com/download/confirmation.aspx?id=25250).
 
 *So konfigurieren Sie FIM zum Überwachen von Registrierungsbaselines:*
 
@@ -73,14 +73,14 @@ FIM-Baselines beginnen damit, die Merkmale eines als funktionierend bekannten Zu
 
       ![Aktivieren von FIM für eine Registrierung](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
 
-## <a name="tracking-changes-to-windows-files"></a>Nachverfolgen von Änderungen an Windows-Dateien
+## <a name="track-changes-to-windows-files"></a>Nachverfolgen von Änderungen an Windows-Dateien
 
 1. Geben Sie im Fenster **Windows-Datei für Änderungsnachverfolgung hinzufügen** in das Feld **Pfad eingeben** den Ordner ein, der die Dateien enthält, die Sie nachverfolgen möchten. Im Beispiel in der folgenden Abbildung befindet sich die **Contoso Web-App** im Laufwerk D:\ innerhalb der Ordnerstruktur **ContosWebApp**.  
 1. Erstellen Sie einen benutzerdefinierten Windows-Dateieintrag, indem Sie einen Namen der Einstellungsklasse angeben, die Rekursion aktivieren und den obersten Ordner mit einem Platzhaltersuffix (*) angeben.
 
     ![Aktivieren von FIM für eine Datei](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
 
-## <a name="retrieving-change-data"></a>Abrufen von Änderungsdaten
+## <a name="retrieve-change-data"></a>Abrufen von Änderungsdaten
 
 Die Daten der Dateiintegritätsüberwachung befinden sich im Azure Log Analytics/ConfigurationChange-Tabellensatz.  
 

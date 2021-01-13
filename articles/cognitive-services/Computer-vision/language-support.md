@@ -1,7 +1,7 @@
 ---
 title: Sprachunterstützung – maschinelles Sehen
 titleSuffix: Azure Cognitive Services
-description: Eine Liste der von den Maschinelles Sehen-Features unterstützten natürlichen Sprachen.
+description: 'Dieser Artikel enthält eine Liste der natürlichen Sprachen, die von Features für maschinelles Sehen unterstützt werden: OCR, Bildanalyse.'
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,57 +10,55 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 516d21bc69bbc20f924a3bdf39eda7245fc08a28
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b065b36103b69f0601daa1388b45865856543d2b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882965"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540517"
 ---
 # <a name="language-support-for-computer-vision"></a>Sprachunterstützung für maschinelles Sehen
 
 Einige Features des maschinellen Sehens unterstützen mehrere Sprachen; alle hier nicht erwähnten Features unterstützen nur Englisch.
 
-## <a name="text-recognition"></a>Texterkennung
+## <a name="optical-character-recognition-ocr"></a>Optische Zeichenerkennung (OCR)
 
-Maschinelles Sehen kann Text in zahlreichen Sprachen erkennen. Insbesondere die [OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-API unterstützt eine Vielzahl von Sprachen, während die [Lesen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)-API und [Texterkennungs](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)-API nur Englisch unterstützen. Unter [Erkennen von gedrucktem und handschriftlichem Text](concept-recognizing-text.md) finden Sie weitere Informationen zu dieser Funktionalität und den Vorteilen der einzelnen APIs.
+Die OCR-APIs für maschinelles Sehen unterstützen verschiedene Sprachen. Es muss kein Sprachcode angegeben werden. Weitere Informationen finden Sie unter [Optische Zeichenerkennung (OCR)](concept-recognizing-text.md).
 
-OCR erkennt automatisch die Sprache des eingegebenen Materials, sodass kein Sprachcode im API-Aufruf angegeben werden muss. Sprachcodes werden jedoch immer als Wert des `"language"`-Knotens in der JSON-Antwort zurückgegeben.
-
-|Sprache| Sprachcode | OCR-API |
-|:-----|:----:|:-----:|
-|Arabisch | `ar`|✔ |
-|Chinesisch (vereinfacht) | `zh-Hans`|✔ |
-|Chinesisch (traditionell) | `zh-Hant`|✔ |
-|Tschechisch | `cs` |✔ |
-|Dänisch | `da` |✔ |
-|Niederländisch | `nl` |✔ |
-|Englisch | `en` |✔ |
-|Finnisch | `fi` |✔ |
-|Französisch | `fr` |✔ |
-|Deutsch | `de` |✔ |
-|Griechisch | `el` |✔ |
-|Ungarisch | `hu` |✔ |
-|Italienisch | `it` |✔ |
-|Japanisch | `ja` |✔ |
-|Koreanisch | `ko` |✔ |
-|Norwegisch | `nb` |✔ |
-|Polnisch | `pl` |✔ |
-|Portugiesisch | `pt` |✔ |
-|Rumänisch | `ro` |✔ |
-|Russisch | `ru` |✔ |
-|Serbisch (Kyrillisch) | `sr-Cyrl` |✔ |
-|Serbisch (Lateinisch) | `sr-Latn` |✔ |
-|Slowakisch | `sk` |✔ |
-|Spanisch | `es` |✔ |
-|Schwedisch | `sw` |✔ |
-|Türkisch | `tr` |✔ |
+|Sprache| Sprachcode | OCR-API | Read 3.0 und 3.1 | Read v3.2-preview.1 |
+|:-----|:----:|:-----:|:---:|:---:|
+|Arabisch | `ar`|✔ | | |
+|Chinesisch (vereinfacht) | `zh-Hans`|✔ | |✔ |
+|Chinesisch (traditionell) | `zh-Hant`|✔ | | |
+|Tschechisch | `cs` |✔ | | |
+|Dänisch | `da` |✔ | | |
+|Niederländisch | `nl` |✔ |✔ |✔ |
+|Englisch | `en` |✔ |✔ |✔ |
+|Finnisch | `fi` |✔ | | |
+|Französisch | `fr` |✔ |✔ |✔ |
+|Deutsch | `de` |✔ |✔ |✔ |
+|Griechisch | `el` |✔ | | |
+|Ungarisch | `hu` |✔ | | |
+|Italienisch | `it` |✔ |✔ |✔ |
+|Japanisch | `ja` |✔ | |✔ |
+|Koreanisch | `ko` |✔ | | |
+|Norwegisch | `nb` |✔ | | |
+|Polnisch | `pl` |✔ | | |
+|Portugiesisch | `pt` |✔ |✔ |✔ |
+|Rumänisch | `ro` |✔ | | |
+|Russisch | `ru` |✔ | | |
+|Serbisch (Kyrillisch) | `sr-Cyrl` |✔ | | |
+|Serbisch (Lateinisch) | `sr-Latn` |✔ | | |
+|Slowakisch | `sk` |✔ | | |
+|Spanisch | `es` |✔ |✔ |✔ |
+|Schwedisch | `sw` |✔ | | |
+|Türkisch | `tr` |✔ | | |
 
 ## <a name="image-analysis"></a>Bildanalyse
 
-Einige Aktionen der [Bildanalyse](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-API können Ergebnisse in anderen Sprachen zurückgeben, angegeben mit dem `language`-Abfrageparameter. Andere Aktionen geben unabhängig davon, welche Sprache angegeben ist, Ergebnisse in englischer Sprache zurück, und andere lösen bei nicht unterstützten Sprachen eine Ausnahme aus. Aktionen werden mit dem `visualFeatures`- und `details`-Abfrageparameter angegeben; in der [Übersicht](home.md) finden Sie eine Liste mit allen Aktionen, die Sie mit der Bildanalyse durchführen können.
+Einige Aktionen der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)-API können Ergebnisse in anderen Sprachen zurückgeben, angegeben mit dem `language`-Abfrageparameter. Andere Aktionen geben unabhängig davon, welche Sprache angegeben ist, Ergebnisse in englischer Sprache zurück, und andere lösen bei nicht unterstützten Sprachen eine Ausnahme aus. Aktionen werden mit dem `visualFeatures`- und `details`-Abfrageparameter angegeben; in der [Übersicht](overview.md) finden Sie eine Liste mit allen Aktionen, die Sie mit der Bildanalyse durchführen können.
 
-|Sprache | Sprachcode | Categories | `Tags` | BESCHREIBUNG | Erwachsene | Marken | Farbe | Gesichtserkennung | ImageType | Objekte | Prominente | Besondere Merkmale |
+|Sprache | Sprachcode | Kategorien | `Tags` | BESCHREIBUNG | Erwachsene | Marken | Color | Gesichtserkennung | ImageType | Objekte | Prominente | Besondere Merkmale |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Chinesisch | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Englisch | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

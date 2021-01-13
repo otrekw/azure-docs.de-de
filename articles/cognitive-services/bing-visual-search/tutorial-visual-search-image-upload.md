@@ -1,23 +1,29 @@
 ---
-title: 'Tutorial: Hochladen von Bildern – Visuelle Bing-Suche'
+title: 'Tutorial: Hochladen von Bildern mit der API für die visuelle Bing-Suche'
 titleSuffix: Azure Cognitive Services
-description: Erläutert den Upload eines Bilds in Bing, um Erkenntnisse über das Bild zu gewinnen, und die anschließende Analyse und Anzeige der Antwort.
+description: Hier erfahren Sie, wie Sie ein Bild in Bing hochladen, Erkenntnisse dazu gewinnen und die Antwort anzeigen.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 04/03/2019
+ms.date: 03/31/2020
 ms.author: scottwhi
-ms.openlocfilehash: 42a7db316e844e5dbd09fb75a07e1c7883a9cec9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.custom: devx-track-js
+ms.openlocfilehash: 96a4b13d11e40e24e78d3aed8dfebcc88b41c525
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011723"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486877"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Tutorial: Hochladen von Bildern in die API für die visuelle Bing-Suche
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Mit der API für die visuelle Bing-Suche können Sie das Web nach Bildern durchsuchen, die den von Ihnen hochgeladenen Bildern ähneln. Erstellen Sie mithilfe dieses Tutorials eine Webanwendung, die ein Bild an die API senden und die zurückgegebenen Erkenntnisse auf der Webseite anzeigen kann. Beachten Sie, dass diese Anwendung nicht allen [Verwendungs- und Anzeigeanforderungen für Bing](../bing-web-search/use-display-requirements.md) zur Verwendung der API entspricht.
 
@@ -69,7 +75,7 @@ Fügen Sie ein `<script>`-Tag zum `<head>`-Tag hinzu, das den JavaScript-Code f�
 
 Damit der Benutzer ein hochzuladendes Bild auswählen kann, verwendet die Anwendung das `<input>`-Tag, wobei das Typattribut auf `file` festgelegt ist. Auf der Benutzeroberfläche muss deutlich werden, dass die Anwendung Bing verwendet, um die Suchergebnisse zu erhalten.
 
-Fügen Sie `requestSection` `<div>` das folgende `<div>`-Tags hinzu. Als Dateieingabe wird eine einzelne Datei mit einem beliebigen Bildtyp (z.B. JPG, GIF, PNG) akzeptiert. Das `onchange`-Ereignis gibt den Handler an, der aufgerufen wird, wenn ein Benutzer eine Datei auswählt.
+Fügen Sie `<div>` wie folgt zu `requestSection` `<div>` hinzu. Als Dateieingabe wird eine einzelne Datei mit einem beliebigen Bildtyp (z.B. JPG, GIF, PNG) akzeptiert. Das `onchange`-Ereignis gibt den Handler an, der aufgerufen wird, wenn ein Benutzer eine Datei auswählt.
 
 Das `<output>`-Tag wird verwendet, um eine Miniaturansicht des ausgewählten Bilds anzuzeigen:
 
@@ -471,7 +477,7 @@ function addDivContent(div, tag, json) {
 
 ## <a name="display-insights-for-different-actions"></a>Anzeigen von Erkenntnissen für verschiedene Aktionen
 
-Die folgenden Funktionen zeigen Erkenntnisse für verschiedene Aktionen an. Die Funktionen stellen entweder ein klickbares Bild oder einen klickbaren Link bereit, mit dem Sie zu einer Webseite mit weiteren Informationen geleitet werden. Diese Seite wird entweder auf Bing.com oder der ursprünglichen Website des Bilds gehostet. Es werden nicht alle Daten im Zusammenhang mit den Erkenntnissen in dieser Anwendung angezeigt. Informationen zum Anzeigen aller verfügbaren Felder für Erkenntnisse finden Sie in der [Referenz zur visuellen Suche](https://aka.ms/bingvisualsearchreferencedoc).
+Die folgenden Funktionen zeigen Erkenntnisse für verschiedene Aktionen an. Die Funktionen stellen entweder ein klickbares Bild oder einen klickbaren Link bereit, mit dem Sie zu einer Webseite mit weiteren Informationen geleitet werden. Diese Seite wird entweder auf Bing.com oder der ursprünglichen Website des Bilds gehostet. Es werden nicht alle Daten im Zusammenhang mit den Erkenntnissen in dieser Anwendung angezeigt. Informationen zum Anzeigen aller verfügbaren Felder für Erkenntnisse finden Sie in der [Referenz zur visuellen Suche](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch).
 
 > [!NOTE]
 > Es gibt eine Mindestmenge an Informationen im Zusammenhang mit Erkenntnissen, die Sie auf der Seite anzeigen müssen. Weitere Informationen finden Sie unter [Anforderungen für die Verwendung und Anzeige der Bing-Suche-API](../bing-web-search/use-display-requirements.md).

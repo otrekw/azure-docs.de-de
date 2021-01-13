@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 07/31/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c1d30a9cdd2cd6ca288edd609a2e2e7bee9174d7
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 66ce267581d4748ea51a3dcbd7caa61907115cc1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718161"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "82131158"
 ---
 # <a name="common-questions-about-site-recovery-monitoring"></a>Allgemeine Fragen zur Site Recovery-Überwachung
 
@@ -52,7 +52,7 @@ Nur die Computer, für die die erste Replikation abgeschlossen wurde, sind in de
 ## <a name="azure-monitor-logging"></a>Azure Monitor-Protokollierung
 
 
-### <a name="how-often-does-site-recovery-send-diagnostic-logs-to-azure-monitor-log"></a>Wie oft sendet Site Recovery Diagnoseprotokolle an Azure Monitor-Protokolle? 
+### <a name="how-often-does-site-recovery-send-resource-logs-to-azure-monitor-log"></a>Wie oft sendet Site Recovery Ressourcenprotokolle an Azure Monitor-Protokolle? 
 
 - AzureSiteRecoveryReplicationStats und AzureSiteRecoveryRecoveryPoints werden alle 15 Minuten gesendet.  
 - AzureSiteRecoveryReplicationDataUploadRate und AzureSiteRecoveryProtectedDiskDataChurn werden alle fünf Minuten gesendet. 
@@ -64,7 +64,7 @@ Nur die Computer, für die die erste Replikation abgeschlossen wurde, sind in de
 
 Standardmäßig beträgt die Speicherdauer 31 Tage. Sie können den Zeitraum im Abschnitt **Nutzung und geschätzte Kosten** im Log Analytics-Arbeitsbereich verlängern. Klicken Sie auf **Datenaufbewahrung**, und wählen Sie den Zeitraum aus.
 
-### <a name="whats-the-size-of-the-diagnostic-logs"></a>Wie groß sind die Diagnoseprotokolle? 
+### <a name="whats-the-size-of-the-resource-logs"></a>Wie groß sind die Ressourcenprotokolle? 
 
 In der Regel beträgt die Größe eines Protokolls 15–20 KB. 
 

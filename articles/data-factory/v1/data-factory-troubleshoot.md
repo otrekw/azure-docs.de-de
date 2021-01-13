@@ -6,20 +6,19 @@ documentationcenter: ''
 ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
-manager: craigg
+manager: anandsub
 robots: noindex
-ms.openlocfilehash: d729fd11f355650b1476e6864a6d70219bf37e12
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bd18a26a1c199e1ecc32cfc371d2931b1dee0c3f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135131"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494969"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Problembehandlung bei Data Factory
 > [!NOTE]
@@ -30,8 +29,8 @@ Dieser Artikel enthält Tipps zur Behandlung von Problemen bei der Verwendung vo
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
-### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Fehler Das Abonnement ist nicht für die Verwendung des Namespace „Microsoft.DataFactory“ registriert.
-Wenn Sie diesen Fehler erhalten, wurde der Azure Data Factory-Ressourcenanbieter nicht auf Ihrem Computer registriert. Gehen Sie wie folgt vor:
+### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Error: Das Abonnement ist nicht für die Verwendung des Namespace „Microsoft.DataFactory“ registriert.
+Wenn Sie diesen Fehler erhalten, wurde der Azure Data Factory-Ressourcenanbieter nicht auf Ihrem Computer registriert. Gehen Sie folgendermaßen vor:
 
 1. Starten Sie Azure PowerShell.
 2. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an.
@@ -62,13 +61,13 @@ Für das Express-Setup des Datenverwaltungsgateways ist Internet Explorer oder e
     Gehen Sie bei Firefox genauso vor (Installation des Add-Ins). Klicken Sie auf der Symbolleiste auf die Schaltfläche „Menü öffnen“ (drei waagerechte Striche oben rechts), klicken Sie auf „Add-Ons“, suchen Sie nach dem Stichwort „ClickOnce“, wählen Sie eine der ClickOnce-Erweiterungen aus, und installieren Sie sie.
 * Verwenden Sie den Link **Manuelles Setup** , der im Portal auf dem gleichen Blatt angezeigt wird. Mit dieser Vorgehensweise laden Sie die Installationsdatei herunter und führen Sie manuell aus. Wenn die Installation abgeschlossen ist, wird das Dialogfeld für die Datenverwaltungsgateway-Konfiguration angezeigt. Kopieren Sie den **Schlüssel** auf dem Portalbildschirm, und verwenden Sie ihn im Konfigurations-Manager, um das Gateway manuell für den Dienst zu registrieren.  
 
-### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Problem: Fehler beim Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank
+### <a name="problem-fail-to-connect-to-sql-server"></a>Problem: Fehler beim Herstellen einer Verbindung mit SQL Server
 Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** auf dem Gatewaycomputer, und verwenden Sie die Registerkarte **Problembehandlung**, um die Verbindung mit SQL Server über den Gatewaycomputer zu testen. Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.   
 
-### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Problem: Eingabeslices haben dauerhaft den Status „Warten“.
+### <a name="problem-input-slices-are-in-waiting-state-forever"></a>Problem: Eingabeslices haben dauerhaft den Status „Warten“.
 Die Slices können sich aus verschiedenen Gründen im Status **Warten** befinden. Einer der häufigsten Gründe ist, dass die Eigenschaft **external** nicht auf **true** festgelegt ist. Ein Dataset, das außerhalb des Gültigkeitsbereichs von Azure Data Factory erstellt wird, sollte mit der Eigenschaft **external** gekennzeichnet sein. Diese Eigenschaft weist darauf hin, dass es sich um externe Daten handelt, die nicht von Pipelines innerhalb der Data Factory unterstützt werden. Die Datenslices werden als **Ready** gekennzeichnet, sobald die Daten im entsprechenden Speicher verfügbar sind.
 
-Das folgende Beispiel zeigt die Verwendung der Eigenschaft **external** . Sie können optional **externalData*** angeben, wenn Sie „external“ auf „true“ festlegen.
+Das folgende Beispiel zeigt die Verwendung der Eigenschaft **external** . Sie können optional **externalData** _ angeben, wenn Sie „external“ auf „true“ festlegen.
 
 Weitere Informationen zu dieser Eigenschaft finden Sie im Artikel [Datasets](data-factory-create-datasets.md) .
 
@@ -98,7 +97,7 @@ Weitere Informationen zu dieser Eigenschaft finden Sie im Artikel [Datasets](dat
 }
 ```
 
-Um den Fehler zu beheben, fügen Sie die Eigenschaft **external** und den optionalen Abschnitt **externalData** der JSON-Definition für die Eingabetabelle hinzu und erstellen die Tabelle erneut.
+Um den Fehler zu beheben, fügen Sie die Eigenschaft _ *external** und den optionalen Abschnitt **externalData** der JSON-Definition für die Eingabetabelle hinzu und erstellen die Tabelle erneut.
 
 ### <a name="problem-hybrid-copy-operation-fails"></a>Problem: Fehler beim Hybridkopiervorgang
 Die Schritte zum Behandeln von Problemen beim Kopieren in lokale Datenspeicher und aus lokalen Datenspeichern mit dem Datenverwaltungsgateway finden Sie unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues).
@@ -131,9 +130,9 @@ Ausführliche Informationen finden Sie unter [Überwachen von Data Factory-Pipel
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
-[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
 [cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
-[json-scripting-reference]: https://go.microsoft.com/fwlink/?LinkId=516971
+[json-scripting-reference]: /previous-versions/azure/dn835050(v=azure.100)
 
 [azure-portal]: https://portal.azure.com/
 

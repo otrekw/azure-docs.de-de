@@ -1,9 +1,9 @@
 ---
-title: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Storage
+title: Tutorial`:` Verwenden einer verwalteten Identität für den Zugriff auf Azure Storage – Linux – Azure AD
 description: In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Linux-Computers verwenden, um auf Azure Storage zuzugreifen.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/09/2018
-ms.author: markvi
+ms.date: 10/23/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb7de72a435faf100d6992815ef8d5ec00cb3581
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c093dcff46676dc5f8a25974c3c38c74ae7666b7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236167"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546686"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Storage 
 
@@ -43,8 +43,8 @@ In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltet
 
 Für die Ausführung der CLI-Beispielskripts in diesem Tutorial stehen Ihnen zwei Möglichkeiten zur Verfügung:
 
-- Verwenden Sie [Azure Cloud Shell](~/articles/cloud-shell/overview.md) entweder vom Azure-Portal aus oder über die Schaltfläche **Ausprobieren**, die sich in der rechten oberen Ecke eines jeden Codeblocks befindet.
-- [Installieren Sie die neueste Version von CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten.
+- Verwenden Sie [Azure Cloud Shell](~/articles/cloud-shell/overview.md) entweder vom Azure-Portal aus oder über die Schaltfläche **Ausprobieren** , die sich in der rechten oberen Ecke eines jeden Codeblocks befindet.
+- [Installieren Sie die neueste Version von CLI 2.0](/cli/azure/install-azure-cli) (2.0.23 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten.
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen 
 
@@ -55,7 +55,7 @@ In diesem Abschnitt erstellen Sie ein Speicherkonto.
 3. Geben Sie unter **Name** einen Namen für das Speicherkonto ein.  
 4. **Bereitstellungsmodell** und **Kontoart** sollten jeweils auf **Resource Manager** und **Storage (universell, Version 1)** festgelegt werden. 
 5. Stellen Sie sicher, dass **Abonnement** und **Ressourcengruppe** dem entsprechen, was Sie bei der Erstellung Ihrer VM im vorherigen Schritt angegeben haben.
-6. Klicken Sie auf **Create**.
+6. Klicken Sie auf **Erstellen**.
 
     ![Erstellen eines neuen Speicherkontos](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -79,11 +79,14 @@ Da Dateien Blob Storage erfordern, müssen wir einen Blobcontainer erstellen, in
 
 ## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>Gewähren des Zugriffs auf einen Azure-Speichercontainer für Ihre VM 
 
-Sie können die verwaltete Identität des virtuellen Computers verwenden, um die Daten in Azure Storage Blob abzurufen.   
+Sie können die verwaltete Identität des virtuellen Computers verwenden, um die Daten in Azure Storage Blob abzurufen.
+
+>[!NOTE]
+> Weitere Informationen zu den verschiedenen Rollen, die Sie zum Gewähren von Berechtigungen für den Speicher verwenden können, finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights).
 
 1. Navigieren Sie zurück zum neu erstellten Speicherkonto.  
 2. Klicken Sie im linken Bereich auf den Link **Zugriffssteuerung (IAM)** .  
-3. Klicken Sie oben auf der Seite auf **+ Rollenzuweisung hinzufügen**, um dem virtuellen Computer eine neue Rollenzuweisung hinzuzufügen.
+3. Klicken Sie oben auf der Seite auf **+ Rollenzuweisung hinzufügen** , um dem virtuellen Computer eine neue Rollenzuweisung hinzuzufügen.
 4. Wählen Sie unter **Rolle** in der Dropdownliste **Storage-Blobdatenleser** aus. 
 5. Wählen Sie in der nächsten Dropdownliste unter **Zugriff zuweisen zu** die Option **Virtueller Computer** aus.  
 6. Stellen Sie im nächsten Schritt sicher, dass das richtige Abonnement in der Dropdownliste **Abonnement** aufgeführt ist, und legen Sie dann für **Ressourcengruppe** die Option **Alle Ressourcengruppen** fest.  
@@ -95,9 +98,9 @@ Sie können die verwaltete Identität des virtuellen Computers verwenden, um die
 
 Azure Storage unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit der MSI abgerufen wurden, direkt angenommen werden können. Dieser Umstand ist Teil der Azure Storage-Integration in Azure AD und unterscheidet sich vom Bereitstellen von Anmeldeinformationen in der Verbindungszeichenfolge.
 
-Um die folgenden Schritte abzuschließen, müssen Sie von der zuvor erstellten VM aus arbeiten. Außerdem benötigen Sie einen SSH-Client, der eine Verbindung damit herstellt. Wenn Sie Windows verwenden, können Sie den SSH-Client im [Windows-Subsystem für Linux](https://msdn.microsoft.com/commandline/wsl/about) verwenden. Wenn Sie Hilfe beim Konfigurieren der SSH-Clientschlüssel benötigen, lesen Sie die Informationen unter [Vorgehensweise: Verwenden von SSH-Schlüsseln mit Windows in Azure](~/articles/virtual-machines/linux/ssh-from-windows.md) oder [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](~/articles/virtual-machines/linux/mac-create-ssh-keys.md).
+Um die folgenden Schritte abzuschließen, müssen Sie von der zuvor erstellten VM aus arbeiten. Außerdem benötigen Sie einen SSH-Client, der eine Verbindung damit herstellt. Wenn Sie Windows verwenden, können Sie den SSH-Client im [Windows-Subsystem für Linux](/windows/wsl/about) verwenden. Wenn Sie Hilfe beim Konfigurieren der SSH-Clientschlüssel benötigen, lesen Sie die Informationen unter [Vorgehensweise: Verwenden von SSH-Schlüsseln mit Windows in Azure](~/articles/virtual-machines/linux/ssh-from-windows.md) oder [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](~/articles/virtual-machines/linux/mac-create-ssh-keys.md).
 
-1. Navigieren Sie im Azure-Portal zu **Virtuelle Computer**, wechseln Sie zu Ihrem virtuellen Linux-Computer, und klicken Sie dann auf der Seite **Übersicht** auf **Verbinden**. Kopieren Sie die Zeichenfolge, um eine Verbindung mit Ihrem virtuellen Computer herzustellen.
+1. Navigieren Sie im Azure-Portal zu **Virtuelle Computer** , wechseln Sie zu Ihrem virtuellen Linux-Computer, und klicken Sie dann auf der Seite **Übersicht** auf **Verbinden**. Kopieren Sie die Zeichenfolge, um eine Verbindung mit Ihrem virtuellen Computer herzustellen.
 2. **Verbinden** Sie den virtuellen Computer mit dem gewünschten SSH-Client. 
 3. Übermitteln Sie im Terminalfenster mit der cURL eine Anforderung an den lokalen Endpunkt der verwalteten Identität zum Abrufen eines Zugriffstokens für Azure Storage.
     
@@ -121,4 +124,4 @@ Um die folgenden Schritte abzuschließen, müssen Sie von der zuvor erstellten V
 In diesem Tutorial haben Sie gelernt, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Storage aktivieren.  Weitere Informationen zu Azure Storage finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [Azure Storage (in englischer Sprache)](/azure/storage/common/storage-introduction)
+> [Azure Storage (in englischer Sprache)](../../storage/common/storage-introduction.md)

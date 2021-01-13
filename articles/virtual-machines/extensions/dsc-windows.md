@@ -1,5 +1,5 @@
 ---
-title: Handler der Azure-DSC-Erweiterung (Desired State Configuration) | Microsoft-Dokumentation
+title: Azure-DSC-Erweiterungs-Handler (Desired State Configuration)
 description: Hochladen und Anwenden einer PowerShell-DSC-Konfiguration auf einer Azure-VM mithilfe der DSC-Erweiterung
 services: virtual-machines-windows
 documentationcenter: ''
@@ -8,17 +8,18 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: ee5a6c732bcb48cd347b8d87b95d2896d7230a08
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5254d83c18ddc9f2a5518ed4f711d4cd73ab6de7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092372"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510939"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-Erweiterung
 
@@ -73,7 +74,7 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
         "advancedOptions": {
             "forcePullAndApply": false,
             "downloadMappings": {
-                "specificDependencyKey": "https://myCustomDependencyLocation"
+             "specificDependencyKey": "https://myCustomDependencyLocation"
             }
         } 
     },
@@ -97,16 +98,16 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| NAME | Wert/Beispiel | Datentyp |
+| Name | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
 | publisher | Microsoft.Powershell.DSC | string |
 | type | DSC | string |
-| typeHandlerVersion | 2.77 | int |
+| typeHandlerVersion | 2.77 | INT |
 
 ### <a name="settings-property-values"></a>Eigenschaftswerte der Einstellungen
 
-| NAME | Datentyp | BESCHREIBUNG
+| Name | Datentyp | BESCHREIBUNG
 | ---- | ---- | ---- |
 | settings.wmfVersion | string | Gibt die Version von Windows Management Framework an, die auf Ihrem virtuellen Computer installiert sein muss. Wenn diese Eigenschaft auf „latest“ festgelegt ist, wird die aktuelle Version von WMF installiert. Die einzigen derzeit möglichen Werte für diese Eigenschaft sind „4.0“, „5.0“ und „latest“. Diese möglichen Werte werden gelegentlich aktualisiert. Der Standardwert ist „latest“. |
 | settings.configuration.url | string | Gibt den URL-Speicherort an, von dem die ZIP-Datei Ihrer DSC-Konfiguration herunterzuladen ist. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die protectedSettings.configurationUrlSasToken-Eigenschaft auf den Wert Ihres SAS-Tokens festlegen. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.script“ und/oder „settings.configuration.function“ definiert sind.
@@ -120,7 +121,7 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 
 ### <a name="protected-settings-property-values"></a>Eigenschaftswerte geschützter Einstellungen
 
-| NAME | Datentyp | BESCHREIBUNG
+| Name | Datentyp | BESCHREIBUNG
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | string | Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft wird verschlüsselt. |
 | protectedSettings.configurationUrlSasToken | string | Gibt das SAS-Token für den Zugriff auf durch „configuration.url“ definierte URL an. Diese Eigenschaft wird verschlüsselt. |

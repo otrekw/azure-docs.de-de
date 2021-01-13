@@ -3,15 +3,15 @@ title: Überwachen von Azure FXT Edge Filer
 description: Überwachen des Hardwarestatus für den Azure FXT Edge Filer-Hybridspeichercache
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: e6afd90c4e5a1b0759b3de7789ec37db4c04f2c7
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.author: rohogue
+ms.openlocfilehash: 86e1d74d5e4ab9f6e799c73bcf0d807d0d874f21
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827459"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219716"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Überwachen des Azure FXT Edge Filer-Hardwarestatus
 
@@ -29,9 +29,9 @@ In diesem Abschnitt werden die verschiedenen in die Azure FXT Edge Filer-Hardwar
 
 ![Bild der Vorderseite der Festplatte, horizontal, mit Legendenbeschriftungen 2 (linke obere Ecke), 1 (linke untere Ecke) und 3 (rechte Seite)](media/fxt-monitor/fxt-drive-callouts.png)
 
-Jeder Laufwerksträger weist zwei Status-LEDs auf: eine Aktivitätsanzeige (1) und eine Statusanzeige (2). 
+Jeder Laufwerksträger weist zwei Status-LEDs auf: eine Aktivitätsanzeige (1) und eine Statusanzeige (2).
 
-* Die Aktivitäts-LED (1) leuchtet, wenn das Laufwerk verwendet wird.  
+* Die Aktivitäts-LED (1) leuchtet, wenn das Laufwerk verwendet wird.
 * Die Status-LED (2) gibt den Zustand des Laufwerks mit den Codes in der folgenden Tabelle an.
 
 | Zustand der Laufwerksstatus-LED              | Bedeutung  |
@@ -44,30 +44,29 @@ Jeder Laufwerksträger weist zwei Status-LEDs auf: eine Aktivitätsanzeige (1) u
 
 Die rechte Seite des Laufwerks (3) ist mit der Kapazität und weiteren Informationen beschriftet.
 
-Die Laufwerknummern sind im Zwischenraum zwischen den Laufwerken angegeben. Bei Azure FXT Edge Filer befindet sich das Laufwerk 0 ganz links oben und das Laufwerk 1 direkt darunter. Nummerierung wird in diesem Muster fortgesetzt. 
+Die Laufwerknummern sind im Zwischenraum zwischen den Laufwerken angegeben. Bei Azure FXT Edge Filer befindet sich das Laufwerk 0 ganz links oben und das Laufwerk 1 direkt darunter. Nummerierung wird in diesem Muster fortgesetzt.
 
 ![Foto eines Laufwerkschachts im FXT-Gehäuse mit Laufwerknummern und Kapazitätsanzeigen](media/fxt-drives-photo.png)
 
 ## <a name="left-control-panel"></a>Linkes Kontrollfeld
 
-Auf dem linken Kontrollfeld vorn befinden sich verschiedene LED-Statusanzeigen (1) und eine große beleuchtete Systemzustandsanzeige (2). 
+Auf dem linken Kontrollfeld vorn befinden sich verschiedene LED-Statusanzeigen (1) und eine große beleuchtete Systemzustandsanzeige (2).
 
 ![linkes Statusfeld; Beschriftungen der Statusanzeigen links unter 1, und Beschriftung der großen Leuchte der Systemzustandsanzeige rechts unter 2](media/fxt-monitor/fxt-control-panel-left.jpg)
 
-### <a name="control-panel-status-indicators"></a>Statusanzeigen des Kontrollfelds 
+### <a name="control-panel-status-indicators"></a>Statusanzeigen des Kontrollfelds
 
-Die Statusanzeigen auf der linken Seite leuchten gelb, wenn in diesem System ein Fehler vorliegt. Die folgende Tabelle beschreibt mögliche Ursachen und Lösungen für die Fehler. 
+Die Statusanzeigen auf der linken Seite leuchten gelb, wenn in diesem System ein Fehler vorliegt. Die folgende Tabelle beschreibt mögliche Ursachen und Lösungen für die Fehler.
 
-Wenn der Fehler nach dem Ausprobieren dieser Lösungen weiterhin besteht, [wenden Sie sich an den Support](fxt-support-ticket.md), um Hilfe zu erhalten. 
+Wenn der Fehler nach dem Ausprobieren dieser Lösungen weiterhin besteht, [wenden Sie sich an den Support](fxt-support-ticket.md), um Hilfe zu erhalten.
 
 | Symbol | BESCHREIBUNG | Fehlerzustand | Lösungsvorschläge |
 |----------------|---------------|--------------------|----------------------|
 | ![Laufwerksymbol](media/fxt-monitor/fxt-hd-icon.jpg) | Laufwerkstatus | Laufwerkfehler | Überprüfen Sie im Systemereignisprotokoll, ob ein Laufwerkfehler vorliegt, oder <br>Führen Sie den entsprechenden Onlinediagnosetest aus; starten Sie das System neu, und führen Sie eine eingebettete Diagnose (ePSA) durch, oder <br>Wenn die Laufwerke in einem RAID-Array konfiguriert sind, starten Sie das System neu, und geben Sie die das Hilfsprogramm für die Hostadapterkonfiguration ein. |
 |![Temperatursymbol](media/fxt-monitor/fxt-temp-icon.jpg) | Temperaturstatus | Temperaturfehler – z. B. ein Lüfter ausgefallen oder Umgebungstemperatur liegt außerhalb des Bereichs | Überprüfen Sie die folgenden adressierbaren Bedingungen: <br>Ein Lüfter fehlt oder ist ausgefallen. <br>Die Abdeckung des Systems, die Luftschutzhaube, die Blindblende für das Speichermodul oder die Rückseite wurde entfernt. <br>Die Umgebungstemperatur ist zu hoch. <br>Der externe Luftstrom ist blockiert. |
-|![Elektrizitätssymbol](media/fxt-monitor/fxt-electric-icon.jpg) | Elektrostatus | Elektrofehler – z. B. Spannung außerhalb des Bereichs, Netzteil oder Spannungsregler ausgefallen |  Überprüfen Sie das Systemereignisprotokoll oder Systemmeldungen auf das jeweilige Problem. Wenn ein Netzteilproblem vorliegt, überprüfen Sie die Status-LED des Netzteils, und setzen Sie das Netzteil ggf. wieder ein. | 
+|![Elektrizitätssymbol](media/fxt-monitor/fxt-electric-icon.jpg) | Elektrostatus | Elektrofehler – z. B. Spannung außerhalb des Bereichs, Netzteil oder Spannungsregler ausgefallen |  Überprüfen Sie das Systemereignisprotokoll oder Systemmeldungen auf das jeweilige Problem. Wenn ein Netzteilproblem vorliegt, überprüfen Sie die Status-LED des Netzteils, und setzen Sie das Netzteil ggf. wieder ein. |
 |![Speichersymbol](media/fxt-monitor/fxt-memory-icon.jpg) | Speicherstatus | Speicherfehler | Überprüfen Sie das Systemereignisprotokoll oder Systemmeldungen auf die Position des fehlerhaften Speichers; setzen Sie das Speichermodul wieder ein. |
 |![PCIe-Symbol](media/fxt-monitor/fxt-pcie-icon.jpg) | PCIe-Status | PCIe-Kartenfehler | Starten Sie das System neu; aktualisieren Sie die Treiber der PCIe-Karte; installieren Sie die Karte neu |
-
 
 ### <a name="system-health-status-indicator"></a>Statusanzeige der Systemintegrität
 
@@ -81,5 +80,3 @@ Drücken Sie die Systemzustands- und ID-Taste, um zwischen dem System-ID-Modus u
 | Blinkt blau | System-ID-Modus ist aktiv. Drücken Sie die Systemzustands- und System-ID-Taste, um in den Systemzustandsmodus zu wechseln. |
 | Leuchtet gelb | Das System befindet sich im Ausfallsicherheitsmodus. Falls das Problem weiterhin besteht, [wenden Sie sich an den Microsoft-Kundendienst und -Support](fxt-support-ticket.md). |
 | Blinkt gelb | Systemfehler. Überprüfen Sie das Systemereignisprotokoll auf bestimmte Fehlermeldungen. Informationen zu den Ereignis- und Fehlermeldungen, die von der Systemfirmware und Agents zur Überwachung von Systemkomponenten generiert werden, finden Sie auf der Fehlercode-Suchseite unter qrl.dell.com. |
-
-

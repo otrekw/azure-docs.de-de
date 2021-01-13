@@ -1,36 +1,143 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure IoT Central-Dokumentation
+### YamlMime:Hub
+title: Dokumentation zu IoT Central-Lösungen
+summary: Sehen Sie sich die Dokumentation zum Dienst „Azure IoT Central“ und zu den zugehörigen Lösungen an.
+brand: azure
 metadata:
-  title: 'Dokumentation zu Azure IoT Central: Tutorials, API-Referenz | Microsoft-Dokumentation'
-  description: 'Azure IoT Central ist eine vollständig verwaltete SaaS-Lösung (Software-as-a-Service), mit der Sie Ihre IoT-Ressourcen einfach vernetzen, überwachen und verwalten können. Azure IoT Central vereinfacht die anfängliche Einrichtung Ihrer IoT-Lösung und verringert den mit der Verwaltung und einem typischen IoT-Projekt verbundenen Aufwand sowie die Betriebskosten. Erfahren Sie anhand unserer Schnellstartanleitungen und Tutorials, wie Sie eine Azure IoT Central-Anwendung erstellen, anpassen, verwalten und verwenden.'
-  author: dominicbetts
-  ms.topic: landing-page
-  ms.date: 11/08/2017
-  ms.author: dobett
+  title: Azure IoT Central-Dokumentationshub
+  description: Sehen Sie sich die Dokumentation zum Dienst „Azure IoT Central“ und zu den zugehörigen Lösungen an.
   ms.service: iot-central
-  services: iot-central
-  manager: timlt
-abstract:
-  description: 'Azure IoT Central ist eine vollständig verwaltete SaaS-Lösung (Software-as-a-Service), mit der Sie Ihre IoT-Ressourcen einfach vernetzen, überwachen und verwalten können. Azure IoT Central vereinfacht die anfängliche Einrichtung Ihrer IoT-Lösung und verringert den mit der Verwaltung und einem typischen IoT-Projekt verbundenen Aufwand sowie die Betriebskosten. Erfahren Sie anhand unserer Schnellstartanleitungen und Tutorials, wie Sie eine Azure IoT Central-Anwendung erstellen, anpassen, verwalten und verwenden.'
-sections:
-  - title: Featurehinweis
-    items:
-      - type: paragraph
-        text: 'Azure IoT Central wurde auf die Nutzung von Azure IoT Hub Device Provisioning Service (DPS) für alle Geräteverbindungen umgestellt. Sie müssen das DPS SDK verwenden, um Geräte bei Ihrer Azure IoT Central-Anwendung zu registrieren und eine Verbindung herzustellen. <a href="https://docs.microsoft.com/azure/iot-central/concepts-connectivity">Weitere Informationen zur Gerätekonnektivität in Azure IoT Central</a> Alle Anwendungen, die die Funktion für den fortlaufenden Datenexport und/oder die Power BI-Projektmappenvorlage nutzen, müssen den Zielspeichercontainer ändern und eine neue Projektmappenvorlage erstellen.'
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie <a href="quick-deploy-iot-central">eine neue Azure IoT Central-Anwendung erstellen</a>.'
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie Ihre Azure IoT Central-Anwendung anpassen und verwenden.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-define-device-type">Definieren eines neuen Gerätetyps</a>
-          - html: <a href="tutorial-configure-rules">Konfigurieren von Regeln</a>
-          - html: <a href="tutorial-customize-operator">Anpassen des Operatoransicht</a>
-          - html: <a href="tutorial-monitor-devices">Überwachen von Geräten</a>
-          - html: <a href="tutorial-add-device">Hinzufügen eines echten Geräts</a>
+  ms.topic: hub-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 06/30/2020
+  ms.openlocfilehash: 59d95b8ce13161999c06993cbbf9194a66e38ed3
+  ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/25/2020
+  ms.locfileid: "96122500"
+highlightedContent:
+  items:
+  - title: Was ist IoT Central?
+    itemType: overview
+    url: ./core/overview-iot-central.md
+  - title: Was sind Anwendungsvorlagen?
+    itemType: concept
+    url: ./core/concepts-app-templates.md
+  - title: Übersicht über die Geräteentwicklung für IoT Central
+    itemType: overview
+    url: ./core/overview-iot-central-developer.md
+  - title: Erstellen einer neuen Anwendung
+    itemType: quickstart
+    url: ./core/quick-deploy-iot-central.md
+  - title: Definieren eines Gerätetyps und Hinzufügen eines Geräts
+    itemType: tutorial
+    url: ./core/howto-set-up-template.md
+  - title: Überwachen Ihrer Geräte
+    itemType: tutorial
+    url: ./core/tutorial-create-telemetry-rules.md
+conceptualContent:
+  items:
+  - title: Verbinden und Entwickeln von Geräten
+    links:
+    - url: ./core/tutorial-connect-device.md
+      itemType: tutorial
+      text: Verbinden eines Geräts
+    - url: ./core/concepts-get-connected.md
+      itemType: concept
+      text: Gerätekonnektivität
+    - url: ./core/concepts-device-templates.md
+      itemType: concept
+      text: Gerätevorlagen
+    - url: ./core/troubleshoot-connection.md
+      itemType: how-to-guide
+      text: Behandeln von Problemen mit der Gerätekonnektivität
+    footerLink:
+      url: ./core/index.yml
+      text: Weitere Informationen
+  - title: In Verbindung bleiben
+    links:
+    - url: ./core/tutorial-use-device-groups.md
+      itemType: how-to-guide
+      text: Verwenden von Gerätegruppen
+    - url: ./core/howto-manage-devices.md
+      itemType: how-to-guide
+      text: Verwalten von Geräten
+    - url: ./core/howto-run-a-job.md
+      itemType: concept
+      text: 'Gewusst wie: Ausführen eines Auftrags'
+    - url: ./core/howto-create-analytics.md
+      itemType: how-to-guide
+      text: Analysieren von Gerätedaten
+    footerLink:
+      url: ./core/index.yml
+      text: Weitere Informationen
+  - title: Transformieren
+    links:
+    - url: ./core/tutorial-create-telemetry-rules.md
+      itemType: how-to-guide
+      text: Erstellen einer Telemetrieregel
+    - url: ./core/howto-export-data.md
+      itemType: how-to-guide
+      text: Exportieren von Daten in Cloudziele
+    footerLink:
+      url: ./core/index.yml
+      text: Weitere Informationen
+productDirectory:
+  title: Einstieg in die Erstellung mit Vorlagen für Branchenanwendungen
+  summary: Sind Sie bereit für die Erstellung? Sehen Sie sich unsere Vorlagen für Branchenanwendungen an, die für Lösungsentwickler konzipiert wurden.
+  items:
+  - title: Erstellung für Einzelhandel
+    imageSrc: ./retail/media/index/iot-central-retail.svg
+    links:
+    - text: Erstellen von Lösungen für den Einzelhandel mit Azure IoT Central
+      url: ./retail/overview-iot-central-retail.md
+    - text: Erstellen einer Anwendung für die In-Store-Analyse
+      url: ./retail/tutorial-in-store-analytics-create-app.md
+    - text: Erstellen einer Anwendung für die intelligente Bestandsverwaltung
+      url: ./retail/tutorial-iot-central-smart-inventory-management.md
+    - text: Erstellen einer Anwendung für vernetzte Logistik
+      url: ./retail/tutorial-iot-central-connected-logistics.md
+    - text: Erstellen einer Anwendung für digitale Verteilzentren
+      url: ./retail/tutorial-iot-central-digital-distribution-center.md
+    - text: Erstellen einer Videoanalyseanwendung
+      url: ./retail/tutorial-video-analytics-create-app-yolo-v3.md
+  - title: Erstellen für das Gesundheitswesen
+    imageSrc: ./healthcare/media/index/iot-central-healthcare.svg
+    links:
+    - url: ./healthcare/overview-iot-central-healthcare.md
+      text: Erstellen von Lösungen für das Gesundheitswesen mit IoT Central
+    - url: ./healthcare/tutorial-continuous-patient-monitoring.md
+      text: Erstellen einer App für die ständige Überwachung von Patienten
+  - title: Erstellen für die Energiebranche
+    imageSrc: ./energy/media/index/iot-central-energy.svg
+    links:
+    - url: ./energy/overview-iot-central-energy.md
+      text: Erstellen von Lösungen für die Energiebranche mit IoT Central
+    - url: ./energy/tutorial-smart-meter-app.md
+      text: Erstellen einer App für die Überwachung von intelligenten Stromzählern
+    - url: ./energy/tutorial-solar-panel-app.md
+      text: Erstellen einer App für die Überwachung von Solarelementen
+  - title: Erstellen für Behörden
+    imageSrc: ./government/media/index/iot-central-government.svg
+    links:
+    - url: ./government/overview-iot-central-government.md
+      text: Erstellen von Lösungen für Behörden mit IoT Central
+    - url: ./government/tutorial-water-quality-monitoring.md
+      text: Erstellen einer App zur Überwachung der Wasserqualität
+    - url: ./government/tutorial-water-consumption-monitoring.md
+      text: Erstellen einer App zur Überwachung des Wasserverbrauchs
+    - url: ./government/tutorial-connected-waste-management.md
+      text: Erstellen einer App für die vernetzte Abfallwirtschaft
+additionalContent:
+  sections:
+  - items:
+    - title: IoT Central-APIs
+      summary: Erkunden Sie die IoT Central-APIs.
+      url: /rest/api/iotcentral/
+    - title: IoT Central bei Microsoft Learn
+      summary: Erkunden Sie IoT Central in einer kostenlosen Sandboxumgebung.
+      url: /learn/browse/?products=azure-iot-central
+    - title: Neueste Updates
+      summary: Neues in IoT Central
+      url: https://azure.microsoft.com/updates/?status=nowavailable&updateType=features&category=iot&query=azure%20iot%20central

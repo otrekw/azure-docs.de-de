@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Entwerfen eines Echtzeitdashboards mit Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau)
-description: In diesem Tutorial erfahren Sie, wie Sie verteilte Tabellen in Azure Database for PostgreSQL Hyperscale (Citus) (Vorschau) erstellen, auffüllen und abfragen.
+title: 'Tutorial: Entwerfen eines Echtzeitdashboards – Hyperscale (Citus) – Azure Database for PostgreSQL'
+description: In diesem Tutorial erfahren Sie, wie Sie Echtzeitdashboard-Abfragen mit Azure Database for PostgreSQL – Hyperscale (Citus) parallelisieren.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,16 +8,16 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: a5e4b2073a29785ee851b2733c12d6331afe59d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 480af87519f8e11c14f009058b0f518bdfc34a1b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791328"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026266"
 ---
-# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Tutorial: Entwerfen eines Dashboards zur Echtzeitanalyse mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau)
+# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Tutorial: Entwerfen eines Dashboards für die Echtzeitanalyse mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus)
 
-In diesem Tutorial verwenden Sie Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau), um Folgendes zu lernen:
+In diesem Tutorial verwenden Sie Azure Database for PostgreSQL – Hyperscale (Citus), um Folgendes zu lernen:
 
 > [!div class="checklist"]
 > * Erstellen einer Hyperscale (Citus)-Servergruppe
@@ -34,7 +34,7 @@ In diesem Tutorial verwenden Sie Azure Database for PostgreSQL – Hyperscale (C
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Verwenden des psql-Hilfsprogramms zum Erstellen eines Schemas
 
-Nach dem Herstellen der Verbindung mit der Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau) mithilfe von psql können Sie ein paar einfache Aufgaben ausführen. Dieses Tutorial führt Sie schrittweise durch das Erfassen von Verkehrsdaten aus Webanalysen und den anschließenden Rollup der Daten, um Echtzeitdashboards auf der Grundlage dieser Daten bereitzustellen.
+Nach dem Herstellen der Verbindung mit Azure Database for PostgreSQL – Hyperscale (Citus) mithilfe von psql können Sie ein paar einfache Aufgaben ausführen. Dieses Tutorial führt Sie schrittweise durch das Erfassen von Verkehrsdaten aus Webanalysen und den anschließenden Rollup der Daten, um Echtzeitdashboards auf der Grundlage dieser Daten bereitzustellen.
 
 Erstellen wir eine Tabelle, die unsere gesamten Webdatenverkehrs-Rohdaten nutzt. Führen Sie die folgenden Befehle im psql-Terminal aus:
 
@@ -93,6 +93,8 @@ SELECT create_distributed_table('http_request',      'site_id');
 SELECT create_distributed_table('http_request_1min', 'site_id');
 ```
 
+[!INCLUDE [azure-postgresql-hyperscale-dist-alert](../../includes/azure-postgresql-hyperscale-dist-alert.md)]
+
 ## <a name="generate-sample-data"></a>Generieren von Beispieldaten
 
 Jetzt sollte unsere Servergruppe für die Erfassung einiger Daten bereit sein. Wir können den folgenden Code lokal aus unserer `psql`-Verbindung ausführen, um fortlaufend Daten einzufügen.
@@ -128,7 +130,7 @@ Die Abfrage fügt ca. acht Zeilen pro Sekunde ein. Die Zeilen werden auf verschi
    > Führen Sie die Abfrage zur Datengenerierung weiter aus, und öffnen Sie für die verbleibenden Befehle in diesem Tutorial eine zweite psql-Verbindung.
    >
 
-## <a name="query"></a>Abfragen
+## <a name="query"></a>Abfrage
 
 Die Hyperscale-Hostingoption ermöglicht es aus Geschwindigkeitsgründen, dass Abfragen von mehreren Knoten parallel verarbeitet werden. Beispielsweise berechnet die Datenbank Aggregate wie SUM und COUNT auf Workerknoten und kombiniert die Ergebnisse in einer endgültigen Antwort.
 
@@ -222,8 +224,7 @@ In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Servergruppe ers
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie eine Hyperscale (Citus)-Servergruppe bereitstellen. Sie haben mithilfe von psql eine Verbindung mit ihr hergestellt, haben ein Schema erstellt und Daten verteilt. Sie haben sowohl gelernt, Daten in Rohform abzurufen als auch diese Daten regelmäßig zu aggregieren, die aggregierten Tabellen abzufragen und alte Daten ablaufen zu lassen.
+In diesem Tutorial haben Sie erfahren, wie Sie eine Hyperscale (Citus)-Servergruppe bereitstellen. Sie haben mithilfe von psql eine Verbindung mit ihr hergestellt, haben ein Schema erstellt und Daten verteilt. Sie haben gelernt, Daten in Rohform abzurufen und diese Daten regelmäßig zu aggregieren, die aggregierten Tabellen abzufragen und alte Daten ablaufen zu lassen.
 
-Lernen Sie als Nächstes die Konzepte von Hyperscale kennen.
-> [!div class="nextstepaction"]
-> [Hyperscale-Knotentypen](https://aka.ms/hyperscale-concepts)
+- Weitere Informationen zu [Knotentypen](./concepts-hyperscale-nodes.md) von Servergruppen
+- Bestimmen der besten [Anfangsgröße](howto-hyperscale-scale-initial.md) für Ihre Servergruppe

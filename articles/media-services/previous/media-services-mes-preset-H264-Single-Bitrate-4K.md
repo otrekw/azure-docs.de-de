@@ -1,6 +1,6 @@
 ---
 title: Media Encoder Standard-Voreinstellung „H264 Single Bitrate 4K“ – Azure | Microsoft-Dokumentation
-description: Das Thema enthält eine Übersicht über die Aufgabenvoreinstellung **H264 Single Bitrate 4K**.
+description: Dieser Artikel enthält eine Übersicht über die Aufgabenvoreinstellung „H264 Single Bitrate 4K“ für Media Encoder Standard.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: f2a7bcfe39f3896c63993e0ad93309dcc510153e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7e2a2d6f96d4e9c789dd13ae377e219bd943ae24
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61129498"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89261868"
 ---
 # <a name="h264-single-bitrate-4k"></a>H264 Single Bitrate 4K
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 `Media Encoder Standard` definiert eine Reihe von Codierungsvoreinstellungen, die Sie beim Erstellen von Codierungsaufträgen verwenden können. Sie können mithilfe von `preset name` angeben, in welchem Format Ihre Mediendatei codiert werden soll. Oder Sie erstellen eigene JSON- oder XML-basierte Voreinstellungen (mithilfe von UTF-8- oder UTF-16-Codierung). In diesem Fall übergeben Sie die benutzerdefinierte Voreinstellung dann an den Encoder. Eine Liste aller von diesem `Media Encoder Standard`-Encoder unterstützten Voreinstellungsnamen finden Sie unter [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md) (Aufgabenvoreinstellungen für Media Encoder Standard).  
   
  In diesem Thema wird die Voreinstellung `H264 Single Bitrate 4K` im XML- und JSON-Format gezeigt.  
@@ -29,7 +32,7 @@ ms.locfileid: "61129498"
  Diese Voreinstellung erzeugt eine einzelne MP4-Datei mit einer Bitrate von 18.000KBit/s und AAC-Stereoaudio. Ausführliche Informationen zu Profil, Bitrate, Samplingrate usw. dieser Voreinstellung finden Sie im unten aufgeführten XML- bzw. JSON-Code. Erläuterungen zur Bedeutung der einzelnen Elemente in diesen Voreinstellungen sowie gültige Werte für jedes Element finden Sie im Thema [Media Encoder Standard schema](media-services-mes-schema.md) (Media Encoder Standard-Schema).  
   
 > [!NOTE]
->  Bei reservierten Einheiten des Typs „Premium“ sind voraussichtlich 4K-Codierungen inbegriffen. Weitere Informationen finden Sie unter [Skalieren der Codierung](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+>  Bei reservierten Einheiten des Typs „Premium“ sind voraussichtlich 4K-Codierungen inbegriffen. Weitere Informationen finden Sie unter [Skalieren der Codierung](./media-services-scale-media-processing-overview.md).  
   
  XML  
   

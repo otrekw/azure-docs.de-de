@@ -1,25 +1,27 @@
 ---
 title: Optimieren der Speicherkosten in Azure Cosmos DB
 description: In diesem Artikel wird erläutert, wie Sie für die in Azure Cosmos DB gespeicherten Daten die Speicherkosten optimieren.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 2955df266bcf164ce4a155acc5209679eff0ce8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 92bd3ff925080def4b2f074d07e662dfdbdbee01
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615012"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080849"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optimieren der Speicherkosten in Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB bietet unbegrenzten Speicher und Durchsatz. Im Gegensatz zum Durchsatz, den Sie für Ihre Azure Cosmos-Container oder -Datenbanken konfigurieren bzw. bereitstellen müssen, wird der Speicher auf Nutzungsbasis abgerechnet. Kosten fallen nur für den logischen Speicher an, den Sie nutzen. Sie müssen keinen Speicher im Voraus reservieren. Der Speicher wird auf Grundlage der Daten, die Sie Ihrem Azure Cosmos-Container hinzufügen bzw. aus diesem entfernen, automatisch zentral hoch- und herunterskaliert.
 
 ## <a name="storage-cost"></a>Speicherkosten
 
-Speicher wird in der Einheit GB abgerechnet. Von Ihren Daten und der Indizierung wird lokaler SSD-gestützter Speicher verwendet. Der insgesamt genutzte Speicher entspricht dem erforderlichen Speicher für die Daten und Indizes, die in allen Regionen, in denen Sie Azure Cosmos DB nutzen, verwendet werden. Wenn Sie ein Azure Cosmos-Konto global über drei Regionen replizieren, zahlen Sie die Gesamtspeicherkosten in jeder der drei Regionen. Mit dem [Kapazitätsplanungstool](https://www.documentdb.com/capacityplanner) können Sie Ihre Speicheranforderungen schätzen. Die Kosten für Speicher in Azure Cosmos DB betragen 0,25 US-Dollar pro GB und Monat. Die jeweils aktuellen Preise finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Sie können Warnungen einrichten, um den von Ihrem Azure Cosmos-Container genutzten Speicher zu bestimmen und Ihre Speicheranforderungen zu überwachen (siehe [Überwachen von Microsoft Azure Cosmos DB](monitor-accounts.md)).
+Speicher wird in der Einheit GB abgerechnet. Von Ihren Daten und der Indizierung wird lokaler SSD-gestützter Speicher verwendet. Der insgesamt genutzte Speicher entspricht dem erforderlichen Speicher für die Daten und Indizes, die in allen Regionen, in denen Sie Azure Cosmos DB nutzen, verwendet werden. Wenn Sie ein Azure Cosmos-Konto global über drei Regionen replizieren, zahlen Sie die Gesamtspeicherkosten in jeder der drei Regionen. Mit dem [Kapazitätsplanungstool](https://www.documentdb.com/capacityplanner) können Sie Ihre Speicheranforderungen schätzen. Die Kosten für Speicher in Azure Cosmos DB betragen 0,25 US-Dollar pro GB und Monat. Die jeweils aktuellen Preise finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Sie können Warnungen einrichten, um den von Ihrem Azure Cosmos-Container genutzten Speicher zu bestimmen und Ihre Speicheranforderungen zu überwachen (siehe [Überwachen von Microsoft Azure Cosmos DB](./monitor-cosmos-db.md)).
 
 ## <a name="optimize-cost-with-item-size"></a>Optimieren der Kosten über die Elementgröße
 
@@ -27,7 +29,7 @@ Für eine optimale Leistung und Kostenvorteile erwartet Azure Cosmos DB eine Ele
 
 ## <a name="optimize-cost-with-indexing"></a>Optimieren der Kosten über die Indizierung
 
-Standardmäßig werden die Daten automatisch indiziert, wodurch sich die Gesamtmenge des genutzten Speichers erhöhen kann. Sie können jedoch benutzerdefinierte Indizierungsrichtlinien verwenden, um diesen zusätzlichen Aufwand zu reduzieren. Eine automatische Indizierung, die nicht über eine Richtlinie optimiert wurde, beträgt etwa 10 bis 20 % der Elementgröße. Durch Entfernen oder Anpassen der Indizierungsrichtlinien brauchen Sie keine Extrakosten für Schreibvorgänge zu bezahlen und benötigen keine zusätzliche Durchsatzkapazität. Das Konfigurieren benutzerdefinierter Indizierungsrichtlinien wird unter [Indizierung in Azure Cosmos DB](indexing-policies.md) beschrieben. Wenn Sie bereits mit relationalen Datenbanken gearbeitet haben, denken Sie vielleicht, dass „alles indizieren“ eine Verdoppelung des Speichers (oder mehr) bedeutet. In Azure Cosmos DB fällt die Indizierung im Durchschnitt wesentlich weniger ins Gewicht. In Azure Cosmos DB fällt der Speicheraufwand infolge der Indizierung, selbst bei der automatischen Indizierung, in der Regel gering aus (10-20 %), da die Datenbank für einen kleinen „Speicherfußabdruck“ ausgelegt ist. Durch die Verwaltung der Indizierungsrichtlinie können Sie den Kompromiss zwischen Indexfußabdruck und Abfrageleistung in einer noch feiner abgestimmten Weise steuern.
+Standardmäßig werden die Daten automatisch indiziert, wodurch sich die Gesamtmenge des genutzten Speichers erhöhen kann. Sie können jedoch benutzerdefinierte Indizierungsrichtlinien verwenden, um diesen zusätzlichen Aufwand zu reduzieren. Eine automatische Indizierung, die nicht über eine Richtlinie optimiert wurde, beträgt etwa 10 bis 20 % der Elementgröße. Durch Entfernen oder Anpassen der Indizierungsrichtlinien brauchen Sie keine Extrakosten für Schreibvorgänge zu bezahlen und benötigen keine zusätzliche Durchsatzkapazität. Das Konfigurieren benutzerdefinierter Indizierungsrichtlinien wird unter [Indizierung in Azure Cosmos DB](index-policy.md) beschrieben. Wenn Sie bereits mit relationalen Datenbanken gearbeitet haben, denken Sie vielleicht, dass „alles indizieren“ eine Verdoppelung des Speichers (oder mehr) bedeutet. In Azure Cosmos DB fällt die Indizierung im Durchschnitt wesentlich weniger ins Gewicht. In Azure Cosmos DB fällt der Speicheraufwand infolge der Indizierung, selbst bei der automatischen Indizierung, in der Regel gering aus (10-20 %), da die Datenbank für einen kleinen „Speicherfußabdruck“ ausgelegt ist. Durch die Verwaltung der Indizierungsrichtlinie können Sie den Kompromiss zwischen Indexfußabdruck und Abfrageleistung in einer noch feiner abgestimmten Weise steuern.
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optimieren der Kosten über Gültigkeitsdauer und Änderungsfeed
 
@@ -39,7 +41,7 @@ Wenn Sie Rich-Media-Datentypen (z. B. Videos, Bilder usw.) speichern möchten, s
 
 ## <a name="check-storage-consumed"></a>Überprüfen der Speichernutzung
 
-Zum Überprüfen der Speichernutzung eines Azure Cosmos-Containers können Sie eine HEAD- oder GET-Anforderung für den Container ausführen und die Header `x-ms-request-quota` und `x-ms-request-usage` prüfen. Wenn Sie mit dem .NET SDK arbeiten, können Sie alternativ mit den Eigenschaften [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)) und [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) den genutzten Speicher abrufen.
+Zum Überprüfen der Speichernutzung eines Azure Cosmos-Containers können Sie eine HEAD- oder GET-Anforderung für den Container ausführen und die Header `x-ms-request-quota` und `x-ms-request-usage` prüfen. Wenn Sie mit dem .NET SDK arbeiten, können Sie alternativ mit den Eigenschaften [DocumentSizeQuota](/previous-versions/azure/dn850325(v%3Dazure.100)) und [DocumentSizeUsage](/previous-versions/azure/dn850324(v=azure.100)) den genutzten Speicher abrufen.
 
 ## <a name="using-sdk"></a>Verwenden des SDK
 
@@ -58,6 +60,5 @@ Als Nächstes können Sie mithilfe der folgenden Artikel mehr über die Kostenop
 * Weitere Informationen unter [Erläuterungen zu Ihrer Azure Cosmos DB-Rechnung](understand-your-bill.md)
 * Weitere Informationen unter [Optimieren der Durchsatzkosten](optimize-cost-throughput.md)
 * Weitere Informationen unter [Optimieren der Kosten für Lese- und Schreibvorgänge](optimize-cost-reads-writes.md)
-* Weitere Informationen unter [Optimieren der Kosten von Abfragen](optimize-cost-queries.md)
+* Weitere Informationen unter [Optimieren der Kosten von Abfragen](./optimize-cost-reads-writes.md)
 * Weitere Informationen unter [Optimieren der Kosten bei Cosmos-Konten mit mehreren Regionen](optimize-cost-regions.md)
-

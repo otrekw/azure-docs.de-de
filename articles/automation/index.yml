@@ -1,23 +1,21 @@
 ### YamlMime:Landing
 title: 'Azure Automation: Dokumentation'
 metadata:
-  document_id: 
   title: 'Azure Automation: Dokumentation'
   description: Hier finden Sie Informationen zur Verwendung von Automation zum Konfigurieren und Automatisieren von operativen Aufgaben in einer Hybridumgebung.
   services: automation
-  author: bobbytreed
+  author: mgoedtel
   manager: carmonm
   ms.service: automation
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
   ms.date: 09/06/2019
-  ms.author: robreed
-  ms.openlocfilehash: 3242e2c699e0f99164d6c5ecd2cf61441648b8e8
-  ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+  ms.author: magoedte
+  ms.openlocfilehash: c146be313391397c9ecf64314a580175e8220ac5
+  ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/06/2019
-  ms.locfileid: "70743733"
+  ms.lasthandoff: 10/20/2020
+  ms.locfileid: "92216418"
 landingContent:
 - title: Erste Schritte mit Azure Automation
   linkLists:
@@ -33,20 +31,20 @@ landingContent:
     links:
     - text: Erstellen eines Runbooks
       url: automation-quickstart-create-runbook.md
+  - linkListType: deploy
+    links:
+    - text: Starten/Beenden von VMs außerhalb der Kernzeit
+      url: automation-solution-vm-management.md
 - title: Verwalten von Updates für VMs
   linkLists:
   - linkListType: overview
     links:
     - text: Übersicht über die Updateverwaltung
-      url: automation-update-management.md
+      url: update-management/overview.md
   - linkListType: get-started
     links:
     - text: Verwalten von Updates für mehrere virtuelle Computer
-      url: manage-update-multi.md
-  - linkListType: deploy
-    links:
-    - text: Aktualisieren, Inventarisieren und Nachverfolgen von Änderungen auf Azure-VMs
-      url: automation-onboard-solutions.md
+      url: update-management/manage-updates-for-vm.md
 - title: Konfigurieren Ihrer VMs per Desired State Configuration
   linkLists:
   - linkListType: overview
@@ -56,11 +54,11 @@ landingContent:
   - linkListType: concept
     links:
     - text: PowerShell DSC
-      url: /powershell/dsc/overview/overview
+      url: /powershell/scripting/dsc/overview/overview
   - linkListType: quickstart
     links:
     - text: Erstellen einer DSC-Konfiguration über die Gruppenrichtlinie
-      url: /powershell/dsc/quickstarts/gpo-quickstart
+      url: /powershell/scripting/dsc/quickstarts/gpo-quickstart
   - linkListType: tutorial
     links:
     - text: Konfigurieren von Servern und Verwalten von Abweichungen per State Configuration

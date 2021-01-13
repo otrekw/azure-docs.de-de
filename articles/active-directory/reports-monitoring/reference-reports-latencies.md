@@ -3,7 +3,7 @@ title: Latenzen bei Azure Active Directory-Berichten | Microsoft-Dokumentation
 description: Erfahren Sie etwas über den erforderliche Zeitraum, bis Ereignisse in Ihrem Azure-Portal angezeigt werden.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 05/13/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce62a5059304fe83d933a46ae69f4b8e0c276ba7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127030"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89231060"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latenzen bei Azure Active Directory-Berichten
 
@@ -54,12 +54,12 @@ Wenn Ihnen bereits mit einer kostenlosen Lizenz Daten zu Aktivitäten angezeigt 
 
 Es gibt zwei Arten von Sicherheitsberichten:
 
-- [Riskante Anmeldungen:](concept-risky-sign-ins.md) Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. 
-- [Benutzer mit Risikomarkierung:](concept-user-at-risk.md) Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. 
+- [Riskante Anmeldungen:](../identity-protection/overview-identity-protection.md) Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. 
+- [Benutzer mit Risikomarkierung:](../identity-protection/overview-identity-protection.md) Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. 
 
 Die folgende Tabelle enthält Latenzzeitinformationen für Sicherheitsberichte.
 
-| Bericht | Minimum | Durchschnitt | Maximum |
+| Bericht | Minimum | Average | Maximum |
 | :-- | --- | --- | --- |
 | Gefährdete Benutzer          | 5 Minuten   | 15 Minuten  | 2 Stunden  |
 | Riskante Anmeldungen         | 5 Minuten   | 15 Minuten  | 2 Stunden  |
@@ -70,7 +70,7 @@ Azure AD verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um ve
 
 Die folgende Tabelle enthält Latenzzeitinformationen für Risikoerkennungen.
 
-| Bericht | Minimum | Durchschnitt | Maximum |
+| Bericht | Minimum | Average | Maximum |
 | :-- | --- | --- | --- |
 | Anmeldungen von anonymen IP-Adressen |5 Minuten |15 Minuten |2 Stunden |
 | Anmeldungen von unbekannten Standorten |5 Minuten |15 Minuten |2 Stunden |
@@ -84,4 +84,4 @@ Die folgende Tabelle enthält Latenzzeitinformationen für Risikoerkennungen.
 
 * [Übersicht über Azure AD-Berichte](overview-reports.md)
 * [Programmgesteuerter Zugriff auf Azure AD-Berichte](concept-reporting-api.md)
-* [Azure Active Directory-Risikoerkennungen](concept-risk-events.md)
+* [Azure Active Directory-Risikoerkennungen](../identity-protection/overview-identity-protection.md)

@@ -1,20 +1,15 @@
 ---
-title: 'Senden von benutzerdefinierten Ereignissen an Event Hubs: Event Grid, Azure CLI'
-description: Verwenden Sie Azure Event Grid und die Azure CLI, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Ein Event Hub wird für den Endpunkt verwendet.
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 10/09/2018
+title: 'Schnellstart: Senden von benutzerdefinierten Ereignissen an Event Hubs: Event Grid, Azure CLI'
+description: 'Schnellstart: Verwenden Sie Azure Event Grid und die Azure CLI, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Ein Event Hub wird für den Endpunkt verwendet.'
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: fd087c2afe50870289b008906b28605fdd558311
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7c236025f31e10c00b324e5ff3374bd6504b2b7e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475185"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91324109"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Schnellstart: Weiterleiten benutzerdefinierter Ereignisse an Azure Event Hubs mit Azure CLI und Event Grid
 
@@ -26,7 +21,7 @@ Azure Event Grid ist ein Ereignisdienst für die Cloud. Azure Event Hubs ist ein
 
 Event Grid-Themen sind Azure-Ressourcen und müssen in einer Azure-Ressourcengruppe platziert werden. Die Azure-Ressourcengruppe ist eine logische Sammlung, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. 
 
 Das folgende Beispiel erstellt eine Ressourcengruppe namens *gridResourceGroup* am Standort *westus2*.
 
@@ -67,10 +62,10 @@ Das folgende Skript ruft die Ressourcen-ID für den Event Hub ab und abonniert e
 
 ```azurecli-interactive
 hubid=$(az eventhubs eventhub show --name $hubname --namespace-name $namespace --resource-group gridResourceGroup --query id --output tsv)
+topicid=$(az eventgrid topic show --name $topicname -g gridResourceGroup --query id --output tsv)
 
 az eventgrid event-subscription create \
-  --topic-name $topicname \
-  -g gridResourceGroup \
+  --source-resource-id $topicid \
   --name subtoeventhub \
   --endpoint-type eventhub \
   --endpoint $hubid
@@ -103,8 +98,8 @@ Navigieren Sie zum Event Hub im Portal, und beachten Sie, dass Event Grid diese 
 
 In der Regel erstellen Sie eine Anwendung, die die Ereignisse vom Event Hub abruft. Wenn Sie eine Anwendung erstellen möchten, die Nachrichten von einem Event Hub empfängt, lesen Sie die Informationen in den folgenden Artikeln:
 
-* [Erste Schritte zum Empfangen von Nachrichten mit dem Ereignisprozessorhost (EventProcessorHost) in .NET Standard](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
-* [Empfangen von Ereignissen von Azure Event Hubs mithilfe von Java](../event-hubs/event-hubs-java-get-started-receive-eph.md)
+* [Erste Schritte zum Empfangen von Nachrichten mit dem Ereignisprozessorhost (EventProcessorHost) in .NET Standard](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+* [Empfangen von Ereignissen von Azure Event Hubs mithilfe von Java](../event-hubs/event-hubs-java-get-started-send.md)
 * [Empfangen von Ereignissen von Event Hubs mithilfe von Apache Storm](../event-hubs/event-hubs-storm-getstarted-receive.md)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

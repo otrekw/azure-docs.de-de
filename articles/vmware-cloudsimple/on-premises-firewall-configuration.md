@@ -1,6 +1,7 @@
 ---
-title: Lokales Zugreifen auf die Azure VMware-Lösung von CloudSimple
-description: Zugreifen auf Ihre Azure VMware-Lösung von CloudSimple aus Ihrem lokalen Netzwerk über eine Firewall
+title: Lokaler Zugriff auf die Azure VMware-Lösung von CloudSimple
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Zugreifen auf Azure VMware Solution by CloudSimple aus Ihrem lokalen Netzwerk über eine Firewall
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/08/2019
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c0f575417819f0e2d46565ad15aaa23a04fd7cf1
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 6ff057d99e29c7c6fe30e77f38a0bff265dbe7bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972639"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86998889"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Lokales Zugreifen auf Ihre private CloudSimple-Cloudumgebung und darin enthaltene Anwendungen
 
@@ -34,7 +35,7 @@ Für den Zugriff auf vCenter und NSX-T-Manager in Ihrer privaten Cloud müssen d
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>Erforderliche Ports für die Verwendung des lokalen Active Directory als Identitätsquelle
 
-Um das lokale Active Directory als Identitätsquelle für vCenter in der privaten Cloud zu konfigurieren, müssen die in der Tabelle definierten Ports geöffnet sein.  Konfigurationsschritte finden Sie unter [Verwenden von Azure AD als Identitätsanbieter für vCenter in privaten CloudSimple-Clouds](https://docs.azure.cloudsimple.com/azure-ad/).
+Um das lokale Active Directory als Identitätsquelle für vCenter in der privaten Cloud zu konfigurieren, müssen die in der Tabelle definierten Ports geöffnet sein.  Konfigurationsschritte finden Sie unter [Verwenden von Azure AD als Identitätsanbieter für vCenter in privaten CloudSimple-Clouds](./azure-ad.md).
 
 | Port         | `Source`                           | Destination                                         | Zweck                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -59,6 +60,6 @@ Zum Zugreifen auf virtuelle Computer für Workloads, die in der privaten Cloud a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen und Verwalten von VLANs und Subnetzen](https://docs.azure.cloudsimple.com/create-vlan-subnet/)
-* [Connect from on-premises to CloudSimple using ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection/)
-* [Set up VPN gateways on CloudSimple network](https://docs.azure.cloudsimple.com/vpn-gateway/)
+* [Erstellen und Verwalten von VLANs und Subnetzen](./create-vlan-subnet.md)
+* [Connect from on-premises to CloudSimple using ExpressRoute](./on-premises-connection.md)
+* [Set up VPN gateways on CloudSimple network](./vpn-gateway.md)

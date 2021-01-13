@@ -1,32 +1,31 @@
 ---
-title: 'Tutorial: Verwalten von virtuellen Azure-Computern mit der Azure CLI | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie Sie die Azure CLI zum Verwalten von virtuellen Azure-Computern nutzen, indem Sie die RBAC sowie Richtlinien, Sperren und Tags verwenden.
+title: 'Tutorial: Verwalten virtueller Computer mit der Befehlszeilenschnittstelle'
+description: In diesem Tutorial erfahren Sie, wie Sie die Azure CLI zum Verwalten von virtuellen Azure-Computern nutzen, indem Sie die Azure RBAC sowie Richtlinien, Sperren und Tags verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
 manager: gwallace
-editor: tysonn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.topic: tutorial
-ms.date: 10/12/2018
+ms.date: 09/30/2019
 ms.author: tomfitz
-ms.custom: mvc
-ms.openlocfilehash: 7bd204789f99fa299300ff47003857e9ecc6085e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 565315ad78a2994f44973c4fdcd4519ab9e03ea8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103606"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831785"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Tutorial: Informationen zur Verwaltung von virtuellen Linux-Computern mit der Azure CLI
+# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Tutorial: Informationen zur Verwaltung von virtuellen Linux-Computern mit der Azure CLI
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Azure-Befehlszeilenschnittstelle lokal installieren und verwenden möchten, benötigen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.30. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+- Für dieses Tutorial ist mindestens Version 2.0.30 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="understand-scope"></a>Der Bereich
 
@@ -42,9 +41,9 @@ az group create --name myResourceGroup --location "East US"
 
 Die Ressourcengruppe ist derzeit leer.
 
-## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
+## <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
 
-Sie sollten sicherstellen, dass Benutzer in Ihrer Organisation einen geeigneten Zugriff auf diese Ressourcen haben. Den Benutzern sollte kein uneingeschränkter Zugriff erteilt werden, aber Sie müssen auch sicherstellen, dass sie ihre Arbeit erledigen können. Mit der [rollenbasierten Zugriffssteuerung](../../role-based-access-control/overview.md) können Sie verwalten, welche Benutzer die Berechtigung zum Ausführen bestimmter Aktionen in einem Bereich erhalten.
+Sie sollten sicherstellen, dass Benutzer in Ihrer Organisation einen geeigneten Zugriff auf diese Ressourcen haben. Den Benutzern sollte kein uneingeschränkter Zugriff erteilt werden, aber Sie müssen auch sicherstellen, dass sie ihre Arbeit erledigen können. Mit der [rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) können Sie verwalten, welche Benutzer die Berechtigung zum Ausführen bestimmter Aktionen in einem Bereich erhalten.
 
 Um Rollenzuweisungen erstellen und entfernen zu können, benötigen Benutzer den Zugriff `Microsoft.Authorization/roleAssignments/*`. Dieser Zugriff wird über die Rolle „Besitzer“oder „Benutzerzugriffsadministrator“ gewährt.
 
@@ -56,7 +55,7 @@ Zum Verwalten virtueller Computerlösungen gibt es drei ressourcenspezifische Ro
 
 Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, eine Azure Active Directory-Gruppe mit Benutzern zu verwenden, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe der entsprechenden Rolle zu. Verwenden Sie in diesem Artikel entweder eine vorhandene Gruppe für die VM-Verwaltung, oder [erstellen Sie eine Azure Active Directory-Gruppe](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) über das Portal.
 
-Nachdem Sie entweder eine neue Gruppe erstellt oder nach einer vorhandenen Gruppe gesucht haben, weisen Sie die neue Azure Active Directory-Gruppe mithilfe des Befehls [az role assignment create](/cli/azure/role/assignment) der Rolle „Mitwirkender für virtuelle Computer“ für die Ressourcengruppe zu.
+Nachdem Sie entweder eine neue Gruppe erstellt oder nach einer vorhandenen Gruppe gesucht haben, weisen Sie die neue Azure Active Directory-Gruppe mithilfe des Befehls [az role assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) der Rolle „Mitwirkender für virtuelle Computer“ für die Ressourcengruppe zu.
 
 ```azurecli-interactive
 adgroupId=$(az ad group show --group <your-group-name> --query objectId --output tsv)
@@ -70,7 +69,7 @@ In der Regel müssen Sie den Prozess für die Rollen *Mitwirkender von virtuelle
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](../../governance/policy/overview.md) hilft Ihnen dabei, sicherzustellen, dass alle Ressourcen im Abonnement die Unternehmensstandards erfüllen. Ihr Abonnement enthält bereits verschiedene Richtliniendefinitionen. Um die verfügbaren Richtliniendefinitionen anzuzeigen, verwenden Sie den Befehl [az policy definition list](/cli/azure/policy/definition):
+[Azure Policy](../../governance/policy/overview.md) hilft Ihnen dabei, sicherzustellen, dass alle Ressourcen im Abonnement die Unternehmensstandards erfüllen. Ihr Abonnement enthält bereits verschiedene Richtliniendefinitionen. Um die verfügbaren Richtliniendefinitionen anzuzeigen, verwenden Sie den Befehl [az policy definition list](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-list):
 
 ```azurecli-interactive
 az policy definition list --query "[].[displayName, policyType, name]" --output table
@@ -82,7 +81,7 @@ Die vorhandenen Richtliniendefinitionen werden angezeigt. Der Richtlinientyp lau
 * Begrenzen der SKUs für virtuelle Computer
 * Überwachen von virtuellen Computern, die keine verwalteten Datenträger verwenden
 
-Im folgenden Beispiel rufen Sie drei Richtliniendefinitionen anhand des Anzeigenamens ab. Sie weisen diese Definitionen mit dem Befehl [az policy assignment create](/cli/azure/policy/assignment) den Ressourcengruppen zu. Für einige Richtlinien stellen Sie Parameterwerte bereit, um die zulässigen Werte anzugeben.
+Im folgenden Beispiel rufen Sie drei Richtliniendefinitionen anhand des Anzeigenamens ab. Sie weisen diese Definitionen mit dem Befehl [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) den Ressourcengruppen zu. Für einige Richtlinien stellen Sie Parameterwerte bereit, um die zulässigen Werte anzugeben.
 
 ```azurecli-interactive
 # Get policy definitions for allowed locations, allowed SKUs, and auditing VMs that don't use managed disks
@@ -140,11 +139,11 @@ Nach Abschluss der Bereitstellung können Sie weitere Verwaltungseinstellungen a
 
 ## <a name="lock-resources"></a>Sperren von Ressourcen
 
-[Ressourcensperren](../../azure-resource-manager/resource-group-lock-resources.md) verhindern, dass Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern. Im Gegensatz zur rollenbasierten Zugriffssteuerung wenden Ressourcensperren eine Einschränkung auf alle Benutzer und Rollen an. Sie können die Sperrebene auf *CanNotDelete* oder *ReadOnly* festlegen.
+[Ressourcensperren](../../azure-resource-manager/management/lock-resources.md) verhindern, dass Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern. Im Gegensatz zur rollenbasierten Zugriffssteuerung wenden Ressourcensperren eine Einschränkung auf alle Benutzer und Rollen an. Sie können die Sperrebene auf *CanNotDelete* oder *ReadOnly* festlegen.
 
 Zum Erstellen oder Löschen von Verwaltungssperren benötigen Sie Zugriff auf `Microsoft.Authorization/locks/*`-Aktionen. Unter den integrierten Rollen können nur **Besitzer** und **Benutzerzugriffsadministrator** diese Aktionen ausführen.
 
-Zum Sperren des virtuellen Computers und der Netzwerksicherheitsgruppe verwenden Sie den Befehl [az lock create](/cli/azure/lock):
+Zum Sperren des virtuellen Computers und der Netzwerksicherheitsgruppe verwenden Sie den Befehl [az lock create](/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-create):
 
 ```azurecli-interactive
 # Add CanNotDelete lock to the VM
@@ -172,11 +171,11 @@ Es wird eine Fehlermeldung mit dem Hinweis angezeigt, dass der Löschvorgang auf
 
 ## <a name="tag-resources"></a>Markieren von Ressourcen
 
-Durch Anwenden von [Tags](../../azure-resource-manager/resource-group-using-tags.md) können Sie Ihre Azure-Ressourcen logisch nach Kategorien organisieren. Jedes Tag besteht aus einem Namen und einem Wert. So können Sie beispielsweise den Namen „Umgebung“ und den Wert „Produktion“ auf alle Ressourcen in der Produktion anwenden.
+Durch Anwenden von [Tags](../../azure-resource-manager/management/tag-resources.md) können Sie Ihre Azure-Ressourcen logisch nach Kategorien organisieren. Jedes Tag besteht aus einem Namen und einem Wert. So können Sie beispielsweise den Namen „Umgebung“ und den Wert „Produktion“ auf alle Ressourcen in der Produktion anwenden.
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
-Verwenden Sie zum Anwenden von Tags auf einen virtuellen Computer den Befehl [az resource tag](/cli/azure/resource). Eventuell bereits vorhandene Tags der Ressource werden nicht beibehalten.
+Verwenden Sie zum Anwenden von Tags auf einen virtuellen Computer den Befehl [az resource tag](/cli/azure/resource?view=azure-cli-latest#az-resource-list). Eventuell bereits vorhandene Tags der Ressource werden nicht beibehalten.
 
 ```azurecli-interactive
 az resource tag -n myVM \
@@ -187,7 +186,7 @@ az resource tag -n myVM \
 
 ### <a name="find-resources-by-tag"></a>Suchen von Ressourcen nach Tag
 
-Um Ressourcen über einen Tagnamen und einen Wert zu suchen, verwenden Sie den Befehl [az resource list](/cli/azure/resource):
+Um Ressourcen über einen Tagnamen und einen Wert zu suchen, verwenden Sie den Befehl [az resource list](/cli/azure/resource?view=azure-cli-latest#az-resource-list):
 
 ```azurecli-interactive
 az resource list --tag Environment=Test --query [].name
@@ -205,7 +204,7 @@ az vm stop --ids $(az resource list --tag Environment=Test --query "[?type=='Mic
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Die gesperrte Netzwerksicherheitsgruppe kann erst gelöscht werden, wenn die Sperre entfernt wird. Um die Sperre zu entfernen, rufen Sie die IDs der Sperren ab, und übergeben Sie sie an den Befehl [az lock delete](/cli/azure/lock):
+Die gesperrte Netzwerksicherheitsgruppe kann erst gelöscht werden, wenn die Sperre entfernt wird. Um die Sperre zu entfernen, rufen Sie die IDs der Sperren ab, und übergeben Sie sie an den Befehl [az lock delete](/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-delete):
 
 ```azurecli-interactive
 vmlock=$(az lock show --name LockVM \
@@ -219,7 +218,7 @@ nsglock=$(az lock show --name LockNSG \
 az lock delete --ids $vmlock $nsglock
 ```
 
-Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group) entfernen. Beenden Sie die SSH-Sitzung auf Ihrem virtuellen Computer, und löschen Sie die Ressourcen wie folgt:
+Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) entfernen. Beenden Sie die SSH-Sitzung auf Ihrem virtuellen Computer, und löschen Sie die Ressourcen wie folgt:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -228,7 +227,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie ein benutzerdefiniertes Image eines virtuellen Computers erstellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie ein benutzerdefiniertes Image eines virtuellen Computers erstellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Zuweisen von Benutzern zu einer Rolle
@@ -236,8 +235,7 @@ In diesem Tutorial haben Sie ein benutzerdefiniertes Image eines virtuellen Comp
 > * Schützen wichtiger Ressourcen mit Sperren
 > * Markieren von Ressourcen mit Tags für die Abrechnung und Verwaltung
 
-Im nächsten Tutorial erhalten Sie Informationen zu hoch verfügbaren virtuellen Computern.
+Im nächsten Tutorial erfahren Sie, wie Sie auf einem virtuellen Computer Änderungen ermitteln und Paketupdates verwalten.
 
 > [!div class="nextstepaction"]
-> [Überwachen virtueller Computer](tutorial-monitoring.md)
-
+> [Verwalten virtueller Computer](tutorial-config-management.md)

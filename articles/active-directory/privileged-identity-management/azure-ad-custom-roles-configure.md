@@ -1,30 +1,36 @@
 ---
-title: Konfigurieren von benutzerdefinierten Azure AD-Rollen in Privileged Identity Management (PIM) | Microsoft-Dokumentation
+title: Konfigurieren einer benutzerdefinierten Azure AD-Rolle – Privileged Identity Management (PIM)
 description: 'Vorgehensweise: Konfigurieren von benutzerdefinierten Azure AD-Rollen in Privileged Identity Management (PIM)'
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
-ms.service: role-based-access-control
+ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc7e52a2ef92120da60f085c0afebeb8af714203
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: fb23e60539c704dac457ab6e8706ec0cfe350ed9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947546"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835321"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Konfigurieren von benutzerdefinierten Azure AD-Rollen in Privileged Identity Management
 
 Ein Administrator mit einer privilegierten Rolle kann die Rolleneinstellungen ändern, die für Benutzer gelten, wenn diese ihre Zuweisung zu einer benutzerdefinierten Rolle aktivieren. Ein solcher Administrator kann auch die Einstellungen für andere Anwendungsadministratoren ändern, die benutzerdefinierte Rollen zuweisen.
+
+> [!NOTE]
+> Benutzerdefinierte Azure AD-Rollen sind in der Vorschauversion nicht in die integrierten Verzeichnisrollen integriert. Sobald die Funktion allgemein verfügbar ist, erfolgt die Rollenverwaltung auf der Benutzeroberfläche für integrierte Rollen. Wenn das folgende Banner angezeigt wird, sollten diese Rollen [auf der Benutzeroberfläche für integrierte Rollen](pim-how-to-activate-role.md) verwaltet werden, und dieser Artikel trifft nicht zu:
+>
+> [![Auswählen von „Azure AD“ > „Privileged Identity Management“](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="open-role-settings"></a>Öffnen von Rolleneinstellungen
 
@@ -38,7 +44,7 @@ Führen Sie die folgenden Schritte aus, um die Einstellungen für eine Azure AD-
 1. Wählen Sie **Einstellung** aus, um die Seite **Einstellungen** zu öffnen. Wählen Sie die Rolle aus, deren Einstellungen Sie konfigurieren möchten.
 1. Klicken Sie auf **Bearbeiten**, um die Seite **Rolleneinstellungen** zu öffnen.
 
-    ![Öffnen der benutzerdefinierten Azure AD-Rolle zum Bearbeiten von Einstellungen](./media/azure-ad-custom-roles-configure/edit-settings.png)
+    ![Screenshot: Seite „Details zur Rolleneinstellung“ mit ausgewählter Aktion „Bearbeiten“](./media/azure-ad-custom-roles-configure/edit-settings.png)
 
 ## <a name="role-settings"></a>Rolleneinstellungen
 
@@ -58,9 +64,9 @@ Beim Typ *aktiv* können Sie eine der folgenden Optionen für die Zuweisungsdaue
 - **Permanente aktive Zuweisung zulassen**: Administratoren können eine permanente aktive Mitgliedschaft zuweisen.
 - **Aktive Zuweisungen laufen ab nach**: Administratoren können anfordern, dass alle aktiven Zuweisungen ein bestimmtes Start- und Enddatum haben.
 
-### <a name="require-azure-multi-factor-authentication"></a>Anfordern von Azure Multi-Factor Authentication
+### <a name="require-azure-ad-multi-factor-authentication"></a>Anfordern von Azure AD Multi-Factor Authentication
 
-Privileged Identity Management ermöglicht die optionale Erzwingung der Azure Multi-Factor Authentication (MFA) für zwei bestimmte Szenarien.
+Privileged Identity Management ermöglicht die optionale Erzwingung der Azure AD Multi-Factor Authentication (MFA) für zwei bestimmte Szenarien.
 
 - **Multi-Factor Authentication bei aktiver Zuweisung erforderlich**
 
@@ -68,7 +74,7 @@ Privileged Identity Management ermöglicht die optionale Erzwingung der Azure Mu
 
 - **Bei Aktivierung Multi-Factor Authentication anfordern**
 
-  Sie können anfordern, dass berechtigte Benutzer, die einer Rolle zugewiesen wurden, sich zuerst bei der Azure Multi-Factor Authentication registrieren müssen, bevor sie die Rolle aktivieren können. Mit diesem Prozess wird sichergestellt, dass es sich bei dem Benutzer, der die Aktivierung anfordert, auch wirklich um den angegebenen Benutzer handelt. Durch die Erzwingung dieser Option werden wichtige Rollen in Situationen geschützt, in denen ein Benutzerkonto möglicherweise kompromittiert wurde. Um von einem berechtigten Mitglied vor der Aktivierung die Ausführung der Azure Multi-Factor Authentication anzufordern, aktivieren Sie das Kontrollkästchen **Bei Aktivierung Multi-Factor Authentication anfordern**.
+  Sie können anfordern, dass berechtigte Benutzer, die einer Rolle zugewiesen wurden, sich zuerst bei Azure AD Multi-Factor Authentication registrieren müssen, bevor sie die Rolle aktivieren können. Mit diesem Prozess wird sichergestellt, dass es sich bei dem Benutzer, der die Aktivierung anfordert, auch wirklich um den angegebenen Benutzer handelt. Durch die Erzwingung dieser Option werden wichtige Rollen in Situationen geschützt, in denen ein Benutzerkonto möglicherweise kompromittiert wurde. Um von einem berechtigten Mitglied vor der Aktivierung die Ausführung von Azure AD Multi-Factor Authentication anzufordern, aktivieren Sie das Kontrollkästchen **Bei Aktivierung Multi-Factor Authentication anfordern**.
 
 Weitere Informationen finden Sie unter [Multi-Factor Authentication und Privileged Identity Management](pim-how-to-require-mfa.md).
 
@@ -94,7 +100,7 @@ Wenn Sie für die Aktivierung einer Rolle eine Genehmigung anfordern möchten, g
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Aktivieren einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-assign.md)
+- [Aktivieren einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-activate.md)
 - [Zuweisen einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-assign.md)
 - [Entfernen oder Aktualisieren der Zuweisung einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-update-remove.md)
-- [Rollendefinitionen in Azure AD](../users-groups-roles/directory-assign-admin-roles.md)
+- [Rollendefinitionen in Azure AD](../roles/permissions-reference.md)

@@ -2,21 +2,23 @@
 title: Konfigurieren eines Containers für die Formularerkennung
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie den Container für die Formularerkennung konfigurieren, um Formular- und Tabellendaten zu analysieren.
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.author: dapine
-ms.openlocfilehash: af30719ead8464d0420734818203b8070eb5d145
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 07/14/2020
+ms.author: aahi
+ms.openlocfilehash: 324b70fc810acc4faba4f488f821049f7eb0875e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105102"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86538002"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurieren des Containers für die Formularerkennung
+
+[!INCLUDE [Form Recognizer containers limit](includes/container-limit.md)]
 
 Mithilfe von Containern für die Formularerkennung können Sie eine Anwendungsarchitektur erstellen, die sowohl von widerstandsfähigen Cloudfunktionen als auch von der Edgeposition profitieren kann.
 
@@ -45,9 +47,9 @@ Die Einstellung `Billing` gibt den Endpunkt-URI der Ressource für die _Formular
 
 Sie finden diese Einstellung im Azure-Portal in **Form Recognizer Overview** (Übersicht über die Formularerkennung) unter **Endpunkt**.
 
-|Erforderlich| NAME | Datentyp | BESCHREIBUNG |
+|Erforderlich| Name | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
+|Ja| `Billing` | String | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](form-recognizer-container-howto.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
@@ -74,10 +76,10 @@ Der Container für die Formularerkennung erfordert eine Ein- und Ausgabeeinbindu
 
 Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Betriebssystem des Hosts. Darüber hinaus ist der Zugriff auf den Einbindungspunkt des [Hostcomputers](form-recognizer-container-howto.md#the-host-computer) möglicherweise aufgrund eines Konflikts zwischen den vom Docker-Dienstkonto verwendeten Berechtigungen und den für den Einbindungspunkt auf dem Host verwendeten Berechtigungen nicht möglich.
 
-|Optional| NAME | Datentyp | BESCHREIBUNG |
+|Optional| Name | Datentyp | BESCHREIBUNG |
 |-------|------|-----------|-------------|
-|Erforderlich| `Input` | Zeichenfolge | Das Ziel der Eingabeeinbindung. Standardwert: `/input`.    <br><br>Beispiel:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Erforderlich| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`.  <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Erforderlich| `Input` | String | Das Ziel der Eingabeeinbindung. Standardwert: `/input`.    <br><br>Beispiel:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Erforderlich| `Output` | String | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`.  <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“
 

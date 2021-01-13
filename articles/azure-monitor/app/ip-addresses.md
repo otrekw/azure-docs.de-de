@@ -1,44 +1,34 @@
 ---
 title: Von Application Insights und Log Analytics verwendete IP-Adressen | Microsoft-Dokumentation
 description: Für Application Insights erforderliche Serverfirewallausnahmen
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 44d989f8-bae9-40ff-bfd5-8343d3e59358
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/18/2019
-ms.author: mbullwin
-ms.openlocfilehash: d0b3c6124af30cb9ad870ad5f2600495ab872698
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.date: 09/15/2020
+ms.openlocfilehash: a8d2ce28414a80f26218b0d2f3b5c5c2b7c3b301
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983650"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094368"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Von Application Insights und Log Analytics verwendete IP-Adressen
-Der Dienst [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) verwendet eine Reihe von IP-Adressen. Diese müssen Ihnen gegebenenfalls bekannt sein, wenn die überwachte App hinter einer Firewall gehostet wird.
+Der Dienst [Azure Application Insights](./app-insights-overview.md) verwendet eine Reihe von IP-Adressen. Diese müssen Ihnen gegebenenfalls bekannt sein, wenn die überwachte App hinter einer Firewall gehostet wird.
 
 > [!NOTE]
 > Diese Adressen sind zwar statisch, müssen jedoch unter Umständen gelegentlich geändert werden. Sämtlicher Datenverkehr für Application Insights stellt ausgehenden Datenverkehr dar, mit Ausnahme der Überwachung der Verfügbarkeit und Webhooks, für die eingehende Firewallregeln erforderlich sind.
-> 
-> 
 
 > [!TIP]
-> Abonnieren Sie diese Seite als RSS-Feed, indem Sie https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom Ihrem bevorzugten RSS/ATOM-Reader hinzufügen, um Benachrichtigungen zu den neuesten Änderungen zu erhalten.
-> 
-> 
+> Sie können Azure-[Netzwerkdiensttags](../../virtual-network/service-tags-overview.md) verwenden, um bei Verwendung von Azure-Netzwerksicherheitsgruppen den Zugriff zu verwalten. Wenn Sie den Zugriff für Hybrid-/lokale Ressourcen verwalten, können Sie die entsprechenden IP-Adressenlisten als [JSON-Dateien](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) herunterladen, die wöchentlich aktualisiert werden. Um alle Ausnahmen in diesem Artikel abzudecken, müssen Sie für Dienste diese Tags verwenden: ActionGroup, ApplicationInsightsAvailability, AzureMonitor.
+
+Sie können alternativ diese Seite als RSS-Feed abonnieren, indem Sie https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom Ihrem bevorzugten RSS-/ATOM-Reader hinzufügen, um Benachrichtigungen zu den neuesten Änderungen zu erhalten.
+
 
 ## <a name="outgoing-ports"></a>Ausgehende Ports
 In der Serverfirewall müssen einige ausgehende Ports geöffnet werden, damit das Application Insights-SDK und/oder der Statusmonitor Daten an das Portal senden kann:
 
 | Zweck | URL | IP | Ports |
 | --- | --- | --- | --- |
-| Telemetrie |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.162.117<br/>40.73.171.20<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248 | 443 |
-| Live Metrics Stream |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
+| Telemetrie |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170<br/>13.69.65.23<br/>20.44.17.0<br/>20.36.114.207 <br/>51.116.155.246 <br/>51.107.155.178 <br/>51.140.212.64 <br/>13.86.218.255 <br/>20.37.74.240 <br/>65.52.250.236 <br/>13.69.229.240 <br/>52.236.186.210<br/>52.167.107.65 | 443 |
+| Live Metrics Stream | live.applicationinsights.azure.com<br/>rt.applicationinsights.microsoft.com<br/>rt.services.visualstudio.com|23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.20740.117.80.207<br/>157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113| 443 |
 
 ## <a name="status-monitor"></a>Statusmonitor
 Statusmonitorkonfiguration – nur erforderlich, wenn Änderungen vorgenommen werden.
@@ -52,12 +42,31 @@ Statusmonitorkonfiguration – nur erforderlich, wenn Änderungen vorgenommen we
 | Konfiguration |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | Konfiguration |`auth.gfx.ms` | |`443` |
 | Konfiguration |`login.live.com` | |`443` |
-| Installation | `globalcdn.nuget.org`, `packages.nuget.org`, `api.nuget.org/v3/index.json`, `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
+| Installation | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>Verfügbarkeitstests
-Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md) durchgeführt werden. Wenn Sie Webtests für Ihre App durchführen möchten, Ihr Webserver aber auf die Versorgung bestimmter Clients beschränkt ist, müssen Sie eingehenden Datenverkehr von unseren Verfügbarkeitstestservern zulassen.
+Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](./monitor-web-app-availability.md) durchgeführt werden. Wenn Sie Webtests für Ihre App durchführen möchten, Ihr Webserver aber auf die Versorgung bestimmter Clients beschränkt ist, müssen Sie eingehenden Datenverkehr von unseren Verfügbarkeitstestservern zulassen.
+
+
+> [!NOTE]
+> Für Ressourcen in privaten virtuellen Netzwerken, die keine direkte eingehende Kommunikation mit den Agents für Verfügbarkeitstests im öffentlichen Azure zulassen, besteht die einzige Möglichkeit darin, [eigene benutzerdefinierte Verfügbarkeitstests zu erstellen und zu hosten](availability-azure-functions.md).
+
+### <a name="service-tag"></a>Diensttag
+
+Wenn Sie Azure-Netzwerksicherheitsgruppen verwenden, fügen Sie einfach eine **Eingangsportregel** hinzu, um Datenverkehr von Application Insights-Verfügbarkeitstests zuzulassen, indem Sie **Diensttag** als **Quelle** und **ApplicationInsightsAvailability** als **Quelldiensttag** auswählen.
+
+>[!div class="mx-imgBorder"]
+>![Wählen Sie unter „Einstellungen“ die Option „Eingangssicherheitsregeln“ und dann am oberen Rand der Registerkarte „Hinzufügen“ aus. ](./media/ip-addresses/add-inbound-security-rule.png)
+
+>[!div class="mx-imgBorder"]
+>![Registerkarte „Eingangssicherheitsregel hinzufügen“](./media/ip-addresses/add-inbound-security-rule2.png)
 
 Öffnen Sie die Ports 80 (HTTP) und 443 (HTTPS) für eingehenden Datenverkehr von folgenden Adressen (die IP-Adressen sind nach Speicherort gruppiert):
+
+### <a name="addresses-grouped-by-location"></a>Nach Speicherort gruppierte Adressen
+
+> [!NOTE]
+> Diese Adressen sind anhand der Notation für klassenloses domänenübergreifendes Routing (Classless Inter-Domain Routing, CIDR) aufgelistet. Das bedeutet, dass ein Eintrag wie z. B. `51.144.56.112/28` 16 IP-Adressen von `51.144.56.112` bis `51.144.56.127` entspricht.
 
 ```
 Australia East
@@ -167,19 +176,38 @@ East US
 
 ```  
 
-## <a name="application-insights-api"></a>Application Insights API
-| Zweck | URI | IP | Ports |
-| --- | --- | --- | --- |
-| API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80, 443 |
-| API-Dokumentation |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80, 443 |
-| Azure-Erweiterung für Pipelineanmerkungen |aigs1.aisvc.visualstudio.com |dynamisch|443 |
+#### <a name="azure-government"></a>Azure Government
 
-## <a name="log-analytics-api"></a>Log Analytics-API
+Nicht erforderlich, wenn Sie ein Kunde der öffentlichen Azure-Cloud sind.
 
-| Zweck | URI | IP | Ports |
+```
+USGov Virginia
+52.227.229.80/31
+
+
+USGov Arizona
+52.244.35.112/31
+
+
+USGov Texas
+52.243.157.80/31
+
+
+USDoD Central
+52.182.23.96/31
+
+
+USDoD East
+52.181.33.96/31
+
+```
+
+## <a name="application-insights--log-analytics-apis"></a>Application Insights- und Log Analytics-APIs
+
+| Zweck | URI |  IP | Ports |
 | --- | --- | --- | --- |
-| API |api.loganalytics.io<br/>*.api.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80, 443 |
-| API-Dokumentation |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80, 443 |
+| API |`api.applicationinsights.io`<br/>`api1.applicationinsights.io`<br/>`api2.applicationinsights.io`<br/>`api3.applicationinsights.io`<br/>`api4.applicationinsights.io`<br/>`api5.applicationinsights.io`<br/>`dev.applicationinsights.io`<br/>`dev.applicationinsights.microsoft.com`<br/>`dev.aisvc.visualstudio.com`<br/>`www.applicationinsights.io`<br/>`www.applicationinsights.microsoft.com`<br/>`www.aisvc.visualstudio.com`<br/>`api.loganalytics.io`<br/>`*.api.loganalytics.io`<br/>`dev.loganalytics.io`<br>`docs.loganalytics.io`<br/>`www.loganalytics.io` |20.37.52.188 <br/> 20.37.53.231 <br/> 20.36.47.130 <br/> 20.40.124.0 <br/> 20.43.99.158 <br/> 20.43.98.234 <br/> 13.70.127.61 <br/> 40.81.58.225 <br/> 20.40.160.120 <br/> 23.101.225.155 <br/> 52.139.8.32 <br/> 13.88.230.43 <br/> 52.230.224.237 <br/> 52.242.230.209 <br/> 52.173.249.138 <br/> 52.229.218.221 <br/> 52.229.225.6 <br/> 23.100.94.221 <br/> 52.188.179.229 <br/> 52.226.151.250 <br/> 52.150.36.187 <br/> 40.121.135.131 <br/> 20.44.73.196 <br/> 20.41.49.208 <br/> 40.70.23.205 <br/> 20.40.137.91 <br/> 20.40.140.212 <br/> 40.89.189.61 <br/> 52.155.118.97 <br/> 52.156.40.142 <br/> 23.102.66.132 <br/> 52.231.111.52 <br/> 52.231.108.46 <br/> 52.231.64.72 <br/> 52.162.87.50 <br/> 23.100.228.32 <br/> 40.127.144.141 <br/> 52.155.162.238 <br/> 137.116.226.81 <br/> 52.185.215.171 <br/> 40.119.4.128 <br/> 52.171.56.178 <br/> 20.43.152.45 <br/> 20.44.192.217 <br/> 13.67.77.233 <br/> 51.104.255.249 <br/> 51.104.252.13 <br/> 51.143.165.22 <br/> 13.78.151.158 <br/> 51.105.248.23 <br/> 40.74.36.208 <br/> 40.74.59.40 <br/> 13.93.233.49 <br/> 52.247.202.90 |80, 443 |
+| Azure-Erweiterung für Pipelineanmerkungen |aigs1.aisvc.visualstudio.com |dynamisch|443 | 
 
 ## <a name="application-insights-analytics"></a>Application Insights Analytics
 
@@ -212,19 +240,18 @@ Hinweis: Die Domäne „*.loganalytics.io“ ist im Besitz des Log Analytics-Tea
 | Zweck | URI | IP | Ports |
 | --- | --- | --- | --- |
 | JS-SDK-CDN für Application Insights | az416426.vo.msecnd.net | dynamisch | 80, 443 |
-| Java-SDK für Application Insights | aijavasdk.blob.core.windows.net | dynamisch | 80, 443 |
 
-## <a name="alert-webhooks"></a>Webhooks für Warnungen
+## <a name="action-group-webhooks"></a>Webhooks der Aktionsgruppe
 
 | Zweck | IP | Ports
 | --- | --- | --- |
-| Warnungen | 23.96.11.4 | 443 |
+| Warnungen | 13.72.19.232 <br/>13.106.57.181<br/>13.106.54.3<br/>13.106.54.19<br/>13.106.38.142<br/>13.106.38.148<br/>13.106.57.196<br/>13.106.57.197<br/>52.244.68.117<br/>52.244.65.137<br/>52.183.31.0<br/>52.184.145.166<br/>51.4.138.199<br/>51.5.148.86<br/>51.5.149.19 | 443 |
 
 ## <a name="profiler"></a>Profiler
 
 | Zweck | URI | IP | Ports |
 | --- | --- | --- | --- |
-| Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73 | 443
+| Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portal | gateway.azureserviceprofiler.net | dynamisch | 443
 | Storage | *.core.windows.net | dynamisch | 443
 
@@ -235,6 +262,7 @@ Hinweis: Die Domäne „*.loganalytics.io“ ist im Besitz des Log Analytics-Tea
 
 | Zweck | URI | IP | Ports |
 | --- | --- | --- | --- |
-| Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73 | 443
-| Portal | ppe.gateway.azureserviceprofiler.net | dynamisch | 443
+| Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
+| Portal | gateway.azureserviceprofiler.net | dynamisch | 443
 | Storage | *.core.windows.net | dynamisch | 443
+

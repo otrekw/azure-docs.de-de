@@ -1,22 +1,22 @@
 ---
-title: Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory | Microsoft-Dokumentation
+title: Beheben von Problemen mit Legacygeräten mit Hybrid-Azure Active Directory-Einbindung
 description: Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 06/28/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7f02937555f7637a6d2f81be717aaad83bab74f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 2a4e8ec75d6610e19f241d2047518c3a43132a6e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481453"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079018"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory 
 
@@ -40,7 +40,6 @@ Dieser Artikel enthält Anleitungen zur Problembehandlung zum Beheben potenziell
 
 - Azure AD Hybrid Join für Windows-Geräte mit einer Vorgängerversion funktioniert etwas anders als unter Windows 10. Viele Kunden wissen nicht, dass sie Active Directory-Verbunddienste (AD FS) (für Verbunddomänen) oder nahtloses einmaliges Anmelden (für verwaltete Domänen) benötigen.
 - Wenn Kunden mit Verbunddomänen den Dienstverbindungspunkt so konfigurieren, dass er auf den verwalteten Domänennamen zeigt (z.B. „contoso.onmicrosoft.com“ statt „contoso.com“), funktioniert Azure AD Hybrid Join nicht für Windows-Geräte mit einer Vorgängerversion.
-- Die maximale Anzahl von Geräten pro Benutzer gilt derzeit auch für in Azure AD Hybrid eingebundene Geräte mit einer Vorgängerversion. 
 - Das gleiche physische Gerät erscheint mehrmals in Azure AD, wenn sich mehrere Domänenbenutzer auf Geräten mit einer Vorgängerversion anmelden, die in Azure AD Hybrid eingebunden sind.  Beispiel: Wenn *jdoe* und *jharnett* sich auf einem Gerät anmelden, wird für jeden dieser Benutzer eine separate Registrierung (DeviceID) auf der Registerkarte **USER** erstellt. 
 - Aufgrund einer Neuinstallation des Betriebssystems oder einer manuellen Neuregistrierung können Sie mehrere Einträge für ein Gerät auf der Registerkarte „Benutzerinformationen“ abrufen.
 - Bei der anfänglichen Gerätekonfiguration für die Registrierung bzw. den Beitritt von Geräten wird zunächst eine Anmeldung oder Sperren/Entsperren versucht. Es kann eine Verzögerung von bis zu 5 Minuten auftreten, die durch eine Aufgabe der Aufgabenplanung ausgelöst wird. 
@@ -56,9 +55,9 @@ Dieser Artikel enthält Anleitungen zur Problembehandlung zum Beheben potenziell
 
 Dieser Befehl zeigt ein Dialogfeld an, das Ihnen ausführliche Informationen zum Einbindungsstatus bietet.
 
-![Workplace Join für Windows](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/01.png" alt-text="Screenshot: Dialogfeld „Workplace Join for Windows“. Im Text, der eine E-Mail-Adresse enthält, ist angegeben, dass ein bestimmtes Gerät einem Arbeitsplatz hinzugefügt wurde." border="false":::
 
-## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Schritt 2: Bewerten des Status der Azure AD-Hybrideinbindung 
+## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Schritt 2: Bewerten des Status des Azure AD-Hybridbeitritts 
 
 Wenn das Gerät nicht in Azure AD Hybrid eingebunden war, können Sie versuchen, es in den Dienst einzubinden, indem Sie auf die Schaltfläche „Verknüpfen“ klicken. Falls der Versuch fehlschlägt, werden die Fehlerdetails angezeigt.
 
@@ -66,7 +65,7 @@ Wenn das Gerät nicht in Azure AD Hybrid eingebunden war, können Sie versuchen,
 
 - AD FS oder Azure AD ist falsch konfiguriert
 
-    ![Workplace Join für Windows](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/02.png" alt-text="Screenshot: Dialogfeld „Workplace Join for Windows“. Im Text ist angegeben, dass während der Kontoauthentifizierung ein Fehler aufgetreten ist." border="false":::
     
    - „Autoworkplace.exe“ kann sich nicht unbeaufsichtigt bei Azure AD oder AD FS authentifizieren. Die Fehlerursache können eine fehlende bzw. falsche Konfiguration von AD FS (für Verbunddomänen) oder des nahtlosen einmaligen Azure AD-Anmeldens (für verwaltete Domänen) oder aber Netzwerkprobleme sein. 
    - Möglicherweise ist die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für den Benutzer aktiviert/konfiguriert, und „WIAORMULTIAUTHN“ nicht auf dem AD FS-Server konfiguriert. 
@@ -77,7 +76,7 @@ Wenn das Gerät nicht in Azure AD Hybrid eingebunden war, können Sie versuchen,
    - Ihre Organisation verwendet nahtloses einmaliges Azure AD-Anmelden, `https://autologon.microsoftazuread-sso.com` oder `https://aadg.windows.net.nsatc.net` ist nicht in den IE-Intraneteinstellungen des Geräts vorhanden, und **Updates der Statusleiste über ein Skript zulassen** ist nicht für die Intranetzone aktiviert.
 - Sie sind nicht als Domänenbenutzer angemeldet
 
-   ![Workplace Join für Windows](./media/troubleshoot-hybrid-join-windows-legacy/03.png)
+   :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/03.png" alt-text="Screenshot: Dialogfeld „Workplace Join for Windows“. Im Text ist angegeben, dass während der Kontoüberprüfung ein Fehler aufgetreten ist." border="false":::
 
    Dieses Problem kann aus verschiedenen Gründen auftreten:
 
@@ -85,11 +84,11 @@ Wenn das Gerät nicht in Azure AD Hybrid eingebunden war, können Sie versuchen,
    - Der Client kann keine Verbindung mit einem Domänencontroller herstellen.    
 - Ein Kontingent wurde erreicht
 
-    ![Workplace Join für Windows](./media/troubleshoot-hybrid-join-windows-legacy/04.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/04.png" alt-text="Screenshot: Dialogfeld „Workplace Join for Windows“. Im Text ist ein Fehler angegeben, da der Benutzer die maximale Anzahl von eingebundenen Geräten erreicht hat." border="false":::
 
 - Der Dienst antwortet nicht 
 
-    ![Workplace Join für Windows](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="Screenshot: Dialogfeld „Workplace Join for Windows“. Im Text ist angegeben, dass ein Fehler aufgetreten ist, weil der Server nicht reagiert hat." border="false":::
 
 Die Statusinformationen finden Sie auch im Ereignisprotokoll unter **Anwendungs- und Dienstprotokolle\Microsoft-Workplace Join**.
   

@@ -1,98 +1,172 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Data Factory-Dokumentation
+summary: Azure Data Factory ist der ETL-Clouddienst von Azure für die serverlose Datenintegration und Datentransformation mit horizontaler Skalierung.  Der Dienst bietet eine Benutzeroberfläche ohne Code für die intuitive Erstellung sowie Überwachung und Verwaltung über eine zentrale Konsole. Sie können vorhandene SSIS-Pakete auch per Lift & Shift in Azure übertragen und bei voller Kompatibilität in ADF ausführen. SSIS Integration Runtime bietet einen vollständig verwalteten Dienst, sodass Sie sich keine Gedanken über die Infrastrukturverwaltung machen müssen.
 metadata:
-  title: 'Dokumentation für Azure Data Factory – Tutorials, API-Referenz | Microsoft-Dokumentation'
-  description: 'Hier erfahren Sie, wie Sie mithilfe von Data Factory automatisierte bidirektionale Datenpipelines für lokale und cloudbasierte Quellen einrichten, um Daten für die Analyse zu verschieben und zu verarbeiten.'
+  title: Azure Data Factory-Dokumentation
+  description: Hier erfahren Sie, wie mithilfe von Data Factory (einem cloudbasierten Datenintegrationsdienst) Dienste für die Speicherung, Verschiebung und Verarbeitung von Daten in automatisierten Datenpipelines kombinieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Datenpipelines einrichten und verwalten und wie Sie zu analysierende Daten verschieben und transformieren.
   services: data-factory
-  author: djpmsft
-  ms.author: daperlov
-  manager: craigg
   ms.service: data-factory
-  ms.tgt_pltfrm: na
-  ms.topic: overview
-  ms.date: 08/06/2018
-abstract:
-  description: 'Hier erfahren Sie, wie mithilfe von Data Factory (einem cloudbasierten Datenintegrationsdienst) Dienste für die Speicherung, Verschiebung und Verarbeitung von Daten in automatisierten Datenpipelines kombinieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Datenpipelines einrichten und verwalten und wie Sie zu analysierende Daten verschieben und transformieren. <p>Wenn Sie V1 des Data Factory-Diensts verwenden, lesen Sie die <a href=/azure/data-factory/v1/data-factory-introduction>V1-Dokumentation.</a></p>'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: 'Neue Funktionen für die moderne Datenintegration in der Cloud (1: 19:22)'
-    href: 'https://channel9.msdn.com/Events/Build/2018/BRK2204/player'
-    width: 250
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'In den folgenden Schnellstartanleitungen erfahren Sie, wie Sie eine Data Factory-Pipeline zum Verschieben und Verarbeiten von Daten erstellen:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/data-factory/media/index/portal.svg
-            text: Data Factory-Benutzeroberfläche
-            href: /azure/data-factory/quickstart-create-data-factory-portal
-          - image:
-              src: /azure/data-factory/media/index/copy-data-tool.png
-            text: Tool zum Kopieren von Daten
-            href: /azure/data-factory/quickstart-create-data-factory-copy-data-tool
-          - image:
-              src: /azure/data-factory/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/data-factory/quickstart-create-data-factory-powershell
-          - image:
-              src: /azure/data-factory/media/index/logo_net.svg
-            text: .NET
-            href: /azure/data-factory/quickstart-create-data-factory-dot-net
-          - image:
-              src: /azure/data-factory/media/index/logo_python.svg
-            text: Python
-            href: /azure/data-factory/quickstart-create-data-factory-python
-          - image:
-              src: /azure/data-factory/media/index/logo_rest.svg
-            text: REST
-            href: /azure/data-factory/quickstart-create-data-factory-rest-api
-          - image:
-              src: /azure/data-factory/media/index/logo_azure_resource_manager.svg
-            text: Resource Manager-Vorlage
-            href: /azure/data-factory/quickstart-create-data-factory-resource-manager-template
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie eine Data Factory erstellen und überwachen:'
-      - type: list
-        style: unordered
-        items:
-          - html: Kopieren von Daten in der Cloud – <a href="/azure/data-factory/tutorial-copy-data-tool">Tool zum Kopieren von Daten</a> | <a href="/azure/data-factory/tutorial-copy-data-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-copy-data-dot-net">.NET</a>
-          - html: Kopieren lokaler Daten in die Cloud – <a href="/azure/data-factory/tutorial-hybrid-copy-data-tool">Tool zum Kopieren von Daten | <a href="/azure/data-factory/tutorial-hybrid-copy-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-hybrid-copy-powershell">Azure PowerShell</a>
-          - html: Massenkopieren von Daten – <a href="/azure/data-factory/tutorial-bulk-copy-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-bulk-copy">Azure PowerShell</a>
-          - html: Inkrementelles Kopieren von Daten – <a href="/azure/data-factory/tutorial-incremental-copy-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-incremental-copy-powershell">Azure PowerShell</a>
-          - html: Transformieren von Daten in der Cloud mit Spark – <a href="/azure/data-factory/tutorial-transform-data-spark-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-transform-data-spark-powershell">Azure PowerShell</a>
-          - html: Transformieren von Daten im virtuellen Netzwerk – <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network">Azure PowerShell</a>
-          - html: 'Hinzufügen von Verzweigung und Verkettung: <a href="/azure/data-factory/tutorial-control-flow-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>'
-          - html: 'Ausführen von SSIS-Paketen in Azure: <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">Data Factory-Benutzeroberfläche</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>'
-          - html: 'Continuous Integration und Continuous Delivery (CI/CD) in Azure Data Factory: <a href="/azure/data-factory/continuous-integration-deployment">Data Factory-Benutzeroberfläche</a>'
-  - title: Beispiele
-    items:
-      - type: paragraph
-        text: Verwenden Sie die folgenden Beispiele zum Arbeiten mit Data Factory
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/data-factory/samples-powershell">PowerShell</a>
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Befehlszeile
-            html: <p><a href="/powershell/module/az.datafactory/">Azure PowerShell</a></p>
-          - title: Sprachen
-            html: <p><a href="/dotnet/api/microsoft.azure.management.datafactory">.NET</a></p><p><a href="/python/api/overview/azure/datafactory?view=azure-python">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/datafactory">REST-API</a></p>
+  ms.topic: landing-page
+  ms.collection: collection
+  author: markingmyname
+  ms.author: maghan
+  ms.date: 10/02/2019
+  ms.openlocfilehash: 58e98721c443b0c4ecfce9bbfff88e7adf323342
+  ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/27/2020
+  ms.locfileid: "92635744"
+landingContent:
+- title: Informationen zu Azure Data Factory
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Data Factory?
+      url: ./introduction.md
+  - linkListType: reference
+    links:
+    - text: Whitepaper
+      url: ./whitepapers.md
+    - text: Preise
+      url: https://azure.microsoft.com/pricing/details/data-factory/
+    - text: Grundlegendes zu Preisen anhand von Beispielen
+      url: ./pricing-concepts.md
+    - text: Aktuelle Featureupdates
+      url: https://azure.microsoft.com/updates/?tag=data-factory
+    - text: ADF-Blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Data-Factory/bg-p/AzureDataFactoryBlog
+    - text: Anfordern eines Features
+      url: https://feedback.azure.com/forums/270578-azure-data-factory
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Data Factory-Benutzeroberfläche
+      url: ./quickstart-create-data-factory-portal.md
+    - text: Tool zum Kopieren von Daten
+      url: ./quickstart-create-data-factory-copy-data-tool.md
+    - text: Azure PowerShell
+      url: ./quickstart-create-data-factory-powershell.md
+    - text: .NET
+      url: ./quickstart-create-data-factory-dot-net.md
+    - text: Python
+      url: ./quickstart-create-data-factory-python.md
+    - text: REST
+      url: ./quickstart-create-data-factory-rest-api.md
+    - text: Resource Manager-Vorlage
+      url: ./quickstart-create-data-factory-resource-manager-template.md
+- title: Datenverschiebung
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Kopieraktivität in Azure Data Factory
+      url: ./copy-activity-overview.md
+    - text: Leistungsoptimierung beim Kopieren
+      url: ./copy-activity-performance.md
+  - linkListType: overview
+    links:
+    - text: Data Lake- und Data Warehouse-Migration
+      url: ./data-migration-guidance-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Kopieren von Daten in die Cloud
+      url: ./tutorial-copy-data-tool.md
+    - text: Kopieren von lokalen Daten in die Cloud
+      url: ./tutorial-hybrid-copy-data-tool.md
+    - text: Massenkopieren von Daten
+      url: ./tutorial-bulk-copy-portal.md
+    - text: Inkrementelles Kopieren von Daten
+      url: ./tutorial-incremental-copy-overview.md
+    - text: Laden von ADLS Gen2
+      url: ./load-azure-data-lake-storage-gen2.md
+    - text: Laden von Azure Synapse Analytics
+      url: ./load-azure-sql-data-warehouse.md
+    - text: Laden von SAP BW
+      url: ./load-sap-bw-data.md
+- title: Datentransformation
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Was sind Zuordnungsdatenflüsse?
+      url: ./concepts-data-flow-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Erstellen eines Datenflusses
+      url: ./data-flow-create.md
+    - text: Ausdruckssprache für Datenflüsse
+      url: ./data-flow-expression-functions.md
+    - text: Debuggen eines Datenflusses
+      url: ./concepts-data-flow-debug-mode.md
+    - text: Ausführen der Datenflussaktivität innerhalb einer Pipeline
+      url: ./control-flow-execute-data-flow-activity.md
+    - text: Überwachen des Datenflusses
+      url: ./concepts-data-flow-monitoring.md
+    - text: Datenflussleistung
+      url: ./concepts-data-flow-performance.md
+- title: Übertragen von SSIS-Paketen per Lift & Shift
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Migrieren von SSIS-Paketen zu Azure SQL Managed Instance
+      url: ./scenario-ssis-migration-ssisdb-mi.md
+  - linkListType: tutorial
+    links:
+    - text: Ausführen von SSIS-Paketen in Azure
+      url: ./tutorial-deploy-ssis-packages-azure.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bereitstellen von SSIS Integration Runtime
+      url: ./create-azure-ssis-integration-runtime.md
+    - text: Hinzufügen von SSIS IR zu einem virtuellen Netzwerk.
+      url: ./join-azure-ssis-integration-runtime-virtual-network.md
+    - text: Ausführen von SSIS-Paketen mit der Aktivität „SSIS-Paket ausführen“
+      url: ./how-to-invoke-ssis-package-ssis-activity.md
+    - text: Planen von SSIS Integration Runtime
+      url: ./how-to-schedule-azure-ssis-integration-runtime.md
+    - text: Anpassen der Einrichtung für SSIS IR
+      url: ./how-to-configure-azure-ssis-ir-custom-setup.md
+    - text: Installieren von lizenzierten Komponenten für SSIS IR
+      url: ./how-to-develop-azure-ssis-ir-licensed-components.md
+- title: Sicherheit
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Sicherheitshinweise für die Datenverschiebung
+      url: ./data-movement-security-considerations.md
+    - text: Verwaltete Identität für Data Factory
+      url: ./data-factory-service-identity.md
+    - text: Speichern von Anmeldeinformationen in Azure Key Vault
+      url: ./store-credentials-in-key-vault.md
+- title: Erstellen, Überwachen und Verwalten
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Visuelles Überwachen von Azure Data Factory
+      url: ./author-visually.md
+    - text: Quellcodeverwaltung
+      url: ./source-control.md
+    - text: Continuous Integration und Continuous Delivery
+      url: ./continuous-integration-deployment.md
+    - text: Iteratives Entwickeln und Debuggen
+      url: ./iterative-development-debugging.md
+    - text: Visuelle Überwachung
+      url: ./monitor-visually.md
+    - text: Überwachung mit Azure Monitor
+      url: ./monitor-using-azure-monitor.md
+    - text: Überwachung mit SDKs
+      url: ./monitor-programmatically.md
+- title: Languages
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.datafactory/
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.datafactory/
+    - text: Python
+      url: /python/api/overview/azure/datafactory?view=azure-python
+    - text: REST
+      url: /rest/api/datafactory/
+    - text: Resource Manager-Vorlage
+      url: /azure/templates/microsoft.datafactory/allversions

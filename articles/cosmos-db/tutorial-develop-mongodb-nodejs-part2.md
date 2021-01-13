@@ -1,6 +1,5 @@
 ---
-title: 'Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB: Erstellen einer Node.js Express-App'
-titleSuffix: Azure Cosmos DB
+title: Erstellen einer Node.js Express-App mit der Azure Cosmos DB-API für MongoDB (Teil 2)
 description: Teil 2 der Tutorialreihe zur Erstellung einer MongoDB-App mit Angular und Note in Azure Cosmos DB unter Verwendung der gleichen APIs wie für MongoDB
 author: johnpapa
 ms.service: cosmos-db
@@ -11,16 +10,17 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 8dd725bed6364979a9388d5741bf17f667bda0b7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e3af713d6e120e66a0cde5116f4556bb8caedf55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435268"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097847"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB: Erstellen einer Node.js Express-App
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-Dieses mehrteilige Tutorial zeigt, wie Sie eine in Node.js geschriebene neue App mit Express und Angular erstellen und mit Ihrem [Cosmos-Konto verbinden, das mit der Cosmos DB-API für MongoDB](mongodb-introduction.md) konfiguriert wurde.
+Dieses mehrteilige Tutorial zeigt, wie Sie eine in Node.js geschriebene neue App mit Express und Angular erstellen und mit Ihrem [Cosmos-Konto verbinden, das mit der API für MongoDB von Cosmos DB](mongodb-introduction.md) konfiguriert wurde.
 
 Teil 2 des Tutorials baut auf der [Einführung](tutorial-develop-mongodb-nodejs.md) auf und umfasst folgende Aufgaben:
 
@@ -82,9 +82,9 @@ Weitere Voraussetzungen für dieses Tutorial:
 
 ## <a name="build-the-app-using-the-express-framework"></a>Erstellen der App mithilfe des Express-Frameworks
 
-1. Klicken Sie in Visual Studio Code im Bereich **Explorer** mit der rechten Maustaste auf den Ordner **src**, klicken Sie auf **Neuer Ordner**, und nennen Sie den neuen Ordner *server*.
+1. Klicken Sie in Visual Studio Code im Bereich **Explorer** mit der rechten Maustaste auf den Ordner **src** , klicken Sie auf **Neuer Ordner** , und nennen Sie den neuen Ordner *server*.
 
-2. Klicken Sie im Bereich **Explorer** mit der rechten Maustaste auf den Ordner **server**, klicken Sie auf **Neue Datei**, und nennen Sie die neue Datei *index.js*.
+2. Klicken Sie im Bereich **Explorer** mit der rechten Maustaste auf den Ordner **server** , klicken Sie auf **Neue Datei** , und nennen Sie die neue Datei *index.js*.
 
 3. Kehren Sie zur Eingabeaufforderung zurück, und verwenden Sie den unten angegebenen Befehl, um die Komponente „body-parser“ zu installieren. Mit dieser Komponente kann die App die über die APIs übergebenen JSON-Daten analysieren.
 
@@ -126,7 +126,7 @@ Weitere Voraussetzungen für dieses Tutorial:
    app.listen(port, () => console.log(`API running on localhost:${port}`));
    ```
 
-5. Klicken Sie in Visual Studio Code im Bereich **Explorer** mit der rechten Maustaste auf den Ordner **server**, und klicken Sie anschließend auf **Neue Datei**. Nennen Sie die neue Datei *routes.cs*. 
+5. Klicken Sie in Visual Studio Code im Bereich **Explorer** mit der rechten Maustaste auf den Ordner **server** , und klicken Sie anschließend auf **Neue Datei**. Nennen Sie die neue Datei *routes.cs*. 
 
 6. Kopieren Sie den unten angegebenen Code in **routes.js**. Für diesen Code gilt Folgendes:
    * Er verweist auf den Express-Router.
@@ -148,11 +148,11 @@ Weitere Voraussetzungen für dieses Tutorial:
 
 7. Er speichert alle geänderten Dateien. 
 
-8. Klicken Sie in Visual Studio Code auf die Schaltfläche **Debuggen** ![Symbol „Debuggen“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png), und klicken Sie auf die Zahnradschaltfläche ![Zahnradschaltfläche in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png). Die neue Datei „launch.json“ wird in Visual Studio Code geöffnet.
+8. Klicken Sie in Visual Studio Code auf die Schaltfläche **Debuggen** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png"::: und auf die Zahnradschaltfläche :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png":::. Die neue Datei „launch.json“ wird in Visual Studio Code geöffnet. 
 
 8. Ändern Sie `"${workspaceFolder}\\server"` in Zeile 11 der Datei „launch.json“ in `"program": "${workspaceRoot}/src/server/index.js"`, und speichern Sie die Datei.
 
-9. Klicken Sie auf die Schaltfläche **Debugging starten** ![Symbol „Debugging starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png), um die App auszuführen.
+9. Klicken Sie auf die Schaltfläche **Debuggen starten** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png":::, um die App auszuführen.
 
     Die App sollte ohne Fehler ausgeführt werden.
 
@@ -160,11 +160,11 @@ Weitere Voraussetzungen für dieses Tutorial:
 
 1. Öffnen Sie Postman, und geben Sie `http://localhost:3000/api/heroes` in das Feld „GET“ ein. 
 
-2. Klicken Sie auf die Schaltfläche **Senden**, und rufen Sie die JSON-Antwort aus der App ab. 
+2. Klicken Sie auf die Schaltfläche **Senden** , und rufen Sie die JSON-Antwort aus der App ab. 
 
     Diese Antwort zeigt, dass die App aktiv ist und lokal ausgeführt wird. 
 
-    ![Postman mit der Anforderung und der Antwort](./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png" alt-text="Postman mit der Anforderung und der Antwort":::
 
 
 ## <a name="next-steps"></a>Nächste Schritte

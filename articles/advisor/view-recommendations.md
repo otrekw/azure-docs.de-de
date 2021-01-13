@@ -1,18 +1,14 @@
 ---
 title: Anzeigen relevanter Azure Advisor-Empfehlungen
 description: Informationen zum Anzeigen und Filtern von Azure Advisor-Empfehlungen für mehr Übersichtlichkeit.
-services: advisor
-author: kasparks
-ms.service: advisor
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: kasparks
-ms.openlocfilehash: 9f599a63fd5f52420f1b79e769d4f7bca9683b32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 43bdaba7d774bba8857a6eb3ef296d7ab8e1c264
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467847"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90986868"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>Anzeigen relevanter Azure Advisor-Empfehlungen
 
@@ -38,7 +34,7 @@ So nehmen Sie Änderungen im Azure-Portal vor
 
 Konfigurationseinstellungen bleiben aktiv, bis Sie geändert werden. Wenn Sie die Empfehlungen für eine einzelne Ansicht einschränken möchten, können Sie dazu die Dropdownfelder oben im Advisor-Bereich verwenden. In den Bereichen „Übersicht“, „Hochverfügbarkeit“, „Sicherheit“, „Leistung“, „Kosten“ und „Alle Empfehlungen“ können Sie die Abonnements, Ressourcentypen und den gewünschten Empfehlungsstatus auswählen.
 
-   ![Advisor-Menü zum Filtern](./media/view-recommendations/filtering.png)
+   :::image type="content" source="./media/view-recommendations/filtering.png" alt-text="Screenshot: Azure Advisor zeigt Filteroptionen an.":::
 
 ## <a name="dismissing-and-postponing-recommendations"></a>Ablehnen und Zurückstellen von Empfehlungen
 
@@ -51,7 +47,7 @@ Azure Advisor ermöglicht Ihnen, Empfehlungen für eine einzelne Ressource abzul
 1. Wählen Sie in der Liste „Empfehlungen“ eine Empfehlung aus.
 1. Wählen Sie für eine Empfehlung entweder „Zurückstellen“ oder „Schließen“ aus, um sie zurückzustellen oder abzulehnen.
 
-     ![Advisor-Menü zum Filtern](./media/view-recommendations/postpone-dismiss.png)
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss.png" alt-text="Screenshot: Azure Advisor zeigt Filteroptionen an.":::
 
 ### <a name="postpone-or-dismiss-a-multiple-recommendations-in-the-azure-portal"></a>Zurückstellen oder Ablehnen mehrerer Empfehlungen im Azure-Portal
 
@@ -61,7 +57,7 @@ Azure Advisor ermöglicht Ihnen, Empfehlungen für eine einzelne Ressource abzul
 1. Aktivieren Sie das Kontrollkästchen links neben der Zeile für alle Ressourcen, für die Sie die Empfehlung zurückstellen oder ablehnen möchten.
 1. Klicken Sie links oben in der Tabelle auf **Verschieben** oder **Schließen**.
 
-     ![Advisor-Menü zum Filtern](./media/view-recommendations/postpone-dismiss-multiple.png)
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss-multiple.png" alt-text="Screenshot: Azure Advisor zeigt Filteroptionen an.":::
 
 > [!NOTE]
 > Sie benötigen die Berechtigung „Mitwirkender“ oder „Besitzer“, um eine Empfehlung abzulehnen oder zurückzustellen. Erfahren Sie mehr zu Berechtigungen in Azure Advisor.
@@ -77,7 +73,7 @@ Sie können eine Empfehlung reaktivieren, die zurückgestellt oder abgelehnt wur
 
 1. Ändern Sie den Filter im Bereich „Übersicht“ in **Verschoben**. Advisor zeigt zurückgestellte oder abgelehnte Empfehlungen.
 
-    ![Advisor-Menü zum Filtern](./media/view-recommendations/activate-postponed.png)
+    :::image type="content" source="./media/view-recommendations/activate-postponed.png" alt-text="Screenshot: Azure Advisor zeigt Filteroptionen an.":::
 
 1. Wählen Sie eine Kategorie aus, um **zurückgestellte** und **abgelehnte** Empfehlungen einzublenden.
 
@@ -85,7 +81,7 @@ Sie können eine Empfehlung reaktivieren, die zurückgestellt oder abgelehnt wur
 
 1. Klicken Sie am Ende der Zeile auf **Aktivieren**. Nach dem Klicken ist die Empfehlung für diese Ressource aktiv und wird daher aus dieser Tabelle entfernt. Die Empfehlung wird nun auf der Registerkarte **Aktiv** angezeigt.
  
-     ![Advisor-Menü zum Filtern](./media/view-recommendations/activate-postponed-2.png)
+     :::image type="content" source="./media/view-recommendations/activate-postponed-2.png" alt-text="Screenshot: Azure Advisor zeigt Filteroptionen an.":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

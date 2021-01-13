@@ -1,23 +1,25 @@
 ---
-title: Clientseitige Verschlüsselung mit Python für Microsoft Azure Storage | Microsoft Docs
+title: Clientseitige Verschlüsselung mit Python
+titleSuffix: Azure Storage
 description: Die Azure Storage-Clientbibliothek für Python unterstützt die clientseitige Verschlüsselung. Dies bietet maximale Sicherheit für Ihre Azure Storage-Anwendungen.
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: python
-ms.topic: article
-ms.date: 05/11/2017
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: cd8ba51b960703fa25371d874ed2bb50e7df2fde
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360042"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008928"
 ---
-# <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Clientseitige Verschlüsselung mit Python für Microsoft Azure Storage
+# <a name="client-side-encryption-with-python"></a>Clientseitige Verschlüsselung mit Python
+
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Übersicht
@@ -51,8 +53,8 @@ Die Entschlüsselung über das Umschlagverfahren funktioniert wie folgt:
 ## <a name="encryption-mechanism"></a>Verschlüsselungsmechanismus
 Die Speicherclientbibliothek verwendet [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) , um Benutzerdaten zu verschlüsseln. Insbesondere wird der [CBC-Modus (Blockchiffreverkettung, Cipher Block Chaining)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mit AES verwendet. Da jeder Dienst eine andere Funktionsweise aufweist, werden die Dienste hier erörtert.
 
-### <a name="blobs"></a>Blobs (in englischer Sprache)
-Die Clientbibliothek unterstützt momentan nur die Verschlüsselung vollständiger Blobs. Die Verschlüsselung wird unterstützt, wenn Benutzer die **create**\*-Methoden verwenden. Es werden sowohl vollständige als auch Bereichsdownloads unterstützt, und Uploads und Downloads können parallelisiert werden.
+### <a name="blobs"></a>BLOBs
+Die Clientbibliothek unterstützt momentan nur die Verschlüsselung vollständiger Blobs. Die Verschlüsselung wird unterstützt, wenn Benutzer die **create** _-Methoden verwenden. Es werden sowohl vollständige als auch Bereichsdownloads unterstützt, und Uploads und Downloads können parallelisiert werden.
 
 Bei der Verschlüsselung generiert die Clientbibliothek einen zufälligen Initialisierungsvektor (IV) mit einer Größe von 16 Byte zusammen mit einem zufälligen Inhaltsverschlüsselungsschlüssel (CEK) mit einer Größe von 32 Byte. Mithilfe dieser Informationen wird die Umschlagverschlüsselung der Blobdaten ausgeführt. Der umschlossene CEK und einige zusätzliche Verschlüsselungsmetadaten werden dann als Blobmetadaten zusammen mit dem verschlüsselten Blob für den Dienst gespeichert.
 
@@ -61,9 +63,9 @@ Bei der Verschlüsselung generiert die Clientbibliothek einen zufälligen Initia
 > 
 > 
 
-Beim Herunterladen eines verschlüsselten Blobs wird der Inhalt des gesamten Blobs mit den **get**\*-Hilfsmethoden abgerufen. Der umschlossene CEK wird entpackt und zusammen mit dem IV (in diesem Fall als Blobmetadaten gespeichert) verwendet, um die entschlüsselten Daten an die Benutzer zurückzugeben.
+Beim Herunterladen eines verschlüsselten Blobs wird der Inhalt des gesamten Blobs mit den _*get**_ -Hilfsmethoden abgerufen. Der umschlossene CEK wird entpackt und zusammen mit dem IV (in diesem Fall als Blobmetadaten gespeichert) verwendet, um die entschlüsselten Daten an die Benutzer zurückzugeben.
 
-Beim Herunterladen eines beliebigen Bereichs (**get**\*-Methoden mit übergebenen Bereichsparametern) im verschlüsselten Blob wird der von den Benutzern angegebene Bereich angepasst, um eine kleine Menge zusätzlicher Daten abzurufen, die zum erfolgreichen Entschlüsseln des angeforderten Bereichs verwendet werden können.
+Beim Herunterladen eines beliebigen Bereichs (_*get**_ -Methoden mit übergebenen Bereichsparametern) im verschlüsselten Blob wird der von den Benutzern angegebene Bereich angepasst, um eine kleine Menge zusätzlicher Daten abzurufen, die zum erfolgreichen Entschlüsseln des angeforderten Bereichs verwendet werden können.
 
 Es können nur Blockblobs und Seitenblobs mit diesem Schema verschlüsselt/entschlüsselt werden. Das Verschlüsseln von Anfügeblobs wird zurzeit nicht unterstützt.
 
@@ -112,7 +114,7 @@ Beachten Sie Folgendes: Entitäten werden beim Einfügen in das Batch mithilfe d
 > [!IMPORTANT]
 > Beachten Sie bei Verwendung einer clientseitigen Verschlüsselung die folgenden wichtigen Punkte:
 > 
-> * Verwenden Sie beim Lesen aus einem verschlüsselten Blob oder beim Schreiben in diesen Befehle zum Hochladen des vollständigen Blobs und zum Herunterladen des bereichsbasierten oder vollständigen Blobs. Vermeiden Sie beim Schreiben in einen verschlüsselten Blob Protokollvorgänge wie z. B. "Put Block", "Put Block List", "Write Pages" oder "Clear Pages". Andernfalls wird der verschlüsselte Blob möglicherweise beschädigt und kann nicht mehr gelesen werden.
+> _ Verwenden Sie beim Lesen aus einem verschlüsselten Blob oder beim Schreiben in diesen Befehle zum Hochladen des vollständigen Blobs und zum Herunterladen des bereichsbasierten oder vollständigen Blobs. Vermeiden Sie beim Schreiben in einen verschlüsselten Blob Protokollvorgänge wie z. B. "Put Block", "Put Block List", "Write Pages" oder "Clear Pages". Andernfalls wird der verschlüsselte Blob möglicherweise beschädigt und kann nicht mehr gelesen werden.
 > * Für Tabellen gilt eine ähnliche Einschränkung. Achten Sie darauf, dass Sie beim Aktualisieren verschlüsselter Eigenschaften auch die Verschlüsselungsmetadaten aktualisieren.
 > * Wenn Sie Metadaten für den verschlüsselten Blob festlegen, werden die für die Entschlüsselung erforderlichen verschlüsselungsbezogenen Metadaten möglicherweise überschrieben, da das Festlegen von Metadaten kein additiver Vorgang ist. Dies gilt auch für Momentaufnahmen: Geben Sie während der Erstellung einer Momentaufnahme eines verschlüsselten Blobs keine Metadaten an. Wenn Metadaten festgelegt werden müssen, rufen Sie zunächst die **get_blob_metadata**-Methode auf, um die aktuellen Verschlüsselungsmetadaten abzurufen. Vermeiden Sie zudem gleichzeitige Schreibvorgänge, während Metadaten festgelegt werden.
 > * Aktivieren Sie das **require_encryption**-Flag im Dienstobjekt für Benutzer, die nur mit verschlüsselten Daten arbeiten sollen. Weitere Details finden Sie nachstehend.

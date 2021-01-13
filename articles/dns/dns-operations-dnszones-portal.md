@@ -3,28 +3,27 @@ title: Verwalten von DNS-Zonen in Azure DNS – Azure-Portal | Microsoft-Dokumen
 description: Sie können DNS-Zonen mithilfe des Azure-Portals verwalten. In diesem Artikel wird das Aktualisieren, Löschen und Erstellen von DNS-Zonen in Azure DNS beschrieben.
 services: dns
 documentationcenter: na
-author: vhorne
-manager: timlt
+author: rohinkoul
 ms.service: dns
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
-ms.author: victorh
-ms.openlocfilehash: d0a20de8738e8c7b2719a9de85d5fd16aa5778cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rohink
+ms.openlocfilehash: 51e17812e1116f1e625685d5a818c18e25cdb2da
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60926318"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965798"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Verwalten von DNS-Zonen im Azure-Portal
 
 > [!div class="op_single_selector"]
 > * [Portal](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Klassische Azure-Befehlszeilenschnittstelle](dns-operations-dnszones-cli-nodejs.md)
+> * [Klassische Azure-Befehlszeilenschnittstelle](./dns-operations-dnszones-cli.md)
 > * [Azure-Befehlszeilenschnittstelle](dns-operations-dnszones-cli.md)
 
 In diesem Artikel wird gezeigt, wie DNS-Zonen mithilfe des Azure-Portals verwaltet werden. Sie können Ihre DNS-Zonen auch mithilfe der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](dns-operations-dnszones-cli.md) oder mit Azure [PowerShell](dns-operations-dnszones.md) verwalten.
@@ -43,7 +42,7 @@ In diesem Artikel wird gezeigt, wie DNS-Zonen mithilfe des Azure-Portals verwalt
    |---|---|---|
    |**Name**|contoso.com|Der Name der DNS-Zone.|
    |**Abonnement**|[Ihr Abonnement]|Wählen Sie ein Abonnement aus, in dem die DNS-Zone erstellt werden soll.|
-   |**Ressourcengruppe**|**Neu erstellen:** contosoDNSRG|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des ausgewählten Abonnements eindeutig sein. Weitere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
+   |**Ressourcengruppe**|**Neu erstellen:** contosoDNSRG|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des ausgewählten Abonnements eindeutig sein. Weitere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
    |**Location**|USA (Westen)||
 
 > [!NOTE]

@@ -1,20 +1,19 @@
 ---
-title: 'Konfigurieren von parallel bestehenden ExpressRoute- und Site-to-Site-VPN-Verbindungen: klassisch: Azure | Microsoft-Dokumentation'
+title: 'Konfigurieren von parallel bestehenden ExpressRoute- und S2S-VPN-Verbindungen: klassisch'
 description: Dieser Artikel führt Sie durch die Konfiguration von ExpressRoute- und Standort-zu-Standort-VPN-Verbindungen, die im klassischen Bereitstellungsmodell gleichzeitig bestehen können.
 documentationcenter: na
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: charwen
-ms.custom: seodec18
-ms.openlocfilehash: 70e7c689acac094890545ac1e65374e9377a0be0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: how-to
+ms.date: 12/06/2019
+ms.author: duau
+ms.openlocfilehash: 70407d726b697dd6c4dfb6777cf6c445092d3b73
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370402"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206324"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen (klassisch)
 > [!div class="op_single_selector"]
@@ -54,7 +53,7 @@ Sie können eine Standort-zu-Standort-VPN-Verbindung als Sicherung für ExpressR
 > 
 > 
 
-![Koexistenz](media/expressroute-howto-coexist-classic/scenario1.jpg)
+![Diagramm: Site-to-Site-VPN als Sicherung für ExpressRoute](media/expressroute-howto-coexist-classic/scenario1.jpg)
 
 ### <a name="configure-a-site-to-site-vpn-to-connect-to-sites-not-connected-through-expressroute"></a>Konfigurieren einer Standort-zu-Standort-VPN zum Herstellen einer Verbindung mit Websites, die nicht über ExpressRoute verbunden sind
 Sie können Ihr Netzwerk so konfigurieren, dass einige Sites direkt mit Azure über ein Standort-zu-Standort-VPN und andere über ExpressRoute verbunden sind. 
@@ -78,76 +77,92 @@ Es stehen zwei unterschiedliche Verfahren für die Konfiguration von Verbindunge
   
     In diesem Verfahren erfordert das Erstellen von gleichzeitig bestehenden Verbindungen das Löschen Ihres Gateway löschen und das anschließende Konfigurieren neuer Gateways. Das bedeutet, dass Sie für Ihre standortübergreifenden Verbindungen Ausfallzeiten haben werden, während Sie Ihr Gateway und Ihre Verbindungen löschen und neu erstellen, aber Sie müssen keine Ihrer VMs oder Dienste auf ein neues virtuelles Netzwerk migrieren. Die VMs und Dienste werden immer noch in der Lage sein, über den Load Balancer zu kommunizieren, während Sie Ihr Gateway konfigurieren, wenn sie zu diesem Zweck konfiguriert sind.
 
-## <a name="new"></a>So erstellen Sie ein neues virtuelles Netzwerk und parallele Verbindungen
+## <a name="install-powershell-cmdlets"></a>Installieren von PowerShell-Cmdlets
+
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
+
+## <a name="to-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>So erstellen Sie ein neues virtuelles Netzwerk und parallele Verbindungen
 Dieses Verfahren führt Sie durch das Erstellen eines VNET sowie das Erstellen von gleichzeitig bestehenden Standort-zu-Standort- und ExpressRoute-Verbindungen.
 
-1. Sie müssen die aktuelle Version der Azure PowerShell-Cmdlets installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) . Beachten Sie, dass die Cmdlets, die Sie für diese Konfiguration verwenden, von den Ihnen vertrauten leicht abweichen können. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden. 
-2. Geben Sie Ihrem Virtual Network einen Namen. Weitere Informationen zum Konfigurationsschema finden Sie unter [Konfigurationsschema für Azure Virtual Network](https://msdn.microsoft.com/library/azure/jj157100.aspx).
+1. Sie müssen die aktuelle Version der Azure PowerShell-Cmdlets installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/) . Beachten Sie, dass die Cmdlets, die Sie für diese Konfiguration verwenden, von den Ihnen vertrauten leicht abweichen können. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden. 
+2. Geben Sie Ihrem Virtual Network einen Namen. Weitere Informationen zum Konfigurationsschema finden Sie unter [Konfigurationsschema für Azure Virtual Network](/previous-versions/azure/reference/jj157100(v=azure.100)).
    
     Wenn Sie Ihr Schema erstellen, stellen Sie sicher, dass Sie die folgenden Werte verwenden:
    
    * Das Gateway-Subnetz für das virtuelle Virtual Network muss /27 sein oder ein kürzeres Präfix (wie z. B. /26 oder /25).
    * Der Gateway-Verbindungstyp ist "dediziert".
      
-             <VirtualNetworkSite name="MyAzureVNET" Location="Central US">
-               <AddressSpace>
-                 <AddressPrefix>10.17.159.192/26</AddressPrefix>
-               </AddressSpace>
-               <Subnets>
-                 <Subnet name="Subnet-1">
-                   <AddressPrefix>10.17.159.192/27</AddressPrefix>
-                 </Subnet>
-                 <Subnet name="GatewaySubnet">
-                   <AddressPrefix>10.17.159.224/27</AddressPrefix>
-                 </Subnet>
-               </Subnets>
-               <Gateway>
-                 <ConnectionsToLocalNetwork>
-                   <LocalNetworkSiteRef name="MyLocalNetwork">
-                     <Connection type="Dedicated" />
-                   </LocalNetworkSiteRef>
-                 </ConnectionsToLocalNetwork>
-               </Gateway>
-             </VirtualNetworkSite>
+    ```xml
+    <VirtualNetworkSite name="MyAzureVNET" Location="Central US">
+      <AddressSpace>
+        <AddressPrefix>10.17.159.192/26</AddressPrefix>
+      </AddressSpace>
+      <Subnets>
+        <Subnet name="Subnet-1">
+          <AddressPrefix>10.17.159.192/27</AddressPrefix>
+        </Subnet>
+        <Subnet name="GatewaySubnet">
+          <AddressPrefix>10.17.159.224/27</AddressPrefix>
+          /Subnet>
+      </Subnets>
+      <Gateway>
+        <ConnectionsToLocalNetwork>
+          <LocalNetworkSiteRef name="MyLocalNetwork">
+            <Connection type="Dedicated" />
+          </LocalNetworkSiteRef>
+        </ConnectionsToLocalNetwork>
+      </Gateway>
+    </VirtualNetworkSite>
+    ```
 3. Laden Sie nach dem Erstellen und Konfigurieren Ihrer XML-Schemadatei die Datei hoch. Dadurch wird Ihr Virtual Network erstellt.
    
     Verwenden Sie das folgende Cmdlet zum Hochladen Ihrer Datei und um den Wert mit Ihrem eigenen zu ersetzen.
    
-        Set-AzureVNetConfig -ConfigurationPath 'C:\NetworkConfig.xml'
+    ```azurepowershell
+    Set-AzureVNetConfig -ConfigurationPath 'C:\NetworkConfig.xml'
+    ```
 4. <a name="gw"></a>Erstellen Sie ein ExpressRoute-Gateway. Achten Sie darauf, dass Sie die GatewaySKU als *Standard*, *HighPerformance* oder *UltraPerformance* und den GatewayType als *DynamicRouting* angeben.
    
     Verwenden Sie das folgende Beispiel, um die Werte durch Ihre eigenen zu ersetzen.
-   
-        New-AzureVNetGateway -VNetName MyAzureVNET -GatewayType DynamicRouting -GatewaySKU HighPerformance
+
+    ```azurepowershell
+    New-AzureVNetGateway -VNetName MyAzureVNET -GatewayType DynamicRouting -GatewaySKU HighPerformance
+    ```
 5. Verknüpfen Sie das ExpressRoute-Gateway mit dem ExpressRoute-Schaltkreis. Nachdem dieser Schritt abgeschlossen ist, wird die Verbindung zwischen dem lokalen Netzwerk und Azure durch ExpressRoute eingerichtet.
    
-        New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
+    ```azurepowershell
+    New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
+    ```
 6. <a name="vpngw"></a>Erstellen Sie als Nächstes Ihr Standort-zu-Standort-VPN Gateway. GatewaySKU muss *Standard*, *HighPerformance* oder *UltraPerformance* und GatewayType muss *DynamicRouting* lauten.
    
-        New-AzureVirtualNetworkGateway -VNetName MyAzureVNET -GatewayName S2SVPN -GatewayType DynamicRouting -GatewaySKU  HighPerformance
+    ```azurepowershell
+    New-AzureVirtualNetworkGateway -VNetName MyAzureVNET -GatewayName S2SVPN -GatewayType DynamicRouting -GatewaySKU  HighPerformance
+    ```
    
     Verwenden Sie zum Abrufen der Einstellungen des Virtual Network-Gateway, einschließlich der Gateway-ID und der öffentlichen IP, das`Get-AzureVirtualNetworkGateway` Cmdlet.
    
-        Get-AzureVirtualNetworkGateway
+    ```azurepowershell
+    Get-AzureVirtualNetworkGateway
    
-        GatewayId            : 348ae011-ffa9-4add-b530-7cb30010565e
-        GatewayName          : S2SVPN
-        LastEventData        :
-        GatewayType          : DynamicRouting
-        LastEventTimeStamp   : 5/29/2015 4:41:41 PM
-        LastEventMessage     : Successfully created a gateway for the following virtual network: GNSDesMoines
-        LastEventID          : 23002
-        State                : Provisioned
-        VIPAddress           : 104.43.x.y
-        DefaultSite          :
-        GatewaySKU           : HighPerformance
-        Location             :
-        VnetId               : 979aabcf-e47f-4136-ab9b-b4780c1e1bd5
-        SubnetId             :
-        EnableBgp            : False
-        OperationDescription : Get-AzureVirtualNetworkGateway
-        OperationId          : 42773656-85e1-a6b6-8705-35473f1e6f6a
-        OperationStatus      : Succeeded
+    GatewayId            : 348ae011-ffa9-4add-b530-7cb30010565e
+    GatewayName          : S2SVPN
+    LastEventData        :
+    GatewayType          : DynamicRouting
+    LastEventTimeStamp   : 5/29/2015 4:41:41 PM
+    LastEventMessage     : Successfully created a gateway for the following virtual network: GNSDesMoines
+    LastEventID          : 23002
+    State                : Provisioned
+    VIPAddress           : 104.43.x.y
+    DefaultSite          :
+    GatewaySKU           : HighPerformance
+    Location             :
+    VnetId               : 979aabcf-e47f-4136-ab9b-b4780c1e1bd5
+    SubnetId             :
+    EnableBgp            : False
+    OperationDescription : Get-AzureVirtualNetworkGateway
+    OperationId          : 42773656-85e1-a6b6-8705-35473f1e6f6a
+    OperationStatus      : Succeeded
+    ```
 7. Erstellen Sie eine VPN-Gateway-Entität für einen lokalen Standort. Mit diesem Befehl wird das lokale VPN-Gateway nicht konfiguriert. Stattdessen können Sie mit ihm die Einstellungen des lokalen Gateway bereitstellen, wie z. B. die öffentliche IP-Adresse und der lokale Adressraum, sodass eine Verbindung mit dem Azure-VPN-Gateway hergestellt werden kann.
    
    > [!IMPORTANT]
@@ -157,7 +172,9 @@ Dieses Verfahren führt Sie durch das Erstellen eines VNET sowie das Erstellen v
    
     Ersetzen Sie anhand des folgenden Beispiels die Werte mit Ihren eigenen.
    
-        New-AzureLocalNetworkGateway -GatewayName MyLocalNetwork -IpAddress <MyLocalGatewayIp> -AddressSpace <MyLocalNetworkAddress>
+    ```azurepowershell
+    New-AzureLocalNetworkGateway -GatewayName MyLocalNetwork -IpAddress <MyLocalGatewayIp> -AddressSpace <MyLocalNetworkAddress>
+    ```
    
    > [!NOTE]
    > Wenn Ihr lokales Netzwerk mehrere Routen hat, können Sie diese als ein Array übergeben.  $MyLocalNetworkAddress = @("10.1.2.0/24","10.1.3.0/24","10.2.1.0/24")  
@@ -166,15 +183,17 @@ Dieses Verfahren führt Sie durch das Erstellen eines VNET sowie das Erstellen v
 
     Verwenden Sie zum Abrufen der Einstellungen des Virtual Network-Gateway, einschließlich der Gateway-ID und der öffentlichen IP, das`Get-AzureVirtualNetworkGateway` Cmdlet. Siehe folgendes Beispiel.
 
-        Get-AzureLocalNetworkGateway
+    ```azurepowershell
+    Get-AzureLocalNetworkGateway
 
-        GatewayId            : 532cb428-8c8c-4596-9a4f-7ae3a9fcd01b
-        GatewayName          : MyLocalNetwork
-        IpAddress            : 23.39.x.y
-        AddressSpace         : {10.1.2.0/24}
-        OperationDescription : Get-AzureLocalNetworkGateway
-        OperationId          : ddc4bfae-502c-adc7-bd7d-1efbc00b3fe5
-        OperationStatus      : Succeeded
+    GatewayId            : 532cb428-8c8c-4596-9a4f-7ae3a9fcd01b
+    GatewayName          : MyLocalNetwork
+    IpAddress            : 23.39.x.y
+    AddressSpace         : {10.1.2.0/24}
+    OperationDescription : Get-AzureLocalNetworkGateway
+    OperationId          : ddc4bfae-502c-adc7-bd7d-1efbc00b3fe5
+    OperationStatus      : Succeeded
+    ```
 
 
 1. Konfigurieren Sie Ihr lokales VPN-Gerät für die Verbindung zum neuen Gateway. Verwenden Sie die Informationen, die Sie in Schritt 6 abgerufen haben, wenn Sie Ihr VPN-Gerät konfigurieren. Weitere Informationen zu VPN-Gerätekonfiguration finden Sie unter [VPN-Gerätekonfiguration](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
@@ -182,46 +201,55 @@ Dieses Verfahren führt Sie durch das Erstellen eines VNET sowie das Erstellen v
    
     In diesem Beispiel ist ConnectedEntityId die lokale Gateway-ID, die sich beim Ausführen finden können `Get-AzureLocalNetworkGateway`. Die VirtualNetworkGatewayId können Sie unter Verwendung des `Get-AzureVirtualNetworkGateway` Cmdlet finden. Nach diesem Schritt wird die Verbindung zwischen Ihrem lokalen Netzwerk und Azure über die Standort-zu-Standort-VPN-Verbindung hergestellt.
 
-        New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
+    ```azurepowershell
+    New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
+    ```
 
-## <a name="add"></a>So konfigurieren Sie parallele Verbindungen für ein bereits vorhandenes VNET
+## <a name="to-configure-coexisting-connections-for-an-already-existing-vnet"></a><a name="add"></a>So konfigurieren Sie parallele Verbindungen für ein bereits vorhandenes VNET
 Wenn Sie über ein vorhandenes virtuelles Netzwerk verfügen, prüfen Sie die Größe des Gateway-Subnetzes. Wenn das Gateway-Subnet /28 oder /29 ist, müssen Sie zunächst das Gateway des virtuellen Netzwerks löschen, um die Größe des Gateway-Subnetzes zu erhöhen. Führen Sie dazu die in diesem Abschnitt beschriebenen Schritte aus.
 
 Wenn das Gateway-Subnetz /27 oder größer ist und das virtuelle Netzwerk über ExpressRoute verbunden ist, können Sie die unten beschriebenen Schritte überspringen und direkt mit [„Schritt 6: Erstellen eines Standort-zu-Standort-VPN-Gateways“](#vpngw) (siehe vorheriger Abschnitt) fortfahren.
 
 > [!NOTE]
-> Wenn Sie das vorhandene Gateway löschen, geht Ihre lokale Verbindung mit Ihrem virtuellen Netzwerk verloren, während Sie an dieser Konfiguration arbeiten.
+> Wenn Sie ein vorhandenes Gateway löschen, geht Ihre lokale Verbindung mit Ihrem virtuellen Netzwerk verloren, während Sie an dieser Konfiguration arbeiten.
 > 
 > 
 
-1. Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Weitere Informationen zum Installieren der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) . Beachten Sie, dass die Cmdlets, die Sie für diese Konfiguration verwenden, von den Ihnen vertrauten leicht abweichen können. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden. 
+1. Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/) . Beachten Sie, dass die Cmdlets, die Sie für diese Konfiguration verwenden, von den Ihnen vertrauten leicht abweichen können. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden. 
 2. Löschen Sie das vorhandene ExpressRoute- oder Standort-zu-Standort-VPN Gateway. Nutzen Sie das folgende Cmdlet, um die Werte mit Ihren eigenen auszutauschen.
    
-        Remove-AzureVNetGateway –VnetName MyAzureVNET
+    ```azurepowershell
+    Remove-AzureVNetGateway –VnetName MyAzureVNET
+    ```
 3. Exportieren Sie das Virtual Network-Schema. Nutzen Sie das folgende PowerShell-Cmdlet, um die Werte mit Ihren eigenen auszutauschen.
    
-        Get-AzureVNetConfig –ExportToFile “C:\NetworkConfig.xml”
+    ```azurepowershell
+    Get-AzureVNetConfig –ExportToFile "C:\NetworkConfig.xml"
+    ```
 4. Bearbeiten Sie die Netzwerk-Konfigurationsdateischema, sodass das Gateway-Subnetz /27 ist oder ein kürzeres Präfix (wie z. B. /26 oder /25). Siehe folgendes Beispiel. 
    
    > [!NOTE]
-   > Wenn in Ihrem virtuellen Netzwerk nicht mehr ausreichend IP-Adressen vorhanden sind, um die Größe des Gateway-Subnetzes zu erhöhen, müssen Sie mehr IP-Adressraum hinzufügen. Weitere Informationen zum Konfigurationsschema finden Sie unter [Konfigurationsschema für Azure Virtual Network](https://msdn.microsoft.com/library/azure/jj157100.aspx).
+   > Wenn in Ihrem virtuellen Netzwerk nicht mehr ausreichend IP-Adressen vorhanden sind, um die Größe des Gateway-Subnetzes zu erhöhen, müssen Sie mehr IP-Adressraum hinzufügen. Weitere Informationen zum Konfigurationsschema finden Sie unter [Konfigurationsschema für Azure Virtual Network](/previous-versions/azure/reference/jj157100(v=azure.100)).
    > 
    > 
    
-          <Subnet name="GatewaySubnet">
-            <AddressPrefix>10.17.159.224/27</AddressPrefix>
-          </Subnet>
+    ```xml
+    <Subnet name="GatewaySubnet">
+      <AddressPrefix>10.17.159.224/27</AddressPrefix>
+    </Subnet>
+    ```
 5. Wenn Ihr vorheriges Gateway ein Standort-zu-Standort-VPN war, müssen Sie auch den Verbindungstyp auf **dediziert**ändern.
    
-                 <Gateway>
-                  <ConnectionsToLocalNetwork>
-                    <LocalNetworkSiteRef name="MyLocalNetwork">
-                      <Connection type="Dedicated" />
-                    </LocalNetworkSiteRef>
-                  </ConnectionsToLocalNetwork>
-                </Gateway>
+    ```xml
+    <Gateway>
+      <ConnectionsToLocalNetwork>
+        <LocalNetworkSiteRef name="MyLocalNetwork">
+          <Connection type="Dedicated" />
+        </LocalNetworkSiteRef>
+      </ConnectionsToLocalNetwork>
+    </Gateway>
+    ```
 6. An diesem Punkt verfügen Sie über ein VNet ohne Gateways. Um neue Gateways zu erstellen und Ihre Verbindungen abzuschließen, können Sie mit [Schritt 4: Erstellen eines ExpressRoute-Gateways](#gw)in den vorangegangenen Schritten fortfahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md)
-

@@ -1,56 +1,105 @@
 ---
-title: Azure Data Factory-Mappingdatenfluss – Zeilenänderungstransformation
-description: Hier erfahren Sie, wie Sie das Datenbankziel mithilfe des Azure Data Factory-Mappingdatenflusses für die Zeilenänderungstransformation aktualisieren.
+title: Zeilenänderungstransformation im Zuordnungsdatenfluss
+description: Hier erfahren Sie, wie Sie das Datenbankziel mithilfe der Zeilenänderungstransformation im Zuordnungsdatenfluss aktualisieren.
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: e2cd69d5977b8ad1d9be2a71a006579fe3abfd23
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.custom: seo-lt-2019
+ms.date: 05/06/2020
+ms.openlocfilehash: c3858756a0140481c0ab249e29c95f76c4b90da5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971257"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "82982648"
 ---
-# <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory: Zeilenänderungstransformation
+# <a name="alter-row-transformation-in-mapping-data-flow"></a>Zeilenänderungstransformation im Zuordnungsdatenfluss
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Verwenden Sie die Zeilenänderungstransformation, um Einfüge-, Lösch-, Aktualisierungs- und Upsertrichtlinien für Zeilen festzulegen. Sie können 1: n-Bedingungen als Ausdrücke hinzufügen. Diese Bedingungen müssen in der Reihenfolge ihrer Priorität angegeben werden, da jede Zeile mit der Richtlinie gekennzeichnet wird, die dem ersten übereinstimmenden Ausdruck entspricht. Jede dieser Bedingungen kann dazu führen, dass für eine Zeile (oder für mehrere Zeilen) ein Einfüge-, Aktualisierungs-, Lösch- oder Upsertvorgang ausgeführt wird. Die Zeilenänderung kann sowohl DDL- als auch DML-Aktionen für Ihre Datenbank generieren.
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+![Zeilenänderungseinstellungen](media/data-flow/alter-row1.png "Zeilenänderungseinstellungen")
 
-![Einstellungen für Zeilenänderungen](media/data-flow/alter-row1.png "Einstellungen für Zeilenänderungen")
+Zeilenänderungstransformationen können nur für Datenbanksenken oder Cosmos DB-Senken in Ihrem Datenfluss verwendet werden. Die Aktionen, die Sie Zeilen zuweisen (Einfügen, Aktualisieren, Löschen, Upsert), werden während Debugsitzungen nicht ausgeführt. Führen Sie eine Aktivität des Typs „Datenfluss ausführen“ in einer Pipeline aus, um die Richtlinien für Zeilenänderungen auf Ihre Datenbanktabellen anzuwenden.
 
-> [!NOTE]
-> Zeilenänderungstransformationen können nur für Datenbanksenken in Ihrem Datenfluss verwendet werden. Die Aktionen, die Sie Zeilen zuweisen (Einfügen, Aktualisieren, Löschen, Upsert), werden nicht während Debugsitzungen ausgeführt. Sie müssen einer Pipeline eine Aufgabe zum Ausführen des Datenflusses hinzufügen und das Pipelinedebugging oder Trigger verwenden, um die Zeilenänderungsrichtlinien auf Ihre Datenbanktabellen anzuwenden.
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vJYc]
 
-## <a name="indicate-a-default-row-policy"></a>Angeben einer Standardzeilenrichtlinie
+## <a name="specify-a-default-row-policy"></a>Angeben einer Standardzeilenrichtlinie
 
-Erstellen Sie eine Zeilenänderungstransformation, und geben Sie eine Zeilenrichtlinie mit der Bedingung `true()` an. Jede Zeile, die keinen der zuvor definierten Ausdrücke enthält, wird für die angegebene Zeilenrichtlinie gekennzeichnet. Standardmäßig wird jede Zeile, die keinen bedingten Ausdruck erfüllt, für `Insert` gekennzeichnet.
+Erstellen Sie eine Zeilenänderungstransformation, und geben Sie eine Zeilenrichtlinie mit der Bedingung `true()` an. Jede Zeile, die mit keinem der zuvor definierten Ausdrücke übereinstimmt, wird für die angegebene Zeilenrichtlinie gekennzeichnet. Standardmäßig wird jede Zeile, die mit keinem bedingten Ausdruck übereinstimmt, für `Insert` gekennzeichnet.
 
-![Zeilenänderung mit einer Richtlinie](media/data-flow/alter-row4.png "Zeilenänderung mit einer Richtlinie")
+![Richtlinie für Zeilenänderungen](media/data-flow/alter-row4.png "Richtlinie für Zeilenänderungen")
 
 > [!NOTE]
 > Wenn Sie alle Zeilen mit einer Richtlinie kennzeichnen möchten, können Sie eine Bedingung für diese Richtlinie erstellen und `true()` als Bedingung angeben.
 
-## <a name="view-policies"></a>Anzeigen von Richtlinien
+## <a name="view-policies-in-data-preview"></a>Anzeigen von Richtlinien in der Datenvorschau
 
-Aktivieren Sie den Datenfluss-Debugmodus, um die Ergebnisse der Zeilenänderungsrichtlinien im Datenvorschaubereich anzuzeigen. Wenn Sie eine Zeilenänderung im Datenfluss-Debugmodus ausführen, werden keine DDL- oder DML-Aktionen für Ihr Ziel generiert. Damit diese Aktionen ausgeführt werden, muss der Datenfluss innerhalb einer Aufgabe zum Ausführen des Datenflusses in einer Pipeline ausgeführt werden.
+Verwenden Sie den [Debugmodus](concepts-data-flow-debug-mode.md), um die Ergebnisse Ihrer Richtlinien für Zeilenänderungen im Datenvorschaubereich anzuzeigen. Eine Datenvorschau einer Zeilenänderungstransformation erzeugt keine DDL- oder DML-Aktionen für Ihr Ziel.
 
-![Zeilenänderungsrichtlinien](media/data-flow/alter-row3.png "Zeilenänderungsrichtlinien")
+![Richtlinien für Zeilenänderungen](media/data-flow/alter-row3.png "Richtlinien für Zeilenänderungen")
 
-Dadurch können Sie den Zustand der einzelnen Zeilen auf der Grundlage Ihrer Bedingungen überprüfen und anzeigen. Die in Ihrem Datenfluss ausgeführten Einfüge-, Aktualisierungs-, Lösch- und Upsertaktionen werden jeweils durch ein Symbol dargestellt, um anzugeben, welche Aktion erfolgt, wenn der Datenfluss innerhalb einer Pipeline ausgeführt wird.
+Jede Richtlinie für Zeilenänderungen wird durch ein Symbol dargestellt, das angibt, ob eine Aktion des Typs „Einfügen“, „Aktualisieren“, „Upsert“ oder „Löschen“ ausgeführt wird. Am Anfang des Kopfteils wird angezeigt, auf wie viele Zeilen sich die jeweilige Richtlinie in der Vorschau auswirkt.
 
-## <a name="sink-settings"></a>Senkeneinstellungen
+## <a name="allow-alter-row-policies-in-sink"></a>Zulassen von Richtlinien für Zeilenänderungen in der Senke
 
-Für Zeilenänderungen wird eine Datenbanksenke vorausgesetzt. In den Einstellungen für die Senke sollten Sie jede Aktion, die den Zeilenänderungsbedingungen entspricht, als zulässig festlegen.
+Damit die Richtlinien für Zeilenänderungen funktionieren, muss der Datenstrom in eine Datenbank oder eine Cosmos-Senke schreiben. Aktivieren Sie auf der Registerkarte **Einstellungen** in Ihrer Senke, welche Richtlinien für Zeilenänderungen dafür zulässig sein sollen.
 
-![Senke für Zeilenänderungen](media/data-flow/alter-row2.png "Senke für Zeilenänderungen")
+![Senke für Zeilenänderung](media/data-flow/alter-row2.png "Senke für Zeilenänderung")
 
-In einem ADF-Datenfluss mit Datenbanksenken werden Zeilen standardmäßig eingefügt. Wenn Sie auch Aktualisierungs-, Upsert- und Löschvorgänge zulassen möchten, müssen Sie in der Senke die entsprechenden Kontrollkästchen aktivieren.
+Das Standardverhalten besteht darin, dass nur Einfügevorgänge zugelassen werden. Sollen Aktualisierungs-, Upsert- oder Löschvorgänge zulässig sein, aktivieren Sie das Kontrollkästchen in der Senke, das dieser Bedingung entspricht. Wenn Aktualisierungs-, Upsert- oder Löschvorgänge aktiviert sind, müssen Sie angeben, welche Schlüsselspalten in der Senke abgeglichen werden sollen.
 
 > [!NOTE]
-> Falls durch Ihre Einfüge-, Aktualisierungs- oder Upsertvorgänge das Schema der Zieltabelle in der Senke geändert wird, ist Ihr Datenfluss nicht erfolgreich. Wenn Sie das Zielschema in Ihrer Datenbank ändern möchten, müssen Sie in der Senke die Option für die Neuerstellung der Tabelle auswählen. Dadurch wird Ihre Tabelle verworfen und mit der neuen Schemadefinition neu erstellt.
+> Falls das Schema der Zieltabelle in der Senke durch Ihre Einfüge-, Aktualisierungs- oder Upsertvorgänge geändert wurde, schlägt der Datenfluss fehl. Um das Zielschema in Ihrer Datenbank zu ändern, wählen Sie **Tabelle neu erstellen** als Tabellenaktion aus. Dadurch wird Ihre Tabelle verworfen und mit der neuen Schemadefinition neu erstellt.
+
+Für die Senkentransformation ist entweder ein einzelner Schlüssel oder eine Reihe von Schlüsseln zur eindeutigen Zeilenidentifizierung in Ihrer Zieldatenbank erforderlich. Legen Sie für SQL-Senken die Schlüssel auf der Registerkarte „Senkeneinstellungen“ fest. Legen Sie für CosmosDB den Partitionsschlüssel in den Einstellungen und außerdem das CosmosDB-Systemfeld „ID“ in Ihrer Senkenzuordnung fest. Bei CosmosDB ist es zwingend erforderlich, die Systemspalte „ID“ für Update-, Upsert- und Löschvorgänge mit einzubeziehen.
+
+## <a name="merges-and-upserts-with-azure-sql-database-and-synapse"></a>Merge- und Upsertvorgänge mit Azure SQL-Datenbank und Synapse
+
+ADF-Datenflüsse unterstützen Mergevorgänge für Azure SQL-Datenbank und Synapse-Datenbankpool (Data Warehouse) mit der Option „upsert“.
+
+Es kann jedoch zu Szenarien kommen, in denen Ihr Schema der Zieldatenbank die IDENTITY-Eigenschaft von Schlüsselspalten verwendet hat. ADF erfordert es, dass Sie die Schlüssel identifizieren, mit denen Sie die Zeilenwerte für Update- und Upsertvorgänge abgleichen werden. Wenn aber für die Zielspalte die IDENTITY-Eigenschaft festgelegt wurde und Sie die Upsertrichtlinie verwenden, können Sie in der Zieldatenbank nicht in die Spalte schreiben. Möglicherweise treten auch Fehler auf, wenn Sie versuchen, einen Upsert-Vorgang für die Verteilungsspalte einer verteilten Tabelle durchzuführen.
+
+Hier sind die Möglichkeiten zur Behebung dieses Problems:
+
+1. Wechseln Sie zu den Einstellungen für die Senkentransformation, und legen Sie „Skip writing key columns“ (Schreiben von Schlüsselspalten überspringen) fest. Dadurch wird ADF angewiesen, nicht in die Spalte zu schreiben, die Sie als Schlüsselwert für Ihre Zuordnung ausgewählt haben.
+
+2. Wenn diese Schlüsselspalte nicht diejenige Spalte ist, die das Problem bei Identitätsspalten verursacht, können Sie die SQL-Option für die Vorbearbeitung von Senkentransformationen verwenden: ```SET IDENTITY_INSERT tbl_content ON```. Deaktivieren Sie die Option dann mit der SQL-Eigenschaft für Nachverarbeitung: ```SET IDENTITY_INSERT tbl_content OFF```.
+
+3. Sowohl bei der Identitäts- als auch der Verteilungsspalte können Sie Ihre Logik vom Upsert auf die Verwendung einer separaten Updatebedingung und einer separaten Einfügebedingung mithilfe einer Transformation für bedingtes Teilen umstellen. Auf diese Weise können Sie die Zuordnung für den Updatepfad so festlegen, dass die Schlüsselspaltenzuordnung ignoriert wird.
+
+## <a name="data-flow-script"></a>Datenflussskript
+
+### <a name="syntax"></a>Syntax
+
+```
+<incomingStream>
+    alterRow(
+           insertIf(<condition>?),
+           updateIf(<condition>?),
+           deleteIf(<condition>?),
+           upsertIf(<condition>?),
+        ) ~> <alterRowTransformationName>
+```
+
+### <a name="example"></a>Beispiel
+
+Das nachstehende Beispiel ist die Zeilenänderungstransformation `CleanData`, die aus dem eingehenden Stream `SpecifyUpsertConditions` drei Zeilenänderungsbedingungen erstellt. In der vorherigen Transformation wird die Spalte `alterRowCondition` berechnet, die bestimmt, ob eine Zeile in der Datenbank eingefügt, aktualisiert oder gelöscht werden soll oder nicht. Wenn der Wert der Spalte einen Zeichenfolgenwert enthält, der mit der Zeilenänderungsregel übereinstimmt, wird ihr diese Richtlinie zugewiesen.
+
+Auf der Data Factory-Benutzeroberfläche sieht diese Transformation wie folgt aus:
+
+![Beispiel für Zeilenänderung](media/data-flow/alter-row4.png "Beispiel für Zeilenänderung")
+
+Das Datenflussskript für diese Transformation befindet sich im folgenden Codeausschnitt:
+
+```
+SpecifyUpsertConditions alterRow(insertIf(alterRowCondition == 'insert'),
+    updateIf(alterRowCondition == 'update'),
+    deleteIf(alterRowCondition == 'delete')) ~> AlterRow
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

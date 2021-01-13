@@ -1,44 +1,36 @@
 ---
 title: 'Schnellstart: Erstellen einer privaten Azure DNS-Zone mithilfe von Azure PowerShell'
-description: In diesem Artikel erstellen und testen Sie eine private DNS-Zone und einen Eintrag in Azure DNS. Dies ist eine Schritt-für-Schritt-Anleitung zum Erstellen und Verwalten Ihrer ersten privaten DNS-Zone und Ihres ersten DNS-Eintrags mithilfe von Azure PowerShell.
+description: In diesem Schnellstart erfahren Sie, wie Sie mithilfe von Azure PowerShell Ihre erste private DNS-Zone und Ihren ersten DNS-Eintrag erstellen und verwalten.
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 09/20/2019
-ms.author: victorh
-ms.openlocfilehash: cf9ca1070461effc69d67614a11b1abd05363310
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/20/2020
+ms.author: rohink
+ms.openlocfilehash: ee6dde6b34cccd415f9bf2052f65dcbe940715c1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162124"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424393"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Schnellstart: Erstellen einer privaten Azure DNS-Zone mithilfe von Azure PowerShell
-
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
 In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie Ihre erste private DNS-Zone und Ihren ersten DNS-Eintrag mithilfe von Azure PowerShell erstellen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt. Um eine private DNS-Zone in Ihrem virtuellen Netzwerk zu veröffentlichen, geben Sie die Liste mit den virtuellen Netzwerken an, für die das Auflösen von Einträgen in der Zone zulässig ist.  Diese werden als *verknüpfte* virtuelle Netzwerke bezeichnet. Wenn die automatische Registrierung aktiviert ist, aktualisiert Azure DNS auch die Zoneneinträge, sobald ein virtueller Computer erstellt, seine IP-Adresse geändert oder ein virtueller Computer gelöscht wird.
+Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt. Um eine private DNS-Zone in Ihrem virtuellen Netzwerk zu veröffentlichen, geben Sie die Liste mit den virtuellen Netzwerken an, für die das Auflösen von Einträgen in der Zone zulässig ist.  Diese werden als *verknüpfte* virtuelle Netzwerke bezeichnet. Wenn die automatische Registrierung aktiviert ist, aktualisiert Azure DNS auch die Zoneneinträge, sobald ein virtueller Computer erstellt, seine IP-Adresse geändert oder der virtuelle Computer gelöscht wird.
 
-In diesem Artikel werden folgende Vorgehensweisen behandelt:
-
-> [!div class="checklist"]
-> * Erstellen einer privaten DNS-Zone
-> * Erstellen von virtuellen Testcomputern
-> * Erstellen eines zusätzlichen DNS-Eintrags
-> * Testen der privaten Zone
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 Sie können für diese Schnellstartanleitung auch die [Azure-Befehlszeilenschnittstelle](private-dns-getstarted-cli.md) verwenden.
 
-## <a name="create-the-resource-group"></a>Ressourcengruppe erstellen
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+## <a name="create-the-resource-group"></a>Erstellen der Ressourcengruppe
 
 Erstellen Sie zunächst eine Ressourcengruppe für die DNS-Zone: 
 
@@ -116,7 +108,7 @@ Dies nimmt einige Minuten in Anspruch.
 
 ## <a name="create-an-additional-dns-record"></a>Erstellen eines zusätzlichen DNS-Eintrags
 
-Sie erstellen Ressourceneintragssätze mit dem Cmdlet `New-AzPrivateDnsRecordSet`. Im folgenden Beispiel wird ein Eintrag mit dem relativen Namen **db** in der DNS-Zone **private.contoso.com** in der Ressourcengruppe **MyAzureResourceGroup** erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes lautet **db.private.contoso.com**. Der Eintragstyp ist „A“, die IP-Adresse lautet 10.2.0.4, und die Gültigkeitsdauer beträgt 3.600 Sekunden.
+Sie erstellen Ressourceneintragssätze mit dem Cmdlet `New-AzPrivateDnsRecordSet`. Im folgenden Beispiel wird ein Eintrag mit dem relativen Namen **db** in der DNS-Zone **private.contoso.com** in der Ressourcengruppe **MyAzureResourceGroup** erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes lautet **db.private.contoso.com** . Der Eintragstyp ist „A“, die IP-Adresse lautet 10.2.0.4, und die Gültigkeitsdauer beträgt 3.600 Sekunden.
 
 ```azurepowershell
 New-AzPrivateDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
@@ -144,7 +136,7 @@ Sie können den Ping-Befehl zum Testen der Namensauflösung verwenden. Konfiguri
 2. Führen Sie den folgenden Befehl aus:
 
    ```powershell
-   New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+   New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
    ```
 
 Wiederholen Sie den Schritt für „myVM02“.
@@ -157,7 +149,7 @@ Wiederholen Sie den Schritt für „myVM02“.
    ping myVM01.private.contoso.com
    ```
 
-   Eine ähnliche Ausgabe wie die folgende sollte angezeigt werden:
+   Die angezeigte Ausgabe sollte so ähnlich aussehen wie die folgende:
 
    ```
    PS C:\> ping myvm01.private.contoso.com
@@ -175,13 +167,13 @@ Wiederholen Sie den Schritt für „myVM02“.
    PS C:\>
    ```
 
-2. Pingen Sie jetzt den Namen **db**, den Sie zuvor erstellt haben:
+2. Pingen Sie jetzt den Namen **db** , den Sie zuvor erstellt haben:
 
    ```
    ping db.private.contoso.com
    ```
 
-   Eine ähnliche Ausgabe wie die folgende sollte angezeigt werden:
+   Die angezeigte Ausgabe sollte so ähnlich aussehen wie die folgende:
 
    ```
    PS C:\> ping db.private.contoso.com
@@ -199,9 +191,9 @@ Wiederholen Sie den Schritt für „myVM02“.
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>Löschen aller Ressourcen
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe **MyAzureResourceGroup**, um die in diesem Artikel erstellten Ressourcen zu löschen, falls sie nicht mehr benötigt werden.
+Löschen Sie die Ressourcengruppe **MyAzureResourceGroup** , um die in diesem Artikel erstellten Ressourcen zu löschen, falls sie nicht mehr benötigt werden.
 
 ```azurepowershell
 Remove-AzResourceGroup -Name MyAzureResourceGroup

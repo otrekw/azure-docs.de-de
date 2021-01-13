@@ -1,29 +1,25 @@
 ---
-title: Einmaliges Anmelden mit Anwendungsproxy | Microsoft Docs
-description: Erläutert das Bereitstellen von einmaligem Anmelden mit Azure AD-Anwendungsproxy.
+title: Kerberos-basiertes einmaliges Anmelden (SSO) in Azure Active Directory mit Anwendungsproxy
+description: Hier wird das Bereitstellen des einmaligen Anmeldens (SSO) mithilfe eines Azure Active Directory-Anwendungsproxys erläutert.
 services: active-directory
-documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: H1Hack27Feb2017, it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab378fe1e06de49df0fe6481a1aa475d426648dc
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: bd657655d6857f1bb0e3c5a2d868169788e4998d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032573"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033526"
 ---
-# <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy
+# <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>Eingeschränkte Kerberos-Delegierung für einmaliges Anmelden (SSO) bei Ihren Apps mit dem Anwendungsproxy
 
 Sie können das einmalige Anmelden für lokale Anwendungen, die über den Anwendungsproxy veröffentlicht und mit der integrierte Windows-Authentifizierung gesichert werden, bereitstellen. Diese Anwendungen erfordern ein Kerberos-Ticket für den Zugriff. Der Anwendungsproxy verwendet die eingeschränkte Kerberos-Delegierung (KCD), um diese Anwendungen zu unterstützen. 
 
@@ -32,7 +28,7 @@ Sie können für Anwendungen, die die integrierte Windows-Authentifizierung (IWA
 ## <a name="how-single-sign-on-with-kcd-works"></a>So funktioniert das einmalige Anmelden mit KCD
 Dieses Diagramm erläutert die Vorgänge, die beim Zugriff eines Benutzers auf eine lokale Anwendung mit IWA ablaufen.
 
-![Flussdiagramm für Microsoft AAD-Authentifizierung](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
+![Flussdiagramm für Microsoft AAD-Authentifizierung](./media/application-proxy-configure-single-sign-on-with-kcd/authdiagram.png)
 
 1. Der Benutzer gibt die URL ein, um über den Anwendungsproxy auf die lokale Anwendung zuzugreifen.
 2. Der Anwendungsproxy leitet die Anforderung zur Vorauthentifizierung an Azure AD-Authentifizierungsdienste weiter. Zu diesem Zeitpunkt wendet Azure AD alle gültigen Authentifizierungs- und Autorisierungsrichtlinien an, wie z. B. mehrstufige Authentifizierung. Nachdem der Benutzer überprüft wurde, erstellt Azure AD ein Token und sendet es an den Benutzer.
@@ -46,9 +42,9 @@ Dieses Diagramm erläutert die Vorgänge, die beim Zugriff eines Benutzers auf e
 ## <a name="prerequisites"></a>Voraussetzungen
 Vergewissern Sie sich vor Ihren ersten Schritten mit dem einmaligen Anmelden für IWA-Anwendungen, dass Ihre Umgebung über folgende Einstellungen und Konfigurationen verfügt:
 
-* Ihre Apps (beispielsweise SharePoint-Web-Apps) sind für die Verwendung der integrierten Windows-Authentifizierung konfiguriert. Weitere Informationen finden Sie unter [Aktivieren der Unterstützung für die Kerberos-Authentifizierung](https://technet.microsoft.com/library/dd759186.aspx). Weitere Informationen zu SharePoint finden Sie unter [Planen der Kerberos-Authentifizierung in SharePoint 2013](https://technet.microsoft.com/library/ee806870.aspx).
+* Ihre Apps (beispielsweise SharePoint-Web-Apps) sind für die Verwendung der integrierten Windows-Authentifizierung konfiguriert. Weitere Informationen finden Sie unter [Aktivieren der Unterstützung für die Kerberos-Authentifizierung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd759186(v=ws.11)). Weitere Informationen zu SharePoint finden Sie unter [Planen der Kerberos-Authentifizierung in SharePoint 2013](/SharePoint/security-for-sharepoint-server/kerberos-authentication-planning).
 * Alle Ihre Apps verfügen über [Dienstprinzipalnamen](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spns-setspn-syntax-setspn-exe.aspx).
-* Der Server, auf dem der Connector ausgeführt wird, und der Server, auf dem die App ausgeführt wird, gehören einer Domäne an und sind Teil der gleichen Domäne bzw. der vertrauenswürdigen Domänen. Weitere Informationen zum Domänenbeitritt finden Sie unter [Hinzufügen eines Computers zu einer Domäne](https://technet.microsoft.com/library/dd807102.aspx).
+* Der Server, auf dem der Connector ausgeführt wird, und der Server, auf dem die App ausgeführt wird, gehören einer Domäne an und sind Teil der gleichen Domäne bzw. der vertrauenswürdigen Domänen. Weitere Informationen zum Domänenbeitritt finden Sie unter [Hinzufügen eines Computers zu einer Domäne](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dd807102(v=ws.11)).
 * Der Server, auf dem der Connector ausgeführt wird, verfügt über Lesezugriff auf das Attribut „TokenGroupsGlobalAndUniversal“ für Benutzer. Hierbei handelt es sich um eine Standardeinstellung, die unter Umständen im Rahmen einer Sicherheitshärtung für die Umgebung geändert wurde.
 
 ### <a name="configure-active-directory"></a>Konfigurieren von Active Directory
@@ -62,21 +58,31 @@ Die Active Directory-Konfiguration variiert in Abhängigkeit davon, ob Ihr Anwen
 5. Wählen Sie die Option **Beliebiges Authentifizierungsprotokoll verwenden** aus.
 6. Fügen Sie unter **Dienste, für die dieses Konto delegierte Anmeldeinformationen verwenden kann** den Wert für die Dienstprinzipalnamen-Identität (SPN) des Anwendungsservers hinzu. Auf diese Weise kann der Anwendungsproxy-Connector die Identität von Benutzern in AD für die Anwendungen annehmen, die in der Liste definiert sind.
 
-   ![Screenshot des Connector-SVR-Eigenschaftenfensters](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
+   ![Screenshot des Connector-SVR-Eigenschaftenfensters](./media/application-proxy-configure-single-sign-on-with-kcd/properties.jpg)
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Connector und Anwendungsserver in unterschiedlichen Domänen
-1. Eine Liste der Voraussetzungen für das domänenübergreifende Arbeiten mit KCD finden Sie unter [Eingeschränkte Kerberos-Delegierung über Domänengrenzen hinweg](https://technet.microsoft.com/library/hh831477.aspx).
-2. Verwenden Sie die `principalsallowedtodelegateto`-Eigenschaft auf dem Connectorserver, damit der Anwendungsproxy den Verbindungsserver delegieren kann. Der Anwendungsserver ist `sharepointserviceaccount` und der delegierende Server `connectormachineaccount`. Verwenden Sie diesen Code für Windows 2012 R2 als Beispiel:
+1. Eine Liste der Voraussetzungen für das domänenübergreifende Arbeiten mit KCD finden Sie unter [Eingeschränkte Kerberos-Delegierung über Domänengrenzen hinweg](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831477(v=ws.11)).
+2. Verwenden Sie die Eigenschaft `principalsallowedtodelegateto` des Dienstkontos (Computerkonto oder dediziertes Domänenbenutzerkonto) der Webanwendung, um die Kerberos-Authentifizierungsdelegierung über den Anwendungsproxy (Connector) zu aktivieren. Der Anwendungsserver wird im Kontext `webserviceaccount` ausgeführt. Der delegierende Server ist `connectorcomputeraccount`. Führen Sie die folgenden Befehle auf einem Domänencontroller (mit Windows Server 2012 R2 oder einer höheren Version) in der Domäne `webserviceaccount` aus. Verwenden Sie für beide Konten Flatnames (keine UPNs).
 
-```powershell
-$connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
+   Ist `webserviceaccount` ein Computerkonto, verwenden Sie die folgenden Befehle:
 
-Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+   ```powershell
+   $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
 
-Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
-```
+   Set-ADComputer -Identity webserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
 
-`sharepointserviceaccount` kann das SPS-Computerkonto oder ein Dienstkonto sein, unter dem der SPS-App-Pool ausgeführt wird.
+   Get-ADComputer webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+   ```
+
+   Ist `webserviceaccount` ein Benutzerkonto, verwenden Sie die folgenden Befehle:
+
+   ```powershell
+   $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
+
+   Set-ADUser -Identity webserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+
+   Get-ADUser webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+   ```
 
 ## <a name="configure-single-sign-on"></a>Einmaliges Anmelden konfigurieren 
 1. Veröffentlichen Sie Ihre Anwendung entsprechend den Anweisungen unter [Veröffentlichen von Anwendungen mit einem Anwendungsproxy](application-proxy-add-on-premises-application.md). Stellen Sie sicher, dass **Azure Active Directory** als **Präauthentifizierungsmethode** ausgewählt ist.
@@ -87,14 +93,15 @@ Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateT
 
    ![Erweiterte Anwendungskonfiguration](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 
-
 ## <a name="sso-for-non-windows-apps"></a>SSO für Nicht-Windows-Apps
 
-Der Ablauf der Kerberos-Delegierung im Azure AD-Anwendungsproxy wird gestartet, wenn Azure AD den Benutzer in der Cloud authentifiziert. Sobald die Anforderung lokal ankommt, gibt der Azure AD-Anwendungsproxy-Connector durch Interaktion mit dem lokalen Active Directory ein Kerberos-Ticket für den Benutzer aus. Dieser Prozess wird als Kerberos Constrained Delegation (KCD) bezeichnet. In der nächsten Phase wird mit diesem Kerberos-Ticket eine Anforderung an die Back-End-Anwendung gesendet. 
+Der Ablauf der Kerberos-Delegierung im Azure AD-Anwendungsproxy wird gestartet, wenn Azure AD den Benutzer in der Cloud authentifiziert. Sobald die Anforderung lokal ankommt, gibt der Azure AD-Anwendungsproxy-Connector durch Interaktion mit dem lokalen Active Directory ein Kerberos-Ticket für den Benutzer aus. Dieser Prozess wird als Kerberos Constrained Delegation (KCD) bezeichnet. 
 
-Es gibt mehrere Protokolle, die definieren, wie solche Anforderungen gesendet werden. Die meisten Nicht-Windows Server erwarten, dass die Aushandlung über SPNEGO erfolgt. Dieses Protokoll wird auf dem Azure AD-Anwendungsproxy unterstützt, ist aber standardmäßig deaktiviert. Ein Server kann für SPNEGO oder die standardmäßige KCD konfiguriert werden, jedoch nicht für beide.
+In der nächsten Phase wird mit diesem Kerberos-Ticket eine Anforderung an die Back-End-Anwendung gesendet. 
 
-Wenn Sie einen Connectorcomputer für SPNEGO konfigurieren, stellen Sie sicher, dass alle anderen Connectors in dieser Connectorgruppe ebenfalls mit SPNEGO konfiguriert sind. Anwendungen, die eine standardmäßige KCD erwarten, sollten über andere Connectors weitergeleitet werden, die nicht für SPNEGO konfiguriert sind.
+Es gibt mehrere Mechanismen, die definieren, wie das Kerberos-Ticket in solchen Anforderungen gesendet wird. Die meisten Nicht-Windows-Server erwarten, es in Form eines SPNEGO-Tokens zu erhalten. Dieser Mechanismus wird auf dem Azure AD-Anwendungsproxy unterstützt, ist aber standardmäßig deaktiviert. Ein Connector kann für SPNEGO oder das standardmäßige Kerberos-Token konfiguriert werden, jedoch nicht für beide.
+
+Wenn Sie einen Connectorcomputer für SPNEGO konfigurieren, stellen Sie sicher, dass alle anderen Connectors in dieser Connectorgruppe ebenfalls mit SPNEGO konfiguriert sind. Anwendungen, die ein standardmäßiges Kerberos-Token erwarten, sollten über andere Connectors weitergeleitet werden, die nicht für SPNEGO konfiguriert sind. Einige Webanwendungen akzeptieren beide Formate, ohne dass eine Änderung der Konfiguration erforderlich ist. 
  
 
 So aktivieren Sie SPNEGO:
@@ -106,8 +113,6 @@ So aktivieren Sie SPNEGO:
     REG ADD "HKLM\SOFTWARE\Microsoft\Microsoft AAD App Proxy Connector" /v UseSpnegoAuthentication /t REG_DWORD /d 1
     net stop WAPCSvc & net start WAPCSvc
     ```
-
-Weitere Informationen zu Kerberos finden Sie unter [All you want to know about Kerberos Constrained Delegation (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd) (Alles über die eingeschränkte Kerberos-Delegierung, KCD).
 
 Nicht-Windows-Apps verwenden normalerweise Benutzernamen oder Namen von SAM-Konten statt E-Mail-Adressen von Domänen. Wenn diese Situation auf Ihre Anwendungen zutrifft, müssen Sie das Feld „Delegierte Identität für Anmeldung“ konfigurieren, um Ihre Cloudidentitäten mit Ihren Anwendungsidentitäten zu verbinden. 
 
@@ -126,6 +131,8 @@ Mit dem Anwendungsproxy können Sie wählen, welche Identität verwendet werden 
 ![Screenshot: Parameter „Delegierte Identität für Anmeldung“](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_upn.png)
 
 Bei Verwendung der Delegierten Identität für Anmeldung ist der Wert unter Umständen nicht für alle Domänen oder Gesamtstrukturen in Ihrer Organisation eindeutig. Sie können dieses Problem umgehen, indem Sie die Anwendung zweimal mit zwei unterschiedlichen Connectorgruppen veröffentlichen. Da jede Anwendung einen anderen Benutzerkreis aufweist, lassen sich die Connectors mit einer unterschiedlichen Domäne verknüpfen.
+
+Wenn der **lokale SAM-Kontoname** als Anmeldeidentität verwendet wird, muss der Computer, auf dem der Connector gehostet wird, der Domäne hinzugefügt werden, in der sich das Benutzerkonto befindet.
 
 ### <a name="configure-sso-for-different-identities"></a>Konfigurieren von SSO für verschiedene Identitäten
 1. Konfigurieren Sie die Azure AD Connect-Einstellungen so, dass die E-Mail-Adresse die Hauptidentität ist. Dies erfolgt als Teil des Anpassungsvorgangs durch Änderung des **Benutzerprinzipalnamens** in den Synchronisierungseinstellungen. Diese Einstellungen bestimmen auch, wie sich Benutzer bei Office 365, Windows 10-Geräten und anderen Anwendungen anmelden, die Azure AD als Identitätsspeicher verwenden.  
@@ -146,7 +153,3 @@ In einigen Fällen wird die Anforderung jedoch erfolgreich an die Back-End-Anwen
 
 * [Konfigurieren einer Anwendungsproxyanwendung zum Verwenden der eingeschränkten Kerberos-Delegierung](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Problembehandlung von Anwendungsproxys](application-proxy-troubleshoot.md)
-
-
-Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](https://blogs.technet.com/b/applicationproxyblog/)
-

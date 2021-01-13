@@ -1,23 +1,22 @@
 ---
-title: Zuordnen von Datasetspalten in Azure Data Factory | Microsoft-Dokumentation
+title: Zuordnen von Datasetspalten in Azure Data Factory
 description: Erfahren Sie, wie Sie Quellspalten Zielspalten zuordnen.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1b009ac2ca42e9804b88989b55b2e73524732550
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af7a1e40f21b6c9af490abe6f58edcaf798818b4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238142"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85318874"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>Zuordnen von Spalten im Quelldataset zu Spalten im Zieldataset
 > [!NOTE]
@@ -40,7 +39,7 @@ Im Folgenden sind Fehlerbedingungen angegeben, die zu einer Ausnahme führen:
 > Die folgenden Beispiele beziehen sich auf Azure SQL und Azure Blob, sie gelten aber auch für beliebige Datenspeicher, die rechteckige Datasets unterstützen. Passen Sie die Definitionen der Datasets und verknüpften Dienste in den Beispielen an, damit sie auf Daten in der relevanten Datenquelle verweisen.
 
 ## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>Beispiel 1 – Spaltenzuordnung von Azure SQL zu Azure-Blob
-In diesem Beispiel verfügt die Eingabetabelle über eine Struktur und diese verweist auf eine SQL-Tabelle in einer Azure SQL-Datenbank.
+In diesem Beispiel verfügt die Eingabetabelle über eine Struktur und diese verweist auf eine SQL-Tabelle in Azure SQL-Datenbank.
 
 ```json
 {

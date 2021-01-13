@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
-ms.openlocfilehash: 3beda852b3e711ee969b7f80f8f326285cc2cad6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558886"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74815414"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Problembehandlung für das Speech SDK
 
 Dieser Artikel enthält Informationen zur Lösung von Problemen, die bei Verwendung des Spracherkennungs-SDK auftreten können.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Fehler Authentifizierungsfehler beim WebSocket-Upgrade (403)
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Fehler: Authentifizierungsfehler beim WebSocket-Upgrade (403)
 
 Sie verwenden möglicherweise den falschen Endpunkt für Ihre Region oder den Dienst. Prüfen Sie den URI, um sicherzustellen, dass er korrekt ist.
 
 Außerdem kann ein Problem mit Ihrem Abonnementschlüssel oder Autorisierungstoken auftreten. Weitere Informationen finden Sie im nächsten Abschnitt.
 
-## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Fehler „HTTP 403 Verboten“ oder „HTTP 401 Nicht autorisiert“
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Fehler: „HTTP 403 Verboten“ oder „HTTP 401 Nicht autorisiert“
 
 Dieser Fehler wird häufig durch Authentifizierungsprobleme verursacht. Verbindungsanforderungen ohne gültigen `Ocp-Apim-Subscription-Key` oder `Authorization`-Header werden mit dem Status 403 oder 401 abgelehnt.
 
@@ -107,11 +107,11 @@ Wenn Sie ein gültiges Authentifizierungstoken eingegeben haben, gibt der Befehl
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Fehler HTTP 400 Ungültige Anforderung
+## <a name="error-http-400-bad-request"></a>Fehler: HTTP 400 Ungültige Anforderung
 
 Dieser Fehler tritt gewöhnlich auf, wenn der Anforderungstext ungültige Audiodaten enthält. Nur das WAV-Format wird unterstützt. Prüfen Sie auch die Anforderungsheader, um sicherzustellen, dass geeignete Werte für `Content-Type` und `Content-Length` angegeben sind.
 
-## <a name="error-http-408-request-timeout"></a>Fehler HTTP 408 Anforderungstimeout
+## <a name="error-http-408-request-timeout"></a>Fehler: HTTP 408 Anforderungstimeout
 
 Der Fehler tritt wahrscheinlich auf, weil keine Audiodaten an den Dienst gesendet werden. Dieser Fehler kann auch durch Netzwerkprobleme verursacht werden.
 

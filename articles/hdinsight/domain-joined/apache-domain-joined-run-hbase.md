@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren von Apache HBase mit dem Enterprise-Sicherheitspaket – Azure'
+title: 'Apache HBase und Enterprise-Sicherheitspaket: Azure HDInsight'
 description: 'Tutorial: Erfahren Sie, wie Sie Apache Ranger-Richtlinien für HBase in Azure HDInsight mit dem Enterprise-Sicherheitspaket konfigurieren.'
 ms.service: hdinsight
 author: hrasheed-msft
@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 5747de399e7ae0cfe99ba013f8da376be0ba1b2a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037266"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993634"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Tutorial: Konfigurieren von Apache HBase-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 
@@ -45,7 +45,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="create-domain-users"></a>Erstellen von Domänenbenutzern
 
-Informationen zum Erstellen der Domänenbenutzer **sales_user1** und **marketing_user1** finden Sie unter [Konfigurieren eines HDInsight-Clusters mit Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) mithilfe von Azure Active Directory Domain Services](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds). In einem Produktionsszenario stammen Domänenbenutzer aus Ihrem Active Directory-Mandanten.
+Informationen zum Erstellen der Domänenbenutzer **sales_user1** und **marketing_user1** finden Sie unter [Konfigurieren eines HDInsight-Clusters mit Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) mithilfe von Azure Active Directory Domain Services](./apache-domain-joined-configure-using-azure-adds.md). In einem Produktionsszenario stammen Domänenbenutzer aus Ihrem Active Directory-Mandanten.
 
 ## <a name="create-hbase-tables-and-import-sample-data"></a>Erstellen von HBase-Tabellen und Importieren von Beispieldaten
 
@@ -86,7 +86,7 @@ Sie können SSH verwenden, um eine Verbindung mit Apache HBase-Clustern herzuste
 4. Zeigen Sie den Inhalt der Tabelle an:
     
     ```hbaseshell
-    scan 'Contacts'
+    scan 'Customers'
     ```
 
     ![Ausgabe der HDInsight Hadoop HBase-Shell](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
@@ -95,7 +95,7 @@ Sie können SSH verwenden, um eine Verbindung mit Apache HBase-Clustern herzuste
 
 Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1**.
 
-1. Öffnen Sie die **Ranger-Administratoroberfläche**. Klicken Sie unter **HBase** auf **\<Clustername>_hbase**.
+1. Öffnen Sie die **Ranger-Administratoroberfläche**. Klicken Sie unter **HBase** auf **\<ClusterName>_hbase**.
 
    ![Apache Ranger-Administratoroberfläche in HDInsight](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 

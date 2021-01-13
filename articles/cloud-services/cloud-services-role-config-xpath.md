@@ -2,17 +2,17 @@
 title: Cloud Services-Rollenkonfiguration-XPath-Spickzettel | Microsoft-Dokumentation
 description: Die verschiedenen XPath-Einstellungen, die Sie in der Clouddienst-Rollenkonfiguration verwenden können, um Einstellungen als Umgebungsvariable verfügbar zu machen.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: cd2bdc4fc4b2a135907851ca4d3034430618e0cd
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 380b0be4e4e4b19d16cb611b0b472294339f2199
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359000"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75386084"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Verfügbarmachen von Rollenkonfigurationseinstellungen als Umgebungsvariable mit XPath
 In der Dienstdefinitionsdatei der Clouddienst-Worker- oder Webrolle können Sie Laufzeitkonfigurationswerte als Umgebungsvariablen verfügbar machen. Die folgenden XPath-Werte (die API-Werten entsprechen) werden unterstützt.
@@ -161,4 +161,7 @@ Erfahren Sie mehr über die Datei [ServiceConfiguration.cscfg](cloud-services-mo
 Erstellen Sie ein [ServicePackage.cspkg](cloud-services-model-and-package.md#servicepackagecspkg) -Paket.
 
 Aktivieren Sie [Remotedesktop](cloud-services-role-enable-remote-desktop-new-portal.md) für eine Rolle.
+
+
+
 

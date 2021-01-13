@@ -4,17 +4,20 @@ description: Erfahren Sie, wie Sie mit der API für MongoDB von Azure Cosmos DB 
 author: sivethe
 ms.author: sivethe
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.devlang: javascript
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 12/26/2018
-ms.openlocfilehash: cd6cb68014eea00077328f39c2c9bf0a1f7fb679
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 6ef3092c611e1eede2be1e0994ce69959a46f1d7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436288"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340922"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Ablauf von Daten mit der API für MongoDB von Azure Cosmos DB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Mithilfe de TTL-Funktion (Time To Live, Gültigkeitsdauer) kann die Gültigkeit von Daten in der Datenbank automatisch ablaufen. Die API für MongoDB von Azure Cosmos DB nutzt die TTL-Kernfunktionen von Azure Cosmos DB. Unterstützt werden zwei Modi: Festlegen eines TTL-Standardwerts für die gesamte Sammlung und Festlegen individueller TTL-Werte für die einzelnen Dokumente. Die Logik, die TTL-Indizes und dokumentspezifischen TTL-Werten in der API für MongoDB von Cosmos DB zugrunde liegt, ist die [gleiche wie in Cosmos DB](../cosmos-db/mongodb-indexing.md).
 
@@ -74,7 +77,7 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 Das dokumentspezifische TTL-Feature kann mit der API für MongoDB von Azure Cosmos DB aktiviert werden.
 
-![Screenshot der Aktivierung des dokumentspezifischen TTL-Features im Portal](./media/mongodb-ttl/mongodb_portal_ttl.png) 
+:::image type="content" source="./media/mongodb-ttl/mongodb_portal_ttl.png" alt-text="Screenshot der Aktivierung des dokumentspezifischen TTL-Features im Portal":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB](../cosmos-db/time-to-live.md)

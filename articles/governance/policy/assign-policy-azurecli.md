@@ -1,45 +1,42 @@
 ---
-title: Erstellen einer Richtlinie für nicht konforme Ressourcen mit der Azure-Befehlszeilenschnittstelle
-description: Erstellen Sie mithilfe von Azure CLI eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 01/23/2019
+title: 'Schnellstart: Neue Richtlinienzuweisung mit der Azure CLI'
+description: In dieser Schnellstartanleitung erstellen Sie mithilfe der Azure CLI eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: d2436e09ccb1c134d28a1dc471adc298cf090d05
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9955f911f9a92d7b353a8f3d022af7884b5a6aae
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231610"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090137"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mit Azure CLI
 
 Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wie Sie den Status Ihrer Ressourcen ermitteln.
 Diese Schnellstartanleitung führt Sie schrittweise durch die Erstellung einer Richtlinienzuweisung zur Identifizierung von virtuellen Computern, die keine verwalteten Datenträger verwenden.
 
-Am Ende dieses Prozesses können Sie erfolgreich virtuelle Computer identifizieren, die keine verwalteten Datenträger verwenden. Sie sind mit der Richtlinienzuweisung *nicht konform*.
+Am Ende dieses Prozesses können Sie erfolgreich virtuelle Computer identifizieren, die keine verwalteten Datenträger verwenden. Sie sind mit der Richtlinienzuweisung _nicht konform_.
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Anleitung wird die Azure-Befehlszeilenschnittstelle verwendet, um eine Richtlinienzuweisung zu erstellen und nicht konforme Ressourcen in Ihrer Azure-Umgebung zu identifizieren.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-Für diese Schnellstartanleitung ist es erforderlich, Version 2.0.4 oder höher der Azure CLI auszuführen, um die CLI lokal zu installieren und zu verwenden. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Registrieren Sie den Ressourcenanbieter Azure Policy Insights mithilfe der Azure-Befehlszeilenschnittstelle. Durch die Registrierung des Ressourcenanbieters wird sichergestellt, dass das Abonnement mit ihm verwendet werden kann. Um einen Ressourcenanbieter zu registrieren, benötigen Sie die Berechtigung zum Registrieren von Ressourcenanbietern. Dieser Vorgang ist in den Rollen „Mitwirkender“ und „Besitzer“ enthalten. Führen Sie den folgenden Befehl aus, um den Ressourcenanbieter zu registrieren:
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-```azurecli-interactive
-az provider register --namespace 'Microsoft.PolicyInsights'
-```
+- Für diesen Schnellstart muss mindestens Version 2.0.76 der Azure CLI ausgeführt werden. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
-Weitere Informationen zum Registrieren und Anzeigen von Ressourcenanbietern finden Sie unter [Ressourcenanbieter und -typen](../../azure-resource-manager/resource-manager-supported-services.md).
+- Registrieren Sie den Ressourcenanbieter Azure Policy Insights mithilfe der Azure-Befehlszeilenschnittstelle. Durch die Registrierung des Ressourcenanbieters wird sichergestellt, dass das Abonnement mit ihm verwendet werden kann. Um einen Ressourcenanbieter zu registrieren, benötigen Sie die Berechtigung zum Registrieren von Ressourcenanbietern. Dieser Vorgang ist in den Rollen „Mitwirkender“ und „Besitzer“ enthalten. Führen Sie den folgenden Befehl aus, um den Ressourcenanbieter zu registrieren:
 
-Installieren Sie den [ARMClient](https://github.com/projectkudu/ARMClient), falls Sie dies noch nicht durchgeführt haben. Mit diesem Tool werden HTTP-Anforderungen an Azure Resource Manager-basierte APIs gesendet.
+  ```azurecli-interactive
+  az provider register --namespace 'Microsoft.PolicyInsights'
+  ```
+
+  Weitere Informationen zum Registrieren und Anzeigen von Ressourcenanbietern finden Sie unter [Ressourcenanbieter und -typen](../../azure-resource-manager/management/resource-providers-and-types.md).
+
+- Installieren Sie den [ARMClient](https://github.com/projectkudu/ARMClient), falls Sie dies noch nicht durchgeführt haben. Mit diesem Tool werden HTTP-Anforderungen an Azure Resource Manager-basierte APIs gesendet.
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-policy-assignment"></a>Erstellen einer Richtlinienzuweisung
 
@@ -53,26 +50,25 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 
 In dem Befehl werden folgende Informationen verwendet:
 
-- **Name:** Der tatsächliche Name der Zuweisung. In diesem Beispiel wurde *audit-vm-manageddisks* verwendet.
-- **DisplayName:** Der Anzeigename für die Richtlinienzuweisung. Verwenden Sie in diesem Fall *Zuweisung für die Überwachung virtueller Computer ohne verwaltete Datenträger*.
-- **Richtlinie:** Die Richtliniendefinitions-ID, auf deren Grundlage Sie die Zuweisung erstellen. In diesem Fall ist es die ID der Richtliniendefinition *Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden*. Führen Sie den folgenden Befehl aus, um die Richtliniendefinitions-ID abzurufen: `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
+- **Name:** Der tatsächliche Name der Zuweisung. In diesem Beispiel wurde _audit-vm-manageddisks_ verwendet.
+- **DisplayName:** Der Anzeigename für die Richtlinienzuweisung. Verwenden Sie in diesem Fall _Zuweisung für die Überwachung virtueller Computer ohne verwaltete Datenträger_.
+- **Richtlinie:** Die Richtliniendefinitions-ID, auf deren Grundlage Sie die Zuweisung erstellen. In diesem Fall ist es die ID der Richtliniendefinition _Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden_. Führen Sie den folgenden Befehl aus, um die Richtliniendefinitions-ID abzurufen: `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
 - **Bereich:** Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird. Er kann von einem Abonnement bis zu Ressourcengruppen reichen. Ersetzen Sie &lt;scope&gt; durch den Namen Ihrer Ressourcengruppe.
 
 ## <a name="identify-non-compliant-resources"></a>Identifizieren nicht konformer Ressourcen
 
 Führen Sie zum Anzeigen der Ressourcen, die unter dieser Zuordnung nicht konform sind, die folgenden Befehle aus, um die Richtlinienzuweisungs-ID abzurufen:
 
-```azurepowershell-interactive
-$policyAssignment = Get-AzPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
-$policyAssignment.PolicyAssignmentId
+```azurecli-interactive
+az policy assignment list --query "[?displayName=='Audit VMs without managed disks Assignment'].id"
 ```
 
-Weitere Informationen zu Richtlinienzuweisungs-IDs finden Sie unter [Get-AzPolicyAssignment](/powershell/module/az.resources/get-azpolicyassignment).
+Weitere Informationen zu Richtlinienzuweisungs-IDs finden Sie unter [az policy assignment](/cli/azure/policy/assignment).
 
 Führen Sie als Nächstes den folgenden Befehl aus, um die Ressourcen-IDs der nicht konformen Ressourcen abzurufen, die in einer JSON-Datei ausgegeben werden:
 
 ```console
-armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
+armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
 ```
 
 Ihre Ergebnisse sollten in etwa wie im folgenden Beispiel aussehen:

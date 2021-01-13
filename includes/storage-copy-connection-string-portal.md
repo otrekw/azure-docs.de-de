@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/04/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 364da4bb5f3f76f0a8a189db5aa59cca305470ea
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 4170671b1dbcb8d2932b54f101cf5691b2461e31
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70197137"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86035866"
 ---
 ## <a name="copy-your-credentials-from-the-azure-portal"></a>Kopieren Ihrer Anmeldeinformationen aus dem Azure-Portal
 
@@ -21,7 +21,7 @@ Die Beispielanwendung muss den Zugriff auf Ihr Speicherkonto authentifizieren. F
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Suchen Sie nach Ihrem Speicherkonto.
-3. Wählen Sie im Abschnitt **Einstellungen** der Speicherkontoübersicht die Option **Zugriffsschlüssel**. Hier können Sie Ihre Kontozugriffsschlüssel und die vollständige Verbindungszeichenfolge für jeden Schlüssel anzeigen.   
+3. Wählen Sie im Abschnitt **Einstellungen** der Speicherkontoübersicht die Option **Zugriffsschlüssel**. Hier können Sie Ihre Kontozugriffsschlüssel und die vollständige Verbindungszeichenfolge für jeden Schlüssel anzeigen.
 4. Suchen Sie unter **key1** nach dem Wert für die **Verbindungszeichenfolge**, und wählen Sie dann die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zu kopieren. Der Wert der Verbindungszeichenfolge wird in einem späteren Schritt einer Umgebungsvariablen hinzugefügt.
 
     ![Screenshot: Kopieren einer Verbindungszeichenfolge aus dem Azure-Portal](media/storage-copy-connection-string-portal/portal-connection-string.png)

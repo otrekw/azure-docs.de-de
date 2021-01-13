@@ -1,27 +1,23 @@
 ---
-title: Links auf der Seite funktionieren nicht für eine Anwendungsproxyanwendung | Microsoft-Dokumentation
+title: Links auf der Seite funktionieren nicht für eine Anwendungsproxyanwendung
 description: Behandeln von Problemen mit fehlerhaften Links in Anwendungsproxyanwendungen, die Sie in Azure AD integriert haben
 services: active-directory
-documentationcenter: ''
-author: msmimart
-manager: CelesteDG
-ms.assetid: ''
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/10/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8bb7326ed22217e56bdaf9a119529ba775b69a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1922ea9afd69366e534049f5a7a350cf39e52dee
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783244"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371578"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Links auf der Seite funktionieren nicht für eine Anwendungsproxyanwendung
 
@@ -38,7 +34,11 @@ Es gibt drei Möglichkeiten, dieses Problem zu beheben. Die im Folgenden aufgef�
 
 1.  Stellen Sie sicher, dass die interne URL eine Stamm-URL ist, die alle relevanten Links für die Anwendung enthält. Dadurch werden alle Links als innerhalb derselben Anwendung veröffentlichter Inhalt aufgelöst.
 
-    Wenn Sie die interne URL ändern, die Zielseite für Benutzer jedoch nicht geändert werden soll, ändern Sie die URL der Startseite in die zuvor veröffentlichte interne URL. Wechseln Sie dazu zu „Azure Active Directory -&gt; App-Registrierungen -&gt; Anwendung auswählen -&gt; Eigenschaften“. Auf der Registerkarte „Eigenschaften“ befindet sich das Feld „URL der Startseite“, in dem Sie die gewünschte Startseite eingeben können.
+    Wenn Sie die interne URL ändern, die Zielseite für Benutzer jedoch nicht geändert werden soll, ändern Sie die URL der Startseite in die zuvor veröffentlichte interne URL. Wechseln Sie dazu zu „Azure Active Directory -&gt; App-Registrierungen -&gt; Anwendung auswählen -&gt; Branding“. Im Abschnitt „Branding“ befindet sich das Feld „URL der Startseite“, in dem Sie die gewünschte Startseite eingeben können. Wenn Sie noch die Legacybenutzeroberfläche für App-Registrierungen verwenden, werden auf der Registerkarte „Eigenschaften“ die Details der „URL der Startseite“ angezeigt. 
+    
+    > [!IMPORTANT]
+    > Um die oben genannten Änderungen vornehmen zu können, benötigen Sie Rechte zum Ändern von Anwendungsobjekten in Azure AD. Dem Benutzer muss die Rolle [Anwendungsadministrator](../roles/delegate-app-roles.md#assign-built-in-application-admin-roles) zugewiesen werden, die dem Benutzer Rechte zum Ändern von Anwendungen in Azure AD erteilt.
+    >
 
 2.  Wenn Ihre Anwendung vollqualifizierte Domänennamen (FQDNs) verwendet, verwenden Sie [Benutzerdefinierte Domänen](application-proxy-configure-custom-domain.md), um Ihre Anwendungen zu veröffentlichen. Durch dieses Feature kann dieselbe URL sowohl intern als auch extern verwendet werden.
 

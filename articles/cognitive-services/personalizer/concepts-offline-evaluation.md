@@ -1,25 +1,23 @@
 ---
-title: Offlineauswertung – Personalisierung
+title: 'Verwenden der Offlineauswertungsmethode: Personalisierung'
 titleSuffix: Azure Cognitive Services
-description: In dieser C#-Schnellstartanleitung erstellen Sie eine Feedbackschleife mit dem Personalisierungsdienst.
+description: In diesem Artikel wird erläutert, wie Sie mit der Offlineauswertung die Effektivität Ihrer App zu messen und Ihre Lernschleife analysieren können.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
-ms.author: diberry
-ms.openlocfilehash: 5e9e745d73623e03e2530e1712a50e6670ee7ed3
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.date: 02/20/2020
+ms.openlocfilehash: 627f511bb12c16c8f54935d1f782cb7c2c962163
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662848"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87132754"
 ---
 # <a name="offline-evaluation"></a>Offlineauswertung
 
-Offlineauswertung ist eine Methode, die es Ihnen gestattet, die Wirksamkeit des Personalisierungsdiensts zu testen und zu bewerten, ohne Ihren Code zu ändern oder die Benutzererfahrung zu beeinträchtigen. Offlineauswertung verwendet zurückliegende Daten, die von Ihrer Anwendung an die Rangfolge-API gesendet wurden, um zu vergleichen, wie unterschiedliche Ränge leistungsmäßig abgeschnitten haben.
+Offlineauswertung ist eine Methode, die es Ihnen gestattet, die Wirksamkeit des Personalisierungsdiensts zu testen und zu bewerten, ohne Ihren Code zu ändern oder die Benutzererfahrung zu beeinträchtigen. Offlineauswertung verwendet zurückliegende Daten, die von Ihrer Anwendung an die Rangfolge- und Relevanz-API gesendet wurden, um zu vergleichen, wie unterschiedliche Ränge leistungsmäßig abgeschnitten haben.
 
 Offlineauswertung wird in einem Datumsbereich ausgeführt. Das Ende des Bereichs kann so spät wie die aktuelle Zeit sein. Der Anfang des Bereichs kann nicht früher als die für [Datenaufbewahrung](how-to-settings.md) angegebene Anzahl von Tagen sein.
 
@@ -50,15 +48,25 @@ Die Personalisierung kann den Offlineauswertungsprozess verwenden, um eine stär
 
 Nach der Durchführung der Offlineauswertung können Sie die relative Effektivität der Personalisierung mit dieser neuen Richtlinie im Vergleich zur aktuellen Onlinerichtlinie sehen. Sie können diese Lernrichtlinie dann anwenden, sodass sie bei der Personalisierung sofort wirksam wird, indem Sie sie herunterladen und in den Bereich für Modelle und Richtlinien hochladen. Sie können sie aber auch zur späteren Analyse oder Verwendung herunterladen.
 
+In die Auswertung einbezogene aktuelle Richtlinien:
+
+| Lerneinstellungen | Zweck|
+|--|--|
+|**Online Policy** (Onlinerichtlinie)| Die derzeit in der Personalisierung verwendete Lernrichtlinie |
+|**Baseline**|Der Standard der Anwendung (wie durch die erste in Rangfolgeaufrufen gesendete Aktion bestimmt)|
+|**Random Policy** (Zufallsrichtlinie)|Ein imaginäres Rangfolgeverhalten, das immer ein zufällige Auswahl von Aktionen aus den angegebenen zurückgibt.|
+|**Benutzerdefinierte Richtlinien**|Zusätzliche, beim Starten der Auswertung hochgeladene Lernrichtlinien.|
+|**Optimized Policy** (Optimierte Richtlinie)|Wenn die Auswertung mit der Option zum Ermitteln einer optimierten Richtlinie gestartet wurde, wird sie auch verglichen, und Sie können sie herunterladen oder zur Online-Lernrichtlinie machen, wobei die aktuelle ersetzt wird.|
+
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Verstehen der Relevanz von Offlineauswertungsergebnissen
 
 Wenn Sie eine Offlineauswertung ausführen, ist es sehr wichtig, _Konfidenzgrenzen_ der Ergebnisse zu analysieren. Wenn diese breit sind, bedeutet dies, dass Ihre Anwendung nicht genügend Daten erhalten hat, um präzise oder signifikante Belohnungsabschätzungen zu erzeugen. Wenn das System zunehmend Daten akkumuliert und Sie Offlineauswertungen über längere Zeiträume ausführen, werden die Konfidenzintervalle enger.
 
 ## <a name="how-offline-evaluations-are-done"></a>Ausführen von Offlineauswertungen
 
-Offlineauswertungen werden mittels einer Methode namens **Kontrafaktische Auswertung** durchgeführt. 
+Offlineauswertungen werden mittels einer Methode namens **Kontrafaktische Auswertung** durchgeführt.
 
-Personalisierung basiert auf der Annahme, dass sich das Verhalten von Benutzern (und somit Belohnungen) unmöglich im Nachhinein vorhersagen lässt (Personalisierung kann nicht wissen, was passiert wäre, wenn dem Benutzer etwas anderes angezeigt worden wäre, als das, was er gesehen hat) und kann nur aus gemessenen Belohnungen lernen. 
+Personalisierung basiert auf der Annahme, dass sich das Verhalten von Benutzern (und somit Belohnungen) unmöglich im Nachhinein vorhersagen lässt (Personalisierung kann nicht wissen, was passiert wäre, wenn dem Benutzer etwas anderes angezeigt worden wäre, als das, was er gesehen hat) und kann nur aus gemessenen Belohnungen lernen.
 
 Dies ist der konzeptuelle Prozess, der für Auswertungen verwendet wird:
 
@@ -70,11 +78,11 @@ Dies ist der konzeptuelle Prozess, der für Auswertungen verwendet wird:
     [For every chronological event in the logs]
     {
         - Perform a Rank call
-    
+
         - Compare the reward of the results against the logged user behavior.
             - If they match, train the model on the observed reward in the logs.
             - If they don't match, then what the user would have done is unknown, so the event is discarded and not used for training or measurement.
-        
+
     }
 
     Add up the rewards and statistics that were predicted, do some aggregation to aid visualizations, and save the results.
@@ -92,12 +100,11 @@ Wir empfehlen, sich Merkmalsauswertungen anzusehen, und folgende Fragen zu stell
 
 * Welche anderen, zusätzlichen Merkmale könnte Ihre Anwendung oder Ihr System bereitstellen, die denen ähneln, die effektiver sind?
 * Welche Merkmale können aufgrund niedriger Effektivität entfernt werden? Merkmale mit niedriger Effektivität fügen dem maschinellen Lernen _Störungen_ hinzu.
-* Gibt es Merkmale, die versehentlich aufgenommen wurden? Beispiele hierfür sind: personenbezogene Informationen (PII), doppelte IDs usw.
+* Gibt es Merkmale, die versehentlich aufgenommen wurden? Beispiele hierfür sind: benutzerbezogene Informationen, doppelte IDs usw.
 * Gibt es unerwünschte Merkmale, die aufgrund gesetzlicher Bestimmungen oder Überlegungen zur verantwortlichen Nutzung nicht für die Personalisierung verwendet werden sollten? Gibt es Merkmale, die Stellvertreter (d. h. eng abbildend oder korrelierend mit) unerwünschte Merkmale sein könnten?
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Einstellungen der Personalisierung](how-to-settings.md)
-[Gewusst wie: Analysieren Ihrer Lernschleife mit einer Offlineauswertung](how-to-offline-evaluation.md)
-[Funktionsweise der Personalisierung](how-personalizer-works.md)
+[Gewusst wie: Analysieren Ihrer Lernschleife mit einer Offlineauswertung](how-to-offline-evaluation.md)[Funktionsweise der Personalisierung](how-personalizer-works.md)

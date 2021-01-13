@@ -14,17 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 51fffbd170daecfec6fcea95caa0526e6d881407
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8eb45397b1941b9a6955066c22d6d9d00eeef4c3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724121"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89262089"
 ---
-# <a name="media-services-development-with-net"></a>Media Services-Entwicklung mit .NET 
+# <a name="media-services-development-with-net"></a>Media Services-Entwicklung mit .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 In diesem Artikel wird das Entwickeln von Media Services-Anwendungen mit .NET erläutert.
 
@@ -67,29 +70,29 @@ Sie können auch die neuesten Media Services .NET SDK-Komponenten von GitHub ([g
 
     Legen Sie die Werte fest, die zum Herstellen der Verbindung mit der Authentifizierungsmethode **Dienstprinzipal** benötigt werden.
 
-        ```csharp
-                <configuration>
-                ...
-                    <appSettings>
-                        <add key="AMSAADTenantDomain" value="tenant"/>
-                        <add key="AMSRESTAPIEndpoint" value="endpoint"/>
-                        <add key="AMSClientId" value="id"/>
-                        <add key="AMSClientSecret" value="secret"/>
-                    </appSettings>
-                </configuration>
-        ```
+    ```xml
+    <configuration>
+    ...
+        <appSettings>
+            <add key="AMSAADTenantDomain" value="tenant"/>
+            <add key="AMSRESTAPIEndpoint" value="endpoint"/>
+            <add key="AMSClientId" value="id"/>
+            <add key="AMSClientSecret" value="secret"/>
+        </appSettings>
+    </configuration>
+    ```
 
 7. Fügen Sie den Verweis **System.Configuration** zu Ihrem Projekt hinzu.
 8. Überschreiben Sie die existierenden **using** -Anweisungen am Anfang der Datei „Program.cs“ durch den folgenden Code:
 
     ```csharp      
-            using System;
-            using System.Configuration;
-            using System.IO;
-            using Microsoft.WindowsAzure.MediaServices.Client;
-            using System.Threading;
-            using System.Collections.Generic;
-            using System.Linq;
+    using System;
+    using System.Configuration;
+    using System.IO;
+    using Microsoft.WindowsAzure.MediaServices.Client;
+    using System.Threading;
+    using System.Collections.Generic;
+    using System.Linq;
     ```
 
     Nun können Sie mit der Entwicklung einer Mediendienste-Anwendung beginnen.    
@@ -99,38 +102,38 @@ Sie können auch die neuesten Media Services .NET SDK-Komponenten von GitHub ([g
 Hier ist ein kurzes Beispiel, bei dem eine Verbindung mit der AMS-API hergestellt wird und alle verfügbaren Medienprozessoren aufgelistet werden.
 
 ```csharp
-        class Program
+class Program
+{
+    // Read values from the App.config file.
+
+    private static readonly string _AADTenantDomain =
+        ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+    private static readonly string _RESTAPIEndpoint =
+        ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+    private static readonly string _AMSClientId =
+        ConfigurationManager.AppSettings["AMSClientId"];
+    private static readonly string _AMSClientSecret =
+        ConfigurationManager.AppSettings["AMSClientSecret"];
+        
+    private static CloudMediaContext _context = null;
+    static void Main(string[] args)
+    {
+        AzureAdTokenCredentials tokenCredentials = 
+            new AzureAdTokenCredentials(_AADTenantDomain,
+                new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                AzureEnvironments.AzureCloudEnvironment);
+
+        var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+        _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+        
+        // List all available Media Processors
+        foreach (var mp in _context.MediaProcessors)
         {
-            // Read values from the App.config file.
-
-            private static readonly string _AADTenantDomain =
-                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
-            private static readonly string _RESTAPIEndpoint =
-                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
-            private static readonly string _AMSClientId =
-                ConfigurationManager.AppSettings["AMSClientId"];
-            private static readonly string _AMSClientSecret =
-                ConfigurationManager.AppSettings["AMSClientSecret"];
+            Console.WriteLine(mp.Name);
+        }
         
-            private static CloudMediaContext _context = null;
-            static void Main(string[] args)
-            {
-                AzureAdTokenCredentials tokenCredentials = 
-                    new AzureAdTokenCredentials(_AADTenantDomain,
-                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
-                        AzureEnvironments.AzureCloudEnvironment);
-
-                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
-
-                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
-        
-                // List all available Media Processors
-                foreach (var mp in _context.MediaProcessors)
-                {
-                    Console.WriteLine(mp.Name);
-                }
-        
-            }
+    }
  ```
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -143,4 +146,3 @@ Jetzt [können Sie sich mit der API AMS verbinden](media-services-use-aad-auth-t
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

@@ -1,18 +1,18 @@
 ---
 title: Aktualisieren von Azure Analysis Services-Modellen mit Logic Apps | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie die asynchrone Aktualisierung mit Azure Logic Apps programmieren.
+description: In diesem Artikel wird beschrieben, wie Sie die asynchrone Aktualisierung für Azure Analysis Services mithilfe von Azure Logic Apps codieren.
 author: chrislound
-manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: 2234a2c6cd42be45a2b2e7784c1dd5aec8839cb9
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.custom: references_regions
+ms.openlocfilehash: 8a8d434fca7cab4432f38fc64093cf1fe060bd5f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311734"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019085"
 ---
 # <a name="refresh-with-logic-apps"></a>Aktualisieren mit Logic Apps
 
@@ -27,7 +27,7 @@ Alle Aufrufe müssen mit einem gültigen Azure Active Directory-Token (OAuth 2
 ## <a name="design-the-logic-app"></a>Entwerfen der Logik-App
 
 > [!IMPORTANT]
-> Die folgenden Beispiele setzen voraus, dass die Azure Analysis Services-Firewall deaktiviert ist.  Wenn die Firewall aktiviert ist, muss die öffentliche IP-Adresse des Anforderungsinitiators in der Whitelist der Azure Analysis Services-Firewall enthalten sein. Weitere Informationen zu den Logik-App-IP-Adressbereichen pro Region finden Sie unter [Grenzwert- und Konfigurationsinformationen für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses).
+> Die folgenden Beispiele setzen voraus, dass die Azure Analysis Services-Firewall deaktiviert ist. Wenn die Firewall aktiviert ist, muss die öffentliche IP-Adresse des Anforderungsinitiators der genehmigten Liste in der Azure Analysis Services-Firewall hinzugefügt werden. Weitere Informationen zu den Azure Logic Apps-IP-Adressbereichen pro Region finden Sie unter [Grenzwert- und Konfigurationsinformationen für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#configuration).
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -53,9 +53,9 @@ Dieser Schritt wird mit der HTTP-POST-URL aufgefüllt, sobald die Logik-App gesp
 
 2. Fügen Sie einen neuen Schritt hinzu, und suchen Sie nach **HTTP**.  
 
-   ![Hinzufügen einer Aktivität „HTTP“](./media/analysis-services-async-refresh-logic-app/9.png)
+   ![Screenshot des Abschnitts „Aktion auswählen“ mit ausgewählter Kachel „HTTP“.](./media/analysis-services-async-refresh-logic-app/9.png)
 
-   ![Hinzufügen einer Aktivität „HTTP“](./media/analysis-services-async-refresh-logic-app/10.png)
+   ![Screenshot des Fensters „HTTP“ mit ausgewählter Kachel „HTTP – HTTP“.](./media/analysis-services-async-refresh-logic-app/10.png)
 
 3. Wählen Sie **HTTP** aus, um diese Aktion hinzuzufügen.
 
@@ -63,11 +63,11 @@ Dieser Schritt wird mit der HTTP-POST-URL aufgefüllt, sobald die Logik-App gesp
 
 Konfigurieren Sie die Aktivität „HTTP“ wie folgt:
 
-|Eigenschaft  |Wert  |
+|Eigenschaft  |value  |
 |---------|---------|
 |**Methode**     |POST         |
 |**URI**     | https://*Ihre Serverregion*/servers/*Name des AAS-Servers*/models/*Name Ihrer Datenbank*/refreshes <br /> <br /> Beispiel: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
-|**Header**     |   Content-Type, application/json <br /> <br />  ![Header](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Headers**     |   Content-Type, application/json <br /> <br />  ![Header](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Text**     |   Weitere Informationen zum Bilden des Anforderungstexts finden Sie unter [Asynchrones Aktualisieren mit der REST-API – POST /refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Authentifizierung**     |Active Directory OAuth         |
 |**Mandant**     |Geben Sie Ihre Azure Active Directory-Mandanten-ID ein.         |
@@ -98,15 +98,15 @@ Wenn Sie nicht vorhaben, ein Orchestrierungstool wie Data Factory zum Auslösen
 
 Löschen Sie im obigen Beispiel die erste Aktivität, und ersetzen Sie sie durch eine Aktivität **Zeitplan**.
 
-![Aktivität „Zeitplan“](./media/analysis-services-async-refresh-logic-app/12.png)
+![Screenshot; der die Seite „Logic Apps“ mit ausgewählter Kachel „Zeitplan“ zeigt.](./media/analysis-services-async-refresh-logic-app/12.png)
 
-![Aktivität „Zeitplan“](./media/analysis-services-async-refresh-logic-app/13.png)
+![Screenshot, der die Seite „Trigger“ zeigt.](./media/analysis-services-async-refresh-logic-app/13.png)
 
 In diesem Beispiel wird **Wiederholung** verwendet.
 
 Nachdem die Aktivität hinzugefügt wurde, konfigurieren Sie das Intervall und die Häufigkeit, fügen Sie dann einen neuen Parameter hinzu, und wählen Sie **Zu diesen Stunden** aus.
 
-![Aktivität „Zeitplan“](./media/analysis-services-async-refresh-logic-app/16.png)
+![Screenshot, der den Abschnitt „Serie“ mit ausgewähltem Parameter „Zu diesen Stunden“ zeigt.](./media/analysis-services-async-refresh-logic-app/16.png)
 
 Wählen Sie die gewünschten Stunden aus.
 
@@ -117,4 +117,4 @@ Speichern Sie die Logik-App.
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Beispiele](analysis-services-samples.md)  
-[REST-API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST-API](/rest/api/analysisservices/servers)

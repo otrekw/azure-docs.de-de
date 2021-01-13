@@ -1,31 +1,25 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Zuweisen einer benutzerdefinierten Domäne an eine Web-App | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Zuweisen einer benutzerdefinierten Domäne an eine Web-App
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'Mit PowerShell: Zuweisen einer benutzerdefinierten Domäne'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie einer App eine benutzerdefinierte Domäne zuweisen.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 356f5af9-f62e-411c-8b24-deba05214103
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 3ca13355271e28c21a6daab2af02fb46d0b7b87c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 749250f4ee5e1a0a39c9dc36795fa07e9da743a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087882"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89072229"
 ---
 # <a name="assign-a-custom-domain-to-a-web-app-using-powershell"></a>Zuweisen einer benutzerdefinierten Domäne zu einer Web-App mit PowerShell
 
 Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und ordnet ihr dann `www.<yourdomain>` zu. 
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. Sie benötigen außerdem Zugriff auf die Seite für die DNS-Konfiguration der Domänenregistrierungsstelle.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. Sie benötigen außerdem Zugriff auf die Seite für die DNS-Konfiguration der Domänenregistrierungsstelle.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -55,6 +49,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Azure PowerShell-Beispiele für Azure App Service-Web-Apps finden Sie unter [Azure PowerShell-Beispiele](../samples-powershell.md).

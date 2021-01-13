@@ -1,27 +1,27 @@
 ---
-title: Azure-VMware-Lösung von CloudSimple – Sicherheit für CloudSimple-Dienste
+title: Azure VMware Solution by CloudSimple – Sicherheit für CloudSimple-Dienste
 description: Enthält eine Beschreibung der Modelle für gemeinsame Verantwortung, mit denen für CloudSimple-Dienste für Sicherheit gesorgt wird.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1a33e20ec540a05885eb13a3828d28ffc9923fff
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: d62eec72a884470ade03897a0533e62c6f1b0f71
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972865"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898792"
 ---
 # <a name="cloudsimple-security-overview"></a>CloudSimple-Sicherheit: Übersicht
 
-Dieser Artikel enthält eine Übersicht darüber, wie die Sicherheit für die Azure-VMware-Lösung des CloudSimple-Diensts, die Infrastruktur und das Datencenter implementiert wird. Sie erhalten Informationen zum Schutz und zur Sicherheit von Daten, zur Netzwerksicherheit und zur Verwaltung von Sicherheitsrisiken und Patches.
+Dieser Artikel enthält eine Übersicht darüber, wie die Sicherheit für den Azure VMware Solution by CloudSimple-Dienst, die Infrastruktur und das Datencenter implementiert wird. Sie erhalten Informationen zum Schutz und zur Sicherheit von Daten, zur Netzwerksicherheit und zur Verwaltung von Sicherheitsrisiken und Patches.
 
 ## <a name="shared-responsibility"></a>Gemeinsame Verantwortung
 
-Für die Azure-VMware-Lösung von CloudSimple wird aus Sicherheitsgründen ein Modell mit der Bezeichnung „Gemeinsame Verantwortung“ genutzt. Die vertrauenswürdige Sicherheit in der Cloud wird über die gemeinsame Verantwortung von Kunden und Microsoft als Dienstanbieter erreicht. Mit dieser Matrix aus Zuständigkeiten wird für eine höhere Sicherheit gesorgt, und Single Points of Failure werden beseitigt.
+Für Azure VMware Solution by CloudSimple wird aus Sicherheitsgründen ein Modell mit der Bezeichnung „Gemeinsame Verantwortung“ genutzt. Die vertrauenswürdige Sicherheit in der Cloud wird über die gemeinsame Verantwortung von Kunden und Microsoft als Dienstanbieter erreicht. Mit dieser Matrix aus Zuständigkeiten wird für eine höhere Sicherheit gesorgt, und Single Points of Failure werden beseitigt.
 
 ## <a name="azure-infrastructure"></a>Azure-Infrastruktur
 
@@ -29,7 +29,7 @@ Zu den Aspekten in Bezug auf die Sicherheit der Azure-Infrastruktur gehören die
 
 ### <a name="datacenter-security"></a>Sicherheit im Datencenter
 
-Microsoft verfügt über eine komplette Abteilung, die sich mit der Entwicklung, der Erstellung und dem Betrieb der Einrichtungen zur Unterstützung von Azure befasst. Dieses Team hat die Aufgabe, die physische Sicherheit auf dem neuesten Stand zu halten. Ausführlichere Informationen zur physischen Sicherheit finden Sie unter [Azure-Einrichtungen, Gelände und physische Sicherheit](../security/azure-physical-security.md).
+Microsoft verfügt über eine komplette Abteilung, die sich mit der Entwicklung, der Erstellung und dem Betrieb der Einrichtungen zur Unterstützung von Azure befasst. Dieses Team hat die Aufgabe, die physische Sicherheit auf dem neuesten Stand zu halten. Ausführlichere Informationen zur physischen Sicherheit finden Sie unter [Azure-Einrichtungen, Gelände und physische Sicherheit](../security/fundamentals/physical-security.md).
 
 ### <a name="equipment-location"></a>Standort der Ausrüstung
 
@@ -49,7 +49,7 @@ Für ruhende Daten in der Private Cloud-Umgebung können Sie die vSAN-Verschlüs
 
 ### <a name="data-protection-for-data-that-is-required-to-move-through-public-networks"></a>Schutz von Daten, die über öffentliche Netzwerke übertragen werden müssen
 
-Zum Schützen von Daten, die über öffentliche Netzwerke übertragen werden, können Sie IPsec- und SSL-VPN-Tunnel für Ihre Private Clouds erstellen. Die gängigen Verschlüsselungsmethoden werden unterstützt, z. B. 128-Byte- und 256-Byte-AES. Daten während der Übertragung (einschließlich Authentifizierung, Administratorzugriff und Kundendaten) werden mit Standardmechanismen (SSH, TLS 1.2 und Secure RDP) verschlüsselt. Für die Kommunikation, bei der vertrauliche Informationen übermittelt werden, werden die Standardmechanismen für die Verschlüsselung genutzt.
+Zum Schützen von Daten, die über öffentliche Netzwerke übertragen werden, können Sie IPsec- und TLS-VPN-Tunnel für Ihre privaten Clouds erstellen. Die gängigen Verschlüsselungsmethoden werden unterstützt, z. B. 128-Byte- und 256-Byte-AES. Daten während der Übertragung (einschließlich Authentifizierung, Administratorzugriff und Kundendaten) werden mit Standardmechanismen (SSH, TLS 1.2 und Secure RDP) verschlüsselt. Für die Kommunikation, bei der vertrauliche Informationen übermittelt werden, werden die Standardmechanismen für die Verschlüsselung genutzt.
 
 ### <a name="secure-disposal"></a>Sicheres Löschen
 

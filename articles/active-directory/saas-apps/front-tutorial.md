@@ -2,24 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Front | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Front konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 88270b6d-2571-434a-b139-b6ccc3a2b19f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 8fb5685338ee3d8888f99cc36f4868ef897de5a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3edd1e9bf3b42b3d4ad0c7c533dedb23ea05e5ec
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101931"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92450814"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>Tutorial: Azure Active Directory-Integration mit Front
 
@@ -30,7 +27,7 @@ Die Integration von Front in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei Front angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -52,25 +49,25 @@ Zum Konfigurieren der Integration von Front in Azure AD müssen Sie Front aus de
 
 **Um Front aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory** .
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Front** ein, wählen Sie im Ergebnisbereich **Front** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Front** ein, wählen Sie im Ergebnisbereich **Front** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
 
      ![Front in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Front mithilfe eines Testbenutzers namens **Britta Simon**.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Front mithilfe eines Testbenutzers namens **Britta Simon** .
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Front eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Front müssen Sie die folgenden Bausteine ausführen:
@@ -88,7 +85,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Front die folgenden Schritte aus:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Front** die Option **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Front** die Option **Einmaliges Anmelden** .
 
     ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
@@ -96,7 +93,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Front di
 
     ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten** , um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -111,7 +108,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Front di
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese Werte erhalten Sie vom [Supportteam für den Front-Client](mailto:support@frontapp.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen** , um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
@@ -131,31 +128,31 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Front di
 
 2. Wechseln Sie zu **Settings (Zahnradsymbol unten auf der linken Randleiste) > Preferences** (Einstellungen > Voreinstellungen).
    
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/front-tutorial/tutorial_front_000.png)
+    ![Screenshot: Ausgewähltes Zahnradsymbol für Einstellungen mit hervorgehobener Option „Preferences“ (Einstellungen)](./media/front-tutorial/tutorial_front_000.png)
 
 3. Klicken Sie auf den Link **Single Sign On** .
    
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/front-tutorial/tutorial_front_001.png)
+    ![Screenshot: Abschnitt „Company preferences“ (Unternehmenseinstellungen) mit ausgewähltem Link „Single Sign On“ (Einmaliges Anmelden)](./media/front-tutorial/tutorial_front_001.png)
 
 4. Wählen Sie in der Dropdownliste für **Einmaliges Anmelden** den Eintrag **SAML** aus.
    
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/front-tutorial/tutorial_front_002.png)
+    ![Screenshot: Dropdownliste „Single Sign On“ (Einmaliges Anmelden) mit ausgewählter Option „SAML“](./media/front-tutorial/tutorial_front_002.png)
 
 5. Geben Sie im Textfeld **Entry Point** (Einstiegspunkt) den Wert für die **Anmelde-URL** aus dem Konfigurations-Assistenten der Azure AD-Anwendung ein.
     
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/front-tutorial/tutorial_front_003.png)
+    ![Screenshot: Textfeld „Einstiegspunkt“](./media/front-tutorial/tutorial_front_003.png)
 
 6. Öffnen Sie die heruntergeladene Datei **Zertifikat (Base64)** in Editor, kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Signaturzertifikat** ein.
     
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/front-tutorial/tutorial_front_004.png)
+    ![Screenshot: „Signaturzertifikat“ hervorgehoben und Textfeld abgeblendet](./media/front-tutorial/tutorial_front_004.png)
 
 7. Führen Sie im Abschnitt **Service provider settings** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/front-tutorial/tutorial_front_005.png)
 
-    a. Kopieren Sie den Wert von **Entity ID**, und fügen Sie ihn im Azure-Portal im Abschnitt **Domänen und URLs für Front** in das Textfeld **Bezeichner** ein.
+    a. Kopieren Sie den Wert von **Entity ID** , und fügen Sie ihn im Azure-Portal im Abschnitt **Domänen und URLs für Front** in das Textfeld **Bezeichner** ein.
 
-    b. Kopieren Sie den Wert von **ACS-URL**, und fügen Sie ihn im Azure-Portal im Abschnitt **Domänen und URLs für Front** in das Textfeld **Antwort-URL** ein.
+    b. Kopieren Sie den Wert von **ACS-URL** , und fügen Sie ihn im Azure-Portal im Abschnitt **Domänen und URLs für Front** in das Textfeld **Antwort-URL** ein.
     
 8. Klicken Sie auf die Schaltfläche **Save** .
 
@@ -163,7 +160,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Front di
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -177,18 +174,18 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung** .  
     Zum Beispiel, BrittaSimon@contoso.com
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Front gewähren.
 
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Front** aus.
+1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen** , **Alle Anwendungen** und **Front** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -200,15 +197,15 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen** , und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen** .
 
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen** .
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
 
 ### <a name="create-front-test-user"></a>Erstellen eines Front-Testbenutzers
 
@@ -218,13 +215,12 @@ In diesem Abschnitt erstellen Sie in Front einen Benutzer namens Britta Simon. A
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Front“ klicken, sollten Sie automatisch bei der Front-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Front“ klicken, sollten Sie automatisch bei der Front-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

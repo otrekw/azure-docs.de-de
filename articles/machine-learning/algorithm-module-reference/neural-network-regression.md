@@ -1,20 +1,20 @@
 ---
 title: 'Regression mit neuronalen Netzwerken: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie das Modul für die Regression mit neuronalen Netzwerken in Azure Machine Learning Service verwendet wird, um mithilfe eines anpassbaren neuronalen Netzwerkalgorithmus ein Regressionsmodell zu erstellen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie das Modul Neural Network Regression in Azure Machine Learning verwendet wird, um mithilfe eines anpassbaren Algorithmus für ein neuronales Netz ein Regressionsmodell zu erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 93f27458a2571b2e26a090c06b01d8abe3e79c2a
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 04/22/2020
+ms.openlocfilehash: 403576454615effeb53651b51679681422b08e9e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128583"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90890364"
 ---
 # <a name="neural-network-regression-module"></a>Modul „Regression mit neuronalen Netzwerken“
 
@@ -24,7 +24,7 @@ ms.locfileid: "70128583"
   
 ## <a name="module-overview"></a>Modulübersicht  
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul, um mithilfe eines anpassbaren neuronalen Netzwerkalgorithmus ein Regressionsmodell zu erstellen.
   
@@ -50,13 +50,15 @@ Neuronale Netzwerke können umfassend angepasst werden. In diesem Abschnitt werd
     
     Diese Option eignet sich besonders, wenn Sie bereits etwas mit neuronalen Netzwerken vertraut sind. Zum Definieren der Netzwerkarchitektur verwenden Sie die Sprache Net#.  
 
-##  <a name="bkmk_DefaultArchitecture"></a>Erstellen eines neuronalen Netzwerkmodells mithilfe der Standardarchitektur
-  
-1.  Fügen Sie auf der Benutzeroberfläche Ihrem Experiment das Modul **Regression mit neuronalen Netzwerken** hinzu. Sie finden dieses Modul unter **Machine Learning**, **Initialize** (Initialisieren) in der Kategorie **Regression**. 
+##  <a name="create-a-neural-network-model-using-the-default-architecture"></a><a name="bkmk_DefaultArchitecture"></a>Erstellen eines neuronalen Netzwerkmodells mithilfe der Standardarchitektur
+
+1.  Fügen Sie Ihrer Pipeline im Designer das Modul **Neural Network Regression** hinzu. Sie finden dieses Modul unter **Machine Learning**, **Initialize** (Initialisieren) in der Kategorie **Regression**. 
   
 2. Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.  
   
-    -   **Single Parameter** (Einzelner Parameter): Wählen Sie diese Option, wenn Sie bereits wissen, wie Sie das Modell konfigurieren möchten.  
+    -   **Single Parameter** (Einzelner Parameter): Wählen Sie diese Option, wenn Sie bereits wissen, wie Sie das Modell konfigurieren möchten.
+
+    -   **Parameter Range** (Parameterbereich): Wählen Sie diese Option, wenn Sie nicht sicher sind, welche Parameter am besten geeignet sind, und einen Parametersweep ausführen möchten. Wählen Sie einen Wertebereich aus, über den iteriert werden soll. Anschließend iteriert das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) über alle möglichen Kombinationen der von Ihnen angegebenen Einstellungen, um die Hyperparameter zur Erzielung der optimalen Ergebnisse zu bestimmen.   
 
 3.  Wählen Sie in **Hidden layer specification** (Spezifikation der verborgenen Ebenen) **Fully connected case** (Fall mit vollständigen Verbindungen) aus. Diese Option erstellt ein Modell mit der Standardarchitektur für neuronale Netze, die im Fall eines Regressionsmodells mit neuronalen Netzen drei Attribute aufweist:  
   
@@ -72,30 +74,36 @@ Neuronale Netzwerke können umfassend angepasst werden. In diesem Abschnitt werd
 
 6.  Geben Sie für **Number of learning iterations** (Anzahl der Lerniterationen) die maximale Häufigkeit an, mit der der Algorithmus die Trainingsfälle verarbeitet.
 
-7.  Geben Sie für „**The initial learning weights diameter“ (Anfangsdurchmesser der Lerngewichtungen) einen Wert ein, der die Knotengewichtungen am Anfang des Lernprozesses bestimmt.
 
 8.  Geben Sie für **The momentum** (Dynamik) einen Wert ein, der beim Lernen als Gewichtung auf Knoten aus früheren Iterationen angewendet werden soll.
 
-10. Wählen Sie die Option **Shuffle examples** (Zufallsreihenfolge der Beispiele) aus, um die Reihenfolge der Fälle zwischen den Iterationen zu ändern. Wenn Sie diese Option deaktivieren, werden die Fälle bei jeder Ausführung des Experiments in genau der gleichen Reihenfolge verarbeitet.
+10. Wählen Sie die Option **Shuffle examples** (Zufallsreihenfolge der Beispiele) aus, um die Reihenfolge der Fälle zwischen den Iterationen zu ändern. Wenn Sie diese Option deaktivieren, werden die Fälle bei jeder Ausführung der Pipeline in exakt der gleichen Reihenfolge verarbeitet.
   
-11. Für **Random number seed** (Zufällig gewählter Startwert) können Sie optional einen Wert eingeben, der als Startwert verwendet werden soll. Die Angabe eines Startwerts ist nützlich, wenn Sie die Wiederholbarkeit für alle Ausführungen desselben Experiments sicherstellen möchten.
+11. Für **Random number seed** (Zufällig gewählter Startwert) können Sie optional einen Wert eingeben, der als Startwert verwendet werden soll. Die Angabe eines Startwerts ist nützlich, wenn Sie die Wiederholbarkeit für alle Ausführungen derselben Pipeline sicherstellen möchten.
   
-13. Stellen Sie eine Verbindung eines Trainingsdatasets mit einem der [Trainingsmodule](module-reference.md) her: 
+13. Verbinden Sie ein Trainingsdataset, und trainieren Sie das Modell:
+
+    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie ein mit Tags versehenes Dataset und das Modul [Train Model](train-model.md) (Modell trainieren) verbinden.  
   
-    -   Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie [Train Model](./train-model.md) verwenden.  
+    + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Parameter Range** (Parameterbereich) festlegen, verbinden Sie ein markiertes Dataset, und trainieren Sie das Modell mithilfe des Moduls [Tune Model Hyperparameters](tune-model-hyperparameters.md).  
+  
+    > [!NOTE]
+    > 
+    > Wenn Sie einen Parameterbereich an das Modul [Train Model](train-model.md) übergeben, wird nur der Standardwert in der Liste der Einzelparameter verwendet.  
+    > 
+    > Wenn Sie eine einzelne Gruppe von Parameterwerten an das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) übergeben und ein Bereich von Einstellungen für jeden Parameter erwartet wird, werden die Werte ignoriert und stattdessen die Standardwerte für den Learner verwendet.  
+    > 
+    > Wenn Sie die Option **Parameter Range** (Parameterbereich) auswählen und einen einzelnen Wert für einen beliebigen Parameter eingeben, wird dieser angegebene einzelne Wert während des gesamten Löschvorgangs verwendet, auch wenn andere Parameter in einem Wertebereich geändert werden.  
   
    
-14. Führen Sie das Experiment aus.  
+14. Übermitteln Sie die Pipeline.  
 
 ## <a name="results"></a>Ergebnisse
 
 Nach Abschluss des Trainings:
 
-+ Um eine Zusammenfassung der Parameter des Modells sowie der aus dem Training gewonnenen Merkmalsgewichtungen und anderer Parameter des neuronalen Netzes anzuzeigen, klicken Sie mit der rechten Maustaste auf die Ausgabe von [Train Model](./train-model.md) (Modell trainieren), und wählen Sie **Visualize** (Visualisieren) aus.  
-
-+ Um eine Momentaufnahme des trainierten Modells zu speichern, klicken Sie mit der rechten Maustaste auf die Ausgabe **Trained model** (Trainiertes Modell), und wählen Sie **Save As Trained Model** (Als trainiertes Modell speichern) aus. Dieses Modell wird bei nachfolgenden Ausführungen desselben Experiments nicht aktualisiert.
-
+- Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Registerkarte **Ausgaben** im rechten Bereich des Moduls **Train model** aus. Wählen Sie das Symbol **Register dataset** (Dataset registrieren) aus, um das Modell als wiederverwendbares Modul zu speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

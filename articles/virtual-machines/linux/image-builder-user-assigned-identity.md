@@ -4,27 +4,27 @@ description: Erstellen Sie ein VM-Image mit Azure Image Builder, das mithilfe ei
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
-ms.topic: article
-ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: b6347765f8d2e21c352834dc8d28b65c28f99758
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.topic: how-to
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.openlocfilehash: f5734d4b1871dd285fc83a72631f7d645e0b72ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671444"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91307261"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Erstellen eines Images und Verwenden einer benutzerseitig zugewiesenen verwalteten Identität zum Zugreifen auf Dateien in Azure Storage 
 
 Azure Image Builder unterstützt standardmäßig die Verwendung von Skripts und das Kopieren von Dateien aus mehreren Quellen wie z. B. GitHub und Azure Storage. Azure Image Builder muss extern auf diese zugreifen können, um sie verwenden zu können. Sie können jedoch Azure Storage-Blobs mit SAS-Token schützen.
 
-In diesem Artikel erfahren Sie, wie Sie mit Azure Image Builder ein benutzerdefiniertes Image erstellen. Dabei verwendet der Dienst eine [benutzerseitig zugewiesene verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), um für die Imageanpassung auf Dateien in Azure Storage zuzugreifen, ohne die Dateien öffentlich verfügbar machen zu müssen, oder mithilfe von SAS-Token.
+In diesem Artikel erfahren Sie, wie Sie mit Azure VM Image Builder ein benutzerdefiniertes Image erstellen. Dabei verwendet der Dienst eine [benutzerseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md), um für die Imageanpassung auf Dateien in Azure Storage zuzugreifen, ohne die Dateien öffentlich verfügbar machen zu müssen oder SAS-Token einzurichten.
 
 Im unten verwendeten Beispiel erstellen Sie zwei Ressourcengruppen. Eine wird für das benutzerdefinierte Image verwendet, und die andere hostet das Azure-Speicherkonto, das eine Skriptdatei enthält. Dadurch wird ein realitätsnahes Szenario simuliert, bei dem Sie Artefakte oder Imagedateien außerhalb von Azure Image Builder in unterschiedlichen Speicherkonten erstellt haben. Sie erstellen eine benutzerseitig zugewiesene Identität, der Sie dann Leseberechtigungen für die Skriptdatei gewähren, ohne die Datei öffentlich verfügbar zu machen. Anschließend verwenden Sie die Shellanpassung, um das Skript aus dem Speicherkonto herunterzuladen und auszuführen.
 
 
 > [!IMPORTANT]
-> Azure Image Builder ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar.
+> Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="register-the-features"></a>Registrieren des Features
@@ -42,9 +42,11 @@ az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachine
 
 Überprüfen Sie die Registrierung.
 
+
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-
+az provider show -n Microsoft.KeyVault | grep registrationState
+az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
@@ -52,7 +54,8 @@ Wenn nicht „registered“ ausgegeben wird, führen Sie den folgenden Befehl au
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
 ```
 
@@ -62,7 +65,7 @@ az provider register -n Microsoft.Storage
 Einige Angaben verwenden wir wiederholt. Aus diesem Grund erstellen wir einige Variablen, um diese Informationen zu speichern.
 
 
-```azurecli-interactive
+```console
 # Image resource group name 
 imageResourceGroup=aibmdimsi
 # storage resource group
@@ -77,19 +80,50 @@ runOutputName=u1804ManImgMsiro
 
 Erstellen Sie eine Variable für Ihre Abonnement-ID. Diese können Sie mit `az account show | grep id` abrufen.
 
-```azurecli-interactive
+```console
 subscriptionID=<Your subscription ID>
 ```
 
 Erstellen Sie die Ressourcengruppen für das Image und das Speichern des Skripts.
 
-```azurecli-interactive
+```console
 # create resource group for image template
 az group create -n $imageResourceGroup -l $location
 # create resource group for the script storage
 az group create -n $strResourceGroup -l $location
 ```
 
+Erstellen Sie eine vom Benutzer zugewiesene Identität, und legen Sie Berechtigungen für die Ressourcengruppe fest.
+
+Image Builder verwendet die angegebene [Benutzeridentität](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity), um das Image in die Ressourcengruppe einzufügen. In diesem Beispiel erstellen Sie eine Azure-Rollendefinition, die über die präzisen Aktionen zur Verteilung des Images verfügt. Die Rollendefinition wird dann der Benutzeridentität zugewiesen.
+
+```console
+# create user assigned identity for image builder to access the storage account where the script is located
+idenityName=aibBuiUserId$(date +'%s')
+az identity create -g $imageResourceGroup -n $idenityName
+
+# get identity id
+imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
+
+# get the user identity URI, needed for the template
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+
+# download preconfigured role definition example
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+
+# update the definition
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
+sed -i -e "s/<rgName>/$imageResourceGroup/g" aibRoleImageCreation.json
+
+# create role definitions
+az role definition create --role-definition ./aibRoleImageCreation.json
+
+# grant role definition to the user assigned identity
+az role assignment create \
+    --assignee $imgBuilderCliId \
+    --role "Azure Image Builder Service Image Creation Role" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
+```
 
 Erstellen Sie den Speicher, kopieren Sie das Beispielskript von GitHub, und fügen Sie es dort ein.
 
@@ -116,42 +150,23 @@ az storage blob copy start \
     --source-uri https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh
 ```
 
-
-
-Erteilen Sie Azure Image Builder die Berechtigung, Ressourcen in dieser Imageressourcengruppe erstellen zu können. Der Wert `--assignee` ist die App-Registrierungs-ID für den Image Builder-Dienst. 
+Erteilen Sie Azure Image Builder die Berechtigung, Ressourcen in dieser Imageressourcengruppe erstellen zu können. Der Wert `--assignee` ist die Benutzeridentitäts-ID.
 
 ```azurecli-interactive
-az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
-```
-
-
-## <a name="create-user-assigned-managed-identity"></a>Erstellen einer benutzerseitig zugewiesenen verwalteten Identität
-
-Erstellen Sie die Identität, und gewähren Sie ihr Berechtigungen für das Skriptspeicherkonto. Weitere Informationen finden Sie unter „Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe der Azure-Befehlszeilenschnittstelle“ im Abschnitt [Benutzerseitig zugewiesene verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
-
-```azurecli-interactive
-# Create the user assigned identity 
-identityName=aibBuiUserId$(date +'%s')
-az identity create -g $imageResourceGroup -n $identityName
-# assign the identity permissions to the storage account, so it can read the script blob
-imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $identityName | grep "clientId" | cut -c16- | tr -d '",')
 az role assignment create \
     --assignee $imgBuilderCliId \
     --role "Storage Blob Data Reader" \
     --scope /subscriptions/$subscriptionID/resourceGroups/$strResourceGroup/providers/Microsoft.Storage/storageAccounts/$scriptStorageAcc/blobServices/default/containers/$scriptStorageAccContainer 
-# create the user identity URI
-imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName
 ```
+
+
 
 
 ## <a name="modify-the-example"></a>Anpassen des Beispiels
 
 Laden Sie die JSON-Beispieldatei herunter, und konfigurieren Sie sie mit den erstellten Variablen.
 
-```azurecli-interactive
+```console
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateMsi.json
 sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateMsi.json
@@ -185,13 +200,13 @@ az resource invoke-action \
      --action Run 
 ```
 
-Warten Sie, bis der Buildvorgang abgeschlossen wird. Der Vorgang kann bis zu 15 Minuten dauern.
+Warten Sie, bis der Buildvorgang abgeschlossen wird. Der Vorgang kann bis zu 15 Minuten dauern.
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
 Erstellen Sie anhand des Images eine VM. 
 
-```bash
+```azurecli
 az vm create \
   --resource-group $imageResourceGroup \
   --name aibImgVm00 \
@@ -203,13 +218,13 @@ az vm create \
 
 Starten Sie eine SSH-Sitzung, nachdem Sie die VM erstellt haben.
 
-```azurecli-interactive
+```console
 ssh aibuser@<publicIp>
 ```
 
-Dann sollten Sie sehen, dass das Image angepasst wurde. Es wird eine Nachricht des Tages ausgegeben, sobald die SSH-Verbindung hergestellt wurde.
+Sie sollten sehen, dass das Image angepasst wurde. Es wird eine „Nachricht des Tages“ ausgegeben, sobald die SSH-Verbindung hergestellt wurde.
 
-```console
+```output
 
 *******************************************************
 **            This VM was built from the:            **
@@ -218,11 +233,18 @@ Dann sollten Sie sehen, dass das Image angepasst wurde. Es wird eine Nachricht d
 *******************************************************
 ```
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Wenn Sie fertig sind, können Sie die Ressourcen löschen, wenn Sie sie nicht mehr brauchen.
 
 ```azurecli-interactive
+
+az role definition delete --name "$imageRoleDefName"
+```azurecli-interactive
+az role assignment delete \
+    --assignee $imgBuilderCliId \
+    --role "$imageRoleDefName" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 az identity delete --ids $imgBuilderId
 az resource delete \
     --resource-group $imageResourceGroup \
@@ -234,4 +256,4 @@ az group delete -n $strResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sollten Sie Probleme bei der Arbeit mit Azure Image Builder haben, finden Sie im Artikel zur [Problembehandlung](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json) weitere Informationen.
+Sollten Sie Probleme bei der Arbeit mit Azure Image Builder haben, finden Sie im Artikel zur [Problembehandlung](image-builder-troubleshoot.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json) weitere Informationen.

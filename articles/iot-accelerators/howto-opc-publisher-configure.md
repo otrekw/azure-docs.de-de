@@ -1,21 +1,25 @@
 ---
 title: Konfigurieren von OPC Publisher – Azure | Microsoft-Dokumentation
-description: Konfigurieren von OPC Publisher
+description: In diesem Artikel wird das Konfigurieren von OPC Publisher zum Angeben von Datenänderungen des OPC UA-Knotens, OPC UA-Ereignissen für die Veröffentlichung und des Telemetrieformats beschrieben.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
-ms.topic: overview
+ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: bccab4dde5e17ec30a0b8c5e36dd78bdd1bdff93
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 405fa04a3b6af7f0c87888aa48aba9bdffeaf282
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605719"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366954"
 ---
 # <a name="configure-opc-publisher"></a>Konfigurieren von OPC Publisher
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den Inhalt auf dem neuesten Stand lesen.
 
 Sie können OPC Publisher so konfigurieren, dass Folgendes angegeben wird:
 
@@ -58,7 +62,7 @@ Im folgenden Beispiel sehen Sie das Format der Konfigurationsdatei:
 
 Zum Veröffentlichen von OPC UA-Ereignissen wird die gleiche Konfigurationsdatei wie für Datenänderungen verwendet.
 
-Das folgende Beispiel zeigt, wie Sie die Veröffentlichung für Ereignisse konfigurieren, die über den [SimpleEvents-Server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/SimpleEvents/Server) generiert werden. Den SimpleEvents-Server finden Sie im [OPC Foundation-Repository](https://github.com/OPCFoundation/UA-.NETStandard).
+Das folgende Beispiel zeigt, wie Sie die Veröffentlichung für Ereignisse konfigurieren, die über den [SimpleEvents-Server](https://github.com/OPCFoundation/UA-.NETStandard-Samples/tree/master/Workshop/SimpleEvents/Server) generiert werden. Den SimpleEvents-Server finden Sie im [OPC Foundation-Repository](https://github.com/OPCFoundation/UA-.NETStandard-Samples).
 
 ```json
 [
@@ -140,13 +144,13 @@ OPC Publisher implementiert die folgenden direkten IoT Hub-Methodenaufrufe:
 - ExitApplication
 - GetInfo
 
-Das Format der JSON-Nutzlast für die Anforderung und die Antworten der Methode sind in [opcpublisher/HubMethodModel.cs](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/HubMethodModel.cs) definiert.
+Das Format der JSON-Nutzlast für die Anforderung und die Antworten der Methode sind in [opcpublisher/HubMethodModel.cs](https://github.com/Azure/iot-edge-opc-publisher/tree/master/opcpublisher) definiert.
 
 Wenn Sie eine unbekannte Methode für das Modul aufrufen, wird als Antwort eine Zeichenfolge zurückgegeben, die angibt, dass die Methode nicht implementiert ist. Sie können eine unbekannte Methode als eine Möglichkeit aufrufen, das Modul zu pingen.
 
 ### <a name="configure-username-and-password-for-authentication"></a>Konfigurieren des Benutzernamens und Kennworts für die Authentifizierung
 
-Der Authentifizierungsmodus kann über einen direkten IoT Hub-Methodenaufruf festgelegt werden. Die Nutzlast muss die **OpcAuthenticationMode**-Eigenschaft sowie den Benutzernamen und das Kennwort enthalten:
+Der Authentifizierungsmodus kann über einen direkten IoT Hub-Methodenaufruf festgelegt werden. Die Nutzlast muss die **OpcAuthenticationMode** -Eigenschaft sowie den Benutzernamen und das Kennwort enthalten:
 
 ```csharp
 {
@@ -168,7 +172,7 @@ Das Kennwort wird vom IoT Hub-Workloadclient verschlüsselt und in der Konfigura
 }
 ```
 
-Wenn die **OpcAuthenticationMode**-Eigenschaft in der Nutzlast nicht festgelegt ist, bleiben die Authentifizierungseinstellungen in der Konfiguration unverändert.
+Wenn die **OpcAuthenticationMode** -Eigenschaft in der Nutzlast nicht festgelegt ist, bleiben die Authentifizierungseinstellungen in der Konfiguration unverändert.
 
 ## <a name="configure-telemetry-publishing"></a>Konfigurieren der Veröffentlichung von Telemetriedaten
 
@@ -181,7 +185,7 @@ Wenn OPC Publisher für Batchnachrichten konfiguriert ist, werden diese als gül
 Die Telemetriedaten werden von den folgenden Quellen abgeleitet:
 
 - OPC Publisher-Knotenkonfiguration für den Knoten
-- **MonitoredItem**-Objekt des OPC UA-Stapels, für den OPC Publisher eine Benachrichtigung erhalten hat
+- **MonitoredItem** -Objekt des OPC UA-Stapels, für den OPC Publisher eine Benachrichtigung erhalten hat
 - Das an diese Benachrichtigung übergebene Argument, das Details zur Änderung der Datenwerte enthält
 
 Die Telemetriedaten, die in der JSON-formatierten Nachricht enthalten sind, stellen eine Auswahl aus wichtigen Eigenschaften dieser Objekte dar. Wenn Sie weitere Eigenschaften benötigen, müssen Sie die OPC Publisher-Codebasis ändern.
@@ -223,7 +227,7 @@ Die Syntax der Konfigurationsdatei sieht wie folgt aus:
 
             // Pattern is a regular expression, which is applied to the actual value of the
             // property (here 'EndpointUrl').
-            // If this key is ommited (which is the default), then no regex matching is done
+            // If this key is omitted (which is the default), then no regex matching is done
             // at all, which improves performance.
             // If the key is used you need to define groups in the regular expression.
             // Publisher applies the regular expression and then concatenates all groups

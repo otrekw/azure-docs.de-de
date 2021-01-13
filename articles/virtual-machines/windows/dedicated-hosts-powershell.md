@@ -1,50 +1,30 @@
 ---
-title: Bereitstellen von dedizierten Azure-Hosts über Azure PowerShell | Microsoft-Dokumentation
+title: Bereitstellen von dedizierten Azure-Hosts mit Azure PowerShell
 description: Stellen Sie VMs auf dedizierten Hosts über Azure PowerShell bereit.
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 08/01/2019
+ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: 1dcea4f56d778b0e6320634286a25d478c78a5bc
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.reviewer: zivr
+ms.openlocfilehash: 2f8f2d9eb14e1272af126c9a6d6663f41aaee33f
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261711"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005085"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Vorschau: Bereitstellen von VMs auf dedizierten Hosts über Azure PowerShell
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Bereitstellen von VMs auf dedizierten Hosts über Azure PowerShell
 
-Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs). 
+Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](../dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs). 
 
-Vergewissern Sie sich, dass die Azure PowerShell-Version 2.4.2 oder höher installiert ist und Sie mithilfe von `Connect-AzAccount` bei einem Azure-Konto angemeldet wurden. Öffnen Sie zum Installieren von Version 2.4.2 eine PowerShell-Eingabeaufforderung, und geben Sie Folgendes ein:
+Vergewissern Sie sich, dass die Azure PowerShell-Version 2.8.0 oder höher installiert ist und Sie mithilfe von `Connect-AzAccount` bei einem Azure-Konto angemeldet wurden. 
 
-```powershell
-Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
-```
+## <a name="limitations"></a>Einschränkungen
 
-Sie benötigen mindestens Version 1.6.0 des PowerShellGet-Moduls, um die Funktionalität des Vorschaumoduls in PowerShell zu aktivieren. In den neuesten Versionen von PowerShell Core ist diese automatisch integriert. Für ältere Versionen von PowerShell können Sie den folgenden Befehl ausführen, um ein Update auf die neueste Version durchzuführen:
-
-```powershell
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
-
-
-> [!IMPORTANT]
-> Azure Dedicated Host – der Dienst für dedizierte Azure-Hosts – ist derzeit als Public Preview verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Bekannte Einschränkungen der Vorschau**
-> - VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
-> - Das erste Vorschaurelease unterstützt die folgende VM-Serien: DSv3 und ESv3. 
-
-
+- VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
+- Die verfügbaren Größen und Hardwaretypen für dedizierte Hosts variieren je nach Region. Weitere Informationen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
 
 ## <a name="create-a-host-group"></a>Erstellen einer Hostgruppe
 
@@ -57,9 +37,9 @@ In beiden Fällen müssen Sie die Anzahl der Fehlerdomänen für Ihre Hostgruppe
 Sie können auch sowohl Verfügbarkeitszonen als auch Fehlerdomänen verwenden. In diesem Beispiel wird eine Hostgruppe in Zone 1 mit zwei Fehlerdomänen erstellt. 
 
 
-```powershell
+```azurepowershell-interactive
 $rgName = "myDHResourceGroup"
-$location = "East US"
+$location = "EastUS"
 
 New-AzResourceGroup -Location $location -Name $rgName
 $hostGroup = New-AzHostGroup `
@@ -70,17 +50,20 @@ $hostGroup = New-AzHostGroup `
    -Zone 1
 ```
 
+
+Fügen Sie den Parameter `-SupportAutomaticPlacement true` hinzu, damit Ihre VMs und Skalierungsgruppeninstanzen automatisch auf Hosts innerhalb einer Hostgruppe platziert werden. Weitere Informationen finden Sie unter [Manuelle und automatische Platzierung im Vergleich](../dedicated-hosts.md#manual-vs-automatic-placement).
+
+
 ## <a name="create-a-host"></a>Erstellen eines Hosts
 
-Nun erstellen Sie einen dedizierten Host in der Hostgruppe. Zusätzlich zu einem Namen müssen Sie die SKU für den Host angeben. Die Host-SKU erfasst die unterstützte VM-Serie sowie die Hardwaregenerierung für Ihren dedizierten Host.  Während der Vorschau werden die folgenden Host-SKU-Werte unterstützt: „DSv3_Type1“ und „ESv3_Type1“.
-
+Nun erstellen Sie einen dedizierten Host in der Hostgruppe. Zusätzlich zu einem Namen müssen Sie die SKU für den Host angeben. Die Host-SKU erfasst die unterstützte VM-Serie sowie die Hardwaregenerierung für Ihren dedizierten Host.
 
 Weitere Informationen zu den Host-SKUs und Preisen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
 
 Beim Festlegen der Anzahl der Fehlerdomänen für die Hostgruppe werden Sie aufgefordert, die Fehlerdomäne für den Host anzugeben. In diesem Beispiel wird die Fehlerdomäne für den Host auf „1“ festgelegt.
 
 
-```powershell
+```azurepowershell-interactive
 $dHost = New-AzHost `
    -HostGroupName $hostGroup.Name `
    -Location $location -Name myHost `
@@ -97,7 +80,7 @@ Erstellen Sie einen virtuellen Computer auf dem dedizierten Host.
 Wenn Sie beim Erstellen der Hostgruppe eine Verfügbarkeitszone angegeben haben, müssen Sie beim Erstellen des virtuellen Computers dieselbe Zone verwenden. Da sich in diesem Beispiel die Hostgruppe in Zone 1 befindet, müssen wir die VM in Zone 1 erstellen.  
 
 
-```powershell
+```azurepowershell-interactive
 $cred = Get-Credential
 New-AzVM `
    -Credential $cred `
@@ -117,7 +100,7 @@ New-AzVM `
 
 Sie können mit [GetAzHost](/powershell/module/az.compute/get-azhost) mit dem Parameter `-InstanceView` den Integritätsstatus des Hosts sowie die Anzahl von virtuellen Computern überprüfen, die Sie noch auf dem Host bereitstellen können.
 
-```
+```azurepowershell-interactive
 Get-AzHost `
    -ResourceGroupName $rgName `
    -Name myHost `
@@ -186,25 +169,92 @@ Location               : eastus
 Tags                   : {}
 ```
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe 
+
+Wenn Sie eine Skalierungsgruppe bereitstellen, geben Sie die Hostgruppe an.
+
+```azurepowershell-interactive
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS" `
+  -VMScaleSetName "myDHScaleSet" `
+  -VirtualNetworkName "myVnet" `
+  -SubnetName "mySubnet" `
+  -PublicIpAddressName "myPublicIPAddress" `
+  -LoadBalancerName "myLoadBalancer" `
+  -UpgradePolicyMode "Automatic"`
+  -HostGroupId $hostGroup.Id
+```
+
+Wenn Sie den Host, auf dem die Skalierungsgruppe bereitgestellt werden soll, manuell auswählen möchten, fügen Sie `--host` und den Namen des Hosts hinzu.
+
+
+
+## <a name="add-an-existing-vm"></a>Hinzufügen eines vorhandenen virtuellen Computers 
+
+Sie können einem dedizierten Host eine VM hinzufügen. Diese muss allerdings zuerst beendet bzw. Ihre Zuordnung muss aufgehoben werden. Vergewissern Sie sich vor dem Verschieben eines virtuellen Computers auf einen dedizierten Host, dass die VM-Konfiguration unterstützt wird:
+
+- Die VM-Größe muss sich in der gleichen Größenfamilie befinden wie der dedizierte Host. Wenn der dedizierte Host z. B. DSv3 ist, kann die VM-Größe Standard_D4s_v3, aber nicht Standard_A4_v2 sein. 
+- Der virtuelle Computer muss sich in der gleichen Region befinden wie der dedizierte Host.
+- Der virtuelle Computer darf nicht Teil einer Näherungsplatzierungsgruppe sein. Entfernen Sie den virtuellen Computer aus der Näherungsplatzierungsgruppe, bevor Sie ihn auf einen dedizierten Host verschieben. Weitere Informationen finden Sie unter [Verschieben einer vorhandenen VM aus einer Näherungsplatzierungsgruppe](./proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group).
+- Der virtuelle Computer darf sich nicht in einer Verfügbarkeitsgruppe befinden.
+- Wenn sich der virtuelle Computer in einer Verfügbarkeitszone befindet, muss es sich dabei um die gleiche Verfügbarkeitszone handeln wie bei der Hostgruppe. Die Verfügbarkeitszoneneinstellungen für den virtuellen Computer und die Hostgruppe müssen identisch sein.
+
+Ersetzen Sie die Werte der Variablen durch Ihre eigenen Informationen.
+
+```azurepowershell-interactive
+$vmRGName = "movetohost"
+$vmName = "myVMtoHost"
+$dhRGName = "myDHResourceGroup"
+$dhGroupName = "myHostGroup"
+$dhName = "myHost"
+
+$myDH = Get-AzHost `
+   -HostGroupName $dhGroupName `
+   -ResourceGroupName $dhRGName `
+   -Name $dhName
+   
+$myVM = Get-AzVM `
+   -ResourceGroupName $vmRGName `
+   -Name $vmName
+   
+$myVM.Host = New-Object Microsoft.Azure.Management.Compute.Models.SubResource
+
+$myVM.Host.Id = "$myDH.Id"
+
+Stop-AzVM `
+   -ResourceGroupName $vmRGName `
+   -Name $vmName -Force
+   
+Update-AzVM `
+   -ResourceGroupName $vmRGName `
+   -VM $myVM -Debug
+   
+Start-AzVM `
+   -ResourceGroupName $vmRGName `
+   -Name $vmName
+```
+
+
+## <a name="clean-up"></a>Bereinigung
 
 Ihre dedizierten Hosts werden Ihnen auch dann in Rechnung gestellt, wenn keine virtuellen Computer bereitgestellt sind. Sie sollten, um Kosten zu sparen, alle Hosts löschen, die Sie zurzeit nicht verwenden.  
 
 Ein Host kann nur gelöscht werden, wenn er nicht mehr von virtuellen Computern verwendet wird. Löschen Sie die VMs mit [Remove-AzVM](/powershell/module/az.compute/remove-azvm).
 
-```powershell
+```azurepowershell-interactive
 Remove-AzVM -ResourceGroupName $rgName -Name myVM
 ```
 
 Nachdem Sie die VMs gelöscht haben, können Sie den Host mithilfe von [Remove-AzHost](/powershell/module/az.compute/remove-azhost) löschen.
 
-```powershell
+```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
 Wenn Sie alle Hosts gelöscht haben, können Sie die Hostgruppe mit [Remove-AzHostGroup](/powershell/module/az.compute/remove-azhostgroup) löschen. 
 
-```powershell
+```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
@@ -219,4 +269,4 @@ Remove-AzResourceGroup -Name $rgName
 
 - [Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md) finden Sie eine Beispielvorlage, die sowohl Zonen als auch Fehlerdomänen für maximale Resilienz in einer Region verwendet.
 
-- Sie können dedizierte Hosts auch über das [Azure-Portal](dedicated-hosts-portal.md) bereitstellen.
+- Sie können dedizierte Hosts auch über das [Azure-Portal](../dedicated-hosts-portal.md) bereitstellen.

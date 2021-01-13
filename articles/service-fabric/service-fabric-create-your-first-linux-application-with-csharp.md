@@ -1,25 +1,14 @@
 ---
-title: Erstellen Ihrer ersten Azure Service Fabric-App unter Linux mit C# | Microsoft-Dokumentation
+title: Erstellen Ihrer ersten Azure Service Fabric-App unter Linux mit C#
 description: Erfahren Sie, wie Sie eine Service Fabric-Anwendung mit C# und .NET Core 2.0 erstellen und bereitstellen.
-services: service-fabric
-documentationcenter: csharp
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 5a96d21d-fa4a-4dc2-abe8-a830a3482fb1
-ms.service: service-fabric
-ms.devlang: csharp
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/11/2018
-ms.author: subramar
-ms.openlocfilehash: 7bb9b1c545d30f66a09817ba977f12666a9f41c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 556d8dee4efd492fa98755f1ffd1cdc1c9887856
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394298"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "82193648"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Erstellen Ihrer ersten Azure Service Fabric-Anwendung
 > [!div class="op_single_selector"]
@@ -97,7 +86,7 @@ Bei der Bereitstellung der erstellten Anwendung wird genau wie bei anderen Servi
 
 Parameter für diesen Befehl finden Sie in den erstellten Manifesten im Anwendungspaket.
 
-Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und navigieren Sie zu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) unter [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Erweitern Sie dann den Knoten **Anwendungen**. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
+Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und navigieren Sie zu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) unter `http://localhost:19080/Explorer`. Erweitern Sie dann den Knoten **Anwendungen**. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
 
 > [!IMPORTANT]
 > Wenn Sie die Anwendung in einem sicheren Linux-Cluster in Azure bereitstellen möchten, müssen Sie ein Zertifikat konfigurieren, um Ihre Anwendung mit der Service Fabric-Runtime zu überprüfen. Dadurch wird Ihren Reliable Services-Diensten die Kommunikation mit den zugrunde liegenden Service Fabric-Runtime-APIs ermöglicht. Weitere Informationen finden Sie unter [Konfigurieren einer Reliable Services-App zur Ausführung in Linux-Clustern](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
@@ -129,7 +118,7 @@ Actor-Projekte führen keine eigenständigen Aktionen durch. Sie benötigen eine
 
 Führen Sie zum Hinzufügen eines weiteren Diensts zu einer Anwendung, die bereits mit `yo` erstellt wurde, die folgenden Schritte aus:
 1. Legen Sie das Verzeichnis auf den Stamm der vorhandenen Anwendung fest.  Beispiel: `cd ~/YeomanSamples/MyApplication`, wenn `MyApplication` die von Yeoman erstellte Anwendung ist.
-2. Führen Sie `yo azuresfcsharp:AddService` aus.
+2. Ausführen von `yo azuresfcsharp:AddService`
 
 ## <a name="next-steps"></a>Nächste Schritte
 

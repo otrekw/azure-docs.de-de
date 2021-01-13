@@ -1,27 +1,20 @@
 ---
-title: Tutorial – Installieren von Anwendungen in einer Skalierungsgruppe mit Azure-Vorlagen | Microsoft-Dokumentation
+title: 'Tutorial: Installieren von Apps in einer Skalierungsgruppe mit Azure-Vorlagen'
 description: Es wird beschrieben, wie Sie Azure Resource Manager-Vorlagen zum Installieren von Anwendungen in VM-Skalierungsgruppen mit der benutzerdefinierten Skripterweiterung verwenden.
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: template
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 176cf31d7a87b08755ee2acb94aea23684647213
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.reviewer: mimckitt
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: d5eba5486e7d26e62379e0112cd4b95322e6dae1
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170475"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705233"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Tutorial: Installieren von Anwendungen in VM-Skalierungsgruppen mit einer Azure-Vorlage
 Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müssen Sie zuerst die Anwendungskomponenten und erforderlichen Dateien installieren. In einem vorherigen Tutorial wurde beschrieben, wie Sie ein benutzerdefiniertes VM-Image erstellen und verwenden, um Ihre VM-Instanzen bereitzustellen. Dieses benutzerdefinierte Image umfasste manuelle Anwendungsinstallationen und -konfigurationen. Sie können die Installation von Anwendungen auch per Skalierungsgruppe automatisieren, nachdem die einzelnen VM-Instanzen bereitgestellt wurden, oder eine Anwendung aktualisieren, die bereits in einer Skalierungsgruppe ausgeführt wird. In diesem Tutorial lernen Sie Folgendes:
@@ -31,17 +24,17 @@ Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müss
 > * Verwenden der benutzerdefinierten Skripterweiterung von Azure
 > * Aktualisieren einer ausgeführten Anwendung in einer Skalierungsgruppe
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.29 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.0.29 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 
 ## <a name="what-is-the-azure-custom-script-extension"></a>Was ist die benutzerdefinierte Skripterweiterung von Azure?
 Die benutzerdefinierte Skripterweiterung lädt Skripts auf Azure-VMs herunter und führt sie aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Skripts können aus Azure Storage oder GitHub heruntergeladen oder dem Azure-Portal zur Laufzeit für die Erweiterung bereitgestellt werden.
 
-Die benutzerdefinierte Skripterweiterung kann in Azure Resource Manager-Vorlagen integriert und auch mit der Azure CLI, Azure PowerShell, dem Azure-Portal oder der REST-API verwendet werden. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/linux/extensions-customscript.md).
+Die benutzerdefinierte Skripterweiterung kann in Azure Resource Manager-Vorlagen integriert und auch mit der Azure CLI, Azure PowerShell, dem Azure-Portal oder der REST-API verwendet werden. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/extensions/custom-script-linux.md).
 
 Wenn Sie die benutzerdefinierte Skripterweiterung in Aktion sehen möchten, können Sie eine Skalierungsgruppe erstellen, mit der der NGINX-Webserver installiert und der Hostname einer VM-Instanz der Skalierungsgruppe ausgegeben wird. Mit der folgenden Definition der benutzerdefinierten Skripterweiterung wird ein Beispielskript von GitHub heruntergeladen, die erforderlichen Pakete werden installiert, und anschließend wird der Hostname der VM-Instanz auf eine einfache HTML-Seite geschrieben.
 
@@ -83,10 +76,10 @@ Wir verwenden die Beispielvorlage, um eine Skalierungsgruppe zu erstellen und di
 az group create --name myResourceGroup --location eastus
 ```
 
-Sie erstellen nun mit [az group deployment create](/cli/azure/group/deployment) eine VM-Skalierungsgruppe. Geben Sie bei entsprechender Aufforderung Ihren eigenen Benutzernamen mit dem dazugehörigen Kennwort jeweils als Anmeldeinformationen für eine VM-Instanz an:
+Erstellen Sie nun mit [az deployment group create](/cli/azure/deployment/group) eine VM-Skalierungsgruppe. Geben Sie bei entsprechender Aufforderung Ihren eigenen Benutzernamen mit dem dazugehörigen Kennwort jeweils als Anmeldeinformationen für eine VM-Instanz an:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy.json
 ```
@@ -141,10 +134,10 @@ Um die Definition der benutzerdefinierten Skripterweiterung zu aktualisieren, ä
 }
 ```
 
-Wenden Sie die Konfiguration der benutzerdefinierten Skripterweiterung erneut auf die VM-Instanzen in Ihrer Skalierungsgruppe an, indem Sie [az group deployment create](/cli/azure/group/deployment) verwenden. Die Vorlage *azuredeployv2.json* wird verwendet, um die aktualisierte Version der Anwendung anzuwenden. In der Praxis ändern Sie die vorhandene Vorlage *azuredeploy.json* so, dass sie auf das aktualisierte Installationsskript verweist. Dies wurde im vorherigen Abschnitt veranschaulicht. Geben Sie bei entsprechender Aufforderung denselben Benutzernamen mit dem dazugehörigen Kennwort als Anmeldeinformationen ein, den Sie bei der ursprünglichen Erstellung der Skalierungsgruppe verwendet haben:
+Wenden Sie die Konfiguration der benutzerdefinierten Skripterweiterung erneut auf die VM-Instanzen in Ihrer Skalierungsgruppe an, indem Sie [az deployment group create](/cli/azure/deployment/group) verwenden. Die Vorlage *azuredeployv2.json* wird verwendet, um die aktualisierte Version der Anwendung anzuwenden. In der Praxis ändern Sie die vorhandene Vorlage *azuredeploy.json* so, dass sie auf das aktualisierte Installationsskript verweist. Dies wurde im vorherigen Abschnitt veranschaulicht. Geben Sie bei entsprechender Aufforderung denselben Benutzernamen mit dem dazugehörigen Kennwort als Anmeldeinformationen ein, den Sie bei der ursprünglichen Erstellung der Skalierungsgruppe verwendet haben:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy_v2.json
 ```

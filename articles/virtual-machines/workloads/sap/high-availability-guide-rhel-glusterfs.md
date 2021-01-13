@@ -1,25 +1,26 @@
 ---
-title: GlusterFS auf virtuellen Azure-Computern unter Red Hat Enterprise Linux für SAP NetWeaver | Microsoft-Dokumentation
+title: GlusterFS auf virtuellen Azure-Computern unter RHEL for SAP NetWeaver | Microsoft-Dokumentation
 description: GlusterFS auf virtuellen Azure-Computern unter Red Hat Enterprise Linux für SAP NetWeaver
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: timlt
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
-ms.author: sedusch
-ms.openlocfilehash: fd5014de622c37950c15006c2cc4dcbbb27ef8e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: radeltch
+ms.openlocfilehash: 41699625b7062daa005e6908ce9e4249dd86f1fa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101125"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010009"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>GlusterFS auf virtuellen Azure-Computern unter Red Hat Enterprise Linux für SAP NetWeaver
 
@@ -27,14 +28,14 @@ ms.locfileid: "70101125"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2009879]: https://launchpad.support.sap.com/#/notes/2009879
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2009879]:https://launchpad.support.sap.com/#/notes/2009879
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
 
@@ -65,7 +66,7 @@ Lesen Sie zuerst die folgenden SAP Notes und Dokumente:
 * [Azure Virtual Machines – Bereitstellung für SAP unter Linux (dieser Artikel)][deployment-guide]
 * [Azure Virtual Machines – DBMS-Bereitstellung für SAP unter Linux][dbms-guide]
 * [Produktdokumentation für Red Hat Gluster Storage](https://access.redhat.com/documentation/red_hat_gluster_storage/)
-* Allgemeine RHEL-Dokumentation
+* Allgemeine RHEL-Dokumentation:
   * [Übersicht über das Hochverfügbarkeits-Add-On](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
   * [Verwaltung des Hochverfügbarkeits-Add-Ons](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
   * [Referenz zum Hochverfügbarkeits-Add-On](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
@@ -102,7 +103,7 @@ Sie können eine der Schnellstartvorlagen auf Github verwenden, um alle erforder
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Manuelles Bereitstellen von Linux über das Azure-Portal
 
-Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschließend erstellen Sie einen Lastenausgleich und verwenden die virtuellen Computer in den Back-End-Pools.
+Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschließend erstellen Sie einen Lastenausgleich und verwenden die virtuellen Computer in den Back-End-Pools. Sie sollten [Load Balancer Standard](../../../load-balancer/load-balancer-overview.md) verwenden.  
 
 1. Erstellen einer Ressourcengruppe
 1. Erstellen eines virtuellen Netzwerks

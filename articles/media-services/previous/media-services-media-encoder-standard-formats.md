@@ -1,6 +1,6 @@
 ---
 title: 'Media Encoder Standard-Formate und -Codecs: Azure'
-description: Dieses Thema bietet eine Übersicht über Media Encoder Standard-Formate und -Codecs.
+description: Dieser Artikel enthält eine Übersicht über Formate und Codecs von Media Encoder Standard.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 8fd68269f73506c2d605c0cb4560e6a57e1a2128
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 78236a334b6c75f823819c70c0cdbb75bb30191d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016542"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89257431"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard-Formate und -Codecs
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Media Services-Version aus:"]
 > * [Version 2](media-services-media-encoder-standard-formats.md)
@@ -39,7 +41,7 @@ Dieses Dokument enthält eine Liste der gängigsten Import- und Exportdateiforma
 | Windows Media Video (WMV)/ASF (.wmv, .asf) |Ja |
 | AVI (unkomprimiert, 8-Bit/10-Bit) (.avi) |Ja |
 | MP4 (.mp4, .m4a, .m4v)/ISMV (.isma, .ismv) |Ja |
-| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |Ja |
+| [Microsoft Digital Video Recording(DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) (.dvr-ms) |Ja |
 | Matroska/WebM (.mkv) |Ja |
 | WAVE/WAV (.wav) |Ja |
 | QuickTime (.mov) |Ja |
@@ -116,4 +118,3 @@ In der folgenden Tabelle werden die Codecs und Dateiformate aufgeführt, die fü
 [Codieren von On-Demand-Inhalten mit Azure Media Services](media-services-encode-asset.md)
 
 [Gewusst wie: Codieren mit Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
-

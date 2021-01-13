@@ -3,36 +3,38 @@ title: Bildmoderation – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie die computergestützte Bildmoderation und das Tool für die Überprüfung mit menschlicher Beteiligung von Content Moderator, um Bilder mit nicht jugendfreien und freizügigen Inhalten zu moderieren.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 8b3449edb539ab56fcf206a367f9b81e43290733
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.openlocfilehash: fe76e32bfd9b1734f3c84a400f897b7af7e3168b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564904"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85800994"
 ---
 # <a name="learn-image-moderation-concepts"></a>Lernen von Bildmoderationskonzepten
 
-Verwenden Sie die computergestützte Bildmoderation und das [Tool für die Überprüfung mit menschlicher Beteiligung](Review-Tool-User-Guide/human-in-the-loop.md) von Content Moderator, um Bilder mit nicht jugendfreien und freizügigen Inhalten zu moderieren. Scannen Sie Bilder auf Textinhalte, extrahieren Sie diesen Text, und nutzen Sie die Gesichtserkennung. Sie können Bilder mit benutzerdefinierten Listen vergleichen und weitere Maßnahmen ergreifen.
+Verwenden Sie die computergestützte Bildmoderation und das [Überprüfungstool](Review-Tool-User-Guide/human-in-the-loop.md) des Content Moderator, um Bilder mit nicht jugendfreien und freizügigen Inhalten zu mäßigen. Scannen Sie Bilder auf Textinhalte, extrahieren Sie diesen Text, und nutzen Sie die Gesichtserkennung. Sie können Bilder mit benutzerdefinierten Listen vergleichen und weitere Maßnahmen ergreifen.
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>Auswerten von nicht jugendfreien und freizügigen Inhalten
 
 Der **Auswertungsvorgang** gibt eine Zuverlässigkeitsbewertung zwischen 0 und 1 zurück. Außerdem werden boolesche Daten zurückgegeben, die TRUE oder FALSE entsprechen. Diese Werte sagen vorher, ob das Bild potenziell nicht jugendfreie oder freizügige Inhalte enthält. Wenn Sie die API mit Ihrem Bild (Datei oder URL) aufrufen, enthält die zurückgegebene Antwort die folgenden Informationen:
 
-    "ImageModeration": {
-      .............
-      "adultClassificationScore": 0.019196987152099609,
-      "isImageAdultClassified": false,
-      "racyClassificationScore": 0.032390203326940536,
-      "isImageRacyClassified": false,
-      ............
-      ],
+```json
+"ImageModeration": {
+    .............
+    "adultClassificationScore": 0.019196987152099609,
+    "isImageAdultClassified": false,
+    "racyClassificationScore": 0.032390203326940536,
+    "isImageRacyClassified": false,
+    ............
+    ],
+```
 
 > [!NOTE]
 > 
@@ -51,18 +53,19 @@ Die Antwort enthält folgende Informationen:
 
 Beispiel für die Extraktion:
 
-    "TextDetection": {
-      "status": {
+```json
+"TextDetection": {
+    "status": {
         "code": 3000.0,
         "description": "OK",
         "exception": null
-      },
-      .........
-      "language": "eng",
-      "text": "IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n",
-      "candidates": []
     },
-
+    .........
+    "language": "eng",
+    "text": "IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n",
+    "candidates": []
+},
+```
 
 ## <a name="detecting-faces"></a>Erkennen von Gesichtern
 
@@ -75,29 +78,30 @@ Eine Antwort enthält die folgenden Informationen:
 
 Beispiel für die Extraktion:
 
-
-    "FaceDetection": {
-       ......
-      "result": true,
-      "count": 2,
-      "advancedInfo": [
-      .....
-      ],
-      "faces": [
+```json
+"FaceDetection": {
+    ......
+    "result": true,
+    "count": 2,
+    "advancedInfo": [
+        .....
+    ],
+    "faces": [
         {
-          "bottom": 598,
-          "left": 44,
-          "right": 268,
-          "top": 374
+            "bottom": 598,
+            "left": 44,
+            "right": 268,
+            "top": 374
         },
         {
-          "bottom": 620,
-          "left": 308,
-          "right": 532,
-          "top": 396
+            "bottom": 620,
+            "left": 308,
+            "right": 532,
+            "top": 396
         }
-      ]
-    }
+    ]
+}
+```
 
 ## <a name="creating-and-managing-custom-lists"></a>Erstellen und Verwalten von benutzerdefinierten Listen
 
@@ -106,7 +110,7 @@ In vielen Onlinecommunitys kommt es oft dazu, dass anstößige Elemente mehrmals
 Anstelle dasselbe Bild mehrmals zu moderieren, können Sie die anstößigen Bilder Ihrer benutzerdefinierten Liste blockierter Inhalte hinzufügen. Auf diese Weise vergleicht Ihr System für die Moderation von Inhalten eingehende Bilder mit der benutzerdefinierten Liste und stoppt weitere Verarbeitung.
 
 > [!NOTE]
-> Die Obergrenze liegt bei **fünf Bilderlisten**, wobei jede Liste **maximal 10.000 Bilder** enthalten kann.
+> Die Obergrenze liegt bei **fünf Bildlisten**, wobei jede Liste **max. 10.000 Bilder** enthalten kann.
 >
 
 Der Content Moderator bietet eine vollständige [API zur Verwaltung von Bilderlisten](try-image-list-api.md) mit Vorgängen zum Verwalten von Listen benutzerdefinierter Bilder. Beginnen Sie mit der [API-Konsole für Bilderlisten](try-image-list-api.md), und verwenden Sie die REST-API-Codebeispiele. Falls Sie mit Visual Studio und C# vertraut sind, können Sie sich auch die [.NET-Schnellstartanleitung für Bilderlisten](image-lists-quickstart-dotnet.md) ansehen.
@@ -124,7 +128,8 @@ Wenn eine Übereinstimmung gefunden wird, gibt der Vorgang den Bezeichner und di
 
 Beispiel für die Extraktion:
 
-    {
+```json
+{
     ..............,
     "IsMatch": true,
     "Matches": [
@@ -137,14 +142,15 @@ Beispiel für die Extraktion:
         }
     ],
     ....
-    }
+}
+```
 
-## <a name="human-review-tool"></a>Tool für die manuelle Überprüfung
+## <a name="review-tool"></a>Überprüfungstool
 
-Verwenden Sie für nuancierte Fälle das [Überprüfungstool](Review-Tool-User-Guide/human-in-the-loop.md) und die API des Content Moderator, um die Ergebnisse und Inhalte der Moderation für die Überprüfung durch menschliche Moderatoren zum Vorschein zu bringen. Diese überprüfen die vom Computer zugewiesenen Tags und bestätigen die endgültigen Entscheidungen.
+Verwenden Sie für nuancierte Fälle das [Überprüfungstool](Review-Tool-User-Guide/human-in-the-loop.md) und die API von Content Moderator, um die Ergebnisse und Inhalte der Moderation für die Überprüfung durch menschliche Moderatoren zum Vorschein zu bringen. Diese überprüfen die vom Computer zugewiesenen Tags und bestätigen die endgültigen Entscheidungen.
 
 ![Bildüberprüfung für menschliche Moderatoren](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Testen Sie die [API-Konsole für die Bildmoderation](try-image-api.md), und verwenden Sie die REST-API-Codebeispiele. Falls Sie mit Visual Studio und C# vertraut sind, können Sie sich auch die [.NET-Schnellstartanleitung für die Bildmoderation](image-moderation-quickstart-dotnet.md) ansehen.
+Testen Sie die [API-Konsole für die Bildmoderation](try-image-api.md), und verwenden Sie die REST-API-Codebeispiele. Weitere Informationen zur Einrichtung der Überprüfung durch Personen finden Sie auch unter [Überprüfungen, Workflows und Aufträge](./review-api.md).

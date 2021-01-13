@@ -1,25 +1,16 @@
 ---
-title: Ändern der ReliableDictionaryActorStateProvider-Einstellungen in Azure Service Fabric-Akteuren | Microsoft-Dokumentation
+title: Ändern von ReliableDictionaryActorStateProvider-Einstellungen
 description: Erfahren Sie mehr über das Konfigurieren von statusbehafteten Azure Service Fabric Actors vom Typ „ReliableDictionaryActorStateProvider“
-services: Service-Fabric
-documentationcenter: .net
 author: sumukhs
-manager: chackdan
-editor: ''
-ms.assetid: 79b48ffa-2474-4f1c-a857-3471f9590ded
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 4e39357a765ec85aa64055b1aa422d8d7a01c116
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fbd6f7cd3ade753c659464522408aa715cce48f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60727130"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75609739"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurieren von Reliable Actors –ReliableDictionaryActorStateProvider
 Sie können die Standardkonfiguration von „ReliableDictionaryActorStateProvider“ ändern, indem Sie die Datei „settings.xml“, die im Stammverzeichnis des Visual Studio-Pakets im Ordner „Config“ generiert wurde, für den betreffenden Actor ändern.
@@ -34,12 +25,12 @@ Standardmäßig sucht die Azure Service Fabric-Laufzeit in der Datei „settings
 Es gibt auch globale Einstellungen, die sich auf die Konfiguration von ReliableDictionaryActorStateProvider auswirken.
 
 ## <a name="global-configuration"></a>Globale Konfiguration
-Die globale Konfiguration wird im Clustermanifest für den Cluster im Abschnitt KtlLogger angegeben. So können für das freigegebene Protokoll der Speicherort und die Größe sowie die vom Protokollierungstool verwendeten globalen Speicherlimits konfiguriert werden. Beachten Sie, dass sich die Änderungen im Clustermanifest auf alle Dienste auswirken, die ReliableDictionaryActorStateProvider und zuverlässige zustandsbehaftete Dienste verwenden.
+Die globale Konfiguration wird im Clustermanifest für den Cluster im Abschnitt KtlLogger angegeben. Sie können daher jetzt für das freigegebene Protokoll Folgendes konfigurieren: den Speicherort und die Größe, sowie die vom Protokollierungstool verwendeten globalen Speicherlimits. Beachten Sie, dass sich die Änderungen im Clustermanifest auf alle Dienste auswirken, die ReliableDictionaryActorStateProvider und zuverlässige zustandsbehaftete Dienste verwenden.
 
-Das Clustermanifest ist eine einzelne XML-Datei mit Einstellungen und Konfigurationen, die für alle Knoten und Dienste im Cluster gelten. Die Datei heißt normalerweise „ClusterManifest.xml“. Mit dem PowerShell-Befehl Get-ServiceFabricClusterManifest können Sie das Clustermanifest für Ihren Cluster sehen.
+Das Clustermanifest ist eine einzelne XML-Datei, die Einstellungen und Konfigurationen für alle Knoten und Dienste im Cluster enthält. Die Datei heißt normalerweise „ClusterManifest.xml“. Mit dem PowerShell-Befehl Get-ServiceFabricClusterManifest können Sie das Clustermanifest für Ihren Cluster sehen.
 
 ### <a name="configuration-names"></a>Konfigurationsnamen
-| NAME | Unit | Standardwert | Anmerkungen |
+| Name | Einheit | Standardwert | Bemerkungen |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |Kilobytes |8388608 |KB-Mindestwert, der im Kernelmodus dem Schreibpuffer-Speicherpool des Protokollierungstools zugeordnet wird. Dieser Speicherpool wird zum Zwischenspeichern von Zustandsinformationen verwendet, bevor auf den Datenträger geschrieben wird. |
 | WriteBufferMemoryPoolMaximumInKB |Kilobytes |Keine Begrenzung |Maximale Größe, auf die der Schreibpuffer-Speicherpool des Protokollierungstools anwachsen kann. |
@@ -58,12 +49,12 @@ Das Clustermanifest ist eine einzelne XML-Datei mit Einstellungen und Konfigurat
    </Section>
 ```
 
-### <a name="remarks"></a>Hinweise
+### <a name="remarks"></a>Bemerkungen
 Das Protokollierungstool verfügt über einen globalen Pool mit Speicher, der aus einem nicht ausgelagerten Kernelspeicher zugeordnet wird. Dieser ist für alle Reliable Services auf einem Knoten zum Zwischenspeichern von Zustandsdaten verfügbar, bevor diese in das dedizierte, dem Reliable Service-Replikat zugeordnete Protokoll geschrieben werden. Die Poolgröße wird mit WriteBufferMemoryPoolMinimumInKB und den Einstellungen von WriteBufferMemoryPoolMaximumInKB gesteuert. Mit WriteBufferMemoryPoolMinimumInKB wird sowohl die Anfangsgröße des Speicherpools als auch die kleinste Größe angegeben, auf die der Speicherpool verkleinert werden kann. WriteBufferMemoryPoolMaximumInKB ist die maximale Größe, auf die der Speicherpool anwachsen kann. Jedes geöffnete Reliable Services-Replikat kann die Größe des Speicherpools um einen vom System bestimmten Betrag maximal auf die in WriteBufferMemoryPoolMaximumInKB angegebene Größe erhöhen. Falls der Bedarf an Speicher aus dem Speicherpool die Verfügbarkeit übersteigt, werden Speicheranforderungen zurückgestellt, bis wieder Speicher verfügbar ist. Falls der Schreibpuffer-Speicherpool zu klein für eine bestimmte Konfiguration ist, kann dies die Leistung negativ beeinträchtigen.
 
 Die Einstellungen von SharedLogId und SharedLogPath werden immer zusammen verwendet, um die GUID und den Speicherort für das standardmäßige freigegebene Protokoll für alle Knoten im Cluster zu definieren. Das standardmäßige freigegebene Protokoll wird für alle Reliable Services verwendet, bei denen die Einstellungen nicht in der Datei „Settings.xml“ für den jeweiligen Dienst angegeben werden. Um die beste Leistung zu erzielen, sollten freigegebene Protokolldateien auf Datenträgern gespeichert werden, die ausschließlich für die freigegebene Protokolldatei verwendet werden. So werden Konflikte reduziert.
 
-Mit SharedLogSizeInMB wird die Menge an Festplattenspeicher angegeben, die für das standardmäßige freigegebene Protokoll auf allen Knoten vorab zugewiesen werden soll.  „SharedLogId“ und „SharedLogPath“ müssen nicht angegeben werden, um „SharedLogSizeInMB“ angeben zu können.
+Mit SharedLogSizeInMB wird die Menge an Festplattenspeicher angegeben, die für das standardmäßige freigegebene Protokoll auf allen Knoten vorab zugewiesen werden soll.  SharedLogId und SharedLogPath müssen nicht angegeben sein, um SharedLogSizeInMB angeben zu können.
 
 ## <a name="replicator-security-configuration"></a>Replicator-Sicherheitskonfiguration
 Replicator-Sicherheitskonfigurationen werden verwendet, um den während der Replikation verwendeten Kommunikationskanal zu schützen. Dies bedeutet, dass Dienste ihren gegenseitigen Replikationsdatenverkehr nicht erkennen können. Dadurch wird sichergestellt, dass die Daten nicht nur hochverfügbar, sondern auch sicher sind.
@@ -84,7 +75,7 @@ Die Standardkonfiguration wird von der Visual Studio-Vorlage generiert und sollt
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Konfigurationsnamen
-| NAME | Unit | Standardwert | Anmerkungen |
+| Name | Einheit | Standardwert | Bemerkungen |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekunden |0,015 |So lange wartet der Replicator auf dem sekundären Replicator nach dem Empfang eines Vorgangs, bevor er eine Bestätigung an den primären Replicator sendet. Alle anderen Bestätigungen, die für innerhalb dieses Intervalls verarbeitete Vorgänge gesendet werden, werden als eine einzelne Antwort gesendet. |
 | ReplicatorEndpoint |– |Kein Standardwert – Erforderlicher Parameter |Die IP-Adresse und der Port, die der primäre/sekundäre Replicator für die Kommunikation mit anderen Replicatoren in der Replikatgruppe verwendet. Dabei sollte im Dienstmanifest auf einen TCP-Ressourcenendpunkt verwiesen werden. Weitere Informationen zum Definieren von Endpunktressourcen im Dienstmanifest finden Sie unter [Dienstmanifestressourcen](service-fabric-service-manifest-resources.md) . |
@@ -94,10 +85,10 @@ Die Standardkonfiguration wird von der Visual Studio-Vorlage generiert und sollt
 | CheckpointThresholdInMB |MB |200 |Die Menge an Speicherplatz für Protokolldateien, nach dem der Status geprüft wird. |
 | MaxRecordSizeInKB |KB |1024 |Die maximale Datensatzgröße, die der Replicator in das Protokoll schreiben kann. Dieser Wert muss ein Vielfaches von 4 und größer als 16 sein. |
 | OptimizeLogForLowerDiskUsage |Boolean |true |Wenn „true“ festgelegt ist, wird das Protokoll so konfiguriert, dass die dedizierte Protokolldatei des Replikats mithilfe einer NTFS-Datei mit geringer Datendichte erstellt wird. Auf diese Weise verkleinert sich die Datei und damit der Speicherplatzbedarf. Wenn „false“ festgelegt ist, wird die Datei mit festen Zuordnungen erstellt. Dies ermöglicht die beste Schreibleistung. |
-| SharedLogId |GUID |"" |Gibt eine eindeutige GUID zum Identifizieren der freigegebenen Protokolldatei an, die mit diesem Replikat verwendet wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogId angegeben ist, muss SharedLogPath ebenfalls angegeben werden. |
+| SharedLogId |guid |"" |Gibt eine eindeutige GUID zum Identifizieren der freigegebenen Protokolldatei an, die mit diesem Replikat verwendet wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogId angegeben ist, muss SharedLogPath ebenfalls angegeben werden. |
 | SharedLogPath |Vollständig qualifizierter Pfadname |"" |Gibt den vollständig qualifizierten Pfad an, in dem die freigegebene Protokolldatei für dieses Replikat erstellt wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden. |
 
-## <a name="sample-configuration-file"></a>Beispiel einer Konfigurationsdatei
+## <a name="sample-configuration-file"></a>Beispiel für eine Konfigurationsdatei
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -118,7 +109,7 @@ Die Standardkonfiguration wird von der Visual Studio-Vorlage generiert und sollt
 </Settings>
 ```
 
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
 Der Parameter „BatchAcknowledgementInterval“ steuert die Replikationslatenz. Der Wert "0" ergibt die geringstmögliche Latenz, allerdings auf Kosten des Durchsatzes (da eine größer Anzahl von Bestätigungsnachrichten gesendet und verarbeitet werden muss, von denen jede weniger Bestätigungen enthält).
 Je größer der Wert für "BatchAcknowledgementInterval" ist, um so höher ist der Gesamtdurchsatz der Replikation, zu Lasten einer höheren Vorgangslatenz. Daraus ergibt sich direkt die Latenz von Transaktions-Commits.
 

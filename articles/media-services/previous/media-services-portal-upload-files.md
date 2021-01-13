@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3ebeb3c601dd3f734265d49d60728056561928be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00035782a17936405b2b042035220dde87da12b1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61127806"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89257057"
 ---
-# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Hochladen von Dateien in ein Media Services-Konto über das Azure-Portal 
+# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Hochladen von Dateien in ein Media Services-Konto über das Azure-Portal
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-upload-files.md)
@@ -30,7 +32,7 @@ ms.locfileid: "61127806"
 > 
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. Informationen zum Hochladen der aktuellen Dateien mithilfe des Portals finden Sie unter [Hochladen, Codieren und Streamen von Inhalten mithilfe des Portals](../latest/manage-assets-quickstart.md).<br/>Lesen Sie außerdem: [Media Services v3](../latest/index.yml). Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 In Azure Media Services laden Sie Ihre digitalen Dateien in ein Medienobjekt hoch. Das Medienobjekt kann Videos, Audiodateien, Bilder, Miniaturansichtssammlungen, Texttitel und Untertiteldateien (und die dazugehörigen Metadaten) enthalten. Nachdem die Dateien hochgeladen wurden, werden Ihre Inhalte zur weiteren Verarbeitung und für das Streaming sicher in der Cloud gespeichert.
 
@@ -65,5 +67,3 @@ Nach Abschluss des Uploadvorgangs wird das neue Medienobjekt im Bereich **Assets
 * Informieren Sie sich über das [Codieren von hochgeladenen Medienobjekten](media-services-portal-encode.md).
 
 * Sie können mithilfe von Azure Functions auch einen Codierungsauftrag auslösen, wenn eine Datei im konfigurierten Container eingeht. Weitere Informationen finden Sie im Beispiel unter [Media Services: Integrating Azure Media Services with Azure Functions and Logic Apps](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/) (Integrieren von Azure Media Services in Azure Functions und Logic Apps).
-
-

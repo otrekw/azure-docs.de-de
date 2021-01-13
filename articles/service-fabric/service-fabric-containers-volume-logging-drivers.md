@@ -1,40 +1,33 @@
 ---
-title: 'Service Fabric: Azure Files-Volumetreiber (allgemein verfügbar) | Microsoft-Dokumentation'
-description: Service Fabric unterstützt die Verwendung von Azure Files zur Sicherung von Volumes aus Ihrem Container. Sie befindet sich derzeit in der Vorschauphase.
-services: service-fabric
-author: athinanthny
-manager: chackdan
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
+title: Azure Files-Volumetreiber für Service Fabric
+description: Service Fabric unterstützt die Verwendung von Azure Files zur Sicherung von Volumes aus Ihrem Container.
 ms.topic: conceptual
 ms.date: 6/10/2018
-ms.author: atsenthi
-ms.openlocfilehash: 70784e2c8c91d39c34ba503cc3ebfcf3469939d9
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: a5125dbd88a2fe236196c427244f1311d9b73b9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013496"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86247692"
 ---
-# <a name="service-fabric-azure-files-volume-driver"></a>Azure Files-Volumetreiber für Service Fabric
-Das Azure Files-Volume-Plug-In – ein [Docker-Volume-Plug-In](https://docs.docker.com/engine/extend/plugins_volume/), das auf [Azure Files](/azure/storage/files/storage-files-introduction) basierende Volumes für Docker-Container bereitstellt – ist nun **allgemein verfügbar**.
+# <a name="azure-files-volume-driver-for-service-fabric"></a>Azure Files-Volumetreiber für Service Fabric
 
-Dieses Docker-Volume-Plug-In wird als Service Fabric-Anwendung verpackt, die in Service Fabric-Clustern bereitgestellt werden kann. Der Zweck ist, auf Azure Files basierende Volumes für andere Service Fabric-Containeranwendungen zur Verfügung zu stellen, die im Cluster bereitgestellt sind.
+Der Azure Files-Volumetreiber ist ein [Docker-Volume-Plug-In](https://docs.docker.com/engine/extend/plugins_volume/), das auf [Azure Files](../storage/files/storage-files-introduction.md) basierende Volumes für Docker-Container bereitstellt. Es wird als Service Fabric-Anwendung gepackt, die auf einem Service Fabric-Cluster bereitgestellt werden kann, um Volumes für andere Service Fabric-Containeranwendungen im Cluster bereitzustellen.
 
 > [!NOTE]
-> Die Version 6.5.661.9590 des Azure Files-Volume-Plug-Ins ist ein allgemein verfügbares Release. 
+> Version 6.5.661.9590 des Azure Files-Volume-Plug-Ins ist jetzt allgemein verfügbar.
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Die Windows-Version des Azure Files-Volume-Plug-Ins funktioniert nur mit [Windows Server, Version 1709](/windows-server/get-started/whats-new-in-windows-server-1709), [Windows 10, Version 1709](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709), oder höheren Betriebssystemversionen.
+* Die Windows-Version des Azure Files-Volume-Plug-Ins funktioniert nur mit [Windows Server, Version 1709](/windows-server/get-started/whats-new-in-windows-server-1709), [Windows 10, Version 1709](/windows/whats-new/whats-new-windows-10-version-1709), oder höheren Betriebssystemversionen.
 
 * Die Linux-Version des Azure Files-Volume-Plug-Ins funktioniert auf allen Betriebssystemversionen, die von Service Fabric unterstützt werden.
 
 * Das Azure Files-Volume-Plug-In funktioniert nur in Service Fabric-Version 6.2 und höher.
 
-* Befolgen Sie die Anweisungen in der [Azure Files-Dokumentation](/azure/storage/files/storage-how-to-create-file-share), um eine Dateifreigabe für die Service Fabric-Containeranwendung zu erstellen, die als Volume verwendet werden soll.
+* Befolgen Sie die Anweisungen in der [Azure Files-Dokumentation](../storage/files/storage-how-to-create-file-share.md), um eine Dateifreigabe für die Service Fabric-Containeranwendung zu erstellen, die als Volume verwendet werden soll.
 
-* [PowerShell mit dem Service Fabric-Modul](/azure/service-fabric/service-fabric-get-started) oder [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) muss installiert sein.
+* [PowerShell mit dem Service Fabric-Modul](./service-fabric-get-started.md) oder [SFCTL](./service-fabric-cli.md) muss installiert sein.
 
 * Wenn Sie Hyper-V-Container verwenden, müssen in der Azure Resource Manager-Vorlage (Azure-Cluster) oder der Datei „ClusterConfig.json“ (eigenständiger Cluster) im Abschnitt „ClusterManifest“ (lokaler Cluster) oder „fabricSettings“ die folgenden Codeausschnitte eingefügt werden.
 
@@ -62,8 +55,7 @@ Im Abschnitt „fabricSettings“ der Azure Resource Manager-Vorlage (für Azure
 ]
 ```
 
-
-## <a name="deploy-the-service-fabric-azure-files-application"></a>Bereitstellen der Service Fabric Azure Files-Anwendung
+## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Bereitstellen einer Beispielanwendung mithilfe des Azure Files-Volumetreibers für Service Fabric
 
 ### <a name="using-azure-resource-manager-via-the-provided-powershell-script-recommended"></a>Verwenden von Azure Resource Manager über das bereitgestellte PowerShell-Skript (empfohlen)
 
@@ -80,12 +72,12 @@ Azure Resource Manager-Bereitstellungsbefehl für Linux:
 .\DeployAzureFilesVolumeDriver.ps1 -subscriptionId [subscriptionId] -resourceGroupName [resourceGroupName] -clusterName [clusterName] -linux
 ```
 
-Nachdem Sie das Skript erfolgreich ausgeführt haben, können Sie mit dem [Abschnitt zum Konfigurieren Ihrer Anwendung](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#configure-your-applications-to-use-the-volume) fortfahren.
+Nachdem Sie das Skript erfolgreich ausgeführt haben, können Sie mit dem [Abschnitt zum Konfigurieren Ihrer Anwendung](#configure-your-applications-to-use-the-volume) fortfahren.
 
 
 ### <a name="manual-deployment-for-standalone-clusters"></a>Manuelle Bereitstellung für eigenständige Cluster
 
-Die Service Fabric-Anwendung, die die Volumes für die Container bereitstellt, kann von der [Service Fabric-Downloadwebsite](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.516.9494.zip) heruntergeladen werden. Die Anwendung kann dem Cluster mit [PowerShell](./service-fabric-deploy-remove-applications.md), [CLI](./service-fabric-application-lifecycle-sfctl.md) oder [FabricClient-APIs](./service-fabric-deploy-remove-applications-fabricclient.md) bereitgestellt werden.
+Die Service Fabric-Anwendung, die die Volumes für die Container bereitstellt, kann von der [Service Fabric-Downloadwebsite](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.661.9590.zip) heruntergeladen werden. Die Anwendung kann dem Cluster mit [PowerShell](./service-fabric-deploy-remove-applications.md), [CLI](./service-fabric-application-lifecycle-sfctl.md) oder [FabricClient-APIs](./service-fabric-deploy-remove-applications-fabricclient.md) bereitgestellt werden.
 
 1. Wechseln Sie über die Befehlszeile in das Stammverzeichnis des heruntergeladenen Anwendungspakets.
 
@@ -133,7 +125,7 @@ Die Service Fabric-Anwendung, die die Volumes für die Container bereitstellt, k
 > Windows Server 2016 Datacenter unterstützt keine Zuordnung von SMB-Bereitstellungen für Container ([Dies wird nur unter Windows Server Version 1709 unterstützt](/virtualization/windowscontainers/manage-containers/container-storage)). Aufgrund dieser Einschränkung sind keine Netzwerkvolumezuordnungen oder Installationen von Azure Files-Volumetreibern auf älteren Versionen als 1709 möglich.
 
 #### <a name="deploy-the-application-on-a-local-development-cluster"></a>Bereitstellen der Anwendung in einem lokalen Bereitstellungscluster
-Führen Sie die Schritte 1 bis 3 [oben](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#manual-deployment-for-standalone-clusters) aus.
+Führen Sie die Schritte 1 bis 3 [oben](#manual-deployment-for-standalone-clusters) aus.
 
  Die Standardanzahl von Dienstinstanzen für die Azure Files-Volume-Plug-In-Anwendung ist -1. Dies bedeutet, dass auf jedem Knoten im Cluster eine Instanz des Diensts bereitgestellt wird. Bei der Bereitstellung der Azure Files-Volume-Plug-In-Anwendung in einem lokalen Bereitstellungscluster sollte jedoch als Anzahl der Dienstinstanzen 1 angegeben werden. Dazu kann der Anwendungsparameter **InstanceCount** verwendet werden. Daher lautet der Befehl für das Erstellen der Azure Files-Volume-Plug-In-Anwendung in einem lokalen Bereitstellungscluster:
 
@@ -206,7 +198,7 @@ Wie mit den **DriverOption**-Elementen im obigen Codeausschnitt dargestellt, unt
     ```
 
 ## <a name="using-your-own-volume-or-logging-driver"></a>Verwenden Ihres eigenen Volume- oder Protokollierungstreibers
-Service Fabric ermöglicht auch die Verwendung von benutzerdefinierten [Volume](https://docs.docker.com/engine/extend/plugins_volume/)- oder [Protokollierungstreibern](https://docs.docker.com/engine/admin/logging/overview/). Wenn der Docker-Volume-/Protokollierungstreiber nicht im Cluster installiert ist, können Sie ihn mithilfe der RDP/SSH-Protokolle manuell installieren. Sie können die Installation mit diesen Protokollen über ein [VMSS-Startskript](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) oder ein [SetupEntryPoint-Skript](/azure/service-fabric/service-fabric-application-model) durchführen.
+Service Fabric ermöglicht auch die Verwendung von benutzerdefinierten [Volume](https://docs.docker.com/engine/extend/plugins_volume/)- oder [Protokollierungstreibern](https://docs.docker.com/engine/admin/logging/overview/). Wenn der Docker-Volume-/Protokollierungstreiber nicht im Cluster installiert ist, können Sie ihn mithilfe der RDP/SSH-Protokolle manuell installieren. Sie können die Installation mit diesen Protokollen über ein [VMSS-Startskript](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) oder ein [SetupEntryPoint-Skript](./service-fabric-application-model.md) durchführen.
 
 Beispiel für das Skript zum Installieren des [Docker-Volumetreibers für Azure](https://docs.docker.com/docker-for-azure/persistent-data-volumes/):
 
@@ -249,4 +241,4 @@ Wenn ein Docker-Protokolltreiber angegeben wird, müssen Sie Agents (oder Contai
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Containerbeispiele, einschließlich des Volumetreibers, finden Sie unter [Service Fabric-Containerbeispiele](https://github.com/Azure-Samples/service-fabric-containers)
-* Informationen zum Bereitstellen von Containern in einem Service Fabric-Cluster finden Sie im Artikel [Bereitstellen eines Containers in Service Fabric](service-fabric-deploy-container.md).
+* Informationen zum Bereitstellen von Containern in einem Service Fabric-Cluster finden Sie im Artikel [Bereitstellen eines Containers in Service Fabric](./service-fabric-get-started-containers.md).

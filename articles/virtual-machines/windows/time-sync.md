@@ -1,24 +1,18 @@
 ---
-title: Zeitsynchronisierung für Windows-VMs in Azure | Microsoft-Dokumentation
+title: Zeitsynchronisierung für Windows-VMs in Azure
 description: Zeitsynchronisierung für virtuelle Windows-Computer.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 04b2eb70a9e304fb50f4f6cb94daf0a0dda86d63
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 830bdd45be4b0365ac45bc3ea366b99a34882a4c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100257"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010621"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Zeitsynchronisierung für Windows-VMs in Azure
 
@@ -30,7 +24,7 @@ Azure wird jetzt von einer Infrastruktur unter Windows Server 2016 unterstützt.
 >[!NOTE]
 >Eine kurze Übersicht über den Windows-Zeitdienst bietet dieses [allgemeine Übersichtsvideo](https://aka.ms/WS2016TimeVideo).
 >
-> Weitere Informationen finden Sie unter [Genaue Uhrzeit für Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> Weitere Informationen finden Sie unter [Genaue Uhrzeit für Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time). 
 
 ## <a name="overview"></a>Übersicht
 
@@ -38,7 +32,7 @@ Die Genauigkeit einer Computeruhr wird daran gemessen, wie nahe die Computeruhr 
 
 Azure-Hosts werden mit internen Microsoft-Zeitservern synchronisiert, die die Uhrzeit von Microsoft-eigenen Stratum 1-Geräten mit GPS-Antennen abfragen. Virtuelle Computer in Azure können zum Übergeben der genauen Uhrzeit an den virtuellen Computer von ihrem Host abhängen (*Hostzeit*), oder der virtuelle Computer kann die Uhrzeit direkt von einem Zeitserver abrufen, oder eine Kombination aus beidem. 
 
-VM-Interaktionen mit dem Host können sich auch auf die Uhr auswirken. Während der [Wartung mit Speicherbeibehaltung](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot) werden VMs bis zu 30 Sekunden angehalten. Beispiel: Vor Beginn der Wartung zeigt die VM-Uhr 10:00:00 Uhr an und wird 28 Sekunden angehalten. Nach Wiederaufnahme würde die Uhr des virtuellen Computers auch noch 10:00:00 Uhr anzeigen, was einen Zeitverlust von 28 Sekunden bedeuten würde. Um dies zu korrigieren, überwacht der VMICTimeSync-Dienst die Vorgänge auf dem Host und fordert zwecks Kompensierung zum Durchführen von Änderungen auf dem virtuellen Computer auf.
+VM-Interaktionen mit dem Host können sich auch auf die Uhr auswirken. Während der [Wartung mit Speicherbeibehaltung](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot) werden VMs bis zu 30 Sekunden angehalten. Beispiel: Vor Beginn der Wartung zeigt die VM-Uhr 10:00:00 Uhr an und wird 28 Sekunden angehalten. Nach Wiederaufnahme würde die Uhr des virtuellen Computers auch noch 10:00:00 Uhr anzeigen, was einen Zeitverlust von 28 Sekunden bedeuten würde. Um dies zu korrigieren, überwacht der VMICTimeSync-Dienst die Vorgänge auf dem Host und fordert zwecks Kompensierung zum Durchführen von Änderungen auf dem virtuellen Computer auf.
 
 Der VMICTimeSync-Dienst wird entweder im Sampling- oder Synchronisierungsmodus ausgeführt und wirkt sich nur auf das Vorstellen der Uhr aus. Im Sampling-Modus, der die Ausführung von W32time erfordert, fragt der VMICTimeSync-Dienst den Host alle 5 Sekunden ab und Zeit-Samples an W32time bereit. Etwa alle 30 Sekunden verwendet der W32time-Dienst das letzte Zeit-Sample, um damit die Uhr des Gasts zu beeinflussen. Der Synchronisierungsmodus wird aktiviert, wenn der Gast fortgesetzt wurde oder die Uhr des Gasts mehr als 5 Sekunden hinter der Uhr des Hosts liegt. Bei einer ordnungsgemäßen Ausführung des W32time-Diensts sollte der letztere Fall nie eintreten.
 
@@ -66,7 +60,7 @@ Standardmäßig werden Windows-Betriebssystem-VM-Images für w32time für die Sy
 - Der Zeitanbieter „NtpClient“, der Informationen von „time.windows.com“ abruft.
 - Der VMICTimeSync-Dienst, der verwendet wird, um die Hostzeit an die VMs zu übermitteln und Korrekturen vorzunehmen, nachdem der virtuelle Computer zu Wartungszwecken angehalten wird. Azure-Hosts verwenden Microsoft-eigene Stratum 1-Geräte, um die genaue Uhrzeit beizubehalten.
 
-W32time bevorzugt den Zeitanbieter in der folgenden Prioritätenfolge: Stratum-Ebene, Stammverzögerung, Stammabweichung, Zeitoffset. In den meisten Fällen würde w32time „time.windows.com“ für den Host bevorzugen, weil „time.windows.com“ ein niedrigeres Stratum meldet. 
+W32time bevorzugt den Zeitanbieter in der folgenden Prioritätenfolge: Stratum-Ebene, Stammverzögerung, Stammabweichung, Zeitoffset. In den meisten Fällen bevorzugt w32time auf einer Azure-VM die Hostzeit aufgrund der Auswertung für den Vergleich der beiden Zeitquellen. 
 
 Bei in die Domäne eingebundenen Computern legt die Domäne die Zeitsynchronisierungshierarchie fest, aber der Gesamtstrukturstamm muss die Uhrzeit noch aus einer Quelle abrufen, und die folgenden Aspekte würden weiterhin gelten.
 
@@ -121,8 +115,8 @@ w32tm /query /source
 
 Nachfolgend sehen Sie die Ausgabe, die angezeigt werden könnte und was dies bedeuten würde:
     
-- **time.windows.com**: In der Standardkonfiguration würde w32time die Uhrzeit von „time.windows.com“ abrufen. Die Qualität der Zeitsynchronisierung hängt von der vorhandenen Internetverbindung ab und wird von Paketverzögerungen beeinflusst. Dies ist die übliche Ausgabe der Standardeinrichtung.
-- **VM IC Time Synchronization Provider**: Der virtuelle Computer synchronisiert die Uhrzeit mit dem Host. Das ist in der Regel das Ergebnis, wenn Sie sich für die Nur-Host-Zeitsynchronisierung entscheiden oder der NTP-Server zurzeit nicht verfügbar ist. 
+- **time.windows.com**: In der Standardkonfiguration würde w32time die Uhrzeit von „time.windows.com“ abrufen. Die Qualität der Zeitsynchronisierung hängt von der vorhandenen Internetverbindung ab und wird von Paketverzögerungen beeinflusst. Dies ist die normale Ausgabe, die Sie auf einem physischen Computer erhalten.
+- **VM IC Time Synchronization Provider**: Der virtuelle Computer synchronisiert die Uhrzeit mit dem Host. Dies ist die normale Ausgabe, die Sie auf einem virtuellen Computer unter Azure erhalten. 
 - *Ihr Domänenserver*: Der aktuelle Computer befindet sich in einer Domäne, und die Domäne definiert die Zeitsynchronisierungshierarchie.
 - *Ein anderer Server*: w32time wurde explizit für das Abrufen der Uhrzeit von einem anderen bestimmten Server konfiguriert. Die Qualität der Zeitsynchronisierung hängt von der Qualität dieses Zeitservers ab.
 - **Local CMOS Clock**: Die Uhr wird nicht synchronisiert. Sie erhalten diese Ausgabe, wenn w32time nach einem Neustart nicht genügend Zeit zum Starten hatte oder alle konfigurierten Zeitquellen nicht verfügbar sind.
@@ -166,7 +160,7 @@ reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w32time\Config /v U
 w32tm /config /update
 ```
 
-Damit w32time die neuen Abrufintervalle verwenden kann, müssen die NTP-Server zur Verwendung dieser gekennzeichnet sein. Wenn die Server mit einer Bitkennzeichenmaske „0x1“ kommentiert werden, würde das diesen Mechanismus außer Kraft setzen, und w32time würde stattdessen „SpecialPollInterval“ verwenden. Stellen Sie sicher, dass die angegebenen NTP-Server entweder „0x8“ oder gar kein Flag verwenden:
+Damit w32time die neuen Abrufintervalle verwenden kann, müssen die NTP-Server zu ihrer Verwendung gekennzeichnet sein. Wenn die Server mit einer Bitkennzeichenmaske „0x1“ kommentiert werden, würde das diesen Mechanismus außer Kraft setzen, und w32time würde stattdessen „SpecialPollInterval“ verwenden. Stellen Sie sicher, dass die angegebenen NTP-Server entweder „0x8“ oder gar kein Flag verwenden:
 
 Überprüfen Sie, welche Flags für die verwendeten NTP-Server verwendet werden.
 
@@ -178,9 +172,7 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 
 Im Folgenden finden Sie Links zu weiteren Details zur Zeitsynchronisierung:
 
-- [Windows-Zeitdienst: Tools und Einstellungen](https://docs.microsoft.com/windows-server/networking/windows-time-service/Windows-Time-Service-Tools-and-Settings)
-- [Verbesserungen in Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-server-2016-improvements)
-- [Genaue Uhrzeit für Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
-- [Unterstützungsgrenzen zum Konfigurieren des Windows-Zeitdiensts für Umgebungen mit hoher Genauigkeit](https://docs.microsoft.com/windows-server/networking/windows-time-service/support-boundary)
-
-
+- [Windows-Zeitdienst: Tools und Einstellungen](/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings)
+- [Verbesserungen in Windows Server 2016](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Genaue Uhrzeit für Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time)
+- [Unterstützungsgrenzen zum Konfigurieren des Windows-Zeitdiensts für Umgebungen mit hoher Genauigkeit](/windows-server/networking/windows-time-service/support-boundary)

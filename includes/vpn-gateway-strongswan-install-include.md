@@ -8,19 +8,17 @@ ms.topic: include
 ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ddab6927044ce638e50ff3ad79aa3c35d046c820
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f02fa49b62a2e3d617617a20518810209d3879b7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69520841"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025950"
 ---
 Die folgende Konfiguration wurde für die unten stehenden Schritte verwendet:
 
-  | | |
-  |---|---|
-  |Computer| Ubuntu Server 18.04|
-  |Abhängigkeiten| strongSwan |
+- Computer: Ubuntu Server 18.04
+- Abhängigkeiten: strongSwan
 
 
 Verwenden Sie die folgenden Befehle, um die erforderliche strongSwan-Konfiguration zu installieren:
@@ -43,4 +41,4 @@ Verwenden Sie den folgenden Befehl, um die Azure-Befehlszeilenschnittstelle zu i
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ```
 
-[Weitere Anweisungen zum Installieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
+[Weitere Anweisungen zum Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)

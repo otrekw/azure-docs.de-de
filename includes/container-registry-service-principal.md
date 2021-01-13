@@ -9,10 +9,10 @@ ms.date: 12/14/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 9e4f2e355240ba8682cbe9f86f2be94e7dd0d92d
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70032346"
 ---
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals

@@ -1,25 +1,17 @@
 ---
-title: Reliable Services – Benachrichtigungen | Microsoft Docs
-description: Dokumentation zu Reliable Services-Benachrichtigungen mit Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Reliable Services – Benachrichtigungen
+description: Konzeptionelle Dokumentation für Service Fabric Reliable Services-Benachrichtigungen für Reliable State Manager und Reliable Dictionary
 author: mcoskun
-manager: chackdan
-editor: masnider,vturecek
-ms.assetid: cdc918dd-5e81-49c8-a03d-7ddcd12a9a76
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: d009749b7bc31595be26124b9d1eee7666e95bd4
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4a336daf9bd7400d049233a22a04d64d561b42c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551673"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89021951"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services – Benachrichtigungen
 Mit Benachrichtigungen können Clients Änderungen an einem Objekt verfolgen, an dem sie interessiert sind. Zwei Typen von Objekten unterstützen Benachrichtigungen: *Reliable State Manager* und *Reliable Dictionary*.
@@ -219,5 +211,4 @@ Hier folgen einige Punkte, die es zu beachten gilt:
 * [Zuverlässige Auflistungen](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
 * [Sichern und Wiederherstellen von Reliable Services (Notfallwiederherstellung)](service-fabric-reliable-services-backup-restore.md)
-* [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-
+* [Entwicklerreferenz für zuverlässige Auflistungen](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

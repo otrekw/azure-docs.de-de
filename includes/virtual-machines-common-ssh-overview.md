@@ -5,26 +5,26 @@ services: virtual-machines-linux
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 12/21/2018
+ms.date: 07/09/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3f9b86dd3716a25ab95265cf46b616144f57163b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 612e7dc2f3d1ef6aa5d3598999aa214a2f377e1f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168636"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016364"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>Übersicht über SSH und Schlüssel
 
-[SSH](https://www.ssh.com/ssh/) ist ein Protokoll für verschlüsselte Verbindungen, das die sichere Anmeldung über ungesicherte Verbindungen ermöglicht. SSH ist das Standardverbindungsprotokoll für in Azure gehostete virtuelle Linux-Computer. SSH stellt zwar bereits eine verschlüsselte Verbindung bereit, bei Verwendung von Kennwörtern für SSH-Verbindungen ist der virtuelle Computer jedoch weiterhin anfällig für Brute-Force-Angriffe bzw. der Gefahr ausgesetzt, dass das Kennwort erraten wird. Die sicherere und bevorzugte Methode für die Verbindungsherstellung mit einem virtuellen Computer über SSH ist die Verwendung eines Paars aus einem öffentlichen und einem privaten Schlüssel, auch als *SSH-Schlüssel* bezeichnet. 
+[SSH](https://www.ssh.com/ssh/) ist ein Protokoll für verschlüsselte Verbindungen, das die sichere Anmeldung über ungesicherte Verbindungen ermöglicht. SSH ist das Standardverbindungsprotokoll für in Azure gehostete virtuelle Linux-Computer. SSH stellt bereits eine verschlüsselte Verbindung bereit. Bei Verwendung von Kennwörtern für SSH-Verbindungen ist die VM aber anfällig für Brute-Force-Angriffe. Es wird empfohlen, über SSH mithilfe eines Schlüsselpaars aus einem öffentlichen und einem privaten Schlüssel (auch *SSH-Schlüssel* genannt) eine Verbindung mit einer VM herzustellen. 
 
-* Der *öffentliche Schlüssel* wird auf Ihrem virtuellen Linux-Computer oder in einem anderen Dienst platziert, den Sie für die Verschlüsselung mit öffentlichem Schlüssel verwenden möchten.
+- Der *öffentliche Schlüssel* wird auf Ihrer Linux-VM platziert.
 
-* Der *private Schlüssel* bleibt auf dem lokalen System. Bewahren Sie diesen privaten Schlüssel sicher auf. Geben Sie ihn nicht weiter.
+- Der *private Schlüssel* bleibt auf dem lokalen System. Bewahren Sie diesen privaten Schlüssel sicher auf. Geben Sie ihn nicht weiter.
 
-Wenn Sie einen SSH-Client verwenden, um die Verbindung mit Ihrer Linux-VM (die den öffentlichen Schlüssel besitzt) herzustellen, testet der virtuelle Remotecomputer den Client, um sicherzustellen, dass er den privaten Schlüssel besitzt. Wenn der Client über den privaten Schlüssel verfügt, erhält er Zugriff auf den virtuellen Computer. 
+Wenn Sie einen SSH-Client verwenden, um eine Verbindung mit Ihrer Linux-VM (die den öffentlichen Schlüssel besitzt) herzustellen, testet die Remote-VM den Client, um sicherzustellen, dass er über den richtigen privaten Schlüssel verfügt. Wenn der Client über den privaten Schlüssel verfügt, erhält er Zugriff auf den virtuellen Computer. 
 
 Abhängig von den Sicherheitsrichtlinien in Ihrer Organisation können Sie ein einzelnes Paar aus einem öffentlichen und einem privaten Schlüssel für den Zugriff auf mehrere Azure-VMs und -Dienste verwenden. Sie benötigen nicht für jeden virtuellen Computer oder Dienst, auf den Sie zugreifen möchten, ein separates Schlüsselpaar. 
 
-Sie können Ihren öffentlichen Schlüssel an beliebige Personen weitergeben, während Ihr privater Schlüssel ausschließlich für Ihren Besitz bestimmt ist (bzw. Ihre lokale Sicherheitsinfrastruktur).
+Sie können Ihren öffentlichen Schlüssel beliebig weitergeben, aber auf Ihren privaten Schlüssel können nur Sie (bzw. Ihre lokale Sicherheitsinfrastruktur) zugreifen.

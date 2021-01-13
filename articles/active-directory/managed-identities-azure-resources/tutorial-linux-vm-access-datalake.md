@@ -1,9 +1,9 @@
 ---
-title: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Data Lake Store
+title: Tutorial`:` Verwenden einer verwalteten Identität zum Zugreifen auf Azure Data Lake Store – Linux – Azure AD
 description: Dieses Tutorial veranschaulicht die Verwendung einer systemseitig verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Data Lake Store.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
-ms.author: markvi
+ms.date: 01/10/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 474165219d7740e63bb5e0a62d08069109a52c31
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d465419dfe36fd5dd67abdef22a6f54fba69a98e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236131"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89267461"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Data Lake Store
 
@@ -38,9 +38,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Gewähren des Zugriffs auf Azure Data Lake Store durch Ihre VM
+## <a name="grant-access"></a>Gewähren von Zugriff
 
-Sie können Ihrem virtuellen Computer nun Zugriff auf Dateien und Ordner in Azure Data Lake Store gewähren. Für diesen Schritt können Sie eine vorhandene Data Lake Store-Instanz verwenden oder eine neue erstellen. Um im Azure-Portal eine Data Lake Store-Instanz zu erstellen, führen Sie diesen [Schnellstart zu Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal) durch. Es gibt in der [Dokumentation zu Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) auch Schnellstarts, in denen die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwendet werden.
+In diesem Abschnitt wird gezeigt, wie Sie Ihrem virtuellen Computer Zugriff auf Dateien und Ordner in Azure Data Lake Store gewähren. Für diesen Schritt können Sie eine vorhandene Data Lake Store-Instanz verwenden oder eine neue erstellen. Um im Azure-Portal eine Data Lake Store-Instanz zu erstellen, führen Sie diesen [Schnellstart zu Azure Data Lake Store](../../data-lake-store/data-lake-store-get-started-portal.md) durch. Es gibt in der [Dokumentation zu Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md) auch Schnellstarts, in denen die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwendet werden.
 
 Erstellen Sie in Data Lake Store einen neuen Ordner, und gewähren Sie für die systemseitig zugewiesene verwaltete Identität des virtuellen Linux-Computers die Berechtigungen zum Lesen, Schreiben und Ausführen von Dateien in diesem Ordner:
 
@@ -56,22 +56,22 @@ Erstellen Sie in Data Lake Store einen neuen Ordner, und gewähren Sie für die 
 10. Klicken Sie wie in Schritt 5 auf **Hinzufügen**. Geben Sie im Feld **Auswählen** den Namen Ihres virtuellen Computers ein. Klicken Sie in den Suchergebnissen auf Ihren virtuellen Computer und dann auf **Auswählen**.
 11. Klicken Sie wie in Schritt 6 auf **Berechtigungen auswählen**. Wählen Sie **Lesen**, **Schreiben** und **Ausführen** aus, und fügen Sie diese Berechtigungen **diesem Ordner** als **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** hinzu. Klicken Sie auf **OK**.  Die Berechtigung sollte erfolgreich hinzugefügt werden.
 
-Verwaltete Identitäten für Azure-Ressourcen können nun alle Vorgänge für Dateien in dem von Ihnen erstellten Ordner ausführen. Weitere Informationen zum Verwalten des Zugriffs auf Data Lake Store finden Sie unter [Zugriffssteuerung in Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
+Verwaltete Identitäten für Azure-Ressourcen können nun alle Vorgänge für Dateien in dem von Ihnen erstellten Ordner ausführen. Weitere Informationen zum Verwalten des Zugriffs auf Data Lake Store finden Sie unter [Zugriffssteuerung in Azure Data Lake Store](../../data-lake-store/data-lake-store-access-control.md).
 
-## <a name="get-an-access-token-and-call-the-data-lake-store-file-system"></a>Abrufen eines Zugriffstokens und Aufrufen des Data Lake Store-Dateisystems
+## <a name="get-an-access-token"></a>Abrufen eines Zugriffstokens 
 
-Azure Data Lake Store unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit verwalteten Identitäten für Azure-Ressourcen abgerufen wurden, direkt angenommen werden können. Für die Authentifizierung im Data Lake Store-Dateisystem übermitteln Sie ein Zugriffstoken, das von Azure AD für Ihren Endpunkt des Data Lake Store-Dateisystems ausgestellt wurde. Das Zugriffstoken ist in einem Autorisierungsheader im Format „Bearer \<ZUGRIFFSTOKENWERT\>“ enthalten.  Weitere Informationen zur Unterstützung von Data Lake Store für die Azure AD-Authentifizierung finden Sie unter [Authentifizierung bei Data Lake Store mithilfe von Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
+In diesem Abschnitt wird gezeigt, wie Sie ein Zugriffstoken abrufen und das Data Lake Store-Dateisystem aufrufen. Azure Data Lake Store unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit verwalteten Identitäten für Azure-Ressourcen abgerufen wurden, direkt angenommen werden können. Für die Authentifizierung im Data Lake Store-Dateisystem übermitteln Sie ein Zugriffstoken, das von Azure AD für Ihren Endpunkt des Data Lake Store-Dateisystems ausgestellt wurde. Das Zugriffstoken ist in einem Autorisierungsheader im Format „Bearer \<ACCESS_TOKEN_VALUE\>“ enthalten.  Weitere Informationen zur Unterstützung von Data Lake Store für die Azure AD-Authentifizierung finden Sie unter [Authentifizierung bei Data Lake Store mithilfe von Azure Active Directory](../../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md).
 
 In diesem Tutorial authentifizieren Sie sich bei der REST-API für das Data Lake Store-Dateisystem mit REST-Anforderungen in cURL.
 
 > [!NOTE]
 > Die Client-SDKs für das Data Lake Store-Dateisystem unterstützen noch keine verwalteten Identitäten für Azure-Ressourcen.
 
-Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client. Wenn Sie Windows verwenden, können Sie den SSH-Client im [Windows-Subsystem für Linux](https://msdn.microsoft.com/commandline/wsl/about) verwenden. Wenn Sie Hilfe beim Konfigurieren der SSH-Clientschlüssel benötigen, finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) oder [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) weitere Informationen.
+Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client. Wenn Sie Windows verwenden, können Sie den SSH-Client im [Windows-Subsystem für Linux](/windows/wsl/about) verwenden. Wenn Sie Hilfe beim Konfigurieren der SSH-Clientschlüssel benötigen, finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) oder [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) weitere Informationen.
 
 1. Navigieren Sie im Portal zu Ihrem virtuellen Linux-Computer. Klicken Sie unter **Übersicht** auf **Verbinden**.  
 2. Stellen Sie mithilfe des gewünschten SSH-Clients eine Verbindung mit dem virtuellen Computer her. 
-3. Senden Sie im Terminalfenster mit cURL eine Anforderung an den lokalen Endpunkt der verwalteten Identitäten für Azure-Ressourcen, um ein Zugriffstoken für das Data Lake Store-Dateisystem abzurufen. Der Ressourcenbezeichner für Data Lake Storage lautet „`https://datalake.azure.net/`“.  Es ist wichtig, den abschließenden Schrägstrich in den Ressourcenbezeichner einzuschließen.
+3. Senden Sie im Terminalfenster mit cURL eine Anforderung an den lokalen Endpunkt der verwalteten Identitäten für Azure-Ressourcen, um ein Zugriffstoken für das Data Lake Store-Dateisystem abzurufen. Der Ressourcenbezeichner für Data Lake Store lautet `https://datalake.azure.net/`.  Es ist wichtig, den abschließenden Schrägstrich in den Ressourcenbezeichner einzuschließen.
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   
@@ -155,4 +155,4 @@ Mithilfe anderer APIs für das Data Lake Store-Dateisystem können Sie Dateien a
 In diesem Tutorial haben Sie gelernt, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Linux-Computers verwenden, um auf Azure Data Lake Store zuzugreifen. Weitere Informationen zu Azure Data Lake Store finden Sie hier:
 
 > [!div class="nextstepaction"]
->[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)
+>[Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md)

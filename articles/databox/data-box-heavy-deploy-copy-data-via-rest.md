@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Daten über REST-APIs in Ihren Azure Data Box-Blobspeicher kopieren.
+title: 'Tutorial: Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs'
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von REST-APIs über HTTP oder HTTPS eine Verbindung mit Azure Data Box-Blobspeicher herstellen und anschließend Daten von Azure Data Box Heavy kopieren.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 2c66b94cbcfa4688d9dc45d99688abe76fa55d17
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: e2fc174147b99b7b952c6d10084cfc969dacf5a6
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595799"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949138"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Tutorial: Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs  
 
@@ -92,13 +92,13 @@ Verwenden Sie zum Herunterladen des Zertifikats das Azure-Portal.
 
 1. Melden Sie sich beim Azure-Portal an.
 2. Navigieren Sie zu Ihrem Data Box-Auftrag und dann zu **Allgemein > Gerätedetails**.
-3. Wechseln Sie unter **Geräteanmeldeinformationen** zu **API-Zugriff auf Gerät**. Klicken Sie auf **Download**. Bei dieser Aktion wird eine Zertifikatdatei im Format **\<Name Ihrer Bestellung>.cer** heruntergeladen. **Speichern** Sie diese Datei. Sie installieren dieses Zertifikat auf dem Client- oder Hostcomputer, den Sie für die Verbindung mit dem Gerät verwenden werden.
+3. Wechseln Sie unter **Geräteanmeldeinformationen** zu **API-Zugriff auf Gerät**. Klicken Sie auf **Download**. Mit dieser Aktion wird eine Zertifikatdatei ( **\<your order name>.cer**) heruntergeladen. **Speichern** Sie diese Datei. Sie installieren dieses Zertifikat auf dem Client- oder Hostcomputer, den Sie für die Verbindung mit dem Gerät verwenden werden.
 
     ![Herunterladen des Zertifikats im Azure-Portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
 ### <a name="import-certificate"></a>Importieren des Zertifikats 
 
-Der Zugriff auf Data Box-Blobspeicher über HTTPS erfordert ein SSL-Zertifikat für das Gerät. Die Art und Weise, wie dieses Zertifikat der Clientanwendung zur Verfügung gestellt wird, variiert von Anwendung zu Anwendung sowie zwischen Betriebssystemen und Distributionen. Einige Anwendungen können auf das Zertifikat zugreifen, nachdem es in den Zertifikatsspeicher des Systems importiert wurde, während andere Anwendungen diesen Mechanismus nicht nutzen.
+Der Zugriff auf Data Box-Blobspeicher über HTTPS erfordert ein TLS-/SSL-Zertifikat für das Gerät. Die Art und Weise, wie dieses Zertifikat der Clientanwendung zur Verfügung gestellt wird, variiert von Anwendung zu Anwendung sowie zwischen Betriebssystemen und Distributionen. Einige Anwendungen können auf das Zertifikat zugreifen, nachdem es in den Zertifikatsspeicher des Systems importiert wurde, während andere Anwendungen diesen Mechanismus nicht nutzen.
 
 Dieser Abschnitt enthält spezifische Informationen für einige Anwendungen. Weitere Informationen zu anderen Anwendungen finden Sie in der Dokumentation für die jeweilige Anwendung und für das verwendete Betriebssystem.
 
@@ -122,11 +122,11 @@ Führen Sie diese Schritte aus, um die `.cer`-Datei in den Stammspeicher eines W
 
 3.  Wählen Sie **Alle Zertifikate in folgendem Speicher speichern** aus, und klicken Sie dann auf **Durchsuchen**. Navigieren Sie zum Stammspeicher des Remotehosts, und klicken Sie dann auf **Weiter**.
 
-    ![Importieren des Zertifikats mithilfe von PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![Importieren des Zertifikats mithilfe von PowerShell 2](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4.  Klicken Sie auf **Fertig stellen**. Eine Meldung wird angezeigt, die besagt, dass der Import erfolgreich war.
 
-    ![Importieren des Zertifikats mithilfe von PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![Importieren des Zertifikats mithilfe von PowerShell 3](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>Verwenden eines Linux-Systems
 
@@ -138,12 +138,12 @@ Die Methode zum Importieren eines Zertifikats hängt von der Distribution ab.
 Mehrere Distribution, wie etwa Ubuntu und Debian, verwenden den Befehl `update-ca-certificates`.  
 
 - Benennen Sie die Base64-codierte Zertifikatdatei so um, dass sie die Erweiterung `.crt` aufweist, und kopieren Sie sie in das Verzeichnis `/usr/local/share/ca-certificates directory`.
-- Führen Sie den Befehl `update-ca-certificates`aus.
+- Führen Sie den Befehl `update-ca-certificates` aus.
 
 Neuere Versionen von RHEL, Fedora und CentOS verwenden den Befehl `update-ca-trust`.
 
 - Kopieren Sie die Zertifikatdatei in das Verzeichnis `/etc/pki/ca-trust/source/anchors`.
-- Führen Sie `update-ca-trust`aus.
+- Führen Sie `update-ca-trust` aus.
 
 Spezifische Einzelheiten für Ihre Distribution finden Sie in der Dokumentation.
 
@@ -197,16 +197,19 @@ Mit AzCopy können Sie unter Windows oder Linux alle Dateien in einem Ordner in 
 
 #### <a name="linux"></a>Linux
 
-    azcopy \
-        --source /mnt/myfolder \
-        --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-        --dest-key <key> \
-        --recursive
+```azcopy
+azcopy \
+    --source /mnt/myfolder \
+    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+    --dest-key <key> \
+    --recursive
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
-
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```
 
 Ersetzen Sie `<key>` durch Ihren Kontoschlüssel. Wechseln Sie im Azure-Portal zu Ihrem Speicherkonto, um Ihren Kontoschlüssel abzurufen. Navigieren Sie zu **Einstellungen > Zugriffsschlüssel**, wählen Sie einen Schlüssel aus, und fügen Sie ihn in den AzCopy-Befehl ein.
 
@@ -221,16 +224,21 @@ Verwenden Sie AzCopy, um Dateien basierend auf dem Zeitpunkt der letzten Änderu
 Falls Sie nur Quellressourcen kopieren möchten, die im Ziel nicht vorhanden sind, können Sie beide Parameter – `--exclude-older` und `--exclude-newer` (Linux) oder `/XO` und `/XN` (Windows) – im AzCopy-Befehl angeben. AzCopy lädt nur die aktualisierten Daten basierend auf dem Zeitstempel hoch.
 
 #### <a name="linux"></a>Linux
-    azcopy \
-    --source /mnt/myfolder \
-    --destination https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-    --dest-key <key> \
-    --recursive \
-    --exclude-older
+
+```azcopy
+azcopy \
+--source /mnt/myfolder \
+--destination https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+--dest-key <key> \
+--recursive \
+--exclude-older
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```
 
 Wenn während des Vorgangs zum Herstellen einer Verbindung oder des Kopiervorgangs Fehler auftreten, lesen Sie [Behandeln von Problemen bei Data Box-Blobspeicher](data-box-troubleshoot-rest.md).
 

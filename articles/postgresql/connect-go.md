@@ -1,27 +1,28 @@
 ---
-title: Verwenden von Go zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver
+title: 'Schnellstart: Herstellen einer Verbindung mit Go: Azure Database for PostgreSQL-Einzelserver'
 description: Dieser Schnellstart enthält ein Beispiel für die Programmiersprache Go, das Sie nutzen können, um eine Verbindung mit einem Azure Database for PostgreSQL-Einzelserver herzustellen und Daten daraus abzufragen.
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 9356379262cc078cd6a62f3280bcb8cc3d315844
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: eb844790ac0ae97c281f6d2d7022bee559f545cd
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067346"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331929"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL-Einzelserver: Verwenden von Go zum Herstellen einer Verbindung und Abfragen von Daten
+# <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Schnellstart: Verwenden der Sprache Go zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver sowie zum Abfragen von Daten
+
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Code in der Sprache [Go](https://golang.org/) (golang) eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Artikel wird davon ausgegangen, dass Sie mit der Entwicklung unter Verwendung der Sprache Go vertraut sind, aber noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
 - [Erstellen einer Datenbank – Portal](quickstart-create-server-database-portal.md)
-- [Erstellen einer Datenbank – Azure CLI](quickstart-create-server-database-azure-cli.md)
+- [Erstellen einer Datenbank – Azure-CLI](quickstart-create-server-database-azure-cli.md)
 
 ## <a name="install-go-and-pq-connector"></a>Installieren von Go und dem pq-Connector
 Installieren Sie [Go](https://golang.org/doc/install) und den [reinen Go-Postgres-Treiber (pq)](https://github.com/lib/pq) auf Ihrem eigenen Computer. Führen Sie je nach Plattform die geeigneten Schritte aus:
@@ -79,13 +80,13 @@ Installieren Sie [Go](https://golang.org/doc/install) und den [reinen Go-Postgre
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure-Datenbank für PostgreSQL erforderlich sind. Sie benötigen den vollqualifizierten Servernamen und die Anmeldeinformationen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und suchen Sie dann nach dem soeben erstellten Server, z.B. **mydemoserver**.
+2. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen** , und suchen Sie dann nach dem soeben erstellten Server, z.B. **mydemoserver**.
 3. Klicken Sie auf den Servernamen.
 4. Notieren Sie sich im Bereich **Übersicht** des Servers den **Servernamen** und den **Anmeldenamen des Serveradministrators**. Wenn Sie Ihr Kennwort vergessen haben, können Sie es in diesem Bereich auch zurücksetzen.
- ![Azure Database for PostgreSQL-Servername](./media/connect-go/1-connection-string.png)
+ :::image type="content" source="./media/connect-go/1-connection-string.png" alt-text="Azure Database for PostgreSQL-Servername":::
 
 ## <a name="build-and-run-go-code"></a>Erstellen und Ausführen von Go-Code 
-1. Golang-Code kann in einem Nur-Text-Editor wie dem Editor in Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) oder [Nano](https://www.nano-editor.org/) (Ubuntu) oder TextEdit (macOS) geschrieben werden. Falls Sie eine umfangreichere interaktive Entwicklungsumgebung (Interactive Development Environment, IDE) bevorzugen, können Sie [Gogland](https://www.jetbrains.com/go/) von Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) von Microsoft oder [Atom](https://atom.io/) verwenden.
+1. Golang-Code kann in einem Nur-Text-Editor wie dem Editor in Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) oder [Nano](https://www.nano-editor.org/) (Ubuntu) oder TextEdit (macOS) geschrieben werden. Falls Sie eine umfangreichere interaktive Entwicklungsumgebung (Interactive Development Environment, IDE) bevorzugen, können Sie [GoLand](https://www.jetbrains.com/go/) von Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) von Microsoft oder [Atom](https://atom.io/) verwenden.
 2. Fügen Sie den Golang-Code aus den folgenden Abschnitten in Textdateien ein, und speichern Sie sie in Ihrem Projektordner mit der Dateiendung „\*.go“ – beispielsweise `%USERPROFILE%\go\src\postgresqlgo\createtable.go` (Windows-Pfad) oder `~/go/src/postgresqlgo/createtable.go` (Linux-Pfad).
 3. Suchen Sie im Code nach den Konstanten `HOST`, `DATABASE`, `USER` und `PASSWORD`, und ersetzen Sie die Beispielwerte durch Ihre eigenen Werte.  
 4. Starten Sie die Eingabeaufforderung oder die Bash-Shell. Wechseln Sie in das Verzeichnis Ihres Projektordners. Beispiel für Windows: `cd %USERPROFILE%\go\src\postgresqlgo\`. Beispiel für Linux: `cd ~/go/src/postgresqlgo/`. Einige der genannten IDE-Umgebungen bieten Debug- und Laufzeitfunktionen ohne Shell-Befehle.
@@ -93,7 +94,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 6. Falls Sie aus dem Code eine native Anwendung erstellen möchten, führen Sie stattdessen `go build createtable.go` aus, und starten Sie anschließend `createtable.exe`, um die Anwendung auszuführen.
 
 ## <a name="connect-and-create-a-table"></a>Herstellen einer Verbindung und Erstellen einer Tabelle
-Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und eine Tabelle zu erstellen, indem Sie eine **CREATE TABLE**-SQL-Anweisung gefolgt von **INSERT INTO**-SQL-Anweisungen zum Hinzufügen von Zeilen zur Tabelle nutzen.
+Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und eine Tabelle zu erstellen, indem Sie eine **CREATE TABLE** -SQL-Anweisung gefolgt von **INSERT INTO** -SQL-Anweisungen zum Hinzufügen von Zeilen zur Tabelle nutzen.
 
 Der Code importiert drei Pakete: das [sql-Paket](https://golang.org/pkg/database/sql/), das [pq-Paket](https://godoc.org/github.com/lib/pq) als Treiber für die Kommunikation mit dem PostgresSQL-Server und das [fmt-Paket](https://golang.org/pkg/fmt/) für die Ein- und Ausgabe in der Befehlszeile.
 
@@ -159,7 +160,7 @@ func main() {
 ```
 
 ## <a name="read-data"></a>Lesen von Daten
-Verwenden Sie den folgenden Code, um die Daten mit einer **SELECT**-SQL-Anweisung zu verbinden und zu lesen. 
+Verwenden Sie den folgenden Code, um die Daten mit einer **SELECT** -SQL-Anweisung zu verbinden und zu lesen. 
 
 Der Code importiert drei Pakete: das [sql-Paket](https://golang.org/pkg/database/sql/), das [pq-Paket](https://godoc.org/github.com/lib/pq) als Treiber für die Kommunikation mit dem PostgresSQL-Server und das [fmt-Paket](https://golang.org/pkg/fmt/) für die Ein- und Ausgabe in der Befehlszeile.
 
@@ -280,7 +281,7 @@ func main() {
 ```
 
 ## <a name="delete-data"></a>Löschen von Daten
-Verwenden Sie den folgenden Code, um die Daten mit einer **DELETE**-SQL-Anweisung zu verbinden und zu löschen. 
+Verwenden Sie den folgenden Code, um die Daten mit einer **DELETE** -SQL-Anweisung zu verbinden und zu löschen. 
 
 Der Code importiert drei Pakete: das [sql-Paket](https://golang.org/pkg/database/sql/), das [pq-Paket](https://godoc.org/github.com/lib/pq) als Treiber für die Kommunikation mit dem Postgres-Server und das [fmt-Paket](https://golang.org/pkg/fmt/) für die Ein- und Ausgabe in der Befehlszeile.
 
@@ -330,6 +331,16 @@ func main() {
     checkError(err)
     fmt.Println("Deleted 1 row of data")
 }
+```
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Ressourcengruppe mit dem folgenden Befehl, um alle in dieser Schnellstartanleitung verwendeten Ressourcen zu bereinigen:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,18 +1,18 @@
 ---
-title: Überschreiben des HTTP-Verhaltens mithilfe der Regel-Engine für Azure CDN Premium von Verizon | Microsoft-Dokumentation
+title: Außerkraftsetzen des HTTP-Verhaltens mithilfe von Azure CDN – Verizon Premium-Regel-Engine
 description: Mit der Regel-Engine können Sie anpassen, wie HTTP-Anforderungen von Azure CDN Premium von Verizon behandelt werden, z. B. Blockieren der Übermittlung bestimmter Inhaltstypen, Definieren einer Zwischenspeicherungsrichtlinie oder Ändern von HTTP-Headern.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: fa08f59f3b69395d548649bb131e04c5071c053d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: allensu
+ms.openlocfilehash: a49912bc2275e478d657f06587c4ddc830210d3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593181"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87040209"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Überschreiben des HTTP-Verhaltens mithilfe der Regel-Engine für Azure CDN Premium von Verizon
 
@@ -22,7 +22,7 @@ ms.locfileid: "67593181"
 
 Über die Azure CDN-Regel-Engine können Sie anpassen, wie HTTP-Anforderungen verarbeitet werden. Hierzu zählt z.B. die Blockierung der Übermittlung bestimmter Inhaltstypen, die Definition einer Cacherichtlinie oder die Änderung eines HTTP-Headers. In diesem Tutorial wird die Erstellung einer Regel erläutert, die das Zwischenspeicherungsverhalten von CDN-Objekten ändert. Weitere Informationen zur Regel-Engine finden Sie unter [Referenz für die Azure CDN-Regel-Engine](cdn-verizon-premium-rules-engine-reference.md).
 
-## <a name="access"></a>Access
+## <a name="access"></a>Zugriff
 
 Um auf die Regel-Engine zuzugreifen, müssen Sie für den Zugriff auf die Azure CDN-Verwaltungsseite zuerst **Verwalten** im oberen Bereich der Seite **CDN-Profil** auswählen. Je nachdem, ob der Endpunkt für die Beschleunigung dynamischer Websites (Dynamic Site Acceleration, DSA) optimiert ist, greifen Sie mit der Gruppe von Regeln, die für den Typ des Endpunkts geeignet sind, dann auf die Regel-Engine zu:
 
@@ -40,7 +40,7 @@ Um auf die Regel-Engine zuzugreifen, müssen Sie für den Zugriff auf die Azure 
 
     ![Regel-Engine für die DSA](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
 
-## <a name="tutorial"></a>Tutorial
+## <a name="tutorial"></a>Lernprogramm
 
 1. Klicken Sie auf der Seite **CDN-Profil** auf **Verwalten**.
    
@@ -55,7 +55,7 @@ Um auf die Regel-Engine zuzugreifen, müssen Sie für den Zugriff auf die Azure 
     ![Optionen für neue CDN-Regeln](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > Die Reihenfolge, in der mehrere Regeln aufgelistet sind, beeinflusst deren Verarbeitung. Eine Regel kann die von einer vorherigen Regel angegebenen Aktionen überschreiben.
+   > Die Reihenfolge, in der mehrere Regeln aufgelistet sind, beeinflusst deren Verarbeitung. Eine Regel kann die von einer vorherigen Regel angegebenen Aktionen überschreiben. Besitzen Sie beispielsweise eine Regel, die den Zugriff auf eine Ressource basierend auf einer Anforderungseigenschaft zulässt, sowie eine Regel, die den Zugriff für alle Anforderungen verweigert, setzt die zweite Regel die erste außer Kraft. Regeln setzen frühere Regeln nur dann außer Kraft, wenn sie mit denselben Eigenschaften interagieren.
    >
 
 3. Geben Sie einen Namen in das Textfeld **Name/Beschreibung** ein.

@@ -1,6 +1,6 @@
 ---
 title: Optimieren des VM-Netzwerkdurchsatzes | Microsoft-Dokumentation
-description: Informationen zum Optimieren des Netzwerkdurchsatzes virtueller Azure-Computer
+description: Informationen zur Optimierung des Netzwerkdurchsatzes für Microsoft Azure-VMs unter Windows und Linux, einschließlich der wichtigsten Distributionen wie etwa Ubuntu, CentOS und Red Hat.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/15/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 50d7ca73e5e18f88f5d789e12fc7f26908e8b8f0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: a9db2bcc0b44dfb6146517de8a139f34cd8584af
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202915"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654454"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer
 
@@ -56,12 +56,12 @@ RSS ist auf einem virtuellen Azure Linux-Computer immer standardmäßig aktivier
 
 ### <a name="ubuntu-for-new-deployments"></a>Ubuntu für neue Bereitstellungen
 
-Der Ubuntu-Azure-Kernel ermöglicht die beste Netzwerkleistung in Azure. Er ist seit dem 21. September 2017 der Standardkernel. Um diesen Kernel zu nutzen, installieren Sie zunächst wie folgt die neueste unterstützte Version 16.04-LTS:
+Der Ubuntu Azure-Kernel ist für Netzwerkleistung in Azure am besten optimiert. Um die neuesten Optimierungen zu erhalten, installieren Sie zuerst die neueste unterstützte Version von 18.04-LTS wie folgt:
 
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
-"Sku": "16.04-LTS",
+"Sku": "18.04-LTS",
 "Version": "latest"
 ```
 
@@ -89,7 +89,7 @@ apt-get -y dist-upgrade
 
 #### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>Ubuntu-Azure-Kernelupgrade für vorhandene virtuelle Computer
 
-Signifikante Durchsatzleistung kann durch ein Upgrade auf den Linux-Kernel von Azure erreicht werden. Um zu erfahren, ob Sie über diesen Kernel verfügen, überprüfen Sie die Kernelversion.
+Signifikante Durchsatzleistung kann durch ein Upgrade auf den Linux-Kernel von Azure erreicht werden. Um zu erfahren, ob Sie über diesen Kernel verfügen, überprüfen Sie die Kernelversion. Sie sollte gleich oder höher als das Beispiel sein.
 
 ```bash
 #Azure kernel name ends with "-azure"
@@ -117,7 +117,7 @@ Um die neuesten Optimierungen zu erhalten, empfiehlt es sich, einen virtuellen C
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
-"Sku": "7.4",
+"Sku": "7.7",
 "Version": "latest"
 ```
 
@@ -143,17 +143,16 @@ Um die Optimierungen zu erhalten, empfiehlt es sich, einen virtuellen Computer m
 Bei neuen und vorhandenen virtuellen Computer kann die Installation der aktuellen Version von Linux Integration Services (LIS) vorteilhaft sein. Die Optimierung des Durchsatzes erfolgt in LIS, beginnend mit 4.2. Geben Sie die folgenden Befehle ein, um LIS herunterzuladen und zu installieren:
 
 ```bash
-mkdir lis4.2.3-5
-cd lis4.2.3-5
-wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
-tar xvzf lis-rpms-4.2.3-5.tar.gz
+wget https://aka.ms/lis
+tar xvf lis
 cd LISISO
-install.sh #or upgrade.sh if prior LIS was previously installed
+sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 ```
 
 Weitere Informationen zu Linux Integration Services Version 4.2 für Hyper-V erhalten Sie auf der [Downloadseite](https://www.microsoft.com/download/details.aspx?id=55106).
 
 ## <a name="next-steps"></a>Nächste Schritte
+* Bereitstellen von VMs in der Nähe zueinander für geringe Latenz mit einer [Näherungsplatzierungsgruppe](../virtual-machines/windows/co-location.md)
 * Sehen Sie sich das optimierte Ergebnis an, indem Sie [die Bandbreite bzw. den Durchsatz der Azure-VM](virtual-network-bandwidth-testing.md) für Ihr Szenario testen.
 * Lesen Sie mehr über die [Zuweisung von Bandbreite zu virtuellen Computern](virtual-machine-network-throughput.md).
 * Weitere Informationen finden Sie unter [Azure Virtual Network – häufig gestellte Fragen (FAQs)](virtual-networks-faq.md).

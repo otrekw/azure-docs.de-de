@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2325509f68ced7c66d9f733b07247ae01301b565
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178269"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "82181533"
 ---
 ## <a name="test-your-code"></a>Testen Ihres Codes
 
@@ -43,11 +43,9 @@ Nachdem Sie sich angemeldet haben, sollten Sie die Benutzerprofilinformationen s
 
 |Eigenschaft  |Format  |BESCHREIBUNG |
 |---------|---------|---------|
+|**Benutzername** |<span>user@domain.com</span> |Der zur Identifizierung des Benutzers verwendete Benutzername|
+|**Ablaufdatum des Tokens** |Datetime |Uhrzeit, zu der das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|
 
-|**Username** |<span>user@domain.com</span> |Der Benutzername, der zur Identifizierung des Benutzers verwendet wird.| |**Token Expires** |DateTime |Der Zeitpunkt, zu dem das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|
-
-
-<!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Weitere Informationen zu Bereichen und delegierten Berechtigungen
 
 Die Microsoft Graph-API benötigt den Bereich *user.read*, um das Benutzerprofil zu lesen. Dieser Bereich wird standardmäßig jeder Anwendung automatisch hinzugefügt, die im Anwendungsregistrierungsportal registriert wird. Andere Microsoft Graph-APIs sowie benutzerdefinierte APIs für Ihren Back-End-Server erfordern unter Umständen zusätzliche Bereiche. Die Microsoft Graph-API benötigt den Bereich *Calendars.Read*, um die Kalender des Benutzers aufzuführen.
@@ -56,7 +54,5 @@ Um auf die Kalender des Benutzers im Kontext einer Anwendung zugreifen zu könne
 
 >[!NOTE]
 >Wenn Sie die Anzahl der Bereiche erhöhen, werden Benutzer ggf. zu weiteren Genehmigungen aufgefordert.
-
-<!--end-collapse-->
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

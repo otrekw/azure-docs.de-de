@@ -1,144 +1,132 @@
 ---
-title: 'C#-Tutorial: Indizieren von Daten aus Azure SQL-Datenbanken: Azure Search'
-description: Dieses C#-Codebeispiel veranschaulicht, wie Sie eine Verbindung mit Azure SQL-Datenbank herstellen, durchsuchbare Daten extrahieren und diese in einen Azure Search-Index laden.
-author: HeidiSteen
+title: C#-Tutorial zum Indizieren von Azure SQL-Daten
+titleSuffix: Azure Cognitive Search
+description: In diesem C#-Tutorial erfahren Sie, wie Sie eine Verbindung mit Azure SQL-Datenbank herstellen, durchsuchbare Daten extrahieren und diese in einen Azure Cognitive Search-Index laden.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: d0f0abade5d1eea952c5abde293ae90745ee9b04
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 09/25/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 960657d27be4b9dab9f242428592bbb404a49d86
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640653"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697168"
 ---
-# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#-Tutorial: Auffüllung einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
+# <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Tutorial: Indizieren von Azure SQL-Daten mithilfe des .NET SDK
 
-Sie erfahren, wie Sie einen Indexer konfigurieren, um durchsuchbare Daten aus einer Azure SQL-Beispieldatenbank zu extrahieren. Ein [Indexer](search-indexer-overview.md) ist eine Komponente von Azure Search, die externe Datenquellen durchforstet und einen [Suchindex](search-what-is-an-index.md) auffüllt. Von allen Indexern wird der Indexer für Azure SQL-Datenbank am häufigsten verwendet. 
+Konfigurieren Sie einen [Indexer](search-indexer-overview.md), um durchsuchbare Daten aus Azure SQL-Datenbank zu extrahieren und an einen Suchindex in Azure Cognitive Search zu senden. 
 
-Es ist hilfreich, wenn Sie bereits mit dem Konfigurieren von Indexern vertraut sind, da dies das Schreiben und Verwalten von Code vereinfacht. Anstatt ein schemakonformes JSON-Dataset vorzubereiten und mithilfe von Push zu übermitteln, können Sie einen Indexer an eine Datenquelle anfügen und ihn Daten extrahieren und in einen Index einfügen lassen. Außerdem können Sie den Indexer optional auf der Grundlage eines Wiederholungszeitplans ausführen, um Änderungen in der zugrunde liegenden Quelle zu erfassen.
-
-In diesem Tutorial verwenden Sie die [Azure Search-.NET-Clientbibliotheken](https://aka.ms/search-sdk) und eine .NET Core-Konsolenanwendung, um folgende Aufgaben auszuführen:
+In diesem Tutorial werden C# und das [.NET SDK](/dotnet/api/overview/azure/search) verwendet, um die folgenden Aufgaben durchzuführen:
 
 > [!div class="checklist"]
-> * Hinzufügen von Suchdienstinformationen zu Anwendungseinstellungen
-> * Vorbereiten eines externen Datasets in Azure SQL-Datenbank 
-> * Überprüfen der Index- und Indexerdefinition im Beispielcode
-> * Ausführen des Indexercodes zum Importieren von Daten
-> * Durchsuchen des Index
-> * Anzeigen der Indexerkonfiguration im Portal
+> * Erstellen einer mit Azure SQL-Datenbank verbundenen Datenquelle
+> * Erstellen eines Indexers
+> * Ausführen eines Indexers, um Daten in einen Index zu laden
+> * Abfragen eines Index als Überprüfungsschritt
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Schnellstart werden die folgenden Dienste, Tools und Daten verwendet. 
-
-[Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
-
-[Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) speichert die von einem Indexer verwendete externe Datenquelle. In der Beispielprojektmappe steht eine SQL-Datendatei zum Erstellen der Tabelle zur Verfügung. In diesem Tutorial werden die Schritte zum Erstellen des Diensts und der Datenbank erläutert.
-
-Eine beliebige Version von [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) kann zum Ausführen der Beispielprojektmappe verwendet werden. Der Beispielcode und die Anleitung wurden in der kostenlosen Community-Edition getestet.
-
-[Azure-Samples/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started) enthält die Beispielprojektmappe (im GitHub-Repository mit Azure-Beispielen). Laden Sie die Projektmappe herunter, und extrahieren Sie sie. Projektmappen sind standardmäßig schreibgeschützt. Klicken Sie mit der rechten Maustaste auf die Projektmappe, und löschen Sie das Nur-Lese-Attribut, damit Sie Dateien ändern können.
++ [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/)
++ [Visual Studio](https://visualstudio.microsoft.com/downloads/)
++ [Neuer](search-create-service-portal.md) oder [bereits vorhandener](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) Suchdienst 
 
 > [!Note]
-> Bei Verwendung des kostenlosen Azure Search-Diensts gilt eine Obergrenze von drei Indizes, drei Indexern und drei Datenquellen. In diesem Tutorial wird davon jeweils eine Instanz erstellt. Vergewissern Sie sich, dass Ihr Dienst über genügend freie Kapazität für die neuen Ressourcen verfügt.
+> In diesem Tutorial können Sie den kostenlosen Dienst verwenden. Der kostenlose Suchdienst ist auf drei Indizes, drei Indexer und drei Datenquellen beschränkt. In diesem Tutorial wird davon jeweils eine Instanz erstellt. Vergewissern Sie sich zunächst, dass Ihr Dienst über genügend freie Kapazität für die neuen Ressourcen verfügt.
 
-## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
+## <a name="download-files"></a>Herunterladen von Dateien
 
-Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anforderung erforderlich. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
+Der Quellcode für dieses Tutorial befindet sich im Ordner [DotNetHowToIndexer](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) des GitHub-Repositorys [Azure-Samples/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started).
+
+## <a name="1---create-services"></a>1\. Erstellen der Dienste
+
+In diesem Tutorial wird Azure Cognitive Search für die Indizierung und für Abfragen und Azure SQL-Datenbank als externe Datenquelle verwendet. Erstellen Sie beide Dienste nach Möglichkeit in derselben Region und Ressourcengruppe, um eine möglichst große Nähe zu erreichen und die Verwaltung zu vereinfachen. In der Praxis kann sich Azure SQL-Datenbank in einer beliebigen Region befinden.
+
+### <a name="start-with-azure-sql-database"></a>Beginnen mit Azure SQL-Datenbank
+
+In diesem Schritt wird eine externe Datenquelle in Azure SQL-Datenbank erstellt, die von einem Indexer durchforstet werden kann. Das Dataset in Azure SQL-Datenbank kann über das Azure-Portal unter Verwendung der Datei *hotels.sql* aus dem Beispieldownload erstellt werden. Azure Cognitive Search nutzt vereinfachte Rowsets, wie sie beispielsweise auf der Grundlage einer Sicht oder Abfrage generiert werden. Die SQL-Datei in der Beispielprojektmappe erstellt eine einzelne Tabelle und füllt sie auf.
+
+Falls Sie bereits über eine Azure SQL-Datenbank-Ressource verfügen, können Sie ihr die Hoteltabelle hinzufügen (ab Schritt 4).
+
+1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/).
+
+1. Suchen Sie nach einer **SQL-Datenbank**, oder erstellen Sie eine. Dabei können Sie die Standardwerte und den günstigsten Tarif verwenden. Die Erstellung eines Servers hat unter anderem den Vorteil, dass Sie einen Administratorbenutzernamen und ein Kennwort angeben können. Diese werden in einem späteren Schritt zum Erstellen und Laden von Tabellen benötigt.
+
+   :::image type="content" source="media/search-indexer-tutorial/indexer-new-sqldb.png" alt-text="Seite für die neue Datenbank" border="false":::
+
+1. Klicken Sie auf **Überprüfen + erstellen**, um den neuen Server und die Datenbank bereitzustellen. Warten Sie, bis Server und Datenbank bereitgestellt wurden.
+
+1. Klicken Sie im Navigationsbereich auf **Abfrage-Editor (Vorschau)** , und geben Sie den Benutzernamen und das Kennwort des Serveradministrators ein. 
+
+   Sollte der Zugriff verweigert werden, kopieren Sie die Client-IP-Adresse aus der Fehlermeldung, und klicken Sie anschließend auf den Link **Serverfirewall festlegen**, um eine Regel hinzuzufügen, die Ihrem Clientcomputer Zugriff gewährt. Geben Sie dabei Ihre Client-IP-Adresse für den Bereich an. Es kann etwas dauern, bis die Regel wirksam wird.
+
+1. Klicken Sie im Abfrage-Editor auf **Abfrage öffnen**, und navigieren Sie zum Speicherort der Datei *hotels.sql* auf Ihrem lokalen Computer. 
+
+1. Wählen Sie die Datei aus, und klicken Sie auf **Öffnen**. Das Skript sollte in etwa wie im folgenden Screenshot aussehen:
+
+   :::image type="content" source="media/search-indexer-tutorial/sql-script.png" alt-text="SQL-Skript" border="false":::
+
+1. Klicken Sie auf **Ausführen**, um die Abfrage auszuführen. Im Ergebnisbereich sollte eine Erfolgsmeldung für drei Zeilen angezeigt werden.
+
+1. Wenn Sie ein Rowset aus dieser Tabelle zurückgeben möchten, können Sie als Überprüfungsschritt die folgende Abfrage ausführen:
+
+    ```sql
+    SELECT * FROM Hotels
+    ```
+
+1. Kopieren Sie die ADO.NET-Verbindungszeichenfolge für die Datenbank. Kopieren Sie unter **Einstellungen** > **Verbindungszeichenfolgen** die ADO.NET-Verbindungszeichenfolge (ähnlich wie im folgenden Beispiel).
+
+    ```sql
+    Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+    ```
+
+Sie benötigen diese Verbindungszeichenfolge in der nächsten Übung, wenn Sie Ihre Umgebung einrichten.
+
+### <a name="azure-cognitive-search"></a>Azure Cognitive Search
+
+Die nächste Komponente ist Azure Cognitive Search, die Sie [im Portal erstellen](search-create-service-portal.md) können. Im Rahmen dieser exemplarischen Vorgehensweise können Sie den Free-Tarif verwenden. 
+
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Abrufen eines Administrator-API-Schlüssels und einer URL für Azure Cognitive Search
+
+Für API-Aufrufe benötigen Sie die Dienst-URL und einen Zugriffsschlüssel. Ein Suchdienst wird mit beidem erstellt. Gehen Sie daher wie folgt vor, um die erforderlichen Informationen zu erhalten, falls Sie Azure Cognitive Search Ihrem Abonnement hinzugefügt haben:
 
 1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und rufen Sie auf der Seite **Übersicht** Ihres Suchdiensts die URL ab. Ein Beispiel für einen Endpunkt ist `https://mydemo.search.windows.net`.
 
 1. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
-![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-get-started-postman/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels" border="false":::
 
-Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
+## <a name="2---set-up-your-environment"></a>2\. Einrichten Ihrer Umgebung
 
-## <a name="set-up-connections"></a>Einrichten von Verbindungen
-Verbindungsinformationen für erforderliche Dienste werden in der Datei **appsettings.json** der Projektmappe angegeben. 
+1. Starten Sie Visual Studio, und öffnen Sie **DotNetHowToIndexers.sln**.
 
-1. Öffnen Sie in Visual Studio die Datei **DotNetHowToIndexers.sln**.
+1. Öffnen Sie im Projektmappen-Explorer die Datei **appsettings.json**, um Verbindungsinformationen anzugeben.
 
-1. Öffnen Sie im Projektmappen-Explorer die Datei **appsettings.json**, um die einzelnen Einstellungen auffüllen zu können.  
+1. Wenn für `searchServiceName` die vollständige URL „https://my-demo-service.search.windows.net“ lautet, muss als Dienstname „my-demo-service“ angegeben werden.
 
-Die ersten beiden Einträge können Sie direkt angeben. Verwenden Sie dazu die URL und die Administratorschlüssel für Ihren Azure Search-Dienst. Lautet der Endpunkt `https://mydemo.search.windows.net`, muss als Dienstname `mydemo` angegeben werden.
-
-```json
-{
-  "SearchServiceName": "Put your search service name here",
-  "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-  "AzureSqlConnectionString": "Put your Azure SQL database connection string here",
-}
-```
-
-Für den letzten Eintrag ist eine vorhandene Datenbank erforderlich. Sie erstellen sie im nächsten Schritt.
-
-## <a name="prepare-sample-data"></a>Vorbereiten der Beispieldaten
-
-In diesem Schritt erstellen Sie eine externe Datenquelle, die ein Indexer durchforsten kann. Das Dataset in Azure SQL-Datenbank kann über das Azure-Portal unter Verwendung der Datei *hotels.sql* aus dem Beispiel erstellt werden. Azure Search nutzt vereinfachte Rowsets, wie sie beispielsweise auf der Grundlage einer Sicht oder Abfrage generiert werden. Die SQL-Datei in der Beispielprojektmappe erstellt eine einzelne Tabelle und füllt sie auf.
-
-In der folgenden Übung wird davon ausgegangen, dass weder ein Server noch eine Datenbank vorhanden ist. In Schritt 2 werden Sie daher aufgefordert, beides zu erstellen. Optional: Falls Sie bereits über eine Ressource verfügen, können Sie ihr die Hoteltabelle hinzufügen (ab Schritt 4).
-
-1. [Melden Sie sich am Azure-Portal an.](https://portal.azure.com/) 
-
-2. Navigieren Sie zu einer **Azure SQL-Datenbank**, oder erstellen Sie eine, um eine Datenbank, einen Server und eine Ressourcengruppe zu erstellen. Dabei können Sie die Standardwerte und den günstigsten Tarif verwenden. Die Erstellung eines Servers hat unter anderem den Vorteil, dass Sie einen Administratorbenutzernamen und ein Kennwort angeben können. Diese werden in einem späteren Schritt zum Erstellen und Laden von Tabellen benötigt.
-
-   ![Seite für die neue Datenbank](./media/search-indexer-tutorial/indexer-new-sqldb.png)
-
-3. Klicken Sie auf **Erstellen**, um den neuen Server und die Datenbank bereitzustellen. Warten Sie, bis Server und Datenbank bereitgestellt wurden.
-
-4. Öffnen Sie für Ihre neue Datenbank die Seite „SQL-Datenbank“, sofern sie nicht bereits geöffnet ist. Der Ressourcenname sollte *SQL-Datenbank* lauten (nicht *SQL Server*).
-
-   ![SQL-Datenbankseite](./media/search-indexer-tutorial/hotels-db.png)
-
-4. Klicken Sie im Navigationsbereich auf **Abfrage-Editor (Vorschau)** .
-
-5. Klicken Sie auf **Anmelden**, und geben Sie den Benutzernamen und das Kennwort des Serveradministrators ein.
-
-6. Klicken Sie auf **Abfrage öffnen**, und navigieren Sie zum Speicherort von *hotels.sql*. 
-
-7. Wählen Sie die Datei aus, und klicken Sie auf **Öffnen**. Das Skript sollte in etwa wie im folgenden Screenshot aussehen:
-
-   ![SQL-Skript](./media/search-indexer-tutorial/sql-script.png)
-
-8. Klicken Sie auf **Ausführen**, um die Abfrage auszuführen. Im Ergebnisbereich sollte eine Erfolgsmeldung für drei Zeilen angezeigt werden.
-
-9. Wenn Sie ein Rowset aus dieser Tabelle zurückgeben möchten, können Sie als Überprüfungsschritt die folgende Abfrage ausführen:
-
-    ```sql
-    SELECT HotelId, HotelName, Tags FROM Hotels
-    ```
-    Die Prototypabfrage (`SELECT * FROM Hotels`) funktioniert im Abfrage-Editor nicht. Die Beispieldaten enthalten geografische Koordinaten im Feld „Standort“. Diese werden derzeit vom Editor nicht verarbeitet. Durch Ausführen der folgenden Anweisung erhalten Sie eine Liste mit weiteren abfragbaren Spalten: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
-
-10. Sie verfügen nun über ein externes Dataset. Kopieren Sie als Nächstes die ADO.NET-Verbindungszeichenfolge für die Datenbank. Navigieren Sie auf der Seite „SQL-Datenbank“ Ihrer Datenbank zu **Einstellungen** > **Verbindungszeichenfolgen**, und kopieren Sie die ADO.NET-Verbindungszeichenfolge.
- 
-    Eine ADO.NET-Verbindungszeichenfolge sieht wie im folgenden Beispiel aus und muss mit einem gültigen Datenbanknamen, Benutzernamen und Kennwort versehen werden:
-
-    ```sql
-    Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-    ```
-11. Fügen Sie in Visual Studio in der Datei **appsettings.json** als dritten Eintrag die Verbindungszeichenfolge in „AzureSqlConnectionString“ ein.
+1. Für `AzureSqlConnectionString` lautet das Zeichenfolgenformat in etwa wie folgt: `"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
       "SearchServiceName": "<placeholder-Azure-Search-service-name>",
       "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
-      "AzureSqlConnectionString": "Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security  Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+      "AzureSqlConnectionString": "<placeholder-ADO.NET-connection-string",
     }
     ```
 
-## <a name="understand-the-code"></a>Grundlegendes zum Code
+1. Stellen Sie in der Verbindungszeichenfolge sicher, dass sie ein gültiges Kennwort enthält. Die Datenbank und die Benutzernamen werden kopiert, aber das Kennwort muss manuell eingegeben werden.
 
-Sobald die Daten und Konfigurationseinstellungen vorhanden sind, kann das Beispielprogramm **DotNetHowToIndexers.sln** kompiliert und ausgeführt werden. Nehmen Sie sich zuvor kurz Zeit, um sich die Index- und Indexerdefinition für dieses Beispiel etwas genauer anzusehen. Der relevante Code befindet sich in zwei Dateien:
+## <a name="3---create-the-pipeline"></a>3\. Erstellen der Pipeline
 
-  + **hotel.cs**: Enthält das Schema, das den Index definiert.
-  + **Program.cs**: Enthält die Funktionen zum Erstellen und Verwalten von Strukturen in Ihrem Dienst.
+Für Indexer werden ein Datenquellenobjekt und ein Index benötigt. Der relevante Code befindet sich in zwei Dateien:
+
+  + **hotel.cs** enthält ein Schema zum Definieren des Index.
+  + **Program.cs** enthält Funktionen zum Erstellen und Verwalten von Strukturen in Ihrem Dienst.
 
 ### <a name="in-hotelcs"></a>hotel.cs
 
@@ -153,13 +141,11 @@ public string HotelName { get; set; }
 
 Ein Schema kann auch andere Elemente enthalten. Hierzu zählen beispielsweise Bewertungsprofile zur Erhöhung einer Suchbewertung, benutzerdefinierte Analysen und andere Konstrukte. Für unsere Zwecke reicht jedoch eine einfache Schemadefinition, die lediglich Felder aus den Beispieldatasets enthält.
 
-In diesem Tutorial ruft der Indexer Daten aus einer einzelnen Datenquelle ab. In der Praxis können Sie mehrere Indexer an den gleichen Index anfügen und so einen konsolidierten durchsuchbaren Index erstellen, der auf mehreren Datenquellen basiert. Abhängig von Ihren Flexiblitätsanforderungen können Sie das gleiche Index-Indexer-Paar nutzen und nur die Datenquellen variieren oder einen einzelnen Index mit verschiedenen Indexer-/Datenquellenkombinationen verwenden.
-
 ### <a name="in-programcs"></a>Program.cs
 
 Das Hauptprogramm enthält Logik zum Erstellen eines Clients, eines Index, einer Datenquelle und eines Indexers. Der Code sucht und löscht vorhandene Ressourcen mit dem gleichen Namen (unter der Annahme, dass Sie dieses Programm ggf. mehrmals ausführen).
 
-Das Datenquellenobjekt wird mit Einstellungen konfiguriert, die speziell für Ressourcen von Azure SQL-Datenbank gelten, z. B. [inkrementelle Indizierung](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) zur Nutzung der integrierten [Features für die Erkennung von Änderungen](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) von Azure SQL. Die Demodatenbank „hotels“ in Azure SQL enthält eine Spalte für Vorläufiges Löschen mit dem Namen **IsDeleted**. Wenn diese Spalte in der Datenbank auf „true“ festgelegt ist, entfernt der Indexer das entsprechende Dokument aus dem Azure Search-Index.
+Das Datenquellenobjekt wird mit Einstellungen konfiguriert, die speziell für Ressourcen von Azure SQL-Datenbank gelten, z. B. [partielle oder inkrementelle Indizierung](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) zur Nutzung der integrierten [Features für die Erkennung von Änderungen](/sql/relational-databases/track-changes/about-change-tracking-sql-server) von Azure SQL. Die Demodatenbank „hotels“ in Azure SQL enthält eine Spalte für Vorläufiges Löschen mit dem Namen **IsDeleted**. Wenn diese Spalte in der Datenbank auf „true“ festgelegt ist, entfernt der Indexer das entsprechende Dokument aus dem Azure Cognitive Search-Index.
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -211,61 +197,61 @@ Ein Indexerobjekt ist plattformagnostisch. Dies bedeutet, dass die Konfiguration
   }
   ```
 
+## <a name="4---build-the-solution"></a>4\. Erstellen der Projektmappe
 
+Drücken Sie F5, um die Lösung zu erstellen und auszuführen. Das Programm wird im Debugmodus ausgeführt. Ein Konsolenfenster gibt Aufschluss über den Status der einzelnen Vorgänge.
 
-## <a name="run-the-indexer"></a>Ausführen des Indexers
+   :::image type="content" source="media/search-indexer-tutorial/console-output.png" alt-text="Konsolenausgabe" border="false":::
 
-In diesem Schritt wird das Programm kompiliert und ausgeführt. 
-
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **DotNetHowToIndexers**, und klicken Sie auf **Erstellen**.
-2. Klicken Sie erneut mit der rechten Maustaste auf **DotNetHowToIndexers**, und klicken Sie anschließend auf **Debuggen** > **Neue Instanz starten**.
-
-Das Programm wird im Debugmodus ausgeführt. Ein Konsolenfenster gibt Aufschluss über den Status der einzelnen Vorgänge.
-
-  ![SQL-Skript](./media/search-indexer-tutorial/console-output.png)
-
-Der Code wird lokal in Visual Studio ausgeführt und stellt eine Verbindung mit Ihrem Suchdienst in Azure her, der wiederum unter Verwendung der Verbindungszeichenfolge eine Verbindung mit Azure SQL-Datenbank herstellt und das Dataset abruft. Durch die Anzahl von Vorgängen gibt es mehrere potenzielle Fehlerquellen. Prüfen Sie im Falle eines Fehlers allerdings zunächst Folgendes:
+Der Code wird lokal in Visual Studio ausgeführt und stellt eine Verbindung mit Ihrem Suchdienst in Azure her, der wiederum eine Verbindung mit Azure SQL-Datenbank herstellt und das Dataset abruft. Die hohe Anzahl von Vorgängen hat mehrere potenzielle Fehlerquellen zur Folge. Überprüfen Sie im Falle eines Fehlers zunächst Folgendes:
 
 + Die Angabe der Suchdienst-Verbindungsinformationen beschränkt sich in diesem Tutorial auf den Dienstnamen. Wenn Sie die vollständige URL eingegeben haben, werden die Vorgänge bei der Indexerstellung mit einem Verbindungsfehler beendet.
 
-+ Datenbank-Verbindungsinformationen in **appsettings.json**: Hierbei muss es sich um die ADO.NET-Verbindungszeichenfolge aus dem Portal handeln, die mit einem gültigen Benutzernamen und Kennwort für die Datenbank versehen wurde. Das Benutzerkonto muss über Datenabrufberechtigungen verfügen.
++ Datenbank-Verbindungsinformationen in **appsettings.json**: Hierbei muss es sich um die ADO.NET-Verbindungszeichenfolge aus dem Portal handeln, die mit einem gültigen Benutzernamen und Kennwort für die Datenbank versehen wurde. Das Benutzerkonto muss über Datenabrufberechtigungen verfügen. Ihre lokale Client-IP-Adresse muss zugriffsberechtigt sein.
 
-+ Ressourceneinschränkungen: Bedenken Sie, dass für den gemeinsam genutzten (kostenlosen) Dienst eine Obergrenze von drei Indizes, Indexern und Datenquellen gilt. Ist die Obergrenze für einen Dienst erreicht, können keine neuen Objekte mehr erstellt werden.
++ Ressourceneinschränkungen: Bedenken Sie, dass für den Free-Tarif eine Obergrenze von drei Indizes, Indexern und Datenquellen gilt. Ist die Obergrenze für einen Dienst erreicht, können keine neuen Objekte mehr erstellt werden.
 
-## <a name="search-the-index"></a>Durchsuchen des Index 
+## <a name="5---search"></a>5\. Suchen
 
-Klicken Sie im Azure-Portal im oberen Bereich der Übersichtsseite des Suchdiensts auf **Suchexplorer**, um einige Abfragen für den neuen Index zu übermitteln.
+Vergewissern Sie sich im Azure-Portal, dass die Objekterstellung erfolgreich war, und verwenden Sie anschließend den **Suchexplorer**, um den Index abzufragen.
 
-1. Klicken Sie im oberen Bereich auf **Index ändern**, um den Index *hotels* auszuwählen.
+1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und öffnen Sie auf der Seite **Übersicht** des Suchdiensts nacheinander die einzelnen Listen, um sich zu vergewissern, dass das Objekt erstellt wurde. **Indizes**, **Indexer** und **Datenquellen** enthalten „hotels“, „azure-sql-indexer“ bzw. „azure-sql“.
 
-2. Klicken Sie auf die Schaltfläche **Suchen**, um eine leere Suchabfrage auszuführen. 
+   :::image type="content" source="media/search-indexer-tutorial/tiles-portal.png" alt-text="Kachel „Indexer“ und „Datenquellen“" border="false":::
+
+1. Wählen Sie den Index „hotels“ aus. Auf der Seite „hotels“ ist **Suchexplorer** die erste Registerkarte. 
+
+1. Klicken Sie auf **Suchen**, um eine leere Abfrage auszugeben. 
 
    Die drei Einträge in Ihrem Index werden als JSON-Dokumente zurückgegeben. Der Suchexplorer gibt Dokumente im JSON-Format zurück, sodass Sie sich die gesamte Struktur ansehen können.
 
-3. Geben Sie als Nächstes eine Suchzeichenfolge ein: `search=river&$count=true`. 
+   :::image type="content" source="media/search-indexer-tutorial/portal-search.png" alt-text="Indexabfragen" border="false":::
+   
+1. Geben Sie als Nächstes eine Suchzeichenfolge ein: `search=river&$count=true`. 
 
    Diese Abfrage führt eine Volltextsuche nach dem Begriff `river` durch, und das Ergebnis enthält die Anzahl passender Dokumente. Die Rückgabe der Anzahl passender Dokumente ist hilfreich in Testszenarien mit einem umfangreichen Index mit tausenden oder Millionen von Dokumenten. In diesem Fall entspricht der Abfrage lediglich ein einzelnes Dokument.
 
-4. Geben Sie abschließend eine Suchzeichenfolge ein, die die JSON-Ausgabe auf relevante Felder beschränkt: `search=river&$count=true&$select=hotelId, baseRate, description`. 
+1. Geben Sie abschließend eine Suchzeichenfolge ein, die die JSON-Ausgabe auf relevante Felder beschränkt: `search=river&$count=true&$select=hotelId, baseRate, description`. 
 
    Die Abfrageantwort wird auf die ausgewählten Felder beschränkt, um eine präzisere Ausgabe zu erhalten.
 
-## <a name="view-indexer-configuration"></a>Anzeigen der Indexerkonfiguration
+## <a name="reset-and-rerun"></a>Zurücksetzen und erneut ausführen
 
-Alle Indexer werden im Portal angezeigt. Das gilt auch für den, den Sie gerade programmgesteuert erstellt haben. Sie können eine Indexerdefinition öffnen und die dazugehörige Datenquelle anzeigen oder einen Aktualisierungszeitplan zur Erfassung neuer und geänderter Zeilen konfigurieren.
+In den frühen experimentellen Phasen der Entwicklung besteht der praktikabelste Ansatz für den Übergang von einer Entwurfsphase zur nächsten darin, die Objekte aus Azure Cognitive Search zu löschen und Ihrem Code zu erlauben, sie neu zu erstellen. Ressourcennamen sind eindeutig. Wenn Sie ein Objekt löschen, können Sie es unter dem gleichen Namen neu erstellen.
 
-1. [Melden Sie sich am Azure-Portal](https://portal.azure.com/) an, und klicken Sie in Ihrem Suchdienst auf der Seite **Übersicht** auf die Links für **Indizes**, **Indexer** und **Datenquellen**.
-3. Wählen Sie einzelne Objekte aus, um die Konfigurationseinstellungen anzuzeigen oder zu ändern.
+Im Beispielcode dieses Tutorials wird eine Überprüfung auf vorhandene Objekte durchgeführt. Diese werden dann gelöscht, damit Sie Ihren Code erneut ausführen können.
 
-   ![Kachel „Indexer“ und „Datenquellen“](./media/search-indexer-tutorial/tiles-portal.png)
+Sie können auch das Portal verwenden, um Indizes, Indexer und Datenquellen zu löschen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Die schnellste Möglichkeit, das System nach einem Tutorial zu bereinigen, besteht im Löschen der Ressourcengruppe, die den Azure Search-Dienst enthält. Sie können dann die Ressourcengruppe löschen, um alle darin enthaltenen Daten endgültig zu löschen. Der Name der Ressourcengruppe befindet sich im Portal auf der Seite „Übersicht“ des Azure Search-Diensts.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, ist es ratsam, nach Abschluss eines Projekts die nicht mehr benötigten Ressourcen zu entfernen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+
+Ressourcen können im Portal über den Link „Alle Ressourcen“ oder „Ressourcengruppen“ im linken Navigationsbereich gesucht und verwaltet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können KI-Anreicherungsalgorithmen an eine Indexerpipeline anfügen. Als Nächstes fahren Sie mit dem folgenden Tutorial fort.
+Nachdem Sie sich nun mit den Grundlagen der SQL-Datenbankindizierung vertraut gemacht haben, können Sie sich die Indexerkonfiguration genauer ansehen.
 
 > [!div class="nextstepaction"]
-> [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](search-howto-indexing-azure-blob-storage.md)
+> [Konfigurieren eines SQL-Datenbank-Indexers](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

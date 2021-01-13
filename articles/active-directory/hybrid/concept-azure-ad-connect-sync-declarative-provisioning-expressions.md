@@ -16,30 +16,30 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60245506"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89280212"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Ausdrücken für die deklarative Bereitstellung
 Die Azure AD Connect-Synchronisierung basiert auf der deklarativen Bereitstellung, die erstmals in Forefront Identity Manager 2010 eingeführt wurde. Sie ermöglicht Ihnen die Implementierung Ihrer gesamten Geschäftslogik zur Identitätsintegration, ohne kompilierten Code schreiben zu müssen.
 
 Ein wesentlicher Bestandteil der deklarativen Bereitstellung ist die in den Attributflüssen verwendete Ausdruckssprache. Die verwendete Sprache ist eine Teilmenge von Microsoft ® Visual Basic ® for Applications (VBA). Diese Sprache wird in Microsoft Office verwendet, und Benutzer mit Erfahrungen mit VBScript werden sie wiedererkennen. Die Ausdruckssprache für die deklarative Bereitstellung verwendet nur Funktionen und ist keine strukturierte Sprache. Es gibt keine Methoden oder Anweisungen. Funktionen werden stattdessen geschachtelt, um den Programmablauf auszudrücken.
 
-Weitere Informationen finden Sie unter [Willkommen bei der VBA-Sprachreferenz für Office 2013](https://msdn.microsoft.com/library/gg264383.aspx).
+Weitere Informationen finden Sie unter [Willkommen bei der VBA-Sprachreferenz für Office 2013](/office/vba/api/overview/language-reference).
 
 Die Attribute sind stark typisiert. Eine Funktion akzeptiert nur Attribute des richtigen Typs. Zudem muss die Groß-/Kleinschreibung beachtet werden. Sowohl bei Funktions- als auch Attributnamen muss die Groß-/Kleinschreibung korrekt sein. Andernfalls wird ein Fehler ausgegeben.
 
 ## <a name="language-definitions-and-identifiers"></a>Sprachdefinitionen und Bezeichner
-* Bei Funktionen folgen auf den Namen Argumente in Klammern: FunctionName(argument 1, argument N).
+* Funktionen verfügen über einen Namen, gefolgt von Argumenten in Klammern: FunctionName(argument 1,argument N).
 * Attribute werden durch eckige Klammern gekennzeichnet: [attributeName].
 * Parameter werden durch Prozentzeichen gekennzeichnet: %ParameterName%.
-* Zeichenfolgenkonstanten werden in Anführungszeichen gesetzt: Beispiel: "Contoso" (Hinweis: Es muss sich um gerade Anführungszeichen ("") handeln. Typografische Anführungszeichen (“”) sind nicht zulässig.)
+* Zeichenfolgenkonstanten werden in Anführungszeichen eingeschlossen, beispielsweise "Contoso". Hierbei müssen gerade Anführungszeichen ("") verwendet werden, typografische Anführungszeichen („”) sind nicht zulässig.
 * Numerische Werte werden ohne Anführungszeichen ausgedrückt und im Dezimalformat vorliegen. Hexadezimalwerten weisen das Präfix "&H" auf. Beispiel: 98052, &HFF.
 * Boolesche Werte werden mit Konstanten ausgedrückt: True, False.
-* Integrierte Konstanten und Literale werden nur mit ihrem Namen ausgedrückt: NULL, CRLF, IgnoreThisFlow
+* Integrierte Konstanten und Literale werden nur mit ihrem Namen ausgedrückt: NULL, CRLF, IgnoreThisFlow.
 
 ### <a name="functions"></a>Functions
 Bei der deklarativen Bereitstellung werden viele Funktionen verwendet, um das Transformieren von Attributwerten zu ermöglichen. Diese Funktionen können geschachtelt werden, sodass das Ergebnis einer Funktion an eine andere Funktion übergeben wird.
@@ -74,7 +74,7 @@ Folgende Operatoren können verwendet werden:
 * **Vergleich**: &lt;, &lt;=, &lt;&gt;, =, &gt;, &gt;=
 * **Mathematik**: +, -, \*, -
 * **Zeichenfolge**: &amp; (Verkettung)
-* **Logischer Ausdruck**: &&amp;amp;amp;amp; (und), || (oder)
+* **Logischer Ausdruck**: &amp;&amp; (und), || (oder)
 * **Auswertungsreihenfolge**: ( )
 
 Operatoren werden von links nach rechts ausgewertet und haben bei der Auswertung die gleiche Priorität. Dies bedeutet, dass der Multiplikator (\*) nicht vor der Subtraktion (-) ausgewertet wird. „2\*(5+3)“ ist nicht dasselbe wie „2\*5+3“. Die Klammern werden verwendet, um die Reihenfolge der Auswertung zu ändern, wenn die Auswertungsreihenfolge von links nach rechts nicht geeignet ist.
@@ -99,5 +99,4 @@ Beispiel:
 
 **Referenzthemen**
 
-* [Azure AD Connect-Synchronisierung: Funktionsreferenz](reference-connect-sync-functions-reference.md)
-
+* [Azure AD Connect-Synchronisierung: Funktionsreferenz](reference-connect-sync-functions-reference.md)

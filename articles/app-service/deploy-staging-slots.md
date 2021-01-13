@@ -1,30 +1,21 @@
 ---
-title: Einrichten von Stagingumgebungen für Web-Apps in Azure App Service | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Stagingveröffentlichungen Ihrer Web-Apps in Azure App Service verwenden.
-services: app-service
-documentationcenter: ''
-author: cephalin
-writer: cephalin
-manager: jpconnoc
-editor: mollybos
+title: Einrichten von Stagingumgebungen
+description: Hier erfahren Sie, wie Sie Apps in einem produktionsfremden Slot bereitstellen und automatisch in die Produktion überführen. Erhöhen Sie die Zuverlässigkeit, und vermeiden Sie bereitstellungsbedingte Downtime für Apps.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/19/2019
-ms.author: cephalin
-ms.openlocfilehash: 35618b80dc4731f4d679bab9f035987af50730e8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 04/30/2020
+ms.custom: fasttrack-edit
+ms.openlocfilehash: ef90603e8c8cdd66d43b9f88f6d128d8a472fd8a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129713"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150325"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
 
-Im Tarif **Standard**, **Premium** oder **I** des App Service-Plans können Sie für die Bereitstellung Ihrer Web-App, Ihrer Web-App unter Linux, Ihres mobilen Back-Ends oder Ihrer API-App in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) anstelle des Standardproduktionsslots einen separaten Bereitstellungsslot verwenden. Bereitstellungsslots sind aktive Apps mit eigenen Hostnamen. Elemente für App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. 
+Im Tarif **Standard**, **Premium** oder **I** des App Service-Plans können Sie für die Bereitstellung Ihrer Web-App, Ihrer Web-App unter Linux, Ihres mobilen Back-Ends oder Ihrer API-App in [Azure App Service](./overview.md) anstelle des Standardproduktionsslots einen separaten Bereitstellungsslot verwenden. Bereitstellungsslots sind aktive Apps mit eigenen Hostnamen. Elemente für App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. 
 
 Die Bereitstellung von Anwendungen in einem produktionsfremden Slot hat folgende Vorteile:
 
@@ -32,7 +23,7 @@ Die Bereitstellung von Anwendungen in einem produktionsfremden Slot hat folgende
 * Wenn Sie eine App zuerst in einem Slot bereitstellen und dann in den Produktionsslot überführen, ist sichergestellt, dass alle Instanzen erst nach einer Anlaufzeit in den Produktionsslot übernommen werden. Dadurch vermeiden Sie Ausfallzeiten bei der Bereitstellung der App. Die Umleitung des Datenverkehrs erfolgt übergangslos, und es gehen keine Anforderungen aufgrund des Tauschs verloren. Der gesamte Workflow kann durch Konfigurieren von [Automatisch tauschen](#Auto-Swap) automatisiert werden, wenn keine Überprüfung vor dem Tausch erforderlich ist.
 * Nach der Überführung enthält der Slot mit der vorherigen Staging-App die vorherige Produktions-App. Wenn die in den Produktionsslot überführten Änderungen nicht Ihren Erwartungen entsprechen, können Sie den gleichen Tausch sofort noch einmal vornehmen, um Ihre „letzte als funktionierend bekannte Website“ zurückzuerhalten.
 
-Jeder App Service-Plantarif unterstützt eine andere Anzahl von Bereitstellungsslots. Für die Nutzung von Bereitstellungsslots fallen keine zusätzlichen Gebühren an. Informationen zur unterstützten Slotanzahl in Ihrem App-Tarif finden Sie unter [App Service-Grenzwerte](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
+Jeder App Service-Plantarif unterstützt eine andere Anzahl von Bereitstellungsslots. Für die Nutzung von Bereitstellungsslots fallen keine zusätzlichen Gebühren an. Informationen zur unterstützten Slotanzahl in Ihrem App-Tarif finden Sie unter [App Service-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits). 
 
 Wenn Sie Ihre App auf einen anderen Tarif skalieren möchten, muss der Zieltarif die Anzahl von Slots unterstützen, die Ihre App bereits verwendet. Falls Ihre App also beispielsweise mehr als fünf Slots besitzt, können Sie sie nicht auf den Tarif **Standard** herunterskalieren, da der Tarif **Standard** nur fünf Bereitstellungsslots unterstützt. 
 
@@ -41,7 +32,11 @@ Wenn Sie Ihre App auf einen anderen Tarif skalieren möchten, muss der Zieltarif
 ## <a name="add-a-slot"></a>Hinzufügen eines Slots
 Die App muss im Tarif **Standard**, **Premium** oder **I** ausgeführt werden, um mehrere Bereitstellungsslots aktivieren zu können.
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) die Seite [Ressourcen](../azure-resource-manager/manage-resources-portal.md#manage-resources) Ihrer App.
+
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) die Option **App Services**, wählen Sie sie aus, und wählen Sie dann Ihre App aus. 
+   
+    ![Suchen nach App Services](./media/web-sites-staged-publishing/search-for-app-services.png)
+   
 
 2. Wählen Sie im linken Bereich **Bereitstellungsslots** > **Slot hinzufügen** aus.
    
@@ -63,11 +58,11 @@ Die App muss im Tarif **Standard**, **Premium** oder **I** ausgeführt werden, u
    
     ![Titel des Bereitstellungsslots](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    Der Stagingslot verfügt genau wie jede andere App Service-App über eine Verwaltungsseite. Sie können die Konfiguration des Slots ändern. Am oberen Seitenrand wird der Name des Slots angezeigt, um Sie daran zu erinnern, dass es sich um den Bereitstellungsslot handelt.
+    Der Stagingslot verfügt genau wie jede andere App Service-App über eine Verwaltungsseite. Sie können die Konfiguration des Slots ändern. Um Sie daran zu erinnern, dass Sie den Bereitstellungsslot sehen, wird der App-Name als **\<app-name>/\<slot-name>** angezeigt, während der App-Typ **App Service (Slot)** lautet. Sie können den Slot auch als separate App in der Ressourcengruppe mit denselben Bezeichnungen sehen.
 
 6. Wählen Sie auf der Ressourcenseite des Slots die App-URL aus. Der Bereitstellungsslot besitzt einen eigenen Hostnamen und ist außerdem eine Live-App. Informationen zum Beschränken des öffentlichen Zugriffs auf den Bereitstellungsslot finden Sie unter [Statische Azure App Service-IP-Einschränkungen](app-service-ip-restrictions.md).
 
-Der neue Bereitstellungsslot hat keinen Inhalt. Das gilt auch, wenn Sie die Einstellungen eines anderen Slots klonen. Sie können beispielsweise [Git verwenden, um etwas in diesem Slot zu veröffentlichen](app-service-deploy-local-git.md). Die Bereitstellung im Slot kann aus einem anderen Repository-Branch oder aus einem anderen Repository erfolgen. 
+Der neue Bereitstellungsslot hat keinen Inhalt. Das gilt auch, wenn Sie die Einstellungen eines anderen Slots klonen. Sie können beispielsweise [Git verwenden, um etwas in diesem Slot zu veröffentlichen](./deploy-local-git.md). Die Bereitstellung im Slot kann aus einem anderen Repository-Branch oder aus einem anderen Repository erfolgen.
 
 <a name="AboutConfiguration"></a>
 
@@ -88,7 +83,7 @@ Wenn Sie zwei Slots austauschen (in der Regel, um aus einem Stagingslot einen Pr
 
 1. Wenn [lokaler Cache](overview-local-cache.md) aktiviert ist, löst App Service die Initialisierung des lokalen Caches aus. Hierzu wird eine HTTP-Anforderung an den Anwendungsstamm („/“) in jeder Instanz des Quellslots gerichtet. Daraufhin wird gewartet, bis die einzelnen Instanzen eine HTTP-Antwort zurückgeben. Die Initialisierung des lokalen Caches hat einen weiteren Neustart der einzelnen Instanzen zur Folge.
 
-1. Wenn [Automatisch tauschen](#Auto-Swap) mit [benutzerdefinierter Aufwärmphase](#Warm-up) aktiviert ist, löst App Service die [Anwendungsinitiierung](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) aus. Hierzu wird eine HTTP-Anforderung an den Anwendungsstamm („/“) in jeder Instanz des Quellslots gerichtet.
+1. Wenn [Automatisch tauschen](#Auto-Swap) mit [benutzerdefinierter Aufwärmphase](#Warm-up) aktiviert ist, löst App Service die [Anwendungsinitiierung](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) aus. Hierzu wird eine HTTP-Anforderung an den Anwendungsstamm („/“) in jeder Instanz des Quellslots gerichtet.
 
     Ohne Angabe von `applicationInitialization` löst App Service eine HTTP-Anforderung an den Anwendungsstamm des Quellslots in jeder Instanz aus. 
     
@@ -140,9 +135,6 @@ Informationen zur Problembehandlung finden Sie bei Bedarf unter [Behandeln von P
 
 ### <a name="swap-with-preview-multi-phase-swap"></a>Mit Vorschau austauschen (Austausch mit mehreren Phasen)
 
-> [!NOTE]
-> „Mit Vorschau austauschen“ wird in Web-Apps unter Linux nicht unterstützt.
-
 Vergewissern Sie sich, dass die App mit den ausgetauschten Einstellungen funktioniert, bevor Sie einen Austausch mit dem Produktionsslot als Zielslot durchführen. Der Quellslot wird außerdem vor Abschluss des Austauschs vorbereitet, was für unternehmenskritische Anwendungen von Vorteil ist.
 
 Bei einem Austausch mit Vorschau führt App Service den gleichen [Austauschvorgang](#AboutConfiguration) durch, pausiert jedoch nach dem ersten Schritt. Daraufhin können Sie das Ergebnis vor Abschluss des Austauschs im Stagingslot überprüfen. 
@@ -191,7 +183,7 @@ Das Feature „Automatisch tauschen“ ermöglicht die Optimierung von Azure De
 
 So konfigurieren Sie automatisches Austauschen:
 
-1. Navigieren Sie zur Ressourcenseite Ihrer App. Wählen Sie **Bereitstellungsslots** >  *\<gewünschter Quellslot>*  > **Konfiguration** > **Allgemeine Einstellungen** aus.
+1. Navigieren Sie zur Ressourcenseite Ihrer App. Wählen Sie **Bereitstellungsslots** >  *\<desired source slot>*  > **Konfiguration** > **Allgemeine Einstellungen** aus.
    
 2. Legen Sie **Automatischer Tausch aktiviert** auf **Ein** fest. Wählen Sie anschließend unter **Bereitstellungsslot für automatischen Tausch** den gewünschten Zielslot und danach auf der Befehlsleiste die Option **Speichern** aus. 
    
@@ -204,30 +196,33 @@ Informationen zur Problembehandlung finden Sie bei Bedarf unter [Behandeln von P
 <a name="Warm-up"></a>
 
 ## <a name="specify-custom-warm-up"></a>Angeben der benutzerdefinierten Aufwärmphase
-Bei Verwendung des Features [Automatisch tauschen](#Auto-Swap) müssen für einige Apps vor dem Austausch unter Umständen benutzerdefinierte Vorbereitungsschritte ausgeführt werden. Mithilfe des Konfigurationselements `applicationInitialization` in „web.config“ können Sie benutzerdefinierte Initialisierungsaktionen angeben. Der [Austausch](#AboutConfiguration) mit dem Zielslot erfolgt dann erst nach Abschluss dieser benutzerdefinierten Aufwärmphase. Hier sehen Sie ein Beispielfragment aus „web.config“:
 
-    <system.webServer>
-        <applicationInitialization>
-            <add initializationPage="/" hostName="[app hostname]" />
-            <add initializationPage="/Home/About" hostName="[app hostname]" />
-        </applicationInitialization>
-    </system.webServer>
+Für einige Apps müssen vor dem Austausch unter Umständen benutzerdefinierte Vorbereitungsschritte ausgeführt werden. Mithilfe des Konfigurationselements `applicationInitialization` in „web.config“ können Sie benutzerdefinierte Initialisierungsaktionen angeben. Der [Austausch](#AboutConfiguration) mit dem Zielslot erfolgt dann erst nach Abschluss dieser benutzerdefinierten Aufwärmphase. Hier sehen Sie ein Beispielfragment aus „web.config“:
+
+```xml
+<system.webServer>
+    <applicationInitialization>
+        <add initializationPage="/" hostName="[app hostname]" />
+        <add initializationPage="/Home/About" hostName="[app hostname]" />
+    </applicationInitialization>
+</system.webServer>
+```
 
 Weitere Informationen zum Anpassen des `applicationInitialization`-Elements finden Sie unter [Häufigste Bereitstellungsfehler beim Slotaustausch und Vorgehensweise zu deren Behebung](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
 
 Sie können das Aufwärmverhalten ferner mithilfe folgender [App-Einstellungen](configure-common.md) anpassen:
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: Der zu pingende Pfad, um Ihre Website vorzubereiten. Fügen Sie diese App-Einstellung durch Angeben eines benutzerdefinierten Pfads hinzu, der mit einem Schrägstrich als Wert beginnt. Ein Beispiel ist `/statuscheck`. Standardwert: `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: Der zu pingende Pfad, um Ihre Website vorzubereiten. Fügen Sie diese App-Einstellung durch Angeben eines benutzerdefinierten Pfads hinzu, der mit einem Schrägstrich als Wert beginnt. z. B. `/statuscheck`. Standardwert: `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Gültige HTTP-Antwortcodes für den Aufwärmvorgang. Fügen Sie diese App-Einstellung mit einer durch Trennzeichen getrennten Liste mit HTTP-Codes hinzu. Beispiel: `200,202`. Ist der zurückgegebene Statuscode nicht in der Liste enthalten, werden die Vorbereitungs- und Austauschvorgänge beendet. Standardmäßig sind alle Antwortcodes gültig.
 
 > [!NOTE]
-> `<applicationInitialization>` ist Teil jedes App-Starts, während diese zwei App-Einstellungen nur für den Slotaustausch gelten.
+> Das `<applicationInitialization>`-Konfigurationselement ist Teil jeder App-Startseite, während die beiden App-Einstellungen für das Aufwärmverhalten nur für den Slotaustausch gelten.
 
 Informationen zur Problembehandlung finden Sie bei Bedarf unter [Behandeln von Problemen beim Austausch](#troubleshoot-swaps).
 
 ## <a name="monitor-a-swap"></a>Überwachen eines Austauschs
 
-Bei länger dauernden [Austauschvorgängen](#AboutConfiguration) können Sie sich anhand des [Aktivitätsprotokolls](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) über den Austauschvorgang informieren.
+Bei länger dauernden [Austauschvorgängen](#AboutConfiguration) können Sie sich anhand des [Aktivitätsprotokolls](../azure-monitor/platform/platform-logs-overview.md) über den Austauschvorgang informieren.
 
 Wählen Sie im Portal auf der Ressourcenseite Ihrer App im linken Bereich die Option **Aktivitätsprotokoll** aus.
 
@@ -251,13 +246,17 @@ Nach dem Speichern der Einstellung wird der angegebene Prozentsatz von Clients n
 
 Sobald ein Client automatisch an einen bestimmten Slot weitergeleitet wird, ist er für die Dauer der Clientsitzung auf diesen Slot festgelegt. Im Clientbrowser sehen Sie anhand des Cookies `x-ms-routing-name` in Ihren HTTP-Headern, mit welchem Slot Ihre Sitzung verknüpft ist. Anforderungen, die an den Stagingslot weitergeleitet werden, haben das Cookie `x-ms-routing-name=staging`. Anforderungen, die an den Produktionsslot weitergeleitet werden, haben das Cookie `x-ms-routing-name=self`.
 
+   > [!NOTE]
+   > Neben dem Azure-Portal können Sie auch den Befehl [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) in der Azure-Befehlszeilenschnittstelle verwenden, um die Prozentwerte für das Routing von CI/CD-Tools wie DevOps-Pipelines oder anderen Automatisierungssystemen festzulegen.
+   > 
+
 ### <a name="route-production-traffic-manually"></a>Manuelles Weiterleiten von Produktionsdatenverkehr
 
 Neben dem automatischen Datenverkehrsrouting kann App Service Anforderungen auch an einen bestimmten Slot weiterleiten. Dies ist hilfreich, wenn Sie Ihren Benutzern ermöglichen möchten, Ihre Beta-App zu nutzen oder die Nutzung zu beenden. Zur manuellen Weiterleitung von Produktionsdatenverkehr wird der Abfrageparameter `x-ms-routing-name` verwendet.
 
 Damit Benutzer die Nutzung Ihrer Beta-App beenden können, können Sie z. B. folgenden Link auf Ihrer Webseite bereitstellen:
 
-```HTML
+```html
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
@@ -275,7 +274,7 @@ Standardmäßig erhalten neue Slots eine Routingregel von `0%`, die in grau darg
 
 ## <a name="delete-a-slot"></a>Löschen eines Slots
 
-Navigieren Sie zur Ressourcenseite Ihrer App. Wählen Sie **Bereitstellungsslots** >  *\<zu löschender Slot>*  > **Übersicht** aus. Wählen Sie auf der Befehlsleiste die Option **Löschen** aus.  
+Suchen Sie nach Ihrer App, und wählen Sie sie aus. Wählen Sie **Bereitstellungsslots** >  *\<slot to delete>*  > **Übersicht** aus. Der App-Typ lautet **App Service (Slot)** und soll Sie daran erinnern, dass Sie einen Bereitstellungsslot sehen. Wählen Sie auf der Befehlsleiste die Option **Löschen** aus.  
 
 ![Löschen eines Bereitstellungsslots](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -289,7 +288,7 @@ Navigieren Sie zur Ressourcenseite Ihrer App. Wählen Sie **Bereitstellungsslots
 
 Azure PowerShell ist ein Modul, das Cmdlets für die Verwaltung von Azure über Windows PowerShell bietet, einschließlich Unterstützung der Verwaltung von Bereitstellungsslots für Azure App Service.
 
-Informationen zum Installieren und Konfigurieren von Azure PowerShell sowie zur Authentifizierung von Azure PowerShell mit Ihrem Azure-Abonnement finden Sie unter [Installieren und Konfigurieren von Microsoft Azure PowerShell](/powershell/azure/overview).  
+Informationen zum Installieren und Konfigurieren von Azure PowerShell sowie zur Authentifizierung von Azure PowerShell mit Ihrem Azure-Abonnement finden Sie unter [Installieren und Konfigurieren von Microsoft Azure PowerShell](/powershell/azure/).  
 
 ---
 ### <a name="create-a-web-app"></a>Erstellen einer Web-App
@@ -306,7 +305,7 @@ New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot
 ---
 ### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Initiieren eines Austauschs mit Vorschau (Austausch mit mehreren Phasen) und Anwenden der Konfiguration des Zielslots auf den Quellslot
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
@@ -319,7 +318,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ---
 ### <a name="swap-deployment-slots"></a>Überführen von Bereitstellungsslots
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
@@ -334,7 +333,61 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
----
+## <a name="automate-with-resource-manager-templates"></a>Automatisieren mit Resource Manager-Vorlagen
+
+[Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/overview.md) sind deklarative JSON-Dateien, die zur Automatisierung der Bereitstellung und Konfiguration von Azure-Ressourcen verwendet werden. Zum Austauschen von Slots mithilfe von Resource Manager-Vorlagen legen Sie zwei Eigenschaften für die Ressourcen *Microsoft.Web/sites/slots* und *Microsoft.Web/sites* fest:
+
+- `buildVersion`: Dies ist eine Zeichenfolgeneigenschaft, die die aktuelle Version der im Slot bereitgestellten App darstellt. Beispiele: „v1“, „1.0.0.1“ oder „2019-09-20T11:53:25.2887393-07:00“.
+- `targetBuildVersion`: Dies ist eine Zeichenfolgeneigenschaft, die angibt, welche `buildVersion` der Slot enthalten soll. Wenn targetBuildVersion nicht mit der aktuellen `buildVersion` identisch ist, wird der Austauschvorgang dadurch ausgelöst, dass der Slot mit der angegebenen `buildVersion` ermittelt wird.
+
+### <a name="example-resource-manager-template"></a>Beispiel einer Resource Manager-Vorlage
+
+Mit der folgenden Resource Manager-Vorlage werden die `buildVersion` des Stagingslots aktualisiert und die `targetBuildVersion` für den Produktionsslot festgelegt. Dadurch werden die beiden Slots ausgetauscht. Die Vorlage geht davon aus, dass Sie bereits eine Web-App mit einem Slot mit dem Namen „staging“ erstellt haben.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "my_site_name": {
+            "defaultValue": "SwapAPIDemo",
+            "type": "String"
+        },
+        "sites_buildVersion": {
+            "defaultValue": "v1",
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites/slots",
+            "apiVersion": "2018-02-01",
+            "name": "[concat(parameters('my_site_name'), '/staging')]",
+            "location": "East US",
+            "kind": "app",
+            "properties": {
+                "buildVersion": "[parameters('sites_buildVersion')]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-02-01",
+            "name": "[parameters('my_site_name')]",
+            "location": "East US",
+            "kind": "app",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites/slots', parameters('my_site_name'), 'staging')]"
+            ],
+            "properties": {
+                "targetBuildVersion": "[parameters('sites_buildVersion')]"
+            }
+        }        
+    ]
+}
+```
+
+Diese Resource Manager-Vorlage ist idempotent – das bedeutet, dass sie wiederholt ausgeführt werden kann und dabei denselben Zustand der Slots erzeugt. Nach der ersten Ausführung entspricht `targetBuildVersion` der aktuellen `buildVersion`, sodass kein Austausch ausgelöst wird.
+
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>
@@ -370,9 +423,8 @@ Im Anschluss folgen einige allgemeine Austauschfehler:
       ...
     </conditions>
     ```
-- Einige [IP-Einschränkungsregeln](app-service-ip-restrictions.md) verhindern unter Umständen das Senden von HTTP-Anforderungen an Ihre App. IPv4-Adressbereiche, die mit `10.` und `100.` beginnen, sind interne Adressbereiche für Ihre Bereitstellung. Es empfiehlt sich, für diese Bereich die Verbindungsherstellung mit Ihrer App zuzulassen.
 
-- Nach einem Slotaustausch kann es bei der App zu unerwarteten Neustarts kommen. Der Grund hierfür ist, dass die Konfiguration der Hostnamenbindung nach einem Austausch nicht mehr synchron ist, was als alleiniger Umstand aber nicht zu Neustarts führt. Bestimmte zugrunde liegende Speicherereignisse (z. B. Speichervolume-Failover) können diese Abweichungen erkennen und einen Neustart aller Workerprozesse erzwingen. Um diese Arten von Neustarts zu minimieren, legen Sie die App-Einstellung [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` ](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)auf *Alle Slots* fest. Diese App-Einstellung funktioniert allerdings *nicht* mit WCF-Apps (Windows Communication Foundation).
+- Nach einem Slotaustausch kann es bei der App zu unerwarteten Neustarts kommen. Der Grund hierfür ist, dass die Konfiguration der Hostnamenbindung nach einem Austausch nicht mehr synchron ist, was als alleiniger Umstand aber nicht zu Neustarts führt. Bestimmte zugrunde liegende Speicherereignisse (z. B. Speichervolume-Failover) können diese Abweichungen erkennen und einen Neustart aller Workerprozesse erzwingen. Um diese Arten von Neustarts zu minimieren, legen Sie die App-Einstellung [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)auf *Alle Slots* fest. Diese App-Einstellung funktioniert allerdings *nicht* mit WCF-Apps (Windows Communication Foundation).
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Blockieren des Zugriffs auf produktionsfremde Slots](app-service-ip-restrictions.md)

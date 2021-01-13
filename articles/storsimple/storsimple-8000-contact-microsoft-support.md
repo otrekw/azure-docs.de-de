@@ -1,25 +1,17 @@
 ---
-title: Erstellen eines Supporttickets oder Falls für die StorSimple 8000-Serie | Microsoft-Dokumentation
+title: Erstellen eines Supporttickets oder Falls für die StorSimple 8000-Serie
 description: Hier erfahren Sie, wie Sie eine Supportanfrage erstellen und eine Supportsitzung auf Ihrem Gerät der StorSimple 8000-Serie initiieren.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5394feff80c1df8b7a6cf7f6e6ea56678f575823
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c288f59b1cb9a85ed4bc978d1c3fba18ba30b572
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612509"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017201"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft-Support kontaktieren
 
@@ -29,7 +21,7 @@ Der StorSimple-Geräte-Manager verfügt über eine Funktion, mit deren Hilfe Sie
 * Verwalten des Lebenszyklus einer Supportanfrage innerhalb des Portals
 * Starten einer Supportsitzung in der Windows PowerShell-Schnittstelle Ihres StorSimple-Geräts
 
-Lesen Sie die [Support-SLAs und Informationen für die StorSimple 8000-Serie](https://msdn.microsoft.com/library/mt433077.aspx) , bevor Sie eine Supportanfrage erstellen.
+Lesen Sie die [Support-SLAs und Informationen für die StorSimple 8000-Serie](./storsimple-8000-support-options.md) , bevor Sie eine Supportanfrage erstellen.
 
 ## <a name="create-a-support-request"></a>Erstellen einer Supportanfrage
 
@@ -47,7 +39,7 @@ Je nach [Supportplan](https://azure.microsoft.com/support/plans/) können Sie Su
    3. Wählen Sie in der Dropdownliste einen **Supportplan** aus, wenn Ihrem Abonnement mehrere Pläne zugeordnet sind. Sie benötigen einen kostenpflichtigen Supportplan, um technischen Support zu erhalten.
    4. Klicken Sie auf **Weiter**.
 
-       ![Kontaktieren des Supports von MS über das neue Portal](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
+       ![Kontaktieren des Supports von MS über das neue Portal 2](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
 3. Wählen Sie auf dem Blatt **Neue Supportanfrage** die Option **Schritt 2: Problem** aus. Gehen Sie auf dem Blatt **Problem** folgendermaßen vor:
     
@@ -59,15 +51,15 @@ Je nach [Supportplan](https://azure.microsoft.com/support/plans/) können Sie Su
     6. Aktivieren Sie **Diagnoseinformationen freigeben**.
     7. Klicken Sie auf **Weiter**.
 
-       ![Kontaktieren des Supports von MS über das neue Portal](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
+       ![Kontaktieren des Supports von MS über das neue Portal 3](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
 4. Klicken Sie auf dem Blatt **Neue Supportanfrage** auf **Schritt 3: Kontaktinformationen**. Führen Sie auf dem Blatt **Kontaktinformationen** folgende Schritte aus:
 
    1. Geben Sie in **Kontaktoptionen** Ihre bevorzugte Kontaktmethode (telefonisch oder per E-Mail) und die Sprache ein. Die Antwortzeit wird die anhand Ihres Abonnementplans automatisch ausgewählt.
    2. Geben Sie in den „Kontaktinformationen“ Ihren Namen, Ihre E-Mail-Adresse, einen optionalen Kontakt und das Land/die Region ein. Aktivieren Sie das Kontrollkästchen **Kontaktänderungen für zukünftige Supportanfragen speichern** .
-   3. Klicken Sie auf **Create**.
+   3. Klicken Sie auf **Erstellen**.
    
-       ![Kontaktieren des Supports von MS über das neue Portal](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
+       ![Kontaktieren des Supports von MS über das neue Portal 4](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
       Microsoft Support verwendet diese Informationen, um Ihnen weitere Informationen, Diagnosen und Problemlösungen zur Verfügung zu stellen.
       Nach dem Übermitteln Ihrer Anfrage setzt sich baldmöglichst ein Supporttechniker mit Ihnen in Verbindung, um Ihre Anfrage zu bearbeiten.
@@ -84,11 +76,11 @@ Nach dem Erstellen einer Supportanfrage können Sie den Lebenszyklus des Tickets
 
 2. Eine Tabelle mit allen Supportanfragen wird auf dem Blatt **Hilfe und Support** angezeigt.
 
-    ![Verwalten von Supportanfragen](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
+    ![Verwalten von Supportanfragen 2](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
 
 3. Klicken Sie auf eine Supportanfrage. Sie können den Status und die Details dieser Anfrage anzeigen. Klicken Sie auf **+ Neue Nachricht**, wenn Sie diese Anforderung nachverfolgen möchten.
 
-    ![Verwalten von Supportanfragen](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
+    ![Verwalten von Supportanfragen 3](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
 
 ## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>Starten einer Supportsitzung in Windows PowerShell für StorSimple
 

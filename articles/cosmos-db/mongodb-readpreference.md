@@ -1,21 +1,23 @@
 ---
-title: Verwenden von MongoDB Read Preference mit der Azure Cosmos DB-API für MongoDB
+title: Verwenden von Read Preference mit der Azure Cosmos DB-API für MongoDB
 description: Erfahren Sie, wie Sie MongoDB Read Preference mit der Azure Cosmos DB-API für MongoDB verwenden können.
 author: sivethe
 ms.author: sivethe
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2019
-ms.openlocfilehash: 8fc66d70b840578bff086519a7b39e5f389a3de3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-js
+ms.openlocfilehash: 3c78ad6605e927015d35df12cadf0347dd0337cf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479617"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349043"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Globale Verteilung von Lesevorgängen mit der Azure Cosmos DB-API für MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Dieser Artikel zeigt, wie Lesevorgänge mit [MongoDB Read Preference](https://docs.mongodb.com/manual/core/read-preference/)-Einstellungen mit der Azure Cosmos DB-API für MongoDB global verteilt werden können.
 
@@ -86,7 +88,7 @@ Weitere Informationen zum Verhalten der einzelnen Lesepräferenzeinstellungen fi
 Basierend auf allgemeine Szenarien empfiehlt sich die Verwendung der folgenden Einstellungen:
 
 1. Wenn **niedrigere Latenz für Lesevorgänge** erforderlich ist, verwenden Sie den Lesepräferenzmodus **NEAREST**. Mit dieser Einstellung werden die Lesevorgänge an die nächste verfügbare Region weitergeleitet. Beachten Sie Folgendes: Wenn die nächstgelegene Region die WRITE-Region ist, werden diese Vorgänge an diese Region weitergeleitet.
-2. Wenn **Hochverfügbarkeit und Geoverteilung von Lesevorgängen** erforderlich sind (Latenz ist keine Einschränkung), verwenden Sie den Lesepräferenzmodus **SECONDARY PREFERRED**. Mit dieser Einstellung werden die Lesevorgänge an eine verfügbare READ-Region weitergeleitet. Wenn keine READ-Region verfügbar ist, werden Anforderungen an die WRITE-Region weitergeleitet.
+2. Wenn **Hochverfügbarkeit und Geoverteilung von Lesevorgängen** erforderlich sind (Latenz ist keine Einschränkung), verwenden Sie den Lesepräferenzmodus **PRIMARY PREFERRED** oder **SECONDARY PREFERRED**. Mit dieser Einstellung werden die Lesevorgänge jeweils an eine verfügbare WRITE- oder READ-Region weitergeleitet. Wenn die Region nicht verfügbar ist, werden Anforderungen gemäß dem Lesevoreinstellungsverhalten an die nächste verfügbare Region weitergeleitet.
 
 Der folgende Codeausschnitt aus der Beispielanwendung veranschaulicht, wie die Lesepräferenz NEAREST in NodeJS konfiguriert wird:
 
@@ -170,6 +172,6 @@ Wenn Sie diese App nicht weiterhin verwenden, löschen Sie im Azure-Portal sämt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Import MongoDB data into Azure Cosmos DB (Importieren von Daten aus MongoDB in Azure Cosmos DB)](mongodb-migrate.md)
+* [Import MongoDB data into Azure Cosmos DB (Importieren von Daten aus MongoDB in Azure Cosmos DB)](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)
 * [Einrichten einer global verteilten Datenbank mit der Azure Cosmos DB-API für MongoDB](tutorial-global-distribution-mongodb.md)
 * [Lokale Entwicklung mit dem Azure Cosmos DB-Emulator](local-emulator.md)

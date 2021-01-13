@@ -1,38 +1,37 @@
 ---
-title: Verwenden von Machine Learning-Endpunkten in Azure Stream Analytics
+title: Verwenden von Azure Machine Learning Studio-Endpunkten (klassisch) in Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie benutzerdefinierte Machine Language-Funktionen in Azure Stream Analytics verwendet werden.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 650f8952e58046082768007295208f52113b5f81
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 236191710dac19a08db0e8ce94dc695d393009a7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620886"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127126"
 ---
-# <a name="azure-machine-learning-studio-integration-in-stream-analytics-preview"></a>Azure Machine Learning Studio-Integration in Stream Analytics (Vorschau)
-Stream Analytics unterstützt benutzerdefinierte Funktionen, die Azure Machine Learning Studio-Endpunkte kontaktieren. Die REST-API-Unterstützung für dieses Feature ist in der [Stream Analytics-REST-API-Bibliothek](https://msdn.microsoft.com/library/azure/dn835031.aspx)ausführlich beschrieben. Dieser Artikel enthält zusätzliche Informationen, die für die erfolgreiche Implementierung dieser Funktion in Stream Analytics erforderlich sind. Es wurde ein Tutorial bereitgestellt, das [hier](stream-analytics-machine-learning-integration-tutorial.md)verfügbar ist.
+# <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Azure Machine Learning Studio-Integration (klassisch) in Stream Analytics (Vorschau)
+Stream Analytics unterstützt benutzerdefinierte Funktionen, die Azure Machine Learning Studio-Endpunkte (klassisch) kontaktieren. Die REST-API-Unterstützung für dieses Feature ist in der [Stream Analytics-REST-API-Bibliothek](/rest/api/streamanalytics/)ausführlich beschrieben. Dieser Artikel enthält zusätzliche Informationen, die für die erfolgreiche Implementierung dieser Funktion in Stream Analytics erforderlich sind. Es wurde ein Tutorial bereitgestellt, das [hier](stream-analytics-machine-learning-integration-tutorial.md)verfügbar ist.
 
-## <a name="overview-azure-machine-learning-studio-terminology"></a>Übersicht: Azure Machine Learning Studio-Terminologie
-Microsoft Azure Machine Learning Studio ist ein Drag & Drop-Tool für die Zusammenarbeit, mit dem Sie Predictive Analytics-Lösungen für Ihre Daten erstellen, testen und bereitstellen können. Dieses Tool hat den Namen *Azure Machine Learning Studio*. Das Tool wird zum Interagieren mit den Machine Learning-Ressourcen und zum einfachen Erstellen, Testen und Durchlaufen Ihres Entwurfs verwendet. Unten sind diese Ressourcen und die dazugehörigen Definitionen angegeben.
+## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>Übersicht: Azure Machine Learning Studio-Terminologie (klassisch)
+Microsoft Azure Machine Learning Studio (klassisch) ist ein Drag & Drop-Tool für die Zusammenarbeit, mit dem Sie Predictive Analytics-Lösungen für Ihre Daten erstellen, testen und bereitstellen können. Dieses Tool trägt den Namen *Azure Machine Learning Studio (klassisch)* . Studio (klassisch) wird zum Interagieren mit den Machine Learning-Ressourcen und zum einfachen Erstellen, Testen und Durchlaufen Ihres Entwurfs verwendet. Unten sind diese Ressourcen und die dazugehörigen Definitionen angegeben.
 
-* **Arbeitsbereich**: Der *Arbeitsbereich* ist ein Container, in dem alle anderen Machine Learning-Ressourcen zur Verwaltung und Steuerung zusammengefasst sind.
-* **Experiment**: *Experimente* werden von Data Scientists erstellt, um Datasets zu nutzen und ein Machine Learning-Modell zu trainieren.
-* **Endpunkt**: Bei *Endpunkten* handelt es sich um das Azure Machine Learning Studio-Objekt, das zum Verwenden von Features als Eingabe, Anwenden eines angegebenen Machine Learning-Modells und Zurückgeben der erzielten Ausgabe eingesetzt wird.
-* **Bewertungswebdienst**: Ein *Bewertungswebdienst* ist eine Sammlung von Endpunkten (wie oben beschrieben).
+* **Arbeitsbereich** : Der *Arbeitsbereich* ist ein Container, in dem alle anderen Machine Learning-Ressourcen zur Verwaltung und Steuerung zusammengefasst sind.
+* **Experiment** : *Experimente* werden von Data Scientists erstellt, um Datasets zu nutzen und ein Machine Learning-Modell zu trainieren.
+* **Endpunkt** : Bei *Endpunkten* handelt es sich um das Studio-Objekt (klassisch), das zum Verwenden von Features als Eingabe, Anwenden eines angegebenen Machine Learning-Modells und Zurückgeben der erzielten Ausgabe eingesetzt wird.
+* **Bewertungswebdienst** : Ein *Bewertungswebdienst* ist eine Sammlung von Endpunkten (wie oben beschrieben).
 
-Jeder Endpunkt verfügt über APIs für die Batchausführung und synchrone Ausführung. Für Stream Analytics wird die synchrone Ausführung verwendet. Der entsprechende Dienst wird in Azure Machine Learning Studio als [Anforderung/Antwort-Dienst](../machine-learning/studio/consume-web-services.md) bezeichnet.
+Jeder Endpunkt verfügt über APIs für die Batchausführung und synchrone Ausführung. Für Stream Analytics wird die synchrone Ausführung verwendet. Der entsprechende Dienst wird in Azure Machine Learning Studio (klassisch) als [Anforderung-Antwort-Dienst](../machine-learning/classic/consume-web-services.md) bezeichnet.
 
-## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Für Stream Analytics-Aufträge erforderliche Machine Learning-Ressourcen
-Bei der Verarbeitung von Stream Analytics-Aufträgen sind für eine erfolgreiche Ausführung ein Anforderung/Antwort-Endpunkt, ein [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md)und eine Swagger-Definition erforderlich. Stream Analytics verfügt über einen zusätzlichen Endpunkt, der die URL für den Swagger-Endpunkt erstellt, nach der Schnittstelle sucht und eine UDF-Standarddefinition für den Benutzer zurückgibt.
+## <a name="studio-classic-resources-needed-for-stream-analytics-jobs"></a>Für Stream Analytics-Aufträge erforderliche Studio-Ressourcen (klassisch)
+Bei der Verarbeitung von Stream Analytics-Aufträgen sind für eine erfolgreiche Ausführung ein Anforderung/Antwort-Endpunkt, ein [apikey](../machine-learning/classic/consume-web-services.md)und eine Swagger-Definition erforderlich. Stream Analytics verfügt über einen zusätzlichen Endpunkt, der die URL für den Swagger-Endpunkt erstellt, nach der Schnittstelle sucht und eine UDF-Standarddefinition für den Benutzer zurückgibt.
 
-## <a name="configure-a-stream-analytics-and-machine-learning-udf-via-rest-api"></a>Konfigurieren einer Stream Analytics- und Machine Learning-UDF per REST-API
-Mit REST-APIs können Sie Ihren Auftrag so konfigurieren, dass er Azure Machine Language-Funktionen aufruft. Die Schritte lauten wie folgt:
+## <a name="configure-a-stream-analytics-and-studio-classic-udf-via-rest-api"></a>Konfigurieren einer Stream Analytics- und Studio-UDF (klassisch) per REST-API
+Mit REST-APIs können Sie Ihren Auftrag so konfigurieren, dass er Studio-Funktionen (klassisch) aufruft. Die Schritte lauten wie folgt:
 
 1. Erstellen eines Stream Analytics-Auftrags
 2. Definieren einer Eingabe
@@ -42,7 +41,7 @@ Mit REST-APIs können Sie Ihren Auftrag so konfigurieren, dass er Azure Machine 
 6. Starten des Auftrags
 
 ## <a name="creating-a-udf-with-basic-properties"></a>Erstellen einer UDF mit grundlegenden Eigenschaften
-Beispielsweise wird im folgenden Beispielcode eine Skalar-UDF namens *newudf* erstellt, die an einen Azure Machine Learning Studio-Endpunkt gebunden ist. Beachten Sie, dass sich der *Endpunkt* (Dienst-URI) auf der API-Hilfeseite für den gewählten Dienst und der *apiKey* auf der Hauptseite der Dienste befindet.
+Beispielsweise wird im folgenden Beispielcode eine Skalar-UDF namens *newudf* erstellt, die an einen Azure Machine Learning Studio-Endpunkt (klassisch) gebunden ist. Beachten Sie, dass sich der *Endpunkt* (Dienst-URI) auf der API-Hilfeseite für den gewählten Dienst und der *apiKey* auf der Hauptseite der Dienste befindet.
 
 ```
     PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
@@ -69,7 +68,7 @@ Beispiel für Anforderungstext:
 ```
 
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>Aufrufen des RetrieveDefaultDefinition-Endpunkts für standardmäßige UDF
-Nachdem das UDF-Gerüst erstellt wurde, wird die vollständige Definition der UDF benötigt. Über den RetrieveDefaultDefinition-Endpunkt können Sie die Standarddefinition für eine Skalarfunktion erhalten, die an einen Azure Machine Learning Studio-Endpunkt gebunden ist. Für die unten angegebene Nutzlast ist es erforderlich, dass Sie die UDF-Standarddefinition für eine Skalarfunktion abrufen, die an einen Azure Machine Learning-Endpunkt gebunden ist. Hierbei wird der eigentliche Endpunkt nicht angegeben, da er bereits während der PUT-Anforderung bereitgestellt wurde. Stream Analytics ruft den in der Anforderung angegebenen Endpunkt auf, falls er explizit bereitgestellt wird. Andernfalls wird der ursprünglich angegebene Endpunkt verwendet. Hier verwendet die UDF einen einzelnen Zeichenfolgenparameter (einen Satz) und gibt eine Einzelausgabe einer Typzeichenfolge zurück, mit der die Bezeichnung „sentiment“ (Stimmung) für diesen Satz angegeben wird.
+Nachdem das UDF-Gerüst erstellt wurde, wird die vollständige Definition der UDF benötigt. Über den RetrieveDefaultDefinition-Endpunkt können Sie die Standarddefinition für eine Skalarfunktion erhalten, die an einen Azure Machine Learning Studio-Endpunkt (klassisch) gebunden ist. Für die unten angegebene Nutzlast ist es erforderlich, dass Sie die UDF-Standarddefinition für eine Skalarfunktion abrufen, die an einen Studio-Endpunkt (klassisch) gebunden ist. Hierbei wird der eigentliche Endpunkt nicht angegeben, da er bereits während der PUT-Anforderung bereitgestellt wurde. Stream Analytics ruft den in der Anforderung angegebenen Endpunkt auf, falls er explizit bereitgestellt wird. Andernfalls wird der ursprünglich angegebene Endpunkt verwendet. Hier verwendet die UDF einen einzelnen Zeichenfolgenparameter (einen Satz) und gibt eine Einzelausgabe einer Typzeichenfolge zurück, mit der die Bezeichnung „sentiment“ (Stimmung) für diesen Satz angegeben wird.
 
 ```
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
@@ -189,11 +188,11 @@ Fragen Sie die UDF (hier: scoreTweet) jetzt in Bezug auf alle Eingabeereignisse 
 
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+Weitere Unterstützung finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](/rest/api/streamanalytics/)

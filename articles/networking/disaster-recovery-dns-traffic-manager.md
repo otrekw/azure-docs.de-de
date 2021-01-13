@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: a560cc526e73f3ce7e851f2a545f9b16fa53b423
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65501694"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74483531"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Notfallwiederherstellung mit Azure DNS und Traffic Manager
 
@@ -33,13 +33,13 @@ Die meisten Enterprise-Kunden entscheiden sich für eine Architektur für mehrer
     
     *Abbildung: Notfallwiederherstellungs-Konfiguration Aktiv/Passiv mit Standbymodus „Verzögert betriebsbereit“*
 
-- **Aktiv/Passiv mit Steuerlicht:** Bei dieser Failoverlösung wird die Standbyumgebung mit einer minimalen Konfiguration eingerichtet. Das Setup enthält nur die notwendigen Dienste, um nur einen minimalen und kritischen Satz von Anwendungen zu unterstützen. In seiner systemeigenen Form kann dieses Szenario nur minimale Funktionalitäten ausführen, aber es kann zusätzliche Dienste skalieren und erstellen, um einen Großteil der Produktionslast zu übernehmen, wenn ein Failover auftritt.
+- **Aktiv/Passiv mit Steuerlicht**: Bei dieser Failoverlösung wird die Standbyumgebung mit einer minimalen Konfiguration eingerichtet. Das Setup enthält nur die notwendigen Dienste, um nur einen minimalen und kritischen Satz von Anwendungen zu unterstützen. In seiner systemeigenen Form kann dieses Szenario nur minimale Funktionalitäten ausführen, aber es kann hochskalieren und zusätzliche Dienste erstellen, um einen Großteil der Produktionslast zu übernehmen, wenn ein Failover auftritt.
     
     ![Aktiv/Passiv mit Steuerlicht](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
     *Abbildung: Notfallwiederherstellungs-Konfiguration Aktiv/Passiv mit Steuerlicht*
 
-- **Aktiv/Passiv mit Standbymodus „Betriebsbereit“:** Bei dieser Failoverlösung wird die Standbyregion „vorgewärmt“ und kann die Grundlast verarbeiten, die automatische Skalierung ist aktiviert, und alle Instanzen sind betriebsbereit. Diese Lösung kann nicht für die Verarbeitung der vollen Produktionslast skaliert werden, ist aber funktionsfähig, und alle Dienste sind einsatzbereit. Diese Lösung ist eine erweiterte Version des Ansatzes mit Steuerlicht.
+- **Aktiv/Passiv mit Standbymodus „Betriebsbereit“** : Bei dieser Failoverlösung wird die Standbyregion vorgewärmt und kann die Grundlast verarbeiten, die automatische Skalierung ist aktiviert und alle Instanzen sind betriebsbereit. Diese Lösung kann nicht für die Verarbeitung der vollen Produktionslast skaliert werden, ist aber funktionsfähig, und alle Dienste sind einsatzbereit. Diese Lösung ist eine erweiterte Version des Ansatzes mit Steuerlicht.
     
     ![Aktiv/Passiv mit Standbymodus „Betriebsbereit“](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     
@@ -61,7 +61,7 @@ Zur Besprechung der in diesem Artikel aufgeführten Lösungen müssen Sie einige
 - **DNS-A-Datensatz:** „A-Datensätze“ sind Zeiger, die eine Domäne auf eine IPv4-Adresse verweisen. 
 - **CNAME oder kanonischen Namen** – Dieser Eintragstyp wird zum Verweis auf einen anderen DNS-Eintrag verwendet. CNAME antwortet nicht mit einer IP-Adresse, sondern mit dem Zeiger auf den Eintrag, der die IP-Adresse enthält. 
 - **Gewichtetes Routing** – Es ist möglich, eine Gewichtung mit den Dienstendpunkten zu verknüpfen und dann den Datenverkehr auf der Grundlage der zugewiesenen Gewichtung zu verteilen. Diese Routingmethode ist eine der vier Mechanismen zum Datenverkehrsrouting, die in Traffic Manager verfügbar sind. Weitere Informationen finden Sie unter [Gewichtete Methode für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md#weighted).
-- **Prioritätsbasiertes Routing** – Das prioritätsbasierte Routing erfolgt auf Grundlage von Systemdiagnosen der Endpunkte. Standardmäßig sendet Azure Traffic Manager sämtlichen Datenverkehr an den Endpunkt mit der höchsten Priorität, und bei einem Fehler oder Notfall leitet Traffic Manager den Datenverkehr an den sekundären Endpunkt weiter. Weitere Informationen finden Sie unter [Prioritätsbasierte Methode für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md#priority).
+- **Prioritätsbasiertes Routing** – Das prioritätsbasierte Routing erfolgt auf Grundlage von Systemdiagnosen der Endpunkte. Standardmäßig sendet Azure Traffic Manager sämtlichen Datenverkehr an den Endpunkt mit der höchsten Priorität, und bei einem Fehler oder Notfall leitet Traffic Manager den Datenverkehr an den sekundären Endpunkt weiter. Weitere Informationen finden Sie unter [Prioritätsbasierte Methode für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method).
 
 ## <a name="manual-failover-using-azure-dns"></a>Manuelles Failover mit Azure DNS
 Die Azure DNS-Lösung für manuelles Failover für die Notfallwiederherstellung verwendet den Standard-DNS-Mechanismus für ein Failover zum Sicherungsstandort. Die manuelle Option über Azure DNS funktioniert am besten in Kombination mit dem Ansatz Standbymodus „Verzögert betriebsbereit“ oder dem Ansatz mit Steuerlicht. 
@@ -79,7 +79,7 @@ Die Annahmen für die Lösung sind:
 - Erstellen von DNS-Zoneneinträgen
 - Aktualisieren des CNAME-Eintrags
 
-### <a name="step-1-create-a-dns"></a>Schritt 1: Erstellen eines DNS
+### <a name="step-1-create-a-dns"></a>Schritt 1: Erstellen einer DNS-Zone
 Erstellen Sie eine DNS-Zone (z. B. www\.contoso.com), wie unten gezeigt:
 
 ![Erstellen einer DNS-Zone in Azure](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
@@ -155,7 +155,7 @@ Auf ähnliche Weise erstellen Sie auch den Notfallwiederherstellungs-Endpunkt in
 
 ### <a name="step-3-set-up-health-check-and-failover-configuration"></a>Schritt 3: Einrichten der Integritätsprüfungen und der Failoverkonfiguration
 
-In diesem Schritt legen Sie die DNS-TTL auf 10 Sekunden, die von den meisten rekursiven Resolvern mit Internetzugriff berücksichtigt wird. Diese Konfigurationen bedeutet, dass ein DNS-Resolver die Informationen für maximal 10 Sekunden zwischenspeichert. Für die Einstellungen des Endpunktmonitors ist der Pfad aktuell auf / oder Stamm eingestellt, aber Sie können die Endpunkteinstellungen anpassen, um einen Pfad auszuwerten, z. B. prod.contoso.com/index. Das nachfolgende Beispiel ist**https** das Testprotokoll. Sie können jedoch auch **http** oder **tcp** auswählen. Die Wahl des Protokolls hängt von der Endanwendung ab. Das Testintervall ist auf 10 Sekunden festgelegt, sodass schnelle Tests möglich sind, und die Anzahl der Wiederholungen ist auf 3 gesetzt. Folglich führt Traffic Manager ein Failover auf den zweiten Endpunkt durch, wenn in drei aufeinander folgende Intervallen ein Fehler registriert wird. Die folgende Formel definiert die Gesamtzeit für ein automatisches Failover: Zeit für das Failover = Gültigkeitsdauer (TTL) + Wiederholung × Testintervall. In diesem Fall ist der Wert 10 + 3 × 10 = 40 Sekunden (max).
+In diesem Schritt legen Sie die DNS-TTL auf 10 Sekunden, die von den meisten rekursiven Resolvern mit Internetzugriff berücksichtigt wird. Diese Konfigurationen bedeutet, dass ein DNS-Resolver die Informationen für maximal 10 Sekunden zwischenspeichert. Für die Einstellungen des Endpunktmonitors ist der Pfad aktuell auf / oder Stamm eingestellt, aber Sie können die Endpunkteinstellungen anpassen, um einen Pfad auszuwerten, z. B. prod.contoso.com/index. Das nachfolgende Beispiel ist**https** das Testprotokoll. Sie können jedoch auch **http** oder **tcp** auswählen. Die Wahl des Protokolls hängt von der Endanwendung ab. Das Testintervall ist auf 10 Sekunden festgelegt, sodass schnelle Tests möglich sind, und die Anzahl der Wiederholungen ist auf 3 gesetzt. Folglich führt Traffic Manager ein Failover auf den zweiten Endpunkt durch, wenn in drei aufeinander folgende Intervallen ein Fehler registriert wird. Die folgende Formel definiert die Gesamtzeit für ein automatisches Failover: Zeit für Failover = TTL + Wiederholung * Testintervall. In diesem Fall ist der Wert 10 + 3 * 10 = 40 Sekunden (Max).
 Wenn die Anzahl der Wiederholungen auf 1 sowie die TTL auf 10 Sekunden festgelegt ist, beträgt die Zeit für das Failover 10 + 1 * 10 = 20 Sekunden. Leben Sie die Anzahl der Wiederholungen auf einen Wert von mehr als **1** fest, um die Wahrscheinlichkeit von Failovers aufgrund von falsch positiven Werten oder kleineren Netzwerk-Blips zu vermeiden. 
 
 

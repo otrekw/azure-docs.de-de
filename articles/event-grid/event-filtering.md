@@ -1,18 +1,14 @@
 ---
 title: Ereignisfilter für Azure Event Grid
 description: Hier erfahren Sie, wie Sie Ereignisse beim Erstellen eines Azure Event Grid-Abonnements filtern können.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2019
-ms.author: spelluru
-ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.date: 12/03/2020
+ms.openlocfilehash: bc3e84037693fcd909961ba409871d947ef1de7d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390174"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574905"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements
 
@@ -59,7 +55,7 @@ Um nach Werten in den Datenfeldern zu filtern und den Vergleichsoperator anzugeb
 
 * Operatortyp – Typ des Vergleichs.
 * Schlüssel – Feld in den Ereignisdaten, die Sie für die Filterung verwenden. Sie können eine Zahl, boolescher Wert oder Zeichenfolge eingeben.
-* Wert oder Werte – Werte, die mit dem Schlüssel verglichen werden sollen.
+* Werte – Werte, die mit dem Schlüssel verglichen werden sollen.
 
 Wenn Sie einen einzelnen Filter mit mehreren Werten angeben, wird ein **OR**-Vorgang ausgeführt, daher muss das Schlüsselfeld einen der folgenden Werte aufweisen. Beispiel:
 
@@ -76,7 +72,7 @@ Wenn Sie einen einzelnen Filter mit mehreren Werten angeben, wird ein **OR**-Vor
 ]
 ```
 
-Wenn Sie mehrere verschiedene Filter angeben, wird ein **AND**-Vorgang ausgeführt, sodass jede Filterbedingung erfüllt sein muss. Beispiel: 
+Wenn Sie mehrere verschiedene Filter angeben, wird ein **AND**-Vorgang ausgeführt, sodass jede Filterbedingung erfüllt sein muss. Hier sehen Sie ein Beispiel: 
 
 ```json
 "advancedFilters": [
@@ -97,9 +93,9 @@ Wenn Sie mehrere verschiedene Filter angeben, wird ein **AND**-Vorgang ausgefüh
 ]
 ```
 
-### <a name="operator"></a>Operator
+### <a name="operators"></a>Operatoren
 
-Die verfügbaren Operatoren für Zahlen sind:
+Die verfügbaren Operatoren für **Zahlen** sind:
 
 * NumberGreaterThan
 * NumberGreaterThanOrEquals
@@ -108,9 +104,10 @@ Die verfügbaren Operatoren für Zahlen sind:
 * NumberIn
 * NumberNotIn
 
-Der verfügbare Operator für boolesche Werte ist: BoolEquals
+Der verfügbare Operator für **boolesche Werte** ist: 
+- BoolEquals
 
-Die verfügbaren Operatoren für Zeichenfolgen sind:
+Die verfügbaren Operatoren für **Zeichenfolgen** sind:
 
 * StringContains
 * StringBeginsWith
@@ -118,7 +115,24 @@ Die verfügbaren Operatoren für Zeichenfolgen sind:
 * StringIn
 * StringNotIn
 
-Bei allen Zeichenfolgenvergleichen wird die Groß-/Kleinschreibung beachtet.
+Bei sämtlichen Zeichenfolgenvergleichen wird die Groß-/Kleinschreibung **nicht** beachtet.
+
+> [!NOTE]
+> Wenn der JSON-Code des Ereignisses nicht den erweiterten Filterschlüssel enthält, wird der Filter für die folgenden Operatoren als **nicht übereinstimmend** ausgewertet: 
+> - NumberGreaterThan
+> - NumberGreaterThanOrEquals
+> - NumberLessThan
+> - NumberLessThanOrEquals
+> - NumberIn
+> - BoolEquals
+> - StringContains
+> - StringBeginsWith
+> - StringEndsWith
+> - StringIn
+> 
+>Der Filter wird für die folgenden Operatoren als **übereinstimmend** ausgewertet:
+> - NumberNotIn
+> - StringNotIn
 
 ### <a name="key"></a>Schlüssel
 
@@ -154,11 +168,161 @@ Diese Werte sind möglich:
 
 Für die erweiterte Filterung gelten folgende Einschränkungen:
 
-* Fünf erweiterte Filter pro Event Grid-Abonnement
+* 5 erweiterte Filter und 25 Filterwerte für alle Filter pro Event Grid-Abonnement
 * 512 Zeichen pro Zeichenfolgenwert
 * Fünf Werte für **in**- und **not in**-Operatoren
+* Schlüssel mit enthaltenem **`.` (Punktzeichen)** . Zum Beispiel: `http://schemas.microsoft.com/claims/authnclassreference` oder `john.doe@contoso.com`. Derzeit gibt es keine Unterstützung für Escapezeichen in Schlüsseln. 
 
 Der gleiche Schlüssel kann in mehr als einem Filter verwendet werden.
+
+### <a name="examples"></a>Beispiele
+
+### <a name="stringcontains"></a>StringContains
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringContains",
+    "key": "data.key1",
+    "values": [
+        "microsoft", 
+        "azure"
+    ]
+}]
+```
+
+### <a name="stringbeginswith"></a>StringBeginsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringBeginsWith",
+    "key": "data.key1",
+    "values": [
+        "event", 
+        "grid"
+    ]
+}]
+```
+
+### <a name="stringendswith"></a>StringEndsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringEndsWith",
+    "key": "data.key1",
+    "values": [
+        "jpg", 
+        "jpeg", 
+        "png"
+    ]
+}]
+```
+
+### <a name="stringin"></a>StringIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringIn",
+    "key": "data.key1",
+    "values": [
+        "exact", 
+        "string", 
+        "matches"
+    ]
+}]
+```
+
+### <a name="stringnotin"></a>StringNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringNotIn",
+    "key": "data.key1",
+    "values": [
+        "aws", 
+        "bridge"
+    ]
+}]
+```
+
+### <a name="numberin"></a>NumberIn
+
+```json
+
+"advancedFilters": [{
+    "operatorType": "NumberIn",
+    "key": "data.counter",
+    "values": [
+        5,
+        1
+    ]
+}]
+
+```
+
+### <a name="numbernotin"></a>NumberNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberNotIn",
+    "key": "data.counter",
+    "values": [
+        41,
+        0,
+        0
+    ]
+}]
+```
+
+### <a name="numberlessthan"></a>NumberLessThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThan",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthan"></a>NumberGreaterThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThan",
+    "key": "data.counter",
+    "value": 20
+}]
+```
+
+### <a name="numberlessthanorequals"></a>NumberLessThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThanOrEquals",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthanorequals"></a>NumberGreaterThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThanOrEquals",
+    "key": "data.counter",
+    "value": 30
+}]
+```
+
+### <a name="boolequals"></a>BoolEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "BoolEquals",
+    "key": "data.isEnabled",
+    "value": true
+}]
+```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

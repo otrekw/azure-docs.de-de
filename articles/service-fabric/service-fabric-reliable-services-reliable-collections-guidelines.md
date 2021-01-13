@@ -1,25 +1,14 @@
 ---
-title: Richtlinien und Empfehlungen für Reliable Collections in Azure Service Fabric | Microsoft-Dokumentation
-description: Richtlinien und Empfehlungen für die Verwendung von Reliable Collections in Service Fabric
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak,zhol
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Richtlinien für zuverlässige Sammlungen
+description: Richtlinien und Empfehlungen für die Verwendung von zuverlässigen Sammlungen (Reliable Collections) in Service Fabric in einer Azure Service Fabric-Anwendung.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
-ms.date: 12/10/2017
-ms.author: atsenthi
-ms.openlocfilehash: dc7d60cb846aa16f2facd41f5b6b7ce52bcc8f41
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.date: 03/10/2020
+ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599339"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86260910"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Richtlinien und Empfehlungen für Reliable Collections in Azure Service Fabric
 Dieser Abschnitt enthält Richtlinien für die Verwendung von Reliable State Manager und Reliable Collections. Er soll Benutzern helfen, häufige Fehlerquellen zu vermeiden.
@@ -31,7 +20,7 @@ Die *Richtlinien*,*werden* als *einfache* Empfehlungen *präsentiert*.
 * Verwenden Sie `TimeSpan.MaxValue` nicht für Timeouts. Timeouts sollten verwendet werden, um Deadlocks zu erkennen.
 * Verwenden Sie keine Transaktion, nachdem für sie ein Commit ausgeführt bzw. sie verworfen oder abgebrochen wurde.
 * Verwenden Sie eine Enumeration nicht außerhalb des Transaktionsbereichs, in dem sie erstellt wurde.
-* Erstellen Sie keine Transaktion innerhalb der `using` -Anweisung einer anderen Transaktion, da dies zu Deadlocks führen kann.
+* Erstellen Sie keine Transaktion innerhalb der `using`-Anweisung einer anderen Transaktion, da dies zu Deadlocks führen kann.
 * Erstellen Sie keinen zuverlässigen Zustand mit `IReliableStateManager.GetOrAddAsync`, und verwenden Sie den zuverlässigen Zustand in derselben Transaktion. Dies führt zu einer „InvalidOperationException“.
 * Stellen Sie sicher, dass Ihre `IComparable<TKey>` -Implementierung richtig ist. `IComparable<TKey>` ist erforderlich, damit das System Prüfpunkte und Zeilen zusammenfügen kann.
 * Verwenden Sie Aktualisierungssperren beim Lesen eines Elements, das aktualisiert werden soll, um eine bestimmte Klasse von Deadlocks zu vermeiden.
@@ -50,16 +39,29 @@ Hier folgen einige Punkte, die es zu beachten gilt:
 * Lesevorgänge auf dem sekundären Replikat dürfen Versionen lesen, die nicht im Quorum committet wurden.
   Dies bedeutet, dass Datenversionen, die von einem einzelnen sekundären Replikat gelesen werden, falsch weiterverarbeitet werden können.
   Da Lesevorgänge von primären Replikaten immer stabil sind, können hier nie fehlerhafte Versionen auftreten.
-* Die Vorgehensweise in Bezug auf die Sicherheit bzw. den Datenschutz der Daten, die von Ihrer Anwendung in einer zuverlässigen Sammlung aufbewahrt werden, ist Ihre Entscheidung und unterliegt den Schutzmechanismen Ihrer Speicherverwaltung. Beispielsweise kann die Verschlüsselung von Betriebssystem-Datenträgern genutzt werden, um Ihre ruhenden Daten zu schützen.  
+* Die Vorgehensweise in Bezug auf die Sicherheit bzw. den Datenschutz der Daten, die von Ihrer Anwendung in einer zuverlässigen Sammlung aufbewahrt werden, ist Ihre Entscheidung und unterliegt den Schutzmechanismen Ihrer Speicherverwaltung. Beispielsweise kann die Verschlüsselung von Betriebssystem-Datenträgern genutzt werden, um Ihre ruhenden Daten zu schützen.
+* Die `ReliableDictionary`-Enumeration verwendet eine sortierte Datenstruktur, deren Reihenfolge von einem Schlüssel bestimmt wird. Damit die Enumeration effizient ist, werden Commits einer temporären Hashtabelle hinzugefügt und später nach dem Prüfpunkt in die sortierte Datenhauptstruktur verschoben. Hinzufügungen/Aktualisierungen/Löschungen haben bei Überprüfungen im Idealfall eine Laufzeit von O(1) und im schlechtesten Fall eine Laufzeit von O(log n), wenn der Schlüssel vorliegt. Abrufvorgänge können O(1) oder O(log n) sein, je nachdem, ob Sie aus einem vor Kurzem durchgeführten Commitvorgang oder aus einem älteren Commitvorgang lesen.
 
-### <a name="next-steps"></a>Nächste Schritte
+## <a name="volatile-reliable-collections"></a>Flüchtige zuverlässige Sammlungen
+Beachten Sie Folgendes, wenn Sie sich für die Verwendung von flüchtigen zuverlässigen Sammlungen entscheiden:
+
+* Für ```ReliableDictionary``` gilt eine flüchtige Unterstützung.
+* Für ```ReliableQueue``` gilt eine flüchtige Unterstützung.
+* Für ```ReliableConcurrentQueue``` gilt KEINE flüchtige Unterstützung.
+* Persistente Dienste können NICHT in flüchtige Dienste geändert werden. Beim Ändern des Flags ```HasPersistedState``` in ```false``` muss der gesamte Dienst von Grund auf neu erstellt werden.
+* Flüchtige Dienste können NICHT in persistente Dienste geändert werden. Beim Ändern des Flags ```HasPersistedState``` in ```true``` muss der gesamte Dienst von Grund auf neu erstellt werden.
+* ```HasPersistedState``` ist eine Dienstebenenkonfiguration. Dies bedeutet, dass **ALLE** Sammlungen entweder persistent oder flüchtig sind. Flüchtige und persistente Sammlungen können nicht gemischt werden.
+* Der Quorumverlust einer flüchtigen Partition führt zu einem vollständigen Datenverlust.
+* Die Sicherung und Wiederherstellung ist für flüchtige Dienste NICHT verfügbar.
+
+## <a name="next-steps"></a>Nächste Schritte
 * [Arbeiten mit Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Transaktionen und Sperren](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Verwalten von Daten
   * [Sichern und Wiederherstellen](service-fabric-reliable-services-backup-restore.md)
-  * [Notifications](service-fabric-reliable-services-notifications.md)
+  * [Benachrichtigungen](service-fabric-reliable-services-notifications.md)
   * [Serialisierung und Upgrade](service-fabric-application-upgrade-data-serialization.md)
   * [Konfigurieren des Reliable State Managers](service-fabric-reliable-services-configuration.md)
 * Andere
-  * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
-  * [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
+  * [Entwicklerreferenz für zuverlässige Auflistungen](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

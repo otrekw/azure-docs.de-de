@@ -1,0 +1,11 @@
+- name: 'Dokumentation zum Websitezuverlässigkeits-Engineering (Site Reliability Engineering, SRE)'
+  href: ../index.yml
+- name: Ressourcen
+  expanded: true
+  items:
+    - name: 'SRE: Bücher'
+      href: books.md
+    - name: 'SRE: Veranstaltungen'
+      href: events.md
+    - name: 'SRE: Linksammlungen und Zusammenfassungen'
+      href: links.md

@@ -1,23 +1,17 @@
 ---
-title: Azure Service Fabric-Hostingmodell | Microsoft-Dokumentation
+title: Azure Service Fabric-Hostingmodell
 description: Dieser Artikel beschreibt die Beziehung zwischen Replikaten (oder Instanzen) eines bereitgestellten Service Fabric-Diensts und dem Dienst-Host-Prozess.
-services: service-fabric
-documentationcenter: .net
 author: harahma
-manager: chackdan
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: d2d958a89bff40483e1cd473538f7d1a6971d266
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5f3f6238bb72704d13fef4a7171aeaebee5f9141
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60483570"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708695"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric-Hostingmodell
 Dieser Artikel bietet einen Überblick über von Azure Service Fabric bereitgestellte Anwendungshostingmodelle und beschreibt die Unterschiede zwischen dem Modell mit einem **gemeinsam genutzten Prozess** und dem Modell mit einem **exklusiven Prozess**. Er veranschaulicht grafisch die Bereitstellung einer Anwendung auf einem Service Fabric-Knoten beschreibt und die Beziehung zwischen Replikaten (oder Instanzen) des Diensts und dem Dienst-Host-Prozess.
@@ -36,19 +30,19 @@ Um das Hostingmodell zu verstehen, betrachten wir ein Beispiel im Detail. Angeno
 Weiterhin angenommen, Sie verfügen über einen Cluster mit drei Knoten und erstellen die *Anwendung* **fabric:/App1** vom Typ „MyAppType“. In dieser Anwendung **fabric:/App1** erstellen Sie einen Dienst **fabric:/App1/ServiceA** vom Typ „MyServiceType“. Dieser Dienst verfügt über zwei Partitionen (**P1** und **P2**) und drei Replikate pro Partition. Das folgende Diagramm zeigt die Sicht dieser Anwendung, wie sie auf einem Knoten bereitgestellt wird.
 
 
-![Diagramm der Knotenansicht der bereitgestellten Anwendung][node-view-one]
+![Abbildung, die die Sicht dieser Anwendung zeigt, wie sie auf einem Knoten bereitgestellt wird.][node-view-one]
 
 
 Service Fabric hat „MyServicePackage“ aktiviert, das „MyCodePackage“ gestartet hat, das wiederum Replikate aus beiden Partitionen hostet. Alle Knoten im Cluster weisen dieselbe Ansicht auf, da eine Anzahl von Replikaten pro Partition ausgewählt wurde, die der Anzahl der Knoten im Cluster entspricht. Jetzt erstellen wir einen weiteren Dienst, **fabric:/App1/ServiceB**, in der Anwendung **fabric:/App1**. Dieser Dienst verfügt über eine Partition (**P3**) und drei Replikate pro Partition. Das folgende Diagramm zeigt die neue Sicht auf dem Knoten:
 
 
-![Diagramm der Knotenansicht der bereitgestellten Anwendung][node-view-two]
+![Abbildung, die die neue Sicht für den Knoten zeigt.][node-view-two]
 
 
 Service Fabric hat das neue Replikat für die Partition **P3** des Diensts **fabric:/App1/ServiceB** in die vorhandene Aktivierung von „MyServicePackage“ platziert. Jetzt erstellen wir eine weitere Anwendung, **fabric:/App2**, vom Typ „MyAppType“. In **fabric:/App2** erstellen wir den Dienst **fabric:/App2/ServiceA**. Dieser Dienst verfügt über zwei Partitionen (**P4** und **P5**) und drei Replikate pro Partition. Das folgende Diagramm zeigt die neue Knotenansicht:
 
 
-![Diagramm der Knotenansicht der bereitgestellten Anwendung][node-view-three]
+![Abbildung, die die neue Knotensicht zeigt.][node-view-three]
 
 
 Service Fabric aktiviert eine neue Kopie von „MyServicePackage“, die eine neue Kopie von „MyCodePackage“ startet. Replikate aus beiden Partitionen des Diensts **fabric:/App2/ServiceA** (**P4** und **P5**) werden in diese neue Kopie „MyCodePackage“ eingefügt.
@@ -111,7 +105,7 @@ Wenn Sie nur das Modell mit einem gemeinsam genutzten Prozess für eine Anwendun
 >
 
 ## <a name="work-with-a-deployed-service-package"></a>Arbeiten mit einem bereitgestellten Dienstpaket
-Eine aktive Kopie eines *ServicePackage* auf einem Knoten wird als [bereitgestelltes Dienstpaket][p3] bezeichnet. Wenn Sie das Modell mit einem exklusiven Prozess zum Erstellen von Diensten verwenden, können für eine bestimmte Anwendung mehrere bereitgestellte Dienstpakete für dasselbe *ServicePackage* vorliegen. Wenn Sie Vorgänge ausführen, die für ein bestimmtes bereitgestelltes Dienstpaket gelten sollen, sollten Sie eine **ServicePackageActivationId** angeben, um dieses bestimmte bereitgestellte Dienstpaket zu identifizieren. Geben Sie z.B. eine ID an, wenn Sie [Integritätsberichte für ein bereitgestelltes Dienstpaket senden][p4] oder [das Codepaket eines bereitgestellten Dienstpakets neu starten][p5].
+Eine aktive Kopie eines *ServicePackage* auf einem Knoten wird als [bereitgestelltes Dienstpaket][p3] bezeichnet. Wenn Sie das Modell mit einem exklusiven Prozess zum Erstellen von Diensten verwenden, können für eine bestimmte Anwendung mehrere bereitgestellte Dienstpakete für dasselbe *ServicePackage* vorliegen. Wenn Sie Vorgänge ausführen, die für ein bestimmtes bereitgestelltes Dienstpaket gelten sollen, sollten Sie eine **ServicePackageActivationId** angeben, um dieses bestimmte bereitgestellte Dienstpaket zu identifizieren. Geben Sie z. B. eine ID an, wenn Sie Integritätsberichte für [ein bereitgestelltes Dienstpaket senden][p4] oder [das Codepaket eines bereitgestellten Dienstpakets neu starten][p5].
 
 Sie können die **ServicePackageActivationId** eines bereitgestellten Dienstpakets ermitteln, indem Sie die Liste der auf einem Knoten [bereitgestellten Dienstpakete][p3] abfragen. Wenn Sie die [bereitgestellten Diensttypen][p6], [bereitgestellten Replikate][p7] und [bereitgestellten Codepakete][p8] auf einem Knoten abfragen, enthält das Abfrageergebnis auch die **ServicePackageActivationId** des übergeordneten bereitgestellten Dienstpakets.
 
@@ -163,7 +157,7 @@ Jetzt erstellen Sie die Anwendung **fabric:/SpecialApp**. In **fabric:/SpecialAp
 Beide Dienste verfügen auf jedem Knoten über je zwei Replikate. Da Sie das Modell mit einem exklusiven Prozess zum Erstellen der Dienste verwendet haben, aktiviert Service Fabric eine neue Kopie von „MyServicePackage“ für jedes Replikat. Jede Aktivierung von „MultiTypeServicePackage“ startet eine Kopie von „MyCodePackageA“ und „MyCodePackageB“. Allerdings wird das Replikat, für das „MultiTypeServicePackage“ aktiviert wurde, nur entweder von „MyCodePackageA“ oder „MyCodePackageB“ gehostet. Das folgende Diagramm zeigt die Knotenansicht:
 
 
-![Diagramm der Knotenansicht der bereitgestellten Anwendung][node-view-five]
+![Abbildung, die die Knotensicht zeigt.][node-view-five]
 
 
 In der Aktivierung von „MultiTypeServicePackage“ für das Replikat der Partition **P1** des Diensts **fabric:/SpecialApp/ServiceA** hostet „MyCodePackageA“ das Replikat. „MyCodePackageB“ wird ausgeführt. Gleiches gilt für die Aktivierung von „MultiTypeServicePackage“ für das Replikat der Partition **P3** des Diensts **fabric:/SpecialApp/ServiceB**: „MyCodePackageB“ hostet das Replikat. „MyCodePackageA“ wird ausgeführt. Daher gilt: Je höher die Anzahl von *CodePackages* (die verschiedene *ServiceTypes* registrieren) pro *ServicePackage* ist, desto höher wird die redundante Ressourcenverwendung. 
@@ -176,10 +170,14 @@ In der Aktivierung von „MultiTypeServicePackage“ für das Replikat der Parti
 
 Sie könnten einwenden, dass im vorangehenden Beispiel keine redundante *CodePackage*-Ausführung erfolgt, wenn „MyCodePackageA“ sowohl „MyServiceTypeA“ als auch „MyServiceTypeB“ registriert, aber kein „MyCodePackageB“ existiert. Das ist zwar richtig, aber dieses Anwendungsmodell steht nicht in Einklang mit dem Hostingmodell mit einem exklusive Prozess. Wenn das Ziel darin besteht, jedes Replikat in einem eigenen dedizierten Prozess zu verarbeiten, müssen nicht beide *ServiceTypes* aus demselben *CodePackage* registriert werden. Stattdessen platzieren Sie einfach jeden *ServiceType* in einem eigenen *ServicePackage*.
 
-## <a name="next-steps"></a>Nächste Schritte
-[Packen][a4] und Vorbereiten einer Anwendung für die Bereitstellung.
+### <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services und akteurforkende Unterprozesse
 
-[Bereitstellen und Entfernen von Anwendungen][a5]. Dieser Artikel beschreibt, wie Sie Anwendungsinstanzen mithilfe von PowerShell verwalten.
+Service Fabric unterstützt keine Reliable Services und daher auch keine Reliable akteurforkende Unterprozesse. Ein Beispiel für den Grund der fehlenden Unterstützung ist [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet), der nicht verwendet werden kann, um einen nicht unterstützten Unterprozess zu registrieren, und Abbruchtoken werden nur an registrierte Prozesse gesendet. Dies führt zu allen möglichen Problemen, z.B. zu Upgradefehlern, wenn Unterprozesse nicht geschlossen werden, nachdem der übergeordnete Prozess ein Abbruchtoken empfangen hat.
+
+## <a name="next-steps"></a>Nächste Schritte
+[Packen][a4] und Vorbereiten einer Anwendung für die Bereitstellung
+
+[Bereitstellen und Entfernen von Anwendungen][a5] Dieser Artikel beschreibt, wie Sie Anwendungsinstanzen mithilfe von PowerShell verwalten.
 
 <!--Image references-->
 [node-view-one]: ./media/service-fabric-hosting-model/node-view-one.png
@@ -196,16 +194,16 @@ Sie könnten einwenden, dass im vorangehenden Beispiel keine redundante *CodePac
 [a4]: service-fabric-package-apps.md
 [a5]: service-fabric-deploy-remove-applications.md
 
-[r1]: https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-createservice
+[r1]: /rest/api/servicefabric/sfclient-api-createservice
 
-[c1]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync
-[c2]: https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.instancecount
+[c1]: /dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync
+[c2]: /dotnet/api/system.fabric.description.statelessservicedescription.instancecount
 
-[p1]: https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice
-[p2]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicedescription
-[p3]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicePackage
-[p4]: https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricdeployedservicepackagehealthreport
-[p5]: https://docs.microsoft.com/powershell/module/servicefabric/restart-servicefabricdeployedcodepackage
-[p6]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicetype
-[p7]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedreplica
-[p8]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedcodepackage
+[p1]: /powershell/module/servicefabric/new-servicefabricservice
+[p2]: /powershell/module/servicefabric/get-servicefabricservicedescription
+[p3]: /powershell/module/servicefabric/get-servicefabricdeployedservicepackage
+[p4]: /powershell/module/servicefabric/send-servicefabricdeployedservicepackagehealthreport
+[p5]: /powershell/module/servicefabric/restart-servicefabricdeployedcodepackage
+[p6]: /powershell/module/servicefabric/get-servicefabricdeployedservicetype
+[p7]: /powershell/module/servicefabric/get-servicefabricdeployedreplica
+[p8]: /powershell/module/servicefabric/get-servicefabricdeployedcodepackage

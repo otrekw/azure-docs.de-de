@@ -6,10 +6,16 @@
     - name: Was sind öffentliche Azure-Datasets?
       displayName: open datasets overview introduction
       href: overview-what-are-open-datasets.md
-- name: Tutorial
+- name: Lernprogramm
   items:
     - name: Regression mit automatisiertem maschinellem Lernen
-      href: tutorial-opendatasets-automl.md
+      href: ../machine-learning/tutorial-auto-train-models.md?bc=%2fazure%2fopen-datasets%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fopen-datasets%2ftoc.json
+    - name: Anreichern eines Bildklassifizierungsmodells
+      href: ../machine-learning/tutorial-train-models-with-aml.md?bc=%2fazure%2fopen-datasets%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fopen-datasets%2ftoc.json
+- name: Anleitungen
+  items:
+    - name: Datasets in Azure Machine Learning
+      href: how-to-create-azure-machine-learning-dataset-from-open-dataset.md
 - name: Beispiele
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md
@@ -32,8 +38,8 @@
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/open-datasets/'
     - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Benutzerforum
-      href: 'https://aka.ms/open-datasets-forum'
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=open-datasets&regions=non-regional'
+    - name: Microsoft – Fragen und Antworten
+      href: /answers/topics/azure-open-datasets.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-open-datasets'

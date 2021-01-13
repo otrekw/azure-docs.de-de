@@ -1,5 +1,5 @@
 ---
-title: Einrichten der Quellumgebung für die VMware-Replikation in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+title: Einrichten von Quelleinstellungen für die VMware-Notfallwiederherstellung in Azure mit Azure Site Recovery
 description: Dieser Artikel beschreibt die Einrichtung Ihrer lokalen Umgebung für das Replizieren von virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery.
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 075f86b24e2915d9689db8097889a830bade74c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afd3979690b8952c915a49099ee04b3d416031fd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723425"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88189729"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Einrichten der Quellumgebung für die Replikation von VMware in Azure
 
-Dieser Artikel beschreibt die Einrichtung Ihrer lokalen Quellumgebung für das Replizieren von virtuellen VMware-Computern in Azure. Er enthält die Schritte zum Auswählen Ihres Replikationsszenarios, Einrichten eines lokalen Computers als Site Recovery-Konfigurationsserver und automatischen Ermitteln von lokalen VMs. 
+Dieser Artikel beschreibt die Einrichtung Ihrer lokalen Quellumgebung für das Replizieren von virtuellen VMware-Computern in Azure. Der Artikel enthält die Schritte zum Auswählen Ihres Replikationsszenarios, Einrichten eines lokalen Computers als Site Recovery-Konfigurationsserver und automatischen Ermitteln von lokalen VMs.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,14 +33,14 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes bereits durchgefüh
 2. Wählen Sie unter **Erste Schritte** die Option „Site Recovery“ aus. Klicken Sie anschließend auf **Infrastruktur vorbereiten**.
 3. Wählen Sie in **Schutzziel** > **Wo befinden sich Ihre Computer?** die Option **Lokal** aus.
 4. Wählen Sie in **Wohin möchten Sie Ihre Computer replizieren?** die Option **Nach Azure** aus.
-5. Wählen Sie in **Sind Ihre Computer virtualisiert?** die Option **Ja, mit VMware vSphere Hypervisor** aus. Wählen Sie dann **OK**aus.
+5. Wählen Sie in **Sind Ihre Computer virtualisiert?** die Option **Ja, mit VMware vSphere Hypervisor** aus. Klicken Sie anschließend auf **OK**.
 
 ## <a name="set-up-the-configuration-server"></a>Einrichten des Konfigurationsservers
 
-Sie können den Konfigurationsserver mithilfe einer OVA-Vorlage (Open Virtualization Application) als lokale VMware-VM einrichten. [Erfahren Sie mehr](concepts-vmware-to-azure-architecture.md) zu den Komponenten, die auf der VMware-VM installiert werden.
+Sie können den Konfigurationsserver mithilfe einer OVA-Vorlage (Open Virtualization Application) als lokale VMware-VM einrichten. [Erfahren Sie mehr](./vmware-azure-architecture.md) zu den Komponenten, die auf der VMware-VM installiert werden.
 
 1. Informieren Sie sich über die [Voraussetzungen](vmware-azure-deploy-configuration-server.md#prerequisites) für die Bereitstellung des Konfigurationsservers.
-2. [Überprüfen Sie die Kapazität](vmware-azure-deploy-configuration-server.md#capacity-planning) für die Bereitstellung.
+2. [Überprüfen Sie die Kapazität](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements) für die Bereitstellung.
 3. Führen Sie den [Download](vmware-azure-deploy-configuration-server.md#download-the-template) und [Import](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) der OVA-Vorlage durch, um eine lokale VMware-VM einzurichten, auf der der Konfigurationsserver ausgeführt wird. Bei der mit der Vorlage bereitgestellten Lizenz handelt es sich um eine Evaluierungslizenz, die 180 Tage lang gültig ist. Nach Ablauf dieses Zeitraums muss der Kunde die Windows-Version mit einer käuflich erworbenen Lizenz aktivieren.
 4. Aktivieren Sie die VMware-VM, und [registrieren](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) Sie sie im Recovery Services-Tresor.
 
@@ -69,7 +69,7 @@ Schließen Sie für eine reibungslose Replikation und zur Vermeidung von Konnekt
   - C:\ProgramData\ASRSetupLogs
   - C:\ProgramData\LogUploadServiceLogs
   - C:\inetpub
-  - Installationsverzeichnis des ASR-Servers. Beispiel:  E:\Programme (x86)\Microsoft Azure Site Recovery
+  - Installationsverzeichnis des Site Recovery-Servers. Beispiel: E:\Programme (x86)\Microsoft Azure Site Recovery
 
 ### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Aktive Antivirensoftware auf Prozessserver/Masterziel mit horizontaler Skalierung
 
@@ -81,7 +81,19 @@ Schließen Sie die folgenden Ordner von der Antivirensoftware aus:
 4. C:\ProgramData\ASRSetupLogs
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
-7. Installationsverzeichnis des ASR-Prozessservers mit Lastenausgleich. Beispiel: C:\Programme (x86)\Microsoft Azure Site Recovery
+7. Installationsverzeichnis des Azure Site Recovery-Prozessservers mit Lastenausgleich. Beispiel: C:\Programme (x86)\Microsoft Azure Site Recovery
+
+### <a name="if-antivirus-software-is-active-on-the-linux-master-target"></a>Wenn auf dem Linux-Masterziel Antivirensoftware aktiv ist
+
+Schließen Sie die folgenden Ordner von der Antivirensoftware aus:
+
+1.  /usr/local/ASR
+2.  /usr/local/InMage
+3.  /var/log/vxlogs
+4.  /var/log
+5.  /var/log/ApplicationPolicyLogs
+6.  /var/log/ASRsetuptelemetry
+7.  /var/log/ASRsetuptelemetry_uploaded
 
 
 ## <a name="next-steps"></a>Nächste Schritte

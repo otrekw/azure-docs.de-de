@@ -4,19 +4,19 @@ description: Erfahren Sie, wie veraltete Geräte aus der Datenbank der registrie
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78ddda8ff67cfdfebcf19f53c307c689884baf4d
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d12679e64d690614aaf788837a02af007448f83d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942897"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393675"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Anleitung: Verwalten von veralteten Geräte in Azure AD
 
@@ -30,7 +30,7 @@ In diesem Artikel wird beschrieben, wie Sie veraltete Geräte in Ihrer Umgebung 
 Ein veraltetes Gerät ist ein Gerät, das für Azure AD registriert, aber dann nicht genutzt wurde, um über einen bestimmten Zeitraum auf Cloud-Apps zuzugreifen. Veraltete Geräte wirken sich aus folgenden Gründen auf die Verwaltung und Unterstützung Ihrer Geräte und Benutzer im Mandanten aus: 
 
 - Doppelte Geräte können für Ihre Helpdesk-Mitarbeiter die Identifizierung des derzeit aktiven Geräts erschweren.
-- Bei einer erhöhten Anzahl von Geräten werden unnötige Geräterückschreiben-Vorgänge erstellt, sodass sich die Dauer von AAD-Verbindungssynchronisierungen erhöht.
+- Bei einer erhöhten Anzahl von Geräten werden unnötige Geräterückschreiben-Vorgänge erstellt, sodass sich die Dauer von Azure AD-Verbindungssynchronisierungen erhöht.
 - Als allgemeine Hygienemaßnahme und zur Erfüllung der Konformität ist es ratsam, über einen bereinigten Gerätestand zu verfügen. 
 
 Veraltete Geräte in Azure AD können eine Störung der allgemeinen Lebenszyklusrichtlinien für Geräte in Ihrer Organisation darstellen.
@@ -55,11 +55,11 @@ Sie haben zwei Möglichkeiten, um den Wert des Aktivitätszeitstempels abzurufen
 
 - Spalte **Aktivität** auf der [Seite „Geräte“](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) im Azure-Portal
 
-    ![Aktivitätszeitstempel](./media/manage-stale-devices/01.png)
+    :::image type="content" source="./media/manage-stale-devices/01.png" alt-text="Screenshot: Seite im Azure-Portal mit Name, Besitzer und anderen Informationen zu Geräten. Eine Spalte enthält den Aktivitätszeitstempel." border="false":::
 
-- Cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0)
+- Cmdlet [Get-AzureADDevice](/powershell/module/azuread/Get-AzureADDevice)
 
-    ![Aktivitätszeitstempel](./media/manage-stale-devices/02.png)
+    :::image type="content" source="./media/manage-stale-devices/02.png" alt-text="Screenshot: Befehlszeilenausgabe. Eine Zeile ist hervorgehoben und enthält einen Zeitstempel für den Wert „ApproximateLastLogonTimeStamp“." border="false":::
 
 ## <a name="plan-the-cleanup-of-your-stale-devices"></a>Planen der Bereinigung Ihrer veralteten Geräte
 
@@ -89,7 +89,7 @@ Wenn Ihr Gerät per Intune oder mit einer anderen MDM-Lösung gesteuert wird, so
 
 ### <a name="system-managed-devices"></a>Vom System verwaltete Geräte
 
-Löschen Sie keine vom System verwalteten Geräte. Hierbei handelt es sich normalerweise um Geräte wie Autopilot. Nach dem Löschen können diese Geräte nicht erneut bereitgestellt werden. Das neue `get-msoldevice`-Cmdlet schließt vom System verwaltete Geräte standardmäßig aus. 
+Löschen Sie keine vom System verwalteten Geräte. Hierbei handelt es sich normalerweise um Geräte wie Autopilot. Nach dem Löschen können diese Geräte nicht erneut bereitgestellt werden. Das neue `Get-AzureADDevice`-Cmdlet schließt vom System verwaltete Geräte standardmäßig aus. 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>In Azure AD eingebundene Hybridgeräte
 
@@ -97,7 +97,7 @@ Ihre in Hybrid-Azure AD eingebundenen Geräte sollten an Ihren Richtlinien für 
 
 Bereinigen Sie Azure AD wie folgt:
 
-- **Windows 10-Geräte**: Deaktivieren oder löschen Sie Windows 10-Geräte auf Ihrer lokalen AD-Instanz, und lassen Sie den geänderten Gerätestatus von Azure AD Connect mit Azure AD synchronisieren.
+- **Windows 10-Geräte** : Deaktivieren oder löschen Sie Windows 10-Geräte auf Ihrer lokalen AD-Instanz, und lassen Sie den geänderten Gerätestatus von Azure AD Connect mit Azure AD synchronisieren.
 - **Windows 7/8:** Deaktivieren oder löschen Sie Windows 7/8-Geräte zunächst in Ihrem lokalen AD. Sie können Azure AD Connect nicht verwenden, um Windows 7/8-Geräte in Azure AD zu deaktivieren oder zu löschen. Stattdessen müssen Sie, wenn Sie lokal Änderungen vornehmen, das Deaktivieren/Löschen in Azure AD durchführen.
 
 > [!NOTE]
@@ -125,30 +125,29 @@ Deaktivieren oder löschen Sie in Azure AD registrierte Geräte in Azure AD.
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Bereinigen veralteter Geräte im Azure-Portal  
 
-Sie können veraltete Geräte zwar im Azure-Portal bereinigen, aber es ist effizienter, für diesen Vorgang ein PowerShell-Skript zu verwenden. Verwenden Sie das aktuelle PowerShell V1-Modul, um den Zeitstempelfilter zu nutzen und vom System verwaltete Geräte herauszufiltern, z.B. Autopilot. An diesem Punkt ist die Nutzung von PowerShell V2 nicht zu empfehlen.
+Sie können veraltete Geräte zwar im Azure-Portal bereinigen, aber es ist effizienter, für diesen Vorgang ein PowerShell-Skript zu verwenden. Verwenden Sie das aktuelle PowerShell V1-Modul, um den Zeitstempelfilter zu nutzen und vom System verwaltete Geräte herauszufiltern, z. B. Autopilot. An diesem Punkt ist die Nutzung von PowerShell V2 nicht zu empfehlen.
 
 Eine typische Routine umfasst die folgenden Schritte:
 
-1. Herstellen einer Verbindung mit Azure Active Directory über das Cmdlet [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0)
+1. Herstellen einer Verbindung zu Azure Active Directory mit dem Cmdlet [Connect-AzureAD](/powershell/module/azuread/connect-azuread)
 1. Abrufen der Liste mit den Geräten
-1. Deaktivieren Sie das Gerät, indem Sie das Cmdlet [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) verwenden. 
+1. Deaktivieren des Geräts mit dem Cmdlet [Set-AzureADDevice](/powershell/module/azuread/Set-AzureADDevice) (deaktivieren mit der Option „-AccountEnabled“) 
 1. Warten Sie unabhängig von der ausgewählten Anzahl von Tagen vor dem Löschen des Geräts die Toleranzperiode ab.
-1. Entfernen Sie das Gerät mit dem Cmdlet [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0).
+1. Entfernen des Geräts mit dem Cmdlet [Remove-AzureADDevice](/powershell/module/azuread/Remove-AzureADDevice)
 
 ### <a name="get-the-list-of-devices"></a>Abrufen der Liste mit den Geräten
 
 Gehen Sie wie folgt vor, um alle Geräte abzurufen und die zurückgegebenen Daten in einer CSV-Datei zu speichern:
 
 ```PowerShell
-Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, Approxi
-mateLastLogonTimestamp | export-csv devicelist-summary.csv
+Get-AzureADDevice -All:$true | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
-Falls Ihr Verzeichnis eine größere Zahl von Geräten enthält, können Sie den Zeitstempelfilter verwenden, um die Anzahl von zurückgegebenen Geräten einzugrenzen. Rufen Sie wie folgt alle Geräte mit einem Zeitstempel ab, der älter als ein bestimmtes Datum ist, und speichern Sie die zurückgegebenen Daten in einer CSV-Datei: 
+Falls Ihr Verzeichnis eine größere Zahl von Geräten enthält, können Sie den Zeitstempelfilter verwenden, um die Anzahl der zurückgegebenen Geräte einzugrenzen. Rufen Sie wie folgt alle Geräte mit einem Zeitstempel ab, der älter als ein bestimmtes Datum ist, und speichern Sie die zurückgegebenen Daten in einer CSV-Datei: 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
-Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+Get-AzureADDevice -All:$true | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
 ## <a name="what-you-should-know"></a>Wichtige Informationen
@@ -163,10 +162,10 @@ Wenn sie konfiguriert sind, werden BitLocker-Schlüssel für Windows 10-Geräte 
 
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Warum sollte ich mir Gedanken über Windows Autopilot-Geräte machen?
 
-Wenn ein Azure AD-Gerät einem Windows Autopilot-Objekt zugeordnet wurde, können die folgenden drei Szenarien eintreten, wenn das Gerät in der Zukunft für einen anderen Zweck verwendet wird:
-- Bei benutzergesteuerten Nicht-White-Glove-Bereitstellungen mit Windows Autopilot wird ein neues Azure AD-Gerät erstellt, das jedoch nicht mit der ZTDID gekennzeichnet wird.
+Wenn Sie ein Azure AD-Gerät löschen, das einem Windows Autopilot-Objekt zugeordnet war, können die folgenden drei Szenarien eintreten, wenn das Gerät in der Zukunft für einen anderen Zweck verwendet wird:
+- Bei benutzergesteuerten Windows Autopilot-Bereitstellungen ohne Vorabbereitstellung wird ein neues Azure AD-Gerät erstellt, aber nicht mit der ZTDID gekennzeichnet.
 - Bei Windows Autopilot-Bereitstellungen im Selbstbereitstellungsmodus wird ein Fehler auftreten, weil ein zugeordnetes Azure AD-Gerät nicht gefunden werden kann.  (Dies ist ein Sicherheitsmechanismus, um sicherzustellen, dass keine „Eindringling“-Geräte versuchen, Azure AD ohne Anmeldeinformationen beizutreten.) Der Fehler weist auf eine fehlende ZTDID-Übereinstimmung hin.
-- Bei White-Glove-Bereitstellungen mit Windows Autopilot wird ein Fehler auftreten, weil ein zugeordnetes Azure AD-Gerät nicht gefunden werden kann. (Im Hintergrund verwenden White-Glove-Bereitstellungen denselben Selbstbereitstellungsmodus-Prozess, sodass sie die gleichen Sicherheitsmechanismen erzwingen.)
+- Bei Windows Autopilot-Bereitstellungen mit Vorabbereitstellung wird ein Fehler auftreten, weil ein zugeordnetes Azure AD-Gerät nicht gefunden werden kann. (Im Hintergrund verwenden Bereitstellungen mit Vorabbereitstellung denselben Selbstbereitstellungsmodus-Prozess, sodass sie dieselben Sicherheitsmechanismen erzwingen.)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>Wie kann ich ermitteln, welche Gerätetypen eingebunden sind?
 
@@ -176,9 +175,9 @@ Weitere Informationen zu den unterschiedlichen Typen finden Sie in der [Übersic
 
 Alle Authentifizierungen, bei denen ein Gerät für die Authentifizierung gegenüber Azure AD genutzt wird, werden abgelehnt. Typische Beispiele:
 
-- **In Hybrid-Azure AD eingebundenes Gerät**: Benutzer verwenden das Gerät ggf., um sich an ihrer lokalen Domäne anzumelden. Sie können aber nicht auf Azure AD-Ressourcen, z.B. Office 365, zugreifen.
-- **In Azure AD eingebundenes Gerät**: Benutzer können das Gerät nicht verwenden, um sich anzumelden. 
-- **Mobile Geräte**: Der Benutzer kann nicht auf Azure AD-Ressourcen, z.B. Office 365, zugreifen. 
+- **Hybrid in Azure AD eingebundenes Gerät** : Benutzer können das Gerät ggf. zur Anmeldung in ihrer lokalen Domäne verwenden. Sie können aber nicht auf Azure AD-Ressourcen, z. B. Microsoft 365, zugreifen.
+- **In Azure AD eingebundenes Gerät** : Benutzer können das Gerät nicht verwenden, um sich anzumelden. 
+- **Mobile Geräte** : Der Benutzer kann nicht auf Azure AD-Ressourcen, z. B. Microsoft 365, zugreifen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

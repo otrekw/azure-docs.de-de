@@ -1,29 +1,30 @@
 ---
-title: Wichtige Konzepte für die Verwaltung der Azure-VMware-Lösung von CloudSimple
-description: Hier werden wichtige Konzepte für die Verwaltung der Azure-VMware-Lösung von CloudSimple beschrieben.
-author: sharaths-cs
-ms.author: b-shsury
+title: Wichtige Konzepte für die Verwaltung von Azure VMware Solution by CloudSimple
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Hier werden wichtige Konzepte für die Verwaltung von Azure VMware Solution by CloudSimple beschrieben.
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 04/24/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 120ab94ce62010acf4e742bd5220405961dad6db
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: e5544ef7725855d28e20d39ff345db6bb07671a2
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972727"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895324"
 ---
-# <a name="key-concepts-for-administration-of-azure-vmware-solution-by-cloudsimple"></a>Wichtige Konzepte für die Verwaltung der Azure-VMware-Lösung von CloudSimple
+# <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Wichtige Konzepte für die Verwaltung von Azure VMware Solution by CloudSimple
 
-Für die Verwaltung der Azure-VMware-Lösung von CloudSimple müssen folgende Konzepte bekannt sein:
+Für die Verwaltung von Azure VMware Solution by CloudSimple müssen Sie mit den folgenden Konzepten vertraut sein:
 
-* CloudSimple-Dienst, angezeigt als: Azure-VMware-Lösung von CloudSimple – Dienst
-* CloudSimple-Knoten, angezeigt als: Azure-VMware-Lösung von CloudSimple – Knoten
+* CloudSimple-Dienst, angezeigt als: Azure VMware Solution by CloudSimple – Dienst
+* CloudSimple-Knoten, angezeigt als: Azure VMware Solution by CloudSimple – Knoten
 * Private CloudSimple-Cloud
 * Dienstnetzwerk
-* Virtueller CloudSimple-Computer, angezeigt als: Azure-VMware-Lösung von CloudSimple – virtueller Computer
+* Virtueller CloudSimple-Computer, angezeigt als: Azure VMware Solution by CloudSimple – Virtueller Computer
 
 ## <a name="cloudsimple-service"></a>CloudSimple-Dienst
 
@@ -60,4 +61,4 @@ Mit dem CloudSimple-Dienst können Sie virtuelle VMware-Computer über das Azure
 Weitere Informationen:
 
 * [Virtuelle CloudSimple-Computer](cloudsimple-virtual-machines.md)
-* [Azure-Abonnementzuordnung](https://docs.azure.cloudsimple.com/azure-subscription-mapping/)
+* [Azure-Abonnementzuordnung](./azure-subscription-mapping.md)

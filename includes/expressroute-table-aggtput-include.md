@@ -5,20 +5,20 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a2ebaf6ae95a1c250ef28e6ff2176f6ae5bd6b3f
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 5a01bbdcae66e7cd0acf9a1bd120916955fd8560
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69564367"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "74894390"
 ---
-|  | **Megabits pro Sekunde** | **Pakete pro Sekunde** | **Verbindungen pro Sekunde** | **Gemeinsame Verwendung von VPN-Gateway und ExpressRoute** |
-| --- | --- | --- | --- | --- |
-| **Basic-SKU (veraltet)** |500 | Unknown | Unknown |Nein |
-| **Standard-SKU/ErGw1AZ** |1\.000 | 100.000 | 7\.000 | Ja |
-| **Hochleistungs-SKU/ErGw2AZ** |2\.000 | 250.000 | 14.000 | Ja |
-| **Höchstleistung-SKU/ErGw3AZ** |10.000 | 1\.000.000 | 28.000 | Ja |
+|  | **Megabits pro Sekunde** | **Pakete pro Sekunde** | **Verbindungen pro Sekunde** | **Gemeinsame Verwendung von VPN-Gateway und ExpressRoute** | **FastPath** |
+| --- | --- | --- | --- | --- | --- |
+| **Basic-SKU (veraltet)** |500 | Unknown | Unknown |Nein | Nein |
+| **Standard-SKU/ErGw1AZ** |1\.000 | 100.000 | 7\.000 | Ja | Nein |
+| **Hochleistungs-SKU/ErGw2AZ** |2\.000 | 250.000 | 14.000 | Ja | Nein |
+| **Höchstleistung-SKU/ErGw3AZ** |10.000 | 1\.000.000 | 28.000 | Ja | Ja |
 

@@ -1,25 +1,18 @@
 ---
-title: Versionshinweise zu Update 5 der StorSimple 8000-Serie | Microsoft-Dokumentation
+title: Versionshinweise zu Update 5 der StorSimple 8000-Serie
 description: Beschreibt die neuen Features sowie Probleme und Problemumgehungen für Update 5 der StorSimple 8000-Serie.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 462cbd6261723aa91bbfd23292611e758a800ed2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60844090"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021043"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>Versionshinweise zu Update 5 der StorSimple 8000-Serie
 
@@ -51,7 +44,7 @@ Die folgenden wichtigen Verbesserungen und Fehlerbehebungen wurden in Update 5 v
 
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in Update 5 behoben wurden.
 
-| Nein | Feature | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein | Funktion | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell-Remotenutzung |In der vorherigen Version erhielten Benutzer eine Fehlermeldung, wenn sie versuchten, über Windows PowerShell eine Remoteverbindung mit der StorSimple Cloud Appliance herzustellen. Dieses Problem gibt es in dieser Version nicht mehr. |Nein |Ja |
 | 2 |Bandbreitenvorlagen |In früheren Versionen gab es ein Problem mit Bandbreitenvorlagen, das zu einer geringeren Bandbreite führte, als für das Gerät konfiguriert war. Dieses Problem wurde in dieser Version behoben. |Ja |Ja |

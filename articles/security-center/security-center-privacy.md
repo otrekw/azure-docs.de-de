@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Benutzerdaten in Azure Security Center | Microsoft-Dokumentation
-description: " Dieser Artikel enthält Informationen zur Verwaltung von Benutzerdaten in Azure Security Center. "
+description: Erfahren Sie, wie Sie die Benutzerdaten in Azure Security Center verwalten. Bei der Verwaltung der Benutzerdaten haben Sie auch die Möglichkeit, auf Daten zuzugreifen, Daten zu löschen oder zu exportieren.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 40299b2ff9a20792cf25828051d2f937f3f1e9da
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 4e270185550fac5a06d800d74d5fcd751aceb25d
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201270"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342228"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Verwalten von Benutzerdaten in Azure Security Center
 Dieser Artikel enthält Informationen zur Verwaltung der Benutzerdaten in Azure Security Center. Bei der Verwaltung der Benutzerdaten haben Sie auch die Möglichkeit, auf Daten zuzugreifen, Daten zu löschen oder zu exportieren.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-Ein Security Center-Benutzer, dem die Rolle „Leser“, „Besitzer“, „Mitwirkender“ oder „Kontoadministrator“ zugewiesen wird, kann mit dem Tool auf die Kundendaten zugreifen. Weitere Informationen zu den Rollen „Leser“, „Besitzer“ und „Mitwirkender“ finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md). Weitere Informationen zur Rolle „Kontoadministrator“ finden Sie unter [Azure-Abonnementadministratoren](../billing/billing-add-change-azure-subscription-administrator.md).
+Ein Security Center-Benutzer, dem die Rolle „Leser“, „Besitzer“, „Mitwirkender“ oder „Kontoadministrator“ zugewiesen wird, kann mit dem Tool auf die Kundendaten zugreifen. Weitere Informationen zu den Rollen „Kontoadministrator“, „Leser“, „Besitzer“ und „Mitwirkender“ finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md). Siehe [Azure-Abonnementadministratoren](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Suchen nach und Identifizieren von personenbezogenen Daten
 Ein Security Center-Benutzer kann seine personenbezogenen Daten über das Azure-Portal anzeigen. In Security Center werden nur Details für einen Sicherheitskontakt gespeichert, wie z.B. E-Mail-Adressen und Telefonnummern. Weitere Informationen finden Sie unter [Bereitstellen von Details für einen Sicherheitskontakt in Azure Security Center](security-center-provide-security-contact-details.md).
@@ -55,17 +55,17 @@ Ein Security Center-Benutzer, dem die Rolle „Besitzer“, „Mitwirkender“ o
 
 Ein Kontoadministrator kann keine Warnungsvorfälle bearbeiten. [Warnungsvorfälle](security-center-managing-and-responding-alerts.md) gelten als Sicherheitsdaten und sind schreibgeschützt.
 
-## <a name="deleting-personal-data"></a>Löschen personenbezogener Daten
+## <a name="deleting-personal-data"></a>Löschen von personenbezogenen Daten
 Ein Security Center-Benutzer, dem die Rolle „Besitzer“, „Mitwirkender“ oder „Kontoadministrator“ zugewiesen ist, kann [Sicherheitskontaktdaten](security-center-provide-security-contact-details.md) über das Azure-Portal löschen.
 
 Ein Security Center-Benutzer, dem die Rolle „Besitzer“, „Mitwirkender“ oder „Kontoadministrator“ zugewiesen ist, kann [Just-In-Time-Richtlinien](security-center-just-in-time.md) über das Azure-Portal löschen.
 
-Ein Security Center-Benutzer kann keine Warnungsvorfälle löschen. Aufgrund der Sicherheitsanforderungen gelten [Warnungsvorfälle](security-center-managing-and-responding-alerts.md) als schreibgeschützte Daten.
+Ein Security Center-Benutzer kann keine Warnungsvorfälle löschen. Aus Sicherheitsgründen gelten [Warnungsvorfälle](security-center-managing-and-responding-alerts.md) als schreibgeschützte Daten.
 
-## <a name="exporting-personal-data"></a>Exportieren personenbezogener Daten
+## <a name="exporting-personal-data"></a>Exportieren von personenbezogenen Daten
 Ein Security Center-Benutzer, dem die Rolle „Leser“, „Besitzer“, „Mitwirkender“ oder „Kontoadministrator“ zugewiesen ist, kann wie folgt [Sicherheitskontaktdaten](security-center-provide-security-contact-details.md) exportieren:
 
-- Durchführen eines Kopiervorgangs über das Azure-Portal
+- Kopieren aus dem Azure-Portal
 - Ausführen des Azure-REST-API-Aufrufs GET HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
@@ -73,7 +73,7 @@ Ein Security Center-Benutzer, dem die Rolle „Leser“, „Besitzer“, „Mitw
 
 Ein Security Center-Benutzer, dem die Rolle „Kontoadministrator“ zugewiesen ist, kann die [Just-In-Time-Richtlinien](security-center-just-in-time.md) mit den IP-Adressen wie folgt exportieren:
 
-- Durchführen eines Kopiervorgangs über das Azure-Portal
+- Kopieren aus dem Azure-Portal
 - Ausführen des Azure-REST-API-Aufrufs GET HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
@@ -81,13 +81,13 @@ Ein Security Center-Benutzer, dem die Rolle „Kontoadministrator“ zugewiesen 
 
 Ein Kontoadministrator kann die Warnungsdetails wie folgt exportieren:
 
-- Durchführen eines Kopiervorgangs über das Azure-Portal
+- Kopieren aus dem Azure-Portal
 - Ausführen des Azure-REST-API-Aufrufs GET HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
   ```
 
-Weitere Informationen finden Sie unter [Abrufen von Sicherheitswarnungen (GET-Auflistung)](https://msdn.microsoft.com/library/mt704050.aspx).
+Weitere Informationen finden Sie unter [Abrufen von Sicherheitswarnungen (GET-Auflistung)](/previous-versions/azure/reference/mt704050(v=azure.100)).
 
 ## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>Einschränken der Verwendung der personenbezogenen Daten für die Profilerstellung oder das Marketing ohne Zustimmung
 Ein Security Center-Benutzer kann das Abonnement kündigen, indem er seine [Sicherheitskontaktdaten](security-center-provide-security-contact-details.md) löscht.
@@ -97,7 +97,4 @@ Ein Security Center-Benutzer kann das Abonnement kündigen, indem er seine [Sich
 [Warnungsdaten](security-center-managing-and-responding-alerts.md) gelten als Sicherheitsdaten und werden für einen Zeitraum von zwei Jahren beibehalten.
 
 ## <a name="auditing-and-reporting"></a>Überwachung und Berichterstellung
-Überwachungsprotokolle von Sicherheitskontakt-, Just-In-Time- und Warnungsaktualisierungen werden in [Azure-Aktivitätsprotokollen](../azure-monitor/platform/activity-logs-overview.md) beibehalten.
-
-## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Verwalten von Benutzerdaten finden Sie unter [Verwalten von Benutzerdaten in Azure Security Center](security-center-investigation-user-data.md).
+Überwachungsprotokolle von Sicherheitskontakt-, Just-In-Time- und Warnungsaktualisierungen werden in [Azure-Aktivitätsprotokollen](../azure-monitor/platform/platform-logs-overview.md) beibehalten.

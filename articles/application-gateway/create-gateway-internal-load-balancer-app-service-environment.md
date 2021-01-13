@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2018
+ms.date: 06/09/2020
 ms.author: genli
-ms.openlocfilehash: 9c3216af283ebd9d84a5469d4d50d18c19f67534
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 8861e850e168169762d95c44a54b6a88a036f396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121948"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84628533"
 ---
-# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Back-End-Serverzertifikat nicht in der Whitelist für ein Anwendungsgateway enthalten (bei Verwendung eines internen Lastenausgleichs mit einer App Service-Umgebung)
+# <a name="back-end-server-certificate-is-not-allow-listed-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Back-End-Serverzertifikat ist nicht in der Liste zugelassener Zertifikate für ein Anwendungsgateway enthalten (bei Verwendung eines internen Lastenausgleichs mit einer App Service-Umgebung)
 
-In diesem Artikel wird die Behebung des folgenden Problems behandelt: Ein Zertifikat ist nicht in der Whitelist enthalten, wenn Sie ein Anwendungsgateway unter Verwendung eines internen Lastenausgleichs (Internal Load Balancer, ILB) und einer App Service-Umgebung (App Service Environment, ASE) am Back-End erstellen und dabei End-to-End-SSL in Azure verwenden.
+In diesem Artikel wird die Behebung des folgenden Problems behandelt: Ein Zertifikat ist nicht in der Liste zugelassener Zertifikate enthalten, wenn Sie ein Anwendungsgateway unter Verwendung eines internen Lastenausgleichs (Internal Load Balancer, ILB) und einer App Service-Umgebung (App Service Environment, ASE) am Back-End erstellen und dabei End-to-End-TLS in Azure verwenden.
 
 ## <a name="symptoms"></a>Symptome
 
@@ -41,7 +41,7 @@ Wenn Sie ein Anwendungsgateway unter Verwendung eines ILB mit einer ASE am Back-
 - **Port:** : 443
 - **Benutzerdefinierter Test:** Hostname: test.appgwtestase.com
 - **Authentifizierungszertifikat:** CER-Datei von „test.appgwtestase.com“
-- **Back-End-Integrität:** Fehlerhaft (Back-End-Serverzertifikat nicht in Whitelist für Application Gateway enthalten)
+- **Back-End-Integrität:** Fehlerhaft – Back-End-Serverzertifikat nicht in der Liste zugelassener Zertifikate für Application Gateway enthalten.
 
 **ASE-Konfiguration:**
 
@@ -68,7 +68,7 @@ Wenn Sie für den ILB-Zugriff einen vollständig qualifizierten Domänennamen (F
 
 - Deaktivieren Sie die Option **Use for App service** (Für App-Dienst verwenden) für das Anwendungsgateway, falls Sie die IP-Adresse des ILB verwenden.
 
-Zur Vereinfachung können Sie das ILB-Zertifikat in den HTTP-Einstellungen hochladen, damit der Testpfad funktioniert. (Dieser Schritt betrifft lediglich die Aufnahme in die Whitelist. Es wird nicht für die SSL-Kommunikation verwendet.) Sie können das ILB-Zertifikat abrufen, indem Sie in Ihrem Browser über HTTPS mit der IP-Adresse des ILB auf den ILB zugreifen, das SSL-Zertifikat in ein Base64-codiertes CER-Format exportieren und das Zertifikat anschließend in den entsprechenden HTTP-Einstellungen hochladen.
+Zur Vereinfachung können Sie das ILB-Zertifikat in den HTTP-Einstellungen hochladen, damit der Testpfad funktioniert. (Dieser Schritt betrifft lediglich die Aufnahme in die Liste der zugelassenen Zertifikate. Es wird nicht für die TLS-Kommunikation verwendet.) Sie können das ILB-Zertifikat abrufen, indem Sie in Ihrem Browser über HTTPS mit der IP-Adresse des ILB auf den ILB zugreifen, das TLS/SSL-Zertifikat in ein Base64-codiertes CER-Format exportieren und das Zertifikat anschließend in den entsprechenden HTTP-Einstellungen hochladen.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 

@@ -1,27 +1,33 @@
 ---
 title: 'Tutorial: Single-Page-Webanwendung für die Bing-Entitätssuche'
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel wird beschrieben, wie Sie die Bing-Entitätssuche-API in einer Single-Page-Webanwendung verwenden.
+description: In diesem Tutorial wird beschrieben, wie Sie die Bing-Entitätssuche-API in einer Single-Page-Webanwendung verwenden.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 07/15/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 5a8276f06207eb69ffec0e21c6d92794973f3b83
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.custom: devx-track-js
+ms.openlocfilehash: f725a4095103a7dcfc3dcdbdcefdc84d16501632
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423976"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366532"
 ---
 # <a name="tutorial-single-page-web-app"></a>Tutorial: Einzelseiten-Web-App
 
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
 Mit der Bing-Entitätssuche-API können Sie das Web nach Informationen zu *Entitäten* und *Orten* durchsuchen. Sie können in einer Abfrage einen oder auch beide Ergebnistypen anfordern. Orte und Entitäten sind wie folgt definiert:
 
-|||
+| Ergebnis | BESCHREIBUNG |
 |-|-|
 |Entitäten|Bekannte Personen, Orte und Objekte, die durch die Angabe eines Namens gefunden werden können|
 |Orte|Restaurants, Hotels und andere lokale Unternehmen, die durch die Angabe eines Namens *oder* eines Typs (beispielsweise „Italienische Restaurants“) gefunden werden können|
@@ -51,19 +57,28 @@ In dieser Tutorial-App wird Folgendes veranschaulicht:
 
 Die Tutorialseite ist unabhängig von anderen Komponenten und verwendet keine externen Frameworks oder Stylesheets. Auch Bilddateien kommen nicht zum Einsatz. Die Seite greift nur auf die am häufigsten unterstützten Features für JavaScript zurück und kann in aktuellen Versionen aller gängigen Webbrowser ausgeführt werden.
 
-In diesem Tutorial werden nur ausgewählte Teile des Quellcodes erläutert. Der vollständige Quellcode ist [auf einer separaten Seite](tutorial-bing-entities-search-single-page-app-source.md) verfügbar. Kopieren und fügen Sie diesen Code in einen Text-Editor ein, und speichern Sie diesen unter dem Namen `bing.html`.
+In diesem Tutorial werden nur ausgewählte Teile des Quellcodes erläutert. Der vollständige Quellcode ist [auf einer separaten Seite]() verfügbar. Kopieren Sie diesen Code, fügen Sie ihn in einen Text-Editor ein, und speichern Sie die Datei als `bing.html`.
 
 > [!NOTE]
 > Dieses Tutorial ähnelt dem [Tutorial zum Verwenden der Bing-Websuche-API in Single-Page-Apps](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) sehr stark, befasst sich aber nur mit Entitätssuchergebnissen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Um dem Tutorial folgen zu können, benötigen Sie Abonnementschlüssel für die Bing-Suche-API und die Bing Karten-API. 
+
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
+* Sobald Sie über ein Azure-Abonnement verfügen:
+  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Erstellen Sie eine Ressource für die Bing-Suche"  target="_blank">Erstellen einer Ressource für die Bing-Suche<span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Erstellen einer Ressource für maschinelles Sehen"  target="_blank">Erstellen Sie eine Bing Maps-Ressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
 
 ## <a name="app-components"></a>App-Komponenten
 
 Die Tutorialanwendung setzt sich ebenso wie alle anderen Single-Page-Webanwendungen aus drei Teilen zusammen:
 
 > [!div class="checklist"]
-> * Im HTML-Teil werden die Struktur und der Inhalt der Seite definiert.
+> * HTML: Definiert die Struktur und der Inhalt der Seite
 > * CSS: Definiert das Layout der Seite
-> * Im JavaScript-Teil wird das Verhalten der Seite definiert.
+> * JavaScript: Definiert das Verhalten der Seite
 
 In diesem Tutorial wird ein Großteil des HTML- und CSS-Codes nicht ausführlich behandelt, da dieser selbsterklärend ist.
 
@@ -77,16 +92,16 @@ Der `onsubmit`-Handler gibt `false` zurück, wodurch verhindert wird, dass das F
 
 Die Suche wird in zwei Schritten durchgeführt. Falls der Benutzer seinen Standort eingeschränkt hat, wird eine Bing Karten-Abfrage durchgeführt, mit der der Standort in Koordinaten umgewandelt wird. Der Rückruf für diese Abfrage startet anschließend die Abfrage für die Bing-Entitätssuche-API.
 
-Der HTML-Teil enthält auch die Bereiche (HTML-`<div>`-Tags), in denen die Suchergebnisse angezeigt werden.
+Der HTML-Teil enthält auch die Bereiche (`<div>`-HTML-Tags), in denen die Suchergebnisse angezeigt werden.
 
 ## <a name="managing-subscription-keys"></a>Verwalten von Abonnementschlüsseln
 
 > [!NOTE]
-> Zur Nutzung der Bing-Suche-API und der Bing Karten-API sind Abonnementschlüssel für die App erforderlich. Sie können beispielsweise einen [kostenlosen Bing-Suche-API-Schlüssel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) und einen [Bing Karten-Basisschlüssel](https://www.microsoft.com/maps/create-a-bing-maps-key) verwenden.
+> Zur Nutzung der Bing-Suche-API und der Bing Karten-API sind Abonnementschlüssel für die App erforderlich.
 
 Zum Speichern der Schlüssel wird der persistente Browserspeicher verwendet. Auf diese Weise müssen Sie nicht die Abonnementschlüssel der Bing-Suche-API und der Bing Karten-API im Code hinterlegen. Wenn einer der beiden Schlüssel nicht gespeichert wurde, wird der Benutzer zu dessen Eingabe aufgefordert. Der Schlüssel wird dann zur späteren Verwendung gespeichert. Wird der Schlüssel zu einem späteren Zeitpunkt von der API zurückgewiesen, wird der gespeicherte Schlüssel für ungültig erklärt, und der Benutzer wird bei der nächsten Suche zur Eingabe aufgefordert.
 
-In den Funktionen `storeValue` und `retrieveValue` wird entweder das `localStorage`-Objekt (sofern vom Browser unterstützt) oder ein Cookie verwendet. Diese Funktionen werden in der `getSubscriptionKey()`-Funktion zum Speichern und Abrufen des Benutzerschlüssels verwendet.
+In den Funktionen `storeValue` und `retrieveValue` wird entweder das `localStorage`-Objekt (sofern vom Browser unterstützt) oder ein Cookie verwendet. Diese Funktionen werden in der `getSubscriptionKey()`-Funktion zum Speichern und Abrufen des Benutzerschlüssels verwendet. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
 ```javascript
 // cookie names for data we store
@@ -132,7 +147,7 @@ Der HTML-Tag `<body>` enthält ein `onload`-Attribut, das nach dem Laden der Sei
 
 Das HTML-Formular enthält die folgenden Steuerelemente:
 
-| | |
+| Control | BESCHREIBUNG |
 |-|-|
 |`where`|Ein Dropdownmenü zur Auswahl des Markts (Ort und Sprache), der für die Suche verwendet wird.|
 |`query`|Das Textfeld, in das die Suchbegriffe eingegeben werden.|
@@ -247,7 +262,7 @@ function bingMapsCallback(response) {
 }
 ```
 
-Die Abfrage für die Bing-Entitätssuche-API erfordert neben Breiten- und Längengrad auch einen *Radius*, der die Genauigkeit der Standortinformationen angibt. Der Radius wird mithilfe des *umgebenden Rechtecks* berechnet, das von der Bing Karten-Antwort bereitgestellt wird. Dabei handelt es sich um ein Rechteck, das den Standort umgibt. Wenn der Benutzer z.B. `NYC` eingibt, enthält das Ergebnis die ungefähren Koordinaten für das Zentrum von New York City und ein umgebendes Rechteck, das die Stadt einschließt. 
+Die Abfrage für die Bing-Entitätssuche-API erfordert neben Breiten- und Längengrad auch einen *Radius* , der die Genauigkeit der Standortinformationen angibt. Der Radius wird mithilfe des *umgebenden Rechtecks* berechnet, das von der Bing Karten-Antwort bereitgestellt wird. Dabei handelt es sich um ein Rechteck, das den Standort umgibt. Wenn der Benutzer z.B. `NYC` eingibt, enthält das Ergebnis die ungefähren Koordinaten für das Zentrum von New York City und ein umgebendes Rechteck, das die Stadt einschließt. 
 
 Zuerst werden die Abstände der primären Koordinaten zu allen vier Ecken des umgebenden Rechtecks verwendet. Dazu wird die Funktion `haversineDistance()` (hier nicht dargestellt) genutzt. Als Radius wird dann der größte der vier Abstände verwendet. Der Mindestradius beträgt ein Kilometer. Dieser Wert wird auch als Standard verwendet, wenn kein umgebendes Rechteck in der Antwort bereitgestellt wird.
 
@@ -380,7 +395,7 @@ function handleBingResponse() {
 
 Ein Großteil des Codes in den beiden vorangehenden Funktionen ist für die Fehlerbehandlung zuständig. In folgenden Phasen können Fehler auftreten:
 
-|Phase|Mögliche Fehler|Behandelt durch|
+|Phase|Mögliche Fehler|Verarbeitet durch|
 |-|-|-|
 |Erstellen eines JavaScript-Anforderungsobjekts|Ungültige URL|`try`/`catch`-Block|
 |Senden der Anforderung|Netzwerkfehler, abgebrochene Verbindungen|Ereignishandler `error` und `abort`|
@@ -390,7 +405,7 @@ Fehler werden behandelt, indem `renderErrorMessage()` zusammen mit allen bekannt
 
 ## <a name="displaying-search-results"></a>Anzeigen der Suchergebnisse
 
-Die Bing-Entitätssuche-API setzt voraus, dass Sie sich die Ergebnisse in einer [festgelegten Reihenfolge anzeigen lassen](use-display-requirements.md). Da die API zwei Antworttypen zurückgegeben kann, ist zur Anzeige der Ergebnisse mehr erforderlich als das Durchlaufen der übergeordneten `Entities`- oder `Places`-Collection in der JSON-Antwort. Wenn Sie nur ein Ergebnistyp empfangen möchten, können Sie den `responseFilter`-Abfrageparameter verwenden.
+Die Bing-Entitätssuche-API setzt voraus, dass Sie sich die Ergebnisse in einer [festgelegten Reihenfolge anzeigen lassen](../bing-web-search/use-display-requirements.md). Da die API zwei Antworttypen zurückgegeben kann, ist zur Anzeige der Ergebnisse mehr erforderlich als das Durchlaufen der übergeordneten `Entities`- oder `Places`-Sammlung in der JSON-Antwort. Wenn Sie nur ein Ergebnistyp empfangen möchten, können Sie den `responseFilter`-Abfrageparameter verwenden.
 
 In diesem Tutorial wird allerdings die `rankingResponse`-Collection verwendet, um die Reihenfolge der Suchergebnisse festzulegen und diese anzuzeigen. Dieses Objekt verweist auf Elemente in der Sammlung `Entitiess` bzw. `Places`.
 
@@ -402,7 +417,7 @@ Die letzte Collection `sidebar` verweist auf Hilfssuchergebnisse. Diese können 
 
 Jedes Element in einer `rankingResponse`-Collection verweist auf die tatsächlichen Suchergebnisse. Dieser Verweis kann auf zwei Arten erfolgen.
 
-| | |
+| Element | BESCHREIBUNG |
 |-|-|
 |`id`|`id` ähnelt einer URL, sollte allerdings nicht für Links verwendet werden. Der `id`-Typ eines Rangfolgenergebnisses stimmt mit der `id` eines Suchergebniselements in einer Antwortcollection *oder* einer gesamten Antwortcollection (beispielsweise `Entities`) überein.
 |`answerType`<br>`resultIndex`|`answerType` verweist auf die übergeordnete Antwortcollection, die das Ergebnis enthält (beispielsweise `Entities`). `resultIndex` verweist auf den Ergebnisindex innerhalb dieser Collection. Wenn `resultIndex` nicht angegeben wird, verweist das Rangfolgenergebnis auf die gesamte Collection.
@@ -432,7 +447,7 @@ function renderSearchResults(results) {
 
 ## <a name="rendering-result-items"></a>Rendern von Ergebniselementen
 
-Im JavaScript-Code dieses Tutorials enthält das `searchItemRenderers`-Objekt *Renderer*, also Funktionen, die für jeden Suchergebnistyp HTML-Code generieren.
+Im JavaScript-Code dieses Tutorials enthält das `searchItemRenderers`-Objekt *Renderer* , also Funktionen, die für jeden Suchergebnistyp HTML-Code generieren.
 
 ```javascript
 searchItemRenderers = { 
@@ -443,7 +458,7 @@ searchItemRenderers = {
 
 Für eine Rendererfunktion können die folgenden Parameter angegeben werden:
 
-| | |
+| Parameter | BESCHREIBUNG |
 |-|-|
 |`item`|Das JavaScript-Objekt mit Eigenschaften des Elements, z.B. seine URL und Beschreibung.|
 |`index`|Der Index des Ergebniselements innerhalb der Auflistung.|
@@ -507,7 +522,7 @@ Die Funktion zum Rendern von Entitäten führt folgende Vorgänge aus:
 > [!div class="checklist"]
 > * Erstellen des HTML-`<img>`-Tags, mit dem das Miniaturbild angezeigt wird, falls ein solches vorhanden ist 
 > * Erstellen des HTML-`<a>`-Tags, das einen Link zur Seite mit dem Bild erstellt
-> * Erstellen der Beschreibung, die Informationen zum Bild und zur Website enthält, auf der sich das Bild befindet
+> * Erstellt die Beschreibung, die Informationen über das Bild und die Website, auf der sich das Bild befindet, angibt.
 > * Einbinden der Entitätsklassifizierung unter Verwendung der Anzeigehinweise, falls solche vorhanden sind
 > * Einbinden eines Link zu einer Bing-Suche, mit der weitere Informationen zur Entität abgerufen werden können
 > * Anzeigen von Lizenz- oder Zuordnungsinformationen, die für Datenquellen erforderlich sind
@@ -516,30 +531,33 @@ Die Funktion zum Rendern von Entitäten führt folgende Vorgänge aus:
 
 Antworten, die von Bing-Suche-APIs gesendet werden, können einen `X-MSEdge-ClientID`-Header enthalten, der mit den nachfolgenden Anforderungen an die API zurückgesendet werden sollte. Wenn mehrere Bing-Suche-APIs genutzt werden, sollte nach Möglichkeit dieselbe Client-ID für alle APIs verwendet werden.
 
-Durch die Bereitstellung des `X-MSEdge-ClientID`-Headers können die Bing-Suche-APIs alle Suchvorgänge eines Benutzers zuordnen, was zwei entscheidende Vorteile mit sich bringt.
+Durch die Bereitstellung des `X-MSEdge-ClientID`-Headers können die Bing-APIs alle Suchvorgänge eines Benutzers zuordnen, was zwei entscheidende Vorteile mit sich bringt.
 
 Erstens kann die Bing-Suchmaschine auf diese Weise Kontextinformationen aus vorherigen Suchvorgängen nutzen, um den Benutzern relevantere Ergebnisse anzuzeigen. Wenn ein Benutzer in der Vergangenheit beispielsweise nach Segelbegriffen gesucht hat, können bei einer Suche nach „Anlegestellen“ möglicherweise Informationen zu Anlegestellen für Segelboote zurückgegeben werden.
 
 Zweitens wählt Bing möglicherweise Benutzer zufällig aus, die die Möglichkeit haben, neue Features zu testen, bevor diese allen Benutzern zur Verfügung gestellt werden. Indem Sie bei jeder Anforderung dieselbe Client-ID bereitstellen, stellen Sie sicher, dass Benutzer, die zur Nutzung eines neuen Features ausgewählt wurden, dieses Feature dauerhaft nutzen können. Ohne die Client-ID wird das Feature in den Suchergebnissen möglicherweise scheinbar willkürlich aus- oder eingeblendet.
 
-Durch Browsersicherheitsrichtlinien (CORS) kann der `X-MSEdge-ClientID`-Header möglicherweise nicht von JavaScript verwendet werden. Diese Einschränkung tritt auf, wenn sich der Ursprung der Suchantwort von dem der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da die Herkunft des Skripts mit derjenigen der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
+Durch Browsersicherheitsrichtlinien (CORS) kann der `X-MSEdge-ClientID`-Header möglicherweise nicht von JavaScript verwendet werden. Diese Einschränkung tritt auf, wenn sich der Ursprung der Suchantwort von dem der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da der Ursprung des Skripts mit dem Ursprung der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
 
 > [!NOTE]
-> In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung in jedem Fall serverseitig ausführen. Andernfalls müsste der Schlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Personen zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
+> In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung in jedem Fall serverseitig ausführen. Andernfalls muss der Schlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Personen zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
 
-In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser enthält eine Whitelist mit Antwortheadern, die JavaScript zur Verfügung gestellt werden.
+In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header, der Antwortheader zulässt und für JavaScript zur Verfügung stellt.
 
 Die Installation eines CORS-Proxys, mit dem die Tutorial-App auf den Client-ID-Header zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie anschließend folgenden Befehl in ein Befehlsfenster ein:
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
 Passen Sie den Endpunkt der Bing-Websuche-API in der HTML-Datei wie folgt an:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Starten Sie abschließend den CORS-Proxy mit folgendem Befehl:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Lassen Sie das Fenster während der Nutzung der Tutorial-App geöffnet. Wenn Sie das Fenster schließen, wird auch die Ausführung des Proxys beendet. Im Bereich mit den erweiterbaren HTTP-Headern unter den Suchergebnissen wird nun u.a. der `X-MSEdge-ClientID`-Header angezeigt. Hier können Sie überprüfen, ob dieser für alle Anforderungen identisch ist.
 

@@ -1,30 +1,31 @@
 ---
 title: include file
 description: include file
-services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/05/2019
+ms.date: 09/30/2020
 ms.author: dacoulte
-ms.custom: include file
-ms.openlocfilehash: ea87e51e66985f860cd6d10595a32facde1dc639
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: f3f706789e14cb20214bf17fd91f6ec1e503848f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67133275"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91606007"
 ---
-Für jeden Objekttyp für Azure Policy gilt eine maximale Anzahl. Ein _Scope_-Eintrag (Bereich) gilt entweder für das Abonnement oder die [Verwaltungsgruppe](../articles/governance/management-groups/overview.md).
+Für jeden Objekttyp für Azure Policy gilt eine maximale Anzahl. Bei Definitionen gilt ein _Scope_-Eintrag (Bereich) entweder für die [Verwaltungsgruppe](../articles/governance/management-groups/overview.md) oder das Abonnement.
+Bei Zuweisungen und Ausnahmen gilt ein _Scope_-Eintrag für die [Verwaltungsgruppe](../articles/governance/management-groups/overview.md), das Abonnement, die Ressourcengruppe oder eine einzelne Ressource.
 
 | Hierbei gilt: | Was | Maximale Anzahl |
 |---|---|---|
 | `Scope` | Richtliniendefinitionen | 500 |
-| `Scope` | Initiativdefinitionen | 100 |
-| Tenant | Initiativdefinitionen | 1\.000 |
-| `Scope` | Richtlinien- oder Initiativenzuweisungen | 100 |
+| `Scope` | Initiativdefinitionen | 200 |
+| Tenant | Initiativdefinitionen | 2\.500 |
+| `Scope` | Richtlinien- oder Initiativenzuweisungen | 200 |
+| Bereich | Ausnahmen | 1000 |
 | Richtliniendefinition | Parameter | 20 |
-| Initiativdefinition | Richtlinien | 100 |
+| Initiativdefinition | Richtlinien | 1000 |
 | Initiativdefinition | Parameter | 100 |
 | Richtlinien- oder Initiativenzuweisungen | Ausschlüsse (notScopes) | 400 |
 | Richtlinienregel | Geschachtelte konditionelle Abschnitte | 512 |
+| Wartungstask | Ressourcen | 500 |

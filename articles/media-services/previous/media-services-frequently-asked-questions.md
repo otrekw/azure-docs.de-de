@@ -1,6 +1,6 @@
 ---
-title: Häufig gestellte Fragen zu Azure Media Services | Microsoft-Dokumentation
-description: Häufig gestellte Fragen (FAQs)
+title: Häufig gestellte Fragen zu Azure Media Services
+description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3164445dc28a2436d8492902d865414da8d75702
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff15206e2373ce6481cb65cbbeeb3c88cd2b7154
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463905"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89269419"
 ---
-# <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+# <a name="media-services-v2-frequently-asked-questions"></a>Häufig gestellte Fragen zu Media Services v2
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 In diesem Artikel werden häufig gestellte Fragen behandelt, die in der Benutzercommunity von Azure Media Services (AMS) aufgekommen sind.
 
@@ -56,7 +58,7 @@ A: Um Medienobjekte unter Verwendung von .NET von einem Media Services-Konto in 
 
 F: Welche Zeichen werden in Dateinamen bei der Arbeit mit AMS unterstützt?
 
-A: Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der IAssetFile.Name-Eigenschaft (z. B. http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der **Name**-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) enthalten: ! * '();:@&=+$,/?%#[]". Darüber hinaus darf „.“ nur einmal für die Dateinamenerweiterung vorhanden sein.
+A: Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der IAssetFile.Name-Eigenschaft (z. B. http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der **Name**-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) enthalten: ! * '();:@&=+$,/?%#[]". Darüber hinaus wird für die Dateinamenerweiterung nur ein Punkt (.) unterstützt.
 
 F: Wie wird eine Verbindung mithilfe von REST hergestellt?
 
@@ -66,18 +68,20 @@ F: Wie kann ich ein Video während des Codierungsvorgangs drehen?
 
 A: Der [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) unterstützt Drehungen in den Winkeln 90/180/270 Grad. Das Standardverhalten ist „Auto“. Dabei wird versucht, die Rotationsmetadaten in der eingehenden MP4-/MOV-Datei zu erkennen und auszugleichen. Schließen Sie das folgende **Sources**-Element in einer der [hier](media-services-mes-presets-overview.md) definierten JSON-Voreinstellungen ein:
 
-    "Version": 1.0,
-    "Sources": [
-    {
-      "Streams": [],
-      "Filters": {
-        "Rotation": "90"
-      }
-    }
-    ],
-    "Codecs": [
+```json
+"Version": 1.0,
+"Sources": [
+{
+  "Streams": [],
+  "Filters": {
+    "Rotation": "90"
+  }
+}
+],
+"Codecs": [
 
-    ...
+...
+```
 
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade

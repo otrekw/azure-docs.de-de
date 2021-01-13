@@ -1,18 +1,17 @@
 ---
-title: Continuous Delivery von Funktionscodeaktualisierungen mit Azure DevOps – Azure Functions
+title: Kontinuierliches Aktualisieren von Funktions-App-Code mithilfe von Azure DevOps
 description: Erfahren Sie, wie Sie eine Azure DevOps-Pipeline mit Azure Functions als Ziel einrichten.
-author: ahmedelnably
-manager: jeconnoc
-ms.service: azure-functions
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
-ms.author: aelnably
-ms.openlocfilehash: 0fdad0caa2deef0d7d55b30a85632f72f4ff0ecc
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: cshoe
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: a3f423a144738fdaa4462606de6ad4a4e34d6775
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594463"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563414"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Continuous Delivery mit Azure DevOps
 
@@ -31,7 +30,7 @@ Zum Erstellen einer YAML-basierten Pipeline erstellen Sie die App zunächst und 
 
 Wie Sie Ihre App in Azure Pipelines erstellen, hängt von der Programmiersprache Ihrer App ab. Jede Sprache verfügt über bestimmte Buildschritte, mit denen ein Bereitstellungsartefakt erstellt wird. Ein Bereitstellungsartefakt wird zum Bereitstellen Ihrer Funktions-App in Azure verwendet.
 
-#### <a name="net"></a>.NET
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Sie können die YAML-Datei zum Erstellen einer .NET-App mithilfe des folgenden Beispiels erstellen:
 
@@ -48,7 +47,7 @@ steps:
     arguments: '--configuration Release --output publish_output'
     projects: '*.csproj'
     publishWebProjects: false
-    modifyOutputPath: true
+    modifyOutputPath: false
     zipAfterPublish: false
 - task: ArchiveFiles@2
   displayName: "Archive files"
@@ -59,10 +58,10 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
-    name: 'drop'
+    artifactName: 'drop'
 ```
 
-#### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Sie können das folgende Beispiel zum Erstellen einer YAML-Datei verwenden, um eine JavaScript-App zu erstellen:
 
@@ -87,16 +86,47 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
-    name: 'drop'
+    artifactName: 'drop'
 ```
 
-#### <a name="python"></a>Python
+# <a name="python"></a>[Python](#tab/python)
 
-Sie können das folgende Beispiel zum Erstellen einer YAML-Datei verwenden, um eine Python-App zu erstellen. Python wird nur für Linux Azure Functions unterstützt.
+Sie können eins der folgenden Beispiele zum Erstellen einer YAML-Datei verwenden, um eine App für eine bestimmte Python-Version zu erstellen. Python wird nur für Funktions-Apps unterstützt, die unter Linux ausgeführt werden.
+
+**Version 3.7**
 
 ```yaml
 pool:
-      vmImage: ubuntu-16.04
+  vmImage: ubuntu-16.04
+steps:
+- task: UsePythonVersion@0
+  displayName: "Setting python version to 3.7 as required by functions"
+  inputs:
+    versionSpec: '3.7'
+    architecture: 'x64'
+- bash: |
+    if [ -f extensions.csproj ]
+    then
+        dotnet build extensions.csproj --output ./bin
+    fi
+    pip install --target="./.python_packages/lib/site-packages" -r ./requirements.txt
+- task: ArchiveFiles@2
+  displayName: "Archive files"
+  inputs:
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+    includeRootFolder: false
+    archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
+    artifactName: 'drop'
+```
+
+**Version 3.6**
+
+```yaml
+pool:
+  vmImage: ubuntu-16.04
 steps:
 - task: UsePythonVersion@0
   displayName: "Setting python version to 3.6 as required by functions"
@@ -108,10 +138,7 @@ steps:
     then
         dotnet build extensions.csproj --output ./bin
     fi
-    python3.6 -m venv worker_venv
-    source worker_venv/bin/activate
-    pip3.6 install setuptools
-    pip3.6 install -r requirements.txt
+    pip install --target="./.python_packages/lib/python3.6/site-packages" -r ./requirements.txt
 - task: ArchiveFiles@2
   displayName: "Archive files"
   inputs:
@@ -121,9 +148,10 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
-    name: 'drop'
+    artifactName: 'drop'
 ```
-#### <a name="powershell"></a>PowerShell
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Sie können das folgende Beispiel zum Erstellen einer YAML-Datei verwenden, um eine PowerShell-App zu verpacken. PowerShell wird nur für Windows Azure Functions unterstützt.
 
@@ -140,8 +168,10 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
-    name: 'drop'
+    artifactName: 'drop'
 ```
+
+---
 
 ### <a name="deploy-your-app"></a>Bereitstellen Ihrer App
 
@@ -218,7 +248,7 @@ Das Bereitstellen in einem Bereitstellungsslot wird in der Releasevorlage nicht 
 
 ## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Erstellen einer Buildpipeline mithilfe der Azure CLI
 
-Verwenden Sie den [Befehl](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create) `az functionapp devops-pipeline create` , um eine Buildpipeline in Azure zu erstellen. Die Buildpipeline wird erstellt, um alle Codeänderungen zu erstellen und freizugeben, die in Ihrem Repository vorgenommen werden. Der Befehl generiert eine neue YAML-Datei, die die Build- und Releasepipeline definiert und dann an Ihr Repository committet. Die Voraussetzungen für diesen Befehl hängen vom Speicherort des Codes ab.
+Verwenden Sie den [Befehl](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create) `az functionapp devops-pipeline create`, um in Azure eine Buildpipeline zu erstellen. Die Buildpipeline wird erstellt, um alle Codeänderungen zu erstellen und freizugeben, die in Ihrem Repository vorgenommen werden. Der Befehl generiert eine neue YAML-Datei, die die Build- und Releasepipeline definiert und dann an Ihr Repository committet. Die Voraussetzungen für diesen Befehl hängen vom Speicherort des Codes ab.
 
 - Code in GitHub:
 
@@ -226,9 +256,9 @@ Verwenden Sie den [Befehl](/cli/azure/functionapp/devops-pipeline#az-functionapp
 
     - Sie müssen der Projektadministrator in Azure DevOps sein.
 
-    - Sie müssen die Berechtigung zum Erstellen eines persönlichen GitHub-Zugriffstokens (PAT) mit ausreichenden Berechtigungen besitzen. Weitere Informationen finden Sie unter [GitHub-PAT-Berechtigungsanforderungen.](https://aka.ms/azure-devops-source-repos)
+    - Sie müssen die Berechtigung zum Erstellen eines persönlichen GitHub-Zugriffstokens (PAT) mit ausreichenden Berechtigungen besitzen. Weitere Informationen finden Sie unter [GitHub-PAT-Berechtigungsanforderungen.](/azure/devops/pipelines/repos/github#repository-permissions-for-personal-access-token-pat-authentication)
 
-    - Sie müssen die Berechtigung zum Committen des Masterbranches in Ihrem GitHub-Repository besitzen, um die automatisch generierte YAML-Datei zu committen.
+    - Sie müssen die Berechtigung zum Committen des Hauptbranches in Ihrem GitHub-Repository besitzen, um die automatisch generierte YAML-Datei zu committen.
 
 - Code in Azure Repos:
 

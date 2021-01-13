@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Snowflake | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Snowflake konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 3488ac27-0417-4ad9-b9a3-08325fe8ea0d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e5078c498b3ce4b0c132b6ed2300a58a997f7dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3beb4e7831ce17a46f6daaa1258f284a0caefe8e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089980"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855129"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Tutorial: Azure Active Directory-Integration mit Snowflake
 
@@ -31,7 +27,7 @@ Die Integration von Snowflake in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei Snowflake angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -43,15 +39,16 @@ Um die Azure AD-Integration mit Snowflake konfigurieren zu können, benötigen S
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Snowflake unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
+- Snowflake unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
+- Snowflake unterstützt die [automatisierte Benutzerbereitstellung und Bereitstellungsaufhebung](snowflake-provisioning-tutorial.md) (empfohlen).
 
 ## <a name="adding-snowflake-from-the-gallery"></a>Hinzufügen von Snowflake aus dem Katalog
 
 Zum Konfigurieren der Integration von Snowflake in Azure AD müssen Sie Snowflake aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Snowflake aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Hinzufügen von Snowflake aus dem Katalog**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -67,11 +64,11 @@ Zum Konfigurieren der Integration von Snowflake in Azure AD müssen Sie Snowflak
 
 4. Geben Sie im Suchfeld **Snowflake** ein, wählen Sie im Ergebnisbereich **Snowflake** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Snowflake in der Ergebnisliste](common/search-new-app.png)
+     ![Snowflake in der Ergebnisliste](common/search-new-app-snowflake.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie einmaliges Anmelden von Azure AD bei Snowflake mithilfe einer Testbenutzerin namens **Britta Simon**.
+In diesem Abschnitt konfigurieren und testen Sie einmaliges Anmelden von Azure AD mit Snowflake mithilfe eines Testbenutzers namens **Britta Simon**.
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Snowflake eingerichtet werden.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Snowflake zu konfigurieren und zu testen:
@@ -103,7 +100,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Snowflake](common/idp-intiated.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners und einer Antwort-URL sowie zum Klicken auf „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<SNOWFLAKE-URL>.snowflakecomputing.com`
 
@@ -111,9 +108,11 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     c. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im SP-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Snowflake](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SNOWFLAKE-URL>.snowflakecomputing.com`
+    
+    Geben Sie im Textfeld **Abmelde-URL** eine URL im folgenden Format ein: `https://<SNOWFLAKE-URL>.snowflakecomputing.com/fed/logout`
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Kundensupportteam von Snowflake](https://support.snowflake.net/s/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -181,7 +180,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -234,13 +233,12 @@ Damit sich Azure AD-Benutzer bei Snowflake anmelden können, müssen sie in Snow
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Snowflake“ klicken, sollten Sie automatisch bei Ihrer Snowflake-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Snowflake“ klicken, sollten Sie automatisch bei Ihrer Snowflake-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

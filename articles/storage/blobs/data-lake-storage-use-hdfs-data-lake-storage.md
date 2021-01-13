@@ -1,20 +1,20 @@
 ---
 title: Verwenden der HDFS-CLI mit Azure Data Lake Storage Gen2
-description: Einführung in die HDFS-CLI für Data Lake Storage Gen2
+description: Verwenden Sie die HDFS-Befehlszeilenschnittstelle (Hadoop Distributed File System, verteiltes Hadoop-Dateisystem) für Azure Data Lake Storage Gen2. Erstellen Sie einen Container, rufen Sie eine Liste der Dateien oder Verzeichnisse ab usw.
 services: storage
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 1d5313f3f0fff128dd09f9c9857b7dd9921ea4f8
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d2b36dd600efa864913e0087c49bffd556e8330d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992220"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912398"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Verwenden der HDFS-CLI mit Data Lake Storage Gen2
 
@@ -29,7 +29,7 @@ Weitere Informationen zur HDFS-CLI finden Sie in der [offiziellen Dokumentation]
 
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Verwenden der Hadoop Distributed File System-Befehlszeilenschnittstelle mit einem HDInsight Hadoop-Cluster unter Linux
 
-Richten Sie zuerst den [Remotezugriff auf Dienste](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services) ein. Wenn Sie [SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) auswählen, sieht der PowerShell-Beispielcode folgendermaßen aus:
+Richten Sie zuerst den [Remotezugriff auf Dienste](../../hdinsight/hdinsight-hadoop-linux-information.md#remote-access-to-services) ein. Wenn Sie [SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) auswählen, sieht der PowerShell-Beispielcode folgendermaßen aus:
 
 ```powershell
 #Connect to the cluster via SSH.
@@ -46,7 +46,7 @@ Die Verbindungszeichenfolge ist im Abschnitt „SSH + Clusteranmeldung“ auf de
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
-    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
+`hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/`
 
 * Ersetzen Sie den Platzhalter `<container-name>` durch den Namen, den Sie für Ihren Container verwenden möchten.
 
@@ -54,7 +54,7 @@ Die Verbindungszeichenfolge ist im Abschnitt „SSH + Clusteranmeldung“ auf de
 
 ## <a name="get-a-list-of-files-or-directories"></a>Abrufen einer Liste mit Dateien oder Verzeichnissen
 
-    hdfs dfs -ls <path>
+`hdfs dfs -ls <path>`
 
 Ersetzen Sie den Platzhalter `<path>` durch den URI des Conatiners oder Containerordners.
 
@@ -62,7 +62,7 @@ Beispiel: `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.
 
 ## <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
 
-    hdfs dfs -mkdir [-p] <path>
+`hdfs dfs -mkdir [-p] <path>`
 
 Ersetzen Sie den Platzhalter `<path>` durch den Namen des Stammcontainers oder einen Ordner in Ihrem Container.
 
@@ -70,7 +70,7 @@ Beispiel: `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windo
 
 ## <a name="delete-a-file-or-directory"></a>Löschen einer Datei oder eines Verzeichnisses
 
-    hdfs dfs -rm <path>
+`hdfs dfs -rm <path>`
 
 Ersetzen Sie den Platzhalter `<path>` durch den URI der Datei oder des Ordners, die bzw. den Sie löschen möchten.
 
@@ -78,7 +78,7 @@ Beispiel: `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windo
 
 ## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>Anzeigen der Zugriffssteuerungslisten (Access Control Lists, ACLs) von Dateien und Verzeichnissen
 
-    hdfs dfs -getfacl [-R] <path>
+`hdfs dfs -getfacl [-R] <path>`
 
 Beispiel:
 
@@ -88,7 +88,7 @@ Siehe [getfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop
 
 ## <a name="set-acls-of-files-and-directories"></a>Festlegen der Zugriffssteuerungslisten von Dateien und Verzeichnissen
 
-    hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]
+`hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]`
 
 Beispiel:
 
@@ -98,19 +98,19 @@ Siehe [setfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop
 
 ## <a name="change-the-owner-of-files"></a>Ändern des Besitzers von Dateien
 
-    hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>
+`hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>`
 
 Siehe [chown](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chown).
 
 ## <a name="change-group-association-of-files"></a>Ändern der Gruppenzuordnung von Dateien
 
-    hdfs dfs -chgrp [-R] <group> <URI>
+`hdfs dfs -chgrp [-R] <group> <URI>`
 
 Siehe [chgrp](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chgrp).
 
 ## <a name="change-the-permissions-of-files"></a>Ändern der Berechtigungen von Dateien
 
-    hdfs dfs -chmod [-R] <mode> <URI>
+`hdfs dfs -chmod [-R] <mode> <URI>`
 
 Siehe [chmod](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chmod).
 
@@ -120,4 +120,4 @@ Sie können die vollständige Liste mit Befehlen auf der Website [Apache Hadoop 
 
 * [Verwenden eines Azure Data Lake Storage Gen2-Kontos in Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md)
 
-* [Zugriffssteuerung in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+* [Zugriffssteuerung in Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md)

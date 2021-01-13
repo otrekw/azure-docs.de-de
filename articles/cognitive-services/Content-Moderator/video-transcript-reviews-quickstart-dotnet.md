@@ -1,21 +1,22 @@
 ---
 title: Erstellen von Videotranskriptüberprüfungen mit .NET – Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Erstellen von Videotranskriptüberprüfungen mit dem Content Moderator SDK für .NET
+description: Erfahren Sie, wie Sie Videotranskriptüberprüfungen mit dem Azure Cognitive Services Content Moderator SDK für .NET erstellen.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.author: sajagtap
-ms.openlocfilehash: f3f93824eb021e0fb75e1a6b81935292379d50e5
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 326fc2cc162a2ab54b40888250fbeef55ad8800a
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883071"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853457"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Erstellen von Videotranskriptüberprüfungen per .NET
 
@@ -42,7 +43,7 @@ Wenn Sie den vom Überprüfungstool generierten Schlüssel für eine kostenlose 
 
 Fügen Sie das Transkript einer Videoüberprüfung hinzu. Das Video muss online veröffentlicht werden. Sie benötigen seinen Streamingendpunkt. Mit dem Streamingendpunkt kann der Videoplayer des Prüfungstools das Video wiedergeben.
 
-![Vorführvideo-Miniaturansicht](images/ams-video-demo-view.PNG)
+![Miniaturansicht für Demonstrationsvideo](images/ams-video-demo-view.PNG)
 
 - Kopieren Sie die **URL** auf [dieser Azure Media Services-Demoseite](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) für die Manifest-URL.
 
@@ -74,30 +75,26 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 ```
 
 ### <a name="add-private-properties"></a>Hinzufügen von privaten Eigenschaften
 
-Fügen Sie die folgenden privaten Eigenschaften dem VideoTranscriptReviews-Namespace (Program-Klasse) hinzu.
-
-Ersetzen Sie die Beispielwerte für diese Eigenschaften wie angegeben.
+Fügen Sie die folgenden privaten Eigenschaften dem **VideoTranscriptReviews**-Namespace (**Program**-Klasse) hinzu. Aktualisieren Sie die Felder `AzureEndpoint` und `CMSubscriptionKey` mit den Werten Ihrer Endpunkt-URL und Ihres Abonnementschlüssels. Diese finden Sie auf der Registerkarte **Schnellstart** Ihrer Ressource im Azure-Portal.
 
 ```csharp
 namespace VideoReviews
 {
     class Program
     {
-        // NOTE: Replace this example location with the location for your Content Moderator account.
+        // NOTE: Enter a valid endpoint URL
         /// <summary>
-        /// The region/location for your Content Moderator account, 
-        /// for example, westus.
+        /// The endpoint URL of your subscription
         /// </summary>
-        private static readonly string AzureRegion = "YOUR CONTENT MODERATOR REGION";
+        private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
-        // NOTE: Replace this example key with a valid subscription key.
+        // NOTE: Enter a valid subscription key.
         /// <summary>
         /// Your Content Moderator subscription key.
         /// </summary>
@@ -112,12 +109,6 @@ namespace VideoReviews
         /// the Content Moderator web site. Your team name is the Id associated 
         /// with your subscription.</remarks>
         private const string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
-
-        /// <summary>
-        /// The base URL fragment for Content Moderator calls.
-        /// </summary>
-        private static readonly string AzureBaseURL =
-            $"{AzureRegion}.api.cognitive.microsoft.com";
 
         /// <summary>
         /// The minimum amount of time, in milliseconds, to wait between calls
@@ -142,7 +133,7 @@ public static ContentModeratorClient NewClient()
 {
     return new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey))
     {
-        Endpoint = AzureBaseURL
+        Endpoint = AzureEndpoint
     };
 }
 ```
@@ -154,7 +145,7 @@ Erstellen Sie mit **ContentModeratorClient.Reviews.CreateVideoReviews** eine Vid
 **CreateVideoReviews** verfügt über die folgenden erforderlichen Parameter:
 1. Eine Zeichenfolge, die einen MIME-Typ enthält. Dieser sollte „application/json“ lauten. 
 1. Ihr Content Moderator-Teamname.
-1. Ein **IList\<CreateVideoReviewsBodyItem>** -Objekt. Jedes **CreateVideoReviewsBodyItem**-Objekt stellt eine Videoüberprüfung dar. In dieser Schnellstartanleitung wird jeweils nur eine Überprüfung erstellt.
+1. Ein **IList\<CreateVideoReviewsBodyItem>**-Objekt. Jedes **CreateVideoReviewsBodyItem**-Objekt stellt eine Videoüberprüfung dar. In dieser Schnellstartanleitung wird jeweils nur eine Überprüfung erstellt.
 
 **CreateVideoReviewsBodyItem** verfügt über mehrere Eigenschaften. Sie legen mindestens die folgenden Eigenschaften fest:
 - **Content**: Die URL des zu überprüfenden Videos.
@@ -202,19 +193,19 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 > [!NOTE]
 > Für Ihren Content Moderator-Dienstschlüssel gilt ein Ratenlimit vom Typ „Anforderungen pro Sekunde“ (Requests Per Second, RPS). Wenn Sie das Limit überschreiten, löst das SDK eine Ausnahme mit dem Fehlercode 429 aus.
 >
-> Ein Schlüssel des Free-Tarifs verfügt über ein RPS-Ratenlimit.
+> Bei einem Schlüssel des Free-Tarifs ist die Anforderungsrate auf eine einzelne Anforderung pro Sekunde beschränkt.
 
 ## <a name="add-transcript-to-video-review"></a>Hinzufügen eines Transkripts zur Videoüberprüfung
 
 Sie fügen ein Transkript einer Videoüberprüfung mit **ContentModeratorClient.Reviews.AddVideoTranscript** hinzu. **AddVideoTranscript** verfügt über die folgenden erforderlichen Parameter:
 1. Ihre Content Moderator-Team-ID
-1. Die von **CreateVideoReviews** zurückgegebene ID für die Videoüberprüfung
+1. Die von **CreateVideoReviews** zurückgegebene ID für die Videoüberprüfung.
 1. Ein **Stream**-Objekt mit dem Transkript
 
-Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie auf unter [WebVTT: Das Format für Webvideo-Texttitel](https://www.w3.org/TR/webvtt1/).
+Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie unter [WebVTT: The Web Video Text Tracks Format](https://www.w3.org/TR/webvtt1/) (WebVTT: Webvideo-Texttitelformat).
 
 > [!NOTE]
-> Im Programm wird ein Beispieltranskript im VTT-Format verwendet. In einer realen Lösung verwenden Sie den Azure Media Indexer-Dienst, um aus einem Video [ein Transkript zu generieren](https://docs.microsoft.com/azure/media-services/media-services-index-content).
+> Im Programm wird ein Beispieltranskript im VTT-Format verwendet. In einer realen Lösung verwenden Sie den Azure Media Indexer-Dienst, um aus einem Video [ein Transkript zu generieren](../../media-services/previous/media-services-index-content.md).
 
 Fügen Sie die folgende Methodendefinition dem VideoTranscriptReviews-Namespace (Program-Klasse) hinzu.
 
@@ -244,13 +235,13 @@ Zusätzlich zum Hinzufügen eines Transkripts zu einer Videoüberprüfung fügen
 1. Eine Zeichenfolge, die einen MIME-Typ enthält. Dieser sollte „application/json“ lauten. 
 1. Ihr Content Moderator-Teamname.
 1. Die von **CreateVideoReviews** zurückgegebene ID für die Videoüberprüfung.
-1. Ein IList\<TranscriptModerationBodyItem>. Ein **TranscriptModerationBodyItem**-Element verfügt über die folgenden Eigenschaften:
-1. **Terms**: Ein IList\<TranscriptModerationBodyItemTermsItem>. Ein **TranscriptModerationBodyItemTermsItem**-Element verfügt über die folgenden Eigenschaften:
+1. Ein „IList\<TranscriptModerationBodyItem>“-Element: Ein **TranscriptModerationBodyItem**-Element verfügt über die folgenden Eigenschaften:
+1. **Terms**: Ein „IList\<TranscriptModerationBodyItemTermsItem>“-Element: Ein **TranscriptModerationBodyItemTermsItem**-Element verfügt über die folgenden Eigenschaften:
 1. **Index**: Der nullbasierte Index des Begriffs
 1. **Term**: Eine Zeichenfolge, die den Begriff enthält
 1. **Timestamp**: Eine Zeichenfolge mit der Zeit (in Sekunden) im Transkript, nach der die Begriffe gefunden werden.
 
-Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie auf unter [WebVTT: Das Format für Webvideo-Texttitel](https://www.w3.org/TR/webvtt1/).
+Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie unter [WebVTT: The Web Video Text Tracks Format](https://www.w3.org/TR/webvtt1/) (WebVTT: Webvideo-Texttitelformat).
 
 Fügen Sie die folgende Methodendefinition dem VideoTranscriptReviews-Namespace (Program-Klasse) hinzu. Mit dieser Methode wird ein Transkript an die **ContentModeratorClient.TextModeration.ScreenText**-Methode übermittelt. Außerdem wird das Ergebnis in ein „IList\<TranscriptModerationBodyItem>“-Element übersetzt und an **AddVideoTranscriptModerationResult** übermittelt.
 
@@ -327,7 +318,7 @@ private static void PublishReview(ContentModeratorClient client, string review_i
 Fügen Sie die **Main**-Methodendefinition dem VideoTranscriptReviews-Namespace (Program-Klasse) hinzu. Schließen Sie zuletzt die Program-Klasse und den VideoTranscriptReviews-Namespace.
 
 > [!NOTE]
-> Im Programm wird ein Beispieltranskript im VTT-Format verwendet. In einer realen Lösung verwenden Sie den Azure Media Indexer-Dienst, um aus einem Video [ein Transkript zu generieren](https://docs.microsoft.com/azure/media-services/media-services-index-content).
+> Im Programm wird ein Beispieltranskript im VTT-Format verwendet. In einer realen Lösung verwenden Sie den Azure Media Indexer-Dienst, um aus einem Video [ein Transkript zu generieren](../../media-services/previous/media-services-index-content.md).
 
 ```csharp
 static void Main(string[] args)
@@ -390,5 +381,3 @@ Die folgenden Features werden angezeigt:
 Rufen Sie das [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) und die [Visual Studio-Projektmappe](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dafür sowie andere Content Moderator-Schnellstarts für .NET ab.
 
 Informieren Sie sich darüber, wie Sie im Prüfungstool [Videoüberprüfungen](video-reviews-quickstart-dotnet.md) generieren.
-
-Sehen Sie sich das ausführliche Tutorial zur Entwicklung einer [vollständigen Lösung für die Videomoderation](video-transcript-moderation-review-tutorial-dotnet.md) an.

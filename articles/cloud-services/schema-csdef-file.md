@@ -1,19 +1,20 @@
 ---
 title: Azure Cloud Services-Definitionsschema (CSDEF-Datei) | Microsoft-Dokumentation
+description: In einer Dienstdefinitionsdatei (.csdef) wird ein Dienstmodell für eine Anwendung definiert, das verfügbare Rollen, Endpunkte und Konfigurationswerte für den Dienst enthält.
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
 ms.service: cloud-services
 ms.topic: reference
 caps.latest.revision: 42
-author: georgewallace
-ms.author: gwallace
-ms.openlocfilehash: b832723fdf773ff06c0b03b9aa80f542279cd309
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+author: tgore03
+ms.author: tagore
+ms.openlocfilehash: 1896ee8385d1e41feffe7a9f542550ea7f34a8a3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360615"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072559"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure Cloud Services-Definitionsschema (.CSDEF-Datei)
 Die Dienstdefinitionsdatei definiert das Dienstmodell für eine Anwendung. Die Datei enthält die Definitionen für die Rollen, die für einen Clouddienst verfügbar sind, gibt die Anbieterendpunkte an und legt Konfigurationseinstellungen für den Dienst fest. Konfigurationseinstellungswerte werden in der Dienstkonfigurationsdatei festgelegt, wie im [Clouddienst-Konfigurationsschema (klassisch)](/previous-versions/azure/reference/ee758710(v=azure.100)) beschrieben.
@@ -57,14 +58,14 @@ In den folgenden Themen wird das Schema beschrieben:
 - [WorkerRole-Schema](schema-csdef-workerrole.md)
 - [NetworkTrafficRules-Schema](schema-csdef-networktrafficrules.md)
 
-##  <a name="ServiceDefinition"></a> Element ServiceDefinition
+##  <a name="servicedefinition-element"></a><a name="ServiceDefinition"></a> Element ServiceDefinition
 Das Element `ServiceDefinition` ist das Element der obersten Ebene der Dienstdefinitionsdatei.
 
 In der folgenden Tabelle werden die Attribute des Elements `ServiceDefinition` beschrieben.
 
-| Attribut               | BESCHREIBUNG |
+| attribute               | BESCHREIBUNG |
 | ----------------------- | ----------- |
 | name                    |Erforderlich. Der Name des Diensts. Der Name muss innerhalb des Dienstkontos eindeutig sein.|
 | topologyChangeDiscovery | Optional. Gibt die Änderungsbenachrichtigung zur Art der Topologie an. Mögliche Werte:<br /><br /> -   `Blast`: Sendet das Update so schnell wie möglich an alle Rolleninstanzen. Wenn Sie die Option auswählen, sollte die Rolle das Topologieupdate verarbeiten können, ohne neu gestartet werden zu müssen.<br />-   `UpgradeDomainWalk`: Sendet das Update sequenziell an alle Rolleninstanzen, nachdem die vorherige Instanz das Update erfolgreich akzeptiert hat.|
-| Schemaversion           | Optional. Gibt die Version des Dienstdefinitionsschemas an. Die Schemaversion ermöglicht Visual Studio, die richtigen SDK-Tools für die Schemaüberprüfung auszuwählen, wenn mehrere Versionen des SDK nebeneinander installiert sind.|
-| upgradeDomainCount      | Optional. Gibt die Anzahl von Upgradedomänen an, über die die Rollen in diesem Dienst zugeordnet werden. Rolleninstanzen werden bei der Bereitstellung des Diensts einer Upgradedomäne zugeordnet. Weitere Informationen finden Sie unter [Aktualisieren einer Clouddienstrolle oder -bereitstellung](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment), [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) und [Was ist das Clouddienstmodell, und wie kann es gepackt werden?](https://docs.microsoft.com/azure/cloud-services/cloud-services-model-and-package).<br /><br /> Sie können bis zu 20 Upgradedomänen angeben. Bei fehlender Angabe wird der Standardwert in Höhe von 5 Upgradedomänen verwendet.|
+| schemaVersion           | Optional. Gibt die Version des Dienstdefinitionsschemas an. Die Schemaversion ermöglicht Visual Studio, die richtigen SDK-Tools für die Schemaüberprüfung auszuwählen, wenn mehrere Versionen des SDK nebeneinander installiert sind.|
+| upgradeDomainCount      | Optional. Gibt die Anzahl von Upgradedomänen an, über die die Rollen in diesem Dienst zugeordnet werden. Rolleninstanzen werden bei der Bereitstellung des Diensts einer Upgradedomäne zugeordnet. Weitere Informationen finden Sie unter [Aktualisieren einer Clouddienstrolle oder -bereitstellung](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment), [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../virtual-machines/manage-availability.md) und [Was ist das Clouddienstmodell, und wie kann es gepackt werden?](./cloud-services-model-and-package.md).<br /><br /> Sie können bis zu 20 Upgradedomänen angeben. Bei fehlender Angabe wird der Standardwert in Höhe von 5 Upgradedomänen verwendet.|

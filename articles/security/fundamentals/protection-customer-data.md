@@ -1,6 +1,6 @@
 ---
 title: Schutz von Kundendaten in Azure
-description: Dieser Artikel beschreibt, wie Azure die Kundendaten schützt.
+description: Erfahren Sie, wie Azure Kundendaten durch Datentrennung, Datenredundanz und Datenvernichtung schützt.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 07/10/2020
 ms.author: terrylan
-ms.openlocfilehash: 741cbc82f2ed3ffffb553b146d981b4e35a273f4
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 14589e4efe22d89468b069bf6ff7e3d9babcc714
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726682"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87543791"
 ---
 # <a name="azure-customer-data-protection"></a>Schutz der Azure-Kundendaten   
-Der Zugriff auf Kundendaten durch Microsoft-Betriebs- und -Supportpersonal wird standardmäßig verweigert. Wenn Zugriff auf Kundendaten gewährt wird, ist eine Genehmigung durch Führungskräfte erforderlich, und der Zugriff wird sorgfältig verwaltet und protokolliert. Die Zugriffssteuerungsanforderungen werden in der folgenden Azure-Sicherheitsrichtlinie definiert:
+Der Zugriff auf Kundendaten durch Microsoft-Betriebs- und -Supportpersonal wird standardmäßig verweigert. Wenn der Zugriff auf Daten im Zusammenhang mit einem Supportfall gewährt wird, erfolgt dies nur unter Verwendung eines MIT-Modells (Just-In-Time) und Richtlinien, die geprüft und anhand unserer Compliance- und Datenschutzrichtlinien verifiziert werden.  Die Zugriffssteuerungsanforderungen werden in der folgenden Azure-Sicherheitsrichtlinie definiert:
 
 - Kein standardmäßiger Zugriff auf Kundendaten
 - Keine Benutzer- oder Administratorkonten auf virtuellen Computern (VMs) von Kunden
@@ -33,19 +33,16 @@ Den Supportmitarbeitern von Azure wurden eindeutige Active Directory-Unternehmen
 
 Alle Zugriffsversuche werden überwacht und können über einen grundlegenden Satz von Berichten angezeigt werden.
 
-## <a name="data-protection"></a>Datenschutz
+## <a name="data-protection"></a>Schutz von Daten
 Azure bietet Kunden verstärkte Datensicherheitsoptionen sowohl standardmäßig als auch als Kundenoptionen.
 
 **Trennung von Daten**: Microsoft Azure ist ein mehrinstanzenfähiger Dienst, d.h. die Bereitstellungen und VMs mehrerer Kunden werden auf derselben physischen Hardware gespeichert. Mithilfe einer logischen Isolierung trennt Azure die Daten der Kunden voneinander. Die Trennung bietet die Skalierung und die wirtschaftlichen Vorteile von mehrinstanzenfähigen Diensten und verhindert gleichzeitig konsequent, dass Kunden auf die Daten anderer Kunden zugreifen.
 
 **Schutz von Daten im Ruhezustand**: Kunden sind dafür verantwortlich sicherzustellen, dass in Azure gespeicherte Daten in Übereinstimmung mit ihren Standards verschlüsselt werden. Azure bietet eine große Bandbreite an Verschlüsselungsfunktionen und gibt Kunden so die Flexibilität, die für ihre Bedürfnisse optimal geeignete Lösung zu wählen. Azure Key Vault hilft Kunden, auf einfache Weise die Kontrolle über die von Cloudanwendungen und -diensten für die Verschlüsselung von Daten verwendeten Schlüssel zu bewahren. Mithilfe von Azure Disk Encryption können Kunden VMs verschlüsseln. Mithilfe der Azure-Speicherdienstverschlüsselung können alle Daten im Speicherkonto eines Kunden verschlüsselt werden.
 
-**Schutz von in Übertragung begriffenen Daten**: Kunden können die Verschlüsselung für den Datenverkehr zwischen ihren eigenen VMs und den Endbenutzern ermöglichen. Azure schützt Daten während der Übertragung zu oder von externen Komponenten und intern, z.B. zwischen zwei virtuellen Netzwerken, übertragene Daten. Azure verwendet das branchenübliche TLS 1.2-Protokoll (Transport Layer Security) oder höher mit 2.048-Bit-RSA/SHA256-Verschlüsselungsschlüsseln, entsprechend der Empfehlung von CESG/NCSC. Hierdurch soll folgende Kommunikation verschlüsselt werden:
+**Schutz von in Übertragung begriffenen Daten**: Microsoft bietet eine Reihe von Optionen, die von Kunden zum Schutz von Daten während der Übertragung intern innerhalb des Azure-Netzwerks und extern über das Internet bis zum Endbenutzer genutzt werden können.  Hierzu gehören die Kommunikation über virtuelle private Netzwerke (mit IPsec-/IKE-Verschlüsselung), TLS 1.2 (Transport Layer Security) oder höher (über Azure-Komponenten wie Application Gateway oder Azure Front Door), direkt auf den virtuellen Azure-Computern vorhandene Protokolle (etwa Windows IPsec oder SMB) und vieles mehr. 
 
-- Zwischen dem Kunden und der Cloud
-- Intern zwischen Azure-Systemen und Rechenzentren
-
-**Verschlüsselung**: Die Verschlüsselung von Daten im Speicher und während der Übertragung kann von Kunden als bewährte Methode zum Sicherstellen der Vertraulichkeit und Integrität der Daten bereitgestellt werden. Kunden können auf einfache Weise ihre Azure-Clouddienste so konfigurieren, dass sie mit SSL die Kommunikation über das Internet und sogar zwischen ihren von Azure gehosteten VMs schützen.
+Darüber hinaus ist für den gesamten Azure-Datenverkehr zwischen Azure-Rechenzentren die „standardmäßige Verschlüsselung“ mit MACsec (ein IEEE-Standard in der Sicherungsschicht) aktiviert, um Vertraulichkeit und Integrität von Kundendaten sicherzustellen. 
 
 **Data redundancy** (Datenredundanz): Microsoft stellt sicher, dass Daten im Fall eines Cyberangriffs oder einer physischen Beschädigung eines Rechenzentrums geschützt sind. Kunden können sich für Folgendes entscheiden:
 

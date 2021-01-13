@@ -2,26 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Cisco Webex Meetings | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Cisco WebEx Meetings konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 26704ca7-13ed-4261-bf24-fd6252e2072b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 141d3062f231e198b3587efcdf4ae6e9a1c97ed6
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 7a4e3a4a6049b48fa70e5352680bdc7342676c0b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162677"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670280"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Cisco Webex Meetings
 
@@ -31,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie Cisco Webex Meetings in Azure Active 
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Cisco Webex Meetings anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,6 +34,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Cisco Webex Meetings-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -68,8 +66,8 @@ Führen Sie die folgenden Aufgaben aus, um das einmalige Anmelden von Azure AD 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Cisco Webex Meetings](#configure-cisco-webex-meetings-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Cisco Webex Meetings-Testbenutzers](#create-cisco-webex-meetings-test-user)** , um eine Entsprechung von B. Simon in Cisco Webex Meetings zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+2. **[Konfigurieren des einmaligen Anmeldens für Cisco Webex Meetings](#configure-cisco-webex-meetings-sso)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Cisco Webex Meetings-Testbenutzers](#create-cisco-webex-meetings-test-user)**, um eine Entsprechung von B. Simon in Cisco Webex Meetings zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 3. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -78,7 +76,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Cisco Webex Meetings** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** können Sie die Anwendung im  **IDP-initiierten** Modus konfigurieren, indem Sie die Datei mit den **Metadaten des Dienstanbieters** wie folgt hochladen:
+1. Auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** können Sie die Anwendung im **IDP-initiierten** Modus konfigurieren, indem Sie die Datei mit den **Metadaten des Dienstanbieters** wie folgt hochladen:
 
     a. Klicken Sie auf **Metadatendatei hochladen**.
 
@@ -94,16 +92,16 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     a. Klicken Sie im Abschnitt **Grundlegende SAML-Konfiguration** auf das Bearbeitungssymbol (Stift).
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
-    
-    b. Geben Sie im Textfeld **Anmelde-URL** die URL im folgenden Format ein: ` https://<customername>.my.webex.com`.
 
-5. Die Cisco WebEx Meetings-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
+    b. Geben Sie im Textfeld **Anmelde-URL** die URL im folgenden Format ein: `https://<customername>.my.webex.com`.
+
+5. Die Cisco WebEx Meetings-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
 
     ![image](common/edit-attribute.png)
 
 6. Darüber hinaus wird von der Cisco Webex Meetings-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld „Benutzerattribute“ im Abschnitt „Benutzeransprüche“ die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen: 
 
-    | NAME | Quellattribut|
+    | Name | Quellattribut|
     | ---------------|  --------- |
     |   firstname    | user.givenname |
     |   lastname    | user.surname |
@@ -140,7 +138,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
     1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
     1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
     1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-    1. Klicken Sie auf **Create**.
+    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -165,12 +163,12 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Rufen Sie die URL `https://<customername>.webex.com/admin` auf, und geben Sie Ihre Administratoranmeldeinformationen ein.
 
 2. Navigieren Sie zu **Common Site Settings** (Allgemeine Websiteeinstellungen) und dann zu **SSO Configuration** (SSO-Konfiguration).
- 
-    ![Einmaliges Anmelden konfigurieren](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
+
+    ![Screenshot der Cisco Webex Administration, in der „Common Site Settings“ (Allgemeine Websiteeinstellungen) und „S S O Configuration“ (SSO-Konfiguration) ausgewählt sind](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. Führen Sie auf der Seite **Webex Administration** (Webex-Verwaltung) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
+    ![Screenshot der Seite „Webex Administration“ mit den in diesem Schritt beschriebenen Informationen](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
     a. Wählen Sie unter **Federation Protocol** (Verbundprotokoll) die Option **SAML 2.0** aus.
 
@@ -198,14 +196,14 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens B. Simon in
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Cisco WebEx Meetings“ klicken, sollten Sie automatisch bei der Cisco WebEx Meetings-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Cisco WebEx Meetings“ klicken, sollten Sie automatisch bei der Cisco WebEx Meetings-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
 
 - [ServiceNow mit Azure AD ausprobieren](https://aad.portal.azure.com)

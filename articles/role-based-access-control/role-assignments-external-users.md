@@ -1,6 +1,6 @@
 ---
-title: Verwalten des Zugriffs auf Azure-Ressourcen für externe Gastbenutzer mit RBAC | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für organisationsexterne Benutzer mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) verwalten.
+title: Hinzufügen oder Entfernen von Azure-Rollenzuweisungen für externe Benutzer über das Azure-Portal – Azure RBAC
+description: Hier erfahren Sie, wie Sie organisationsexternen Benutzern mithilfe des Azure-Portals und der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) Zugriff auf Azure-Ressourcen erteilen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -9,23 +9,29 @@ editor: ''
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 09/12/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 12f4b0276074b6732cf57443f51ef5d867f205a6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 846e1a83f3cba5f87210ae4f825b5fac4f1569c6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967258"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648377"
 ---
-# <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Verwalten des Zugriffs auf Azure-Ressourcen für externe Gastbenutzer mit RBAC
+# <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Hinzufügen oder Entfernen von Azure-Rollenzuweisungen für externe Gastbenutzer über das Azure-Portal
 
-Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ermöglicht eine bessere Sicherheitsverwaltung für große Organisationen sowie für kleine und mittelständische Unternehmen, die mit externen Projektmitarbeitern, Lieferanten oder Freiberuflern arbeiten und für diese Zugriff auf bestimmte Ressourcen in der Umgebung benötigen, nicht aber auf die gesamte Infrastruktur oder abrechnungsrelevante Bereiche. Mithilfe der Funktionen in [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) können Sie mit externen Gastbenutzern zusammenarbeiten, und Sie können mithilfe von RBAC nur die Berechtigungen erteilen, die Gastbenutzer in Ihrer Umgebung benötigen.
+Die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](overview.md) ermöglicht eine bessere Sicherheitsverwaltung für große Organisationen sowie für kleine und mittelständische Unternehmen, die mit externen Projektmitarbeitern, Lieferanten oder Freiberuflern zusammenarbeiten und für diese Zugriff auf bestimmte Ressourcen in der Umgebung benötigen, nicht aber auf die gesamte Infrastruktur oder abrechnungsrelevante Bereiche. Mithilfe der Funktionen in [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md) können Sie mit externen Gastbenutzern zusammenarbeiten, und Sie können mithilfe von Azure RBAC nur die Berechtigungen erteilen, die Gastbenutzer in Ihrer Umgebung benötigen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen oder entfernen zu können:
+
+- `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
 
 ## <a name="when-would-you-invite-guest-users"></a>Wann würden Sie Gastbenutzer einladen?
 
@@ -43,13 +49,13 @@ Native Mitglieder eines Verzeichnisses (Mitgliedsbenutzer) verfügen über ander
 
 Führen Sie diese Schritte aus, um einen Gastbenutzer über die Azure Active Directory-Seite zu Ihrem Verzeichnis hinzuzufügen.
 
-1. Stellen Sie sicher, dass die Einstellungen für externe Zusammenarbeit Ihrer Organisation so konfiguriert sind, dass Sie Gäste einladen dürfen. Weitere Informationen finden Sie unter [Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann](../active-directory/b2b/delegate-invitations.md).
+1. Stellen Sie sicher, dass die Einstellungen für externe Zusammenarbeit Ihrer Organisation so konfiguriert sind, dass Sie Gäste einladen dürfen. Weitere Informationen finden Sie unter [Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann](../active-directory/external-identities/delegate-invitations.md).
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** > **Benutzer** > **Neuer Gastbenutzer**.
 
     ![Neues Feature „Gastbenutzer“ im Azure-Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
-1. Befolgen Sie die Schritte, um einen neuen Gastbenutzer hinzuzufügen. Weitere Informationen finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../active-directory/b2b/add-users-administrator.md#add-guest-users-to-the-directory).
+1. Befolgen Sie die Schritte, um einen neuen Gastbenutzer hinzuzufügen. Weitere Informationen finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../active-directory/external-identities/add-users-administrator.md#add-guest-users-to-the-directory).
 
 Nachdem Sie dem Verzeichnis einen Gastbenutzer hinzugefügt haben, können Sie dem Gastbenutzer einen direkten Link zu einer freigegebenen App senden, oder der Gastbenutzer kann auf die Einlösungs-URL in der Einladungs-E-Mail klicken.
 
@@ -59,11 +65,11 @@ Damit der Gastbenutzer auf Ihr Verzeichnis zugreifen kann, muss er den Einladung
 
 ![Berechtigungen zum Überprüfen der Gastbenutzereinladung](./media/role-assignments-external-users/invite-review-permissions.png)
 
-Weitere Informationen zum Einladungsprozess finden Sie unter [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](../active-directory/b2b/redemption-experience.md).
+Weitere Informationen zum Einladungsprozess finden Sie unter [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](../active-directory/external-identities/redemption-experience.md).
 
-## <a name="grant-access-to-a-guest-user"></a>Gewähren des Zugriffs für einen Gastbenutzer
+## <a name="add-a-role-assignment-for-a-guest-user"></a>Hinzufügen einer Rollenzuweisung für einen Gastbenutzer
 
-In RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Um einen Gastbenutzer den Zugriff zu gewähren, befolgen Sie [dieselben Schritte](role-assignments-portal.md#add-a-role-assignment) wie für einen Mitgliedsbenutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität. Gehen Sie wie folgt vor, um einem Gastbenutzer Zugriff auf verschiedene Bereiche zu gewähren.
+In Azure RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Verwenden Sie zum Hinzufügen einer Rollenzuweisung für einen Gastbenutzer die [gleiche Vorgehensweise](role-assignments-portal.md#add-a-role-assignment) wie für einen Mitgliedsbenutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität. Gehen Sie wie folgt vor, um eine Rollenzuweisung für einen Gastbenutzer in verschiedenen Bereichen hinzuzufügen:
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste**.
 
@@ -83,7 +89,9 @@ In RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Um einen Gastbenutz
 
     Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
 
-    ![Menü „Hinzufügen“](./media/role-assignments-external-users/add-menu.png)
+    ![Menü „Rollenzuweisung hinzufügen“](./media/shared/add-role-assignment-menu.png)
+
+    Der Bereich „Rollenzuweisung hinzufügen“ wird geöffnet.
 
 1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer**.
 
@@ -95,9 +103,9 @@ In RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Um einen Gastbenutz
 
     ![Rollenzuweisung für Mitwirkender von virtuellen Computern](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-## <a name="grant-access-to-a-guest-user-not-yet-in-your-directory"></a>Gewähren des Zugriffs für einen Gastbenutzer, der sich noch nicht in Ihrem Verzeichnis befindet
+## <a name="add-a-role-assignment-for-a-guest-user-not-yet-in-your-directory"></a>Hinzufügen einer Rollenzuweisung für einen Gastbenutzer, der sich noch nicht in Ihrem Verzeichnis befindet
 
-In RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Um einen Gastbenutzer den Zugriff zu gewähren, befolgen Sie [dieselben Schritte](role-assignments-portal.md#add-a-role-assignment) wie für einen Mitgliedsbenutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität.
+Verwenden Sie zum Hinzufügen einer Rollenzuweisung für einen Gastbenutzer die [gleiche Vorgehensweise](role-assignments-portal.md#add-a-role-assignment) wie für einen Mitgliedsbenutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität.
 
 Wenn sich der Gastbenutzer noch nicht in Ihrem Verzeichnis befindet, können Sie den Benutzer direkt über den Bereich „Rollenzuweisung hinzufügen“ einladen.
 
@@ -113,7 +121,9 @@ Wenn sich der Gastbenutzer noch nicht in Ihrem Verzeichnis befindet, können Sie
 
 1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
 
-    ![Menü „Hinzufügen“](./media/role-assignments-external-users/add-menu.png)
+    ![Menü „Rollenzuweisung hinzufügen“](./media/shared/add-role-assignment-menu.png)
+
+    Der Bereich „Rollenzuweisung hinzufügen“ wird geöffnet.
 
 1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer**.
 
@@ -135,7 +145,7 @@ Wenn sich der Gastbenutzer noch nicht in Ihrem Verzeichnis befindet, können Sie
 
 1. Senden Sie den Einladungslink an den Gastbenutzer, um den Einladungsprozess abzuschließen.
 
-    Weitere Informationen zum Einladungsprozess finden Sie unter [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](../active-directory/b2b/redemption-experience.md).
+    Weitere Informationen zum Einladungsprozess finden Sie unter [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](../active-directory/external-identities/redemption-experience.md).
 
 ## <a name="remove-a-guest-user-from-your-directory"></a>Entfernen eines Gastbenutzers aus Ihrem Verzeichnis
 
@@ -173,27 +183,27 @@ Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Gastbenutzer k�
 
 ![Gastbenutzer können Benutzer in einem Verzeichnis nicht durchsuchen.](./media/role-assignments-external-users/directory-no-users.png)
 
-Wenn ein Gastbenutzer zusätzliche Berechtigungen im Verzeichnis benötigt, können Sie dem Gastbenutzer eine Verzeichnisrolle zuweisen. Wenn Sie einem Gastbenutzer tatsächlich uneingeschränkten Lesezugriff auf Ihr Verzeichnis gestatten möchten, können Sie den Gastbenutzer der Rolle [Verzeichnisleseberechtigte](../active-directory/users-groups-roles/directory-assign-admin-roles.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/b2b/add-guest-to-role.md).
+Wenn ein Gastbenutzer zusätzliche Berechtigungen im Verzeichnis benötigt, können Sie dem Gastbenutzer eine Verzeichnisrolle zuweisen. Wenn Sie einem Gastbenutzer tatsächlich uneingeschränkten Lesezugriff auf Ihr Verzeichnis gestatten möchten, können Sie den Gastbenutzer der Rolle [Verzeichnisleseberechtigte](../active-directory/roles/permissions-reference.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/external-identities/add-guest-to-role.md).
 
 ![Zuweisen der Rolle „Verzeichnisleseberechtigte“](./media/role-assignments-external-users/directory-roles.png)
 
 ### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>Gastbenutzer können keine Benutzer, Gruppen oder Dienstprinzipale durchsuchen, um Rollen zuzuweisen.
 
-Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Selbst wenn ein Gastbenutzer ein [Besitzer](built-in-roles.md#owner) eines Bereichs ist, kann er die Liste der Benutzer, Gruppen oder Dienstprinzipale nicht durchsuchen, wenn er versucht, eine Rollenzuweisung zu erstellen, um anderen Personen Zugriff zu gewähren.
+Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Selbst wenn ein Gastbenutzer ein [Besitzer](built-in-roles.md#owner) in einem Bereich ist, kann er die Liste der Benutzer, Gruppen oder Dienstprinzipale nicht durchsuchen, wenn er versucht, eine Rollenzuweisung hinzuzufügen, um anderen Personen Zugriff zu gewähren.
 
 ![Gastbenutzer können keine Sicherheitsprinzipale durchsuchen, um Rollen zuzuweisen.](./media/role-assignments-external-users/directory-no-browse.png)
 
-Wenn der Gastbenutzer den genauen Anmeldenamen einer Person im Verzeichnis kennt, kann er Zugriff gewähren. Wenn Sie einem Gastbenutzer tatsächlich uneingeschränkten Lesezugriff auf Ihr Verzeichnis gestatten möchten, können Sie den Gastbenutzer der Rolle [Verzeichnisleseberechtigte](../active-directory/users-groups-roles/directory-assign-admin-roles.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/b2b/add-guest-to-role.md).
+Wenn der Gastbenutzer den genauen Anmeldenamen einer Person im Verzeichnis kennt, kann er Zugriff gewähren. Wenn Sie einem Gastbenutzer tatsächlich uneingeschränkten Lesezugriff auf Ihr Verzeichnis gestatten möchten, können Sie den Gastbenutzer der Rolle [Verzeichnisleseberechtigte](../active-directory/roles/permissions-reference.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/external-identities/add-guest-to-role.md).
 
 ### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>Gastbenutzer können keine Anwendungen registrieren oder Dienstprinzipale erstellen.
 
-Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Wenn ein Gastbenutzer Anwendungen registrieren oder Dienstprinzipale erstellen können muss, können Sie den Gastbenutzer der Rolle [Anwendungsentwickler](../active-directory/users-groups-roles/directory-assign-admin-roles.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/b2b/add-guest-to-role.md).
+Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Wenn ein Gastbenutzer Anwendungen registrieren oder Dienstprinzipale erstellen können muss, können Sie den Gastbenutzer der Rolle [Anwendungsentwickler](../active-directory/roles/permissions-reference.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/external-identities/add-guest-to-role.md).
 
 ![Gastbenutzer können keine Anwendungen registrieren.](./media/role-assignments-external-users/directory-access-denied.png)
 
 ### <a name="guest-user-does-not-see-the-new-directory"></a>Gastbenutzern wird das neue Verzeichnis nicht angezeigt.
 
-Wenn ein Gastbenutzer Zugriff auf ein Verzeichnis hat, aber das neue Verzeichnis nicht im Azure-Portal angezeigt wird, wenn Sie versuchen, in ihren Bereich **Verzeichnis und Abonnement** zu wechseln, stellen Sie sicher, dass der Gastbenutzer den Einladungprozess abgeschlossen hat. Weitere Informationen zum Einladungsprozess finden Sie unter [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](../active-directory/b2b/redemption-experience.md).
+Wenn ein Gastbenutzer Zugriff auf ein Verzeichnis hat, aber das neue Verzeichnis nicht im Azure-Portal angezeigt wird, wenn Sie versuchen, in ihren Bereich **Verzeichnis und Abonnement** zu wechseln, stellen Sie sicher, dass der Gastbenutzer den Einladungprozess abgeschlossen hat. Weitere Informationen zum Einladungsprozess finden Sie unter [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](../active-directory/external-identities/redemption-experience.md).
 
 ### <a name="guest-user-does-not-see-resources"></a>Gastbenutzern werden keine Ressourcen angezeigt.
 
@@ -203,6 +213,7 @@ Wenn einem Gastbenutzer der Zugriff auf ein Verzeichnis gewährt wurde, er aber 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Add Azure Active Directory B2B collaboration users in the Azure portal](../active-directory/b2b/add-users-administrator.md) (Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal)
-- [Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers](../active-directory/b2b/user-properties.md)
-- [Die Elemente der Einladungs-E-Mail für die B2B-Zusammenarbeit – Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
+- [Add Azure Active Directory B2B collaboration users in the Azure portal](../active-directory/external-identities/add-users-administrator.md) (Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal)
+- [Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers](../active-directory/external-identities/user-properties.md)
+- [Die Elemente der Einladungs-E-Mail für die B2B-Zusammenarbeit – Azure Active Directory](../active-directory/external-identities/invitation-email-elements.md)
+- [Hinzufügen eines Gastbenutzers als Co-Admin](classic-administrators.md#add-a-guest-user-as-a-co-administrator)

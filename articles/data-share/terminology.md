@@ -1,21 +1,21 @@
 ---
-title: 'Azure Data Share (Vorschauversion): Terminologie'
-description: 'Azure Data Share (Vorschauversion): Terminologie'
-author: joannapea
+title: Azure Data Share-Terminologie
+description: Informationen zu häufigen Begriffen zum Beschreiben von Ressourcen, die in Azure Data Share verwendet werden (Datenanbieter, Datenconsumer, Datenfreigabe, Freigabeabonnement, Momentaufnahme, Einladung, Empfänger)
 ms.service: data-share
+author: joannapea
+ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: b78a1b250f46c2ddd2b36e19590c4a94ca3ab3fb
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844706"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "73468555"
 ---
-# <a name="azure-data-share-preview-concepts"></a>Konzepte von Azure Data Share (Vorschauversion) 
+# <a name="azure-data-share-concepts"></a>Azure Data Share-Konzepte 
 
-Die Vorschauversion von Azure Data Share führt neue Terminologie im Zusammenhang mit Datenfreigabe ein. Dieser Artikel beschreibt einige häufig verwendete Begriffe, die überall im Dienst verwendet werden. 
+In Azure Data Share gibt es neue Begriffe im Zusammenhang mit der Datenfreigabe. Dieser Artikel beschreibt einige häufig verwendete Begriffe, die überall im Dienst verwendet werden. 
 
 ## <a name="data-provider"></a>Datenanbieter
 
@@ -64,4 +64,3 @@ Ein Empfänger ist eine Person, die eine Einladung für eine Datenfreigabe empf�
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zum Freigeben von Daten finden Sie im Tutorial zum [Freigeben Ihrer Daten](share-your-data.md).
-

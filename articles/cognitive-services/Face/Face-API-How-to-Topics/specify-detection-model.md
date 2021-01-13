@@ -1,7 +1,7 @@
 ---
-title: Angeben eines Erkennungsmodells – Gesichtserkennungs-API
+title: 'Angeben eines Erkennungsmodells: Gesichtserkennung'
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel erfahren Sie, wie Sie das Gesichtserkennungsmodell auswählen, das Sie mit Ihrer Azure-Gesichtserkennungs-API-Anwendung verwenden möchten.
+description: In diesem Artikel erfahren Sie, wie Sie das Gesichtserkennungsmodell auswählen, das Sie mit Ihrer Azure-Gesichtserkennungsanwendung verwenden möchten.
 services: cognitive-services
 author: yluiu
 manager: nitinme
@@ -10,20 +10,21 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: 4306a918d56240bfe038100124b3c2b94964cebc
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5a70b10f7d22c9cc04427bdfbb44243fad457ba0
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306683"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913482"
 ---
 # <a name="specify-a-face-detection-model"></a>Angeben eines Gesichtserkennungsmodells
 
-In dieser Anleitung erfahren Sie, wie Sie ein Gesichtserkennungsmodell für die Azure-Gesichtserkennungs-API angeben.
+In dieser Anleitung erfahren Sie, wie Sie ein Gesichtserkennungsmodell für den Azure-Gesichtserkennungsdienst angeben.
 
-Die Gesichtserkennungs-API nutzt Machine Learning-Modelle für Operationen mit menschlichen Gesichter in Bildern. Wir verbessern die Genauigkeit unserer Modelle auf der Grundlage von Kundenfeedback und Forschungsergebnissen kontinuierlich, und wir stellen diese Verbesserungen als Modellaktualisierungen zur Verfügung. Entwickler können angeben, welche Version des Gesichtserkennungsmodells sie verwenden möchten. Sie können das Modell auswählen, das am besten zu ihrem Anwendungsfall passt.
+Der Gesichtserkennungsdienst nutzt Machine Learning-Modelle für Vorgänge mit menschlichen Gesichter in Bildern. Wir verbessern die Genauigkeit unserer Modelle auf der Grundlage von Kundenfeedback und Forschungsergebnissen kontinuierlich, und wir stellen diese Verbesserungen als Modellaktualisierungen zur Verfügung. Entwickler können angeben, welche Version des Gesichtserkennungsmodells sie verwenden möchten. Sie können das Modell auswählen, das am besten zu ihrem Anwendungsfall passt.
 
-Im Folgenden erfahren Sie, wie Sie in bestimmten Gesichtserkennungsvorgängen das Gesichtserkennungsmodell angeben. Die Gesichtserkennungs-API verwendet die Gesichtserkennung, sobald das Bild eines Gesichts in eine andere Datenform konvertiert wird.
+Im Folgenden erfahren Sie, wie Sie in bestimmten Gesichtserkennungsvorgängen das Gesichtserkennungsmodell angeben. Der Gesichtserkennungsdienst verwendet die Gesichtserkennung, sobald das Bild eines Gesichts in eine andere Datenform konvertiert wird.
 
 Wenn Sie nicht sicher sind, ob Sie das neueste Modell verwenden sollten, gehen Sie zum Abschnitt [Auswerten unterschiedlicher Modelle](#evaluate-different-models) über, um das neue Modell zu testen und die Ergebnisse anhand Ihres aktuellen Datasets zu vergleichen.
 
@@ -51,19 +52,19 @@ Wenn Sie die Clientbibliothek verwenden, können Sie den Wert für `detectionMod
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_02", detectionModel: "detection_02");
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_03", detectionModel: "detection_02");
 ```
 
 ## <a name="add-face-to-person-with-specified-model"></a>Hinzufügen eines Gesichts zu einem Person-Objekt mit einem angegebenen Modell
 
-Die Gesichtserkennungs-API kann Gesichtsdaten aus einem Bild extrahieren und über die API [PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) einem **Person**-Objekt zuordnen. In diesem API-Aufruf können Sie das Erkennungsmodell auf die gleiche Weise wie bei [Face – Detect] angeben.
+Der Gesichtserkennungsdienst kann Gesichtsdaten aus einem Bild extrahieren und über die API [PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) einem **Person** -Objekt zuordnen. In diesem API-Aufruf können Sie das Erkennungsmodell auf die gleiche Weise wie bei [Face – Detect] angeben.
 
 Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 
 ```csharp
 // Create a PersonGroup and add a person with face detected by "detection_02" model
 string personGroupId = "mypersongroupid";
-await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_03");
 
 string personId = (await faceClient.PersonGroupPerson.CreateAsync(personGroupId, "My Person Name")).PersonId;
 
@@ -71,26 +72,26 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
 ```
 
-Mit diesem Code wird ein **PersonGroup**-Objekt mit der ID `mypersongroupid` erstellt. Anschließend wird dem Objekt ein **Person**-Objekt hinzugefügt. Danach wird diesem **Person**-Objekt unter Verwendung des Modells `detection_02` ein Gesicht hinzugefügt. Wenn Sie den *detectionModel*-Parameter nicht angeben, verwendet die API das Standardmodell `detection_01`.
+Mit diesem Code wird ein **PersonGroup** -Objekt mit der ID `mypersongroupid` erstellt. Anschließend wird dem Objekt ein **Person** -Objekt hinzugefügt. Danach wird diesem **Person** -Objekt unter Verwendung des Modells `detection_02` ein Gesicht hinzugefügt. Wenn Sie den *detectionModel* -Parameter nicht angeben, verwendet die API das Standardmodell `detection_01`.
 
 > [!NOTE]
-> Sie müssen nicht dasselbe Erkennungsmodell für alle Gesichter in einem **Person**-Objekt verwenden. Es ist auch nicht erforderlich, dasselbe Erkennungsmodell bei der Erkennung neuer Gesichter zu verwenden, um diese mit einem **Person**-Objekt zu vergleichen (beispielsweise in der API [Face - Identify]).
+> Sie müssen nicht dasselbe Erkennungsmodell für alle Gesichter in einem **Person** -Objekt verwenden. Es ist auch nicht erforderlich, dasselbe Erkennungsmodell bei der Erkennung neuer Gesichter zu verwenden, um diese mit einem **Person** -Objekt zu vergleichen (beispielsweise in der API [Face - Identify]).
 
 ## <a name="add-face-to-facelist-with-specified-model"></a>Hinzufügen eines Gesichts zu einem FaceList-Objekt mit einem angegebenen Modell
 
-Sie können auch ein Erkennungsmodell angeben, wenn Sie ein Gesicht einem vorhandenen **FaceList**-Objekt hinzufügen. Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
+Sie können auch ein Erkennungsmodell angeben, wenn Sie ein Gesicht einem vorhandenen **FaceList** -Objekt hinzufügen. Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
 
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
 ```
 
-Mit diesem Code wird ein **FaceList**-Objekt namens `My face collection` erstellt. Anschließend wird dem Objekt mit dem Modell `detection_02` ein Gesicht hinzugefügt. Wenn Sie den *detectionModel*-Parameter nicht angeben, verwendet die API das Standardmodell `detection_01`.
+Mit diesem Code wird ein **FaceList** -Objekt namens `My face collection` erstellt. Anschließend wird dem Objekt mit dem Modell `detection_02` ein Gesicht hinzugefügt. Wenn Sie den *detectionModel* -Parameter nicht angeben, verwendet die API das Standardmodell `detection_01`.
 
 > [!NOTE]
-> Sie müssen nicht dasselbe Erkennungsmodell für alle Gesichter in einem **FaceList**-Objekt verwenden. Es ist auch nicht erforderlich, dasselbe Erkennungsmodell bei der Erkennung neuer Gesichter zu verwenden, um diese mit einem **FaceList**-Objekt zu vergleichen.
+> Sie müssen nicht dasselbe Erkennungsmodell für alle Gesichter in einem **FaceList** -Objekt verwenden. Es ist auch nicht erforderlich, dasselbe Erkennungsmodell bei der Erkennung neuer Gesichter zu verwenden, um diese mit einem **FaceList** -Objekt zu vergleichen.
 
 ## <a name="evaluate-different-models"></a>Auswerten unterschiedlicher Modelle
 
@@ -109,8 +110,9 @@ Am besten lässt sich die Leistungsfähigkeit der Modelle `detection_01` und `de
 
 In diesem Artikel haben Sie gelernt, wie Sie das Erkennungsmodell angeben, das für verschiedene Gesichtserkennungs-APIs verwendet werden soll. Als nächstes befolgen Sie einen Schnellstart zu den ersten Schritten mit der Gesichtserkennung.
 
-* [.NET SDK zur Gesichtserkennung](../Quickstarts/csharp-sdk.md)
-* [Python SDK zur Gesichtserkennung](../Quickstarts/python-sdk.md)
+* [.NET SDK zur Gesichtserkennung](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
+* [Python SDK zur Gesichtserkennung](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)
+* [Go SDK zur Gesichtserkennung](../quickstarts/client-libraries.md?pivots=programming-language-go%253fpivots%253dprogramming-language-go)
 
 [Face – Detect]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

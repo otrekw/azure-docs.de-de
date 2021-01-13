@@ -1,20 +1,16 @@
 ---
-title: Einrichten einer Windows-Entwicklungsumgebung zum Erstellen von Service Fabric Mesh-Apps | Microsoft-Dokumentation
+title: Einrichten einer Windows-Entwicklungsumgebung für Service Fabric Mesh
 description: Einrichten der Windows-Entwicklungsumgebung, damit Sie eine Service Fabric Mesh-Anwendung erstellen und in Azure Service Fabric Mesh bereitstellen können.
-services: service-fabric-mesh
-keywords: ''
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 12/12/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chakdan
-ms.openlocfilehash: 5ab817c65ab562f37b456cc3589624c1876084f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 479e975abd40be80e17fc187f1d13500d11cb983
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428196"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842749"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Einrichten der Windows-Entwicklungsumgebung zum Erstellen von Service Fabric Mesh-Anwendungen
 
@@ -119,7 +115,7 @@ Lesen Sie das Tutorial [Erstellen einer Azure Service Fabric-App](service-fabric
 
 [Hier](service-fabric-mesh-faq.md) finden Sie Antworten auf häufig gestellte Fragen sowie Informationen zu bekannten Problemen.
 
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
+[azure-cli-install]: /cli/azure/install-azure-cli
 [download-docker]: https://store.docker.com/editions/community/docker-ce-desktop-windows
 [download-docker-server]: https://docs.docker.com/install/windows/docker-ee/
 [download-runtime]: https://aka.ms/sfruntime

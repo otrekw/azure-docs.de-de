@@ -1,64 +1,94 @@
 ---
-title: Auswählen von Windows-VM-Images in Azure | Microsoft-Dokumentation
-description: Verwenden Sie Azure PowerShell, um den Herausgeber, das Angebot, die SKU und die Version für Marketplace-VM-Images zu ermitteln.
-services: virtual-machines-windows
-documentationcenter: ''
+title: Suchen und Verwenden von Azure Marketplace-Images und -Plänen
+description: Verwenden Sie Azure PowerShell, um den Herausgeber, das Angebot, die SKU, die Version und den Plan von Marketplace-VM-Images zu ermitteln.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 188b8974-fabd-4cd3-b7dc-559cbb86b98a
-ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 01/25/2019
+ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: 645d969d71a0b8707d7969f4bf68a07ab0211d0a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 45e6b157dba5ef7410d8a5c0223fd3ecb52f39d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080027"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906266"
 ---
-# <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Suchen nach Windows-VM-Images im Azure Marketplace mit Azure PowerShell
+# <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>Suchen und Verwenden von VM-Images im Azure Marketplace mit Azure PowerShell     
 
-Dieser Artikel beschreibt, wie Sie mit Azure PowerShell nach VM-Images im Azure Marketplace suchen. Sie können dann ein Marketplace-Image angeben, wenn Sie einen virtuellen Computer programmgesteuert mit PowerShell, Resource Manager-Vorlagen oder anderen Tools erstellen.
+Dieser Artikel beschreibt, wie Sie mit Azure PowerShell nach VM-Images im Azure Marketplace suchen. Sie können dann ein Marketplace-Image und Informationen zum Plan angeben, wenn Sie eine VM erstellen.
 
 Sie können auch über die [Azure Marketplace](https://azuremarketplace.microsoft.com/)-Storefront, das [Azure-Portal](https://portal.azure.com) oder die [Azure-Befehlszeilenschnittstelle](../linux/cli-ps-findimage.md) die verfügbaren Images und Angebote durchsuchen. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
-## <a name="table-of-commonly-used-windows-images"></a>Tabelle mit häufig verwendeten Windows-Images
 
-Die folgende Tabelle enthält eine Teilmenge der verfügbaren SKUs für die angegebenen Herausgeber und Angebote:
+## <a name="create-a-vm-from-vhd-with-plan-information"></a>Erstellen einer VM aus einer VHD mit Planinformationen
 
-| Herausgeber | Angebot | Sku |
-|:--- |:--- |:--- |
-| MicrosoftWindowsServer |Windows Server |2019-Datacenter |
-| MicrosoftWindowsServer |Windows Server |2019-Datacenter-Core |
-| MicrosoftWindowsServer |Windows Server |2019-Datacenter-with-Containers |
-| MicrosoftWindowsServer |Windows Server |2016-Datacenter |
-| MicrosoftWindowsServer |Windows Server |2016-Datacenter-Server-Core |
-| MicrosoftWindowsServer |Windows Server |2016-Datacenter-with-Containers |
-| MicrosoftWindowsServer |Windows Server |2012-R2-Datacenter |
-| MicrosoftWindowsServer |Windows Server |2012-Datacenter |
-| MicrosoftDynamicsNAV |DynamicsNAV |2017 |
-| MicrosoftSharePoint |MicrosoftSharePointServer |2019 |
-| MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
-| MicrosoftRServer |RServer-WS2016 |Enterprise |
+Wenn eine Ihrer vorhandenen virtuellen Festplatten mit einem Azure Marketplace-Image erstellt wurde, müssen Sie beim Erstellen einer neuen VM von dieser VHD möglicherweise die Informationen zu Ihrem Erwerbsplan angeben.
 
-## <a name="navigate-the-images"></a>Navigieren zu den Images
+Wenn Sie noch über die ursprüngliche VM oder eine andere VM verfügen, die mit demselben Image erstellt wurde, können Sie den Plannamen, den Herausgeber und die Produktinformationen mithilfe von Get-AzVM abrufen. Dieses Beispiel ruft eine VM namens *myVM* in der Ressourcengruppe *myResourceGroup* ab und zeigt dann die Erwerbsplaninformationen an.
 
-Eine Möglichkeit, ein Image an einem Speicherort zu suchen, stellt das aufeinanderfolgende Ausführen der Cmdlets [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher), [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) und [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) dar:
+```azurepowershell-interactive
+$vm = Get-azvm `
+   -ResourceGroupName myResourceGroup `
+   -Name myVM
+$vm.Plan
+```
+
+Wenn Sie die Planinformationen nicht vor dem Löschen der ursprünglichen VM abgerufen haben, können Sie eine [Supportanfrage](https://ms.portal.azure.com/#create/Microsoft.Support) erstellen. Sie benötigen dazu den VM-Namen, die Abonnement-ID und den Zeitstempel des Löschvorgangs.
+
+Informationen zum Erstellen einer VM mit einer VHD finden Sie im Artikel [Erstellen eines virtuellen Computers aus einer speziellen VHD](create-vm-specialized.md). Fügen Sie beim Erstellen der VM-Konfiguration eine Zeile mit den Planinformationen mithilfe von [Set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) hinzu, wie im Folgenden gezeigt:
+
+```azurepowershell-interactive
+$vmConfig = Set-AzVMPlan `
+   -VM $vmConfig `
+   -Publisher "publisherName" `
+   -Product "productName" `
+   -Name "planName"
+```
+
+## <a name="create-a-new-vm-from-a-marketplace-image"></a>Erstellen einer neuen VM aus einem Marketplace-Image
+
+Wenn Sie die Informationen zu dem Image, das Sie verwenden möchten, bereits haben, können Sie diese an das Cmdlet [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) übergeben, um der VM-Konfiguration die Imageinformationen hinzuzufügen. In den nächsten Abschnitten finden Sie Informationen zum Suchen und Auflisten der im Marketplace verfügbaren Images.
+
+Für einige kostenpflichtige Images ist es außerdem erforderlich, mithilfe von [Set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) Informationen zum Erwerbsplan anzugeben. 
+
+```powershell
+...
+
+$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
+
+# Set the Marketplace image
+$offerName = "windows-data-science-vm"
+$skuName = "windows2016"
+$version = "19.01.14"
+$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
+
+# Set the Marketplace plan information, if needed
+$publisherName = "microsoft-ads"
+$productName = "windows-data-science-vm"
+$planName = "windows2016"
+$vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $productName -Name $planName
+
+...
+```
+
+Anschließend übergeben Sie die VM-Konfiguration zusammen mit anderen Konfigurationsobjekten an das Cmdlet `New-AzVM`. Ein ausführliches Beispiel für die Verwendung einer VM-Konfiguration mit PowerShell finden Sie in diesem [Skript](https://github.com/Azure/azure-docs-powershell-samples/blob/master/virtual-machine/create-vm-detailed/create-windows-vm-detailed.ps1).
+
+Wenn Sie in einer Meldung aufgefordert werden, die Nutzungsbedingungen für das Image zu akzeptieren, finden Sie weiter unten in diesem Artikel im Abschnitt zum [Akzeptieren der Nutzungsbedingungen](#accept-the-terms) weitere Informationen.
+
+## <a name="list-images"></a>Auflisten von Images
+
+Eine Möglichkeit, ein Image an einem Speicherort zu suchen, stellt das aufeinanderfolgende Ausführen der Cmdlets [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher), [Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) und [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) dar:
 
 1. Auflistung der Herausgeber von Images
 2. Auflistung der Angebote eines bestimmten Anbieters
 3. Auflistung der SKUs eines bestimmten Angebots
 
-Führen Sie dann für eine ausgewählte SKU [Get-AzVMImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimage) zum Auflisten der bereitzustellenden Versionen aus.
+Führen Sie dann für eine ausgewählte SKU [Get-AzVMImage](/powershell/module/az.compute/get-azvmimage) zum Auflisten der bereitzustellenden Versionen aus.
 
 1. Listen Sie die Herausgeber auf:
 
@@ -176,7 +206,7 @@ $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-Nun können Sie Herausgeber, Angebot, SKU und Version Ihrer Wahl in einem URN kombinieren (Trennung der Werte durch „:“). Übergeben Sie diesen URN mit dem Parameter `--image`, wenn Sie einen virtuellen Computer mit dem Cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) erstellen. Sie können optional die Versionsnummer im URN durch „latest“ ersetzen, um die aktuelle Version des Images abzurufen.
+Nun können Sie Herausgeber, Angebot, SKU und Version Ihrer Wahl in einem URN kombinieren (Trennung der Werte durch „:“). Übergeben Sie diesen URN mit dem Parameter `--image`, wenn Sie einen virtuellen Computer mit dem Cmdlet [New-AzVM](/powershell/module/az.compute/new-azvm) erstellen. Sie können optional die Versionsnummer im URN durch „latest“ ersetzen, um die aktuelle Version des Images abzurufen.
 
 Wenn Sie einen virtuellen Computer mithilfe einer Resource Manager-Vorlage bereitstellen, legen Sie die Imageparameter einzeln in den `imageReference`-Eigenschaften fest. Informationen finden Sie in der [Vorlagenreferenz](/azure/templates/microsoft.compute/virtualmachines).
 
@@ -243,7 +273,7 @@ DataDiskImages   : []
 
 ### <a name="accept-the-terms"></a>Akzeptieren der Bedingungen
 
-Verwenden Sie zum Anzeigen der Lizenzbedingungen das Cmdlet [Get-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms), und übergeben Sie die Kaufplanparameter. Die Ausgabe enthält einen Link zu den Bedingungen für das Marketplace-Image und zeigt an, ob Sie zuvor die Geschäftsbedingungen akzeptiert haben. Verwenden Sie in den Parameterwerten ausschließlich Kleinbuchstaben.
+Verwenden Sie zum Anzeigen der Lizenzbedingungen das Cmdlet [Get-AzMarketplaceterms](/powershell/module/az.marketplaceordering/get-azmarketplaceterms), und übergeben Sie die Kaufplanparameter. Die Ausgabe enthält einen Link zu den Bedingungen für das Marketplace-Image und zeigt an, ob Sie zuvor die Geschäftsbedingungen akzeptiert haben. Verwenden Sie in den Parameterwerten ausschließlich Kleinbuchstaben.
 
 ```powershell
 Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -262,7 +292,7 @@ Accepted          : False
 Signdate          : 1/25/2019 7:43:00 PM
 ```
 
-Verwenden Sie das Cmdlet [Set-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms) zum Annehmen oder Ablehnen der Bedingungen. Sie müssen für das Image die Bedingungen nur einmal pro Abonnement akzeptieren. Verwenden Sie in den Parameterwerten ausschließlich Kleinbuchstaben. 
+Verwenden Sie das Cmdlet [Set-AzMarketplaceterms](/powershell/module/az.marketplaceordering/set-azmarketplaceterms) zum Annehmen oder Ablehnen der Bedingungen. Sie müssen für das Image die Bedingungen nur einmal pro Abonnement akzeptieren. Verwenden Sie in den Parameterwerten ausschließlich Kleinbuchstaben. 
 
 ```powershell
 $agreementTerms=Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -284,47 +314,10 @@ Accepted          : True
 Signdate          : 2/23/2018 7:49:31 PM
 ```
 
-### <a name="deploy-using-purchase-plan-parameters"></a>Bereitstellen mithilfe von Kaufplanparametern
 
-Nach dem Akzeptieren der Bedingungen für ein Image können Sie einen virtuellen Computer in diesem Abonnement bereitstellen. Verwenden Sie wie im folgenden Codeausschnitt gezeigt das Cmdlet [Set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan), um die Marketplace-Planinformationen für das VM-Objekt festzulegen. Ein vollständiges Skript zum Erstellen von Netzwerkeinstellungen für den virtuellen Computer und Fertigstellen der Bereitstellung finden Sie unter [Virtueller Azure-Computer – PowerShell-Beispiele](powershell-samples.md).
-
-```powershell
-...
-
-$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
-
-# Set the Marketplace plan information
-
-$publisherName = "microsoft-ads"
-
-$productName = "windows-data-science-vm"
-
-$planName = "windows2016"
-
-$vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $productName -Name $planName
-
-$cred=Get-Credential
-
-$vmConfig = Set-AzVMOperatingSystem -Windows -VM $vmConfig -ComputerName "myVM" -Credential $cred
-
-# Set the Marketplace image
-
-$offerName = "windows-data-science-vm"
-
-$skuName = "windows2016"
-
-$version = "19.01.14"
-
-$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
-...
-```
-Anschließend übergeben Sie die VM-Konfiguration zusammen mit Netzwerkkonfigurationsobjekten an das Cmdlet `New-AzVM`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Um mit den grundlegenden Imageinformationen schnell mit dem Cmdlet `New-AzVM` einen virtuellen Computer zu erstellen, lesen Sie [Erstellen eines virtuellen Windows-Computers mit PowerShell](quick-create-powershell.md).
 
-
-Ein PowerShell-Skriptbeispiel finden Sie unter [Erstellen einer vollständig konfigurierten VM](../scripts/virtual-machines-windows-powershell-sample-create-vm.md).
-
-
+Weitere Informationen zur Verwendung von Azure Marketplace-Images zum Erstellen benutzerdefinierter Images in einer Shared Image Gallery-Instanz finden Sie unter [Bereitstellen von Azure Marketplace-Erwerbsplaninformationen beim Erstellen von Images](../marketplace-images.md).

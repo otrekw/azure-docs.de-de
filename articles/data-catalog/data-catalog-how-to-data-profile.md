@@ -4,14 +4,14 @@ description: Anleitungsartikel, in dem beschrieben wird, wie Sie beim Registrier
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 04ac6c2bf0137289221a4ae6ed58d5a71ad21739
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: b27ff631ce13d70d15a6fd2b6dd5ad5bccaf5450
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950216"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021910"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Erstellen von Datenprofilen von Datenquellen in Azure Data Catalog
 
@@ -29,7 +29,7 @@ Bei der Datenprofilerstellung werden die Daten der Datenquelle untersucht, die r
 
 Die Datenprofilerstellung wird für die folgenden Datenquellen unterstützt:
 
-* SQL Server-Tabellen und -Sichten (einschließlich Azure SQL DB und Azure SQL Data Warehouse)
+* SQL Server-Tabellen und -Sichten (einschließlich Azure SQL DB und Azure Synapse Analytics)
 * Oracle-Tabellen und -Sichten
 * Teradata-Tabellen und -Sichten
 * Hive-Tabellen
@@ -45,7 +45,7 @@ Das Einschließen von Datenprofilen beim Registrieren von Datenassets dient Benu
 > Sie können einem Asset auch Dokumentation hinzufügen, um zu beschreiben, wie Daten in eine Anwendung integriert werden können. Weitere Informationen finden Sie unter [Dokumentieren von Datenquellen](data-catalog-how-to-documentation.md).
 >
 
-<a name="howto"/>
+<a name="howto"></a>
 
 ## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>Einschließen eines Datenprofils beim Registrieren einer Datenquelle
 
@@ -88,7 +88,7 @@ Für ein Datenprofil in **Azure Data Catalog** werden Profilinformationen für T
 
 Bei der Datenprofilerstellung werden Statistiken und Informationen zu registrierten Datenassets bereitgestellt, damit Benutzer die Eignung der Daten zum Lösen von Geschäftsproblemen bestimmen können. Wenn Datenquellen zusätzlich mit Anmerkungen versehen und dokumentiert werden, erhalten Benutzer mit Datenprofilen ein tieferes Verständnis Ihrer Daten.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 * [Registrieren von Datenquellen](data-catalog-how-to-register.md)
 * [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md)

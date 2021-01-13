@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services-Fehlercodes | Microsoft-Dokumentation
-description: Dieses Thema bietet eine Übersicht über Azure Media Services-Fehlercodes.
+description: Sie erhalten möglicherweise HTTP-Fehlercodes vom Dienst, abhängig von Problemen wie dem Ablaufen von Authentifizierungstoken und Aktionen, die in Media Services nicht unterstützt werden. Dieser Artikel bietet eine Übersicht über API-Fehlercodes in Azure Media Services v2.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,33 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f3c362730e7908e88b363659b7fa580b6f2cddf1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c30808a46b5cecfaf2e761b3f7a611020cd2cdfb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217166"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89263670"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services-Fehlercodes
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Wenn Sie Microsoft Azure Media Services verwenden, erhalten Sie möglicherweise HTTP-Fehlercodes vom Dienst, abhängig von Problemen wie dem Ablaufen von Authentifizierungstoken und Aktionen, die in Media Services nicht unterstützt werden. Im Folgenden werden die **HTTP-Fehlercodes** aufgelistet, die von Media Services zurückgegeben werden könnten, sowie mögliche Ursachen für diese Fehlercodes.  
 
 ## <a name="400-bad-request"></a>400 – Ungültige Anforderung
 Die Anforderung enthält ungültige Informationen und wird aufgrund einer der folgenden Gründe abgelehnt:
 
 * Es ist eine nicht unterstützte API-Version angegeben. Die aktuellste Version finden Sie unter [Übersicht über die Media Services-REST-API](media-services-rest-how-to-use.md).
-* Die API-Version von Media Services ist nicht angegeben. Weitere Informationen zum Angeben der API-Version finden Sie unter [Media Services Operations REST API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) (Media Services-Vorgänge – REST-API-Referenz).
+* Die API-Version von Media Services ist nicht angegeben. Weitere Informationen zum Angeben der API-Version finden Sie unter [Media Services Operations REST API Reference](/rest/api/media/operations/azure-media-services-rest-api-reference) (Media Services-Vorgänge – REST-API-Referenz).
   
   > [!NOTE]
   > Wenn Sie .NET oder Java SDKs für die Verbindung mit Media Services verwenden, wird die API-Version für Sie angegeben, wenn Sie versuchen, eine Aktion in Media Services ausführen.
   > 
   > 
-* Eine nicht definierte Eigenschaft wurde angegeben. Der Eigenschaftsname ist in der Fehlermeldung. Nur die Eigenschaften, die Elemente einer bestimmten Entität sind, können angegeben werden. Eine Liste von Entitäten und deren Eigenschaften finden Sie unter [Azure Media Services REST API Reference (Referenz zu Azure Media Services-REST-API)](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+* Eine nicht definierte Eigenschaft wurde angegeben. Der Eigenschaftsname ist in der Fehlermeldung. Nur die Eigenschaften, die Elemente einer bestimmten Entität sind, können angegeben werden. Eine Liste von Entitäten und deren Eigenschaften finden Sie unter [Azure Media Services REST API Reference (Referenz zu Azure Media Services-REST-API)](/rest/api/media/operations/azure-media-services-rest-api-reference).
 * Ein Ungültiger Eigenschaftswert wurde angegeben. Der Eigenschaftsname ist in der Fehlermeldung. Unter dem vorherigen Link finden Sie gültige Eigenschaftstypen und deren Werte.
 * Ein Eigenschaftswert fehlt und muss angegeben werden.
 * Ein Teil der angegebenen URL enthält einen ungültigen Wert.
 * Es wurde versucht, eine WriteOnce-Eigenschaft zu aktualisieren.
 * Es wurde versucht, einen Auftrag zu erstellen, der über ein Eingabemedienobjekt mit einer primären AssetFile verfügt, die nicht angegeben wurde oder nicht ermittelt werden konnte.
-* Es wurde versucht, einen SAS-Locator zu aktualisieren. SAS-Locator können nur erstellt oder gelöscht werden. Streaminglocators können aktualisiert werden. Weitere Informationen finden Sie unter [Locator](https://docs.microsoft.com/rest/api/media/operations/locator).
+* Es wurde versucht, einen SAS-Locator zu aktualisieren. SAS-Locator können nur erstellt oder gelöscht werden. Streaminglocators können aktualisiert werden. Weitere Informationen finden Sie unter [Locator](/rest/api/media/operations/locator).
 * Ein nicht unterstützter Vorgang oder eine nicht unterstützte Abfrage wurde übermittelt.
 
 ## <a name="401-unauthorized"></a>401 – Nicht autorisiert
@@ -109,19 +112,18 @@ Mögliche Statusbeschreibungen sind folgende:
 * „Der Server ist ausgelastet. Mehr als {0} Anforderungen pro Sekunde können gedrosselt werden.“
 * „Der Server ist ausgelastet. Mehr als {0} Anforderungen in {1} Sekunden können gedrosselt werden.“
 
-Zum Behandeln dieses Fehlers wird empfohlen, die exponentielle Backoff-Wiederholungslogik zu verwenden. Das bedeutet, zunehmend längere Wartezeiten zwischen Wiederholungsversuchen für aufeinander folgende Fehlerantworten zu verwenden.  Weitere Informationen finden Sie unter [What Does the Transient Fault Handling Application Block Do? (Funktion des Anwendungsblocks zum Behandeln vorübergehender Fehler)](https://msdn.microsoft.com/library/hh680905.aspx).
+Zum Behandeln dieses Fehlers wird empfohlen, die exponentielle Backoff-Wiederholungslogik zu verwenden. Das bedeutet, zunehmend längere Wartezeiten zwischen Wiederholungsversuchen für aufeinander folgende Fehlerantworten zu verwenden.  Weitere Informationen finden Sie unter [What Does the Transient Fault Handling Application Block Do? (Funktion des Anwendungsblocks zum Behandeln vorübergehender Fehler)](/previous-versions/msp-n-p/hh680905(v=pandp.50)).
 
 > [!NOTE]
 > Wenn Sie das [Azure Media Services SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services/tree/master) verwenden, wurde die Wiederholungslogik für den 503-Fehler vom SDK implementiert.  
 > 
 > 
 
-## <a name="see-also"></a>Siehe auch
-[Media Services Management Error Codes (Media Services Management-Fehlercodes)](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
+## <a name="see-also"></a>Weitere Informationen
+[Media Services Management Error Codes (Media Services Management-Fehlercodes)](/rest/api/media/)
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

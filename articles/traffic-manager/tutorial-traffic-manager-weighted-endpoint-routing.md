@@ -1,19 +1,19 @@
 ---
-title: 'Tutorial: Weiterleiten von Datenverkehr an gewichtete Endpunkte mit Azure Traffic Manager | Microsoft-Dokumentation'
+title: 'Tutorial: Weiterleiten von Datenverkehr an gewichtete Endpunkte – Azure Traffic Manager'
 description: In diesem Tutorialartikel erfahren Sie, wie Sie Datenverkehr mithilfe von Traffic Manager an gewichtete Endpunkte weiterleiten.
 services: traffic-manager
-author: asudbring
+author: duongau
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
-ms.date: 10/15/2018
-ms.author: allensu
-ms.openlocfilehash: f9e2b6f6a45279c52e19a63509c57fb34e739330
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.date: 10/19/2020
+ms.author: duau
+ms.openlocfilehash: 55c316a370b9e44e906e48b4716201384567c9c2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258367"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003785"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Tutorial: Steuern des Routings von Datenverkehr mit gewichteten Endpunkten unter Verwendung von Traffic Manager
 
@@ -139,10 +139,10 @@ Erstellen Sie ein Traffic Manager-Profil auf der Grundlage der Routingmethode **
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | NAME                   | Geben Sie einen Namen ein, der innerhalb der Zone „trafficmanager.net“ eindeutig ist. Dadurch ergibt sich der DNS-Name „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
+    | Name                   | Geben Sie einen Namen ein, der innerhalb der Zone „trafficmanager.net“ eindeutig ist. Dadurch ergibt sich der DNS-Name „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
     | Routingmethode          | Wählen Sie die Routingmethode **Gewichtet** aus.                                       |
-    | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
-    | Ressourcengruppe          | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroupTM1** aus. |
+    | Subscription            | Wählen Sie Ihr Abonnement aus.                          |
+    | Resource group          | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroupTM1** aus. |
     |        |   |
 
     ![Erstellen eines Traffic Manager-Profils](./media/tutorial-traffic-manager-weighted-endpoint-routing/create-traffic-manager-profile.png)
@@ -157,8 +157,8 @@ Fügen Sie die beiden virtuellen Computer hinzu, auf denen die IIS-Server („my
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Type                    | Geben Sie den Azure-Endpunkt ein.                                   |
-    | NAME           | Geben Sie **myEastUSEndpoint** ein.                                        |
+    | type                    | Geben Sie den Azure-Endpunkt ein.                                   |
+    | Name           | Geben Sie **myEastUSEndpoint** ein.                                        |
     | Zielressourcentyp           | Wählen Sie **Öffentliche IP-Adresse**.                          |
     | Zielressource          | Wählen Sie eine öffentliche IP-Adresse aus, um die Liste der Ressourcen mit öffentlichen IP-Adressen im gleichen Abonnement anzuzeigen. Wählen Sie in **Ressource** die öffentliche IP-Adresse mit dem Namen **myIISVMEastUS-ip** aus. Dies ist die öffentliche IP-Adresse der IIS-Server-VM in „USA, Osten“.|
     |  Weight      | Geben Sie **100** ein.        |
@@ -201,11 +201,13 @@ In diesem Abschnitt sehen Sie Traffic Manager in Aktion.
 
 7. Wiederholen Sie die Schritte 1 bis 6 auf dem virtuellen Computer „myVMWestEurope“, um die gewichtete Websiteantwort anzuzeigen.
 
-## <a name="delete-the-traffic-manager-profile"></a>Löschen des Traffic Manager-Profils
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie die in diesem Tutorial erstellten Ressourcengruppen nicht mehr benötigen, können Sie sie löschen. Wählen Sie hierzu die Ressourcengruppe aus (**ResourceGroupTM1** oder **ResourceGroupTM2**), und wählen Sie dann **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Hier erfahren Sie mehr zu Routingmethoden:
+
 > [!div class="nextstepaction"]
-> [Weiterleiten von Datenverkehr an bestimmte Endpunkte auf der Grundlage des geografischen Standorts des Benutzers](traffic-manager-configure-geographic-routing-method.md)
+> [Datenverkehrsrouting-Methode](traffic-manager-routing-methods.md)

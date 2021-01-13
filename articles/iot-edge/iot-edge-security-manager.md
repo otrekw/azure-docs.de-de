@@ -1,5 +1,5 @@
 ---
-title: Erfahren Sie, wie der Sicherheits-Manager Geräte und Software schützt – Azure IoT Edge | Microsoft-Dokumentation
+title: 'Azure IoT Edge-Sicherheits-Manager: Azure IoT Edge'
 description: Verwaltet das Sicherheitsniveau für IoT Edge-Gerät und die Integrität von Sicherheitsdiensten.
 services: iot-edge
 keywords: Sicherheit, sicheres Element, Enclave, TEE, IoT Edge
@@ -7,19 +7,18 @@ author: eustacea
 manager: philmea
 ms.author: eustacea
 ms.date: 08/30/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: f137070cb8a62f2c11f9e2688b5c7db47c1b866f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: d50ff37c3d29ae8e9e25d8759ef3c55787a58047
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208216"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042999"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge-Sicherheits-Manager
 
-Der Azure IoT Edge-Sicherheits-Manager wird ein streng abgegrenzter Sicherheitskern für den Schutz der IoT Edge-Geräte und aller zugehörigen Komponenten durch das Abstrahieren der sicheren Hardware. Er fungiert als zentraler Punkt zur Erhöhung der Sicherheit und stellt den Integrationspunkt für Technologie durch Gerätehersteller (Original Equipment Manufacturer, OEM) dar.
+Der Azure IoT Edge-Sicherheits-Manager wird ein streng abgegrenzter Sicherheitskern für den Schutz der IoT Edge-Geräte und aller zugehörigen Komponenten durch das Abstrahieren der sicheren Hardware. Der Sicherheits-Manager fungiert als zentraler Punkt zur Erhöhung der Sicherheit und stellt den Integrationspunkt für Technologie durch Gerätehersteller (Original Equipment Manufacturer, OEM) dar.
 
 ![Azure IoT Edge-Sicherheits-Manager](media/edge-security-manager/iot-edge-security-manager.png)
 
@@ -42,7 +41,7 @@ Der IoT Edge-Sicherheits-Manager besteht aus drei Hauptkomponenten:
 
 ## <a name="the-iot-edge-security-daemon"></a>Der IoT Edge-Sicherheits-Daemon
 
-Der IoT Edge-Sicherheits-Daemon ist für die logischen Vorgänge des IoT Edge-Sicherheits-Managers verantwortlich. Er stellt einen großen Teil der vertrauenswürdigen Rechenbasis des IoT Edge-Geräts dar. 
+Der IoT Edge-Sicherheits-Daemon ist für die logischen Vorgänge des IoT Edge-Sicherheits-Managers verantwortlich. Er stellt einen großen Teil der vertrauenswürdigen Rechenbasis des IoT Edge-Geräts dar.
 
 ### <a name="design-principles"></a>Entwurfsprinzipien
 
@@ -76,15 +75,15 @@ Der IoT Edge-Sicherheits-Daemon nutzt die gesamte verfügbare Technologie der Ha
 
 #### <a name="cloud-interface"></a>Cloudschnittstelle
 
-Die Cloudschnittstelle ermöglicht dem IoT Edge-Sicherheits-Daemon den Zugriff auf Clouddienste, z.B Cloudergänzungen zur Gerätesicherheit wie Sicherheitserneuerungen.  Der IoT Edge-Sicherheits-Daemon verwendet diese Schnittstelle zurzeit z.B. für den Zugriff auf den [Device Provisioning Service (DPS)](https://docs.microsoft.com/azure/iot-dps/) von Azure IoT Hub für das Identity Lifecycle Management des Geräts.  
+Die Cloudschnittstelle ermöglicht dem IoT Edge-Sicherheits-Daemon den Zugriff auf Clouddienste, z.B Cloudergänzungen zur Gerätesicherheit wie Sicherheitserneuerungen.  Der IoT Edge-Sicherheits-Daemon verwendet diese Schnittstelle zurzeit z.B. für den Zugriff auf den [Device Provisioning Service (DPS)](../iot-dps/index.yml) von Azure IoT Hub für das Identity Lifecycle Management des Geräts.  
 
 #### <a name="management-api"></a>Verwaltungs-API
 
-Der IoT Edge-Sicherheits-Daemon bietet eine Verwaltungs-API, die vom IoT Edge-Agent beim Erstellen, Starten, Beenden und Entfernen eines IoT Edge-Moduls aufgerufen wird. Der Sicherheits-Daemon speichert „Registrierungen“ für alle aktiven Module. Diese Registrierungen ordnen die Modulidentität einigen Eigenschaften des Moduls zu. Einige Beispiele für diese Eigenschaften sind die Prozess-ID (pid) des Prozesses, der im Container ausgeführt wird, oder der Hash des Inhalts im Docker-Container.
+Der IoT Edge-Sicherheits-Daemon bietet eine Verwaltungs-API, die vom IoT Edge-Agent beim Erstellen, Starten, Beenden und Entfernen eines IoT Edge-Moduls aufgerufen wird. Der Sicherheits-Daemon speichert „Registrierungen“ für alle aktiven Module. Diese Registrierungen ordnen die Modulidentität einigen Eigenschaften des Moduls zu. Zu diesen Moduleigenschaften gehören beispielsweise die Prozess-ID (pid) des Prozesses, der im Container ausgeführt wird, und der Hash des Inhalts im Docker-Container.
 
-Diese Eigenschaften werden von der Workload-API (siehe unten) verwendet, um zu überprüfen, ob der Aufrufer zum Ausführen einer Aktion autorisiert ist.
+Mithilfe dieser Eigenschaften überprüft die Workload-API (siehe unten), ob der Aufrufer für eine Aktion autorisiert ist.
 
-Die Verwaltungs-API ist eine privilegierte API, die nur vom IoT Edge-Agent aufgerufen werden kann.  Da der IoT Edge-Sicherheits-Daemon das Bootstrapping für den IoT Edge-Agent ausführt und diesen startet, kann er eine implizite Registrierung für den IoT Edge-Agent erstellen, nachdem er bestätigt hat, dass der IoT Edge-Agent nicht manipuliert wurde. Derselbe Nachweisprozess, den die Workload-API verwendet, beschränkt auch den Zugriff auf die Verwaltungs-API auf ausschließlich den IoT Edge-Agent.
+Die Verwaltungs-API ist eine privilegierte API, die nur vom IoT Edge-Agent aufgerufen werden kann.  Da der IoT Edge-Sicherheits-Daemon das Bootstrapping für den IoT Edge-Agent ausführt und ihn startet, überprüft er, ob der Agent nicht manipuliert wurde, und kann dann eine implizite Registrierung für den Agent erstellen. Derselbe Nachweisprozess, den die Workload-API verwendet, beschränkt auch den Zugriff auf die Verwaltungs-API auf ausschließlich den IoT Edge-Agent.
 
 #### <a name="container-api"></a>Container-API
 
@@ -94,7 +93,7 @@ Die Container-API interagiert mit dem Containersystem, das für die Modulverwalt
 
 Die Workload-API ist für alle Module zugänglich. Sie ermöglicht einen Identitätsnachweis – entweder als vom HSM signiertes Token oder ein X.509-Zertifikat – und die zugehörige Vertrauenssammlung für ein Modul. Die Vertrauenssammlung enthält ZS-Zertifikate für alle anderen Server, denen die Module vertrauen sollen.
 
-Der IoT Edge-Sicherheits-Daemon verwendet einen Nachweisprozess zum Schutz dieser API. Wenn ein Modul diese API aufruft, versucht der Sicherheits-Daemon, eine Registrierung für die Identität zu finden. Ist er erfolgreich, verwendet er die Eigenschaften der Registrierung, um das Modul zu bewerten. Wenn das Ergebnis des Messprozesses mit der Registrierung übereinstimmt, wird ein neuer Identitätsnachweis generiert. Die zugehörigen ZS-Zertifikate (Vertrauenssammlung) werden an das Modul zurückgegeben.  Das Modul verwendet dieses Zertifikat zum Verbinden mit IoT Hub oder anderen Modulen oder zum Starten eines Servers. Wenn das signierte Token oder das Zertifikat demnächst abläuft, muss das Modul ein neues Zertifikat anfordern. 
+Der IoT Edge-Sicherheits-Daemon verwendet einen Nachweisprozess zum Schutz dieser API. Wenn ein Modul diese API aufruft, versucht der Sicherheits-Daemon, eine Registrierung für die Identität zu finden. Ist er erfolgreich, verwendet er die Eigenschaften der Registrierung, um das Modul zu bewerten. Wenn das Ergebnis des Messprozesses mit der Registrierung übereinstimmt, wird ein neuer Identitätsnachweis generiert. Die zugehörigen ZS-Zertifikate (Vertrauenssammlung) werden an das Modul zurückgegeben.  Das Modul verwendet dieses Zertifikat zum Verbinden mit IoT Hub oder anderen Modulen oder zum Starten eines Servers. Wenn das signierte Token oder das Zertifikat demnächst abläuft, muss das Modul ein neues Zertifikat anfordern.
 
 ### <a name="integration-and-maintenance"></a>Integration und Wartung
 

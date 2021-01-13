@@ -1,31 +1,22 @@
 ---
-title: Azure Service Fabric-Ereignisse | Microsoft-Dokumentation
+title: Azure Service Fabric-Ereignisse
 description: Erfahren Sie, wie Service Fabric-Ereignisse vorkonfiguriert bereitgestellt werden, um Sie bei der Überwachung Ihres Azure Service Fabric-Clusters zu unterstützen.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: b4270b9438a397ec09537c9d6343515ebc21af98
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 638b650e485ad3e83bd6021639a7e55b540d9cdc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393026"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75451725"
 ---
 # <a name="service-fabric-events"></a>Service Fabric-Ereignisse 
 
 Die Service Fabric-Plattform schreibt mehrere strukturierte Ereignisse für die wichtigsten operativen Aktivitäten, die innerhalb des Clusters stattfinden. Diese reichen von Cluster-Upgrades bis hin zu Replikatplatzierungsentscheidungen. Jedes Ereignis, das Service Fabric verfügbar macht, ist einer der folgenden Entitäten im Cluster zugeordnet:
 * Cluster
-* Anwendung
+* Application
 * Dienst
 * Partition
 * Replikat 
@@ -34,7 +25,7 @@ Die Service Fabric-Plattform schreibt mehrere strukturierte Ereignisse für die 
 Eine vollständige Liste der von der Plattform verfügbar gemachten Ereignisse finden Sie unter [Auflistung der Service Fabric-Ereignisse](service-fabric-diagnostics-event-generation-operational.md).
 
 Nachfolgend sind Sie einige Beispiele für Szenarien aufgeführt, für die Sie Ereignisse in Ihrem Cluster anzeigen sollten. 
-* Lebenszyklusereignisse von Knoten: Ereignisse wie das Erstellen, Entfernen, Herunter-/Hochskalieren, Aktivieren, Deaktivieren oder Neustarten von Knoten werden verfügbar gemacht und geben Ihnen einen Überblick über das, was passiert ist. Mit ihrer Hilfe können Sie feststellen, ob es ein Problem mit dem Computer gibt, oder ob eine über Service Fabric aufgerufene API den Status eines Knotens geändert hat.
+* Lebenszyklusereignisse von Knoten: Ereignisse wie das Erstellen, Entfernen, Ab-/Aufskalieren, Aktivieren, Deaktivieren oder Neustarten von Knoten werden verfügbar gemacht und geben Ihnen einen Überblick über das, was passiert ist. Mit ihrer Hilfe können Sie feststellen, ob es ein Problem mit dem Computer gibt, oder ob eine über Service Fabric aufgerufene API den Status eines Knotens geändert hat.
 * Clusterupgrade: Bei einem Clusterupgrade (SF-Version oder Konfigurationsänderung) sehen Sie, wie das Upgrade initiiert, in den einzelnen Upgradedomänen angewendet und abgeschlossen wird (oder ein Rollback erfolgt). 
 * Anwendungsupgrades: Wie bei Clusterupgrades gibt es eine komplexe Reihe von Ereignissen während der Anwendung des Upgrades. Es kann hilfreich sein, diese Ereignisse zu verstehen: wann ein Upgrade geplant wurde, den aktuellen Stand des Upgrades und die allgemeine Abfolge der Ereignisse. Damit können Sie auf praktische Weise zurückverfolgen, welche Upgrades erfolgreich angewandt wurden oder ob ein Rollback ausgelöst wurde.
 * Bereitstellen/Löschen von Anwendungen/Diensten: Es gibt Ereignisse für jede Anwendung, jeden Dienst und jeden Container, die bzw. der erstellt oder gelöscht wird. Dies ist hilfreich beim horizontalen Herunter- oder Hochskalieren, d. h. beim Erhöhen der Anzahl der Replikate.

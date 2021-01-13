@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: danlep
 ms.openlocfilehash: 35f506235f698fbcf42308e6f0b0f400e925df29
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68361266"
 ---
 ### <a name="bastion-tier"></a>Bastionschicht

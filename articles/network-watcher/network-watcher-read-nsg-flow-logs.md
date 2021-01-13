@@ -1,30 +1,28 @@
 ---
 title: Lesen von NSG-Datenflussprotokollen | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, wie NSG-Datenflussprotokolle analysiert werden
+description: Erfahren Sie, wie Sie mit Azure PowerShell Netzwerksicherheitsgruppen-Datenflussprotokolle analysieren, die stündlich erstellt und alle paar Minuten in Azure Network Watcher aktualisiert werden.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/13/2017
-ms.author: kumud
-ms.openlocfilehash: becae0f085fcaf4b0d0c7b29e102aaa3186fb85e
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.date: 01/04/2021
+ms.author: damendo
+ms.openlocfilehash: d465106725e9b936172fb74e1cc265c14942f662
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653740"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898095"
 ---
 # <a name="read-nsg-flow-logs"></a>Lesen von NSG-Datenflussprotokollen
 
 Hier erfahren Sie, wie NSG-Datenflussprotokolle mit PowerShell gelesen werden.
 
-NSG-Datenflussprotokolle werden in einem Speicherkonto in [Blockblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) gespeichert. Blockblobs setzen sich aus kleineren Blöcken zusammen. Jedes Protokoll stellt einen separaten Blockblob dar, der einmal pro Stunde generiert wird. Neue Protokolle werden stündlich generiert. Die Protokolle werden anhand der neuesten Daten alle paar Minuten mit neuen Einträgen aktualisiert. In diesem Artikel erfahren Sie, wie Sie Teile der Datenflussprotokolle lesen können.
+NSG-Datenflussprotokolle werden in einem Speicherkonto in [Blockblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) gespeichert. Blockblobs setzen sich aus kleineren Blöcken zusammen. Jedes Protokoll stellt einen separaten Blockblob dar, der einmal pro Stunde generiert wird. Neue Protokolle werden stündlich generiert. Die Protokolle werden anhand der neuesten Daten alle paar Minuten mit neuen Einträgen aktualisiert. In diesem Artikel erfahren Sie, wie Sie Teile der Datenflussprotokolle lesen können.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -33,13 +31,13 @@ NSG-Datenflussprotokolle werden in einem Speicherkonto in [Blockblobs](https://d
 
 Im folgenden Beispiel liegt ein Beispiel-Datenflussprotokoll vor, das in einem Speicherkonto gespeichert ist. Sie erfahren, wie Sie selektiv die aktuellen Ereignisse in NSG-Datenflussprotokollen lesen. In diesem Artikel verwenden Sie PowerShell. Die erörterten Konzepte sind jedoch nicht auf diese Programmiersprache beschränkt und gelten für alle Sprachen, die von den Azure Storage-APIs unterstützt werden.
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 Bevor Sie beginnen, müssen Sie die NSG-Datenflussprotokollierung für mindestens eine Netzwerksicherheitsgruppe Ihres Kontos aktiviert haben. Eine Anleitung zum Aktivieren von Netzwerksicherheits-Flowprotokollen finden Sie in folgendem Artikel: [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
 
 ## <a name="retrieve-the-block-list"></a>Abrufen der Liste der Blöcke
 
-Mit dem folgenden PowerShell-Skript werden die erforderlichen Variablen zum Abfragen des Blobs mit dem NSG-Datenflussprotokoll eingerichtet, und die Blöcke im Blockblob [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) werden aufgelistet. Aktualisieren Sie das Skript so, dass es gültige Werte für Ihre Umgebung enthält.
+Mit dem folgenden PowerShell-Skript werden die erforderlichen Variablen zum Abfragen des Blobs mit dem NSG-Datenflussprotokoll eingerichtet, und die Blöcke im Blockblob [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) werden aufgelistet. Aktualisieren Sie das Skript so, dass es gültige Werte für Ihre Umgebung enthält.
 
 ```powershell
 function Get-NSGFlowLogCloudBlockBlob {
@@ -70,8 +68,8 @@ function Get-NSGFlowLogCloudBlockBlob {
         # Gets the storage blog
         $Blob = Get-AzStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
 
-        # Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
-        $CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
+        # Gets the block blog of type 'Microsoft.Azure.Storage.Blob.CloudBlob' from the storage blob
+        $CloudBlockBlob = [Microsoft.Azure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
 
         #Return the Cloud Block Blob
         $CloudBlockBlob
@@ -81,11 +79,11 @@ function Get-NSGFlowLogCloudBlockBlob {
 function Get-NSGFlowLogBlockList  {
     [CmdletBinding()]
     param (
-        [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
+        [Microsoft.Azure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
     )
     process {
         # Stores the block list in a variable from the block blob.
-        $blockList = $CloudBlockBlob.DownloadBlockList()
+        $blockList = $CloudBlockBlob.DownloadBlockListAsync()
 
         # Return the Block List
         $blockList
@@ -123,7 +121,7 @@ function Get-NSGFlowLogReadBlock  {
     [CmdletBinding()]
     param (
         [System.Array] [Parameter(Mandatory=$true)] $blockList,
-        [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
+        [Microsoft.Azure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
 
     )
     # Set the size of the byte array to the largest block
@@ -142,7 +140,7 @@ function Get-NSGFlowLogReadBlock  {
         $downloadArray = New-Object -TypeName byte[] -ArgumentList $maxvalue
 
         # Download the data into the ByteArray, starting with the current index, for the number of bytes in the current block. Index is increased by 3 when reading to remove preceding comma.
-        $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index, $($blockList[$i].Length-1)) | Out-Null
+        $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index, $($blockList[$i].Length)) | Out-Null
 
         # Increment the index by adding the current block length to the previous index
         $index = $index + $blockList[$i].Length
@@ -188,6 +186,9 @@ Anhand dieses Szenarios wird beispielhaft veranschaulicht, wie Einträge in NSG-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+
 Unter [Verwenden von Elastic Stack](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [Verwenden von Grafana](network-watcher-nsg-grafana.md) und [Verwenden von Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) erfahren Sie mehr zu den Möglichkeiten zum Anzeigen von NSG-Flussprotokollen. Ein Open-Source-Ansatz für Azure Functions, um die Blobs direkt zu nutzen und an verschiedene Consumer von Protokollanalysen zu senden, finden Sie hier: [AzureNetworkWatcherNSGFlowLogsConnector](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
+
+Mit [Azure Traffic Analytics](./traffic-analytics.md) können Sie Einblicke in Ihren Datenverkehrsfluss erhalten. Traffic Analytics verwendet [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md), um den Datenverkehrsfluss abzufragen.
 
 Weitere Informationen zu Speicherblobs erhalten Sie im Artikel: [Azure Blob Storage-Bindungen für Azure Functions](../azure-functions/functions-bindings-storage-blob.md).

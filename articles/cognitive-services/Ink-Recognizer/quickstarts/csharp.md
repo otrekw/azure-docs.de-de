@@ -1,23 +1,26 @@
 ---
 title: 'Schnellstart: Erkennen von Freihandeingaben mit der Freihanderkennungs-REST-API und C#'
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Freihanderkennungs-REST-API, um Freihandstriche zu erkennen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Freihanderkennungs-REST-API und C# verwenden, um Freihandstriche zu erkennen.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 09/23/2019
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 86e69d75c067159a4daa637984a392a393dc46fa
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 13a2d887b17ff319fb3a0f2bb0d5d0ff04629088
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211787"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369102"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Schnellstart: Erkennen von Freihandeingaben mit der Freihanderkennungs-REST-API und C#
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 In diesem Schnellstart werden die ersten Schritte zum Senden von Freihandstrichen an die Freihanderkennungs-API erläutert. Diese C#-Anwendung sendet eine API-Anforderung, die JSON-formatierte Freihandstrichdaten enthält, und erhält die Antwort.
 
@@ -39,40 +42,21 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
         3. Suchen Sie nach `Newtonsoft.Json`, und installieren Sie das Paket.
 - Unter Linux/MacOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden.
 
-- Die Beispiel-Freihandstrichdaten für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json).
+- Die Beispiel-Freihandstrichdaten für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Vision/InkRecognition/quickstart/example-ink-strokes.json).
 
-[!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
+### <a name="create-an-ink-recognizer-resource"></a>Erstellen einer Freihanderkennungsressource
 
+[!INCLUDE [creating-an-ink-recognizer-resource](../includes/setup-instructions.md)]
 
 ## <a name="create-a-new-application"></a>Erstellen einer neuen Anwendung
 
 1. Erstellen Sie in Visual Studio eine neue Konsolenprojektmappe, und fügen Sie die folgenden Pakete hinzu. 
+    
+    [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
 
-    ```csharp
-    using System;
-    using System.IO;
-    using System.Net;
-    using System.Net.Http;
-    using System.Net.Http.Headers;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-    ```
+2. Erstellen Sie Variablen für den Abonnementschlüssel und -endpunkt und die JSON-Beispieldatei. Der Endpunkt wird später für den Zugriff auf die API mit `inkRecognitionUrl` kombiniert. 
 
-2. Erstellen Sie Variablen für Ihren Abonnementschlüssel und Ihren Endpunkt. Ersetzen Sie den folgenden Endpunkt durch den für die Freihanderkennungsressource generierten Endpunkt. Fügen Sie ihn an den Freihanderkennungs-URI an, um eine Verbindung mit der API herzustellen.
-
-    ```csharp
-    // Replace the subscriptionKey string with your valid subscription key.
-    const string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-
-    // Replace the dataPath string with a path to the JSON formatted ink stroke data.
-    const string dataPath = @"PATH-TO-INK-STROKE-DATA"; 
-
-    // URI information for ink recognition:
-    const string endpoint = "https://<your-custom-subdomain>.cognitiveservices.azure.com";
-    const string inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
-    ```
+    [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>Erstellen einer Funktion zum Senden von Anforderungen
 
@@ -82,25 +66,7 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
  
 3. Senden Sie die Anforderung mit `PutAsync()`. Wenn die Anforderung erfolgreich ist, geben Sie die Antwort zurück.  
     
-    ```csharp
-    static async Task<string> Request(string apiAddress, string endpoint, string subscriptionKey, string requestData){
-        
-        using (HttpClient client = new HttpClient { BaseAddress = new Uri(apiAddress) }){
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-
-            var content = new StringContent(requestData, Encoding.UTF8, "application/json");
-            var res = await client.PutAsync(endpoint, content);
-            if (res.IsSuccessStatusCode){
-                return await res.Content.ReadAsStringAsync();
-            }
-            else{
-                return $"ErrorCode: {res.StatusCode}";
-            }
-        }
-    }
-    ```
+    [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=request)]
 
 ## <a name="send-an-ink-recognition-request"></a>Senden einer Freihanderkennungsanforderung
 
@@ -108,37 +74,13 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
 
 2. Deserialisieren Sie das JSON-Objekt, und schreiben Sie es in die Konsole. 
     
-    ```csharp
-    static void recognizeInk(string requestData){
-
-        //construct the request
-        var result = Request(
-            endpoint,
-            inkRecognitionUrl,
-            subscriptionKey,
-            requestData).Result;
-
-        dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(result);
-        System.Console.WriteLine(jsonObj);
-    }
-    ```
+    [!code-csharp[request to recognize ink data](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=recognize)]
 
 ## <a name="load-your-digital-ink-data"></a>Laden der digitalen Freihanddaten
 
 Erstellen Sie eine Funktion namens `LoadJson()`, um die Freihanddaten-JSON-Datei zu laden. Verwenden Sie ein `StreamReader`- und ein `JsonTextReader`-Element zum Erstellen eines `JObject`-Objekts, und geben Sie es zurück.
-    
-```csharp
-public static JObject LoadJson(string fileLocation){
 
-    var jsonObj = new JObject();
-
-    using (StreamReader file = File.OpenText(fileLocation))
-    using (JsonTextReader reader = new JsonTextReader(file)){
-        jsonObj = (JObject)JToken.ReadFrom(reader);
-    }
-    return jsonObj;
-}
-```
+[!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
 
 ## <a name="send-the-api-request"></a>Senden der API-Anforderung
 
@@ -146,26 +88,18 @@ public static JObject LoadJson(string fileLocation){
 
 2. Rufen Sie die oben erstellte `recognizeInk()`-Funktion auf. Verwenden Sie `System.Console.ReadKey()`, damit das Konsolenfenster nach dem Ausführen der Anwendung geöffnet bleibt.
     
-    ```csharp
-    static void Main(string[] args){
+    [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=main)]
 
-        var requestData = LoadJson(dataPath);
-        string requestString = requestData.ToString(Newtonsoft.Json.Formatting.None);
-        recognizeInk(requestString);
-        System.Console.WriteLine("\nPress any key to exit ");
-        System.Console.ReadKey();
-        }
-    ```
 
 ## <a name="run-the-application-and-view-the-response"></a>Ausführen der Anwendung und Anzeigen der Antwort
 
-Führen Sie die Anwendung aus. Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Sie finden die JSON-Antwort auch auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json).
+Führen Sie die Anwendung aus. Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Sie finden die JSON-Antwort auch auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Vision/InkRecognition/quickstart/example-response.json).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [REST-API-Referenz](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST-API-Referenz](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 
 Sehen Sie sich in den folgenden Beispielanwendungen auf GitHub an, wie die Freihanderkennungs-API in einer Freihandschriftinhalte-App funktioniert:

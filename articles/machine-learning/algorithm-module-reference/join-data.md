@@ -1,30 +1,30 @@
 ---
 title: 'Join Data (Daten verknüpfen): Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Hier erfahren Sie, wie Sie das Modul Join Data (Daten verknüpfen) in Azure Machine Learning Service verwenden, um Datasets zusammenzuführen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mit dem Modul Join Data im Azure Machine Learning-Designer zwei Datasets zusammenzuführen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: peterlu
-ms.date: 06/01/2019
-ms.openlocfilehash: 5fdb822a445e8a62cd36e6dd05aa218b9b41ce9e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 11/19/2019
+ms.openlocfilehash: c23dca40d50c5837bd9ff45bc3c3d7fb2581685b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128739"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420749"
 ---
 # <a name="join-data"></a>Verknüpfen von Daten
 
-In diesem Artikel erfahren Sie, wie Sie das Modul **Join Data** (Daten verknüpfen) auf der grafischen Benutzeroberfläche von Azure Machine Learning Service verwenden, um zwei Datasets mithilfe eines datenbankähnlichen Join-Vorgangs zusammenzuführen.  
+In diesem Artikel erfahren Sie, wie Sie das Modul **Join Data** (Daten verknüpfen) in Azure Machine Learning-Designer verwenden, um zwei Datasets mithilfe eines datenbankähnlichen Join-Vorgangs zusammenzuführen.  
 
 ## <a name="how-to-configure-join-data"></a>Konfigurieren von „Join Data“ (Daten verknüpfen)
 
 Wenn Sie einen Join-Vorgang für zwei Datasets ausführen möchten, müssen die beiden über eine Schlüsselspalte miteinander verknüpft sein. Zusammengesetzte Schlüssel mit mehreren Spalten werden ebenfalls unterstützt. 
 
-1. Fügen Sie die Datasets hinzu, die Sie vereinen möchten, und ziehen Sie anschließend das Modul **Join Data** (Daten verknüpfen) in Ihr Experiment. 
+1. Fügen Sie die Datasets hinzu, die Sie vereinen möchten, und ziehen Sie anschließend das Modul **Join Data** (Daten verknüpfen) in Ihre Pipeline. 
 
     Das Modul befindet sich in der Kategorie **Datentransformation** (unter **Bearbeitung**).
 
@@ -62,10 +62,10 @@ Wenn Sie einen Join-Vorgang für zwei Datasets ausführen möchten, müssen die 
     * Aktivieren Sie diese Option, wenn die Schlüssel aus beiden Eingabetabellen angezeigt werden sollen.
     * Deaktivieren Sie diese Option, wenn nur die Schlüsselspalten aus der linken Eingabe zurückgegeben werden sollen.
 
-1. Führen Sie das Experiment aus, oder wählen Sie das Modul „Join Data“ (Daten verknüpfen) und anschließend **Auswahl ausführen** aus, um den Join-Vorgang auszuführen.
+1. Übermitteln Sie die Pipeline.
 
-1. Klicken Sie zum Anzeigen der Ergebnisse mit der rechten Maustaste auf **Join Data** (Daten verknüpfen), und klicken Sie anschließend auf **Results dataset** (Ergebnisdataset) > **Visualize** (Visualisieren).
+1. Um die Ergebnisse anzuzeigen, klicken Sie mit der rechten Maustaste auf **Daten verknüpfen**, und wählen Sie **Visualisieren** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

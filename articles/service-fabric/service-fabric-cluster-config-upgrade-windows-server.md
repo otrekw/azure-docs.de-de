@@ -1,25 +1,14 @@
 ---
-title: Upgraden der Konfiguration eines eigenständigen Azure Service Fabric-Clusters | Microsoft-Dokumentation
+title: Upgraden der Konfiguration eines eigenständigen Clusters
 description: Erfahren Sie, wie Sie die Konfiguration upgraden, die einen eigenständigen Service Fabric-Cluster ausführt.
-services: service-fabric
-documentationcenter: .net
-author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/09/2018
-ms.author: dekapur
-ms.openlocfilehash: f99c1ebb64bf881bcd42f15e13bb81b96ccfa064
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3cb1d40f5b32415588d3fd5a108967cfb4c0e534
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387127"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842613"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Upgraden der Konfiguration eines eigenständigen Clusters 
 
@@ -62,7 +51,7 @@ TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File
 Einige Konfigurationen können nicht aktualisiert werden, z.B. Endpunkte, Clusternamen, Knoten-IP-Adressen usw. Die neue JSON-Datei für die Clusterkonfiguration wird anhand der alten getestet, und es werden Fehler im PowerShell-Fenster ausgegeben, wenn es Probleme gibt.
 
 ## <a name="upgrade-the-cluster-configuration"></a>Upgraden der Clusterkonfiguration
-Um die Clusterkonfiguration upzugraden, führen Sie den Befehl [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) aus. Das Konfigurationsupgrade wird Upgradedomäne für Upgradedomäne verarbeitet.
+Um die Clusterkonfiguration upzugraden, führen Sie den Befehl [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) aus. Das Konfigurationsupgrade wird Upgradedomäne für Upgradedomäne verarbeitet.
 
 ```powershell
 Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
@@ -84,7 +73,7 @@ Vier Optionen werden unterstützt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über das [Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie](service-fabric-cluster-fabric-settings.md).
-* Machen Sie sich mit der Vorgehensweise zum [Skalieren Ihres Clusters](service-fabric-cluster-scale-up-down.md) vertraut.
+* Machen Sie sich mit der Vorgehensweise zum [Skalieren Ihres Clusters](service-fabric-cluster-scale-in-out.md) vertraut.
 * Machen Sie sich mit [Anwendungsupgrades](service-fabric-application-upgrade.md) vertraut.
 
 <!--Image references-->

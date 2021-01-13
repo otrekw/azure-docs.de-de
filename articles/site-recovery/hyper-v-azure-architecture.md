@@ -1,18 +1,18 @@
 ---
-title: Architektur der Hyper-V-zu-Azure-Notfallwiederherstellung in Azure Site Recovery
+title: Architektur der Hyper-V-Notfallwiederherstellung in Azure Site Recovery
 description: Dieser Artikel bietet einen Überblick über die Komponenten und Architektur, die beim Bereitstellen von Notfallwiederherstellung für lokale virtuelle Hyper-V-Computer (ohne VMM) in Azure mit dem Azure Site Recovery-Dienst verwendet werden.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 4035746772b44d7267d6a9cd90c7bdc02c804a8a
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: c5025b83619b505728bfdf5c4e1ccc81d3bb225e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147077"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654760"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von Hyper-V zu Azure
 
@@ -36,8 +36,7 @@ Die folgende Tabelle und Grafik bietet eine Übersicht der Komponenten, die für
 
 **Hyper-V-in-Azure-Architektur (ohne VMM)**
 
-![Architecture](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
-
+![Diagramm: Lokale Hyper-V-Standort-in-Azure-Architektur ohne VMM](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>Architekturkomponenten – Hyper-V mit VMM
@@ -54,13 +53,30 @@ Die folgende Tabelle und Grafik bieten eine Übersicht der Komponenten, die für
 
 **Hyper-V-in-Azure-Architektur (mit VMM)**
 
-![Komponenten](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
+![Diagramm: Lokale Hyper-V-Standort-in-Azure-Architektur mit VMM](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
+## <a name="set-up-outbound-network-connectivity"></a>Einrichten der ausgehenden Netzwerkkonnektivität
+
+Damit Site Recovery erwartungsgemäß funktioniert, müssen Sie die ausgehende Netzwerkkonnektivität ändern, um Ihrer Umgebung das Replizieren zu ermöglichen.
+
+> [!NOTE]
+> Site Recovery unterstützt die Verwendung eines Authentifizierungsproxys zur Steuerung der Netzwerkkonnektivität nicht.
+
+### <a name="outbound-connectivity-for-urls"></a>Ausgehende Konnektivität für URLs
+
+Lassen Sie den Zugriff auf die folgenden URLs zu, wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Konnektivität verwenden:
+
+| **Name**                  | **Kommerziell**                               | **Behörden**                                 | **Beschreibung** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Ermöglicht das Schreiben von Daten aus der VM in das Cachespeicherkonto in der Quellregion |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Stellt die Autorisierung und Authentifizierung für Site Recovery-Dienst-URLs bereit. |
+| Replikation               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Ermöglicht die Kommunikation der VM mit Site Recovery |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Ermöglicht es der VM, die Site Recovery-Überwachung und -Diagnosedaten zu schreiben |
 
 
 ## <a name="replication-process"></a>Replikationsprozess
 
-![Replikation von Hyper-V in Azure](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
+![Diagramm: Hyper-V-in-Azure-Replikationsprozess](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
 
 **Replikations- und Wiederherstellungsprozess**
 
@@ -68,14 +84,14 @@ Die folgende Tabelle und Grafik bieten eine Übersicht der Komponenten, die für
 ### <a name="enable-protection"></a>Schutz aktivieren
 
 1. Nachdem Sie den Schutz für einen virtuellen Hyper-V-Computer über das Azure-Portal oder lokal aktiviert haben, wird der Auftrag **Schutz aktivieren** gestartet.
-2. Im Rahmen des Auftrags wird überprüft, ob der Computer die Voraussetzungen erfüllt. Anschließend wird [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) aufgerufen, um die Replikation mit den konfigurierten Einstellungen einzurichten.
-3. Der Auftrag startet die erste Replikation durch Aufrufen der [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx)-Methode, um eine vollständige VM-Replikation zu initiieren, und übermittelt die virtuellen Datenträger des virtuellen Computers an Azure.
-4. Sie können den Auftrag auf der Registerkarte **Aufträge** überwachen.      ![Auftragsliste](media/hyper-v-azure-architecture/image1.png) ![Drilldown für „Schutz aktivieren“](media/hyper-v-azure-architecture/image2.png)
+2. Im Rahmen des Auftrags wird überprüft, ob der Computer die Voraussetzungen erfüllt. Anschließend wird [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) aufgerufen, um die Replikation mit den konfigurierten Einstellungen einzurichten.
+3. Der Auftrag startet die erste Replikation durch Aufrufen der [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice)-Methode, um eine vollständige VM-Replikation zu initiieren, und übermittelt die virtuellen Datenträger des virtuellen Computers an Azure.
+4. Sie können den Auftrag auf der Registerkarte **Aufträge** überwachen.      ![Screenshot: Auf der Registerkarte „Aufträge“ aufgelistete Aufträge](media/hyper-v-azure-architecture/image1.png) ![Screenshot: Bildschirm „Schutz aktivieren“ mit weiteren Details](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Erste Datenreplikation
 
-1. Wenn die erste Replikation ausgelöst wird, wird eine [Momentaufnahem der Hyper-V-VM](https://technet.microsoft.com/library/dd560637.aspx) erstellt.
+1. Wenn die erste Replikation ausgelöst wird, wird eine [Momentaufnahem der Hyper-V-VM](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10)) erstellt.
 2. Virtuelle Festplatten auf der VM werden nacheinander repliziert, bis alle in Azure kopiert wurden. Die Dauer ist abhängig von der Größe der VM und von der Netzwerkbandbreite. [Erfahren Sie, wie](https://support.microsoft.com/kb/3056159) die Netzwerkbandbreite erhöht werden kann.
 3. Falls während der ersten Replikation Datenträgeränderungen auftreten, werden die Änderungen mit dem Replication Tracker für Hyper-V-Replikate in Form von Hyper-V-Replikationsprotokollen (.hrl) nachverfolgt. Diese Protokolldateien befinden sich im gleichen Ordner wie die Datenträger. Jeder Datenträger verfügt über eine zugeordnete HRL-Datei, die an den sekundären Speicher gesendet wird. Beachten Sie, dass die Momentaufnahme- und Protokolldateien Festplattenressourcen belegen, während die anfängliche Replikation durchgeführt wird.
 4. Nach Abschluss der ersten Replikation wird die Momentaufnahme des virtuellen Computers gelöscht.
@@ -107,7 +123,7 @@ Die folgende Tabelle und Grafik bieten eine Übersicht der Komponenten, die für
 2. Nach Abschluss der Neusynchronisierung wird die normale Deltareplikation fortgesetzt.
 3. Wenn Sie nicht auf die Standardneusynchronisierung außerhalb der Geschäftszeiten warten möchten, können Sie eine VM manuell neu synchronisieren. Wenn z.B. ein Ausfall auftritt. Klicken Sie dafür im Azure-Portal auf „VM“ > **Resynchronisieren**.
 
-    ![Manuelle Neusynchronisierung](./media/hyper-v-azure-architecture/image4-site.png)
+    ![Screenshot: Option „Resynchronisieren“](./media/hyper-v-azure-architecture/image4-site.png)
 
 
 ### <a name="retry-process"></a>Wiederholungsprozess

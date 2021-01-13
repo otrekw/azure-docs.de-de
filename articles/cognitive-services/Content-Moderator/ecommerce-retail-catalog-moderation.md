@@ -1,21 +1,22 @@
 ---
 title: 'Tutorial: Moderieren von E-Commerce-Produktbildern – Content Moderator'
 titleSuffix: Azure Cognitive Services
-description: Richten Sie eine Anwendung zum Analysieren und Klassifizieren von Produktbildern mit angegebenen Bezeichnungen ein (mit maschinellem Sehen und Custom Vision von Azure). Kennzeichnen Sie anstößige Bilder für die weitere Untersuchung (mit Azure Content Moderator).
+description: Dieses Tutorial zeigt Ihnen, wie Sie eine Anwendung zum Analysieren und Klassifizieren von Produktbildern mit angegebenen Bezeichnungen einrichten (mit maschinellem Sehen und Custom Vision von Azure). Kennzeichnen Sie anstößige Bilder für die weitere Untersuchung (mit Azure Content Moderator).
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: b118a509f72af2146abf854b881fa34d8de302a1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6d105528404c99f7273687fcdea6972b4212fcf1
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564915"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913686"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Tutorial: Moderieren von E-Commerce-Produktbildern mit Azure Content Moderator
 
@@ -32,32 +33,32 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 Der vollständige Beispielcode steht im GitHub-Repository [Samples eCommerce Catalog Moderation](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) zur Verfügung.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Content Moderator-Abonnementschlüssel. Gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Content Moderator-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
+- Ein Content Moderator-Abonnementschlüssel. Gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](../cognitive-services-apis-create-account.md) beschrieben vor, um den Content Moderator-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
 - Ein Abonnementschlüssel für maschinelles Sehen (siehe obige Anweisungen).
 - Eine beliebige Edition von [Visual Studio 2015 oder 2017](https://www.visualstudio.com/downloads/).
 - Bilder für jede Bezeichnung zur Verwendung durch die Custom Vision-Klassifizierung (in diesem Fall Spielsachen, Stifte und US-Flaggen).
 
 ## <a name="create-a-review-team"></a>Erstellen eines Prüfungsteams
 
-Informationen zum Registrieren für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/) sowie zum Erstellen eines Prüfungsteams finden Sie unter [Schnellstart: Testen von Content Moderator im Web](quick-start.md). Notieren Sie sich auf der Seite **Anmeldeinformationen** die **Team-ID**.
+Informationen zum Registrieren für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/) sowie zum Erstellen eines Prüfungsteams finden Sie unter [Schnellstart: Testen von Content Moderator im Web](quick-start.md). Notieren Sie sich auf der Seite **Anmeldeinformationen** die **Team-ID** .
 
 ## <a name="create-custom-moderation-tags"></a>Erstellen benutzerdefinierter Moderationstags
 
-Erstellen Sie als Nächstes im Prüfungstool benutzerdefinierte Tags. (Informationen hierzu finden Sie bei Bedarf im Artikel [Infos zu Tags](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags).) Wir fügen hier folgende Tags hinzu: **celebrity** (prominente Person), **USA**, **flag** (Flagge), **toy** (Spielzeug) und **pen** (Stift). Es muss sich nicht bei allen Tags um Kategorien handeln, die durch maschinelles Sehen erkannt werden können (beispielsweise **celebrity**). Sie können gerne eigene benutzerdefinierte Tags hinzufügen, solange Sie die Custom Vision-Klassifizierung später für deren Erkennung trainieren.
+Erstellen Sie als Nächstes im Prüfungstool benutzerdefinierte Tags. (Informationen hierzu finden Sie bei Bedarf im Artikel [Infos zu Tags](./review-tool-user-guide/configure.md#tags).) Wir fügen hier folgende Tags hinzu: **celebrity** (prominente Person), **USA** , **flag** (Flagge), **toy** (Spielzeug) und **pen** (Stift). Es muss sich nicht bei allen Tags um Kategorien handeln, die durch maschinelles Sehen erkannt werden können (beispielsweise **celebrity** ). Sie können gerne eigene benutzerdefinierte Tags hinzufügen, solange Sie die Custom Vision-Klassifizierung später für deren Erkennung trainieren.
 
 ![Konfigurieren von benutzerdefinierten Tags](images/tutorial-ecommerce-tags2.PNG)
 
 ## <a name="create-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts
 
 1. Öffnen Sie in Visual Studio das Dialogfeld „Neues Projekt“. Erweitern Sie **Installiert** und dann **Visual C#** , und wählen Sie **Konsolen-App (.NET Framework)** aus.
-1. Nennen Sie die Anwendung **EcommerceModeration**, und klicken Sie anschließend auf **OK**.
+1. Nennen Sie die Anwendung **EcommerceModeration** , und klicken Sie anschließend auf **OK** .
 1. Falls Sie dieses Projekt einer vorhandenen Projektmappe hinzufügen, sollten Sie es als einzelnes Startprojekt auswählen.
 
-In diesem Tutorial wird der für das Projekt wichtige Code erläutert. Hierbei wird aber nicht auf jede einzelne Codezeile eingegangen. Kopieren Sie den gesamten Inhalt der Datei _Program.cs_ aus dem Beispielprojekt ([Samples eCommerce Catalog Moderation](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) in die Datei _Program.cs_ Ihres neuen Projekts. Gehen Sie dann Schritt für Schritt die folgenden Abschnitte durch, um sich mit der Funktionsweise und der praktischen Verwendung des Projekts vertraut zu machen.
+In diesem Tutorial wird der für das Projekt wichtige Code erläutert. Hierbei wird aber nicht auf jede einzelne Codezeile eingegangen. Kopieren Sie den gesamten Inhalt der Datei _Program.cs_ aus dem Beispielprojekt ( [Samples eCommerce Catalog Moderation](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) in die Datei _Program.cs_ Ihres neuen Projekts. Gehen Sie dann Schritt für Schritt die folgenden Abschnitte durch, um sich mit der Funktionsweise und der praktischen Verwendung des Projekts vertraut zu machen.
 
 ## <a name="define-api-keys-and-endpoints"></a>Definieren von API-Schlüsseln und -Endpunkten
 
@@ -65,7 +66,9 @@ Da in diesem Tutorial drei Cognitive Services verwendet werden, sind auch drei e
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
-Sie müssen die Felder vom Typ `___Key` mit den Werten Ihrer Abonnementschlüssel aktualisieren. (`CustomVisionKey` erhalten Sie später.) Unter Umständen müssen Sie auch die Felder vom Typ `___Uri` ändern, damit diese jeweils die richtige Regions-ID enthalten. Geben Sie für den Teil `YOURTEAMID` des Felds `ReviewUri` die ID des weiter oben erstellten Prüfungsteams an. Der letzte Teil des Felds `CustomVisionUri` wird später ausgefüllt.
+Sie müssen die Felder vom Typ `___Key` mit den Werten Ihrer Abonnementschlüssel aktualisieren. Darüber hinaus müssen Sie die Felder vom Typ `___Uri` ändern, damit diese jeweils die richtigen Endpunkt-URLs enthalten. (Den Custom Vision-Schlüssel und -Endpunkt erhalten Sie später.) Diese Werte finden Sie auf der Registerkarte **Schnellstart** der einzelnen Azure-Ressourcen. Geben Sie für den Teil `YOURTEAMID` des Felds `ReviewUri` die ID des weiter oben erstellten Prüfungsteams an. Der letzte Teil des Felds `CustomVisionUri` wird später ausgefüllt.
+
+[!INCLUDE [subdomains note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="primary-method-calls"></a>Primäre Methodenaufrufe
 
@@ -87,17 +90,17 @@ Die nächste Methode akzeptiert eine Bild-URL und die Informationen Ihres Abonne
 
 ## <a name="evaluatecustomvisiontags-method"></a>Methode „EvaluateCustomVisionTags“
 
-Sehen Sie sich als Nächstes die Methode **EvaluateCustomVisionTags** an. Diese klassifiziert die eigentlichen Produkte (in diesem Fall Flaggen, Spielsachen und Stifte). Gehen Sie gemäß der Anleitung unter [Erstellen einer Klassifizierung mit Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) vor, um Ihre eigene benutzerdefinierte Bildklassifizierung zu erstellen und Flaggen, Spielsachen und Stifte (oder andere benutzerdefinierte Tags) in Bildern zu erkennen. Sie können die Bilder im Ordner **sample-images** des [GitHub-Repositorys](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) verwenden, um schnell einige der Kategorien in diesem Beispiel zu trainieren.
+Sehen Sie sich als Nächstes die Methode **EvaluateCustomVisionTags** an. Diese klassifiziert die eigentlichen Produkte (in diesem Fall Flaggen, Spielsachen und Stifte). Gehen Sie gemäß der Anleitung unter [Erstellen einer Klassifizierung mit Custom Vision](../custom-vision-service/getting-started-build-a-classifier.md) vor, um Ihre eigene benutzerdefinierte Bildklassifizierung zu erstellen und Flaggen, Spielsachen und Stifte (oder andere benutzerdefinierte Tags) in Bildern zu erkennen. Sie können die Bilder im Ordner **sample-images** des [GitHub-Repositorys](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) verwenden, um schnell einige der Kategorien in diesem Beispiel zu trainieren.
 
 ![Custom Vision-Webseite mit Trainingsbildern für Stifte, Spielsachen und Flaggen](images/tutorial-ecommerce-custom-vision.PNG)
 
-Rufen Sie nach dem Trainieren Ihrer Klassifizierung den Vorhersageschlüssel und die Vorhersageendpunkt-URL ab (siehe [Abrufen der Vorhersage-URL und des Vorhersage-Schlüssels](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key)), und weisen Sie diese Werte dem Feld `CustomVisionKey` bzw. `CustomVisionUri` zu. Die Methode verwendet diese Werte, um die Klassifizierung abzufragen. Findet die Klassifizierung mindestens eines der benutzerdefinierten Tags auf dem Bild, legt diese Methode die entsprechenden Werte im Array **ReviewTags** auf **true** fest.
+Rufen Sie nach dem Trainieren Ihrer Klassifizierung den Vorhersageschlüssel und die Vorhersageendpunkt-URL ab (siehe [Abrufen der Vorhersage-URL und des Vorhersage-Schlüssels](../custom-vision-service/use-prediction-api.md#get-the-url-and-prediction-key)), und weisen Sie diese Werte dem Feld `CustomVisionKey` bzw. `CustomVisionUri` zu. Die Methode verwendet diese Werte, um die Klassifizierung abzufragen. Findet die Klassifizierung mindestens eines der benutzerdefinierten Tags auf dem Bild, legt diese Methode die entsprechenden Werte im Array **ReviewTags** auf **true** fest.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 
 ## <a name="create-reviews-for-review-tool"></a>Erstellen von Prüfungen für das Prüfungstool
 
-In den vorherigen Abschnitten haben Sie sich damit vertraut gemacht, wie die App eingehende Bilder auf nicht jugendfreie und freizügige Inhalte (Content Moderator), Prominente (maschinelles Sehen) und verschiedene Objekte (Custom Vision) überprüft. Sehen Sie sich als Nächstes die **CreateReview**-Methode an. Diese Methode lädt die Bilder mit allen angewendeten Tags (als _Metadata_ übergeben) in das Content Moderator-Prüfungstool hoch.
+In den vorherigen Abschnitten haben Sie sich damit vertraut gemacht, wie die App eingehende Bilder auf nicht jugendfreie und freizügige Inhalte (Content Moderator), Prominente (maschinelles Sehen) und verschiedene Objekte (Custom Vision) überprüft. Sehen Sie sich als Nächstes die **CreateReview** -Methode an. Diese Methode lädt die Bilder mit allen angewendeten Tags (als _Metadata_ übergeben) in das Content Moderator-Prüfungstool hoch.
 
 [!code-csharp[define CreateReview method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=173-196)]
 

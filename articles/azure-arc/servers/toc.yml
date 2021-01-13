@@ -1,0 +1,100 @@
+- name: "Dokumentation zu Servern mit Azure\_Arc-Unterstützung"
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zu Servern mit Azure Arc-Aktivierung
+      href: overview.md
+    - name: Neuerungen beim Connected Machine-Agent
+      href: agent-release-notes.md
+- name: Schnellstarts
+  items:
+    - name: Server-Agents mit Azure Arc-Unterstützung
+      href: ./learn/quick-enable-hybrid-vm.md
+- name: Tutorials
+  items:
+    - name: Zuweisen einer Richtlinie zur Bewertung der Konformität
+      href: ./learn/tutorial-assign-policy-portal.md
+    - name: Überwachen des Computers
+      href: ./learn/tutorial-enable-vm-insights.md
+- name: Konzepte
+  items:
+    - name: Sicherheit
+      items:
+        - name: Sicherheitskontrollen von Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: security-controls-policy.md
+        - name: Sicherheitsübersicht
+          href: security-overview.md
+- name: Anleitungen
+  items:
+    - name: Herstellen einer Verbindung mit Azure Arc
+      items:
+        - name: "Übersicht über den Connected\_Machine-Agent"
+          href: agent-overview.md
+        - name: Verbinden von Computern mit Azure Arc über das Azure-Portal
+          href: onboard-portal.md
+        - name: Verbinden von Computern im großen Stil mithilfe eines Dienstprinzipals
+          href: onboard-service-principal.md
+        - name: Verbinden von Computern mit Azure Arc mithilfe von PowerShell DSC
+          href: onboard-dsc.md
+        - name: Verbinden von Computern über Windows Admin Center
+          href: onboard-windows-admin-center.md
+        - name: Verbinden von Computern mit Azure Arc mithilfe von PowerShell
+          href: onboard-powershell.md
+    - name: Verwalten
+      items:
+        - name: VM-Erweiterungen
+          items:
+            - name: Übersicht
+              href: manage-vm-extensions.md
+            - name: Verwalten von Erweiterungen über das Portal
+              href: manage-vm-extensions-portal.md
+            - name: Verwalten von Erweiterungen mit der CLI
+              href: manage-vm-extensions-cli.md
+            - name: Verwalten von Erweiterungen mit PowerShell
+              href: manage-vm-extensions-powershell.md
+            - name: Bereitstellen von Erweiterungen mithilfe einer ARM-Vorlage
+              href: manage-vm-extensions-template.md
+        - name: Verwenden von verwalteten Identitäten auf einem Server
+          href: managed-identity-authentication.md
+        - name: Agent verwalten
+          href: manage-agent.md
+    - name: Szenarien
+      items:
+        - name: Durchführen des Onboardings in Azure Sentinel
+          href: scenario-onboard-azure-sentinel.md
+        - name: Durchführen des Onboardings in Azure Security Center
+          href: ../../security-center/quickstart-onboard-machines.md
+    - name: Problembehandlung
+      items:
+        - name: Agent-Verbindungsprobleme
+          href: troubleshoot-agent-onboard.md
+        - name: Probleme mit VM-Erweiterungen
+          href: troubleshoot-vm-extensions.md
+- name: Verweis
+  items:
+    - name: Datenresidenz
+      href: data-residency.md
+    - name: Azure CLI
+      href: /cli/azure/ext/connectedmachine/connectedmachine
+    - name: Azure PowerShell
+      href: /powershell/module/az.connectedmachine
+    - name: .NET
+      href: /dotnet/api/overview/azure/hybridcompute/management
+    - name: REST
+      href: /rest/api/hybridcompute
+    - name: Go
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/hybridcompute/mgmt/2020-08-02/hybridcompute'
+    - name: Java
+      href: /java/api/overview/azure/compute/resourcemanagement
+    - name: JavaScript
+      href: /javascript/api/%40azure/arm-hybridcompute
+    - name: Python
+      href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-hybridcompute/2.0.0/index.html'
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md
+- name: Ressourcen
+  items:
+    - name: Einstieg in Azure Arc
+      href: 'https://github.com/microsoft/azure_arc'

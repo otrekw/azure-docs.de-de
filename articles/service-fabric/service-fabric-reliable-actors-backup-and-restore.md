@@ -1,25 +1,15 @@
 ---
-title: Sichern und Wiederherstellen von Azure Service Fabric Actors | Microsoft-Dokumentation
+title: Sichern und Wiederherstellen von Azure Service Fabric Actors
 description: Hier erfahren Sie, wie Sie die Sicherung und Wiederherstellung in Azure Service Fabric Actors implementieren.
-services: service-fabric
-documentationcenter: .net
-author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/29/2018
-ms.author: vturecek
-ms.openlocfilehash: cb397141c86f40f02d8046838865106e0fb8992c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 05dfb7d09e68373f52831a9e5233316df95ee552
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726620"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571333"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Implementieren der Sicherung und Wiederherstellung von Reliable Actors
 
@@ -121,7 +111,7 @@ myActorServiceProxy.backupActorsAsync();
 Weitere Informationen zu Reliable Actors finden Sie in den folgenden Artikeln:
 * [Actor-Zustandsverwaltung](service-fabric-reliable-actors-state-management.md)
 * [Actor-Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md)
-* [Actors API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Actors API reference documentation](/previous-versions/azure/dn971626(v=azure.100))
 * [.NET-Beispielcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-Beispielcode](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

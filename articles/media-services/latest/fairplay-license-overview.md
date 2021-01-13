@@ -1,7 +1,7 @@
 ---
 title: 'Media Services und Apple FairPlay-Lizenzunterstützung: Azure | Microsoft-Dokumentation'
 description: Dieses Thema enthält eine Übersicht über die Anforderungen und die Konfiguration der Apple FairPlay-Lizenz.
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,18 +10,20 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/08/2018
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: 6d4b7ba842d08723b90a4f2491d9e79e68dd932e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 09068064f24594ef35a8a1bf64213b48d83873ca
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60733571"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018731"
 ---
-# <a name="apple-fairplay-license-requirements-and-configuration"></a>Anforderungen und Konfiguration der Apple FairPlay-Lizenz 
+# <a name="apple-fairplay-license-requirements-and-configuration"></a>Anforderungen und Konfiguration der Apple FairPlay-Lizenz
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services ermöglicht Ihnen das Verschlüsseln von HLS-Inhalten mit **Apple FairPlay** (AES-128 CBC). Media Services bietet darüber hinaus einen Dienst für die Bereitstellung von FairPlay-Lizenzen. Wenn der Player versucht, Ihre durch FairPlay geschützten Inhalte wiederzugeben, wird eine Anforderung zum Erwerben einer Lizenz an den Lizenzbereitstellungsdienst gesendet. Wenn der Lizenzdienst die Anforderung genehmigt, wird die Lizenz ausgegeben. Diese wird an den Client gesendet und zum Entschlüsseln und Wiedergeben des angegebenen Inhalts verwendet.
 
@@ -61,6 +63,9 @@ Die folgenden Angaben sind erforderlich, wenn Sie Ihre HLS-Inhalte mit **Apple F
   * DER-Datei
   * PFX-Datei
   * Kennwort für die PFX-Datei
+  
+> [!NOTE]
+> Azure Media Services überprüft das Ablaufdatum des Zertifikats während der Paketerstellung und der Schlüsselübermittlung nicht. Nach Ablauf des Zertifikats ist es weiterhin funktionsfähig.
 
 ## <a name="fairplay-and-player-apps"></a>FairPlay und Player-Apps
 
@@ -81,7 +86,7 @@ FairPlay-Lizenzen können mithilfe von Media Services-APIs konfiguriert werden. 
 > [!NOTE]
 > Üblicherweise sollten Sie FairPlay-Richtlinienoptionen nur einmal konfigurieren, da Sie nur einen Satz aus Zertifikat und ASK haben.
 
-Im folgenden Beispiel wird das [Media Services .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) für die Lizenzkonfiguration verwendet.
+Im folgenden Beispiel wird das [Media Services .NET SDK](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) für die Lizenzkonfiguration verwendet.
 
 ```csharp
 private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOptions()
@@ -108,7 +113,7 @@ private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOpti
         RentalAndLeaseKeyType =
                 ContentKeyPolicyFairPlayRentalAndLeaseKeyType
                 .PersistentUnlimited,
-        RentalDuration = 2249
+        RentalDuration = 2249 // in seconds
     };
 
     return fairPlayConfiguration;

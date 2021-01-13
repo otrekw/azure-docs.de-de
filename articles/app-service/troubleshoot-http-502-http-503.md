@@ -1,30 +1,21 @@
 ---
-title: Beheben der Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ – Azure App Service | Microsoft-Dokumentation
+title: Beheben von HTTP 502- und HTTP 503-Fehlern
 description: Behebung der Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ in Ihrer App, die im Azure App Service gehostet wird.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
 tags: top-support-issue
 keywords: „502 Ungültiges Gateway“, „503 Dienst nicht verfügbar“, Fehler 503, Fehler 502
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/06/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fdbd77db349eed62af2eb8cf539ef749217a187a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6dd67ff4f7346daf7a590ab4fb45a32d227f1c3e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066685"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147548"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Problembehandlung bei HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ in Azure App Service
-„502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ sind häufige Fehler in Ihrer App, die in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) gehostet wird. Dieser Artikel hilft Ihnen, diese Fehler zu beheben.
+„502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ sind häufige Fehler in Ihrer App, die in [Azure App Service](./overview.md) gehostet wird. Dieser Artikel hilft Ihnen, diese Fehler zu beheben.
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)stellen, um dort Hilfe von Azure-Experten zu erhalten. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**.
 
@@ -47,11 +38,11 @@ Die Problembehandlung lässt sich in diesem Fall in drei unterschiedliche Aufgab
 
 [App Service](overview.md) bietet Ihnen bei jedem Schritt verschiedene Optionen.
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. Beobachten und Überwachen des Anwendungsverhaltens
 #### <a name="track-service-health"></a>Nachverfolgen der Dienstintegrität
-Microsoft Azure informiert jeweils aktuell über Dienstunterbrechungen oder Leistungsbeeinträchtigungen. Sie können die Integrität des Diensts im [Azure-Portal](https://portal.azure.com/)nachverfolgen. Weitere Informationen finden Sie unter [Nachverfolgen der Dienstintegrität](../monitoring-and-diagnostics/insights-service-health.md).
+Microsoft Azure informiert jeweils aktuell über Dienstunterbrechungen oder Leistungsbeeinträchtigungen. Sie können die Integrität des Diensts im [Azure-Portal](https://portal.azure.com/)nachverfolgen. Weitere Informationen finden Sie unter [Nachverfolgen der Dienstintegrität](../service-health/service-notifications.md).
 
 #### <a name="monitor-your-app"></a>Überwachen Ihrer App
 Durch das Überwachen der Web-App können Sie herausfinden, ob in Ihrer Anwendung Probleme vorliegen. Klicken Sie auf dem Blatt Ihrer App auf die Kachel **Anforderungen und Fehler**. Auf dem Blatt **Metrik** werden alle Metriken angezeigt, die Sie hinzufügen können.
@@ -69,9 +60,9 @@ Sie können beispielsweise die folgenden Metriken für Ihre App überwachen:
 Weitere Informationen finden Sie unter
 
 * [Überwachen von Apps in Azure App Service](web-sites-monitor.md)
-* [Empfangen von Warnbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+* [Empfangen von Warnbenachrichtigungen](../azure-monitor/platform/alerts-overview.md)
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2. Sammeln von Daten
 #### <a name="use-the-diagnostics-tool"></a>Verwenden des Diagnosetools
@@ -95,7 +86,7 @@ Eine weitere nützliche Funktion von Kudu ist die Möglichkeit, mithilfe von Kud
 
 Weitere Informationen zu den verfügbaren Funktionen in Kudu finden Sie unter [Online-Tools für Azure-Websites, die Sie kennen sollten](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3. Minimieren der Auswirkungen des Problems
 #### <a name="scale-the-app"></a>Skalieren der App
@@ -117,5 +108,4 @@ Dies ist oft die einfachste Methode zum Beheben einmaliger Probleme. Im [Azure-P
 
  ![Neustart der App zur Behebung der HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
-Sie können Ihre App auch mit Azure PowerShell verwalten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
-
+Sie können Ihre App auch mit Azure PowerShell verwalten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../azure-resource-manager/management/manage-resources-powershell.md).

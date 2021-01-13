@@ -7,10 +7,58 @@
       href: ../azure-management.md
     - name: Verwaltungsgruppen
       href: ./overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: 'Erstellen einer Verwaltungsgruppe: Portal'
+      displayName: hierarchy
+      href: ./create-management-group-portal.md
+    - name: 'Erstellen einer Verwaltungsgruppe: Azure CLI'
+      displayName: hierarchy
+      href: ./create-management-group-azure-cli.md
+    - name: 'Erstellen einer Verwaltungsgruppe: Azure PowerShell'
+      displayName: hierarchy
+      href: ./create-management-group-powershell.md
+    - name: 'Erstellen einer Verwaltungsgruppe: .NET'
+      displayName: hierarchy
+      href: ./create-management-group-dotnet.md
+    - name: 'Erstellen einer Verwaltungsgruppe: JavaScript'
+      displayName: hierarchy
+      href: ./create-management-group-javascript.md
+    - name: 'Erstellen einer Verwaltungsgruppe: REST'
+      displayName: hierarchy
+      href: ./create-management-group-rest-api.md
+- name: Tutorials
+  items:
+    - name: 'Inhalt: Erstellen einer Abonnementgovernancestrategie'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/3-create-subscription-governance-strategy
 - name: Anleitungen
   expanded: true
   items:
-    - name: Erstellen von Verwaltungsgruppen
-      href: ./create.md
-    - name: Verwalten Ihrer Ressourcen
+    - name: Verwalten der Ressourcenhierarchie
       href: ./manage.md
+    - name: Schützen der Ressourcenhierarchie
+      href: ./how-to/protect-resource-hierarchy.md
+- name: Verweis
+  items:
+    - name: Azure CLI
+      href: /cli/azure/account/management-group
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources/#resources
+    - name: Azure SDK für .NET
+      href: /dotnet/api/overview/azure/managementgroups
+    - name: Azure SDK für JavaScript
+      href: /javascript/api/@azure/arm-managementgroups/managementgroups
+    - name: REST
+      href: /rest/api/resources/managementgroups
+    - name: Resource Manager-Vorlagen
+      href: /azure/templates/microsoft.management/managementgroups
+- name: Ressourcen
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: UserVoice
+      href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345064'

@@ -1,30 +1,20 @@
 ---
 title: Erstellen einer Azure Load Balancer-Regel für einen Cluster
 description: Konfigurieren Sie eine Azure Load Balancer-Instanz zum Öffnen von Ports für Ihren Azure Service Fabric-Cluster.
-services: service-fabric
-documentationcenter: na
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 2e730ae8ecf6f1fab12aff23cab0ac3aa246233a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 7e09c7b0b3e2bfa5a5ff834e243f5098cbbd947b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173361"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319902"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Öffnen von Port für einen Service Fabric-Cluster
 
 Der mit Ihren Azure Service Fabric-Cluster bereitgestellte Lastenausgleich leitet Datenverkehr an Ihre auf einem Knoten ausgeführte App weiter. Wenn Sie Ihre Anwendung für die Verwendung eines anderen Ports ändern, müssen Sie diesen Port in Azure Load Balancer verfügbar machen (oder einen anderen Port weiterleiten).
 
-Als Sie Ihren Service Fabric-Cluster in Azure bereitgestellt haben, wurde automatisch ein Lastenausgleich erstellt. Wenn Sie über keinen Lastenausgleich verfügen, finden Sie weitere Informationen unter [Konfigurieren eines internetseitigen Lastenausgleichs](../load-balancer/load-balancer-get-started-internet-portal.md).
+Als Sie Ihren Service Fabric-Cluster in Azure bereitgestellt haben, wurde automatisch ein Lastenausgleich erstellt. Wenn Sie über keinen Lastenausgleich verfügen, finden Sie weitere Informationen unter [Konfigurieren eines internetseitigen Lastenausgleichs](../load-balancer/quickstart-load-balancer-standard-public-portal.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -35,7 +25,7 @@ Die Konfigurationsdatei für die Service Fabric-Anwendung **ServiceManifest.xml*
 
 ## <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 
-Eine Lastenausgleichsregel öffnet einen internetseitigen Port und leitet Datenverkehr an den von Ihrer Anwendung verwendeten Port des internen Knotens weiter. Wenn Sie über keinen Lastenausgleich verfügen, finden Sie weitere Informationen unter [Konfigurieren eines internetseitigen Lastenausgleichs](../load-balancer/load-balancer-get-started-internet-portal.md).
+Eine Lastenausgleichsregel öffnet einen internetseitigen Port und leitet Datenverkehr an den von Ihrer Anwendung verwendeten Port des internen Knotens weiter. Wenn Sie über keinen Lastenausgleich verfügen, finden Sie weitere Informationen unter [Konfigurieren eines internetseitigen Lastenausgleichs](../load-balancer/quickstart-load-balancer-standard-public-portal.md).
 
 Um eine Lastenausgleichsregel zu erstellen, müssen Sie die folgenden Informationen sammeln:
 
@@ -70,7 +60,7 @@ Der Azure CLI-Befehl verfügt über einige Parameter, die in der folgenden Tabel
 
 
 >[!NOTE]
->Weitere Informationen zum Erstellen eines Lastenausgleichs mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Erstellen eines Lastenausgleichs mit der Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
+>Weitere Informationen zum Erstellen eines Lastenausgleichs mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Erstellen eines Lastenausgleichs mit der Azure-Befehlszeilenschnittstelle](../load-balancer/quickstart-load-balancer-standard-internal-cli.md).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -106,7 +96,7 @@ $lb | Set-AzLoadBalancer
 Im `New-AzLoadBalancerRuleConfig`-Befehl gibt `-FrontendPort` den Port an, den der Lastenausgleich für externe Verbindungen verfügbar macht, und `-BackendPort` gibt den Port an, an dem die Service Fabric-App lauscht.
 
 >[!NOTE]
->Weitere Informationen zum Erstellen eines Lastenausgleichs mit PowerShell finden Sie unter [Erstellen eines Lastenausgleichs mit PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
+>Weitere Informationen zum Erstellen eines Lastenausgleichs mit PowerShell finden Sie unter [Erstellen eines Lastenausgleichs mit PowerShell](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

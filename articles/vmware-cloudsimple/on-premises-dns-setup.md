@@ -1,19 +1,19 @@
 ---
-title: 'Azure VMware-Lösung von CloudSimple: Konfigurieren von DNS für die private CloudSimple-Cloud'
+title: 'Azure VMware Solution by CloudSimple: Konfigurieren von DNS für die private CloudSimple-Cloud'
 description: Beschreibt das Einrichten der DNS-Namensauflösung für den Zugriff auf vCenter-Server in einer privaten CloudSimple-Cloud über lokale Arbeitsstationen.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 929c923fda8c1c2bddd96d0b4d4e4b6ce6d29de9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 63822050512421895b0cfed08fb141f77da20b03
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845306"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899251"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurieren von DNS für die Namensauflösung für den vCenter-Zugriff in der privaten Cloud über lokale Arbeitsstationen
 
@@ -45,12 +45,15 @@ Welche Datei und welche Parameter konfiguriert werden müssen, hängt vom jeweil
 
 Bearbeiten Sie z. B für die BIND-Standardserverkonfiguration die Datei „/etc/named.conf“ auf Ihrem DNS-Server, und fügen Sie die folgenden Zoneninformationen hinzu.
 
+> [!NOTE]
+>Dieser Artikel enthält Verweise auf den Begriff Slave, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
+
 ```
-zone “cloudsimple.io”
+zone "az.cloudsimple.io"
 {
     type stub;
     masters { IP address of DNS servers; };
-    file “slaves/cloudsimple.io.db”;
+    file "slaves/cloudsimple.io.db";
 };
 ```
 
@@ -58,19 +61,19 @@ zone “cloudsimple.io”
 
 1. Klicken Sie mit der rechten Maustaste auf den DNS-Server, und wählen Sie dann **New Zone** (Neue Zone) aus. 
   
-    ![Neue Zone](media/DNS01.png)
+    ![Screenshot, auf dem die Option „New Zone“ (Neue Zone) hervorgehoben ist](media/DNS01.png)
 2. Wählen Sie **Stub Zone** (Stubzone) aus, und klicken Sie dann auf **Next** (Weiter).
 
-    ![Neue Zone](media/DNS02.png)
+    ![Screenshot, auf dem die Option „Stub Zone“ (Stubzone) hervorgehoben ist](media/DNS02.png)
 3. Wählen Sie abhängig von Ihrer Umgebung die entsprechende Option aus, und klicken Sie dann auf **Next** (Weiter).
 
-    ![Neue Zone](media/DNS03.png)
-4. Wählen Sie **Forward lookup zone (Forward-Lookupzone)**   aus, und klicken Sie dann auf **Next** (Weiter).
+    ![Screenshot: Optionen für die Zonendatenreplikation](media/DNS03.png)
+4. Wählen Sie **Forward lookup zone** (Forward-Lookupzone) aus, und klicken Sie dann auf **Next** (Weiter).
 
-    ![Neue Zone](media/DNS01.png)
+    ![Screenshot, auf dem die Option „Forward lookup zone“ (Forward-Lookupzone) hervorgehoben ist](media/DNS01.png)
 5. Geben Sie den Zonennamen ein, und klicken Sie auf **Next** (Weiter).
 
-    ![Neue Zone](media/DNS05.png)
+    ![Screenshot, der zeigt, wo Sie den Zonennamen eingeben](media/DNS05.png)
 6. Geben Sie die IP-Adressen der DNS-Server für die private Cloud ein, die Sie aus dem CloudSimple-Portal abgerufen haben.
 
     ![Neue Zone](media/DNS06.png)
@@ -80,14 +83,14 @@ zone “cloudsimple.io”
 
 Bei einer bedingten Weiterleitung werden alle DNS-Namensauflösungsanforderungen an den vorgesehenen Server weitergeleitet. Mit diesem Setup werden alle Anforderungen an *.cloudsimple.io an die DNS-Server in der privaten Cloud weitergeleitet. In den folgenden Beispielen wird gezeigt, wie Weiterleitungen für verschiedene DNS-Servertypen eingerichtet werden.
 
-### <a name="create-a-conditional-forwarded-on-a-bind-dns-server"></a>Erstellen einer bedingten Weiterleitung auf einem BIND-DNS-Server
+### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>Erstellen einer bedingten Weiterleitung auf einem BIND-DNS-Server
 
 Welche Datei und welche Parameter konfiguriert werden müssen, hängt vom jeweiligen DNS-Setup ab.
 
 Bearbeiten Sie z. B für die BIND-Standardserverkonfiguration die Datei „/etc/named.conf“ auf Ihrem DNS-Server, und fügen Sie die folgenden Informationen zur bedingten Weiterleitung hinzu.
 
 ```
-zone “cloudsimple.io” {
+zone "az.cloudsimple.io" {
     type forward;
     forwarders { IP address of DNS servers; };
 };

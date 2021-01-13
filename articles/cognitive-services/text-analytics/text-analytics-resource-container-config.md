@@ -3,24 +3,24 @@ title: Konfigurieren von Containern – Textanalyse
 titleSuffix: Azure Cognitive Services
 description: Die Textanalyse stellt für jeden Container ein allgemeines Konfigurationsframework bereit, sodass Sie ganz einfach Aspekte wie Speicher, Protokollierung und Telemetrie sowie Sicherheitseinstellungen für Ihre Container konfigurieren und verwalten können.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.author: dapine
-ms.openlocfilehash: f1c42002343de1dd3b3ef6b9c9e35f458db925f4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: f6a1bc652125990a7daf3414895f34b95c544912
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051132"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83590553"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurieren von Docker-Containern für die Textanalyse
 
-Die Textanalyse stellt für jeden Container ein allgemeines Konfigurationsframework bereit, sodass Sie ganz einfach Aspekte wie Speicher, Protokollierung und Telemetrie sowie Sicherheitseinstellungen für Ihre Container konfigurieren und verwalten können.
+Die Textanalyse stellt für jeden Container ein allgemeines Konfigurationsframework bereit, sodass Sie ganz einfach Aspekte wie Speicher, Protokollierung und Telemetrie sowie Sicherheitseinstellungen für Ihre Container konfigurieren und verwalten können. Mehrere [Beispiele für docker run-Befehle](how-tos/text-analytics-how-to-install-containers.md#run-the-container-with-docker-run) sind ebenfalls verfügbar.
 
 ## <a name="configuration-settings"></a>Konfigurationseinstellungen
 
@@ -49,9 +49,9 @@ Diese Einstellung finden Sie hier:
 
 * Azure-Portal: Übersicht über die **Textanalyse** mit der Bezeichnung `Endpoint`
 
-|Erforderlich| NAME | Datentyp | BESCHREIBUNG |
+|Erforderlich| Name | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Zeichenfolge | Der erforderliche URI des Abrechnungsendpunkts |
+|Ja| `Billing` | String | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
@@ -77,44 +77,12 @@ Die Container für die Textanalyse verwenden keine Eingabe- oder Ausgabeeinbindu
 
 Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Betriebssystem des Hosts. Darüber hinaus ist es eventuell nicht möglich, auf den Bereitstellungspunkt auf dem [Hostcomputer](how-tos/text-analytics-how-to-install-containers.md#the-host-computer) zuzugreifen, wenn ein Konflikt zwischen den vom Docker-Dienstkonto verwendeten Berechtigungen und den für den Bereitstellungspunkt auf dem Host verwendeten Berechtigungen besteht. 
 
-|Optional| NAME | Datentyp | BESCHREIBUNG |
+|Optional| Name | Datentyp | BESCHREIBUNG |
 |-------|------|-----------|-------------|
-|Nicht zulässig| `Input` | Zeichenfolge | Wird von Containern für die Textanalyse nicht verwendet.|
-|Optional| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
-
-## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“ 
-
-Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veranschaulichen, wie `docker run`-Befehle geschrieben und verwendet werden.  Nach dem Ausführen wird der Container so lange ausgeführt, bis Sie ihn [beenden](how-tos/text-analytics-how-to-install-containers.md#stop-the-container).
-
-* **Zeilenfortsetzungszeichen:** In den Docker-Befehlen in den folgenden Abschnitten wird der umgekehrte Schrägstrich (`\`) als Zeilenfortsetzungszeichen verwendet. Ersetzen oder entfernen Sie diesen je nach den Anforderungen des Hostbetriebssystems. 
-* **Argumentreihenfolge:** Ändern Sie die Reihenfolge der Argumente nur, wenn Sie mit Docker-Containern sehr gut vertraut sind.
-
-Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
-
-| Platzhalter | Wert | Format oder Beispiel |
-|-------------|-------|---|
-| **{API_KEY}** | Der Endpunktschlüssel der `Text Analytics`-Ressource, die auf der Azure `Text Analytics`-Schlüsselseite verfügbar ist. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
-| **{ENDPOINT_URI}** | Den Wert des Abrechnungsendpunkts finden Sie auf der Übersichtsseite von Azure `Text Analytics`.| Ausführliche Beispiele finden Sie unter [Ermitteln erforderlicher Parameter](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters). |
-
-> [!IMPORTANT]
-> Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](how-tos/text-analytics-how-to-install-containers.md#billing).
-> Der ApiKey-Wert ist der **Schlüssel** von der Schlüsselseite der Azure `Text Analytics`-Ressource. 
-
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
-
-[!INCLUDE [key-phrase-extraction-docker-examples](includes/key-phrase-extraction-docker-examples.md)]
-
-#### <a name="language-detectiontablanguage"></a>[Sprachenerkennung](#tab/language)
-
-[!INCLUDE [language-detection-docker-examples](includes/language-detection-docker-examples.md)]
-
-#### <a name="sentiment-analysistabsentiment"></a>[Standpunktanalyse](#tab/sentiment)
-
-[!INCLUDE [sentiment-analysis-docker-examples](includes/sentiment-analysis-docker-examples.md)]
-
-***
+|Nicht zulässig| `Input` | String | Wird von Containern für die Textanalyse nicht verwendet.|
+|Optional| `Output` | String | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen finden Sie unter [Installieren und Ausführen von Containern](how-tos/text-analytics-how-to-install-containers.md).
-* Weitere [Cognitive Services-Container](../cognitive-services-container-support.md) verwenden
+* Verwenden weiterer [Cognitive Services-Container](../cognitive-services-container-support.md)

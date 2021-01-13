@@ -1,57 +1,42 @@
 ---
-title: Veröffentlichungsleitfaden für AppSource-Angebote für AppsSource Storefront | Azure Marketplace
-description: Schrittanleitung und Prüflisten für die Veröffentlichung von Apps in der AppSource-Storefront für Office 365, Dynamics 365, Power BI und Power Apps
-services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: ellacroi
+title: Leitfaden für die Veröffentlichung von Angeboten für Microsoft AppSource
+description: Schrittanleitung und Prüflisten für die Veröffentlichung von Apps in Microsoft AppSource für Microsoft 365, Dynamics 365, Power Apps und Power BI.
 ms.service: marketplace
-ms.topic: article
-ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: 38175bd2365ee9ab7246f0d967c364912efda37d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: trkeya
+ms.author: trkeya
+ms.date: 09/04/2020
+ms.openlocfilehash: 8b500a87613dee094c63e71fc76fb751d72aa049
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935690"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491153"
 ---
-# <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Leitfaden für die Veröffentlichung von Angeboten für Office 365, Dynamics 365, Power Apps und Power BI
+# <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>Leitfaden für die Veröffentlichung von Angeboten für Microsoft 365, Dynamics 365, Power Apps und Power BI
 
-Die AppSource-Storefront enthält Angebote, die auf Dynamics 365, Office 365, Power BI und Power Apps aufbauen oder diese erweitern. Jedes dieser Produkte hat eine spezifische Dokumentation, die Sie durch den Veröffentlichungsprozess führt. Nachfolgend finden Sie Links zu ausführlicheren Informationen für jeden Angebotstyp. 
+Microsoft AppSource enthält Angebote, die auf Microsoft 365, Dynamics 365, Power Apps und Power BI aufbauen oder diese erweitern. Für jedes dieser Produkte ist eine spezifische Dokumentation vorhanden, die Sie durch den Veröffentlichungsprozess führt. 
 
-AppSource verfügt über Listen- und Testangebote mit dem Aktionsaufruf „Kontakt mit mir aufnehmen“ oder „Jetzt testen“. Es gibt derzeit keine Transaktionsfunktionalität in AppSource.
+AppSource verfügt über kostenpflichtige, Listen- und Testangebote mit den Listungsoptionen *Jetzt abrufen* , *Kontakt mit mir aufnehmen* und *Jetzt testen*.
 
 ## <a name="product-specific-guides"></a>Produktspezifische Leitfäden
 
-### <a name="office-365"></a>Office 365
+In der folgenden Tabelle finden Sie Links zu Veröffentlichungsprozessen und -richtlinien für jeden Angebotstyp:
 
-Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store).
+| Produkt    | Anleitungen zur Veröffentlichung  |
+| :------------------- | :-------------------|
+| Microsoft 365 | Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](/office/dev/store/submit-to-appsource-via-partner-center). |
+| Dynamics 365 Business Central | Informationen zum Veröffentlichen eines Angebots in Partner Center finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 Business Central](./partner-center-portal/create-new-business-central-offer.md). |
+| Dynamics 365 for Finance and Operations | Lesen Sie bei der Erstellung für die Enterprise Edition die Informationen zum [Veröffentlichungsprozess und den Richtlinien](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source).<br/>Informationen zum Veröffentlichen eines Angebots in Partner Center finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md).  |
+| Dynamics 365 for Customer Engagement | Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](/dynamics365/customer-engagement/developer/publish-app-appsource).<br/>Informationen zum Veröffentlichen eines Angebots in Partner Center finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 for Customer Engagement und Power Apps](./partner-center-portal/create-new-customer-engagement-offer.md).  |
+| Power Apps | Erfahren Sie, wie Sie [Kunden das Testen Ihrer App in AppSource ermöglichen können](https://powerapps.microsoft.com/blog/appsource-test-drive/). |
+| Power BI | Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](/power-bi/developer/office-store). |
 
-### <a name="power-apps"></a>Power Apps
-
-Erfahren Sie, wie Kunden [Ihre App auf AppSource testen können](https://powerapps.microsoft.com/blog/appsource-test-drive/).
-
-### <a name="power-bi"></a>Power BI
-
-Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/power-bi/developer/office-store).
-
-### <a name="dynamics-365"></a>Dynamics 365
-
-#### <a name="dynamics-365-for-finance-and-operations"></a>Dynamics 365 for Finance and Operations
-Lesen Sie bei der Erstellung für die Enterprise Edition die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source).
-
-Unter [Dynamics 365 for Finance and Operations-Angebot](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer) erfahren Sie, wie Sie das Angebot im Cloud-Partnerportal veröffentlichen.
-
-### <a name="dynamics-365-for-customer-engagement"></a>Dynamics 365 for Customer Engagement
-Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource).
-
-Unter [Dynamics 365 for Customer Engagement-Angebot](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-customer-engagement-offer) erfahren Sie, wie Sie das Angebot im Cloud-Partnerportal veröffentlichen.
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Falls Sie dies noch nicht getan haben, 
+Informieren Sie sich (falls noch nicht geschehen), wie Sie [Ihr Cloudgeschäft mit dem Azure Marketplace ausweiten](https://azuremarketplace.microsoft.com/sell).
 
-- [Registrieren Sie](https://azuremarketplace.microsoft.com/sell) beim Marketplace.
-
-Wenn Sie registriert sind und im Cloud-Partnerportal arbeiten, 
-
-- [melden Sie sich beim Cloud-Partnerportal an](https://cloudpartner.azure.com), um Ihr Angebot zu erstellen oder zu vervollständigen.
+Um ein neues Angebot zu erstellen oder ein vorhandenes Angebot abzuschließen, wechseln Sie zu [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership).

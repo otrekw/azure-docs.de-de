@@ -1,24 +1,17 @@
 ---
 title: workspace()-Ausdruck in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
 description: Der workspace-Ausdruck wird in Azure Monitor-Protokollabfragen verwendet, um Daten aus einem bestimmten Arbeitsbereich in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen.
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: b4bc652d54150b72cc64898464b3511a860bf011
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/10/2018
+ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60785675"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014039"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>workspace()-Ausdruck in Azure Monitor-Protokollabfragen
 
@@ -31,13 +24,13 @@ Der Ausdruck `workspace` wird in Azure Monitor-Abfragen verwendet, um Daten aus 
 
 ## <a name="arguments"></a>Argumente
 
-- *Bezeichner*: Identifiziert den Arbeitsbereich mit einem der Formate in der folgenden Tabelle.
+- *Identifier*: identifiziert den Arbeitsbereich mit einem der Formate in der folgenden Tabelle.
 
 | Bezeichner | BESCHREIBUNG | Beispiel
 |:---|:---|:---|
 | Ressourcenname | Für Menschen lesbarer Name des Arbeitsbereichs (auch als „Komponentenname“ bezeichnet) | workspace("contosoretail") |
 | Qualifizierter Name | Vollständiger Name des Arbeitsbereichs in der Form: „Abonnementname/Ressourcengruppe/Komponentenname“ | workspace('Contoso/ContosoResource/ContosoWorkspace') |
-| ID | GUID des Arbeitsbereichs | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| id | GUID des Arbeitsbereichs | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
 | Azure-Ressourcen-ID | Bezeichner für die Azure-Ressource | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 

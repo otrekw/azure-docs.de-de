@@ -1,22 +1,23 @@
 ---
-title: 'Schnellstart: Erstellen einer Azure DNS-Zone und eines DNS-Eintrags mit dem Azure-Portal'
+title: 'Schnellstart: Erstellen einer DNS-Zone und eines Eintrags: Azure-Portal'
+titleSuffix: Azure DNS
 description: Verwenden Sie diese Schritt-für-Schritt-Schnellstartanleitung, um zu erfahren, wie Sie eine Azure DNS-Zone und den zugehörigen Eintrag mit dem Azure-Portal erstellen.
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: feb46114b3cf1b04e6a181f84bcdc41c17f1c0ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 10/20/2020
+ms.author: rohink
+ms.openlocfilehash: be76a7902c2747c7a8dc1bfc21d58ae88f3ff343
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119070"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282153"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines DNS-Eintrags mit dem Azure-Portal
 
-Sie können Azure DNS zum Auflösen der Hostnamen in Ihrer öffentlichen Domäne konfigurieren. Wenn Sie beispielsweise den Domänennamen *contoso.xyz* von einer Domänennamen-Registrierungsstelle erworben haben, können Sie Azure DNS für das Hosten der Domäne *contoso.xyz* und das Auflösen von *www.contoso.xyz* in die IP-Adresse Ihres Webservers oder Ihrer Web-App konfigurieren.
+Sie können Azure DNS zum Auflösen der Hostnamen in Ihrer öffentlichen Domäne konfigurieren. Wenn Sie beispielsweise den Domänennamen *contoso.xyz* von einer Domänennamen-Registrierungsstelle erworben haben, können Sie Azure DNS zum Hosten der Domäne *contoso.xyz* und zum Auflösen von *`www.contoso.xyz`* in die IP-Adresse Ihres Webservers oder Ihrer Web-App konfigurieren.
 
 In dieser Schnellstartanleitung erstellen Sie eine Testdomäne und anschließend einen Adresseintrag zum Auflösen von *www* in die IP-Adresse *10.10.10.10*.
 
@@ -30,6 +31,14 @@ You can also perform these steps using [Azure PowerShell](dns-getstarted-powersh
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 Melden Sie sich für alle Portalschritte am [Azure-Portal](https://portal.azure.com) an.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
+
+Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
 
@@ -63,12 +72,12 @@ Sie erstellen DNS-Einträge für Ihre Domäne in der DNS-Zone. Erstellen Sie ein
 1. Geben Sie auf der Seite **Datensatzgruppe hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
 
    - **Name**: Geben Sie *www* ein. Der Eintragsname ist der Hostname, den Sie in die angegebene IP-Adresse auflösen möchten.
-   - **Typ**: Wählen Sie **A** aus. A-Einträge sind am gängigsten. Es gibt aber noch weitere Eintragstypen für E-Mail-Server („MX“), IPv6-Adressen („AAAA“) usw. 
+   - **Typ:** Wählen Sie **A** aus. A-Einträge sind am gängigsten. Es gibt aber noch weitere Eintragstypen für E-Mail-Server („MX“), IPv6-Adressen („AAAA“) usw. 
    - **TTL**: Geben Sie *1* ein. Mit der *Gültigkeitsdauer* der DNS-Anforderung wird angegeben, wie lange DNS-Server und -Clients eine Antwort zwischenspeichern können.
    - **TTL-Einheit**: Wählen Sie **Stunden** aus. Dies ist die Zeiteinheit für den **TTL**-Wert. 
    - **IP-Adresse**: Geben Sie für dieses Schnellstartbeispiel *10.10.10.10* ein. Dieser Wert ist die IP-Adresse, in die der Eintragsname aufgelöst wird. In einem echten Szenario geben Sie die öffentliche IP-Adresse für Ihren Webserver ein.
 
-Da diese Schnellstartanleitung nur für schnelle Tests bestimmt ist, ist es nicht erforderlich, die Azure DNS-Namensserver bei einer Domänennamen-Registrierungsstelle zu konfigurieren. Bei einer echten Produktionsdomäne möchten Sie erreichen, dass alle Internetbenutzer den Hostnamen auflösen können, um eine Verbindung mit Ihrem Webserver oder Ihrer App herzustellen. Sie besuchen Ihre Domänennamen-Registrierungsstelle, um die Namenservereinträge durch die Azure DNS-Namenserver zu ersetzen. Weitere Informationen finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
+Da diese Schnellstartanleitung nur für schnelle Tests bestimmt ist, ist es nicht erforderlich, die Azure DNS-Namensserver bei einer Domänennamen-Registrierungsstelle zu konfigurieren. Bei einer echten Produktionsdomäne möchten Sie erreichen, dass alle Internetbenutzer den Hostnamen auflösen können, um eine Verbindung mit Ihrem Webserver oder Ihrer App herzustellen. Sie besuchen Ihre Domänennamen-Registrierungsstelle, um die Namenservereinträge durch die Azure DNS-Namenserver zu ersetzen. Weitere Informationen finden Sie im [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
 
 ## <a name="test-the-name-resolution"></a>Testen der Namensauflösung
 
@@ -88,7 +97,7 @@ Sie besitzen nun eine DNS-Testzone mit einem A-Testeintrag und können die Namen
    nslookup www.contoso.xyz <name server name>
    ```
 
-   Beispiel: 
+   Beispiel:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
@@ -96,9 +105,9 @@ Sie besitzen nun eine DNS-Testzone mit einem A-Testeintrag und können die Namen
 
    Es sollte ein Bildschirm angezeigt werden, der in etwa wie folgt aussieht:
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![Screenshot, der ein Eingabeaufforderungsfenster mit einem Namenserver-Suchbefehl und Werten für Server, Adresse, Name und Adresse zeigt.](media/dns-getstarted-portal/nslookup.PNG)
 
-Der Hostname **www\.contoso.xyz** wird gemäß Ihrer Konfiguration in **10.10.10.10** aufgelöst. Mit diesem Ergebnis wird bestätigt, dass die Namensauflösung richtig funktioniert. 
+Der Hostname **www\.contoso.xyz** wird gemäß Ihrer Konfiguration zu **10.10.10.10** aufgelöst. Mit diesem Ergebnis wird bestätigt, dass die Namensauflösung richtig funktioniert. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

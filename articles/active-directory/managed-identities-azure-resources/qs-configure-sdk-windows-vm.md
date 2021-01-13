@@ -1,26 +1,26 @@
 ---
-title: Verwenden eines Azure SDK zum Konfigurieren eines virtuellen Computers mit verwalteten Identitäten für Azure-Ressourcen
+title: Konfigurieren verwalteter Identitäten auf einem virtuellen Computer mithilfe eines SDK – Azure AD
 description: Ausführliche Anweisungen zum Konfigurieren und Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einer Azure-VM über ein Azure SDK
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/28/2017
-ms.author: markvi
+ms.date: 11/03/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29446f6f0a86a00cc92fe46211caddd22aaa4859
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41d1be35d2add24cbbc171c3da3bd4d06bce4337
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112560"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359662"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Konfigurieren eines virtuellen Computers mit verwalteten Identitäten für Azure-Ressourcen mithilfe eines Azure SDK
 
@@ -44,7 +44,7 @@ Azure unterstützt mit einer Reihe von [Azure SDKs](https://azure.microsoft.com/
 | Java   | [Verwalten von Speicher auf einem virtuellen Computer mit aktivierten verwalteten Identitäten für Azure-Ressourcen](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
 | Node.js| [Erstellen eines virtuellen Computers mit aktivierter vom System zugewiesener verwalteter Identität](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
 | Python | [Erstellen eines virtuellen Computers mit aktivierter vom System zugewiesener verwalteter Identität](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
-| Ruby   | [Erstellen eines virtuellen Azure-Computers mit aktivierter vom System zugewiesener Identität](https://azure.microsoft.com/resources/samples/compute-ruby-msi-vm/) |
+| Ruby   | [Erstellen eines virtuellen Azure-Computers mit aktivierter vom System zugewiesener Identität](https://github.com/Azure-Samples/compute-ruby-msi-vm/) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

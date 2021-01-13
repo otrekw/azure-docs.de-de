@@ -1,19 +1,18 @@
 ---
 title: Anomalieerkennung in Azure Stream Analytics
 description: Dieser Artikel beschreibt, wie Sie Azure Stream Analytics und Azure Machine Learning zusammen verwenden, um Anomalien zu erkennen.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: e2fd226f1c605821f0fd595832b2cbe26d994fb4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c57a3920dac3e18e248109fafdf61fdfa871c54d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612334"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023396"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomalieerkennung in Azure Stream Analytics
 
@@ -22,6 +21,12 @@ Azure Stream Analytics ist sowohl in der Cloud als auch in Azure IoT Edge verfü
 Die Machine Learning-Modelle setzen einheitlich als Stichprobe entnommene Zeitreihen voraus. Wenn die Zeitreihen nicht einheitlich sind, können Sie einen Aggregationsschritt mit einem rollierenden Fenster vor dem Aufrufen der Erkennung von Anomalien einfügen.
 
 Die Machine Learning-Vorgänge unterstützen derzeit keine saisonalen Trends oder Korrelationen mit mehreren Varianten.
+
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Anomalieerkennung unter Verwendung von Machine Learning in Azure Stream Analytics
+
+Das folgende Video veranschaulicht, wie eine Anomalie in Echtzeit mithilfe von Machine Learning-Funktionen in Azure Stream Analytics erkannt wird. 
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Real-Time-ML-Based-Anomaly-Detection-In-Azure-Stream-Analytics/player]
 
 ## <a name="model-behavior"></a>Modellverhalten
 
@@ -37,7 +42,7 @@ Mit einem [hier](https://aka.ms/asaanomalygenerator) verfügbaren Anomalie-Gener
 
 ## <a name="spike-and-dip"></a>Spitzen und Senken
 
-Temporäre Anomalien im Ereignisdatenstrom einer Zeitreihe werden als Spitzen und Senken bezeichnet. Spitzen und Senken können mithilfe des auf Machine Learning basierenden [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+Temporäre Anomalien im Ereignisdatenstrom einer Zeitreihe werden als Spitzen und Senken bezeichnet. Spitzen und Senken können mithilfe des auf Machine Learning basierenden [AnomalyDetection_SpikeAndDip](/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
 )-Operators überwacht werden.
 
 ![Beispiel für Anomalien bei Spitzen und Senken](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
@@ -69,7 +74,7 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>Änderungspunkt
 
-Permanente Anomalien im Ereignisdatenstrom einer Zeitreihe sind Änderungen bei der Verteilung der Werte im Ereignisdatenstrom, wie Änderungen des Zuverlässigkeitsgrads und Trends. In Stream Analytics werden diese Anomalien mithilfe des auf Machine Learning basierenden [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics)-Operators erkannt.
+Permanente Anomalien im Ereignisdatenstrom einer Zeitreihe sind Änderungen bei der Verteilung der Werte im Ereignisdatenstrom, wie Änderungen des Zuverlässigkeitsgrads und Trends. In Stream Analytics werden diese Anomalien mithilfe des auf Machine Learning basierenden [AnomalyDetection_ChangePoint](/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics)-Operators erkannt.
 
 Permanente Änderungen dauern viel länger als Spitzen und Senken und könnten auf katastrophale Ereignisse hinweisen. Permanente Änderungen sind in der Regel mit bloßem Auge nicht sichtbar, können aber mit dem **AnomalyDetection_ChangePoint**-Operator erkannt werden.
 
@@ -149,17 +154,10 @@ Codebeispiele zum Ausführen der oben genannten Konfigurationen ohne Partitionie
 ### <a name="identifying-bottlenecks"></a>Identifizieren von Engpässen
 Verwenden Sie den Bereich „Metriken“ in ihrem Azure Stream Analytics-Auftrag, um Engpässe in Ihrer Pipeline zu identifizieren. Überprüfen Sie **Eingabe-/Ausgabeereignisse** hinsichtlich des Durchsatzes sowie ["Wasserzeichenverzögerung"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) oder **Ereignisse im Rückstand**, um festzustellen, ob der Auftrag mit der Eingangsrate Schritt halten kann. Suchen Sie für Event Hub-Metriken nach **Gedrosselte Anforderungen**, und passen Sie die Schwellenwerteinheiten (TU) entsprechend an. Überprüfen Sie für Cosmos DB-Metriken **Max. genutzte RU/Sek. pro Partitionsschlüsselbereich** unter „Durchsatz“, um sicherzustellen, dass Ihre Partitionsschlüsselbereiche gleichmäßig genutzt werden. Überwachen Sie für Azure SQL-DB **Protokoll-E/A** und **CPU**.
 
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Anomalieerkennung unter Verwendung von Machine Learning in Azure Stream Analytics
-
-Das folgende Video veranschaulicht, wie eine Anomalie in Echtzeit mithilfe von Machine Learning-Funktionen in Azure Stream Analytics erkannt wird. 
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Stream Analytics Query Language Reference (in englischer Sprache)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](/rest/api/streamanalytics/)

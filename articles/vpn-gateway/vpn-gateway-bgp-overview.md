@@ -1,50 +1,49 @@
 ---
-title: Übersicht über BGP und Azure-VPN-Gateways | Microsoft-Dokumentation
-description: Dieser Artikel enthält eine Übersicht über die Verwendung von BGP mit Azure-VPN-Gateways.
+title: 'BGP und Azure VPN Gateway: Übersicht'
+description: Erfahren Sie mehr über das Border Gateway Protocol (BGP) in Azure-VPN, das Standardinternetprotokoll zum Austauschen von Routing- und Erreichbarkeitsinformationen zwischen Netzwerken.
 services: vpn-gateway
 author: yushwang
-manager: rossort
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: e85eb756e416f1170a0cb2b19ab68888b5a9422f
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 464d00cbeddbacd617b1d2c88f9e5f68cc5d996e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516437"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89400873"
 ---
 # <a name="about-bgp-with-azure-vpn-gateway"></a>Übersicht über BGP mit Azure VPN Gateway
 Dieser Artikel enthält eine Übersicht über die Unterstützung von BGP (Border Gateway Protocol) in Azure VPN Gateway.
 
 BGP ist das standardmäßige Routingprotokoll, mit dem im Internet üblicherweise Routing- und Erreichbarkeitsinformationen zwischen mehren Netzwerken ausgetauscht werden. Im Kontext virtueller Azure-Netzwerke können Azure-VPN-Gateways und Ihre lokalen VPN-Geräte (so genannte BGP-Peers oder Nachbarn) über BGP Routen austauschen, die beide Gateways über die Verfügbarkeit und Erreichbarkeit der Präfixe informieren, die die beteiligten Gateways oder Router durchlaufen. BGP ermöglicht auch Transitrouting zwischen mehreren Netzwerken. Hierzu werden von einem BGP-Gateway ermittelte Routen eines BGP-Peers an alle anderen BGP-Peers weitergegeben. 
 
-## <a name="why"></a>Argumente für die Verwendung von BGP
+## <a name="why-use-bgp"></a><a name="why"></a>Argumente für die Verwendung von BGP
 BGP ist ein optionales Feature für routenbasierte Azure-VPN-Gateways. Vergewissern Sie sich vor dem Aktivieren des Features, dass BGP von Ihren lokalen VPN-Geräten unterstützt wird. Azure-VPN-Gateways und Ihre lokalen VPN-Geräte können auch weiterhin ohne BGP verwendet werden. Sie haben somit die Wahl zwischen statischen Routen (ohne BGP) *oder* dynamischem Routing mit BGP zwischen Ihren Netzwerken und Azure.
 
 BGP bietet einige Vorteile und neue Möglichkeiten:
 
-### <a name="prefix"></a>Unterstützung automatischer und flexibler Präfixupdates
+### <a name="support-automatic-and-flexible-prefix-updates"></a><a name="prefix"></a>Unterstützung automatischer und flexibler Präfixupdates
 Mit BGP müssen Sie lediglich ein Mindestpräfix für einen bestimmten BGP-Peer über den IPsec-S2S-VPN-Tunnel deklarieren. Das Präfix muss mindestens die Größe eines Hostpräfix (/32) der BGP-Peer-IP-Adresse Ihres lokalen VPN-Geräts besitzen. Sie können steuern, welche lokalen Netzwerkpräfixe sie gegenüber Azure ankündigen möchten, um Ihrem virtuellen Azure-Netzwerk den Zugriff darauf zu ermöglichen.
 
 Sie können auch größere Präfixe ankündigen, die auch einige Ihrer VNET-Adresspräfixe umfassen können – etwa einen großen privaten IP-Adressraum (beispielsweise 10.0.0.0/8). Beachten Sie jedoch, dass die Präfixe keinem Ihrer VNET-Präfixe entsprechen dürfen. Mit Ihren VNET-Präfixen identische Routen werden abgelehnt.
 
-### <a name="multitunnel"></a>Unterstützung mehrerer Tunnel zwischen einem VNET und einem lokalen Standort mit automatischem Failover auf der Grundlage von BGP
+### <a name="support-multiple-tunnels-between-a-vnet-and-an-on-premises-site-with-automatic-failover-based-on-bgp"></a><a name="multitunnel"></a>Unterstützung mehrerer Tunnel zwischen einem VNET und einem lokalen Standort mit automatischem Failover auf der Grundlage von BGP
 Sie können mehrere Verbindungen zwischen Ihrem Azure-VNET und Ihren lokalen VPN-Geräten am gleichen Standort herstellen. Dies ermöglicht die Einrichtung mehrerer Tunnel (Pfade) zwischen den beiden Netzwerken in einer Aktiv/Aktiv-Konfiguration. Wird die Verbindung mit einem der Tunnel getrennt, werden die entsprechenden Routen per BGP zurückgezogen, und der Datenverkehr wird automatisch auf die verbleibenden Tunnel verlagert.
 
 Das folgende Diagramm zeigt ein einfaches Beispiel für dieses hochverfügbare Setup:
 
 ![Mehrere aktive Pfade](./media/vpn-gateway-bgp-overview/multiple-active-tunnels.png)
 
-### <a name="transitrouting"></a>Unterstützung von Transitrouting zwischen Ihren lokalen Netzwerken und mehreren Azure-VNETs
+### <a name="support-transit-routing-between-your-on-premises-networks-and-multiple-azure-vnets"></a><a name="transitrouting"></a>Unterstützung von Transitrouting zwischen Ihren lokalen Netzwerken und mehreren Azure-VNETs
 Mit BGP können mehrere Gateways Präfixe aus unterschiedlichen Netzwerken ermitteln und weitergeben (sowohl bei direkter als auch bei indirekter Verbindung). Dies ermöglicht die Verwendung von Transitrouting mit Azure-VPN-Gateways zwischen Ihren lokalen Standorten oder zwischen mehreren virtuellen Azure-Netzwerken.
 
 Das folgende Diagramm veranschaulicht ein Beispiel für eine Mehrfachhop-Topologie mit mehreren Pfaden und Transitrouting von Datenverkehr zwischen den beiden lokalen Netzwerken über Azure-VPN-Gateways innerhalb der Microsoft-Netzwerke:
 
 ![Mehrfachhop-Übertragung](./media/vpn-gateway-bgp-overview/full-mesh-transit.png)
 
-## <a name="faq"></a>BGP – Häufig gestellte Fragen
+## <a name="bgp-faq"></a><a name="faq"></a>BGP – Häufig gestellte Fragen
 [!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte

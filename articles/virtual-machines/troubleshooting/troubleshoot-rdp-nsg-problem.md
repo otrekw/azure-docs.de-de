@@ -12,20 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 5f95b42fd17aec4e3ec6b7b8fac1965772fefa67
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 878e2c233f2171c3c9a6fbd2a8d629d3f3987c3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162591"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976724"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Remoteverbindung mit einer VM kann nicht hergestellt werden, da der RDP-Port in der NSG nicht aktiviert ist
 
 In diesem Artikel wird die Lösung eines Problems beschrieben, bei dem Sie keine Verbindung mit einem virtuellen Azure-Computer (VM) unter Windows herstellen können, weil der RDP-Port (Remotedesktopprotokoll) in der Netzwerksicherheitsgruppe (NSG) nicht aktiviert ist.
 
-
-> [!NOTE] 
-> Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../azure-resource-manager/resource-manager-deployment-model.md). Wir empfehlen Ihnen, für neue Bereitstellungen anstelle des klassischen Bereitstellungsmodells das Resource Manager-Bereitstellungsmodell zu verwenden. 
 
 ## <a name="symptom"></a>Symptom
 
@@ -45,13 +42,13 @@ Führen Sie diese Schritte aus, um den RDP-Port in einer NSG zu aktivieren:
     **Name**: Port_3389 </br>
     **Port(Ziel)** : 3389 </br>
     **Protokoll:** TCP </br>
-    **Quelle:** Any </br>
+    **Quelle**: Any </br>
     **Ziele:** Any </br>
-    **Aktion:** ZULASSEN </br>
+    **Aktion:** Allow </br>
 
 Wenn Sie die IP-Quelladresse angeben, wird mit dieser Einstellung nur Datenverkehr von einer bestimmten IP-Adresse bzw. einem IP-Adressbereich für die Verbindung mit der VM zugelassen. Stellen Sie sicher, dass sich der Computer, den Sie zum Starten der RDP-Sitzung verwenden, in diesem Bereich befindet.
 
-Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksicherheitsgruppe](../../virtual-network/security-overview.md).
+Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksicherheitsgruppe](../../virtual-network/network-security-groups-overview.md).
 
 > [!NOTE]
 > RDP-Port 3389 wird für das Internet verfügbar gemacht. Daher empfehlen wir Ihnen, diesen Port nur für Testzwecke zu nutzen. Für Produktionsumgebungen empfehlen wir die Verwendung einer VPN- oder privaten Verbindung.
@@ -59,6 +56,3 @@ Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksi
 ## <a name="next-steps"></a>Nächste Schritte
 
 Falls der RDP-Port in der Netzwerksicherheitsgruppe bereits aktiviert ist, helfen Ihnen die Informationen unter [Beheben eines allgemeinen RDP-Fehlers auf einer Azure-VM](./troubleshoot-rdp-general-error.md) weiter.
-
-
-

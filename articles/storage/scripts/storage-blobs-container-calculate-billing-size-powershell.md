@@ -2,29 +2,26 @@
 title: 'Azure PowerShell-Skriptbeispiel: Berechnen der Gesamtabrechnungsgröße eines Blobcontainers | Microsoft-Dokumentation'
 description: Berechnen Sie die Gesamtgröße eines Containers in Azure Blob Storage zu Abrechnungszwecken.
 services: storage
-documentationcenter: na
 author: fhryo-msft
-manager: cbrooks
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
+ms.subservice: blobs
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 11/07/2017
+ms.date: 12/29/2020
 ms.author: fryu
-ms.openlocfilehash: 02b4cfcc6d88430701f653665269532a4eb7092f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dfc338844e310102447e2498ee9cce8f28a79b9f
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799251"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809563"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Berechnen der Gesamtabrechnungsgröße eines Blobcontainers
 
 Mit diesem Skript berechnen Sie die Größe eines Containers in Azure Blob Storage zur Schätzung der Abrechnungskosten. Mit dem Skript wird die Größe der Blobs im Container addiert.
+
+> [!IMPORTANT]
+> Mit dem in diesem Artikel angegebenen Beispielskript wird die Abrechnungsgröße für Blobmomentaufnahmen ggf. nicht exakt berechnet.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -37,7 +34,7 @@ Mit diesem Skript berechnen Sie die Größe eines Containers in Azure Blob Stora
 
 Die Gesamtgröße des Blobcontainers beinhaltet die Größe des eigentlichen Containers sowie die Größe aller Blobs unter dem Container.
 
-In den folgenden Abschnitten erfahren Sie, wie die Speicherkapazität für Blobcontainer und Blobs berechnet wird. Im folgenden Abschnitt steht Len(X) für die Anzahl von Zeichen in der Zeichenfolge.
+In den folgenden Abschnitten erfahren Sie, wie die Speicherkapazität für Blobcontainer und Blobs berechnet wird. Im folgenden Abschnitt steht Len(X) für die Anzahl von Zeichen in der Zeichenfolge.
 
 ### <a name="blob-containers"></a>Blobcontainer
 
@@ -50,6 +47,7 @@ For-Each Signed Identifier[512 bytes]
 ```
 
 Aufschlüsselung:
+
 * Die 48 Bytes für den Verarbeitungsaufwand für jeden Container setzen sich aus der Uhrzeit der letzten Änderung, Berechtigungen, öffentlichen Einstellungen und einigen Systemmetadaten zusammen.
 
 * Da der Containername als Unicode gespeichert wird, muss die Zeichenanzahl verdoppelt werden.
@@ -58,7 +56,7 @@ Aufschlüsselung:
 
 * Die 512 Bytes pro signiertem Bezeichner umfassen den Namen des signierten Bezeichners, die Start- und Ablaufzeit sowie Berechtigungen.
 
-### <a name="blobs"></a>Blobs (in englischer Sprache)
+### <a name="blobs"></a>BLOBs
 
 Die folgenden Berechnungen zeigen, wie Sie den voraussichtlichen Speicherbedarf pro Blob ermitteln:
 
@@ -85,9 +83,9 @@ Aufschlüsselung:
 
 * 124 Bytes zusätzlicher Speicherbedarf für das Blob, einschließlich:
     - Uhrzeit der letzten Änderung
-    - Größe
+    - Size
     - Cachesteuerung
-    - Content-Typ
+    - Content-Type
     - Inhaltssprache
     - Content-Encoding
     - Content-MD5
@@ -126,6 +124,6 @@ Aufschlüsselung:
 
 - Weitere Informationen zur Abrechnung von Azure Storage finden Sie unter [Understanding Windows Azure Storage Billing – Bandwidth, Transactions, and Capacity](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/) (Grundlegendes zur Abrechnung von Microsoft Azure Storage: Bandbreite, Transaktionen und Kapazität).
 
-- Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/overview).
+- Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 - Weitere PowerShell-Skriptbeispiele für Speicher finden Sie in den [PowerShell-Beispielen für Azure Storage](../blobs/storage-samples-blobs-powershell.md).

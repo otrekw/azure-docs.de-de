@@ -1,25 +1,26 @@
 ---
-title: 'Tutorial: Erstellen einer Übersetzungs-App mit WPF, C# – Textübersetzungs-API'
+title: 'Tutorial: Erstellen einer Übersetzungs-App mit WPF, C# – Translator'
 titleSuffix: Azure Cognitive Services
-description: In diesem Tutorial erstellen Sie eine WPF-App (Windows Presentation Foundation), bei der Cognitive Services-APIs für die Textübersetzung, Spracherkennung und Rechtschreibprüfung mit nur einem Abonnementschlüssel verwendet werden. In dieser Übung wird veranschaulicht, wie Sie Features der Textübersetzungs-API und Bing-Rechtschreibprüfung-API nutzen.
+description: In diesem Tutorial erstellen Sie eine WPF-App, um Textübersetzung, Spracherkennung und Rechtschreibprüfung mit einem einzelnen Abonnementschlüssel durchzuführen.
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 286b75166e6216513afc46e5779b8a2f969aeaf6
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d239b89aaf0bc140916d38583f4263f7bf660f1a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858907"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023615"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Tutorial: Erstellen einer Übersetzungs-App mit WPF
 
-In diesem Tutorial erstellen Sie eine WPF-App ([Windows Presentation Foundation](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019)), bei der Azure Cognitive Services für die Textübersetzung, Spracherkennung und Rechtschreibprüfung mit nur einem Abonnementschlüssel verwendet werden. Ihre App ruft APIs für die Textübersetzung und die [Bing-Rechtschreibprüfung](https://azure.microsoft.com/services/cognitive-services/spell-check/) auf.
+In diesem Tutorial erstellen Sie eine WPF-App ([Windows Presentation Foundation](/visualstudio/designers/getting-started-with-wpf?view=vs-2019)), bei der Azure Cognitive Services für die Textübersetzung, Spracherkennung und Rechtschreibprüfung mit nur einem Abonnementschlüssel verwendet werden. Ihre App ruft APIs für Translator und die [Bing-Rechtschreibprüfung](https://azure.microsoft.com/services/cognitive-services/spell-check/) auf.
 
 Was ist WPF? Hierbei handelt es sich um ein Framework für Benutzeroberflächen, mit dem Desktopclient-Apps erstellt werden. Die WPF-Entwicklungsplattform unterstützt viele verschiedene Features für die App-Entwicklung, z. B. ein App-Modell, Ressourcen, Steuerelemente, Grafiken, Layout, Datenbindung, Dokumente und Sicherheit. Hierbei handelt es sich um eine Teilmenge von .NET Framework. Falls Sie also bereits Apps mit .NET Framework unter Verwendung von ASP.NET oder Windows Forms entwickelt haben, sollte Ihnen die Programmierumgebung vertraut sein. Für WPF wird XAML (Extensible App Markup Language) genutzt, um ein deklaratives Modell für die App-Programmierung bereitzustellen. Dieses Modell wird in den nächsten Abschnitten beschrieben.
 
@@ -29,7 +30,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen eines WPF-Projekts in Visual Studio
 > * Hinzufügen von Assemblys und NuGet-Paketen zu Ihrem Projekt
 > * Erstellen der Benutzeroberfläche Ihrer App mit XAML
-> * Verwenden der Textübersetzungs-API zum Abrufen von Sprachen, Übersetzen von Text und Erkennen der Ausgangssprache
+> * Verwenden von Translator zum Abrufen von Sprachen, Übersetzen von Text und Erkennen der Ausgangssprache
 > * Verwenden der Bing-Rechtschreibprüfung-API zum Überprüfen Ihrer Eingabe und Verbessern der Genauigkeit von Übersetzungen
 > * Ausführen Ihrer WPF-App
 
@@ -37,18 +38,18 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Die Liste enthält die in diesem Tutorial verwendeten Cognitive Services. Verwenden Sie den Link, um für jedes Feature die API-Referenz zu durchsuchen.
 
-| Dienst | Feature | BESCHREIBUNG |
+| Dienst | Funktion | BESCHREIBUNG |
 |---------|---------|-------------|
-| Textübersetzung | [Get Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Ruft eine vollständige Liste mit den unterstützten Sprachen für die Textübersetzung ab. |
-| Textübersetzung | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Übersetzt Text in mehr als 60 Sprachen. |
-| Textübersetzung | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Erkennt die Sprache des Eingabetexts. Enthält eine Zuverlässigkeitsbewertung für die Erkennung. |
-| Bing-Rechtschreibprüfung | [Spell Check](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Korrigiert Rechtschreibfehler, um die Genauigkeit der Übersetzung zu verbessern. |
+| Übersetzer | [Get Languages](./reference/v3-0-languages.md) | Ruft eine vollständige Liste mit den unterstützten Sprachen für die Textübersetzung ab. |
+| Übersetzer | [Translate](./reference/v3-0-translate.md) | Übersetzt Text in mehr als 70 Sprachen. |
+| Übersetzer | [Detect](./reference/v3-0-detect.md) | Erkennt die Sprache des Eingabetexts. Enthält eine Zuverlässigkeitsbewertung für die Erkennung. |
+| Bing-Rechtschreibprüfung | [Spell Check](/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Korrigiert Rechtschreibfehler, um die Genauigkeit der Übersetzung zu verbessern. |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie fortfahren können, benötigen Sie Folgendes:
 
-* Ein Azure Cognitive Services-Abonnement. [Beschaffen Sie einen Cognitive Services-Schlüssel](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#create-a-new-azure-cognitive-services-resource).
+* Ein Azure Cognitive Services-Abonnement. [Beschaffen Sie einen Cognitive Services-Schlüssel](../cognitive-services-apis-create-account.md#create-a-new-azure-cognitive-services-resource).
 * Einen Windows-Computer
 * [Visual Studio 2019](https://www.visualstudio.com/downloads/): Community oder Enterprise
 
@@ -61,11 +62,11 @@ Als Erstes richten wir unser Projekt in Visual Studio ein.
 
 1. Öffnen Sie Visual Studio. Wählen Sie **Neues Projekt erstellen** aus.
 1. Klicken Sie in **Neues Projekt erstellen** auf **WPF-App (.NET Framework)** . Sie können unter **Sprache** den Eintrag „C#“ auswählen, um die Optionen zu begrenzen.
-1. Klicken Sie auf **Weiter**, und nennen Sie Ihr Projekt `MSTranslatorTextDemo`.
+1. Klicken Sie auf **Weiter**, und nennen Sie Ihr Projekt `MSTranslatorDemo`.
 1. Legen Sie die Frameworkversion auf **.NET Framework 4.7.2** oder höher fest, und klicken Sie dann auf **Erstellen**.
    ![Eingeben des Namens und der Frameworkversion in Visual Studio](media/name-wpf-project-visual-studio.png)
 
-Ihr Projekt wurde erstellt. Sie sehen, dass zwei Registerkarten geöffnet sind: `MainWindow.xaml` und `MainWindow.xaml.cs`. In diesem Tutorial fügen wir diesen beiden Dateien Code hinzu. Wir ändern `MainWindow.xaml` für die Benutzeroberfläche der App. Wir ändern `MainWindow.xaml.cs` für unsere Aufrufe der Textübersetzung und der Bing-Rechtschreibprüfung.
+Ihr Projekt wurde erstellt. Sie sehen, dass zwei Registerkarten geöffnet sind: `MainWindow.xaml` und `MainWindow.xaml.cs`. In diesem Tutorial fügen wir diesen beiden Dateien Code hinzu. Wir ändern `MainWindow.xaml` für die Benutzeroberfläche der App. Wir ändern `MainWindow.xaml.cs` für unsere Aufrufe von Translator und der Bing-Rechtschreibprüfung.
    ![Prüfen Ihrer Umgebung](media/blank-wpf-project.png)
 
 Im nächsten Abschnitt fügen wir unserem Projekt Assemblys und ein NuGet-Paket hinzu, um weitere Funktionen zu erhalten, z.B. eine JSON-Analyse.
@@ -82,14 +83,14 @@ Wir fügen unserem Projekt Assemblys hinzu, um Objekte zu serialisieren und zu d
 1. Auf der Registerkarte **Assemblys** sind alle .NET Framework-Assemblys aufgelistet, die für Verweise verfügbar sind. Verwenden Sie die Suchleiste oben rechts, um nach Verweisen zu suchen.
    ![Hinzufügen von Assemblyverweisen](media/add-assemblies-2019.png)
 1. Wählen Sie die folgenden Verweise für Ihr Projekt aus:
-   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
-   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Runtime.Serialization](/dotnet/api/system.runtime.serialization)
+   * [System.Web](/dotnet/api/system.web)
    * System.Web.Extensions
-   * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
+   * [System.Windows](/dotnet/api/system.windows)
 1. Nachdem Sie diese Verweise Ihrem Projekt hinzugefügt haben, können Sie auf **OK** klicken, um den **Verweis-Manager** zu schließen.
 
 > [!NOTE]
-> Weitere Informationen zu Assemblyverweisen finden Sie unter [Vorgehensweise: Hinzufügen und Entfernen von Verweisen mit dem Verweis-Manager](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
+> Weitere Informationen zu Assemblyverweisen finden Sie unter [Vorgehensweise: Hinzufügen und Entfernen von Verweisen mit dem Verweis-Manager](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
 
 ### <a name="install-newtonsoftjson"></a>Installieren von NewtonSoft.Json
 
@@ -114,7 +115,7 @@ Wir sehen uns nun an, was erstellt werden soll.
 
 Die Benutzeroberfläche enthält die folgenden Komponenten:
 
-| NAME | type | BESCHREIBUNG |
+| Name | type | BESCHREIBUNG |
 |------|------|-------------|
 | `FromLanguageComboBox` | Kombinationsfeld | Zeigt eine Liste mit den Sprachen an, die von Microsoft Translator für Textübersetzungen unterstützt werden. Der Benutzer wählt die Ausgangssprache für die Übersetzung aus. |
 | `ToLanguageComboBox` | Kombinationsfeld | Dient zum Auswählen der Zielsprache für die Übersetzung und zeigt die gleiche Sprachenliste wie `FromComboBox` an. |
@@ -131,12 +132,12 @@ Wir fügen den Code nun unserem Projekt hinzu.
 1. Wählen Sie in Visual Studio die Registerkarte für `MainWindow.xaml`.
 1. Kopieren Sie diesen Code in Ihr Projekt, und klicken Sie dann auf **Datei > „MainWindow.xaml“ speichern**, um Ihre Änderungen zu speichern.
    ```xaml
-   <Window x:Class="MSTranslatorTextDemo.MainWindow"
+   <Window x:Class="MSTranslatorDemo.MainWindow"
            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-           xmlns:local="clr-namespace:MSTranslatorTextDemo"
+           xmlns:local="clr-namespace:MSTranslatorDemo"
            mc:Ignorable="d"
            Title="Microsoft Translator" Height="400" Width="700" BorderThickness="0">
        <Grid>
@@ -173,15 +174,15 @@ Das ist alles. Ihr Formular ist fertig. Als Nächstes schreiben wir Code für di
 
 ## <a name="create-your-app"></a>Erstellen Ihrer App
 
-`MainWindow.xaml.cs` enthält den Code, mit dem unsere App gesteuert wird. In den nächsten Abschnitten fügen wir Code hinzu, um unsere Dropdownmenüs mit Daten zu füllen und einige APIs aufzurufen, die von der Textübersetzung und Bing-Rechtschreibprüfung verfügbar gemacht werden.
+`MainWindow.xaml.cs` enthält den Code, mit dem unsere App gesteuert wird. In den nächsten Abschnitten fügen wir Code hinzu, um unsere Dropdownmenüs mit Daten zu füllen und einige APIs aufzurufen, die von Translator und der Bing-Rechtschreibprüfung verfügbar gemacht werden.
 
-* Wenn das Programm startet und `MainWindow` instanziiert wird, wird die `Languages`-Methode der Textübersetzungs-API aufgerufen, um unsere Dropdownmenüs mit der Sprachauswahl abzurufen und mit Daten zu füllen. Dies erfolgt einmal am Anfang jeder Sitzung.
+* Wenn das Programm startet und `MainWindow` instanziiert wird, wird die `Languages`-Methode von Translator aufgerufen, um unsere Dropdownmenüs mit der Sprachauswahl abzurufen und mit Daten zu füllen. Dies erfolgt einmal am Anfang jeder Sitzung.
 * Nach dem Klicken auf die Schaltfläche **Übersetzen** werden die Sprachauswahl und der Text des Benutzers abgerufen, für die Eingabe wird eine Rechtschreibprüfung durchgeführt, und die Übersetzung und die erkannte Sprache werden dem Benutzer angezeigt.
-  * Die `Translate`-Methode der Textübersetzungs-API wird aufgerufen, um den Text unter `TextToTranslate` zu übersetzen. Dieser Aufruf enthält auch die Ausgangs- bzw. Zielsprache (`from` und `to`), die über die Dropdownmenüs ausgewählt wurde.
-  * Die `Detect`-Methode der Textübersetzungs-API wird aufgerufen, um die Sprache des Texts unter `TextToTranslate` zu ermitteln.
+  * Die `Translate`-Methode von Translator wird aufgerufen, um den Text unter `TextToTranslate` zu übersetzen. Dieser Aufruf enthält auch die Ausgangs- bzw. Zielsprache (`from` und `to`), die über die Dropdownmenüs ausgewählt wurde.
+  * Die `Detect`-Methode von Translator wird aufgerufen, um die Sprache des Texts unter `TextToTranslate` zu ermitteln.
   * Die Bing-Rechtschreibprüfung wird verwendet, um `TextToTranslate` zu überprüfen und Rechtschreibfehler zu beheben.
 
-Unser gesamtes Projekt ist in der `MainWindow : Window`-Klasse gekapselt. Wir beginnen, indem wir Code zum Festlegen Ihres Abonnementschlüssels hinzufügen, Endpunkte für die Textübersetzung und Bing-Rechtschreibprüfung deklarieren und die App initialisieren.
+Unser gesamtes Projekt ist in der `MainWindow : Window`-Klasse gekapselt. Wir beginnen, indem wir Code zum Festlegen Ihres Abonnementschlüssels hinzufügen, Endpunkte für Translator und die Bing-Rechtschreibprüfung deklarieren und die App initialisieren.
 
 1. Wählen Sie in Visual Studio die Registerkarte für `MainWindow.xaml.cs`.
 1. Ersetzen Sie die vorab aufgefüllten `using`-Anweisungen durch Folgendes.  
@@ -202,7 +203,7 @@ Unser gesamtes Projekt ist in der `MainWindow : Window`-Klasse gekapselt. Wir be
        // This sample uses the Cognitive Services subscription key for all services. To learn more about
        // authentication options, see: https://docs.microsoft.com/azure/cognitive-services/authentication.
        const string COGNITIVE_SERVICES_KEY = "YOUR_COG_SERVICES_KEY";
-       // Endpoints for Translator Text and Bing Spell Check
+       // Endpoints for Translator and Bing Spell Check
        public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api-version=3.0";
        const string BING_SPELL_CHECK_API_ENDPOINT = "https://westus.api.cognitive.microsoft.com/bing/v7.0/spellcheck/";
        // An array of language codes
@@ -263,12 +264,12 @@ Abschließend haben wir Code zum Aufrufen von Methoden hinzugefügt, um Sprachen
 
 ## <a name="get-supported-languages"></a>Abrufen der unterstützten Sprachen
 
-Die Textübersetzungs-API unterstützt derzeit mehr als 60 Sprachen. Da im Laufe der Zeit Unterstützung für neue Sprachen hinzugefügt wird, empfehlen wir Ihnen, die von der Textübersetzung verfügbar gemachte Ressource „Languages“ aufzurufen, anstatt die Sprachenliste in Ihrer App hartzucodieren.
+Übersetzer unterstützt derzeit mehr als 70 Sprachen. Da im Laufe der Zeit Unterstützung für neue Sprachen hinzugefügt wird, empfehlen wir Ihnen, die von Translator verfügbar gemachte Ressource „Languages“ aufzurufen, anstatt die Sprachenliste in Ihrer App hartzucodieren.
 
 In diesem Abschnitt erstellen wir eine `GET`-Anforderung für die Ressource „Languages“ und geben an, dass für die Übersetzung eine Liste mit Sprachen verfügbar sein soll.
 
 > [!NOTE]
-> Mit der Ressource „Languages“ können Sie die Sprachunterstützung mit den folgenden Abfrageparametern filtern: „transliteration“ (Transliteration), „dictionary“ (Wörterbuch) und „translation“ (Übersetzung). Weitere Informationen finden Sie in der [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Mit der Ressource „Languages“ können Sie die Sprachunterstützung mit den folgenden Abfrageparametern filtern: „transliteration“ (Transliteration), „dictionary“ (Wörterbuch) und „translation“ (Übersetzung). Weitere Informationen finden Sie in der [API-Referenz](./reference/v3-0-languages.md).
 
 Bevor wir fortfahren, sehen wir uns eine Beispielausgabe eines Aufrufs der Ressource „Languages“ an:
 
@@ -362,7 +363,7 @@ Nachdem `MainWindow` initialisiert und die Benutzeroberfläche erstellt wurde, w
 
 ## <a name="detect-language-of-source-text"></a>Erkennen der Sprache des Quelltexts
 
-Als Nächstes erstellen wir die Methode zum Erkennen der Sprache des Quelltexts (der in unserem Textbereich eingegebene Text) mit der Textübersetzungs-API. Der von dieser Anforderung zurückgegebene Wert wird später in unserer Übersetzungsanforderung verwendet.
+Als Nächstes erstellen wir die Methode zum Erkennen der Sprache des Quelltexts (der in unserem Textbereich eingegebene Text) mit Translator. Der von dieser Anforderung zurückgegebene Wert wird später in unserer Übersetzungsanforderung verwendet.
 
 1. Öffnen Sie in Visual Studio eine Registerkarte für `MainWindow.xaml.cs`.
 2. Fügen Sie diesen Code Ihrem Projekt unterhalb der `PopulateLanguageMenus()`-Methode hinzu:
@@ -372,7 +373,7 @@ Als Nächstes erstellen wir die Methode zum Erkennen der Sprache des Quelltexts 
    {
        string detectUri = string.Format(TEXT_TRANSLATION_API_ENDPOINT ,"detect");
 
-       // Create request to Detect languages with Translator Text
+       // Create request to Detect languages with Translator
        HttpWebRequest detectLanguageWebRequest = (HttpWebRequest)WebRequest.Create(detectUri);
        detectLanguageWebRequest.Headers.Add("Ocp-Apim-Subscription-Key", COGNITIVE_SERVICES_KEY);
        detectLanguageWebRequest.Headers.Add("Ocp-Apim-Subscription-Region", "westus");
@@ -418,7 +419,7 @@ Darüber hinaus wird mit dieser Methode auch die Zuverlässigkeitsbewertung der 
 
 ## <a name="spell-check-the-source-text"></a>Rechtschreibprüfung für Quelltext
 
-Nun erstellen wir eine Methode, mit der für den Quelltext anhand der Bing-Rechtschreibprüfungs-API eine Rechtschreibprüfung durchgeführt wird. Die Rechtschreibprüfung stellt sicher, dass die Textübersetzungs-API korrekte Texte liefert. Alle Korrekturen des Quelltexts werden mit unserer Übersetzungsanforderung übergeben, wenn auf die Schaltfläche **Translate** (Übersetzen) geklickt wird.
+Nun erstellen wir eine Methode, mit der für den Quelltext anhand der Bing-Rechtschreibprüfungs-API eine Rechtschreibprüfung durchgeführt wird. Die Rechtschreibprüfung stellt sicher, dass Translator korrekte Texte liefert. Alle Korrekturen des Quelltexts werden mit unserer Übersetzungsanforderung übergeben, wenn auf die Schaltfläche **Translate** (Übersetzen) geklickt wird.
 
 1. Öffnen Sie in Visual Studio eine Registerkarte für `MainWindow.xaml.cs`.
 2. Fügen Sie diesen Code Ihrem Projekt unterhalb der `DetectLanguage()`-Methode hinzu:
@@ -559,7 +560,7 @@ Abschließend müssen wir eine Methode erstellen, die aufgerufen wird, wenn auf 
    }
    ```
 
-Der erste Schritt ist das Abrufen der Ausgangs- und Zielsprache („from“ und „to“) sowie des Texts, der vom Benutzer in unser Formular eingegeben wurde. Wenn die Ausgangssprache auf **Detect** (Erkennen) festgelegt ist, wird `DetectLanguage()` aufgerufen, um die Sprache des Quelltexts zu bestimmen. Es kann sein, dass der Text in einer Sprache vorliegt, die von der Textübersetzungs-API nicht unterstützt wird. In diesem Fall sollte der Benutzer eine entsprechende Meldung erhalten und der Vorgang ohne Übersetzung des Texts beendet werden.
+Der erste Schritt ist das Abrufen der Ausgangs- und Zielsprache („from“ und „to“) sowie des Texts, der vom Benutzer in unser Formular eingegeben wurde. Wenn die Ausgangssprache auf **Detect** (Erkennen) festgelegt ist, wird `DetectLanguage()` aufgerufen, um die Sprache des Quelltexts zu bestimmen. Es kann sein, dass der Text in einer Sprache vorliegt, die von Translator nicht unterstützt wird. In diesem Fall sollte der Benutzer eine entsprechende Meldung erhalten und der Vorgang ohne Übersetzung des Texts beendet werden.
 
 Wenn als Ausgangssprache Englisch angegeben oder erkannt wird, überprüfen Sie mithilfe von `CorrectSpelling()` die Rechtschreibung des Texts und wenden ggf. erforderliche Korrekturen an. Der korrigierte Text wird wieder in den Textbereich eingefügt, damit der Benutzer sieht, dass eine Korrektur vorgenommen wurde.
 
@@ -580,4 +581,4 @@ Der Quellcode für dieses Projekt ist auf GitHub verfügbar.
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Referenz für die Textübersetzungs-API von Microsoft](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+> [Referenz zu Microsoft Translator](./reference/v3-0-reference.md)

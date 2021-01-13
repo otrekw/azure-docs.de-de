@@ -10,14 +10,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 14dacc4351af444c75517df4d4e02ecca3bbf40a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881921"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350074"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Sprach- und Regionsunterstützung für die Bing-Bildersuche-API
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Die Bing-Bildersuche-API unterstützt mehr als drei Dutzend Länder/Regionen, viele davon mit mehreren Sprachen. Die Angabe eines Lands/einer Region mit einer Abfrage dient in erster Linie dazu, Suchergebnisse auf Grundlage des Interesses an diesem Land/dieser Region zu verfeinern. Außerdem können die Ergebnisse Links zu Bing enthalten, und diese Links können die Bing-Benutzeroberfläche entsprechend dem angegebenen Land/der angegebenen Region oder der angegebenen Sprache lokalisieren.
 
@@ -41,7 +46,7 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Österreich|AT|
 |Belgien|BE|
 |Brasilien|BR|
-|Kanada|CA|
+|Canada|CA|
 |Chile|CL|
 |Dänemark|DK|
 |Finnland|FI|
@@ -57,7 +62,7 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Mexiko|MX|
 |Niederlande|NL|
 |Neuseeland|NZ|
-|Norwegen|NO|
+|Norwegen|Nein|
 |China|CN|
 |Polen|PL|
 |Portugal|PT|
@@ -70,7 +75,7 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Schweiz|CH|
 |Taiwan|TW|
 |Türkei|TR|
-|Vereinigtes Königreich|GB|
+|United Kingdom|GB|
 |USA|US|
 
 
@@ -84,8 +89,8 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Belgien|Niederländisch|nl-BE|
 |Belgien|Französisch|fr-BE|
 |Brasilien|Portugiesisch|pt-BR|
-|Kanada|Englisch|en-CA|
-|Kanada|Französisch|fr-CA|
+|Canada|Englisch|en-CA|
+|Canada|Französisch|fr-CA|
 |Chile|Spanisch|es-CL|
 |Dänemark|Dänisch|da-DK|
 |Finnland|Finnisch|fi-FI|
@@ -114,9 +119,9 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Schweiz|Deutsch|de-CH|
 |Taiwan|Chinesisch (traditionell)|zh-TW|
 |Türkei|Türkisch|tr-TR|
-|Vereinigtes Königreich|Englisch|en-GB|
-|USA|Englisch|en-US|
+|United Kingdom|Englisch|en-GB|
+|USA|Englisch|de-DE|
 |USA|Spanisch|es-US|
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu den Endpunkten der Bing-News-Suche finden Sie unter [Referenz zur News-Bildersuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).
+Weitere Informationen zu den Endpunkten der Bing-News-Suche finden Sie unter [Referenz zur News-Bildersuche-API v7](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

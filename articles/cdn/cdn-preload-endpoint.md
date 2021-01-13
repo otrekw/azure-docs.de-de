@@ -1,9 +1,9 @@
 ---
 title: Vorabladen von Assets auf einen Azure CDN-Endpunkt | Microsoft Docs
-description: Erfahren Sie, wie Sie zwischengespeicherten Inhalt auf einen Azure CDN-Endpunkt vorab laden.
+description: Erfahren Sie, wie Sie zwischengespeicherten Inhalt für einen Azure Content Delivery Network-Endpunkt vorab laden. Diese Funktion ist für bestimmte Versionen des Produkts verfügbar.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 5ea3eba5-1335-413e-9af3-3918ce608a83
@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/12/2018
-ms.author: magattus
-ms.openlocfilehash: d91507ad2cb271b23b588ef7da88e6e6712915b1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: allensu
+ms.openlocfilehash: 7fb414680b8ff64d057f9f68d7b97380baeaa551
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593578"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778207"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Vorabladen von Assets auf einen Azure CDN-Endpunkt
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -47,7 +47,7 @@ In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie zwischengespeic
 4. Geben Sie als **Inhaltspfad** den vollständigen Pfad jedes Assets ein, das Sie laden möchten (z.B. `/pictures/kitten.png`).
    
    > [!TIP]
-   > Nachdem Sie mit der Texteingabe begonnen haben, werden weitere **Inhaltspfad**-Textfelder angezeigt, damit Sie eine Liste mit mehreren Assets erstellen können. Zum Löschen von Assets aus der Liste wählen Sie die Schaltfläche mit den Auslassungspunkten (...) und dann **Löschen** aus.
+   > Nachdem Sie mit der Texteingabe begonnen haben, werden weitere **Inhaltspfad** -Textfelder angezeigt, damit Sie eine Liste mit mehreren Assets erstellen können. Zum Löschen von Assets aus der Liste wählen Sie die Schaltfläche mit den Auslassungspunkten (...) und dann **Löschen** aus.
    > 
    > Jeder Pfad muss eine relative URL sein, die den folgenden [regulären Ausdrücken](/dotnet/standard/base-types/regular-expression-language-quick-reference) entspricht:  
    > - Laden eines einzelnen Dateipfads: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
@@ -58,7 +58,7 @@ In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie zwischengespeic
    > 
    
     ![Schaltfläche „Laden“](./media/cdn-preload-endpoint/cdn-load-paths.png)
-5. Wenn Sie mit der Eingabe von Inhaltspfaden fertig sind, wählen Sie **Laden**.
+5. Wenn Sie mit der Eingabe von Inhaltspfaden fertig sind, wählen Sie **Laden** .
    
 
 > [!NOTE]
@@ -66,8 +66,7 @@ In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie zwischengespeic
 > 
 > 
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Löschen eines Azure CDN-Endpunkts](cdn-purge-endpoint.md)
-* [REST-API-Referenz zu Azure CDN: Vorabladen von Inhalten auf einen Endpunkt](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
-* [REST-API-Referenz zu Azure CDN: Löschen von Inhalten von einem Endpunkt](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
-
+* [Azure CDN-REST-API-Referenz: Vorabladen von Assets auf einen Azure CDN-Endpunkt](/rest/api/cdn/endpoints/loadcontent)
+* [Azure CDN-REST-API-Referenz: Löschen von Inhalt von einem Endpunkt](/rest/api/cdn/endpoints/purgecontent)

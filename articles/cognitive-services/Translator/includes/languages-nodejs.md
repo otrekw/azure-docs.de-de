@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fd8b4ae06018de1d03ca60e836534a535c8f5df8
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1f2159f3f4c88c7ddafab63a7780f4dbf41ca130
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906902"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405421"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
@@ -31,7 +32,7 @@ Diese Module sind zum Erstellen der HTTP-Anforderung und eines eindeutigen Bezei
 
 ## <a name="set-the-endpoint"></a>Festlegen des Endpunkts
 
-Dieses Beispiel liest den Textübersetzungs-Endpunkt aus der Umgebungsvariablen `TRANSLATOR_TEXT_ENDPOINT`. Wenn Sie mit Umgebungsvariablen nicht vertraut sind, können Sie `endpoint` als Zeichenfolge festlegen und die Bedingungsanweisung auskommentieren.
+In diesem Beispiel wird versucht, Ihren Translator-Endpunkt aus der Umgebungsvariablen `TRANSLATOR_TEXT_ENDPOINT` zu lesen. Wenn Sie mit Umgebungsvariablen nicht vertraut sind, können Sie `endpoint` als Zeichenfolge festlegen und die Bedingungsanweisung auskommentieren.
 
 ```javascript
 lorum ipsum
@@ -42,7 +43,7 @@ lorum ipsum
 Mit der über das Anforderungsmodul zur Verfügung gestellten `request()`-Methode können Sie die HTTP-Methode, die URL, Anforderungsparameter und den JSON-Text als `options`-Objekt übergeben. In diesem Codeausschnitt wird die Anforderung konfiguriert:
 
 >[!NOTE]
-> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Textübersetzungs-API 3.0: Sprachen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Translator 3.0: Sprachen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
 ```javascript
 let options = {
@@ -77,7 +78,7 @@ request(options, function(err, res, body){
 
 ## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
 
-Das war's: Sie haben ein einfaches Programm erstellt, das die Textübersetzungs-API aufruft und eine JSON-Antwort zurückgibt. Führen Sie das Programm jetzt aus:
+Das war's: Sie haben ein einfaches Programm erstellt, das Translator aufruft und eine JSON-Antwort zurückgibt. Führen Sie das Programm jetzt aus:
 
 ```console
 node get-languages.js
@@ -181,7 +182,7 @@ Wenn Sie den Abonnementschlüssel in Ihrem Programm hartcodiert haben, entfernen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die API-Referenz an, um zu erfahren, welche Möglichkeiten die Textübersetzungs-API bietet.
+Machen Sie sich anhand der API-Referenz mit den Möglichkeiten von Translator vertraut.
 
 > [!div class="nextstepaction"]
 > [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

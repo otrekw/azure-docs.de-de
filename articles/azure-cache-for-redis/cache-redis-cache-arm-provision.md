@@ -1,139 +1,84 @@
 ---
-title: Bereitstellen eines Azure Cache for Redis mit Azure Resource Manager | Microsoft-Dokumentation
-description: Verwenden Sie eine Azure Resource Manager-Vorlage, um einen Azure Cache for Redis bereitzustellen.
-services: app-service
-documentationcenter: ''
+title: Bereitstellen von Azure Cache for Redis mithilfe einer Azure Resource Manager-Vorlage
+description: Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) verwenden, um eine Azure Cache for Redis-Ressource bereitzustellen. Vorlagen werden für gängige Szenarien bereitgestellt.
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: ce6f5372-7038-4655-b1c5-108f7c148282
-ms.service: cache
-ms.workload: web
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
-ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 5bdad61df732f0aeb1a758aacb5844204387e19b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.service: cache
+ms.topic: conceptual
+ms.custom: subject-armqs
+ms.date: 08/18/2020
+ms.openlocfilehash: 8bd9a45ec7c43d9338dec184afd784d2b163c410
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66132811"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735981"
 ---
-# <a name="create-an-azure-cache-for-redis-using-a-template"></a>Erstellen eines Azure Cache for Redis mithilfe einer Vorlage
+# <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>Schnellstart: Erstellen einer Azure Cache for Redis-Ressource mithilfe einer ARM-Vorlage
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen, die eine Azure Cache for Redis-Ressource bereitstellt. Der Cache kann mit einem vorhandenen Speicherkonto verwendet werden, um Diagnosedaten aufzunehmen. Sie erfahren darüber hinaus, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen. Derzeit werden für alle Caches in derselben Region für ein Abonnement dieselben Diagnoseeinstellungen verwendet. Ein Aktualisieren eines Cache in der Region wirkt sich auf alle anderen Caches in der Region aus.
 
-In diesem Thema erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erstellen, die einen Azure Cache for Redis bereitstellt. Der Cache kann mit einem vorhandenen Speicherkonto verwendet werden, um Diagnosedaten aufzunehmen. Sie erfahren darüber hinaus, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Derzeit werden für alle Caches in derselben Region für ein Abonnement dieselben Diagnoseeinstellungen verwendet. Ein Aktualisieren eines Cache in der Region wirkt sich auf alle anderen Caches in der Region aus.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md). Weitere Informationen zur JSON-Syntax und den Eigenschaften für Cacheressourcentypen finden Sie unter [Microsoft.Cache resource types](/azure/templates/microsoft.cache/allversions) (Microsoft.Cache-Ressourcentypen).
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
-Die vollständige Vorlage finden Sie unter [Azure Cache for Redis-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
+## <a name="prerequisites"></a>Voraussetzungen
 
-> [!NOTE]
-> Resource Manager-Vorlagen für den neuen [Tarif „Premium“](cache-premium-tier-intro.md) sind verfügbar. 
-> 
-> * [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Clustering](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
-> * [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Datenpersistenz](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
-> * [Erstellen eines in einem virtuellen Netzwerk bereitgestellten Premium Redis Caches](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
-> 
-> Um die neuesten Vorlagen zu ermitteln, suchen Sie in [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) nach `Azure Cache for Redis`.
-> 
-> 
+* **Azure-Abonnement** : Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* **Ein Speicherkonto** : Informationen zur Erstellung eines Speicherkontos finden Sie unter [Erstellen eines Azure Storage-Kontos](../storage/common/storage-account-create.md?tabs=azure-portal). Das Speicherkonto wird für Diagnosedaten verwendet.
 
-## <a name="what-you-will-deploy"></a>Was Sie bereitstellen
-In dieser Vorlage stellen Sie einen Azure Cache for Redis bereit, der ein vorhandenes Speicherkonto für Diagnosedaten verwendet.
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-redis-cache/).
 
-[![Bereitstellen in Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+:::code language="json" source="~/quickstart-templates/101-redis-cache/azuredeploy.json":::
 
-## <a name="parameters"></a>Parameter
-Mit Azure Resource Manager definieren Sie die Parameter für Werte, die Sie bei der Bereitstellung der Vorlage angeben möchten. Die Vorlage enthält einen Abschnitt namens "Parameters", der alle Parameterwerte enthält.
-Definieren Sie einen Parameter für die Werte, die basierend auf dem bereitgestellten Projekt oder der bereitgestellten Umgebung variieren. Definieren Sie keine Parameter für Werte, die sich nicht ändern. Jeder Parameterwert wird in der Vorlage verwendet, um die bereitgestellten Ressourcen zu definieren. 
+Die folgenden Ressourcen sind in der Vorlage definiert:
 
-[!INCLUDE [app-service-web-deploy-redis-parameters](../../includes/cache-deploy-parameters.md)]
+* [Microsoft.Cache/Redis](/azure/templates/microsoft.cache/redis)
+* [Microsoft.Insights/diagnosticsettings](/azure/templates/microsoft.insights/diagnosticsettings)
 
-### <a name="rediscachelocation"></a>redisCacheLocation
-Der Speicherort des Azure Cache for Redis. Um eine optimale Leistung zu erzielen, verwenden Sie den gleichen Speicherort wie für die App, die den Cache nutzen wird.
+Resource Manager-Vorlagen für den neuen [Tarif „Premium“](cache-overview.md#service-tiers) sind ebenfalls verfügbar.
 
-    "redisCacheLocation": {
-      "type": "string"
-    }
+* [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Clustering](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
+* [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Datenpersistenz](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
+* [Erstellen eines in einem virtuellen Netzwerk bereitgestellten Premium Redis Caches](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 
-### <a name="existingdiagnosticsstorageaccountname"></a>existingDiagnosticsStorageAccountName
-Der Name des vorhandenen Speicherkontos, das für Diagnosen verwendet werden soll. 
+Die neuesten Vorlagen finden Sie in [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) unter _Azure Cache for Redis_.
 
-    "existingDiagnosticsStorageAccountName": {
-      "type": "string"
-    }
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-### <a name="enablenonsslport"></a>enableNonSslPort
-Ein boolescher Wert, der angibt, ob Zugriff über Nicht-SSL-Ports zugelassen werden soll.
+1. Wählen Sie das folgende Image aus, um sich bei Azure anzumelden und die Vorlage zu öffnen.
 
-    "enableNonSslPort": {
-      "type": "bool"
-    }
+    [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein:
 
-### <a name="diagnosticsstatus"></a>diagnosticsStatus
-Ein Wert, der angibt, ob Diagnosen aktiviert sind. Verwenden Sie ON oder OFF.
+    * **Abonnement** : Wählen Sie ein Azure-Abonnement zum Erstellen der Datenfreigabe und anderer Ressourcen aus.
+    * **Ressourcengruppe** : Klicken Sie auf **Neu erstellen** , um eine neue Ressourcengruppe zu erstellen, oder wählen Sie eine vorhandene Ressourcengruppe aus.
+    * **Standort** : Wählen Sie einen Standort für die Ressourcengruppe aus. Das Speicherkonto und der Redis Cache müssen sich in der gleichen Region befinden. Standardmäßig verwendet der Redis Cache denselben Speicherort wie die Ressourcengruppe. Geben Sie daher denselben Speicherort wie für das Speicherkonto an.
+    * **Name des Redis Cache** : Geben Sie einen Namen für den Redis Cache ein.
+    * **Vorhandenes Diagnosespeicherkonto** : Geben Sie die Ressourcen-ID eines Speicherkontos ein. Die Syntax lautet `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>`.
 
-    "diagnosticsStatus": {
-      "type": "string",
-      "defaultValue": "ON",
-      "allowedValues": [
-            "ON",
-            "OFF"
-        ]
-    }
+    Übernehmen Sie für den Rest der Einstellungen die Standardwerte.
+1. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** und anschließend **Kaufen** aus.
 
-## <a name="resources-to-deploy"></a>Bereitzustellende Ressourcen
-### <a name="azure-cache-for-redis"></a>Azure Cache for Redis
-Erstellt den Azure Cache for Redis.
+## <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
 
-    {
-      "apiVersion": "2015-08-01",
-      "name": "[parameters('redisCacheName')]",
-      "type": "Microsoft.Cache/Redis",
-      "location": "[parameters('redisCacheLocation')]",
-      "properties": {
-        "enableNonSslPort": "[parameters('enableNonSslPort')]",
-        "sku": {
-          "capacity": "[parameters('redisCacheCapacity')]",
-          "family": "[parameters('redisCacheFamily')]",
-          "name": "[parameters('redisCacheSKU')]"
-        }
-      },
-      "resources": [
-        {
-          "apiVersion": "2017-05-01-preview",
-          "type": "Microsoft.Cache/redis/providers/diagnosticsettings",
-          "name": "[concat(parameters('redisCacheName'), '/Microsoft.Insights/service')]",
-          "location": "[parameters('redisCacheLocation')]",
-          "dependsOn": [
-            "[concat('Microsoft.Cache/Redis/', parameters('redisCacheName'))]"
-          ],
-          "properties": {
-            "status": "[parameters('diagnosticsStatus')]",
-            "storageAccountName": "[parameters('existingDiagnosticsStorageAccountName')]"
-          }
-        }
-      ]
-    }
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Öffnen Sie den Redis Cache, den Sie erstellt haben.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
+Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe. Dadurch werden die Ressourcen in der Ressourcengruppe gelöscht.
 
-## <a name="commands-to-run-deployment"></a>Befehle zum Ausführen der Bereitstellung
-[!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
+```
 
-### <a name="powershell"></a>PowerShell
+## <a name="next-steps"></a>Nächste Schritte
 
-    New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache
-
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-    azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
-
-
+In diesem Tutorial haben Sie erfahren, wie Sie eine Azure Resource Manager-Vorlage erstellen, die einen Azure Cache for Redis bereitstellt. Um zu erfahren, wie Sie eine Azure Resource Manager-Vorlage erstellen, die eine Azure Web App mit Azure Cache for Redis bereitstellt, lesen Sie [Erstellen einer Web-App und eines Azure Cache for Redis mithilfe einer Vorlage](./cache-web-app-arm-with-redis-cache-provision.md).

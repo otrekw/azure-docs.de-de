@@ -1,26 +1,21 @@
 ---
-title: 'Tutorial: Konfigurieren von ThousandEyes für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Benutzerbereitstellung für ThousandEyes – Azure AD'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in ThousandEyes konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f8325737a62bba71364c02a234636999b0b1b9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 885ee993748a0a571f396cc0dc28f2c0c1a4a0c3
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964139"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792516"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von ThousandEyes für die automatische Benutzerbereitstellung
 
@@ -28,7 +23,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie in ThousandEyes und 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Einen Azure Active Directory-Mandanten
 * Einen ThousandEyes-Mandanten, für den mindestens der [Standard-Tarif](https://www.thousandeyes.com/pricing) aktiviert ist 
@@ -60,37 +55,71 @@ In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der Th
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Konfigurieren der automatischen Bereitstellung von Benutzerkonten für ThousandEyes in Azure AD
 
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
+
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
 2. Suchen Sie über das Suchfeld nach Ihrer ThousandEyes-Instanz, wenn Sie ThousandEyes bereits für einmaliges Anmelden konfiguriert haben. Wählen Sie andernfalls **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **ThousandEyes**. Wählen Sie ThousandEyes in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
+    ![ThousandEyes-Link in der Anwendungsliste](common/all-applications.png)
+    
 3. Wählen Sie Ihre ThousandEyes-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung**.
+
+    ![Registerkarte „Bereitstellung“](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![ThousandEyes-Bereitstellung](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
+![Screenshot der Registerkarte „Bereitstellung“ für ThousandEyes, auf der für den Bereitstellungsmodus die Option „Automatisch“ ausgewählt ist.](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
+    
 
 5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) das von Ihrem ThousandEyes-Konto generierte **OAuth Bearer Token** ein. (Sie finden das Token in Ihrem ThousandEyes-Konto im Abschnitt **Profile** (Profil) oder können es dort generieren).
 
-    ![ThousandEyes-Bereitstellung](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
+    ![Screenshot, in dem gezeigt wird, wo der Link „Kontoeinstellungen“ für die aktuelle Kontogruppe zu finden ist.](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 
 6. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer ThousandEyes-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr ThousandEyes-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie Schritt 5.
 
-7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen „Bei Fehler E-Mail-Benachrichtigung senden“.
+7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
+
+    ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
 8. Klicken Sie auf **Speichern**.
 
 9. Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit ThousandEyes synchronisieren**.
 
-10. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit ThousandEyes synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in ThousandEyes für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
+10. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit ThousandEyes synchronisiert werden. Mit den als **übereinstimmende** Eigenschaften ausgewählten Attributen werden die Benutzerkonten in Parsable bei Updatevorgängen abgeglichen. Wenn Sie das [übereinstimmende Zielattribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) ändern möchten, müssen Sie sicherstellen, dass die Parsable-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-11. Um den Azure AD-Bereitstellungsdienst für ThousandEyes zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
+     |attribute|type|Unterstützung für das Filtern|
+     |---|---|---|
+     |externalId|String|&check;|
+     |userName|String|&check;|
+     |aktiv|Boolean|
+     |displayName|String|
+     |emails[type eq "work"].value|String|
+     |name.formatted|String|
 
-12. Klicken Sie auf **Speichern**.
 
-Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die ThousandEyes im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst ausgeführt werden.
+11. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+12. Um den Azure AD-Bereitstellungsdienst für ThousandEyes zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
+
+    ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
+
+13. Legen Sie die Benutzer bzw. Gruppen fest, die in ThousandEyes bereitgestellt werden sollen. Wählen Sie hierzu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
+
+    ![Bereitstellungsbereich](common/provisioning-scope.png)
+
+14. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+
+    ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
+
+Durch diesen Vorgang wird der erstmalige Synchronisierungszyklus für alle Benutzer und Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert wurden. Der erste Zyklus dauert länger als nachfolgende Zyklen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. 
+
+## <a name="step-6-monitor-your-deployment"></a>Schritt 6: Überwachen der Bereitstellung
+Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden Ressourcen die Bereitstellung überwachen:
+
+1. Mithilfe der [Bereitstellungsprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
+2. Anhand der [Fortschrittsleiste](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
+3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

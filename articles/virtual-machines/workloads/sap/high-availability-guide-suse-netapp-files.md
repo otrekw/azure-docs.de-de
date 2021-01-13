@@ -1,5 +1,5 @@
 ---
-title: Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter SUSE Linux Enterprise Server mit Azure NetApp Files | Microsoft-Dokumentation
+title: Hochverfügbarkeit von Azure VMs für SAP NW unter SLES mit Azure NetApp Files | Microsoft-Dokumentation
 description: Hochverfügbarkeitsleitfaden für SAP NetWeaver unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -10,21 +10,22 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 572255cfcd34b97a6ba0f784f7fc7ed1c0df040a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: b8f2054296c5b4e567699924305b7f3385f30835
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213255"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486214"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen
 
-[dbms-guide]:dbms-guide.md
+[dbms-guide]:dbms_guide_general.md
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
@@ -57,7 +58,7 @@ ms.locfileid: "71213255"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-In diesem Artikel werden das Bereitstellen und Konfigurieren der virtuellen Computer, das Installieren des Clusterframeworks und das Installieren eines hochverfügbaren SAP NetWeaver 7.50-Systems mithilfe von [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) beschrieben.
+In diesem Artikel werden das Bereitstellen und Konfigurieren der virtuellen Computer, das Installieren des Clusterframeworks und das Installieren eines hochverfügbaren SAP NetWeaver 7.50-Systems mithilfe von [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) beschrieben.
 In den Beispielkonfigurationen, Installationsbefehlen usw. trägt die ASCS-Instanz die Nummer 00, die ERS-Instanz die Nummer 01, die primäre Anwendungsinstanz (PAS) die Nummer 02 und die Anwendungsinstanz (AAS) die Nummer 03. Es wird SAP-System-ID-QAS verwendet. 
 
 In diesem Artikel wird erläutert, wie Sie Hochverfügbarkeit für SAP NetWeaver-Anwendung mit Azure NetApp Files erreichen. Die Datenbankschicht wird in diesem Artikel nicht ausführlich behandelt.
@@ -91,48 +92,48 @@ Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
 Hochverfügbarkeit (HA) für zentrale Dienste von SAP NetWeaver erfordert freigegebenen Speicher.
 Um dies unter SUSE Linux zu erreichen, mussten bisher separate hochverfügbare NFS-Cluster erstellt werden. 
 
-Jetzt ist es möglich, Hochverfügbarkeit für SAP NetWeaver mithilfe von freigegebenem Speicher zu erreichen, der auf Azure NetApp Files bereitgestellt wird. Durch die Verwendung von Azure NetApp Files für den freigegebenen Speicher entfällt die Notwendigkeit zusätzlicher [NFS-Cluster](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs). Pacemaker ist weiterhin für die Hochverfügbarkeit der zentralen Dienste (ASCS/SCS) von SAP NetWeaver erforderlich.
+Jetzt ist es möglich, Hochverfügbarkeit für SAP NetWeaver mithilfe von freigegebenem Speicher zu erreichen, der auf Azure NetApp Files bereitgestellt wird. Durch die Verwendung von Azure NetApp Files für den freigegebenen Speicher entfällt die Notwendigkeit zusätzlicher [NFS-Cluster](./high-availability-guide-suse-nfs.md). Pacemaker ist weiterhin für die Hochverfügbarkeit der zentralen Dienste (ASCS/SCS) von SAP NetWeaver erforderlich.
 
 
-![Hochverfügbarkeit von SAP NetWeaver – Übersicht](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
+![Hochverfügbarkeit von SAP NetWeaver – Übersicht](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.png)
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenbank verwenden einen virtuellen Hostnamen und virtuelle IP-Adressen. Für die Verwendung einer virtuellen IP-Adresse ist in Azure ein [Lastenausgleich](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) erforderlich. Die folgende Liste zeigt die Konfiguration des A(SCS)- und ERS-Lastenausgleichs.
-
-> [!IMPORTANT]
-> Multi-SID-Clustering von SAP ASCS/ERS mit SUSE Linux als Gastbetriebssystem auf Azure-VMs wird **NICHT unterstützt**. Als Multi-SID-Clustering wird die Installation mehrerer SAP ASCS/ERS-Instanzen mit verschiedenen SIDs in einem Pacemaker-Cluster beschrieben.
-
+SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenbank verwenden einen virtuellen Hostnamen und virtuelle IP-Adressen. Für die Verwendung einer virtuellen IP-Adresse ist in Azure ein [Lastenausgleich](../../../load-balancer/load-balancer-overview.md) erforderlich. Es wird empfohlen, [Load Balancer Standard](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md) zu verwenden. Die folgende Liste zeigt die Konfiguration des A(SCS)- und ERS-Lastenausgleichs.
 
 ### <a name="ascs"></a>(A)SCS
 
 * Frontendkonfiguration
   * IP-Adresse 10.1.1.20
-* Backendkonfiguration
-  * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
 * Testport
   * Port 620<strong>&lt;Nr.&gt;</strong>
 * Lastenausgleichsregeln
-  * 32<strong>&lt;Nr.&gt;</strong> TCP
-  * 36<strong>&lt;Nr.&gt;</strong> TCP
-  * 39<strong>&lt;Nr.&gt;</strong> TCP
-  * 81<strong>&lt;Nr.&gt;</strong> TCP
-  * 5<strong>&lt;Nr.&gt;</strong>13 TCP
-  * 5<strong>&lt;Nr.&gt;</strong>14 TCP
-  * 5<strong>&lt;Nr.&gt;</strong>16 TCP
+  * Wenn Sie Load Balancer Standard verwenden, wählen Sie **HA-Ports** aus.
+  * Wenn Sie Load Balancer Basic verwenden, erstellen Sie Lastenausgleichsregeln für die folgenden Ports:
+    * 32<strong>&lt;Nr.&gt;</strong> TCP
+    * 36<strong>&lt;Nr.&gt;</strong> TCP
+    * 39<strong>&lt;Nr.&gt;</strong> TCP
+    * 81<strong>&lt;Nr.&gt;</strong> TCP
+    * 5<strong>&lt;Nr.&gt;</strong>13 TCP
+    * 5<strong>&lt;Nr.&gt;</strong>14 TCP
+    * 5<strong>&lt;Nr.&gt;</strong>16 TCP
 
 ### <a name="ers"></a>ERS
 
 * Frontendkonfiguration
   * IP-Adresse 10.1.1.21
-* Backendkonfiguration
-  * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
 * Testport
   * Port 621<strong>&lt;nr&gt;</strong>
 * Lastenausgleichsregeln
-  * 32<strong>&lt;Nr.&gt;</strong> TCP
-  * 33<strong>&lt;Nr.&gt;</strong> TCP
-  * 5<strong>&lt;Nr.&gt;</strong>13 TCP
-  * 5<strong>&lt;Nr.&gt;</strong>14 TCP
-  * 5<strong>&lt;Nr.&gt;</strong>16 TCP
+  * Wenn Sie Load Balancer Standard verwenden, wählen Sie **HA-Ports** aus.
+  * Wenn Sie Load Balancer Basic verwenden, erstellen Sie Lastenausgleichsregeln für die folgenden Ports:
+    * 32<strong>&lt;Nr.&gt;</strong> TCP
+    * 33<strong>&lt;Nr.&gt;</strong> TCP
+    * 5<strong>&lt;Nr.&gt;</strong>13 TCP
+    * 5<strong>&lt;Nr.&gt;</strong>14 TCP
+    * 5<strong>&lt;Nr.&gt;</strong>16 TCP
+
+* Backendkonfiguration
+  * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
+
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Einrichten der Infrastruktur für Azure NetApp Files 
 
@@ -142,39 +143,40 @@ Azure NetApp Files ist in verschiedenen [Azure-Regionen](https://azure.microsoft
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Bereitstellen von Azure NetApp Files-Ressourcen  
 
-In diesen Schritten wird davon ausgegangen, dass Sie bereits [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) bereitgestellt haben. Die Azure NetApp Files-Ressourcen und die virtuellen Computer, auf denen die Azure NetApp Files-Ressourcen eingebunden werden, müssen im gleichen virtuellen Azure-Netzwerk oder in mittels Peering verknüpften virtuellen Azure-Netzwerken bereitgestellt werden.  
+In diesen Schritten wird davon ausgegangen, dass Sie bereits [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md) bereitgestellt haben. Die Azure NetApp Files-Ressourcen und die virtuellen Computer, auf denen die Azure NetApp Files-Ressourcen eingebunden werden, müssen im gleichen virtuellen Azure-Netzwerk oder in mittels Peering verknüpften virtuellen Azure-Netzwerken bereitgestellt werden.  
 
-1. Fordern Sie [Onboarding für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register) an, sofern noch nicht geschehen.  
+1. Fordern Sie [Onboarding für Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-register.md) an, sofern noch nicht geschehen.  
 
-2. Erstellen Sie das NetApp-Konto entsprechend den [Anweisungen zum Erstellen eines NetApp-Kontos](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account) in der ausgewählten Azure-Region.  
-3. Richten Sie entsprechend den [Anweisungen zum Einrichten eines Azure NetApp Files-Kapazitätspools](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool) einen Azure NetApp Files-Kapazitätspool ein.  
+2. Erstellen Sie das NetApp-Konto entsprechend den [Anweisungen zum Erstellen eines NetApp-Kontos](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md) in der ausgewählten Azure-Region.  
+3. Richten Sie entsprechend den [Anweisungen zum Einrichten eines Azure NetApp Files-Kapazitätspools](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md) einen Azure NetApp Files-Kapazitätspool ein.  
 Die in diesem Artikel vorgestellte SAP NetWeaver-Architektur verwendet einen einzigen Azure NetApp Files-Kapazitätspool mit der Premium-SKU. Wir empfehlen die Premium-SKU von Azure NetApp Files für SAP NetWeaver-Anwendungsworkloads in Azure.  
 
-4. Delegieren Sie ein Subnetz für Azure NetApp Files, wie in den [Anweisungen zum Delegieren eines Subnetzes für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) beschrieben.  
+4. Delegieren Sie ein Subnetz für Azure NetApp Files, wie in den [Anweisungen zum Delegieren eines Subnetzes für Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md) beschrieben.  
 
-5. Stellen Sie Azure NetApp Files-Volumes entsprechend den [Anweisungen zum Erstellen eines Azure NetApp Files-Volumes](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes) bereit. Stellen Sie die Volumes im festgelegten [Subnetz](https://docs.microsoft.com/rest/api/virtualnetwork/subnets) für Azure NetApp Files bereit. Denken Sie daran, dass sich die Azure NetApp Files-Ressourcen und die virtuellen Azure-Computer im gleichen virtuellen Azure-Netzwerk oder in mittels Peering verknüpften virtuellen Azure-Netzwerken befinden müssen. Beispielsweise sind „sapmnt<b>QAS</b>“, „usrsap<b>QAS</b>“ usw. die Volumenamen, und „sapmnt<b>qas</b>“, „usrsap<b>qas</b>“ usw. die Datenpfade für die Azure NetApp Files-Volumes.  
+5. Stellen Sie Azure NetApp Files-Volumes entsprechend den [Anweisungen zum Erstellen eines Azure NetApp Files-Volumes](../../../azure-netapp-files/azure-netapp-files-create-volumes.md) bereit. Stellen Sie die Volumes im festgelegten [Subnetz](/rest/api/virtualnetwork/subnets) für Azure NetApp Files bereit. Die IP-Adressen der Azure NetApp-Volumes werden automatisch zugewiesen. Denken Sie daran, dass sich die Azure NetApp Files-Ressourcen und die virtuellen Azure-Computer im gleichen virtuellen Azure-Netzwerk oder in mittels Peering verknüpften virtuellen Azure-Netzwerken befinden müssen. In diesem Beispiel werden die beiden Azure NetApp Files-Volumes sap<b>QAS</b> und trans verwendet. Die an den entsprechenden Bereitstellungspunkten bereitgestellten Dateipfade lauten: /usrsap<b>qas</b>/sapmnt<b>QAS</b>, /usrsap<b>qas</b>/usrsap<b>QAS</b>sys usw.  
 
-   1. Volume sapmnt<b>QAS</b> (nfs://10.1.0.4/sapmnt<b>qas</b>)
-   2. Volume usrsap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>)
-   3. Volume usrsap<b>QAS</b>sys (nfs://10.1.0.5/usrsap<b>qas</b>sys)
-   4. Volume usrsap<b>QAS</b>ers (nfs://10.1.0.4/usrsap<b>qas</b>ers)
+   1. volume sap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>/sapmnt<b>QAS</b>)
+   2. volume sap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs)
+   3. volume sap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>sys)
+   4. volume sap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>ers)
    5. Volume trans (nfs://10.1.0.4/trans)
-   6. Volume usrsap<b>QAS</b>pas (nfs://10.1.0.5/usrsap<b>qas</b>pas)
-   7. Volume usrsap<b>QAS</b>aas (nfs://10.1.0.4/usrsap<b>qas</b>aas)
+   6. volume sap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>pas)
+   7. volume sap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>aas)
+
    
-In diesem Beispiel haben wir Azure NetApp Files für alle SAP NetWeaver-Dateisysteme verwendet, um die Verwendung von Azure NetApp Files zu veranschaulichen. Die SAP-Dateisysteme, die nicht über NFS eingebunden werden müssen, können auch als [Azure Disk Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) bereitgestellt werden. In diesem Beispiel müssen <b>a-e</b> als Azure NetApp Files bereitgestellt werden, und <b>f-g</b> (d. h. „/usr/sap/<b>QAS</b>/D<b>02</b>“ und „/usr/sap/<b>QAS</b>/D<b>03</b>“) können als Azure Disk Storage bereitgestellt werden. 
+In diesem Beispiel haben wir Azure NetApp Files für alle SAP NetWeaver-Dateisysteme verwendet, um die Verwendung von Azure NetApp Files zu veranschaulichen. Die SAP-Dateisysteme, die nicht über NFS eingebunden werden müssen, können auch als [Azure Disk Storage](../../disks-types.md#premium-ssd) bereitgestellt werden. In diesem Beispiel müssen <b>a-e</b> als Azure NetApp Files bereitgestellt werden, und <b>f-g</b> (d. h. „/usr/sap/<b>QAS</b>/D<b>02</b>“ und „/usr/sap/<b>QAS</b>/D<b>03</b>“) können als Azure Disk Storage bereitgestellt werden. 
 
 ### <a name="important-considerations"></a>Wichtige Hinweise
 
 Wenn Sie Azure NetApp Files für die Hochverfügbarkeitsarchitektur von SAP NetWeaver unter SUSE in Betracht ziehen, beziehen Sie die folgenden wichtigen Überlegungen mit ein:
 
-- Die Mindestgröße eines Kapazitätspools beträgt 4 TiB. Die Größe des Kapazitätspools muss ein Vielfaches von 4 TiB sein.
+- Die Mindestgröße eines Kapazitätspools beträgt 4 TiB. Die Größe des Kapazitätspools kann in 1-TiB-Inkrementen erhöht werden.
 - Das kleinste Volume ist 100 GiB groß.
-- Azure NetApp Files und alle virtuellen Computer, auf denen Azure NetApp Files-Volumes eingebunden werden sollen, müssen sich im selben virtuellen Azure-Netzwerk oder in [über Peering gekoppelten virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) in derselben Region befinden. Azure NetApp Files-Zugriff über VNET-Peering in derselben Region wird jetzt unterstützt. Azure NetApp-Zugriff über globales Peering wird noch nicht unterstützt.
+- Azure NetApp Files und alle virtuellen Computer, auf denen Azure NetApp Files-Volumes eingebunden werden sollen, müssen sich im selben virtuellen Azure-Netzwerk oder in [über Peering gekoppelten virtuellen Netzwerken](../../../virtual-network/virtual-network-peering-overview.md) in derselben Region befinden. Azure NetApp Files-Zugriff über VNET-Peering in derselben Region wird jetzt unterstützt. Azure NetApp-Zugriff über globales Peering wird noch nicht unterstützt.
 - Das ausgewählte virtuelle Netzwerk muss über ein an Azure NetApp Files delegiertes Subnetz verfügen.
-- Derzeit unterstützt Azure NetApp Files nur NFSv3. 
-- Azure NetApp Files bietet [Exportrichtlinien](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): Sie können die zulässigen Clients und den Zugriffstyp (Lesen und Schreiben, schreibgeschützt usw.) steuern. 
+- Azure NetApp Files bietet [Exportrichtlinien](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md): Sie können die zulässigen Clients und den Zugriffstyp (Lesen und Schreiben, schreibgeschützt usw.) steuern. 
 - Azure NetApp Files wertet derzeit noch keine Zonen aus. Das Azure NetApp Files-Feature wird bisher nicht in allen Verfügbarkeitszonen in einer Azure-Region bereitgestellt. Achten Sie auf mögliche Latenzauswirkungen in einigen Azure-Regionen. 
+- Azure NetApp Files-Volumes können als NFSv3- oder NFSv4.1-Volumes bereitgestellt werden. Beide Protokolle werden für die SAP-Anwendungsschicht (ASCS/ERS, SAP-Anwendungsserver) unterstützt. 
 
 ## <a name="deploy-linux-vms-manually-via-azure-portal"></a>Manuelles Bereitstellen von Linux-VMs über das Azure-Portal
 
@@ -199,15 +201,51 @@ Zuerst müssen Sie die Azure NetApp Files-Volumes erstellen. Stellen Sie die VMs
    Verwenden Sie mindestens SLES4SAP 12 SP3. In diesem Beispiel wird das Image SLES4SAP 12 SP3 verwendet.  
    Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor für PAS/AAS erstellt haben.  
 
+## <a name="disable-id-mapping-if-using-nfsv41"></a>Deaktivieren der ID-Zuordnung (bei Verwendung von NFSv4.1)
+
+Die Anweisungen in diesem Abschnitt gelten nur, wenn Azure NetApp Files-Volumes mit dem NFSv4.1-Protokoll verwendet werden. Führen Sie die Konfiguration auf allen VMs aus, auf denen Azure NetApp Files-Volumes mit NFSv4.1 bereitgestellt werden.  
+
+1. Überprüfen Sie die Einstellung für die NFS-Domäne. Stellen Sie sicher, dass die Domäne als Azure NetApp Files-Standarddomäne (also **`defaultv4iddomain.com`** ) konfiguriert und die Zuordnung auf **nobody** festgelegt ist.  
+
+    > [!IMPORTANT]
+    > Stellen Sie sicher, dass die NFS-Domäne in `/etc/idmapd.conf` auf der VM so festgelegt ist, dass sie mit der Standarddomänenkonfiguration für Azure NetApp Files übereinstimmt: **`defaultv4iddomain.com`** . Wenn es einen Konflikt zwischen der Domänenkonfiguration auf dem NFS-Client (also der VM) und dem NFS-Server (also der Azure NetApp-Konfiguration) gibt, werden die Berechtigungen für Dateien auf Azure NetApp Files-Volumes, die auf den VMs eingebunden sind, als `nobody` angezeigt.  
+
+    <pre><code>
+    sudo cat /etc/idmapd.conf
+    # Example
+    [General]
+    Verbosity = 0
+    Pipefs-Directory = /var/lib/nfs/rpc_pipefs
+    Domain = <b>defaultv4iddomain.com</b>
+    [Mapping]
+    Nobody-User = <b>nobody</b>
+    Nobody-Group = <b>nobody</b>
+    </code></pre>
+
+4. **[A]** Überprüfen Sie `nfs4_disable_idmapping`. Diese Angabe sollte auf **Y** (Ja) festgelegt sein. Führen Sie den Einbindungsbefehl aus, um bei `nfs4_disable_idmapping` die Verzeichnisstruktur zu erstellen. Sie können das Verzeichnis unter „/sys/modules“ nicht manuell erstellen, da der Zugriff für den Kernel bzw. die Treiber reserviert ist.  
+
+    <pre><code>
+    # Check nfs4_disable_idmapping 
+    cat /sys/module/nfs/parameters/nfs4_disable_idmapping
+    # If you need to set nfs4_disable_idmapping to Y
+    mkdir /mnt/tmp
+    mount 10.1.0.4:/sapmnt/<b>qas</b> /mnt/tmp
+    umount  /mnt/tmp
+    echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
+    # Make the configuration permanent
+    echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
+    </code></pre>
+
+
 ## <a name="setting-up-ascs"></a>Einrichten von (A)SCS
 
 In diesem Beispiel wurden die Ressourcen manuell über das [Azure-Portal](https://portal.azure.com/#home) bereitgestellt.
 
 ### <a name="deploy-azure-load-balancer-manually-via-azure-portal"></a>Manuelles Bereitstellen von Azure Load Balancer über das Azure-Portal
 
-Zuerst müssen Sie die Azure NetApp Files-Volumes erstellen. Stellen Sie die VMs bereit. Anschließend erstellen Sie einen Lastenausgleich und verwenden die virtuellen Computer in den Back-End-Pools.
+Zuerst müssen Sie die Azure NetApp Files-Volumes erstellen. Stellen Sie die VMs bereit. Anschließend erstellen Sie einen Lastenausgleich und verwenden die virtuellen Computer im Back-End-Pool.
 
-1. Erstellen Sie einen Load Balancer (intern)  
+1. Erstellen Sie einen Lastenausgleich (intern, Standard):  
    1. Erstellen der Front-End-IP-Adressen
       1. IP-Adresse 10.1.1.20 für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
@@ -216,24 +254,57 @@ Zuerst müssen Sie die Azure NetApp Files-Volumes erstellen. Stellen Sie die VMs
          1. OK klicken
       1. IP-Adresse 10.1.1.21 für ASCS ERS
          * Wiederholen Sie die oben unter „a“ angegebenen Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **10.1.1.21** und **frontend.QAS.ERS**).
-   1. Erstellen der Back-End-Pools
-      1. Erstellen eines Back-End-Pools für ASCS
-         1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen des neuen Back-End-Pools ein (z. B. **backend.QAS**).
-         1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
-         1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor für ASCS erstellt haben. 
-         1. Wählen Sie die virtuellen Computer des A(SCS)-Clusters aus.
-         1. OK klicken
+   1. Erstellen des Back-End-Pools
+      1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
+      1. Geben Sie den Namen des neuen Back-End-Pools ein (z. B. **backend.QAS**).
+      1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
+      1. Wählen Sie „Virtueller Computer“ aus.
+      1. Wählen Sie die virtuellen Computer des (A)SCS-Clusters mit ihren IP-Adressen aus.
+      1. Klicken Sie auf "Hinzufügen".
    1. Erstellen der Integritätstests
-      1. Port 620**00** für ASCS
+      1. Port 620 **00** für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
          1. Geben Sie den Namen des neuen Integritätstests ein (z. B. **health.QAS.ASCS**).
-         1. Wählen Sie TCP als Protokoll und Port 620**00** aus, und behalten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
+         1. Wählen Sie TCP als Protokoll und Port 620 **00** aus, und behalten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
          1. OK klicken
-      1. Port 621**01** für ASCS ERS
-            * Wiederholen Sie die oben unter „c“ angegebenen Schritte, um einen Integritätstest für ERS zu erstellen (z. B. 621**01** und **health.QAS.ERS**).
+      1. Port 621 **01** für ASCS ERS
+            * Wiederholen Sie die oben unter „c“ angegebenen Schritte, um einen Integritätstest für ERS zu erstellen (z. B. 621 **01** und **health.QAS.ERS**).
    1. Lastenausgleichsregeln
-      1. 32**00** TCP für ASCS
+      1. Erstellen eines Back-End-Pools für ASCS
+         1. Öffnen Sie den Lastenausgleich, wählen Sie „Lastenausgleichsregeln“ aus, und klicken Sie auf „Hinzufügen“.
+         1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **lb.QAS.ASCS**).
+         1. Wählen Sie die Front-End-IP-Adresse für ASCS, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **frontend.QAS.ASCS**, **backend.QAS** und **health.QAS.ASCS**).
+         1. Wählen Sie **HA-Ports** aus.
+         1. Erhöhen Sie die Leerlaufzeitüberschreitung auf 30 Minuten.
+         1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
+         1. OK klicken
+         * Wiederholen Sie die oben angegebenen Schritte, um Lastenausgleichsregeln für ERS zu erstellen (z. B. **lb.QAS.ERS**).
+1. Wenn Ihr Szenario einen grundlegenden Lastenausgleich (intern) erfordert, führen Sie stattdessen die folgenden Schritte aus:  
+   1. Erstellen der Front-End-IP-Adressen
+      1. IP-Adresse 10.1.1.20 für ASCS
+         1. Öffnen Sie den Lastenausgleich, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
+         1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z. B. **frontend.QAS.ASCS**).
+         1. Legen Sie „Zuweisung“ auf „Statisch“ fest, und geben Sie die IP-Adresse ein (z. B. **10.1.1.20**).
+         1. OK klicken
+      1. IP-Adresse 10.1.1.21 für ASCS ERS
+         * Wiederholen Sie die oben unter „a“ angegebenen Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **10.1.1.21** und **frontend.QAS.ERS**).
+   1. Erstellen des Back-End-Pools
+      1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
+      1. Geben Sie den Namen des neuen Back-End-Pools ein (z. B. **backend.QAS**).
+      1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
+      1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor für ASCS erstellt haben. 
+      1. Wählen Sie die virtuellen Computer des A(SCS)-Clusters aus.
+      1. OK klicken
+   1. Erstellen der Integritätstests
+      1. Port 620 **00** für ASCS
+         1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
+         1. Geben Sie den Namen des neuen Integritätstests ein (z. B. **health.QAS.ASCS**).
+         1. Wählen Sie TCP als Protokoll und Port 620 **00** aus, und behalten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
+         1. OK klicken
+      1. Port 621 **01** für ASCS ERS
+            * Wiederholen Sie die oben unter „c“ angegebenen Schritte, um einen Integritätstest für ERS zu erstellen (z. B. 621 **01** und **health.QAS.ERS**).
+   1. Lastenausgleichsregeln
+      1. 32 **00** TCP für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie „Lastenausgleichsregeln“ aus, und klicken Sie auf „Hinzufügen“.
          1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **lb.QAS.ASCS.3200**).
          1. Wählen Sie die Front-End-IP-Adresse für ASCS, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **frontend.QAS.ASCS**).
@@ -242,12 +313,19 @@ Zuerst müssen Sie die Azure NetApp Files-Volumes erstellen. Stellen Sie die VMs
          1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
          1. OK klicken
       1. Zusätzliche Ports für ASCS
-         * Wiederholen Sie die oben unter „d“ angegebenen Schritte für die Ports 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 und „TCP“ für ASCS.
+         * Wiederholen Sie die oben unter „d“ angegebenen Schritte für die Ports 36 **00**, 39 **00**, 81 **00**, 5 **00** 13, 5 **00** 14, 5 **00** 16 und „TCP“ für ASCS.
       1. Zusätzliche Ports für ASCS ERS
-         * Wiederholen Sie die oben unter „d“ angegebenen Schritte für die Ports 33**01**, 5**01**13, 5**01**14, 5**01**16 und „TCP“ für ASCS ERS.
+         * Wiederholen Sie die oben unter „d“ angegebenen Schritte für die Ports 32 **01**, 33 **01**, 5 **01** 13, 5 **01** 14, 5 **01** 16 und „TCP“ für ASCS ERS.
 
-> [!IMPORTANT]
-> Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+      
+      > [!IMPORTANT]
+      > Floating IP-Adressen werden in IP-Konfigurationen mit zwei NICs in Szenarien mit Lastenausgleich nicht unterstützt. Weitere Informationen finden Sie unter [Azure Load Balancer – Einschränkungen](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Wenn Sie zusätzliche IP-Adressen für die VM benötigen, stellen Sie eine zweite NIC bereit.  
+
+      > [!Note]
+      > Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen Azure Load Balancer Standard-Instanz (ohne öffentliche IP-Adresse) platziert werden, liegt keine ausgehende Internetverbindung vor, sofern nicht in einer zusätzlichen Konfiguration das Routing an öffentliche Endpunkte zugelassen wird. Ausführliche Informationen zum Erreichen ausgehender Konnektivität finden Sie unter [Public endpoint connectivity for Virtual Machines using Azure Standard Load Balancer in SAP high-availability scenarios](./high-availability-guide-standard-load-balancer-outbound-connections.md) (Konnektivität mit öffentlichen Endpunkten für virtuelle Computer mithilfe von Azure Load Balancer Standard in SAP-Szenarien mit Hochverfügbarkeit).  
+
+      > [!IMPORTANT]
+      > Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](../../../load-balancer/load-balancer-custom-probe-overview.md).
 
 ### <a name="create-pacemaker-cluster"></a>Erstellen des Pacemaker-Clusters
 
@@ -263,25 +341,25 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    </code></pre>
 
    > [!NOTE]
-   > Verwenden Sie in den Hostnamen Ihrer Clusterknoten keine Bindestriche. Andernfalls funktioniert der Cluster nicht. Dies ist eine bekannte Einschränkung, und SUSE arbeitet an einer Lösung. Die Lösung wird als ein Patch für das Paket sap-suse-cloud-connector veröffentlicht.
+   > Das bekannte Problem bei der Verwendung eines Gedankenstrichs in Hostnamen wird mit Version **3.1.1** des Pakets **sap-suse-cluster-connector** korrigiert. Stellen Sie sicher, dass Sie mindestens Version 3.1.1 des Pakets sap-suse-cluster-connector verwenden, wenn Sie Clusterknoten mit Gedankenstrichen im Hostnamen verwenden. Andernfalls funktioniert der Cluster nicht. 
 
    Stellen Sie sicher, dass Sie die neue Version des SAP SUSE-Clusterconnectors installiert haben. Der alte Name war „sap_suse_cluster_connector“, und der neue Name ist **sap-suse-cluster-connector**.
 
    <pre><code>sudo zypper info sap-suse-cluster-connector
    
-      Information for package sap-suse-cluster-connector:
-   ---------------------------------------------------
-   Repository     : SLE-12-SP3-SAP-Updates
-   Name           : sap-suse-cluster-connector
-   Version        : 3.1.0-8.1
-   Arch           : noarch
-   Vendor         : SUSE LLC &lt;https://www.suse.com/&gt;
-   Support Level  : Level 3
-   Installed Size : 45.6 KiB
-   Installed      : Yes
-   Status         : up-to-date
-   Source package : sap-suse-cluster-connector-3.1.0-8.1.src
-   Summary        : SUSE High Availability Setup for SAP Products
+    # Information for package sap-suse-cluster-connector:
+    # ---------------------------------------------------
+    # Repository     : SLE-12-SP3-SAP-Updates
+    # Name           : sap-suse-cluster-connector
+    # Version        : 3.1.0-8.1
+    # Arch           : noarch
+    # Vendor         : SUSE LLC &lt;https://www.suse.com/&gt;
+    # Support Level  : Level 3
+    # Installed Size : 45.6 KiB
+    # Installed      : Yes
+    # Status         : up-to-date
+    # Source package : sap-suse-cluster-connector-3.1.0-8.1.src
+    # Summary        : SUSE High Availability Setup for SAP Products
    </code></pre>
 
 2. **[A]** Aktualisieren Sie SAP-Ressourcen-Agents.  
@@ -325,6 +403,30 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    <b>10.1.1.21    anftstsapers</b>
    </code></pre>
 
+4. **[1]** Erstellen Sie im Azure NetApp Files-Volume SAP-Verzeichnisse.  
+   Stellen Sie das Azure NetApp Files-Volume vorübergehend auf einem der virtuellen Computer bereit, und erstellen Sie die SAP-Verzeichnisse (Dateipfade).  
+
+   ```
+    # mount temporarily the volume
+    sudo mkdir -p /saptmp
+    # If using NFSv3
+    sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.1.0.4:/sapQAS /saptmp
+    # If using NFSv4.1
+    sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys,tcp 10.1.0.4:/sapQAS /saptmp
+    # create the SAP directories
+    sudo cd /saptmp
+    sudo mkdir -p sapmntQAS
+    sudo mkdir -p usrsapQASascs
+    sudo mkdir -p usrsapQASers
+    sudo mkdir -p usrsapQASsys
+    sudo mkdir -p usrsapQASpas
+    sudo mkdir -p usrsapQASaas
+    # unmount the volume and delete the temporary directory
+    sudo cd ..
+    sudo umount /saptmp
+    sudo rmdir /saptmp
+    ``` 
+
 ## <a name="prepare-for-sap-netweaver-installation"></a>Vorbereiten der SAP NetWeaver-Installation
 
 1. **[A]** Erstellen Sie die freigegebenen Verzeichnisse.
@@ -342,7 +444,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo chattr +i /usr/sap/<b>QAS</b>/ERS<b>01</b>
    </code></pre>
 
-2. **[A]** Konfigurieren Sie autofs.
+2. **[A]** Konfigurieren Sie `autofs`.
 
    <pre><code>
    sudo vi /etc/auto.master
@@ -350,18 +452,28 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    /- /etc/auto.direct
    </code></pre>
 
-   Erstellen Sie eine Datei mit Folgendem:
+   Wenn Sie NFSv3 verwenden, erstellen Sie eine Datei mit:
 
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync 10.1.0.4:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=3,nobind,sync 10.1.0.4:/trans
-   /usr/sap/<b>QAS</b>/SYS -nfsvers=3,nobind,sync 10.1.0.5:/usrsap<b>qas</b>sys
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind 10.1.0.4:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=3,nobind 10.1.0.4:/trans
+   /usr/sap/<b>QAS</b>/SYS -nfsvers=3,nobind 10.1.0.4:/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
+   </code></pre>
+   
+   Wenn Sie NFSv4.1 verwenden, erstellen Sie eine Datei mit:
+
+   <pre><code>
+   sudo vi /etc/auto.direct
+   # Add the following lines to the file, save and exit
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys 10.1.0.4:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sec=sys 10.1.0.4:/trans
+   /usr/sap/<b>QAS</b>/SYS -nfsvers=4.1,nobind,sec=sys 10.1.0.4:/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
    </code></pre>
    
    > [!NOTE]
-   > Derzeit unterstützt Azure NetApp Files nur NFSv3. Lassen Sie den Schalter „nfsvers=3“ nicht aus.
+   > Stellen Sie sicher, dass Sie beim Einbinden der Volumes die NFS-Protokollversion der Azure NetApp Files-Volumes verwenden. Wenn die Azure NetApp Files-Volumes als NFSv3-Volumes erstellt werden, verwenden Sie die entsprechende NFSv3-Konfiguration. Wenn die Azure NetApp Files-Volumes als NFSv4.1-Volumes erstellt werden, befolgen Sie die Anweisungen zum Deaktivieren der ID-Zuordnung, und stellen Sie sicher, dass Sie die entsprechende NFSv4.1-Konfiguration verwenden. In diesem Beispiel wurden die Azure NetApp Files-Volumes als NFSv3-Volumes erstellt.  
    
    Starten Sie `autofs` neu, um die neuen Freigaben einzubinden.
     <pre><code>
@@ -388,14 +500,28 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    <pre><code>sudo service waagent restart
    </code></pre>
 
-
 ### <a name="installing-sap-netweaver-ascsers"></a>Installieren von SAP NetWeaver ASCS/ERS
 
 1. **[1]** Erstellen Sie eine virtuelle IP-Ressource und einen Integritätstest für die ASCS-Instanz.
 
+   > [!IMPORTANT]
+   > Kürzlich durchgeführte Tests haben Situationen aufgezeigt, in denen netcat aufgrund von Backlog und der Einschränkung, nur eine Verbindung zu verarbeiten, nicht mehr auf Anforderungen reagiert. Die netcat-Ressource lauscht dann nicht mehr auf Azure Load Balancer-Anforderungen, und die Floating IP-Adresse ist nicht mehr verfügbar.  
+   > Für vorhandene Pacemaker-Cluster wurde zuvor empfohlen, netcat durch socat zu ersetzen. Zurzeit wird empfohlen, den Ressourcen-Agent azure-lb zu verwenden, der Teil des Pakets resource-agents ist. Dabei gelten die folgenden Versionsanforderungen für das Paket:
+   > - Für SLES 12 SP4/SP5 muss die Version mindestens resource-agents-4.3.018.a7fb5035-3.30.1 sein.  
+   > - Für SLES 15/15 SP1 muss die Version mindestens resource-agents-4.3.0184.6ee15eb2-4.13.1 sein.  
+   >
+   > Beachten Sie, dass für die Änderung eine kurze Ausfallzeit erforderlich ist.  
+   > Wenn die Konfiguration bei vorhandenen Pacemaker-Clustern bereits für die Verwendung von socat geändert wurde, wie unter [Azure Load Balancer-Erkennungshärtung](https://www.suse.com/support/kb/doc/?id=7024128) beschrieben, müssen Sie nicht sofort zum Ressourcen-Agent azure-lb wechseln.
+
    <pre><code>sudo crm node standby <b>anftstsapcl2</b>
+   # If using NFSv3
+   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' \
+     op start timeout=60s interval=0 \
+     op stop timeout=60s interval=0 \
+     op monitor interval=20s timeout=40s
    
-   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' \
+   # If using NFSv4.1
+   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' options='sec=sys,vers=4.1' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -404,9 +530,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
      params ip=<b>10.1.1.20</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
-   sudo crm configure primitive nc_<b>QAS</b>_ASCS anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k 620<b>00</b>" \
-     op monitor timeout=20s interval=10 depth=0
+   sudo crm configure primitive nc_<b>QAS</b>_ASCS azure-lb port=620<b>00</b>
    
    sudo crm configure group g-<b>QAS</b>_ASCS fs_<b>QAS</b>_ASCS nc_<b>QAS</b>_ASCS vip_<b>QAS</b>_ASCS \
       meta resource-stickiness=3000
@@ -423,7 +547,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    #
    # Resource Group: g-QAS_ASCS
    #     fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl1</b>
-   #     nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl1</b>
+   #     nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl1</b>
    #     vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl1</b>
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    </code></pre>
@@ -437,7 +561,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b> SAPINST_USE_HOSTNAME=<b>virtual_hostname</b>
    </code></pre>
 
-   Wenn bei der Installation kein Unterordner in „/usr/sap/**QAS**/ASCS**00**“ erstellt werden kann, legen Sie den Besitzer und die Gruppe des Ordners „ASCS**00**“ fest, und versuchen Sie es noch einmal. 
+   Wenn bei der Installation kein Unterordner in „/usr/sap/**QAS**/ASCS **00**“ erstellt werden kann, legen Sie den Besitzer und die Gruppe des Ordners „ASCS **00**“ fest, und versuchen Sie es noch einmal. 
 
    <pre><code>
    chown <b>qas</b>adm /usr/sap/<b>QAS</b>/ASCS<b>00</b>
@@ -449,8 +573,14 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    <pre><code>
    sudo crm node online <b>anftstsapcl2</b>
    sudo crm node standby <b>anftstsapcl1</b>
+   # If using NFSv3
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' \
+     op start timeout=60s interval=0 \
+     op stop timeout=60s interval=0 \
+     op monitor interval=20s timeout=40s
    
-   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' \
+   # If using NFSv4.1
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -459,12 +589,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
      params ip=<b>10.1.1.21</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
-   sudo crm configure primitive nc_<b>QAS</b>_ERS anything \
-    params binfile="/usr/bin/nc" cmdline_options="-l -k 621<b>01</b>" \
-    op monitor timeout=20s interval=10 depth=0
-   
-   # WARNING: Resources nc_QAS_ASCS,nc_QAS_ERS violate uniqueness for parameter "binfile": "/usr/bin/nc"
-   # Do you still want to commit (y/n)? y
+   sudo crm configure primitive nc_<b>QAS</b>_ERS azure-lb port=621<b>01</b>
    
    sudo crm configure group g-<b>QAS</b>_ERS fs_<b>QAS</b>_ERS nc_<b>QAS</b>_ERS vip_<b>QAS</b>_ERS
    </code></pre>
@@ -481,11 +606,11 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    #  Resource Group: g-QAS_ASCS
    #      fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl2</b>
-   #      nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl2</b>
+   #      nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl2</b>
    #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl2</b>
    #  Resource Group: g-QAS_ERS
    #      fs_QAS_ERS (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl2</b>
-   #      nc_QAS_ERS (ocf::heartbeat:anything):      <b>Started anftstsapcl2</b>
+   #      nc_QAS_ERS (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl2</b>
    #      vip_QAS_ERS  (ocf::heartbeat:IPaddr2):     <b>Started anftstsapcl2</b>
    </code></pre>
 
@@ -501,7 +626,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    > [!NOTE]
    > Verwenden Sie SWPM SP 20 PL 05 oder höher. Bei niedrigeren Versionen werden die Berechtigungen nicht ordnungsgemäß festgelegt, sodass bei der Installation ein Fehler auftritt.
 
-   Wenn bei der Installation kein Unterordner in „/usr/sap/**QAS**/ERS**01**“ erstellt werden kann, legen Sie den Besitzer und die Gruppe des Ordners „ERS**01**“ fest, und versuchen Sie es noch einmal.
+   Wenn bei der Installation kein Unterordner in „/usr/sap/**QAS**/ERS **01**“ erstellt werden kann, legen Sie den Besitzer und die Gruppe des Ordners „ERS **01**“ fest, und versuchen Sie es noch einmal.
 
    <pre><code>
    chown qasadm /usr/sap/<b>QAS</b>/ERS<b>01</b>
@@ -524,9 +649,11 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    service/halib = $(DIR_CT_RUN)/saphascriptco.so
    service/halib_cluster_connector = /usr/bin/sap_suse_cluster_connector
    
-   # Add the keep alive parameter
+   # Add the keep alive parameter, if using ENSA1
    enque/encni/set_so_keepalive = true
    </code></pre>
+
+   Stellen Sie sowohl für ENSA1 als auch für ENSA2 sicher, dass die `keepalive`-Parameter des Betriebssystems wie im SAP-Hinweis [1410736](https://launchpad.support.sap.com/#/notes/1410736) beschrieben festgelegt sind.  
 
    * ERS-Profil
 
@@ -547,13 +674,11 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 6. **[A]** Konfigurieren Sie Keep-Alive.
 
-   Die Kommunikation zwischen dem SAP NetWeaver-Anwendungsserver und ASCS/SCS wird durch einen Softwarelastenausgleich weitergeleitet. Der Lastenausgleich trennt nach einem konfigurierbaren Timeout inaktive Verbindungen. Um dies zu verhindern, müssen Sie einen Parameter im SAP NetWeaver ASCS/SCS-Profil festlegen und die Linux-Systemeinstellungen ändern. Weitere Informationen finden Sie im [SAP-Hinweis 1410736][1410736].
-
-   Der ASCS/SCS-Profilparameter „enque/encni/set_so_keepalive“ wurde bereits im letzten Schritt hinzugefügt.
+   Die Kommunikation zwischen dem SAP NetWeaver-Anwendungsserver und ASCS/SCS wird durch einen Softwarelastenausgleich weitergeleitet. Der Lastenausgleich trennt nach einem konfigurierbaren Timeout inaktive Verbindungen. Um dies zu verhindern, müssen Sie bei Verwendung von ENSA1 einen Parameter im ASCS-/SCS-Profil von SAP NetWeaver festlegen. Bei ENSA1 und ENSA2 müssen Sie außerdem die Linux-Systemeinstellungen für `keepalive` auf allen SAP-Servern ändern. Weitere Informationen finden Sie im [SAP-Hinweis 1410736][1410736].
 
    <pre><code>
    # Change the Linux system configuration
-   sudo sysctl net.ipv4.tcp_keepalive_time=120
+   sudo sysctl net.ipv4.tcp_keepalive_time=300
    </code></pre>
 
 7. **[A]** Konfigurieren Sie nach der Installation die SAP-Benutzer.
@@ -563,7 +688,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo usermod -aG haclient <b>qas</b>adm
    </code></pre>
 
-8. **[1]** Fügen Sie ASCS- und ERS-SAP-Dienste zur Datei „sapservice“ hinzu.
+8. **[1]** Fügen Sie ASCS- und ERS-SAP-Dienste zur Datei `sapservice` hinzu.
 
    Fügen Sie den ASCS-Diensteintrag zum zweiten Knoten hinzu. Kopieren Sie dann den ERS-Diensteintrag, und fügen Sie ihn auf dem ersten Knoten ein.
 
@@ -580,14 +705,14 @@ Wenn Sie mit ENSA1 (Enqueue-Server 1-Architektur) arbeiten, definieren Sie die R
    
    sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
     operations \$id=rsc_sap_<b>QAS</b>_ASCS<b>00</b>-operations \
-    op monitor interval=11 timeout=60 on_fail=restart \
+    op monitor interval=11 timeout=60 on-fail=restart \
     params InstanceName=<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b>" \
     AUTOMATIC_RECOVER=false \
     meta resource-stickiness=5000 failure-timeout=60 migration-threshold=1 priority=10
    
    sudo crm configure primitive rsc_sap_<b>QAS</b>_ERS<b>01</b> SAPInstance \
     operations \$id=rsc_sap_<b>QAS</b>_ERS<b>01</b>-operations \
-    op monitor interval=11 timeout=60 on_fail=restart \
+    op monitor interval=11 timeout=60 on-fail=restart \
     params InstanceName=<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b>" AUTOMATIC_RECOVER=false IS_ERS=true \
     meta priority=1000
    
@@ -609,14 +734,14 @@ Wenn Sie mit [ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e
    
    sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
     operations \$id=rsc_sap_<b>QAS</b>_ASCS<b>00</b>-operations \
-    op monitor interval=11 timeout=60 on_fail=restart \
+    op monitor interval=11 timeout=60 on-fail=restart \
     params InstanceName=<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b>" \
     AUTOMATIC_RECOVER=false \
     meta resource-stickiness=5000
    
    sudo crm configure primitive rsc_sap_<b>QAS</b>_ERS<b>01</b> SAPInstance \
     operations \$id=rsc_sap_<b>QAS</b>_ERS<b>01</b>-operations \
-    op monitor interval=11 timeout=60 on_fail=restart \
+    op monitor interval=11 timeout=60 on-fail=restart \
     params InstanceName=<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b>" AUTOMATIC_RECOVER=false IS_ERS=true
    
    sudo crm configure modgroup g-<b>QAS</b>_ASCS add rsc_sap_<b>QAS</b>_ASCS<b>00</b>
@@ -639,17 +764,17 @@ Wenn Sie mit [ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    #  Resource Group: g-QAS_ASCS
    #      fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl1</b>
-   #      nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl1</b>
+   #      nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl1</b>
    #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl1</b>
    #      rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   <b>Started anftstsapcl1</b>
    #  Resource Group: g-QAS_ERS
    #      fs_QAS_ERS (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl2</b>
-   #      nc_QAS_ERS (ocf::heartbeat:anything):      <b>Started anftstsapcl2</b>
+   #      nc_QAS_ERS (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl2</b>
    #      vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl2</b>
    #      rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   <b>Started anftstsapcl2</b>
    </code></pre>
 
-## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>Vorbereitung des SAP NetWeaver-Anwendungsservers 
+## <a name="sap-netweaver-application-server-preparation"></a><a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>Vorbereitung des SAP NetWeaver-Anwendungsservers 
 
 Für einige Datenbanken ist es erforderlich, dass die Installation der Datenbankinstanz auf einem Anwendungsserver ausgeführt wird. Bereiten Sie die virtuellen Computer für den Anwendungsserver vor, damit Sie diese in diesen Fällen verwenden können.
 
@@ -714,7 +839,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** (
    sudo chattr +i /usr/sap/<b>QAS</b>/D<b>03</b>
    </code></pre>
 
-1. **[P]** Konfigurieren von autofs für PAS
+1. **[P]** Konfigurieren Sie `autofs` für PAS.
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -722,14 +847,24 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** (
    /- /etc/auto.direct
    </code></pre>
 
-   Erstellen Sie eine neue Datei mit Folgendem:
+   Wenn Sie NFSv3 verwenden, erstellen Sie eine neue Datei mit:
 
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=3,nobind <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind <b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
+   </code></pre>
+
+   Wenn Sie NFSv4.1 verwenden, erstellen Sie eine neue Datei mit:
+
+   <pre><code>
+   sudo vi /etc/auto.direct
+   # Add the following lines to the file, save and exit
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
    </code></pre>
 
    Starten Sie `autofs` neu, um die neuen Freigaben einzubinden.
@@ -739,7 +874,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** (
    sudo service autofs restart
    </code></pre>
 
-1. **[P]** Konfigurieren von autofs für AAS
+1. **[P]** Konfigurieren Sie `autofs` für AAS.
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -747,14 +882,24 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** (
    /- /etc/auto.direct
    </code></pre>
 
-   Erstellen Sie eine neue Datei mit Folgendem:
+   Wenn Sie NFSv3 verwenden, erstellen Sie eine neue Datei mit:
 
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=3,nobind <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind <b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
+   </code></pre>
+
+   Wenn Sie NFSv4.1 verwenden, erstellen Sie eine neue Datei mit:
+
+   <pre><code>
+   sudo vi /etc/auto.direct
+   # Add the following lines to the file, save and exit
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
    </code></pre>
 
    Starten Sie `autofs` neu, um die neuen Freigaben einzubinden.
@@ -843,7 +988,7 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
 
 1. Testen von HAGetFailoverConfig, HACheckConfig und HACheckFailoverConfig
 
-   Führen Sie die folgenden Befehle als „\<SAPS-ID>adm“ auf dem Knoten aus, auf dem die ASCS-Instanz derzeit ausgeführt wird. Wenn die Befehle mit dem Fehler „Nicht genügend Arbeitsspeicher“ beendet werden, sind die Ursache möglicherweise Bindestriche im Hostnamen. Dies ist ein bekanntes Problem, das von SUSE im Paket sap-suse-cluster-connector behoben wird.
+   Führen Sie die folgenden Befehle als „\<sapsid>adm“ auf dem Knoten aus, auf dem aktuell die ASCS-Instanz ausgeführt wird. Wenn die Befehle mit dem Fehler „Nicht genügend Arbeitsspeicher“ beendet werden, sind die Ursache möglicherweise Bindestriche im Hostnamen. Dies ist ein bekanntes Problem, das von SUSE im Paket sap-suse-cluster-connector behoben wird.
 
    <pre><code>
    anftstsapcl1:qasadm 52> sapcontrol -nr 00 -function HAGetFailoverConfig
@@ -899,13 +1044,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rscsap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Starting anftstsapcl1
    </code></pre>
@@ -928,13 +1073,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -946,18 +1091,18 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-   Führen Sie die folgenden Befehle als „\<SAPS-ID>adm“ aus, um die ASCS-Instanz zu migrieren.
+   Führen Sie die folgenden Befehle als „\<sapsid>adm“ aus, um die ASCS-Instanz zu migrieren.
 
    <pre><code>
    anftstsapcl1:qasadm 53> sapcontrol -nr 00 -host anftstsapvh -user <b>qas</b>adm &lt;password&gt; -function HAFailoverToNode ""
@@ -975,13 +1120,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -993,13 +1138,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1019,13 +1164,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
 
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
 
@@ -1056,13 +1201,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1074,13 +1219,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1105,13 +1250,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1123,13 +1268,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1139,7 +1284,7 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>anftstsapcl2:~ # pgrep ms.sapQAS | xargs kill -9
    </code></pre>
 
-   Wenn Sie den Nachrichtenserver nur einmal beenden, wird er von sapstart neu gestartet. Wenn Sie ihn häufig genug beenden, wird Pacemaker die ASC-Instanz schließlich auf den anderen Knoten verschieben. Führen Sie die folgenden Befehle als root aus, um den Ressourcenstatus der ASCS- und ERS-Instanz nach dem Test zu bereinigen.
+   Wenn Sie den Nachrichtenserver nur einmal beenden, wird er von `sapstart` neu gestartet. Wenn Sie ihn häufig genug beenden, wird Pacemaker die ASC-Instanz schließlich auf den anderen Knoten verschieben. Führen Sie die folgenden Befehle als root aus, um den Ressourcenstatus der ASCS- und ERS-Instanz nach dem Test zu bereinigen.
 
    <pre><code>
    anftstsapcl2:~ # crm resource cleanup rsc_sap_QAS_ASCS00
@@ -1151,13 +1296,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1169,13 +1314,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1197,13 +1342,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1215,13 +1360,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1241,13 +1386,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1259,13 +1404,13 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1284,22 +1429,21 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Leitfaden zur Multi-SID-Hochverfügbarkeit für SAP NetWeaver auf virtuellen Azure-Computern unter SUSE Linux Enterprise Server für SAP-Anwendungen](./high-availability-guide-suse-multi-sid.md)
 * [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
 * [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
 * [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]
-* Informationen zum Erreichen von Hochverfügbarkeit und zum Planen der Notfallwiederherstellung für SAP 
-* HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA auf Azure-VMs finden Sie unter [Hochverfügbarkeit für SAP HANA auf Azure Virtual Machines (VMs)][sap-hana-ha].

@@ -1,23 +1,23 @@
 ---
 title: Azure CLI-Beispiele – Azure SignalR-Dienst
-description: Azure CLI-Beispiele – Azure SignalR-Dienst
+description: Folgen Sie echten Beispielen, um die Azure CLI für Azure SignalR Service zu lernen. Sie erfahren, wie Sie SignalR Service mit weiteren Azure-Diensten erstellen können.
 author: sffamily
 ms.service: signalr
 ms.topic: reference
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 1fbe96d827bcf6bb39a6cf7a4e6811174b862d59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 99ebe9c078ef4775e8f0df0545fb0af4b3d1057b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61071075"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86515239"
 ---
 # <a name="azure-cli-reference"></a>Azure CLI-Referenz
 
 Die folgende Tabelle enthält Links zu Bash-Skripts für den Azure SignalR-Dienst, die mithilfe der Azure CLI 2.0 erstellt wurden.
 
-| | |
+| Skript | Beschreibungen |
 |-|-|
 |**Erstellen**||
 | [Erstellen eines neuen SignalR-Diensts und einer neuen Ressourcengruppe](scripts/signalr-cli-create-service.md) | Dieses Skript erstellt eine neue Azure SignalR-Dienstressource in einer neuen Ressourcengruppe mit einem beliebigen Namen.  |

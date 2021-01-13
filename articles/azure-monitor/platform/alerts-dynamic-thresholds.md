@@ -2,18 +2,15 @@
 title: Erstellen von Warnungen mit dynamischen Schwellenwerten in Azure Monitor
 description: Erstellen von Warnungen mit Machine Learning-basierten dynamischen Schwellenwerten
 author: yanivlavi
-services: azure-monitor
-ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 04/26/2019
 ms.author: yalavi
-ms.reviewer: mbullwin
-ms.openlocfilehash: 0d6c578186dab9622ce650f535e11d505efcecb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.date: 02/16/2020
+ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067619"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012338"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikwarnungen mit dynamischen Schwellenwerten in Azure Monitor
 
@@ -25,11 +22,11 @@ Wir freuen uns auf Ihr Feedback: <azurealertsfeedback@microsoft.com>
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Warum und wann ist der dynamische Bedingungstyp empfehlenswert?
 
-1. **Skalierbare Warnungen** – Mit dynamischen Schwellenwerten für Warnungsregeln können Sie individuelle Schwellenwerte für Hunderte von Metrikserien erstellen. Die Bereitstellung ist genauso einfach wie die Definition einer Warnungsregel für eine einzelne Metrik. Mit der Benutzeroberfläche oder der Azure Resource Manager-API müssen Sie weniger Warnungsregeln verwalten. Der skalierbare Ansatz ist besonders hilfreich beim Umgang mit Metrikdimensionen oder bei der Anwendung auf mehrere Ressourcen, z.B. alle Abonnementressourcen. So sparen Sie viel Zeit beim Verwalten und Erstellen von Warnungsregeln. [Erfahren Sie mehr über das Konfigurieren von Metrikwarnungen mit dynamischen Schwellenwerten mithilfe von Vorlagen](alerts-metric-create-templates.md).
+1. **Skalierbare Warnungen:** Warnungsregeln für den dynamischen Schwellenwert können individuelle Schwellenwerte für Hunderte von Metriken erstellen. Gleichzeitig kann eine Warnungsregel für eine einzelne Metrik ganz einfach definiert werden. Dadurch müssen Sie weniger Warnungen erstellen und verwalten. Zur Erstellung können Sie entweder das Azure-Portal oder die Azure Resource Manager-API verwenden. Der skalierbare Ansatz ist besonders hilfreich beim Umgang mit Metrikdimensionen oder bei der Anwendung auf mehrere Ressourcen, z. B. auf alle Abonnementressourcen.  [Erfahren Sie mehr über das Konfigurieren von Metrikwarnungen mit dynamischen Schwellenwerten mithilfe von Vorlagen](alerts-metric-create-templates.md).
 
-1. **Intelligente Erkennung von Metrikmustern** – Mit unserer einzigartigen ML-Technologie können wir Metrikmuster automatisch erkennen und uns im Laufe der Zeit an Metrikänderungen anpassen, die häufig Saisonalität (stündlich/täglich/wöchentlich) enthalten. Durch die Anpassung an das Metrikverhalten und Warnungen basierend auf Abweichungen von Mustern müssen Sie nicht mehr den „richtigen“ Schwellenwert für die einzelnen Metriken ermitteln. Der ML-Algorithmus in dynamischen Schwellenwerten soll überflüssige (geringe Genauigkeit) oder zu weit gefasste (geringe Trefferquote) Schwellenwerte ohne erwartetes Muster verhindern.
+1. **Intelligente Erkennung von Metrikmustern:** Mit unserer ML-Technologie können wir Metrikmuster automatisch erkennen und uns im Laufe der Zeit an Metrikänderungen anpassen, die häufig Saisonalität (stündlich/täglich/wöchentlich) enthalten. Durch die Anpassung an das Metrikverhalten und Warnungen basierend auf Abweichungen von Mustern müssen Sie nicht mehr den „richtigen“ Schwellenwert für die einzelnen Metriken ermitteln. Der ML-Algorithmus in dynamischen Schwellenwerten soll überflüssige (geringe Genauigkeit) oder zu weit gefasste (geringe Trefferquote) Schwellenwerte ohne erwartetes Muster verhindern.
 
-1. **Intuitive Konfiguration** – Dynamische Schwellenwerte ermöglichen die Einrichtung von Metrikwarnungen mit allgemeinen Konzepten, ohne dass umfassendes Domänenwissen zur Metrik erforderlich ist.
+1. **Intuitive Konfiguration:** Dynamische Schwellenwerte ermöglichen die Einrichtung von Metrikwarnungen mit allgemeinen Konzepten, ohne dass umfassendes Domänenwissen zur Metrik erforderlich ist.
 
 ## <a name="how-to-configure-alerts-rules-with-dynamic-thresholds"></a>Wie werden Warnungen mit dynamischen Schwellenwerten konfiguriert?
 
@@ -64,7 +61,7 @@ Sie können die Warnung bei einer der drei folgenden Bedingungen auslösen:
 
 ## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Was bedeuten die erweiterten Einstellungen im dynamischen Schwellenwerten?
 
-**Zeiträume, die Fehler ausweisen** – Mit dem dynamischen Schwellenwert können Sie die „Anzahl von Verstößen zum Auslösen der Warnung“ festlegen. Damit bestimmen Sie, ab wie vielen Abweichungen innerhalb eines bestimmten Zeitfensters das System eine Warnung auslöst (Das Zeitfenster ist standardmäßig auf vier Abweichungen in 20 Minuten festgelegt). Der Benutzer kann Zeiträume, die Fehler aufweisen, konfigurieren und die Warnungen auswählen, indem er die Zeiträume, die Fehler aufweisen, und das Zeitfenster auswählt. So reduzieren Sie überflüssige Warnungen als Reaktion auf vorübergehende Spitzen. Beispiel:
+**Zeiträume, die Fehler ausweisen:** Mit dem dynamischen Schwellenwert können Sie die „Anzahl von Verstößen zum Auslösen der Warnung“ festlegen. Damit bestimmen Sie, ab wie vielen Abweichungen innerhalb eines bestimmten Zeitfensters das System eine Warnung auslöst (Das Zeitfenster ist standardmäßig auf vier Abweichungen in 20 Minuten festgelegt). Der Benutzer kann Zeiträume, die Fehler aufweisen, konfigurieren und die Warnungen auswählen, indem er die Zeiträume, die Fehler aufweisen, und das Zeitfenster auswählt. So reduzieren Sie überflüssige Warnungen als Reaktion auf vorübergehende Spitzen. Beispiel:
 
 Mit den folgenden Einstellungen wird eine Warnung ausgelöst, wenn das Problem 20 Minuten lang (viermal hintereinander in einem Zeitraum von jeweils fünf Minuten) aufgetreten ist:
 
@@ -86,21 +83,22 @@ Die Warnungsansicht zeigt Folgendes an:
 - Ein Diagramm des Zeitraums, in dem die Warnung ausgelöst wurde, inklusive der zu diesem Zeitpunkt verwendeten dynamischen Schwellenwerte.
 - Die Möglichkeit, Feedback zur „Dynamische Schwellenwerte“-Warnung und der Warnungsansicht-Benutzeroberfläche zu geben, um ggf. zukünftige Erkennungen zu verbessern.
 
-## <a name="will-slow-behavior-change-in-the-metric-trigger-an-alert"></a>Wird bei einer langsamen Veränderungsveränderung der Metrik eine Warnung ausgelöst?
+## <a name="will-slow-behavior-changes-in-the-metric-trigger-an-alert"></a>Wird bei langsamen Verhaltensveränderungen der Metrik eine Warnung ausgelöst?
 
 Wahrscheinlich nicht. Dynamische Schwellenwerte eignen sich besser für die Erkennung erheblicher Abweichungen und weniger für Probleme, die sich langsam entwickeln.
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Wie viele Daten werden für die Vorschau und die anschließende Berechnung der Schwellenwerte verwendet?
 
-Die Schwellenwerte, die im Diagramm angezeigt werden, bevor eine Warnungsregel für die Metrik erstellt wird, werden basierend auf genügend historischen Daten berechnet, um Stunden- oder tägliche saisonale Muster (10 Tage) zu berechnen. Sobald eine Warnungsregel erstellt wurde, verwenden die dynamischen Schwellenwerte alle benötigten historischen Daten, die verfügbar sind, und lernen und passen sich kontinuierlich basierend auf neuen Daten an, um die Schwellenwerte genauer zu gestalten. Dies bedeutet, dass nach diesem Berechnungsdiagramm auch wöchentliche Muster angezeigt werden.
+Wenn eine Warnungsregel zum ersten Mal erstellt wird, werden die im Diagramm angezeigten Schwellenwerte basierend auf genügend Verlaufsdaten berechnet, um stündliche oder tägliche Saisonmuster (10 Tage) zu berechnen. Sobald eine Warnungsregel erstellt wurde, verwenden die dynamischen Schwellenwerte alle benötigten Verlaufsdaten, die verfügbar sind, und lernen und passen sich kontinuierlich basierend auf neuen Daten an, um die Schwellenwerte genauer zu gestalten. Dies bedeutet, dass nach diesem Berechnungsdiagramm auch wöchentliche Muster angezeigt werden.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Wie viele Daten sind zum Auslösen einer Warnung erforderlich?
 
-Wenn Sie über eine neue Ressource verfügen oder metrische Daten fehlen, lösen dynamische Schwellwerte keine Warnungen aus, bevor die Daten für drei Tage verfügbar sind, um genaue Schwellenwerte sicherzustellen.
+Wenn Sie über eine neue Ressource verfügen oder Metrikdaten fehlen, lösen dynamische Schwellenwerte keine Warnungen aus, bevor die Daten für drei Tage und mindestens 30 Stichproben von metrischen Daten verfügbar sind, um genaue Schwellenwerte sicherzustellen.
+Für vorhandene Ressourcen mit ausreichenden Metrikdaten können dynamische Schwellenwerte sofort Warnungen auslösen.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Bewährte Methoden für dynamische Schwellenwerte
 
-Dynamische Schwellenwerte können auf jede beliebige Plattform oder benutzerdefinierte Metrik in Azure Monitor angewendet werden. Darüber hinaus wurde die Funktion auch für die gängigen Anwendungs- und Infrastrukturmetriken optimiert.
+Dynamische Schwellenwerte können auf die meisten Plattform- und benutzerdefinierten Metriken in Azure Monitor angewendet werden. Darüber hinaus wurde die Funktion auch für die gängigen Anwendungs- und Infrastrukturmetriken optimiert.
 In den folgenden bewährten Methoden wird gezeigt, wie Sie für einige dieser Metriken Warnungen mit dynamischen Schwellenwerten konfigurieren.
 
 ### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>Dynamische Schwellenwerte für prozentuale VM-CPU-Metriken
@@ -174,3 +172,20 @@ In den folgenden bewährten Methoden wird gezeigt, wie Sie für einige dieser Me
 
 > [!NOTE]
 > Über das Portal erstellte Metrikwarnungsregeln werden in derselben Ressourcengruppe erstellt wie die Zielressource.
+
+## <a name="interpreting-dynamic-threshold-charts"></a>Interpretieren dynamischer Schwellenwertdiagramme
+
+Im Folgenden finden Sie ein Diagramm, in dem eine Metrik, ihre dynamischen Schwellenwertgrenzwerte und einige ausgelöste Warnungen dargestellt werden, wenn der Wert außerhalb der zulässigen Schwellenwerte liegt.
+
+![Weiteres über die Konfiguration von Metrikwarnungen](media/alerts-dynamic-thresholds/threshold-picture-8bit.png)
+
+Verwenden Sie die folgenden Informationen zur Interpretation des oben stehenden Diagramms.
+
+- **Blaue Linie:** Diese zeigt die über die Zeit aktuell gemessene Metrik an.
+- **Blau schattierte Bereiche:** Diese zeigen den zulässigen Bereich für die Metrik an. Solange diese Metrikwerte innerhalb dieses Bereichs liegen, wird keine Warnung ausgegeben.
+- **Blaue Punkte:** Wenn Sie im linken Teil des Diagramms klicken und dann mit der Maus über die blaue Linie fahren, erscheint ein blauer Punkt unter Ihrem Cursor, der einen individuellen aggregierten Metrikwert anzeigt.
+- **Popupfenster mit blauem Punkt:** In diesem Fenster werden der gemessene Metrikwert (der blaue Punkt) sowie die oberen und unteren Werte des zulässigen Bereichs angezeigt.  
+- **Roter Punkt mit einer schwarzen Umrandung:** Dieser Punkt zeigt den ersten Metrikwert des zulässigen Bereichs an. Dieser Wert löst eine Metrikwarnung aus und versetzt diese in einen aktiven Zustand.
+- **Rote Punkte:** Diese Punkte geben die zusätzlich gemessenen Werte außerhalb des zulässigen Bereichs an. Die Werte lösen keine zusätzlichen Metrikwarnungen aus, die Warnung bleibt jedoch aktiv.
+- **Roter Bereich:** Dieser Bereich zeigt die Zeit an, in der der Metrikwert außerhalb des zulässigen Bereichs lag. Die Warnung bleibt aktiv, solange nachfolgende Messwerte außerhalb des zulässigen Bereichs liegen, aber keine neuen Warnungen ausgelöst werden.
+- **Ende des roten Bereichs:** Wenn die blaue Linie wieder im zulässigen Bereich liegt, endet der rote Bereich und die gemessene Wertelinie wird blau. Der Status der Metrikwarnung, die zum Zeitpunkt des roten Punkts mit einer schwarzen Umrandung ausgelöst wurde, wird gelöst festgelegt. 

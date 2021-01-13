@@ -1,31 +1,32 @@
 ---
-title: Bereinigen von SSISDB-Protokollen mit Aufträgen für die elastische Azure-Datenbank | Microsoft-Dokumentation
+title: Bereinigen von SSISDB-Protokollen mit Aufträgen für die elastische Azure-Datenbank
 description: In diesem Artikel wird beschrieben, wie Sie SSISDB-Protokolle über Aufträge für die elastische Azure-Datenbank bereinigen, um die gespeicherte Prozedur auszulösen, die für diesen Zweck vorhanden ist.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 1afc40bd601c06def57ae59797d31a5edf4095bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3539b867d8f03d11e7799498d0207a65ac9db7d8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61345552"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636628"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Bereinigen von SSISDB-Protokollen mit Aufträgen für die elastische Azure-Datenbank
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie Aufträge für elastische Azure-Datenbanken verwenden, um die gespeicherte Prozedur auszulösen, mit der Protokolle für die SQL Server Integration Services-Katalogdatenbank (`SSISDB`) bereinigt werden.
 
 „Aufträge für die elastische Datenbank“ ist ein Azure-Dienst, der Ihnen das Automatisieren und Ausführen von Aufträgen für eine Datenbank oder eine Gruppe von Datenbanken vereinfacht. Sie können diese Aufträge planen, ausführen und überwachen, indem Sie das Azure-Portal, Transact-SQL, PowerShell oder REST-APIs verwenden. Verwenden Sie einen Auftrag für die elastische Datenbank, um die gespeicherte Prozedur für die einmalige oder auf einem Zeitplan basierende Bereinigung von Protokollen auszulösen. Sie können das Zeitplanintervall basierend auf der SSISDB-Ressourcenverwendung auswählen, um eine hohe Datenbanklast zu vermeiden.
 
-Weitere Informationen finden Sie unter [Verwalten von Datenbankgruppen mithilfe von Aufträgen für die elastische Datenbank](../sql-database/elastic-jobs-overview.md).
+Weitere Informationen finden Sie unter [Verwalten von Datenbankgruppen mithilfe von Aufträgen für die elastische Datenbank](../azure-sql/database/elastic-jobs-overview.md).
 
 In den folgenden Abschnitten wird beschrieben, wie Sie die gespeicherte Prozedur `[internal].[cleanup_server_retention_window_exclusive]` auslösen. Hiermit werden SSISDB-Protokolle entfernt, die außerhalb des vom Administrator festgelegten Aufbewahrungsfensters liegen.
 
@@ -33,7 +34,7 @@ In den folgenden Abschnitten wird beschrieben, wie Sie die gespeicherte Prozedur
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-Mit den folgenden PowerShell-Beispielskripts wird ein neuer elastischer Auftrag erstellt, um die gespeicherte Prozedur für die SSISDB-Protokollbereinigung auszulösen. Weitere Informationen finden Sie unter [Erstellen eines Agents für elastische Aufträge mithilfe von PowerShell](../sql-database/elastic-jobs-powershell.md).
+Mit den folgenden PowerShell-Beispielskripts wird ein neuer elastischer Auftrag erstellt, um die gespeicherte Prozedur für die SSISDB-Protokollbereinigung auszulösen. Weitere Informationen finden Sie unter [Erstellen eines Agents für elastische Aufträge mithilfe von PowerShell](../azure-sql/database/elastic-jobs-powershell-create.md).
 
 ### <a name="create-parameters"></a>Erstellen von Parametern
 
@@ -41,7 +42,7 @@ Mit den folgenden PowerShell-Beispielskripts wird ein neuer elastischer Auftrag 
 # Parameters needed to create the Job Database
 param(
 $ResourceGroupName = $(Read-Host "Please enter an existing resource group name"),
-$AgentServerName = $(Read-Host "Please enter the name of an existing Azure SQL server(for example, yhxserver) to hold the SSISDBLogCleanup job database"),
+$AgentServerName = $(Read-Host "Please enter the name of an existing logical SQL server(for example, yhxserver) to hold the SSISDBLogCleanup job database"),
 $SSISDBLogCleanupJobDB = $(Read-Host "Please enter a name for the Job Database to be created in the given SQL Server"),
 # The Job Database should be a clean,empty,S0 or higher service tier. We set S0 as default.
 $PricingTier = "S0",
@@ -52,7 +53,7 @@ $SSISDBLogCleanupAgentName = $(Read-Host "Please enter a name for your new Elast
 # Parameters needed to create the job credential in the Job Database to connect to SSISDB
 $PasswordForSSISDBCleanupUser = $(Read-Host "Please provide a new password for SSISDBLogCleanup job user to connect to SSISDB database for log cleanup"),
 # Parameters needed to create a login and a user in the SSISDB of the target server
-$SSISDBServerEndpoint = $(Read-Host "Please enter the name of the target Azure SQL server which contains SSISDB you need to cleanup, for example, myserver") + '.database.windows.net',
+$SSISDBServerEndpoint = $(Read-Host "Please enter the name of the target logical SQL server which contains SSISDB you need to cleanup, for example, myserver") + '.database.windows.net',
 $SSISDBServerAdminUserName = $(Read-Host "Please enter the target server admin username for SQL authentication"),
 $SSISDBServerAdminPassword = $(Read-Host "Please enter the target server admin password for SQL authentication"),
 $SSISDBName = "SSISDB",
@@ -159,7 +160,7 @@ $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $Inte
 
 ## <a name="clean-up-logs-with-transact-sql"></a>Bereinigen von Protokollen mit Transact-SQL
 
-Mit den folgenden Transact-SQL-Beispielskripts wird ein neuer elastischer Auftrag erstellt, um die gespeicherte Prozedur für die SSISDB-Protokollbereinigung auszulösen. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)](../sql-database/elastic-jobs-tsql.md).
+Mit den folgenden Transact-SQL-Beispielskripts wird ein neuer elastischer Auftrag erstellt, um die gespeicherte Prozedur für die SSISDB-Protokollbereinigung auszulösen. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)](../azure-sql/database/elastic-jobs-tsql-create-manage.md).
 
 1. Erstellen bzw. ermitteln Sie eine leere Azure SQL-Datenbank (S0 oder höher) als SSISDBCleanup-Auftragsdatenbank. Erstellen Sie anschließend im [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent) einen Agent für elastische Aufträge.
 
@@ -191,7 +192,7 @@ Mit den folgenden Transact-SQL-Beispielskripts wird ein neuer elastischer Auftra
     SELECT * FROM jobs.target_groups WHERE target_group_name = 'SSISDBTargetGroup';
     SELECT * FROM jobs.target_group_members WHERE target_group_name = 'SSISDBTargetGroup';
     ```
-4. Erstellen Sie entsprechende Berechtigungen für die SSISDB-Datenbank. Der SSISDB-Katalog muss über geeignete Berechtigungen für die gespeicherte Prozedur verfügen, damit die Bereinigung der SSISDB-Protokolle erfolgreich ist. Eine ausführliche Anleitung finden Sie unter [Verwalten von Anmeldungen](../sql-database/sql-database-manage-logins.md).
+4. Erstellen Sie entsprechende Berechtigungen für die SSISDB-Datenbank. Der SSISDB-Katalog muss über geeignete Berechtigungen für die gespeicherte Prozedur verfügen, damit die Bereinigung der SSISDB-Protokolle erfolgreich ist. Eine ausführliche Anleitung finden Sie unter [Verwalten von Anmeldungen](../azure-sql/database/logins-create-manage.md).
 
     ```sql
     -- Connect to the master database in the target server including SSISDB 

@@ -1,36 +1,33 @@
 ---
 title: Erstellen einer VM mit einer statischen öffentlichen IP-Adresse – PowerShell | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe von PowerShell einen virtuellen Computer mit einer statischen öffentlichen IP-Adresse erstellen.
+description: Erstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe von PowerShell Statische öffentliche IP-Adressen sind Adressen, die sich nie ändern.
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ad975ab9-d69f-45c1-9e45-0d3f0f51e87e
+author: asudbring
+manager: KumudD
 ms.service: virtual-network
-ms.devlang: azurecli
-ms.topic: article
+ms.subservice: ip-services
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
-ms.author: kumud
-ms.openlocfilehash: 208cff3c816b8243bc31b3db819f13dafe58c1d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 3ca83836771af8448f6510ab27d0ac5f2973b35c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683202"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87287710"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse mithilfe von PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Sie können einen virtuellen Computer mit einer statischen öffentlichen IP-Adresse erstellen. Mit einer öffentlichen IP-Adresse können Sie über das Internet mit einer VM kommunizieren. Um sicherzustellen, dass sich die Adresse niemals ändert, weisen Sie anstelle einer dynamischen Adresse eine statische öffentliche IP-Adresse zu. Lesen Sie im folgenden Artikel mehr über [statische öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method). Um eine öffentliche dynamische IP-Adresse, die einem vorhandenen virtuellen Computer zugewiesen ist, in eine statische Adresse zu ändern oder mit privaten IP-Adressen zu arbeiten, lesen Sie [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md). Für öffentliche IP-Adressen fällt eine [Schutzgebühr](https://azure.microsoft.com/pricing/details/ip-addresses) an, und für die Anzahl der öffentlichen IP-Adressen, die Sie pro Abonnement verwenden können, ist ein [Grenzwert](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) festgelegt.
+Sie können einen virtuellen Computer (VM) mit einer statischen öffentlichen IP-Adresse erstellen. Mit einer öffentlichen IP-Adresse können Sie über das Internet mit einer VM kommunizieren. Um sicherzustellen, dass sich die Adresse niemals ändert, weisen Sie anstelle einer dynamischen Adresse eine statische öffentliche IP-Adresse zu. Lesen Sie im folgenden Artikel mehr über [statische öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method). Um eine öffentliche dynamische IP-Adresse, die einem vorhandenen virtuellen Computer zugewiesen ist, in eine statische Adresse zu ändern oder mit privaten IP-Adressen zu arbeiten, lesen Sie [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md). Für öffentliche IP-Adressen fällt eine [Schutzgebühr](https://azure.microsoft.com/pricing/details/ip-addresses) an, und für die Anzahl der öffentlichen IP-Adressen, die Sie pro Abonnement verwenden können, ist ein [Grenzwert](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) festgelegt.
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Auf dem lokalen Computer oder mithilfe von Azure Cloud Shell können Sie die folgenden Schritte durchführen. Um den lokalen Computer zu verwenden, stellen Sie sicher, dass [Azure PowerShell installiert ist](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Klicken Sie zum Verwenden von Azure Cloud Shell in der oberen rechten Ecke eines beliebigen Befehlsfelds auf **Testen**. Cloud Shell meldet Sie in Azure an.
+Auf dem lokalen Computer oder mithilfe von Azure Cloud Shell können Sie die folgenden Schritte durchführen. Um den lokalen Computer zu verwenden, stellen Sie sicher, dass [Azure PowerShell installiert ist](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Wählen Sie oben rechts in einem beliebigen Befehlsfelds **Testen** aus, um Azure Cloud Shell zu verwenden. Cloud Shell meldet Sie in Azure an.
 
 1. Wenn Sie Cloud Shell bereits verwenden, fahren Sie mit Schritt 2 fort. Öffnen Sie eine Befehlssitzung, und melden Sie sich mit `Connect-AzAccount` in Azure an.
 2. Erstellen Sie mit dem Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe in der Azure-Region „USA, Osten“ erstellt:
@@ -50,7 +47,7 @@ Auf dem lokalen Computer oder mithilfe von Azure Cloud Shell können Sie die fol
      -AllocationMethod "Static"
    ```
 
-   Wenn die öffentliche IP-Adresse die SKU „Standard“ aufweisen muss, müssen Sie in Einzelschritten [eine öffentliche IP-Adresse erstellen](virtual-network-public-ip-address.md#create-a-public-ip-address), [eine Netzwerkschnittstelle erstellen](virtual-network-network-interface.md#create-a-network-interface), [der Netzwerkschnittstelle die öffentliche IP-Adresse zuweisen](virtual-network-network-interface-addresses.md#add-ip-addresses) und dann [einen virtuellen Computer mit der Netzwerkschnittstelle erstellen](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm). Weitere Informationen zu SKUs für öffentliche IP-Adressen finden Sie [hier](virtual-network-ip-addresses-overview-arm.md#sku). Wenn die VM dem Back-End-Pool einer öffentlichen Azure Load Balancer-Instanz hinzugefügt wird, muss die SKU der öffentlichen IP-Adresse der VM der SKU der öffentlichen IP-Adresse des Lastenausgleichsmoduls entsprechen. Weitere Informationen finden Sie unter [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus).
+   Wenn die öffentliche IP-Adresse die SKU „Standard“ aufweisen muss, müssen Sie in Einzelschritten [eine öffentliche IP-Adresse erstellen](virtual-network-public-ip-address.md#create-a-public-ip-address), [eine Netzwerkschnittstelle erstellen](virtual-network-network-interface.md#create-a-network-interface), [der Netzwerkschnittstelle die öffentliche IP-Adresse zuweisen](virtual-network-network-interface-addresses.md#add-ip-addresses) und dann [einen virtuellen Computer mit der Netzwerkschnittstelle erstellen](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm). Weitere Informationen zu SKUs für öffentliche IP-Adressen finden Sie [hier](virtual-network-ip-addresses-overview-arm.md#sku). Wenn die VM dem Back-End-Pool einer öffentlichen Azure Load Balancer-Instanz hinzugefügt wird, muss die SKU der öffentlichen IP-Adresse der VM der SKU der öffentlichen IP-Adresse des Lastenausgleichsmoduls entsprechen. Weitere Informationen finden Sie unter [Azure Load Balancer](../load-balancer/skus.md).
 
 4. Zeigen Sie die zugewiesene öffentliche IP-Adresse an, und bestätigen Sie mit [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress), dass sie als statische Adresse erstellt wurde:
 

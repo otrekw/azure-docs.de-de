@@ -1,69 +1,62 @@
 ---
-title: 'Offlineauswertung: Personalisierung'
+title: 'Durchführen einer Offlineauswertung: Personalisierung'
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie Ihre Lernschleife mit einer Offlineauswertung analysieren können.
+description: In diesem Artikel wird erläutert, wie Sie mit der Offlineauswertung die Effektivität Ihrer App messen und Ihre Lernschleife analysieren können.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: conceptual
-ms.date: 09/10/2019
-ms.author: diberry
-ms.openlocfilehash: a157b36ad2b4f5a7f2e50a9609d8acd621efd5a8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.topic: how-to
+ms.date: 02/20/2020
+ms.openlocfilehash: a473085f9c94ca42a75d01b342d60cc33836b096
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884504"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88244838"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>Analysieren Ihrer Lernschleife mit einer Offlineauswertung
 
 Erfahren Sie, wie Sie eine Offlineauswertung ausführen und die Ergebnisse verstehen können.
 
-Mit Offlineauswertungen können Sie messen, wie effektiv die Personalisierung verglichen mit dem Standardverhalten Ihrer Anwendung ist, erfahren, welche Features am meisten zur Personalisierung beitragen, und automatisch neue Einstellungen für das Machine Learning ermitteln.
+Mit Offlineauswertungen können Sie messen, wie effektiv die Personalisierung verglichen mit dem Standardverhalten Ihrer Anwendung ist, erfahren, welche Features am meisten zur Personalisierung beitragen, und automatisch neue Werte für das Machine Learning ermitteln.
 
 Weitere Informationen finden Sie unter [Offlineauswertung](concepts-offline-evaluation.md).
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Eine konfigurierte Personalisierungsschleife
 * Die Personalisierungsschleife muss eine repräsentative Menge an Daten aufweisen. Für sinnvolle Auswertungsergebnisse werden mindestens 50.000 Ereignisse in den Protokollen empfohlen. Optional haben Sie möglicherweise auch zuvor _Lernrichtliniendateien_ exportiert, die Sie in der gleichen Auswertung vergleichen und testen können.
 
-## <a name="steps-to-start-a-new-offline-evaluation"></a>Schritte zum Starten einer neuen Offlineauswertung
+## <a name="run-an-offline-evaluation"></a>Durchführen einer Offlinebewertung
 
-1. Suchen Sie Ihre Personalisierungsressource im [Azure-Portal](https://azure.microsoft.com/free/).
+1. Suchen Sie Ihre Personalisierungsressource im [Azure-Portal](https://azure.microsoft.com/free/cognitive-services).
 1. Navigieren Sie im Azure-Portal zum Abschnitt **Bewertungen**, und wählen Sie **Bewertung erstellen** aus.
     ![Navigieren Sie im Azure-Portal zum Abschnitt **Bewertungen**, und wählen Sie **Bewertung erstellen** aus.](./media/offline-evaluation/create-new-offline-evaluation.png)
-1. Wählen Sie die folgenden Einstellungen aus:
+1. Konfigurieren Sie die folgenden Werte:
 
-    * Einen Auswertungsnamen
-    * Start- und Enddatum: Hierbei handelt es sich um Datumsangaben in der Vergangenheit, die den Bereich der zur Auswertung zu verwendenden Daten angeben. Diese Daten müssen gemäß der Einstellung [Datenaufbewahrung](how-to-settings.md) in den Protokollen vorliegen.
+    * Einen Auswertungsnamen.
+    * Start- und Enddatum: Hierbei handelt es sich um Datumsangaben, die den Bereich der zur Auswertung zu verwendenden Daten angeben. Diese Daten müssen gemäß dem Wert [Datenaufbewahrung](how-to-settings.md) in den Protokollen vorliegen.
     * „Ermittlung zur Optimierung“ ist auf **Ja** festgelegt.
 
-    ![Auswählen von Offlineauswertungseinstellungen](./media/offline-evaluation/create-an-evaluation-form.png)
+    > [!div class="mx-imgBorder"]
+    > ![Auswählen von Offlineauswertungseinstellungen](./media/offline-evaluation/create-an-evaluation-form.png)
 
-1. Wählen Sie **OK** aus, um die Auswertung zu starten. 
+1. Wählen Sie **OK** aus, um die Auswertung zu starten.
 
-## <a name="results"></a>Ergebnisse
+## <a name="review-the-evaluation-results"></a>Überprüfen der Auswertungsergebnisse
 
 Auswertungen können je nach der Menge zu verarbeitender Daten, der Anzahl der zu vergleichenden Lernrichtlinien und abhängig davon, ob eine Optimierung angefordert wurde, sehr lange dauern.
 
-Nachdem Sie den Vorgang abgeschlossen haben, können Sie die Auswertung aus der Liste der Auswertungen auswählen. 
+Nach Abschluss können Sie die Auswertung aus der Auswertungsliste auswählen und dann die Option zum **Vergleichen der Bewertung Ihrer Anwendung mit anderen potenziellen Lerneinstellungen** aktivieren. Aktivieren Sie dieses Feature, wenn Sie sehen möchten, wie Ihre aktuelle Lernrichtlinie im Vergleich zu einer neuen Richtlinie abschneidet.
 
-Vergleiche von Lernrichtlinien einschließlich:
+1. Überprüfen Sie die Leistung der [Lernrichtlinien](concepts-offline-evaluation.md#discovering-the-optimized-learning-policy).
 
-* **Online Policy** (Onlinerichtlinie): Die derzeit in der Personalisierung verwendete Lernrichtlinie
-* **Baseline**: Der Standard der Anwendung (wie durch die erste in Rangfolgeaufrufen gesendete Aktion bestimmt),
-* **Random Policy** (Zufallsrichtlinie): Ein imaginäres Rangfolgeverhalten, das immer ein zufällige Auswahl von Aktionen aus den angegebenen zurückgibt.
-* **Custom Policies** (Benutzerdefinierte Richtlinien): Zusätzliche, beim Starten der Auswertung hochgeladene Lernrichtlinien.
-* **Optimized Policy** (Optimierte Richtlinie): Wenn die Auswertung mit der Option zum Ermitteln einer optimierten Richtlinie gestartet wurde, wird sie auch verglichen, und Sie können sie herunterladen oder zur Online-Lernrichtlinie machen, wobei die aktuelle ersetzt wird.
+    > [!div class="mx-imgBorder"]
+    > [![Überprüfen der Auswertungsergebnisse](./media/offline-evaluation/evaluation-results.png)](./media/offline-evaluation/evaluation-results.png#lightbox)
 
-![Ergebnisdiagramme von Offlineauswertungseinstellungen](./media/offline-evaluation/evaluation-results.png)
-
-Effektivität der [Features](concepts-features.md) für Aktionen und Kontext.
+1. Wählen Sie **Übernehmen** aus, um die Richtlinie anzuwenden, die das Modell am besten für Ihre Daten optimiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, [wie Offlineauswertungen funktionieren](concepts-offline-evaluation.md).
+* Weitere Informationen zur [Funktionsweise von Offlineauswertungen](concepts-offline-evaluation.md).

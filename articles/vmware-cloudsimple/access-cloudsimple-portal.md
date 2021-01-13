@@ -1,29 +1,29 @@
 ---
-title: Zugreifen auf die Azure-VMware-Lösung von CloudSimple – Portal
-description: Beschreibt, wie Sie über das Azure-Portal auf die VMware-Lösung von CloudSimple-Portal zugreifen
-author: sharaths-cs
-ms.author: b-shsury
+title: Zugreifen auf Azure VMware Solution by CloudSimple – Portal
+description: Beschreibt, wie Sie über das Azure-Portal auf das VMware Solution by CloudSimple-Portal zugreifen
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/04/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 95d27bab243f6805436465f5027e519d33e20f6f
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 0aa7a9a1f19a9d4fb2c555b08753e0b57c657974
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563239"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895154"
 ---
-# <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Zugreifen auf das Portal der VMware-Lösung von CloudSimple-Portal über das Azure-Portal
+# <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Zugreifen auf das VMware Solution by CloudSimple-Portal über das Azure-Portal
 
 Einmaliges Anmelden wird für den Zugriff auf das CloudSimple-Portal unterstützt. Nach Ihrer Anmeldung beim Azure-Portal können Sie auf das CloudSimple-Portal zugreifen, ohne sich erneut anmelden zu müssen. Wenn Sie zum ersten Mal auf das CloudSimple-Portal zugreifen, werden Sie aufgefordert, die Anwendung [CloudSimple Service Authorization](#consent-to-cloudsimple-service-authorization-application) (CloudSimple-Dienstautorisierung) zu autorisieren.  Autorisierung ist eine einmalige Aktion.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Benutzer mit integrierten **Owner**- und **Contributor**-Rollen können auf das CloudSimple-Portal zugreifen.  Die Rollen müssen für die Ressourcengruppe konfiguriert werden, in der der CloudSimple-Service bereitgestellt wird.  Die Rollen können auch auf dem Dienstobjekt CloudSimple konfiguriert werden.  Weitere Informationen zur Überprüfung Ihrer Rolle finden Sie im Artikel [Rollenzuordnungen anzeigen](https://docs.microsoft.com/azure/role-based-access-control/check-access). Benutzer mit integrierten **Besitzer**- und **Mitwirkender**-Rollen können auf das CloudSimple-Portal zugreifen.  Die Rollen müssen für das Abonnement konfiguriert sein.  Weitere Informationen zur Überprüfung Ihrer Rolle finden Sie im Artikel [Rollenzuordnungen anzeigen](https://docs.microsoft.com/azure/role-based-access-control/check-access).
+Benutzer mit den integrierten Rollen **Besitzer** und **Mitwirkender** können auf das CloudSimple-Portal zugreifen.  Die Rollen müssen in der Ressourcengruppe konfiguriert werden, in der der CloudSimple-Dienst bereitgestellt wird.  Die Rollen können auch für das CloudSimple-Dienstobjekt konfiguriert werden.  Weitere Informationen zum Überprüfen Ihrer Rolle finden Sie im Artikel [Anzeigen von Rollenzuweisungen](../role-based-access-control/check-access.md). Benutzer mit integrierten **Besitzer**- und **Mitwirkender**-Rollen können auf das CloudSimple-Portal zugreifen.  Die Rollen müssen für das Abonnement konfiguriert sein.  Weitere Informationen zum Überprüfen Ihrer Rolle finden Sie im Artikel [Anzeigen von Rollenzuweisungen](../role-based-access-control/check-access.md).
 
-Wenn Sie benutzerdefinierte Rollen verwenden, sollte die Rolle eine der folgenden Operationen unter ```Actions``` haben.  Weitere Informationen zu benutzerdefinierten Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  Wenn eine der Operationen ein Teil von ```NotActions``` ist, kann der Benutzer nicht auf das CloudSimple-Portal zugreifen.
+Wenn Sie benutzerdefinierte Rollen verwenden, sollte die Rolle über beliebige der folgenden Vorgänge unter ```Actions``` verfügen.  Weitere Informationen zu benutzerdefinierten Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md).  Wenn einer der Vorgänge Teil von ```NotActions``` ist, kann der Benutzer nicht auf das CloudSimple-Portal zugreifen.
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -71,5 +71,5 @@ Wenn Ihre Berechtigungen den Zugriff auf das CloudSimple-Portal nicht erlauben, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über [Erstellen einer privaten Cloud](https://docs.azure.cloudsimple.com/create-private-cloud/).
+* Erfahren Sie mehr über das [Erstellen einer privaten Cloud](./create-private-cloud.md).
 * Erfahren Sie mehr über [Konfigurieren einer Private Cloud-Umgebung](quickstart-create-private-cloud.md).

@@ -8,19 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 95a27ff17ca74f930fc1a739c0eb94a90bd82ec4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: seodec2018, devx-track-js
+ms.openlocfilehash: 843d1da2a9d046c1dddd24c4b72811b0b65256eb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834488"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350550"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Schnellstart: Suchen im Internet unter Verwendung von Bing-Websuche-REST-API und Node.js
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Websuche-API erstmals aufrufen und die JSON-Antwort empfangen. Diese Node.js-Anwendung sendet eine Suchanforderung an die API und zeigt die Antwort an. Diese Anwendung ist zwar in JavaScript geschrieben, aber die API ist ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Websuche-API zum ersten Mal aufzurufen. Diese Node.js-Anwendung sendet eine Suchanforderung an die API und zeigt die JSON-Antwort an. Die Anwendung ist zwar in JavaScript geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,8 +38,7 @@ Im Folgenden sind die Tools aufgeführt, die Sie zum Ausführen dieser Schnellst
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Erstellen eines Projekts und Deklarieren der erforderlichen Module
 
-Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues Node.js-Projekt.
-Kopieren Sie den unten angegebenen Codeausschnitt dann in Ihr Projekt in eine Datei namens `search.js`.
+Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues Node.js-Projekt. Kopieren Sie den folgenden Codeausschnitt dann in Ihr Projekt in eine Datei namens „search.js“:
 
 ```javascript
 // Use this simple app to query the Bing Web Search API and get a JSON response.
@@ -44,9 +48,9 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Festlegen des Abonnementschlüssels
 
-Dieser Codeausschnitt verwendet die Umgebungsvariable `AZURE_SUBSCRIPTION_KEY` zum Speichern Ihres Abonnementschlüssels, eine gute Vorgehensweise, um die versehentliche Offenlegung Ihrer Schlüssel beim Bereitstellen von Code zu verhindern. Sehen Sie auf der Seite mit [Ihren APIs](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) den Abonnementschlüssel nach.
+Dieser Codeausschnitt verwendet die Umgebungsvariable `AZURE_SUBSCRIPTION_KEY` zum Speichern Ihres Abonnementschlüssels. Dies ist eine gute Vorgehensweise, um die versehentliche Offenlegung Ihrer Schlüssel beim Bereitstellen von Code zu verhindern.
 
-Wenn Sie mit der Verwendung von Umgebungsvariablen nicht vertraut sind oder diese App so schnell wie möglich ausführen möchten, können Sie `process.env['AZURE_SUBSCRIPTION_KEY']` durch Ihren Abonnementschlüssel in Form einer Zeichenfolge ersetzen.
+Wenn Sie mit der Verwendung von Umgebungsvariablen nicht vertraut sind oder diese App so schnell wie möglich ausführen möchten, ersetzen Sie `process.env['AZURE_SUBSCRIPTION_KEY']` durch Ihren Abonnementschlüssel in Form einer Zeichenfolge.
 
 ```javascript
 const SUBSCRIPTION_KEY = process.env['AZURE_SUBSCRIPTION_KEY']
@@ -57,7 +61,15 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>Erstellen einer Funktion, um die Anforderung auszuführen
 
-Diese Funktion erstellt eine sichere GET-Anforderung und speichert die Suchabfrage als Abfrageparameter im Pfad. `encodeURIComponent` wird verwendet, um ungültige Zeichen mit Escapezeichen zu versehen, und der Abonnementschlüssel wird in einem Header übergeben. Der Rückruf erhält eine [Antwort](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse), die folgende Ereignisse abonniert: `data` zum Aggregieren des JSON-Texts, `error` zum Protokollieren von Problemen und `end`, um zu erkennen, wann die Nachricht als abgeschlossen anzusehen ist. Wenn die App fertig ist, druckt sie die interessanten Header und den Nachrichtentext. Sie können die Farben variieren und die Tiefe nach Ihren Wünschen einstellen, eine Tiefe von `1` ergibt eine schöne Zusammenfassung der Antwort.
+Diese Funktion erstellt eine sichere GET-Anforderung und speichert die Suchabfrage als Abfrageparameter im Pfad. 
+
+1. Für den `hostname`-Wert können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.  
+
+2. Verwenden Sie `encodeURIComponent` als Escapezeichen für ungültige Zeichen. Der Abonnementschlüssel wird in einem Header übergeben. 
+
+3. Der Rückruf erhält eine [Antwort](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse), die folgende Ereignisse abonniert: `data` zum Aggregieren des JSON-Texts, `error` zum Protokollieren von Problemen und `end`, um zu erkennen, wann die Nachricht als abgeschlossen anzusehen ist. 
+
+4. Wenn die App fertig ist, druckt sie die relevanten Header und den Nachrichtentext. Sie können die Farben anpassen und die Tiefe entsprechend Ihren Vorlieben festlegen. Eine Tiefe von `1` bietet eine gute Zusammenfassung der Antwort.
 
 ```javascript
 function bingWebSearch(query) {
@@ -95,7 +107,7 @@ const query = process.argv[2] || 'Microsoft Cognitive Services'
 
 ## <a name="make-a-request-and-print-the-response"></a>Senden einer Anforderung und Ausgeben der Antwort
 
-Und nachdem jetzt alles definiert ist, rufen wir unsere Funktion auf!
+Nachdem jetzt alles definiert ist, rufen wir unsere Funktion auf.
 
 ```javascript
 bingWebSearch(query)
@@ -103,7 +115,7 @@ bingWebSearch(query)
 
 ## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
 
-Der letzte Schritt ist das Ausführen Ihres Codes: `node search.js "<your query>"`.
+Der letzte Schritt ist das Ausführen Ihres Codes mit dem Befehl `node search.js "<your query>"`.
 
 Hier ist das vollständige Programm angegeben, falls Sie Ihren Code mit unserem Code vergleichen möchten:
 
@@ -140,7 +152,7 @@ const query = process.argv[2] || 'Microsoft Cognitive Services'
 bingWebSearch(query)
 ```
 
-## <a name="sample-response"></a>Beispiel für eine Antwort
+## <a name="example-json-response"></a>JSON-Beispielantwort
 
 Antworten der Bing-Websuche-API werden im JSON-Format zurückgegeben. Diese Beispielantwort wurde gekürzt, damit nur ein Ergebnis angezeigt wird.
 
@@ -162,9 +174,9 @@ Antworten der Bing-Websuche-API werden im JSON-Format zurückgegeben. Diese Beis
         "snippet": "Knock down barriers between you and your ideas. Enable natural and contextual interaction with tools that augment users' experiences via the power of machine-based AI. Plug them in and bring your ideas to life.",
         "deepLinks": [
           {
-            "name": "Face API",
+            "name": "Face",
             "url": "https://azure.microsoft.com/services/cognitive-services/face/",
-            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face API from Microsoft Azure. ... Cognitive Services; Face API;"
+            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face service from Microsoft Azure. ... Cognitive Services; Face service;"
           },
           {
             "name": "Text Analytics",
@@ -269,6 +281,6 @@ Antworten der Bing-Websuche-API werden im JSON-Format zurückgegeben. Diese Beis
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Einseitige Web-App für die Bing-Websuche](../tutorial-bing-web-search-single-page-app.md)
+> [Tutorial: Einzelseiten-App für die Bing-Websuche-API](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

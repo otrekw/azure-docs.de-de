@@ -1,39 +1,36 @@
 ---
-title: Erste Schritte mit Azure Data Lake Analytics mithilfe der Azure-Befehlszeilenschnittstelle
+title: Erstellen und Ausführen von Abfragen in Azure Data Lake Analytics – Azure CLI
 description: Hier erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Data Lake Analytics-Konto erstellen und einen U-SQL-Auftrag übermitteln.
 ms.service: data-lake-analytics
-services: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 2af6d499bafb0e00b31d0379baac6a390bd6ca3f
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9123ca6a1bfa90737bb1ce83ee365d1ecf514e1f
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626234"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220991"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Erste Schritte mit Azure Data Lake Analytics mithilfe der Azure-Befehlszeilenschnittstelle
+
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle Data Lake Analytics-Konten erstellen und U-SQL-Aufträge und Kataloge übermitteln. Der Auftrag liest eine Datei mit tabulatorgetrennten Werten (TSV) und konvertiert sie in eine Datei mit kommagetrennten Werten (CSV). 
+In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle Data Lake Analytics-Konten erstellen und U-SQL-Aufträge und Kataloge übermitteln. Der Auftrag liest eine Datei mit tabulatorgetrennten Werten (TSV) und konvertiert sie in eine Datei mit kommagetrennten Werten (CSV).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Bevor Sie beginnen, benötigen Sie Folgendes:
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* Für den Artikel müssen Sie mindestens Version 2.0 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
+* Für den Artikel müssen Sie mindestens Version 2.0 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
+So melden Sie sich bei Ihrem Azure-Abonnement an
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
-
-Gehen Sie wie folgt vor, um sich an Ihrem Azure-Abonnement anzumelden:
-
-```
-azurecli
+```azurecli
 az login
 ```
 
@@ -43,24 +40,25 @@ Nachdem Sie sich angemeldet haben, werden mit dem Anmeldebefehl Ihre Abonnements
 
 Gehen Sie wie folgt vor, um ein bestimmtes Abonnement zu verwenden:
 
-```
+```azurecli
 az account set --subscription <subscription id>
 ```
 
 ## <a name="create-data-lake-analytics-account"></a>Erstellen eines Data Lake Analytics-Kontos
+
 Zum Ausführen von Aufträgen ist ein Data Lake Analytics-Konto erforderlich. Zum Erstellen eines Data Lake Analytics-Kontos müssen Sie die folgenden Elemente angeben:
 
-* **Azure-Ressourcengruppe**: Es muss ein Data Lake Analytics-Konto in einer Azure-Ressourcengruppe erstellt werden. [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) ermöglicht es Ihnen, mit den Ressourcen in Ihrer Anwendung als Gruppe zu arbeiten. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren oder löschen.  
+* **Azure-Ressourcengruppe**: Es muss ein Data Lake Analytics-Konto in einer Azure-Ressourcengruppe erstellt werden. [Azure Resource Manager](../azure-resource-manager/management/overview.md) ermöglicht es Ihnen, mit den Ressourcen in Ihrer Anwendung als Gruppe zu arbeiten. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren oder löschen.  
 
 Gehen Sie wie folgt vor, um die vorhandenen Ressourcengruppen unter Ihrem Abonnement aufzulisten:
 
-```
+```azurecli
 az group list
 ```
 
 So erstellen Sie eine neue Ressourcengruppe:
 
-```
+```azurecli
 az group create --name "<Resource Group Name>" --location "<Azure Location>"
 ```
 
@@ -70,7 +68,7 @@ az group create --name "<Resource Group Name>" --location "<Azure Location>"
 
 Gehen Sie wie folgt vor, um das vorhandene Data Lake Store-Konto anzuzeigen:
 
-```
+```azurecli
 az dls account list
 ```
 
@@ -82,45 +80,47 @@ az dls account create --account "<Data Lake Store Account Name>" --resource-grou
 
 Verwenden Sie die folgende Syntax, um ein Data Lake Analytics-Konto zu erstellen:
 
-```
+```azurecli
 az dla account create --account "<Data Lake Analytics Account Name>" --resource-group "<Resource Group Name>" --location "<Azure location>" --default-data-lake-store "<Default Data Lake Store Account Name>"
 ```
 
 Nach dem Erstellen eines Kontos können Sie die folgenden Befehle verwenden, um die Konten aufzulisten und die Kontodetails anzuzeigen:
 
-```
+```azurecli
 az dla account list
-az dla account show --account "<Data Lake Analytics Account Name>"            
+az dla account show --account "<Data Lake Analytics Account Name>"
 ```
 
 ## <a name="upload-data-to-data-lake-store"></a>Hochladen von Daten in den Data Lake-Speicher
+
 In diesem Tutorial verarbeiten Sie einige Suchprotokolle.  Das Suchprotokoll kann entweder in Data Lake Store oder Azure Blob Storage gespeichert werden.
 
 Das Azure-Portal enthält eine Benutzeroberfläche zum Kopieren einiger Beispieldatendateien in das Data Lake Store-Standardkonto. Hierzu gehört auch eine Suchprotokolldatei. Weitere Informationen zum Hochladen von Daten in das Data Lake-Standardspeicherkonto finden Sie unter [Vorbereiten von Quelldaten](data-lake-analytics-get-started-portal.md).
 
 Verwenden Sie die folgenden Befehle, um Dateien mit der Azure CLI hochzuladen:
 
-```
+```azurecli
 az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Source File Path>" --destination-path "<Destination File Path>"
 az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 ```
 
-Data Lake Analytics hat auch Zugriff auf Azure Blob Storage.  Informationen zum Hochladen von Daten nach Azure Blob Storage finden Sie unter [Verwenden der Azure-CLI mit Azure Storage](../storage/common/storage-azure-cli.md).
+Data Lake Analytics hat auch Zugriff auf Azure Blob Storage.  Informationen zum Hochladen von Daten nach Azure Blob Storage finden Sie unter [Verwenden der Azure-CLI mit Azure Storage](../storage/blobs/storage-quickstart-blobs-cli.md).
 
 ## <a name="submit-data-lake-analytics-jobs"></a>Übermitteln von Data Lake Analytics-Aufträgen
-Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weitere Informationen zu U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL](data-lake-analytics-u-sql-get-started.md) und in der [U-SQL language reference](https://docs.microsoft.com/u-sql/) (in englischer Sprache).
 
-**So erstellen Sie ein Skript für Data Lake Analytics-Aufträge**
+Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weitere Informationen zu U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL](data-lake-analytics-u-sql-get-started.md) und in der [U-SQL language reference](/u-sql/) (in englischer Sprache).
+
+### <a name="to-create-a-data-lake-analytics-job-script"></a>So erstellen Sie ein Skript für Data Lake Analytics-Aufträge
 
 Erstellen Sie mit dem folgenden U-SQL-Skript eine Textdatei, und speichern Sie die Textdatei auf der Arbeitsstation:
 
-```
-@a  = 
-    SELECT * FROM 
+```usql
+@a  =
+    SELECT * FROM
         (VALUES
             ("Contoso", 1500.0),
             ("Woodgrove", 2700.0)
-        ) AS 
+        ) AS
               D( customer, amount );
 OUTPUT @a
     TO "/data.csv"
@@ -133,46 +133,45 @@ Mit diesem U-SQL-Skript wird die Quelldatei mithilfe von **Extractors.Tsv()** ge
 
 Es ist einfacher, für Dateien, die unter Data Lake Store-Standardkonten gespeichert sind, relative Pfade zu verwenden. Sie können aber auch absolute Pfade verwenden.  Beispiel:
 
-```
+```usql
 adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
 ```
 
 Sie müssen absolute Pfade verwenden, um auf Dateien in verknüpften Speicherkonten zuzugreifen.  Die Syntax für Dateien, die unter dem verknüpften Azure-Speicherkonto gespeichert werden, lautet wie folgt:
 
-```
+```usql
 wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 ```
 
 > [!NOTE]
-> Azure-Blobcontainer mit öffentlichen Blobs werden nicht unterstützt.      
-> Azure-Blobcontainer mit öffentlichen Containern werden nicht unterstützt.      
+> Azure-Blobcontainer mit öffentlichen Blobs werden nicht unterstützt.
+> Azure-Blobcontainer mit öffentlichen Containern werden nicht unterstützt.
 >
 
-**So übermitteln Sie Aufträge**
+### <a name="to-submit-jobs"></a>Übermitteln von Aufträgen
 
 Verwenden Sie die folgende Syntax, um einen Auftrag zu übermitteln.
 
-```
+```azurecli
 az dla job submit --account "<Data Lake Analytics Account Name>" --job-name "<Job Name>" --script "<Script Path and Name>"
 ```
 
 Beispiel:
 
-```
+```azurecli
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
 ```
 
-**So listen Sie Aufträge auf und zeigen Auftragsdetails an**
+### <a name="to-list-jobs-and-show-job-details"></a>So listen Sie Aufträge auf und zeigen Auftragsdetails an
 
-```
-azurecli
+```azurecli
 az dla job list --account "<Data Lake Analytics Account Name>"
 az dla job show --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
-**So brechen Sie Aufträge ab**
+### <a name="to-cancel-jobs"></a>So brechen Sie Aufträge ab
 
-```
+```azurecli
 az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
@@ -180,7 +179,7 @@ az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity 
 
 Nach Abschluss eines Auftrags können Sie die folgenden Befehle verwenden, um die Ausgabedateien aufzulisten und die Dateien herunterzuladen:
 
-```
+```azurecli
 az dls fs list --account "<Data Lake Store Account Name>" --source-path "/Output" --destination-path "<Destination>"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv" --length 128 --offset 0
@@ -189,7 +188,7 @@ az dls fs download --account "<Data Lake Store Account Name>" --source-path "/Ou
 
 Beispiel:
 
-```
+```azurecli
 az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "C:\DLA\myfile.csv"
 ```
 

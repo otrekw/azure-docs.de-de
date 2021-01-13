@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Everbridge | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Everbridge konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 58d7cd22-98c0-4606-9ce5-8bdb22ee8b3e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 60463a00c6864bed7b3a18e816ef0143d3573782
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 732362ef7099e93697320d8e47180c1207e8cb32
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103254"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995895"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Tutorial: Azure Active Directory-Integration mit Everbridge
 
@@ -30,7 +26,7 @@ Bei der Integration von Everbridge in Azure AD haben Sie folgende Möglichkeiten
 * Steuern Sie in Azure AD, wer Zugriff auf Everbridge hat.
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Everbridge anzumelden (einmaliges Anmelden; Single Sign-On, SSO). Diese Zugriffssteuerung wird als einmaliges Anmelden (Single Sign-On, SSO) bezeichnet.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-Weitere Informationen zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -192,7 +188,7 @@ Führen Sie zum Erstellen des Testbenutzers Britta Simon im Azure-Portal die fol
 
     a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: `brittasimon@yourcompanydomain.extension`. Ein Beispiel ist BrittaSimon@contoso.com.
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: `brittasimon@yourcompanydomain.extension`. z. B. BrittaSimon@contoso.com.
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**. Notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
@@ -206,7 +202,7 @@ Ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure,
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste den Eintrag **Everbridge**aus.
+2. Wählen Sie in der Anwendungsliste den Eintrag **Everbridge** aus.
 
     ![Everbridge-Link in der Anwendungsliste](common/all-applications.png)
 
@@ -232,11 +228,10 @@ In diesem Abschnitt erstellen Sie in Everbridge den Testbenutzer Britta Simon. W
 
 Testen Sie Ihre Azure AD-Konfiguration für das einmalige Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich die Kachel „Everbridge“ auswählen, sollten Sie automatisch bei der Everbridge-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich die Kachel „Everbridge“ auswählen, sollten Sie automatisch bei der Everbridge-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

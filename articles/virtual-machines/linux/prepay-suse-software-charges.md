@@ -3,18 +3,17 @@ title: Vorauszahlen für Softwarepläne – Azure-Reservierungen
 description: Erfahren Sie, wie Sie Softwarepläne im Voraus bezahlen und Geld gegenüber den Kosten beim nutzungsbasierten Modell sparen können.
 author: bandersmsft
 manager: yashesvi
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/01/2019
+ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: e4cab8963e3083d265d0254c81b78fbabb84a269
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091540"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81759287"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Vorauszahlen für Azure-Softwarepläne
 
@@ -38,6 +37,7 @@ Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reserv
 4. Wählen Sie einen Bereich aus. Der Bereich kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen.
     - Einzelabonnement: Der Rabatt für den Plan wird auf die übereinstimmende Nutzung im Abonnement angewandt.
     - Freigegeben: Der Rabatt für den Plan wird auf übereinstimmende Instanzen in jedem Abonnement in Ihrem Abrechnungskontext angewandt. Für Enterprise-Kunden entspricht der Abrechnungskontext der Registrierung und umfasst alle Abonnements in der Registrierung. Bei Kunden mit einem Einzelplan und nutzungsbasierter Bezahlung entspricht der Abrechnungskontext allen Einzelplanabonnements mit nutzungsbasierter Bezahlung, die vom Kontoadministrator erstellt wurden.
+    - Einzelne Ressourcengruppe: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
 5. Wählen Sie ein Produkt aus, um die VM-Größe und den Imagetyp auszuwählen. Der Rabatt gilt nur für die ausgewählte VM-Größe.
 6. Wählen Sie als Laufzeit ein Jahr oder drei Jahre aus.
 7. Wählen Sie eine Menge aus, die Anzahl der im Voraus bezahlten VM-Instanzen, auf die der Abrechnungsrabatt angewandt werden kann.
@@ -47,7 +47,7 @@ Der Reservierungsrabatt wird automatisch auf die Softwareverbrauchseinheit angew
 
 ## <a name="discount-applies-to-different-suse-vm-sizes"></a>Der Rabatt gilt für verschiedene SUSE-VM-Größen
 
-Wie reservierte VM-Instanzen bieten SUSE Linux-Pläne Flexibilität bei der Instanzgröße. Ihr Rabatt gilt auch dann, wenn Sie einen virtuellen Computer bereitstellen, der eine andere Größe aufweist als in dem erworbenen SUSE-Plan. Weitere Informationen finden Sie unter [Grundlegendes zur Anwendung des Rabatts für den Softwareplan](../../billing/billing-understand-suse-reservation-charges.md).
+Wie reservierte VM-Instanzen bieten SUSE Linux-Pläne Flexibilität bei der Instanzgröße. Ihr Rabatt gilt auch dann, wenn Sie einen virtuellen Computer bereitstellen, der eine andere Größe aufweist als in dem erworbenen SUSE-Plan. Weitere Informationen finden Sie unter [Grundlegendes zur Anwendung des Rabatts für den Softwareplan](../../cost-management-billing/reservations/understand-suse-reservation-charges.md).
 
 ## <a name="redhat-plan-discount"></a>Rabatt auf Red Hat-Plan
 
@@ -58,7 +58,7 @@ Rabatte für Red Hat-Pläne gelten nur für die VM-Größe, die Sie zum Zeitpunk
 
 ## <a name="cancellation-and-exchanges-not-allowed"></a>Stornierungen und Wechsel sind unzulässig
 
-Sie können einen erworbenen SUSE- oder Red Hat-Plan nicht mehr stornieren oder umtauschen. Überprüfen Sie Ihre Nutzung, um sicherzustellen, dass Sie den richtigen Plan erwerben. Hilfe beim Identifizieren der zu kaufenden Pläne finden Sie unter [Grundlegendes zur Anwendung des Rabatts für den Softwareplan](../../billing/billing-understand-suse-reservation-charges.md).
+Sie können einen erworbenen SUSE- oder Red Hat-Plan nicht mehr stornieren oder umtauschen. Überprüfen Sie Ihre Nutzung, um sicherzustellen, dass Sie den richtigen Plan erwerben. Hilfe beim Identifizieren der zu kaufenden Pläne finden Sie unter [Grundlegendes zur Anwendung des Rabatts für den Softwareplan](../../cost-management-billing/reservations/understand-suse-reservation-charges.md).
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
@@ -66,12 +66,12 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Verwalten einer Reservierung finden Sie unter [Verwalten von reservierten Instanzen in Azure](../../billing/billing-manage-reserved-vm-instance.md).
+Informationen zum Verwalten einer Reservierung finden Sie unter [Verwalten von reservierten Instanzen in Azure](../../cost-management-billing/reservations/manage-reserved-vm-instance.md).
 
-Weitere Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen erhalten Sie in den folgenden Artikeln:
 
-- [Was sind Azure-Reservierungen?](../../billing/billing-save-compute-costs-reservations.md)
-- [Verwalten von Reservierungen in Azure](../../billing/billing-manage-reserved-vm-instance.md)
-- [Grundlegendes zur Anwendung des Rabatts für SUSE-Reservierungen](../../billing/billing-understand-suse-reservation-charges.md)
-- [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](../../billing/billing-understand-reserved-instance-usage.md)
-- [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../../billing/billing-understand-reserved-instance-usage-ea.md)
+- [Was sind Azure-Reservierungen?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Verwalten von Reservierungen für Ressourcen in Azure](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+- [Grundlegendes zur Anwendung des Rabatts für SUSE-Reservierungen](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)
+- [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)
+- [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)

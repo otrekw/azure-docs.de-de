@@ -1,24 +1,15 @@
 ---
 title: Azure Service Bus – End-to-End-Ablaufverfolgung und Diagnose | Microsoft Docs
-description: Übersicht über die Diagnose und die End-to-End-Ablaufverfolgung für den Service Bus-Client
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+description: Übersicht über Service Bus-Clientdiagnose und End-to-End-Ablaufverfolgung (Client durch alle Dienste, die an der Verarbeitung beteiligt sind).
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/23/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bc7dab21fc01b624e8ab122fe883be89ea8633f6
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311002"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832691"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Verteilte Ablaufverfolgung und Korrelation über Service Bus-Messaging
 
@@ -28,14 +19,14 @@ Ein Teil des Problems besteht darin, die logischen Arbeitsschritte nachzuverfolg
 Wenn ein Producer eine Nachricht über eine Warteschlange sendet, geschieht dies in der Regel im Rahmen eines anderen logischen Vorgangs, der von einem anderen Client oder Dienst initiiert wird. Derselbe Vorgang wird vom Consumer fortgesetzt, sobald dieser eine Nachricht empfängt. Meistens gibt sowohl der Producer als auch der Consumer (sowie andere an der Verarbeitung beteiligten Dienste) Telemetrieereignisse aus, die zur Nachverfolgung des Vorgangsflusses und des Ergebnisses herangezogen werden. Um diese Ereignisse zu korrelieren und den Vorgang bis zum Ende zu verfolgen, muss jeder Dienst, der Telemetriedaten meldet, die einzelnen Ereignisse mit einem Ablaufverfolgungskontext kennzeichnen.
 
 Microsoft Azure Service Bus-Messaging verfügt über definierte Nutzlasteigenschaften, die sowohl von Producern als auch von Consumern zur Übergabe dieser Ablaufverfolgungskontexte verwendet werden müssen.
-Das Protokoll basiert auf dem [HTTP-Korrelationsprotokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
+Das Protokoll basiert auf dem [HTTP-Korrelationsprotokoll](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
 
 | Eigenschaftenname        | BESCHREIBUNG                                                 |
 |----------------------|-------------------------------------------------------------|
-|  Diagnostic-Id       | Ein eindeutiger Bezeichner eines externen Aufrufs, der vom Producer an die Warteschlange gesendet wird. Unter [Request-Id im HTTP-Protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) finden Sie weitere Begründungen, Überlegungen und Informationen zum Format |
-|  Correlation-Context | des Vorgangskontexts, der über alle Dienste hinweg weitergegeben wird, die an der Vorgangsverarbeitung beteiligt sind. Weitere Informationen finden Sie unter [Correlation-Context im HTTP-Protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context). |
+|  Diagnostic-Id       | Ein eindeutiger Bezeichner eines externen Aufrufs, der vom Producer an die Warteschlange gesendet wird. Unter [Request-Id im HTTP-Protokoll](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) finden Sie weitere Begründungen, Überlegungen und Informationen zum Format |
+|  Correlation-Context | des Vorgangskontexts, der über alle Dienste hinweg weitergegeben wird, die an der Vorgangsverarbeitung beteiligt sind. Weitere Informationen finden Sie unter [Correlation-Context im HTTP-Protokoll](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context). |
 
-## <a name="service-bus-net-client-auto-tracing"></a>Automatische Ablaufverfolgung im Service Bus-Client für .NET
+## <a name="service-bus-net-client-autotracing"></a>Automatische Ablaufverfolgung im Service Bus-Client für .NET
 
 Ab Version 3.0.0 stellt der [Microsoft Azure Service Bus-Client für .NET](/dotnet/api/microsoft.azure.servicebus.queueclient) Instrumentierungspunkte für die Ablaufverfolgung bereit, die von Ablaufverfolgungssystemen oder von Clientcode verwendet werden können.
 Die Instrumentierung ermöglicht die Nachverfolgung aller Aufrufe, die von Clientseite an den Service Bus-Messagingdienst gesendet werden. Nachdem die Nachrichtenverarbeitung nach dem [Muster „Meldungshandler“](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) abgeschlossen wurde, wird die Nachrichtenverarbeitung ebenfalls instrumentiert.
@@ -84,6 +75,12 @@ In diesem Beispiel wird `RequestTelemetry` für jede verarbeitete Nachricht eins
 Geschachtelte Ablaufverfolgungen und Ausnahmen, die während der Nachrichtenverarbeitung gemeldet werden, werden ebenfalls mit Korrelationseigenschaften gekennzeichnet, um sie als "untergeordnete Elemente" von `RequestTelemetry` auszuweisen.
 
 Falls Sie während der Nachrichtenverarbeitung unterstützte externe Komponenten aufrufen, werden diese ebenfalls automatisch nachverfolgt und korreliert. Weitere Informationen zur manuellen Nachverfolgung und Korrelation finden Sie unter [Nachverfolgen benutzerdefinierter Vorgänge mit dem Application Insights .NET SDK](../azure-monitor/app/custom-operations-tracking.md).
+
+Wenn Sie zusätzlich zum Application Insights SDK externen Code ausführen, sollten Sie bei der Anzeige von Application Insights-Protokollen von einer längeren **Dauer** ausgehen. 
+
+![Längere Dauer in Application Insights-Protokoll](./media/service-bus-end-to-end-tracing/longer-duration.png)
+
+Dies bedeutet nicht, dass eine Verzögerung beim Empfangen der Nachricht aufgetreten ist. In diesem Szenario wurde die Nachricht bereits empfangen, weil die Nachricht als Parameter an den SDK-Code übergeben wird. Außerdem gibt das Tag **Name** in App Insights-Protokollen (**Process**) an, dass die Nachricht nun von Ihrem externen Ereignisverarbeitungscode verarbeitet wird. Dieses Problem bezieht sich nicht auf Azure. Stattdessen verweisen diese Metriken auf die Effizienz Ihres externen Codes, wenn die Nachricht bereits von Service Bus empfangen wurde. Weitere Informationen dazu, wo das **Prozess**-Tag generiert und zugewiesen wird, sobald die Nachricht von Service Bus empfangen wurde, finden Sie [in dieser Datei auf GitHub](https://github.com/Azure/azure-sdk-for-net/blob/4bab05144ce647cc9e704d46d3763de5f9681ee0/sdk/servicebus/Microsoft.Azure.ServiceBus/src/ServiceBusDiagnosticsSource.cs). 
 
 ### <a name="tracking-without-tracing-system"></a>Nachverfolgung ohne Ablaufverfolgungssystem
 Falls die automatische Nachverfolgung von Service Bus-Aufrufen von Ihrem Ablaufverfolgungssystem nicht unterstützt wird, empfiehlt es sich, das Ablaufverfolgungssystem oder die Anwendung entsprechend zu erweitern. In diesem Abschnitt werden die Diagnoseereignisse beschrieben, die vom Service Bus .NET-Client gesendet werden.  
@@ -196,7 +193,7 @@ TaskStatus status = (TaskStatus)evnt.Value.GetProperty("Status");
 var tagsList = new StringBuilder();
 foreach (var tags in currentActivity.Tags)
 {
-    tagsList.Append($", "{tags.Key}={tags.Value}");
+    tagsList.Append($", {tags.Key}={tags.Value}");
 }
 
 serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, Duration={currentActivity.Duration}, Status={status}, Id={currentActivity.Id}, StartTime={currentActivity.StartTimeUtc}{tagsList}");

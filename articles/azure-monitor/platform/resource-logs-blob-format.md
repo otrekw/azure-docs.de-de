@@ -1,43 +1,41 @@
 ---
-title: Vorbereiten der Formatumstellung auf Azure Monitor-Diagnoseprotokolle
-description: Für Azure-Diagnoseprotokolle wird am 1. November 2018 die Umstellung auf die Nutzung von Anfügeblobs durchgeführt.
+title: Vorbereiten der Formatumstellung auf Azure Monitor-Ressourcenprotokolle
+description: Azure-Ressourcenprotokolle wurden am 1. November 2018 auf die Verwendung von Anfügeblobs umgestellt.
 author: johnkemnetz
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: c6f21ffdcf94f23d089073710f2e6c18fd20558d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 45b18352d88877a5d611f203d87da83fd0d58c6b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262997"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87077119"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Vorbereiten der Formatumstellung auf Azure Monitor-Plattformprotokolle, die in einem Speicherkonto archiviert werden
 
 > [!WARNING]
-> Wenn Sie [mithilfe von Diagnoseeinstellungen Azure-Ressourcenprotokolle oder -metriken an ein Speicherkonto](resource-logs-collect-storage.md) oder [Aktivitätsprotokolle mithilfe von Protokollprofilen an ein Speicherkonto](activity-log-export.md) senden, wurde das Format der Daten im Speicherkonto am 1. November 2018 in JSON Lines geändert. Unten wird beschrieben, welche Auswirkungen sich ergeben und wie Sie Ihre Tools für die Verarbeitung des neuen Formats aktualisieren. 
+> Wenn Sie [mithilfe von Diagnoseeinstellungen Azure-Ressourcenprotokolle oder -metriken an ein Speicherkonto](./resource-logs.md#send-to-azure-storage) oder [Aktivitätsprotokolle mithilfe von Protokollprofilen an ein Speicherkonto](./resource-logs.md#send-to-azure-storage) senden, wurde das Format der Daten im Speicherkonto am 1. November 2018 in JSON Lines geändert. Unten wird beschrieben, welche Auswirkungen sich ergeben und wie Sie Ihre Tools für die Verarbeitung des neuen Formats aktualisieren.
 >
-> 
 
-## <a name="what-is-changing"></a>Was ändert sich?
+## <a name="what-changed"></a>Änderung
 
-Azure Monitor verfügt über eine Funktion, mit der Sie Ressourcenprotokolle und Aktivitätsprotokolle an ein Azure-Speicherkonto, einen Event Hubs-Namespace oder Log Analytics-Arbeitsbereich in Azure Monitor senden können. Am **1. November 2018 um Mitternacht (UTC)** ändert sich das Format der Protokolldaten, die an den Blobspeicher gesendet werden, um ein Problem mit der Systemleistung zu beheben. Falls Sie über Tools verfügen, mit denen Daten aus dem Blobspeicher gelesen werden, müssen Sie diese Tools aktualisieren, damit das neue Datenformat gelesen werden kann.
+Azure Monitor verfügt über eine Funktion, mit der Sie Ressourcenprotokolle und Aktivitätsprotokolle an ein Azure-Speicherkonto, einen Event Hubs-Namespace oder Log Analytics-Arbeitsbereich in Azure Monitor senden können. Am **1. November 2018 um Mitternacht (UTC)** wurde das Format der Protokolldaten geändert, die an Blob Storage gesendet werden, um ein Problem mit der Systemleistung zu beheben. Falls Sie über Tools verfügen, mit denen Daten aus dem Blobspeicher gelesen werden, müssen Sie diese Tools aktualisieren, damit das neue Datenformat gelesen werden kann.
 
 * Am Donnerstag, den 1. November 2018, um Mitternacht (UTC) wurde das Blobformat in [JSON Lines](http://jsonlines.org/) geändert. Dies bedeutet, dass die einzelnen Datensätze jeweils durch einen Zeilenumbruch getrennt sind und dass kein externes Datensatzarray und keine Kommas zwischen JSON-Datensätzen verwendet werden.
 * Das Blobformat wurde für alle Diagnoseeinstellungen aller Abonnements auf einmal geändert. Die erste Datei „PT1H.json“, die für den 1. November ausgegeben wurde, hat dieses neue Format. Die Blob- und Containernamen bleiben unverändert.
 * Bei Festlegen einer Diagnoseeinstellung vor dem 1. November wurden die Daten bis zum 1. November weiterhin im aktuellen Format ausgegeben.
 * Diese Änderung trat für alle öffentlichen Cloudregionen gleichzeitig in Kraft. Die Änderung wird noch nicht für von 21Vianet betriebenen Microsoft Azure-, Azure Deutschland- oder Azure Government-Clouds durchgeführt.
 * Diese Änderung wirkt sich auf die folgenden Datentypen aus:
-  * [Azure-Ressourcenprotokolle](archive-diagnostic-logs.md) ([Liste mit Ressourcen](diagnostic-logs-schema.md))
+  * [Azure-Ressourcenprotokolle](./resource-logs.md#send-to-azure-storage) ([Liste mit Ressourcen](./resource-logs-schema.md))
   * [Von Diagnoseeinstellungen exportierte Azure-Ressourcenmetriken](diagnostic-settings.md)
-  * [Von Protokollprofilen exportierte Azure-Aktivitätsprotokolldaten](activity-log-collect.md)
+  * [Von Protokollprofilen exportierte Azure-Aktivitätsprotokolldaten](./activity-log.md)
 * Diese Änderung wirkt sich nicht auf Folgendes aus:
   * Netzwerkflussprotokolle
-  * Azure-Dienstprotokolle, die noch nicht über Azure Monitor verfügbar gemacht werden (z. B. Azure App Service-Diagnoseprotokolle, Speicheranalyseprotokolle)
-  * Routing von Azure-Diagnoseprotokollen und Aktivitätsprotokollen an andere Ziele (Event Hubs, Log Analytics)
+  * Azure-Dienstprotokolle, die noch nicht über Azure Monitor verfügbar gemacht werden (z. B. Azure App Service-Ressourcenprotokolle, Speicheranalyseprotokolle)
+  * Routing von Azure-Ressourcenprotokollen und Aktivitätsprotokollen an andere Ziele (Event Hubs, Log Analytics)
 
 ### <a name="how-to-see-if-you-are-impacted"></a>Ermitteln der Auswirkungen für Sie
 
@@ -125,7 +123,7 @@ Für das neue Format wird [JSON Lines](http://jsonlines.org/) verwendet. Dies be
 {"time": "2016-01-05T01:33:56.5264523Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "83","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 ```
 
-Mit diesem neuen Format kann Azure Monitor Protokolldateien mithilfe von [Anfügeblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) per Pushvorgang übertragen. Dies ist für das fortlaufende Anfügen neuer Ereignisdaten effizienter.
+Mit diesem neuen Format kann Azure Monitor Protokolldateien mithilfe von [Anfügeblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) per Pushvorgang übertragen. Dies ist für das fortlaufende Anfügen neuer Ereignisdaten effizienter.
 
 ## <a name="how-to-update"></a>Durchführen der Aktualisierung
 
@@ -135,6 +133,5 @@ Benutzerdefinierte Tools sollten aktualisiert werden, damit diese sowohl das akt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich über das [Archivieren von Azure-Diagnoseprotokollen](./../../azure-monitor/platform/archive-diagnostic-logs.md).
-* Informieren Sie sich über das [Archivieren des Azure-Aktivitätsprotokolls](./../../azure-monitor/platform/archive-activity-log.md).
-
+* Informieren Sie sich über das [Archivieren von Ressourcenprotokollen in einem Speicherkonto](./resource-logs.md#send-to-azure-storage).
+* Informieren Sie sich über das [Archivieren des Azure-Aktivitätsprotokolls](./activity-log.md#legacy-collection-methods).

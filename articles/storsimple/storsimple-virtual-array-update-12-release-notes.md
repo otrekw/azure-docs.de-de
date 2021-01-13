@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: alkohli
-ms.openlocfilehash: ea7e4801dfaad533403c0f927a03735ae409cc52
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 1118dfcec67a49365f1f6e5e522e98b97694d052
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420422"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960189"
 ---
 # <a name="storsimple-virtual-array-update-12-release-notes"></a>Versionsanmerkungen zu Update 1.2 für StorSimple Virtual Array
 
@@ -46,7 +46,7 @@ Laden Sie KB4502035 herunter, und folgen Sie diesen Anweisungen, um [das Update 
 
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser Version behoben wurden:
 
-| Nein. | Feature | Problem |
+| Nein. | Funktion | Problem |
 | --- | --- | --- |
 | 1 |Löschen| In früheren Versionen der Software gab es ein Problem, dass sich die Nutzung des Geräts nicht änderte, selbst wenn Dateien gelöscht wurden. Dieses Problem wurde in dieser Version behoben. Das Tiering des Codepfads ist nun bei der Verarbeitung gelöschter Dateien resilienter.|
 | 2 |Ausnahmebehandlung| In früheren Versionen der Software gab es ein Problem nach dem Neustart des Systems, das potenziell zu Fehlern bei Sicherung, Wiederherstellung, Lesen aus der Cloud und automatisierter Speicherplatzrückgewinnung führen konnte. Diese Version enthält Änderungen in Bezug auf die Behandlung von Ausnahmen im Startpfad.|
@@ -59,7 +59,7 @@ Es wurden keine neuen Probleme in die Versionsanmerkungen für Update 1.2 aufgen
 
 Laden Sie KB4502035 herunter, und [wenden Sie das Update über die lokale Webbenutzeroberfläche an](storsimple-virtual-array-install-update-11.md#use-the-local-web-ui).
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 Suchen Sie nach älteren Versionsanmerkungen? Wechseln Sie zu:
 * [Versionsanmerkungen zu Update 1.1 für StorSimple Virtual Array](storsimple-virtual-array-update-11-release-notes.md)
@@ -69,4 +69,4 @@ Suchen Sie nach älteren Versionsanmerkungen? Wechseln Sie zu:
 * [Versionsanmerkungen zu Update 0.4 für StorSimple Virtual Array](storsimple-virtual-array-update-04-release-notes.md)
 * [Versionsanmerkungen zu Update 0.3 für StorSimple Virtual Array](storsimple-ova-update-03-release-notes.md)
 * [Versionsanmerkungen zu Update 0.1 und Update 0.2 für das StorSimple Virtual Array](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Virtual Array – Version mit allgemeiner Verfügbarkeit – Versionsanmerkungen](storsimple-ova-pp-release-notes.md)
+* [StorSimple Virtual Array – Version mit allgemeiner Verfügbarkeit – Versionsanmerkungen](./storsimple-virtual-array-update-06-release-notes.md)

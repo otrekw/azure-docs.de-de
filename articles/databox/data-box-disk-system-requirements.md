@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fb2fd89664517e44cf5128a5c82e583f03087061
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 6ac1fb1a69433be240e4250ea37835037f0b2ffa
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70307699"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873936"
 ---
 ::: zone target="docs"
 
@@ -54,9 +54,9 @@ Für den Windows-Client sollte darüber hinaus noch Folgendes installiert sein.
 
 | **Software**| **Version** |
 | --- | --- |
-| Windows PowerShell |5.0 |
+| Windows PowerShell |5.0 |
 | .NET Framework |4.5.1 |
-| Windows Management Framework |5.0|
+| Windows Management Framework |5,1|
 | BitLocker| - |
 
 ## <a name="other-required-software-for-linux-clients"></a>Andere erforderliche Software für Linux-Clients
@@ -77,12 +77,8 @@ Im Folgenden finden Sie eine Liste der unterstützten Speichertypen für den Dat
 | **Speicherkonto** | **Hinweise** |
 | --- | --- |
 | Klassisch | Standard |
-| Allgemeiner Zweck  |Standard: sowohl V1 als auch V2 werden unterstützt. Es werden sowohl „heiße“ als auch „kalte“ Ebenen unterstützt. |
+| Universell  |Standard: sowohl V1 als auch V2 werden unterstützt. Es werden sowohl „heiße“ als auch „kalte“ Ebenen unterstützt. |
 | Blob-Speicherkonto | |
-
->[!NOTE]
-> Azure Data Lake Storage Gen 2-Konten werden nicht unterstützt.
-
 
 ## <a name="supported-storage-types-for-upload"></a>Unterstützte Speichertypen für den Upload
 

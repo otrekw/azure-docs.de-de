@@ -13,17 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8d5683cb060b63aebad7c68672c78f5b350a25d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2f9b3cdd0b2080a26a9b1948263a7638dc66f2b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073579"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89259743"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Schützen von HLS-Inhalten mit Apple FairPlay oder Microsoft PlayReady
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).   > Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).   > Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 >
 
 Mit Azure Media Services können Sie Ihre HLS-Inhalte (HTTP Live Streaming) unter Verwendung der folgenden Formate dynamisch verschlüsseln:  
@@ -59,7 +62,7 @@ Folgendes ist erforderlich, wenn Sie Media Services verwenden, um mit FairPlay v
 
 Folgendes muss seitens der Media Services-Schlüsselbereitstellung festgelegt werden:
 
-  * **App Cert (AC)** : Dies ist eine PFX-Datei, die den privaten Schlüssel enthält. Sie erstellen diese Datei und verschlüsseln sie mit einem Kennwort.
+  * **App Cert (AC)** : PFX-Datei mit dem privaten Schlüssel. Sie erstellen diese Datei und verschlüsseln sie mit einem Kennwort.
 
        Wenn Sie eine Richtlinie für die Schlüsselbereitstellung konfigurieren, müssen Sie dieses Kennwort und die PFX-Datei im Base64-Format bereitstellen.
 
@@ -74,15 +77,15 @@ Folgendes muss seitens der Media Services-Schlüsselbereitstellung festgelegt we
     3. Führen Sie den folgenden Befehl an der Befehlszeile aus: Dadurch wird die PEM-Datei in eine PFX-Datei mit dem privaten Schlüssel konvertiert. Das Kennwort für die PFX-Datei wird dann von OpenSSL angefordert.
 
         „C:\OpenSSL-Win32\bin\openssl.exe“ pkcs12 -export -out FairPlay-out.pfx -inkey privatekey.pem -in FairPlay-out.pem -passin file:privatekey-pem-pass.txt
-  * **App Cert-Kennwort**: Das Kennwort zum Erstellen der PFX-Datei.
-  * **App Cert-Kennwort-ID:** Sie müssen das Kennwort ähnlich wie andere Media Services-Schlüssel hochladen. Verwenden Sie den Enumerationswert **ContentKeyType.FairPlayPfxPassword**, um die Media Services-ID abzurufen. Diese werden in der Richtlinienoption für die Schlüsselbereitstellung benötigt.
-  * **iv:** Dies ist ein zufälliger Wert von 16 Bytes. Er muss dem iv-Wert in der Richtlinie zur Übermittlung von Medienobjekten entsprechen. Sie generieren den iv-Wert und geben ihn in der Richtlinie zur Übermittlung von Medienobjekten sowie in der Richtlinienoption für die Schlüsselbereitstellung an.
-  * **ASK**: Dieser Schlüssel wird bei der Generierung der Zertifizierung über das Apple Developer-Portal empfangen. Jedes Entwicklungsteam erhält einen eindeutigen ASK. Speichern Sie eine Kopie des ASK an einem sicheren Ort. Sie müssen den ASK später als FairPlayAsk für Media Services konfigurieren.
-  * **ASK-ID:** Diese ID wird abgerufen, wenn Sie ASK in Media Services hochladen. Sie müssen ASK mit dem **ContentKeyType.FairPlayAsk**-Enumerationswert hochladen. Dadurch wird die Media Services-ID zurückgegeben, die Sie beim Festlegen der Richtlinienoption für die Schlüsselbereitstellung verwenden sollten.
+  * **App Cert-Kennwort**: Das Kennwort des Kunden zum Erstellen der PFX-Datei.
+  * **Cert-App-Kennwort-ID**: Sie müssen das Kennwort auf die gleiche Weise wie andere Media Services-Schlüssel hochladen. Verwenden Sie den Enumerationswert **ContentKeyType.FairPlayPfxPassword**, um die Media Services-ID abzurufen. Diese werden in der Richtlinienoption für die Schlüsselbereitstellung benötigt.
+  * **iv**: Dies ist ein zufälliger Wert von 16 Bytes. Er muss dem iv-Wert in der Richtlinie zur Übermittlung von Medienobjekten entsprechen. Sie generieren den iv-Wert und geben ihn in der Richtlinie zur Übermittlung von Medienobjekten sowie in der Richtlinienoption für die Schlüsselbereitstellung an.
+  * **ASK**: Dieser Schlüssel wird erstellt, wenn Sie das Zertifikat über das Apple Developer-Portal generieren. Jedes Entwicklungsteam erhält einen eindeutigen ASK. Speichern Sie eine Kopie des ASK an einem sicheren Ort. Sie müssen den ASK später als FairPlayAsk für Media Services konfigurieren.
+  * **ASK-ID**: Diese ID wird abgerufen, wenn Sie ASK in Media Services hochladen. Sie müssen ASK mit dem **ContentKeyType.FairPlayAsk**-Enumerationswert hochladen. Dadurch wird die Media Services-ID zurückgegeben, die Sie beim Festlegen der Richtlinienoption für die Schlüsselbereitstellung verwenden sollten.
 
 Folgendes muss seitens des FPS-Clients festgelegt werden:
 
-  * **App Cert (AC)** : CER-/DER-Datei mit dem öffentlichen Schlüssel, den das Betriebssystem zur Verschlüsselung bestimmter Nutzlasten verwendet. Media Services muss den Schlüssel kennen, da er vom Player benötigt wird. Der Schlüsselbereitstellungsdienst entschlüsselt den Schlüssel mithilfe des entsprechenden privaten Schlüssels.
+  * **App Cert (AC)** : CER-/DER-Datei mit dem öffentlichen Schlüssel, den das Betriebssystem zur Verschlüsselung bestimmter Nutzlast verwendet. Media Services muss den Schlüssel kennen, da er vom Player benötigt wird. Der Schlüsselbereitstellungsdienst entschlüsselt den Schlüssel mithilfe des entsprechenden privaten Schlüssels.
 
 Um einen über FairPlay verschlüsselten Stream wiederzugeben, rufen Sie zuerst den echten ASK ab, und generieren Sie dann ein echtes Zertifikat. Dieser Prozess erstellt alle drei Teile:
 
@@ -127,7 +130,7 @@ Die folgenden allgemeinen Schritte dienen zum Schützen Ihrer Medienobjekte mit 
 ## <a name="use-fairplay-key-delivery-by-player-apps"></a>Verwenden der FairPlay-Schlüsselübermittlung nach Player-Apps
 Sie können Player-Apps mit dem iOS-SDK entwickeln. Damit FairPlay-Inhalte wiedergegeben werden können, müssen Sie das Lizenzaustauschprotokoll implementieren. Dieses Protokoll wird nicht von Apple angegeben. Es ist jeder App freigestellt, wie sie Anforderungen zur Schlüsselübermittlung sendet. Der Media Services-FairPlay-Schlüsselübermittlungsdienst erwartet das SPC als POST-Nachricht mit Verschlüsselung vom Typ „www-form-url“ im folgenden Format:
 
-    spc=<Base64 encoded SPC>
+`spc=<Base64 encoded SPC>`
 
 > [!NOTE]
 > Azure Media Player unterstützt die FairPlay-Wiedergabe. Weitere Informationen finden Sie in der [Azure Media Player-Dokumentation](https://amp.azure.net/libs/amp/latest/docs/index.html).
@@ -143,9 +146,9 @@ Es gelten die folgenden Bedingungen:
 * Der Verschlüsselungstyp muss nicht in der URL angegeben werden, wenn auf das Medienobjekt nur eine einzelne Verschlüsselung angewendet wurde.
 * Beim Verschlüsselungstyp wird die Groß-/Kleinschreibung nicht beachtet.
 * Folgende Verschlüsselungstypen können angegeben werden:  
-  * **cenc:**  Allgemeine Verschlüsselung (PlayReady oder Widevine)
-  * **cbcs-aapl:** FairPlay
-  * **cbc:** AES-Umschlagverschlüsselung
+  * **cenc**: Allgemeine Verschlüsselung (PlayReady oder Widevine)
+  * **cbcs-aapl**: Fairplay
+  * **cbc**: AES-Umschlagverschlüsselung
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
 
@@ -554,6 +557,10 @@ namespace DynamicEncryptionWithFairPlay
     }
 }
 ```
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="next-steps-media-services-learning-paths"></a>Nächste Schritte: Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

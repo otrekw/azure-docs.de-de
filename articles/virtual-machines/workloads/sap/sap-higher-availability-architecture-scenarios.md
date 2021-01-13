@@ -1,31 +1,32 @@
 ---
-title: Verwenden der Neustartfunktion für den virtuellen Computer der Azure-Infrastruktur für eine „höhere Verfügbarkeit“ eines SAP-Systems | Microsoft Docs
+title: Verwenden der Neustartfunktion von virtuellen Azure-Computern für eine „höhere Verfügbarkeit“ eines SAP-Systems – Microsoft-Dokumentation
 description: Verwenden der Neustartfunktion des virtuellen Computers der Azure-Infrastruktur für eine „höhere Verfügbarkeit“ von SAP-Anwendungen
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: f0b2f8f0-e798-4176-8217-017afe147917
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 64db278807b40f8b142513ac06247e916be74f4b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5d7904b950fa79f9ccbf98ec08f09aa6688f8a99
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078041"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957893"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Verwenden der Neustartfunktion des virtuellen Computers der Azure-Infrastruktur für eine „höhere Verfügbarkeit“ eines SAP-Systems
 
-[1909114]: https://launchpad.support.sap.com/#/notes/1909114
+[1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553
@@ -34,8 +35,8 @@ ms.locfileid: "70078041"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -204,13 +205,13 @@ ms.locfileid: "70078041"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
 > Dieser Abschnitt gilt für:
 >
-> ![Windows][Logo_Windows] Windows und ![Linux][Logo_Linux] Linux
+> ![Windows-Logo][Logo_Windows] Windows und ![Linux-Logo][Logo_Linux] Linux
 >
 
 Wenn Sie keine Funktionen wie Windows Server Failover Clustering (WSFC) oder Pacemaker unter Linux (zurzeit nur für SUSE Linux Enterprise Server [SLES] 12 und höher unterstützt) verwenden möchten, wird ein Neustart des virtuellen Azure-Computers genutzt. Auf diese Weise werden SAP-Systeme vor geplanten und ungeplanten Ausfallzeiten der physischen Azure-Serverinfrastruktur und der insgesamt zugrunde liegenden Azure-Plattform geschützt.
@@ -228,7 +229,7 @@ Von Azure verwaltete Datenträger werden automatisch in der Fehlerdomäne des vi
 
 Die folgende Beispielarchitektur nutzt ein SAP NetWeaver-System, das Hochverfügbarkeit und Speicherkonten der Azure-Infrastruktur verwendet:
 
-![Verwenden der Hochverfügbarkeit der Azure-Infrastruktur für eine „höhere Verfügbarkeit“ von SAP-Anwendungen][planning-guide-figure-2900]
+![Diagramm der Architektur eines SAP NetWeaver-Systems, das Hochverfügbarkeit und Speicherkonten der Azure-Infrastruktur verwendet][planning-guide-figure-2900]
 
 Die folgende Beispielarchitektur nutzt ein SAP NetWeaver-System, das Hochverfügbarkeit und verwaltete Datenträger der Azure-Infrastruktur verwendet:
 
@@ -267,7 +268,7 @@ SAP bietet eine Einstellung zum Starten von SAP-Instanzen unmittelbar nach dem S
 
 Bei Annahme eines typischen Azure-Szenarios mit einer Anwendungsserverinstanz in einem virtuellen Computer und einem einzelnen virtuellen Computer, der möglicherweise neu gestartet wird, ist der automatische Start nicht wichtig. Sie können ihn jedoch aktivieren, indem Sie den folgenden Parameter im Startprofil der SAP ABAP- (Advanced Business Application Programming) oder Java-Instanz hinzufügen:
 
-      Autostart = 1
+`Autostart = 1`
 
 
   > [!NOTE]

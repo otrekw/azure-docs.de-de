@@ -1,32 +1,28 @@
 ---
-title: Sammeln und Analysieren von Leistungsindikatoren in Azure Monitor | Microsoft-Dokumentation
+title: Datenquellen für das Sammeln von Windows- und Linux-Leistungsdaten mit dem Log Analytics-Agent in Azure Monitor
 description: Leistungsindikatoren werden von Azure Monitor gesammelt, um die Leistung von Windows- und Linux-Agents zu analysieren.  Dieser Artikel beschreibt, wie Sie die Sammlung von Leistungsindikatoren sowohl für Windows- als auch für Linux-Agents konfigurieren, wie die Daten im Arbeitsbereich gespeichert werden und wie sie im Azure-Portal analysiert werden können.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
-ms.author: magoedte
-ms.openlocfilehash: 76f4061af816c59e644db99913193ed6fcf24d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+author: bwren
+ms.author: bwren
+ms.date: 10/21/2020
+ms.openlocfilehash: 533d4a83ea73b98e26a57febc077a607bcb25465
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205749"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532300"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows- und Linux-Leistungsdatenquellen in Azure Monitor
-Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Azure Monitor kann in sehr kurzen Intervallen Leistungsindikatoren abrufen, um Analysen nahezu in Echtzeit zu ermöglichen. Darüber hinaus kann Azure Monitor Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
+# <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Datenquellen für das Sammeln von Windows- und Linux-Leistungsdaten mit dem Log Analytics-Agent
+Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Azure Monitor kann in sehr kurzen Intervallen Leistungsindikatoren von Log Analytics-Agents abrufen, um Analysen in Quasi-Echtzeit zu ermöglichen. Darüber hinaus kann Azure Monitor Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
+
+> [!IMPORTANT]
+> In diesem Artikel wird das Sammeln von Leistungsdaten mit dem [Log Analytics-Agent](log-analytics-agent.md) beschrieben, einem der von Azure Monitor verwendeten Agents. Andere Agents sammeln andere Daten und werden anders konfiguriert. Eine Liste der verfügbaren Agents und der von ihnen gesammelten Daten finden Sie unter [Übersicht über Azure Monitor-Agents](agents-overview.md).
 
 ![Leistungsindikatoren](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Konfigurieren von Leistungsindikatoren
-Sie konfigurieren Leistungsindikatoren über das [Menü „Daten“ in den erweiterten Einstellungen](agent-data-sources.md#configuring-data-sources).
+Sie konfigurieren Leistungsindikatoren über das [Menü „Daten“ in „Erweiterte Einstellungen“](agent-data-sources.md#configuring-data-sources) für den Log Analytics-Arbeitsbereich.
 
 Wenn Sie die Windows- oder Linux-Leistungsindikatoren zum ersten Mal für einen neuen Arbeitsbereich konfigurieren, haben Sie die Möglichkeit, schnell mehrere allgemeine Indikatoren zu erstellen.  Diese werden in einer Liste aufgeführt, und neben jedem Indikator finden Sie ein Kontrollkästchen.  Stellen Sie sicher, dass alle Leistungsindikatoren aktiviert sind, die Sie anfänglich erstellen möchten, und klicken Sie dann auf **Ausgewählte Leistungsindikatoren hinzufügen**.
 
@@ -42,7 +38,7 @@ Sie können für Windows-Leistungsindikatoren eine bestimmte Instanz für jeden 
 
 ![Windows-Leistungsindikatoren konfigurieren](media/data-sources-performance-counters/configure-windows.png)
 
-Gehen Sie folgendermaßen vor, um einen neuen Windows-Leistungsindikator hinzuzufügen, aus dem Daten gesammelt werden sollen.
+Gehen Sie folgendermaßen vor, um einen neuen Windows-Leistungsindikator hinzuzufügen, aus dem Daten gesammelt werden sollen. Beachten Sie, dass die V2-Windows-Leistungsindikatoren nicht unterstützt werden.
 
 1. Geben Sie den Namen des Leistungsindikators im Format *Objekt(Instanz)\Indikator* in das Textfeld ein.  Wenn Sie mit der Eingabe beginnen, wird Ihnen eine Liste mit passenden allgemeinen Indikatoren angezeigt.  Sie können einen Indikator aus der Liste auswählen oder selbst einen eingeben.  Sie können auch durch die Angabe von *Objekt\Indikator* alle Instanzen eines bestimmten Leistungsindikators zurückgeben.  
 
@@ -54,28 +50,29 @@ Gehen Sie folgendermaßen vor, um einen neuen Windows-Leistungsindikator hinzuzu
 
 ### <a name="linux-performance-counters"></a>Leistungsindikatoren von Linux
 
-![Linux-Leistungsindikatoren konfigurieren](media/data-sources-performance-counters/configure-linux.png)
+![Linux-Leistungsindikatoren konfigurieren](media/data-sources-performance-counters/configure-linux-1.png)
 
 Gehen Sie folgendermaßen vor, um einen neuen Linus-Leistungsindikator hinzuzufügen, aus dem Daten gesammelt werden sollen.
 
-1. Standardmäßig werden alle Konfigurationsänderungen automatisch per Push an alle Agents weitergegeben.  Bei Linux-Agents wird eine Konfigurationsdatei an den Fluentd-Datensammler gesendet.  Wenn Sie diese Datei manuell auf jedem Linux-Agenten ändern möchten, deaktivieren Sie das Kontrollkästchen *Nachstehende Konfiguration auf meine Linux-Computer anwenden*, und führen Sie die folgenden Anleitungen aus.
-2. Geben Sie den Namen des Leistungsindikators im Format *Objekt(Instanz)\Indikator* in das Textfeld ein.  Wenn Sie mit der Eingabe beginnen, wird Ihnen eine Liste mit passenden allgemeinen Indikatoren angezeigt.  Sie können einen Indikator aus der Liste auswählen oder selbst einen eingeben.  
-3. Klicken Sie auf **+** oder drücken Sie die **EINGABETASTE** um den Indikator der Liste der anderen Leistungsindikatoren für das Objekt hinzuzufügen.
-4. Alle Leistungsindikatoren für ein Objekt verwenden das gleiche **Stichprobenintervall**.  Der Standardwert ist 10 Sekunden.  Sie können einen höheren Wert von bis zu 1800 Sekunden (30 Minuten) festlegen, wenn Sie die Speicheranforderungen der gesammelten Leistungsdaten reduzieren möchten.
-5. Wenn Sie mit dem Hinzufügen von Leistungsindikatoren fertig sind, klicken Sie auf die Schaltfläche **Speichern** am oberen Bildschirmrand, um die Konfiguration zu speichern.
+1. Geben Sie den Namen des Leistungsindikators im Format *Objekt(Instanz)\Indikator* in das Textfeld ein.  Wenn Sie mit der Eingabe beginnen, wird Ihnen eine Liste mit passenden allgemeinen Indikatoren angezeigt.  Sie können einen Indikator aus der Liste auswählen oder selbst einen eingeben.  
+1. Klicken Sie auf **+** oder drücken Sie die **EINGABETASTE** um den Indikator der Liste der anderen Leistungsindikatoren für das Objekt hinzuzufügen.
+1. Alle Leistungsindikatoren für ein Objekt verwenden das gleiche **Stichprobenintervall**.  Der Standardwert ist 10 Sekunden.  Sie können einen höheren Wert von bis zu 1800 Sekunden (30 Minuten) festlegen, wenn Sie die Speicheranforderungen der gesammelten Leistungsdaten reduzieren möchten.
+1. Wenn Sie mit dem Hinzufügen von Leistungsindikatoren fertig sind, klicken Sie auf die Schaltfläche **Speichern** am oberen Bildschirmrand, um die Konfiguration zu speichern.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Konfigurieren von Linux-Leistungsindikatoren in der Konfigurationsdatei
-Sie müssen die Linux-Leistungsindikatoren nicht mithilfe des Azure-Portals konfigurieren, sondern können die Konfigurationsdateien auch auf dem Linux-Agent bearbeiten.  Die gesammelten Leistungsmetriken, werden durch die Konfiguration in **/etc/opt/microsoft/omsagent/\<Arbeitsbereichs-ID\>/conf/omsagent.conf** gesteuert.
+Sie müssen die Linux-Leistungsindikatoren nicht mithilfe des Azure-Portals konfigurieren, sondern können die Konfigurationsdateien auch auf dem Linux-Agent bearbeiten.  Die Leistungsmetriken, die gesammelt werden, werden durch die Konfiguration in **/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** gesteuert.
 
 Jedes Objekt oder jede Kategorie von Leistungsindikatoren, die gesammelt werden sollen, sollten in der Konfigurationsdatei als einzelnes `<source>` -Element definiert sein. Die Syntax folgt dem unten angegebenen Muster.
 
-    <source>
-      type oms_omi  
-      object_name "Processor"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+```xml
+<source>
+    type oms_omi  
+    object_name "Processor"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
+```
 
 
 Die in diesem Element verwendeten Parameter werden in der folgenden Tabelle beschrieben.
@@ -149,40 +146,42 @@ Die folgende Tabelle enthält die Objekte und Leistungsindikatoren, die Sie in d
 
 Im Folgenden wird die Standardkonfiguration für Leistungsmetriken beschrieben.
 
-    <source>
-      type oms_omi
-      object_name "Physical Disk"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 5m
-    </source>
+```xml
+<source>
+    type oms_omi
+    object_name "Physical Disk"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 5m
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Logical Disk"
-      instance_regex ".*
-      counter_name_regex ".*"
-      interval 5m
-    </source>
+<source>
+    type oms_omi
+    object_name "Logical Disk"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 5m
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Processor"
-      instance_regex ".*
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+<source>
+    type oms_omi
+    object_name "Processor"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Memory"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+<source>
+    type oms_omi
+    object_name "Memory"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
+```
 
 ## <a name="data-collection"></a>Datensammlung
-Azure Monitor sammelt alle angegebenen Leistungsindikatoren im angegebenen Stichprobenintervall auf allen Agents, auf denen diese Indikatoren installiert sind.  Die Daten werden nicht aggregiert, und die Rohdaten stehen während des durch Ihr Abonnement festgelegten Zeitraums in allen Protokollabfrageansichten zur Verfügung.
+Azure Monitor sammelt alle angegebenen Leistungsindikatoren im angegebenen Stichprobenintervall auf allen Agents, auf denen diese Indikatoren installiert sind.  Die Daten werden nicht aggregiert, und die Rohdaten stehen während des durch Ihren Log Analytics-Arbeitsbereich festgelegten Zeitraums in allen Protokollabfrageansichten zur Verfügung.
 
 ## <a name="performance-record-properties"></a>Eigenschaften von Leistungsdatensätzen
 Leistungsdatensätze weisen den Typ **Perf** auf und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften.
@@ -191,7 +190,7 @@ Leistungsdatensätze weisen den Typ **Perf** auf und besitzen die in der folgend
 |:--- |:--- |
 | Computer |Computer, auf dem das Ereignis gesammelt wurde. |
 | CounterName |Name des Leistungsindikators. |
-| CounterPath |Vollständiger Pfad des Leistungsindikators im Format \\\\\<Computer\\Objekt(Instanz)\\Indikator |
+| CounterPath |Vollständiger Pfad des Leistungsindikators im Format \\\\\<Computer>\\Objekt(Instanz)\\Leistungsindikator. |
 | CounterValue |Numerischer Wert des Leistungsindikators |
 | InstanceName |Name der Ereignisinstanz.  Leer, wenn keine Instanz vorhanden ist. |
 | ObjectName |Name des Leistungsobjekts. |
@@ -201,12 +200,12 @@ Leistungsdatensätze weisen den Typ **Perf** auf und besitzen die in der folgend
 ## <a name="sizing-estimates"></a>Größeneinschätzung
  Bei der Sammlung der Daten von einem bestimmten Leistungsindikator mit einem Intervall von 10 Sekunden können Sie von etwa 1 MB pro Tag und Instanz ausgehen.  Sie können die Speicheranforderungen eines bestimmten Leistungsindikators anhand der folgenden Formel einschätzen.
 
-    1 MB x (number of counters) x (number of agents) x (number of instances)
+> 1 MB x (Anzahl der Leistungsindikatoren) x (Anzahl der Agents) x (Anzahl der Instanzen)
 
 ## <a name="log-queries-with-performance-records"></a>Protokollabfragen mit Leistungsdatensätzen
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, mit denen Leistungsdatensätze abgerufen werden.
 
-| Abfragen | BESCHREIBUNG |
+| Abfrage | BESCHREIBUNG |
 |:--- |:--- |
 | Perf |Alle Leistungsdaten. |
 | Perf &#124; where Computer == "MyComputer" |Alle Leistungsdaten eines bestimmten Computers. |
@@ -214,9 +213,9 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, mit de
 | Perf &#124; where ObjectName == "Prozessor" and CounterName == "% Prozessorzeit" and InstanceName == "_Total" &#124; summarize AVGCPU = avg(CounterValue) by Computer |Durchschnittliche CPU-Nutzung aller Computer. |
 | Perf &#124; where CounterName == "% Prozessorzeit" &#124; summarize AggregatedValue = max(CounterValue) by Computer |Maximale CPU-Nutzung aller Computer. |
 | Perf &#124; where ObjectName == "Logischer Datenträger" and CounterName == "Aktuelle Warteschlangenlänge" and Computer == "MyComputerName" &#124; summarize AggregatedValue = avg(CounterValue) by InstanceName |Durchschnittliche aktuelle Länge der Datenträgerwarteschlangen aller Instanzen eines bestimmten Computers |
-| Perf &#124; where CounterName == "Übertragungen/s" &#124; summarize AggregatedValue = percentile(CounterValue, 95) by Computer |95\. Perzentil der Datenträgerübertragungen pro Sekunde auf allen Computern. |
+| Perf &#124; where CounterName == "Übertragungen/s" &#124; summarize AggregatedValue = percentile(CounterValue, 95) by Computer |95. Perzentil der Datenträgerübertragungen pro Sekunde auf allen Computern. |
 | Perf &#124; where CounterName == "Prozessorzeit (%)" and InstanceName == "_Total" &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), Computer |Durchschnittliche CPU-Nutzung pro Stunde auf allen Computern |
-| Perf &#124; where Computer == "MyComputer" and CounterName startswith_cs "%" and InstanceName == "_Total" &#124; summarize AggregatedValue = percentile(CounterValue, 70) by bin(TimeGenerated, 1h), CounterName | 70\. Perzentil pro Stunde jedes prozentualen Indikators für einen bestimmten Computer |
+| Perf &#124; where Computer == "MyComputer" and CounterName startswith_cs "%" and InstanceName == "_Total" &#124; summarize AggregatedValue = percentile(CounterValue, 70) by bin(TimeGenerated, 1h), CounterName | 70. Perzentil pro Stunde jedes prozentualen Indikators für einen bestimmten Computer |
 | Perf &#124; where CounterName == "Prozessorzeit (%)" and InstanceName == "_Total" and Computer == "MyComputer" &#124; summarize ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentile(CounterValue, 75), ["max(CounterValue)"] = max(CounterValue) by bin(TimeGenerated, 1h), Computer |Durchschnittliche, minimale, maximale und 75.-Perzentil-CPU-Nutzung pro Stunde für einen bestimmten Computer |
 | Perf &#124; where ObjectName == "MSSQL$INST2:Databases" and InstanceName == "master" | Alle Leistungsdaten aus dem Datenbank-Leistungsobjekt für die Masterdatenbank von der benannten SQL Server-Instanz INST2.  
 

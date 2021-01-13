@@ -6,17 +6,18 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/29/2019
+ms.topic: how-to
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff151ff8e14b5cf9602d4e7e2e9c6cb2118a8a65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 62bfc528886767bc09159ca2a2696c8c9264b307
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64918492"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349938"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurieren der Azure AD-Connector-Kontoberechtigungen 
 
@@ -32,18 +33,18 @@ Für eine Azure AD Connect-Expressinstallation wird ein automatisch generiertes 
 ### <a name="permissions-summary"></a>Zusammenfassung der Berechtigungen 
 Die folgende Tabelle bietet eine Zusammenfassung der für AD-Objekte erforderlichen Berechtigungen: 
 
-| Feature | Berechtigungen |
+| Funktion | Berechtigungen |
 | --- | --- |
-| ms-DS-ConsistencyGuid |Schreibberechtigungen für das Attribut „ms-DS-ConsistencyGuid“, das unter [Entwurfskonzepte – Verwendung von „ms-DS-ConsistencyGuid“ als „sourceAnchor“](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) dokumentiert ist. | 
+| ms-DS-ConsistencyGuid |Lese- und Schreibberechtigungen für das Attribut „ms-DS-ConsistencyGuid“, das unter [Entwurfskonzepte – Verwendung von „ms-DS-ConsistencyGuid“ als „sourceAnchor“](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) dokumentiert ist. | 
 | Kennworthashsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li>Verzeichnisänderungen replizieren: Alle |
-| Exchange-Hybridbereitstellung |Schreibberechtigungen für die Attribute, die in [Exchange-Hybridrückschreiben](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) für Benutzer, Gruppen und Kontakte dokumentiert sind |
+| Exchange-Hybridbereitstellung |Lese- und Schreibberechtigungen für die Attribute, die in [Exchange-Hybridrückschreiben](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) für Benutzer, Gruppen und Kontakte dokumentiert sind. |
 | Öffentlicher Exchange-E-Mail-Ordner |Leseberechtigungen für die Attribute, die im [öffentlichen Exchange-E-Mail-Ordner](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) für öffentliche Ordner dokumentiert sind. | 
-| Kennwortrückschreiben |Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../authentication/howto-sspr-writeback.md) für Benutzer dokumentiert sind |
-| Geräterückschreiben |Schreibberechtigungen für Geräteobjekte und Container, die in [Geräterückschreiben](how-to-connect-device-writeback.md) dokumentiert sind. |
-| Gruppenrückschreiben |Lesen, Erstellen, Aktualisieren und Löschen von Gruppenobjekten für synchronisierte **Office 365-Gruppen**.  Weitere Informationen finden Sie unter [Gruppenrückschreiben](how-to-connect-preview.md#group-writeback).|
+| Kennwortrückschreiben |Lese- und Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../authentication/tutorial-enable-sspr-writeback.md) für Benutzer dokumentiert sind. |
+| Geräterückschreiben |Lese- und Schreibberechtigungen für Geräteobjekte und Container, die in [Geräterückschreiben](how-to-connect-device-writeback.md) dokumentiert sind. |
+| Gruppenrückschreiben |Lesen, Erstellen, Aktualisieren und Löschen von Gruppenobjekten für synchronisierte **Office 365-Gruppen**.|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>Verwenden des ADSyncConfig PowerShell-Moduls 
-Das ADSyncConfig-Modul erfordert die [Remoteserver-Verwaltungstools (RSAT) für AD DS](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools), weil es vom AD DS PowerShell-Modul und den Tools abhängig ist. Um RSAT für AD DS zu installieren, öffnen Sie ein Windows PowerShell-Fenster mit „Als Administrator ausführen“, und führen Sie Folgendes aus: 
+Das ADSyncConfig-Modul erfordert die [Remoteserver-Verwaltungstools (RSAT) für AD DS](/windows-server/remote/remote-server-administration-tools), weil es vom AD DS PowerShell-Modul und den Tools abhängig ist. Um RSAT für AD DS zu installieren, öffnen Sie ein Windows PowerShell-Fenster mit „Als Administrator ausführen“, und führen Sie Folgendes aus: 
 
 ``` powershell
 Install-WindowsFeature RSAT-AD-Tools 
@@ -136,19 +137,19 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
  
 
-|Type |NAME |Access |Gilt für| 
+|type |Name |Zugriff |Gilt für| 
 |-----|-----|-----|-----|
-|ZULASSEN |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-Geräteobjekte| 
-|ZULASSEN |AD DS-Connector-Konto|Alle Eigenschaften lesen |Nachfolger-InetOrgPerson-Objekte| 
-|ZULASSEN |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-Computerobjekte| 
-|ZULASSEN |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-foreignSecurityPrincipal-Objekte| 
-|ZULASSEN |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-Gruppenobjekte| 
-|ZULASSEN |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-Benutzerobjekte| 
-|ZULASSEN |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-Kontaktobjekte| 
+|Allow |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-Geräteobjekte| 
+|Allow |AD DS-Connector-Konto|Alle Eigenschaften lesen |Nachfolger-InetOrgPerson-Objekte| 
+|Allow |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-Computerobjekte| 
+|Allow |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-foreignSecurityPrincipal-Objekte| 
+|Allow |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-Gruppenobjekte| 
+|Allow |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-Benutzerobjekte| 
+|Allow |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-Kontaktobjekte| 
 
  
 ### <a name="configure-ms-ds-consistency-guid-permissions"></a>Konfigurieren von MS-DS-Consistency-Guid-Berechtigungen 
-Um Berechtigungen für das AD DS-Connector-Konto festzulegen, wenn Sie das Attribut „ms-Ds-Consistency-Guid“ als Quellanker verwenden (auch bekannt als „Ich möchte den Quellanker durch Azure verwalten lassen“-Option), führen Sie Folgendes aus: 
+Um Berechtigungen für das AD DS-Connector-Konto festzulegen, wenn Sie das Attribut „ms-Ds-Consistency-Guid“ als Quellanker verwenden (auch bekannt als Option „Ich möchte den Quellanker durch Azure verwalten lassen“), führen Sie Folgendes aus: 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
@@ -162,9 +163,9 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
 
-|Type |NAME |Access |Gilt für|
+|type |Name |Zugriff |Gilt für|
 |-----|-----|-----|-----| 
-|ZULASSEN|AD DS-Connector-Konto|Lese-/Schreibeigenschaft|Nachfolger-Benutzerobjekte|
+|Allow|AD DS-Connector-Konto|Lese-/Schreibeigenschaft|Nachfolger-Benutzerobjekte|
 
 ### <a name="permissions-for-password-hash-synchronization"></a>Berechtigungen für die Kennworthashsynchronisierung 
 Um Berechtigungen für das AD DS-Connector-Konto festzulegen, wenn Kennworthashsynchronisierung verwendet wird, führen Sie Folgendes aus: 
@@ -182,10 +183,10 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
 
-|Type |NAME |Access |Gilt für|
+|type |Name |Zugriff |Gilt für|
 |-----|-----|-----|-----| 
-|ZULASSEN |AD DS-Connector-Konto |Replizieren von Verzeichnisänderungen |Nur dieses Objekt (Domänenstamm)| 
-|ZULASSEN |AD DS-Connector-Konto |Replizieren von Verzeichnisänderungen: Alle |Nur dieses Objekt (Domänenstamm)| 
+|Allow |AD DS-Connector-Konto |Replizieren von Verzeichnisänderungen |Nur dieses Objekt (Domänenstamm)| 
+|Allow |AD DS-Connector-Konto |Replizieren von Verzeichnisänderungen: Alle |Nur dieses Objekt (Domänenstamm)| 
   
 ### <a name="permissions-for-password-writeback"></a>Berechtigungen für das Kennwortrückschreiben 
 Um Berechtigungen für das AD DS-Connector-Konto festzulegen, wenn Kennwortrückschreiben verwendet wird, führen Sie Folgendes aus: 
@@ -202,11 +203,11 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
 
-|Type |NAME |Access |Gilt für|
+|type |Name |Zugriff |Gilt für|
 |-----|-----|-----|-----| 
-|ZULASSEN |AD DS-Connector-Konto |Kennwort zurücksetzen |Nachfolger-Benutzerobjekte| 
-|ZULASSEN |AD DS-Connector-Konto |Schreiben für Eigenschaft „LockoutTime“ |Nachfolger-Benutzerobjekte| 
-|ZULASSEN |AD DS-Connector-Konto |Schreiben für Eigenschaft „pwdLastSet“ |Nachfolger-Benutzerobjekte| 
+|Allow |AD DS-Connector-Konto |Kennwort zurücksetzen |Nachfolger-Benutzerobjekte| 
+|Allow |AD DS-Connector-Konto |Schreiben für Eigenschaft „LockoutTime“ |Nachfolger-Benutzerobjekte| 
+|Allow |AD DS-Connector-Konto |Schreiben für Eigenschaft „pwdLastSet“ |Nachfolger-Benutzerobjekte| 
 
 ### <a name="permissions-for-group-writeback"></a>Berechtigungen für das Gruppenrückschreiben 
 Um Berechtigungen für das AD DS-Connector-Konto festzulegen, wenn Gruppenrückschreiben verwendet wird, führen Sie Folgendes aus: 
@@ -222,11 +223,11 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
 
-|Type |NAME |Access |Gilt für|
+|type |Name |Zugriff |Gilt für|
 |-----|-----|-----|-----| 
-|ZULASSEN |AD DS-Connector-Konto |Generisches Lesen/Schreiben |Alle Attribute einer Objekttypgruppe und von Unterobjekten| 
-|ZULASSEN |AD DS-Connector-Konto |Erstellen/Löschen von untergeordneten Objekten |Alle Attribute einer Objekttypgruppe und von Unterobjekten| 
-|ZULASSEN |AD DS-Connector-Konto |Löschen/Löschen von Strukturobjekten|Alle Attribute einer Objekttypgruppe und von Unterobjekten|
+|Allow |AD DS-Connector-Konto |Generisches Lesen/Schreiben |Alle Attribute einer Objekttypgruppe und von Unterobjekten| 
+|Allow |AD DS-Connector-Konto |Erstellen/Löschen von untergeordneten Objekten |Alle Attribute einer Objekttypgruppe und von Unterobjekten| 
+|Allow |AD DS-Connector-Konto |Löschen/Löschen von Strukturobjekten|Alle Attribute einer Objekttypgruppe und von Unterobjekten|
 
 ### <a name="permissions-for-exchange-hybrid-deployment"></a>Berechtigungen für eine Exchange-Hybridbereitstellung 
 Um Berechtigungen für das AD DS-Connector-Konto festzulegen, wenn eine Exchange-Hybridbereitstellung verwendet wird, führen Sie Folgendes aus: 
@@ -245,12 +246,12 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 Dieses Cmdlet legt die folgenden Berechtigungen fest:  
  
 
-|Type |NAME |Access |Gilt für|
+|type |Name |Zugriff |Gilt für|
 |-----|-----|-----|-----| 
-|ZULASSEN |AD DS-Connector-Konto |Lesen/Schreiben für alle Eigenschaften |Nachfolger-Benutzerobjekte| 
-|ZULASSEN |AD DS-Connector-Konto |Lesen/Schreiben für alle Eigenschaften |Nachfolger-InetOrgPerson-Objekte| 
-|ZULASSEN |AD DS-Connector-Konto |Lesen/Schreiben für alle Eigenschaften |Nachfolger-Gruppenobjekte| 
-|ZULASSEN |AD DS-Connector-Konto |Lesen/Schreiben für alle Eigenschaften |Nachfolger-Kontaktobjekte| 
+|Allow |AD DS-Connector-Konto |Lesen/Schreiben für alle Eigenschaften |Nachfolger-Benutzerobjekte| 
+|Allow |AD DS-Connector-Konto |Lesen/Schreiben für alle Eigenschaften |Nachfolger-InetOrgPerson-Objekte| 
+|Allow |AD DS-Connector-Konto |Lesen/Schreiben für alle Eigenschaften |Nachfolger-Gruppenobjekte| 
+|Allow |AD DS-Connector-Konto |Lesen/Schreiben für alle Eigenschaften |Nachfolger-Kontaktobjekte| 
 
 ### <a name="permissions-for-exchange-mail-public-folders-preview"></a>Berechtigungen für öffentliche Exchange-E-Mail-Ordner (Vorschau) 
 Um Berechtigungen für das AD DS-Connector-Konto festzulegen, wenn die Funktion für öffentliche Exchange-E-Mail-Ordner verwendet wird, führen Sie Folgendes aus: 
@@ -267,9 +268,9 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
 
-|Type |NAME |Access |Gilt für|
+|type |Name |Zugriff |Gilt für|
 |-----|-----|-----|-----| 
-|ZULASSEN |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-PublicFolder-Objekte| 
+|Allow |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-PublicFolder-Objekte| 
 
 ### <a name="restrict-permissions-on-the-ad-ds-connector-account"></a>Einschränken der Berechtigungen für das AD DS-Connector-Konto 
 Dieses PowerShell-Skript verschärft die Berechtigungen für das AD-Connector-Konto, das als Parameter angegeben wird. Das Verschärfen von Berechtigungen umfasst die folgenden Schritte: 
@@ -292,22 +293,21 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
 
-|Type |NAME |Access |Gilt für|
+|type |Name |Zugriff |Gilt für|
 |-----|-----|-----|-----| 
-|ZULASSEN |SYSTEM |Vollzugriff |Dieses Objekt 
-|ZULASSEN |Organisationsadministratoren |Vollzugriff |Dieses Objekt 
-|ZULASSEN |Domänenadministratoren |Vollzugriff |Dieses Objekt 
-|ZULASSEN |Administratoren |Vollzugriff |Dieses Objekt 
-|ZULASSEN |Domänencontroller des Unternehmens |Inhalt auflisten |Dieses Objekt 
-|ZULASSEN |Domänencontroller des Unternehmens |Alle Eigenschaften lesen |Dieses Objekt 
-|ZULASSEN |Domänencontroller des Unternehmens |Leseberechtigungen |Dieses Objekt 
-|ZULASSEN |Authentifizierte Benutzer |Inhalt auflisten |Dieses Objekt 
-|ZULASSEN |Authentifizierte Benutzer |Alle Eigenschaften lesen |Dieses Objekt 
-|ZULASSEN |Authentifizierte Benutzer |Leseberechtigungen |Dieses Objekt 
+|Allow |SYSTEM |Vollzugriff |Dieses Objekt 
+|Allow |Organisationsadministratoren |Vollzugriff |Dieses Objekt 
+|Allow |Domänenadministratoren |Vollzugriff |Dieses Objekt 
+|Allow |Administratoren |Vollzugriff |Dieses Objekt 
+|Allow |Domänencontroller des Unternehmens |Inhalt auflisten |Dieses Objekt 
+|Allow |Domänencontroller des Unternehmens |Alle Eigenschaften lesen |Dieses Objekt 
+|Allow |Domänencontroller des Unternehmens |Leseberechtigungen |Dieses Objekt 
+|Allow |Authentifizierte Benutzer |Inhalt auflisten |Dieses Objekt 
+|Allow |Authentifizierte Benutzer |Alle Eigenschaften lesen |Dieses Objekt 
+|Allow |Authentifizierte Benutzer |Leseberechtigungen |Dieses Objekt 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Azure AD Connect: Konten und Berechtigungen](reference-connect-accounts-permissions.md)
 - [Expressinstallation](how-to-connect-install-express.md)
 - [Benutzerdefinierte Installation](how-to-connect-install-custom.md)
 - [Referenz zu ADSyncConfig](reference-connect-adsyncconfig.md)
-

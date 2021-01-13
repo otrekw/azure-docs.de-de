@@ -1,21 +1,21 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure Analysis Services-Servers mithilfe von PowerShell | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie mithilfe von PowerShell einen Azure Analysis Services-Server erstellen.
+title: 'Schnellstart: Erstellen einer Azure Analysis Services-Instanz mithilfe von PowerShell | Microsoft-Dokumentation'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von PowerShell einen Azure Analysis Services-Server erstellen.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 07/29/2019
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8159cc8d0e00e830f52e1814ac770c4a16f6b957
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.custom: references_regions , devx-track-azurepowershell
+ms.openlocfilehash: 737649538aaf82352e27aec6220b13ba355a7a82
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619340"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89229326"
 ---
-# <a name="quickstart-create-a-server---powershell"></a>Schnellstart: Erstellen eines Servers – PowerShell
+# <a name="quickstart-create-a-server---powershell"></a>Schnellstart: Erstellen eines Servers mit PowerShell
 
 In diesem Schnellstart erfahren Sie, wie Sie mithilfe von PowerShell über die Befehlszeile einen Azure Analysis Services-Server in Ihrem Azure-Abonnement erstellen.
 
@@ -45,7 +45,7 @@ Connect-AzAccount
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden. Wenn Sie Ihren Server erstellen, müssen Sie eine Ressourcengruppe in Ihrem Abonnement angeben. Falls Sie noch nicht über eine Ressourcengruppe verfügen, können Sie mithilfe des Befehls [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine neue Ressourcengruppe erstellen. Im folgenden Beispiel wird eine Ressourcengruppe namens `myResourceGroup` in der Region „USA, Westen“ erstellt.
+Eine [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden. Wenn Sie Ihren Server erstellen, müssen Sie eine Ressourcengruppe in Ihrem Abonnement angeben. Falls Sie noch nicht über eine Ressourcengruppe verfügen, können Sie mithilfe des Befehls [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine neue Ressourcengruppe erstellen. Im folgenden Beispiel wird eine Ressourcengruppe namens `myResourceGroup` in der Region „USA, Westen“ erstellt.
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"
@@ -74,5 +74,3 @@ In diesem Schnellstart haben Sie gelernt, wie Sie einen Server in Ihrem Azure-Ab
 
 > [!div class="nextstepaction"]
 > [Schnellstart: Konfigurieren der Serverfirewall – Portal](analysis-services-qs-firewall.md)      
-> [!div class="nextstepaction"]
-> [Tutorial: Hinzufügen eines Beispielmodells zu Ihrem Server](analysis-services-create-sample-model.md)

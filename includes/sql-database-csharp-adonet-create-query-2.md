@@ -4,20 +4,20 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: bca885f9b19086302fd91d29b8ff6553b7205f28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178169"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86544276"
 ---
 ## <a name="c-program-example"></a>Beispiel für C#-Programm
 
-In den nächsten Abschnitten dieses Artikels wird ein C#-Programm vorgestellt, das ADO.NET zum Senden von Transact-SQL-Anweisungen (T-SQL) an die SQL-Datenbank verwendet. Mit dem C#-Programm werden die folgenden Aktionen gezeigt:
+In den nächsten Abschnitten dieses Artikels wird ein C#-Programm vorgestellt, das ADO.NET zum Senden von Transact-SQL-Anweisungen (T-SQL) an SQL-Datenbank verwendet. Mit dem C#-Programm werden die folgenden Aktionen gezeigt:
 
-- [Verbinden mit der SQL-Datenbank über ADO.NET](#cs_1_connect)
+- [Herstellen einer Verbindung mit SQL-Datenbank über ADO.NET](#cs_1_connect)
 - [Methoden, die T-SQL-Anweisungen zurückgeben](#cs_2_return)
-    - Erstellen von Tabellen.
+    - Erstellen von Tabellen
     - Auffüllen von Tabellen mit Daten
     - Aktualisieren, Löschen und Auswählen von Daten
 - [Übermitteln von T-SQL-Anweisungen an die Datenbank](#cs_3_submit)
@@ -80,9 +80,9 @@ Das C#-Programm ist logisch eine CS-Datei und physisch in mehrere Codeblöcke un
     View the report output here, then press any key to end the program...
     ```
 
-<a name="cs_1_connect"/>
+<a name="cs_1_connect"></a>
 
-### <a name="connect-to-sql-database-using-adonet"></a>Verbinden mit der SQL-Datenbank über ADO.NET
+### <a name="connect-to-sql-database-using-adonet"></a>Herstellen einer Verbindung mit SQL-Datenbank über ADO.NET
 
 ```csharp
 using System;
@@ -130,7 +130,7 @@ namespace csharp_db_test
         }
 ```
 
-<a name="cs_2_return"/>
+<a name="cs_2_return"></a>
 
 ### <a name="methods-that-return-t-sql-statements"></a>Methoden, die T-SQL-Anweisungen zurückgeben
 
@@ -238,7 +238,7 @@ static string Build_6_Tsql_SelectEmployees()
 }
 ```
 
-<a name="cs_3_submit"/>
+<a name="cs_3_submit"></a>
 
 ### <a name="submit-t-sql-to-the-database"></a>Übermitteln von T-SQL-Anweisungen an die Datenbank
 

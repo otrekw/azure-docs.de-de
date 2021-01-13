@@ -1,43 +1,41 @@
 ---
-title: Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peerings für virtuelle Netzwerke – Azure CLI | Microsoft-Dokumentation
+title: Herstellen von Verbindungen zwischen virtuellen Netzwerken mittels VNET-Peering – Azure CLI
 description: In diesem Artikel erfahren Sie, wie Sie mit der Azure CLI durch Peering virtueller Netzwerke Verbindungen zwischen virtuellen Netzwerken herstellen.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: 8e1cf2a1c5503f31a70bc654ae1a211d1ab64581
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9c6399e437fa314aa82e0b41cbf8a170ea3ab72e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203873"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741772"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peerings für virtuelle Netzwerke mit der Azure CLI
 
-Sie können mithilfe von Peerings für virtuelle Netzwerke Verbindungen zwischen virtuellen Netzwerken herstellen. Sobald ein Peering zwischen virtuellen Netzwerken eingerichtet wurde, können Ressourcen in beiden virtuellen Netzwerken untereinander mit der gleichen Latenz und Bandbreite kommunizieren, als befänden sie sich im selben virtuellen Netzwerk. In diesem Artikel werden folgende Vorgehensweisen behandelt:
+Sie können durch Peering virtueller Netzwerke Verbindungen zwischen virtuellen Netzwerken herstellen. Sobald ein Peering zwischen virtuellen Netzwerken eingerichtet wurde, können Ressourcen in beiden virtuellen Netzwerken untereinander mit der gleichen Latenz und Bandbreite kommunizieren, als befänden sie sich im selben virtuellen Netzwerk. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 * Erstellen zweier virtueller Netzwerke
 * Herstellen einer Verbindung zwischen zwei virtuellen Netzwerken mit einem Peering virtueller Netzwerke
 * Bereitstellen eines virtuellen Computers (VM) in jedem virtuellen Netzwerk
 * Kommunikation zwischen VMs
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.0.28 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). 
+- Für diesen Artikel ist mindestens Version 2.0.28 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-virtual-networks"></a>Erstellen virtueller Netzwerke
 
@@ -99,7 +97,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-In der Ausgabe, die nach der Ausführung des vorherigen Befehl zurückgegeben wird, können Sie sehen, dass **peeringState** auf *Initiiert* steht. Das Peering verbleibt jedoch im Zustand *Initiiert*, bis Sie das Peering zwischen *myVirtualNetwork2* und *myVirtualNetwork1* erstellen. Erstellen Sie ein Peering zwischen *myVirtualNetwork2* und *myVirtualNetwork1*. 
+In der Ausgabe, die nach der Ausführung des vorherigen Befehl zurückgegeben wird, können Sie sehen, dass **peeringState** auf *Initiiert* steht. Das Peering verbleibt im Zustand *Initiiert*, bis Sie das Peering zwischen *myVirtualNetwork2* und *myVirtualNetwork1* einrichten. Richten Sie das Peering zwischen *myVirtualNetwork2* und *myVirtualNetwork1* ein. 
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -145,7 +143,7 @@ az vm create \
 
 Erstellen Sie eine VM im virtuellen Netzwerk *myVirtualNetwork2*.
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVm2 \
@@ -157,7 +155,7 @@ az vm create \
 
 Die Erstellung des virtuellen Computers dauert einige Minuten. Nach dem Erstellen der VM zeigt die Azure CLI ähnliche Informationen wie im folgenden Beispiel an: 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm2",
@@ -176,13 +174,13 @@ Notieren Sie sich **publicIpAddress**. Über diese Adresse wird in einem später
 
 Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit der *myVm2*-VM. Ersetzen Sie `<publicIpAddress>` durch die öffentliche IP-Adresse der VM. Im vorherigen Beispiel lautet die öffentliche IP-Adresse *13.90.242.231*.
 
-```bash 
+```bash
 ssh <publicIpAddress>
 ```
 
 Pingen Sie die VM in *myVirtualNetwork1*.
 
-```bash 
+```bash
 ping 10.0.0.4 -c 4
 ```
 
@@ -194,12 +192,12 @@ Schließen Sie die SSH-Sitzung mit der *myVm2*-VM.
 
 Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit [az group delete](/cli/azure/group) entfernen.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie zwei Netzwerke in derselben Azure-Region durch das Peering virtueller Netzwerke verbunden werden. Sie können auch virtuelle Netzwerke in unterschiedlichen [ unterstützten Regionen](virtual-network-manage-peering.md#cross-region) und [verschiedenen Azure-Abonnements](create-peering-different-subscriptions.md#cli) durch Peering verbinden und [Netzwerke vom Typ „Nabe und Speiche“](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) mit Peering erstellen. Weitere Informationen zum Peering in virtuellen Netzwerken finden Sie unter [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md) und [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md).
+In diesem Artikel haben Sie erfahren, wie zwei Netzwerke in derselben Azure-Region durch das Peering virtueller Netzwerke verbunden werden. Sie können auch virtuelle Netzwerke in unterschiedlichen [ unterstützten Regionen](virtual-network-manage-peering.md#cross-region) und [verschiedenen Azure-Abonnements](create-peering-different-subscriptions.md#cli) durch Peering verbinden und [Netzwerke vom Typ „Nabe und Speiche“](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) mit Peering erstellen. Weitere Informationen zum Peering in virtuellen Netzwerken finden Sie unter [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md) und [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md).
 
 Sie können über ein VPN [eine Verbindung zwischen Ihrem eigenen Computer und einem virtuellen Netzwerk herstellen](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und mit Ressourcen in einem virtuellen Netzwerk oder in durch Peering verbundenen virtuellen Netzwerken interagieren. Wiederverwendbare Skripts, um viele der in den Artikeln zu virtuellen Netzwerken behandelten Aufgaben durchzuführen, finden Sie unter [Azure CLI-Beispiele für Linux-VMs](cli-samples.md).

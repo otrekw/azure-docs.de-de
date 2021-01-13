@@ -1,26 +1,27 @@
 ---
-title: Verwenden von symmetrischen Schlüsseln zum Bereitstellen von Legacygeräten mit dem Azure IoT Hub Device Provisioning Service | Microsoft-Dokumentation
-description: Verwenden von symmetrischen Schlüsseln zum Bereitstellen von Legacygeräten mit Ihrer Device Provisioning Service-Instanz
+title: 'Bereitstellen von Geräten mit symmetrischen Schlüsseln: Azure IoT Hub Device Provisioning Service'
+description: Erfahren Sie, wie Sie symmetrische Schlüssel zum Bereitstellen von Geräten mit Ihrer Device Provisioning Service-Instanz (DPS) verwenden.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 07/13/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: 00161f8158ad73591687764528258e1081f81ce2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: eliotga
+ms.openlocfilehash: dc33dcd2c80b2a6d4a1cc27778e49dc06ac48b34
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65914303"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967311"
 ---
-# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Bereitstellen von Legacygeräten mit symmetrischen Schlüsseln
+# <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Bereitstellen von Geräten mit symmetrischen Schlüsseln für Registrierungsgruppen
 
+In diesem Artikel wird gezeigt, wie Sie mehrere Geräte mit symmetrischen Schlüsseln für eine Gruppe von IoT-Hubs mithilfe einer Registrierungsgruppe auf sichere Weise bereitstellen.
 
-Ein häufiges Problem bei vielen Legacygeräten ist, dass diese oft über eine Identität verfügen, die aus nur einem Informationselement besteht. Bei diesen Identitätsinformationen handelt es sich normalerweise um eine MAC-Adresse oder eine Seriennummer. Legacygeräte verfügen unter Umständen nicht über ein Zertifikat, TPM oder ein anderes Sicherheitsfeature, das verwendet werden kann, um das Gerät sicher zu identifizieren. Der Device Provisioning Service für den IoT Hub enthält einen Vorgang zum Nachweisen symmetrischer Schlüssel. Der Nachweis des symmetrischen Schlüssels kann genutzt werden, um ein Gerät anhand von Informationen wie der MAC-Adresse oder der Seriennummer zu identifizieren.
+Einige Geräte verfügen unter Umständen nicht über ein Zertifikat, TPM oder ein anderes Sicherheitsfeature, über das das Gerät sicher identifiziert werden kann. Der Device Provisioning Service bietet ein Verfahren zum [Nachweis mit symmetrischen Schlüsseln](concepts-symmetric-key-attestation.md). Der Nachweis mit symmetrischen Schlüsseln kann genutzt werden, um ein Gerät anhand von eindeutigen Informationen wie der MAC-Adresse oder der Seriennummer zu identifizieren.
 
-Wenn Sie ohne größeren Aufwand ein [Hardwaresicherheitsmodul (HSM)](concepts-security.md#hardware-security-module) und ein Zertifikat installieren können, ist dies unter Umständen ein besserer Ansatz zum Identifizieren und Bereitstellen Ihrer Geräte. Bei diesem Ansatz können Sie nämlich ggf. die Aktualisierung des Codes umgehen, der auf Ihren Geräten bereitgestellt wird, und in Ihr Geräteimage ist kein geheimer Schlüssel eingebettet.
+Wenn Sie ohne größeren Aufwand ein [Hardwaresicherheitsmodul (HSM)](concepts-service.md#hardware-security-module) und ein Zertifikat installieren können, ist dies unter Umständen ein besserer Ansatz zum Identifizieren und Bereitstellen Ihrer Geräte. Bei diesem Ansatz können Sie nämlich ggf. die Aktualisierung des Codes umgehen, der auf Ihren Geräten bereitgestellt wird, und in Ihr Geräteimage ist kein geheimer Schlüssel eingebettet.
 
 In diesem Artikel wird vorausgesetzt, dass weder ein HSM noch ein Zertifikat eine geeignete Option darstellen. Es wird aber davon ausgegangen, dass Sie über eine Methode zum Aktualisieren des Gerätecodes verfügen, um den Device Provisioning Service für die Bereitstellung dieser Geräte zu nutzen. 
 
@@ -28,6 +29,8 @@ Weiterhin wird in diesem Artikel davon ausgegangen, dass das Geräteupdate in ei
 
 In diesem Artikel wird von der Nutzung einer Windows-Arbeitsstation ausgegangen. Allerdings können Sie die Verfahren auch unter Linux ausführen. Ein Beispiel für Linux finden Sie unter [Bereitstellen für Mehrinstanzenfähigkeit](how-to-provision-multitenant.md).
 
+> [!NOTE]
+> Das in diesem Artikel verwendete Beispiel ist in C geschrieben. Es gibt auch ein [C#-Beispiel für einen symmetrischen Schlüssel zum Bereitstellen von Geräten](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample). Wenn Sie dieses Beispiel verwenden möchten, laden Sie das Repository [azure-iot-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) herunter, oder klonen Sie es, und befolgen Sie die Anweisungen im Beispielcode. Befolgen Sie die Anweisungen in diesem Artikel, um über das Portal eine Registrierungsgruppe von symmetrischen Schlüsseln zu erstellen sowie den ID-Bereich und die primären und sekundären Schlüssel der Registrierungsgruppe zu ermitteln, die für die Ausführung des Beispiels erforderlich sind. Sie können mithilfe des Beispiels auch individuelle Registrierungen erstellen.
 
 ## <a name="overview"></a>Übersicht
 
@@ -43,9 +46,12 @@ Der in diesem Artikel veranschaulichte Gerätecode basiert auf dem gleichen Must
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Vollständige Bearbeitung der Schnellstartanleitung [Einrichten des IoT Hub Device Provisioning Service über das Azure-Portal](./quick-setup-auto-provision.md).
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 oder höher mit aktivierter Workload [Desktopentwicklung mit C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
-* Die neueste Version von [Git](https://git-scm.com/download/) ist installiert.
 
+Die folgenden Voraussetzungen gelten für eine Windows-Entwicklungsumgebung. Informationen zu Linux oder macOS finden Sie in der SDK-Dokumentation im entsprechenden Abschnitt unter [Vorbereiten Ihrer Entwicklungsumgebung](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md).
+
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 mit der aktivierten Workload [„Desktopentwicklung mit C++“](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development). Visual Studio 2015 und Visual Studio 2017 werden ebenfalls unterstützt.
+
+* Die neueste Version von [Git](https://git-scm.com/download/) ist installiert.
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>Vorbereiten einer Azure IoT C SDK-Entwicklungsumgebung
 
@@ -57,29 +63,32 @@ Das SDK enthält den Beispielcode für das simulierte Gerät. Dieses simulierte 
 
     Wichtig: Die Voraussetzungen für Visual Studio (Visual Studio und die Workload „Desktopentwicklung mit C++“) müssen **vor** Beginn der Installation von `CMake` auf dem Computer installiert sein. Sobald die Voraussetzungen erfüllt sind und der Download überprüft wurde, installieren Sie das CMake-Buildsystem.
 
-2. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie den folgenden Befehl zum Klonen des Azure IoT C SDK-GitHub-Repositorys aus:
-    
+2. Suchen Sie den Tagnamen für das [aktuelle Release](https://github.com/Azure/azure-iot-sdk-c/releases/latest) des SDK.
+
+3. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie die folgenden Befehle zum Klonen des aktuellen Releases des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus. Verwenden Sie das im vorherigen Schritt gefundene Tag als Wert für den Parameter `-b`:
+
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
+
     Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
 
-
-3. Erstellen Sie ein `cmake`-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. 
+4. Erstellen Sie das Unterverzeichnis `cmake` im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. Führen Sie die folgenden Befehle im `azure-iot-sdk-c`-Verzeichnis aus:
 
     ```cmd/sh
-    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
 
-4. Erstellen Sie mithilfe des folgenden Befehls eine spezifische SDK-Version für Ihre Entwicklungsclientplattform: Im `cmake`-Verzeichnis wird eine Visual Studio-Projektmappe für das simulierte Gerät generiert. 
+5. Erstellen Sie mithilfe des folgenden Befehls eine spezifische SDK-Version für Ihre Entwicklungsclientplattform: Im `cmake`-Verzeichnis wird eine Visual Studio-Projektmappe für das simulierte Gerät generiert. 
 
     ```cmd
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
-    Falls `cmake` Ihren C++-Compiler nicht findet, treten beim Ausführen des obigen Befehls unter Umständen Buildfehler auf. Führen Sie den Befehl in diesem Fall an der [Visual Studio-Eingabeaufforderung](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs) aus. 
+    Falls `cmake` Ihren C++-Compiler nicht findet, treten beim Ausführen des obigen Befehls unter Umständen Buildfehler auf. Führen Sie den Befehl in diesem Fall an der [Visual Studio-Eingabeaufforderung](/dotnet/framework/tools/developer-command-prompt-for-vs) aus. 
 
     Nach erfolgreicher Erstellung ähneln die letzten Ausgabezeilen der folgenden Ausgabe:
 
@@ -112,9 +121,9 @@ Das SDK enthält den Beispielcode für das simulierte Gerät. Dieses simulierte 
 
    - **Schlüssel automatisch generieren**: Aktivieren Sie dieses Kontrollkästchen.
 
-   - **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen**: Wählen Sie **Statische Konfiguration** aus, damit Sie sie einem bestimmten Hub zuweisen können.
+   - **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen**: Wählen Sie **Statische Konfiguration**, um das Zuweisen zu einem bestimmten Hub zu ermöglichen.
 
-   - **Wählen Sie die IoT-Hubs aus, denen diese Gruppe zugewiesen werden kann**: Wählen Sie einen Ihrer Hubs aus.
+   - **Select the IoT hubs this group can be assigned to** (Wählen Sie die IoT-Hubs aus, denen diese Gruppe zugewiesen werden kann): Wählen Sie einen Ihrer Hubs aus.
 
      ![Hinzufügen einer Registrierungsgruppe für den Nachweis des symmetrischen Schlüssels](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
@@ -140,7 +149,8 @@ Erstellen Sie eine eindeutige Registrierungs-ID für Ihr Gerät. Gültige Zeiche
 
 Verwenden Sie für die Generierung des Geräteschlüssels den Gruppenhauptschlüssel, um einen [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)-Wert für die eindeutige Registrierungs-ID für das Gerät zu berechnen und das Ergebnis in das Base64-Format zu konvertieren.
 
-Fügen Sie Ihren Gruppenhauptschlüssel nicht in Ihren Gerätecode ein.
+> [!WARNING]
+> Der Gerätecode sollte nur den abgeleiteten Geräteschlüssel für das jeweilige Gerät enthalten. Fügen Sie Ihren Gruppenhauptschlüssel nicht in Ihren Gerätecode ein. Ein kompromittierter Hauptschlüssel kann die Sicherheit aller Geräte gefährden, die mit ihm authentifiziert werden.
 
 
 #### <a name="linux-workstations"></a>Linux-Arbeitsstationen
@@ -196,13 +206,13 @@ Ihr Gerät verwendet den abgeleiteten Geräteschlüssel mit Ihrer eindeutigen Re
 
 In diesem Abschnitt aktualisieren Sie ein Bereitstellungsbeispiel mit dem Namen **prov\_dev\_client\_sample** im Azure IoT C SDK, das Sie zuvor eingerichtet haben. 
 
-Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellungsanforderung an die Instanz des Device Provisioning-Diensts gesendet wird. Die Startsequenz bewirkt, dass das Gerät erkannt und dem IoT-Hub zugewiesen wird, den Sie in der Registrierungsgruppe konfiguriert haben.
+Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellungsanforderung an die Instanz des Device Provisioning Service gesendet wird. Die Startsequenz bewirkt, dass das Gerät erkannt und dem IoT-Hub zugewiesen wird, den Sie in der Registrierungsgruppe konfiguriert haben.
 
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihren Device Provisioning Service, und notieren Sie sich den Wert unter **_ID-Bereich_** .
+1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihren Device Provisioning Service, und notieren Sie sich den Wert unter **_ID-Bereich_**.
 
     ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. Öffnen Sie in Visual Studio die Projektmappendatei **azure_iot_sdks.sln**, die zuvor durch das Ausführen von CMake generiert wurde. Die Projektmappendatei befindet sich an folgendem Speicherort:
+2. Öffnen Sie in Visual Studio die Projektmappendatei **azure_iot_sdks.sln**, die zuvor durch das Ausführen von CMake generiert wurde. Die Projektmappendatei befindet sich am folgenden Speicherort:
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -239,7 +249,7 @@ Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellu
     prov_dev_set_symmetric_key_info("sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6", "Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=");
     ```
    
-    Speichern Sie die Datei .
+    Speichern Sie die Datei.
 
 7. Klicken Sie mit der rechten Maustaste auf das Projekt **prov\_dev\_client\_sample**, und wählen Sie **Als Startprojekt festlegen** aus. 
 
@@ -280,15 +290,4 @@ Beachten Sie, dass der abgeleitete Geräteschlüssel hierbei als Teil des Images
 
 * Weitere Informationen zur erneuten Bereitstellung finden Sie unter [IoT Hub Device-Konzepte für die erneute Bereitstellung](concepts-device-reprovision.md). 
 * [Schnellstart: Bereitstellen eines simulierten Geräts mit symmetrischen Schlüsseln](quick-create-simulated-device-symm-key.md)
-* Weitere Informationen zum Aufheben der Bereitstellung finden Sie unter [Aufheben der Bereitstellung von Geräten, die zuvor automatisch bereitgestellt wurden](how-to-unprovision-devices.md). 
-
-
-
-
-
-
-
-
-
-
-
+* Weitere Informationen zum Aufheben der Bereitstellung finden Sie unter [Aufheben der Bereitstellung von Geräten, die zuvor automatisch bereitgestellt wurden](how-to-unprovision-devices.md).

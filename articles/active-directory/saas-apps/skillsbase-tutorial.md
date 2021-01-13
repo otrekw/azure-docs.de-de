@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Skills Base | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Skills Base konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 237d90c4-8243-4f80-a305-b5ad9204159e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: a088675bc1610daf275bac77ae222f0e664afd67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b712756b6daf7380998bb98f56113cab29ebb59
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090561"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015161"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Tutorial: Azure Active Directory-Integration mit Skills Base
 
@@ -31,7 +27,7 @@ Die Integration von Skills Base in Azure AD bietet die folgenden Vorteile:
 * Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Skills Base anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -40,6 +36,9 @@ Um die Azure AD-Integration mit Skills Base konfigurieren zu können, benötigen
 
 * Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 * Ein Skills Base-Abonnement, für das einmaliges Anmelden aktiviert ist
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -135,11 +134,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Skills Ba
 
 3. Legen Sie „Single Sign-On“ (Einmaliges Anmelden) auf der Seite **Authentication** (Authentifizierung) auf **SAML 2** fest.
 
-    ![Einmaliges Anmelden](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
+    ![Screenshot der Seite „Authentication“ (Authentifizierung), auf der für das einmalige Anmelden die Option „SAML 2“ ausgewählt ist.](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
 4. Führen Sie auf der Seite **Authentication** (Authentifizierung) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
+    ![Screenshot der Seite „Authentication“ (Authentifizierung), auf der Sie die beschriebenen Werte eingeben können.](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
     a. Klicken Sie auf die Schaltfläche **Update IdP metadata** (IdP-Metadaten aktualisieren) neben der Option **Satus**, und fügen Sie den Inhalt der Metadaten-XML, die sie aus dem Azure-Portal heruntergeladen haben, in das entsprechende Textfeld ein.
 
@@ -171,7 +170,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -210,12 +209,12 @@ In diesem Abschnitt wird eine Benutzerin mit dem Namen Britta Simon in Skills Ba
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Skills Base“ klicken, sollten Sie automatisch bei Ihrer Skills Base-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Skills Base“ klicken, sollten Sie automatisch bei Ihrer Skills Base-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

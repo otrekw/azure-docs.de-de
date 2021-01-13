@@ -1,31 +1,44 @@
 ---
-title: Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung von E-Mail-Adressen – Azure Active Directory | Microsoft-Dokumentation
-description: Hier finden Sie Informationen dazu, wie Sie Ihre Sicherheitsinformationen einrichten, um Ihre Identität mithilfe Ihrer E-Mail-Adresse zu bestätigen.
+title: Einrichten einer E-Mail-Adresse als Überprüfungsmethode – Azure AD
+description: Erfahren Sie, wie Sie Ihre Seite mit den Sicherheitsinformationen (Vorschau) einrichten, um Ihre Identität mithilfe einer E-Mail-Adresse als Überprüfungsmethode zu verifizieren.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/13/2019
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec93574a8da051b5cf77a37af1030d0c22dfc4a9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.author: curtand
+ms.openlocfilehash: 4f0ea55149fc8cfeeb6ef719d67346019b81078a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382898"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83744470"
 ---
-# <a name="set-up-security-info-preview-to-use-your-email-address"></a>Einrichten der Sicherheitsinformationen (Vorschau) zum Verwenden von E-Mail-Adressen
+# <a name="set-up-an-email-address-as-your-verification-method"></a>Einrichten einer E-Mail-Adresse als Überprüfungsmethode
 
 Mit diesen Schritten können Sie Ihre Methode für die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformation** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
 
-Wenn Sie eine Methode für die Kennwortzurücksetzung eingerichtet haben, müssen Sie auch eine zweistufige Überprüfungsmethode per [Authentifikator-App](security-info-setup-auth-app.md), [SMS](security-info-setup-text-msg.md) oder [Telefonanruf](security-info-setup-phone-number.md) einrichten.
-
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+>[!Note]
+>Wenn keine E-Mail-Option angezeigt wird, ist es möglich, dass Ihre Organisation die Verwendung dieser Option nicht als Kennwortzurücksetzungsmethode zulässt. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an den Helpdesk Ihrer Organisation wenden, um weitere Hilfe zu erhalten.
+
+## <a name="security-vs-password-reset-verification"></a>Authentifizierung mittels Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
+
+Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch für die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
+
+| Methode | Syntaxelemente |
+| ------ | -------- |
+| Authenticator-App | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Textnachrichten | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Telefonanrufe | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Sicherheitsschlüssel | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| E-Mail-Konto | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
+| Sicherheitsfragen | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
 
 ## <a name="set-up-your-email-address-from-the-security-info-page"></a>Einrichten der E-Mail-Adresse über die Seite „Sicherheitsinformationen“
 
@@ -36,13 +49,13 @@ Je nach den Einstellungen Ihrer Organisation können Sie Ihre E-Mail-Adresse als
 
 ### <a name="to-set-up-your-email-address"></a>So richten Sie Ihre E-Mail-Adresse ein
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf.
 
     ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile-page.png)
 
 2. Wählen Sie im linken Navigationsbereich den Eintrag **Sicherheitsinformation** oder den entsprechenden Link im Block **Sicherheitsinformation** aus, und klicken Sie dann auf der Seite **Sicherheitsinformation** auf **Methode hinzufügen**.
 
-    ![Seite „Sicherheitsinformationen“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Seite „Sicherheitsinformation“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. Wählen Sie auf der Seite **Methode hinzufügen** in der Dropdownliste die Option **E-Mail** aus, und klicken Sie dann auf **Hinzufügen**.
 
@@ -50,14 +63,14 @@ Je nach den Einstellungen Ihrer Organisation können Sie Ihre E-Mail-Adresse als
 
 4. Geben Sie auf der Seite **E-Mail** Ihre E-Mail-Adresse ein (z.B. alain@gmail.com), und klicken Sie dann auf **Weiter**.
 
-    ![E-Mail-Adresse angeben](media/security-info/securityinfo-myprofile-emailaddress.png)
+    ![Telefonnummer hinzufügen und Telefonanrufe wählen](media/security-info/securityinfo-myprofile-emailaddress.png)
 
     >[!Important]
     >Verwenden Sie nicht die E-Mail-Adresse Ihres Geschäfts-, Schul- oder Unikontos.
 
 5. Geben Sie den Code ein, der an die von Ihnen angegebene E-Mail-Adresse gesendet wurde, und klicken Sie dann auf **Weiter**.
 
-    ![Code eingeben](media/security-info/securityinfo-myprofile-emailcode.png)
+    ![Telefonnummer hinzufügen und SMS auswählen](media/security-info/securityinfo-myprofile-emailcode.png)
 
     Ihre Sicherheitsinformationen werden aktualisiert, und Sie können bei der Kennwortzurücksetzung Ihre E-Mail-Adresse zur Bestätigung Ihrer Identität verwenden.
 
@@ -95,6 +108,6 @@ Basierend auf der Aktion, die Sie ausführen möchten, stehen zusätzliche Mögl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](user-help-reset-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
+- Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](active-directory-passwords-update-your-own-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
 
 - Der Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) enthält Tipps zur Problembehandlung bei Anmeldeproblemen.

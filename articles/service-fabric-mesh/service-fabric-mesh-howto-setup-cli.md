@@ -1,25 +1,21 @@
 ---
-title: Einrichten der Azure Service Fabric Mesh CLI | Microsoft Docs
-description: Erfahren Sie, wie die Azure Service Fabric CLI eingerichtet wird.
-services: service-fabric-mesh
-keywords: ''
-author: dkkapur
-ms.author: dekapur
+title: Einrichten der Azure Service Fabric Mesh-CLI
+description: Die Service Fabric Mesh-Befehlszeilenschnittstelle (Command Line Interface, CLI) ist zum Bereitstellen und Verwalten von Ressourcen lokal und in Azure Service Fabric Mesh erforderlich. Die Einrichtung erfolgt folgendermaßen.
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 46b2a9a0c4d8a1d9e0fa069d512670dffb94fc28
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: ea4a7764cf1ede1cfaf53b1097034c5894660376
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173763"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660677"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Einrichten der Service Fabric Mesh-CLI
-Die Service Fabric Mesh-Befehlszeilenschnittstelle (Command Line Interface, CLI) ist zum Bereitstellen und Verwalten von Ressourcen lokal und in Azure Service Fabric Mesh erforderlich. 
+Die Service Fabric Mesh-Befehlszeilenschnittstelle (Command Line Interface, CLI) ist zum Bereitstellen und Verwalten von Ressourcen lokal und in Azure Service Fabric Mesh erforderlich. Die Einrichtung erfolgt folgendermaßen.
 
-Es gibt drei Arten der CLI, die Sie verwenden können. Sie sind unten in der Tabelle zusammengefasst. 
+Es gibt drei Arten der CLI, die Sie verwenden können. Sie sind unten in der Tabelle zusammengefasst.
 
 | CLI-Modul | Zielumgebung |  BESCHREIBUNG | 
 |---|---|---|
@@ -29,26 +25,27 @@ Es gibt drei Arten der CLI, die Sie verwenden können. Sie sind unten in der Tab
 
 Für die Vorschauversion wird die Azure Service Fabric Mesh CLI als eine Erweiterung der Azure CLI bereitgestellt. Sie können sie in der Azure Cloud Shell oder in einer lokalen Installation der Azure CLI installieren. 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+- Für diesen Artikel ist mindestens die Version 2.0.67 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="install-the-azure-service-fabric-mesh-cli"></a>Installieren der Azure Service Fabric Mesh-CLI
-1. Sie müssen Azure CLI 2.0.67 oder höher installieren. Führen Sie `az --version` aus, um die Version zu finden. Informationen zur Installation und zu einem Upgrade auf die neueste Version der CLI finden Sie unter [Installieren der Azure CLI][azure-cli-install].
 
-2. Installieren Sie das Azure Service Fabric Mesh-CLI-Erweiterungsmodul mit dem folgenden Befehl. 
+Installieren Sie mithilfe des folgenden Befehls das Azure Service Fabric Mesh-CLI-Erweiterungsmodul (sofern noch nicht geschehen): 
+ 
+```azurecli-interactive
+az extension add --name mesh
+```
 
-    ```azurecli-interactive
-    az extension add --name mesh
-    ```
+Ist das Modul bereits installiert, verwenden Sie den folgenden Befehl, um Ihr bereits vorhandenes Azure Service Fabric Mesh-CLI-Modul zu aktualisieren:
 
-3. Verwenden Sie zum Aktualisieren eines vorhandenen Azure Service Fabric Mesh-CLI-Moduls den folgenden Befehl.
-
-    ```azurecli-interactive
-    az extension update --name mesh
-    ```
+```azurecli-interactive
+az extension update --name mesh
+```
 
 ## <a name="install-the-service-fabric-cli-sfctl"></a>Installieren der Service Fabric-CLI (sfctl) 
 
-Befolgen Sie die Anleitung unter [Azure Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli). Das Modul **sfctl** kann für die Bereitstellung von Anwendungen basierend auf dem Ressourcenmodell für Service Fabric-Cluster auf Ihrem lokalen Computer verwendet werden. 
+Befolgen Sie die Anleitung unter [Azure Service Fabric CLI](../service-fabric/service-fabric-cli.md). Das Modul **sfctl** kann für die Bereitstellung von Anwendungen basierend auf dem Ressourcenmodell für Service Fabric-Cluster auf Ihrem lokalen Computer verwendet werden. 
 
 ## <a name="install-the-maven-cli"></a>Installieren der Maven-CLI 
 

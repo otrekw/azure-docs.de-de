@@ -7,14 +7,14 @@ ms.service: site-recovery
 services: site-recovery
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 03/04/2019
+ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 2156ee6cf27ecfa32b19ad5bbef7549e99c3f7ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61280625"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371986"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Beheben von Fehlern beim Ausführen eines Failovers einer VMware-VM oder eines physischen Computers nach Azure
 
@@ -54,9 +54,11 @@ Um den Starttyp der Treiber für das **Windows-Gastbetriebssystem** manuell zu �
 
     Es wird folgendes Ergebnis ausgegeben, wenn eine Hydration erforderlich ist:
 
-        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    ```output
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
-        This system doesn't meet no-hydration requirement.
+    This system doesn't meet no-hydration requirement.
+    ```
 
     Wenn für die VM keine Hydration erforderlich ist, gibt das Skript folgendes Ergebnis aus: „Für dieses System ist keine Hydration erforderlich“. In diesem Fall befinden sich alle Treiber und Dienste im von Azure geforderten Zustand und eine Hydration auf der VM ist nicht erforderlich.
 
@@ -65,28 +67,34 @@ Um den Starttyp der Treiber für das **Windows-Gastbetriebssystem** manuell zu �
     `.\Script-no-hydration.ps1 -set`
     
     Damit wird der Startuptyp der Treiber und konvertiert und das folgende Ergebnis ausgegeben:
-    
-        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0 
 
-        Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0 
+    ```output
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
-        This system is now no-hydration compatible. 
+    Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0
+
+    This system is now no-hydration compatible.
+    ```
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Fehler beim Verbindungsaufbau über RDP/SSH mit dem virtuellen Computer (VM), für den ein Failover ausgeführt wurde, aufgrund ausgegrauter Schaltfläche „Verbinden“ auf der VM
 
+Ausführliche Anweisungen zur Behandlung von RDP-Problemen finden Sie in der Dokumentation [hier](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md).
+
+Ausführliche Anweisungen zur Behandlung von SSH-Problemen finden Sie in der Dokumentation [hier](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md).
+
 Wenn die Schaltfläche **Verbinden** auf dem fehlerhaften virtuellen Computer abgeblendet ist und Sie nicht über ExpressRoute oder Site-to-Site-VPN mit Azure verbunden sind, gehen Sie wie folgt vor:
 
-1. Navigieren Sie zu **VM** > **Netzwerk**, und klicken Sie auf den Namen der jeweiligen Netzwerkschnittstelle.  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Navigieren Sie zu **IP-Konfigurationen**, und klicken Sie dann auf das Namensfeld der gewünschten IP-Konfiguration. ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
-3. Um die öffentliche IP-Adresse zu aktivieren, klicken Sie auf **Aktivieren**. ![Aktivieren der IP-Adresse](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. Klicken Sie auf **Erforderliche Einstellungen konfigurieren** > **Neue erstellen**. ![Neue erstellen](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. Geben Sie den Namen der öffentliche Adresse ein, wählen Sie die Standardoptionen für **SKU** und **Zuweisung**, und klicken Sie dann auf **OK**.
-6. Um die Änderungen nun zu speichern, klicken Sie auf **Speichern**.
+1. Navigieren Sie zu **VM** > **Netzwerk** , und klicken Sie auf den Namen der jeweiligen Netzwerkschnittstelle.  ![Screenshot der Netzwerkseite für einen virtuellen Computer mit dem ausgewählten Namen der Netzwerkschnittstelle](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. Navigieren Sie zu **IP-Konfigurationen** , und klicken Sie dann auf das Namensfeld der gewünschten IP-Konfiguration. ![Screenshot zeigt die Seite „IP-Konfigurationen“ für die Netzwerkschnittstelle mit dem ausgewählten Namen der IP-Konfiguration](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+3. Um die öffentliche IP-Adresse zu aktivieren, klicken Sie auf **Aktivieren** . ![Aktivieren der IP-Adresse](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
+4. Klicken Sie auf **Erforderliche Einstellungen konfigurieren** > **Neue erstellen** . ![Neu erstellen](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+5. Geben Sie den Namen der öffentliche Adresse ein, wählen Sie die Standardoptionen für **SKU** und **Zuweisung** , und klicken Sie dann auf **OK** .
+6. Um die Änderungen nun zu speichern, klicken Sie auf **Speichern** .
 7. Schließen Sie die Bereiche, und navigieren Sie zum Abschnitt **Übersicht** des virtuellen Computers, mit dem per RDP eine Verbindung hergestellt werden soll.
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Verbindung nicht möglich/RDP/SSH – Schaltfläche zum Verbinden des virtuellen Computers verfügbar
 
-Wenn die Schaltfläche **Verbinden** auf dem fehlerhaften virtuellen Computer in Azure verfügbar ist (nicht abgeblendet), überprüfen Sie **Startdiagnose** auf Ihrem virtuellen Computer, und suchen Sie nach den in [diesem Artikel](../virtual-machines/windows/boot-diagnostics.md) aufgeführten Fehlern.
+Wenn die Schaltfläche **Verbinden** auf dem fehlerhaften virtuellen Computer in Azure verfügbar ist (nicht abgeblendet), überprüfen Sie **Startdiagnose** auf Ihrem virtuellen Computer, und suchen Sie nach den in [diesem Artikel](../virtual-machines/troubleshooting/boot-diagnostics.md) aufgeführten Fehlern.
 
 1. Falls der virtuelle Computer nicht gestartet wurde, führen Sie ein Failover auf einen früheren Wiederherstellungspunkt aus.
 2. Wird die Anwendung auf dem virtuellen Computer nicht gestartet, führen Sie ein Failover auf einen anwendungskonsistenten Wiederherstellungspunkt aus.
@@ -105,6 +113,22 @@ Wenn die Schaltfläche **Verbinden** auf dem fehlerhaften virtuellen Computer in
 
 >[!Note]
 >Der Azure-VM-Agent muss vor dem Failover auf dem virtuellen Computer installiert werden, wenn Sie andere Einstellungen als die Startdiagnose aktivieren möchten.
+
+## <a name="unable-to-open-serial-console-after-failover-of-a-uefi-based-machine-into-azure"></a>Serielle Konsole kann nach einem Failover eines UEFI-basierten Computers in Azure nicht geöffnet werden
+
+Wenn Sie eine Verbindung mit dem Computer über RDP herstellen, aber die serielle Konsole nicht öffnen können, führen Sie die folgenden Schritte aus:
+
+* Wenn das Betriebssystem des Computers Red Hat oder Oracle Linux 7.*/8.0 ist, führen Sie den folgenden Befehl auf der Azure-Failover-VM mit root-Berechtigungen aus. Starten Sie die VM nach dem Befehl neu.
+
+  ```console
+  grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+  ```
+
+* Wenn das Betriebssystem des Computers CentOS  7.* ist, führen Sie den folgenden Befehl auf der Azure-Failover-VM mit root-Berechtigungen aus. Starten Sie die VM nach dem Befehl neu.
+
+  ```console
+  grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+  ```
 
 ## <a name="unexpected-shutdown-message-event-id-6008"></a>Nachricht über unerwartetes Herunterfahren (Ereignis-ID 6008)
 
@@ -126,7 +150,7 @@ Erstellen Sie das Masterziel manuell in der vCenter-Instanz, die Ihren Quellcomp
 > 
 > Ermittlung und Fabric-Aktualisierung können bis zu 30 Minuten dauern. 
 
-## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>SSL-Fehler 35 bei der Linux-Masterzielregistrierung beim Konfigurationsserver 
+## <a name="linux-master-target-registration-with-cs-fails-with-a-tls-error-35"></a>TLS-Fehler 35 bei der Linux-Masterzielregistrierung beim Konfigurationsserver 
 
 Die Azure Site Recovery-Masterzielregistrierung beim Konfigurationsserver ist nicht erfolgreich, da auf dem Masterziel der authentifizierte Proxy aktiviert ist. 
  
@@ -144,7 +168,7 @@ So lösen Sie das Problem:
 
 2. Sollte in der Ausgabe der vorherigen Befehle angegeben sein, dass die Einstellung „http_proxy“ oder „https_proxy“ definiert ist, verwenden Sie eine der folgenden Methoden, um die Blockierung der Masterzielkommunikation mit dem Konfigurationsserver zu beseitigen:
    
-   - Laden Sie das [PsExec-Tool](https://aka.ms/PsExec) herunter.
+   - Laden Sie das [PsExec-Tool](/sysinternals/downloads/psexec) herunter.
    - Verwenden Sie das Tool, um auf den Systembenutzerkontext zuzugreifen und zu ermitteln, ob die Proxyadresse konfiguriert ist. 
    - Ist der Proxy konfiguriert, öffnen Sie Internet Explorer mithilfe des PsExec-Tools in einem Systembenutzerkontext.
   
@@ -158,7 +182,7 @@ So lösen Sie das Problem:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Beheben von Fehlern bei der [RDP-Verbindung mit einem virtuellen Windows-Computer](../virtual-machines/windows/troubleshoot-rdp-connection.md)
-- Beheben von Fehlern bei der [SSH-Verbindung mit einem virtuellen Linux-Computer](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md)
+- Beheben von Fehlern bei der [RDP-Verbindung mit einem virtuellen Windows-Computer](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)
+- Beheben von Fehlern bei der [SSH-Verbindung mit einem virtuellen Linux-Computer](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md)
 
-Wenn Sie weitere Hilfe benötigen, veröffentlichen Sie Ihre Abfrage im [Site Recovery-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr), oder hinterlassen einen Kommentar am Ende dieses Dokuments. Wir verfügen über eine aktive Community, die Sie unterstützen kann.
+Wenn Sie weitere Hilfe benötigen, veröffentlichen Sie Ihre Anfrage auf der [Microsoft F&A-Seite für Site Recovery](/answers/topics/azure-site-recovery.html), oder hinterlassen einen Kommentar am Ende dieses Dokuments. Wir verfügen über eine aktive Community, die Sie unterstützen kann.

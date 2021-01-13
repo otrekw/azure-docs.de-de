@@ -1,40 +1,42 @@
 ---
 title: Verwenden der CLI zum Erstellen von Filtern mit Azure Media Services | Microsoft-Dokumentation
-description: In diesem Thema wird gezeigt, wie Sie mithilfe der CLI Filter in Media Services erstellen können.
+description: In diesem Artikel wird gezeigt, wie Sie mithilfe der CLI Filter in Azure Media Services v3 erstellen.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: 26350479f0f066f45c143e1a35061b3a409de309
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: f86b3fbebfaa2eb6fc35d5373eab2bb296ff5043
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786495"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740613"
 ---
-# <a name="creating-filters-with-cli"></a>Erstellen von Filtern mit der CLI 
+# <a name="creating-filters-with-cli"></a>Erstellen von Filtern mit der CLI
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bei der Inhaltsbereitstellung für Ihre Kunden (Streaming von Liveereignissen oder Video on Demand) benötigen Ihre Kunden möglicherweise mehr Flexibilität als in der Manifestdatei für die Standardmediendatei beschrieben. Azure Media Services ermöglicht es Ihnen, Kontofilter und Medienobjektfilter für Ihre Inhalte zu definieren. 
 
-Eine ausführliche Beschreibung dieser Funktion und der Szenarien, in denen sie verwendet wird, finden Sie unter [Dynamische Manifeste](filters-dynamic-manifest-overview.md) und [Filter](filters-concept.md).
+Eine ausführliche Beschreibung dieses Features und der Szenarien, in denen es verwendet wird, finden Sie unter [Dynamische Manifeste](filters-dynamic-manifest-overview.md) und [Filter](filters-concept.md).
 
-In diesem Thema werden das Konfigurieren eines Filters für ein Video on Demand-Medienobjekt und die Verwendung der Befehlszeilenschnittstelle für Media Services v3 zum Erstellen von [Kontofiltern](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) und [Filtern für Medienobjekte](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) gezeigt. 
+In diesem Thema werden das Konfigurieren eines Filters für ein Video on Demand-Medienobjekt und die Verwendung der Befehlszeilenschnittstelle für Media Services v3 zum Erstellen von [Kontofiltern](/cli/azure/ams/account-filter?view=azure-cli-latest) und [Filtern für Medienobjekte](/cli/azure/ams/asset-filter?view=azure-cli-latest) gezeigt. 
 
 > [!NOTE]
 > Lesen Sie die Informationen zu [presentationTimeRange](filters-concept.md#presentationtimerange).
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md) Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos. 
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md) Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos. 
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
@@ -80,7 +82,7 @@ Das folgende Beispiel definiert die Titelauswahlbedingungen, die dem endgültige
 
 ## <a name="create-account-filters"></a>Erstellen von Kontofiltern
 
-Der folgende [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)-Befehl erstellt einen Kontofilter mit [zuvor definierten](#define-a-filter) Titelfilter-Auswahloptionen. 
+Der folgende [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest)-Befehl erstellt einen Kontofilter mit [zuvor definierten](#define-a-filter) Titelfilter-Auswahloptionen. 
 
 Mit diesem Befehl können Sie einen optionalen `--tracks`-Parameter übergeben, der JSON-Code für die ausgewählten Spuren enthält.  Verwenden Sie „@{file}“, um den JSON-Code aus einer Datei zu laden. Wenn Sie die Azure CLI lokal verwenden, geben Sie den gesamten Dateipfad an:
 
@@ -88,17 +90,17 @@ Mit diesem Befehl können Sie einen optionalen `--tracks`-Parameter übergeben, 
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
-Siehe auch [JSON-Beispiele für Filter](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
+Siehe auch [JSON-Beispiele für Filter](/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
-## <a name="create-asset-filters"></a>Erstellen eines Medienobjektfilters
+## <a name="create-asset-filters"></a>Erstellen von Medienobjektfiltern
 
-Der folgende [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)-Befehl erstellt einen Medienobjektfilter mit [zuvor definierten](#define-a-filter) Titelfilter-Auswahloptionen. 
+Der folgende [az ams asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest)-Befehl erstellt einen Medienobjektfilter mit [zuvor definierten](#define-a-filter) Titelfilter-Auswahloptionen. 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
-Siehe auch [JSON-Beispiele für Filter](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter).
+Siehe auch [JSON-Beispiele für Filter](/rest/api/media/assetfilters/createorupdate#create-an-asset-filter).
 
 ## <a name="associate-filters-with-streaming-locator"></a>Zuordnen von Filtern mit Streaminglocator
 
@@ -116,7 +118,7 @@ az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocat
 
 ## <a name="stream-using-filters"></a>Streamen unter Verwendung von Filtern
 
-Sobald Sie Filter definiert haben, können Ihre Kunden diese in der Streaming-URL verwenden. Auf Streamingprotokolle mit adaptiver Bitrate können Filter angewandt werden: Apple HTTP Live Streaming (HLS), MPEG-DASH und Smooth Streaming.
+Sobald Sie Filter definiert haben, können Ihre Kunden diese in der Streaming-URL verwenden. Die Filter können auf Streaminprotokolle mit adaptiver Bitrate angewendet werden: Apple HTTP Live Streaming (HLS), MPEG-DASH und Smooth Streaming.
 
 Die folgende Tabelle zeigt einige Beispiele für URLs mit Filtern:
 
@@ -132,4 +134,4 @@ Die folgende Tabelle zeigt einige Beispiele für URLs mit Filtern:
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Azure-Befehlszeilenschnittstelle](/cli/azure/ams?view=azure-cli-latest)

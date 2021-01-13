@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 4eb794fa35164e3f86a5e3d6f67d446321f91f0a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 26c158145de6ce729d8a7060152b19fb14b63d58
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133666"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561962"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Vorbereiten der Authentifizierung von Anforderungen von Azure Resource Manager
 Sie müssen alle Vorgänge authentifizieren, die Sie mithilfe von [Azure Resource Manager][lnk-authenticate-arm] mit Azure Active Directory (AD) für die Ressourcen ausführen. Die einfachste Möglichkeit hierzu ist die Verwendung von PowerShell oder der Azure-Befehlszeilenschnittstelle.
@@ -68,5 +68,5 @@ Sie haben jetzt eine Azure AD-Anwendung fertig erstellt, mit der die Authentifiz
 * ApplicationId
 * Kennwort
 
-[lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
+[lnk-authenticate-arm]: /rest/api/
 [lnk-powershell-install]: /powershell/azure/install-az-ps

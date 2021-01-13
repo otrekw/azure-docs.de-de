@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7eed3e06ab42671d9674ad3893a88dfe9817e22
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571114"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973455"
 ---
 # <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>Behandeln von Azure AD-Verbindungsproblemen mit dem PowerShell-Modul ADConnectivity-Tool
 
@@ -41,13 +41,13 @@ Auf der Seite **Verzeichnisse verbinden**  im Azure AD Connect-Assistenten verwe
 Bei Auffinden eines dieser Probleme wird eine diesbezügliche Fehlermeldung im AADConnect-Assistenten angezeigt:
 
 
-![Error](media/how-to-connect-adconnectivitytools/error1.png)
+![Fehler](media/how-to-connect-adconnectivitytools/error1.png)
 
 Z. B. wenn wir versuchen, im Bildschirm **Verzeichnisse verbinden** ein Verzeichnis hinzuzufügen, muss Azure AD Connect dies überprüfen und erwartet, in der Lage zu sein, mit einem Domänencontroller über Port 389 kommunizieren zu können.  Ist dies nicht möglich, sehen wir den Fehler, der im obigen Screenshot angezeigt wird.  
 
 Was eigentlich hinter den Kulissen passiert, ist, dass Azure AD Connect die Funktion `Start-NetworkConnectivityDiagnosisTools` aufruft.  Diese Funktion wird aufgerufen, wenn die Überprüfung von Anmeldeinformationen aufgrund eines Netzwerkkonnektivitätsproblems fehlschlägt.
 
-Schließlich wird immer, wenn das Tool vom Assistenten aufgerufen wird, eine detaillierte Protokolldatei generiert. Das Protokoll befindet sich unter **C:\ProgramData\AADConnect\ADConnectivityTool-\<Datum>-\<Uhrzeit>.log**
+Schließlich wird immer, wenn das Tool vom Assistenten aufgerufen wird, eine detaillierte Protokolldatei generiert. Das Protokoll befindet sich unter **C:\ProgramData\AADConnect\ADConnectivityTool-\<date>-\<time>.log**.
 
 ## <a name="adconnectivitytools-post-installation"></a>ADConnectivityTools nach der Installation
 Nachdem Azure AD Connect installiert wurde, kann jede der Funktionen im PowerShell-Modul „ADConnectivityTools“ verwendet werden.  

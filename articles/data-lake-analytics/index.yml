@@ -4,20 +4,18 @@ summary: Azure Data Lake Analytics ermöglicht das Ausführen von Big Data-Analy
 metadata:
   title: Azure Data Lake Analytics
   description: Azure Data Lake Analytics ermöglicht das Ausführen von Big Data-Analyseaufträgen, die sich auf besonders umfangreiche Datasets skalieren lassen.
-  services: data-lake-analytics
   ms.service: data-lake-analytics
-  ms.subservice: subservice
   ms.topic: landing-page
   ms.collection: collection
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 09/13/2019
-  ms.openlocfilehash: 789144730d99a0686856cee29f77227698154cbc
-  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.openlocfilehash: 014dbc3b2337238604cfd585ee1d39c4e8dab85b
+  ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71220016"
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96511371"
 landingContent:
 - title: Informationen zu Data Lake Analytics
   linkLists:
@@ -25,6 +23,8 @@ landingContent:
     links:
     - text: Was ist Azure Data Lake Analytics?
       url: data-lake-analytics-overview.md
+    - text: Neuerungen in Data Lake Analytics
+      url: data-lake-analytics-whats-new.md
   - linkListType: quickstart
     links:
     - text: Erstellen von U-SQL-Aufträgen im Azure-Portal
@@ -40,7 +40,7 @@ landingContent:
     - text: Erste Schritte mit U-SQL
       url: data-lake-analytics-u-sql-get-started.md
     - text: Referenz zur U-SQL-Sprache
-      url: https://docs.microsoft.com/u-sql/
+      url: https://docs.microsoft.com/u-sql
     - text: Erste Schritte mit dem U-SQL-Katalog
       url: data-lake-analytics-u-sql-catalog.md
     - text: Verwenden von benutzerdefinierten Operatoren
@@ -76,7 +76,7 @@ landingContent:
     - text: Hinzufügen eines Benutzers im Azure-Portal
       url: data-lake-analytics-add-users.md
     - text: Verwalten von Azure Data Lake Analytics-Richtlinien
-      url: data-lake-analytics-policies.md
+      url: data-lake-analytics-account-policies.md
 - title: Kontinuierliche Integration und kontinuierliche Bereitstellung
   linkLists:
   - linkListType: how-to-guide
@@ -89,3 +89,21 @@ landingContent:
       url: data-lake-analytics-cicd-test.md
     - text: Verwenden des U-SQL SDK
       url: data-lake-analytics-u-sql-sdk.md
+- title: Grundlegendes zu Spark für U-SQL-Entwickler
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Grundlegendes zu Apache Spark für U-SQL-Entwickler
+      url: understand-spark-for-usql-developers.md
+    - text: Grundlegendes zu Apache Spark-Datenformaten
+      url: understand-spark-data-formats.md
+    - text: Grundlegendes zu Apache Spark-Codekonzepten
+      url: understand-spark-code-concepts.md
+- title: Problembehandlung für U-SQL-Aufträge
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Problembehandlung für U-SQL-Laufzeitfehler
+      url: runtime-troubleshoot.md
+    - text: Problembehandlung für ein .NET-Upgrade
+      url: dotnet-upgrade-troubleshoot.md

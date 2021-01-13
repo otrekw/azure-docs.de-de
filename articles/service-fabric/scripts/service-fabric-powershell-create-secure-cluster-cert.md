@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Erstellen eines Service Fabric-Clusters | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Erstellen eines Service Fabric-Clusters.
+title: Erstellen eines Service Fabric-Clusters in PowerShell
+description: 'Azure PowerShell-Skriptbeispiel: Erstellen eines Service Fabric-Clusters, der mit einem X.509-Zertifikat geschützt wird'
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -13,13 +13,13 @@ ms.workload: multiple
 ms.topic: sample
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.custom: mvc
-ms.openlocfilehash: ac57778f83a9e7c07360e6ff496186ae78a95dbd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: bae42c9ec8643da1563fb6b566d8db4af6039225
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035571"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89078946"
 ---
 # <a name="create-a-service-fabric-cluster"></a>Erstellen von Service Fabric-Clustern
 
@@ -27,7 +27,7 @@ Dieses Beispielskript erstellt einen Service Fabric-Cluster mit fünf Knoten, de
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Installieren Sie bei Bedarf Azure PowerShell mithilfe der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. 
+Installieren Sie bei Bedarf Azure PowerShell mithilfe der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. 
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -52,6 +52,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Azure PowerShell-Beispiele für Azure Service Fabric finden Sie unter [Azure PowerShell-Beispiele](../service-fabric-powershell-samples.md).

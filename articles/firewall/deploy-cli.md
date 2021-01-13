@@ -6,13 +6,13 @@ author: vhorne
 ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
-ms.topic: article
-ms.openlocfilehash: 94db17405457be91795d1588bee68a0deea68246
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.topic: how-to
+ms.openlocfilehash: 6993bd10caf2f7e489de8074e311f75710b83d82
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114823"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659436"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Bereitstellen und Konfigurieren von Azure Firewall mithilfe von Azure CLI
 
@@ -25,7 +25,7 @@ Eine Möglichkeit zur Steuerung des ausgehenden Netzwerkzugriffs aus einem Subne
 
 Die konfigurierten Firewallregeln werden auf den Netzwerkdatenverkehr angewendet, wenn Sie Ihren Netzwerkdatenverkehr an die Firewall als Subnetz-Standardgateway weiterleiten.
 
-In diesem Artikel erstellen Sie der Einfachheit halber ein einzelnes vereinfachtes VNET mit drei Subnetzen. Für Produktionsbereitstellungen wird ein [Hub-Spoke-Modell](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) empfohlen. Die Firewall befindet sich dabei in einem eigenen VNET. Die Workloadserver befinden sich in per Peering verknüpften VNETs in derselben Region mit einem oder mehreren Subnetzen.
+In diesem Artikel erstellen Sie der Einfachheit halber ein einzelnes vereinfachtes VNET mit drei Subnetzen. Für Produktionsbereitstellungen wird ein [Hub-Spoke-Modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) empfohlen. Die Firewall befindet sich dabei in einem eigenen VNET. Die Workloadserver befinden sich in per Peering verknüpften VNETs in derselben Region mit einem oder mehreren Subnetzen.
 
 * **AzureFirewallSubnet:** Das Subnetz mit der Firewall.
 * **Workload-SN:** Das Subnetz mit dem Workloadserver. Der Netzwerkdatenverkehr dieses Subnetzes durchläuft die Firewall.
@@ -35,32 +35,20 @@ In diesem Artikel erstellen Sie der Einfachheit halber ein einzelnes vereinfacht
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten einer Netzwerkumgebung zu Testzwecken
-> * Bereitstellen einer Firewall
-> * Erstellen einer Standardroute
-> * Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf www.google.com
-> * Konfigurieren einer Netzwerkregel, um den Zugriff auf externe DNS-Server zuzulassen
-> * Testen der Firewall
+* Einrichten einer Netzwerkumgebung zu Testzwecken
+* Bereitstellen einer Firewall
+* Erstellen einer Standardroute
+* Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf www.google.com
+* Konfigurieren einer Netzwerkregel, um den Zugriff auf externe DNS-Server zuzulassen
+* Testen der Firewall
 
 Dieses Verfahren kann auch mit dem [Azure-Portal](tutorial-firewall-deploy-portal.md) oder mit [Azure PowerShell](deploy-ps.md) durchgearbeitet werden.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie mindestens die Azure CLI-Version 2.0.4 ausführen. Führen Sie **az --version** aus, um die Version festzustellen. Informationen zum Installieren oder Aktualisieren der Azure CLI finden Sie unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
-
-Installieren Sie die Azure Firewall-Erweiterung:
-
-```azurecli-interactive
-az extension add -n azure-firewall
-```
-
+- Für diesen Artikel ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="set-up-the-network"></a>Einrichten des Netzwerks
 
@@ -79,7 +67,7 @@ az group create --name Test-FW-RG --location eastus
 Dieses virtuelle Netzwerk umfasst drei Subnetze.
 
 > [!NOTE]
-> Die Größe des Subnetzes „AzureFirewallSubnet“ beträgt /26. Weitere Informationen zur Subnetzgröße finden Sie unter [Azure Firewall – Häufig gestellte Fragen](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+> Die Größe des Subnetzes „AzureFirewallSubnet“ beträgt /26. Weitere Informationen zur Subnetzgröße finden Sie unter [Azure Firewall – Häufig gestellte Fragen](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
 ```azurecli-interactive
 az network vnet create \
@@ -284,7 +272,7 @@ Testen Sie nun die Firewall, um sicherzustellen, dass sie wie erwartet funktioni
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   Die Anforderungen an www.google.com sollten erfolgreich sein, die an www.microsoft.com sollten zu einem Fehler führen. Dies zeigt, dass Ihre Firewall-Regeln wie erwartet funktionieren.
+   Die `www.google.com`-Anforderungen sollten erfolgreich sein, und die `www.microsoft.com`-Anforderungen sollten fehlschlagen. Dies zeigt, dass Ihre Firewall-Regeln wie erwartet funktionieren.
 
 Damit haben Sie sich vergewissert, dass die Firewallregeln funktionieren:
 
@@ -302,4 +290,4 @@ az group delete \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Tutorial: Überwachen von Azure Firewall-Protokollen](./tutorial-diagnostics.md)
+* [Tutorial: Überwachen von Azure Firewall-Protokollen](./firewall-diagnostics.md)

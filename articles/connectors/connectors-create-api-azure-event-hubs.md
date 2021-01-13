@@ -1,30 +1,26 @@
 ---
-title: Herstellen einer Verbindung mit Azure Event Hubs – Azure Logic Apps
-description: Verwalten und Überwachen von Ereignissen mit Azure Event Hubs und Azure Logic Apps
+title: Herstellen einer Verbindung mit Azure Event Hubs
+description: Erstellen von automatisierten Aufgaben und Workflows, die Ereignisse mithilfe von Azure Event Hubs und Azure Logic Apps überwachen und verwalten
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 24f66782821f372f5c045dbb82db24fa8b6ad482
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 198a5da63ed90937c53f7f12f3559f15100e8f19
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051078"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88031425"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Überwachen, Erhalten und Senden von Ereignissen mit Azure Event Hubs und Azure Logic Apps
 
-In diesem Artikel wird gezeigt, wie Sie Ereignisse überwachen und verwalten können, die mit dem Azure Event Hubs-Connector aus einer Logik-App heraus an [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) gesendet werden. Auf diese Weise können Sie Logik-Apps erstellen, die Aufgaben und Workflows zum Überprüfen, Senden und Empfangen von Ereignissen aus Ihrem Event Hub automatisieren. Connectorspezifische technische Informationen finden Sie in der [Referenz zum Azure Event Hubs-Connector](https://docs.microsoft.com/connectors/eventhubs/)</a>.
+In diesem Artikel wird gezeigt, wie Sie Ereignisse überwachen und verwalten können, die mit dem Azure Event Hubs-Connector aus einer Logik-App heraus an [Azure Event Hubs](../event-hubs/event-hubs-about.md) gesendet werden. Auf diese Weise können Sie Logik-Apps erstellen, die Aufgaben und Workflows zum Überprüfen, Senden und Empfangen von Ereignissen aus Ihrem Event Hub automatisieren. Connectorspezifische technische Informationen finden Sie in der [Referenz zum Azure Event Hubs-Connector](/connectors/eventhubs/)</a>.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
+* Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
 
 * Einen [Azure Event Hubs-Namespace und Event Hub](../event-hubs/event-hubs-create.md)
 
@@ -66,6 +62,9 @@ In Azure Logic Apps muss jede Logik-App mit einem [Trigger](../logic-apps/logic-
 
 Dieses Beispiel zeigt, wie Sie einen Logik-App-Workflow starten können, wenn neue Ereignisse an Ihren Event Hub gesendet werden. 
 
+> [!NOTE]
+> Alle Event Hub-Trigger sind Trigger mit *langem Abruf*. Das bedeutet, dass ein Trigger alle Ereignisse verarbeitet und dann pro Partition 30 Sekunden lang auf weitere im Event Hub eingehende Ereignisse wartet. Wenn also der Trigger mit vier Partitionen eingerichtet ist, kann es bis zu zwei Minuten dauern, bis der Trigger alle Partitionen abgerufen hat. Werden innerhalb dieser Verzögerung keine Ereignisse empfangen, wird die Triggerausführung übersprungen. Andernfalls setzt der Trigger das Lesen von Ereignissen fort, bis Ihr Event Hub leer ist. Der nächste Triggerabruf erfolgt basierend auf dem in den Triggereigenschaften angegebenen Wiederholungsintervall.
+
 1. Erstellen Sie im Azure-Portal oder in Visual Studio eine leere Logik-App, die den Logic Apps-Designer öffnet. In diesem Beispiel wird das Azure-Portal verwendet.
 
 1. Geben Sie im Suchfeld „Event Hubs“ als Filter ein. Wählen Sie in der Triggerliste den folgenden Trigger aus: **Wenn Ereignisse im Event Hub verfügbar sind – Event Hubs**
@@ -105,11 +104,6 @@ Dieses Beispiel zeigt, wie Sie einen Logik-App-Workflow starten können, wenn ne
 
    Sie können z. B. zum Filtern von Ereignissen nach einem bestimmten Wert (wie einer Kategorie) eine Bedingung hinzufügen, sodass die Aktion **Ereignis senden** nur Ereignisse sendet, die Ihrer Bedingung entsprechen. 
 
-> [!NOTE]
-> Alle Event Hub-Trigger sind Trigger mit *langem Abruf*. Das bedeutet, dass ein Trigger beim Auslösen alle Ereignisse verarbeitet und dann 30 Sekunden lang auf weitere im Event Hub eingehende Ereignisse wartet.
-> Werden innerhalb von 30 Sekunden keine Ereignisse empfangen, wird die Triggerausführung übersprungen. Andernfalls setzt der Trigger das Lesen von Ereignissen fort, bis Ihr Event Hub leer ist.
-> Der nächste Triggerabruf erfolgt basierend auf dem in den Triggereigenschaften angegebenen Wiederholungsintervall.
-
 <a name="add-action"></a>
 
 ## <a name="add-event-hubs-action"></a>Hinzufügen einer Event Hubs-Aktion
@@ -138,7 +132,7 @@ Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Ereignis senden �
    |----------|----------|-------------|
    | **Event Hub-Name** | Ja | Der Event Hub, an den das Ereignis gesendet werden soll. |
    | **Inhalt** | Nein | Der Inhalt für das Ereignis, das Sie senden möchten |
-   | **Properties** | Nein | Die App-Eigenschaften und Werte, die gesendet werden sollen |
+   | **Eigenschaften** | Nein | Die App-Eigenschaften und Werte, die gesendet werden sollen |
    | **Partitionsschlüssel** | Nein | Die ID der [Partition](../event-hubs/event-hubs-features.md#partitions) für die Adresse, an die das Ereignis gesendet werden soll. |
    ||||
 
@@ -156,7 +150,7 @@ Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Ereignis senden �
 
 1. Wenn Sie zur Eingabe von Verbindungsinformationen aufgefordert werden, geben Sie diese Details an:
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Verbindungsname** | Ja | <*connection-name*> | Der Name, der für Ihre Verbindung erstellt werden soll |
    | **Event Hubs-Namespace** | Ja | <*event-hubs-namespace*> | Wählen Sie den Event Hubs-Namespace, den Sie verwenden möchten. |
@@ -177,8 +171,11 @@ Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Ereignis senden �
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details wie Trigger, Aktionen und Limits, wie sie in der OpenAPI-Datei (ehemals Swagger) des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/eventhubs/).
+Technische Details, z.B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/eventhubs/).
+
+> [!NOTE]
+> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
+* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

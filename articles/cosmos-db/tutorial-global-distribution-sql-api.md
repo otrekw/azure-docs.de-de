@@ -1,20 +1,23 @@
 ---
-title: Tutorial zur globalen Verteilung von Azure Cosmos DB mit der SQL-API
-description: Hier erfahren Sie, wie Sie die globale Verteilung von Azure Cosmos DB mithilfe der SQL-API einrichten.
-author: rimman
+title: 'Tutorial: Tutorial zur globalen Verteilung von Azure Cosmos DB mit der SQL-API'
+description: 'Tutorial: Hier erfahren Sie, wie Sie die globale Verteilung von Azure Cosmos DB mithilfe der SQL-API mit .NET, Java, Python und verschiedenen anderen SDKs einrichten.'
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: tutorial
-ms.date: 07/15/2019
-ms.author: rimman
+ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: a566094f88ba9ffd25eadd046ae7254e26b9c2cf
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
+ms.openlocfilehash: aacb8d4ffb98d553b17aa52e4c4b11a4837dc1c6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234597"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337879"
 ---
-# <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Einrichten der globalen Verteilung von Azure Cosmos DB mithilfe der SQL-API
+# <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Tutorial: Einrichten der globalen Verteilung von Azure Cosmos DB mithilfe der SQL-API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal die globale Verteilung von Azure Cosmos DB einrichten und dann mithilfe der SQL-API eine Verbindung herstellen.
 
@@ -22,29 +25,27 @@ In diesem Artikel werden die folgenden Aufgaben behandelt:
 
 > [!div class="checklist"]
 > * Konfigurieren der globalen Verteilung mit dem Azure-Portal
-> * Konfigurieren der globalen Verteilung mit den [SQL-APIs](sql-api-introduction.md)
+> * Konfigurieren der globalen Verteilung mit den [SQL-APIs](./introduction.md)
 
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
+## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a> Herstellen einer Verbindung mit einer bevorzugten Region mithilfe der SQL-API
 
-## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a>Herstellen einer Verbindung mit einer bevorzugten Region mithilfe der SQL-API
+Um von der [globalen Verteilung](distribute-data-globally.md)zu profitieren, können Clientanwendungen in einer Liste die Reihenfolge angeben, in der Regionen bei Dokumentvorgängen bevorzugt verwendet werden sollen. Basierend auf der Azure Cosmos DB-Kontokonfiguration, der aktuellen regionalen Verfügbarkeit und der angegebenen Liste der bevorzugten Regionen wählt das SQL SDK den optimalen Endpunkt für Schreib- und Lesevorgänge aus.
 
-Um von der [globalen Verteilung](distribute-data-globally.md)zu profitieren, können Clientanwendungen in einer Liste die Reihenfolge angeben, in der Regionen bei Dokumentvorgängen bevorzugt verwendet werden sollen. Dies lässt sich durch Einrichten einer Verbindungsrichtlinie erreichen. Basierend auf der Azure Cosmos DB-Kontokonfiguration, der aktuellen regionalen Verfügbarkeit und der angegebenen Liste der bevorzugten Regionen wählt das SQL SDK den optimalen Endpunkt für Schreib- und Lesevorgänge aus.
+Diese Liste wird beim Initialisieren einer Verbindung mithilfe der SQL SDKs angegeben. Die SDKs akzeptieren einen optionalen Parameter `PreferredLocations`, bei dem es sich um eine sortierte Liste von Azure-Regionen handelt.
 
-Diese Liste wird beim Initialisieren einer Verbindung mithilfe der SQL SDKs angegeben. Die SDKs akzeptieren einen optionalen Parameter „PreferredLocations“, bei dem es sich um eine sortierte Liste von Azure-Regionen handelt.
+Das SDK sendet automatisch alle Schreibvorgänge an die aktuell für solche Vorgänge ausgewählte Region. Alle Lesevorgänge werden an die erste verfügbare Region in der Liste der bevorzugten Regionen gesendet. Wenn bei der Anforderung ein Fehler auftritt, führt der Client ein Failover zur nächsten Region auf der Liste durch.
 
-Das SDK sendet automatisch alle Schreibvorgänge an die aktuell für solche Vorgänge ausgewählte Region.
+Das SDK versucht nur in den Regionen, die als bevorzugte Regionen angegeben wurden, Lesevorgänge auszuführen. Wenn beispielsweise ein Azure Cosmos-Konto in vier Regionen verfügbar ist, der Client aber nur zwei Leseregionen (non-write) in `PreferredLocations` angibt, werden keine Lesevorgänge aus einer Leseregion verarbeitet, die nicht in `PreferredLocations` angegeben ist. Wenn die in der Liste `PreferredLocations` angegebenen Leseregionen nicht verfügbar sind, werden Lesevorgänge aus der Schreibregion verarbeitet.
 
-Alle Lesevorgänge werden an die erste verfügbare Region in der Liste der bevorzugten Regionen gesendet. Wenn bei der Anforderung ein Fehler auftritt, führt der Client ein Failover zur nächsten Region auf der Liste durch, usw.
+Die Anwendung kann die vom SDK ausgewählten aktuellen Schreib- und Leseendpunkte anhand von zwei Eigenschaften überprüfen: `WriteEndpoint` und `ReadEndpoint`. Diese stehen im SDK der Version 1.8 und höher zur Verfügung. Wenn die Eigenschaft `PreferredLocations` nicht festgelegt ist, werden alle Anforderungen von der aktuellen Schreibregion verarbeitet.
 
-Die SDKs versuchen nur, in den in „PreferredLocations“ angegebenen Regionen Lesevorgänge auszuführen. Wenn ein Datenbankkonto in vier Regionen verfügbar ist, der Client aber nur zwei Leseregionen (non-write) für PreferredLocations angibt, werden keine Lesevorgänge aus einer Leseregion verarbeitet, die nicht in PreferredLocations angegeben ist. Wenn die in den PreferredLocations angegebenen Leseregionen nicht verfügbar sind, werden Lesevorgänge aus der Schreibregion verarbeitet.
-
-Die Anwendung kann die vom SDK ausgewählten aktuellen Schreib- und Leseendpunkte anhand von zwei Eigenschaften überprüfen: WriteEndpoint und ReadEndpoint. Diese stehen im SDK der Version 1.8 und höher zur Verfügung.
-
-Wenn die PreferredLocations-Eigenschaft nicht festgelegt ist, werden alle Anforderungen von der aktuellen Schreibregion verarbeitet.
+Wenn Sie die bevorzugten Regionen nicht angeben, aber die `setCurrentLocation`-Methode verwendet haben, füllt das SDK die bevorzugten Regionen automatisch basierend auf der aktuellen Region auf, in der der Client ausgeführt wird. Das SDK ordnet die Regionen auf Grundlage der Nähe einer Region zur aktuellen Region an.
 
 ## <a name="net-sdk"></a>.NET SDK
+
 Das SDK kann ohne Codeänderungen verwendet werden. In diesem Fall sendet das SDK automatisch sowohl Lese- als auch Schreibvorgänge an die aktuelle Schreibregion.
 
 Im .NET SDK, Version 1.8 oder höher, besitzt der ConnectionPolicy-Parameter für den DocumentClient-Konstruktor folgende Eigenschaft: Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Diese Eigenschaft weist den Typ „Collection `<string>` “ auf und sollte eine Liste mit Regionsnamen enthalten. Die Zeichenfolgenwerte sind gemäß der Spalte mit den Regionsnamen auf der Seite [Azure-Regionen][regions] formatiert und enthalten keine Leerzeichen vor und nach dem ersten und letzten Zeichen.
@@ -54,7 +55,10 @@ Die aktuellen Schreib- und Leseendpunkte sind in DocumentClient.WriteEndpoint bz
 > [!NOTE]
 > Die URLs für die Endpunkte sollten nicht als langfristige Konstanten betrachtet werden. Sie können jederzeit vom Dienst aktualisiert werden. Das SDK verarbeitet diese Änderung automatisch.
 >
->
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
+
+Wenn Sie das .NET V2 SDK verwenden, legen Sie die bevorzugte Region mithilfe der Eigenschaft `PreferredLocations` fest.
 
 ```csharp
 // Getting endpoints from application settings or other configuration location
@@ -78,13 +82,55 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
+Sie können auch die Eigenschaft `SetCurrentLocation` verwenden und dem SDK erlauben, die bevorzugte Region basierend auf der Nähe auszuwählen.
+
+```csharp
+// Getting endpoints from application settings or other configuration location
+Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
+string accountKey = Properties.Settings.Default.GlobalDatabaseKey;
+  
+ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+
+connectionPolicy.SetCurrentLocation("West US 2"); /
+
+// initialize connection
+DocumentClient docClient = new DocumentClient(
+    accountEndPoint,
+    accountKey,
+    connectionPolicy);
+
+// connect to DocDB
+await docClient.OpenAsync().ConfigureAwait(false);
+```
+
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+Wenn Sie das .NET V3 SDK verwenden, legen Sie die bevorzugte Region mithilfe der Eigenschaft `ApplicationPreferredRegions` fest.
+
+```csharp
+
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+options.ApplicationPreferredRegions = new List<string> {Regions.WestUS, Regions.WestUS2};
+
+CosmosClient client = new CosmosClient(connectionString, options);
+
+```
+
+Sie können auch die Eigenschaft `ApplicationRegion` verwenden und dem SDK erlauben, die bevorzugte Region basierend auf der Nähe auszuwählen.
+
+```csharp
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+// If the application is running in West US
+options.ApplicationRegion = Regions.WestUS;
+
+CosmosClient client = new CosmosClient(connectionString, options);
+```
+
+---
+
 ## <a name="nodejsjavascript"></a>Node.js/JavaScript
-
-Das SDK kann ohne Codeänderungen verwendet werden. In diesem Fall sendet das SDK sowohl Lese- als auch Schreibvorgänge an die aktuelle Schreibregion.
-
-In Version 1.8 oder höher jedes SDKs weist der ConnectionPolicy-Parameter für den DocumentClient-Konstruktor eine neue Eigenschaft auf: DocumentClient.ConnectionPolicy.PreferredLocations. Bei diesem Parameter handelt es sich um ein Zeichenfolgenarray, das eine Liste mit Regionsnamen akzeptiert. Die Namen sind gemäß der Spalte mit den Regionsnamen auf der Seite [Azure-Regionen][regions] formatiert. Sie können auch die vordefinierten Konstanten im bereitgestellten AzureDocuments.Regions-Objekt verwenden.
-
-Die aktuellen Schreib- und Leseendpunkte sind in DocumentClient.getWriteEndpoint bzw. DocumentClient.getReadEndpoint verfügbar.
 
 > [!NOTE]
 > Die URLs für die Endpunkte sollten nicht als langfristige Konstanten betrachtet werden. Sie können jederzeit vom Dienst aktualisiert werden. Das SDK verarbeitet diese Änderung automatisch.
@@ -94,17 +140,14 @@ Die aktuellen Schreib- und Leseendpunkte sind in DocumentClient.getWriteEndpoint
 Im Folgenden finden Sie ein Codebeispiel für Node.js/Javascript.
 
 ```JavaScript
-// Creating a ConnectionPolicy object
-var connectionPolicy = new DocumentBase.ConnectionPolicy();
-
 // Setting read region selection preference, in the following order -
 // 1 - West US
 // 2 - East US
 // 3 - North Europe
-connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe'];
+const preferredLocations = ['West US', 'East US', 'North Europe'];
 
 // initialize the connection
-var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPolicy);
+const client = new CosmosClient{ endpoint, key, connectionPolicy: { preferredLocations } });
 ```
 
 ## <a name="python-sdk"></a>Python SDK
@@ -112,71 +155,72 @@ var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPoli
 Der folgende Code zeigt, wie Sie mit dem Python SDK bevorzugte Standorte festlegen:
 
 ```python
-
 connectionPolicy = documents.ConnectionPolicy()
 connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe']
 client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connectionPolicy)
 
 ```
 
-## <a name="java-v2-sdk"></a>Java V2 SDK
+## <a name="java-v4-sdk"></a><a id="java4-preferred-locations"></a> Java V4 SDK
 
 Der folgende Code zeigt, wie Sie mit dem Java SDK bevorzugte Standorte festlegen:
 
-```java
-ConnectionPolicy policy = new ConnectionPolicy();
-policy.setUsingMultipleWriteLocations(true);
-policy.setPreferredLocations(Arrays.asList("East US", "West US", "Canada Central"));
-AsyncDocumentClient client =
-        new AsyncDocumentClient.Builder()
-                .withMasterKeyOrResourceToken(this.accountKey)
-                .withServiceEndpoint(this.accountEndpoint)
-                .withConnectionPolicy(policy)
-                .build();
-```
+# <a name="async"></a>[Async](#tab/api-async)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Async-API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TutorialGlobalDistributionPreferredLocationAsync)]
+
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Synchrone API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=TutorialGlobalDistributionPreferredLocationSync)]
+
+--- 
 
 ## <a name="rest"></a>REST
-Sobald ein Datenbankkonto in mehreren Regionen zur Verfügung gestellt wurde, können Clients mithilfe einer GET-Anforderung über den folgenden URI die Verfügbarkeit des Kontos abfragen.
 
-    https://{databaseaccount}.documents.azure.com/
+Sobald ein Datenbankkonto in mehreren Regionen zur Verfügung gestellt wurde, können Clients mithilfe einer GET-Anforderung über den URI `https://{databaseaccount}.documents.azure.com/` die Verfügbarkeit des Kontos abfragen.
 
 Der Dienst gibt eine Liste der Regionen und der zugehörigen Azure Cosmos DB-Endpunkt-URIs für die Replikate zurück. Die aktuelle Schreibregion wird in der Antwort angegeben. Der Client kann dann wie folgt den geeigneten Endpunkt für alle weiteren REST-API-Anforderungen auswählen.
 
 Beispielantwort
 
-    {
-        "_dbs": "//dbs/",
-        "media": "//media/",
-        "writableLocations": [
-            {
-                "Name": "West US",
-                "DatabaseAccountEndpoint": "https://globaldbexample-westus.documents.azure.com:443/"
-            }
-        ],
-        "readableLocations": [
-            {
-                "Name": "East US",
-                "DatabaseAccountEndpoint": "https://globaldbexample-eastus.documents.azure.com:443/"
-            }
-        ],
-        "MaxMediaStorageUsageInMB": 2048,
-        "MediaStorageUsageInMB": 0,
-        "ConsistencyPolicy": {
-            "defaultConsistencyLevel": "Session",
-            "maxStalenessPrefix": 100,
-            "maxIntervalInSeconds": 5
-        },
-        "addresses": "//addresses/",
-        "id": "globaldbexample",
-        "_rid": "globaldbexample.documents.azure.com",
-        "_self": "",
-        "_ts": 0,
-        "_etag": null
-    }
-
+```json
+{
+    "_dbs": "//dbs/",
+    "media": "//media/",
+    "writableLocations": [
+        {
+            "Name": "West US",
+            "DatabaseAccountEndpoint": "https://globaldbexample-westus.documents.azure.com:443/"
+        }
+    ],
+    "readableLocations": [
+        {
+            "Name": "East US",
+            "DatabaseAccountEndpoint": "https://globaldbexample-eastus.documents.azure.com:443/"
+        }
+    ],
+    "MaxMediaStorageUsageInMB": 2048,
+    "MediaStorageUsageInMB": 0,
+    "ConsistencyPolicy": {
+        "defaultConsistencyLevel": "Session",
+        "maxStalenessPrefix": 100,
+        "maxIntervalInSeconds": 5
+    },
+    "addresses": "//addresses/",
+    "id": "globaldbexample",
+    "_rid": "globaldbexample.documents.azure.com",
+    "_self": "",
+    "_ts": 0,
+    "_etag": null
+}
+```
 
 * Alle PUT-, POST- und DELETE-Anforderungen müssen an den angegebenen Schreib-URI gesendet werden.
-* Alle GET-Anforderungen sowie weitere Anforderungen ohne Schreibzugriff (z.B. Abfragen) können an einen beliebigen vom Client ausgewählten Endpunkt gesendet werden.
+* Alle GET-Anforderungen sowie weitere Anforderungen ohne Schreibzugriff (z. B. Abfragen) können an einen beliebigen vom Client ausgewählten Endpunkt gesendet werden.
 
 Bei Schreibanforderungen an schreibgeschützte Regionen tritt der HTTP-Fehler 403 („Verboten“) auf.
 
@@ -198,4 +242,3 @@ Sie können jetzt mit dem nächsten Tutorial fortfahren, um zu erfahren, wie Sie
 > [Lokales Entwickeln mit dem Emulator](local-emulator.md)
 
 [regions]: https://azure.microsoft.com/regions/
-

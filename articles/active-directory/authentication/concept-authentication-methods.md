@@ -1,268 +1,115 @@
 ---
-title: Authentifizierungsmethoden – -Azure Active Directory
-description: Verfügbare Authentifizierungsmethoden in Azure AD für die Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung
+title: Authentifizierungsmethoden und -funktionen – Azure Active Directory
+description: Erfahren Sie mehr über die verschiedenen in Azure Active Directory verfügbaren Authentifizierungsmethoden und -funktionen, um Anmeldeereignisse zu verbessern und sicher zu gestalten
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/16/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 12/14/2020
+ms.author: justinha
+author: justinha
 manager: daveba
-ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b0c91357e5ab15b88c92b04fd0896b989e83953
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051449"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562122"
 ---
-# <a name="what-are-authentication-methods"></a>Authentifizierungsmethoden
+# <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welche Authentifizierungs- und Prüfmethoden stehen in Azure Active Directory zur Verfügung?
 
-Wenn Sie als Administrator Authentifizierungsmethoden für Azure Multi-Factor Authentication und für die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) auswählen, empfiehlt es sich, Benutzer zur Registrierung mehrerer Authentifizierungsmethoden zu zwingen. Wenn eine Authentifizierungsmethode für einen Benutzer nicht verfügbar ist, kann er sich mit einer anderen Methode authentifizieren.
+Bei der Anmeldung bei Konten in Azure Active Directory (Azure AD) hat ein Benutzer verschiedene Möglichkeiten, sich zu authentifizieren. Benutzername und Kennwort sind die gängigste Art und Weise, in der ein Benutzer bisher seine Anmeldeinformationen bereitgestellt hat. Dank moderner Authentifizierungs- und Sicherheitsfunktionen in Azure AD sollte dieses Basiskennwort durch sicherere Authentifizierungsmethoden ergänzt oder ersetzt werden.
 
-Administratoren können in einer Richtlinie definieren, welche Authentifizierungsmethoden Benutzern von SSPR und MFA zur Verfügung stehen. Einige Authentifizierungsmethoden sind nicht in allen Funktionen verfügbar. Weitere Informationen zum Konfigurieren von Richtlinien finden Sie in den Artikeln [Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md) und [Bereitstellen von cloudbasierter Azure Multi-Factor Authentication](howto-mfa-getstarted.md).
+![Tabelle mit den bevorzugten Authentifizierungsmethoden in Azure AD und deren Stärken](media/concept-authentication-methods/authentication-methods.png)
 
-Administratoren wird empfohlen, Benutzern mehr als die erforderliche Mindestanzahl von Authentifizierungsmethoden zur Verfügung zu stellen, für den Fall, dass sie auf eine Methode nicht zugreifen können.
+Die sichersten Anmeldeereignisse erzielen Sie mit kennwortlosen Authentifizierungsmethoden wie Windows Hello, FIDO2-Sicherheitsschlüssel und Microsoft Authenticator-App.
 
-|Authentifizierungsmethode|Verwendung|
-| --- | --- |
-| Kennwort | MFA und SSPR |
-| Sicherheitsfragen | Nur SSPR |
-| E-Mail-Adresse | Nur SSPR |
-| Microsoft Authenticator-App | MFA und SSPR |
-| OATH-Hardwaretoken | Public Preview für MFA und SSPR |
-| sms | MFA und SSPR |
-| Anruf | MFA und SSPR |
-| App-Kennwörter | MFA nur in bestimmten Fällen |
+Bei der Benutzeranmeldung bietet Azure AD Multi-Factor Authentication (MFA) zusätzliche Sicherheit im Vergleich zur alleinigen Verwendung eines Kennworts. Der Benutzer kann aufgefordert werden, sich zusätzlich in einer anderen Form zu authentifizieren, z. B. durch die Antwort auf eine Pushbenachrichtigung, die Eingabe eines Codes von einem Software- oder Hardwaretoken oder die Beantwortung einer SMS oder eines Telefonanrufs.
 
-![Verwendete Authentifizierungsmethoden auf dem Anmeldebildschirm](media/concept-authentication-methods/overview-login.png)
+Um die Umgebung für das Onboarding von Benutzern zu vereinfachen und diese sowohl für MFA als auch für SSPR (Self-Service Password Reset, Self-Service-Kennwortzurücksetzung) zu registrieren, empfiehlt es sich, [die kombinierte Registrierung von Sicherheitsinformationen zu aktivieren](howto-registration-mfa-sspr-combined.md). Aus Resilienzgründen ist es empfehlenswert, Benutzer aufzufordern, mehrere Authentifizierungsmethoden zu registrieren. Wenn eine Methode bei der Anmeldung oder bei SSPR für einen Benutzer nicht verfügbar ist, kann er sich wahlweise mit einer anderen Methode authentifizieren. Weitere Informationen finden Sie unter [Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung (Azure AD)](concept-resilient-controls.md).
 
-|     |
-| --- |
-| OATH-Hardwaretoken für MFA und SSPR sind öffentliche Previewfunktionen von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+[Dieses Video](https://www.youtube.com/watch?v=LB2yj4HSptc&feature=youtu.be) soll Sie bei der Wahl der besten Authentifizierungsmethode zum Schutz Ihrer Organisation unterstützen.
 
-## <a name="password"></a>Kennwort
+## <a name="authentication-method-strength-and-security"></a>Stärke und Sicherheit von Authentifizierungsmethoden
 
-Ihr Azure AD-Kennwort gilt als eine Authentifizierungsmethode. Diese Methode **kann nicht deaktiviert werden**.
+Wenn Sie in Ihrer Organisation Features wie Azure AD Multi-Factor Authentication bereitstellen, überprüfen Sie die verfügbaren Authentifizierungsmethoden. Wählen Sie die Methoden aus, die Ihre Anforderungen im Hinblick auf Sicherheit, Nutzbarkeit und Verfügbarkeit erfüllen oder darüber hinausgehen. Verwenden Sie nach Möglichkeit Authentifizierungsmethoden mit der höchsten Sicherheitsstufe.
 
-## <a name="security-questions"></a>Sicherheitsfragen
+In der folgenden Tabelle sind die Sicherheitsaspekte der verfügbaren Authentifizierungsmethoden aufgeführt. Verfügbarkeit ist ein Hinweis darauf, dass der Benutzer die Authentifizierungsmethode verwenden kann, nicht auf die Dienstverfügbarkeit in Azure AD:
 
-Sicherheitsfragen stehen **nur in der Self-Service-Kennwortzurücksetzung in Azure AD** für Nichtadministratorkonten zur Verfügung.
+| Authentifizierungsmethode          | Sicherheit | Benutzerfreundlichkeit | Verfügbarkeit |
+|--------------------------------|:--------:|:---------:|:------------:|
+| Windows Hello for Business     | High     | High      | High         |
+| Microsoft Authenticator-App    | High     | High      | High         |
+| FIDO2-Sicherheitsschlüssel (Vorschau)   | High     | High      | High         |
+| OATH-Hardwaretoken (Vorschau) | Medium   | Medium    | High         |
+| OATH-Softwaretoken           | Medium   | Medium    | High         |
+| SMS                            | Medium   | High      | Medium       |
+| Sprache                          | Medium   | Medium    | Medium       |
+| Kennwort                       | Niedrig      | High      | High         |
 
-Wenn Sie Sicherheitsfragen verwenden, wird empfohlen, diese in Verbindung mit einer anderen Methode zu verwenden. Sicherheitsfragen können weniger sicher als andere Methoden sein, da einige Personen unter Umständen die Antworten auf die Fragen eines anderen Benutzers kennen.
+Aktuelle Informationen zur Sicherheit finden Sie in unseren Blogbeiträgen:
 
-> [!NOTE]
-> Sicherheitsfragen werden privat und sicher in einem Benutzerobjekt im Verzeichnis gespeichert und können nur während der Registrierung von Benutzern beantwortet werden. Es gibt keine Möglichkeit für einen Administrator, die Fragen oder Antworten eines Benutzers zu lesen oder zu ändern.
->
+- [Die Verwendung des Telefonnetzes für die Authentifizierung sollte eingestellt werden.](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)
+- [Authentifizierungsrisiken und Angriffsvektoren](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)
 
-### <a name="predefined-questions"></a>Vordefinierte Fragen
+> [!TIP]
+> Aus Gründen der Flexibilität und Benutzerfreundlichkeit empfehlen wir, die Microsoft Authenticator-App zu verwenden. Diese Authentifizierungsmethode bietet die bestmögliche Benutzererfahrung und verfügt über mehrere Modi, z. B. kennwortlose Authentifizierung, MFA-Pushbenachrichtigungen und OATH-Codes.
 
-* In welcher Stadt haben Sie Ihren ersten Partner bzw. Ihre erste Partnerin kennengelernt?
-* In welcher Stadt haben sich Ihre Eltern kennengelernt?
-* In welcher Stadt lebt Ihr Bruder/Ihre Schwester?
-* Wie heißt die Geburtsstadt Ihres Vaters?
-* In welcher Stadt haben Sie Ihre erste Arbeitsstelle angetreten?
-* Wie heißt die Geburtsstadt Ihrer Mutter?
-* In welcher Stadt haben Sie den Neujahrstag 2000 verbracht?
-* Wie hieß Ihr Lieblingslehrer bzw. Ihre Lieblingslehrerin in der Grundschule mit Nachnamen?
-* Bei welcher Universität haben Sie sich beworben, dort jedoch nicht studiert?
-* An welchem Ort fand Ihre Hochzeitsfeier statt?
-* Wie lautet der 2. Vorname Ihres Vaters?
-* Was ist Ihr Lieblingsgericht?
-* Wie lautet der Vor- und Nachname Ihrer Großmutter mütterlicherseits?
-* Wie lautet der 2. Vorname Ihrer Mutter?
-* In welchem Monat und Jahr ist Ihre älteste Schwester bzw. Ihr ältester Bruder geboren? (z.B. November 1985)
-* Wie lautet der 2. Vorname Ihrer ältesten Schwester bzw. Ihres ältesten Bruders?
-* Wie lautet der Vor- und Nachname Ihres Großvaters väterlicherseits?
-* Wie lautet der 2. Vorname Ihrer jüngsten Schwester bzw. Ihres jüngsten Bruders?
-* Auf welche Schule sind Sie in der sechsten Klasse gegangen?
-* Wie lautet der Vor- und Nachname Ihres besten Freundes bzw. Ihrer besten Freundin in Ihrer Kindheit?
-* Wie lautet der Vor- und Nachname Ihres ersten Partners bzw. Ihrer ersten Partnerin?
-* Wie lautete der Nachname des Lehrers bzw. der Lehrerin Ihres Lieblingsfachs?
-* Welche Marke und welches Modell hatte Ihr erstes Auto oder Motorrad?
-* Wie heißt die erste Schule, die Sie besucht haben?
-* In welchem Krankenhaus wurden Sie geboren?
-* In welcher Straße haben Sie als Kind zuerst gewohnt?
-* Wer war der Held Ihrer Kindheit?
-* Wie hieß Ihr Lieblingskuscheltier?
-* Wie hieß Ihr erstes Haustier?
-* Welchen Spitznamen hatten Sie als Kind?
-* Was war in der Schulzeit Ihre Lieblingssportart?
-* Was war Ihr erster Job?
-* Wie lauten die letzten vier Ziffern der Telefonnummer in Ihrer Kindheit?
-* Was wollten Sie als Kind später einmal werden?
-* Welches ist die berühmteste Person, die Sie kennen gelernt haben?
+## <a name="how-each-authentication-method-works"></a>Funktionsweise der einzelnen Authentifizierungsmethoden
 
-Alle vordefinierten Sicherheitsfragen werden in alle Office 365-Sprachen lokalisiert, basierend auf dem Gebietsschema des Browsers des Benutzers.
+Einige Authentifizierungsmethoden können als primärer Faktor verwendet werden, wenn Sie sich bei einer Anwendung oder einem Gerät anmelden, z. B. mit einem FIDO2-Sicherheitsschlüssel oder einem Kennwort. Andere Authentifizierungsmethoden sind nur als sekundärer Faktor verfügbar, wenn Sie Azure AD Multi-Factor Authentication oder SSPR verwenden.
 
-### <a name="custom-security-questions"></a>Benutzerdefinierte Sicherheitsfragen
+Aus der folgenden Tabelle geht hervor, wann eine Authentifizierungsmethode bei einem Anmeldeereignis verwendet werden kann:
 
-Benutzerdefinierte Sicherheitsfragen werden nicht lokalisiert. Alle benutzerdefinierten Fragen werden auch bei abweichendem Gebietsschema im Browser in der Sprache angezeigt, in der sie in der administrativen Benutzeroberfläche eingegeben wurden. Wenn Sie lokalisierte Fragen benötigen, verwenden Sie die vordefinierten Fragen.
+| Methode                         | Primäre Authentifizierung | Sekundäre Authentifizierung  |
+|--------------------------------|:----------------------:|:-------------------------:|
+| Windows Hello for Business     | Ja                    | MFA                       |
+| Microsoft Authenticator-App    | Ja (Vorschau)          | MFA und SSPR              |
+| FIDO2-Sicherheitsschlüssel (Vorschau)   | Ja                    | MFA                       |
+| OATH-Hardwaretoken (Vorschau) | Nein                     | MFA                       |
+| OATH-Softwaretoken           | Nein                     | MFA                       |
+| SMS                            | Ja (Vorschau)          | MFA und SSPR              |
+| Anruf                     | Nein                     | MFA und SSPR              |
+| Kennwort                       | Ja                    |                           |
 
-Die Länge von benutzerdefinierten Sicherheitsfragen ist auf 200 Zeichen begrenzt.
+All diese Authentifizierungsmethoden können im Azure-Portal und zunehmend auch mithilfe der [Microsoft Graph-REST-API (Betaversion)](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta) konfiguriert werden.
 
-### <a name="security-question-requirements"></a>Anforderungen an Sicherheitsfragen
+Weitere Informationen zur Funktionsweise der einzelnen Authentifizierungsmethoden finden Sie in den folgenden einzelnen konzeptionellen Artikeln:
 
-* Die Mindestanzahl von Zeichen für Antworten ist drei Zeichen.
-* Die maximale Zeichenanzahl für Antworten ist 40 Zeichen.
-* Benutzer können dieselbe Frage nicht mehrmals beantworten.
-* Benutzer können nicht dieselbe Antwort für mehrere Fragen angeben.
-* Bei der Definition von Fragen und Antworten kann ein beliebiger Zeichensatz verwendet werden (einschließlich Unicode).
-* Die Anzahl der definierten Fragen muss größer als oder gleich der Anzahl der für die Registrierung erforderlichen Fragen sein.
-
-## <a name="email-address"></a>E-Mail-Adresse
-
-Die E-Mail-Adresse steht **nur in der Self-Service-Kennwortzurücksetzung in Azure AD** zur Verfügung.
-
-Es wird empfohlen, ein E-Mail-Konto zu verwenden, für dessen Zugriff das Azure AD-Benutzerkennwort nicht erforderlich ist.
-
-## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator-App
-
-Die Microsoft Authenticator-App bietet eine zusätzliche Sicherheitsstufe für Ihr Geschäfts-, Schul-, Uni- oder Microsoft-Konto.
-
-Die Microsoft Authenticator-App ist für [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) und [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) verfügbar.
+* [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-overview)
+* [Microsoft Authenticator-App](concept-authentication-authenticator-app.md)
+* [FIDO2-Sicherheitsschlüssel (Vorschau)](concept-authentication-passwordless.md#fido2-security-keys)
+* [OATH-Hardwaretoken (Vorschau)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
+* [Oath-Softwaretoken](concept-authentication-oath-tokens.md#oath-software-tokens)
+* [Anmeldung (Vorschau)](howto-authentication-sms-signin.md) und [Überprüfung](concept-authentication-phone-options.md#mobile-phone-verification) mit SMS
+* [Überprüfung mit Sprachanruf](concept-authentication-phone-options.md)
+* Kennwort
 
 > [!NOTE]
-> Benutzer können ihre mobile App nicht registrieren, wenn sie sich für die Self-Service-Kennwortzurücksetzung registrieren. Stattdessen haben sie die Möglichkeit, ihre mobile App unter [https://aka.ms/mfasetup](https://aka.ms/mfasetup) oder in den Sicherheitsinformationen in der Registrierungsvorschau unter [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) zu registrieren.
->
+> In Azure AD wird häufig ein Kennwort als primäre Authentifizierungsmethode verwendet. Die Authentifizierungsmethode über Kennwort kann nicht deaktiviert werden. Wenn Sie ein Kennwort als primären Authentifizierungsfaktor verwenden, sollten Sie die Sicherheit von Anmeldeereignissen mithilfe von Azure AD Multi-Factor Authentication erhöhen.
 
-### <a name="notification-through-mobile-app"></a>Benachrichtigung über mobile App
+In bestimmten Szenarien können die folgenden zusätzlichen Überprüfungsmethoden verwendet werden:
 
-Die Microsoft Authenticator-App kann dazu beitragen, nicht autorisierten Zugriff auf Konten zu verhindern und betrügerische Transaktionen zu stoppen, indem sie eine Benachrichtigung an Ihr Smartphone oder Tablett sendet. Überprüfen Sie die Benachrichtigung, und wählen Sie „Bestätigen“ aus, um den Zugriff zuzulassen. Wählen Sie andernfalls „Verweigern“ aus.
-
-> [!WARNING]
-> Wenn bei der Self-Service-Kennwortzurücksetzung nur eine Methode erforderlich ist, steht Benutzern nur der Prüfcode zur Verfügung, **um ein Höchstmaß an Sicherheit zu gewährleisten**.
->
-> Wenn zwei Methoden erforderlich sind, können Benutzer zum Zurücksetzen **ENTWEDER** die Option „Benachrichtigung“ **ODER** die Option „Prüfcode“ verwenden – zusätzlich zu anderen aktivierten Methoden.
->
-
-Wenn Sie das Empfangen einer Benachrichtigung sowie das Erhalten eines Prüfcodes in der mobilen App aktivieren, können Benutzer, die die Microsoft Authenticator-App mithilfe einer Benachrichtigung registrieren, sowohl die Benachrichtigung als auch den Code zum Bestätigen ihrer Identität verwenden.
-
-> [!NOTE]
-> Wenn es in Ihrer Organisation Mitarbeiter gibt, die in China arbeiten oder nach China reisen, müssen Sie beachten, dass die Methode **Benachrichtigung über mobile App** auf **Android-Geräten** in diesem Land nicht funktioniert. Daher sollten diesen Benutzern alternative Methoden zur Verfügung gestellt werden.
-
-### <a name="verification-code-from-mobile-app"></a>Überprüfungscode von der mobilen App
-
-Die Microsoft Authenticator-App und andere Drittanbieter-Apps können als Softwaretoken zum Generieren eines OATH-Prüfcodes verwendet werden. Nachdem Sie Benutzernamen und Kennwort eingegeben haben, geben Sie auf dem Anmeldebildschirm den in der App generierten Code ein. Der Überprüfungscode kann als zweite Authentifizierungsmethode eingegeben werden.
-
-> [!WARNING]
-> Wenn bei der Self-Service-Kennwortzurücksetzung nur eine Methode erforderlich ist, steht Benutzern nur der Prüfcode zur Verfügung, **um ein Höchstmaß an Sicherheit zu gewährleisten**.
->
-
-Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-Hardwaretoken oder Authenticator-Anwendungen wie die Microsoft Authenticator-App, die für die jederzeitige Verwendung konfiguriert sind.
-
-## <a name="oath-hardware-tokens-public-preview"></a>OATH-Hardwaretoken (Öffentliche Vorschau)
-
-OATH ist ein offener Standard, der angibt, wie Einmalkennwortcodes (OTP) generiert werden. Azure AD unterstützt die Verwendung von OATH-TOTP SHA-1-Token der Varianten 30 Sekunden oder 60 Sekunden. Kunden können sich diese Token vom Hersteller ihrer Wahl beschaffen. Geheime Schlüssel sind auf 128 Zeichen beschränkt, was möglicherweise nicht mit allen Token kompatibel ist. Die geheimen Schlüssel müssen in Base32 codiert werden.
-
-![Hochladen von OATH-Token in das OATH-Token-Blatt des MFA-Servers](media/concept-authentication-methods/oath-tokens-azure-ad.png)
-
-OATH-Hardware-Token werden als Teil der öffentlichen Vorschau unterstützt. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Sobald Sie Token erworben haben, müssen Sie sie in einem Format mit kommagetrennten Werten (CSV) einschließlich UPN, Seriennummer, geheimer Schlüssel, Zeitintervall, Hersteller und Modell hochladen, wie das folgende Beispiel zeigt.
-
-```csv
-upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
-```
-
-> [!NOTE]
-> Stellen Sie sicher, dass Sie die Kopfzeile in Ihre CSV-Datei wie oben gezeigt einschließen.
-
-Einmal ordnungsgemäß als CSV-Datei formatiert, kann sich ein Administrator dann beim Azure-Portal anmelden und zu **Azure Active Directory**, **MFA-Server**, **OATH-Token** navigieren und die resultierende CSV-Datei hochladen.
-
-Je nach Größe der CSV-Datei kann die Verarbeitung ein paar Minuten dauern. Klicken Sie auf die Schaltfläche **Aktualisieren**, um den aktuellen Status abzurufen. Wenn in der Datei Fehler vorhanden sind, haben Sie die Option, eine CSV-Datei herunterzuladen, in der alle zu behebenden Fehler für Sie aufgeführt sind.
-
-Sobald alle Fehler behoben sind, kann der Administrator jeden Schlüssel aktivieren, indem er für das zu aktivierende Token auf **Aktivieren** klickt und das in dem Token angezeigte OTP eingibt.
-
-Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-Hardwaretoken oder Authenticator-Anwendungen wie die Microsoft Authenticator-App, die für die jederzeitige Verwendung konfiguriert sind.
-
-## <a name="phone-options"></a>Telefonoptionen
-
-### <a name="mobile-phone"></a>Mobiltelefon
-
-Mobiltelefonbenutzern stehen zwei Optionen zur Verfügung.
-
-Wenn ein Benutzer nicht möchte, dass seine Mobiltelefonnummer im Verzeichnis sichtbar ist, sie aber dennoch für die Kennwortzurücksetzung verwenden möchte, sollten Administratoren die Daten nicht in das Verzeichnis übernehmen. Der Benutzer sollte sein Attribut **Authentifizierungstelefon** über das [Registrierungsportal für die Kennwortzurücksetzung](https://aka.ms/ssprsetup) auffüllen. Administratoren können diese Informationen im Profil des Benutzers anzeigen, sie werden jedoch nicht an anderer Stelle veröffentlicht.
-
-Für ein ordnungsgemäßes Funktionieren müssen Telefonnummern im Format *+Landesvorwahl Telefonnummer* vorliegen (Beispiel: +1 4255551234).
-
-> [!NOTE]
-> Zwischen Landesvorwahl und Telefonnummer muss sich ein Leerzeichen befinden.
->
-> Für die Kennwortzurücksetzung werden Nebenstellen nicht unterstützt. Selbst bei der Angabe im Format +1 4255551234X12345 werden Nebenstellen vor dem Anruf entfernt.
-
-Microsoft kann keine Bereitstellung konsistenter SMS- oder Sprachaufforderungen für Multi-Factor Authentication an dieselbe Nummer garantieren. Im Interesse unserer Benutzer kann Microsoft jederzeit Kurzcodes hinzuzufügen oder entfernen, wenn wir Streckenanpassungen zur Verbesserung der SMS-Bereitstellung vornehmen. Microsoft unterstützt keine Kurzcodes für Länder/Regionen außerhalb der USA und Kanadas.
-
-#### <a name="text-message"></a>Textnachricht
-
-Eine SMS mit einem Prüfcode wird an die Mobiltelefonnummer gesendet. Geben Sie den dort angezeigten Prüfcode ein, um den Vorgang fortzusetzen.
-
-#### <a name="phone-call"></a>Telefonanruf
-
-Sie erhalten einen automatisierten Anruf unter der von Ihnen angegebenen Telefonnummer. Nehmen Sie den Anruf an, und drücken Sie die #-TASTE auf der Telefontastatur, um sich zu authentifizieren.
-
-> [!IMPORTANT]
-> Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversion von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
-
-### <a name="office-phone"></a>Bürotelefon
-
-Sie erhalten einen automatisierten Anruf unter der von Ihnen angegebenen Telefonnummer. Nehmen Sie den Anruf an, und drücken Sie die #-TASTE auf der Telefontastatur, um sich zu authentifizieren.
-
-Für ein ordnungsgemäßes Funktionieren müssen Telefonnummern im Format *+Landesvorwahl Telefonnummer* vorliegen (Beispiel: +1 4255551234).
-
-Das Attribut „Bürotelefon“ wird von Ihrem Administrator verwaltet.
-
-> [!IMPORTANT]
-> Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
-
-> [!NOTE]
-> Zwischen Landesvorwahl und Telefonnummer muss sich ein Leerzeichen befinden.
->
-> Für die Kennwortzurücksetzung werden Nebenstellen nicht unterstützt. Selbst bei der Angabe im Format +1 4255551234X12345 werden Nebenstellen vor dem Anruf entfernt.
-
-### <a name="troubleshooting-phone-options"></a>Problembehandlung bei Telefonoptionen
-
-Häufige Probleme im Zusammenhang mit Authentifizierungsmethoden, die eine Telefonnummer verwenden:
-
-* Gesperrte Anrufer-ID auf einem einzelnen Gerät
-   * Beheben von Geräteproblemen
-* Falsche Telefonnummer, falscher Ländercode, private Telefonnummer und geschäftliche Telefonnummer
-   * Behandeln Sie das Problem in Bezug auf das Benutzerobjekt und konfigurierte Authentifizierungsmethoden. Stellen Sie sicher, dass die richtigen Telefonnummern registriert sind.
-* Falsche PIN eingegeben
-   * Vergewissern Sie sich, dass der Benutzer die richtige PIN verwendet hat, die im Azure MFA-Server registriert ist.
-* Anruf an Voicemail weitergeleitet
-   * Stellen Sie sicher, dass der Benutzer das Telefon eingeschaltet hat und dieser Dienst in seiner Region verfügbar ist, oder verwenden Sie die alternative Methode.
-* Benutzer ist gesperrt
-   * Veranlassen Sie, dass der Administrator den Benutzer im Azure-Portal freigibt.
-* SMS ist auf dem Gerät nicht abonniert
-   * Lassen Sie den Benutzer die Methoden ändern oder SMS auf dem Gerät aktivieren.
-* Fehlerhafter Telekommunikationsanbieter (keine Telefoneingabe erkannt, fehlende DTMF-Töne, gesperrte Anrufer-ID auf mehreren Geräten oder SMS auf mehreren Geräten gesperrt)
-   * Microsoft verwendet mehrere Telekommunikationsanbieter, um Telefonanrufe und SMS-Nachrichten für die Authentifizierung weiterzuleiten. Wenn Sie eines der oben genannten Probleme sehen, lassen Sie den Benutzer versuchen, die Methode innerhalb von 5 Minuten mindestens 5 Mal zu verwenden, und halten Sie die Informationen dieses Benutzers verfügbar, wenn Sie sich an den Microsoft-Support wenden.
-
-## <a name="app-passwords"></a>App-Kennwörter
-
-Bestimmte nicht browserbasierte Apps unterstützen nicht die Multi-Factor Authentication, wenn ein Benutzer für die Multi-Factor Authentication aktiviert wurde und versucht, nicht browserbasierte Apps zu verwenden, kann er sich nicht authentifizieren. Mit einem App-Kennwort können Benutzer den Authentifizierungsvorgang fortsetzen.
-
-Wenn Sie die Multi-Factor Authentication über Richtlinien zum bedingten Zugriff und nicht über die MFA pro Benutzer erzwingen, können Sie keine Anwendungskennwörter erstellen. Anwendungen, die Richtlinien zum bedingten Zugriff für die Zugriffskontrolle verwenden, benötigen keine Anwendungskennwörter.
-
-Wenn für Ihr Unternehmen ein SSO-Verbund mit Azure AD konfiguriert ist und Sie Azure MFA verwenden möchten, sollten Sie folgende Details berücksichtigen:
-
-* App-Kennwörter werden von Azure AD überprüft, sodass der Verbund umgangen wird. Der Verbund wird nur beim Einrichten von App-Kennwörtern verwendet. Die Kennwörter der SSO-Verbundbenutzer werden in der Organisations-ID gespeichert. Wenn ein Benutzer das Unternehmen verlässt, muss diese Information mit DirSync der Organisations-ID hinzugefügt werden. Nach dem Deaktivieren oder Löschen von Konten kann die Synchronisierung bis zu drei Stunden dauern, sodass sich das Deaktivieren bzw. Löschen von App-Kennwörtern in Azure AD verzögert.
-* Lokale Einstellungen für die Clientzugriffssteuerung werden vom App-Kennwort nicht berücksichtigt.
-* Für App-Kennwörter ist keine lokale Funktion zur Protokollierung oder Überwachung der Authentifizierung verfügbar.
-* In bestimmten erweiterten Architekturentwürfen ist bei der Verwendung der zweistufigen Überprüfung mit Clients möglicherweise eine Kombination aus Organisationsbenutzername/-kennwort sowie App-Kennwörtern erforderlich, je nachdem, wo die Authentifizierung stattfindet. Bei Clients, die sich bei einer lokalen Infrastruktur authentifizieren, verwenden Sie einen Organisationsbenutzernamen und ein Organisationskennwort. Für Clients, die bei Azure AD authentifizieren, verwenden Sie das App-Kennwort.
-* Standardmäßig können keine Benutzer App-Kennwörter erstellen. Wenn Sie Benutzern erlauben müssen, App-Kennwörter zu erstellen, wählen Sie in den Einstellungen die Option **Benutzern das Erstellen von App-Kennwörtern zum Anmelden bei Anwendungen gestatten, die nicht auf Browsern basieren** aus.
+* [App-Kennwörter](howto-mfa-app-passwords.md) – Werden für alte Anwendungen verwendet, die keine moderne Authentifizierung unterstützen. Können für die benutzerbezogene Azure AD Multi-Factor Authentication konfiguriert werden.
+* [Sicherheitsfragen](concept-authentication-security-questions.md): Werden nur für SSPR verwendet.
+* [E-Mail-Adresse](concept-sspr-howitworks.md#authentication-methods): Wird nur für SSPR verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Aktivieren der Self-Service-Kennwortzurücksetzung für Ihre Organisation](quickstart-sspr.md)
+Informationen zum Einstieg finden Sie im Tutorial zur [Self-Service-Kennwortzurücksetzung (SSPR)][tutorial-sspr] und im Tutorial zu [Azure AD Multi-Factor Authentication][tutorial-azure-mfa].
 
-[Aktivieren von Azure Multi-Factor Authentication für Ihre Organisation](howto-mfa-getstarted.md)
+Weitere Informationen zu SSPR-Konzepten finden Sie unter [So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD][concept-sspr].
 
-[Aktivieren der kombinierten Registrierung in Ihrem Mandanten](howto-registration-mfa-sspr-combined.md)
+Weitere Informationen zu MFA-Konzepten finden Sie unter [Funktionsweise von Azure AD Multi-Factor Authentication][concept-mfa].
 
-[Dokumentation zur Konfiguration der Methode für die Authentifizierung von Endbenutzern](https://aka.ms/securityinfoguide)
+Im Artikel [API-Übersicht zu Azure AD-Authentifizierungsmethoden](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta) finden Sie weitere Informationen zur Betaversion der REST-API für Microsoft Graph.
+
+Weitere Informationen zu den verwendeten Authentifizierungsmethoden finden Sie unter [Azure AD Multi-Factor Authentication authentication method analysis with PowerShell](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/) (Authentifizierungsmethode von Azure AD Multi-Factor Authentication mit PowerShell).
+
+<!-- INTERNAL LINKS -->
+[tutorial-sspr]: tutorial-enable-sspr.md
+[tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
+[concept-sspr]: concept-sspr-howitworks.md
+[concept-mfa]: concept-mfa-howitworks.md

@@ -1,39 +1,39 @@
 ---
-title: Verwenden der Microsoft Identity Platform zum Anmelden von Benutzern mithilfe der Gewährung für Kennwortanmeldeinformationen des Ressourcenbesitzers (ROPC) | Azure
-description: Support für nicht browserbasierte Authentifizierungsflows mit der Gewährung für Kennwortanmeldeinformationen des Ressourcenbesitzers
+title: Anmelden mit der Gewährung der Kennwortanmeldeinformationen des Ressourcenbesitzers | Azure
+titleSuffix: Microsoft identity platform
+description: Support für nicht browserbasierte Authentifizierungsflows mit der Gewährung der Kennwortanmeldeinformationen des Ressourcenbesitzers (Resource Owner Password Credential, ROPC)
 services: active-directory
-documentationcenter: ''
-author: rwike77
+author: hpsin
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/30/2019
-ms.author: ryanwi
+ms.date: 05/18/2020
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d5324aba5202abb76f07d1eaf43fe214e690393
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 39cd25c2c84e92a0b06bc2ee6c6229ecb2d296d5
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193208"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812538"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft Identity Platform und die OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers
+# <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity Platform und OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers
 
-Die Microsoft Identity Platform unterstützt die [Gewährung für Kennwortanmeldeinformationen des Ressourcenbesitzers (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3). So kann eine Anwendung Benutzer anmelden, indem sie ihr Kennwort direkt verarbeitet. Der ROPC-Flow erfordert ein hohes Maß an Vertrauen und die Freigabe von Benutzeranmeldeinformationen. Sie sollten diesen Flow nur dann verwenden, wenn der andere, sicherere Flow nicht genutzt werden kann.
+Die Microsoft Identity Platform unterstützt die [Gewährung für OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3). So kann eine Anwendung Benutzer anmelden, indem sie ihr Kennwort direkt verarbeitet.  In diesem Artikel wird beschrieben, wie Sie direkt mit dem Protokoll in Ihrer Anwendung programmieren.  Es wird stattdessen empfohlen, ggf. die unterstützten Microsoft Authentication Libraries (MSAL) zu verwenden, um [Token zu erhalten und gesicherte Web-APIs aufzurufen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Sehen Sie sich auch die [Beispiel-Apps an, die MSAL verwenden](sample-v2-code.md).
+
+> [!WARNING]
+> Microsoft empfiehlt, dass Sie _nicht_ den ROPC-Flow verwenden. In den meisten Szenarien sind sicherere Alternativen verfügbar und werden daher empfohlen. Dieser Flow erfordert ein sehr hohes Maß an Vertrauen in die Anwendung und birgt Risiken, die in anderen Flows nicht vorhanden sind. Verwenden Sie diesen Flow nur, wenn kein anderer Flow verfügbar ist, der mehr Sicherheit bietet.
 
 > [!IMPORTANT]
 >
 > * Der Endpunkt der Microsoft Identity Platform unterstützt nur ROPC für Azure AD-Mandanten – nicht für persönliche Konten. Das bedeutet, Sie müssen einen mandantenspezifischen Endpunkt (`https://login.microsoftonline.com/{TenantId_or_Name}`) oder den Endpunkt `organizations` verwenden.
 > * Persönliche Konten, die zu einem Mandanten von Azure AD eingeladen werden, können ROPC nicht verwenden.
 > * Konten ohne Kennwörter können sich nicht über ROPC anmelden. Für dieses Szenario wird empfohlen, für Ihre App einen anderen Flow zu verwenden.
-> * Wenn Benutzer sich über die mehrstufige Authentifizierung (MFA) in der Anwendung anmelden müssen, werden sie blockiert.
+> * Wenn Benutzer die [mehrstufige Authentifizierung (Multi-Factor Authentication, MFA)](../authentication/concept-mfa-howitworks.md) verwenden müssen, um sich bei der Anwendung anzumelden, werden Sie stattdessen blockiert.
+> * ROPC wird in Szenarien mit [Hybrididentitätsverbund](../hybrid/whatis-fed.md) (also beispielsweise bei Verwendung von Azure AD und AD FS für die Authentifizierung lokaler Konten) nicht unterstützt. Wenn Benutzer vollständig auf eine Seite eines lokalen Identitätsanbieters weitergeleitet werden, kann Azure AD den Benutzernamen und das Kennwort nicht anhand dieses Identitätsanbieters testen. Die [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta.md) wird mit ROPC allerdings unterstützt.
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
@@ -50,8 +50,8 @@ Der ROPC-Flow ist eine einzelne Anforderung: Er sendet die Client-ID und die Anm
 > [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
-```
-// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required. 
+```HTTP
+// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required.
 
 POST {tenant}/oauth2/v2.0/token
 Host: login.microsoftonline.com
@@ -67,13 +67,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, bei dem Sie den Benutzer anmelden möchten. Kann als GUID oder als Anzeigename bereitgestellt werden. Dieser Parameter kann nicht auf `common` oder `consumers`, sondern nur auf `organizations` festgelegt werden. |
-| `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. | 
+| `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `grant_type` | Erforderlich | Muss auf `password` festgelegt sein. |
 | `username` | Erforderlich | Die E-Mail-Adresse des Benutzers. |
 | `password` | Erforderlich | Das Kennwort des Benutzers. |
 | `scope` | Empfohlen | Eine durch Leerzeichen getrennte Liste von [Bereichen](v2-permissions-and-consent.md) oder Berechtigungen, die die App benötigt. In einem interaktiven Flow müssen der Administrator oder der Benutzer diesen Bereichen vorab zustimmen. |
-| `client_secret`| Manchmal erforderlich | Wenn es sich bei Ihrer App um einen öffentlichen Client handelt, kann `client_secret` oder `client_assertion` nicht eingeschlossen werden.  Wenn es sich bei der App um einen vertraulichen Client handelt, muss es eingeschlossen werden. | 
-| `client_assertion` | Manchmal erforderlich | Eine andere Form von `client_secret`, die unter Verwendung eines Zertifikats generiert wird.  Ausführlichere Informationen finden Sie unter [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md). | 
+| `client_secret`| Manchmal erforderlich | Wenn es sich bei Ihrer App um einen öffentlichen Client handelt, kann `client_secret` oder `client_assertion` nicht eingeschlossen werden.  Wenn es sich bei der App um einen vertraulichen Client handelt, muss es eingeschlossen werden. |
+| `client_assertion` | Manchmal erforderlich | Eine andere Form von `client_secret`, die unter Verwendung eines Zertifikats generiert wird.  Ausführlichere Informationen finden Sie unter [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md). |
 
 ### <a name="successful-authentication-response"></a>Erfolgreiche Authentifizierungsantwort
 
@@ -92,9 +92,9 @@ Das folgende Beispiel stellt eine erfolgreiche Tokenantwort dar:
 
 | Parameter | Format | BESCHREIBUNG |
 | --------- | ------ | ----------- |
-| `token_type` | Zeichenfolge | Immer auf `Bearer` festgelegt. |
+| `token_type` | String | Immer auf `Bearer` festgelegt. |
 | `scope` | Durch Leerzeichen getrennte Zeichenfolgen | Wenn ein Zugriffstoken zurückgegeben wurde, führt dieser Parameter die Bereiche auf, für die das Zugriffstoken gültig ist. |
-| `expires_in`| int | Die Anzahl von Sekunden, die das enthaltene Zugriffstoken gültig ist. |
+| `expires_in`| INT | Die Anzahl von Sekunden, die das enthaltene Zugriffstoken gültig ist. |
 | `access_token`| Nicht transparente Zeichenfolge | Ausgestellt für die [Bereiche](v2-permissions-and-consent.md), die angefordert wurden. |
 | `id_token` | JWT | Ausgestellt, wenn der ursprüngliche `scope`-Parameter den `openid`-Bereich enthalten hat. |
 | `refresh_token` | Nicht transparente Zeichenfolge | Ausgestellt, wenn der ursprüngliche `scope`-Parameter `offline_access` enthalten hat. |
@@ -105,12 +105,11 @@ Sie können mit Aktualisierungstoken neue Zugriffstoken und Aktualisierungstoken
 
 Wenn der Benutzer nicht den richtigen Benutzernamen bzw. das richtige Kennwort angegeben hat oder der Client nicht über die erforderliche Berechtigung verfügt, schlägt die Authentifizierung fehl.
 
-| Error | BESCHREIBUNG | Clientaktion |
+| Fehler | BESCHREIBUNG | Clientaktion |
 |------ | ----------- | -------------|
 | `invalid_grant` | Fehler bei der Authentifizierung | Die Anmeldeinformationen waren falsch oder dem Client fehlt die Berechtigung für die angeforderten Bereiche. Wenn die Bereiche nicht gewährt werden, wird ein Fehler vom Typ `consent_required` zurückgegeben. In diesem Fall sollte der Client den Benutzer über eine Webansicht oder einen Browser zu einer interaktiven Eingabeaufforderung weiterleiten. |
 | `invalid_request` | Anforderung war nicht ordnungsgemäß konstruiert | Der Gewährungstyp wird in den Authentifizierungskontexten `/common` oder `/consumers` nicht unterstützt.  Verwenden Sie stattdessen `/organizations` oder eine Mandanten-ID. |
 
 ## <a name="learn-more"></a>Weitere Informationen
 
-* Testen Sie ROPC mit der [Beispielkonsolenanwendung](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
-* Informieren Sie sich über die [Einschränkungen von Microsoft Identity Platform](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
+Ein Beispiel für die Verwendung von ROPC finden Sie im Codebeispiel [.NET Core-Konsolenanwendung](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) auf GitHub.

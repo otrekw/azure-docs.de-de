@@ -1,25 +1,15 @@
 ---
-title: Simulieren von Fehlern in Azure Service Fabric-Apps | Microsoft-Dokumentation
-description: Informationen zum Absichern Ihrer Dienste bei ordnungsgemäßen und nicht ordnungsgemäßen Ausfällen.
-services: service-fabric
-documentationcenter: .net
-author: anmolah
-manager: chackdan
-editor: ''
-ms.assetid: 44af01f0-ed73-4c31-8ac0-d9d65b4ad2d6
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Simulieren von Fehlern in Azure Service Fabric-Apps
+description: Informationen zum Absichern Ihrer Azure Service Fabric-Dienste bei ordnungsgemäßen und nicht ordnungsgemäßen Ausfällen.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/15/2017
-ms.author: anmola
-ms.openlocfilehash: bbb89b66231c949627c7ffbf99ebe9b5dd379ca2
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c714ae30c64ea073cbac521eac5e15a8d968b7ea
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348721"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91531309"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Simulieren von Ausfällen während der Bearbeitung von Dienstworkloads
 Dank der in Azure Service Fabric enthaltenen Testability-Szenarien müssen sich Entwickler keine Sorgen über den Umgang mit einzelnen Fehlern machen. Es gibt aber Szenarien, bei denen unter Umständen eine explizite Überlappung von Clientworkload und Fehlern erforderlich ist. Mit dem Überlappen von Clientworkload und Fehlern wird sichergestellt, dass der Dienst wirklich eine Aktion ausführt, wenn ein Fehler auftritt. Aufgrund des hohen Kontrollgrads, den die Testability bietet, ist dies an präzisen Punkten der Workloadausführung möglich. Diese Auslösung von Fehlern bei unterschiedlichen Zuständen in der Anwendung kann zur Ermittlung von Fehlern und einer Verbesserung der Qualität führen.
@@ -27,7 +17,7 @@ Dank der in Azure Service Fabric enthaltenen Testability-Szenarien müssen sich 
 ## <a name="sample-custom-scenario"></a>Benutzerdefiniertes Beispielszenario
 Mit diesem Test wird ein Szenario veranschaulicht, bei dem eine Überlappung der Geschäftsworkload mit [ordnungsgemäßen und nicht ordnungsgemäßen Fehlern](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)erfolgt. Die Fehler sollten in der Mitte von Dienstvorgängen oder bei der Berechnung der besten Ergebnisse ausgelöst werden.
 
-Sehen wir uns ein Beispiel für einen Dienst an, der vier Workloads bereitstellt: A, B, C und D. Jede Workload entspricht einer Reihe von Workflows und kann ein Compute- bzw. Speichervorgang oder eine Mischung aus beidem sein. Der Einfachheit halber werden die Workloads im Beispiel abstrahiert. Die folgenden unterschiedlichen Ausfälle werden die in diesem Beispiel ausgeführt:
+Wir gehen hier ein Beispiel für einen Dienst durch, der die vier Workloads A, B, C und D verfügbar macht. Jede Workload entspricht einer Gruppe von Workflows, und es kann sich dabei um eine Berechnung, Speicherung oder Mischung handeln. Der Einfachheit halber werden die Workloads im Beispiel abstrahiert. Die folgenden unterschiedlichen Ausfälle werden die in diesem Beispiel ausgeführt:
 
 * RestartNode: Ein nicht ordnungsgemäßer Ausfall zur Simulation eines Neustarts des Computers.
 * RestartDeployedCodePackage: Ein nicht ordnungsgemäßer Ausfall zur Simulation von Abstürzen des Diensthostprozesses.

@@ -7,29 +7,29 @@ author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
-ms.date: 08/01/2019
-ms.author: metan
-ms.openlocfilehash: bdaee97c8c5d7e19076847c5f1f7c07c528c1747
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 01/14/2020
+ms.author: metang
+ms.openlocfilehash: d8ee6b2344f0c953233195a693e774e410a8a8ea
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899373"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368201"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Tutorial: Erstellen einer iOS-App, die den plastischen Reader mit Inhalt aus einem Foto startet (Swift)
 
 Der [plastische Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken zur Verbesserung des Leseverständnisses implementiert.
 
-Die [Cognitive Services-Lese-API für maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) erkennt mithilfe der neuesten Erkennungsmodelle von Microsoft Textinhalte eines Bilds und konvertiert den erkannten Text in einen computerlesbaren Zeichendatenstrom.
+Die [Cognitive Services-Lese-API für maschinelles Sehen](../computer-vision/concept-recognizing-text.md) erkennt mithilfe der neuesten Erkennungsmodelle von Microsoft Textinhalte eines Bilds und konvertiert den erkannten Text in einen computerlesbaren Zeichendatenstrom.
 
-In diesem Tutorial erstellen Sie eine iOS-App ohne Vorlage und integrieren die Lese-API und den plastischen Reader mithilfe des SDK für den plastischen Reader. Ein vollständiges funktionierendes Beispiel dieses Tutorials finden Sie [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/samples/picture-to-immersive-reader-swift).
+In diesem Tutorial erstellen Sie eine iOS-App ohne Vorlage und integrieren die Lese-API und den plastischen Reader mithilfe des SDK für den plastischen Reader. Ein vollständiges funktionierendes Beispiel dieses Tutorials finden Sie [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios).
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-* Eine Ressource des plastischen Readers, die für die Authentifizierung mit Azure Active Directory (Azure AD) konfiguriert ist. Folgen Sie [diesen Anweisungen](./azure-active-directory-authentication.md) für die Einrichtung. Einige der hier erstellten Werte benötigen Sie bei der Konfiguration der Beispielprojekteigenschaften. Speichern Sie die Ausgabe Ihrer Sitzung zur späteren Verwendung in einer Textdatei.
+* Eine Ressource des plastischen Readers, die für die Authentifizierung mit Azure Active Directory konfiguriert ist. Befolgen Sie [diese Anweisungen](./how-to-create-immersive-reader.md) für die Einrichtung. Einige der hier erstellten Werte benötigen Sie bei der Konfiguration der Beispielprojekteigenschaften. Speichern Sie die Ausgabe Ihrer Sitzung zur späteren Verwendung in einer Textdatei.
 * Um dieses Beispiel verwenden zu können, benötigen Sie ein Azure-Abonnement für den Cognitive Service für maschinelles Sehen. [Erstellen Sie über das Azure-Portal eine Cognitive Services-Ressource für maschinelles Sehen.](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
 
 ## <a name="create-an-xcode-project"></a>Erstellen eines Xcode-Projekts
@@ -38,7 +38,7 @@ Erstellen Sie ein neues Projekt in Xcode.
 
 ![Neues Projekt](./media/ios/xcode-create-project.png)
 
-Wählen Sie **Einzelansicht-App**.
+Wählen Sie **Einzelansicht-App** aus.
 
 ![Neue Einzelansicht-App](./media/ios/xcode-single-view-app.png)
 
@@ -53,7 +53,7 @@ Das SDK für den plastischen Reader lässt sich am einfachsten über CocoaPods v
   target 'picture-to-immersive-reader-swift' do
   use_frameworks!
   # Pods for picture-to-immersive-reader-swift
-  pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'
+  pod 'immersive-reader-sdk', :git => 'https://github.com/microsoft/immersive-reader-sdk.git'
   end
 ```
 4. Führen Sie im Terminal im Verzeichnis Ihres Xcode-Projekts den Befehl `pod install` aus, um den Pod für das SDK für den plastischen Reader zu installieren.
@@ -73,19 +73,13 @@ Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the reso
 
 Erstellen Sie im Hauptprojektordner, der die Datei „ViewController.swift“ enthält, eine Swift-Klassendatei namens „Constants.swift“. Ersetzen Sie die Klasse durch den folgenden Code, und fügen Sie nach Bedarf Ihre eigenen Werte hinzu. Diese Datei darf nur als lokale Datei auf Ihrem Computer vorhanden sein. Committen Sie sie nicht in Ihre Quellcodeverwaltung, da sie Geheimnisse enthält, die nicht für die Öffentlichkeit bestimmt sind. Es wird empfohlen, keine Geheimnisse in Ihrer App zu speichern. Verwenden Sie stattdessen einen Back-End-Dienst, um das Token abzurufen, sodass die Geheimnisse außerhalb der App und außerhalb des Geräts gespeichert werden können. Der Back-End-API-Endpunkt muss durch eine Authentifizierung (beispielsweise [OAuth](https://oauth.net/2/)) geschützt werden, um zu verhindern, dass nicht autorisierte Benutzer Token abrufen und für Ihren Dienst „Plastischer Reader“ bzw. für die Abrechnung verwenden. Dies wird jedoch in diesem Tutorial nicht behandelt.
 
-[!code-swift[Constants](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/Constants.swift)]
-
 ## <a name="set-up-the-app-to-run-without-a-storyboard"></a>Einrichten der App für die Ausführung ohne Storyboard
 
 Öffnen Sie „AppDelegate.swift“, und ersetzen Sie die Datei durch den folgenden Code:
 
-[!code-swift[AppDelegate](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/AppDelegate.swift)]
-
 ## <a name="add-functionality-for-taking-and-uploading-photos"></a>Hinzufügen von Funktionen zum Aufnehmen und Hochladen von Fotos
 
 Benennen Sie „ViewController.swift“ in „PictureLaunchViewController.swift“ um, und ersetzen Sie die Datei durch den folgenden Code:
-
-[!code-swift[PictureLaunchViewController](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/PictureLaunchViewController.swift)]
 
 ## <a name="build-and-run-the-app"></a>Erstellen und Ausführen der App
 
@@ -105,4 +99,4 @@ Verwenden Sie innerhalb der App die Schaltfläche „Take Photo“ (Foto aufnehm
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Machen Sie sich mit dem [Immersive Reader iOS SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS) und der [zugehörigen Referenz](./ios-reference.md) vertraut.
+* Lesen Sie die [Referenz zum SDK für den plastischen Reader](./reference.md).

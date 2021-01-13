@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure Stream Analytics-Dokumentation
-summary: Azure Stream Analytics ist ein vollständig verwalteter Echtzeitanalysedienst zum Analysieren und Verarbeiten schneller Datenströme sowie zum Auslösen von Warnungen und Aktionen. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Stream Analytics verwenden.
+summary: Azure Stream Analytics ist ein vollständig verwalteter Echtzeitanalysedienst zum Analysieren und Verarbeiten schneller Datenströme sowie zum Abrufen von Erkenntnissen, Erstellen von Berichten oder Auslösen von Warnungen und Aktionen. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Stream Analytics verwenden.
 metadata:
   title: Azure Stream Analytics-Dokumentation
-  description: Azure Stream Analytics ist ein vollständig verwalteter Echtzeitanalysedienst zum Analysieren und Verarbeiten schneller Datenströme sowie zum Auslösen von Warnungen und Aktionen. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Stream Analytics verwenden.
+  description: Azure Stream Analytics ist ein vollständig verwalteter Echtzeitanalysedienst zum Analysieren und Verarbeiten schneller Datenströme sowie zum Abrufen von Erkenntnissen, Erstellen von Berichten oder Auslösen von Warnungen und Aktionen. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Stream Analytics verwenden.
   services: service
   ms.service: stream-analytics
   ms.topic: landing-page
-  author: mamccrea
-  ms.author: mamccrea
+  author: sidram
+  ms.author: sidram
   ms.date: 09/16/2019
-  ms.openlocfilehash: a4573c9f6938db56eba80da084004a620a54e9e4
-  ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+  ms.openlocfilehash: 2567279bd2c22a2b6f0ff7bf5203efcce56b2466
+  ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/16/2019
-  ms.locfileid: "71018872"
+  ms.lasthandoff: 01/08/2021
+  ms.locfileid: "98015571"
 landingContent:
 - title: Informationen zu Azure Stream Analytics
   linkLists:
@@ -95,7 +95,7 @@ landingContent:
       url: stream-analytics-monitor-jobs.md
     - text: Überwachen und Verwalten von Aufträgen über Visual Studio
       url: stream-analytics-monitor-jobs-use-vs.md
-    - text: Problembehandlung mithilfe von Diagnoseprotokollen
+    - text: Problembehandlung mithilfe von Ressourcenprotokollen
       url: stream-analytics-job-diagnostic-logs.md
     - text: Debuggen mithilfe des Auftragsdiagramms
       url: stream-analytics-job-diagram-with-metrics.md
@@ -141,18 +141,18 @@ landingContent:
     links:
     - text: Erkennen von Anomalien mit maschinellem Lernen
       url: stream-analytics-machine-learning-anomaly-detection.md
-    - text: Ausführen einer Standpunktanalyse mit Azure Machine Learning Studio
+    - text: Durchführen einer Standpunktanalyse mit Azure Machine Learning Studio (klassisch)
       url: stream-analytics-machine-learning-integration-tutorial.md
-    - text: Skalieren von Aufträgen mit Machine Learning Studio-Funktionen
+    - text: Skalieren von Aufträgen mit Funktionen von Azure Machine Learning Studio (klassisch)
       url: stream-analytics-scale-with-machine-learning-functions.md
 - title: Erstellen und Verwalten von Aufträgen mit Entwicklertools
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Untersuchen von Aufträgen mit Visual Studio Code
-      url: vscode-local-run.md
+      url: visual-studio-code-explore-jobs.md
     - text: Testen von Abfragen mit Beispieldaten in Visual Studio Code
-      url: vscode-local-run.md
+      url: visual-studio-code-local-run.md
     - text: Installieren von Tools für Visual Studio
       url: stream-analytics-tools-for-visual-studio-install.md
     - text: Testen von Abfragen mit Beispieldaten in Visual Studio
@@ -163,12 +163,16 @@ landingContent:
       url: stream-analytics-tools-for-visual-studio-edge-jobs.md
     - text: Entwickeln eines IoT Edge-Auftrags in Visual Studio
       url: stream-analytics-tools-for-visual-studio-edge-jobs.md
+  - linkListType: video
+    links:
+    - text: Erstellen, Verwalten und Testen mit Visual Studio Code
+      url: https://www.youtube.com/watch?v=N9ak_9ZaHms
 - title: Ausprobieren von Stream Analytics-Tutorials und -Lösungen
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Erstellen und Verwalten eines Auftrags
-      url: stream-analytics-manage-job.md
+    - text: Betrugsermittlung in Echtzeit
+      url: stream-analytics-real-time-fraud-detection.md
     - text: Auslösen einer Azure-Funktion
       url: stream-analytics-with-azure-functions.md
   - linkListType: how-to-guide
@@ -179,8 +183,6 @@ landingContent:
       url: stream-analytics-edge.md
     - text: Erstellen einer Standpunktanalyselösung
       url: stream-analytics-twitter-sentiment-analysis-trends.md
-    - text: Betrugsermittlung in Echtzeit
-      url: stream-analytics-real-time-fraud-detection.md
     - text: Erstellen einer IoT-Lösung
       url: stream-analytics-build-an-iot-solution-using-stream-analytics.md
     - text: Hochfrequenzhandel-Simulation
@@ -189,14 +191,10 @@ landingContent:
       url: stream-analytics-threshold-based-rules.md
 - title: Bereitstellen von Stream Analytics-Aufträgen
   linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Bereitstellen eines Auftrags mit CI/CD mithilfe von Azure Pipelines
-      url: stream-analytics-tools-visual-studio-cicd-vsts.md
   - linkListType: how-to-guide
     links:
     - text: Einrichten einer CI/CD-Pipeline mit Visual Studio Code
-      url: setup-cicd-vs-code.md
+      url: ./cicd-overview.md
     - text: Einrichten einer CI/CD-Pipeline mit Visual Studio
       url: stream-analytics-tools-for-visual-studio-cicd.md
     - text: Einrichten von CI/CD für IoT Edge-Aufträge mithilfe von REST-APIs

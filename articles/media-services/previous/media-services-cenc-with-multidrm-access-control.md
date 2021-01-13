@@ -14,14 +14,17 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 6004e08f5f30c7f3c63bb87437147db15da5e335
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016778"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010910"
 ---
-# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Entwerfen eines Inhaltsschutzsystems mit Zugriffssteuerung über Azure Media Services 
+# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Entwerfen eines Inhaltsschutzsystems mit Zugriffssteuerung über Azure Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Übersicht
 
@@ -215,10 +218,10 @@ Die Implementierung umfasst die folgenden Schritte:
 
     | **DRM-System** | **Browser** | **Ergebnis für berechtigten Benutzer** | **Ergebnis für nicht berechtigten Benutzer** |
     | --- | --- | --- | --- |
-    | **PlayReady** |Microsoft Edge oder Internet Explorer 11 unter Windows 10 |Erfolg |Fail |
-    | **Widevine** |Chrome, Firefox, Opera |Erfolg |Fail |
-    | **FairPlay** |Safari unter macOS      |Erfolg |Fail |
-    | **AES-128** |Meisten modernen Browser  |Erfolg |Fail |
+    | **PlayReady** |Microsoft Edge oder Internet Explorer 11 unter Windows 10 |Erfolg |Fehler |
+    | **Widevine** |Chrome, Firefox, Opera |Erfolg |Fehler |
+    | **FairPlay** |Safari unter macOS      |Erfolg |Fehler |
+    | **AES-128** |Meisten modernen Browser  |Erfolg |Fehler |
 
 Informationen zum Einrichten von Azure AD für einen ASP.NET MVC-Player finden Sie unter [Integrate an Azure Media Services OWIN MVC-based app with Azure Active Directory and restrict content key delivery based on JWT claims](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/) (Integrieren einer Azure Media Services-OWIN MVC-basierten App in Azure Active Directory und Einschränken der Übermittlung von Inhaltsschlüsseln auf Grundlage von JWT-Ansprüchen).
 
@@ -226,16 +229,18 @@ Weitere Informationen finden Sie unter [JWT token authentication in Azure Media 
 
 Informationen zu Azure AD:
 
-* Informationen für Entwickler bietet das [Entwicklerhandbuch zu Azure Active Directory](../../active-directory/develop/v1-overview.md).
-* Informationen für Administratoren finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](../../active-directory/fundamentals/active-directory-administer.md).
+* Informationen für Entwickler bietet das [Entwicklerhandbuch zu Azure Active Directory](../../active-directory/azuread-dev/v1-overview.md).
+* Informationen für Administratoren finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](../../active-directory/fundamentals/active-directory-whatis.md).
 
 ### <a name="some-issues-in-implementation"></a>Mögliche Probleme bei der Implementierung
 Falls bei der Implementierung Probleme auftreten, verwenden Sie die folgenden Informationen zur Behandlung dieser Probleme.
 
 * Die Aussteller-URL muss auf „/“ enden. Die Zielgruppe muss die Anwendungsclient-ID des Players sein. Fügen Sie hier ebenfalls einen Schrägstrich („/“) am Ende der Aussteller-URL ein.
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```
 
     Im [JWT-Decoder](http://jwt.calebb.net/) sollten **aud** und **iss** wie im JWT angezeigt werden:
 
@@ -247,11 +252,15 @@ Falls bei der Implementierung Probleme auftreten, verwenden Sie die folgenden In
 
 * Verwenden Sie den richtigen Aussteller, wenn Sie den dynamischen CENC-Schutz einrichten.
 
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```
 
     Folgendes funktioniert nicht:
 
-        <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```
 
     Bei der GUID handelt es sich um die Azure AD-Mandanten-ID. Sie finden die GUID im Azure-Portal im Popupmenü **Endpunkte**.
 
@@ -261,7 +270,9 @@ Falls bei der Implementierung Probleme auftreten, verwenden Sie die folgenden In
 
 * Legen Sie beim Erstellen der Einschränkungsanforderungen den richtigen TokenType fest.
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```csharp
+    objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```
 
     Da Sie zusätzlich zu SWT (ACS) Unterstützung für JWT (Azure AD) hinzufügen, ist „TokenType.JWT“ der standardmäßige TokenType. Wenn Sie SWT/ACS verwenden, müssen Sie „TokenType.SWT“ festlegen.
 
@@ -288,7 +299,7 @@ Das Rollover von Signaturschlüsseln ist ein wichtiger Punkt, den Sie bei Ihrer 
 
 Azure AD verwendet Branchenstandards zum Einrichten einer Vertrauensstellung zwischen sich selbst und Anwendungen, die Azure AD verwenden. Azure AD verwendet einen Signaturschlüssel, der aus einem Paar mit einem öffentlichen und einem privaten Schlüssel besteht. Wenn Azure AD ein Sicherheitstoken erstellt, das Informationen über den Benutzer enthält, wird dieses Token von Azure AD mithilfe eines privaten Schlüssels signiert, bevor es zurück an die Anwendung gesendet wird. Um sicherzustellen, dass das Token gültig ist und aus Azure AD stammt, muss die Anwendung die Signatur des Tokens überprüfen. Die Anwendung verwendet einen öffentlichen Schlüssel, der von Azure AD verfügbar gemacht wurde und im Dokument mit den Verbundmetadaten des Mandanten enthalten ist. Dieser öffentliche Schlüssel – und der Signaturschlüssel, aus dem er abgeleitet ist –, ist für alle Mandanten in Azure AD gleich.
 
-Weitere Informationen zum Azure AD-Schlüsselrollover finden Sie im Dokument [Rollover von Signaturschlüsseln in Azure Active Directory](../../active-directory/active-directory-signing-key-rollover.md).
+Weitere Informationen zum Azure AD-Schlüsselrollover finden Sie im Dokument [Rollover von Signaturschlüsseln in Azure Active Directory](../../active-directory/develop/active-directory-signing-key-rollover.md).
 
 Im [Schlüsselpaar aus öffentlichem und privatem Schlüssel](https://login.microsoftonline.com/common/discovery/keys/) gilt Folgendes:
 
@@ -313,15 +324,15 @@ Was passiert, wenn das Schlüsselrollover ausgeführt wird, nachdem Azure AD ein
 Da ein Schlüsselrollover jederzeit erfolgen kann, steht im Dokument mit den Verbundmetadaten immer mehr als ein gültiger öffentlicher Schlüssel zur Verfügung. Die Media Services-Lizenzbereitstellung kann jeden der im Dokument angegebenen Schlüssel verwenden. Da für einen Schlüssel möglicherweise bald ein Rollover ausgeführt wird, dient der andere als Ersatz.
 
 ### <a name="where-is-the-access-token"></a>Wo befindet sich das Zugriffstoken?
-Wenn Sie sich unter [Anwendungsidentität mit OAuth 2.0-Clientanmeldeinformationen](../../active-directory/develop/web-api.md) ansehen, wie eine Web-App eine API-App aufruft, ist der Ablauf der Authentifizierung wie folgt:
+Wenn Sie sich unter [Anwendungsidentität mit OAuth 2.0-Clientanmeldeinformationen](../../active-directory/azuread-dev/web-api.md) ansehen, wie eine Web-App eine API-App aufruft, ist der Ablauf der Authentifizierung wie folgt:
 
-* Ein Benutzer meldet sich in der Webanwendung bei Azure AD an. Weitere Informationen finden Sie unter [Webbrowser zu Webanwendung](../../active-directory/develop/web-app.md).
+* Ein Benutzer meldet sich in der Webanwendung bei Azure AD an. Weitere Informationen finden Sie unter [Webbrowser zu Webanwendung](../../active-directory/azuread-dev/web-app.md).
 * Der Azure AD-Autorisierungsendpunkt leitet den Benutzer-Agent mit einem Autorisierungscode zurück zur Clientanwendung. Der Benutzer-Agent gibt den Autorisierungscode an den Umleitungs-URI der Clientanwendung zurück.
 * Die Webanwendung muss ein Zugriffstoken abrufen, damit sie sich gegenüber der Web-API authentifizieren und die gewünschte Ressource abrufen kann. Sie sendet eine Anforderung an den Azure AD-Tokenendpunkt und gibt die Anmeldeinformationen, die Client-ID sowie den Anwendungs-ID-URI der Web-API an. Sie legt den Autorisierungscode vor, um zu belegen, dass der Benutzer zugestimmt hat.
 * Azure AD authentifiziert die Anwendung und gibt ein JWT-Zugriffstoken zurück, das zum Aufrufen der Web-API verwendet wird.
 * Die Webanwendung fügt der Web-API über HTTPS und unter Verwendung des zurückgegebenen JWT-Zugriffstokens die JWT-Zeichenfolge mit der Angabe „Bearer“ (Träger) im Autorisierungsheader der Anforderung hinzu. Dann überprüft die API das JWT. Wenn die Überprüfung erfolgreich verläuft, gibt sie die gewünschte Ressource zurück.
 
-In diesem Anwendungsidentitätsablaufvertraut die Web-API darauf, dass die Webanwendung den Benutzer authentifiziert hat. Aus diesem Grund wird dieses Modell als vertrauenswürdiges Subsystem bezeichnet. Das [Diagramm des Autorisierungsablaufs](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code) beschreibt, wie das Gewähren des Autorisierungscodes abläuft.
+In diesem Anwendungsidentitätsablaufvertraut die Web-API darauf, dass die Webanwendung den Benutzer authentifiziert hat. Aus diesem Grund wird dieses Modell als vertrauenswürdiges Subsystem bezeichnet. Das [Diagramm des Autorisierungsablaufs](../../active-directory/azuread-dev/v1-protocols-oauth-code.md) beschreibt, wie das Gewähren des Autorisierungscodes abläuft.
 
 Der Lizenzerwerb mit Tokeneinschränkung folgt demselben Muster mit vertrauenswürdigem Subsystem. Der Lizenzbereitstellungsdienst in Media Services ist die Web-API-Ressource, d.h. die Back-End-Ressource, auf die eine Webanwendung zugreifen muss. Wo befindet sich also das Zugriffstoken?
 
@@ -410,11 +421,11 @@ Die folgenden Screenshots zeigen verschiedene Anmeldeseiten, die von verschieden
 
 **Benutzerdefiniertes Azure AD-Mandantendomänenkonto**: Die angepasste Anmeldeseite der benutzerdefinierten Azure AD-Mandantendomäne.
 
-![Benutzerdefiniertes Azure AD-Mandantendomänenkonto](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
+![Screenshot, der die angepasste Anmeldeseite der benutzerdefinierten Azure AD-Mandantendomäne zeigt.](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
 **Microsoft-Domänenkonto mit Smartcard**: Die von der IT-Abteilung von Microsoft angepasste Anmeldeseite mit zweistufiger Authentifizierung.
 
-![Benutzerdefiniertes Azure AD-Mandantendomänenkonto](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
+![Screenshot, der die von der IT-Abteilung von Microsoft angepasste Anmeldeseite mit zweistufiger Authentifizierung zeigt.](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
 **Microsoft-Konto**: Die Anmeldeseite des Microsoft-Kontos für Endbenutzer.
 
@@ -463,11 +474,16 @@ Der folgende Screenshot zeigt ein Szenario mit einem asymmetrischen Schlüssel �
 In beiden oben genannten Fällen ist die Benutzerauthentifizierung die gleiche. Sie erfolgt über Azure AD. Der einzige Unterschied ist, dass JWTs vom benutzerdefinierten Sicherheitstokendienst anstatt von Azure AD ausgestellt werden. Beim Konfigurieren des dynamischen CENC-Schutzes bestimmt die Einschränkung des Lizenzbereitstellungsdiensts, welche Art JWT verwendet wird: entweder ein symmetrischer oder ein asymmetrischer Schlüssel.
 
 ## <a name="summary"></a>Zusammenfassung
+
 Dieses Dokument erläuterte CENC mit mehreren nativen DRM-Systemen und Zugriffssteuerung per Tokenauthentifizierung. Zudem wurden der Entwurf und die Implementierung mithilfe von Azure, Media Services und Azure Media Player beschrieben.
 
 * Es wurde ein Referenzentwurf vorgestellt, der alle in einem DRM-/CENC-Subsystem benötigten Komponenten enthält.
 * Ebenfalls vorgestellt wurde eine Referenzimplementierung in Azure, Media Services und Media Player.
 * Darüber hinaus wurden verschiedene Aspekte mit direktem Bezug auf Entwurf und Implementierung behandelt.
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit InsideView | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und InsideView konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c489a7ab-6b1f-4efb-8a66-8bc13bca78c3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 2149b8410104b39652b176895a31b42e094265f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8f12b6d55cb11c0cfeda5331072127ea4a696bc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100088"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460103"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Tutorial: Azure Active Directory-Integration mit InsideView
 
@@ -31,7 +27,7 @@ Diese Integration bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei InsideView anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten: im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -52,15 +48,15 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Einrichten der Integration von InsideView in Azure AD müssen Sie InsideView aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory**:
+1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory** :
 
     ![Wählen Sie „Azure Active Directory“.](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**:
+2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen** :
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Um eine Anwendung hinzuzufügen, wählen Sie oben im Fenster die Option **Neue Anwendung**:
+3. Um eine Anwendung hinzuzufügen, wählen Sie oben im Fenster die Option **Neue Anwendung** :
 
     ![Auswählen von „Neue Anwendung“](common/add-new-app.png)
 
@@ -123,7 +119,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit InsideV
 
     1. **Azure AD-Bezeichner**
 
-    1. **Abmelde-URL**:
+    1. **Abmelde-URL** :
 
 ### <a name="configure-insideview-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für InsideView
 
@@ -135,7 +131,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit InsideV
 
 1. Führen Sie im Abschnitt **Add a New SAML** (Neue SAML hinzufügen) die folgenden Schritte aus:
 
-    ![Abschnitt „Add a New SAML“ (Neue SAML hinzufügen)](./media/insideview-tutorial/ic794136.png "Abschnitt „Add a New SAML“ (Neue SAML hinzufügen)")
+    ![Abschnitt „Neue SAML hinzufügen“](./media/insideview-tutorial/ic794136.png "Abschnitt „Neue SAML hinzufügen“")
 
     1. Geben Sie im Textfeld **STS Name** (STS-Name) einen Namen für die Konfiguration ein.
 
@@ -143,13 +139,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit InsideV
 
     1. Öffnen Sie das Rohdatenzertifikat, das Sie aus dem Azure-Portal heruntergeladen haben. Kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn ins Feld **STS Certificate** (STS-Zertifikat) ein.
 
-    1. Geben Sie im Feld **Crm User Id Mapping** (CRM-Benutzer-ID-Zuordnung) die Zeichenfolge **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ein.
+    1. Geben Sie im Feld **Crm User Id Mapping** (CRM-Benutzer-ID-Zuordnung) die Zeichenfolge **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** ein.
 
-    1. Geben Sie im Feld **Crm Email Mapping** (CRM-E-Mail-Adresszuordnung) die Zeichenfolge **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ein.
+    1. Geben Sie im Feld **Crm Email Mapping** (CRM-E-Mail-Adresszuordnung) die Zeichenfolge **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** ein.
 
-    1. Geben Sie im Feld **Crm First Name Mapping** (CRM-Vornamenzuordnung) die Zeichenfolge **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** ein.
+    1. Geben Sie im Feld **Crm First Name Mapping** (CRM-Vornamenzuordnung) die Zeichenfolge **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** ein.
 
-    1. Geben Sie im Feld **Crm lastName Mapping** (CRM-Nachnamenzuordnung) die Zeichenfolge **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** ein.  
+    1. Geben Sie im Feld **Crm lastName Mapping** (CRM-Nachnamenzuordnung) die Zeichenfolge **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** ein.  
 
     1. Wählen Sie **Speichern** aus.
 
@@ -171,11 +167,11 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „
 
     1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
   
-    1. Geben Sie im Feld **Benutzername** die Zeichenfolge **BrittaSimon@\<IhreUnternehmensdomäne>.\<Erweiterung>** ein. (Beispiel: BrittaSimon@contoso.com.)
+    1. Geben Sie in das Feld **Benutzername** den Namen **BrittaSimon@\<yourcompanydomain>.\<extension>** ein. (Beispiel: BrittaSimon@contoso.com.)
 
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den im Feld **Kennwort** angezeigten Wert.
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den im Feld **Kennwort** angezeigten Wert.
 
-    1. Klicken Sie auf **Erstellen**.
+    1. Klicken Sie auf **Erstellen** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -197,9 +193,9 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Auswählen von „Benutzer hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Fenster auf die Schaltfläche **Auswählen**.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Fenster auf die Schaltfläche **Auswählen** .
 
-6. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Klicken Sie unten im Fenster auf die Schaltfläche **Auswählen**.
+6. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Klicken Sie unten im Fenster auf die Schaltfläche **Auswählen** .
 
 7. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 
@@ -216,12 +212,12 @@ Wenden Sie sich an das [InsideView-Supportteam](mailto:support@insideview.com), 
 
 Jetzt müssen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich testen.
 
-Wenn Sie im Zugriffsbereich die Kachel „InsideView“ auswählen, sollten Sie automatisch bei der InsideView-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich die Kachel „InsideView“ auswählen, sollten Sie automatisch bei der InsideView-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

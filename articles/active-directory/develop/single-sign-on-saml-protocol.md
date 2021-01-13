@@ -1,37 +1,36 @@
 ---
-title: Azure-SAML-Protokoll für einmaliges Anmelden | Microsoft Docs
-description: In diesem Artikel wird das SAML-Protokoll für einmaliges Anmelden in Azure Active Directory beschrieben.
+title: SAML-Protokoll für das einmalige Anmelden von Azure
+titleSuffix: Microsoft identity platform
+description: In diesem Artikel wird das SAML-Protokoll für einmaliges Anmelden (Single Sign-On, SSO) in Azure Active Directory beschrieben.
 services: active-directory
 documentationcenter: .net
-author: rwike77
+author: kenwith
 manager: CelesteDG
-editor: ''
-ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/19/2017
-ms.author: ryanwi
+ms.date: 05/18/2020
+ms.author: kenwith
 ms.custom: aaddev
-ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf512f802e0e4944e6ce949830719b87301adfc4
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.reviewer: paulgarn
+ms.openlocfilehash: 40bf202e0f14f18d817e4e918f8372ba3c0a4ad8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834809"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950668"
 ---
 # <a name="single-sign-on-saml-protocol"></a>SAML-Protokoll für einmaliges Anmelden
 
-In diesem Artikel werden die SAML 2.0-Authentifizierungsanforderungen und -antworten erläutert, die Azure Active Directory (Azure AD) für das einmalige Anmelden unterstützt.
+In diesem Artikel werden die SAML 2.0-Authentifizierungsanforderungen und -antworten erläutert, die Azure Active Directory (Azure AD) für das einmalige Anmelden (Single Sign-On, SSO) unterstützt.
 
 Das folgende Protokolldiagramm beschreibt den Ablauf für das einmalige Anmelden. Der Clouddienst (der Dienstanbieter) verwendet eine HTTP-Umleitungsbindung, um eine Authentifizierungsanforderung ( `AuthnRequest` ) an Azure AD (den Identitätsanbieter) zu übergeben. Azure AD verwendet daraufhin eine HTTP Post-Bindung, um ein `Response` -Element an den Clouddienst zu senden.
 
-![Workflow für einmaliges Anmelden](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+![Workflow für einmaliges Anmelden (Single Sign-On, SSO)](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+
+> [!NOTE]
+> In diesem Artikel wird die Verwendung von SAML für einmaliges Anmelden (Single Sign-On, SSO) erläutert. Weitere Informationen zu anderen Möglichkeiten der Verwendung des einmaligen Anmeldens (z. B. mit OpenID Connect oder der integrierten Windows-Authentifizierung) finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="authnrequest"></a>AuthnRequest
 
@@ -47,12 +46,12 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter | type | BESCHREIBUNG |
 | --- | --- | --- |
 | id | Erforderlich | Azure AD verwendet dieses Attribut, um das `InResponseTo` -Attribut der zurückgegebenen Antwort aufzufüllen. Die ID darf nicht mit einer Zahl beginnen, weshalb dem GUID-String häufig eine Zeichenfolge wie etwa „id“ vorangestellt wird. `id6c1c178c166d486687be4aaf5e482730` ist beispielsweise eine gültige ID. |
 | Version | Erforderlich | Dieser Parameter sollte auf **2.0** festgelegt werden. |
-| IssueInstant | Erforderlich | Eine DateTime-Zeichenfolge mit einem UTC-Wert und im [Roundtrip-Format („o“)](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD erwartet einen DateTime-Wert dieses Typs, dieser Wert wird jedoch weder bewertet noch verwendet. |
-| AssertionConsumerServiceUrl | Optional | Dieser Parameter muss (falls angegeben) dem `RedirectUri` des Clouddiensts in Azure AD entsprechen. |
+| IssueInstant | Erforderlich | Eine DateTime-Zeichenfolge mit einem UTC-Wert und im [Roundtrip-Format („o“)](/dotnet/standard/base-types/standard-date-and-time-format-strings). Azure AD erwartet einen DateTime-Wert dieses Typs, dieser Wert wird jedoch weder bewertet noch verwendet. |
+| AssertionConsumerServiceURL | Optional | Dieser Parameter muss (falls angegeben) dem `RedirectUri` des Clouddiensts in Azure AD entsprechen. |
 | ForceAuthn | Optional | Dies ist ein Boolescher Wert. Bei „true“ wird der Benutzer gezwungen, sich erneut zu authentifizieren, selbst wenn für ihn bereits eine gültige Sitzung mit Azure AD besteht. |
 | IsPassive | Optional | Dies ist ein Boolescher Wert, der festlegt, ob Azure AD den Benutzer im Hintergrund ohne Eingreifen des Benutzers, jedoch mithilfe des Sitzungscookies authentifiziert, sofern ein solches vorhanden ist. Bei „true“ versucht Azure AD den Benutzer mithilfe des Sitzungscookies zu authentifizieren. |
 
@@ -87,6 +86,8 @@ Wenn `NameIDPolicy` angegeben ist, können Sie sein optionales `Format`-Attribut
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Azure Active Directory kann das Anspruchsformat selbst wählen. Azure Active Directory stellt die NameID als paarweisen Bezeichner aus.
 * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Azure Active Directory stellt den NameID-Anspruch in Form eines zufällig generierten Werts aus, der für den aktuellen SSO-Vorgang eindeutig ist. Dieser Wert ist temporär und kann nicht zur Identifizierung des sich authentifizierenden Benutzers verwendet werden.
 
+Wenn `SPNameQualifier` angegeben wird, enthält Azure AD denselben `SPNameQualifier` in der Antwort.
+
 Das `AllowCreate` -Attribut wird von Azure AD ignoriert.
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
@@ -98,12 +99,12 @@ Das `Scoping`-Element enthält eine Liste mit Identitätsanbietern und ist bei `
 Wenn Sie sich für die Angabe entscheiden, schließen Sie nicht das `ProxyCount`-Attribut, `IDPListOption` oder das `RequesterID`-Element ein, da diese nicht unterstützt werden.
 
 ### <a name="signature"></a>Signatur
-Schließen Sie in `AuthnRequest`-Elementen kein `Signature`-Element ein, da Azure AD nicht signierte Authentifizierungsanforderungen unterstützt.
+Ein `Signature`-Element in `AuthnRequest`-Elementen ist optional. Azure AD überprüft signierte Authentifizierungsanforderungen nicht, wenn eine Signatur vorhanden ist. Die Überprüfung des Anforderers erfolgt, indem nur auf registrierte Assertionsverbraucherdienst-URLs reagiert wird.
 
 ### <a name="subject"></a>Subject
-Azure AD ignoriert das `Subject`-Element von `AuthnRequest`-Elementen.
+Fügen Sie kein `Subject`-Element ein. Das Angeben eines „Subject“-Elements für eine Anforderung wird von Azure AD nicht unterstützt, und bei Angabe wird ein Fehler zurückgegeben.
 
-## <a name="response"></a>response
+## <a name="response"></a>Antwort
 Wenn eine angeforderte Anmeldung erfolgreich abgeschlossen wird, sendet Azure AD eine Antwort an den Clouddienst. Eine Antwort auf einen erfolgreichen Anmeldeversuch sieht wie im folgenden Beispiel aus:
 
 ```
@@ -149,7 +150,7 @@ Wenn eine angeforderte Anmeldung erfolgreich abgeschlossen wird, sendet Azure AD
 </samlp:Response>
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Das `Response` -Element enthält das Ergebnis der Autorisierungsanforderung. Azure AD legt die Werte `ID`, `Version` und `IssueInstant` im `Response`-Element fest. Außerdem legt es die folgenden Attribute fest:
 
@@ -158,12 +159,12 @@ Das `Response` -Element enthält das Ergebnis der Autorisierungsanforderung. Azu
 
 ### <a name="issuer"></a>Issuer (Aussteller)
 
-Azure AD legt das `Issuer`-Element auf `https://login.microsoftonline.com/<TenantIDGUID>/` fest, wobei \<TenantIDGUID> die Mandanten-ID des Azure AD-Mandanten ist.
+Azure AD legt das `Issuer`-Element auf `https://sts.windows.net/<TenantIDGUID>/` fest, wobei \<TenantIDGUID> die Mandanten-ID des Azure AD-Mandanten ist.
 
 Eine Antwort mit einem Issuer-Element sieht beispielsweise wie im folgenden Beispiel aus:
 
 ```
-<Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
+<Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
 ### <a name="status"></a>Status
@@ -193,10 +194,10 @@ Zusätzlich zu `ID`, `IssueInstant` und `Version` legt Azure AD im `Assertion`-E
 
 #### <a name="issuer"></a>Issuer (Aussteller)
 
-Dieses Element ist auf `https://sts.windows.net/<TenantIDGUID>/` festgelegt, wobei \<TenantIDGUID> die Mandanten-ID des Azure AD-Mandanten ist.
+Ist auf `https://sts.windows.net/<TenantIDGUID>/` festgelegt, wobei \<TenantIDGUID> die Mandanten-ID des Azure AD-Mandanten ist.
 
 ```
-<Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
+<Issuer>https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
 #### <a name="signature"></a>Signatur
@@ -226,7 +227,7 @@ Das `Method`-Attribut des `SubjectConfirmation`-Elements ist immer auf `urn:oasi
 </Subject>
 ```
 
-#### <a name="conditions"></a>Conditions (Bedingungen)
+#### <a name="conditions"></a>Bedingungen
 
 Dieses Element legt die Bedingungen fest, die die akzeptable Verwendung von SAML-Assertions definieren.
 

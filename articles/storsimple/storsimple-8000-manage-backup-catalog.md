@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 07d9e03f1631ebce88a7a7c2e33be62f21dda522
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6ab4694159c6269f2f72d3d591147d43aef34a0a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60319622"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017371"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>Verwalten des Sicherungskatalogs mithilfe des StorSimple-Geräte-Manager-Diensts
 ## <a name="overview"></a>Übersicht
@@ -31,9 +31,9 @@ In diesem Tutorial wird erläutert, wie ein Sicherungssatz aufgeführt, ausgewä
 
 Das Blatt **Sicherungskatalog** bietet eine Abfrage, mit der Sie die Auswahl der Sicherungssätze einschränken können. Sie können die abgerufenen Sicherungssätze anhand der folgenden Parameter filtern:
 
-* **Gerät**: Das Gerät, auf dem der Sicherungssatz erstellt wurde.
+* **Gerät** : das Gerät, auf dem der Sicherungssatz erstellt wurde.
 * **Sicherungsrichtlinie oder Volume**: Die Sicherungsrichtlinie oder das Volume, der oder dem dieser Sicherungssatz zugeordnet ist.
-* **Von und Bis**: Datums- und Uhrzeitbereich, in dem die Sicherung erstellt wurde.
+* **Von und Bis** : der Datums- und Uhrzeitbereich, in dem die Sicherung erstellt wurde.
 
 Die gefilterten Sicherungssätze werden dann basierend auf den folgenden Attributen in Tabellenform angezeigt:
 
@@ -75,11 +75,11 @@ Führen Sie die folgenden Schritte aus, um einen Sicherungssatz für ein Volume 
       
       Die dem ausgewählten Volume oder der Sicherungsrichtlinie zugeordneten Sicherungen sollten in der Liste der Sicherungssätze angezeigt werden.
 
-      ![Wechseln zum Sicherungskatalog](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Wechseln zum Sicherungskatalog 2](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 3. Wählen Sie einen Sicherungssatz aus und erweitern Sie diesen. Sie sehen nun die Sicherungssätze aufgeschlüsselt nach den Volumes, die sie enthalten. Die Optionen **Wiederherstellen** und **Löschen** stehen über das (über einen Klick mit der rechten Maustaste zu öffnende) Kontextmenü für den Sicherungssatz zur Verfügung. Sie können beide Aktionen in dem Sicherungssatz durchführen, den Sie ausgewählt haben.
 
-    ![Wechseln zum Sicherungskatalog](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
+    ![Wechseln zum Sicherungskatalog 3](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
 
 ## <a name="delete-a-backup-set"></a>Löschen eines Sicherungssatzes
 Löschen Sie eine Sicherung, wenn Sie die zugeordneten Daten nicht mehr beibehalten möchten. Führen Sie die folgenden Schritte aus, um einen Sicherungssatz zu löschen.
@@ -95,19 +95,19 @@ Löschen Sie eine Sicherung, wenn Sie die zugeordneten Daten nicht mehr beibehal
       
       Die dem ausgewählten Volume oder der Sicherungsrichtlinie zugeordneten Sicherungen sollten in der Liste der Sicherungssätze angezeigt werden.
 
-      ![Wechseln zum Sicherungskatalog](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Wechseln zum Sicherungskatalog 4](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 1. Wählen Sie einen Sicherungssatz aus und erweitern Sie diesen. Sie sehen nun die Sicherungssätze aufgeschlüsselt nach den Volumes, die sie enthalten. Die Optionen **Wiederherstellen** und **Löschen** stehen über das (über einen Klick mit der rechten Maustaste zu öffnende) Kontextmenü für den Sicherungssatz zur Verfügung. Klicken Sie mit der rechten Maustaste auf den ausgewählten Sicherungssatz, und wählen Sie **Löschen** aus.
 
-    ![Wechseln zum Sicherungskatalog](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
+    ![Wechseln zum Sicherungskatalog 5](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
 
 1. Wenn Sie zur Bestätigung aufgefordert werden, überprüfen Sie die angezeigten Informationen, und klicken Sie auf **Löschen**. Die ausgewählte Sicherung wird endgültig gelöscht.
 
-    ![Wechseln zum Sicherungskatalog](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
+    ![Wechseln zum Sicherungskatalog 6](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
 
 1. Sie werden benachrichtigt, wenn der Löschvorgang durchgeführt wird und wenn er erfolgreich abgeschlossen wurde. Aktualisieren Sie die Abfrage auf dieser Seite, nachdem der Löschvorgang abgeschlossen wurde. Der gelöschte Sicherungssatz wird nicht mehr in der Liste der Sicherungssätze angezeigt.
 
-    ![Wechseln zum Sicherungskatalog](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
+    ![Wechseln zum Sicherungskatalog 7](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zur [Verwendung des Sicherungskatalogs zum Wiederherstellen Ihres Geräts aus einem Sicherungssatz](storsimple-8000-restore-from-backup-set-u2.md).

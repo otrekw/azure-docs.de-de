@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 4d6dce952eca3d528a310685106a017dd7e3b80f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54ef051b7d8778e2eecd85bef2e57b62239ba114
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66166037"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435313"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Installieren des Elastic Stack auf einem virtuellen Azure-Computer
 
@@ -35,17 +35,17 @@ In diesem Tutorial lernen Sie Folgendes:
 
  Diese Bereitstellung eignet sich für einfache Entwicklungsszenarien mit dem Elastic Stack. Weitere Informationen zum Elastic Stack (einschließlich Empfehlungen für eine Produktionsumgebung) finden Sie in der [Elastic-Dokumentation](https://www.elastic.co/guide/index.html) sowie im [Azure-Architekturcenter](/azure/architecture/elasticsearch/).
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
+- Für diesen Artikel ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -55,7 +55,7 @@ Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm) einen virtuellen Comp
 
 Das folgende Beispiel erstellt einen virtuellen Computer mit dem Namen *myVM* und SSH-Schlüssel, falls sie nicht bereits an einem Standardschlüsselspeicherort vorhanden sind. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.  
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
@@ -66,7 +66,7 @@ az vm create \
 
 Nach dem Erstellen der VM zeigt die Azure CLI ähnliche Informationen wie im folgenden Beispiel an. Notieren Sie sich den Wert von `publicIpAddress`. Diese Adresse wird verwendet, um auf den virtuellen Computer zuzugreifen.
 
-```azurecli-interactive 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -211,7 +211,7 @@ Die Syslog-Einträge werden während der Übermittlung an Elasticsearch in Ihrem
 Bearbeiten Sie `/etc/kibana/kibana.yml`, und ändern Sie die IP-Adresse, an der Kibana lauscht, damit Sie darauf über Ihren Webbrowser zugreifen können.
 
 ```bash
-server.host:"0.0.0.0"
+server.host: "0.0.0.0"
 ```
 
 Führen Sie den folgenden Befehl aus, um Kibana zu starten:
@@ -228,7 +228,7 @@ az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 
 Öffnen Sie die Kibana-Konsole, und klicken Sie auf **Erstellen**, um auf der Grundlage der zuvor an Elasticsearch gesendeten Syslog-Daten einen Standardindex zu generieren. 
 
-![Durchsuchen von Syslog-Ereignissen in Kibana](media/elasticsearch-install/kibana-index.png)
+![Der Screenshot zeigt die Kibana-Konsole und hebt die Schaltfläche „Erstellen“ hervor.](media/elasticsearch-install/kibana-index.png)
 
 Klicken Sie in der Kibana-Konsole auf **Discover** (Entdecken), um die Syslog-Ereignisse zu durchsuchen und zu filtern.
 
@@ -236,7 +236,7 @@ Klicken Sie in der Kibana-Konsole auf **Discover** (Entdecken), um die Syslog-Er
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie den Elastic Stack für einen virtuellen Entwicklungscomputer in Azure bereitgestellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie den Elastic Stack für einen virtuellen Entwicklungscomputer in Azure bereitgestellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen eines virtuellen Ubuntu-Computers in einer Azure-Ressourcengruppe

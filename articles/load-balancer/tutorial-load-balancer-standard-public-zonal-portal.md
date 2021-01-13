@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Lastenausgleich für virtuelle Computer innerhalb einer Zone – Azure-Portal'
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: In diesem Tutorial wird gezeigt, wie Sie einen Load Balancer Standard mit einem zonalen Front-End erstellen, um mit dem Azure-Portal einen Lastenausgleich für virtuelle Computer innerhalb einer Verfügbarkeitszone vorzunehmen.
 services: load-balancer
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 0ec9fae1ce4ef976d5f50e1d8d8412354706c5f8
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: f91c9c0f401a455543b12af81eed48bd1a3349bd
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273398"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696437"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Tutorial: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Verfügbarkeitszone mit Load Balancer Standard im Azure-Portal
 
@@ -37,7 +37,11 @@ In diesem Tutorial wird mit dem Azure-Portal eine öffentliche [Azure Load Balan
 
 Informationen zur Verwendung von Verfügbarkeitszonen mit Load Balancer Standard finden Sie unter [Load Balancer Standard und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
 
-Sie können auch die [Azure CLI](load-balancer-standard-public-zonal-cli.md) verwenden, um dieses Tutorial durchzuarbeiten, falls Sie dies vorziehen.
+Sie können auch die [Azure CLI](./quickstart-load-balancer-standard-public-cli.md) verwenden, um dieses Tutorial durchzuarbeiten, falls Sie dies vorziehen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Ein Azure-Abonnement
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -54,7 +58,7 @@ Für Load Balancer Standard wird nur eine öffentliche Standard-IP-Adresse unter
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupZLB* in das Textfeld ein.|
-    | NAME                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
     | type          | Wählen Sie **Öffentlich** aus.                                        |
     | SKU           | Wählen Sie **Standard** aus.                          |
@@ -63,18 +67,24 @@ Für Load Balancer Standard wird nur eine öffentliche Standard-IP-Adresse unter
     |Verfügbarkeitszone| Wählen Sie **1**.    |
 3. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**.   
 
-   ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
+## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk. Außerdem erstellen Sie zwei virtuelle Computer in der derselben Zone (Zone 1) für die Region, die dem Back-End-Pool Ihres Lastenausgleichs hinzugefügt werden. Anschließend installieren Sie IIS auf den virtuellen Computern, um das Testen des zonenredundanten Lastenausgleichs zu unterstützen. Wenn eine VM ausfällt, schlägt auch der Integritätstest für die VM in derselben Zone fehl. Der Datenverkehr wird von anderen VMs innerhalb derselben Zone bereitgestellt.
 
-### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**.  Geben Sie die folgenden Werte für das virtuelle Netzwerk ein:
-    - **myVnet**: Der Name des virtuellen Netzwerks.
-    - **myResourceGroupZLB**: Der Name der vorhandenen Ressourcengruppe.
-    - **myBackendSubnet**: Der Subnetzname.
-2. Wählen Sie **Erstellen**, um das virtuelle Netzwerk zu erstellen.
+## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
-    ![Erstellen eines virtuellen Netzwerks](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-network.png)
+In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ersetzt werden:
+
+| Parameter                   | Wert                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupZLB (Wählen Sie die vorhandene Ressourcengruppe aus.) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Europa, Westen      |
+| **\<IPv4-address-space>**   | 10.0.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
@@ -89,7 +99,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk. Außerdem erstellen S
 
 In diesem Abschnitt erstellen Sie über das Azure-Portal NSG-Regeln, um eingehende Verbindungen zuzulassen, für die HTTP und das Microsoft-Remotedesktopprotokoll (RDP) verwendet werden.
 
-1. Wählen Sie im Azure-Portal im Menü ganz links die Option **Alle Ressourcen**. Suchen Sie anschließend nach **myNetworkSecurityGroup**, und wählen Sie das entsprechende angezeigte Ergebnis aus. Es befindet sich unter der Ressourcengruppe **myResourceGroupZLB**.
+1. Wählen Sie im Azure-Portal im Menü ganz links die Option **Alle Ressourcen**. Suchen Sie anschließend nach **myNetworkSecurityGroup**, und wählen Sie das entsprechende angezeigte Ergebnis aus. Sie befindet sich unter der Ressourcengruppe **myResourceGroupZLB**.
 2. Wählen Sie unter **Einstellungen** die Option **Eingangssicherheitsregeln**. Wählen Sie anschließend **Hinzufügen**.
 3. Geben Sie für die Eingangssicherheitsregel **myHTTPRule** die folgenden Werte ein, um eingehende HTTP-Verbindungen über Port 80 zuzulassen:
     - **Service Tag** für **Quelle**
@@ -123,7 +133,7 @@ In diesem Abschnitt erstellen Sie über das Azure-Portal NSG-Regeln, um eingehen
     - **azureuser** als Name des Administratorbenutzers    
     - **myResourceGroupZLB** für **Ressourcengruppe** Wählen Sie **Vorhandene verwenden** und dann **myResourceGroupZLB**.
 2. Klicken Sie auf **OK**.
-3. Wählen Sie als Größe des virtuellen Computers **DS1_V2** aus. Wählen Sie **Auswählen**.
+3. Wählen Sie als Größe des virtuellen Computers **DS1_V2** aus. Klicken Sie auf **Auswählen**.
 4. Geben Sie für die VM-Einstellungen folgende Werte ein:
     - **Zone 1** für die Verfügbarkeitszone, in der der virtuelle Computer platziert werden soll.
     -  **myVNet**: Vergewissern Sie sich, dass als virtuelles Netzwerk diese Option ausgewählt ist.
@@ -140,7 +150,7 @@ In diesem Abschnitt erstellen Sie über das Azure-Portal NSG-Regeln, um eingehen
 
 1. Wählen Sie im Menü ganz links die Option **Alle Ressourcen**. Wählen Sie anschließend in der Ressourcenliste die Option **myVM1**. Sie befindet sich unter der Ressourcengruppe **myResourceGroupZLB**.
 2. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden**, um per RDP auf die VM zuzugreifen.
-3. Melden Sie sich an der VM mit dem Benutzernamen und Kennwort an, das Sie bei der Erstellung der VM angegeben haben. Zum Angeben dieser Anmeldeinformationen müssen Sie ggf. **Weitere Optionen** wählen. Wählen Sie anschließend die Option **Anderes Konto verwenden**. Wählen Sie dann **OK**. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wählen Sie **Ja** aus, um mit dem Herstellen der Verbindung fortzufahren.
+3. Melden Sie sich an der VM mit dem Benutzernamen und Kennwort an, das Sie bei der Erstellung der VM angegeben haben. Zum Angeben dieser Anmeldeinformationen müssen Sie ggf. **Weitere Optionen** wählen. Wählen Sie dann **Anderes Konto verwenden** aus. Wählen Sie dann **OK**. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wählen Sie **Ja** aus, um mit dem Herstellen der Verbindung fortzufahren.
 4. Navigieren Sie auf dem Serverdesktop zu **Windows-Verwaltungsprogramme** > **Windows PowerShell**.
 6. Führen Sie im **PowerShell**-Fenster die folgenden Befehle aus, um den IIS-Server zu installieren. Mit diesen Befehlen wird auch die Standarddatei „iisstart.htm“ entfernt und anschließend eine neue Version der Datei „iisstart.htm“ hinzugefügt, in der der Name der VM angezeigt wird:
 
@@ -170,7 +180,7 @@ Zum Verteilen von Datenverkehr auf die virtuellen Computer enthält ein Back-End
     - Geben Sie unter „Name“ die Zeichenfolge **myBackEndPool** als Name für Ihren Back-End-Pool ein.
     - Wählen Sie für **Virtuelles Netzwerk** im Dropdownmenü die Option **myVNet**. 
     - Wählen Sie unter **Virtueller Computer** und **IP-Adresse** die Computer **myVM1** und **myVM2** und die zugehörigen öffentlichen IP-Adressen aus.
-4. Wählen Sie **Hinzufügen**.
+4. Wählen Sie **Hinzufügen** aus.
 5. Vergewissern Sie sich, dass in der Back-End-Pool-Einstellung Ihres Lastenausgleichs beide virtuellen Computer angezeigt werden: **myVM1** und **myVM2**.
  
     ![Erstellen eines Back-End-Pools](./media/tutorial-load-balancer-standard-zonal-portal/create-backend-pool.png) 
@@ -180,7 +190,7 @@ Zum Verteilen von Datenverkehr auf die virtuellen Computer enthält ein Back-End
 Verwenden Sie einen Integritätstest, damit der Lastenausgleich den Status Ihrer App überwachen kann. Abhängig von der Reaktion auf Integritätsüberprüfungen werden der Load Balancer-Rotation durch den Integritätstest dynamisch virtuelle Computer hinzugefügt oder daraus entfernt. Erstellen Sie zur Überwachung der Integrität der virtuellen Computer einen Integritätstest namens **myHealthProbe**.
 
 1. Wählen Sie im Menü ganz links die Option **Alle Ressourcen**. Wählen Sie anschließend in der Ressourcenliste die Option **myLoadBalancer**.
-2. Wählen Sie unter **Einstellungen** die Option **Integritätstests**. Wählen Sie anschließend **Hinzufügen**.
+2. Klicken Sie unter **Einstellungen** auf **Integritätstests**. Wählen Sie anschließend **Hinzufügen**.
 3. Verwenden Sie folgende Werte, um den Integritätstest zu erstellen:
     - **myHealthProbe** als Name des Integritätstests
     - **HTTP** als Protokolltyp
@@ -196,7 +206,7 @@ Verwenden Sie einen Integritätstest, damit der Lastenausgleich den Status Ihrer
 Mit einer Lastenausgleichsregel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt wird. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. Erstellen Sie eine Lastenausgleichsregel mit dem Namen **myLoadBalancerRuleWeb** zum Lauschen über Port 80 des Front-Ends **FrontendLoadBalancer**. Mit der Regel wird Netzwerkdatenverkehr, für den ein Lastenausgleich durchgeführt wurde, an den Back-End-Adresspool **myBackEndPool** gesendet (ebenfalls über Port 80). 
 
 1. Wählen Sie im Menü ganz links die Option **Alle Ressourcen**. Wählen Sie anschließend in der Ressourcenliste die Option **myLoadBalancer**.
-2. Wählen Sie unter **Einstellungen** die Option **Lastenausgleichsregeln**. Wählen Sie anschließend **Hinzufügen**.
+2. Klicken Sie unter **Einstellungen** auf **Lastenausgleichsregeln**. Wählen Sie anschließend **Hinzufügen**.
 3. Konfigurieren Sie die Lastenausgleichsregel mit folgenden Werten:
     - **myHTTPRule** als Name der Lastenausgleichsregel
     - **TCP** als Protokolltyp
@@ -222,5 +232,6 @@ Löschen Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen R
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen finden Sie unter [Load Balancer Standard](load-balancer-standard-overview.md).
-- [Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+Im nächsten Artikel erfahren Sie, wie Sie über mehrere Verfügbarkeitszonen hinweg einen Lastausgleich für virtuelle Computer vornehmen.
+> [!div class="nextstepaction"]
+> [Lastenausgleich für virtuelle Computer über Verfügbarkeitszonen hinweg](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit AirWatch | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und AirWatch konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 96a3bb1c-96c6-40dc-8ea0-060b0c2a62e5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f0a684c6a38ba3a95438941f668b36b23d278df
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: cedea9eb4ec47af445b2ae31225a697f3c51b46e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227718"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318923"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Tutorial: Integrieren von AirWatch in Azure Active Directory
 
@@ -31,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie AirWatch in Azure Active Directory (Azu
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei AirWatch anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -93,7 +88,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus:
 
-    | NAME |  Quellattribut|
+    | Name |  Quellattribut|
     |---------------|----------------|
     | UID | user.userprincipalname |
     | | |
@@ -130,7 +125,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Klicken Sie auf die Registerkarte **Benutzer**, geben Sie im Textfeld **Basis-DN** Ihren Domänennamen ein, und klicken Sie dann auf **Speichern**.
 
-   ![Benutzer](./media/airwatch-tutorial/ic791922.png "Benutzer")
+   ![Screenshot, auf dem das Textfeld „Basis-DN“ hervorgehoben ist](./media/airwatch-tutorial/ic791922.png "Benutzer")
 
 1. Klicken Sie auf die Registerkarte **Server** .
 
@@ -138,7 +133,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Führen Sie im Abschnitt für **LDAP** die folgenden Schritte aus:
 
-    ![Hochladen](./media/airwatch-tutorial/ic791924.png "LDAP")   
+    ![Screenshot der Änderungen, die Sie im Abschnitt „LDAP“ vornehmen müssen](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
     a. Wählen Sie unter **Verzeichnistyp** die Option **Keiner** aus.
 
@@ -146,7 +141,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Klicken Sie im Abschnitt **SAML 2.0** auf **Upload** (Hochladen), um das heruntergeladene Zertifikat hochzuladen.
 
-    ![Hochladen](./media/airwatch-tutorial/ic791932.png "Hochladen")
+    ![Upload](./media/airwatch-tutorial/ic791932.png "Upload")
 
 1. Führen Sie im Abschnitt **Request** die folgenden Schritte aus:
 
@@ -168,7 +163,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Führen Sie im Abschnitt **Attribute** die folgenden Schritte aus:
 
-    ![Attribut](./media/airwatch-tutorial/ic791927.png "Attribut")
+    ![Attribut](./media/airwatch-tutorial/ic791927.png "attribute")
 
     a. Geben Sie im Textfeld **Objektbezeichner** Folgendes ein: `http://schemas.microsoft.com/identity/claims/objectidentifier`.
 
@@ -194,7 +189,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -228,7 +223,7 @@ Damit sich Azure AD-Benutzer bei AirWatch anmelden können, müssen sie in AirWa
 
 3. Klicken Sie im Menü **Users** (Benutzer) auf **List View** (Listenansicht), und klicken Sie dann auf **Add > Add User** (Hinzufügen > Benutzer hinzufügen).
   
-   ![Benutzer hinzufügen](./media/airwatch-tutorial/ic791930.png "Benutzer hinzufügen")
+   ![Screenshot, auf dem die Schaltflächen „Hinzufügen“ und „Benutzer hinzufügen“ hervorgehoben sind](./media/airwatch-tutorial/ic791930.png "Benutzer hinzufügen")
 
 4. Führen Sie im Dialogfeld **Add / Edit User** die folgenden Schritte aus:
 
@@ -239,16 +234,16 @@ Damit sich Azure AD-Benutzer bei AirWatch anmelden können, müssen sie in AirWa
    b. Klicken Sie auf **Speichern**.
 
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von AirWatch-Benutzerkonten oder mithilfe der von AirWatch bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von AirWatch-Benutzerkonten oder mit den APIs von AirWatch bereitstellen.
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-Wenn Sie im Zugriffsbereich die Kachel „AirWatch“ auswählen, sollten Sie automatisch bei der AirWatch-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich die Kachel „AirWatch“ auswählen, sollten Sie automatisch bei der AirWatch-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)

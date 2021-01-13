@@ -1,32 +1,35 @@
 ---
-title: Massenkopieren von Daten mithilfe von Azure Data Factory | Microsoft-Dokumentation
-description: In diesem Artikel wird erklärt, wie Sie Azure Data Factory und Kopieraktivität zum Kopieren von Daten per Massenvorgang aus einem Quelldatenspeicher in einen Zieldatenspeicher verwenden.
+title: Massenkopieren von Daten mithilfe von PowerShell
+description: Verwenden Sie Azure Data Factory mit der Copy-Aktivität zum Kopieren von Daten per Massenvorgang aus einem Quelldatenspeicher in einen Zieldatenspeicher.
 services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.author: jingwang
-ms.openlocfilehash: b5d0807fb03c8518286a369f50df62f0ec0b23c2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bf40353a8f29200ab2a33859473dbc504c29bf7d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140781"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510433"
 ---
-# <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Massenkopieren von mehreren Tabellen mithilfe von Azure Data Factory
-In diesem Tutorial wird das **Kopieren von mehreren Tabellen aus einer Azure SQL-Datenbank in Azure SQL Data Warehouse** veranschaulicht. Sie können dieses Muster auch in anderen Kopierszenarios anwenden. So können Sie z.B. Tabellen aus SQL Server/Oracle in Azure SQL-Datenbank/Data Warehouse/Azure Blob kopieren oder verschiedene Pfade aus Blob in Azure SQL-Datenbanktabellen.
+# <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>Massenkopieren mehrerer Tabellen mithilfe von Azure Data Factory und PowerShell
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+In diesem Tutorial wird das **Kopieren von mehreren Tabellen aus einer Azure SQL-Datenbank in Azure Synapse Analytics** veranschaulicht. Sie können dieses Muster auch in anderen Kopierszenarios anwenden. So können Sie z.B. Tabellen aus SQL Server/Oracle in Azure SQL-Datenbank/Data Warehouse/Azure Blob kopieren oder verschiedene Pfade aus Blob in Azure SQL-Datenbanktabellen.
 
 Das Tutorial umfasst die folgenden Schritte:
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory.
-> * Erstellen von Azure SQL-Datenbank, Azure SQL Data Warehouse und mit Azure Storage verknüpften Diensten.
-> * Erstellen von Datasets für Azure SQL-Datenbank und Azure SQL Data Warehouse.
+> * Erstellen verknüpfter Azure SQL-Datenbank-, Azure Synapse Analytics- und Azure Storage-Dienste
+> * Erstellen von Azure SQL-Datenbank- und Azure Synapse Analytics-Datasets
 > * Erstellen einer Pipeline zum Abrufen der zu kopierenden Tabellen und einer weiteren Pipeline zur Durchführung des eigentlichen Kopiervorgangs. 
 > * Starten einer Pipelineausführung
 > * Überwachen der Pipeline- und Aktivitätsausführungen.
@@ -34,12 +37,12 @@ Das Tutorial umfasst die folgenden Schritte:
 In diesem Tutorial wird Azure PowerShell verwendet. Informationen zur Verwendung von anderen Tools/SDKs zum Erstellen einer Data Factory finden Sie unter [Schnellstarts](quickstart-create-data-factory-dot-net.md). 
 
 ## <a name="end-to-end-workflow"></a>Kompletter Workflow
-In diesem Szenario sollen mehrere Tabellen aus der Azure SQL-Datenbank in SQL Data Warehouse kopiert werden. Nachfolgend ist der logische Ablauf eines Workflows dargestellt, der in Pipelines ausgeführt wird:
+In diesem Szenario sollen mehrere Tabellen aus Azure SQL-Datenbank in Azure Synapse Analytics kopiert werden. Nachfolgend ist der logische Ablauf eines Workflows dargestellt, der in Pipelines ausgeführt wird:
 
 ![Workflow](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
 
 * Die erste Pipeline ruft die Liste mit den Tabellen ab, die in die Senkendatenspeicher kopiert werden sollen.  Sie können stattdessen auch eine Metadatentabelle mit den Tabellen verwalten, die in die Senkendatenspeicher kopiert werden sollen. Die Pipeline löst anschließend eine weitere Pipeline aus, die wiederum jede Tabelle in der Datenbank durchläuft und den Datenkopiervorgang ausführt.
-* Die zweite Pipeline führt den eigentlichen Kopiervorgang aus. Dazu wird die Liste mit den Tabellen als Parameter verwendet. Kopieren Sie für jede Tabelle in der Liste die jeweilige Tabelle aus der Azure SQL-Datenbank in die entsprechende Tabelle in SQL Data Warehouse. Verwenden Sie für eine optimale Leistung das [gestaffelte Kopieren über Blob Storage und PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse). In diesem Beispiel wird die Liste mit den Tabellen von der ersten Pipeline als Wert für den Parameter übergeben. 
+* Die zweite Pipeline führt den eigentlichen Kopiervorgang aus. Dazu wird die Liste mit den Tabellen als Parameter verwendet. Kopieren Sie für jede Tabelle in der Liste die jeweilige Tabelle aus Azure SQL-Datenbank in die entsprechende Tabelle in Azure Synapse Analytics. Verwenden Sie für eine optimale Leistung das [gestaffelte Kopieren über Blob Storage und PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics). In diesem Beispiel wird die Liste mit den Tabellen von der ersten Pipeline als Wert für den Parameter übergeben. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -50,23 +53,23 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 * **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](/powershell/azure/install-Az-ps) (Erste Schritte mit Azure PowerShell-Cmdlets).
 * **Azure Storage-Konto**. Das Azure Storage-Konto wird im Massenkopiervorgang als Staging-Blobspeicher verwendet. 
 * **Azure SQL-Datenbank**. Diese Datenbank enthält die Quelldaten. 
-* **Azure SQL Data Warehouse**. Dieses Data Warehouse enthält die Daten, die aus der SQL-Datenbank kopiert werden. 
+* **Azure Synapse Analytics**: Dieses Data Warehouse enthält die Daten, die aus der SQL-Datenbank kopiert werden. 
 
-### <a name="prepare-sql-database-and-sql-data-warehouse"></a>Vorbereiten von SQL-Datenbank und SQL Data Warehouse
+### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>Vorbereiten von SQL-Datenbank und Azure Synapse Analytics
 
 **Vorbereiten der Azure SQL-Quelldatenbank**:
 
-Erstellen Sie eine Azure SQL-Datenbank mit Adventure Works LT-Beispieldaten, indem Sie den Anweisungen im Artikel [Erstellen einer Azure SQL-Datenbank](../sql-database/sql-database-get-started-portal.md) folgen. In diesem Tutorial werden alle Tabellen aus der Beispieldatenbank in SQL Data Warehouse kopiert.
+Erstellen Sie eine Datenbank mit den AdventureWorks LT-Beispieldaten in SQL-Datenbank anhand der Informationen aus dem Artikel [Erstellen einer Datenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md). In diesem Tutorial werden alle Tabellen aus der Beispieldatenbank in Azure Synapse Analytics kopiert.
 
-**Vorbereiten des Senkenwarehouses Azure SQL Data Warehouse**:
+**Vorbereiten der Azure Synapse Analytics-Senke:**
 
-1. Wenn Sie noch kein Azure SQL Data Warehouse erstellt haben, finden Sie die Anleitung dazu im Artikel [Erstellen eines SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
+1. Wenn Sie über keinen Azure Synapse Analytics-Arbeitsbereich verfügen, führen Sie die Schritte im Artikel [Erste Schritte mit Azure Synapse Analytics](..\synapse-analytics\get-started.md) aus, um einen Arbeitsbereich zu erstellen.
 
-2. Erstellen Sie in SQL Data Warehouse übereinstimmende Tabellenschemas. Verwenden Sie das [Hilfsprogramm für die Migration](https://www.microsoft.com/download/details.aspx?id=49100) zum **Migrieren von Schemas** aus einer Azure SQL-Datenbank zu Azure SQL Data Warehouse. In einem späteren Schritt können Sie Daten mit Azure Data Factory migrieren/kopieren.
+2. Erstellen Sie entsprechende Tabellenschemas in Azure Synapse Analytics. In einem späteren Schritt können Sie Daten mit Azure Data Factory migrieren/kopieren.
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure-Dienste für den Zugriff auf SQL-Server
 
-Erlauben Sie Azure-Diensten den Zugriff auf SQL-Server. Das gilt sowohl für die SQL-Datenbank als auch für SQL Data Warehouse. Stellen Sie sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** für Ihren Azure SQL-Server auf **EIN** festgelegt ist. Mit dieser Einstellung wird dem Data Factory-Dienst erlaubt, Daten aus Ihrer Azure SQL-Datenbank zu lesen und in Ihr Azure SQL Data Warehouse zu schreiben. Führen Sie folgende Schritte aus, um diese Einstellung zu überprüfen und zu aktivieren:
+Gewähren Sie den Azure-Diensten sowohl für SQL-Datenbank als auch für Azure Synapse Analytics den Zugriff auf SQL Server. Stellen Sie sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** für Ihren Server auf **EIN** festgelegt ist. Mit dieser Einstellung wird dem Data Factory-Dienst erlaubt, Daten aus Ihrer Azure SQL-Datenbank-Instanz zu lesen und in Azure Synapse Analytics zu schreiben. Führen Sie folgende Schritte aus, um diese Einstellung zu überprüfen und zu aktivieren:
 
 1. Klicken Sie links auf **Alle Dienste** und anschließend auf **SQL Server**.
 2. Wählen Sie Ihren Server aus, und klicken Sie unter **EINSTELLUNGEN** auf **Firewall**.
@@ -127,10 +130,7 @@ In diesem Tutorial erstellen Sie drei verknüpfte Dienste für Quell-, Senken- u
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-                }
+                "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         }
     }
@@ -146,14 +146,14 @@ In diesem Tutorial erstellen Sie drei verknüpfte Dienste für Quell-, Senken- u
 
     Hier ist die Beispielausgabe:
 
-    ```json
+    ```console
     LinkedServiceName : AzureSqlDatabaseLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlDatabaseLinkedService
     ```
 
-### <a name="create-the-sink-azure-sql-data-warehouse-linked-service"></a>Erstellen des verknüpften Senkendiensts Azure SQL Data Warehouse
+### <a name="create-the-sink-azure-synapse-analytics-linked-service"></a>Erstellen des verknüpften Diensts für die Azure Synapse Analytics-Senke
 
 1. Erstellen Sie im Ordner **C:\ADFv2TutorialBulkCopy** eine JSON-Datei mit dem Namen **AzureSqlDWLinkedService.json** und dem folgenden Inhalt:
 
@@ -166,10 +166,7 @@ In diesem Tutorial erstellen Sie drei verknüpfte Dienste für Quell-, Senken- u
         "properties": {
             "type": "AzureSqlDW",
             "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-            }
+                "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         }
     }
@@ -183,7 +180,7 @@ In diesem Tutorial erstellen Sie drei verknüpfte Dienste für Quell-, Senken- u
 
     Hier ist die Beispielausgabe:
 
-    ```json
+    ```console
     LinkedServiceName : AzureSqlDWLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -205,10 +202,7 @@ In diesem Tutorial wird Azure Blob Storage als vorläufiger Stagingbereich zur A
         "properties": {
             "type": "AzureStorage",
             "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>"
-                }
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>"
             }
         }
     }
@@ -222,7 +216,7 @@ In diesem Tutorial wird Azure Blob Storage als vorläufiger Stagingbereich zur A
 
     Hier ist die Beispielausgabe:
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -261,7 +255,7 @@ In diesem Tutorial werden Quell- und Senkendatasets erstellt, die den Speicheror
 
     Hier ist die Beispielausgabe:
 
-    ```json
+    ```console
     DatasetName       : AzureSqlDatabaseDataset
     ResourceGroupName : <resourceGroupname>
     DataFactoryName   : <dataFactoryName>
@@ -269,7 +263,7 @@ In diesem Tutorial werden Quell- und Senkendatasets erstellt, die den Speicheror
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset
     ```
 
-### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>Erstellen eines Datasets für das Senkenwarehouse SQL Data Warehouse
+### <a name="create-a-dataset-for-sink-azure-synapse-analytics"></a>Erstellen eines Datasets für die Azure Synapse Analytics-Senke
 
 1. Erstellen Sie im Ordner **C:\ADFv2TutorialBulkCopy** eine JSON-Datei mit dem Namen **AzureSqlDWDataset.json** und dem folgenden Inhalt: „tableName“ ist als Parameter festgelegt. Später übergibt die Kopieraktivität, die auf dieses Dataset verweist, den tatsächlichen Wert in das Dataset.
 
@@ -305,7 +299,7 @@ In diesem Tutorial werden Quell- und Senkendatasets erstellt, die den Speicheror
 
     Hier ist die Beispielausgabe:
 
-    ```json
+    ```console
     DatasetName       : AzureSqlDWDataset
     ResourceGroupName : <resourceGroupname>
     DataFactoryName   : <dataFactoryName>
@@ -319,7 +313,7 @@ In diesem Tutorial werden zwei Pipelines erstellt:
 
 ### <a name="create-the-pipeline-iterateandcopysqltables"></a>Erstellen der Pipeline „IterateAndCopySQLTables“
 
-Diese Pipeline verwendet die Liste mit den Tabellen als Parameter. Für jede Tabelle in der Liste werden Daten aus der Tabelle in der Azure SQL-Datenbank in Azure SQL Data Warehouse kopiert. Dazu wird das gestaffelte Kopieren und PolyBase verwendet.
+Diese Pipeline verwendet die Liste mit den Tabellen als Parameter. Für jede Tabelle in der Liste werden Daten aus der Tabelle in Azure SQL-Datenbank nach Azure Synapse Analytics kopiert. Dazu wird das gestaffelte Kopieren und PolyBase verwendet.
 
 1. Erstellen Sie im Ordner **C:\ADFv2TutorialBulkCopy** eine JSON-Datei mit dem Namen **IterateAndCopySQLTables.json** und dem folgenden Inhalt:
 
@@ -340,7 +334,7 @@ Diese Pipeline verwendet die Liste mit den Tabellen als Parameter. Für jede Tab
                         "activities": [
                             {
                                 "name": "CopyData",
-                                "description": "Copy data from SQL database to SQL DW",
+                                "description": "Copy data from Azure SQL Database to Azure Synapse Analytics",
                                 "type": "Copy",
                                 "inputs": [
                                     {
@@ -397,7 +391,7 @@ Diese Pipeline verwendet die Liste mit den Tabellen als Parameter. Für jede Tab
 
     Hier ist die Beispielausgabe:
 
-    ```json
+    ```console
     PipelineName      : IterateAndCopySQLTables
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -473,7 +467,7 @@ Mit dieser Pipeline werden zwei Schritte ausgeführt:
 
     Hier ist die Beispielausgabe:
 
-    ```json
+    ```console
     PipelineName      : GetTableListAndTriggerCopyData
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -515,7 +509,7 @@ Mit dieser Pipeline werden zwei Schritte ausgeführt:
 
     Hier ist die Ausgabe der Beispielausführung:
 
-    ```json
+    ```console
     Pipeline run details:
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -579,15 +573,15 @@ Mit dieser Pipeline werden zwei Schritte ausgeführt:
     $result2
     ```
 
-3. Verbinden Sie sich mit Ihrem Senkenwarehouse Azure SQL Data Warehouse, und bestätigen Sie, dass die Daten aus der Azure SQL-Datenbank ordnungsgemäß kopiert wurden.
+3. Stellen Sie eine Verbindung mit der Azure Synapse Analytics-Senke her, und überprüfen Sie, ob die Daten aus Azure SQL-Datenbank ordnungsgemäß kopiert wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie die folgenden Schritte ausgeführt: 
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory.
-> * Erstellen von Azure SQL-Datenbank, Azure SQL Data Warehouse und mit Azure Storage verknüpften Diensten.
-> * Erstellen von Datasets für Azure SQL-Datenbank und Azure SQL Data Warehouse.
+> * Erstellen verknüpfter Azure SQL-Datenbank-, Azure Synapse Analytics- und Azure Storage-Dienste
+> * Erstellen von Azure SQL-Datenbank- und Azure Synapse Analytics-Datasets
 > * Erstellen einer Pipeline zum Abrufen der zu kopierenden Tabellen und einer weiteren Pipeline zur Durchführung des eigentlichen Kopiervorgangs. 
 > * Starten einer Pipelineausführung
 > * Überwachen der Pipeline- und Aktivitätsausführungen.

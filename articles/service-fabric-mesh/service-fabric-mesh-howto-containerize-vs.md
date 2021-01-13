@@ -1,20 +1,16 @@
 ---
-title: Packen einer vorhandenen .NET-App in einen Container für Service Fabric Mesh | Microsoft-Dokumentation
-description: Hinzufügen von Mesh-Unterstützung zu einer vorhandenen .NET-App
-services: service-fabric-mesh
-keywords: Packen von Service Fabric Mesh in einen Container
-author: dkkapur
-ms.author: dekapur
+title: Packen einer vorhandenen .NET-App in einen Container für Service Fabric Mesh
+description: Fügen Sie Service Fabric Mesh-Containerorchestrierungsunterstützung zu ASP.NET- und Konsolenprojekten hinzu, die .NET-Framework vollständig verwenden.
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chakdan
-ms.openlocfilehash: cb4e327e1c8c0a653cb94233f568b4847494c439
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2fb6aa7d7c655a1ba4b44dabc33e32ce04ae458f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60419437"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489274"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Packen einer vorhandenen .NET-App in einen Container für Service Fabric Mesh
 
@@ -56,6 +52,12 @@ Das Dialogfeld **Unterstützung für Containerorchestrator hinzufügen** wird an
 
 Wählen Sie in der Dropdownliste die Option **Service Fabric Mesh** aus, und klicken Sie anschließend auf **OK**.
 
+
+>[!NOTE]
+> Ab dem 2. November 2020 [gelten die Grenzwerte für die Downloadrate](https://docs.docker.com/docker-hub/download-rate-limit/) für anonyme und authentifizierte Anforderungen an Docker Hub von Docker-Konten im Plan „Free“. Diese Grenzwerte werden durch die IP-Adresse erzwungen. Ausführlichere Informationen finden Sie unter [Authentifizieren mit Docker Hub](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub).
+>
+> Um Ratenlimits zu vermeiden, ersetzen Sie den Standardwert `FROM microsoft/aspnet:4.7.2-windowsservercore-1803 AS base` in Ihrem Dockerfile durch `FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-1803 AS base`.
+
 Das Tool überprüft daraufhin, ob Docker installiert ist, fügt Ihrem Projekt ein Dockerfile hinzu und ruft ein Docker-Image für Ihr Projekt ab.  
 Ihrer Projektmappe wird ein Service Fabric Mesh-Anwendungsprojekt hinzugefügt. Es enthält Ihre Mesh-Veröffentlichungsprofile und Konfigurationsdateien. Das Projekt hat den gleichen Namen wie Ihr Projekt, am Ende wird allerdings noch „Application“ angehängt (Beispiel: **eShopLegacyWebFormsApplication**). 
 
@@ -71,4 +73,4 @@ Nun können Sie die App in Azure Service Fabric Mesh veröffentlichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Veröffentlichen einer App in Service Fabric Mesh: [Tutorial: Bereitstellen einer Service Fabric Mesh-Anwendung](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+Wie Sie eine App in Service Fabric Mesh veröffentlichen, erfahren Sie unter [Tutorial: Bereitstellen einer Service Fabric Mesh-Anwendung](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md).

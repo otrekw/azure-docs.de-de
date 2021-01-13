@@ -1,46 +1,44 @@
 ---
-title: IIS-Protokolle in Azure Monitor | Microsoft-Dokumentation
+title: Sammeln von IIS-Protokollen mit dem Log Analytics-Agent in Azure Monitor
 description: IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die von Azure Monitor gesammelt werden können.  In diesem Artikel wird erläutert, wie Sie das Sammeln von IIS-Protokollen konfigurieren. Darüber hinaus enthält der Artikel Details zu den Datensätzen, die in Azure Monitor erstellt werden.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: cec5ff0a-01f5-4262-b2e8-e3db7b7467d2
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: cc0fcbb2005ce2aaa70c9e1d2a9993d341169209
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 11/13/2020
+ms.openlocfilehash: a089631ab199b0fe997bba001561c6b027034e2c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814218"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993685"
 ---
-# <a name="collect-iis-logs-in-azure-monitor"></a>Sammeln von IIS-Protokollen in Azure Monitor
-IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die von Azure Monitor gesammelt und als [Protokolldaten](data-platform.md) gespeichert werden können.
+# <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Sammeln von IIS-Protokollen mit dem Log Analytics-Agent in Azure Monitor
+IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die vom Log Analytics-Agent gesammelt und in [Azure Monitor-Protokollen](data-platform.md) gespeichert werden können.
+
+> [!IMPORTANT]
+> In diesem Artikel wird das Sammeln von IIS-Protokollen mit dem [Log Analytics-Agent](log-analytics-agent.md) beschrieben, einem der von Azure Monitor verwendeten Agents. Andere Agents sammeln andere Daten und werden anders konfiguriert. Eine Liste der verfügbaren Agents und der von ihnen gesammelten Daten finden Sie unter [Übersicht über Azure Monitor-Agents](agents-overview.md).
 
 ![IIS-Protokolle](media/data-sources-iis-logs/overview.png)
 
 ## <a name="configuring-iis-logs"></a>Konfigurieren von IIS-Protokollen
-Azure Monitor sammelt Einträge aus von IIS erstellten Protokolldateien. Daher müssen Sie [IIS für die Protokollierung konfigurieren](https://technet.microsoft.com/library/hh831775.aspx).
+Azure Monitor sammelt Einträge aus von IIS erstellten Protokolldateien. Daher müssen Sie [IIS für die Protokollierung konfigurieren](/previous-versions/orphan-topics/ws.11/hh831775(v=ws.11)).
 
 Azure Monitor unterstützt nur IIS-Protokolldateien im W3C-Format, aber keine benutzerdefinierten Felder oder die erweiterte IIS-Protokollierung. Protokolle im NCSA- oder nativen IIS-Format werden nicht gesammelt.
 
-IIS-Protokolle können in Azure Monitor über das Menü [Erweiterte Einstellungen](agent-data-sources.md#configuring-data-sources) konfiguriert werden.  Abgesehen von der Auswahl der Option **IIS-Protokolldateien im W3C-Format sammeln**ist keine Konfiguration erforderlich.
+IIS-Protokolle können in Azure Monitor über das Menü [Erweiterte Einstellungen](agent-data-sources.md#configuring-data-sources) für den Log Analytics-Agent konfiguriert werden.  Abgesehen von der Auswahl der Option **IIS-Protokolldateien im W3C-Format sammeln** ist keine Konfiguration erforderlich.
 
 
 ## <a name="data-collection"></a>Datensammlung
 Azure Monitor erfasst bei jeder Änderung des Protokollzeitstempels IIS-Protokolleinträge von allen Agents. Das Protokoll wird alle **fünf Minuten** gelesen. Falls IIS den Zeitstempel beim Erstellen einer neuen Datei nicht vor der Rolloverzeit aktualisiert, werden nach der Erstellung der neuen Datei Einträge erfasst. Die Häufigkeit der Erstellung neuer Dateien wird mit der Einstellung **Log File Rollover Schedule** (Rolloverzeitplan der Protokolldatei) für die IIS-Website gesteuert, wobei einmal täglich als Standardeinstellung festgelegt ist. Ist die Einstellung auf **Stündlich** festgelegt, erfasst Azure Monitor das Protokoll jede Stunde. Wenn die Einstellung auf **Täglich** festgelegt ist, erfasst Azure Monitor das Protokoll alle 24 Stunden.
 
+> [!IMPORTANT]
+> Es empfiehlt sich, den **Rolloverzeitplan der Protokolldatei** auf **Stündlich** festzulegen. Bei Verwendung der Einstellung **Täglich** kommt es möglicherweise zu Datenspitzen, da die Daten nur einmal pro Tag erfasst werden.
 
 ## <a name="iis-log-record-properties"></a>Eigenschaften der IIS-Protokolldatensätze
 IIS-Protokolldatensätze weisen den Typ **W3CIISLog** auf und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Computer |Name des Computers, auf dem das Ereignis gesammelt wurde. |
 | cIP |IP-Adresse des Clients. |
@@ -50,7 +48,7 @@ IIS-Protokolldatensätze weisen den Typ **W3CIISLog** auf und besitzen die in de
 | csUserName |Name des authentifizierten Benutzers, der auf den Server zugegriffen hat. Anonyme Benutzer werden durch einen Bindestrich gekennzeichnet. |
 | csUriStem |Ziel der Anforderung, beispielsweise eine Webseite. |
 | csUriQuery |Abfrage, die der Client versucht hat auszuführen. |
-| ManagementGroupName |Name der Verwaltungsgruppe für Operations Manager-Agents.  Bei anderen Agents lautet dieser „AOI-\<Arbeitsbereich-ID\>“. |
+| ManagementGroupName |Name der Verwaltungsgruppe für Operations Manager-Agents.  Bei anderen Agents lautet diese „AOI-\<workspace ID\>“. |
 | RemoteIPCountry |Land/Region der IP-Adresse des Clients. |
 | RemoteIPLatitude |Breitengrad der Client-IP-Adresse. |
 | RemoteIPLongitude |Längengrad der Client-IP-Adresse. |
@@ -67,7 +65,7 @@ IIS-Protokolldatensätze weisen den Typ **W3CIISLog** auf und besitzen die in de
 ## <a name="log-queries-with-iis-logs"></a>Protokollieren von Abfragen mit IIS-Protokollen
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die IIS-Protokolldatensätze abrufen.
 
-| Abfragen | Beschreibung |
+| Abfrage | BESCHREIBUNG |
 |:--- |:--- |
 | W3CIISLog |Alle IIS-Protokolldatensätze. |
 | W3CIISLog &#124; where scStatus==500 |Alle IIS-Protokolleinträge mit dem Rückgabestatus 500 |

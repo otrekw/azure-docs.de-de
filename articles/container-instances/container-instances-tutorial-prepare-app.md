@@ -1,20 +1,15 @@
 ---
-title: Tutorial – Vorbereiten eines Containerimages für Azure Container Instances
+title: 'Tutorial: Vorbereiten eines Containerimages für die Bereitstellung'
 description: Tutorial für Azure Container Instances (Teil 1 von 3) – Vorbereiten einer App in einem Containerimage für die Bereitstellung in Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 719237f63d387cf56ab7947f8f168e0aa4351376
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seodec18, mvc, devx-track-js
+ms.openlocfilehash: 1eca34fb5da50b15f15322a3b534556bcd3bda09
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68325581"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91303113"
 ---
 # <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Tutorial: Erstellen eines Containerimages für die Bereitstellung in Azure Container Instances
 

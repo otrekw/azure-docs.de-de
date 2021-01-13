@@ -1,30 +1,42 @@
 ---
 title: 'Azure PowerShell-Beispiele für Azure Cosmos DB: Gremlin-API'
-description: 'Azure PowerShell-Beispiele für Azure Cosmos DB: Gremlin-API'
+description: Hier erfahren Sie, wie Sie Azure PowerShell-Beispiele zum Ausführen gängiger Aufgaben in der Gremlin-API für Azure Cosmos DB abrufen.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: b8b986facc01a963d2ca87121337988c4c650ba1
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: c406ea58bfba0128a31489aa7b834c6a586d74d3
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154789"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332949"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>Azure PowerShell-Beispiele für Azure Cosmos DB: Gremlin-API
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
-Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für Azure Cosmos DB für die Gremlin-API.
+Die unten stehende Tabelle enthält Links zu häufig verwendeten Azure PowerShell-Skripts für Azure Cosmos DB. Navigieren Sie über die Links auf der rechten Seite zu API-spezifischen Beispielen. Allgemeine Beispiele sind in allen APIs identisch. Referenzseiten für alle Azure Cosmos DB-PowerShell-Cmdlets finden Sie in der [Referenz zu Azure PowerShell](/powershell/module/az.cosmosdb). Prüfen Sie regelmäßig auf Updates für `Az.CosmosDB`. Sie können diese PowerShell-Beispiele für Cosmos DB auch aus unserem GitHub-Repository forken. Informationen dazu finden Sie in den [Cosmos DB-PowerShell-Beispielen auf GitHub](https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb).
 
-| | |
+## <a name="common-samples"></a>Allgemeine Beispiele
+
+|Aufgabe | BESCHREIBUNG |
 |---|---|
-|[Konto, Datenbank und Graph erstellen](scripts/powershell/gremlin/ps-gremlin-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und eines Graphs in Azure Cosmos |
-|[Datenbanken oder Graphen auflisten oder abrufen](scripts/powershell/gremlin/ps-gremlin-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Auflisten oder Abrufen einer Datenbank oder eines Graphs |
-|[RU/s abrufen](scripts/powershell/gremlin/ps-gremlin-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen von RU/s für eine Datenbank oder einen Graph |
-|[RU/s aktualisieren](scripts/powershell/gremlin/ps-gremlin-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualisieren von RU/s für eine Datenbank oder einen Graph |
-|[Ein Konto aktualisieren oder eine Region hinzufügen](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hinzufügen einer Region zu einem Cosmos-Konto. Kann auch zum Ändern anderer Kontoeigenschaften verwendet werden, dafür muss jedoch ein separater Vorgang ausgeführt werden. |
-|[Failoverpriorität ändern oder Failover auslösen](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ändern der Priorität eines regionalen Failovers eines Azure Cosmos-Kontos oder Auslösen eines manuellen Failovers |
-|[Kontoschlüssel oder Verbindungszeichenfolgen](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen von Primär- und Sekundärschlüsseln und Verbindungszeichenfolgen oder erneutes Generieren eines Kontoschlüssels eines Azure Cosmos-Kontos |
-|[Cosmos-Konto mit IP-Firewall erstellen](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Azure Cosmos-Kontos mit aktivierter IP-Firewall |
+|[Konto aktualisieren](scripts/powershell/common/account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualisieren der Standardkonsistenzebene eines Cosmos DB-Kontos |
+|[Regionen eines Kontos aktualisieren](scripts/powershell/common/update-region.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualisieren der Regionen eines Cosmos DB-Kontos |
+|[Failoverpriorität ändern oder Failover auslösen](scripts/powershell/common/failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ändern der Priorität eines regionalen Failovers eines Azure Cosmos-Kontos oder Auslösen eines manuellen Failovers |
+|[Kontoschlüssel oder Verbindungszeichenfolgen](scripts/powershell/common/keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen von Primär- und Sekundärschlüsseln und Verbindungszeichenfolgen oder erneutes Generieren eines Kontoschlüssels eines Azure Cosmos DB-Kontos |
+|[Cosmos-Konto mit IP-Firewall erstellen](scripts/powershell/common/firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Azure Cosmos DB-Kontos mit aktivierter IP-Firewall |
+|||
+
+## <a name="gremlin-api-samples"></a>Gremlin-API-Beispiele
+
+|Aufgabe | BESCHREIBUNG |
+|---|---|
+|[Konto, Datenbank und Graph erstellen](scripts/powershell/gremlin/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und eines Graphs in Azure Cosmos |
+|[Konto, Datenbank und Graph mit Autoskalierung erstellen](scripts/powershell/gremlin/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und eines Graphen mit Autoskalierung in Azure Cosmos |
+|[Datenbanken oder Graphen auflisten oder abrufen](scripts/powershell/gremlin/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Auflisten oder Abrufen einer Datenbank oder eines Graphs |
+|[Durchsatzvorgänge](scripts/powershell/gremlin/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Durchsatzvorgänge für eine Datenbank oder einen Graphen, z. B. Abrufen, Aktualisieren und Migrieren zwischen automatisch skaliertem und standardmäßigem Durchsatz. |
+|[Sperren von Ressourcen für die Löschung](scripts/powershell/gremlin/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Verhindern des Löschens von Ressourcen mit Ressourcensperren. |
 |||

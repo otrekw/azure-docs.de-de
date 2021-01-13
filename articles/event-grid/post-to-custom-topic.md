@@ -1,19 +1,14 @@
 ---
 title: Posten eines Ereignisses in einem benutzerdefinierten Azure Event Grid-Thema
-description: Erfahren Sie, wie Sie ein Ereignis in einem benutzerdefinierten Thema für Azure Event Grid posten.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
+description: In diesem Artikel wird beschrieben, wie Sie ein Ereignis in einem benutzerdefinierten Thema posten. Es wird außerdem das Format von Postings und Ereignisdaten gezeigt.
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.author: spelluru
-ms.openlocfilehash: 14ae5f2a0b6a950889d8587cd4d03ff4fc9a171b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/07/2020
+ms.openlocfilehash: 197d8eb1963300bc6576e664c7c3fd470cf70bb2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304214"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86108242"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Posten eines Ereignisses in einem benutzerdefinierten Azure Event Grid-Thema
 
@@ -76,10 +71,10 @@ Für benutzerdefinierte Themen müssen die Daten der obersten Ebene müssen die 
 ]
 ```
 
-Eine Beschreibung dieser Eigenschaften finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md). Beim Veröffentlichen von Ereignissen in einem Ereignisrasterthema kann das Array eine Gesamtgröße von bis zu 1 MB aufweisen. Jedes Ereignis in dem Array ist auf 64 KB (Allgemeine Verfügbarkeit) oder 1 MB (Vorschauversion) beschränkt.
+Eine Beschreibung dieser Eigenschaften finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md). Beim Veröffentlichen von Ereignissen in einem Ereignisrasterthema kann das Array eine Gesamtgröße von bis zu 1 MB aufweisen. Jedes Ereignis in dem Array ist auf 64 KB (Allgemeine Verfügbarkeit) oder 1 MB (Vorschauversion) beschränkt.
 
 > [!NOTE]
-> Ein Ereignis mit einer Größe von bis zu 64 KB wird von der Vereinbarung zum Servicelevel (SLA) für die allgemeine Verfügbarkeit (GA) abgedeckt. Die Unterstützung für ein Ereignis von einer Größe bis zu 1 MB ist derzeit in der Vorschauversion verfügbar. Ereignisse, die größer als 64 KB sind, werden in Schritten von 64 KB in Rechnung gestellt. 
+> Ein Ereignis mit einer Größe von bis zu 64 KB wird von der Vereinbarung zum Servicelevel (SLA) für die allgemeine Verfügbarkeit (GA) abgedeckt. Die Unterstützung für ein Ereignis von einer Größe bis zu 1 MB ist derzeit in der Vorschauversion verfügbar. Ereignisse, die größer als 64 KB sind, werden in Schritten von 64 KB in Rechnung gestellt. 
 
 Ein gültiges Ereignisdatenschema lautet beispielsweise wie folgt:
 
@@ -97,13 +92,13 @@ Ein gültiges Ereignisdatenschema lautet beispielsweise wie folgt:
 }]
 ```
 
-## <a name="response"></a>response
+## <a name="response"></a>Antwort
 
 Nachdem Sie das Posten an den Themenendpunkt durchgeführt haben, erhalten Sie eine Antwort. Die Antwort ist ein HTTP-Standardantwortcode. Einige häufige Antworten lauten:
 
-|Ergebnis  |response  |
+|Ergebnis  |Antwort  |
 |---------|---------|
-|Erfolgreich  | 200 – OK  |
+|Erfolg  | 200 – OK  |
 |Fehlerhaftes Format der Ereignisdaten | 400 – Ungültige Anforderung |
 |Ungültiger Zugriffsschlüssel | 401 – Nicht autorisiert |
 |Falscher Endpunkt | 404 – Nicht gefunden |

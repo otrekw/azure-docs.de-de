@@ -1,21 +1,15 @@
 ---
 title: Erstellen von dauerhaften Funktionen mit dem Azure-Portal
 description: Erfahren Sie, wie Sie die Durable Functions-Erweiterung für Azure Functions für die Portalentwicklung installieren.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/23/2018
-ms.author: glenga
+ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: b765e7a03f84211d4a86c4242e9484b3517c95f9
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b029fa246977dfe4210f6e8df242415f7e4103f1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933562"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87081915"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Erstellen von dauerhaften Funktionen mit dem Azure-Portal
 
@@ -28,7 +22,7 @@ Die Erweiterung [Durable Functions ](durable-functions-overview.md) für Azure F
 
 ## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
-Sie müssen über eine Funktions-App zum Hosten der Ausführung einer Funktion verfügen. Mit einer Funktions-App können Sie Funktionen in logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung und Freigabe von Ressourcen. Sie können eine .NET- oder JavaScript-App erstellen.
+Sie müssen über eine Funktions-App zum Hosten der Ausführung einer Funktion verfügen. Sie können mit einer Funktions-App Ihre Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung, Skalierung und Freigabe von Ressourcen. Sie können eine .NET- oder JavaScript-App erstellen.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
@@ -36,62 +30,51 @@ Standardmäßig verwendet die erstellte Funktions-App Version 2.x der Azure Func
 
 ## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Installieren des npm-Pakets „durable-functions“ (nur JavaScript)
 
-Wenn Sie Durable Functions in JavaScript erstellen, müssen Sie das npm-Paket [ `durable-functions` installieren](https://www.npmjs.com/package/durable-functions).
+Wenn Sie Durable Functions in JavaScript erstellen, müssen Sie das [npm-Paket `durable-functions`](https://www.npmjs.com/package/durable-functions) installieren:
 
-1. Wählen Sie den Namen Ihrer Funktions-App aus, gefolgt von **Plattformfeatures** und dann **Erweiterte Tools (Kudu)** .
+1. Wählen Sie auf der Seite ihrer Funktions-App im linken Bereich unter **Entwicklungstools** die Option **Erweiterte Tools** aus.
 
-   ![„Plattformfeatures“ für Funktionen, „Kudu“ auswählen](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+   :::image type="content" source="./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png" alt-text="„Plattformfeatures“ für Funktionen, „Kudu“ auswählen":::
 
-2. Wählen Sie in der Kudu-Konsole den Eintrag **Debugkonsole** und dann **CMD** aus.
+2. Wählen Sie auf der Seite **Erweiterte Tools** die Option **Go** aus.
 
-   ![Kudu-Debugkonsole](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+3. Wählen Sie in der Kudu-Konsole den Eintrag **Debugkonsole** und dann **CMD** aus.
 
-3. Die Dateiverzeichnisstruktur Ihrer Funktions-App sollte angezeigt werden. Navigieren Sie zum Ordner `site/wwwroot`. Von dort aus können Sie eine `package.json` Datei hochladen, indem Sie sie in das Dateiverzeichnisfenster ziehen und dort ablegen. Unten finden Sie eine `package.json`-Beispieldatei:
-
-    ```json
-    {
-      "dependencies": {
-        "durable-functions": "^1.1.2"
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="„Plattformfeatures“ für Funktionen, „Kudu“ auswählen"
       }
     }
     ```
 
-   ![Kudu-Upload von „package.json“](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="„Plattformfeatures“ für Funktionen, „Kudu“ auswählen":::
 
 4. Sobald Ihre `package.json` hochgeladen ist, führen Sie den `npm install`-Befehl in der Kudu-Remoteausführungskonsole aus.
 
    ![Ausführen von „npm install“ in Kudu](./media/durable-functions-create-portal/kudu-npm-install.png)
-
+   
 ## <a name="create-an-orchestrator-function"></a>Erstellen einer Orchestratorfunktion
 
-1. Erweitern Sie die Funktionen-App, und klicken Sie auf die Schaltfläche **+** neben **Functions**. Wenn dies die erste Funktion in Ihrer Funktions-App ist, wählen Sie **Im Portal** und dann **Weiter**. Fahren Sie andernfalls mit Schritt 3 fort.
+1. Wählen Sie in Ihrer Funktions-App im linken Bereich **Funktionen** und dann im obersten Menü **Funktionen** aus. 
 
-   ![Schnellstartseite für Funktionen im Azure-Portal](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
+1. Geben Sie `durable` in das Suchfeld der Seite **Neue Funktion** ein, und wählen Sie dann die Vorlage **HTTP-Starter für Durable Functions** aus.
 
-1. Klicken Sie auf **More templates** (Weitere Vorlagen) und anschließend auf **Finish and view templates** (Fertig stellen und Vorlagen anzeigen).
+   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="„Plattformfeatures“ für Funktionen, „Kudu“ auswählen":::
 
-    ![Functions-Schnellstartanleitung: Auswählen weiterer Vorlagen](./media/durable-functions-create-portal/add-first-function.png)
+1. Geben Sie als Name für **Neue Funktion** `HttpStart` ein, und wählen Sie dann **Funktion erstellen** aus.
 
-1. Geben Sie `durable` in das Suchfeld ein, und wählen Sie dann die Vorlage **HTTP-Starter für dauerhafte Funktionen** aus.
+   Die erstellte Funktion wird zum Starten der Orchestrierung verwendet.
 
-1. Klicken Sie bei Aufforderung auf **Installieren**, um die Azure DurableTask-Erweiterung sowie alle Abhängigkeiten in der Funktions-App zu installieren. Sie müssen die Erweiterung nur einmalig für eine Funktions-App installieren. Klicken Sie nach erfolgreichem Abschluss der Installation auf **Weiter**.
+1. Erstellen Sie eine weitere Funktion in der Funktions-App, dieses Mal mit der Vorlage **Orchestrator für Durable Functions**. Geben Sie der neuen Funktion den Namen `HelloSequence`.
 
-    ![Installieren von Bindungserweiterungen](./media/durable-functions-create-portal/install-durabletask-extension.png)
-
-1. Geben Sie der neuen Funktion nach Abschluss der Installation den Namen `HttpStart`, und klicken Sie auf **Erstellen**. Die erstellte Funktion wird zum Starten der Orchestrierung verwendet.
-
-1. Erstellen Sie eine weitere Funktion in der Funktions-App, dieses Mal mit der Vorlage **Orchestrator für dauerhafte Funktionen**. Geben Sie der neuen Funktion den Namen `HelloSequence`.
-
-1. Erstellen Sie mithilfe der Vorlage `Hello`Aktivität für dauerhafte Funktionen**eine dritte Funktion namens**.
+1. Erstellen Sie mithilfe der Vorlage `Hello`Aktivität für Durable Functions**eine dritte Funktion namens**.
 
 ## <a name="test-the-durable-function-orchestration"></a>Testen der Orchestrierung für die dauerhafte Funktion
 
-1. Wechseln Sie zurück zur Funktion **HttpStart**, wählen Sie **</> Funktions-URL abrufen** und dann **Kopieren** aus, um die URL zu kopieren. Sie verwenden diese URL, um die Funktion **HelloSequence** zu starten.
+1. Wechseln Sie zurück zur Funktion **HttpStart**, wählen Sie **Funktions-URL abrufen** und dann das Symbol **In Zwischenablage kopieren** aus, um die URL zu kopieren. Sie verwenden diese URL, um die Funktion **HelloSequence** zu starten.
 
 1. Verwenden Sie ein HTTP-Tool wie Postman oder cURL, um eine POST-Anforderung an die kopierte URL zu senden. Das folgende Beispiel zeigt einen cURL-Befehl, der eine POST-Anforderung an die dauerhafte Funktion sendet:
 
     ```bash
-    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence --header "Content-Length: 0"
     ```
 
     In diesem Beispiel ist `{your-function-app-name}` die Domäne, die den Namen Ihrer Funktions-App repräsentiert. Die Antwortnachricht enthält einen Satz aus URI-Endpunkten, die Sie zum Überwachen und Verwalten der Ausführung verwenden können. Sie sieht ähnlich wie im folgenden Beispiel aus:

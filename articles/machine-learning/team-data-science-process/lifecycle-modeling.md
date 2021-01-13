@@ -3,20 +3,20 @@ title: Modellierungsphase des Team Data Science-Prozesslebenszyklus
 description: Die Ziele, Aufgaben und Projektleistungen für die Modellierungsphase Ihrer Data Science-Projekte
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c22c75b4fe900ecb96d016251c09e9ad6ec31f7c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4719bd21bc6299373f9dabfe4733541c6fa27b94
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306223"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94740180"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Modellierungsphase des Team Data Science-Prozesslebenszyklus
 
@@ -53,7 +53,7 @@ Dieser Schritt erfordert eine kreative Kombination von Sachkenntnis mit den im D
 Eine technische Anleitung zur Featureentwicklung bei Verwendung verschiedener Azure-Datentechnologien finden Sie unter [Featureentwicklung im Data Science-Prozess](create-features.md). 
 
 ### <a name="model-training"></a>Modelltraining
-Je nach Art der Frage, die beantwortet werden soll, stehen gegebenenfalls relativ viele Algorithmen für die Modellierung zur Verfügung. Eine Anleitung zur Auswahl der Algorithmen finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning](../studio/algorithm-choice.md). Dieser Artikel verwendet zwar Azure Machine Learning, aber die darin enthaltenen Informationen sind für alle Machine Learning-Projekte nützlich. 
+Je nach Art der Frage, die beantwortet werden soll, stehen gegebenenfalls relativ viele Algorithmen für die Modellierung zur Verfügung. Eine Anleitung zur Auswahl der Algorithmen finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning](../how-to-select-algorithms.md). Dieser Artikel verwendet zwar Azure Machine Learning, aber die darin enthaltenen Informationen sind für alle Machine Learning-Projekte nützlich. 
 
 Der Prozess für das Modelltraining umfasst die folgenden Schritte: 
 
@@ -67,14 +67,12 @@ Der Prozess für das Modelltraining umfasst die folgenden Schritte:
 > 
 > 
 
-Wir stellen für TDSP ein [Tool für die Automatisierung von Modellierung und Berichterstellung](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) bereit, mit dem mehrere Algorithmen und Parameter-Sweeping-Vorgänge durchlaufen werden können, um ein Grundmodell zu erhalten. Außerdem wird ein Basisbericht für die Modellierung erstellt, in dem die Leistung der einzelnen Modell-Parameter-Kombinationen, einschließlich Variablenwichtigkeit, zusammengefasst wird. Dieser Prozess ist ebenfalls iterativ, da er weitere Maßnahmen zur Featureentwicklung nach sich ziehen kann. 
-
-## <a name="artifacts"></a>Artefakte
+## <a name="artifacts"></a>Artifacts
 In dieser Phase werden die folgenden Artefakte produziert:
 
-   * [Featuregruppen](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets): Die für die Modellierung entwickelten Funktionen werden im Abschnitt **Featuregruppen** des Berichts **Datendefinition** beschrieben. Er enthält Verknüpfungen zum Code, mit dem die Features generiert werden, und eine Beschreibung zur Generierung der Features.
-   * [Modellbericht](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): Für jedes getestete Modell wird ein vorlagenbasierter Standardbericht mit Details zu den einzelnen Experimenten erstellt.
-   * **Prüfpunktentscheidung**: Bewerten Sie, ob das Modell gut genug funktioniert, um in einem Produktionssystem bereitgestellt zu werden. Einige wichtige Fragen lauten:
+   * [Funktionssätze:](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md) Die für die Modellierung entwickelten Funktionen werden im Abschnitt **Feature Sets** (Featuresätze) des Berichts **Datendefinition** beschrieben. Er enthält Verknüpfungen zum Code, mit dem die Features generiert werden, und eine Beschreibung zur Generierung der Features.
+   * [Model Report](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md) (Modellbericht): Für jedes getestete Modell wird ein vorlagenbasierter Standardbericht mit Details zu den einzelnen Experimenten erstellt.
+   * **Prüfpunktentscheidung**: Analysieren Sie, ob das Modell für die Produktion geeignet ist. Einige wichtige Fragen lauten:
      * Kann die Frage mit dem Modell basierend auf den Testdaten ausreichend beantwortet werden? 
      * Sollten Alternativen ausprobiert werden? Sollten weitere Daten erfasst, weitere Features entwickelt oder Experimente mit anderen Algorithmen durchgeführt werden?
 
@@ -90,4 +88,4 @@ Hier finden Sie Links zu jedem Schritt im Lebenszyklus des TDSP:
 
 Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für bestimmte Szenarien gezeigt werden, sind ebenfalls verfügbar. Der Artikel mit [exemplarischen Vorgehensweisen](walkthroughs.md) enthält eine Liste der Szenarien mit Links und Kurzbeschreibungen. Die exemplarischen Vorgehensweisen zeigen auch, wie Cloud- und lokale Tools sowie Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 
 
-Beispiele für die Ausführung der Schritte in TDSPs mit Azure Machine Learning Studio finden Sie unter [Verwenden des TDSP mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
+Beispiele für die Ausführung der Schritte in TDSPs mit Azure Machine Learning Studio finden Sie unter [Verwenden des TDSP mit Azure Machine Learning](./index.yml).

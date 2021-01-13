@@ -1,20 +1,19 @@
 ---
 title: Benutzerdefinierte Blobausgabepartitionierung in Azure Stream Analytics
 description: In diesem Artikel werden die Funktionen für benutzerdefinierte DateTime-Pfadmuster und für benutzerdefinierte Felder oder Attribute für die Blobspeicherausgabe von Azure Stream Analytics-Aufträgen beschrieben.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: e06313cf83768421bedc6c7baddd30c2ef2e4846
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7239c2e3cb42cb17b01904e8fc226ae2408dbb47
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789419"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617424"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Benutzerdefinierte Blobausgabepartitionierung in Azure Stream Analytics
 
@@ -26,7 +25,13 @@ Durch Verwendung eines benutzerdefinierten Felds oder von Eingabeattributen ist 
 
 ### <a name="partition-key-options"></a>Optionen für den Partitionsschlüssel
 
-Der für die Partitionierung von Eingabedaten verwendete Partitionsschlüssel oder Spaltenname kann alphanumerische Zeichen mit Bindestrichen, Unterstrichen und Leerzeichen enthalten. Es ist nicht möglich, geschachtelte Felder als Partitionsschlüssel zu verwenden, es sei denn, sie werden in Verbindung mit Aliasen verwendet. Der Partitionsschlüssel muss NVARCHAR(MAX) sein.
+Der Partitionsschlüssel oder Spaltenname zum Partitionieren von Eingabedaten kann alle Zeichen enthalten, die für [Blobnamen](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) akzeptiert werden. Geschachtelte Felder können nur in Verbindung mit Aliasen als Partitionsschlüssel verwendet werden, Sie können jedoch bestimmte Zeichen verwenden, um eine Hierarchie der Dateien zu erstellen. Beispielsweise können Sie mit der folgenden Abfrage eine Spalte erstellen, in der Daten aus zwei anderen Spalten kombiniert werden, um einen eindeutigen Partitionsschlüssel zu erzeugen.
+
+```sql
+SELECT name, id, CONCAT(name, "/", id) AS nameid
+```
+
+Der Partitionsschlüssel muss einen der Typen NVARCHAR(MAX), BIGINT, FLOAT oder BIT (Kompatibilitätsgrad 1.2 oder höher) aufweisen. DateTime-, Array- und Datensatztypen werden nicht unterstützt, können aber als Partitionsschlüssel verwendet werden, wenn sie in Zeichenfolgen konvertiert werden. Weitere Informationen finden Sie unter [Azure Stream Analytics-Datentypen](/stream-analytics-query/data-types-azure-stream-analytics).
 
 ### <a name="example"></a>Beispiel
 
@@ -64,6 +69,8 @@ Beachten Sie, dass jeder Datensatz im Blob die Spalte **client_id** enthält, di
 
 3. Wenn ein Eingabestream aus Datensätzen mit einer Kardinalität des Partitionsschlüssels unter 8.000 besteht, werden die Datensätze an vorhandene Blobs angefügt und neue Blobs nur bei Bedarf erstellt. Wenn die Kardinalität über 8.000 liegt, gibt es keine Garantie dafür, dass Daten in vorhandene Blobs geschrieben und neue Blobs nicht für eine beliebige Anzahl von Datensätzen mit dem gleichen Partitionsschlüssel erstellt werden.
 
+4. Wenn die Blobausgabe [als unveränderlich konfiguriert](../storage/blobs/storage-blob-immutable-storage.md) ist, erstellt Stream Analytics bei jedem Senden von Daten ein neues Blob.
+
 ## <a name="custom-datetime-path-patterns"></a>Benutzerdefinierte DateTime-Pfadmuster
 
 Mit benutzerdefinierten DateTime-Pfadmustern können Sie ein Ausgabeformat festlegen, das mit den Hive Streaming-Konventionen übereinstimmt, damit Azure Stream Analytics Daten an Azure HDInsight und Azure Databricks zur weiteren Verarbeitung senden kann. Benutzerdefinierte DateTime-Pfadmuster können einfach mit dem Schlüsselwort `datetime` im Feld „Pfadpräfix“ der Blobausgabe und dem Formatbezeichner implementiert werden. Beispiel: `{datetime:yyyy}`.
@@ -78,10 +85,10 @@ Die folgenden Formatbezeichnertoken können einzeln oder in Kombination verwende
 |{datetime:MM}|Monat von 01 bis 12|01|
 |{datetime:M}|Monat von 1 bis 12|1|
 |{datetime:dd}|Tag von 01 bis 31|02|
-|{datetime:d}|Tag von 1 bis 12|2|
+|{datetime:d}|Tag von 1 bis 31|2|
 |{datetime:HH}|Stunde im 24-Stunden-Format, von 00 bis 23|10|
-|{datetime:mm}|Minuten von 00 bis 24|06|
-|{datetime:m}|Minuten von 0 bis 24|6|
+|{datetime:mm}|Minuten von 00 bis 60|06|
+|{datetime:m}|Minuten von 0 bis 60|6|
 |{datetime:ss}|Sekunden von 00 bis 60|08|
 
 Wenn Sie keine benutzerdefinierten DateTime-Muster verwenden möchten, können Sie das Token {date} und/oder {time} zum Pfadpräfix hinzufügen, um eine Dropdownliste mit integrierten DateTime-Formaten zu generieren.
@@ -114,7 +121,7 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ### <a name="example"></a>Beispiel
 
-Erstellen Sie ein Speicherkonto, eine Ressourcengruppe, einen Stream Analytics-Auftrag und eine Eingabequelle gemäß der Schnellstartanleitung [Azure Stream Analytics Azure-Portal](stream-analytics-quick-create-portal.md). Verwenden Sie dieselben Beispieldaten wie in der Schnellstartanleitung, die auch auf [GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) verfügbar sind.
+Erstellen Sie ein Speicherkonto, eine Ressourcengruppe, einen Stream Analytics-Auftrag und eine Eingabequelle gemäß der Schnellstartanleitung [Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals](stream-analytics-quick-create-portal.md). Verwenden Sie dieselben Beispieldaten wie in der Schnellstartanleitung, die auch auf [GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) verfügbar sind.
 
 Erstellen Sie eine Blobausgabesenke mit der folgenden Konfiguration:
 

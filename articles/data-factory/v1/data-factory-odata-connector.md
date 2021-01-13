@@ -1,27 +1,26 @@
 ---
-title: Verschieben von Daten aus OData-Quellen | Microsoft Docs
+title: Verschieben von Daten aus OData-Quellen
 description: Erfahren Sie, wie Sie Daten aus OData-Quellen mithilfe von Azure Data Factory verschieben.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: de28fa56-3204-4546-a4df-21a21de43ed7
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 840a839f7d3259de0473937de9c9970fcb95227c
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839075"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019649"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Verschieben von Daten aus einer OData-Quelle mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-odata-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-odata.md)
 
@@ -44,7 +43,7 @@ Die folgenden Authentifizierungstypen werden unterstützt:
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einer OData-Quelle verschiebt.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
 Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
@@ -66,7 +65,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OData** |Ja |
 | url |Die URL des OData-Diensts. |Ja |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der OData-Quelle. <br/><br/> Mögliche Werte für den cloudbasierten OData-Dienst sind „Anonymous“, „Basic“ und „OAuth“ (beachten Sie, dass Azure Data Factory derzeit nur Azure Active Directory-basiertes OAuth unterstützt). <br/><br/> Mögliche Werte für lokales OData sind „Anonymous“, „Basic“ und „Windows“. |Ja |
-| userName |Geben Sie den Benutzernamen an, wenn Sie die Standardauthentifizierung (Basic) verwenden. |Ja (nur bei Verwendung der Standardauthentifizierung) |
+| username |Geben Sie den Benutzernamen an, wenn Sie die Standardauthentifizierung (Basic) verwenden. |Ja (nur bei Verwendung der Standardauthentifizierung) |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Ja (nur bei Verwendung der Standardauthentifizierung) |
 | authorizedCredential |Klicken Sie, wenn Sie OAuth verwenden, im Assistenten zum Kopieren in Data Factory bzw. im Editor auf die Schaltfläche **Autorisieren**, und geben Sie Ihre Anmeldeinformationen ein. Anschließend wird der Wert dieser Eigenschaft automatisch generiert. |Ja (nur bei Verwendung der OAuth-Authentifizierung) |
 | gatewayName |Der Name des Gateways, das der Data Factory-Dienst zum Verbinden mit dem lokalen OData-Dienst verwenden soll. Geben Sie diesen nur an, wenn Sie Daten aus einer lokalen OData-Quelle kopieren. |Nein |
@@ -159,7 +158,7 @@ Wenn eine Quelle des Typs **RelationalSource** (wozu OData gehört) verwendet wi
 
 | Eigenschaft | BESCHREIBUNG | Beispiel | Erforderlich |
 | --- | --- | --- | --- |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |"?$select=Name, Beschreibung&$top=5" |Nein |
+| Abfrage |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |"?$select=Name, Beschreibung&$top=5" |Nein |
 
 ## <a name="type-mapping-for-odata"></a>Typzuordnung für OData
 Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
@@ -174,7 +173,7 @@ Beim Verschieben von Daten aus OData werden die folgenden Zuordnungen zwischen d
 | Edm.Binary |Byte[] |
 | Edm.Boolean |Bool |
 | Edm.Byte |Byte[] |
-| Edm.DateTime |DateTime |
+| Edm.DateTime |Datetime |
 | Edm.Decimal |Decimal |
 | Edm.Double |Double |
 | Edm.Single |Single |

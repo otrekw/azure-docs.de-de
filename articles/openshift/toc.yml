@@ -1,46 +1,102 @@
 - name: Azure Red Hat OpenShift
   href: index.yml
 - name: Übersicht
+  expanded: true
   items:
     - name: Informationen zu Azure Red Hat OpenShift
       href: intro-openshift.md
-- name: Lernprogramme
-  items:
-    - name: Erstellen und Verwalten eines Azure Red Hat OpenShift-Clusters
-      items:
-        - name: 1. Erstellen eines Azure Red Hat OpenShift-Clusters
-          href: tutorial-create-cluster.md
-        - name: 2. Skalieren eines Azure Red Hat OpenShift-Clusters
-          href: tutorial-scale-cluster.md
-        - name: 3. Löschen eines Azure Red Hat OpenShift-Clusters
-          href: tutorial-delete-cluster.md
-- name: Clusterverwaltung
-  items:
-    - name: Verwaltung eines Azure Red Hat OpenShift-Clusters
-      items:
-        - name: 1. Administratorrolle für Azure Red Hat OpenShift-Cluster
-          href: cluster-administration-cluster-admin-role.md
-        - name: 2. Verwalten von Sicherheitskontexteinschränkungen
-          href: cluster-administration-security-context-constraints.md
-- name: Anleitungen
+- name: Tutorials
   expanded: true
   items:
-    - name: Einrichten Ihrer Azure Red Hat OpenShift-Entwicklungsumgebung
-      href: howto-setup-environment.md
-      expanded: true
+    - name: 1. Erstellen eines ARO-Clusters
+      href: tutorial-create-cluster.md
+    - name: 2. Herstellen einer Verbindung mit einem ARO-Cluster
+      href: tutorial-connect-cluster.md
+    - name: 3. Löschen eines ARO-Clusters
+      href: tutorial-delete-cluster.md
+- name: Anleitungen
+  items:
+    - name: Netzwerk
       items:
-        - name: Erstellen eines Azure AD-Mandanten
-          href: howto-create-tenant.md
-        - name: Erstellen eines App-Objekts und eines Benutzers für Azure AD
-          href: howto-aad-app-configuration.md
-    - name: Bereitstellen einer eigenständigen Prometheus-Instanz in einem Azure Red Hat OpenShift-Cluster
-      href: howto-deploy-prometheus.md
-    - name: Verwalten von Projekten in einem Azure Red Hat OpenShift-Cluster
-      href: howto-manage-projects.md
+        - name: Erstellen eines privaten ARO-Clusters
+          href: howto-create-private-cluster-4x.md
+        - name: Konfigurieren der DNS-Weiterleitung
+          href: dns-forwarding.md
+    - name: Storage
+      items:
+        - name: Erstellen einer Azure Files Storage-Klasse
+          href: howto-create-a-storageclass.md
+        - name: Verwenden der integrierten Containerregistrierung
+          href: built-in-container-registry.md
+    - name: Sicherheit und Authentifizierung
+      items:
+        - name: Konfigurieren der Azure Active Directory-Authentifizierung (CLI)
+          href: configure-azure-ad-cli.md
+        - name: Konfigurieren der Azure Active Directory-Authentifizierung (Portal)
+          href: configure-azure-ad-ui.md
+        - name: Aktualisieren des Pullgeheimnisses für einen ARO-Cluster
+          href: howto-add-update-pull-secret.md
+    - name: Sichern und Wiederherstellen
+      items:
+        - name: Erstellen einer Sicherung einer Clusteranwendung mit Velero
+          href: howto-create-a-backup.md
+        - name: Erstellen einer Wiederherstellung einer Clusteranwendung mit Velero
+          href: howto-create-a-restore.md
+    - name: Überwachung und Protokollierung
+      items:
+        - name: Azure Monitor für Container
+          items:
+            - name: "Konfigurieren von Azure Monitor für Container für ARO\_4 (Vorschau)"
+              href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
+            - name: "Deaktivieren von Azure Monitor für Container in ARO\_4 (Vorschau)"
+              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+    - name: Entwickeln und Ausführen von Anwendungen
+      items:
+        - name: "Bereitstellen einer Open\_Liberty-/WebSphere\_Liberty-App"
+          href: howto-deploy-java-liberty-app.md
+    - name: "Azure Red Hat OpenShift\_3.11"
+      items:
+        - name: "Einrichten Ihrer Azure Red Hat OpenShift-Entwicklungsumgebung für Azure Red Hat OpenShift\_3.11"
+          href: howto-setup-environment.md
+          items:
+            - name: Erstellen eines Azure AD-Mandanten
+              href: howto-create-tenant.md
+            - name: Erstellen eines App-Objekts und eines Benutzers für Azure AD
+              href: howto-aad-app-configuration.md
+        - name: "Bereitstellen einer eigenständigen Prometheus-Instanz in einem Azure Red Hat OpenShift\_3.11-Cluster"
+          href: howto-deploy-prometheus.md
+        - name: "Verwalten von Projekten in einem Azure Red Hat OpenShift\_3.11-Cluster"
+          href: howto-manage-projects.md
+        - name: "Erstellen eines privaten Azure Red Hat OpenShift\_3.11-Clusters"
+          href: howto-create-private-cluster-3x.md
+        - name: "Überwachung und Protokollierung für Azure Red Hat OpenShift\_3.11"
+          items:
+            - name: "Azure Monitor für Container in Azure Red Hat OpenShift\_3.11 (Vorschau)"
+              items:
+                - name: "Konfigurieren von Azure Monitor für Container in Azure Red Hat OpenShift\_3.11"
+                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  maintainContext: true
+                - name: "Deaktivieren von Azure Monitor für Container in Azure Red Hat OpenShift\_3.11"
+                  href: ../azure-monitor/insights/container-insights-optout-openshift-v3.md
+                  maintainContext: true
+        - name: "Ausführen von privilegierten Containern in Azure Red Hat OpenShift\_3.11"
+          href: howto-run-privileged-containers.md
+        - name: "Clusterverwaltung in Azure Red Hat OpenShift\_3.11"
+          items:
+            - name: "1. Administratorrolle für Azure Red Hat OpenShift\_3.11-Cluster"
+              href: cluster-administration-cluster-admin-role.md
+            - name: "2. Verwalten von Einschränkungen des Sicherheitskontexts in Azure Red Hat OpenShift\_3.11"
+              href: cluster-administration-security-context-constraints.md
+- name: Konzepte
+  items:
+    - name: Netzwerk
+      href: concepts-networking.md
+    - name: "Migrieren von ARO\_3.11 zu ARO\_4"
+      href: migration.md
 - name: Verweis
   items:
     - name: Azure Red Hat OpenShift-CLI
-      href: /cli/azure/openshift
+      href: /cli/azure/aro
     - name: Azure Red Hat OpenShift-REST-APIs
       href: /rest/api/openshift
 - name: Ressourcen
@@ -49,11 +105,15 @@
       href: openshift-faq.md
     - name: Problembehandlung
       href: troubleshoot.md
-    - name: Unterstützte Ressourcen
-      href: supported-resources.md
+    - name: "Supportrichtlinien für ARO\_4"
+      href: support-policies-v4.md
+    - name: "Supportlebenszyklus für ARO\_4"
+      href: support-lifecycle.md
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Red Hat OpenShift-Dokumentation
-      href: 'https://docs.openshift.com/aro/welcome/index.html'
+    - name: Dokumentation zu Red Hat OpenShift 4
+      href: 'https://docs.openshift.com/aro/4/welcome/index.html'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: ARO-Roadmap
+      href: 'https://github.com/Azure/OpenShift/projects/1'

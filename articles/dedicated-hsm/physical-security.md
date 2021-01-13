@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70881031"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure-Dienst für dedizierte HSMs – physische Sicherheit

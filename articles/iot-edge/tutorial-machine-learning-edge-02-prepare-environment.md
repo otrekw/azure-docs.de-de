@@ -1,48 +1,56 @@
 ---
-title: 'Einrichten einer Umgebung: Machine Learning in Azure IoT Edge | Microsoft-Dokumentation'
-description: Es wird beschrieben, wie Sie Ihre Umgebung für die Entwicklung und Bereitstellung von Modulen für maschinelles Lernen im Edgebereich vorbereiten.
+title: 'Tutorial: Einrichten einer Umgebung: Machine Learning in Azure IoT Edge'
+description: 'Tutorial: Es wird beschrieben, wie Sie Ihre Umgebung für die Entwicklung und Bereitstellung von Modulen für maschinelles Lernen im Edgebereich vorbereiten.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1db94e683a0dfb3b60b12bc5ac205c766d405d0a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: d86a273a69203a92a9b437f021486feb3bcb31da
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299823"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932369"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Tutorial: Einrichten einer Umgebung für maschinelles Lernen in IoT Edge
 
-> [!NOTE]
-> Dieser Artikel ist Teil einer Tutorialreihe zur Verwendung von Azure Machine Learning für IoT Edge. Falls Sie direkt zu diesem Artikel navigiert sind, ist es ratsam, mit dem [ersten Artikel](tutorial-machine-learning-edge-01-intro.md) der Reihe zu beginnen.
+Dieser Artikel enthält Informationen dazu, wie Sie Ihre Umgebung für die Entwicklung und Bereitstellung vorbereiten. Richten Sie zuerst einen Entwicklungscomputer mit allen benötigten Tools ein. Erstellen Sie anschließend die erforderlichen Cloudressourcen in Azure.
 
-Dieser Artikel der umfassenden Tutorialreihe zum Thema Azure Machine Learning in IoT Edge dient Ihnen als Hilfe beim Vorbereiten Ihrer Umgebung für die Entwicklung und Bereitstellung. Richten Sie zuerst einen Entwicklungscomputer mit allen benötigten Tools ein. Erstellen Sie anschließend die erforderlichen Cloudressourcen in Azure.
+In diesem Abschnitt des Tutorials lernen Sie Folgendes:
 
-## <a name="set-up-a-development-machine"></a>Einrichten eines Entwicklungscomputers
+> [!div class="checklist"]
+>
+> * Einrichten eines virtuellen Computers für die Entwicklung
+> * Einrichten einer IoT Hub-Instanz und eines Cloudspeichers für Ihre Entwicklungsumgebung
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Dieser Artikel ist Teil einer Tutorialreihe zur Verwendung von Azure Machine Learning für IoT Edge. Jeder Artikel in der Reihe baut auf der Arbeit im vorherigen Artikel auf. Wenn Sie diesen Artikel direkt aufgerufen haben, wechseln Sie zum [ersten Artikel](tutorial-machine-learning-edge-01-intro.md) in der Reihe.
+
+## <a name="set-up-the-development-vm"></a>Einrichten des virtuellen Entwicklungscomputers
 
 Dieser Schritt wird normalerweise von einem Cloudentwickler ausgeführt. Ein Teil der Software ist ggf. auch für einen Data Scientist hilfreich.
 
-Im Laufe dieses Artikels führen wir verschiedene Entwickleraufgaben durch, z. B. das Codieren, Kompilieren, Konfigurieren und Bereitstellen von IoT Edge-Modulen und IoT-Geräten. Der Einfachheit halber haben wir ein PowerShell-Skript zusammengestellt, mit dem ein virtueller Azure-Computer erstellt wird, für den viele erforderliche Komponenten bereits konfiguriert sind. Die von uns erstellte VM muss die [geschachtelte Virtualisierung](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) verarbeiten können. Aus diesem Grund haben wir einen Computer mit der Größe [Standard_D8s_v3](../virtual-machines/windows/sizes-general.md#dsv3-series-1) gewählt.
+Wir haben ein PowerShell-Skript zusammengestellt, mit dem ein virtueller Azure-Computer erstellt wird, für den viele erforderliche Komponenten bereits konfiguriert sind. Die von uns erstellte VM muss die [geschachtelte Virtualisierung](../virtual-machines/windows/nested-virtualization.md) verarbeiten können. Aus diesem Grund haben wir einen Computer mit der Größe [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) gewählt.
 
 Für die Einrichtung des virtuellen Entwicklungscomputers wird Folgendes verwendet:
 
-* Windows 10
+* Windows 10
 * [Chocolatey](https://chocolatey.org/)
 * [Docker Desktop für Windows](https://www.docker.com/products/docker-desktop)
 * [Git für Windows](https://gitforwindows.org/)
 * [Git Credential Manager für Windows](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
-* [.Net Core SDK](https://dotnet.microsoft.com/)
+* [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0)
+* [Azure PowerShell](/powershell/azure/)
 * [VS Code-Erweiterungen](https://marketplace.visualstudio.com/search?target=VSCode)
   * [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  * [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+  * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
   * [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
   * [PowerShell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
 
@@ -50,101 +58,95 @@ Der virtuelle Entwicklungscomputer ist nicht unbedingt erforderlich. Alle Entwic
 
 Es dauert ungefähr 30 Minuten, um den virtuellen Computer zu erstellen und zu konfigurieren.
 
-### <a name="get-the-script"></a>Beschaffen des Skripts
+1. Klonen Sie das Beispielrepository [Machine Learning and IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample), oder laden Sie es auf Ihren lokalen Computer herunter.
 
-Klonen Sie das PowerShell-Skript über das Beispielrepository [Machine Learning and IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) (bzw. laden Sie es herunter).
-
-### <a name="create-an-azure-virtual-machine"></a>Erstellen eines virtuellen Azure-Computers
-
-Das Verzeichnis „DevVM“ enthält die Dateien, die zum Erstellen eines für dieses Tutorial geeigneten virtuellen Azure-Computers benötigt werden.
-
-1. Öffnen Sie PowerShell als Administrator, und navigieren Sie zu dem Verzeichnis, in das Sie den Code heruntergeladen haben. Das Stammverzeichnis für Ihre Quelle hat die Bezeichnung `<srcdir>`.
+1. Öffnen Sie PowerShell als Administrator, und navigieren Sie zum Verzeichnis **\IoTEdgeAndMlSample\DevVM** unter dem Stammverzeichnis, in das Sie den Code heruntergeladen haben. Das Stammverzeichnis für Ihre Quelle hat die Bezeichnung `srcdir`.
 
     ```powershell
-    cd <srcdir>\IoTEdgeAndMlSample\DevVM
+    cd c:\srcdir\IoTEdgeAndMlSample\DevVM
     ```
 
-2. Führen Sie den folgenden Befehl aus, um die Ausführung von Skripts zu ermöglichen. Wählen Sie **Ja, alle**, wenn die Aufforderung angezeigt wird.
+   Das Verzeichnis „DevVM“ enthält die Dateien, die zum Erstellen eines für dieses Tutorial geeigneten virtuellen Azure-Computers benötigt werden.
+
+1. Führen Sie den folgenden Befehl aus, um die Ausführung von Skripts zu ermöglichen. Wählen Sie **Ja, alle**, wenn die Aufforderung angezeigt wird.
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
     ```
 
-3. Führen Sie „Create-AzureDevVM.ps1“ aus diesem Verzeichnis aus.
+1. Führen Sie „Create-AzureDevVM.ps1“ aus.
 
     ```powershell
     .\Create-AzureDevVm.ps1
     ```
 
-    * Geben Sie bei entsprechender Aufforderung die folgenden Informationen ein:
-      * **Azure-Abonnement-ID**: Ihre Abonnement-ID (über das Azure-Portal ermittelbar).
-      * **Ressourcengruppenname**: Der Name einer neuen oder vorhandenen Ressourcengruppe in Azure.
-      * **Standort**: Wählen Sie einen Azure-Standort aus, an dem der virtuelle Computer erstellt wird. Beispiel: „westus2“ oder „northeurope“. Weitere Informationen finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
-      * **AdminUsername**: Geben Sie einen einprägsamen Namen für das Administratorkonto an, das Sie erstellen und auf dem virtuellen Computer verwenden möchten.
-      * **AdminPassword**: Legen Sie ein Kennwort für das Administratorkonto auf dem virtuellen Computer fest.
+    Geben Sie bei entsprechender Aufforderung die folgenden Informationen ein:
 
-    * Wenn Sie Azure PowerShell nicht installiert haben, wird mit dem Skript das [Azure PowerShell-Az-Modul](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0) installiert.
+    * **Azure-Abonnement-ID**: Ihre Abonnement-ID, die Sie im Portal unter [Azure-Abonnements](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) finden.
+    * **Ressourcengruppenname**: Der Name einer neuen oder vorhandenen Ressourcengruppe in Azure.
+    * **Standort**: Wählen Sie einen Azure-Standort aus, an dem der virtuelle Computer erstellt wird. Beispiel: „USA, Westen 2“ oder „Europa, Norden“. Weitere Informationen finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
+    * **Benutzername**: Geben Sie für das Administratorkonto für den virtuellen Computer einen einprägsamen Namen an.
+    * **Kennwort**: Legen Sie ein Kennwort für das Administratorkonto für den virtuellen Computer fest.
 
-    * Sie werden aufgefordert, sich bei Azure anzumelden.
+   Die Ausführung des Skripts dauert mehrere Minuten, und es werden die folgenden Schritte ausgeführt:
 
-    * Das Skript bestätigt die Informationen für die Erstellung Ihres virtuellen Computers. Drücken Sie `y` oder `Enter`, um fortzufahren.
+    1. Installiert das [Azure PowerShell Az-Modul](/powershell/azure/new-azureps-module-az).
+    1. Fordert Sie zum Anmelden bei Azure auf.
+    1. Überprüft die Informationen für die Erstellung Ihres virtuellen Computers. Drücken Sie **y** oder die **EINGABETASTE**, um fortzufahren.
+    1. Erstellt die Ressourcengruppe, falls sie nicht vorhanden ist.
+    1. Stellt den virtuellen Computer bereit.
+    1. Aktiviert Hyper-V auf dem virtuellen Computer.
+    1. Installiert die erforderliche Software für die Entwicklung und das Klonen des Beispielrepositorys.
+    1. Startet die virtuellen Computer neu.
+    1. Erstellt auf Ihrem Desktop eine RDP-Datei für die Verbindungsherstellung mit dem virtuellen Computer.
 
-Die Ausführung des Skripts dauert mehrere Minuten, und es werden die folgenden Schritte ausgeführt:
-
-* Erstellen der Ressourcengruppe, falls nicht vorhanden
-* Bereitstellen des virtuellen Computers
-* Aktivieren von Hyper-V auf der VM
-* Installieren der erforderlichen Software für die Entwicklung und Klonen des Beispielrepositorys
-* Neustarten der VM
-* Erstellen einer RDP-Datei auf Ihrem Desktop für die Verbindungsherstellung mit der VM
+   Wenn Sie zum Eingeben des Namens des virtuellen Computers aufgefordert werden, um diesen neu zu starten, können Sie den Namen aus der Ausgabe des Skripts kopieren. In der Ausgabe wird auch der Pfad zur RDP-Datei für die Verbindungsherstellung mit dem virtuellen Computer angezeigt.
 
 ### <a name="set-auto-shutdown-schedule"></a>Festlegen eines Zeitplans zum automatischen Herunterfahren
 
-Als Beitrag zur Kostenreduzierung wurde die VM mit einem Zeitplan für das automatische Herunterfahren erstellt, der auf 19:00 Uhr PST festgelegt ist. Unter Umständen müssen Sie diese Zeitangabe je nach Standort und Zeitplan aktualisieren. Aktualisieren Sie den Zeitplan zum Herunterfahren wie folgt:
+Als Beitrag zur Kostenreduzierung wurde der virtuelle Entwicklungscomputer mit einem Zeitplan für das automatische Herunterfahren erstellt, der auf 19:00 Uhr PST festgelegt ist. Unter Umständen müssen Sie diese Einstellung je nach Standort und Zeitplan aktualisieren. Aktualisieren Sie den Zeitplan zum Herunterfahren wie folgt:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Navigieren Sie im Azure-Portal zu dem virtuellen Computer, der mit dem Skript erstellt wurde.
 
-2. Navigieren Sie zu Ihrem virtuellen Computer in der Ressourcengruppe, die Sie im vorherigen Abschnitt angegeben haben.
+1. Wählen Sie im Menü auf der linken Seite unter **Vorgänge** die Option **Automatisch herunterfahren** aus.
 
-3. Wählen Sie im Seitennavigator die Option **Automatisch herunterfahren**.
+1. Passen Sie **Geplantes Herunterfahren** und **Zeitzone** wie gewünscht an, und wählen Sie anschließend **Speichern** aus.
 
-4. Geben Sie einen neuen Zeitpunkt für das Herunterfahren in **Geplantes Herunterfahren**  ein, oder ändern Sie die **Zeitzone**, und klicken Sie anschließend auf **Speichern**.
-
-### <a name="connect-and-configure-development-machine"></a>Verbinden und Konfigurieren des Entwicklungscomputers
+## <a name="connect-to-the-development-vm"></a>Herstellen einer Verbindung mit dem virtuellen Entwicklungscomputer
 
 Nachdem wir nun eine VM erstellt haben, müssen wir die Installation der Software abschließen, die für das Tutorial benötigt wird.
 
-#### <a name="start-a-remote-desktop-session"></a>Starten einer Remotedesktopsitzung
+1. Doppelklicken Sie auf die RDP-Datei, die vom Skript auf Ihrem Desktop erstellt wurde.
 
-1. Mit dem Skript für die Erstellung der VM wurde auf Ihrem Desktop eine RDP-Datei erstellt.
+1. Es wird ein Dialogfeld mit dem Hinweis angezeigt, dass der Herausgeber der Remoteverbindung unbekannt ist. Dies ist akzeptabel, und Sie können **Verbinden** auswählen.
 
-2. Doppelklicken Sie auf die Datei mit dem Namen **\<Name der Azure-VM\>.rdp**.
+1. Geben Sie das Administratorkennwort ein, das Sie bei der Erstellung des virtuellen Computers angegeben haben, und klicken Sie auf **OK**.
 
-3. Es wird ein Dialogfeld mit dem Hinweis angezeigt, dass der Herausgeber der Remoteverbindung unbekannt ist. Klicken Sie in das Kontrollkästchen **Nicht erneut nach Verbindungen mit diesem Computer fragen**, und wählen Sie anschließend **Verbinden**.
+1. Sie werden aufgefordert, das Zertifikat für den virtuellen Computer zu akzeptieren. Wählen Sie **Ja** aus.
 
-4. Geben Sie bei entsprechender Aufforderung das AdminPassword an, das Sie beim Ausführen des Skripts zum Einrichten der VM verwendet haben, und klicken Sie auf **OK**.
-
-5. Sie werden aufgefordert, das Zertifikat für den virtuellen Computer zu akzeptieren. Wählen Sie die Option **Nicht erneut nach Verbindungen mit diesem Computer fragen** und dann **Ja**.
-
-#### <a name="install-visual-studio-code-extensions"></a>Installieren von Visual Studio Code-Erweiterungen
+## <a name="install-visual-studio-code-extensions"></a>Installieren von Visual Studio Code-Erweiterungen
 
 Nachdem Sie nun eine Verbindung mit dem Entwicklungscomputer hergestellt haben, sollten Sie Visual Studio Code einige nützliche Erweiterungen hinzufügen, um die Entwicklungsumgebung zu vereinfachen.
 
-1. Navigieren Sie in einem PowerShell-Fenster zu **C:\\source\\IoTEdgeAndMlSample\\DevVM**.
-
-2. Lassen Sie zu, dass auf dem virtuellen Computer Skripts ausgeführt werden, indem Sie Folgendes eingeben:
+1. Stellen Sie eine Verbindung mit dem virtuellen Entwicklungscomputer her, öffnen Sie ein PowerShell-Fenster, und navigieren Sie zum Verzeichnis **C:\source\IoTEdgeAndMlSample\DevVM**. Dieses Verzeichnis wurde mit dem Skript erstellt, mit dem der virtuelle Computer erstellt wurde.
 
     ```powershell
-    Set-ExecutionPolicy Bypass -Scope CurrentUser -Force
+    cd C:\source\IoTEdgeAndMlSample\DevVM
     ```
 
-3. Führen Sie das Skript aus.
+1. Führen Sie den folgenden Befehl aus, um die Ausführung von Skripts zu ermöglichen. Wählen Sie **Ja, alle**, wenn die Aufforderung angezeigt wird.
+
+    ```powershell
+    Set-ExecutionPolicy Bypass -Scope Process
+    ```
+
+1. Führen Sie das Skript für die Visual Studio Code-Erweiterungen aus.
 
     ```powershell
     .\Enable-CodeExtensions.ps1
     ```
 
-4. Die Ausführung des Skripts dauert einige Minuten, während die VS Code-Erweiterungen installiert werden:
+1. Die Ausführung des Skripts dauert einige Minuten, während die VS Code-Erweiterungen installiert werden:
 
     * Azure IoT-Tools
     * Python
@@ -156,19 +158,15 @@ Nachdem Sie nun eine Verbindung mit dem Entwicklungscomputer hergestellt haben, 
 
 Diese Schritte werden normalerweise von einem Cloudentwickler ausgeführt.
 
-Azure IoT Hub ist das Kernstück jeder IoT-Anwendung. Es ist für die sichere Kommunikation zwischen IoT-Geräten und der Cloud zuständig. Es ist das wichtigste Element für die Koordination des Betriebs einer IoT Edge Machine Learning-Lösung.
+Azure IoT Hub ist das Kernstück jeder IoT-Anwendung, weil damit die sichere Kommunikation zwischen IoT-Geräten und der Cloud gesteuert wird. Es ist das wichtigste Element für die Koordination des Betriebs einer IoT Edge Machine Learning-Lösung.
 
-* Für IoT Hub werden Routen genutzt, um eingehende Daten von IoT-Geräten an andere nachgeschaltete Dienste zu leiten. Wir nutzen IoT Hub-Routen zum Senden von Gerätedaten an Azure Storage, wo sie von Azure Machine Learning eingesetzt werden können, um den Klassifizierer für die Restlebensdauer (RUL) zu trainieren.
+* Für IoT Hub werden Routen genutzt, um eingehende Daten von IoT-Geräten an andere nachgeschaltete Dienste zu leiten. Wir nutzen IoT Hub-Routen, um Gerätedaten an Azure Storage zu senden. In Azure Storage werden die Gerätedaten von Azure Machine Learning genutzt, um den Klassifizierer für die verbleibende Nutzungsdauer (Remaining Useful Life, RUL) zu trainieren.
 
 * Später im Tutorial verwenden wir IoT Hub zum Konfigurieren und Verwalten unseres Azure IoT Edge-Geräts.
 
-In diesem Abschnitt nutzen Sie ein Skript, um eine Azure IoT Hub-Instanz und ein Azure Storage-Konto zu erstellen. Anschließend konfigurieren Sie eine Route, über die vom Hub empfangene Daten mit dem Azure-Portal an einen Azure Storage Blob-Container weitergeleitet werden. Es dauert ungefähr zehn Minuten, bis diese Schritte abgeschlossen sind.
+In diesem Abschnitt nutzen Sie ein Skript, um eine Azure IoT Hub-Instanz und ein Azure Storage-Konto zu erstellen. Anschließend konfigurieren Sie im Azure-Portal eine Route, über die vom Hub empfangene Daten an einen Azure Storage-Container weitergeleitet werden. Es dauert ungefähr zehn Minuten, bis diese Schritte abgeschlossen sind.
 
-### <a name="create-cloud-resources"></a>Erstellen von Cloudressourcen
-
-1. Öffnen Sie auf Ihrem Entwicklungscomputer ein PowerShell-Fenster.
-
-1. Wechseln Sie zum Verzeichnis „IoTHub“.
+1. Stellen Sie eine Verbindung mit dem virtuellen Entwicklungscomputer her, öffnen Sie ein PowerShell-Fenster, und navigieren Sie zum Verzeichnis **IoTHub**.
 
     ```powershell
     cd C:\source\IoTEdgeAndMlSample\IoTHub
@@ -177,56 +175,55 @@ In diesem Abschnitt nutzen Sie ein Skript, um eine Azure IoT Hub-Instanz und ein
 1. Führen Sie das Erstellungsskript aus. Verwenden Sie die gleichen Werte für Abonnement-ID, Standort und Ressourcengruppe wie beim Erstellen des virtuellen Entwicklungscomputers.
 
     ```powershell
-    .\New-HubAndStorage.ps1 -SubscriptionId <subscription id> -Location
-    <location> -ResourceGroupName <resource group>
+    .\New-HubAndStorage.ps1 -SubscriptionId <subscription id> -Location <location> -ResourceGroupName <resource group>
     ```
 
     * Sie werden aufgefordert, sich bei Azure anzumelden.
-    * Das Skript bestätigt die Informationen für die Erstellung Ihres Hubs und Speicherkontos. Drücken Sie `y` oder `Enter`, um fortzufahren.
+    * Das Skript bestätigt die Informationen für die Erstellung Ihres Hubs und Speicherkontos. Drücken Sie **y** oder die **EINGABETASTE**, um fortzufahren.
 
-Die Ausführung des Skripts dauert ungefähr zwei Minuten. Nach Abschluss des Vorgangs gibt das Skript den Namen des Hubs und des Speicherkontos aus.
+Die Ausführung des Skripts dauert ungefähr zwei Minuten. Nach Abschluss des Vorgangs gibt das Skript den Namen des IoT-Hubs und des Speicherkontos aus.
 
-### <a name="review-route-to-storage-in-iot-hub"></a>Überprüfen der Route zum Speicher in IoT Hub
+## <a name="review-route-to-storage-in-iot-hub"></a>Überprüfen der Route zum Speicher in IoT Hub
 
 Bei der Erstellung des IoT-Hubs wurden mit dem Skript, das wir im vorherigen Abschnitt ausgeführt haben, auch ein benutzerdefinierter Endpunkt und eine Route erstellt. IoT-Hub-Routen bestehen aus einem Abfrageausdruck und einem Endpunkt. Wenn eine Nachricht mit dem Ausdruck übereinstimmt, werden die Daten über die Route an den zugeordneten Endpunkt gesendet. Bei Endpunkten kann es sich um Event Hubs und Service Bus-Warteschlangen und -Themen handeln. In diesem Fall ist der Endpunkt ein Blobcontainer in einem Speicherkonto. Wir verwenden das Azure-Portal, um die vom Skript erstellte Route zu überprüfen.
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zu der Ressourcengruppe, die Sie für dieses Tutorial verwenden.
 
-1. Wählen Sie im linken Navigator alle Dienste aus, geben Sie im Suchfeld „IoT“ ein, und wählen Sie **IoT Hub**.
+1. Wählen Sie in der Liste mit den Ressourcen den IoT-Hub aus, der mit dem Skript erstellt wurde. Der Name endet auf zufällig erzeugte Zeichen, z. B. `IotEdgeAndMlHub-jrujej6de6i7w`.
 
-1. Wählen Sie die IoT Hub-Instanz aus, die Sie im vorherigen Schritt erstellt haben.
+1. Wählen Sie im Menü im linken Bereich unter **Messaging** die Option **Nachrichtenrouting** aus.
 
-1. Wählen Sie im IoT Hub-Seitennavigator die Option **Nachrichtenrouting**.
+1. Wählen Sie auf der Seite **Nachrichtenrouting** die Registerkarte **Benutzerdefinierte Endpunkte** aus.
 
-1. Die Seite für das Nachrichtenrouting enthält die beiden Registerkarten **Routen** und **Benutzerdefinierte Endpunkte**. Wählen Sie die Registerkarte **Benutzerdefinierte Endpunkte**.
+1. Erweitern Sie den Abschnitt **Speicher**:
 
-1. Wählen Sie unter **Blobspeicher** die Option **turbofanDeviceStorage**.
+   ![Überprüfen, ob „turbofanDeviceStorage“ in der Liste mit den benutzerdefinierten Endpunkten enthalten ist](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
-1. Beachten Sie Folgendes: Dieser Endpunkt verweist auf einen Blobcontainer mit dem Namen **devicedata** in dem Speicherkonto, das Sie im letzten Schritt erstellt haben. Es hat den Namen **iotedgeandml\<eindeutiges Suffix\>** .
+   Sie sehen, dass **turbofanDeviceStorage** in der Liste mit den benutzerdefinierten Endpunkten enthalten ist. Beachten Sie die folgenden Eigenschaften dieses Endpunkts:
 
-1. Außerdem weist das **Format für Blobdateinamen**  nicht mehr das Standardformat auf, sondern die Partition ist im Namen als letztes Element angegeben. Dieses Format ist besser für die Dateivorgänge geeignet, die wir später in diesem Tutorial mit Azure Notebooks durchführen.
-
-1. Schließen Sie das Blatt mit den Endpunktdetails, um zur Seite **Nachrichtenrouting** zurückzukehren.
+   * Er verweist auf den von Ihnen erstellten Blobspeichercontainer mit dem Namen `devicedata`. Dies wird über den **Containernamen** angegeben.
+   * Unter **Format des Dateinamens** ist „Partition“ als letztes Element des Namens angegeben. Dieses Format ist besser für die Dateivorgänge geeignet, die wir später in diesem Tutorial mit Azure Notebooks durchführen.
+   * Als **Status** sollte „Fehlerfrei“ angezeigt werden.
 
 1. Wählen Sie die Registerkarte **Routen**.
 
 1. Wählen Sie die Route mit dem Namen **turbofanDeviceDataToStorage**.
 
-1. Beachten Sie, dass der Endpunkt der Route der benutzerdefinierte Endpunkt **turbofanDeviceStorage** ist.
+1. Beachten Sie auf der Seite **Details zur Route**, dass **turbofanDeviceStorage** der Endpunkt der Route ist.
 
-1. Sehen Sie sich die Routingabfrage an, die auf **true** festgelegt ist. Dies bedeutet, dass alle Gerätetelemetrienachrichten mit dieser Route übereinstimmen, sodass alle Nachrichten an den Endpunkt **turbofanDeviceStorage** gesendet werden.
+   ![Überprüfen der Details zur Route „turbofanDeviceDataToStorage“](media/tutorial-machine-learning-edge-02-prepare-environment/route-details.png)
 
-1. Schließen Sie die Routendetails.
+1. Sehen Sie sich die **Routingabfrage** an, die auf **true** festgelegt ist. Diese Einstellung bedeutet, dass alle Gerätetelemetrienachrichten mit dieser Route übereinstimmen, sodass alle Nachrichten an den Endpunkt **turbofanDeviceStorage** gesendet werden.
+
+1. Da keine Änderungen vorgenommen wurden, können Sie die Seite einfach schließen.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Dieses Tutorial ist Teil einer Reihe, in der jeder Artikel auf den Schritten aufbaut, die jeweils im vorherigen Artikel ausgeführt wurden. Warten Sie mit dem Bereinigen von Ressourcen, bis Sie das letzte Tutorial abgeschlossen haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben wir eine IoT Hub-Instanz erstellt und eine Route zu einem Azure Storage-Konto konfiguriert. Im nächsten Artikel senden wir Daten von einer Gruppe simulierter Geräte über die IoT Hub-Instanz an das Speicherkonto. Später in diesem Tutorial nach der Konfiguration unseres IoT Edge-Geräts und der Module gehen wir noch einmal auf Routen und die Routingabfrage ein.
-
-Weitere Informationen zu den Schritten, die in diesem Teil des Tutorials zu Machine Learning in IoT Edge behandelt werden, finden Sie unter:
-
-* [Azure IoT-Grundlagen](https://docs.microsoft.com/azure/iot-fundamentals/)
-* [Konfigurieren der Nachrichtenweiterleitung mit IoT Hub](../iot-hub/tutorial-routing.md)
-* [Erstellen eines IoT Hubs über das Portal](../iot-hub/iot-hub-create-through-portal.md)
+In diesem Artikel haben wir eine IoT Hub-Instanz erstellt und eine Route zu einem Azure Storage-Konto konfiguriert. Als Nächstes senden wir Daten von einer Gruppe simulierter Geräte über die IoT Hub-Instanz an das Speicherkonto. Später in diesem Tutorial nach der Konfiguration unseres IoT Edge-Geräts und der Module gehen wir noch einmal auf Routen und die Routingabfrage ein.
 
 Fahren Sie mit dem nächsten Artikel fort, um ein zu überwachendes simuliertes Gerät zu erstellen.
 

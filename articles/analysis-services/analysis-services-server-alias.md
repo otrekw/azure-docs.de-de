@@ -1,19 +1,18 @@
 ---
 title: Azure Analysis Services-Aliasservernamen | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Servernamenaliase erstellen und verwenden.
+description: Erfahren Sie, wie Sie Aliase für Azure Analysis Services-Servernamen erstellen. Benutzer können dann mit einem kürzeren Aliasnamen anstelle des Servernamens eine Verbindung mit Ihrem Server herstellen.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 66e6b4713591f099769543a75dcddec34f3d2e2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7fb52a0f03fa1f9ab9bc0c6a2c27adf70b4bf2ca
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60534316"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491229"
 ---
 # <a name="alias-server-names"></a>Aliasservernamen
 
@@ -38,7 +37,7 @@ Bei der Verbindungsherstellung über einen Client wird der Aliasservername im Pr
 
 Für die Erstellung eines Aliasendpunkts können Sie eine beliebige Methode verwenden, die einen gültigen Azure Analysis Services-Servernamen zurückgibt. Beispiele wären etwa ein Verweis auf eine Datei in Azure Blob Storage mit dem tatsächlichen Servernamen oder die Erstellung und Veröffentlichung einer ASP.NET Web Forms-Anwendung.
 
-In diesem Beispiel wird eine ASP.NET Web Forms-Anwendung in Visual Studio erstellt. Der Masterseitenverweis und das Benutzersteuerelement werden von der Seite „default.aspx“ entfernt. „Default.aspx“ enthält einfach nur die folgende Page-Direktive:
+In diesem Beispiel wird eine ASP.NET Web Forms-Anwendung in Visual Studio erstellt. Der Seitenverweis und das Benutzersteuerelement werden von der Seite „Default.aspx“ entfernt. „Default.aspx“ enthält einfach nur die folgende Page-Direktive:
 
 ```
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>
@@ -55,5 +54,5 @@ protected void Page_Load(object sender, EventArgs e)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Clientbibliotheken](analysis-services-data-providers.md)   
+[Clientbibliotheken](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)   
 [Herstellen einer Verbindung mit Power BI](analysis-services-connect-pbi.md)

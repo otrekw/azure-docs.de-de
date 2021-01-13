@@ -1,25 +1,25 @@
 ---
-title: 'Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Basic in Azure Virtual Network: Resource Manager-Vorlage (Vorschau)'
+title: 'Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Basic in Azure Virtual Network: Resource Manager-Vorlage'
 titlesuffix: Azure Virtual Network
 description: Dieser Artikel zeigt, wie eine IPv6-Dual Stack-Anwendung in Azure Virtual Network mit Azure Resource Manager-VM-Vorlagen bereitgestellt wird.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 06/26/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: b397c874045a89f5992aeadacfbbd4434a486977
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 548b416ed0f21df83dafdb1c2d7015c625c36e4c
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012838"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95244292"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template-preview"></a>Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Basic in Azure: Vorlage (Vorschau)
+# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template"></a>Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Basic in Azure: Vorlage
 
 Dieser Artikel enthält eine Liste von IPv6-Konfigurationsaufgaben mit dem Teil der Azure Resource Manager-VM-Vorlage, der für die jeweilige Aufgabe gilt. Verwenden Sie die in diesem Artikel beschriebene Vorlage, um eine Dual Stack-Anwendung (IPv4 und IPv6) mit Basic Load Balancer bereitzustellen, die ein virtuelles Dual Stack-Netzwerk mit IPv4- und IPv6-Subnetzen, Basic Load Balancer mit dualen Front-End-Konfigurationen (IPv4 und IPv6), VMs mit NICs mit einer dualen IP-Konfiguration, eine Netzwerksicherheitsgruppe und öffentliche IP-Adressen umfasst.
 
@@ -80,8 +80,8 @@ Hinzuzufügender Vorlagenabschnitt:
               "protocol": "Tcp",
               "sourcePortRange": "33819-33829",
               "destinationPortRange": "5000-6000",
-              "sourceAddressPrefix": "ace:cab:deca:deed::/64",
-              "destinationAddressPrefix": "cab:ace:deca:deed::/64",
+              "sourceAddressPrefix": "fd00:db8:deca:deed::/64",
+              "destinationAddressPrefix": "fd00:db8:deca:deed::/64",
               "access": "Allow",
               "priority": 1003,
               "direction": "Inbound"
@@ -103,9 +103,9 @@ Wenn Sie ein virtuelles Netzwerkgerät verwenden, fügen Sie in der Routentabell
           {
             "name": "v6route",
             "properties": {
-              "addressPrefix": "ace:cab:deca:deed::/64",
+              "addressPrefix": "fd00:db8:deca:deed::/64",
               "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "deca:cab:ace:f00d::1"
+              "nextHopIpAddress": "fd00:db8:ace:f00d::1"
             }
 ```
 

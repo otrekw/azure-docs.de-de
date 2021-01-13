@@ -1,31 +1,28 @@
 ---
-title: Erstellen einer Richtlinie für nicht konforme Ressourcen mit Azure PowerShell
-description: Erstellen Sie mithilfe von Azure PowerShell eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 03/11/2019
+title: 'Schnellstart: Neue Richtlinienzuweisung mit PowerShell'
+description: In dieser Schnellstartanleitung erstellen Sie mit Azure PowerShell eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
+ms.date: 08/17/2020
 ms.topic: quickstart
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: c18e48d76381bf40e6177feb389a0197aace081d
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: e941b74101308af703f243197fb4043f8f32d233
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000853"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "88548411"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mit Azure PowerShell
 
-Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wie Sie den Status Ihrer Ressourcen ermitteln. Im Rahmen dieser Schnellstartanleitung erstellen Sie eine Richtlinienzuweisung zur Identifizierung von virtuellen Computern, die keine verwalteten Datenträger verwenden. Im Anschluss identifizieren Sie virtuelle Computer, die *nicht konform* sind.
+Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wie Sie den Status Ihrer Ressourcen ermitteln. Im Rahmen dieser Schnellstartanleitung erstellen Sie eine Richtlinienzuweisung zur Identifizierung von virtuellen Computern, die keine verwalteten Datenträger verwenden. Im Anschluss identifizieren Sie virtuelle Computer, die _nicht konform_ sind.
 
 Das Azure PowerShell-Modul dient zum Verwalten von Azure-Ressourcen über die Befehlszeile oder in Skripts.
 In dieser Anleitung erfahren Sie, wie Sie mithilfe des Az-Moduls eine Richtlinienzuordnung erstellen.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
 - Stellen Sie vor Beginn sicher, dass die aktuelle Version von Azure PowerShell installiert ist. Ausführliche Informationen finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
+
 - Registrieren Sie den Ressourcenanbieter Azure Policy Insights mithilfe von Azure PowerShell. Durch die Registrierung des Ressourcenanbieters wird sichergestellt, dass das Abonnement mit ihm verwendet werden kann. Um einen Ressourcenanbieter zu registrieren, benötigen Sie die Berechtigung zum Registrieren von Ressourcenanbietern. Dieser Vorgang ist in den Rollen „Mitwirkender“ und „Besitzer“ enthalten. Führen Sie den folgenden Befehl aus, um den Ressourcenanbieter zu registrieren:
 
   ```azurepowershell-interactive
@@ -33,19 +30,21 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
   Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
   ```
 
-  Weitere Informationen zum Registrieren und Anzeigen von Ressourcenanbietern finden Sie unter [Ressourcenanbieter und -typen](../../azure-resource-manager/resource-manager-supported-services.md).
+  Weitere Informationen zum Registrieren und Anzeigen von Ressourcenanbietern finden Sie unter [Ressourcenanbieter und -typen](../../azure-resource-manager/management/resource-providers-and-types.md).
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-policy-assignment"></a>Erstellen einer Richtlinienzuweisung
 
-In dieser Schnellstartanleitung erstellen Sie eine Richtlinienzuweisung für die Definition *Virtuelle Computer ohne verwaltete Datenträger überwachen*. Diese Richtliniendefinition identifiziert virtuelle Computer, die keine verwalteten Datenträger verwenden.
+In dieser Schnellstartanleitung erstellen Sie eine Richtlinienzuweisung für die Definition _Virtuelle Computer ohne verwaltete Datenträger überwachen_. Diese Richtliniendefinition identifiziert virtuelle Computer, die keine verwalteten Datenträger verwenden.
 
 Führen Sie die folgenden Befehle aus, um eine neue Richtlinienzuweisung zu erstellen:
 
 ```azurepowershell-interactive
-# Get a reference to the resource group that will be the scope of the assignment
+# Get a reference to the resource group that is the scope of the assignment
 $rg = Get-AzResourceGroup -Name '<resourceGroupName>'
 
-# Get a reference to the built-in policy definition that will be assigned
+# Get a reference to the built-in policy definition to assign
 $definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs that do not use managed disks' }
 
 # Create the policy assignment with the built-in definition against your resource group
@@ -54,9 +53,9 @@ New-AzPolicyAssignment -Name 'audit-vm-manageddisks' -DisplayName 'Audit VMs wit
 
 In diesen Befehlen werden folgende Informationen verwendet:
 
-- **Name:** Der tatsächliche Name der Zuweisung. In diesem Beispiel wurde *audit-vm-manageddisks* verwendet.
-- **DisplayName:** Der Anzeigename für die Richtlinienzuweisung. Verwenden Sie in diesem Fall *Zuweisung für die Überwachung virtueller Computer ohne verwaltete Datenträger*.
-- **Definition:** Die Richtliniendefinition, auf deren Grundlage Sie die Zuweisung erstellen. In diesem Fall ist es die ID der Richtliniendefinition *Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden*.
+- **Name:** Der tatsächliche Name der Zuweisung. In diesem Beispiel wurde _audit-vm-manageddisks_ verwendet.
+- **DisplayName:** Der Anzeigename für die Richtlinienzuweisung. Verwenden Sie in diesem Fall _Zuweisung für die Überwachung virtueller Computer ohne verwaltete Datenträger_.
+- **Definition:** Die Richtliniendefinition, auf deren Grundlage Sie die Zuweisung erstellen. In diesem Fall ist es die ID der Richtliniendefinition _Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden_.
 - **Bereich:** Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird. Er kann von einem Abonnement bis zu Ressourcengruppen reichen. Ersetzen Sie &lt;scope&gt; durch den Namen Ihrer Ressourcengruppe.
 
 Sie können nun nicht konforme Ressourcen identifizieren, um den Konformitätszustand Ihrer Umgebung nachzuvollziehen.

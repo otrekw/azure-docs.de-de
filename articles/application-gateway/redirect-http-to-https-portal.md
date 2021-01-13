@@ -1,41 +1,40 @@
 ---
-title: Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über das Azure-Portal
+title: HTTP-zu-HTTPS-Umleitung im Portal – Azure Application Gateway
 description: Erfahren Sie, wie Sie mithilfe des Azure-Portals ein Anwendungsgateway mit Datenverkehr erstellen, der von HTTP zu HTTPS umgeleitet wird.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 12/7/2018
+ms.topic: how-to
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 17eef2fc2608ca4ccbabff8179cd63798d275582
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67153fa750fee765dcaa1072eec87a2f6169b918
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101460"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397279"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über das Azure-Portal
 
-Sie können das Azure-Portal verwenden, um ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die SSL-Terminierung zu erstellen. Zum Umleiten des HTTP-Datenverkehrs an den HTTPS-Port in Ihrem Anwendungsgateway wird eine Routingregel verwendet. In diesem Beispiel erstellen Sie auch eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) für den Back-End-Pool des Anwendungsgateways, die zwei virtuelle Computerinstanzen enthält.
+Sie können das Azure-Portal verwenden, um ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die TLS-Terminierung zu erstellen. Zum Umleiten des HTTP-Datenverkehrs an den HTTPS-Port in Ihrem Anwendungsgateway wird eine Routingregel verwendet. In diesem Beispiel erstellen Sie auch eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/overview.md) für den Back-End-Pool des Anwendungsgateways, die zwei virtuelle Computerinstanzen enthält.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Erstellen eines selbstsignierten Zertifikats
-> * Einrichten eines Netzwerks
-> * Erstellen eines Anwendungsgateways mit dem Zertifikat
-> * Hinzufügen eines Listeners und einer Umleitungsregel
-> * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
+* Erstellen eines selbstsignierten Zertifikats
+* Einrichten eines Netzwerks
+* Erstellen eines Anwendungsgateways mit dem Zertifikat
+* Hinzufügen eines Listeners und einer Umleitungsregel
+* Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Für dieses Tutorial ist die Version 1.0.0 oder höher des Azure PowerShell-Moduls erforderlich, um ein Zertifikat zu erstellen und IIS zu installieren. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Um die Befehle in diesem Tutorial auszuführen, müssen Sie auch `Login-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Für dieses Tutorial ist die Version 1.0.0 oder höher des Azure PowerShell-Moduls erforderlich, um ein Zertifikat zu erstellen und IIS zu installieren. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Um die Befehle in diesem Tutorial auszuführen, müssen Sie auch `Login-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
 
-Für den Einsatz in einer Produktionsumgebung sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat importieren. Für dieses Tutorial erstellen Sie mit [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) ein selbstsigniertes Zertifikat. Sie können [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) mit dem zurückgegebenen Fingerabdruck verwenden, um eine PFX-Datei aus dem Zertifikat zu exportieren.
+Für den Einsatz in einer Produktionsumgebung sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat importieren. Für dieses Tutorial erstellen Sie mit [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) ein selbstsigniertes Zertifikat. Sie können [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) mit dem zurückgegebenen Fingerabdruck verwenden, um eine PFX-Datei aus dem Zertifikat zu exportieren.
 
 ```powershell
 New-SelfSignedCertificate `
@@ -72,27 +71,27 @@ Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virt
 3. Klicken Sie auf **Netzwerk** und dann in der Liste der ausgewählten Elemente auf **Application Gateway**.
 4. Geben Sie die folgenden Werte für das Anwendungsgateway ein:
 
-   - *myAppGateway*: Name des Anwendungsgateways
-   - *myResourceGroupAG*: neue Ressourcengruppe
+   - *myAppGateway* : Name des Anwendungsgateways
+   - *myResourceGroupAG* : neue Ressourcengruppe
 
      ![Erstellen eines neuen Anwendungsgateways](./media/create-url-route-portal/application-gateway-create.png)
 
 5. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
-6. Klicken Sie auf **Virtuelles Netzwerk auswählen** und dann auf **Neu erstellen**, und geben Sie dann die folgenden Werte für das virtuelle Netzwerk ein:
+6. Klicken Sie auf **Virtuelles Netzwerk auswählen** und dann auf **Neu erstellen** , und geben Sie dann die folgenden Werte für das virtuelle Netzwerk ein:
 
-   - *myVNet*: Name des virtuellen Netzwerks
-   - *10.0.0.0/16*: Adressraum des virtuellen Netzwerks
-   - *myAGSubnet*: Subnetzname
-   - *10.0.1.0/24*: Adressraum des Subnetzes.
+   - *myVNet* : Name des virtuellen Netzwerks
+   - *10.0.0.0/16* : Adressraum des virtuellen Netzwerks
+   - *myAGSubnet* : Subnetzname
+   - *10.0.0.0/24* : Adressraum des Subnetzes
 
      ![Virtuelles Netzwerk erstellen](./media/create-url-route-portal/application-gateway-vnet.png)
 
-7. Klicken Sie auf **OK**, um das virtuelle Netzwerk und das Subnetz zu erstellen.
+7. Klicken Sie auf **OK** , um das virtuelle Netzwerk und das Subnetz zu erstellen.
 8. Stellen Sie unter **Front-End-IP-Konfiguration** sicher, dass **IP-Adresstyp** auf **Öffentlich** festgelegt und **Neu erstellen** ausgewählt ist. Geben Sie als Namen *myAGPublicIPAddress* ein. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
-9. Wählen Sie unter **Listenerkonfiguration** die Option **HTTPS** aus, wählen Sie **Datei auswählen** aus, und navigieren Sie dann zu der Datei *c:\appgwcert.pfx*, und wählen Sie **Öffnen** aus.
+9. Wählen Sie unter **Listenerkonfiguration** die Option **HTTPS** aus, wählen Sie **Datei auswählen** aus, und navigieren Sie dann zu der Datei *c:\appgwcert.pfx* , und wählen Sie **Öffnen** aus.
 10. Geben Sie als Zertifikatnamen *appgwcert* und als Kennwort *Azure123456!* ein. als Kennwort
 11. Lassen Sie die Web Application Firewall deaktiviert, und wählen Sie dann **OK** aus.
-12. Überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **OK**, um die Netzwerkressourcen und das Anwendungsgateway zu erstellen. Die Erstellung des Anwendungsgateways kann einige Minuten dauern. Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit dem nächsten Abschnitt fortfahren.
+12. Überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **OK** , um die Netzwerkressourcen und das Anwendungsgateway zu erstellen. Die Erstellung des Anwendungsgateways kann einige Minuten dauern. Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit dem nächsten Abschnitt fortfahren.
 
 ### <a name="add-a-subnet"></a>Hinzufügen eines Subnetzes
 
@@ -110,7 +109,7 @@ Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virt
 
 Fügen Sie zunächst den Listener namens *myListener* für Port 80 hinzu.
 
-1. Öffnen Sie die Ressourcengruppe **myResourceGroupAG**, und wählen Sie **myAppGateway** aus.
+1. Öffnen Sie die Ressourcengruppe **myResourceGroupAG** , und wählen Sie **myAppGateway** aus.
 2. Wählen Sie **Listener** und dann **+ Basic** aus.
 3. Geben Sie als Namen *MyListener* ein.
 4. Geben Sie *httpPort* als neuen Fron-End-Port-Namen und *80* als Port ein.
@@ -118,15 +117,15 @@ Fügen Sie zunächst den Listener namens *myListener* für Port 80 hinzu.
 
 ### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>Hinzufügen einer Routingregel mit einer Umleitungskonfiguration
 
-1. Wählen Sie für **myAppGateway** die Option **Regeln** und dann **+ Basic** aus.
-2. Geben Sie als **Namen** *Rule2* ein.
+1. Wählen Sie für **myAppGateway** die Option **Regeln** und dann **+Routingregel anfordern** aus.
+2. Geben Sie als **Regelnamen** den Text *Rule2* ein.
 3. Stellen Sie sicher, dass für den Listener **MyListener** aktiviert ist.
-4. Aktivieren Sie das Kontrollkästchen **Umleitung konfigurieren**.
+4. Klicken Sie auf die Registerkarte **Back-End-Ziele** , und wählen Sie **Zieltyp** als *Umleitung* aus.
 5. Wählen Sie für **Umleitungstyp** die Option **Permanent** aus.
 6. Wählen Sie für **Umleitungsziel** die Option **Listener** aus.
 7. Stellen Sie sicher, dass **Ziellistener** auf **appGatewayHttpListener** festgelegt ist.
-8. Aktivieren Sie die Kontrollkästchen **Abfragezeichenfolge einbeziehen** und **Pfad einbeziehen**.
-9. Klicken Sie auf **OK**.
+8. Wählen Sie für **Abfragezeichenfolge einbeziehen** und **Pfad einbeziehen** die Option *Ja* aus.
+9. Wählen Sie **Hinzufügen**.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Erstellen einer Skalierungsgruppe für virtuelle Computer
 
@@ -172,8 +171,8 @@ Abschließend müssen Sie ein Upgrade der Skalierungsgruppe mit diesen Änderung
 1. Wählen Sie die Skalierungsgruppe **myvmss** aus.
 2. Wählen Sie unter **Einstellungen** die Option **Instanzen** aus.
 3. Wählen Sie beide Instanzen und dann **Upgrade** aus.
-4. Klicken Sie auf **Ja**, um zu bestätigen.
-5. Nachdem dieser Vorgang abgeschlossen ist, wechseln Sie zurück zu **myAppGateway**, und wählen Sie **Back-End-Pools** aus. Es sollte jetzt angezeigt werden, dass der **appGatewayBackendPool** zwei Ziele und **myAppGatewaymyvmss** keine Ziele besitzt.
+4. Klicken Sie auf **Ja** , um zu bestätigen.
+5. Nachdem dieser Vorgang abgeschlossen ist, wechseln Sie zurück zu **myAppGateway** , und wählen Sie **Back-End-Pools** aus. Es sollte jetzt angezeigt werden, dass der **appGatewayBackendPool** zwei Ziele und **myAppGatewaymyvmss** keine Ziele besitzt.
 6. Wählen Sie **myAppGatewaymyvmss** und dann **Löschen** aus.
 7. Wählen Sie zum Fortzufahren **OK** aus.
 
@@ -206,7 +205,7 @@ Nach dem Ändern der Instanzen mit IIS müssen Sie erneut ein Upgrade der Skalie
 1. Wählen Sie die Skalierungsgruppe **myvmss** aus.
 2. Wählen Sie unter **Einstellungen** die Option **Instanzen** aus.
 3. Wählen Sie beide Instanzen und dann **Upgrade** aus.
-4. Klicken Sie auf **Ja**, um zu bestätigen.
+4. Klicken Sie auf **Ja** , um zu bestätigen.
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 

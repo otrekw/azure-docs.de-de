@@ -1,17 +1,17 @@
 ---
-title: Auswählen einer VMware-Migrationsoption mit der Azure Migrate-Servermigration | Microsoft-Dokumentation
+title: Auswählen einer VMware-Migrationsoption mit der Azure Migrate-Servermigration
 description: Bietet eine Übersicht über die Optionen zum Migrieren von VMware-VMs zu Azure mit der Azure Migrate-Servermigration
-author: rayne-wiselman
-ms.service: azure-migrate
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
-ms.date: 07/09/2019
-ms.author: raynew
-ms.openlocfilehash: 9ddb63fcf4d960d2d8ed2671eba83fc38cddcbe4
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.date: 06/08/2020
+ms.openlocfilehash: 075f113975e5f340493fe33584d8072190be77c8
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710048"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896480"
 ---
 # <a name="select-a-vmware-migration-option"></a>Auswählen einer VMware-Migrationsoption
 
@@ -21,39 +21,36 @@ Sie können VMware-VMs zu Azure migrieren, indem Sie das Tool für die Azure Mig
 - Durchführen einer Migration mit einem Agent für die Replikation Installieren eines Agents für die Replikation auf der VM
 
 
-
-
 ## <a name="compare-migration-methods"></a>Vergleichen von Migrationsmethoden
 
-Die folgende Tabelle hilft Ihnen bei der Wahl der geeigneten Methode. Sie können sich auch die Anforderungen der vollständigen Unterstützung für die Migration [ohne Agent](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) und die [Agent-basierte](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) Migration ansehen.
+Die folgende Tabelle hilft Ihnen bei der Wahl der geeigneten Methode. Sie können sich auch die Anforderungen der vollständigen Unterstützung für die Migration [ohne Agent](migrate-support-matrix-vmware-migration.md#agentless-migration) und die [Agent-basierte](migrate-support-matrix-vmware-migration.md#agent-based-migration) Migration ansehen.
 
 **Einstellung** | **Ohne Agent** | **Agent-basiert**
 --- | --- | ---
 **Azure-Berechtigungen** | Sie benötigen Berechtigungen zum Erstellen eines Azure Migrate-Projekts sowie zum Registrieren von Azure AD-Apps, die beim Bereitstellen der Azure Migrate-Appliance erstellt werden. | Sie benötigen Berechtigungen vom Typ „Mitwirkender“ für das Azure-Abonnement. 
-**Gleichzeitige Replikation** | Es können maximal 100 VMs gleichzeitig von einem vCenter-Server repliziert werden.<br/> Wenn mehr als 50 VMs migriert werden sollen, erstellen Sie mehrere Batches von VMs.<br/> Wenn eine größere Anzahl als diese gleichzeitig migriert wird, kommt es zu einer Beeinträchtigung der Leistung. | Nicht verfügbar
+**Replikation** | Es können maximal 300 VMs gleichzeitig von einem vCenter-Server repliziert werden.<br/> Wenn mehr als 50 VMs migriert werden sollen, erstellen Sie mehrere Batches von VMs.<br/> Wenn eine größere Anzahl als diese gleichzeitig migriert wird, kommt es zu einer Beeinträchtigung der Leistung.<br/><br/> Im Portal können für die Replikation bis zu zehn virtuelle Computer gleichzeitig ausgewählt werden. Wenn Sie mehr Computer replizieren möchten, fügen Sie jeweils Batches mit zehn Stück hinzu.| Die Replikationskapazität erhöht sich durch Skalieren der Replikationsappliance.
 **Bereitstellung einer Appliance** | Die [Azure Migrate-Appliance](migrate-appliance.md) wird lokal bereitgestellt. | Die [Azure Migrate-Replikationsappliance](migrate-replication-appliance.md) wird lokal bereitgestellt.
 **Site Recovery-Kompatibilität** | Kompatibel | Wenn Sie die Replikation für einen Computer mit Site Recovery eingerichtet haben, können Sie keine Replikation mit der Azure Migrate-Servermigration durchführen.
 **Zieldatenträger** | Verwaltete Datenträger | Verwaltete Datenträger
-**Einschränkungen für Datenträger** | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 4 TB<br/><br/> Maximale Datenträger: 60 | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 8 TB<br/><br/> Maximale Datenträger: 63
+**Einschränkungen für Datenträger** | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 32 TB<br/><br/> Maximale Datenträger: 60 | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 8 TB<br/><br/> Maximale Datenträger: 63
 **Pass-Through-Datenträger** | Nicht unterstützt | Unterstützt
-**UEFI-Start** | Nicht unterstützt | Der migrierte virtuelle Computer in Azure wird automatisch in einen virtuellen Computer mit BIOS-Start konvertiert.<br/><br/> Der Betriebssystemdatenträger sollte bis zu vier Partitionen aufweisen, und Volumes sollten mit NTFS formatiert sein.
+**UEFI-Start** | Unterstützt. | Unterstützt.
 
-
-## <a name="deployment-steps-comparison"></a>Vergleich der Bereitstellungsschritte
+## <a name="compare-deployment-steps"></a>Vergleichen der Bereitstellungsschritte
 
 Nachdem Sie sich über die Einschränkungen informiert haben, hilft Ihnen die Kenntnis der Schritte zum Bereitstellen der einzelnen Lösungen möglicherweise bei der Auswahl der Option.
 
 **Aufgabe** | **Details** |**Ohne Agent** | **Agent-basiert**
 --- | --- | --- | ---
-**Vorbereiten der VMware-Server und -VMs für die Migration** | Konfigurieren Sie eine Reihe von Einstellungen für VMware-Server und -VMs. | Erforderlich | Erforderlich
-**Hinzufügen des Tools für die Servermigration** | Fügen Sie das Tool für die Azure Migrate-Servermigration im Azure Migrate-Projekt hinzu. | Erforderlich | Erforderlich
-**Bereitstellen der Azure Migrate-Appliance** | Richten Sie auf einer VMware-VM eine einfache Appliance für die VM-Ermittlung und -Bewertung ein. | Erforderlich | Nicht erforderlich.
-**Installieren des Mobilitätsdiensts auf VMs** | Installieren Sie den Mobilitätsdienst auf jeder VM, die Sie replizieren möchten. | Nicht erforderlich | Erforderlich
-**Bereitstellen der Replikationsappliance für die Azure Migrate-Server-Servermigration** | Richten Sie eine Appliance auf einer VMware-VM ein, um VMs zu ermitteln und eine Brücke zwischen dem auf VMs ausgeführten Mobilitätsdienst und der Azure Migrate-Servermigration zu schlagen. | Nicht erforderlich | Erforderlich
+**Bereitstellen der Azure Migrate-Appliance** | Eine Lightweight-Appliance, die auf einer VMware-VM ausgeführt wird.<br/><br/> Die Appliance dient zum Ermitteln und Bewerten von Computern und zum Migrieren von Computern mithilfe der Migration ohne Agent. | Erforderlich.<br/><br/> Wenn Sie die Appliance bereits für die Bewertung eingerichtet haben, können Sie dieselbe Appliance auch für die Migration ohne Agent verwenden. | Nicht erforderlich.<br/><br/> Wenn Sie eine Appliance für die Bewertung eingerichtet haben, können Sie sie nach Abschluss der Bewertung an Ort und Stelle belassen oder entfernen.
+**Verwenden des Serverbewertungstools** | Bewerten Sie Computer mit dem Tool „Azure Migrate: Serverbewertung“. | Sie können die Computer bewerten, bevor Sie sie migrieren, aber Sie müssen nicht so vorgehen. | Die Bewertung ist optional.
+**Verwenden des Tools für die Servermigration** | Fügen Sie das Tool für die Azure Migrate-Servermigration im Azure Migrate-Projekt hinzu. | Erforderlich | Erforderlich
+**Vorbereiten von VMware auf die Migration** | Konfigurieren Sie Einstellungen für VMware-Server und -VMs. | Erforderlich | Erforderlich
+**Installieren des Mobilitätsdiensts auf VMs** | Der Mobilitätsdienst wird auf jeder VM ausgeführt, die Sie replizieren möchten. | Nicht erforderlich | Erforderlich
+**Bereitstellen der Replikationsappliance** | Die [Replikationsappliance](migrate-replication-appliance.md) wird für die Agent-basierte Migration verwendet. Es wird eine Verbindung zwischen dem Mobilitätsdienst auf virtuellen Computern und der Servermigration hergestellt. | Nicht erforderlich | Erforderlich
 **Replizieren von VMs** Aktivieren Sie die VM-Replikation. | Konfigurieren Sie Replikationseinstellungen, und wählen Sie VMs für die Replikation aus. | Erforderlich | Erforderlich
 **Ausführen einer Testmigration** | Führen Sie eine Testmigration aus, um sicherzustellen, dass alles wie erwartet funktioniert. | Erforderlich | Erforderlich
 **Durchführen einer vollständigen Migration** | Migrieren Sie die VMs. | Erforderlich | Erforderlich
-
 
 
 

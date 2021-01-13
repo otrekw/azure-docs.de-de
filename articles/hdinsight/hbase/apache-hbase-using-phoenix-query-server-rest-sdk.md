@@ -1,23 +1,23 @@
 ---
 title: Phoenix Query Server REST SDK – Azure HDInsight
 description: Installieren und verwenden Sie das REST-SDK für den Phoenix Query Server in Azure HDInsight.
-ms.service: hdinsight
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 12/04/2017
-ms.openlocfilehash: 1f468cac29579d8748f61a47b548a67d36ff8279
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.service: hdinsight
+ms.topic: how-to
+ms.custom: hdinsightactive, devx-track-csharp
+ms.date: 01/01/2020
+ms.openlocfilehash: 051d7b37f5f78ce28134fa7c4ee188f3dde81812
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695949"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89504841"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
-[Apache Phoenix](https://phoenix.apache.org/) ist eine relationale Open-Source-Datenbankschicht mit hochgradig parallelisierter Verarbeitung, die auf [Apache HBase](apache-hbase-overview.md) basiert. Mit Phoenix können Sie SQL-ähnliche Abfragen mit HBase über SSH-Tools wie beispielsweise [SQLLine](apache-hbase-phoenix-squirrel-linux.md) verwenden. Phoenix verfügt auch über einen HTTP-Server, der als Phoenix Query Server (PQS) bezeichnet wird. Es handelt sich um eine Thin Client-Komponente, die zwei Transportmechanismen für die Clientkommunikation unterstützt: JSON und Protokollpuffer. Protokollpuffer sind der standardmäßige Mechanismus, der eine effizientere Kommunikation als JSON bietet.
+[Apache Phoenix](https://phoenix.apache.org/) ist eine relationale Open-Source-Datenbankschicht mit hochgradig parallelisierter Verarbeitung, die auf [Apache HBase](apache-hbase-overview.md) basiert. Mit Phoenix können Sie SQL-ähnliche Abfragen mit HBase über SSH-Tools wie beispielsweise [SQLLine](apache-hbase-query-with-phoenix.md) verwenden. Phoenix verfügt auch über einen HTTP-Server, der als Phoenix Query Server (PQS) bezeichnet wird. Es handelt sich um eine Thin Client-Komponente, die zwei Transportmechanismen für die Clientkommunikation unterstützt: JSON und Protokollpuffer. Protokollpuffer sind der standardmäßige Mechanismus, der eine effizientere Kommunikation als JSON bietet.
 
 In diesem Artikel wird beschrieben, wie Sie das PQS REST SDK zum Erstellen von Tabellen, das Durchführen des Upsert-Vorgangs für Zeilen (einzeln und als Massenvorgang) und das Auswählen von Daten mit SQL-Anweisungen nutzen. In den Beispielen wird der [Microsoft .NET-Treiber für Apache Phoenix Query Server](https://www.nuget.org/packages/Microsoft.Phoenix.Client) verwendet. Dieses SDK basiert auf den [Avatica-APIs von Apache Calcite](https://calcite.apache.org/avatica/), bei denen ausschließlich Protokollpuffer für das Serialisierungsformat eingesetzt werden.
 
@@ -27,7 +27,9 @@ Weitere Informationen finden Sie unter [Apache Calcite Avatica Protocol Buffers 
 
 Der Microsoft .NET-Treiber für Apache Phoenix Query Server wird als NuGet-Paket bereitgestellt, das mit dem folgenden Befehl über die **NuGet-Paket-Manager-Konsole** in Visual Studio installiert werden kann:
 
-    Install-Package Microsoft.Phoenix.Client
+```console
+Install-Package Microsoft.Phoenix.Client
+```
 
 ## <a name="instantiate-new-phoenixclient-object"></a>Instanziieren des neuen PhoenixClient-Objekts
 
@@ -94,7 +96,7 @@ Hier sind die `TransactionIsolation`-Werte aufgeführt:
 
 Bei HBase werden Daten in Tabellen gespeichert, wie dies bei allen Managementsystemen für relationale Datenbanken (RDBMS) der Fall ist. Für Phoenix werden SQL-Standardabfragen zum Erstellen von neuen Tabellen verwendet, während die Primärschlüssel- und Spaltentypen definiert werden.
 
-In diesem und allen nachfolgenden Beispielen wird das instanziierte `PhoenixClient`-Objekt gemäß der Definition unter [Instanziieren des neuen PhoenixClient-Objekts](#instantiate-new-phoenixclient-object) verwendet.
+In diesem und allen späteren Beispielen wird das instanziierte `PhoenixClient`-Objekt gemäß der Definition unter [Instanziieren des neuen PhoenixClient-Objekts](#instantiate-new-phoenixclient-object) verwendet.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -170,7 +172,7 @@ In diesem Beispiel wird das individuelle Einfügen von Daten veranschaulicht, in
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-Der Spaltenwert `StateProvince` der Tabelle wird in einem nachfolgenden Auswahlvorgang genutzt.
+Der Spaltenwert `StateProvince` der Tabelle wird in einem späteren Auswahlvorgang genutzt.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -277,7 +279,7 @@ finally
 }
 ```
 
-Die Struktur zum Ausführen einer INSERT-Anweisung ähnelt dem Erstellen einer neuen Tabelle. Beachten Sie, dass für die Transaktion am Ende des Blocks `try` ein expliziter Commit durchgeführt wird. In diesem Beispiel wird eine INSERT-Transaktion 300-mal wiederholt. Im folgenden Beispiel wird ein effizienterer Batcheinfügeprozess veranschaulicht.
+Die Struktur zum Ausführen einer INSERT-Anweisung ähnelt dem Erstellen einer neuen Tabelle. Für die Transaktion am Ende des Blocks `try` wird ein expliziter Commit durchgeführt. In diesem Beispiel wird eine INSERT-Transaktion 300-mal wiederholt. Im folgenden Beispiel wird ein effizienterer Batcheinfügeprozess veranschaulicht.
 
 ## <a name="batch-insert-data"></a>Einfügen von Daten als Batches
 
@@ -494,7 +496,7 @@ finally
 
 Die Ausgabe der `select`-Anweisungen sollte zum folgenden Ergebnis führen:
 
-```
+```output
 id0 first0
 id1 first1
 id10 first10
@@ -537,7 +539,7 @@ MH: 6
 FM: 5
 ```
 
-## <a name="next-steps"></a>Nächste Schritte 
+## <a name="next-steps"></a>Nächste Schritte
 
 * [Apache Phoenix in HDInsight](../hdinsight-phoenix-in-hdinsight.md)
 * [Verwenden des Apache HBase REST SDK](apache-hbase-rest-sdk.md)

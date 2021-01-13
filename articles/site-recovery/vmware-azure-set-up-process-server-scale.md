@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
-ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40f912122e6ffb9cccbd32a747f6f0d46fd6c330
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925487"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019135"
 ---
 # <a name="scale-with-additional-process-servers"></a>Skalieren mit zusätzlichen Prozessservern
 
-Wenn Sie VMware-VMs oder physische Server mithilfe von [Site Recovery](site-recovery-overview.md) in Azure replizieren, wird standardmäßig ein Prozessserver auf dem Konfigurationsservercomputer installiert und zum Koordinieren der Datenübertragung zwischen Site Recovery und Ihrer lokalen Infrastruktur verwendet. Um die Kapazität zu erhöhen und die Replikationsbereitstellung horizontal hochzuskalieren, können Sie zusätzliche eigenständige Prozessserver hinzufügen. In diesem Artikel wird beschrieben, wie Sie einen Prozessserver mit horizontaler Skalierung einrichten.
+Wenn Sie VMware-VMs oder physische Server mithilfe von [Site Recovery](site-recovery-overview.md) in Azure replizieren, wird standardmäßig ein Prozessserver auf dem Konfigurationsservercomputer installiert und zum Koordinieren der Datenübertragung zwischen Site Recovery und Ihrer lokalen Infrastruktur verwendet. Um die Kapazität zu erhöhen und die Replikationsbereitstellung aufzuskalieren, können Sie zusätzliche eigenständige Prozessserver hinzufügen. In diesem Artikel wird beschrieben, wie Sie einen Prozessserver mit horizontaler Skalierung einrichten.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -35,9 +35,9 @@ Prüfen Sie die in der Tabelle zusammengefassten Größenanforderungen. Allgemei
 
 | **Zusätzlicher Prozessserver** | **Größe des Cachedatenträgers** | **Datenänderungsrate** | **Geschützte Computer** |
 | --- | --- | --- | --- |
-|4 vCPUs (2 Sockets * 2 Kerne \@ 2,5 GHz), 8 GB Arbeitsspeicher |300 GB |250 GB oder weniger |Bis zu 85 Computer replizieren. |
+|4 vCPUs (2 Sockets * 2 Kerne \@ 2,5 GHz), 8 GB Arbeitsspeicher |300 GB |250 GB oder weniger |Bis zu 85 Computer replizieren. |
 |8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz), 12 GB Arbeitsspeicher |600 GB |250 GB bis 1 TB |Zwischen 85 und 150 Computer replizieren. |
-|12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz), 24 GB Arbeitsspeicher |1 TB |1 TB bis 2 TB |Zwischen 150 und 225 Computer replizieren. |
+|12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz), 24 GB Arbeitsspeicher |1 TB |1 TB bis 2 TB |Zwischen 150 und 225 Computer replizieren. |
 
 Jeder geschützte Quellcomputer ist mit drei Datenträgern von jeweils 100 GB konfiguriert.
 
@@ -74,7 +74,7 @@ Führen Sie die Installation auf folgende Weise aus. Nachdem Sie den Prozessserv
 Die Installation erfolgt, indem Sie den folgenden Befehl ausführen:
 
 ```
-UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMWare/NonVMWare>] [/PSIP <IP address to be used for data transfer] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
+UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMware/NonVMware>] [/PSIP <IP address to be used for data transfer] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
 ```
 
 Die Befehlszeilenparameter lauten wie folgt:
@@ -86,7 +86,7 @@ Beispiel:
 ```
 MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
 cd C:\Temp\Extracted
-UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /EnvType "VMWare" /CSIP "10.150.24.119" /PassphraseFilePath "C:\Users\Administrator\Desktop\Passphrase.txt" /DataTransferSecurePort 443
+UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /EnvType "VMware" /CSIP "10.150.24.119" /PassphraseFilePath "C:\Users\Administrator\Desktop\Passphrase.txt" /DataTransferSecurePort 443
 ```
 ### <a name="create-a-proxy-settings-file"></a>Erstellen einer Datei mit Proxyeinstellungen
 

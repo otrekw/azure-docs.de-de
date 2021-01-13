@@ -1,25 +1,18 @@
 ---
 title: Reagieren auf Ereignisse mit Azure Log Analytics-Warnungen | Microsoft-Dokumentation
 description: In diesem Tutorial lernen Sie, Warnungen in Log Analytics zu verstehen, die wichtige Informationen in Ihrem Arbeitsbereich identifizieren und Sie proaktiv über Probleme informieren oder Aktionen aufrufen, um die Probleme zu beheben.
-services: log-analytics
-documentationcenter: log-analytics
-author: MGoedtel
-manager: carmonm
-editor: ''
-ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: tutorial
+author: bwren
+ms.author: bwren
 ms.date: 10/05/2018
-ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 6521688e595230951e0753fd67c2bf9b02e0a6ec
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8af1acb67961de105e5bf5900d7b10c437cb30d8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102145"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83835868"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Reagieren auf Ereignisse mit Azure Monitor-Warnungen
 Mit Warnungen in Azure Monitor können wichtige Informationen in Ihrem Log Analytics-Repository identifiziert werden. Sie werden durch Warnungsregeln erstellt, die automatisch in regelmäßigen Abständen Protokollsuchen ausführen. Wenn Ergebnisse der Protokollsuche mit bestimmten Kriterien übereinstimmen, wird ein Warnungsdatensatz erstellt, der zur Ausführung einer automatischen Antwort konfiguriert werden kann.  Dieses Tutorial ist eine Fortsetzung des Tutorials [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](tutorial-logs-dashboards.md).   
@@ -30,7 +23,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen einer Warnungsregel
 > * Konfigurieren einer Aktionsgruppe zum Senden einer E-Mail-Benachrichtigung
 
-Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein, der [mit dem Log Analytics-Arbeitsbereich verbunden](../../azure-monitor/learn/quick-collect-azurevm.md) ist.  
+Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein, der [mit dem Log Analytics-Arbeitsbereich verbunden](quick-collect-azurevm.md) ist.  
 
 ## <a name="sign-in-to-azure-portal"></a>Anmelden beim Azure-Portal
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an. 
@@ -42,7 +35,7 @@ Im folgenden Beispiel erstellen Sie eine Warnungsregel vom Typ „Metrische Maß
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
 2. Klicken Sie im linken Bereich auf **Warnungen** und dann oben auf der Seite auf **Neue Warnungsregel**, um eine neue Warnung zu erstellen.<br><br> ![Erstellen einer neuen Warnungsregel](./media/tutorial-response/alert-rule-02.png)<br>
-3. Im ersten Schritt wählen Sie im Abschnitt **Warnung erstellen** Ihren Log Analytics-Arbeitsbereich als Ressource aus, da es sich dabei um ein protokollbasiertes Warnungssignal handelt.  Wenn Sie mehrere Abonnements besitzen, filtern Sie die Ergebnisse, indem Sie in der Dropdownliste das gewünschte **Abonnement** auswählen, das den zuvor erstellten virtuellen Computer und Log Analytics-Arbeitsbereich enthält.  Filtern Sie den **Ressourcentyp**, indem Sie in der Dropdownliste **Log Analytics** auswählen.  Wählen Sie abschließend die **Ressource** mit dem Namen **DefaultLAWorkspace**, und klicken Sie dann auf **Fertig**.<br><br> ![Schritt 1: Erstellen einer Warnung](./media/tutorial-response/alert-rule-03.png)<br>
+3. Im ersten Schritt wählen Sie im Abschnitt **Warnung erstellen** Ihren Log Analytics-Arbeitsbereich als Ressource aus, da es sich dabei um ein protokollbasiertes Warnungssignal handelt.  Wenn Sie mehrere Abonnements besitzen, filtern Sie die Ergebnisse, indem Sie in der Dropdownliste das gewünschte **Abonnement** auswählen, das den zuvor erstellten virtuellen Computer und Log Analytics-Arbeitsbereich enthält.  Filtern Sie den **Ressourcentyp**, indem Sie in der Dropdownliste **Log Analytics** auswählen.  Wählen Sie abschließend die **Ressource** mit dem Namen **DefaultLAWorkspace** aus, und klicken Sie dann auf **Fertig**.<br><br> ![Schritt 1: Erstellen einer Warnung](./media/tutorial-response/alert-rule-03.png)<br>
 4. Klicken Sie im Abschnitt **Warnungskriterien** auf **Kriterien hinzufügen**, um die gespeicherte Abfrage auszuwählen, und geben Sie dann eine Logik für die Warnungsregel ein.  Wählen Sie im Bereich **Signallogik konfigurieren** in der Liste *Azure-VMs – Prozessorauslastung* aus.  Der Bereich wird aktualisiert und zeigt die Konfigurationseinstellungen für die Warnung an.  Am oberen Rand werden die Ergebnisse für die letzten 30 Minuten des ausgewählten Signals und die Suchabfrage selbst angezeigt.  
 5. Konfigurieren Sie die Warnung mit den folgenden Informationen:  
    a. Wählen Sie in der Dropdownliste **Basierend auf** die Option **Metrische Maßeinheit** aus.  Mit „Metrische Maßeinheit“ wird eine Warnung für jedes Objekt in der Abfrage mit einem Wert erzeugt, der den angegebenen Schwellenwert überschreitet.  
@@ -58,7 +51,7 @@ Im folgenden Beispiel erstellen Sie eine Warnungsregel vom Typ „Metrische Maß
    c. Überprüfen Sie, ob die Standardwerte für **Abonnement** und **Ressourcengruppe** richtig sind. Ist dies nicht der Fall, wählen Sie die korrekten Werte in der Dropdownliste aus.   
    d. Geben Sie im Bereich „Aktionen“ einen Namen für die Aktion ein, beispielsweise **E-Mail senden**, und wählen Sie unter **Aktionstyp** in der Dropdownliste **E-Mail/SMS/Push/Sprachanruf** aus. Der Eigenschaftenbereich **E-Mail/SMS/Push/Sprachanruf** wird mit weiteren Informationen auf der rechten Seite geöffnet.  
    e. Aktivieren Sie im Bereich **E-Mail/SMS/Push/Sprachanruf** die Option **E-Mail**, und geben Sie eine gültige SMTP-E-Mail-Adresse ein, an die die Nachricht gesendet werden soll.  
-   f. Klicken Sie zum Speichern der Änderungen auf **OK** .<br><br> 
+   f. Klicken Sie auf **OK** , um die Änderungen zu speichern.<br><br> 
 
     ![Erstellen der neuen Aktionsgruppe](./media/tutorial-response/action-group-properties-01.png)
 
@@ -76,4 +69,4 @@ In diesem Tutorial haben Sie gelernt, wie Warnungsregeln ein Problem proaktiv er
 Unter diesem Link finden Sie vordefinierte Log Analytics-Skriptbeispiele.  
 
 > [!div class="nextstepaction"]
-> [Log Analytics-Skriptbeispiele](../../azure-monitor/platform/powershell-samples.md)
+> [Log Analytics-Skriptbeispiele](../samples/powershell-samples.md)

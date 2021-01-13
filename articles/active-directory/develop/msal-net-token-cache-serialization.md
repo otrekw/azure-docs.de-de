@@ -1,28 +1,24 @@
 ---
-title: Serialisierung des Tokencaches in der Microsoft-Authentifizierungsbibliothek für .NET | Azure
+title: Serialisierung des Tokencache (MSAL.NET) | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die Serialisierung und Kundenserialisierung des Tokencaches mithilfe der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5334c17b4f918e128ac69569e8ab6deeebac2182
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 4a0d5af8faafac8b733bd2daa9655e663da6fe71
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103941"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873522"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serialisierung des Tokencaches in MSAL.NET
 Nachdem ein [Token abgerufen wurde](msal-acquire-cache-tokens.md), wird es von der Microsoft-Authentifizierungsbibliothek (MSAL) zwischengespeichert.  Der Anwendungscode sollte zunächst versuchen, ein Token aus dem Cache abzurufen, bevor andere Methoden angewendet werden.  Dieser Artikel beschreibt die standardmäßige und benutzerdefinierte Serialisierung des Tokencaches in MSAL.NET.
@@ -55,7 +51,7 @@ Die folgenden Klassen und Schnittstellen sind an der Serialisierung des Tokencac
 
 Die Strategien variieren, je nachdem, ob Sie eine Tokencacheserialisierung für eine [öffentliche Clientanwendung](msal-client-applications.md) (Desktop) oder eine [vertrauliche Clientanwendung](msal-client-applications.md) (Web-App/Web-API, Daemon-App) schreiben.
 
-### <a name="token-cache-for-a-public-client"></a>Tokencache für einen öffentlichen Client 
+### <a name="token-cache-for-a-public-client"></a>Tokencache für einen öffentlichen Client
 
 Seit MSAL.NET v2.x haben Sie mehrere Optionen, um den Tokencache eines öffentlichen Clients zu serialisieren. Sie können den Cache nur für das MSAL.NET-Format serialisieren (das einheitliche Cacheformat wird von MSAL und Plattformen unterstützt).  Auch die [ältere](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization), in ADAL V3 gebräuchliche Serialisierung des Tokencaches wird unterstützt.
 
@@ -88,7 +84,9 @@ static class TokenCacheHelper
   }
 
   /// <summary>
-  /// Path to the token cache
+  /// Path to the token cache. Note that this could be something different for instance for MSIX applications:
+  /// private static readonly string CacheFilePath =
+  /// $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{AppName}\msalcache.bin";
   /// </summary>
   public static readonly string CacheFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location + ".msalcache.bin3";
 
@@ -126,7 +124,7 @@ static class TokenCacheHelper
  }
 ```
 
-Eine Vorschau eines dateibasierten Serialisierungsmoduls für einen Tokencache in Produktqualität, der für öffentliche Clientanwendungen (für Desktopanwendungen unter Windows, Mac und Linux) verwendet wird, ist in der Open-Source-Bibliothek [Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) verfügbar. Sie können das Modul aus dem folgenden Nuget-Paket in Ihre Anwendungen einschließen: [Microsoft.Identity.Client.Extensions.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
+Ein dateibasiertes Serialisierungsmodul für einen Tokencache in Produktionsqualität, das für öffentliche Clientanwendungen (Desktopanwendungen unter Windows, Mac und Linux) verwendet wird, ist in der Open-Source-Bibliothek [Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) verfügbar. Sie können das Modul aus dem folgenden NuGet-Paket in Ihre Anwendungen einbeziehen: [Microsoft.Identity.Client.Extensions.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
 
 #### <a name="dual-token-cache-serialization-msal-unified-cache-and-adal-v3"></a>Duale Serialisierung des Tokencaches (einheitlicher MSAL-Cache und ADAL v3)
 
@@ -273,16 +271,67 @@ namespace CommonCacheMsalV3
 
 ### <a name="token-cache-for-a-web-app-confidential-client-application"></a>Tokencache für eine Web-App (vertrauliche Clientanwendung)
 
-In Web-Apps oder Web-APIs kann der Cache die Sitzung, einen Redis-Cache oder eine Datenbank nutzen.
+In Web-Apps oder Web-APIs kann der Cache die Sitzung, einen Redis-Cache oder eine Datenbank nutzen. In Web-Apps oder Web-APIs sollten Sie jeweils einen Tokencache pro Konto bereithalten. 
 
-Behalten Sie in Web-Apps oder Web-APIs einen Tokencache pro Konto bei.  Bei Web-Apps sollte der Tokencache durch die Konto-ID verschlüsselt werden.  Bei Web-APIs sollte das Konto durch den Hash des Tokens, das zum Abrufen der API verwendet wird, verschlüsselt werden. MSAL.NET bietet eine benutzerdefinierte Tokencache-Serialisierung in .NET Framework- und .NET Core-Plattformen. Ereignisse werden beim Zugriff auf den Cache ausgelöst; Apps können auswählen, ob der Cache serialisiert oder deserialisiert werden soll. In vertraulichen Clientanwendungen, die Benutzer behandeln (Web-Apps, die Benutzer anmelden und Web-APIs aufrufen, und Web-APIs, die nachgeschaltete Web-APIs aufrufen), können viele Benutzer vorhanden sein. Die Benutzer werden dann parallel verarbeitet. Aus Sicherheits-und Leistungsgründen wird empfohlen, einen Cache pro Benutzer zu serialisieren. Serialisierungsereignisse berechnen anhand der Identität des verarbeiteten Benutzers einen Cacheschlüssel und serialisieren/deserialisieren einen Tokencache für diesen Benutzer.
+Bei Web-Apps sollte der Tokencache durch die Konto-ID mit einem Schlüssel versehen werden.
 
-Beispiele zur Verwendung von Tokencaches für Web-Apps und Web-APIs finden Sie im [Tutorial zur ASP.NET Core-Web-App](https://ms-identity-aspnetcore-webapp-tutorial) in Phase [2-2 Token Cache](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). Informationen zu Implementierungen finden Sie im Ordner [TokenCacheProviders](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web/TokenCacheProviders) in der Bibliothek [microsoft-authentication-extensions-for-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) (im Ordner [Microsoft.Identity.Client.Extensions.Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web)). 
+Bei Web-APIs sollte das Konto durch den Hash des Tokens, das zum Aufrufen der API verwendet wird, mit einem Schlüssel versehen werden.
+
+MSAL.NET bietet eine benutzerdefinierte Tokencache-Serialisierung in .NET Framework- und .NET Core-Plattformen. Ereignisse werden beim Zugriff auf den Cache ausgelöst; Apps können auswählen, ob der Cache serialisiert oder deserialisiert werden soll. In vertraulichen Clientanwendungen, die Benutzer behandeln (Web-Apps, die Benutzer anmelden und Web-APIs aufrufen, und Web-APIs, die nachgeschaltete Web-APIs aufrufen), können viele Benutzer vorhanden sein. Die Benutzer werden dann parallel verarbeitet. Aus Sicherheits- und Leistungsgründen wird empfohlen, jeweils einen Cache pro Benutzer zu serialisieren. Serialisierungsereignisse berechnen anhand der Identität des verarbeiteten Benutzers einen Cacheschlüssel und serialisieren/deserialisieren einen Tokencache für diesen Benutzer.
+
+Die Bibliothek [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web) stellt das NuGet-Paket [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) in der Vorschau bereit, das die Tokencacheserialisierung enthält:
+
+| Erweiterungsmethode | Subnamespace „Microsoft.Identity.Web“ | BESCHREIBUNG  |
+| ---------------- | --------- | ------------ |
+| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | InMemory-Tokencacheserialisierung. Diese Implementierung eignet sich hervorragend für Beispiele. Sie eignet sich auch für Produktionsanwendungen, falls es Ihnen nichts ausmacht, wenn der Tokencache beim Neustart der Web-App verloren geht. `AddInMemoryTokenCaches` verwendet einen optionalen Parameter vom Typ `MsalMemoryTokenCacheOptions`, mit dem Sie die Zeitspanne angeben können, nach der der Cacheeintrag abläuft, sofern er nicht verwendet wird.
+| `AddSessionTokenCaches` | `TokenCacheProviders.Session` | Der Tokencache ist an die Benutzersitzung gebunden. Diese Option ist nicht ideal, wenn das ID-Token viele Ansprüche enthält, da das Cookie zu groß wird.
+| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | Der Tokencache ist ein Adapter für die ASP.NET Core-Implementierung `IDistributedCache`. Daher stehen ein verteilter Speichercache, ein Redis-Cache, ein verteilter NCache oder ein SQL Server-Cache zur Auswahl. Einzelheiten zu den `IDistributedCache`-Implementierungen finden Sie unter https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache.
+
+Im Folgenden finden Sie ein Beispiel für die Verwendung des In-Memory-Caches in der [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices)-Methode der [Startup](/aspnet/core/fundamentals/startup)-Klasse in einer ASP.NET Core-Anwendung:
+
+```C#
+// or use a distributed Token Cache by adding
+    services.AddSignIn(Configuration);
+    services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
+            .AddInMemoryTokenCaches();
+```
+
+Beispiele für mögliche verteilte Caches:
+
+```C#
+// or use a distributed Token Cache by adding
+    services.AddSignIn(Configuration);
+    services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
+            .AddDistributedTokenCaches();
+
+// and then choose your implementation
+
+// For instance the distributed in memory cache (not cleared when you stop the app)
+services.AddDistributedMemoryCache()
+
+// Or a Redis cache
+services.AddStackExchangeRedisCache(options =>
+{
+ options.Configuration = "localhost";
+ options.InstanceName = "SampleInstance";
+});
+
+// Or even a SQL Server token cache
+services.AddDistributedSqlServerCache(options =>
+{
+ options.ConnectionString = _config["DistCache_ConnectionString"];
+ options.SchemaName = "dbo";
+ options.TableName = "TestCache";
+});
+```
+
+Die Nutzung wird im [Tutorial zum Erstellen einer Web-App mit ASP.NET Core](/aspnet/core/tutorials/first-mvc-app/) in der Phase [2-2 Tokencache](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) dargestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Die folgenden Beispiele veranschaulichen die Serialisierung des Tokencaches.
 
 | Beispiel | Plattform | BESCHREIBUNG|
 | ------ | -------- | ----------- |
-|[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Desktop (WPF) | Windows Desktop .NET (WPF)-Anwendung, die die Microsoft Graph-API aufruft ![Topologie](media/msal-net-token-cache-serialization/topology.png)|
-|[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Desktop (Konsole) | Mehrere Visual Studio-Projektmappen, die die Migration von Azure AD v1.0-Anwendungen (mit ADAL.NET) zu Azure AD v2.0-Anwendungen bzw. konvergenten Anwendungen (mit MSAL.NET) veranschaulichen, in einer besonderen [Migration des Tokencaches](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|
+|[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Desktop (WPF) | Windows Desktop .NET (WPF)-Anwendung, die die Microsoft Graph-API aufruft ![Das Diagramm zeigt eine Topologie mit dem Fluss der WPF-Desktop-App „TodoListClient“ durch interaktives Abrufen eines Tokens zu Azure AD und Microsoft Graph.](media/msal-net-token-cache-serialization/topology.png)|
+|[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Desktop (Konsole) | Eine Reihe von Visual Studio-Lösungen, welche die Migration von Azure AD v1.0-Anwendungen (mit ADAL.NET) zu Microsoft Identity Platform-Anwendungen (mit MSAL.NET) veranschaulichen. Spezielle Informationen finden Sie unter [Tokencache-Migration](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md).|

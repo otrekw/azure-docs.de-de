@@ -3,17 +3,16 @@ title: Erweiterte Funktionen von Azure Metrik-Explorer
 description: Erfahren Sie mehr über erweiterte Funktionen von Azure Monitor-Metrik-Explorer.
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a80eaecc02fa3c8c6618341c02e22241f0dc7faf
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60256776"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845080"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Erweiterte Funktionen von Azure Metrik-Explorer
 
@@ -22,7 +21,36 @@ ms.locfileid: "60256776"
 
 ## <a name="metrics-in-azure"></a>Metriken in Azure
 
-[Metriken in Azure Monitor](data-platform-metrics.md) sind eine Reihe von Messwerten und Zahlen, die im Lauf der Zeit gesammelt und gespeichert werden. Es gibt Standardmetriken (bzw. sogenannte „Plattformmetriken“) und benutzerdefinierte Metriken. Die Standardmetriken werden Ihnen von der Azure-Plattform selbst bereitgestellt. Standardmetriken stellen die Integritäts- und Nutzungsstatistik Ihrer Azure-Ressourcen dar. Benutzerdefinierte Metriken werden hingegen von Ihren Anwendungen mithilfe der [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), der [Azure-Diagnoseerweiterung (Windows Azure Diagnostics, WAD)](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview) oder durch die [Azure Monitor-REST-API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api) an Azure gesendet.
+[Metriken in Azure Monitor](data-platform-metrics.md) sind eine Reihe von Messwerten und Zahlen, die im Lauf der Zeit gesammelt und gespeichert werden. Es gibt Standardmetriken (bzw. sogenannte „Plattformmetriken“) und benutzerdefinierte Metriken. Die Standardmetriken werden Ihnen von der Azure-Plattform selbst bereitgestellt. Standardmetriken stellen die Integritäts- und Nutzungsstatistik Ihrer Azure-Ressourcen dar. Benutzerdefinierte Metriken werden hingegen von Ihren Anwendungen mithilfe der [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../app/api-custom-events-metrics.md), der [Azure-Diagnoseerweiterung (Windows Azure Diagnostics, WAD)](./diagnostics-extension-overview.md) oder durch die [Azure Monitor-REST-API](./metrics-store-custom-rest-api.md) an Azure gesendet.
+
+## <a name="resource-scope-picker"></a>Auswahl des Ressourcenbereichs
+Mit der Auswahl des Ressourcenbereichs können Sie Metriken für einzelne und mehrere Ressourcen anzeigen. Im Folgenden finden Sie Anweisungen zur Verwendung der Auswahl des Ressourcenbereichs. 
+
+### <a name="selecting-a-single-resource"></a>Auswählen einer einzelnen Ressource
+Wählen Sie im Menü **Azure Monitor** oder im Abschnitt **Überwachung** des Menüs einer Ressource die Option **Metriken** aus. Klicken Sie auf die Schaltfläche „Bereich auswählen“, um die Bereichsauswahl zu öffnen, in der Sie die Ressourcen auswählen können, für die Sie Metriken anzeigen möchten. Wenn Sie Metrik-Explorer über das Menü einer Ressource geöffnet haben, sollte dieser Bereich bereits angegeben sein. 
+
+![Screenshot der Auswahl des Ressourcenbereichs](./media/metrics-charts/scope-picker.png)
+
+Für bestimmte Ressourcen können Sie jeweils nur die Metriken einer einzelnen Ressource anzeigen. Diese Ressourcen finden Sie im Abschnitt „Alle Ressourcentypen“ in der Dropdownliste der Ressourcentypen.
+
+![Screenshot einer einzelnen Ressource](./media/metrics-charts/single-resource-scope.png)
+
+Nachdem Sie auf die gewünschte Ressource geklickt haben, werden alle Abonnements und Ressourcengruppen angezeigt, die diese Ressource enthalten.
+
+![Screenshot der verfügbaren Ressourcen](./media/metrics-charts/available-single-resource.png)
+
+> [!TIP]
+> Wenn Sie die Metriken mehrerer Ressourcen gleichzeitig oder mehrere Metriken aus einem Abonnement oder einer Ressourcengruppe anzeigen möchten, klicken Sie auf die Schaltfläche „Aufwerten“.
+
+Wenn Sie mit der Auswahl fertig sind, klicken Sie auf „Anwenden“.
+
+### <a name="viewing-metrics-across-multiple-resources"></a>Anzeigen von Metriken für mehrere Ressourcen
+Bei einigen Ressourcentypen ist die Möglichkeit aktiviert, Metriken für mehrere Ressourcen abzufragen, sofern sie sich im selben Abonnement und am selben Standort befinden. Diese Ressourcentypen finden Sie oben in der Dropdownliste „Ressourcentypen“. Weitere Informationen zum Anzeigen von Metriken über mehrere Ressourcen hinweg finden Sie in [diesem Dokument](metrics-dynamic-scope.md#selecting-multiple-resources).
+
+![Screenshot von ressourcenübergreifenden Typen](./media/metrics-charts/multi-resource-scope.png)
+
+Bei Typen, die mit mehreren Ressourcen kompatibel sind, können Sie auch Metriken für ein Abonnement oder mehrere Ressourcengruppen abfragen. Weitere Informationen hierzu finden Sie in [diesem Artikel](metrics-dynamic-scope.md#selecting-a-resource-group-or-subscription).
+
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>Erstellen von Ansichten mit mehreren Metriken und Diagrammen
 
@@ -49,6 +77,39 @@ Klicken Sie auf **Diagramm hinzufügen**, und erstellen Sie ein weiteres Diagram
 
 Klicken Sie zum Sortieren oder Löschen mehrerer Diagramme auf die Auslassungszeichen ( **...** ), um das Diagrammmenü zu öffnen, und wählen Sie das entsprechende Menüelement (**Nach oben**, **Nach unten** oder **Löschen**) aus.
 
+## <a name="changing-aggregation"></a>Ändern der Aggregation
+
+Wenn Sie einem Diagramm eine Metrik hinzufügen, wählt der Metrik-Explorer automatisch deren Standardaggregation aus. In den grundlegenden Szenarien ist die Standardeinstellung sinnvoll, doch Sie können eine andere Aggregation verwenden, um zusätzliche Einblicke in die Metrik zu erhalten. Wenn Sie verschiedene Aggregationen in einem Diagramm anzeigen möchten, müssen Sie verstehen, wie diese vom Metrik-Explorer verarbeitet werden. 
+
+Bei Metriken handelt es sich um die Reihe von Messwerten (oder „Metrikwerte“), die über den Zeitraum erfasst werden. Wenn Sie ein Diagramm zeichnen, werden die Werte der ausgewählten Metrik separat über das *Aggregationsintervall* aggregiert. Sie wählen die Dauer des Aggregationsintervalls [mithilfe des Zeitauswahlbereichs im Metrik-Explorer](metrics-getting-started.md#select-a-time-range) aus. Wenn Sie das Aggregationsintervall nicht explizit auswählen, wird die Zeitgranularität automatisch basierend auf dem aktuell ausgewählten Zeitraum ausgewählt. Sobald das Aggregationsintervall festgelegt ist, werden die Metrikwerte, die während jedes Aggregationsintervalls erfasst wurden, aggregiert und in das Diagramm eingefügt (jeweils ein Datenpunkt pro Aggregationsintervall).
+
+Angenommen, das Diagramm zeigt die Metrik **Serverantwortzeit** mit dem Aggregationstyp **Average** (Durchschnitt) über den Zeitraum **letzte 24 Stunden**:
+
+- Wenn die Zeitgranularität auf 30 Minuten festgelegt ist, wird das Diagramm aus 48 aggregierten Datenpunkten gezeichnet (z. B. werden beim Liniendiagramm 48 Punkte auf der Diagrammzeichnungsfläche verbunden). Das heißt, 24 Stunden x 2 Datenpunkte pro Stunde. Jeder Datenpunkt stellt den *Durchschnitt* aller erfassten Antwortzeiten für Serveranforderungen dar, die während des jeweils relevanten 30-Minuten-Zeitraums aufgetreten sind.
+- Wenn Sie die Zeitgranularität auf 15 Minuten festlegen, erhalten Sie 96 aggregierte Datenpunkte.  Das heißt, 24 Stunden x 4 Datenpunkte pro Stunde.
+
+Im Metrik-Explorer sind fünf Aggregationstypen für grundlegende Statistiken verfügbar: **Sum**, **Count**, **Min**, **Max** und **Average**. Der Aggregationstyp **Sum** wird manchmal auch als **Total** bezeichnet. Bei vielen Metriken blendet Metrik-Explorer die Aggregationen aus, die vollkommen irrelevant sind und nicht verwendet werden können.
+
+**Sum**: Die Summe aller Werte, die über das Aggregationsintervall erfasst wurden.
+
+![Screenshot der Summe einer Anforderung](./media/metrics-charts/request-sum.png)
+
+**Count**: Die Anzahl der Messwerte, die über das Aggregationsintervall erfasst wurden. **Count** entspricht in dem Fall, dass die Metrik immer mit dem Wert 1 erfasst wird, dem Aggregationstyp **Sum**. Dies tritt üblicherweise auf, wenn die Metrik die Anzahl unterschiedlicher Ereignisse nachverfolgt und jeder Messwert ein Ereignis darstellt (d. h., der Code löst bei jedem Eintreffen einer neuen Anforderung einen Metrikdatensatz aus).
+
+![Screenshot der Anzahl einer Anforderung](./media/metrics-charts/request-count.png)
+
+**Average**: Der Durchschnitt der Metrikwerte, die über das Aggregationsintervall erfasst wurden.
+
+![Screenshot des Durchschnitts einer Anforderung](./media/metrics-charts/request-avg.png)
+
+**Min**: Der niedrigste Wert, der über das Aggregationsintervall erfasst wurde.
+
+![Screenshot des niedrigsten Werts einer Anforderung](./media/metrics-charts/request-min.png)
+
+**Max**: Der höchste Wert, der über das Aggregationsintervall erfasst wurde.
+
+![Screenshot des höchsten Werts einer Anforderung](./media/metrics-charts/request-max.png)
+
 ## <a name="apply-filters-to-charts"></a>Anwenden von Filtern auf Diagramme
 
 Sie können Filter auf Diagramme anwenden, die Metriken mit Dimensionen aufweisen. Nehmen wir beispielsweise an, die Metrik „Anzahl von Transaktionen“ weist eine Dimension mit dem Namen „Antworttyp“ auf, die angibt, ob die Antwort von Transaktionen erfolgreich war oder nicht. Durch Filtern nach dieser Dimension wird dann eine Diagrammzeile gezeichnet, die nur erfolgreiche (oder nur fehlerhafte) Transaktionen anzeigt. 
@@ -59,15 +120,15 @@ Sie können Filter auf Diagramme anwenden, die Metriken mit Dimensionen aufweise
 
 2. Wählen Sie aus, nach welcher Dimension (Eigenschaft) gefiltert werden soll.
 
-   ![Abbildung eines Diagramms mit Metriken](./media/metrics-charts/00006.png)
+   ![Screenshot mit den Dimensionen (Eigenschaften), die gefiltert werden können.](./media/metrics-charts/028.png)
 
 3. Wählen Sie beim Zeichnen des Diagramms aus, welche Dimensionswerte eingeschlossen werden sollen (in diesem Beispiel werden die Filterergebnisse erfolgreicher Speichertransaktionen gezeigt):
 
-   ![Abbildung eines Diagramms mit Metriken](./media/metrics-charts/00007.png)
+   ![Screenshot, der das Herausfiltern der erfolgreichen Speichertransaktionen zeigt.](./media/metrics-charts/029.png)
 
 4. Klicken Sie nach der Auswahl der Filterwerte außerhalb des Filterselektors, um ihn zu schließen. Nun zeigt das Diagramm an, wie viele Speichertransaktionen fehlerhaft sind:
 
-   ![Abbildung eines Diagramms mit Metriken](./media/metrics-charts/00008.png)
+   ![Screenshot, der anzeigt, wie viele Speichertransaktionen fehlerhaft sind.](./media/metrics-charts/030.png)
 
 5. Sie können die Schritte 1 bis 4 wiederholen, um mehrere Filter auf dieselben Diagramme anzuwenden.
 
@@ -86,11 +147,11 @@ Sie können eine Metrik nach Dimension unterteilen, um die verschiedenen Segment
 
 2. Wählen Sie eine Dimension, in der Ihr Diagramm segmentiert werden soll:
 
-   ![Abbildung eines Diagramms mit Metriken](./media/metrics-charts/00010.png)
+   ![Screenshot, der die ausgewählte Dimension anzeigt, in der Sie Ihr Diagramm segmentieren möchten.](./media/metrics-charts/031.png)
 
    Das Diagramm zeigt nun mehrere Zeilen an, eine Zeile für jedes Segment der Dimension:
 
-   ![Abbildung eines Diagramms mit Metriken](./media/metrics-charts/00012.png)
+   ![Screenshot, der mehrere Zeilen anzeigt: eine Zeile für jedes Segment der Dimension.](./media/metrics-charts/032.png)
 
 3. Klicken Sie außerhalb des **Gruppierungsselektors**, um ihn zu schließen.
 
@@ -105,12 +166,26 @@ Ein Beispiel: Wenn die Menge an erfolgreichen Anforderungen von 99,99 Prozent au
 
 Ein weiteres Beispiel wären Schwankungen beim verfügbaren Arbeitsspeicher, bei denen der Wert aus technischen Gründen niemals „0“ erreicht. Wenn Sie hier den Bereich auf einen höheren Wert festlegen, ist eine geringere Arbeitsspeicherverfügbarkeit leichter zu erkennen. 
 
-Verwenden Sie zum Steuern des Bereichs der Y-Achse das Diagrammmenü „...“, und wählen Sie **Diagramm bearbeiten** aus, um auf die erweiterten Diagrammeinstellungen zuzugreifen. Ändern Sie die Werte im Abschnitt für den Bereich der Y-Achse, oder verwenden Sie die Schaltfläche **Automatisch**, um die Standardwerte wiederherzustellen.
+Verwenden Sie zum Steuern des Bereichs der Y-Achse das Diagrammmenü „...“, und wählen Sie **Diagrammeinstellungen** aus, um auf die erweiterten Diagrammeinstellungen zuzugreifen.
 
-![Abbildung eines Diagramms mit Metriken](./media/metrics-charts/00014-manually-set-granularity.png)
+![Screenshot, auf dem die Option „Diagrammeinstellungen“ hervorgehoben ist.](./media/metrics-charts/033.png)
+
+ Ändern Sie die Werte im Abschnitt für den Bereich der Y-Achse, oder verwenden Sie die Schaltfläche **Automatisch**, um die Standardwerte wiederherzustellen.
+ 
+ ![Screenshot, auf dem der Abschnitt für den Bereich der Y-Achse hervorgehoben ist.](./media/metrics-charts/034.png)
 
 > [!WARNING]
 > Wenn Sie die Grenzen der Y-Achse für Diagramme festlegen möchten, die verschiedene Anzahlwerte oder Summen für einen Zeitraum nachverfolgen und somit Anzahl-, Summen-, Minimum- oder Maximum-Aggregationen verwenden, muss in der Regel anstelle der automatischen Standardwerte auch eine feste Zeitgranularität angegeben werden. Dies ist erforderlich, da sich die Werte in Diagrammen ändern, wenn der Benutzer die Größe des Browserfensters oder die Bildschirmauflösung ändert, was eine automatische Änderung der Zeitgranularität zur Folge hat. Die resultierende Änderung der Zeitgranularität wirkt sich auf die Darstellung des Diagramms aus und macht die aktuelle Auswahl des Y-Achsenbereichs ungültig.
+
+## <a name="change-colors-of-chart-lines"></a>Ändern der Farben von Diagrammlinien
+
+Nachdem Sie die Diagramme konfiguriert haben, werden den Diagrammlinien automatisch Farben aus einer Standardpalette zugewiesen. Sie können diese Farben ändern.
+
+Um die Farbe einer Diagrammlinie zu ändern, klicken Sie auf den farbigen Balken in der zum Diagramm gehörenden Legende. Das Dialogfeld für die Farbauswahl wird geöffnet. Verwenden Sie die Farbauswahl, um die Farbe für die Linie zu konfigurieren.
+
+![Screenshot, der das Ändern der Farbe zeigt.](./media/metrics-charts/035.png)
+
+Nachdem Sie die Diagrammfarben konfiguriert haben, bleiben sie in dieser Form erhalten, wenn Sie das Diagramm an ein Dashboard anheften. Im folgenden Abschnitt wird erläutert, wie Sie ein Diagramm anheften.
 
 ## <a name="pin-charts-to-dashboards"></a>Anheften von Diagrammen an Dashboards
 
@@ -118,9 +193,9 @@ Nach der Konfiguration der Diagramme sollten Sie sie zu Dashboards hinzufügen, 
 
 So heften Sie ein konfiguriertes Diagramm an ein Dashboard an
 
-Klicken Sie nach der Konfiguration Ihres Diagramms rechts oben im Diagramm auf das Menü **Diagrammaktionen** und dann auf **An Dashboard anheften**.
+Klicken Sie nach der Konfiguration Ihres Diagramms rechts oben im Diagramm auf **An Dashboard anheften**.
 
-![Abbildung eines Diagramms mit Metriken](./media/metrics-charts/00013.png)
+![Screenshot, der das Anheften an das Diagramm zeigt.](./media/metrics-charts/036.png)
 
 ## <a name="create-alert-rules"></a>Erstellen von Warnungsregeln
 
@@ -128,11 +203,11 @@ Sie können die Kriterien, die Sie zum Visualisieren Ihrer Metriken festgelegt h
 
 ### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Zum Erstellen einer neuen Warnungsregel klicken Sie auf **Neue Warnungsregel**.
 
-![Schaltfläche „Neue Warnungsregel“ rot hervorgehoben](./media/metrics-charts/015.png)
+![Schaltfläche „Neue Warnungsregel“ rot hervorgehoben](./media/metrics-charts/042.png)
 
 Sie wechseln in den Bereich zum Erstellen von Warnungsregeln, in dem die zugrunde liegenden Metrikdimensionen aus dem Diagramm vorab ausgefüllt wurden, um das Generieren benutzerdefinierter Warnungsregeln zu vereinfachen.
 
-![Erstellen einer Warnungsregel](./media/metrics-charts/016.png)
+![Erstellen einer Warnungsregel](./media/metrics-charts/041.png)
 
 Lesen Sie [diesen Artikel](alerts-metric.md), um mehr über das Einrichten von Metrikwarnungen zu erfahren.
 
@@ -148,5 +223,4 @@ Lesen Sie [diesen Artikel](alerts-metric.md), um mehr über das Einrichten von M
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-  Lesen Sie [Erstellen von benutzerdefinierten KPI-Dashboards](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards), um mehr über die Best Practices zum Erstellen von Dashboards mit ausführbaren Aktionen und Metriken zu erfahren.
-
+  Lesen Sie [Erstellen von benutzerdefinierten KPI-Dashboards](../learn/tutorial-app-dashboards.md), um mehr über die Best Practices zum Erstellen von Dashboards mit ausführbaren Aktionen und Metriken zu erfahren.

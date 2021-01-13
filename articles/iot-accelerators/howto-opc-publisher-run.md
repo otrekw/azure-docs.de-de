@@ -1,21 +1,27 @@
 ---
 title: 'Ausführen von OPC Publisher: Azure | Microsoft-Dokumentation'
-description: Ausführen von OPC Publisher
+description: In diesem Artikel wird beschrieben, wie Sie OPC Publisher ausführen und debuggen. Darüber hinaus wird auf Leistungs- und Arbeitsspeicheraspekte eingegangen.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
-ms.topic: overview
+ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3b386171afc7916e5e803c39a9c7b3520752e6fd
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: f7d6581a1892ebd74a1adba5c09c0af9d3cf9d43
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603749"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079002"
 ---
 # <a name="run-opc-publisher"></a>Ausführen von OPC Publisher
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den Inhalt auf dem neuesten Stand lesen.
 
 In diesem Artikel wird beschrieben, wie Sie OPC Publisher ausführen und debuggen. Darüber hinaus wird auf Leistungs- und Arbeitsspeicheraspekte eingegangen.
 
@@ -364,7 +370,7 @@ Informieren Sie sich unter [Docker Hub](https://hub.docker.com/_/microsoft-ioted
 
 ## <a name="run-as-an-azure-iot-edge-module"></a>Ausführen als Azure IoT Edge-Modul
 
-OPC Publisher kann als [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge)-Modul verwendet werden. Bei Verwendung von OPC Publisher als IoT Edge-Modul werden nur die Transportprotokolle **Amqp_Tcp_Only** und **Mqtt_Tcp_Only** unterstützt.
+OPC Publisher kann als [Azure IoT Edge](../iot-edge/index.yml)-Modul verwendet werden. Bei Verwendung von OPC Publisher als IoT Edge-Modul werden nur die Transportprotokolle **Amqp_Tcp_Only** und **Mqtt_Tcp_Only** unterstützt.
 
 Navigieren Sie im Azure-Portal zu Ihren IoT Hub-Einstellungen, und führen Sie die folgenden Schritte aus, um OPC Publisher Ihrer IoT Edge-Bereitstellung als Modul hinzuzufügen:
 
@@ -532,7 +538,7 @@ Der Arbeitsspeicher und die Leistung sind voneinander abhängig und basieren jew
 - IoT Hub-Nachrichtengröße (Standardwert `1`): `--ms`
 - Überwachte Kapazität der Elementwarteschlange: `--mq`
 
-Mit dem Parameter `--mq` wird die obere Grenze der Kapazität der internen Warteschlange gesteuert, in der alle Benachrichtigungen zu Änderungen des OPC-Knotenwerts gepuffert werden. Falls OPC Publisher Nachrichten nicht schnell genug an IoT Hub senden kann, werden die Benachrichtigungen in dieser Warteschlange gepuffert. Mit dem Parameter wird die Anzahl von Benachrichtigungen festgelegt, die gepuffert werden können. Falls Sie beobachten, dass die Anzahl von Elementen in dieser Warteschlange bei Ihren Testläufen ansteigt, sollten Sie wie folgt vorgehen, um den Verlust von Nachrichten zu vermeiden:
+Mit dem Parameter `--mq` wird die obere Grenze der Kapazität der internen Warteschlange gesteuert, in der alle Benachrichtigungen zu Änderungen des OPC-Knotenwerts gepuffert werden. Falls OPC Publisher Nachrichten nicht schnell genug an IoT Hub senden kann, werden die Benachrichtigungen in dieser Warteschlange gepuffert. Mit dem Parameter wird die Anzahl von Benachrichtigungen festgelegt, die gepuffert werden können. Sollte bei Ihren Testläufen die Anzahl von Elementen in dieser Warteschlange zunehmen, gehen Sie wie folgt vor, um den Verlust von Nachrichten zu vermeiden:
 
 - Reduzieren des IoT Hub-Sendeintervalls
 - Erhöhen der IoT Hub-Nachrichtengröße
@@ -579,7 +585,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-In der Standardkonfiguration werden alle zehn Sekunden Daten an IoT Hub gesendet – oder wenn 256 KB an Daten für die Erfassung durch IoT Hub verfügbar sind. Durch diese Konfiguration ergibt sich eine zusätzliche Latenz von ca. zehn Sekunden, aber aufgrund der hohen Nachrichtengröße besteht die geringste Wahrscheinlichkeit für Datenverlust. In der Diagnoseausgabe ist zu sehen, dass es nicht zum Verlust von OPC-Knotenupdates gekommen ist: `monitored item notifications enqueue failure: 0`.
+In der Standardkonfiguration werden alle zehn Sekunden Daten an IoT Hub gesendet – oder wenn 256 KB an Daten für die Erfassung durch IoT Hub verfügbar sind. Diese Konfiguration führt zwar zu einer moderaten zusätzlichen Wartezeit von etwa zehn Sekunden, aufgrund der hohen Nachrichtengröße ist die Wahrscheinlichkeit von Datenverlusten jedoch am geringsten. In der Diagnoseausgabe ist zu sehen, dass es nicht zum Verlust von OPC-Knotenupdates gekommen ist: `monitored item notifications enqueue failure: 0`.
 
 #### <a name="constant-send-interval---si-1---ms-0"></a>Konstantes Sendeintervall (--si 1 --ms 0)
 
@@ -681,7 +687,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Bei dieser Konfiguration werden so viele OPC-Knotenwertupdates wie möglich zu einem Batch zusammengefasst. Die maximale IoT Hub-Nachrichtengröße beträgt 256 KB. Dies ist die in diesem Fall konfigurierte Größe. Es wird kein Sendeintervall angefordert. Dies bedeutet, dass die Latenz durch die Datenmenge bestimmt wird, die von IoT Hub erfasst wird. Diese Konfiguration verfügt über die geringste Wahrscheinlichkeit für den Verlust von OPC-Knotenwerten und ist für die Veröffentlichung einer hohen Zahl von Knoten geeignet. Stellen Sie bei Verwendung dieser Konfiguration sicher, dass für Ihr Szenario keine Bedingungen gelten, die zu hoher Latenz führen, wenn die Nachrichtengröße von 256 KB nicht erreicht wird.
+Bei dieser Konfiguration werden so viele OPC-Knotenwertupdates wie möglich zu einem Batch zusammengefasst. Die maximale IoT Hub-Nachrichtengröße beträgt 256 KB. Dies ist die in diesem Fall konfigurierte Größe. Es wird kein Sendeintervall angefordert. Dies bedeutet, dass die Latenz durch die Datenmenge bestimmt wird, die von IoT Hub erfasst wird. Diese Konfiguration verfügt über die geringste Wahrscheinlichkeit für den Verlust von OPC-Knotenwerten und ist für die Veröffentlichung einer hohen Anzahl von Knoten geeignet. Stellen Sie bei Verwendung dieser Konfiguration sicher, dass für Ihr Szenario keine Bedingungen gelten, die zu hoher Latenz führen, wenn die Nachrichtengröße von 256 KB nicht erreicht wird.
 
 ## <a name="debug-the-application"></a>Debuggen der Anwendung
 

@@ -1,20 +1,16 @@
 ---
-title: Erste Schritte mit Azure Data Lake Analytics unter Verwendung von Visual Studio
+title: Abfragen in Azure Data Lake Analytics – Visual Studio
 description: Erfahren Sie, wie Sie Data Lake-Tools für Visual Studio installieren und U-SQL-Skripts entwickeln und testen.
-services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
-ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
-ms.topic: conceptual
+ms.reviewer: jasonh
+ms.topic: how-to
 ms.date: 08/30/2019
-ms.openlocfilehash: 37fc469e8b7f6cd765a841409a7226346dd21a2d
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d3812cb27d2d9ea7a49038f566f8b4cc5d779172
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914249"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241691"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio
 
@@ -37,7 +33,7 @@ Dieser Artikel beschreibt, wie Sie Azure Data Lake Analytics-Konten mithilfe von
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Visual Studio:** Alle Editionen außer Express werden unterstützt.
+* **Visual Studio:** alle Editionen außer Express werden unterstützt.
 
   * Visual Studio 2019
   * Visual Studio 2017
@@ -55,7 +51,7 @@ Für dieses Tutorial muss Data Lake Tools für Visual Studio installiert sein. W
 
 1. Öffnen Sie Visual Studio.
 
-1. Öffnen Sie **Server-Explorer**, indem Sie **Ansicht** > **Server-Explorer** auswählen.
+1. Öffnen Sie **Data Lake Analytics-Explorer**, indem Sie **Ansicht** > **Data Lake Analytics-Explorer** auswählen.
 
 1. Klicken Sie mit der rechten Maustaste auf **Azure**, und wählen Sie dann **Verbindung mit Microsoft Azure-Abonnement herstellen** aus. Befolgen Sie die Anweisungen unter **Bei Ihrem Konto anmelden**.
 

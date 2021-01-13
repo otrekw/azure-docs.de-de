@@ -1,23 +1,23 @@
 ---
-title: Hinzufügen oder Aktualisieren von Benutzerprofilinformationen – Azure Active Directory | Microsoft-Dokumentation
+title: Hinzufügen oder Aktualisieren von Benutzerprofilinformationen – Azure AD
 description: Anweisungen zum Hinzufügen von Informationen zu einem Benutzerprofil in Azure Active Directory, z.B. ein Bild und Angaben zur Beschäftigung.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4002c14ed6340a0e1a89ee295d47c98436515775
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 27896bac6f5436fb6717e4bc1ab0a1f9381904ad
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561777"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370915"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Hinzufügen oder Aktualisieren von Benutzerprofilinformationen mit Azure Active Directory
 Lernen Sie, wie Sie Benutzerprofilinformationen, z.B. ein Profilbild oder Angaben zur Beschäftigung, und einige Einstellungen mit Azure Active Directory (Azure AD) hinzufügen. Weitere Informationen zum Hinzufügen neuer Benutzer finden Sie unter [Hinzufügen oder Löschen von Benutzern in Azure Active Directory](add-users-azure-active-directory.md).
@@ -28,7 +28,7 @@ Wie Sie sehen werden, lassen sich in Benutzerprofilen mehr Informationen angeben
 ## <a name="to-add-or-change-profile-information"></a>Hinzufügen oder Ändern von Profilinformationen
 1. Melden Sie sich als Benutzeradministrator für die Organisation beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Wählen Sie **Azure Active Directory**, **Benutzer** und dann einen Benutzer aus. Beispielsweise _Alain Charon_.
+2. Wählen Sie **Azure Active Directory** , **Benutzer** und dann einen Benutzer aus. Beispielsweise _Alain Charon_ .
 
     Daraufhin wird die Seite **Alain Charon – Profil** angezeigt.
 
@@ -46,7 +46,7 @@ Wie Sie sehen werden, lassen sich in Benutzerprofilen mehr Informationen angeben
 
     - **Einstellungen:** Legen Sie fest, ob sich der Benutzer bei einem Azure Active Directory-Mandanten anmelden kann. Sie können auch den globalen Standort des Benutzers angeben.
 
-    - **Kontaktinformationen:** Fügen Sie alle wichtigen Kontaktinformationen für den Benutzer hinzu. Dazu gehören beispielsweise seine Adresse oder die Mobiltelefonnummer.
+    - **Kontaktinformationen:** Fügen Sie alle relevanten Kontaktinformationen für den Benutzer hinzu, außer der Telefonnummer oder Mobiltelefonnummer eines Benutzers (nur ein globaler Administrator kann die Informationen für Benutzer in Administratorrollen aktualisieren).
 
     - **Kontaktinformationen zur Authentifizierung:** Überprüfen Sie diese Informationen, um sicherzustellen, dass für den Benutzer eine aktive Telefonnummer und E-Mail-Adresse hinterlegt sind. Azure Active Directory verwendet diese Informationen, um den Benutzer beim Anmelden zu authentifizieren. Die Kontaktinformationen für die Authentifizierung können nur von einem globalen Administrator aktualisiert werden.
 
@@ -66,4 +66,4 @@ Nachdem Sie Ihre Benutzerprofile aktualisiert haben, können Sie die folgenden g
 
 - [Erstellen einer einfachen Gruppe und Hinzufügen von Mitgliedern](active-directory-groups-create-azure-portal.md)
 
-Sie können auch andere Aufgaben für die Benutzerverwaltung ausführen, z.B. Delegate zuweisen, Richtlinien verwenden und Benutzerkonten freigeben. Weitere Informationen zu anderen verfügbaren Aktionen finden Sie unter [Dokumentation zur Azure Active Directory-Benutzerverwaltung](../users-groups-roles/index.yml).
+Sie können auch andere Aufgaben für die Benutzerverwaltung ausführen, z.B. Delegate zuweisen, Richtlinien verwenden und Benutzerkonten freigeben. Weitere Informationen zu anderen verfügbaren Aktionen finden Sie unter [Dokumentation zur Azure Active Directory-Benutzerverwaltung](../enterprise-users/index.yml).

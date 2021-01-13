@@ -4,23 +4,22 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: c737447c3a3bd2d76d3ed620b7c61aaa81250130
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 54ee19f3e278b424384ff55d7065713584235df1
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70393814"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144214"
 ---
-## <a name="set-up"></a>Einrichtung
+## <a name="set-up"></a>Einrichten
 
-### <a name="create-a-translator-text-resource"></a>Erstellen einer Textübersetzungsressource
+### <a name="create-a-translator-resource"></a>Erstellen einer Translator-Ressource
 
-Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für die Textübersetzung. Weitere Funktionen:
+Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie auf Ihrem lokalen Computer über das [Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) eine Ressource für Translator. Sie können außerdem:
 
-* Rufen Sie einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services) ab, mit dem Sie sieben Tage lang kostenlos testen können. Nach der Registrierung steht dieser auf der Azure-Website zur Verfügung.
 * Zeigen Sie eine vorhandene Ressource im [Azure-Portal](https://portal.azure.com/) an.
 
 Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalten haben, erstellen Sie zwei [Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
-* `TRANSLATOR_TEXT_SUBSCRIPTION_KEY`: Der Abonnementschlüssel für die Textübersetzungsressource
-* `TRANSLATOR_TEXT_ENDPOINT`: Der globale Endpunkt für die Textübersetzung. Verwenden Sie `https://api.cognitive.microsofttranslator.com/`.
+* `TRANSLATOR_TEXT_SUBSCRIPTION_KEY`: Der Abonnementschlüssel für Ihre Translator-Ressource.
+* `TRANSLATOR_TEXT_ENDPOINT`: Der globale Endpunkt für Translator. Verwenden Sie `https://api.cognitive.microsofttranslator.com/`.

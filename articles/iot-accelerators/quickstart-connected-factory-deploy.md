@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 6338403818259c7263fe66af7d8c8840d98efbcd
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "62127462"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Schnellstart: Testen einer cloudbasierten Lösung zum Verwalten von industriellen IoT-Geräten
@@ -26,7 +26,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie den Azure IoT Solution Acc
 
 Für diese Schnellstartanleitung benötigen Sie ein aktives Azure-Abonnement.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 
@@ -114,7 +114,7 @@ Sie können durch die Lösungshierarchie navigieren und OEE-Werte und KPIs auf j
 
 [![Anzeigen des Energieverbrauchs](./media/quickstart-connected-factory-deploy/explorelocations-inline.png)](./media/quickstart-connected-factory-deploy/explorelocations-expanded.png#lightbox)
 
-### <a name="map"></a>Map
+### <a name="map"></a>Karte
 
 Wenn für Ihr Abonnement Zugriff auf die [Bing Maps-API](iot-accelerators-faq-cf.md) besteht, werden Ihnen auf der Karte mit den *Werken* der geografische Standort und der Status aller Werke einer Lösung angezeigt. Klicken Sie auf die Standorte, die auf der Karte angezeigt werden, um Details zum jeweiligen Standort anzuzeigen.
 

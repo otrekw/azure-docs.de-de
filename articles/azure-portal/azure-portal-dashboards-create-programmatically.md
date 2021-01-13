@@ -1,101 +1,97 @@
 ---
-title: Programmgesteuertes Erstellen von Azure-Dashboards | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, wie Azure-Dashboards programmgesteuert erstellt werden.
-services: azure-portal
-documentationcenter: ''
-author: adamabmsft
-manager: dougeby
-editor: tysonn
-ms.service: azure-portal
-ms.devlang: NA
-ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 09/01/2017
-ms.author: kfollis
-ms.openlocfilehash: b24a0397a1365479907fedc6348caa54508dbbb0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+title: Programmgesteuertes Erstellen von Azure-Dashboards
+description: Verwenden eines Dashboards im Azure-Portal als Vorlage, um Azure-Dashboards programmgesteuert zu erstellen. Der Artikel enthält eine JSON-Referenz.
+ms.topic: how-to
+ms.date: 12/4/2020
+ms.openlocfilehash: e69d3f3cea0ff63f94e797047eb10b9583678b1b
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60552197"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745807"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programmgesteuertes Erstellen von Azure-Dashboards
 
-In diesem Dokument wird der Vorgang der programmgesteuerten Erstellung und Veröffentlichung von Azure-Dashboards Schritt für Schritt beschrieben. Als Bezug dient im gesamten Dokument das folgende Dashboard.
+In diesem Artikel wird der Vorgang der programmgesteuerten Erstellung und Veröffentlichung von Azure-Dashboards Schritt für Schritt beschrieben. Als Bezug dient im gesamten Dokument das folgende Dashboard.
 
 ![Beispieldashboard](./media/azure-portal-dashboards-create-programmatically/sample-dashboard.png)
 
 ## <a name="overview"></a>Übersicht
 
-Freigegebene Dashboards in Azure sind [Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) genau wie virtuelle Computer und Speicherkonten.  Daher können sie zur einfacheren Ressourcenverwaltung programmgesteuert über die [Azure Resource Manager-REST-APIs](/rest/api/), die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure), [Azure PowerShell-Befehle](https://docs.microsoft.com/powershell/azure/get-started-azureps) und zusätzlich zu den APIs auch über viele Funktionen im [Azure-Portal](https://portal.azure.com) verwaltet werden.  
+Freigegebene Dashboards im [Azure-Portal](https://portal.azure.com) sind [Ressourcen](../azure-resource-manager/management/overview.md) genau wie virtuelle Computer und Speicherkonten. Sie können Ressourcen programmgesteuert mithilfe der [Azure Resource Manager-REST-APIs](/rest/api/), [der Azure CLI](/cli/azure) und mit [Azure PowerShell](/powershell/azure/get-started-azureps)-Befehlen verwalten.
 
-Alle diese APIs und Tools bieten Möglichkeiten zum Erstellen, Auflisten, Abrufen, Ändern und Löschen von Ressourcen.  Da Dashboards Ressourcen sind, können Sie Ihre bevorzugte API bzw. Ihr bevorzugtes Tool verwenden.
+Viele Features basieren auf diesen APIs, um die Ressourcenverwaltung zu vereinfachen. Alle diese APIs und Tools bieten Möglichkeiten zum Erstellen, Auflisten, Abrufen, Ändern und Löschen von Ressourcen. Da Dashboards Ressourcen sind, können Sie Ihre bevorzugte API bzw. Ihr bevorzugtes Tool auswählen.
 
-Unabhängig vom verwendeten Tool müssen Sie eine JSON-Darstellung des Dashboardobjekts erstellen, damit Sie eine API zur Ressourcenerstellung aufrufen können. Dieses Objekt enthält Informationen zu den Teilen (auch als Kacheln bezeichnet) im Dashboard. Es umfasst Größen, Positionen, angebundene Ressourcen und jegliche Benutzeranpassungen.
+Unabhängig davon, welche Tools Sie zum programmgesteuerten Erstellen eines Dashboards verwenden, erstellen Sie eine JSON-Darstellung des Dashboardobjekts. Dieses Objekt enthält Informationen zu den Kacheln im Dashboard. Es umfasst Größen- und Positionsangaben, Ressourcen, an die Kacheln gebunden sind, sowie alle Benutzeranpassungen.
 
-Dieses JSON-Dokument lässt sich am praktischsten im [Portal](https://portal.azure.com/) erstellen. Dort können Sie die Kacheln interaktiv hinzufügen und positionieren. Dann exportieren Sie das JSON-Objekt. Schließlich erstellen Sie eine Vorlage des Ergebnisses zur späteren Verwendung in Skripts, Programmen und Bereitstellungstools.
+Die praktischste Methode zum Erstellen dieses JSON-Dokuments ist die Verwendung des Azure-Portals. Sie können Ihre Kacheln interaktiv hinzufügen und positionieren. Aus exportieren Sie das JSON-Dokument und erstellen eine Vorlage des Ergebnisses zur späteren Verwendung in Skripts, Programmen und Bereitstellungstools.
 
 ## <a name="create-a-dashboard"></a>Erstellen eines Dashboards
 
-Verwenden Sie zum Erstellen eines neuen Dashboards den Befehl „Neues Dashboard“ auf dem Hauptbildschirm des Portals.
+Um ein Dashboard zu erstellen, wählen Sie im Menü [Azure-Portal](https://portal.azure.com) die Option **Dashboard** aus, und wählen Sie dann **Neues Dashboard** aus.
 
 ![Befehl „Neues Dashboard“](./media/azure-portal-dashboards-create-programmatically/new-dashboard-command.png)
 
-Dann können Sie über den Kachelkatalog Kacheln suchen und hinzufügen. Kacheln werden per Drag & Drop hinzugefügt. Bei einigen Kacheln kann die Größe über Ziehpunkte geändert werden. Andere unterstützen feste Größen, die im jeweiligen Kontextmenü angezeigt werden.
+Verwenden Sie Kachelkatalog zum Suchen nach und Hinzufügen von Kacheln. Kacheln werden per Drag & Drop hinzugefügt. Einige Kacheln unterstützen eine Größenänderung mithilfe eines Ziehpunkts.
 
-### <a name="drag-handle"></a>Ziehpunkt
-![Ziehpunkt](./media/azure-portal-dashboards-create-programmatically/drag-handle.png)
+![Ziehpunkt zum Ändern der Größe](./media/azure-portal-dashboards-create-programmatically/drag-handle.png)
 
-### <a name="fixed-sizes-via-context-menu"></a>Feste Größen im Kontextmenü
-![Größen im Kontextmenü](./media/azure-portal-dashboards-create-programmatically/sizes-context-menu.png)
+Andere Kacheln weisen eine feste Größe auf, die Sie in ihrem Kontextmenü auswählen können.
+
+![Größenkontextmenü zum Ändern der Größe](./media/azure-portal-dashboards-create-programmatically/sizes-context-menu.png)
 
 ## <a name="share-the-dashboard"></a>Freigeben des Dashboards
 
-Nachdem Sie das Dashboard nach Ihren Vorstellungen konfiguriert haben, wird es in den nächsten Schritten veröffentlicht (mit dem Befehl „Freigeben“) und dann mit dem Ressourcen-Explorer die JSON-Darstellung abgerufen.
+Nach dem Konfigurieren des Dashboards muss es im nächsten Schritt mithilfe des Befehls **Freigeben** veröffentlicht werden.
 
-![Befehl „Freigeben“](./media/azure-portal-dashboards-create-programmatically/share-command.png)
+![Freigeben eines Dashboards](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-Durch Klicken auf den Befehl „Freigeben“ wird ein Dialogfeld angezeigt, in dem Sie zum Auswählen des Abonnements und der Ressourcengruppe aufgefordert werden, in denen die Veröffentlichung erfolgen soll. Beachten Sie, dass Sie für das Abonnement und die Ressourcengruppe, die Sie auswählen, [über Schreibzugriff verfügen müssen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Wenn Sie **Freigeben** auswählen, werden Sie aufgefordert, das Abonnement und die Ressourcengruppe auszuwählen, in dem bzw. der Sie veröffentlichen möchten. Sie müssen für das Abonnement und die Ressourcengruppe, die Sie auswählen, über Schreibzugriff verfügen. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](../role-based-access-control/role-assignments-portal.md).
 
-![Freigabe und Zugriffssteuerung](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
+![Vornehmen von Änderungen an Freigabe und Zugriff](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 
 ## <a name="fetch-the-json-representation-of-the-dashboard"></a>Abrufen der JSON-Darstellung des Dashboards
 
-Die Veröffentlichung dauert nur wenige Sekunden.  Anschließend navigieren Sie im nächsten Schritt zum [Ressourcen-Explorer](https://portal.azure.com/#blade/HubsExtension/ArmExplorerBlade), um die JSON-Darstellung abzurufen.
+Die Veröffentlichung dauert nur wenige Sekunden. Anschließend rufen Sie im nächsten Schritt mithilfe des Befehls **Herunterladen** die JSON-Darstellung ab.
 
-![Durchsuchen im Ressourcen-Explorer](./media/azure-portal-dashboards-create-programmatically/browse-resource-explorer.png)
-
-Navigieren Sie im Ressourcen-Explorer zu dem Abonnement und der Ressourcengruppe, die Sie ausgewählt haben. Klicken Sie dann auf die neu erstellte Dashboardressource, um die JSON-Darstellung anzuzeigen.
-
-![JSON-Darstellung im Ressourcen-Explorer](./media/azure-portal-dashboards-create-programmatically/resource-explorer-json.png)
+![Herunterladen der JSON-Darstellung](./media/azure-portal-dashboards-create-programmatically/download-command.png)
 
 ## <a name="create-a-template-from-the-json"></a>Erstellen einer Vorlage aus der JSON-Darstellung
 
-Im nächsten Schritt wird aus dieser JSON-Darstellung eine Vorlage erstellt, sodass diese mit den entsprechenden Ressourcenverwaltungs-APIs, Befehlszeilentools oder im Portal programmgesteuert wiederverwendet werden kann.
+Der nächste Schritt besteht darin, eine Vorlage aus dieser JSON-Ressource zu erstellen. Verwenden Sie diese Vorlage programmgesteuert mit den entsprechenden Ressourcenverwaltungs-APIs, Befehlszeilentools oder innerhalb des Portals.
 
-Zum Erstellen einer Vorlage ist es nicht erforderlich, dass Sie bis ins kleinste Detail mit der JSON-Struktur des Dashboards vertraut sind. In den meisten Fällen behalten Sie die Struktur und Konfiguration der einzelnen Kacheln bei und parametrisieren dann die Gruppe der Azure-Ressourcen, auf die Sie verweisen. Sehen Sie sich das exportierte JSON-Dashboard an, und suchen Sie alle Vorkommen von Azure-Ressourcen-IDs. Das Beispieldashboard umfasst mehrere Kacheln, die alle auf einen einzelnen virtuellen Azure-Computer verweisen. Dies liegt daran, dass das Dashboard nur diese einzelne Ressource umfasst. Wenn Sie den JSON-Beispielcode (am Ende des Dokuments eingefügt) nach „/subscriptions“ durchsuchen, finden Sie mehrere Vorkommen dieser ID.
+Zum Erstellen einer Vorlage ist es nicht erforderlich, dass Sie bis ins kleinste Detail mit der JSON-Struktur des Dashboards vertraut sind. In den meisten Fällen möchten Sie die Struktur und Konfiguration der einzelnen Kacheln beibehalten. Parametrisieren Sie dann die Gruppe der Azure-Ressourcen, auf die die Kacheln verweisen. Sehen Sie sich das exportierte JSON-Dashboard an, und suchen Sie alle Vorkommen von Azure-Ressourcen-IDs. Das Beispieldashboard umfasst mehrere Kacheln, die alle auf einen einzelnen virtuellen Azure-Computer verweisen. Dies liegt daran, dass das Dashboard nur diese einzelne Ressource umfasst. Wenn Sie den JSON-Beispielcode (am Ende des Dokuments eingefügt) nach „/subscriptions“ durchsuchen, finden Sie mehrere Vorkommen dieser ID.
 
 `/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1`
 
-Um dieses Dashboard für alle künftig verwendeten virtuellen Computer zu veröffentlichen, müssen Sie jedes Vorkommen dieser Zeichenfolge im JSON-Code parametrisieren. 
+Um dieses Dashboard für alle künftig verwendeten virtuellen Computer zu veröffentlichen, parametrisieren Sie jedes Vorkommen dieser Zeichenfolge im JSON-Code.
 
-Es gibt zwei Arten von APIs, die Ressourcen in Azure erstellen. [Imperative APIs](https://docs.microsoft.com/rest/api/resources/resources), die jeweils eine Ressource erstellen, und ein System zur [vorlagenbasierten Bereitstellung](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), mit dem die Erstellung mehrerer abhängiger Ressourcen mit einem einzigen API-Aufruf orchestriert werden kann. Das Letztere unterstützt die Parametrisierung und Verwendung von Vorlagen auf native Weise, daher wird dieses System für das Beispiel verwendet.
+Es gibt zwei Ansätze für APIs, die Ressourcen in Azure erstellen:
+
+* Imperative APIs erstellen jeweils nur eine Ressource. Weitere Informationen finden Sie unter [Ressourcen](/rest/api/resources/resources).
+* Ein auf Vorlagen basierendes Bereitstellungssystem, mit dem mehrere abhängige Ressourcen mit einem einzigen API-Befehl erstellt werden. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md).
+
+Bei einer vorlagenbasierten Bereitstellung werden Parametrisierung und Vorlagenerstellung unterstützt. Wir verwenden diesen Ansatz in diesem Artikel.
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>Programmgesteuertes Erstellen eines Dashboards über die Vorlage mithilfe einer Vorlagenbereitstellung
 
-Azure bietet die Möglichkeit, die Bereitstellung von mehreren Ressourcen zu orchestrieren. Sie erstellen eine Bereitstellungsvorlage, die die Gruppe der bereitzustellenden Ressourcen sowie die Beziehungen zwischen ihnen darstellt.  Das JSON-Format der einzelnen Ressourcen entspricht jeweils dem Format beim Erstellen der Ressourcen nacheinander. Der Unterschied besteht darin, dass mit der [Vorlagensprache](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) einige Konzepte wie Variablen, Parameter, allgemeine Funktionen usw. hinzugefügt werden. Diese erweiterte Syntax wird nur im Kontext einer Vorlagenbereitstellung unterstützt und funktioniert bei Verwendung mit den oben erwähnten imperativen APIs nicht.
+Azure bietet die Möglichkeit, die Bereitstellung von mehreren Ressourcen zu orchestrieren. Sie erstellen eine Bereitstellungsvorlage, die die Gruppe der bereitzustellenden Ressourcen sowie die Beziehungen zwischen ihnen darstellt.  Das JSON-Format der einzelnen Ressourcen entspricht jeweils dem Format beim Erstellen der Ressourcen nacheinander. Der Unterschied besteht darin, dass mit der Vorlagensprache einige Konzepte wie Variablen, Parameter, allgemeine Funktionen usw. hinzugefügt werden. Diese erweiterte Syntax wird nur im Kontext einer Vorlagenbereitstellung unterstützt. Sie funktioniert nicht, wenn Sie mit den zuvor erwähnten imperativen APIs verwendet wird. Weitere Informationen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md).
 
-Bei diesem Ansatz muss die Parametrisierung über die Parametersyntax der Vorlage erfolgen.  Sie ersetzen alle zuvor gefundenen Instanzen der Ressourcen-ID wie im Folgenden gezeigt.
+Die Parametrisierung muss über die Parametersyntax der Vorlage erfolgen.  Sie ersetzen alle zuvor gefundenen Instanzen der Ressourcen-ID wie im Folgenden gezeigt.
 
-### <a name="example-json-property-with-hard-coded-resource-id"></a>JSON-Beispieleigenschaft mit hartcodierter Ressourcen-ID
-`id: "/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1"`
+JSON-Beispieleigenschaft mit hartcodierter Ressourcen-ID:
 
-### <a name="example-json-property-converted-to-a-parameterized-version-based-on-template-parameters"></a>JSON-Beispieleigenschaft basierend auf Vorlagenparametern in eine parametrisierte Version konvertiert
+```json
+id: "/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1"
+```
 
-`id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]"`
+JSON-Beispieleigenschaft basierend auf Vorlagenparametern in eine parametrisierte Version konvertiert
 
-Sie müssen zudem einige erforderliche Vorlagenmetadaten und die Parameter oben in der JSON-Vorlage wie folgt deklarieren:
+```json
+id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]"
+```
+
+Deklarieren Sie erforderliche Vorlagenmetadaten und die Parameter oben in der JSON-Vorlage wie folgt:
 
 ```json
 
@@ -117,16 +113,18 @@ Sie müssen zudem einige erforderliche Vorlagenmetadaten und die Parameter oben 
 
     ... rest of template omitted ...
 ```
+Nachdem Sie die Vorlage konfiguriert haben, stellen Sie sie mit einer der folgenden Methoden bereit:
 
-__Die vollständige funktionierende Vorlage ist am Ende des Dokuments eingefügt.__
+* [REST-APIs](/rest/api/resources/deployments)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+* [Azure-Befehlszeilenschnittstelle](/cli/azure/group/deployment#az-group-deployment-create)
+* [Vorlagenbereitstellungsseite im Azure-Portal](https://portal.azure.com/#create/Microsoft.Template)
 
-Nachdem Sie die Vorlage erstellt haben, können Sie sie mit den [REST-APIs](https://docs.microsoft.com/rest/api/resources/deployments), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/group/deployment#az-group-deployment-create) oder auf der [Vorlagenbereitstellungsseite des Portals](https://portal.azure.com/#create/Microsoft.Template) bereitstellen.
+Es folgen zwei Versionen der JSON-Darstellung für das Beispieldashboard. Die erste ist die Version, die wir im Portal erstellt haben und die bereits an eine Ressource gebunden war. Die zweite ist die Vorlagenversion, die programmgesteuert an jeden virtuellen Computer gebunden und mithilfe von Azure Resource Manager bereitgestellt werden kann.
 
-Hier sehen Sie zwei Versionen unseres Beispiel-Dashboards JSON. Die erste ist die Version, die wir im Portal erstellt haben und die bereits an eine Ressource gebunden war. Die zweite ist die Vorlagenversion, die programmgesteuert an jeden virtuellen Computer gebunden und mithilfe von Azure Resource Manager bereitgestellt werden kann.
+### <a name="json-representation-of-our-example-dashboard-before-templating"></a>JSON-Darstellung des Beispieldashboards (vor der Vorlagenerstellung)
 
-## <a name="json-representation-of-our-example-dashboard-before-templating"></a>JSON-Darstellung des Beispieldashboards (vor der Vorlagenerstellung)
-
-Sie können von folgendem Ergebnis ausgehen, wenn Sie die Anweisungen oben zum Abrufen der JSON-Darstellung eines bereits bereitgestellten Dashboards befolgen. Beachten Sie die hartcodierten Ressourcen-IDs, die angeben, dass das Dashboard auf einen bestimmten virtuellen Azure-Computer verweist.
+Dieses Beispiel zeigt, was Sie erwarten können, wenn Sie die Anleitungen in diesem Artikel befolgt haben. Die Anleitungen haben die JSON-Darstellung eines Dashboards exportiert, das bereits bereitgestellt wurde. Die hartcodierten Ressourcen-IDs geben an, dass dieses Dashboard auf einen bestimmten virtuellen Azure-Computer verweist.
 
 ```json
 
@@ -380,9 +378,9 @@ Sie können von folgendem Ergebnis ausgehen, wenn Sie die Anweisungen oben zum A
 
 ### <a name="template-representation-of-our-example-dashboard"></a>Vorlagendarstellung des Beispieldashboards
 
-In der Vorlagenversion des Dashboards sind drei Parameter definiert: __virtualMachineName__, __virtualMachineResourceGroup__ und __dashboardName__.  Mit den Parametern können Sie festlegen, dass dieses Dashboard bei jeder Bereitstellung auf einen unterschiedlichen virtuellen Azure-Computer verweist. Die parametrisierten IDs sind hervorgehoben, um anzugeben, dass das Dashboard programmgesteuert so konfiguriert und bereitgestellt werden kann, dass es auf einen beliebigen virtuellen Azure-Computer verweist. Diese Funktion können Sie am einfachsten testen, indem Sie die folgende Vorlage kopieren und in die [Vorlagenbereitstellungsseite des Azure-Portals](https://portal.azure.com/#create/Microsoft.Template) kopieren. 
+Die Vorlagenversion des Dashboards hat drei Parameter namens `virtualMachineName`, `virtualMachineResourceGroup` und `dashboardName` definiert.  Mit den Parametern können Sie festlegen, dass dieses Dashboard bei jeder Bereitstellung auf einen unterschiedlichen virtuellen Azure-Computer verweist. Dieses Dashboard kann programmgesteuert so konfiguriert und bereitgestellt werden, dass es auf einen beliebigen virtuellen Azure-Computer verweist. Diese Funktion können Sie testen, indem Sie die folgende Vorlage kopieren und in die [Vorlagenbereitstellungsseite des Azure-Portals](https://portal.azure.com/#create/Microsoft.Template) kopieren.
 
-In diesem Beispiel wird ein Dashboard bereitgestellt. Über die Vorlagensprache können Sie jedoch mehrere Ressourcen bereitstellen und ein oder mehrere Dashboards neben ihnen bündeln. 
+In diesem Beispiel wird ein Dashboard bereitgestellt. Über die Vorlagensprache können Sie jedoch mehrere Ressourcen bereitstellen und ein oder mehrere Dashboards neben ihnen bündeln.
 
 ```json
 {
@@ -648,6 +646,52 @@ In diesem Beispiel wird ein Dashboard bereitgestellt. Über die Vorlagensprache 
         }
     ]
 }
-
-
 ```
+
+Da Sie sich nun ein Beispiel für die Verwendung einer parametrisierten Vorlage zum Bereitstellen eines Dashboards angesehen haben, können Sie versuchen, die Vorlage mithilfe der [Azure Resource Manager-REST-APIs](/rest/api/), über die [Azure-Befehlszeilenschnittstelle](/cli/azure) oder mithilfe von [Azure PowerShell-Befehlen](/powershell/azure/get-started-azureps) bereitzustellen.
+
+## <a name="programmatically-create-a-dashboard-by-using-azure-cli"></a>Programmgesteuertes Erstellen eines Dashboards mit der Azure-Befehlszeilenschnittstelle
+
+Bereiten Sie die Umgebung für die Azure CLI vor.
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- In diesen Beispielen wird das Dashboard [portal-dashboard-template-testvm.json](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json) verwendet. Ersetzen Sie den Inhalt in spitzen Klammern durch Ihre Werte.
+
+Führen Sie den Befehl [az portal dashboard create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) aus, um ein Dashboard zu erstellen:
+
+```azurecli
+az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
+   --input-path portal-dashboard-template-testvm.json --location centralus
+```
+
+Mit dem Befehl [az portal dashboard update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) können Sie ein Dashboard aktualisieren:
+
+```azurecli
+az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
+--input-path portal-dashboard-template-testvm.json --location centralus
+```
+
+Durch Ausführen des Befehls [az portal dashboard show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) können Sie die Details eines Dashboards anzeigen:
+
+```azurecli
+az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
+```
+
+Wenn Sie alle Dashboards für das aktuelle Abonnement anzeigen möchten, verwenden Sie den Befehl [az portal dashboard list](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list):
+
+```azurecli
+az portal dashboard list
+```
+
+Sie können auch alle Dashboards für eine Ressourcengruppe anzeigen:
+
+```azurecli
+az portal dashboard list --resource-group myResourceGroup
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zu Desktops finden Sie unter [Verwalten von Einstellungen und Voreinstellungen im Azure-Portal](set-preferences.md).
+
+Weitere Informationen zur Azure CLI-Unterstützung für Dashboards finden Sie unter [az portal dashboard](/cli/azure/ext/portal/portal/dashboard).

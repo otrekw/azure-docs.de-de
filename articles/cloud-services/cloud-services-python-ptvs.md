@@ -3,18 +3,19 @@ title: Erste Schritte mit Python und Azure Cloud Services | Microsoft-Dokumentat
 description: Übersicht über die Verwendung von Python-Tools für Visual Studio für die Erstellung von Azure-Cloud-Diensten, einschließlich Webrollen und Workerrollen.
 services: cloud-services
 documentationcenter: python
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 981b1cc4a7adb98ba68ebf3a7673b7116479e704
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: tagore
+ms.custom: devx-track-python
+ms.openlocfilehash: 955498c663560351c01f1894fb348b89f72d549b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68359571"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079240"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python-Web- und -Workerrollen mit Python-Tools für Visual Studio
 
@@ -287,7 +288,7 @@ else
 #### <a name="pscmd"></a>ps.cmd
 Von den Visual Studio-Vorlagen sollte im Ordner **./bin** die Datei **ps.cmd** erstellt worden sein. Mit diesem Shellskript werden die obigen PowerShell-Wrapperskripts verwendet, und die Anmeldung ist basierend auf dem Namen des aufgerufenen PowerShell-Wrappers möglich. Hier ist der Inhalt der Datei angegeben, falls sie nicht erstellt wurde. 
 
-```bat
+```cmd
 @echo off
 
 cd /D %~dp0
@@ -356,8 +357,8 @@ Weitere Details zur Verwendung von Azure-Diensten aus Ihren Web- und Workerrolle
 <!--External Link references-->
 
 [Python Tools for Visual Studio]: https://aka.ms/ptvs
-[Python Tools for Visual Studio Documentation]: https://aka.ms/ptvsdocs
-[Cloud Service Projects]: https://docs.microsoft.com/visualstudio/python/python-azure-cloud-service-project-template
+[Python Tools for Visual Studio Documentation]: /visualstudio/python/
+[Cloud Service Projects]: /visualstudio/python/python-azure-cloud-service-project-template
 [Azure SDK Tools for VS 2013]: https://go.microsoft.com/fwlink/?LinkId=746482
 [Azure SDK Tools for VS 2015]: https://go.microsoft.com/fwlink/?LinkId=746481
 [Azure SDK Tools for VS 2017]: https://go.microsoft.com/fwlink/?LinkId=746483
